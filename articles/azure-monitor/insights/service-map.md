@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
 ms.openlocfilehash: 1f06345995e30f4d7f165230f4292c560c89e2e8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "68489767"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Použití řešení Service Map v Azure

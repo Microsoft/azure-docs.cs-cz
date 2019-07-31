@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: jeconnoc
 ms.openlocfilehash: f23d5246401f23694755e63a51c52da5dbf5ac1b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67175349"
 ---
 > [!WARNING]
-> Když povolíte diagnostiku pro existující role, jsou při nasazení balíčku zakázat všechna rozšíření, které jste už nastavili. Mezi ně patří:
+> Pokud povolíte diagnostiku pro existující roli, všechna již nastavená rozšíření budou při nasazení balíčku zakázána. Mezi ně patří:
 >
-> * Microsoft Monitoring Agent diagnostiky
+> * Diagnostika Microsoft Monitoring Agent
 > * Monitorování zabezpečení Microsoft Azure
-> * Antimalware od Microsoftu                 
+> * Microsoft Antimalware                 
 > * Microsoft Monitoring Agent
-> * Agent služby Microsoft Profiler      
-> * Windows Azure Domain Extension        
-> * Rozšíření diagnostiky Azure Windows   
-> * Windows Azure rozšíření vzdálené plochy
-> * Windows Azure Log Collector
+> * Agent Service Profiler Microsoftu      
+> * Rozšíření domény Windows Azure        
+> * Rozšíření pro Windows Azure Diagnostics   
+> * Rozšíření vzdálené plochy Windows Azure
+> * Kolektor protokolů Windows Azure
 >
-> Poté, co nasadíte aktualizovanou roli, můžete resetovat vaše rozšíření prostřednictvím webu Azure portal nebo Powershellu.
+> Po nasazení aktualizované role můžete rozšíření obnovit pomocí Azure Portal nebo PowerShellu.
 >

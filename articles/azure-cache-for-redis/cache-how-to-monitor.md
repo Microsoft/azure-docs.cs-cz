@@ -1,6 +1,6 @@
 ---
-title: Jak monitorovat Azure mezipaměti Redis | Dokumentace Microsoftu
-description: Další informace o monitorování stavu a výkonu Azure pro instance Redis Cache
+title: Jak monitorovat Azure cache pro Redis | Microsoft Docs
+description: Naučte se monitorovat stav a výkon pro instance Redis v mezipaměti Azure.
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -15,134 +15,134 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: 2cfd5a99144af1120afbf06fe6222228a9332bb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "65787428"
 ---
-# <a name="how-to-monitor-azure-cache-for-redis"></a>Jak monitorovat Azure mezipaměti Redis
-Mezipaměť Azure pro použití Redis [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) poskytnout několik možností, jak pro monitorování vaší instance mezipaměti. Můžete zobrazit metriky, připnout grafy metrik na úvodní panel, přizpůsobení datum a čas, množství grafy monitorování, přidání a odebrání grafy metrik a nastavit upozornění při splnění určitých podmínek. Tyto nástroje umožňují monitorování stavu vaší mezipaměti Azure pro instance Redis a snadněji tak můžete spravovat ukládání do mezipaměti aplikace.
+# <a name="how-to-monitor-azure-cache-for-redis"></a>Jak monitorovat Azure cache pro Redis
+Azure cache pro Redis používá [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) k poskytnutí několika možností monitorování instancí mezipaměti. Můžete zobrazit metriky, připnout grafy metriky na úvodní panel, přizpůsobit datum a časový rozsah grafů monitorování, přidat a odebrat metriky z grafů a nastavit upozornění, když budou splněny určité podmínky. Tyto nástroje vám umožní monitorovat stav mezipaměti Azure pro instance Redis a pomáhat při správě aplikací pro ukládání do mezipaměti.
 
-Shromažďování metrik pro mezipaměť Azure pro instance Redis pomocí Redis [informace](https://redis.io/commands/info) příkaz přibližně dvakrát za minutu a automaticky ukládají po dobu 30 dnů (naleznete v tématu [exportovat metriky mezipaměti](#export-cache-metrics) ke konfiguraci jiné zásady uchovávání informací), mohou být zobrazeny v grafy metrik a vyhodnoceny pomocí pravidel upozornění. Další informace o různých informace hodnoty používané pro jednotlivé metriky mezipaměti najdete v tématu [dostupných metrik a vytváření sestav intervalech](#available-metrics-and-reporting-intervals).
+Metriky pro instance služby Azure cache pro instance Redis se shromažďují pomocí příkazu Redis [info](https://redis.io/commands/info) přibližně dvakrát za minutu a automaticky se ukládají po dobu 30 dnů (Další informace najdete v tématu [Export metrik mezipaměti](#export-cache-metrics) pro konfiguraci jiné zásady uchovávání informací), aby mohly být Zobrazuje se v grafech metrik a vyhodnocuje pomocí pravidel výstrah. Další informace o různých hodnotách informací používaných pro každou metriku mezipaměti najdete v tématu [dostupné metriky a intervaly vytváření sestav](#available-metrics-and-reporting-intervals).
 
 <a name="view-cache-metrics"></a>
 
-Pokud chcete zobrazit metriky mezipaměti [Procházet](cache-configure.md#configure-azure-cache-for-redis-settings) k vaší instanci mezipaměti [webu Azure portal](https://portal.azure.com).  Azure mezipaměti Redis obsahuje několik předdefinovaných grafy **přehled** blade a **metrika mezipaměti Redis** okno. Každý graf lze přizpůsobit přidáním nebo odebráním metriky a změna interval sestavy.
+Pokud chcete zobrazit metriky mezipaměti, [přejděte](cache-configure.md#configure-azure-cache-for-redis-settings) k instanci mezipaměti v [Azure Portal](https://portal.azure.com).  Azure cache pro Redis poskytuje některé integrované grafy v okně **Přehled** a v okně metriky **Redis** . Jednotlivé grafy je možné přizpůsobit přidáním nebo odebráním metrik a změnou intervalu generování sestav.
 
-![Metrika mezipaměti redis](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
+![Metrika mezipaměti Redis](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
 
-## <a name="view-pre-configured-metrics-charts"></a>Zobrazit grafy předem nakonfigurované metriky
+## <a name="view-pre-configured-metrics-charts"></a>Zobrazit předem nakonfigurované grafy metrik
 
-**Přehled** okno obsahuje následující předem nakonfigurované grafy monitorování.
+Okno **Přehled** obsahuje následující předem nakonfigurované grafy monitorování.
 
 * [Grafy monitorování](#monitoring-charts)
-* [Použití grafů](#usage-charts)
+* [Grafy využití](#usage-charts)
 
 ### <a name="monitoring-charts"></a>Grafy monitorování
-**Monitorování** tématu **přehled** obsahuje okno **volání a výpadky**, **získá a nastaví**, **připojení**, a **příkazy celkem** grafy.
+V části **monitorování** v okně **Přehled** jsou k disblokování **a Neúspěšné přístupy**k příkazům, získání **a nastavení**, **připojení**a **Celkový počet příkazů** v grafu.
 
 ![Grafy monitorování](./media/cache-how-to-monitor/redis-cache-monitoring-part.png)
 
-### <a name="usage-charts"></a>Použití grafů
-**Využití** tématu **přehled** obsahuje okno **zatížení serveru Redis**, **využití paměti**, **šířkypásmasítě**, a **využití procesoru** grafů a zobrazí se také **cenová úroveň** pro instanci mezipaměti.
+### <a name="usage-charts"></a>Grafy využití
+V části **využití** v okně **Přehled** je **Redis zatížení serveru**, **využití paměti**, **Šířka pásma sítě**a grafy **využití procesoru** a zároveň se zobrazuje cenová **úroveň** instance mezipaměti.
 
-![Použití grafů](./media/cache-how-to-monitor/redis-cache-usage-part.png)
+![Grafy využití](./media/cache-how-to-monitor/redis-cache-usage-part.png)
 
-**Cenová úroveň** zobrazí mezipaměti cenovou úroveň a je možné použít k [škálování](cache-how-to-scale.md) mezipaměti na jinou cenovou úroveň.
+**Cenová úroveň** zobrazuje cenovou úroveň mezipaměti a je možné ji použít ke [škálování](cache-how-to-scale.md) mezipaměti na jinou cenovou úroveň.
 
-## <a name="view-metrics-with-azure-monitor"></a>Zobrazení metriky ve službě Azure monitor
-Zobrazit metriky pro Redis a vytvářet vlastní grafy používat Azure Monitor, klikněte na tlačítko **metriky** z **nabídce prostředků**a přizpůsobit graf pomocí požadované metriky reporting interval, grafy a další.
+## <a name="view-metrics-with-azure-monitor"></a>Zobrazení metrik pomocí Azure monitoru
+Pokud chcete zobrazit metriky Redis a vytvářet vlastní grafy pomocí Azure Monitor, klikněte na metriky v **nabídce prostředek**a upravte svůj graf pomocí požadovaných metrik, intervalu generování sestav, typu grafu a dalších.
 
-![Metrika mezipaměti redis](./media/cache-how-to-monitor/redis-cache-monitor.png)
+![Metrika mezipaměti Redis](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
-Další informace o práci s metrikami použití Azure monitoru, naleznete v tématu [přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Další informace o práci s metrikami pomocí Azure Monitor najdete v tématu [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Exportovat metriky mezipaměti
-Ve výchozím nastavení, metriky mezipaměti ve službě Azure Monitor jsou [uchovávají po dobu 30 dní](../azure-monitor/platform/data-platform-metrics.md) a pak odstranit. Chcete-li zachovat metriky mezipaměti po dobu delší než 30 dní, můžete [určit účet úložiště](../azure-monitor/platform/archive-diagnostic-logs.md) a zadejte **uchování (dny)** zásady pro metriky mezipaměti. 
+Ve výchozím nastavení se metriky mezipaměti v Azure Monitor [ukládají po dobu 30 dnů](../azure-monitor/platform/data-platform-metrics.md) a pak se odstraní. Pokud chcete uchovat metriky mezipaměti po dobu delší než 30 dní, můžete [určit účet úložiště](../azure-monitor/platform/archive-diagnostic-logs.md) a zadat zásady **uchovávání (dnů)** pro metriky mezipaměti. 
 
-Jak nakonfigurovat účet úložiště pro metriky mezipaměti:
+Konfigurace účtu úložiště pro metriky mezipaměti:
 
-1. Klikněte na tlačítko **diagnostiky** z **nabídce prostředků** v **mezipaměti Azure Redis** okno.
-2. Klikněte na tlačítko **na**.
-3. Zkontrolujte **archivovat do účtu úložiště**.
-4. Vyberte účet úložiště, ve kterých se mají ukládat metriky mezipaměti.
-5. Zkontrolujte **1 minuta** zaškrtávací políčko a zadejte **uchování (dny)** zásad. Pokud nechcete použít žádnou zásadu uchovávání informací a uchovat si data navždy, nastavte **uchování (dny)** k **0**.
+1. V okně **Azure cache pro Redis** klikněte na **Diagnostika** v **nabídce prostředky** .
+2. Klikněte **na**.
+3. Ověřte **archiv na účet úložiště**.
+4. Vyberte účet úložiště, do kterého se mají ukládat metriky mezipaměti.
+5. Zaškrtněte políčko **1 minuta** a zadejte zásady **uchovávání (dnů)** . Pokud nechcete použít žádné zásady uchovávání informací a zachovat data navždy, nastavte dobu **uchování (dny)** na **0**.
 6. Klikněte na **Uložit**.
 
-![Redis diagnostiky](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
+![Diagnostika Redis](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->Kromě archivace metriky mezipaměti do úložiště, můžete také [Streamovat do centra událostí nebo odeslat protokoly Azure monitoru](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values).
+>Kromě archivace metrik mezipaměti do úložiště je můžete také [streamovat do centra událostí nebo je odeslat do protokolů Azure monitor](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values).
 >
 >
 
-Pro přístup k metriky, můžete je zobrazit na webu Azure Portal, jak to popisuje tento článek a můžete také přistupovat pomocí [rozhraní REST API služby Azure Monitor Metrics](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Chcete-li získat přístup k metrikám, můžete je zobrazit v Azure Portal, jak je popsáno výše v tomto článku, a můžete k nim také přistupovat pomocí [Azure Monitorch metrik REST API](../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 > [!NOTE]
-> Pokud změníte účet úložiště, zůstávají data v dříve nakonfigurovaný účet úložiště k dispozici ke stažení, ale nezobrazí se na webu Azure Portal.  
+> Pokud změníte účty úložiště, data v dříve nakonfigurovaném účtu úložiště zůstanou k dispozici ke stažení, ale nezobrazí se v Azure Portal.  
 > 
 > 
 
-## <a name="available-metrics-and-reporting-intervals"></a>Dostupné metriky a vytváření sestav intervaly
-Mezipaměť metriky se vykazují pomocí několika sestav intervalech, včetně **po celé hodině**, **Dnes**, **poslední týden**, a **vlastní**. **Metrika** okno pro každý graf metrik v grafu zobrazí průměrné, minimální a maximální hodnoty pro jednotlivé metriky a některé metriky zobrazit celkem pro interval sestavy. 
+## <a name="available-metrics-and-reporting-intervals"></a>Dostupné metriky a intervaly vytváření sestav
+Metriky mezipaměti jsou hlášeny pomocí několika intervalů generování sestav, včetně **minulé hodiny**, dnešního, **minulého týdne**a **vlastního**. Okno **metriky** pro každý graf metrik zobrazuje průměrnou, minimální a maximální hodnotu každé metriky v grafu a některé metriky zobrazují celkem pro interval generování sestav. 
 
-Jednotlivé metriky zahrnuje dvě verze. Jedna metrika měří výkon pro celou mezipaměť a mezipamětí, které používají [clustering](cache-how-to-premium-clustering.md), druhou verzi, která obsahuje metriky `(Shard 0-9)` název míry výkonu pro jeden horizontální oddíl v mezipaměti. Například pokud mezipaměti má 4 horizontální oddíly `Cache Hits` je celkový počet přístupů pro celou mezipaměť, a `Cache Hits (Shard 3)` je právě přístupů pro tohoto horizontálního oddílu mezipaměti.
+Každá metrika obsahuje dvě verze. Jedna metrika měří výkon celé mezipaměti a pro mezipaměti, které používají [clusteringu](cache-how-to-premium-clustering.md), druhá verze metriky, která zahrnuje `(Shard 0-9)` do názvu, měří výkon pro jeden horizontálních oddílů v mezipaměti. Například pokud má mezipaměť 4 horizontálních oddílů, `Cache Hits` je celkový počet přístupů celé mezipaměti a `Cache Hits (Shard 3)` je to pouze počet přístupů k této horizontálních oddílů mezipaměti.
 
 > [!NOTE]
-> I když mezipaměti nečinnosti bez aplikací připojených aktivního klienta, může se zobrazit některé mezipaměti aktivity, jako je například připojení klienti, využití paměti a prováděných operací. Tato aktivita je normální během operace Azure Cache pro instanci Redis.
+> I když je mezipaměť nečinná bez připojených aktivních klientských aplikací, může se zobrazit některá aktivita mezipaměti, například připojené klienty, využití paměti a prováděné operace. Tato aktivita je během operace Azure cache pro instanci Redis normální.
 > 
 > 
 
 | Metrika | Popis |
 | --- | --- |
-| Přístupy do mezipaměti |Počet úspěšných hledání klíčů během zadaného intervalu sestavy. To se mapuje na `keyspace_hits` z Redis [informace](https://redis.io/commands/info) příkazu. |
-| Latence mezipaměti (Preview) | Latence mezipaměti počítají vypnout latence mezi uzly mezipaměti. Tato metrika se měří v mikrosekundách a má tři dimenze: "Avg", "Min" a "Max", které představují průměrné, minimální a maximální čekací doba mezipaměti v uvedeném pořadí během zadaného intervalu sestavy. |
-| Neúspěšné přístupy do mezipaměti |Počet neúspěšných hledání klíčů během zadaného intervalu sestavy. To se mapuje na `keyspace_misses` z Redis informace o příkazu. Neúspěšné přístupy do mezipaměti neznamená nutně, že se vyskytl problém s mezipamětí. Například při použití s doplňováním mezipaměti programovací model, aplikace vyhledá první do mezipaměti pro položku. Pokud položka není (Neúspěšné přístupy do mezipaměti), položka je načtena z databáze a přidají se do mezipaměti pro další použití. Neúspěšné přístupy do mezipaměti jsou normálního chování pro doplňování mezipaměti programovací model. Pokud se počet nezdařených přístupů k mezipaměti je vyšší, než se očekávalo, prozkoumejte aplikační logiky, která naplní a načte z mezipaměti. Pokud položek se vyřazuje z mezipaměti z důvodu tlaku na paměť pak mohou být některé Neúspěšné přístupy do mezipaměti, ale lepší metriku k monitorování pro tlaku na paměť by `Used Memory` nebo `Evicted Keys`. |
-| Čtení z mezipaměti |Objem dat je načten z mezipaměti v MB za sekundu (MB/s) během zadaného intervalu sestavy. Tato hodnota pochází z karty síťového rozhraní, které podporují virtuální počítač, který je hostitelem mezipaměti a není konkrétní Redis. **Tato hodnota odpovídá šířky pásma sítě používané tuto mezipaměť. Pokud chcete nastavit výstrahy pro omezení šířky pásma sítě na straně serveru, vytvořte ji pomocí tohoto `Cache Read` čítače. Zobrazit [Tato tabulka](cache-faq.md#cache-performance) mezí zjištěnou šířky pásma pro různé cenové úrovně a velikosti mezipaměti.** |
-| Zápis do mezipaměti |Vykazování množství dat zapsaných do mezipaměti v MB za sekundu (MB/s) během zadaného intervalu. Tato hodnota pochází z karty síťového rozhraní, které podporují virtuální počítač, který je hostitelem mezipaměti a není konkrétní Redis. Tato hodnota odpovídá šířky pásma sítě dat odeslaných z klienta do mezipaměti. |
-| Připojení klienti |Počet připojení klientů k mezipaměti během zadaného intervalu sestavy. To se mapuje na `connected_clients` z Redis informace o příkazu. Jakmile [limitu připojení](cache-configure.md#default-redis-server-configuration) je dosaženo následné pokusy o připojení k mezipaměti se nezdaří. Všimněte si, že i když nejsou žádné aktivní klientské aplikace, může stále existovat několik instancí připojených klientů z důvodu interní procesy a připojení. |
-| Procesor |Využití výkonu procesoru ukládání do mezipaměti Azure k serveru Redis jako procento během zadaného intervalu sestavy. Tato hodnota se mapuje na operační systém `\Processor(_Total)\% Processor Time` čítače výkonu. |
-| Chyby | Konkrétní chyby a problémy s výkonem, které do mezipaměti, mohl nastat během zadaného intervalu sestavy. Tato metrika je osm dimenze, představující typy různých chyb, ale může mít více přidán v budoucnu. Nyní reprezentována typy chyb jsou takto: <br/><ul><li>**Převzetí služeb při selhání** – když je mezipaměť převezme služby při selhání (podřízený zvýší úroveň na hlavní server)</li><li>**Selhání** – Pokud mezipaměti dochází k chybě neočekávaně některý z uzlů</li><li>**Dataloss** – když je dataloss v mezipaměti</li><li>**UnresponsiveClients** – Pokud klienti nejsou čtení dat ze serveru dostatečně rychle</li><li>**AOF** – Pokud se vyskytl problém související s AOF trvalosti</li><li>**RDB** – Pokud se vyskytl problém související s trvalost RDB</li><li>**Import** – Pokud se vyskytl problém související s Import RDB</li><li>**Export** – Pokud se vyskytl problém související s exportovat RDB</li></ul> |
-| Vyloučené klíče |Počet položek během zadaného intervalu sestavy z důvodu odstraněn z mezipaměti `maxmemory` limit. To se mapuje na `evicted_keys` z Redis informace o příkazu. |
-| Prošlé klíče |Počet položek, které vypršela během zadaného intervalu sestavy z mezipaměti. Tato hodnota se mapuje na `expired_keys` z Redis informace o příkazu.|
-| Získá |Počet operací get z mezipaměti během zadaného intervalu sestavy. Tato hodnota je součet z následujících hodnot z informací Redis vše – příkaz: `cmdstat_get`, `cmdstat_hget`, `cmdstat_hgetall`, `cmdstat_hmget`, `cmdstat_mget`, `cmdstat_getbit`, a `cmdstat_getrange`a je ekvivalentní součtem velikostí mezipaměti úspěchy a neúspěchy během generování sestav intervalu. |
-| Operací za sekundu | Celkový počet zpracovaných za sekundu na server mezipaměti během zadaného intervalu sestavy příkazy.  Tato hodnota se mapuje na "instantaneous_ops_per_sec" Redis informace o příkazu. |
-| Redis Server Load |Procentuální podíl cyklů, ve kterých je zaneprázdněná zpracováním a ne čekání na nečinnost zprávy serveru Redis. Pokud tento čítač dosáhne 100, to znamená, že Redis server překročil mezní hodnotu výkonu a nemůže zpracovat procesoru fungovat některé rychleji. Pokud dochází k vysoké zatížení Redis serveru se zobrazí výjimkám časového limitu v klientovi. V tomto případě byste měli zvážit vertikální navýšení kapacity nebo dělení dat mezi více mezipamětí. |
-| Sad |Počet množinové operace do mezipaměti během zadaného intervalu sestavy. Tato hodnota je součtem následující hodnoty z informací Redis vše – příkaz: `cmdstat_set`, `cmdstat_hset`, `cmdstat_hmset`, `cmdstat_hsetnx`, `cmdstat_lset`, `cmdstat_mset`, `cmdstat_msetnx`, `cmdstat_setbit`, `cmdstat_setex`, `cmdstat_setrange` , a `cmdstat_setnx`. |
-| Celkový počet klíčů  | Maximální počet klíčů v mezipaměti během posledních časové období sestavy. To se mapuje na `keyspace` z Redis informace o příkazu. Z důvodu omezení systému základní metriky pro mezipaměť pomocí clusterování povolené vrátí celkový počet klíčů maximální počet klíčů horizontálního oddílu, který měl maximální počet klíčů během generování sestav intervalu.  |
-| Celkový počet operací |Celkový počet příkazů, které jsou zpracovány serverem mezipaměti během zadaného intervalu sestavy. Tato hodnota se mapuje na `total_commands_processed` z Redis informace o příkazu. Všimněte si, že při použití mezipaměti Azure Redis čistě pro publikování a odběr bude žádné metriky pro `Cache Hits`, `Cache Misses`, `Gets`, nebo `Sets`, ale bude existovat `Total Operations` metriky, které odrážejí využití mezipaměti pro operace publikování a odběr. |
-| Použitá paměť |Velikost mezipaměti paměť použitá pro dvojice klíč/hodnota v mezipaměti v MB během zadaného intervalu sestavy. Tato hodnota se mapuje na `used_memory` z Redis informace o příkazu. To nezahrnuje metadata nebo fragmentace. |
-| Procento využité paměti | % Celkové paměti, který se používá během zadaného intervalu sestavy.  Toto odkazuje na hodnotu "used_memory" z příkazu Redis informace k výpočtu procentuální hodnotu. |
-| Využitá paměť RSS |Velikost mezipaměti využité MB během zadaného intervalu sestavy, včetně fragmentace a metadata. Tato hodnota se mapuje na `used_memory_rss` z Redis informace o příkazu. |
+| Přístupy do mezipaměti |Počet úspěšných vyhledání klíčů během zadaného intervalu generování sestav. To se `keyspace_hits` mapuje z příkazu Redis [info](https://redis.io/commands/info) . |
+| Latence mezipaměti (Preview) | Latence mezipaměti se vypočítala na základě latence v mezipaměti pro uzel. Tato metrika se měří v mikrosekundách a má tři dimenze: "AVG", "min" a "Max", což představuje průměrnou, minimální a maximální latenci mezipaměti v rámci zadaného intervalu hlášení. |
+| Neúspěšné přístupy do mezipaměti |Počet neúspěšných vyhledání klíčů během zadaného intervalu generování sestav. To se `keyspace_misses` mapuje z příkazu Redis info. Neúspěšné přístupy do mezipaměti nutně znamenají, že došlo k potížím s mezipamětí. Například při použití modelu programování s mezipamětí aplikace vypadá jako první v mezipaměti pro položku. Pokud položka není tam (nenalezena mezipaměť), bude položka načtena z databáze a přidána do mezipaměti pro další čas. Neúspěšné přístupy do mezipaměti představují normální chování pro model programování s mezipamětí. Pokud počet neúspěšných přístupů do mezipaměti je vyšší, než se očekávalo, Projděte si logiku aplikace, která naplní a přečte z mezipaměti. Pokud se položky z mezipaměti vyloučí z důvodu přetížení paměti, může dojít k nějakým neúspěšným výjimkám, ale lepší metrika monitorování pro tlak paměti by byla `Used Memory` nebo `Evicted Keys`. |
+| Čtení z mezipaměti |Objem dat načtených z mezipaměti v megabajtech za sekundu (MB/s) během zadaného intervalu generování sestav. Tato hodnota je odvozena z síťových adaptérů, které podporují virtuální počítač, který je hostitelem mezipaměti a není Redis konkrétní. **Tato hodnota odpovídá šířce pásma používané touto mezipamětí. Pokud chcete nastavit výstrahy pro omezení šířky pásma sítě na straně serveru, vytvořte je pomocí tohoto `Cache Read` čítače. V [této tabulce](cache-faq.md#cache-performance) najdete zjištěné limity šířky pásma pro různé cenové úrovně a velikosti mezipaměti.** |
+| Zápis do mezipaměti |Množství dat zapsaných do mezipaměti v megabajtech za sekundu (MB/s) během zadaného intervalu generování sestav. Tato hodnota je odvozena z síťových adaptérů, které podporují virtuální počítač, který je hostitelem mezipaměti a není Redis konkrétní. Tato hodnota odpovídá šířce pásma dat odesílaných do mezipaměti z klienta. |
+| Počet připojených klientů |Počet připojení klientů k mezipaměti během zadaného intervalu generování sestav. To se `connected_clients` mapuje z příkazu Redis info. Po dosažení [limitu připojení](cache-configure.md#default-redis-server-configuration) dojde k selhání následného pokusu o připojení do mezipaměti. Mějte na paměti, že i když neexistují žádné aktivní klientské aplikace, může být v důsledku interních procesů a připojení stále několik instancí připojených klientů. |
+| Procesor |Využití CPU v mezipaměti Azure pro server Redis jako procento v zadaném intervalu generování sestav. Tato hodnota se mapuje na čítač výkonu `\Processor(_Total)\% Processor Time` operačního systému. |
+| Chyby | Konkrétní chyby a problémy s výkonem, ke kterým mohlo dojít během zadaného intervalu vytváření sestav. Tato metrika má osm dimenzí, které představují různé typy chyb, ale mohou být v budoucnu přičteny. Typy chyb, které jsou nyní zastoupeny, jsou následující: <br/><ul><li>**Převzetí služeb** při selhání – při převzetí služeb při selhání (u podřízeného procesu propaguje na hlavní</li><li>**Chyba** – Pokud dojde k neočekávanému selhání mezipaměti na některém z uzlů</li><li>**Dataztráta** – Pokud dojde ke ztrátě informací v mezipaměti</li><li>**UnresponsiveClients** – Pokud klienti nečtou data ze serveru dostatečně rychle</li><li>**AOF** – Pokud dojde k potížím souvisejícím s AOF Persistence</li><li>**RDB** – Pokud existuje problém týkající se TRVALosti RDB</li><li>**Import** – Pokud dojde k potížím souvisejícím s importem RDB</li><li>**Export** – Pokud dojde k potížím souvisejícím s EXPORTem RDB</li></ul> |
+| Vyloučené klíče |Počet položek vyřazených z mezipaměti během zadaného intervalu vytváření sestav z důvodu `maxmemory` limitu. To se `evicted_keys` mapuje z příkazu Redis info. |
+| Prošlé klíče |Počet položek, jejichž platnost vypršela z mezipaměti během zadaného intervalu generování sestav. Tato hodnota se `expired_keys` mapuje z příkazu Redis info.|
+| Operace Get |Počet operací GET z mezipaměti během zadaného intervalu generování sestav. Tato hodnota je součtem následujících hodnot z příkazu Redis info All:, `cmdstat_get` `cmdstat_hget`, `cmdstat_hgetall`, `cmdstat_hmget`, `cmdstat_mget`, `cmdstat_getbit`, a `cmdstat_getrange`a je ekvivalentní součtu přístupů do mezipaměti a neúspěšných přístupů. během intervalu generování sestav. |
+| Operace za sekundu | Celkový počet příkazů zpracovávaných serverem mezipaměti během zadaného intervalu vytváření sestav za sekundu.  Tato hodnota se mapuje na "instantaneous_ops_per_sec" z příkazu Redis INFO. |
+| Zatížení serveru Redis |Procentuální podíl cyklů, ve kterých je server Redis zaneprázdněný zpracováním, a nečeká na nečinnost u zpráv. Pokud tento čítač dosáhne 100, znamená to, že server Redis dosáhl mezní hodnoty výkonu a procesor nemůže rychleji zpracovat práci. Pokud vidíte vysoké zatížení serveru Redis, zobrazí se v klientovi výjimky časového limitu. V takovém případě byste měli zvážit horizontální navýšení nebo rozdělení dat do více mezipamětí. |
+| Sady |Počet operací nastavení do mezipaměti během zadaného intervalu generování sestav. Tato hodnota je součtem následujících hodnot z příkazu Redis INFO All: `cmdstat_set`, `cmdstat_setex` `cmdstat_setbit` `cmdstat_hmset` `cmdstat_hset`,, `cmdstat_hsetnx`, `cmdstat_lset`, `cmdstat_mset`, `cmdstat_msetnx`,,, `cmdstat_setrange` a `cmdstat_setnx`. |
+| Celkový počet klíčů  | Maximální počet klíčů v mezipaměti během uplynulých časových období generování sestav. To se `keyspace` mapuje z příkazu Redis info. Z důvodu omezení základního systému metrik pro ukládání do mezipaměti s povoleným clusteringem vrátí funkce Total Keys maximální počet klíčů horizontálních oddílů, který měl maximální počet klíčů během intervalu generování sestav.  |
+| Operace celkem |Celkový počet příkazů zpracovaných serverem mezipaměti během zadaného intervalu generování sestav. Tato hodnota se `total_commands_processed` mapuje z příkazu Redis info. Všimněte si, že pokud se mezipaměť Azure pro Redis používá čistě pro Pub/sub, nepoužijí se žádné `Cache Hits`metriky `Gets`pro, `Sets` `Cache Misses`, nebo, ale budou `Total Operations` se zobrazovat metriky, které odrážejí využití mezipaměti pro operace Pub/sub. |
+| Použitá paměť |Velikost paměti mezipaměti použitá pro páry klíč-hodnota v mezipaměti v MB během zadaného intervalu generování sestav. Tato hodnota se `used_memory` mapuje z příkazu Redis info. Nezahrnuje metadata ani fragmentace. |
+| Procento využité paměti | % Celkové paměti, která se používá během zadaného intervalu generování sestav.  Tím se na hodnotu "used_memory" z příkazu Redis INFO vypočítá procento. |
+| RSS využité paměti |Velikost paměti v mezipaměti využitá v MB v zadaném intervalu vytváření sestav, včetně fragmentace a metadat. Tato hodnota se `used_memory_rss` mapuje z příkazu Redis info. |
 
 <a name="operations-and-alerts"></a>
-## <a name="alerts"></a>Výstrahy
+## <a name="alerts"></a>Upozornění
 Můžete nakonfigurovat odesílání upozornění na základě metrik a protokolů aktivit. Azure Monitor umožňuje nakonfigurovat upozornění, které při aktivaci provede některé z následujících kroků:
 
 * Odeslání e-mailového oznámení
 * Volání webhooku
 * Vyvolání aplikace logiky Azure
 
-Ke konfiguraci pravidla upozornění pro mezipaměť, klikněte na tlačítko **pravidla upozornění** z **nabídce prostředků**.
+Pokud chcete nakonfigurovat pravidla upozornění pro vaši mezipaměť, klikněte v **nabídce prostředek**na **pravidla výstrah** .
 
 ![Monitorování](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
-Další informace o konfiguraci oznámení naleznete v tématu [přehled výstrah](../monitoring-and-diagnostics/insights-alerts-portal.md).
+Další informace o konfiguraci a používání výstrah najdete v tématu [Přehled výstrah](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
 ## <a name="activity-logs"></a>Protokoly aktivit
-Protokoly aktivit poskytují přehled o operacích, které byly provedeny v mezipaměti Azure pro instance Redis. Se dřív označovalo jako "protokolů auditu" nebo "provozní protokoly". Pomocí protokolů aktivit můžete určit "co, kdo a kdy" veškerých operací (PUT, POST, DELETE) provedených v mezipaměti Azure pro instance Redis zápisu. 
+Protokoly aktivit poskytují přehled o operacích, které byly provedeny v mezipaměti Azure pro instance Redis. Dříve se nazývaly protokoly auditu nebo provozní protokoly. Pomocí protokolů aktivit můžete určit "co, kdo a kdy" pro všechny operace zápisu (PUT, POST, DELETE) provedené v mezipaměti Azure pro instance Redis. 
 
 > [!NOTE]
 > Protokoly aktivit nezahrnují operace čtení (GET).
 >
 >
 
-Zobrazení protokolů aktivit pro mezipaměť, klikněte na tlačítko **protokoly aktivit** z **nabídce prostředků**.
+Protokoly aktivit pro vaši mezipaměť zobrazíte kliknutím na **protokoly aktivit** v **nabídce prostředek**.
 
-Další informace o protokolech aktivit najdete v tématu [přehled protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).
+Další informace o protokolech aktivit najdete v tématu [Přehled protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).
 
 
 

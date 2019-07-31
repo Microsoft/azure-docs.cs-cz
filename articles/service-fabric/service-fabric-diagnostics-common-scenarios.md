@@ -1,6 +1,6 @@
 ---
-title: Diagnostikovat běžné scénáře Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak řešit běžné scénáře pomocí Azure Service Fabric
+title: Azure Service Fabric diagnostikovat běžné scénáře | Microsoft Docs
+description: Naučte se řešit běžné scénáře s využitím Azure Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -15,137 +15,137 @@ ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "60394121"
 ---
-# <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostikovat běžné scénáře s využitím Service Fabric
+# <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostika běžných scénářů pomocí Service Fabric
 
-Tento článek ukazuje běžné situace, které uživatelé došlo v oblasti monitorování a diagnostiku, s využitím Service Fabric. Scénáře uvedené zahrnují všechny vrstvy 3 service Fabric: Aplikace, clusteru a infrastruktury. Každé řešení používá Application Insights a protokoly Azure monitoru, nástroje pro monitorování Azure, k dokončení každého scénáře. Kroky v jednotlivých řešení uživatelům úvodní informace o tom, jak pomocí Application Insights a Azure Monitor protokoly v kontextu Service Fabric.
+Tento článek popisuje běžné scénáře, se kterými se uživatelé setkali v oblasti monitorování a diagnostiky s Service Fabric. Uvedené scénáře zahrnují všechny 3 vrstvy Service Fabric: Aplikace, cluster a infrastruktura. Každé řešení používá protokoly Application Insights a Azure Monitor, nástroje pro monitorování Azure k dokončení jednotlivých scénářů. Kroky v jednotlivých řešeních dávají uživatelům úvodní informace o tom, jak používat protokoly Application Insights a Azure Monitor v kontextu Service Fabric.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites-and-recommendations"></a>Požadavky a doporučení
 
-Řešení v tomto článku se bude používat následující nástroje. Doporučujeme, že abyste měli tyto sady nahoru a nakonfigurované:
+Řešení v tomto článku budou používat následující nástroje. Doporučujeme, abyste nastavili a nakonfigurovali:
 
-* [Application Insights s využitím Service Fabric](service-fabric-tutorial-monitoring-aspnet.md)
-* [Povolení diagnostiky Azure na svém clusteru](service-fabric-diagnostics-event-aggregation-wad.md)
-* [Nastavte pracovní prostor Log Analytics](service-fabric-diagnostics-oms-setup.md)
-* [Protokolu agenta Analytics ke sledování čítače výkonu](service-fabric-diagnostics-oms-agent.md)
+* [Application Insights s Service Fabric](service-fabric-tutorial-monitoring-aspnet.md)
+* [Povolení Azure Diagnostics v clusteru](service-fabric-diagnostics-event-aggregation-wad.md)
+* [Nastavení pracovního prostoru Log Analytics](service-fabric-diagnostics-oms-setup.md)
+* [Log Analytics agenta pro sledování čítačů výkonu](service-fabric-diagnostics-oms-agent.md)
 
-## <a name="how-can-i-see-unhandled-exceptions-in-my-application"></a>Jak lze zobrazit neošetřené výjimky v mé aplikaci?
+## <a name="how-can-i-see-unhandled-exceptions-in-my-application"></a>Jak můžu v aplikaci zobrazit neošetřené výjimky?
 
-1. Přejděte do prostředku Application Insights, který má nakonfigurovanou aplikaci.
-2. Klikněte na *hledání* vlevo nahoře. Pak klikněte na filtr na panelu Další.
+1. Přejděte na prostředek Application Insights, pomocí kterého je vaše aplikace nakonfigurovaná.
+2. V levém horním rohu klikněte na *Hledat* . Pak klikněte na tlačítko filtr na dalším panelu.
 
     ![Přehled AI](media/service-fabric-diagnostics-common-scenarios/ai-search-filter.png)
 
-3. Zobrazí se velké množství typy událostí (trasování, požadavky, vlastních událostí). Zvolte možnost "Výjimka" jako filtr.
+3. Zobrazí se spousta typů událostí (trasování, požadavky, vlastní události). Jako filtr vyberte "Exception".
 
-    ![Seznam filtrů AI](media/service-fabric-diagnostics-common-scenarios/ai-filter-list.png)
+    ![Seznam filtru AI](media/service-fabric-diagnostics-common-scenarios/ai-filter-list.png)
 
-    Když kliknete na výjimku v seznamu, můžete si prohlédnout podrobnosti, včetně kontext služby, pokud použijete Service Fabric Application Insights SDK.
+    Kliknutím na výjimku v seznamu můžete zobrazit další podrobnosti, včetně kontextu služby, pokud používáte sadu Service Fabric Application Insights SDK.
 
-    ![AI Exception](media/service-fabric-diagnostics-common-scenarios/ai-exception.png)
+    ![Výjimka AI](media/service-fabric-diagnostics-common-scenarios/ai-exception.png)
 
-## <a name="how-do-i-view-which-http-calls-are-used-in-my-services"></a>Jak zobrazím které HTTP volání se používají v mých služeb?
+## <a name="how-do-i-view-which-http-calls-are-used-in-my-services"></a>Návody zobrazit, která volání HTTP se ve svých službách používají?
 
-1. V stejný prostředek Application Insights můžete filtrovat podle "požadavky" místo výjimek a zobrazit všechny žádosti
-2. Pokud používáte sadu Application Insights SDK pro Service Fabric, se zobrazí vizuální reprezentace vašich služeb připojení mezi sebou a počet bylo úspěšné a neúspěšné požadavky. Na levé straně klikněte na tlačítko "Mapa aplikace"
+1. Ve stejném Application Insights prostředku můžete místo výjimek a zobrazení všech požadavků vytvořit filtrování požadavků.
+2. Pokud používáte sadu SDK Service Fabric Application Insights, uvidíte vizuální znázornění vašich služeb, které jsou připojené k druhému, a počet úspěšných a neúspěšných žádostí. Na levé straně klikněte na mapa aplikace.
 
-    ![Mapa aplikace AI okno](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![Mapa aplikace AI](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![Mapa aplikace AI okno](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![mapa aplikace AI](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
-    Další informace o mapy aplikace najdete [dokumentaci Mapa aplikace](../azure-monitor/app/app-map.md)
+    Další informace o mapě aplikace najdete v [dokumentaci k mapě aplikací](../azure-monitor/app/app-map.md) .
 
-## <a name="how-do-i-create-an-alert-when-a-node-goes-down"></a>Jak vytvořím oznámení, když se uzel ocitne mimo provoz
+## <a name="how-do-i-create-an-alert-when-a-node-goes-down"></a>Návody vytvořit výstrahu, když se uzel ukončí
 
-1. Uzel události jsou sledovány ve vašem clusteru Service Fabric. Přejděte k prostředku řešení analýza služby Service Fabric s názvem **ServiceFabric(NameofResourceGroup)**
-2. Klikněte na graf v dolní části okna s názvem "Přehled"
+1. Události uzlu jsou sledovány Service Fabricm clusterem. Přejděte do prostředku řešení Service Fabric Analytics s názvem **ServiceFabric (NameofResourceGroup)** .
+2. V dolní části okna s názvem Summary klikněte na graf.
 
-    ![Azure Monitor protokoly řešení](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
+    ![Řešení protokolu Azure Monitor](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
 
-3. Tady máte mnoho grafů a zobrazení různých metrik dlaždice. Klikněte na jednotlivé grafy a je zkratkou k prohledávání protokolů. Tady můžete zadat dotaz na všechny události clusteru nebo čítače výkonu.
-4. Zadejte následující dotaz. Tyto události jsou součástí [uzel události – referenční informace](service-fabric-diagnostics-event-generation-operational.md#application-events)
+3. Tady máte spoustu grafů a dlaždic znázorňující různé metriky. Klikněte na jeden z grafů a přejdete k prohledávání protokolu. Tady se můžete dotazovat na všechny události clusteru nebo čítače výkonu.
+4. Zadejte následující dotaz. Tato ID událostí se nacházejí v [odkazu na události uzlu](service-fabric-diagnostics-event-generation-operational.md#application-events) .
 
     ```kusto
     ServiceFabricOperationalEvent
     | where EventID >= 25622 and EventID <= 25626
     ```
 
-5. Klikněte na tlačítko "Nové pravidlo výstrahy" v horní části a nyní kdykoli události dorazí na tento dotaz na základě, obdržíte výstrahu zvolenou metodu komunikace.
+5. V horní části klikněte na nové pravidlo upozornění a teď na základě tohoto dotazu dostanou událost, že se vám zobrazí výstraha ve zvolené metodě komunikace.
 
-    ![Oznámení nové protokoly Azure monitoru](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
+    ![Azure Monitor zaprotokolovat nové upozornění](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
 
-## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>Jak lze I upozorněni vrácení upgradu zpět aplikaci?
+## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>Jak se dá upozornit na vrácení zpět upgradu aplikace?
 
-1. Na stejné okno prohledávání protokolu jako před zadejte následující dotaz pro vrácení upgradu zpět. Tyto události jsou nalezené pod [aplikace události – referenční informace](service-fabric-diagnostics-event-generation-operational.md#application-events)
+1. Ve stejném okně prohledávání protokolu jako předtím zadejte následující dotaz pro vrácení zpět se systémem upgradu. Tato ID událostí se nacházejí v části [referenční informace o událostech aplikace](service-fabric-diagnostics-event-generation-operational.md#application-events)
 
     ```kusto
     ServiceFabricOperationalEvent
     | where EventID == 29623 or EventID == 29624
     ```
 
-2. Klikněte na tlačítko "Nové pravidlo výstrahy" v horní části a nyní kdykoli události dorazí na tento dotaz na základě, zobrazí se upozornění.
+2. V horní části klikněte na nové pravidlo upozornění a teď na základě tohoto dotazu dostanou událost, že se vám zobrazí výstraha.
 
-## <a name="how-do-i-see-container-metrics"></a>Jak můžu zobrazit metriky kontejnerů?
+## <a name="how-do-i-see-container-metrics"></a>Návody viz metriky kontejnerů?
 
-Ve stejném zobrazení se všechny grafy zobrazí se některé dlaždice pro výkon své kontejnery. Je třeba agenta Log Analytics a [řešení pro monitorování kontejnerů](service-fabric-diagnostics-oms-containers.md) pro tyto dlaždice k naplnění.
+Ve stejném zobrazení se všemi grafy se zobrazí některé dlaždice pro výkon kontejnerů. K naplnění těchto dlaždic potřebujete Log Analytics agenta a [řešení pro monitorování kontejnerů](service-fabric-diagnostics-oms-containers.md) .
 
-![Metriky kontejnerů log Analytics](media/service-fabric-diagnostics-common-scenarios/containermetrics.png)
+![Log Analytics metriky kontejnerů](media/service-fabric-diagnostics-common-scenarios/containermetrics.png)
 
 >[!NOTE]
->K instrumentaci telemetrii z **uvnitř** vašeho kontejneru, budete muset přidat [balíček nuget Application Insights pro kontejnery](https://github.com/Microsoft/ApplicationInsights-servicefabric#microsoftapplicationinsightsservicefabric--for-service-fabric-lift-and-shift-scenarios).
+>K instrumentaci telemetrie **zevnitř** vašeho kontejneru budete muset přidat [balíček NuGet Application Insights pro kontejnery](https://github.com/Microsoft/ApplicationInsights-servicefabric#microsoftapplicationinsightsservicefabric--for-service-fabric-lift-and-shift-scenarios).
 
 ## <a name="how-can-i-monitor-performance-counters"></a>Jak můžu monitorovat čítače výkonu?
 
-1. Po přidání agenta Log Analytics pro váš cluster, musíte přidat specifické čítače výkonu, které chcete sledovat. Přejděte na stránku pracovního prostoru Log Analytics na portálu – na stránce řešení, je karta pracovního prostoru v levé nabídce.
+1. Po přidání agenta Log Analytics do clusteru je nutné přidat konkrétní čítače výkonu, které chcete sledovat. Přejděte na stránku Log Analytics pracovního prostoru na portálu – na stránce řešení na kartě pracovní prostor se nachází v levé nabídce.
 
-    ![Karta pracovního prostoru log Analytics](media/service-fabric-diagnostics-common-scenarios/workspacetab.png)
+    ![Karta pracovní prostor Log Analytics](media/service-fabric-diagnostics-common-scenarios/workspacetab.png)
 
-2. Jakmile budete na stránce pracovním prostoru, klikněte na "pokročilé"nastavení v nabídce vlevo na stejné.
+2. Až budete na stránce pracovního prostoru, klikněte v levé nabídce na Upřesnit nastavení.
 
-    ![Upřesňující nastavení log Analytics](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
+    ![Log Analytics Upřesnit nastavení](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
 
-3. Klikněte na Data > čítače výkonu Windows (Data > Linuxovými čítači výkonu pro počítače s Linuxem) spustíte shromažďování specifické čítače aplikací z uzly pomocí agenta Log Analytics. Tady jsou příklady formát pro čítače, které chcete přidat
+3. Kliknutím na data > čítače výkonu systému Windows (čítače výkonu data > Linux pro počítače se systémem Linux) zahájíte shromažďování konkrétních čítačů z uzlů pomocí agenta Log Analytics. Tady jsou příklady formátu pro přidání čítačů.
 
    * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
    * `Processor(_Total)\\% Processor Time`
 
-     V tomto rychlém startu, VotingData a VotingWeb jsou názvy procesů používá, takže tyto čítače pro sledování může vypadat třeba
+     V rychlém startu jsou VotingData a VotingWeb používané názvy procesů, takže sledování těchto čítačů by vypadalo takto.
 
    * `.NET CLR Memory(VotingData)\\# Total committed Bytes`
    * `.NET CLR Memory(VotingWeb)\\# Total committed Bytes`
 
-     ![Čítače výkonu služby log Analytics](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
+     ![Čítače výkonu Log Analytics](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
 
-4. To umožní zobrazit, jak je infrastrukturu zpracování vašich úloh a nastavte příslušné výstrahy na základě využití prostředků. Například – můžete nastavit výstrahu v případě více než 90 % nebo méně než 5 % celkové využití procesoru v aplikaci. Název čítače, které můžete využít k tomu je "% Processor Time". Může to provedete tak, že vytvoříte pravidlo upozornění pro následující dotaz:
+4. To vám umožní zjistit, jak vaše infrastruktura zpracovává vaše úlohy, a nastavit relevantní výstrahy na základě využití prostředků. Například můžete chtít nastavit výstrahu, pokud celkové využití procesoru překročí 90% nebo pod 5%. Název čítače, který byste použili, je% času procesoru. To můžete provést vytvořením pravidla výstrahy pro následující dotaz:
 
     ```kusto
     Perf | where CounterName == "% Processor Time" and InstanceName == "_Total" | where CounterValue >= 90 or CounterValue <= 5.
     ```
 
-## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>Jak mohu sledovat výkon modelu Reliable Services a objekty actor?
+## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>Návody sledovat výkon mých Reliable Services a Actorů?
 
-Ke sledování výkonu modelu Reliable Services nebo Actors ve svých aplikacích, mají shromažďovat také čítače Service Fabric Actor, metoda objektu Actor, služby a metody služby. Tady jsou příklady spolehlivé služby a objekt actor čítače výkonu ke shromažďování
+Chcete-li sledovat výkon Reliable Services nebo objektů actor ve vašich aplikacích, měli byste také shromažďovat i čítače Service Fabric Actor, metoda Actor, Service a Service Method. Tady jsou příklady čítačů výkonu spolehlivých služeb a objektů Actor, které se mají shromáždit.
 
 >[!NOTE]
->Čítače výkonu Service Fabric není možné shromáždit pomocí agenta Log Analytics aktuálně, ale může shromáždit [další diagnostiky řešení](service-fabric-diagnostics-partners.md)
+>Agentem Log Analytics momentálně nelze shromáždit Service Fabric čítače výkonu, ale mohou být shromažďována [jinými diagnostickými řešeními](service-fabric-diagnostics-partners.md) .
 
 * `Service Fabric Service(*)\\Average milliseconds per request`
 * `Service Fabric Service Method(*)\\Invocations/Sec`
 * `Service Fabric Actor(*)\\Average milliseconds per request`
 * `Service Fabric Actor Method(*)\\Invocations/Sec`
 
-Zkontrolujte tyto odkazy pro úplný seznam čítačů výkonu na spolehlivé [služby](service-fabric-reliable-serviceremoting-diagnostics.md) a [objektů actor](service-fabric-reliable-actors-diagnostics.md)
+V těchto odkazech najdete úplný seznam čítačů výkonu pro spolehlivé [služby](service-fabric-reliable-serviceremoting-diagnostics.md) a [objekty Actors](service-fabric-reliable-actors-diagnostics.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Nastavte si upozornění v umělé Inteligenci](../azure-monitor/app/alerts.md) abyste dostávali oznámení o změny ve výkonu a využití
-* [Inteligentní zjišťování ve službě Application Insights](../azure-monitor/app/proactive-diagnostics.md) provádí proaktivní analýzu telemetrických dat odesílaných do AI upozornit vás na potenciální problémy s výkonem
-* Další informace o protokolech Azure Monitor [upozorňování](../log-analytics/log-analytics-alerts.md) pro usnadnění detekce a Diagnostika.
-* Místními clustery protokoly Azure Monitor nabízí brány (dopředu proxy server HTTP), který slouží k odesílání dat do Azure monitoru protokoly. Další informace o, že v [připojení počítače bez připojení k Internetu pomocí brány Log Analytics protokoly Azure monitoru](../azure-monitor/platform/gateway.md)
-* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízí jako součást protokoly Azure monitoru
-* Získejte podrobnější přehled o protokoly Azure monitoru a navíc nabízejí, přečtěte si [co je Azure Monitor protokoly?](../operations-management-suite/operations-management-suite-overview.md)
+* [V AI nastavte výstrahy](../azure-monitor/app/alerts.md) na změny výkonu nebo využití.
+* [Inteligentní zjišťování v Application Insights](../azure-monitor/app/proactive-diagnostics.md) provádí proaktivní analýzu telemetrie, která se POSÍLÁ do AI a upozorňuje na potenciální problémy s výkonem.
+* Přečtěte si další informace o tom, Azure Monitor protokoly [upozorňují](../log-analytics/log-analytics-alerts.md) na pomoc při detekci a diagnostice.
+* U místních clusterů nabízí Azure Monitor protokoly bránu (proxy server HTTP, která se dá použít k odesílání dat do protokolů Azure Monitor. Přečtěte si další informace o tom, jak v [počítačích připojit počítače bez přístupu k internetu Azure monitor protokoly pomocí Log Analytics brány](../azure-monitor/platform/gateway.md) .
+* Seznámení s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) , které nabízí jako součást protokolů Azure monitor
+* Získejte podrobnější přehled o Azure Monitor protokolů a o tom, co nabízí, najdete v článku [co jsou protokoly Azure monitor?](../operations-management-suite/operations-management-suite-overview.md)

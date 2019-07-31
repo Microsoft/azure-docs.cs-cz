@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.service: cost-management
 ms.custom: seodec18
 ms.openlocfilehash: 6a4f7f5671562679a245d97ad8491764657cbb34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "66242452"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Přidání rozšířené metriky pro virtuální počítače Azure
@@ -28,10 +28,10 @@ Po povolení shromažďování metrik můžete:
 - Řídit své náklady podle velikosti podle využití.
 - Získání nákladů efektivní velikosti doporučení optimalizace Cloudyn.
 
-Například můžete chtít sledovat % procesoru a paměti % virtuální počítače Azure. Metriky virtuálního počítače Azure odpovídají _využití CPU_ a _\Memory\% využití svěřených bajtů_.
+Například můžete chtít sledovat % procesoru a paměti % virtuální počítače Azure. Metriky virtuálních počítačů Azure odpovídají _procentuálnímu využití procesoru_ a _\% \Memory potvrzených bajtů_.
 
 > [!NOTE]
-> Kolekce rozšířených dat metriky se podporuje jenom s využitím Azure monitoru úrovni hosta. Cloudyn není kompatibilní s rozšířením virtuálního počítače protokoly Azure monitoru.
+> Kolekce rozšířených dat metriky se podporuje jenom s využitím Azure monitoru úrovni hosta. Cloudyn není kompatibilní s rozšířením virtuálního počítače protokolu Azure Monitor.
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Určení, zda je povoleno rozšířené metriky
 
@@ -44,7 +44,7 @@ V předchozím příkladu omezenou sadu standardní metriky jsou k dispozici pro
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>Povolit rozšířené metriky na webu Azure Portal
 
-Standardní metriky jsou metriky hostitele počítače. _Využití CPU_ metrika je jedním z příkladů. Existují také základní metriky pro hostované virtuální počítače a také jsou volány rozšířené metriky. Příklady rozšířené metriky _\Memory\% využití svěřených bajtů_ a _\Memory\Available bajtů_.
+Standardní metriky jsou metriky hostitele počítače. Procento metriky _procesoru_ je jedním příkladem. Existují také základní metriky pro hostované virtuální počítače a také jsou volány rozšířené metriky. Příklady rozšířených metrik zahrnují _\Memory\% potvrzených bajtů při použití_ a _\Memory\Available bajtů_.
 
 Povolení rozšířené metriky je jednoduché. Pro každý virtuální počítač povolte monitorování na úrovni hosta. Když povolíte monitorování na úrovni hosta, instalaci agenta Azure diagnostics na virtuálním počítači. Ve výchozím nastavení se přidají základní sadu rozšířené metriky. Následující postup je stejný pro virtuální počítače classic a běžné a stejný pro Windows a virtuální počítače s Linuxem.
 

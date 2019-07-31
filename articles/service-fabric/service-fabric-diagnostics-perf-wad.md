@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric – sledování výkonu pomocí rozšíření Windows Azure Diagnostics | Dokumentace Microsoftu
-description: Pomocí Windows Azure Diagnostics shromažďovat čítače výkonu pro své clustery Azure Service Fabric.
+title: Azure Service Fabric – monitorování výkonu s rozšířením Windows Azure Diagnostics | Microsoft Docs
+description: Pomocí Azure Diagnostics Windows Shromážděte čítače výkonu pro clustery Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -15,29 +15,29 @@ ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "66110303"
 ---
-# <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorování výkonu pomocí rozšíření Windows Azure Diagnostics
+# <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Sledování výkonu pomocí rozšíření Windows Azure Diagnostics
 
-Tento dokument popisuje kroky potřebné k nastavení shromažďování čítačů výkonu prostřednictvím rozšíření Windows Azure Diagnostics (WAD) pro clustery Windows. Nastavit pro clustery s Linuxem, [agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) získat čítače výkonu pro uzly. 
+Tento dokument popisuje kroky potřebné k nastavení kolekce čítačů výkonu prostřednictvím rozšíření Windows Azure Diagnostics (WAD) pro clustery Windows. U clusterů se systémem Linux nastavte [agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) pro shromažďování čítačů výkonu pro vaše uzly. 
 
  > [!NOTE]
-> Rozšíření WAD musí být nasazené na clusteru pro tyto kroky při práci za vás. Pokud není nastavený, přejděte na [agregace událostí a kolekce pomocí Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).  
+> Rozšíření WAD by mělo být nasazeno v clusteru, aby bylo možné postupovat za vás. Pokud není nastavená, přejděte do [agregace a kolekce událostí pomocí Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).  
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="collect-performance-counters-via-the-wadcfg"></a>Shromažďování čítačů výkonu prostřednictvím WadCfg
 
-Získat čítače výkonu pomocí WAD, budete muset upravit konfiguraci odpovídajícím způsobem v šabloně Resource Manageru vašeho clusteru. Postupujte podle těchto kroků přidejte čítače výkonu, které chcete shromáždit do šablony a spusťte upgrade prostředku Resource Manageru.
+Chcete-li shromažďovat čítače výkonu prostřednictvím WAD, je třeba upravit konfiguraci odpovídajícím způsobem v šabloně Správce prostředků clusteru. Pomocí těchto kroků přidejte do šablony čítač výkonu, který chcete shromáždit, a spusťte upgrade prostředku Správce prostředků.
 
-1. Najít konfiguraci WAD v šabloně vašeho clusteru – vyhledání `WadCfg`. Budete přidávat čítače výkonu shromážděné v souladu `DiagnosticMonitorConfiguration`.
+1. Najděte si konfiguraci WAD v clusteru – vyhledejte `WadCfg`šablonu. Přidáte čítače výkonu, které se budou shromažďovat v rámci `DiagnosticMonitorConfiguration`.
 
-2. Nastavení konfigurace pro shromažďování čítačů výkonu přidejte následující část, která vaše `DiagnosticMonitorConfiguration`. 
+2. Nastavte konfiguraci pro shromažďování čítačů výkonu přidáním následující části do `DiagnosticMonitorConfiguration`. 
 
     ```json
     "PerformanceCounters": {
@@ -46,11 +46,11 @@ Získat čítače výkonu pomocí WAD, budete muset upravit konfiguraci odpovíd
     }
     ```
 
-    `scheduledTransferPeriod` Definuje, jak často se přenáší hodnoty čítačů, které se shromažďují do tabulky Azure storage a do libovolné jímky nakonfigurované. 
+    Definuje `scheduledTransferPeriod` , jak často se budou hodnoty shromažďovaných čítačů přenášet do tabulky Azure Storage a do jakékoli nakonfigurované jímky. 
 
-3. Přidat čítače výkonu chcete shromažďovat pro `PerformanceCounterConfiguration` , který byl deklarován v předchozím kroku. Jednotlivé čítače, které chcete shromažďovat je definována s `counterSpecifier`, `sampleRate`, `unit`, `annotation`a všechny relevantní `sinks`.
+3. Přidejte čítače výkonu, které chcete shromáždit, do rozhraní `PerformanceCounterConfiguration` , které bylo deklarováno v předchozím kroku. Každý čítač `counterSpecifier`, který chcete shromáždit, je definován pomocí, `sampleRate`, `unit` `annotation`, a všech relevantních `sinks`.
 
-Tady je příklad konfigurace s čítačem pro *celkový čas procesoru* (množství času procesoru bylo používáno pro operace zpracování) a *Service Fabric Actor volání metod za sekundu*, jeden Service Fabric vlastní čítače výkonu. Odkazovat na [čítače výkonu služby Reliable Actor](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) a [čítače výkonu služby Reliable Service](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) úplný seznam čítačů výkonů vlastní Service Fabric.
+Tady je příklad konfigurace s čítačem pro *Celkový čas procesoru* (čas, kdy se CPU používal pro zpracování operací) a *Service Fabric volání metod objektu actor za sekundu*, a to jedním z Service Fabric Custom. čítače výkonu. Úplný seznam Service Fabric vlastní čítače výkonu najdete v tématu [čítače výkonu spolehlivého objektu actor](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) a [čítače výkonu spolehlivé služby](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) .
 
  ```json
  "WadCfg": {
@@ -107,9 +107,9 @@ Tady je příklad konfigurace s čítačem pro *celkový čas procesoru* (množs
        },
   ```
 
- Vzorkovací frekvence čítače lze upravit podle vašich potřeb. Formát pro něj `PT<time><unit>`, takže pokud chcete počítadlo shromažďované každou sekundu, pak byste měli nastavit `"sampleRate": "PT15S"`.
+ Vzorkovací frekvence čítače může být upravena podle vašich potřeb. Formát je `PT<time><unit>`, takže pokud chcete čítače shromažďovat každou sekundu, měli byste `"sampleRate": "PT15S"`nastavit.
 
- Můžete také použít proměnné šablony ARM shromažďovat celou řadu čítačů výkonu, které můžou mít po ruce při shromažďování čítačů výkonu jeden proces. V následujícím příkladu, shromažďujeme čas procesoru a systému uvolňování paměti proces a pak 2 čítače výkonu v samotných uzlech pomocí proměnné. 
+ Pomocí proměnných v šabloně ARM můžete také shromažďovat pole čítačů výkonu, které můžou být užitečné při shromažďování čítačů výkonu na proces. V níže uvedeném příkladu shromažďujeme čas procesoru a systém uvolňování paměti pro každý proces a pak 2 čítače výkonu na sebe všech uzlech, které používají proměnné. 
 
  ```json
 "variables": {
@@ -193,17 +193,17 @@ Tady je příklad konfigurace s čítačem pro *celkový čas procesoru* (množs
 ```
 
  >[!NOTE]
- >I když můžete použít `*` určit skupiny čítačů výkonu, které jsou pojmenovány podobně, odesílání všechny čítače prostřednictvím jímky (do Application Insights) vyžaduje, že jsou jednotlivě deklarovány. 
+ >I když můžete použít `*` k určení skupin čítačů výkonu, které jsou pojmenovány podobně, odesílání všech čítačů prostřednictvím jímky (k Application Insights) vyžaduje, aby byly deklarovány jednotlivě. 
 
-1. Po přidání odpovídající čítače, které je potřeba shromáždit, budete muset upgradovat váš prostředek clusteru tak, aby tyto změny se projeví v spuštěný cluster. Uložte upravený `template.json` a otevřete prostředí PowerShell. Upgradem clusteru pomocí `New-AzResourceGroupDeployment`. Volání vyžaduje název skupiny prostředků, soubor aktualizovanou šablonu a soubor parametrů a vyzve správce prostředků na prostředky, které jste provedli odpovídající změny. Po přihlášení k účtu a jsou ve správné předplatné, použijte následující příkaz ke spuštění upgradu:
+1. Jakmile přidáte odpovídající čítače výkonu, které je třeba shromáždit, je nutné upgradovat prostředek clusteru tak, aby se tyto změny projevily ve spuštěném clusteru. Uložte upravené `template.json` a otevřené prostředí PowerShell. Cluster můžete upgradovat pomocí `New-AzResourceGroupDeployment`. Volání vyžaduje název skupiny prostředků, aktualizovaného souboru šablony a souboru parametrů a zobrazí výzvu Správce prostředků, aby byly provedeny příslušné změny v prostředcích, které jste aktualizovali. Jakmile se přihlásíte ke svému účtu a jsou ve správném předplatném, spusťte upgrade pomocí následujícího příkazu:
 
     ```sh
     New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-1. Po dokončení upgradu zavádět (přijímá mezi 15 až 45 minut v závislosti na tom, zda je prvním nasazení a velikost vaší skupiny prostředků), WAD by měl být shromažďování čítačů výkonu a jejich odesílání do tabulky s názvem WADPerformanceCountersTable v účtu úložiště spojené s vaším clusterem. Zobrazit čítače výkonu ve službě Application Insights pomocí [přidání jímky AI do šablony Resource Manageru](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
+1. Po dokončení upgradu (trvá od 15-45 minut v závislosti na tom, jestli se jedná o první nasazení a velikost vaší skupiny prostředků), WAD by měl shromažďovat čítače výkonu a odesílat je do tabulky s názvem. WADPerformanceCountersTable se do účtu úložiště přidruženého k vašemu clusteru. Čítače výkonu můžete zobrazit v Application Insights [přidáním jímky AI do šablony Správce prostředků](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>Další postup
-* Shromažďování dalších čítačů výkonu pro váš cluster. Zobrazit [metriky výkonu](service-fabric-diagnostics-event-generation-perf.md) seznam čítačů, na které se mají shromažďovat.
-* [Použití monitorováním a diagnostikou pomocí šablony Azure Resource Manageru a virtuální počítač Windows](../virtual-machines/windows/extensions-diagnostics-template.md) provádět další úpravy vaše `WadCfg`, včetně dalších účtů úložiště k odesílání diagnostických dat konfigurace.
-* Přejděte [WadCfg Tvůrce](https://azure.github.io/azure-diagnostics-tools/config-builder/) k vytvoření šablony ze začátku a ujistěte se, že je vaše syntaxe správná. () https://azure.github.io/azure-diagnostics-tools/config-builder/) k vytvoření šablony ze začátku a ujistěte se, že je vaše syntaxe správná.
+* Shromážděte další čítače výkonu pro váš cluster. Seznam čítačů, které byste měli shromažďovat, najdete v tématu [metrika výkonu](service-fabric-diagnostics-event-generation-perf.md) .
+* [Pomocí monitorování a diagnostiky pomocí virtuálních počítačů s Windows a Azure Resource Manager šablon](../virtual-machines/windows/extensions-diagnostics-template.md) můžete provádět další úpravy `WadCfg`, včetně konfigurace dalších účtů úložiště, do kterých se budou posílat diagnostická data.
+* Přejděte na [Tvůrce WadCfg](https://azure.github.io/azure-diagnostics-tools/config-builder/) a vytvořte šablonu od začátku a ujistěte se, že je syntaxe správná. (https://azure.github.io/azure-diagnostics-tools/config-builder/) Chcete-li vytvořit šablonu od začátku a ujistěte se, že je syntaxe správná.

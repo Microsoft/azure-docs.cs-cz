@@ -1,6 +1,6 @@
 ---
-title: Běžné metriky automatického škálování
-description: Další informace, které metriky se obvykle používají pro automatické škálování služby Cloud Services, Virtual Machines a Web Apps.
+title: Automatické škálování běžných metrik
+description: Zjistěte, které metriky se běžně používají k automatickému škálování Cloud Services, Virtual Machines a Web Apps.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,41 +9,41 @@ ms.date: 12/6/2016
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "66129735"
 ---
-# <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor běžné metriky automatického škálování
+# <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor automatické škálování běžných metrik
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Automatické škálování Azure Monitor umožňuje škálování více spuštěných instancích směrem nahoru nebo dolů, na základě telemetrických dat (metriky). Tento dokument popisuje běžné metriky, které chcete použít. Na webu Azure Portal můžete zvolit metrika prostředku, který chcete škálovat. Ale můžete také jakékoliv metriky z různých zdrojů škálovat podle.
+Azure Monitor automatické škálování umožňuje škálovat počet spuštěných instancí nahoru nebo dolů na základě dat telemetrie (metriky). Tento dokument popisuje běžné metriky, které byste mohli chtít použít. V Azure Portal můžete zvolit metriku prostředku, podle které se má škálovat. Můžete ale také zvolit libovolnou metriku z jiného prostředku a škálovat ji.
 
-Automatické škálování služby Azure Monitor se týká pouze [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Jiným službám Azure použít různé metody škálování.
+Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)a [API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Jiné služby Azure používají jiné metody škálování.
 
-## <a name="compute-metrics-for-resource-manager-based-vms"></a>Vypočítat metriky pro virtuální počítače založené na Resource Manageru
-Ve výchozím nastavení virtuální počítače využívající Resource Manager a Virtual Machine Scale Sets generování základní metriky (na úrovni hostitele). Kromě toho při konfiguraci shromažďování dat diagnostiky pro virtuální počítač Azure a VMSS se diagnostické rozšíření Azure také vysílá čítače výkonu hostovaný operační systém (často označované jako "Hostovaného operačního systému metrik").  Tyto metriky se používá pravidla automatického škálování.
+## <a name="compute-metrics-for-resource-manager-based-vms"></a>Výpočetní metriky pro virtuální počítače založené na Správce prostředků
+Ve výchozím nastavení Správce prostředků Virtual Machines a Virtual Machine Scale Sets emitují metriky Basic (na úrovni hostitele). Kromě toho, když konfigurujete shromažďování dat diagnostiky pro virtuální počítač Azure a VMSS, rozhraní pro diagnostiku Azure také generuje čítače výkonu host-OS (obvykle označované jako metriky host-OS).  Všechny tyto metriky použijete v pravidlech automatického škálování.
 
-Můžete použít `Get MetricDefinitions` rozhraní API/PoSH/CLI, pokud chcete zobrazit metriky, které jsou k dispozici pro váš prostředek VMSS.
+Pomocí `Get MetricDefinitions` rozhraní API/PoSH/CLI můžete zobrazit metriky, které jsou k dispozici pro váš prostředek VMSS.
 
-Pokud používáte škálovací sady virtuálních počítačů a nevidíte konkrétní metriky uvedeny, pak bude pravděpodobně *zakázané* v diagnostické rozšíření.
+Pokud používáte službu VM Scale Sets a v seznamu není uvedena konkrétní metrika, je pravděpodobně *zakázána* v diagnostickém rozšíření.
 
-Pokud není konkrétní metriky vzorkovány nebo přenesená frekvencí chcete, můžete aktualizovat konfiguraci diagnostiky.
+Pokud není určitá metrika vzorkovaná nebo převedená podle četnosti, kterou chcete, můžete aktualizovat konfiguraci diagnostiky.
 
-Pokud obou předchozích případech má hodnotu true, pak si projděte [použití Powershellu k povolení diagnostiky Azure v rámci virtuálního počítače se systémem Windows](../../virtual-machines/extensions/diagnostics-windows.md) o použití Powershellu ke konfiguraci a aktualizovat vaše rozšíření diagnostiku virtuálních počítačů Azure pro umožnění metriku. Tento článek také obsahuje ukázkový soubor konfigurace diagnostiky.
+Pokud má předchozí případ hodnotu true, přečtěte si téma [použití PowerShellu k povolení Azure Diagnostics ve virtuálním počítači s Windows](../../virtual-machines/extensions/diagnostics-windows.md) o PowerShellu ke konfiguraci a aktualizaci rozšíření DIAGNOSTIKy virtuálního počítače Azure, aby se aktivovala Tato metrika. Tento článek také obsahuje ukázkový konfigurační soubor diagnostiky.
 
-### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Metriky hostitele pro Windows využívající Resource Manager a virtuální počítače s Linuxem
-Následující metriky na úrovni hostitele jsou emitovány ve výchozím nastavení pro virtuální počítač Azure a VMSS ve Windows i Linuxem instancí. Tyto metriky popisují váš virtuální počítač Azure, ale se shromažďují z hostitele virtuálního počítače Azure, nikoli přes agenta nainstalovaného na virtuálním počítači hosta. Tyto metriky můžete použít v pravidlech automatického škálování.
+### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Metriky hostitele pro virtuální počítače s Windows a Linuxem na Správce prostředků
+Následující metriky na úrovni hostitele se ve výchozím nastavení generují pro virtuální počítače Azure a VMSS v instancích systému Windows i Linux. Tyto metriky popisují váš virtuální počítač Azure, ale jsou shromážděny z hostitele virtuálního počítače Azure, nikoli prostřednictvím agenta nainstalovaného na virtuálním počítači hosta. Tyto metriky můžete používat v pravidlech automatického škálování.
 
-- [Metriky hostitele pro Windows využívající Resource Manager a virtuální počítače s Linuxem](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
-- [Metriky hostitele založeného na správci prostředků Windows a Linux VM Scale Sets](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+- [Metriky hostitele pro virtuální počítače s Windows a Linuxem na Správce prostředků](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
+- [Metriky hostitele pro Správce prostředků se systémem Windows a Linux VM Scale Sets](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Metriky hostovaného operačního systému virtuálních počítačů Windows využívající Resource Manager
-Při vytváření virtuálního počítače v Azure diagnostics je povoleno pomocí diagnostického rozšíření. Rozšíření diagnostiky generuje sadu metriky přijatá z uvnitř virtuálního počítače. To znamená, že je možné automaticky škálovat z metriky, které nejsou ve výchozím nastavení zaznamenávány.
+### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Metriky hostovaného operačního systému Správce prostředků virtuálních počítačů s Windows na bázi
+Když vytvoříte virtuální počítač v Azure, diagnostika je povolená pomocí diagnostického rozšíření. Diagnostické rozšíření emituje sadu metrik, které se provedou uvnitř virtuálního počítače. To znamená, že můžete automaticky škálovat metriky, které nejsou ve výchozím nastavení emitované.
 
-Seznam metrik lze vytvořit pomocí následujícího příkazu v Powershellu.
+Seznam metrik můžete vygenerovat pomocí následujícího příkazu v PowerShellu.
 
 ```
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
@@ -53,38 +53,38 @@ Můžete vytvořit výstrahu pro následující metriky:
 
 | Název metriky | Jednotka |
 | --- | --- |
-| \Processor(_Total)\% Processor Time |Procento |
-| \Processor(_Total)\% privilegovaného času |Procento |
-| \Processor(_Total)\% čas uživatele |Procento |
-| Frekvence \Processor \Processor informace o (využití _celkem) |Count |
+| \Processor(_Total)\% Processor Time |Percent |
+| \Processor (_Total)\% privilegovaného času |Percent |
+| \Processor (_Total)\% uživatelského času |Percent |
+| \Processor informace (_Total) \Processor frekvence |Count |
 | \System\Processes |Count |
-| Počet \Thread \Process (využití _celkem) |Count |
-| Počet \Handle \Process (využití _celkem) |Count |
-| \Memory\% využívání svěřených bajtů |Procento |
+| \Process (_Total) \Thread počet |Count |
+| \Process (_Total) \Handle počet |Count |
+| \Memory\% potvrzené používané bajty |Percent |
 | \Memory\Available Bytes |B |
-| \Memory\Committed bajtů |B |
+| \Memory\Committed bajty |B |
 | \Memory\Commit limit |B |
-| \Memory\Pool stránkovaného fondu |B |
-| \Memory\Pool nestránkovaného |B |
-| \PhysicalDisk(_Total)\% čas na disku |Procento |
-| \PhysicalDisk(_Total)\% čas čtení disku |Procento |
-| \PhysicalDisk(_Total)\% čas zápisu na disku |Procento |
-| Přenosy \Disk \PhysicalDisk (využití _celkem) za sekundu |CountPerSecond |
-| \PhysicalDisk (využití _celkem) \Disk přečtené strany/s |CountPerSecond |
-| \PhysicalDisk (využití _celkem) \Disk zapsané strany/s |CountPerSecond |
-| \PhysicalDisk (využití _celkem) \Disk bajty/s |BytesPerSecond |
-| \Disk \PhysicalDisk (využití _celkem) přečtené bajty/s |BytesPerSecond |
-| \PhysicalDisk (využití _celkem) \Disk zapsané bajty/s |BytesPerSecond |
-| \Avg \PhysicalDisk (využití _celkem). Délka fronty disku |Count |
-| \Avg \PhysicalDisk (využití _celkem). Délka fronty disku pro čtení |Počet |
-| \Avg \PhysicalDisk (využití _celkem). Délka fronty disku zápisu |Počet |
-| \LogicalDisk(_Total)\% volného místa |Procento |
-| \Free megabajty \LogicalDisk (využití _celkem) |Počet |
+| Bajty stránkovaného \Memory\Pool |B |
+| \Memory\Pool nestránkované bajty |B |
+| \PhysicalDisk (_Total)\% čas disku |Percent |
+| \PhysicalDisk (_Total)\% doba čtení disku |Percent |
+| \PhysicalDisk (_Total)\% doba zápisu na disk |Percent |
+| \PhysicalDisk (_Total) \ přenosy za sekundu |CountPerSecond |
+| \PhysicalDisk (_Total) \ čtení za sekundu |CountPerSecond |
+| \PhysicalDisk (_Total) \ zápisu za sekundu |CountPerSecond |
+| \PhysicalDisk (_Total) \ bajty/s |BytesPerSecond |
+| \PhysicalDisk (_Total) \ čtení v bajtech/s |BytesPerSecond |
+| \PhysicalDisk (_Total) \ zapsané bajty/s |BytesPerSecond |
+| \PhysicalDisk (_Total) \ prům Délka fronty disku |Count |
+| \PhysicalDisk (_Total) \ prům Délka fronty čtení disku |Count |
+| \PhysicalDisk (_Total) \ prům Délka fronty zápisu na disk |Count |
+| \ Logický disk (_Total)\% volného místa |Percent |
+| \ Logický disk (_Total) \ volné megabajtů |Count |
 
-### <a name="guest-os-metrics-linux-vms"></a>Metriky hostovaného operačního systému virtuálních počítačů s Linuxem
-Při vytváření virtuálního počítače v Azure diagnostics je ve výchozím nastavení povoleno pomocí diagnostického rozšíření.
+### <a name="guest-os-metrics-linux-vms"></a>Virtuální počítače s metrikami hostovaného operačního systému Linux
+Když vytvoříte virtuální počítač v Azure, diagnostika je ve výchozím nastavení povolená pomocí diagnostického rozšíření.
 
-Seznam metrik lze vytvořit pomocí následujícího příkazu v Powershellu.
+Seznam metrik můžete vygenerovat pomocí následujícího příkazu v PowerShellu.
 
 ```
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
@@ -95,25 +95,25 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | Název metriky | Jednotka |
 | --- | --- |
 | \Memory\AvailableMemory |B |
-| \Memory\PercentAvailableMemory |Procento |
+| \Memory\PercentAvailableMemory |Percent |
 | \Memory\UsedMemory |B |
-| \Memory\PercentUsedMemory |Procento |
-| \Memory\PercentUsedByCache |Procento |
+| \Memory\PercentUsedMemory |Percent |
+| \Memory\PercentUsedByCache |Percent |
 | \Memory\PagesPerSec |CountPerSecond |
 | \Memory\PagesReadPerSec |CountPerSecond |
 | \Memory\PagesWrittenPerSec |CountPerSecond |
 | \Memory\AvailableSwap |B |
-| \Memory\PercentAvailableSwap |Procento |
+| \Memory\PercentAvailableSwap |Percent |
 | \Memory\UsedSwap |B |
-| \Memory\PercentUsedSwap |Procento |
-| \Processor\PercentIdleTime |Procento |
-| \Processor\PercentUserTime |Procento |
-| \Processor\PercentNiceTime |Procento |
-| \Processor\PercentPrivilegedTime |Procento |
-| \Processor\PercentInterruptTime |Procento |
-| \Processor\PercentDPCTime |Procento |
-| \Processor\PercentProcessorTime |Procento |
-| \Processor\PercentIOWaitTime |Procento |
+| \Memory\PercentUsedSwap |Percent |
+| \Processor\PercentIdleTime |Percent |
+| \Processor\PercentUserTime |Percent |
+| \Processor\PercentNiceTime |Percent |
+| \Processor\PercentPrivilegedTime |Percent |
+| \Processor\PercentInterruptTime |Percent |
+| \Processor\PercentDPCTime |Percent |
+| \Processor\PercentProcessorTime |Percent |
+| \Processor\PercentIOWaitTime |Percent |
 | \PhysicalDisk\BytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\ReadBytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\WriteBytesPerSecond |BytesPerSecond |
@@ -126,40 +126,40 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageDiskQueueLength |Count |
 | \NetworkInterface\BytesTransmitted |B |
 | \NetworkInterface\BytesReceived |B |
-| \NetworkInterface\PacketsTransmitted |Počet |
-| \NetworkInterface\PacketsReceived |Počet |
+| \NetworkInterface\PacketsTransmitted |Count |
+| \NetworkInterface\PacketsReceived |Count |
 | \NetworkInterface\BytesTotal |B |
 | \NetworkInterface\TotalRxErrors |Count |
 | \NetworkInterface\TotalTxErrors |Count |
-| \NetworkInterface\TotalCollisions |Počet |
+| \NetworkInterface\TotalCollisions |Count |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>Běžně používané metriky webového (serverová farma)
-Můžete také provést automatické škálování podle běžné metriky webového serveru, jako je délka fronty Http. Je to název metriky **HttpQueueLength**.  V následující části jsou uvedeny metrik dostupné serveru farmy (webové aplikace).
+## <a name="commonly-used-web-server-farm-metrics"></a>Metriky běžně používaného webu (serverové farmy)
+Automatické škálování můžete provádět i na základě běžných metrik webového serveru, jako je délka fronty http. Název metriky je **HttpQueueLength**.  V následující části jsou uvedeny dostupné metriky serverové farmy (Web Apps).
 
-### <a name="web-apps-metrics"></a>Metriky webové aplikace
-Pomocí následujícího příkazu v Powershellu můžete vygenerovat seznam metrik webových aplikací.
+### <a name="web-apps-metrics"></a>Web Apps metriky
+Seznam metrik Web Apps můžete vygenerovat pomocí následujícího příkazu v PowerShellu.
 
 ```
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-Můžete výstrahy na nebo škálovat podle těchto metrikách.
+Pomocí těchto metrik můžete výstrahy zapnout nebo škálovat.
 
 | Název metriky | Jednotka |
 | --- | --- |
-| CpuPercentage |Procento |
-| MemoryPercentage |Procento |
+| CpuPercentage |Percent |
+| MemoryPercentage |Percent |
 | DiskQueueLength |Count |
-| HttpQueueLength |Počet |
+| HttpQueueLength |Count |
 | BytesReceived |B |
 | BytesSent |B |
 
 ## <a name="commonly-used-storage-metrics"></a>Běžně používané metriky úložiště
-Délka fronty úložiště, což je počet zpráv ve frontě úložiště, které můžete škálovat. Délka fronty úložiště je speciální metriky a prahová hodnota je počet zpráv na instanci. Například pokud existují dvě instance a prahová hodnota je nastavena na hodnotu 100, škálování nastane, pokud celkový počet zpráv ve frontě je 200. Který může být 100 zprávy na jednu instanci, 120 a 80 nebo libovolné kombinaci, který přidá až 200 nebo víc.
+Můžete škálovat podle délky fronty úložiště, což je počet zpráv ve frontě úložiště. Délka fronty úložiště je speciální metrika a prahová hodnota je počet zpráv na instanci. Například pokud existují dvě instance a pokud je prahová hodnota nastavená na 100, škálování se objeví, pokud je celkový počet zpráv ve frontě 200. Může to být 100 zpráv na instanci, 120 a 80 nebo jakákoli jiná kombinace, která přidává až 200 nebo více.
 
-Konfigurací tohoto nastavení na webu Azure Portal v **nastavení** okno. Pro škálovací sady virtuálních počítačů můžete aktualizovat nastavení automatického škálování v šabloně Resource Manageru používat *metricName* jako *ApproximateMessageCount* a předejte mu ID fronty úložiště jako  *metricResourceUri*.
+Nakonfigurujte toto nastavení v okně Azure Portal v okně **Nastavení** . Pro službu VM Scale Sets můžete aktualizovat nastavení automatického škálování v šabloně Správce prostředků tak, aby se použila hodnota *metric* jako *ApproximateMessageCount* , a předat ID fronty úložiště jako *metricResourceUri*.
 
-Například by metricTrigger nastavení automatického škálování s klasický účet úložiště patří:
+Například s klasickým účtem úložiště může metricTrigger nastavení automatického škálování zahrnovat:
 
 ```
 "metricName": "ApproximateMessageCount",
@@ -167,7 +167,7 @@ Například by metricTrigger nastavení automatického škálování s klasický
  "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
-Pro účet úložiště (bez modelu classic) metricTrigger zahrnuje:
+V případě účtu úložiště (neklasického) by měl metricTrigger zahrnovat:
 
 ```
 "metricName": "ApproximateMessageCount",
@@ -175,10 +175,10 @@ Pro účet úložiště (bez modelu classic) metricTrigger zahrnuje:
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.Storage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
 ```
 
-## <a name="commonly-used-service-bus-metrics"></a>Běžně používané metriky služby Service Bus
-Délka fronty služby Service Bus, což je počet zpráv ve frontě služby Service Bus, které můžete škálovat. Délka fronty služby Service Bus je speciální metriky a prahová hodnota je počet zpráv na instanci. Například pokud existují dvě instance a prahová hodnota je nastavena na hodnotu 100, škálování nastane, pokud celkový počet zpráv ve frontě je 200. Který může být 100 zprávy na jednu instanci, 120 a 80 nebo libovolné kombinaci, který přidá až 200 nebo víc.
+## <a name="commonly-used-service-bus-metrics"></a>Běžně používané Service Bus metriky
+Můžete škálovat podle Service Bus délky fronty, což je počet zpráv ve frontě Service Bus. Service Bus délka fronty je speciální metrika a prahová hodnota je počet zpráv na instanci. Například pokud existují dvě instance a pokud je prahová hodnota nastavená na 100, škálování se objeví, pokud je celkový počet zpráv ve frontě 200. Může to být 100 zpráv na instanci, 120 a 80 nebo jakákoli jiná kombinace, která přidává až 200 nebo více.
 
-Pro škálovací sady virtuálních počítačů můžete aktualizovat nastavení automatického škálování v šabloně Resource Manageru používat *metricName* jako *ApproximateMessageCount* a předejte mu ID fronty úložiště jako  *metricResourceUri*.
+Pro službu VM Scale Sets můžete aktualizovat nastavení automatického škálování v šabloně Správce prostředků tak, aby se použila hodnota *metric* jako *ApproximateMessageCount* , a předat ID fronty úložiště jako *metricResourceUri*.
 
 ```
 "metricName": "MessageCount",
@@ -187,7 +187,7 @@ Pro škálovací sady virtuálních počítačů můžete aktualizovat nastaven�
 ```
 
 > [!NOTE]
-> Služba Service Bus neexistuje koncept skupiny prostředků, ale vytvoří výchozí skupiny prostředků v jedné oblasti Azure Resource Manageru. Skupina prostředků je obvykle ve formátu "Default - ServiceBus-[Oblast]". Například: "Výchozí-ServiceBus-EastUS", 'Výchozí-ServiceBus-WestUS', 'výchozí-ServiceBus-AustraliaEast"atd.
+> Pro Service Bus koncept skupiny prostředků neexistuje, ale Azure Resource Manager vytvoří výchozí skupinu prostředků pro oblast. Skupina prostředků je obvykle ve formátu výchozí-ServiceBus-[region]. Například "default-ServiceBus-EastUS", "default-ServiceBus-WestUS", "default-ServiceBus-AustraliaEast" atd.
 >
 >
 

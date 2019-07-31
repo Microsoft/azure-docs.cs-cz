@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Services Def. Schéma WebRole | Dokumentace Microsoftu
+title: Azure Cloud Services def. Schéma webrole | Microsoft Docs
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -14,19 +14,19 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 0bb0946ea48a4c206d6bfe683da0835aca9b198b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "60613233"
 ---
-# <a name="azure-cloud-services-definition-webrole-schema"></a>Schéma WebRole definice služby Azure Cloud Services
-Azure web role je role, který je přizpůsobený pro programování webové aplikace, protože IIS 7, jako je ASP.NET, PHP, Windows Communication Foundation a FastCGI.
+# <a name="azure-cloud-services-definition-webrole-schema"></a>Definice schématu webrole v Azure Cloud Services
+Webová role Azure je role, která je přizpůsobená pro programování webových aplikací, jak je podporovaná službou IIS 7, jako je ASP.NET, PHP, Windows Communication Foundation a FastCGI.
 
-Výchozí přípona pro definiční soubor služby je .csdef.
+Výchozí přípona souboru definice služby je. csdef.
 
-## <a name="basic-service-definition-schema-for-a-web-role"></a>Schématu definice služby na úrovni Basic pro webové role  
-Základní formát souboru definice služby obsahující webové role je následujícím způsobem.
+## <a name="basic-service-definition-schema-for-a-web-role"></a>Základní schéma definice služby pro webovou roli  
+Základní formát definičního souboru služby, který obsahuje webovou roli, je následující.
 
 ```xml
 <ServiceDefinition …>  
@@ -94,7 +94,7 @@ Základní formát souboru definice služby obsahující webové role je násled
 ```  
 
 ## <a name="schema-elements"></a>Prvky schématu  
-Definiční soubor služby obsahuje tyto prvky, které jsou podrobně popsány v následujících oddílech v tomto tématu:  
+Definiční soubor služby obsahuje tyto prvky, které jsou podrobně popsány v následujících částech tohoto tématu:  
 
 [WebRole](#WebRole)
 
@@ -106,7 +106,7 @@ Definiční soubor služby obsahuje tyto prvky, které jsou podrobně popsány v
 
 [LocalStorage](#LocalStorage)
 
-[Koncové body](#Endpoints)
+[Bod](#Endpoints)
 
 [InternalEndpoint](#InternalEndpoint)
 
@@ -122,33 +122,33 @@ Definiční soubor služby obsahuje tyto prvky, které jsou podrobně popsány v
 
 [Certifikát](#Certificate)
 
-[Importy](#Imports)
+[Objem](#Imports)
 
 [Import](#Import)
 
-[Modul runtime](#Runtime)
+[Runtime](#Runtime)
 
 [Prostředí](#Environment)
 
-[Proměnná](#Variable)
+[Variabilní](#Variable)
 
 [RoleInstanceValue](#RoleInstanceValue)
 
 [NetFxEntryPoint](#NetFxEntryPoint)
 
-[Weby](#Sites)
+[Místa](#Sites)
 
-[Lokality](#Site)
-
-[VirtualApplication](#VirtualApplication)
+[Webovém](#Site)
 
 [VirtualApplication](#VirtualApplication)
 
-[Vazby](#Bindings)
+[VirtualApplication](#VirtualApplication)
+
+[Vazeb](#Bindings)
 
 [Vytvoření vazby](#Binding)
 
-[Startup](#Startup)
+[Úvod](#Startup)
 
 [Úloha](#Task)
 
@@ -158,321 +158,321 @@ Definiční soubor služby obsahuje tyto prvky, které jsou podrobně popsány v
 
 [SourceDirectory](#SourceDirectory)
 
-##  <a name="WebRole"></a> WebRole  
-`WebRole` Element popisuje role, který je přizpůsobený pro programování webové aplikace, podporuje službu IIS 7 a ASP.NET. Služba může obsahovat nula nebo více webových rolí.
+##  <a name="WebRole"></a>WebRole  
+`WebRole` Element popisuje roli, která je upravena pro programování webových aplikací, jak je podporována službou IIS 7 a ASP.NET. Služba může obsahovat nula nebo více webových rolí.
 
-Následující tabulka popisuje atributy `WebRole` elementu.
+Následující tabulka popisuje atributy `WebRole` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|name|string|Povinná hodnota. Název pro webovou roli. Název role musí být jedinečný.|  
-|enableNativeCodeExecution|Boolean|Volitelné. Výchozí hodnota je `true`; nativní provádění kódu a úplný vztah důvěryhodnosti, které jsou ve výchozím nastavení povolená. Tento atribut nastavte na `false` zakázat spouštění nativního kódu pro webovou roli a místo toho použít Azure částečným vztahem důvěryhodnosti.|  
-|vmsize|string|Volitelné. Nastavením této hodnoty můžete změnit velikost virtuálního počítače, který je přidělený k roli. Výchozí hodnota je `Small`. Další informace najdete v tématu [velikostí virtuálních počítačů pro Cloud Services](cloud-services-sizes-specs.md).|  
+|name|řetězec|Povinný parametr. Název webové role. Název role musí být jedinečný.|  
+|enableNativeCodeExecution|boolean|Volitelné. Výchozí hodnota je; `true`ve výchozím nastavení je povoleno spuštění nativního kódu a Plná důvěra. Nastavením tohoto atributu `false` zakážete spuštění nativního kódu pro webovou roli a místo toho použijete částečnou důvěryhodnost Azure.|  
+|VMSize|řetězec|Volitelné. Nastavte tuto hodnotu, chcete-li změnit velikost virtuálního počítače, který je přidělen roli. Výchozí hodnota je `Small`. Další informace najdete v tématu [velikosti virtuálních počítačů pro Cloud Services](cloud-services-sizes-specs.md).|  
 
-##  <a name="ConfigurationSettings"></a> ConfigurationSettings  
-`ConfigurationSettings` Element popisuje soubor konfiguračních nastavení pro webovou roli. Tento element je nadřazeného člena `Setting` elementu.
+##  <a name="ConfigurationSettings"></a>ConfigurationSettings  
+`ConfigurationSettings` Element popisuje kolekci konfiguračních nastavení pro webovou roli. Tento prvek je nadřazeným `Setting` prvkem elementu.
 
-##  <a name="Setting"></a> Nastavení  
-`Setting` Element popisuje dvojice název a hodnotu, která určuje nastavení konfigurace pro instanci role.
+##  <a name="Setting"></a>Nastavením  
+`Setting` Element popisuje dvojici název a hodnota, která určuje nastavení konfigurace pro instanci role.
 
-Následující tabulka popisuje atributy `Setting` elementu.
+Následující tabulka popisuje atributy `Setting` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|name|string|Povinná hodnota. Jedinečný název pro nastavení konfigurace.|  
+|name|řetězec|Povinný parametr. Jedinečný název pro nastavení konfigurace.|  
 
-Nastavení konfigurace pro role jsou páry název-hodnota, které jsou deklarovány v souboru definice služby a nastavte v konfiguračním souboru služby.
+Konfigurační nastavení role jsou páry název-hodnota, které jsou deklarovány v souboru definice služby a nastaveny v konfiguračním souboru služby.
 
-##  <a name="LocalResources"></a> LocalResources  
-`LocalResources` Element popisuje kolekci prostředků místní úložiště pro webovou roli. Tento element je nadřazeného člena `LocalStorage` elementu.
+##  <a name="LocalResources"></a>LocalResources  
+`LocalResources` Element popisuje kolekci prostředků místního úložiště pro webovou roli. Tento prvek je nadřazeným `LocalStorage` prvkem elementu.
 
-##  <a name="LocalStorage"></a> LocalStorage  
-`LocalStorage` Element identifikuje prostředek Místní úložiště, který poskytuje místo systému souborů služby za běhu. Role může definovat nula nebo více prostředků místní úložiště.
+##  <a name="LocalStorage"></a>LocalStorage  
+`LocalStorage` Element identifikuje místní prostředek úložiště, který poskytuje prostor systému souborů pro službu za běhu. Role může definovat nula nebo více prostředků místního úložiště.
 
 > [!NOTE]
->  `LocalStorage` Element lze použít jako podřízený objekt `WebRole` element na podporu kompatibilita s předchozími verzemi sady Azure SDK.
+>  Element se může zobrazit jako podřízený `WebRole` prvek elementu pro podporu kompatibility se staršími verzemi sady Azure SDK. `LocalStorage`
 
-Následující tabulka popisuje atributy `LocalStorage` elementu.
+Následující tabulka popisuje atributy `LocalStorage` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|name|string|Povinná hodnota. Jedinečný název pro místní úložiště.|  
-|cleanOnRoleRecycle|Boolean|Volitelné. Určuje, zda by měl při restartování role vyčistit místní úložiště. Výchozí hodnota je `true`.|  
-|sizeInMb|int|Volitelné. Požadované množství místa k přidělení pro místní úložiště v MB. Pokud není zadán, výchozí přidělené místo úložiště je 100 MB. Minimální množství místa, které mohou být přiděleny je 1 MB.<br /><br /> Maximální velikost místních prostředků závisí na velikosti virtuálního počítače. Další informace najdete v tématu [velikostí virtuálních počítačů pro Cloud Services](cloud-services-sizes-specs.md).|  
+|name|řetězec|Povinný parametr. Jedinečný název pro místní úložiště.|  
+|cleanOnRoleRecycle|boolean|Volitelné. Označuje, jestli se má při restartování role vyčistit místní úložiště. Výchozí hodnota je `true`.|  
+|sizeInMb|int|Volitelné. Požadovaný objem prostoru úložiště, který se má přidělit místnímu úložišti, v MB Pokud není zadaný, použije se výchozí přidělený prostor úložiště 100 MB. Minimální velikost úložného prostoru, který může být přidělen, je 1 MB.<br /><br /> Maximální velikost místních prostředků závisí na velikosti virtuálního počítače. Další informace najdete v tématu [velikosti virtuálních počítačů pro Cloud Services](cloud-services-sizes-specs.md).|  
   
-Název adresáře přidělená k prostředku Místní úložiště odpovídá hodnota zadaná pro atribut name.
+Název adresáře, který je přidělený místnímu prostředku úložiště, odpovídá hodnotě zadané pro atribut Name.
 
-##  <a name="Endpoints"></a> Koncové body  
-`Endpoints` Element popisuje kolekci vstup (externí), interní a instance vstupních koncových bodů pro roli. Tento element je nadřazeného člena `InputEndpoint`, `InternalEndpoint`, a `InstanceInputEndpoint` elementy.
+##  <a name="Endpoints"></a>Bod  
+`Endpoints` Element popisuje kolekci vstupních (externích), interních a vstupních koncových bodů instance pro roli. Tento prvek je nadřazenými `InputEndpoint`prvky, `InternalEndpoint`a `InstanceInputEndpoint` .
 
-Vstup a koncovým bodům s interním přidělují samostatně. Služba může mít celkem 25 vstupu, interní, a instance vstupní koncové body, které mohou být přiděleny v 25 rolích povolené ve službě. Například pokud máte 5 rolí můžete přidělit 5 vstupní koncové body na roli nebo můžete přidělit 25 vstupní koncové body do jedné role nebo je můžete přidělit 1 vstupní koncový bod každé 25 rolím.
+Vstupní a interní koncové body jsou přidělovány samostatně. Služba může mít celkem 25 vstupních, interních a vstupních koncových bodů, které se dají přidělit přes 25 rolí povolených ve službě. Například pokud má 5 rolí, můžete přidělit 5 vstupních koncových bodů pro každou roli nebo můžete přidělit 25 vstupních koncových bodů jedné roli nebo můžete přidělit 1 vstupní koncový bod každé 25 rolí.
 
 > [!NOTE]
->  Každá role nasazení vyžaduje jedna instance na roli. Výchozí zřizování pro předplatné je omezený na 20 jádry a proto je omezený na 20 instancí role. Pokud vaše aplikace vyžaduje víc instancí, než je k dispozici ve výchozím nastavení zřizování najdete v tématu [fakturace, správu předplatného a kvóty podpory](https://azure.microsoft.com/support/options/) Další informace o zvýšení vaší kvóty.
+>  Každá nasazená role vyžaduje jednu instanci na roli. Výchozí zřizování pro předplatné je omezené na 20 jader a proto je omezené na 20 instancí role. Pokud vaše aplikace vyžaduje více instancí, než je poskytované výchozím zřizováním, přečtěte si další informace o zvýšení kvóty v tématu [fakturace, Správa předplatných a podpora kvót](https://azure.microsoft.com/support/options/) .
 
-##  <a name="InputEndpoint"></a> InputEndpoint  
-`InputEndpoint` Element popisuje externí koncový bod webové role.
+##  <a name="InputEndpoint"></a>InputEndpoint  
+`InputEndpoint` Element popisuje externí koncový bod pro webovou roli.
 
-Můžete definovat více koncových bodů, které jsou kombinací HTTP, HTTPS, UDP a TCP koncových bodů. Můžete zadat libovolné číslo portu, který jste vybrali pro vstupní koncový bod, ale zadaný pro každou roli ve službě čísla portů musí být jedinečný. Například pokud určíte, že webová role používá port 80 pro protokol HTTP a port 443 pro protokol HTTPS, můžete pak určit, že druhý webové role používá port 8080 pro protokol HTTP a port 8043 pro protokol HTTPS.
+Můžete definovat několik koncových bodů, které jsou kombinací koncových bodů HTTP, HTTPS, UDP a TCP. Můžete zadat libovolné číslo portu, které zvolíte pro vstupní koncový bod, ale čísla portů zadaná pro každou roli ve službě musí být jedinečná. Pokud například zadáte, že webová role používá port 80 pro protokol HTTP a port 443 pro protokol HTTPS, můžete určit, že druhá webová role bude pro protokol HTTP a port 8043 pro protokol HTTPS používat port 8080.
 
-Následující tabulka popisuje atributy `InputEndpoint` elementu.
+Následující tabulka popisuje atributy `InputEndpoint` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|name|string|Povinná hodnota. Jedinečný název pro externí koncový bod.|  
-|protocol|string|Povinná hodnota. Přenosový protokol pro externí koncový bod. Pro webovou roli možné hodnoty jsou `HTTP`, `HTTPS`, `UDP`, nebo `TCP`.|  
-|port|int|Povinná hodnota. Port pro externí koncový bod. Můžete zadat libovolné číslo portu, který zvolíte, ale zadaný pro každou roli ve službě čísla portů musí být jedinečný.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně) (Azure SDK verze 1.7 nebo vyšší).|  
-|certifikát|string|Vyžaduje se pro koncový bod HTTPS. Název certifikátu určené `Certificate` elementu.|  
-|localPort|int|Volitelné. Určuje port používaný pro interní připojení na koncový bod. `localPort` Atribut mapuje externí port v koncovém bodě na interní port na roli. To je užitečné v situacích, kde role musí komunikovat na interní komponenty na portu, liší od ten, který je vystaven externě.<br /><br /> Pokud nezadáte hodnotu `localPort` je stejné jako `port` atribut. Nastavte hodnotu `localPort` na "*" automaticky přiřadit nepřidělenou port, který je zjistitelné pomocí rozhraní API modulu runtime.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně) (Azure SDK verze 1.7 nebo vyšší).<br /><br /> `localPort` Atribut je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.|  
-|ignoreRoleInstanceStatus|Boolean|Volitelné. Pokud je hodnota tohoto atributu nastavena na `true`, se ignoruje stav služby a koncového bodu se neodeberou nástroje pro vyrovnávání zatížení. Tuto hodnotu nastavíte na `true` užitečné pro ladění zaneprázdněný instancí služby. Výchozí hodnota je `false`. **Poznámka:**  Koncový bod, může přijímat provoz i v případě, že role není ve stavu Připraveno.|  
-|loadBalancerProbe|string|Volitelné. Název přidružený vstupní koncový bod test paměti nástroje pro vyrovnávání zatížení. Další informace najdete v tématu [LoadBalancerProbe schéma](schema-csdef-loadbalancerprobe.md).|  
+|name|řetězec|Povinný parametr. Jedinečný název externího koncového bodu.|  
+|protocol|řetězec|Povinný parametr. Transportní protokol pro externí koncový bod. `HTTP`U webové role jsou možné hodnoty, `HTTPS`, `UDP`nebo `TCP`.|  
+|port|int|Povinný parametr. Port externího koncového bodu. Můžete zadat libovolné číslo portu, které zvolíte, ale čísla portů zadaná pro každou roli ve službě musí být jedinečná.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535, včetně (Azure SDK verze 1,7 nebo novější).|  
+|certifikát|řetězec|Vyžaduje se pro koncový bod HTTPS. Název certifikátu, který je definován `Certificate` elementem.|  
+|localPort|int|Volitelné. Určuje port, který se používá pro interní připojení ke koncovému bodu. `localPort` Atribut mapuje externí port na koncovém bodu na interní port role. To je užitečné ve scénářích, kdy musí role komunikovat s interní komponentou na portu, který se liší od toho, který je přístupný externě.<br /><br /> Pokud není zadán, hodnota `localPort` je shodná `port` s atributem. Nastavením hodnoty `localPort` na "*" automaticky přiřadíte nepřidělený port, který bude zjistitelný pomocí běhového rozhraní API.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535, včetně (Azure SDK verze 1,7 nebo novější).<br /><br /> `localPort` Atribut je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.|  
+|ignoreRoleInstanceStatus|boolean|Volitelné. Pokud je hodnota tohoto atributu nastavená na `true`, stav služby se ignoruje a koncový bod se neodebere nástrojem pro vyrovnávání zatížení. Nastavení této hodnoty na `true` užitečnou pro ladění instancí zaneprázdněné služby. Výchozí hodnota je `false`. **Poznámka:**  Koncový bod může i nadále přijímat přenosy i v případě, že role není v připraveném stavu.|  
+|loadBalancerProbe|řetězec|Volitelné. Název testu nástroje pro vyrovnávání zatížení, který je přidružený ke vstupnímu koncovému bodu. Další informace najdete v tématu [LoadBalancerProbe Schema](schema-csdef-loadbalancerprobe.md).|  
 
-##  <a name="InternalEndpoint"></a> InternalEndpoint  
-`InternalEndpoint` Element popisuje vnitřní koncový bod webové role. Vnitřní koncový bod je k dispozici jenom do ostatních instancí role v rámci služby není k dispozici pro klienty mimo službu. Webové role, které nejsou zahrnuté `Sites` element může obsahovat pouze jeden HTTP, UDP nebo TCP interní koncový bod.
+##  <a name="InternalEndpoint"></a>InternalEndpoint  
+`InternalEndpoint` Element popisuje interní koncový bod pro webovou roli. Interní koncový bod je k dispozici pouze pro jiné instance rolí běžící v rámci služby. není k dispozici pro klienty mimo službu. Webové role, které neobsahují `Sites` element, můžou mít jenom jeden interní koncový bod HTTP, UDP nebo TCP.
 
-Následující tabulka popisuje atributy `InternalEndpoint` elementu.
+Následující tabulka popisuje atributy `InternalEndpoint` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|name|string|Povinná hodnota. Jedinečný název pro vnitřní koncový bod.|  
-|protocol|string|Povinná hodnota. Přenosový protokol pro vnitřní koncový bod. Možné hodnoty jsou `HTTP`, `TCP`, `UDP`, nebo `ANY`.<br /><br /> Hodnota `ANY` Určuje, že je povolen libovolný protokol jiný port.|  
-|port|int|Volitelné. Port používaný pro připojení s vyrovnáváním zatížení interní na koncovém bodu. Skupinu s vyrovnáváním zatížení koncový bod používá dva porty. Port používaný pro veřejnou IP adresu a port používaný na privátní IP adresu. Obvykle se jedná o tyto vlastnosti se nastaví na stejnou, ale můžete použít jiné porty.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně) (Azure SDK verze 1.7 nebo vyšší).<br /><br /> `Port` Atribut je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.|  
+|name|řetězec|Povinný parametr. Jedinečný název vnitřního koncového bodu.|  
+|protocol|řetězec|Povinný parametr. Transportní protokol pro vnitřní koncový bod. Možné hodnoty jsou `HTTP`, `TCP`, `UDP`nebo. `ANY`<br /><br /> Hodnota `ANY` určuje, že libovolný protokol je povolený.|  
+|port|int|Volitelné. Port používaný pro interní připojení s vyrovnáváním zatížení na koncovém bodu. Koncový bod s vyrovnáváním zatížení používá dva porty. Port používaný pro veřejnou IP adresu a port použitý na privátní IP adrese. Obvykle se jedná o stejné nastavení, ale můžete zvolit, aby se používaly různé porty.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535, včetně (Azure SDK verze 1,7 nebo novější).<br /><br /> `Port` Atribut je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.|  
 
-##  <a name="InstanceInputEndpoint"></a> InstanceInputEndpoint  
-`InstanceInputEndpoint` Element popisuje vstupní koncový bod instance webové role. Vstupní koncový bod instance je přidružen k instanci určité role pomocí přesměrování portu v nástroji pro vyrovnávání zatížení. Vstupní koncový bod každé instance je namapovaná na konkrétní port z rozsahu portů je to možné. Tento element je nadřazeného člena `AllocatePublicPortFrom` elementu.
+##  <a name="InstanceInputEndpoint"></a>InstanceInputEndpoint  
+`InstanceInputEndpoint` Element popisuje vstupní koncový bod instance pro webovou roli. Vstupní koncový bod instance je spojen s konkrétní instancí role pomocí předávání portů v nástroji pro vyrovnávání zatížení. Každý vstupní koncový bod instance je namapovaný na konkrétní port z rozsahu možných portů. Tento prvek je nadřazeným `AllocatePublicPortFrom` prvkem elementu.
 
-`InstanceInputEndpoint` Elementu je jenom k dispozici prostřednictvím Azure SDK verze 1.7 nebo vyšší.
+`InstanceInputEndpoint` Element je k dispozici pouze pomocí sady Azure SDK verze 1,7 nebo vyšší.
 
-Následující tabulka popisuje atributy `InstanceInputEndpoint` elementu.
+Následující tabulka popisuje atributy `InstanceInputEndpoint` prvku.
   
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|name|string|Povinná hodnota. Jedinečný název pro koncový bod.|  
-|localPort|int|Povinná hodnota. Určuje interní port, který bude naslouchat všem instancím rolí k přijímání příchozího provozu předány z nástroje pro vyrovnávání zatížení. Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně).|  
-|protocol|string|Povinná hodnota. Přenosový protokol pro vnitřní koncový bod. Možné hodnoty jsou `udp` nebo `tcp`. Použití `tcp` http/https podle provozu.|  
+|name|řetězec|Povinný parametr. Jedinečný název koncového bodu.|  
+|localPort|int|Povinný parametr. Určuje interní port, k němuž budou poslouchat všechny instance rolí, aby se přijímal příchozí provoz předaný z nástroje pro vyrovnávání zatížení. Možné hodnoty jsou v rozsahu od 1 do 65535, včetně.|  
+|protocol|řetězec|Povinný parametr. Transportní protokol pro vnitřní koncový bod. Možné hodnoty jsou `udp` nebo `tcp`. Používá `tcp` se pro přenosy založené na http/https.|  
   
-##  <a name="AllocatePublicPortFrom"></a> AllocatePublicPortFrom  
-`AllocatePublicPortFrom` Element popisuje rozsah veřejný port, který je možné ke každé instanci vstupní koncový bod externí zákazníky. Číslo veřejného portu (VIP) se přiděluje z tohoto rozsahu a přiřadí do každého koncového bodu instance jednotlivých rolí během nasazení klienta a aktualizace. Tento element je nadřazeného člena `FixedPortRange` elementu.
+##  <a name="AllocatePublicPortFrom"></a>AllocatePublicPortFrom  
+`AllocatePublicPortFrom` Element popisuje rozsah veřejných portů, který mohou externí zákazníci použít pro přístup ke každému vstupnímu koncovému bodu instance. Číslo portu veřejného (VIP) se přiděluje z tohoto rozsahu a přiřadí se každému koncovému bodu instance role během nasazování a aktualizace tenanta. Tento prvek je nadřazeným `FixedPortRange` prvkem elementu.
 
-`AllocatePublicPortFrom` Elementu je jenom k dispozici prostřednictvím Azure SDK verze 1.7 nebo vyšší.
+`AllocatePublicPortFrom` Element je k dispozici pouze pomocí sady Azure SDK verze 1,7 nebo vyšší.
 
-##  <a name="FixedPort"></a> FixedPort  
-`FixedPort` Prvek určuje port pro vnitřní koncový bod, který umožňuje načtení vyvážené připojení na koncový bod.
+##  <a name="FixedPort"></a>FixedPort  
+`FixedPort` Element určuje port interního koncového bodu, který umožňuje připojení s vyrovnáváním zatížení na koncovém bodu.
 
-`FixedPort` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`FixedPort` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-Následující tabulka popisuje atributy `FixedPort` elementu.
+Následující tabulka popisuje atributy `FixedPort` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|port|int|Povinná hodnota. Port pro vnitřní koncový bod. To má stejný účinek jako nastavení `FixedPortRange` min a max na stejný port.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně) (Azure SDK verze 1.7 nebo vyšší).|  
+|port|int|Povinný parametr. Port interního koncového bodu. To má stejný účinek jako nastavení `FixedPortRange` minimální a maximální hodnoty na stejný port.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535, včetně (Azure SDK verze 1,7 nebo novější).|  
 
-##  <a name="FixedPortRange"></a> FixedPortRange  
-`FixedPortRange` Prvek určuje rozsah portů, které jsou přiřazeny k interní koncový bod nebo vstupní koncový bod instance a Nastaví port, který se používá pro zatížení s vyrovnáváním připojení na koncový bod.
+##  <a name="FixedPortRange"></a>FixedPortRange  
+`FixedPortRange` Prvek určuje rozsah portů, které jsou přiřazeny internímu koncovému bodu nebo vstupnímu koncovému bodu instance, a nastaví port používaný pro připojení s vyrovnáváním zatížení na koncovém bodu.
 
 > [!NOTE]
->  `FixedPortRange` Element funguje jinak v závislosti na element, ve kterém se nachází. Když `FixedPortRange` elementu je `InternalEndpoint` prvek, otevře se všechny porty nástroje pro vyrovnávání zatížení v rámci rozsahu atributy min a max pro všechny virtuální počítače, na kterých role běží. Když `FixedPortRange` elementu je `InstanceInputEndpoint` prvek, otevře se pouze jeden port v rozsahu atributy min a max na každém virtuálním počítači s rolí.
+>  `FixedPortRange` Element pracuje odlišně v závislosti na elementu, ve kterém se nachází. Když je `InternalEndpoint` element v prvku, otevře všechny porty v nástroji pro vyrovnávání zatížení v rámci rozsahu atributů min a Max pro všechny virtuální počítače, na kterých je role spuštěna. `FixedPortRange` Když je `InstanceInputEndpoint` element v elementu, otevře se pouze jeden port v rozsahu atributů min a Max na každém virtuálním počítači, na kterém je role spuštěná. `FixedPortRange`
 
-`FixedPortRange` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`FixedPortRange` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-Následující tabulka popisuje atributy `FixedPortRange` elementu.
+Následující tabulka popisuje atributy `FixedPortRange` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|min|int|Povinná hodnota. Minimální port v rozsahu. Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně) (Azure SDK verze 1.7 nebo vyšší).|  
-|max|string|Povinná hodnota. Maximální číslo portu v rozsahu. Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně) (Azure SDK verze 1.7 nebo vyšší).|  
+|min.|int|Povinný parametr. Minimální port v rozsahu. Možné hodnoty jsou v rozsahu od 1 do 65535, včetně (Azure SDK verze 1,7 nebo novější).|  
+|max|řetězec|Povinný parametr. Maximální port v rozsahu. Možné hodnoty jsou v rozsahu od 1 do 65535, včetně (Azure SDK verze 1,7 nebo novější).|  
 
-##  <a name="Certificates"></a> Certifikáty  
-`Certificates` Element popisuje kolekce certifikátů pro webovou roli. Tento element je nadřazeného člena `Certificate` elementu. Role může mít libovolný počet přidružené certifikáty. Další informace o používání elementu certifikáty, najdete v části [upravit soubor definice služby s certifikátem](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files).
+##  <a name="Certificates"></a>Certifikáty  
+`Certificates` Element popisuje kolekci certifikátů pro webovou roli. Tento prvek je nadřazeným `Certificate` prvkem elementu. Role může mít libovolný počet přidružených certifikátů. Další informace o použití prvku certifikáty najdete v tématu [Úprava definičního souboru služby pomocí certifikátu](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files).
 
-##  <a name="Certificate"></a> Certifikát  
+##  <a name="Certificate"></a>Certifikát  
 `Certificate` Element popisuje certifikát, který je přidružen k webové roli.
 
-Následující tabulka popisuje atributy `Certificate` elementu.
+Následující tabulka popisuje atributy `Certificate` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|name|string|Povinná hodnota. Název tohoto certifikátu, který se používá k na ni odkazují, když je přidružen HTTPS `InputEndpoint` elementu.|  
-|storeLocation|string|Povinná hodnota. Umístění úložiště certifikátů, kde může najít tohoto certifikátu na místním počítači. Možné hodnoty jsou `CurrentUser` a `LocalMachine`.|  
-|storeName|string|Povinná hodnota. Název úložiště certifikátů, pokud tento certifikát je umístěn v místním počítači. Možné hodnoty zahrnují názvy předdefinovaných úložiště `My`, `Root`, `CA`, `Trust`, `Disallowed`, `TrustedPeople`, `TrustedPublisher`, `AuthRoot`, `AddressBook`, nebo libovolný název vlastního úložiště. Pokud není zadán název vlastní úložiště, automaticky se vytvoří ve storu.|  
-|permissionLevel|string|Volitelné. Určuje přístupová oprávnění udělená role procesy. Pokud chcete umožnit přístup k privátnímu klíči a poté zadejte pouze se zvýšenými oprávněními procesy `elevated` oprávnění. `limitedOrElevated` oprávnění umožňuje všechny procesy rolí pro přístup k privátnímu klíči. Možné hodnoty jsou `limitedOrElevated` nebo `elevated`. Výchozí hodnota je `limitedOrElevated`.|  
+|name|řetězec|Povinný parametr. Název pro tento certifikát, který se používá k odkazování na něj, je-li přidružen k elementu `InputEndpoint` https.|  
+|storeLocation|řetězec|Povinný parametr. Umístění úložiště certifikátů, ve kterém se tento certifikát nachází na místním počítači. Možné hodnoty jsou `CurrentUser` a `LocalMachine`.|  
+|storeName|řetězec|Povinný parametr. Název úložiště certifikátů, ve kterém se tento certifikát nachází na místním počítači. Mezi možné hodnoty `My`patří vestavěné názvy obchodů `TrustedPeople` `TrustedPublisher`, `CA` `Root` `Trust` `Disallowed`,,,,, ,`AuthRoot` ,`AddressBook`nebo libovolný název vlastního úložiště. Pokud je zadán název vlastního úložiště, je úložiště automaticky vytvořeno.|  
+|permissionLevel|řetězec|Volitelné. Určuje přístupová oprávnění udělená procesům rolí. Pokud chcete, aby přístup k privátnímu klíči měly jenom procesy se zvýšenými oprávněními, `elevated` zadejte oprávnění. `limitedOrElevated`oprávnění umožňuje všem procesům rolí přístup k privátnímu klíči. Možné hodnoty jsou `limitedOrElevated` nebo `elevated`. Výchozí hodnota je `limitedOrElevated`.|  
 
-##  <a name="Imports"></a> Importy  
-`Imports` Element popisuje kolekci importovat moduly pro webové role, které přidat součásti do hostovaného operačního systému. Tento element je nadřazeného člena `Import` elementu. Tento element je volitelné a role může mít pouze jeden blok importy. 
+##  <a name="Imports"></a>Objem  
+`Imports` Element popisuje kolekci modulů importu pro webovou roli, která přidávají součásti do hostovaného operačního systému. Tento prvek je nadřazeným `Import` prvkem elementu. Tento prvek je nepovinný a role může mít jenom jeden blok importů. 
 
-`Imports` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`Imports` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-##  <a name="Import"></a> Import  
-`Import` Prvek určuje modul a přidejte do hostovaného operačního systému.
+##  <a name="Import"></a>Importovat  
+`Import` Element určuje modul, který má být přidán do hostovaného operačního systému.
 
-`Import` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`Import` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-Následující tabulka popisuje atributy `Import` elementu.
+Následující tabulka popisuje atributy `Import` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|moduleName|string|Povinná hodnota. Název modulu k importu. Neplatný import moduly jsou:<br /><br /> -RemoteAccess<br />-   RemoteForwarder<br />-Diagnostics<br /><br /> Moduly RemoteAccess a RemoteForwarder umožňují nakonfigurovat pro připojení ke vzdálené ploše instance role. Další informace najdete v části [povolit připojení ke vzdálené ploše](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Modulu Diagnostika umožňuje shromažďovat diagnostická data pro instanci role.|  
+|moduleName|řetězec|Povinný parametr. Název modulu, který se má importovat Platné moduly importu jsou:<br /><br /> – RemoteAccess<br />- RemoteForwarder<br />– Diagnostika<br /><br /> Moduly RemoteAccess a RemoteForwarder umožňují nakonfigurovat instanci role pro připojení ke vzdálené ploše. Další informace najdete v tématu [povolení připojení ke vzdálené ploše](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Modul diagnostiky umožňuje shromažďovat diagnostická data pro instanci role.|  
 
-##  <a name="Runtime"></a> Modul runtime  
-`Runtime` Element popisuje kolekci nastavení proměnné prostředí pro webovou roli, která řídí běhové prostředí Azure hostitelského procesu. Tento element je nadřazeného člena `Environment` elementu. Tento element je volitelné a role může mít pouze jeden blok modulu runtime.
+##  <a name="Runtime"></a>Runtime  
+`Runtime` Element popisuje kolekci nastavení proměnných prostředí pro webovou roli, která řídí běhové prostředí hostitelského procesu Azure. Tento prvek je nadřazeným `Environment` prvkem elementu. Tento prvek je nepovinný a role může mít jenom jeden blok runtime.
 
-`Runtime` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`Runtime` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-Následující tabulka popisuje atributy `Runtime` element:  
+Následující tabulka popisuje atributy `Runtime` prvku:  
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|executionContext|string|Volitelné. Určuje kontext, ve kterém je spuštěn proces Role. Výchozí kontext je `limited`.<br /><br /> -   `limited` – Proces se spustí bez oprávnění správce.<br />-   `elevated` – Proces se spustí s oprávněními správce.|  
+|executionContext|řetězec|Volitelné. Určuje kontext, ve kterém se spustí proces role. Výchozí kontext je `limited`.<br /><br /> -   `limited`– Proces se spustí bez oprávnění správce.<br />-   `elevated`– Proces se spustí s oprávněními správce.|  
 
-##  <a name="Environment"></a> prostředí  
-`Environment` Element popisuje kolekci nastavení proměnné prostředí pro webovou roli. Tento element je nadřazeného člena `Variable` elementu. Role může mít libovolný počet nastavení proměnné prostředí.
+##  <a name="Environment"></a>Hlediska  
+`Environment` Element popisuje kolekci nastavení proměnných prostředí pro webovou roli. Tento prvek je nadřazeným `Variable` prvkem elementu. Role může mít nastaven libovolný počet proměnných prostředí.
 
-##  <a name="Variable"></a> Proměnná  
-`Variable` Prvek Určuje proměnnou prostředí k nastavení v hostovaného operačního.
+##  <a name="Variable"></a>Variabilní  
+`Variable` Element určuje proměnnou prostředí, která se má nastavit v hostovaném operačním systému.
 
-`Variable` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`Variable` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-Následující tabulka popisuje atributy `Variable` element:  
+Následující tabulka popisuje atributy `Variable` prvku:  
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|name|string|Povinná hodnota. Název proměnné prostředí pro nastavení.|  
-|value|string|Volitelné. Hodnota k nastavení proměnné prostředí. Musí obsahovat atribut hodnoty nebo `RoleInstanceValue` elementu.|  
+|name|řetězec|Povinný parametr. Název proměnné prostředí, kterou chcete nastavit.|  
+|value|řetězec|Volitelné. Hodnota, která má být nastavena pro proměnnou prostředí. Musíte zahrnout buď atribut hodnoty, nebo `RoleInstanceValue` element.|  
 
-##  <a name="RoleInstanceValue"></a> RoleInstanceValue  
-`RoleInstanceValue` Prvek určuje výraz xPath, ze kterého se má načíst hodnotu proměnné.
+##  <a name="RoleInstanceValue"></a>RoleInstanceValue  
+`RoleInstanceValue` Prvek určuje cestu XPath, ze které má být načtena hodnota proměnné.
 
-Následující tabulka popisuje atributy `RoleInstanceValue` elementu.
+Následující tabulka popisuje atributy `RoleInstanceValue` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|výraz XPath|string|Volitelné. Cesta k umístění nastavení nasazení pro instanci. Další informace najdete v tématu [konfigurační proměnné, jejichž výraz XPath](cloud-services-role-config-xpath.md).<br /><br /> Musí obsahovat atribut hodnoty nebo `RoleInstanceValue` elementu.|  
+|cestou|řetězec|Volitelné. Cesta umístění nastavení nasazení pro instanci Další informace naleznete v tématu [konfigurační proměnné s XPath](cloud-services-role-config-xpath.md).<br /><br /> Musíte zahrnout buď atribut hodnoty, nebo `RoleInstanceValue` element.|  
 
 ##  <a name="EntryPoint"></a> EntryPoint  
-`EntryPoint` Prvek určuje vstupní bod pro roli. Tento element je nadřazeného člena `NetFxEntryPoint` elementy. Tyto prvky umožňují určit jiné než výchozí WaWorkerHost.exe aplikace tak, aby fungoval jako vstupní bod role.
+`EntryPoint` Prvek určuje vstupní bod pro roli. Tento prvek je nadřazený `NetFxEntryPoint` prvky. Tyto prvky umožňují zadat jinou aplikaci než výchozí WaWorkerHost. exe, která bude sloužit jako vstupní bod role.
 
-`EntryPoint` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.5 nebo vyšší.
+`EntryPoint` Element je k dispozici pouze pomocí sady Azure SDK verze 1,5 nebo vyšší.
 
 ##  <a name="NetFxEntryPoint"></a> NetFxEntryPoint  
-`NetFxEntryPoint` Prvek určuje program, který má spustit pro roli.
+`NetFxEntryPoint` Element určuje program, který se má spustit pro roli.
 
 > [!NOTE]
->  `NetFxEntryPoint` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.5 nebo vyšší.
+>  `NetFxEntryPoint` Element je k dispozici pouze pomocí sady Azure SDK verze 1,5 nebo vyšší.
 
-Následující tabulka popisuje atributy `NetFxEntryPoint` elementu.
+Následující tabulka popisuje atributy `NetFxEntryPoint` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|assemblyName|string|Povinná hodnota. Název a cesta k souboru sestavení obsahující vstupní bod. Cesta je relativní vzhledem ke složce  **\\%ROLEROOT%\Approot** (nezadávejte  **\\%ROLEROOT%\Approot** v `commandLine`, předpokládá se). **ROLEROOT %** je spravován proměnnou prostředí Azure a představuje umístění kořenové složky pro vaši roli. **\\%ROLEROOT%\Approot** složky představuje složka aplikace pro vaši roli.<br /><br /> Pro role HWC cesta je vždy vzhledem k  **\\%ROLEROOT%\Approot\bin** složky.<br /><br /> Pro úplnou službu IIS a služby IIS Express webové role, pokud sestavení nelze najít vzhledem k  **\\%ROLEROOT%\Approot** složku,  **\\%ROLEROOT%\Approot\bin** je prohledána.<br /><br /> Jessi combsové zpět chování pro úplnou službu IIS se nejedná osvědčený postup doporučujeme a možná odebrán v budoucích verzích.|  
-|targetFrameworkVersion|string|Povinná hodnota. Verze rozhraní .NET framework, na kterém byla vytvořena sestavení. Například, `targetFrameworkVersion="v4.0"`.|  
+|assemblyName|řetězec|Povinný parametr. Cesta a název souboru sestavení, který obsahuje vstupní bod. Cesta je relativní ke složce  **\\%ROLEROOT%\Approot** (nespecifikuje  **\\%ROLEROOT%\Approot** v `commandLine`, předpokládá se). **% ROLEROOT%** je proměnná prostředí udržovaná službou Azure, která představuje umístění kořenové složky pro vaši roli. Složka%ROLEROOT%\Approot představuje složku aplikace pro vaši roli.  **\\**<br /><br /> Pro role umožní je cesta vždy relativní vzhledem ke  **\\složce%ROLEROOT%\Approot\bin** .<br /><br /> V  **\\** **případě úplných webových rolí služby IIS a IIS Express, pokud nebylo nalezeno sestavení vzhledem ke složce%ROLEROOT%\Approot, je prohledána%ROLEROOT%\Approot\bin. \\**<br /><br /> Toto chování při návratu do úplné služby IIS není doporučeným osvědčeným postupem a v budoucích verzích je možná odebrat.|  
+|targetFrameworkVersion|řetězec|Povinný parametr. Verze rozhraní .NET Framework, na které bylo sestavení sestaveno. Například, `targetFrameworkVersion="v4.0"`.|  
 
-##  <a name="Sites"></a> Weby  
-`Sites` Element popisuje kolekci webů a webových aplikací, které jsou hostované ve webové roli. Tento element je nadřazeného člena `Site` elementu. Pokud nezadáte `Sites` elementu, webové role je hostovaný jako starší webové role a může mít jenom jeden web hostovaný na vaši webovou roli. Tento element je volitelné a role může mít pouze jeden blok lokalit.
+##  <a name="Sites"></a>Místa  
+`Sites` Element popisuje kolekci webů a webových aplikací, které jsou hostovány ve webové roli. Tento prvek je nadřazeným `Site` prvkem elementu. Pokud nezadáte `Sites` element, Webová role je hostována jako starší webová role a můžete mít pouze jeden web hostovaný ve vaší webové roli. Tento prvek je nepovinný a role může mít jenom jeden blok webů.
 
-`Sites` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`Sites` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-##  <a name="Site"></a> Lokality  
-`Site` Prvek Určuje web nebo webovou aplikaci, která je součástí webové role.
+##  <a name="Site"></a>Webovém  
+`Site` Element určuje web nebo webovou aplikaci, která je součástí webové role.
 
-`Site` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`Site` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-Následující tabulka popisuje atributy `Site` elementu.
+Následující tabulka popisuje atributy `Site` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|name|string|Povinná hodnota. Název webu nebo aplikaci.|  
-|physicalDirectory|string|Umístění obsahu adresáře pro kořenový adresář webu. Umístění se dá nastavit jako absolutní nebo relativní k umístění .csdef.|  
+|name|řetězec|Povinný parametr. Název webu nebo aplikace.|  
+|physicalDirectory|řetězec|Umístění adresáře obsahu pro kořen webu Umístění lze zadat jako absolutní cestu nebo relativní vzhledem k umístění. csdef.|  
 
-##  <a name="VirtualApplication"></a> VirtualApplication  
-`VirtualApplication` Element definuje aplikaci v Internetové informační služby (IIS) 7 je seskupení souborů, které dodává obsah nebo poskytuje služby přes protokoly, jako je například HTTP. Při vytváření aplikace ve službě IIS 7 cesta aplikace se stane součástí adresy URL webu.
+##  <a name="VirtualApplication"></a>VirtualApplication  
+`VirtualApplication` Element definuje aplikaci v Internetová informační služba (IIS) 7 je seskupení souborů, které doručují obsah, nebo poskytuje služby přes protokoly, jako je http. Když ve službě IIS 7 vytvoříte aplikaci, bude cesta aplikace součástí adresy URL webu.
 
-`VirtualApplication` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`VirtualApplication` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-Následující tabulka popisuje atributy `VirtualApplication` elementu.
+Následující tabulka popisuje atributy `VirtualApplication` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|name|string|Povinná hodnota. Určuje název pro identifikaci virtuálních aplikací.|  
-|physicalDirectory|string|Povinná hodnota. Určuje cestu na vývojovém počítači, který obsahuje virtuální aplikace. V emulátoru služby compute služba IIS konfigurována načítat obsah z tohoto umístění. Při nasazování do Azure, jsou sbaleny obsah fyzický adresář spolu se zbývajícími služby. Při nasazení balíčku služby do Azure, služba IIS konfigurována s umístěním rozbalené obsah.|  
+|name|řetězec|Povinný parametr. Určuje název, který identifikuje virtuální aplikaci.|  
+|physicalDirectory|řetězec|Povinný parametr. Určuje cestu k vývojovému počítači, který obsahuje virtuální aplikaci. V emulátoru výpočetní služby je služba IIS nakonfigurovaná tak, aby načetla obsah z tohoto umístění. Při nasazování do Azure se obsah fyzického adresáře zabalí spolu se zbytkem služby. Po nasazení balíčku služby do Azure se služba IIS nakonfiguruje s umístěním rozbaleného obsahu.|  
 
-##  <a name="VirtualDirectory"></a> VirtualDirectory  
-`VirtualDirectory` Prvek určuje název adresáře (také označované jako cesty) zadejte ve službě IIS a mapování na fyzický adresář na místním nebo vzdáleném serveru.
+##  <a name="VirtualDirectory"></a>Virtualdirector  
+`VirtualDirectory` Element určuje název adresáře (také označovaný jako cesta), který zadáte ve službě IIS a mapuje na fyzický adresář na místním nebo vzdáleném serveru.
 
-`VirtualDirectory` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`VirtualDirectory` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-Následující tabulka popisuje atributy `VirtualDirectory` elementu.
+Následující tabulka popisuje atributy `VirtualDirectory` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|name|string|Povinná hodnota. Určuje název pro identifikaci virtuálního adresáře.|  
-|value|physicalDirectory|Povinná hodnota. Určuje cestu na vývojovém počítači, který obsahuje web nebo obsah virtuálního adresáře. V emulátoru služby compute služba IIS konfigurována načítat obsah z tohoto umístění. Při nasazování do Azure, jsou sbaleny obsah fyzický adresář spolu se zbývajícími služby. Při nasazení balíčku služby do Azure, služba IIS konfigurována s umístěním rozbalené obsah.|  
+|name|řetězec|Povinný parametr. Určuje název, který identifikuje virtuální adresář.|  
+|value|physicalDirectory|Povinný parametr. Určuje cestu k vývojovému počítači, který obsahuje obsah webu nebo virtuálního adresáře. V emulátoru výpočetní služby je služba IIS nakonfigurovaná tak, aby načetla obsah z tohoto umístění. Při nasazování do Azure se obsah fyzického adresáře zabalí spolu se zbytkem služby. Po nasazení balíčku služby do Azure se služba IIS nakonfiguruje s umístěním rozbaleného obsahu.|  
 
-##  <a name="Bindings"></a> Vazby  
-`Bindings` Element popisuje kolekci vazby pro web. Je nadřazený element `Binding` elementu. Element se vyžaduje pro každý `Site` elementu. Další informace o konfiguraci koncových bodů najdete v tématu [povolit komunikaci pro instance rolí](cloud-services-enable-communication-role-instances.md).
+##  <a name="Bindings"></a>Vazeb  
+`Bindings` Element popisuje kolekci vazeb pro web. Je nadřazeným prvkem `Binding` elementu. Element je vyžadován pro každý `Site` prvek. Další informace o konfiguraci koncových bodů najdete v tématu [povolení komunikace pro instance rolí](cloud-services-enable-communication-role-instances.md).
 
-`Bindings` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`Bindings` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-##  <a name="Binding"></a> Vytvoření vazby  
-`Binding` Prvek určuje informace o konfiguraci vyžadované u požadavků ke komunikaci s web nebo webovou aplikaci.
+##  <a name="Binding"></a>Ovládacího  
+`Binding` Element určuje informace o konfiguraci požadované pro požadavky na komunikaci s webem nebo webovou aplikací.
 
-`Binding` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`Binding` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|name|string|Povinná hodnota. Určuje název pro identifikaci vazby.|  
-|endpointName|string|Povinná hodnota. Určuje název koncového bodu k vytvoření vazby.|  
-|hostHeader|string|Volitelné. Určuje název hostitele, který umožňuje hostování několika webů s názvy jiného hostitele, na jedné kombinaci IP Adresa/Port číslo.|  
+|name|řetězec|Povinný parametr. Určuje název pro identifikaci vazby.|  
+|endpointName|řetězec|Povinný parametr. Určuje název koncového bodu, ke kterému se má vytvořit vazba.|  
+|hostHeader|řetězec|Volitelné. Určuje název hostitele, který umožňuje hostovat více lokalit s různými názvy hostitelů na jedné kombinaci IP adresy nebo čísla portu.|  
 
-##  <a name="Startup"></a> Po spuštění  
-`Startup` Element popisuje kolekci úloh, které spustí při spuštění role. Tento element může být nadřazený prvek `Variable` elementu. Další informace o použití úlohy po spuštění role najdete v tématu [postupy konfigurace úloh při spuštění](cloud-services-startup-tasks.md). Tento element je volitelné a role může mít pouze jeden blok při spuštění.
+##  <a name="Startup"></a>Úvod  
+`Startup` Element popisuje kolekci úkolů, které se spouštějí při spuštění role. Tento element může být nadřazený `Variable` prvek elementu. Další informace o použití úloh po spuštění role najdete v tématu [Postup konfigurace úloh po spuštění](cloud-services-startup-tasks.md). Tento prvek je nepovinný a role může mít jenom jeden spouštěcí blok.
 
 Následující tabulka popisuje atribut `Startup` elementu.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|priorita|int|Pouze pro interní použití.|  
+|priority|int|Pouze pro interní použití.|  
 
-##  <a name="Task"></a> Úloha  
-`Task` Prvek určuje úloha po spuštění, které u něho při spuštění role. Úlohy po spuštění lze použít k provádění úloh, které připravují roli, kterou chcete spustit tyto instalace softwarových komponent nebo jiné aplikace. Spouštění úloh v pořadí, ve kterém jsou uvedeny v rámci `Startup` element bloku.
+##  <a name="Task"></a>Hybn  
+`Task` Element určuje úlohu po spuštění, která probíhá při spuštění role. Úlohy po spuštění lze použít k provádění úloh, které připravují roli ke spouštění takových softwarových součástí nebo spouštění jiných aplikací. Úlohy jsou spouštěny v pořadí, ve kterém jsou uvedeny `Startup` v rámci bloku elementu.
 
-`Task` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.
+`Task` Element je k dispozici pouze pomocí sady Azure SDK verze 1,3 nebo vyšší.
 
-Následující tabulka popisuje atributy `Task` elementu.
+Následující tabulka popisuje atributy `Task` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|příkazový řádek|string|Povinná hodnota. Skript, například soubor CMD, který obsahuje příkazy se spustí. Po spuštění příkazu a dávkové soubory musí být uložen ve formátu ANSI. Formáty souborů, které nastavit značku pořadí bajtů na začátku souboru nezpracuje správně.|  
-|executionContext|string|Určuje kontext, ve kterém je spuštěný skript.<br /><br /> -   `limited` [Výchozí] – spuštění se stejnými oprávněními jako role, která hostuje procesu.<br />-   `elevated` – Spusťte s oprávněními správce.|  
-|taskType|string|Určuje chování při spuštění příkazu.<br /><br /> -   `simple` [Výchozí] – systém čeká na ukončit před další úkoly jsou spuštěny úlohy.<br />-   `background` – Systém nečeká na ukončit úlohy.<br />-   `foreground` – Podobně jako na pozadí, s výjimkou role nerestartuje, dokud se ukončit všechny úlohy v popředí.|  
+|Řádek|řetězec|Povinný parametr. Skript, jako je například soubor CMD, obsahující příkazy, které mají být spuštěny. Spouštěcí příkaz a dávkové soubory musí být uloženy ve formátu ANSI. Formáty souborů, které nastavují značku pořadí bajtů na začátku souboru, nebudou pracovat správně.|  
+|executionContext|řetězec|Určuje kontext, ve kterém se skript spustí.<br /><br /> -   `limited`[Výchozí] – spusťte se stejnými oprávněními jako role hostující proces.<br />-   `elevated`– Spusťte s oprávněními správce.|  
+|taskType|řetězec|Určuje chování při provádění příkazu.<br /><br /> -   `simple`[Výchozí] – systém čeká na ukončení úlohy před spuštěním jakékoli jiné úlohy.<br />-   `background`– Systém nečeká na ukončení úlohy.<br />-   `foreground`– Podobně jako na pozadí, s výjimkou role nebude restartován, dokud nebudou všechny úlohy na popředí ukončeny.|  
 
-##  <a name="Contents"></a> Obsah  
-`Contents` Element popisuje sadu obsahu pro webovou roli. Tento element je nadřazeného člena `Content` elementu.
+##  <a name="Contents"></a>Obsah  
+`Contents` Prvek popisuje shromažďování obsahu webové role. Tento prvek je nadřazeným `Content` prvkem elementu.
 
-`Contents` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.5 nebo vyšší.
+`Contents` Element je k dispozici pouze pomocí sady Azure SDK verze 1,5 nebo vyšší.
 
-##  <a name="Content"></a> Obsah  
-`Content` Element definuje umístění zdroje obsahu se zkopírují do virtuálních počítačů Azure a cílovou cestu, do které se kopírují.
+##  <a name="Content"></a>Sušin  
+`Content` Element definuje zdrojové umístění obsahu, který se má zkopírovat na virtuální počítač Azure, a cílovou cestu, do které se má zkopírovat.
 
-`Content` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.5 nebo vyšší.
+`Content` Element je k dispozici pouze pomocí sady Azure SDK verze 1,5 nebo vyšší.
 
-Následující tabulka popisuje atributy `Content` elementu.
+Následující tabulka popisuje atributy `Content` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|destination|string|Povinná hodnota. Umístění v Azure virtuální počítač, na který je umístěn obsah. Toto umístění je složkou **%ROLEROOT%\Approot**.|  
+|destination|řetězec|Povinný parametr. Umístění na virtuálním počítači Azure, na který je umístěn obsah. Toto umístění je relativní vzhledem ke složce **%ROLEROOT%\Approot**.|  
 
-Tento element je nadřazeného elementu `SourceDirectory` elementu.
+Tento prvek je nadřazeným prvkem `SourceDirectory` elementu.
 
-##  <a name="SourceDirectory"></a> SourceDirectory  
-`SourceDirectory` Element definuje místní adresář, ze kterého je zkopírován obsah. Tento element slouží k určení místní obsah ke zkopírování do virtuálních počítačů Azure.
+##  <a name="SourceDirectory"></a>SourceDirectory  
+`SourceDirectory` Element definuje místní adresář, ze kterého se kopíruje obsah. Tento prvek slouží k zadání místního obsahu pro kopírování do virtuálního počítače Azure.
 
-`SourceDirectory` Element je pouze k dispozici prostřednictvím Azure SDK verze 1.5 nebo vyšší.
+`SourceDirectory` Element je k dispozici pouze pomocí sady Azure SDK verze 1,5 nebo vyšší.
 
-Následující tabulka popisuje atributy `SourceDirectory` elementu.
+Následující tabulka popisuje atributy `SourceDirectory` prvku.
 
-| Atribut | Type | Popis |  
+| Atribut | type | Popis |  
 | --------- | ---- | ----------- |  
-|path|string|Povinná hodnota. Relativní nebo absolutní cesta k místnímu adresáři, jejíž obsah bude zkopírován do virtuálních počítačů Azure. Rozšíření proměnných prostředí v cestě adresáře se podporuje.|  
+|path|řetězec|Povinný parametr. Relativní nebo absolutní cesta k místnímu adresáři, jehož obsah se zkopíruje na virtuální počítač Azure. Rozšíření proměnných prostředí v cestě k adresáři je podporováno.|  
   
 ## <a name="see-also"></a>Viz také
-[Cloudové služby (klasické) schématu definice](schema-csdef-file.md)
+[Schéma definice cloudové služby (Classic)](schema-csdef-file.md)

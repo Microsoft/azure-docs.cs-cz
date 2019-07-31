@@ -9,10 +9,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 85f7395cbfa4ef2ba6ab448c9541b3f107eb0e96
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "68249809"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Správce prostředků pro virtuální počítač s Windows
@@ -273,7 +273,7 @@ K nasazení šablony Správce prostředků využíváme Azure PowerShell.
 
 2. V nabídce vlevo vyberte **monitor**.
 
-3. Na stránce Monitor vyberte metriky .
+3. Na stránce Monitor vyberte metriky.
 
    ![Stránka metriky](media/collect-custom-metrics-guestos-resource-manager-vm/metrics.png)
 
@@ -286,6 +286,6 @@ K nasazení šablony Správce prostředků využíváme Azure PowerShell.
 7. V rozevírací nabídce metriky vyberte **paměť\%při použití potvrzených bajtů**.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [vlastních metrikách](metrics-custom-overview.md).
 
