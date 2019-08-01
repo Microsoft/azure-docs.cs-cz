@@ -344,7 +344,7 @@
           href: cognitive-search-skill-textsplit.md
         - name: Mínění
           href: cognitive-search-skill-sentiment.md
-        - name: Překlad textu (Preview)
+        - name: Překlad textu
           href: cognitive-search-skill-text-translation.md
         - name: Analýza obrázků
           href: cognitive-search-skill-image-analysis.md
