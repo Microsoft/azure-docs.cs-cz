@@ -1,22 +1,22 @@
 ---
 title: Správa serverů a trezorů služby Azure Recovery Services
 description: Spravujte úlohy a výstrahy v úložišti Azure Recovery Services.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.author: raynew
-ms.openlocfilehash: 5876ce4a511617d8465cdf008ea0ce14b3ad15d4
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 4ce6ef67c24bd623a4162329442693ed1628dae2
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466353"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639876"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 
-Tento článek vysvětluje, jak pomocí řídicího panelu **Přehled** služby Recovery Services trezor monitorovat a spravovat vaše trezory Recovery Services. Když v seznamu otevřete trezor Recovery Services, otevře se řídicí panel **Přehled** vybraného trezoru. Řídicí panel poskytuje různé podrobnosti o trezoru. K dispozici jsou *dlaždice* , které znázorňují stav kritických a varovných výstrah, probíhajících a neúspěšných úloh zálohování a množství místně redundantního úložiště (LRS) a geograficky redundantního úložiště (GRS). Pokud zálohujete virtuální počítače Azure do trezoru, na dlaždici [ **stav předběžné kontroly zálohování** se zobrazí všechny kritické nebo varovné položky](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/). Následující obrázek je řídicí panel  s přehledem pro **trezor společnosti Contoso**. Na dlaždici **zálohované položky** se zobrazí devět položek zaregistrovaných do trezoru.
+Tento článek vysvětluje, jak pomocí řídicího panelu **Přehled** služby Recovery Services trezor monitorovat a spravovat vaše trezory Recovery Services. Když v seznamu otevřete trezor Recovery Services, otevře se řídicí panel **Přehled** vybraného trezoru. Řídicí panel poskytuje různé podrobnosti o trezoru. K dispozici jsou *dlaždice* , které znázorňují stav kritických a varovných výstrah, probíhajících a neúspěšných úloh zálohování a množství místně redundantního úložiště (LRS) a geograficky redundantního úložiště (GRS). Pokud zálohujete virtuální počítače Azure do trezoru, na dlaždici [ **stav předběžné kontroly zálohování** se zobrazí všechny kritické nebo varovné položky](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/). Následující obrázek je řídicí panel s přehledem pro **trezor společnosti Contoso**. Na dlaždici **zálohované položky** se zobrazí devět položek zaregistrovaných do trezoru.
 
 ![řídicí panel trezoru služby Recovery Services](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -117,7 +117,7 @@ Ve výchozím nastavení se v sestavě zobrazí všechny podrobnosti, s výjimko
 
     ![Nabídka zvolit sloupce](./media/backup-azure-manage-windows-server/choose-columns-menu.png)
 
-3. Kliknutím  na Hotovo uložte změny a zavřete nabídku vybrat sloupce.
+3. Kliknutím na Hotovo uložte změny a zavřete nabídku vybrat sloupce.
 
    Pokud provedete změny, ale nechcete změny zachovat, kliknutím na **obnovit** vraťte vybrané nastavení k poslední uložené konfiguraci.
 
@@ -137,7 +137,7 @@ Pomocí nabídky **Filtr** můžete změnit závažnost, stav, čas spuštění 
 
    ![Výběr nabídky filtru](./media/backup-azure-manage-windows-server/filter-alert-menu.png)
 
-2. Upravte závažnost, stav, čas spuštění nebo čas ukončení a klikněte na Hotovo a  uložte provedené změny.
+2. Upravte závažnost, stav, čas spuštění nebo čas ukončení a klikněte na Hotovo a uložte provedené změny.
 
 ## <a name="configuring-notifications-for-alerts"></a>Konfigurace oznámení pro výstrahy
 
@@ -145,7 +145,7 @@ Konfigurace oznámení pro generování e-mailů při výskytu upozornění nebo
 
    ![Filtrovat výstrahy](./media/backup-azure-manage-windows-server/configure-notification.png)
 
-Ve výchozím nastavení jsou e- mailová oznámení zapnutá. Kliknutím na **vypnout** zastavte e-mailová oznámení.
+Ve výchozím nastavení jsou e-mailová oznámení zapnutá. Kliknutím na **vypnout** zastavte e-mailová oznámení.
 
 V ovládacím prvku **Upozornění** vyberte **výstrahu** v případě, že nechcete seskupení nebo nemá mnoho položek, které by mohly generovat výstrahy. Každá výstraha má za následek jedno oznámení (výchozí nastavení) a okamžitě se pošle e-mail s řešením.
 

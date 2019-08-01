@@ -1,9 +1,9 @@
 ---
-title: Přidat typ uzlu do clusteru Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak pro horizontální navýšení kapacity clusteru Service Fabric tak, že přidáte Škálovací sady virtuálních počítačů.
+title: Přidání typu uzlu do clusteru Azure Service Fabric | Microsoft Docs
+description: Naučte se škálovat Cluster Service Fabric přidáním sady škálování virtuálního počítače.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/13/2019
-ms.author: aljo
-ms.openlocfilehash: ed5bf829e2fbff6c286acdb21a8d0158148483d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 1414e656a358af1e258c823cc7ec747fefa986ba
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60506718"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598688"
 ---
-# <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Horizontální navýšení kapacity clusteru Service Fabric tak, že přidáte škálovací sadu virtuálních počítačů
-Tento článek popisuje, jak škálování clusteru Azure Service Fabric přidáním nového typu uzlu do existujícího clusteru. Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Škálovací sady virtuálních počítačů jsou výpočetním prostředkem Azure, který použijete k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Azure je [nastavit jako samostatné škálovací sada](service-fabric-cluster-nodetypes.md). Každý typ uzlu je pak spravovat samostatně. Po vytvoření clusteru Service Fabric, můžete škálovat cluster horizontálně přidáním nového typu uzlu (škálovací sady virtuálních počítačů) do existujícího clusteru.  Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru.  Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
+# <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Horizontální škálování Service Fabric clusteru přidáním sady škálování virtuálních počítačů
+Tento článek popisuje, jak škálovat cluster Azure Service Fabric přidáním nového typu uzlu do existujícího clusteru. Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Sady škálování virtuálních počítačů jsou výpočetním prostředkem Azure, který můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definovaný v clusteru Azure, je [nastavený jako samostatná sada škálování](service-fabric-cluster-nodetypes.md). Každý typ uzlu se pak dá spravovat samostatně. Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně přidáním nového typu uzlu (sada škálování virtuálního počítače) do existujícího clusteru.  Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.  I když se cluster škáluje, vaše aplikace se automaticky škálují.
 
-## <a name="add-an-additional-scale-set-to-an-existing-cluster"></a>Přidat další škálovací sady do existujícího clusteru
-Přidání nového typu uzlu (která je založená na škálovací sadu virtuálních počítačů) ve stávajícím clusteru je podobný [upgradu primárního uzlu typu](service-fabric-scale-up-node-type.md)s výjimkou případů nebudete používat stejné NodeTypeRef; zřejmě nebude možné zakázat některé aktivně používá škálovací sady virtuálních počítačů, a pokud aktualizujete není primární typ uzlu nedojde ke ztrátě dostupnost clusteru. 
+## <a name="add-an-additional-scale-set-to-an-existing-cluster"></a>Přidání další sady škálování do existujícího clusteru
+Přidání nového typu uzlu (který je zálohovaný sadou škálování virtuálního počítače) na stávající cluster se podobá [upgradu primárního typu uzlu](service-fabric-scale-up-node-type.md)s tím rozdílem, že nebudete používat stejný NodeTypeRef; zjevně nebude nutné zakázat žádné aktivně používané sady škálování virtuálních počítačů a neztratíte dostupnost clusteru, pokud neaktualizujete typ primárního uzlu. 
 
-Vlastnost NodeTypeRef je deklarována v rámci virtuálního počítače škálovací sady vlastností rozšíření Service Fabric:
+Vlastnost NodeTypeRef je deklarovaná v rámci vlastností rozšíření sady škálování virtuálního počítače Service Fabric:
 ```json
 <snip>
 "publisher": "Microsoft.Azure.ServiceFabric",
@@ -39,7 +39,7 @@ Vlastnost NodeTypeRef je deklarována v rámci virtuálního počítače škálo
 <snip>
 ```
 
-Kromě toho budete muset přidat tento nový typ uzlu prostředku clusteru Service Fabric:
+Kromě toho budete muset přidat tento nový typ uzlu do prostředku Service Fabric clusteru:
 
 ```json
 <snip>
@@ -64,9 +64,9 @@ Kromě toho budete muset přidat tento nový typ uzlu prostředku clusteru Servi
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [vertikálně navýšit kapacitu primární typ uzlu](service-fabric-scale-up-node-type.md)
-* Další informace o [aplikace škálovatelnost](service-fabric-concepts-scalability.md).
-* [Škálování clusteru Azure snížení nebo navýšení kapacity](service-fabric-tutorial-scale-cluster.md).
-* [Škálování clusteru Azure prostřednictvím kódu programu](service-fabric-cluster-programmatic-scaling.md) pomocí fluent Azure compute SDK.
-* [Horizontální snížení nebo navýšení kapacity samostatného clusteru](service-fabric-cluster-windows-server-add-remove-nodes.md).
+* Přečtěte si, jak [škálovat typ primárního uzlu](service-fabric-scale-up-node-type.md)
+* Přečtěte si o [škálovatelnosti aplikací](service-fabric-concepts-scalability.md).
+* Horizontální navýšení nebo navýšení [kapacity clusteru Azure](service-fabric-tutorial-scale-cluster.md)
+* [Škálujte cluster Azure pomocí programu](service-fabric-cluster-programmatic-scaling.md) Fluent Azure COMPUTE SDK.
+* Horizontální navýšení [nebo zmenšení kapacity samostatného clusteru](service-fabric-cluster-windows-server-add-remove-nodes.md)
 

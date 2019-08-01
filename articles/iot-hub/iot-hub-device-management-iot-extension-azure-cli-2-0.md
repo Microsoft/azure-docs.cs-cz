@@ -1,69 +1,72 @@
 ---
-title: Azure správy zařízení IoT s využitím rozšíření IoT pro rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Použití rozšíření IoT pro nástroj příkazového řádku Azure pro správu zařízení Azure IoT Hub, poskytuje funkci přímých metod a možnosti správy požadované vlastnosti Dvojčete společnosti.
+title: Správa zařízení Azure IoT pomocí rozšíření IoT pro Azure CLI | Microsoft Docs
+description: Pro správu zařízení Azure IoT Hub použijte rozšíření IoT pro Azure CLI, které nabízí přímé metody a možnosti správy požadovaných vlastností.
 author: chrissie926
 manager: ''
-keywords: Správa zařízení Azure iot, správou zařízení azure iot hub, iot správy zařízení, správy zařízení služby iot hub
+keywords: Správa zařízení Azure IoT, Správa zařízení ve službě IoT Hub, Správa zařízení IoT, Správa zařízení ve službě IoT Hub
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 6b1029c5532e106c269b47e6e184b9c93faf8d09
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 93efd6e53470fb78bb6d823652437e7a37c33732
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399593"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640568"
 ---
-# <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Použití rozšíření IoT pro Azure CLI pro správu zařízení Azure IoT Hub
+# <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Použití rozšíření IoT pro Azure CLI pro správu zařízení IoT Hub Azure
 
-![Diagram začátku do konce](media/iot-hub-get-started-e2e-diagram/2.png)
+![Komplexní diagram](media/iot-hub-get-started-e2e-diagram/2.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) je nové open source rozšíření IoT, která přidává do funkce [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Azure CLI zahrnuje příkazy pro komunikaci s Azure resource Manageru a koncových bodů správy. Například můžete použít rozhraní příkazového řádku Azure k vytvoření virtuálního počítače Azure nebo centra IoT. Rozšíření rozhraní příkazového řádku povolí službu pro rozšíření rozhraní příkazového řádku Azure poskytuje přístup k další funkce specifické pro služby Azure. Rozšíření IoT poskytuje vývojářům IoT příkazového řádku přístup k funkcím IoT Hub, IoT Edge a IoT Hub Device Provisioning Service.
+[Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) je nové open source rozšíření IoT, které přináší možnosti rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Rozhraní příkazového řádku Azure CLI obsahuje příkazy pro komunikaci s koncovými body Azure Resource Manager a správy. Pomocí Azure CLI můžete například vytvořit virtuální počítač Azure nebo centrum IoT. Rozšíření CLI umožňuje službě Azure rozšířit Azure CLI a získat tak přístup k dalším funkcím specifickým pro službu. Rozšíření IoT poskytuje vývojářům IoT přístup k funkcím příkazového řádku pro všechny funkce IoT Hub, IoT Edge a IoT Hub Device Provisioning Service.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Možnost správy          | Úkol  |
+| Možnost správy          | Úloha  |
 |----------------------------|-----------|
-| Přímé metody             | Ujistěte se, zařízení fungují jako je například spouštění nebo zastavování zasílání zpráv nebo restartování zařízení.                                        |
-| Požadované vlastnosti dvojčete    | Umístěte zařízení do některých stavech, například nastavit kontrolku LED na zelenou nebo nastavení intervalu odeslání telemetrie do 30 minut.         |
-| Ohlášené vlastnosti dvojčete   | Získejte ohlášené stav zařízení. Například zařízení hlásí, že je nyní blikající indikátor LED.                                    |
-| Značky dvojčat                  | Store metadata specifická pro zařízení v cloudu. Například nasazení umístění prodejní počítače.                         |
-| Dotazy dvojčete zařízení        | Dotaz pro načtení ty, které mají libovolné podmínky, jako je identifikace zařízení, které jsou k dispozici pro použití všech dvojčat zařízení. |
+| Přímé metody             | Udělejte zařízení jako takové, jako je spuštění nebo zastavení odesílání zpráv nebo restartování zařízení.                                        |
+| Vyplňování požadovaných vlastností    | Vložte zařízení do určitých stavů, jako je například nastavení indikátoru LED na zelenou nebo nastavení intervalu odesílání telemetrie na 30 minut.         |
+| Nedokončené vlastnosti   | Načte stav nahlášeného zařízení. Například zařízení nahlásí, že indikátor LED právě bliká.                                    |
+| Zdvojené značky                  | Ukládat metadata specifická pro zařízení v cloudu. Například umístění nasazení počítače prodejní Automate.                         |
+| Nevlákenné dotazy zařízení        | Dotázat se na všechna vlákna zařízení, aby se tyto vlákna načetly s libovolnými podmínkami, jako je určení zařízení, která jsou k dispozici pro použití. |
 
-Podrobnější vysvětlení na rozdíly a pokyny k použití těchto možností najdete v článku [pokyny komunikace typu zařízení cloud](iot-hub-devguide-d2c-guidance.md) a [pokyny komunikaci typu Cloud zařízení](iot-hub-devguide-c2d-guidance.md).
+Podrobnější vysvětlení rozdílů a pokynů k používání těchto možností najdete v tématu [pokyny k komunikaci mezi zařízeními](iot-hub-devguide-d2c-guidance.md) a cloudem a [pokyny pro komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md).
 
-Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu zařízení (metadata, konfigurace a podmínky). IoT Hub udržuje takové dvojče pro každé zařízení, která se k němu připojuje. Další informace o dvojčata zařízení, najdete v části [Začínáme s dvojčaty zařízení](iot-hub-node-node-twin-getstarted.md).
+Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu zařízení (metadata, konfigurace a podmínky). IoT Hub přetrvává pro každé zařízení, které se k němu připojuje. Další informace o nevlákenách zařízení najdete v tématu [Začínáme s dvojitými zprávami](iot-hub-node-node-twin-getstarted.md)o zařízení.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-Zjistíte pomocí rozšíření IoT pro Azure CLI různé možnosti správy na svém vývojovém počítači.
+Naučíte se používat rozšíření IoT pro Azure CLI s různými možnostmi správy ve vývojovém počítači.
 
-## <a name="what-you-do"></a>Co můžete dělat
+## <a name="what-you-do"></a>Co dělat
 
-Spuštění rozhraní příkazového řádku Azure a rozšíření IoT pro Azure CLI s různými možnostmi správy.
+Spusťte Azure CLI a rozšíření IoT pro Azure CLI s různými možnostmi správy.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-* Dokončení [online simulátor Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md) kurzu nebo jeden z kurzů zařízení; například [Raspberry Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ty zahrnují následující požadavky:
+* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například Malina [Pi s Node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto položky se týkají následujících požadavků:
 
   - Aktivní předplatné Azure.
-  - Azure IoT hub v rámci vašeho předplatného.
-  - Klientská aplikace, která odesílá zprávy do služby Azure IoT hub.
+  - Azure IoT Hub v rámci vašeho předplatného.
+  - Klientská aplikace, která odesílá zprávy do služby Azure IoT Hub.
 
-* Zajistěte, aby že na zařízení běží v klientské aplikaci během tohoto kurzu.
+* Ujistěte se, že vaše zařízení je spuštěné pomocí klientské aplikace v průběhu tohoto kurzu.
 
 * [Python 2.7x nebo Python 3.x](https://www.python.org/downloads/)
 
-* Azure CLI. Pokud potřebujete nainstalovat, přečtěte si téma [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Minimálně musí být vaše Azure CLI verze 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –version`. 
+<!-- I'm not sure we need all this info, so comment out this include for now. Robin 7.26.2019
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)] -->
 
-* Instalace rozšíření IoT. Nejjednodušším způsobem je spustit příkaz `az extension add --name azure-cli-iot-ext`. Soubor [Readme rozšíření IoT](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) obsahuje popis několika způsobů instalace rozšíření.
+* Rozhraní příkazového řádku Azure Pokud ho potřebujete nainstalovat, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Minimálně musí být vaše Azure CLI verze 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –version`.
 
-## <a name="log-in-to-your-azure-account"></a>Přihlaste se ke svému účtu Azure.
+* Nainstalujte rozšíření IoT. Nejjednodušším způsobem je spustit příkaz `az extension add --name azure-cli-iot-ext`. Soubor [Readme rozšíření IoT](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) obsahuje popis několika způsobů instalace rozšíření.
+
+## <a name="sign-in-to-your-azure-account"></a>Přihlášení k účtu Azure
 
 Přihlaste se ke svému účtu Azure spuštěním následujícího příkazu:
 
@@ -80,36 +83,36 @@ az iot hub invoke-device-method --device-id <your device id> \
   --method-payload <the method payload>
 ```
 
-## <a name="device-twin-desired-properties"></a>Požadované vlastnosti dvojčete zařízení
+## <a name="device-twin-desired-properties"></a>Požadované vlastnosti vlákna zařízení
 
-Nastavit požadovanou vlastnost interval = 3000 spuštěním následujícího příkazu:
+Nastavte požadovaný interval vlastnosti = 3000 spuštěním následujícího příkazu:
 
 ```bash
 az iot hub device-twin update -n <your hub name> \
   -d <your device id> --set properties.desired.interval = 3000
 ```
 
-Tato vlastnost může číst z vašeho zařízení.
+Tato vlastnost se dá číst z vašeho zařízení.
 
-## <a name="device-twin-reported-properties"></a>Ohlášené vlastnosti dvojčete zařízení
+## <a name="device-twin-reported-properties"></a>Nedokončené hlášené vlastnosti zařízení
 
-Spuštěním následujícího příkazu získejte ohlášené vlastnosti zařízení:
+Nahlášené vlastnosti zařízení získáte spuštěním následujícího příkazu:
 
 ```bash
 az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
-Jeden z dvojčeti nahlásila vlastnosti $metadata. $lastUpdated která ukazuje čas poslední aplikace pro zařízení aktualizovat jeho sady ohlášené vlastnosti.
+Jedna z nedokončených hlášených vlastností je $metadata. $lastUpdated, která zobrazuje čas poslední aktualizace hlášené sady vlastností aplikací zařízení.
 
-## <a name="device-twin-tags"></a>Značky dvojčat zařízení
+## <a name="device-twin-tags"></a>Značky, které jsou v zařízení
 
-Zobrazení značek a vlastnosti zařízení, spuštěním následujícího příkazu:
+Zobrazte značky a vlastnosti zařízení spuštěním následujícího příkazu:
 
 ```bash
 az iot hub device-twin show --hub-name <your hub name> --device-id <your device id>
 ```
 
-Přidání role pole = teploty a vlhkosti zařízení spuštěním následujícího příkazu:
+Spuštěním následujícího příkazu přidejte do zařízení roli Field & vlhkosti:
 
 ```bash
 az iot hub device-twin update \
@@ -118,16 +121,16 @@ az iot hub device-twin update \
   --set tags = '{"role":"temperature&humidity"}}'
 ```
 
-## <a name="device-twin-queries"></a>Dotazy dvojčete zařízení
+## <a name="device-twin-queries"></a>Nevlákenné dotazy zařízení
 
-Dotazování zařízení značkou role = 'teploty a vlhkosti' spuštěním následujícího příkazu:
+Spusťte dotaz na zařízení se značkou role = ' teplota & vlhkosti ' spuštěním následujícího příkazu:
 
 ```bash
 az iot hub query --hub-name <your hub name> \
   --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
 ```
 
-Dotazování všechna zařízení kromě těch značkou role = 'teploty a vlhkosti' spuštěním následujícího příkazu:
+Dotázat se na všechna zařízení s výjimkou toho, že s příznakem role = ' teplota & vlhkosti ' spuštěním následujícího příkazu:
 
 ```bash
 az iot hub query --hub-name <your hub name> \
@@ -136,6 +139,6 @@ az iot hub query --hub-name <your hub name> \
 
 ## <a name="next-steps"></a>Další postup
 
-Jste zjistili, jak pro monitorování zpráv typu zařízení cloud a odesílání zpráv typu cloud zařízení mezi zařízení IoT a Azure IoT Hub.
+Zjistili jste, jak monitorovat zprávy ze zařízení do cloudu a jak odesílat zprávy z cloudu na zařízení mezi zařízením IoT a službou Azure IoT Hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -4,7 +4,7 @@ description: Další informace o nástrojích a nástroje, které jsou předem n
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 0a503b82c07da62b5c5c768d8e1c92cb19e75aee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: d48c2b849f875289c89201f20478deebf4c00db9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236476"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565230"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>Seznamte se váš virtuální počítač pro datové vědy
 
 Na Data virtuálního počítače VĚDY obsahuje rozsáhlý seznam oblíbených datové vědy, počítače nástroje učení/umělou Inteligenci a datové platformy. Nástroj konfigurace jsou pečlivě otestovat odborníci přes data a vývojáři ve společnosti Microsoft a širší komunity odborníků přes data zajistit stabilitu a obecné životnost.
 
-Datové VĚDY také obsahuje několik ukázek kódu a názorné postupy ve formě poznámkové bloky Jupyter, může být spuštěn místně. Je také dokumentaci pro tyto ukázky na podporu pochopení. 
+DSVM také obsahuje několik ukázek kódu a návody ve formě poznámkových bloků Jupyter, které lze spustit místně. K dispozici je také dokumentace pro tyto ukázky, které pomáhají porozumění. 
 
 > [!NOTE]
-> Můžete použít [poznámkových bloků Azure](/azure/notebooks/azure-notebooks-overview) k vytvoření, spuštění a sdílení poznámkové bloky Jupyter v cloudu. Je možné [připojit virtuální počítač pro datové vědy poznámkových bloků Azure](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier) rozšíření k dispozici výpočetní výkon.
+> Pomocí [Azure Notebooks](../../notebooks/azure-notebooks-overview.md) můžete vytvářet, spouštět a sdílet poznámkové bloky Jupyter v cloudu. K rozšíření dostupného výpočetního výkonu můžete [připojit data Science VM k Azure Notebooks](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) .
 
 Nástroje, platformy, nástroje a ukázky, které jsou součástí virtuální počítač pro datové vědy jsou uspořádány do následujících částí:
 

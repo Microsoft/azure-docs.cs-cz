@@ -1,6 +1,6 @@
 ---
-title: Základní zásady vyžadovat vícefaktorové ověřování pro správu service (preview) – Azure Active Directory
-description: Zásady podmíněného přístupu k vynucení vícefaktorového ověřování pro Azure Resource Manageru
+title: Základní zásady vyžadují MFA pro správu služeb (Preview) – Azure Active Directory
+description: Zásada podmíněného přístupu, která vyžaduje MFA pro Azure Resource Manager
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,63 +11,63 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203b752f9da67ebf60e373fe7ce0893b4fd7fcb5
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: aab2aa4415345747a0e87b90ef0a7ee770ef3465
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560964"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608120"
 ---
-# <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Základní zásady: Vyžadovat vícefaktorové ověřování pro službu správy (preview)
+# <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Základní zásady: Vyžadovat MFA pro správu služby (Preview)
 
-Může používat širokou škálu služeb Azure ve vaší organizaci. Tyto služby můžete spravovat pomocí rozhraní API Azure Resource Manageru:
+Ve vaší organizaci možná používáte nejrůznější služby Azure. Tyto služby je možné spravovat prostřednictvím rozhraní Azure Resource Manager API:
 
 * portál Azure
 * Azure PowerShell
 * Azure CLI
 
-Pomocí Azure Resource Manageru pro správu svých služeb je vysoce privilegované akce. Azure Resource Manageru můžete změnit celého tenanta konfigurace, například nastavení služby a fakturace předplatného. Jednomu faktoru ověřování je citlivé na celou řadu útoků, jako jsou útoky phishing a heslo zařízení. Proto je důležité k ověření identity uživatelů, kteří chtějí přístup k Azure Resource Manageru a aktualizace konfigurací s vyžadováním ověřování službou Multi-Factor Authentication před povolením přístupu.
+Použití Azure Resource Manager ke správě služeb je vysoce privilegovaná akce. Azure Resource Manager může měnit konfigurace v rámci tenanta, jako je například nastavení služby a fakturace předplatného. Ověřování jedním faktorem je zranitelné vůči nejrůznějším útokům, jako je útok phishing a heslo. Proto je důležité ověřit identitu uživatelů, kteří chtějí přistupovat k konfiguracím Azure Resource Manager a aktualizace, a to tak, že před povolením přístupu povolíte vícefaktorové ověřování.
 
-**Vyžadovat vícefaktorové ověřování pro správu služeb** je [základní zásady](concept-baseline-protection.md) , který bude vyžadovat vícefaktorové ověřování pro všechny uživatele, kteří používají Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure. Tyto zásady platí pro všechny uživatele přístup k Azure Resource Manageru, bez ohledu na to, pokud jsou správci.
+**Vyžadovat vícefaktorové ověřování pro správu služeb** je [základní zásadou](concept-baseline-protection.md) , která bude vyžadovat MFA pro všechny uživatele, kteří přistupují k Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Tato zásada platí pro všechny uživatele, kteří přistupují k Azure Resource Manager bez ohledu na to, jestli se jedná o správce.
 
-Jakmile se povolí tyto zásady v tenantovi, všichni uživatelé přihlásí prostředky správy Azure se samy službou Multi-Factor authentication. Pokud uživatel není zaregistrovaný pro MFA, uživatel bude muset zaregistrovat, chcete-li pokračovat pomocí aplikace Microsoft Authenticator.
+Po povolení této zásady v tenantovi budou mít všichni uživatelé přihlášení k prostředkům správy Azure služby Multi-Factor Authentication. Pokud uživatel není zaregistrován pro vícefaktorové ověřování, uživatel bude muset zaregistrovat pomocí aplikace Microsoft Authenticator, aby bylo možné pokračovat.
 
-Provádět interaktivní přihlášení pomocí [prostředí Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps), použijte [připojit AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) rutiny.
+Pokud chcete provádět interaktivní přihlašování pomocí [Azure PowerShellu](https://docs.microsoft.com/powershell/azure/authenticate-azureps), použijte rutinu [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 
 ```PowerShell
 Connect-AzAccount
 ```
 
-Po spuštění této rutiny se zobrazí řetězec tokenu. Pro přihlášení, zkopírujte tento řetězec a vložte ho do [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)  v prohlížeči. Vaše relace PowerShellu se ověří pro připojení k Azure.
+Po spuštění této rutiny se zobrazí řetězec tokenu. Pokud se chcete přihlásit, zkopírujte tento řetězec a vložte ho [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)do  prohlížeče v prohlížeči. Vaše relace PowerShellu se ověří pro připojení k Azure.
 
-K provádění interaktivního přihlášení pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest), spusťte [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) příkazu.
+Pokud chcete provádět interaktivní přihlašování pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest), spusťte příkaz [AZ Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) .
 
 ```azurecli
 az login
 ```
 
-Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě budete muset otevřít stránku prohlížeče a postupujte podle pokynů v příkazovém řádku zadejte autorizační kód po přejití do [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin) v prohlížeči. Potom se přihlaste se pomocí přihlašovacích údajů k účtu v prohlížeči.
+Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít stránku prohlížeče a podle pokynů v příkazovém řádku zadat autorizační kód po přechodu do [https://aka.ms/devicelogin](https://aka.ms/devicelogin) prohlížeče. Pak se přihlaste pomocí přihlašovacích údajů k účtu v prohlížeči.
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
-Vzhledem k tomu, **vyžadovat vícefaktorové ověřování pro správu služeb** zásady platí pro všechny uživatele Azure Resource Manageru, třeba mít na paměti, které jsou potřeba provést zajistit hladký průběh nasazení. Mezi tyto aspekty patří identifikace uživatelů a zásad služby Azure AD, který nelze nebo by neměly provádět vícefaktorové ověřování, jakož i aplikacím a klientům ve své organizaci, které nepodporují moderní ověřování.
+Vzhledem k tomu, že zásady **vyžadovat MFA pro správu služby** platí pro všechny Azure Resource Manager uživatele, je potřeba provést několik důležitých informací, aby bylo zajištěno hladké nasazení. Mezi tyto požadavky patří určení uživatelů a zásad služeb ve službě Azure AD, které nemůžou nebo by neměly provádět MFA, a také aplikace a klienty používané ve vaší organizaci, které nepodporují moderní ověřování.
 
-## <a name="enable-the-baseline-policy"></a>Povolit zásady směrný plán
+## <a name="enable-the-baseline-policy"></a>Povolit základní zásady
 
-Zásady **směrný plán zásad: Vyžadovat vícefaktorové ověřování pro službu správy (preview)** vybavená předem nakonfigurovaným a se zobrazí v horní části, když přejdete do okna podmíněného přístupu na webu Azure portal.
+Zásady standardních **hodnot zásad: Vyžadovat vícefaktorové ověřování pro správu služeb (Preview** ) je předem nakonfigurované a při přechodu do okna podmíněný přístup v Azure Portal se zobrazí v horní části.
 
-Tuto zásadu povolit a chránit vaše správce:
+Chcete-li povolit tuto zásadu a chránit správce:
 
-1. Přihlaste se k **webu Azure portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Přejděte do **Azure Active Directory** > **podmíněného přístupu**.
-1. V seznamu zásad, vyberte **směrný plán zásad: Vyžadovat vícefaktorové ověřování pro službu správy (preview)** .
-1. Nastavte **povolit zásady** k **použít zásady okamžitě**.
-1. Klikněte na tlačítko **Uložit**.
+1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přejděte na **Azure Active Directory** > **podmíněný přístup**.
+1. V seznamu zásad vyberte **základní zásady: Vyžadovat vícefaktorové ověřování pro správu služeb (Preview**).
+1. Nastavte **Povolit zásadu** pro **okamžité použití zásad**.
+1. Klikněte na **Uložit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace naleznete v tématu:
 
-* [Zásady ochrany směrného plánu podmíněného přístupu](concept-baseline-protection.md)
-* [Zabezpečení vaší infrastruktury identit v pěti krocích](../../security/azure-ad-secure-steps.md)
+* [Zásady ochrany základní úrovně přístupu pro podmíněný přístup](concept-baseline-protection.md)
+* [Pět kroků pro zabezpečení infrastruktury identity](../../security/fundamentals/steps-secure-identity.md)
 * [Co je podmíněný přístup v Azure Active Directory?](overview.md)

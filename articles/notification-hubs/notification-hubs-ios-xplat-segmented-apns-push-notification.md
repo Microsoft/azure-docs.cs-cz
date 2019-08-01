@@ -1,6 +1,6 @@
 ---
-title: Nabízená oznámení do zařízení s Iosem konkrétní pomocí Azure Notification Hubs | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do zařízení s Iosem konkrétní.
+title: Nabízená oznámení na konkrétní zařízení s iOS pomocí Azure Notification Hubs | Microsoft Docs
+description: V tomto kurzu se naučíte používat službu Azure Notification Hubs k posílání nabízených oznámení na konkrétní zařízení s iOS.
 services: notification-hubs
 documentationcenter: ios
 author: jwargo
@@ -12,54 +12,54 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 07/28/2019
 ms.author: jowargo
-ms.openlocfilehash: dd625dba0e125ccf993af524a0ab0c0cc66555fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f83afa62859dee5963749daf2555af08cf6a0e0b
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60873140"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663822"
 ---
-# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do zařízení s Iosem konkrétní pomocí Azure Notification Hubs
+# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení na konkrétní zařízení s iOS pomocí Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu se dozvíte, jak používat Azure Notification Hubs k rozesílání mimořádných zpráv do aplikace pro iOS. Jakmile budete hotovi, se můžete připojit k registraci zásadní nové kategorie, které vás zajímají a přijímat pouze nabízená oznámení pro tyto kategorie. Tento scénář se běžně používá v řadě aplikací, které posílají oznámení skupinám uživatelům, kteří o ně projevili zájem. Může jít třeba o čtečku RSS, aplikaci pro hudební fanoušky atd.
+V tomto kurzu se dozvíte, jak pomocí Azure Notification Hubs vysílat oznámení o novinkách do aplikace pro iOS. Po dokončení se můžete zaregistrovat k nezúčastněným kategoriím zpráv, které vás zajímají, a pro tyto kategorie přijímat jenom nabízená oznámení. Tento scénář se běžně používá v řadě aplikací, které posílají oznámení skupinám uživatelům, kteří o ně projevili zájem. Může jít třeba o čtečku RSS, aplikaci pro hudební fanoušky atd.
 
-Scénáře vysílání povolíte tak, že při registraci v centru oznámení přidáte jednu nebo více *značek*. Pokud jsou oznámení odesílána značku, zařízení, které jste se zaregistrovali pro značku dostat oznámení. Značky jsou jednoduše řetězce, které se nemusejí vytvářet předem. Další informace o značkách najdete v článku [Směrování a výrazy značek ve službě Notification Hubs](notification-hubs-tags-segment-push-message.md).
+Scénáře vysílání povolíte tak, že při registraci v centru oznámení přidáte jednu nebo více *značek*. Po odeslání oznámení do značky obdrží oznámení zařízení, která jsou zaregistrovaná pro značku. Značky jsou jednoduše řetězce, které se nemusejí vytvářet předem. Další informace o značkách najdete v článku [Směrování a výrazy značek ve službě Notification Hubs](notification-hubs-tags-segment-push-message.md).
 
 V tomto kurzu provedete následující kroky:
 
 > [!div class="checklist"]
-> * Přidat výběr kategorie aplikace
+> * Přidání výběru kategorie do aplikace
 > * Posílání označených oznámení
-> * Odesílání oznámení ze zařízení
+> * Odeslat oznámení ze zařízení
 > * Spuštění aplikace a generování oznámení
 
 ## <a name="prerequisites"></a>Požadavky
 
-Toto téma staví na aplikaci, kterou jste vytvořili v [kurzu: Nabízená oznámení do aplikace pro iOS pomocí Azure Notification Hubs][get-started]. Před zahájením tohoto kurzu, musí už jste dokončili [kurzu: Nabízená oznámení do aplikace pro iOS pomocí Azure Notification Hubs][get-started].
+Toto téma se sestavuje v aplikaci, [kterou jste vytvořili v kurzu: Nabízená oznámení do aplikací pro iOS pomocí][get-started]Azure Notification Hubs. Před zahájením tohoto kurzu musíte mít již dokončený [kurz: Nabízená oznámení do aplikací pro iOS pomocí][get-started]Azure Notification Hubs.
 
 ## <a name="add-category-selection-to-the-app"></a>Přidání výběru kategorií do aplikace
 
-Prvním krokem je přidání prvků uživatelského rozhraní na existující scénář, který uživateli umožňuje vybrat kategorie k registraci. Kategorie, které uživatel vybere, jsou uložené v zařízení. Při spuštění aplikace se v centru oznámení provede registrace zařízení s vybranými kategoriemi ve formě značek.
+Prvním krokem je přidání prvků uživatelského rozhraní do stávajícího scénáře, který umožňuje uživateli vybrat kategorie k registraci. Kategorie, které uživatel vybere, jsou uložené v zařízení. Při spuštění aplikace se v centru oznámení provede registrace zařízení s vybranými kategoriemi ve formě značek.
 
-1. Ve vaší **MainStoryboard_iPhone.storyboard** z objektu knihovny přidejte následující součásti:
+1. V **MainStoryboard_iPhone. ve scénáři** přidejte do knihovny objektů následující komponenty:
 
-   * Popisek s textem "Novinkách."
-   * Popisky se texty kategorie "World", "Politika", "Obchodní", "Technologie", "Přírodověda", "Sports"
-   * Šest přepínače, jeden pro každou kategorii, nastavit každý přepínač **stavu** bude **vypnout** ve výchozím nastavení.
-   * Jedno tlačítko s popiskem "Přihlásit k odběru"
+   * Popisek s textem "průlom News",
+   * Popisky s texty kategorií "World", "politika", "Business", "Technology", "věda", "Sport",
+   * Šest přepínačů, jeden pro každou kategorii, **nastavte ve výchozím** nastavení všechny **stavy** přepínačů.
+   * Jedno tlačítko s označením "předplatné"
 
      Scénář by měl vypadat takto:
 
      ![Tvůrce rozhraní Xcode][3]
 
-2. V editoru Pomocníka s nastavením, vytvoříte výstupy pro všechny přepínače a volat "WorldSwitch", "PoliticsSwitch", "BusinessSwitch", "TechnologySwitch", "ScienceSwitch", "SportsSwitch"
-3. Vytvoření akce pro tlačítko volá `subscribe`; vaší `ViewController.h` by měl obsahovat následující kód:
+2. V editoru pomocníka vytvořte pro všechny přepínače možnost vzdálení a zavolejte je "WorldSwitch", "PoliticsSwitch", "BusinessSwitch", "TechnologySwitch", "ScienceSwitch", "SportsSwitch".
+3. Vytvořte akci pro tlačítko s názvem `subscribe`. váš `ViewController.h` obsah by měl obsahovat následující kód:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UISwitch *WorldSwitch;
@@ -72,7 +72,7 @@ Prvním krokem je přidání prvků uživatelského rozhraní na existující sc
     - (IBAction)subscribe:(id)sender;
     ```
 
-4. Vytvořte nový **třída Cocoa Touch** volá `Notifications`. V části rozhraní souboru Notifications.h zkopírujte následující kód:
+4. Vytvořte novou **třídu pro kakao Touch** s názvem. `Notifications` Zkopírujte následující kód do oddílu rozhraní oznámení souboru. h:
 
     ```objc
     @property NSData* deviceToken;
@@ -87,13 +87,13 @@ Prvním krokem je přidání prvků uživatelského rozhraní na existující sc
     - (void)subscribeWithCategories:(NSSet*)categories completion:(void (^)(NSError *))completion;
     ```
 
-5. Přidejte následující direktivy importu Notifications.m:
+5. Přidejte následující direktivu import do oznámení. m:
 
     ```objc
     #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
     ```
 
-6. V oddílu implementace souboru Notifications.m zkopírujte následující kód.
+6. Zkopírujte následující kód do části implementace v souboru Notifications. m.
 
     ```objc
     SBNotificationHub* hub;
@@ -133,9 +133,9 @@ Prvním krokem je přidání prvků uživatelského rozhraní na existující sc
     }
     ```
 
-    Tato třída používá místní úložiště k ukládání a načítání kategorie zpráv, který přijme toto zařízení. Kromě toho obsahuje metody pro registraci pro tyto kategorie pomocí [šablony](notification-hubs-templates-cross-platform-push-messages.md) registrace.
+    Tato třída používá místní úložiště k ukládání a načítání kategorií zpráv, které toto zařízení obdrží. Obsahuje také metodu pro registraci těchto kategorií pomocí registrace [šablony](notification-hubs-templates-cross-platform-push-messages.md) .
 
-7. V `AppDelegate.h` přidejte příkaz import pro `Notifications.h` a přidejte vlastnost instance `Notifications` třídy:
+7. V souboru přidejte příkaz Import pro `Notifications.h` a přidejte vlastnost `Notifications` pro instanci třídy: `AppDelegate.h`
 
     ```objc
     #import "Notifications.h"
@@ -143,8 +143,8 @@ Prvním krokem je přidání prvků uživatelského rozhraní na existující sc
     @property (nonatomic) Notifications* notifications;
     ```
 
-8. V `didFinishLaunchingWithOptions` metoda ve `AppDelegate.m`, přidat kód pro inicializaci instance oznámení na začátku metody.  
-    `HUBNAME` a `HUBLISTENACCESS` (definované v `hubinfo.h`) byste už měli mít `<hub name>` a `<connection string with listen access>` zástupné symboly nahradí název vašeho centra oznámení a připojovacího řetězce pro *DefaultListenSharedAccessSignature*, který jste získali dříve
+8. V metodě v `AppDelegate.m`přidejte kód pro inicializaci instance oznámení na začátku metody. `didFinishLaunchingWithOptions`  
+    `HUBNAME`a `HUBLISTENACCESS` (`hubinfo.h`definované `<connection string with listen access>`)by již měly mít zástupné symboly anahrazenynázvemvašehocentraoznámeníapřipojovacímřetězcemproDefaultListenSharedAccessSignature,kteréjste`<hub name>` získali. nejdříve
 
     ```objc
     self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];
@@ -153,10 +153,10 @@ Prvním krokem je přidání prvků uživatelského rozhraní na existující sc
     > [!NOTE]
     > Obecně platí, že přihlašovací údaje distribuované klientskou aplikací nejsou příliš bezpečné, a proto byste měli s klientskou aplikací distribuovat jenom přístupový klíč pro naslouchání. Přístup pro naslouchání umožňuje aplikaci registrovat oznámení, ale nedovolí měnit stávající registrace ani odesílat oznámení. Plný přístupový klíč se používá v zabezpečené back-endové službě k posílání oznámení a změně stávajících registrací.
 
-9. V `didRegisterForRemoteNotificationsWithDeviceToken` metoda ve `AppDelegate.m`, nahraďte kód v metodě předat token zařízení do následujícího kódu `notifications` třídy. `notifications` Třída provádí registrace k oznámením pomocí kategorií. Pokud uživatel změní výběr kategorie, zavolejte `subscribeWithCategories` metody v reakci na **odběru** tlačítko je aktualizovat.
+9. V metodě v `AppDelegate.m`nahraďte kód v metodě následujícím kódem pro předání tokenu zařízení do `notifications` třídy. `didRegisterForRemoteNotificationsWithDeviceToken` `notifications` Třída provádí registraci pro oznámení s kategoriemi. Pokud uživatel změní výběr kategorie, zavolejte `subscribeWithCategories` metodu v reakci na tlačítko přihlásit k **odběru** a aktualizujte je.
 
     > [!NOTE]
-    > Vzhledem k tomu, že v každém okamžiku může šance token zařízení přiřazené podle Apple Push Notification Service (APNS), byste měli zaregistrovat pro oznámení často, aby se zabránilo chybám oznámení. V tomto příkladu se oznámení registrují při každém spuštění aplikace. Pokud se aplikace spouštějí často, třeba častěji než jednou denně, pravděpodobně můžete registraci přeskočit kvůli úspoře šířky pásma, protože od předchozí registrace neuplynul ani den.
+    > Vzhledem k tomu, že token zařízení přiřazený Apple Push Notification Service (APNS) může kdykoli platit, měli byste se často zaregistrovat k oznámením, aby nedocházelo k chybám oznámení. V tomto příkladu se oznámení registrují při každém spuštění aplikace. Pokud se aplikace spouštějí často, třeba častěji než jednou denně, pravděpodobně můžete registraci přeskočit kvůli úspoře šířky pásma, protože od předchozí registrace neuplynul ani den.
 
     ```objc
     self.notifications.deviceToken = deviceToken;
@@ -172,12 +172,12 @@ Prvním krokem je přidání prvků uživatelského rozhraní na existující sc
     }];
     ```
 
-    V tomto okamžiku by měla existovat žádný kód v `didRegisterForRemoteNotificationsWithDeviceToken` metody.
+    V tomto okamžiku by neměl existovat žádný jiný kód v `didRegisterForRemoteNotificationsWithDeviceToken` metodě.
 
-10. Následující metody by měla být již přítomny v `AppDelegate.m` Dokončit [Začínáme s Notification Hubs] [ get-started] kurzu. Pokud ne, je přidat.
+10. Následující metody by již měly být přítomny `AppDelegate.m` v tématu dokončení kurzu [Začínáme s Notification Hubs][get-started] . Pokud ne, přidejte je.
 
     ```objc
-    -(void)MessageBox:(NSString *)title message:(NSString *)messageText
+    - (void)MessageBox:(NSString *)title message:(NSString *)messageText
     {
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
@@ -185,16 +185,16 @@ Prvním krokem je přidání prvků uživatelského rozhraní na existující sc
         [alert show];
     }
 
-    * (void)application:(UIApplication *)application didReceiveRemoteNotification:
+    - (void)application:(UIApplication *)application didReceiveRemoteNotification:
        (NSDictionary *)userInfo {
        NSLog(@"%@", userInfo);
        [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
      }
     ```
 
-    Tato metoda obsluhuje oznámení, když je aplikace spuštěna, zobrazením jednoduchého **UIAlert**.
+    Tato metoda zpracovává oznámení přijatá při spuštění aplikace zobrazením jednoduchého UIAlertu.
 
-11. V `ViewController.m`, přidejte `import` příkaz pro `AppDelegate.h` a zkopírujte následující kód do XCode vygenerovat `subscribe` metody. Tento kód aktualizuje registrace oznámení používat nové značky kategorií, které uživatel se rozhodl v uživatelském rozhraní.
+11. V `ViewController.m` `subscribe` přidejte příkaz pro `AppDelegate.h` a zkopírujte následující kód do metody vygenerované metodou Xcode. `import` Tento kód aktualizuje registraci oznámení, aby používal nové značky kategorií, které uživatel zvolil v uživatelském rozhraní.
 
     ```objc
     #import "Notifications.h"
@@ -212,16 +212,18 @@ Prvním krokem je přidání prvků uživatelského rozhraní na existující sc
 
     [notifications storeCategoriesAndSubscribeWithCategories:categories completion: ^(NSError* error) {
         if (!error) {
-            [(AppDelegate*)[[UIApplication sharedApplication]delegate] MessageBox:@"Notification" message:@"Subscribed!"];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:"Notification" message:"Subscribed" delegate:self
+            cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
         } else {
             NSLog(@"Error subscribing: %@", error);
         }
     }];
     ```
 
-    Tato metoda vytvoří `NSMutableArray` kategorií a používá `Notifications` třídy pro uložení seznamu v místním úložišti a registry, odpovídající značky ve vašem Centru oznámení. Při změně kategorií se vytvoří registrace s novými kategoriemi.
+    Tato metoda vytváří `NSMutableArray` kategorie a `Notifications` používá třídu k uložení seznamu v místním úložišti a registruje odpovídající značky v centru oznámení. Při změně kategorií se vytvoří registrace s novými kategoriemi.
 
-12. V `ViewController.m`, přidejte následující kód `viewDidLoad` metody nastavte uživatelské rozhraní založené na dříve uložený kategoriích.
+12. V `ViewController.m`přidejte následující kód `viewDidLoad` do metody pro nastavení uživatelského rozhraní na základě dříve uložených kategorií.
 
     ```objc
     // This updates the UI on startup based on the status of previously saved categories.
@@ -238,19 +240,19 @@ Prvním krokem je přidání prvků uživatelského rozhraní na existující sc
     if ([categories containsObject:@"Sports"]) self.SportsSwitch.on = true;
     ```
 
-Aplikace teď můžete ukládat sadu kategorií v místním úložišti zařízení použije k registraci v centru oznámení při každém spuštění aplikace. Uživatel může změnit výběr kategorií v modulu runtime a klikněte na tlačítko `subscribe` metoda se aktualizovat registraci zařízení. Dále aktualizujete aplikaci k odesílání mimořádných zpráv přímo v samotné aplikaci.
+Aplikace teď může ukládat sadu kategorií v místním úložišti zařízení, které se používá k registraci v centru oznámení při každém spuštění aplikace. Uživatel může změnit výběr kategorií za běhu a kliknout `subscribe` na metodu pro aktualizaci registrace zařízení. V dalším kroku aktualizujete aplikaci tak, aby odesílala oznámení o novinkách přímo do samotné aplikace.
 
-## <a name="optional-send-tagged-notifications"></a>(volitelné) Odesílání oznámení příznakem
+## <a name="optional-send-tagged-notifications"></a>volitelné Odesílat označená oznámení
 
-Pokud nemáte přístup ke službě Visual Studio, můžete přeskočit k další části a odesílání oznámení z aplikace. Můžete také odeslat oznámení správné šablony z [Azure Portal] pomocí karty ladění pro vaše Centrum oznámení.
+Pokud nemáte přístup k aplikaci Visual Studio, můžete přejít k další části a odesílat oznámení z aplikace samotné. Můžete také odeslat správné oznámení šablony z [Azure Portal] pomocí karty ladění v centru oznámení.
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="optional-send-notifications-from-the-device"></a>(volitelné) Odesílání oznámení ze zařízení
+## <a name="optional-send-notifications-from-the-device"></a>volitelné Odeslat oznámení ze zařízení
 
-Obvykle bude odesláno oznámení pomocí back-end službu, ale můžete odesílat oznámení o aktuálních zprávách přímo z aplikace. Uděláte to tak, aktualizujte `SendNotificationRESTAPI` metodu, která jste definovali v [Začínáme s Notification Hubs] [ get-started] kurzu.
+Obvykle se oznámení odesílají pomocí back-end služby, ale můžete posílat oznámení o novinkách přímo z aplikace. Provedete to tak, že `SendNotificationRESTAPI` aktualizujete metodu, kterou jste definovali v kurzu [Začínáme s Notification Hubs][get-started] .
 
-1. V `ViewController.m`, aktualizujte `SendNotificationRESTAPI` metody jako následuje tak, aby přijímá parametr kategorie značky a odešle správné [šablony](notification-hubs-templates-cross-platform-push-messages.md) oznámení.
+1. V `ViewController.m` nástroji`SendNotificationRESTAPI` aktualizujte metodu následujícím způsobem tak, aby přijímala parametr pro značku kategorie a odesílala správné oznámení [šablon](notification-hubs-templates-cross-platform-push-messages.md) .
 
     ```objc
     - (void)SendNotificationRESTAPI:(NSString*)categoryTag
@@ -311,7 +313,7 @@ Obvykle bude odesláno oznámení pomocí back-end službu, ale můžete odesíl
     }
     ```
 
-2. V `ViewController.m`, aktualizujte `Send Notification` akce, jak je znázorněno v následujícím kódu. Tak, aby odešle oznámení pomocí jednotlivé značky jednotlivě a odešle na více platforem.
+2. V `ViewController.m` nástroji`Send Notification` aktualizujte akci, jak je znázorněno v následujícím kódu. Takže pošle oznámení s použitím jednotlivých značek jednotlivě a pošle je na několik platforem.
 
     ```objc
     - (IBAction)SendNotificationMessage:(id)sender
@@ -330,25 +332,25 @@ Obvykle bude odesláno oznámení pomocí back-end službu, ale můžete odesíl
     }
     ```
 
-3. Znovu sestavte projekt a ujistěte se, že máte žádné chyby buildu.
+3. Znovu sestavte projekt a ujistěte se, že nedošlo k chybám sestavení.
 
 ## <a name="run-the-app-and-generate-notifications"></a>Spuštění aplikace a generování oznámení
 
-1. Stisknutím tlačítka Spustit se projekt sestavil a aplikace se spustila. Vyberte některé možnosti zprávy rozbíjející přihlásit k odběru a potom stiskněte klávesu **přihlásit k odběru** tlačítko. Zobrazí se dialogové okno oznamující, že oznámení jste se přihlásili k odběru.
+1. Stisknutím tlačítka Spustit Sestavte projekt a spusťte aplikaci. Vyberte některé možnosti pro průlomové zprávy, které se mají přihlásit k odběru, a pak stiskněte tlačítko **přihlásit k odběru** . Mělo by se zobrazit dialogové okno, které indikuje, že se oznámení přihlásila.
 
     ![Příklad oznámení v iOS][1]
 
-    Pokud zvolíte **přihlásit k odběru**, aplikace vybraných kategorií převádí značky a vyžaduje nové registrace zařízení u vybraných značek v centru oznámení.
+    Když zvolíte **přihlášení k odběru**, aplikace převede vybrané kategorie na značky a požádá o nové registrace zařízení pro vybrané značky z centra oznámení.
 
-2. Zadejte zprávu, která odeslat, protože stiskněte mimořádných zpráv **odeslat oznámení** tlačítko. Alternativně Spusťte konzolovou aplikaci .NET pro generování oznámení.
+2. Zadejte zprávu, která se pošle jako podzprávy s novinkami, a pak stiskněte tlačítko **Odeslat oznámení** . Případně spusťte konzolovou aplikaci .NET pro generování oznámení.
 
-    ![Změnit předvolby oznámení v iOS][2]
+    ![Změna předvoleb oznámení v iOS][2]
 
-3. Každé předplatné služby mimořádné zprávy obdržením mimořádných zpráv, které jste právě odeslali.
+3. Každé zařízení, které se přihlásí k odběru nových zpráv, obdrží oznámení o novinkách, která jste právě odeslali.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zaslali oznámení vysílání specifické pro zařízení s iOS, které jste se zaregistrovali do kategorií. Informace o k odesílání lokalizovaných oznámení, přejděte k následujícímu kurzu:
+V tomto kurzu jste odeslali oznámení všesměrového vysílání na konkrétní zařízení s iOS, která jsou zaregistrovaná pro tyto kategorie. Pokud se chcete dozvědět, jak doručovat lokalizované oznámení, přejděte k následujícímu kurzu:
 
 > [!div class="nextstepaction"]
 >[Odesílání lokalizovaných oznámení](notification-hubs-ios-xplat-localized-apns-push-notification.md)

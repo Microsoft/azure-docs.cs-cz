@@ -1,19 +1,19 @@
 ---
-title: Funkce systému
-description: Další informace o funkce systému SQL ve službě Azure Cosmos DB.
+title: Systémové funkce
+description: Přečtěte si o funkcích systému SQL v Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 11a6fdad187670bcb5af4c56198fd7343680690d
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b0e9c751d46f805af75196da464a39783c95ae6a
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342533"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619994"
 ---
-# <a name="system-functions"></a>Funkce systému
+# <a name="system-functions"></a>Systémové funkce
 
  Cosmos DB poskytuje mnoho předdefinovaných funkcí SQL. Kategorie předdefinované funkce jsou uvedeny níže.  
   
@@ -23,35 +23,35 @@ ms.locfileid: "67342533"
 |[Kontrola funkce typu](#type-checking-functions)|Funkce pro kontrolu typů umožňují zkontrolujte typ výrazu v rámci dotazů SQL.|  
 |[Funkce řetězců](#string-functions)|Řetězcové funkce provádění operací na vstupní hodnotu řetězce a vrátí řetězec, číslo nebo logickou hodnotu.|  
 |[Funkce pole](#array-functions)|Funkce pole provádění operací na hodnotu vstupního pole a vrácené číselné, logickou hodnotu nebo hodnotu pole.|
-|[Funkce Date a Time](#date-time-functions)|Funkce date a time umožňují získat aktuální datum a čas UTC ve dvou formách; číselné timestamp, jehož hodnota je epocha Unix v milisekundách, nebo jako řetězec, který odpovídá formátu ISO 8601.|
+|[Funkce pro datum a čas](#date-time-functions)|Funkce data a času vám umožní získat aktuální datum a čas UTC ve dvou formách. číselné časové razítko, jehož hodnota je epocha systému UNIX v milisekundách nebo jako řetězec, který odpovídá formátu ISO 8601.|
 |[Prostorové funkce](#spatial-functions)|Prostorové funkce provádění operací na prostorový vstupní hodnotu a vrátí číslo nebo logickou hodnotu.|  
 
-Níže je seznam funkcí v jednotlivých kategoriích:
+Níže najdete seznam funkcí v rámci jednotlivých kategorií:
 
 | Skupina – funkce | Operace |
 |---------|----------|
-| Matematické funkce | ABS, HORNÍ MEZ, EXP, FLOOR, PROTOKOLU, LOG10, POWER, KRUHOVÉ, PŘIHLÁŠENÍ, SQRT, ČTVEREC, TRUNC –, ACOS, ASIN, ATAN, ATN2, COS, COT, DEGREES, PI, RADIANS, SIN TAN |
-| Kontrola typu funkce | IS_ARRAY – IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT –, IS_STRING, IS_DEFINED, IS_PRIMITIVE |
+| Matematické funkce | ABS, STROP, EXP, FLOOR, LOG, LOG10 –, POWER, ROUND, SIGN, SQRT, SQUARE, TRUNC –, ACOS, ASIN, ATAN, ATN2, COS, COT, STUPNĚ, PI, RADIÁNY, RAND, SIN, TAN |
+| Funkce pro kontrolu typů | IS_ARRAY – IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT –, IS_STRING, IS_DEFINED, IS_PRIMITIVE |
 | Funkce řetězců | CONCAT, OBSAHUJE, ENDSWITH, INDEX_OF, VLEVO, DÉLKA, DOLNÍ, LTRIM, NAHRAĎTE, REPLIKACI, OBRÁTIT, VPRAVO, RTRIM, STARTSWITH, PODŘETĚZEC, HORNÍ |
 | Funkce pole | ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH a ARRAY_SLICE |
-| Funkce Date a Time | GETCURRENTDATETIME GETCURRENTTIMESTAMP,  |
+| Funkce pro datum a čas | GETCURRENTDATETIME, GETCURRENTTIMESTAMP,  |
 | Prostorové funkce | ST_DISTANCE ST_WITHIN, ST_INTERSECTS, ST_ISVALID, ST_ISVALIDDETAILED |
 
-Pokud aktuálně používáte uživatelem definované funkce (UDF) pro kterou předdefinované funkce je teď k dispozici, bude odpovídající integrované funkce pro spuštění rychlejší a efektivnější.
+Pokud aktuálně používáte uživatelsky definovanou funkci (UDF), pro kterou je teď k dispozici integrovaná funkce, bude mít odpovídající integrovaná funkce rychlejší spuštění a efektivnější.
 
-Hlavní rozdíl mezi funkcí ANSI SQL a Cosmos DB je, že funkce Cosmos DB jsou navrženy pro práci i s daty bez schématu a smíšené schématu. Například, pokud vlastnost chybí nebo má jiné než číselné hodnoty, jako jsou `unknown`, položky se přeskočila místo vrácení chyby.
+Hlavním rozdílem mezi funkcemi Cosmos DB a ANSI funkcí SQL je, že funkce Cosmos DB jsou navržené tak, aby dobře fungovaly s daty schématu a se smíšenými schématy. Například pokud vlastnost chybí nebo má jinou než číselnou hodnotu `unknown`, položka je vynechána místo vrácení chyby.
 
 ##  <a name="mathematical-functions"></a> Matematické funkce  
 
 Matematické funkce provádí výpočet, založené na vstupní hodnoty, které jsou k dispozici jako argumenty a vrátit číselnou hodnotu.
 
-Můžete spouštět dotazy jako v následujícím příkladu:
+Můžete spustit dotazy jako v následujícím příkladu:
 
 ```sql
     SELECT VALUE ABS(-4)
 ```
 
-Výsledkem je:
+Výsledek je následující:
 
 ```json
     [4]
@@ -66,9 +66,9 @@ Tady je tabulka podporovaných předdefinovaných matematických funkcí.
 |[COS](#bk_cos)|[COT](#bk_cot)|[STUPŇŮ](#bk_degrees)|  
 |[EXP](#bk_exp)|[DOLNÍ MEZ](#bk_floor)|[LOG](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[NAPÁJENÍ](#bk_power)|  
-|[RADIANS](#bk_radians)|[ZAOKROUHLIT](#bk_round)|[SIN](#bk_sin)|  
-|[SQRT](#bk_sqrt)|[ČTVEREC](#bk_square)|[SIGN](#bk_sign)|  
-|[TAN](#bk_tan)|[TRUNC –](#bk_trunc)||  
+|[RADIANS](#bk_radians)|[ZAOKROUHLIT](#bk_round)|[FUNKCÍ](#bk_rand)|
+|[SIN](#bk_sin)|[SQRT](#bk_sqrt)|[ČTVEREC](#bk_square)|
+|[SIGN](#bk_sign)|[TAN](#bk_tan)|[TRUNC –](#bk_trunc)||  
   
 ####  <a name="bk_abs"></a> ABS  
  Vrátí absolutní hodnotu (pozitivní) zadaný číselný výraz.  
@@ -425,7 +425,7 @@ EXP (<numeric_expression>)
   
   Exponent číslo je konstanta **e** umocněné na čísla. Například EXP(1.0) = e ^ 1.0 = 2.71828182845905 a EXP(10) = e ^ 10 = 22026.4657948067.  
   
-  Exponent přirozený logaritmus čísla číslo se sama: EXP (protokol (n).) = n. A přirozený logaritmus čísla exponenciální je číslo sama: PROTOKOL (EXP (n).) = n.  
+  Exponenciální hodnota přirozeného logaritmu čísla je samotné číslo: EXP (LOG (n)) = n. A přirozený logaritmus exponenciálního čísla je číslo samotné: LOG (EXP (n)) = n.  
   
   **Příklady**  
   
@@ -482,7 +482,7 @@ LOG (<numeric_expression> [, <base>])
   
   Přirozený logaritmus se logaritmus o základu **e**, kde **e** rovná nenormální – konstanta přibližně 2.718281828.  
   
-  Přirozený logaritmus čísla exponenciální je číslo sama: PROTOKOL (EXP (n).) = n. A exponent přirozený logaritmus čísla je číslo sama: EXP (protokol (n).) = n.  
+  Přirozený logaritmus exponenciálního čísla je číslo samotné: LOG (EXP (n)) = n. A exponenciální hodnota přirozeného logaritmu čísla je samotné číslo: EXP (LOG (n)) = n.  
   
   **Příklady**  
   
@@ -555,13 +555,7 @@ SELECT LOG10(100) AS log10
 ```  
 PI ()  
 ```  
-  
- **Argumenty**  
-  
-- `numeric_expression`  
-  
-   Je číselný výraz.  
-  
+   
   **Návratové typy**  
   
   Vrátí hodnotu číselného výrazu.  
@@ -677,14 +671,14 @@ ROUND(<numeric_expression>)
   
   **Poznámky**
   
-  Operaci zaokrouhlení provádí následuje střední zaokrouhlení směrem od nuly. Pokud je vstup číselný výraz, který spadá do rozmezí dvou celých čísel přesně výsledkem bude nejbližší celočíselnou hodnotu od nuly.  
+  Operace zaokrouhlení proběhla podle středního bodu zaokrouhlení směrem od nuly. Pokud je vstupním výrazem, který se přesně shoduje se dvěma celými čísly, výsledkem bude nejbližší celočíselná hodnota od nuly.  
   
   |<numeric_expression>|Zaokrouhleno|
   |-|-|
-  |-6.5000|-7|
-  |-0.5|-1|
+  |-6,5000|-7|
+  |-0,5|-1|
   |0,5|1|
-  |6.5000|7||
+  |6,5000|7||
   
   **Příklady**  
   
@@ -699,7 +693,34 @@ SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, 
 ```  
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
+
+#### <a name="bk_rand"></a>FUNKCÍ
+ Vrátí náhodně generovanou číselnou hodnotu z [0, 1).
+ 
+ **Syntaxe**  
   
+```  
+RAND ()  
+```  
+
+  **Návratové typy**  
+  
+  Vrátí hodnotu číselného výrazu.  
+  
+  **Příklady**  
+  
+  Následující příklad vrací náhodně generovanou číselnou hodnotu.  
+  
+```  
+SELECT RAND() AS rand 
+```  
+  
+ Tady je sada výsledků.  
+  
+```  
+[{"rand": 0.87860053195618093}]  
+``` 
+
 ####  <a name="bk_sign"></a> PŘIHLÁŠENÍ  
  Vrátí kladné (+ 1), nula (0) nebo záporné znaménko (-1), z určeného číselného výrazu.  
   
@@ -898,9 +919,9 @@ SELECT TRUNC(2.4) AS t1, TRUNC(2.6) AS t2, TRUNC(2.5) AS t3, TRUNC(-2.4) AS t4, 
 [{t1: 2, t2: 2, t3: 2, t4: -2, t5: -2}]  
 ```
 
-## <a id="type-checking-functions"></a>Kontrola funkce typu
+## <a id="type-checking-functions"></a>Funkce pro kontrolu typu
 
-Funkce kontroly typu umožňují zkontrolujte typ výrazu v rámci dotazu SQL. Kontrola typu funkce můžete použít k určení typů vlastností v rámci položky v reálném čase, když jsou proměnné nebo neznámý. Tady je tabulka funkcí podporovaných předdefinovaných kontroly typů:
+Funkce pro kontrolu typů umožňují kontrolovat typ výrazu v rámci dotazu SQL. Můžete použít funkce pro ověřování typu k určení typů vlastností v rámci položek za běhu, když jsou proměnné nebo neznámé. Tady je tabulka podporovaných integrovaných funkcí pro kontrolu typů:
 
 Následující funkce podporují typ kontroly proti vstupní hodnoty a vrátí hodnotu typu Boolean.  
   
@@ -1225,7 +1246,7 @@ SELECT
 
 ## <a id="string-functions"></a>Řetězcové funkce
 
-Následující skalární funkce provádění operací na vstupní hodnotu řetězce a vrátí řetězec, číslo nebo logickou hodnotu:
+Následující skalární funkce provede operaci na vstupní hodnotě řetězce a vrátí řetězec, číselnou hodnotu nebo logickou hodnotu:
   
 ||||  
 |-|-|-|  
@@ -1557,10 +1578,10 @@ REPLICATE(<str_expr>, <num_expr>)
   
 - `num_expr`  
   
-   Je jakýkoli platný číselný výraz. Pokud num_expr je záporný nebo nekonečnou, výsledek není definován.
+   Je jakýkoli platný číselný výraz. Pokud je num_expr negativní nebo nekonečný, výsledek není definován.
 
   > [!NOTE]
-  > Maximální délka výsledku je 10 000 znaků tedy (length(str_expr) * num_expr) < = 10 000.
+  > Maximální délka výsledku je 10 000 znaků, například (length (str_expr) * num_expr) < = 10 000.
   
   **Návratové typy**  
   
@@ -1716,8 +1737,8 @@ SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2
 [{"s1": false, "s2": true}]  
 ```  
 
-  ####  <a name="bk_stringtoarray"></a> StringToArray  
- Vrátí výraz přeložit na pole. Pokud výraz nelze přeložit, vrátí nedefinovaný.  
+  ####  <a name="bk_stringtoarray"></a>StringToArray  
+ Vrátí výraz přeložený do pole. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
   
  **Syntaxe**  
   
@@ -1729,17 +1750,17 @@ StringToArray(<expr>)
   
 - `expr`  
   
-   Je libovolný platný skalární výraz, který má být vyhodnocen jako výraz pole JSON. Všimněte si, že vnořené řetězcové hodnoty musí být napsané v uvozovkách platný. Podrobnosti o formátu JSON najdete v tématu [json.org](https://json.org/)
+   Je libovolný platný skalární výraz, který má být vyhodnocen jako výraz pole JSON. Všimněte si, že hodnoty vnořených řetězců musí být zapsány s dvojitými uvozovkami, aby byly platné. Podrobnosti o formátu JSON najdete v tématu [JSON.org](https://json.org/) .
   
   **Návratové typy**  
   
-  Vrátí výraz pole nebo není definován.  
+  Vrátí výraz pole nebo nedefinovaný.  
   
   **Příklady**  
   
-  Následující příklad ukazuje, jak se chová StringToArray do různých typů. 
+  Následující příklad ukazuje, jak se StringToArray chová napříč různými typy. 
   
- Následují příklady s platným vstupem.
+ Níže jsou uvedeny příklady s platným vstupem.
 
 ```
 SELECT 
@@ -1756,10 +1777,10 @@ Tady je sada výsledků.
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
 ```
 
-Následuje příklad neplatný vstup. 
+Následuje příklad neplatného vstupu. 
    
- Jednoduchých uvozovek a být v rámci pole nejsou platný kód JSON.
-I když jsou platné v rámci dotazu, se nebude analyzovat na platné pole. Buď musí být uvozena řetězců v rámci pole řetězce "[\\"\\"]" nebo okolních uvozovek musí být jeden "[" "]".
+ Jednoduché uvozovky v rámci pole nejsou platné JSON.
+I když jsou v rámci dotazu platné, nebudou analyzovány na platná pole. Řetězce v řetězci pole musí být buď uvozeny řídicím znakem\\"[\\" "]", nebo okolní uvozovka musí být jednoduché "[" "]".
 
 ```
 SELECT
@@ -1772,9 +1793,9 @@ Tady je sada výsledků.
 [{}]
 ```
 
-Následují příklady neplatný vstup.
+Níže jsou uvedeny příklady neplatného vstupu.
    
- Výraz předaný bude možné analyzovat jako pole JSON. Následující není vyhodnocen na typ pole a tak vrátit nedefinovaný.
+ Předaný výraz se analyzuje jako pole JSON; Následující pole nejsou vyhodnocena pro typ Array a proto vracejí nedefinované.
    
 ```
 SELECT
@@ -1791,8 +1812,8 @@ Tady je sada výsledků.
 [{}]
 ```
 
-####  <a name="bk_stringtoboolean"></a> StringToBoolean  
- Vrátí výraz přeložit na logickou hodnotu. Pokud výraz nelze přeložit, vrátí nedefinovaný.  
+####  <a name="bk_stringtoboolean"></a>StringToBoolean  
+ Vrátí výraz přeložený na logickou hodnotu. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
   
  **Syntaxe**  
   
@@ -1808,15 +1829,15 @@ StringToBoolean(<expr>)
   
   **Návratové typy**  
   
-  Vrátí logického výrazu nebo není definován.  
+  Vrátí logický výraz nebo nedefinovaný.  
   
   **Příklady**  
   
-  Následující příklad ukazuje, jak se chová StringToBoolean do různých typů. 
+  Následující příklad ukazuje, jak se StringToBoolean chová napříč různými typy. 
  
- Následují příklady s platným vstupem.
+ Níže jsou uvedeny příklady s platným vstupem.
 
-Prázdný znak je povolen pouze před nebo za "true"/ "false".
+Prázdný znak je povolený jenom před nebo za "true"/"false".
 
 ```  
 SELECT 
@@ -1831,9 +1852,9 @@ SELECT
 [{"b1": true, "b2": false, "b3": false}]
 ```  
 
-Následují příklady s neplatný vstup.
+Následují příklady s neplatným vstupem.
 
- Logické hodnoty jsou malá a velká písmena a musí být zapsaný s všechna malá písmena, to znamená "true" a "false".
+ V logických hodnotách se rozlišují malá a velká písmena a musí být zapsána bez malých písmen, tj. "true" a "false".
 
 ```  
 SELECT 
@@ -1847,7 +1868,7 @@ Tady je sada výsledků.
 [{}]
 ``` 
 
-Výraz předaný bude možné analyzovat jako logický výraz; tyto vstupy není vyhodnocen na typu Boolean a vrátit tak nedefinovaný.
+Předaný výraz bude analyzován jako logický výraz; Tyto vstupy se nevyhodnotí na typ Boolean, takže vrátí nedefinovanou hodnotu.
 
 ```  
 SELECT 
@@ -1865,7 +1886,7 @@ Tady je sada výsledků.
 ```  
 
 ####  <a name="bk_stringtonull"></a> StringToNull  
- Vrátí výraz převedeny na hodnotu null. Pokud výraz nelze přeložit, vrátí nedefinovaný.  
+ Vrátí výraz, který je přeložen na hodnotu null. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
   
  **Syntaxe**  
   
@@ -1877,19 +1898,19 @@ StringToNull(<expr>)
   
 - `expr`  
   
-   Je libovolný platný skalární výraz, který má být vyhodnocen jako výraz hodnotu null.
+   Je libovolný platný skalární výraz, který má být vyhodnocen jako výraz null.
   
   **Návratové typy**  
   
-  Vrací výraz hodnotu null nebo undefined.  
+  Vrátí nulový výraz nebo nedefinovaný.  
   
   **Příklady**  
   
-  Následující příklad ukazuje, jak se chová StringToNull do různých typů. 
+  Následující příklad ukazuje, jak se StringToNull chová napříč různými typy. 
 
-Následují příklady s platným vstupem.
+Níže jsou uvedeny příklady s platným vstupem.
 
- Prázdný znak je povolen pouze před nebo po "null".
+ Prázdný znak je povolen pouze před nebo za "null".
 
 ```  
 SELECT 
@@ -1904,9 +1925,9 @@ SELECT
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
-Následují příklady s neplatný vstup.
+Následují příklady s neplatným vstupem.
 
-Hodnota null je velká a malá písmena a musí být zapsaný s všechna malá písmena, například "null".
+Hodnota null rozlišuje velká a malá písmena a musí být zapsána bez malých písmen, tj. "null".
 
 ```  
 SELECT    
@@ -1920,7 +1941,7 @@ SELECT
 [{}]
 ```  
 
-Výraz předaný bude možné analyzovat jako výrazu hodnotu null; Zadejte hodnotu null a vrátit tak nedefinované nevyhodnocují tyto vstupy.
+Předaný výraz se analyzuje jako výraz s hodnotou null. Tyto vstupy se nevyhodnotí na typ null a proto se vrátí nedefinované.
 
 ```  
 SELECT    
@@ -1936,8 +1957,8 @@ SELECT
 [{}]
 ```  
 
-####  <a name="bk_stringtonumber"></a> StringToNumber  
- Vrátí výraz přeložit na číslo. Pokud výraz nelze přeložit, vrátí nedefinovaný.  
+####  <a name="bk_stringtonumber"></a>StringToNumber  
+ Vrátí výraz přeložený na číslo. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
   
  **Syntaxe**  
   
@@ -1949,17 +1970,17 @@ StringToNumber(<expr>)
   
 - `expr`  
   
-   Je libovolný platný skalární výraz, který má být vyhodnocen jako výraz JSON číslo. Čísla ve formátu JSON musí být celé číslo nebo plovoucí desetinnou čárkou. Podrobnosti o formátu JSON najdete v tématu [json.org](https://json.org/)  
+   Je libovolný platný skalární výraz, který má být vyhodnocen jako výraz čísla JSON. Čísla ve formátu JSON musí být celé číslo nebo plovoucí desetinná čárka. Podrobnosti o formátu JSON najdete v tématu [JSON.org](https://json.org/) .  
   
   **Návratové typy**  
   
-  Vrátí číslo výraz nebo není definován.  
+  Vrátí číselný výraz nebo nedefinovaný.  
   
   **Příklady**  
   
-  Následující příklad ukazuje, jak se chová StringToNumber do různých typů. 
+  Následující příklad ukazuje, jak se StringToNumber chová napříč různými typy. 
 
-Prázdný znak je povolen pouze před nebo po číslo.
+Prázdný znak je povolen pouze před nebo za číslem.
 
 ```  
 SELECT 
@@ -1975,7 +1996,7 @@ SELECT
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
 ```  
 
-Ve formátu JSON musí být platné číslo být celé číslo nebo plovoucí číslo bodu.
+Ve formátu JSON musí být platné číslo buď celé číslo, nebo číslo s plovoucí desetinnou čárkou.
 
 ```  
 SELECT   
@@ -1988,7 +2009,7 @@ SELECT
 {{}}
 ```  
 
-Výraz předaný bude možné analyzovat jako číslo výrazu; Zadejte číslo a vrátit tak nedefinované nevyhodnocují tyto vstupy. 
+Předaný výraz bude analyzován jako číselný výraz; Tyto vstupy se nevyhodnotí na typ Number, takže se vrátí nedefinované. 
 
 ```  
 SELECT 
@@ -2006,8 +2027,8 @@ SELECT
 {{}}
 ```  
 
-####  <a name="bk_stringtoobject"></a> StringToObject  
- Vrátí výraz přeložen na objekt. Pokud výraz nelze přeložit, vrátí nedefinovaný.  
+####  <a name="bk_stringtoobject"></a>StringToObject  
+ Vrátí výraz přeložený na objekt. Pokud výraz nelze přeložit, vrátí nedefinované funkce.  
   
  **Syntaxe**  
   
@@ -2019,17 +2040,17 @@ StringToObject(<expr>)
   
 - `expr`  
   
-   Je libovolný platný skalární výraz, který má být vyhodnocen jako výraz objektu JSON. Všimněte si, že vnořené řetězcové hodnoty musí být napsané v uvozovkách platný. Podrobnosti o formátu JSON najdete v tématu [json.org](https://json.org/)  
+   Je libovolný platný skalární výraz, který má být vyhodnocen jako výraz objektu JSON. Všimněte si, že hodnoty vnořených řetězců musí být zapsány s dvojitými uvozovkami, aby byly platné. Podrobnosti o formátu JSON najdete v tématu [JSON.org](https://json.org/) .  
   
   **Návratové typy**  
   
-  Vrátí objektový výraz nebo není definován.  
+  Vrátí výraz objektu nebo nedefinovaný.  
   
   **Příklady**  
   
-  Následující příklad ukazuje, jak se chová StringToObject do různých typů. 
+  Následující příklad ukazuje, jak se StringToObject chová napříč různými typy. 
   
- Následují příklady s platným vstupem.
+ Níže jsou uvedeny příklady s platným vstupem.
 
 ``` 
 SELECT 
@@ -2048,10 +2069,10 @@ Tady je sada výsledků.
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
 
- Následují příklady s neplatný vstup.
-I když jsou platné v rámci dotazu, se nebude analyzovat na platné objekty. Řetězce v rámci řetězce objektu musí buď být uvozeny řídicími znaky "{\\"\\":\\" str\\"}" nebo okolních uvozovek musí být jeden ' {"a": "str"} ".
+ Následují příklady s neplatným vstupem.
+I když jsou v rámci dotazu platné, nebudou analyzovány na platné objekty. Řetězce v řetězci objektu musí být buď uvozené řídicím znakem\\"{\\" a\\":\\" str "}", nebo okolní uvozovka musí být jednoduché "{" a ":" str "}".
 
-Jednoduché uvozovky kolem názvy vlastností nejsou platný kód JSON.
+Jednoduché uvozovky obklopující názvy vlastností nejsou platné JSON.
 
 ``` 
 SELECT 
@@ -2064,7 +2085,7 @@ Tady je sada výsledků.
 [{}]
 ```  
 
-Názvy vlastností bez okolních uvozovek nejsou platný kód JSON.
+Názvy vlastností bez okolních uvozovek nejsou platné JSON.
 
 ``` 
 SELECT 
@@ -2077,9 +2098,9 @@ Tady je sada výsledků.
 [{}]
 ``` 
 
-Následují příklady s neplatný vstup.
+Následují příklady s neplatným vstupem.
 
- Výraz předaný bude možné analyzovat jako objekt JSON; tyto vstupy není vyhodnocen na typ objektu a tak vrátit nedefinovaný.
+ Předaný výraz se analyzuje jako objekt JSON. Tyto vstupy se nevyhodnotí na typ Object a tak vrátí nedefinované.
 
 ``` 
 SELECT 
@@ -2114,7 +2135,7 @@ SUBSTRING(<str_expr>, <num_expr>, <num_expr>)
   
 - `num_expr`  
   
-   Je jakýkoli platný číselný výraz k označení počáteční a koncový znak.    
+   Je libovolný platný číselný výraz pro označení počátečního a koncového znaku.    
   
   **Návratové typy**  
   
@@ -2282,7 +2303,7 @@ SELECT UPPER("Abc") AS upper
 
 ## <a id="array-functions"></a>Funkce pole
 
-Následující skalární funkce provádění operací na hodnotu vstupního pole a vrátit číselné, hodnota logická hodnota nebo pole:
+Následující skalární funkce provádějí operaci na vstupní hodnotě pole a vracejí číselnou, logickou nebo hodnotu pole:
   
 ||||  
 |-|-|-|  
@@ -2323,7 +2344,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
-Vrátí logickou hodnotu označující, zda pole obsahuje zadanou hodnotu. Částečné nebo úplné shody objektu můžete zkontrolovat pomocí logický výraz v příkazu. 
+Vrátí logickou hodnotu označující, zda pole obsahuje zadanou hodnotu. Můžete kontrolovat částečnou nebo úplnou shodu objektu pomocí logického výrazu v rámci příkazu. 
 
 **Syntaxe**  
   
@@ -2343,7 +2364,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
 
 - `bool_expr`  
   
-   Je libovolný výraz boolean. Pokud je nastavena na "true'and, pokud je hodnota zadaného hledání objektu, příkaz vyhledá částečnou shodu (hledání objektu je podmnožinou některý z objektů). Pokud je nastavena na hodnotu 'false', tento příkaz zkontroluje úplná shoda všech objektů v poli. Výchozí hodnota, pokud není zadán je false. 
+   Je libovolný výraz boolean. Pokud je nastavena na hodnotu true'and, pokud zadaná hodnota vyhledávání je objekt, příkaz zkontroluje částečnou shodu (objekt hledání je podmnožinou jednoho z objektů). Pokud je nastaveno na hodnotu false, příkaz zkontroluje úplnou shodu všech objektů v poli. Výchozí hodnota, pokud není zadána, je false. 
   
   **Návratové typy**  
   
@@ -2473,16 +2494,16 @@ SELECT
            "s7": [] 
 }]  
 ```  
-## <a id="date-time-functions"></a>Datum a čas – funkce
+## <a id="date-time-functions"></a>Funkce data a času
 
-Následující skalární funkce umožňují získat aktuální datum a čas UTC ve dvou formách; číselné timestamp, jehož hodnota je epocha Unix v milisekundách, nebo jako řetězec, který odpovídá formátu ISO 8601. 
+Následující skalární funkce umožňují získat aktuální datum a čas UTC ve dvou formách. číselné časové razítko, jehož hodnota je epocha systému UNIX v milisekundách nebo jako řetězec, který odpovídá formátu ISO 8601. 
 
 |||
 |-|-|
 |[GETCURRENTDATETIME](#bk_get_current_date_time)|[GETCURRENTTIMESTAMP](#bk_get_current_timestamp)||
 
-####  <a name="bk_get_current_date_time"></a> GETCURRENTDATETIME
- Vrátí aktuální datum UTC a času jako řetězec ve formátu ISO 8601.
+####  <a name="bk_get_current_date_time"></a>GETCURRENTDATETIME
+ Vrátí aktuální datum a čas UTC jako řetězec ISO 8601.
   
  **Syntaxe**
   
@@ -2492,39 +2513,39 @@ GETCURRENTDATETIME ()
   
   **Návratové typy**
   
-  Vrátí aktuální čas UTC datum a čas ISO 8601 řetězcovou hodnotu. 
+  Vrátí aktuální hodnotu řetězce standardu UTC data a času 8601. 
 
-  To je vyjádřená ve formátu RRRR-MM-DDThh:mm:ss.sssZ kde:
+  Tato akce je vyjádřena ve formátu RRRR-MM-DDThh: mm: ss. sssZ, kde:
   
   |||
   |-|-|
-  |RRRR|čtyřmístný rok|
-  |MM|dvoumístným měsícem (01 = January, atd.)|
-  |DD|dvěma číslicemi den v měsíci (01 do 31)|
-  |T|signifier pro začátek prvků času|
-  |hh|Hodina dvou číslic (00 do 23)|
-  |mm|dvě číslice minut (00 do 59)|
-  |ss|dvě číslice sekund (00 do 59)|
-  |.sss|tři číslice desetinné zlomků sekund|
-  |Z|Označení UTC (Coordinated Universal Time)||
+  |RRRR|rok se čtyřmi číslicemi|
+  |MM|dvoumístný měsíc (01 = leden atd.)|
+  |DD|dvoumístné číslo dne v měsíci (01 až 31)|
+  |T|označuje, že se mají na začátku prvky času.|
+  |HH|dvě číslice – hodina (00 až 23)|
+  |mm|dvě číslice minuty (00 až 59)|
+  |ss|dvě číslice sekund (00 až 59)|
+  |.sss|tři číslice desetinné zlomky sekundy|
+  |Z|Označení UTC (koordinovaný světový čas)||
   
-  Další podrobnosti o formátu ISO 8601, naleznete v tématu [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
+  Další podrobnosti o formátu ISO 8601 najdete v tématu [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601) .
 
   **Poznámky**
 
-  GETCURRENTDATETIME je Nedeterministický funkce. 
+  GETCURRENTDATETIME je nedeterministické funkce. 
   
-  Vrácený výsledek je čas UTC (Coordinated Universal Time).
+  Vrácený výsledek je UTC (koordinovaný světový čas).
 
   **Příklady**  
   
-  Následující příklad ukazuje, jak získat aktuální datum čas UTC pomocí integrované funkce GetCurrentDateTime.
+  Následující příklad ukazuje, jak získat aktuální datum a čas UTC pomocí předdefinované funkce GetCurrentDateTime.
   
 ```  
 SELECT GETCURRENTDATETIME() AS currentUtcDateTime
 ```  
   
- Tady je Ukázková sada výsledků.
+ Tady je příklad sady výsledků dotazu.
   
 ```  
 [{
@@ -2532,8 +2553,8 @@ SELECT GETCURRENTDATETIME() AS currentUtcDateTime
 }]  
 ```  
 
-####  <a name="bk_get_current_timestamp"></a> GETCURRENTTIMESTAMP
- Vrátí počet milisekund, které uplynuly od 00:00:00 čtvrtek, 1. ledna 1970. 
+####  <a name="bk_get_current_timestamp"></a>GETCURRENTTIMESTAMP
+ Vrátí počet milisekund, které uplynuly od 00:00:00 ve čtvrtek, 1. ledna 1970. 
   
  **Syntaxe**  
   
@@ -2543,23 +2564,23 @@ GETCURRENTTIMESTAMP ()
   
   **Návratové typy**  
   
-  Vrátí číselnou hodnotu, aktuální počet milisekund uplynulých od epochy Unix to znamená počet milisekund, které uplynuly od 00:00:00 čtvrtek, 1. ledna 1970.
+  Vrátí číselnou hodnotu, aktuální počet milisekund, které uplynuly od epocha systému UNIX, tj. počet milisekund, které uplynuly od 00:00:00. ledna 1970.
 
   **Poznámky**
 
-  GETCURRENTTIMESTAMP je Nedeterministický funkce.
+  GETCURRENTTIMESTAMP je nedeterministické funkce.
   
-  Vrácený výsledek je čas UTC (Coordinated Universal Time).
+  Vrácený výsledek je UTC (koordinovaný světový čas).
 
   **Příklady**  
   
-  Následující příklad ukazuje, jak získat aktuální časové razítko pomocí integrované funkce GetCurrentTimestamp.
+  Následující příklad ukazuje, jak získat aktuální časové razítko pomocí předdefinované funkce GetCurrentTimestamp.
   
 ```  
 SELECT GETCURRENTTIMESTAMP() AS currentUtcTimestamp
 ```  
   
- Tady je Ukázková sada výsledků.
+ Tady je příklad sady výsledků dotazu.
   
 ```  
 [{
@@ -2775,8 +2796,8 @@ SELECT ST_ISVALIDDETAILED({
 }]  
 ```  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Úvod do služby Azure Cosmos DB](introduction.md)
-- [UDFs](sql-query-udfs.md)
-- [agregace](sql-query-aggregates.md)
+- [Úvod do Azure Cosmos DB](introduction.md)
+- [UDF](sql-query-udfs.md)
+- [Agregace](sql-query-aggregates.md)

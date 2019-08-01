@@ -1,6 +1,6 @@
 ---
-title: Kognitivní vyhledávání dovedností Shaper – Azure Search
-description: Extrahování metadat a strukturovaných informací z nestrukturovaných dat a převeďte ji jako komplexní typ v rozšíření kanálu služby Azure Search.
+title: Dovednost hledání Shaper rozpoznávání – Azure Search
+description: Extrahuje metadata a strukturované informace z nestrukturovaných dat a tvaruje je jako komplexní typ v kanálu rozšíření Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,41 +11,34 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 058b6c979346d9dcce36940432d0e222e919dba9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a970bb2c33db1ad78dca088b7d9b2430984df96
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540828"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698869"
 ---
-#   <a name="shaper-cognitive-skill"></a>Shaper kognitivních dovedností
+#   <a name="shaper-cognitive-skill"></a>Shaper vnímání znalostí
 
-**Shaper** dovednosti konsoliduje několik vstupy do [komplexní typ](search-howto-complex-data-types.md) , který může být odkazováno později v rozšíření kanálu. **Shaper** dovednosti umožňuje v podstatě vytvořit strukturu, definování názvu členem struktury a přiřadit hodnoty k jednotlivým členům. Konsolidované pole, které jsou užitečné v situacích, hledání příklady zkombinují název první a poslední do struktura single, Město a stát do jednoho struktury, nebo název a datum narození do jednoho struktury zřízení jedinečné identity.
+**Shaper** dovednost konsoliduje několik vstupů do [komplexního typu](search-howto-complex-data-types.md) , na který lze později odkazovat v kanálu rozšíření. **Shaper** dovednosti umožňuje v podstatě vytvořit strukturu, definovat název členů této struktury a přiřadit hodnoty každému členu. Příklady konsolidovaných polí užitečných ve scénářích vyhledávání zahrnují kombinování jména a příjmení do jedné struktury, města a stavu do jedné struktury, nebo název a DatumNarození do jediné struktury k navázání jedinečné identity.
 
-Verze rozhraní API zjistí, že je hloubka tvarování můžete dosáhnout. 
+**Shaper** dovednosti znázorněné ve [scénáři 3](#nested-complex-types) navíc do vstupu přidávají volitelnou vlastnost *sourceContext* . Vlastnosti *source* a *sourceContext* se vzájemně vylučují. Pokud je vstup v kontextu dovednosti, stačí použít *zdroj*. Pokud je vstup v *jiném* kontextu než dovednostní kontext, použijte *sourceContext*. *SourceContext* vyžaduje, abyste definovali vnořený vstup s konkrétním prvkem, který se řeší jako zdroj. 
 
-| Verze API | Strukturování chování | 
-|-------------|-------------------|
-| 2019-05-06-preview verzi rozhraní API REST (sadu .NET SDK se nepodporuje.) | Komplexní objekty, několik úrovní hluboko, v jednom **Shaper** definice dovedností. |
-| 2019-05-06 ** (všeobecně dostupné) 2017-11-11-Preview| Složité objekty jednu úroveň. Obrazec na více vyžaduje několik kroků shaper zřetězení.|
-
-Podle `api-version=2019-05-06-Preview`, **Shaper** dovednosti znázorněný v [scénář 3](#nested-complex-types) přidá nový volitelný *sourceContext* vlastnost na vstup. *Zdroj* a *sourceContext* vlastnosti se vzájemně vylučují. Pokud je vstup v kontextu dovednosti, jednoduše použijte *zdroj*. Pokud je vstup na *různých* kontextu než kontextu dovednosti, použijte *sourceContext*. *SourceContext* vyžaduje, abyste definovat vnořené vstup s konkrétní elementu zabýváme jako zdroj. 
-
-V odpovědi pro všechny verze rozhraní API výstupní název je vždy "výstupní". Kanál interně, můžete namapovat jiný název, jako je například "analyzedText", jak je znázorněno níže, ale **Shaper** dovednosti, samotný vrátí "výstupní" v odpovědi. To může být důležité Pokud ladíte bohatších možností dokumenty a Všimněte si názvů nesrovnalosti, nebo pokud při vývoji vlastních dovedností a jsou strukturování odpovědi, sami.
+Název výstupu je vždy "Output". Kanál interně může namapovat jiný název, jako je například "analyzedText", jak je znázorněno v níže uvedených příkladech, ale dovednost **Shaper** sám vrátí "Output" v odpovědi. To může být důležité, pokud ladíte obohacené dokumenty a všimnete si nesouladu názvů nebo pokud vytvoříte vlastní dovednost a rozřadíte odpověď sami.
 
 > [!NOTE]
-> **Shaper** dovednosti není svázána API služeb Cognitive Services a neúčtují k jeho používání. Měli stále [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md), ale k přepsání **Free** resource – možnost, která omezuje vám malý počet denních obohacení za den.
+> **Shaper** dovednost není vázána na rozhraní API Cognitive Services a za jejich použití se vám neúčtují žádné poplatky. K dispozici byste ale měli i [prostředek Cognitive Services](cognitive-search-attach-cognitive-services.md), abyste mohli přepsat možnost bezplatného prostředku, která omezuje na malý počet denních rozšíření za den.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>Scénář 1: komplexní typy
 
-Představte si třeba situaci, ve kterém chcete vytvořit strukturu s názvem *analyzedText* , který má dva členy: *text* a *mínění*v uvedeném pořadí. V indexu Azure Search je vícedílný prohledávatelná pole s názvem *komplexní typ* a je často vytvořena, když zdrojová data mají odpovídající složité struktury, která se mapuje na ni.
+Vezměte v úvahu scénář, ve kterém chcete vytvořit strukturu s názvem *analyzedText* , která má dva členy: *text* a *mínění*, v uvedeném pořadí. V Azure Search indexu se víceřádkové vyhledávací pole nazývá *komplexní typ* a často se vytváří, když má zdrojová data odpovídající komplexní strukturu, která se na ni mapuje.
 
-Další možností pro vytváření komplexních typů je však prostřednictvím **Shaper** dovedností. Zahrnutím této dovedností v dovedností můžete operací v paměti během zpracování dovednosti výstupní datové obrazce s vnořené struktury, které lze mapovat na komplexní typ v indexu. 
+Dalším přístupem k vytváření komplexních typů je však **Shaper** dovednost. Zahrnutím této dovednosti do dovednosti mohou operace v paměti během zpracování dovednosti výstupem datových tvarů s vnořenými strukturami, které lze následně namapovat na komplexní typ v indexu. 
 
-Následující příklad dovednosti definice obsahuje člen názvy jako vstup. 
+Následující příklad definice dovednosti poskytuje názvy členů jako vstup. 
 
 
 ```json
@@ -71,9 +64,9 @@ Následující příklad dovednosti definice obsahuje člen názvy jako vstup.
 }
 ```
 
-### <a name="sample-index"></a>Ukázkového indexu
+### <a name="sample-index"></a>Vzorový index
 
-Indexer vyvolá dovedností a indexer vyžaduje indexu. Reprezentace komplexní pole v indexu může vypadat jako v následujícím příkladu. 
+Dovednosti je vyvolán indexerem a indexer vyžaduje index. Složitá reprezentace pole v indexu může vypadat podobně jako v následujícím příkladu. 
 
 ```json
 
@@ -100,7 +93,7 @@ Indexer vyvolá dovedností a indexer vyžaduje indexu. Reprezentace komplexní 
 
 ### <a name="skill-input"></a>Vstup dovedností
 
-Dokument JSON příchozí poskytuje použitelné vstup pro tuto **Shaper** dovednosti může být:
+Příchozí dokument JSON, který poskytuje použitelný vstup pro tuto **Shaper** dovednost může být:
 
 ```json
 {
@@ -119,7 +112,7 @@ Dokument JSON příchozí poskytuje použitelné vstup pro tuto **Shaper** doved
 
 ### <a name="skill-output"></a>Výstup dovedností
 
-**Shaper** dovednosti vygeneruje nový prvek s názvem *analyzedText* kombinované elementy *text* a *mínění*. Tento výstup vyhovuje schématu indexu. Budou importovány a indexování v indexu Azure Search.
+**Shaper** dovednost generuje nový element s názvem *analyzedText* s kombinovanými prvky *textu* a *mínění*. Tento výstup odpovídá schématu indexu. Bude importována a indexována v indexu Azure Search.
 
 ```json
 {
@@ -139,11 +132,11 @@ Dokument JSON příchozí poskytuje použitelné vstup pro tuto **Shaper** doved
 }
 ```
 
-## <a name="scenario-2-input-consolidation"></a>Scénář 2: vstupní konsolidace
+## <a name="scenario-2-input-consolidation"></a>Scénář 2: konsolidace vstupu
 
-V jiném příkladu Představte si, že v různých fázích zpracování kanálu, můžete extrahovat název knihy a názvy kapitol na různých stránkách knihy. Nyní můžete vytvořit jednu strukturu skládá z těchto různých vstupy.
+V jiném příkladu Představte si, že v různých fázích zpracování kanálu jste extrahovali název knihy a nadpisy kapitol na různých stránkách knihy. Nyní můžete vytvořit jednu strukturu složenou z těchto různých vstupů.
 
-**Shaper** definice dovedností pro tento scénář může vypadat jako v následujícím příkladu:
+Definice dovedností **Shaper** pro tento scénář může vypadat jako v následujícím příkladu:
 
 ```json
 {
@@ -169,7 +162,7 @@ V jiném příkladu Představte si, že v různých fázích zpracování kanál
 ```
 
 ### <a name="skill-output"></a>Výstup dovedností
-V takovém případě **Shaper** sloučí všechny názvy kapitol vytvořte jedno pole. 
+V tomto případě **Shaper** sloučí všechny nadpisy kapitol a vytvoří jedno pole. 
 
 ```json
 {
@@ -193,14 +186,11 @@ V takovém případě **Shaper** sloučí všechny názvy kapitol vytvořte jedn
 
 <a name="nested-complex-types"></a>
 
-## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>Scénář 3: vstupní konsolidace z vnořené kontextů
+## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>Scénář 3: konsolidace vstupu z vnořených kontextů
 
-> [!NOTE]
-> Vnořené struktury v podporovány [rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) lze použít v [znalostní báze úložiště](knowledge-store-concept-intro.md) nebo v indexu Azure Search.
+Představte si, že máte nadpis, kapitoly a obsah knihy a máte v obsahu spuštěné rozpoznávání entit a klíčové fráze a teď je potřeba agregovat výsledky z různých dovedností do jednoho obrazce s názvem kapitoly, entitami a klíčovými frázemi.
 
-Představte si mít název, kapitol a obsah knihy a spustili entity rozpoznávání a klíč frází na obsah a teď potřeba agregovat výsledky z jiné dovednosti do jediného obrazce s názvem kapitoly, entit a klíčové fráze.
-
-**Shaper** definice dovedností pro tento scénář může vypadat jako v následujícím příkladu:
+Definice dovedností **Shaper** pro tento scénář může vypadat jako v následujícím příkladu:
 
 ```json
 {
@@ -237,7 +227,7 @@ Představte si mít název, kapitol a obsah knihy a spustili entity rozpoznává
 ```
 
 ### <a name="skill-output"></a>Výstup dovedností
-V takovém případě **Shaper** vytvoří komplexního typu. Tato struktura existuje v paměti. Pokud chcete uložit do úložiště znalostní báze, měli byste vytvořit projekce v vaše dovednosti, která definuje vlastnosti úložiště.
+V tomto případě **Shaper** vytvoří komplexní typ. Tato struktura existuje v paměti. Pokud ho chcete uložit do [znalostní báze Knowledge Store](knowledge-store-concept-intro.md), měli byste v dovednosti vytvořit projekci, která definuje charakteristiky úložiště.
 
 ```json
 {
@@ -259,10 +249,10 @@ V takovém případě **Shaper** vytvoří komplexního typu. Tato struktura exi
 }
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
-+ [Definování dovedností](cognitive-search-defining-skillset.md)
++ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
 + [Jak používat komplexní typy](search-howto-complex-data-types.md)
-+ [Přehled úložiště znalostní báze](knowledge-store-concept-intro.md)
-+ [Jak začít pracovat s úložištěm znalostní báze](knowledge-store-howto.md)
++ [Přehled znalostní báze Knowledge Store](knowledge-store-concept-intro.md)
++ [Jak začít s úložištěm Knowledge Store](knowledge-store-howto.md)

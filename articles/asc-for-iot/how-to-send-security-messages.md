@@ -1,6 +1,6 @@
 ---
-title: Odeslání zprávy o zabezpečení Azure Security Center pro IoT ve verzi Preview | Dokumentace Microsoftu
-description: Zjistěte, jak odeslat zabezpečení zprávy pomocí Azure Security Center pro IoT.
+title: Odeslání zpráv zabezpečení Azure Security Center pro IoT | Microsoft Docs
+description: Naučte se odesílat zprávy zabezpečení pomocí Azure Security Center pro IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,51 +13,49 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 73335773695059b3c2afd121a0dd39ada8d28bb0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c780eea15b9f064d3279c75ac2f967e8b6099ecb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618092"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596203"
 ---
-# <a name="send-security-messages-sdk"></a>Odesílat zprávy o zabezpečení SDK
+# <a name="send-security-messages-sdk"></a>Odeslat sadu SDK pro zprávy zabezpečení
 
-> [!IMPORTANT]
-> Azure Security Center pro IoT je aktuálně ve verzi public preview.
-> Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Tato příručka vysvětluje Azure Security Center (ASC) pro možnosti služby IoT, pokud budete chtít shromažďují a zasílají zprávy o zabezpečení vašeho zařízení bez použití ASC pro agenta IoT a vysvětluje, jak postupovat.  
+Tato příručka vysvětluje Azure Security Center možnosti služby IoT, když se rozhodnete shromažďovat a odesílat zprávy o zabezpečení zařízení bez použití Azure Security Center pro agenta IoT a vysvětluje, jak to udělat.  
 
 V této příručce se naučíte: 
 > [!div class="checklist"]
-> * Použít pro posílání zpráv zabezpečení rozhraní APIC#
-> * Použití odeslat zprávu zabezpečení rozhraní API pro C
+> * Použijte rozhraní API pro odeslání zprávy zabezpečení proC#
+> * Použití rozhraní API pro odeslání zprávy o zabezpečení pro jazyk C
 
-## <a name="asc-for-iot-capabilities"></a>ASC pro schopnosti IoT
+## <a name="azure-security-center-for-iot-capabilities"></a>Azure Security Center pro možnosti IoT
 
-Zpracovávat a analyzovat všech druhů dat zabezpečení zprávy, dokud data odeslaná odpovídá ASC pro IoT [ASC pro IoT schéma](https://aka.ms/iot-security-schemas) a zpráva je nastaven jako zabezpečení zpráv.
+Azure Security Center pro IoT může zpracovávat a analyzovat jakýkoli druh dat zprávy zabezpečení, pokud se odesílají data v souladu se [schématem Azure Security Center pro IoT](https://aka.ms/iot-security-schemas) a zpráva je nastavena jako bezpečnostní zpráva.
 
-## <a name="security-message"></a>Zabezpečení zpráv
+## <a name="security-message"></a>Zpráva zabezpečení
 
-ASC pro IoT definuje zabezpečení zpráv pomocí následujících kritérií:
-- Pokud zpráva byla odeslána s Azure IoT C /C# SDK
-- Pokud zpráva odpovídá [schématu zabezpečení zpráv](https://aka.ms/iot-security-schemas)
-- Pokud zpráva byla nastavena na zabezpečení zprávy před odesláním
+Azure Security Center pro IoT definuje bezpečnostní zprávu pomocí následujících kritérií:
+- Pokud byla zpráva odeslána pomocí Azure IoT C/C# SDK
+- Pokud zpráva odpovídá [schématu zprávy zabezpečení](https://aka.ms/iot-security-schemas)
+- Pokud byla zpráva před odesláním nastavena jako bezpečnostní zpráva
 
-Každá zpráva o zabezpečení, jako zahrnuje jejich metadata odesílatele `AgentId`, `AgentVersion`, `MessageSchemaVersion` a seznam událostí zabezpečení.
-Schéma definuje platné a požadované vlastnosti zabezpečení zprávy, včetně typů událostí.
+Každá zpráva zabezpečení obsahuje metadata odesílatele `AgentId`, jako je, `AgentVersion`, `MessageSchemaVersion` a seznam událostí zabezpečení.
+Schéma definuje platné a požadované vlastnosti zprávy zabezpečení, včetně typů událostí.
 
-[!NOTE]
-> Odesílat zprávy, která není v souladu s schématu jsou ignorovány. Ujistěte se, že k ověření schématu před zahájením odesílání dat nejsou aktuálně uložené ignorovaných zpráv. 
-> Odesílat zprávy, které nebyly nastaveny jako zabezpečení zpráv pomocí Azure IoT C /C# SDK nebude možné směrovat do ASC pro IoT kanálu
+>[!Note]
+> Zprávy odeslané v nedodržení schématu jsou ignorovány. Před zahájením odesílání dat Nezapomeňte ověřit schéma, protože ignorované zprávy se momentálně neukládají. 
 
-## <a name="valid-message-example"></a>Příklad platná zpráva
+>[!Note]
+> Zprávy odeslané jako bezpečnostní zpráva pomocí Azure IoT C/C# SDK nebudou směrovány do Azure Security Center pro kanál IoT.
 
-Následující příklad ukazuje objekt zprávy platné zabezpečení. Tento příklad obsahuje metadata zprávy a jeden `ProcessCreate` událostí zabezpečení.
+## <a name="valid-message-example"></a>Příklad platné zprávy
 
-Po nastavení jako zabezpečení zpráv a odeslat, tato zpráva se zpracuje ASC pro IoT.
+Následující příklad ukazuje platný objekt zprávy zabezpečení. Příklad obsahuje metadata zprávy a jednu `ProcessCreate` událost zabezpečení.
+
+Po nastavení zprávy o zabezpečení a odeslání bude tato zpráva zpracována Azure Security Center pro IoT.
 
 ```json
 "AgentVersion": "0.0.1",
@@ -76,28 +74,28 @@ Po nastavení jako zabezpečení zpráv a odeslat, tato zpráva se zpracuje ASC 
         "Payload":
             [
                 {
-                    "Executable": "/usr/bin/echo",
+                    "Executable": "/usr/bin/myApp",
                     "ProcessId": 11750,
                     "ParentProcessId": 1593,
-                    "UserName": "nginx",
-                    "CommandLine": "./backup .htaccess"
+                    "UserName": "aUser",
+                    "CommandLine": "myApp -a -b"
                 }
             ]
     }
 ]
 ```
 
-## <a name="send-security-messages"></a>Odesílat zprávy o zabezpečení 
+## <a name="send-security-messages"></a>Odeslat zprávy zabezpečení 
 
-Odesílat zprávy o zabezpečení bez agenta IoT, použije ASC pomocí [Azure IoT C# sada SDK zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) nebo [zařízení Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview).
+Pomocí sady [SDK pro zařízení Azure IoT C# ](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) nebo [sady SDK pro zařízení Azure IoT C](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)můžete posílat zprávy zabezpečení bez použití Azure Security Center pro agenta IoT.
 
-K odesílání dat zařízení ze všech zařízení pro účely zpracování ASC pro IoT, použijte jednu z následujících rozhraní API k označení zprávy pro správné směrování k ASC pro IoT zpracování kanálu. Zpráv odeslaných tímto způsobem bude zpracována a zobrazí jako přehledy o zabezpečení v rámci ASC pro IoT i služby IoT Hub nebo v rámci Azure Security Center. 
+Pokud chcete odesílat data zařízení z vašich zařízení ke zpracování Azure Security Center pro IoT, použijte jedno z následujících rozhraní API k označení zpráv pro správné směrování do Azure Security Center kanálu zpracování IoT. 
 
-Všechna data, která se odešle, i když označené správné hlavičky, musí splňovat také [ASC pro schéma zpráv IoT](https://aka.ms/iot-security-schemas). 
+Všechna data, která jsou odeslána, i když jsou označena správnou hlavičkou, musí také vyhovovat [Azure Security Center schématu zpráv IoT](https://aka.ms/iot-security-schemas). 
 
-### <a name="send-security-message-api"></a>Odeslat zprávu zabezpečení rozhraní API
+### <a name="send-security-message-api"></a>Poslat rozhraní API pro zprávy zabezpečení
 
-**Odesílat zprávy o zabezpečení** rozhraní API je aktuálně dostupné v jazyce C a C#.  
+Rozhraní API pro **odesílání zpráv zabezpečení** je aktuálně k dispozici C#v jazyce C a.  
 
 #### <a name="c-api"></a>Rozhraní API C#
 
@@ -158,10 +156,10 @@ static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* 
 ```
 
 ## <a name="next-steps"></a>Další postup
-- Přečtěte si ASC pro služby Azure IoT [– přehled](overview.md)
-- Další informace o ASC pro IoT [architektury](architecture.md)
-- Povolit [služby](quickstart-onboard-iot-hub.md)
-- Přečtěte si [– nejčastější dotazy](resources-frequently-asked-questions.md)
-- Zjistěte, jak získat přístup k [nezpracovaná zabezpečení dat](how-to-security-data-access.md)
+- Přečtěte si [Přehled](overview.md) služby Azure Security Center for IoT.
+- Další informace o [architektuře](architecture.md) Azure Security Center pro IoT
+- Povolení [služby](quickstart-onboard-iot-hub.md)
+- Přečtěte si [Nejčastější dotazy](resources-frequently-asked-questions.md) .
+- Přečtěte si, jak získat přístup k nezpracovaným [datům zabezpečení](how-to-security-data-access.md)
 - Vysvětlení [doporučení](concept-recommendations.md)
-- Vysvětlení [výstrahy](concept-security-alerts.md)
+- Vysvětlení [výstrah](concept-security-alerts.md)

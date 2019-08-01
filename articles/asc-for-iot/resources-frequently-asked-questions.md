@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy k Azure Security Center pro náhled IoT | Dokumentace Microsoftu
-description: Najdete odpovědi na nejčastější dotazy ohledně Azure Security Center pro funkce IoT a služby.
+title: Nejčastější dotazy k Azure Security Center pro IoT | Microsoft Docs
+description: Vyhledejte odpovědi na nejčastější dotazy týkající se Azure Security Center funkcí a služeb IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,143 +13,139 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4e04e21d55722b8cb90b277b34b5bffab343c575
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0262be687b74ec1b97cb508f6da1b95cd5d7a533
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616594"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596924"
 ---
-# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Nejčastější dotazy k Azure Security Center pro IoT  
+# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Azure Security Center pro IoT Nejčastější dotazy  
 
-> [!IMPORTANT]
-> Azure Security Center pro IoT je aktuálně ve verzi public preview.
-> Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Tento článek obsahuje seznam nejčastějších dotazů a odpovědí týkajících se Azure Security Center pro IoT. 
 
-Tento článek obsahuje seznam nejčastějších dotazů a odpovědí o Azure Security Center (ASC) pro IoT. 
+## <a name="does-azure-provide-support-for-iot-security"></a>Poskytuje Azure podporu pro zabezpečení IoT?
 
-## <a name="does-azure-provide-support-for-iot-security"></a>Azure poskytuje podporu pro zabezpečení IoT?
+Azure poskytuje integrované zobrazení pro monitorování a správu zabezpečení IoT v rámci celkového řešení zabezpečení prostřednictvím Azure Security Center. Pokud jste vývojářem aplikací, můžete použít IoT Hub zobrazení ke správě zabezpečení aplikace IoT.
 
-Azure poskytuje integrované zobrazení pro monitorování a správu vašich IoT zabezpečení jako součást celkového řešení zabezpečení pomocí Azure Security Center. Pokud jste vývojář aplikací, můžete ke správě zabezpečení aplikace IoT zobrazení služby IoT Hub.
+## <a name="what-is-azures-unique-value-proposition-for-iot-security"></a>Co je u jedinečného umístění Azure pro zabezpečení IoT k dispozici?
 
-## <a name="what-is-azures-unique-value-proposition-for-iot-security"></a>Co je Azure jedinečnou hodnotu návrh pro zabezpečení IoT?
+Azure Security Center pro IoT umožňuje podnikům rozšiřování stávajícího zobrazení zabezpečení na Internetu do celého řešení IoT. Azure poskytuje ucelený pohled na vaše obchodní řešení, což vám umožní vzít v úvahu akce a rozhodnutí související s podnikáním na základě stav podnikového zabezpečení a shromážděných dat. Kombinované zabezpečení pomocí Azure IoT, Azure IoT Edge a Azure Security Center vám umožní vytvořit požadované řešení s potřebným zabezpečením.
 
-ASC pro IoT umožňuje podnikům rozšířit svoje stávající zobrazení kybernetických zabezpečení a jejich kompletní řešení IoT. Azure poskytuje komplexní přehled obchodních řešení, můžete provést akce související s obchodní a rozhodnutí, která podle stavu zabezpečení organizace a shromažďují data. Kombinované zabezpečení pomocí Azure IoT, Azure IoT Edge, Azure Sphere, centrální Azure a Azure Security Center umožňují vytvářet řešení, se kterým chcete, aby se zabezpečením, které potřebujete.
+## <a name="who-is-azure-security-center-for-iot-made-for"></a>Kdo je Azure Security Center pro IoT? 
 
-## <a name="who-is-asc-for-iot-made-for"></a>Kdo je ASC stanovit IoT? 
+Azure Security Center pro IoT je integrovaná v rámci Azure IoT Hub Security a poskytuje správu pro každodenní operace zabezpečení obchodních řešení. Azure Security Center pro IoT je taky integrovaný do možností Azure Security Center a poskytuje integrované zobrazení pro monitorování a správu zabezpečení IoT v rámci vašeho celkového řešení zabezpečení.
 
-ASC pro IoT je integrována v rámci Azure IoT Hub zabezpečení a poskytuje správu řešení business každodenních operací zabezpečení. ASC pro IoT je taky integrovaná do funkce služby Azure Security Center a poskytují ucelený pro monitorování a správu zabezpečení IoT jako součást celkového řešení zabezpečení.
+## <a name="how-does-azure-security-center-for-iot-compare-to-the-competition"></a>Jak Azure Security Center pro IoT porovnat s konkurencí?
 
-## <a name="how-does-asc-for-iot-compare-to-the-competition"></a>Jak ASC pro IoT porovnání soutěže?
+I když jiná řešení poskytují sadu funkcí, které zákazníkům umožňují vytvářet vlastní řešení, Azure Security Center pro IoT poskytuje jedinečné řešení zabezpečení IoT, které poskytuje ucelený přehled o zabezpečení všech souvisejících cloudových prostředí Azure. prostředky. Azure umožňuje rychlé nasazení a úplnou integraci s IoT Hubmi moduly, které umožňují snadnou integraci s existujícími nástroji pro správu zařízení.
 
-Jiná řešení nabízejí sadu funkcí, které umožňují zákazníkům vytvářet své vlastní řešení, ASC pro IoT poskytuje jedinečné řešení zabezpečení IoT začátku do konce, které poskytuje širokém zobrazení v rámci zabezpečení všech souvisejících prostředků Azure. Azure umožňuje rychlé nasazení a plnou integraci s dvojčaty modulů IoT Hub pro snadnou integraci se stávajícími nástroji pro správu zařízení.
+## <a name="do-i-have-to-be-an-azure-security-center-customer-to-use-this-service"></a>Musím být Azure Security Center zákazníkem, abyste mohli používat tuto službu?
 
-## <a name="do-i-have-to-be-an-azure-security-center-asc-customer"></a>Je nutné mít zákazník Azure Security Center (ASC)?
+Ne, ale doporučuje se. Bez Azure Security Center, Azure Security Center pro IoT obdrží jenom data připojených prostředků a poskytuje omezené analýzy potenciálního prostoru pro útoky, hrozeb a potenciálních útoků. 
 
-Ne, ale doporučujeme ho. ASC pro IoT bez ASC, obdrží omezené připojených zdrojů dat a poskytuje omezenou analýzu potenciální prostor pro napadení, hrozby a potenciální útoky. 
+## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Musím být zákazníkem Azure IoT?
 
-## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Je nutné mít zákazník Azure IoT?
+Ano. Azure Security Center pro IoT spoléhá na konektivitu a infrastrukturu Azure IoT.
 
-Ano. ASC pro IoT spoléhá na připojení k Azure IoT a infrastruktury.
+## <a name="do-i-have-to-install-an-agent"></a>Musím instalovat agenta?
 
-## <a name="do-i-have-to-install-an-agent"></a>Je nutné instalovat agenta?
+Instalace agenta na zařízeních IoT není povinná, aby Microsoft Azure Security Center pro IoT. Můžete si vybrat z následujících tří možností a získat na základě vašeho výběru různé úrovně monitorování zabezpečení a možnosti správy:
 
-Instalace agenta na zařízeních IoT není povinné, pokud chcete povolit Microsoft ASC pro IoT. Můžete si vybrat mezi následující tři možnosti získání různé úrovně zabezpečení funkce správy a monitorování podle vašeho výběru:
+1. Nainstalujte agenta zabezpečení Azure Security Center pro IoT s úpravami nebo bez nich. Tato možnost poskytuje nejvyšší úroveň rozšířených přehledů zabezpečení pro chování zařízení a přístup.
 
-1. Nainstalujte ASC pro agenta zabezpečení IoT s nebo bez úprav. Tato možnost poskytuje nejvyšší úroveň informace o chování zařízení a přístup k rozšířené zabezpečení.
+2. Vytvořte vlastního agenta a implementujte Microsoft Azure Security Center schématu zprávy zabezpečení IoT. Tato možnost umožňuje použití Microsoft Azure Security Center pro nástroje pro analýzu IoT nad vaším agentem zabezpečení zařízení.
 
-2. Vytvoření vlastního agenta a implementaci Microsoft ASC pro schéma zprávu zabezpečení IoT. Tato možnost umožňuje využití Microsoft ASC pro IoT analytických nástrojů nad svým zástupcem zabezpečení zařízení.
+3. Žádná instalace agenta zabezpečení na vaše zařízení IoT. Tato možnost umožňuje IoT Hub monitorování komunikace se sníženými možnostmi pro monitorování a správu zabezpečení. 
 
-3. Bez instalace agenta zabezpečení na zařízeních IoT. Tato možnost povolí, IoT Hub komunikace monitorování pomocí funkce monitorování a správa nižší zabezpečení. 
+## <a name="what-does-the-azure-security-center-for-iot-agent-do"></a>Co Azure Security Center pro agenta IoT dělat?
 
-## <a name="what-does-the-asc-for-iot-agent-do"></a>Co dělá ASC pro agenta IoT?
+Azure Security Center pro službu IoT agent poskytuje pro konfiguraci zařízení, chování a přístup na úrovni zařízení pokrytí hrozby (pomocí kontroly konfigurace), procesu & připojení. Agent zabezpečení služby Azure Security Center pro IoT nekontroluje data nebo aktivitu související s obchodem.
 
-ASC pro agenta IoT poskytuje pokryta všechna zařízení úrovně hrozby pro konfiguraci zařízení, chování a přístup (tím, že kontroluje konfigurace), proces a připojení. ASC pro agenta zabezpečení IoT nekontroluje obchodní data nebo aktivity.
+## <a name="where-can-i-get-the-azure-security-center-for-iot-security-agent"></a>Kde můžu získat Azure Security Center pro agenta zabezpečení IoT?
 
-## <a name="where-i-can-get-the-asc-for-iot-security-agent"></a>Kde můžu získat ASC pro agenta zabezpečení IoT?
+Azure Security Center for IoT Security Agent je open source a dostupný na GitHubu v 32 bitových a 64 verzích Windows a Linux: https://github.com/Azure/Azure-Security-IoT.
 
-ASC pro agenta zabezpečení IoT je open source a je k dispozici na Githubu v 32bitové a 64bitové verze Windows a Linux: https://github.com/Azure/Azure-Security-IoT-Preview
+## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>Kde se instaluje Azure Security Center pro agenta IoT? 
 
-## <a name="where-does-the-asc-for-iot-agent-get-installed"></a>Kde se budou instalovány ASC pro agenta IoT? 
+Podrobné informace o instalaci a nasazení agenta najdete na webu GitHub: https://github.com/Azure/Azure-Security-IoT.
 
-Podrobné informace o instalaci a agenta nasazení najdete v Githubu: https://github.com/Azure/Azure-Security-IoT-Preview
+## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Jaké jsou závislosti a požadavky agenta?
 
-## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Co jsou závislosti a požadavky agenta?
+Azure Security Center pro IoT podporuje širokou škálu platforem. Podívejte se na [podporované platformy zařízení](how-to-deploy-agent.md) a ověřte podporu pro konkrétní zařízení. 
 
-ASC pro IoT podporuje celou řadu platforem. Zobrazit [platformy zařízení podporovány](how-to-deploy-agent.md) ověřit podporu pro vaše konkrétní zařízení. 
+## <a name="which-data-is-collected-by-the-agent"></a>Která data shromažďuje Agent?
 
-## <a name="which-data-is-collected-by-the-agent"></a>Jaká data se shromažďují pomocí agenta?
+Agentem se shromažďují možnosti připojení, přístup, konfigurace brány firewall, seznam procesů & standardních hodnot operačního systému.
 
-Připojení, access, konfigurace brány firewall, seznam procesů a směrným plánem operačního systému se shromažďují pomocí agenta.
+## <a name="how-much-data-will-the-agent-generate"></a>Kolik dat bude agent generovat?
 
-## <a name="how-much-data-will-the-agent-generate"></a>Kolik dat bude generovat agenta?
+Generování dat agenta je založené na zařízení, aplikaci, typu připojení a konfiguraci zákaznického agenta. Vzhledem k vysoké variabilitě mezi zařízeními a řešeními IoT doporučujeme, abyste agenta nasadili v testovacím prostředí nebo nastavení testu, abyste mohli sledovat, učit a nastavovat konkrétní konfiguraci, která vyhovuje vašim potřebám, a současně měřit množství vygenerovaných dat. Po spuštění služby Azure Security Center pro agenta IoT poskytují provozní doporučení pro optimalizaci propustnosti agenta, která vám pomůžou s procesem konfigurace a přizpůsobení.
 
-Agent generování dat vychází zařízení, aplikace, typu připojení a konfigurace agenta zákazníka. Z důvodu velice proměnlivé mezi zařízeními a řešení IoT doporučujeme prvního nasazení agenta do testovacího prostředí nebo nastavení sledovat, přečtěte si a konkrétní konfigurace, která nejlépe vyhovuje vašim potřebám, při měření objem dat generovaný sady testu. Po spuštění služby ASC pro agenta IoT poskytuje provozní doporučení pro optimalizaci propustnosti agenta vám pomůže při procesu konfigurace a vlastního nastavení.
+## <a name="how-can-i-control-my-billing"></a>Jak můžu řídit svou fakturaci?
 
-## <a name="how-can-i-control-my-billing"></a>Jak lze řídit Moje vyúčtování?
+Azure Security Center pro IoT poskytuje konfigurovatelné kontroly agenta, vyrovnávací paměti dat a možnost vytvářet vlastní výstrahy, které zvyšují nebo snižují množství dat generovaných agentem.
 
-ASC pro IoT poskytuje konfigurovatelné agenta kontrol, vyrovnávací paměti dat a možnost vytvářet vlastní výstrahy, které zvýšit nebo snížit množství dat vytvářené agentem.
+## <a name="do-agent-messages-use-up-quota-from-iot-hub"></a>Využívají zprávy agenta kvótu od IoT Hub?
 
-## <a name="do-agent-messages-use-up-quota-from-iot-hub"></a>Nepoužívejte agenta zprávy do kvóty ze služby IoT Hub?
+Ano. Data přenášená agentem se počítají ve vaší kvótě IoT Hub. 
 
-Ano. Agent přenášených dat se počítá v rámci svojí kvóty služby IoT Hub. 
+## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Co dál? Nainstaloval (a) jsem agenta a nevidí žádné aktivity ani protokoly...
 
-## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Co dál? Můžu nainstalujete agenta a nezobrazují žádné aktivity nebo protokoly
+1. Ověřte, jestli [typ agenta odpovídá určené platformě operačního systému vašeho zařízení](how-to-deploy-agent.md) .
 
-1. Zkontrolujte, [typ agenta odpovídá určené platforma operačního systému vašeho zařízení](how-to-deploy-agent.md)
+1. Potvrďte, že [je agent na zařízení spuštěný](how-to-agent-configuration.md).
 
-1. Potvrďte [agent běží na zařízení](how-to-agent-configuration.md).
+2. Ověřte, že se [služba úspěšně aktivovala](quickstart-onboard-iot-hub.md) pro **zabezpečení** v IoT Hub. 
 
-2. Zkontrolujte [služby se úspěšně povolila](quickstart-onboard-iot-hub.md) k **zabezpečení** ve službě IoT Hub. 
+3. Ověřte, že je zařízení [nakonfigurované v IoT Hub s modulem Azure Security Center for IoT](quickstart-create-security-twin.md).  
 
-3. Zkontrolujte, jestli je zařízení [nakonfigurované ve službě IoT Hub s ASC pro modul IoT](quickstart-create-security-twin.md).  
+Pokud jsou aktivity nebo protokoly stále nedostupné, požádejte o další nápovědu svého Azure Security Center pro IoT partner.
 
-Pokud aktivity nebo protokoly jsou stále k dispozici, obraťte se na vaše ASC IoT partnera pro další pomoc.
+## <a name="what-happens-when-the-internet-connection-stops-working"></a>Co se stane, když připojení k Internetu přestane fungovat?
 
-## <a name="what-happens-when-the-internet-connection-stops-working"></a>Co se stane, když přestane fungovat připojení k Internetu?
+Agent pokračuje v běhu a ukládá data, pokud je zařízení spuštěné. Data se ukládají do mezipaměti zpráv zabezpečení podle konfigurace velikosti. Když zařízení znovu získá připojení, zprávy o zabezpečení budou pokračovat v posílání. 
 
-Agent nadále provozuje a ukládat data tak dlouho, dokud je na zařízení spuštěný. Data uložená v mezipaměti zabezpečení zprávy podle konfigurace velikosti. Když zařízení znovu získal připojení, zprávy o zabezpečení pokračovat v odesílání. 
+## <a name="if-the-device-is-restarted-will-the-security-agent-self-recover"></a>Pokud se zařízení restartuje, bude se Agent zabezpečení automaticky obnovovat?
 
-## <a name="if-the-device-is-restarted-will-the-security-agent-self-recover"></a>Pokud se zařízení nerestartuje, bude agent zabezpečení samoobslužné obnovení?
+Agent zabezpečení je navržen pro automatické opětovné spuštění při každém restartování zařízení.
 
-Zabezpečení agenta je navržen pro znovu spustit automaticky s každou restartování zařízení.
+## <a name="can-the-agent-affect-the-performance-of-the-device-or-other-installed-software"></a>Může agent ovlivnit výkon zařízení nebo jiného nainstalovaného softwaru?
 
-## <a name="can-the-agent-affect-the-performance-of-the-device-or-other-installed-software"></a>Agent může ovlivnit výkon zařízení nebo jiný software nainstalovaný?
+Agent spotřebovává prostředky počítače jako jakoukoli jinou aplikaci nebo proces a neměl by rušit normální aktivitu zařízení. Spotřeba prostředků na zařízení, na kterém je spuštěný agent, je spojená s její instalací a konfigurací. Před pokusem o nasazení v produkčním prostředí doporučujeme otestovat konfiguraci vašeho agenta v prostředí s omezením a vzájemnou funkční spolupráci s vašimi aplikacemi a funkcemi aplikace IoT.
 
-Agent jako jakékoli jiné aplikace nebo proces využívá prostředky počítače a nesmí přerušit aktivit normální zařízení. Spotřeba prostředků na zařízení, který je spuštěn agent je párována s jeho nastavení a konfigurace. Doporučujeme otestovat konfiguraci agenta v prostředí s omezením, spolu s vzájemná funkční spolupráce s vaší aplikace IoT a funkce, která je před pokusem o nasazení v produkčním prostředí.
-
-## <a name="im-making-some-maintenance-on-the-device-can-i-turn-off-the-agent"></a>Některé údržbu zadávám na zařízení. Můžete vypnout agenta?
+## <a name="im-making-some-maintenance-on-the-device-can-i-turn-off-the-agent"></a>V zařízení se provádí nějaká údržba. Můžu agenta vypnout?
 
 Agenta nelze vypnout.
 
-## <a name="is-there-a-way-to-test-if-the-agent-is-working-correctly"></a>Existuje způsob, který testuje, jestli správně funguje agent? 
+## <a name="is-there-a-way-to-test-if-the-agent-is-working-correctly"></a>Existuje způsob, jak otestovat, jestli agent funguje správně? 
 
-Pokud agent přestane komunikovat nebo selhání k odeslání zprávy o zabezpečení, **zařízení mlčí** , je vygenerována výstraha.
+Pokud agent přestane komunikovat nebo se mu nepovede odeslat zprávy o zabezpečení, dojde k vygenerování upozornění na tichou výstrahu **zařízení** .
 
-## <a name="can-i-create-my-own-alerts"></a>Můžete vytvořit vlastní oznámení?
+## <a name="can-i-create-my-own-alerts"></a>Můžu vytvořit vlastní výstrahy?
 
-Ano. Vlastní upozornění můžete nastavit na předem určenou sadu chování, jako je například IP adres a portů. Zobrazit [vytvářet vlastní výstrahy](quickstart-create-custom-alerts.md) získat další informace o vlastních výstrah a jak je. 
+Ano. Přizpůsobenou výstrahu můžete nastavit na předem stanovenou sadu chování, jako je například IP adresa a otevřené porty. Další informace o vlastních výstrahách a o tom, jak je udělat, najdete v tématu [Vytvoření vlastních výstrah](quickstart-create-custom-alerts.md) . 
 
-## <a name="where-can-i-see-logs-can-i-customize-logs"></a>Kde vidí protokolů? Můžete přizpůsobit protokoly?
+## <a name="where-can-i-see-logs-can-i-customize-logs"></a>Kde můžu zobrazit protokoly? Můžu přizpůsobovat protokoly?
 
-- Zobrazení výstrah a doporučení pomocí připojený pracovní prostor Log Analytics. Nakonfigurujte velikost úložiště a doba trvání v pracovním prostoru.
+- Pomocí vašeho připojeného pracovního prostoru Log Analytics zobrazovat výstrahy a doporučení. Nakonfigurujte velikost úložiště a dobu trvání v pracovním prostoru.
 
-- Nezpracovaná data z vašeho agenta zabezpečení mohou být také uloženy ve vašem účtu Log Analytics. Před změnou konfigurace této možnosti zvažte velikost, doba trvání, požadavky na úložiště a související náklady. 
+- Nezpracovaná data z vašeho agenta zabezpečení taky můžete ukládat do svého účtu Log Analytics. Před změnou konfigurace této možnosti zvažte možnost změnit velikost, dobu trvání, požadavky na úložiště a související náklady. 
 
-## <a name="why-should-i-add-asc-for-iot-to-the-module-identity-what-is-it-used-for"></a>Proč je třeba přidat ASC pro IoT na identitu modulu? Co se používá pro?
+## <a name="why-should-i-add-azure-security-center-for-iot-to-the-module-identity-what-is-it-used-for"></a>Proč mám přidat Azure Security Center pro IoT do identity modulu? K čemu slouží?
 
-ASC pro IoT modul se používá pro správu a konfiguraci agenta.
-
-
-## <a name="next-steps"></a>Další postup
-
-Další informace o tom, jak začít pracovat s ASC pro IoT, najdete v následujících článcích:
+Modul Azure Security Center for IoT se používá pro správu a konfiguraci agenta.
 
 
-- Přečtěte si ASC pro IoT [– přehled](overview.md)
-- Ověřte, [služby požadavky](service-prerequisites.md)
-- Další informace o tom, jak [Začínáme](getting-started.md)
-- Vysvětlení [ASC pro výstrahy zabezpečení IoT](concept-security-alerts.md)
+## <a name="next-steps"></a>Další kroky
+
+Další informace o tom, jak začít s Azure Security Center pro IoT, najdete v následujících článcích:
+
+
+- Přečtěte si [přehled](overview.md) Azure Security Center pro IoT.
+- Ověření [požadovaných součástí služby](service-prerequisites.md)
+- Další informace o [tom, jak](getting-started.md) začít
+- Vysvětlení [Azure Security Center pro výstrahy zabezpečení IoT](concept-security-alerts.md)
 

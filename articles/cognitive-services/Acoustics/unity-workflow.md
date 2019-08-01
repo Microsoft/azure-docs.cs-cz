@@ -1,7 +1,7 @@
 ---
-title: Projekt Akustika Unity návrhu kurz
+title: Kurz návrhu Unity na akustické projekty
 titlesuffix: Azure Cognitive Services
-description: Tento kurz popisuje pracovní postup návrhu pro projekt Akustika v Unity.
+description: Tento kurz popisuje pracovní postup návrhu pro akustické projekty v Unity.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,86 +10,87 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 01783aa12f586f61583b1503c796f9b523770104
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: f9ff4225e7e855ed666d3554631015b8ce51df37
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61433025"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706593"
 ---
-# <a name="project-acoustics-unity-design-tutorial"></a>Projekt Akustika Unity návrhu kurz
-Tento kurz popisuje nástroje pro návrh a pracovní postup pro projekt Akustika v Unity.
+# <a name="project-acoustics-unity-design-tutorial"></a>Kurz návrhu Unity na akustické projekty
+Tento kurz popisuje nástroje pro návrh a pracovní postup pro akustické projekty v Unity.
 
 Požadavky:
 * Unity 2018.2 + pro Windows
-* Unity scény dokončené Akustika assetu
+* Scéna Unity s vloženými akustickým prostředkem
 
-Pro účely tohoto kurzu můžete získat scény Unity dokončené Akustika assetu dvěma způsoby:
-* [Přidat projekt Akustika svým projektem Unity](unity-integration.md), pak [získat účet služby Azure Batch](create-azure-account.md), pak [zanést vaše Scéna Unity](unity-baking.md)
-* Nebo můžete použít [Unity projektu Akustika ukázkový obsah](unity-quickstart.md).
+Pro tento kurz můžete získat scénu v Unity s vloženými akustickým prostředkem dvěma způsoby:
+* [Přidejte do projektu Unity akustické projekty](unity-integration.md), potom [Získejte účet Azure Batch](create-azure-account.md)a potom [zanesli svou scénu Unity](unity-baking.md) .
+* Můžete také použít [ukázkový obsah projektu s akustickým obsahem Unity](unity-quickstart.md).
 
-## <a name="review-design-process-concepts"></a>Seznamte se s koncepty návrhu procesu
-Akustika projekt používá běžné zpracování signálu (DSP) metody digitální zvukový ke zpracování zdrojů a získáte tak kontrolu nad známé Akustika vlastnosti včetně uzavření, mix wet/zkušební a délka tail reverberation (RT60). Ale základní [koncept proces návrhu projektu Akustika](design-process.md) , nikoli přímo nastavení těchto vlastností, určujete, jak se výsledky simulace používají k řízení těchto vlastností. Výchozí nastavení pro každý ovládací prvek představují fyzicky přesné Akustika.
+## <a name="review-design-process-concepts"></a>Kontrola konceptů procesu návrhu
+Akustické zdroje projektu používají ke zpracování vašich zdrojů běžné metody DSP (audio Digital Signal Processing) a umožňují řídit známé akustické vlastnosti, včetně překrytí, vlhkého/suchého míchání a reverberation koncových délek (RT60). Ale základní [koncept procesu návrhu akustického projektu](design-process.md) je, že místo toho, abyste tyto vlastnosti nastavují přímo, můžete určit, jak se mají výsledky simulace používat k ovládání těchto vlastností. Výchozí nastavení pro každý ovládací prvek představuje fyzicky přesné akustické akustické hodnoty.
 
-## <a name="design-acoustics-for-each-source"></a>Návrh Akustika pro jednotlivé zdroje
-Projekt Akustika obsahuje celé řady kontrolních mechanismů specifická pro zdroj Akustika návrhu. To umožňuje řídit poměr ve scéně, kdy se klade důraz některé zdroje a deaktivace emphasizing ostatní.
+## <a name="design-acoustics-for-each-source"></a>Návrh akustické pro každý zdroj
+Akustické a projektové zdroje poskytují řadu ovládacích prvků návrhu, které jsou specifické pro zdroj. To vám umožní ovládat směs na scéně tím, že zvýrazníte některé zdroje a zvýrazníte jiné.
 
-### <a name="adjust-distance-based-attenuation"></a>Upravit na základě vzdálenosti zeslabení
-Zvuk poskytované DSP **projektu Akustika** modulu plug-in spatializer Unity respektuje integrované do editoru Unity na základě vzdálenosti zeslabení-source. Ovládací prvky pro na základě vzdálenosti zeslabení **zdroje zvuku** komponenta nalezena v **inspektoru** panelu zvuk v oblasti zdrojů **3D nastavení zvuku**:
+### <a name="adjust-distance-based-attenuation"></a>Úprava zeslabení na základě vzdálenosti
+Zvukový procesor, který je poskytováný modulem plug- **in Unity spatializer** , dodržuje odkládání na dálku, které jsou součástí editoru Unity. Ovládací prvky pro odkládání na dálku jsou součástí **zdrojové zvukové** komponenty, která se nachází na panelu inspektora zvukových zdrojů, v části **Nastavení 3D zvuku**:
 
-![Panel možností zeslabení vzdálenost snímek obrazovky s Unity](media/distance-attenuation.png)
+![Snímek obrazovky s panelem možností pro zeslabení vzdálenosti Unity](media/distance-attenuation.png)
 
-Akustika provádí výpočet v poli "simulace oblasti" zaměřená na umístění přehrávače. Pokud je Vzdálená přehrávači nacházejících se mimo tuto oblast simulace zdroje zvuku pouze geometrie v rámci pole bude mít vliv na zvukové šíření hodnoty (jako je například způsobí uzavření), což poměrně dobře funguje, když jsou occluders pixelům přehrávač. Ale v případech, když hráč je ve volném prostoru, ale occluders blíží vzdálené zdrojem zvuku zvuk může stát unrealistically disoccluded. Naše navrhované alternativním řešením je v takových případech Ujistěte se, že zvukový zeslabení spadá 0 přibližně 45 m, výchozí vzdálenost vodorovné přehrávače k okraji pole.
+Akustické a vychází z umístění přehrávače v poli "oblasti simulace" na střed. Pokud je zdroj zvuku z přehrávače, který je umístěný mimo tuto oblast simulace, ovlivní pouze geometrie v rámci tohoto pole šíření zvuku (například způsobující překrytí), které funguje přiměřeně i v případě, že occluders jsou v okolí přehrávače. V případech, kdy je hráč v otevřeném prostoru, ale occluders se blíží zdroji vzdáleného zvuku, se může stát, že se zvuk stane nerealistickému disoccluded. Náš doporučený postup je zajistit, aby se v takových případech odložení zvuku nesměroval na 0 v přibližně 45 m, výchozí vodorovná vzdálenost přehrávače k okraji boxu.
 
-![Snímek obrazovky s Unity SpeakerMode panel možností](media/speaker-mode.png)
+![Snímek obrazovky s panelem možností SpeakerMode Unity](media/speaker-mode.png)
 
-### <a name="adjust-occlusion-and-transmission"></a>Upravte uzavření a přenosu
-Připojení **AcousticsAdjust** skript ke zdroji povolí optimalizaci parametrů pro tento zdroj. Připojit skriptu, klikněte na tlačítko **přidat součást** v dolní části **inspektoru** panelu a přejděte do **skripty > Upravit Akustika**. Tento skript má šest ovládací prvky:
+### <a name="adjust-occlusion-and-transmission"></a>Upravit překrytí a přenos
+Připojení skriptu **AcousticsAdjust** ke zdroji povoluje parametry ladění pro tento zdroj. Pokud chcete skript připojit, klikněte na **Přidat komponentu** v dolní části panelu **inspektora** a přejděte ke **skriptům > úpravy akustického**množství. Skript má šest ovládacích prvků:
 
-![Snímek obrazovky s Unity AcousticsAdjust skriptu](media/acoustics-adjust.png)
+![Snímek obrazovky s AcousticsAdjust skriptem Unity](media/acoustics-adjust.png)
 
-* **Povolit Akustika** – Určuje, zda Akustika je použito k tomuto zdroji. Pokud není zaškrtnuto, zdroj bude spatialized HRTFs nebo posouvání, ale nedojde k žádné Akustika. To znamená bez překážky, uzavření nebo reverberation dynamické parametry, například úroveň a decay čas. Reverberation se uplatní s pevnou úroveň a decay čas.
-* **Uzavření** – používají multiplikátoru na úrovni databáze uzavření počítají tak, že Akustika systému. Pokud tento multiplikátor je větší než 1, uzavření bude exaggerated, při hodnoty menší než 1. Ujistěte se, efekt uzavření složitější a hodnota 0 zakáže uzavření.
-* **Přenos (databáze)** -nastavit zeslabení (v databázi) způsobené přenos přes geometry. Nastavte tento posuvník na nejnižší úrovni zakázat přenos. Akustika spatializes počáteční suchého zvuk jako přicházejících kolem geometrie scény (portaling). Přenos poskytuje další suchého doručení, která spatialized ve směru z dohlednost. Všimněte si, že je použito také křivky zeslabení vzdálenost pro zdroj.
+* **Povolit akustické** – určuje, jestli se na tento zdroj aplikují akustické akustické množství. Pokud není zaškrtnuto, bude zdroj prostorový s HRTFs nebo posouváním, ale nebudou žádné akustické. To znamená, že nejsou k dispozici žádné překážky, překrytí nebo dynamické parametry reverberation, jako je například úroveň a Decay. Reverberation se pořád aplikuje s pevnou úrovní a časem Decay.
+* **Překrytí** – aplikujte násobitel na úroveň překrytí DB vypočítanou v systému akustického množství. Pokud je tento násobitel větší než 1, překrytí se exaggerated, zatímco hodnoty menší než 1 způsobí větší význam překrytí a hodnota 0 zakáže překrytí.
+* **Přenos (DB)** – nastaví zeslabení odkládání (v dB) z důvodu přenosu prostřednictvím geometrie. Nastavením tohoto posuvníku na nejnižší úroveň zakážete přenos. Akustické spatializes počáteční suchý zvuk, který se dorazí kolem geometrie scény (portáling). Přenos poskytuje další suché doručení, které je v rámci směru pohledu na pohled. Všimněte si, že křivka zeslabení vzdálenosti pro zdroj je také použita.
 
 ### <a name="adjust-reverberation"></a>Upravit reverberation
-* **Wetness (databáze)** – upraví dozvuku výkon, v databázi, podle vzdálenosti ze zdroje. Kladné hodnoty provádět zvuk více reverberant při záporné hodnoty provést více suchého zvuk. Klikněte na křivku ovládací prvek (zelená čára) a zobrazte si editoru křivky. Klepněte na Přidat body levým tlačítkem myši a přetažení tyto body k vytvoření funkce, že které chcete upravte křivky. Osy x je vzdálenost od zdroje a osy y je úprava dozvuku v databázi. Další informace o úpravě křivky, najdete v tomto [Unity ruční](https://docs.unity3d.com/Manual/EditingCurves.html). Pokud chcete obnovit výchozí křivku, klikněte pravým tlačítkem na **Wetness** a vyberte **resetování**.
-* **Decay – časové měřítko** – nastaví dobu decay multiplikátoru. Například pokud Určuje, která má označení vytvoření výsledku decay čas 750 milisekund, ale tato hodnota nastavená na 1.5, je čas decay použití ke zdroji 1,125 milisekund.
-* **Outdoorness** -sčítání úprava na odhad systému Akustika jak "venku" by měl zvukové reverberation ve zdroji. Tuto hodnotu nastavíte na 1 způsobí, že zdroj vždy zvukové zcela venku, při nastavení na hodnotu -1 způsobí, že zdroj zvukové zcela budovách.
+* **Wetness (DB)** – upravuje reverb napájení v databázi podle vzdálenosti od zdroje. Kladné hodnoty vytvářejí zvuk větší reverberant, zatímco záporné hodnoty povedou k lepšímu vysušení. Kliknutím na ovládací prvek křivka (zelená čára) zobrazte Editor křivky. Upravte křivku tak, že levým tlačítkem myši kliknete na Přidat body a přetáhnete tyto body, abyste mohli vytvořit požadovanou funkci. Osa x je vzdálenost od zdroje a osa y je reverbou úpravou v databázi. Další informace o úpravách křivek najdete v této [příručce k Unity](https://docs.unity3d.com/Manual/EditingCurves.html). Pokud chcete obnovit výchozí křivku zpátky, klikněte pravým tlačítkem na **Wetness** a vyberte **resetovat**.
+* **Časové měřítko Decay** – upravuje násobitel pro Decay čas. Pokud například výsledek zanesli určuje Decay čas 750 milisekund, ale tato hodnota je nastavená na 1,5, čas Decay použití na zdroj bude 1 125 milisekund.
+* **Provozní dveře** – doplňková úprava na odhadu toho, jak "venku" reverberation na zdroji by měl zvuk. Když tuto hodnotu nastavíte na 1, bude zdroj vždy zvuk zcela venku, ale při jeho nastavení na hodnotu-1 dojde k úplnému zastavení zdrojového zvuku.
 
-Připojení **AcousticsAdjustExperimental** skript, který zdroj umožňuje další experimentální parametry ladění u tohoto zdroje. Připojit skriptu, klikněte na tlačítko **přidat součást** dole **inspektoru** panelu a přejděte do **skripty > Akustika upravit experimentální**. Aktuálně nejsou k dispozici jeden experimentální ovládací prvek:
+Připojení skriptu **AcousticsAdjustExperimental** ke zdroji umožní další experimentální parametry ladění pro tento zdroj. Pokud chcete skript připojit, klikněte na **Přidat komponentu** v dolní části panelu **inspektora** a přejděte ke **skriptům > akustické a upravte experimentální**. V současné době je k dispozici jeden experimentální ovládací prvek:
 
-![Snímek obrazovky s Unity AcousticsAdjustExperimental skriptu](media/acoustics-adjust-experimental.png)
+![Snímek obrazovky s AcousticsAdjustExperimental skriptem Unity](media/acoustics-adjust-experimental.png)
 
-* **Percepční Warp vzdálenost** – použití exponenciální pokřivení vzdálenosti slouží k výpočtu poměru suchého vlhkého stavu. Systém Akustika vypočítá vlhkou úrovně v rámci oboru, které hladce lišit podle vzdálenosti a poskytují Percepční vzdálenost pomůcky. Pokřivení hodnoty větší než 1 exaggerate tento efekt zvýšením úrovně reverberation související vzdálenost, provádění zvuk "vzdálené". Pokřivení hodnoty menší než 1 Zkontrolujte reverberation na základě vzdálenosti změnit složitější a zvukových další "tohoto".
+* **Perceptuální** . deformace na dálku – aplikujte exponenciální pokřivení na vzdálenost, která se používá k výpočtu poměru suchého vlhku. Systém akustické propustnosti vypočítá vlhké úrovně v celém prostoru, které se škálují plynule se vzdáleností a poskytují až Perceptuální vzdáleností. Pokřivení hodnot větší než 1 exaggerate tímto účinkem zvýšením úrovně reverberation na dálku, čímž se zavede zvuk "Vzdálená". Rozkládání hodnot menší než 1 zjednodušuje reverberationou změnu na základě vzdálenosti, takže zvuk bude větší.
 
-## <a name="design-acoustics-for-all-sources"></a>Návrh Akustika pro všechny zdroje
-Upravit parametry pro všechny zdroje, klikněte na kanál pruhu v Unity a **zvuk Mixer**a upravit parametry na **projektu Akustika Mixer** vliv.
+## <a name="design-acoustics-for-all-sources"></a>Vytváření akustických prostředků pro všechny zdroje
+Chcete-li upravit parametry pro všechny zdroje, klikněte na kanál kanálu v **směšovači zvuku**Unity a upravte parametry na efektu **směšovače akustického projektu** .
 
-![Snímek obrazovky z projektu Akustika Unity Mixer přizpůsobení panelu](media/mixer-parameters.png)
+![Snímek obrazovky s panelem nástrojů přizpůsobení směšovače Unity v projektu](media/mixer-parameters.png)
 
-* **Upravit wetness** – upraví dozvuku výkon, v databázi, ze všech zdrojů ve scéně podle vzdálenosti zdroj naslouchacího procesu. Kladné hodnoty provádět zvuk více reverberant při záporné hodnoty provést více suchého zvuk.
-* **Škálování RT60** – násobení skalární dozvuku dobu.
-* **Použijte pro posouvání** – ovládací prvky, zda je zvukový je výstup jako binaural (0) nebo multichannel posouvání (1). Libovolná hodnota kromě 1 označuje binaural. Binaural výstup je spatialized s HRTFs pro použití s sluchátka a vícekanálový výstupu je spatialized s VBAP pro použití s vícekanálový obklopit mluvčího systémy. Pokud pomocí vícekanálový výřez, nezapomeňte vybrat režim reproduktoru, který odpovídá nastavení zařízení, najdete v části **nastavení projektu** > **zvuk**.
+* **Wetness upravit** – upraví reverb výkon v databázi napříč všemi zdroji ve scéně na základě vzdálenosti zdrojového a naslouchacího procesu. Kladné hodnoty vytvářejí zvuk větší reverberant, zatímco záporné hodnoty povedou k lepšímu vysušení.
+* **RT60** multiplikativní pro horizontální navýšení kapacity pro reverbou dobu.
+* **Použít posouvání** – určuje, jestli je zvuk ve výstupu binaural (0) nebo vícekanálové posouvání (1). Jakákoli hodnota kromě 1 označuje binaural. Výstup binaural je prostorový s HRTFs pro použití s využitím sluchátek a vícekanálového výstupu je prostorový s VBAP pro použití se vícekanálovými systémy pro reproduktory Surround. Pokud používáte vícekanálový posouvací modul, nezapomeňte vybrat režim mluvčího, který odpovídá vašemu nastavení zařízení, nalezeno v **Nastavení** > projektu**zvuk**.
 
-## <a name="check-proper-sound-source-placement"></a>Zkontrolujte umístění správné zdrojem zvuku
-Zvukové zdrojů umístěných uvnitř obsazené voxels nedostali akustický zpracování. Voxels prodloužit minulé geometrie viditelné scény, proto je možné umístit zdroj uvnitř voxel když se zobrazí unoccluded podle visual geometrie. Můžete zobrazit projekt Akustika voxels přepínáním zaškrtávacího políčka voxel mřížky v **Gizma** nabídky v pravém horním rohu **scény** zobrazení.
+## <a name="check-proper-sound-source-placement"></a>Kontrolovat správné umístění zdroje zvuku
+Zdroje zvuku umístěné uvnitř obsazené voxels nebudou mít akustickou expozici. Vzhledem k tomu, že voxels rozšířila po viditelné geometrii scény, je možné umístit zdroj do Voxel, zatímco se zobrazuje unoccluded pomocí vizuální geometrie. Pomocí zaškrtávacího políčka Voxel Grid v nabídce **gizma** v pravém horním rohu zobrazení **scény** můžete zobrazit akustické voxelsy projektu.
 
-![Snímek obrazovky s Unity Gizma nabídky](media/gizmos-menu.png)  
+![Snímek nabídky Gizma Unity](media/gizmos-menu.png)  
 
-Zobrazení voxel může také pomoct zjistit, jestli vizuální komponenty ve hře použitou k nim transformací. Pokud ano, použít k hostování GameObject stejnou transformaci **Akustika správce**.
+Zobrazení Voxel můžete také použít k určení, zda se na komponenty vizuálů ve hře aplikuje transformace. Pokud ano, použijte stejnou transformaci na GameObject hostující **správce akustického**prostředí.
 
-### <a name="bake-time-vs-run-time-voxels"></a>Vytvoření čas vs. voxels běhu
-Je možné zobrazit voxels v okně editoru v době návrhu her a v okně hry v době běhu. Velikost voxels se liší v těchto zobrazeních. Toto je vzhledem k tomu interpolace Akustika modul runtime používá kvalitnější grid voxel výsledky hladší interpolace. Umístění zvuku zdroj by měl ověřit pomocí voxels modulu runtime.
+### <a name="bake-time-vs-run-time-voxels"></a>Zanesli čas a voxels běhu
+V okně editoru je možné zobrazit voxels v době návrhu hry a v okně hry za běhu. Velikost voxels se v těchto zobrazeních liší. Důvodem je to, že interpolace akustického běhu používá jemnější Voxel mřížku pro výsledky hladší interpolace. Umístění zdroje zvuku by se mělo ověřit pomocí voxels modulu runtime.
 
-Návrh voxels čas:
+Voxels doby návrhu:
 
-![Snímek obrazovky projektu Akustika voxels v době návrhu](media/voxels-design-time.png)
+![Snímek obrazovky s akustickými voxelsy projektu během doby návrhu](media/voxels-design-time.png)
 
-Modul runtime voxels:
+Běhové voxels:
 
-![Snímek obrazovky projektu Akustika voxels za běhu](media/voxels-runtime.png)
+![Snímek obrazovky s akustickými voxelsy projektu během běhu](media/voxels-runtime.png)
 
 ## <a name="next-steps"></a>Další postup
-* Prozkoumat případové studie zvýraznění koncepci [návrhu procesu](design-process.md)
+* Prozkoumat případové studie zvýraznění konceptů za [procesem návrhu](design-process.md)
 

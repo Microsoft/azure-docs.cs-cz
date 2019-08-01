@@ -1,6 +1,6 @@
 ---
-title: Jak nakonfigurovat monitorování v Azure digitální dvojče | Dokumentace Microsoftu
-description: Jak nakonfigurovat monitorování v Azure digitální dvojče.
+title: Jak nakonfigurovat monitorování v Azure Digital revláken | Microsoft Docs
+description: Jak nakonfigurovat monitorování v digitálních Vlákenách Azure.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
@@ -9,126 +9,126 @@ ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 5dc2587a0c127106d5afb41e20eca43919065f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66a0b98e2cae14c3708cf8a6aa3f8bd498f41c9f
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118786"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609641"
 ---
-# <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak nakonfigurovat monitorování v Azure digitální dvojče
+# <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak nakonfigurovat monitorování v digitálních prozdvojeních Azure
 
-Azure digitální dvojče podporuje robustní protokolování, monitorování a analýzy. Řešení mohou vývojáři protokoly Azure monitoru, diagnostické protokoly, protokolování aktivit a dalších služeb pro podporu komplexní monitorování potřeb aplikace IoT. Možnosti protokolování můžete kombinovat, zadat dotaz nebo zobrazení záznamů napříč několika službami a poskytuje podrobné protokolování pokrytí u řady služeb.
+Digitální vlákna Azure podporuje robustní protokolování, monitorování a analýzu. Vývojáři řešení můžou používat protokoly Azure Monitor, diagnostické protokoly, protokolování aktivit a další služby pro podporu složitých potřeb monitorování aplikace IoT. Možnosti protokolování lze kombinovat pro dotazování nebo zobrazení záznamů napříč několika službami a pro zajištění podrobného pokrytí protokolování pro mnoho služeb.
 
-Tento článek shrnuje protokolování a monitorování možnosti a zkombinujte je způsoby specifické pro digitální dvojče Azure.
+Tento článek shrnuje možnosti protokolování a monitorování a jejich kombinaci způsobem specifickým pro digitální vlákna Azure.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="review-activity-logs"></a>Zkontrolujte protokoly aktivit
+## <a name="review-activity-logs"></a>Kontrola protokolů aktivit
 
-Azure [protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md) poskytují rychlé přehledy o vašich Historie událostí a operace úroveň předplatného pro každou instanci služby Azure.
+[Protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md) Azure poskytují rychlé přehledy o akcích a historiích operací na úrovni předplatného pro každou instanci služby Azure.
 
-Událostí na úrovni předplatného patří:
+Mezi události na úrovni předplatného patří:
 
 * Vytvoření prostředku
-* Odstranění prostředků
-* Vytvoření tajných kódů aplikace
-* Integrace s jinými službami
+* Odebrání prostředku
+* Vytváření tajných klíčů aplikací
+* Integrace s dalšími službami
 
-Protokolování aktivit pro digitální dvojče Azure je ve výchozím nastavení povolené a najdete na webu Azure portal podle:
+Protokolování aktivit pro digitální vlákna Azure je ve výchozím nastavení povolené a dá se najít prostřednictvím Azure Portal:
 
-1. Výběr vaší instance digitální dvojče Azure.
-1. Výběr **protokolu aktivit** zobrazíte panel zobrazení:
+1. Vybírá se instance digitálního vlákna Azure.
+1. Výběr **protokolu aktivit** pro zobrazení panelu zobrazení:
 
     [![Protokol aktivit](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
 
-Pro pokročilé protokolování aktivit:
+Pro rozšířené protokolování aktivit:
 
-1. Vyberte **protokoly** možnosti se zobrazí **přehled Activity Log Analytics**:
+1. Výběrem možnosti **protokoly** zobrazíte **Activity Log Analytics přehled**:
 
-    [![Výběr](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
+    [![Výběru](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
 
-1. **Přehled Activity Log Analytics** sumarizuje data protokolu základní aktivity:
+1. **Přehled Activity Log Analytics** shrnuje data základních protokolů aktivit:
 
-    [![Přehled Activity log analytics]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
+    [![Přehled analýzy protokolů aktivit]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
 
 >[!TIP]
->Použití **protokoly aktivit** rychlé přehledy o vašich událostí na úrovni předplatného.
+>**Protokoly aktivit** se používají pro rychlé přehledy událostí na úrovni předplatného.
 
-## <a name="enable-customer-diagnostic-logs"></a>Povolení diagnostických protokolů zákazníka
+## <a name="enable-customer-diagnostic-logs"></a>Povolit diagnostické protokoly zákazníků
 
-Azure [nastavení diagnostiky](../azure-monitor/platform/diagnostic-logs-overview.md) lze nastavit pro každou instanci Azure k doplnění protokolování aktivit. Když protokoly aktivit se týkají událostí na úrovni předplatného, protokolování diagnostiky poskytuje přehled o provozní historie tyto prostředky.
+[Nastavení diagnostiky](../azure-monitor/platform/diagnostic-logs-overview.md) Azure je možné nastavit pro každou instanci Azure a doplnit protokolování aktivit. Protokoly aktivit se týkají událostí na úrovni předplatného a diagnostické protokolování nabízí přehledy o provozní historii samotných prostředků.
 
-Příklady protokolování diagnostiky:
+Mezi příklady protokolování diagnostiky patří:
 
-* Čas spuštění pro uživatelem definované funkce
-* Stavový kód odpovědi úspěšného požadavku rozhraní API
-* Načítání klíče aplikace z trezoru
+* Doba provádění uživatelsky definované funkce
+* Stavový kód odpovědi na úspěšnou žádost o rozhraní API
+* Načtení klíče aplikace z trezoru
 
 Povolení diagnostických protokolů pro instanci:
 
-1. Otevřete prostředek na webu Azure portal.
+1. Uveďte prostředek v Azure Portal.
 1. Vyberte **nastavení diagnostiky**:
 
-    [![Nastavení diagnostiky jeden](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
+    [![Nastavení diagnostiky 1](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. Vyberte **zapnout diagnostiku** ke shromažďování dat (pokud už dříve povolené).
-1. Vyplňte požadovaná pole a vyberte, jak a kde se uloží data:
+1. Vyberte **zapnout diagnostiku** pro shromažďování dat (Pokud jste předtím nepovolili).
+1. Vyplňte požadovaná pole a vyberte, jak a kam se budou data ukládat:
 
-    [![Dvě nastavení diagnostiky](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
+    [![Nastavení diagnostiky dvě](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
-    Diagnostické protokoly jsou často ukládají pomocí [Azure File Storage](../storage/files/storage-files-deployment-guide.md) a sdílené s [protokoly Azure monitoru](../azure-monitor/log-query/get-started-portal.md). Obě možnosti se dají vybrat.
+    Diagnostické protokoly se často ukládají pomocí [Azure File Storage](../storage/files/storage-files-deployment-guide.md) a sdílí se s [protokoly Azure monitor](../azure-monitor/log-query/get-started-portal.md). Lze vybrat obě možnosti.
 
 >[!TIP]
->Použití **diagnostické protokoly** postřehy operací s prostředky.
+>Pomocí **diagnostických protokolů** můžete získat přehled o operacích prostředků.
 
-## <a name="azure-monitor-and-log-analytics"></a>Azure monitor a log analytics
+## <a name="azure-monitor-and-log-analytics"></a>Azure monitor a Log Analytics
 
-Aplikace IoT seskupení různorodých zdrojů, zařízení, umístění a dat do jednoho. Podrobné protokolování poskytuje podrobné informace o každé konkrétní, služba nebo komponenta architektury aplikací, ale jednotný přehled, je často nutné na údržbu a ladění.
+Aplikace IoT jednotkám jsou různorodé prostředky, zařízení, místa a data do jedné. Podrobné protokolování poskytuje podrobné informace o jednotlivých součástech, službě nebo komponentě celkové architektury aplikace, ale jednotný přehled je často nutný k údržbě a ladění.
 
-Azure Monitor zahrnuje služby výkonné log analytics, která umožňuje protokolování zdrojů a zobrazit a analyzovat na jednom místě. Azure Monitor je proto velmi užitečné pro analýzu protokolů v rámci sofistikovaných aplikací IoT.
+Azure Monitor obsahuje výkonnou službu Log Analytics, která umožňuje zobrazení a analýzu zdrojů protokolování na jednom místě. Azure Monitor je proto vysoce užitečný pro analýzu protokolů v propracovaných aplikacích IoT.
 
-Příklady použití:
+Příklady použití zahrnují:
 
-* Dotazování více diagnostických protokolů historie
+* Dotazování na několik historií protokolů diagnostiky
 * Zobrazení protokolů pro několik uživatelsky definovaných funkcí
-* Zobrazení protokolů pro dvě nebo více služeb v určitém časovém limitu
+* Zobrazení protokolů pro dvě nebo více služeb v rámci určitého časového rámce
 
-Dotazování na celý protokol je poskytována prostřednictvím [protokoly Azure monitoru](../azure-monitor/log-query/log-query-overview.md). Výkonné funkce, které tato nastavení:
+Úplné dotazování protokolu je k dispozici prostřednictvím [protokolů Azure monitor](../azure-monitor/log-query/log-query-overview.md). Nastavení těchto výkonných funkcí:
 
-1. Vyhledejte **Log Analytics** na webu Azure Portal.
-1. Uvidí vaši dostupný **pracovní prostor Log Analytics** instancí. Vyberte jednu a vyberte **protokoly** dotazu:
+1. Vyhledejte **Log Analytics** v Azure Portal.
+1. Zobrazí se vaše dostupné **Log Analytics instance pracovních prostorů** . Vyberte jednu z **protokolů** pro dotazování:
 
-    [![Log analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
+    [![Log Analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
-1. Pokud ještě nemáte **pracovní prostor Log Analytics** instance, můžete vytvořit pracovní prostor tak, že vyberete **přidat** tlačítka:
+1. Pokud ještě instanci **pracovního prostoru Log Analytics** nemáte, můžete si vytvořit pracovní prostor tak, že vyberete tlačítko **Přidat** :
 
-    [![Vytváření OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
+    [![Vytvořit OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
-Jednou vaše **pracovní prostor Log Analytics** zřídí instance, můžete použít zadávat efektivní dotazy na hledání v protokolech násobky položky nebo pomocí určitých kritérií pomocí **Správa protokolů**:
+Po zřízení instance **pracovního prostoru Log Analytics** můžete použít výkonné dotazy pro hledání záznamů v protokolech více než v protokolu nebo hledání pomocí určitých kritérií pomocí **správy protokolů**:
 
    [![Správa protokolů](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
-Další informace o operacích výkonný dotazovací najdete v tématu [Začínáme s dotazy](../azure-monitor/log-query/get-started-queries.md).
+Další informace o výkonných operacích dotazů najdete v tématu [Začínáme s dotazy](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
-> Může dojít ke zpoždění 5 minut při odesílání událostí do **pracovní prostor Log Analytics** poprvé.
+> Při prvním posílání událostí do **Log Analytics pracovního prostoru** může docházet k prodlevě 5 minut.
 
-Protokoly Azure monitoru také poskytují výkonný chyb a oznámení výstrah služeb, které můžete zobrazit tak, že vyberete **diagnostikovat a řešit problémy**:
+Protokoly Azure Monitor také poskytují výkonné služby chyb a výstrah, které lze zobrazit výběrem možnosti diagnostikovat **a řešit problémy**:
 
-   [![Oznámení o upozornění a chyby](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
+   [![Upozornění a upozornění na chyby](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
->Použití **pracovní prostor Log Analytics** do historie protokolu dotazu více funkce aplikace, předplatných a služeb.
+>Použijte **Log Analytics pracovní prostor** k dotazování na Historie protokolu pro více funkcí, předplatných nebo služeb aplikací.
 
 ## <a name="other-options"></a>Další možnosti
 
-Azure digitální dvojče také podporuje specifické pro aplikaci protokolování a auditování zabezpečení. Důkladný přehled k vaší instanci Azure digitální dvojče k dispozici všechny možnosti protokolování Azure, najdete v článku [Azure protokolu auditu](../security/azure-log-audit.md) článku.
+Digitální vlákna Azure také podporují protokolování a auditování zabezpečení specifické pro aplikace. Podrobný přehled všech možností protokolování Azure, které jsou dostupné pro vaši instanci digitálních vláken Azure, najdete v článku věnovaném [auditu protokolu Azure](../security/fundamentals/log-audit.md) .
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o Azure [protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md).
+- Přečtěte si další informace o [protokolech aktivit](../azure-monitor/platform/activity-logs-overview.md)Azure.
 
-- Ponořte se hlouběji do nastavení diagnostiky služby Azure ve čtení [přehled diagnostických protokolů](../azure-monitor/platform/diagnostic-logs-overview.md).
+- Podrobně hlubšího nastavení diagnostiky Azure tím, že si přečtete [Přehled diagnostických protokolů](../azure-monitor/platform/diagnostic-logs-overview.md).
 
-- Další informace o [protokoly Azure monitoru](../azure-monitor/log-query/get-started-portal.md).
+- Přečtěte si další informace o [protokolech Azure monitor](../azure-monitor/log-query/get-started-portal.md).

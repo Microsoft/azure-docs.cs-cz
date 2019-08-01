@@ -1,7 +1,7 @@
 ---
-title: Jak vytvořit model konverzace Learner využívající Node.js – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Postup vytvoření Conversation Learner modelu pomocí Node. js – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Zjistěte, jak vytvořit model konverzace Learner pomocí Node.js.
+description: Naučte se vytvářet Conversation Learner model pomocí Node. js.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,46 +10,47 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: cc071d59a387c8ae4982eacbce6812526f447788
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7ab32fb421a2c0db72652d1bbf12d312bffd5d1e
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388771"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706536"
 ---
-# <a name="create-a-conversation-learner-model-using-nodejs"></a>Vytvoření modelu konverzace Learner pomocí Node.js
+# <a name="create-a-conversation-learner-model-using-nodejs"></a>Vytvoření Conversation Learnerho modelu pomocí Node. js
 
-Konverzace Learner snižuje složitost vytváření robotů. Umožňuje hybridní vývoj pracovní postup povolení ručně psanou kódu a strojové učení a snížit množství kódu potřebného k zápisu robotů. Některé části pevné modelu, jako je například kontrolu, pokud je uživatel přihlášen, nebo zajištěním, požadavek rozhraní API ke kontrole skladových zásob, stále možné zakódovat. Ale jiné změny ve stavu a akce výběru je možné zjistit z dialogových oken příklad Dal doménu nebo pro vývojáře.
+Conversation Learner snižuje složitost sestavování roboty. Umožňuje hybridní vývojové pracovní toky, které umožňují ruční psaní kódu a strojového učení, aby snižovaly množství kódu potřebného k zápisu roboty. Některé pevné části modelu, jako je například kontrola, zda je uživatel přihlášen nebo že požadavek rozhraní API na kontrolu inventáře úložiště, lze nadále kódovat. Nicméně další změny stavu a výběru akcí se ale dají získat z ukázkových dialogových oken, které dodávají odborníci v doméně nebo vývojáři.
 
-## <a name="invitation-required"></a>Pozvánku požadováno
+## <a name="invitation-required"></a>Vyžaduje se Pozvánka
 
-*Pozvánka se vyžaduje pro přístup k projektu Learner konverzace.*
+*Pro přístup k projektu Conversation Learner je vyžadována Pozvánka.*
 
-Konverzace Learner projekt se skládá ze sady SDK je přidat do vašeho robota a cloudové služby, která má přístup k sadě SDK pro službu machine learning.  V současné době vyžaduje přístup ke cloudové službě projektu konverzace Štíhlejší pozvánku.  Pokud jste nebyli pozváni již, [požádat o pozvání](https://aka.ms/conversation-learner-request-invite).  Pokud jste neobdrželi pozvánku, nebude možné přistupovat ke cloudovým rozhraní API.
+Conversation Learner projektu sestávají ze sady SDK, kterou přidáte do robota, a cloudové služby, ke které SDK přistupuje pro strojové učení.  V současné době přístup ke cloudové službě s produktem konverzace projektu vyžaduje pozvánku.  Pokud jste to ještě nepozvali, [požádejte o pozvánku](https://aka.ms/conversation-learner-request-invite).  Pokud jste pozvánku neobdrželi, nebudete moct získat přístup k cloudovým rozhraním API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Uzel 8.5.0 nebo novější a npm 5.3.0 nebo novější. Nainstalujte z [ https://nodejs.org ](https://nodejs.org).
+- Uzel 8.5.0 nebo vyšší a npm 5.3.0 nebo vyšší. Nainstalovat z [https://nodejs.org](https://nodejs.org).
   
-- Služba LUIS vytváření klíč:
+- LUIS vytváření klíčů:
 
-  1. Přihlaste se do [ https://www.luis.ai ](https://www.luis.ai).
+  1. Přihlaste se [https://www.luis.ai](https://www.luis.ai).
 
-  2. Klikněte na své jméno v pravém horním rohu klikněte na "nastavení"
+  2. V pravém horním rohu klikněte na jméno a pak na nastavení.
 
-  3. Vytváření klíče se zobrazí na stránce výsledný
+  3. Vytváření klíčového obsahu se zobrazí na výsledné stránce.
 
-  (Váš LUIS vytváření klíč slouží 2 role.  Nejprve bude sloužit jako vaše konverzace Learner vytváření klíč.  Za druhé konverzace Learner využívá LUIS pro extrakci entity; Služba LUIS vytváření klíč slouží k vytváření modelů služby LUIS vás cestovat oprávněný)
+  (Váš LUIS Authoring Key obsluhuje 2 role.  Nejprve bude sloužit jako klíč pro vytváření Conversation Learner.  Druhý Conversation Learner k extrakci entit používá LUIS; LUIS Authoring Key slouží k vytváření modelů LUIS vaším jménem.)
 
-- Webový prohlížeč Google Chrome. Nainstalujte z [ https://www.google.com/chrome/index.html ](https://www.google.com/chrome/index.html).
+- Webový prohlížeč Google Chrome. Nainstalovat z [https://www.google.com/chrome/index.html](https://www.google.com/chrome/index.html).
 
-- Git. Nainstalujte z [ https://git-scm.com/downloads ](https://git-scm.com/downloads).
+- Git. Nainstalovat z [https://git-scm.com/downloads](https://git-scm.com/downloads).
 
-- VSCode. Nainstalujte z [ https://code.visualstudio.com/ ](https://code.visualstudio.com/). Poznámka: Tato možnost se doporučuje, není nutné.
+- VSCode. Nainstalovat z [https://code.visualstudio.com/](https://code.visualstudio.com/). Upozorňujeme, že toto se doporučuje, není to nutné.
 
 ## <a name="quick-start"></a>Rychlý start 
 
-1. Instalace a sestavení:
+1. Nainstalovat a sestavit:
 
     ```bash    
     git clone https://github.com/Microsoft/ConversationLearner-Samples cl-bot-01
@@ -59,41 +60,41 @@ Konverzace Learner projekt se skládá ze sady SDK je přidat do vašeho robota 
     ```
 
     > [!NOTE]
-    > Během `npm install`, tuto chybu můžete ignorovat, pokud k němu dojde: `gyp ERR! stack Error: Can't find Python executable`
+    > `npm install`V takovém případě můžete tuto chybu ignorovat, pokud k ní dojde:`gyp ERR! stack Error: Can't find Python executable`
 
-2. Konfigurace:
+2. Konfigurovat:
 
-   Vytvořte soubor s názvem `.env` v adresáři `cl-bot-01`.  Obsah souboru by měl vypadat:
+   Vytvořte v adresáři `cl-bot-01`soubor `.env` s názvem.  Obsah souboru by měl být:
 
    ```
    NODE_ENV=development
    LUIS_AUTHORING_KEY=<your LUIS authoring key>
    ```
 
-3. Bot spuštění:
+3. Start bot:
 
     ```
     npm start
     ```
 
-    To spustí obecný prázdný robotů v `cl-bot-01/src/app.ts`.
+    Tím se v `cl-bot-01/src/app.ts`nástroji spustí obecná prázdná robota.
 
-3. Otevřít v prohlížeči na `http://localhost:3978`
+3. Otevřít prohlížeč pro`http://localhost:3978`
 
-Teď používáte Learner konverzace a můžete vytvořit a představuje model Learner konverzace.  
+Nyní používáte Conversation Learner a můžete vytvořit a naučit model Conversation Learner.  
 
 > [!NOTE]
-> Při spuštění je dostupná pro pozvané Learner konverzace projektu.  Pokud `http://localhost:3978/ui` ukazuje HTTP `403` chyba, to znamená, že váš účet nebyl pozvaný.  Prosím [požádat o pozvání](https://aka.ms/conversation-learner-request-invite).
+> Při spuštění je Conversation Learner projektu k dispozici prostřednictvím pozvánky.  Pokud `http://localhost:3978/ui` se zobrazí chyba `403` protokolu HTTP, znamená to, že váš účet nebyl přizván.  Požádejte prosím [o pozvání](https://aka.ms/conversation-learner-request-invite).
 
-## <a name="tutorials-demos-and-switching-between-bots"></a>Kurzy, ukázky a přepínání mezi robotů
+## <a name="tutorials-demos-and-switching-between-bots"></a>Kurzy, ukázky a přepínání mezi roboty
 
-Výše uvedených pokynů spustit obecný prázdný robota.  Spustit kurz nebo místo toho ukázka bot:
+Výše uvedené pokyny zahájily obecnou prázdnou bot.  Pokud místo toho chcete spustit kurz nebo demo bot:
 
-1. Pokud máte webové konverzace Learner otevřete uživatelské rozhraní, vraťte do seznamu modely na úrovni `http://localhost:3978/ui/home`.
+1. Pokud máte otevřené webové uživatelské rozhraní Conversation Learner, vraťte se do seznamu modelů v `http://localhost:3978/ui/home`.
     
-2. Pokud je spuštěn jiný bot (jako je `npm start` nebo `npm run demo-pizza`), zastavte ji.  Není potřeba zastavit proces uživatelského rozhraní, nebo zavřete webový prohlížeč.
+2. Pokud je spuštěný jiný robot ( `npm start` například `npm run demo-pizza`nebo), zastavte ho.  Nemusíte zastavovat proces uživatelského rozhraní nebo webový prohlížeč zavřít.
 
-3. Spusťte ukázku bot z příkazového řádku (kroku 2 výše).  Ukázky patří:
+3. Spusťte demo bot z příkazového řádku (krok 2 výše).  K ukázkám patří:
 
    ```bash
    npm run tutorial-general
@@ -106,68 +107,68 @@ Výše uvedených pokynů spustit obecný prázdný robota.  Spustit kurz nebo m
    npm run demo-storage
    ```
 
-4. Pokud ještě nejste, přepněte do konverzace Learner webového uživatelského rozhraní v prohlížeči Chrome načtením `http://localhost:3978/ui/home`. 
+4. Pokud jste tak ještě neučinili, přepněte do webového uživatelského rozhraní Conversation Learner v Chrome `http://localhost:3978/ui/home`načtením. 
 
-5. Klikněte na "Import kurzy" a vyberte model ukázku v uživatelském rozhraní Learner konverzace, který odpovídá ukázku, kterou jste spustili.
+5. Klikněte na tlačítko "Import kurzů" a v uživatelském rozhraní Conversation Learner vyberte ukázkový model, který odpovídá ukázce, kterou jste spustili.
 
-Zdrojové soubory pro ukázkách, které jsou v `cl-bot-01/src/demos`
+Zdrojové soubory pro ukázky jsou v`cl-bot-01/src/demos`
 
-## <a name="create-a-bot-which-includes-back-end-code"></a>Vytváření robotů, která zahrnuje kód back endu
+## <a name="create-a-bot-which-includes-back-end-code"></a>Vytvoření robota, který obsahuje kód back-endu
 
-1. Pokud máte webové konverzace Learner otevřete uživatelské rozhraní, vraťte do seznamu modely na úrovni `http://localhost:3978/ui/home`.
+1. Pokud máte otevřené webové uživatelské rozhraní Conversation Learner, vraťte se do seznamu modelů v `http://localhost:3978/ui/home`.
     
-2. Pokud je spuštěn robota (jako je `npm run demo-pizza`), zastavte ji.  Není potřeba zastavit proces uživatelského rozhraní, nebo zavřete webový prohlížeč.
+2. Pokud je robot spuštěný (jako `npm run demo-pizza`), zastavte ho.  Nemusíte zastavovat proces uživatelského rozhraní nebo webový prohlížeč zavřít.
 
-3. V případě potřeby upravit kód v `cl-bot-01/src/app.ts`.
+3. V případě potřeby upravte kód v `cl-bot-01/src/app.ts`.
 
-4. Znovu sestavte a znovu spusťte bot:
+4. Znovu sestavte a znovu spusťte robot:
 
     ```bash    
     npm run build
     npm start
     ```
 
-5. Pokud ještě nejste, přepněte do konverzace Learner webového uživatelského rozhraní v prohlížeči Chrome načtením `http://localhost:3978/ui/home`. 
+5. Pokud jste tak ještě neučinili, přepněte do webového uživatelského rozhraní Conversation Learner v Chrome `http://localhost:3978/ui/home`načtením. 
 
-6. Vytvořit nový model Learner konverzace v uživatelském rozhraní a spusťte výuky.
+6. Vytvořte nový model Conversation Learner v uživatelském rozhraní a začněte s výukou.
 
-7. Provádět změny kódu v `cl-bot-01/src/app.ts`, opakujte postup uvedený výš, od kroku 2.
+7. Chcete-li provést změny `cl-bot-01/src/app.ts`kódu v, opakujte výše uvedené kroky počínaje krokem 2.
 
 ## <a name="vscode"></a>VSCode
 
-Ve VSCode, existuje jsou spuštěny konfigurace pro každý ukázku a pro "prázdný robota" `cl-bot-01/src/app.ts`.  Otevřít `cl-bot-01` složky ve VSCode.
+V VSCode existují konfigurace spuštění pro každou ukázku a pro "prázdné bot" v `cl-bot-01/src/app.ts`.  `cl-bot-01` Otevřete složku v VSCode.
 
 ## <a name="advanced-configuration"></a>Pokročilá konfigurace
 
-Zde je šablona `.env.example` soubor ukazuje, jaké prostředí proměnné můžete nastavit ke konfiguraci ukázky.
+K dispozici je `.env.example` soubor šablony, který obsahuje proměnné prostředí, které můžete nastavit pro konfiguraci ukázek.
 
-Můžete upravit tyto porty, aby nedocházelo ke konfliktům mezi další služby spuštěné na počítači tak, že přidáte `.env` souboru do kořenového adresáře projektu:
+Tyto porty můžete upravit tak, aby nedocházelo ke konfliktům mezi ostatními službami běžícími na `.env` vašem počítači, a to přidáním souboru do kořenového adresáře projektu:
 
 ```bash
 cp .env.example .env
 ```
 
-Tato funkce využívá standardní konfiguraci, která vám umožní místní spuštění vašeho robota a začít používat Learner konverzace.  (Dále, k nasazení svého robota rozhraní Bot Framework, některé úpravy pro tento soubor bude potřeba.)
+Tato operace používá standardní konfiguraci, která vám umožní spustit robota místně a začít používat Conversation Learner.  (Později pro nasazení robota do rozhraní bot Framework budou potřeba některé úpravy tohoto souboru.)
 
 ## <a name="support"></a>Podpora
 
-- Označte své otázky [Stack Overflow](https://stackoverflow.com) s "microsoft cognitive".
-- Žádost o funkci na naše [User Voice stránky](https://aka.ms/conversation-learner-uservoice)
-- Otevřete problém na našem [úložiště GitHub](https://github.com/Microsoft/ConversationLearner-Samples)
+- Označování otázek na [Stack Overflow](https://stackoverflow.com) s využitím "rozpoznávání Microsoftu"
+- Vyžádání funkce na [stránce hlasového uživatele](https://aka.ms/conversation-learner-uservoice)
+- Otevření problému v našem [úložišti GitHubu](https://github.com/Microsoft/ConversationLearner-Samples)
 
-## <a name="contributing"></a>Přispívání
+## <a name="contributing"></a>Zvaní
 
 Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v [nejčastějších dotazech k pravidlům chování](https://opensource.microsoft.com/codeofconduct/faq/). S případnými dalšími dotazy nebo připomínkami se obraťte na adresu [opencode@microsoft.com](mailto:opencode@microsoft.com).
 
-## <a name="source-repositories"></a>Zdrojové úložiště
+## <a name="source-repositories"></a>Zdrojová úložiště
 
-- [conversationlearner-samples](https://github.com/Microsoft/ConversationLearner-Samples)
+- [conversationlearner – ukázky](https://github.com/Microsoft/ConversationLearner-Samples)
 - [conversationlearner-sdk](https://github.com/Microsoft/ConversationLearner-SDK)
 - [conversationlearner-models](https://github.com/Microsoft/ConversationLearner-Models)
-- [conversationlearner-ui](https://github.com/Microsoft/ConversationLearner-UI)
+- [conversationlearner – uživatelské rozhraní](https://github.com/Microsoft/ConversationLearner-UI)
 - [conversationlearner-webchat](https://github.com/Microsoft/ConversationLearner-WebChat)
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Ahoj světe](./tutorials/01-hello-world.md)
+> [Hello World](./tutorials/01-hello-world.md)

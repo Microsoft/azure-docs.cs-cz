@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 99440e22eb736522a25c2ee56bb07ef1d9967e66
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 40d946db48a65452d2da529098c07d0d0c60d472
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325654"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619659"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Nastavení příkazového řádku v instanci kontejneru pro přepsání výchozí operace příkazového řádku
 
@@ -23,7 +23,7 @@ Podobně jako při nastavení [proměnných prostředí](container-instances-env
 
 ## <a name="command-line-guidelines"></a>Pokyny příkazového řádku
 
-* Ve výchozím nastavení příkazový řádek určuje *jeden proces, který začíná bez prostředí* v kontejneru. Například příkazový řádek může spustit skript v jazyce Python nebo spustitelný soubor. 
+* Ve výchozím nastavení příkazový řádek určuje *jeden proces, který začíná bez prostředí* v kontejneru. Například příkazový řádek může spustit skript v jazyce Python nebo spustitelný soubor. Proces může určit další parametry nebo argumenty.
 
 * Pokud chcete spustit více příkazů, spusťte příkazový řádek nastavením prostředí prostředí, které je podporované v operačním systému kontejneru. Příklady:
 
@@ -66,7 +66,7 @@ Syntaxe příkazového řádku se liší v závislosti na rozhraní API nebo ná
 
 Jako příklad můžete změnit chování image kontejneru [Microsoft/ACI-WORDCOUNT][aci-wordcount] , která analyzuje text v Shakespeare *Hamlet* , aby našli nejčastěji se vyskytující slova. Místo analýzy *Hamlet*můžete nastavit příkazový řádek, který odkazuje na jiný zdroj textu.
 
-Zobrazí výstup příkazu [Microsoft/ACI-WORDCOUNT][aci-wordcount] container when it analyzes the default text, run it with the following [az container create][az-container-create] . Není zadán žádný příkazový řádek pro spuštění, takže se spustí výchozí příkaz kontejneru. Pro ilustraci tento příklad nastaví [proměnné prostředí](container-instances-environment-variables.md) tak, aby našli první 3 slova, která jsou aspoň pět písmen dlouhá:
+Chcete-li zobrazit výstup kontejneru [Microsoft/ACI-WORDCOUNT][aci-wordcount] při analýze výchozího textu, spusťte jej pomocí následujícího příkazu [AZ Container Create][az-container-create] . Není zadán žádný příkazový řádek pro spuštění, takže se spustí výchozí příkaz kontejneru. Pro ilustraci tento příklad nastaví [proměnné prostředí](container-instances-environment-variables.md) tak, aby našli první 3 slova, která jsou aspoň pět písmen dlouhá:
 
 ```azurecli-interactive
 az container create \
@@ -77,7 +77,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Jakmile se stav kontejneru zobrazí jako *ukončeno* , zobrazí se výstup pomocí [AZ Container show][az-container-show] to check state), display the log with [az container logs][az-container-logs] .
+Jakmile se stav kontejneru zobrazí jako *ukončeno* (ke kontrole stavu použijte příkaz [AZ Container show][az-container-show] ), zobrazí se výstup protokolu příkazem [AZ Container logs][az-container-logs] .
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -115,7 +115,7 @@ Výstup:
 [('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Scénáře založené na úlohách, například dávkové zpracování velké datové sady s několika kontejnery, můžou využívat vlastní příkazové řádky za běhu. Další informace o spuštění kontejnerů založených na úlohách najdete v tématu [spuštění kontejnerových úloh pomocí zásad restartování](container-instances-restart-policy.md).
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9f854e1771eec1d02fd14e040510688bf33c59c8
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 9465c1991418c7ebef8c4eed825affc7b1d93492
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442435"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693334"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavte přihlášení pomocí účtu LinkedIn pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak povolit přihlášení uživatelů z účtu Li
 
 - Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 - Účet LinkedIn – Pokud ho ještě nemáte, [vytvořte účet](https://www.linkedin.com/start/join).
-- LinkedIn – stránka: potřebujete [LinkedIn](https://www.linkedin.com/company/setup/new/) , který můžete přidružit k aplikaci LinkedIn, kterou vytvoříte v další části.
+- LinkedIn – stránka: potřebujete [LinkedIn](https://www.linkedin.com/help/linkedin/answer/710/creating-a-linkedin-company-page) , který můžete přidružit k aplikaci LinkedIn, kterou vytvoříte v další části.
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 

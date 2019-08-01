@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2019
+ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: fef9fa128d2ebb84fb82579f254735fdb9aa7ee2
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: dad74410562aa54aeb61675e7dc1c0adccc44797
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881072"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679210"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Připojení externího řešení pomocí protokolu syslog
 
@@ -37,7 +37,7 @@ Můžete připojit libovolné místní zařízení, které podporuje syslog, do 
 
 Syslog je protokol protokolování událostí, které jsou společné pro Linux. Aplikace odešle zprávy, které mohou být uložené na místním počítači nebo doručí do kolekcí Syslog. Pokud je nainstalován agent Log Analytics pro Linux, nakonfiguruje místní démon syslog, aby předal zprávy agentovi. Agent potom zprávu pošle Azure Monitor, kde se vytvoří odpovídající záznam.
 
-Další informace najdete [v tématu zdroje dat syslog v Azure monitor](../azure-monitor/platform/data-sources-syslog.md).
+Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure-monitor/platform/data-sources-syslog.md).
 
 > [!NOTE]
 > Agent může shromažďovat protokoly z více zdrojů, ale musí být nainstalovaný na vyhrazeném proxy počítači.
@@ -47,6 +47,9 @@ Další informace najdete [v tématu zdroje dat syslog v Azure monitor](../azure
 1. Na portálu Sentinel Azure vyberte **datové konektory** a v tabulce klikněte na řádek **syslog** a v podokně syslog napravo klikněte na **otevřít stránku konektoru**.
 2. Pokud je váš počítač se systémem Linux v rámci Azure, vyberte **Stáhnout a nainstalovat agenta na virtuálním počítači Azure Linux**. V okně virtuální počítače vyberte počítače, na které chcete agenta nainstalovat, a klikněte na **připojit** v horní části.
 1. Pokud počítač se systémem Linux v rámci Azure není, vyberte **Stáhnout a nainstalovat agenta na počítač se systémem Linux mimo Azure**. V okně **Direct agent** zkopírujte příkaz v části stáhnout a začlenit **agenta pro Linux** a spusťte ho na svém počítači. 
+   > [!NOTE]
+   > Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení vaší organizace. Můžete třeba nakonfigurovat síť tak, aby byla v souladu se zásadami zabezpečení podnikové sítě, a změnit porty a protokoly v procesu démona tak, aby odpovídaly vašim požadavkům. 
+
 1. V části **Konfigurovat protokoly, které se mají připojit** v okně Nastavení konektoru syslog, postupujte podle pokynů:
     1. Kliknutím na odkaz **Otevřete konfiguraci rozšířeného nastavení pracovního prostoru**. 
     1. Vyberte **data**a potom **syslog**.
@@ -55,7 +58,7 @@ Další informace najdete [v tématu zdroje dat syslog v Azure monitor](../azure
        > Pokud zaškrtnete políčko, které se má u **počítačů použít**, bude tato konfigurace platit pro všechny počítače se systémem Linux připojené k tomuto pracovnímu prostoru. Tuto konfiguraci můžete zobrazit v počítači syslog pod 
 1. Kliknutím **sem otevřete okno Konfigurace**.
 1. Vyberte **data** a pak **syslog**.
-   - Ujistěte se, že všechny zařízení, které odesíláte pomocí protokolu syslog, jsou v tabulce. Pro každé zařízení, které budete monitorovat, nastavte závažnost. Klikněte na tlačítko **Použít**.
+   - Ujistěte se, že všechny zařízení, které odesíláte pomocí protokolu syslog, jsou v tabulce. Pro každé zařízení budete monitorovat, nastavit závažnost. Klikněte na tlačítko **Použít**.
 1. V počítači syslog se ujistěte, že posíláte tato zařízení. 
 
 1. Chcete-li použít příslušné schéma v Log Analytics pro protokoly syslog, vyhledejte protokol **SYSLOG**.

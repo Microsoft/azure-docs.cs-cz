@@ -10,10 +10,10 @@ ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 502f178b66e7ba233552d7db4e095363c8bb8628
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325560"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení na Azure Container Instances z Azure Container Registry
@@ -32,7 +32,7 @@ V jakémkoli produkčním scénáři by měl být přístup ke službě Azure Co
 
 V následující části vytvoříte Trezor klíčů Azure a instanční objekt a uložíte přihlašovací údaje instančního objektu do trezoru. 
 
-### <a name="create-key-vault"></a>Vytvoření trezoru klíčů
+### <a name="create-key-vault"></a>Vytvořit trezor klíčů
 
 Pokud ještě nemáte trezor ve službě [Azure Key Vault](../key-vault/key-vault-overview.md), vytvořte si ho v Azure CLI pomocí následujících příkazů.
 
@@ -50,7 +50,7 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 Teď je potřeba vytvořit instanční objekt a uložit jeho přihlašovací údaje do trezoru klíčů.
 
-Následující příkaz pomocí příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] to create the service principal, and [az keyvault secret set][az-keyvault-secret-set] ukládá do trezoru **heslo** instančního objektu.
+Následující příkaz pomocí příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] vytvoří instanční objekt a vyaz heslo [tajného klíče trezoru klíčů][az-keyvault-secret-set] , aby se uložilo **heslo** instančního objektu do trezoru.
 
 ```azurecli
 # Create service principal, store its password in AKV (the registry *password*)
@@ -65,7 +65,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Argument v předchozím příkazu nakonfiguruje instanční objekt pomocí role acrpull, která uděluje přístup pouze pro získání přístupu k registru.  `--role` Chcete-li udělit přístup push i Pull, změňte `--role` argument na *acrpush*.
+Argument v předchozím příkazu nakonfiguruje instanční objekt pomocí role acrpull, která uděluje přístup pouze pro získání přístupu k registru. `--role` Chcete-li udělit přístup push i Pull, změňte `--role` argument na *acrpush*.
 
 Dále do trezoru uložte identifikátor *appId* objektu služby, což je **uživatelské jméno** , které jste předali Azure Container Registry k ověřování.
 
@@ -141,7 +141,7 @@ Pokud udržujete image kontejnerů ve službě Azure Container Registry, můžet
 
 1. Pokud chcete potvrdit, že je účet správce povolený, vyberte **přístupové klíče**a v části **uživatel s oprávněními** vyberte **Povolit**.
 
-1. Vyberte úložiště a pak vyberte úložiště, ze kterého chcete nasadit, klikněte pravým tlačítkem na značku pro Image kontejneru, kterou chcete nasadit, a vyberte **spustit instanci**.
+1. Vyberte **úložiště**a pak vyberte úložiště, ze kterého chcete nasadit, klikněte pravým tlačítkem na značku pro Image kontejneru, kterou chcete nasadit, a vyberte **spustit instanci**.
 
     !["Run instance" v Azure Container Registry Azure Portal][acr-runinstance-contextmenu]
 

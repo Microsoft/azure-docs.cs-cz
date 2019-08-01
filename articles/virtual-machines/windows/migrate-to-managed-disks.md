@@ -1,45 +1,36 @@
 ---
-title: Migrace virtuálních počítačů Azure na Managed Disks | Dokumentace Microsoftu
-description: Migrate virtuální počítače Azure vytvořené využitím nespravovaných disků na spravované disky v účtech úložiště.
-services: virtual-machines-windows
-documentationcenter: ''
+title: Migrace virtuálních počítačů Azure do Managed Disks | Microsoft Docs
+description: Migrujte virtuální počítače Azure vytvořené pomocí nespravovaných disků v účtech úložiště, abyste mohli Managed Disks použít.
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7a390c5231f715ce778c0cc267211b8bfb5934d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7487d53195b45664b094ccc3a8418bd0c700e052
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418400"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693484"
 ---
-# <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrace virtuálních počítačů Azure na Managed Disks v Azure
+# <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrace virtuálních počítačů Azure do Managed Disks v Azure
 
-Azure Managed Disks zjednodušuje správu úložiště tím, že si nemusíte samostatně spravovat účty úložiště.  Můžete také migrovat vaše stávající virtuální počítače Azure do služby Managed Disks, abyste využili výhod vyšší spolehlivost virtuálních počítačů ve skupině dostupnosti. Zajišťuje, že disky různých virtuálních počítačů ve skupině dostupnosti jsou dostatečně izolované od sebe, aby jediný bod selhání. Automaticky umístí disky různých virtuálních počítačů ve skupině dostupnosti v různých Uložišť jednotek škálování (razítka) který omezuje dopad selhání škálovací jednotky jednoho úložiště se situace způsobena vlivem hardwaru a softwaru selhání.
-Podle svých potřeb, můžete vybrat z čtyři typy úložišť. Další informace o typech disků k dispozici, najdete v našem článku [vyberte typ disku](disks-types.md)
+Azure Managed Disks zjednodušuje správu úložiště tím, že odstraňuje nutnost samostatné správy účtů úložiště.  Můžete také migrovat stávající virtuální počítače Azure na Managed Disks, abyste mohli využívat lepší spolehlivost virtuálních počítačů ve skupině dostupnosti. Zajišťuje, aby byly disky různých virtuálních počítačů ve skupině dostupnosti dostatečně izolované od sebe navzájem, aby nedocházelo k jednomu bodu selhání. Automaticky umístí disky různých virtuálních počítačů do skupiny dostupnosti v různých jednotkách škálování úložiště (razítka), které omezují dopad selhání jedné jednotky úložiště kvůli selháním hardwaru a softwaru.
+Podle svých potřeb můžete vybírat ze čtyř typů úložišť. Další informace o dostupných typech disků najdete v našem článku [Výběr typu disku](disks-types.md) .
 
 ## <a name="migration-scenarios"></a>Scénáře migrace
 
-Můžete migrovat do Managed Disks v následujících scénářích:
+Migraci na Managed Disks můžete provést v následujících scénářích:
 
 |Scénář  |Článek  |
 |---------|---------|
-|Převod samostatných virtuálních počítačů a virtuálních počítačů ve skupině dostupnosti na spravované disky     |[Převod virtuálních počítačů použít spravované disky](convert-unmanaged-to-managed-disks.md)         |
-|Převod jednoho virtuálního počítače z modelu nasazení classic do Resource Manageru na spravovaných discích     |[Vytvoření virtuálního počítače z klasického virtuálního pevného disku](create-vm-specialized-portal.md)         |
-|Převést všechny virtuální počítače ve virtuální síti classic do Resource Manageru na spravovaných discích     |[Migrace prostředků IaaS z modelu classic na Resource Manager](migration-classic-resource-manager-ps.md) a potom [převod virtuálního počítače z nespravovaných disků na managed disks](convert-unmanaged-to-managed-disks.md)         |
-|Upgrade s unmanaged disks úrovně standard pro virtuální počítače s disky premium spravovaných virtuálních počítačů     | Nejprve je potřeba [převod virtuálního počítače s Windows z nespravovaných disků na managed disks](convert-unmanaged-to-managed-disks.md). Potom [aktualizovat typ úložiště spravovaného disku](convert-disk-storage.md).         |
+|Převod samostatných virtuálních počítačů a virtuálních počítačů ve skupině dostupnosti na spravované disky     |[Převod virtuálních počítačů na používání spravovaných disků](convert-unmanaged-to-managed-disks.md)         |
+|Převedení jednoho virtuálního počítače z klasického na Správce prostředků na spravovaných discích     |[Vytvoření virtuálního počítače z klasického virtuálního pevného disku](create-vm-specialized-portal.md)         |
+|Převést všechny virtuální počítače ve virtuální síti z klasického na Správce prostředků na spravovaných discích     |[Migrace prostředků IaaS z modelu Classic na správce prostředků](migration-classic-resource-manager-ps.md) a [převeďte virtuální počítač z nespravovaných disků na Managed disks](convert-unmanaged-to-managed-disks.md)         |
+|Upgrade virtuálních počítačů se standardními nespravovanými disky na virtuální počítače se spravovanými disky Premium     | Nejprve [převeďte virtuální počítač s Windows z nespravovaných disků na Managed disks](convert-unmanaged-to-managed-disks.md). Pak [aktualizujte typ úložiště spravovaného disku](convert-disk-storage.md).         |
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [Managed Disks](managed-disks-overview.md)
-- Zkontrolujte [ceny pro Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/).
+- Další informace o [Managed disks](managed-disks-overview.md)
+- Projděte si [ceny Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).

@@ -1,6 +1,6 @@
 ---
-title: Veřejné datové sady pro Azure analytics | Dokumentace Microsoftu
-description: Další informace o veřejných datových sadách, můžete použít k rychlému vytvoření prototypu a testovat řešení a analytické služby Azure.
+title: Veřejné datové sady pro Azure Analytics | Microsoft Docs
+description: Přečtěte si o veřejných datových sadách, které můžete použít k prototypování a testování služeb a řešení Azure Analytics.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,49 +10,48 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: 6eabb65203ed8a37975e09271ce4aa11c9478498
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a16f6d6b0bf8600270fdf4e00cfa379ee4422fd0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779165"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566995"
 ---
-# <a name="public-data-sets-for-testing-and-prototyping"></a>Veřejných datových sadách pro tvorbu prototypů a testování
+# <a name="public-data-sets-for-testing-and-prototyping"></a>Veřejné datové sady pro testování a vytváření prototypů
 
-Projdete seznam veřejných datových sadách pro data, která vám pomůže se služby úložiště a analytics prototypu a testování a řešení.
+Projděte si tento seznam veřejných datových sad pro data, která můžete použít k prototypování a testování služby úložiště a analytických služeb a řešení.
 
-## <a name="us-government-and-agency-data"></a>USA Státní správy a agentura dat
-
-| Zdroj dat | Informace o datech | O souborech |
-|---|---|---|
-| [Data pro státní správu USA](https://www.census.gov/data.html) | Více než 190,000 datových sad, které pokrývají zemědělství, klimatu, příjemce, ekosystémů, vzdělávání, energie, financí, stavu, samosprávy, výroba, námořní, oceánu, bezpečnost veřejnosti a vědy a výzkum v USA | Soubory různých velikostí v různých formátech, včetně HTML, XML, CSV, JSON, Excel a mnoha dalších. Dostupné datové sady můžete filtrovat podle formátu souboru. |
-| [Data sčítání USA](https://www.census.gov/data.html) | Statistická data o populaci USA | Datové sady jsou v různých formátech. |
-| [Data Earth science z NASA](https://earthdata.nasa.gov/) | Zemědělství, prostředí, biosféra, klimatu, cryosphere, lidské dimenze, hydrosféra, pozemního surface, oceánů, sun earth interakce, a další kolekce více než 32 000 data. | Datové sady jsou v různých formátech. |
-| [Zpoždění letů letecká společnost a další data doprava](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "USA Ministerstva dopravy vaší kanceláře sleduje Transportation statistiky (BTS) o včasných odletech domácí letů provozovaný ve vzduchu velký prostředníci (tečka). Souhrnné informace o počtu včas, opožděné, zrušené a odkloněných lety se zobrazí... v souhrnné tabulky zveřejňované na tomto webu." | Soubory jsou ve formátu CSV. |
-| [Provoz úmrtí - nám Fatality analýzy generování sestav System (FARS)](https://www.nhtsa.gov/FARS) | "FARS je celostátní sčítání poskytuje NHTSA kongresu, a American veřejné roční data týkající se schopnost se zranit při závažné utrpělo v vozidla selhání provozu." | "Vytvořit svoje vlastní data fatality spustíte online s použitím systému FARS dotazu. Nebo si stáhněte všechna data FARS z 1975 zobrazíte ze serveru FTP." |
-| [Toxické chemických dat – data EPA Toxicity uživatel (ToxCast™)](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "EPA pro většinu aktualizace, data veřejně dostupné toxicity vysokou propustností na tisíce chemikálií. Tato data je generován pomocí úsilí v oblasti výzkumu EPA ToxCast." | Datové sady jsou k dispozici v různých formátech, včetně tabulek, balíčky R a soubory databáze MySQL. |
-| [Toxické chemických dat – NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | "2014 Tox21 data před obrovskou výzvou – slouží k pochopení potenciál chemikálií a sloučeniny testován prostřednictvím toxikologie v rámci iniciativy 21st Century narušit biologické cest takovým způsobem, který může mít za následek toxické účinky odborníci přes." | Datové sady jsou k dispozici v ÚSMĚVY a SDF formátů. Poskytuje data "stanovení obsahu data aktivit a chemických struktury v kolekci Tox21 sloučeniny ~ 10 000 (Tox21 10 kB)." |
-| [Biotechnologie a genomu data z NCBI](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Více datových sad pokrývá genů genomů a bílkovin. | Datové sady jsou v textu, XML, DOSAH a dalších formátech. VÝBUCHU aplikace je k dispozici. |
-
-## <a name="other-statistical-and-scientific-data"></a>Další statistické a vědecké data
+## <a name="us-government-and-agency-data"></a>USA Data pro státní správu a úřady
 
 | Zdroj dat | Informace o datech | O souborech |
 |---|---|---|
-| [New York City taxi data](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Záznamy cesty taxíkem obsahovat pole zachytávání odběr dropoff data/časy odběr a dropoff umístění, o jízdách vzdálenosti, rozepsané tarify, míra typy, typy plateb a počítá ovladač ohlásil osobní." | Datové sady jsou v souborech CSV podle měsíce. |
-| [Microsoft Research datové sady – "Datové vědy pro výzkum"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Více datových sad, interakce s počítačem, zvuk/video, načítání dat dolování nebo informace, Geoprostorové/umístění, zpracování přirozeného jazyka a pro robotiku a počítačové zpracování obrazu. | Datové sady jsou v různých formátech, ZIP ke stažení. |
-| [Data veřejného genomu](https://www.completegenomics.com/public-data/) | "Různorodé datové sady plné lidské genomů jsou volně dostupných veřejně přístupný pro zvýšení jakékoli genomický studie..." Privátní komerční corporation je poskytovatel, dokončení Genomics. | Po extrakci, nastavení datových sad a jsou v textovém formátu UNIX. Nástroje pro analýzu jsou také k dispozici. |
-| [Open Science Data Cloud data](https://www.opensciencedatacloud.org/) | "Otevřené cloudové datové vědy poskytuje vědy s prostředky pro ukládání, sdílení a analýzu terabajt a petabajtů vědecké datových sad."| Datové sady jsou v různých formátech. |
-| [Globální klimatu dat – WorldClim](https://worldclim.org/) | "WorldClim je sada globální klimatu vrstvy (gridded klimatu data) prostorových řešení asi 1 km2. Tyto údaje lze použít k mapování a prostorových modelování." | Tyto soubory obsahují Geoprostorová data. Další informace najdete v tématu [formát dat](https://worldclim.org/formats1). |
-| [Data o lidských společnosti - GDELT projekt](https://www.gdeltproject.org/data.html) | "GDELT projektu je největší, nejúplnější a nejvyšší řešení otevřít databázi lidské společnosti, kdy byly vytvořeny." | Soubory nezpracovaná data jsou ve formátu CSV. |
-| [Reklamy, klikněte na možnost predikce dat pro machine learning z Criteo](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Největším někdy veřejně vydaných ML datovou sadu." Další informace najdete v tématu [Criteo na 1 TB klikněte na možnost predikce Dataset](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
-| [ClueWeb09 text dolování datové sady z Lemur projekt](https://www.lemurproject.org/clueweb09.php/) | "ClueWeb09 datové sady bylo vytvořeno pro podporu research na načítání informací a související jazyk lidské technologie. Skládá se z přibližně 1 miliardy webových stránek v 10 jazycích, které byly shromážděny v lednu a únor 2009." | Zobrazit [informací o datové sadě](https://www.lemurproject.org/clueweb09/datasetInformation.php).|
+| [Data pro státní správu USA](https://www.census.gov/data.html) | Více než 190 000 datových sad, které se týkají zemědělství, klimatu, spotřebitelů, ekosystémů, vzdělávání, energetiky, financí, zdravotnictví, místní samosprávy, výroby, mořského, oceánu, veřejného zabezpečení a vědy a výzkumu v USA | Soubory různých velikostí v různých formátech, mezi které patří HTML, XML, CSV, JSON, Excel a spousta dalších. Dostupné datové sady můžete filtrovat podle formátu souboru. |
+| [Data o sčítání USA](https://www.census.gov/data.html) | Statistická data o naplnění USA | Datové sady jsou v různých formátech. |
+| [Země – věda – data z NASA](https://earthdata.nasa.gov/) | Více než 32 000 kolekcí dat, které se týkají zemědělství, atmosféry, biosféry, klimatu, cryosphere, lidských rozměrů, hydrosphere, půdního povrchu, oceánů, interakcí Sun-Earth a dalších. | Datové sady jsou v různých formátech. |
+| [Zpoždění leteckých letů a další přepravní data](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "USA Oddělení přenosů (tečka) ministerstva transportního oddělení (BTS) sleduje dobu provozu domácích letů provozovaných velkými leteckými dopravci. Zobrazí se souhrnné informace o počtu neúspěšných, zpožděných, zrušených a předaných letů... v souhrnných tabulkách publikovaných na tomto webu. | Soubory jsou ve formátu CSV. |
+| [Závažnosti provozu – systém generování sestav analýzy závažnosti USA (FARS)](https://www.nhtsa.gov/FARS) | "FARS je celostátní soupis, který poskytuje NHTSA, Kongresem a každoroční údaje o závažných škodách utrpěných při selhání provozu motorových vozidel." | Možnost vytvořit vlastní data o závažnosti se spouští online pomocí systému dotazů FARS. Můžete si také stáhnout všechna FARS data z 1975, která se nacházejí od serveru FTP. |
+| [Data o toxických chemických datech – EPA toxicita (ToxCast™)](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "NejEPAější a veřejně dostupná data o toxicitě s vysokou propustností na tisících chemických látek. Tato data se generují prostřednictvím výzkumného úsilí EPA ToxCast. | Datové sady jsou k dispozici v různých formátech, včetně tabulek, balíčků R a souborů databáze MySQL. |
+| [Toxický chemický data – NIH Tox21 data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | 2014 "Tox21 data Challenge je navržená tak, aby pomáhala pracovníkům, kteří porozuměli potenciálním chemickým látkám a sloučeninám, které jsou testovány prostřednictvím toxikologického podnětu v rámci 21. | Datové sady jsou dostupné v SMAJLÍKech a SDF formátech. Data poskytují "data o zkušebních činnostech a chemické struktury pro kolekci Tox21 ~ 10 000 sloučeniny (Tox21 10 000)." |
+| [Biotechnologie a data genomu z NCBI](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Více datových sad, které pokrývají genů, genomy a bílkoviny. | Datové sady jsou v textu, formátu XML, vysokých a dalších formátech. K dispozici je aplikace pro vysoké dostupnosti. |
 
-## <a name="online-service-data"></a>Data online služby
+## <a name="other-statistical-and-scientific-data"></a>Další statistická a vědecká data
 
 | Zdroj dat | Informace o datech | O souborech |
 |---|---|---|
-| [Archiv Githubu](https://www.githubarchive.org/) | "Githubu archivu je do projektu zaznamenat veřejné Githubu časové osy [events], archivovat je a zpřístupněte ho snadno k další analýze." | Stáhněte si archivy zakódovaná ve formátu JSON událostí ve formátu .gz (Gzip) z webového klienta. |
-| [Data aktivity Githubu z The GHTorrent projektu](http://ghtorrent.org/) | "GHTorrent projektu [je] se snaží vytvořit škálovatelný, zadávat dotazy, offline zrcadlení dat nabízené prostřednictvím rozhraní REST API Githubu. GHTorrent monitoruje na Githubu veřejná událost časové ose. Pro každou událost načte její obsah a jejich závislosti vyčerpávajícím způsobem." | MySQL database jsou ve formátu CSV. |
-| [Výpis dat přetečení zásobníku](https://archive.org/details/stackexchange) | "Toto je anonymizované výpis paměti veškerý obsah za uživatele v síti Stack Exchange [včetně Stack Overflow]". | "Každou lokalitu [například Stack Overflow] je formátován jako samostatné archivu skládající se z XML soubory ZIP prostřednictvím použít kompresi bzip2 7-zip. Každý server archiv obsahuje příspěvky, uživatelé, hlasování, komentáře, PostHistory a PostLinks." |
+| [Data taxislužby v New Yorku](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Záznamy o cestách taxislužby zahrnují pole zaznamenávající výběr a dropoff data a časy, umístění pro výběr a dropoff, vzdálenosti cest, vyhodnocené tarify, typy sazeb, typy plateb a počty spolupracujících řidičů." | Datové sady jsou v souborech CSV podle měsíců. |
+| [Microsoft Research data Sets – "data vědy pro výzkum"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Několik datových sad, které pokrývají interakci lidského počítače, zvuk/video, dolování dat, načítání informací, geoprostorového a umístění, zpracování přirozeného jazyka a roboty/počítačové vidění. | Datové sady jsou v různých formátech, stáhnout pro stažení. |
+| [Veřejná data genomu](https://www.completegenomics.com/public-data/) | "Sada různých datových sad pro celé humánní genomy je volně dostupná pro účely veřejného použití ke zvýšení jakékoli studie na základě genomu..." Poskytovatel, kompletní genomika, je soukromým podnikem pro zisk. | Datové sady po extrakci jsou ve formátu textu v systému UNIX. K dispozici jsou také analytické nástroje. |
+| [Otevření dat cloudu pro vědu data](https://www.opensciencedatacloud.org/) | "Open věda data Cloud poskytuje vědeckou komunitu s využitím prostředků pro ukládání, sdílení a analýzu terabajtů a řádu petabajtů vědeckých datových sad."| Datové sady jsou v různých formátech. |
+| [Globální klimatická data – WorldClim](https://worldclim.org/) | "WorldClim je sada globálních vrstev klimatu (Gridded klimatických dat) s prostorovým rozlišením přibližně 1 km2. Tato data lze použít pro mapování a prostorové modelování. " | Tyto soubory obsahují geoprostorové údaje. Další informace najdete v tématu [Formát dat](https://worldclim.org/formats1). |
+| [Data o lidské společnosti – projekt GDELT](https://www.gdeltproject.org/data.html) | "Projekt GDELT je největší, nejucelenější a nejsnadnějším řešením otevřené databáze lidské společnosti, která byla vytvořena dříve." | Soubory nezpracovaných dat jsou ve formátu CSV. |
+| [Inzerce na data předpovědi pro Machine Learning z Criteo](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Největší dříve veřejně vydanou datovou sadu ML." Další informace najdete v části [Criteo 1 TB klikněte na prediktivní datovou sadu](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
+| [Sada dat dolování textu ClueWeb09 z projektu lemur](https://www.lemurproject.org/clueweb09.php/) | "Datová sada ClueWeb09 byla vytvořena pro podporu výzkumu při načítání informací a souvisejících technologiích lidského jazyka. Skládá se z přibližně 1 000 000 000 webových stránek v 10 jazycích shromážděných v lednu a února 2009. " | Viz [informace o datové sadě](https://www.lemurproject.org/clueweb09/datasetInformation.php).|
+
+## <a name="online-service-data"></a>Data služby online
+
+| Zdroj dat | Informace o datech | O souborech |
+|---|---|---|
+| [Archiv GitHubu](https://www.githubarchive.org/) | "Archiv GitHubu je projekt pro záznam vaší časové osy veřejného GitHubu [z událostí], jeho archivace a usnadnění pro další analýzu." | Stáhnout archivy událostí kódované JSON ve formátu. gz (gzip) z webového klienta. |
+| [Data aktivity GitHubu z projektu GHTorrent](http://ghtorrent.org/) | "Projekt GHTorrent [je] snaha vytvořit škálovatelnou, Queryable, offline zrcadlo dat nabízených prostřednictvím REST API GitHubu. GHTorrent monitoruje časovou linii události GitHubu. Pro každou událost načte svůj obsah a jejich závislosti vyčerpány. " | Výpisy databáze MySQL jsou ve formátu CSV. |
+| [Stack Overflow výpis dat](https://archive.org/details/stackexchange) | "Toto je vyanonymý výpis všech uživatelem přidaných obsahu v síti Exchange stacku [včetně Stack Overflow]." | "Každá lokalita [například Stack Overflow] je formátována jako samostatný archiv skládající se ze souborů XML zip prostřednictvím 7-zip pomocí komprese bzip2. Každý archiv lokality zahrnuje příspěvky, uživatele, hlasy, komentáře, PostHistory a PostLinks. |

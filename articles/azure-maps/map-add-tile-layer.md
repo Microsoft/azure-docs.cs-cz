@@ -1,68 +1,68 @@
 ---
-title: Přidat Dlaždicovou vrstvu ke službě Azure Maps | Dokumentace Microsoftu
-description: Přidání dlaždice vrstvy mapy jazyka Javascript
+title: Přidat vrstvu dlaždice do Azure Maps | Microsoft Docs
+description: Postup přidání vrstvy dlaždic do mapy JavaScriptu
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/3/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3a773c24993d229f20df698113ff7535fea634ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e288e03b9e2c02ba963595f192dea7225c6d5762
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769222"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638982"
 ---
-# <a name="add-a-tile-layer-to-a-map"></a>Přidat Dlaždicovou vrstvu mapy
+# <a name="add-a-tile-layer-to-a-map"></a>Přidání vrstvy dlaždic do mapy
 
-Tento článek popisuje, jak můžete překryv Dlaždicovou vrstvu na mapě. Vrstvy dlaždic umožňuje také ověření kódování umístěním Image na Azure Maps podkladovou mapu dlaždice. Další informace o Azure Maps dělení do bloků systému najdete v [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md) dokumentaci.
+V tomto článku se dozvíte, jak lze překrýt vrstvu dlaždice na mapě. Vrstvy dlaždic vám umožní superimpose obrázky nad Azure Maps dlaždice základní mapy. Další informace o Azure Maps systému dlaždic najdete v dokumentaci [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md) .
 
-Zatížení vrstvy dlaždic na dlaždicích ze serveru. Tyto Image můžete buď být předem vykreslen a uložené jako ostatní obrázku na serveru pomocí zásady vytváření názvů, která analyzuje Dlaždicovou vrstvu nebo dynamické služba, která generuje imagí v reálném čase. Existují tři různé dlaždici konvence pojmenování service podporuje Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) třídy; 
+Načítání vrstvy dlaždice v dlaždicích ze serveru. Tyto obrázky mohou být buď předem vykresleny a uloženy jako jakákoli jiná bitová kopie na serveru pomocí zásad vytváření názvů, kterou vrstva dlaždice rozumí, nebo dynamické služby, která vytváří bitové kopie za běhu. Existují tři různé zásady vytváření názvů dlaždic, které podporuje Azure Maps třída [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) ; 
 
-* X, Y, zápis přiblížení – podle úrovně přiblížení, x je sloupec a y je pozice řádku dlaždice v mřížce dlaždice.
-* Zápis Quadkey – kombinace x, y, informace o zvětšení na jednu řetězcovou hodnotu, která je jedinečný identifikátor pro dlaždici.
-* Ohraničující rámeček – pole souřadnice ohraničujícího je možné zadat image ve formátu `{west},{south},{east},{north}` které běžně používá [webové mapování služby (WMS)](https://www.opengeospatial.org/standards/wms).
+* X, Y, přibližování zápisu na úrovni přiblížení, x je sloupec a Y je pozice dlaždice v mřížce dlaždice.
+* Quadkey Notation – kombinace x, y, informace o přiblížení na jednu řetězcovou hodnotu, která je jedinečný identifikátor pro dlaždici.
+* Souřadnice ohraničovacího rámečku ohraničovacího rámečku se dají použít k určení obrázku ve formátu `{west},{south},{east},{north}` , který se běžně používá ve [službě mapování webu (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
-> A [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) je skvělý způsob, jak vizualizovat velké sady dat na mapě. Pouze Dlaždicovou vrstvu se dá vygenerovat na bitovou kopii, ale vektorová data lze také vykreslit jako Dlaždicovou vrstvu příliš. Vykreslením vektorová data jako Dlaždicovou vrstvu mapový ovládací prvek potřebuje pouze k načtení dlaždic, které mohou být velikosti souboru mnohem menší, než vektorová data, které reprezentují. Tato technika je používána mnoho, kteří potřebují k vykreslení milionů řádků dat na mapě.
+> [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) je skvělý způsob, jak vizualizovat velké datové sady na mapě. Z obrázku lze generovat pouze dlaždicovou vrstvu, ale vektorová data lze také vykreslovat jako dlaždicovou vrstvu. Vykreslováním vektorových dat jako dlaždicovou vrstvou musí mapový ovládací prvek načíst pouze dlaždice, jejichž velikost může být mnohem menší než vektorová data, která představují. Tato technika je používána mnoha uživateli, kteří potřebují vykreslit miliony řádků dat na mapě.
 
-Adresa URL dlaždice předaná do vrstvy dlaždic musí být adresa URL protokolu http/https do prostředku TileJSON nebo šablonu adresa URL dlaždice, která používá následující parametry: 
+Adresa URL dlaždice předaná do vrstvy dlaždice musí být adresa URL protokolu HTTP/HTTPS pro prostředek TileJSON nebo šablona adresy URL dlaždice, která používá následující parametry: 
 
-* `{x}` -X polohy na dlaždici. Musí také `{y}` a `{z}`.
-* `{y}` -Y pozice v dlaždici. Musí také `{x}` a `{z}`.
-* `{z}` – Úroveň přiblížení dlaždice. Musí také `{x}` a `{y}`.
-* `{quadkey}` – Dlaždice quadkey identifikátor podle konvence názvů systému dlaždici služby mapy Bing.
-* `{bbox-epsg-3857}` -Ohraničující pole řetězce ve formátu `{west},{south},{east},{north}` systému EPSG 3857 prostorové Reference.
-* `{subdomain}` -Zástupný symbol místo, kam bude přidána subdoménu hodnoty, pokud zadaný.
+* `{x}`-X pozice dlaždice. Také potřebuje `{y}` a `{z}`.
+* `{y}`-Y pozice dlaždice. Také potřebuje `{x}` a `{z}`.
+* `{z}`– Úroveň přiblížení dlaždice Také potřebuje `{x}` a `{y}`.
+* `{quadkey}`-Dlaždice quadkey identifikátor založený na konvenci pojmenování systému dlaždice mapy Bing.
+* `{bbox-epsg-3857}`– Řetězec ohraničujícího pole ve formátu `{west},{south},{east},{north}` v prostorovém referenčním systému EPSG 3857.
+* `{subdomain}`– Zástupný symbol, kde budou přidány hodnoty subdomény, pokud budou zadány.
 
 ## <a name="add-a-tile-layer"></a>Přidání vrstvy dlaždic
 
- Tento příklad ukazuje, jak vytvořit Dlaždicovou vrstvu, která odkazuje na sadu dlaždic, které používají x, y, systém dělení do bloků přiblížení. Zdroj této vrstvy dlaždic je překrytím této možnosti taky přemýšlíte o počasí od [Iowa prostředí Mesonet z Iowa State University](https://mesonet.agron.iastate.edu/ogc/).
+ Tento příklad ukazuje, jak vytvořit dlaždici vrstvy, která odkazuje na sadu dlaždic, které používají systém x, y a zoom dláždění. Zdrojem této vrstvy dlaždic je překrytí paprsky v podobě počasí z [mesonetu Iowa v oblasti životního prostředí Iowa státní školy](https://mesonet.agron.iastate.edu/ogc/).
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Dlaždici vrstvě pomocí X, Y a Z' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>Dlaždicovou vrstvu pomocí X, Y a Z</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Dlaždice vrstev pomocí X, Y a Z' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/BGEQjG/'>Pomocí X, Y a Z</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>se podívejte na vrstvu dlaždice pera.
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
+Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
 
-V druhém bloku kódu [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) je vytvořena dlaždice služby, velikosti dlaždice a krytí k němu poloprůhledného předáním formátovanou adresu URL. Kromě toho při přidávání Dlaždicovou vrstvu na mapě, přidá se níže `labels` vrstvy tak, že popisky jsou stále zřetelně vidět.
+V druhém bloku kódu je [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) vytvořen předáním FORMÁTOVANÉ adresy URL do služby dlaždic, velikosti dlaždice a průhlednosti, která je částečně transparentní. Kromě toho při přidávání vrstvy dlaždic na mapu je přidána pod `labels` vrstvu tak, aby popisky byly stále jasně viditelné.
 
-## <a name="customize-a-tile-layer"></a>Přizpůsobení Dlaždicovou vrstvu
+## <a name="customize-a-tile-layer"></a>Přizpůsobení vrstvy dlaždice
 
-Dlaždicová vrstva pouze má hodně možností stylu. Zde je nástroj, který je vyzkoušet.
+Vrstva dlaždice má pouze mnoho možností stylů. Tady je nástroj pro jejich vyzkoušení.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Možností vrstvy dlaždic' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>možností vrstvy dlaždic</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Možnosti vrstvy dlaždic' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Viz <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>Možnosti vrstvy dlaždice</a> pera podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o třídy a metody používané v tomto článku:
+Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
 > [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)
@@ -70,7 +70,7 @@ Další informace o třídy a metody používané v tomto článku:
 > [!div class="nextstepaction"]
 > [TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions?view=azure-iot-typescript-latest)
 
-Naleznete v následujících článcích pro další ukázky kódu pro přidání do vaše mapy:
+Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Přidat vrstva s obrázkem](./map-add-image-layer.md)
+> [Přidat vrstvu obrázku](./map-add-image-layer.md)
