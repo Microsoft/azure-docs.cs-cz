@@ -1,5 +1,5 @@
 ---
-title: Zařízení připojená k fungování jednotného přihlašování k místním prostředkům v Azure AD | Dokumentace Microsoftu
+title: Jak funguje jednotné přihlašování k místním prostředkům na zařízeních připojených k Azure AD | Microsoft Docs
 description: Zjistěte, jak nakonfigurovat hybridní zařízení připojená k Azure Active Directory.
 services: active-directory
 ms.service: active-directory
@@ -11,61 +11,61 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64e190e3e70459846b50e1f68158b0a5c458a216
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 14e7a4389c192dde8d086a69a35114f3b8b33e96
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482060"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562184"
 ---
-# <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Zařízení připojená k fungování jednotného přihlašování k místním prostředkům v Azure AD
+# <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Jak funguje jednotné přihlašování k místním prostředkům na zařízeních připojených k Azure AD
 
-Není pravděpodobně překvapením, že zařízení připojené k doméně Azure Active Directory (Azure AD) poskytuje možnosti jednotného přihlašování (SSO) vašeho tenanta cloudových aplikací. Pokud vaše prostředí služby v místním Active Directory (AD), můžete rozšířit možnosti jednotného přihlašování na těchto zařízeních k němu.
+Pravděpodobně se nejedná o neočekávaně, že zařízení připojené k Azure Active Directory (Azure AD) poskytuje prostředí s jednotným přihlašováním k cloudovým aplikacím vašeho tenanta. Pokud má vaše prostředí místní službu Active Directory (AD), můžete na ně na těchto zařízeních rozmístit možnosti jednotného přihlašování.
 
 Tento článek vysvětluje, jak to funguje.
 
 ## <a name="how-it-works"></a>Jak to funguje 
 
-Protože je potřeba zapamatovat jedním jedno uživatelské jméno a heslo, jednotné přihlašování zjednodušuje přístup k vašim prostředkům a zvyšuje zabezpečení vašeho prostředí. Zařízení připojené k doméně Azure AD uživatelé již mají Jednotným přihlašováním do cloudových aplikací ve vašem prostředí. Pokud je vaše prostředí Azure AD a místní AD, budete pravděpodobně chtít zvětšit rozsah prostředí jednotného přihlašování k místní řádku obchodní (LOB) aplikace, sdílené složky a tiskárny.  
+Vzhledem k tomu, že potřebujete pamatovat jenom jedno uživatelské jméno a heslo, jednotné přihlašování zjednodušuje přístup k vašim prostředkům a zlepší zabezpečení vašeho prostředí. U zařízení připojeného k Azure AD už uživatelé mají v prostředí cloudové aplikace i možnost jednotného přihlašování. Pokud má vaše prostředí Azure AD a místní AD, pravděpodobně budete chtít rozšířit rozsah možností jednotného přihlašování na místní obchodní aplikace, sdílené složky a tiskárny.  
 
-Podpora k zařízením Azure AD, které jsou připojené k nemají žádné informace o místní prostředí AD vzhledem k tomu, že nejsou připojené k němu. Ale může poskytovat další informace o místní AD do těchto zařízení se službou Azure AD Connect.
-Prostředí, ve kterém jsou obě, kterým je Azure AD a místní AD, je také známá má hybridní prostředí. Pokud máte hybridní prostředí, je pravděpodobné, že už máte Azure AD Connect, které jsou nasazené na synchronizovat informace o místních identit do cloudu. Jako součást procesu synchronizace Azure AD Connect synchronizuje místní informace o doméně do Azure AD. Když se uživatel přihlásí ke službě Azure AD připojené zařízení v hybridním prostředí:
+Zařízení připojená k Azure AD nemají žádné znalosti o místním prostředí služby AD, protože k němu nejsou připojená. K těmto zařízením ale můžete pomocí Azure AD Connect zadat další informace o vaší místní službě AD.
+Také známé prostředí, které obsahuje službu Azure AD i místní službu AD, má hybridní prostředí. Pokud máte hybridní prostředí, je možné, že už máte Azure AD Connect nasazené, abyste mohli synchronizovat vaše místní informace o identitě do cloudu. V rámci procesu synchronizace Azure AD Connect synchronizuje informace o místních doménách do služby Azure AD. Když se uživatel přihlásí k zařízení připojenému k Azure AD v hybridním prostředí:
 
-1. Azure AD pošle že název domény místní uživatel je členem skupiny zpět do zařízení. 
-1. Služba úřad místní zabezpečení povolí ověřování protokolu Kerberos na zařízení.
+1. Azure AD pošle název místní domény, kterou uživatel je členem zpátky do zařízení. 
+1. Služba místního úřadu zabezpečení (LSA) umožňuje ověřování pomocí protokolu Kerberos na zařízení.
 
-Při pokus o přístup k prostředku v doméně místní uživatele, zařízení:
+Během pokusu o přístup k prostředku v místní doméně uživatele se jedná o zařízení:
 
-1. Informace o doméně používá k vyhledání řadič domény (DC). 
-1. Odešle místní domény informace a přihlašovací údaje uživatele najít řadič domény získat uživatel ověřený.
-1. Přijímá protokolu Kerberos [udělování lístků (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) , který se používá pro přístup k prostředkům připojených k AD.
+1. Vyhledá řadič domény (DC) pomocí informací o doméně. 
+1. Odešle informace o místní doméně a přihlašovací údaje uživatele k umístěnému řadiči domény, aby se získal ověřený uživatel.
+1. Přijímá [lístek TGT (Ticket-Granting Ticket)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) , který se používá pro přístup k prostředkům připojeným k AD.
 
-Všechny aplikace, které jsou nakonfigurované pro **ověření integrované Windows** bezproblémově získat jednotné přihlašování, když se uživatel pokusí o přístup k nim.  
+Všechny aplikace, které jsou nakonfigurované pro **ověřování integrované v systému Windows** , bez problémů získají jednotné přihlašování, když se k nim uživatel pokusí získat přístup.  
 
-Windows Hello pro firmy vyžaduje další konfiguraci k povolení přihlášení SSO s místními ze zařízení připojeného k Azure AD. Další informace najdete v tématu [konfiguraci Azure AD připojené zařízení pro On-premises jednotné přihlašování v pomocí Windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
+Windows Hello pro firmy vyžaduje další konfiguraci, aby bylo možné místní jednotné přihlašování povolit z zařízení připojeného k Azure AD. Další informace najdete v tématu [Konfigurace zařízení připojených k Azure AD pro místní jednotné přihlašování pomocí Windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
 ## <a name="what-you-get"></a>Co získáte
 
-S jednotným Přihlašováním připojené zařízení, které můžete v Azure AD: 
+Pomocí jednotného přihlašování na zařízení připojeném k Azure AD můžete: 
 
-- Přístup k cestě UNC na členský server AD
-- Přístup k AD člen webový server nakonfigurován pro integrovaný režim Windows zabezpečení 
+- Přístup k cestě UNC na členském serveru AD
+- Přístup ke členskému webovému serveru služby Active Directory, který je nakonfigurovaný pro zabezpečení integrované s Windows 
 
-Pokud chcete spravovat místní AD ze zařízení s Windows nainstalovat [vzdálenou správu serveru nástroje pro Windows 10](https://www.microsoft.com/en-us/download/details.aspx?id=45520).
+Pokud chcete spravovat místní službu AD ze zařízení s Windows, nainstalujte [Nástroje pro vzdálenou správu serveru pro Windows 10](https://www.microsoft.com/download/details.aspx?id=45520).
 
 Můžete použít:
 
-- Uživatelé služby Active Directory počítače (ADUC) snap-in a k povolení správy všech objektů AD. Ale budete muset zadat doménu, kterou chcete připojit k ručně.
-- Modul snap-in DHCP pro správu serveru DHCP připojená k AD. Ale možná muset zadat název serveru DHCP nebo adresu.
+- Modul snap-in Uživatelé a počítače služby Active Directory (ADUC) pro správu všech objektů služby AD. Je však nutné zadat doménu, ke které se chcete připojit ručně.
+- Modul snap-in DHCP pro správu serveru DHCP připojeného k AD. Je ale možné, že budete muset zadat název nebo adresu serveru DHCP.
  
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
-Možná budete muset upravit vaše [filtrování podle domén](../hybrid/how-to-connect-sync-configure-filtering.md#domain-based-filtering) ve službě Azure AD Connect k zajištění, že se synchronizují data o požadovaných domén.
+V Azure AD Connect možná budete muset upravit vaše [filtrování založené na doméně](../hybrid/how-to-connect-sync-configure-filtering.md#domain-based-filtering) , aby se zajistilo, že budou synchronizovaná data o požadovaných doménách.
 
-Aplikace a prostředky, které jsou závislé na službě Active Directory ověřování počítače nebudou fungovat, protože zařízení připojená k Azure AD nemáte počítačového objektu ve službě AD. 
+Aplikace a prostředky, které závisí na ověřování počítače služby Active Directory, nefungují, protože zařízení připojená k Azure AD nemají objekt počítače ve službě AD. 
 
-Soubory nelze sdílet s dalšími uživateli v Azure zařízení připojená k AD.
+Nemůžete sdílet soubory s ostatními uživateli na zařízení připojeném k Azure AD.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace najdete v tématu [co je Správa zařízení ve službě Azure Active Directory?](overview.md) 
+Další informace najdete v tématu [co je Správa zařízení v Azure Active Directory?](overview.md) 

@@ -1,6 +1,6 @@
 ---
-title: Vlastní zásady služby Azure Active Directory B2C | Dokumentace Microsoftu
-description: Další informace o vlastních zásadách Azure Active Directory B2C.
+title: Azure Active Directory B2C vlastní zásady | Microsoft Docs
+description: Přečtěte si o Azure Active Directory B2C vlastních zásadách.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,58 +10,58 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2938ae075bbd4c38b686ca6654bede678f876857
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be6d54886f23b0fa219b1e4b8948b4a4c51f5864
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509802"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716827"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Vlastní zásady v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Vlastní zásady jsou konfigurační soubory, které definují chování vašeho tenanta Azure Active Directory (Azure AD) B2C. Toky uživatelů jsou předdefinovány na portálu Azure AD B2C pro nejběžnější úkoly identity. Vlastní zásady je může plně upravit vývojář identit k dokončení celou řadu různých úloh.
+Vlastní zásady jsou konfigurační soubory, které definují chování vašeho tenanta Azure Active Directory (Azure AD) B2C. Uživatelské toky jsou předdefinované na portálu Azure AD B2C pro nejběžnější úlohy identity. Vlastní zásady mohou být plně upravovány vývojářem identity, aby bylo možné dokončit mnoho různých úloh.
 
-## <a name="comparing-user-flows-and-custom-policies"></a>Porovnání toky uživatelů a vlastních zásad
+## <a name="comparing-user-flows-and-custom-policies"></a>Porovnání toků uživatelů a vlastních zásad
 
 | | Toky uživatele | Vlastní zásady |
 |-|-------------------|-----------------|
-| Cílových uživatelů | S nebo bez znalosti identity všechny vývojáře aplikací. | Profesionály pracující identitami, systémovým integrátorům, konzultantům a interních identity týmy. Jsou zvyklí OpenIDConnect toky a pochopit poskytovatelů identit a ověřování nezaloženého na deklaracích. |
-| Metodě konfigurace | Azure portal s přívětivější uživatelské rozhraní (UI). | Přímá úprava souborů XML a potom nahrajete na webu Azure portal. |
-| Přizpůsobení uživatelského rozhraní | Úplné přizpůsobení uživatelského rozhraní, včetně HTML, CSS a JavaScriptu.<br><br>Podporu více jazyků pomocí vlastního řetězce. | Stejné |
-| Vlastní nastavení atributu | Standardní a vlastní atributy. | Stejné |
-| Token a relace správy | Vlastní token a více možností relace. | Stejné |
-| Zprostředkovatelé identit | Předdefinovaný poskytovatel místní nebo sociální a většina identity zprostředkovatelů OIDC, jako je například federace se službou Azure Active Directory, tenantů. | Založené na standardech OIDC, protokolu OAUTH a SAML.  Ověřování je také možné pomocí integrace rozhraní REST API. |
-| Identita úlohy | Registrace nebo přihlášení pomocí místních nebo mnoho účtů na sociálních sítích.<br><br>Samoobslužné resetování hesla.<br><br>Upravit profil.<br><br>Ověřování službou Multi-Factor Authentication.<br><br>Přizpůsobení tokenů a relací.<br><br>Toky tokenu přístupu. | Dokončení úloh toky uživatelů pro používání vlastních poskytovatelů identit nebo použijte vlastní obory.<br><br>Poskytnutí uživatelského účtu v jiném systému v době registrace.<br><br>Odeslání Uvítacího e-mailu pomocí vlastního poskytovatele e-mailové služby.<br><br>Použití úložiště uživatele mimo Azure AD B2C.<br><br>Ověření uživatele pomocí rozhraní API poskytuje informace o důvěryhodných systémem. |
+| Cíloví uživatelé | Všichni vývojáři aplikací s odbornými znalostmi identity nebo bez nich. | Specialisté na identity, systémy integrátorů, konzultantů a interních identit. Jsou pohodlné díky tokům OpenID Connect a pochopení zprostředkovatelů identit a ověřování založeného na deklaracích identity. |
+| Metoda konfigurace | Azure Portal s uživatelsky přívětivým uživatelským rozhraním (UI). | Přímo upravování souborů XML a následné nahrávání do Azure Portal. |
+| Přizpůsobení uživatelského rozhraní | Úplné přizpůsobení uživatelského rozhraní, včetně HTML, CSS a JavaScriptu.<br><br>Vícejazyčná podpora s vlastními řetězci. | Jedné |
+| Přizpůsobení atributu | Standardní a vlastní atributy. | Jedné |
+| Správa tokenů a relací | Vlastní token a možnosti více relací. | Jedné |
+| Zprostředkovatelé identit | Předdefinovaný místní nebo sociální zprostředkovatel a většina poskytovatelů OIDC identity, jako je například federace s Azure Active Directory klienty. | OIDC založené na standardech, OAUTH a SAML.  Ověřování je také možné pomocí integrace s rozhraními REST API. |
+| Úkoly identity | Zaregistrujte se nebo přihlaste pomocí místních nebo mnoha sociálních účtů.<br><br>Samoobslužné resetování hesla.<br><br>Úprava profilu<br><br>Multi-Factor Authentication.<br><br>Přizpůsobení tokenů a relací.<br><br>Toky přístupového tokenu. | Dokončete stejné úlohy jako toky uživatelů pomocí vlastních zprostředkovatelů identity nebo použijte vlastní obory.<br><br>Zřídit uživatelský účet v jiném systému v době registrace.<br><br>Poslat uvítací e-mail pomocí vlastního poskytovatele e-mailové služby.<br><br>Použijte úložiště uživatele mimo Azure AD B2C.<br><br>Pomocí rozhraní API ověřte informace poskytnuté uživatelem s důvěryhodným systémem. |
 
-## <a name="policy-files"></a>Zásady souborů
+## <a name="policy-files"></a>Soubory zásad
 
-Tyto tři typy zásad souborů se používají:
+Používají se tyto tři typy souborů zásad:
 
-- **Základní soubor** – obsahuje definice. Doporučuje se vytvořit minimální počet změn do tohoto souboru pomoci při řešení potíží a dlouhodobé údržby zásad.
-- **Rozšíření souboru** – má jedinečnou konfiguraci změny pro vašeho tenanta.
-- **Předávající strany (RP) soubor** – jeden soubor zaměřený na úkol, který je vyvolán přímo z aplikace nebo služby (také označované jako předávající strana). Každý úkol jedinečné vyžaduje svou vlastní RP a v závislosti na branding požadavky, může být tento počet "Celkový počet aplikací x celkového počtu případů použití."
+- **Základní soubor** – obsahuje většinu definicí. Doporučujeme, abyste v tomto souboru provedli minimální počet změn, které vám pomůžou s odstraňováním potíží a dlouhodobou údržbou vašich zásad.
+- **Soubor rozšíření** – obsahuje jedinečné změny konfigurace vašeho tenanta.
+- **Soubor předávající strany (RP)** – jeden soubor zaměřený na úlohy, který je vyvolán přímo pomocí aplikace nebo služby (také označovaný jako předávající strana). Každý jedinečný úkol vyžaduje svůj vlastní RP a v závislosti na požadavcích na branding může být číslo "celkem aplikací x celkový počet případů použití".
 
-Toky uživatelů v Azure AD B2C mají tvar tři soubor uvedené výše, ale vývojář se zobrazují pouze soubor předávající strany, zatímco na webu Azure portal provede změny na pozadí do souboru rozšíření.
+Tok uživatelů v Azure AD B2C postupujte podle výše popsaného vzoru se třemi soubory, ale vývojář uvidí pouze soubor RP, zatímco Azure Portal provede změny v pozadí do souboru rozšíření.
 
-## <a name="custom-policy-core-concepts"></a>Vlastní zásady pro základní koncepty
+## <a name="custom-policy-core-concepts"></a>Základní koncepty vlastních zásad
 
-Služba zákazníka identit a přístupu (ciam od) správy v Azure zahrnuje:
+Služba CIAM (Customer identity and Access Management) v Azure zahrnuje:
 
-- Adresář uživatele, který je přístupný prostřednictvím Microsoft Graphu a který obsahuje uživatelská data pro místní účty a účty federované.
-- Přístup k **architekturu rozhraní identit** , která orchestruje vztah důvěryhodnosti mezi uživateli a entitami a předává deklarací identity mezi nimi dokončete úlohu správy identit a přístupu. 
-- Služby tokenů zabezpečení (STS), který vystaví ID tokeny, obnovovací tokeny a přístup tokeny (a ekvivalentní kontrolní výrazy SAML) a ověřuje je k ochraně prostředků.
+- Adresář uživatele, který je přístupný pomocí Microsoft Graph a který obsahuje uživatelská data pro místní účty i federované účty.
+- Přístup k **architektuře prostředí identity** , která orchestruje vztah důvěryhodnosti mezi uživateli a entitami a předává deklarace mezi nimi k dokončení úlohy správy identity nebo přístupu.
+- Služba tokenů zabezpečení (STS), která vydává tokeny ID, aktualizují tokeny a přístupové tokeny (a ekvivalentní kontrolní výrazy SAML) a ověřuje je k ochraně prostředků.
 
-Azure AD B2C pracuje na pořadí k dosažení úlohu identity pomocí zprostředkovatelů identity, uživatelů a jiných systémů a s adresáři místního uživatele. Například přihlášení uživatele, registrovat nové uživatele nebo resetování hesla. Architekturu rozhraní identit a zásad (také nazývané cesty uživatele nebo zásady důvěryhodnosti framework) vytváří více stran vztah důvěryhodnosti a explicitně definuje účastníky, akce, protokoly a postupně jednotlivé kroky k dokončení.
+Azure AD B2C vzájemně spolupracuje s poskytovateli identity, uživateli, jinými systémy a s adresářem místního uživatele v sekvenci, aby dosáhli úkolu identity. Přihlaste se například uživateli, zaregistrujte nového uživatele nebo resetujte heslo. Architektura prostředí identit a zásady (označované také jako cesta uživatele nebo zásada architektury pro vztahy důvěryhodnosti) vytváří vztah důvěryhodnosti více stran a explicitně definují objekty actor, akce, protokoly a posloupnost kroků k dokončení.
 
-Architekturu rozhraní identit je plně konfigurovatelné založená na zásadách, cloudové platformy Azure, který orchestruje vztah důvěryhodnosti mezi entitami ve standardní protokol formátech, jako je například REST OpenIDConnect, OAuth, SAML, WSFed a několik nestandardní ty, které jsou Na rozhraní API-na systému deklarací výměny. Rozhraní vytvoří uživatelsky přívětivé, s názvem prázdné prostředí, které podporují HTML a CSS.
+Architektura prostředí identit je plně konfigurovatelná cloudová platforma Azure založená na zásadách, která orchestruje vztah důvěryhodnosti mezi entitami ve standardních formátech protokolů, jako jsou OpenID Connect, OAuth, SAML, WSFed a několik nestandardních, například REST. Výměny deklarací identity od systému založeného na rozhraní API. Rozhraní vytváří uživatelsky přívětivé prostředí s označením, které podporuje HTML a CSS.
 
-Vlastní zásada je vyjádřena jako jeden nebo více souborů ve formátu XML, které odkazují na sebe navzájem v hierarchickém řetězu. Elementů XML definovat schéma deklarace identity, transformace deklarací, definic obsahu, zprostředkovatelů deklarací identity, technické profily a kroků Orchestrace cesty uživatele, mezi další prvky. Vlastní zásady je dostupné jako jeden nebo více souborů XML, které jsou spouštěny příkazem architekturu rozhraní identit, když uživatel vyvolá předávající stranu. Vývojáři vlastní zásady konfigurace musí definovat důvěryhodných vztahů opatrní podrobně zahrnout koncové body metadat, přesné deklarací exchange definice a konfigurace tajné klíče, klíče a certifikáty podle potřeb každého zprostředkovatele identity.
+Vlastní zásada je vyjádřena jako jeden nebo více souborů ve formátu XML, které odkazují na sebe navzájem v hierarchickém řetězu. Prvky XML definují schéma deklarací identity, transformace deklarací identity, definice obsahu, zprostředkovatele deklarací, technické profily a kroky orchestrace cest uživatelů mimo jiné prvky. Vlastní zásada je přístupná jako jeden nebo několik souborů XML, které jsou spouštěny architekturou prostředí identity při vyvolání předávající stranou. Vývojáři, kteří konfigurují vlastní zásady, musí podrobná nastavení důvěryhodných vztahů za účelem zahrnutí koncových bodů metadat, přesných definic deklarací identity a konfigurací tajných kódů, klíčů a certifikátů podle potřeby u každého poskytovatele identity.
 
 ### <a name="inheritance-model"></a>Model dědičnosti
 
-Pokud aplikace zavolá soubor zásad předávající strany, přidá architekturu rozhraní identit v Azure AD B2C všechny prvky ze základního souboru, ze souboru rozšíření a pak ze souboru zásad předávající strany k sestavení aktuální zásady platit.  Prvky stejného typu a název v souboru RP se přepíšou nastavení v rozšíření a rozšíření přepsání base.
+Když aplikace zavolá soubor zásad RP, rozhraní identity Experience v Azure AD B2C přidá všechny prvky ze základního souboru, ze souboru rozšíření a pak ze souboru zásad RP, aby sestavoval aktuální zásady.  Prvky stejného typu a názvu v souboru RP budou přepsány na základě rozšíření a přepsání rozšíření Bases.
 
 ## <a name="next-steps"></a>Další postup
 

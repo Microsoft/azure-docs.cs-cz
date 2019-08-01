@@ -9,12 +9,12 @@ ms.date: 07/15/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 469790660e843816cc431420e7e1407c90a7de05
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 2d0697567bfd2fcf95a1fe6ebf246646af5650c3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249929"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564890"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure
 
@@ -38,9 +38,9 @@ Pokud chcete autorizovat požadavek na objekt BLOB nebo Služba front ze spravov
 
 Další informace o přiřazování rolí RBAC najdete v jednom z následujících článků:
 
-- [Udělte přístup k datům služby Azure Blob a Queue data do fronty pomocí RBAC v Azure Portal](storage-auth-aad-rbac-portal.md)
-- [Udělení přístupu k datům služby Azure Blob a frontě pomocí služby RBAC pomocí rozhraní příkazového řádku Azure](storage-auth-aad-rbac-cli.md)
-- [Udělení přístupu k datům služby Azure Blob a frontě pomocí RBAC pomocí PowerShellu](storage-auth-aad-rbac-powershell.md)
+- [Udělení přístupu k datům front a objektů blob Azure s využitím RBAC na webu Azure Portal](storage-auth-aad-rbac-portal.md)
+- [Udělení přístupu k datům front a objektů blob Azure s využitím RBAC pomocí Azure CLI](storage-auth-aad-rbac-cli.md)
+- [Udělení přístupu k datům front a objektů blob Azure s využitím RBAC pomocí PowerShellu](storage-auth-aad-rbac-powershell.md)
 
 ## <a name="azure-storage-resource-id"></a>ID prostředku Azure Storage
 
@@ -100,8 +100,7 @@ const string blobName = "https://storagesamples.blob.core.windows.net/sample-con
 
 // Get the initial access token and the interval at which to refresh it.
 AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-var tokenAndFrequency = TokenRenewerAsync(azureServiceTokenProvider,
-                                            CancellationToken.None).GetAwaiter().GetResult();
+var tokenAndFrequency = await TokenRenewerAsync(azureServiceTokenProvider,CancellationToken.None);
 
 // Create storage credentials using the initial token, and connect the callback function
 // to renew the token just before it expires
@@ -117,7 +116,7 @@ CloudBlockBlob blob = new CloudBlockBlob(new Uri(blobName),
                                             storageCredentials);
 
 // Upload text to the blob.
-blob.UploadTextAsync(string.Format("This is a blob named {0}", blob.Name));
+await blob.UploadTextAsync(string.Format("This is a blob named {0}", blob.Name));
 
 // Continue to make requests against Azure Storage.
 // The token is automatically refreshed as needed in the background.
@@ -126,7 +125,7 @@ do
     // Read blob contents
     Console.WriteLine("Time accessed: {0} Blob Content: {1}",
                         DateTimeOffset.UtcNow,
-                        blob.DownloadTextAsync().Result);
+                        await blob.DownloadTextAsync());
 
     // Sleep for ten seconds, then read the contents of the blob again.
     Thread.Sleep(TimeSpan.FromSeconds(10));
@@ -140,7 +139,7 @@ Další informace o tom, jak získat přístupový token, najdete v tématu [Jak
 > [!NOTE]
 > Pokud chcete autorizovat požadavky na data objektů BLOB nebo front pomocí Azure AD, musíte pro tyto požadavky použít protokol HTTPS.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o rolích RBAC pro Azure Storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
 - Informace o tom, jak autorizovat přístup k kontejnerům a frontám v rámci aplikací úložiště, najdete v tématu [použití Azure AD s aplikacemi úložiště](storage-auth-aad-app.md).

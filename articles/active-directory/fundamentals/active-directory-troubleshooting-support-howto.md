@@ -3,7 +3,7 @@ title: Vyhledání nápovědy a otevření lístku podpory – Azure Active Dire
 description: Pokyny ohledně toho, jak získat pomoc a vytvořit lístek podpory pro Azure Active Directory.
 services: active-directory
 documentationcenter: na
-author: eross-msft
+author: msaburnley
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.subservice: fundamentals
 ms.workload: identity
 ms.date: 08/28/2017
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22bf80c13ef3b18ab3119b6b35e529c8ad32f504
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9dce9b93dfe4ddfca370d1d3131d1d12cb6f121d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248063"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561760"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Vyhledání nápovědy a vytvořit lístek podpory pro Azure Active Directory
 Společnost Microsoft poskytuje globální technickou, před prodejem, fakturaci a předplatné podpory pro Azure Active Directory (Azure AD). Podpora je k dispozici online a po telefonu pro placené Microsoft Azure a zkušebních verzí předplatného. Telefonické podpory a online podporu fakturace jsou dostupné v dalších jazycích. 
@@ -31,7 +31,7 @@ Než budete vytvářet lístek podpory, projděte si následující prostředky 
 
 * Obsah, jako je například postupy nebo ukázek kódu pro IT profesionály a vývojáře, najdete v článku [technické dokumentace na webu docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/).
 
-* [Technické komunitě Microsoftu](https://techcommunity.microsoft.com/) je určená pro naše IT pro partnery a zákazníky pro spolupráci, sdílení a rozšiřování. [Microsoft Technical Community informace Center](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) se používá pro oznámení, blogové příspěvky, požádejte mě cokoli (AMA) interakce s experty a další. Můžete také [připojte se ke komunitě na předkládat své nápady](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
+* [Technická komunita Microsoftu](https://techcommunity.microsoft.com/) je místem, kde naši partneři IT specialisti a zákazníci můžou spolupracovat, sdílet a učit se. [Informační centrum technické komunity Microsoftu](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) se používá pro oznámení, příspěvky na blogu, žádosti o pomoc s odborníky (AMA) a další akce. Můžete také [připojte se ke komunitě na předkládat své nápady](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
 
 
 ## <a name="open-a-support-ticket"></a>Vytvořit lístek podpory
@@ -41,7 +41,7 @@ Pokud nemůžete najít odpovědi sami, můžete otevřít lístek online podpor
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-azure-portal"></a>Jak vytvořit lístek podpory pro službu Azure AD na webu Azure Portal
 
 > [!NOTE]
-> Pro problémy s fakturací nebo předplatným, je nutné použít [centra pro správu služeb Microsoft 365](https://admin.microsoft.com).
+> V případě problémů s fakturací nebo předplatným je nutné použít [Centrum pro správu Microsoft 365](https://admin.microsoft.com).
 > 
 
 1. Přihlaste se k [na webu Azure portal](https://portal.azure.com) a otevřete **Azure Active Directory**.
@@ -52,25 +52,25 @@ Pokud nemůžete najít odpovědi sami, můžete otevřít lístek online podpor
    
 4. Pro **služby**vyberte **Azure Active Directory**a pak vyberte **Další**.
 
-5. Na **problém** okno, vyberte [závažnost](https://azure.microsoft.com/support/plans/response/).
+5. V okně **problém** vyberte [závažnost](https://azure.microsoft.com/support/plans/response/).
   
 6. Vyberte **typ problému**a potom vyberte **kategorie** daného typu. V tomto okamžiku se také nabízí informace o samoobslužné pomoci pro kategorii problému.
   
 7. Přidejte zbylé vaše informace o problému a klikněte na tlačítko **Další**.
   
 8. Zadejte svoje kontaktní informace a vyberte **vytvořit**.
-  ![snímek obrazovky samoobslužné podpory pro kategorii problému](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
+  ![Kategorie problému – obrazovka pro samoobslužnou podporu](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
-### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Jak vytvořit lístek podpory pro službu Azure AD v Centru pro správu služeb Microsoft 365
+### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Postup otevření lístku podpory pro Azure AD v centru pro správu Microsoft 365
 
 > [!NOTE]
-> Podpora pro Azure AD [centra pro správu služeb Microsoft 365](https://admin.microsoft.com) nabízíte pouze správci. 
+> Podpora pro Azure AD v [centru pro správu Microsoft 365](https://admin.microsoft.com) se nabízí jenom správcům. 
 
-1. Přihlaste se k [centra pro správu služeb Microsoft 365](https://admin.microsoft.com) pomocí účtu, který má Enterprise Mobility + Security (EMS) licence.
+1. Přihlaste se k [centru pro správu Microsoft 365](https://admin.microsoft.com) pomocí účtu, který má licenci Enterprise mobility + Security (EMS).
 
-2. Na **podporu** dlaždice, vyberte **nové žádosti o službu**:
+2. Na dlaždici **Podpora** vyberte **Nová žádost o službu**:
 
-3. Na **Přehled podpory** stránce **Identity management** nebo **Správa uživatelů a domény**:
+3. Na stránce **Přehled podpory** vyberte **Správa identit** nebo **Správa uživatelů a domén**:
 
 4. Pro **funkce**, vyberte funkci Azure AD, pro které chcete podporu.
 

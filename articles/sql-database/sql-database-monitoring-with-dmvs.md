@@ -1,6 +1,6 @@
 ---
-title: Monitorování výkonu databáze pomocí zobrazení dynamické správy SQL Azure | Dokumentace Microsoftu
-description: Zjistěte, jak detekovat a diagnostikovat běžné problémy s výkonem pomocí zobrazení dynamické správy monitorovat Microsoft Azure SQL Database.
+title: Monitorování výkonu Azure SQL Database s využitím zobrazení dynamické správy | Microsoft Docs
+description: Naučte se detekovat a diagnostikovat běžné problémy s výkonem pomocí zobrazení dynamické správy k monitorování Microsoft Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,49 +10,48 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 371632a28d22583f8b206e4d8b9d2b6b4e510ab0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bddcb89d26566bd2024cbde086b6e35ddaf94ef
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62103759"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567176"
 ---
-# <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorování výkonu Azure SQL Database pomocí zobrazení dynamické správy
+# <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorování Azure SQL Database výkonu pomocí zobrazení dynamické správy
 
-Microsoft Azure SQL Database umožňuje podmnožinu zobrazení dynamické správy pro diagnostiku problémů s výkonem, které mohou být způsobeny zablokování nebo dlouho probíhající dotazy, kritických bodů prostředků, plány nízký dotazů a tak dále. Toto téma obsahuje informace o tom, jak detekovat běžné problémy s výkonem pomocí zobrazení dynamické správy.
+Microsoft Azure SQL Database umožňuje podmnožinu zobrazení dynamické správy pro diagnostiku problémů s výkonem, což může být způsobeno blokovanými nebo dlouhotrvajícími dotazy, kritickými body prostředků, špatnými plány dotazů atd. Toto téma poskytuje informace o tom, jak zjistit běžné problémy s výkonem pomocí zobrazení dynamické správy.
 
-SQL Database podporuje částečně tři kategorie zobrazení dynamické správy:
+SQL Database částečně podporuje tři kategorie zobrazení dynamické správy:
 
-- Zobrazení dynamické správy vztahující se k databázi.
-- Zobrazení dynamické správy týkající se provádění.
-- Zobrazení dynamické správy související s transakcí.
+- Zobrazení dynamické správy související s databází.
+- Zobrazení dynamické správy související s prováděním
+- Zobrazení dynamické správy související s transakcemi.
 
-Podrobné informace o zobrazení dynamické správy, naleznete v tématu [funkcí (Transact-SQL) a zobrazení dynamické správy](https://msdn.microsoft.com/library/ms188754.aspx) v SQL Server Books Online.
+Podrobné informace o zobrazeních dynamické správy najdete v tématu [dynamické zobrazení a funkce pro správu (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) v SQL Server Books Online.
 
 ## <a name="permissions"></a>Oprávnění
 
-Ve službě SQL Database, dotazování zobrazení dynamické správy vyžaduje **VIEW DATABASE STATE** oprávnění. **VIEW DATABASE STATE** oprávnění vrátí informace o všech objektech v aktuální databázi.
-Chcete-li udělit **VIEW DATABASE STATE** oprávnění ke konkrétnímu uživateli databáze, spusťte následující dotaz:
+Dotaz na zobrazení dynamické správy v SQL Database vyžaduje oprávnění **Zobrazit stav databáze** . Oprávnění **Zobrazit stav databáze** vrací informace o všech objektech v aktuální databázi.
+Chcete-li udělit oprávnění k **zobrazení stavu databáze** konkrétnímu uživateli databáze, spusťte následující dotaz:
 
 ```sql
 GRANT VIEW DATABASE STATE TO database_user;
 ```
 
-Zobrazení dynamické správy v instanci systému SQL Server v místním, vrátí informace o stavu serveru. Vrátí informace týkající se pouze v aktuální databázi logické ve službě SQL Database.
+V instanci místních SQL Server vrací zobrazení dynamické správy informace o stavu serveru. V SQL Database vrátí pouze informace týkající se aktuální logické databáze.
 
 ## <a name="identify-cpu-performance-issues"></a>Identifikace problémů s výkonem procesoru
 
-Pokud využití CPU je vyšší než 80 % dlouhou dobu, zvažte následující kroky:
+Pokud je spotřeba procesoru nad 80% po delší dobu, zvažte následující postup řešení potíží:
 
-### <a name="the-cpu-issue-is-occurring-now"></a>Procesor k problému dochází nyní
+### <a name="the-cpu-issue-is-occurring-now"></a>Dojde k problému s CPU.
 
-Pokud se teď k problému dochází, existují dva možné scénáře:
+Pokud k problému dochází nyní, existují dva možné scénáře:
 
-#### <a name="many-individual-queries-that-cumulatively-consume-high-cpu"></a>Mnoho jednotlivých dotazů, které využívají kumulativně vysoké využití procesoru
+#### <a name="many-individual-queries-that-cumulatively-consume-high-cpu"></a>Mnoho jednotlivých dotazů, které kumulativně využívají vysoký procesor
 
-Použijte tento dotaz k identifikaci hodnoty hash dotazu top:
+K určení horních hodnot hash dotazů použijte následující dotaz:
 
 ```sql
 PRINT '-- top 10 Active CPU Consuming Queries (aggregated)--';
@@ -65,9 +64,9 @@ FROM(SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu
 ORDER BY Total_Request_Cpu_Time_Ms DESC;
 ```
 
-#### <a name="long-running-queries-that-consume-cpu-are-still-running"></a>Stále běží dlouho běžící dotazy, které využívají procesor
+#### <a name="long-running-queries-that-consume-cpu-are-still-running"></a>Dlouho běžící dotazy, které využívají PROCESORy, jsou pořád spuštěné.
 
-Použijte tento dotaz k identifikaci tyto dotazy:
+K identifikaci těchto dotazů použijte následující dotaz:
 
 ```sql
 PRINT '--top 10 Active CPU Consuming Queries by sessions--';
@@ -78,9 +77,9 @@ ORDER BY cpu_time DESC;
 GO
 ```
 
-### <a name="the-cpu-issue-occurred-in-the-past"></a>V minulosti došlo k potížím procesoru
+### <a name="the-cpu-issue-occurred-in-the-past"></a>V minulosti došlo k problému s PROCESORem.
 
-Pokud k problému došlo v minulosti a vy chcete root analýzu příčin, použijte [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). Uživatelé s přístupem k databázi můžete použít T-SQL k dotazování dat. Query Store.  Výchozí konfigurace Query Store použijte členitosti 1 hodina.  Podívejte se na aktivitu pro dotazy využívající vysoké využití procesoru pomocí následujícího dotazu. Tento dotaz vrátí nejvyšší 15 náročné dotazy procesoru.  Nezapomeňte změnit `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`:
+Pokud k problému došlo v minulosti a chcete provést analýzu hlavní příčiny, použijte [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store). Uživatelé s přístupem k databázi můžou použít T-SQL k dotazování na data úložiště dotazů.  Výchozí konfigurace úložiště dotazů používají členitost 1 hodina.  Pomocí následujícího dotazu si můžete prohlédnout aktivity s vysokými nároky na procesor. Tento dotaz vrátí prvních 15 náročných dotazů na procesor.  Nezapomeňte změnit `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()`:
 
 ```sql
 -- Top 15 CPU consuming queries by query hash
@@ -101,27 +100,27 @@ WHERE OD.RN<=15
 ORDER BY total_cpu_millisec DESC;
 ```
 
-Jakmile identifikujete problém dotazy, je čas vyladit tyto dotazy ke snížení využití procesoru.  Pokud nemáte čas optimalizovat dotazy, můžete také upgradovat cíle na úrovni služby databáze pro tento problém obejít.
+Jakmile identifikujete problematické dotazy, je čas optimalizovat tyto dotazy a snížit tak využití procesoru.  Pokud nemáte čas na ladění dotazů, můžete se také rozhodnout pro upgrade objektu SLO databáze, aby tento problém obejít.
 
-## <a name="identify-io-performance-issues"></a>Identifikace problémů s výkonem vstupně-výstupních operací
+## <a name="identify-io-performance-issues"></a>Identifikace potíží s výkonem v/v
 
-Při identifikaci problémů s výkonem vstupně-výstupních operací, začátek čekání typy související s problémy vstupně-výstupní operace jsou:
+Při identifikaci potíží s výkonem v/v jsou hlavní typy čekání spojené s vstupně-výstupními problémy:
 
 - `PAGEIOLATCH_*`
 
-  Pro problémy s vstupně-výstupní operace souboru dat (včetně `PAGEIOLATCH_SH`, `PAGEIOLATCH_EX`, `PAGEIOLATCH_UP`).  Pokud má název typu čekání **vstupně-výstupních operací** , odkazuje na vstupně-výstupní operace problém. Pokud není žádný **vstupně-výstupních operací** v názvu čekání západky překročila stránky odkazuje na jiný typ problému (například databáze tempdb kolize).
+  Pro datový soubor v/v – `PAGEIOLATCH_SH`problémy `PAGEIOLATCH_EX`( `PAGEIOLATCH_UP`včetně,,).  Pokud má název typu čekání v **/** v, odkazuje na vstupně-výstupní problém. Pokud v poli pro čekání na stránku neexistují žádné **vstupně-výstupní operace** , odkazuje na jiný typ problému (například obsah databáze tempdb).
 
 - `WRITE_LOG`
 
-  Pro problémy vstupně-výstupních operací protokolu transakcí.
+  V případě problémů s protokolem transakce v/v.
 
-### <a name="if-the-io-issue-is-occurring-right-now"></a>Pokud se vstupně-výstupní operace k problému dochází hned teď
+### <a name="if-the-io-issue-is-occurring-right-now"></a>Pokud k problému v/v dojde hned teď
 
-Použití [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) nebo [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) zobrazíte `wait_type` a `wait_time`.
+K zobrazení`wait_time`apoužijte [_exec_requests sys. DM](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) nebo [Sys. DM _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) `wait_type` .
 
-#### <a name="identify-data-and-log-io-usage"></a>Identifikaci dat a protokolování využití vstupně-výstupních operací
+#### <a name="identify-data-and-log-io-usage"></a>Identifikace dat a využití v/v protokolu
 
-Použijte tento dotaz k identifikaci dat a protokolování využití vstupně-výstupních operací. Pokud vstupně-výstupní operace dat či protokolu je vyšší než 80 %, znamená to, že uživatelé použili k dispozici vstupně-výstupních operací pro danou vrstvu služeb SQL Database.
+Pomocí následujícího dotazu Identifikujte data a použití v/v protokolu. Pokud jsou data nebo vstupně-výstupní operace nad 80%, znamená to, že uživatelé používali dostupnou vstupně-výstupní operaci pro vrstvu služby SQL DB.
 
 ```sql
 SELECT end_time, avg_data_io_percent, avg_log_write_percent
@@ -129,14 +128,14 @@ FROM sys.dm_db_resource_stats
 ORDER BY end_time DESC;
 ```
 
-Pokud byl dosažen limit vstupně-výstupních operací, máte dvě možnosti:
+Pokud bylo dosaženo limitu v/v, máte dvě možnosti:
 
-- Option 1: Upgrade velikosti výpočetního nebo úroveň služby
-- Option 2: Identifikujte a vyladění dotazů využívání většina vstupně-výstupních operací.
+- Možnost 1: Upgrade výpočetní velikosti nebo úrovně služby
+- Možnost 2: Identifikujte a optimalizujte dotazy náročné na v/v.
 
-#### <a name="view-buffer-related-io-using-the-query-store"></a>Zobrazit související vyrovnávací paměti vstupně-výstupních operací pomocí Query Store
+#### <a name="view-buffer-related-io-using-the-query-store"></a>Zobrazení vstupně-výstupních operací souvisejících s vyrovnávací pamětí pomocí úložiště dotazů
 
-Možnost 2 můžete použít následující dotaz proti Query Store pro vstupně-výstupní operace související s vyrovnávací paměti k zobrazení poslední dvě hodiny sledované aktivity:
+V případě možnosti 2 můžete použít následující dotaz na úložiště dotazů na v/v pro zobrazení posledních dvou hodin sledovaných aktivit:
 
 ```sql
 -- top queries that waited on buffer
@@ -157,9 +156,9 @@ ORDER BY total_wait_time_ms DESC;
 GO
 ```
 
-#### <a name="view-total-log-io-for-writelog-waits"></a>Zobrazit protokol celkový počet vstupně-výstupních operací pro WRITELOG čeká
+#### <a name="view-total-log-io-for-writelog-waits"></a>Zobrazit celkový protokol v/v pro WRITELOG čekání
 
-Pokud je typ čekání `WRITELOG`, použijte tento dotaz na Zobrazit celkový počet protokolovacích v/v – příkaz:
+Pokud je `WRITELOG`typ čekání, použijte následující dotaz k zobrazení celkového protokolu v/v v příkazu:
 
 ```sql
 -- Top transaction log consumers
@@ -236,21 +235,21 @@ ORDER BY total_log_bytes_used DESC;
 GO
 ```
 
-## <a name="identify-tempdb-performance-issues"></a>Identifikujte `tempdb` problémy s výkonem
+## <a name="identify-tempdb-performance-issues"></a>Identifikace `tempdb` problémů s výkonem
 
-Při identifikaci problémů s výkonem vstupně-výstupních operací, horní počkejte typy přidružené ke `tempdb` problémů `PAGELATCH_*` (ne `PAGEIOLATCH_*`). Ale `PAGELATCH_*` čeká vždy neznamená, že máte `tempdb` kolize.  Tato čekací může také znamenat, že máte kolize stránky dat objektu uživatele z důvodu souběžných žádostí, které cílí na stejné stránce data. Pro další potvrzení `tempdb` kolize, použijte [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) potvrďte, že hodnota wait_resource začíná `2:x:y` kde 2 je `tempdb` je id databáze `x` je id souboru a `y` je id stránky.  
+Při identifikaci problémů s výkonem v/v jsou `tempdb` `PAGELATCH_*` hlavní typy čekání přidružené k problémům ( `PAGEIOLATCH_*`ne). Čekání ale `PAGELATCH_*` vždy znamená, `tempdb` že máte spory.  Tato čekací hodnota také může znamenat, že máte k dispozici obsah stránky dat od uživatele, protože souběžné požadavky cílí na stejnou datovou stránku. K dalšímu potvrzení `tempdb` sporu použijte [Sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a potvrďte, že hodnota `2:x:y` wait_resource začíná na, kde 2 `tempdb` je ID databáze, `x` je ID souboru a `y` je ID stránky.  
 
-Pro databázi tempdb spor běžnou metodou je ke snížení nebo znovu napsat kód aplikace, která závisí na `tempdb`.  Běžné `tempdb` využití oblasti patří:
+Pro kolize databáze tempdb je běžnou metodou snížit nebo znovu napsat kód aplikace, který závisí na `tempdb`.  Mezi `tempdb` běžné oblasti využití patří:
 
 - Dočasné tabulky
-- Tabulka proměnných
+- Proměnné tabulky
 - Parametry vracející tabulku
-- Využití úložiště verze (konkrétně přidružené dlouho trvající transakcí)
-- Dotazy, které mají plány dotazů, které používají řazení, hodnota hash spojení a zařazování
+- Využití úložiště verzí (konkrétně spojené s dlouhými běžícími transakcemi)
+- Dotazy, které mají plány dotazů, které používají řazení, spojení s algoritmem hash a zařazování
 
 ### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>Nejčastější dotazy, které používají proměnné tabulky a dočasné tabulky
 
-Nejčastější dotazy, které používají proměnné tabulky a dočasné tabulky pomocí následujícího dotazu:
+K identifikaci horních dotazů, které používají proměnné tabulky a dočasné tabulky, použijte následující dotaz:
 
 ```sql
 SELECT plan_handle, execution_count, query_plan
@@ -273,9 +272,9 @@ FROM(SELECT DISTINCT plan_handle, [Database], [Schema], [table]
     JOIN #tmpPlan AS t2 ON t.plan_handle=t2.plan_handle;
 ```
 
-### <a name="identify-long-running-transactions"></a>Identifikujte dlouhotrvající transakce
+### <a name="identify-long-running-transactions"></a>Identifikujte dlouho běžící transakce.
 
-Pomocí následujícího dotazu k identifikaci dlouho spuštěný transakce. Dlouhotrvající transakce zabránit čištění úložiště verzí.
+K identifikaci dlouhotrvajících transakcí použijte následující dotaz. Dlouho běžící transakce zabraňují čištění úložiště verzí.
 
 ```sql
 SELECT DB_NAME(dtr.database_id) 'database_name',
@@ -331,13 +330,13 @@ WHERE atr.transaction_type != 2
 ORDER BY start_time ASC;
 ```
 
-## <a name="identify-memory-grant-wait-performance-issues"></a>Identifikujte paměti udělení počkejte problémy s výkonem
+## <a name="identify-memory-grant-wait-performance-issues"></a>Identifikace problémů s výkonem při čekání na přidělení paměti
 
-Je-li nejvyšší počkejte typ `RESOURCE_SEMAHPORE` a nemáte problém s vysoké využití procesoru, bude pravděpodobně paměti udělit problém čekání.
+Pokud je `RESOURCE_SEMAHPORE` váš typ čekání na maximum a nemáte problém s vysokým využitím procesoru, může se stát, že máte problém s přidělením paměti.
 
-### <a name="determine-if-a-resourcesemahpore-wait-is-a-top-wait"></a>Určí, zda `RESOURCE_SEMAHPORE` Počkejte, že se začátek čekání
+### <a name="determine-if-a-resourcesemahpore-wait-is-a-top-wait"></a>Určení, zda `RESOURCE_SEMAHPORE` je čekání hlavní chvilkou
 
-Pomocí následujícího dotazu určete, jestli `RESOURCE_SEMAHPORE` Počkejte, že se začátek čekání
+Pomocí následujícího dotazu určete, jestli `RESOURCE_SEMAHPORE` je čekání hlavní chvilkou.
 
 ```sql
 SELECT wait_type,
@@ -350,9 +349,9 @@ GROUP BY wait_type
 ORDER BY SUM(wait_time) DESC;
 ```
 
-### <a name="identity-high-memory-consuming-statements"></a>Příkazy identity vysoké spotřeby paměti
+### <a name="identity-high-memory-consuming-statements"></a>Vysoce náročné příkazy paměti pro identitu
 
-Použijte tento dotaz k identifikaci vysoké spotřeby paměti příkazy:
+Pomocí následujícího dotazu Identifikujte vysoce náročné příkazy paměti:
 
 ```sql
 SELECT IDENTITY(INT, 1, 1) rowId,
@@ -386,9 +385,9 @@ FROM cte
 ORDER BY SerialDesiredMemory DESC;
 ```
 
-### <a name="identify-the-top-10-active-memory-grants"></a>Identifikujte uděluje aktivní paměti prvních 10
+### <a name="identify-the-top-10-active-memory-grants"></a>Identifikujte prvních 10 grantů aktivních paměti
 
-Použijte tento dotaz k identifikaci nejvyšší 10 uděluje aktivní paměti:
+Pomocí následujícího dotazu Identifikujte prvních 10 přidaných grantů paměti:
 
 ```sql
 SELECT TOP 10
@@ -460,7 +459,7 @@ FROM sys.dm_exec_requests AS r
 ORDER BY mg.granted_memory_kb DESC;
 ```
 
-## <a name="calculating-database-and-objects-sizes"></a>Výpočet velikosti databáze a objekty
+## <a name="calculating-database-and-objects-sizes"></a>Výpočet velikosti databáze a objektů
 
 Následující dotaz vrátí velikost databáze (v megabajtech):
 
@@ -472,7 +471,7 @@ WHERE type_desc = 'ROWS';
 GO
 ```
 
-Následující dotaz vrátí velikost jednotlivých objektů (v megabajtech) v databázi:
+Následující dotaz vrátí velikost jednotlivých objektů (v megabajtech) ve vaší databázi:
 
 ```sql
 -- Calculates the size of individual database objects.
@@ -485,8 +484,8 @@ GO
 
 ## <a name="monitoring-connections"></a>Monitorování připojení
 
-Můžete použít [sys.dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) zobrazení k načtení informací o připojení pro konkrétní server Azure SQL Database a podrobnosti o každé připojení. Kromě toho [sys.dm_exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) zobrazení je užitečné při načítání informací o všech aktivních uživatelských připojení a interních úlohách.
-Následující dotaz načte informace o aktuální připojení:
+Zobrazení [Sys. DM _exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) můžete použít k načtení informací o připojeních navázaných na konkrétní Azure SQL Database Server a podrobnostech každého připojení. Zobrazení [Sys. DM _exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) je navíc užitečné při načítání informací o všech aktivních připojeních uživatelů a vnitřních úlohách.
+Následující dotaz načte informace o aktuálním připojení:
 
 ```sql
 SELECT
@@ -502,22 +501,22 @@ WHERE c.session_id = @@SPID;
 ```
 
 > [!NOTE]
-> Při provádění **sys.dm_exec_requests** a **zobrazení sys.dm_exec_sessions**, pokud máte **VIEW DATABASE STATE** oprávnění v databázi, se zobrazí všechna spuštění relace v databázi. v opačném případě se zobrazí pouze pro aktuální relaci.
+> Při provádění zobrazení **Sys. DM _exec_requests** a **Sys. DM _exec_sessions**, pokud máte v databázi oprávnění **Zobrazit stav databáze** , zobrazí se všechny spuštěné relace v databázi. v opačném případě se zobrazí pouze aktuální relace.
 
-## <a name="monitor-resource-use"></a>Monitorovat využití prostředků
+## <a name="monitor-resource-use"></a>Monitorování využití prostředků
 
-Můžete monitorovat využití prostředků pomocí [SQL Database Query Performance Insight](sql-database-query-performance.md) a [Query Store](https://msdn.microsoft.com/library/dn817826.aspx).
+Využití prostředků můžete monitorovat pomocí [SQL Database Query Performance Insight](sql-database-query-performance.md) a [úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx).
 
-Můžete také sledovat využití pomocí těchto dvou zobrazení:
+Můžete také monitorovat využití pomocí těchto dvou zobrazení:
 
 - [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 - [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
 ### <a name="sysdmdbresourcestats"></a>sys.dm_db_resource_stats
 
-Můžete použít [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) zobrazení v každé databázi SQL. **Sys.dm_db_resource_stats** zobrazení ukazuje poslední data použití prostředků relativně vzhledem k úrovni služeb. Průměrné procento CPU, datové v/v, zápisy protokolu a paměti se zaznamenávají každých 15 sekund a dobu 1 hodiny se zachovají.
+V každé databázi SQL Database můžete použít zobrazení [Sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) . Zobrazení **Sys. DM _db_resource_stats** ukazuje poslední data o využití prostředků vzhledem k úrovni služby. Průměrné procentuální hodnoty pro procesor, data v/v, zápisy protokolů a paměť se zaznamenávají každých 15 sekund a uchovávají se po dobu 1 hodiny.
 
-Protože toto zobrazení nabízí podrobnější pohled na využití prostředků, použijte **sys.dm_db_resource_stats** první pro analýzu aktuální stav nebo řešení potíží. Například tento dotaz ukazuje průměrnou a maximální prostředky používané pro aktuální databázi za poslední hodinu:
+Vzhledem k tomu, že toto zobrazení poskytuje podrobnější pohled na používání prostředků, použijte nejprve **Sys. DM _db_resource_stats** pro všechny analýzy stavu nebo řešení potíží. Tento dotaz například ukazuje průměrné a maximální využití prostředků aktuální databáze za poslední hodinu:
 
 ```sql
 SELECT  
@@ -532,26 +531,26 @@ SELECT
 FROM sys.dm_db_resource_stats;  
 ```
 
-Pro další dotazy, podívejte se na příklady v [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
+Další dotazy najdete v příkladech v [tabulce sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
 ### <a name="sysresourcestats"></a>sys.resource_stats
 
-[Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazit **hlavní** databáze obsahuje další informace, které vám může pomoct monitorování výkonu pro SQL database na úroveň konkrétních služby a vypočítat velikost. Data se shromažďují pro každých 5 minut a je zachován z důvodu přibližně 14 dnů. Toto zobrazení je užitečné pro dlouhodobější analýzu historie jak vaši službu SQL database využívá prostředky.
+Zobrazení [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) v **hlavní** databázi obsahuje další informace, které vám pomůžou monitorovat výkon SQL Database na konkrétní úrovni služby a výpočetní velikosti. Data se shromažďují každých 5 minut a uchovávají se po dobu přibližně 14 dnů. Toto zobrazení je užitečné pro dlouhodobé historické analýzy způsobu, jakým vaše databáze SQL používá prostředky.
 
-Následující graf ukazuje využití procesoru využití prostředků databáze úrovně Premium s velikostí výpočetních P2 pro každou hodinu za týden. Tento graf začíná v pondělí, zobrazuje 5 pracovních dní a poté zobrazí víkend, když se v aplikaci stane mnohem méně.
+Následující graf ukazuje využití prostředků procesoru pro databázi Premium s výpočetní velikostí P2 pro každou hodinu v týdnu. Tento graf začíná v pondělí, zobrazuje 5 pracovních dnů a pak zobrazuje víkend, pokud je aplikace mnohem méně nastává.
 
 ![Využití prostředků databáze SQL](./media/sql-database-performance-guidance/sql_db_resource_utilization.png)
 
-Z dat, tato databáze má momentálně zatížení CPU ve špičce než 50 procent využití procesoru vzhledem k P2 vypočítat velikost (v poledne úterý). Pokud využití procesoru je dominantní faktoru v profilu aplikace prostředků, může rozhodnout, že P2 má velikost správných výpočetních zaručí, že zatížení vždy vyhovovat. Pokud očekáváte, že aplikace čase, je dobré mít vyrovnávací paměť dodatečný prostředek, takže aplikace nebude nikdy dosáhne limitu úroveň výkonu. Zákazník viditelné chyby, které mohou nastat, když databáze nemá dostatek výkonné nástroje pro zpracování žádostí efektivně, zejména v prostředích nízkou latenci můžete vyhnout zvýšíte výpočetního prostředí. Příkladem je databáze, která podporuje aplikace, která jsou vykreslovány webové stránky na základě výsledků volání databáze.
+Z dat má tato databáze v současné době zatížení CPU ve špičce přesně přes 50% využití procesoru vzhledem k výpočetní velikosti P2 (poledne v úterý). Pokud je CPU dominantní faktor v profilu prostředku aplikace, můžete se rozhodnout, že P2 je správná výpočetní velikost, aby bylo zaručeno, že se zatížení bude vždy hodit. Pokud očekáváte, že aplikace bude v průběhu času růst, je vhodné mít dodatečnou vyrovnávací paměť prostředků, aby aplikace nikdy nedosáhla limitu úrovně výkonu. Pokud zvětšíte výpočetní velikost, můžete se vyhnout chybám zobrazeným zákazníkovi, ke kterým může dojít, když databáze nemá dostatek energie na zpracování požadavků, zejména v prostředích, která jsou citlivá na latenci. Příkladem je databáze, která podporuje aplikaci, která vykreslí webové stránky na základě výsledků volání databáze.
 
-Ostatní typy aplikací může do stejného grafu interpretují odlišně. Například pokud se aplikace pokusí ke zpracování mezd dat každý den a má stejný graf, tento druh "úlohy služby batch" model může provádět bez problémů ve velikosti výpočetní prostředky P1. Velikost výpočetní prostředky P1 má 100 Dtu ve srovnání s 200 jednotek Dtu na P2 vypočítat velikost. Velikost výpočetní prostředky P1 poskytuje že poloviční výkonu P2 výpočetní velikost. Tedy 50 % využití procesoru v P2 se rovná 100 % využití procesoru v P1. Pokud aplikace nemá žádné vypršení časových limitů, nemusí je důležité, pokud úlohy trvá 2 hodiny nebo 2,5 hodin, pokud to proběhne ještě dnes. Aplikace v této kategorii pravděpodobně můžete použít velikost výpočetní prostředky P1. Můžete využít výhod vzhledem k tomu, že mají dobu během dne, kdy je využití prostředků nižší, tak, aby všechny "velký objem ve špičce" může být uložená do jedné ze žlaby později za den. Velikost výpočetní prostředky P1 může být vhodné pro tento typ aplikace (a ušetřit peníze) jako včasné každý den může dokončení úloh.
+Jiné typy aplikací mohou interpretovat stejný graf odlišně. Například pokud se aplikace pokusí zpracovat data mzdy každý den a má stejný graf, tento druh modelu "batch job" může na výpočetní úrovni P1 dělat přesně. Výpočetní velikost P1 má 100 DTU ve srovnání s 200 DTU na výpočetní úrovni P2. Výpočetní velikost P1 poskytuje poloviční výkon výpočetní velikosti P2. Takže 50% využití procesoru v P2 se rovná 100% využití CPU v P1. Pokud aplikace nemá vypršení časových limitů, může to být bez ohledu na to, jestli úloha trvá 2 hodiny nebo 2,5 hodin, pokud se k tomu ještě nejedná. Aplikace v této kategorii pravděpodobně může používat výpočetní velikost P1. Můžete využít výhod faktu, že během dne jsou k dispozici časová období, kdy je využití prostředků nižší, aby se v jednom z nich později v daném dni mohly přebírat jakékoli "velké špičky". Výpočetní velikost P1 může být pro tento druh aplikace dobrá (a ušetřit tak peníze), pokud úlohy můžou být dokončeny včas každý den.
 
-Azure SQL Database zpřístupňuje využívat informace o prostředku pro každou databázi aktivní **sys.resource_stats** zobrazení **hlavní** databází v každém serveru. Zobrazují se data v tabulce pro 5minutových intervalech. S úrovní služeb Basic, Standard a Premium dat může trvat více než 5 minut se zobrazí v tabulce, takže tato data je užitečnější pro historické analýzy spíše než analýzy téměř v reálném čase. Dotaz **sys.resource_stats** zobrazení nedávné historie databáze a ověřit, jestli se rezervace jste zvolili doručit výkonu chcete, aby v případě potřeby.
+Azure SQL Database zveřejňuje spotřebované informace o zdroji pro každou aktivní databázi v zobrazení **Sys. resource_stats** **hlavní** databáze na každém serveru. Data v tabulce jsou agregována do intervalu 5 minut. V případě úrovní služeb Basic, Standard a Premium může tato data trvat více než 5 minut, než se v tabulce zobrazí, takže tato data jsou užitečnější pro historická analýzy, nikoli téměř v reálném čase. Dotaz na zobrazení **Sys. resource_stats** vám umožní zobrazit poslední historii databáze a ověřit, jestli vámi zvolená rezervace dodala požadovaný výkon v případě potřeby.
 
 > [!NOTE]
-> Musíte být připojeni k **hlavní** databázi vašeho serveru databáze SQL k dotazování **sys.resource_stats** v následujících příkladech.
+> K dotazování **Sys. resource_stats** v následujících příkladech musíte být připojeni k **hlavní** databázi serveru SQL Database.
 
-Tento příklad ukazuje, jak vystavit data v tomto zobrazení:
+V tomto příkladu se dozvíte, jak jsou data v tomto zobrazení vystavena:
 
 ```sql
 SELECT TOP 10 *
@@ -560,11 +559,11 @@ WHERE database_name = 'resource1'
 ORDER BY start_time DESC
 ```
 
-![Zobrazení katalogu sys.resource_stats](./media/sql-database-performance-guidance/sys_resource_stats.png)
+![Zobrazení katalogu sys. resource_stats](./media/sql-database-performance-guidance/sys_resource_stats.png)
 
-Další příklad ukazuje různé způsoby, které můžete použít **sys.resource_stats** katalogu zobrazení se získat informace o tom, jak vaši službu SQL database používá prostředky:
+Následující příklad ukazuje různé způsoby, jak můžete pomocí zobrazení katalogu **Sys. resource_stats** získat informace o tom, jak vaše databáze SQL používá prostředky:
 
-1. Podívat se na poslední týden prostředků použijte pro userdb1 databáze, můžete spustit tento dotaz:
+1. Pokud se chcete podívat na využití prostředků v minulém týdnu pro databázi userdb1, můžete spustit tento dotaz:
 
     ```sql
     SELECT *
@@ -574,7 +573,7 @@ Další příklad ukazuje různé způsoby, které můžete použít **sys.resou
     ORDER BY start_time DESC;
     ```
 
-2. Můžete vyhodnotit, jak dobře vaše úloha vyhovuje výpočetního prostředí, budete muset přejít na každý aspekt metriky prostředků: Využití procesoru, čtení, zápisu, počet pracovních procesů a počet relací. Tady je upravená dotazování pomocí **sys.resource_stats** hlášení průměrné a maximální hodnoty tyto metriky prostředků:
+2. Chcete-li vyhodnotit, jak dobře vaše zatížení vyhovuje výpočetní velikosti, je nutné přejít k podrobnostem o všech aspektech metriky prostředků: PROCESOR, čtení, zápisy, počet pracovních procesů a počet relací. Tady je upravený dotaz pomocí **Sys. resource_stats** , který oznamuje průměrnou a maximální hodnotu těchto metrik prostředků:
 
     ```sql
     SELECT
@@ -592,11 +591,11 @@ Další příklad ukazuje různé způsoby, které můžete použít **sys.resou
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-3. Pomocí těchto informací o průměrné a maximální hodnoty každého prostředku metriky můžete vyhodnotit, jak dobře vaše úloha zapadá do výpočetní velikost, kterou jste zvolili. Obvykle, průměrné hodnoty z **sys.resource_stats** umožňují dobré směrný plán použít proti cílovou velikost. Měla by být stonek vaše primární měření. Příklad může být pomocí úrovně služeb Standard S2 výpočty velikosti. Průměr použít procenta využití procesoru a vstupně-výstupních operací čtení a zápisy jsou pod 40 procent, průměrný počet pracovních procesů, které je nižší než 50 a průměrný počet relací je nižší než 200. Vaše zatížení může vešel do výpočetní S1. Je snadno zjistit, zda databáze vejde omezení pracovních procesů a relace. Abyste viděli, zda databáze zapadá do menší velikost výpočetního s ohledem na dělení procesoru, čtení a zápisy, počet DTU nižší vypočítat velikost podle počtu jednotek DTU vaše aktuální velikost výpočetních a výsledek vynásobit 100:
+3. Pomocí těchto informací o průměrných a maximálních hodnotách každé metriky prostředků můžete vyhodnotit, jak dobře se vaše zatížení vejde do vybrané výpočetní velikosti. Průměrné hodnoty z **Sys. resource_stats** obvykle poskytují dobrý základ pro použití s cílovou velikostí. Měl by to být vaše primární měření. Například můžete používat standardní úroveň služby s výpočetní velikostí S2. Průměrné procentuální hodnoty použití pro čtení a čtení v CPU a vstupně-výstupních operacích jsou nižší než 40%, průměrný počet pracovních procesů je pod 50 a průměrný počet relací je pod 200. Vaše úlohy se můžou vejít do výpočetní velikosti S1. Můžete snadno zjistit, jestli vaše databáze odpovídá omezením pracovních procesů a relací. Pokud chcete zjistit, jestli databáze zapadá do nižší výpočetní velikosti s ohledem na PROCESORy, čtení a zápisy, vydělte číslo DTU nižší výpočetní velikosti číslem DTU aktuální velikosti a pak výsledek vynásobte 100:
 
     ```S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40```
 
-    Výsledkem je relativní výkon rozdíl mezi těmito dvěma compute velikostí v procentech. Pokud využívání prostředků není překročí tuto hodnotu, může vaše úlohy vešel do nižší výpočetní prostředky. Ale budete muset podívejte se na všechny rozsahy hodnot použití prostředků a zjistit, v procentech, jak často by vaší úlohy databáze vešel do nižší výpočetní prostředky. Následující dotaz vypíše ve výstupu přizpůsobit procento prostředků dimenze, podle prahové hodnoty 40 procent vypočtené v tomto příkladu:
+    Výsledkem je relativní rozdíl mezi dvěma výpočetními velikostmi v procentech. Pokud vaše využití prostředků nepřekračuje tuto hodnotu, vaše zatížení se může vejít do nižší výpočetní velikosti. Je ale potřeba se podívat na všechny rozsahy hodnot využití prostředků a určit procento, jak často by se vaše databázové zatížení vešlo do nižší výpočetní velikosti. Následující dotaz vyprodukuje procento přizpůsobení podle dimenze prostředku na základě prahové hodnoty 40%, kterou jsme vypočítali v tomto příkladu:
 
    ```sql
     SELECT
@@ -607,15 +606,15 @@ Další příklad ukazuje různé způsoby, které můžete použít **sys.resou
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-    Podle vaší úrovně služby databáze, můžete rozhodnout, jestli vaše úloha zapadá do menší velikost výpočetní prostředky. Pokud je váš cíl úlohy databáze 99, 9procentní a předchozí dotaz vrací hodnoty větší než 99, 9procentní pro všechny tři prostředků dimenze, úloha pravděpodobně zapadá do nižší výpočty velikosti.
+    Na základě vaší úrovně databázové služby se můžete rozhodnout, jestli vaše zatížení zapadá do nižší výpočetní velikosti. Pokud je váš cíl úlohy databáze 99,9 procent a předchozí dotaz vrátí hodnoty větší než 99,9% pro všechny tři dimenze prostředků, vaše zatížení se nejspíš zahodí k nižší výpočetní velikosti.
 
-    Prohlížení přizpůsobit procento poskytuje také přehled o tom, zda byste měli přejít na další vyšší velikost výpočetní prostředky pro splnění cíle. Například userdb1 znázorňuje následující využití procesoru za minulý týden:
+    V procentech přizpůsobení získáte také informace o tom, zda byste měli přejít na další vyšší výpočetní velikost, aby vyhovovala vašemu cíli. Například userdb1 zobrazuje následující využití CPU za minulý týden:
 
-   | Průměrné procento CPU | Maximální procento využití procesoru |
+   | Průměrné procento využití procesoru | Maximální procento využití procesoru |
    | --- | --- |
    | 24.5 |100.00 |
 
-    Průměrné využití procesoru je o čtvrtletí limit velikosti výpočetní prostředky, které bude vyhovovat výpočty velikosti databáze. Ale maximální hodnota ukazuje, že databáze dosáhne limitu výpočetního prostředí. Je třeba přesunout na nejbližší větší velikost výpočetních? Podívejte se na postup v mnoha případech vaše zatížení dosáhne 100 % jeho obsahu a porovnejte je vaším cílem zatížení databáze.
+    Průměrná doba využití procesoru je čtvrtina limitu výpočetní velikosti, která by odpovídala i výpočetní velikosti databáze. Ale maximální hodnota udává, že databáze dosáhne limitu výpočetní velikosti. Potřebujete přejít na další vyšší výpočetní velikost? Podívejte se, kolikrát vaše zatížení dosáhlo 100 procent, a pak ho porovnejte s cílem úlohy vaší databáze.
 
     ```sql
     SELECT
@@ -626,22 +625,22 @@ Další příklad ukazuje různé způsoby, které můžete použít **sys.resou
         WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-    Pokud tento dotaz vrací hodnotu menší než 99, 9procentní pro libovolný počet rozměrů tři prostředků zvažte přesunutí na nejbližší větší velikost výpočetních nebo používat techniky ladění aplikace ke snížení zatížení na databázi SQL.
+    Pokud tento dotaz vrátí hodnotu menší než 99,9 procent pro jakékoli tři dimenze prostředku, zvažte buď přesunutí na další vyšší výpočetní velikost, nebo použijte techniky pro vyladění aplikace, abyste snížili zatížení SQL Database.
 
-4. V tomto cvičení také bere v úvahu vaše zvýšení plánované úlohy v budoucnu.
+4. Toto cvičení také zvažuje předpokládané zvýšení zatížení v budoucnu.
 
 U elastických fondů můžete monitorovat jednotlivé databáze ve fondu pomocí technik popsaných v této části. Můžete ale také monitorovat fond jako celek. Další informace najdete v tématu [Monitorování a správa elastického fondu](sql-database-elastic-pool-manage-portal.md).
 
-### <a name="maximum-concurrent-requests"></a>Maximální počet souběžných požadavků
+### <a name="maximum-concurrent-requests"></a>Maximální počet souběžných žádostí
 
-Pokud chcete zobrazit počet souběžných požadavků, spusťte tento dotaz jazyka Transact-SQL v SQL database:
+Pokud chcete zobrazit počet souběžných požadavků, spusťte tento dotaz Transact-SQL ve vaší databázi SQL:
 
     ```sql
     SELECT COUNT(*) AS [Concurrent_Requests]
     FROM sys.dm_exec_requests R;
     ```
 
-Pokud chcete analyzovat úlohy k místní databázi SQL serveru, upravte tento dotaz pro filtrování v konkrétní databázi, že který chcete analyzovat. Pokud máte místní databázi s názvem databáze, tento dotaz jazyka Transact-SQL vrátí počet souběžných požadavků v této databázi:
+Pokud chcete analyzovat úlohy místní databáze SQL Server, upravte tento dotaz tak, aby se vyfiltroval konkrétní databáze, kterou chcete analyzovat. Například pokud máte místní databázi s názvem MyDatabase, tento dotaz Transact-SQL vrátí počet souběžných žádostí v této databázi:
 
     ```sql
     SELECT COUNT(*) AS [Concurrent_Requests]
@@ -650,25 +649,25 @@ Pokud chcete analyzovat úlohy k místní databázi SQL serveru, upravte tento d
     AND D.name = 'MyDatabase';
     ```
 
-Toto je snímek v jednom okamžiku v čase. Pokud chcete získat lepší přehled o vašich úloh a požadavky souběžný požadavek, musíte postupně shromáždit mnoha ukázek.
+Toto je pouze snímek v jednom bodě v čase. Abyste lépe pochopili vaše úlohy a požadavky na souběžné požadavky, budete potřebovat shromáždit spoustu ukázek v průběhu času.
 
-### <a name="maximum-concurrent-logins"></a>Maximální souběžných přihlášení
+### <a name="maximum-concurrent-logins"></a>Maximální počet souběžných přihlášení
 
-Můžete analyzovat vzory vašich uživatelů a aplikací, kde získáte představu o četnosti přihlášení. Reálné zátěže můžete spustit také v testovacím prostředí, abyste měli jistotu, že jste nedosahují to nebo další omezení, které si popíšeme v tomto článku. Není k dispozici jeden dotaz nebo zobrazení dynamické správy (DMV), které můžete zobrazit souběžných počítá přihlášení nebo z historie.
+Můžete analyzovat vzorce uživatelů a aplikací a získat představu o četnosti přihlášení. V testovacím prostředí můžete také spustit reálné zátěže, abyste se ujistili, že nebudete mít na dosahu žádného nebo jiného omezení, které v tomto článku probereme. Neexistuje žádný dotaz nebo zobrazení dynamické správy (DMV), které vám umožní zobrazit počet souběžných přihlášení nebo historii.
 
-Pokud více klientů používat stejný připojovací řetězec, služba se ověřuje každé přihlášení. Pokud 10 uživatelů současně připojit k databázi pomocí stejného uživatelského jména a hesla, by existovat 10 souběžných přihlášení. Toto omezení platí pouze pro dobu trvání přihlášení a ověření. Pokud se stejný 10 uživatelů připojit k databázi postupně, počet souběžných přihlášení by nikdy být větší než 1.
+Pokud více klientů používá stejný připojovací řetězec, služba ověřuje každé přihlášení. Pokud se 10 uživatelů současně připojí k databázi pomocí stejného uživatelského jména a hesla, bude k dispozici 10 souběžných přihlášení. Toto omezení se vztahuje pouze na dobu trvání přihlášení a ověření. Pokud se jeden z deseti uživatelů připojí k databázi postupně, počet souběžných přihlášení nikdy nebude větší než 1.
 
 > [!NOTE]
-> V současné době toto omezení se nevztahuje na databází v elastických fondech.
+> V současné době toto omezení neplatí pro databáze v elastických fondech.
 
 ### <a name="maximum-sessions"></a>Maximální počet relací
 
-Pokud chcete zobrazit počet aktuálních aktivních relací, spusťte tento dotaz jazyka Transact-SQL v SQL database:
+Pokud chcete zobrazit počet aktuálních aktivních relací, spusťte tento dotaz Transact-SQL ve vaší databázi SQL:
 
     SELECT COUNT(*) AS [Sessions]
     FROM sys.dm_exec_connections
 
-Pokud analyzujete pracovního vytížení místní SQL Server, tento dotaz změnit a zaměřte se na konkrétní databáze. Tento dotaz vám pomůže určit, potřeb možné relace pro databázi Pokud zvažujete Přesun do Azure SQL Database.
+Pokud analyzujete místní úlohu SQL Server, upravte dotaz tak, aby se zazaměřil na konkrétní databázi. Tento dotaz vám pomůže určit možné potřeby relace pro databázi, Pokud zvažujete jejich přesun do Azure SQL Database.
 
     SELECT COUNT(*)  AS [Sessions]
     FROM sys.dm_exec_connections C
@@ -676,17 +675,17 @@ Pokud analyzujete pracovního vytížení místní SQL Server, tento dotaz změn
     INNER JOIN sys.databases D ON (D.database_id = S.database_id)
     WHERE D.name = 'MyDatabase'
 
-Tyto dotazy znovu, vrátí počet bodu v čase. Budete-li shromažďovat víc ukázky v čase, budete mít nejlepší znalost relaci použít.
+Tyto dotazy znovu vrátí počet bodů v čase. Pokud shromáždíte více ukázek v průběhu času, budete mít k dispozici nejvhodnější informace o použití vaší relace.
 
-Pro účely analýzy SQL Database, můžete získat historické statistiky na relace pomocí dotazu [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) zobrazení a kontrola **active_session_count** sloupce.
+V případě analýzy SQL Database můžete získat historické statistiky o relacích dotazem na zobrazení [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) a kontrolou sloupce **active_session_count** .
 
-## <a name="monitoring-query-performance"></a>Sledování výkonu dotazů
+## <a name="monitoring-query-performance"></a>Monitorování výkonu dotazů
 
-Pomalé nebo dlouho probíhající dotazy může spotřebovat významné systémových prostředků. Tato část ukazuje, jak detekovat několik běžných problémech s výkonem dotazů pomocí zobrazení dynamické správy. Odkaz na starší, ale přesto užitečné při řešení potíží, je [řešení potíží s problémy s výkonem v systému SQL Server 2008](https://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) článek na Microsoft TechNetu.
+Pomalé nebo dlouho běžící dotazy můžou využívat významné systémové prostředky. V této části se dozvíte, jak pomocí zobrazení dynamické správy detekovat několik běžných problémů s výkonem dotazů. Starší, ale i stále užitečné informace pro řešení potíží, jsou [problémy s výkonem v SQL Server 2008](https://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) článku na webu Microsoft TechNet.
 
-### <a name="finding-top-n-queries"></a>Hledání dotazy horních N
+### <a name="finding-top-n-queries"></a>Hledání hlavních N dotazů
 
-Následující příklad vrátí informace o prvních pěti dotazech seřazených podle průměrné doby využití procesoru. V tomto příkladu agreguje dotazy podle jejich hodnota hash dotazu tak, aby logicky ekvivalentní dotazy jsou seskupeny podle jejich spotřeba kumulativní prostředků.
+Následující příklad vrátí informace o pěti nejčastějších dotazech seřazené podle průměrného času procesoru. V tomto příkladu jsou shrnuty dotazy podle jejich hodnoty hash dotazů, takže logicky ekvivalentní dotazy jsou seskupeny podle jejich kumulativní spotřeby prostředků.
 
     ```sql
     SELECT TOP 5 query_stats.query_hash AS "Query Hash",
@@ -705,13 +704,13 @@ Následující příklad vrátí informace o prvních pěti dotazech seřazenýc
     ORDER BY 2 DESC;
     ```
 
-### <a name="monitoring-blocked-queries"></a>Monitorování blokované dotazy
+### <a name="monitoring-blocked-queries"></a>Monitorování blokovaných dotazů
 
-Pomalá nebo dlouho probíhající dotazy mohou přispět ke všimnete nadměrné spotřeby prostředků a možné důsledků blokované dotazy. Příčinu zablokování může být nekvalitní návrh aplikací, plány chybných dotazů, nedostatek vhodné indexy a tak dále. Zobrazení sys.dm_tran_locks můžete získat informace o aktuální uzamčení aktivity ve službě Azure SQL Database. Příklad kódu naleznete v tématu [sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx) v SQL Server Books Online.
+Pomalé nebo dlouho běžící dotazy můžou přispět k nadměrné spotřebě prostředků a být v důsledku blokovaných dotazů. Příčinou blokování může být špatný návrh aplikace, špatné plány dotazů, chybějící užitečné indexy atd. Pomocí zobrazení sys. DM _tran_locks můžete získat informace o aktuální aktivitě uzamykání v Azure SQL Database. Příklad kódu naleznete v tématu [Sys. DM _tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx) v SQL Server Books Online.
 
-### <a name="monitoring-query-plans"></a>Monitorování plány dotazů
+### <a name="monitoring-query-plans"></a>Monitorování plánů dotazů
 
-Plán dotazu neefektivní také může zvýšit využití procesoru. V následujícím příkladu [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) zobrazení a určit, který dotaz používá většina kumulativní využití procesoru.
+Neefektivní plán dotazů taky může zvýšit spotřebu procesoru. Následující příklad používá zobrazení [Sys. DM _exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) k určení, který dotaz používá nejvíc kumulativní procesor.
 
     ```sql
     SELECT
@@ -733,6 +732,6 @@ Plán dotazu neefektivní také může zvýšit využití procesoru. V následuj
     ORDER BY highest_cpu_queries.total_worker_time DESC;
     ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-[Úvod do služby SQL Database](sql-database-technical-overview.md)
+[Úvod do SQL Database](sql-database-technical-overview.md)

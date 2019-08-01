@@ -2,16 +2,16 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 03/05/2019
+ms.date: 07/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 7058d7f46373f8adaacbcbf90e5ea591a15f8f37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f3bb391dceb1948820d00c0d09229f2c106ffc0b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175465"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601313"
 ---
-Na zařízení Data Box Edge, který má nakonfigurovanou, roli výpočetní podmnožinu docker příkazy jsou k dispozici pro monitorování a řešení potíží s moduly. Zobrazíte seznam dostupných příkazů [připojit k rozhraní PowerShell](#connect-to-the-powershell-interface) a použít `dkrdbe` funkce.
+Na Data Box Edge zařízení s nakonfigurovanou výpočetní rolí je k dispozici podmnožina příkazů Docker pro sledování nebo odstraňování potíží s moduly. Pokud chcete zobrazit seznam dostupných příkazů, [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface) a použijte `dkrdbe` funkci.
 
 ```powershell
 [10.100.10.10]: PS>dkrdbe -?
@@ -35,28 +35,28 @@ Commands:
 
 [10.100.10.10]: PS>
 ```
-Následující tabulka obsahuje stručný popis příkazů dostupných pro `dkrdbe`:
+Následující tabulka obsahuje stručný popis příkazů, které jsou k dispozici `dkrdbe`pro:
 
 |Příkaz  |Popis |
 |---------|---------|
-|`image`     | Správa imagí       |
-|`images`     | Výpis imagí         |
-|`inspect`     | Vrací informace nízké úrovně u objektů Dockeru         |
-|`login`     | Přihlášení k registru Dockeru         |
-|`logout`     | Odhlásit se z registru Dockeru         |
-|`logs`     | Načíst protokoly kontejneru        |
-|`port`     | Seznam mapování portů nebo konkrétní mapování pro kontejner        |
+|`image`     | Správa imagí. K odebrání nepoužívaných imagí použijte:`dkrdbe image prune -a -f`       |
+|`images`     | Zobrazit obrázky         |
+|`inspect`     | Vrátí informace o nízké úrovni objektů Docker.         |
+|`login`     | Přihlášení k registru Docker         |
+|`logout`     | Odhlášení z registru Docker         |
+|`logs`     | Načtení protokolů kontejneru        |
+|`port`     | Vypíše mapování portů nebo konkrétní mapování pro kontejner.        |
 |`ps`     | Výpis kontejnerů        |
-|`pull`     | O přijetí změn bitovou kopii nebo úložiště z registru         |
-|`start`     | Spustit jeden nebo více zastavené kontejnery         |
-|`stats`     | Zobrazit živý datový proud statistiky využití prostředků kontejnerů.         |
-|`stop`     | Zastavit jeden nebo více spuštěných kontejnerů        |
-|`system`     | Správa Dockeru         |
+|`pull`     | Stažení obrázku nebo úložiště z registru         |
+|`start`     | Spustit jeden nebo více zastavených kontejnerů         |
+|`stats`     | Zobrazit živý datový proud s využitím prostředků kontejnerů         |
+|`stop`     | Zastavení jednoho nebo více spuštěných kontejnerů        |
+|`system`     | Spravovat Docker         |
 |`top`     | Zobrazit spuštěné procesy kontejneru         |
 
-Chcete-li získat nápovědu pro kterýkoli příkaz k dispozici, použijte `dkrdbe <command-name> --help`.
+Chcete-li získat nápovědu k jakémukoli dostupnému `dkrdbe <command-name> --help`příkazu, použijte.
 
-Pro příklad, jak porozumět používání aplikace `port` příkazu, zadejte:
+Chcete-li například pochopit použití `port` příkazu, zadejte:
 
 ```powershell
 [10.100.10.10]: P> dkrdbe port --help
@@ -78,13 +78,13 @@ Options:
 [10.100.10.10]: PS>
 ```
 
-Dostupné příkazy pro `dkrdbe` funkce použít stejné parametry jako ty, které slouží pro příkazy normální dockeru. Možnosti a parametry příkazu docker, přejděte na [pomocí příkazového řádku Dockeru](https://docs.docker.com/engine/reference/commandline/docker/).
+Příkazy, které jsou k `dkrdbe` dispozici pro funkci, používají stejné parametry jako ty, které se používají pro normální příkazy Docker. Možnosti a parametry, které se používají s příkazem Docker, najdete [v části použití](https://docs.docker.com/engine/reference/commandline/docker/)příkazového řádku Docker.
 
-### <a name="to-check-if-the-module-deployed-successfully"></a>Chcete-li zkontrolovat, pokud modul úspěšné nasazení
+### <a name="to-check-if-the-module-deployed-successfully"></a>Postup kontroly úspěšného nasazení modulu
 
-Výpočetní moduly jsou kontejnery, které mají obchodní logika implementovaná. Pokud chcete zkontrolovat, pokud výpočetní modul je nasazena úspěšně, spusťte `ps` příkaz a zkontrolujte, zda je spuštěn kontejneru (odpovídající výpočetní modul).
+Výpočetní moduly jsou kontejnery, které mají implementaci obchodní logiky. Pokud chcete zjistit, jestli je výpočetní modul úspěšně nasazený, spusťte `ps` příkaz a ověřte, jestli je spuštěný kontejner (odpovídající modulu COMPUTE).
 
-Chcete-li získat seznam všech kontejnerů (včetně těch, které je pozastaveno), spusťte `ps -a` příkazu.
+Pokud chcete získat seznam všech kontejnerů (včetně těch, které jsou pozastavené), spusťte `ps -a` příkaz.
 
 ```powershell
 [10.100.10.10]: P> dkrdbe ps -a
@@ -96,9 +96,9 @@ acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/s
 [10.100.10.10]: PS>
 ```
 
-Pokud k vytvoření Image kontejneru nebo při stahování obrázku došlo k chybě, spusťte `logs edgeAgent`.  `EdgeAgent` je kontejner modulu runtime IoT Edge, která je zodpovědná za zřizování jiných kontejnerů.
+Pokud došlo k chybě při vytváření image kontejneru nebo při nastavování image, spusťte příkaz `logs edgeAgent`.  `EdgeAgent`je kontejner IoT Edge runtime, který zodpovídá za zřizování jiných kontejnerů.
 
-Protože `logs edgeAgent` vypíše všechny protokoly, vhodný způsob, jak zobrazit nedávné chyby, je použít možnost `--tail 20`.
+Protože `logs edgeAgent` vypíše všechny protokoly, dobrým způsobem, jak zobrazit nedávné chyby, je použití možnosti `--tail 20`.
 
 
 ```powershell
@@ -117,12 +117,12 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
 2019-02-28 23:38:28.480 +00:00 [DBG] [Microsoft.Azure.Devices.Edge.Agent.Core.Planners.HealthRestartPlanner] - HealthRestartPlanner created Plan, with 0 command(s).
 ```
 
-### <a name="to-get-container-logs"></a>Chcete-li získat protokoly kontejneru
+### <a name="to-get-container-logs"></a>Získání protokolů kontejnerů
 
-Pokud chcete získat protokoly pro konkrétní kontejner, nejprve seznamu kontejneru a pak získat protokoly kontejneru, který vás zajímá.
+Chcete-li získat protokoly pro konkrétní kontejner, nejprve seznamte s kontejnerem a potom Získejte protokoly pro kontejner, který vás zajímá.
 
-1. [Připojení k rozhraní PowerShell](#connect-to-the-powershell-interface).
-2. Pokud chcete získat seznam spuštěných kontejnerů, spusťte `ps` příkazu.
+1. [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface).
+2. Chcete-li získat seznam spuštěných kontejnerů, `ps` spusťte příkaz.
 
     ```powershell
     [10.100.10.10]: P> dkrdbe ps
@@ -133,9 +133,9 @@ Pokud chcete získat protokoly pro konkrétní kontejner, nejprve seznamu kontej
     acce59f70d60        mcr.microsoft.com/azureiotedge-agent:1.0             "/bin/sh -c 'echo \"$â€¦"   2 days ago          Up 2 days                                                                                  edgeAgent
     ```
 
-3. Poznamenejte si ID kontejneru pro kontejner, který potřebujete v protokolech.
+3. Poznamenejte si ID kontejneru pro kontejner, pro který budete potřebovat protokoly.
 
-4. Pokud chcete získat protokoly pro konkrétní kontejner, spusťte `logs` příkaz a zadejte ID kontejneru.
+4. Chcete-li získat protokoly pro konkrétní kontejner, spusťte `logs` příkaz, který poskytuje ID kontejneru.
 
     ```powershell
     [10.100.10.10]: PS>dkrdbe logs d99e2f91d9a8
@@ -150,12 +150,12 @@ Pokud chcete získat protokoly pro konkrétní kontejner, nejprve seznamu kontej
     02/26/2019 18:23:38: Info: Processed event.
     ```
 
-### <a name="to-monitor-the-usage-statistics-of-the-device"></a>K monitorování statistik využití zařízení
+### <a name="to-monitor-the-usage-statistics-of-the-device"></a>Monitorování statistiky využití zařízení
 
-Chcete-li sledovat paměti, využití procesoru a vstupů/výstupů v zařízení, použijte `stats` příkazu.
+K monitorování paměti, využití procesoru a vstupně-výstupních operací na zařízení použijte `stats` příkaz.
 
-1. [Připojení k rozhraní PowerShell](#connect-to-the-powershell-interface).
-2. Spustit `stats` příkaz tak, aby se zakáže živého datového proudu a o přijetí změn pouze první výsledek.
+1. [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface).
+2. `stats` Spusťte příkaz, aby se zakázal živý datový proud a načetl se jenom první výsledek.
 
    ```powershell
    dkrdbe stats --no-stream

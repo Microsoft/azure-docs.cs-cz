@@ -2,51 +2,51 @@
 title: Přidání existujícího předplatného Azure do svého tenanta – Azure Active Directory | Dokumentace Microsoftu
 description: Pokyny k přidání existujícího předplatného Azure do svého tenanta Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2889af6000e77fba7a91392c0adb227588b5306
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a64bad11f5b83ddd7f6d7236ffed4ff4a6e39c2c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66430790"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561868"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do svého tenanta Azure Active Directory
 
-Předplatné Azure má vztah důvěryhodnosti s Azure Active Directory (Azure AD), což znamená, že předplatné vztahy důvěryhodnosti služby Azure AD k ověřování uživatelů, služeb a zařízení. Několik předplatných může důvěřovat stejnému adresáři Azure AD, ale každé předplatné může důvěřovat pouze jeden adresář.
+Předplatné Azure má vztah důvěryhodnosti s Azure Active Directory (Azure AD), což znamená, že předplatné důvěřuje službě Azure AD za účelem ověřování uživatelů, služeb a zařízení. Několik předplatných může důvěřovat stejnému adresáři Azure AD, ale každé předplatné může důvěřovat pouze jeden adresář.
 
 Pokud vaše předplatné vyprší, ztratíte přístup k všechny další prostředky spojené s předplatným. Adresář Azure AD ale zůstává v Azure, umožňuje přiřadit a spravovat adresář pomocí jiného předplatného Azure.
 
-Všichni uživatelé mají jeden *domácí* adresáře pro ověřování. Uživatelé však může být také hosty v dalších adresářích. Zobrazí se domácích a hosta adresář pro každého uživatele ve službě Azure AD.
+Všichni uživatelé mají jeden *Domovský* adresář pro ověřování. Uživatelé však může být také hosty v dalších adresářích. Zobrazí se domácích a hosta adresář pro každého uživatele ve službě Azure AD.
 
 > [!Important]
-> Když přidružíte předplatné na jiný adresář, uživatelé, kteří mají přiřazené, pomocí role [řízení přístupu na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md) tento přístup přijdou. Správci předplatného Classic (Správce služeb a spolupracujících správců) taky ztratíte přístup.
+> Když přiřadíte předplatné k jinému adresáři, uživatelé, kteří mají role přiřazené pomocí [řízení přístupu na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md) , ztratí přístup. Správci s klasickým předplatným (Správci služeb a spolusprávci) ztratí přístup i vy.
 > 
-> Kromě toho přesunout cluster Azure Kubernetes Service (AKS) do jiného předplatného nebo přesun předplatného vlastnící clusteru do nového tenanta, způsobí, že cluster tak, aby funkce z důvodu přiřazení rolí ke ztrátě a práva objekty zabezpečení služby by nebyla dostupná. Další informace o službě AKS najdete v tématu [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/).
+> Kromě toho je přesunutí clusteru Azure Kubernetes Service (AKS) na jiné předplatné nebo přesunutí předplatného pro clustery do nového tenanta způsobeno tím, že cluster ztratí funkčnost z důvodu ztráty přiřazení rolí a práv instančních objektů. Další informace o AKS najdete v tématu [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Předtím, než můžete přiřadit nebo přidejte svoje předplatné, je třeba provést následující úkoly:
 
-1. Projděte si následující seznam změn a jak vám může to mít vliv:
+1. Přečtěte si následující seznam změn a o tom, jak to může být ovlivněno:
 
-    - Uživatelé, kteří mají přiřazený role pomocí RBAC tento přístup přijdou
-    - Správce služeb a spolupracujících správců přijdete o přístup
-    - Pokud máte jakékoli trezory klíčů budou nedostupné a budete mít a opravte je po přidružení
-    - Pokud máte jakékoli spravovaných identit pro prostředky, jako jsou virtuální počítače nebo Logic Apps, budete muset znovu povolit, nebo je znovu vytvořit po přidružení
-    - Pokud máte registrované služby Azure Stack, budete muset znovu zaregistrovat po přidružení
+    - Uživatelé, kterým byly přiřazené role pomocí RBAC, ztratí přístup.
+    - Správce služeb a spolusprávci ztratí přístup
+    - Pokud máte nějaké trezory klíčů, nebudou k dispozici a budete je muset po přidružení opravit.
+    - Pokud máte nějaké spravované identity pro prostředky, jako je Virtual Machines nebo Logic Apps, budete je muset po přidružení znovu povolit nebo vytvořit znovu.
+    - Pokud máte registrovanou Azure Stack, budete ji muset po přidružení znovu zaregistrovat.
 
 1. Přihlaste se pomocí účtu, který:
-    - Má [vlastníka](../../role-based-access-control/built-in-roles.md#owner) přiřazení role pro předplatné. Informace o tom, jak přiřadit roli vlastník, naleznete v tématu [spravovat přístup k prostředkům Azure pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
+    - Má přiřazení role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) k předplatnému. Informace o tom, jak přiřadit roli vlastníka, najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md).
     - Existuje v aktuálním adresáři, který je spojen s předplatným a v novém adresáři, který je ve které chcete přidružit předplatné do budoucna. Další informace o tom, jak přístup k jinému adresáři, najdete v části [jak správci služby Azure Active Directory přidat uživatele spolupráce B2B?](../b2b/add-users-administrator.md).
 
 1. Ujistěte se, že nepoužíváte předplatného služby Azure Service poskytovatele CSP (Cloud) (MS-AZR - 0145P, MS - AZR - 0146P, MS - AZR - 159P), předplatné Microsoft Internal (MS-AZR - 0015P) nebo předplatné Microsoft Imagine (MS-AZR - 0144P).
@@ -65,21 +65,21 @@ Předtím, než můžete přiřadit nebo přidejte svoje předplatné, je třeba
 
     Adresář se změní pro předplatné a se zobrazí zpráva o úspěchu.
 
-    ![Zpráva o úspěchu, o změně pro adresář](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
-4. Použití **přepínače adresářů** přejdete do nového adresáře. Může trvat několik hodin za všechno, co se zobrazí správně. Pokud se zdá být trvá příliš dlouho, ujistěte se, že zkontrolujete **globální filtr předplatných** pro přesunutý předplatné, abyste měli jistotu je skrytý není jednoduše.
+    ![Zpráva o úspěchu změny adresáře](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
+4. Pro přechod do nového adresáře použijte **přepínač adresáře** . Aby se všechno zobrazovalo správně, může trvat několik hodin. Pokud se zdá, že trvá příliš dlouho, ujistěte se, že jste pro přesunuté předplatné zkontrolovali **globální filtr** předplatného, abyste se ujistili, že není jednoduše skrytý.
 
-    ![Stránka přepínání adresáře, s ukázkovými informacemi o](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+    ![Stránka přepínač adresáře s ukázkovými informacemi](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
 Změna adresáře předplatného je operace úroveň služby, takže to nijak neovlivní vlastnictví fakturace předplatného. Správce účtu může stále změnit správce služby z [centra pro účty](https://account.azure.com/subscriptions). Pokud chcete odstranit původní adresář, musíte přenést vlastnictví pro nového správce účtu. fakturace předplatného Další informace o tom, jak převést vlastnictví fakturace, najdete v tématu [Převod vlastnictví předplatného Azure na jiný účet](../../billing/billing-subscription-transfer.md).
 
 ## <a name="post-association-steps"></a>Kroky po přidružení
-Poté, co přidružíte předplatné na jiný adresář, mohou existovat další kroky, které musíte provést při obnovení operací.
+Až přiřadíte předplatné k jinému adresáři, může docházet k dalším krokům, které musíte provést, aby se operace obnovila.
 
-1. Pokud máte jakékoli trezorů klíčů, je nutné změnit ID tenanta trezoru klíčů. Další informace najdete v tématu [Změna ID tenanta trezoru klíčů po přesunu předplatného](../../key-vault/key-vault-subscription-move-fix.md).
+1. Pokud máte nějaké trezory klíčů, musíte změnit ID tenanta trezoru klíčů. Další informace najdete v tématu [Změna ID tenanta trezoru klíčů po přesunu](../../key-vault/key-vault-subscription-move-fix.md)předplatného.
 
-2. Pokud používáte systém přiřadil identit spravovaných prostředků, musíte tyto znovu povolit. Pokud jste používali uživatelsky přiřazené identity spravované, budete muset znovu vytvořit tyto. Po opětovné povolení nebo znovu vytvořili spravovaných identit, je potřeba znovu vytvořit oprávnění přiřazená uživateli tyto identity. Další informace najdete v části [co je spravované identity pro prostředky Azure?](../managed-identities-azure-resources/overview.md).
+2. Pokud jste pro prostředky používali spravované identity přiřazené systémem, musíte je znovu povolit. Pokud jste používali spravované identity přiřazené uživatelem, musíte je znovu vytvořit. Po opětovném povolení nebo opětovném vytvoření spravovaných identit musíte znovu zřídit oprávnění přiřazená těmto identitám. Další informace najdete v tématu [co jsou spravované identity pro prostředky Azure?](../managed-identities-azure-resources/overview.md).
 
-3. Pokud jste se zaregistrovali službě Azure Stack prostřednictvím tohoto předplatného, budete muset znovu zaregistrovat. Další informace najdete v tématu [registrace Azure Stack s využitím Azure](/azure-stack/operator/azure-stack-registration).
+3. Pokud jste zaregistrovali Azure Stack pomocí tohoto předplatného, musíte se znovu zaregistrovat. Další informace najdete v tématu [registrace Azure Stack s Azure](/azure-stack/operator/azure-stack-registration).
 
 
 

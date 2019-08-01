@@ -1,48 +1,48 @@
 ---
-title: Azure Analysis Services databáze zálohování a obnovení | Dokumentace Microsoftu
-description: Popisuje, jak zálohovat a obnovit databázi Azure Analysis Services.
+title: Azure Analysis Services zálohování a obnovení databáze | Microsoft Docs
+description: Popisuje postup zálohování a obnovení databáze Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 31e8e65b382a3a6bcad2998a0babdf9605dc4968
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15d2d0a043271da18d7884b684ffe8cf5c1f4dc8
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61023860"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619206"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
 
-Zálohování databází tabulkových modelů ve službě Azure Analysis Services je skoro stejné jako u místních Analysis Services. Hlavní rozdíl je, kam se ukládají záložní soubory. Záložní soubory musí být uložen do kontejneru v [účtu služby Azure storage](../storage/common/storage-create-storage-account.md). Můžete použít účet úložiště a kontejner, který už máte, nebo mohou být vytvořeny při konfiguraci nastavení úložiště pro váš server.
+Zálohování databází tabelárních modelů v Azure Analysis Services je v podstatě stejné jako u místních Analysis Services. Hlavním rozdílem je místo, kam ukládáte soubory zálohy. Záložní soubory musí být uložené do kontejneru v [účtu úložiště Azure](../storage/common/storage-create-storage-account.md). Můžete použít účet úložiště a kontejner, který už máte, nebo ho můžete vytvořit při konfiguraci nastavení úložiště pro váš server.
 
 > [!NOTE]
-> Vytváří se účet úložiště může mít za následek nové vám začne fakturovat služba. Další informace najdete v tématu [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
+> Vytvoření účtu úložiště může mít za následek novou fakturovatelnou službu. Další informace najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/blobs/).
 > 
 > 
 
-Zálohování se uloží s příponou abf. U tabulkových modelů v paměti modelování dat a metadata ukládají. Pro tabelární modely DirectQuery se ukládají jenom metada modelu. Zálohy lze komprimované a zašifrovaný, v závislosti na možnostech, které zvolíte.
+Zálohy se ukládají s příponou. ABF. Pro tabulkové modely v paměti jsou uložená data modelů i metadata. Pro tabelární modely DirectQuery jsou uložena pouze metadata modelu. Zálohy se můžou komprimovat a šifrovat v závislosti na možnostech, které zvolíte.
 
 
-## <a name="configure-storage-settings"></a>Konfigurovat nastavení úložiště
-Před zahájením zálohování, musíte nakonfigurovat nastavení úložiště pro váš server.
+## <a name="configure-storage-settings"></a>Konfigurace nastavení úložiště
+Před zálohováním musíte nakonfigurovat nastavení úložiště pro váš server.
 
 
-### <a name="to-configure-storage-settings"></a>Konfigurovat nastavení úložiště
-1.  Na webu Azure portal > **nastavení**, klikněte na tlačítko **zálohování**.
+### <a name="to-configure-storage-settings"></a>Konfigurace nastavení úložiště
+1.  V **nastavení**> Azure Portal klikněte na **zálohovat**.
 
     ![Zálohy v nastavení](./media/analysis-services-backup/aas-backup-backups.png)
 
-2.  Klikněte na tlačítko **povoleno**, pak klikněte na tlačítko **nastavení úložiště**.
+2.  Klikněte na **povoleno**a pak na **Nastavení úložiště**.
 
     ![Povolení](./media/analysis-services-backup/aas-backup-enable.png)
 
-3. Vyberte svůj účet úložiště nebo vytvořte novou.
+3. Vyberte svůj účet úložiště nebo vytvořte nový.
 
-4. Vyberte kontejner nebo vytvořte novou.
+4. Vyberte kontejner nebo vytvořte nový.
 
     ![Výběr kontejneru](./media/analysis-services-backup/aas-backup-container.png)
 
@@ -50,60 +50,60 @@ Před zahájením zálohování, musíte nakonfigurovat nastavení úložiště 
 
     ![Uložit nastavení zálohování](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Zálohovat
 
-### <a name="to-backup-by-using-ssms"></a>Zálohování pomocí aplikace SSMS
+### <a name="to-backup-by-using-ssms"></a>Zálohování pomocí SSMS
 
-1. V aplikaci SSMS klikněte pravým tlačítkem na databázi > **zálohování**.
+1. V SSMS klikněte pravým tlačítkem na databázi > **zálohovat**.
 
-2. V **příkaz Backup Database** > **záložní soubor**, klikněte na tlačítko **Procházet**.
+2. V záložním**souboru**zálohy **databáze** > klikněte na tlačítko **Procházet**.
 
-3. V **uložit soubor jako** dialogového okna, ověřte cestu ke složce a pak zadejte název souboru zálohy. 
+3. V dialogovém okně **Uložit soubor jako** ověřte cestu ke složce a potom zadejte název záložního souboru. 
 
-4. V **příkaz Backup Database** dialogové okno, vyberte možnosti.
+4. V dialogovém okně **zálohovat databázi** vyberte možnosti.
 
-    **Povolit soubor přepsat** – vyberte tuto možnost, chcete-li přepsat záložní soubory se stejným názvem. Pokud není vybraná tato možnost, soubor, který uložíte nemůže mít stejný název jako soubor, který již existuje ve stejném umístění.
+    **Povolení přepsání souboru** – tuto možnost vyberte, pokud chcete přepsat záložní soubory se stejným názvem. Pokud tato možnost není vybraná, soubor, který ukládáte, nemůže mít stejný název jako soubor, který už existuje ve stejném umístění.
 
-    **Použít kompresi** – vyberte tuto možnost, chcete-li komprimovat soubor zálohy. Komprimované soubory zálohy ušetřit místo na disku, ale vyžadují mírně vyšší využití výkonu procesoru. 
+    **Použít kompresi** – tuto možnost vyberte, když chcete zkomprimovat záložní soubor. Komprimované záložní soubory ukládají místo na disku, ale vyžadují mírně vyšší využití procesoru. 
 
-    **Zašifrovat soubor zálohy** – tuto možnost použijte k šifrování souboru zálohy. Tato možnost vyžaduje uživatelem zadané heslo k zabezpečení záložní soubor. Heslo brání čtení zálohovaných dat jiným způsobem než operaci obnovení. Pokud budete chtít zálohy taky šifrovat, uložte heslo na bezpečné místo.
+    **Zašifrovat záložní soubor** – tuto možnost vyberte, pokud chcete záložní soubor zašifrovat. Tato možnost vyžaduje k zabezpečení záložního souboru heslo dodané uživatelem. Heslo zabraňuje čtení zálohovaných dat jiným způsobem než operace obnovení. Pokud se rozhodnete šifrovat zálohy, uložte heslo v bezpečném umístění.
 
-5. Klikněte na tlačítko **OK** vytvoříte a uložíte soubor zálohy.
+5. Kliknutím na tlačítko **OK** vytvořte a uložte záložní soubor.
 
 
 ### <a name="powershell"></a>PowerShell
-Použití [zálohování ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) rutiny.
+Použijte rutinu [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) .
 
-## <a name="restore"></a>Obnovení
-Při obnovení, musí být záložní soubor v účtu úložiště, které jste nakonfigurovali pro váš server. Pokud potřebujete přesunout záložní soubor z místního umístění do vašeho účtu úložiště, použijte [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) nebo [AzCopy](../storage/common/storage-use-azcopy.md) nástroj příkazového řádku. 
+## <a name="restore"></a>Obnovit
+Při obnovení musí být váš záložní soubor v účtu úložiště, který jste nakonfigurovali pro váš server. Pokud potřebujete přesunout záložní soubor z místního umístění do svého účtu úložiště, použijte [Průzkumník služby Microsoft Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) nebo nástroj příkazového řádku [AzCopy](../storage/common/storage-use-azcopy.md) . 
 
 
 
 > [!NOTE]
-> Pokud se obnovení z místního serveru, musíte odebrat všechny domény uživatele z role modelu a jejich přidání zpět do rolí jako uživatelů Azure Active Directory.
+> Pokud provádíte obnovení z místního serveru, musíte odebrat všechny uživatele domény z rolí modelu a přidat je zpátky do rolí, jako Azure Active Directory uživatelé.
 > 
 > 
 
-### <a name="to-restore-by-using-ssms"></a>Chcete-li obnovit pomocí aplikace SSMS
+### <a name="to-restore-by-using-ssms"></a>Obnovení pomocí SSMS
 
-1. V aplikaci SSMS klikněte pravým tlačítkem na databázi > **obnovení**.
+1. V SSMS klikněte pravým tlačítkem na databázi > **obnovení**.
 
-2. V **příkaz Backup Database** dialogového okna v **záložní soubor**, klikněte na tlačítko **Procházet**.
+2. V dialogovém okně **zálohovat databázi** klikněte v části **záložní soubor**na **Procházet**.
 
-3. V **vyhledejte soubory databáze** dialogového okna, vyberte soubor, který chcete provést obnovení.
+3. V dialogovém okně **Vyhledat soubory databáze** vyberte soubor, který chcete obnovit.
 
-4. V **obnovení databáze**, vyberte databázi.
+4. V části **obnovit databázi**vyberte databázi.
 
-5. Zadejte možnosti. Možnosti zabezpečení se musí shodovat možnosti zálohování, které jste použili při zálohování.
+5. Zadejte možnosti. Možnosti zabezpečení se musí shodovat s možnostmi zálohování, které jste použili při zálohování.
 
 
 ### <a name="powershell"></a>PowerShell
 
-Použití [obnovení ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/restore-asdatabase-cmdlet) rutiny.
+Použijte rutinu [Restore-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/restore-asdatabase-cmdlet) .
 
 
 ## <a name="related-information"></a>Související informace
 
-[Účty služby Azure storage](../storage/common/storage-create-storage-account.md)  
+[Účty služby Azure Storage](../storage/common/storage-create-storage-account.md)  
 [Vysoká dostupnost](analysis-services-bcdr.md)     
-[Správa služby Azure Analysis Services](analysis-services-manage.md)
+[Správa Azure Analysis Services](analysis-services-manage.md)

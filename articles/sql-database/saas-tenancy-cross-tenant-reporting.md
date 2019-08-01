@@ -1,6 +1,6 @@
 ---
-title: Spuštění dotazů vytváření sestav napříč několika databázemi Azure SQL | Dokumentace Microsoftu
-description: Vytváření sestav pomocí služby napříč tenanty distribuovaných dotazů.
+title: Spouštění dotazů vytváření sestav napříč více databázemi SQL Azure | Microsoft Docs
+description: Generování sestav mezi klienty pomocí distribuovaných dotazů.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -10,68 +10,67 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 9562d0cd1ad97a459c3630456a6070ac2b6e63f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa8dbbbb09fbdc14049e168afe6eb4810ccc8254
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61484661"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570233"
 ---
-# <a name="cross-tenant-reporting-using-distributed-queries"></a>Vytváření sestav pomocí služby napříč tenanty distribuovaných dotazů
+# <a name="cross-tenant-reporting-using-distributed-queries"></a>Generování sestav mezi klienty pomocí distribuovaných dotazů
 
-V tomto kurzu jste spouštění distribuovaných dotazů ve celá sada tenanta databází pro vytváření sestav. Tyto dotazy dokážou extrahovat statistiky ukryté v běžných provozních datech SaaS aplikace Wingtip Tickets tenantů. K tomuto účelu nasazení další databázi vytváření sestav na server katalogu a použít nástroj Elastic Query umožňující distribuovaných dotazů.
+V tomto kurzu spouštíte distribuované dotazy napříč celou sadou databází klientů pro vytváření sestav. Tyto dotazy mohou extrahovat přehledy ukryto v každodenních provozních datech klientů Wingtip Tickets SaaS. K tomu nasadíte další databázi pro vytváření sestav na Server katalogu a pomocí elastického dotazu povolte distribuované dotazy.
 
 
 V tomto kurzu se dozvíte:
 
 > [!div class="checklist"]
 > 
-> * Jak nasadit databázi vytváření sestav
-> * Postup spouštění distribuovaných dotazů ve všech databázích tenantů
-> * Jak globální zobrazení v každé databázi můžete povolit efektivní dotazování napříč tenanty
+> * Nasazení databáze sestav
+> * Spuštění distribuovaných dotazů napříč všemi databázemi tenantů
+> * Jak globální zobrazení v jednotlivých databázích umožňují efektivní dotazování napříč klienty
 
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
 
-* Nasazení aplikace Wingtip Tickets SaaS databáze na Tenanta. Nasazení za méně než pět minut najdete v tématu [nasazení a zkoumání aplikace Wingtip Tickets SaaS databáze na Tenanta](saas-dbpertenant-get-started-deploy.md)
+* Aplikace Wingtip Tickets SaaS Database na tenanta je nasazená. Postup nasazení za méně než pět minut najdete v tématu [nasazení a prozkoumání aplikace Wingtip Tickets SaaS Database na klienta](saas-dbpertenant-get-started-deploy.md) .
 * Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* SQL Server Management Studio (SSMS) je nainstalována. Stáhnout a nainstalovat aplikaci SSMS najdete v tématu [stáhnout SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+* SQL Server Management Studio (SSMS) je nainstalován. Pokud si chcete stáhnout a nainstalovat SSMS, přečtěte si téma [stažení SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
 
-## <a name="cross-tenant-reporting-pattern"></a>Model vytváření sestav napříč tenanty
+## <a name="cross-tenant-reporting-pattern"></a>Model vytváření sestav mezi klienty
 
-![Model distribuované dotazy mezi tenanty](media/saas-tenancy-cross-tenant-reporting/cross-tenant-distributed-query.png)
+![model distribuovaného dotazu mezi klienty](media/saas-tenancy-cross-tenant-reporting/cross-tenant-distributed-query.png)
 
-Jednu příležitost nabízejí aplikace SaaS je použití obrovské množství dat tenantů, které jsou uložené v cloudu a získejte přehled o provozu a využití vaší aplikace. Tyto přehledy můžete Průvodce vývoj funkcí, vylepšení použitelnosti a další investice do vašich aplikací a služeb.
+Jednou z příležitostí k aplikacím SaaS je použití obrovského množství dat tenantů uložených v cloudu, které vám umožní získat přehled o provozu a využití vaší aplikace. Tyto přehledy můžou seřizovat vývoj funkcí, vylepšení použitelnosti a další investice do vašich aplikací a služeb.
 
-V jedné databázi s více tenanty je přístup k těmto datům jednoduchý, ale třeba v případě distribuce mezi tisícovky databází se situace komplikuje. Jedním z přístupů je použít [Elastic Query](sql-database-elastic-query-overview.md), která umožňuje dotazování v distribuované sadě databází se společným schématem. Tyto databáze mohou být distribuovány na různých skupin prostředků a předplatných, ale muset sdílet společný přihlášení. Elastic Query používá jednu *head* databáze definovanými externími tabulkami, které zrcadlí tabulky a zobrazení v distribuovaných (tenantských) databázích. Dotazy odeslané do této hlavní databáze se kompilují a vzniká plán distribuovaného dotazu, který zajistí předávání částí dotazu potřebným tenantským databázím. Elastic Query používá k určení umístění všech databázích tenantů mapy horizontálních oddílů v databázi katalogu. Vytvoření i dotazování hlavní databáze se jednoduše pomocí standardní [příkazů jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)a podporují dotazování z nástrojů, jako je Power BI a Excel.
+V jedné databázi s více tenanty je přístup k těmto datům jednoduchý, ale třeba v případě distribuce mezi tisícovky databází se situace komplikuje. Jedním z přístupů je použití [elastického dotazu](sql-database-elastic-query-overview.md), který umožňuje dotazování napříč distribuovanou sadou databází se společným schématem. Tyto databáze je možné distribuovat napříč různými skupinami prostředků a předplatnými, ale je potřeba, abyste nasdíleli společné přihlášení. Elastický dotaz používá jednu *hlavu* databáze, ve které jsou definovány externí tabulky, které zrcadlí tabulky nebo zobrazení v distribuovaných databázích (tenant). Dotazy odeslané do této hlavní databáze se kompilují a vzniká plán distribuovaného dotazu, který zajistí předávání částí dotazu potřebným tenantským databázím. Elastický dotaz používá k určení umístění všech databází tenanta mapu horizontálních oddílů v databázi katalogu. Instalační program a dotaz na hlavní databázi jsou jednoduché pomocí [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)Standard a podporují dotazování z nástrojů, jako je Power BI a Excel.
 
-Díky distribuci dotazy napříč databázemi tenantů, poskytuje Elastic Query okamžitý přehled o aktivní produkční data. Jak elastický dotaz načte data z potenciálně velkého počtu databází, latence dotazu může být vyšší než ekvivalentní dotazy odeslané do jedné databázi s více tenanty. Navrhování dotazů minimalizovat objem dat, který je vrácen do hlavní databáze. Elastický dotaz je často nejvhodnější pro dotazování na malé množství dat v reálném čase, na rozdíl od vytváření často používaných nebo komplexních analytických dotazů nebo sestav. Pokud dotazy neprovádí dobře, podívejte se na [plán provádění](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) jaká část dotazu je posunutý dolů ke vzdálené databázi a kolik dat se vrací. Dotazy, které vyžadují komplexní agregace nebo analytické zpracování může být lepší popisovače extrahováním dat tenanta na databázi ani na datový sklad optimalizovaný pro analytické dotazy. Tento model je podrobně [kurz analýza tenanta](saas-tenancy-tenant-analytics.md). 
+Díky distribuci dotazů napříč databázemi klientů poskytuje elastický dotaz okamžitý přehled o živých provozních datech. V případě, že elastický dotaz získává data z potenciálně mnoha databází, může být latence dotazů vyšší než ekvivalentní dotazy odeslané do jediné víceklientské databáze. Navrhněte dotazy pro minimalizaci dat vrácených do hlavní databáze. Elastický dotaz je často vhodný pro dotazování malých objemů dat v reálném čase, a to na rozdíl od vytváření často používaných nebo složitých analytických dotazů nebo sestav. Pokud dotazy nefungují dobře, podívejte se na [plán spuštění](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) , kde zjistíte, jaká část dotazu je přesunutá do vzdálené databáze a kolik dat se vrací. Dotazy, které vyžadují komplexní agregaci nebo analytické zpracování, můžou být lepšími popisovači extrakcí dat tenanta do databáze nebo datového skladu optimalizovaného pro analytické dotazy. Tento vzor je vysvětlen v [kurzu analýzy tenanta](saas-tenancy-tenant-analytics.md). 
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získání skriptů aplikace Wingtip Tickets SaaS databáze na Tenanta
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získání skriptů aplikace Wingtip Tickets SaaS Database na klientské aplikace
 
-Jsou k dispozici v databázi s více tenanty SaaS aplikace Wingtip Tickets skripty a zdrojový kód aplikace [WingtipTicketsSaaS DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) úložiště GitHub. Podívejte se [obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) pokyny ke stažení a odblokování SaaS aplikace Wingtip Tickets skripty.
+V úložišti GitHubu [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) jsou k dispozici skripty SaaS s více klienty a zdrojový kód aplikace. Projděte si [Obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) ke stažení a odblokování skriptů Wingtip Tickets SaaS.
 
-## <a name="create-ticket-sales-data"></a>Vytvoření lístku prodejních dat
+## <a name="create-ticket-sales-data"></a>Vytvořit prodejní data lístků
 
-Ke spouštění dotazů na zajímavější datové sady, vytvořte spuštěním generátoru lístek prodejní data lístku.
+Pokud chcete spouštět dotazy pro zajímavější datovou sadu, vytvořte pomocí generátoru lístků data o prodeji lístku.
 
-1. V *prostředí PowerShell ISE*, otevřete... \\Learning Modules\\Operational Analytics\\vykazování ad hoc\\*Demo-AdhocReporting.ps1* skriptu a nastavte následující hodnotu:
-   * **$DemoScenario** = 1, **nákup lístků na akce na všech místech**.
-2. Stisknutím klávesy **F5** ke spuštění skriptu a zvyšovaly prodej lístků. Když je spuštěný skript, pokračujte kroky v tomto kurzu. Data lístku je dotazován v průběhu *spuštění ad hoc distribuované dotazy* části, proto počkejte generátor lístků na dokončení.
+1. V *prostředí POWERSHELL ISE*otevřete... \\\\ Výukové moduly Operational Analytics\\pro vytváření sestav ad demo-AdhocReporting. ps1 a nastavte následující hodnotu: \\
+   * **$DemoScenario** = 1, **vykoupit lístky pro události na všech místě**.
+2. Stisknutím klávesy **F5** spusťte skript a vygenerujte prodej lístku. Po spuštění skriptu pokračujte postupem v tomto kurzu. Data lístku se dotazují v části *Run ad hoc distribuované dotazy* , takže počkejte, než se generátor lístků dokončí.
 
-## <a name="explore-the-global-views"></a>Prozkoumejte globální zobrazení
+## <a name="explore-the-global-views"></a>Prozkoumat globální zobrazení
 
-V aplikaci Wingtip Tickets SaaS databáze na Tenanta každý tenant dostane databázi. Proto je vymezen data obsažená v tabulkách databáze pohledu jednoho tenanta. Ale při dotazování napříč všemi databázemi, je důležité, že elastický dotaz můžete zpracovávat data, pokud je součástí jedné logické databáze horizontálně dělené tenantem. 
+V rámci aplikace Wingtip Tickets SaaS Database na tenanta je každému klientovi přidělená databáze. Proto jsou data obsažená v databázových tabulkách vymezena v perspektivě jednoho tenanta. Při dotazování napříč všemi databázemi je ale důležité, aby elastický dotaz mohl data zacházet, jako by byl součástí jedné logické databáze horizontálně dělené v tenantovi. 
 
-Simulace tohoto modelu, přidají sadu "globální" zobrazení databáze tenanta tohoto projektu a ID tenanta do každé tabulky, které jsou globálně dotazovat. Například *VenueEvents* zobrazení se přidá vypočítaného *VenueId* na předpokládané ze sloupce *události* tabulky. Podobně *VenueTicketPurchases* a *VenueTickets* zobrazení přidat počítaný *VenueId* sloupec plánovaných z jejich odpovídajících tabulek. Tato zobrazení jsou používány elastický dotaz pro paralelní zpracování dotazů a nabízených oznámení je na příslušný vzdáleného klienta při databáze *VenueId* sloupec je k dispozici. To významně snižuje množství dat, která je vrácena, jejichž výsledkem podstatné zvýšení výkonu pro mnoho dotazů. Tato globální zobrazení byly předem vytvořené ve všech databázích tenantů.
+Chcete-li tento model simulovat, je do databáze klienta přidaná sada zobrazení typu globální, která projektuje ID tenanta do každé tabulky, na kterou se dotazuje globálně. Například zobrazení *VenueEvents* přidá vypočítané *VenueId* k sloupcům, které jsou z tabulky *events* propočítány. Podobně zobrazení *VenueTicketPurchases* a *VenueTickets* přidávají vypočítaný sloupec *VenueId* , který je propočítán z příslušných tabulek. Tyto pohledy používá elastický dotaz k paralelizovat dotazů a jejich vložení do příslušné vzdálené databáze tenanta, když je přítomen sloupec *VenueId* . To významně snižuje množství vrácených dat a vede k výraznému nárůstu výkonu mnoha dotazů. Tato globální zobrazení byla předem vytvořena ve všech databázích tenanta.
 
-1. Otevřete SSMS a [připojit k serveru tenants1 -&lt;uživatele&gt; server](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
-1. Rozbalte **databází**, klikněte pravým tlačítkem na _contosoconcerthall_a vyberte **nový dotaz**.
-1. Spusťte následující dotazy a prozkoumejte rozdíl mezi tabulkami jednoho tenanta a globální zobrazení:
+1. Otevřete SSMS a [Připojte se k serveru tenants1&lt;-&gt; User](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
+1. Rozbalte **databáze**, klikněte pravým tlačítkem na _Contosoconcerthall_a vyberte **Nový dotaz**.
+1. Spuštěním následujících dotazů Prozkoumejte rozdíl mezi tabulkami s jedním klientem a globálním zobrazením:
 
    ```T-SQL
    -- The base Venue table, that has no VenueId associated.
@@ -87,91 +86,91 @@ Simulace tohoto modelu, přidají sadu "globální" zobrazení databáze tenanta
    SELECT * FROM VenueEvents
    ```
 
-V těchto zobrazeních *VenueId* je vypočítán jako hodnotu hash názvem míst, ale žádné přístup může použít k zavedení jedinečnou hodnotu. Tento přístup je podobný stejným způsobem jako klíč tenanta je vypočítán pro použití v katalogu.
+V těchto zobrazeních je *VenueId* vypočítán jako hodnota hash názvu místa, ale jakýkoli přístup lze použít k zavedení jedinečné hodnoty. Tento přístup je podobný způsobu, jakým se klíč tenanta počítá pro použití v katalogu.
 
-K prozkoumání definice *Venues* zobrazení:
+Kontrola *definice zobrazení míst* :
 
-1. V **Průzkumník objektů**, rozbalte **contosoconcerthall** > **zobrazení**:
+1. V **Průzkumník objektů**rozbalte**zobrazení** **contosoconcerthall** > :
 
    ![views](media/saas-tenancy-cross-tenant-reporting/views.png)
 
-2. Klikněte pravým tlačítkem na **dbo. Venues**.
-3. Vyberte **skriptu zobrazení jako** > **vytvořit** > **nové okno editoru dotazů**
+2. Klikněte pravým tlačítkem na **dbo. Místo**.
+3. Vybrat **zobrazení skriptu jako** > **vytvořit pro** > **nové okno editoru dotazů**
 
-Skript žádnému jinému *příslušností* zobrazení zobrazíte, jak přidat *VenueId*.
+Pokud chcete zjistit, jak přidat *VenueId*, proveďte skript kteréhokoli *z ostatních zobrazení* místa.
 
-## <a name="deploy-the-database-used-for-distributed-queries"></a>Nasazení databáze používané k distribuovaným dotazům
+## <a name="deploy-the-database-used-for-distributed-queries"></a>Nasazení databáze používané pro distribuované dotazy
 
-V tomto cvičení nasadíte _adhocreporting_ databáze. Toto je hlavní databázi, která obsahuje schéma používané pro dotazování napříč všemi databázemi tenantů. Databáze je nasazený na existující server katalogu, který se používá pro všechny databáze v ukázkové aplikaci souvisejících se správou serveru.
+Toto cvičení nasadí databázi _adhocreporting_ . Toto je hlavní databáze, která obsahuje schéma používané pro dotazování napříč všemi databázemi tenanta. Databáze je nasazená na stávající Server katalogu, což je server, který se používá pro všechny databáze související se správou v ukázkové aplikaci.
 
-1. v *prostředí PowerShell ISE*, otevřete... \\Learning Modules\\Operational Analytics\\vykazování ad hoc\\*Demo-AdhocReporting.ps1*. 
+1. v *prostředí POWERSHELL ISE*otevřete... \\\\Výukovémoduly provozní analýzy AD\\hoc vytváření sestav*demo-AdhocReporting. ps1.* \\ 
 
-1. Nastavte **$DemoScenario = 2**, _nasazení Ad hoc databázi sestav_.
+1. Nastavte **$DemoScenario = 2**, _Nasaďte databázi ad hoc Reporting_.
 
-1. Stisknutím klávesy **F5** spusťte skript a vytvořit *adhocreporting* databáze.
+1. Stisknutím klávesy **F5** spusťte skript a vytvořte databázi *adhocreporting* .
 
-V další části přidáte schéma do databáze, je možné ke spouštění distribuovaných dotazů.
+V další části přidáte schéma do databáze, aby bylo možné je použít ke spouštění distribuovaných dotazů.
 
-## <a name="configure-the-head-database-for-running-distributed-queries"></a>Nakonfigurujte databázi "hlavní" pro spouštění distribuovaných dotazů
+## <a name="configure-the-head-database-for-running-distributed-queries"></a>Konfigurace hlavní databáze pro spouštění distribuovaných dotazů
 
-V tomto cvičení přidá do schématu (externí zdroj dat a definice externí tabulky) _adhocreporting_ databáze, která umožňuje dotazování napříč všemi databázemi tenantů.
+Tento cvičení přidá do databáze _adhocreporting_ schéma (externí definice zdroje dat a externí tabulky) a povolí dotazování napříč všemi databázemi tenantů.
 
-1. Otevřete SQL Server Management Studio a připojte se k databázi ad hoc, generování sestav, které jste vytvořili v předchozím kroku. Název databáze je *adhocreporting*.
-2. Otevřete ...\Learning Modules\Operational Analytics\Adhoc Reporting\ _inicializace AdhocReportingDB.sql_ v aplikaci SSMS.
+1. Otevřete SQL Server Management Studio a připojte se k databázi vytváření sestav ad hoc, kterou jste vytvořili v předchozím kroku. Název databáze je *adhocreporting*.
+2. Otevřete. ..\Learning Modules\Operational Analytics\Adhoc Reporting \ _Initialize-AdhocReportingDB. SQL_ v SSMS.
 3. Zkontrolujte skript SQL a Všimněte si:
 
-   Elastic Query používá pro přístup k všech databázích tenantů přihlašovacích údajů s rozsahem databáze. Tyto přihlašovací údaje musí být k dispozici ve všech databázích a obvykle poskytuje minimální práva je třeba povolit tyto dotazy.
+   Elastický dotaz používá pro přístup ke všem databázím tenanta přihlašovací údaje v rámci databáze. Toto pověření musí být k dispozici ve všech databázích a mělo by se jim normálně udělit minimální oprávnění potřebná k povolení těchto dotazů.
 
     ![vytvoření přihlašovacích údajů](media/saas-tenancy-cross-tenant-reporting/create-credential.png)
 
-   S databází katalogu jako externí zdroj dat jsou distribuované dotazy na všechny databáze zaregistrované v katalogu v době spuštění dotazu. Jako název serveru se liší u každého nasazení, tento skript získá umístění databáze katalogu z aktuálního serveru (@@servername) ve kterých se spouští skript.
+   Díky databázi katalogu jako externímu zdroji dat jsou dotazy distribuovány do všech databází zaregistrovaných v katalogu v době, kdy se dotaz spouští. Jelikož jsou názvy serverů pro každé nasazení odlišné, tento skript Získá umístění databáze katalogu z aktuálního serveru (@@servername), ve kterém se skript spustí.
 
-    ![Vytvoření externího zdroje dat](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
+    ![vytvořit externí zdroj dat](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
-   Externí tabulky, které odkazují na globální zobrazení je popsáno v předchozí části a definované pomocí **distribuce = SHARDED(VenueId)** . Protože každý *VenueId* mapuje na jednotlivé databáze, zlepší se výkon pro řadu scénářů, jak je znázorněno v následující části.
+   Externí tabulky, které odkazují na globální zobrazení popsaná v předchozí části, a jsou definovány pomocí **DISTRIBUTION = horizontálně dělené (VenueId)** . Vzhledem k tomu, že každý *VenueId* mapuje na jednotlivé databáze, vylepšuje výkon mnoha scénářů, jak je znázorněno v další části.
 
     ![Vytvoření externích tabulek](media/saas-tenancy-cross-tenant-reporting/external-tables.png)
 
-   Místní tabulky _VenueTypes_ , který se vytvoří a naplní. Tuto datovou tabulku odkaz je společné ve všech databázích tenantů, takže může být reprezentována jako místní tabulky a mají údaj vyplněný s common data. U některých dotazů s této tabulce jsou definované v hlavní databázi můžete snížit množství dat, které je třeba přesunout do hlavní databáze.
+   Místní tabulka _VenueTypes_ , která je vytvořena a naplněna. Tato tabulka referenčních dat je společná ve všech databázích tenanta, takže ji můžete reprezentovat jako místní tabulka a naplnit se společnými daty. U některých dotazů může tato tabulka definovaná v hlavní databázi snížit množství dat, která je potřeba přesunout do databáze Head.
 
-    ![Vytvoření tabulky](media/saas-tenancy-cross-tenant-reporting/create-table.png)
+    ![vytvořit tabulku](media/saas-tenancy-cross-tenant-reporting/create-table.png)
 
-   Zadáte-li referenční tabulky tímto způsobem, je potřeba aktualizovat schéma tabulky a data při každé aktualizaci databáze tenantů.
+   Pokud tímto způsobem zahrnete referenční tabulky, nezapomeňte aktualizovat schéma tabulky a data při každé aktualizaci databáze klienta.
 
-4. Stisknutím klávesy **F5** spusťte skript a inicializovat *adhocreporting* databáze. 
+4. Stisknutím klávesy **F5** spusťte skript a inicializujte databázi *adhocreporting* . 
 
-Můžete teď spouštění distribuovaných dotazů a shromažďování přehledů ve všech tenantech!
+Nyní můžete spouštět distribuované dotazy a shromažďovat přehledy napříč všemi klienty.
 
-## <a name="run-distributed-queries"></a>Spouštění distribuovaných dotazů
+## <a name="run-distributed-queries"></a>Spustit distribuované dotazy
 
-Teď, když *adhocreporting* databáze je nastaven, pokračujte a spustit některé distribuovaných dotazů. Zahrnout plán provádění lépe pochopit, kde se děje zpracování dotazů. 
+Teď, když je nastavená databáze *adhocreporting* , pokračujte a spusťte některé distribuované dotazy. Zahrňte plán spuštění pro lepší porozumění, kde se děje zpracování dotazu. 
 
-Při kontrole plánu spuštění, najeďte myší plán ikony podrobnosti. 
+Po kontrole plánu spuštění najeďte na ikony plánu a vyhledejte podrobnosti. 
 
-Je důležité si uvědomit, že nastavení **distribuce = SHARDED(VenueId)** když je definována externí zdroj dat zlepšuje výkon pro řadu scénářů. Protože každému *VenueId* mapuje na jednotlivé databáze, filtrování je snadno provést vzdáleně, vrací pouze data potřebná.
+Je důležité si uvědomit, že nastavení **distribuce = horizontálně dělené (VenueId)** , když je definovaný externí zdroj dat, zlepšuje výkon pro mnoho scénářů. Vzhledem k tomu, že se každý *VenueId* mapuje na jednotlivou databázi, je filtrování snadné provést vzdáleně a vrátí pouze potřebná data.
 
-1. Otevřete... \\Learning Modules\\Operational Analytics\\vykazování ad hoc\\*Demo-AdhocReportingQueries.sql* v aplikaci SSMS.
-2. Zkontrolujte, že se připojení k **adhocreporting** databáze.
-3. Vyberte **dotazu** nabídky a klikněte na tlačítko **patří skutečné Execution Plan**
-4. Zvýrazněte *místa, které jsou aktuálně registrované?* dotazu a stiskněte klávesu **F5**.
+1. Otevřít... \\\\Výukovémoduly provozní analýzy AD\\hoc vytváření sestav*demo-AdhocReportingQueries. SQL* v SSMS. \\
+2. Ujistěte se, že jste připojení k databázi **adhocreporting** .
+3. Vyberte nabídku **dotazu** a klikněte na **Zahrnout skutečný plán spuštění** .
+4. Zvýrazněte, *která místa jsou aktuálně registrována?* dotaz a stiskněte klávesu **F5**.
 
-   Dotaz vrátí seznam celý míst, ilustrující jak rychlé a snadné je dotazování všech tenantů a vrátit data z každého tenanta.
+   Dotaz vrátí celý seznam míst, který ilustruje, jak rychle a snadno se dotazuje na všech klientech a vrací data z každého tenanta.
 
-   Kontrola plánu a zjistit, že je veškeré náklady v vzdálený dotaz. Každá databáze tenanta vzdáleně spouští dotaz a vrátí informace o jeho místní příslušností k hlavní databázi.
+   Zkontrolujte plán a podívejte se, že jsou všechny náklady ve vzdáleném dotazu. Každá databáze tenanta spustí dotaz vzdáleně a vrátí informace o jeho místu do hlavní databáze.
 
-   ![Vybrat * z dbo. Místa](media/saas-tenancy-cross-tenant-reporting/query1-plan.png)
+   ![Vyberte * z dbo. Místa](media/saas-tenancy-cross-tenant-reporting/query1-plan.png)
 
 5. Vyberte další dotaz a stiskněte klávesu **F5**.
 
-   Tento dotaz připojí data z databáze tenantů a místní *VenueTypes* tabulky (místní, protože je tabulka *adhocreporting* databáze).
+   Tento dotaz spojuje data z databází tenanta a místní tabulky *VenueTypes* (místní, protože se jedná o tabulku v databázi *adhocreporting* ).
 
-   Kontrola plánu a podívejte se, že většina nákladů je vzdálený dotaz. Každá databáze tenanta vrátí informace o jeho míst a provádí místní síti pomocí místní *VenueTypes* tabulka, která se zobrazí popisný název.
+   Zkontrolujte plán a podívejte se, že většina nákladů je vzdálený dotaz. Každá databáze tenanta vrátí informace o svém místu a provede místní spojení s místní tabulkou *VenueTypes* , aby se zobrazil popisný název.
 
-   ![Připojte se k vzdálené a místní data](media/saas-tenancy-cross-tenant-reporting/query2-plan.png)
+   ![Spojit se se vzdálenými a místními daty](media/saas-tenancy-cross-tenant-reporting/query2-plan.png)
 
-6. Teď vyberte *den, kdy nejvíce lístky prodalo?* dotazu a stiskněte klávesu **F5**.
+6. Teď vyberte, *ve kterém dnu byly nejvíc prodávané lístky?* dotaz, a stiskněte klávesu **F5**.
 
-   Tento dotaz nepodporuje o něco složitější spojování a agregaci. Většina zpracovává vyvolá vzdáleně.  Pouze jeden řádky obsahující každé místo denní lístek prodej počet za den, jsou vráceny do hlavní databáze.
+   Tento dotaz provede trochu složitější spojování a agregaci. Většina zpracování probíhá vzdáleně.  Do hlavní databáze se vrátí jenom jeden řádek, který obsahuje denní počet měsíčních pokusů o odeslání lístků pro každý den.
 
    ![query](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
 
@@ -183,12 +182,12 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > 
 > * Spouštění distribuovaných dotazů ve všech tenantských databázích
-> * Nasazení databáze vytváření sestav a definovat schéma potřebné ke spouštění distribuovaných dotazů.
+> * Nasaďte databázi vytváření sestav a definujte schéma potřebné ke spouštění distribuovaných dotazů.
 
 
-Teď si vyzkoušejte [kurz analýza Tenanta](saas-tenancy-tenant-analytics.md) zkoumání extrahování dat do samostatné analytické databáze pro zpracování složitější analýzy.
+Teď Vyzkoušejte [kurz analýzy tenantů](saas-tenancy-tenant-analytics.md) , kde můžete prozkoumat extrakci dat do samostatné analytické databáze pro složitější zpracování analýz.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-* Další [kurzy, které vycházejí z aplikace Wingtip Tickets SaaS databáze na Tenanta](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* Další [kurzy, které se sestavují na základě aplikace Wingtip Tickets SaaS Database na klienta](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastic Query](sql-database-elastic-query-overview.md)

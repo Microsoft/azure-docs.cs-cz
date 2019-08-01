@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/08/2019
-ms.author: aljo
-ms.openlocfilehash: 0302d8950d10d2c606fad0582079ed0c77047fbf
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: atsenthi
+ms.openlocfilehash: 569d5fb3d50ac78e69d87906e7391cadba61f4f0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295530"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599471"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ## <a name="install-docker-optional"></a>Nainstalovat Docker (volitelné)
 [Service Fabric je kontejner Orchestrator](service-fabric-containers-overview.md) pro nasazení mikroslužeb napříč clusterem počítačů. Chcete-li spustit aplikace služby Windows Container v místním vývojovém clusteru, je nutné nejprve nainstalovat Docker for Windows. Získat [Docker CE for Windows (stabilní)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) Po nainstalování a spuštění Dockeru klikněte pravým tlačítkem myši na ikonu na hlavním panelu a vyberte **Switch to Windows containers** (Přepnout na kontejnery Windows). Tento krok se vyžaduje pro spuštění imagí Dockeru založených na Windows.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste dokončili nastavení vývojového prostředí, můžete začít sestavovat a spouštět aplikace.
 
 * [Naučte se vytvářet, nasazovat a spravovat aplikace.](service-fabric-tutorial-create-dotnet-app.md)

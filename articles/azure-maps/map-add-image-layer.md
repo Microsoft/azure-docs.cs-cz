@@ -1,71 +1,71 @@
 ---
-title: Přidání vrstvy Image do Azure Maps | Dokumentace Microsoftu
-description: Postup přidání vrstva s obrázkem do mapy jazyka Javascript
+title: Přidat vrstvu obrázku do Azure Maps | Microsoft Docs
+description: Postup přidání vrstvy obrázku do mapy JavaScriptu
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/3/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5396fefca3a60dea7a503f8b4e84cc575753ea30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ea0f37e307196af4b27fd3f8fb1aa0d42443dfa
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769562"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638737"
 ---
-# <a name="add-an-image-layer-to-a-map"></a>Přidejte na mapu vrstva s obrázkem
+# <a name="add-an-image-layer-to-a-map"></a>Přidat vrstvu obrázku do mapy
 
-Tento článek popisuje, jak můžete překryv obrázku, který má pevně danou sadu souřadnice na mapě. Existuje mnoho scénářů, ve kterých se provádí zakreslovat bitovou kopii na mapě. Tady je několik příkladů typu Image často jako překryvný obrázek na mapy;
+V tomto článku se dozvíte, jak můžete překrýt obrázek do pevné sady souřadnic na mapě. Existuje mnoho scénářů, ve kterých je překrytí obrázku na mapě provedeno. Tady je několik příkladů typu imagí, které se často překrývají na mapách.
 
-* Obrázky zachycených dronů.
-* Vytváření floorplans.
-* Historické nebo další Image specializovaného mapy.
-* Plány úlohy lokalit.
-* Bitové kopie této možnosti taky přemýšlíte o počasí.
+* Obrázky zachycené z DRONY zachraňují životy.
+* Sestavování floorplans.
+* Historické nebo jiné specializované image map.
+* Modrotisky webů úloh.
+* Obrázky paprsků s počasí
 
 > [!TIP]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) je rychlý snadný způsob, jak překryvný obrázek na mapě. Ale pokud je velký obrázek, v prohlížeči může usilovat o to, ho načíst. V takovém případě zvažte rozdělení svou image do dlaždice a jejich načtení do mapy jako [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
+> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) je rychlý jednoduchý způsob, jak překrýt obrázek na mapě. Pokud je však obrázek velký, prohlížeč je může bojovat načíst. V takovém případě zvažte rozdělení obrázku do dlaždic a jejich načtení do mapy jako [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
 
 ## <a name="add-an-image-layer"></a>Přidání vrstvy obrázků
 
-Tento příklad ukazuje, jak překryvný obrázek [mapování Newyorském New Jersey z 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) na mapě.
+Tato ukázka ukazuje, jak překrýt obrázek [mapy newyorském New Jersey z 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) na mapě.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Vrstva jednoduché obrázků' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/eQodRo/'>vrstvy jednoduché Image</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Jednoduchá vrstva obrázku' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V <a href='https://codepen.io'>CodePen</a>(<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/eQodRo/'>vrstvu obrázku jednoduchého</a> pera.
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
+Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
 
-V druhém bloku kódu [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) vytvoří předá adresu URL do obrázku a souřadnice pro čtyři rohy ve formátu `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
+Ve druhém bloku kódu je vytvořen [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) PŘEDÁNÍM adresy URL obrázku a souřadnicemi pro čtyři rohy ve formátu `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
 
-## <a name="import-a-kml-ground-overlay"></a>Importovat překrytí základu KML
+## <a name="import-a-kml-ground-overlay"></a>Import překrytí základní desky KML
 
-Tento příklad ukazuje, jak překryv KML základu překrytí informace jako vrstva s obrázkem na mapě. KML základu překrytí poskytují sever – jih, – východ a souřadnice – západ a proti směru hodinových ručiček otočení, kde jako na obrázku vrstva očekává, že souřadnice pro každý roh obrázku. Překrytí základu KML v této ukázce je Chartres cathedral a Source z [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
+V této ukázce se dozvíte, jak překrýt informace o překrytí KML základní desky jako vrstvu obrázku na mapě. KML překryvná deska poskytují souřadnice Severní, Jižní, východní a západní osy a směru hodinových ručiček, kde jako vrstva obrázku očekává souřadnice pro každý roh obrázku. Překrytí základní desky KML v této ukázce je Chartres Cathedral a zdroj z [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Překrytí základu KML jako vrstva obrázků' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML světlá překrytí jako vrstva obrázků</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Základní překrytí KML jako vrstva obrázku' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>překrytí KML pera jako obrázek</a> pomocí Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Výše uvedený kód používá statickou `getCoordinatesFromEdges` funkce [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) třídy k výpočtu čtyři rohy image z na severu, březen – západ a otočení informace KML světlá překrytí.
+Výše uvedený kód používá statickou `getCoordinatesFromEdges` funkci třídy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) k výpočtu čtyř rohů obrázku z informací o Severní, Jižní, východní, západní a rotaci z překrytí základní desky KML.
 
 
-## <a name="customize-an-image-layer"></a>Přizpůsobení vrstva s obrázkem
+## <a name="customize-an-image-layer"></a>Přizpůsobení vrstvy obrázku
 
-Vrstva Image obsahuje celou řadu možností stylu. Zde je nástroj, který je vyzkoušet.
+Vrstva obrázku má mnoho možností stylů. Tady je nástroj pro jejich vyzkoušení.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Obrázek možností vrstvy' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>vrstvy možných Imagí</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Možnosti vrstvy obrázku' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V <a href='https://codepen.io'>CodePen</a>(<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>Možnosti vrstvy obrázku</a> pera.
 </iframe>
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o třídy a metody používané v tomto článku:
+Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
 > [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
@@ -73,7 +73,7 @@ Další informace o třídy a metody používané v tomto článku:
 > [!div class="nextstepaction"]
 > [ImageLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions?view=azure-iot-typescript-latest)
 
-Naleznete v následujících článcích pro další ukázky kódu pro přidání do vaše mapy:
+Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Přidat Dlaždicovou vrstvu](./map-add-tile-layer.md)
+> [Přidat dlaždicovou vrstvu](./map-add-tile-layer.md)

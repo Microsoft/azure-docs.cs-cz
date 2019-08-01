@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 9f38502cc543f19855dbca32c4724a5651b1a3f2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318109"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565338"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé z nejběžnějších otázek o Azure DevTest Labs.
 
-## <a name="blog-post"></a>Příspěvek na blogu
+## <a name="blog-post"></a>Příspěvek blogu
 Náš blog týmu DevTest Labs byl vyřazen od 20. března 2019. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Kde můžu sledovat aktualizace funkcí od teď?
@@ -46,7 +46,7 @@ Váš popisovač Twitteru:[@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>Co když tady není odpověď na moji otázku?
 Pokud tady uvedený dotaz není, sdělte nám, abychom vám pomohli najít odpověď.
 
-- Na konci těchto nejčastějších dotazů si vystavte otázku. Zapojte se do týmu Azure cache a dalších členů komunity o tomto článku.
+- Na konci těchto nejčastějších dotazů si vystavte otázku. 
 - Pokud chcete oslovit širší cílovou skupinu, odešlete na [Azure DevTest Labs Fórum MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)otázku. Zapojte se do týmu Azure DevTest Labs a dalších členů komunity.
 - V případě žádostí o funkce odešlete žádosti a nápady [Azure DevTest Labs uživatelského hlasu](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
@@ -97,9 +97,9 @@ Vzhledem k tomu, že obory jsou hierarchické, pokud má uživatel oprávnění 
 ### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Návody pro prostředí DevTest Labs definovat řízení přístupu na základě rolí, aby se zajistilo, že se může řídit, zatímco vývojáři/testy můžou svou práci dělat?
 Existuje velký model, ale podrobnosti závisí na vaší organizaci.
 
-Centrální IT oddělení by mělo mít pouze to, co je potřeba, a umožnit týmům projektu a aplikace, aby měli potřebnou úroveň řízení. Obvykle to znamená, že je ústřední IT vlastníkem předplatného a zpracovává základní funkce IT, jako jsou třeba síťové konfigurace. Sada vlastníků  předplatného musí být malá. Tito vlastníci můžou jmenovat další vlastníky, pokud je potřeba, nebo použít zásady na úrovni předplatného, například bez veřejné IP adresy.
+Centrální IT oddělení by mělo mít pouze to, co je potřeba, a umožnit týmům projektu a aplikace, aby měli potřebnou úroveň řízení. Obvykle to znamená, že je ústřední IT vlastníkem předplatného a zpracovává základní funkce IT, jako jsou třeba síťové konfigurace. Sada vlastníků předplatného musí být malá. Tito vlastníci můžou jmenovat další vlastníky, pokud je potřeba, nebo použít zásady na úrovni předplatného, například bez veřejné IP adresy.
 
-Může existovat podmnožina uživatelů, kteří vyžadují přístup v rámci předplatného, jako je Tier1 nebo podpora vrstvy 2. V takovém případě doporučujeme těmto uživatelům udělit přístup přispěvatelům,  aby mohli spravovat prostředky, ale neposkytovali přístup k uživatelům nebo neupravují zásady.
+Může existovat podmnožina uživatelů, kteří vyžadují přístup v rámci předplatného, jako je Tier1 nebo podpora vrstvy 2. V takovém případě doporučujeme těmto uživatelům udělit přístup přispěvatelům, aby mohli spravovat prostředky, ale neposkytovali přístup k uživatelům nebo neupravují zásady.
 
 Prostředek DevTest Labs by měl vlastnit vlastníci, kteří jsou blízko týmu projektu nebo aplikace. Je to proto, že rozumí jejich požadavkům na počítače a požadovaný software. Ve většině organizací je vlastníkem tohoto prostředku DevTest Labs obvykle vedoucí projektu nebo vývoje. Tento vlastník může spravovat uživatele a zásady v rámci testovacího prostředí a může spravovat všechny virtuální počítače v prostředí DevTest Labs.
 
@@ -145,7 +145,7 @@ V konečném případě je třeba v rámci organizace použít stejný typ omeze
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
 ### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Návody vytvořit testovací prostředí ze šablony Správce prostředků?
-Nabízíme úložiště GitHubu šablon testovacího Azure Resource Manager prostředí, které můžete nasadit tak, jak jsou, nebo upravit a vytvořit vlastní šablony pro cvičení. Každá šablona obsahuje odkaz na nasazení testovacího prostředí, protože je ve vašem vlastním předplatném Azure. Nebo můžete šablonu přizpůsobit a [nasadit pomocí PowerShellu nebo Azure CLI](../azure-resource-manager/resource-group-template-deploy.md).
+Nabízíme [úložiště GitHubu šablon testovacího Azure Resource Manager prostředí](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) , které můžete nasadit tak, jak jsou, nebo upravit a vytvořit vlastní šablony pro cvičení. Každá šablona obsahuje odkaz na nasazení testovacího prostředí, protože je ve vašem vlastním předplatném Azure. Nebo můžete šablonu přizpůsobit a [nasadit pomocí PowerShellu nebo Azure CLI](../azure-resource-manager/resource-group-template-deploy.md).
 
 
 ### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Můžu se všechny virtuální počítače vytvořit ve společné skupině prostředků, takže každý počítač má vlastní skupinu prostředků? 

@@ -5,7 +5,7 @@ description: Další informace o programu jazyků a související nástroje, kte
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: gokuma
-ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 1df3c986132de2a3e7ec9547a996abef60ea04ac
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502213"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558120"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Jazyky podporované na virtuální počítač pro datové vědy 
 
@@ -193,7 +193,7 @@ R je nainstalována na datové VĚDY v globálním prostředí čitelné všichn
 | ------------- | ------------- |
 | Podporované jazykové verze | 0.6 |
 | Podporované DSVM edice      | Linux, Windows     |
-| Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Windows: Instalovat v `C:\JuliaPro-VERSION`<br /> Linux: Instalovat v `/opt/JuliaPro-VERSION`    |
+| Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Windows: Nainstalováno na`C:\JuliaPro-VERSION`<br /> Linux: Nainstalováno na`/opt/JuliaPro-VERSION`    |
 | Odkazy na ukázky      | Ukázkové poznámkové bloky Jupyter pro Julie jsou zahrnuté     |
 | Související nástroje na datové VĚDY      | Python, R      |
 ### <a name="how-to-use--run-it"></a>Jak používat nebo ji spustit?    
@@ -222,7 +222,7 @@ Helena umístění výchozí hodnota je globální prostředí číst všichni u
 Otevřete terminál a právě spuštění `julia`. 
 * Použití v rozhraní IDE
 
-Použití `Juno` Julie IDE nainstalované na datové VĚDY a k dispozici jako zástupce v nabídce aplikaci.
+Použijte `Juno` rozhraní IDE pro Helena nainstalované v DSVM a dostupné jako zástupce nabídky aplikace.
 
 * Použití v Jupyter
 
@@ -234,12 +234,12 @@ Helena umístění výchozí hodnota je globální prostředí číst všichni u
 
 ## <a name="other-languages"></a>Jiné jazyky
 
-**C#** : K dispozici na Windows a přístupné přes Visual Studio Community edition nebo na `Developer Command Prompt for Visual Studio` kde lze pouze spustit `csc` příkazu. 
+**C#** : K dispozici ve Windows a přístupné prostřednictvím sady Visual Studio Community Edition nebo `Developer Command Prompt for Visual Studio` na místě, kde můžete `csc` jenom spustit příkaz. 
 
-**Java**: OpenJDK je k dispozici v Linuxu i Windows edice DSVM a nastavte na cestě. Můžete zadat `javac` nebo `java` příkazu na příkazovém řádku ve Windows nebo prostředí bash v Linuxu pomocí Javy. 
+**Java**: OpenJDK je k dispozici v edici DSVM pro Linux i Windows a nastavte na cestě. Můžete zadat `javac` nebo `java` příkazu na příkazovém řádku ve Windows nebo prostředí bash v Linuxu pomocí Javy. 
 
 **Node.js**: platforma node.js je k dispozici v Linuxu i Windows edition DSVM a sada na cestě. Můžete zadat `node` nebo `npm` příkazu na příkazovém řádku ve Windows nebo prostředí bash v systému Linux pro přístup k node.js. Na Windows je nainstalován Node.js tools pro rozšíření sady Visual Studio k poskytování grafické integrovaného vývojového prostředí pro vývoj aplikace node.js. 
 
-**F#** : K dispozici na Windows a přístupné přes Visual Studio Community edition nebo na `Developer Command Prompt for Visual Studio` kde lze pouze spustit `fsc` příkazu. 
+**F#** : K dispozici ve Windows a přístupné prostřednictvím sady Visual Studio Community Edition nebo `Developer Command Prompt for Visual Studio` na místě, kde můžete `fsc` jenom spustit příkaz. 
 
 

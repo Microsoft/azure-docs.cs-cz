@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: dd2fb0c9ef157e3706ca3d902f7feebaf4c2f279
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b2670ec844df192bb73e8b1e76b1ebf611b2539e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478910"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619372"
 ---
 # <a name="supported-languages"></a>Podporované jazyky
 
@@ -39,7 +39,6 @@ ms.locfileid: "68478910"
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.js](https://www.npmjs.com/package/applicationinsights)
@@ -57,6 +56,5 @@ ms.locfileid: "68478910"
 * [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [Stream Analytics](../../azure-monitor/app/export-power-bi.md)
 
-## <a name="unsupported-community-sdks"></a>Nepodporované sady SDK komunity
-
-Existuje několik sad SDK pro Application Insights komunity. Komunitní sady SDK nejsou oficiálně podporované nebo udržované Microsoftem. Nepovedlo se nám poskytnout podporu pro sadu SDK, která není v oficiálně podporovaném seznamu. 
+## <a name="unsupported-sdks"></a>Nepodporované sady SDK
+Upozorňujeme, že existuje několik dalších sad SDK podporovaných komunitou a ještě jsme na ně přispěli. Azure Monitor však poskytuje podporu pouze při použití podporovaných sad SDK uvedených na této stránce. Neustále vyhodnotí příležitosti k rozšíření naší podpory pro jiné jazyky, proto na stránce [oznámení GitHubu](https://github.com/microsoft/ApplicationInsights-Announcements/issues) získáte nejnovější novinky SDK.

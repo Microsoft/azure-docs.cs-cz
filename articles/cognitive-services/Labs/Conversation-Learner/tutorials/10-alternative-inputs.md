@@ -1,7 +1,7 @@
 ---
-title: Použití alternativní vstupy s konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Použití alternativních vstupů s Conversation Learner-Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Další informace o použití alternativních vstupy s Learner konverzace.
+description: Naučte se používat alternativní vstupy s Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,149 +10,150 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 383c063e1ba7a29986e4b1c48024072799234414
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7416939db8d6552f79fba700b8432de2ad228846
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387934"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704202"
 ---
 # <a name="how-to-use-alternative-inputs"></a>Jak používat alternativní vstupy
 
-Tento kurz ukazuje způsob použití pole alternativní vstupy pro uživatele projevy výukovému rozhraní.
+V tomto kurzu se dozvíte, jak používat pole alternativní vstupy pro uživatele projevy v rozhraní učebny.
 
 ## <a name="video"></a>Video
 
-[![Alternativní vstupy kurz ve verzi Preview](https://aka.ms/cl_Tutorial_v3_AlternativeInputs_Preview)](https://aka.ms/cl_Tutorial_v3_AlternativeInputs)
+[![Kurz alternativních vstupů ve verzi Preview](https://aka.ms/cl_Tutorial_v3_AlternativeInputs_Preview)](https://aka.ms/cl_Tutorial_v3_AlternativeInputs)
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje, zda je spuštěna obecné kurz bot
+Tento kurz vyžaduje, aby byl spuštěný robot pro obecné kurzy.
 
     npm run tutorial-general
 
 ## <a name="details"></a>Podrobnosti
-Alternativní vstupy jsou sémanticky ekvivalentní alternativní uživatelské projevy, které uživatel může mít říká, že v určitém místě v dialogovém okně školení. Tyto alternativní vstupy umožňují více kompaktně určit variace projevy aniž byste museli řešit každou změnu v dialogových oknech samostatné školení.
+Alternativní vstupy jsou alternativní, sémanticky rovnocenný uživatel projevy, které uživatel mohl mít v rámci školicího dialogového okna. Tyto alternativní vstupy vám umožňují kompaktnější určení variací projevy bez nutnosti řešit jednotlivé variace v samostatných školicích dialogových oknech.
 
 ## <a name="steps"></a>Kroky
 
 ### <a name="create-the-model"></a>Vytvoření modelu
 
-1. Ve webové uživatelské rozhraní klikněte na tlačítko "Nový Model."
-2. V poli "Name" typ "AlternativeInputs" a stiskněte enter.
-3. Klikněte na tlačítko "Vytvořit".
+1. Ve webovém uživatelském rozhraní klikněte na nový model.
+2. Do pole název zadejte "AlternativeInputs" a stiskněte klávesu ENTER.
+3. Klikněte na tlačítko vytvořit.
 
 ### <a name="entity-creation"></a>Vytvoření entity
 
-1. Na levém panelu klikněte na tlačítko "," subjekty a potom na tlačítko "Nová entita".
-2. Vyberte "Vlastní školení" u "Typu Entity."
-3. Zadejte "city" u "Názvu Entity."
-4. Klikněte na tlačítko "Vytvořit".
+1. Na levém panelu klikněte na entity a pak na tlačítko nová entita.
+2. Pro typ entity vyberte vlastní vzdělání.
+3. Jako "název entity" zadejte "City".
+4. Klikněte na tlačítko vytvořit.
 
 ![](../media/T10_actions.png)
 
-Teď vytvoříme tři akce.
+Nyní vytvoříme tři akce.
 
-### <a name="create-the-first-action"></a>Vytvoření první akci
+### <a name="create-the-first-action"></a>Vytvoření první akce
 
-1. Na levém panelu klikněte na tlačítko "Akce" a potom na tlačítko "Nová akce".
-2. "Bodu robotů také odpovědi na..." pole, zadejte "Které city"?
-3. Do pole "Očekávané Entity v odpovědi uživatele..." zadejte "city".
-4. V poli "Vyřazení opravňuje" typ "city".
-5. Klikněte na tlačítko "Vytvořit".
+1. Na levém panelu klikněte na akce a pak na tlačítko Nová akce.
+2. V "reakci na robota..." Zadejte "které město?"
+3. V části očekávaná entita v odpovědi uživatele... Zadejte "City".
+4. Do pole "vyřazení opravňujících" zadejte "City".
+5. Klikněte na tlačítko vytvořit.
 
 ![](../media/T10_action_create_1.png)
 
-### <a name="create-the-second-action"></a>Vytvořte druhou akci
+### <a name="create-the-second-action"></a>Vytvoření druhé akce
 
-1. Na levém panelu klikněte na tlačítko "Akce" a potom na tlačítko "Nová akce".
-2. "Bodu robotů také odpovědi na..." pole, zadejte "o počasí v $city je pravděpodobně hezky."
-3. Klikněte na tlačítko "Vytvořit".
+1. Na levém panelu klikněte na akce a pak na tlačítko Nová akce.
+2. V "reakci na robota..." Zadejte text "počasí v $city je pravděpodobně Slunečné."
+3. Klikněte na tlačítko vytvořit.
 
 ![](../media/T10_action_create_2.png)
 
-### <a name="create-the-third-action"></a>Třetí akce vytvořit
+### <a name="create-the-third-action"></a>Vytvořit třetí akci
 
-1. Na levém panelu klikněte na tlačítko "Akce" a potom na tlačítko "Nová akce".
-2. "Bodu robotů také odpovědi na..." pole, zadejte "Vyzkoušejte si žádá o počasí."
-3. V poli "Vyřazení opravňuje" typ "city".
-4. Klikněte na tlačítko "Vytvořit".
+1. Na levém panelu klikněte na akce a pak na tlačítko Nová akce.
+2. V "reakci na robota..." Zadejte text "zkusit dotaz na počasí".
+3. Do pole "vyřazení opravňujících" zadejte "City".
+4. Klikněte na tlačítko vytvořit.
 
 ![](../media/T10_action_create_3.png)
 
-Teď máte tři akce.
+Nyní máte tři akce.
 
 ![](../media/T10_actions.png)
 
-### <a name="train-the-model"></a>Trénování modelu
+### <a name="train-the-model"></a>Výuka modelu
 
-1. Na levém panelu klikněte na tlačítko "Dialogů Train" a potom na tlačítko "Dialogové okno Nový Train".
-2. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "Jak se počasí?"
-3. Klikněte na tlačítko "Skóre akce".
-4. Vyberte odpověď "Které city"?
-5. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "Ostravě."
-6. Klikněte na tlačítko "Skóre akce".
-7. Vyberte odpověď, "o počasí v Liberci je pravděpodobně hezky."
-8. Klikněte na tlačítko "Odeslat změny".
+1. Na levém panelu klikněte na možnost výuka dialogových oken a pak klikněte na tlačítko "nový výukový dialog".
+2. Na panelu chat, kde říká "napsat zprávu..." zadejte "Co je počasí?"
+3. Klikněte na tlačítko "akce skóre".
+4. Vyberte odpověď "město?".
+5. Na panelu chat, kde říká "zadejte zprávu..." zadejte "Denver".
+6. Klikněte na tlačítko "akce skóre".
+7. Vyberte odpověď "počasí v Denver je pravděpodobně Slunečné."
+8. Klikněte na tlačítko odeslat změny.
 
 ![](../media/T10_training_1.png)
 
-Pojďme trénování další tak, že vytvoříte další dialog trénování modelu.
+Vydejte si model ještě více vytvořením dalšího výukového dialogového okna.
 
-### <a name="second-model-train-dialog"></a>Druhé dialogové okno Train Model
+### <a name="second-model-train-dialog"></a>Druhý dialog s výukou modelu
 
-1. Na levém panelu klikněte na tlačítko "Dialogů Train" a potom na tlačítko "Dialogové okno Nový Train".
-2. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "Co můžete dělat?"
-3. Klikněte na tlačítko "Skóre akce".
-4. Vyberte odpověď, "Vyzkoušejte si žádá o počasí."
-5. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "Jak se o počasí v Praze?"
-6. Klikněte na tlačítko "Seattle" a potom klikněte na "city" v seznamu entit.
-7. Klikněte na tlačítko "Skóre akce".
-8. Vyberte odpověď, "o počasí v Praze je pravděpodobně hezky."
-9. Klikněte na tlačítko "Odeslat změny".
+1. Na levém panelu klikněte na možnost výuka dialogových oken a pak klikněte na tlačítko "nový výukový dialog".
+2. Na panelu chat, kde text "zadejte zprávu..." zadejte text "co můžete udělat?"
+3. Klikněte na tlačítko "akce skóre".
+4. Vyberte odpověď "zkusit dotaz na počasí".
+5. Na panelu chat, kde říká "napsat zprávu..." zadejte text "Co je počasí v Seattlu?"
+6. Klikněte na "Seattle" a potom v seznamu entit klikněte na "City".
+7. Klikněte na tlačítko "akce skóre".
+8. Vyberte odpověď "počasí v Seattlu je pravděpodobně Slunečné."
+9. Klikněte na tlačítko odeslat změny.
 
 ![](../media/T10_training_2.png)
 
-### <a name="third-model-train-dialog-using-alternative-input"></a>Třetí dialogové okno Train Model pomocí alternativní vstupu
+### <a name="third-model-train-dialog-using-alternative-input"></a>Dialogové okno výuka třetího modelu s použitím alternativního vstupu
 
-1. Na levém panelu klikněte na tlačítko "Dialogů Train" a potom na tlačítko "Dialogové okno Nový Train".
-2. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "help"
-3. Klikněte na tlačítko "Skóre akce".
-    - Model nejistoty. pro nejlepší možností, takže ji byste zvolili nejvyšší percentilu ve výchozím nastavení.
-4. Klikněte na tlačítko "Zrušit výuky" a potom tlačítko "Confirm".
+1. Na levém panelu klikněte na možnost výuka dialogových oken a pak klikněte na tlačítko "nový výukový dialog".
+2. Na panelu chat, kde říká "zadejte zprávu..." zadejte text "Help".
+3. Klikněte na tlačítko "akce skóre".
+    - Model je nejistý pro nejlepší možnost, takže by ve výchozím nastavení zvolil nejvyšší percentil.
+4. Klikněte na tlačítko opustit výuku a pak na tlačítko Potvrdit.
 
 ![](../media/T10_training_3.png)
 
-Umožňuje lépe ladění systému pomocí alternativní vstupy. Můžete přidat alternativní vstup během vyučování nebo novější.
+Pojďme tento systém lépe ladit pomocí alternativních vstupů. Můžete přidat alternativní vstup při výuce nebo později.
 
-1. Na levém panelu klikněte na tlačítko "Dialogů Train" a pak vyberte "Co můžete dělat?" ze seznamu trénování dialogová okna.
-1. Klikněte "co můžete dělat?" utterance panelu konverzace.
-1. V "Přidáním Alternativní vstup..." pole, typ "Nápověda" a stiskněte enter.
-1. Klikněte na tlačítko "Uložit změny".
+1. Na levém panelu klikněte na možnost výuka dialogových oken a pak vyberte "co můžete udělat?" ze seznamu výukových dialogových oken.
+1. Klikněte na "co můžete udělat?" utterance na panelu chatu.
+1. V části Přidat alternativní vstup... Zadejte text "Help" a stiskněte klávesu ENTER.
+1. Klikněte na tlačítko Uložit změny.
 
 ![](../media/T10_training_4.png)
 
-Přidejme jiný Alternativní vstup pro zpracování Houstonu.
+Pojďme přidat další alternativní vstup pro zpracování Houstonu.
 
-1. Klikněte "jak se o počasí v Praze?" utterance panelu konverzace.
-1. V poli "Přidat alternativní vstup..." typ "předpovídáním Houstonu" a stiskněte enter.
-   - Stručný přehled zpráva chyby vstupů alternativní fakt musí být sémanticky rovnocenné a musí obsahovat stejné entity jako původní utterance; nejen stejné hodnoty entity. Přítomnost stejné entity je povinný.
-1. Klikněte na "Houstonu" a vyberte ze seznamu entit "city".
-1. V poli "Přidat alternativní vstup..." typ "prognózy pro Seattle" a stiskněte enter.
-1. Klikněte na "Seattle" a vyberte ze seznamu entit "city".
-1. Klikněte na tlačítko "Uložit změny".
-1. Klikněte na tlačítko "Upravit uložit".
+1. Klikněte na "Co je počasí v Seattlu?" utterance na panelu chatu.
+1. V části Přidat alternativní vstup... Zadejte do pole "FORECAST pro Houstonu" a stiskněte ENTER.
+   - Chybová zpráva zdůrazňuje, že alternativní vstupy faktů musí být sémanticky ekvivalentní a obsahovat stejné entity jako původní utterance; Nejedná se pouze o stejné hodnoty entit. Je nutné, aby byly přítomny stejné entity.
+1. Klikněte na "Houstonu" a v seznamu entity vyberte City (město).
+1. V části Přidat alternativní vstup... Zadejte do pole "FORECAST pro Seattle" a stiskněte klávesu ENTER.
+1. Klikněte na "Seattle" a v seznamu entity vyberte City (město).
+1. Klikněte na tlačítko Uložit změny.
+1. Klikněte na tlačítko Uložit úpravy.
 
 ![](../media/T10_training_5.png)
 
 ### <a name="testing-the-model"></a>Testování modelu
 
-1. Na levém panelu klikněte na tlačítko "Protokolu dialogů" a "Dialogové okno nové protokolu."
-2. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "Nápověda me"
-3. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "předpovědi pro Ostravě."
+1. Na levém panelu klikněte na možnost protokolovat dialogy a pak na nový dialog protokolu.
+2. Na panelu chat, kde text "zadejte zprávu..." zadejte text "Help mi".
+3. Na panelu chat, kde říká "zadejte zprávu..." zadejte "FORECAST for Denver".
 
 ![](../media/T10_logdialog.png)
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Dialogová okna protokolu](./11-log-dialogs.md)
+> [Dialogy protokolu](./11-log-dialogs.md)

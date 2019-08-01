@@ -1,6 +1,6 @@
 ---
-title: Porty nad 1433 pro službu SQL Database | Dokumentace Microsoftu
-description: Připojení klienta z ADO.NET ke službě Azure SQL Database můžete používat proxy server a pracovat přímo s databází pomocí jiné porty než 1433.
+title: Porty přesahující 1433 pro SQL Database | Microsoft Docs
+description: Připojení klientů z ADO.NET do Azure SQL Database mohou obejít proxy server a pracovat přímo s databází pomocí jiných než 1433 portů.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,80 +10,79 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
-manager: craigg
 ms.date: 04/03/2019
-ms.openlocfilehash: d861ccb93de7aa0b84b20215afb5fddf49aa94c9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a39cfd1981041c807a91a08c198378d238f0846e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67427951"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568914"
 ---
-# <a name="ports-beyond-1433-for-adonet-45"></a>Porty nad 1433 pro ADO.NET 4.5
+# <a name="ports-beyond-1433-for-adonet-45"></a>Porty přesahující 1433 pro ADO.NET 4,5
 
-Toto téma popisuje chování připojení Azure SQL Database pro klienty, kteří používají technologii ADO.NET 4.5 nebo novější.
+Toto téma popisuje chování Azure SQL Database připojení pro klienty, kteří používají ADO.NET 4,5 nebo novější verzi.
 
 > [!IMPORTANT]
-> Informace o připojení k architektuře, najdete v tématu [architektura připojení k Azure SQL Database](sql-database-connectivity-architecture.md).
+> Informace o architektuře připojení najdete v tématu [architektura Azure SQL Databaseho připojení](sql-database-connectivity-architecture.md).
 >
 
-## <a name="outside-vs-inside"></a>Vnější vs. vnitřní
+## <a name="outside-vs-inside"></a>Mimo vs uvnitř
 
-Pro připojení ke službě Azure SQL Database, musíte nejprve požádáme, jestli se váš klientský program spouští *mimo* nebo *uvnitř* cloudu Azure. Témata se zabývají dvě běžné scénáře.
+Pro připojení k Azure SQL Database je potřeba nejdřív položit dotaz, jestli se Váš klientský program spouští *mimo* hranice cloudu Azure nebo *uvnitř* něj. Dílčí části projednávají dva běžné scénáře.
 
-### <a name="outside-client-runs-on-your-desktop-computer"></a>*Vnější:* Klient spustí na stolním počítači
+### <a name="outside-client-runs-on-your-desktop-computer"></a>*Nenachází* Klient běží na stolním počítači.
 
-Port 1433 je jediný port, který musí být otevřený ve stolním počítači, který je hostitelem klientské aplikace SQL Database.
+Port 1433 je jediným portem, který musí být otevřený na stolním počítači, který je hostitelem klientské aplikace SQL Database.
 
-### <a name="inside-client-runs-on-azure"></a>*Uvnitř:* Klient spustí v Azure
+### <a name="inside-client-runs-on-azure"></a>*Uvozovk* Klient běží na Azure.
 
-Váš klient běží v cloudu Azure, používá, co jsme volat *přímé trasy* komunikovat se serverem SQL Database. Po vytvoření připojení, další interakce mezi klientem a databáze zahrnují žádná brána Azure SQL Database.
+Když se váš klient spouští v rámci hranice cloudu Azure, používá k interakci s SQL Database serverem *přímou trasu* . Po navázání připojení nezahrnuje další interakce mezi klientem a databází žádnou bránu Azure SQL Database.
 
-Sekvence je následujícím způsobem:
+Sekvence je následující:
 
-1. ADO.NET 4.5 (nebo novější) zahájí stručný interakci s Azure cloud a přijímá dynamicky identifikované nastavení portu.
+1. ADO.NET 4,5 (nebo novější) zahájí krátkou interakci s cloudem Azure a získá dynamicky identifikované číslo portu.
 
-   * Číslo portu dynamicky identifikované je v rozsahu 11000 11999.
-2. ADO.NET pak připojí k databázi SQL server přímo, s žádné middleware mezi.
-3. Dotazy se odesílají přímo do databáze a výsledky se vrátí přímo do klienta.
+   * Dynamicky identifikované číslo portu je v rozsahu 11000-11999.
+2. ADO.NET se pak přímo připojí k serveru SQL Database bez middlewaru.
+3. Dotazy jsou odesílány přímo do databáze a výsledky jsou vráceny přímo klientovi.
 
-Ujistěte se, že port, který rozsahů 11000 11999 na svém počítači Klient služby Azure zůstává k dispozici pro technologii ADO.NET 4.5 klienta interakce s databází SQL.
+Zajistěte, aby byly rozsahy portů 11000-11999 na klientském počítači Azure k dispozici pro interakce klientů ADO.NET 4,5 s SQL Database.
 
-* Porty v rozsahu musí být zejména bez dalších odchozí blokování.
-* Na svém virtuálním počítači Azure **brány Windows Firewall s pokročilým zabezpečením** řídí nastavení portu.
+* Konkrétně musí být porty v rozsahu bez jakéhokoli dalšího odchozího blokování.
+* Na VIRTUÁLNÍm počítači Azure řídí **Brána Windows Firewall s pokročilým zabezpečením** nastavení portů.
   
-  * Můžete použít [brány firewall na uživatelské rozhraní](https://msdn.microsoft.com/library/cc646023.aspx) přidáte pravidlo, u kterého nastavíte **TCP** protokolu společně s rozsah portů se syntaxí, jako jsou **11000 11999**.
+  * Pomocí [uživatelského rozhraní brány firewall](https://msdn.microsoft.com/library/cc646023.aspx) můžete přidat pravidlo, pro které zadáte protokol **TCP** spolu s rozsahem portů s syntaxí, jako je **11000-11999**.
 
-## <a name="version-clarifications"></a>Vyjasnění verze
+## <a name="version-clarifications"></a>Vyjasnění verzí
 
-Tato část vysvětluje zástupných názvů, které odkazují na verze produktu. Také uvádí seznam některých páry verze mezi produkty.
+Tato část vysvětluje monikery, které odkazují na verze produktu. Obsahuje taky některé páry verzí mezi produkty.
 
 ### <a name="adonet"></a>ADO.NET
 
-* ADO.NET 4.0 podporuje protokol TDS 7.3, ale ne 7.4.
-* ADO.NET 4.5 a vyšší podporuje protokol TDS 7.4.
+* ADO.NET 4,0 podporuje protokol TDS 7,3, ale ne 7,4.
+* ADO.NET 4,5 a novější podporuje protokol TDS 7,4.
 
 ### <a name="odbc"></a>ODBC
 
-* Microsoft SQL Server ODBC 11 nebo novější
+* Microsoft SQL Server ODBC 11 nebo vyšší
 
 ### <a name="jdbc"></a>JDBC
 
-* Microsoft SQL Server JDBC 4.2 nebo novější (JDBC 4.0 skutečně podporuje TDS 7.4, ale neimplementuje "přesměrování")
+* Microsoft SQL Server JDBC 4,2 nebo vyšší (JDBC 4,0 ve skutečnosti podporuje TDS 7,4, ale neimplementuje "přesměrování")
 
 ## <a name="related-links"></a>Související odkazy
 
-* 20. července 2015 byla vydána ADO.NET 4.6. Oznámení blogu od týmu .NET je k dispozici [tady](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-net-framework-4-6.aspx).
-* 15. srpna 2012 byla vydána ADO.NET 4.5. Oznámení blogu od týmu .NET je k dispozici [tady](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx).
-  * Blogový příspěvek o ADO.NET 4.5.1 je k dispozici [tady](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-net-framework-4-5-1-preview.aspx).
+* ADO.NET 4,6 bylo vydáno 20. července 2015. Oznámení na blogu od týmu .NET je k dispozici [zde](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-net-framework-4-6.aspx).
+* ADO.NET 4,5 byla vydána 15. srpna 2012. Oznámení na blogu od týmu .NET je k dispozici [zde](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx).
+  * Blogový příspěvek o ADO.NET 4.5.1 je k dispozici [zde](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-net-framework-4-5-1-preview.aspx).
 
-* Microsoft® ODBC Driver 17 pro SQL Server® – Windows, Linux a macOS https://www.microsoft.com/download/details.aspx?id=56567
+* Microsoft® ODBC Driver 17 pro SQL Server® – Windows, Linux & macOS https://www.microsoft.com/download/details.aspx?id=56567
 
-* Připojení ke službě Azure SQL Database V12 prostřednictvím přesměrování https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
+* Připojení k Azure SQL Database V12 prostřednictvím přesměrování https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
-* [Seznam verzí protokolu TDS.](https://www.freetds.org/userguide/tdshistory.htm)
+* [Seznam verzí protokolu TDS](https://www.freetds.org/userguide/tdshistory.htm)
 * [Přehled vývoje SQL Database](sql-database-develop-overview.md)
-* [Brána firewall služby Azure SQL Database](sql-database-firewall-configure.md)
+* [Azure SQL Database firewall](sql-database-firewall-configure.md)
 * [Postup: Konfigurace nastavení brány firewall pro službu SQL Database](sql-database-configure-firewall-settings.md)
 
 
