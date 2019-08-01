@@ -54,6 +54,14 @@
     - name: Principy spravovaných identit
       href: ../hdinsight-managed-identities.md
       maintainContext: true
+    - name: Řešení potíží
+      items:
+        - name: Nejde přidat uzly do clusteru HDInsight
+          href: ./hdinsight-troubleshoot-unable-add-nodes.md
+        - name: InvalidNetworkSecurityGroupSecurityRules – vytvoření clusteru se nepovedlo
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
+        - name: Převod certifikátu instančního objektu
+          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
 - name: Postup
   items:
     - name: Použití sandboxu Apache Hadoopu

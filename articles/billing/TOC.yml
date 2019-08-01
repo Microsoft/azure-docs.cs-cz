@@ -71,6 +71,8 @@
               href: billing-prepay-app-service-isolated-stamp.md
             - name: Softwarové plány Azure
               href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+            - name: Obnovení rezervací
+              href: billing-reservation-renew.md
         - name: Postup při využití slev
           items:
             - name: Rezervované instance virtuálních počítačů

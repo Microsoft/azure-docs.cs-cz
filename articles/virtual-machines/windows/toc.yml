@@ -108,6 +108,8 @@
           href: compute-benchmark-scores.md
         - name: Kvóty virtuálních procesorů
           href: quotas.md
+    - name: Vyhrazení hostitelé
+      href: dedicated-hosts.md
     - name: Údržba a aktualizace
       href: maintenance-and-updates.md
     - name: Diskové úložiště
@@ -146,6 +148,12 @@
   items:
     - name: Vytvoření virtuálních počítačů
       items:
+        - name: Využití vyhrazených hostitelů
+          items:
+            - name: PowerShell
+              href: dedicated-hosts-powershell.md
+            - name: Portál
+              href: dedicated-hosts-portal.md
         - name: 'Použití jazyka C#'
           href: csharp.md
         - name: Použití specializovaného disku

@@ -28,6 +28,8 @@
           items:
             - name: Překročení limitu režie GC
               href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Výkon dotazů Apache Hive LLAP
+          href: ./interactive-query-troubleshoot-query-performance.md
 - name: Postup
   items:
     - name: Migrace úloh Hive na HDInsight 4.0

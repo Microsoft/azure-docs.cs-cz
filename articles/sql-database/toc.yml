@@ -175,7 +175,7 @@
           href: sql-database-service-tier-hyperscale-faq.md
     - name: Izolované databáze
       items:
-        - name: Přehled izolované databáze
+        - name: Dokumentace k izolovaným databázím
           href: sql-database-single-index.yml
         - name: Možnosti izolované databáze
           href: sql-database-single-database.md
@@ -215,7 +215,7 @@
           href: sql-database-elastic-pool-manage.md
     - name: Spravované instance
       items:
-        - name: Přehled spravovaných instancí
+        - name: Dokumentace ke spravovaným instancím
           href: sql-database-managed-instance-index.yml
         - name: Možnosti spravované instance
           href: sql-database-managed-instance.md
@@ -235,7 +235,7 @@
           href: sql-database-managed-instance-public-endpoint-securely.md
     - name: Platforma jako služba
       items:
-        - name: Platforma jako služba – přehled
+        - name: Dokumentace k platformě jako službě
           href: sql-database-paas.yml
         - name: Kontinuita podnikových procesů
           href: sql-database-business-continuity.md
@@ -324,7 +324,7 @@
           href: sql-database-feature-restrictions.md
     - name: Škálovatelnost
       items:
-        - name: Přehled škálovatelnosti
+        - name: Dokumentace ke škálovatelnosti
           href: sql-database-scalability-index.yml
         - name: Vertikální navýšení/snížení kapacity
           href: sql-database-scale-resources.md
@@ -354,7 +354,7 @@
           href: sql-database-elastic-transactions-overview.md
     - name: Sledování a ladění
       items:
-        - name: Přehled sledování a ladění
+        - name: Dokumentace k monitorování a ladění
           href: sql-database-monitoring-tuning-index.yml
         - name: Sledování a ladění výkonu
           href: sql-database-monitor-tune-overview.md
@@ -378,7 +378,7 @@
               href: sql-database-advisor.md
     - name: Funkce databází
       items:
-        - name: Přehled
+        - name: Dokumentace k funkcím služby SQL Database
           href: sql-database-features-index.yml
         - name: Porovnání funkcí SQL
           href: sql-database-features.md
