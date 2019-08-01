@@ -1,21 +1,18 @@
 ---
 title: Stahování velkých objemů náhodných dat ze služby Azure Storage | Microsoft Docs
 description: Zjistěte, jak pomocí sady Azure SDK stahovat velké objemy náhodných dat z účtu služby Azure Storage.
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 541d406d7416ff5f50fdcca7e85b8f87f6f377df
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8d270485cef9fb6859de056bc364a36c054c0121
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794587"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699020"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Stahování velkých objemů náhodných dat z úložiště Azure
 
@@ -30,7 +27,7 @@ Ve třetí části této série se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu, je nutné dokončit předchozí kurz o službě Storage: [Nahrávání velkých objemů náhodných dat do služby Azure storage][previous-tutorial].
+K dokončení tohoto kurzu je nutné dokončit předchozí kurz o službě Storage: [Paralelní nahrávání velkých objemů náhodných dat do služby Azure Storage][previous-tutorial].
 
 ## <a name="remote-into-your-virtual-machine"></a>Vzdálené připojení k virtuálnímu počítači
 
@@ -104,7 +101,7 @@ Následující tabulka obsahuje možnosti [BlobRequestOptions](/dotnet/api/micro
 |Vlastnost|Hodnota|Popis|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true (pravda)| Tato vlastnost zakazuje kontrolu hodnoty hash MD5 nahrávaného obsahu. Zakázáním ověřování MD5 dosáhnete rychlejšího přenosu. Neprovádí se však potvrzení platnosti ani integrity přenášených souborů. |
-|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false (nepravda)| Tato vlastnost určuje, jestli se počítá a ukládá hodnota hash MD5.   |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Tato vlastnost určuje, jestli se počítá a ukládá hodnota hash MD5.   |
 
 Úloha `DownloadFilesAsync` je znázorněná v následujícím příkladu:
 

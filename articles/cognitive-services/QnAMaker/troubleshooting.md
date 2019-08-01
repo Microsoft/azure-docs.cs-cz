@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 07/31/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b0b9a5e0797a105d7fe61c95b28a6c5f462e7255
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 85c6ff59b5f73e88c82ee8b788bd9f35d18bc0ed
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414747"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697954"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
@@ -24,7 +24,7 @@ Seznam z nejčastějších dotazů týkajících se QnA Maker služby vám pomů
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>Použití robota pro Help na portálu QnA Maker
 
-QnA Maker poskytuje na  portálu QnA maker robota pomocníka, která vám může pomáhat. Robot pro usnadnění je k dispozici na každé webové stránce. Robot používá QnA maker k poskytnutí odpovědí a poskytuje [ C# projekt kódu bot Framework](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot) pro robota, takže můžete rychle začít pracovat s vlastními roboty na základě odpovědí. 
+QnA Maker poskytuje na portálu QnA maker robota pomocníka, která vám může pomáhat. Robot pro usnadnění je k dispozici na každé webové stránce. Robot používá QnA maker k poskytnutí odpovědí a poskytuje [ C# projekt kódu bot Framework](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) pro robota, takže můžete rychle začít pracovat s vlastními roboty na základě odpovědí. 
 
 ![! [QnA Maker k dispozici je znak * * Help * * robot v rámci portálu QnA Maker, který vám může pomáhat.] (./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 

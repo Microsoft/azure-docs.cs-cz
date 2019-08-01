@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Použití Ruby k volání rozhraní Text Analytics API'
+title: 'Rychlý start: Použití Ruby k volání rozhraní API pro analýzu textu'
 titleSuffix: Azure Cognitive Services
-description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
+description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít s používáním rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,25 +10,23 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: 56a482ae4eab4cde3cf39fcc187b703f253e0cbb
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: cc6f0a4c3fda2c5e474295704f3edddb678e9ed2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990250"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697224"
 ---
-# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Ruby k volání Text Analytics služby Cognitive Services
+# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Ruby k volání služby Analýza textu pro rozpoznávání
 <a name="HOLTop"></a>
 
-Tento článek vám ukáže, jak k [rozpoznání jazyka](#Detect), [analýza sentimentu](#SentimentAnalysis), [extrakce klíčových frází](#KeyPhraseExtraction), a [identifikovat propojených entit](#Entities) pomocí  [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) pomocí Ruby.
+V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities) pomocí [Analýza textu rozhraní API](//go.microsoft.com/fwlink/?LinkID=759711) s Ruby.
 
 Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
-
-Kromě toho potřebujete [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) vygenerovaný během registrace. 
 
 <a name="Detect"></a>
 
@@ -416,7 +414,7 @@ puts JSON::pretty_generate (JSON (response.body))
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také: 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

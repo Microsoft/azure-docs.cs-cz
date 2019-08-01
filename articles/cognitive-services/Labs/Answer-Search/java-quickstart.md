@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Hledání odpovědí projektu, Java'
+title: 'Rychlý start: Hledání odpovědí na projekt, Java'
 titlesuffix: Azure Cognitive Services
 description: Začněte používat Project Answer Search s využitím Javy.
 services: cognitive-services
@@ -10,21 +10,21 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: fc0f8519644c5b9f722ab67f2e9d600a0be7960b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26a9fc60c90f536e4ef9f03e96545e493a60f206
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708324"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698102"
 ---
-# <a name="quickstart-project-answer-search-query-in-java"></a>Rychlý start: Hledání odpovědí dotazu projektu v Javě
+# <a name="quickstart-project-answer-search-query-in-java"></a>Rychlý start: Vyhledávací dotaz na odpověď projektu v jazyce Java
 Tento článek představuje použití rozhraní API Bingu pro vyhledávání odpovědí, které je součástí služeb Microsoft Cognitive Services v Azure, pomocí Javy. Rozhraní API je webová služba REST kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON.
  
 Příklad kódu používá Java s minimálními externími závislostmi.  Můžete ho spustit taky v Linuxu nebo Mac OS X pomocí platformy Mono.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search)
 
 ## <a name="request"></a>Žádost 
 
@@ -150,7 +150,7 @@ public class KnowledgeSrch {
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Rychlý start pro jazyk C#](c-sharp-quickstart.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro Node](node-quickstart.md)

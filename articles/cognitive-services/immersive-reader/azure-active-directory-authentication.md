@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 8af56d0d7c0f320e607421f12effdb9b37d5f78d
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: de6a29e1c4c102aa7d4038185c1635544ba9dfe2
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444612"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688798"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Použití ověřování pomocí Azure Active Directory (Azure AD) se službou moderního čtecího zařízení
 
@@ -29,7 +29,7 @@ V následujících částech použijete prostředí Azure Cloud Shell nebo Azure
    Select-AzSubscription -SubscriptionName <YOUR_SUBSCRIPTION>
    ```
 
-2. Dále [vytvořte prostředek pro moderní čtečku](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) s vlastní subdoménou. 
+2. Dále [vytvořte prostředek pro moderní čtečku](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) s vlastní subdoménou.
 
    >[!NOTE]
    > Název subdomény se používá v sadě moderního čtecího rozhraní SDK při spuštění čtecího modulu s funkcí launchAsync.
@@ -37,7 +37,7 @@ V následujících částech použijete prostředí Azure Cloud Shell nebo Azure
    -SkuName může být F0 (úroveň Free) nebo S0 (úroveň Standard, ve verzi Public Preview také zdarma). Úroveň S0 má vyšší limit frekvence volání a žádnou měsíční kvótu pro počet volání.
 
    -Umístění může být kterékoli z následujících: `eastus`, `westus`, `australiaeast`, `centralindia`, `japaneast`, `northeurope`,`westeurope`
-   
+
    -CustomSubdomainName musí být globálně jedinečné a nesmí obsahovat speciální znaky, například: ".", "!", ",".
 
 
@@ -63,7 +63,7 @@ V následujících částech použijete prostředí Azure Cloud Shell nebo Azure
 
    // Display the Resource info
    $resource
-   ```   
+   ```
 
 ## <a name="assign-a-role-to-a-service-principal"></a>Přiřazení role k instančnímu objektu
 
@@ -83,7 +83,7 @@ Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, musí
    $aadApp
    ```
 
-   Do proměnné **$aadApp** pro použití v dalším kroku zachytíme nově vytvořený objekt aplikace Azure AD.   
+   Do proměnné **$aadApp** pro použití v dalším kroku zachytíme nově vytvořený objekt aplikace Azure AD.
 
 2. Dále musíte [vytvořit instanční objekt](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) pro aplikaci služby Azure AD.
 
@@ -128,11 +128,11 @@ V tomto příkladu se heslo používá k ověření instančního objektu pro z�
    ```
 
    >[!NOTE]
-   > Sada moderní čtečka SDK používá vlastnost AccessToken tokenu, například $token. AccessToken. Podrobnosti najdete v [referenčních](reference.md) informacích k sadě SDK a [ukázkách](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples) kódu.
+   > Sada moderní čtečka SDK používá vlastnost AccessToken tokenu, například $token. AccessToken. Podrobnosti najdete v [referenčních](reference.md) informacích k sadě SDK a [ukázkách](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples) kódu.
 
 Případně můžete instanční objekt ověřit pomocí certifikátu. Kromě instančního objektu jsou taky podporované uživatelské objekty a oprávnění delegovaná přes jinou aplikaci Azure AD. V tomto případě, místo hesel nebo certifikátů, se uživatelům při získávání tokenů zobrazí výzva k zadání dvou faktorů ověřování.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Podívejte se na [kurz](./tutorial.md) , který vám umožní udělat si další informace, které můžete dělat v sadě moderní čtečky.
-* Prozkoumejte [sadu moderních čtenářů](https://github.com/Microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)
+* Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)

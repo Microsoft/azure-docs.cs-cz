@@ -1,21 +1,18 @@
 ---
 title: Ověření metrik latence a propustnosti pro účet úložiště na webu Azure Portal | Microsoft Docs
 description: Zjistěte, jak ověřit metriky latence a propustnosti pro účet úložiště na webu Azure Portal.
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 2fde9b2b88b4c758065ba4b38da48724bfbfcd75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61427735"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698979"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Ověření metrik latence a propustnosti pro účet úložiště
 
@@ -31,7 +28,7 @@ Azure Monitor s využitím [metrik úložiště Azure](../common/storage-metrics
 
 ## <a name="configure-metrics"></a>Konfigurace metrik
 
-V **NASTAVENÍ** svého účtu úložiště přejděte do části **Metriky (Preview)**.
+V **NASTAVENÍ** svého účtu úložiště přejděte do části **Metriky (Preview)** .
 
 Z rozevíracího seznamu **DÍLČÍ SLUŽBA** zvolte objekt blob.
 
@@ -47,7 +44,7 @@ Pomocí následujících metrik získáte představu o latenci a propustnosti ap
 |**Příchozí přenos dat**|Množství příchozích dat. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure. |
 |**Výchozí přenos dat**|Množství výchozích dat. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat. |
 
-Vedle možnosti **Čas** vyberte **Posledních 24 hodin (automaticky)**. Zvolte **Poslední hodina**, jako **Časové intervaly** zvolte **Minuta** a pak klikněte na **Použít**.
+Vedle možnosti **Čas** vyberte **Posledních 24 hodin (automaticky)** . Zvolte **Poslední hodina**, jako **Časové intervaly** zvolte **Minuta** a pak klikněte na **Použít**.
 
 ![Metriky účtu úložiště](./media/storage-blob-scalable-app-verify-metrics/figure1.png)
 
@@ -65,7 +62,7 @@ Ke grafům může být přiřazených více metrik, ale přiřazením více než
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, virtuální počítač a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků příslušného virtuálního počítače a kliknete na Odstranit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Ve čtvrté části série jste se seznámili se zobrazováním metrik ukázkového řešení a naučili jste se například:
 

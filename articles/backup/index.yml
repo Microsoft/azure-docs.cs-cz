@@ -5,13 +5,13 @@ metadata:
   title: 'Dokumentace ke službě Azure Backup – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
   description: 'Azure Backup umožňuje zálohovat data pro místní servery, virtuální počítače, virtualizované úlohy, server SQL, server SharePoint a nejenom to. Naučte se prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek zálohovat a obnovovat vaše data.'
   services: backup
-  author: rayne-wiselman
+  author: dcurwin
   manager: carmonm
   ms.service: backup
   ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 05/22/2018
-  ms.author: raynew
+  ms.author: dacurwin
 abstract:
   description: 'Azure Backup využijte k ochraně dat pro místní servery, virtuální počítače, virtualizované úlohy, server SQL, server SharePoint a nejenom to. Naučte se prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek zálohovat a obnovovat vaše data.'
 sections:

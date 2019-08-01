@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: 4a74133a4a34f07db3813d3b9f9a47794c05ec49
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: af01c0c2586ce7df1902a0bcc502c6fd06a5215d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594646"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697914"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Vytvoření prostředku Cognitive Services pomocí Azure Portal
 
@@ -65,6 +65,13 @@ Před vytvořením prostředku Cognitive Services musíte mít skupinu prostřed
 Po vytvoření prostředku můžete k němu získat přístup z řídicího panelu Azure, pokud jste ho připnuli. V opačném případě ji můžete najít ve **skupinách prostředků**. Po výběru prostředku můžete klíče získat výběrem **klíče** v části **Správa prostředků**.
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
+
+## <a name="pricing-tiers-and-billing"></a>Cenové úrovně a fakturace
+
+Cenové úrovně (a množství, které se vám bude účtovat), vycházejí z počtu transakcí, které odešlete pomocí ověřovacích informací. Každá cenová úroveň určuje:
+* maximální počet povolených transakcí za sekundu (TPS).
+* funkce služby povolené v rámci cenové úrovně.
+* Náklady na předdefinovaný objem transakcí. Po překročení této částky se bude účtovat další poplatek, který je uvedený v podrobnostech o [cenách](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) vaší služby.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
