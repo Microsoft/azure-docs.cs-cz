@@ -498,7 +498,7 @@ Po zkopírování dat do a z Azure SQL Database Managed Instance se používají
 | numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
-| ROWVERSION |Byte[] |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
