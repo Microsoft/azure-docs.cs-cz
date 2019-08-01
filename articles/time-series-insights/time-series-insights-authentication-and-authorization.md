@@ -1,6 +1,6 @@
 ---
-title: Ověřování a autorizaci s použitím rozhraní API v Azure Time Series Insights | Dokumentace Microsoftu
-description: Tento článek popisuje, jak nakonfigurovat ověřování a autorizace pro vlastní aplikaci, která volá rozhraní API Azure čas Series Insights.
+title: Ověřování a autorizace pomocí rozhraní API v Azure Time Series Insights | Microsoft Docs
+description: Tento článek popisuje, jak nakonfigurovat ověřování a autorizaci pro vlastní aplikaci, která volá rozhraní Azure Time Series Insights API.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -12,42 +12,42 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 899bcffaf3a54bd541d488f99c35ec6721d751ca
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: bdf0fbfb2b40e932f9e3627c3bc0356eb0afb472
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543905"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677930"
 ---
-# <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure čas Series Insights
+# <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní Azure Time Series Insights API
 
-Tento dokument popisuje, jak zaregistrovat aplikaci v Azure Active Directory pomocí nové okno Azure Active Directory. Aplikace v Azure Active Directory umožní uživatelům ověřit ale být autorizované na používání času řady přehled rozhraní API pro Azure přidružené k prostředí Time Series Insights.
+Tento dokument popisuje, jak zaregistrovat aplikaci v Azure Active Directory pomocí nového okna Azure Active Directory. Aplikace zaregistrované v Azure Active Directory umožňují uživatelům ověřování a autorizaci používat rozhraní API služby Azure Time Series Insights přidružené k prostředí Time Series Insights.
 
-## <a name="service-principal"></a>Instanční objekt služby
+## <a name="service-principal"></a>Instanční objekt
 
-Následující části popisují, jak nakonfigurovat aplikaci pro přístup k rozhraní API čas Series Insights jménem aplikace. Aplikace může potom zadat dotaz nebo publikovat referenčních dat v prostředí Time Series Insights pomocí vlastních přihlašovacích údajů aplikaci Azure Active Directory.
+Následující části popisují, jak nakonfigurovat aplikaci pro přístup k rozhraní Time Series Insights API jménem aplikace. Aplikace pak může dotazovat nebo publikovat referenční data v prostředí Time Series Insights pomocí vlastních přihlašovacích údajů aplikace prostřednictvím Azure Active Directory.
 
-## <a name="summary-and-best-practices"></a>Summary a osvědčené postupy
+## <a name="summary-and-best-practices"></a>Souhrn a osvědčené postupy
 
-Tok registrace aplikace Azure Active Directory zahrnuje tři hlavní kroky.
+Registrační tok aplikace Azure Active Directory zahrnuje tři hlavní kroky.
 
-1. [Registrace aplikace](#azure-active-directory-app-registration) ve službě Azure Active Directory.
-1. Autorizovat aplikaci mít [přístup k datům prostředí Time Series Insights](#granting-data-access).
-1. Použití **ID aplikace** a **tajný kód klienta** k získání tokenu z `https://api.timeseries.azure.com/` ve vašich [klientskou aplikaci](#client-app-initialization). Token, který potom slouží k volání rozhraní API čas Series Insights.
+1. [Registrace aplikace](#azure-active-directory-app-registration) v Azure Active Directory.
+1. Autorizujte aplikaci tak, aby měla [přístup k datům Time Series Insights prostředí](#granting-data-access).
+1. Použijte **ID aplikace** a **tajný klíč klienta** k získání tokenu z `https://api.timeseries.azure.com/` [klientské aplikace](#client-app-initialization). Token se pak dá použít k volání rozhraní Time Series Insights API.
 
-Za **kroku 3**, oddělení vaší aplikace a své přihlašovací údaje pro vám umožní:
+V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám umožní:
 
-* Přiřadíte oprávnění pro aplikace identitu, která se liší od své vlastní oprávnění. Tato oprávnění jsou obvykle omezené na pouze co aplikace vyžaduje. Například můžete umožnit aplikaci číst data jenom z konkrétního prostředí Time Series Insights.
-* Izolace zabezpečení aplikace, od vytváření pověření ověřování s využitím **tajný kód klienta** nebo certifikát zabezpečení. Přihlašovací údaje vaší aplikace v důsledku toho nejsou závislé na pověření konkrétního uživatele. Pokud se změní na roli uživatele, aplikace nemusí nutně vyžadovat nové přihlašovací údaje nebo další konfiguraci. Pokud uživatel změní heslo, nevyžaduje, aby veškerý přístup k aplikaci nové přihlašovacím údajům nebo klíčům.
-* Spusťte pomocí skriptu bezobslužné instalace **tajný kód klienta** nebo zabezpečení certifikátu místo přihlašovacích údajů konkrétního uživatele (museli být k dispozici).
-* Použijte certifikát zabezpečení, ne heslo k zabezpečení přístupu k rozhraní API Azure čas Series Insights.
+* Přiřaďte oprávnění identitě aplikace, která se liší od vašich vlastních oprávnění. Tato oprávnění se většinou omezují jenom na to, co aplikace vyžaduje. Aplikaci můžete například dovolit číst data pouze z konkrétního Time Series Insightsho prostředí.
+* Izolujte zabezpečení aplikace od přihlašovacích údajů pro ověření uživatele pomocí **tajného klíče klienta** nebo certifikátu zabezpečení. V důsledku toho přihlašovací údaje aplikace nejsou závislé na přihlašovacích údajích konkrétního uživatele. Pokud se změní role uživatele, aplikace nemusí nutně vyžadovat nové přihlašovací údaje ani další konfiguraci. Pokud uživatel změní heslo, veškerý přístup k aplikaci nevyžaduje nové přihlašovací údaje ani klíče.
+* Spusťte bezobslužný skript pomocí **tajného klíče klienta** nebo certifikátu zabezpečení, nikoli přihlašovací údaje konkrétního uživatele (vyžaduje, aby byly přítomny).
+* Pro zabezpečení přístupu k rozhraní Azure Time Series Insights API použijte certifikát zabezpečení, nikoli heslo.
 
 > [!IMPORTANT]
-> Postupujte podle principu **oddělení se týká** (popsaných výše v tomto scénáři) při konfiguraci zásad zabezpečení Azure Time Series Insights.
+> Při konfiguraci zásad zabezpečení Azure Time Series Insights postupujte podle principu **oddělení** potíží (popsané v tomto scénáři výše).
 
 > [!NOTE]
-> * Tento článek se zaměřuje na jednoho tenanta aplikaci, ve kterém je aplikace určena pro spuštění v pouze jedna organizace.
-> * Aplikace pro jednoho tenanta budete obvykle používat pro-obchodní aplikace, které ve vaší organizaci.
+> * Článek se zaměřuje na aplikaci s jedním tenantů, kde má aplikace běžet jenom v jedné organizaci.
+> * Pro obchodní aplikace, které běží ve vaší organizaci, obvykle používáte aplikace pro jednoho tenanta.
 
 ## <a name="detailed-setup"></a>Podrobné nastavení
 
@@ -57,28 +57,28 @@ Za **kroku 3**, oddělení vaší aplikace a své přihlašovací údaje pro vá
 
 ### <a name="granting-data-access"></a>Udělení přístupu k datům
 
-1. Pro prostředí Time Series Insights, vyberte **zásady přístupu k datům** a vyberte **přidat**.
+1. V prostředí Time Series Insights vyberte **zásady přístupu k datům** a vyberte **Přidat**.
 
-   [![Přidat nové zásady přístupu dat do prostředí Time Series Insights](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
+   [![Přidání nových zásad přístupu k datům do prostředí Time Series Insights](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 
-1. V **vybrat uživatele** dialogové okno vložte buď **název_aplikace** nebo **ID aplikace** z části registrace aplikace Azure Active Directory.
+1. V dialogovém okně **Vybrat uživatele** vložte **název aplikace** nebo **ID aplikace** z části registrace aplikace Azure Active Directory.
 
-   [![Vyhledání aplikace v dialogovém okně vyberte uživatele](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
+   [![Vyhledání aplikace v dialogovém okně Vybrat uživatele](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-1. Vyberte roli. Vyberte **čtečky** provádět dotazy na data nebo **Přispěvatel** změn referenčních dat a dotazování na data. Vyberte **OK**.
+1. Vyberte roli. Výběr **čtecího zařízení** pro dotazování dat nebo **přispěvatele** k dotazování na data a změně referenčních dat. Vyberte **OK**.
 
-   [![V dialogovém okně vybrat roli uživatele vybrat přispěvatele nebo čtenáře](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
+   [![Výběr čtecího modulu nebo přispěvatele v dialogovém okně Vybrat roli uživatele](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
-1. Uložte zásadu tak, že vyberete **OK**.
+1. Uložte zásadu výběrem **OK**.
 
    > [!TIP]
    > Přečtěte si informace o [udělení přístupu k datům](./time-series-insights-data-access.md) do prostředí Time Series Insights v Azure Active Directory.
 
-### <a name="client-app-initialization"></a>Inicializace klienta aplikace
+### <a name="client-app-initialization"></a>Inicializace klientské aplikace
 
-1. Použití **ID aplikace** a **tajný kód klienta** (klíč aplikace) z části registrace aplikace Azure Active Directory k získání tokenu jménem aplikace.
+1. Použijte **ID aplikace** a **tajný klíč klienta** (aplikační klíč) z části registrace aplikace Azure Active Directory k získání tokenu jménem aplikace.
 
-    V C#, následující kód můžete získat token jménem aplikace. Úplnou ukázku najdete v tématu [dotazování dat pomocí jazyka C#](time-series-insights-query-data-csharp.md).
+    V C#nástroji může následující kód získat token jménem aplikace. Úplnou ukázku najdete v tématu dotazování na [data C#pomocí ](time-series-insights-query-data-csharp.md).
 
     ```csharp
     // Enter your Active Directory tenant domain name
@@ -99,14 +99,14 @@ Za **kroku 3**, oddělení vaší aplikace a své přihlašovací údaje pro vá
     string accessToken = token.AccessToken;
     ```
 
-1. Token, který je pak možné předat v `Authorization` záhlaví, když aplikace volá rozhraní API čas Series Insights.
+1. Token se pak může předat v `Authorization` hlavičce, když aplikace volá rozhraní Time Series Insights API.
 
 ## <a name="next-steps"></a>Další postup
 
-- Ukázkový kód, který volá rozhraní API GA čas Series Insights, naleznete v tématu [dotazování dat pomocí C# ](./time-series-insights-query-data-csharp.md).
+- Vzorový kód, který volá rozhraní API GA Time Series Insights, najdete v tématu [dotazování dat pomocí C# ](./time-series-insights-query-data-csharp.md).
 
-- Ukázky kódu rozhraní API ve verzi Preview čas Series Insights najdete v tématu [data dotazu ve verzi Preview s využitím C# ](./time-series-insights-update-query-data-csharp.md).
+- Náhled ukázek kódu rozhraní API Time Series Insights najdete v tématu [dotazování dat C#ve verzi Preview pomocí ](./time-series-insights-update-query-data-csharp.md).
 
-- Referenční informace rozhraní API najdete v tématu [referenční dokumentace rozhraní API pro dotazy](/rest/api/time-series-insights/ga-query-api).
+- Referenční informace k rozhraní API najdete v tématu [Reference k rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api).
 
-- Zjistěte, jak [vytvoření instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md).
+- Naučte se [vytvořit instanční objekt](../active-directory/develop/howto-create-service-principal-portal.md).

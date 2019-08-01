@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5d82f665cc837e5dbd2d7efbf16c7ae94e1b2b7
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 2987f8fb116bfcbb1698335c3aca6f1fd8eb633e
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333911"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717290"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co je Azure Active Directory Identity Protection (Aktualizováno)?
 
 Prostředí ochrany identit bylo aktualizováno, aby lépe chránilo identity vaší organizace. Tento aktualizovaný zážitek nabízí:
 
-- Předesignované prostředí pro správu, které se kolem rizika nejvíce hodí pro ¬ rizika a riziko přihlašování uživatelů
+- Předesignované prostředí pro správu, které se kolem rizika nejvíce hodí pro vaše riziko a riziko přihlašování uživatelů
 - Výkonné prostředí pro vyšetřování s podporou pro filtrování, řazení a inteligentní stahování
 - Vylepšené výpočty rizik uživatelů, které vám pomohou určit prioritu vašeho úsilí směrem k uživatelům, kteří jsou pravděpodobně napadeni.
 - Nová podpora rozhraní API, která umožňuje programový přístup k rizikovým datům

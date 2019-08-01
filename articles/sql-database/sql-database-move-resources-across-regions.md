@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 26d3377767a99a7291e73522152d4c6dbf389067
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 2158d4120445de4c62461fb89555a1b73bc1e2b4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444848"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567171"
 ---
 # <a name="how-to-move-azure-sql-resources-to-another-region"></a>Jak přesunout prostředky SQL Azure do jiné oblasti
 
@@ -74,7 +73,7 @@ Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/a
 
 ### <a name="test-synchronization"></a>Synchronizace testů
 
-Jakmile  je `2`ReplicationState, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního `<fog-name>.secondary.database.windows.net` koncového bodu a proveďte jakékoli dotazy k databázím, abyste zajistili připojení, správnou konfiguraci zabezpečení a data. umístění. 
+Jakmile je `2`ReplicationState, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního `<fog-name>.secondary.database.windows.net` koncového bodu a proveďte jakékoli dotazy k databázím, abyste zajistili připojení, správnou konfiguraci zabezpečení a data. umístění. 
 
 ### <a name="initiate-the-move"></a>Zahájit přesun
 
@@ -126,7 +125,7 @@ Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/a
 
 ### <a name="test-synchronization"></a>Synchronizace testů
  
-Jakmile  je `2`ReplicationState, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního `<fog-name>.secondary.database.windows.net` koncového bodu a proveďte jakékoli dotazy k databázím, abyste zajistili připojení, správnou konfiguraci zabezpečení a data. umístění. 
+Jakmile je `2`ReplicationState, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního `<fog-name>.secondary.database.windows.net` koncového bodu a proveďte jakékoli dotazy k databázím, abyste zajistili připojení, správnou konfiguraci zabezpečení a data. umístění. 
 
 ### <a name="initiate-the-move"></a>Zahájit přesun
  
@@ -173,7 +172,7 @@ Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/a
 
 ### <a name="test-synchronization"></a>Synchronizace testů
 
-Jakmile  je `2`ReplicationState, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního `<fog-name>.secondary.database.windows.net` koncového bodu a proveďte jakékoli dotazy k databázím, abyste zajistili připojení, správnou konfiguraci zabezpečení a data. umístění. 
+Jakmile je `2`ReplicationState, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního `<fog-name>.secondary.database.windows.net` koncového bodu a proveďte jakékoli dotazy k databázím, abyste zajistili připojení, správnou konfiguraci zabezpečení a data. umístění. 
 
 ### <a name="initiate-the-move"></a>Zahájit přesun 
 

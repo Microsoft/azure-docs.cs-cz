@@ -9,14 +9,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 07/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: c086f94a161853cba3a9ed2b98f13ea17b90dd20
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 662594f3ef0e4d5598b52cb07006b513e7f3c35a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478804"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564976"
 ---
  # <a name="application-insights-overriding-default-endpoints"></a>Application Insights přepsání výchozích koncových bodů
 
@@ -150,7 +150,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 V současné době jsou k [disAzure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) a [Azure Čína](https://docs.microsoft.com/azure/china/resources-developer-guide)jedinými oblastmi, které vyžadují úpravy koncových bodů.
 
-|Oblast |  Název koncového bodu | Value |
+|Oblast |  Název koncového bodu | Hodnota |
 |-----------------|:------------|:-------------|
 | Azure (Čína) | Kanál telemetrie | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure (Čína) | QuickPulse (živé metriky) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -159,10 +159,18 @@ V současné době jsou k [disAzure Government](https://docs.microsoft.com/azure
 | Azure Government | QuickPulse (živé metriky) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
 | Azure Government | Dotaz na profil |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
 
+Pokud aktuálně používáte [REST API](https://dev.applicationinsights.io/
+) Application Insights, ke kterému se běžně používá API.ApplicationInsights.IO prostřednictvím "", budete muset použít koncový bod, který je místní pro vaši oblast:
+
+|Oblast |  Název koncového bodu | Value |
+|-----------------|:------------|:-------------|
+| Azure (Čína) | REST API | `api.applicationinsights.azure.cn` |
+| Azure Government | REST API | `api.applicationinsights.us`|
+
 > [!NOTE]
 > Monitorování agenta bez kódu nebo rozšíření na základě rozšíření pro Azure App Services v tuto **chvíli není** v těchto oblastech podporováno. Jakmile bude tato funkce k dispozici, bude tento článek aktualizován.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o vlastních úpravách Azure Government najdete v podrobných pokynech k [monitorování a správě Azure](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights).
 - Další informace o Azure Číně najdete v [Azure Čína PlayBook](https://docs.microsoft.com/azure/china/).

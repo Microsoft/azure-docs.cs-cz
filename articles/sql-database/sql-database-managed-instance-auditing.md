@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database managed instance auditování | Dokumentace Microsoftu
-description: Zjistěte, jak začít pracovat s Azure SQL Database managed instance auditu pomocí T-SQL
+title: Azure SQL Database auditování spravované instance | Microsoft Docs
+description: Naučte se, jak začít s Azure SQL Database auditování spravované instance pomocí T-SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,91 +12,90 @@ f1_keywords:
 author: vainolo
 ms.author: arib
 ms.reviewer: vanto
-manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 6ada2a5e505bfe37f4f9a956570d8b6f38f55e55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a613a2eb6499538199306872f2e415019552686
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60702769"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567718"
 ---
-# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s auditováním služby Azure SQL Database managed instance
+# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s Azure SQL Database auditování spravované instance
 
-[Spravovaná instance](sql-database-managed-instance.md) auditování sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu úložiště Azure. Také auditování:
+Auditování [spravované instance](sql-database-managed-instance.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage. Auditování taky:
 
-- Pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které můžou značit problémy obchodního charakteru nebo vzbuzovat podezření na narušení zabezpečení.
-- Povolí a umožňuje dodržování standardů dodržování předpisů, ale nezaručuje dodržování předpisů. Další informace o Azure programy dodržování standardů tuto podporu, najdete v článku [Centrum zabezpečení Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
+- Pomáhá udržet dodržování legislativních předpisů, pochopit databázovou činnost a získat přehled o nesrovnalostech a anomáliích, které by mohly označovat obchodní aspekty nebo podezření na narušení zabezpečení.
+- Povoluje a usnadňuje dodržování standardů dodržování předpisů, i když nezaručuje dodržování předpisů. Další informace o programech Azure, které podporují dodržování standardů, najdete v [Centrum zabezpečení Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , kde můžete najít nejaktuálnější seznam SQL Database certifikace dodržování předpisů.
 
-## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Nastavení auditování serveru do služby Azure storage
+## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Nastavení auditování serveru do služby Azure Storage
 
-Následující část popisuje konfiguraci auditování pro spravovanou instanci.
+V následující části je popsána konfigurace auditování na spravované instanci.
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Vytvoření služby Azure Storage **kontejneru** kde jsou uloženy protokoly auditu.
+1. Vytvořte **kontejner** Azure Storage, ve kterém jsou uložené protokoly auditu.
 
-   1. Přejděte do služby Azure Storage, ve kterém chcete ukládat vaše protokoly auditu.
+   1. Přejděte do Azure Storage, kam chcete ukládat protokoly auditu.
 
       > [!IMPORTANT]
-      > Aby se zabránilo křížová čtení/zápisu použijte účet úložiště ve stejné oblasti jako spravované instance.
+      > Použijte účet úložiště ve stejné oblasti jako spravovanou instanci, aby nedocházelo ke čtení a zápisu mezi jednotlivými oblastmi.
 
-   1. V účtu úložiště, přejděte na **přehled** a klikněte na tlačítko **objekty BLOB**.
+   1. V účtu úložiště přejděte na **Přehled** a klikněte na **objekty blob**.
 
-      ![Azure Blob widgetu](./media/sql-managed-instance-auditing/1_blobs_widget.png)
+      ![Widget Azure Blob](./media/sql-managed-instance-auditing/1_blobs_widget.png)
 
-   1. V horní nabídce klikněte na tlačítko **+ kontejner** vytvořit nový kontejner.
+   1. V horní nabídce klikněte na **+ kontejner** a vytvořte nový kontejner.
 
-      ![Vytvoření ikony kontejneru objektů blob](./media/sql-managed-instance-auditing/2_create_container_button.png)
+      ![Ikona vytvoření kontejneru objektů BLOB](./media/sql-managed-instance-auditing/2_create_container_button.png)
 
-   1. Zadejte kontejner **název**, nastavte úroveň pro veřejný přístup **privátní**a potom klikněte na tlačítko **OK**.
+   1. Zadejte **název**kontejneru, nastavte úroveň veřejného přístupu na **Private**a pak klikněte na **OK**.
 
-      ![Vytvoření konfigurace kontejneru objektů blob](./media/sql-managed-instance-auditing/3_create_container_config.png)
+      ![Vytvořit konfiguraci kontejneru objektů BLOB](./media/sql-managed-instance-auditing/3_create_container_config.png)
 
-1. Po vytvoření kontejneru pro Audit existuje protokoly jsou dva způsoby, jak ho nakonfigurovat jako cíl pro protokoly auditu: [pomocí jazyka T-SQL](#blobtsql) nebo [pomocí SQL Server Management Studio (SSMS) uživatelského rozhraní](#blobssms):
+1. Po vytvoření kontejneru pro protokoly auditu existují dva způsoby, jak ho nakonfigurovat jako cíl pro protokoly auditu: [pomocí T-SQL](#blobtsql) nebo [pomocí uživatelského rozhraní SQL Server Management Studio (SSMS)](#blobssms):
 
-   - <a id="blobtsql"></a>Konfigurace úložiště na blogu k protokolům auditu pomocí T-SQL:
+   - <a id="blobtsql"></a>Konfigurace úložiště blogu pro protokoly auditu pomocí T-SQL:
 
-     1. V seznamu kontejnerů klikněte na nově vytvořený kontejner a pak klikněte na tlačítko **vlastnosti kontejneru**.
+     1. V seznamu kontejnery klikněte na nově vytvořený kontejner a pak klikněte na **vlastnosti kontejneru**.
 
         ![Tlačítko Vlastnosti kontejneru objektů BLOB](./media/sql-managed-instance-auditing/4_container_properties_button.png)
 
-     1. Kliknutím na ikonu kopírování zkopírujte adresu URL kontejneru a uložit adresu URL (například v poznámkovém bloku) pro budoucí použití. Formát adresy URL kontejneru by měla být `https://<StorageName>.blob.core.windows.net/<ContainerName>`
+     1. Zkopírujte adresu URL kontejneru kliknutím na ikonu kopírování a uložte adresu URL (například v poznámkovém bloku) pro budoucí použití. Formát adresy URL kontejneru by měl být`https://<StorageName>.blob.core.windows.net/<ContainerName>`
 
-        ![Adresa URL kopírování objektů BLOB v kontejneru](./media/sql-managed-instance-auditing/5_container_copy_name.png)
+        ![Adresa URL pro kopírování kontejneru objektů BLOB](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
-     1. Generovat služby Azure Storage **tokenů SAS** udělit spravovanou instanci auditování přístupová práva k účtu úložiště:
+     1. Vygenerujte Azure Storage **token SAS** pro udělení oprávnění auditování spravované instance účtu úložiště:
 
-        - Přejděte do účtu Azure Storage, ve které jste vytvořili kontejner v předchozím kroku.
+        - Přejděte na účet Azure Storage, kde jste kontejner vytvořili v předchozím kroku.
 
-        - Klikněte na **sdílený přístupový podpis** v nabídce Nastavení úložiště.
+        - V nabídce nastavení úložiště klikněte na **sdílený přístupový podpis** .
 
-          ![Sdílený přístup podpis ikona v nabídce Nastavení úložiště](./media/sql-managed-instance-auditing/6_storage_settings_menu.png)
+          ![Ikona sdíleného přístupového podpisu v nabídce nastavení úložiště](./media/sql-managed-instance-auditing/6_storage_settings_menu.png)
 
-        - Konfigurace sdíleného přístupového podpisu následujícím způsobem:
+        - SAS nakonfigurujte následujícím způsobem:
 
-          - **Povolené služby**: Objekt blob
+          - **Povolené služby**: Blob
 
-          - **Počáteční datum**: abyste zabránili problémům souvisejícím s časové pásmo, doporučuje se použít včerejší datum
+          - **Počáteční datum**: aby nedocházelo k problémům souvisejícím s časovými pásmy, doporučujeme použít včerejší datum.
 
-          - **Koncové datum**: Zvolte datum, které tento Token SAS vyprší platnost
+          - **Koncové datum**: vyberte datum, kdy vyprší platnost tohoto tokenu SAS.
 
             > [!NOTE]
-            > Obnovení tokenu při vypršení platnosti, aby se zabránilo chybám auditu.
+            > Obnovte token po vypršení platnosti, abyste se vyhnuli selháním auditu.
 
           - Klikněte na **Vygenerovat SAS**.
             
             ![Konfigurace SAS](./media/sql-managed-instance-auditing/7_sas_configure.png)
 
-        - Po kliknutí na Generovat SAS SAS Token se zobrazí v dolní části. Kliknutím na ikonu kopírování zkopírujte token a uložte ho (například v poznámkovém bloku) pro budoucí použití.
+        - Po kliknutí na generovat SAS se token SAS zobrazuje dole. Zkopírujte token tak, že kliknete na ikonu kopírování a uložíte ho (například v poznámkovém bloku) pro budoucí použití.
 
-          ![Zkopírujte SAS token](./media/sql-managed-instance-auditing/8_sas_copy.png)
+          ![Kopírovat token SAS](./media/sql-managed-instance-auditing/8_sas_copy.png)
 
           > [!IMPORTANT]
-          > Odebrat otazník ("?") znaků od začátku tokenu.
+          > Odstraňte znak otazníku ("?") od začátku tokenu.
 
-     1. Připojte se k vaší spravované instance pomocí SQL Server Management Studio (SSMS) nebo jakýkoli jiný podporovaný nástroj.
+     1. Připojte se ke spravované instanci prostřednictvím SQL Server Management Studio (SSMS) nebo jakéhokoli jiného podporovaného nástroje.
 
-     1. Spuštěním následujícího příkazu T-SQL k **vytvoření nových přihlašovacích údajů** pomocí adresy URL kontejneru a tokenu SAS, který jste vytvořili v předchozích krocích:
+     1. Spusťte následující příkaz T-SQL k **Vytvoření nového přihlašovacího údaje** pomocí adresy URL kontejneru a tokenu SAS, který jste vytvořili v předchozích krocích:
 
         ```SQL
         CREATE CREDENTIAL [<container_url>]
@@ -105,7 +104,7 @@ Následující část popisuje konfiguraci auditování pro spravovanou instanci
         GO
         ```
 
-     1. Spusťte následující příkaz jazyka T-SQL, chcete-li vytvořit nový Server Audit (zvolte svůj vlastní název auditu, použijte adresu URL kontejneru, který jste vytvořili v předchozích krocích). Pokud není zadán, `RETENTION_DAYS` výchozí hodnota je 0 (neomezenou dobu):
+     1. Spuštěním následujícího příkazu T-SQL vytvořte nový audit serveru (vyberte vlastní název auditu, použijte adresu URL kontejneru, kterou jste vytvořili v předchozích krocích). Pokud není zadaný, `RETENTION_DAYS` výchozí hodnota je 0 (neomezené uchovávání):
 
         ```SQL
         CREATE SERVER AUDIT [<your_audit_name>]
@@ -113,38 +112,38 @@ Následující část popisuje konfiguraci auditování pro spravovanou instanci
         GO
         ```
 
-        1. Pokračujte [vytváření specifikace auditu serveru nebo specifikací auditu databáze](#createspec)
+        1. Pokračování [vytvořením specifikace auditu serveru nebo specifikace auditu databáze](#createspec)
 
-   - <a id="blobssms"></a>Konfigurace úložiště objektů blob k protokolům auditu pomocí SQL Server Management Studio (SSMS) 18 (Preview):
+   - <a id="blobssms"></a>Nakonfigurujte úložiště objektů BLOB pro protokoly auditu pomocí SQL Server Management Studio (SSMS) 18 (Preview):
 
-     1. Připojte se k spravované instance pomocí SQL Server Management Studio (SSMS) uživatelského rozhraní.
+     1. Připojte se ke spravované instanci pomocí uživatelského rozhraní SQL Server Management Studio (SSMS).
 
-     1. Kořenový uzel Průzkumník objektů rozbalte.
+     1. Rozbalte hlavní poznámku Průzkumník objektů.
 
-     1. Rozbalte **zabezpečení** uzel, klikněte pravým tlačítkem na **audity** uzel a klikněte na "Nové auditu":
+     1. Rozbalte uzel **zabezpečení** , klikněte pravým tlačítkem na uzel **audits** a klikněte na nový audit:
 
-        ![Rozbalíte možnost zabezpečení a audit uzlu](./media/sql-managed-instance-auditing/10_mi_SSMS_new_audit.png)
+        ![Rozbalte uzel zabezpečení a audit.](./media/sql-managed-instance-auditing/10_mi_SSMS_new_audit.png)
 
-     1. Přesvědčte se, že "URL" je vybráno v **cíl auditu** a klikněte na **Procházet**:
+     1. Ujistěte se, že je v **cíli auditu** vybraná možnost Adresa URL a klikněte na **Procházet**:
 
-        ![Procházet úložiště Azure](./media/sql-managed-instance-auditing/11_mi_SSMS_audit_browse.png)
+        ![Procházet Azure Storage](./media/sql-managed-instance-auditing/11_mi_SSMS_audit_browse.png)
 
-     1. (Volitelné) Přihlaste se ke svému účtu Azure:
+     1. Volitelné Přihlaste se ke svému účtu Azure:
 
-        ![Přihlásit se k Azure](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
+        ![Přihlášení k Azure](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
 
-     1. Vyberte předplatné, účet úložiště a kontejner objektů Blob z rozevíracích seznamů, nebo vytvořit vlastní kontejner kliknutím na **vytvořit**. Po dokončení klikněte na tlačítko **OK**:
+     1. V rozevíracích seznamech vyberte předplatné, účet úložiště a kontejner objektů blob, nebo vytvořte vlastní kontejner kliknutím na **vytvořit**. Po dokončení klikněte na **OK**:
 
-        ![Vyberte předplatné Azure, účet úložiště a kontejner objektů blob](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
+        ![Výběr předplatného Azure, účtu úložiště a kontejneru objektů BLOB](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
 
-     1. Klikněte na tlačítko **OK** v dialogovém okně "Create Audit".
+     1. Klikněte na **OK** v dialogovém okně vytvořit audit.
 
-1. <a id="createspec"></a>Po dokončení konfigurace vytvořit kontejner objektů Blob jako cíl pro protokoly auditu specifikace auditu serveru nebo specifikace auditu databáze stejně jako pro SQL Server:
+1. <a id="createspec"></a>Po nakonfigurování kontejneru objektů BLOB jako cíle pro protokoly auditu vytvořte specifikace auditu serveru nebo specifikaci auditu databáze, jako byste chtěli SQL Server:
 
-   - [Vytvořit průvodce pro specifikace jazyka T-SQL Server audit](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [Vytvořit průvodce T-SQL specifikace auditu databáze](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [Vytvoření specifikace auditu serveru – Průvodce T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [Vytvoření specifikace auditu databáze Průvodce T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-1. Povolte auditu serveru, který jste vytvořili v kroku 6:
+1. Povolte audit serveru, který jste vytvořili v kroku 6:
 
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>]
@@ -154,95 +153,95 @@ Následující část popisuje konfiguraci auditování pro spravovanou instanci
 
 Další informace:
 
-- [Auditování rozdíly mezi izolované databáze, elastický fond, s a spravované instance Azure SQL Database a databází v systému SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
-- [VYTVOŘIT SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
-- [PŘÍKAZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
+- [Rozdíly v auditování mezi izolovanými databázemi, elastickými fondy, s a spravovanými instancemi v Azure SQL Database a databázemi v SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
+- [VYTVOŘIT AUDIT SERVERU](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
+- [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
-## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>Nastavení auditování serveru do služby Event Hub nebo Azure Monitor protokolů
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>Nastavení auditování serveru do centra událostí nebo protokolů Azure Monitor
 
-Protokoly auditu ze spravované instance můžete odesílat i rozbočovače nebo protokoly Azure monitoru. Tato část popisuje, jak nastavit tuto konfiguraci:
+Protokoly auditu ze spravované instance je možné odesílat i do hub nebo Azure Monitor protokolů. Tato část popisuje, jak nakonfigurovat tuto konfiguraci:
 
-1. Přejděte v [webu Azure Portal](https://portal.azure.com/) do spravované instance.
+1. Přejděte na webu [Azure Portal](https://portal.azure.com/) do spravované instance.
 
 2. Klikněte na **nastavení diagnostiky**.
 
-3. Klikněte na **zapnout diagnostiku**. Pokud už je povolená Diagnostika *+ přidat nastavení diagnostiky* se zobrazí místo.
+3. Klikněte na **zapnout diagnostiku**. Pokud je už Diagnostika povolená, zobrazí se místo toho *možnost + Přidat diagnostiku* .
 
-4. Vyberte **SQLSecurityAuditEvents** v seznamu protokolů.
+4. V seznamu protokolů vyberte **SQLSecurityAuditEvents** .
 
-5. Vyberte cílové umístění událostí auditu – centra událostí a protokoly Azure monitoru. Konfigurace pro každý cíl požadované parametry (například pracovní prostor Log Analytics).
+5. Vyberte cíl pro události auditu – centrum událostí, protokoly Azure Monitor, nebo obojí. Pro každý cíl nakonfigurujte požadované parametry (třeba pracovní prostor Log Analytics).
 
 6. Klikněte na **Uložit**.
 
     ![Konfigurace nastavení diagnostiky](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 
-7. Připojte se k použití spravované instance **SQL Server Management Studio (SSMS)** nebo jakéhokoli klienta podporované.
+7. Připojte se ke spravované instanci pomocí **SQL Server Management Studio (SSMS)** nebo jakéhokoli jiného podporovaného klienta.
 
-8. Spusťte následující příkaz jazyka T-SQL k vytvoření auditu serveru:
+8. Spusťte následující příkaz T-SQL pro vytvoření auditu serveru:
 
     ```SQL
     CREATE SERVER AUDIT [<your_audit_name>] TO EXTERNAL_MONITOR;
     GO
     ```
 
-9. Vytvoření specifikace auditu serveru nebo specifikací auditu databáze, stejně jako pro SQL Server:
+9. Vytvořte specifikace auditu serveru nebo specifikace auditu databáze jako při SQL Server:
 
-   - [Vytvořit průvodce pro specifikace jazyka T-SQL Server audit](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
-   - [Vytvořit průvodce T-SQL specifikace auditu databáze](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
+   - [Vytvoření specifikace auditu serveru – Průvodce T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
+   - [Vytvoření specifikace auditu databáze Průvodce T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-10. Povolte auditování server vytvořili v kroku 8:
+10. Povolte audit serveru vytvořený v kroku 8:
  
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
     GO
     ```
 
-## <a name="consume-audit-logs"></a>Využívání protokolů auditování
+## <a name="consume-audit-logs"></a>Využívat protokoly auditu
 
-### <a name="consume-logs-stored-in-azure-storage"></a>Využívání protokolů uložená ve službě Azure Storage
+### <a name="consume-logs-stored-in-azure-storage"></a>Využívat protokoly uložené v Azure Storage
 
-Existuje několik metod, které lze použít k zobrazení protokolů auditování objektů blob.
+Existuje několik metod, pomocí kterých můžete zobrazit protokoly auditování objektů BLOB.
 
-- Použít funkci systému `sys.fn_get_audit_file` (T-SQL) vrátit data protokolu auditování v tabulkovém formátu. Další informace o použití této funkce najdete v článku [sys.fn_get_audit_file dokumentaci](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
+- Pomocí funkce `sys.fn_get_audit_file` System (T-SQL) Vraťte data protokolu auditu v tabulkovém formátu. Další informace o použití této funkce najdete v [dokumentaci k nástroji sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
-- Protokoly auditu můžete prozkoumat pomocí nástroje [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/). Ve službě Azure storage se ukládají protokoly auditování jako kolekce souborů, objektů blob do kontejneru, který byl definován pro ukládání protokolů auditu. Další podrobnosti o hierarchii složky úložiště konvence pojmenování a formát protokolu, najdete v článku [odkaz na formát protokolu auditování objektů Blob](https://go.microsoft.com/fwlink/?linkid=829599).
+- Protokoly auditu můžete prozkoumat pomocí nástroje, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/). V Azure Storage se protokoly auditování ukládají jako kolekce souborů objektů BLOB v kontejneru, který jste definovali pro uložení protokolů auditu. Další podrobnosti o hierarchii složky úložiště, konvencí pojmenování a formátu protokolu najdete v referenčních informacích o [formátu protokolu auditu objektů BLOB](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Úplný seznam metod spotřeby protokolu auditu, najdete [Začínáme s auditem SQL database](sql-database-auditing.md).
+- Úplný seznam metod spotřeby protokolu auditu najdete v tématu [Začínáme s auditováním služby SQL Database](sql-database-auditing.md).
 
-### <a name="consume-logs-stored-in-event-hub"></a>Využívání protokolů uložených v Centru událostí
+### <a name="consume-logs-stored-in-event-hub"></a>Využívání protokolů uložených v centru událostí
 
-Chcete-li využívají data protokolů auditu z centra událostí, je potřeba nastavit, aby datový proud zpracování událostí a jejich zápisu do cílového. Další informace najdete v článku dokumentace k Azure Event Hubs.
+Aby bylo možné využívat protokoly auditu z centra událostí, budete muset nastavit datový proud, který bude zpracovávat události a zapsat je do cíle. Další informace najdete v dokumentaci k Azure Event Hubs.
 
-### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Využití a analyzovat protokoly uložené v protokolech Azure Monitor
+### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Využití a analýza protokolů uložených v protokolech Azure Monitor
 
-Pokud se protokoly auditu se zapisují do protokolů Azure Monitor, jsou k dispozici v pracovním prostoru Log Analytics, ve kterém rozšířené hledání můžete spustit na data auditu. Jako výchozí bod, přejděte do pracovního prostoru Log Analytics a v části *Obecné* klikněte na *protokoly* a zadejte jednoduchý dotaz, jako například: `search "SQLSecurityAuditEvents"` zobrazíte auditování protokoluje.  
+Pokud jsou protokoly auditu zapisovány do protokolů Azure Monitor, jsou k dispozici v pracovním prostoru Log Analytics, kde můžete spustit pokročilé vyhledávání dat auditu. Jako výchozí bod přejděte do pracovního prostoru Log Analytics a v části *Obecné* klikněte na *protokoly* a zadejte jednoduchý dotaz, například: `search "SQLSecurityAuditEvents"` k zobrazení protokolů auditu.  
 
-Protokoly služby Azure Monitor nabízí provozní informace v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, díky kterým můžete analyzovat miliony záznamů napříč vašimi úlohami a servery. Další užitečné informace o Azure Monitor protokoly vyhledávací jazyk a příkazy, naleznete v tématu [protokoly Azure monitoru reference ke službě search](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Protokoly Azure Monitor poskytují informace o provozu v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, které umožňují snadno analyzovat miliony záznamů napříč všemi vašimi úlohami a servery. Další užitečné informace o tom, jak hledat jazyk a příkazy protokolu Azure Monitor naleznete v tématu [Azure monitor v protokolech hledání](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Auditování rozdíly mezi databázemi ve službě Azure SQL Database a databází v systému SQL Server
+## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Rozdíly v auditování mezi databázemi v Azure SQL Database a databázích v SQL Server
 
-Hlavní rozdíly mezi auditování v databázích v Azure SQL Database a databází v systému SQL Server jsou:
+Hlavní rozdíly mezi auditováním v databázích v Azure SQL Database a databázích v SQL Server jsou:
 
-- S možností nasazení spravované instance Azure SQL Database, auditování funguje na úrovni serveru nebo úložišti `.xel` soubory protokolů ve službě Azure Blob storage.
-- Izolované databáze a elastický fond možnosti nasazení ve službě Azure SQL Database auditování funguje na úrovni databáze.
-- V místním SQL serverem / virtuální počítače, audit funguje na serveru úrovně, ale ukládá události do protokolů událostí systému a soubory.
+- S možností nasazení Managed instance v Azure SQL Database funguje auditování na úrovni serveru a ukládá `.xel` soubory protokolů v úložišti objektů BLOB v Azure.
+- S možností nasazení jedna databáze a elastický fond v Azure SQL Database funguje auditování na úrovni databáze.
+- V SQL Server místní nebo virtuální počítače funguje audit na úrovni serveru, ale ukládá události do souborů protokolů událostí systému nebo Windows.
 
-Relace XEvent auditování ve spravované instanci podporuje cíle úložiště objektů Blob v Azure. Souborová služba a windows protokoly jsou **nepodporuje**.
+Auditování XEvent ve spravované instanci podporuje cíle služby Azure Blob Storage. Soubory a protokoly systému Windows nejsou **podporovány**.
 
-Klíč rozdíly v `CREATE AUDIT` syntaxe pro auditování objektů Blob v Azure storage jsou:
+Hlavní rozdíly v `CREATE AUDIT` syntaxi pro auditování do úložiště objektů BLOB v Azure jsou:
 
-- Novou syntaxi `TO URL` je k dispozici a umožní vám zadat adresu URL kontejneru objektů blob v Azure Storage, kde `.xel` soubory jsou umístěny.
-- Novou syntaxi `TO EXTERNAL MONITOR` je k dispozici pro povolení i Hub a Azure Monitor cíle protokolů.
-- Syntaxe `TO FILE` je **nepodporuje** protože SQL Database nemá přístup ke sdílené složky Windows.
-- Možnost vypnutí je **nepodporuje**.
-- `queue_delay` 0 je **nepodporuje**.
+- K dispozici `TO URL` je nová syntaxe, která umožňuje zadat adresu URL kontejneru úložiště objektů BLOB v Azure `.xel` , ve kterém jsou soubory umístěné.
+- K dispozici `TO EXTERNAL MONITOR` je nová syntaxe, která umožňuje, aby byly cílení na rozbočovač a Azure monitor protokoly.
+- Syntaxe `TO FILE` není **podporována** , protože SQL Database nemá přístup ke sdíleným složkám souborů systému Windows.
+- Možnost vypnutí není **podporována**.
+- `queue_delay`hodnota 0 není **podporována**.
 
 ## <a name="next-steps"></a>Další postup
 
-- Úplný seznam metod spotřeby protokolu auditu, najdete [Začínáme s auditem SQL database](sql-database-auditing.md).
-- Další informace o Azure programy dodržování standardů tuto podporu, najdete v článku [Centrum zabezpečení Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
+- Úplný seznam metod spotřeby protokolu auditu najdete v tématu [Začínáme s auditováním služby SQL Database](sql-database-auditing.md).
+- Další informace o programech Azure, které podporují dodržování standardů, najdete v [Centrum zabezpečení Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , kde můžete najít nejaktuálnější seznam SQL Database certifikace dodržování předpisů.
 
 <!--Image references-->
 

@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fe19ea2d8946d645704139bbf2faa80f21e84039
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4c55d3d92faf854952b609287bb16a30ed1e30ec
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708061"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717474"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure Powershellu
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure PowerShell
 
-Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní Image je možné spustit nasazení a zajistit konzistenci napříč několika virtuálními počítači. V tomto kurzu vytvoříte vlastní image virtuálního počítače Azure pomocí Powershellu. Získáte informace o těchto tématech:
+Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít k zavedení nasazení a zajištění konzistence napříč několika virtuálními počítači. V tomto kurzu vytvoříte vlastní image virtuálního počítače Azure pomocí PowerShellu. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nástroj Sysprep a generalizace virtuálních počítačů
@@ -34,7 +34,9 @@ Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vl
 > * Výpis všech imagí v předplatném
 > * Odstranění image
 
-## <a name="before-you-begin"></a>Než začnete
+Ve verzi Public Preview máme službu [Tvůrce imagí virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) . Jednoduše popište vlastní nastavení v šabloně a zpracuje kroky vytváření imagí v tomto článku. [Vyzkoušejte Azure image Builder (Preview)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
+
+## <a name="before-you-begin"></a>Před zahájením
 
 Následující postup podrobně popisuje přeměnu existujícího virtuálního počítače na opětovně použitelnou vlastní image, pomocí které můžete vytvářet nové instance virtuálních počítačů.
 
@@ -48,7 +50,7 @@ Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním roh
 
 ## <a name="prepare-vm"></a>Příprava virtuálního počítače
 
-Pokud chcete vytvořit image virtuálního počítače, budete muset připravit zdrojový virtuální počítač tak, že ji zobecníte, uvolníte ho a potom označení za generalizovaný s Azure.
+Pokud chcete vytvořit image virtuálního počítače, je potřeba připravit zdrojový virtuální počítač tím, že ho zobecnit, narušíte a pak ho označíte jako zobecněný s Azure.
 
 ### <a name="generalize-the-windows-vm-using-sysprep"></a>Generalizace virtuálního počítače s Windows pomocí nástroje Sysprep
 
@@ -56,7 +58,7 @@ Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních �
 
 
 1. Připojte se k virtuálnímu počítači.
-2. Otevřete okno příkazového řádku jako správce. Změňte adresář na *%windir%\system32\sysprep*a pak spusťte `sysprep.exe`.
+2. Otevřete okno příkazového řádku jako správce. Změňte adresář na *%WINDIR%\system32\sysprep*a potom spusťte příkaz `sysprep.exe`.
 3. V dialogovém okně **Nástroj pro přípravu systému** vyberte **Zobrazit prostředí prvního spuštění počítače** a ujistěte se, že je zaškrtnuté políčko **Generalizovat**.
 4. V části **Možnosti vypnutí** vyberte **Vypnout** a potom klikněte na **OK**.
 5. Po dokončení nástroj Sysprep vypne virtuální počítač. **Virtuální počítač nerestartujte**.
@@ -65,7 +67,7 @@ Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních �
 
 Chcete-li vytvořit image, musí být virtuální počítač uvolněný a označený jako generalizovaný v Azure.
 
-Zrušit přidělení virtuálního počítače pomocí [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
+Zrušte přidělení virtuálního počítače pomocí [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -73,7 +75,7 @@ Stop-AzVM `
    -Name myVM -Force
 ```
 
-Nastavte stav virtuálního počítače na `-Generalized` pomocí [Set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm). 
+Nastavte stav virtuálního počítače na `-Generalized` použití [set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm). 
    
 ```azurepowershell-interactive
 Set-AzVM `
@@ -84,7 +86,7 @@ Set-AzVM `
 
 ## <a name="create-the-image"></a>Vytvoření image
 
-Nyní můžete vytvořit image virtuálního počítače pomocí [New-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig) a [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage). Následující příklad vytvoří image *myImage* z virtuálního počítače *myVM*.
+Nyní můžete vytvořit bitovou kopii virtuálního počítače pomocí [New-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig) a [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage). Následující příklad vytvoří image *myImage* z virtuálního počítače *myVM*.
 
 Získejte virtuální počítač. 
 
@@ -114,9 +116,9 @@ New-AzImage `
  
 ## <a name="create-vms-from-the-image"></a>Vytvoření virtuálních počítačů z image
 
-Když teď máte image, můžete z ní vytvořit jeden nebo více nových virtuálních počítačů. Vytvoření virtuálního počítače z vlastní image je podobné vytvoření virtuálního počítače pomocí image pořízené na Marketplace. Při použití image pořízené na Marketplace je nutné zadat informace o image, poskytovateli image, nabídce, SKU a verzi. Pomocí parametru zjednodušené nastavit pro [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) rutiny, stačí zadat název vlastní image, dokud je ve stejné skupině prostředků. 
+Když teď máte image, můžete z ní vytvořit jeden nebo více nových virtuálních počítačů. Vytvoření virtuálního počítače z vlastní image je podobné vytvoření virtuálního počítače pomocí image pořízené na Marketplace. Při použití image pořízené na Marketplace je nutné zadat informace o image, poskytovateli image, nabídce, SKU a verzi. Pomocí zjednodušené sady parametrů pro rutinu [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) stačí zadat název vlastní image, pokud je ve stejné skupině prostředků. 
 
-Tento příklad vytvoří virtuální počítač s názvem *myVMfromImage* z *myImage* obrázků v *myResourceGroup*.
+Tento příklad vytvoří virtuální počítač s názvem *myVMfromImage* z image *myImage* v *myResourceGroup*.
 
 
 ```azurepowershell-interactive
@@ -143,7 +145,7 @@ $images = Get-AzResource -ResourceType Microsoft.Compute/images
 $images.name
 ```
 
-Odstranění image. Tento příklad odstraní image s názvem *myImage* z *myResourceGroup*.
+Odstranění image. Tento příklad odstraní obrázek s názvem *myImage* z *myResourceGroup*.
 
 ```azurepowershell-interactive
 Remove-AzImage `
@@ -162,7 +164,7 @@ V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili
 > * Výpis všech imagí v předplatném
 > * Odstranění image
 
-Přejděte k dalšímu kurzu, přečtěte si o tom, jak vytvořit virtuální počítače s vysokou dostupností.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak vytvořit vysoce dostupné virtuální počítače.
 
 > [!div class="nextstepaction"]
 > [Vytvoření vysoce dostupných virtuálních počítačů](tutorial-availability-sets.md)

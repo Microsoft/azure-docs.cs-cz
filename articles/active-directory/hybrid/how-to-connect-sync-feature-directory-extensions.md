@@ -1,6 +1,6 @@
 ---
-title: 'Synchronizace Azure AD Connect: Rozšíření adresáře | Dokumentace Microsoftu'
-description: Toto téma popisuje funkce rozšíření adresáře ve službě Azure AD Connect.
+title: 'Azure AD Connect synchronizace: Rozšíření adresáře | Microsoft Docs'
+description: Toto téma popisuje funkci rozšíření adresáře v Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,57 +16,57 @@ ms.date: 10/05/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff0fd4d01eab739b79685c1de67cb8fe28873961
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 88fdfce58bdd8e13637e77d01d4b6c0ab21f696a
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347948"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607649"
 ---
-# <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizace Azure AD Connect: Rozšíření adresáře
-Rozšíření adresáře můžete použít k rozšíření schématu do služby Azure Active Directory (Azure AD) pomocí vlastních atributů z místní služby Active Directory. Tato funkce umožňuje vytváření obchodních aplikací prostřednictvím atributy, které budete nadále spravovat místní. Tyto atributy mohou být spotřebovány prostřednictvím [rozšíření adresáře Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) nebo [Microsoft Graphu](https://developer.microsoft.com/graph/). Dostupné atributy lze zobrazit pomocí [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) a [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)v uvedeném pořadí.
+# <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronizace: Rozšíření adresáře
+K rozšíření schématu v Azure Active Directory (Azure AD) s vlastními atributy z místní služby Active Directory můžete použít rozšíření adresáře. Tato funkce umožňuje sestavovat obchodní aplikace pomocí atributů, které budete nadále spravovat místně. Tyto atributy je možné spotřebovat prostřednictvím [rozšíření služby Graph API Directory](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) nebo [Microsoft Graph](https://developer.microsoft.com/graph/)adresáře Azure AD. Dostupné atributy můžete zobrazit pomocí [Průzkumníka služby Azure AD Graph](https://graphexplorer.azurewebsites.net/) a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)v uvedeném pořadí.
 
-V současné době žádné úlohy Office 365 využívá tyto atributy.
+V současné době žádné úlohy Office 365 nevyužívají tyto atributy.
 
-Můžete nakonfigurovat další atributy, které se mají synchronizovat v cestě vlastní nastavení v Průvodci instalací.
+Další atributy, které chcete synchronizovat, můžete nakonfigurovat v cestě k vlastnímu nastavení v Průvodci instalací nástroje.
 
 >[!NOTE]
->Dostupné atributy pole rozlišuje velká a malá písmena.
+>V poli dostupné atributy se rozlišují malá a velká písmena.
 
 ![Průvodce rozšířením schématu](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 
 Instalace zobrazuje následující atributy, které jsou platné kandidáty:
 
-* Typy uživatelů a skupin objektů
-* Jednohodnotové atributy: Řetězec, logická hodnota, celé číslo, binární soubor
-* Více jednohodnotových atributů: Řetězec, binární soubor
+* Typy objektů uživatelů a skupin
+* Atributy s jednou hodnotou: Řetězec, logická hodnota, celé číslo, binární
+* Vícehodnotových atributů: Řetězec, binární
 
 
 >[!NOTE]
-> Přestože podporuje Azure AD Connect synchronizaci více Vážíme si toho služby Active Directory atributy do služby Azure AD jako rozšíření více Vážíme si toho adresáře, neexistuje momentálně žádný způsob, jak načíst a využívat data nahraná do atributů rozšíření adresáře více Vážíme si toho.
+> I když Azure AD Connect podporuje synchronizaci vícehodnotových atributů služby Active Directory se službou Azure AD jako víceřádková rozšíření adresáře, neexistuje momentálně žádný způsob, jak načíst a využívat data nahraná v atributech rozšíření adresáře s více hodnotami.
 
-Seznam atributů, které načítají z mezipaměti schémat, která je vytvořena během instalace služby Azure AD Connect. Pokud jste rozšířili schéma služby Active Directory s další atributy, je nutné [aktualizovat schéma](how-to-connect-installation-wizard.md#refresh-directory-schema) předtím, než tyto nové atributy jsou viditelné.
+Seznam atributů je načten z mezipaměti schématu, která je vytvořena během instalace Azure AD Connect. Pokud jste rozšíření schématu služby Active Directory rozšířili o další atributy, je nutné [schéma aktualizovat](how-to-connect-installation-wizard.md#refresh-directory-schema) předtím, než budou tyto nové atributy viditelné.
 
-Objekt ve službě Azure AD může mít až 100 atributů rozšíření adresáře. Maximální délka je 250 znaků. Pokud hodnota atributu je delší, synchronizační modul oříznut.
+Objekt ve službě Azure AD může mít až 100 atributů pro rozšíření adresáře. Maximální délka je 250 znaků. Pokud je hodnota atributu delší, synchronizační modul ho zkrátí.
 
-Během instalace služby Azure AD Connect je registrována aplikace, kde tyto atributy jsou k dispozici. Zobrazí se tato aplikace na webu Azure Portal.
+Během instalace Azure AD Connect je aplikace zaregistrovaná tam, kde jsou tyto atributy k dispozici. Tuto aplikaci můžete zobrazit v Azure Portal.
 
-![Schéma rozšíření aplikace](./media/how-to-connect-sync-feature-directory-extensions/extension3new.png)
+![Aplikace rozšíření schématu](./media/how-to-connect-sync-feature-directory-extensions/extension3new.png)
 
-Atributy mají předponu rozšíření \_{AppClientId}\_. AppClientId má stejnou hodnotu pro všechny atributy ve vašem tenantovi Azure AD.
+Atributy jsou předponou s rozšířením \_{AppClientId}.\_ AppClientId má stejnou hodnotu pro všechny atributy v tenantovi Azure AD.
 
-Tyto atributy jsou teď k dispozici prostřednictvím Azure AD Graph API. Dotazování těchto pomocí [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/).
+Tyto atributy jsou nyní k dispozici prostřednictvím Graph API služby Azure AD. Můžete je dotazovat pomocí [Průzkumníka Azure AD Graph](https://graphexplorer.azurewebsites.net/).
 
-![Azure AD Graph Exploreru](./media/how-to-connect-sync-feature-directory-extensions/extension4.png)
+![Průzkumník Azure AD Graph](./media/how-to-connect-sync-feature-directory-extensions/extension4.png)
 
-Nebo můžete zadat dotaz na atributy prostřednictvím rozhraní Microsoft Graph API s využitím [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer#).
+Můžete také zadat dotaz na atributy prostřednictvím rozhraní Microsoft Graph API pomocí [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer#).
 
 >[!NOTE]
-> Budete muset požádat o atributy, které mají být vráceny. Explicitně vybrat atributy takto: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $select = extension_9d98ed114c4840d298fad781915f27e4_employeeID extension_9d98ed114c4840d298fad781915f27e4_division. 
+> Musíte požádat o vrácení atributů. Explicitně vyberte atributy takto: https\://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $Select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division. 
 >
-> Další informace najdete v tématu [Microsoft Graph: Použití parametrů dotazu](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
+> Další informace najdete v tématu [Microsoft Graph: Použijte parametry](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)dotazu.
 
-## <a name="next-steps"></a>Další postup
-Další informace o [synchronizace Azure AD Connect](how-to-connect-sync-whatis.md) konfigurace.
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o konfiguraci [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md) .
 
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

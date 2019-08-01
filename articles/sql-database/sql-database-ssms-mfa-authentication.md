@@ -1,6 +1,6 @@
 ---
-title: Vícefaktorové ověřování pomocí AAD s Azure SQL Database a Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Azure SQL Database a Azure SQL Data Warehouse podporují připojení ze serveru SQL Server Management Studio (SSMS) pomocí univerzálního ověřování Active Directory.
+title: Použití vícefaktorového ověřování AAD s Azure SQL Database a Azure SQL Data Warehouse | Microsoft Docs
+description: Azure SQL Database a Azure SQL Data Warehouse podporují připojení z SQL Server Management Studio (SSMS) pomocí univerzálního ověřování služby Active Directory.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,71 +10,70 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-manager: craigg
 ms.date: 10/08/2018
-ms.openlocfilehash: ccb78e201b90dfc27f52523348e76da57087bcc8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7add55380f2f7b3ef70db0603fe2c26127db8a78
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614177"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566455"
 ---
-# <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-sql-data-warehouse-ssms-support-for-mfa"></a>Vícefaktorové ověřování pomocí AAD s Azure SQL Database a Azure SQL Data Warehouse (podpora SSMS pro vícefaktorové ověřování)
-Azure SQL Database a Azure SQL Data Warehouse připojení pomocí SQL Server Management Studio (SSMS) podporují *univerzálního ověřování Active Directory*. Tento článek popisuje rozdíly mezi různé možnosti ověřování a omezení související s univerzálním ověřováním. 
+# <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-sql-data-warehouse-ssms-support-for-mfa"></a>Použití vícefaktorového ověřování AAD s Azure SQL Database a Azure SQL Data Warehouse (podpora SSMS pro MFA)
+Azure SQL Database a Azure SQL Data Warehouse podporují připojení z SQL Server Management Studio (SSMS) pomocí *univerzálního ověřování služby Active Directory*. Tento článek popisuje rozdíly mezi různými možnostmi ověřování a také omezeními souvisejícími s používáním univerzálního ověřování. 
 
-**Stáhněte si nejnovější verze aplikace SSMS** – v klientském počítači, stáhněte si nejnovější verzi SSMS, z [stáhnout SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). 
+**Stáhněte si nejnovější SSMS** -v klientském počítači, Stáhněte si nejnovější verzi nástroje SSMS, od [Stažení SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). 
 
 
-Pro všechny funkce popsané v tomto článku použijte aspoň verzi 17.2. července 2017.  Nejnovější dialogovém okně připojení by měla vypadat podobně jako na následujícím obrázku:
+Pro všechny funkce popsané v tomto článku použijte minimálně červenec 2017, verze 17,2.  Dialogové okno nejaktuálnější připojení by mělo vypadat podobně jako na následujícím obrázku:
  
-  ![připojit univerzální 1mfa](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "dokončení pole uživatelské jméno.")  
+  ![1mfa – Universal-Connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "Dokončí pole uživatelské jméno.")  
 
-## <a name="the-five-authentication-options"></a>Možnosti pět ověřování  
+## <a name="the-five-authentication-options"></a>Pět možností ověřování  
 
-Univerzální ověřování služby Active Directory podporuje dvě metody jako neinteraktivní ověřování:
-    - `Active Directory - Password` Ověřování
-    - `Active Directory - Integrated` Ověřování
+Univerzální ověřování služby Active Directory podporuje dvě metody ověřování, které nejsou interaktivní:
+    - `Active Directory - Password`přihlašovací
+    - `Active Directory - Integrated`přihlašovací
 
-Existují dva neinteraktivního ověřování modely, které je možné použít v mnoha různých aplikacích (ADO.NET, JDCB, ODC, atd.). Tyto dvě metody nikdy výsledkem automaticky otevíraná okna: 
+K dispozici jsou také dva modely neinteraktivního ověřování, které lze použít v mnoha různých aplikacích (ADO.NET, JDCB, ODC atd.). Tyto dvě metody nikdy nevedou k místním dialogovým oknům: 
 - `Active Directory - Password` 
 - `Active Directory - Integrated` 
 
-Interaktivní metoda je to také podporuje ověřování Azure Multi-Factor Authentication (MFA) je: 
+Interaktivní metoda je, že také podporuje službu Azure Multi-Factor Authentication (MFA): 
 - `Active Directory - Universal with MFA` 
 
 
-Azure MFA pomáhá chránit přístup k datům a aplikacím a současně plní požadavky uživatelů na jednoduchý proces přihlašování. Nabízí silné ověřování s řadou jednoduchých možností (telefonní hovor, textová zpráva, čipové karty s PIN kódu nebo oznámení přes mobilní aplikaci), uživatele zvolil způsob, co jim vyhovuje. Interaktivní MFA s Azure AD může vést k místní dialogové okno pro ověření.
+Azure MFA pomáhá chránit přístup k datům a aplikacím a současně plní požadavky uživatelů na jednoduchý proces přihlašování. Zajišťuje silné ověřování s využitím široké škály možností jednoduchého ověřování (telefonní hovor, textová zpráva, čipové karty s PIN kódem nebo oznámení pro mobilní aplikace), které uživatelům umožňují vybrat si metodu, které dáváte přednost. Interaktivní vícefaktorové ověřování pomocí Azure AD může mít za následek automaticky otevírané okno k ověření.
 
-Popis ověřování službou Multi-Factor Authentication, naleznete v tématu [ověřování službou Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md).
-Postup konfigurace najdete v tématu [konfigurace služby Azure SQL Database vícefaktorové ověřování pro SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).
+Popis služby Multi-Factor Authentication najdete v tématu [Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md).
+Postup konfigurace najdete v tématu [konfigurace Azure SQL Database Multi-Factor Authentication pro SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).
 
-### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD tenanta nebo název parametr ID domény   
+### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Parametr názvu domény Azure AD nebo ID tenanta   
 
-Počínaje [SSMS verze 17](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), uživatelé, kteří jsou importovány do aktuální službě Active Directory z jiných adresářů Active Azure jako uživatelé typu Host, můžete zadat název domény Azure AD, nebo ID tenanta, když se připojují. Uživatelé typu Host zahrnete uživatele pozvat další Azure reklamy, účty Microsoft, jako jsou outlook.com, hotmail.com, live.com nebo jiné účty jako gmail.com. Tyto informace umožňují **aktivní univerzální Directory s ověřováním MFA** identifikovat správný ověřovací autorita. Tato možnost je také nezbytný pro podporu účty Microsoft (MSA), jako jsou outlook.com, hotmail.com, live.com nebo účtů bez MSA. Tito uživatelé, kteří chtějí ověřit pomocí univerzální ověřování musíte zadat své jméno domény Azure AD nebo ID tenanta Tento parametr představuje aktuální služby Azure AD domain Název nebo ID tenanta serveru Azure je propojena s. Například, pokud Azure Server je přidružený k doméně služby Azure AD `contosotest.onmicrosoft.com` kde uživatele `joe@contosodev.onmicrosoft.com` je hostovaný jako importované uživatele z Azure AD domain `contosodev.onmicrosoft.com`, název domény a nemusí opakovat ověření tohoto uživatele je `contosotest.onmicrosoft.com`. Když uživatel je nativní uživatele služby Azure AD propojená se systémem Server Azure a není účet MSA, je potřeba žádné ID tenanta nebo název domény. K zadání parametrů (od verze 17.2 SSMS), v **připojit k databázi** dialogové okno pole, do dialogového okna zadejte výběr **služby Active Directory – univerzální vícefaktorovým Ověřováním** ověřování, klikněte na tlačítko  **Možnosti**vyplňte **uživatelské jméno** pole a potom klikněte na tlačítko **vlastnosti připojení** kartu. Zkontrolujte, **ID tenanta nebo název domény AD** pole a zadejte ověřovací autorita, jako je název domény (**contosotest.onmicrosoft.com**) nebo identifikátor GUID ID tenanta.  
+Počínaje [verzí SSMS 17](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)mohou uživatelé, kteří jsou importováni do aktuální služby Active Directory z jiných Azure Active Directory jako uživatelé typu Host, poskytovat název domény služby Azure AD nebo ID tenanta při připojení. Uživatelé typu Host zahrnují uživatele pozvaní z jiných reklam Azure, účtů Microsoft, jako jsou outlook.com, hotmail.com, live.com nebo jiné účty, jako je gmail.com. Tyto informace umožňují, aby **Služba Active Directory Universal s ověřováním MFA** identifikovala správnou ověřovací autoritu. Tato možnost je také nutná k podpoře účtů Microsoft (MSA), jako jsou účty outlook.com, hotmail.com, live.com nebo jiné než MSA. Všichni uživatelé, kteří chtějí být ověřeni pomocí univerzálního ověřování, musí zadat svůj název domény nebo ID tenanta služby Azure AD. Tento parametr představuje aktuální název domény nebo ID tenanta Azure AD, se kterým je server Azure propojený. Pokud je například Azure `contosotest.onmicrosoft.com` Server přidružený k doméně Azure AD, kde je uživatel `joe@contosodev.onmicrosoft.com` hostovaný jako importovaný uživatel z domény `contosodev.onmicrosoft.com`služby Azure AD, název domény, který je potřeba k ověření tohoto uživatele `contosotest.onmicrosoft.com`, je. Když je uživatel nativním uživatelem služby Azure AD připojeným k serveru Azure a nejedná se o účet MSA, není nutné mít žádný název domény ani ID tenanta. Pokud chcete zadat parametr (počínaje verzí SSMS 17,2), v dialogovém okně **připojit k databázi** dokončete dialogové okno, vyberte **Active Directory – univerzální s** ověřováním MFA, klikněte na **Možnosti**, dokončete **uživatelské jméno.** a pak klikněte na kartu **Vlastnosti připojení** . Zaškrtněte pole **název domény služby AD nebo ID tenanta** a poskytněte ověřovací autoritu, jako je například název domény (**contosotest.onmicrosoft.com**) nebo identifikátor GUID ID tenanta.  
    ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)   
 
-### <a name="azure-ad-business-to-business-support"></a>Podpora Azure AD B2B   
-Uživatelé Azure AD podporuje pro scénáře B2B ve službě Azure AD jako uživatele typu Host (viz [co je spolupráce B2B ve službě Azure](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)) můžete připojit k SQL Database a SQL Data Warehouse pouze jako součást členové skupiny vytvořené v aktuální službě Azure AD a mapovat ručně pomocí příkazů jazyka Transact-SQL `CREATE USER` příkaz v dané databáze. Například pokud `steve@gmail.com` pozvat do služby Azure AD `contosotest` (s Azure Ad domain `contosotest.onmicrosoft.com`), skupinu Azure AD, například `usergroup` musí být vytvořeny ve službě Azure AD, který obsahuje `steve@gmail.com` člena. Potom tuto skupinu musejí být vytvořeny pro určitou databázi (to znamená, že databáze) Správce Azure AD SQL nebo Azure AD DBO spuštěním příkazů jazyka Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` příkazu. Po uživatele databáze, pak uživatel `steve@gmail.com` přihlásit `MyDatabase` pomocí možnosti ověřování aplikace SSMS `Active Directory – Universal with MFA support`. Této skupině uživatelů, ve výchozím nastavení, má pouze oprávnění k připojení a další data přístup, který bude muset být udělen běžným způsobem. Všimněte si, že uživatel `steve@gmail.com` jako uživatele typu Host musíte zaškrtnout políčko a přidání názvu domény AD `contosotest.onmicrosoft.com` v aplikaci SSMS **vlastnost připojení** dialogové okno. **ID tenanta nebo název domény AD** možnost je podporována pouze u univerzálních s možnostmi připojení vícefaktorové ověřování, jinak se šedě.
+### <a name="azure-ad-business-to-business-support"></a>Podpora Azure AD pro firmy   
+Uživatelé Azure AD podporovaní ve scénářích Azure AD B2B jako uživatelé typu Host (viz [co je spolupráce Azure B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)) se můžou připojit k SQL Database a SQL Data Warehouse jenom jako součást členů skupiny vytvořeného v aktuální službě Azure AD a ručně namapovat pomocí jazyka Transact-SQL. `CREATE USER` příkaz v dané databázi. Pokud `steve@gmail.com` je například Pozvánka do Azure AD `contosotest` (s doménou `contosotest.onmicrosoft.com`Azure AD) `usergroup` , musí být ve službě Azure AD, která obsahuje `steve@gmail.com` člena, vytvořená skupina Azure AD. Pak je potřeba tuto skupinu vytvořit pro konkrétní databázi (tj. MyDatabase) pomocí služby Azure AD SQL admin nebo Azure AD dbo spuštěním příkazu jazyka Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` . Po vytvoření uživatele databáze se uživatel `steve@gmail.com` může přihlásit k `MyDatabase` používání možnosti `Active Directory – Universal with MFA support`ověřování SSMS. Ve výchozím nastavení má uživatel ve výchozím nastavení pouze oprávnění připojit a jakýkoliv další přístup k datům, který bude potřeba udělit běžným způsobem. Všimněte si, `steve@gmail.com` že uživatel jako uživatel typu Host musí zaškrtnout políčko a přidat název `contosotest.onmicrosoft.com` domény služby AD do dialogového okna **Vlastnosti připojení** SSMS. Možnost **název domény AD nebo ID tenanta** je podporovaná jenom pro možnosti připojení univerzální s MFA, jinak je šedá.
 
-## <a name="universal-authentication-limitations-for-sql-database-and-sql-data-warehouse"></a>Univerzální omezení ověřování pro SQL Database a SQL Data Warehouse
-- SSMS a SqlPackage.exe jsou pouze nástroje aktuálně povoleným vícefaktorovým Ověřováním pomocí univerzálního ověřování Active Directory.
-- SSMS verze 17.2, podporuje souběžný přístup více uživatelů pomocí univerzální ověřování pomocí vícefaktorového ověřování. Verze 17,0 a 17.1, s omezením pomocí specifikátoru přihlašovací údaje pro instanci SSMS s využitím univerzální ověřování na jeden účet služby Azure Active Directory. Přihlásit se jako jiný účet služby Azure AD, je nutné použít jinou instanci aplikace ssms. (Toto omezení je omezená na univerzálního ověřování Active Directory, se můžete přihlásit na jiné servery pomocí ověřování hesla Active Directory, integrované ověřování Active Directory nebo ověřování systému SQL Server).
-- SSMS podporuje univerzálního ověřování Active Directory za účelem vizualizace Průzkumník objektů, Editor dotazů a Query Store.
-- SSMS verze 17.2 poskytuje podporu průvodce DacFx pro Export/Extract/nasazení dat. databázi. Konkrétní uživatel ověřen pomocí dialogového okna počáteční ověřování pomocí univerzální ověřování, funkce Průvodce DacFx stejným způsobem funguje pro všechny ostatní metody ověřování.
-- Návrhář tabulky aplikace SSMS nepodporuje univerzální ověřování.
-- Nejsou žádné další požadavky na software pro univerzálního ověřování Active Directory s tím rozdílem, že musí použít podporovanou verzi aplikace ssms.  
-- Verze Active Directory Authentication Library (ADAL) pro univerzální ověřování byl aktualizován na nejnovější dostupné vydané verzi ADAL.dll 3.13.9. Zobrazit [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
+## <a name="universal-authentication-limitations-for-sql-database-and-sql-data-warehouse"></a>Omezení univerzálního ověřování pro SQL Database a SQL Data Warehouse
+- SSMS a SqlPackage. exe jsou jediné nástroje aktuálně povolené pro MFA prostřednictvím univerzálního ověřování služby Active Directory.
+- SSMS verze 17,2 podporuje souběžný přístup více uživatelů s využitím univerzálního ověřování s MFA. Verze 17,0 a 17,1 omezuje přihlášení pro instanci SSMS pomocí univerzálního ověřování na jeden Azure Active Directory účet. Pokud se chcete přihlásit jako jiný účet služby Azure AD, musíte použít jinou instanci SSMS. (Toto omezení je omezené na univerzální ověřování Active Directory. můžete se přihlásit k různým serverům pomocí ověřování hesla služby Active Directory, integrovaného ověřování Active Directory nebo SQL Server ověřování).
+- SSMS podporuje univerzální ověřování služby Active Directory pro Průzkumník objektů, Editor dotazů a vizualizaci úložiště dotazů.
+- SSMS verze 17,2 poskytuje podporu Průvodce DacFx pro export/extrakci nebo nasazení dat databáze. Po ověření konkrétního uživatele prostřednictvím dialogu počátečního ověřování pomocí univerzálního ověřování funguje Průvodce DacFx stejným způsobem jako u všech ostatních metod ověřování.
+- Návrhář tabulky SSMS nepodporuje univerzální ověřování.
+- Pro univerzální ověřování služby Active Directory nejsou k dispozici žádné další požadavky na software, s výjimkou, že je nutné použít podporovanou verzi SSMS.  
+- Verze Active Directory Authentication Library (ADAL) pro univerzální ověřování se aktualizovala na nejnovější vydanou verzi ADAL. dll, která 3.13.9 k dispozici. Viz [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Postup konfigurace najdete v tématu [konfigurace služby Azure SQL Database vícefaktorové ověřování pro SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).
-- Udělení přístupu k vaší databázi ostatní: [SQL Database ověřování a autorizace: Udělení přístupu](sql-database-manage-logins.md)  
-- Ujistěte se, že se že ostatní připojit přes bránu firewall: [Konfigurace pravidla brány firewall na úrovni serveru Azure SQL Database pomocí webu Azure portal](sql-database-configure-firewall-settings.md)  
+- Postup konfigurace najdete v tématu [konfigurace Azure SQL Database Multi-Factor Authentication pro SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).
+- Udělit ostatním přístup k vaší databázi: [SQL Database ověřování a autorizace: Udělení přístupu](sql-database-manage-logins.md)  
+- Zajistěte, aby se uživatelé mohli připojit přes bránu firewall: [Konfigurace pravidla brány firewall na úrovni serveru Azure SQL Database pomocí Azure Portal](sql-database-configure-firewall-settings.md)  
 - [Konfigurace a správa ověřování služby Azure Active Directory s využitím služby SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication-configure.md)  
-- [Architektura aplikace na datové vrstvě Microsoft SQL Server (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
+- [Microsoft SQL Server architektura aplikace na datové vrstvě (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)  
 - [Import souboru BACPAC do nové databáze Azure SQL](../sql-database/sql-database-import.md)  
 - [Export databáze Azure SQL do souboru BACPAC](../sql-database/sql-database-export.md)  
-- Rozhraní jazyka C# [IUniversalAuthProvider rozhraní](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx)  
-- Při použití **Active Directory – univerzální vícefaktorovým Ověřováním** ověřování ADAL trasování je k dispozici od [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Vypnuto ve výchozím nastavení, můžete zapnout trasování ADAL pomocí **nástroje**, **možnosti** nabídky v části **Azure Services**, **Azure Cloud**,  **ADAL úroveň trasování okna výstup**následovaný povolení **výstup** v **zobrazení** nabídky. Trasování jsou k dispozici v okně výstupu při výběru **Azure Active Directory možnost**.  
+- C#rozhraní [IUniversalAuthProvider](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx) Interface  
+- Při používání **služby Active Directory – univerzální s** ověřováním MFA je k dispozici trasování ADAL od [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ve výchozím nastavení můžete trasování ADAL zapnout pomocí nabídky **nástroje**, **Možnosti** , v části **služby Azure**, **cloud Azure**, **ADAL okno výstup úroveň trasování**a následným povolením **výstupu** v nabídce **zobrazení** . Trasování jsou k dispozici v okně výstup při výběru **možnosti Azure Active Directory**.  

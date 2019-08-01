@@ -1,7 +1,7 @@
 ---
-title: Použít a zobrazit požadavky na – Náhled adresy URL projektu
+title: Požadavky na používání a zobrazení – Náhled adresy URL projektu
 titlesuffix: Azure Cognitive Services
-description: Použít a zobrazit požadavky pro koncový bod rozhraní API ve verzi Preview adresy URL projektu.
+description: Požadavky a zobrazení požadavků pro koncový bod rozhraní API pro verzi Preview URL projektu.
 services: cognitive-services
 author: mikedodaro
 manager: nitinme
@@ -10,16 +10,17 @@ ms.subservice: url-preview
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 8078fe17ae3b282887f4bceb1bb10b34d6a007f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 38707a0914a48b6a13f519d5e076457319363a92
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60832162"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707032"
 ---
-# <a name="project-url-preview-use-and-display-requirements"></a>Náhled adresy URL projektu použít a zobrazit požadavky
+# <a name="project-url-preview-use-and-display-requirements"></a>Podmínky použití a zobrazení náhledu adresy URL projektu
 
-Jenom použijte data z Náhled adresy URL projektu zobrazíte fragmenty kódu ve verzi preview a miniatury s hypertextovým odkazem na jejich zdrojové lokality v iniciované koncovým uživatelem URL Sdílení na sociálních médií, chatovací robot nebo podobné nabídek. Nesmí kopírování, uložení nebo všechna data, která jste dostali z Náhled adresy URL projektu do mezipaměti. Musí přijmout všechny žádosti o zakázání náhledů, které se může zobrazit z webu nebo vlastníci obsahu.
+K zobrazení fragmentů a obrázků s miniaturami ve verzi Preview můžete použít pouze náhled dat z adresy URL projektu, a to v případě sdílení adres URL v rámci koncového uživatele na sociálních médiích, robotu pro chat nebo podobných nabídkách. Nemusíte kopírovat, ukládat ani ukládat do mezipaměti žádná data, která dostanete z verze Preview adresy URL projektu. Aby bylo možné zakázat náhledy, které můžete obdržet od vlastníků webu nebo obsahu, musíte splnit všechny žádosti.
 
 ## <a name="next-steps"></a>Další postup
 - [Náhled adresy URL – přehled](overview.md)

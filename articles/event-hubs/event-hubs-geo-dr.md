@@ -14,18 +14,18 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a1dafb8e4c16a59bfed51016ce9ccb0ec3eb7d6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 460ea15b0827ea307d64d1bd92d9bd14d5919d73
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754767"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704382"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – Geo-zotavení po havárii 
 
 Po celé oblasti Azure nebo datových centrech (Pokud ne [zóny dostupnosti](../availability-zones/az-overview.md) se používají) dojít k výpadku, je velmi důležité pro zpracování dat i nadále fungovat v jiné oblasti nebo datového centra. V důsledku toho *zotavení po havárii geograficky* a *geografickou replikaci* jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje geo-zotavení po havárii a geografická replikace, na úrovni oboru názvů. 
 
-Funkce zotavení po havárii geograficky je globálně dostupná pro Event Hubs úrovně Standard a Dedicated SKU. Mějte prosím na paměti, můžete pouze obory názvů geo pár napříč na stejné úrovni SKU. Například pokud máte obor názvů v clusteru, který je k dispozici jenom v SKU naše vyhrazené ji pouze se dají párovat s oborem názvů v jiném clusteru. 
+Funkce geografického zotavení po havárii je globálně dostupná pro Event Hubs standardní i pro vyhrazené SKU. Upozorňujeme, že v rámci stejné úrovně SKU můžete jenom geografické obory názvů. Například pokud máte obor názvů v clusteru, který je nabídnut pouze v naší vyhrazené SKU, může být spárován pouze s oborem názvů v jiném clusteru. 
 
 ## <a name="outages-and-disasters"></a>Výpadků a havárií
 
@@ -41,13 +41,13 @@ Funkce zotavení po havárii implementuje zotavení po havárii metadata a spol�
 
 V tomto článku se používají následující termíny:
 
--  *Alias*: Název konfigurace zotavení po havárii, které jste nastavili. Alias poskytuje jeden řetězec připojení stabilní plně kvalifikovaný název domény (FQDN). Aplikace použít tento připojovací řetězec aliasu pro připojení k oboru názvů. 
+-  *Alias*: Název konfigurace zotavení po havárii, kterou jste nastavili. Alias poskytuje jeden řetězec připojení stabilní plně kvalifikovaný název domény (FQDN). Aplikace použít tento připojovací řetězec aliasu pro připojení k oboru názvů. 
 
--  *Obor názvů primárního a sekundárního*: Obory názvů, které odpovídají na alias. Primární obor názvů je "aktivní" a přijímá zprávy (to může být existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma jsou synchronizované, tak i hladce přijmout zprávy bez nutnosti jakkoli měnit aplikace kódu nebo připojovací řetězec. Aby bylo zajištěno, že pouze aktivní obor názvů přijímá zprávy, musíte použít alias. 
+-  *Primární nebo sekundární obor názvů*: Obory názvů, které odpovídají aliasu. Primární obor názvů je "aktivní" a přijímá zprávy (to může být existující nebo nový obor názvů). Sekundární obor názvů je "pasivní" a nepřijímá zprávy. Metadata mezi oběma jsou synchronizované, tak i hladce přijmout zprávy bez nutnosti jakkoli měnit aplikace kódu nebo připojovací řetězec. Aby bylo zajištěno, že pouze aktivní obor názvů přijímá zprávy, musíte použít alias. 
 
--  *Metadata*: Entity, jako jsou event hubs a skupiny uživatelů. a jejich vlastnosti služby, které jsou spojeny s oborem názvů. Všimněte si, že se automaticky replikují jenom entity a jejich nastavení. Zprávy a události se nereplikují. 
+-  *Metadata*: Entity, jako jsou centra událostí a skupiny uživatelů; a jejich vlastnosti služby, které jsou přidruženy k oboru názvů. Všimněte si, že se automaticky replikují jenom entity a jejich nastavení. Zprávy a události se nereplikují. 
 
--  *Převzetí služeb při selhání*: Proces aktivace sekundární obor názvů.
+-  *Převzetí služeb při selhání*: Proces aktivace sekundárního oboru názvů.
 
 ## <a name="setup-and-failover-flow"></a>Instalační program a převzetí služeb při selhání toku
 
@@ -84,7 +84,7 @@ Pokud se jedná o chybu; například spárované nesprávné oblasti při počá
 
 ## <a name="samples"></a>Ukázky
 
-[Ukázka na Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) ukazuje, jak nastavit a spustit převzetí služeb při selhání. Tato ukázka demonstruje následující pojmy:
+[Ukázka na Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) ukazuje, jak nastavit a spustit převzetí služeb při selhání. Tato ukázka demonstruje následující pojmy:
 
 - Nastavení v Azure Active Directory pro použití Azure Resource Manageru pomocí služby Event Hubs. 
 - Kroky potřebné ke spuštění vzorového kódu. 
@@ -104,10 +104,10 @@ Mějte na paměti následující aspekty brát v úvahu v této vydané verzi:
 
 ## <a name="availability-zones"></a>Zóny dostupnosti 
 
-Event Hubs standardní skladová jednotka podporuje [zóny dostupnosti](../availability-zones/az-overview.md), poskytuje umístění s izolací chyb v rámci oblasti Azure. 
+SKU Event Hubs standard podporuje [zóny dostupnosti](../availability-zones/az-overview.md)a poskytuje umístění s izolací chyb v oblasti Azure. 
 
 > [!NOTE]
-> Podpora zóny dostupnosti Azure Event Hubs úrovně Standard je k dispozici pouze [oblastí Azure](../availability-zones/az-overview.md#services-support-by-region) kde zóny dostupnosti jsou k dispozici.
+> Podpora Zóny dostupnosti pro Azure Event Hubs Standard je dostupná jenom v [oblastech Azure](../availability-zones/az-overview.md#services-support-by-region) , kde se nacházejí zóny dostupnosti.
 
 Zóny dostupnosti můžete povolit na pouze nové obory názvů pomocí webu Azure portal. Event Hubs nepodporuje migraci z existující oborů názvů. Po povolení na váš obor názvů nejde zakázat redundanci zón.
 
@@ -115,7 +115,7 @@ Zóny dostupnosti můžete povolit na pouze nové obory názvů pomocí webu Azu
 
 ## <a name="next-steps"></a>Další postup
 
-* [Ukázka na Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) provede jednoduchý pracovní postup, který vytvoří geograficky párování a iniciuje převzetí služeb při selhání pro scénář zotavení po havárii.
+* [Ukázka na Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) provede jednoduchý pracovní postup, který vytvoří geograficky párování a iniciuje převzetí služeb při selhání pro scénář zotavení po havárii.
 * [Reference k rozhraní REST API](/rest/api/eventhub/disasterrecoveryconfigs) popisuje rozhraní API pro provádění konfigurace zotavení po havárii Geo.
 
 Další informace o službě Event Hubs naleznete pod těmito odkazy:

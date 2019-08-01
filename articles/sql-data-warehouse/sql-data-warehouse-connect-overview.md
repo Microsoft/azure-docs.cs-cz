@@ -11,10 +11,10 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 71f5c8ca56bc188c0664604a78c38a05be3c3b01
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479738"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Připojení k Azure SQL Data Warehouse
@@ -31,7 +31,7 @@ Název serveru v následujícím příkladu je samplesvr.database.windows.net. P
     ![Úplný název serveru][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>Podporované ovladače a připojovací řetězce
-Azure SQL Data Warehouse podporuje [ADO.NET][ADO.NET], [ODBC][ODBC], [php][php]a [JDBC][JDBC]. Chcete-li najít nejnovější verzi a dokumentaci, klikněte na jeden z předchozích ovladačů. Chcete-li automaticky vygenerovat připojovací řetězec pro ovladač, který používáte z Azure Portal, klikněte na příkaz **Zobrazit databázové připojovací řetězce** z předchozího příkladu. Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
+Azure SQL Data Warehouse podporuje [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] a [JDBC][JDBC]. Chcete-li najít nejnovější verzi a dokumentaci, klikněte na jeden z předchozích ovladačů. Chcete-li automaticky vygenerovat připojovací řetězec pro ovladač, který používáte z Azure Portal, klikněte na příkaz **Zobrazit databázové připojovací řetězce** z předchozího příkladu. Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
 
 > [!NOTE]
 > Zvažte nastavení časového limitu připojení na 300 sekund, pokud chcete, aby vaše připojení přestálo krátká období nedostupnosti.
@@ -69,7 +69,7 @@ SQL Data Warehouse během připojování a vytváření objektů používá něk
 | [DATEFIRST][DATEFIRST] |7 |
 
 ## <a name="next-steps"></a>Další postup
-Informace o připojení a dotazování pomocí sady Visual Studio najdete v tématu [dotazování pomocí sady Visual Studio][Query with Visual Studio]. To learn more about authentication options, see [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse].
+Informace o připojení a dotazování pomocí sady Visual Studio najdete v oddílu [Dotazování pomocí sady Visual Studio][Query with Visual Studio]. Další informace o možnostech ověřování najdete v oddílu [Ověřování do Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse].
 
 <!--Articles-->
 [Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md

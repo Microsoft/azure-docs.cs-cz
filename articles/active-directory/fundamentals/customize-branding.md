@@ -2,23 +2,23 @@
 title: Přidat branding vaší organizace přihlašovací stránku – Azure Active Directory | Dokumentace Microsoftu
 description: Pokyny ohledně toho, jak přidat branding vaší organizace na přihlašovací stránku služby Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bef3960e5c117a131b59a65196214c51e01bd3c8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 3ae329bd031a2a57ea4fc2eec9cde1e532439bb4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204581"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561709"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidat branding vaší organizace Azure Active Directory přihlašovací stránky
 Pomocí loga vaší organizace a vlastní barevná schémata poskytují konzistentní vzhled a představu o přihlašovacích stránek služby Azure Active Directory (Azure AD). Vaše přihlašovací stránky se zobrazí při přihlášení uživatele k vaší organizaci webové aplikace, jako je Office 365, který používá Azure AD jako zprostředkovatele identity.
@@ -29,7 +29,7 @@ Pomocí loga vaší organizace a vlastní barevná schémata poskytují konziste
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Přizpůsobit přihlašovací stránku Azure AD
 Můžete přizpůsobit vaší služby Azure AD přihlašovacích stránek služby, které se zobrazí, když se uživatelé přihlásí do aplikace specifickým pro tenanta vaší organizace, jako například [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), nebo při předání proměnné domény, jako je například [ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Vlastní značka se okamžitě nezobrazí vaši uživatelé, kteří přejdou do lokalit, jako je například www\.office.com. Místo toho uživatel musí přihlásit před přizpůsobený branding se zobrazí.
+Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na weby, jako je například\.webová Office.com. Místo toho uživatel musí přihlásit před přizpůsobený branding se zobrazí.
 
 > [!NOTE]
 > Všechny značky elementů jsou volitelné. Například pokud zadáte banner s logem se žádný obrázek na pozadí, přihlašovací stránka zobrazí vaše logo s výchozí obrázek na pozadí z cílové lokality (třeba Office 365).<br><br>Kromě toho branding přihlašovací stránky se nepřenáší na osobní účty Microsoft. Pokud uživatelé nebo obchodní hosté přihlásí pomocí osobního účtu Microsoft, přihlašovací stránka nebude se Branding vaší organizace.
@@ -58,7 +58,7 @@ Vlastní značka se okamžitě nezobrazí vaši uživatelé, kteří přejdou do
 
         - **Úvodní nápis logo.** Vyberte verzi .png nebo .jpg logo se zobrazí na přihlašovací stránce poté, co uživatel zadá uživatelské jméno a na **Moje aplikace** stránky portálu.
             
-            Na obrázku nemůže být vyšší než 60 pixelů nebo větší než 280 pixelů. Doporučujeme použít průhledný obrázek, protože na pozadí se nemusí shodovat pozadí loga. Doporučujeme také Nepřidání výplně kolem obrázku nebo může mít logo vypadat malé.
+            Obrázek nemůže být větší než 60 pixelů nebo širší než 280 pixelů. Doporučujeme použít průhledný obrázek, protože na pozadí se nemusí shodovat pozadí loga. Doporučujeme také Nepřidání výplně kolem obrázku nebo může mít logo vypadat malé.
 
         - **Pomocný parametr uživatelského jména.** Zadejte text nápovědy, který se uživatelům zobrazí, pokud zapomenou své uživatelské jméno. Tento text musí být v kódování Unicode, bez odkazů nebo kód a nemůže být delší než 64 znaků. Pokud hosté přihlásí do vaší aplikace, doporučujeme Nepřidání Tento pomocný parametr.
 
@@ -70,7 +70,7 @@ Vlastní značka se okamžitě nezobrazí vaši uživatelé, kteří přejdou do
 
         - **Barva pozadí přihlašovací stránky.** Určení barvy v šestnáctkovém formátu (bílé je třeba #FFFFFF), který se zobrazí místo image na pozadí v situacích, připojení s malou šířkou pásma. Doporučujeme použít primární barvu vaše banner s logem nebo barvy vaší organizace.
 
-        - **Obrázek čtvercového loga.** Vyberte ve formátu PNG (preferované) nebo JPG obrázek loga vaší organizace se zobrazí uživatelům během procesu instalace pro nové zařízení s Windows 10 Enterprise. Tato image se používá jenom pro ověřování Windows a zobrazí se pouze na klienty, kteří používají [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) pro nasazení nebo pro zadávání hesel stránky v jiných Windows 10 dojde. V některých případech může také zobrazí v dialogovém okně souhlasu.
+        - **Obrázek čtvercového loga.** Vyberte ve formátu PNG (preferované) nebo JPG obrázek loga vaší organizace se zobrazí uživatelům během procesu instalace pro nové zařízení s Windows 10 Enterprise. Tato image se používá jenom pro ověřování Windows a zobrazí se pouze na klienty, kteří používají [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) pro nasazení nebo pro zadávání hesel stránky v jiných Windows 10 dojde. V některých případech se může zobrazit také v dialogovém okně pro vyjádření souhlasu.
         
             Na obrázku nemůže být větší než velikost 240 × 240 pixelů a musí mít velikost souboru menší než 10 kB. Doporučujeme použít průhledný obrázek, protože na pozadí se nemusí shodovat pozadí loga. Doporučujeme také Nepřidání výplně kolem obrázku nebo může mít logo vypadat malé.
     

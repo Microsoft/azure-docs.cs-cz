@@ -1,6 +1,6 @@
 ---
-title: Přehled Microsoft Azure StorSimple Virtual Array | Dokumentace Microsoftu
-description: Popisuje StorSimple Virtual Array integrované řešení úložiště, které spravuje úlohy úložiště mezi virtuální pole v místním a cloudovým úložištěm Microsoft Azure.
+title: Přehled Microsoft Azure StorSimple Virtual Array | Microsoft Docs
+description: Popisuje virtuální pole StorSimple, integrované řešení úložiště, které spravuje úlohy úložiště mezi místním virtuálním polem a Microsoft Azureým cloudovým úložištěm.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,209 +12,211 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/14/2019
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cbfc69c7d8d9354ae4e727b9eb0180583165abab
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630274"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516713"
 ---
-# <a name="introduction-to-the-storsimple-virtual-array"></a>Úvod do služby StorSimple Virtual Array
+# <a name="introduction-to-the-storsimple-virtual-array"></a>Seznámení s virtuálním polem StorSimple
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 ## <a name="overview"></a>Přehled
 
-Microsoft Azure StorSimple Virtual Array je integrované řešení úložiště, které spravuje úlohy úložiště mezi v místním virtuálním polem spuštěným v hypervizoru a cloudovým úložištěm Microsoft Azure. Virtuální pole je efektivní, cenově efektivní a snadno spravovatelné souborového serveru nebo iSCSI serverové řešení, které předchází problémům a náklady spojené s podnikové úložiště a ochranu dat. Virtuální pole je zvlášť vhodné pro ukládání zřídka využívaných dat archivace.
+Microsoft Azure StorSimple Virtual Array je integrované řešení úložiště, které spravuje úlohy úložiště mezi místním virtuálním polem spuštěným v hypervisoru a Microsoft Azure cloudovém úložišti. Virtuální pole je efektivní, cenově výhodné a snadno spravované řešení souborového serveru nebo serveru iSCSI, které eliminuje mnohé problémy a výdaje spojené s podnikovým úložištěm a ochranou dat. Virtuální pole je zvlášť vhodné pro úložiště nečasto používaných archivačních dat.
 
-Tento článek obsahuje přehled virtuální pole – zde jsou některé další prostředky:
+Tento článek poskytuje přehled o virtuálním poli – tady jsou některé další zdroje informací:
 
-* Osvědčené postupy, najdete v části [osvědčené postupy pro StorSimple Virtual Array](storsimple-ova-best-practices.md).
-* Přehled zařízení řady StorSimple 8000, přejděte na [řady StorSimple 8000 series: řešení hybridního cloudového](storsimple-overview.md).
-* Informace o zařízení řady StorSimple 5000/7000 najdete v části [StorSimple Online nápověda](http://onlinehelp.storsimple.com/).
+* Osvědčené postupy najdete v tématu [osvědčené postupy pro virtuální pole StorSimple](storsimple-ova-best-practices.md).
+* Přehled zařízení řady StorSimple 8000 najdete v části [StorSimple 8000 series: hybridní cloudové řešení](storsimple-overview.md).
+* Informace o zařízeních řady StorSimple 5000/7000 najdete v [online nápovědě k StorSimple](http://onlinehelp.storsimple.com/).
 
-Virtuální pole podporuje iSCSI nebo protokol zprávy bloku SMB (Server). Běží na vaší stávající infrastruktury hypervisoru a poskytuje ovládání datových vrstev do cloudu, zálohování do cloudu, rychlé obnovení, obnovení na úrovni položky a funkce pro zotavení po havárii.
+Virtuální pole podporuje protokol iSCSI nebo protokol SMB (Server Message Block). Běží na vaší stávající infrastruktuře hypervisoru a poskytuje vrstvení do cloudu, zálohování v cloudu, rychlé obnovení, obnovení na úrovni položek a zotavení po havárii.
 
-Následující tabulka shrnuje důležité funkce StorSimple Virtual Array.
+Následující tabulka shrnuje důležité funkce virtuálního pole StorSimple.
 
 | Funkce | StorSimple Virtual Array |
 | --- | --- |
-| Požadavky na instalaci |Používá infrastrukturu virtualizace (Hyper-V nebo VMware) |
+| Požadavky na instalaci |Používá infrastrukturu virtualizace (Hyper-V nebo VMware). |
 | Dostupnost |Jeden uzel |
-| Celková kapacita (včetně cloud) |Až 64 TB využitelné kapacity jedno virtuální pole |
-| Místní kapacita |390 GB až 6.4 TB využitelné kapacity jedno virtuální pole (třeba zřídit 500 GB až 8 TB místa na disku) |
-| Nativní protokoly |iSCSI nebo podepisování SMB |
-| Plánovaná doba obnovení (RTO) |iSCSI: bez ohledu na velikost menší než 2 minuty |
-| Cíl bodu obnovení (RPO) |Denní zálohy a zálohy na vyžádání |
-| Ovládání datových vrstev úložiště |Zahřívá se používá mapování a určí, jaká data by měla být rozvrstvena snížení nebo navýšení kapacity |
-| Podpora |Infrastruktury virtualizace, které jsou podporované od dodavatele |
-| Výkon |Se liší v závislosti na základní infrastrukturu |
-| Mobilita dat |Můžete obnovit do stejného zařízení nebo položky obnovení na úrovni (souborový server) |
-| Vrstvy úložiště |Úložiště na místním hypervisoru a cloud |
-| Velikost sdílené složky |Vrstvené: až 20 TB; místně připnuté: až 2 TB |
-| Velikost svazku |Vrstvené: 500 GB až 5 TB; místně připnuté: 50 GB až 200 GB <br> Maximální místní rezervace pro vrstvených svazků je 200 GB. |
-| Snímky |Konzistentní s havárií |
-| Obnovení na úrovni položky |Ano. Uživatelé mohou obnovit ze sdílených složek |
+| Celková kapacita (včetně cloudu) |Až 64 TB použitelné kapacity na virtuální pole |
+| Místní kapacita |390 GB až 6,4 TB použitelné kapacity na virtuální pole (je potřeba zřídit 500 GB až 8 TB místa na disku) |
+| Nativní protokoly |iSCSI nebo SMB |
+| Plánovaná doba obnovení (RTO) |iSCSI: méně než 2 minuty bez ohledu na velikost |
+| Cíl bodu obnovení (RPO) |Denní zálohy a zálohování na vyžádání |
+| Vrstvení úložiště |Pomocí mapování tepla určí, jaká data mají být vrstvena nebo ven. |
+| Podpora |Infrastruktura virtualizace podporovaná dodavatelem |
+| Výkon |Liší se v závislosti na základní infrastruktuře. |
+| Mobilita dat |Může obnovit stejné zařízení nebo provést obnovení na úrovni položek (souborový server). |
+| Vrstvy úložiště |Místní úložiště hypervisoru a Cloud |
+| Velikost sdílené složky |Vrstvený: až 20 TB; místně připnuté: až 2 TB |
+| Velikost svazku |Vrstvené 500 GB až 5 TB; místně připnuté: 50 GB až 200 GB <br> Maximální místní rezervace pro vrstvené svazky je 200 GB. |
+| Snímky |Konzistentní se selháním |
+| Obnovení na úrovni položek |Odpoví Uživatelé můžou obnovit ze sdílených složek. |
 
-## <a name="why-use-storsimple"></a>Proč používat službu StorSimple?
+## <a name="why-use-storsimple"></a>Proč používat StorSimple?
 
-StorSimple připojí uživatelů a serverů do služby Azure storage během několika minut a žádné změny aplikace.
+StorSimple spojuje uživatele a servery s úložištěm Azure během několika minut bez úprav aplikace.
 
-Následující tabulka popisuje některé z klíčových výhod, které poskytuje řešení StorSimple Virtual Array.
+Následující tabulka popisuje některé klíčové výhody, které poskytuje řešení Virtual Array v StorSimple.
 
 | Funkce | Výhoda |
 | --- | --- |
-| Transparentní integrace |Virtuální pole podporuje iSCSI nebo protokol SMB. Přesun dat mezi místní a cloudovou vrstvu je bezproblémové a pro uživatele transparentní. |
-| Náklady na úložiště nižší |Se StorSimple zřídit dostatečné místní úložiště s cílem splnit aktuální požadavky pro nejpoužívanějších horká data. Jak rostou potřeby úložiště, StorSimple úrovně studených dat do nákladově efektivní cloudové úložiště. Data jsou s odstraněním duplicitních dat a komprimované před odesláním do cloudu chcete dál snížit požadavky na úložiště a náklady. |
-| Jednodušší správu úložišť |StorSimple nabízí centralizovanou správu v cloudu pomocí Správce zařízení StorSimple ke správě více zařízení. |
-| Zlepšení zotavení po havárii a dodržování předpisů |StorSimple usnadňuje rychlejší zotavení po havárii tím, že metadata okamžitě obnovení a obnovení dat podle potřeby. To znamená, že můžete pokračovat normální provoz s minimálním dopadem. |
-| Mobilita dat |Data Vrstvená do cloudu je přístupná z jiných webů pro účely obnovení a migrace. Všimněte si, že data můžete obnovit pouze na původní virtuální pole. Funkce zotavení po havárii však použít k obnovení celého virtuálního pole na jiné virtuální pole. |
+| Transparentní integrace |Virtuální pole podporuje protokol iSCSI nebo protokol SMB. Pohyb dat mezi místní vrstvou a cloudovou vrstvou je pro uživatele hladce a transparentní. |
+| Snížení nákladů na úložiště |Pomocí StorSimple zřídíte dostatečné místní úložiště, které bude plnit aktuální požadavky na nejčastěji používaná aktivní data. Jak úložiště potřebuje růst, StorSimple úrovně studených dat do nákladově efektivního cloudového úložiště. Data se před odesláním do cloudu ododstraňují a komprimují, aby se snížila nároky na úložiště a náklady. |
+| Zjednodušená správa úložiště |StorSimple poskytuje centralizovanou správu v cloudu pomocí Device Manager StorSimple ke správě více zařízení. |
+| Lepší zotavení po havárii a dodržování předpisů |StorSimple usnadňuje zotavení po havárii tím, že metadata okamžitě obnoví a v případě potřeby obnoví data. To znamená, že normální operace mohou pokračovat s minimálním přerušením. |
+| Mobilita dat |Data vrstvená do cloudu jsou dostupná z jiných lokalit pro účely obnovení a migrace. Všimněte si, že data můžete obnovit pouze v původním virtuálním poli. Funkce pro zotavení po havárii ale můžete použít k obnovení celého virtuálního pole do jiného virtuálního pole. |
 
-## <a name="storsimple-workload-summary"></a>Souhrn úloh StorSimple
+## <a name="storsimple-workload-summary"></a>Souhrn úlohy StorSimple
 
-Přehled podporovaných úloh StorSimple v následující tabulce.
+Souhrn podporovaných úloh StorSimple je v tabulce.
 
-|Scénář     |Úloha     |Podporováno      |Omezení               | Příslušné verze|
+|Scénář     |Úloha     |Podporováno      |Omezení               | Použitelné verze|
 |-------------|-------------|---------------|---------------------------|--------------------|
-|Vzdálené kanceláře či firemní Office (ROBO)  |Sdílení souborů     |Ano      |Zobrazit [maximálními limity pro souborový server se](storsimple-ova-limits.md).<br></br>Zobrazit [požadavky na systém pro podporované verze protokolu SMB](storsimple-ova-system-requirements.md).| Všechny verze     |
-|Archivace v cloudu  |Archivní soubor pro sdílení obsahu     |Ano      |Zobrazit [maximálními limity pro souborový server se](storsimple-ova-limits.md).<br></br>Zobrazit [požadavky na systém pro podporované verze protokolu SMB](storsimple-ova-system-requirements.md).| Všechny verze     |
+|Vzdálená kancelář nebo pobočka (ROBO)  |Sdílení souborů     |Ano      |Zobrazení [maximálních limitů pro souborový server](storsimple-ova-limits.md).<br></br>[Podporované verze SMB najdete v tématu požadavky na systém](storsimple-ova-system-requirements.md).| Všechny verze     |
+|Archivace v cloudu  |Sdílení souborů archivu     |Ano      |Zobrazení [maximálních limitů pro souborový server](storsimple-ova-limits.md).<br></br>[Podporované verze SMB najdete v tématu požadavky na systém](storsimple-ova-system-requirements.md).| Všechny verze     |
 
-StorSimple Virtual Array je nejvhodnější pro zřídka používaná data. Virtuální pole obsahuje místní mezipaměti pro zvýšení výkonu, uživatelé by měl předpokládat, že zařízení služby soubory na nejnižší úrovni úložiště (cloud). Jednotlivá virtuální pole může zapisovat a číst do služby Azure storage na přibližně 100 MB/s. Tento odkaz se sdílí napříč všemi požadavky přicházející do zařízení a jak je znázorněno v následujícím diagramu se může stát kritickým bodem.
+Virtuální pole StorSimple je nejvhodnější pro zřídka používaná data. I když má virtuální pole místní mezipaměť, aby zvýšila výkon, uživatelé by měli předpokládat, že soubory služeb zařízení jsou v nejnižší úrovni úložiště (Cloud). Každé virtuální pole může zapisovat a číst do úložiště Azure s přibližně 100 MB/s. Tento odkaz se sdílí mezi všemi požadavky přicházející do zařízení a může se stát kritickým bodem, jak je znázorněno na následujícím obrázku.
 
 ![Archivace v cloudu](./media/storsimple-ova-overview/cloud-archiving.png)
 
-V případě více souběžným uživatelům přístup k virtuální pole, ale všechny sdílet připojení k Azure, což nižší výkon. Neexistuje žádné zaručené výkonu na uživatele a zařízení zpracovává jednotlivé požadavky při jejich doručení.
+Když více souběžných uživatelů přistupuje k virtuálnímu poli, všichni nasdílí připojení k Azure, což vede k nižšímu výkonu. Na uživatele není Zaručený výkon a zařízení zpracovává jednotlivé požadavky při jejich doručení.
 
-StorSimple Virtual Array není vhodný pro úlohy, které vyžadují vysokou dostupnost. Virtuální pole se zařízením s jedním uzlem, dojde k výpadku při instalaci aktualizací softwaru. Správci by měl plán pro okno údržby 30 minut 3 - 4 časy za rok.
+Virtuální pole StorSimple není vhodné pro úlohy, které vyžadují vysokou dostupnost. Virtuální pole je zařízení s jedním uzlem, při kterém dojde k výpadku při instalaci aktualizací softwaru. Správci by měli naplánovat časový interval pro správu a údržbu po dobu 30 minut 3-4 za rok.
 
-## <a name="workflows"></a>Pracovní postupy
+## <a name="workflows"></a>Workflows
 
-StorSimple Virtual Array je obzvláště vhodný pro následující pracovní postupy:
+Virtuální pole StorSimple je zvlášť vhodné pro následující pracovní postupy:
 
-* [Správa cloudové úložiště](#cloud-based-storage-management)
-* [Zálohování bez ohledu na umístění](#location-independent-backup)
-* [Data ochrana a zotavení po havárii](#data-protection-and-disaster-recovery)
+* [Cloudová správa úložiště](#cloud-based-storage-management)
+* [Zálohování nezávislé na umístění](#location-independent-backup)
+* [Ochrana dat a zotavení po havárii](#data-protection-and-disaster-recovery)
 
-### <a name="cloud-based-storage-management"></a>Správa cloudové úložiště
-Služba Správce zařízení StorSimple spuštěná na webu Azure Portal můžete použít ke správě dat uložených na několika zařízeních a v několika umístěních. To je zvlášť užitečné v situacích distribuovaných větve. Všimněte si, že musíte vytvořit samostatné instance služby Správce zařízení StorSimple můžete spravovat virtuální pole a fyzickým zařízením StorSimple. Všimněte si také, že virtuální pole na novém portálu Azure nyní používá místo na portálu Azure classic.
+### <a name="cloud-based-storage-management"></a>Cloudová správa úložiště
+Službu StorSimple Device Manager spuštěnou v Azure Portal můžete použít ke správě dat uložených na více zařízeních a ve více umístěních. To je užitečné zejména ve scénářích distribuované větve. Všimněte si, že je nutné vytvořit samostatné instance služby StorSimple Device Manager pro správu virtuálních polí a fyzických zařízení StorSimple. Všimněte si také, že virtuální pole teď používá nový Azure Portal místo na portálu Azure Classic.
 
-![Správa cloudové úložiště](./media/storsimple-ova-overview/cloud-based-storage-management.png)
+![cloudová správa úložiště](./media/storsimple-ova-overview/cloud-based-storage-management.png)
 
-### <a name="location-independent-backup"></a>Zálohování bez ohledu na umístění
-Cloudové snímky poskytovat virtuální pole, bez ohledu na umístění, v okamžiku kopie svazku nebo sdílené složky. Cloudové snímky jsou ve výchozím nastavení povolené a nejde zakázat. Všech svazků a sdílených složek jsou v době prostřednictvím jedné zásady pro denní zálohování, zálohování a můžete provádět další zálohování ad hoc, kdykoli je to zapotřebí.
+### <a name="location-independent-backup"></a>Zálohování nezávislé na umístění
+U virtuálních polí cloudové snímky poskytují nezávislou kopii svazku nebo sdílené složky v určitém umístění. Ve výchozím nastavení jsou povoleny cloudové snímky a nelze je zakázat. Všechny svazky a sdílené složky se současně zálohují pomocí jediné zásady každodenního zálohování a kdykoli to bude potřeba, můžete provést další zálohy ad hoc.
 
-### <a name="data-protection-and-disaster-recovery"></a>Data ochrana a zotavení po havárii
-Virtuální pole podporuje následující ochranu dat a scénáře zotavení po havárii:
+### <a name="data-protection-and-disaster-recovery"></a>Ochrana dat a zotavení po havárii
+Virtuální pole podporuje následující scénáře ochrany dat a zotavení po havárii:
 
-* **Obnovit svazek nebo sdílenou složku** – použít obnovení jako nový pracovní postup obnovit svazek nebo sdílenou složku. Pomocí tohoto postupu můžete obnovit celý svazek nebo sdílenou složku.
-* **Položky obnovení na úrovni** – povolit zjednodušený přístup ke nedávných záloh sdílených složek. Je možné snadno obnovit soubor z speciální *.backup* složky v cloudu. Tato možnost obnovení je řízené uživatele a není potřeba žádný zásah správce.
-* **Zotavení po havárii** – obnovit všechny svazky nebo sdílené složky do nového virtuálního pole pomocí funkce převzetí služeb při selhání. Vytvořit nové virtuální pole a zaregistrovat ho ve službě Správce zařízení StorSimple a potom převzetí služeb při selhání původní virtuální pole. Nový virtuální pole pak převezme zřízené prostředky.
+* **Obnovení svazku nebo sdílení** – k obnovení svazku nebo sdílení použijte pracovní postup obnovit jako nový. Pomocí tohoto postupu můžete obnovit celý svazek nebo sdílenou složku.
+* **Obnovení na úrovni položek** – sdílené složky umožňují zjednodušený přístup k nejnovějším zálohám. Jednotlivé soubory můžete snadno obnovit ze speciální složky pro *zálohování* , která je dostupná v cloudu. Tato schopnost obnovení je řízená uživatelem a není nutná žádná administrativní zásah.
+* **Zotavení po havárii** – pomocí možnosti převzetí služeb při selhání obnoví všechny svazky nebo sdílené složky na nové virtuální pole. Vytvoříte nové virtuální pole a zaregistrujete ho ve službě StorSimple Device Manager a pak převezmete původní virtuální pole. Nové virtuální pole pak bude předpokládat zřízené prostředky.
 
-## <a name="storsimple-virtual-array-components"></a>StorSimple Virtual Array komponenty
+## <a name="storsimple-virtual-array-components"></a>Komponenty virtuálního pole StorSimple
 
-Virtuální pole zahrnuje následující součásti:
+Virtuální pole obsahuje následující komponenty:
 
-* [Virtuální pole](#virtual-array) – hybridní cloud úložné zařízení podle virtuálních počítačů zřízené v hypervizoru nebo virtualizovaném prostředí.
-* [Služba Správce zařízení StorSimple](#storsimple-device-manager-service) – což je rozšíření na webu Azure portal, který vám umožní spravovat jedno nebo více zařízení StorSimple z jediného webového rozhraní, které se dá dostat z různých geografických umístěních. Služba Správce zařízení StorSimple můžete vytvářet a spravovat služby, zobrazit a spravovat zařízení a upozornění a správa svazků, sdílených složek a existující snímky.
-* [Místní webové uživatelské rozhraní](#local-web-user-interface) – uživatelské rozhraní založené na web, umožňující nakonfigurovat zařízení tak, aby ho připojit k místní síti a pak zařízení zaregistrovat do služby Správce zařízení StorSimple. 
-* [Rozhraní příkazového řádku](#command-line-interface) – A Windows PowerShell rozhraní, které vám umožní spustit relaci ve virtuálním poli.
-  Následující části popisují každou z těchto součástí podrobněji a popisují, jak toto řešení uspořádá data, přidělí úložiště a usnadňuje správu úložiště a ochranu dat.
+* [Virtual Array](#virtual-array) – hybridní cloudové paměťové zařízení založené na virtuálním počítači zřízeném ve virtualizovaném prostředí nebo hypervisoru.
+* [Služba StorSimple Device Manager](#storsimple-device-manager-service) – rozšíření Azure Portal, které vám umožní spravovat jedno nebo více zařízení StorSimple z jediného webového rozhraní, ke kterému můžete přistupovat z různých geografických umístění. Pomocí služby StorSimple Device Manager můžete vytvářet a spravovat služby, zobrazovat a spravovat zařízení a výstrahy a spravovat svazky, sdílené složky a stávající snímky.
+* [Místní webové uživatelské rozhraní](#local-web-user-interface) – webové uživatelské rozhraní, které se používá ke konfiguraci zařízení, aby se mohlo připojit k místní síti a pak zaregistrovat zařízení ve službě StorSimple Device Manager. 
+* [Rozhraní příkazového řádku](#command-line-interface) – rozhraní Windows PowerShell, které můžete použít ke spuštění relace podpory ve virtuálním poli.
+  Následující části popisují každou z těchto komponent podrobněji a vysvětlují, jak řešení uspořádává data, přiděluje úložiště a usnadňuje správu úložiště a ochranu dat.
 
 ### <a name="virtual-array"></a>Virtuální pole
 
-Virtuální pole je jedním uzlem úložiště řešení, které poskytuje primární úložiště, spravuje komunikace s cloudovým úložištěm a pomáhá zajistit zabezpečení a důvěrnost všechna data, která je uložena v zařízení.
+Virtuální pole je řešení úložiště s jedním uzlem, které poskytuje primární úložiště, spravuje komunikaci s cloudovým úložištěm a pomáhá zajistit zabezpečení a důvěrnost všech dat uložených v zařízení.
 
-Virtuální pole je k dispozici v jednom modelu, který je k dispozici ke stažení. Virtuální pole má maximální kapacitu 6.4 TB na zařízení (s podkladový požadavek úložiště o velikosti 8 TB) a 64 TB včetně cloudového úložiště.
+Virtuální pole je dostupné v jednom modelu, který je k dispozici ke stažení. Virtuální pole má v zařízení maximální kapacitu 6,4 TB (s požadavkem na základní úložiště o velikosti 8 TB) a 64 TB, včetně cloudového úložiště.
 
 Virtuální pole má následující funkce:
 
-* To je nákladově efektivní. To usnadňuje použití existující infrastruktury virtualizace a je možné nasadit na existující hypervisoru Hyper-V nebo VMware.
-* Se nachází v datovém centru a může být nakonfigurován jako serveru iSCSI nebo souborovém serveru.
-* Je integrovaná s cloudem.
-* Zálohy jsou uložené v cloudu, který může usnadnit zotavení po havárii a zjednodušit obnovení na úrovni položek (ILR).
-* Aktualizace můžete použít pro virtuální pole, stejně jako by použít je u fyzických zařízení.
+* To je cenově výhodné. Využívá stávající infrastrukturu virtualizace a dá se nasadit na stávající hypervisor technologie Hyper-V nebo VMware.
+* Je umístěný v datacentru a dá se nakonfigurovat jako server iSCSI nebo souborový server.
+* Je integrována do cloudu.
+* Zálohy se ukládají v cloudu, což může usnadnit zotavení po havárii a zjednodušit obnovení na úrovni položek (ILR).
+* Ve virtuálním poli můžete použít aktualizace stejným způsobem, jako byste je použili u fyzického zařízení.
 
 > [!NOTE]
-> Virtuální pole nelze rozšířit. Proto je potřeba zřídit dostatečné úložiště při vytváření virtuálního pole.
+> Virtuální pole nelze rozšířit. Proto je důležité zřídit adekvátní úložiště při vytváření virtuálního pole.
 
 ### <a name="storsimple-device-manager-service"></a>Služba Správce zařízení StorSimple
 
-Microsoft Azure StorSimple poskytuje webové uživatelské rozhraní, služby Správce zařízení StorSimple, která umožňuje centrálně spravovat úložiště StorSimple. Služba Správce zařízení StorSimple můžete provádět následující úlohy:
+Microsoft Azure StorSimple poskytuje webové uživatelské rozhraní, službu StorSimple Device Manager, která umožňuje centrálně spravovat úložiště StorSimple. Službu StorSimple Device Manager můžete použít k provádění následujících úloh:
 
-* Správa více virtuálních polí StorSimple z jedné služby.
-* Konfigurovat a spravovat nastavení zabezpečení pro virtuální pole StorSimple. (Šifrování v cloudu je závislá na rozhraní API Microsoft Azure.)
-* Konfigurace vlastností a přihlašovací údaje účtu úložiště.
-* Konfigurace a správa svazků nebo sdílených složek.
-* Zálohování a obnovení data na svazky nebo sdílené složky.
-* Sledování výkonu.
-* Zkontrolujte nastavení systému a identifikovat možné problémy.
+* Umožňuje spravovat více virtuálních polí StorSimple z jedné služby.
+* Konfigurace a Správa nastavení zabezpečení pro virtuální pole StorSimple. (Šifrování v cloudu závisí na rozhraních API Microsoft Azure.)
+* Nakonfigurujte přihlašovací údaje a vlastnosti účtu úložiště.
+* Nakonfigurujte a spravujte svazky nebo sdílené složky.
+* Zálohujte a obnovte data na svazcích nebo sdílených složkách.
+* Monitorujte výkon.
+* Zkontrolujte nastavení systému a Identifikujte možné problémy.
 
-Provádět každodenní správu vaše virtuální pole pomocí služby Správce zařízení StorSimple.
+Služba StorSimple Device Manager slouží k provádění každodenní správy virtuálního pole.
 
-Další informace najdete v části [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-virtual-array-manager-service-administration.md).
+Další informace najdete v [části používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-virtual-array-manager-service-administration.md).
 
-### <a name="local-web-user-interface"></a>Místního webového uživatelského rozhraní
+### <a name="local-web-user-interface"></a>Místní webové uživatelské rozhraní
 
-Virtuální pole zahrnuje uživatelského rozhraní založeného na webu, který se používá pro jednorázovou konfiguraci a registraci zařízení ve službě Správce zařízení StorSimple. Můžete ji vypnout a restartovat virtuální pole, spusťte diagnostické testy, aktualizace softwaru, změna hesla správce zařízení, zobrazit protokoly systému a obraťte se na Microsoft Support do souboru žádosti o službu.
+Virtuální pole zahrnuje webové uživatelské rozhraní, které se používá pro jednorázovou konfiguraci a registraci zařízení ve službě StorSimple Device Manager. Můžete ji použít k vypnutí a restartování virtuálního pole, spuštění diagnostických testů, aktualizaci softwaru, změně hesla správce zařízení, zobrazení systémových protokolů a kontaktování podpora Microsoftu k zaznamenání žádosti o službu.
 
-Informace o používání uživatelského rozhraní založeného na webu, přejděte na [pomocí uživatelského rozhraní založeného na webu ke správě StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+Další informace o používání webového uživatelského rozhraní najdete v [části použití webového uživatelského rozhraní pro správu StorSimple virtuálního pole](storsimple-ova-web-ui-admin.md).
 
 ### <a name="command-line-interface"></a>Rozhraní příkazového řádku
 
-Součástí rozhraní prostředí Windows PowerShell lze zahájit relaci s Microsoft Support tak, aby se můžete odstraňovat potíže a řešit problémy, které můžete narazit na vaše virtuální pole.
+Zahrnuté rozhraní Windows PowerShell umožňuje zahájit relaci podpory s podpora Microsoftu, aby vám mohla pomoct řešit problémy a řešit problémy, se kterými se můžete setkat ve virtuálním poli.
 
 ## <a name="storage-management-technologies"></a>Technologie správy úložiště
 
-Kromě virtuální pole a další komponenty používá řešení StorSimple následující technologie softwarově poskytují rychlý přístup k důležitým datům, snížit spotřebu úložiště a chránit data uložená na vaše virtuální pole:
+Kromě virtuálního pole a dalších komponent využívá řešení StorSimple následující softwarové technologie k zajištění rychlého přístupu k důležitým datům, snížení spotřeby úložiště a ochraně dat uložených ve vašem virtuálním poli:
 
-* [Automatické vrstvení](#automatic-storage-tiering) 
+* [Automatické vrstvení úložiště](#automatic-storage-tiering) 
 * [Místně připojené sdílené složky a svazky](#locally-pinned-shares-and-volumes)
-* Deduplikace a komprese dat vrstvené nebo zálohovat do cloudu 
-* [Zálohování na vyžádání a plánované](#scheduled-and-on-demand-backups)
+* Odstranění duplicit a komprese dat vrstvených nebo zálohovaných do cloudu 
+* [Plánované zálohy a zálohování na vyžádání](#scheduled-and-on-demand-backups)
 
-### <a name="automatic-storage-tiering"></a>Automatické vrstvení
-Virtuální pole používá nový mechanismus vrstvení ke správě uložená data pro virtuální pole i cloud. Existují pouze dvě úrovně: místní virtuální pole a Azure cloudového úložiště. StorSimple Virtual Array automaticky uspořádá data do vrstvami podle toho, heat mapa, která sleduje aktuální využití, věk a vztahy k jiným datům. Data, která jsou nejaktivnější (Nejaktivnější) uložená místně, zatímco méně aktivní i neaktivní data se automaticky migrovat do cloudu. (Všechny zálohy jsou uložené v cloudu). StorSimple upraví a mění uspořádání dat a změnit přiřazení úložiště jako vzorce používání. Některé informace mohou být například míň aktivní v čase. Jakmile bude postupně míň aktivní, je vrstvené si do cloudu. Pokud ke stejným datům opět aktivní, je vrstvený v k poli úložišť.
+### <a name="automatic-storage-tiering"></a>Automatické vrstvení úložiště
+Virtuální pole používá nový mechanismus vrstvení ke správě uložených dat napříč virtuálním polem a cloudem. K dispozici jsou jenom dvě úrovně: místní virtuální pole a cloudové úložiště Azure. Virtuální pole StorSimple automaticky uspořádává data do vrstev na základě Heat mapy, která sleduje aktuální využití, stáří a vztahy s ostatními daty. Data, která jsou aktivní (nejžhavějších), se ukládají místně, zatímco méně aktivní a neaktivní data se automaticky migrují do cloudu. (Všechny zálohy se ukládají v cloudu.) StorSimple upravuje a mění uspořádání dat a přiřazení úložiště při změně vzorců využití. Některé informace mohou být například méně aktivní v průběhu času. Vzhledem k tomu, že dojde k průběžnému menšímu množství aktivních vrstev, je na Cloud. Pokud se tato data znovu aktivují, bude se nacházet na úrovni pole úložiště.
 
-Data pro konkrétní vrstvené sdílené složky nebo svazku je zaručeno, že svůj vlastní místní vrstvy místa (přibližně 10 % celkové zřízené místo pro tuto sdílenou složku nebo svazek). Když to snižuje dostupného úložiště na virtuální pole pro tuto sdílenou složku nebo svazek, zajišťuje, že pro jednu sdílenou složku nebo svazek ovládání datových vrstev na nebudou vztahovat vrstvení potřeby dalších složek nebo svazků. Proto velmi vytížený úlohy v jedné sdílené složky nebo svazku nemůže vynutit všechny ostatní úlohy do cloudu.
+Data pro konkrétní vrstvené sdílené složky nebo svazky zaručují vlastní prostor místní úrovně (přibližně 10% celkového zřízeného prostoru pro tuto sdílenou složku nebo svazek). I když se tím sníží dostupné úložiště ve virtuálním poli pro tuto sdílenou složku nebo svazek, zajistíte tím, že vrstvení pro jednu sdílenou složku nebo svazek nebudou ovlivněny potřebami vrstvení jiných sdílených složek nebo svazků. Velmi zaneprázdněné zatížení jedné sdílené složky nebo svazku proto nemůže vynutit všechny ostatní úlohy do cloudu.
 
-Vrstvené svazky, které jsou pro ni vytvořily mají maximální místní rezervace 200 GB bez ohledu na velikost svazku.
+Vrstvené svazky vytvořené pro iSCSI mají maximální místní rezervaci 200 GB, a to bez ohledu na velikost svazku.
 
-![Automatické vrstvení](./media/storsimple-ova-overview/automatic-storage-tiering.png)
+![Automatické vrstvení úložiště](./media/storsimple-ova-overview/automatic-storage-tiering.png)
 
 > [!NOTE]
-> Můžete zadat jako místně připojené svazku, v takovém případě data zůstávají ve virtuální pole a není nikdy Vrstvená do cloudu. Další informace najdete v části [místně připojené sdílené složky a svazky](#locally-pinned-shares-and-volumes).
+> Svazek můžete určit jako místně připnuté. v takovém případě data zůstanou ve virtuálním poli a nikdy se nevrství do cloudu. Další informace najdete v [místních připnutých sdílených složkách a svazcích](#locally-pinned-shares-and-volumes).
 
 
 ### <a name="locally-pinned-shares-and-volumes"></a>Místně připojené sdílené složky a svazky
 
-Můžete vytvořit odpovídající sdílené složky a tak místně připojené svazky. Tato možnost zajišťuje, že data potřebné pro kritické aplikace zůstává ve virtuální pole a je nikdy Vrstvená do cloudu. Místně připojené sdílené složky a svazky mají tyto funkce:
+Můžete vytvořit vhodné sdílené složky a svazky jako místně připnuté. Tato možnost zajistí, aby data vyžadovaná důležitými aplikacemi zůstala ve virtuálním poli a nikdy se nevrstvena do cloudu. Místně připojené sdílené složky a svazky mají následující funkce:
 
-* Nejsou předmětem cloudu latenci nebo problémy s připojením.
-* Stále těžit z StorSimple cloudové zálohování a po havárii obnovení funkce.
+* Nepodléhají latencím v cloudu ani problémům s připojením.
+* Stále využívají StorSimple cloudové zálohování a funkce zotavení po havárii.
 
-Můžete obnovit místně připojené sdílené složky nebo svazku jako vrstvené nebo vrstvenou sdílenou složku nebo svazek místně připnutý. 
+Místně připojenou sdílenou složku nebo svazek můžete obnovit jako vrstvené nebo vrstvené sdílené složky nebo svazky jako místně připnuté. 
 
-Další informace o místně připojené svazky, přejděte na [použití služby Správce zařízení StorSimple pro správu svazků](storsimple-virtual-array-manage-volumes.md).
+Další informace o místně připnutém svazku najdete [v části používání služby StorSimple Device Manager ke správě svazků](storsimple-virtual-array-manage-volumes.md).
 
-### <a name="deduplication-and-compression-for-data-tiered-or-backed-up-to-the-cloud"></a>Deduplikace a komprese dat vrstvené nebo zálohovat do cloudu
+### <a name="deduplication-and-compression-for-data-tiered-or-backed-up-to-the-cloud"></a>Odstranění duplicit a komprese dat vrstvených nebo zálohovaných do cloudu
 
-StorSimple využívá komprese dat a odstranění duplicit dále snížit požadavky na úložiště v cloudu. Odstranění duplicitních dat snižuje celkové množství dat uložených odstraněním redundance v sadě dat uložené. Jak se změní informace, StorSimple ignoruje se zobrazila původní data a zachytí pouze změny. StorSimple navíc snižuje množství uložených dat identifikace a odebráním duplicitní informace.
+StorSimple využívá odstranění duplicit a kompresi dat k dalšímu snížení požadavků na úložiště v cloudu. Odstranění duplicitních dat snižuje celkové množství uložených dat odstraněním redundance v uložené datové sadě. Když se změní informace, StorSimple ignoruje nezměněná data a zachytává jenom změny. StorSimple navíc snižuje množství uložených dat tím, že identifikuje a odstraní duplicitní informace.
 
 > [!NOTE]
-> Data uložená ve virtuálním poli není s odstraněním duplicitních dat nebo komprimovány. Všechny odstranění duplicitních dat a kompresi nastane těsně před plánovaným data se odesílají do cloudu.
+> Data uložená ve virtuálním poli nejsou Odstraněná a komprimovaná. Veškerá odstranění duplicit a komprese se projeví těsně před odesláním dat do cloudu.
 
-### <a name="scheduled-and-on-demand-backups"></a>Zálohování na vyžádání a plánované
+### <a name="scheduled-and-on-demand-backups"></a>Plánované zálohy a zálohování na vyžádání
 
-Funkcí ochrany dat StorSimple umožňuje vytvářet zálohy na vyžádání. Výchozí plán zálohování navíc zajišťuje, že se data zálohují každý den. Zálohy jsou prováděny ve formě přírůstkových snímků, které jsou uložené v cloudu. Snímky, které zaznamenává pouze změny od posledního zálohování, se dají vytvářet a rychle obnovit. Tyto snímky může být kriticky důležité pro scénáře zotavení po havárii, protože nahradit sekundární úložných systémů (např. zálohování na pásku) a umožňují obnovit data do vašeho datového centra nebo do alternativní lokality v případě potřeby.
+Funkce ochrany dat StorSimple umožňují vytvářet zálohy na vyžádání. Výchozí plán zálohování navíc zajišťuje, že se data zálohují denně. Zálohy jsou pořízeny ve formě přírůstkových snímků, které jsou uloženy v cloudu. Snímky, které zaznamenávají jenom změny od poslední zálohy, se dají vytvářet a obnovovat rychle. Tyto snímky můžou být kriticky důležité ve scénářích zotavení po havárii, protože nahrazují sekundární systémy úložiště (například zálohování na pásku) a umožňují v případě potřeby obnovovat data v datovém centru nebo v alternativních lokalitách.
 
 ## <a name="managing-personal-information"></a>Správa osobních údajů
 
-Správce zařízení StorSimple pro virtuálních řad shromažďuje osobní údaje v instancích dvou klíčů:
- - Pošle upozornění, uživatelská nastavení, které jsou nakonfigurované e-mailové adresy uživatelů. Tyto informace může být zrušena správcem. 
- - Uživatelé, kteří můžou přistupovat k datům na sdílené složky. Seznam uživatelů, kteří můžou přistupovat k datům sdílené složky se zobrazí a je možné exportovat. Tento seznam se také odstraní při odstranění sdílené složky.
+StorSimple Device Manager pro virtuální řady shromažďuje osobní údaje ve dvou instancích klíče:
+ - Výstraha nastavení uživatele, kde jsou konfigurovány e-mailové adresy uživatelů Tyto informace může správce vymazat. 
+ - Uživatelé, kteří mají přístup k datům umístěným ve sdílených složkách. Zobrazí se seznam uživatelů, kteří mají přístup ke sdíleným datům, a mohou být exportováni. Tento seznam se odstraní také při odstranění sdílených složek.
 
-Další informace najdete v článku [Microsoft Privacy zásad v Centru zabezpečení](https://www.microsoft.com/trustcenter).
+Další informace najdete v části [Zásady ochrany osobních údajů Microsoftu na webu Trust Center](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak [Příprava portálu virtuální pole](storsimple-virtual-array-deploy1-portal-prep.md).
+Přečtěte si, jak [připravit portál virtuálních polí](storsimple-virtual-array-deploy1-portal-prep.md).

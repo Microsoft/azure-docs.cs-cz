@@ -1,7 +1,7 @@
 ---
-title: Rychlý start Akustika projektu pomocí Unity
+title: Rychlý Start akustického projektu pomocí Unity
 titlesuffix: Azure Cognitive Services
-description: Použijete ukázkový obsah, Experimentujte s projektu Akustika ovládací prvky návrhu v Unity a nasazení pro Windows Desktop.
+description: Pomocí ukázkového obsahu můžete experimentovat s ovládacími prvky návrhu pro návrh projektů v Unity a nasazovat je do desktopu Windows.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,72 +10,73 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1c790e0fa726c719d5b888d42b5f59739777566b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ROBOTS: NOINDEX
+ms.openlocfilehash: 93eb44bf91bc2c8346660a4d770ee6d83501c3ae
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917118"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706608"
 ---
-# <a name="project-acoustics-unity-quickstart"></a>Rychlý start Unity Akustika projektu
-Použití projektu Akustika ukázkový obsah pro Unity a experimentovat s ovládacími prvky návrhu zálohovanou simulace.
+# <a name="project-acoustics-unity-quickstart"></a>Projekty s akustickým rychlým startem Unity
+Použijte k experimentování s ovládacími prvky návrhu pro simulaci s vydanými simulací ukázkový obsah projektového obsahu pro Unity.
 
 Požadavky na software:
 * [Unity 2018.2 +](https://unity3d.com) pro Windows
-* [Projekt Akustika ukázkového balíčku obsahu](https://www.microsoft.com/download/details.aspx?id=57346)
+* [Ukázkový balíček obsahu projekt akustického obsahu](https://www.microsoft.com/download/details.aspx?id=57346)
 
-Co je součástí ukázkového balíčku?
-* Unity scény s geometrie, zvukové zdroji a hraní her ovládacích prvků
-* Modul plug-in Akustika projektu 
-* Dokončené Akustika prostředky scény.
+Co obsahuje ukázkový balíček?
+* Scéna Unity s geometrií, zdroji zvuku a ovládacími prvky pro hraní her
+* Modul plug-in akustického projektu 
+* Vloženými akustické prostředky pro scénu
 
-## <a name="import-the-sample-package"></a>Importovat ukázkový balíček
-Importujte ukázkový balíček do nového projektu Unity. 
-* V Unity, přejděte na **prostředky > Importovat balíček > vlastní balíček...**
+## <a name="import-the-sample-package"></a>Import ukázkového balíčku
+Importujte vzorový balíček do nového projektu Unity. 
+* V Unity jděte na **assets > Import balíčku > vlastní balíček...**
 
-    ![Snímek obrazovky s Unity importovat balíček možnosti](media/import-package.png)  
+    ![Snímek obrazovky s možnostmi balíčku pro import Unity](media/import-package.png)  
 
-* Zvolte **ProjectAcoustics.unitypackage**
+* Vyberte **ProjectAcoustics. unitypackage**
 
-Pokud importujete balíček do existujícího projektu, přečtěte si téma [integrace Unity](unity-integration.md) pro další kroky a poznámky.
+Pokud balíček importujete do existujícího projektu, přečtěte si téma [integrace Unity](unity-integration.md) pro další kroky a poznámky.
 
-## <a name="restart-unity"></a>Restartujte Unity
-Která má označení vytvoření část toolkit Akustika vyžaduje verzi skriptovací modul runtime .NET 4.x. Import balíčku se aktualizovat nastavení Unity Playeru. Restartujte Unity pro toto nastavení se projeví.
+## <a name="restart-unity"></a>Restartovat Unity
+Zanesli část akustického množství Toolkit vyžaduje verzi modulu runtime skriptování .NET 4. x. Při importu balíčku se aktualizují nastavení přehrávače Unity. Restartujte Unity, aby se toto nastavení projevilo.
 
-Toto nastavení vstoupily v platnost otevřením můžete ověřit **nastavení přehrávače**:
+Toto nastavení můžete ověřit tak, že otevřete **nastavení přehrávače**:
 
-![Panel nastavení snímku obrazovky z Unity Playeru](media/player-settings.png)
+![Snímek obrazovky s panelem nastavení přehrávače Unity](media/player-settings.png)
 
-![Snímek obrazovky s Unity Playeru nastavení panelu s vybrané rozhraní .NET 4.5](media/net45.png)
+![Snímek obrazovky s panelem nastavení přehrávače Unity s vybraným .NET 4,5](media/net45.png)
 
-## <a name="experiment-with-design-controls"></a>Experimentujte s ovládacími prvky návrhu
-Otevřete ukázkový scény v **ProjectAcousticsSample** složky a klikněte na tlačítko Přehrát v Unity editoru. Použití W, A S, D a myš uspořádat jinak. Chcete-li porovnat, jak na scéně podle názvu dalo čekat a nemusíte Akustika, stiskněte **R** dokud překrytí text zčervená a uvádí, že tlačítko "Akustika: Zakázáno." Pokud zobrazit klávesové zkratky dalších možností ovládání, stiskněte klávesu **F1**. Ovládací prvky jsou také nedodržíte kliknutím pravým tlačítkem myši a vyberte akci chcete provést, left kliknutím provést akci.
+## <a name="experiment-with-design-controls"></a>Experiment s ovládacími prvky návrhu
+Otevřete ukázkovou scénu ve složce **ProjectAcousticsSample** a klikněte na tlačítko Přehrát v editoru Unity. Pro pohyb použijte W, A, S, D a myš. Chcete-li porovnat způsob, jakým je scéna zvuk, a to bez akustického navýšení, stiskněte tlačítko **R** , dokud se překryvný text neprojeví červeně a říká se Zakázáno. " Pokud zobrazit klávesové zkratky dalších možností ovládání, stiskněte klávesu **F1**. Ovládací prvky se také podporují kliknutím pravým tlačítkem a výběrem akce, která se má provést, a následným kliknutím na provést akci.
 
-Skript **AcousticsAdjust** je připojen k zdrojů zvuku ve scéně ukázka umožňuje návrh parametry-source. 
+Skript **AcousticsAdjust** je připojen ke zdrojům zvuku v ukázkové scéně, která umožňuje parametry návrhu na zdroj. 
 
-![Snímek obrazovky s Unity AcousticsAdjust skriptu](media/acoustics-adjust.png)
+![Snímek obrazovky s AcousticsAdjust skriptem Unity](media/acoustics-adjust.png)
 
-Následující zkoumá některé efekty, které je možné vytvořit pomocí zadané ovládacích prvků. Podrobné informace o každý ovládací prvek, najdete v článku [projektu Akustika Unity návrhu kurzu](unreal-workflow.md).
+Následující seznam popisuje některé efekty, které lze vyrobit s poskytnutými ovládacími prvky. Podrobné informace o jednotlivých ovládacích prvkůch najdete v [kurzu návrhu Unity pro projekt](unreal-workflow.md).
 
-### <a name="modify-distance-based-attenuation"></a>Upravit na základě vzdálenosti zeslabení
-Zvuk poskytované DSP **projektu Akustika** modulu plug-in spatializer Unity respektuje integrované do editoru Unity na základě vzdálenosti zeslabení-source. Ovládací prvky pro na základě vzdálenosti zeslabení **zdroje zvuku** komponenta nalezena v **inspektoru** panelu zvuk v oblasti zdrojů **3D nastavení zvuku**:
+### <a name="modify-distance-based-attenuation"></a>Úprava zeslabení na základě vzdálenosti
+Zvukový procesor, který je poskytováný modulem plug- **in Unity spatializer** , dodržuje odkládání na dálku, které jsou součástí editoru Unity. Ovládací prvky pro odkládání na dálku jsou součástí **zdrojové zvukové** komponenty, která se nachází na panelu inspektora zvukových zdrojů, v části **Nastavení 3D zvuku**:
 
-![Panel možností zeslabení vzdálenost snímek obrazovky s Unity](media/distance-attenuation.png)
+![Snímek obrazovky s panelem možností pro zeslabení vzdálenosti Unity](media/distance-attenuation.png)
 
-Projekt Akustika provádí výpočet v poli "simulace oblasti" zaměřená na umístění přehrávače. Protože Akustika prostředky v ukázkového balíčku byly vloženými s velikostí oblasti simulace 45m okolní hráč, by se měly zvukové zeslabení navrhovat tak, aby 0 přibližně 45 m.
+Akustické navýšení projektu provádí výpočet v políčku simulace oblasti uprostřed umístění přehrávače. Vzhledem k tomu, že akustické prostředky v ukázkovém balíčku byly vloženými s velikostí oblasti simulace 45m okolním přehrávačem, musí se zpomalení zvuku navrhnout na 0 v přibližně 45 m.
 
-### <a name="modify-occlusion-and-transmission"></a>Upravit uzavření a přenosu
-* Pokud **uzavření** multiplikátor je větší než 1 (výchozí hodnota je 1), bude možné exaggerated uzavření. Nastavení je méně než 1 je vhodné projeví složitější.
+### <a name="modify-occlusion-and-transmission"></a>Upravit překrytí a přenos
+* Pokud je násobitel **překrytí** větší než 1 (výchozí hodnota je 1), překrytí bude exaggerated. Nastavení menší než 1 způsobí, že překrytí efekt bude jemnější.
 
-* Chcete-li povolit přenos přes wall, přesuňte **přenosu (databáze)** posuvník vypnuto jeho nejnižší úroveň. 
+* Pokud chcete povolit přenos přes zeď, přesuňte posuvník **přenos (DB)** od nejnižší úrovně. 
 
-### <a name="modify-wetness-for-a-source"></a>Upravit wetness zdroje
-* Chcete-li změnit, jak rychle mění wetness vzdálenost, použijte **Percepční Warp vzdálenost**. **Projekt Akustika** výpočetní prostředí wet úrovně v rámci místo z simulace, které hladce lišit podle vzdálenosti a poskytují Percepční vzdálenost pomůcky. Podle zvyšující se vzdáleností související vlhkou úroveň zvětšení warp vzdálenost zvýrazní tohoto efektu. Pokřivení hodnoty menší než 1 provést na základě vzdálenosti reverberation změnit složitější. Také je možné upravit tento efekt podrobně citlivější úpravou **Wetness (databáze)**.
+### <a name="modify-wetness-for-a-source"></a>Upravit wetness pro zdroj
+* Chcete-li změnit, jak rychle wetness změny pomocí vzdálenosti, použijte **Perceptuální**. **Akustické a projektové** prostředky počítají vlhké úrovně v celém prostoru z simulace, která se škáluje plynule se vzdáleností a poskytují neperceptuální upozornění na dálku. Zvýšením úrovně vlhkého nárůstu vzdálenosti exaggerates tím, že se zvýší úroveň mokrého vztahu na dálku. Rozkládání hodnot menší než 1 zjednodušuje reverberationou změnu na dálku. Tento efekt se dá také upravit v přesnější podrobnostech úpravou **Wetness (DB)** .
 
-* Prodloužit dobu decay v celém prostoru úpravou **Decay časové měřítko**. Pokud je čas decay 1.5s, simulace výsledek pro pár příslušného naslouchacího procesu zdrojového umístění a **Decay časové měřítko** je nastavena na 2, čas decay použití ke zdroji je 3s.
+* Zvyšte Decay dobu v celém prostoru úpravou **časového měřítka Decay**. Pokud výsledek simulace pro konkrétní dvojici umístění zdrojového naslouchacího procesu je decayý čas 1,5 s a **časové období Decay** je nastavené na hodnotu 2, Decay čas aplikovaný na zdroj je 3 s.
 
 ## <a name="next-steps"></a>Další postup
-* Přečtěte si úplné podrobnosti o [vytvořených v Unity projektu Akustika návrh ovládacích prvků](unity-workflow.md)
-* Další Seznamte se s koncepty za [návrhu procesu](design-process.md)
-* [Vytvoření účtu Azure](create-azure-account.md) předběžné která má označení vytvoření a vytvoření procesů
+* Přečtěte si úplné podrobnosti o [ovládacích prvcích návrhu v projektech založených na Unity](unity-workflow.md) .
+* Další zkoumání konceptů za [procesem návrhu](design-process.md)
+* [Vytvoření účtu Azure](create-azure-account.md) pro zkoumání zanesli a zanesli procesů
 

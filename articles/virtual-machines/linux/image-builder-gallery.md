@@ -1,46 +1,46 @@
 ---
-title: Image Builder pro Azure pomocí Galerie obrázků pro virtuální počítače s Linuxem (preview)
-description: Vytvoření imagí Linuxu pomocí Image Builder pro Azure a Galerie obrázků Shared.
+title: Použití Azure image Builder s galerií imagí pro virtuální počítače se systémem Linux (Preview)
+description: Vytvářejte image pro Linux pomocí Azure image Builder a galerie sdílených imagí.
 author: cynthn
 ms.author: cynthn
 ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: a47c7fd60ec9ddd3fd5e5accae8849bd62bf894c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9fc624ab24cd98d0025fe2a34bf48c29b47c50e9
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671482"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695410"
 ---
-# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: Vytvořit image Linuxu a distribuovat ji do Galerie Imagí Shared 
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Verze Preview: Vytvoření image pro Linux a její distribuce do galerie sdílených imagí 
 
-Tento článek ukazuje, jak můžete použít Azure Image Builder k vytvoření image verze v [Galerie obrázků Shared](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries), globálně distribuovat bitovou kopii.
+V tomto článku se dozvíte, jak můžete pomocí Tvůrce imagí Azure vytvořit verzi image v [galerii sdílených imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)a pak ji distribuovat globálně.
 
 
-Použijeme Ukázková šablona .json konfigurace image. Soubor .json, který se používá, je zde: [helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
+K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateforSIG. JSON](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
-Distribuovat bitovou kopii do Galerie Imagí sdílené, šablona používá [sharedImage](image-builder-json.md#distribute-sharedimage) hodnotu `distribute` část šablony.
+Pro distribuci image do galerie sdílených imagí šablona používá [sharedImage](image-builder-json.md#distribute-sharedimage) jako hodnotu pro `distribute` oddíl šablony.
 
 > [!IMPORTANT]
-> Image Builder pro Azure je aktuálně ve verzi public preview.
+> Azure image Builder je momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="register-the-features"></a>Registrace funkce
-Pokud chcete použít Image Builder pro Azure ve verzi preview, budete muset registrovat novou funkci.
+## <a name="register-the-features"></a>Registrace funkcí
+Chcete-li používat Azure image Builder v rámci verze Preview, je nutné zaregistrovat novou funkci.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-Zkontrolujte stav registrace funkce.
+Ověřte stav registrace funkce.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Zkontrolujte svou registraci.
+Ověřte vaši registraci.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -48,7 +48,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Pokud třeba není registrovaný, spusťte následující příkaz:
+Pokud nevyžadují registraci, spusťte tento příkaz:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -56,11 +56,11 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Storage
 ```
 
-## <a name="set-variables-and-permissions"></a>Oprávnění a nastavení proměnných 
+## <a name="set-variables-and-permissions"></a>Nastavení proměnných a oprávnění 
 
-Použijeme některé údaje opakovaně, takže si vytvoříme několik proměnných k ukládání těchto informací.
+Některé informace budeme používat opakovaně, takže vytvoříme některé proměnné, které tyto informace uloží.
 
-Ve verzi Preview image builder pro bude podporovat jenom vytváření vlastních imagí ve stejné skupině prostředků jako spravované image zdroje. Aktualizujte název skupiny prostředků v tomto příkladu bude stejné skupině prostředků jako zdroj spravované image.
+Pro verzi Preview podporuje tvůrce imagí jenom vytváření vlastních imagí ve stejné skupině prostředků jako spravovaná zdrojová image. Aktualizujte název skupiny prostředků v tomto příkladu tak, aby byla stejnou skupinou prostředků jako spravovaná zdrojová image.
 
 ```azurecli-interactive
 # Resource group name - we are using ibLinuxGalleryRG in this example
@@ -77,7 +77,7 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-Vytvoření proměnné pro ID vašeho předplatného. Můžete získat pomocí `az account show | grep id`.
+Vytvořte proměnnou pro ID předplatného. Můžete to získat pomocí `az account show | grep id`.
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
@@ -90,7 +90,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 
-Oprávnění Azure Image Builder vytvářet prostředky v příslušné skupině prostředků. `--assignee` Hodnota je ID registrace aplikace pro Image Builder pro službu. 
+Udělte službě Azure image Builder oprávnění k vytváření prostředků v této skupině prostředků. `--assignee` Hodnota je ID registrace aplikace pro službu Tvůrce imagí. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -103,9 +103,11 @@ az role assignment create \
 
 
 
-## <a name="create-an-image-definition-and-gallery"></a>Vytvořit definici image a Galerie
+## <a name="create-an-image-definition-and-gallery"></a>Vytvoření definice a galerie imagí
 
-Vytvoření galerie obrázků. 
+Chcete-li použít Tvůrce imagí s galerií sdílených imagí, je nutné mít existující definici obrázku a obrázku. Tvůrce imagí nevytvoří pro vás definici image a image.
+
+Pokud ještě nemáte definici galerie a image k použití, začněte jejich vytvořením. Nejdřív vytvořte galerii imagí.
 
 ```azurecli-interactive
 az sig create \
@@ -113,7 +115,7 @@ az sig create \
     --gallery-name $sigName
 ```
 
-Vytvořte definici image.
+Pak vytvořte definici obrázku.
 
 ```azurecli-interactive
 az sig image-definition create \
@@ -127,9 +129,9 @@ az sig image-definition create \
 ```
 
 
-## <a name="download-and-configure-the-json"></a>Stáhnout a nakonfigurovat .json
+## <a name="download-and-configure-the-json"></a>Stažení a konfigurace formátu. JSON
 
-Stáhněte si šablonu .json a nakonfigurovat proměnných.
+Stáhněte šablonu. JSON a nakonfigurujte ji pomocí proměnných.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json -o helloImageTemplateforSIG.json
@@ -142,11 +144,11 @@ sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforSIG.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIG.json
 ```
 
-## <a name="create-the-image-version"></a>Vytvoření image verze
+## <a name="create-the-image-version"></a>Vytvoření verze image
 
-Tato další části se vytvoří verze image v galerii. 
+V této další části se vytvoří verze image v galerii. 
 
-Odeslání konfigurace image do služby Azure Image Builder.
+Odešlete konfiguraci image do služby Azure image Builder.
 
 ```azurecli-interactive
 az resource create \
@@ -167,12 +169,12 @@ az resource invoke-action \
      --action Run 
 ```
 
-Vytváření bitové kopie a replikaci pro obě oblasti může chvíli trvat. Počkejte na dokončení této části se před přechodem k vytvoření virtuálního počítače.
+Vytvoření image a její replikace do obou oblastí může chvíli trvat. Před přechodem k vytvoření virtuálního počítače počkejte na dokončení této části.
 
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
 
-Vytvoření virtuálního počítače z image verze, který byl vytvořen tvůrcem Image Azure.
+Vytvořte virtuální počítač z verze image, kterou vytvořila služba Azure image Builder.
 
 ```azurecli-interactive
 az vm create \
@@ -184,13 +186,13 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Připojte přes SSH k virtuálnímu počítači.
+Připojte se k virtuálnímu počítači přes SSH.
 
 ```azurecli-interactive
 ssh aibuser@<publicIpAddress>
 ```
 
-Byste měli vidět na obrázku byl přizpůsoben *zpráva dne* poté, co vaše připojení SSH!
+Měli byste vidět, že obrázek byl přizpůsoben se *zprávou dne* , jakmile se naváže připojení SSH.
 
 ```console
 *******************************************************
@@ -202,14 +204,14 @@ Byste měli vidět na obrázku byl přizpůsoben *zpráva dne* poté, co vaše p
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete teď to zkuste znovu přizpůsobení verze image k vytvoření nové verze stejnou bitovou kopii, přeskočte další kroky a přejít k [Image Builder pro použití Azure k vytvoření jinou verzi image](image-builder-gallery-update-image-version.md).
+Pokud se teď chcete pokusit znovu přizpůsobit verzi image, aby se vytvořila nová verze stejné image, přeskočte další kroky a [použijte Azure image Builder k vytvoření další verze image](image-builder-gallery-update-image-version.md).
 
 
-Tato akce odstraní obrázku, který byl vytvořen, spolu s všechny další soubory prostředků. Ujistěte se, že jste hotovi s tímto nasazením před odstraněním zdroje.
+Tato akce odstraní vytvořenou bitovou kopii spolu se všemi ostatními soubory prostředků. Před odstraněním prostředků se ujistěte, že jste hotovi s tímto nasazením.
 
-Při odstraňování prostředků Galerie obrázků, třeba všechny verze image odstranit před odstraněním k definici image použitých pro jejich vytvoření. Pokud chcete odstranit galerii, musíte nejprve jste odstranili všechny definice image v galerii.
+Při odstraňování prostředků Galerie imagí musíte odstranit všechny verze imagí, abyste mohli odstranit definici image, která se používá k jejich vytvoření. Abyste mohli galerii odstranit, musíte nejdřív odstranit všechny definice imagí v galerii.
 
-Odstraňte šablonu image builder.
+Odstraňte šablonu tvůrce imagí.
 
 ```azurecli-interactive
 az resource delete \
@@ -218,7 +220,7 @@ az resource delete \
     -n helloImageTemplateforSIG01
 ```
 
-Získat verzi image vytvořené image builder, to vždy začíná `0.`a pak odstraňte verze image
+Získat verzi image vytvořenou tvůrcem imagí, vždy se `0.`spustí a pak se odstraní verze image.
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \
@@ -251,7 +253,7 @@ Odstraňte galerii.
 az sig delete -r $sigName -g $sigResourceGroup
 ```
 
-Odstraníte skupinu prostředků.
+Odstraňte skupinu prostředků.
 
 ```azurecli-interactive
 az group delete -n $sigResourceGroup -y
@@ -259,4 +261,4 @@ az group delete -n $sigResourceGroup -y
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [Galerie obrázků Shared Azure](shared-image-galleries.md).
+Přečtěte si další informace o [galeriích sdílených imagí Azure](shared-image-galleries.md).

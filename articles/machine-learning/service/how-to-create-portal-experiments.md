@@ -1,7 +1,7 @@
 ---
-title: Vytváření a průzkum experimentů na portálu
+title: Použití automatizovaného ML k sestavení a nasazení modelů strojového učení
 titleSuffix: Azure Machine Learning service
-description: Naučte se vytvářet a spravovat automatizované experimenty strojového učení na portálu.
+description: Vytvářejte, spravujte a nasaďte automatizované experimenty strojového učení v Azure Portal
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: cgronlun
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/02/2019
-ms.openlocfilehash: 1bfc415b2e4dbc66e2afeae73b78079fb027a60c
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 08/02/2019
+ms.openlocfilehash: 7fdef246e4fcffafa626fa16e3bcecaf480c16ab
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358845"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716880"
 ---
-# <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Vytvářejte a zkoumejte automatizované experimenty strojového učení v Azure Portal (Preview)
+# <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Vytváření, zkoumání a nasazení automatických experimentů strojového učení v Azure Portal (Preview)
 
- V tomto článku se naučíte, jak vytvořit, spustit a prozkoumat automatizované experimenty strojového učení v Azure Portal bez jediného řádku kódu. Automatizované Machine Learning automatizuje proces výběru nejlepšího algoritmu, který se má použít pro vaše konkrétní data, takže můžete model strojového učení rychle vygenerovat. [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md).
+ V tomto článku se naučíte, jak vytvářet, zkoumat a nasazovat automatizované experimenty strojového učení v Azure Portal bez jediného řádku kódu. Automatizované Machine Learning automatizuje proces výběru nejlepšího algoritmu, který se má použít pro vaše konkrétní data, takže můžete model strojového učení rychle vygenerovat. [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md).
 
  Pokud dáváte přednost více prostředím založeným na kódu, můžete [v Pythonu nakonfigurovat i automatizované experimenty strojového učení](how-to-configure-auto-train.md) s [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
@@ -36,27 +36,19 @@ Přejděte do levého podokna pracovního prostoru. V části vytváření obsah
 
 ![Azure Portal navigační podokno](media/how-to-create-portal-experiments/nav-pane.png)
 
- Pokud provádíte jakékoli experimenty s automatizovaným Machine Learning, zobrazí se následující:
+ Pokud se jedná o vaše první experimenty, uvidíte **úvodní obrazovku pro automatizované Machine Learning** . 
 
-![Cílová stránka experimentu Azure Portal](media/how-to-create-portal-experiments/landing-page.png)
-
-V opačném případě uvidíte na automatizovaném řídicím panelu Machine Learning přehled všech automatických experimentů strojového učení, včetně těch, které se vytvořily pomocí sady SDK. Tady můžete filtrovat a zkoumat své běhy podle data, experimentu a stavu spuštění.
-
-![Řídicí panel experimentování Azure Portal](media/how-to-create-portal-experiments/dashboard.png)
+V opačném případě uvidíte na automatizovaném řídicím panelu **Machine Learning** přehled všech automatických experimentů strojového učení, včetně těch, které se vytvořily pomocí sady SDK. Tady můžete filtrovat a zkoumat své běhy podle data, experimentu a stavu spuštění.
 
 ## <a name="create-an-experiment"></a>Vytvoření experimentu
 
-Kliknutím na tlačítko vytvořit experiment naplňte následující formulář.
+Vyberte **vytvořit experiment** a naplňte na nový formulář pro **Automatické experimenty Machine Learning** .
 
-![Vytvořit formulář experimentu](media/how-to-create-portal-experiments/create-exp-name-compute.png)
-
-1. Zadejte název experimentu.
+1. Zadejte jedinečný název experimentu.
 
 1. Pro úlohu profilace a školení pro data vyberte výpočetní prostředky. V rozevíracím seznamu jsou k dispozici seznam vašich stávajících výpočtů. Pokud chcete vytvořit nový výpočetní výkon, postupujte podle pokynů v kroku 3.
 
-1. Kliknutím na tlačítko vytvořit nový COMPUTE otevřete podokno níže a nakonfigurujte výpočetní kontext pro tento experiment.
-
-    ![Vytvoření nových výpočetních prostředků pro experiment](media/how-to-create-portal-experiments/create-new-compute.png)
+1. Vyberte **vytvořit novou výpočetní** prostředky a nakonfigurujte výpočetní kontext pro tento experiment.
 
     Pole|Popis
     ---|---
@@ -64,38 +56,35 @@ Kliknutím na tlačítko vytvořit experiment naplňte následující formulář
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.
     Další nastavení| *Minimální uzel*: Zadejte minimální počet uzlů pro výpočetní výkon. Minimální počet uzlů pro výpočetní výkon AML je 0. Chcete-li povolit profilaci dat, je nutné mít nejméně jeden uzel. <br> *Maximální počet uzlů*: Zadejte maximální počet uzlů pro výpočetní výkon. Výchozí hodnota je 6 uzlů pro AML Compute.
 
-      Pokud chcete začít vytvářet nové výpočetní prostředky, vyberte **vytvořit**. Toto může chvíli trvat.
+      Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
 
       >[!NOTE]
       > Váš název COMPUTE určí, jestli je povolená možnost *profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti o profilaci dat najdete v článku 7b).
 
-1. Vyberte účet úložiště pro vaše data. Verze Public Preview podporuje jenom místní nahrávání souborů a účty Azure Blob Storage.
+1. Vyberte účet úložiště pro vaše data. 
 
 1. Vyberte kontejner úložiště.
 
-1. Vyberte datový soubor z kontejneru úložiště nebo nahrajte soubor z místního počítače do kontejneru.
+1. Vyberte datový soubor z kontejneru úložiště nebo nahrajte soubor z místního počítače do kontejneru. Verze Public Preview podporuje jenom místní nahrávání souborů a účty Azure Blob Storage.
 
-    ![Vybrat datový soubor pro experimentování](media/how-to-create-portal-experiments/select-file.png)
+    [![Vybrat datový soubor](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
 
 1. Pomocí karet náhled a profil můžete dále konfigurovat data pro tento experiment.
 
-    1. Na kartě náhled určete, jestli data obsahují záhlaví, a vyberte funkce (sloupce) pro školení pomocí integrovaných **tlačítek přepínače v** jednotlivých sloupcích funkce.
+    1. Na kartě **Náhled** určete, jestli data obsahují záhlaví, a vyberte funkce (sloupce) pro školení pomocí integrovaných **tlačítek přepínače v** jednotlivých sloupcích funkce.
 
-        ![Náhled dat](media/how-to-create-portal-experiments/data-preview.png)
-
-    1. Na kartě Profil můžete zobrazit [datový profil](#profile) podle funkcí a také rozdělení, typ a souhrn statistik (střední, střední, Max/min atd.) každého.
-
-        ![Karta datový profil](media/how-to-create-portal-experiments/data-profile.png)
+    1. Na kartě **profil** můžete zobrazit [datový profil](#profile) podle funkcí a také rozdělení, typ a souhrn statistik (střední, střední, Max/min atd.) každého.
 
         >[!NOTE]
         > Pokud váš výpočetní **kontext není** profilace povolený, zobrazí se následující chybová zpráva: *Profilace dat je k dispozici pouze pro cíle výpočetní služby, které jsou již spuštěny*.
 
 1. Vyberte typ úlohy školení: klasifikace, regrese nebo prognózování.
 
-1. Vyberte cílový sloupec. Sloupec, na kterém se má předpovědi zapnout
+1. Vybrat cílový sloupec; Toto je sloupec, na který byste chtěli předpovědi.
 
 1. Pro prognózování:
     1. Vyberte sloupec čas: Tento sloupec obsahuje časová data, která se mají použít.
+
     1. Vybrat horizont předpovědi: Určete, kolik časových jednotek (minuty/hodiny/dny/týdny/měsíce/roky) bude model moci předpovědět budoucímu. Dalším modelem se vyžaduje předpověď do budoucna, tím méně přesné bude. [Přečtěte si další informace o prognózování a horizontu předpovědi](how-to-auto-train-forecast.md).
 
 1. Volitelné Rozšířená nastavení: Další nastavení, která můžete použít k lepšímu řízení úlohy školení.
@@ -109,44 +98,31 @@ Kliknutím na tlačítko vytvořit experiment naplňte následující formulář
     Souběžnost| Vyberte omezení více jader, která chcete použít při použití COMPUTE s více jádry.
     Blokovaný algoritmus| Vyberte algoritmy, které chcete vyloučit z úlohy školení.
 
-   ![Formulář Upřesnit nastavení](media/how-to-create-portal-experiments/advanced-settings.png)
-
-> [!NOTE]
-> Chcete-li získat další informace o polích, klikněte na popis informačního nástroje.
-
 <a name="profile"></a>
 
 ### <a name="data-profiling"></a>Profilace dat
 
 V rámci datové sady můžete získat velké množství různých souhrnných statistik, abyste ověřili, jestli je vaše datová sada připravená na ML. Pro nečíselné sloupce obsahují jenom základní statistiky, jako je min, Max a počet chyb. Pro číselné sloupce si můžete prohlédnout i jejich statistické momenty a odhadované quantiles. Konkrétně náš datový profil zahrnuje:
 
-* **Funkce**: název sloupce, který se shrnuje.
+>[!NOTE]
+> Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
 
-* **Profile**: vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
-
-* **Distribuce typů**: počet vložených hodnot typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
-
-* **Typ**: odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
-
-* **Min**: minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (např. logické hodnoty), se zobrazí prázdné položky.
-
-* **Max**: maximální hodnota sloupce. Například "min", prázdné položky se zobrazí pro funkce s nepodstatnými typy.
-
-* **Count (počet**): celkový počet chybějících a nechybějících položek ve sloupci.
-
-* **Počet**nechybějících položek: počet položek ve sloupci, které nebyly nalezeny. Všimněte si, že prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
-
-* **Quantiles** (v 0,1, 1, 5, 25, 50, 75, 95, 99 a 99,9% intervalů): přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat. Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
-
-* **Střední hodnota**: aritmetický průměr sloupce. Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
-
-* Směrodatná **Odchylka**: směrodatná odchylka sloupce. Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
-
-* **Variance**: odchylka sloupce. Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
-
-* **Asymetrie**: zešikmení sloupce. Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
-
-* **Fluktuace**: špičatost sloupce. Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
+Statistický|Popis
+------|------
+Funkce| Název sloupce, který je sumarizován.
+Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
+Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
+type|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
+Minimum| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (např. logické hodnoty), se zobrazí prázdné položky.
+Maximum| Maximální hodnota sloupce 
+Count| Celkový počet chybějících a nechybějících položek ve sloupci
+Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
+Quantiles| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
+střední hodnotu| Aritmetický průměr nebo průměr sloupce
+Standardní odchylka| Měření množství rozptýlení nebo variace dat tohoto sloupce.
+Odchylka| Měření, jak daleko rozprostření dat tohoto sloupce z průměrné hodnoty. 
+Zešikmení| Měření, jak se liší data tohoto sloupce od normálního rozdělení.
+Míra fluktuace| Měření, jak často se data tohoto sloupce v porovnání s normální distribucí.
 
 <a name="preprocess"></a>
 
@@ -168,15 +144,15 @@ Při konfiguraci experimentů můžete povolit rozšířené nastavení `Preproc
 
 ## <a name="run-experiment-and-view-results"></a>Spuštění experimentu a zobrazení výsledků
 
-Chcete-li spustit experiment, klikněte na tlačítko Spustit. Proces přípravy procesu trvá několik minut.
+Vyberte **začít** a spusťte experiment. Proces přípravy procesu trvá několik minut.
 
 ### <a name="view-experiment-details"></a>Zobrazit podrobnosti experimentu
 
-Po dokončení fáze přípravy experimentu se zobrazí obrazovka s podrobnostmi o spuštění. Tím získáte úplný seznam vytvořených modelů. Ve výchozím nastavení je model, který vyrovnává nejvyšší hodnoty na základě vašich parametrů, v horní části seznamu. Když se úloha školení pokusí o další modely, přidají se do seznamu iterací a do grafu. Pomocí grafu iterace získáte rychlé porovnání metrik pro modely, které byly doposud vyprodukovány.
+Po dokončení fáze přípravy experimentu se zobrazí obrazovka s podrobnostmi o spuštění, která začne naplnit. Tato obrazovka vám poskytne úplný seznam vytvořených modelů. Model, který vychází z nejvyšší úrovně podle zvolené metriky, je ve výchozím nastavení v horní části seznamu. Když se úloha školení pokusí o další modely, přidají se do seznamu iterací a do grafu. Pomocí grafu iterace získáte rychlé porovnání metrik pro modely, které byly doposud vyprodukovány.
 
 Školicí úlohy můžou nějakou dobu trvat, než se dokončí spuštění každého kanálu.
 
-![Spustit řídicí panel podrobností](media/how-to-create-portal-experiments/run-details.png)
+[![Spustit řídicí panel podrobností](media/how-to-create-portal-experiments/run-details.png)](media/how-to-create-portal-experiments/run-details-expanded.png#lightbox)
 
 ### <a name="view-training-run-details"></a>Zobrazit podrobnosti o školicím běhu
 
@@ -184,64 +160,39 @@ Projděte si podrobné informace o všech výstupních modelech a podívejte se 
 
 ![Podrobnosti iterace](media/how-to-create-portal-experiments/iteration-details.png)
 
-## <a name="deploy-model"></a>Nasazení modelu
+## <a name="deploy-your-model"></a>Nasazení modelu
 
 Jakmile budete mít nejlepší model na ruce, je čas ho nasadit jako webovou službu pro předpověď na nová data.
 
 Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
 
-1. Máte k dispozici několik možností nasazení. 
-    1. Pokud chcete nasadit nejlepší model na základě kritérií metriky, které jste pro experiment nastavili, vyberte **nasadit nejlepší model** ze stránky **podrobností o spuštění** .
+1. Máte několik možností nasazení. 
 
-        ![Tlačítko nasadit model](media/how-to-create-portal-experiments/deploy-model-button.png)
+    + Možnost 1: Pokud chcete nasadit nejlepší model (podle definovaných kritérií metriky), vyberte nasadit nejlepší model ze stránky podrobností o spuštění.
 
-    1. Pokud chcete nasadit určitou iteraci modelu, přejděte k podrobnostem v modelu a otevřete její konkrétní stránku s podrobnostmi o spuštění a vyberte **nasadit model**.
+    + Možnost 2: Chcete-li nasadit konkrétní model iterace z tohoto experimentu, přejděte k podrobnostem v modelu a otevřete stránku s podrobnostmi o spuštění a vyberte nasadit model.
+1. Naplnit podokno **nasazení modelu**
 
-        ![Tlačítko nasadit model](media/how-to-create-portal-experiments/deploy-model-button2.png)
+    Pole| Value
+    ----|----
+    Název nasazení| Zadejte jedinečný název pro vaše nasazení.
+    Popis nasazení| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
+    Skript bodování| Vygeneruje nebo nahraje vlastní soubor bodování. [Další informace o hodnoticím skriptu](how-to-deploy-and-where.md#script)
+    Skript prostředí| Vygeneruje nebo nahraje vlastní soubor prostředí.
+    >[!Important]
+    > Názvy souborů musí být pod 32 znaků a musí začínat a končit alfanumerickými znaky. Může obsahovat pomlčky, podtržítka, tečky a alfanumerické znaky mezi. Mezery nejsou povoleny.
 
-1. Prvním krokem je registrace modelu do služby. Vyberte registrovat model a počkejte na dokončení procesu registrace.
+1. Vyberte **Nasadit**. Dokončení nasazení může trvat přibližně 20 minut.
 
-    ![Okno nasadit model](media/how-to-create-portal-experiments/deploy-model-blade.png)
+    Po úspěšném dokončení nasazení se zobrazí následující zpráva.
 
-1. Po registraci modelu budete moct stáhnout skript bodování (scoring.py) a skript prostředí (condaEnv. yml), který se použije při nasazení.
+    ![Nasazení dokončeno](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png) 
 
-1. Po stažení skriptu bodování a skriptu prostředí v levém navigačním podokně vyberte okno **assety** a vyberte **modely**.
-
-    ![Modely navigačního podokna](media/how-to-create-portal-experiments/nav-pane-models.png)
-
-1. Vyberte model, který jste zaregistrovali, a vyberte vytvořit bitovou kopii.
-
-    Model můžete identifikovat podle jeho popisu, který bude obsahovat ID běhu, číslo iterace v následujícím formátu: *< Run_ID > _ < Iteration_number > _Model*
-
-    ![Modely: Vytvořit image](media/how-to-create-portal-experiments/model-create-image.png)
-
-1. Zadejte název obrázku. 
-1. Kliknutím na tlačítko **Procházet** vedle pole "soubor bodování" nahrajte soubor bodování (scoring.py), který jste předtím stáhli.
-
-1. Pokud chcete nahrát soubor prostředí (condaEnv. yml), který jste předtím stáhli, vyberte tlačítko **Procházet** vedle pole "soubor conda".
-
-    Můžete použít svůj vlastní hodnoticí skript a soubor conda a také nahrávat další soubory. [Přečtěte si další informace o skriptu bodování](how-to-deploy-and-where.md#script).
-
-      >[!Important]
-      > Názvy souborů musí být pod 32 znaků a musí začínat a končit alfanumerickými znaky. Může obsahovat pomlčky, podtržítka, tečky a alfanumerické znaky mezi. Mezery nejsou povoleny.
-
-    ![Vytvořit image](media/how-to-create-portal-experiments/create-image.png)
-
-1. Kliknutím na tlačítko vytvořit spusťte vytvoření bitové kopie. Dokončení této akce bude trvat několik minut. po dokončení se zobrazí zpráva na horním panelu.
-1. Přejdete na kartu images, zaškrtněte políčko vedle image, kterou chcete nasadit, a vyberte vytvořit nasazení. [Přečtěte si další informace o nasazeních](how-to-deploy-and-where.md).
-
-    Pro nasazení existují 2 možnosti.
-     + Azure Container instance (ACI) – používá se pro účely testování spíše více než provozní nasazení ve velkém měřítku. Nezapomeňte vyplnit hodnoty aspoň pro jednu jader pro _kapacitu kapacity procesoru_a aspoň jeden GIGABAJT (GB) pro _kapacitu rezervy paměti_ .
-     + Služba Azure Kubernetes (AKS)) – Tato možnost je určena pro nasazení ve velkém měřítku. Budete muset mít připravený výpočetní výkon založený na AKS.
-
-     ![Fotografií Vytvoření nasazení](media/how-to-create-portal-experiments/images-create-deployment.png)
-
-1. Až budete hotovi, vyberte **Vytvořit**. Nasazení modelu může trvat několik minut, než se každý kanál dokončí.
-
-1. A to je vše! Máte provozní webovou službu, která generuje předpovědi.
+Nyní máte provozní webovou službu, která generuje předpovědi.
 
 ## <a name="next-steps"></a>Další postup
 
+* Vyzkoušejte si kompletní [kurz tvorby prvního automatizovaného experimentu v Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 * [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md) a Azure Machine Learning.
 * [Pochopte automatizované výsledky strojového učení](how-to-understand-automated-ml.md).
 * [Naučte se využívat webovou službu](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service).

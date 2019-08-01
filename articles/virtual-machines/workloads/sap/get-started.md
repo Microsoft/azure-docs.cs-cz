@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 07/29/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f4352a1f6a065d1e9be78f01bde95c8f00593a3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 60474148d1eac6ca9d85fbc1d103ad612787aeae
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479775"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607863"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -43,7 +43,7 @@ Hostování scénářů pro úlohy SAP v Azure taky může vytvořit požadavky 
 - Představujeme rychlou cestu ExpressRoute a Global Reach pro velké instance HANA v [SAP Hana (velké instance) síťové architektury](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) a související dokumenty
 - Vydání [rozsáhlých instancí Azure Hana prostřednictvím Azure Portal](hana-li-portal.md)
 - Vydání [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](high-availability-guide-suse-netapp-files.md)
-
+- Vydání [instalace SAP NETWEAVER ASCS pro SAP HANA na Azure NetAppFiles (ANF) BETA verze](lama-installation.md)
 
 
 

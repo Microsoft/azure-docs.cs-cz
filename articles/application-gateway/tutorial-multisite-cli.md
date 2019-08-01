@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby application gateway s hostování několika webů – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Informace o vytvoření služby application gateway, který je hostitelem více webů pomocí Azure CLI.
+title: Vytvoření aplikační brány s hostováním více lokalit – Azure CLI | Microsoft Docs
+description: Naučte se, jak vytvořit Aplikační bránu, která hostuje víc lokalit pomocí Azure CLI.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -12,23 +12,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 5508a1dbd105fc47a4ed7b3484f55532904956ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce5701d4125123798c6b6a654e4fa4a4887778a3
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407111"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717267"
 ---
-# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Vytvoření služby application gateway s hostování více webů pomocí Azure CLI
+# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Vytvoření aplikační brány s hostováním několika webů pomocí Azure CLI
 
-Rozhraní příkazového řádku Azure můžete použít ke konfiguraci [hostování více webů](application-gateway-multi-site-overview.md) při vytváření [služba application gateway](application-gateway-introduction.md). V tomto kurzu vytvoříte back-endových fondů škálovací sady virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto kurzu se předpokládá, že vlastníte několik domén, a jako příklady se používají domény *www.contoso.com* a *www.fabrikam.com*.
+Rozhraní příkazového řádku Azure můžete použít ke konfiguraci [hostování více webů](application-gateway-multi-site-overview.md) při vytváření [aplikační brány](application-gateway-introduction.md). V tomto kurzu vytvoříte back-endové fondy pomocí sad škálování virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto kurzu se předpokládá, že vlastníte několik domén, a jako příklady se používají domény *www.contoso.com* a *www.fabrikam.com*.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavit síť
 > * Vytvoření služby Application Gateway
-> * Vytvoření naslouchacích procesů a pravidla směrování
+> * Vytvoření naslouchacího procesu a pravidel směrování
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
 > * Vytvořit v doméně záznam CNAME
 
@@ -102,7 +102,7 @@ Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplik
 
 ### <a name="add-the-backend-pools"></a>Přidání back-endových fondů
 
-Přidání fondů back-end s názvem *contosoPool* a *fabrikamPool* , které jsou potřeba tak, aby obsahovala servery back-end pomocí [az network application-gateway fondu adres vytvořte](/cli/azure/network/application-gateway).
+Přidejte back-end fondy s názvem *contosoPool* a *fabrikamPool* , které jsou potřeba k tomu, aby obsahovaly back-end servery, pomocí [AZ Network Application-Gateway Address-Pool Create](/cli/azure/network/application-gateway).
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -119,7 +119,7 @@ az network application-gateway address-pool create \
 
 Naslouchací proces je potřebný k tomu, aby aplikační brána správně směrovala provoz na back-endový fond. V tomto kurzu vytvoříte dva naslouchací procesy pro dvě domény. V tomto příkladu vytvoříte naslouchací procesy pro domény *www.contoso.com* a *www.fabrikam.com*. 
 
-Přidat naslouchací procesy s názvem *contosoListener* a *fabrikamListener* , které jsou potřeba ke směrování provozu pomocí [az network application-gateway-naslouchací proces protokolu http vytvořit](/cli/azure/network/application-gateway).
+Přidejte naslouchací procesy s názvem *contosoListener* a *fabrikamListener* , které jsou potřeba ke směrování provozu pomocí [AZ Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway).
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -140,7 +140,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>Přidání pravidel směrování
 
-Pravidla se zpracovávají v pořadí, ve kterém jsou vytvořeny a provoz se směřuje, že pomocí první pravidlo, které odpovídá adrese URL odeslán ke službě application gateway. Pokud máte například na stejném portu pravidlo založené na základním naslouchacím procesu a pravidlo založené na naslouchacím procesu pro více webů, musí být pravidlo s naslouchacím procesem pro více webů uvedeno před pravidlem se základním naslouchacím procesem, aby fungovalo podle očekávání. 
+Pravidla se zpracovávají v pořadí, ve kterém jsou vytvořená, a provoz se směruje pomocí prvního pravidla, které odpovídá adrese URL odeslané do aplikační brány. Pokud máte například na stejném portu pravidlo založené na základním naslouchacím procesu a pravidlo založené na naslouchacím procesu pro více webů, musí být pravidlo s naslouchacím procesem pro více webů uvedeno před pravidlem se základním naslouchacím procesem, aby fungovalo podle očekávání. 
 
 V tomto příkladu vytvoříte dvě nová pravidla a odstraníte výchozí pravidlo, které se vytvořilo při vytvoření aplikační brány. Pravidlo přidáte příkazem [az network application-gateway rule create](/cli/azure/network/application-gateway).
 
@@ -227,7 +227,7 @@ Použití záznamů typu A se nedoporučuje, protože virtuální IP adresa se p
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-Do adresního řádku prohlížeče zadejte název domény. Příklad: http://www.contoso.com.
+Do adresního řádku prohlížeče zadejte název domény. Například http\://www.contoso.com.
 
 ![Testování webu Contoso v aplikační bráně](./media/tutorial-multisite-cli/application-gateway-nginxtest1.png)
 
@@ -235,14 +235,14 @@ Změňte adresu na jinou ze svých domén. Měli byste vidět něco podobného j
 
 ![Testování webu Fabrikam v aplikační bráně](./media/tutorial-multisite-cli/application-gateway-nginxtest2.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Nastavit síť
 > * Vytvoření služby Application Gateway
-> * Vytvoření naslouchacích procesů a pravidla směrování
+> * Vytvoření naslouchacího procesu a pravidel směrování
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
 > * Vytvořit záznam CNAME v doméně
 

@@ -3,7 +3,7 @@ title: Integrace služby API Management se Service Fabric v Azure | Microsoft Do
 description: Naučte se rychle začít s Azure API Management a směrovat provoz do back-endové služby v Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/10/2019
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: c290b13ccb65c68c32d63638b15e8a3f59ef8010
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 470eacee5c71742678497edf48169e14a4073829
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228108"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598822"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integrace API Management s Service Fabric v Azure
 
@@ -45,7 +45,7 @@ Než začnete:
 * Vytvořte zabezpečený [cluster se systémem Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) ve skupině zabezpečení sítě.
 * Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a vývojové úlohy pro vývoj pro **Azure**, **ASP.NET a**vývoj pro web a **.NET Core pro různé platformy** .  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
 
-## <a name="network-topology"></a>Síťová topologie
+## <a name="network-topology"></a>Topologie sítě
 
 Teď, když máte zabezpečený [cluster Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure, nasadíte API Management do virtuální sítě (VNET) v PODSÍTI a NSG určené pro API Management. Pro účely tohoto článku je šablona API Management Správce prostředků předem nakonfigurovaná tak, aby používala názvy virtuální sítě, podsítě a NSG, které jste nastavili v tématu [kurz Windows cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) , v tomto článku se nasadí Tato topologie do Azure, ve které API Management a Service Fabric jsou v podsítích stejné Virtual Network:
 
@@ -201,7 +201,7 @@ Vyplňte následující prázdné parametry v souboru *apim.parameters.json* pro
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
-|apimSku|Developer|
+|apimSku|Vývojář|
 |serviceFabricCertificateName|sfclustertutorialgroup320171031144217|
 |certificatePassword|q6D7nN%6ck@6|
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |

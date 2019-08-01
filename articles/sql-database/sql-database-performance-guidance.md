@@ -1,6 +1,6 @@
 ---
-title: Průvodce laděním výkonu Azure SQL Database | Dokumentace Microsoftu
-description: Další informace o použití doporučení ručně vyladit výkon dotazů Azure SQL Database.
+title: Pokyny k ladění výkonu Azure SQL Database | Microsoft Docs
+description: Přečtěte si o použití doporučení k ručnímu vyladění výkonu Azure SQL Database dotazů.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,57 +10,56 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: a49d30d3058a6cf3ce82d56076f348861ad631ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ea5d6c734659d36822f62237a42a8fbe332c996
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60585072"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567115"
 ---
-# <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ruční ladění výkonu dotazů ve službě Azure SQL Database
+# <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ruční ladění výkonu dotazů v Azure SQL Database
 
-Po zjištění problému s výkonem, který se potýkáte s využitím SQL Database, tento článek je navržené pro vám pomůže:
+Jakmile zjistíte problémy s výkonem, na které jste se SQL Database, Tento článek vám umožní:
 
-- Ladění aplikací a použít některé osvědčené postupy, které může zlepšit výkon.
-- Optimalizujte databázi tak, že změníte indexy a dotazy, které efektivněji pracovat s daty.
+- Optimalizujte svou aplikaci a použijte některé osvědčené postupy, které můžou zlepšit výkon.
+- Vyladění databáze tak, že změníte indexy a dotazy pro efektivnější práci s daty.
 
-Tento článek předpokládá, že jste už pracovali prostřednictvím Azure SQL Database [databáze doporučení advisoru](sql-database-advisor.md) a Azure SQL Database [doporučení automatického ladění](sql-database-automatic-tuning.md). Dále předpokládá, že jste si prohlédli [Přehled monitorování a optimalizace](sql-database-monitor-tune-overview.md) a její související články týkající se problémů s výkonem. Kromě toho tomto článku se předpokládá, že nemáte prostředky procesoru, problém s výkonem souvisejících s běžící, který lze vyřešit zvětšením velikosti výpočetního nebo úroveň Poskytněte další zdroje informací o databázi služby.
+V tomto článku se předpokládá, že už jste pracovali pomocí [doporučení Azure SQL Database Database Advisoru](sql-database-advisor.md) , a Azure SQL Database doporučení pro [Automatické ladění](sql-database-automatic-tuning.md). Také předpokládá, že jste si přečetli [Přehled monitorování a optimalizace](sql-database-monitor-tune-overview.md) a související články týkající se řešení potíží s výkonem. V tomto článku se navíc předpokládá, že nemáte prostředky procesoru, a s tím spojené problémy s výkonem, které se dají vyřešit zvýšením velikosti výpočetní kapacity nebo úrovně služby, aby bylo možné získat více prostředků do vaší databáze.
 
-## <a name="tune-your-application"></a>Ladění aplikací
+## <a name="tune-your-application"></a>Optimalizace aplikace
 
-V tradiční místní SQL Server je proces plánování kapacity počáteční často oddělené od procesu spuštění aplikace v produkčním prostředí. Hardware a produktu licence se kupují nejprve a optimalizace výkonu je provést později. Pokud používáte Azure SQL Database, je vhodné interweave proces spuštění aplikace a jeho vylaďování. S modelem placení za kapacitu na vyžádání můžete ladit aplikace použije minimální prostředky, které potřebuje teď místo bylo potřeba zřizovat na hardwaru podle pokusů plánů budoucímu růstu pro aplikace, které často nejsou správné. Zákazníci, kteří může rozhodnout optimalizovat aplikace a místo toho se rozhodnete zřizovat hardwarové prostředky. Tento přístup může být vhodné, pokud nechcete změnit klíče aplikace zaneprázdněný období. Ale ladění aplikace můžete minimalizovat nároky na prostředky a nižší faktury měsíční při použití úrovně služeb ve službě Azure SQL Database.
+V tradičních místních SQL Server proces prvotního plánování kapacity je často oddělený od procesu spuštění aplikace v produkčním prostředí. Nejprve se kupují hardwarové a produktové licence a optimalizace výkonu se provádí později. Pokud používáte Azure SQL Database, je vhodné, abyste propravili proces spuštění aplikace a vyladění. Díky modelu uplatnění kapacity na vyžádání můžete svou aplikaci vyladit tak, aby místo nadměrného zřizování na hardwaru používala minimální prostředky, které jsou potřeba k tomu, aby se prováděly nepřesné požadavky na hardware, a to na základě odhadu budoucích plánů růstu pro aplikaci, které jsou často nesprávné. Někteří zákazníci si můžou zvolit, že nemají ladit aplikaci, a místo toho se rozhodnou prostředky hardwaru. Tento přístup může být dobrý nápad, pokud nechcete během zaneprázdněného období měnit klíčovou aplikaci. Ladění aplikace ale může minimalizovat požadavky na prostředky a nižší měsíční faktury při používání úrovní služeb v Azure SQL Database.
 
 ### <a name="application-characteristics"></a>Vlastnosti aplikace
 
-I když úrovně služby Azure SQL Database jsou navržené ke zlepšení výkonu stabilitu a předvídatelnost pro aplikaci, můžete některé osvědčené postupy vyladit vaše aplikace lépe využívat prostředky na výpočty velikosti. I když mnohé aplikace mají výrazné zvýšení výkonu jednoduše tak, že přepnutí na vyšší výpočetní velikost nebo úroveň služby, některé aplikace potřebují další doladění, abyste využili výhod vyšší úroveň služby. Pro zvýšení výkonu vezměte v úvahu další aplikační ladění pro aplikace, které mají tyto charakteristiky:
+I když Azure SQL Database úrovně služeb jsou navržené tak, aby se zlepšila stabilita výkonu a předvídatelnost pro aplikaci, některé osvědčené postupy vám pomůžou s optimalizací vaší aplikace, aby lépe využily výhod prostředků na výpočetní úrovni. I když mnoho aplikací má výrazný nárůst výkonu jednoduše tím, že přejdete na vyšší výpočetní velikost nebo úroveň služby, některé aplikace potřebují další ladění, abyste využili vyšší úroveň služby. Pro zvýšení výkonu zvažte další ladění aplikací pro aplikace, které mají tyto vlastnosti:
 
-- **Aplikace, které mají nízký výkon kvůli "příliš upovídaným" chování**
+- **Aplikace s nízkým výkonem z důvodu chování "chaty"**
 
-  Přetížení aplikace provést operacemi přístupu k datům nadměrné, které jsou citlivé na latenci sítě. Můžete třeba upravit tyto druhy aplikací a snížit počet operací přístupu k datům do služby SQL database. Například může zlepšit výkon aplikace pomocí postupů, jako jsou dávkové zpracování dotazů ad hoc nebo při přenosech dotazy na uložené procedury. Další informace najdete v tématu [dávkové dotazy](#batch-queries).
+  Aplikace v konverzaci využívají nadměrné operace přístupu k datům, které jsou citlivé na latenci sítě. Je možné, že budete muset upravit tyto typy aplikací a snížit tak počet operací přístupu k datům do databáze SQL. Například můžete zlepšit výkon aplikace pomocí technik, jako jsou dávkové zpracování dotazů ad hoc nebo přesunutí dotazů do uložených procedur. Další informace najdete v tématu [dávkové dotazy](#batch-queries).
 
-- **Databáze s náročné úlohy, který nemůže být podporována celý jeden počítač**
+- **Databáze s náročnými úlohami, které nemůžou podporovat celý jeden počítač**
 
-   Databáze, které překračují prostředky nejvyšší úrovně Premium výpočtu velikosti může mít užitek z horizontální navýšení kapacity zatížení. Další informace najdete v tématu [horizontálního dělení mezidatabázové](#cross-database-sharding) a [funkční dělení](#functional-partitioning).
+   Databáze, které překračují prostředky nejvyšší výpočetní velikosti Premium, můžou využívat horizontální škálování zatížení. Další informace najdete v tématech [mezidatabázová horizontálního dělení](#cross-database-sharding) a [funkční dělení](#functional-partitioning).
 
-- **Aplikace, které mají optimalizací dotazů**
+- **Aplikace, které mají dílčí optimální dotazy**
 
-  Aplikace, zejména v vrstvy přístupu k datům, který máte špatně vyladěný dotazy nemusí těžit z vyšší velikost výpočetní prostředky. To zahrnuje dotazy, které nemají klauzule WHERE, chybí indexy nebo zastaralé statistiky. Tyto aplikace využít techniky ladění výkonu standardního dotazu. Další informace najdete v tématu [chybějící indexy](#identifying-and-adding-missing-indexes) a [dotazování ladění a zobrazování rad](#query-tuning-and-hinting).
+  Aplikace, zejména ty ve vrstvě pro přístup k datům, které mají špatně vyladěné dotazy, nemůžou mít větší výpočetní velikost. To zahrnuje dotazy, u kterých chybí klauzule WHERE, chybějící indexy nebo zastaralé statistiky. Tyto aplikace využívají standardní techniky vyladění výkonu dotazů. Další informace najdete v tématu [chybějící indexy](#identifying-and-adding-missing-indexes) a [optimalizace dotazů a hinty](#query-tuning-and-hinting).
 
-- **Aplikace, které mají přístup k návrhu neoptimálním průběhem dat**
+- **Aplikace, které mají návrh pro přístup k datům v dílčím ideálním případě**
 
-   Aplikace, které mají vlastní data access souběžnosti problémy, například vzájemné zablokování, nemusí využívat vyšší velikost výpočetní prostředky. Zvažte snížení odezev databázi SQL Azure pomocí ukládání do mezipaměti dat na straně klienta pomocí služby mezipaměti Azure nebo jinou technologií ukládání do mezipaměti. Zobrazit [ukládání do mezipaměti aplikace úroveň](#application-tier-caching).
+   Aplikace, které mají podstatný problém souběžnosti přístupu k datům, například zablokování, nemusí využívat vyšší výpočetní velikost. Zvažte snížení odezvy u Azure SQL Database uložením dat na straně klienta do mezipaměti pomocí služby Azure Caching nebo jiné technologie ukládání do mezipaměti. Viz [ukládání aplikační vrstvy do mezipaměti](#application-tier-caching).
 
-## <a name="tune-your-database"></a>Ladit vaši databázi
+## <a name="tune-your-database"></a>Vyladění databáze
 
-V této části se podíváme na některé techniky, které můžete použít k vyladění Azure SQL Database a získat lepší výkon vaší aplikace a provést spuštění na nejnižší možné výpočetní velikost. Některé z těchto postupů odpovídá tradiční ladění osvědčené postupy serveru SQL Server, ale ostatní jsou specifické pro Azure SQL Database. V některých případech můžete zkoumat spotřebovaných prostředků, aby databáze mohla najít oblastí a dále ladit a rozšíření tradičních technik systému SQL Server pro práci ve službě Azure SQL Database.
+V této části se podíváme na některé postupy, které můžete použít k optimalizaci Azure SQL Database k získání nejlepšího výkonu vaší aplikace a jejímu spuštění s nejnižší možnou výpočetní velikostí. Některé z těchto postupů odpovídají tradičním SQL Server vyladění osvědčených postupů, ale jiné jsou specifické pro Azure SQL Database. V některých případech můžete prozkoumat spotřebované prostředky pro databázi a vyhledat oblasti pro další vyladění a rozšířit tradiční SQL Server techniky pro práci v Azure SQL Database.
 
 ### <a name="identifying-and-adding-missing-indexes"></a>Identifikace a přidání chybějících indexů
 
-Běžným problémem v výkonu databáze OLTP vztahuje se k návrhu fyzická databáze. Databázová schémata jsou často navržené a dodán bez testování ve velkém měřítku (buď v načtení nebo objemu dat). Bohužel výkonu plán dotazu může být přijatelný v malém měřítku, ale podstatně snížit pod provozní úrovni datové svazky. Nejběžnější příčiny tohoto problému je chybějící vhodné indexy, které splňují filtry nebo jiná omezení v dotazu. Chybějící indexy manifesty jako tabulku skenování často, při hledání indexu může stačit.
+Běžný problém ve výkonu databáze OLTP se týká návrhu fyzické databáze. Databázová schémata se často navrhují a dodávají bez testování ve velkém měřítku (buď v zatížení nebo v datovém svazku). Výkon plánu dotazů bohužel může být přijatelný v malém měřítku, ale v podstatě je na úrovni produkčních objemů dat. Nejběžnějším zdrojem tohoto problému je nedostatek vhodných indexů, které by vyhovovaly filtrům nebo jiným omezením v dotazu. V případě, že by hledání v indexu nemohlo být, často chybějí indexy manifesty jako prohledávání tabulky.
 
-V tomto příkladu plán vybraný dotaz používá kontrolu, když bude stačit hledání:
+V tomto příkladu vybraný plán dotazu používá kontrolu, pokud by měl stačit hledání:
 
 ```sql
 DROP TABLE dbo.missingindex;
@@ -80,11 +79,11 @@ SELECT m1.col1
     WHERE m1.col2 = 4;
 ```
 
-![Plán dotazu s chybějící indexy](./media/sql-database-performance-guidance/query_plan_missing_indexes.png)
+![Plán dotazu s chybějícími indexy](./media/sql-database-performance-guidance/query_plan_missing_indexes.png)
 
-Azure SQL Database můžete najít a opravit běžné chybí indexu podmínky. Podívejte se na dotaz kompilace, ve kterých by indexu výrazně snížit odhadované náklady na spuštění dotazu zobrazení dynamické správy, které jsou integrované do Azure SQL Database. Při provádění dotazu SQL Database sleduje jak často spouští každý plán dotazu a sleduje odhadované mezery mezi plán provádění dotazu a imagined kde indexu existoval. Vám pomůže tyto zobrazení dynamické správy rychle odhadnout změny do svého návrhu fyzická databáze může zlepšit celkové náklady na úlohy pro databázi a její skutečné pracovní vytížení.
+Azure SQL Database vám může pomoct najít a opravit běžné chybějící podmínky indexu. Zobrazení dynamické správy, které jsou integrované do Azure SQL Database, se podívejte na kompilace dotazů, ve kterých by index významně snižoval odhadované náklady na spuštění dotazu. Při provádění dotazu SQL Database sleduje, jak často se jednotlivé plány dotazů spouštějí, a sleduje odhadovanou mezeru mezi zpracovávaným plánem dotazů a představem, který tento index existoval. Tyto zobrazení dynamické správy můžete použít k rychlému odhadu, které změny v návrhu fyzické databáze můžou zlepšit celkové náklady na úlohy pro databázi a její reálnou úlohu.
 
-Vyhodnotit potenciální chybějících indexů, můžete pomocí tohoto dotazu:
+Tento dotaz můžete použít k vyhodnocení potenciálních chybějících indexů:
 
 ```sql
 SELECT
@@ -111,25 +110,25 @@ FROM sys.dm_db_missing_index_groups AS mig
  ORDER BY migs.avg_total_user_cost * migs.avg_user_impact * (migs.user_seeks + migs.user_scans) DESC
 ```
 
-V tomto příkladu je výsledkem dotazu tohoto návrhu:
+V tomto příkladu je výsledkem dotazu tento návrh:
 
 ```sql
 CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] ([col2])  
 ```
 
-Po jeho vytvoření, vybere tento stejný příkaz SELECT jiný plán, který používá hledání namísto kontroly a efektivněji pak provede plánu:
+Po vytvoření stejný příkaz SELECT vybere jiný plán, který místo kontroly používá hledání, a pak plán provede efektivněji:
 
-![Plán dotazu s opravený indexy](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
+![Plán dotazů s opravenými indexy](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-Klíčový přehled je, že je kapacita v/v systému sdílené, komoditním omezenější než počítač vyhrazený server. Není na minimalizovat zbytečné vstupně-výstupních operací maximální využívat systém v DTU jednotlivých velikost výpočetní úrovně služby Azure SQL Database na úrovni premium. Návrh fyzické databázi volby může výrazně zlepšit latenci pro jednotlivé dotazy, zlepšit propustnost souběžných požadavků zpracovaných za škálovací jednotku a minimalizovat náklady nutné k uspokojení dotazu. Další informace o chybějící index zobrazení dynamické správy najdete v tématu [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+Klíčovým přehledem je, že kapacita vstupně-výstupních operací sdíleného a komoditního systému je více omezená než na vyhrazeném serverovém počítači. K minimalizaci zbytečných vstupně-výstupních operací pro maximální využití systému ve DTU každé výpočetní velikosti Azure SQL Database úrovní služeb je Premium. Vhodné volby pro návrh fyzické databáze můžou výrazně zlepšit latenci pro jednotlivé dotazy, zlepšit propustnost souběžných požadavků zpracovaných na jednotku škálování a snížit náklady potřebné k uspokojení dotazu. Další informace o chybějícím indexu zobrazení dynamické správy naleznete v tématu [Sys. DM _db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
 
-### <a name="query-tuning-and-hinting"></a>Optimalizace dotazů a Rady
+### <a name="query-tuning-and-hinting"></a>Ladění a hinty dotazů
 
-Optimalizace dotazů ve službě Azure SQL Database je podobný tradiční optimalizátoru dotazů systému SQL Server. Většina osvědčených postupů pro optimalizaci dotazů a pochopení důvody, proč modelu omezení optimalizátoru dotazů platí také pro Azure SQL Database. Pokud je optimalizace dotazů ve službě Azure SQL Database, může se zobrazit navíc můžete využít snižuje požadavky na prostředky agregace. Vaše aplikace může být schopni spustit s nižšími náklady než zrušení vyladěný ekvivalentní, protože může probíhat na nižší výpočetní velikost.
+Optimalizátor dotazů v Azure SQL Database je podobný tradičnímu optimalizátoru dotazů SQL Server. Většina osvědčených postupů pro optimalizaci dotazů a porozumění omezením modelu pro Optimalizátor dotazů se vztahuje také na Azure SQL Database. Pokud budete ladit dotazy v Azure SQL Database, můžete získat další výhody omezení agregovaných požadavků na prostředky. Vaše aplikace může být schopná běžet za nižší náklady než vyladěný ekvivalent, protože může běžet s nižší výpočetní velikostí.
 
-Příklad, který je běžné v systému SQL Server, a to platí i pro Azure SQL Database je způsob optimalizace dotazů "zachytává obsah" parametry. Během kompilace optimalizace dotazů vyhodnotí jako aktuální hodnoty parametru k určení, zda můžete generovat více optimální plán dotazu. I když tato strategie často může mít za následek plán dotazu, který je výrazně rychlejší než plán zkompiloval bez parametru známé hodnoty, aktuálně funguje imperfectly i v systému SQL Server a ve službě Azure SQL Database. Někdy není parametr zachycení a někdy zachycení parametr, ale vygenerovaný plán je optimální pro úplnou sadu hodnot parametrů v zatížení. Microsoft obsahuje pomocné parametry dotazu (direktivy), takže můžete určit záměr více záměrně a přepsat výchozí chování pro analýzu sítě parametru. Často Pokud používáte pomocné parametry, můžete vyřešit případy, ve kterých je výchozí chování systému SQL Server nebo Azure SQL Database dokonalé pro konkrétního zákazníka zatížení.
+Příkladem, který je společný v SQL Server a který taky platí pro Azure SQL Database, je způsob, jakým jsou uvedené parametry optimalizace dotazů "sniffer". Během kompilace vyhodnocuje Optimalizátor dotazů aktuální hodnotu parametru a určí, zda může generovat lépe optimální plán dotazu. I když tato strategie často může vést k plánu dotazů, který je výrazně rychlejší než plán kompilovaný bez známých hodnot parametrů, v současné době funguje nedokonalé v SQL Server i v Azure SQL Database. V některých případech je parametr nefiltrované a někdy je parametr uveden jako takový, ale vygenerovaný plán je pro úplnou sadu hodnot parametrů v úloze odvozený. Společnost Microsoft obsahuje pomocný parametr dotazu (direktivy), aby bylo možné určit účel záměrně a přepsat výchozí chování při sledování parametrů. Pokud používáte Rady, můžete často opravovat případy, kdy je výchozí SQL Server nebo chování Azure SQL Database dokonalé pro konkrétní pracovní vytížení.
 
-Následující příklad ukazuje, jak procesor dotazů můžete generovat plán, který je optimální pro výkon a požadavky na prostředky. Tento příklad také ukazuje, že pokud používáte pomocný parametr dotazu, můžete snížit požadavky na spuštění dotazu času a prostředků pro vaši databázi SQL:
+Následující příklad ukazuje, jak může procesor dotazů vygenerovat plán, který je pro požadavky na výkon i prostředky optimální. Tento příklad také ukazuje, že pokud použijete pomocný parametr dotazu, můžete zkrátit dobu běhu dotazu a požadavky na prostředky pro vaši databázi SQL:
 
 ```sql
 DROP TABLE psptest1;
@@ -169,7 +168,7 @@ CREATE TABLE t1 (col1 int primary key, col2 int, col3 binary(200));
 GO
 ```
 
-Instalační kód vytvoří tabulku, která se má zkosený distribuci dat. Plán dotazu optimální liší v závislosti na vybrané který parametr. Bohužel plán chování ukládání do mezipaměti není vždy znovu zkompilovat na základě nejčastěji používané hodnoty parametru dotazu. Ano je možné pro optimální plán v mezipaměti a použít pro více hodnot, i v případě, že jiný plán může být vhodnější použít plán v průměru. Vytvoří plán dotazu dvě uložené procedury, které jsou identické, s tím rozdílem, že jedna má speciální dotaz nápovědu.
+Kód instalace vytvoří tabulku, která má šikmou distribuci dat. Optimální plán dotazu se liší v závislosti na tom, který parametr je vybrán. Bohužel chování při ukládání plánu do mezipaměti nikdy znovu nekompiluje dotaz na základě nejběžnější hodnoty parametru. Proto je možné, že pro dílčí optimální plán se má ukládat do mezipaměti a používat pro spoustu hodnot, a to i v případě, že jiný plán může být pro průměrnou volbou lepší plán. Plán dotazu pak vytvoří dva uložené procedury, které jsou identické, s výjimkou toho, že jeden má zvláštní pomocný parametr dotazu.
 
 ```sql
 -- Prime Procedure Cache with scan plan
@@ -186,7 +185,7 @@ WHILE @i < 1000
     END
 ```
 
-Doporučujeme, abyste počkali alespoň 10 minut, než začnete, část 2 příkladu tak, že výsledky jsou jedinečná ve výsledné telemetrická data.
+Doporučujeme, abyste počkali alespoň 10 minut, než začnete s částí 2 tohoto příkladu, takže výsledky budou jedinečné ve výsledných datech telemetrie.
 
 ```sql
 EXEC psp2 @param2=1;
@@ -201,21 +200,21 @@ DECLARE @i int = 0;
     END
 ```
 
-Každá část v tomto příkladu se pokusí o spuštění příkazu parametrizované insert 1000krát (ke generování dostatečné zatížení chcete použít jako sada testovacích dat.). Při provádění uložené procedury, procesor dotazů zkontroluje hodnotu parametru, který je předán do procedury během jeho prvního kompilace (parametr "pro analýzu sítě"). Procesor výsledný plán ukládá do mezipaměti a použije ho pro pozdější volání, i v případě, že hodnota parametru se liší. Ve všech případech nemusí použít optimální plán. Někdy potřebujete průvodce Optimalizátor vybrat plán, který je lepší pro průměrný případ spíše než konkrétní případ od kdy byl dotaz nejprve zkompilován. V tomto příkladu vygeneruje počáteční plán "kontrola" plán, který načte všechny řádky k vyhledání všech hodnot, které odpovídá parametru:
+Každá část tohoto příkladu se pokusí spustit parametrizovaný příkaz INSERT 1 000 krát (pro generování dostatečného zatížení pro použití jako testovací sady dat). Při provádění uložených procedur Procesor dotazů prověřuje hodnotu parametru, která je předána proceduře během první kompilace (parametr "sledování"). Procesor ukládá výsledný plán do mezipaměti a používá ho pro pozdější vyvolání, a to i v případě, že se hodnota parametru liší. Optimální plán se nemusí používat ve všech případech. V některých případech je potřeba Průvodce optimalizací vybrat pro výběr plánu, který je vhodnější pro průměrnou velikost písmen, nikoli z konkrétního případu z při prvním kompilování dotazu. V tomto příkladu počáteční plán vygeneruje "skenovací" plán, který načte všechny řádky a vyhledá všechny hodnoty, které odpovídají parametru:
 
-![Dotazování ladění s použitím plánu kontroly](./media/sql-database-performance-guidance/query_tuning_1.png)
+![Vyladění dotazů pomocí plánu skenování](./media/sql-database-performance-guidance/query_tuning_1.png)
 
-Protože jsme spouštěli postup pomocí hodnoty 1, výsledný plán bylo ideální pro hodnotu 1, ale byla optimální pro všechny ostatní hodnoty v tabulce. Výsledek pravděpodobně není co vhodné, pokud byste chtěli vyberte každý plán náhodně, protože v plánu provádí pomaleji a využívá více prostředků.
+Vzhledem k tomu, že jsme provedli postup s použitím hodnoty 1, byl výsledný plán optimální pro hodnotu 1, ale byl pro všechny ostatní hodnoty v tabulce tento. Výsledek pravděpodobně není to, co byste chtěli, pokud byste si museli každý plán vybrat náhodně, protože plán pomaleji a využívá více prostředků.
 
-Pokud spustíte test s `SET STATISTICS IO` nastavena na `ON`, logického prohledávání práce v tomto příkladu se provádí na pozadí. Uvidíte, že jsou 1,148 čtení provádí plánu (což je neefektivní, pokud průměrná jsou vrátit jen jeden řádek):
+Pokud spustíte test s `SET STATISTICS IO` nastavením na `ON`, funguje logická kontrola v tomto příkladu na pozadí. Vidíte, že plán obsahuje 1 148 čtení (což je neefektivní, pokud průměrná velikost písmen vrátí pouze jeden řádek):
 
-![Dotazování s použitím logického prohledávání ladění](./media/sql-database-performance-guidance/query_tuning_2.png)
+![Vyladění dotazu pomocí logického prohledávání](./media/sql-database-performance-guidance/query_tuning_2.png)
 
-Druhá část v příkladu používá pomocný parametr dotazu říct Optimalizátor, aby použil konkrétní hodnoty během kompilace. V tomto případě vynutí procesor dotazů ignorovat hodnotu, která je předána jako parametr, a místo toho předpokládat, že `UNKNOWN`. To se vztahuje na hodnotu, která má průměrnou četnost v tabulce (ignorování Nerovnoměrná distribuce). Hledání podle plánu, který je rychlejší a používá méně prostředků v průměru, než plán v části 1 tohoto příkladu je výsledný plán:
+Druhá část příkladu používá pomocný parametr dotazu k oznámení, aby Optimalizátor používal konkrétní hodnotu během procesu kompilace. V takovém případě vynutí Procesor dotazů ignorovat hodnotu, která je předána jako parametr, a místo toho předpokládat `UNKNOWN`. To odkazuje na hodnotu, která má průměrnou frekvenci v tabulce (ignoruje se zešikmení). Výsledný plán je plán založený na hledání, který je rychlejší a používá méně prostředků v průměru, než je plán v části 1 tohoto příkladu:
 
-![Vyladění dotazů s použitím pomocného parametru dotazu](./media/sql-database-performance-guidance/query_tuning_3.png)
+![Vyladění dotazů pomocí pomocného parametru dotazu](./media/sql-database-performance-guidance/query_tuning_3.png)
 
-Zobrazí se tento efekt v **sys.resource_stats** tabulky (dochází ke zpoždění od okamžiku spuštění testu a kdy data naplní tabulky). Pro tento příklad, část 1 provést během časového intervalu 22:25:00 a 2. část provést ve 22:35:00. Starší časový interval použít další prostředky v tomto časovém intervalu než novější verze (z důvodu zlepšení efektivity plán).
+Můžete zobrazit efekt v tabulce **Sys. resource_stats** (nastane zpoždění od času, kdy provádíte test, a když data naplní tabulku). V tomto příkladu se část 1 spustila během časového intervalu 22:25:00.2. část byla provedena v 22:35:00. Předchozí časové okno v tomto časovém intervalu používalo více prostředků než novější (kvůli vylepšením efektivity plánování).
 
 ```sql
 SELECT TOP 1000 *
@@ -224,45 +223,45 @@ WHERE database_name = 'resource1'
 ORDER BY start_time DESC
 ```
 
-![Ladění Příklad výsledků dotazu](./media/sql-database-performance-guidance/query_tuning_4.png)
+![Příklady výsledků ladění dotazů](./media/sql-database-performance-guidance/query_tuning_4.png)
 
 > [!NOTE]
-> I když svazek v tomto příkladu je záměrně malý, může být značné, zejména u větších databází efekt optimální parametry. Rozdíl v extrémních případech může být v rozmezí sekund pro rychlý případy a hodiny pro případy, pomalé.
+> I když je svazek v tomto příkladu záměrně malý, účinek dílčích optimálních parametrů může být zásadní, zejména u větších databází. Rozdíl v extrémních případech může být v rozmezí sekund pro rychlé případy a hodiny pro pomalé případy.
 
-Můžete prozkoumat **sys.resource_stats** k určení, zda prostředek pro test používá více nebo méně prostředků než jiného testu. Při porovnávání dat oddělte časování testů tak, aby se nenacházejí ve stejném okně 5 minut **sys.resource_stats** zobrazení. Cílem výkonu je minimalizovat celkové množství použité prostředky a není minimalizovat prostředků ve špičce. Obecně platí optimalizace část kódu pro latenci také snižuje spotřebu prostředků. Ujistěte se, že změny provedené v aplikaci jsou nezbytné a že změny nemají vliv na negativní zkušenosti někomu, kdo může používat pomocné parametry dotazu v aplikaci.
+Můžete zkontrolovat **Sys. resource_stats** a zjistit, zda prostředek pro test používá více nebo méně prostředků než jiný test. Když porovnáte data, oddělte časování testů tak, aby se v zobrazení **Sys. resource_stats** nezobrazily v jednom okně s pěti minutami. Cílem tohoto cvičení je minimalizovat celkový objem využitých prostředků, a ne minimalizovat prostředky ve špičce. Obecně optimalizuje část kódu pro latenci také snižuje spotřebu prostředků. Ujistěte se, že jsou změny, které provedete v aplikaci, nezbytné a že změny nemají negativní vliv na uživatelské prostředí pro někoho, kdo může v aplikaci použít pomocný parametr dotazu.
 
-Pokud úloha obsahuje sadu opakujících se dotazů, často má smysl pro zachycení a ověřit optimality vaše volby plánu, protože řídí velikost jednotky minimální prostředků vyžaduje k hostování databáze. Po ověření, čas od času prozkoumat plánů, které vám pomohou zajistit, že nebyly degradovaný. Další informace o [dotazování pomocné parametry (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
+Pokud má úloha sadu opakujících se dotazů, často má smysl zachytit a ověřit optimální možnosti plánu, protože jednotkou je minimální jednotka velikosti prostředků, která je vyžadována pro hostování databáze. Po ověření si občas prověříte plány, které vám pomohou zajistit, že nebudou omezené. Další informace o pokynech [pro dotazy najdete v jazyce Transact-SQL](https://msdn.microsoft.com/library/ms181714.aspx).
 
-### <a name="cross-database-sharding"></a>Mezidatabázové horizontálního dělení
+### <a name="cross-database-sharding"></a>Horizontálního dělení mezi databázemi
 
-Protože Azure SQL Database běží na komoditním hardwaru, limity kapacity pro jednotlivé databáze jsou nižší než tradiční místní instalaci systému SQL Server. Někteří zákazníci databázových operací rozdělena více databází, když operace nehodí uvnitř omezení jednotlivé databáze ve službě Azure SQL Database pomocí technik horizontálního dělení. Většina zákazníků, kteří používají postupů horizontálního dělení ve službě Azure SQL Database svá data na jednom rozměru rozdělit mezi několik databází. U tohoto přístupu je potřeba pochopit, že aplikace s online zpracováním transakcí často provádění transakcí, které se týkají pouze jeden řádek nebo pro malou skupinu řádků ve schématu.
+Vzhledem k tomu, že Azure SQL Database spouští na komoditním hardwaru, jsou limity kapacity pro jednotlivé databáze nižší než pro tradiční místní instalaci SQL Server. Někteří zákazníci využívají techniky horizontálního dělení k šíření databázových operací v několika databázích, když se operace nevejdou do limitů jednotlivých databází v Azure SQL Database. Většina zákazníků, kteří používají techniky horizontálního dělení v Azure SQL Database rozdělí svá data na jednu dimenzi napříč více databázemi. Pro účely tohoto přístupu potřebujete pochopit, že aplikace OLTP často provádějí transakce, které se vztahují pouze na jeden řádek nebo na malou skupinu řádků ve schématu.
 
 > [!NOTE]
-> SQL Database teď poskytuje knihovnu pro účely pomoci s horizontálního dělení. Další informace najdete v tématu [přehled klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md).
+> SQL Database teď poskytuje knihovnu, která vám pomůže s horizontálního dělení. Další informace najdete v tématu [Přehled klientské knihovny elastic Database](sql-database-elastic-database-client-library.md).
 
-Například pokud databáze obsahuje jméno zákazníka, pořadí a podrobnosti objednávky (například tradiční ukázkové databázi Northwind, která je dodávána s SQL serverem), můžete rozdělit data do více databází seskupením zákazník s související objednávky a detaily objednávky informace. Můžete zajistit, že zákaznická data zůstanou v jednotlivých databází. Aplikace by rozdělení různých zákazníků napříč databázemi, efektivně rozložení zátěže mezi několika databázemi. Horizontální dělení zákazníci nejen se můžete vyhnout maximálního limitu velikosti, ale Azure SQL Database může také zpracovávat úlohy, které jsou podstatně větší než omezení různých velikostech výpočetních prostředků, tak dlouho, dokud každé jednotlivé databáze zapadá do jeho DTU.
+Pokud má databáze například Podrobnosti o jménu zákazníka, objednávce a objednávce (jako je tradiční příklad databáze Northwind, která je dodávána s SQL Server), mohli byste tato data rozdělit do více databází seskupením zákazníka s podrobnostmi o příslušné objednávce a objednávce. informace. Můžete zaručit, aby data zákazníka zůstala v individuální databázi. Aplikace by rozdělila různé zákazníky napříč databázemi a efektivně tak rozprostře zatížení napříč více databázemi. U horizontálního dělení se zákazníci nemůžou vyhnout pouze maximální velikosti databáze, ale Azure SQL Database můžou zpracovat i úlohy, které jsou výrazně větší než limity různých výpočetních velikostí, pokud se každá z nich vejde do DTU.
 
-I když horizontální dělení databází nedojde k omezení kapacity agregační prostředků pro řešení, je velmi efektivní při podpoře velmi rozsáhlých řešeních, která jsou rozdělené do několika databází. Každou databázi můžete spouštět v různých výpočetních velikosti pro podporu velmi velké, "efektivní" databází s vysokými požadavky na prostředky.
+I když databáze horizontálního dělení neomezuje agregovanou kapacitu prostředků pro řešení, je vysoce efektivní při podpoře velmi rozsáhlých řešení, která jsou rozdělená do více databází. Každá databáze může běžet na jiné výpočetní úrovni, aby podporovala velmi rozsáhlou a "efektivní" databáze s vysokými nároky na prostředky.
 
 ### <a name="functional-partitioning"></a>Funkční dělení
 
-SQL Server uživatelé často kombinovat mnoho funkcí v jednotlivých databází. Například pokud má aplikace logiky ke správě inventáře pro úložiště, této databáze může mít logiku spojovanou s inventářem, sledování nákupních objednávek, uložených procedur a indexovaných nebo materializovaná zobrazení, které Správa vytváření sestav konci měsíce. Tato technika usnadňuje správu operací, jako je zálohování, ale také vyžaduje, abyste pro nastavení velikosti hardware pro zvládání zatížení ve špičce přes všechny funkce aplikace.
+SQL Server uživatelé často kombinují mnoho funkcí v individuální databázi. Například pokud má aplikace logiku pro správu inventáře pro obchod, může mít tato databáze logiku přidruženou k inventarizaci, sledování nákupních objednávek, uložených procedur a indexovaných nebo materializovaná zobrazení, která spravují vytváření sestav od konce měsíce. Tato technika usnadňuje správu databáze pro operace, jako je zálohování, ale také vyžaduje, abyste změnili velikost hardwaru pro zpracování nejvyšší zátěže napříč všemi funkcemi aplikace.
 
-Pokud používáte architekturu škálování ve službě Azure SQL Database, je vhodné pro rozdělení různých funkcí aplikace do jiné databáze. Tímto způsobem, každá aplikace může škálovat nezávisle na. Aplikace se stane Vytíženější (a zvyšuje zatížení databáze), správce můžete velikostí výpočetních nezávisle pro každou funkci v aplikaci. Na hranici s touto architekturou aplikace může být větší než komoditních jeden počítač dokáže zpracovat, protože zatížení je rozdělena mezi více počítačů.
+Pokud používáte architekturu se škálováním na více instancí v Azure SQL Database, je vhodné rozdělit různé funkce aplikace do různých databází. Pomocí této techniky se každá aplikace škáluje nezávisle. V důsledku toho, že se aplikace změní na vytíženější (a zvýší se zatížení databáze), může správce zvolit nezávislé výpočetní velikosti pro každou funkci v aplikaci. V rámci této architektury může být aplikace větší, než jeden komoditový počítač může zpracovat, protože zatížení je rozdělené mezi několik počítačů.
 
 ### <a name="batch-queries"></a>Dávkové dotazy
 
-Pro aplikace, které přístup k datům pomocí velkého objemu časté, dotazování ad hoc, vyžadovat značné množství doba odezvy se tráví síťové komunikace mezi aplikační vrstva a vrstva Azure SQL Database. I v případě, že aplikace a Azure SQL Database jsou ve stejném datovém centru, latence sítě mezi těmito dvěma může zvětšit podle velké množství dat operací přístupu k. Ke snížení síti kruhové cest pro operacemi přístupu k datům, zvažte možnost použít možnost buď dávkové dotazy ad hoc nebo zkompilovat jako uložené procedury. Pokud je dávka ad hoc dotazy, můžete odeslat více dotazů jako jeden velký batch v jedné cesty ke službě Azure SQL Database. Pokud kompilujete ad hoc dotazy v uložené proceduře, může dosažení stejného výsledku, jako kdyby jejich batch. Pomocí uložené procedury nabízí také výhody zvyšuje šance na ukládání do mezipaměti plány dotazů ve službě Azure SQL Database, abyste mohli používat uloženou proceduru znovu.
+Pro aplikace, které přistupují k datům s využitím vysokého objemu, častého dotazování ad hoc, se v síťové komunikaci mezi aplikační vrstvou a Azure SQL Database vrstvou stráví značnou dobou odezvy. I když jsou aplikace i Azure SQL Database ve stejném datovém centru, latence sítě mezi těmito dvěma místy může být zvětšena velkým počtem operací přístupu k datům. Chcete-li snížit síťové odezvy pro operace přístupu k datům, zvažte použití možnosti pro dávkování dotazů ad hoc nebo jejich kompilování jako uložených procedur. Pokud vytváříte dávkování dotazů ad hoc, můžete do Azure SQL Database odeslat více dotazů jako jednu velkou dávku v rámci jedné cesty. Pokud kompilujete ad hoc dotazy v uložené proceduře, můžete dosáhnout stejného výsledku, jako kdybyste je vyřadíte do dávky. Použití uložené procedury vám také umožní zvýšit pravděpodobnost ukládání plánů dotazů do mezipaměti v Azure SQL Database, abyste mohli uloženou proceduru použít znovu.
 
-Některé aplikace jsou náročné na zápis. Někdy můžete snížit celkové zatížení vstupně-výstupních operací na databázi o tom, jak společně zpracovány v dávce zápisy. To často, je snadné – stačí pomocí explicitní transakce místo automatického potvrzení transakce v uložených procedurách a ad hoc dávky. Vyhodnocení různých technik, které můžete použít, najdete v části [dávkování techniky pro aplikace SQL Database v Azure](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Můžete experimentovat s vlastní úlohu najít správný model pro dávkové zpracování. Nezapomeňte si uvědomit, že model může mít záruky mírně odlišné transakční konzistence. Vyhledání správné zatížení, který minimalizuje využití prostředků vyžaduje vyhledání správné kombinace konzistencí a výkonem kompromisy.
+Některé aplikace jsou náročné na zápis. V některých případech můžete snížit celkový počet vstupně-výstupních operací v databázi tím, že se posuzujete, jak dávkové zápisy. Často je to jednoduché jako použití explicitních transakcí namísto transakcí automatického potvrzení v uložených procedurách a dávkách ad hoc. Pro vyhodnocení různých technik, které můžete použít, najdete informace [v tématu techniky dávkování pro SQL Database aplikací v Azure](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Vyzkoušejte si vlastní úlohu a Najděte si správný model pro dávkování. Nezapomeňte pochopit, že model může mít mírně odlišné záruky konzistence transakcí. Vyhledání správné úlohy, která minimalizuje využití prostředků, vyžaduje vyhledání správné kombinace kompromisů v konzistenci a výkonu.
 
 ### <a name="application-tier-caching"></a>Ukládání do mezipaměti aplikační vrstvy
 
-Některé databáze aplikace mají úlohy náročné na čtení. Ukládání do mezipaměti vrstvy můžou snížit zatížení na databázi a může potenciálně snížili množství výpočetních velikost požadovanou pro podporu databázi s využitím Azure SQL Database. S [mezipaměti Azure Redis](https://azure.microsoft.com/services/cache/), pokud máte nějaké úlohy náročné na čtení, můžete tato data čtete jednou (nebo třeba jednou za počítač aplikační vrstvy, v závislosti na tom, jak je nakonfigurovaný), pak tato data a ukládat mimo vaši službu SQL database. Toto je způsob, jak snížit zatížení databáze (CPU a čtení vstupně-výstupní operace), ale není vliv na konzistenci transakcí, protože se data načtou z mezipaměti může být synchronizována s daty v databázi. V mnoha aplikacích je přijatelné určitou úroveň nekonzistence, to není true pro všechny úlohy. Všechny požadavky aplikace byste měli plně rozumět před implementací strategie ukládání do mezipaměti aplikační vrstvy.
+Některé databázové aplikace mají zatížení náročné na čtení. Ukládání vrstev do mezipaměti může snížit zatížení databáze a může potenciálně snížit výpočetní velikost potřebnou k podpoře databáze pomocí Azure SQL Database. Pokud máte v [Azure cache pro Redis](https://azure.microsoft.com/services/cache/)úlohy pro čtení, můžete data přečíst jednou (nebo případně jednou na stroji na úrovni aplikace v závislosti na tom, jak je nakonfigurované), a pak tato data uložit mimo vaši databázi SQL. To je způsob, jak snížit zatížení databáze (CPU a čtení v/v), ale má vliv na konzistenci transakcí, protože data čtená z mezipaměti nemusí být synchronizovaná s daty v databázi. I když v mnoha aplikacích je určitá úroveň nekonzistence přijatelná, to pro všechny úlohy není pravdivé. Před implementací strategie ukládání do mezipaměti na úrovni aplikace byste měli plně pochopit všechny požadavky na aplikace.
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o úrovních služeb na základě DTU najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md).
-- Další informace o úrovních služeb založený na virtuálních jádrech najdete v tématu [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
+- Další informace o úrovních služeb založených na DTU najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md).
+- Další informace o úrovních služeb založených na vCore najdete v tématu [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md).
 - Další informace o elastických fondech najdete v tématu [co je elastický fond Azure?](sql-database-elastic-pool.md)
-- Informace o výkonu a elastické fondy najdete v tématu [kdy zvažovat použití elastického fondu](sql-database-elastic-pool-guidance.md)
+- Informace o výkonu a elastických fondech najdete v tématu [kdy zvážit elastický fond](sql-database-elastic-pool-guidance.md) .

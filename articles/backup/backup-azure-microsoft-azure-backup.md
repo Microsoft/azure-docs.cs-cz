@@ -1,18 +1,19 @@
 ---
 title: Použití Azure Backup Server k zálohování úloh do Azure
 description: Pomocí Azure Backup Server můžete chránit nebo zálohovat úlohy do Azure Portal.
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: kasinh
-ms.openlocfilehash: bf0e964c46088947fa50d1eadbcc12b78978251f
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: f5367e1ca3e950126766e788323cb1d4749e9b0c
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466374"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688404"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 > [!div class="op_single_selector"]

@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell: Povolit transparentní šifrování dat BYOK – Azure SQL Database Managed Instance | Dokumentace Microsoftu'
-description: Další informace o konfiguraci spravované Instance Azure SQL chcete začít používat BYOK transparentní šifrování dat (TDE) pro šifrování v klidovém stavu pomocí Powershellu.
+title: 'PowerShell: Povolit BYOK TDE-Azure SQL Database Managed instance | Microsoft Docs'
+description: Naučte se konfigurovat spravovanou instanci Azure SQL, abyste mohli začít používat BYOK transparentní šifrování dat (TDE) pro šifrování v klidovém prostředí pomocí PowerShellu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,28 +10,27 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: c2c4bd7bffd923430d0817cb6ea975f4c1596623
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8f0f4a8e603a9040d166b00682077cff23abd8d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729163"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569694"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Správa transparentního šifrování dat v Managed Instance pomocí vlastního klíče ze služby Azure Key Vault (Preview)
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Správa transparentní šifrování dat ve spravované instanci pomocí vlastního klíče z Azure Key Vault (Preview)
 
-Tento ukázkový skript Powershellu nakonfiguruje transparentní šifrování dat (TDE) ve scénáři přineste si vlastní klíč (preview) pro spravované Instance Azure SQL, použití klíče ze služby Azure Key Vault. Další informace o transparentní šifrování dat s podporou přineste si vlastní klíč (BYOK), najdete v článku [TDE vlastního klíče do Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
+Tento ukázkový skript PowerShellu nakonfiguruje transparentní šifrování dat (TDE) ve scénáři Bring Your Own Key (Preview) pro spravovanou instanci Azure SQL pomocí klíče z Azure Key Vault. Další informace o podpoře TDE with Bring Your Own Key (BYOK) najdete v článku [TDE Bring Your Own Key do Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Existující spravovanou instanci. Zobrazit [použití Powershellu k vytvoření služby Azure SQL Database managed instance](sql-database-create-configure-managed-instance-powershell.md).
+- Existující spravovaná instance. Viz [použití PowerShellu k vytvoření spravované instance Azure SQL Database](sql-database-create-configure-managed-instance-powershell.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Místně pomocí obou Powershellu nebo Azure Cloud Shell vyžaduje AZ PowerShell 1.1.1-preview nebo novější verzi preview. Pokud potřebujete upgrade, přečtěte si téma [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps), nebo níže uvedený ukázkový skript k instalaci modulu.
+Použití PowerShellu místně nebo pomocí Azure Cloud Shell vyžaduje AZ PowerShell 1.1.1-Preview nebo novější verzi Preview. Pokud potřebujete upgradovat, přečtěte si téma [install Azure PowerShell Module](/powershell/azure/install-az-ps)nebo run the Sample Script a nainstalujte modul.
 
 `Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease -Force`
 
@@ -41,7 +40,7 @@ Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Conn
 
 [!code-powershell-interactive[main](../../../powershell_scripts/sql-database/transparent-data-encryption/setup-tde-byok-sqlmi.ps1 "Set up BYOK TDE for SQL Managed Instance")]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

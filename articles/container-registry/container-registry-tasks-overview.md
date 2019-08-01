@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
 ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68311867"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
@@ -50,7 +50,7 @@ Následující tabulka ukazuje několik příkladů podporovaných umístění k
 | Podsložka GitHubu | Soubory v podsložce v úložišti GitHubu. Příklad zobrazuje kombinaci specifikace větve a podsložky. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | Vzdálená tarballu | Soubory v komprimovaném archivu na vzdáleném serveru webserver. | `http://remoteserver/myapp.tar.gz` |
 
-ACR úkoly jsou navržené jako primitivní životní cyklus kontejneru. Například Integrujte úlohy ACR do řešení CI/CD. Spuštěním příkazu [AZ Login][az-login] with a [service principal][az-login-service-principal]může vaše řešení CI/CD vystavit příkaz [AZ ACR Build][AZ-ACR-Build] Commands, aby se vypnuly sestavení imagí.
+ACR úkoly jsou navržené jako primitivní životní cyklus kontejneru. Například Integrujte úlohy ACR do řešení CI/CD. Po provedení příkazu [AZ Login][az-login] s [instančním objektem][az-login-service-principal]by vaše řešení CI/CD mohl vydat příkazy [AZ ACR Build][az-acr-build] , aby se aktivovaly sestavení imagí.
 
 Naučte se používat rychlé úlohy v prvním kurzu ACR Tasks, [sestavovat image kontejnerů v cloudu s Azure Container Registry úkoly](container-registry-tutorial-quick-task.md).
 
@@ -67,7 +67,7 @@ Naučte se, jak aktivovat sestavení v potvrzení zdrojového kódu v druhém ku
 
 Výkon úloh ACR, které mají skutečně vylepšit pracovní postup sestavení kontejneru, pochází z jeho schopnosti detekovat aktualizaci základní image. Po vložení aktualizované základní image do registru nebo obnovení základní image ve veřejném úložišti, jako je například Docker Hub, můžou úlohy ACR automaticky vytvářet na základě této aplikace bitové kopie aplikací.
 
-Image kontejnerů se dají široce rozdělit do *základních* imagí a imagí *aplikací* . Základní image typicky obsahují operační systém a aplikační architektury, na kterých je vaše aplikace sestavená, spolu s dalšími úpravami. Tyto základní image jsou obvykle založeny na veřejných nadřazených obrázcích, například: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][Base-dotnet]nebo [Node. js][base-node]. Několik imagí vaší aplikace může sdílet společný základní obrázek.
+Image kontejnerů se dají široce rozdělit do *základních* imagí a imagí *aplikací* . Základní image typicky obsahují operační systém a aplikační architektury, na kterých je vaše aplikace sestavená, spolu s dalšími úpravami. Tyto základní image jsou obvykle založeny na veřejných nadřazených obrázcích, například: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet]nebo [Node. js][base-node]. Několik imagí vaší aplikace může sdílet společný základní obrázek.
 
 Pokud je v případě, že je nadřazeným nástrojem pro správu a údržbu image architektury operačního systému nebo aplikace, třeba s kritickou opravou zabezpečení operačního systému, je potřeba aktualizovat také základní image, aby zahrnovaly kritickou opravu. Každý obrázek aplikace musí být pak znovu sestaven, aby zahrnoval tyto opravy pro odesílání dat, které jsou nyní součástí základní image.
 

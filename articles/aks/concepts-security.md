@@ -1,6 +1,6 @@
 ---
-title: Principy – zabezpečení služby Azure Kubernetes (AKS)
-description: Další informace o zabezpečení ve službě Azure Kubernetes Service (AKS), včetně komunikace master a uzel, zásad sítě a tajné klíče Kubernetes.
+title: Koncepty – zabezpečení ve službě Azure Kubernetes Services (AKS)
+description: Přečtěte si o zabezpečení ve službě Azure Kubernetes (AKS), včetně komunikace mezi hlavním a uzlem, síťové zásady a Kubernetes tajné klíče.
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -8,86 +8,86 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
 ms.openlocfilehash: 1d100f17130594ace6169f5840915c88435cb9a8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67615778"
 ---
-# <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes Service (AKS)
+# <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepce zabezpečení pro aplikace a clustery ve službě Azure Kubernetes (AKS)
 
-Zabezpečení clusteru chráníme vaše zákaznická data, jako jste spouštěli aplikaci ve službě Azure Kubernetes Service (AKS), je důležitým aspektem. Kubernetes zahrnuje zabezpečení součásti, například *zásady sítě, které* a *tajných kódů*. Azure pak přidá do komponent, jako jsou skupiny zabezpečení sítě a orchestrované upgrady clusteru. Tyto součásti zabezpečení se spojí dohromady a udržovat svůj cluster AKS během nejnovější aktualizace zabezpečení operačního systému a verzí Kubernetes a s zabezpečení pod provoz a přístup k citlivé přihlašovací údaje.
+Pokud chcete chránit zákaznická data při spouštění úloh aplikací ve službě Azure Kubernetes Service (AKS), je zabezpečení clusteru bezpečnostním aspektem. Kubernetes zahrnuje bezpečnostní komponenty, jako jsou třeba *zásady sítě* a *tajné klíče*. Azure pak přidá komponenty, jako jsou skupiny zabezpečení sítě a Orchestrované upgrady clusteru. Tyto součásti zabezpečení jsou zkombinovány, aby cluster AKS používal nejnovější aktualizace zabezpečení operačního systému a verze Kubernetes, a se zabezpečeným provozem pod a přístupem k citlivým přihlašovacím údajům.
 
-Tento článek představuje základní koncepty, které zabezpečení aplikací ve službě AKS:
+V tomto článku se seznámíte se základními koncepty, které zabezpečují vaše aplikace v AKS:
 
-- [Hlavní součásti zabezpečení](#master-security)
-- [Zabezpečení uzlu](#node-security)
+- [Zabezpečení hlavních součástí](#master-security)
+- [Zabezpečení uzlů](#node-security)
 - [Upgrade clusteru](#cluster-upgrades)
 - [Zabezpečení sítě](#network-security)
-- [Tajné klíče Kubernetes](#kubernetes-secrets)
+- [Tajné kódy Kubernetes](#kubernetes-secrets)
 
 ## <a name="master-security"></a>Hlavní zabezpečení
 
-Hlavní součásti Kubernetes ve službě AKS, jsou součástí spravované služby poskytované společností Microsoft. Každý cluster AKS má své vlastní hlavní Kubernetes jedním klienty, vyhrazené poskytnout serveru rozhraní API, Plánovač atd. Tento hlavní správy a spravován společností Microsoft.
+V AKS jsou hlavní komponenty Kubernetes součástí spravované služby, kterou poskytuje Microsoft. Každý cluster AKS má vlastní jeden tenant vyhrazený Kubernetes hlavní server, který poskytuje Server API, Plánovač atd. Tento hlavní server spravuje a udržuje společnost Microsoft.
 
-Ve výchozím nastavení na serveru Kubernetes API používá veřejnou IP adresu a s plně kvalifikovaný název (plně kvalifikovaný název domény). Můžete řídit přístup k rozhraní API serveru pomocí řízení přístupu na základě rolí Kubernetes a Azure Active Directory. Další informace najdete v tématu [integrace Azure AD s AKS][aks-aad].
+Ve výchozím nastavení používá server Kubernetes API veřejnou IP adresu a s plně kvalifikovaným názvem domény (FQDN). Přístup k serveru rozhraní API můžete řídit pomocí Kubernetes řízení přístupu založeného na rolích a Azure Active Directory. Další informace najdete v tématu věnovaném [integraci Azure AD s AKS][aks-aad].
 
-## <a name="node-security"></a>Zabezpečení uzlu
+## <a name="node-security"></a>Zabezpečení uzlů
 
-Uzly AKS jsou virtuální počítače s Azure, které můžete spravovat a udržovat. Spuštění optimalizované distribuce Ubuntu pomocí modulu runtime kontejneru Moby uzly s Linuxem. Uzly Windows serveru (aktuálně ve verzi preview ve službě AKS) spuštění. 2019 optimalizované systému Windows Server verze a také použít modul runtime kontejneru Moby. Při vytváření nebo škálování AKS cluster je nejnovější aktualizace zabezpečení operačního systému a konfigurace se automaticky nasadí uzly.
+AKS uzly jsou virtuální počítače Azure, které spravujete a udržujete. Uzly Linux spouštějí optimalizovanou distribuci Ubuntu pomocí modulu runtime kontejneru Moby. Uzly Windows serveru (v současnosti ve verzi Preview v AKS) spouští optimalizovanou verzi Windows serveru 2019 a také používají modul runtime kontejneru Moby. Při vytváření nebo navýšení kapacity clusteru AKS se uzly automaticky nasazují s nejnovějšími aktualizacemi a konfiguracemi zabezpečení operačního systému.
 
-Platforma Azure automaticky použije opravy zabezpečení operačního systému pro uzly s Linuxem přes noc. Pokud aktualizace zabezpečení operačního systému Linux vyžaduje restartování hostitele, že restartování se neprovádí. Můžete ručně restartovat uzly s Linuxem nebo běžným přístupem je použití [Kured][kured] , an open-source reboot daemon for Kubernetes. Kured runs as a [DaemonSet][aks-daemonsets] a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Restartování se spravují v clusteru pomocí stejných [kordon a výpusť procesu](#cordon-and-drain) jako upgradu clusteru.
+Platforma Azure automaticky aplikuje opravy zabezpečení operačního systému na uzly se systémem Linux na noční bázi. Pokud aktualizace zabezpečení operačního systému Linux vyžaduje restart hostitele, neprovádí se automatické restartování. Uzly se systémem Linux můžete restartovat ručně, nebo běžným přístupem je použití [Kured][kured]a open-source démon pro Kubernetes. Kured běží jako [DaemonSet][aks-daemonsets] a monitoruje každý uzel pro přítomnost souboru, který indikuje, že je potřeba restartovat počítač. Restartování se v rámci clusteru spravují pomocí stejného [procesu Cordon a vyprázdnění](#cordon-and-drain) jako upgrade clusteru.
 
-Pro uzly Windows serveru (aktuálně ve verzi preview ve službě AKS) Windows Update automaticky spustit a použijte nejnovější aktualizace. V pravidelných intervalech kolem cyklu vydávání verzí Windows Update a procesu ověřování měli byste provést upgrade na fondy uzlů Windows Server ve vašem clusteru AKS. Pomocí tohoto procesu vytvoří uzly, na kterých běží nejnovější image Windows serveru a oprav a pak odstraní starší uzly. Další informace o tomto procesu najdete v tématu [fond uzlů ve službě AKS Upgrade][nodepool-upgrade].
+V případě uzlů Windows serveru (aktuálně ve verzi Preview v AKS) web Windows Update nespustí automaticky a použije nejnovější aktualizace. V pravidelných intervalech kolem cyklu vydávání web Windows Update a vlastního procesu ověřování byste měli provést upgrade ve fondech uzlů Windows serveru v clusteru AKS. Tento proces upgradu vytvoří uzly, na kterých běží nejnovější image a opravy Windows serveru, a pak odebere starší uzly. Další informace o tomto procesu najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
 
-Uzly jsou nasazené do privátní virtuální síť podsíť s žádné veřejné IP adresy přiřazené. Pro účely řešení potíží a správu SSH ve výchozím nastavení zapnutá. Tento přístup přes SSH je dostupný pouze pomocí interní IP adresa.
+Uzly jsou nasazeny do podsítě privátní virtuální sítě bez přiřazených veřejných IP adres. Pro účely řešení potíží a správy je ve výchozím nastavení povolený SSH. Přístup přes SSH je k dispozici pouze pomocí interní IP adresy.
 
-K poskytování úložiště, uzly pomocí Azure Managed Disks. Pro většinu velikostí virtuálních počítačů uzel jsou založená na jednotkách SSD výkonné disky úrovně Premium. Data uložená na spravovaných discích se automaticky šifrují při nečinnosti v rámci platformy Azure. Ke zlepšení redundance, jsou zároveň se bezpečně tyto disky replikovat v rámci datového centra Azure.
+K poskytnutí úložiště používají uzly Azure Managed Disks. Pro většinu velikostí uzlů virtuálních počítačů se jedná o prémiové disky zajištěné vysokým výkonem SSD. Data uložená na spravovaných discích se v rámci platformy Azure automaticky šifrují v klidovém stavu. Kvůli vylepšení redundance jsou tyto disky také bezpečně replikovány v datovém centru Azure.
 
-Prostředí Kubernetes v AKS nebo jinde, aktuálně nejsou zcela bezpečný pro použití v nehostinném prostředí více tenantů. Další bezpečnostní funkce, jako *zásady zabezpečení Pod* nebo další prvky velice přesně kontrolovat přístup na základě rolí (RBAC) pro uzly ztížit zneužití. True zabezpečení při spouštění úloh v nehostinném prostředí více tenantů, je hypervisor pouze úroveň zabezpečení, které byste měli věřit. Domény zabezpečení pro Kubernetes se změní celý cluster, nikoli jednotlivých uzlů. Pro tyto typy úloh nehostinném prostředí více tenantů měli byste použít fyzicky izolované clustery. Další informace o způsobech k izolaci úloh najdete v tématu [osvědčené postupy pro zajištění izolace clusteru ve službě AKS][cluster-isolation],
+Prostředí Kubernetes, v AKS nebo jinde, aktuálně nejsou zcela bezpečná pro nepřátelský využití více tenantů. Další funkce zabezpečení, jako jsou *zásady zabezpečení* nebo pokročilejší řízení přístupu na základě role (RBAC) pro uzly, se obtížně využívají. Pro skutečné zabezpečení při spouštění nepřátelských úloh s více klienty však je hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se bude nacházet v celém clusteru, nikoli v jednotlivých uzlech. U těchto typů nepřátelských úloh s více klienty byste měli použít fyzicky izolované clustery. Další informace o způsobech izolace úloh najdete v tématu osvědčené [postupy pro izolaci clusteru v AKS][cluster-isolation].
 
-## <a name="cluster-upgrades"></a>Upgrade clusteru
+## <a name="cluster-upgrades"></a>Upgrady clusteru
 
-Zabezpečení a dodržování předpisů, nebo pokud chcete používat nejnovější funkce Azure poskytuje nástroje k orchestraci upgrade clusteru AKS a komponent. Tento upgrade Orchestrace zahrnuje obě Kubernetes hlavní server a agent součásti. Můžete zobrazit [seznam dostupných verzí Kubernetes](supported-kubernetes-versions.md) pro váš cluster AKS. Chcete-li zahájit proces upgradu, zadáte některou z těchto dostupných verzí. Azure pak bezpečně cordons pozastavuje jednotlivých uzlů AKS a provádí upgrade.
+V případě zabezpečení a dodržování předpisů nebo použití nejnovějších funkcí poskytuje Azure nástroje k orchestraci upgradu clusteru a komponent AKS. Tato orchestrace upgradu zahrnuje hlavní komponenty i agenta Kubernetes. [Seznam dostupných verzí Kubernetes](supported-kubernetes-versions.md) můžete zobrazit pro cluster AKS. Chcete-li spustit proces upgradu, zadejte jednu z těchto dostupných verzí. Azure pak bezpečně cordons a vyprázdní každý uzel AKS a provede upgrade.
 
-### <a name="cordon-and-drain"></a>Cordon a vyprazdňování
+### <a name="cordon-and-drain"></a>Cordon a vyprázdnění
 
-Během procesu upgradu jsou uzly AKS jednotlivě kapacity z clusteru tak nových podů nejsou na ně. Uzly jsou pak Vyprázdněné a upgradovat takto:
+Během procesu upgradu se uzly AKS jednotlivě uzavřené z clusteru, takže se na ně neplánují nové lusky. Uzly se pak vyprázdní a upgradují takto:
 
-- Nový uzel se nasazuje do fond uzlů. Tento uzel spustí nejnovější image operačního systému a opravy.
-- Jeden z existujících uzlů je určen pro upgrade. Podů v tomto uzlu se řádně ukončit a naplánované na jiných uzlech ve fondu uzlů.
-- Tento existující uzel je odstraněn z clusteru AKS.
-- Další uzel v clusteru je uzavřené a Vyprázdněné pomocí stejného procesu, dokud všechny uzly jsou úspěšně nahrazen jako součást procesu upgradu.
+- Do fondu uzlů je nasazen nový uzel. V tomto uzlu se spouští nejnovější bitová kopie operačního systému a opravy.
+- Pro upgrade je identifikován jeden z existujících uzlů. Lusky v tomto uzlu se řádně ukončí a naplánují na ostatních uzlech ve fondu uzlů.
+- Tento existující uzel se odstraní z clusteru AKS.
+- Další uzel v clusteru je uzavřené a vyprázdněný pomocí stejného procesu, dokud všechny uzly nebudou úspěšně nahrazeny součástí procesu upgradu.
 
-Další informace najdete v tématu [Upgrade clusteru AKS][aks-upgrade-cluster].
+Další informace najdete v tématu [upgrade clusteru AKS][aks-upgrade-cluster].
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-Pro připojení a zabezpečení v sítích na pracovišti můžete nasadit cluster AKS do existující podsítě virtuální sítě Azure. Tyto virtuální sítě může mít Azure připojení Site-to-Site VPN nebo Express Route zpět do místní sítě. Řadiče příchozího přenosu dat Kubernetes může být definované s soukromé, interní IP adresy, takže služby jsou dostupné jenom přes toto připojení k interní síti.
+V případě připojení a zabezpečení pomocí místních sítí můžete nasadit cluster AKS do stávajících podsítí virtuální sítě Azure. Tyto virtuální sítě můžou mít připojení VPN typu Site-to-Site VPN nebo Express Route ke své místní síti. Kubernetes příchozí řadiče můžou být definované pomocí privátních interních IP adres, aby služby byly přístupné jenom přes toto interní síťové připojení.
 
 ### <a name="azure-network-security-groups"></a>Skupiny zabezpečení sítě Azure
 
-Chcete-li filtrovat toku provozu ve virtuálních sítích, Azure využívá pravidla skupiny zabezpečení sítě. Tato pravidla definují zdrojové a cílové rozsahy IP adres, porty a protokoly, které se povoluje nebo odepírá přístup k prostředkům. Výchozí pravidla se vytvářejí pro povolení provozu TLS na serveru Kubernetes API. Při vytváření služby pomocí nástroje pro vyrovnávání zatížení, mapování portů nebo příchozího přenosu dat trasy, AKS automaticky změní skupina zabezpečení sítě pro provoz volný průběh.
+Pokud chcete filtrovat tok provozu ve virtuálních sítích, Azure používá pravidla skupiny zabezpečení sítě. Tato pravidla definují zdrojové a cílové rozsahy IP adres, porty a protokoly, které mají povolený nebo odepřený přístup k prostředkům. Vytvoří se výchozí pravidla, která povolí přenos TLS do serveru rozhraní Kubernetes API. Když vytváříte služby pomocí nástrojů pro vyrovnávání zatížení, mapování portů nebo tras příchozího přenosu dat, AKS automaticky upraví skupinu zabezpečení sítě, aby se provoz správně Flow.
 
 ## <a name="kubernetes-secrets"></a>Tajné klíče Kubernetes
 
-Kubernetes *tajný kód* slouží k vložení citlivá data do podů, jako je například přístup k přihlašovacím údajům nebo klíčům. Nejprve vytvoříte tajného kódu pomocí rozhraní API Kubernetes. Při definování pod nebo nasazení mohou být požadována určitého tajného klíče. Tajné kódy jsou poskytovány pouze pro uzly, které mají naplánované pod, kterého je vyžadováno, a tajný kód je uložen v *tmpfs*není napsaných na disk. Při odstranění posledního podu na uzel, který se vyžaduje tajný kód. tajný kód je odstraněn z tmpfs uzlu. Tajné klíče jsou uložené v daném oboru názvů a je přístupný pouze pomocí podů v rámci stejného oboru názvů.
+*Tajný kód* Kubernetes se používá pro vkládání citlivých dat do lusků, jako jsou přihlašovací údaje nebo klíče pro přístup. Nejdřív vytvoříte tajný klíč pomocí rozhraní Kubernetes API. Pokud definujete pod nebo nasazením, může se požadovat konkrétní tajný klíč. Tajné kódy se poskytují pouze uzlům, které mají naplánovanou hodnotu typu, která ji vyžaduje, a tajný klíč je uložený v *tmpfs*, který není zapsaný na disk. Když se poslední uzel pod uzlem, který vyžaduje tajný klíč, odstraní, tajný kód se odstraní z tmpfs uzlu. Tajné kódy jsou uloženy v daném oboru názvů a lze k nim přistupovat pouze v rámci stejného oboru názvů.
 
-Použití tajných kódů snižuje citlivých informací, která je definována v podu nebo service YAML manifest. Místo toho si vyžádáte tajného klíče uložené v serveru Kubernetes API jako součást YAML manifestu. Tento přístup poskytuje pouze konkrétní pod přístup k tajný kód. Mějte prosím na paměti: soubory manifestu raw tajného kódu obsahuje tajných dat ve formátu base64 (najdete v článku [oficiální dokumentaci][secret-risks] další podrobnosti). Proto tento soubor by měl být považován za citlivé informace a nikdy potvrzené do správy zdrojového kódu.
+Použití tajných kódů snižuje citlivé informace, které jsou definovány v manifestu pod nebo Service YAML. Místo toho vyžádáte tajný klíč uložený v Kubernetes API serveru jako součást manifestu YAML. Tento přístup poskytuje pouze konkrétní přístup k tajnému kódu pod. Upozorňujeme na to, že soubory manifestu nezpracovaných tajných kódů obsahují tajná data ve formátu Base64 (Další informace najdete v [oficiální dokumentaci][secret-risks] ). Proto by se tento soubor měl považovat za citlivé informace a nikdy se nezavazuje ke správě zdrojového kódu.
 
 ## <a name="next-steps"></a>Další postup
 
-Začínáme se zabezpečením vašich clusterů AKS najdete v článku [Upgrade clusteru AKS][aks-upgrade-cluster].
+Pokud chcete začít s zabezpečením clusterů AKS, přečtěte si téma [upgrade clusteru AKS][aks-upgrade-cluster].
 
-Přidružené osvědčené postupy, najdete v části [osvědčené postupy pro zabezpečení clusteru a inovace ve službě AKS][operator-best-practices-cluster-security].
+Související osvědčené postupy najdete [v tématu osvědčené postupy pro zabezpečení a upgrady clusterů v AKS][operator-best-practices-cluster-security].
 
-Další informace o základní Kubernetes a AKS koncepty najdete v následujících článcích:
+Další informace o základních konceptech Kubernetes a AKS najdete v následujících článcích:
 
-- [Kubernetes / AKS clustery a úlohy][aks-concepts-clusters-workloads]
-- [Kubernetes / identitě AKS][aks-concepts-identity]
-- [Kubernetes / virtuální sítě AKS][aks-concepts-network]
-- [Kubernetes / AKS storage][aks-concepts-storage]
-- [Kubernetes snížit nebo navýšit AKS][aks-concepts-scale]
+- [Clustery a úlohy Kubernetes/AKS][aks-concepts-clusters-workloads]
+- [Identita Kubernetes/AKS][aks-concepts-identity]
+- [Virtuální sítě Kubernetes/AKS][aks-concepts-network]
+- [Úložiště Kubernetes/AKS][aks-concepts-storage]
+- [Škálování Kubernetes/AKS][aks-concepts-scale]
 
 <!-- LINKS - External -->
 [kured]: https://github.com/weaveworks/kured

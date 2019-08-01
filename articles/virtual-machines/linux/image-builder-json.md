@@ -3,16 +3,16 @@ title: Vytvoření šablony Azure image Builder (Preview)
 description: Naučte se, jak vytvořit šablonu pro použití s nástrojem Azure image Builder.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/10/2019
+ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 065962614d0b85c4c50f86bef0b610c9b3577e07
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a623aa98cd26e1636e47cb0e2831eeced17935b9
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248153"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695404"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -185,6 +185,19 @@ Nastaví zdrojovou bitovou kopii existující verze image v galerii sdílených 
 
 `imageVersionId` Měla by být ResourceID verze image. K vypsání verzí imagí použijte příkaz [AZ SIG Image-Version list](/cli/azure/sig/image-version#az-sig-image-version-list) .
 
+## <a name="properties-buildtimeoutinminutes"></a>Vlastnosti: buildTimeoutInMinutes
+Ve výchozím nastavení se spustí Tvůrce imagí po dobu 240 minut. Po této instalaci dojde k vypršení časového limitu a zastavení, bez ohledu na to, jestli je sestavení image dokončené. Pokud dojde k vypršení časového limitu, zobrazí se chybová zpráva podobná této:
+
+```text
+[ERROR] Failed while waiting for packerizer: Timeout waiting for microservice to
+[ERROR] complete: 'context deadline exceeded'
+```
+
+Pokud nezadáte hodnotu buildTimeoutInMinutes nebo nastavíte ji na 0, použije se výchozí hodnota. Můžete zvýšit nebo snížit hodnotu až do maximálního počtu 960mins (16hrs). V systému Windows nedoporučujeme toto nastavit níže 60 minut. Pokud zjistíte, že se vám časový limit nelíbí, zkontrolujte [protokoly](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs)a podívejte se, jestli krok přizpůsobení čeká na něco jako uživatelský vstup. 
+
+Pokud zjistíte, že k dokončení úprav potřebujete víc času, nastavte to podle toho, co si myslíte, že potřebujete, a s malým režijním časem. Ale nenastavuje se příliš vysoká, protože možná budete muset počkat na vypršení časového limitu před zobrazením chyby. 
+
+
 ## <a name="properties-customize"></a>Vlastnosti: přizpůsobení
 
 
@@ -194,7 +207,6 @@ Při použití `customize`:
 - Můžete použít více úprav, ale musí mít jedinečné `name`.
 - Úpravci provádějí v pořadí zadaném v šabloně.
 - Pokud jeden z úprav selže, celá komponenta přizpůsobení selže a ohlásí chybu.
-- Vezměte v úvahu, kolik času vaše sestavení imagí bude potřebovat, a upravte vlastnost ' buildTimeoutInMinutes ' tak, aby tvůrce imagí měl dostatek času na dokončení.
 - Důrazně doporučujeme skript před jeho použitím v šabloně důkladně otestovat. Ladění skriptu na vlastním VIRTUÁLNÍm počítači bude snazší.
 - Do skriptů neumísťujte citlivá data. 
 - Pokud nepoužíváte [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage), musí být umístění skriptu veřejně přístupná.

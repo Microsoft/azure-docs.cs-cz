@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07f9dbcc21840bec4b4487225dfb8108586865e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 17c85d53d05193313f9e166b88beb2a0f82eb197
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489208"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618366"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Úprava a Správa stávajícího balíčku pro přístup ve správě nároků ve službě Azure AD (Preview)
 
@@ -38,7 +38,7 @@ Tento článek popisuje, jak upravit a spravovat existující balíčky přístu
 
 Role prostředku je kolekce oprávnění přidružených k prostředku. Způsob, jakým zpřístupníte prostředky uživatelům k vyžádání, je přidání rolí prostředků do balíčku pro přístup. Můžete přidat role prostředků pro skupiny, aplikace a weby služby SharePoint.
 
-**Požadovaná role:** Správce uživatele, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -62,7 +62,7 @@ Můžete mít správu nároků do skupiny automaticky přidávat uživatele, kdy
 Můžete vybrat libovolnou skupinu Office 365 nebo skupinu zabezpečení Azure AD.  Správci můžou do katalogu přidat libovolnou skupinu. Vlastníci katalogu můžou přidat libovolnou skupinu do katalogu, pokud jsou vlastníkem skupiny. Při výběru skupiny mějte na paměti následující omezení Azure AD:
 
 - Když se uživatel, včetně hosta, přidá jako člen do skupiny, uvidí všichni ostatní členové této skupiny.
-- Azure AD nemůže změnit členství ve skupině, která byla synchronizovaná ze služby Windows Server Active Directory pomocí Azure AD Connect.  
+- Azure AD nemůže změnit členství ve skupině, která byla synchronizovaná ze služby Windows Server Active Directory pomocí Azure AD Connect, nebo vytvořeného v systému Exchange Online jako distribuční skupinu.  
 - Členství dynamických skupin nelze aktualizovat přidáním nebo odebráním člena, takže dynamická členství ve skupině nejsou vhodná pro použití se správou nároků.
 
 1. Na stránce **Přidat role prostředků pro přístup k balíčku** kliknutím na **skupiny** otevřete podokno vybrat skupiny.
@@ -136,7 +136,7 @@ Azure AD může automaticky přiřadit uživatele k webu SharePointu Online nebo
 
 ## <a name="remove-resource-roles"></a>Odebrání rolí prostředků
 
-**Požadovaná role:** Správce uživatele, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -158,7 +158,7 @@ Následující diagram znázorňuje proces vysoké úrovně pro vytvoření zás
 
 ![Vytvoření procesu zásad](./media/entitlement-management-access-package-edit/policy-process.png)
 
-**Požadovaná role:** Správce uživatele, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -178,7 +178,7 @@ Následující diagram znázorňuje proces vysoké úrovně pro vytvoření zás
 
 Zásadu můžete kdykoli upravit. Pokud změníte datum vypršení platnosti zásady, datum vypršení platnosti požadavků, které jsou již v nedokončeném schválení nebo schváleném stavu, se nezmění.
 
-**Požadovaná role:** Správce uživatele, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -200,7 +200,7 @@ Zásadu můžete kdykoli upravit. Pokud změníte datum vypršení platnosti zá
 
 V některých případech můžete chtít přímo přiřadit konkrétní uživatele k balíčku pro přístup, aby uživatelé nemuseli projít procesem vyžadování balíčku pro přístup. Aby bylo možné přiřazovat uživatele přímo, musí mít přístupový balíček zásadu, která umožňuje přímé přiřazení správců.
 
-**Požadovaná role:** Správce uživatele, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -228,7 +228,7 @@ V některých případech můžete chtít přímo přiřadit konkrétní uživat
 
 ## <a name="view-who-has-an-assignment"></a>Zobrazit, kdo má přiřazení
 
-**Požadovaná role:** Správce uživatele, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -248,7 +248,7 @@ V některých případech můžete chtít přímo přiřadit konkrétní uživat
 
 ## <a name="view-requests"></a>Zobrazit žádosti
 
-**Požadovaná role:** Správce uživatele, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -260,7 +260,7 @@ V některých případech můžete chtít přímo přiřadit konkrétní uživat
 
 ## <a name="view-a-requests-delivery-errors"></a>Zobrazit chyby doručení žádosti
 
-**Požadovaná role:** Správce uživatele, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -280,7 +280,7 @@ V některých případech můžete chtít přímo přiřadit konkrétní uživat
 
 Můžete zrušit pouze nevyřízenou žádost, která ještě nebyla doručena.
 
-**Požadovaná role:** Správce uživatele, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -296,7 +296,7 @@ Můžete zrušit pouze nevyřízenou žádost, která ještě nebyla doručena.
 
 Většina uživatelů v adresáři se může přihlásit k portálu pro přístup a automaticky uvidí seznam balíčků pro přístup, které si můžou vyžádat. U externích partnerských uživatelů, kteří ještě nejsou ve vašem adresáři, je ale budete muset poslat odkaz, který může použít k vyžádání přístupového balíčku. Pokud je pro přístup k externím uživatelům povolený balíček přístupu a máte zásady pro adresář externího uživatele, může externí uživatel požádat o přístup k balíčku s odkazem na portál pro přístup.
 
-**Požadovaná role:** Správce uživatele, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -312,7 +312,7 @@ Většina uživatelů v adresáři se může přihlásit k portálu pro přístu
 
 Ve výchozím nastavení jsou balíčky pro přístup zjistitelné. To znamená, že pokud zásada umožní uživateli požádat o přístup k balíčku, automaticky uvidí balíček pro přístup uvedený na portálu pro přístup.
 
-**Požadovaná role:** Správce uživatele, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -330,7 +330,7 @@ Ve výchozím nastavení jsou balíčky pro přístup zjistitelné. To znamená,
 
 Balíček přístupu se dá odstranit jenom v případě, že nemá žádná aktivní uživatelská přiřazení.
 
-**Požadovaná role:** Správce uživatele, vlastník katalogu nebo správce balíčků přístupu
+**Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 

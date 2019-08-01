@@ -11,12 +11,13 @@ ms.topic: overview
 ms.date: 05/07/2018
 ms.author: nolachar
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: c7f7a8c65717acd5a19e92b7e0437dc4b8628909
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ROBOTS: NOINDEX
+ms.openlocfilehash: d6b632d6d4c0762ffd20aaf57a329095e853915c
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "62103593"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704265"
 ---
 # <a name="what-is-project-personality-chat"></a>Co je Project Personality Chat?
 
@@ -28,7 +29,7 @@ K dispozici je přizpůsobitelná redakční sada pro dotazy nezávazné konverz
 
 Můžete navštívit stránku se cvičeními pro Project Personality Chat a chatovat s dostupnou ukázkou a požádat o dřívější přístup, až bude služba dostupná.
 V současné době můžete do svých robotů také integrovat přizpůsobitelnou knihovnu jen pro redakční účely prostřednictvím sady SDK služby Microsoft Bot Framework. <br>
-[Ukázky: Integrace posouzení vašich osobnostních Chat v robota](https://github.com/Microsoft/BotBuilder-PersonalityChat/) <br>
+[Vzory Integrace Personality Chat v robotu](https://github.com/Microsoft/BotBuilder-PersonalityChat/) <br>
 [Vyzkoušet knihovnu Personality Chat](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp)
 
 ## <a name="generating-responses-using-neural-networks"></a>Generování odpovědí pomocí neurálních sítí

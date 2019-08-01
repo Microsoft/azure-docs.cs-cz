@@ -1,19 +1,20 @@
 ---
 title: Řešení potíží se zálohováním stavu systému pomocí Azure Backup
 description: Řešení potíží se zálohováním stavu systému.
-author: srinathvasireddy
-manager: sivan
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 keywords: Jak zálohovat; stav systému zálohování
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.author: srinathv
-ms.openlocfilehash: 8996270acb1525697f29b4251bf4e11d2db62fdf
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 55af6d17f18efd11fe2d6f89b9b87ca9f407ec25
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465360"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688658"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Řešení potíží se zálohováním stavu systému
 
@@ -99,8 +100,8 @@ Ujistěte se, že níže uvedené služby jsou ve stavu spuštěno:
 Vzdálené volání procedur (RPC) | Automatické
 Systém událostí COM+ (EventSystem) | Automatické
 Služba oznamování systémových událostí (SENS) | Automatické
-Stínová kopie svazku (VSS) | Ruční
-Poskytovatel Microsoft software Stínová kopie (SWPRV) | Ruční
+Stínová kopie svazku (VSS) | Ručně
+Poskytovatel Microsoft software Stínová kopie (SWPRV) | Ručně
 
 ### <a name="validate-windows-server-backup-status"></a>Ověřit stav Zálohování Windows Serveru
 
@@ -150,6 +151,6 @@ Pokud úloha selže, indikuje problém WSB, což by vedlo k selhání zálohová
 | Agent MARS se nezdařil s chybovou zprávou: Zálohování stavu systému se nepovedlo, protože systémový oddíl EFI je zamčený. Důvodem může být přístup k systémovému oddílu pomocí zabezpečení nebo zálohování softwaru třetí strany. | – Pokud k problému dochází kvůli bezpečnostnímu softwaru jiného výrobce, musíte se obrátit na dodavatele antivirového programu, aby mohl agenta MARS umožnit. <br/><br/> – Pokud je spuštěný zálohovací software jiného výrobce, počkejte na jeho dokončení a pak zkuste zálohování zopakovat.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o stavu systému Windows ve Správce prostředků nasazení najdete v tématu [zálohování stavu systému Windows Server](backup-azure-system-state.md)

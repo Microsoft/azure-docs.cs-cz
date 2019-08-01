@@ -1,6 +1,6 @@
 ---
-title: Nástroje pro práci s Azure Storage | Dokumentace Microsoftu
-description: Seznam nástrojů, které umožňují zobrazit a pracovat s daty Azure Storage.
+title: Nástroje pro práci s Azure Storage | Microsoft Docs
+description: Seznam nástrojů, které vám umožní zobrazit data Azure Storage a pracovat s nimi.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,30 +9,30 @@ ms.date: 09/06/2017
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 6d80bc71c01d0f1c887d9161edee5516d6b0925b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 14cbc076f4c9eebd2647cd667acc856b393e4d93
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443686"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68665734"
 ---
 # <a name="azure-storage-client-tools"></a>Klientské nástroje pro Azure Storage
-Uživatele služby Azure Storage se často chtějí mít možnost zobrazit a pracovat s nimi svá data pomocí nástroje klienta služby Azure Storage. V následující tabulce uvádíme různé nástroje, které vám to umožní. Pokud poskytuje možnost vytvořit výčet nebo přístup k data abstraction máme v každém bloku "X". Tabulka také ukazuje, zda nástroje je zdarma, nebo ne. "Zkušební verze" znamená, že je bezplatná zkušební verze, ale plné verze produktu není zdarma. "A/N" znamená, že verze k dispozici zdarma, zatímco jiné verze se dá koupit.
+Uživatelé Azure Storage často chtějí pomocí Azure Storage klientského nástroje zobrazit data a pracovat s nimi. V níže uvedených tabulkách uvádíme několik nástrojů, které vám to umožňují. "X" vložte do každého bloku, pokud nabízí možnost výčtu a/nebo přístupu k abstrakci dat. Tabulka také ukazuje, jestli jsou nástroje bezplatné nebo ne. "Zkušební" znamená, že je k dispozici bezplatná zkušební verze, ale plný produkt není bezplatný. "Y/N" označuje, že je verze dostupná zdarma, ale k nákupu je k dispozici odlišná verze.
 
-Poskytujeme jenom snímek dostupné nástroje klienta služby Azure Storage. Tyto nástroje mohou nadále rozvoj a růst ve funkcích. Pokud jsou opravy nebo aktualizace, uveďte ji v poznámce a dejte nám vědět. Totéž platí, že pokud znáte nástroje, které by měla být tady – rádi je přidat.
+Poskytli jsme jenom snímek dostupných Azure Storage klientských nástrojů. Tyto nástroje mohou nadále vyvíjet a rozšiřovat funkce. Pokud jsou k dispozici opravy nebo aktualizace, ponechejte prosím komentář a sdělte nám, jak nás zajímá. Totéž platí, pokud znáte nástroje, které by měly být zde – chceme je přidat.
 
-**Klientské nástroje Microsoft Azure Storage**
+**Nástroje pro Microsoft Azure Storage klienta**
 
 <table>
   <tr>
-    <th rowspan="2">Nástroj pro klienta služby Azure Storage</th>
-    <th rowspan="2">Objekt Blob bloku</th>
-    <th rowspan="2">Page Blob</th>
-    <th rowspan="2">Doplňovací objekt Blob</th>
+    <th rowspan="2">Nástroj klienta Azure Storage</th>
+    <th rowspan="2">Objekt blob bloku</th>
+    <th rowspan="2">Objekt blob stránky</th>
+    <th rowspan="2">Připojit objekt blob</th>
     <th rowspan="2">Tabulky</th>
     <th rowspan="2">Fronty</th>
     <th rowspan="2">Soubory</th>
-    <th rowspan="2">Free</th>
+    <th rowspan="2">Zdarma</th>
     <th colspan="4">Platforma</th>
   </tr>
   <tr>
@@ -42,7 +42,7 @@ Poskytujeme jenom snímek dostupné nástroje klienta služby Azure Storage. Tyt
     <td>Linux</td>
   </tr>
   <tr>
-    <td><a href="https://azure.microsoft.com/features/azure-portal/">Microsoft Azure Portal</a></td>
+    <td><a href="https://azure.microsoft.com/features/azure-portal/">Portál Microsoft Azure</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -70,7 +70,7 @@ Poskytujeme jenom snímek dostupné nástroje klienta služby Azure Storage. Tyt
     <td>X</td>
   </tr>
   <tr>
-    <td><a href="https://www.visualstudio.com/features/azure-tools-vs.aspx">Microsoft Visual Studio Server Explorer</a></td>
+    <td><a href="https://www.visualstudio.com/features/azure-tools-vs.aspx">Microsoft Visual Studio Průzkumník serveru</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -85,20 +85,20 @@ Poskytujeme jenom snímek dostupné nástroje klienta služby Azure Storage. Tyt
   </tr>
 </table>
 
-**Klientské nástroje pro Azure Storage třetích stran**
+**Nástroje klienta Azure Storage třetích stran**
 
-Jsme neověřili kvality převzatá podle následujících nástrojů třetích stran nebo funkce a jejich seznam neznamená microsoftem.
+Neověřili jsme funkčnost ani kvalitu, které požadovaly následující nástroje třetích stran, a jejich seznam neznamená potvrzení od Microsoftu.
 
 <table>
   <tr>
-    <th rowspan="2">Nástroj pro klienta služby Azure Storage</th>
-    <th rowspan="2">Objekt Blob bloku</th>
-    <th rowspan="2">Page Blob</th>
-    <th rowspan="2">Doplňovací objekt Blob</th>
+    <th rowspan="2">Nástroj klienta Azure Storage</th>
+    <th rowspan="2">Objekt blob bloku</th>
+    <th rowspan="2">Objekt blob stránky</th>
+    <th rowspan="2">Připojit objekt blob</th>
     <th rowspan="2">Tabulky</th>
     <th rowspan="2">Fronty</th>
     <th rowspan="2">Soubory</th>
-    <th rowspan="2">Free</th>
+    <th rowspan="2">Zdarma</th>
     <th colspan="4">Platforma</th>
   </tr>
   <tr>
@@ -122,7 +122,7 @@ Jsme neověřili kvality převzatá podle následujících nástrojů třetích 
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate: Průzkumník služby Azure</a></td>
+    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate Průzkumník Azure</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -136,16 +136,16 @@ Jsme neověřili kvality převzatá podle následujících nástrojů třetích 
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/sebagomez/azurestorageexplorer">Azure Web Průzkumníka služby Storage</a></td>
+    <td><a href="https://github.com/sebagomez/azurestorageexplorer">Web Azure Průzkumník služby Storage</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
     <td>X</td>
     <td>X</td>
-    <td></td>
+    <td>X</td>
     <td>Ano</td>
-    <td></td>
     <td>X</td>
+    <td></td>
     <td></td>
     <td></td>
   </tr>
@@ -164,7 +164,7 @@ Jsme neověřili kvality převzatá podle následujících nástrojů třetích 
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.gapotchenko.com/cloudcombine">Cloud Combine</a></td>
+    <td><a href="https://www.gapotchenko.com/cloudcombine">Cloud – kombinace</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -178,7 +178,7 @@ Jsme neověřili kvality převzatá podle následujících nástrojů třetích 
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://clumsyleaf.com">Společnosti ClumsyLeaf: AzureXplorer, CloudXplorer, TableXplorer</a></td>
+    <td><a href="https://clumsyleaf.com">ClumsyLeaf: AzureXplorer, CloudXplorer, TableXplorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>

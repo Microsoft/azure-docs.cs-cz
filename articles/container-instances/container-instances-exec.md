@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: danlep
 ms.openlocfilehash: a8583cf605891631a2bce6914b24525aebd59ea0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325987"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Spuštění příkazu ve spuštěné instanci kontejneru Azure
@@ -21,7 +21,7 @@ Azure Container Instances podporuje provádění příkazu ve spuštěném konte
 
 ## <a name="run-a-command-with-azure-cli"></a>Spuštění příkazu pomocí Azure CLI
 
-Spusťte příkaz ve spuštěném kontejneru pomocí příkazu [AZ Container exec][az-container-exec] in the [Azure CLI][azure-cli]:
+Spusťte příkaz ve spuštěném kontejneru pomocí příkazu [AZ Container exec][az-container-exec] v rozhraní příkazového [řádku Azure][azure-cli]:
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"

@@ -4,7 +4,7 @@ description: Další informace o machine learningu nástrojů a architektur, kte
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 3b05d076a61593e8c34ce642f2fe2fd137e07109
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502081"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565244"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Nástroje Machine learning a datové vědy
 Azure virtuální počítače pro datové vědy obsahuje bohatou sadu nástrojů a knihovny pro machine learning (ML) k dispozici v oblíbených jazyků, jako je Python, R a Julie. 
@@ -32,7 +32,7 @@ Tady jsou některé z knihoven na virtuální počítače pro datové vědy a ML
 |    |           |
 | ------------- | ------------- |
 | Co je to?   |   Azure Machine Learning je Cloudová služba, která můžete použít k vývoji a nasazování modelů ML. Modely můžete sledovat, jak vytvářet, trénovat, škálování a spravovat je pomocí sady Python SDK. Nasazení modelů jako kontejnery a spusťte je v cloudu, v místním prostředí nebo ve službě Azure IoT Edge.   |
-| Podporované edice     | Windows (prostředí conda: Azure ml), Linux (prostředí conda: py36)    |
+| Podporované edice     | Windows (prostředí conda: AzureML), Linux (prostředí conda: py36)    |
 | Typické použití      | Obecné ML platformy      |
 | Jak je nakonfigurován nebo nainstalovat?      |  Nainstalovaná s podporou GPU   |
 | Jak používat nebo ji spustit      | Jako Python SDK a Azure CLI. Aktivovat prostředí conda `AzureML` v edici Windows *nebo* k `py36` na edice pro Linux.      |

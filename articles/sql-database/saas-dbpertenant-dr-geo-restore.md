@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: d6977f9f957aba2c01265f750f82847e16d299ee
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c8990e5183d09e8f530fdef952a80a09104d3617
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872039"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570501"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Použití geografického obnovení k obnovení víceklientské aplikace SaaS ze záloh databáze
 
@@ -363,7 +362,7 @@ Aplikace je navržena tak, aby se vždy připojovala z instance ve stejné oblas
 
 Databáze tenantů se můžou během navracení mezi obnovením a původními oblastmi rozložit na určitou dobu. U každé databáze aplikace vyhledává oblast, ve které se databáze nachází, pomocí vyhledávání DNS v názvu serveru tenanta. V SQL Database název serveru je alias. Název serveru s aliasem obsahuje název oblasti. Pokud aplikace není ve stejné oblasti jako databáze, přesměruje ji na instanci ve stejné oblasti jako databázový server. Přesměrování na instanci ve stejné oblasti, ve které databáze minimalizuje latenci mezi aplikací a databází.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]

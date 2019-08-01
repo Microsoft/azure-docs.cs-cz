@@ -1,5 +1,5 @@
 ---
-title: Přehled správy Azure – Azure zásad správného řízení
+title: Přehled správy Azure – zásady správného řízení Azure
 description: Přehled oblastí správy pro aplikace Azure a prostředky s odkazy na obsah na nástroje pro správu Azure.
 author: DCtheGeek
 manager: carmonm
@@ -7,14 +7,14 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: d68e7d9ec3b60b93f0050250d7e7d718db7aa5b8
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 520b84722d9434b309d3eb6da0baa3c1e4da33d0
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488483"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608195"
 ---
-# <a name="overview-of-management-services-in-azure"></a>Přehled správy služeb v Azure
+# <a name="overview-of-management-services-in-azure"></a>Přehled služeb správy v Azure
 
 Zásady správného řízení v Azure je jeden z aspektů správy Azure. Tento článek popisuje různé oblasti správy pro nasazení a údržbu vašich prostředků v Azure.
 
@@ -22,9 +22,9 @@ Termín správa označuje úlohy a procesy nezbytné pro udržování obchodníc
 
 Následující diagram ukazuje různé oblasti správy, které jsou nutné k údržbě libovolné aplikace nebo prostředku. Tyto různé oblasti lze považovat za životní cyklus. Každou oblast, kterou je potřeba průběžné postupně během životnosti prostředku. Tento prostředek životní cyklus začíná počáteční nasazení prostřednictvím nepřetržitý provoz a nakonec po vyřazení.
 
-![Obory správy ve službě Azure](../monitoring/media/management-overview/management-capabilities.png)
+![Disciplíny správy v Azure](../monitoring/media/management-overview/management-capabilities.png)
 
-Žádná samostatná služba Azure nesplňuje kompletně požadavky konkrétní oblasti správy. Místo toho každá se provádí několik služeb společně. Některé služby, jako jsou Application Insights, poskytují cílené funkce monitorování pro webové aplikace. Jiné, jako jsou protokoly Azure monitoru, ukládat data správy pro jiné služby. Tato funkce umožňuje analyzovat data různých typů shromážděná různými službami.
+Žádná samostatná služba Azure nesplňuje kompletně požadavky konkrétní oblasti správy. Místo toho každá se provádí několik služeb společně. Některé služby, jako jsou Application Insights, poskytují cílené funkce monitorování pro webové aplikace. Ostatní, jako jsou protokoly Azure Monitor, ukládají data správy pro další služby. Tato funkce umožňuje analyzovat data různých typů shromážděná různými službami.
 
 Následující části stručně popisují různé oblasti správy a poskytují odkazy na podrobný obsah věnovaný hlavním službám Azure, které jsou určené k jejich řešení.
 
@@ -44,7 +44,7 @@ Zásady správného řízení v Azure jsou primárně implementované pomocí dv
 
 ## <a name="secure"></a>Zabezpečení
 
-Správa zabezpečení vašich prostředků a data. Program zabezpečení zahrnuje posouzení hrozeb, shromažďování a analýza dat a dodržování předpisů u vašich aplikací a prostředků. Analýza hrozeb a monitorování zabezpečení jsou k dispozici v [Azure Security Center](../security-center/security-center-intro.md), která poskytuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Zobrazit [Úvod do zabezpečení Azure](../security/azure-security.md) komplexní informace a doprovodné materiály k zabezpečení prostředků Azure.
+Správa zabezpečení vašich prostředků a data. Program zabezpečení zahrnuje posouzení hrozeb, shromažďování a analýza dat a dodržování předpisů u vašich aplikací a prostředků. Analýza hrozeb a monitorování zabezpečení jsou k dispozici v [Azure Security Center](../security-center/security-center-intro.md), která poskytuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Zobrazit [Úvod do zabezpečení Azure](../security/fundamentals/overview.md) komplexní informace a doprovodné materiály k zabezpečení prostředků Azure.
 
 ## <a name="protect"></a>Ochrana
 

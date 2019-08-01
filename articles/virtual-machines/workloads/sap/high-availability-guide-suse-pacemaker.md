@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
 ms.openlocfilehash: cd377e78abe328814795bb1f75465b090a13e456
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68228352"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
@@ -84,7 +84,7 @@ Spusťte následující příkazy na všech **iSCSI target virtuálních počít
 
 Spusťte následující příkazy na všech **iSCSI target virtuálních počítačů** vytvoření disků služby iSCSI pro clusterů, které jsou používány ve vašich systémů SAP. V následujícím příkladu se vytvoří SBD zařízení pro několik clusterů. To se dozvíte, jak byste použili jeden cílový server iSCSI pro několik clusterů. Zařízení SBD umísťují na disk s operačním systémem. Ujistěte se, že máte dostatek místa.
 
-**`nfs`** slouží k identifikaci clusteru systému souborů NFS, **ascsnw1** se používá k identifikaci clusteru ASCS **NW1**, **dbnw1** se používá k identifikaci databázového clusteru **NW1**, **NFS-0** a **NFS-1** jsou názvy hostitelů uzlů **clusteru NFS. NW1-xscs-0** a **NW1-xscs-1** jsou názvy hostitelů uzlů clusterů  NW1 a **ASCS-DB-0** a **NW1-DB-1** jsou názvy hostitelů uzlů databázového clusteru. Je nahraďte názvy hostitelů uzlů clusteru a identifikátor SID systému SAP.
+**`nfs`** slouží k identifikaci clusteru systému souborů NFS, **ascsnw1** se používá k identifikaci clusteru ASCS **NW1**, **dbnw1** se používá k identifikaci databázového clusteru **NW1**, **NFS-0** a **NFS-1** jsou názvy hostitelů uzlů **clusteru NFS. NW1-xscs-0** a **NW1-xscs-1** jsou názvy hostitelů uzlů clusterů NW1 a **ASCS-DB-0** a **NW1-DB-1** jsou názvy hostitelů uzlů databázového clusteru. Je nahraďte názvy hostitelů uzlů clusteru a identifikátor SID systému SAP.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -448,7 +448,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Pokud hodnoty nejsou zde nebo jiné, přidejte do souboru následující tučného písma obsahu. Ujistěte se, že chcete-li změnit token 30000 umožňující Údržba pro zachování paměti. Další informace najdete v [tomto článku pro Linux][virtual-machines-linux-maintenance] or [Windows][virtual-machines-windows-maintenance]. Ujistěte se také, chcete-li odebrat mcastaddr parametr.
+   Pokud hodnoty nejsou zde nebo jiné, přidejte do souboru následující tučného písma obsahu. Ujistěte se, že chcete-li změnit token 30000 umožňující Údržba pro zachování paměti. Další informace najdete v [tomto článku pro Linux][virtual-machines-linux-maintenance] nebo [Windows][virtual-machines-windows-maintenance]. Ujistěte se také, chcete-li odebrat mcastaddr parametr.
 
    <pre><code>[...]
      <b>token:          30000

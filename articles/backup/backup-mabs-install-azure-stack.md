@@ -1,20 +1,20 @@
 ---
 title: Nainstalovat Azure Backup Server v Azure Stack | Microsoft Docs
 description: Pomocí Azure Backup Server můžete chránit nebo zálohovat zatížení v Azure Stack.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: raynew
-ms.openlocfilehash: 77f418a37c47850cf8a763dc399109d86925feff
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: da941d0234fe78791f9a1c2f2a7d01122247534c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465264"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639854"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -353,7 +353,7 @@ Je možné změnit předplatné Azure ze stavu, ve kterém *vypršela platnost* 
 Pokud Microsoft Azure Backup server selhává s chybami při fázi nastavení (nebo zálohování nebo obnovení), přečtěte si [dokument kódy chyb](https://support.microsoft.com/kb/3041338).
 Můžete se také podívat na [Azure Backup souvisejících nejčastějších](backup-azure-backup-faq.md) dotazech.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Článek [Příprava prostředí pro aplikaci DPM](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)obsahuje informace o podporovaných konfiguracích Azure Backup Server.
 

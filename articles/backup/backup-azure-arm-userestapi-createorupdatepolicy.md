@@ -1,20 +1,21 @@
 ---
 title: 'Azure Backup: Vytvoření zásad zálohování pomocí REST API'
 description: Správa zásad zálohování (plánování a uchovávání) pomocí REST API
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: REST API; Zálohování virtuálních počítačů Azure; Obnovení virtuálního počítače Azure;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: f0729a49c3dc72a28431d711e6783abda96d2ce3
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: d81d8aa299333890de61cf0c8ee75be76ca31bf2
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466821"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688747"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Vytvoření zásad služby Azure Recovery Services Backup pomocí REST API
 
@@ -24,7 +25,7 @@ Postup vytvoření zásady zálohování pro trezor služby Azure Recovery Servi
 
 - Zásady zálohování se vytvoří pro každý trezor.
 - Zásady zálohování se dají vytvořit pro zálohování následujících úloh.
-  - Virtuální počítač Azure
+  - Azure VM
   - SQL na virtuálním počítači Azure
   - Sdílená složka Azure
 - Zásady je možné přiřadit k mnoha prostředkům. Zásady zálohování virtuálních počítačů Azure je možné použít k ochraně mnoha virtuálních počítačů Azure.
@@ -280,7 +281,7 @@ Po dokončení operace vrátí 200 (OK) k obsahu zásad v těle odpovědi.
 
 Pokud se pro ochranu položky už používá zásada, bude mít jakákoli aktualizace v zásadě za následek [úpravu ochrany](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection) všech těchto přidružených položek.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Povolte ochranu pro nechráněný virtuální počítač Azure](backup-azure-arm-userestapi-backupazurevms.md).
 

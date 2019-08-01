@@ -1,6 +1,6 @@
 ---
-title: Rozšířené události ve službě SQL Database | Dokumentace Microsoftu
-description: Popisuje rozšířených událostí (XEvents) ve službě Azure SQL Database a jak relací událostí se poněkud liší od událostí relací v systému Microsoft SQL Server.
+title: Rozšířené události v SQL Database | Microsoft Docs
+description: Popisuje rozšířené události (XEvents) v Azure SQL Database a způsob, jakým se relace událostí mírně liší od relací událostí v Microsoft SQL Server.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -10,106 +10,105 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 7f742b094575b78f453fb735b23cc5319a27fa7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9af487e2eb35e7dc94e1b70945d5c03ffdde2ba
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65206652"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566069"
 ---
-# <a name="extended-events-in-sql-database"></a>Rozšířené události ve službě SQL Database
+# <a name="extended-events-in-sql-database"></a>Rozšířené události v SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Toto téma vysvětluje, jak se mírně liší implementace rozšířeného počtu událostí ve službě Azure SQL Database ve srovnání s rozšířenými událostmi v systému Microsoft SQL Server.
+Toto téma vysvětluje, jak se v porovnání s rozšířenými událostmi v Microsoft SQL Server mírně liší implementace rozšířených událostí v Azure SQL Database.
 
-- SQL Database V12 získané funkce rozšířeného počtu událostí ve druhé polovině kalendářního roku 2015.
-- SQL Server došlo oproti 2008 rozšířené události.
-- Funkce sady rozšířeného počtu událostí pro službu SQL Database je robustní podmnožinu funkcí v systému SQL Server.
+- SQL Database V12 získala funkci rozšířené události v druhé polovině kalendáře 2015.
+- SQL Server měly rozšířené události od 2008.
+- Sada funkcí rozšířených událostí v SQL Database je robustní podmnožinou funkcí na SQL Server.
 
-*XEvents* je neformální pojmenování, někdy se používá pro "rozšířené události" prostřednictvím blogů a dalších neformální umístění.
+*XEvents* je neoficiální Přezdívka, která se někdy používá pro rozšířené události v blogůch a jiných neformálních umístěních.
 
-Další informace o rozšířených událostech pro Azure SQL Database a Microsoft SQL Server, je k dispozici na:
+Další informace o rozšířených událostech pro Azure SQL Database a Microsoft SQL Server jsou k dispozici na adrese:
 
-- [Rychlý Start: Rozšířené události v systému SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Rychlé zprovoznění: Rozšířené události v SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
 - [Rozšířené události](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Toto téma předpokládá, že již máte základní znalost:
+V tomto tématu se předpokládá, že už máte znalosti:
 
 - [Služba Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
-- [Rozšířené události](https://msdn.microsoft.com/library/bb630282.aspx) v systému Microsoft SQL Server.
+- [Rozšířené události](https://msdn.microsoft.com/library/bb630282.aspx) v Microsoft SQL Server.
 
-- Hromadné naší dokumentaci informace o rozšířených událostí se vztahuje na systém SQL Server a SQL Database.
+- Hromadná dokumentace o rozšířených událostech se týká SQL Server i SQL Database.
 
-Předchozí vystavení následujících položek je užitečný, pokud zvolíte soubor událostí jako [cílové](#AzureXEventsTargets):
+Předchozí expozici následujících položek je užitečná při výběru souboru události jako [cíle](#AzureXEventsTargets):
 
 - [Služba Azure Storage](https://azure.microsoft.com/services/storage/)
 
 
 - PowerShell
-    - [Pomocí Azure Powershellu s Azure Storage](../storage/common/storage-powershell-guide-full.md) – poskytuje podrobné informace o prostředí PowerShell a službu Azure Storage.
+    - [Použití Azure PowerShell s Azure Storage](../storage/common/storage-powershell-guide-full.md) – poskytuje komplexní informace o PowerShellu a službě Azure Storage.
 
 ## <a name="code-samples"></a>Ukázky kódů
 
-Související témata obsahují dvě ukázky kódu:
+Související témata poskytují dva ukázky kódu:
 
 
-- [Kód cyklické vyrovnávací paměti cílového pro rozšířené události ve službě SQL Database](sql-database-xevent-code-ring-buffer.md)
+- [Cílový kód cyklické vyrovnávací paměti pro rozšířené události v SQL Database](sql-database-xevent-code-ring-buffer.md)
     - Krátký jednoduchý skript Transact-SQL.
-    - Budeme v tomto tématu ukázky kódu, jakmile budete hotovi s cílem cyklické vyrovnávací paměti by měla uvolnit její prostředky pomocí provádí alter myší zvýraznit `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` příkazu. Později můžete přidat další instanci cyklické vyrovnávací paměti podle `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`.
+    - V tématu vzor kódu jsme zdůrazněni, že po dokončení práce s cílem kruhové vyrovnávací paměti byste měli uvolnit své prostředky spuštěním příkazu ALTER-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` . Později můžete přidat další instanci kruhové vyrovnávací paměti pomocí `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`.
 
 
-- [Cílový kód souboru události pro rozšířené události ve službě SQL Database](sql-database-xevent-code-event-file.md)
-    - Fáze 1 se prostředí PowerShell k vytvoření kontejneru služby Azure Storage.
-    - Fáze 2 je příkazů jazyka Transact-SQL, který používá kontejner Azure Storage.
+- [Cílový kód souboru události pro rozšířené události v SQL Database](sql-database-xevent-code-event-file.md)
+    - Fáze 1 je PowerShell pro vytvoření kontejneru Azure Storage.
+    - Fáze 2 je Transact-SQL, který používá kontejner Azure Storage.
 
 ## <a name="transact-sql-differences"></a>Rozdíly v Transact-SQL
 
 
-- Při spuštění [vytvořit událost relace](https://msdn.microsoft.com/library/bb677289.aspx) příkaz na SQL serveru, je použít **ON SERVER** klauzuli. Ale v databázi SQL používáte **databáze dále** klauzule místo.
+- Při spuštění příkazu [vytvořit relaci události](https://msdn.microsoft.com/library/bb677289.aspx) na SQL Server použijete klauzuli **on serveru** . Ale na SQL Database místo toho použijete klauzuli **on Database** .
 
 
-- **Databáze dále** klauzule platí také pro [ALTER události relace](https://msdn.microsoft.com/library/bb630368.aspx) a [VYŘADIT události relace](https://msdn.microsoft.com/library/bb630257.aspx) příkazů jazyka Transact-SQL.
+- Klauzule **on Database** se vztahuje také na příkazy jazyka Transact-SQL v [relaci události ALTER](https://msdn.microsoft.com/library/bb630368.aspx) a [drop](https://msdn.microsoft.com/library/bb630257.aspx) .
 
 
-- Osvědčeným postupem je zahrnují možnost relace události **STARTUP_STATE = ON** ve vaší **vytvořit událost relace** nebo **ALTER události relace** příkazy.
-    - **= ON** hodnota podporuje automatické restartování po rekonfiguraci logickou databázi z důvodu převzetí služeb při selhání.
+- Osvědčeným postupem je zahrnout možnost relace události **STARTUP_STATE = on** ve vaší **relaci vytvoření události** nebo příkazy pro **změnu relace události** .
+    - Hodnota **= on** podporuje automatické restartování po opětovné konfiguraci logické databáze z důvodu převzetí služeb při selhání.
 
-## <a name="new-catalog-views"></a>Nová zobrazení katalogu
+## <a name="new-catalog-views"></a>Nové zobrazení katalogu
 
-Funkce Rozšířené události podporuje několik [zobrazení katalogu](https://msdn.microsoft.com/library/ms174365.aspx). Informace o zobrazení katalogu *metadat nebo definice* z relace události vytvořené uživatelem v aktuální databázi. Zobrazení informací o instancích relace aktivní události nevrátí.
+Funkce Rozšířené události je podporována v několika [zobrazeních katalogu](https://msdn.microsoft.com/library/ms174365.aspx). Zobrazení katalogu informují o *metadatech a definicích* relací událostí vytvořených uživatelem v aktuální databázi. Zobrazení nevrací informace o instancích aktivních relací událostí.
 
-| Název<br/>Zobrazení katalogu | Popis |
+| Název<br/>zobrazení katalogu | Popis |
 |:--- |:--- |
-| **sys.database_event_session_actions** |Vrátí řádek pro každou akci u každé události relace události. |
-| **sys.database_event_session_events** |Vrátí řádek pro každou jednotlivou událost v relaci události. |
-| **sys.database_event_session_fields** |Vrátí řádek pro každý určujte sloupec, který byl explicitně nastavit na události a cíle. |
-| **sys.database_event_session_targets** |Vrátí řádek pro každý cíl události pro relace události. |
+| **sys.database_event_session_actions** |Vrátí řádek pro každou akci každé události relace události. |
+| **sys.database_event_session_events** |Vrátí řádek pro každou událost v relaci události. |
+| **sys.database_event_session_fields** |Vrátí řádek pro každý sloupec s vlastním nastavením, který byl explicitně nastaven pro události a cíle. |
+| **sys.database_event_session_targets** |Vrátí řádek pro každý cíl události pro relaci události. |
 | **sys.database_event_sessions** |Vrátí řádek pro každou relaci události v databázi SQL Database. |
 
-V systému Microsoft SQL Server, podobně jako zobrazení katalogu mít názvy, které zahrnují *server\_*  místo *.database\_* . Vzor názvů je třeba **sys.server_event_%** .
+V Microsoft SQL Server podobné pohledy v katalogu mají názvy, které obsahují *.\_ Server* místo *. Database\_* . Vzor názvu je jako **Sys. server_event_%** .
 
-## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nové zobrazení dynamické správy [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nová zobrazení dynamické správy [(zobrazení dynamické správy)](https://msdn.microsoft.com/library/ms188754.aspx)
 
-Azure SQL Database má [zobrazení dynamické správy (DMV)](https://msdn.microsoft.com/library/bb677293.aspx) , které podporují rozšířené události. Zobrazení dynamické správy informovat o *aktivní* relace události.
+Azure SQL Database má [zobrazení dynamické správy (zobrazení dynamické správy)](https://msdn.microsoft.com/library/bb677293.aspx) , které podporují rozšířené události. Zobrazení dynamické správy vás informuje o *aktivních* relacích událostí.
 
-| Název zobrazení dynamické správy | Popis |
+| Název DMV | Popis |
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
-| **sys.dm_xe_database_session_events** |Vrátí informace o relaci události. |
-| **sys.dm_xe_database_session_object_columns** |Ukazuje konfigurační hodnoty pro objekty, které jsou vázány na relaci. |
-| **sys.dm_xe_database_session_targets** |Vrátí informace o cíle relace. |
-| **sys.dm_xe_database_sessions** |Vrátí řádek pro každou relaci události, které působí na aktuální databázi. |
+| **sys.dm_xe_database_session_events** |Vrátí informace o událostech relace. |
+| **sys.dm_xe_database_session_object_columns** |Zobrazuje konfigurační hodnoty pro objekty, které jsou vázány na relaci. |
+| **sys.dm_xe_database_session_targets** |Vrátí informace o cílech relace. |
+| **sys.dm_xe_database_sessions** |Vrátí řádek pro každou relaci události, která je vymezena na aktuální databázi. |
 
-V systému Microsoft SQL Server, jsou pojmenované podobné zobrazení katalogu bez  *\_databáze* část názvu, jako například:
+V Microsoft SQL Server jsou podobná zobrazení katalogu pojmenována bez  *\_databázové* části názvu, například:
 
-- **Sys.dm_xe_sessions**, místo názvu<br/>**sys.dm_xe_database_sessions**.
+- **Sys. DM _xe_sessions**místo názvu<br/>**sys.dm_xe_database_sessions**.
 
-### <a name="dmvs-common-to-both"></a>Společné pro zobrazení dynamické správy
-Rozšířené události existují další zobrazení dynamické správy, které jsou společné pro Azure SQL Database a systému Microsoft SQL Server:
+### <a name="dmvs-common-to-both"></a>Zobrazení dynamické správy společné pro obojí
+Pro rozšířené události jsou k dispozici další zobrazení dynamické správy, které jsou společné pro Azure SQL Database i Microsoft SQL Server:
 
 - **sys.dm_xe_map_values**
 - **sys.dm_xe_object_columns**
@@ -118,9 +117,9 @@ Rozšířené události existují další zobrazení dynamické správy, které 
 
   <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
-## <a name="find-the-available-extended-events-actions-and-targets"></a>Vyhledání dostupných rozšířených událostí, akcí a cíle
+## <a name="find-the-available-extended-events-actions-and-targets"></a>Najít dostupné rozšířené události, akce a cíle
 
-Můžete spouštět jednoduché SQL **vyberte** získat seznam dostupných událostí, akcí a cíle.
+Pokud chcete získat seznam dostupných událostí, akcí a cílů, můžete spustit jednoduchý příkaz SQL **Select** .
 
 ```sql
 SELECT
@@ -145,66 +144,66 @@ SELECT
 
 <a name="AzureXEventsTargets" id="AzureXEventsTargets"></a> &nbsp;
 
-## <a name="targets-for-your-sql-database-event-sessions"></a>Cíle pro vaše relace událostí databáze SQL
+## <a name="targets-for-your-sql-database-event-sessions"></a>Cíle pro relace událostí SQL Database
 
-Tady jsou cíle, které můžete zaznamenat výsledky z relací prostředí událostí pro službu SQL Database:
+Tady jsou cíle, které můžou zachytit výsledky z relací událostí na SQL Database:
 
-- [Cíle cyklické vyrovnávací paměti](https://msdn.microsoft.com/library/ff878182.aspx) -stručně uchovává data událostí v paměti.
-- [Cíl události čítače](https://msdn.microsoft.com/library/ff878025.aspx) – spočítá všechny události, ke kterým dochází během relace rozšířených událostí.
-- [Cíle souboru událostí](https://msdn.microsoft.com/library/ff878115.aspx) -zapíše kompletní vyrovnávací paměti do kontejneru služby Azure Storage.
+- [Ring – cíl vyrovnávací paměti](https://msdn.microsoft.com/library/ff878182.aspx) – krátce uchovává data událostí v paměti.
+- [Cílová hodnota čítače událostí](https://msdn.microsoft.com/library/ff878025.aspx) – spočítá všechny události, ke kterým dojde během relace rozšířených událostí.
+- [Cíl souboru události](https://msdn.microsoft.com/library/ff878115.aspx) – zapisuje kompletní vyrovnávací paměti do kontejneru Azure Storage.
 
-[Trasování událostí pro Windows (ETW)](https://msdn.microsoft.com/library/ms751538.aspx) rozhraní API není k dispozici pro rozšířené události v databázi SQL.
+Rozhraní API [pro trasování událostí pro Windows (ETW)](https://msdn.microsoft.com/library/ms751538.aspx) není k dispozici pro rozšířené události v SQL Database.
 
 ## <a name="restrictions"></a>Omezení
 
-Existuje několik rozdílů související se zabezpečením befitting cloudovém prostředí služby SQL Database:
+Befitting cloudové SQL Database prostředí nabízí několik rozdílů týkajících se zabezpečení:
 
-- Rozšířené události jsou založena na modelu izolace jednoho tenanta. Relace události v jedné databázi nelze přistupovat k události nebo data z jiné databáze.
-- Nemůžou vystavovat **vytvořit událost relace** příkaz v kontextu **hlavní** databáze.
+- Rozšířené události jsou založené na modelu izolace jednoho tenanta. Relace události v jedné databázi nemá přístup k datům nebo událostem z jiné databáze.
+- Nelze vydat příkaz **vytvořit relaci události** v kontextu **hlavní** databáze.
 
-## <a name="permission-model"></a>Oprávnění modelu
+## <a name="permission-model"></a>Model oprávnění
 
-Musíte mít **ovládací prvek** v databázi oprávnění k vydávání **vytvořit událost relace** příkazu. Vlastník databáze (dbo) má **ovládací prvek** oprávnění.
+Aby bylo možné vystavit příkaz **vytvořit relaci události** , je nutné mít oprávnění k **řízení** databáze. Vlastník databáze (dbo) má oprávnění **Control** .
 
-### <a name="storage-container-authorizations"></a>Povolení kontejner úložiště
+### <a name="storage-container-authorizations"></a>Autorizace kontejneru úložiště
 
-SAS token můžete vygenerovat pro váš kontejner Azure Storage, musíte zadat **rwl** oprávnění. **Rwl** hodnota poskytuje následující oprávnění:
+Token SAS, který vygenerujete pro kontejner Azure Storage, musí pro oprávnění zadat **RWL** . Hodnota **RWL** poskytuje následující oprávnění:
 
 - Čtení
 - Zápis
-- Seznam
+- List
 
 ## <a name="performance-considerations"></a>Otázky výkonu
 
-Existují scénáře, ve kterém náročné na použití rozšířených událostí lze nashromáždit aktivnější paměti, než je v pořádku pro celý systém. Systém Azure SQL Database proto dynamicky nastaví a nastavuje omezení pro objem aktivní paměti, která může být shromážděných řešením relace události. Řada faktorů, přejděte do dynamický výpočet.
+Existují situace, kdy náročné použití rozšířených událostí může nashromáždit více aktivních paměti, než je v pořádku pro celkový systém. Proto systém Azure SQL Database dynamicky nastavuje a upravuje omezení velikosti aktivní paměti, kterou lze shromáždit pomocí relace události. Mnoho faktorů přechází do dynamického výpočtu.
 
-Pokud se zobrazí chybová zpráva s upozorněním, že maximální paměti bylo vynuceno, jsou některé opravné akce, které si můžete:
+Pokud se zobrazí chybová zpráva oznamující, že byla vynutila maximální velikost paměti, můžete provést následující kroky:
 
-- Spuštění relace méně souběžných události.
-- Prostřednictvím vaší **vytvořit** a **ALTER** příkazy pro relace události, snížit množství paměti, které jste zadali na **maximální\_paměti** klauzuli.
+- Spusťte méně souběžných relací událostí.
+- Pomocí příkazů **Create** a **ALTER** pro relace událostí Snižte velikost paměti, kterou zadáte v klauzuli **Max\_Memory** .
 
 ### <a name="network-latency"></a>Latence sítě
 
-**Soubor událostí** cílové zaznamenat latence sítě nebo selhání při zachování dat pro objekty BLOB služby Azure Storage. Další události ve službě SQL Database můžou být zpožděné čekají na síťovou komunikaci na dokončení. Toto zpoždění může zpomalit vaši úlohu.
+Cílem **souboru událostí** může být latence sítě nebo selhání při trvalém ukládání dat do objektů blob Azure Storage. Další události v SQL Database mohou být zpožděny, když čekají na dokončení síťové komunikace. Tato prodleva může zpomalit vaše zatížení.
 
-- Ke zmírnění tohoto rizika výkonu, nenastavujte **EVENT_RETENTION_MODE** umožňuje **NO_EVENT_LOSS** ve svých definicích relace události.
+- Pokud chcete toto riziko snížit, vyhněte se nastavení možnosti **EVENT_RETENTION_MODE** na **NO_EVENT_LOSS** v definicích relace události.
 
 ## <a name="related-links"></a>Související odkazy
 
-- [Použití Azure Powershellu s Azure Storage](../storage/common/storage-powershell-guide-full.md).
-- [Rutiny služby Azure Storage](https://docs.microsoft.com/powershell/module/Azure.Storage)
-- [Pomocí Azure Powershellu s Azure Storage](../storage/common/storage-powershell-guide-full.md) – poskytuje podrobné informace o prostředí PowerShell a službu Azure Storage.
-- [Použití Blob storage pomocí technologie .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
+- [Použití Azure PowerShell s Azure Storage](../storage/common/storage-powershell-guide-full.md).
+- [Rutiny Azure Storage](https://docs.microsoft.com/powershell/module/Azure.Storage)
+- [Použití Azure PowerShell s Azure Storage](../storage/common/storage-powershell-guide-full.md) – poskytuje komplexní informace o PowerShellu a službě Azure Storage.
+- [Jak používat úložiště objektů BLOB z .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
 - [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
-- [Jonathan Kehayias příspěvky o rozšířené události v systému Microsoft SQL Server](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
+- [Blogové příspěvky Jonathana Kehayias o rozšířených událostech v Microsoft SQL Server](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
-- Azure *aktualizace služeb* webovou stránku, zúžit parametrem ke službě Azure SQL Database:
+- Webová stránka *aktualizace služby* Azure, která je zúžená podle parametru Azure SQL Database:
     - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
 
 
-Další témata ukázkový kód pro rozšířené události jsou k dispozici prostřednictvím následujících odkazů. Však musí pravidelně zkontrolujte všechny ukázky a zda vzorku, zaměřuje Microsoft SQL Server a Azure SQL Database. Pak se můžete rozhodnout, zda jsou menší změny potřebné ke spuštění ukázky.
+Další témata s ukázkami kódu pro rozšířené události jsou k dispozici na následujících odkazech. Je však nutné rutinu, která je v ukázce, kontrolovat, zda Microsoft SQL Server a Azure SQL Database. Pak se můžete rozhodnout, zda ke spuštění ukázky potřebujete drobné změny.
 
 <!--
 ('lock_acquired' event.)

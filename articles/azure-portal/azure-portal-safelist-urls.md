@@ -1,28 +1,28 @@
 ---
-title: Na webu Azure portal Safelist adresy URL | Dokumentace Microsoftu
-description: Přidejte tyto adresy URL do obcházení proxy serveru pro komunikaci pomocí webu Azure portal a jeho služeb
+title: Safelist adresy URL Azure Portal | Microsoft Docs
+description: Přidejte tyto adresy URL, aby bylo možné proxy server nepoužívat ke komunikaci s Azure Portal a jeho službami.
 services: azure-portal
 keywords: ''
 author: kfollis
 ms.author: kfollis
-ms.date: 06/13/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 87ec600a2f6c4a560ec7cbb064b561fa76e2b615
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 3747ca7504e1a8a6bbeb6237c1b3cb2e5e4afb5b
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67305007"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667477"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Na webu Azure portal Safelist adresy URL na vaše brána firewall nebo proxy serveru
+# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist adresy URL Azure Portal v bráně firewall nebo proxy server
 
-Dobrý výkon a připojení mezi vaší místní nebo celé oblasti sítí a cloudu Azure, nakonfigurujte na místních zařízeních zabezpečení obejít omezení zabezpečení na webu Azure portal adresy URL. Správci sítě často nasadit proxy servery, brány firewall nebo jiná zařízení k zabezpečení a poskytnou kontrolu nad tím, jak uživatelé přistupovat k Internetu. Pravidla navržená k ochraně uživatelů můžete však někdy zablokovat nebo zpomalit legitimní obchodní internetový provoz, včetně komunikaci mezi vámi a Azure. Pro optimalizaci spojení mezi vaší sítí a na webu Azure portal a jejích služeb, doporučujeme přidat webu Azure portal adres URL na vaše safelist.
+Pro zajištění dobrého výkonu a připojení mezi vaší místní sítí a cloudem Azure nakonfigurujte místní zařízení zabezpečení tak, aby se pro adresy URL Azure Portal obcházela omezení zabezpečení. Správci sítě často nasazují proxy servery, brány firewall nebo jiná zařízení, aby pomohly zabezpečení a poskytovaly kontrolu nad tím, jak uživatelé přistupují k Internetu. Pravidla určená k ochraně uživatelů ale můžou někdy blokovat nebo zpomalit legitimní internetový provoz související s obchodem, včetně komunikace mezi vámi a Azure. K optimalizaci připojení mezi vaší sítí a Azure Portal a jejími službami doporučujeme přidat do svého Safelist Azure Portal adresy URL.
 
-## <a name="azure-portal-urls-for-proxy-bypass"></a>Obejít adresy URL pro server proxy webu Azure portal
+## <a name="azure-portal-urls-for-proxy-bypass"></a>Azure Portal adresy URL pro obejití proxy serveru
 
-Přidejte následující seznam adres URL do proxy serveru nebo brány firewall pro povolení provozu sítě s těmito koncovými body obejít omezení:
+Do proxy server nebo brány firewall přidejte následující seznam adres URL, které umožní síťovému přenosu do těchto koncových bodů obejít omezení:
 
 * *.aadcdn.microsoftonline-p.com
 * *.aimon.applicationinsights.io
@@ -44,13 +44,14 @@ Přidejte následující seznam adres URL do proxy serveru nebo brány firewall 
 * *.vortex.data.microsoft.com
 * *.vscommerce.visualstudio.com
 * *.vssps.visualstudio.com
+* *.windows.net
 * *.wpc.azureedge.net
 
 > [!NOTE]
-> Provoz s těmito koncovými body používá standardní porty protokolu TCP pro protokol HTTP (80) a protokolu HTTPS (443).
+> Provoz do těchto koncových bodů používá standardní porty TCP pro protokol HTTP (80) a HTTPS (443).
 >
 >
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Je potřeba safelist IP adresy? Stáhněte si seznam [rozsahy IP adres datacentra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
-* Jiné Microsoft services použití další adresy URL a IP adresy pro připojení. Na optimalizaci síťové konektivity pro služby Microsoft 365, najdete v článku [nastavení sítě pro Office 365](/office365/enterprise/set-up-network-for-office-365).
+* Potřebujete Safelist IP adresy? Stáhněte si seznam [rozsahů IP adres datového centra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+* Další služby Microsoftu používají pro připojení další adresy URL a IP adresy. Informace o optimalizaci síťového připojení pro Microsoft 365 Services najdete v tématu [nastavení sítě pro Office 365](/office365/enterprise/set-up-network-for-office-365).

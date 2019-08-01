@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83eee019ee8530297689b85e6f3300fed4392610
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 9f033cf57c5a285e94372728677c91e021065fa9
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489184"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678198"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Vytvoření nového balíčku pro přístup ve správě nároků ve službě Azure AD (Preview)
 
@@ -44,7 +44,7 @@ Následující diagram znázorňuje proces vysoké úrovně pro vytvoření nov�
 
 ## <a name="start-new-access-package"></a>Spustit nový balíček pro přístup
 
-**Požadovaná role:** Správce uživatele nebo vlastník katalogu
+**Požadovaná role:** Globální správce, správce uživatele nebo vlastník katalogu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -64,21 +64,20 @@ Na kartě **základy** udělíte přístupovému balíčku název a určíte, ke
 
 1. V rozevíracím seznamu **katalog** vyberte katalog, ve kterém chcete vytvořit balíček pro přístup. Můžete mít například vlastníka katalogu, který spravuje všechny prostředky marketingu, které mohou být požadovány. V takovém případě můžete vybrat marketingový katalog.
 
-    Zobrazí se pouze katalogy, které máte oprávnění k vytváření balíčků přístupu v nástroji. Pokud chcete vytvořit balíček přístupu v existujícím katalogu, musíte mít aspoň správce uživatele, vlastníka katalogu nebo správce balíčků přístupu.
+    Zobrazí se pouze katalogy, které máte oprávnění k vytváření balíčků přístupu v nástroji. Pokud chcete vytvořit balíček přístupu v existujícím katalogu, musíte mít aspoň globálního správce, správce uživatele, vlastníka katalogu v tomto katalogu nebo přístup správce balíčků v katalogu.
 
     ![Přístup k základům balíčku](./media/entitlement-management-access-package-create/basics.png)
 
-    Pokud chcete vytvořit balíček přístupu v novém katalogu, klikněte na **vytvořit nový**. Zadejte název a popis katalogu a pak klikněte na **vytvořit**.
+    Pokud jste globální správce nebo Správce uživatelů a chcete vytvořit balíček přístupu v novém katalogu, který není v seznamu, klikněte na **vytvořit nový**. Zadejte název a popis katalogu a pak klikněte na **vytvořit**.
 
-    Balíček přístupu, který vytváříte, a všechny prostředky, které jsou v něm obsažené, se přidají do nového katalogu. Navíc se automaticky stanete prvním vlastníkem katalogu. Můžete přidat další vlastníky katalogu.
+    Balíček přístupu, který vytváříte, a všechny prostředky, které jsou v něm obsažené, se přidají do nového katalogu. Později můžete také přidat další vlastníky katalogu.
 
-    Chcete-li vytvořit nový katalog, musíte být alespoň správcem uživatelů nebo tvůrcem katalogu.
 
 1. Klikněte na **Další**.
 
 ## <a name="resource-roles"></a>Role prostředků
 
-Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do balíčku pro přístup.
+Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do balíčku pro přístup.  Uživatelé, kteří požadují a obdrží balíček pro přístup, obdrží všechny role prostředků v balíčku pro přístup.
 
 1. Klikněte na typ prostředku, který chcete přidat (**skupiny**, **aplikace**nebo **weby služby SharePoint**).
 
@@ -86,11 +85,11 @@ Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do
 
     ![Přístup k prostředkům balíčku – role](./media/entitlement-management-access-package-create/resource-roles.png)
 
-    Pokud vytváříte balíček přístupu v katalogu obecné nebo v novém katalogu, budete moci vybrat libovolný prostředek z adresáře, který vlastníte. Musíte mít aspoň Správce uživatelů nebo Tvůrce katalogu.
+    Pokud vytváříte balíček přístupu v katalogu obecné nebo v novém katalogu, budete moci vybrat libovolný prostředek z adresáře, který vlastníte. Musíte mít aspoň globálního správce, Správce uživatelů nebo Tvůrce katalogu.
 
     Pokud vytváříte balíček přístupu v existujícím katalogu, můžete vybrat libovolný prostředek, který je již v katalogu, aniž by mu byl vlastník.
 
-    Pokud jste správcem nebo vlastníkem katalogu, máte k dispozici další možnost výběru nevlastních prostředků, které ještě nejsou v katalogu. Pokud vyberete prostředky, které nejsou aktuálně ve vybraném katalogu, tyto prostředky budou také přidány do katalogu pro jiné Správce katalogu, aby mohli vytvářet balíčky přístupu pomocí nástroje. Pokud chcete pouze vybrat prostředky, které jsou aktuálně ve vybraném katalogu, zaškrtněte políčko **pouze** v horní části okna Vybrat pan.
+    Pokud jste globální správce, správce uživatele nebo vlastníka katalogu, máte další možnost výběru nevlastních prostředků, které ještě nejsou v katalogu. Pokud vyberete prostředky, které nejsou aktuálně ve vybraném katalogu, tyto prostředky budou také přidány do katalogu pro jiné Správce katalogu, aby mohli vytvářet balíčky přístupu pomocí nástroje. Pokud chcete pouze vybrat prostředky, které jsou aktuálně ve vybraném katalogu, zaškrtněte políčko **pouze** v horní části okna Vybrat pan.
 
 1. Jakmile vyberete prostředky, v seznamu **role** vyberte roli, kterou chcete přiřadit uživatelům pro daný prostředek.
 

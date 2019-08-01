@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7402778ec8170e60a623255d0d331f12d8389227
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8163b2261601b701913e07d703f5db0ac6fa7c0
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824307"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688074"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Přiřazení uživatelů a skupin k aplikaci v Azure Active Directory
 Tento článek ukazuje, jak přiřadit uživatele nebo skupiny k aplikaci v Azure Active Directory (Azure AD). Uživatelé musí být přiřazen k aplikaci předtím, než správce můžete jim udělit přístup k následujícím:
@@ -32,7 +32,7 @@ Tento článek ukazuje, jak přiřadit uživatele nebo skupiny k aplikaci v Azur
 
 -   V tématu aplikace se zobrazí na jejich [Spouštěče aplikací Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
 
-Dostupnost na základě skupin přiřazení se určuje podle vaší licenční smlouvě. Přiřazení na základě skupin je podporováno jenom u skupin zabezpečení a vnořené členství ve skupinách se momentálně nepodporují.
+Dostupnost přiřazení na základě skupin je určená vaší licenční smlouvou. Přiřazení na základě skupin se podporuje jenom pro skupiny zabezpečení. Vnořené členství ve skupinách a skupiny O365 se momentálně nepodporují.
 
 ## <a name="prerequisites"></a>Požadavky
 Než budete moci přiřadit uživatele a skupiny k aplikaci, musí vyžadují přiřazení uživatele. Vyžadování přiřazení uživatele:
@@ -74,7 +74,7 @@ Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle ná
 
 11. Najeďte myší **uživatele** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky uživatele nebo logo, které chcete přidat uživatele **vybrané** seznamu.
 
-12. **Volitelné:** Pokud byste chtěli **přidat více než jeden uživatel**, typ v jiném **celý název** nebo **e-mailová adresa** do **hledat podle jména nebo e-mailové adresy** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním tohoto uživatele do **vybrané** seznamu.
+12. **Volitelné** Pokud chcete **Přidat více než jednoho uživatele**, zadejte do vyhledávacího pole **jméno nebo e** -mailová adresa další **jméno** nebo **e-mailovou adresu** a kliknutím na zaškrtávací políčko přidejte tohoto uživatele do **vybraného** seznamu.
 
 13. Po dokončení výběru uživatelů, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
 
@@ -112,7 +112,7 @@ Jednu nebo více skupin přiřadit přímo k aplikaci, postupujte podle následu
 
 11. Najeďte myší **skupiny** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky nebo logo, které chcete přidat uživatele do skupiny **vybrané** seznamu.
 
-12. **Volitelné:** Pokud byste chtěli **přidat více než jednu skupinu**, typ v jiném **název celé skupiny** do **hledat podle jména nebo e-mailové adresy** vyhledávací pole a klikněte na zaškrtávací políčko a přidáním této skupiny Chcete **vybrané** seznamu.
+12. **Volitelné** Chcete-li **Přidat více než jednu skupinu**, zadejte do pole **Hledat podle jména nebo e-mailové adresy** další **název celé skupiny** a kliknutím na zaškrtávací políčko přidejte tuto skupinu do **vybraného** seznamu.
 
 13. Když jste hotovi s výběrem skupin, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
 
@@ -148,18 +148,18 @@ Povolení samoobslužného přístupu k aplikaci, postupujte podle následujíc�
 
 9. V dalším kroku vyberte skupiny, kterým uživatelé, kteří žádají o přístup k této aplikaci by měly být přidány, klepněte na volič vedle popisku **do které skupiny by měl přiřazení uživatelé měli přidat?** a vyberte skupinu.
 
-10. **Volitelné:** Pokud chcete vyžadovat schválení firmy před uživatelé mají povolen přístup, nastavte **vyžadovat schválení před udělením přístupu k této aplikaci?** přepnutím **Ano**.
+10. **Volitelné** Pokud chcete před povolením přístupu k této aplikaci vyžadovat obchodní schválení, nastavte **před udělením přístupu k této aplikaci oprávnění vyžadovat schválení?** přepněte na **Ano**.
 
-11. **Volitelné: Pro aplikace používající jednotné přihlašování heslem, pouze na** Pokud chcete povolit tyto firemními schvalovateli k zadání hesla, které se odesílají na tuto aplikaci pro schválené uživatele, nastavte **povolit schvalovatelům nastavovat hesla uživatelů pro tuto aplikace?**  přepnutím **Ano**.
+11. **Volitelné U aplikací, které používají pouze jednotné přihlašování,** Pokud chcete těmto obchodním schvalovatelům dovolit zadat hesla, která se do této aplikace odesílají pro schválené uživatele, nastavte **pro toto heslo uživatele oprávnění je aplikace?** Přepněte na **Ano**.
 
-12. **Volitelné:** Pokud chcete zadat firemními schvalovateli, kteří se může schvalovat přístup k této aplikaci, klepněte na volič vedle popisku **kdo může schvalovat přístup k této aplikaci?** vybrat až 10 jednotlivé firemními schvalovateli.
+12. **Volitelné** Pokud chcete určit obchodní schvalovatele, kteří mají povolený přístup k této aplikaci, klikněte na selektor vedle popisku **, který má povolený souhlas s přístupem k této aplikaci?** Pokud chcete vybrat až 10 individuálních obchodních schvalovatelů.
 
     >[!NOTE]
     >Skupiny se nepodporují.
     >
     >
 
-13. **Volitelné:** **Pro aplikace, které zpřístupňují role**, pokud chcete přiřadit k roli schválených uživatelů samoobslužných služeb, klepněte na volič vedle **ke které roli by měla být přiřazena uživatelům v této aplikaci?** vyberte role, ke kterému Tito uživatelé měla být přiřazena.
+13. **Volitelné** V případě **aplikací, které zveřejňují role**, pokud chcete roli přiřadit schváleným uživatelům samoobslužné služby, klikněte na selektor vedle role, **které by se měly přiřazovat uživatelům v této aplikaci** . Pokud chcete vybrat roli, ke které se tito uživatelé mají přiřadit.
 
 14. Klikněte na tlačítko **Uložit** tlačítko v horní části podokna na dokončení.
 

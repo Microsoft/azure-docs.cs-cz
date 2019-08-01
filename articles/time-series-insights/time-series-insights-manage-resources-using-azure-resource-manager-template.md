@@ -1,6 +1,6 @@
 ---
-title: Správa prostředí Azure Time Series Insights pomocí šablon Azure Resource Manageru | Dokumentace Microsoftu
-description: Tento článek popisuje, jak spravovat prostředí Azure Time Series Insights prostřednictvím kódu programu pomocí Azure Resource Manageru.
+title: Jak spravovat Azure Time Series Insights prostředí pomocí šablon Azure Resource Manager | Microsoft Docs
+description: Tento článek popisuje, jak programově spravovat Azure Time Series Insights prostředí pomocí Azure Resource Manager.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -11,47 +11,47 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: ba7d412e9bfc29a53cd0aa47a926f60580b45490
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b861ef17648f3efbe1f378f2bf253d5bf3ece44
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237643"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677799"
 ---
-# <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Vytvořit prostředky služby Time Series Insights pomocí šablon Azure Resource Manageru
+# <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Vytváření Time Series Insightsch prostředků pomocí šablon Azure Resource Manager
 
-Tento článek popisuje postup vytvoření a nasazení prostředků Time Series Insights pomocí šablony Azure Resource Manageru, Powershellu a poskytovatele prostředků služby Time Series Insights.
+Tento článek popisuje, jak vytvořit a nasadit Time Series Insights prostředky pomocí šablon Azure Resource Manager, PowerShellu a poskytovatele prostředků Time Series Insights.
 
 Time Series Insights podporuje následující zdroje:
 
    | Resource | Popis |
    | --- | --- |
-   | Prostředí | Prostředí Time Series Insights je logické seskupení událostí, které se čtou zprostředkovatelé událostí, uložených a k dispozici pro dotaz. Další informace najdete v tématu [plánování prostředí Azure Time Series Insights](time-series-insights-environment-planning.md) |
-   | Zdroj události | Zdroj událostí je připojení k zprostředkovatele událostí, ze kterého čte Time Series Insights a ingestuje události do prostředí. Zdroje událostí aktuálně podporované se službou IoT Hub a centra událostí. |
-   | Referenční sady dat. | Referenční datové sady poskytují metadata o událostech v prostředí. Metadata v referenční datové sady se jde připojit k události během příchozího přenosu. Referenční datové sady se definují jako prostředky podle jejich vlastnosti klíče události. Skutečné metadat, který vytvoří referenční sady dat se nahraje nebo změní prostřednictvím roviny dat rozhraní API. |
-   | Zásady přístupu | Zásady přístupu k udělení oprávnění k vydávání dotazů na data, zpracování referenčních dat v prostředí a sdílení uložených dotazů a perspektiv přidruženým k prostředí. Další informace najdete v článku [udělení přístupu k datům do prostředí Time Series Insights pomocí webu Azure portal](time-series-insights-data-access.md) |
+   | Prostředí | Time Series Insights prostředí je logické seskupení událostí, které jsou čteny od zprostředkovatelů událostí, uloženy a zpřístupněny pro dotaz. Další informace najdete v tématu [plánování Azure Time Series Insightsho prostředí](time-series-insights-environment-planning.md) . |
+   | Zdroj události | Zdroj události je připojení ke zprostředkovateli událostí, ze kterého Time Series Insights čte události do prostředí a ingestuje je. Aktuálně podporované zdroje událostí jsou IoT Hub a centra událostí. |
+   | Referenční sada dat | Referenční sady dat poskytují metadata o událostech v prostředí. Metadata v referenčních sadách dat budou během příchozího přenosu propojena s událostmi. Referenční sady dat jsou definovány jako prostředky podle jejich vlastností klíče události. Skutečná metadata, která tvoří referenční datovou sadu, se nahrají nebo upraví prostřednictvím rozhraní API roviny dat. |
+   | Zásady přístupu | Zásady přístupu udělují oprávnění k vydávání dotazů na data, manipulaci s referenčními daty v prostředí a sdílení uložených dotazů a perspektiv přidružených k prostředí. Další informace najdete v článku [udělení přístupu k datům Time Series Insights prostředí pomocí Azure Portal](time-series-insights-data-access.md) |
 
-Šablony Resource Manageru je soubor JSON, která definuje infrastrukturu a konfiguraci prostředků ve skupině prostředků. Tyto dokumenty popisují soubory šablon podrobněji:
+Šablona Správce prostředků je soubor JSON, který definuje infrastrukturu a konfiguraci prostředků ve skupině prostředků. Následující dokumenty popisují soubory šablon podrobněji:
 
-- [Přehled Azure Resource Manageru – nasazení šablony](../azure-resource-manager/resource-group-overview.md#template-deployment)
+- [Přehled Azure Resource Manager – Template deployment](../azure-resource-manager/resource-group-overview.md#template-deployment)
 - [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../azure-resource-manager/resource-group-template-deploy.md)
-- [Typy prostředků Microsoft.TimeSeriesInsights](/azure/templates/microsoft.timeseriesinsights/allversions)
+- [Typy prostředků Microsoft. TimeSeriesInsights](/azure/templates/microsoft.timeseriesinsights/allversions)
 
-[201-timeseriesinsights prostředí s eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) šablonu pro rychlý start se publikoval na Githubu. Tato šablona vytvoří prostředí Time Series Insights, zdroj události podřízené nakonfigurovaný tak, aby přijímat události z centra událostí a zásadami, které udělují přístup k datům prostředí. Pokud není zadaný existující centrum událostí, bude vytvořen s nasazením.
+Šablona pro rychlý Start [201-timeseriesinsights-Environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) je publikovaná na GitHubu. Tato šablona vytvoří prostředí Time Series Insights, podřízený zdroj událostí nakonfigurovaný tak, aby využíval události z centra událostí, a zásady přístupu, které udělují přístup k datům prostředí. Pokud není zadané existující centrum událostí, vytvoří se s nasazením.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="specify-deployment-template-and-parameters"></a>Zadejte šablonu nasazení a parametry
+## <a name="specify-deployment-template-and-parameters"></a>Zadat šablonu a parametry nasazení
 
-Následující postup popisuje použití Powershellu k nasazení šablony Azure Resource Manageru, který vytvoří prostředí Time Series Insights, zdroj události podřízené nakonfigurovaný tak, aby přijímat události z centra událostí a zásady, které udělují přístup k přístupu data prostředí. Pokud není zadaný existující centrum událostí, bude vytvořen s nasazením.
+Následující postup popisuje, jak pomocí PowerShellu nasadit šablonu Azure Resource Manager, která vytváří Time Series Insights prostředí, podřízený zdroj událostí nakonfigurovaný tak, aby využíval události z centra událostí, a přístup k zásadám, které udělují přístup k data prostředí. Pokud není zadané existující centrum událostí, vytvoří se s nasazením.
 
-1. Nainstalovat Azure PowerShell podle pokynů v [Začínáme s Azure Powershellem](/powershell/azure/get-started-azureps).
+1. Nainstalujte Azure PowerShell podle pokynů v tématu [Začínáme s Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-1. Klonování nebo kopírování [201-timeseriesinsights prostředí s eventhub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) šablony z Githubu.
+1. Naklonujte nebo zkopírujte šablonu [201-timeseriesinsights-Environment-with-eventhub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) z GitHubu.
 
    * Vytvoření souboru parametrů
 
-     Chcete-li vytvořit soubor parametrů, zkopírujte [201-timeseriesinsights prostředí s eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json) souboru.
+     Chcete-li vytvořit soubor parametrů, zkopírujte soubor [201-timeseriesinsights-Environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json) .
 
       [!code-json[deployment-parameters](~/quickstart-templates/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json)]
 
@@ -61,11 +61,11 @@ Následující postup popisuje použití Powershellu k nasazení šablony Azure 
 
      | Parametr | Popis |
      | --- | --- |
-     | eventHubNamespaceName | Obor názvů centra událostí, zdroje. |
-     | eventHubName | Název centra událostí zdroje. |
-     | consumerGroupName | Název skupiny příjemců, který bude služba Time Series Insights používat ke čtení dat z centra událostí. **POZNÁMKA:** Předejít sporu prostředků, musí tuto skupinu příjemců vyhrazená pro služby Time Series Insights a neměly by být sdíleny s jinými čtenáři. |
-     | environmentName | Název prostředí. Název nesmí obsahovat: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`, a žádné řídicí znaky. Všechny ostatní znaky jsou povolené.|
-     | eventSourceName | Název prostředku podřízený zdroj událostí. Název nesmí obsahovat: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`, a žádné řídicí znaky. Všechny ostatní znaky jsou povolené. |
+     | eventHubNamespaceName | Obor názvů zdrojového centra událostí |
+     | eventHubName | Název zdrojového centra událostí. |
+     | consumerGroupName | Název skupiny uživatelů, kterou bude služba Time Series Insights používat ke čtení dat z centra událostí. **POZNÁMKA:** Aby se zabránilo kolizi prostředků, musí být tato skupina uživatelů vyhrazena službě Time Series Insights a nesdílela se s ostatními čtenáři. |
+     | environmentName | Název prostředí. Název nesmí obsahovat tyto řídicí `<`znaky `>`: `%`, `&`, `:`, `\\`, `?`,, ,`/`a. Všechny ostatní znaky jsou povolené.|
+     | eventSourceName | Název podřízeného prostředku zdroje události. Název nesmí obsahovat tyto řídicí `<`znaky `>`: `%`, `&`, `:`, `\\`, `?`,, ,`/`a. Všechny ostatní znaky jsou povolené. |
 
     <div id="optional-parameters"></div>
 
@@ -73,18 +73,18 @@ Následující postup popisuje použití Powershellu k nasazení šablony Azure 
 
      | Parametr | Popis |
      | --- | --- |
-     | existingEventHubResourceId | Volitelné resource ID existující centrum událostí, které budou připojeny k prostředí Time Series Insights prostřednictvím zdroje událostí. **POZNÁMKA:** Uživatel nasazení šablony musí mít oprávnění k provedení této operace klíče listkey v Centru událostí. Pokud není předána žádná hodnota, vytvoří se nové Centrum událostí pomocí šablony. |
-     | environmentDisplayName | Volitelný popisný název pro zobrazení v nástroji nebo uživatelské rozhraní místo názvu prostředí. |
-     | environmentSkuName | Název sku. Další informace najdete v tématu [stránce s cenami čas Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
-     | environmentSkuCapacity | Kapacita jednotek SKU. Další informace najdete v tématu [stránce s cenami čas Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).|
-     | environmentDataRetentionTime | Minimální časový rozsah události prostředí bude k dispozici pro dotaz. Nutné zadat hodnotu ve formátu ISO 8601, například `P30D` pro zásady uchovávání informací o 30 dnech. |
-     | eventSourceDisplayName | Volitelný popisný název pro zobrazení v rozhraní nástroje nebo uživatele místo názvu zdroje událostí. |
-     | eventSourceTimestampPropertyName | Vlastnosti události, který se použije jako časové razítko zdroje událostí. Pokud není zadána hodnota pro timestampPropertyName nebo pokud je zadána hodnota null nebo prázdný řetězec, použije se čas vytvoření události. |
-     | eventSourceKeyName | Název sdílený přístupový klíč, který bude služba Time Series Insights používat pro připojení k Centru událostí. |
-     | accessPolicyReaderObjectIds | Seznam ID uživatele nebo aplikace ve službě Azure AD, který by měl mít čtečky přístup k prostředí objektů. ObjectId instančního objektu služby lze získat voláním **Get-AzADUser** nebo **Get-AzADServicePrincipal** rutiny. Vytvoření zásad přístupu pro skupiny služby Azure AD se ještě nepodporuje. |
-     | accessPolicyContributorObjectIds | Seznam ID uživatele nebo aplikace ve službě Azure AD, který by měl mít přístup přispěvatele k prostředí objektů. ObjectId instančního objektu služby lze získat voláním **Get-AzADUser** nebo **Get-AzADServicePrincipal** rutiny. Vytvoření zásad přístupu pro skupiny služby Azure AD se ještě nepodporuje. |
+     | existingEventHubResourceId | Volitelné ID prostředku existujícího centra událostí, které bude připojeno ke Time Series Insights prostředí prostřednictvím zdroje událostí. **POZNÁMKA:** Uživatel, který šablonu nasazuje, musí mít oprávnění k provedení operace klíče listkey v centru událostí. Pokud není předána žádná hodnota, vytvoří se v šabloně nové centrum událostí. |
+     | environmentDisplayName | Volitelný popisný název, který se zobrazí v nástrojích nebo uživatelských rozhraních místo názvu prostředí. |
+     | environmentSkuName | Název sku. Další informace najdete na stránce s [cenami Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
+     | environmentSkuCapacity | Kapacita jednotky SKU. Další informace najdete na stránce s [cenami Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).|
+     | environmentDataRetentionTime | Minimální časové rozpětí, které budou události prostředí k dispozici pro dotaz. Hodnota musí být zadána ve formátu ISO 8601, například `P30D` pro zásady uchovávání informací po dobu 30 dnů. |
+     | eventSourceDisplayName | Volitelný popisný název, který se zobrazí v nástrojích nebo uživatelských rozhraních namísto názvu zdroje události. |
+     | eventSourceTimestampPropertyName | Vlastnost události, která bude použita jako časové razítko zdroje události. Pokud není zadána hodnota pro timestampPropertyName, nebo pokud je zadána hodnota null nebo prázdný řetězec, bude použit čas vytvoření události. |
+     | eventSourceKeyName | Název sdíleného přístupového klíče, který bude služba Time Series Insights používat pro připojení k centru událostí. |
+     | accessPolicyReaderObjectIds | Seznam ID objektů uživatelů nebo aplikací ve službě Azure AD, který by měl mít přístup čtenář k prostředí. ObjectId instančního objektu se dá získat voláním rutin **Get-AzADUser** nebo **Get-AzADServicePrincipal** . Vytváření zásad přístupu pro skupiny Azure AD ještě není podporované. |
+     | accessPolicyContributorObjectIds | Seznam ID objektů uživatelů nebo aplikací ve službě Azure AD, který by měl mít přístup Přispěvatel k prostředí. ObjectId instančního objektu se dá získat voláním rutin **Get-AzADUser** nebo **Get-AzADServicePrincipal** . Vytváření zásad přístupu pro skupiny Azure AD ještě není podporované. |
 
-   * Například následující soubor parametrů se použije k vytvoření prostředí a zdroje událostí, která načítá události z existující centrum událostí. Vytvoří také dvě zásady přístupu, které udělují přístup přispěvatele k prostředí.
+   * Například následující soubor parametrů by se použil k vytvoření prostředí a zdroje událostí, který čte události z existujícího centra událostí. Vytvoří také dvě zásady přístupu, které udělí přispěvatelům přístup k prostředí.
 
      ```json
      {
@@ -119,42 +119,42 @@ Následující postup popisuje použití Powershellu k nasazení šablony Azure 
      }
      ```
   
-    * Další informace najdete v tématu [parametry](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) článku.
+    * Další informace najdete v článku o [parametrech](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) .
 
-## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Nasazení šablony rychlý start místně s použitím prostředí PowerShell
+## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Nasazení šablony pro rychlé zprovoznění místně pomocí PowerShellu
 
 > [!IMPORTANT]
-> Operace příkazového řádku, které jsou zobrazeny níže popisují [modulu Powershellu pro Az](https://docs.microsoft.com/powershell/azure/overview).
+> Níže zobrazené operace příkazového řádku popisují [AZ PowerShell Module](https://docs.microsoft.com/powershell/azure/overview).
 
-1. V prostředí PowerShell Přihlaste se ke svému účtu Azure.
+1. V PowerShellu se přihlaste ke svému účtu Azure.
 
-    * Z příkazového řádku Powershellu spusťte následující příkaz:
+    * Z příkazového řádku PowerShellu spusťte následující příkaz:
 
       ```powershell
       Connect-AzAccount
       ```
 
-    * Zobrazí se výzva k přihlášení k účtu Azure. Po přihlášení, spusťte následující příkaz, chcete-li zobrazit dostupná předplatná:
+    * Zobrazí se výzva, abyste se přihlásili ke svému účtu Azure. Po přihlášení spusťte následující příkaz, který zobrazí vaše dostupná předplatná:
 
       ```powershell
       Get-AzSubscription
       ```
 
-    * Tento příkaz vrátí seznam hodnot dostupná předplatná Azure. Spuštěním následujícího příkazu vyberte předplatné pro aktuální relaci. Nahraďte `<YourSubscriptionId>` s identifikátorem GUID předplatného Azure, kterou chcete použít:
+    * Tento příkaz vrátí seznam dostupných předplatných Azure. Spusťte následující příkaz a vyberte odběr aktuální relace. Nahraďte `<YourSubscriptionId>` identifikátorem GUID předplatného Azure, které chcete použít:
 
       ```powershell
       Set-AzContext -SubscriptionID <YourSubscriptionId>
       ```
 
-1. Pokud ještě neexistuje, vytvořte novou skupinu prostředků.
+1. Pokud jeden z nich neexistuje, vytvořte novou skupinu prostředků.
 
-   * Pokud nemáte existující prostředek skupiny, vytvořte novou skupinu prostředků s **New-AzResourceGroup** příkazu. Zadejte název skupiny prostředků a umístění, které chcete použít. Příklad:
+   * Pokud nemáte existující skupinu prostředků, vytvořte novou skupinu prostředků pomocí příkazu **New-AzResourceGroup** . Zadejte název skupiny prostředků a umístění, které chcete použít. Příklad:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"
      ```
 
-   * V případě úspěchu, zobrazí se souhrn novou skupinu prostředků.
+   * V případě úspěchu se zobrazí souhrn nové skupiny prostředků.
 
      ```powershell
      ResourceGroupName : MyDemoRG
@@ -164,9 +164,9 @@ Následující postup popisuje použití Powershellu k nasazení šablony Azure 
      ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
      ```
 
-1. Test nasazení.
+1. Otestujte nasazení.
 
-   * Ověřit nasazení spuštěním `Test-AzResourceGroupDeployment` rutiny. Při testování nasazení, zadejte parametry stejným způsobem jako při spuštění nasazení.
+   * Ověřte nasazení spuštěním `Test-AzResourceGroupDeployment` rutiny. Při testování nasazení zadejte parametry přesně stejně jako při spuštění nasazení.
 
      ```powershell
      Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
@@ -174,27 +174,27 @@ Následující postup popisuje použití Powershellu k nasazení šablony Azure 
 
 1. Vytvoření nasazení
 
-    * Pokud chcete vytvořit nové nasazení, spusťte `New-AzResourceGroupDeployment` rutiny a zadejte potřebné parametry po zobrazení výzvy. Parametry jsou název pro nasazení, název vaší skupiny prostředků a cesta nebo adresa URL k souboru šablony. Pokud **režimu** parametr není zadán, výchozí hodnota **přírůstkové** se používá. Další informace najdete v tématu [přírůstkové a úplné nasazení](../azure-resource-manager/deployment-modes.md).
+    * Pokud chcete vytvořit nové nasazení, spusťte `New-AzResourceGroupDeployment` rutinu a po zobrazení výzvy zadejte potřebné parametry. Parametry zahrnují název vašeho nasazení, název vaší skupiny prostředků a cestu nebo adresu URL k souboru šablony. Pokud není zadán parametr **Mode** , je použita výchozí hodnota pro **přírůstkové** . Další informace najdete v tématu [přírůstková a kompletní nasazení](../azure-resource-manager/deployment-modes.md).
 
-    * Následující příkaz vás vyzve k zadání pět požadovaných parametrů v okně Powershellu:
+    * Následující příkaz vás vyzve k zadání pěti požadovaných parametrů v okně PowerShellu:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
       ```
 
-    * Chcete-li místo toho zadejte soubor parametrů, použijte následující příkaz:
+    * Chcete-li místo toho zadat soubor parametrů, použijte následující příkaz:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
       ```
 
-    * Můžete také použít vložených parametrů při spuštění rutiny nasazení. Příkaz vypadá takto:
+    * Vložené parametry můžete použít také při spuštění rutiny nasazení. Příkaz je následující:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
       ```
 
-    * Ke spuštění [kompletní](../azure-resource-manager/deployment-modes.md) nasazení, nastavte **režimu** parametr **Complete**:
+    * Chcete-li spustit [kompletní](../azure-resource-manager/deployment-modes.md) nasazení, nastavte parametr **Mode** na hodnotu **Dokončit**:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -202,7 +202,7 @@ Následující postup popisuje použití Powershellu k nasazení šablony Azure 
 
 1. Ověření nasazení
 
-    * Pokud se prostředky nasadí úspěšně, zobrazí se souhrn nasazení v okně Powershellu:
+    * Pokud se prostředky úspěšně nasazují, v okně PowerShellu se zobrazí souhrn nasazení:
 
       ```powershell
        DeploymentName          : MyDemoDeployment
@@ -241,9 +241,9 @@ Následující postup popisuje použití Powershellu k nasazení šablony Azure 
        DeploymentDebugLogLevel :
       ```
 
-1. Nasazení šablony rychlý start na webu Azure portal
+1. Nasazení šablony pro rychlý Start pomocí Azure Portal
 
-   * Domovská stránka šablony quickstart na Githubu zahrnuje také **nasadit do Azure** tlačítko. Kliknutím otevřete stránku vlastní nasazení na webu Azure Portal. Na této stránce můžete zadat nebo vybrat hodnoty pro každý z parametrů z [požadované parametry](#required-parameters) nebo [volitelné parametry](#optional-parameters) tabulky. Po vyplnění nastavení kliknutím **nákupní** tlačítko opraví, zahájí se nasazení šablony.
+   * Domovská stránka šablony pro rychlý Start na GitHubu obsahuje také tlačítko **nasadit do Azure** . Kliknutím na něj otevřete stránku vlastního nasazení v Azure Portal. Na této stránce můžete zadat nebo vybrat hodnoty pro každý z parametrů z [požadovaných parametrů](#required-parameters) nebo z tabulek volitelného [parametru](#optional-parameters) . Po vyplnění nastavení se kliknutím na tlačítko **koupit** iniciuje nasazení šablony.
     </br>
     </br>
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
@@ -252,4 +252,4 @@ Následující postup popisuje použití Powershellu k nasazení šablony Azure 
 
 ## <a name="next-steps"></a>Další postup
 
-- Informace o Programová správa zdroje Time Series Insights pomocí rozhraní REST API najdete v tématu [Správa času Series Insights](https://docs.microsoft.com/rest/api/time-series-insights-management/).
+- Informace o programové správě Time Series Insightsch prostředků pomocí rozhraní REST API najdete v tématu [Time Series Insights Management](https://docs.microsoft.com/rest/api/time-series-insights-management/).

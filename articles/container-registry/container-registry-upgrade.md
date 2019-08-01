@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
 ms.openlocfilehash: 05c227e7de078c6bb371049f16e191598b9ca4e5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68310374"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Upgrade klasického registru kontejnerů
@@ -23,7 +23,7 @@ Klasická SKU se již nepoužívá a po uplynutí dubna 2019 nebude k dispozici.
 
 ## <a name="why-upgrade"></a>Proč upgradovat?
 
-Skladová položka registru Classic je zastaralá a nebude k dispozici po uplynutí **dubna 2019**. Všechny existující Registry Classic by měly být upgradovány před vydáním dubna 2019. Funkce správy portálu pro klasické Registry budou postupně vycházet. Vytváření nových klasických registrů bude zakázáno po dubna 2019.
+Skladová položka registru Classic jezastaralá a nebude k dispozici po uplynutí **dubna 2019**. Všechny existující Registry Classic by měly být upgradovány před vydáním dubna 2019. Funkce správy portálu pro klasické Registry budou postupně vycházet. Vytváření nových klasických registrů bude zakázáno po dubna 2019.
 
 Kvůli plánovanému vyřazení a omezené možnosti klasických nespravovaných registrů by se všechny klasické Registry měly upgradovat na spravované Registry (Basic, Standard nebo Premium). Tyto skladové položky vyšší úrovně jsou podrobněji integrovány do možností Azure Integration Registry. Další informace o cenách a možnostech různých úrovní služeb najdete v tématu [Container Registry SKU](container-registry-skus.md).
 
@@ -53,7 +53,7 @@ Až se migrace dokončí, účet úložiště ve vašem předplatném, který p�
 
 ## <a name="how-to-upgrade"></a>Postup upgradu
 
-Nespravovaný klasický registr můžete upgradovat na jednu ze spravovaných SKU několika způsoby. V následujících částech popisujeme proces použití rozhraní příkazového [řádku Azure CLI][azure-cli] and the [Azure portal][azure-portal].
+Nespravovaný klasický registr můžete upgradovat na jednu ze spravovaných SKU několika způsoby. V následujících částech popisujeme proces používání rozhraní příkazového [řádku Azure][azure-cli] a [Azure Portal][azure-portal].
 
 ## <a name="upgrade-in-azure-cli"></a>Upgrade v Azure CLI
 

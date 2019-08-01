@@ -1,6 +1,6 @@
 ---
 title: Chráněné webové rozhraní API – konfigurace kódu aplikace | Azure
-description: Zjistěte, jak sestavit chráněné webové rozhraní API a konfigurovat kódu vaší aplikace.
+description: Naučte se vytvářet chráněné webové rozhraní API a konfigurovat kód vaší aplikace.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,31 +16,31 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa262c1c6a091575a70c5670b1c7a7c96e8e2128
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 9fdc30df1f932a35702b01d7146017c4ca82c91a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536890"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562329"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
 
-Pokud chcete nakonfigurovat kód pro chráněné webové rozhraní API, musíte pochopit, co definuje rozhraní API jako chráněný, jak nakonfigurovat nosného tokenu a ověření tokenu.
+Pokud chcete nakonfigurovat kód pro vaše chráněné webové rozhraní API, musíte pochopit, co definují rozhraní API jako chráněné, jak nakonfigurovat nosný token a jak ověřit token.
 
-## <a name="what-defines-aspnetaspnet-core-apis-as-protected"></a>Co definuje rozhraní API Core ASP.NET/ASP.NET chráněná?
+## <a name="what-defines-aspnetaspnet-core-apis-as-protected"></a>Co definuje rozhraní API ASP.NET/ASP.NET Core jako chráněná?
 
-Stejně jako webových aplikací, ASP.NET/ASP.NET Core webová rozhraní API "chránily" protože jejich akce kontroleru mají předponu `[Authorize]` atribut. Takže akce kontroleru lze volat pouze v případě, že se volá rozhraní API s identitou, která má oprávnění.
+Podobně jako webové aplikace jsou webová rozhraní API ASP.NET/ASP.NET Core "chráněná", protože jejich akce kontrol jsou předponou `[Authorize]` s atributem. To znamená, že akce kontroleru lze volat pouze v případě, že je rozhraní API voláno s identitou, která je autorizována.
 
 Vezměte v úvahu následující otázky:
 
-- Jak webové rozhraní API znát identitu aplikace, která ho zavolá? (Pouze aplikace může volat webové rozhraní API).
-- Pokud aplikace volá webové rozhraní API jménem uživatele, co je identita uživatele?
+- Jak webové rozhraní API zná identitu aplikace, která ji volá? (Webové rozhraní API může volat jenom aplikace.)
+- Jaká je identita uživatele v případě, že aplikace volala webové rozhraní API jménem uživatele?
 
 ## <a name="bearer-token"></a>Nosný token
 
-Informace o identitě aplikace a informace o uživateli (Pokud je webová aplikace přijímá volání služba služba z démona aplikace), se nachází v nosný token, který je nastaven v hlavičce při volání aplikace.
+Informace o identitě aplikace a o uživateli (Pokud webová aplikace nepřijímá volání mezi službami z aplikace typu démon), je držena v nosných tokenech, který je nastaven v hlavičce při volání aplikace.
 
-Tady je C# příklad kódu, který ukazuje volání rozhraní API po získá token se knihovna Microsoft Authentication Library pro .NET (MSAL.NET) klienta:
+Zde je příklad C# kódu, který zobrazuje klienta volající rozhraní API poté, co získá token pomocí knihovny Microsoft Authentication Library pro .net (MSAL.NET):
 
 ```CSharp
 var scopes = new[] {$"api://.../access_as_user}";
@@ -55,7 +55,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> Nosný token byl požadován klientské aplikace do koncového bodu Microsoft identity platform *pro webové rozhraní API*. Webové rozhraní API je pouze aplikace, která by měl ověřit token a zobrazit deklarace identity, které obsahuje. Klientské aplikace by nikdy pokusí zkontrolovat deklarace identity do tokenů. (Webového rozhraní API může vyžadovat, v budoucnu se, že token zašifrovaná. Tento požadavek by jinak znemožňovaly přístup pro klientské aplikace, které můžete zobrazit přístupové tokeny.)
+> Klientská aplikace požádala o token nosiče na koncový bod Microsoft Identity Platform *pro webové rozhraní API*. Webové rozhraní API je jediná aplikace, která by měla ověřit token a zobrazit deklarace identity, které obsahuje. Klientské aplikace by se nikdy nepokusily kontrolovat deklarace identity v tokenech. (Webové rozhraní API může v budoucnu vyžadovat, aby byl token zašifrovaný. Tento požadavek by bránil přístupu pro klientské aplikace, které mohou zobrazit přístupové tokeny.)
 
 ## <a name="jwtbearer-configuration"></a>Konfigurace JwtBearer
 
@@ -89,28 +89,28 @@ Tato část popisuje, jak nakonfigurovat nosný token.
 }
 ```
 
-### <a name="code-initialization"></a>Inicializační kód
+### <a name="code-initialization"></a>Inicializace kódu
 
-Když je aplikace volá na akce kontroleru, který obsahuje `[Authorize]` atribut, ASP.NET/ASP.NET Core zabývá nosného tokenu v autorizační hlavičce požadavku volání a extrahuje přístupový token. Token, který je předán JwtBearer middlewaru, který volá IdentityModel rozšíření společnosti Microsoft pro .NET.
+Když se aplikace zavolá na akci kontroleru, která obsahuje `[Authorize]` atribut, ASP.NET/ASP.NET Core vyhledá nosný token v autorizační hlavičce žádosti o volání a extrahuje přístupový token. Token se pak přesměruje do middlewaru JwtBearer, který volá rozšíření Microsoft IdentityModel pro .NET.
 
-V ASP.NET Core je tento middleware inicializován v souboru Startup.cs:
+V ASP.NET Core se tento middleware Inicializuje v souboru Startup.cs:
 
 ```CSharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 ```
 
-Middleware přidává do webového rozhraní API tento pokyn:
+Middleware se do webového rozhraní API přidá pomocí této instrukce:
 
 ```CSharp
  services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
- Šablony ASP.NET Core v současné době vytvářet webové rozhraní API, která přihlášení Azure Active Directory (Azure AD) u uživatelů v rámci vaší organizace nebo všechny organizace, ne osobní účty. Ale můžete snadno změnit jejich použití koncového bodu Microsoft identity platform tak, že přidáte tento kód do souboru Startup.cs:
+ V současné době šablony ASP.NET Core vytvářejí webová rozhraní API Azure Active Directory (Azure AD), která přihlašuje uživatele v rámci vaší organizace nebo v jakékoli organizaci, nikoli s osobními účty. Ale můžete je snadno změnit na použití koncového bodu Microsoft Identity Platform přidáním tohoto kódu do souboru Startup.cs:
 
 ```CSharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
 {
-    // This is a Microsoft identity platform v2.0 web API.
+    // This is a Microsoft identity platform web API.
     options.Authority += "/v2.0";
 
     // The web API accepts as audiences both the Client ID (options.Audience) and api://{ClientID}.
@@ -129,34 +129,34 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 ## <a name="token-validation"></a>Ověření tokenu
 
-JwtBearer middlewaru, jako je middleware OpenID Connect ve službě web apps, je přesměrován podle `TokenValidationParameters` token ověří. Token se dešifrují (podle potřeby), deklarace identity se extrahují a podpis se neověřuje. Middleware pak ověří token kontrolou pro tato data:
+Middleware JwtBearer, jako je middleware OpenID Connect ve službě Web Apps, je `TokenValidationParameters` směrována nástrojem k ověření tokenu. Token se dešifruje (podle potřeby), deklarace se extrahují a ověří se podpis. Middleware potom ověří token tím, že zkontroluje tato data:
 
-- Je určená pro webové rozhraní API (cílová skupina).
-- Byl vydán pro aplikaci, která má povoleno volat webové rozhraní API (sub).
-- Byl vydán token služby důvěryhodné zabezpečení (STS) (issuer).
-- Svého životního cyklu je v rozsahu (vypršení platnosti).
-- Nebylo manipulováno se (podpis).
+- Cílí na webové rozhraní API (cílovou skupinu).
+- Vystavila se pro aplikaci, která má povoleno volání webového rozhraní API (sub).
+- Vystavila se službou STS (Trusted Security token Service) (Issuer).
+- Jeho životnost je v rozsahu (vypršení platnosti).
+- Nebylo manipulováno s (podpis).
 
-Také může být speciální ověření. Například je možné ověřit, že jsou důvěryhodná podpisové klíče (po vložení do tokenu) a že není se odesílal token. A konečně některé protokoly vyžadují konkrétní ověření.
+Může se také jednat o zvláštní ověřování. Například je možné ověřit, zda jsou podpisové klíče (pokud jsou vložené v tokenu) důvěryhodné a že token nebude znovu přehráván. Některé protokoly nakonec vyžadují konkrétní ověření.
 
 ### <a name="validators"></a>Validátory
 
-Ověřovací kroky se zaznamenají v validátory, které jsou všechny na [IdentityModel rozšíření společnosti Microsoft pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) open source knihovny, do jednoho zdrojového souboru: [Microsoft.IdentityModel.Tokens/Validators.cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
+Kroky ověření jsou zachyceny ve validátorech, které jsou všechny v [rozšíření Microsoft IdentityModel Extensions for .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) Open Source Library, v jednom zdrojovém souboru: [Microsoft. IdentityModel. Tokens/validátors. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
 
-Validátory jsou popsané v této tabulce:
+Validátory jsou popsány v této tabulce:
 
-| Program pro ověření | Popis |
+| Hodnocení | Popis |
 |---------|---------|
-| `ValidateAudience` | Zajišťuje, že token, který je pro aplikaci, která ověří token (pro mě). |
-| `ValidateIssuer` | Zajišťuje, že token, který byl vydán důvěryhodné služby tokenů zabezpečení (od uživatele, který je důvěryhodný). |
-| `ValidateIssuerSigningKey` | Zajišťuje ověřování tokenu vztahy důvěryhodnosti aplikace klíč, který se použil k podepsání token. (Kde klíče je vložená do tokenu zvláštní případ. Obvykle nevyžadováno.) |
-| `ValidateLifetime` | Zajišťuje, že je token platný stále (nebo již). Validátor ověří, zda se doba platnosti tokenu (`notbefore` a `expires` deklarace identity) je v dosahu. |
-| `ValidateSignature` | Zajišťuje, že token nebylo manipulováno. |
-| `ValidateTokenReplay` | Zajišťuje, že token, který není znovu přehrát. (Zvláštní případ pro některé jednorázově používající protokoly). |
+| `ValidateAudience` | Ověří, jestli je token pro aplikaci, která ověřuje token (pro mě). |
+| `ValidateIssuer` | Zajišťuje, že token byl vydán důvěryhodnou službou STS (od někoho, kdo důvěřuje). |
+| `ValidateIssuerSigningKey` | Zajistí, že aplikace ověřující token důvěřuje klíči, který se použil k podepsání tokenu. (Zvláštní případ, kdy je klíč vložený do tokenu. Obvykle není nutné.) |
+| `ValidateLifetime` | Zajišťuje, že token je stále (nebo již) platný. Validátor kontroluje, zda je životnost tokenu (`notbefore` a `expires` deklarací identity) v rozsahu. |
+| `ValidateSignature` | Zaručí, že token nebyl zfalšován. |
+| `ValidateTokenReplay` | Zajistí, že token nebude znovu přehráván. (Zvláštní případ pro některé protokoly použití Jednorázová) |
 
-Validátory jsou všechny přidružené vlastnosti `TokenValidationParameters` třídy, se inicializuje z konfigurace ASP.NET/ASP.NET Core. Ve většině případů nebudete muset změnit parametry. Existuje jedna výjimka, pro aplikace, které nejsou jeden tenantů. (To znamená, webové aplikace, které akceptovat uživatele z jakékoli organizace nebo osobní účty Microsoft.) V takovém případě musí být Vystavitel ověřen.
+Validátory jsou všechny přidruženy k vlastnostem `TokenValidationParameters` třídy, samy inicializované z konfigurace ASP.NET/ASP.NET Core. Ve většině případů nebudete muset parametry měnit. Pro aplikace, které nejsou jeden tenant, existuje jedna výjimka. (Tj. webové aplikace, které přijímají uživatele z jakékoli organizace nebo z osobních účtů Microsoft.) V takovém případě musí být Vystavitel ověřený.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Ověření oborů a role aplikace ve vašem kódu](scenario-protected-web-api-verification-scope-app-roles.md)
+> [Ověření oborů a rolí aplikací v kódu](scenario-protected-web-api-verification-scope-app-roles.md)

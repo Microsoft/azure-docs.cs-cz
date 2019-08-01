@@ -1,78 +1,78 @@
 ---
-title: Zakázat omezení úložiště a experimentovat latence díky vstupní a výstupní adresáře
-description: V tomto článku zjistíte, kam chcete uložit experiment vstupních souborů a kde k zápisu výstupních souborů zabránit chybám omezení úložiště a experimentovat latence.
+title: Prevence omezení úložiště a latence experimentů se vstupními a výstupními adresáři
+description: V tomto článku se naučíte, kam uložit vstupní soubory experimentu a kde zapisujete výstupní soubory, aby se předešlo chybám omezení úložiště a latenci experimentu.
 services: machine-learning
 author: rastala
 ms.author: roastala
 manager: danielsc
-ms.reviewer: jmartens, jasonwhowell, mldocs
+ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 05/28/2019
-ms.openlocfilehash: 1f9199b5bae0c82cd46750d8ef5522a0d3579671
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: b0e0ef93b2782cd44eca3dc6023a7eb556cd3245
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595282"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618388"
 ---
-# <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Je-li uložit a zapisovat soubory pro experimenty Azure Machine Learning
+# <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Kam ukládat a zapisovat soubory pro Azure Machine Learning experimenty
 
-V tomto článku zjistíte, kam chcete uložit vstupních souborů a kde má být zapsán výstupní soubory ze své experimenty zabránit v ukládání omezení chyb a experimentovat latence.
+V tomto článku se dozvíte, kam uložit vstupní soubory a kde zapisovat výstupní soubory z experimentů, abyste zabránili chybám limitu úložiště a latenci experimentů.
 
-Při spouštění školení spuštění [cílové výpočetní prostředí](how-to-set-up-training-targets.md), jsou izolované od mimo prostředí. Účelem tohoto návrhu je zajistit reprodukovatelnost a přenositelnost experimentu. Pokud dvakrát spusťte stejný skript ve stejném nebo jiném cílové výpočetní prostředí, se zobrazí stejné výsledky. S tímto návrhem lze považovat cílových výpočetních prostředí jako bezstavové výpočetní prostředky, mají spřažení s úlohami, které jsou spuštěny po jejich dokončení.
+Při spouštění školicích běhů na [cílovém výpočetním cíli](how-to-set-up-training-targets.md)jsou izolované od vnějších prostředí. Účelem tohoto návrhu je zajištění reprodukovatelnosti a přenositelnosti experimentu. Pokud stejný skript spustíte dvakrát, na stejném nebo jiném cílovém výpočetním cíli, dostanete stejné výsledky. S tímto návrhem můžete nakládat s výpočetními cíli jako s výpočetními prostředky bez stavů, přičemž každý z nich nemá žádné spřažení s úlohami, které jsou spuštěny po jejich dokončení.
 
-## <a name="where-to-save-input-files"></a>Kam chcete uložit vstupních souborů.
+## <a name="where-to-save-input-files"></a>Kam ukládat vstupní soubory
 
-Než zahájíte experimentu na cílové výpočetní prostředí nebo na místním počítači, musíte zajistit, že jsou k dispozici k této cílové výpočetní prostředí, jako je například závislosti souborů a datových souborů, které váš kód je potřeba spustit potřebné soubory.
+Předtím, než můžete zahájit experiment na výpočetním cíli nebo na místním počítači, je nutné zajistit, aby byly k dispozici nezbytné soubory pro tento výpočetní cíl, například soubory závislosti a datové soubory, které váš kód potřebuje ke spuštění.
 
-Azure Machine Learning běží trénovací skripty zkopírováním složce celý skript do cílové výpočetní kontext a potom pořídí snímek. Limit úložiště pro snímky experimentu je 300 MB a/nebo soubory 2000.
+Azure Machine Learning spustí školicí skripty zkopírováním celé složky skriptu do cílového výpočetního kontextu a pak pořídí snímek. Limit úložiště pro experimenty snímků je 300 MB nebo 2000 souborů.
 
 Z tohoto důvodu doporučujeme:
 
-* **Ukládání souborů do Azure Machine Learning [datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).** To brání problémy s latencí experiment a má své výhody přístup k datům z cílové vzdálené výpočetní prostředí, což znamená, že ověřování a připojení jsou spravované službou Azure Machine Learning. Další informace o určení datového úložiště jako zdrojový adresář a nahrávání souborů do vašeho úložiště dat v [přístup k datům z vašich úložišť](how-to-access-data.md) článku.
+* **Soubory se ukládají do [úložiště dat](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)Azure Machine Learning.** Tím zabráníte problémům s latencí experimentů a máte výhody přístupu k datům ze vzdáleného výpočetního cíle, což znamená, že ověřování a připojování jsou spravovány službou Azure Machine Learning. Přečtěte si další informace o zadávání úložiště dat jako zdrojového adresáře a nahrání souborů do úložiště dat v článku [přístup k datům z vašich úložišť dat](how-to-access-data.md) .
 
-* **Pokud potřebujete pouze několik datových souborů a závislostí, skripty a nemůžete použít úložiště dat,** soubory umístit do stejného adresáře složky jako cvičný skript. Vyberte tuto složku jako vaše `source_directory` přímo ve vašem skriptu školení, nebo v kódu, který volá cvičný skript.
+* **Pokud potřebujete jenom několik datových souborů a skriptů závislostí a nemůžete použít úložiště dat,** umístěte soubory do složky do stejného adresáře jako školicí skript. Tuto složku `source_directory` zadejte přímo ve školicím skriptu nebo v kódu, který volá váš školicí skript.
 
 <a name="limits"></a>
 
-### <a name="storage-limits-of-experiment-snapshots"></a>Omezení úložiště snímků experimentu
+### <a name="storage-limits-of-experiment-snapshots"></a>Omezení pro úložiště snímků experimentů
 
-Azure Machine Learning pro experimenty, automaticky provede experiment snímek založené na adresáři, který můžete navrhovat, když nakonfigurujete spuštění kódu. To má celkový limit 300 MB a/nebo soubory 2000. Pokud překročíte tento limit, se zobrazí následující chyba:
+V případě experimentů Azure Machine Learning automaticky provede experiment svého kódu na základě adresáře, který navrhujete při konfiguraci běhu. To má celkový limit 300 MB a/nebo 2000 souborů. Pokud tento limit překročíte, zobrazí se následující chyba:
 
 ```Python
 While attempting to take snapshot of .
 Your total snapshot size exceeds the limit of 300.0 MB
 ```
 
-Chcete-li vyřešit tuto chybu, ukládat soubory experimentu na datového úložiště. Pokud nemůžete použít úložiště dat, následující tabulka nabízí možná alternativní řešení.
+Chcete-li tuto chybu vyřešit, uložte soubory experimentů do úložiště dat. Pokud nemůžete použít úložiště dat, níže uvedená tabulka nabízí možná alternativní řešení.
 
-Experiment&nbsp;popis|Limit řešení úložiště
+Popis&nbsp;experimentu|Řešení omezení úložiště
 ---|---
-Méně než 2000 soubory a úložiště dat nelze použít.| Přepsat omezení velikosti snímku s <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> To může trvat několik minut v závislosti na počtu a velikosti souborů.
-Musíte použít adresář specifického skriptu| Ujistěte se, `.amlignore` soubor při vyloučení souborů z experimentu snímek, které nejsou součástí zdrojového kódu. Přidání názvů souborů pro `.amlignore` souboru a jeho následné uložení do stejného adresáře jako cvičný skript. `.amlignore` Soubor používá stejný [syntaxi a vzory](https://git-scm.com/docs/gitignore) jako `.gitignore` souboru.
-Kanál|Používat různé podadresář pro každý krok
-Poznámkové bloky Jupyter| Vytvoření `.amlignore` souboru nebo přesunout v poznámkovém bloku do podadresáře, nový, prázdný, a znovu spusťte váš kód.
+Méně než 2000 souborů & nemůže používat úložiště dat| Přepsat omezení velikosti snímku pomocí <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> To může trvat několik minut v závislosti na počtu a velikosti souborů.
+Musí používat konkrétní adresář skriptu.| `.amlignore` Vytvořte soubor pro vyloučení souborů ze snímku experimentu, který není součástí zdrojového kódu. Přidejte do `.amlignore` souboru názvy souborů a umístěte je do stejného adresáře jako školicí skript. Soubor používá stejnou `.gitignore` [syntaxi a vzory](https://git-scm.com/docs/gitignore) jako soubor. `.amlignore`
+Kanál|Pro každý krok použijte jiný podadresář
+Poznámkové bloky Jupyter| `.amlignore` Vytvořte soubor nebo přesuňte svůj Poznámkový blok do nového, prázdného podadresáře a spusťte svůj kód znovu.
 
-## <a name="where-to-write-files"></a>Kam chcete zapisovat soubory
+## <a name="where-to-write-files"></a>Kam zapisovat soubory
 
-Z důvodu izolace školení experimenty nejsou nutně trvalé změny souborů, ke kterým dochází při spuštění mimo prostředí. Pokud váš skript upraví soubory místní compute, nejsou trvalé změny pro další spuštění experimentu a jejich nejsou šířeny zpět do klientského počítače automaticky. Změny provedené při prvním pokusu spuštění proto nemáte a soubor by neměl mít vliv na ty za sekundu.
+Vzhledem k izolaci experimentů při výuce se změny souborů, ke kterým dochází během spuštění, nemusí nutně uchovávat mimo vaše prostředí. Pokud váš skript upraví soubory, které jsou lokální na výpočetní výkon, změny se neukládají pro další spuštění experimentu a nešíří se automaticky zpátky do klientského počítače. Proto se změny provedené během prvního experimentu neprojeví a neměla by mít vliv na ty v druhém.
 
-Při zápisu změn, doporučujeme zapisování souborů do úložiště dat Azure Machine Learning. Zobrazit [přístup k datům z vašich úložišť](how-to-access-data.md).
+Při psaní změn doporučujeme zapisovat soubory do úložiště dat Azure Machine Learning. Podívejte [se na přístup k datům z úložišť dat](how-to-access-data.md).
 
-Pokud nevyžadujete úložiště dat, zapisovat soubory `./outputs` a/nebo `./logs` složky.
+Pokud nepotřebujete úložiště dat, zapište soubory do `./outputs` složky a/nebo. `./logs`
 
 >[!Important]
-> Dvě složky *výstupy* a *protokoly*, zvláštní zacházení technologii Azure Machine Learning. Během cvičení, při psaní soubory`./outputs` a`./logs` složky, soubory se automaticky odesílat do vaše historie spuštění, abyste měli přístup k nim po dokončení spuštění.
+> Dvě složky, *výstupy* a *protokoly*dostanou zvláštní zacházení Azure Machine Learning. Když při výuce zapisujete soubory do`./outputs` složky`./logs` a, budou soubory automaticky nahrány do historie spuštění, takže k nim budete mít přístup, až se vaše spuštění dokončí.
 
-* **Pro výstup například zprávy o stavu nebo vyhodnocení výsledky** zapisovat soubory `./outputs` složku, takže jsou trvalé jako artefakty v historii spuštění. Mějte na paměti počet a velikost souborů, které jsou zapsány do složky, protože latence může dojít, pokud obsah jsou odeslány do historie spuštění. Pokud je latence žádný problém, zapisování souborů do úložiště dat se doporučuje.
+* **Pro výstup, jako jsou stavové zprávy nebo výsledky bodování,** zapište `./outputs` soubory do složky, aby byly uchovány jako artefakty v historii spuštění. Je třeba mít na vědomí počet a velikost souborů zapsaných do této složky, protože při nahrávání obsahu do historie spuštění může dojít k latenci. Pokud je latence obavy, doporučuje se zapisovat soubory do úložiště dat.
 
-* **Uložte soubor písemné zaznamená jako protokoly historie spouštění** zapisovat soubory k `./logs` složky. Odeslání protokolů v reálném čase, takže tato metoda je vhodná pro streamování živých aktualizace ze vzdálené spuštění.
+* Pokud **Chcete uložit zapsaný soubor jako protokoly v historii spuštění,** zapište soubory do `./logs` složky. Protokoly se odesílají v reálném čase, takže tato metoda je vhodná pro streamování aktualizací za provozu ze vzdáleného spuštění.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [přístup k datům z vašich úložišť](how-to-access-data.md).
+* Přečtěte si další informace o [přístupu k datům z úložišť dat](how-to-access-data.md).
 
-* Další informace o [tom, jak nastavit školení cíle](how-to-set-up-training-targets.md).
+* Přečtěte si další informace o [tom, jak nastavit cíle školení](how-to-set-up-training-targets.md).

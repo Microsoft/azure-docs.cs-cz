@@ -1,6 +1,6 @@
 ---
-title: Soubory sady SDK Azure NetApp | Dokumentace Microsoftu
-description: Zobrazí seznam sad SDK nepodporuje soubory Azure NetApp.
+title: Sady SDK pro Azure NetApp Files | Microsoft Docs
+description: Uvádí sady SDK podporované nástrojem Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,28 +12,29 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 07/29/2019
 ms.author: b-juche
-ms.openlocfilehash: 44cacc388b8cb9977bdf36d4d1a86f8d15211608
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 499f9d14a20f665f545f5fdc3b31015cb57c193c
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957877"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667494"
 ---
 # <a name="azure-netapp-files-sdks"></a>Sady Azure NetApp Files SDK
 
-Tento článek obsahuje seznam sad SDK nepodporuje soubory Azure NetApp.
+V tomto článku jsou uvedené sady SDK podporované nástrojem Azure NetApp Files.
 
-## <a name="supported-sdks"></a>Podporovaných sad SDK 
+## <a name="supported-sdks"></a>Podporované sady SDK 
 
-Následující tabulka obsahuje seznam podporovaných sad SDK.  Podrobnosti o podporovaných sad SDK na jejich umístění publikované najdete na webu GitHub.  
+V následující tabulce jsou uvedeny podporované sady SDK.  Podrobnosti o podporovaných sadách SDK najdete ve svých publikovaných umístěních v GitHubu.  
 
-|    Jazyk    |    Sada SDK publikované umístění    |
+|    Jazyk    |    Publikované umístění sady SDK    |
 |------------------|--------------------------------------------------------------------------------------------|
-|    [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/)    |    `https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/NetApp`    |
-|    [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-mgmt-netapp)    |    `https://github.com/Azure/azure-sdk-for-python/tree/master/azure-mgmt-netapp`    |
+|    [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/netapp)    |    `https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/netapp`    |
+|    [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/netapp)    |    `https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/netapp`    |
 |    [Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)    |    `https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp`       |
+|    [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/netapp/resource-manager) | `https://github.com/Azure/azure-sdk-for-java/tree/master/netapp/resource-manager` |
 |    [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp)    |    `https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp`    |
 |    [Ruby](https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp)    |    `https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp`    |
 

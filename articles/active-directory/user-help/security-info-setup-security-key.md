@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d2f06b054e433c0320019548c56539d102beaad
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 25ac894db42b2b5ee2612e2e3b2906bc2bffcc4c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386496"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717384"
 ---
 # <a name="set-up-security-info-to-use-a-security-key-preview"></a>Nastavení bezpečnostních údajů pro použití bezpečnostního klíče (Preview)
 
@@ -30,26 +30,26 @@ Klíče zabezpečení můžete použít jako metodu přihlašování s neplatný
 
 ## <a name="what-is-a-security-key"></a>Co je bezpečnostní klíč?
 
-V současné době podporujeme několik návrhů a poskytovatelů klíčů zabezpečení pomocí metody ověřování pomocí služby [Fast identity online (Fido)](https://fidoalliance.org/fido2/) (FIDO2). Tato metoda umožňuje přihlásit se ke svému pracovnímu nebo školnímu účtu jednou a získat tak přístup ke všem cloudovým prostředkům vaší organizace a podporovaným prohlížečům.
+V současné době podporujeme několik návrhů a poskytovatelů bezpečnostních klíčů pomocí ověřovacích protokolů [Fido (Fast identity online)](https://fidoalliance.org/fido2/) (FIDO2) s nehesly. Tyto klíče vám umožní přihlásit se ke svému pracovnímu nebo školnímu účtu a získat přístup k cloudovým prostředkům vaší organizace, když jsou na podporovaném zařízení a webovém prohlížeči.
 
 Správce nebo vaše organizace vám poskytne klíč zabezpečení, pokud to vyžadují pro svůj pracovní nebo školní účet. Existují různé typy zabezpečovacích klíčů, které můžete použít, například klíč USB, který se připojuje k vašemu zařízení, nebo klíč NFC, na kterém klepnete na čtečku NFC. Další informace o klíči zabezpečení, včetně toho, co je třeba zadat, najdete v dokumentaci od výrobce.
 
 > [!Note]
-> Pokud nemůžete použít bezpečnostní klíč FIDO2, můžete použít i jiné metody ověřování bez hesla, jako je například aplikace Microsoft Authenticator nebo Windows Hello. Další informace o aplikaci Microsoft Authenticator najdete v tématu [co je Microsoft Authenticator aplikace?](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview). Další informace o Windows Hello najdete v tématu [Přehled Windows Hello](https://www.microsoft.com/windows/windows-hello).
+> Pokud nemůžete použít bezpečnostní klíč FIDO2, můžete použít i jiné metody ověřování bez hesla, jako je například aplikace Microsoft Authenticator nebo Windows Hello. Další informace o aplikaci Microsoft Authenticator najdete v tématu [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md). Další informace o Windows Hello najdete v tématu [Přehled Windows Hello](https://www.microsoft.com/windows/windows-hello).
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Než začnete registrovat svůj bezpečnostní klíč, poklikejte na toto:
+Předtím, než budete moci zaregistrovat klíč zabezpečení, musí být splněny následující podmínky:
 
 - Správce tuto funkci zapnul pro použití v rámci vaší organizace.
 
-- Jste na zařízení, na kterém běží aspoň Windows 10, verze 1903 a Microsoft Edge v prohlížeči.
+- Jste na zařízení s Windows 10 Květen 2019 Update a pomocí podporovaného prohlížeče.
 
-- Obdrželi jste fyzický bezpečnostní klíč od svého správce nebo vaší organizace. Bezpečnostní klíč musí být FIDO2 i Microsoft. Pokud máte nějaké dotazy týkající se vašeho bezpečnostního klíče a jestli je kompatibilní, obraťte se na oddělení technické podpory vaší organizace.
+- Máte fyzický bezpečnostní klíč schválený vaším správcem nebo vaší organizací. Bezpečnostní klíč musí být FIDO2 i Microsoft. Pokud máte nějaké dotazy týkající se vašeho bezpečnostního klíče a jestli je kompatibilní, obraťte se na oddělení technické podpory vaší organizace.
 
 ## <a name="register-your-security-key"></a>Zaregistrovat klíč zabezpečení
 
-Před přihlášením k pracovnímu nebo školnímu účtu pomocí klíče musíte připravit svůj bezpečnostní klíč pro práci se systémem Windows a jedinečným kódem PIN.
+Abyste se mohli přihlásit ke svému pracovnímu nebo školnímu účtu pomocí klíče, musíte si vytvořit svůj bezpečnostní klíč a dát mu jedinečný kód PIN. K vašemu účtu můžete mít zaregistrovaných až 10 klíčů. 
 
 1. Pokud jste to ještě neudělali https://myprofile.microsoft.com , klikněte na stránku **můj profil** a přihlaste se.
 
@@ -96,7 +96,7 @@ Před přihlášením k pracovnímu nebo školnímu účtu pomocí klíče musí
 
 ## <a name="delete-a-security-key-from-your-security-info"></a>Odstraní bezpečnostní klíč z bezpečnostních údajů.
 
-Pokud už nechcete používat svůj bezpečnostní klíč, můžete klíč odstranit z bezpečnostních údajů. I když se tím zabrání použití klíče zabezpečení pro váš pracovní nebo školní účet, klíč zabezpečení bude dál ukládat vaše data a informace o přihlašovacích údajích. Chcete-li odstranit data a informace o přihlašovacích údajích z samotného klíče zabezpečení, je nutné postupovat podle pokynů v části [resetování bezpečnostního klíče kompatibilního](#reset-your-security-key) s Microsoftem v tomto článku.
+Pokud přestanete nebo už nechcete používat bezpečnostní klíč, můžete klíč odstranit z bezpečnostních údajů. I když se tím zabrání použití klíče zabezpečení pro váš pracovní nebo školní účet, klíč zabezpečení bude dál ukládat vaše data a informace o přihlašovacích údajích. Chcete-li odstranit data a informace o přihlašovacích údajích z samotného klíče zabezpečení, je nutné postupovat podle pokynů v části [resetování bezpečnostního klíče kompatibilního](#reset-your-security-key) s Microsoftem v tomto článku.
 
 1. Vyberte odkaz **Odstranit** z bezpečnostního klíče, který chcete odebrat.
 
@@ -105,7 +105,7 @@ Pokud už nechcete používat svůj bezpečnostní klíč, můžete klíč odstr
     Bezpečnostní klíč se odstraní a už ho nebude možné používat pro přihlášení k pracovnímu nebo školnímu účtu.
 
 >[!Important]
->Pokud jste tento klíč zabezpečení odstranili omylem, budete ho muset zaregistrovat znovu podle pokynů v části [jak zaregistrovat klíč zabezpečení](#register-your-security-key) v tomto článku.
+>Pokud bezpečnostní klíč odstraníte omylem, můžete ho zaregistrovat znovu podle pokynů v části [jak zaregistrovat klíč zabezpečení](#register-your-security-key) v tomto článku.
 
 ## <a name="manage-your-security-key-settings-from-windows-settings"></a>Správa nastavení klíče zabezpečení z nastavení systému Windows
 
@@ -138,29 +138,19 @@ Pro svůj bezpečnostní klíč můžete vytvořit nový PIN klíč pro zabezpe�
 
 1. Otevřete aplikaci nastavení Windows, vyberte **účty**, vyberte **Možnosti přihlášení**, vyberte **klíč zabezpečení**a pak vyberte **Spravovat**.
 
-2. Vložte svůj bezpečnostní klíč do portu USB nebo klepnutím na čtečku NFC ověřte svoji identitu. 5
+2. Vložte svůj bezpečnostní klíč do portu USB nebo klepnutím na čtečku NFC ověřte svoji identitu.
 3. Vyberte **Přidat** z oblasti **PIN kód bezpečnostního klíče** , zadejte a potvrďte nový PIN klíč zabezpečení a pak vyberte **OK**.
 
-    Bezpečnostní klíč se aktualizuje pomocí nového PIN klíče zabezpečení, který se má použít u svého pracovního nebo školního účtu. Pokud se rozhodnete znovu změnit kód PIN, můžete vybrat tlačítko **změnit** . 6
+     Bezpečnostní klíč se aktualizuje pomocí nového PIN klíče zabezpečení, který se má použít u svého pracovního nebo školního účtu. Pokud se rozhodnete znovu změnit kód PIN, můžete vybrat tlačítko **změnit** .
 4. Kliknutím na **Zavřít** zavřete obrazovku **Správa** .
 
 ## <a name="additional-security-info-methods"></a>Další metody zabezpečení
 
-Máte k dispozici další možnosti, jak vaše organizace kontaktuje vaši identitu na základě toho, co se you're snaží. Mezi možnosti patří:
-
-- **Ověřovací aplikace** Stáhněte a použijte ověřovací aplikaci k získání oznámení o schválení nebo náhodně generovaného kódu schválení pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny k nastavení a používání aplikace Microsoft Authenticator najdete v tématu [Nastavení bezpečnostních údajů pro použití ověřovací aplikace](security-info-setup-auth-app.md).
-
-- **Text mobilního zařízení** Zadejte číslo mobilního zařízení a získejte text jako kód, který budete používat pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí textové zprávy (SMS), najdete v tématu [Nastavení bezpečnostních údajů pro použití zasílání textových zpráv (SMS)](security-info-setup-text-msg.md).
-
-- **Mobilní zařízení nebo pracovní telefonní hovor.** Zadejte číslo mobilního zařízení a získejte telefonní hovor pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny, jak ověřit identitu pomocí telefonního čísla, najdete v tématu [Nastavení bezpečnostních údajů pro použití telefonních hovorů](security-info-setup-phone-number.md).
-
-- **E-mailová adresa** Zadejte svou pracovní nebo školní e-mailovou adresu, abyste získali e-mail pro resetování hesla. Tato možnost není k dispozici pro dvoustupňové ověřování. Podrobné pokyny k nastavení e-mailu najdete v tématu [Nastavení bezpečnostních údajů pro použití e-mailu](security-info-setup-email.md).
-
-- **Bezpečnostní otázky.** Odpovězte na některé bezpečnostní otázky, které vytvořil správce vaší organizace. Tato možnost je k dispozici pouze pro resetování hesla a nikoli pro dvoustupňové ověřování. Podrobné pokyny k nastavení bezpečnostních otázek najdete v článku [Nastavení bezpečnostních informací pro použití bezpečnostních otázek](security-info-setup-questions.md) .
+Aby bylo možné zaregistrovat klíč zabezpečení, musíte mít zaregistrovanou alespoň jednu metodu dalšího ověření zabezpečení. Další informace najdete v [části Přehled](security-info-add-update-methods-overview.md) . 
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o metodách ověřování bez hesla najdete na [webu Azure AD, který začíná ve verzi Public Preview klíčů zabezpečení FIDO2, povolení](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogu pro přihlášení bez hesla nebo Přečtěte si článek [co je Microsoft Authenticator aplikace?](https://docs.microsoft.com/azure/active-directory/user-help8user-help-auth-app-overview) [. ](https://www.microsoft.com/windows/windows-hello)Články s přehledem Windows Hello.
+- Další informace o metodách ověřování bez hesla najdete na [webu Azure AD, který začíná ve verzi Public Preview klíčů zabezpečení FIDO2, povolení](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogu pro přihlášení bez hesla nebo Přečtěte si článek [co je Microsoft Authenticator aplikace?](user-help-auth-app-overview.md) [. ](https://www.microsoft.com/windows/windows-hello)Články s přehledem Windows Hello.
 
 - Podrobnější informace o [bezpečnostních klíčích kompatibilních se společností Microsoft](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 

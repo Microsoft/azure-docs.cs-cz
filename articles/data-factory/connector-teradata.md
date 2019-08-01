@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z Teradata pomocí Azure Data Factory | Dokumentace Microsoftu
-description: Další informace o konektoru Teradata služby Data Factory, která umožňuje kopírování dat z databáze Teradata do úložišť dat podporovaných službou Data Factory jako jímky.
+title: Kopírování dat z Teradata pomocí Azure Data Factory | Microsoft Docs
+description: Konektor Teradata služby Data Factory umožňuje kopírovat data z databáze Teradata do úložišť dat, která aplikace Data Factory podporuje jako jímky.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,60 +12,60 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 63f28c8b6eaceed12e1f76e9c0c5984e3b63b500
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 401a2e95c90602e7814353401c290e177ec3ce02
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561434"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640263"
 ---
-# <a name="copy-data-from-teradata-using-azure-data-factory"></a>Kopírování dat z Teradata pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+# <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Kopírování dat z Teradata pomocí Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 >
 > * [Verze 1](v1/data-factory-onprem-teradata-connector.md)
 > * [Aktuální verze](connector-teradata.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z databáze Teradata. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z databáze Teradata. Sestaví se na [Přehled aktivit kopírování](copy-activity-overview.md).
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
-Kopírování dat z databáze Teradata do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data z databáze Teradata můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
 Konkrétně tento konektor Teradata podporuje:
 
-- Teradata **verze 14.10 15.0, 15.10, 16.0, 16.10 a 16.20**.
-- Kopírování dat pomocí **základní** nebo **Windows** ověřování.
-- Paralelní kopírování ze zdroje Teradata. Zobrazit [paralelní kopírování z Teradata](#parallel-copy-from-teradata) část s podrobnostmi.
+- Teradata **verze 14,10, 15,0, 15,10, 16,0, 16,10 a 16,20**.
+- Kopírování dat pomocí **základního** ověřování nebo ověřování **systému Windows** .
+- Paralelní kopírování ze zdroje Teradata. Podrobnosti najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) .
 
 > [!NOTE]
 >
-> Azure Data Factory upgradovat konektoru Teradata od v3.18 modul Integration Runtime, které možnost integrované ovladač ODBC a nabízí možnosti flexibilního připojení i out-of-box paralelní kopírování pro zvýšení výkonu. Všechny stávající úlohy pomocí konektoru předchozí Teradata možnost zprostředkovatelem dat .NET pro Teradata je stále podporovány jako-se, když byly navrženy používat novou do budoucna. Upozorňujeme, že nová cesta vyžaduje jinou sadu propojené služby, datové sady/kopie zdroje. Na podrobnosti o konfiguraci najdete v příslušné části.
+> Po vydání místního prostředí Integration runtime v 3.18 Azure Data Factory upgradován konektor Teradata. Všechna existující zatížení, která používají předchozí konektor Teradata, jsou stále podporována. Pro nové úlohy je ale vhodné použít nový. Všimněte si, že nová cesta vyžaduje jinou sadu propojených služeb, datových sad a zdrojů kopírování. Podrobnosti o konfiguraci najdete v příslušných oddílech.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud vaše Teradata není veřejně přístupná, budete muset nastavit modul Integration Runtime. Další informace o modulu integration runtime najdete v tématu [modul Integration Runtime](create-self-hosted-integration-runtime.md). Prostředí Integration Runtime poskytuje integrované ovladače Teradata od verze 3.18, proto není nutné ručně nainstalovat všechny ovladače. Vyžaduje ovladač "Visual C++ Redistributable 2012 s aktualizací 4" na počítači pro místní prostředí IR stahování [tady](https://www.microsoft.com/en-sg/download/details.aspx?id=30679) Pokud ještě nemáte nainstalovaný.
+Pokud vaše Teradata není veřejně přístupný, musíte nastavit [prostředí Integration runtime](create-self-hosted-integration-runtime.md)v místním prostředí. Modul runtime integrace poskytuje integrovaný ovladač Teradata od verze 3,18. Nemusíte ručně instalovat žádný ovladač. Ovladač vyžaduje "Visual C++ Redistributable 2012 Update 4" na počítači místního prostředí Integration runtime. Pokud ho ještě nemáte nainstalovanou, Stáhněte si ho odsud [.](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)
 
-Pro místní prostředí IR verze nižší než 3.18, je potřeba nainstalovat [.NET Data Provider pro Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) verzi 14 nebo vyšší na počítači prostředí Integration Runtime. 
+Pro všechny verze prostředí Integration runtime v místním prostředí, která je starší než 3,18, nainstalujte na počítači prostředí Integration runtime [rozhraní .net zprostředkovatel dat pro Teradata](https://go.microsoft.com/fwlink/?LinkId=278886), verze 14 nebo novější. 
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor Teradata.
+Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro konektor Teradata.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro Teradata propojené služby jsou podporovány následující vlastnosti:
+Propojená služba Teradata podporuje následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Teradata** | Ano |
-| connectionString | Určuje informace potřebné pro připojení k instanci databáze Teradata. Podívejte se na následující ukázky.<br/>Heslo můžete také vložit do služby Azure Key Vault a o přijetí změn `password` konfigurace z připojovacího řetězce. Odkazovat na [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
-| username jméno | Zadejte uživatelské jméno pro připojení k databázi Teradata. Platí při použití ověřování Windows. | Ne |
-| password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete také nastavit [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). <br>Použije při použití ověřování Windows, nebo odkazující na hesla ve službě Key Vault pro základní ověřování. | Ne |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
+| type | Vlastnost Type musí být nastavena na **Teradata**. | Ano |
+| connectionString | Určuje informace potřebné pro připojení k instanci databáze Teradata. Přečtěte si následující ukázky.<br/>Můžete také vložit heslo do Azure Key Vault a z připojovacího řetězce si `password` vyžádat konfiguraci. Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) . | Ano |
+| username | Zadejte uživatelské jméno pro připojení k databázi Teradata. Platí při použití ověřování systému Windows. | Ne |
+| password | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete také zvolit odkaz na [tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). <br>Platí při použití ověřování systému Windows nebo odkazování na heslo v Key Vault pro základní ověřování. | Ne |
+| connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Vyžaduje se místní prostředí Integration runtime, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
 
-**Příklad: použití základního ověřování**
+**Příklad použití základního ověřování**
 
 ```json
 {
@@ -83,7 +83,7 @@ Pro Teradata propojené služby jsou podporovány následující vlastnosti:
 }
 ```
 
-**Příklad: použití ověřování Windows**
+**Příklad použití ověřování systému Windows**
 
 ```json
 {
@@ -105,9 +105,9 @@ Pro Teradata propojené služby jsou podporovány následující vlastnosti:
 
 > [!NOTE]
 >
-> Pokud používáte Teradata možnost propojenou službu .NET Data Provider pro Teradata spolu s produktem následující datová část, je stále podporovány jako-se, když byly navrženy používat novou do budoucna.
+> Následující datová část je stále podporována. Ale dál byste měli použít nový.
 
-**Předchozí datové části:**
+**Předchozí datová část:**
 
 ```json
 {
@@ -133,13 +133,13 @@ Pro Teradata propojené služby jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností podporovaných datovou sadu Teradata.
+V této části najdete seznam vlastností podporovaných datovou sadou Teradata. Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v tématu [datové sady](concepts-datasets-linked-services.md).
 
-Ke zkopírování dat z Teradata, jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data z Teradata, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **TeradataTable** | Ano |
+| type | Vlastnost Type datové sady musí být nastavena na `TeradataTable`hodnotu. | Ano |
 | database | Název databáze Teradata. | Ne (když je zadán zdroj aktivity "dotaz") |
 | table | Název tabulky v databázi Teradata. | Ne (když je zadán zdroj aktivity "dotaz") |
 
@@ -161,9 +161,9 @@ Ke zkopírování dat z Teradata, jsou podporovány následující vlastnosti:
 
 > [!NOTE]
 >
-> Pokud jste používali datovou sadu typu "RelationalTable" následujícím způsobem, je stále podporovány jako-se, když byly navrženy používat novou do budoucna.
+> `RelationalTable`typ DataSet je stále podporován. Doporučujeme však použít novou datovou sadu.
 
-**Předchozí datové části:**
+**Předchozí datová část:**
 
 ```json
 {
@@ -181,31 +181,31 @@ Ke zkopírování dat z Teradata, jsou podporovány následující vlastnosti:
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem Teradata.
+V této části najdete seznam vlastností podporovaných zdrojem Teradata. Úplný seznam oddílů a vlastností dostupných pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md). 
 
-### <a name="teradata-as-source"></a>Teradata jako zdroj
+### <a name="teradata-as-a-source-type"></a>Teradata jako typ zdroje
 
 > [!TIP]
 >
-> Další informace z [paralelní kopírování z Teradata](#parallel-copy-from-teradata) část o tom, jak načíst data z efektivně pomocí dělení dat Teradata.
+> Chcete-li načíst data z Teradata efektivně pomocí dělení dat, přečtěte si část [paralelní kopírování z Teradata](#parallel-copy-from-teradata) .
 
-Ke zkopírování dat z Teradata, jsou podporovány následující vlastnosti v aktivitě kopírování **zdroj** části:
+Chcete-li kopírovat data z Teradata, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **TeradataSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`.<br>Když povolíte dělené zatížení, budete muset připojit odpovídající integrované oddílu parametry v dotazu. Podívejte se na příklady v [paralelní kopírování z Teradata](#parallel-copy-from-teradata) oddílu. | Ne (když je tabulka v datové sadě zadán) |
-| partitionOptions | Určuje data dělení možnosti používané k načtení dat z Teradata. <br>Povolit hodnoty jsou: **Žádný** (výchozí), **Hash** a **DynamicRange**.<br>Pokud je povolená možnost oddílu (ne ' None'), také nakonfigurujte **[ `parallelCopies` ](copy-activity-performance.md#parallel-copy)** nastavení aktivity kopírování, například jako 4, který určuje míru paralelní současně načíst data z Teradata databáze. | Ne |
-| partitionSettings | Zadejte skupinu nastavení pro dělení dat. <br>Použít, když je možnost rozdělení `None`. | Ne |
-| partitionColumnName | Zadejte název zdrojového sloupce **v typu celé číslo** , který se použije rozdělením rozsah pro paralelní kopírování. Pokud není zadán, bude primární klíč tabulky automaticky zjistil a použít jako sloupec oddílu. <br>Použít, když je možnost rozdělení `Hash` nebo `DynamicRange`. Pokud používáte dotaz pro načtení zdrojová data, připojit `?AdfHashPartitionCondition` nebo `?AdfRangePartitionColumnName` v klauzuli WHERE. Viz příklad v [paralelní kopírování z Teradata](#parallel-copy-from-teradata) oddílu. | Ne |
-| partitionUpperBound | Maximální hodnota sloupce oddílu mohli zkopírovat data. <br>Použít, když je možnost rozdělení `DynamicRange`. Pokud používáte dotaz pro načtení zdrojová data, připojit `?AdfRangePartitionUpbound` v klauzuli WHERE. Viz příklad v [paralelní kopírování z Teradata](#parallel-copy-from-teradata) oddílu. | Ne |
-| PartitionLowerBound | Minimální hodnota sloupce oddílu mohli zkopírovat data. <br>Použít, když je možnost rozdělení `DynamicRange`. Pokud používáte dotaz pro načtení zdrojová data, připojit `?AdfRangePartitionLowbound` v klauzuli WHERE. Viz příklad v [paralelní kopírování z Teradata](#parallel-copy-from-teradata) oddílu. | Ne |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavena na `TeradataSource`hodnotu. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"`.<br>Pokud povolíte rozdělené zatížení, musíte v dotazu připojit všechny odpovídající předdefinované parametry oddílu. Příklady najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | Ne (Pokud je zadaná tabulka v datové sadě) |
+| partitionOptions | Určuje možnosti dělení dat používané při načítání dat z Teradata. <br>Povolené hodnoty jsou: **Žádné** (výchozí), **hash** a **DynamicRange**.<br>Pokud je povolená možnost oddílu (tj. ne `None`), [`parallelCopies`](copy-activity-performance.md#parallel-copy) nakonfigurujte také nastavení aktivity kopírování. To určuje souběžný stupeň pro souběžné načítání dat z databáze Teradata. Můžete například nastavit hodnotu 4. | Ne |
+| partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud není `None`možnost oddílu. | Ne |
+| partitionColumnName | Zadejte název zdrojového sloupce **v typu Integer** , který bude použit pro vytváření oddílů rozsahu pro paralelní kopírování. Pokud není zadaný, primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition. <br>Použijte, pokud je `Hash` možnost oddílu nebo. `DynamicRange` Použijete-li dotaz k načtení zdrojových dat, vidlice `?AdfHashPartitionCondition` nebo `?AdfRangePartitionColumnName` klauzule WHERE. Viz příklad v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | Ne |
+| partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je `DynamicRange`možnost oddílu. Použijete-li dotaz k načtení zdrojových dat, `?AdfRangePartitionUpbound` zapojte v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | Ne |
+| PartitionLowerBound | Minimální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je `DynamicRange`parametr partition. Použijete-li dotaz k načtení zdrojových dat, `?AdfRangePartitionLowbound` zapojte v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Teradata](#parallel-copy-from-teradata) . | Ne |
 
 > [!NOTE]
 >
-> Pokud jste používali zdroj kopie zadejte "RelationalSource", je stále podporovány jako-se, ale nepodporuje novou integrovanou paralelně načtěte z Teradata (Možnosti oddílu). Byly navrženy pro použití tohoto nového objektu do budoucna.
+> `RelationalSource`typ kopie zdroje je stále podporován, ale nepodporuje nové integrované paralelní zatížení z Teradata (možnosti oddílu). Doporučujeme však použít novou datovou sadu.
 
-**Příklad: kopírování dat pomocí základního dotazu bez oddílů**
+**Příklad: kopírování dat pomocí základního dotazu bez oddílu**
 
 ```json
 "activities":[
@@ -239,21 +239,21 @@ Ke zkopírování dat z Teradata, jsou podporovány následující vlastnosti v 
 
 ## <a name="parallel-copy-from-teradata"></a>Paralelní kopírování z Teradata
 
-Data factory Teradata konektoru obsahuje integrované dělení ke zkopírování dat z Teradata paralelně s vynikajícím výkonem dat. Zjistíte, že možnosti dělení dat v aktivitě kopírování -> Teradata zdroje:
+Konektor Data Factory Teradata poskytuje integrované datové oddíly pro kopírování dat z Teradata paralelně. Možnosti dělení dat najdete ve **zdrojové** tabulce aktivity kopírování.
 
-![Možnosti oddílu](./media/connector-teradata/connector-teradata-partition-options.png)
+![Snímek obrazovky s možnostmi oddílů](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Když povolíte dělené kopírování, služby data factory spouští paralelní dotazy Teradata zdroj k načtení dat oddíly. Paralelní míra je nakonfigurovaná a ovládat **[ `parallelCopies` ](copy-activity-performance.md#parallel-copy)** nastavení aktivity kopírování. Například pokud nastavíte `parallelCopies` jako čtyři, současně vytvoří objekt pro vytváření dat a čtyři spouští dotazy založené na zadaný oddíl možnosti a nastavení, všechny části načítání dat z databáze Teradata.
+Pokud povolíte dělenou kopii, Data Factory spustí paralelní dotazy na zdroj Teradata pro načtení dat podle oddílů. Paralelní míra je řízena [`parallelCopies`](copy-activity-performance.md#parallel-copy) nastavením aktivity kopírování. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně generuje a spustí čtyři dotazy na základě zadané možnosti oddílu a nastavení. Každý dotaz načte část dat z databáze Teradata.
 
-Byly navrženy povolit paralelní kopírování s daty rozdělení do oddílů, zejména v případě, že načtete velké množství dat z databáze Teradata. Tady jsou navrhované konfigurace pro různé scénáře:
+Je vhodné povolit paralelní kopírování pomocí dělení dat, zejména při načítání velkého množství dat z databáze Teradata. Následují Doporučené konfigurace pro různé scénáře:
 
-| Scénář                                                     | Doporučené nastavení                                           |
+| Scénář                                                     | Navrhovaná nastavení                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Úplné načtení z velké tabulky                                   | **Možnost Rozdělit**: Hodnota hash. <br><br/>Během provádění data Factory automaticky rozpoznat sloupce PK, použít hodnotu hash proti nim a zkopíruje data oddíly. |
-| Načtení velkého objemu dat pomocí vlastního dotazu                 | **Možnost Rozdělit**: Hodnota hash.<br>**Dotaz**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`.<br>**Sloupec oddílu**: Zadejte sloupec použitý pro oddíl použít hodnotu hash. Pokud není zadán, ADF automaticky zjistí PK sloupce tabulky, ve které jste zadali v datové sadě Teradata.<br><br>Během provádění, nahraďte objekt pro vytváření dat `?AdfHashPartitionCondition` s hash oddílu logiku a odeslat Teradata. |
-| Načtení velkého objemu dat pomocí vlastního dotazu s sloupec celých čísel se rovnoměrně distribuovaných hodnotou rozsahu dělení | **Možnosti oddílu**: Dynamický rozsah oddílu.<br>**Dotaz**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Sloupec oddílu**: Zadejte sloupec použitý k dělení dat. Můžete dělit na sloupec s datovým typem celé číslo.<br>**Oddíl horní mez** a **oddílu dolní mez**: Určete, jestli chcete filtrovat proti sloupec oddílu pouze načíst data mezi horní a dolní rozsahu.<br><br>Během provádění, nahraďte objekt pro vytváření dat `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound`, a `?AdfRangePartitionLowbound` skutečný název sloupce a hodnotu rozsahy pro každou oddílů a odeslat Teradata. <br>Například pokud vaše sloupce oddílu "ID" nastavit s dolní mez jako 1 a horní mez jako 80 sadou paralelní kopie jako 4, ADF načíst data 4 oddíly s ID mezi [1,20], [21, 40], [41, 60] a [61, 80]. |
+| Úplné načtení z velké tabulky                                   | **Možnost oddílu**: Kontrole. <br><br/>Během provádění Data Factory automaticky detekuje sloupec PK, aplikuje na něj hodnotu hash a kopíruje data podle oddílů. |
+| Načtení velkého množství dat pomocí vlastního dotazu.                 | **Možnost oddílu**: Kontrole.<br>**Dotaz**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`.<br>**Sloupec oddílu**: Zadejte sloupec použitý pro oddíl použití algoritmu hash. Pokud není zadán, Data Factory automaticky detekuje sloupec PK tabulky, kterou jste zadali v datové sadě Teradata.<br><br>Během provádění se data Factory nahradí `?AdfHashPartitionCondition` logikou oddílu hash a pošle se do Teradata. |
+| Načtěte velké množství dat pomocí vlastního dotazu, který má sloupec s celými čísly s rovnoměrně distribuovanou hodnotou pro dělení rozsahu. | **Možnosti oddílu**: Dynamický oddíl rozsahu.<br>**Dotaz**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Sloupec oddílu**: Zadejte sloupec, který se používá k dělení dat. Můžete rozdělit na sloupec s datovým typem Integer.<br>**Horní mez oddílu** a **dolní mez oddílu**: Určete, jestli chcete filtrovat podle sloupce oddílu, aby se načetla data jenom mezi dolním a horním rozsahem.<br><br>Během provádění Data Factory nahradí `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound`a `?AdfRangePartitionLowbound` skutečným názvem sloupce a rozsahy hodnoty pro každý oddíl a posílá do Teradata. <br>Pokud například sloupec oddílu "ID" nastaví s dolní hranicí jako 1 a horní mez jako 80, s paralelní kopií nastavenou na 4, Data Factory načte data po 4 oddíly. Jejich ID jsou mezi [1, 20], [21, 40], [41, 60] a [61, 80] v uvedeném pořadí. |
 
-**Příklad: dotazu s oddílem hash**
+**Příklad: dotazování pomocí oddílu hash**
 
 ```json
 "source": {
@@ -266,7 +266,7 @@ Byly navrženy povolit paralelní kopírování s daty rozdělení do oddílů, 
 }
 ```
 
-**Příklad: dotaz s dynamický rozsah oddílu**
+**Příklad: dotaz s dynamickým oddílem rozsahu**
 
 ```json
 "source": {
@@ -281,52 +281,52 @@ Byly navrženy povolit paralelní kopírování s daty rozdělení do oddílů, 
 }
 ```
 
-## <a name="data-type-mapping-for-teradata"></a>Datový typ mapování pro Teradata
+## <a name="data-type-mapping-for-teradata"></a>Mapování datových typů pro Teradata
 
-Při kopírování dat z Teradata, se používají následující mapování z Teradata datových typů na Azure Data Factory dočasné datové typy. Zobrazit [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) Další informace o způsobu, jakým aktivitu kopírování, která mapuje typ zdroje schéma a data na jímce.
+Při kopírování dat z Teradata platí následující mapování. Další informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ k jímky, najdete v tématu [mapování schémat a datových typů](copy-activity-schema-and-type-mapping.md).
 
-| Typ dat Teradata | Data factory dočasné datový typ |
+| Datový typ Teradata | Data Factory dočasné datový typ |
 |:--- |:--- |
 | BigInt |Int64 |
 | Blob |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| Char |String |
-| Clob |String |
-| Date |DateTime |
+| Char |Řetězec |
+| Datový typ CLOB |Řetězec |
+| Date |Datetime |
 | Decimal |Decimal |
 | Double |Double |
-| Graphic |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
+| Graphic |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
 | Integer |Int32 |
-| Interval Day |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Interval Day To Hour |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Interval Day To Minute |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Interval Day To Second |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Interval Hour |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Interval Hour To Minute |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Interval Hour To Second |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Interval Minute |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Interval Minute To Second |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Interval Month |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Interval Second |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Interval Year |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Interval Year To Month |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Číslo |Double |
-| Období (datum) |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Období (čas) |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Období (čas s časovým pásmem) |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Období (časové razítko) |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Období (časové razítko s časovým pásmem) |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
+| Interval Day |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Day To Hour |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Day To Minute |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Day To Second |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Hodina intervalu |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Hour To Minute |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Hour To Second |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Minute |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Minute To Second |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Month |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Second |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Year |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Interval Year To Month |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Number |Double |
+| Tečka (datum) |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Tečka (čas) |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Období (čas s časovým pásmem) |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Tečka (časové razítko) |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Tečka (časové razítko s časovým pásmem) |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
 | SmallInt |Int16 |
 | Time |TimeSpan |
 | Time With Time Zone |TimeSpan |
-| Timestamp |DateTime |
-| Timestamp With Time Zone |DateTime |
+| Timestamp |Datetime |
+| Timestamp With Time Zone |Datetime |
 | VarByte |Byte[] |
-| VarChar |String |
-| VarGraphic |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
-| Xml |Nepodporuje se. Použijte explicitní přetypování v dotaz na zdroj. |
+| VarChar |Řetězec |
+| VarGraphic |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
+| Xml |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
 
 
-## <a name="next-steps"></a>Další postup
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>Další kroky
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

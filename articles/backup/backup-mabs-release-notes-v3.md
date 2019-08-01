@@ -1,19 +1,20 @@
 ---
 title: Poznámky k verzi pro Microsoft Azure Backup Server V3
 description: Tento článek poskytuje informace o známých problémech a alternativním řešení pro MABS v3.
-author: JYOTHIRMAISURI
-manager: vvithal
+ms.reviewer: v-jysur
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/22/2018
-ms.author: v-jysur
+ms.author: dacurwin
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: e0bcdeeda2f8517b85059817669c19d66c723902
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: a80a5ac64b58d93bb0d4e4b799cb7424805c9baa
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465067"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698378"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Poznámky k verzi pro Microsoft Azure Backup Server
 V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure Backup Server (MABS) v3.
@@ -60,7 +61,7 @@ V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure
 1.  [Zálohujte](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) databázi SQL a odinstalujte MABS v2 (při odinstalaci si můžete zachovat chráněná data).
 2.  Upgradujte na SQL 2017 (Enterprise) a odinstalujte hlášení v rámci upgradu.
 3. [Nainstalovat](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) SQL Server Reporting Services (SSRS).
-4.  [Nainstalovat](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms#download-ssms-181) SQL Server Management Studio (SSMS).
+4.  [Nainstalovat](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms#download-ssms-182) SQL Server Management Studio (SSMS).
 5.  Nakonfigurujte vytváření sestav pomocí parametrů popsaných v [konfiguraci služby SSRS pomocí SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs).
 6.  [Nainstalovat](backup-azure-microsoft-azure-backup.md) MABS V3.
 7. [Obnovit](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL pomocí SSMS a spusťte nástroj DPM-Sync, jak je popsáno [zde](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10)).

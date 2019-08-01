@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: dc17cb48f7e06757dacdca5f291ed4604bfc10ee
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 923859fdb0b398d04e710810a96c33fb1c3cd9da
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414405"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698567"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Vývoj vlastních modulů IoT Edge
 
@@ -44,7 +44,7 @@ Modul IoT Edge, na rozdíl od normální aplikace zařízení služby IoT Hub, m
 
 Centrum IoT Edge šíří zprávy do vašeho modulu na základě deklarativních tras popsaných v [manifestu nasazení](module-composition.md). Při vývoji modul IoT Edge, mohou přijímat tyto zprávy nastavením obslužné rutiny zpráv.
 
-Pro zjednodušení vytváření tras IoT Edge přidává koncept *vstupních* a výstupních koncových bodů modulu  . Modul může přijímat všechny zprávy typu zařízení cloud směrovat bez zadání jakékoli vstup a odesílat zprávy typu zařízení cloud bez zadání žádný výstup. Pomocí explicitní vstupy a výstupy, ale zjednodušuje pravidla směrování pochopit. 
+Pro zjednodušení vytváření tras IoT Edge přidává koncept *vstupních* a výstupních koncových bodů modulu . Modul může přijímat všechny zprávy typu zařízení cloud směrovat bez zadání jakékoli vstup a odesílat zprávy typu zařízení cloud bez zadání žádný výstup. Pomocí explicitní vstupy a výstupy, ale zjednodušuje pravidla směrování pochopit. 
 
 Zprávy typu zařízení cloud zpracovat Centrum Edge se nakonec razítkem s následujícími vlastnostmi systému:
 
@@ -98,4 +98,4 @@ Pro všechny jazyky v následující tabulce IoT Edge podporuje vývoj pro zař�
 
 [Použití Visual Studio Code k vývoji modulů pro IoT Edge](how-to-vs-code-develop-module.md)
 
-[Pochopení a používání sad SDK pro Azure IoT Hub](/iot-hub/iot-hub-devguide-sdks.md)
+[Pochopení a používání sad SDK pro Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md)

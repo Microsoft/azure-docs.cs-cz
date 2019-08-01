@@ -1,20 +1,21 @@
 ---
 title: 'Azure Backup: Monitorování Azure Backup s využitím Azure Monitor'
 description: Monitorujte Azure Backup úlohy a vytvářejte vlastní výstrahy pomocí Azure Monitor.
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: Log Analytics; Azure Backup; Generoval Nastavení diagnostiky; Skupiny akcí
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 15b701a9ccc469636875736b6e316c150615aa16
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: de13518173f21a0a802c37eb7be3cd6c4926d884
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465928"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689193"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure Monitor
 
@@ -42,7 +43,7 @@ V části monitorování vyberte **nastavení diagnostiky** a zadejte cíl pro d
 
 ![Nastavení diagnostiky Recovery Services trezoru, které cílí na Log Analytics](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
 
-Log Analytics pracovní prostor můžete cílit z jiného předplatného. Pokud chcete monitorovat trezory v rámci předplatných na jednom místě, vyberte stejný pracovní prostor Log Analytics pro několik trezorů Recovery Services. Pokud chcete všechny informace, které souvisejí s Azure Backup, přeAzureBackupReport do pracovního prostoru Log Analytics, jako protokol vyberte  .
+Log Analytics pracovní prostor můžete cílit z jiného předplatného. Pokud chcete monitorovat trezory v rámci předplatných na jednom místě, vyberte stejný pracovní prostor Log Analytics pro několik trezorů Recovery Services. Pokud chcete všechny informace, které souvisejí s Azure Backup, přeAzureBackupReport do pracovního prostoru Log Analytics, jako protokol vyberte .
 
 > [!IMPORTANT]
 > Po dokončení konfigurace byste měli počkat 24 hodin na dokončení počátečního vkládání dat. Po této počáteční datové stránce jsou všechny události vloženy, jak je popsáno dále v tomto článku v [části frekvence](#diagnostic-data-update-frequency).

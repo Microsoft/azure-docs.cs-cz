@@ -1,6 +1,6 @@
 ---
-title: Webové aplikace, který se přihlásí uživatelé (přihlásit se) – platforma identit Microsoft
-description: Další informace o vytváření webové aplikace, které přihlásí uživatelé (přihlášení)
+title: Webová aplikace, která přihlašuje uživatele (přihlásit se) – Microsoft Identity Platform
+description: Informace o tom, jak vytvořit webovou aplikaci, která přihlašuje uživatele (přihlásit se)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,37 +15,37 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fb7fbba7ec48da580d2a630ae51aa20b3307848
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be7801515355452306cd5e7afa709a0681c7c314
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074617"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562203"
 ---
-# <a name="web-app-that-signs-in-users---sign-in"></a>Webová aplikace s přihlašováním uživatelů – přihlášení
+# <a name="web-app-that-signs-in-users---sign-in"></a>Webová aplikace, která přihlašuje uživatele – přihlásit se
 
-Zjistěte, jak přidat přihlášení na kód vaší webové aplikace, které uživatelé přihlásí.
+Naučte se, jak přidat přihlášení k kódu pro vaši webovou aplikaci, která přihlašuje uživatele.
 
 ## <a name="sign-in"></a>Přihlášení
 
-Kód, který jsme vytvořili v předchozím článku [konfigurace kódu aplikace](scenario-web-app-sign-user-app-configuration.md) je všechno, co potřebujete k implementaci odhlašování. Jakmile se uživatel přihlásil k aplikaci, budete pravděpodobně chtít povolit odhlášení. ASP.NET core zpracovává odhlášení za vás.
+Kód v předchozí [konfiguraci kódu aplikace](scenario-web-app-sign-user-app-configuration.md) v článku je všechno, co potřebujete k implementaci odhlášení. Jakmile se uživatel přihlásí do vaší aplikace, pravděpodobně budete chtít povolit, aby se odhlásili. ASP.NET Core zpracovává pro vás registraci.
 
-## <a name="what-sign-out-involves"></a>Zahrnuje co Odhlásit se
+## <a name="what-sign-out-involves"></a>Co zahrnuje i odhlášení
 
-Odhlášení z webové aplikace se o více než odstranění informace o účtu přihlášeného stavu webové aplikace.
-Webové aplikace musí také přesměrovat uživatele na Microsoft identity platform v2.0 `logout` koncový bod se odhlásit. Když vaše webová aplikace přesměruje uživatele na `logout` koncový bod, odstraní tento koncový bod relace uživatele z prohlížeče. Pokud nebyla aplikace Přejít `logout` koncový bod, uživatel by donutit k vaší aplikaci bez nutnosti zadávat své přihlašovací údaje znovu, protože by měli platné jednotné přihlášení relace s koncovým bodem v2.0 platforma Microsoft Identity.
+Odhlášení z webové aplikace je o více než odebrání informací o přihlášeném účtu ze stavu webové aplikace.
+Webová aplikace musí také přesměrovat uživatele na koncový bod platformy `logout` Microsoft identity, aby se odhlásily. Když vaše webová aplikace přesměruje uživatele na `logout` koncový bod, tento koncový bod vymaže relaci uživatele z prohlížeče. Pokud vaše aplikace nepřešla do `logout` koncového bodu, uživatel se znovu ověří do vaší aplikace bez zadání přihlašovacích údajů, protože by měl platnou relaci jednotného přihlašování s koncovým bodem Microsoft Identity Platform.
 
-Další informace najdete v tématu [odeslat žádost o odhlášení](v2-protocols-oidc.md#send-a-sign-out-request) tématu [v2.0 Microsoft Identity platform a protokolu OpenID Connect](v2-protocols-oidc.md) rámcové dokumentaci.
+Další informace najdete v části [odeslání žádosti o přihlášení](v2-protocols-oidc.md#send-a-sign-out-request) na [platformě Microsoft Identity Platform a](v2-protocols-oidc.md) v Koncepční dokumentaci k protokolu OpenID Connect.
 
-## <a name="application-registration"></a>Registrace aplikací
+## <a name="application-registration"></a>Registrace aplikace
 
-Při registraci aplikace budete jste se zaregistrovali **příspěvku odhlášení URI**. V našem kurzu jste zaregistrovali `https://localhost:44321/signout-oidc` v **odhlašovací adresa URL** pole **Upřesnit nastavení** tématu **ověřování** stránky. Podrobnosti najdete v tématu, [ registraci aplikace webové aplikace](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)
+Během registrace aplikace jste zaregistrovali **identifikátor URI po odhlášení**. V našem `https://localhost:44321/signout-oidc` kurzu jste se zaregistrovali v poli **Adresa URL** pro odhlášení v části **Upřesnit nastavení** na stránce **ověřování** . Podrobnosti najdete v tématu [Registrace aplikace WebApp](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp) .
 
-## <a name="aspnet-core-code"></a>Kód technologie ASP.NET Core
+## <a name="aspnet-core-code"></a>Kód ASP.NET Core
 
 ### <a name="signout-button"></a>Tlačítko pro odhlášení
 
-Tlačítko Odhlásit je přístupný ve `Views\Shared\_LoginPartial.cshtml` a zobrazí jenom po ověření účtu (to znamená, když uživatel se dříve přihlásil).
+Tlačítko Odhlásit se zveřejňuje v `Views\Shared\_LoginPartial.cshtml` a zobrazí se, jenom když je k dispozici ověřený účet (to znamená, že se uživatel dřív přihlásil).
 
 ```html
 @using Microsoft.Identity.Web
@@ -64,21 +64,21 @@ else
 }
 ```
 
-### <a name="signout-action-of-the-accountcontroller"></a>`Signout()` Akce `AccountController`
+### <a name="signout-action-of-the-accountcontroller"></a>`Signout()`akce`AccountController`
 
-Stisknutím klávesy **Odhlásit** tlačítko na webové triggery pro aplikace `SignOut` akce `Account` kontroleru. V předchozích verzích šablony ASP.NET core `Account` vložená řadiče s webovou aplikací, ale to už nejsou tak jak je teď součástí samotného rozhraní ASP.NET Core. 
+Když stisknete tlačítko Odhlásit se na webové aplikaci, aktivuje se `SignOut` akce `Account` na řadiči. V předchozích verzích základních šablon `Account` ASP.NET byl kontroler vložen do webové aplikace, ale to už neplatí, protože je teď součástí samotného ASP.NET Core Frameworku. 
 
-Kód `AccountController` je k dispozici v úložišti ASP.NET core na z [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs). Řízení účtů:
+Kód pro `AccountController` je k dispozici v úložišti ASP.NET Core na adrese z [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs). Řízení účtu:
 
-- Identifikátor URI pro přesměrování sady s OpenID `/Account/SignedOut` tak, aby kontroleru je volána zpět, když Azure AD byl proveden odhlášení
-- Volání `Signout()`, které umožní middlewarem OpenIdConnect, obraťte se na platformě Microsoft identity `logout` koncový bod které:
+- Nastaví identifikátor URI pro přesměrování OpenID `/Account/SignedOut` na tak, aby se řadič zavolal zpátky, když Azure AD provedl odhlášení.
+- Volání `Signout()`, která umožňují middlewaru OpenIdConnect kontaktovat koncový bod Microsoft identity `logout` Platform, který:
 
-  - Vymaže souboru cookie relace z prohlížeče, a
-  - Volání nakonec volá zpět **odhlašovací adresa URL**, což) ve výchozím nastavení, zobrazí znaménkem si zobrazit stránku [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) také poskytuje jako součást ASP.NET Core.
+  - Vymaže soubor cookie relace z prohlížeče a
+  - Volání nakonec volá zpět **adresu URL**pro odhlášení, která) ve výchozím nastavení zobrazuje odhlášenou stránku pro zobrazení odhlásilo [. html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) také jako součást ASP.NET Core.
 
-### <a name="intercepting-the-call-to-the-logout-endpoint"></a>Zachycení volání `logout` koncového bodu
+### <a name="intercepting-the-call-to-the-logout-endpoint"></a>Zachytávání volání `logout` koncového bodu
 
-Umožňuje aplikaci zachytit volání platforma identit Microsoft middlewarem ASP.NET Core OpenIdConnect `logout` koncového bodu zadáním OpenIdConnect událost s názvem `OnRedirectToIdentityProviderForSignOut`. Webová aplikace používá k pokusu o vyhnout dialogovém okně vyberte účet, zobrazí se uživateli při odhlášení. Provádí se v tomto zachycení `AddAzureAdV2Authentication` z `Microsoft.Identity.Web` opakovaně použitelné knihovny. Zobrazit [StartupHelpers.cs L58-L66](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/b87a1d859ff9f9a4a98eb7b701e6a1128d802ec5/Microsoft.Identity.Web/StartupHelpers.cs#L58-L66)
+Middleware ASP.NET Core OpenIdConnect umožňuje vaší aplikaci zachytit volání koncového bodu Microsoft Identity Platform `logout` tím, že poskytuje událost OpenIdConnect s názvem. `OnRedirectToIdentityProviderForSignOut` Webová aplikace ji používá k tomu, aby se zabránilo tomu, aby se dialog pro výběr účtu při odhlášení zobrazoval uživateli. Toto zachycení se provádí v rámci `AddAzureAdV2Authentication` `Microsoft.Identity.Web` opakovaně použitelné knihovny. Viz [StartupHelpers.cs L58-L66](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/b87a1d859ff9f9a4a98eb7b701e6a1128d802ec5/Microsoft.Identity.Web/StartupHelpers.cs#L58-L66)
 
 ```CSharp
 public static IServiceCollection AddAzureAdV2Authentication(this IServiceCollection services,
@@ -102,13 +102,13 @@ public static IServiceCollection AddAzureAdV2Authentication(this IServiceCollect
 }
 ```
 
-## <a name="aspnet-code"></a>Kódu ASP.NET
+## <a name="aspnet-code"></a>ASP.NET kód
 
-V technologii ASP.NET Odhlásit se aktivuje z metody SignOut() řadiči (například AccountController). Tato metoda není součástí architektury ASP.NET (rozporu s co se děje v ASP.NET Core) a nepoužívá asynchronní, a to je důvod, proč ho:
+V ASP.NET se odhlášení spouští z metody odhlašování () na řadiči (např. AccountController). Tato metoda není součástí ASP.NET architektury (na rozdíl od toho, co se stane v ASP.NET Core), a nepoužívá asynchronní a to je důvod:
 
-- odešle výzvu odhlašování přes protokol OpenId
-- Vymaže mezipaměť
-- provede přesměrování na stránku, kterou chce
+- pošle výzvu k odhlášení OpenId.
+- Vymaže mezipaměť.
+- přesměrování na stránku, kterou chce
 
 ```CSharp
 /// <summary>
@@ -126,9 +126,9 @@ public void SignOut()
 
 ## <a name="protocol"></a>Protocol
 
-Pokud už nechcete používat ASP.NET Core nebo ASP.NET, můžete si prohlédnout protokol dokumentaci, která je dostupná z [Open ID Connect](./v2-protocols-oidc.md).
+Pokud nechcete používat ASP.NET Core ani ASP.NET, můžete se podívat na dokumentaci k protokolu, která je k dispozici v [otevřeném ID Connect](./v2-protocols-oidc.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přejít do produkčního prostředí](scenario-web-app-sign-user-production.md)
+> [Přesunout do produkčního prostředí](scenario-web-app-sign-user-production.md)

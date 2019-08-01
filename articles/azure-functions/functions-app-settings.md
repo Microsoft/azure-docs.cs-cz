@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 62d359494050b188869d51d1e3975c823b9c0a76
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 50056d4d05d2426ff644518aea04a2c9f4d817f3
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204944"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667173"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
-Nastavení aplikace v aplikaci function app obsahovat globální konfiguraci možností, které ovlivňují všechny funkce pro tuto aplikaci function app. Když spouštíte místně, tato nastavení jsou přístupné jako místní [proměnné prostředí](functions-run-local.md#local-settings-file). Tento článek uvádí nastavení aplikace, které jsou k dispozici v aplikace function App.
+Nastavení aplikace v aplikaci function app obsahovat globální konfiguraci možností, které ovlivňují všechny funkce pro tuto aplikaci function app. Když spouštíte místně, tato nastavení jsou k dispozici jako [proměnné místního prostředí](functions-run-local.md#local-settings-file). Tento článek uvádí nastavení aplikace, které jsou k dispozici v aplikace function App.
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
@@ -35,7 +35,7 @@ Instrumentační klíč Application Insights při použití služby Application 
 
 ## <a name="azurefunctionsenvironment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-Ve verzi 2.x modul runtime služby Functions, nakonfiguruje chování aplikace založené na prostředí modulu runtime. Tato hodnota je [čtení během inicializace](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Můžete nastavit `AZURE_FUNCTIONS_ENVIRONMENT` na libovolnou hodnotu, ale [tří hodnot](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) jsou podporovány: [Vývoj](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [pracovní](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging), a [produkční](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Když `AZURE_FUNCTIONS_ENVIRONMENT` není nastavený, použije se výchozí `Production`. Toto nastavení by měl být použít namísto `ASPNETCORE_ENVIRONMENT` nastavení prostředí modulu runtime. 
+Ve verzi 2. x modulu runtime Functions konfiguruje chování aplikace na základě běhového prostředí. Tato hodnota je [čtena při inicializaci](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Můžete nastavit `AZURE_FUNCTIONS_ENVIRONMENT` na libovolnou hodnotu, ale podporují se [tři hodnoty](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) : [Vývoj](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Příprava](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)a [produkce](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Pokud `AZURE_FUNCTIONS_ENVIRONMENT` není nastavené, použije se `Development` výchozí nastavení v místním prostředí `Production` a v Azure. Toto nastavení by se mělo použít místo `ASPNETCORE_ENVIRONMENT` pro nastavení běhového prostředí. 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -102,7 +102,7 @@ Cestu ke kompilátoru používá pro TypeScript. Umožňuje přepsat výchozí h
 
 ## <a name="functionappeditmode"></a>FUNKCE\_APLIKACE\_UPRAVIT\_REŽIMU
 
-Určuje, zda jsou povoleny úpravy na webu Azure Portal. Platné hodnoty jsou "readwrite" a "jen pro čtení".
+Určuje, zda jsou povoleny úpravy v Azure Portal. Platné hodnoty jsou "readwrite" a "jen pro čtení".
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -118,7 +118,7 @@ Verze modulu runtime Functions pro použití v této aplikace function app. Tild
 
 ## <a name="functionsworkerruntime"></a>FUNKCE\_PRACOVNÍHO PROCESU\_MODULU RUNTIME
 
-Pracovního procesu CLR pro načtení do aplikace function App.  To bude odpovídat jazyku používán ve vaší aplikaci (například "dotnet"). Pro funkce v několika jazycích, je potřeba publikovat je do více aplikacemi, každý s odpovídající hodnotou modulu runtime pracovního procesu.  Platné hodnoty jsou `dotnet` (C#/F#), `node` (JavaScript/TypeScript) `java` (Java) `powershell` (PowerShell) a `python` (Python).
+Pracovního procesu CLR pro načtení do aplikace function App.  To bude odpovídat jazyku používán ve vaší aplikaci (například "dotnet"). Pro funkce v několika jazycích, je potřeba publikovat je do více aplikacemi, každý s odpovídající hodnotou modulu runtime pracovního procesu.  Platné hodnoty jsou `dotnet` (C#/F#), `node` ( `java` `python` JavaScript/TypeScript), (Java), (PowerShell)a(Python).`powershell`
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -126,7 +126,7 @@ Pracovního procesu CLR pro načtení do aplikace function App.  To bude odpoví
 
 ## <a name="websitecontentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
-Pro pouze plány consumption. Připojovací řetězec pro účet úložiště, kde jsou uloženy kód aplikace funkcí a konfigurace. Zobrazit [vytvořit aplikaci function app](functions-infrastructure-as-code.md#create-a-function-app).
+Pro spotřebu & jenom plánů Premium. Připojovací řetězec pro účet úložiště, kde jsou uloženy kód aplikace funkcí a konfigurace. Zobrazit [vytvořit aplikaci function app](functions-infrastructure-as-code.md#create-a-function-app).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -134,7 +134,7 @@ Pro pouze plány consumption. Připojovací řetězec pro účet úložiště, k
 
 ## <a name="websitecontentshare"></a>WEB\_CONTENTSHARE
 
-Pro pouze plány consumption. Cesta k souboru kódu aplikace funkcí a konfigurace. Použít s WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Výchozí hodnota je jedinečný řetězec, který začíná názvem aplikace function app. Zobrazit [vytvořit aplikaci function app](functions-infrastructure-as-code.md#create-a-function-app).
+Pro spotřebu & jenom plánů Premium. Cesta k souboru kódu aplikace funkcí a konfigurace. Použít s WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Výchozí hodnota je jedinečný řetězec, který začíná názvem aplikace function app. Zobrazit [vytvořit aplikaci function app](functions-infrastructure-as-code.md#create-a-function-app).
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -175,7 +175,7 @@ Ve výchozím nastavení proxy služby Functions bude využívat zástupce k ode
 
 |Klíč|Hodnota|Popis|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true (pravda)|Volání s back-end adresy url odkazující na funkci v místní aplikaci Function App se již nebude zasíláno přímo do funkce a místo toho přesměrováni zpět na front-endu HTTP pro danou aplikaci funkcí|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Volání s adresou URL back-endu ukazující na funkci v místním Function App již nebudou odesílána přímo do funkce a místo toho budou přesměrována zpět na front-end protokolu HTTP pro Function App|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false (nepravda)|Toto je výchozí hodnota. Volání s back-end adresy url odkazující na funkci v místní aplikaci Function App se předají přímo do této funkce|
 
 

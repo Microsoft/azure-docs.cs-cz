@@ -1,152 +1,145 @@
 ---
-title: Aktualizace Azure Site Recovery | Dokumentace Microsoftu
-description: Poskytuje přehled o aktualizacích a pokyny k upgradu komponent používaných ve službě Azure Site Recovery.
-services: site-recovery
+title: Aktualizace a upgrady komponent v Azure Site Recovery
+description: Poskytuje přehled aktualizací služby Azure Site Recovery a upgrady komponent.
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 04/25/2019
+ms.topic: conceptual
+ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: bde341063fb6742bbe2a92592981d4a2a437d214
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 305ff610c0f8962f2b50789d8af0a5f6e2fbf046
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203441"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717379"
 ---
-# <a name="service-updates-in-azure-site-recovery"></a>Aktualizace služeb ve službě Azure Site Recovery
-Jako organizace budete muset zjistit, jak budete bezpečnost vašich dat a aplikací a úloh v případě plánovaných a neplánovaných výpadků. Azure Site Recovery přispívá ke strategii BCDR tím, že vaše aplikace běžící na virtuálních počítačích a fyzických serverů, které jsou k dispozici, pokud web přestane fungovat. Site Recovery replikuje úlohy spuštěné na virtuálních počítačích a fyzických serverech, aby zůstaly dostupné v sekundárním umístění v případě, že je primární lokalita nedostupná. Po opětovném zprovoznění primární lokality do ní úlohy obnoví.
+# <a name="service-updates-in-site-recovery"></a>Aktualizace služby v Site Recovery
 
-Site Recovery může spravovat replikaci pro:
+Tento článek obsahuje přehled aktualizací [Azure Site Recovery](site-recovery-overview.md) a popisuje, jak upgradovat součásti Site Recovery.
 
-- [Virtuální počítače Azure replikované mezi oblastmi Azure](azure-to-azure-tutorial-dr-drill.md).
-- Místní virtuální počítače a fyzické servery replikované do Azure nebo sekundární lokality.
-Vědět, informace najdete v dokumentaci k [tady](https://docs.microsoft.com/azure/site-recovery) .
-
-Azure Site Recovery vydává aktualizace služeb v pravidelných intervalech – včetně přidání nových funkcí, vylepšení v matici podpory a opravy chyb, pokud existuje. Aby bylo možné zachovat aktuální využívat všechny nejnovější funkce a vylepšení & opravy chyb, pokud existuje, uživatelé byli informováni vždy aktualizovat na nejnovější verze komponent Azure SIte Recovery. 
+Site Recovery pravidelně publikují aktualizace služby. Aktualizace zahrnují nové funkce, vylepšení podpory, aktualizace součástí a opravy chyb. Aby bylo možné využívat nejnovější funkce a opravy, doporučujeme provozovat nejnovější verze Site Recovery komponent. 
  
-## <a name="support-statement-for-azure-site-recovery"></a>Prohlášení o odborné pomoci pro Azure Site Recovery 
+ 
+## <a name="updates-support"></a>Podpora aktualizací
+
+### <a name="support-statement-for-azure-site-recovery"></a>Příkaz Support pro Azure Site Recovery
+
+Doporučujeme vždy upgradovat na nejnovější verze součástí:
+
+**U všech nových verzí n Azure Site Recovery součásti, která je vydaná, jsou všechny verze nižší než n-4 považovány za nepodporované**. 
 
 > [!IMPORTANT]
-> **S každou novou verzí "n" Azure Site Recovery komponentu, která je všeobecně dostupné, všechny verze nižší než n-4' je považován za bez podpory**. Proto je vždy vhodné k upgradu na nejnovější verze k dispozici.
+> Oficiální podpora je určena k upgradu z verze > N-4 na verzi N. Pokud například používáte službu s N-6, je nutné nejprve upgradovat na N-4 a pak upgradovat na N.
 
-> [!IMPORTANT]
-> Oficiální podpora pro upgrady je z > N-4 na verze N (N je nejnovější verze). Pokud používáte N-6, budete muset nejprve upgradovat na N-4 a poté provedli upgrade na N.
 
-## <a name="expiry-of-components"></a>Vypršení platnosti komponent
-Site Recovery upozorní zákazníky součástí blíží vypršení data platnosti, nebo už vypršela prostřednictvím e-mailových oznámení (je-li odběru jste přihlášeni k nim) nebo na řídicím panelu trezoru na portálu. Nejsou k dispozici, pokud chráníte virtuální počítač přehnané rV od této chvíle oznámení řídicího panelu trezoru. Také když přejdete na odpovídající zobrazení infrastruktury pro váš scénář, bude aktualizace k dispozici tlačítko vedle komponenty, která vás nasměruje na odkazy na soubory ke stažení nejnovější verze.
+### <a name="links-to-currently-supported-update-rollups"></a>Odkazy na aktuálně podporované kumulativní aktualizace
 
-Níže je frekvence e-mailová oznámení, když komponenty se blíží vypršení data platnosti.
-- 60 dní, za součást platnost má vypršet: jednou za dva týdny
-- Dní 53: jednou týdně
-- Posledních 7 dnů: Jednou denně
-- Po jeho vypršela platnost: jednou za dva týdny
+ Projděte si nejnovější kumulativní aktualizaci (verze N) v [tomto článku](site-recovery-whats-new.md). Pamatujte, že Site Recovery poskytuje podporu pro N-4 verze.
 
 
 
-### <a name="upgrading-when-the-difference-between-current-version-and-latest-released-version-is-greater-than-4"></a>Upgrade, pokud rozdíl mezi aktuální verze a nejnovější vydanou verzi je větší než 4
+## <a name="component-expiry"></a>Konec platnosti součásti
 
-1. Jako první krok upgradovat aktuálně nainstalovanou součást z verze say N na N + 4 a potom přejděte na další kompatibilní verzi. Řekněme, že aktuální verze je 9,24 a jsou na 9.16, nejdříve upgradovat na 9,20 a potom na 9,24.
-2. Opakujte stejný postup pro všechny součásti v závislosti na scénáři.
+Site Recovery upozorňuje na komponenty s vypršenou platností (nebo blížící se k vypršení platnosti) e-mailem (Pokud se přihlásíte k odběru e-mailových oznámení) nebo na řídicím panelu trezoru na portálu
 
-### <a name="support-for-latest-oskernel-versions"></a>Podporu pro nejnovější verze operačního systému nebo jádra
+- Až budou aktualizace k dispozici, zobrazí se vedle komponenty v zobrazení infrastruktura pro váš scénář tlačítko **aktualizace k dispozici** . Toto tlačítko vás přesměruje na odkaz pro stažení nejnovější verze součásti.
+-  Oznámení řídicího panelu trezory nejsou k dispozici, pokud provádíte replikaci virtuálních počítačů Hyper-V. 
+
+E-mailová oznámení se odesílají takto.
+
+**čas** | **Frekvence**
+--- | ---
+60 dní před vypršením platnosti součásti | Jednou týdně
+Dalších 53 dní | Jednou týdně
+Posledních 7 dní | Jednou denně
+Po vypršení platnosti | Jednou týdně
+
+
+### <a name="upgrading-outside-official-support"></a>Upgrade mimo oficiální podporu
+
+Je-li rozdíl mezi verzí komponenty a nejnovější verzí verze větší než 4, je považován za nepodporu. V takovém případě proveďte upgrade následujícím způsobem: 
+
+1. Upgradujte aktuálně nainstalovanou komponentu na aktuální verzi a čtyři. Například pokud vaše verze je 9,16, pak upgradujte na 9,20.
+2. Pak upgradujte na následující kompatibilní verzi. Takže v našem příkladu se po upgradu 9,16 na 9,20 upgradujte na 9,24. 
+
+Pro všechny příslušné součásti použijte stejný postup.
+
+### <a name="support-for-latest-operating-systemskernels"></a>Podpora pro nejnovější operační systémy/jádra
 
 > [!NOTE]
-> Pokud máte plánované časové období údržby, a je součástí stejného restartovat počítač, doporučujeme nejdřív upgradovat součásti Site Recovery a pokračovat se zbytkem naplánované aktivity.
+> Pokud máte plánované časové období údržby a v něm je zahrnutý restart, doporučujeme nejprve upgradovat Site Recovery součásti a pak pokračovat ve zbývající části naplánovaných aktivit v časovém intervalu pro správu a údržbu.
 
-1. Před upgradem verze jádra/OS, nejdříve ověřte, pokud cílová verze je podporována službou Azure Site Recovery. Informace najdete v naší dokumentaci pro virtuální počítače Azure, [virtuálních počítačů VMware](vmware-physical-azure-support-matrix.md) & virtuální počítače Hyper-v
-2. Přečtěte si naše [aktualizace služeb](https://azure.microsoft.com/updates/?product=site-recovery) a zjistěte, jaké verze služby Site Recovery komponenty podporují konkrétní verzi, kterou chcete provést upgrade na.
-3. Nejprve upgradujte na nejnovější verzi lokality obnovit.
-4. Nyní upgrade na požadované verze operačního systému nebo jádru.
-5. Proveďte restart.
-6. Tím se zajistí, že verze operačního systému nebo jádra na počítačích upgradují na nejnovější verzi, a také, že nejnovější změny Site Recovery, které jsou vyžadovány pro podporu nové verze se také načtou na zdrojovém počítači.
+1. Před upgradem operačního systému/verze jádra ověřte, zda je cílová verze Site Recovery podporována. 
+
+    - Podpora [virtuálních počítačů Azure](/azure-to-azure-support-matrix.md#replicated-machine-operating-systems) .
+    - Podpora [VMware/fyzických serverů](vmware-physical-azure-support-matrix.md#replicated-machines)
+    - Podpora [technologie Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms) .
+2. Projděte si [dostupné aktualizace](site-recovery-whats-new.md) a zjistěte, co chcete upgradovat.
+3. Upgradujte na nejnovější verzi Site Recovery.
+4. Upgradujte operační systém/jádro na požadované verze.
+5. Restartování počítače.
 
 
+Tento proces zajistí, že operační systém počítače/jádro bude upgradován na nejnovější verzi a že nejnovější Site Recovery změny potřebné k podpoře nové verze se načtou do počítače.
 
 ## <a name="azure-vm-disaster-recovery-to-azure"></a>Zotavení po havárii virtuálního počítače Azure do Azure
-V tomto scénáři, důrazně doporučujeme, aby vám [povolit](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-autoupdate) automatické aktualizace. Můžete zvolit, aby Site Recovery ke správě aktualizací následujícími způsoby:
 
-- Jako součást kroku povolení replikace
-- Přepnout rozšíření aktualizovat nastavení uvnitř tohoto trezoru
+V tomto scénáři důrazně doporučujeme [Povolit automatické aktualizace](azure-to-azure-autoupdate.md). Site Recovery můžete dovolit, aby se aktualizace spravovaly následujícím způsobem:
 
-V případě, že jste se rozhodli spravovat aktualizace ručně, postupujte podle těchto kroků:
+- Během procesu povolení replikace.
+- Nastavením nastavení aktualizace rozšíření v rámci trezoru.
 
-1. Přejděte na web Azure portal a potom přejděte k vaší "trezor služby Recovery services."
-2. Přejděte do podokna "Replikované položky" na webu Azure Portal pro "trezor služby Recovery services."
-3. Klikněte na následující oznámení v horní části obrazovky:
+Pokud chcete ručně spravovat aktualizace, udělejte toto:
+
+1. V trezoru > **replikované položky**klikněte v horní části obrazovky na toto oznámení: 
     
-    *Je dostupná nová aktualizace agenta replikace služby Site Recovery*
-    
-    *-> Klikněte na nainstalovat*
+    **K dispozici je nová aktualizace agenta replikace Site Recovery. Kliknutím nainstalujete >**
 
-4. Vyberte virtuální počítače, které chcete použít k aktualizaci a pak klikněte na **OK**.
+4. Vyberte virtuální počítače, pro které chcete aktualizaci použít, a potom klikněte na **OK**.
 
-## <a name="between-two-on-premises-vmm-sites"></a>Mezi dvěma místními umístěními VMM
-1. Stáhněte si nejnovější aktualizaci kumulativní pro Microsoft Azure Site Recovery Provider.
-2. Nejdříve nainstalujte kumulativní aktualizace na serveru VMM v místním, který je Správa lokality pro obnovení.
-3. Po obnovení lokality aktualizována, nainstalujte kumulativní aktualizace na serveru VMM, který spravuje primární lokality.
 
-> [!NOTE]
-> Pokud VMM vysoce dostupný nástroj VMM (Clusterované VMM), ujistěte se, že instalace upgradu na všech uzlech clusteru, ve kterém je nainstalovaná služba nástroje VMM.
+## <a name="vmware-vmphysical-server-disaster-recovery-to-azure"></a>Zotavení po havárii virtuálního počítače VMware nebo fyzického serveru do Azure
 
-## <a name="between-an-on-premises-vmm-site-and-azure"></a>Mezi místní lokalitou VMM a službou Azure
-1. Stáhněte si kumulativní aktualizace pro Microsoft Azure Site Recovery Provider.
-2. Nainstalujte kumulativní aktualizaci na místní server VMM.
-3. Nainstalujte nejnovější verzi agenta MARS agenta na všech hostitelích Hyper-V.
+1. Na základě vaší aktuální verze a [příkazu podpory](#support-statement-for-azure-site-recovery)nainstalujte nejprve aktualizaci na místní konfigurační server, a [to podle těchto pokynů](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server). 
+2. Pokud máte procesní servery se škálováním na více instancí, aktualizujte je dále pomocí [těchto pokynů](vmware-azure-manage-process-server.md#upgrade-a-process-server).
+3. Chcete-li aktualizovat agenta mobility na každém chráněném počítači, otevřete **chráněné** > položky**replikované položky**.
+4. Vyberte virtuální počítač a klikněte na tlačítko **aktualizovat agenta** , které se zobrazí v dolní části stránky pro každý virtuální počítač. Tím se aktualizuje agent služby mobility na všech chráněných virtuálních počítačích.
 
-> [!NOTE]
-> Pokud váš nástroj VMM vysoce dostupný nástroj VMM (Clusterované VMM), ujistěte se, že instalace upgradu na všech uzlech clusteru, ve kterém je nainstalovaná služba nástroje VMM.
+### <a name="reboot-after-mobility-service-upgrade"></a>Po upgradu služby mobility restartujte počítač
 
-## <a name="between-an-on-premises-hyper-v-site-and-azure"></a>Mezi místní lokality Hyper-V a Azure
+Po každém upgradu služby mobility se doporučuje restartovat počítač, aby se zajistilo, že se na zdrojovém počítači načtou všechny nejnovější změny.
 
-1. Stáhněte si kumulativní aktualizace pro Microsoft Azure Site Recovery Provider.
-2. Nainstalujte zprostředkovatele na každém uzlu servery Hyper-V, které jste zaregistrovali ve službě Azure Site Recovery.
+Restart není povinný, pokud rozdíl mezi verzí agenta během posledního restartování a aktuální verzí je větší než 4.
 
-> [!NOTE]
-> Pokud technologie Hyper-V je server hostitele v clusteru Hyper-V, ujistěte se, že instalace upgradu na všech uzlech clusteru
+Příklad v tabulce ukazuje, jak to funguje.
 
-## <a name="between-an-on-premises-vmware-or-physical-site-to-azure"></a>Mezi VMware v místním prostředí nebo fyzického serveru do Azure
-
-Než budete pokračovat s aktualizacemi, odkazovat na [výrazem podpory Site Recovery](#support-statement-for-azure-site-recovery) pochopit způsob upgradu.
-
-1. Na základě vaší aktuální verzi a podporu příkazu výše uvedené, nainstalujte aktualizaci nejprve na místní server pro správu podle pokynů uvedených [tady](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server). Jedná se o server, který má konfiguračního serveru a role serveru procesu.
-2. Pokud máte horizontální navýšení kapacity zpracování servery, je dále aktualizovat podle následujících pokynů daný [tady](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-3. V dalším kroku aktualizovat agenta mobility na každé chráněné položky, přejděte na web Azure portal a potom přejděte ke **chráněné položky** > **replikované položky** stránky. Vyberte virtuální počítač na této stránce. Vyberte **Update Agent** tlačítko, které se zobrazí v dolní části stránky pro každý virtuální počítač. Tím se aktualizuje agenta služby Mobility pro všechny chráněné virtuální počítače.
-
-### <a name="reboot-of-source-machine-after-mobility-agent-upgrade"></a>Po upgradu agenta mobility restartování zdrojového počítače
-
-Restartování se doporučuje po každém upgradu agenta Mobility Ujistěte se, že jsou načteny všechny nejnovější změny na zdrojovém počítači. Je ale **není povinné**. Pokud rozdíl mezi verze agenta během posledního restartování a aktuální verze je větší než 4, restartování je povinný. Naleznete v následující tabulce pro podrobné vysvětlení.
-
-|**Verze agenta během poslední restartování** | **Upgrade na** | **Je restartovat povinné?**|
+|**Verze agenta (poslední restartování)** | **Upgradovat na** | **Povinná restartování?**|
 |---------|---------|---------|
-|9.16 |  9.18 | Není povinná|
-|9.16 | 9.19 | Není povinná|
-| 9.16 | 9.20 | Není povinná
- | 9.16 | 9.21 | Ano, nejprve upgradovat na 9,20 a potom restartujte před upgradem na 9.21 jako rozdíl mezi verzemi (9.16, kde byla provedena poslední restartování a cílová verze 9.21) je > 4
+|9,16 |  9,18 | Není povinné|
+|9,16 | 9,19 | Není povinné|
+| 9,16 | 9,20 | Není povinné
+ | 9,16 | 9,21 | Povinné.<br/><br/> Upgradujte na 9,20 a pak restartujte počítač před upgradem na 9,21.
 
-## <a name="links-to-currently-supported-update-rollups"></a>Odkazy na aktuálně podporovaných kumulativních aktualizací
+## <a name="hyper-v-vm-disaster-recovery-to-azure"></a>Zotavení po havárii virtuálního počítače Hyper-V do Azure
 
-|Kumulativní aktualizace  |Poskytovatel  |Jednotný instalační program| OVF  |MARS|
-|---------|---------|---------|---------|--------|
-|[Kumulativní aktualizace 37](https://support.microsoft.com/help/4508614/update-rollup-37-for-azure-site-recovery)     |   5.1.4300.0  |  9.25.5241.1   |  5.1.4300.0  | 2.0.9163.0
-|[Kumulativní aktualizace 36](https://support.microsoft.com/en-in/help/4503156)     |   5.1.4150.0  |  9.24.5211.1   |  5.1.4150.0  | 2.0.9160.0
-|[Kumulativní aktualizace 35](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery)     |   5.1.4000.0  |  9.23.5163.1   |  5.1.4000.0  | 2.0.9156.0
-|[Aktualizovat souhrn 34](https://support.microsoft.com/en-us/help/4490016/update-rollup-34-for-azure-site-recovery) – opravy hotfix     |   5.1.3950.0  |  9.22.5142.1   |  5.1.3950.0  | 2.0.9155.0
-|[Kumulativní aktualizace 33](https://support.microsoft.com/en-us/help/4489582/update-rollup-33-for-azure-site-recovery)     |   5.1.3900.0  |  9.22.5109.1   |  5.1.3900.0  | 2.0.9155.0
-|[Kumulativní aktualizace 32](https://support.microsoft.com/en-us/help/4485985/update-rollup-32-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
+### <a name="between-a-hyper-v-site-and-azure"></a>Mezi lokalitou Hyper-V a Azure
 
-## <a name="previous-update-rollups"></a>Předchozí kumulativní aktualizace
+1. Stáhněte aktualizaci pro poskytovatele Microsoft Azure Site Recovery.
+2. Nainstalujte zprostředkovatele na každý server Hyper-V zaregistrovaný v Site Recovery. Pokud používáte cluster, proveďte upgrade na všech uzlech clusteru.
 
-- [Kumulativní aktualizace 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)
-- [Kumulativní aktualizace 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)
-- [Kumulativní aktualizace 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)
-- [Kumulativní aktualizace 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery)
-- [S kumulativní aktualizací z 27.](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery)
-- [Kumulativní aktualizace 26](https://support.microsoft.com/help/4344054/update-rollup-26-for-azure-site-recovery)  
-- [Kumulativní aktualizace 25](https://support.microsoft.com/help/4278275/update-rollup-25-for-azure-site-recovery) 
-- [Kumulativní aktualizace 23](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 
-- [Kumulativní aktualizace 22](https://support.microsoft.com/help/4072852/update-rollup-22-for-azure-site-recovery) 
-- [Kumulativní aktualizace 21](https://support.microsoft.com/help/4051380/update-rollup-21-for-azure-site-recovery) 
-- [Kumulativní aktualizace 20](https://support.microsoft.com/help/4041105/update-rollup-20-for-azure-site-recovery) 
-- [Kumulativní aktualizace 19](https://support.microsoft.com/help/4034599/update-rollup-19-for-azure-site-recovery) 
+
+## <a name="between-an-on-premises-vmm-site-and-azure"></a>Mezi místním serverem VMM a Azure
+1. Stáhněte aktualizaci pro poskytovatele Microsoft Azure Site Recovery.
+2. Nainstalujte zprostředkovatele na server VMM. Pokud je v clusteru nasazený nástroj VMM, nainstalujte poskytovatele na všechny uzly clusteru.
+3. Nainstalujte nejnovějšího agenta Microsoft Azure Recovery Services na všechny hostitele nebo uzly clusteru Hyper-V.
+
+
+## <a name="between-two-on-premises-vmm-sites"></a>Mezi dvěma místními lokalitami VMM
+1. Stáhněte si nejnovější aktualizaci poskytovatele Microsoft Azure Site Recovery.
+2. Nainstalujte nejnovějšího poskytovatele na serveru VMM, který spravuje sekundární lokalitu pro obnovení. Pokud je v clusteru nasazený nástroj VMM, nainstalujte poskytovatele na všechny uzly clusteru.
+3. Po aktualizaci lokality pro obnovení nainstalujte zprostředkovatele na server VMM, který spravuje primární lokalitu.
+
+## <a name="next-steps"></a>Další postup
+
+Na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?product=site-recovery) Sledujte nové aktualizace a vydání.

@@ -1,22 +1,17 @@
 ---
-title: Ultra disky pro virtuální počítače s Linuxem – Azure managed disks | Dokumentace Microsoftu
-description: Další informace o ultra spravované disky pro virtuální počítače Azure
-services: virtual-machines-linux
+title: Ultra disky pro virtuální počítače se systémem Linux – Azure Managed disks | Microsoft Docs
+description: Další informace o Azure Managed disks pro virtuální počítače Azure
 author: roygara
 ms.service: virtual-machines-linux
-ms.workload: storage
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: rogarana
-ms.custom: seodec18
 ms.subservice: disks
-ms.openlocfilehash: 8683515f9b56990028f43d6f131e68efe102b435
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9429964cda20a663662c2bfcd075d1448ed33264
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65550308"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695770"
 ---
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

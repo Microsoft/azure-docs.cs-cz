@@ -1,7 +1,7 @@
 ---
-title: Jak používat větvení a zrušení operací s modelem konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Jak používat operace rozvětvení a vrácení zpět s modelem Conversation Learner Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Zjistěte, jak používat větvení a zrušení operací s modelem Learner konverzace.
+description: Naučte se používat větvení a operace vrácení zpět s modelem Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,76 +10,77 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 6ffa0881df07e453c8beb175b8580deebbfc1ec9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: f4f3024451696dbd0244d9da39cba67b49447af1
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389891"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703623"
 ---
-# <a name="how-to-use-branching-and-undo-operations"></a>Jak používat větvení a operace vrátit zpět
-V tomto kurzu jsme přejděte zpět a větvení operace.
+# <a name="how-to-use-branching-and-undo-operations"></a>Jak používat větvení a operace vrácení zpět
+V tomto kurzu provedeme operace zrušení a větvení.
 
 
 ## <a name="details"></a>Podrobnosti
 ### <a name="undo"></a>Vrácení zpět
-Umožňuje vývojářům "zpět" poslední možnost vstup nebo akce uživatele. Na pozadí "zpět" ve skutečnosti vytváří nové dialogové okno a přehrává až v předchozím kroku.  To znamená, že entita detekce zpětného volání a rozhraní API volá v dialogovém okně opět bude volána.
+Umožňuje vývojářům vrátit zpět poslední vstup uživatele nebo volbu akce. Na pozadí ve skutečnosti "zpět" vytvoří nový dialog a přehraje ho až k předchozímu kroku.  To znamená, že zpětné volání detekce entit a volání rozhraní API v dialogovém okně budou volána znovu.
 
-### <a name="branch"></a>Branch
-Vytvoří nový dialog trénovat na základě modelu, který začíná stejným způsobem jako existující trénování dialogové okno – tato akce uloží snaha o ručně znovu zadávat dialogové okno se změní. Na pozadí "větve" vytvoří nové dialogové okno a přehrává existující dialogu trénování až vybraný krok.  To znamená, že entita detekce zpětného volání a rozhraní API volá v dialogovém okně opět bude volána.
+### <a name="branch"></a>Větev
+Vytvoří nový vlakový dialog, který začíná stejným způsobem jako stávající dialogové okno s výukou. to znamená, že se změní úsilí ručního opětovného zadání dialogového okna. Na pozadí "větev" vytvoří nový dialog a přehraje stávající dialog vlaků až do vybraného kroku.  To znamená, že zpětné volání detekce entit a volání rozhraní API v dialogovém okně budou volána znovu.
 
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje, zda je spuštěna robotů, která přebírá pizza objednávky:
+Tento kurz vyžaduje, aby byl spuštěn robot, který přijímá Pizza objednávky:
 
     npm run demo-pizza
 
-### <a name="open-or-import-the-demo"></a>Otevření nebo importovat ukázku
+### <a name="open-or-import-the-demo"></a>Otevření nebo import ukázky
 
-Pokud jste už pracovali v průběhu kurzu pořadí pizza, jednoduše spusťte tohoto modelu ze seznamu ve webovém uživatelském rozhraní. V opačném případě bude nutné klikněte na "Import kurzy" a vyberte model s názvem "Demo-PizzaOrder".
+Pokud jste už pracovali v kurzu řazení Pizza a pak jednoduše otevřete tento model ze seznamu ve webovém uživatelském rozhraní. Jinak budete muset kliknout na "zkušební kurzy pro import" a vybrat model s názvem "demo-PizzaOrder".
 
 ## <a name="undo"></a>Vrácení zpět
 
-Tady je příklad toho, jak zobrazit `Undo` funkce v akci:
+Tady je příklad, jak zobrazit `Undo` funkci v akci:
 
-### <a name="training-dialogs"></a>Dialogová okna školení
-1. Na levém panelu klikněte na tlačítko "Dialogů Train" a klikněte `New Train Dialog` tlačítko.
-2. Zadejte "Order pizza".
+### <a name="training-dialogs"></a>Dialogová okna pro školení
+1. Na levém panelu klikněte na možnost výuka dialogových oken a potom klikněte `New Train Dialog` na tlačítko.
+2. Zadejte příkaz ORDER by Pizza.
 3. Klikněte na tlačítko `Score Actions`.
-4. Kliknutím vyberte "Co jste chtěli na váš pizza?"
-5. Zadejte "nic".
+4. Kliknutím vyberte "co byste chtěli v pizza?"
+5. Zadejte "cokoli".
 6. Klikněte na tlačítko `Undo`.
-    - Je odebrán poslední položky, a poslední odpovědi robotů "Co jste chtěli na váš pizza?"
+    - Poslední položka je odebrána, takže poslední reakce na robot "co byste chtěli mít na vašem pizza?"
 
-## <a name="branch"></a>Branch
+## <a name="branch"></a>Větev
 
-Pro tuto ukázku vytvoříme otevřete existující dialogu trénování a vytvořit nové dialogové okno vlak z něj rozvětvováním.
+V této ukázce otevřeme existující dialogové okno s výukou a vytvoříme z něj nové výukové dialogové okno pomocí větvení.
 
-1. Na levém panelu klikněte na tlačítko "Dialogů Train".
-2. Všimněte si, že mřížky, měli byste vidět jenom jeden školení, která začíná na "Nová objednávka".
-3. V mřížce, klikněte na možnost "Nová objednávka" otevřete dialogové okno existující trénování.
-4. Klikněte na poslední "Ne" v šabloně dialogu.
-5. Klikněte na ikonu "Větve", je v kroužku červeně na tomto obrázku:
+1. Na levém panelu klikněte na možnost výuka dialogových oken.
+2. Všimněte si mřížky, měli byste vidět jenom jedno školení, které začíná na nové objednávce.
+3. V mřížce klikněte na nové pořadí a otevřete dialogové okno existující vlak.
+4. V dialogovém okně klikněte na poslední ne.
+5. Klikněte na ikonu "větev", v tomto obrázku je červeně zakroužkovaná:
     - ![](../media/tutorial15_branch.PNG)
-    - Celý Dialog trénování před "Ne" zkopírována do nové dialogové okno trénování.
-    - Tím se ušetří, který vám znovu zadávat předchozí se změní prozkoumejte novou konverzaci "větev" od této chvíle.
-6. Zadejte "Ano", stiskněte enter.
+    - Celý dialog vlak před "ne" se zkopíruje do nového výukového dialogového okna.
+    - Tím se ušetříte tím, že znovu zadáte novou konverzaci "větev" z tohoto bodu.
+6. Zadejte "Ano", stiskněte klávesu ENTER.
 7. Klikněte na tlačítko `Score Actions`.
-    - V tomto okamžiku robota automaticky vybere odpověď, ale můžeme nelíbí odpovědi, tedy budeme ho změnit.
-8. Klikněte na poslední odpovědi robotů.
-    - Dejte nám to vybere jinou odpověď.
+    - V tomto okamžiku robot automaticky vybere odpověď, ale nelíbí se vám odpověď, abychom ji změnili.
+8. Klikněte na poslední odpověď robota.
+    - To nám umožní vybrat jinou odpověď.
 9. Vyberte "UseLastToppings".
 10. Klikněte na tlačítko `Score Actions`.
-    - Znovu robota automaticky vybere odpověď. Ji by měl říct "Máte salám a produkci minipivovarů ve wisconsinu hub ve vašich pizza.". 
-    - Tentokrát jsme proto budeme udržovat jej jako odpověď.
+    - Znovu automaticky vybere robota odpověď. Mělo by se jednat o "uzení, sýry a žampiony na Pizza.". 
+    - Tentokrát se mi líbí odpověď, abychom ji zachovali.
 11. Klikněte na tlačítko `Score Actions`.
-    - Znovu robota automaticky vybere odpověď, by mělo být uvedeno, "Chcete cokoli?"
-12. Zadejte "žádný".
+    - Zase robot automaticky vybere odpověď, měla by to vypadat nějak takto: "Přejete si něco jiného?"
+12. Zadejte "ne".
 13. Klikněte na tlačítko `Save Branch`.
-14. Všimněte si, že mřížka teď obsahuje dva školení, které začíná "Nová objednávka".
-    - Jeden z nich je ten, který jste použili k větví sady.
-    - A druhý je větvenou verze, kterou jste právě uložili.
-    - Klikněte na každý z nich k ověření těchto očekávání.
+14. Všimněte si, že mřížka teď obsahuje dvě školení, která začínají "novým pořadím".
+    - Jedna z nich je ta, kterou jste použili k rozvětvení.
+    - A druhá verze je větev, kterou jste právě uložili.
+    - Kliknutím na každé z nich ověřte tyto očekávání.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,6 +1,6 @@
 ---
-title: Monitorování úložiště v paměti XTP | Dokumentace Microsoftu
-description: Použít odhadu a sledování XTP úložiště v paměti, kapacity; Opravte chyby kapacity 41823
+title: Monitorovat úložiště XTP v paměti | Microsoft Docs
+description: Odhadnout a monitorovat využití úložiště XTP v paměti, kapacity; vyřešit chybu s kapacitou 41823
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -10,55 +10,54 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7542e9fa04eb838baca37dbe13f7cdacdfaf041b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c5a57f634c01cc42934a98decd8f392334dede6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035715"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567984"
 ---
-# <a name="monitor-in-memory-oltp-storage"></a>Úložiště OLTP v paměti monitorování
+# <a name="monitor-in-memory-oltp-storage"></a>Monitorování úložiště OLTP v paměti
 
-Při použití [OLTP v paměti](sql-database-in-memory.md), data v paměťově optimalizovaných tabulkách a proměnné tabulky se nachází v úložiště OLTP v paměti. Každá úroveň služby úrovně Premium a pro důležité obchodní informace má maximální velikost úložiště OLTP v paměti. V tématu [omezení prostředků založený na DTU – izolované databáze](sql-database-dtu-resource-limits-single-databases.md), [omezení prostředků založený na DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[omezení prostředků na základě virtuálních jader – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md).
+Při použití [OLTP v paměti](sql-database-in-memory.md)se data v paměťově optimalizovaných tabulkách a proměnných tabulek nacházejí v úložišti OLTP úložiště v paměti. Každá úroveň služby Premium a Pro důležité obchodní informace má maximální velikost úložiště OLTP v paměti. Viz omezení [prostředků na základě DTU –](sql-database-dtu-resource-limits-single-databases.md)izolovaná databáze, [omezení prostředků založené na DTU – elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[omezení prostředků založené na Vcore – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založené na Vcore – elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).
 
-Jakmile je tento limit překročen, vkládací a aktualizační operace mohou začít selhávat, chyba 41823 pro izolované databáze a elastických fondů v podrobnostech o chybě 41840. V tomto okamžiku budete muset buď odstranit data uvolnit paměť, nebo upgradovat na vrstvu služby nebo vypočítat velikost vaší databáze.
+Po překročení tohoto limitu můžou operace INSERT a Update začít selhat s chybou 41823 pro izolované databáze a chybou 41840 pro elastické fondy. V tomto okamžiku potřebujete buď odstranit data pro uvolnění paměti, nebo upgradovat úroveň služby nebo výpočetní velikost vaší databáze.
 
-## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Určení, zda data vešla do kapacita úložiště OLTP v paměti
+## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Určení, jestli se data vejdou do OLTP úložiště v paměti
 
-Určení limitů úložiště z různými úrovněmi služeb. V tématu [omezení prostředků založený na DTU – izolované databáze](sql-database-dtu-resource-limits-single-databases.md), [omezení prostředků založený na DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[omezení prostředků na základě virtuálních jader – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md).
+Určete velikost úložiště pro různé úrovně služeb. Viz omezení [prostředků na základě DTU –](sql-database-dtu-resource-limits-single-databases.md)izolovaná databáze, [omezení prostředků založené na DTU – elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[omezení prostředků založené na Vcore – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založené na Vcore – elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).
 
-Odhadnout požadavky na paměť pro paměťově optimalizované tabulky funguje stejným způsobem pro SQL Server jako to dělá ve službě Azure SQL Database. Trvat pár minut a přečtěte si tento článek na [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
+Odhad požadavků na paměť pro paměťově optimalizovanou tabulku funguje stejným způsobem jako v Azure SQL Database SQL Server. Projděte si tento článek na [webu MSDN](https://msdn.microsoft.com/library/dn282389.aspx), abyste si převzali několik minut.
 
-Tabulky a proměnné řádky tabulky, jakož i indexy, počítají velikost dat maximální počet uživatelů. Příkaz ALTER TABLE navíc musí dostatek volného místa k vytvoření nové verze celou tabulku a jeho indexy.
+Řádky a proměnné tabulky a také indexy se počítají směrem k maximální velikosti uživatelských dat. Kromě toho příkaz ALTER TABLE potřebuje dostatek místa, aby bylo možné vytvořit novou verzi celé tabulky a jejích indexů.
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
-Můžete monitorovat využití úložiště v paměti jako procento z limitu úložiště pro vaše výpočetní velikost v [webu Azure portal](https://portal.azure.com/): 
+Využití úložiště v paměti můžete monitorovat jako procentuální hodnotu limitu úložiště pro vaši výpočetní velikost v [Azure Portal](https://portal.azure.com/): 
 
-1. V okně databáze najít pole využití prostředků a klikněte na Upravit.
+1. V okně databáze vyhledejte pole využití prostředků a klikněte na Upravit.
 2. Vyberte metriku `In-Memory OLTP Storage percentage`.
-3. Přidat upozornění, klikněte na pole využití prostředků a otevřete tak okno metriky a potom klikněte na Přidat upozornění.
+3. Pokud chcete přidat výstrahu, kliknutím na pole využití prostředků otevřete okno metrika a pak klikněte na Přidat výstrahu.
 
-Nebo použijte tento dotaz k zobrazení využití úložiště v paměti:
+Nebo použijte následující dotaz k zobrazení využití úložiště v paměti:
 
 ```sql
     SELECT xtp_storage_percent FROM sys.dm_db_resource_stats
 ```
 
-## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Opravte-v-paměti OLTP úložiště situacích – chyby 41823 a 41840
+## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Opravte situaci OLTP úložiště při nedostatku paměti – chyby 41823 a 41840
 
-Dosažení limitu úložiště OLTP v paměti ve výsledcích databáze v vložit, aktualizovat, ALTER a vytvoření operací služeb při selhání s chybovou zprávu 41823 (pro izolované databáze) nebo Chyba 41840 (pro elastické fondy). Obě chyby způsobit aktivní transakci pro přerušení.
+Zasáhne se limit úložiště OLTP v paměti ve vaší databázi, ve kterém dojde k selhání operací vložení, aktualizace, ALTER a CREATE s chybovou zprávou 41823 (pro izolované databáze) nebo chybou 41840 (pro elastické fondy). Obě chyby způsobují přerušení aktivní transakce.
 
-Chybové zprávy 41823 a 41840 naznačují, že paměťově optimalizovaných tabulkách a proměnné tabulky v databázi nebo fond dosáhl maximální velikosti úložiště OLTP v paměti.
+Chybové zprávy 41823 a 41840 označují, že paměťově optimalizované tabulky a proměnné tabulky v databázi nebo ve fondu dosáhly maximální velikosti úložiště OLTP v paměti.
 
-Chcete-li vyřešit tuto chybu, buď:
+Chcete-li vyřešit tuto chybu, proveďte jednu z těchto akcí:
 
-* Odstranění dat z paměťově optimalizované tabulky, potenciálně snižování zátěže data, která mají tabulkách tradiční, založené na disku. nebo,
-* Upgrade na úrovni služby do jednoho s dostatečným místem úložiště v paměti pro data, která je potřeba nechat v paměťově optimalizovaných tabulkách.
+* Odstraňte data z paměťově optimalizovaných tabulek, která mohou překládat data na tradiční tabulky založené na disku. ani
+* Upgradujte vrstvu služby na jednu s dostatečným úložištěm v paměti pro data, která potřebujete k uchování v paměťově optimalizovaných tabulkách.
 
 > [!NOTE] 
-> Ve výjimečných případech může být chyby 41823 a 41840 přechodné, což znamená, je k dispozici dostatek dostupného úložiště OLTP v paměti a opakováním operace proběhne úspěšně. Proto doporučujeme pro oba sledování celkové dostupné úložiště OLTP v paměti a opakovat, pokud nejprve zjištění chyby 41823 nebo 41840. Další informace o logiku opakování, naleznete v tématu [zjišťování konfliktů a logika opakování s OLTP v paměti](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
+> Ve výjimečných případech můžou být chyby 41823 a 41840 přechodné, což znamená, že je k dispozici dostatek paměťového úložiště OLTP a opakování operace proběhne úspěšně. Proto doporučujeme monitorovat celkové dostupné úložiště OLTP v paměti a opakovat pokus při prvním výskytu chyby 41823 nebo 41840. Další informace o logice opakování najdete v tématu [zjištění konfliktů a logika opakování s OLTP v paměti](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
 
-## <a name="next-steps"></a>Další postup
-Pokyny k monitorování, najdete v části [monitorování Azure SQL Database pomocí zobrazení dynamické správy](sql-database-monitoring-with-dmvs.md).
+## <a name="next-steps"></a>Další kroky
+Pokyny k monitorování najdete v tématu [monitorování Azure SQL Database pomocí zobrazení dynamické správy](sql-database-monitoring-with-dmvs.md).

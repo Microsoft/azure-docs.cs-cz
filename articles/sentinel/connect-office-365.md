@@ -1,6 +1,6 @@
 ---
-title: Připojení k Azure Preview Sentinelu dat Office 365 | Dokumentace Microsoftu
-description: Informace o připojení k Azure ověřovacích dat Office 365.
+title: Připojit data Office 365 k Azure Sentinel Preview | Microsoft Docs
+description: Naučte se připojit data Office 365 k Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,45 +13,47 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1d6a467307e4816ffbb45f23bac55b8023267352
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0013540bf0ca921b2f41260dea185f6aa32567d7
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611241"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679269"
 ---
-# <a name="connect-data-from-office-365-logs"></a>Připojíte si data z Office 365 protokoly
+# <a name="connect-data-from-office-365-logs"></a>Připojení dat z protokolů Office 365
 
 > [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
+> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Můžete Streamovat protokoly auditu z [Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide) do Azure Sentinelu jediným kliknutím. Protokoly auditu z více tenantů do jednoho pracovního prostoru v ověřovacích Azure můžete Streamovat. Konektor protokolů aktivit Office 365 poskytuje podrobné informace o probíhající uživatelských aktivit. Zobrazí se informace o různé uživatele, správce, systému a akce zásad a události z Office 365. Propojením protokolů Office 365 do ověřovacích Azure slouží tato data k zobrazení řídicích panelů, vytvářet vlastní výstrahy a zlepšení procesu šetření.
+Protokoly auditu ze [sady Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide) můžete streamovat do Azure Sentinel jediným kliknutím. Protokoly auditu z několika tenantů můžete streamovat do jednoho pracovního prostoru v Azure Sentinel. Konektor protokolu aktivit Office 365 nabízí přehled o probíhajících činnostech uživatelů. Získáte informace o různých akcích uživatelů, správců, systémových nastavení a událostech ze sady Office 365. Připojením sady Office 365 do Azure Sentinel můžete tato data použít k zobrazení řídicích panelů, vytváření vlastních výstrah a zlepšení procesu šetření.
 
+> [!IMPORTANT]
+> Pokud máte licenci E3, musíte předtím, než budete mít přístup k datům prostřednictvím rozhraní API aktivity správy sady Office 365, povolit jednotné protokolování auditu pro vaši organizaci sady Office 365. Provedete to tak, že zapnete protokol auditu Office 365. Pokyny najdete v tématu [Zapnutí nebo vypnutí prohledávání protokolu auditu systému Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off). Další informace najdete v referenčních informacích k [rozhraní API pro správu Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte být globálním správcem nebo správcem zabezpečení ve svém tenantovi
-- V počítači, ze kterého jste přihlášeni do Azure Sentinelu k vytvoření připojení, ujistěte se, že port 4433 je otevřený pro webový provoz.
+- Musíte být globálním správcem nebo správcem zabezpečení vašeho tenanta.
+- V počítači, ze kterého jste se přihlásili ke službě Azure Sentinel pro vytvoření připojení, se ujistěte, že je port 4433 otevřený pro webový provoz.
 
 ## <a name="connect-to-office-365"></a>Připojení k Office 365
 
-1. V Azure Sentinelu, vyberte **datové konektory** a potom klikněte na tlačítko **Office 365** dlaždici.
+1. V Azure Sentinel vyberte **datové konektory** a pak klikněte na dlaždici **Office 365** .
 
-2. Pokud jste ještě nepovolili, v části **připojení** použít **povolit** tlačítko povolíte řešení Office 365. Pokud je už povolená, budou označeny v okně připojení, které jsou už povolená.
-1. Office 365 umožňuje streamování dat z více tenantů do Azure Sentinelu. Pro každého klienta, které se chcete připojit, přidání tenanta pod **připojení klientů k Azure Sentinelu**. 
-1. Otevře se obrazovka Active Directory. Zobrazí se výzva k ověření uživatele globální správce na každého klienta, který chcete připojit k Azure Sentinelu a poskytnout oprávnění Azure ověřovací protokoly číst. 
-5. V části protokoly aktivit Stream Office 365, klikněte na **vyberte** zvolit typy protokolů, které chcete Streamovat do ověřovacích Azure. V současné době Sentinelu Azure podporuje Exchange a SharePoint.
+2. Pokud jste ho ještě nepovolili, v části **připojení** použijte tlačítko **Povolit** , aby bylo možné řešení Office 365 povolit. Pokud už je povolená, bude se identifikovat na obrazovce připojení, jak už je povolené.
+1. Office 365 umožňuje streamovat data z několika tenantů do Azure Sentinel. Pro každého tenanta, ke kterému se chcete připojit, přidejte tenanta v části **připojit klienty k Azure Sentinel**. 
+1. Otevře se obrazovka služby Active Directory. Zobrazí se výzva k ověření pomocí globálního správce pro každého tenanta, kterého se chcete připojit ke službě Azure Sentinel, a poskytněte oprávnění službě Azure Sentinel pro čtení protokolů. 
+5. V části streamování protokolů aktivit Office 365 klikněte na **Vybrat** a vyberte typy protokolů, které chcete streamovat do Azure Sentinel. Služba Azure Sentinel v současné době podporuje Exchange a SharePoint.
 
-4. Klikněte na tlačítko **použít změny**.
+4. Klikněte na **použít změny**.
 
-3. Chcete-li použít příslušné schéma v Log Analytics pro protokoly služeb Office 365, vyhledejte **OfficeActivity**.
+3. Pokud chcete použít příslušné schéma v Log Analytics pro protokoly Office 365, vyhledejte **OfficeActivity**.
 
 
-## <a name="next-steps"></a>Další postup
-V tomto dokumentu jste zjistili, jak se připojit k Azure Sentinelu Office 365. Další informace o Azure Sentinelu, naleznete v následujících článcích:
-- Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
-- Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).
+## <a name="next-steps"></a>Další kroky
+V tomto dokumentu jste zjistili, jak připojit Office 365 ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
 

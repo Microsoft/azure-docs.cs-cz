@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-manager: craigg
 ms.date: 07/02/2019
-ms.openlocfilehash: 9dfc22be45b68ba4ff59d88810435db35bafc8b6
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 0e9bdb22baed74ef948f369f9259784900486860
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494968"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569082"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení Azure SQL
 
@@ -55,7 +54,7 @@ Pokud se připojujete z oblasti mimo Azure, připojení mají `Proxy` ve výchoz
 
 ![Přehled architektury](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
-## <a name="azure-sql-database-gateway-ip-addresses"></a>IP adresy Azure SQL Database brány
+## <a name="azure-sql-database-gateway-ip-addresses"></a>IP adresy brány Azure SQL Database
 
 V následující tabulce jsou uvedené IP adresy bran podle oblasti. Pokud se chcete připojit k Azure SQL Database, je potřeba, abyste povolili & síťového provozu ze **všech** bran pro danou oblast.
 

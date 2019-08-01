@@ -1,6 +1,6 @@
 ---
-title: Prostředek založený na DTU databáze SQL Azure omezuje izolované databáze | Dokumentace Microsoftu
-description: Tato stránka popisuje některé běžné limity prostředků založený na DTU pro izolované databáze ve službě Azure SQL Database.
+title: Azure SQL Database omezení prostředků na základě DTU v jednom databázi | Microsoft Docs
+description: Tato stránka popisuje několik běžných omezení prostředků na bázi DTU pro izolované databáze v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -10,88 +10,87 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/20/2019
-ms.openlocfilehash: 0e4d87ee0d0d09a84e960d511ded87dc226515ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 84e39a727d5be842b356e5bd30333cb154df86aa
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762669"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568785"
 ---
-# <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí nákupní model založený na DTU
+# <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Omezení prostředků pro izolované databáze s využitím nákupního modelu založeného na DTU
 
-Tento článek obsahuje podrobné prostředků limity pro izolované databáze Azure SQL Database pomocí nákupní model založený na DTU.
+Tento článek poskytuje podrobné omezení prostředků pro Azure SQL Database izolované databáze s využitím nákupního modelu založeného na DTU.
 
-Založený na DTU nákupní model prostředků omezení pro elastické fondy najdete v tématu [omezení prostředků založený na DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md). Omezení prostředků založený na virtuálních jádrech najdete v tématu [omezení prostředků na základě virtuálních jader – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md). Další informace týkající se různých tyto modely nákupu najdete v tématu [nákupu modely a úrovní služeb](sql-database-purchase-models.md).
+Pro omezení prostředků nákupního modelu na základě DTU pro elastické fondy se podívejte na [omezení prostředků na bázi DTU – elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md). Omezení prostředků založené na vCorech najdete v tématu [omezení prostředků založené na Vcore – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založené na Vcore – elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md). Další informace o různých nákupních modelech najdete v tématu [nakupování modelů a úrovní služeb](sql-database-purchase-models.md).
 
-## <a name="single-database-storage-sizes-and-compute-sizes"></a>Izolované databáze: Velikosti úložiště a výpočty velikostí
+## <a name="single-database-storage-sizes-and-compute-sizes"></a>Samostatná databáze: Velikosti úložiště a velikosti výpočtů
 
-Následující tabulky ukazují prostředky dostupné pro izolované databáze na jednotlivých úrovních služby a vypočítat velikost. Můžete nastavit úroveň služby, výpočetního prostředí a velikost úložiště pro izolovanou databázi pomocí [webu Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [příkazů jazyka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), [ Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases), nebo [rozhraní REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases).
+V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici pro izolovanou databázi v každé úrovni služby a výpočetní velikost. Můžete nastavit úroveň služby, výpočetní velikost a množství úložiště pro jednu databázi pomocí [Azure Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [jazyka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShellu](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), rozhraní příkazového [řádku Azure](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)nebo [REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases).
 
 > [!IMPORTANT]
-> Škálování pokyny a důležité informace, najdete v části [škálování izolované databáze](sql-database-single-database-scale.md)
+> Pokyny a požadavky pro škálování najdete v tématu [škálování izolované databáze](sql-database-single-database-scale.md) .
 
 ### <a name="basic-service-tier"></a>Úroveň služby Basic
 
-| **Vypočítat velikost** | **Basic** |
+| **Velikost výpočetního prostředí** | **Basic** |
 | :--- | --: |
 | Maximální počet DTU | 5 |
 | Zahrnuté úložiště (GB) | 2 |
 | Maximální počet možností úložiště (GB) | 2 |
-| Maximální úložiště OLTP v paměti (GB) |neuvedeno |
+| Maximální úložiště OLTP v paměti (GB) |Není k dispozici |
 | Maximální počet souběžných pracovních procesů (požadavků) | 30 |
 | Maximální počet souběžných relací | 300 |
 |||
 
 ### <a name="standard-service-tier"></a>Úroveň služby Standard
 
-| **Vypočítat velikost** | **S0** | **S1** | **S2** | **S3** |
+| **Velikost výpočetního prostředí** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | Maximální počet DTU | 10 | 20 | 50 | 100 |
 | Zahrnuté úložiště (GB) | 250 | 250 | 250 | 250 |
 | Maximální počet možností úložiště (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Maximální úložiště OLTP v paměti (GB) | neuvedeno | neuvedeno | neuvedeno | neuvedeno |
+| Maximální úložiště OLTP v paměti (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 | Maximální počet souběžných pracovních procesů (požadavků)| 60 | 90 | 120 | 200 |
 | Maximální počet souběžných relací |600 | 900 | 1200 | 2400 |
 ||||||
 
-### <a name="standard-service-tier-continued"></a>Úrovně služeb Standard (pokračování)
+### <a name="standard-service-tier-continued"></a>Úroveň služby úrovně Standard (pokračování)
 
-| **Vypočítat velikost** | **S4** | **S6** | **S7** | **S9** | **S12** |
+| **Velikost výpočetního prostředí** | **S4** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|
 | Maximální počet DTU | 200 | 400 | 800 | 1600 | 3000 |
 | Zahrnuté úložiště (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maximální počet možností úložiště (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Maximální úložiště OLTP v paměti (GB) | neuvedeno | neuvedeno | neuvedeno | neuvedeno |neuvedeno |
+| Maximální úložiště OLTP v paměti (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |Není k dispozici |
 | Maximální počet souběžných pracovních procesů (požadavků)| 400 | 800 | 1600 | 3200 |6000 |
 | Maximální počet souběžných relací |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
 
 ### <a name="premium-service-tier"></a>Úroveň služby Premium
 
-| **Vypočítat velikost** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
+| **Velikost výpočetního prostředí** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | Maximální počet DTU | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Zahrnuté úložiště (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
-| Maximální počet možností úložiště (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
+| Zahrnuté úložiště (GB) | 500 | 500 | 500 | 500 | 4096 * | 4096 * |
+| Maximální počet možností úložiště (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 * | 4096 * |
 | Maximální úložiště OLTP v paměti (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maximální počet souběžných pracovních procesů (požadavků)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Maximální počet souběžných relací | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-\* Od 1 024 GB až 4096 GB v přírůstcích po 256 GB
+\*Od 1024 GB až 4096 GB v přírůstcích po 256 GB
 
 > [!IMPORTANT]
-> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, střed USA – Západ, oblastí pro úlohy ministerstva obrany USA a US Government centrální. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuálních omezení pro P11 – P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium, kromě těchto: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správa USA – střed. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!NOTE]
-> Pro `tempdb` omezení, najdete v článku [omezení databáze tempdb](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
+> Omezení najdete v tématu [omezení tempdb.](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database) `tempdb`
 
 ## <a name="next-steps"></a>Další postup
 
-- VCore omezení prostředků pro izolovanou databázi, naleznete v tématu [omezení prostředků pro izolované databáze pomocí nákupní model založený na virtuálních jádrech](sql-database-vcore-resource-limits-single-databases.md)
-- VCore omezení prostředků pro elastické fondy najdete v tématu [limity pro elastické fondy pomocí nákupní model založený na virtuálních jádrech prostředků](sql-database-vcore-resource-limits-elastic-pools.md)
-- Omezení prostředků DTU pro elastické fondy najdete v tématu [limity pro elastické fondy pomocí nákupní model založený na DTU prostředků](sql-database-dtu-resource-limits-elastic-pools.md)
-- Omezení prostředků pro spravované instance najdete v tématu [managed instance omezení prostředků](sql-database-managed-instance-resource-limits.md).
-- Informace o obecných omezeních Azure najdete v tématu [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md).
-- Informace o omezení prostředků na databázovém serveru najdete v tématu [přehled omezení prostředků na serveru služby SQL Database](sql-database-resource-limits-database-server.md) informace o omezeních na úrovni serveru a předplatné.
+- Omezení prostředků vCore pro izolovanou databázi najdete v tématu [omezení prostředků pro izolované databáze pomocí nákupního modelu založeného na Vcore](sql-database-vcore-resource-limits-single-databases.md) .
+- Omezení prostředků vCore pro elastické fondy najdete v tématu [omezení prostředků pro elastické fondy pomocí nákupního modelu založeného na Vcore](sql-database-vcore-resource-limits-elastic-pools.md) .
+- Omezení prostředků DTU pro elastické fondy najdete v tématu [omezení prostředků pro elastické fondy pomocí nákupního modelu založeného na DTU](sql-database-dtu-resource-limits-elastic-pools.md) .
+- Omezení prostředků pro spravované instance najdete v tématu [omezení prostředků spravované instance](sql-database-managed-instance-resource-limits.md).
+- Informace o obecných omezeních Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md).
+- Informace o omezeních prostředků na databázovém serveru najdete v tématu [Přehled omezení prostředků na serveru SQL Database](sql-database-resource-limits-database-server.md) , kde najdete informace o omezeních na úrovni serveru a předplatného.

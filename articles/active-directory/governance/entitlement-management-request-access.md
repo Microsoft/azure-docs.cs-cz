@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f78d1853194cad000aa2e54b40d1ac5003544
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489049"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678107"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Požádat o přístup k balíčku přístupu ve správě nároků Azure AD (Preview)
 
@@ -44,7 +44,7 @@ Prvním krokem je přihlášení k portálu pro přístup, kde si můžete vyž�
 
 1. Přihlaste se k portálu přístupu.
 
-    Ujistěte se, že používáte účet organizace. Pokud si nejste jistí, obraťte se na svého projektu nebo obchodní manažer.
+    Ujistěte se, že používáte svůj organizační (pracovní nebo školní) účet. Pokud si nejste jistí, obraťte se na svého projektu nebo obchodní manažer.
 
 ## <a name="request-an-access-package"></a>Vyžádání balíčku pro přístup
 
@@ -52,6 +52,9 @@ Po nalezení balíčku přístupu na portálu pro přístup můžete odeslat ž�
 
 **Požadovaná role:** Žadatel
 
+1. V seznamu vyhledejte balíček pro přístup.  V případě potřeby můžete hledat zadáním hledaného řetězce a následným výběrem filtru **název**, **katalog**nebo **prostředky** .
+
+    ![Můj portál pro přístup – vyhledávání prostředků](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
 1. Klikněte na značku zaškrtnutí a vyberte balíček pro přístup.
 
     ![Portál přístupu – přístupové balíčky](./media/entitlement-management-shared/my-access-access-packages.png)
@@ -94,7 +97,7 @@ Pokud požadujete přístup k balíčku přístupu, který má několik zásad, 
 
 **Požadovaná role:** Žadatel
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Schválení nebo zamítnutí žádostí o přístup](entitlement-management-request-approve.md)
 - [Žádost o proces a e-mailová oznámení](entitlement-management-process.md)

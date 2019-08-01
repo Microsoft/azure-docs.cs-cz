@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 168068094761fd35bf0386f476fbdd1262e9643f
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 509a08705d87e8f789e26ebbcec295a31f99f416
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228309"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567634"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurace existující virtuální sítě pro Azure SQL Database spravovanou instanci
 
@@ -57,7 +56,7 @@ Skript připraví podsíť ve třech krocích:
 2. Potvrdit Zobrazuje uživatele sadu změn, které je třeba provést pro přípravu podsítě pro nasazení spravované instance. Také si vyžádá souhlas.
 3. Systém Správně nakonfiguruje virtuální síť a podsíť.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přehled najdete v tématu [co je spravovaná instance?](sql-database-managed-instance.md).
 - Kurz, ve kterém se dozvíte, jak vytvořit virtuální síť, vytvořit spravovanou instanci a obnovit databázi ze zálohy databáze, najdete v tématu [Vytvoření spravované instance Azure SQL Database](sql-database-managed-instance-get-started.md).

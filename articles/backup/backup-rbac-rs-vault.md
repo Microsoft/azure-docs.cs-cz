@@ -1,18 +1,19 @@
 ---
 title: Správa záloh pomocí Access Control založeného na rolích Azure
 description: Pomocí Access Control na základě rolí můžete spravovat přístup k operacím správy zálohování v trezoru Recovery Services.
-author: utraghuv
-manager: vijayts
+ms.reviewer: utraghuv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: utraghuv
-ms.openlocfilehash: 928c08862fdb8a447b6b7afdd7fc12317a201224
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: d0d2663fcf7be9662325b24f9f063a8f3def668a
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464963"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688518"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Pro správu Azure Backup bodů obnovení použít Access Control na základě rolí
 Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.

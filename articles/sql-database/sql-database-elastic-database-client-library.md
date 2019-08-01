@@ -1,6 +1,6 @@
 ---
-title: Vytváření škálovatelných cloudových databází | Dokumentace Microsoftu
-description: Vytvářet škálovatelné aplikace .NET databáze Klientská knihovna elastic database
+title: Vytváření škálovatelných cloudových databází | Microsoft Docs
+description: Vytváření škálovatelných databázových aplikací .NET pomocí klientské knihovny elastické databáze
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,66 +10,65 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 1c6e77f3afc90a8c018296db80253d8b9a22159e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24b7f769be3f4db3c36412e162b5cda40e3ca959
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234111"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568710"
 ---
 # <a name="building-scalable-cloud-databases"></a>Vytváření škálovatelných cloudových databází
 
-Horizontální navýšení kapacity databáze můžete snadno udělat pomocí škálovatelné nástroje a funkce pro službu Azure SQL Database. Konkrétně můžete použít **Klientská knihovna Elastic Database** k vytvoření a Správa databází s horizontálním navýšením kapacity. Tato funkce vám umožní snadno vyvíjet horizontálně dělené aplikace pomocí stovky – nebo dokonce tisíců – databází Azure SQL.
+Škálování databází lze snadno provést pomocí škálovatelných nástrojů a funkcí pro Azure SQL Database. Konkrétně můžete pomocí **klientské knihovny elastic Database** vytvářet a spravovat databáze s horizontálním škálováním kapacity. Tato funkce umožňuje snadno vyvíjet aplikace horizontálně dělené s využitím stovek – nebo dokonce tisíců databází SQL Azure.
 
-Stažení:
+Ke stažení:
 
-* Verze Javy knihovny, najdete v článku [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
-* Rozhraní .NET verze knihovny, najdete v článku [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
+* Verze Java knihovny, viz [centrální úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
+* Verze rozhraní .NET knihovny, viz [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
 ## <a name="documentation"></a>Dokumentace
 
 1. [Začínáme s nástroji Elastic Database](sql-database-elastic-scale-get-started.md)
-2. [Funkce elastic Database](sql-database-elastic-scale-introduction.md)
+2. [Elastic Database funkce](sql-database-elastic-scale-introduction.md)
 3. [Správa mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md)
 4. [Migrace existujících databází pro horizontální navýšení kapacity](sql-database-elastic-convert-to-use-elastic-tools.md)
 5. [Směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md)
-6. [Dotazy na více horizontálních oddílů](sql-database-elastic-scale-multishard-querying.md)
-7. [Přidání horizontálního oddílu pomocí nástrojů pro elastické databáze](sql-database-elastic-scale-add-a-shard.md)
-8. [Aplikace s více tenanty s nástroji elastic database a zabezpečení na úrovní řádků](sql-database-elastic-tools-multi-tenant-row-level-security.md)
-9. [Upgrade klientské knihovny aplikace](sql-database-elastic-scale-upgrade-client-library.md) 
-10. [Přehled elastické dotazy](sql-database-elastic-query-overview.md)
+6. [Dotazy s více horizontálních oddílů](sql-database-elastic-scale-multishard-querying.md)
+7. [Přidání horizontálních oddílů pomocí nástrojů Elastic Database](sql-database-elastic-scale-add-a-shard.md)
+8. [Víceklientské aplikace s nástroji elastické databáze a zabezpečením na úrovni řádků](sql-database-elastic-tools-multi-tenant-row-level-security.md)
+9. [Upgradovat klientské aplikace knihovny](sql-database-elastic-scale-upgrade-client-library.md) 
+10. [Přehled elastických dotazů](sql-database-elastic-query-overview.md)
 11. [Glosář nástrojů elastické databáze](sql-database-elastic-scale-glossary.md)
-12. [Klientská knihovna elastic Database s Entity Framework](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)
-13. [Klientská knihovna elastic database s Dapperem](sql-database-elastic-scale-working-with-dapper.md)
-14. [Dělení a slučování](sql-database-elastic-scale-overview-split-and-merge.md)
+12. [Elastic Database klientské knihovny s Entity Framework](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)
+13. [Klientská knihovna elastické databáze s Dapperem](sql-database-elastic-scale-working-with-dapper.md)
+14. [Nástroj pro dělení a slučování](sql-database-elastic-scale-overview-split-and-merge.md)
 15. [Čítače výkonu pro správce mapování horizontálních oddílů](sql-database-elastic-database-client-library.md) 
-16. [Nejčastější dotazy týkající se nástrojů Elastic database](sql-database-elastic-scale-faq.md)
+16. [Nejčastější dotazy k nástrojům elastické databáze](sql-database-elastic-scale-faq.md)
 
 ## <a name="client-capabilities"></a>Možnosti klienta
 
-Horizontální navýšení kapacity aplikace pomocí *horizontálního dělení* představuje výzev pro vývojáře i správce. Klientská knihovna zjednodušíte úlohy správy tím, že poskytuje nástroje, které umožní obou vývojáři a správci spravovat databází s horizontálním navýšením kapacity. V Typickým příkladem je mnoho databází, známé jako "horizontálních oddílů," pro správu. Zákazníci jsou umístěné ve stejné databázi a není (schéma jedním tenantem) zákazníkovi jednu databázi. Klientská knihovna zahrnuje tyto funkce:
+Horizontální navýšení kapacity aplikací pomocí *horizontálního dělení* představují výzvy pro vývojáře i správce. Klientská knihovna zjednodušuje úlohy správy tím, že poskytuje nástroje, které umožňují vývojářům i správcům spravovat databáze s horizontálním škálováním kapacity. V typickém příkladu je pro správu k dispozici mnoho databází, označovaných jako "horizontálních oddílů". Zákazníci jsou společně umístěni ve stejné databázi a jedna databáze je určena pro každého zákazníka (schéma s jedním tenantům). Knihovna klienta zahrnuje tyto funkce:
 
-- **Správa mapování horizontálních oddílů**: Volá se, "správce mapování horizontálních oddílů" zvláštní databáze se vytvoří. Správa mapování horizontálních oddílů je možnost pro aplikaci pro správu metadata o jeho horizontálních oddílů. Vývojáři můžou využívat tuto funkci k registraci databáze jako horizontální oddíly, popisují mapování jednotlivé horizontální dělení klíče nebo klíče oblastí pro tyto databáze a udržovat tato metadata jako číslo a vyvíjí složení databáze tak, aby odrážely změny kapacitu. Bez Klientská knihovna elastic database je třeba trávit mnoho času psaní kódu správu při implementaci horizontálního dělení. Podrobnosti najdete v tématu [správy mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md).
+- **Správa map horizontálních oddílů**: Vytvoří se speciální databáze nazývaná "správce map horizontálních oddílů". Správa map horizontálních oddílů je schopnost aplikace spravovat metadata o své horizontálních oddílů. Vývojáři mohou tuto funkci používat k registraci databází jako horizontálních oddílů, popisují mapování jednotlivých klíčů horizontálního dělení nebo rozsahů klíčů pro tyto databáze a spravovat tato metadata jako počet a složení databází, které se rozvíjejí, aby odrážely změny kapacity. Bez klientské knihovny elastické databáze byste při implementaci horizontálního dělení museli strávit spoustu času při psaní kódu správy. Podrobnosti najdete v tématu [Správa map horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md).
 
-- **Směrování závislé na datech**: Představte si žádosti přicházející do aplikace. Založené na hodnotě klíče horizontálního dělení požadavku, aplikace potřebuje k určení správné databáze založené na hodnotě klíče. Potom otevře připojení k databázi pro zpracování žádosti. Směrování závislé na datech poskytuje možnost otevření připojení pomocí jediného jednoduché volání do mapy horizontálního dělení aplikace. Směrování závislé na datech byla infrastruktury kódu, která je teď předmětem funkce v klientské knihovně elastic database jiné oblasti. Podrobnosti najdete v tématu [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md).
-- **Dotazy na více horizontálních oddílů (MSQ)** : Dotazování více horizontálních oddílů funguje, když požadavek zahrnuje několik (nebo všechny) horizontálních oddílů. Dotazování více horizontálních oddílů spouští stejný kód T-SQL pro všemi horizontálními oddíly nebo sadu horizontálních oddílů. Výsledky ze zúčastněných horizontální oddíly jsou sloučeny do celkový výsledek nastavit pomocí sémantiky UNION ALL. Funkce jako prostřednictvím Klientská knihovna zpracovává mnoho úloh, včetně: Správa připojení, správa vláken, zpracování chyb a mezilehlých výsledků zpracování. MSQ můžete dotazovat až na stovky horizontálních oddílů. Podrobnosti najdete v tématu [dotazování více horizontálních oddílů](sql-database-elastic-scale-multishard-querying.md).
+- **Směrování závislé na datech**: Představte si, že žádost přichází do aplikace. Na základě hodnoty horizontálního dělení klíče požadavku musí aplikace určit správnou databázi na základě hodnoty klíče. Pak otevře připojení k databázi pro zpracování žádosti. Směrování závislé na datech poskytuje možnost otevřít připojení s jedním jednoduchým voláním do mapy horizontálních oddílů aplikace. Směrování závislé na datech bylo další oblastí kódu infrastruktury, která je teď pokrytá funkcemi v klientské knihovně elastické databáze. Podrobnosti najdete v tématu [Směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md).
+- **Dotazy multi-horizontálních oddílů (MSQ)** : Dotazování multi-horizontálních oddílů funguje, když požadavek zahrnuje několik (nebo všechny) horizontálních oddílů. Dotaz s více horizontálních oddílůmi spouští stejný kód T-SQL ve všech horizontálních oddílů nebo sadě horizontálních oddílů. Výsledky z zúčastněných horizontálních oddílů se sloučí do celkové sady výsledků pomocí SJEDNOCENí všech sémantik. Funkce, která je vystavena prostřednictvím klientské knihovny, zpracovává mnoho úloh, včetně správy připojení, správy vláken, zpracování chyb a průběžného zpracování výsledků. MSQ se může dotazovat až na stovky horizontálních oddílů. Podrobnosti najdete v tématu [dotazování multi-horizontálních oddílů](sql-database-elastic-scale-multishard-querying.md).
 
-Zákazníci, kteří používají nástroje pro elastické databáze obecně můžete očekávat zobrazíte všechny funkce jazyka T-SQL při odesílání operace horizontálního oddílu místní operace napříč horizontálními oddíly, které mají své vlastní sémantiku na rozdíl od.
+Obecně platí, že zákazníci, kteří používají elastické databázové nástroje, můžou při odesílání horizontálních oddílů místních operací na rozdíl mezi horizontálních oddílů operacemi, které mají svou vlastní sémantiku, očekávat plnou funkčnost T-SQL.
 
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Klientská knihovna elastic Database ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.NET](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) – abychom **Stáhnout** knihovny.
+- Knihovna klienta Elastic Database ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.NET](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) – ke **stažení** knihovny.
 
-- [Začínáme s nástroji elastic database](sql-database-elastic-scale-get-started.md) – zkuste **ukázkovou aplikaci** , která ukazuje funkce klienta.
+- [Začínáme s nástroji pro elastické databáze](sql-database-elastic-scale-get-started.md) – Vyzkoušejte si **ukázkovou aplikaci** , která předvádí klientské funkce.
 
-- GitHub ([Java](https://github.com/Microsoft/elastic-db-tools-for-java/blob/master/README.md), [.NET](https://github.com/Azure/elastic-db-tools)) – k přispívání do kódu.
-- [Přehled služby Azure SQL Database elastic query](sql-database-elastic-query-overview.md) – Pokud chcete použít elastické dotazy.
+- GitHub ([Java](https://github.com/Microsoft/elastic-db-tools-for-java/blob/master/README.md), [.NET](https://github.com/Azure/elastic-db-tools)) – pro zajištění příspěvků kódu.
+- [Přehled Azure SQL Database elastický dotaz](sql-database-elastic-query-overview.md) – pro použití elastických dotazů.
 
-- [Přesun dat mezi databázemi s horizontálním navýšením kapacity](sql-database-elastic-scale-overview-split-and-merge.md) – pokyny k používání **nástroj split-merge**.
+- [Přesouvání dat mezi vysoce škálovatelnými cloudových databází](sql-database-elastic-scale-overview-split-and-merge.md) – pokyny k používání **Nástroje pro dělení a slučování**.
 
 
 

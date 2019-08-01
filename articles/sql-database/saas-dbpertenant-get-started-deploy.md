@@ -1,6 +1,6 @@
 ---
-title: Databáze na tenanta SaaS kurz – Azure SQL Database | Dokumentace Microsoftu
-description: Nasazení a zkoumání SaaS aplikace Wingtip Tickets víceklientské aplikace, která ukazuje vzor databáze na tenanta a ostatní vzorce SaaS pomocí Azure SQL Database.
+title: Kurz SaaS databáze na tenanta – Azure SQL Database | Microsoft Docs
+description: Nasaďte a prozkoumejte SaaS víceklientské aplikace Wingtip Tickets, která ukazuje vzor databáze na tenanta a další SaaS vzory pomocí Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -10,154 +10,153 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: bbb67845922dd9a3b2a78f76bf25d73bace98a82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d5326a3a154ed6f193b5527a0150ad84c843c273
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240124"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570448"
 ---
-# <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Nasazení a zkoumání víceklientské aplikace SaaS, která používá vzor databáze na tenanta s využitím SQL Database
+# <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Nasaďte a prozkoumejte aplikaci víceklientské SaaS, která používá model databáze na tenanta s SQL Database
 
-V tomto kurzu nasazení a zkoumání SaaS aplikace Wingtip Tickets aplikace databáze na tenanta (Wingtip). Aplikace používá model databáze na tenanta k ukládání dat z více tenantů. Tato aplikace je určená aby ukazovala funkce služby Azure SQL Database, které zjednodušují jak povolit scénáře SaaS.
+V tomto kurzu nasadíte a prozkoumáte aplikaci Wingtip Tickets SaaS Database-per-tenant (Wingtip). Aplikace používá model databáze pro jednotlivé klienty k ukládání dat více tenantů. Aplikace je navržená tak, aby předvedla funkce Azure SQL Database, které zjednodušují způsob povolení scénářů SaaS.
 
-Pět minut, po výběru **nasadit do Azure**, máte víceklientské aplikace SaaS. Tato aplikace obsahuje databázi SQL, na kterém běží v cloudu. Aplikace se nasazuje se třemi ukázkovými klienty, z nichž každá má svou vlastní databázi. Všechny databáze se nasazují do elastického fondu SQL. Aplikace se nasadí do vašeho předplatného Azure. Máte úplný přístup ke zkoumání a práci s jednotlivých součástí aplikace. Jsou k dispozici v jazyce C# zdrojový kód aplikace a skripty pro správu [úložiště GitHub WingtipTicketsSaaS DbPerTenant][github-wingtip-dpt].
+Pět minut po výběru **nasazení do Azure**máte víceklientské aplikace SaaS. Aplikace obsahuje SQL Database, která běží v cloudu. Aplikace se nasazuje se třemi ukázkovými klienty, z nichž každá má svou vlastní databázi. Všechny databáze jsou nasazeny do elastického fondu SQL. Aplikace se nasadí do vašeho předplatného Azure. Máte plný přístup, abyste mohli prozkoumat jednotlivé komponenty aplikace a pracovat s nimi. Zdrojový kód C# aplikace a skripty pro správu jsou k dispozici v [úložišti GitHub WingtipTicketsSaaS-DbPerTenant][github-wingtip-dpt].
 
 V tomto kurzu se dozvíte:
 
 > [!div class="checklist"]
-> - Jak nasadit aplikaci SaaS aplikace Wingtip.
-> - Kde lze získat skripty kód a správu zdroje aplikace.
-> - O serverů, fondů a databází, které tvoří aplikaci.
-> - Jak se tenanti jsou namapovaní na svá data pomocí *katalogu*.
+> - Jak nasadit aplikaci Wingtip SaaS
+> - Kde získám zdrojový kód aplikace a skripty pro správu.
+> - O serverech, fondech a databázích, které tvoří aplikaci.
+> - Jak jsou klienti mapováni na svá data pomocí *katalogu*.
 > - Jak zřídit nového tenanta.
-> - Jak monitorovat aktivity tenanta v aplikaci.
+> - Jak monitorovat aktivitu klienta v aplikaci.
 
-A [řadu souvisejících kurzů](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) nabízí k prozkoumání různých vzorů návrhu a správy SaaS. V kurzech vytvořte nad rámec tohoto počátečního nasazení. Při použití v kurzech, můžete zkoumat zadané skripty, abyste zjistili, jak se implementují různé vzorce SaaS. Skripty ukazují, jak funkce služby SQL Database zjednodušuje vývoj aplikací SaaS.
+[Řada souvisejících výukových kurzů](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) k prozkoumávání různých vzorů návrhu a správy SaaS Kurzy se sestavují nad rámec tohoto počátečního nasazení. Při použití kurzů můžete prostudovat poskytnuté skripty, abyste viděli, jak jsou implementované různé vzory SaaS. Skripty ukazují, jak funkce SQL Database zjednodušují vývoj aplikací SaaS.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu, ujistěte se, že je nainstalovaný Azure PowerShell. Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Pro dokončení tohoto kurzu se ujistěte, že je nainstalovaná Azure PowerShell. Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-## <a name="deploy-the-wingtip-tickets-saas-application"></a>Nasazení aplikace SaaS aplikace Wingtip Tickets
+## <a name="deploy-the-wingtip-tickets-saas-application"></a>Nasazení aplikace SaaS lístky Wingtip Tickets
 
-### <a name="plan-the-names"></a>Plánování názvy
+### <a name="plan-the-names"></a>Plánování názvů
 
-V krocích v této části zadáte hodnotu uživatele, který se používá k Ujistěte se, že názvy prostředků jsou globálně jedinečný. Můžete také zadat název pro skupinu prostředků, která obsahuje všechny prostředky vytvořené v rámci nasazení aplikace. Fiktivní osoby s názvem Ann Finley doporučujeme:
+V krocích v této části zadáte hodnotu uživatele, která se používá k ujištění, že názvy prostředků jsou globálně jedinečné. Také zadáte název skupiny prostředků, která obsahuje všechny prostředky vytvořené nasazením aplikace. Pro fiktivní osobu s názvem Ann Finley doporučujeme:
 
-- **Uživatel**: *af1* se skládá ze Ann Finley iniciály, a číslice. Pokud nasadíte aplikaci podruhé, použijte jinou hodnotu. Příkladem je af2.
-- **Skupina prostředků**: *wingtip-dpt af1* určuje toto je aplikace databáze na tenanta. Připojte název af1 uživatele ke korelaci název skupiny prostředků s názvy prostředků, které obsahuje.
+- **Uživatel**: *AF1* se skládá z iniciál Ann Finley a číslice. Pokud aplikaci nasadíte podruhé, použijte jinou hodnotu. Příkladem je AF2.
+- **Skupina prostředků**: *Wingtip-DPT-AF1* označuje, že se jedná o aplikaci databáze na tenanta. Připojíte uživatelské jméno AF1 a prokorelujte název skupiny prostředků s názvy prostředků, které obsahuje.
 
-Teď zvolte názvy a zapište si.
+Vyberte si své názvy a napište je.
 
 ### <a name="steps"></a>Kroky
 
-1. Šablona nasazení databáze na tenanta SaaS aplikace Wingtip Tickets otevřít na webu Azure Portal, vyberte **nasadit do Azure**.
+1. Pokud chcete v Azure Portal otevřít šablonu nasazení Database – SaaS pro jednotlivé klienty, vyberte **nasadit do Azure**.
 
    <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
-1. Zadejte hodnoty požadovaných parametrů v šabloně.
+1. Zadejte hodnoty v šabloně pro požadované parametry.
 
     > [!IMPORTANT]
-    > Některé ověřování a server brány firewall jsou pro demonstrační účely záměrně nezabezpečené. Doporučujeme vytvořit novou skupinu prostředků. Nepoužívejte stávající skupiny prostředků, servery ani fondy. Nepoužívejte tuto aplikaci, skripty nebo všechny nasazené prostředky pro produkční prostředí. Odstraňte tuto skupinu prostředků, až budete hotovi s aplikací k zastavení souvisejícího účtování.
+    > Některá ověřování a brány firewall serveru jsou pro demonstrační účely záměrně nezabezpečené. Doporučujeme vytvořit novou skupinu prostředků. Nepoužívejte existující skupiny prostředků, servery nebo fondy. Nepoužívejte tuto aplikaci, skripty ani žádné nasazené prostředky pro produkční prostředí. Odstraňte tuto skupinu prostředků, až budete hotovi s aplikací, abyste zastavili související fakturaci.
 
-    - **Skupina prostředků**: Vyberte **vytvořit nový**a zadejte jedinečný název, který jste zvolili dříve pro skupinu prostředků.
+    - **Skupina prostředků**: Vyberte **vytvořit novou**a zadejte jedinečný název, který jste zvolili dříve pro skupinu prostředků.
     - **Umístění**: Z rozevíracího seznamu vyberte umístění.
-    - **Uživatel**: Použijte hodnoty názvu uživatele, kterou jste zvolili dříve.
+    - **Uživatel**: Použijte hodnotu uživatelského jména, kterou jste zvolili dříve.
 
-1. Nasazení aplikace.
+1. Nasaďte aplikaci.
 
-    a. Vyberte svůj souhlas s podmínkami a ujednáními.
+    a. Vyberte, chcete-li souhlasit s podmínkami a ujednáními.
 
     b. Vyberte **Koupit**.
 
-1. Pokud chcete monitorovat stav nasazení, vyberte **oznámení** (ikona zvonku napravo od vyhledávacího pole). Nasazení aplikace SaaS aplikace Wingtip Tickets trvá přibližně 5 minut.
+1. Pokud chcete monitorovat stav nasazení, vyberte **oznámení** (ikona zvonku napravo od pole hledání). Nasazení aplikace SaaS lístky Wingtip se zabere přibližně pět minut.
 
    ![Nasazení bylo úspěšné.](media/saas-dbpertenant-get-started-deploy/succeeded.png)
 
-## <a name="download-and-unblock-the-wingtip-tickets-management-scripts"></a>Stáhněte si a odblokování Správa skriptů aplikace Wingtip Tickets
+## <a name="download-and-unblock-the-wingtip-tickets-management-scripts"></a>Stažení a odblokování skriptů pro správu lístků Wingtip Tickets
 
-Při nasazení aplikace, stáhněte si zdrojový kód a správu skripty.
+Při nasazení aplikace Stáhněte zdrojový kód a skripty pro správu.
 
 > [!IMPORTANT]
-> Spustitelného obsahu (skriptů a knihovny DLL) mohou být blokovány Windows, když jsou stažené z externího zdroje a rozbalené soubory .zip. Postupujte podle kroků odblokujete soubor ZIP, před extrahovat skripty. Odblokování zajistí, že je povolené spouštět skripty.
+> Obsah spustitelného souboru (skripty a knihovny DLL) může systém Windows zablokovat v případě, že jsou soubory. zip staženy z externího zdroje a extrahovány. Před extrahováním skriptů použijte postup odblokování souboru. zip. Odblokování zajistí, že se skripty můžou spouštět.
 
-1. Přejděte [úložiště GitHub WingtipTicketsSaaS DbPerTenant][github-wingtip-dpt].
+1. Přejděte do [úložiště GitHub WingtipTicketsSaaS-DbPerTenant][github-wingtip-dpt].
 1. Vyberte **Clone or download** (Naklonovat nebo stáhnout).
-1. Vyberte **stáhnout ZIP**a pak soubor uložte.
-1. Klikněte pravým tlačítkem myši **WingtipTicketsSaaS-DbPerTenant-master.zip** souboru a pak vyberte **vlastnosti**.
-1. Na **Obecné** kartu, vyberte možnost **Odblokovat** > **použít**.
-1. Vyberte **OK**a extrahování souborů
+1. Vyberte **Stáhnout ZIP**a pak soubor uložte.
+1. Klikněte pravým tlačítkem na soubor **WingtipTicketsSaaS-DbPerTenant-Master. zip** a pak vyberte **vlastnosti**.
+1. Na kartě **Obecné** vyberte odblokovat > **použít**.
+1. Vyberte **OK**a extrahujte soubory.
 
-Skripty jsou umístěné v... \\WingtipTicketsSaaS-DbPerTenant-master\\složce Learning Modules.
+Skripty se nacházejí v... WingtipTicketsSaaS-DbPerTenant – hlavní\\složka výukových modulů \\
 
 ## <a name="update-the-user-configuration-file-for-this-deployment"></a>Aktualizovat konfigurační soubor uživatele pro toto nasazení
 
-Předtím, než spustíte všechny skripty, aktualizujte hodnoty prostředku skupiny a uživatele v souboru konfigurace uživatele. Nastavte tyto proměnné na hodnoty, které jste použili během nasazení.
+Před spuštěním všech skriptů aktualizujte skupinu prostředků a uživatelské hodnoty v konfiguračním souboru uživatele. Nastavte tyto proměnné na hodnoty, které jste použili během nasazování.
 
-1. V prostředí PowerShell ISE otevřete... \\Learning Modules\\**UserConfig.psm1**
-1. Aktualizace **ResourceGroupName** a **název** s konkrétní hodnoty pro vaše nasazení (na řádcích 10 a 11 pouze).
+1. V prostředí PowerShell ISE otevřete... Výukové\\moduly**userconfig. psm1** \\
+1. Aktualizujte **ResourceGroupName** a **název** o konkrétní hodnoty pro vaše nasazení (jenom na řádcích 10 a 11).
 1. Uložte změny.
 
-Tyto hodnoty jsou odkazovány v téměř každý skript.
+Na tyto hodnoty se odkazuje skoro každý skript.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Aplikace prezentuje místa, které jsou hostiteli události. Typy míst zahrnují koncertní sály, jazzové kluby a sportovní kluby. V Wingtip Tickets venues zaregistrovaní jako tenantů. Tenanta se poskytuje jako místo snadno vypisovat akce a prodávat lístky svým zákazníkům. Každé místo dostane individuální webu výpis svých akcí a prodej lístků.
+Aplikace prezentuje místa, která hostují události. Mezi typy míst patří kosálye, klub nápadný a sportovní klub. V Lístkech Wingtip jsou místa registrována jako klienti. Cílem je, aby měl klient místo snadný způsob, jak vypisovat události a prodávat lístky svým zákazníkům. Každé místo získá přizpůsobený web k vypsání svých událostí a k prodeji lístků.
 
-Interně v aplikaci, každý tenant dostane databázi SQL nasazenou do elastického fondu SQL.
+Interně v aplikaci každý tenant Získá databázi SQL nasazenou do elastického fondu SQL.
 
-Centrální **Centrum akcí** stránka obsahuje seznam odkazů pro tenanty ve vašem nasazení.
+Stránka centra centrálních **událostí** obsahuje seznam odkazů na klienty v nasazení.
 
-1. Použijte adresu URL ve webovém prohlížeči otevřete Centrum událostí: http://events.wingtip-dpt.&lt; uživatel&gt;. trafficmanager.net. Náhradní &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení.
+1. Pomocí adresy URL otevřete centrum událostí ve webovém prohlížeči: http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.NET. &lt;Nahraďte&gt; uživatele hodnotou uživatele vašeho nasazení.
 
-    ![Centrum akcí](media/saas-dbpertenant-get-started-deploy/events-hub.png)
+    ![Centrum událostí](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
-2. Vyberte **Fabrikam Jazz Club** v Centru událostí.
+2. V centru událostí vyberte **Fabrikam jazz klub** .
 
     ![Duration](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-Aplikace Wingtip používá [*Azure Traffic Manager* ](../traffic-manager/traffic-manager-overview.md) k řízení distribuce příchozích požadavků. Adresa URL pro přístup ke stránce události pro konkrétního tenanta používá následující formát:
+Aplikace Wingtip používá k řízení distribuce příchozích žádostí službu [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md) . Adresa URL pro přístup ke stránce události pro konkrétního klienta používá následující formát:
 
 - http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
-    Části předchozí formátu jsou vysvětlené v následující tabulce.
+    Části předchozího formátu jsou vysvětleny v následující tabulce.
 
     | Část adresy URL        | Popis       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Události části aplikace Wingtip.<br /><br /> *-dpt* odlišuje *databáze na tenanta* provádění Wingtip Tickets oproti jiným implementacím. Mezi příklady patří *jeden* aplikace na tenanta ( *-sa*) nebo *víceklientské databáze* ( *- mt*) implementace. |
-    | .  *&lt;uživatele&gt;* | *af1* v příkladu. |
-    | .trafficmanager.net/ | Traffic Manager, základní adresu URL. |
-    | fabrikamjazzclub | Identifikuje klienta s názvem společnosti Fabrikam Jazz Club. |
+    | http://events.wingtip-dpt | Části události aplikace Wingtip.<br /><br /> *– DPT* rozlišuje implementaci lístků Wingtip *na základě databáze* z jiných implementací. Příklady jsou implementace s *jedním* z aplikací na tenanta ( *-SA*) nebo *víceklientské databáze* ( *-Mt*). |
+    | .  *Uživatel&lt;&gt;* | *AF1* v příkladu. |
+    | .trafficmanager.net/ | Traffic Manager základní adresa URL. |
+    | fabrikamjazzclub | Identifikuje tenanta s názvem Fabrikam nápadný klub. |
     | &nbsp; | &nbsp; |
 
-- Název tenanta je analyzována z adresy URL pro události aplikace.
+- Název tenanta se analyzuje z adresy URL aplikace Events.
 - Název tenanta se používá k vytvoření klíče.
-- Klíč se používá pro přístup ke katalogu k získání umístění databáze tenanta.
-  - Katalog je implementovaný s využitím *správy mapování horizontálních oddílů*.
-- Centra událostí pomocí rozšířených metadat v katalogu pro vytvoření adresy URL stránky události seznamu pro každého tenanta.
+- Klíč se používá pro přístup ke katalogu, aby bylo možné získat umístění databáze klienta.
+  - Katalog je implementován pomocí *správy mapování horizontálních oddílů*.
+- Centrum událostí používá rozšířená metadata v katalogu k vytvoření adres URL stránky seznam událostí pro každého tenanta.
 
-V produkčním prostředí, obvykle můžete vytvořit záznam CNAME DNS k [*nasměrování internetové domény společnosti*](../traffic-manager/traffic-manager-point-internet-domain.md) jako název DNS Traffic Manageru.
+V produkčním prostředí obvykle vytvoříte záznam DNS CNAME k nasměrování [*internetové domény*](../traffic-manager/traffic-manager-point-internet-domain.md) společnosti na název služby Traffic Manager DNS.
 
 > [!NOTE]
-> Nemusí být hned zjevné použití traffic manager je v tomto kurzu. Cílem této sérii kurzů je k prezentaci vzory, které dokáže zpracovat škálování složité provozní prostředí. V takovém případě se například byste měli více webových aplikací distribuovaných po celém světě, umístěn společně s databází a bude nutné traffic Manageru směrovat mezi tyto instance.
-I když jsou jinou sérii kurzů, který ilustruje použití traffic Manageru [geografické obnovení](saas-dbpertenant-dr-geo-restore.md) a [geografickou replikaci](saas-dbpertenant-dr-geo-replication.md) kurzy. V těchto kurzech traffic manager použít k přepnutí do instance obnovení systému aplikace SaaS v případě regionálního výpadku.
+> Nemusí být okamžitě zřejmé, co je v tomto kurzu používání Traffic Manageru. Cílem této série kurzů je předvedení vzorů, které mohou zvládnout škálování složitého provozního prostředí. V takovém případě byste například měli mít k dispozici více webových aplikací, které jsou distribuovány po celém světě, společně umístěné s databázemi. k směrování mezi těmito instancemi budete potřebovat Traffic Manager.
+Další sadou výukových programů, které ilustrují použití Traffic Manageru, je to sice [geografické obnovení](saas-dbpertenant-dr-geo-restore.md) a kurzy [geografické replikace](saas-dbpertenant-dr-geo-replication.md) . V těchto kurzech se Traffic Manager používá k přepnutí do instance obnovení aplikace SaaS v případě regionálního výpadku.
 
 ## <a name="start-generating-load-on-the-tenant-databases"></a>Spuštění generování zatížení databází tenantů
 
-Teď, když je aplikace nasazena, pusťme to fungovat.
+Teď, když je aplikace nasazená, Pojďme ji převést na práci.
 
-*Demo-LoadGenerator* Powershellový skript spustí úlohu, která běží na všech databázích tenantů. Skutečné zatížení velký počet aplikací SaaS je sporadické a nepředvídatelné. Simulace tohoto typu zatížení, vytváří generátor zatížení s náhodnými špičky nebo nárůstům aktivity na každého tenanta. Nárazové vyskytovat na náhodnými intervaly. Trvá několik minut, než se objeví vzoru zatížení. Nechte generátor spuštění pro alespoň tři nebo čtyři minut, než monitorování zatížení.
+Skript prostředí PowerShell *demo-LoadGenerator* spustí úlohy, které běží na všech databázích tenanta. Reálné zatížení mnoha aplikací SaaS je občas a nepředvídatelné. Pro simulaci tohoto typu zatížení generátor generuje zátěž s náhodnými špičkami nebo nárůsty aktivity v každém tenantovi. Shluky se vyskytují v náhodných intervalech. Vzorek zatížení trvá několik minut. Než začnete monitorovat zatížení, počkejte, než se spustí generátor aspoň tři nebo čtyři minuty.
 
-1. V prostředí PowerShell ISE, otevřete... \\Learning Modules\\nástroje\\*Demo-LoadGenerator.ps1* skriptu.
-2. Stisknutím klávesy F5 spusťte skript a spustit generátor zatížení. Zatím nechejte nastavené výchozí hodnoty parametrů.
-3. Přihlaste se ke svému účtu Azure a vyberte předplatné, které chcete použít, pokud je to nutné.
+1. V prostředí PowerShell ISE otevřete... Výukové\\modulynástroje\\skript*demo-LoadGenerator. ps1.* \\
+2. Stisknutím klávesy F5 spusťte skript a spusťte generátor zátěže. Pro nyní ponechte výchozí hodnoty parametrů.
+3. Přihlaste se ke svému účtu Azure a v případě potřeby vyberte předplatné, které chcete použít.
 
-Skript generátor zatížení spouští úlohy na pozadí pro každou databázi v katalogu a poté se zastaví. Pokud znovu spustíte skript generátor zatížení, ukončí všechny úlohy na pozadí, které jsou spuštěny před spuštěním nové značky.
+Skript generátoru zatížení spustí úlohu na pozadí pro každou databázi v katalogu a pak se zastaví. Pokud znovu spustíte skript generátoru zatížení, zastaví se všechny úlohy na pozadí spuštěné před tím, než začnou začít nové.
 
 ### <a name="monitor-the-background-jobs"></a>Monitorování úloh na pozadí
 
@@ -167,109 +166,109 @@ Pokud chcete řídit a monitorovat úlohy na pozadí, použijte následující r
 - `Receive-Job`
 - `Stop-Job`
 
-### <a name="demo-loadgeneratorps1-actions"></a>Ukázka LoadGenerator.ps1 akce
+### <a name="demo-loadgeneratorps1-actions"></a>Akce Demo-LoadGenerator. ps1
 
-*Ukázka LoadGenerator.ps1* napodobuje aktivní úlohy transakcí odběratele. Následující kroky popisují posloupnost akcí, které *Demo-LoadGenerator.ps1* zahájí:
+*Demo-LoadGenerator. ps1* napodobuje aktivní úlohu transakcí zákazníků. Následující kroky popisují sekvenci akcí, které *demo-LoadGenerator. ps1* iniciuje:
 
-1. *Ukázka LoadGenerator.ps1* spustí *LoadGenerator.ps1* v popředí.
+1. *Demo-LoadGenerator. ps1* spustí *LoadGenerator. ps1* v popředí.
 
-    - Oba soubory .ps1 jsou uložené ve složkách Learning Modules\\nástroje\\.
+    - Soubory. ps1 jsou uložené v části složky výukové moduly\\.\\
 
-2. *LoadGenerator.ps1* cyklicky projde všech databázích tenantů v katalogu.
+2. *LoadGenerator. ps1* projde všemi databázemi tenanta v katalogu.
 
-3. *LoadGenerator.ps1* spustí úlohu na pozadí prostředí PowerShell pro každou databázi tenantů:
+3. *LoadGenerator. ps1* spustí úlohu PowerShellu na pozadí pro každou databázi tenanta:
 
-    - Ve výchozím nastavení spustí úlohy na pozadí po dobu 120 minut.
-    - Každá úloha způsobí, že zatížení založený na využití procesoru v databázi jednoho tenanta pomocí provádí *sp_CpuLoadGenerator*. Intenzita a doba trvání zatížení se liší v závislosti na `$DemoScenario`.
-    - *sp_CpuLoadGenerator* smyčky kolem příkazu SQL SELECT, který způsobuje vysoké zatížení CPU. Časový interval mezi problémy SELECT se liší podle hodnoty parametrů k vytvoření může ovládat zatížení procesoru. Pro simulaci zatížení realističtější se náhodně mění úrovně zatížení a intervaly.
-    - Tento soubor .sql je uložen pod *WingtipTenantDB\\dbo\\StoredProcedures\\* .
+    - Ve výchozím nastavení se úlohy na pozadí spouštějí po 120 minut.
+    - Každá úloha způsobuje zatížení na základě procesoru v jedné databázi tenanta spuštěním *sp_CpuLoadGenerator*. Intenzita a doba trvání zatížení se liší v závislosti na `$DemoScenario`.
+    - *sp_CpuLoadGenerator* cykly kolem příkazu SQL SELECT, který způsobuje vysoké zatížení procesoru. Časový interval mezi chybami výběru se liší podle hodnot parametrů, aby bylo možné vytvořit ověřitelné zatížení procesoru. Úrovně zatížení a intervaly jsou náhodné pro simulaci realističtějších zátěží.
+    - Tento soubor. SQL je uložený *v\\WingtipTenantDB\\dbo\\StoredProcedures*.
 
-4. Pokud `$OneTime = $false`, generátor zatížení spouští úlohy na pozadí a pak i nadále běžel. Každých 10 sekund, monitoruje pro všechny nové tenanty, které jsou zřízené. Pokud nastavíte `$OneTime = $true`, LoadGenerator spustí úlohy na pozadí a poté se zastaví spuštěná v popředí. Pro účely tohoto kurzu ponechte `$OneTime = $false`.
+4. Pokud `$OneTime = $false`, generátor zatížení spustí úlohy na pozadí a pak pokračuje v běhu. Každých 10 sekund monitoruje všechny nově zřízené klienty. Pokud nastavíte `$OneTime = $true`, LoadGenerator spustí úlohy na pozadí a pak zastaví běh v popředí. Pro tento kurz ponechejte `$OneTime = $false`.
 
-   Pokud chcete zastavit nebo restartovat generátor zatížení pomocí Ctrl-C nebo zastavení operace Ctrl-Break.
+   Pokud chcete zastavit nebo restartovat generátor zatížení, použijte CTRL-C nebo ukončit operaci Ctrl + Break.
 
-   Pokud necháte generátor zatížení spuštěná v popředí, pro spuštění jiné skripty prostředí PowerShell použijte jiná instance prostředí PowerShell ISE.
+   Pokud necháte generátor zatížení běžící v popředí, použijte jinou instanci prostředí PowerShell ISE ke spuštění dalších skriptů prostředí PowerShell.
 
 &nbsp;
 
-Než budete pokračovat v další části, nechte generátor zatížení s ve volání úlohy stavu.
+Než budete pokračovat v další části, ponechte generátor zatížení spuštěný ve stavu vyvolání úlohy.
 
 ## <a name="provision-a-new-tenant"></a>Zřízení nového tenanta
 
-Počáteční nasazení vytvoří tři ukázkoví tenanti. Nyní můžete vytvořit jiného tenanta zobrazení dopadů na nasazené aplikace. V aplikaci Wingtip je podrobně pracovní postup pro zřízení nových tenantů [Provision and catalog kurzu](saas-dbpertenant-provision-and-catalog.md). V této fázi můžete vytvořit nového tenanta, který využívá méně než jedna minuta.
+Počáteční nasazení vytvoří tři ukázkové klienty. Nyní vytvoříte dalšího tenanta, abyste viděli dopad na nasazenou aplikaci. Pracovní postup pro zřízení nových tenantů v aplikaci Wingtip je vysvětlen v [kurzu zřízení a katalog](saas-dbpertenant-provision-and-catalog.md). V této fázi vytvoříte nového tenanta, který trvá méně než jednu minutu.
 
-1. Otevřete nový ISE Powershellu.
-2. Otevřete... \\Learning Modules\Provision and Catalog\\*Demo-ProvisionAndCatalog.ps1*.
-3. Stisknutím klávesy F5 spusťte skript. Zatím nechejte nastavené výchozí hodnoty.
+1. Otevřete nový PowerShellový ISE.
+2. Otevřít... Learning Modules\Provision a Catalog\\*demo-ProvisionAndCatalog. ps1.* \\
+3. Pokud chcete skript spustit, stiskněte klávesu F5. Pro nyní ponechte výchozí hodnoty.
 
    > [!NOTE]
-   > Použít mnoho skriptů SaaS aplikace Wingtip *$PSScriptRoot* procházet složky pro volání funkce v jiné skripty. Tato proměnná je vyhodnocen pouze v případě, že je úplná skript spustit stisknutím klávesy F5. Zvýraznění a spuštění výběru s F8 může vést k chybám. Chcete-li spustit skripty, stiskněte klávesu F5.
+   > Mnoho skriptů Wingtip SaaS používá *$PSScriptRoot* k procházení složek pro volání funkcí v jiných skriptech. Tato proměnná je vyhodnocena pouze v případě, že je spuštěn celý skript stisknutím klávesy F5. Zvýrazňování a spuštění výběru pomocí klávesy F8 může mít za následek chyby. Chcete-li spustit skripty, stiskněte klávesu F5.
 
-Nová databáze tenantů jsou:
+Nová databáze tenanta:
 
-- Vytvoří v elastickém fondu SQL.
-- Inicializovat.
-- Zaregistruje do katalogu.
+- Vytvoří se v elastickém fondu SQL.
+- Inicializované.
+- Registrováno v katalogu.
 
-Po úspěšném zřízení *události* ve vašem prohlížeči zobrazí web nového tenanta.
+Po úspěšném zřízení se v prohlížeči zobrazí web *událostí* nového tenanta.
 
 ![Nový tenant](./media/saas-dbpertenant-get-started-deploy/red-maple-racing.png)
 
-Aktualizujte Centrum akcí, chcete-li vytvořit nového tenanta se zobrazí v seznamu.
+Aktualizujte centrum událostí tak, aby se v seznamu zobrazil nový tenant.
 
 ## <a name="explore-the-servers-pools-and-tenant-databases"></a>Zkoumání serverů, fondů a databází tenantů
 
-Teď, když jste jste spustili zátěž kolekce tenantů, podíváme se na některé z nasazených prostředků.
+Teď, když jste spustili zatížení pro kolekci tenantů, si podívejme na některé z nasazených prostředků.
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte na seznam serverů SQL Server. Otevřete **katalogu-dpt -&lt;uživatele&gt;**  serveru.
-    - Server katalogu obsahuje dvě databáze, **tenantcatalog** a **basetenantdb** (Šablona databázi, která se kopíruje při vytváření nových tenantů).
+1. V [Azure Portal](https://portal.azure.com)přejděte do seznamu serverů SQL. Pak otevřete **Catalog-DPT&lt;-User&gt;**  Server.
+    - Katalogový server obsahuje dvě databáze **tenantcatalog** a **basetenantdb** (databáze šablon, která je zkopírovaná k vytváření nových tenantů).
 
    ![Databáze](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. Vraťte se do seznamu serverů SQL.
 
-3. Otevřít **tenants1-dpt -&lt;uživatele&gt;**  serveru, který obsahuje databáze tenantů.
+3. Otevřete **tenants1-DPT&lt;-User&gt;**  Server, který obsahuje databáze tenantů.
 
-4. Zobrazit následující položky:
+4. Podívejte se na následující položky:
 
-    - Všechny databáze tenantů jsou **elastický Standard** databáze ve fondu standard 50 eDTU.
-    - Red Maple Racing databáze je databáze tenanta, kterou jste zřídili dříve.
+    - Každá databáze tenanta je **elastická standardní** databáze ve fondu 50-eDTU úrovně Standard.
+    - Červená Javorová databáze je databáze tenanta, kterou jste předtím zřídili.
 
    ![Server s databázemi](./media/saas-dbpertenant-get-started-deploy/server.png)
 
 ## <a name="monitor-the-pool"></a>Monitorování fondu
 
-Po *LoadGenerator.ps1* běhy pro několik minut, dostatek data by měla být k dispozici, abyste mohli začít sledovat některé možnosti monitorování. Tyto možnosti jsou integrované do fondů a databází.
+Až *LoadGenerator. ps1* běží po dobu několika minut, měli byste k dispozici dostatek dat, abyste mohli začít s prohlížením některých možností monitorování. Tyto funkce jsou integrované do fondů a databází.
 
-Přejděte na server **tenants1-dpt -&lt;uživatele&gt;** a vyberte **Pool1** zobrazení využití prostředků fondu. V následující grafy generátor zatížení běžel na jednu hodinu.
+Přejděte na server **tenants1-DPT-&lt;&gt;User**a vyberte **Pool1** pro zobrazení využití prostředků pro fond. V následujících grafech byl generátor zatížení spuštěn po jednu hodinu.
 
-   ![Monitorování fondu](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
+   ![Monitorovat fond](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
-- První graf s popiskem **využití prostředků**, zobrazuje fond využití eDTU.
-- Druhý graf ukazuje využití eDTU pět Nejaktivnější databází ve fondu.
+- První graf, označený **využití prostředků**, zobrazuje využití eDTU fondu.
+- Druhý graf znázorňuje využití eDTU v pěti nejvíce aktivních databázích ve fondu.
 
-Dva grafy znázorňují, elastické fondy a databáze SQL se skvěle hodí pro nepředvídatelnými úlohami aplikace SaaS. Grafy ukazují, že jsou čtyři databáze, každý s nárazovým zatížením až 40 Edtu a všechny databáze jsou pohodlně podporován 50 eDTU fondu. 50 eDTU fondu může podporovat těžší úlohy. Pokud databáze jsou zřízené jako izolované databáze, každý z nich musí mít úroveň S2 (50 DTU) pro podporu nárazové. Náklady na čtyři izolované databáze S2 jsou téměř třikrát cena fondu. V reálných situacích zákazníci SQL Database provozovat až 500 databází ve fondech s 200 eDTU. Další informace najdete v tématu [kurz o monitorování výkonu](saas-dbpertenant-performance-monitoring.md).
+Tyto dva grafy znázorňují, že elastické fondy a SQL Database jsou vhodné pro nepředvídatelné úlohy aplikací SaaS. V grafech se zobrazí, že každý z nich bude mít každý nárůst velikosti až 40 eDTU a všechny databáze jsou ale ve fondu 50-eDTU pohodlně podporované. Fond 50-eDTU může podporovat i těžší úlohy. Pokud jsou databáze zřízené jako samostatné databáze, každá z nich musí být S2 (50 DTU), aby podporovala shluky. Cena za čtyři jednotlivé databáze S2 je téměř třikrát cena fondu. V reálných situacích SQL Database zákazníkům spouštět až 500 databází ve fondech 200 eDTU. Další informace najdete v [kurzu monitorování výkonu](saas-dbpertenant-performance-monitoring.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- Další informace najdete v části Další [kurzů v aplikaci SaaS aplikace Wingtip Tickets databáze na tenanta](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
+- Další informace najdete v dalších [kurzech, které se sestavují na aplikaci Wingtip Tickets SaaS Database-per-tenant](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - Další informace o elastických fondech najdete v tématu [co je elastický fond Azure SQL?](sql-database-elastic-pool.md).
-- Další informace o elastických úlohách najdete v tématu [spravovat horizontálním navýšením kapacity databáze](elastic-jobs-overview.md).
-- Další informace o víceklientské aplikace SaaS, naleznete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
+- Další informace o elastických úlohách najdete v tématu [Správa cloudových databází s horizontálním škálováním kapacity](elastic-jobs-overview.md).
+- Další informace o víceklientské aplikacích SaaS najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli:
 
 > [!div class="checklist"]
-> - Jak nasadit aplikaci SaaS aplikace Wingtip Tickets.
-> - O serverů, fondů a databází, které tvoří aplikaci.
-> - Jak se tenanti jsou namapovaní na svá data pomocí *katalogu*.
-> - Jak zřídit nové tenanty.
-> - Jak zobrazit využití fondu k monitorování aktivity tenanta.
-> - Jak odstranit ukázkové prostředky k zastavení souvisejícího účtování.
+> - Jak nasadit aplikaci SaaS lístky Wingtip.
+> - O serverech, fondech a databázích, které tvoří aplikaci.
+> - Jak jsou klienti mapováni na svá data pomocí *katalogu*.
+> - Jak zřídit nové klienty.
+> - Jak zobrazit využití fondu pro monitorování aktivity tenanta
+> - Jak odstranit ukázkové prostředky pro zastavení související fakturace
 
-Zkuste [Provision and catalog kurzu](saas-dbpertenant-provision-and-catalog.md).
+V dalším kroku si vyzkoušíte [kurz zřízení a katalog](saas-dbpertenant-provision-and-catalog.md).
 
 <!-- Link references. -->
 

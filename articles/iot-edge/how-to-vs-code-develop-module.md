@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 07/23/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a9c38d82c4b460564077690d3cddd731ec6c2b89
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 39b8485ac3f98cb7ca6739fe31378726bea3452b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414499"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565350"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití Visual Studio Code k vývoji a ladění modulů pro Azure IoT Edge
 
@@ -100,7 +100,7 @@ V rámci řešení jsou čtyři položky:
 
 - Složka **. VSCode** obsahuje konfigurace ladění.
 
-- Složka **modulů** má podsložky pro každý modul.  V rámci složky pro každý modul je soubor **Module. JSON**, který určuje, jak jsou moduly sestavené a nasazené.  Tento soubor se musí upravit, aby se změnil kontejner nasazení modulu Regristry z místního hostitele na vzdálený registr. V tuto chvíli máte jenom jeden modul.  V paletě příkazů ale můžete přidat další příkazem **Azure IoT Edge: Přidejte IoT Edge modul**.
+- Složka **modulů** má podsložky pro každý modul.  V rámci složky pro každý modul je soubor **Module. JSON**, který určuje, jak jsou moduly sestavené a nasazené.  Tento soubor je třeba upravit, aby se změnil registr kontejneru nasazení modulu z místního hostitele na vzdálený registr. V tuto chvíli máte jenom jeden modul.  V paletě příkazů ale můžete přidat další příkazem **Azure IoT Edge: Přidejte IoT Edge modul**.
 
 - Soubor **. env** obsahuje seznam proměnných prostředí. Pokud je Azure Container Registry vašeho registru, budete mít v něm Azure Container Registry uživatelské jméno a heslo.
 
@@ -359,7 +359,7 @@ Díky nedávným změnám v Docker i modulech Moby pro podporu připojení SSH a
 
 Další informace a podrobné pokyny najdete v této [položce blogu vývojář pro IoT](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po vytvoření modulu se naučíte, jak [nasadit Azure IoT Edge moduly z Visual Studio Code](how-to-deploy-modules-vscode.md).
 

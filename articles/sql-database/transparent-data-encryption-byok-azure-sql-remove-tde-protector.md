@@ -1,6 +1,6 @@
 ---
-title: -Odebrat ochrana TDE – prostředí PowerShell Azure SQL Database | Dokumentace Microsoftu
-description: Průvodce pro reakce na potenciálně ohroženými ochrana TDE pro služby Azure SQL Database a Data Warehouse s využitím transparentní šifrování dat s podporou přineste si vlastní klíč (BYOK).
+title: PowerShell – odebrání ochrany TDE Azure SQL Database | Microsoft Docs
+description: Návod, jak reagovat na potenciálně ohrožené ochrany TDE pro Azure SQL Database nebo datový sklad pomocí TDE s podporou BYOK (Přineste si vlastní klíč).
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,52 +10,51 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: ad7e760bf84ee08e3928164432564fb23c10d211
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dc117dd844a3a47cafa1b37170c95fe852bb82ef
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60330648"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566064"
 ---
-# <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrat ochranného transparentní šifrování dat (TDE) pomocí Powershellu
+# <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrání ochrany transparentní šifrování dat (TDE) pomocí prostředí PowerShell
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
-- Musíte mít předplatné Azure a mít oprávnění správce pro toto předplatné
-- Musíte mít Azure PowerShell nainstalovaný a spuštěný. 
-- Tato příručka předpokládá, že už používáte klíče z trezoru klíčů Azure jako ochrana TDE pro služby Azure SQL Database a Data Warehouse. Zobrazit [transparentního šifrování dat s podporou modelu BYOK](transparent-data-encryption-byok-azure-sql.md) Další informace.
+- Musíte mít předplatné Azure a mít oprávnění správce k tomuto předplatnému.
+- Musíte mít nainstalovanou a spuštěnou Azure PowerShell. 
+- V tomto průvodci se předpokládá, že už používáte klíč z Azure Key Vault jako ochranu TDE pro Azure SQL Database nebo datový sklad. Další informace najdete v tématu [transparentní šifrování dat s podporou BYOK](transparent-data-encryption-byok-azure-sql.md) .
 
 ## <a name="overview"></a>Přehled
 
-Tato příručka popisuje, jak reagovat na potenciálně ohroženými ochrana TDE pro služby Azure SQL Database a datový sklad, který je transparentní šifrování dat pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault – podpora přineste si vlastní klíč (BYOK). Další informace o podpoře funkce BYOK pro transparentní šifrování dat, najdete v článku [stránka s přehledem](transparent-data-encryption-byok-azure-sql.md). 
+Tato příručka popisuje, jak reagovat na potenciálně ohrožené ochrany TDE pro Azure SQL Database nebo datový sklad, který používá TDE s klíči spravovanými zákazníky v podpoře BYOK (Azure Key Vault-Bring Your Own Key). Další informace o podpoře BYOK pro TDE najdete na stránce s [přehledem](transparent-data-encryption-byok-azure-sql.md). 
 
-Následující postupy lze provádět pouze ve výjimečných případech nebo v testovacích prostředích. Pečlivě zkontrolujte průvodce, protože odstranění aktivně používanými TDE ochrany z Azure Key Vault může vést k **ztrátě dat**. 
+Následující postupy by měly být provedeny pouze v extrémních případech nebo v testovacích prostředích. Projděte si příručku návody, protože odstranění aktivně používaných TDE ochran z Azure Key Vault může způsobit **ztrátu dat**. 
 
-Pokud klíč je někdy podezření u něho ohrožena bezpečnost, tak, aby se služba nebo uživatel měl neoprávněný přístup ke klíči, je vhodné odstranit klíč.
+Pokud dojde k ohrožení bezpečnosti nějakého klíče, aby služba nebo uživatel měli k klíči neoprávněný přístup, je nejlepší klíč odstranit.
 
-Mějte na paměti, která jednou ochrana TDE je odstraněn ve službě Key Vault **všechna připojení k šifrovaným databázím na serveru jsou blokovány, a tyto databáze přejdou do režimu offline a během 24 hodin**. Starší zálohy šifrované pomocí ohrožený klíč už nejsou dostupné.
+Mějte na paměti, že jakmile se ochrana TDE v Key Vault odstraní, **všechna připojení k šifrovaným databázím na serveru jsou blokovaná a tyto databáze budou přecházet do režimu offline a budou se zahodit do 24 hodin**. Staré zálohy šifrované s ohroženým klíčem již nejsou přístupné.
 
-Následující kroky popisují, jak zkontrolujte, že kryptografické otisky ochrana TDE stále používán ve virtuální protokolu souborů (VLF) dané databáze. Kryptografický otisk aktuálního ochrana TDE databáze a ID databáze můžete najít spuštěním: Vyberte [parametry database_id],       [encryption_key], [encryptor_type] /*asymetrický klíč znamená, že službou AZURE, certifikát znamená, že klíče spravované službou*/ [encryptor_thumbprint] z [sys]. [ dm_database_encryption_keys] 
+Následující kroky popisují, jak kontrolovat kryptografické otisky ochrany TDE, které pořád používají virtuální soubory protokolů (VLF) dané databáze. Kryptografický otisk aktuálního TDE ochrany databáze a ID databáze lze najít spuštěním: Vyberte [database_id],       [encryption_state], [encryptor_type],/*asymetrický klíč znamená integrace, certifikát znamená klíče spravované službou*/[encryptor_thumbprint], z [sys]. [ dm_database_encryption_keys] 
  
-Následující dotaz vrátí VLFs a encryptoru příslušných kryptografické otisky používá. Každý jiný kryptografický otisk odkazuje na jiný klíč v Azure Key Vaultu (AKV): Vybrat * z sys.dm_db_log_info (parametry database_id) 
+Následující dotaz vrátí VLFs a příslušné kryptografické otisky používané pro šifrování. Každý jiný kryptografický otisk odkazuje na jiný klíč v Azure Key Vault (integrace): SELECT * FROM sys. DM _db_log_info (database_id) 
 
-Příkaz prostředí PowerShell Get-AzureRmSqlServerKeyVaultKey poskytuje kryptografický otisk z ochrana TDE použitý v dotazu, abyste si mohli zobrazit, které chcete zachovat a které klíče k odstranění ve službou AZURE. Pouze klíče už nebude používat databáze můžete bezpečně odstranit ze služby Azure Key Vault.
+Příkaz PowerShellu Get-AzureRmSqlServerKeyVaultKey poskytuje kryptografický otisk ochrany TDE, která se používá v dotazu, abyste viděli, které klíče se mají zachovat a které klíče se mají odstranit v integrace. Z Azure Key Vault můžete bezpečně odstranit jenom klíče, které už nepoužívá databáze.
 
-Tato příručka prochází přes dva přístupy v závislosti na požadovaný výsledek po reakce na incidenty:
+Tato příručka přechází přes dvě přístupy v závislosti na požadovaném výsledku po reakci na incident:
 
-- Zachovat Azure SQL Database / Data Warehouses **přístupné**
-- Aby Azure SQL Database / Data Warehouses **nedostupný**
+- Zachování **přístupu** k databázím SQL Azure a datovým skladům
+- **Přístup** k databázím SQL Azure a datovým skladům
 
-## <a name="to-keep-the-encrypted-resources-accessible"></a>Zachovat šifrovaná prostředky dostupné
+## <a name="to-keep-the-encrypted-resources-accessible"></a>Zachování přístupných šifrovaných prostředků
 
-1. Vytvoření [nový klíč ve službě Key Vault](/powershell/module/az.keyvault/add-azkeyvaultkey). Ujistěte se, že tento nový klíč je vytvořen v samostatné služby key vault z potenciálně napadeného ochrana TDE, protože je zřízený řízení přístupu na úrovni trezoru.
-2. Přidat nový klíč k serveru pomocí [přidat AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) a [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) rutiny a aktualizovat ho jako novou ochrana TDE serveru.
+1. Vytvořte [nový klíč v Key Vault](/powershell/module/az.keyvault/add-azkeyvaultkey). Zajistěte, aby byl tento nový klíč vytvořen v jiném trezoru klíčů od potenciálně ohroženého ochrany TDE, protože řízení přístupu je zřízené na úrovni trezoru.
+2. Přidejte nový klíč na server pomocí rutin [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) a [set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) a aktualizujte ho jako nový TDE ochrany serveru.
 
    ```powershell
    # Add the key from Key Vault to the server  
@@ -71,10 +70,10 @@ Tato příručka prochází přes dva přístupy v závislosti na požadovaný v
    -Type AzureKeyVault -KeyId <KeyVaultKeyId> 
    ```
 
-3. Ujistěte se, že server a všechny repliky aktualizovaly na nový ochrana TDE pomocí [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) rutiny. 
+3. Zajistěte, aby byl server a všechny repliky v nové ochraně TDE pomocí rutiny [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) . 
 
    >[!NOTE]
-   > Může trvat několik minut, než se nové ochrana TDE rozšíří do všech databází a sekundární databáze v rámci serveru.
+   > Novému stráži TDE může trvat několik minut, než se došíří do všech databází a sekundárních databází v rámci serveru.
 
    ```powershell
    Get-AzSqlServerTransparentDataEncryptionProtector `
@@ -82,7 +81,7 @@ Tato příručka prochází přes dva přístupy v závislosti na požadovaný v
    -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-4. Přijmout [zálohování nového klíče](/powershell/module/az.keyvault/backup-azkeyvaultkey) ve službě Key Vault.
+4. Proveďte [zálohu nového klíče](/powershell/module/az.keyvault/backup-azkeyvaultkey) v Key Vault.
 
    ```powershell
    <# -OutputFile parameter is optional; 
@@ -93,7 +92,7 @@ Tato příručka prochází přes dva přístupy v závislosti na požadovaný v
    -OutputFile <DesiredBackupFilePath>
    ```
  
-5. Odstranit ohrožený klíč ze služby Key Vault pomocí [odebrat AzKeyVaultKey](/powershell/module/az.keyvault/remove-azkeyvaultkey) rutiny. 
+5. Odstraňte ohrožený klíč z Key Vault pomocí rutiny [Remove-AzKeyVaultKey](/powershell/module/az.keyvault/remove-azkeyvaultkey) . 
 
    ```powershell
    Remove-AzKeyVaultKey `
@@ -101,22 +100,22 @@ Tato příručka prochází přes dva přístupy v závislosti na požadovaný v
    -Name <KeyVaultKeyName>
    ```
  
-6. Obnovení klíče do služby Key Vault v budoucnu pomocí [obnovení AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) rutiny:
+6. Postup obnovení klíče pro Key Vault v budoucnu pomocí rutiny [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) :
    ```powershell
    Restore-AzKeyVaultKey `
    -VaultName <KeyVaultName> `
    -InputFile <BackupFilePath>
    ```
 
-## <a name="to-make-the-encrypted-resources-inaccessible"></a>Aby se mohly šifrované prostředky nedostupný
+## <a name="to-make-the-encrypted-resources-inaccessible"></a>Zpřístupnění šifrovaných prostředků jako nepřístupné
 
-1. Databáze, které jsou šifrované pomocí klíče potenciálně ohroženými vyřaďte.
+1. Vyřaďte databáze šifrované potenciálně ohroženým klíčem.
 
-   Soubory databáze a protokolu se automaticky zálohují, tak v okamžiku obnovení databáze lze provést v libovolném okamžiku (za předpokladu, můžete zadat klíč). Databáze musíte vyřadit před odstraněním ze active ochrana TDE, aby se zabránilo potenciální ztráty dat posledních transakcí až 10 minut. 
-2. Zálohování klíče ochrana TDE ve službě Key Vault.
-3. Odebrání potenciálně ohrožený klíč ze služby Key Vault
+   Databáze a soubory protokolu jsou automaticky zálohovány, takže obnovení databáze v určitém bodě v čase lze provést kdykoli (Pokud klíč zadáte). Databáze musí být před odstraněním ochrany aktivních TDE vyřazeny, aby se předešlo potenciální ztrátě dat až do 10 minut od poslední transakce. 
+2. Zazálohujte klíčový materiál ochrany TDE v Key Vault.
+3. Odebrat potenciálně ohrožený klíč z Key Vault
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak otočit ochrana TDE serveru k zajištění souladu s požadavky na zabezpečení: [Otočit transparentního šifrování dat ochranu pomocí Powershellu](transparent-data-encryption-byok-azure-sql-key-rotation.md)
-- Začínáme s přineste si vlastní klíč podpory pro transparentní šifrování dat: [Zapnout transparentní šifrování dat pomocí vlastní klíče ze služby Key Vault pomocí Powershellu](transparent-data-encryption-byok-azure-sql-configure.md)
+- Naučte se, jak otočit ochranu TDE serveru tak, aby splňovala požadavky na zabezpečení: [Otočení ochrany transparentní šifrování dat pomocí PowerShellu](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- Začínáme s podporou Bring Your Own Key pro TDE: [Zapnutí TDE pomocí vlastního klíče z Key Vault pomocí PowerShellu](transparent-data-encryption-byok-azure-sql-configure.md)

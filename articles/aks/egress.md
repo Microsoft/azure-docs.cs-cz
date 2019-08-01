@@ -1,40 +1,40 @@
 ---
-title: Statická IP adresa pro výchozí přenos ve službě Azure Kubernetes Service (AKS)
-description: Zjistěte, jak vytvořit a používat statickou veřejnou IP adresu pro výchozí přenos v clusteru služby Azure Kubernetes Service (AKS)
+title: Statická IP adresa pro odchozí přenosy ve službě Azure Kubernetes (AKS)
+description: Naučte se vytvářet a používat statickou veřejnou IP adresu pro odchozí přenosy v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: mlearned
-ms.openlocfilehash: 094a696a12025dcfd575ce3f035b12b4a04aba10
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 67471d688e64244067a7537bc87c379da4a69c03
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615573"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696364"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Používat statickou veřejnou IP adresu pro výchozí přenos ve službě Azure Kubernetes Service (AKS)
+# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Použití statické veřejné IP adresy pro odchozí přenosy ve službě Azure Kubernetes (AKS)
 
-Ve výchozím nastavení se náhodně přiřadí IP adresu výchozí přenos dat z clusteru služby Azure Kubernetes Service (AKS). Tato konfigurace není ideální, pokud je potřeba identifikovat IP adresu pro přístup k externím službám, třeba. Místo toho budete muset přiřadit statickou IP adresu, kterou lze přidat na seznam povolených pro přístup k službě.
+Ve výchozím nastavení je odchozí IP adresa z clusteru Azure Kubernetes Service (AKS) náhodně přiřazená. Tato konfigurace není ideální, pokud potřebujete identifikovat IP adresu pro přístup k externím službám, například. Místo toho možná budete muset přiřadit statickou IP adresu, která může být povolená pro přístup k službě.
 
-V tomto článku se dozvíte, jak vytvořit a používat statickou veřejnou IP adresu pro použití s výchozí přenos v clusteru AKS.
+V tomto článku se dozvíte, jak vytvořit a používat statickou veřejnou IP adresu pro použití s odchozími přenosy v clusteru AKS.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
+V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Také nutné mít Azure CLI verze 2.0.59 nebo později nainstalované a nakonfigurované. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
-## <a name="egress-traffic-overview"></a>Přehled provozu odchozího přenosu dat
+## <a name="egress-traffic-overview"></a>Přehled odchozího provozu
 
-Následuje odchozího provozu z clusteru AKS [Azure Load Balancer konvence][outbound-connections]. Před první služby Kubernetes typu `LoadBalancer` vytvoření agenta uzly v clusteru AKS, které nejsou součástí žádné fondu nástroje pro vyrovnávání zatížení Azure. V této konfiguraci uzlů úroveň žádné instance veřejnou IP adresu. Azure se přeloží odchozí tok veřejné Zdrojová IP adresa, která není konfigurovatelné nebo deterministický.
+Odchozí provoz z clusteru AKS se řídí [konvencemi Azure Load Balancer][outbound-connections]. Před vytvořením první služby Kubernetes typu `LoadBalancer` nebude uzel agenta v clusteru AKS součástí žádného fondu Azure Load Balancer. V této konfiguraci uzly nemají veřejnou IP adresu na úrovni instance. Azure překládá odchozí tok do veřejné zdrojové IP adresy, která není konfigurovatelná ani deterministické.
 
-Jakmile služba Kubernetes typu `LoadBalancer` se vytvoří, uzly jsou přidány do fondu služby Azure Load Balancer agenta. Pro odchozí tok Azure převede do první veřejnou IP adresou nakonfigurovanou na nástroj pro vyrovnávání zatížení. Tato veřejná IP adresa platí pouze pro životnosti prostředku. Při odstranění služby Kubernetes nástroj pro vyrovnávání zatížení, se také odstraní přidružené vyrovnávání zátěže a IP adresu. Pokud chcete přiřadit konkrétní IP adresu nebo zachovat IP adresu pro opakovaně nasazeném služby Kubernetes, můžete vytvořit a používat statickou veřejnou IP adresu.
+Jakmile se vytvoří služba Kubernetes typu `LoadBalancer` , přidají se uzly agentů do fondu Azure Load Balancer. V případě odchozího toku Azure převede na první veřejnou IP adresu konfigurovanou v nástroji pro vyrovnávání zatížení. Tato veřejná IP adresa je platná jenom pro životnost tohoto prostředku. Odstraníte-li službu Kubernetes vyrovnávání zatížení sítě, bude odstraněna také přidružená služba Vyrovnávání zatížení a IP adresa. Pokud chcete přiřadit konkrétní IP adresu nebo ponechat IP adresu pro znovu nasazené služby Kubernetes, můžete vytvořit a používat statickou veřejnou IP adresu.
 
 ## <a name="create-a-static-public-ip"></a>Vytvoření statické veřejné IP adresy
 
-Při vytváření statickou veřejnou IP adresu pro použití službou AKS prostředek IP adresy musí být vytvořeny ve **uzel** skupinu prostředků. Získání názvu skupiny prostředků s [az aks zobrazit][az-aks-show] příkaz a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad získá uzlu skupiny prostředků pro AKS název clusteru *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
+Název skupiny prostředků získáte pomocí příkazu [AZ AKS show][az-aks-show] a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad načte skupinu prostředků uzlu pro název clusteru AKS *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -42,7 +42,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Teď Vytvořte statickou veřejnou IP adresu s [vytvoření veřejné IP adresy sítě az][az-network-public-ip-create] příkazu. Zadejte název uzlu skupiny prostředků získané v předchozím příkazu, a potom název pro IP adresu vztahují prostředků, jako *myAKSPublicIP*:
+Teď Vytvořte statickou veřejnou IP adresu pomocí příkazu [AZ Network Public IP Create][az-network-public-ip-create] . Zadejte název skupiny prostředků uzlu získaný v předchozím příkazu a potom název prostředku IP adresy, například *myAKSPublicIP*:
 
 ```azurecli-interactive
 az network public-ip create \
@@ -51,7 +51,7 @@ az network public-ip create \
     --allocation-method static
 ```
 
-IP adresa se zobrazí, jak je znázorněno v následujícím výstupu zhuštěnému příkladu:
+Zobrazí se IP adresa, jak je znázorněno v následujícím zhuštěném příkladu výstupu:
 
 ```json
 {
@@ -65,7 +65,7 @@ IP adresa se zobrazí, jak je znázorněno v následujícím výstupu zhuštěn�
   }
 ```
 
-Později můžete získat na veřejných IP adres pomocí [az network public-ip list][az-network-public-ip-list] příkazu. Zadejte název skupiny prostředků uzel a potom dotázat *ipAddress* jak je znázorněno v následujícím příkladu:
+Veřejnou IP adresu můžete získat později pomocí příkazu [AZ Network Public-IP list][az-network-public-ip-list] . Zadejte název skupiny prostředků uzlu a potom zadejte dotaz na *adresu ipAddress* , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv
@@ -73,9 +73,9 @@ $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eas
 40.121.183.52
 ```
 
-## <a name="create-a-service-with-the-static-ip"></a>Vytvoření služby pomocí statické IP adresy
+## <a name="create-a-service-with-the-static-ip"></a>Vytvoření služby se statickou IP adresou
 
-Chcete-li vytvořit službu se statickou veřejnou IP adresu, přidejte `loadBalancerIP` vlastnosti a hodnotu statickou veřejnou IP Adresou adres do manifestu YAML. Vytvořte soubor s názvem `egress-service.yaml` a zkopírujte do následující kód YAML. Zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku.
+Chcete-li vytvořit službu se statickou veřejnou IP adresou, přidejte `loadBalancerIP` do manifestu YAML vlastnost a hodnotu statické veřejné IP adresy. Vytvořte soubor s názvem `egress-service.yaml` a zkopírujte ho na následující YAML. Zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku.
 
 ```yaml
 apiVersion: v1
@@ -89,31 +89,31 @@ spec:
   - port: 80
 ```
 
-Vytvoření služby a nasazení se `kubectl apply` příkazu.
+Pomocí `kubectl apply` příkazu vytvořte službu a nasazení.
 
 ```console
 kubectl apply -f egress-service.yaml
 ```
 
-Tato služba v Azure Load Balancer nakonfiguruje novou IP adresu front-endu. Pokud nemáte jiné IP adresy nakonfigurován, pak **všechny** výchozí přenos byste teď měli použít tuto adresu. Při více adres jsou nakonfigurované na Azure Load Balancer, výchozí přenos dat používá první IP adresa na tento nástroj pro vyrovnávání zatížení.
+Tato služba konfiguruje novou front-end IP adresu na Azure Load Balancer. Pokud nemáte nakonfigurovanou žádnou jinou IP adresu, měla by nyní **všechny** přenosy dat používat. Pokud je na Azure Load Balancer nakonfigurovaných víc adres, použije výstupní služba na tomto nástroji pro vyrovnávání zatížení první IP adresu.
 
-## <a name="verify-egress-address"></a>Zkontrolujte výstupní adresou
+## <a name="verify-egress-address"></a>Ověřit výstupní adresu
 
-Chcete-li ověřit, že se používá statickou veřejnou IP adresu, vyhledávací služba DNS můžete použít například `checkip.dyndns.org`.
+Pokud chcete ověřit, že se používá statická veřejná IP adresa, můžete použít službu `checkip.dyndns.org`vyhledávání DNS, jako je například.
 
-Spuštění a připojení k základní *Debian* podu:
+Začněte a připojte se k základnímu *Debian* pod:
 
 ```console
 kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
 ```
 
-Chcete-li získat přístup k webu z v rámci kontejneru, použijte `apt-get` instalace `curl` do kontejneru.
+Chcete-li získat přístup k webu z kontejneru, použijte `apt-get` příkaz pro `curl` instalaci do kontejneru.
 
 ```console
 apt-get update && apt-get install curl -y
 ```
 
-Teď používáme nástroj curl k přístupu *checkip.dyndns.org* lokality. Odchozí IP adresa se zobrazí, jak se zobrazuje v následujícím příkladu výstupu. Tato IP adresa shoduje statickou veřejnou IP adresu vytvoří a definované pro nástroj pro vyrovnávání zatížení služby:
+Teď k přístupu k webu *checkip.dyndns.org* použijte kudrlinkou. Zobrazí se výstupní IP adresa, jak je znázorněno v následujícím příkladu výstupu. Tato IP adresa se shoduje se statickou veřejnou IP adresou vytvořenou a definovanou pro službu Vyrovnávání zatížení:
 
 ```console
 $ curl -s checkip.dyndns.org
@@ -123,7 +123,7 @@ $ curl -s checkip.dyndns.org
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete vyhnout, udržování víc veřejných IP adres v nástroji pro vyrovnávání zatížení Azure, můžete místo toho používat kontroler příchozího přenosu dat. Řadiče příchozího přenosu dat poskytuje další výhody, jako je například ukončení protokolu SSL/TLS, podporu pro identifikátor URI přepisů a nadřazeného šifrování SSL/TLS. Další informace najdete v tématu [vytvoříte řadič základního příchozího přenosu dat ve službě AKS][ingress-aks-cluster].
+Abyste se vyhnuli udržování více veřejných IP adres na Azure Load Balancer, můžete místo toho použít kontroler příchozího přenosu dat. Řadiče příchozího přenosu dat poskytují další výhody, jako je ukončení protokolu SSL/TLS, podpora přepsání identifikátoru URI a nadřazeného šifrování SSL/TLS. Další informace najdete v tématu [Vytvoření základního kontroleru][ingress-aks-cluster]příchozího přenosu v AKS.
 
 <!-- LINKS - internal -->
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create

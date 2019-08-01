@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database modely nákupu | Dokumentace Microsoftu
-description: Další informace o tyto modely nákupu, které jsou k dispozici pro službu Azure SQL Database.
+title: Azure SQL Database nákup modelů | Microsoft Docs
+description: Přečtěte si informace o nákupních modelech, které jsou k dispozici pro Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,139 +10,138 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 04/26/2019
-ms.openlocfilehash: 98c19732c372fbcda3ca8e746d002f94c2687b22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 98d257c28ab5ff2cf902c0b8205ac8918ccf4d45
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431368"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567011"
 ---
-# <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Výběr mezi virtuálních jader a jednotek DTU zakoupení modelů
+# <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Volba mezi vCore a nákupními modely DTU
 
-Azure SQL Database vám umožňuje snadný nákup plně spravovaná platforma jako služba (PaaS) databázový stroj, který nejlépe vyhovuje vašim potřebám výkonu a nákladů. V závislosti na modelu nasazení, který jste zvolili pro službu Azure SQL Database můžete vybrat nákupní model, který vám vyhovuje:
+Azure SQL Database vám umožní snadno zakoupit plně spravovaný databázový stroj PaaS (Platform as a Service), který vyhovuje vašim požadavkům na výkon a náklady. V závislosti na modelu nasazení, který jste zvolili pro Azure SQL Database, můžete vybrat model nákupu, který vám bude vyhovovat:
 
-- [Virtuální jádro (vCore) – nákupní model založený na](sql-database-service-tiers-vcore.md) (doporučeno). Tento nákupní model poskytuje možnost volby mezi vrstvou zřízených výpočetních a výpočetní vrstva bez serveru (preview). Úroveň zřízených výpočetních zvolte přesné množství výpočetních prostředků, které jsou vždy zřízené pro vaši úlohu. Na úrovni výpočetní prostředí zadejte automatické škálování výpočetních prostředků v rozsahu konfigurovatelné výpočetní prostředky. V rámci této vrstvy výpočetní prostředky můžete také automaticky pozastavit a obnovit databáze na základě pracovního vytížení aktivity. VCore Jednotková cena za jednotku doby je nižší úrovni zřízených výpočetních, než je na úrovni výpočetní prostředí.
-- [Jednotky transakcí databáze (DTU) – nákupní model založený na](sql-database-service-tiers-dtu.md). Tento nákupní model poskytuje jako součást balíčku výpočetní výkon a úložiště balíčků pro běžné úlohy s vyrovnáváním.
+- [Nákupní model založený na Virtual Core (Vcore)](sql-database-service-tiers-vcore.md) (doporučeno) Tento model nákupu nabízí možnost volby mezi zřízenou výpočetní vrstvou a výpočetní úrovní bez serveru (Preview). Po zřízené výpočetní úrovni zvolíte přesné množství výpočetních prostředků, které se pro vaše úlohy vždycky zřídí. Pomocí výpočetní úrovně bez serveru určíte automatické škálování výpočetních prostředků přes konfigurovatelný výpočetní rozsah. Pomocí této výpočetní vrstvy můžete také automaticky pozastavit a obnovit databázi na základě aktivity úloh. VCore Jednotková cena za jednotku času je nižší ve zřízené výpočetní úrovni, než je na výpočetní úrovni bez serveru.
+- [Nákupní model založený na jednotce pro databázové transakce (DTU)](sql-database-service-tiers-dtu.md). Tento model nákupu poskytuje balíčky výpočetních a úložných prostředků vyrovnaných pro běžné úlohy.
 
-Tyto modely nákupu různých jsou k dispozici pro různé modely nasazení Azure SQL Database:
+Pro různé modely nasazení Azure SQL Database jsou k dispozici různé nákupní modely:
 
-- [Izolované databáze](sql-database-single-databases-manage.md) a [elastického fondu](sql-database-elastic-pool.md) možností nasazení v [Azure SQL Database](sql-database-technical-overview.md) nabízí i [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
-- [Spravovanou instanci](sql-database-managed-instance.md) možnost nasazení ve službě Azure SQL Database nabízí jen [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
-- [Úroveň služby hyperškálovatelného](sql-database-service-tier-hyperscale.md) je dostupné pro izolované databáze, které používáte [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
+- Možnosti [nasazení jedna databáze](sql-database-single-databases-manage.md) a [elastický fond](sql-database-elastic-pool.md) v [Azure SQL Database](sql-database-technical-overview.md) nabízejí jak [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) , tak i [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md).
+- Možnost nasazení [Managed instance](sql-database-managed-instance.md) v Azure SQL Database nabízí jenom [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md).
+- [Úroveň služby pro škálování](sql-database-service-tier-hyperscale.md) na úrovni služeb je k dispozici pro izolované databáze, které používají [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md).
 
-Následující tabulku a graf porovnání a kontrastu základě virtuálních jader a založený na DTU tyto modely nákupu:
+Následující tabulka a graf se porovnávají a kontrastují s nákupními modely založenými na DTU vCore a na DTU:
 
-|**Nákupní model**|**Popis**|**Nejlepší pro**|
+|**Model nákupu**|**Popis**|**Nejlepší pro**|
 |---|---|---|
-|Model na základě DTU|Tento model je založen na připojené míra prostředků pro výpočty, úložiště a vstupně-výstupních operací. Velikosti výpočetních jsou vyjádřeny v jednotkách Dtu pro izolované databáze a jednotky transakcí elastické databáze (Edtu) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [co jsou jednotky Dtu a Edtu?](sql-database-purchase-models.md#dtu-based-purchasing-model).|Nejvhodnější pro zákazníky, kteří chtějí možnosti jednoduché, předkonfigurované prostředku.|
-|Model na základě virtuálních jader|Tento model umožňuje zvolit nezávisle na sobě výpočetní a úložnou kapacitu. Nákupní model založený na virtuálních jádrech také umožňuje používat [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) získat úspory nákladů.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a transparentnost.|
+|Model na základě DTU|Tento model vychází ze sady prostředků COMPUTE, úložiště a vstupně-výstupních prostředků. Velikosti výpočetních hodnot se vyjadřují v DTU pro izolované databáze a v jednotkách eDTU (elastické databázové transakce) pro elastické fondy. Další informace o DTU a eDTU najdete v tématu [co jsou DTU a eDTU?](sql-database-purchase-models.md#dtu-based-purchasing-model).|Nejvhodnější pro zákazníky, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředků.|
+|Model na základě virtuálních jader|Tento model vám umožní nezávisle zvolit výpočetní prostředky a prostředky úložiště. Nákupní model založený na vCoreech vám také umožní použít [Zvýhodněné hybridní využití Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) k získání úspory nákladů.|Nejvhodnější pro zákazníky, kteří flexibilita hodnot, řízení a transparentnost.|
 ||||  
 
-![porovnání cenový model](./media/sql-database-service-tiers/pricing-model.png)
+![porovnání cenového modelu](./media/sql-database-service-tiers/pricing-model.png)
 
 ## <a name="compute-costs"></a>Náklady na výpočetní výkon
 
-### <a name="provisioned-compute-costs"></a>Zřízených výpočetních nákladů
+### <a name="provisioned-compute-costs"></a>Zřízené výpočetní náklady
 
-Náklady na výpočetní prostředky na úrovni zřízených výpočetních odráží celkové výpočetní kapacitu, pro kterého je zřízené pro aplikaci.
+Ve zřízené výpočetní úrovni se náklady na výpočetní prostředky odráží v celkové výpočetní kapacitě zřízené pro aplikaci.
 
-V obchodní vrstvě důležité služby můžeme automaticky přidělit nejméně 3 repliky. Tak, aby odrážela tuto další přidělování výpočetních prostředků, cena v nákupní model založený na virtuálních jádrech je přibližně 2.7 x vyšší v obchodní vrstvě důležité služby, než je v rámci úrovně služeb pro obecné účely. Obdobně vyšší úložiště cen za GB ve vrstvě služeb kritické obchodní odráží vysoké vstupně-výstupních operací a úložiště SSD s nízkou latencí.
+Na úrovni služby důležité pro podnikání automaticky přidělíme aspoň 3 repliky. Vzhledem k tomu, že se toto dodatečné přidělení výpočetních prostředků projeví, cena v nákupním modelu založeném na vCore je přibližně 2.7 × vyšší v úrovni služeb pro důležité obchodní informace, než je v úrovni služby pro obecné účely. Podobně vyšší cena úložiště za GB v úrovni služby důležité pro podnikání odráží vysoké vstupně-výstupní operace a nízkou latenci úložiště SSD.
 
-Náklady na úložiště zálohování je stejný pro obchodní vrstvu služby a služby úrovni general purpose, protože obě vrstvy používají úložiště úrovně standard.
+Náklady na úložiště zálohování jsou stejné jako u důležitých podnikových služeb a na úrovni služby pro obecné účely, protože obě úrovně používají úložiště Standard Storage úrovně Standard.
 
-### <a name="serverless-compute-costs"></a>Náklady na výpočetní prostředí
+### <a name="serverless-compute-costs"></a>Náklady na výpočetní prostředky bez serveru
 
-Popis jak definuje výpočetní kapacitu a náklady se počítají na úrovni výpočetní prostředí, najdete v části [bez serveru SQL Database (preview)](sql-database-serverless.md).
+Popis způsobu definování kapacity a výpočtu nákladů na výpočetní úrovni serveru najdete v tématu [SQL Database bez serveru (Preview)](sql-database-serverless.md).
 
 ## <a name="storage-costs"></a>Cena za uložení
 
-Různé typy úložiště se účtují různě. Pro ukládání dat vám budeme účtovat zřízeného úložiště na základě maximální velikost databáze nebo fondu, které vyberete. Náklady nemění, není-li snížit nebo zvýšit maximální. Úložiště zálohování je spojen s automatickým zálohám vaší instance a dynamicky přidělit. Prodloužení doby uchovávání zálohování zvyšuje požadavky na záložní úložiště je využívána vaší instance.
+Různé typy úložiště se účtují jinak. Pro úložiště dat se vám budou účtovat zřízené úložiště založené na maximální velikosti databáze nebo fondu, který vyberete. Náklady se nezmění, pokud je maximální hodnota nesnížíte nebo nezvýšíte. Úložiště zálohování je přidruženo k automatizovaným zálohám vaší instance a dynamicky se přiřazuje. Zvýšení doby uchovávání záloh zvyšuje velikost úložiště zálohování spotřebovaného vaší instancí.
 
-Ve výchozím nastavení 7 dní automatizovaných záloh vašich databází se zkopírují do geograficky redundantního úložiště jen pro čtení (RA-GRS) účtu standardní úložiště objektů Blob. Toto úložiště využívané týdenními úplnými zálohami, denními rozdílovými zálohami a zálohování protokolů transakcí, které se kopírují každých 5 minut. Velikosti protokolů transakcí závisí na četnosti změn databáze. Minimální objem úložiště velikosti 100 % velikosti databáze, je k dispozici bez dalších poplatků. Využití úložiště zálohování je účtovat GB za měsíc.
+Ve výchozím nastavení se 7 dní automatizovaného zálohování vašich databází kopíruje do účtu úložiště s přístupem pro čtení geograficky redundantního úložiště s přístupem pro čtení (RA-GRS). Toto úložiště používají týdenní úplné zálohování, denní rozdílové zálohy a zálohy transakčních protokolů, které se zkopírují každých 5 minut. Velikost protokolů transakcí závisí na rychlosti změny databáze. Minimální velikost úložiště rovnající se 100 procentům velikosti databáze se poskytuje bez dalších poplatků. Další spotřebou úložiště zálohování se účtují za GB za měsíc.
 
-Další informace o cenách úložiště, najdete v článku [ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) stránky.
+Další informace o cenách za úložiště najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/sql-database/single/) .
 
 ## <a name="vcore-based-purchasing-model"></a>Nákupní model založený na virtuálních jádrech
 
-Virtuální jádro (vCore) reprezentuje logický procesor a nabízí možnost volby mezi generacemi hardwaru a fyzické charakteristiky hardwaru (například počet jader, paměti a velikost úložiště). Nákupní model založený na virtuálních jádrech poskytuje vám flexibilitu, kontrolu, transparentnost spotřeby jednotlivých prostředků, a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Tento model umožňuje zvolit výpočetních, paměťových a úložiště prostředků na základě potřeb vašich úloh.
+Virtual Core (vCore) představuje logický procesor a nabízí možnost výběru mezi generacemi hardwaru a fyzickými charakteristikami hardwaru (například počet jader, paměti a velikost úložiště). Nákupní model založený na vCoreech poskytuje flexibilitu, kontrolu, transparentnost individuální spotřeby prostředků a snadný způsob, jak přeložit požadavky na místní úlohy do cloudu. Tento model umožňuje zvolit prostředky výpočtů, paměti a úložiště na základě potřeb vašich úloh.
 
-V nákupní model založený na virtuálních jádrech můžete vybrat mezi [Obecné](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) a [pro důležité obchodní informace](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) úrovně u služeb [izolované databáze](sql-database-single-database-scale.md), [ elastické fondy](sql-database-elastic-pool.md), a [spravované instance](sql-database-managed-instance.md). Pro izolované databáze, můžete také [úroveň služby hyperškálovatelného](sql-database-service-tier-hyperscale.md).
+V rámci nákupního modelu založeného na vCore si můžete vybrat mezi úrovněmi služeb pro [jednotlivé databáze](sql-database-single-database-scale.md), [elastické fondy](sql-database-elastic-pool.md)a [spravované instance](sql-database-managed-instance.md)z hlediska [obecných účelů](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) a [důležitých podnikových](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) služeb. Pro izolované databáze můžete také zvolit [úroveň služby pro škálování na úrovni služeb](sql-database-service-tier-hyperscale.md).
 
-Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě zvolte výpočetních a úložných kapacit, vyhledat zajištění místního výkonu a optimalizovat cena. V nákupní model založený na virtuálních jádrech platíte za:
+Nákupní model založený na vCore vám umožňuje nezávisle vybrat výpočetní prostředky a prostředky úložiště, odpovídat místnímu výkonu a optimalizovat ceny. V rámci nákupního modelu založeného na vCore platíte za:
 
-- Výpočetní prostředky (na úrovni služby a počet virtuálních jader a množství paměti a jeho generaci).
-- Typ a velikost úložiště dat a protokolů.
-- Záložní úložiště (pro čtení RA-GRS).
+- Výpočetní prostředky (úroveň služby + počet virtuální jádra a množství paměti a generace hardwaru).
+- Typ a množství dat a úložiště protokolu.
+- Úložiště zálohování (RA-GRS).
 
 > [!IMPORTANT]
-> Výpočetní prostředky, vstupně-výstupní operace a úložiště dat a protokolů se účtují na databázi nebo elastický fond. Úložiště záloh se účtuje za každou databázi. Další informace o poplatcích spravované instance najdete v tématu [spravované instance](sql-database-managed-instance.md).
-> **Omezení oblasti:** Aktuální seznam podporovaných oblastí najdete v tématu [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Chcete-li vytvořit spravovanou instanci v oblasti, kterou aktuálně nepodporuje [odeslat žádost o podporu prostřednictvím webu Azure portal](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
+> Výpočetní prostředky, vstupně-výstupní operace a data a úložiště protokolů se účtují na základě databáze nebo elastického fondu. Úložiště zálohování se účtuje podle každé databáze. Další informace o poplatcích za spravované instance najdete v tématu [spravované instance](sql-database-managed-instance.md).
+> **Omezení oblastí:** Aktuální seznam podporovaných oblastí najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Pokud chcete vytvořit spravovanou instanci v oblasti, která v tuto chvíli není podporovaná, [pošlete žádost o podporu prostřednictvím Azure Portal](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
 
-Pokud se elastický fond nebo izolovanou databázi spotřebovává více než 300 Dtu, může snížit náklady a převod na nákupní model založený na virtuálních jádrech. Můžete převést pomocí rozhraní API podle výběru nebo pomocí webu Azure portal bez výpadků. Převod však není nutné a neprovede automaticky. Nákupní model založený na DTU splňuje výkonu a obchodních požadavcích, měli byste pokračovat, jeho použití.
+Pokud vaše izolovaná databáze nebo elastický fond spotřebovává více než 300 DTU, může převod na model nákupu na základě vCore snížit vaše náklady. Můžete převést pomocí rozhraní API podle vlastního výběru nebo pomocí Azure Portal bez výpadků. Konverze ale není povinná a neprovádí se automaticky. Pokud nákupní model založený na DTU splňuje vaše požadavky na výkon a podnikání, měli byste ho dál používat.
 
-Převést z nákupní model založený na DTU pro nákupní model založený na virtuálních jádrech, vyberte pomocí následující hrubé odhady výpočetního prostředí:
+Chcete-li provést převod z nákupního modelu založeného na DTU na nákupní model založený na vCore, vyberte výpočetní velikost pomocí následujících pravidel pro palec:
 
-- Každých 100 Dtu na úrovni standard vyžadovat alespoň 1 virtuální jádro v rámci úrovně služeb pro obecné účely.
-- Každý 125 Dtu na úrovni premium vyžadují aspoň 1 virtuální jádro v obchodní vrstvě důležité služby.
+- Každé 100 DTU na úrovni Standard vyžaduje aspoň 1 vCore na úrovni služby pro obecné účely.
+- Každé 125 DTU na úrovni Premium vyžaduje aspoň 1 vCore na úrovni služby důležité pro podnikání.
 
 ## <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
 
-Jednotky transakce databáze (DTU) představuje kombinaci měření procesoru, paměti, čtení a zápisu. Nákupní model založený na DTU nabízí sadu předem nakonfigurované sady výpočetních prostředků a zahrnuté úložiště na jednotce různé úrovně výkonu aplikace. Pokud dáváte přednost jednoduchosti, kterou nabízejí předem nakonfigurované sady prostředků a pevných plateb každý měsíc, model založený na DTU pravděpodobně vhodnější pro vaše potřeby.
+Jednotka pro transakce databáze (DTU) představuje míchanou míru procesoru, paměti, čtení a zápisu. Nákupní model založený na DTU nabízí sadu předkonfigurovaných sad výpočetních prostředků a zahrnutého úložiště pro zajištění různých úrovní výkonu aplikace. Pokud dáváte přednost jednoduchosti předkonfigurovaných sad a pevných plateb každý měsíc, model založený na DTU může být vhodnější pro vaše potřeby.
 
-V nákupní model založený na DTU můžete vybrat mezi úrovněmi basic, standard a úrovně služeb premium pro obě [izolované databáze](sql-database-single-database-scale.md) a [elastické fondy](sql-database-elastic-pool.md). Nákupní model založený na DTU není k dispozici pro [spravované instance](sql-database-managed-instance.md).
+V modelu nákupu založeném na DTU si můžete vybrat mezi úrovněmi služeb Basic, Standard a Premium pro [jednotlivé databáze](sql-database-single-database-scale.md) i [elastické fondy](sql-database-elastic-pool.md). Nákupní model založený na DTU není pro [spravované instance](sql-database-managed-instance.md)k dispozici.
 
-### <a name="database-transaction-units-dtus"></a>Jednotky transakcí databáze (Dtu)
+### <a name="database-transaction-units-dtus"></a>Jednotky transakcí databáze (DTU)
 
-Pro jednu databázi na daném vypočítat velikost v rámci [úroveň služby](sql-database-single-database-scale.md), Microsoft zaručuje určité úrovně prostředků pro tuto databázi (nezávisle na jakékoli jiné databáze v cloudu Azure). Tuto záruku poskytuje předvídatelný úroveň výkonu. Množství prostředků přidělených pro databázi se vypočte takto: počet Dtu a je určena jako součást balíčku prostředků pro výpočty, úložiště a vstupně-výstupních operací.
+Pro izolovanou databázi s určitou výpočetní velikostí v rámci [vrstvy služeb](sql-database-single-database-scale.md)společnost Microsoft garantuje určitou úroveň prostředků pro tuto databázi (nezávisle na jiných databázích v cloudu Azure). Tato záruka poskytuje předvídatelné množství výkonu. Množství prostředků přidělených pro databázi se vypočítává jako počet DTU a jedná se o rozdělené měřítko prostředků výpočtů, úložiště a vstupně-výstupních prostředků.
 
-Je poměr mezi tyto prostředky původně určena [úlohou srovnávacího testu online zpracování transakcí (OLTP)](sql-database-benchmark-overview.md) navržena jako typická pro úlohy OLTP v reálném světě. Pokud vaše úloha překračuje množství některý z těchto prostředků, se omezuje propustnost, výsledkem je pomalejší výkon a časové limity.
+Poměr mezi těmito prostředky je původně určený [úlohou srovnávacích testů online zpracování transakcí (OLTP)](sql-database-benchmark-overview.md) , která je navržená tak, aby byla typická pro reálné OLTP úlohy. Když vaše úloha překročí množství těchto prostředků, vaše propustnost je omezená a výsledkem je pomalejší výkon a časové limity.
 
-Prostředky využívané třídou úlohy nebudou mít vliv na prostředky dostupné pro jiné databáze SQL v cloudu Azure. Obdobně prostředky využívané třídou jiné úlohy nebudou mít vliv na prostředky dostupné pro vaši službu SQL database.
+Prostředky používané úlohou nemají vliv na prostředky, které jsou k dispozici pro jiné databáze SQL v cloudu Azure. Podobně prostředky používané jinými úlohami nemají vliv na prostředky, které jsou k dispozici pro vaši databázi SQL.
 
-![ohraničujícího rámečku](./media/sql-database-what-is-a-dtu/bounding-box.png)
+![ohraničovací rámeček](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-Počet jednotek Dtu jsou zvláště užitečná pro pochopení relativní prostředky, které jsou přiděleny pro Azure SQL Database v různých velikostech výpočetních prostředků a úrovní služeb. Příklad:
+DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze SQL Azure v různých velikostech výpočtů a úrovních služby. Příklad:
 
-- Zdvojnásobení jednotek Dtu zvýšením výpočetní velikost databáze odpovídá zdvojnásobení sady prostředků, které jsou k dispozici pro tuto databázi.
-- Databáze úrovně premium služby úrovně P11 se 1 750 Dtu nabízí 350 x více DTU výpočetní výkon než databázi úroveň služeb basic s 5 Dtu.  
+- Zdvojnásobuje se DTU zvýšením velikosti databáze, která je rovna zdvojnásobení sady prostředků, které jsou k dispozici pro danou databázi.
+- P11 databáze úrovně Premium Service s 1750 DTU poskytuje výpočetní výkon 350x větší než základní databáze úrovně služeb s 5 DTU.  
 
-Chcete-li získat podrobnější přehled o spotřebě prostředků (DTU) vašich úloh, použijte [insights výkon dotazů](sql-database-query-performance.md) na:
+Pokud chcete získat hlubší přehled o spotřebě prostředků (DTU) pro vaše úlohy, použijte [přehledy výkonu dotazů](sql-database-query-performance.md) na:
 
-- Identifikujte hlavní dotazy podle počtu CPU/doba trvání/spuštění, který může být potenciálně vyladěný za účelem vylepšení výkonu. Například by mohlo prospět dotazu I vstupně-výstupními operacemi [techniky optimalizace v paměti](sql-database-in-memory.md) lepší využití paměti k dispozici na určitou úroveň služby a vypočítat velikost.
-- Procházet podrobnosti dotazu pro zobrazení jeho textu a její historii využití prostředků.
-- Přístup k doporučení pro vyladění výkonu, které ukazují akce provedené [služby SQL Database Advisor](sql-database-advisor.md).
+- Identifikujte hlavní dotazy podle počtu PROCESORů, doby trvání a počtu spuštění, které je možné optimalizovat pro zlepšení výkonu. Například dotaz náročné na vstupně-výstupní operace může využívat [techniky optimalizace v paměti](sql-database-in-memory.md) , aby bylo možné lépe využívat dostupnou paměť v určité úrovni služby a výpočetní velikost.
+- Přechodem k podrobnostem dotazu zobrazíte jeho text a historii využití prostředků.
+- Přístup k doporučením pro ladění výkonu, která zobrazují akce prováděné [SQL Database Advisor](sql-database-advisor.md).
 
-### <a name="elastic-database-transaction-units-edtus"></a>Jednotky transakcí elastické databáze (Edtu)
+### <a name="elastic-database-transaction-units-edtus"></a>Jednotky transakce elastické databáze (eDTU)
 
-Pro databáze SQL, které jsou vždy k dispozici, spíše než poskytuje vyhrazenou sadu prostředků (Dtu), které nemusí být vždy nezbytné, můžete umístit tyto databáze do [elastického fondu](sql-database-elastic-pool.md). Databáze v elastickém fondu jsou na jednom serveru Azure SQL Database a sdílejí fond zdrojů.
+Pro databáze SQL, které jsou vždy k dispozici, místo poskytování vyhrazené sady prostředků (DTU), které nemusí být vždy potřeba, můžete tyto databáze umístit do elastického [fondu](sql-database-elastic-pool.md). Databáze v elastickém fondu jsou na jednom Azure SQL Databaseovém serveru a sdílejí fond prostředků.
 
-Sdílené prostředky v elastickém fondu jsou měřeny pomocí jednotky transakcí elastické databáze (Edtu). Elastické fondy poskytují jednoduché a nákladově efektivní řešení správy výkonnostních cílů pro více databází, které mají často proměnlivé a nepředvídatelné vzorce používání. Elastický fond zaručuje, že všechny prostředky nemůže být zpracován jedna databáze ve fondu, přitom zajistit, že každá databáze ve fondu má vždy minimální množství potřebné prostředky, které jsou k dispozici.
+Sdílené prostředky v elastickém fondu se měří podle jednotek elastické databázové transakce (eDTU). Elastické fondy poskytují jednoduché a nákladově výhodné řešení pro správu cílů výkonu pro více databází, které mají široce proměnlivé a nepředvídatelné vzorce používání. Elastický fond zaručuje, že všechny prostředky nemůže využívat jedna databáze ve fondu, a přitom zajišťuje, aby každá databáze ve fondu měla vždy minimální množství nezbytných prostředků k dispozici.
 
-Fond je uveden stanovený počet jednotek Edtu za stanovenou cenu. Jednotlivé databáze v elastickém fondu, může automatické škálování v rámci nakonfigurovaných mezí. Databáze při větším zatížení bude spotřebovávat více Edtu, které mají pokrýt poptávku. Databáze pod označením zatížení se spotřebovávají méně Edtu. Databáze s žádné zatížení bude nespotřebovávají žádné Edtu. Protože prostředky zřídí pro celý fond, spíše než jednotlivé databáze, elastické fondy úkoly správy zjednodušují a poskytují předvídatelný rozpočet pro fond.
+Fondu je udělený nastavený počet eDTU pro stanovenou cenu. V elastickém fondu se můžou jednotlivé databáze škálovat v rámci nakonfigurovaných hranic. Databáze v rámci těžšího zatížení bude spotřebovávat více eDTU, aby splnila požadavky. Databáze v rámci světlejšího zatížení budou spotřebovávat méně eDTU. Databáze bez zatížení nebudou využívat žádné eDTU. Vzhledem k tomu, že prostředky jsou zřízené pro celý fond, a nikoli pro jednotlivé databáze, elastické fondy zjednodušují úlohy správy a poskytují předvídatelný rozpočet pro fond.
 
-Další Edtu lze přidat do existujícího fondu bez jakéhokoli výpadku databáze a bez jakéhokoli dopadu na databáze ve fondu. Podobně pokud potřebujete již přidané Edtu, je z existujícího fondu kdykoli odeberte. Můžete také přidat databáze nebo odečíst databáze z fondu kdykoli. A vyhradit tak Edtu pro ostatní databáze, omezte počet jednotek Edtu, které databázi můžete použít v případě velkého zatížení. Pokud se databáze trvale underuses prostředky, ji odebrat z fondu a nakonfigurovat jako izolovanou databázi s předvídatelným množstvím požadovaných prostředků.
+Do existujícího fondu můžete přidat další eDTU bez výpadku databáze a bez dopadu na databáze ve fondu. Podobně pokud již nepotřebujete dodatečně eDTU, odeberte je z existujícího fondu kdykoli. Databáze můžete z fondu kdykoli přidávat nebo je z něj odebírat. Pokud chcete vyhradit eDTU pro jiné databáze, omezte počet eDTU, které databáze může použít při velkém zatížení. Pokud databáze konzistentně nepoužívá prostředky, přesuňte ji mimo fond a nakonfigurujte ji jako izolovanou databázi s předvídatelným množstvím požadovaných prostředků.
 
-### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Určit počet Dtu potřebný podle úloh
+### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Určení počtu DTU potřebných pro zatížení
 
-Pokud chcete migrovat existující místní nebo úloha virtuálního počítače SQL serveru do služby Azure SQL Database, použijte [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k odhadu počtu potřebných Dtu. Pro existující úlohy Azure SQL Database, použijte [insights výkon dotazů](sql-database-query-performance.md) porozumět využití prostředků databáze (Dtu) a získat podrobnější přehled pro optimalizaci vašich úloh. [Sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) zobrazení dynamické správy (DMV) umožňuje zobrazit využití prostředků za poslední hodinu. [Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) katalogu zobrazení využití prostředků za posledních 14 dní, ale v méně přesné průměry pět minut.
+Pokud chcete migrovat existující úlohu místního nebo SQL Server virtuálního počítače na Azure SQL Database, použijte [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k aproximaci počtu potřebných DTU. Pro existující úlohu Azure SQL Database použijte přehledy [výkonu dotazů](sql-database-query-performance.md) , které vám pomůžou pochopit využití prostředků databáze (DTU) a získat hlubší přehledy pro optimalizaci vašich úloh. Zobrazení dynamické správy resource_stats (DMV) [Sys. DM _db_](https://msdn.microsoft.com/library/dn800981.aspx) vám umožňuje zobrazit spotřebu prostředků za poslední hodinu. V zobrazení katalogu [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) se zobrazuje spotřeba prostředků za posledních 14 dní, ale s nižší věrností průměrných průměrných rychlostí 5 minut.
 
-### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Úlohy, které využívají samosprávné elastického fondu prostředků
+### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Úlohy, které využívají elastický fond prostředků
 
-Fondy jsou vhodné pro databáze s průměr nízké využití prostředků a poměrně málo četné špičky využití. SQL Database automaticky vyhodnotí historické údaje používání prostředků databází na existujícím serveru SQL Database a doporučí odpovídající konfigurace fondu na webu Azure Portal. Další informace najdete v tématu [při měli byste zvážit elastického fondu SQL Database?](sql-database-elastic-pool.md).
+Fondy jsou vhodné pro databáze s nízkým průměrem využití prostředků a relativně málo časté špičky využití. SQL Database automaticky vyhodnocuje historické využití prostředků databáze na stávajícím serveru SQL Database a doporučuje příslušnou konfiguraci fondu v Azure Portal. Další informace najdete v tématu [Kdy byste měli zvážit SQL Database elastický fond?](sql-database-elastic-pool.md).
 
-## <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy (FAQ)
+## <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
 
-### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Je nutné nastavit aplikaci offline převést z úrovně služeb na základě DTU pro vrstvu služby založený na virtuálních jádrech?
+### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Potřebuji aplikaci převést do režimu offline, aby se převedla z úrovně služby založené na DTU na úroveň služby založenou na vCore?
 
-Ne. Není nutné převést aplikaci do režimu offline. Nové úrovně služeb nabízejí jednoduchý způsob online převodu, který je podobný stávajícího procesu upgradu databází z standardní úrovně premium a naopak. Můžete spustit tento převod pomocí webu Azure portal, Powershellu, rozhraní příkazového řádku Azure, T-SQL nebo rozhraní REST API. Zobrazit [Správa izolovaných databází](sql-database-single-database-scale.md) a [Správa elastických fondů](sql-database-elastic-pool.md).
+Ne. Nemusíte přebírat aplikaci offline. Nové úrovně služeb nabízejí jednoduchou metodu online převodu, která je podobná stávajícímu procesu upgradu databází z úrovně Standard na úroveň služby Premium a dalším způsobem. Tento převod můžete spustit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure CLI, T-SQL nebo REST API. Viz [Správa](sql-database-single-database-scale.md) izolovaných databází a [Správa elastických fondů](sql-database-elastic-pool.md).
 
-### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Můžu převést databáze z úrovně služeb v nákupní model založený na virtuálních jádrech pro vrstvu služby v nákupní model založený na DTU?
+### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Můžu převést databázi z vrstvy služeb v nákupním modelu založeném na vCore na úroveň služby v nákupním modelu založeném na DTU?
 
-Ano, můžete snadno převést databázi do jakékoli objective podporované výkonu pomocí webu Azure portal, Powershellu, rozhraní příkazového řádku Azure, T-SQL nebo rozhraní REST API. Zobrazit [Správa izolovaných databází](sql-database-single-database-scale.md) a [Správa elastických fondů](sql-database-elastic-pool.md).
+Ano, databázi můžete snadno převést na jakýkoli podporovaný cíl výkonu pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure CLI, T-SQL nebo REST API. Viz [Správa](sql-database-single-database-scale.md) izolovaných databází a [Správa elastických fondů](sql-database-elastic-pool.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o nákupní model založený na virtuálních jádrech najdete v tématu [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
-- Další informace o nákupní model založený na DTU najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md).
+- Další informace o modelu nakupování založeném na vCore najdete v tématu [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md).
+- Další informace o modelu nákupu na základě DTU naleznete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md).

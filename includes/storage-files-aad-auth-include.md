@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 06/18/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ff2ed5abbf2ce67a0b96a5da450b83832403db1f
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d1b10b55481b41f42c6c872522d3dd4dd4be0e77
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269347"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570593"
 ---
-[Služba soubory Azure](../articles/storage/files/storage-files-introduction.md) podporuje ověřování na základě identity přes protokol SMB (Server Message Block) (preview) prostřednictvím [domény služby Azure Active Directory (Azure AD)](../articles/active-directory-domain-services/overview.md). Připojené k doméně Windows virtuálních počítačů (VM) můžete přístup k sdílenými složkami Azure pomocí [Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md) přihlašovací údaje. 
+[Soubory Azure](../articles/storage/files/storage-files-introduction.md) podporují ověřování na základě identity přes protokol SMB (Server Message Block) (Preview) prostřednictvím [Azure Active Directory Domain Services (služba AD DS)](../articles/active-directory-domain-services/overview.md). Virtuální počítače s Windows připojené k doméně mají přístup ke sdíleným složkám Azure pomocí pověření [Azure Active Directory (Azure AD)](../articles/active-directory/fundamentals/active-directory-whatis.md) .
 
-Můžete spravovat soubory Azure úroveň přístupu ke sdílení do identity jako je například uživatel, skupiny ve službě Azure AD s [řízení přístupu na základě role (RBAC)](../articles/role-based-access-control/overview.md). Můžete definovat vlastní role RBAC, které zahrnuje společné sady oprávnění pro přístup k Azure Files. Když přiřadíte vlastní roli RBAC do identity Azure AD, že identita je udělen přístup k sdílené složky Azure podle těchto oprávnění.
+Můžete spravovat přístup na úrovni sdílené složky Azure Files k identitě, jako je například uživatel nebo skupina ve službě Azure AD, pomocí [řízení přístupu na základě role (RBAC)](../articles/role-based-access-control/overview.md). Můžete definovat vlastní role RBAC, které zahrnují společné sady oprávnění používaných pro přístup k souborům Azure. Když přiřadíte vlastní roli RBAC k identitě Azure AD, získá tato identita v závislosti na těchto oprávněních přístup ke sdílené složce Azure.
 
-V rámci verze preview se soubory Azure také podporuje zachování dědění a vynucování [NTFS DACL](https://technet.microsoft.com/library/2006.01.howitworksntfs.aspx) na všechny soubory a adresáře ve sdílené složce. Pokud se kopírování dat ze sdílené složky do služby soubory Azure, nebo naopak, můžete určit, že se zachovají DACL systému souborů NTFS. Tímto způsobem můžete implementovat scénáře zálohování pomocí služby soubory Azure, zachování vašeho systému souborů NTFS DACL mezi vaší místní sdílené složky a sdílené složce cloudu. 
+V rámci verze Preview taky Azure Files podporuje zachování, dědění a vynucování [seznamů řízení přístupu NTFS](https://technet.microsoft.com/library/2006.01.howitworksntfs.aspx) pro všechny soubory a adresáře ve sdílené složce. Pokud kopírujete data ze sdílené složky do souborů Azure nebo naopak, můžete určit, že se budou spravovat DACL souborů NTFS. Tímto způsobem můžete implementovat scénáře zálohování pomocí služby soubory Azure, které zachovávají seznamy souborů NTFS mezi místní sdílenou složkou a vaší cloudovou sdílenou složkou souborů. 
 
 > [!NOTE]
-> - Ověřování Azure AD Domain Services pro SMB přístup není podporován pro virtuální počítače s Linuxem. Podporované jsou pouze virtuální počítače s Windows.
-> - Ověřování Azure AD Domain Services pro přístup k protokolu SMB se nepodporuje pro počítače připojeného k doméně služby Active Directory. Prozatím můžete využívat [Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) k migraci dat do služby soubory Azure a dál vynutit řízení přístupu pomocí přihlašovacích údajů AD z vašeho místního připojený k doméně AD počítače. 
-> - Ověřování Azure AD Domain Services pro přístup k protokolu SMB je k dispozici pouze pro účty úložiště vytvořené po 24. září 2018.
-> - Ověřování Azure AD Domain Services pro přístup k protokolu SMB a systému souborů NTFS DACL trvalé nepodporuje sdílené složky Azure spravované pomocí služby Azure File Sync. 
+> - Pro virtuální počítače se systémem Linux není podporováno ověřování Azure služba AD DS pro přístup SMB (Server Message Block). Podporované jsou pouze virtuální počítače s Windows.
+> - Pro počítače připojené k doméně Active Directory se nepodporuje ověřování Azure služba AD DS pro přístup přes protokol SMB. V prozatímním případě zvažte použití [Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) ke spuštění migrace dat do souborů Azure a pokračování vynucování řízení přístupu pomocí přihlašovacích údajů služby Active Directory z místních počítačů připojených k doméně služby Active Directory. 
+> - Ověřování Azure služba AD DS pro přístup přes protokol SMB je dostupné jenom pro účty úložiště vytvořené po 24. září 2018.
+> - Ověřování Azure služba AD DS pro přístup SMB a trvalost DACL se systémem souborů NTFS není podporované u sdílených složek Azure spravovaných pomocí Azure File Sync.

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Zscalerem Beta pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak konfigurovat Azure Active Directory a automaticky zřizovat a rušit zřízení uživatelských účtů do Zscalerem Beta.
+title: 'Kurz: Konfigurace Zscaler Beta pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Zscaler Beta verzi.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,45 +15,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 82f9746b8f2f6665506491c328841e6a88438472
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d5ca1efb607160447bdbca59522c8ac72bc7eeb3
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672961"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515516"
 ---
-# <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscalerem Beta pro automatické zřizování uživatelů
+# <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler Beta pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je předvést postup provést v Zscalerem Beta a Azure Active Directory (Azure AD) ke konfiguraci Azure AD automaticky zřizovat a rušit zřízení uživatele a/nebo skupiny, které se Zscalerem Beta.
+Cílem tohoto kurzu je předvést kroky, které je třeba provést v Zscaler Beta a Azure Active Directory (Azure AD) a nakonfigurovat tak, aby služba Azure AD automaticky zřídila a zrušila zřizování uživatelů a skupin Zscaler Beta.
 
 > [!NOTE]
-> Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../active-directory-saas-app-provisioning.md).
 >
 
-> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných Microsoft Azure podmínky použití pro funkce ve verzi Preview, najdete v části [doplňkovými podmínkami použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu se předpokládá, že již máte následující:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující:
 
-* Klient služby Azure AD
-* Tenanta Zscaler Beta
-* Uživatelský účet ve verzi Beta Zscalerem s oprávněními správce
+* Tenant Azure AD
+* Tenant Zscaler Beta
+* Uživatelský účet ve službě Zscaler Beta s oprávněními správce
 
 > [!NOTE]
-> Zřizování integrace služby Azure AD spoléhá na rozhraní API SCIM Zscalerem beta verze, která je k dispozici Beta Zscalerem vývojářům pro účty s balíčkem Enterprise.
+> Integrace zřizování Azure AD spoléhá na rozhraní Zscaler Beta SCIM API, které je k dispozici pro vývojáře Zscaler Beta pro účty s podnikovým balíčkem.
 
-## <a name="adding-zscaler-beta-from-the-gallery"></a>Přidání Zscalerem Beta z Galerie
+## <a name="adding-zscaler-beta-from-the-gallery"></a>Přidání beta verze Zscaler z Galerie
 
-Před konfigurací Zscalerem Beta pro automatické zřizování uživatelů pomocí Azure AD, budete muset přidat Zscalerem Beta z Galerie aplikací Azure AD na váš seznam spravovaných aplikací SaaS.
+Před konfigurací Zscaler Beta pro Automatické zřizování uživatelů se službou Azure AD je nutné přidat Zscaler Beta z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
 
-**Přidat Zscalerem Beta z Galerie aplikací Azure AD, postupujte následovně:**
+**Pokud chcete přidat Zscaler Beta z Galerie aplikací Azure AD, proveďte následující kroky:**
 
 1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
@@ -61,102 +60,102 @@ Před konfigurací Zscalerem Beta pro automatické zřizování uživatelů pomo
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Zscalerem Beta**vyberte **Zscalerem Beta** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **Zscaler Beta**, vyberte **Zscaler Beta** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![Beta verze Zscalerem v seznamu výsledků](common/search-new-app.png)
+    ![Zscaler Beta v seznamu výsledků](common/search-new-app.png)
 
-## <a name="assigning-users-to-zscaler-beta"></a>Přiřazování uživatelů k Zscaler Beta
+## <a name="assigning-users-to-zscaler-beta"></a>Přiřazení uživatelů k Zscaler Beta
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V souvislosti s automatické zřizování uživatelů se synchronizují pouze uživatele a/nebo skupiny, které se "přiřadily" aplikace ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci ve službě Azure AD.
 
-Než nakonfigurujete a povolíte automatické zřizování uživatelů, byste měli rozhodnout, které uživatele a/nebo skupiny ve službě Azure AD potřebují přístup k Zscalerem Beta. Jakmile se rozhodli, můžete přiřadit tyto uživatele a/nebo skupiny Zscalerem Beta podle zde uvedených pokynů:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Zscaler Beta verzi. Až se rozhodnete, můžete těmto uživatelům nebo skupinám přiřadit Zscaler Beta podle pokynů uvedených tady:
 
-* [Přiřadit uživatele nebo skupiny k podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-zscaler-beta"></a>Důležité tipy pro přiřazování uživatelů k Zscaler Beta
+### <a name="important-tips-for-assigning-users-to-zscaler-beta"></a>Důležité tipy pro přiřazení uživatelů k Zscaler Beta
 
-* Dále je doporučeno jednoho uživatele Azure AD je přiřazená Zscalerem Beta testování automatické konfigurace zřizování uživatelů. Další uživatele a/nebo skupiny může být přiřazen později.
+* Doporučujeme, aby se k otestování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD Zscaler Beta. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazení uživatele k Zscalerem Beta, musíte vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
+* Při přiřazování uživatele k Zscaler Beta verzi musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
 
-## <a name="configuring-automatic-user-provisioning-to-zscaler-beta"></a>Konfigurace automatické zřizování uživatelů pro Zscaler Beta
+## <a name="configuring-automatic-user-provisioning-to-zscaler-beta"></a>Konfigurace automatického zřizování uživatelů pro Zscaler Beta
 
-Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a vytvářet, aktualizovat a zakázat uživatele a/nebo skupiny ve verzi Beta Zscalerem podle uživatele a/nebo přiřazení skupin ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin ve službě Zscaler Beta na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také povolit založené na SAML jednotného přihlašování pro Zscalerem Beta, postupujte podle pokynů uvedených v [Zscalerem Beta jednotné přihlašování – kurz](zscaler-beta-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování uživatelů, i když tyto dvě funkce návrzích mezi sebou.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Zscaler Beta, a to podle pokynů uvedených v [kurzu Zscaler Beta jednotného přihlašování](zscaler-beta-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
 
-### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>Konfigurace automatické zřizování uživatelů pro Beta Zscalerem ve službě Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Zscaler Beta verze ve službě Azure AD:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Zscalerem Beta**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Zscaler Beta**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Zscalerem Beta**.
+2. V seznamu aplikace vyberte **Zscaler Beta**.
 
-    ![Odkaz Zscalerem Beta v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Zscaler Beta v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte **zřizování** kartu.
+3. Vyberte kartu **zřizování** .
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
 
-4. Nastavte **režim zřizování** k **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
 
-5. V části **přihlašovacích údajů správce** části, zadejte **adresy URL Tenanta** a **tajný klíč tokenu** účtu Zscalerem Beta, jak je popsáno v kroku 6.
+5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** účtu Zscaler Beta, jak je popsáno v kroku 6.
 
-6. Získat **adresy URL Tenanta** a **tajný klíč tokenu**, přejděte na **Správa > Nastavení ověřování** v Beta Zscalerem portálu uživatelské rozhraní a klikněte na  **SAML** pod **typ ověřování**.
+6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, přejděte do části **Správa > nastavení ověřování** v uživatelském rozhraní portálu Zscaler Beta a klikněte na protokol **SAML** pod položkou **typ ověřování**.
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
 
-    Klikněte na **konfigurace SAML** otevřít **konfigurace SAML** možnosti.
+    Kliknutím na **nakonfigurovat SAML** otevřete konfiguraci možností protokolu **SAML** .
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
-    Vyberte **Enable SCIM-Based zřizování** načíst **základní adresu URL** a **nosného tokenu**, uložte nastavení. Kopírovat **základní adresu URL** k **adresy URL Tenanta**, a **nosného tokenu** k **tajný klíč tokenu** na webu Azure Portal.
+    Vyberte **Povolit zřizování na základě SCIM** k načtení **základní adresy URL** a **nosného tokenu**a pak nastavení uložte. Zkopírujte **základní adresu URL** na **adresu URL tenanta**a **token nosiče** do **tajného tokenu** v Azure Portal.
 
-7. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k Zscalerem Beta. Pokud se nepovede, ujistěte se, že váš účet Zscalerem Beta má oprávnění správce a zkuste to znovu.
+7. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k Zscaler Beta. Pokud se připojení nepovede, zajistěte, aby měl účet Zscaler Beta oprávnění správce, a zkuste to znovu.
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
 
-8. V **e-mailové oznámení** zadejte e-mailovou adresu osoby nebo skupiny, který by měla přijímat oznámení zřizování chyba a zaškrtněte políčko **odeslání e-mailové oznámení, když dojde k selhání**.
+8. V poli **e-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k selhání**.
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/notification.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
 9. Klikněte na **Uložit**.
 
-10. V části **mapování** vyberte **synchronizace Azure Active Directory Users na verzi Beta Zscalerem**.
+10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele a Zscaler Beta verzi**.
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
 
-11. Zkontrolujte atributy uživatele, které se synchronizují ze služby Azure AD do Zscalerem Beta v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty ve verzi Beta Zscalerem pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
+11. Zkontrolujte atributy uživatele synchronizované z Azure AD do Zscaler Beta v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Zscaler Beta pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
 
-12. V části **mapování** vyberte **synchronizaci skupinám Azure Active Directory na verzi Beta Zscalerem**.
+12. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do Zscaler Beta verze**.
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
 
-13. Zkontrolujte skupiny atributů, které jsou synchronizovány ze služby Azure AD na verzi Beta Zscalerem v **mapování atributů** oddílu. Atributy vybrané jako **odpovídající** vlastnosti se používají k vyhodnocení skupiny ve verzi Beta Zscalerem pro operace update. Vyberte **Uložit** tlačítko potvrďte všechny změny.
+13. Zkontrolujte atributy skupiny synchronizované z Azure AD do Zscaler Beta v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v Zscaler Beta pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Konfigurace filtrů oborů, najdete v následující pokyny uvedené v [Scoping filtr kurzu](./../active-directory-saas-scoping-filters.md).
+14. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](./../active-directory-saas-scoping-filters.md).
 
-15. Služba pro Beta Zscalerem zřizování Azure AD povolit, změňte **stavu zřizování** k **na** v **nastavení** oddílu.
+15. Pokud chcete povolit službu Azure AD Provisioning pro Zscaler Beta, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
 
-16. Definovat uživatele a/nebo skupiny, které chcete ke zřízení na verzi Beta Zscalerem výběrem požadované hodnoty do **oboru** v **nastavení** oddílu.
+16. Definujte uživatele nebo skupiny, které chcete zřídit pro Zscaler Beta, výběrem požadovaných hodnot v **rozsahu** v části **Nastavení** .
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/scoping.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/scoping.png)
 
-17. Až budete připravení ke zřízení, klikněte na tlačítko **Uložit**.
+17. Až budete připraveni zřídit, klikněte na **Uložit**.
 
-    ![Zřizování Beta Zscaler](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
+    ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů a/nebo skupiny definované v **oboru** v **nastavení** oddílu. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování sestava aktivity, která popisuje všechny akce, které provádí služba na Beta Zscalerem zřizování Azure AD.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Zscaler Beta verzi.
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
 
@@ -167,7 +166,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 
 ## <a name="next-steps"></a>Další postup
 
-* [Zjistěte, jak kontrolovat protokoly a získat sestavy o zřizování aktivity](../active-directory-saas-provisioning-reporting.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../active-directory-saas-provisioning-reporting.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-beta-provisioning-tutorial/tutorial-general-01.png

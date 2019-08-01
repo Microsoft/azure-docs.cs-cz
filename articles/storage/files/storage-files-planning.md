@@ -1,19 +1,18 @@
 ---
 title: Plánování nasazení služby soubory Azure | Microsoft Docs
 description: Zjistěte, co je potřeba vzít v úvahu při plánování nasazení souborů Azure.
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6282ce426b08c4ad9c44bead0bd4ec3d259f65fe
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 59a97e8a6e34aba8639c7f12b52e42f2c97b7dca
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501422"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704459"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -98,7 +97,7 @@ V současné době nemůžete přímo převádět mezi standardní sdílenou slo
 > [!IMPORTANT]
 > Soubory úrovně Premium jsou dostupné jenom pro LRS a jsou dostupné ve většině oblastí, které nabízí účty úložiště. Pokud chcete zjistit, jestli jsou v současnosti ve vaší oblasti dostupné sdílené složky Premium, přečtěte si stránku [Dostupné produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=storage) pro Azure.
 
-### <a name="provisioned-shares"></a>Zřízené sdílené složky
+#### <a name="provisioned-shares"></a>Zřízené sdílené složky
 
 Soubory úrovně Premium se zřídí na základě pevného poměru propustnosti GiB/IOPS/. Pro každé zřízené GiB se pro sdílenou složku vystaví jedna propustnost a 0,1 MiB/s až do maximálního počtu na jednu sdílenou složku. Minimální povolené zřizování je 100 GiB s minimálním IOPS/propustností.
 
@@ -135,7 +134,7 @@ Následující tabulka ilustruje několik příkladů těchto vzorců pro zříz
 > [!NOTE]
 > Výkon sdílených složek závisí na omezeních sítě počítačů, dostupné šířce pásma sítě, velikosti v/v, paralelních operacích, mezi mnoha dalšími faktory. Chcete-li dosáhnout maximálního rozsahu výkonu, rozšíříte zatížení napříč více virtuálními počítači. Některé běžné problémy s výkonem a alternativní řešení najdete v [Průvodci odstraňováním potíží](storage-troubleshooting-files-performance.md) .
 
-### <a name="bursting"></a>Shlukování
+#### <a name="bursting"></a>Shlukování
 
 Soubory úrovně Premium můžou zvýšit zatížení za IOPS až do násobku tří. Shlukování je automatizované a funguje na základě úvěrového systému. Shluking funguje na nejvyšší úrovni a limit shluku není zárukou, sdílené složky mohou *zvýšit úroveň až do* limitu.
 
@@ -206,11 +205,15 @@ Tato část se vztahuje pouze na standardní sdílené složky. Všechny soubory
 
 Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB. V některých oblastech je k dispozici s omezením 100 TiB, tyto oblasti jsou uvedeny v následující tabulce:
 
-|Oblast  |Podporovaná redundance  |Podporuje existující účty úložiště.  |
-|---------|---------|---------|
-|Jihovýchodní Asie     |LRS|Ne         |
-|Západní Evropa     |LRS, ZRS|Ne         |
-|USA – západ 2     |LRS, ZRS|Ne         |
+|Oblast |Podporovaná redundance |Podporuje existující účty úložiště. |Podpora portálu *   |
+|-------|---------|---------|---------|
+|Austrálie – východ  |LRS|Ne         |Ano|
+|Francie – střed  |LRS|Ne         |Zatím ne|
+|Jihovýchodní Asie  |LRS|Ne         |Jenom LRS, ZRS – zatím ne|
+|Západní Evropa     |LRS, ZRS|Ne       |Ano|
+|USA – západ 2       |LRS, ZRS|Ne         |Ano|
+
+\* Pro oblasti bez podpory portálu můžete i nadále používat PowerShell nebo rozhraní příkazového řádku Azure (CLI) k vytvoření většího než 5 TiB sdílených složek. Altenatively vytvořte novou sdílenou složku prostřednictvím portálu bez určení kvóty. Tím se vytvoří sdílená složka s výchozí velikostí 100 TiB, která se dá později aktualizovat prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
 Abychom vám pomohli upřednostnit nové oblasti a funkce, vyplňte prosím tento [průzkum](https://aka.ms/azurefilesatscalesurvey).
 
@@ -260,7 +263,7 @@ Existuje mnoho jednoduchých možností, jak hromadně přenášet data z existu
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy je dobře známý nástroj pro kopírování, který je dodáván s Windows a Windows serverem. Pomocí nástroje Robocopy můžete přenášet data do souborů Azure, a to tak, že sdílenou složku připojíte místně a potom v příkazu Robocopy použijete připojené umístění jako cíl.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy je nástroj příkazového řádku určený ke kopírování dat do a ze souborů Azure a také jako úložiště objektů BLOB v Azure pomocí jednoduchých příkazů s optimálním výkonem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)
 * [Nasazení souborů Azure](storage-files-deployment-guide.md)
 * [Nasazení Azure File Sync](storage-sync-files-deployment-guide.md)

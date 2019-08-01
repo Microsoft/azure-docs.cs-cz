@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
-manager: jroth
 ms.date: 06/19/2019
-ms.openlocfilehash: a9c4fb43717788703184522109301e88d4c94f0e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 0507b3cb64b4b12bac92cc6bc90120ab4ec56dee
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444809"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568736"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Kurz: Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání
 
@@ -124,7 +123,7 @@ Vyčistěte prostředky odstraněním skupiny prostředků.
 1. Zadejte název skupiny `myResourceGroup`prostředků, v textovém poli a pak vyberte **Odstranit** a odstraňte skupinu prostředků.  
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste do skupiny převzetí služeb při selhání přidali izolovanou databázi Azure SQL Database a otestujete převzetí služeb při selhání. Naučili jste se tyto postupy:
 

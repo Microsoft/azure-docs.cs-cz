@@ -8,14 +8,14 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 07/31/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4c60cb78c01d7e18801cbe43c8b767f622ef4b39
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 3a504fe4475cee8e2949ee121c632b792f349758
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68473095"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694293"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Geografická poloha a zpracování IP adres
 
@@ -83,8 +83,8 @@ Pokud potřebujete pouze změnit chování pro jeden Application Insights prost�
 
     ![Snímek obrazovky přidá čárku za "IbizaAIExtension" a přidá nový řádek pod "DisableIpMasking": true](media/ip-collection/save.png)
 
-    > [!NOTE]
-    > Pokud dojde k chybě, která říká: _Skupina prostředků je v umístění, které není podporováno jedním nebo více prostředky v šabloně. Zvolte prosím jinou skupinu prostředků._ Dočasně vyberte jinou skupinu prostředků z rozevíracího seznamu a pak znovu vyberte původní skupinu prostředků, abyste mohli chybu vyřešit.
+    > [!WARNING]
+    > Pokud dojde k chybě, která říká: **_Skupina prostředků je v umístění, které není podporováno jedním nebo více prostředky v šabloně. Zvolte prosím jinou skupinu prostředků._** Dočasně vyberte jinou skupinu prostředků z rozevíracího seznamu a pak znovu vyberte původní skupinu prostředků, abyste mohli chybu vyřešit.
 
 5. Vyberte **Souhlasím**s nákupem. >  
 
@@ -92,7 +92,7 @@ Pokud potřebujete pouze změnit chování pro jeden Application Insights prost�
 
     V tomto případě se nic nekupuje, jenom aktualizujeme konfiguraci existujícího prostředku Application Insights.
 
-6. Jakmile se nasazení dokončí, nová data telemetrie se zaznamenávají za první tři oktety naplněné IP adresou a poslední oktet se vynulová.
+6. Po dokončení nasazení se budou zaznamenávat nová data telemetrie s prvními tři oktety naplněné IP adresou a poslední oktet vypočítáno.
 
     Pokud byste chtěli znovu vybrat a upravit šablonu, měli byste zobrazit jenom výchozí šablonu a nevidíte nově přidanou vlastnost a její přidruženou hodnotu. Pokud nevidíte data IP adresy a chcete potvrdit, že `"DisableIpMasking": true` je nastavená. Spusťte následující PowerShell: (Nahraďte `Fabrikam-dev` odpovídajícím názvem prostředku a skupiny prostředků.)
     
@@ -130,10 +130,11 @@ Content-Length: 54
 
 Pokud potřebujete zaznamenat celou IP adresu a nikoli jenom první tři oktety, můžete použít [inicializátor telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) ke zkopírování IP adresy do vlastního pole, které se nebude maskovat.
 
-### <a name="aspnetaspnet-core"></a>Jádro ASP.NET/ASP.NET
+### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 
 namespace MyWebApp
@@ -142,15 +143,20 @@ namespace MyWebApp
     {
         public void Initialize(ITelemetry telemetry)
         {
-            if(!string.IsNullOrEmpty(telemetry.Context.Location.Ip))
+            ISupportProperties propTelemetry = telemetry as ISupportProperties;
+
+            if (propTelemetry !=null && !propTelemetry.Properties.ContainsKey("client-ip"))
             {
-                telemetry.Context.Properties["client-ip"] = telemetry.Context.Location.Ip;
+                string clientIPValue = telemetry.Context.Location.Ip;
+                propTelemetry.Properties.Add("client-ip", clientIPValue);
             }
         }
-    }
-
+    } 
 }
 ```
+
+> [!NOTE]
+> Pokud nemůžete získat přístup `ISupportProperties`, zkontrolujte a ujistěte se, že používáte nejnovější stabilní verzi Application Insights SDK. `ISupportProperties`jsou určené pro vysoké hodnoty mohutnosti, zatímco `GlobalProperties` jsou vhodnější pro hodnoty nízké mohutnosti, jako je název oblasti, název prostředí atd. 
 
 ### <a name="enable-telemetry-initializer-for-aspnet"></a>Povolit inicializátor telemetrie pro. ASP.NET
 

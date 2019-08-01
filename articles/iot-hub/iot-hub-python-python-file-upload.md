@@ -1,73 +1,65 @@
 ---
-title: Nahrání souborů ze zařízení do služby Azure IoT Hub pomocí Pythonu | Dokumentace Microsoftu
-description: Postup nahrání souborů ze zařízení do cloudu pomocí zařízení Azure IoT SDK pro Python. Nahrané soubory se ukládají v kontejneru objektů blob v Azure storage.
-author: kgremban
-manager: philmea
+title: Nahrání souborů ze zařízení do Azure IoT Hub pomocí Pythonu | Microsoft Docs
+description: Postup nahrání souborů ze zařízení do cloudu pomocí sady SDK pro zařízení Azure IoT pro Python Nahrané soubory se ukládají v kontejneru objektů BLOB služby Azure Storage.
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.author: kgremban
-ms.openlocfilehash: 23b0a2ac8e0264ddc1592479759cc8398d9ef5f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 07/30/2019
+ms.author: robinsh
+ms.openlocfilehash: a529933cf4af572deacab1ae3c615ec0a0eca68f
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621266"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667868"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Python)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-Tento článek popisuje, jak používat [soubor nahrát možnosti služby IoT Hub](iot-hub-devguide-file-upload.md) nahrát soubor do [úložiště objektů blob v Azure](../storage/index.yml). V tomto kurzu získáte informace o následujících postupech:
+V tomto článku se dozvíte, jak pomocí [možností nahrávání souborů IoT Hub](iot-hub-devguide-file-upload.md) nahrát soubor do [úložiště objektů BLOB v Azure](../storage/index.yml). V tomto kurzu získáte informace o následujících postupech:
 
-* Zabezpečeně dodávají kontejner úložiště pro nahrání souboru.
+* Bezpečně poskytněte kontejner úložiště pro nahrání souboru.
 
-* Pomocí Pythonového klienta k nahrání souboru do služby IoT hub.
+* Pomocí klienta Pythonu nahrajte soubor prostřednictvím služby IoT Hub.
 
-[Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-python.md) rychlý start ukazuje základní funkce zasílání zpráv typu zařízení cloud ze služby IoT Hub. Nicméně v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně málo početnému zpráv typu zařízení cloud, které služby IoT Hub přijímá. Když budete potřebovat hornatých souborů ze zařízení, můžete stále použít zabezpečení a spolehlivost služby IoT Hub.
-
-> [!NOTE]
-> Python SDK pro IoT Hub aktuálně podporuje jenom jako nahrávání souborů znakový **.txt** soubory.
-
-Na konci tohoto kurzu Spusťte konzolovou aplikaci v Pythonu:
-
-* **FileUpload.py**, který nahraje soubor do úložiště pomocí sady Python SDK zařízení.
+[Možnost Odeslat telemetrii ze zařízení do centra IoT](quickstart-send-telemetry-python.md) se rychlým startem předvádí základní funkce zasílání zpráv typu zařízení-Cloud IoT Hub. V některých scénářích ale nemůžete snadno namapovat data, která zařízení odesílají do relativně malých zpráv ze zařízení do cloudu, které IoT Hub přijmout. Pokud potřebujete nakládat soubory ze zařízení, můžete i nadále používat zabezpečení a spolehlivost IoT Hub.
 
 > [!NOTE]
-> IoT Hub podporuje mnoho platforem zařízení a jazyků (včetně C, .NET, Javascript, Python a Java) prostřednictvím sady SDK pro zařízení Azure IoT. Odkazovat [centrum pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot) podrobné pokyny o tom, jak připojit zařízení ke službě Azure IoT Hub.
+> Sada IoT Hub Python SDK aktuálně podporuje pouze nahrávání znakových souborů, jako jsou soubory **. txt** .
 
-Pro absolvování tohoto kurzu potřebujete:
+Na konci tohoto kurzu spustíte konzolovou aplikaci v Pythonu:
 
-* [Python 2.x nebo 3.x](https://www.python.org/downloads/). Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. Po zobrazení výzvy v průběhu instalace nezapomeňte přidat Python do proměnné prostředí pro konkrétní platformu. Pokud používáte Python 2.x, možná bude nutné [nainstalovat nebo upgradovat *pip*, systém správy balíčků Pythonu](https://pip.pypa.io/en/stable/installing/).
+* **FileUpload.py**, který nahraje soubor do úložiště pomocí sady SDK pro zařízení Python.
 
-* Pokud používáte operační systém Windows, je k povolení používání nativních knihoven DLL z Pythonu potřeba [balíček distribuovatelných součástí Visual C++](https://www.microsoft.com/download/confirmation.aspx?id=48145).
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-* Aktivní účet Azure. Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.
+Níže jsou uvedené pokyny k instalaci požadovaných součástí.
 
-* V účtu Azure pomocí identity zařízení pro testování funkci odesílání souborů služby IoT hub. 
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
-## <a name="upload-a-file-from-a-device-app"></a>Nahrajte soubor z aplikace pro zařízení
+## <a name="upload-a-file-from-a-device-app"></a>Nahrání souboru z aplikace zařízení
 
-V této části vytvoříte aplikaci pro nahrání souboru do služby IoT hub zařízení.
+V této části vytvoříte aplikaci pro zařízení pro nahrání souboru do centra IoT.
 
-1. Na příkazovém řádku spusťte následující příkaz k instalaci **azure-iothub-device-client** balíčku:
+1. Na příkazovém řádku spusťte následující příkaz k instalaci balíčku **Azure-iothub-Device-Client** :
 
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
 
-2. Pomocí textového editoru vytvořte soubor testu, který nahrajete do úložiště objektů blob.
+2. Pomocí textového editoru vytvořte testovací soubor, který odešlete do úložiště objektů BLOB.
 
     > [!NOTE]
-    > Python SDK pro IoT Hub aktuálně podporuje jenom jako nahrávání souborů znakový **.txt** soubory.
+    > Sada IoT Hub Python SDK aktuálně podporuje pouze nahrávání znakových souborů, jako jsou soubory **. txt** .
 
-3. Pomocí textového editoru, vytvořte **FileUpload.py** souboru ve své pracovní složce.
+3. Pomocí textového editoru vytvořte v pracovní složce soubor **FileUpload.py** .
 
-4. Přidejte následující `import` příkazy a proměnné na začátku **FileUpload.py** souboru. 
+4. Na začátek souboru `import` **FileUpload.py** přidejte následující příkazy a proměnné. 
 
     ```python
     import time
@@ -83,9 +75,9 @@ V této části vytvoříte aplikaci pro nahrání souboru do služby IoT hub za
     FILENAME = "[File name for storage]"
     ```
 
-5. V souboru nahraďte `[Device Connection String]` připojovacím řetězcem zařízení IoT hub. Nahraďte `[Full path to file]` cestou k souboru testu, který jste vytvořili nebo všechny soubory na vašem zařízení, který chcete nahrát. Nahraďte `[File name for storage]` názvem, který chcete přiřadit k souboru po ho nahráli do úložiště objektů blob. 
+5. V souboru nahraďte `[Device Connection String]` připojovacím řetězcem zařízení služby IoT Hub. Nahraďte `[Full path to file]` cestou k testovacímu souboru, který jste vytvořili, nebo jakýmkoli souborem v zařízení, které chcete nahrát. Nahraďte `[File name for storage]` názvem, který chcete souboru poskytnout po nahrání do úložiště objektů BLOB. 
 
-6. Vytvořte zpětné volání pro **upload_blob** funkce:
+6. Vytvořte zpětné volání pro funkci **upload_blob** :
 
     ```python
     def blob_upload_conf_callback(result, user_context):
@@ -95,7 +87,7 @@ V této části vytvoříte aplikaci pro nahrání souboru do služby IoT hub za
             print ( "...file upload callback returned: " + str(result) )
     ```
 
-7. Přidejte následující kód k připojení klienta a nahrání souboru. Také `main` rutinu:
+7. Přidejte následující kód pro připojení klienta a nahrání souboru. Zahrňte `main` také rutinu:
 
     ```python
     def iothub_file_upload_sample_run():
@@ -131,32 +123,32 @@ V této části vytvoříte aplikaci pro nahrání souboru do služby IoT hub za
         iothub_file_upload_sample_run()
     ```
 
-8. Uložte a zavřete **UploadFile.py** souboru.
+8. Uložte a zavřete soubor **UploadFile.py** .
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Nyní jste připraveni ke spuštění aplikace.
+Nyní jste připraveni aplikaci spustit.
 
-1. Na příkazovém řádku ve své pracovní složce spusťte následující příkaz:
+1. Na příkazovém řádku v pracovní složce spusťte následující příkaz:
 
     ```cmd/sh
     python FileUpload.py
     ```
 
-2. Následující snímek obrazovky ukazuje výstup z **FileUpload** aplikace:
+2. Na následujícím snímku obrazovky vidíte výstup z aplikace pro **nahrání souborů** :
 
     ![Výstup z aplikace simulovaného zařízení](./media/iot-hub-python-python-file-upload/1.png)
 
-3. Na portálu můžete použít k zobrazení nahraných souborů v kontejneru úložiště, které jste nakonfigurovali:
+3. K zobrazení nahraného souboru v kontejneru úložiště, který jste nakonfigurovali, můžete použít portál:
 
     ![Nahraný soubor](./media/iot-hub-python-python-file-upload/2.png)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak zjednodušit nahrávání souborů ze zařízení pomocí možnosti nahrávání souborů služby IoT Hub. Můžete pokračovat k prozkoumání funkcí služby IoT hub a scénáře najdete v následujících článcích:
+V tomto kurzu jste zjistili, jak používat možnosti nahrávání souborů IoT Hub ke zjednodušení nahrávání souborů ze zařízení. Pomocí následujících článků můžete dál prozkoumat funkce a scénáře IoT Hub:
 
-* [Vytvoření centra IoT prostřednictvím kódu programu](iot-hub-rm-template-powershell.md)
+* [Programové vytvoření centra IoT Hub](iot-hub-rm-template-powershell.md)
 
-* [Seznámení s C SDK](iot-hub-device-sdk-c-intro.md)
+* [Seznámení se sadou C SDK](iot-hub-device-sdk-c-intro.md)
 
 * [Sady Azure IoT SDK](iot-hub-devguide-sdks.md)

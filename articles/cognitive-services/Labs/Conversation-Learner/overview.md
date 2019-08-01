@@ -1,7 +1,7 @@
 ---
-title: Co je Conversation Learner? – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Co je Conversation Learner? -Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Další informace o konverzaci Learner a jak to funguje.
+description: Přečtěte si o Conversation Learner a o tom, jak funguje.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,38 +10,39 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: f8bc7590f2d7a622b4b1ffb21bfeccef89691fd5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 725a1d3628fb320a58e073fe2d825af23b02c0bd
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389499"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707018"
 ---
 # <a name="what-is-conversation-learner"></a>Co je Conversation Learner?
 
-Konverzace Learner umožňuje vytvářet a naučit konverzační rozhraní, které se učí z příkladu interakce. 
+Conversation Learner vám umožní sestavovat a naučit konverzační rozhraní, která se naučíte z ukázkových interakcí. 
 
-Na rozdíl od tradiční přístupy konverzace Learner bere v úvahu kontext začátku do konce dialogu za účelem zlepšení odezvy a zajištění více poutavé prostředí uživatele. Pokrývání uzlů širokou škálu orientovaných případy použití, konverzace Learner platí strojového učení na pozadí, aby roboty a inteligentní agentů méně pravděpodobné, že frustrovat uživatele, vynakládá dalších zákaznických služeb a podporují intuitivnější interakce.
+Na rozdíl od tradičních přístupů Conversation Learner považuje koncový kontext dialogu za účelem vylepšení reakcí a poskytování působivější uživatelské prostředí. V rámci nejrůznějších způsobů použití orientovaných na úlohy, Conversation Learner na pozadí aplikuje strojové učení, aby roboty a inteligentní agenti byli méně pravděpodobnější, že frustrovat uživatelé, účtují další poplatky za služby zákazníkům a spurější interakce.
 
-Vývojáři, začněte zadáním typický dialogová okna, které chtějí napodobují. Model se učí se zadal další dialogová okna. Jakmile Model funguje dobře, robota může nasadit koncovým uživatelům. Konverzace Learner protokoly konverzace s uživateli a vývojáři můžou Seznamte se s nimi. Pokud jsou nanese chyby, vývojář může opravu na místě, a je model retrained a dostupné k použití okamžitě.
+Vývojáři začnou zadávat typický dialogy, které chtějí napodobovat. Model se učí, jak jsou zadávány další dialogová okna. Jakmile model pracuje správně, může se robot nasazovat koncovým uživatelům. Conversation Learner zaznamená konverzace s uživateli a vývojář je může zkontrolovat. Pokud jsou chyby Spotted, vývojář může provést opravu na místě a model se přeškolí a k dispozici pro okamžité použití.
 
-Tento přístup snižuje ruční kódování logiky ovládacího prvku dialogu a umožňuje vlastníkům obchodních nebo odborníky na domény přispívat k konverzační rozhraní bez předchozího strojového učení znalostní báze. Zda je nasazen jako součást robota, inteligentní zařízení nebo inteligentní agenta, konverzace Learner můžete rychle iterovat nové dovednosti, chování nebo činnost a rychle zlepšit jejich kvalitu. 
+Tento přístup omezuje ruční kódování řídicích postupů dialogu a umožňuje vlastníkům a odborníkům v doméně přispívat do konverzačního rozhraní bez předchozího vědomí ve strojovém učení. Bez ohledu na to, jestli je nasazený jako součást robota, inteligentního zařízení nebo inteligentního agenta, Conversation Learner může rychle iterovat nové dovednosti, chování nebo kompetence a rychle vylepšit jejich kvalitu. 
 
-Konverzace Learner umožňuje vývojářům zvýšit rychlost uvedení na trh a jednotky úspěšné dialogy napříč několika kanály konverzační prostřednictvím Microsoft Bot Framework, nebo samostatně pomocí vlastní infrastruktury.
+Conversation Learner vývojářům umožňuje zvýšit množství možností na uvedení na trh a řídit úspěšná dialogová okna napříč různými kanály v rámci několika konverzací prostřednictvím rozhraní Microsoft bot Framework nebo samostatně pomocí vlastní infrastruktury.
 
-Shrnutí a vybraná vystoupení:
+Shrnutí a zvýraznění:
 
-- Konverzace Learner je to první AI způsob vytváření robotů orientovaných na úlohy.
+- Conversation Learner je prvním způsobem, jak sestavovat roboty orientované na úlohy.
 
-- Využívá začátku do konce opakujícím neuronové sítě (LSTM) a učí přímo z více zapnout příklady konverzace. 
+- Spoléhá se na ucelenou reneuronové síť (LSTM), která se naučí přímo z několika příkladů konverzací. 
 
-- Umožňuje návrháři, vývojáře, podnikoví uživatelé a pracovníky centra volání sestavovat a spravovat roboty. 
+- Umožňuje návrhářům, vývojářům, obchodním uživatelům a pracovníkům centra volání vytvářet a spravovat roboty. 
 
-- Poskytuje možnost express obchodní pravidla a zdravý rozum v kódu.
+- Poskytuje možnost vyjádřit obchodní pravidla a běžné smysly v kódu.
 
-- Během výuky relací, modelu neuronové sítě slouží ke stanovení skóre pro další sadu očekávané akce v konverzaci. Vývojáři robotů můžete vybrat správnou akci a trénování sítě, zajistit správné odpovědi.
+- V rámci výukových cvičení se model sítě neuronové používá k určení skóre další sady očekávaných akcí v konverzaci. Vývojář robota pak může vybrat správnou akci a vyškolit síť, aby poskytovala správnou odpověď.
  
-- Po dokončení školení vývojáři pomocí protokolu dialogů z interakce uživatele k provedení opravy odpovědi robotů a přeučování modelu. 
+- Po dokončení školení může vývojář pomocí dialogových oken protokolu z interakcí s uživateli provádět opravy odpovědí robota a předávat model. 
 
-- Můžete volat rozhraní API specifického pro doménu a třetích stran k dokončení úloh.
+- Může volat rozhraní API specifická pro doménu a třetí strany k dokončení úkolů.
 

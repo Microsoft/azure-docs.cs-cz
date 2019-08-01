@@ -13,16 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: e5fa46930a3be3c85cd76e655fac3164cc45d957
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 78db25fed7c284b31491bdc9e5498493da4c7479
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544734"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618842"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plánování a příprava vašeho nasazení clusteru Service Fabric Standalone
 
-<a id="preparemachines"></a>Před vytvořením clusteru, proveďte následující kroky.
+<a id="preparemachines"></a>Před vytvořením clusteru proveďte následující kroky.
 
 ## <a name="plan-your-cluster-infrastructure"></a>Plánování infrastruktury clusteru
 Chystáte se vytvořit cluster Service Fabric na počítačích "vlastníte", abyste se mohli rozhodnout, jaké druhy chyb, které má cluster k překonání. Například potřebujete samostatné řádky napájení nebo zadaný k těmto počítačům připojení k Internetu? Kromě toho zvážit fyzické zabezpečení těchto počítačů. Kde se počítače nacházejí a kdo potřebuje přístup k nim? Po těchto rozhodnutí, můžete namapovat na počítače logicky do různých domén selhání (viz dál). Plánování pro produkční clustery infrastruktury je složitější než pro testovací clustery.
@@ -45,7 +45,7 @@ Když zadáte aktualizačními doménami v ClusterConfig.json, můžete název p
 * "upgradeDomain": "UD0"
 * "upgradeDomain": "UD1A"
 * "upgradeDomain": "DomainRed"
-* "upgradeDomain": "Blue"
+* "upgradeDomain": Novák
 
 Podrobnější informace o doménami selhání a aktualizačními doménami, najdete v článku [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md).
 
@@ -65,7 +65,7 @@ Tady jsou některé doporučené specifikace pro každý počítač, který chce
 * Minimálně 40 GB volného místa na disku
 * 4 jádra nebo větší využití procesoru
 * Připojení k zabezpečené sítě nebo sítě pro všechny počítače
-* Nainstalovaný operační systém Windows Server (platných verzí: 2012 R2, 2016, 1709 nebo 1803)
+* Nainstalovaný operační systém Windows Server (platné verze: 2012 R2, 2016, 1709, 1803 nebo 2019)
 * [Rozhraní .NET framework 4.5.1 nebo novější](https://www.microsoft.com/download/details.aspx?id=40773), úplné instalace
 * [Prostředí Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
 * [RemoteRegistry služby](https://technet.microsoft.com/library/cc754820) by měla být spuštěná na všech počítačích
@@ -103,13 +103,13 @@ Při konfiguraci Správce clusteru samostatného clusteru Service Fabric, prost�
    * Povolíte služby Remote Registry (vzdálený registr)
    * Soubor, který povoleno sdílení (SMB)
    * Mají potřebné porty otevřít, založené na portech konfigurace clusteru
-   * Mít nezbytné porty otevřené pro Windows, SMB a Remote Registry service: 135, 137, 138, 139 a 445
+   * Musí být otevřené potřebné porty pro službu Windows SMB a vzdálený registr: 135, 137, 138, 139 a 445
    * Mít síťové připojení mezi sebou
 3. Žádná z počítače uzlu clusteru by měl být řadičem domény.
 4. Pokud je cluster k nasazení zabezpečeného clusteru, ověřte nezbytné požadavky jsou v umístění a správně nakonfigurované pro konfiguraci zabezpečení.
 5. Pokud cluster počítače nejsou přístupné z Internetu, nastavte v konfiguraci clusteru následující:
-   * Zakážete telemetrická data: V části *vlastnosti* nastavit *"enableTelemetry": false*
-   * Zakážete automatické stahování verze prostředků infrastruktury a oznámení, že aktuální verze clusteru se blíží konec podpory: V části *vlastnosti* nastavit *"fabricClusterAutoupgradeEnabled": false*
+   * Zakázat telemetrii: V části *vlastnosti* nastavené *"konfiguračního EnableTelemetry": false*
+   * Zakázat automatické stažení verze prostředků infrastruktury & oznámením, že aktuální verze clusteru se blíží konci podpory: V části *vlastnosti* nastavené *"fabricClusterAutoupgradeEnabled": false*
    * Případně, pokud přístup k síti internet, je omezený na uvedené prázdné domény, domény níže jsou požadovány pro automatický upgrade: go.microsoft.com download.microsoft.com
 
 6. Nastavit příslušné výjimky antivirové ochrany v Service Fabric:

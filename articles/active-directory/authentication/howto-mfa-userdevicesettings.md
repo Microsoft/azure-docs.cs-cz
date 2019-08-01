@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3152dead04510078dd475b611afbfc30264e58f7
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: d500f6c74bb62322a5e14ce3c489e8dba11dc2f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297639"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68555795"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Správa uživatelských nastavení pomocí Azure Multi-Factor Authentication v cloudu
 
@@ -31,6 +31,10 @@ Jako správce můžete spravovat následující nastavení uživatelů a zaříz
 Jako správce, který má přiřazenou roli Správce ověřování, můžete vyžadovat, aby uživatelé resetoval heslo, znovu zaregistrovali MFA nebo odvolali stávající relace MFA z uživatelského objektu.
 
 ![Správa metod ověřování z Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
+
+1. Při resetování hesla dojde k resetování hesla uživatele a přiřazení dočasného hesla, které musí být při příštím přihlášení změněno.
+2. Když se uživatel poprvé přihlásí, bude se vyžadovat, aby si ho znovu zaregistroval. v takovém případě bude požádán o nastavení nové metody ověřování MFA.
+3. Odvolání relací MFA vymaže relace uživatele, které se pamatuje, a vyžaduje, aby při dalším požadavku na zařízení prováděli MFA.
 
 ## <a name="require-users-to-provide-contact-methods-again"></a>Vyžadovat od uživatelů opětovné poskytnutí metod kontaktu
 
@@ -92,7 +96,7 @@ Při zaškrtnutí políčka **obnovit vícefaktorové ověřování u všech zap
 7. Klikněte na **Uložit**.
 8. Klikněte na **Zavřít**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Získat další informace o tom, jak [nakonfigurovat nastavení Azure Multi-Factor Authentication](howto-mfa-mfasettings.md)
 - Pokud uživatelé potřebují nápovědu, najeďte je k [uživatelské příručce pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user.md) .

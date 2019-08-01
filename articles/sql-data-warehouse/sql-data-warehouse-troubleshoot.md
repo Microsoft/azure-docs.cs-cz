@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s Azure SQL Data Warehouse | Dokumentace Microsoftu
+title: Řešení potíží s Azure SQL Data Warehouse | Microsoft Docs
 description: Řešení potíží s Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
@@ -7,72 +7,66 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 4/26/2019
+ms.date: 7/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 02591185914f3b04a70af3b7c5d607f4a2865806
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 04d63b2c1583228a274c0ba21c87df08886f5cdb
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154253"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619063"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Řešení potíží s Azure SQL Data Warehouse
-Tento článek uvádí běžné otázka Poradce při potížích.
+V tomto článku jsou uvedené běžné otázky týkající se řešení potíží.
 
-## <a name="connecting"></a>Připojení
+## <a name="connecting"></a>Připojování
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Přihlášení uživatele "NT AUTHORITY\ANONYMOUS přihlásit" se nezdařilo. (Microsoft SQL Server, Error: 18456) | K této chybě dochází, když uživatel AAD pokusí připojit k hlavní databázi, ale nemá žádné uživatele v hlavní větvi.  Chcete-li tento problém vyřešit, buď zadejte SQL Data Warehouse, kterou chcete připojit v době připojení nebo přidejte uživatele k hlavní databázi.  Zobrazit [Přehled zabezpečení] [ Security overview] , kde najdete další podrobnosti. |
-| Server instančního objektu "Moje_uživatelské_jméno" není přístup k databázi "master" v aktuálním kontextu zabezpečení. Výchozí databázi uživatele nelze otevřít. Přihlášení se nezdařilo. Přihlašovací jméno uživatele "Moje_uživatelské_jméno" se nezdařilo. (Microsoft SQL Server, Error: 916) | K této chybě dochází, když uživatel AAD pokusí připojit k hlavní databázi, ale nemá žádné uživatele v hlavní větvi.  Chcete-li tento problém vyřešit, buď zadejte SQL Data Warehouse, kterou chcete připojit v době připojení nebo přidejte uživatele k hlavní databázi.  Zobrazit [Přehled zabezpečení] [ Security overview] , kde najdete další podrobnosti. |
-| Chyba CTAIP                                                  | Této chybě může dojít po vytvoření přihlášení v hlavní databázi systému SQL server, ale ne v databázi SQL Data Warehouse.  Pokud dojde k této chybě, podívejte se na [Přehled zabezpečení] [ Security overview] článku.  Tento článek vysvětluje, jak vytvořit přihlášení a uživatele na hlavním serveru a tom, jak vytvořit uživatele v databázi SQL Data Warehouse. |
-| Blokovaná bránou Firewall                                          | Azure SQL Database jsou chráněny serveru a databáze úrovně brány firewall, aby pouze známé IP adresy, které mají přístup k databázi. Bránu firewall se ve výchozím nastavení, což znamená, že je potřeba explicitně povolit a IP adresu nebo rozsah adres zabezpečený před připojením.  Pokud chcete nakonfigurovat bránu firewall pro přístup, postupujte podle kroků v [konfigurovat přístup k serveru brány firewall pro IP adresu vašeho klienta] [ Configure server firewall access for your client IP] v [zřizování pokyny] [Provisioning instructions]. |
-| Nelze se připojit pomocí nástroje nebo ovladače                           | SQL Data Warehouse se doporučuje používat [SSMS][SSMS], [SSDT pro Visual Studio][SSDT for Visual Studio], nebo [sqlcmd] [ sqlcmd] k dotazování na data. Další informace o ovladače a připojení k SQL Data Warehouse najdete v tématu [ovladače pro Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] a [připojení k Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] článků. |
+| Přihlášení uživatele "NT AUTHORITY\ANONYMOUS LOGON" se nezdařilo. (Microsoft SQL Server, chyba: 18456) | K této chybě dojde, když se uživatel AAD pokusí připojit k hlavní databázi, ale nemá v hlavní větvi žádného uživatele.  Chcete-li tento problém vyřešit, zadejte SQL Data Warehouse, ke kterým se chcete připojit v době připojení, nebo přidejte uživatele do hlavní databáze.  Další podrobnosti najdete v článku [Přehled zabezpečení][Security overview] . |
+| Objekt zabezpečení serveru "MyUserName" nemůže získat přístup k databázi "Master" v aktuálním kontextu zabezpečení. Výchozí databázi uživatele nelze otevřít. Přihlášení se nezdařilo. Přihlášení uživatele ' MyUserName ' se nezdařilo. (Microsoft SQL Server, chyba: 916) | K této chybě dojde, když se uživatel AAD pokusí připojit k hlavní databázi, ale nemá v hlavní větvi žádného uživatele.  Chcete-li tento problém vyřešit, zadejte SQL Data Warehouse, ke kterým se chcete připojit v době připojení, nebo přidejte uživatele do hlavní databáze.  Další podrobnosti najdete v článku [Přehled zabezpečení][Security overview] . |
+| Chyba CTAIP                                                  | K této chybě může dojít, když bylo vytvořeno přihlášení na hlavní databázi systému SQL Server, ale ne v databázi SQL Data Warehouse.  Pokud se zobrazí tato chyba, přečtěte si článek [Přehled zabezpečení][Security overview] .  Tento článek vysvětluje, jak vytvořit přihlašovací údaje a uživatele v hlavní větvi a jak vytvořit uživatele v databázi SQL Data Warehouse. |
+| Blokováno bránou firewall                                          | Databáze Azure SQL se chrání pomocí bran firewall na úrovni serveru a databáze, aby bylo zajištěno, že přístup k databázi bude mít jenom známé IP adresy. Brány firewall jsou ve výchozím nastavení zabezpečené, což znamená, že před připojením musíte explicitně povolit a IP adresu nebo rozsah adres.  Pokud chcete bránu firewall nakonfigurovat pro přístup, postupujte podle pokynů v tématu [Konfigurace přístupu k bráně firewall serveru pro IP adresu vašeho klienta][Configure server firewall access for your client IP] v pokynech k [zřizování][Provisioning instructions]. |
+| Nejde se připojit pomocí nástroje nebo ovladače.                           | SQL Data Warehouse doporučuje používat [SSMS][SSMS], [SSDT pro Visual Studio][SSDT for Visual Studio]nebo [Sqlcmd][sqlcmd] k dotazování na data. Další informace o ovladačích a připojení k SQL Data Warehouse najdete v tématu [ovladače pro Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] a [připojení k Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] článkům. |
 
 ## <a name="tools"></a>Nástroje
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Průzkumník objektů systému Visual Studio chybí uživatel AAD           | Jedná se o známý problém.  Jako alternativní řešení, zobrazení uživatelů v [sys.database_principals][sys.database_principals].  Zobrazit [ověřování do služby Azure SQL Data Warehouse] [ Authentication to Azure SQL Data Warehouse] Další informace o používání služby Azure Active Directory se službou SQL Data Warehouse. |
-| Příručka skriptování, pomocí Průvodce skriptovací nebo připojení přes SSMS je pomalá, neodpovídá nebo vytvoření chyby | Ujistěte se, že uživatelé byly vytvořeny v hlavní databázi. V možnosti skriptování Ujistěte se také, že edice modulu a je nastaven jako "Microsoft Azure SQL Data Warehouse edici" modul typu "Microsoft Azure SQL Database". |
-| Generovat skripty selže v aplikaci SSMS                             | Generování skriptu pro SQL data warehouse se nezdaří, pokud je možnost "Vygenerovat skript pro závislé objekty" nastavena na hodnotu "True". Jako alternativní řešení, musí uživatelé ručně přejděte na Nástroje -> Možnosti -> Průzkumník objektů systému SQL Server -> Generovat skript pro závislé možnosti a nastavení na hodnotu false |
+| V Průzkumníkovi objektů Visual studia chybí uživatelé AAD.           | Jedná se o známý problém.  Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals][sys.database_principals].  Další informace o použití Azure Active Directory s SQL Data Warehouse najdete v tématu [ověřování pro Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] . |
+| Ruční skriptování, použití Průvodce skriptováním nebo připojení prostřednictvím SSMS je pomalé, nereaguje nebo produkuje chyby. | Zajistěte, aby byl uživatel vytvořen v hlavní databázi. V možnostech skriptování se ujistěte také, že je edice stroje nastavená na Microsoft Azure SQL Data Warehouse Edition a typ modulu je "Microsoft Azure SQL Database". |
+| Generování skriptů v SSMS se nezdařilo                               | Generování skriptu pro SQL Data Warehouse se nepovede, pokud je možnost vygenerovat skript pro závislé objekty nastavená na true. Alternativním řešením je, že uživatelé musí ručně přejít na nástroje-> Možnosti-> Průzkumník objektů systému SQL Server – > vygenerovat skript pro závislé možnosti a nastavit na hodnotu NEPRAVDA. |
 
 ## <a name="performance"></a>Výkon
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Řešení potíží s výkonem dotazů                            | Pokud se snažíte řešit konkrétní dotaz, začněte tématem [učit, jak monitorovat vaše dotazy][Learning how to monitor your queries]. |
-| Špatnému výkonu a plány, často je výsledkem chybějící statistiky | Nejběžnější příčina nízký výkon je nedostatek statistik tabulek.  Zobrazit [Správa statistik tabulek] [ Statistics] podrobné informace o tom, jak vytvořit statistiky a proč jsou důležité pro výkon. |
-| Nízká souběžnosti / ve frontě dotazů                             | Principy [správu úloh] [ Workload management] je důležité, aby bylo možné pochopit, jak vyvážit přidělení paměti se souběžností. |
-| Jak implementovat osvědčené postupy                              | Je nejlepší místo pro další způsoby, jak vylepšit výkon dotazů [osvědčené postupy SQL Data Warehouse] [ SQL Data Warehouse best practices] článku. |
-| Jak zvýšit výkon při změně měřítka                      | Někdy řešení ke zlepšení výkonu, je jednoduše přidat další výpočetní výkon pro dotazy podle [škálování služby SQL Data Warehouse][Scaling your SQL Data Warehouse]. |
-| Dotaz nízký výkon v důsledku nízký index kvality     | Dotazy v některých případech může zpomalit z důvodu [kvalitu indexu columnstore nízký][Poor columnstore index quality].  Najdete v tomto článku pro další informace a postupy [provést nové sestavení indexů ke zlepšení kvality segmentů][Rebuild indexes to improve segment quality]. |
+| Řešení potíží s výkonem dotazů                            | Pokud se snažíte řešit problémy konkrétního dotazu, začněte s [učením, jak sledovat vaše dotazy][Learning how to monitor your queries]. |
+| Nekvalitní výkon a plány dotazů často vyplývají z důvodu chybějících statistik. | Nejběžnější příčinou špatného výkonu je nedostatek statistik v tabulkách.  Podrobnosti o tom, jak vytvořit statistiku a proč jsou důležité pro váš výkon, najdete v článku [udržování statistik tabulek][Statistics] . |
+| Nízká souběžnost/dotazy zařazené do fronty                             | Pochopení [správy úloh][Workload management] je důležité, aby bylo možné pochopit, jak vyrovnávat přidělování paměti s souběžnou souběžnou. |
+| Jak implementovat osvědčené postupy                              | Nejlepším způsobem, jak začít se naučit, jak vylepšit výkon dotazů, je SQL Data Warehouse článku o [osvědčených postupech][SQL Data Warehouse best practices] . |
+| Zvýšení výkonu pomocí škálování                      | Řešení pro zlepšení výkonu někdy znamená jednoduše přidat k vašim dotazům větší výpočetní výkon, a to [škálováním SQL Data Warehouse][Scaling your SQL Data Warehouse]. |
+| Nízký výkon dotazů v důsledku špatné kvality indexu     | Občas se můžou dotazy zpomalit kvůli [špatné kvalitě indexu columnstore][Poor columnstore index quality].  V tomto článku najdete další informace a postup [sestavení indexů pro zlepšení kvality segmentů][Rebuild indexes to improve segment quality]. |
 
 ## <a name="system-management"></a>Správa systému
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Msg 40847: Operaci nejde provést, protože server by překročil povolenou kvótu Database Transaction Unit 45000. | Snižte [DWU] [ DWU] databáze se pokoušíte vytvořit nebo [požádat o zvýšení kvóty][request a quota increase]. |
-| Prozkoumat využití místa                              | Zobrazit [tabulky velikostí] [ Table sizes] porozumět využití místa systému. |
-| Pomoci se správou tabulky                                    | Zobrazit [Přehled tabulek] [ Overview] článku pomoci se správou vaší tabulky.  Tento článek obsahuje také odkazy na podrobnější témata zahrnují třeba [typy tabulkových dat][Data types], [distribuce tabulky][Distribute], [Indexování tabulky][Index], [dělení tabulky][Partition], [Správa statistik tabulek] [ Statistics] a [dočasné tabulky][Temporary]. |
-| Indikátor průběhu dat transparentní šifrování (TDE) není aktualizován na webu Azure Portal | Můžete zobrazit stav transparentní šifrování dat prostřednictvím [powershellu](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
+| Msg 40847: Operaci nelze provést, protože server by překročil povolenou kvótu jednotky databázové transakce 45000. | Buď snižte [DWU][DWU] databáze, kterou se pokoušíte vytvořit, nebo požádejte o [zvýšení kvóty][request a quota increase]. |
+| Zkoumání využití prostoru                              | Informace o využití prostoru v systému najdete v tématu [velikosti tabulek][Table sizes] . |
+| Pomáhat se správou tabulek                                    | Nápovědu ke správě tabulek najdete v článku [Přehled tabulky][Overview] .  Tento článek také obsahuje odkazy na podrobnější témata, jako jsou [typy dat tabulky][Data types], [distribuce tabulky][Distribute], [indexování tabulky][Index], [dělení tabulky][Partition], [Údržba statistik tabulek][Statistics] a [dočasné tabulky][Temporary]. |
+| Neprobíhá aktualizace indikátoru průběhu transparentního šifrování dat (TDE) v Azure Portal | Stav TDE můžete zobrazit přes [PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
 
-## <a name="polybase"></a>Polybase
-| Problém                                           | Řešení                                                   |
-| :---------------------------------------------- | :----------------------------------------------------------- |
-| Exporty se nezdaří s typy TINYINT data a času             | Pro formáty souborů Parquet a ORC, data typu hodnoty musí být mezi 1970-01-01 00:00:01 UTC a 2038-01-19 03:14:07. Hodnoty pro typ TINYINT musí být mezi 0-127.    |
-| Problém s typem Parquet DECIMAL: psaní ze Spark zadejte DecimalType(18,4) a import do sloupce typu double nebo skutečné poskytuje "Chyba: java.base/java.lang.Long nelze přetypovat na java.base/java.lang.Float". | Musíte naimportovat do bigint a dělit 10000 nebo použití [Databricks] konektor SQL data Warehouse. |
-| Problém s Parquet datový typ: psaní z Spark typu data a importu do sloupce zadejte datum nebo datum a čas poskytuje "Chyba: java.base/java.lang.Integer nelze přetypovat na parquet.io.api.Binary". | Musíte použít jiný typ Spark (int) a výpočetní datum nebo použít [Databricks] konektor SQL data Warehouse. |
 
-## <a name="differences-from-sql-database"></a>Rozdíl oproti SQL Database
+## <a name="differences-from-sql-database"></a>Rozdíly od SQL Database
 | Problém                                 | Řešení                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
-| Nepodporované funkce služby SQL Database     | Zobrazit [nepodporované funkce tabulky][Unsupported table features]. |
-| Nepodporované datové typy SQL Database   | Zobrazit [datové typy nepodporované][Unsupported data types].        |
-| ODSTRANĚNÍ a aktualizace omezení         | Naleznete v tématu [alternativní řešení aktualizace][UPDATE workarounds], [odstranit řešení] [ DELETE workarounds] a [aktualizace nepodporované použití příkazu CTAS obejít a Odstranit syntaxe][Using CTAS to work around unsupported UPDATE and DELETE syntax]. |
-| Příkaz MERGE se nepodporuje.      | Zobrazit [SLOUČENÍ řešení][MERGE workarounds].                  |
-| Omezení uložené procedury          | Zobrazit [uložené procedury omezení] [ Stored procedure limitations] pochopit některá omezení uložené procedury. |
-| UDF nepodporují příkazy SELECT | Toto je aktuální omezení naše UDF.  Zobrazit [CREATE FUNCTION] [ CREATE FUNCTION] jsme podporu syntaxe. |
+| Nepodporované funkce SQL Database     | Viz [nepodporované funkce tabulky][Unsupported table features]. |
+| Nepodporované datové typy SQL Database   | Zobrazit [nepodporované datové typy][Unsupported data types].        |
+| ODSTRANĚNÍ a aktualizace – omezení         | Pokud [chcete pracovat s nepodporovanou syntaxí aktualizace a odstranění][Using CTAS to work around unsupported UPDATE and DELETE syntax], přečtěte si téma [aktualizace řešení][UPDATE workarounds], [odstranění alternativních řešení][DELETE workarounds] a použití CTAS. |
+| Příkaz MERGE není podporován.      | Viz [alternativní řešení sloučení][MERGE workarounds].                  |
+| Omezení uložených procedur          | V tématu [omezení uložených procedur][Stored procedure limitations] můžete pochopit některá omezení uložených procedur. |
+| UDF nepodporují příkazy SELECT | Toto je aktuální omezení našich Udfů.  Podrobnější informace najdete v tématu věnovaném [Vytvoření funkce][CREATE FUNCTION] . |
 
-## <a name="next-steps"></a>Další postup
-Pro další pomoc při hledání řešení problému tady jsou některé další prostředky, můžete to zkusit.
+## <a name="next-steps"></a>Další kroky
+Další nápovědu při hledání řešení problému najdete v tématu Další zdroje, které můžete vyzkoušet.
 
 * [Blogy]
 * [Žádosti o funkce]

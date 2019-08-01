@@ -1,39 +1,39 @@
 ---
-title: Optimalizace jednotek žádosti a náklady na spouštění dotazů ve službě Azure Cosmos DB
-description: Zjistěte, jak za jednotky žádosti pro dotaz vyhodnotit a optimalizovat dotaz z hlediska výkonu a nákladů.
+title: Optimalizujte jednotky požadavků a náklady na spouštění dotazů v Azure Cosmos DB
+description: Naučte se vyhodnocovat poplatky za jednotky požadavků na dotaz a optimalizovat dotaz z hlediska výkonu a nákladů.
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 08/01/2019
 ms.author: rimman
-ms.openlocfilehash: 2d1ac054abf4bb8228bdb5cc20d79cb751af7a33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bdf223e60015c4e5d96416f95c410854a057c02c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967439"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717009"
 ---
-# <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimalizujte náklady dotazu ve službě Azure Cosmos DB
+# <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na dotaz v Azure Cosmos DB
 
-Azure Cosmos DB nabízí bohatou sadu databázových operací včetně relačních a hierarchických dotazů, které pracují na položky v rámci kontejneru. Náklady spojené s každou z těchto operací se liší v závislosti na využití procesoru, vstup/výstup a paměti potřebných k dokončení operace. Místo přemýšlet o tom a správy hardwarových prostředků můžete jako jedno opatření pro prostředky požadované k provádění různých databázových operací, která bude sloužit žádost o představit jednotky žádosti (RU). Tento článek popisuje, jak za jednotky žádosti pro dotaz vyhodnotit a optimalizovat dotaz z hlediska výkonu a nákladů. 
+Azure Cosmos DB nabízí bohatou sadu databázových operací, včetně relačních a hierarchických dotazů, které pracují s položkami v rámci kontejneru. Náklady spojené s jednotlivými operacemi se liší na základě procesoru, vstupně-výstupních operací a paměti potřebných k dokončení operace. Místo toho, abyste si vymysleli a spravovali hardwarové prostředky, si můžete představit jednotku žádosti (RU) jako jedno opatření pro prostředky požadované k provádění různých databázových operací k obsluze žádosti. Tento článek popisuje, jak vyhodnotit poplatky za jednotky požadavků pro dotaz a optimalizovat dotaz z hlediska výkonu a nákladů. 
 
-Dotazy ve službě Azure Cosmos DB jsou obvykle seřazené od nejrychlejší/většinu efektivní nižší a méně efektivní z hlediska propustnosti následujícím způsobem:  
+Dotazy v Azure Cosmos DB jsou obvykle seřazené z nejrychlejší/nejefektivnější na pomalejší/méně efektivní z hlediska propustnosti, jak je znázorněno níže:  
 
-* Operace získání na jeden klíč oddílu a klíč položky.
+* Operace GET pro klíč klíče a položky s jedním oddílem
 
-* Dotazy s klauzulí filtru v rámci jednoho klíče oddílu.
+* Dotaz s klauzulí Filter v rámci jednoho klíče oddílu
 
-* Dotazovat se bez klauzule filtru zjištění rovnosti, nebo rozsah jakékoli vlastnosti.
+* Dotaz bez klauzule filtru rovnosti nebo rozsahu u jakékoli vlastnosti
 
-* Dotazy bez filtru.
+* Dotaz bez filtrů
 
-Dotazy, které načítají data z jednoho nebo více oddílů vyšší latenci se vám účtovat a využívat větší počet jednotek žádostí. Protože každý oddíl má automatického indexování všech vlastností, můžete dotaz efektivně obsloužit z indexu. Můžete vytvořit dotazy, které používají více oddílů rychleji díky použití možností paralelismu. Další informace o vytváření oddílů a klíče oddílů, naleznete v tématu [dělení ve službě Azure Cosmos DB](partitioning-overview.md).
+Dotazy, které čtou data z jednoho nebo více oddílů, vybírají větší latenci a spotřebovávají větší počet jednotek žádostí. Vzhledem k tomu, že každý oddíl má automatické indexování pro všechny vlastnosti, může být dotaz efektivně obsluhován z indexu. Dotazy, které používají více oddílů, můžete provádět rychleji pomocí možností paralelismu. Další informace o vytváření oddílů a klíče oddílů, naleznete v tématu [dělení ve službě Azure Cosmos DB](partitioning-overview.md).
 
-## <a name="evaluate-request-unit-charge-for-a-query"></a>Vyhodnocení zátěž jednotek žádostí pro dotaz
+## <a name="evaluate-request-unit-charge-for-a-query"></a>Vyhodnotit poplatek za jednotku žádosti pro dotaz
 
-Po uložení některá data v kontejnerech Azure Cosmos, můžete použít Průzkumníka dat na webu Azure Portal sestavit a spustit vaše dotazy. Náklady na dotazy můžete získat také pomocí Průzkumníku dat. Tato metoda získáte představu o skutečných poplatky spojené s typické dotazy a operace, které systém podporuje.
+Po uložení dat do kontejnerů Azure Cosmos můžete pomocí Průzkumník dat v Azure Portal sestavit a spustit vaše dotazy. Náklady na dotazy můžete také získat pomocí Průzkumníka dat. Tato metoda vám poskytne představu o tom, jaké skutečné poplatky se týkají běžných dotazů a operací, které váš systém podporuje.
 
-Náklady na dotazy můžete získat také programově pomocí sad SDK. K měření nároky na jakékoli operace, jako je vytváření, aktualizace nebo odstranění zkontrolujte `x-ms-request-charge` záhlaví při použití rozhraní REST API. Pokud používáte .NET nebo sady Java SDK `RequestCharge` vlastnost je ekvivalentní vlastnost k získání zátěž žádostí a tato vlastnost je k dispozici v rámci ResourceResponse nebo FeedResponse.
+Náklady na dotazy můžete také získat programově pomocí sad SDK. Pokud chcete změřit režii jakékoli operace, jako je vytvoření, aktualizace nebo odstranění, zkontrolujte `x-ms-request-charge` hlavičku při použití REST API. Pokud používáte rozhraní .NET nebo Java SDK, `RequestCharge` vlastnost je ekvivalentní vlastnost pro získání poplatků za požadavek a tato vlastnost je k dispozici v rámci ResourceResponse nebo FeedResponse.
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -51,15 +51,15 @@ while (queryable.HasMoreResults)
      }
 ```
 
-## <a name="factors-influencing-request-unit-charge-for-a-query"></a>Faktory ovlivňující zátěž jednotek žádostí pro dotaz
+## <a name="factors-influencing-request-unit-charge-for-a-query"></a>Faktory ovlivňující poplatky za jednotky požadavků pro dotaz
 
-Jednotek žádostí pro dotazy jsou závislé na počtu faktorů. Například počet položek Azure Cosmos načíst/vrátila, počet hledání na index, kompilaci dotazu čas podrobnosti atd. Azure Cosmos DB zaručuje, že stejný dotaz při spuštění na stejná data vždy využívat stejný počet jednotek žádostí i při opakovaném spuštění. Profil dotazu využitím metrik spouštění dotazu vám představu, jak se spotřebovávají jednotkách požadavků.  
+Jednotky žádostí na dotazy jsou závislé na několika faktorech. Například počet načtených nebo vrácených položek Azure Cosmos, počet hledání na index, čas kompilace dotazu atd. details. Azure Cosmos DB garantuje, že stejný dotaz, který se spustí na stejných datech, vždycky spotřebuje stejný počet jednotek žádostí i s opakováním spuštění. Profil dotazu používající metriky spuštění dotazu poskytuje dobrý nápad na to, jak se jednotky žádosti stráví.  
 
-V některých případech se může zobrazit posloupnost odpovědi 200 a 429 a jednotkách požadavků proměnné stránkovaného provádění dotazů, protože dotazy se spustí nejrychleji podle dostupných RU. Může se zobrazit provádění dotazu rozdělit do několika stránek/zaokrouhlit cest mezi serverem a klientem. Například 10 000 položek mohou být vráceny jako více stránek, každý účtuje podle výpočtu pro danou stránku. Když vás provede součet na těchto stránkách, měli byste obdržet stejný počet jednotek ru budete byste si pro celý dotaz.  
+V některých případech se může zobrazit sekvence odpovědí 200 a 429 a jednotky požadavků na proměnnou na stránkovaném spuštění dotazů, to znamená, že dotazy budou na základě dostupné ru spuštěné co nejrychleji. Může se zobrazit přerušení provádění dotazů na více stránek/v průběhu odezvy mezi serverem a klientem. Například 10 000 položek může být vráceno jako více stránek, každou se účtují na základě výpočtu provedeného pro tuto stránku. Při sečtení na těchto stránkách byste měli získat stejný počet ru, jako byste získali pro celý dotaz.  
 
 ## <a name="metrics-for-troubleshooting"></a>Metriky pro řešení potíží
 
-Výkon a propustnosti dotazů, uživatelem definované funkce (UDF) používané většinou závisí na tělo funkce. Nejjednodušší způsob, jak zjistit, kolik času spuštění dotazu se stráven v UDF a počet ru spotřebovaných, je zapnutí metrik dotazu. Pokud používáte sadu .NET SDK, tady je ukázkový dotaz metriky vrácené sady SDK:
+Výkon a propustnost využívané dotazy, uživatelsky definované funkce (UDF) většinou závisí na těle funkce. Nejjednodušší způsob, jak zjistit, kolik času vykonává provádění dotazů v systému souborů UDF a počet spotřebovaných ru, je povolení metriky dotazu. Pokud používáte sadu .NET SDK, tady jsou ukázkové metriky dotazů vrácené sadou SDK:
 
 ```bash
 Retrieved Document Count                 :               1              
@@ -85,30 +85,30 @@ Total Query Execution Time               :   �
     Request Charge                       :            3.19 RUs  
 ```
 
-## <a name="best-practices-to-cost-optimize-queries"></a>Osvědčené postupy a nákladů optimalizace dotazů 
+## <a name="best-practices-to-cost-optimize-queries"></a>Osvědčené postupy pro náklady na optimalizaci dotazů 
 
-Zvažte následující osvědčené postupy při optimalizaci dotazů pro náklady:
+Při optimalizaci dotazů na náklady Vezměte v úvahu následující osvědčené postupy:
 
-* **Společné umístění několik typů entit**
+* **Společné umístění více typů entit**
 
-   Pokuste se umístit společně několik typů entit v rámci jednoduchých nebo menší počet kontejnerů. Tato metoda poskytuje výhody nejenom z hlediska cen, ale také k provádění dotazů a transakcí. Dotazy jsou vymezené do jednoho kontejneru; a atomické transakce přes více záznamů pomocí uložené procedury a triggery mají rozsah klíče oddílu v rámci jednoho kontejneru. Společné umístění entity v rámci stejného kontejneru můžete snížit počet síťových zpátečních cest k rozpoznání relací: n mezi záznamy. Tak to zvyšuje výkon začátku do konce, umožňuje atomické transakce přes několik záznamů pro větší datovou sadu a ve výsledku snižuje náklady. Pokud společné umístění několik typů entit v rámci jednoduchých nebo menší počet kontejnerů je obtížné pro váš scénář, obvykle vzhledem k tomu, že migrujete stávající aplikace a nechcete, aby se změny kódu – měli byste pak zvážit zřizování propustnost na úrovni databáze.  
+   Zkuste vyhledat více typů entit v rámci jednoho nebo menšího počtu kontejnerů. Tato metoda poskytuje výhody nejen z cenové perspektivy, ale také pro provádění dotazů a transakce. Dotazy jsou vymezeny na jeden kontejner. a atomické transakce přes více záznamů prostřednictvím uložených procedur nebo triggerů jsou vymezeny na klíč oddílu v rámci jednoho kontejneru. Spolulokalizace entit v rámci stejného kontejneru může snížit počet síťových přenosů, které se budou překládat mezi záznamy. Proto zvyšuje konečný výkon, umožňuje atomické transakce nad více záznamy pro větší datovou sadu a v důsledku toho snižuje náklady. Pokud je pro váš scénář obtížné určit více typů entit v rámci jednoho nebo menšího počtu kontejnerů, obvykle proto, že migrujete existující aplikaci a nechcete provádět žádné změny kódu – měli byste zvážit zřizování. propustnost na úrovni databáze.  
 
-* **Měření a ladění pro nižší požadavek jednotek za sekundu využití**
+* **Měření a optimalizace pro nižší jednotky žádostí za sekundu použití**
 
-   Složitost dotazu má vliv na tom, kolik jednotek žádosti (ru) jsou využité pro operaci. Počet predikátů, povaze predikáty, počet funkcí UDF a velikost zdrojové datové sady. Všechny tyto faktory mají vliv náklady na operace dotazů. 
+   Složitost dotazu ovlivňuje, kolik jednotek žádostí (ru) se spotřebuje pro určitou operaci. Počet predikátů, povaha predikátů, počet UDF a velikost zdrojové datové sady. Všechny tyto faktory ovlivňují náklady na operace dotazů. 
 
-   Poplatek za žádost vrácená v hlavičce požadavku určuje náklady na daný dotaz. Například pokud dotaz vrátí 1 000 položek 1 KB, náklady na operace je 1000. V rámci jedné sekundy, v důsledku toho serveru respektuje pouze dva takové požadavky před tady následných žádostí. Další informace najdete v tématu [jednotky žádostí](request-units.md) článku a Kalkulačka jednotek žádosti. 
+   Poplatek za požadavek vrácený v hlavičce požadavku indikuje náklady na daný dotaz. Pokud například dotaz vrátí položky 1000 1 – KB, cena za operaci je 1000. V takovém případě se server během jedné sekundy připadá pouze na dva takové požadavky, než frekvence omezí následné požadavky. Další informace najdete v článku [o jednotkách žádosti](request-units.md) a kalkulačkě jednotek žádostí. 
 
 ## <a name="next-steps"></a>Další postup
 
-Potom můžete přejít k další informace o optimalizaci nákladů ve službě Azure Cosmos DB najdete v následujících článcích:
+Další informace o optimalizaci nákladů v Azure Cosmos DB najdete v následujících článcích:
 
-* Další informace o [jak Azure Cosmos fungují ceny](how-pricing-works.md)
-* Další informace o [optimalizace pro vývoj a testování](optimize-dev-test.md)
-* Další informace o [vysvětlení vašeho vyúčtování Azure Cosmos DB](understand-your-bill.md)
-* Další informace o [optimalizace propustnosti náklady](optimize-cost-throughput.md)
-* Další informace o [optimalizovat náklady na úložiště](optimize-cost-storage.md)
-* Další informace o [optimalizovat náklady na operace čtení a zápisy](optimize-cost-reads-writes.md)
-* Další informace o [optimalizovat náklady na účty ve více oblastech Azure Cosmos](optimize-cost-regions.md)
-* Další informace o [rezervované kapacity služby Azure Cosmos DB](cosmos-db-reserved-capacity.md)
+* Další informace o [tom, jak funguje ceny Azure Cosmos](how-pricing-works.md)
+* Další informace o [optimalizaci pro vývoj a testování](optimize-dev-test.md)
+* Další informace o [Azure Cosmos DB vyúčtování](understand-your-bill.md)
+* Další informace o [optimalizaci nákladů na propustnost](optimize-cost-throughput.md)
+* Další informace o [optimalizaci nákladů na úložiště](optimize-cost-storage.md)
+* Další informace o [optimalizaci nákladů na čtení a zápisy](optimize-cost-reads-writes.md)
+* Další informace o [optimalizaci nákladů na účty Azure Cosmos ve více oblastech](optimize-cost-regions.md)
+* Další informace o [Azure Cosmos DB rezervované kapacity](cosmos-db-reserved-capacity.md)
 

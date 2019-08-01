@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
-manager: craigg
 ms.date: 10/30/2018
-ms.openlocfilehash: e17f09c3fa031f5dc55fabaf638e67ab62f84f4c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 0a6b45db3c8b4071b591ca2b5fc604b986598c0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875825"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570351"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Spouštění analytických dotazů ad hoc napříč několika databázemi SQL Azure
 
@@ -73,7 +72,7 @@ Pro dosažení tohoto modelu všechny tabulky tenantů obsahují sloupec *VenueI
 
 Toto cvičení nasadí databázi *adhocreporting* . Toto je hlavní databáze, která obsahuje schéma používané pro dotazování napříč všemi databázemi tenanta. Databáze je nasazená na stávající Server katalogu, což je server, který se používá pro všechny databáze související se správou v ukázkové aplikaci.
 
-1. Otevřít... \\\\\\   Výukové moduly provozní analýzy ad hoc vytváření sestav demo-AdhocReporting. ps1 ve ISE PowerShellu a nastavte následující hodnoty: \\
+1. Otevřít... \\\\\\ Výukové moduly provozní analýzy ad hoc vytváření sestav demo-AdhocReporting. ps1 ve ISE PowerShellu a nastavte následující hodnoty: \\
    * **$DemoScenario** = 2, **nasadit databázi ad hoc Analytics**.
 
 2. Stisknutím klávesy **F5** spusťte skript a vytvořte databázi *adhocreporting* .

@@ -1,6 +1,6 @@
 ---
-title: Migrace existujících databází pro horizontální navýšení kapacity | Dokumentace Microsoftu
-description: Převést na používejte nástroje elastické databáze správce mapování vytvořením horizontálního oddílu horizontálně dělené databáze
+title: Migrace existujících databází pro horizontální navýšení kapacity | Microsoft Docs
+description: Převod databází horizontálně dělené na použití nástrojů elastické databáze vytvořením správce map horizontálních oddílů
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,34 +10,33 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 49686e407b2d733c04bad31706c6c4f315bf28bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d6d5c51cb381c089633ba010a1d64c8486ddcd8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075173"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568733"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrace existujících databází pro horizontální navýšení kapacity
-Snadno spravovat stávající horizontálně dělené databáze horizontálním navýšením kapacity pomocí nástroje pro databáze Azure SQL Database (například [Klientská knihovna Elastic Database](sql-database-elastic-database-client-library.md)). Nejprve převést stávající sadu databází pro použití [správce mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md). 
+Pomocí nástrojů Azure SQL Database Database Tools (například [klientské knihovny elastic Database](sql-database-elastic-database-client-library.md)) můžete snadno spravovat vaše stávající databáze horizontálně dělené s více instancemi. Nejprve převeďte existující sadu databází na použití [správce map horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md). 
 
 ## <a name="overview"></a>Přehled
-Migrace stávající horizontálně dělené databáze: 
+Migrace stávající databáze horizontálně dělené: 
 
-1. Příprava [databáze správce mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md).
-2. Vytvoření mapy horizontálních oddílů.
-3. Příprava jednotlivých horizontálních oddílů.  
-4. Přidáte mapování na mapy horizontálních oddílů.
+1. Připravte [databázi správce mapy horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md).
+2. Vytvořte mapu horizontálních oddílů.
+3. Připravte jednotlivé horizontálních oddílůy.  
+4. Přidejte mapování na mapu horizontálních oddílů.
 
-Tyto postupy, je možné implementovat pomocí buď [Klientská knihovna pro .NET Framework](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), nebo skripty prostředí PowerShell najdete na [databáze Azure SQL – skripty nástrojů Elastic Database](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db). Příklady v tomto článku pomocí skriptů prostředí PowerShell.
+Tyto techniky lze implementovat buď pomocí [klientské knihovny .NET Framework](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), nebo pomocí skriptů PowerShellu, které se nacházejí ve [skriptech nástroje Azure SQL DB – elastic Database Tools](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db). Příklady používají skripty prostředí PowerShell.
 
-Další informace o ShardMapManager najdete v tématu [správy mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md). Přehled nástroje pro elastické databáze najdete v tématu [přehled funkcí Elastic Database](sql-database-elastic-scale-introduction.md).
+Další informace o ShardMapManager najdete v tématu [Správa map horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md). Přehled nástrojů elastické databáze najdete v tématu [Přehled funkcí elastic Database](sql-database-elastic-scale-introduction.md).
 
-## <a name="prepare-the-shard-map-manager-database"></a>Příprava databáze správce mapování horizontálních oddílů
-Správce mapování horizontálních oddílů je speciální databáze, která obsahuje data, která mají Správa databází s horizontálním navýšením kapacity. Můžete použít stávající databázi nebo vytvořte novou databázi. Databáze, který funguje jako správce mapování horizontálních oddílů nesmí být stejné databázi jako horizontálního oddílu. Skript prostředí PowerShell nevytváří databáze za vás. 
+## <a name="prepare-the-shard-map-manager-database"></a>Příprava databáze správce map horizontálních oddílů
+Správce map horizontálních oddílů je speciální databáze, která obsahuje data pro správu databází s horizontálním škálováním kapacity. Můžete použít existující databázi nebo vytvořit novou databázi. Databáze fungující jako správce map horizontálních oddílů by neměla být stejná jako databáze horizontálních oddílů. PowerShellový skript nevytvoří pro vás databázi. 
 
-## <a name="step-1-create-a-shard-map-manager"></a>Krok 1: vytvoření horizontálního oddílu správce mapování
+## <a name="step-1-create-a-shard-map-manager"></a>Krok 1: Vytvoření správce map horizontálních oddílů
     # Create a shard map manager. 
     New-ShardMapManager -UserName '<user_name>' 
     -Password '<password>' 
@@ -47,8 +46,8 @@ Správce mapování horizontálních oddílů je speciální databáze, která o
     # for the new or existing database that should be used for storing 
     # tenant-database mapping information.
 
-### <a name="to-retrieve-the-shard-map-manager"></a>Načíst správce mapování horizontálních oddílů
-Po vytvoření můžete načíst správce mapování horizontálních oddílů pomocí této rutiny. Tento krok je nutný pokaždé, když se budete muset použít ShardMapManager objektu.
+### <a name="to-retrieve-the-shard-map-manager"></a>Načtení správce map horizontálních oddílů
+Po vytvoření můžete načíst správce map horizontálních oddílů pomocí této rutiny. Tento krok je potřeba vždy, když potřebujete použít objekt ShardMapManager.
 
     # Try to get a reference to the Shard Map Manager  
     $ShardMapManager = Get-ShardMapManager -UserName '<user_name>' 
@@ -58,29 +57,29 @@ Po vytvoření můžete načíst správce mapování horizontálních oddílů p
 
 
 ## <a name="step-2-create-the-shard-map"></a>Krok 2: vytvoření mapy horizontálních oddílů
-Vyberte typ mapy horizontálních oddílů k vytvoření. Výběr závisí na architektuře databáze: 
+Vyberte typ mapy horizontálních oddílů, kterou chcete vytvořit. Volba závisí na architektuře databáze: 
 
-1. Jednoho tenanta na databázi (podmínky, najdete v článku [Glosář](sql-database-elastic-scale-glossary.md).) 
+1. Jeden tenant na databázi (pro výrazy najdete v [glosáři](sql-database-elastic-scale-glossary.md)) 
 2. Více tenantů na databázi (dva typy):
-   1. Seznam mapování
-   2. Mapování oblasti
+   1. Mapování seznamu
+   2. Mapování rozsahu
 
-Pro jednoho tenanta modelu, vytvořit **mapování seznamu** mapy horizontálních oddílů. Model jednoho tenanta přiřadí jednu databázi tenanta. To je účinným modelem pro vývojáře SaaS, protože zjednodušuje správu.
+V případě modelu s jedním nájemcem vytvořte **mapování seznamu mapování** horizontálních oddílů. Model jednoho tenanta přiřadí jednu databázi na každého tenanta. Toto je efektivní model pro vývojáře v SaaS, který zjednodušuje správu.
 
-![Seznam mapování][1]
+![Mapování seznamu][1]
 
-Víceklientského modelu přiřadí několik tenantů pro jednotlivé databáze (a skupin klientů můžete distribuovat napříč několika databázemi). Tento model použijte, pokud očekáváte, že každý tenant má malé dat, které potřebujete. V tomto modelu, přiřaďte rozsah tenantů k databázi pomocí **rozsah mapování**. 
+Model víceklientské aplikace přiřadí několik tenantů jednotlivým databázím (a můžete distribuovat skupiny klientů do více databází). Tento model použijte, pokud očekáváte, že každý tenant bude mít malé datové potřeby. V tomto modelu přiřaďte k databázi rozsah klientů pomocí **mapování rozsahu**. 
 
-![Mapování oblasti][2]
+![Mapování rozsahu][2]
 
-Nebo můžete implementovat pomocí modelu databázi s více tenanty *mapování seznamu* přiřadit více tenantů pro jednotlivé databáze. Například DB1 se používá k ukládání informací o tenantovi ID 1 a 5 a DB2 ukládá data pro tenanta 7 a tenanta 10. 
+Nebo můžete implementovat model víceklientské databáze pomocí *mapování seznamu* , aby bylo možné přiřadit více tenantů k individuální databázi. Například DB1 se používá k ukládání informací o klientech s ID 1 a 5 a DB2 ukládá data pro klienta 7 a klienta 10. 
 
-![Více tenantů v jedné databáze][3] 
+![Více tenantů v jedné databázi][3] 
 
-**Na základě vaší volby, vyberte jednu z těchto možností:**
+**Podle vašeho výběru vyberte jednu z těchto možností:**
 
 ### <a name="option-1-create-a-shard-map-for-a-list-mapping"></a>Možnost 1: vytvoření mapy horizontálních oddílů pro mapování seznamu
-Vytvoření mapy horizontálních oddílů pomocí ShardMapManager objektu. 
+Vytvořte mapu horizontálních oddílů pomocí objektu ShardMapManager. 
 
     # $ShardMapManager is the shard map manager object. 
     $ShardMap = New-ListShardMap -KeyType $([int]) 
@@ -89,7 +88,7 @@ Vytvoření mapy horizontálních oddílů pomocí ShardMapManager objektu.
 
 
 ### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>Možnost 2: vytvoření mapy horizontálních oddílů pro mapování rozsahu
-Chcete-li využívat tento model mapování, tenant ID hodnoty musí být průběžné rozsahy a je přijatelná mezeru v oblasti přeskočením rozsahu při vytváření databáze.
+Aby bylo možné použít tento vzor mapování, musí být hodnoty ID tenanta souvislé rozsahy a je přijatelné, aby bylo mezera v rozsahu vynecháno při vytváření databází.
 
     # $ShardMapManager is the shard map manager object 
     # 'RangeShardMap' is the unique identifier for the range shard map.  
@@ -98,11 +97,11 @@ Chcete-li využívat tento model mapování, tenant ID hodnoty musí být průb�
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-an-individual-database"></a>Možnost 3: Seznam mapování na jednotlivé databáze
-Nastavení tento vzor vyžaduje vytvoření mapy seznamů také, jak je znázorněno v kroku 2, možnost 1.
+### <a name="option-3-list-mappings-on-an-individual-database"></a>Možnost 3: Seznam mapování pro jednotlivé databáze
+Nastavení tohoto modelu také vyžaduje vytvoření mapy seznamu, jak je znázorněno v kroku 2, Option 1.
 
 ## <a name="step-3-prepare-individual-shards"></a>Krok 3: Příprava jednotlivých horizontálních oddílů
-Každý horizontální oddíl (databáze) přidáte do správce mapování horizontálních oddílů. To připraví jednotlivé databáze pro ukládání informací o mapování. Proveďte tuto metodu pro každý horizontální oddíl.
+Přidejte jednotlivé horizontálních oddílů (databáze) do správce map horizontálních oddílů. Tím se připraví jednotlivé databáze pro ukládání informací o mapování. Tuto metodu spusťte na každém horizontálních oddílů.
 
     Add-Shard 
     -ShardMap $ShardMap 
@@ -112,10 +111,10 @@ Každý horizontální oddíl (databáze) přidáte do správce mapování horiz
 
 
 ## <a name="step-4-add-mappings"></a>Krok 4: Přidat mapování
-Přidání mapování závisí na druhu mapy horizontálních oddílů, který jste vytvořili. Pokud jste vytvořili mapy seznamů, přidejte seznam mapování. Pokud jste vytvořili mapy rozsahů, přidejte rozsah mapování.
+Přidání mapování závisí na druhu mapy horizontálních oddílů, kterou jste vytvořili. Pokud jste vytvořili mapu seznamu, přidejte mapování seznamu. Pokud jste vytvořili mapu rozsahu, přidejte mapování rozsahů.
 
 ### <a name="option-1-map-the-data-for-a-list-mapping"></a>Možnost 1: mapování dat pro mapování seznamu
-Mapování dat tak, že přidáte seznam mapování pro každého tenanta.  
+Namapujte data přidáním mapování seznamu pro každého tenanta.  
 
     # Create the mappings and associate it with the new shards 
     Add-ListMapping 
@@ -126,7 +125,7 @@ Mapování dat tak, že přidáte seznam mapování pro každého tenanta.
     -SqlDatabaseName '<shard_database_name>' 
 
 ### <a name="option-2-map-the-data-for-a-range-mapping"></a>Možnost 2: mapování dat pro mapování rozsahu
-Přidáte rozsah mapování pro všechny tenant ID rozsahu - přidružení databáze:
+Přidejte mapování rozsahu pro všechny rozsahy ID tenanta – přidružení databáze:
 
     # Create the mappings and associate it with the new shards 
     Add-RangeMapping 
@@ -138,31 +137,31 @@ Přidáte rozsah mapování pro všechny tenant ID rozsahu - přidružení datab
     -SqlDatabaseName '<shard_database_name>' 
 
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>Krok 4 – možnost 3: mapování dat pro více tenantů v jednotlivých databází
-Pro každého klienta spouštění ListMapping přidat (možnost 1). 
+### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>Krok 4 – možnost 3: mapování dat pro více tenantů v jednotlivých databázích
+Pro každého tenanta spusťte rutinu Add-ListMapping (možnost 1). 
 
-## <a name="checking-the-mappings"></a>Kontroluje se mapování
-Informace o mapování k nim má přiřazené a existující horizontálních oddílů může být dotázán pomocí následujících příkazů:  
+## <a name="checking-the-mappings"></a>Kontrola mapování
+Informace o existujících horizontálních oddílů a mapováních, která jsou k nim přidružená, se dají dotazovat pomocí následujících příkazů:  
 
     # List the shards and mappings 
     Get-Shards -ShardMap $ShardMap 
     Get-Mappings -ShardMap $ShardMap 
 
 ## <a name="summary"></a>Souhrn
-Po dokončení instalace můžete začít používat Klientská knihovna Elastic Database. Můžete také použít [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md) a [dotazování více horizontálních oddílů](sql-database-elastic-scale-multishard-querying.md).
+Po dokončení instalace můžete začít používat klientskou knihovnu Elastic Database. Můžete také použít [Směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md) a [dotaz multi-horizontálních oddílů](sql-database-elastic-scale-multishard-querying.md).
 
 ## <a name="next-steps"></a>Další postup
-Získání skriptů prostředí PowerShell z [Azure SQL DB Elastic Database nástroje skriptů](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+Získejte skripty PowerShellu ze [skriptů Azure SQL DB-elastic Database Tools](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
-Nástroje jsou také na Githubu: [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools).
+Nástroje jsou také na GitHubu: [Azure a elastické – DB-Tools](https://github.com/Azure/elastic-db-tools).
 
-Použijte nástroj split-merge pro přesun dat do nebo z modelu s více tenanty do modelu jednoho tenanta. Zobrazit [dělení a slučování](sql-database-elastic-scale-get-started.md).
+Pomocí nástroje pro dělení k přesunu dat do nebo z modelu více tenantů na jeden model tenanta. Viz [Nástroj rozdělit sloučení](sql-database-elastic-scale-get-started.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 Informace o běžných vzorech architektury dat databázových aplikací softwaru s více tenanty jako služby (SaaS) naleznete v části [Vzory návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-## <a name="questions-and-feature-requests"></a>Otázky a žádosti o funkce
-Dotazy, můžete využít [fórum SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) a pro žádosti o funkce, přidejte je do [fóru pro zpětnou vazbu SQL Database](https://feedback.azure.com/forums/217321-sql-database/).
+## <a name="questions-and-feature-requests"></a>Dotazy a žádosti o funkce
+V případě otázek použijte [SQL Database Fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) a pro žádosti o funkce je přidejte do [fóra SQL Database Feedback](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png

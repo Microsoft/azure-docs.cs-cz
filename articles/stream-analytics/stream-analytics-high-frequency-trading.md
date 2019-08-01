@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 33a7b27d065fc0383e4693053f7bfb6d56e2d33b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae82c0e72287ee4c89cb3fb2294bf4bd79aec8c3
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61480029"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598643"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Simulace vysokofrekvenčního obchodování pomocí Stream Analytics
 Kombinace jazyka SQL s uživatelem definovanými funkcemi (UDF) a uživatelem definovanými agregacemi (UDA) JavaScriptu v Azure Stream Analytics umožňuje uživatelům provádět pokročilé analýzy. Mezi pokročilé analýzy může patřit online trénování a vyhodnocování machine learningu a také simulace stavových procesů. Tento článek popisuje, jak provádět lineární regresi v úloze Azure Stream Analytics, která provádí průběžné trénování a vyhodnocování ve scénáři vysokofrekvenčního obchodování.
@@ -65,7 +65,7 @@ Tady je několik vygenerovaných ukázkových událostí:
 >Časové razítko události je hodnota **lastUpdated** v unixovém čase.
 
 ### <a name="predictive-model-for-high-frequency-trading"></a>Prediktivní model pro vysokofrekvenční obchodování
-Pro účely ukázky používáme lineární model, který ve [své studii](http://eprints.maths.ox.ac.uk/1895/1/Darryl%20Shen%20%28for%20archive%29.pdf) popsal Darryl Shen.
+Pro účely ukázky používáme lineární model, který ve [své studii](https://docplayer.net/23038840-Order-imbalance-based-strategy-in-high-frequency-trading.html) popsal Darryl Shen.
 
 VOI (Volume Order Imbalance) je funkce aktuální kupní/prodejní ceny a objemu a kupní/prodejní ceny a objemu z posledního impulzu. Studie identifikuje korelaci mezi funkcí VOI a budoucím pohybem ceny. Sestavuje lineární model mezi posledními 5 hodnotami VOI a změnou ceny v dalších 10 impulzech. Model se trénuje pomocí dat z předchozího dne a lineární regrese. 
 

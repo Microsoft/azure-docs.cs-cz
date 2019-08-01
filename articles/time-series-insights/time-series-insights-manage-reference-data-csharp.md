@@ -1,6 +1,6 @@
 ---
-title: Správa referenčních dat v prostředí Azure Time Series Insights pomocí jazyka C# | Dokumentace Microsoftu
-description: Tento článek popisuje, jak Správa referenčních dat pro prostředí Azure Time Series Insights tak, že vytvoříte vlastní aplikaci napsanou v jazyce .NET (c sharp) jazyka C#.
+title: Správa referenčních dat v prostředí Azure Time Series Insights C# pomocí | Microsoft Docs
+description: Tento článek popisuje, jak spravovat referenční data pro prostředí Azure Time Series Insights vytvořením vlastní aplikace napsané v jazyce .NET C# (c-Sharp).
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -12,37 +12,37 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a482ae44c796e1519ffad0a604510166b1ac63c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4f2bb4a6d10f9e45a27b8b5e082b3cbec475b531
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165612"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677816"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Správa referenčních dat GA pro prostředí Azure Time Series Insights pomocíC#
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Správa referenčních dat GA pro Azure Time Series Insights prostředí pomocíC#
 
-Tento článek popisuje příklad jazyka C# projekt kompilujete na Správa referenčních dat pro prostředí Azure Time Series Insights.
+Tento článek popisuje vzorový C# projekt, který můžete zkompilovat pro správu referenčních dat pro prostředí Azure Time Series Insights.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před kompilace a spuštění vzorového kódu, proveďte následující kroky:
+Před kompilací a spuštěním ukázkového kódu proveďte následující kroky:
 
-1. [Vytvoření referenční sady dat](time-series-insights-add-reference-data-set.md).
+1. [Vytvořte referenční datovou sadu](time-series-insights-add-reference-data-set.md).
 
-1. Konfigurovat autorizační token přístupu pro aplikaci. Ujistěte se, že token, který je získali prostřednictvím rozhraní API Azure Active Directory. Je třeba předat tento token `Authorization` záhlaví každého požadavku rozhraní API dotazu.
+1. Nakonfigurujte autorizační přístupový token pro aplikaci. Ujistěte se, že se token získává prostřednictvím rozhraní Azure Active Directory API. Tento token byste měli předat v `Authorization` hlavičce každé žádosti rozhraní API pro dotazy.
 
-   Informace o tom, jak nastavit jako neinteraktivní aplikace najdete v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md).
+   Informace o tom, jak nastavit neinteraktivní aplikace, najdete v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md).
 
-1. Upravte ukázkový kód pro nahrazení konstanty příkladu, při **DUMMY #** , poblíž začátku kód.
+1. Upravte vzorový kód, který nahradí ukázkové konstanty určené v **#DUMMY #** , poblíž začátku kódu.
 
 > [!NOTE]
-> Zobrazit GA vzorových kódů najdete [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
+> Podívejte se na vzorový kód GA [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)na adrese.
 
 ## <a name="project-dependencies"></a>Závislosti projektu
 
-Přidání balíčků NuGet `Microsoft.IdentityModel.Clients.ActiveDirectory` a `Newtonsoft.Json` pro účely tohoto příkladu.
+Přidejte balíčky `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet a `Newtonsoft.Json` pro tento příklad.
 
-## <a name="c-sample-code"></a>Vzorový kód jazyka C#
+## <a name="c-sample-code"></a>C#vzorový kód
 
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
@@ -247,4 +247,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si [odkazovat na rozhraní API pro data](/rest/api/time-series-insights/ga-reference-data-api).
+- Přečtěte si [rozhraní API pro referenční data](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).

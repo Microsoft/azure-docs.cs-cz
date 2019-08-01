@@ -1,6 +1,6 @@
 ---
-title: Funkce operačního systému ve službě App Service – Azure
-description: Další informace o funkci operačního systému k dispozici pro webové aplikace, back-EndY mobilních aplikací a API apps ve službě Azure App Service
+title: Funkce operačního systému v App Service – Azure
+description: Přečtěte si o funkcích operačního systému dostupných pro webové aplikace, back-endy mobilních aplikací a aplikacích API na Azure App Service
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -15,125 +15,125 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f8087afc541dba41d23eacd2dd0f50e8f0180af1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f06b0866f5a79756f3404d7911f03bcdcc7f67d7
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808408"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608034"
 ---
-# <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému ve službě Azure App Service
-Tento článek popisuje běžné funkce operačního systému směrný plán, který je k dispozici pro všechny aplikace Windows běží na [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje soubor, sítě a přístup k registru a diagnostické protokoly a události. 
+# <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému na Azure App Service
+Tento článek popisuje běžné funkce operačního systému pro základní hodnoty, které jsou k dispozici pro všechny aplikace pro Windows běžící na [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje přístup k souboru, k síti a k registru a diagnostické protokoly a události. 
 
 > [!NOTE] 
-> [Linuxové aplikace](containers/app-service-linux-intro.md) ve službě App Service, spusťte ve své vlastní kontejnery. Je povolen přístup k hostitelskému operačnímu systému, mají kořenový přístup ke kontejneru. Podobně pro [aplikací spouštěných v kontejnerech Windows](app-service-web-get-started-windows-container.md), máte přístup pro správu do kontejneru, ale žádný přístup k hostitelskému operačnímu systému. 
+> [Aplikace pro Linux](containers/app-service-linux-intro.md) v App Service spustit ve svých vlastních kontejnerech. Není povolený žádný přístup k hostitelskému operačnímu systému, máte ke kontejneru přístup rootem. Stejně tak pro [aplikace spuštěné v kontejnerech Windows](app-service-web-get-started-windows-container.md)máte k kontejneru přístup pro správu, ale k hostitelskému operačnímu systému nemáte přístup. 
 >
 
 <a id="tiers"></a>
 
-## <a name="app-service-plan-tiers"></a>Úrovně plánu služby App Service
-Služby App Service běží v hostitelském prostředí s více tenanty zákaznických aplikací. Aplikace nasazené v **Free** a **Shared** úrovně spustit v pracovních procesů na sdílených virtuálních počítačích, zatímco aplikace nasazené v **standardní** a **Premium**  úrovně spouštět virtuální počítače vyhrazené speciálně pro aplikace přidružené k jediného zákazníka.
+## <a name="app-service-plan-tiers"></a>App Service vrstev plánu
+App Service spouští aplikace zákazníka v hostitelském prostředí s více klienty. Aplikace nasazené na úrovni **Free** a **Shared** běží v pracovních procesech na sdílených virtuálních počítačích, zatímco aplikace nasazené na úrovních **Standard** a **Premium** běží na virtuálních počítačích vyhrazených speciálně pro aplikace, které jsou k nim přidružené. jediným zákazníkem.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Protože App Service podporuje bezproblémové škálování prostředí mezi různé vrstvy, konfiguraci zabezpečení pro aplikace služby App Service se nezmění. Tím se zajistí, že aplikace není odlišným najednou, selhání neočekávaně, když plán služby App Service se přepne z jedné vrstvy do druhé.
+Vzhledem k tomu, že App Service podporuje bezproblémové škálování mezi různými úrovněmi, konfigurace zabezpečení vydaná pro App Service aplikace zůstane stejná. Tím se zajistí, že se aplikace neočekávaně chovají jinak, neočekávané způsoby, když App Service plán přepíná z jedné vrstvy do druhé.
 
 <a id="developmentframeworks"></a>
 
-## <a name="development-frameworks"></a>Vývojářské platformy
-Cenové úrovně služby App Service řízení množství výpočetních prostředků (procesor, diskové úložiště, paměť a odchozí síťovou komunikaci) k dispozici pro aplikace. Šířka framework funkce, které jsou k dispozici pro aplikace však zůstává stejný bez ohledu na škálování úrovně.
+## <a name="development-frameworks"></a>Vývojové architektury
+App Service cenové úrovně řídí množství výpočetních prostředků (CPU, diskového úložiště, paměti a odchozího přenosu v síti) dostupných pro aplikace. Šířka funkcí architektury dostupných pro aplikace však zůstává stejná bez ohledu na úroveň škálování.
 
-App Service podporuje celou řadu vývojářských platforem, včetně ASP.NET, klasického ASP, node.js, PHP a Pythonu – všechny z nich spustit jako rozšíření v rámci služby IIS. Abyste zjednodušili a normalizovat konfiguraci zabezpečení, aplikace služby App Service obvykle běží různých vývojářských platforem s jejich výchozí nastavení. Přizpůsobení svrchní oblasti rozhraní API a funkce pro každé rozhraní, jednotlivé vývojové mohlo být jeden ze způsobů konfigurace aplikací. App Service používá místo toho obecnější přístup tím, že běžné základní funkce operačního systému bez ohledu na to rozhraní pro vývoj vaší aplikace.
+App Service podporuje celou řadu vývojářských architektur, včetně ASP.NET, klasických prostředí ASP, Node. js, PHP a Pythonu – všechna spouštění rozšíření v rámci služby IIS. Aby bylo možné zjednodušit a normalizovat konfiguraci zabezpečení, aplikace App Service obvykle spouští různé vývojové architektury s jejich výchozími nastaveními. Jedním z přístupů ke konfiguraci aplikací bylo, že by bylo možné přizpůsobit oblast a funkčnost rozhraní API pro jednotlivé vývojové platformy. App Service místo toho získá obecnější přístup tím, že umožní běžné standardní hodnoty funkcí operačního systému bez ohledu na vývojové rozhraní aplikace.
 
-Následující části shrnují obecné typy funkce operačního systému k dispozici pro aplikace služby App Service.
+V následujících částech najdete souhrn obecných druhů funkcí operačního systému, které jsou dostupné pro App Service aplikace.
 
 <a id="FileAccess"></a>
 
 ## <a name="file-access"></a>Přístup k souborům
-Existují různé jednotky v rámci služby App Service, včetně místní jednotky a síťové jednotky.
+V App Service existují různé jednotky, včetně místních jednotek a síťových jednotek.
 
 <a id="LocalDrives"></a>
 
-### <a name="local-drives"></a>Místní jednotky pevných disků
-Ve své podstatě služby App Service je služba spuštěná nad infrastrukturou Azure PaaS (platforma jako služba). V důsledku toho místní jednotky, které jsou "připojeno" k virtuálnímu počítači se stejnými typy jednotky dostupné pro všechny role pracovních procesů spuštěných v Azure. To zahrnuje:
+### <a name="local-drives"></a>Místní jednotky
+App Service je služba, která běží nad infrastrukturou Azure PaaS (platforma jako služba). V důsledku toho jsou místní jednotky připojené k virtuálnímu počítači stejné typy jednotek, které jsou k dispozici pro všechny role pracovního procesu spuštěné v Azure. To zahrnuje:
 
-- Jednotky operačního systému (jednotku D:\)
-- Disku s aplikací, který obsahuje soubory balíčku Azure cspkg používá výhradně ve službě App Service (a znepřístupníme pro zákazníky)
-- "User" jednotka (jednotka C:\), jejichž velikost se liší v závislosti na velikosti virtuálního počítače. 
+- Jednotka operačního systému (D:\ disky
+- Jednotka aplikace, která obsahuje soubory cspkg balíčku Azure, používané výhradně App Service (a nepřístupné pro zákazníky)
+- "Uživatelská" jednotka (C:\ jednotka), jejíž velikost se liší v závislosti na velikosti virtuálního počítače. 
 
-Je důležité monitorovat vaše využití disku s růstem vaší aplikace. Když se dosáhne kvóty disku může mít nežádoucí účinky do vaší aplikace. Příklad: 
+Při zvětšování vaší aplikace je důležité monitorovat využití disku. Pokud je dosažena kvóta disku, může to mít nepříznivý vliv na vaši aplikaci. Příklad: 
 
-- Aplikace může vyvolat chybu s informacemi není dostatek místa na disku.
-- Když přejdete do konzoly Kudu, může se zobrazit chyby na disku.
-- Nasazení z Azure DevOps nebo Visual Studio může selhat s `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`.
-- Vaše aplikace může dojít ke snížení nízký výkon.
+- Aplikace může vyvolat chybu oznamující, že na disku není dostatek místa.
+- Při procházení konzoly Kudu se může zobrazit chyba disku.
+- Nasazení z Azure DevOps nebo Visual studia může selhat s `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`.
+- Vaše aplikace může zpomalit výkon.
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-aka-unc-shares"></a>Síťových jednotkách (označuje se také jako UNC sdílené složky)
-Jeden jedinečné aspekty služby App Service, která umožňuje jednoduché nasazení aplikací a údržbu se, že veškerý obsah uživatele ukládají na sadu sdílené složky UNC. Tento model se mapuje dobře běžný vzor obsahu úložiště využitá službou místní webové hostitelské prostředí, která mají víc serverů s vyrovnáváním zatížení. 
+### <a name="network-drives-aka-unc-shares"></a>Síťové jednotky (neboli sdílené složky UNC)
+Jedním z jedinečných aspektů App Service, které usnadňuje nasazení a údržbu aplikací, je, že veškerý obsah uživatele je uložený v sadě sdílených složek UNC. Tento model se dobře mapuje na společný vzor úložiště obsahu používaného místními prostředími pro hostování webů s více servery s vyrovnáváním zatížení. 
 
-V rámci služby App Service je počet UNC sdílené složky vytvořené v každé datové centrum. Procentuální podíl obsahu uživatele pro všechny zákazníky v každé datové centrum je přidělena na každé sdílené složky UNC. Kromě toho všechny obsahu pro jednoho zákazníka předplatné je vždy umístit na stejnou cestu UNC souboru sdílet. 
+V rámci App Service je v každém datovém centru vytvořeno několik sdílených složek UNC. Procentuální podíl obsahu uživatele pro všechny zákazníky v každém datovém centru je přidělen všem sdíleným složkám UNC. Kromě toho všechen obsah souborů pro předplatné jednoho zákazníka je vždycky umístěný ve stejné sdílené složce UNC. 
 
-Kvůli práci služeb Azure budou průběžně měnit konkrétního virtuálního počítače za hostování sdílenou jednotku UNC. Je zaručeno, že sdílené složky UNC se připojí jiné virtuální počítače, jak kliknou, přesměrují se nahoru a dolů během normálního chodu operací Azure. Z tohoto důvodu aplikace by nikdy domněnky pevně zakódované, že informace o počítači v cestě k souboru UNC zůstane stabilní v čase. Místo toho měli používat praktické *umělá proměnná* absolutní cesta **D:\home\site** poskytující služby App Service. Toto umělá proměnná absolutní cesta způsobem portable, aplikace a uživatel – bez ohledu na odkazující na jeden z vlastní aplikace. S použitím **D:\home\site**, jeden můžou přenášet sdílené soubory z aplikací bez nutnosti konfigurovat nový absolutní cestu pro každý přenos.
+V důsledku toho, jak služby Azure fungují, se konkrétní virtuální počítač zodpovědný za hostování sdílené složky UNC v průběhu času změní. Je zaručeno, že sdílené složky UNC budou připojeny k různým virtuálním počítačům při jejich zapínání a vystavování během normálního provozu v rámci Azure. Z tohoto důvodu by aplikace nikdy nevedly pevně zakódované předpoklady, že informace o počítači v cestě k souboru ve formátu UNC zůstanou v průběhu času stabilní. Místo toho by měli používat pohodlný D:\home\site *umělé* absolutní cesty , který App Service poskytuje. Tato umělá absolutní cesta poskytuje přenosnou, aplikační a uživatelsky nezávislá metodu pro odkazování na vlastní aplikaci. Pomocí **D:\home\site**může jeden přenést sdílené soubory z aplikace do aplikace, aniž by bylo nutné konfigurovat novou absolutní cestu pro každý přenos.
 
 <a id="TypesOfFileAccess"></a>
 
-### <a name="types-of-file-access-granted-to-an-app"></a>Typy souborů udělení přístupu k aplikaci
-Vyhrazené adresářovou strukturu má každé zákaznické předplatné na konkrétní sdílenou jednotku UNC v rámci datového centra. Zákazník může mít více aplikací vytvořených v rámci konkrétní datového centra, takže všechny adresáře, které patří do předplatného jednoho zákazníka se vytvářejí na stejnou cestu UNC sdílené složky. Sdílená složka může zahrnout adresáře třeba kroky týkající se obsahu, chyba a diagnostické protokoly a dřívějších verzích aplikace vytvořená pomocí správy zdrojového kódu. Podle očekávání, na základě aplikace adresáře jsou k dispozici pro oprávnění ke čtení a zápisu za běhu aplikace kód aplikace.
+### <a name="types-of-file-access-granted-to-an-app"></a>Typy přístupu k souborům udělených aplikaci
+Předplatné každého zákazníka má vyhrazenou adresářovou strukturu v konkrétní sdílené složce UNC v rámci datového centra. Zákazník může mít v rámci konkrétního datového centra vytvořené několik aplikací, takže všechny adresáře patřící do jednoho zákaznického předplatného se vytvoří ve stejné sdílené složce UNC. Sdílená složka může obsahovat adresáře, jako jsou například pro obsah, chyby a diagnostické protokoly, a dřívější verze aplikace vytvořené správou zdrojových kódů. Jak bylo očekáváno, adresáře aplikací zákazníka jsou k dispozici pro přístup pro čtení a zápis za běhu v kódu aplikace aplikace.
 
-Na místní diskové jednotky připojené k virtuálnímu počítači, na kterém běží aplikace služby App Service si vyhrazuje blok místa na jednotce C:\ pro dočasné ukládání místních konkrétní aplikace. I když má aplikace přístup Úplné čtení a zápis do vlastní místní dočasné úložiště, že úložiště ve skutečnosti není určena pro použití přímo kódem aplikace. Místo toho cílem je zajistit ukládání dočasných souborů pro službu IIS a web aplikačních architektur. Velikost dočasné místní úložiště k dispozici pro každou aplikaci, aby zabránila jednotlivými aplikacemi ve využívání nadměrné množství úložiště místního souboru také limity služby App Service.
+Na místních jednotkách připojených k virtuálnímu počítači, na kterém běží aplikace, App Service rezervuje blok místa na C:\. jednotka pro dočasné místní úložiště specifické pro aplikaci. I když má aplikace úplný přístup pro čtení i zápis k vlastnímu dočasnému místnímu úložišti, toto úložiště opravdu není určené k použití přímo v kódu aplikace. Místo toho záměr je poskytnout dočasné úložiště souborů pro službu IIS a architektury webových aplikací. App Service taky omezuje velikost dočasného místního úložiště dostupného pro každou aplikaci, aby jednotlivé aplikace bránily využívání nadměrného množství místních úložišť souborů.
 
-Adresář pro dočasné soubory ASP.NET jsou dva příklady jak služba App Service používá místní dočasné úložiště a komprimované soubory v adresáři služby IIS. Systém kompilace technologie ASP.NET používá jako umístění mezipaměti dočasné kompilace adresáře "Temporary ASP.NET Files". Služba IIS používá "IIS dočasné komprimované soubory" adresář k uložení výstupu zkomprimovanou odpověď. Oba tyto typy souborů využití (stejně jako ostatní) budou přemapovány na dočasný místní úložiště pro aplikaci ve službě App Service. Přemapování se zajistí, že funkce pokračuje podle očekávání.
+Dva příklady, jak App Service používá dočasné místní úložiště, jsou adresářem pro dočasné soubory ASP.NET a adresář pro komprimované soubory IIS. Systém kompilace ASP.NET využívá dočasný adresář ASP.NET Files jako dočasné umístění mezipaměti kompilace. Služba IIS pomocí adresáře "dočasné komprimované soubory služby IIS" ukládá komprimovaný výstup odpovědi. Oba tyto typy použití souborů (stejně jako ostatní) jsou přemapovány v App Service na dočasné místní úložiště pro aplikaci. Toto přemapování zajišťuje, že funkčnost bude pokračovat podle očekávání.
 
-Každou aplikaci ve službě App Service běží jako identitu náhodné jedinečný s nízkým oprávněním pracovního procesu nazývá "identita fondu aplikací", zde popsané dál: [ https://www.iis.net/learn/manage/configuring-security/application-pool-identities ](https://www.iis.net/learn/manage/configuring-security/application-pool-identities). Kód aplikace tuto identitu použije pro základní přístup jen pro čtení na jednotce operačního systému (jednotku D:\). To znamená, že kód aplikace může seznam běžných struktur adresářů a čtení běžných souborů na jednotce operačního systému. I když to může zdát poněkud obecné úrovni přístupu stejné adresářů a souborů jsou dostupné při zřizování role pracovního procesu v Azure hostovaná služba a číst obsah jednotky. 
+Každá aplikace v App Service běží jako náhodná jedinečná identita pracovního procesu s nízkými oprávněními označovaná jako identita fondu aplikací, která je popsána [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)dále:. Kód aplikace používá tuto identitu pro základní přístup jen pro čtení k jednotce operačního systému (D:\ jednotka). To znamená, že kód aplikace může vypsat společné adresářové struktury a číst běžné soubory na jednotce operačního systému. I když se to může zdát poněkud široká úroveň přístupu, stejné adresáře a soubory jsou přístupné při zřizování role pracovního procesu v hostované službě Azure a čtení obsahu jednotky. 
 
 <a name="multipleinstances"></a>
 
-### <a name="file-access-across-multiple-instances"></a>Přístup k souborům na více instancí
-Domovský adresář obsahuje obsah aplikace a do ní můžete zapisovat kód aplikace. Pokud aplikace běží na více instancí, domovský adresář se sdílí mezi všemi instancemi tak, aby všechny instance stejného adresáře. Ano Pokud aplikace ukládá nahraných souborech do domovského adresáře, tyto soubory jsou například okamžitě k dispozici pro všechny instance. 
+### <a name="file-access-across-multiple-instances"></a>Přístup k souborům napříč více instancemi
+Domovský adresář obsahuje obsah aplikace a kód aplikace do něj může zapisovat. Pokud aplikace běží na více instancích, domovský adresář se sdílí mezi všemi instancemi, aby všechny instance viděli stejný adresář. Takže pokud aplikace například ukládá nahrané soubory do domovského adresáře, jsou tyto soubory okamžitě k dispozici všem instancím. 
 
 <a id="NetworkAccess"></a>
 
 ## <a name="network-access"></a>Síťový přístup
-Kód aplikace můžete použít protokol TCP/IP a protokoly založené na protokolu UDP odchozí síťové připojení k přístupnými koncovými body Internet, které zpřístupňují služby pro externí. Aplikace můžou používat tyto stejné protokoly pro připojení ke službám v rámci Azure&#151;například tím, že připojení HTTPS ke službě SQL Database.
+Kód aplikace může používat protokoly TCP/IP a UDP k vytváření odchozích síťových připojení k internetovým koncovým bodům, které zveřejňují externí služby. Aplikace můžou používat stejné protokoly pro připojení ke službám v rámci Azure, třeba navázáním připojení HTTPS k SQL Database.
 
-Je také omezenou funkčností a vytvořit jedno připojení místního zpětné smyčky a mají aplikace naslouchat na tomto soketu zpětnou smyčku místní aplikace. Tato funkce je především k povolení aplikace, které naslouchat na místní zpětné smyčky sockets jako součást své funkce. Každé aplikaci, která se zobrazí "privátní" zpětné smyčky připojení. Aplikace "A" nemůže naslouchat na soket místní zpětné smyčky stanovené aplikace "B".
+Existují také omezené možnosti, jak si aplikace navázat jedno připojení k místní zpětné smyčce a že aplikace naslouchají tomuto místnímu soketu. Tato funkce je primárně navržena tak, aby v rámci svých funkcí povolovala aplikace, které na místních soketech zpětné vazby naslouchají. Každá aplikace se dohlíží na "privátní" připojení zpětné smyčky. Aplikace "A" nemůže naslouchat místnímu soketu zpětné smyčky, který vytvořila aplikace "B".
 
-Pojmenované kanály podporují také jako mechanismus meziprocesové komunikace (IPC) mezi různými procesy, které souhrnně spuštění aplikace. Například modul FastCGI služby IIS spoléhá na pojmenované kanály ke koordinaci jednotlivých procesů, na kterých běží stránky PHP.
+Pojmenované kanály jsou podporované taky jako mechanismus komunikace mezi procesy (IPC) mezi různými procesy, které společně spouštějí aplikaci. Modul IIS FastCGI například spoléhá na pojmenované kanály, aby koordinovaly jednotlivé procesy, které spouštějí stránky PHP.
 
 <a id="Code"></a>
 
-## <a name="code-execution-processes-and-memory"></a>Spuštění kódu, procesy a paměti
-Jak je uvedeno výše, aplikace běží v rámci služby s nízkým oprávněním pracovních procesů pod identitou fondu náhodné aplikace. Kód aplikace má přístup k paměťový prostor, přidružené pracovní proces, stejně jako všechny podřízené procesy, které mohou být vytvoří podřízený proces CGI procesy nebo jiné aplikace. Však nelze jednu aplikaci přístup, paměť nebo data z jiné aplikace i v případě, že je na stejném virtuálním počítači.
+## <a name="code-execution-processes-and-memory"></a>Spuštění kódu, procesy a paměť
+Jak bylo uvedeno dříve, aplikace běží v pracovních procesech s nízkými oprávněními pomocí náhodné identity fondu aplikací. Kód aplikace má přístup k prostoru paměti přidruženému k pracovnímu procesu a všem podřízeným procesům, které mohou být vytvořeny procesy CGI nebo jinými aplikacemi. Jedna aplikace ale nemůže získat přístup k paměti nebo datům jiné aplikace, i když se nachází na stejném virtuálním počítači.
 
-Aplikace můžete spustit skripty nebo stránek zapsaných pomocí podporované webové vývojářské platformy. Služby App Service není nakonfigurovat nastavení jakékoli webové rozhraní framework omezenější režimy. Aplikace ASP.NET běžící ve službě App Service je třeba spustit v "úplné" vztahu důvěryhodnosti na rozdíl od více omezený režim vztahu důvěryhodnosti. Webové platformy, včetně rozhraní classic ASP a ASP.NET, můžete volat komponenty modelu COM v procesu (ale ne out komponent modelu COM, proces) jako ADO (ActiveX Data Objects), které jsou registrované ve výchozím nastavení v operačním systému Windows.
+Aplikace můžou spouštět skripty nebo stránky napsané s podporovanými rozhraními pro vývoj webu. App Service nekonfiguruje žádná nastavení webového rozhraní na více režimů s omezením. Například aplikace ASP.NET spuštěné v App Service běžet v "plném" vztahu důvěryhodnosti na rozdíl od více omezeného režimu důvěryhodnosti. Webové architektury, včetně klasických ASP a ASP.NET, mohou volat komponenty modelu COM v rámci procesu (ale ne mimo procesy komponent modelu COM), jako jsou ADO (rozhraní ADO (ActiveX Data Objects)), které jsou ve výchozím nastavení registrovány v operačním systému Windows.
 
-Aplikace můžete spustit a spustit libovolný kód. Je povolené, může aplikace provádět věci, jako je vytvořit podřízený proces příkazového prostředí nebo spusťte skript prostředí PowerShell. I v případě, že libovolný kód a procesů může být vytvořený z aplikace, spustitelné programy a skripty jsou však stále omezena na oprávněních udělených k nadřazené fondu aplikací. Například můžete aplikaci spustit spustitelný soubor, který provádí odchozích volání HTTP, ale, že stejné spustitelného souboru nelze pokus o odpojení IP adresu virtuálního počítače z jeho síťový adaptér Volání odchozí síťové může kód s nízkými oprávněními, ale pokus znovu nakonfigurovat nastavení sítě na virtuálním počítači vyžaduje oprávnění správce.
+Aplikace můžou vytvořit libovolný kód a spustit ho. Je možné, že aplikace provede akce, jako je například vytvoření příkazového prostředí nebo spuštění skriptu PowerShellu. I když lze v aplikaci vytvořit libovolný kód a procesy, spustitelné programy a skripty jsou stále omezeny na oprávnění udělená nadřazenému fondu aplikací. Aplikace může například vytvořit spustitelný soubor, který provede odchozí volání HTTP, ale stejný spustitelný soubor se nemůže pokusit zrušit vazbu IP adresy virtuálního počítače z jeho síťové karty. Zpřístupnění odchozího síťového volání může mít kód s nízkou úrovní oprávnění, ale při pokusu o překonfigurování nastavení sítě na virtuálním počítači budete potřebovat oprávnění správce.
 
 <a id="Diagnostics"></a>
 
 ## <a name="diagnostics-logs-and-events"></a>Diagnostické protokoly a události
-Informace o protokolu je další sadu dat, která se některé aplikace, pokus o přístup. Typy protokolu informace, které jsou k dispozici pro kód spuštěný ve službě App Service zahrnuje diagnostiky a protokolovat informace generované aplikace, která je také snadný přístup k aplikaci. 
+Informace protokolu jsou další sada dat, ke kterým se aplikace pokouší získat přístup. Typy informací o protokolech, které jsou k dispozici pro kód běžící v App Service, zahrnují informace o diagnostice a protokolu vygenerované aplikací, která je také snadno přístupná pro aplikaci. 
 
-Například protokoly W3C HTTP vygenerovaný aktivní aplikací jsou k dispozici, buď v adresáři protokolu v umístění v síti sdílené složky vytvořené pro aplikace, nebo k dispozici v úložišti objektů blob, pokud zákazník má nastavení protokolování W3C do úložiště. Tato možnost umožňuje protokoly bez rizika překročení limitů úložiště souboru, který je přidružený k síťové sdílené složky se dají shromáždit velké množství.
+Například protokoly W3C HTTP vygenerované aktivní aplikací jsou k dispozici buď v adresáři protokolu v umístění sdílené síťové složky vytvořeném pro aplikaci, nebo dostupné v úložišti objektů blob, pokud zákazník nastavil protokolování W3C do úložiště. Možnost druhá umožňuje shromažďovat velké množství protokolů bez rizika překračujícího limity úložiště souborů spojené se sdílenou síťovou složkou.
 
-V souvislosti podobně jako v reálném čase diagnostické informace z aplikací .NET můžete také protokolovat .NET trasování a diagnostické infrastruktury pomocí možnosti, jak zapsat informace trasování do sdílené síťové složky buď aplikace, případně k umístění úložiště objektů blob.
+V podobných informacích o diagnostice v reálném čase z aplikací .NET se taky dají protokolovat pomocí infrastruktury trasování a diagnostiky .NET s možnostmi zápisu informací o trasování do síťové sdílené složky aplikace nebo do umístění úložiště objektů BLOB.
 
-Oblasti diagnostické protokolování a trasování, které nejsou k dispozici pro aplikace, jsou běžné protokoly událostí Windows (například systém, aplikace a zabezpečení protokoly událostí) a Windows trasování událostí pro Windows. Vzhledem k tomu, že informace o trasování událostí pro Windows trasování může být potenciálně zobrazitelné celého (se správným ACL), jsou blokovány pro čtení a zápisu do událostí trasování událostí pro Windows. Vývojáři si všimnout, že volání rozhraní API pro čtení a zápis trasování událostí pro Windows, událostí a běžné protokoly událostí Windows se zobrazí pro práci, ale důvodem je, že služby App Service je "faking" volání tak, aby byly zobrazeny úspěšné. Ve skutečnosti kód aplikace nemá přístup k těmto datům událostí.
+Oblasti protokolování a trasování diagnostiky, které nejsou k dispozici pro aplikace, jsou události ETW systému Windows a běžné protokoly událostí systému Windows (například protokoly událostí systému, aplikace a zabezpečení). Vzhledem k tomu, že informace o trasování ETW můžou být zobrazitelné na úrovni počítače (se správnými seznamy ACL), zablokují se přístup pro čtení a zápis událostí ETW. Vývojáři si můžou všimnout, že volání rozhraní API pro čtení a zápis událostí ETW a běžné protokoly událostí Windows se zdají fungovat, ale to znamená, že App Service jsou voláním "Faking", aby se zobrazila úspěšná. Ve skutečnosti nemá kód aplikace žádný přístup k těmto datům události.
 
 <a id="RegistryAccess"></a>
 
 ## <a name="registry-access"></a>Přístup k registru
-Aplikace mají přístup jen pro čtení k většině (ale ne všechny) z registru virtuálního počítače, na kterém běží. V praxi to znamená, že klíče registru, které umožňují přístup jen pro čtení do místní skupiny uživatelů jsou přístupné pro aplikace. Jedna oblast registru, který není aktuálně podporován pro čtení nebo zápis je nastavení HKEY\_aktuální\_podregistru uživatele.
+Aplikace mají přístup jen pro čtení k mnoha (ale ne všem) registru virtuálního počítače, na kterém běží. V praxi to znamená, že aplikace budou mít k dispozici klíče registru, které umožňují přístup jen pro čtení k místní skupině uživatelů. Jedna oblast registru, která se v tuto chvíli nepodporuje pro přístup pro čtení nebo zápis, je HKEY\_aktuálním\_podregistrem uživatele.
 
-Oprávnění k zápisu do registru je blokovaný, včetně přístupu ke klíčům registru všechny jednotlivé uživatele. Z pohledu aplikace, oprávnění k zápisu do registru by nikdy spoléhat v prostředí Azure od aplikací můžete (a dělat) migrují na různých virtuálních počítačů. Pouze trvalého zapisovatelné úložiště, který může být závisejí aplikace je struktura aplikaci adresář s obsahem ze sdílené složky App Service UNC. 
+Přístup pro zápis do registru je zablokovaný, včetně přístupu k jakýmkoli klíčům registru pro jednotlivé uživatele. Z pohledu aplikace by se v prostředí Azure nikdy neměl spoléhat na přístup k zápisu do registru, protože aplikace se můžou (a dělat) migrovat mezi různými virtuálními počítači. Jediným trvalým úložištěm, které může být závislé na aplikaci, je struktura adresáře obsahu pro aplikaci uloženou ve sdílených složkách App Service UNC. 
 
-## <a name="remote-desktop-access"></a>Přístup přes vzdálenou plochu
+## <a name="remote-desktop-access"></a>Přístup ke vzdálené ploše
 
-App Service neposkytuje přístup ke vzdálené ploše na instance virtuálních počítačů.
+App Service neposkytuje přístup ke vzdálené ploše pro instance virtuálních počítačů.
 
 ## <a name="more-information"></a>Další informace
 
-[Azure sandboxu služby App Service](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) – nejnovější informace o prostředí pro spuštění služby App Service. Na této stránce se spravují přímo vývojovému týmu služby App Service.
+[Azure App Service izolovaný prostor (sandbox)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) – nejaktuálnější informace o spouštěcím prostředí App Service. Tuto stránku uchovává přímo vývojový tým App Service.
 

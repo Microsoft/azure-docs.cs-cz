@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4bd0b6f0652f49c16bd67bbca5a89d19e17a8b2c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 150d30085976c89e9053d4715da98e487684e45c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498419"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717245"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -23,7 +23,7 @@ ms.locfileid: "68498419"
 Můžete povolit Update Management pro virtuální počítače přímo z účtu Azure Automation. Informace o tom, jak povolit Update Management pro virtuální počítače z vašeho účtu Automation, najdete v tématu [Správa aktualizací pro několik virtuálních počítačů](manage-update-multi.md). Můžete také povolit Update Management pro virtuální počítač ze stránky virtuálního počítače v Azure Portal. Tento scénář je k dispozici pro virtuální počítače se systémy [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) a [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) .
 
 > [!NOTE]
-> Řešení Update Management vyžaduje propojení pracovního prostoru Log Analytics s vaším účtem Automation. Konečný seznam podporovaných oblastí naleznete v tématu [./how-to/region-Mappings.MD]. Mapování oblastí neovlivňují možnost spravovat virtuální počítače v samostatné oblasti, než je váš účet Automation.
+> Řešení Update Management vyžaduje propojení pracovního prostoru Log Analytics s vaším účtem Automation. Konečný seznam podporovaných oblastí naleznete v tématu [https://docs.microsoft.com/en-us/azure/automation/how-to/region-mappings ]. Mapování oblastí neovlivňují možnost spravovat virtuální počítače v samostatné oblasti, než je váš účet Automation.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -99,6 +99,11 @@ Následující tabulka uvádí operační systémy, které nejsou podporovány:
 #### <a name="windows"></a>Windows
 
 Agenti systému Windows musí být nakonfigurováni pro komunikaci se serverem WSUS nebo musí mít přístup k Microsoft Update. Update Management můžete použít s System Center Configuration Manager. Další informace o integračních scénářích najdete v tématu věnovaném [integraci System Center Configuration Manager s Update Management](oms-solution-updatemgmt-sccmintegration.md#configuration). [Agent pro Windows](../azure-monitor/platform/agent-windows.md) je povinný. Pokud se připojujete k virtuálnímu počítači Azure, Agent se nainstaluje automaticky.
+
+> [!NOTE]
+> Uživatel může upravit Zásady skupiny, aby mohl restartovat počítač jenom uživatel, a ne systém. Spravované počítače se můžou zablokovat, pokud Update Management nemá oprávnění k restartování počítače bez ruční interakce uživatele.
+>
+> Další informace najdete v tématu [Konfigurace nastavení zásady skupiny pro automatické aktualizace](https://docs.microsoft.com/en-us/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates).
 
 #### <a name="linux"></a>Linux
 
@@ -644,7 +649,7 @@ Odebrání virtuálního počítače z Update Management:
 * Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro konfiguraci `MicrosoftDefaultScopeConfig-Updates`oboru. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
 * Odeberte [agenta Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přejděte k kurzu, kde se dozvíte, jak spravovat aktualizace pro virtuální počítače s Windows.
 

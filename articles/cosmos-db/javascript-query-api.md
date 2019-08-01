@@ -1,39 +1,39 @@
 ---
-title: Práce s JavaScript integrovaný jazyk dotazů rozhraní API ve službě Azure Cosmos DB
-description: Tento článek představuje koncepty pro JavaScript integrovaný jazyk dotazů rozhraní API k vytvoření uložených procedur a aktivačních událostí ve službě Azure Cosmos DB.
+title: Práce s rozhraním API pro integrované dotazy jazyka JavaScript v Azure Cosmos DB
+description: V tomto článku se seznámíte s koncepty rozhraní API pro integrované dotazy jazyka JavaScript k vytváření uložených procedur a triggerů v Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: cc1815ce4a7a9ed40848e4a67a7fd9e032c1daa1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01e5e95da3c19c03d07c7f3c1d716f5f1e97de98
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66226199"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717593"
 ---
-# <a name="javascript-query-api-in-azure-cosmos-db"></a>Dotaz jazyka JavaScript API ve službě Azure Cosmos DB
+# <a name="javascript-query-api-in-azure-cosmos-db"></a>Rozhraní API pro dotazování v jazyce JavaScript v Azure Cosmos DB
 
-Kromě vydávat dotazy pomocí rozhraní SQL API ve službě Azure Cosmos DB, [Cosmos DB SDK na straně serveru](https://azure.github.io/azure-cosmosdb-js-server/) umožňuje provádět optimalizované dotazy pomocí rozhraní JavaScript. Není nutné mít na paměti Toto rozhraní JavaScript jazyka SQL. Dotaz jazyka JavaScript, který rozhraní API můžete programově vytvářet dotazy předáním predikátu funkce do sekvence funkce volání s syntaxi na předdefinované pole a Oblíbené knihovny jazyka JavaScript, jako je Lodash ECMAScript5 společnosti. Dotazy jsou analyzovány pomocí modulu runtime jazyka JavaScript a efektivně proveden pomocí služby Azure Cosmos DB indexy.
+Kromě vydávání dotazů pomocí rozhraní SQL API v Azure Cosmos DB umožňuje [Cosmos DB serverová sada SDK](https://azure.github.io/azure-cosmosdb-js-server/) provádět optimalizované dotazy pomocí rozhraní JavaScript. Pro použití tohoto rozhraní JavaScript nemusíte znát jazyk SQL. Rozhraní API pro dotazování v jazyce JavaScript umožňuje programově vytvářet dotazy tím, že předává funkce predikátů do sekvence volání funkce, se syntaxí ECMAScript5's předdefinované a oblíbené knihovny JavaScriptu, jako je Lodash. Dotazy jsou analyzovány modulem runtime jazyka JavaScript a efektivně spouštěny pomocí Azure Cosmos DB indexy.
 
-## <a name="supported-javascript-functions"></a>Podporované funkce jazyka JavaScript
+## <a name="supported-javascript-functions"></a>Podporované funkce JavaScriptu
 
-| **– funkce** | **Popis** |
+| **Slouží** | **Popis** |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|Začíná value() zřetězené volání, které musí být ukončen.|
 |`filter(predicateFunction [, options] [, callback])`|Filtruje vstup pomocí funkce predikátu, který vrací hodnotu true nebo false, chcete-li filtrovat vstupních dokumentů vstup/výstup do výsledné sady. Tato funkce se chová podobně jako v klauzuli WHERE v SQL.|
-|`flatten([isShallow] [, options] [, callback])`|Kombinuje a pole z každé vstupní položky se sloučí do jediného pole. Tato funkce se chová podobně jako operátor SelectMany v technologii LINQ.|
+|`flatten([isShallow] [, options] [, callback])`|Kombinuje a sloučí pole z každé vstupní položky do jednoho pole. Tato funkce se chová podobně jako operátor SelectMany v technologii LINQ.|
 |`map(transformationFunction [, options] [, callback])`|Projekce zadané funkce transformace, která se mapuje na objekt jazyka JavaScript nebo hodnotu každé vstupní položky se vztahuje. Tato funkce se chová podobně jako v klauzuli SELECT v SQL.|
 |`pluck([propertyName] [, options] [, callback])`|Tato funkce je zkratka pro mapu, která extrahuje hodnotu jedinou vlastnost z každé vstupní položky.|
-|`sortBy([predicate] [, options] [, callback])`|Vytvoří novou sadu dokumentů, že je seřadíte dokumentů ve službě stream vstupní dokument ve vzestupném pořadí pomocí daného predikátu. Tato funkce se chová podobně jako klauzuli ORDER BY v SQL.|
-|`sortByDescending([predicate] [, options] [, callback])`|Vytvoří novou sadu dokumentů, že je seřadíte dokumentů ve službě stream vstupní dokument v sestupném pořadí pomocí daného predikátu. Tato funkce se chová podobně jako klauzuli ORDER BY x DESC v SQL.|
-|`unwind(collectionSelector, [resultSelector], [options], [callback])`|Provádí spojení sama s vnitřní pole a přidá výsledky z obou stran jako řazené kolekce členů výsledek projekce. Pro instanci připojení dokumentu osoba s person.pets vyprodukuje řazené kolekce členů [osoby, pet]. To se podobá operátor SelectMany v .NET odkazu.|
+|`sortBy([predicate] [, options] [, callback])`|Vytvoří novou sadu dokumentů seřazením dokumentů ve vstupním streamu dokumentů ve vzestupném pořadí pomocí daného predikátu. Tato funkce se chová podobně jako klauzuli ORDER BY v SQL.|
+|`sortByDescending([predicate] [, options] [, callback])`|Vytvoří novou sadu dokumentů seřazením dokumentů v datovém proudu vstupního dokumentu v sestupném pořadí pomocí daného predikátu. Tato funkce se chová podobně jako klauzuli ORDER BY x DESC v SQL.|
+|`unwind(collectionSelector, [resultSelector], [options], [callback])`|Provede samoobslužné spojení s vnitřním polem a přidá výsledky z obou stran jako řazené kolekce členů do výsledné projekce. Například připojení k dokumentu osoby pomocí Person. Pet vytvoří řazené kolekce členů [person, PET]. To se podobá operátor SelectMany v odkazu .NET.|
 
 Pokud zahrnutý do predikátu a/nebo výběr funkcí, následující konstrukce jazyka JavaScript automaticky optimalizovat spouštět přímo na indexy Azure Cosmos DB:
 
-- Jednoduché operátory: `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!` `~`
+- Jednoduché operátory: `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
 - Literály, včetně literálu objektu: {}
 - var, vratky
 
@@ -42,30 +42,30 @@ Následující konstrukce jazyka JavaScript není optimalizovat pro indexy Azure
 - Řízení toku (třeba pokud, pro, zatímco)
 - Volání funkcí
 
-Další informace najdete v tématu [dokumentaci JavaScript na straně serveru databáze Cosmos](https://azure.github.io/azure-cosmosdb-js-server/).
+Další informace najdete v dokumentaci k [JavaScriptu na straně serveru Cosmos DB](https://azure.github.io/azure-cosmosdb-js-server/).
 
-## <a name="sql-to-javascript-cheat-sheet"></a>SQL pro jazyk JavaScript tahák
+## <a name="sql-to-javascript-cheat-sheet"></a>Tahák list SQL pro JavaScript
 
-Následující tabulka uvádí různé dotazy SQL a odpovídající dotazy jazyka JavaScript. Vlastnosti (například item.id) stejně jako u dotazů SQL, jsou malá a velká písmena.
+Následující tabulka uvádí různé dotazy SQL a odpovídající dotazy jazyka JavaScript. Stejně jako u dotazů SQL jsou u vlastností (například item.id) rozlišována malá a velká písmena.
 
 > [!NOTE]
-> `__` (dvojité podtržítko) je alias `getContext().getCollection()` při použití rozhraní API jazyka JavaScript dotazu.
+> `__`(dvojité podtržítko) je alias pro při použití `getContext().getCollection()` rozhraní API pro dotazování jazyka JavaScript.
 
-|**SQL**|**Dotaz jazyka JavaScript API**|**Popis**|
+|**SQL**|**Rozhraní API pro dotazy jazyka JavaScript**|**Popis**|
 |---|---|---|
 |VYBERTE *<br>Z dokumentace| __.map(Function(DOC) { <br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc;<br>});|Výsledky ve všech dokumentech (stránkované se token pro pokračování), jako je.|
-|SELECT <br>&nbsp;&nbsp;&nbsp;docs.ID,<br>&nbsp;&nbsp;&nbsp;docs.Message jako msg,<br>&nbsp;&nbsp;&nbsp;docs.Actions <br>Z dokumentace|__.map(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;vrátit {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg –: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions:doc.Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projekty id, zprávy (s aliasem se přiřadila msg) a akce ze všech dokumentů.|
+|SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message jako MSG,<br>&nbsp;&nbsp;&nbsp;dokumenty. Actions <br>Z dokumentace|__.map(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;vrátit {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg –: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions:doc.Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Projekty id, zprávy (s aliasem se přiřadila msg) a akce ze všech dokumentů.|
 |VYBERTE *<br>Z dokumentace<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.Filter(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc.id === "X998_Y998";<br>});|Dotazy na dokumenty s predikát: id = "X998_Y998".|
-|VYBERTE *<br>Z dokumentace<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS(docs.Tags, 123)|__.Filter(Function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí x.Tags & & x.Tags.indexOf(123) > -1;<br>});|Dotazy na dokumenty, které mají značky a vlastnost Tags je pole, který obsahuje hodnotu 123.|
-|SELECT<br>&nbsp;&nbsp;&nbsp;docs.ID,<br>&nbsp;&nbsp;&nbsp;docs.Message jako zpráva<br>Z dokumentace<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Filter(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vrátit {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg –: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|Dotazy na dokumenty s predikátem, id = "X998_Y998" a potom projekty id a zprávy (alias pro zprávy).|
+|VYBERTE *<br>Z dokumentace<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (dokumentace Značky, 123)|__.Filter(Function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí x.Tags & & x.Tags.indexOf(123) > -1;<br>});|Dotazy na dokumenty, které mají značky a vlastnost Tags je pole, který obsahuje hodnotu 123.|
+|SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message jako MSG<br>Z dokumentace<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Filter(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vrátit {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg –: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|Dotazy na dokumenty s predikátem, id = "X998_Y998" a potom projekty id a zprávy (alias pro zprávy).|
 |VYBRAT hodnotu značky<br>Z dokumentace<br>Připojte se k značky v docs. Značky<br>Klauzule ORDER BY docs._ts|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Filter(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vrátí dokumentu. Značky & & Array.IsArray – (doc. Značky);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Value()|Filtry pro dokumenty, které mají vlastnost typu pole, značky a seřadí výsledný dokumenty podle _ts vlastnosti časového razítka systému a potom projekty + sloučí pole značky.|
 
 ## <a name="next-steps"></a>Další postup
 
-Přečtěte si další koncepty a postupy: zápis a pomocí uložené procedury, triggery a uživatelem definovaných funkcí ve službě Azure Cosmos DB:
+Přečtěte si další koncepty a postupy psaní a používání uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB:
 
-- [Jak napsat uložených procedur a aktivačních událostí pomocí rozhraní API pro dotazy jazyka Javascript](how-to-write-javascript-query-api.md)
-- [Práce s Azure Cosmos DB uložené procedury, triggery a uživatelem definovaných funkcí](stored-procedures-triggers-udfs.md)
-- [Jak používat uložené procedury, aktivační události, uživatelem definovaných funkcí ve službě Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
+- [Jak zapisovat uložené procedury a triggery pomocí rozhraní API pro dotazy jazyka JavaScript](how-to-write-javascript-query-api.md)
+- [Práce s Azure Cosmos DB uloženými procedurami, triggery a uživatelsky definovanými funkcemi](stored-procedures-triggers-udfs.md)
+- [Jak používat uložené procedury, triggery, uživatelsky definované funkce v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
 - [Azure Cosmos DB na straně serveru rozhraní API reference na JavaScript na](https://azure.github.io/azure-cosmosdb-js-server)
 - [JavaScript ES6 (ECMA 2015)](https://www.ecma-international.org/ecma-262/6.0/)

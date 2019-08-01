@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: a53a62a7bc7a5c7f8d9bdabdf411588fdf7bd5e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7923ce10912ebb6f09c1c3d8390dd51b4f876bea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257073"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552001"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnit informační kanál k vizualizaci dat v reálném čase analýzy
 
@@ -30,7 +30,7 @@ Následující diagram znázorňuje tok dat a součásti účastnící se řeše
 
 ![Projekt visual](./media/changefeed-ecommerce-solution/project-visual.png)
  
-1. **Generování dat:** Simulátor dat slouží ke generování prodejní data, která představuje události, jako je například uživatel položku zobrazení, přidání položky do jejich košíku a zakoupení položku. Velkou sadu ukázkových dat můžete vygenerovat pomocí generátoru dat. Generovaných vzorových dat obsahuje dokumenty v následujícím formátu:
+1. **Generování dat:** Simulátor dat se používá ke generování maloobchodních dat, která představují události, jako je například uživatel, který zobrazuje položku, přidání položky na košík a nákup položky. Velkou sadu ukázkových dat můžete vygenerovat pomocí generátoru dat. Generovaných vzorových dat obsahuje dokumenty v následujícím formátu:
    
    ```json
    {      
@@ -41,17 +41,17 @@ Následující diagram znázorňuje tok dat a součásti účastnící se řeše
    }
    ```
 
-2. **Cosmos DB:** Generovaná data se ukládá v kolekci Azure Cosmos DB.  
+2. **Cosmos DB:** Vygenerovaná data jsou uložená v kolekci Azure Cosmos DB.  
 
-3. **Kanál změn:** Kanál změn bude naslouchat změny kolekce Azure Cosmos DB. Pokaždé, když do kolekce (která je při výskytu události, uživatelem zobrazení položky, přidání položky do jejich košíku nebo zakoupením položky) se přidá nový dokument, změna kanálu bude aktivovat [funkce Azure Functions](../azure-functions/functions-overview.md).  
+3. **Změnit kanál:** Kanál změn bude naslouchat změnám kolekce Azure Cosmos DB. Pokaždé, když do kolekce (která je při výskytu události, uživatelem zobrazení položky, přidání položky do jejich košíku nebo zakoupením položky) se přidá nový dokument, změna kanálu bude aktivovat [funkce Azure Functions](../azure-functions/functions-overview.md).  
 
-4. **Funkce Azure:** Funkce Azure Functions zpracovává nová data a odesílá je do [Azure Event Hubs](../event-hubs/event-hubs-about.md).  
+4. **Funkce Azure:** Funkce Azure zpracuje nová data a pošle je do [centra událostí Azure](../event-hubs/event-hubs-about.md).  
 
-5. **Centrum událostí:** Azure Event Hubs uchovává tyto události a odesílá je do [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) k další analýze.  
+5. **Centrum událostí:** Centrum událostí Azure tyto události uloží a pošle je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) k provedení další analýzy.  
 
-6. **Azure Stream Analytics:** Azure Stream Analytics definuje dotazů pro zpracování událostí a analýze dat v reálném čase. Tato data se pak posílají do [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
+6. **Azure Stream Analytics:** Azure Stream Analytics definuje dotazy, které zpracovávají události a provádějí analýzu dat v reálném čase. Tato data se pak posílají do [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
 
-7. **Power BI:** Power BI se využívá k vizualizaci dat odesílaných v Azure Stream Analytics. Můžete vytvořit řídicí panel zobrazit, jak změnit metrik v reálném čase.  
+7. **Power BI:** Power BI slouží k vizualizaci dat odesílaných Azure Stream Analytics. Můžete vytvořit řídicí panel zobrazit, jak změnit metrik v reálném čase.  
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -165,7 +165,7 @@ Chcete-li zobrazit zpracování kanálu změn nové akce na webu elektronického
 
 1. Přejděte zpět do úložiště v Průzkumníkovi souborů a klikněte pravým tlačítkem na **ChangeFeedFunction.sln** znovu otevřít nové okno Visual Studio.  
 
-2. Přejděte **App.config** souboru. V rámci `<appSettings>` blokovat, přidat koncový bod a jedinečný **primární klíč** u účtu služby Azure Cosmos DB, který jste získali dříve.  
+2. Přejděte do souboru **App. config** . V rámci bloku přidejte koncový bod a jedinečný **primární klíč** , který jste načetli Azure Cosmos DB účtu, který jste získali dříve. `<appSettings>`  
 
 3. Přidejte **kolekce** a **databáze** názvy. (Tyto názvy musí být **changefeedlabcollection** a **changefeedlabdatabase** nerozhodnete pojmenujte svůj odlišně.)
 
@@ -316,7 +316,7 @@ Power BI je sada nástrojů pro obchodní analýzy k analýze dat a sdílet pře
 
    ![vizualizace](./media/changefeed-ecommerce-solution/visualizations.png)
 
-## <a name="optional-visualize-with-an-e-commerce-site"></a>Volitelné: Vizualizace s webem elektronického obchodování
+## <a name="optional-visualize-with-an-e-commerce-site"></a>Volitelné: Vizualizace s využitím webu elektronického obchodování
 
 Nyní zjistíte, jak můžete váš nový nástroj pro analýzu dat pro připojení k webu skutečné elektronického obchodování. Aby bylo možné vytvářet webu elektronického obchodování, použijte databázi Azure Cosmos DB k ukládání seznam kategorií produktů (ženy, Pánské, Unisex), katalog produktů a seznamu Oblíbené položky.
 

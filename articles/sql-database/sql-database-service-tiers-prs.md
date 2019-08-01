@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database úrovně Premium RS služby vyřazení z provozu úrovně | Dokumentace Microsoftu
-description: Úroveň Premium RS služby se vyřazuje a podpora se ukončuje – viz možností migrace.
+title: Vyřazení úrovně služby Azure SQL Database Premium RS | Microsoft Docs
+description: Úroveň služby Premium RS se vyřadí a podpora se ukončí – viz možnosti migrace.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,95 +10,94 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 7f184178343f69f522148777752c51afc5c5dcb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2637618ea9e2a0a0d0369eddce01fae073be221
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65790413"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566629"
 ---
-# <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Úroveň služby Azure SQL Database úrovně Premium RS (preview) se vyřazuje – možnosti pro migraci
+# <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Služba Azure SQL Database Premium RS úrovně služeb (Preview) je vyřazená – možnosti migrace
 
-V únoru 2018 společnost Microsoft oznámila, že úroveň Premium RS služby ve službě Azure SQL Database by se dočkala všeobecné dostupnosti a bude po 31. ledna 2019 není podporováno. Za tímto účelem podpory termín se prodloužila do 30. června 2019. Tento článek vysvětluje možnosti migrace z úrovně Premium RS na jinou úroveň služby. Po 30. června 2019 bude Microsoft automaticky migrovat vaše databáze úrovně Premium RS na úroveň všeobecně dostupné služby, který nejlépe odpovídá požadavky na výkon vaší databáze úrovně Premium RS.
+V únoru 2018 společnost Microsoft oznámila, že úroveň služby Premium RS v Azure SQL Database nebude uvolněna pro obecnou dostupnost a již nebude podporována po 31. ledna 2019. Tento konečný termín podpory byl prodloužen na 30. června 2019. Tento článek vysvětluje možnosti migrace z Premium RS úrovně služby na jinou úroveň služby. Od 30. června 2019 Microsoft automaticky migruje vaše databáze Premium RS do všeobecně dostupné úrovně služeb, která nejlépe odpovídá požadavkům na výkon vaší databáze Premium RS.
 
-Následují migrace cíle a cenové možnosti, které může být vhodný pro úroveň Premium RS zákazníky:
+Níže jsou uvedené cíle migrace a cenové možnosti, které mohou být vhodné pro Premium RS zákazníky:
 
 - vCore úrovně služeb
 
-  **Obecné** a **pro důležité obchodní informace** v úrovních služeb [model nákupu založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Tyto dvě úrovně jsou obecně dostupné. Nákupní model založený na virtuálních jádrech také nabízí **Hyperškálovatelného** vrstvu služby, která se přizpůsobí na vyžádání podle potřeb vašich úloh s automatickým Škálováním až 100 TB na databázi. Úroveň služby Hyperškálovatelného poskytuje srovnatelné služby na úrovni Premium ve vstupně-výstupním výkonem [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) za cenu blíže na úroveň Premium RS služby.
+  Úrovně služeb **pro obecné účely** a **pro důležité obchodní informace** v [modelu nákupu založeném na Vcore](sql-database-service-tiers-vcore.md). Tyto dvě úrovně služeb jsou všeobecně dostupné. Nákupní model založený na vCoreech taky nabízí úroveň služby s technologií **škálování** , která se přizpůsobí požadavkům vašich úloh díky automatickému škálování až na 100 TB na databázi. Úroveň služby pro škálování na úrovni služeb poskytuje vstupně-výstupní výkon srovnatelný s úrovní služeb Premium v [modelu nákupu na základě DTU](sql-database-service-tiers-dtu.md) za cenu, která se blíží úrovni služby Premium RS.
 - Ceny pro vývoj/testování
 
-  [Ceny pro vývoj/testování](https://azure.microsoft.com/pricing/dev-test/) nabízí úspory až 55 % oproti ceně licenci, jsou míry s vaším předplatným sady Visual Studio.
-- Zvýhodněné hybridní využití Azure a ceny za vyhrazené kapacity
+  [Ceny pro vývoj a testování](https://azure.microsoft.com/pricing/dev-test/) poskytují úsporu až 55% oproti sazbám zahrnutým do předplatného sady Visual Studio.
+- Ceny Zvýhodněné hybridní využití Azure a rezervované kapacity
 
-  [Zvýhodněné hybridní využití Azure a ceny za vyhrazené kapacity](https://azure.microsoft.com/pricing/details/sql-database/) poskytovat úspory až 80 % oproti ceně licenci, jsou sazby. Další informace o těchto možnostech najdete v tématu [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) a [Azure SQL Database rezervované kapacity](sql-database-reserved-capacity.md).
+  [Ceny zvýhodněné hybridní využití Azure a rezervované kapacity](https://azure.microsoft.com/pricing/details/sql-database/) poskytují úsporu až 80% oproti sazbám zahrnutým v licencích. Další informace o těchto možnostech najdete v tématu [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) a [Azure SQL Database rezervovanou kapacitu](sql-database-reserved-capacity.md).
 
-## <a name="act-now-to-migrate-your-premium-rs-databases-to-alternative-sql-database-service-tiers"></a>Jednejte hned a migrovat databáze úrovně Premium RS na alternativní úrovně služby SQL Database
+## <a name="act-now-to-migrate-your-premium-rs-databases-to-alternative-sql-database-service-tiers"></a>Využijte možnost pracovat k migraci Premium RSch databází na alternativní SQL Database úrovně služeb.
 
-Přečtěte si pokyny v tomto článku spolu s naše ceny a dokumentace k určení správné migrace příjemcům pro úroveň Premium RS úlohy.
+Přečtěte si pokyny v tomto článku spolu s cenami a dokumentaci, abyste zjistili správné cíle migrace pro vaše Premium RS úlohy.
 
-## <a name="migrate-compute-intensive-workloads-and-save"></a>Migrujte úlohy náročné na výpočetní a uložit
+## <a name="migrate-compute-intensive-workloads-and-save"></a>Migrace úloh náročných na výpočetní výkon a jejich ukládání
 
-Pro úlohy náročné na výpočetní úroveň Premium RS doporučujeme migrovat vrstvu naše všeobecně dostupné služby Obecné založený na virtuálních jádrech a ušetříte víc oproti ceně licenci, jsou sazby za použití zvýhodněné hybridní využití Azure pro SQL Server a nabídky záložní kapacitu. Pokud vám zůstane spíš na způsob nákupu založený na DTU, můžete migrovat databáze náročné na výpočetní úroveň Premium RS na úroveň služeb Standard a přesto uložit a úroveň Premium RS ceny obecné dostupnosti (pokud ho bývali do všeobecné dostupnosti).
+Pro úlohy Premium RS náročné na výpočetní výkon doporučujeme migrovat na naši všeobecně dostupnou úroveň služby Pro obecné účely založenou na vCore a ušetřit více oproti licenčním sazbám, a to pomocí Zvýhodněné hybridní využití Azure pro nabídky SQL Server a vyhrazené kapacity. Pokud byste chtěli zůstat na možnosti nákupu na základě DTU, můžete migrovat databáze Premium RS náročné na výpočetní výkon na úroveň Standard a stále ukládat v Premium RS ceny týkající se obecné dostupnosti (Pokud se nedostaly do všeobecné dostupnosti).
 
 > [!WARNING]
-> Migrace úloh Premium RS na úrovně služeb na základě jednotek DTU úrovně Premium může zvýšit měsíční náklady na srovnání s aktuálními cenami Premium RS. Doporučujeme zvážit úrovně Hyperškálovatelného nebo pro důležité obchodní informace s programem Azure Hybrid Benefit a záložní kapacitu ceny udržovat podobné nebo nižší náklady než pro úroveň Premium RS.
+> Migrace vašich Premium RSch úloh do úrovní služeb Premium na bázi DTU může zvýšit měsíční náklady oproti aktuálnímu Premium RS ceny. Doporučujeme, abyste se domnívají, jak vrstvy na úrovni škálování nebo Pro důležité obchodní informace s využitím Zvýhodněné hybridní využití Azure a cen rezervovaných kapacit, aby se zachovaly podobné nebo nižší náklady než Premium RS.
 
-### <a name="premium-rs-databases"></a>Databáze úrovně Premium RS
+### <a name="premium-rs-databases"></a>Premium RS databáze
 
-|**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
+|**Pokud aktuálně jste zapnuti...**|**Migrace na srovnatelný vCore...**|**Migrace na srovnatelnou bázi DTU...**|
 |---|---|---|
-|Premium RS 1|Obecné účely 1 vCore (Gen4)|Standard 3|
-|Premium RS 2|Obecné účely, 2 virtuální jádra (Gen4)|Standard 4|
-|Premium RS 4|Virtuální jádra pro obecné účely 4 (Gen4)|Standard 6|
-|Premium RS 6|Virtuální jádra pro obecné účely 6 (Gen4)|Standard 7|
+|Premium RS 1|Pro obecné účely 1 vCore (COMPUTE GEN4 –)|Standard 3|
+|Premium RS 2|Pro obecné účely 2 virtuální jádra (COMPUTE GEN4 –)|Standard 4|
+|Premium RS 4|Pro obecné účely 4 virtuální jádra (COMPUTE GEN4 –)|Standard 6|
+|Premium RS 6|Pro obecné účely 6 virtuální jádra (COMPUTE GEN4 –)|Standard 7|
 
-### <a name="premium-rs-pools"></a>Fondy úrovně Premium RS
+### <a name="premium-rs-pools"></a>Fondy Premium RS
 
-|**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
+|**Pokud aktuálně jste zapnuti...**|**Migrace na srovnatelný vCore...**|**Migrace na srovnatelnou bázi DTU...**|
 |---|---|---|
-|Premium RS pool 125 DTU|Obecné účely 1 vCore (Gen4)|Fond Standard 100 Edtu|
-|Premium RS pool 250 DTU|Obecné účely, 2 virtuální jádra (Gen4)|Jednotky Edtu fondu úrovně Standard 250|
-|Premium RS pool 500 DTU|Virtuální jádra pro obecné účely 4 (Gen4)|Standardní fond 500 Edtu|
-|Premium RS pool 1000 DTU|Virtuální jádra pro obecné účely 8 (Gen4)|Fond Standard 1000 Edtu|
+|Premium RS ve fondu 125 DTU|Pro obecné účely 1 vCore (COMPUTE GEN4 –)|Standardní fond 100 eDTU|
+|Premium RS pool 250 DTU|Pro obecné účely 2 virtuální jádra (COMPUTE GEN4 –)|Standardní fond 250 eDTU|
+|Premium RS ve fondu 500 DTU|Pro obecné účely 4 virtuální jádra (COMPUTE GEN4 –)|Standardní fond 500 eDTU|
+|Premium RS ve fondu 1000 DTU|Pro obecné účely 8 virtuální jádra (COMPUTE GEN4 –)|Standardní fond 1000 eDTU|
 
-## <a name="optimize-savings-and-performance-for-your-io-intensive-workloads"></a>Optimalizace úspory a výkonu pro úlohy náročné na vstupně-výstupních operací
+## <a name="optimize-savings-and-performance-for-your-io-intensive-workloads"></a>Optimalizujte úspory a výkon pro úlohy náročné na v/v.
 
-Doporučujeme migrovat vaše izolované databáze náročné na vstupně-výstupních operací na naše založený na virtuálních jádrech Hyperškálovatelného úroveň, aktuálně ve verzi preview a fondech databáze náročné na vstupně-výstupních operací na naše obecně k dispozici pro důležité obchodní informace úroveň pro ideální kombinaci výkonu a nákladů.  Založený na virtuálních jádrech následující možnosti budou udržovat nebo zvýšit výkon vašich aktuální a mohou ušetřit peníze při kombinaci s programem Azure Hybrid Benefit a vyhrazené kapacity ceny.
+Pro optimální kombinaci výkonu a nákladů doporučujeme migrovat jednotlivé databáze náročné na v/v na naši škálovatelnou úroveň vCore, která je aktuálně ve verzi Preview, a vaše fondy databází s vysokým počtem v/v na naši všeobecně dostupnou Pro důležité obchodní informace úroveň  Následující možnosti založené na vCore budou udržovat nebo zdokonalovat váš aktuální výkon a při kombinaci s Zvýhodněné hybridní využití Azure a cenami za rezervované kapacity se vám můžou ušetřit peníze.
 
-|**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
+|**Pokud aktuálně jste zapnuti...**|**Migrace na srovnatelný vCore...**|**Migrace na srovnatelnou bázi DTU...**|
 |---|---|---|
-|Premium RS 1| VCore Hyperškálovatelného 1 (Gen4) nebo – 1 kritické obchodní vCore (Gen4)|Premium 1|
-|Premium RS 2| Velkokapacitní 2 virtuální jádra (Gen4) nebo kritické obchodní 2 virtuální jádra (Gen4|Premium 2|
-|Premium RS 4| Velkokapacitní 4 virtuální jádra (Gen4) nebo kritické obchodní 4 virtuální jádra (Gen4)|Premium 4
-|Premium RS 6| Velkokapacitní 6 virtuální jádra (Gen4) nebo virtuální jádra pro důležité obchodní 6 (Gen4)|Premium 6|
+|Premium RS 1| VCore 1 (COMPUTE GEN4 –) nebo Pro důležité obchodní informace 1 vCore (COMPUTE GEN4 –)|Premium 1|
+|Premium RS 2| Virtuální jádra (COMPUTE GEN4 –) a Pro důležité obchodní informace 2 virtuální jádra (COMPUTE GEN4 –|Premium 2|
+|Premium RS 4| Virtuální jádra (COMPUTE GEN4 –) a Pro důležité obchodní informace 4 virtuální jádra (COMPUTE GEN4 –)|Premium 4
+|Premium RS 6| Virtuální jádra (COMPUTE GEN4 –) pro škálování na úrovni 6 nebo Pro důležité obchodní informace 6 virtuální jádra (COMPUTE GEN4 –)|Premium 6|
 
-|**Pokud jsou v tuto chvíli zapnuté...**|**Migrace na srovnatelné založený na virtuálních jádrech...**|**Migrace na srovnatelné založený na DTU...**|
+|**Pokud aktuálně jste zapnuti...**|**Migrace na srovnatelný vCore...**|**Migrace na srovnatelnou bázi DTU...**|
 |---|---|---|
-|Premium RS pool 125 DTU|Obchodní důležité 2 virtuální jádra (Gen4)|Jednotky Edtu fondu 125 Premium|
-|Premium RS pool 250 DTU|Obchodní důležité 2 virtuální jádra (Gen4)|Jednotky Edtu fondu 250 Premium|
-|Premium RS pool 500 DTU|Obchodní kritické 4 virtuální jádra (Gen4)|Fond 500 Edtu úrovně Premium|
-|Premium RS pool 1000 DTU|Obchodní kritické 8 virtuálních jader (Gen4)|Jednotky Edtu fondu 1000 Premium|
+|Premium RS ve fondu 125 DTU|Pro důležité obchodní informace 2 virtuální jádra (COMPUTE GEN4 –)|Fond Premium 125 eDTU|
+|Premium RS pool 250 DTU|Pro důležité obchodní informace 2 virtuální jádra (COMPUTE GEN4 –)|Fond Premium 250 eDTU|
+|Premium RS ve fondu 500 DTU|Pro důležité obchodní informace 4 virtuální jádra (COMPUTE GEN4 –)|Fond Premium 500 eDTU|
+|Premium RS ve fondu 1000 DTU|Pro důležité obchodní informace 8 virtuální jádra (COMPUTE GEN4 –)|Fond Premium 1000 eDTU|
 
 ## <a name="take-advantage-of-our-new-offers"></a>Využijte naše nové nabídky
 
-Speciální nabídky, které můžete ušetřit až 80 % oproti ceně licenci, jsou ceny nárok naší úrovně služeb v nákupní model založený na virtuálních jádrech. Pomocí své licence SQL serveru Standard nebo Enterprise edition s aktivním programem Software Assurance ušetřit až 55 % oproti ceně licenci, jsou ceny s [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Můžete zkombinovat zvýhodněné hybridní využití s [Azure SQL Database rezervované kapacity](sql-database-reserved-capacity.md) ceny a ušetřit až 80 % při potvrzení předem na jeden nebo tři roky termín.  Aktivujte výhody pro oba z webu Azure portal ještě dnes.
+Naše úrovně služeb v rámci nákupního modelu založeného na vCore mají nárok na speciální nabídky, které vám můžou ušetřit až 80% oproti licenční ceně. Využijte licence SQL Server Standard nebo Enterprise Edition s aktivním Software Assurance a Ušetřete až 55% oproti licencím, které jsou v [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)k dispozici. Zvýhodněné hybridní využití můžete kombinovat s Azure SQL Databasemi cenami za [rezervované kapacity](sql-database-reserved-capacity.md) a ušetřit až 80%, když se potvrdíte dopředu na jeden nebo tři roky.  Aktivujte si obě výhody ještě dnes z Azure Portal.
 
-Pokud máte nějaké dotazy nebo připomínky týkající se to změnit nebo pokud potřebujete pomoc s migrací, obraťte se na [Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+Pokud máte nějaké dotazy nebo obavy týkající se této změny nebo potřebujete pomoc s migrací, obraťte se na [Společnost Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-## <a name="migration-from-a-premium-rs-service-tier-to-a-service-tier-in-either-the-dtu-or-the-vcore-model"></a>Migrace z úrovně služeb Premium RS na úroveň služby v jednotek DTU nebo modelu virt. jader
+## <a name="migration-from-a-premium-rs-service-tier-to-a-service-tier-in-either-the-dtu-or-the-vcore-model"></a>Migrace z Premium RS úrovně služeb do úrovně služeb v modelu DTU nebo v modelu vCore
 
 ### <a name="migration-of-a-database"></a>Migrace databáze
 
-Migrace databáze z úrovně Premium RS služby vrstvy pro vrstvu služby buď jednotek DTU nebo modelu virt. jader je podobný upgrade a Downgrade mezi úrovní služeb v rámci úrovně služeb Premium RS.
+Migrace databáze z Premium RS úrovně služby na úroveň služby ve službě DTU nebo modelu vCore se podobá upgradu nebo downgrade mezi úrovněmi služeb v Premium RS úrovni služby.
 
-### <a name="using-database-copy-to-convert-a-premium-rs-database-to-a-dtu-based-or-vcore-based-database"></a>Pomocí kopie databáze úrovně Premium RS databázi převést do databáze na základě jednotek DTU nebo založený na virtuálních jádrech
+### <a name="using-database-copy-to-convert-a-premium-rs-database-to-a-dtu-based-or-vcore-based-database"></a>Použití kopírování databáze k převedení databáze Premium RS na databázi založenou na DTU nebo na bázi vCore
 
-Můžete zkopírovat libovolnou databázi s velikostí výpočetní úroveň Premium RS na databázi s velikostí založený na DTU nebo založený na virtuálních jádrech výpočetní bez omezení nebo speciální pořadí úloh, tak dlouho, dokud výpočty velikost cíle podporuje maximální velikost zdrojové databáze. Kopírování databáze vytvoří snímek dat od počáteční čas operace kopírování a neprovede synchronizace dat mezi zdrojem a cílem.
+Do databáze s výpočetní velikostí založenou na DTU nebo vCore se dá zkopírovat jakákoli Premium RS databáze s výpočetní velikostí založenou na DTU nebo bez omezení nebo speciálního pořadí, pokud cílová výpočetní velikost podporuje maximální velikost databáze zdrojové databáze. Kopie databáze vytvoří snímek dat pro počáteční čas operace kopírování a neprovádí synchronizaci dat mezi zdrojem a cílem.
 
 ## <a name="next-steps"></a>Další postup
 
-- Podrobnosti o konkrétní výpočetní prostředky, velikosti a možnosti velikosti úložiště dostupné pro izolované databáze, najdete v části [limity prostředků založený na virtuálních jádrech SQL Database pro izolované databáze](sql-database-vcore-resource-limits-single-databases.md)
-- Podrobnosti o konkrétní výpočetní prostředky, velikosti a možnosti velikosti úložiště dostupné pro elastické fondy, najdete v části [limity pro elastické fondy SQL Database založené na virtuálních jádrech prostředků](sql-database-vcore-resource-limits-elastic-pools.md).
+- Podrobnosti o specifických velikostech výpočtů a možnostech velikosti úložiště, které jsou dostupné pro izolovanou databázi, najdete v tématu [SQL Database omezení prostředků na základě Vcore pro jednotlivé](sql-database-vcore-resource-limits-single-databases.md) databáze.
+- Podrobnosti o specifických velikostech výpočtů a možnostech velikosti úložiště dostupných pro elastické fondy najdete v tématu [SQL Database omezení prostředků na základě Vcore pro elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).

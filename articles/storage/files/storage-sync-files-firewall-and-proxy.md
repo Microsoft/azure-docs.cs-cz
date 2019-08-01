@@ -1,19 +1,18 @@
 ---
 title: Azure File Sync místní bránu firewall a nastavení proxy serveru | Microsoft Docs
 description: Konfigurace místní sítě Azure File Sync
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 33d5be20682c8341932a2a0021ccda27583775bd
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 69f4c767b9fc1da90db021ffb3eb8704983ca69b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335966"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699309"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync propojuje vaše místní servery se soubory Azure a povoluje funkce synchronizace více lokalit a vrstvení cloudu. V takovém případě musí být místní server připojený k Internetu. Správce IT musí určit nejlepší cestu pro server, který bude mít přístup k Azure Cloud Services.
@@ -151,7 +150,7 @@ Seznamy uvedené dříve v tomto dokumentu obsahují adresy URL Azure File Sync 
 
 Nastavením omezení domény pravidla brány firewall může být míra, která zvyšuje zabezpečení. Pokud se tyto konfigurace brány firewall používají, je potřeba mít na paměti, že se přidají adresy URL a v průběhu času se můžou dokonce měnit. Pravidelně kontrolujte Tento článek.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Plánování nasazení služby Azure File Sync](storage-sync-files-planning.md)
 - [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
 - [Monitorování Synchronizace souborů Azure](storage-sync-files-monitoring.md)

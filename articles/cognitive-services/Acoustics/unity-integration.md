@@ -1,7 +1,7 @@
 ---
-title: Integrace s Project Akustika Unity a nasazení
+title: Nasazení a integrace Unity v projektu
 titlesuffix: Azure Cognitive Services
-description: Tento návod popisuje integrace modulu plug-in Akustika Unity projektů ve vašem Unity projektu.
+description: Tento postup vysvětluje integraci modulu plug-in Unity v projektu do vašeho projektu Unity.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,60 +10,61 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 2deddfd4e6c03b53306d8fbab3340dce464158b0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1a90f6102d35dc1a3bb97c840f2955b54f35bbad
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612728"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706647"
 ---
-# <a name="project-acoustics-unity-integration"></a>Integrace s Project Akustika Unity
-Tento návod popisuje integrace modulu plug-in Akustika Unity projektů ve vašem Unity projektu.
+# <a name="project-acoustics-unity-integration"></a>Integrace Unity v projektu
+Tento postup vysvětluje integraci modulu plug-in Unity v projektu do vašeho projektu Unity.
 
 Požadavky na software:
 * [Unity 2018.2 +](https://unity3d.com) pro Windows
-* [Balíček Akustika Unity projektu](https://www.microsoft.com/download/details.aspx?id=57346)
+* [Balíček Unity s akustickými projekty](https://www.microsoft.com/download/details.aspx?id=57346)
 
 ## <a name="import-the-plugin"></a>Import modulu plug-in
-Importujte Akustika UnityPackage do projektu. 
-* V Unity, přejděte na **prostředky > Importovat balíček > vlastní balíček...**
+Importujte akustické UnityPackagey do projektu. 
+* V Unity jděte na **assets > Import balíčku > vlastní balíček...**
 
-    ![Snímek obrazovky s Unity importovat balíček nabídky](media/import-package.png)  
+    ![Snímek nabídky balíčku importu Unity](media/import-package.png)  
 
-* Zvolte **ProjectAcoustics.unitypackage**
+* Vyberte **ProjectAcoustics. unitypackage**
 
-Pokud importujete modul plug-in do existujícího projektu, váš projekt už můžete mít **mcs.rsp** soubor v kořenové složce projektu, který určuje možnosti kompilátoru C#. Bude potřeba sloučit obsah tohoto souboru se souborem mcs.rsp, která se dodává s modulem plug-in Akustika projektu.
+Pokud importujete modul plug-in do existujícího projektu, projekt již může mít soubor **MCS. rsp** v kořenovém adresáři projektu, který určuje možnosti C# kompilátoru. Obsah tohoto souboru bude nutné sloučit se souborem MCS. rsp, který je součástí modulu plug-in s akustickými a projektovým modulem.
 
 ## <a name="enable-the-plugin"></a>Povolení modulu plug-in
-Která má označení vytvoření část toolkit Akustika vyžaduje verzi skriptovací modul runtime .NET 4.x. Import balíčku se aktualizovat nastavení Unity Playeru. Restartujte Unity pro toto nastavení se projeví.
+Zanesli část akustického množství Toolkit vyžaduje verzi modulu runtime skriptování .NET 4. x. Při importu balíčku se aktualizují nastavení přehrávače Unity. Restartujte Unity, aby se toto nastavení projevilo.
 
-![Panel nastavení snímku obrazovky z Unity Playeru](media/player-settings.png)
+![Snímek obrazovky s panelem nastavení přehrávače Unity](media/player-settings.png)
 
-![Snímek obrazovky s Unity Playeru nastavení panelu s vybrané rozhraní .NET 4.5](media/net45.png)
+![Snímek obrazovky s panelem nastavení přehrávače Unity s vybraným .NET 4,5](media/net45.png)
 
-## <a name="set-up-audio-dsp"></a>Nastavit DSP zvuku
-Projekt Akustika zahrnuje zvuku runtime DSP, která se integruje do architektury spatializer zvukového modulu Unity. Obsahuje prostorový zvuk na základě HRTF i posouvání. Povolit DSP Akustika projekt tak, že otevřete nastavení zvuku Unity pomocí **Upravit > Nastavení projektu > zvuku**, pak vyberete **projektu Akustika** jako **modulu plug-in Spatializer** pro váš projekt. Ujistěte se, že **velikost vyrovnávací paměti DSP** je nastavena na výkon.
+## <a name="set-up-audio-dsp"></a>Nastavení DSP zvukového zařízení
+Akustické projekty zahrnují rozhraní DSP pro modul runtime zvuku, které se integruje do spatializer architektury zvukového modulu Unity. Zahrnuje jak na základě HRTF, tak pro posouvání. Povolte, aby projekt byl v důsledku akustického přenosu, a to tak, že otevřete nastavení zvuku Unity pomocí možnosti **upravit > nastavení projektu > zvuk**a pak jako **modul plug-in Spatializer** pro svůj projekt vyberete **akustické projekty** . Ujistěte se, že **Velikost vyrovnávací paměti DSP** je nastavená na nejlepší výkon.
 
-![Snímek obrazovky nastavení projektů Unity panel](media/project-settings.png)  
+![Snímek obrazovky s panelem nastavení projektu Unity](media/project-settings.png)  
 
-![Panel nastavení Spatializer Unity – snímek obrazovky s projektu Akustika spatializer vybrané](media/choose-spatializer.png)
+![Snímek obrazovky s panelem nastavení Spatializer Unity s možnostmi akustického projektu Spatializer](media/choose-spatializer.png)
 
-Pak otevřete Mixer zvuku (**okna > zvuk Mixer**). Ujistěte se, že máte alespoň jeden Mixer, se v jedné skupině. Pokud ne, klikněte na tlačítko "+" napravo od **míchání**. Klikněte pravým tlačítkem na konec kanálu pruhu v části efekty a přidejte **projektu Akustika Mixer** vliv. Všimněte si, že je podporován pouze jeden projekt Akustika Mixer najednou.
+Pak otevřete směšovač zvuku (**okno > směšovač zvuku**). Ujistěte se, že máte aspoň jeden směšovač s jednou skupinou. Pokud to neuděláte, klikněte na tlačítko "+" napravo od **směšovačů**. Pravým tlačítkem myši klikněte na dolní část pruhu kanálu v části efekty a přidejte efekt **směšovače akustického projektu** . Mějte na paměti, že v jednu chvíli je podporovaný jenom jeden směšovač akustického projektu.
 
-![Snímek obrazovky z Unity zvuk Mixer hostování mixer Akustika projektu](media/audio-mixer.png)
+![Snímek obrazovky s směšovačem zvukových stop v Unity pro mixer](media/audio-mixer.png)
 
-## <a name="enable-acoustics-on-sound-sources"></a>Povolit Akustika na zvukové zdroje
-Vytvoření zdroje zvuku. Klikněte na zaškrtávací políčko v dolní části AudioSource inspector panelů, s upozorněním **Spatialize**. Ujistěte se, že **prostorových Blendu** je nastavena na úplnou 3D.  
+## <a name="enable-acoustics-on-sound-sources"></a>Povolit akustické zvuky na zdrojích zvuku
+Vytvořte zdroj zvuku. Klikněte na zaškrtávací políčko v dolní části panelu inspektora AudioSource, který říká **Spatialize**. Ujistěte se, že je **prostorový Blend** nastavený na plný 3D.  
 
-![Snímek obrazovky s Unity zvuk zdroj panel](media/audio-source.png)
+![Snímek panelu zdroje zvuku Unity](media/audio-source.png)
 
 ## <a name="enable-acoustic-design"></a>Povolit akustický návrh
-Připojit skript **AcousticsAdjust** ke zdroji zvuku ve scéně umožňující parametrů návrhu další zdroje, kliknutím na **přidat součást** a zvolíte **skripty > Upravit Akustika** :
+Připojte skript **AcousticsAdjust** ke zdroji zvuku ve scéně, abyste mohli povolit další parametry pro návrh zdrojového kódu, a to tak, že kliknete na **Přidat součást** a zvolíte skripty > nastavovat **zvukové úpravy**:
 
-![Snímek obrazovky s Unity AcousticsAdjust skriptu](media/acoustics-adjust.png)
+![Snímek obrazovky s AcousticsAdjust skriptem Unity](media/acoustics-adjust.png)
 
 ## <a name="next-steps"></a>Další postup
-* [Vytvoření vašeho scény s Akustika projektu pro Unity](unity-baking.md)
-* [Vytvoření účtu služby Azure Batch](create-azure-account.md) k vytvoření vašeho scény v cloudu
-* Prozkoumejte [proces návrhu projektu Akustika Unity](unity-workflow.md).
+* [Zanesli své scény díky akustickým projektům pro Unity](unity-baking.md)
+* [Vytvoření účtu Azure Batch](create-azure-account.md) k zaneslií scény v cloudu
+* Prozkoumejte [proces návrhu Unity s akustickými projekty](unity-workflow.md).
 

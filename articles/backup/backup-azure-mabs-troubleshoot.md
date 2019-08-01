@@ -1,18 +1,19 @@
 ---
 title: Odstraňování potíží Azure Backup Serveru
 description: Řešení potíží s instalací, registrací Azure Backup Server a zálohováním a obnovením aplikačních úloh.
-author: srinathvasireddy
-manager: sivan
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: srinathv
-ms.openlocfilehash: f601901ed0cb90421dbf7254d657ef80e1769541
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: c08acaf65cd42abd9db97fab1267ce5628595b78
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466092"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689274"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -48,7 +49,7 @@ Než začnete řešit potíže s Microsoft Azure Backupm serverem (MABS), doporu
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Zálohovat | Vytvoření bodu obnovení online se nezdařilo | **Chybová zpráva**: Agent Windows Azure Backup nemohl vytvořit snímek vybraného svazku. <br> **Alternativní řešení**: Zkuste zvětšit místo ve svazku repliky a bodu obnovení.<br> <br> **Chybová zpráva**: Agent Azure Backup Windows se nemůže připojit ke službě OBEngine. <br> **Alternativní řešení**: Ověřte, že OBEngine existuje v seznamu spuštěných služeb v počítači. Pokud služba OBEngine není spuštěná, spusťte službu OBEngine pomocí příkazu net start OBEngine. <br> <br> **Chybová zpráva**: Šifrovací heslo pro tento server není nastavené. Nakonfigurujte prosím šifrovací heslo. <br> **Alternativní řešení**: Zkuste nakonfigurovat šifrovací heslo. Pokud dojde k chybě, proveďte následující kroky: <br> <ol><li>Ověřte, zda existuje pomocné umístění. Toto je umístění, které je uvedeno v registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config**, kde název **ScratchLocation** by měl existovat.</li><li> Pokud existuje pomocné umístění, zkuste ho znovu zaregistrovat pomocí starého přístupového hesla. *Pokaždé, když nakonfigurujete šifrovací heslo, uložte ho na bezpečné místo.*</li><ol>|
+| Zálohovat | Vytvoření bodu obnovení online se nezdařilo | **Chybová zpráva:** Agent Windows Azure Backup nemohl vytvořit snímek vybraného svazku. <br> **Alternativní řešení**: Zkuste zvětšit místo ve svazku repliky a bodu obnovení.<br> <br> **Chybová zpráva:** Agent Azure Backup Windows se nemůže připojit ke službě OBEngine. <br> **Alternativní řešení**: Ověřte, že OBEngine existuje v seznamu spuštěných služeb v počítači. Pokud služba OBEngine není spuštěná, spusťte službu OBEngine pomocí příkazu net start OBEngine. <br> <br> **Chybová zpráva:** Šifrovací heslo pro tento server není nastavené. Nakonfigurujte prosím šifrovací heslo. <br> **Alternativní řešení**: Zkuste nakonfigurovat šifrovací heslo. Pokud dojde k chybě, proveďte následující kroky: <br> <ol><li>Ověřte, zda existuje pomocné umístění. Toto je umístění, které je uvedeno v registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config**, kde název **ScratchLocation** by měl existovat.</li><li> Pokud existuje pomocné umístění, zkuste ho znovu zaregistrovat pomocí starého přístupového hesla. *Pokaždé, když nakonfigurujete šifrovací heslo, uložte ho na bezpečné místo.*</li><ol>|
 
 ## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>Zadané přihlašovací údaje trezoru se liší od trezoru, na který je server zaregistrován.
 
@@ -99,7 +100,7 @@ Než začnete řešit potíže s Microsoft Azure Backupm serverem (MABS), doporu
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
 | Zálohovat | Při běhu úlohy došlo k neočekávané chybě. Zařízení není připravené. | **Pokud Doporučená akce, která je zobrazená v produktu, nefunguje, proveďte následující kroky:** <br> <ul><li>Nastavte prostor úložiště stínové kopie na neomezený pro položky ve skupině ochrany a poté spusťte kontrolu konzistence.<br></li> ANI <li>Zkuste odstranit existující skupinu ochrany a vytvořit několik nových skupin. Každá nová skupina ochrany by měla obsahovat jednotlivou položku.</li></ul> |
-| Zálohovat | Pokud zálohujete pouze stav systému, ověřte, zda je v chráněném počítači dostatek volného místa pro uložení zálohy stavu systému. | <ol><li>Ověřte, že je na chráněném počítači nainstalovaná Zálohování Windows Serveru.</li><li>Ověřte, zda je v chráněném počítači dostatek místa pro stav systému. Nejjednodušší způsob, jak to ověřit, je přejít na chráněný počítač, otevřít Zálohování Windows Serveru, kliknout na výběr a pak vybrat BMR. Uživatelské rozhraní pak oznamuje, kolik místa je potřeba. Otevřete  > možnost > **plán zálohování místních** **záloh**WSB**Vybrat nastavení** zálohování úplný Server (velikost se zobrazí). >  >  Tuto velikost použijte k ověření.</li></ol>
+| Zálohovat | Pokud zálohujete pouze stav systému, ověřte, zda je v chráněném počítači dostatek volného místa pro uložení zálohy stavu systému. | <ol><li>Ověřte, že je na chráněném počítači nainstalovaná Zálohování Windows Serveru.</li><li>Ověřte, zda je v chráněném počítači dostatek místa pro stav systému. Nejjednodušší způsob, jak to ověřit, je přejít na chráněný počítač, otevřít Zálohování Windows Serveru, kliknout na výběr a pak vybrat BMR. Uživatelské rozhraní pak oznamuje, kolik místa je potřeba. Otevřete > možnost > **plán zálohování místních** **záloh**WSB**Vybrat nastavení** zálohování úplný Server (velikost se zobrazí). >  >  Tuto velikost použijte k ověření.</li></ol>
 | Zálohovat | Selhání zálohování pro BMR | Pokud je velikost BMR velká, přesuňte některé soubory aplikace na jednotku operačního systému a zkuste to znovu. |
 | Zálohovat | Možnost znovu nastavit ochranu virtuálního počítače VMware na novém serveru Microsoft Azure Backup nezobrazuje, jak je možné přidat. | Vlastnosti VMware jsou odkazovaly na starou a vyřazenou instanci serveru Microsoft Azure Backup. K vyřešení tohoto problému:<br><ol><li>V VCenter (ekvivalent SC-VMM), přejít na kartu **Souhrn** a pak na **vlastní atributy**.</li>  <li>Odstraňte starý název Microsoft Azure Backup serveru z hodnoty **DPMServer** .</li>  <li>Vraťte se na nový server Microsoft Azure Backup a upravte PG.  Po výběru tlačítka **aktualizovat** se virtuální počítač zobrazí se zaškrtávacím políčkem, jako je k dispozici pro přidání do ochrany.</li></ol> |
 | Zálohovat | Při přístupu k souborům nebo sdíleným složkám došlo k chybě. | Zkuste upravit nastavení antivirového programu podle návrhu v článku na webu TechNet [Spusťte antivirový software na serveru DPM](https://technet.microsoft.com/library/hh757911.aspx).|
@@ -137,7 +138,7 @@ Chybová zpráva | Doporučená akce |
 -- | --
 Snímek zdrojového svazku se nezdařil, protože metadata v replice nejsou platná. | Vytvořte bod obnovení disku tohoto zdroje dat a zkuste znovu spustit online zálohování.
 
-### <a name="cbpsourcesnapshotfailedreplicainconsistent"></a>CBPSourceSnapshotFailedReplicaInconsistent
+### <a name="cbpsourcesnapshotfailedreplicainconsistent"></a>Chyba CBPSourceSnapshotFailedReplicaInconsistent
 
 Chybová zpráva | Doporučená akce |
 -- | --

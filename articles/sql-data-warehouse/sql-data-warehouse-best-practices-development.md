@@ -1,8 +1,8 @@
 ---
-title: Osvědčené postupy pro vývoj pro Azure SQL Data Warehouse | Dokumentace Microsoftu
+title: Osvědčené postupy vývoje pro Azure SQL Data Warehouse | Microsoft Docs
 description: Doporučení a osvědčené postupy, které byste měli znát, když budete vyvíjet řešení pro službu Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,27 +10,27 @@ ms.subservice: development
 ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 76297be79fca62b1f2f777f9cba4a0a8fe134768
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7e0ae5e6159ae0ab4d098d717f433d2ab63770d4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851639"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68479723"
 ---
-# <a name="development-best-practices-for-azure-sql-data-warehouse"></a>Osvědčené postupy pro vývoj pro Azure SQL Data Warehouse
-Tento článek popisuje pokyny a osvědčené postupy při vývoji řešení vašeho datového skladu. 
+# <a name="development-best-practices-for-azure-sql-data-warehouse"></a>Osvědčené postupy vývoje pro Azure SQL Data Warehouse
+Tento článek popisuje doprovodné materiály a osvědčené postupy při vývoji řešení datového skladu. 
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Snižte náklady pomocí pozastavení a škálování
 Další informace o snižování nákladů prostřednictvím pozastavování a škálování najdete v tématu [Správa výpočetních služeb](sql-data-warehouse-manage-compute-overview.md). 
 
 
 ## <a name="maintain-statistics"></a>Udržujte statistiky
-Zkontrolujte, že aktualizujete vašich statistik denně nebo po každém načtení.  Vždy existují kompromisy mezi výkonem a náklady na vytvoření a aktualizaci statistik. Pokud si myslíte, že údržba všech vašich statistik trvá příliš dlouho, možná byste měli pečlivěji vybírat sloupce, které mají statistiky, nebo sloupce, které vyžadují časté aktualizace.  Například můžete chtít denně aktualizovat sloupce s datem, do kterých se mohou přidávat nové hodnoty. **Nejvíce výhod získáte tak, že budete mít statistiky nad sloupci používanými ve spojeních, sloupci používanými v klauzuli WHERE a sloupci používanými v příkazu GROUP BY.**
+Ujistěte se, že vaše statistiky aktualizujete denně nebo po každém zatížení.  Vždy existují kompromisy mezi výkonem a náklady na vytvoření a aktualizaci statistik. Pokud si myslíte, že údržba všech vašich statistik trvá příliš dlouho, možná byste měli pečlivěji vybírat sloupce, které mají statistiky, nebo sloupce, které vyžadují časté aktualizace.  Například můžete chtít denně aktualizovat sloupce s datem, do kterých se mohou přidávat nové hodnoty. **Nejvíce výhod získáte tak, že budete mít statistiky nad sloupci používanými ve spojeních, sloupci používanými v klauzuli WHERE a sloupci používanými v příkazu GROUP BY.**
 
 Viz také [Správa statistik tabulek][Manage table statistics], [CREATE STATISTICS][CREATE STATISTICS], [UPDATE STATISTICS][UPDATE STATISTICS].
 
 ## <a name="hash-distribute-large-tables"></a>Distribuujte velké tabulky pomocí hodnot hash
-Ve výchozím nastavení jsou tabulky distribuované metodou kruhového dotazování.  To umožňuje uživatelům jednoduše začít vyvářet tabulky, aniž by se museli rozhodovat, jakým způsobem se mají jejich tabulky distribuovat.  Výkon tabulek kruhového dotazování může být pro některé úlohy dostatečný, ale ve většině případů bude lépe fungovat výběr distribučního sloupce.  Nejběžnějším příkladem, kdy tabulka distribuovaná podle sloupce zdaleka překoná tabulku kruhového dotazování, je spojení dvou velkých tabulek faktů.  Například pokud máte tabulku objednávek, která se distribuuje podle sloupce id_objednavky a tabulku transakcí, která se také distribuuje podle sloupce id_objednavky, a provedete spojení tabulky objednávek s tabulkou transakcí podle sloupce id_objednavky, z dotazu se stane předávací dotaz, to znamená, že eliminujeme operace přesunu dat.  Méně kroků znamená rychlejší dotaz.  Méně přesunů dat také přispívá ke zrychlení dotazů.  Pouze ji zjednodušené toto vysvětlení. Při načítání distribuované tabulky se ujistěte, že příchozí data nejsou seřazená podle distribučního klíče, zpomalilo by to načítání.  Níže najdete odkazy na mnohem podrobnější informace o tom, jak výběr distribučního sloupce může zvýšit výkon, a jak nadefinovat distribuovanou tabulku v klauzuli WITH příkazu CREATE TABLES.
+Ve výchozím nastavení jsou tabulky distribuované metodou kruhového dotazování.  To umožňuje uživatelům jednoduše začít vyvářet tabulky, aniž by se museli rozhodovat, jakým způsobem se mají jejich tabulky distribuovat.  Výkon tabulek kruhového dotazování může být pro některé úlohy dostatečný, ale ve většině případů bude lépe fungovat výběr distribučního sloupce.  Nejběžnějším příkladem, kdy tabulka distribuovaná podle sloupce zdaleka překoná tabulku kruhového dotazování, je spojení dvou velkých tabulek faktů.  Například pokud máte tabulku objednávek, která se distribuuje podle sloupce id_objednavky a tabulku transakcí, která se také distribuuje podle sloupce id_objednavky, a provedete spojení tabulky objednávek s tabulkou transakcí podle sloupce id_objednavky, z dotazu se stane předávací dotaz, to znamená, že eliminujeme operace přesunu dat.  Méně kroků znamená rychlejší dotaz.  Méně přesunů dat také přispívá ke zrychlení dotazů.  Toto vysvětlení pouze vyškrábance plochu. Při načítání distribuované tabulky se ujistěte, že příchozí data nejsou seřazená podle distribučního klíče, zpomalilo by to načítání.  Níže najdete odkazy na mnohem podrobnější informace o tom, jak výběr distribučního sloupce může zvýšit výkon, a jak nadefinovat distribuovanou tabulku v klauzuli WITH příkazu CREATE TABLES.
 
 Viz také [Přehled tabulek][Table overview], [Distribuce tabulky][Table distribution], [Výběr distribuce tabulky][Selecting table distribution], [CREATE TABLE][CREATE TABLE], [CREATE TABLE AS SELECT][CREATE TABLE AS SELECT].
 
@@ -50,7 +50,7 @@ Při definování DDL můžete použitím nejmenšího datového typu, který po
 Viz také [Přehled tabulek][Table overview], [Typy tabulkových dat][Table data types], [CREATE TABLE][CREATE TABLE].
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Optimalizujte clusterované tabulky columnstore
-Clusterované indexy columnstore jsou jedním z nejefektivnějších způsobů ukládání dat ve službě SQL Data Warehouse.  Vy výchozím nastavení se tabulky ve službě SQL Data Warehouse vytváří jako clusterované columnstore.  Pokud chcete dosáhnout co nejlepšího výkonu dotazů na tabulky columnstore, je důležité mít kvalitní segmenty.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Kvalitu segmentů lze změřit podle počtu řádků v komprimované skupině řádků.  V části [Příčiny nekvalitních indexů columnstore][Causes of poor columnstore index quality] v článku [Indexy tabulky][Table indexes] najdete podrobné pokyny k zjišťování a zlepšování kvality segmentů clusterovaných tabulek columnstore.  Protože columnstore vysoce kvalitní segmenty, které jsou důležité, je vhodné použít ID, které jsou v střední nebo velké třídy prostředků pro načítání dat uživatele. Použití nižší [jednotkách datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) znamená, že chcete přiřadit větší třídu prostředků do vašeho uživatele načítání.
+Clusterované indexy columnstore jsou jedním z nejefektivnějších způsobů ukládání dat ve službě SQL Data Warehouse.  Vy výchozím nastavení se tabulky ve službě SQL Data Warehouse vytváří jako clusterované columnstore.  Pokud chcete dosáhnout co nejlepšího výkonu dotazů na tabulky columnstore, je důležité mít kvalitní segmenty.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Kvalitu segmentů lze změřit podle počtu řádků v komprimované skupině řádků.  V části [Příčiny nekvalitních indexů columnstore][Causes of poor columnstore index quality] v článku [Indexy tabulky][Table indexes] najdete podrobné pokyny k zjišťování a zlepšování kvality segmentů clusterovaných tabulek columnstore.  Vzhledem k tomu, že jsou důležité segmenty columnstore s vysokou kvalitou, je vhodné použít ID uživatelů, která jsou ve střední nebo velké třídě prostředků pro načítání dat. Použití nižších [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) znamená, že chcete uživateli, který načítá, přiřadit větší třídu prostředků.
 
 Protože tabulky columnstore zpravidla nebudou vkládat data do komprimovaného segmentu columnstore, dokud v něm nebude více než 1 milion řádků na tabulku, a každá tabulka služby SQL Data Warehouse je rozdělená na 60 tabulek, obecně platí, že tabulky columnstore nepřináší dotazům žádné výhody, pokud tabulka nemá alespoň 60 milionů řádků.  Pro tabulky s méně než 60 miliony řádků může být použití indexu columnstore zbytečné.  Ale také to nemusí vadit.  Kromě toho, pokud svá data dělíte, pamatujte na to, že každý oddíl musí mít alespoň 1 milion řádků, abyste využili výhod clusterovaného indexu columnstore.  Pokud má tabulka 100 oddílů, bude muset mít alespoň 6 miliard řádků, abyste využili výhod clusterovaného úložiště sloupců (60 distribucí × 100 oddílů × 1 milion řádků).  Pokud vaše tabulka v tomto příkladu neobsahuje 6 miliard řádků, buď snižte počet oddílů, nebo místo ní zvažte použití tabulky haldy.  Můžete také experimentovat, abyste zjistili, jestli pomocí tabulky haldy se sekundárními indexy dosáhnete lepšího výkonu než s tabulkou columnstore.
 
@@ -59,7 +59,7 @@ Při dotazování tabulky columnstore budou příkazy pracovat rychleji, pokud v
 Viz také [Indexy tabulky][Table indexes], [Průvodce indexy columnstore][Columnstore indexes guide], [Obnovení indexů columnstore][Rebuilding columnstore indexes].
 
 ## <a name="next-steps"></a>Další postup
-Pokud jste v tomto článku nenašli, co jste hledali, zkuste použít „Hledání dokumentů“ v levé části této stránky k vyhledávání ve všech dokumentech služby Azure SQL Data Warehouse.  [Fórum pro Azure SQL Data Warehouse] [ Azure SQL Data Warehouse MSDN Forum] je místo, kde můžete pokládat otázky ostatním uživatelům a do skupiny produktů SQL Data Warehouse.  Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  Pokud dáváte přednost pokládání otázek na Stack Overflow, máme také [Fórum pro Azure SQL Data Warehouse na Stack Overflow][Azure SQL Data Warehouse Stack Overflow Forum].
+Pokud jste v tomto článku nenašli, co jste hledali, zkuste použít „Hledání dokumentů“ v levé části této stránky k vyhledávání ve všech dokumentech služby Azure SQL Data Warehouse.  [Fórum Azure SQL Data Warehouse][Azure SQL Data Warehouse MSDN Forum] je místo, kde můžete klást otázky ostatním uživatelům a do SQL Data Warehouse skupiny produktů.  Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  Pokud dáváte přednost pokládání otázek na Stack Overflow, máme také [Fórum pro Azure SQL Data Warehouse na Stack Overflow][Azure SQL Data Warehouse Stack Overflow Forum].
 
 Nakonec můžete použít stránku [Zpětná vazba k službě Azure SQL Data Warehouse][Azure SQL Data Warehouse Feedback] k podání žádostí o funkce.  Přidáním vlastních žádostí nebo hlasováním pro ostatní žádosti nám pomůžete určit prioritu funkcí.
 

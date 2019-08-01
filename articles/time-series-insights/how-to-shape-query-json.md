@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy pro strukturování JSON v dotazech Azure Time Series Insights | Dokumentace Microsoftu
-description: Zjistěte, jak ke zlepšení efektivity dotazů Azure Time Series Insights.
+title: Osvědčené postupy pro tvarování JSON v Azure Time Series Insights dotazy | Microsoft Docs
+description: Přečtěte si, jak vylepšit efektivitu dotazů Azure Time Series Insights.
 services: time-series-insights
 author: ashannon7
 manager: cshankar
@@ -9,53 +9,53 @@ ms.topic: article
 ms.date: 05/09/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 089285637bb740fea47f1fd07de0906dfe46662b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 421e25570cd4c4495769530e4072cd8e0219f752
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244462"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666262"
 ---
-# <a name="shape-json-to-maximize-query-performance"></a>Tvar JSON pro zajištění maximálního výkonu dotazů 
+# <a name="shape-json-to-maximize-query-performance"></a>Formát JSON obrazce pro maximalizaci výkonu dotazů 
 
-Tento článek obsahuje pokyny o tom, jak tvaru JSON pro maximalizaci efektivity vašich dotazů Azure Time Series Insights.
+V tomto článku najdete pokyny k tomu, jak můžete tvarovat JSON a maximalizovat efektivitu vašich Azure Time Series Insights dotazů.
 
 ## <a name="video"></a>Video
 
-### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>Přečtěte si osvědčené postupy pro strukturování JSON podle svých potřeb úložiště.</br>
+### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>Naučte se osvědčené postupy pro tvarování formátu JSON, abyste splnili požadavky na úložiště.</br>
 
 > [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
 ## <a name="best-practices"></a>Osvědčené postupy
-Představte si, jak odesílat události do služby Time Series Insights. Konkrétně můžete vždy:
+Zamyslete se nad tím, jak odesíláte události do Time Series Insights. Konkrétně je to vždy:
 
 1. co možná posílat data přes síť.
-1. Zajistěte, aby že vaše data uložená způsobem tak, aby bylo možné provádět agregace, které jsou vhodné pro váš scénář.
-1. Ujistěte se, že není narazíte na omezení maximální vlastnost Time Series Insights:
+1. Ujistěte se, že vaše data jsou ukládána způsobem, aby bylo možné provádět agregace vhodné pro váš scénář.
+1. Ujistěte se, že nedosáhnete Time Series Insights maximálních limitů vlastností pro:
    - 600 vlastnosti (sloupce) pro prostředí S1.
-   - 800 vlastnosti (sloupce) pro S2 prostředí.
+   - 800 vlastnosti (sloupce) pro prostředí S2
 
-Následující pokyny k pomáhá zajistit, je to možné dotazy vracely co nejlepší:
+Následující doprovodné materiály pomáhají zajistit nejlepší možný výkon dotazů:
 
-1. Nepoužívejte dynamické vlastnosti, jako je například Identifikátor značky, jako název vlastnosti. Toto použití přispívá k dosažení limitu maximální vlastnosti.
-1. Neposílat zbytečné vlastnosti. Pokud vlastnost dotazu není povinný, je nejlepší odesláním. Tímto způsobem se vyhnete omezení úložiště.
-1. Použití [odkazují na data](time-series-insights-add-reference-data-set.md) se odesílání statických dat přes síť.
-1. Sdílení vlastností dimenze mezi více událostí k odesílání dat přes síť efektivněji.
-1. Nepoužívejte vnoření hloubkové pole. Time Series Insights podporuje až dvě úrovně vnořená pole, které obsahují objekty. Time Series Insights sloučí do více událostí pomocí vlastností dvojice pole ve zprávách.
-1. Pokud jenom pár opatření existovat pro všechny nebo většina události, je lepší odesílat tyto míry jako samostatné vlastnosti v rámci stejného objektu. Odesláním samostatně snižuje počet událostí a může zlepšit výkon dotazů, protože je třeba zpracovat méně událostí. Po několika měr se odesílá jako hodnoty v jedné vlastnosti minimalizuje možnost dosažení limitu maximální vlastnost.
+1. Nepoužívejte dynamické vlastnosti, jako je například ID značky, jako název vlastnosti. Toto použití přispívá k dosažení maximálního limitu vlastností.
+1. Neposílat zbytečné vlastnosti. Pokud se vlastnost dotazu nepožaduje, je vhodné ji Neodesílat. Tímto způsobem se vyhnete omezením úložiště.
+1. Použijte [referenční data](time-series-insights-add-reference-data-set.md) , abyste se vyhnuli posílání statických dat přes síť.
+1. Sdílejte vlastnosti dimenze mezi více událostmi, aby bylo možné data v síti rychleji posílat efektivněji.
+1. Nepoužívejte vnoření hloubkové pole. Time Series Insights podporuje až dvě úrovně vnořených polí, která obsahují objekty. Time Series Insights sloučí pole ve zprávách do více událostí s páry hodnot vlastností.
+1. Pokud jenom pár opatření existovat pro všechny nebo většina události, je lepší odesílat tyto míry jako samostatné vlastnosti v rámci stejného objektu. Jejich odeslání samostatně snižuje počet událostí a může zlepšit výkon dotazů, protože je potřeba zpracovat méně událostí. Když existuje několik měr, jejich odeslání jako hodnot do jedné vlastnosti minimalizuje možnost dosažení maximálního limitu vlastností.
 
-## <a name="example-overview"></a>Základní informace o ukázkovém
+## <a name="example-overview"></a>Příklad přehledu
 
-Následující dva příklady ukazují, jak odesílat události, abyste měli na očích předchozí doporučení. Po každý příklad vidíte, jak byly použity doporučení.
+Následující dva příklady ukazují, jak odeslat události pro zvýraznění předchozích doporučení. Podle každého příkladu uvidíte, jak se doporučení používala.
 
-V příkladech jsou založené na scénáři, kde více zařízení odesílají měření nebo signálů. Tok rychlost, modul ropy přetížení, teploty a vlhkosti, může být měření nebo signálů. V prvním příkladu existuje několik měření napříč všemi zařízeními. Druhý příklad má mnoho zařízení a jednotlivá zařízení odesílá mnoho jedinečný měření.
+Příklady jsou založeny na scénáři, ve kterém více zařízení odesílá měření nebo signály. Měření nebo signály mohou být průtokové rychlosti, tlak v oleji, teplota a vlhkost v motoru. V prvním příkladu je několik měření napříč všemi zařízeními. Druhý příklad obsahuje mnoho zařízení a každé zařízení odesílá mnoho jedinečných měření.
 
-## <a name="scenario-one-only-a-few-measurements-exist"></a>Scénář č. 1: Existuje pouze několik měření
+## <a name="scenario-one-only-a-few-measurements-exist"></a>Scénář 1: Existuje pouze několik měření.
 
 > [!TIP]
-> Doporučujeme odeslat každý měření nebo signál jako samostatné property nebo column.
+> Doporučujeme odeslat každé měření nebo signál jako samostatnou vlastnost nebo sloupec.
 
-V následujícím příkladu je do jedné zprávy služby Azure IoT Hub, kde vnější pole obsahuje sdílený oddíl běžných hodnot dimenzí. Vnější pole používá referenčních dat ke zvýšení efektivity zprávy. Referenční data obsahuje metadata zařízení, která se nemění podle každé události, ale pro analýzu dat poskytuje vhodné vlastnosti. Dávkování běžné hodnoty dimenze a použití odkaz, který data uloží v bajtech odeslaných přenosu, který představuje zprávu efektivnější.
+V následujícím příkladu je k dispozici jedna zpráva Azure IoT Hub, kde vnější pole obsahuje sdílený oddíl běžných hodnot dimenzí. Vnější pole používá referenční data ke zvýšení efektivity zprávy. Referenční data obsahují metadata zařízení, která se při každé události nemění, ale poskytují užitečné vlastnosti pro analýzu dat. Dávkování běžných hodnot dimenzí a využívání referenčních dat se ukládá v bajtech odesílaných po síti, což usnadňuje zpracování zprávy.
 
 Příklad datové části JSON:
 
@@ -88,33 +88,33 @@ Příklad datové části JSON:
 ]
 ```
 
-* Referenční tabulky dat, který má klíčovou vlastnost **deviceId**:
+* Tabulka referenčních dat, která má klíčovou vlastnost **deviceId**:
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
-   | FXXX | ŘÁDEK\_DAT | EVROPA |
-   | FRRR | ŘÁDEK\_DAT | USA |
+   | FXXX | DATA\_ŘÁDKU | EVROPA |
+   | FYYY | DATA\_ŘÁDKU | USA |
 
-* Series Insights události tabulka doby, po sloučení:
+* Time Series Insights tabulka událostí po sloučení:
 
    | deviceId | messageId | deviceLocation | timestamp | řada. Míra tok ft3/s | řada. Modul ropy tlak psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | ŘÁDEK\_DAT | EVROPA | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
-   | FXXX | ŘÁDEK\_DAT | EVROPA | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
-   | FRRR | ŘÁDEK\_DAT | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
+   | FXXX | DATA\_ŘÁDKU | EVROPA | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
+   | FXXX | DATA\_ŘÁDKU | EVROPA | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
+   | FYYY | DATA\_ŘÁDKU | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
-Poznámky k těmito dvěma tabulkami:
+Poznámky k těmto dvěma tabulkám:
 
-- **DeviceId** sloupec slouží jako záhlaví sloupce pro různá zařízení v park. Aby se ID zařízení hodnota názvu vlastnosti omezuje celkový počet zařízení, která chcete 595 (pro S1 prostředí) nebo 795 (pro S2 prostředí) s 5 sloupci.
-- Příklad, značku a model informace jsou vyhnout zbytečné vlastnosti. Protože vlastnosti nesmí být dotazována v budoucnu, jejich odstranění umožňuje lepší sítě a efektivitu úložiště.
-- Referenční data slouží k omezení počtu bajtů přenesených v síti. Dva atributy **messageId** a **deviceLocation** se propojují s použitím klíčová vlastnost **deviceId**. Tato data se propojuje se telemetrická data v době příchozího přenosu dat a pak uloženy v Time Series Insights pro dotazování.
-- Používají se dvě vrstvy vnoření, což je maximální množství vnoření podporuje Time Series Insights. Je důležité, aby se zabránilo hluboce vnořených polí.
-- Míry jsou odeslat jako samostatné vlastnosti v rámci stejného objektu, protože několika měr. Tady **řady. Tok míra psi** a **řady. Modul ropy tlak ft3 za sekundu** jedinečných sloupců.
+- Sloupec **deviceId** slouží jako záhlaví sloupce pro různá zařízení v rámci loďstva. Když hodnota deviceId nastaví svůj název vlastní vlastnosti, omezí se celkový počet zařízení na 595 (pro prostředí S1) nebo 795 (pro prostředí S2) s dalšími pěti sloupci.
+- Nepotřebné vlastnosti jsou zabráněno, například informace o značkaech a modelu. Vzhledem k tomu, že se vlastnosti v budoucnu nedotazují, jejich vyloučení umožní lepší efektivitu sítě a úložiště.
+- Referenční data se používají ke snížení počtu bajtů přenesených přes síť. Dva atributy **MessageID** a **deviceLocation** jsou spojeny pomocí **deviceId**vlastnosti klíče. Tato data jsou propojena s daty telemetrie v době vstupu a jsou pak uložena v Time Series Insights pro dotazování.
+- Používají se dvě vrstvy vnoření, což je maximální množství vnořování podporovaného Time Series Insights. Je důležité, aby se zabránilo hluboce vnořených polí.
+- Míry jsou odesílány jako samostatné vlastnosti v rámci stejného objektu, protože existuje několik měr. Tady, **řady. Rozhraní psi a řady toků toku** **. Ft3/s tlakového oleje v motoru** jsou jedinečné sloupce.
 
-## <a name="scenario-two-several-measures-exist"></a>Scénář č. 2: Existuje několik míry
+## <a name="scenario-two-several-measures-exist"></a>Scénář 2: Existuje několik opatření.
 
 > [!TIP]
-> Doporučujeme, abyste odeslání měření psaní"," "jednotka" a "hodnota" řazených kolekcí členů.
+> Doporučujeme, abyste odeslali měření jako "typ", "jednotka" a "value" (řazené kolekce členů).
 
 Příklad datové části JSON:
 
@@ -159,41 +159,41 @@ Příklad datové části JSON:
 ]
 ```
 
-* Referenční tabulky dat, který obsahuje vlastnosti klíče **deviceId** a **series.tagId**:
+* Tabulka referenčních dat, která má vlastnosti klíče **deviceId** a **Series. tagId**:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | Jednotka |
+   | deviceId | series.tagId | messageId | deviceLocation | type | jednotka |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | ŘÁDEK\_DAT | EVROPA | Míra toku | ft3/s |
-   | FXXX | oilPressure | ŘÁDEK\_DAT | EVROPA | Modul ropy tlaku | psi |
-   | FRRR | pumpRate | ŘÁDEK\_DAT | USA | Míra toku | ft3/s |
-   | FRRR | oilPressure | ŘÁDEK\_DAT | USA | Modul ropy tlaku | psi |
+   | FXXX | pumpRate | DATA\_ŘÁDKU | EVROPA | Rychlost toku | ft3/s |
+   | FXXX | oilPressure | DATA\_ŘÁDKU | EVROPA | Tlak v oleji motoru | psi |
+   | FYYY | pumpRate | DATA\_ŘÁDKU | USA | Rychlost toku | ft3/s |
+   | FYYY | oilPressure | DATA\_ŘÁDKU | USA | Tlak v oleji motoru | psi |
 
-* Series Insights události tabulka doby, po sloučení:
+* Time Series Insights tabulka událostí po sloučení:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | Jednotka | timestamp | Series.Value |
+   | deviceId | series.tagId | messageId | deviceLocation | type | jednotka | timestamp | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | ŘÁDEK\_DAT | EVROPA | Míra toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | ŘÁDEK\_DAT | EVROPA | Modul ropy tlaku | psi | 2018-01-17T01:17:00Z | 34.7 |
-   | FXXX | pumpRate | ŘÁDEK\_DAT | EVROPA | Míra toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | ŘÁDEK\_DAT | EVROPA | Modul ropy tlaku | psi | 2018-01-17T01:17:00Z | 49.2 |
-   | FRRR | pumpRate | ŘÁDEK\_DAT | USA | Míra toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FRRR | oilPressure | ŘÁDEK\_DAT | USA | Modul ropy tlaku | psi | 2018-01-17T01:18:00Z | 22.2 |
+   | FXXX | pumpRate | DATA\_ŘÁDKU | EVROPA | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | DATA\_ŘÁDKU | EVROPA | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 34.7 |
+   | FXXX | pumpRate | DATA\_ŘÁDKU | EVROPA | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | DATA\_ŘÁDKU | EVROPA | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 49.2 |
+   | FYYY | pumpRate | DATA\_ŘÁDKU | USA | Rychlost toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | DATA\_ŘÁDKU | USA | Tlak v oleji motoru | psi | 2018-01-17T01:18:00Z | 22.2 |
 
-Poznámky k těmito dvěma tabulkami:
+Poznámky k těmto dvěma tabulkám:
 
-- Sloupce **deviceId** a **series.tagId** sloužit jako záhlaví sloupců pro různá zařízení a klíčových slov do park. Pomocí všech jako vlastní atribut omezuje dotaz 594 (pro S1 prostředí) nebo 794 (pro S2 prostředí) Celkový počet zařízení s šest sloupců.
-- z důvodů uvedených v prvním příkladu se vyhnout zbytečné vlastnosti.
-- Referenční data slouží k omezení počtu bajtů přenesených v síti Představujeme **deviceId**, který se používá pro jedinečnou dvojici **messageId** a **deviceLocation**. Složený klíč **series.tagId** se používá pro jedinečnou dvojici **typ** a **jednotky**. Složený klíč umožňuje aplikaci **deviceId** a **series.tagId** pár, který se má použít k odkazování na čtyři hodnoty: **zadejte ID zprávy, deviceLocation,** a **jednotky**. Tato data se propojuje se telemetrická data v době příchozího přenosu. Pak uloží se v Time Series Insights pro dotazování.
-- z důvodů uvedených v prvním příkladu se používají dvě vrstvy vnoření.
+- Sloupce **deviceId** a **Series. tagId** slouží jako záhlaví sloupců pro různá zařízení a značky v rámci loďstva. Použití každého vlastního atributu omezí dotaz na 594 (pro prostředí S1) nebo 794 (pro prostředí S2) celkem zařízení s ostatními šesti sloupci.
+- Z důvodu citovaného v prvním příkladu se zabránilo zbytečným vlastnostem.
+- Referenční data se používají ke snížení počtu bajtů přenesených přes síť, a to tak, že zavedeme do ID **zařízení, které**se používá pro jedinečnou dvojici **MessageID** a **deviceLocation**. Složená **série klíčů. tagId** se používá pro jedinečné páry **typu** a **jednotky**. Složený klíč umožňuje použít dvojici **deviceId** a **Series. tagId** k odkazování na čtyři hodnoty: **MessageID, deviceLocation, Type** a **Unit**. Tato data jsou spojená s daty telemetrie v čase vstupu. Pak je uložený v Time Series Insights pro dotazování.
+- Používají se dvě vrstvy vnoření z důvodu citovaného v prvním příkladu.
 
 ### <a name="for-both-scenarios"></a>Pro oba scénáře
 
-Pro vlastnost s velkým množstvím možných hodnot doporučujeme odeslat jako různé hodnoty v rámci jednoho sloupce místo vytvoření nového sloupce pro každou hodnotu. V předchozích dvou příkladech:
+Pro vlastnost s velkým počtem možných hodnot je nejlepší poslat jako jedinečné hodnoty v jednom sloupci místo vytvoření nového sloupce pro každou hodnotu. V předchozích dvou příkladech:
 
-  - V prvním příkladu mají několik vlastností několik hodnot, proto je vhodný pro každé nastavení samostatné vlastnosti.
-  - V druhém příkladu opatření nejsou zadány jako jednotlivé vlastnosti. Místo toho jsou pole hodnoty nebo míry v části Obecné vlastnosti řady. Nový klíč **vrátí parametr tagId** se odešle, která vytvoří nový sloupec **series.tagId** ve sloučené tabulce. Nové vlastnosti **typ** a **jednotky** jsou vytvořeny pomocí referenčních dat tak, aby se dosáhne maximálního vlastnost.
+  - V prvním příkladu má několik vlastností několik hodnot, takže je vhodné vytvořit samostatnou vlastnost.
+  - V druhém příkladu nejsou míry zadány jako jednotlivé vlastnosti. Místo toho se jedná o pole hodnot nebo měr v rámci společné vlastnosti řady. Pošle se nový Key **tagId** , který vytvoří nový sloupec **Series. tagId** ve sloučené tabulce. Nové **typy** vlastností a **jednotka** se vytvoří pomocí referenčních dat, takže se nedosáhne limitu vlastností.
 
 ## <a name="next-steps"></a>Další postup
 
-- Čtení [syntaxe dotazu Azure Time Series Insights](/rest/api/time-series-insights/ga-query-syntax) získat další informace o syntaxi dotazu pro rozhraní REST API pro přístup k datům služby Time Series Insights.
-- Přečtěte si [jak události obrazce](./time-series-insights-send-events.md).
+- Další informace o syntaxi dotazu pro Time Series Insights REST API přístupu k datům najdete v [Azure Time Series Insights syntaxi dotazů](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) .
+- Naučte [se, jak obrazce událostí](./time-series-insights-send-events.md).

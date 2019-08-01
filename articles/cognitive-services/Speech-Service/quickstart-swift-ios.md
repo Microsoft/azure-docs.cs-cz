@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: c001b10f14167b4c0947c2ef0ae3f27cc4f55657
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e9d17b0bdeb89fc03c0f089b84a89a5203c39566
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553538"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717427"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v SWIFT v systému iOS pomocí sady Speech SDK
 
@@ -61,7 +61,8 @@ V následujících dialogových oknech proveďte následující výběry:
 
 ## <a name="add-the-sample-code"></a>Přidání vzorového kódu
 
-1. Umístěte nový hlavičkový soubor s názvem `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` `helloworld` do adresáře uvnitř projektu HelloWorld a vložte do něj následující kód:[!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
+1. Umístěte nový hlavičkový soubor s názvem `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` `helloworld` do adresáře uvnitř projektu HelloWorld a vložte do něj následující kód:  
+   [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
 1. Přidejte relativní cestu `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` k přemostění hlavičky do nastavení projektu SWIFT pro cíl HelloWorld ve vlastnostech záhlaví pole ![s hlavičkou přemostění v *cíli C* .](media/sdk/qs-swift-ios-bridging-header.png)
 1. Nahraďte obsah automaticky vygenerovaného souboru `AppDelegate.swift` následujícím kódem:  
    [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/AppDelegate.swift#code)]

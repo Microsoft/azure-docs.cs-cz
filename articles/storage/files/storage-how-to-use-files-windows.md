@@ -1,19 +1,18 @@
 ---
 title: Použití sdílené složky Azure s Windows | Microsoft Docs
 description: Zjistěte, jak používat sdílenou složku Azure s Windows a Windows Serverem.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 02a8b825a513c75ef7c037348ccaecdf5026ded2
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: d2bad808d0bcbbd5dc8052db0f8fd32fc4c1180a
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560483"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699475"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -24,9 +23,9 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 
 | Verze systému Windows        | Verze protokolu SMB | Možnost připojit na virtuálním počítači Azure | Možnost připojit v místním prostředí |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019    | SMB 3.0 | Ano | Ano |
+| Windows Server. 2019    | SMB 3.0 | Ano | Ano |
 | Windows 10<sup>1</sup> | SMB 3.0 | Ano | Ano |
-| Pololetní kanál Windows Server<sup>2</sup> | SMB 3.0 | Ano | Ano |
+| Půlroční kanál Windows serveru<sup>2</sup> | SMB 3.0 | Ano | Ano |
 | Windows Server 2016    | SMB 3.0     | Ano                   | Ano                  |
 | Windows 8.1            | SMB 3.0     | Ano                   | Ano                  |
 | Windows Server 2012 R2 | SMB 3.0     | Ano                   | Ano                  |
@@ -34,8 +33,8 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 | Windows 7              | SMB 2.1     | Ano                   | Ne                   |
 | Windows Server 2008 R2 | SMB 2.1     | Ano                   | Ne                   |
 
-<sup>1</sup>Windows 10 verze 1507, 1607, 1703, 1709, 1803 a 1809.  
-<sup>2</sup>systému Windows Server verze 1709 a 1803.
+<sup>1</sup> Windows 10, verze 1507, 1607, 1703, 1709, 1803 a 1809.  
+<sup>2</sup> . Windows Server verze 1709 a 1803.
 
 > [!Note]  
 > Vždy doporučujeme získat nejnovější aktualizaci KB pro vaši verzi systému Windows.
@@ -44,13 +43,13 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky 
-* **Název účtu úložiště**: Připojení sdílené složky Azure, potřebujete název účtu úložiště.
+* **Název účtu úložiště**: Pokud chcete připojit sdílenou složku Azure, budete potřebovat název účtu úložiště.
 
-* **Klíč účtu úložiště**: Připojení sdílené složky Azure, musíte primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
+* **Klíč účtu úložiště**: Pokud chcete připojit sdílenou složku Azure, budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
-* **Zkontrolujte, jestli je port 445 otevřený**: Protokol SMB vyžaduje port TCP 445 být otevřená. připojení se nezdaří, pokud je port 445 blokovaný. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Informace o [různé způsoby, jak řešení blokované portu 445 zde](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
+* **Ujistěte se, že je port 445 otevřený**: Protokol SMB vyžaduje, aby byl otevřený port TCP 445. Pokud je port 445 zablokován, připojení se nezdaří. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Další informace o [různých způsobech blokovaného alternativního řešení najdete na portu 445](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
 
-    Následující příkaz Powershellu kód předpokládá, že máte modul Azure PowerShell nainstalovali, naleznete v tématu [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) Další informace. Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
+    Následující kód PowerShellu předpokládá, že máte nainstalovaný modul Azure PowerShell. Další informace najdete v tématu [instalace Azure PowerShell modulu](https://docs.microsoft.com/powershell/azure/install-az-ps) . Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
     ```powershell
     $resourceGroupName = "<your-resource-group-name>"
@@ -234,7 +233,7 @@ Následující tabulka obsahuje podrobné informace o stavu protokolu SMB 1 v je
 
 | Verze systému Windows                           | Výchozí stav protokolu SMB 1 | Metoda zakázání/odebrání       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019                       | Zakázáno             | Odebrání pomocí funkce Windows |
+| Windows Server. 2019                       | Zakázáno             | Odebrání pomocí funkce Windows |
 | Windows Server verze 1709 nebo novější            | Zakázáno             | Odebrání pomocí funkce Windows |
 | Windows 10 verze 1709 nebo novější                | Zakázáno             | Odebrání pomocí funkce Windows |
 | Windows Server 2016                       | Enabled              | Odebrání pomocí funkce Windows |
@@ -246,7 +245,7 @@ Následující tabulka obsahuje podrobné informace o stavu protokolu SMB 1 v je
 | Windows 7                                 | Enabled              | Zakázání pomocí registru       | 
 
 ### <a name="auditing-smb-1-usage"></a>Auditování využití protokolu SMB 1
-> Platí pro 2019 systému Windows Server, pololetní kanál (verze 1709 a 1803) systému Windows Server, Windows Server 2016, Windows 10 (verze 1507, 1607, 1703, 1709 a 1803), Windows Server 2012 R2 a Windows 8.1
+> Platí pro Windows Server 2019, půlroční kanál Windows serveru (verze 1709 a 1803), Windows Server 2016, Windows 10 (verze 1507, 1607, 1703, 1709 a 1803), Windows Server 2012 R2 a Windows 8.1
 
 Před odebráním protokolu SMB 1 z vašeho prostředí možná budete chtít auditovat jeho využití, abyste zjistili, jestli tato změna nezpůsobí, že někteří klienti přestanou fungovat. Při provedení jakéhokoli požadavku na sdílené složky SMB s použitím protokolu SMB 1 se zaznamená událost auditu do protokolu auditu v části `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit`. 
 
@@ -260,7 +259,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>Odebrání protokolu SMB 1 z Windows Serveru
-> Platí pro Windows Server 2019, Windows Server pololetní kanál (verze 1709 a 1803), Windows Server 2016, Windows Server 2012 R2
+> Platí pro Windows Server 2019, Windows Server-půlroční kanál (verze 1709 a 1803), Windows Server 2016, Windows Server 2012 R2
 
 Pokud chcete odebrat protokol SMB 1 z instance Windows Serveru, spusťte v relaci PowerShellu se zvýšenými oprávněními následující rutinu:
 

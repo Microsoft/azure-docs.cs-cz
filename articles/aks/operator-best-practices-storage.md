@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 5/6/2019
 ms.author: mlearned
 ms.openlocfilehash: b42cdae634a6c2d8d994225d4cb6b440a99918e5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67614578"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro ukládání a zálohování ve službě Azure Kubernetes Service (AKS)
@@ -34,11 +34,11 @@ Aplikace často vyžadují různé typy a rychlosti úložiště. Potřebují va
 
 Následující tabulka uvádí typy úložiště k dispozici a jejich funkce:
 
-| Případ použití | Modul plug-in svazku | Čtení/zápis | Jen pro čtení: n | Čtení a zápis mnoho | Podpora kontejnerů Windows serveru |
+| Případ použití | Modul plug-in svazku | Čtení/zápis | Jen pro čtení: n | Čtení a zápis mnoho | Podpora kontejneru Windows serveru |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Sdílená konfigurace       | Soubory Azure   | Ano | Ano | Ano | Ano |
 | Strukturovaných dat        | Disky Azure   | Ano | Ne  | Ne  | Ano |
-| Nestrukturovaných dat, operace systému souborů | [BlobFuse (preview)][blobfuse] | Ano | Ano | Ano | Ne |
+| Nestrukturovaných dat, operace systému souborů | [BlobFuse (Preview)][blobfuse] | Ano | Ano | Ano | Ne |
 
 Dva primární typy úložiště k dispozici pro svazky ve službě AKS se zálohují na disky Azure nebo Azure Files. Pro zlepšení zabezpečení použít oba typy úložiště Azure Storage Service Encryption (SSE) ve výchozím nastavení, která šifruje neaktivní uložená data. Disky nelze aktuálně zašifrovaný službou Azure Disk Encryption na úrovni uzlu AKS.
 
@@ -47,11 +47,11 @@ Služba soubory Azure jsou aktuálně dostupné v rámci úrovně výkonu. Disky
 - *Premium* vysoce výkonných discích SSD (Solid-State Drive) se zálohují na disky. Disky Premium se doporučují pro všechny úlohy v produkčním prostředí.
 - *Standardní* disků jsou zálohovány pomocí běžných rotujících disků (HDD) a jsou vhodné pro archivaci nebo zřídka používaná data.
 
-Porozumět požadavkům na výkon aplikace a vzorce vybrat vhodnou úroveň přístupu. Další informace o velikosti Managed Disks a úrovně výkonu najdete v tématu [Přehled služby Azure Managed Disks][managed-disks]
+Porozumět požadavkům na výkon aplikace a vzorce vybrat vhodnou úroveň přístupu. Další informace o velikostech Managed Disks a úrovních výkonu najdete v tématu [Azure Managed disks Overview][managed-disks] .
 
 ### <a name="create-and-use-storage-classes-to-define-application-needs"></a>Vytvoření a použití třídy úložiště k definování potřeby aplikace
 
-Typ úložiště používáte je definován pomocí Kubernetes *třídy úložiště*. Třídy úložiště se pak odkazuje ve specifikaci pod nebo nasazení. Tyto definice spolupracují a vytvořit odpovídající úložiště a připojte ho k pody. Další informace najdete v tématu [třídy úložiště ve službě AKS][aks-concepts-storage-classes].
+Typ úložiště používáte je definován pomocí Kubernetes *třídy úložiště*. Třídy úložiště se pak odkazuje ve specifikaci pod nebo nasazení. Tyto definice spolupracují a vytvořit odpovídající úložiště a připojte ho k pody. Další informace najdete v tématu [třídy úložiště v AKS][aks-concepts-storage-classes].
 
 ## <a name="size-the-nodes-for-storage-needs"></a>Velikost uzlů pro požadavky na úložiště
 
@@ -68,7 +68,7 @@ Pokud vaše aplikace vyžadují Azure Disks jako řešení úložiště, plánov
 
 Tady *Standard_DS2_v2* umožňuje double počtu připojených disků a poskytuje tři až čtyřikrát množství propustnost vstupně-výstupních operací a disku. Pokud pouze podívali se na základní výpočetní prostředky a porovnání nákladů, můžete se rozhodnout *Standard_B2ms* virtuálního počítače upravit velikost a výkon nízký úložiště a omezení. Práce s vaším vývojářským týmem aplikace porozumět jejich požadavky na kapacitu a výkon úložiště. Výběr vhodné velikosti virtuálního počítače pro uzly AKS, aby splňovaly nebo překračovaly jejich požadavkům na výkon. Pravidelně směrného plánu aplikace podle potřeby upravit velikost virtuálního počítače.
 
-Další informace o dostupných velikostech virtuálních počítačů najdete v tématu [velikostí pro virtuální počítače s Linuxem v Azure][vm-sizes].
+Další informace o dostupných velikostech virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače Linux v Azure][vm-sizes].
 
 ## <a name="dynamically-provision-volumes"></a>Dynamické zřizování svazků
 
@@ -80,25 +80,25 @@ Pokud potřebujete připojit úložiště podů, použijte trvalé svazky. Tyto 
 
 Trvalý svazek deklarace identity (PVC) umožňuje vytvářet dynamicky úložiště podle potřeby. Základní disky Azure jsou vytvořeny jako podů o ně požádat. V definici pod požádáte o svazku se vytvoří a připojí k cestu navrženého připojení
 
-Koncepty o tom, jak dynamicky vytvářet a používat svazky, naleznete v tématu [trvalé deklarací svazky][aks-concepts-storage-pvcs].
+Koncepce, jak dynamicky vytvářet a používat svazky, najdete v tématu [deklarace trvalých svazků][aks-concepts-storage-pvcs].
 
-Tyto svazky v akci najdete v tématu Jak dynamicky vytvořit a použít trvalý svazek s [Azure Disks][dynamic-disks] or [Azure Files][dynamic-files].
+Pokud se chcete podívat na tyto svazky v akci, přečtěte si téma postup dynamického vytvoření a použití trvalého svazku s [disky Azure][dynamic-disks] nebo [soubory Azure][dynamic-files].
 
 V rámci definic třídy úložiště, nastavte odpovídající *reclaimPolicy*. Tato reclaimPolicy řídí chování základní prostředek služby Azure storage při pod se odstraní a trvalý svazek již může být nutná. Tento základní prostředek spravovat úložiště můžete odstranit nebo uchovávají pro použití s budoucí pod. Můžete nastavit reclaimPolicy *zachovat* nebo *odstranit*. O vašich potřebách aplikace a implementovat pravidelné kontroly pro úložiště, které chcete-li minimalizovat množství zrušení využité úložiště, který je používán a účtuje se uchovávají.
 
-Další informace o možnostech třídy úložiště, najdete v části [úložiště uvolnit zásady][reclaim-policy].
+Další informace o možnostech třídy úložiště najdete v tématu [zásady][reclaim-policy]pro redeklaraci úložiště.
 
 ## <a name="secure-and-back-up-your-data"></a>Zabezpečení a zálohovat data
 
-**Osvědčené postupy pro moduly** – zálohujete svá data pomocí vhodného nástroje pro váš typ úložiště, jako je například Velero nebo Azure Site Recovery. Ověření integrity a zabezpečení, tyto zálohy.
+**Doprovodné** materiály k osvědčeným postupům – zálohujte data pomocí vhodného nástroje pro typ úložiště, například Velero nebo Azure Site Recovery. Ověření integrity a zabezpečení, tyto zálohy.
 
-Při ukládání vašich aplikací a využívat data se ukládají na discích nebo v souborech, je potřeba provést pravidelného zálohování nebo snímky tato data. Disky Azure můžete použít předdefinované snímku technologie. Budete muset hook pro vaše aplikace k vyprázdnění zápisy na disk před provedením operace vytvoření snímku. [Velero][velero] can back up persistent volumes along with additional cluster resources and configurations. If you can't [remove state from your applications][remove-state], zálohování dat z trvalého svazky a pravidelně testujeme funkčnost operací obnovení k ověření integrity dat a procesy nezbytné.
+Při ukládání vašich aplikací a využívat data se ukládají na discích nebo v souborech, je potřeba provést pravidelného zálohování nebo snímky tato data. Disky Azure můžete použít předdefinované snímku technologie. Budete muset hook pro vaše aplikace k vyprázdnění zápisy na disk před provedením operace vytvoření snímku. [Velero][velero] může zálohovat trvalé svazky spolu s dalšími prostředky a konfiguracemi clusteru. Pokud nemůžete [Odebrat stav z vašich aplikací][remove-state], zálohujte data z trvalých svazků a pravidelně otestujte operace obnovení, abyste ověřili integritu dat a požadované procesy.
 
-Principy omezení různé přístupy k zálohování dat a pokud je potřeba uvést vaše data před snímku. Zálohování dat není nutně umožnit obnovení prostředí pro vaše aplikace nasazení clusteru. Další informace o těchto scénářích najdete v tématu [osvědčené postupy pro obchodní kontinuity podnikových procesů a zotavení po havárii ve službě AKS][best-practices-multi-region].
+Principy omezení různé přístupy k zálohování dat a pokud je potřeba uvést vaše data před snímku. Zálohování dat není nutně umožnit obnovení prostředí pro vaše aplikace nasazení clusteru. Další informace o těchto scénářích najdete v tématu [osvědčené postupy pro zajištění kontinuity podnikových procesů a zotavení po havárii v AKS][best-practices-multi-region].
 
 ## <a name="next-steps"></a>Další postup
 
-Tento článek zaměřuje na úložiště osvědčené postupy ve službě AKS. Další informace o základní informace o úložišti v Kubernetes najdete v tématu [koncepty úložiště pro aplikace ve službě AKS][aks-concepts-storage].
+Tento článek zaměřuje na úložiště osvědčené postupy ve službě AKS. Další informace o základech úložiště v Kubernetes najdete v tématu [Koncepty úložiště pro aplikace v AKS][aks-concepts-storage].
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero

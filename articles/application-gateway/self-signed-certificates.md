@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0b97f2f6df87255e10faaf58c40ea9136354bff6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9966164ec1b6a37538a24d2ef8cb80007e6f6d29
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386301"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698234"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Vygenerování certifikátu podepsaného svým držitelem Azure Application Gateway s vlastní kořenovou certifikační autoritou
 
@@ -161,7 +161,7 @@ Následující konfigurace je příkladem [Nginx serveru](http://nginx.org/docs/
    ![Důvěryhodné kořenové certifikáty](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
-   > Předpokládá se, že služba DNS je nakonfigurovaná tak, aby odkazovala název webového serveru (v tomto příkladu www.fabrikam.com) na IP adresu vašeho webového serveru. V takovém případě můžete upravit [soubor hostitelů](https://answers.microsoft.com/windows/forum/windows_10-other_settings-winpc/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) pro překlad názvu.
+   > Předpokládá se, že služba DNS je nakonfigurovaná tak, aby odkazovala název webového serveru (v tomto příkladu www.fabrikam.com) na IP adresu vašeho webového serveru. V takovém případě můžete upravit [soubor hostitelů](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) pro překlad názvu.
 1. Přejděte na web a kliknutím na ikonu zámku v poli Adresa v prohlížeči ověřte informace o lokalitě a certifikátu.
 
 ## <a name="verify-the-configuration-with-openssl"></a>Ověření konfigurace pomocí OpenSSL

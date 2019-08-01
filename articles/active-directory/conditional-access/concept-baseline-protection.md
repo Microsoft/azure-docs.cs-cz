@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2fc552211ed55239259ce84d84584c451733d70
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 819b2f3c54d97639eceae9aed60fdd5da2e7b3ef
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499860"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608180"
 ---
 # <a name="what-are-baseline-policies"></a>Co jsou základní zásady?
 
@@ -81,7 +81,7 @@ Organizace využívají celou řadu služeb Azure a spravují je od Azure Resour
 
 Použití některého z těchto nástrojů k provedení správy prostředků je vysoce privilegované akce. Tyto nástroje můžou upravovat konfigurace v rámci předplatného, jako je třeba nastavení služby a fakturace předplatného.
 
-Aby bylo možné chránit privilegované akce,  bude vyžadovat vícefaktorové ověřování pro všechny uživatele, kteří přistupují k Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure CLI.
+Aby bylo možné chránit privilegované akce, bude vyžadovat vícefaktorové ověřování pro všechny uživatele, kteří přistupují k Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure CLI.
 
 ## <a name="enable-a-baseline-policy"></a>Povolit zásadu standardních hodnot
 
@@ -93,11 +93,11 @@ Postup při povolování standardních zásad:
 1. Nastavte **Povolit zásady** na **zapnuto**.
 1. Klikněte na Uložit.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace naleznete v tématu:
 
-* [Pět kroků pro zabezpečení infrastruktury identity](../../security/azure-ad-secure-steps.md)
+* [Pět kroků pro zabezpečení infrastruktury identity](../../security/fundamentals/steps-secure-identity.md)
 * [Co je podmíněný přístup v Azure Active Directory?](overview.md)
 * [Vyžadovat MFA pro správce (Preview)](howto-baseline-protect-administrators.md)
 * [Ochrana koncového uživatele (Preview)](howto-baseline-protect-end-users.md)

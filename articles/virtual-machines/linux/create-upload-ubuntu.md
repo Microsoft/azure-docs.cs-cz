@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a nahrání VHD Ubuntu Linux v Azure
-description: Zjistěte, jak vytvořit a nahrát Azure virtuálního pevného disku (VHD), který obsahuje operační systém Ubuntu Linux.
+title: Vytvoření a nahrání Ubuntu Linux VHD v Azure
+description: Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsahuje Ubuntu Linux operační systém.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -15,49 +15,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: szark
-ms.openlocfilehash: 50651a31cd407da3ce32be3c2ddbbd24e6ca6b69
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 140ad3d65db08d596e6ab3d3d31f5606a7b4dc54
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671571"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696055"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Ubuntu pro Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="official-ubuntu-cloud-images"></a>Oficiální Image Ubuntu cloudu
-Ubuntu nyní publikuje oficiální Azure virtuálních pevných disků ke stažení na [ https://cloud-images.ubuntu.com/ ](https://cloud-images.ubuntu.com/). Pokud budete muset sestavit vlastní specializované image Ubuntu pro Azure, spíše než pomocí níže uvedeného ručního postupu se doporučuje spustit s těmito označuje práci virtuální pevné disky a podle potřeby upravte. Nejnovější verze image vždy najdete v následujících umístěních:
+## <a name="official-ubuntu-cloud-images"></a>Oficiální image Ubuntu cloudu
+Ubuntu nyní zveřejňuje oficiální virtuální pevné disky Azure ke [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)stažení na adrese. Pokud pro Azure potřebujete vytvořit vlastní specializovanou image Ubuntu, místo ručního použití níže uvedeného postupu doporučujeme začít s těmito známými pracovními virtuálními počítači a přizpůsobit podle potřeby. Nejnovější verze imagí lze vždy nalézt v následujících umístěních:
 
-* Ubuntu 12.04/přesné: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 12.04/přesný: [Ubuntu-12,04-Server-cloudimg-amd64-Disk1. VHD. zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 14.04/TRUSTe: [Ubuntu-14,04-Server-cloudimg-amd64-Disk1. VHD. zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 16.04/Xenial: [Ubuntu-16,04-Server-cloudimg-amd64-Disk1. VHD. zip](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
-* Ubuntu 18.10/Cosmic: [cosmic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/cosmic/current/cosmic-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 18.10/Cosmic: [Cosmic-Server-cloudimg-amd64. VHD. zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že jste již nainstalovali operačního systému Ubuntu Linux na virtuální pevný disk. Existují více nástroje k vytvoření souborů .vhd, třeba řešení virtualizace jako je Hyper-V. Pokyny najdete v tématu [instalace Role Hyper-V a konfigurace virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
+V tomto článku se předpokládá, že jste už Ubuntu Linux operační systém nainstalovali na virtuální pevný disk. Pro vytváření souborů. VHD, například virtualizačního řešení, jako je například Hyper-V, existuje více nástrojů. Pokyny najdete v tématu [instalace role Hyper-V a konfigurace virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
 
 **Poznámky k instalaci Ubuntu**
 
-* Podrobnosti najdete také [obecné poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes) další tipy pro na Příprava Linuxu na Azure.
-* Formát VHDX nepodporuje v Azure, pouze **oprava virtuálního pevného disku**.  Převést disk na formát virtuálního pevného disku pomocí Správce technologie Hyper-V nebo rutiny convert-vhd.
-* Při instalaci systému Linux se doporučuje použít standardní oddíly spíše než LVM (často výchozí nastavení pro mnoho zařízení). Tím se vyhnete LVM název je v konfliktu s klonovaný virtuální počítače, zejména v případě, že disk s operačním systémem je někdy potřeba připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) může být použita na datové disky, pokud tomu dávají přednost.
-* Neprovádějte konfiguraci odkládací oddíl na disk s operačním systémem. Chcete-li vytvořit odkládací soubor na disku dočasný prostředek, který lze nastavit agenta pro Linux.  Další informace najdete v níže uvedeném postupu.
-* Všechny virtuální pevné disky v Azure musí mít virtuální velikost, zarovnání na 1MB. Při převodu z nezpracované disku do virtuálního pevného disku je nutné zajistit, že velikost nezpracovaných disku je násobkem 1MB před převodem. Zobrazit [poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes) Další informace.
+* Další tipy k přípravě Linux pro Azure najdete v tématu [Obecné poznámky k instalaci pro Linux](create-upload-generic.md#general-linux-installation-notes) .
+* Formát VHDX není v Azure podporovaný, jenom **pevný virtuální pevný disk**.  Disk můžete převést na formát VHD pomocí Správce technologie Hyper-V nebo rutiny Convert-VHD.
+* Při instalaci systému Linux doporučujeme místo LVM použít standardní oddíly (často se jedná o výchozí nastavení pro mnoho instalací). Tím se vyhnete LVM názvům v konfliktu s klonovanými virtuálními počítači, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači pro řešení potíží. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se můžou použít na datových discích, pokud jsou preferované.
+* Nekonfigurujte odkládací oddíl na disku s operačním systémem. Agent pro Linux se dá nakonfigurovat tak, aby na dočasném disku prostředků vytvořil odkládací soubor.  Další informace o tomto postupu najdete v následujících krocích.
+* Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v poznámkách k [instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
 
-## <a name="manual-steps"></a>Vyžadováno provedení ručních kroků
+## <a name="manual-steps"></a>Ruční kroky
 > [!NOTE]
-> Před pokusem o vytvoření vlastní image Ubuntu pro Azure, zvažte použití předem připravené a otestovaná Image z [ https://cloud-images.ubuntu.com/ ](https://cloud-images.ubuntu.com/) místo.
+> Před pokusem o vytvoření vlastní image Ubuntu pro Azure zvažte [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) místo toho použití předem připravených a testovaných imagí.
 > 
 > 
 
 1. V prostředním podokně Správce technologie Hyper-V vyberte virtuální počítač.
 
-2. Klikněte na tlačítko **připojit** otevřete okno pro virtuální počítač.
+2. Kliknutím na **připojit** otevřete okno pro virtuální počítač.
 
-3. Nahraďte aktuální úložišť v požadované image Ubuntu pro úložiště Azure. Kroky mírně lišit v závislosti na verzi Ubuntu.
+3. Nahraďte aktuální úložiště v imagi pro použití úložišť Azure v Ubuntu. Postup se mírně liší v závislosti na verzi Ubuntu.
    
-    Před úpravou `/etc/apt/sources.list`, doporučuje se vytvořit zálohu:
+    Před úpravou `/etc/apt/sources.list`doporučujeme vytvořit zálohu:
    
         # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
@@ -76,7 +76,7 @@ Tento článek předpokládá, že jste již nainstalovali operačního systému
         # sudo sed -i 's/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list
         # sudo apt-get update
 
-4. Nyní jste tuto Image Ubuntu v Azure *hardwaru povolení* jádra (HWE). Aktualizujte operační systém na nejnovější jádra spuštěním následujících příkazů:
+4. Image Ubuntu Azure teď následují za jádrem *povolení hardwaru* (hwe). Aktualizujte operační systém na nejnovější jádro spuštěním následujících příkazů:
 
     Ubuntu 12.04:
    
@@ -109,13 +109,13 @@ Tento článek předpokládá, že jste již nainstalovali operačního systému
     - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
 
 
-5. Upravte řádek pro spuštění jádra pro Grub zahrnout další jádra parametry pro Azure. Provedete tuto otevřete `/etc/default/grub` v textovém editoru, najdete proměnnou s názvem `GRUB_CMDLINE_LINUX_DEFAULT` (nebo ji v případě potřeby přidejte) a upravit tak, aby obsahovala následující parametry:
+5. Upravte spouštěcí řádek jádra pro GRUB tak, aby zahrnoval další parametry jádra pro Azure. Pokud to chcete otevřít `/etc/default/grub` v textovém editoru, najděte proměnnou s názvem `GRUB_CMDLINE_LINUX_DEFAULT` (nebo ji přidejte v případě potřeby) a upravte ji tak, aby zahrnovala následující parametry:
    
         GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
 
-    Uložte a zavřete tento soubor a pak spusťte `sudo update-grub`. Tím se zajistí, že jsou všechny konzoly zprávy odeslané do první sériového portu, které vám můžou pomoct technické podpory Azure s laděním problémů.
+    Uložte a zavřete tento soubor a potom spusťte příkaz `sudo update-grub`. Tím se zajistí, že se všechny zprávy konzoly odešlou na první sériový port, což může pomoct technickou podporu Azure s problémy ladění.
 
-6. Zajistěte, aby SSH server je nainstalován a nakonfigurován na spuštění při spuštění.  Obvykle se jedná o výchozí nastavení.
+6. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění.  Obvykle se jedná o výchozí nastavení.
 
 7. Instalace agenta Azure Linux:
    
@@ -123,20 +123,20 @@ Tento článek předpokládá, že jste již nainstalovali operačního systému
         # sudo apt-get install walinuxagent
 
    > [!Note]
-   >  `walinuxagent` Může odebrat balíček `NetworkManager` a `NetworkManager-gnome` balíčky, pokud jsou nainstalovány.
+   >  Balíček může odebrat balíčky `NetworkManager-gnome`a, Pokud jsou nainstalované. `NetworkManager` `walinuxagent`
 
 
-1. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
+1. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
    
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
-1. Klikněte na tlačítko **akce -> vypnout dolů** ve Správci technologie Hyper-V. Vašeho linuxového virtuálního pevného disku je teď připravený k nahrání do Azure.
+1. Klikněte na **Akce – > vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 
 ## <a name="references"></a>Odkazy
-[Ubuntu hardwaru povolení (HWE) jádra](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
+[Jádro HWE (Ubuntu hardware Enable)](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
 
 ## <a name="next-steps"></a>Další postup
-Nyní jste připraveni použít virtuální pevný disk se systémem Ubuntu Linux můžete vytvořit nové virtuální počítače v Azure. Pokud je to poprvé, že jste nahrání souboru VHD do Azure, najdete v článku [vytvoření virtuálního počítače s Linuxem z vlastního disku](upload-vhd.md#option-1-upload-a-vhd).
+Nyní jste připraveni k vytváření nových virtuálních počítačů v Azure pomocí svého Ubuntu Linuxho virtuálního pevného disku. Pokud soubor. VHD do Azure nahráváte poprvé, přečtěte si článek [Vytvoření virtuálního počítače se systémem Linux z vlastního disku](upload-vhd.md#option-1-upload-a-vhd).
 

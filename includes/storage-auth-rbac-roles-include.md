@@ -5,25 +5,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/21/2019
+ms.date: 07/25/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 026717dff2b6883eb643497dec91226e4afe8133
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4f9a828e5233c88db2106bc648c07578927e0d29
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174681"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68514865"
 ---
-Azure poskytuje následující předdefinované role RBAC pro autorizaci přístupu k datům objektu blob a fronty pomocí služby Azure AD a protokolem OAuth:
+Azure poskytuje následující předdefinované role RBAC pro autorizaci přístupu k datům BLOB a front pomocí Azure AD a OAuth:
 
-- [Vlastník dat objektů Blob úložiště](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-owner): Slouží k nastavení vlastnictví a správě řízení přístupu POSIX pro Azure Data Lake Storage Gen2 (preview). Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-access-control.md).
-- [Přispěvatel dat objektu Blob úložiště](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Slouží k udělení oprávnění ke čtení/zápis/delete k prostředkům úložiště objektů Blob.
-- [Čtenář dat objektu Blob úložiště](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-reader): Slouží k udělení oprávnění jen pro čtení k prostředkům úložiště objektů Blob.
-- [Přispěvatel dat fronty služby Storage](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Slouží k udělení oprávnění pro čtení/zápisu a odstranění do fronty Azure.
-- [Čtenář dat fronty služby Storage](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader): Slouží k udělení oprávnění jen pro čtení do fronty Azure.
-- [Data úložiště fronty zpráv procesoru](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor): Slouží k udělení náhled, načíst a odstranit oprávnění pro zprávy ve frontách Azure Storage.
-- [Data úložiště fronty zpráv odesílatele](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Použít k udělení oprávnění přidat do zprávy ve frontách Azure Storage.
+- [Vlastník dat objektu BLOB služby Storage](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-owner): Slouží k nastavení vlastnictví a správě řízení přístupu POSIX pro Azure Data Lake Storage Gen2. Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-access-control.md).
+- [Přispěvatel dat objektu BLOB služby Storage](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Slouží k udělení oprávnění ke čtení, zápisu a odstraňování prostředků BLOB Storage.
+- [Čtečka dat objektů BLOB úložiště](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-reader): Slouží k udělení oprávnění jen pro čtení k prostředkům BLOB Storage.
+- [Přispěvatel dat fronty úložiště](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Slouží k udělení oprávnění ke čtení, zápisu a odstraňování front Azure.
+- [Čtečka dat fronty úložiště](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader): Slouží k udělení oprávnění jen pro čtení ke frontám Azure.
+- [Procesor zpráv s daty ve frontě úložiště](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor): Slouží k udělení oprávnění k prohlížení, načítání a odstraňování zpráv v Azure Storagech frontách.
+- [Odesílatel zprávy s daty ve frontě úložiště](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Slouží k udělení oprávnění přidat zprávám ve frontě Azure Storage.
 
 > [!NOTE]
-> Mějte na paměti, která přiřazení rolí pro RBAC může trvat až pět minut na dokončení propagace.
+> Mějte na paměti, že rozšíření přiřazení rolí RBAC může trvat až pět minut.

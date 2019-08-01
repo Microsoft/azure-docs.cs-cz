@@ -1,6 +1,6 @@
 ---
-title: Obchodní vrstva kritické – služba Azure SQL Database | Dokumentace Microsoftu
-description: Další informace o Azure SQL Database pro důležité obchodní informace vrstvy
+title: Azure SQL Database služba Pro důležité obchodní informace úrovně | Microsoft Docs
+description: Další informace o vrstvě Azure SQL Database Pro důležité obchodní informace
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,46 +10,45 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 90989a9105405f1784b3be9ab59f55cd3433feaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 208224e10c3acfb17bc5fd89d2d66152943811dc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479227"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566750"
 ---
-# <a name="business-critical-tier---azure-sql-database"></a>Obchodní vrstva kritické – Azure SQL Database
+# <a name="business-critical-tier---azure-sql-database"></a>Pro důležité obchodní informace úroveň – Azure SQL Database
 
 > [!NOTE]
-> Úroveň pro důležité obchodní je volána v model nákupu DTU úrovně Premium. Porovnání nákupní model s založený na DTU nákupní model založený na virtuálních jádrech najdete v tématu [nákupu modely a prostředků Azure SQL Database](sql-database-purchase-models.md).
+> Pro důležité obchodní informace úroveň se označuje jako Premium v modelu nákupu DTU. Porovnání nákupního modelu založeného na DTU v vCore s nákupním modelem založeným na DTU najdete v tématu [Azure SQL Database nákupu modelů a prostředků](sql-database-purchase-models.md).
 
-Azure SQL Database je založené na architektuře databázový stroj SQL serveru, která je upravená pro cloudové prostředí, aby bylo možné zajistit 99,99 % dostupnost i v případě selhání infrastruktury. Existují tři modely architektury, které se používají ve službě Azure SQL Database:
-- Obecné účely nebo Standard 
-- Kritické obchodní nebo Premium
+Azure SQL Database vychází z architektury SQL Server databázového stroje, která je upravena pro cloudové prostředí s cílem zajistit 99,99% dostupnost i v případě selhání infrastruktury. Existují tři modely architektury, které se používají v Azure SQL Database:
+- Pro obecné účely/Standard 
+- Pro důležité obchodní informace/Premium
 - Hyperškálování
 
-Model vrstvy úrovně Premium/důležitých služby je založen na cluster procesy modulu databáze. Tento Architektonický model závisí na skutečnost, že existuje, bude vždy Kvorum uzlů k dispozici databáze modul a má minimální vliv zatížení vliv na vaši sadu funkcí i během údržby nevyžadovala.
+Model úrovně služeb Premium/Pro důležité obchodní informace je založený na clusteru procesů databázového stroje. Tento model architektury spoléhá na skutečnost, že je vždy kvorum dostupných uzlů databázového stroje a má minimální dopad na výkon na vaše úlohy, a to i během aktivit údržby.
 
-Azure upgradů a oprav základního operačního systému, ovladačů a databázový stroj SQL serveru transparentně s minimálními výpadkům pro koncové uživatele. 
+Upgrady a opravy Azure odchází z operačního systému, ovladačů a SQL Server databázového stroje s minimálním časovým intervalem pro koncové uživatele. 
 
-Premium dostupnosti je povolený v úrovních Premium a pro důležité obchodní informace služby Azure SQL Database a je určeno pro intenzivní úlohy, které nemůžou tolerovat ovlivnit výkon z důvodu operace průběžnou údržbu.
+Dostupnost Premium je povolená v úrovni Premium a Pro důležité obchodní informace úrovně služeb Azure SQL Database a je navržená pro náročné úlohy, které nemůžou tolerovat dopad na výkon kvůli probíhajícím operacím údržby.
 
-V modelu úrovně premium Azure SQL database integruje výpočetní výkon a úložiště na jeden uzel. Zajištění vysoké dostupnosti v této architektuře modelu se dosahuje prostřednictvím replikace výpočetního prostředí (SQL Server Database Engine proces) a úložiště (místně připojených jednotkách SSD) nasazené v clusteru se čtyřmi uzly pomocí technologie podobný SQL serveru [Always On Skupiny dostupnosti](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
+V modelu Premium Azure SQL Database integruje výpočetní prostředky a úložiště na jednom uzlu. Vysoká dostupnost v tomto modelu architektury se dosahuje replikací výpočetních prostředků (SQL Server procesu databázového stroje) a úložiště (místně připojené jednotky SSD) nasazených ve čtyřech uzlech clusteru s použitím technologie podobně jako SQL Server [skupiny dostupnosti Always On. ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server).
 
-![Databázové stroje uzly clusteru](media/sql-database-managed-instance/business-critical-service-tier.png)
+![Cluster uzlů databázového stroje](media/sql-database-managed-instance/business-critical-service-tier.png)
 
-Obě SQL database proces modulu a základní, které soubory mdf a ldf jsou umístěny na stejném uzlu s místně připojené úložiště SSD, které poskytuje nízkou latenci pro vaši úlohu. Vysoká dostupnost je implementována pomocí technologie podobný SQL serveru [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Každá databáze je cluster databázové uzly se jedna primární databáze, který je přístupný pro úlohu zákazníka a tři sekundární procesy kopie dat, který obsahuje. Primárního uzlu neustále nasdílí změny do sekundární uzly aby se zajistilo, že data jsou k dispozici na sekundárních replikách, pokud z nějakého důvodu dojde k chybě primárního uzlu. Převzetí služeb při selhání se zpracovává souborem databázový stroj SQL serveru – jedna sekundární replika se stane primárním uzlu a zajistit dostatek uzlů v clusteru se vytvoří sekundární repliku. Zatížení je automaticky přesměrován na nový primární uzel.
+Proces SQL Database Engine i zdrojové soubory MDF a LDF jsou umístěné na stejném uzlu s místně připojeným úložištěm SSD, které poskytuje nízkou latenci pro vaše zatížení. Vysoká dostupnost se implementuje pomocí technologie podobné SQL Server [skupinám dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Každá databáze je cluster databázových uzlů s jednou primární databází, která je přístupná pro úlohy zákazníka, a třemi sekundárními procesy, které obsahují kopie dat. Primární uzel průběžně přenáší změny do sekundárních uzlů, aby bylo zajištěno, že data jsou k dispozici na sekundárních replikách, pokud dojde k selhání primárního uzlu z jakéhokoli důvodu. Převzetí služeb při selhání je zpracováváno databázovým strojem SQL Server – jedna sekundární replika se stal primárním uzlem a vytvoří se nová sekundární replika, která zajistí dostatek uzlů v clusteru. Zatížení se automaticky přesměruje na nový primární uzel.
 
-Kromě toho pro důležité obchodní informace clusteru má integrovanou [horizontální navýšení kapacity pro čtení](sql-database-read-scale-out.md) funkci, která poskytuje zdarma z účtovat předdefinovaný uzel jen pro čtení, který slouží ke spouštění jen pro čtení dotazů (například sestavy), které by neměla mít vliv na výkon primární úlohy.
+Kromě toho Pro důležité obchodní informace cluster obsahuje integrovanou možnost [škálování pro čtení](sql-database-read-scale-out.md) , která poskytuje bezplatný integrovaný uzel jen pro čtení, který se dá použít ke spouštění dotazů jen pro čtení (například sestav), které by neměly mít vliv na výkon vaší primární služby. úlohy.
 
-## <a name="when-to-choose-this-service-tier"></a>Kdy zvolit tuto úroveň služeb?
+## <a name="when-to-choose-this-service-tier"></a>Kdy zvolit tuto úroveň služby?
 
-Obchodní kritické služby vrstva je určená pro aplikace, které vyžadují nízkou latenci odpovědi od základního úložiště SSD (v průměru 1 až 2 ms), rychlé obnovení selže základní infrastruktury nebo nutnost vyvážila sestavy, analýzy a jen pro čtení dotazy k bezplatné poplatek čitelnou sekundární repliku primární databáze.
+Úroveň služby Pro důležité obchodní informace je navržená pro aplikace, které vyžadují odezvy s nízkou latencí z podkladového úložiště SSD (průměrně 1-2 MS), rychlé obnovení v případě, že se podkladová infrastruktura nezdařila nebo pokud je potřeba mimo jiné načítat sestavy, analýzy a jen pro čtení. dotazuje se na bezplatně čitelnou sekundární repliku primární databáze.
 
 ## <a name="next-steps"></a>Další postup
 
-- Vyhledání vlastnosti prostředku (počet jader, vstupně-výstupních operací, paměť) pro důležité obchodní informace vrstvy v [Managed Instance](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), jedna databáze v [modelu virt. jader](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute-tier) nebo [DTU modelu](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier), nebo elastické fond v [modelu virt. jader](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) a [DTU modelu](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
-- Další informace o [Obecné](sql-database-service-tier-general-purpose.md) a [Hyperškálovatelného](sql-database-service-tier-hyperscale.md) úrovně.
-- Další informace o [Service Fabric](../service-fabric/service-fabric-overview.md).
-- Další možnosti pro vysokou dostupnost a zotavení po havárii najdete v tématu [kontinuita podnikových procesů](sql-database-business-continuity.md).
+- Vyhledá charakteristiky prostředků (počet jader, vstupně-výstupních operací, paměti) Pro důležité obchodní informace úrovně ve [spravované instanci](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), izolovanou databázi v [modelu Vcore](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute-tier) nebo [modelu DTU](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)nebo elastický fond v modelu [Vcore](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) a modelu [DTU](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
+- Přečtěte si o [pro obecné účely](sql-database-service-tier-general-purpose.md) a úrovních [škálování](sql-database-service-tier-hyperscale.md) .
+- Přečtěte si o [Service Fabric](../service-fabric/service-fabric-overview.md).
+- Další možnosti pro vysokou dostupnost a zotavení po havárii najdete v tématu [Kontinuita podnikových aplikací](sql-database-business-continuity.md).

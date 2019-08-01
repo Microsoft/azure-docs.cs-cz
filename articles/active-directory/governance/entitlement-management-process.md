@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ad17f4c4d338e1d0b8118c1a172e0aaad7118e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: eb5f322d8bc974274f7f2da7811b124499224635
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489104"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678129"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Žádost o proces a e-mailová oznámení ve správě nároků Azure AD (Preview)
 
@@ -47,7 +47,7 @@ Uživatel, který potřebuje přístup k přístupovému balíčku, může odesl
 | Vypršela platnost | Pokud žádný schvalovatel neschválí žádost v rámci časového limitu žádosti o schválení, vyprší platnost žádosti. Chcete-li akci opakovat, bude uživatel muset odeslat žádost znovu. |
 | Odmítnuté | Schvalovatel odepře požadavek. |
 | Schválené | Schvalovatel schválí žádost. |
-| Doručování | Uživatel **nemá** přiřazený přístup ke všem prostředkům v balíčku pro přístup. Pokud se jedná o externího uživatele, uživatel ještě nepoužil adresář prostředků a nepřijal výzvu k oprávnění. |
+| Doručování | Uživatel **nemá** přiřazený přístup ke všem prostředkům v balíčku pro přístup. Pokud se jedná o externího uživatele, uživatel se ještě možná nepřipojil k adresáři prostředků a nepřijal výzvu k vyjádření souhlasu. |
 | Doručeno | Uživatel má přiřazený přístup ke všem prostředkům v balíčku pro přístup. |
 | Přístup rozšířený | Pokud jsou v zásadách povoleny rozšíření, uživatel rozšíření přiřazení. |
 | Platnost přístupu vypršela | Vypršela platnost přístupu uživatele k balíčku přístupu. K opětovnému získání přístupu bude uživatel muset odeslat žádost. |
@@ -91,7 +91,7 @@ Po odepření žádosti o přístup se žadateli pošle e-mailové oznámení. T
 
 ![E-mail s žádostí o přístup vypršel](./media/entitlement-management-process/email-expired-access-request.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Vyžádat přístup k balíčku přístupu](entitlement-management-request-access.md)
 - [Schválení nebo zamítnutí žádostí o přístup](entitlement-management-request-approve.md)

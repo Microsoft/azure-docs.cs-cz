@@ -1,6 +1,6 @@
 ---
-title: Alias DNS pro službu Azure SQL Database | Dokumentace Microsoftu
-description: Vaše aplikace můžou připojit k alias pro název vašeho serveru Azure SQL Database. Mezitím můžete změnit databázi SQL s aliasem, který se odkazuje na kdykoli a usnadňuje testování a tak dále.
+title: Alias DNS pro Azure SQL Database | Microsoft Docs
+description: Vaše aplikace se můžou připojit k aliasu pro název vašeho serveru Azure SQL Database. Mezitím můžete změnit SQL Database alias na kdykoli, abyste usnadnili testování a tak dále.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -10,109 +10,108 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: genemi, ayolubek, jrasnick
-manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: bb38f73308fb1eb67be310120cb589cb9412e737
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 3d0a4b5890ed5758f4045459815fb4ebbffe75c6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461830"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68550655"
 ---
-# <a name="dns-alias-for-azure-sql-database"></a>Alias DNS pro službu Azure SQL Database
+# <a name="dns-alias-for-azure-sql-database"></a>Alias DNS pro Azure SQL Database
 
-Azure SQL Database má server systému DNS (Domain Name). Prostředí PowerShell a rozhraní REST API přijmout [volání můžete vytvářet a spravovat aliasy DNS](#anchor-powershell-code-62x) pro název databáze SQL serveru.
+Azure SQL Database má server DNS (Domain Name System). Prostředí PowerShell a rozhraní REST API přijímají [volání pro vytváření a správu aliasů DNS](#anchor-powershell-code-62x) pro název vašeho serveru SQL Database.
 
-A *DNS alias* jde použít místo názvu serveru Azure SQL Database. Klientské programy můžete použít alias ve svých připojovacích řetězců. DNS alias poskytuje transakční vrstva, která můžete přesměrovat klientských programů na různých serverech. Tato vrstva ušetří potíže a hledání a úprava všech klientů a jejich připojovací řetězce.
+Namísto názvu Azure SQL Database serveru se dá použít *alias DNS* . Klientské programy můžou alias používat v připojovacích řetězcích. Alias DNS poskytuje vrstvu překladu, která může přesměrovat klientské programy na různé servery. Tato vrstva si vyprázdní problémy při hledání a úpravách všech klientů a jejich připojovacích řetězců.
 
-Mezi běžná použití aliasu DNS patří následujících případech:
+Mezi běžné použití aliasu DNS patří následující případy:
 
-- Vytvoření snadno zapamatovatelné jméno pro Azure SQL Server.
-- Během počáteční vývoje testovací server služby SQL Database najdete váš alias. Když aplikace přejde za provozu, můžete upravit alias pro odkazování na provozním serveru. Přechod z testovacího do produkčního prostředí nevyžaduje žádné změny konfigurace několik klientů, které se připojují k databázovému serveru.
-- Předpokládejme, že jediná databáze ve vaší aplikaci se přesune na jiný server SQL Database. Zde můžete upravit alias aniž byste museli měnit konfiguraci z několika klientů.
-- Během oblastního výpadku geografické obnovení použijte k obnovení databáze na jiný server a oblast. Můžete upravit tak, aby odkazovala na nový server tak, aby stávající klientská aplikace může znovu připojit k němu vaše existující alias. 
+- Vytvořte si snadno zapamatovatelné jméno pro Azure SQL Server.
+- Při počátečním vývoji může váš alias odkazovat na testovací SQL Database Server. Když bude aplikace živá, můžete alias upravit tak, aby odkazoval na provozní server. Přechod z testu do produkčního prostředí nevyžaduje žádnou změnu konfigurace několika klientů, kteří se připojují k databázovému serveru.
+- Předpokládejme, že je jediná databáze ve vaší aplikaci přesunuta na jiný server SQL Database. Tady můžete alias upravit, aniž byste museli měnit konfiguraci několika klientů.
+- Během regionálního výpadku použijete geografické obnovení k obnovení databáze na jiném serveru a oblasti. Existující alias můžete upravit tak, aby odkazoval na nový server, aby se stávající klientská aplikace mohla znovu připojit. 
 
-## <a name="domain-name-system-dns-of-the-internet"></a>Domain Name System (DNS) z Internetu
+## <a name="domain-name-system-dns-of-the-internet"></a>DNS (Domain Name System) Internetu
 
-Internet závisí na DNS. DNS překládá popisné názvy do názvu serveru Azure SQL Database.
+Internet spoléhá na DNS. DNS překládá vaše popisné názvy na název vašeho serveru Azure SQL Database.
 
-## <a name="scenarios-with-one-dns-alias"></a>Scénáře s jeden alias DNS
+## <a name="scenarios-with-one-dns-alias"></a>Scénáře s jedním aliasem DNS
 
-Předpokládejme, že potřebujete přepnout systému na nový server Azure SQL Database. V minulosti jste museli najít a aktualizovat všechny připojovací řetězec ve více programech klienta. Ale nyní DNS alias používáte připojovací řetězce pouze vlastnost alias musí být aktualizovány.
+Předpokládejme, že je nutné přepnout systém na nový server Azure SQL Database. V minulosti jste potřebovali vyhledat a aktualizovat všechny připojovací řetězce v každém klientském programu. Ale teď, pokud připojovací řetězce používají alias DNS, je nutné aktualizovat pouze vlastnost alias.
 
-Funkce alias DNS služby Azure SQL Database může pomoct v těchto scénářích:
+Funkce aliasu DNS Azure SQL Database může pomáhat v následujících scénářích:
 
-### <a name="test-to-production"></a>Test do produkčního prostředí
+### <a name="test-to-production"></a>Testování do produkčního prostředí
 
-Při spuštění vývoji klientských programů dát použít DNS alias v jejich připojovací řetězce. Vlastnosti bodu alias provedete na zkušební verzi serveru Azure SQL Database.
+Když začnete vyvíjet klientské programy, požádejte je pomocí aliasu DNS ve svých připojovacích řetězcích. Vlastnosti aliasu můžete nastavit na testovací verzi serveru Azure SQL Database.
 
-Později při přechodu na nový systém naživo v produkčním prostředí, můžete aktualizovat vlastnosti aliasu, aby odkazoval na produkční server SQL Database. Žádné změny klientské programy je nezbytné.
+Později po zprovoznění nového systému v produkčním prostředí můžete aktualizovat vlastnosti aliasu tak, aby odkazovaly na provozní SQL Database Server. Nejsou nutné žádné změny klientských programů.
 
-### <a name="cross-region-support"></a>Podpora mezi oblastmi
+### <a name="cross-region-support"></a>Podpora různých oblastí
 
-Zotavení po havárii může posunout vaše databáze SQL server v jiné geografické oblasti. Pro systém, který se používá DNS alias se můžete vyhnout se nutnosti najít a aktualizovat připojovací řetězce pro všechny klienty. Místo toho můžete aktualizovat alias jako reference na nový server databáze SQL, který je teď hostitelem databáze.
+Zotavení po havárii může přesunout server SQL Database do jiné geografické oblasti. V případě systému, který používá alias DNS, je možné vyhnout se nutnosti najít a aktualizovat všechny připojovací řetězce pro všechny klienty. Místo toho můžete alias aktualizovat tak, aby odkazoval na nový SQL Database Server, který je teď hostitelem vaší databáze.
 
-## <a name="properties-of-a-dns-alias"></a>Vlastnosti DNS alias
+## <a name="properties-of-a-dns-alias"></a>Vlastnosti aliasu DNS
 
-Následující vlastnosti se vztahují na každý alias DNS pro server SQL Database:
+Následující vlastnosti se vztahují na všechny aliasy DNS pro váš SQL Database Server:
 
-- *Jedinečný název:* Každý název aliasu, který vytvoříte je jedinečná napříč všemi servery Azure SQL Database, stejně, jako jsou názvy serverů.
-- *Je vyžadován server:* DNS alias nelze vytvořit, pokud odkazuje na právě jeden server a server už musí existovat. Aktualizované alias vždy musí odkazovat přesně na jednom stávajícím serveru.
-  - Při umístění serveru SQL Database systému Azure i zahodí všechny aliasy DNS, které odkazují na serveru.
-- *Bez vazby na libovolné oblasti:* Aliasy DNS nejsou vázány na oblast. Všechny aliasy DNS je možné aktualizovat k odkazování na serveru Azure SQL Database, které se nacházejí v libovolné geografické oblasti.
-  - Ale při aktualizaci aliasu pro odkazování na jiný server, oba servery, musí existovat ve stejné *předplatné*.
-- *Oprávnění:* Ke správě DNS alias, musí mít uživatel *Přispěvatel serveru* oprávnění, nebo vyšší. Další informace najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](../role-based-access-control/overview.md).
+- *Jedinečný název:* Každý název aliasu, který vytvoříte, je jedinečný na všech Azure SQL Database serverech, stejně jako názvy serverů.
+- *Vyžaduje se server:* Alias DNS nelze vytvořit, pokud neodkazuje přesně na jeden server a server již musí existovat. Aktualizovaný alias musí vždy odkazovat přesně na jeden existující server.
+  - Když vyřadíte SQL Database Server, systém Azure také zruší všechny aliasy DNS, které na server odkazují.
+- *Není svázána s žádnou oblastí:* Aliasy DNS nejsou svázané s oblastí. Jakékoli aliasy DNS je možné aktualizovat, aby odkazovaly na Azure SQL Database Server, který se nachází v libovolné geografické oblasti.
+  - Když ale aktualizujete alias tak, aby odkazoval na jiný server, musí oba servery existovat ve stejném předplatném Azure.
+- *Nastaven* Aby uživatel mohl spravovat alias DNS, musí mít oprávnění *přispěvatele serveru* nebo vyšší. Další informace najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../role-based-access-control/overview.md).
 
-## <a name="manage-your-dns-aliases"></a>Spravovat vaše aliasy DNS
+## <a name="manage-your-dns-aliases"></a>Správa aliasů DNS
 
-Rutiny Powershellu a rozhraní REST API jsou k dispozici umožňují programově spravovat vaše aliasy DNS.
+K dispozici jsou jak rozhraní REST API, tak rutiny PowerShellu, které vám umožní programově spravovat vaše aliasy DNS.
 
-### <a name="rest-apis-for-managing-your-dns-aliases"></a>REST API pro správu vašich aliasy DNS
+### <a name="rest-apis-for-managing-your-dns-aliases"></a>Rozhraní REST API pro správu aliasů DNS
 
-V dokumentaci k rozhraní REST API je k dispozici v následujícím umístění na webu:
+Dokumentace k rozhraním REST API je k dispozici v blízkosti následujícího webového umístění:
 
-- [Rozhraní REST API služby Azure SQL Database](https://docs.microsoft.com/rest/api/sql/)
+- [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)
 
-Také rozhraní REST API najdete v Githubu na:
+Rozhraní REST API můžete také vidět v GitHubu na adrese:
 
-- [Server služby Azure SQL Database, DNS alias rozhraní REST API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/sql/resource-manager/Microsoft.Sql/preview/2017-03-01-preview/serverDnsAliases.json)
+- [Azure SQL Database Server, rozhraní REST API aliasu DNS](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/sql/resource-manager/Microsoft.Sql/preview/2017-03-01-preview/serverDnsAliases.json)
 
 <a name="anchor-powershell-code-62x"/>
 
-#### <a name="powershell-for-managing-your-dns-aliases"></a>Prostředí PowerShell pro správu vašich aliasy DNS
+#### <a name="powershell-for-managing-your-dns-aliases"></a>PowerShell pro správu aliasů DNS
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
-Rutiny Powershellu jsou dostupné, které volají rozhraní REST API.
+K dispozici jsou rutiny PowerShellu, které volají rozhraní REST API.
 
-Příklad kódu používá ke správě aliasy DNS rutiny prostředí PowerShell je popsána v:
+Příklad kódu rutin PowerShellu, který se používá ke správě aliasů DNS, je popsaný na adrese:
 
-- [Prostředí PowerShell pro Alias DNS do služby Azure SQL Database](dns-alias-powershell.md)
+- [PowerShell pro Azure SQL Database aliasu DNS](dns-alias-powershell.md)
 
-Rutiny používané v příkladu kódu jsou následující:
+Rutiny používané v tomto příkladu kódu jsou následující:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Vytvoří nový alias DNS v systému služby Azure SQL Database. Alias odkazuje na serveru Azure SQL Database 1.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Získání a seznam všechny aliasy DNS, které jsou přiřazeny k serveru SQL DB 1.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Upraví název serveru alias nakonfigurovaný tak, aby si ze serveru 1 do databáze SQL serveru 2.
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Odebrání DNS alias serveru SQL DB 2, pomocí názvu aliasu.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Vytvoří nový alias DNS v systému Azure SQL Database služby. Alias odkazuje na Azure SQL Database Server 1.
+- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Získá a vypíše všechny aliasy DNS, které jsou přiřazené k serveru SQL DB Server 1.
+- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Upraví název serveru, na který je nakonfigurován odkaz, ze serveru 1 na server SQL DB Server 2.
+- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Odeberte alias DNS ze serveru SQL DB Server 2 pomocí názvu aliasu.
 
-## <a name="limitations-during-preview"></a>Omezení ve verzi preview
+## <a name="limitations-during-preview"></a>Omezení ve verzi Preview
 
-V současné době DNS alias má následující omezení:
+V současné době má alias DNS tato omezení:
 
-- *Zpoždění až 2 minut:* Trvá až 2 minut aliasu DNS pro aktualizace nebo odstranění.
-  - Bez ohledu na krátké prodlevě alias okamžitě zastaví odkazující připojení klientů pro starší verze serveru.
-- *Vyhledávání DNS:* Prozatím pouze autoritativní způsob, jak zkontrolovat, co server dané DNS alias odkazuje na je pomocí provádí [vyhledávání DNS](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
-- _Auditování tabulek není podporován:_ DNS alias nelze použít na serveru Azure SQL Database, který má *auditování tabulek* na databázi povolená.
-  - Auditování tabulek je zastaralá.
-  - Doporučujeme vám, že přejdete na [auditování objektů Blob](sql-database-auditing.md).
+- *Zpoždění až do 2 minut:* Aktualizace nebo odebrání aliasu DNS trvá až 2 minuty.
+  - Bez ohledu na krátké zpoždění přestane alias okamžitě přesměrovat odkazy na připojení klientů na starší verzi serveru.
+- *Vyhledání DNS:* V současné době je jediným autoritativním způsobem, jak zkontrolovat, na který server daný alias DNS odkazuje, způsob provádění [vyhledávání DNS](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
+- _Auditování tabulek není podporováno:_ Alias DNS nelze použít na serveru Azure SQL Database, který má povoleno *auditování tabulek* v databázi.
+  - Auditování tabulek je zastaralé.
+  - Doporučujeme přejít na [auditování objektů BLOB](sql-database-auditing.md).
 
 ## <a name="related-resources"></a>Související prostředky
 
-- [Přehled kontinuity se službou Azure SQL Database](sql-database-business-continuity.md), včetně zotavení po havárii.
+- [Přehled provozní kontinuity s Azure SQL Database](sql-database-business-continuity.md), včetně zotavení po havárii.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Prostředí PowerShell pro Alias DNS do služby Azure SQL Database](dns-alias-powershell.md)
+- [PowerShell pro Azure SQL Database aliasu DNS](dns-alias-powershell.md)
