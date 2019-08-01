@@ -1,82 +1,82 @@
 ---
-title: Principy digitální dvojče objektové modely a Prostorové řady grafu | Dokumentace Microsoftu
+title: Informace o objektových modelech a grafu prostorové Intelligence pro digitální vlákna | Microsoft Docs
 description: Využijte novou službu Azure Digital Twins k modelování vztahů mezi lidmi, místy a zařízeními
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 07/29/2019
 ms.author: alinast
-ms.openlocfilehash: e7efe1a8632643e2a299b6c9a1b1407414deee4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bb7309ae452b2885be279d1ab38b8467397f2f8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60925778"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638493"
 ---
-# <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Principy digitální dvojče objektové modely a Prostorové řady grafu
+# <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Informace o objektových modelech a grafu prostorové Intelligence pro digitální vlákna
 
-Azure digitální dvojče je služba Azure IoT, která je základem komplexní virtuální reprezentace fyzického prostředí a přiřazená zařízení, senzory a lidí. Zdokonaluje vývoj uspořádáním koncepty specifického pro doménu do užitečné modelů. Tyto modely pak nacházejí Prostorové řady grafu. Tyto koncepty věrně modelovat vztahy a interakce mezi lidmi, mezery a zařízení.
+Digitální vlákna Azure je služba Azure IoT, která umožňuje komplexní virtuální reprezentace fyzických prostředí a přidružených zařízení, senzorů a lidí. Zlepšuje vývoj díky uspořádání konceptů specifických pro doménu do užitečných modelů. Modely se pak nacházejí v grafu prostorové Intelligence. Tyto koncepty věrně modelují vztahy a interakce mezi lidmi, mezerami a zařízeními.
 
-Digitální dvojče objektové modely popisují koncepty specifického pro doménu, kategorie a vlastnosti. Uživatelé, kteří chtějí přizpůsobit řešení tak, aby jejich konkrétní potřeby jsou předdefinované modely. Společně tyto předdefinované digitální dvojče tvoří objektových modelů _ontology_. Chytré budovy ontology popisuje oblasti, místa, podlahy, pobočky, zóny, konferenčních místnostech dojde a místnosti fokus. Mřížce ontology energie popisuje různé elektrárny Rozvodny, zdrojů energie a zákazníky. Díky digitální dvojče objektové modely a ontologie je možné přizpůsobit nejrůznější scénáře a požadavky.
+Klíčové modely digitálních vláken popisují koncepty, kategorie a vlastnosti specifické pro doménu. Modely jsou předdefinované uživateli, kteří chtějí řešení přizpůsobit podle svých konkrétních potřeb. Dohromady tyto předdefinované digitální vlákna tvoří objekty _Ontology_. Ontology pro inteligentní budova popisuje oblasti, místa, podlahy, pobočky, zóny, konferenční místnosti a místnosti pro výběr. Energetická mřížka Ontology popisuje různé napájecí stanice, podstanice, zdroje energie a zákazníky. U digitálních vláken objektů a ontologie je možné přizpůsobit různé scénáře a potřeby.
 
-Díky digitální dvojče objektové modely a ontology na místě, která můžete naplnit _prostorový graf_. Prostorové grafy jsou virtuální reprezentace mnoho vztahů mezi mezerami, zařízení a osoby, které jsou relevantní pro řešení IoT. Tento diagram znázorňuje příklad prostorový graf, který používá ontology Chytré budovy.
+U digitálních vláken objektů a Ontology je možné naplnit _prostorový graf_. Prostorové grafy jsou virtuální reprezentace mnoha vztahů mezi mezerami, zařízeními a lidmi, které jsou relevantní pro řešení IoT. Tento diagram znázorňuje příklad prostorového grafu, který používá Ontology inteligentního sestavování.
 
-![Digitální vytváření Dvojčat prostorový graf][1]
+![Vytváření prostorových grafů v oblasti digitálních vláken][1]
 
 <a id="model"></a>
 
-Prostorový graf spojuje mezery, zařízení, senzorů a uživatelů. Každá je způsobem, který modeluje reálného světa vzájemně propojený. V této ukázce příslušností 43 má čtyři podlažích, každý s mnoha různých oblastech. Uživatelé jsou spojené s jejich pracovní stanice a poskytnut přístup k části grafu. Správce má oprávnění ke změnám prostorový graf, zatímco návštěvník má práva k zobrazení pouze určitá data sestavení.
+Prostorový graf se skládá z prostorů, zařízení, senzorů a uživatelů. Každá je propojená dohromady způsobem, který modeluje reálný svět. V této ukázce má místo 43 čtyři podlahová místa, z nichž každá má mnoho různých oblastí. Uživatelé jsou přidružení ke svým pracovním stanicím a mají přístup k částem grafu. Správce má oprávnění provádět změny prostorového grafu, zatímco návštěvník má práva pouze k zobrazení určitých dat o sestavách.
 
-## <a name="digital-twins-object-models"></a>Digitální dvojče objektové modely
+## <a name="digital-twins-object-models"></a>Digitální vlákna – objektové modely
 
-Digitální dvojče objektové modely podporují tyto hlavní kategorie objektů:
+Digitální vlákna objektových modelů podporují tyto hlavní kategorie objektů:
 
-- **Mezery** jsou virtuální nebo fyzické umístění, například `Tenant`, `Customer`, `Region`, a `Venue`.
-- **Zařízení** jsou části virtuálních nebo fyzických zařízení, například `AwesomeCompany Device` a `Raspberry Pi 3`.
-- **Senzorů** jsou objekty, které zjišťování událostí, například `AwesomeCompany Temperature Sensor` a `AwesomeCompany Presence Sensor`.
-- **Uživatelé** identifikaci osob a jejich vlastností.
+- **Mezery** `Tenant`jsou virtuální nebo fyzická umístění, například `Customer` `Region`,, a `Venue`.
+- **Zařízení** jsou virtuální nebo fyzická zařízení, například `AwesomeCompany Device` a. `Raspberry Pi 3`
+- **Senzory** jsou objekty, které zjišťují události, například `AwesomeCompany Temperature Sensor` a `AwesomeCompany Presence Sensor`.
+- **Uživatelé** identifikují osoby a jejich charakteristiky.
 
-Další kategorie objekty jsou:
+Další kategorie objektů jsou:
 
-- **Prostředky** jsou připojeny k mezerou a obvykle představují prostředky Azure používané objekty v prostorový graf, například `IoTHub`.
-- **Objekty BLOB** jsou připojeny k objektům (např. mezery, zařízení, senzorů a uživatele). Slouží jako soubory s typ mime a metadata, například `maps`, `pictures`, a `manuals`.
-- **Rozšířené typy** jsou extensible výčty, které rozšiřují entity s konkrétními vlastnostmi, třeba `SpaceType` a `SpaceSubtype`.
-- **Ontologie** představují sadu typů rozšířené, například `Default`, `Building`, `BACnet`, a `EnergyGrid`.
-- **Vlastnost klíče a hodnoty** jsou vlastní vlastnosti mezery, zařízení, senzorů a uživatelů. Jejich lze použít společně s integrované vlastnosti, například `DeltaProcessingRefreshTime` jako klíč a `10` jako hodnotu.
-- **Role** jsou sady oprávnění přiřazená k uživatelům a zařízením v prostorový graf, například `Space Administrator`, `User Administrator`, a `Device Administrator`.
-- **Přiřazení rolí** se přidružení mezi role a objekt v prostorových grafu. Například uživatel nebo instanční objekt služby můžete udělit oprávnění ke správě mezeru prostorových grafu.
-- **Úložiště klíčů zabezpečení** poskytnutí klíčů zabezpečení pro všechna zařízení v hierarchii v rámci dané místo objektu a umožňuje zabezpečeně komunikovat se službou digitální dvojče zařízení.
-- **Uživatelem definované funkce** (UDF) povolit telemetrii přizpůsobitelné senzor zpracování v rámci prostorový graf. Například můžete uživatelem definovanou FUNKCI:
-  - Nastavte hodnotu senzoru.
-  - Provést vlastní logiku podle údajů snímačů přes a nastavte výstup na znak.
-  - Metadata se připojte k mezerou.
-  - Odesílání oznámení, pokud předem definované podmínky jsou splněny. Uživatelem definovanými funkcemi v současné době je možné psát v jazyce JavaScript.
-- **Procesy pro hledání shody** jsou objekty, které určují, které UDF jsou spouštěny pro danou telemetrické zprávy.
-- **Koncové body** jsou umístění, ve kterém zprávy telemetrie a událostí digitálním Dvojčata je možné směrovat, například `Event Hub`, `Service Bus`, a `Event Grid`.
+- **Prostředky** jsou připojené k prostoru a obvykle představují prostředky Azure, které budou používat objekty v prostorovém grafu, `IoTHub`například.
+- Objekty **BLOB** jsou připojené k objektům (například k prostorům, zařízením, senzorům a uživatelům). Používají se jako soubory s typem MIME a metadaty, například `maps` `pictures`, a `manuals`.
+- **Rozšířené typy** jsou rozšiřitelné výčty, které rozšiřují entity o konkrétní charakteristiky `SpaceType` , `SpaceSubtype`například a.
+- **Ontologie** představuje sadu `Default`rozšířených typů, `Building` `BACnet`například,, a `EnergyGrid`.
+- **Klíče a hodnoty vlastností** jsou vlastní charakteristiky mezer, zařízení, senzorů a uživatelů. Je možné je použít spolu s vestavěnými charakteristikami, například `DeltaProcessingRefreshTime` jako klíčová a `10` jako hodnota.
+- **Role** jsou sady oprávnění přiřazené uživatelům a zařízením v prostorovém grafu, například `Space Administrator` `User Administrator`, a `Device Administrator`.
+- **Přiřazení rolí** jsou přidružení mezi rolí a objektem v prostorovém grafu. Například uživateli nebo instančnímu objektu může být uděleno oprávnění ke správě prostoru v prostorovém grafu.
+- **Úložiště klíčů zabezpečení** poskytují klíče zabezpečení pro všechna zařízení v hierarchii v rámci daného objektu prostor, aby bylo možné zařízení bezpečně komunikovat s digitálními podmnožinami.
+- **Uživatelsky definované funkce** (UDF) umožňují přizpůsobitelné zpracování telemetrie senzorů v prostorovém grafu. Systém UDF může například:
+  - Nastavte hodnotu snímače.
+  - Proveďte vlastní logiku na základě čtených senzorů a nastavte výstup na mezeru.
+  - Připojte metadata k prostoru.
+  - Odeslat oznámení, pokud jsou splněny předdefinované podmínky. V současné době je možné UDF zapisovat do JavaScriptu.
+- **Shody** jsou objekty, které určují, které UDF jsou spouštěny pro danou zprávu telemetrie.
+- **Koncové body** jsou umístění, kde lze směrovat zprávy telemetrie a události digitálních vláken, například `Event Hub` `Service Bus`,, a `Event Grid`.
 
 <a id="graph"></a>
 
 ## <a name="spatial-intelligence-graph"></a>Graf prostorové inteligence
 
-Prostorový graf je hierarchický graf mezery, zařízení a lidí definovaný v objektovém modelu digitální dvojče. Prostorový graf podporuje dědičnosti, filtrování, procházení, škálovatelnost a rozšiřitelnost. Můžete spravovat a interakci s vaší prostorový graf s sadu rozhraní REST API.
+Prostorový graf je hierarchický graf prostorů, zařízení a osob definovaných v objektovém modelu digitálních vláken. Prostorový graf podporuje dědičnost, filtrování, procházení, škálovatelnost a rozšiřitelnost. Pomocí kolekce rozhraní REST API můžete spravovat prostorový graf a pracovat s nimi.
 
-Pokud nasadíte službu, digitální dvojče ve vašem předplatném, stanete globálním správcem kořenového uzlu. Pak máte plný přístup k celé struktury automaticky udělena. Zřízení mezery v graphu pomocí rozhraní API místa. Zřizovat služby pomocí rozhraní API zařízení a senzorů s použitím rozhraní API senzoru. [Open source nástrojů](https://github.com/Azure-Samples/digital-twins-samples-csharp) jsou také dostupné ke zřizování grafu hromadně.
+Pokud ve svém předplatném nasadíte službu digitálního vlákna, stane se globální správce kořenového uzlu. Pak budete automaticky mít plný přístup k celé struktuře. Prostory v grafu zřídíte pomocí rozhraní API pro prostor. Pomocí rozhraní API pro senzory zřiďte služby pomocí rozhraní API a senzorů zařízení. K dispozici jsou také [Open Source nástroje](https://github.com/Azure-Samples/digital-twins-samples-csharp) pro zajištění hromadného zřízení grafu.
 
-**Graf dědičnosti**. Dědičnost se vztahuje na oprávnění a vlastnosti, které sestup od nadřazeného uzlu na všechny uzly pod ním. Například při role je přiřazená uživateli v daném uzlu, má uživatel danou roli oprávnění pro daný uzel a každý uzel pod ní. Každý klíč vlastnosti a definované pro daný uzel Rozšířený typ zdědí všechny uzly pod tento uzel.
+**Dědičnost grafu** Dědičnost se vztahuje k oprávněním a vlastnostem, které dovede od nadřazeného uzlu na všechny uzly pod ním. Například když je role přiřazena uživateli na daném uzlu, má uživatel oprávnění této role pro daný uzel a každý uzel pod ním. Každý klíč vlastnosti a rozšířený typ definovaný pro daný uzel je děděn všemi uzly pod tímto uzlem.
 
-**Filtrování grafu**. Filtrování umožňuje zúžit výsledky požadavku. Můžete filtrovat podle ID, název, typy, podtypy, nadřazené místo a přidružené mezery. Můžete také filtrovat podle senzor datové typy, vlastnosti klíče a hodnoty, *procházení*, *minLevel*, *maxLevel*a další parametry filtru OData.
+**Filtrování grafu**. Filtrování se používá k zúžení výsledků požadavků. Můžete filtrovat podle ID, názvu, typů, podtypů, nadřazeného prostoru a přidružených prostorů. Můžete také filtrovat podle datových typů senzorů, klíčů vlastností a hodnot, *procházením*, *minLevel*, *MaxLevel*a dalších parametrů filtru OData.
 
-**Procházení grafu**. Můžete procházet prostorový graf prostřednictvím své znalosti a možnosti. Pro hloubka, procházet graf shora dolů nebo zdola nahoru pomocí parametrů *procházení*, *minLevel*, a *maxLevel*. Procházet graphu a získat přímo připojené k nadřazené mezeru nebo jeden z jejich potomků pak pro šířka uzlů na stejné úrovni. Když odešlete dotaz na objekt, můžete získat všechny související objekty, které mají relace na tento objekt s použitím *zahrnuje* parametr rozhraní API pro získání.
+**Procházení grafů**. Prostorový graf můžete procházet jeho hloubkou a změnou šířky. Pro hloubku přesměrujte graf nahoru nebo dolů pomocí parametrů *Procházet*, *minLevel*a *maxLevel*. Procházením grafu můžete získat uzly na stejné úrovni přímo připojené k nadřazenému prostoru nebo jednomu z jeho potomků pro účely šířky. Při dotazování objektu můžete získat všechny související objekty, které mají relaci k tomuto objektu, pomocí parametru *include* rozhraní API Get.
 
-**Graf škálovatelnost**. Digitální dvojče zaručuje grafu škálovatelnost, takže mohou zpracovat vaše úlohy v reálném světě. Digitální Dvojčata je možné znázornit rozsáhlá portfolia nemovitosti, infrastruktury, zařízení, senzory, telemetrie a další.
+**Škálovatelnost grafu**. Digitální vlákna zaručují škálovatelnost grafu, takže dokáže zvládnout reálné úlohy. Digitální vlákna se dají použít k reprezentování rozsáhlých portfolií v oblasti nemovitostí, infrastruktury, zařízení, senzorů, telemetrie a dalších.
 
-**Rozšiřitelnost rozhraní Graph**. Pomocí rozšíření můžete přizpůsobit základní modely objektů digitální dvojče se nové typy a ontologie. Vaše digitální dvojče data můžete také rozšiřují o extensible vlastnosti a hodnoty.
+**Rozšiřitelnost grafu** Pomocí rozšiřitelnosti můžete přizpůsobit základní modely objektů digitálních vláken novými typy a ontologie. Data digitálního vlákna je také možné rozšířit pomocí rozšiřitelných vlastností a hodnot.
 
-### <a name="spatial-intelligence-graph-management-apis"></a>Prostorové řady grafu rozhraní API pro správu
+### <a name="spatial-intelligence-graph-management-apis"></a>Rozhraní API pro správu diagramů prostorových informací
 
-Poté, co nasadíte digitální dvojče z [webu Azure portal](https://portal.azure.com), [Swagger](https://swagger.io/tools/swagger-ui/) adresu URL rozhraní API pro správu není automaticky vygenerován. Zobrazí se na webu Azure Portal v **přehled** části v následujícím formátu.
+Po nasazení digitálních vláken z [Azure Portal](https://portal.azure.com)se automaticky vygeneruje adresa URL [Swagger](https://swagger.io/tools/swagger-ui/) rozhraní API pro správu. Zobrazuje se v Azure Portal v části **Přehled** v následujícím formátu.
 
 ```plaintext
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
@@ -87,25 +87,25 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 | YOUR_INSTANCE_NAME | Název instance digitální dvojče |
 | YOUR_LOCATION | Jaké oblasti serveru vaší instance je hostován aplikací |
 
- Úplný formát adresy URL se zobrazí na tomto obrázku.
+ V tomto obrázku se zobrazí úplný formát adresy URL.
 
-![Digitální dvojče portál rozhraní API pro správu][2]
+![Rozhraní API pro správu portálu Digital vlákna][2]
 
-Další podrobnosti o tom, jak používat Prostorové řady grafů najdete na adrese preview neoficiální Azure digitální dvojče rozhraní API pro správu.
+Další informace o tom, jak používat grafy prostorových informací, najdete v tématu rozhraní API pro správu digitálních vláken Azure vás zajímá ve verzi Preview.
 
 > [!TIP]
-> Neoficiální Swagger ve verzi preview neposkytujeme k předvedení funkcí rozhraní API nastavit.
-> Je hostovaný na [docs.westcentralus.azuresmartspaces.net/management/swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
+> K dispozici je vás zajímá Swagger Preview, který předvádí sadu funkcí rozhraní API.
+> Hostuje se na [docs.westcentralus.azuresmartspaces.NET/Management/Swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
 
-Další informace o [použití Swagger](how-to-use-swagger.md).
+Přečtěte si další informace o [použití Swagger](how-to-use-swagger.md).
 
-Všechna volání rozhraní API musí být ověřeny pomocí [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code). Postupujte podle rozhraní API [pokynů pro rozhraní API REST systému Microsoft konvence](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md). Většina rozhraní API, která vrací kolekce podporuje [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) možností dotazu systému.
+Všechna volání rozhraní API musí být ověřena pomocí protokolu [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code). Rozhraní API se řídí konvencemi pro [REST API Microsoftu](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md). Většina rozhraní API, která vracejí kolekce, podporují možnosti dotazů na systém [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) .
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o připojení zařízení a jak odesílat telemetrické zprávy do digitální dvojče [Azure digitální dvojče zařízení připojení a telemetrie příchozího přenosu dat](concepts-device-ingress.md).
+- Pokud se chcete dozvědět o připojení zařízení a o tom, jak odesílat zprávy telemetrie do digitálních vláken, přečtěte si téma připojení zařízení k digitálním vstupům [a telemetrie v Azure](concepts-device-ingress.md).
 
-- Další informace o omezení rozhraní API pro správu a omezení, přečtěte si [Azure digitální dvojče API management a omezení](concepts-service-limits.md).
+- Pokud se chcete dozvědět o omezeních a omezeních rozhraní API pro správu, přečtěte si téma [Azure Digital REprops API Management a omezení](concepts-service-limits.md).
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-spatial-graph-building.png

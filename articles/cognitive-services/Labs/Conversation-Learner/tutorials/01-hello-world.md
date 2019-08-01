@@ -1,7 +1,7 @@
 ---
-title: Jak vytvořit model "Hello World" konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Jak vytvořit Hello World Conversation Learner modelu – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Zjistěte, jak vytvořit model Learner konverzace "Hello World".
+description: Naučte se vytvořit model Conversation Learner "Hello World".
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,101 +10,102 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: fe5d21fadef8f4452ba36259dbf89cefc78230de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: bb1d053af8813f05872c56d3b5609f2d7d7d5d8c
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388063"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705645"
 ---
-# <a name="how-to-create-a-hello-world-model-with-conversation-learner"></a>Jak vytvořit model "Hello World" pomocí Learner konverzace
+# <a name="how-to-create-a-hello-world-model-with-conversation-learner"></a>Jak vytvořit model "Hello World" s Conversation Learner
 
-Tento kurz ukazuje, jak začít pracovat s Learner konverzace, včetně vytváření akcí, interaktivně vyučují robota a provádění oprav zaznamenané dialogová okna, které pocházejí z koncovým uživatelům.
+V tomto kurzu se dozvíte, jak začít s Conversation Learner, včetně vytváření akcí, výukou robota v interaktivně a provádění oprav protokolovaných dialogů, které pocházejí od koncových uživatelů.
 
 ## <a name="video"></a>Video
 
-[![Hello World kurz ve verzi Preview](https://aka.ms/cl_Tutorial_v3_HelloWorld_Preview)](https://aka.ms/cl_tutorial_v3_helloworld)
+[![Kurz Hello World Preview](https://aka.ms/cl_Tutorial_v3_HelloWorld_Preview)](https://aka.ms/cl_tutorial_v3_helloworld)
 
 
 ## <a name="requirements"></a>Požadavky
-Pokud jste tak dosud neučinili, nejdřív ověřte všechny instalační kroky nejsou dokončeny, včetně vytváření `.env` soubor vaše služba luis vytváření klíč.  Zobrazit [rychlý Start](../quickstart.md) podrobnosti.
+Pokud jste to ještě neudělali, ujistěte se, že jste dokončili všechny kroky `.env` instalace, včetně vytvoření souboru s vaším LUISm klíčem pro vytváření obsahu.  Podrobnosti najdete v tématu [rychlý Start](../quickstart.md) .
 
-Tento kurz vyžaduje, zda je spuštěna obecné kurzu robota
+Tento kurz vyžaduje, aby byl spuštěný robot pro obecné kurzy.
 
     npm run tutorial-general
 
 ## <a name="steps"></a>Kroky
 
-Začněte na domovskou stránku webového uživatelského rozhraní.
+Začněte na domovské stránce ve webovém uživatelském rozhraní.
 
 ### <a name="create-the-model"></a>Vytvoření modelu
-1. Klikněte na tlačítko "Nový Model".
-2. V poli "Name" zadejte "Hello World".
-3. Klikněte na tlačítko "Vytvořit".
+1. Klikněte na tlačítko Nový model.
+2. Do pole název zadejte "Hello World".
+3. Klikněte na tlačítko vytvořit.
 
-Teď byste měli vidět zobrazení modelu, který jste vytvořili.
+Nyní byste měli vidět zobrazení modelu, který jste vytvořili.
 
-### <a name="create-an-action"></a>Vytvoření akce
-1. Na levém panelu klikněte na tlačítko "Akce" a potom na tlačítko "Nová akce".
-    - Akce může být textová zpráva, která vrací Learner konverzace na uživatele, volání rozhraní API nebo karty.
-2. Typ "Hello" pole "Bodu robotů také odpovědi na...".
-    - Jedná se o odpověď, která vrátí robota.
-3. Klikněte na tlačítko "Vytvořit".
+### <a name="create-an-action"></a>Vytvořit akci
+1. Na levém panelu klikněte na akce a pak na tlačítko Nová akce.
+    - Akce může být textová zpráva, kterou Conversation Learner vrátí uživateli, volání rozhraní API nebo kartě.
+2. V "reakci na robota..." Typ pole "Hello".
+    - Toto je odpověď, kterou robot vrátí.
+3. Klikněte na tlačítko vytvořit.
 
-Vytvořili jste první akce, které může provádět robota, to znamená vrácení text odpovědi.
+Vytvořili jste první akci, kterou robot může provést, tj. vrátí textovou odpověď.
 
-### <a name="train-dialogs"></a>Trénování dialogová okna
-To je, kde trénování modelu o tom, jak reagovat na projevy uživatele.
+### <a name="train-dialogs"></a>Výuková okna
+Tady se naučíte modelovat, jak reagovat na projevy uživatele.
 
-#### <a name="first-training-dialog"></a>Dialogové okno první školení
+#### <a name="first-training-dialog"></a>První školení – dialogové okno
 
-1. Na levém panelu klikněte na tlačítko "Dialogů Train" a potom na tlačítko "Dialogové okno Nový Train".
-2. Typ "Hi", stiskněte enter.
-    - Protože se příkladem co uživatel se může jednat na začátku konverzaci.
-3. Klikněte na tlačítko "Skóre akce".
+1. Na levém panelu klikněte na možnost výuka dialogových oken a pak klikněte na tlačítko "nový výukový dialog".
+2. Zadejte "Dobrý den", stiskněte klávesu ENTER.
+    - Příkladem toho, co uživatel může vyslovit na začátku konverzace.
+3. Klikněte na tlačítko "akce skóre".
 4. Vyberte "Hello".
-    - Nyní jste dokončili jednu úplnou zapnout v tomto příkladu dialogu. 
-5. Zadejte odpověď uživatele "Goodbye".
-6. Klikněte na tlačítko "Skóre akce".
-7. Klikněte "+ akce" tlačítko.
-8. Typ "Goodbye!" "Bodu robotů také odpověď..." pole a potom klikněte na tlačítko "Vytvořit".
-    - Všimněte si, že robota odpověděl zprávou, že akce jste právě vytvořili.
-9. Klikněte na tlačítko "Save". 
-    - To se ukončit a uložit toto dialogové okno školení.
+    - Právě jste dokončili úplně jednu úplnou volbu v tomto ukázkovém dialogovém okně. 
+5. Zadejte odpověď uživatele.
+6. Klikněte na tlačítko "akce skóre".
+7. Klikněte na tlačítko + akce.
+8. Zadejte "rozdálení!" v "reakci na robota..." a potom klikněte na tlačítko vytvořit.
+    - Všimněte si, že robot odpověděl s touto akcí, kterou jste právě vytvořili.
+9. Klikněte na tlačítko Uložit. 
+    - Tím se ukončí a uloží se toto dialogové okno školení.
 
-Nyní máte jeden dialogové okno školení v modelu, společně s jednou entitou a dvě akce.
+Nyní máte v modelu jeden dialog školení společně s jednou entitou a dvěma akcemi.
 
-#### <a name="second-training-dialog"></a>Druhé dialogové okno školení
-Pojďme provést jeden další školení a naleznete v tématu Jak robota reaguje.
+#### <a name="second-training-dialog"></a>Druhý dialog školení
+Pojďme udělat ještě jedno školení a podívat se, jak robot reaguje.
 
-1. Klikněte na tlačítko "Dialogové okno Nový Train".
-2. Zadejte, "Hi"
-    - Je to podobné jako první dialogové okno a Očekáváme, že k získání dobré skóre z robota.
-3. Klikněte na tlačítko "Skóre akce".
-    - Pozice a skóre ještě nemusí být dostatečně přesný a může vyžadovat další školicí.
+1. Klikněte na tlačítko nového výukového dialogového okna.
+2. Zadat, "Dobrý den"
+    - To je podobné jako v prvním dialogovém okně a očekáváme, že z robota získáme dobré skóre.
+3. Klikněte na tlačítko "akce skóre".
+    - Pozice a skóre mohou být stále dostatečně přesné a mohou vyžadovat další školení.
 4. Vyberte "Hello".
-5. Zadejte odpověď uživatele "viděnou".
-6. Klikněte na tlačítko "Skóre akce".
-7. Vyberte "Goodbye"!
-8. Klikněte na tlačítko "Save".
+5. Zadejte odpověď uživatele "bye".
+6. Klikněte na tlačítko "akce skóre".
+7. Vyberte možnost "rozdálení".
+8. Klikněte na tlačítko Uložit.
 
-### <a name="log-dialogs"></a>Dialogová okna protokolu
-Toto je, kde můžete testovat, zobrazení a opravte konverzace, které vy nebo skutečné koncoví uživatelé měli s vaším robotem.
+### <a name="log-dialogs"></a>Dialogy protokolu
+Tady můžete vyzkoušet, zobrazit a opravit konverzace, které jste vy nebo reálný uživatel měli s vaší robotem.
 
-#### <a name="test-the-model-as-an-end-user"></a>Otestování modelu jako koncový uživatel
-1. Na levém panelu klikněte na tlačítko "Protokolu dialogů" a potom na tlačítko "Dialogové okno Nový protokol".
-2. Zadejte "Ahoj".
-3. Po chvilce, robot by měl odpovědět automaticky "Hello"
-4. Zadejte "byebye.
-5. Po chvilce, znovu robot by měl automaticky odpovědět "Hello".
-6. Klikněte na tlačítko "Testování Hotovo".
+#### <a name="test-the-model-as-an-end-user"></a>Testování modelu jako koncového uživatele
+1. Na levém panelu klikněte na možnost protokolovat dialogy a pak na tlačítko nový dialog protokolu.
+2. Zadejte Hello.
+3. Počkejte krátkou dobu, robot by měl automaticky reagovat pomocí "Hello".
+4. Zadejte ' ByeBye '
+5. Počkejte krátkou dobu a robot by měl automaticky reagovat pomocí "Hello".
+6. Klikněte na tlačítko dokončené testování.
 
-#### <a name="view-and-correct-a-user-conversation"></a>Zobrazení a opravte konverzaci uživatele
-Pomocí protokolu dialogová okna, můžete zobrazit seznam konverzacích uživatelů uspořádali svého robota. Můžete také upravit je, aby bylo možné opravit bodu robotů také odpovědi a uložení interakce jako dialogová okna školení. Postup:
+#### <a name="view-and-correct-a-user-conversation"></a>Zobrazení a oprava konverzace uživatele
+Pomocí dialogových oken protokolu můžete zobrazit seznam uživatelů s konverzacemi, které se nacházejí ve vaší robotovi. Můžete je také upravit, aby se opravily odpovědi robota, a uložit interakce jako školicí dialogy. Postup:
 1. V mřížce klikněte na protokol konverzace.
-2. Například klikněte na poslední akci robota "Hello".
-3. Vyberte "Goodbye"! Chcete-li opravit robota.
-4. Klikněte na tlačítko "Uložit jako trénování dialogové okno".
+2. Klikněte na poslední akci robota, např. "Hello".
+3. Vyberte možnost "rozdálení". Opravte robota.
+4. Klikněte na tlačítko Uložit jako výukový dialog.
 
 ## <a name="next-steps"></a>Další postup
 

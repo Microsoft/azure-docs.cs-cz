@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: d94567800a9fd020784c9cb07b2c6824cd032509
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 14bf7dc62bb97cb14232660db6d0649e3d77d4fa
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064277"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662942"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
 
 > [!NOTE]
-> Podmnožinu řešení zabezpečení se vyřadí dne 31. května 2019. Další informace a alternativní služby najdete v tématu [vyřazení Security Center nabízí (červenec 2019)](security-center-features-retirement-july2019.md#menu_solutions).
+> Podmnožina řešení zabezpečení byla vyřazena z 31. července 2019. Další informace a alternativní služby najdete v tématu [vyřazení funkcí Security Center (červenec 2019)](security-center-features-retirement-july2019.md#menu_solutions).
 
 ## <a name="integrated-azure-security-solutions"></a>Integrovaná řešení zabezpečení Azure
 Security Center umožňuje snadné povolení integrovaných řešení zabezpečení v Azure. Mezi výhody patří:
 
-- **Zjednodušené nasazení**: Security Center nabízí zjednodušené zřízení integrovaných partnerských řešení. Pro řešení, jako jsou antimalware a hodnocení ohrožení zabezpečení, může Security Center zřídit potřebného agenta na virtuálních počítačích, a pro zařízení brány firewall může Security Center zařídit většinu požadované konfigurace sítě.
+- **Zjednodušené nasazení**: Security Center nabízí zjednodušené zřizování integrovaných partnerských řešení. Pro řešení, jako jsou antimalware a hodnocení ohrožení zabezpečení, může Security Center zřídit potřebného agenta na virtuálních počítačích, a pro zařízení brány firewall může Security Center zařídit většinu požadované konfigurace sítě.
 - **Integrované detekce**: Události zabezpečení z partnerských řešení se automaticky shromažďují, agregují a zobrazují v rámci výstrah a incidentů služby Security Center. Tyto události jsou také sloučeny s detekcemi z jiných zdrojů a poskytují pokročilé možnosti detekce hrozeb.
-- **Sjednocená Správa a sledování stavu**: Zákazníci můžou pomocí integrovaných událostí stavu monitorovat všechna partnerská řešení na první pohled. Je dostupná základní správa se snadným přístupem k pokročilému nastavení s použitím partnerského řešení.
+- **Sjednocené monitorování stavu a Správa**: Zákazníci můžou pomocí integrovaných událostí stavu monitorovat všechna partnerská řešení na první pohled. Je dostupná základní správa se snadným přístupem k pokročilému nastavení s použitím partnerského řešení.
 
-V současné době integrovaných řešení zabezpečení zahrnují posouzení ohrožení zabezpečení podle [Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) a [Rapid7](https://www.rapid7.com/products/insightvm/) a Microsoft Application Gateway Web application firewall.
+Integrovaná řešení zabezpečení v současné době zahrnují posouzení ohrožení zabezpečení [Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) a [Rapid7](https://www.rapid7.com/products/insightvm/) a firewall webových aplikací Microsoft Application Gateway.
 
 > [!NOTE]
 > Security Center neinstaluje agenta Microsoft Monitoring Agent na partnerská virtuální zařízení, protože většina dodavatelů zabezpečení na svých zařízeních zakazuje spouštění externích agentů.
@@ -42,7 +42,7 @@ V současné době integrovaných řešení zabezpečení zahrnují posouzení o
 >
 
 ## <a name="how-security-solutions-are-integrated"></a>Způsob integrace řešení zabezpečení
-Řešení zabezpečení Azure nasazená ze služby Security Center se automaticky připojí. Můžete také připojit další zdroje dat zabezpečení, včetně počítačů, které jsou spuštěné místně nebo v jiných cloudech.
+Řešení zabezpečení Azure nasazená ze služby Security Center se automaticky připojí. Můžete taky připojit další zdroje dat zabezpečení, včetně počítačů, které jsou spuštěné místně nebo v jiných cloudech.
 
 ![Integrace partnerských řešení](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
 
@@ -58,30 +58,30 @@ V současné době integrovaných řešení zabezpečení zahrnují posouzení o
 
 V části **Řešení zabezpečení** můžete zobrazit informace o stavu integrovaných řešení zabezpečení Azure a provádět základní úlohy správy. Můžete také připojit další typy zdrojů dat zabezpečení, jako jsou upozornění služby Azure Active Directory Identity Protection a protokoly brány firewall ve formátu CEF (Common Event Format).
 
-### <a name="connected-solutions"></a>Připojená řešení
+### <a name="connected-solutions"></a>Propojená řešení
 
 Část **Připojená řešení** obsahuje řešení zabezpečení, která jsou aktuálně připojená ke službě Security Center, a informace o stavu jednotlivých řešení.  
 
-![Připojená řešení](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
+![Propojená řešení](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
 
 Stav partnerského řešení může být:
 
-* V pořádku (zelený) – není žádný problém se stavem.
+* V pořádku (zelená) – nedochází k žádnému problému se stavem.
 * Není v pořádku (červená) – Existuje problém stavu, které si žádá okamžitou pozornost.
-* Problémy se stavem (oranžová) – řešení přestalo hlásit svůj stav.
-* Neuveden (šedá) – řešení neohlásil cokoli, ale stav řešení nemusí být uvedený, pokud byl nedávno připojený a ještě probíhá jeho nasazení, nebo je k dispozici žádná data o stavu.
+* Problémy se stavem (oranžová) – řešení zastavilo hlášení stavu.
+* Neuvedeno (šedá) – řešení ještě neohlásilo nic, stav řešení může být neohlášený, pokud byl nedávno připojen a stále je nasazený, nebo nejsou k dispozici žádná data o stavu.
 
 > [!NOTE]
-> Pokud není k dispozici data stavu, Security Center zobrazuje datum a čas poslední událost přijata označující, zda je řešení hlásí, nebo ne. Pokud je k dispozici žádná data o stavu a nejsou během posledních 14 dní přijaty žádné výstrahy, Security Center upozorňuje, že řešení není v pořádku, nebo není generování sestav.
+> Pokud data o stavu nejsou k dispozici, Security Center zobrazuje datum a čas poslední přijaté události, která označuje, jestli řešení hlásí nebo ne. Pokud nejsou k dispozici žádná data o stavu a během posledních 14 dnů nejsou přijímány žádné výstrahy, Security Center znamená, že řešení není v pořádku nebo není hlášeno.
 >
 >
 
-1. Vyberte **zobrazení** pro další informace a možnosti, které obsahuje:
+1. Vyberte **zobrazení** pro další informace a možnosti, které zahrnují:
 
-   - **Konzola řešení**. Otevře prostředí pro správu pro toto řešení.
-   - **Propojení virtuálních počítačů**. Otevřete okno propojit aplikace. Tady můžete ke svému partnerskému řešení připojit prostředky.
-   - **Odstranit řešení**.
-   - **Konfigurace**.
+   - **Konzola řešení**. Otevře prostředí pro správu tohoto řešení.
+   - **Propojte virtuální počítač**. Otevře okno propojit aplikace. Tady můžete ke svému partnerskému řešení připojit prostředky.
+   - **Odstranit řešení**
+   - **Nakonfigurujte**.
 
    ![Podrobné zobrazení partnerského řešení](./media/security-center-partner-solutions/partner-solutions-detail.png)
 
@@ -108,45 +108,45 @@ Security Center také vyhledává řešení nasazená v předplatném, která do
 
 ## <a name="exporting-data-to-a-siem"></a>Export dat do SIEM
 
-Zpracované události vytvořené službou Azure Security Center se publikují do Azure [protokolu aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), jeden z protokolu typy dostupné v nástroji Azure Monitor. Azure Monitor nabízí konsolidované kanálu pro směrování všech dat monitorování do nástroje SIEM. To se provádí Streamovat data do centra událostí, kde ji potom je mohly vyžádat do nástroje partnera.
+Zpracované události vytvořené pomocí Azure Security Center jsou publikovány v [protokolu aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)Azure, což je jeden z typů protokolů, který je k dispozici prostřednictvím Azure monitor. Azure Monitor nabízí konsolidovaný kanál pro směrování všech dat monitorování do nástroje SIEM. To je prováděno streamování dat do centra událostí, kde je pak možné ho načíst do partnerského nástroje.
 
-Tento kanál používá [Azure Monitoring jeden kanál](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) pro získání přístupu k data monitorování z vašeho prostředí Azure. To umožňuje snadno nastavit sady Siem a monitorovací nástroje tato data využívají.
+Tento kanál používá pro získání přístupu k datům monitorování z prostředí Azure [jeden kanál monitorování Azure](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) . Díky tomu můžete snadno nastavit nástroje pro systémů Siem a monitorování, které budou data využívat.
 
-Tento oddíl popisuje, jak nakonfigurovat data Streamovat do centra událostí. Kroky předpokládají, že už máte Azure Security Center nakonfigurovat ve svém předplatném Azure.
+Následující části popisují, jak můžete nakonfigurovat data pro streamování do centra událostí. Tento postup předpokládá, že už máte Azure Security Center nakonfigurovaných ve vašem předplatném Azure.
 
 Podrobný přehled
 
-![Základní přehled](media/security-center-export-data-to-siem/overview.png)
+![Přehled vysoké úrovně](media/security-center-export-data-to-siem/overview.png)
 
-### <a name="what-is-the-azure-security-data-exposed-to-siem"></a>Co je Azure security data vystavená do systému SIEM?
+### <a name="what-is-the-azure-security-data-exposed-to-siem"></a>Jaká jsou data zabezpečení Azure vystavená pro SIEM?
 
-V této verzi jsme vystavit [výstrahy zabezpečení.](../security-center/security-center-managing-and-responding-alerts.md) V nadcházejících vydáních jsme se rozšířit datové sady s doporučení týkající se zabezpečení.
+V této verzi zveřejňujeme [výstrahy zabezpečení.](../security-center/security-center-managing-and-responding-alerts.md) V nadcházejících verzích rozšiřujeme datovou sadu o doporučení zabezpečení.
 
-### <a name="how-to-setup-the-pipeline"></a>Nastavení kanálu
+### <a name="how-to-setup-the-pipeline"></a>Postup nastavení kanálu
 
 #### <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
-Než začnete, budete muset [vytvořte obor názvů služby Event Hubs](../event-hubs/event-hubs-create.md). Tento obor názvů a centra událostí je cílem pro všemi daty monitorování.
+Než začnete, je potřeba [vytvořit obor názvů Event Hubs](../event-hubs/event-hubs-create.md). Tento obor názvů a centrum událostí slouží jako cíl pro všechna data monitorování.
 
-#### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream protokolů aktivit Azure do služby Event Hubs
+#### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Streamování protokolu aktivit Azure do služby Event Hubs
 
-Najdete v následujícím článku [streamování protokolu aktivit do služby Event Hubs](../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+Informace o Event Hubs najdete v následujícím článku v [protokolu aktivit streamování](../azure-monitor/platform/activity-logs-stream-event-hubs.md)
 
-#### <a name="install-a-partner-siem-connector"></a>Nainstalovat partnerský konektor SIEM 
+#### <a name="install-a-partner-siem-connector"></a>Instalace konektoru SIEM partnera 
 
-Směrování dat monitorování do centra událostí pomocí Azure Monitor umožňuje snadnou integraci s partnerem SIEM a monitorovací nástroje.
+Směrování dat monitorování do centra událostí pomocí Azure Monitor umožňuje snadnou integraci s nástroji pro SIEM a monitorování partnerů.
 
-Odkazovat na následující odkaz zobrazíte seznam [podporovány systémy Siem](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub)
+Seznam [podporovaných systémů Siem](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub) najdete na následujícím odkazu.
 
-### <a name="example-for-querying-data"></a>Příklad pro dotazování na data 
+### <a name="example-for-querying-data"></a>Příklad pro dotazování dat 
 
-Tady je několik Splunk dotazů, které můžete použít k načítání dat výstrah:
+Tady je několik dotazů Splunk, které můžete použít k získání dat výstrah:
 
 | **Popis dotazu** | **Dotaz** |
 |----|----|
-| Všechny výstrahy| index = hlavní Microsoft.Security/locations/alerts|
-| Shrnout počet operací podle názvu| index = hlavní sourcetype = "amal: zabezpečení" \| tabulky operationName \| statistiky count podle operationName|
-| Získání informací o výstrahy: Čas, název, stavu, ID a předplatné | index = hlavní Microsoft.Security/locations/alerts \| tabulky \_čas, properties.eventName, stavu, properties.operationId, am_subscriptionId |
+| Všechny výstrahy| index = hlavní Microsoft. Security/umístění/výstrahy|
+| Shrnout počet operací podle jejich názvu| index = Main sourceType = "Amal: Security" \| Table \| NázevOperace stat Count podle OperationName|
+| Získat informace o výstrahách: Čas, název, stav, ID a předplatné | index = hlavní čas v tabulce \| \_Microsoft. Security/Locations/Alerts, vlastnosti. EventName, State, Properties. operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>Další postup

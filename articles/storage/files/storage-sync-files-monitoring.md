@@ -1,154 +1,153 @@
 ---
-title: Monitorování Azure File Sync | Dokumentace Microsoftu
+title: Azure File Sync monitorování | Microsoft Docs
 description: Jak monitorovat Azure File Sync.
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 86c4bf328430bbc623d8e493eec5db520d50ef82
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ac09f9b59bc6f47adc9311cc910352c1a0d73b5d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485978"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699286"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
-Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
+Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Azure File Sync transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
 
-Tento článek popisuje, jak sledovat vaše nasazení Azure File Sync s použitím Azure Monitor, služba synchronizace úložiště a Windows Server.
+Tento článek popisuje, jak monitorovat nasazení Azure File Sync pomocí Azure Monitor, služby synchronizace úložiště a Windows serveru.
 
-Následující možnosti monitorování jsou aktuálně k dispozici.
+V tuto chvíli jsou k dispozici následující možnosti monitorování.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Použití [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) chcete zobrazit metriky a konfiguraci výstrah pro synchronizaci cloudu ovládání datových vrstev a připojení k serveru.  
+Pomocí [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) můžete zobrazit metriky a nakonfigurovat výstrahy pro synchronizaci, vrstvení cloudu a připojení k serveru.  
 
 ### <a name="metrics"></a>Metriky
 
-Metriky pro Azure File Sync jsou ve výchozím nastavení povolené a jsou odeslány do Azure monitoru každých 15 minut.
+Metriky pro Azure File Sync jsou ve výchozím nastavení povolené a odesílají se Azure Monitor každých 15 minut.
 
-Pokud chcete zobrazit metriky Azure File Sync ve službě Azure Monitor, vyberte **služby synchronizace úložiště** typ prostředku.
+Pokud chcete v Azure Monitor zobrazit metriky Azure File Sync, vyberte typ prostředku **služby synchronizace úložiště** .
 
-Tyto metriky pro Azure File Sync jsou k dispozici ve službě Azure Monitor:
+V Azure Monitor jsou k dispozici následující metriky pro Azure File Sync:
 
 | Název metriky | Popis |
 |-|-|
-| Bajty synchronizované | Množství přenesených dat (nahrávání a stahování).<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
-| Odvolání vrstvení cloudu | Velikost dat odvolána.<br><br>**Poznámka:** Tato metrika se v budoucnu odeberou. Ke sledování velikosti dat připomenout, použijte velikost metriku vrstvení spojené s vracením cloudu.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název serveru |
-| Cloud vrstvení spojené s vracením velikost | Velikost dat odvolána.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název názvem serveru, skupiny synchronizace |
-| Cloud vrstvení spojené s vracením velikost aplikace | Velikost dat připomenout aplikací.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název název aplikace, název serveru, synchronizace skupiny |
-| Propustnost spojené s vracením vrstvení cloudu | Velikost dat spojené s vracením propustnosti.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název názvem serveru, skupiny synchronizace |
-| Soubory nesynchronizuje | Počet souborů, které se nedaří synchronizovat.<br><br>Jednotka: Count<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
-| Synchronizovat soubory | Počet souborů přenesených (nahrávání a stahování).<br><br>Jednotka: Count<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
-| Online stav serveru | Počet prezenčních signálů přijatou ze serveru.<br><br>Jednotka: Count<br>Typ agregace: Maximum<br>Příslušné dimenze: Název serveru |
-| Výsledek relace synchronizace | Synchronizovat výsledek relace (1 = úspěšná synchronizace relace; 0 = selhání synchronizace relace)<br><br>Jednotka: Count<br>Typ agregace: Maximum<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
+| Synchronizované bajty | Velikost přenesených dat (nahrávání a stahování).<br><br>Jednotce B<br>Typ agregace: Součet<br>Použitelné dimenze: Název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
+| Stažení vrstvení cloudu | Velikost vrácených dat.<br><br>**Poznámka:** Tato metrika bude v budoucnu odebrána. K monitorování velikosti vrácených dat použijte metriku velikosti volání ve vrstvách cloudu.<br><br>Jednotce B<br>Typ agregace: Součet<br>Platná dimenze: Název serveru |
+| Velikost odvolání při vyvolání vrstvy cloudu | Velikost vrácených dat.<br><br>Jednotce B<br>Typ agregace: Součet<br>Platná dimenze: Název serveru, název skupiny synchronizace |
+| Velikost odvolání při vrstvení cloudu podle aplikace | Velikost dat vrácených aplikací<br><br>Jednotce B<br>Typ agregace: Součet<br>Platná dimenze: Název aplikace, název serveru, název skupiny synchronizace |
+| Propustnost volání při navracení cloudových vrstev | Velikost propustnosti odvolání dat<br><br>Jednotce B<br>Typ agregace: Součet<br>Platná dimenze: Název serveru, název skupiny synchronizace |
+| Soubory se nesynchronizují | Počet souborů, které se nedaří synchronizovat.<br><br>Jednotce Count<br>Typ agregace: Součet<br>Použitelné dimenze: Název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
+| Synchronizované soubory | Počet přenesených souborů (Odeslat a stáhnout).<br><br>Jednotce Count<br>Typ agregace: Součet<br>Použitelné dimenze: Název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
+| Online stav serveru | Počet prezenčních signálů přijatých ze serveru.<br><br>Jednotce Count<br>Typ agregace: Maximum<br>Platná dimenze: Název serveru |
+| Výsledek relace synchronizace | Výsledek relace synchronizace (1 = úspěšná relace synchronizace; 0 = nezdařená relace synchronizace)<br><br>Jednotce Count<br>Typy agregace: Maximum<br>Použitelné dimenze: Název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
-Konfigurace výstrah ve službě Azure Monitor, vyberte službu synchronizace úložiště a pak vyberte [metriky Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) pro výstrahy.  
+Pokud chcete v Azure Monitor nakonfigurovat výstrahy, vyberte službu synchronizace úložiště a pak vyberte [metriku Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) , která se má pro výstrahu použít.  
 
-Následující tabulka uvádí některé ukázkové scénáře pro monitorování a správné metriky pro výstrahy:
+V následující tabulce jsou uvedeny příklady scénářů, které je třeba monitorovat, a správnou metriku pro použití výstrahy:
 
-| Scénář | Metriky pro výstrahy |
+| Scénář | Metrika, která se má použít pro upozornění |
 |-|-|
 | Stav koncového bodu serveru na portálu = chyba | Výsledek relace synchronizace |
-| Soubory se nedaří synchronizovat na server nebo koncový bod v cloudu | Soubory nesynchronizuje |
-| Registrovaný server se nedaří komunikovat se službou synchronizace úložiště | Online stav serveru |
-| Velikost spojené s vracením vrstvení cloudu překročil 500GiB za den  | Cloud vrstvení spojené s vracením velikost |
+| Neúspěšné synchronizace souborů na koncový bod serveru nebo cloudu | Soubory se nesynchronizují |
+| U registrovaného serveru se nedaří komunikovat se službou synchronizace úložiště. | Online stav serveru |
+| Velikost volání vrstvení cloudu překročila 500GiB za den.  | Velikost odvolání při vyvolání vrstvy cloudu |
 
-Další informace o konfiguraci výstrah ve službě Azure Monitor, najdete v článku [přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
 ## <a name="storage-sync-service"></a>Služba synchronizace úložiště
 
-Chcete-li zobrazit registrovaný server stav, stav koncového bodu serveru a metriky, přejděte na službu synchronizace úložiště na webu Azure Portal. Můžete zobrazit stav registrovaného serveru v **registrované servery** blade a server stavu koncových bodů v **synchronizovat skupiny** okno.
+Pokud chcete zobrazit registrovaný stav serveru, stav koncového bodu serveru a metriky, přečtěte si v Azure Portal službu synchronizace úložiště. Stav registrovaného serveru můžete zobrazit v okně **registrované servery** a stavu koncového bodu serveru v okně **synchronizace skupin** .
 
-### <a name="registered-server-health"></a>Registrovaný server stavu
+### <a name="registered-server-health"></a>Stav registrovaného serveru
 
-- Pokud **registrovaný server** stav je **Online**, server se úspěšně komunikaci se službou.
-- Pokud **registrovaný server** stav je **se zobrazí v režimu Offline**, ověřte, zda je spuštěn proces monitorování synchronizace úložiště (AzureStorageSyncMonitor.exe) na serveru. Pokud je za bránou firewall nebo proxy server, přečtěte si téma [v tomto článku](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) ke konfiguraci brány firewall a proxy serveru.
+- Pokud je stav registrovaného serveru **online**, server úspěšně komunikuje se službou.
+- Pokud je stav registrovaného serveru **zobrazen v režimu offline**, ověřte, zda je spuštěn proces sledování synchronizace úložiště (AzureStorageSyncMonitor. exe) na serveru. Pokud je server za bránou firewall nebo proxy, přečtěte si [Tento článek](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) , kde můžete nakonfigurovat bránu firewall a proxy server.
 
 ### <a name="server-endpoint-health"></a>Stav koncového bodu serveru
 
-- Synchronizace událostí, které jsou zaznamenány v protokolu událostí Telemetrie na serveru (ID 9102 a 9302) podle stavu koncového bodu serveru na portálu. Pokud relace synchronizace selže z důvodu přechodných chyb, jako je chyba bylo zrušeno, synchronizace může stále zobrazovat v pořádku na portálu tak dlouho, dokud aktuální relace synchronizace je vidět pokrok. ID události 9302 slouží k určení, pokud soubory aplikují. Další informace najdete v tématu [synchronizace stavu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) a [synchronizovat průběh](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
-- Pokud na portálu se zobrazí chyba synchronizace, protože synchronizace není vidět pokrok, přečtěte si článek [dokumentace k řešení problémů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) pokyny.
+- Stav koncového bodu serveru na portálu je založen na událostech synchronizace zaznamenaných v protokolu událostí telemetrie na serveru (ID 9102 a 9302). Pokud relace synchronizace není úspěšná kvůli přechodné chybě, třeba zrušení změn, může se synchronizace pořád zobrazovat na portálu, pokud aktuální relace synchronizace probíhá. K určení, jestli se soubory používají, se používá událost s ID 9302. Další informace najdete v tématu [synchronizace stavu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) a [průběhu synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
+- Pokud se v portálu zobrazuje chyba synchronizace, protože synchronizace neprobíhá, přečtěte si pokyny v [dokumentaci k řešení potíží](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) .
 
 ### <a name="metric-charts"></a>Grafy metrik
 
-- Následující grafy metrik je možné zobrazit na portálu služby synchronizace úložiště:
+- Na portálu služby synchronizace úložiště se mohou zobrazit následující grafy metrik:
 
   | Název metriky | Popis | Název okna |
   |-|-|-|
-  | Bajty synchronizované | Objem dat přenášených (nahrávání a stahování) | Skupina synchronizace, koncový bod serveru |
-  | Odvolání vrstvení cloudu | Velikost dat připomenout | Registrované servery |
-  | Soubory nesynchronizuje | Počet souborů, které se nedaří synchronizovat | Koncový bod serveru |
-  | Synchronizovat soubory | Počet souborů přenesených (nahrávání a stahování) | Skupina synchronizace, koncový bod serveru |
-  | Online stav serveru | Počet prezenčních signálů přijatou ze serveru | Registrované servery |
+  | Synchronizované bajty | Velikost přenesených dat (nahrávání a stahování) | Skupina synchronizace, koncový bod serveru |
+  | Stažení vrstvení cloudu | Velikost vrácených dat | Registrované servery |
+  | Soubory se nesynchronizují | Počet souborů, které se nedaří synchronizovat | Koncový bod serveru |
+  | Synchronizované soubory | Počet přenesených souborů (Odeslat a stáhnout) | Skupina synchronizace, koncový bod serveru |
+  | Online stav serveru | Počet prezenčních signálů přijatých ze serveru | Registrované servery |
 
-- Další informace najdete v tématu [Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor).
+- Další informace najdete v tématu [Azure monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor).
 
   > [!Note]  
-  > Grafy na portálu služby synchronizace úložiště mají časový rozsah 24 hodin. Chcete-li zobrazit různé časové rozsahy nebo dimenze, použití Azure monitoru.
+  > Grafy na portálu služby synchronizace úložiště mají časový rozsah 24 hodin. Chcete-li zobrazit různé časové rozsahy nebo rozměry, použijte Azure Monitor.
 
 ## <a name="windows-server"></a>Windows Server
 
-V systému Windows Server můžete zobrazit cloudové ovládání datových vrstev, registrovaný server a synchronizaci stavu.
+Na Windows serveru můžete zobrazit vrstvení cloudu, zaregistrovaný Server a synchronizovat stav.
 
 ### <a name="event-logs"></a>Protokoly událostí
 
-Použijte protokol událostí Telemetrie na serveru pro monitorování registrovaný server synchronizace a stavu vrstvení cloudu. V protokolu událostí Telemetrie se nachází v prohlížeči událostí pod *aplikací a Services\Microsoft\FileSync\Agent*.
+Pomocí protokolu událostí telemetrie na serveru můžete monitorovat stav zaregistrovaných serverů, synchronizace a vrstvení cloudu. Protokol událostí telemetrie se nachází v Prohlížeč událostí v části *aplikace a Services\Microsoft\FileSync\Agent*.
 
 Stav synchronizace:
 
-- Po dokončení relace synchronizace je protokolováno ID události 9102. Pomocí této události lze určit, jestli budou úspěšné relace synchronizace (**HResult = 0**) a pokud jsou jednotlivé položky chyby synchronizace. Další informace najdete v tématu [synchronizace stavu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) a [chyby za položku](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) dokumentaci.
+- Po dokončení relace synchronizace se protokoluje událost s ID 9102. Tuto událost použijte k určení, jestli jsou relace synchronizace úspěšné (**HRESULT = 0**), a pokud dojde k chybám synchronizace pro jednotlivé položky. Další informace najdete v dokumentaci ke [stavu synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) a [chybách jednotlivých položek](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) .
 
   > [!Note]  
-  > Někdy relace synchronizace celkové selhat nebo mít PerItemErrorCount nenulové. Však stále využívají postup směrem vpřed a některé soubory úspěšně synchronizovat. Vidíte to v polích použité jako AppliedFileCount, AppliedDirCount, AppliedTombstoneCount a AppliedSizeBytes. Tato pole zjistíte, jak velká část relace byla úspěšná. Je-li zobrazit více relací synchronizace selhat za sebou a mají rostoucí počet použit, zadejte čas synchronizace to chcete zkusit znovu, než otevřete lístek podpory.
+  > V některých případech se relace synchronizace nezdařila celkem nebo má nenulovou PerItemErrorCount. Pořád se ale dál dostanou a některé soubory se úspěšně synchronizují. Můžete to vidět v použitých polích, jako jsou AppliedFileCount, AppliedDirCount, AppliedTombstoneCount a AppliedSizeBytes. Tato pole vám sdělí, kolik relací bylo úspěšně dokončeno. Pokud vidíte, že se více relací synchronizace nedaří na řádku a že mají rostoucí počet použitých hodnot, podělte čas synchronizace, aby se mohl pokusit znovu před otevřením lístku podpory.
 
-- Pokud je v rámci activesyncu relace, je protokolováno ID události 9302 každých 5 až 10 minut. Pomocí této události lze zjistit, pokud aktuální relace synchronizace (**AppliedItemCount > 0**). Pokud synchronizace není vidět pokrok, relace synchronizace by nakonec selže a 9102 ID události se zaznamenají a došlo k chybě. Další informace najdete v tématu [synchronizovat průběh dokumentaci](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
+- Událost s ID 9302 se protokoluje každých 5 až 10 minut, pokud dojde k aktivní relaci synchronizace. Tuto událost použijte k určení, jestli aktuální relace synchronizace provádí průběh (**AppliedItemCount > 0**). Pokud synchronizace neprobíhá, relace synchronizace by se nakonec nezdařila a událost s ID 9102 bude protokolována s chybou. Další informace najdete v [dokumentaci průběh synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
-Registrovaný server stavu:
+Stav registrovaného serveru:
 
-- Každých 30 sekund, když se server dotazuje službu pro úlohy je protokolováno ID události 9301. Pokud GetNextJob končí **stav = 0**, server je schopen komunikovat se službou. Pokud GetNextJob skončí s chybou, zkontrolujte, [dokumentace k řešení problémů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) pokyny.
+- Událost s ID 9301 se protokoluje každých 30 sekund, když server dotazuje službu pro úlohy. Pokud se GetNextJob dokončí se **stavem = 0**, server může komunikovat se službou. Pokud GetNextJob skončí s chybou, najdete pokyny v [dokumentaci k řešení problémů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) .
 
 Stav vrstvení cloudu:
 
-- K monitorování vrstvení aktivity na serveru, použijte 9003 ID události, události 9016 a 9029 v protokolu událostí Telemetrie, který je umístěn v prohlížeči událostí pod *aplikací a Services\Microsoft\FileSync\Agent*.
+- Pokud chcete monitorovat aktivitu vrstvení na serveru, použijte ID události 9003, 9016 a 9029 v protokolu událostí telemetrie, který je umístěný v Prohlížeč událostí v části *aplikace a Services\Microsoft\FileSync\Agent*.
 
-  - ID události 9003 poskytuje distribucí chyb pro koncový bod serveru. Příklad: Celkový počet chyb a kód chyby. Jednu událost je protokolována za kód chyby.
-  - ID události 9016 poskytuje zástupných položek výsledky pro svazek. Příklad: Procento volného místa je počet souborů vytvořena zástupná položka v relaci, a počet souborů, které se nepodařilo ghost.
-  - ID události 9029 poskytuje informace o relaci zástupných položek pro koncový bod serveru. Příklad: Počet souborů v této relaci, počet souborů, které se pokusil vrstvené v relaci a počet souborů, které již vrstvený.
+  - Událost s ID 9003 poskytuje distribuci chyb pro koncový bod serveru. Příklad: Celkový počet chyb a kód chyby Jedna událost je protokolována podle kódu chyby.
+  - ID události 9016 poskytuje duplikování výsledků pro svazek. Příklad: Procentuální hodnota volného místa je, počet souborů, které byly v relaci opuštěné, a počet souborů, jejichž počet se nezdařil.
+  - Událost s ID 9029 poskytuje duplikaci informací o relaci koncového bodu serveru. Příklad: Počet souborů, které se v relaci pokoušely, počet souborů vrstvených v relaci a počet souborů, které jsou již vrstveny.
   
-- Chcete-li monitorovat aktivity spojené s vracením na serveru, použijte 9005 ID události, 9006, 9009 a 9059 v protokolu událostí Telemetrie, které se nacházejí v prohlížeči událostí v části *aplikací a Services\Microsoft\FileSync\Agent*.
+- Chcete-li monitorovat aktivitu odvolání na serveru, použijte ID události 9005, 9006, 9009 a 9059 v protokolu událostí telemetrie, který je umístěn v Prohlížeč událostí v části *aplikace a Services\Microsoft\FileSync\Agent*.
 
-  - ID události 9005 poskytuje spojené s vracením spolehlivost pro koncový bod serveru. Příklad: Celkový počet jedinečných souborů k němu přistupovat a celkový počet jedinečných souborů s neúspěšných přístupů.
-  - ID události 9006 poskytuje distribuci chyby spojené s vracením pro koncový bod serveru. Příklad: Celkový počet neúspěšných požadavků a kód chyby. Jednu událost je protokolována za kód chyby.
-  - ID události 9009 poskytuje informace o relaci odvolání pro koncový bod serveru. Příklad: DurationSeconds CountFilesRecallSucceeded a CountFilesRecallFailed.
-  - ID události 9059 poskytuje aplikace spojené s vracením distribuce pro koncový bod serveru. Příklad: ShareId, název aplikace a TotalEgressNetworkBytes.
+  - Událost s ID 9005 poskytuje spolehlivost odvolání pro koncový bod serveru. Příklad: Celkový přístup k jedinečným souborům a celkový počet jedinečných souborů s neúspěšným přístupem
+  - Událost s ID 9006 poskytuje distribuci chyb odvolání pro koncový bod serveru. Příklad: Celkový počet neúspěšných požadavků a kód chyby Jedna událost je protokolována podle kódu chyby.
+  - Událost s ID 9009 poskytuje informace o odvolání relace pro koncový bod serveru. Příklad: DurationSeconds, CountFilesRecallSucceeded a CountFilesRecallFailed.
+  - Událost s ID 9059 poskytuje distribuci odvolání aplikace pro koncový bod serveru. Příklad: ShareId, název aplikace a TotalEgressNetworkBytes.
 
 ### <a name="performance-counters"></a>Čítače výkonu
 
-Použití čítačů výkonu Azure File Sync na serveru ke sledování aktivitu synchronizace.
+K monitorování synchronizační aktivity použijte Azure File Sync čítače výkonu na serveru.
 
-Chcete-li zobrazit čítače výkonu Azure File Sync na serveru, otevřete sledování výkonu (Perfmon.exe). Můžete najít čítače pod **AFS bajtů přenesených** a **operace synchronizace AFS** objekty.
+Chcete-li zobrazit Azure File Sync čítače výkonu na serveru, spusťte nástroj sledování výkonu (Perfmon. exe). Čítače můžete najít v části přenesené **bajty AFS** a objekty **operace synchronizace AFS** .
 
-Následující čítače výkonu pro Azure File Sync jsou k dispozici v nástroji Sledování výkonu:
+V nástroji Sledování výkonu jsou k dispozici následující čítače výkonu pro Azure File Sync:
 
 | Název Object\Counter výkonu | Popis |
 |-|-|
-| AFS bajtů Transferred\Downloaded bajty/s | Počet stažených bajtů za sekundu. |
-| AFS bajtů Transferred\Uploaded bajty/s | Nahrát počet bajtů za sekundu. |
-| AFS bajtů Transferred\Total bajty/s | Celkový počet bajtů za sekundu (nahrávání a stahování). |
-| Synchronizace AFS Operations\Downloaded synchronizace souborů za sekundu | Počet souborů, které stáhnou za sekundu. |
-| Synchronizace AFS Operations\Uploaded synchronizace souborů za sekundu | Počet souborů zpráv za sekundu. |
-| AFS synchronizace Operations\Total synchronizace souboru operace/s | Celkový počet souborů synchronizované (nahrávání a stahování). |
+| Bajty AFS Transferred\Downloaded bajty/s | Počet stažených bajtů za sekundu |
+| Bajty AFS Transferred\Uploaded bajty/s | Počet odeslaných bajtů za sekundu |
+| Bajty AFS Transferred\Total bajty/s | Celkem bajtů za sekundu (nahrávání a stahování). |
+| Soubory Operations\Downloaded synchronizace AFS Sync/s | Počet stažených souborů za sekundu |
+| Soubory Operations\Uploaded synchronizace AFS Sync/s | Počet odeslaných souborů za sekundu |
+| Operace synchronizace souborů Operations\Total synchronizace AFS za sekundu | Celkový počet synchronizovaných souborů (nahrání a stažení). |
 
 ## <a name="next-steps"></a>Další postup
 - [Plánování nasazení služby Azure File Sync](storage-sync-files-planning.md)
-- [Zvažte nastavení brány firewall a proxy](storage-sync-files-firewall-and-proxy.md)
-- [Nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md)
-- [Řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md)
-- [Služba soubory Azure – nejčastější dotazy](storage-files-faq.md)
+- [Zvážení brány firewall a nastavení proxy serveru](storage-sync-files-firewall-and-proxy.md)
+- [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)
+- [Řešení potíží se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)
+- [Nejčastější dotazy k souborům Azure](storage-files-faq.md)

@@ -1,9 +1,9 @@
 ---
-title: Vertikálně navýšit kapacitu typ uzlu Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak škálovat cluster Service Fabric, že přidáte Škálovací sady virtuálních počítačů.
+title: Horizontální navýšení kapacity typu uzlu Azure Service Fabric | Microsoft Docs
+description: Naučte se škálovat Cluster Service Fabric přidáním sady škálování virtuálního počítače.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
@@ -13,44 +13,44 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/13/2019
-ms.author: aljo
-ms.openlocfilehash: e6b429189491af71f6215f1c7660be5965741bf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 272bc571a0ea71fd6e7bd45a426460d2e0faf1d7
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154857"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599280"
 ---
-# <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Vertikálně navýšit kapacitu typ primárního uzlu clusteru Service Fabric
-Tento článek popisuje, jak škálovat typ primárního uzlu clusteru Service Fabric zvýšením prostředky virtuálních počítačů. Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Škálovací sady virtuálních počítačů jsou výpočetním prostředkem Azure, který použijete k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Azure je [nastavit jako samostatné škálovací sada](service-fabric-cluster-nodetypes.md). Každý typ uzlu je pak spravovat samostatně. Po vytvoření clusteru Service Fabric, je možné škálovat typ uzlu clusteru svisle (změnit prostředky z uzlů) nebo upgradovat operační systém typu uzlu virtuálních počítačů.  Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru.  Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
+# <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Horizontální navýšení kapacity Service Fabric typ primárního uzlu clusteru
+Tento článek popisuje, jak škálovat typ primárního uzlu clusteru Service Fabric pomocí zvýšení prostředků virtuálního počítače. Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Sady škálování virtuálních počítačů jsou výpočetním prostředkem Azure, který můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definovaný v clusteru Azure, je [nastavený jako samostatná sada škálování](service-fabric-cluster-nodetypes.md). Každý typ uzlu se pak dá spravovat samostatně. Po vytvoření clusteru Service Fabric můžete škálovat typ uzlu clusteru vertikálně (změnit prostředky uzlů) nebo upgradovat operační systém typu virtuálních počítačů typu uzel.  Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.  I když se cluster škáluje, vaše aplikace se automaticky škálují.
 
 > [!WARNING]
-> Nespouštějte změnit primární nodetype skladovou Položku virtuálního počítače, pokud je stav clusteru není v pořádku. Pokud je stav clusteru není v pořádku, bude pouze destabilizovat clusteru dál, pokud se pokusíte změnit skladovou Položku virtuálního počítače.
+> Nespouštějte změnu primární jednotky SKU virtuálního počítače NodeType, pokud stav clusteru není v pořádku. Pokud stav clusteru není v pořádku, budete cluster dále rozstabilizovat jenom v případě, že se pokusíte změnit SKU virtuálního počítače.
 >
-> Doporučujeme vám, pokud se spouští ve není změnit skladovou Položku virtuálního počítače škálovací sady/uzel typu [Silver odolnosti nebo větší](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Změna velikosti skladové položky virtuálních počítačů je operace destruktivní dat místní infrastrukturu. Bez některé možnosti zpoždění nebo sledovat tuto změnu je možné, že operace může způsobit ztrátu dat pro stavové služby nebo způsobit jiné nepředvídatelné provozní problémy, dokonce i u bezstavových zatížení. To znamená, že svůj typ primárního uzlu, který je spuštěn stavové služby infrastruktury služby system, nebo libovolný typ uzlu, na kterém běží práce stavové aplikace načte.
+> Nedoporučujeme měnit SKU virtuálního počítače pro typ nebo uzel škály, pokud není spuštěný při použití odolnosti proti [stříbru nebo většímu](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Změna velikosti SKU virtuálního počítače je místní operace infrastruktury, která je destruktivní dat. Bez možnosti zpozdit nebo sledovat tuto změnu je možné, že operace může způsobit ztrátu dat pro stavové služby nebo způsobovat jiné nepředvídatelné provozní problémy, a to i u bezstavových úloh. To znamená, že primární typ uzlu, na kterém běží stavová služba Service Fabric, nebo jakýkoli typ uzlu, na kterém je spuštěná vaše stavová zátěžová aplikace.
 >
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>Upgrade velikosti a operačního systému primárního uzlu typu virtuálních počítačů
-Tady je proces pro aktualizaci velikosti virtuálního počítače a operačního systému primárního uzlu typu virtuálních počítačů.  Po upgradu primární typ uzlu virtuální počítače jsou velikosti Standard D4_V2 a spuštěný Windows Server 2016 Datacenter s kontejnery.
+## <a name="upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>Upgradovat velikost a operační systém pro virtuální počítače typu primární uzel
+Tady je postup aktualizace velikosti virtuálního počítače a operačního systému virtuálních počítačů typu primární uzel.  Po upgradu budou virtuální počítače typu primární uzel velikosti Standard D4_V2 a na Windows serveru 2016 Datacenter s kontejnery.
 
 > [!WARNING]
-> Před provedením tohoto postupu na clusteru pro produkční prostředí, doporučujeme, abyste studovat ukázkových šablon a kontrola procesu proti clusteru testu. Cluster je také k dispozici po dobu. NENÍ budete moct změnit na více VMSS deklarován jako stejný typ NodeType paralelně; je potřeba provést operace oddělených nasazení provést změny každý NodeType VMSS jednotlivě.
+> Před pokusem o provedení této procedury v produkčním clusteru doporučujeme prostudovat ukázkové šablony a ověřit proces proti testovacímu clusteru. Cluster je také nedostupný po dobu. Nemůžete provádět změny ve více VMSS deklarovaných jako stejný typ NodeType paralelně; Chcete-li aplikovat změny na jednotlivé VMSS NodeType, budete muset provést operace odděleného nasazení.
 
-1. Nasadit počáteční clusteru se dvěma typy uzlů a dvě škálovací sady (jednu škálovací sadu podle typu uzlu) pomocí tyto ukázky [šablony](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) a [parametry](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) soubory.  Obě škálovací sady jsou velikost standardní D2_V2 a spuštěný Windows Server 2012 R2 Datacenter.  Počkejte, clusteru a dokončit upgrade směrného plánu.   
-2. Nepovinné. nasazení ukázku stavové do clusteru.
-3. Jakmile se rozhodnete upgradovat primární typ uzlu virtuální počítače, přidejte novou škálovací sadu pro primární typ uzlu pomocí tyto ukázky [šablony](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.json) a [parametry](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.parameters.json) soubory tak primární typ uzlu teď nabízí dvě škálovací sady.  Systémové služby a aplikace uživatele budou moct migrovat mezi virtuálními počítači ve dvou různých škálovací sady.  Nové škálovací sady virtuálních počítačů jsou velikosti Standard D4_V2 a spuštění systému Windows Server 2016 Datacenter s kontejnery.  Nový nástroj pro vyrovnávání zatížení a veřejnou IP adresu se také přidají nové škálovací sady.  
-    Pokud chcete najít nové škálovací sady v šabloně, vyhledejte "Microsoft.Compute/virtualMachineScaleSets" prostředek s názvem podle *vmNodeType2Name* parametru.  Novou škálovací sadu se přidá do primárního uzlu typu pomocí vlastnosti -> virtualMachineProfile - > extensionProfile -> Rozšíření -> Vlastnosti -> Nastavení -> Nastavení nodeTypeRef.
-4. Zkontrolujte stav clusteru a ověřte, zda že jsou všechny uzly v dobrém stavu.
-5. Zakážete uzly ve škálovací sadě starého typu primárního uzlu se záměrem odebrat uzel. Můžete zakázat všechny najednou a operace jsou zařazené do fronty. Počkejte, dokud všechny uzly jsou zakázány, což může nějakou dobu trvat.  Jako starší uzly v typu uzlu jsou zakázané, systému služby a počáteční uzly migrace na virtuální počítače novou škálovací sadu v primární typ uzlu.
-6. Odeberte starší škálovací sady z primární typ uzlu.
-7. Odebrání nástroje pro vyrovnávání zatížení, který je přidružený k původní škálovací sady. Cluster není k dispozici, když jsou nakonfigurované novou veřejnou IP adresu a zatížení nástroje pro vyrovnávání pro novou škálovací sadu.  
-8. Nastavení DNS Store veřejné IP adresy přidružené k původní primární uzel zadejte škálovací sady do proměnné a odebrat tuto veřejnou IP adresu.
-9. Nahraďte nastavení DNS veřejné IP adresy přidružené k nové primární uzel typu škálovací sady pomocí nastavení DNS odstraněné veřejné IP adresy.  Cluster je teď dostupný znovu.
-10. Odebrání uzlu stav uzlů z clusteru.  Pokud se úroveň odolnosti škálovací sady staré stříbrné nebo zlaté úrovně, tento krok je automaticky dokončen v systému.
-11. Pokud jste nasadili stavové aplikace v předchozím kroku, ověřte, že aplikace je funkční.
+1. Pomocí těchto ukázkových souborů [šablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) a [parametrů](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) nasaďte počáteční cluster se dvěma typy uzlů a dvěma sadami škálování (jedna sada škálování na typ uzlu).  Obě sady škálování mají velikost Standard D2_V2 a běží na Windows Serveru 2012 R2 Datacenter.  Počkejte, než cluster dokončí upgrade standardních hodnot.   
+2. Volitelné – nasaďte stavový vzorek do clusteru.
+3. Po rozhodnutí o upgradu virtuálních počítačů typu primární uzel přidejte novou sadu škálování na typ primárního uzlu pomocí těchto ukázkových [šablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.json) a souborů [parametrů](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.parameters.json) , takže typ primárního uzlu má teď dvě sady škálování.  Systémové služby a uživatelské aplikace jsou schopné migrovat mezi virtuálními počítači ve dvou různých sadách škálování.  Nové virtuální počítače sady škálování mají velikost Standard D4_V2 a používají Windows Server 2016 Datacenter s kontejnery.  K nové sadě škálování se přidávají taky nové nástroje pro vyrovnávání zatížení a veřejná IP adresa.  
+    Pokud chcete v šabloně najít novou sadu škálování, vyhledejte prostředek Microsoft. COMPUTE/virtualMachineScaleSets s názvem a parametrem *vmNodeType2Name* .  Nová sada škálování se přidá k primárnímu typu uzlu pomocí vlastnosti-> virtualMachineProfile-> extensionProfile-> rozšíření – > Properties-> Nastavení-> nodeTypeRef.
+4. Zkontrolujte stav clusteru a ověřte, zda jsou všechny uzly v dobrém stavu.
+5. Zakažte uzly v staré sadě škálování typu primárního uzlu s záměrem odebrat uzel. Můžete zakázat všechny najednou a operace se zařadí do fronty. Počkejte, dokud nebudou všechny uzly zakázané, což může nějakou dobu trvat.  Vzhledem k zakázání starších uzlů v typu uzlu se systémové služby a uzly počáteční verze migrují na virtuální počítače nové sady škálování v primárním uzlu.
+6. Odeberte starší sadu škálování z primárního typu uzlu.
+7. Odeberte Nástroj pro vyrovnávání zatížení přidružený k staré sadě škálování. Cluster není k dispozici, ale nová veřejná IP adresa a nástroj pro vyrovnávání zatížení jsou nakonfigurovány pro novou sadu škálování.  
+8. Uložte nastavení DNS veřejné IP adresy přidružené k starému škálování typu primárního uzlu nastavenému v proměnné a odeberte tuto veřejnou IP adresu.
+9. Nahraďte nastavení DNS veřejné IP adresy přidružené k novému primárnímu typu škálování sady s nastavením DNS odstraněné veřejné IP adresy.  Cluster je nyní dosažitelný.
+10. Odeberte stav uzlu uzlů z clusteru.  Pokud byla úroveň odolnosti staré sady škálování stříbrná nebo zlatá, tento krok se provádí automaticky systémem.
+11. Pokud jste v předchozím kroku nasadili stavovou aplikaci, ověřte, že je aplikace funkční.
 
 ```powershell
 # Variables.
@@ -160,10 +160,10 @@ foreach($name in $nodeNames){
 }
 ```
 
-## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [do clusteru přidat typ uzlu](virtual-machine-scale-set-scale-node-type-scale-out.md)
-* Další informace o [aplikace škálovatelnost](service-fabric-concepts-scalability.md).
-* [Škálování clusteru Azure snížení nebo navýšení kapacity](service-fabric-tutorial-scale-cluster.md).
-* [Škálování clusteru Azure prostřednictvím kódu programu](service-fabric-cluster-programmatic-scaling.md) pomocí fluent Azure compute SDK.
-* [Horizontální snížení nebo navýšení kapacity samostatného clusteru](service-fabric-cluster-windows-server-add-remove-nodes.md).
+## <a name="next-steps"></a>Další kroky
+* Naučte se, jak [Přidat typ uzlu do clusteru](virtual-machine-scale-set-scale-node-type-scale-out.md) .
+* Přečtěte si o [škálovatelnosti aplikací](service-fabric-concepts-scalability.md).
+* Horizontální navýšení nebo navýšení [kapacity clusteru Azure](service-fabric-tutorial-scale-cluster.md)
+* [Škálujte cluster Azure pomocí programu](service-fabric-cluster-programmatic-scaling.md) Fluent Azure COMPUTE SDK.
+* Horizontální navýšení [nebo zmenšení kapacity samostatného clusteru](service-fabric-cluster-windows-server-add-remove-nodes.md)
 

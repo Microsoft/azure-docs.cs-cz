@@ -10,21 +10,20 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: bd68909f51ff6cead8484ae4ab9f2557e9d6554e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 5d79edc4db07a2c5916725efc312d9f94fe985dc
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443322"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640087"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
 Skupiny s automatickým převzetím služeb při selhání je funkce SQL Database, která umožňuje spravovat replikaci a převzetí služeb při selhání skupiny databází na serveru SQL Database nebo všech databázích ve spravované instanci do jiné oblasti. Jedná se o deklarativní abstrakci nad stávající [aktivní geografickou replikací](sql-database-active-geo-replication.md) , která je navržená tak, aby zjednodušila nasazení a správu geograficky replikovaných databází se škálováním. Převzetí služeb při selhání můžete iniciovat ručně nebo je můžete delegovat na službu SQL Database na základě uživatelsky definované zásady. Druhá možnost umožňuje automaticky obnovit více souvisejících databází v sekundární oblasti po závažných chybách nebo jiné neplánované události, které mají za následek úplnou nebo částečnou ztrátu dostupnosti služby SQL Database v primární oblasti. Skupina převzetí služeb při selhání může zahrnovat jednu nebo více databází, které obvykle používá stejná aplikace. Kromě toho můžete použít čitelné sekundární databáze pro přesměrování zatížení dotazů jen pro čtení. Vzhledem k tomu, že skupiny s automatickým převzetím služeb při selhání zahrnují více databází, je nutné tyto databáze nakonfigurovat na primárním serveru Primární i sekundární server pro databáze ve skupině převzetí služeb při selhání musí být ve stejném předplatném. Skupiny s automatickým převzetím služeb při selhání podporují replikaci všech databází ve skupině jenom na jeden sekundární server v jiné oblasti.
 
 > [!NOTE]
-> Když pracujete s jednou nebo ve fondu databází na serveru SQL Database a chcete více sekundárních umístění ve stejné nebo jiné oblasti, použijte [aktivní geografickou replikaci](sql-database-active-geo-replication.md).
+> Když pracujete s jednou nebo ve fondu databází na serveru SQL Database a chcete více sekundárních umístění ve stejné nebo jiné oblasti, použijte [aktivní geografickou replikaci](sql-database-active-geo-replication.md). 
 
 Pokud používáte skupiny s automatickým převzetím služeb při selhání se zásadami automatického převzetí služeb při selhání, jakékoli výpadky, které mají vliv na jednu nebo několik databází ve skupině, mají za následek automatické převzetí Skupiny s automatickým převzetím služeb při selhání poskytují koncové body naslouchacího procesu pro čtení i zápis a jen pro čtení, které během převzetí služeb při selhání zůstanou beze změny. Bez ohledu na to, jestli používáte ruční nebo automatickou aktivaci při selhání, převzetí služeb při selhání přepne všechny sekundární databáze ve skupině na primární. Po převzetí služeb při selhání databáze je záznam DNS automaticky aktualizován pro přesměrování koncových bodů do nové oblasti. Konkrétní data RPO a RTO najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md).
 
@@ -259,11 +258,11 @@ Výše uvedená konfigurace zajistí, že automatické převzetí služeb při s
 Při nastavování skupiny převzetí služeb při selhání mezi primárními a sekundárními spravovanými instancemi ve dvou různých oblastech se každá instance izoluje pomocí nezávislé virtuální sítě. Pokud chcete zajistit, aby provoz replikace mezi těmito virtuální sítěmi splňoval tyto požadavky:
 
 1. Tyto dvě spravované instance se musí nacházet v různých oblastech Azure.
-2. Vaše sekundární aplikace musí být prázdná (žádné uživatelské databáze).
-3. Primární a sekundární spravované instance musí být ve stejné skupině prostředků.
-4. Virtuální sítě, ke kterému jsou spravované instance součástí, je třeba je připojit prostřednictvím [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md). Globální partnerský vztah virtuálních sítí se nepodporuje.
-5. U dvou spravovaných instancí virtuální sítě nejde překrývání IP adres.
-6. Musíte nastavit skupiny zabezpečení sítě (NSG) tak, aby porty 5022 a rozsah 11000 ~ 12000 byly otevřené příchozí a odchozí pro připojení z jiné spravované instance podsítě. To umožňuje provoz replikace mezi instancemi.
+1. Tyto dvě spravované instance musí být stejné úrovně služby a měly by mít stejnou velikost úložiště. 
+1. Vaše sekundární spravovaná instance musí být prázdná (žádné uživatelské databáze).
+1. Virtuální sítě používané spravovanými instancemi musí být připojené pomocí [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo Express Route. Pokud se dvě virtuální sítě připojují prostřednictvím místní sítě, ujistěte se, že neexistuje žádné pravidlo brány firewall blokující porty 5022 a 11000-11999. Globální partnerský vztah virtuálních sítí se nepodporuje.
+1. U dvou spravovaných instancí virtuální sítě nejde překrývání IP adres.
+1. Musíte nastavit skupiny zabezpečení sítě (NSG) tak, aby porty 5022 a rozsah 11000 ~ 12000 byly otevřené příchozí a odchozí pro připojení z jiné spravované instance podsítě. To umožňuje provoz replikace mezi instancemi.
 
    > [!IMPORTANT]
    > Nesprávně nakonfigurovaná pravidla zabezpečení NSG vede k zablokování operací kopírování databáze.
@@ -369,9 +368,9 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 ## <a name="next-steps"></a>Další postup
 
 - Ukázkové skripty najdete v těchto tématech:
-  - [Konfigurace a převzetí služeb při selhání izolované databáze s využitím aktivní geografické replikace](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-  - [Konfigurace a převzetí služeb při selhání databáze ve fondu s využitím aktivní geografické replikace](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-  - [Konfigurace a převzetí služeb při selhání skupiny převzetí služeb při selhání pro izolovanou databázi](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+  - [Konfigurace aktivní geografické replikace pro izolovanou databázi v Azure SQL Database pomocí PowerShellu](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+  - [Použití PowerShellu ke konfiguraci aktivní geografické replikace pro databázi ve fondu v Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+  - [Přidání jedné databáze Azure SQL Database do skupiny převzetí služeb při selhání pomocí PowerShellu](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - Přehled provozní kontinuity a scénářů najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md) .
 - Další informace o Azure SQL Database automatizovaných zálohách najdete v tématu [SQL Database automatizované zálohy](sql-database-automated-backups.md).
 - Další informace o použití automatizovaných záloh pro obnovení najdete v tématu [obnovení databáze ze zálohy iniciované službou](sql-database-recovery-using-backups.md).

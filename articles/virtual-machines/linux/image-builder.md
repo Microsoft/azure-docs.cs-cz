@@ -1,48 +1,49 @@
 ---
-title: Vytvoření virtuálního počítače s Linuxem pomocí Image Builder pro Azure (preview)
-description: Vytvoření virtuálního počítače s Linuxem pomocí Azure Image Builder.
+title: Vytvoření virtuálního počítače se systémem Linux pomocí nástroje Azure image Builder (Preview)
+description: Vytvořte virtuální počítač se systémem Linux pomocí nástroje Azure image Builder.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2966a1803d0664312d71ba992a5ba65f73b27370
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1bac04bbb67c7472de92c6da322121bafc20a560
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667513"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695437"
 ---
-# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Verze Preview: Vytvoření virtuálního počítače s Linuxem pomocí Azure Image Builder
+# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Verze Preview: Vytvoření virtuálního počítače se systémem Linux pomocí nástroje Azure image Builder
 
-Tento článek popisuje, jak můžete vytvořit vlastní image Linuxu s použitím Image Builder pro Azure a Azure CLI. V příkladu v tomto článku se používá tři různé [úpravcům přidávat nové](image-builder-json.md#properties-customize) pro přizpůsobení image:
+V tomto článku se dozvíte, jak vytvořit přizpůsobenou image pro Linux pomocí Azure image Builder a Azure CLI. Příklad v tomto článku [používá pro přizpůsobení](image-builder-json.md#properties-customize) image tři různé úpravy:
 
-- Prostředí (adresa_uri-skriptu) – soubory ke stažení a spuštění [skript prostředí](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh).
-- Prostředí (inline) - spuštění konkrétních příkazů. V tomto příkladu vložené příkazy zahrnují vytváření adresáře a aktualizaci operačního systému.
-- Soubor – zkopíruje [souboru z Githubu](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) do adresáře na virtuálním počítači.
+- Shell (ScriptUri) – stáhne a spustí [skript prostředí](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh).
+- Shell (inlineed) – spustí konkrétní příkazy. V tomto příkladu vložené příkazy zahrnují vytvoření adresáře a aktualizaci operačního systému.
+- Soubor – zkopíruje [soubor z GitHubu](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) do adresáře na virtuálním počítači.
 
+Můžete také zadat `buildTimeoutInMinutes`. Výchozí hodnota je 240 minut a můžete prodloužit dobu sestavování tak, aby umožňovala delší spuštění sestavení.
 
-Použijeme Ukázková šablona .json konfigurace image. Soubor .json, který se používá, je zde: [helloImageTemplateLinux.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
+K nakonfigurování image budeme používat šablonu Sample. JSON. Soubor. JSON, který používáme, je tady: [helloImageTemplateLinux. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
 
 > [!IMPORTANT]
-> Image Builder pro Azure je aktuálně ve verzi public preview.
+> Azure image Builder je momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="register-the-features"></a>Registrace funkce
-Pokud chcete použít Image Builder pro Azure ve verzi preview, budete muset registrovat novou funkci.
+## <a name="register-the-features"></a>Registrace funkcí
+Chcete-li používat Azure image Builder v rámci verze Preview, je nutné zaregistrovat novou funkci.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-Zkontrolujte stav registrace funkce.
+Ověřte stav registrace funkce.
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Zkontrolujte svou registraci.
+Ověřte vaši registraci.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -50,7 +51,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Pokud třeba není registrovaný, spusťte následující příkaz:
+Pokud nevyžadují registraci, spusťte tento příkaz:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -58,9 +59,9 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Storage
 ```
 
-## <a name="setup-example-variables"></a>Instalační program příklad proměnné
+## <a name="setup-example-variables"></a>Příklady nastavení proměnných
 
-Použijeme některé údaje opakovaně, takže si vytvoříme několik proměnných k ukládání těchto informací.
+Některé informace budeme používat opakovaně, takže vytvoříme některé proměnné, které tyto informace uloží.
 
 
 ```azurecli-interactive
@@ -74,23 +75,23 @@ imageName=myBuilderImage
 runOutputName=aibLinux
 ```
 
-Vytvoření proměnné pro ID vašeho předplatného. Můžete získat pomocí `az account show | grep id`.
+Vytvořte proměnnou pro ID předplatného. Můžete to získat pomocí `az account show | grep id`.
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
 ```
 
 ## <a name="create-the-resource-group"></a>Vytvořte skupinu prostředků.
-To se používá k ukládání artefaktů šablony konfigurace image a image.
+Slouží k uložení artefaktu šablony konfigurace image a image.
 
 ```azurecli-interactive
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Nastavení oprávnění ve skupině prostředků.
-Udělení oprávnění "Přispěvatel" Image Builder pro vytvoření bitové kopie ve skupině prostředků. Bez správná oprávnění bitové kopie sestavení se nezdaří. 
+## <a name="set-permissions-on-the-resource-group"></a>Nastavení oprávnění pro skupinu prostředků
+Udělte přispěvateli image Builder oprávnění k vytvoření image ve skupině prostředků. Bez správných oprávnění se sestavení image nezdaří. 
 
-`--assignee` Hodnota je ID registrace aplikace pro Image Builder pro službu. 
+`--assignee` Hodnota je ID registrace aplikace pro službu Tvůrce imagí. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -101,7 +102,7 @@ az role assignment create \
 
 ## <a name="download-the-template-example"></a>Stažení příkladu šablony
 
-Můžete použít se vytvořila image parametrizované ukázka konfigurace šablony. Stáhněte si ukázkový soubor .json a nakonfigurovat proměnné, které jste nastavili dříve.
+Vytvořili jste parametrizovanou šablonu konfigurace obrázku pro použití. Stáhněte si soubor Sample. JSON a nakonfigurujte ho pomocí proměnných, které jste nastavili dříve.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json -o helloImageTemplateLinux.json
@@ -113,20 +114,20 @@ sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 ```
 
-Tento příklad .json lze upravovat podle potřeby. Například můžete zvýšit hodnotu `buildTimeoutInMinutes` umožňující delší spuštěného sestavení. Můžete upravit soubor ve službě Cloud Shell pomocí `vi`.
+V případě potřeby můžete tento příklad. JSON upravit. Můžete například zvýšit hodnotu `buildTimeoutInMinutes` tak, aby umožňovala delší spuštění sestavení. Soubor můžete upravit v Cloud Shell pomocí textového editoru, jako `vi`je.
 
 ```azurecli-interactive
 vi helloImageTemplateLinux.json
 ```
 
 > [!NOTE]
-> Zdroj bitové kopie, je nutné vždy [určit verzi](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), nemůžete použít `latest`.
+> Pro zdrojovou image musíte vždycky [zadat verzi](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), kterou nemůžete použít `latest`.
 >
-> Je-li přidat nebo změnit skupinu prostředků, ve kterém probíhá distribuce image, budete muset Ujistěte se, že [oprávnění nastavená pro skupinu prostředků](#set-permissions-on-the-resource-group).
+> Pokud přidáte nebo změníte skupinu prostředků, ve které je bitová kopie distribuována, musíte zajistit, aby byla [pro skupinu prostředků nastavena oprávnění](#set-permissions-on-the-resource-group).
 
 
-## <a name="submit-the-image-configuration"></a>Odeslání konfigurace image
-Odeslání image konfigurace ve službě VM Image Builder
+## <a name="submit-the-image-configuration"></a>Odeslat konfiguraci image
+Odeslat konfiguraci image do služby tvůrce imagí VM
 
 ```azurecli-interactive
 az resource create \
@@ -137,14 +138,14 @@ az resource create \
     -n helloImageTemplateLinux01
 ```
 
-Pokud se úspěšně dokončí, bude vrátí zprávu o úspěšném dokončení a vytvořit image builder konfigurace šablony artefakt v $imageResourceGroup. Skupinu prostředků na portálu můžete zobrazit, pokud povolíte možnost "Zobrazit skryté typy".
+Pokud se úspěšně dokončí, vrátí zprávu o úspěchu a vytvoří artefakt šablony konfigurace tvůrce imagí v $imageResourceGroup. Pokud povolíte možnost Zobrazit skryté typy, můžete zobrazit skupinu prostředků na portálu.
 
-Navíc na pozadí vytvoří Image Builder pracovní skupiny prostředků ve vašem předplatném. Image Builder používá pracovní skupiny prostředků pro sestavení image. Název skupiny prostředků, bude mít tento formát: `IT_<DestinationResourceGroup>_<TemplateName>`.
+Na pozadí vytvoří nástroj image Builder v předplatném taky pracovní skupinu prostředků. Nástroj image Builder používá pracovní skupinu prostředků pro sestavení image. Název skupiny prostředků bude v tomto formátu: `IT_<DestinationResourceGroup>_<TemplateName>`.
 
 > [!IMPORTANT]
-> Přímo neodstraňujte pracovní skupiny prostředků. Při odstranění artefaktů image šablony, odstraní automaticky pracovní skupiny prostředků. Další informace najdete v tématu [vyčištění](#clean-up) oddílu na konci tohoto článku.
+> Neodstraňujte pracovní skupinu prostředků přímo. Pokud odstraníte artefakt šablony image, automaticky se odstraní pracovní skupina prostředků. Další informace najdete v části [Vyčištění](#clean-up) na konci tohoto článku.
 
-Pokud služba hlásí selhání při odesílání šablony konfigurace image, najdete v článku [řešení potíží s](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) kroky. Musíte také odstranit šablonu před dalším pokusem o odeslání sestavení. Pokud chcete odstranit šablonu:
+Pokud služba ohlásí chybu během odesílání šablony konfigurace bitové kopie, přečtěte si postup [řešení potíží](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) . Bude také nutné odstranit šablonu, aby bylo možné znovu odeslat sestavení. Odstranění šablony:
 
 ```azurecli-interactive
 az resource delete \
@@ -166,14 +167,14 @@ az resource invoke-action \
      --action Run 
 ```
 
-Počkejte, než se dokončí, v tomto příkladu sestavení, může trvat 10 až 15 minut.
+Počkejte na dokončení sestavení, v tomto případě může trvat 10-15 minut.
 
-Pokud narazíte na chyby, přečtěte si prosím tyto [řešení potíží s](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) kroky.
+Pokud narazíte na nějaké chyby, přečtěte si prosím tyto kroky pro [řešení potíží](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) .
 
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
 
-Vytvoření virtuálního počítače pomocí image, kterou jste vytvořili.
+Vytvořte virtuální počítač pomocí Image, kterou jste vytvořili.
 
 ```azurecli-interactive
 az vm create \
@@ -185,13 +186,13 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Získejte IP adresu z výstupu vytváření virtuálního počítače a použít ho k SSH k virtuálnímu počítači.
+Získejte IP adresu z výstupu vytvoření virtuálního počítače a použijte ho pro SSH k virtuálnímu počítači.
 
 ```azurecli-interactive
 ssh azureuser@<pubIp>
 ```
 
-Měli byste vidět, že byl upraven na obrázku a zobrazí se zpráva dne, jakmile se naváže připojení SSH.
+Měli byste vidět, že obrázek byl přizpůsoben se zprávou dne, jakmile se naváže připojení SSH.
 
 ```console
 
@@ -202,23 +203,23 @@ Měli byste vidět, že byl upraven na obrázku a zobrazí se zpráva dne, jakmi
 *******************************************************
 ```
 
-Typ `exit` po dokončení ukončete připojení SSH.
+Zadejte `exit` , kdy jste hotovi s cílem zavřít připojení SSH.
 
-## <a name="check-the-source"></a>Kontrola zdroje
+## <a name="check-the-source"></a>Ověřit zdroj
 
-V šabloně Tvůrce bitové kopie 'Vlastnosti', zobrazí se zdrojového obrázku, přizpůsobení skriptu běží, a kde je distribuován.
+V šabloně tvůrce imagí se ve vlastnostech zobrazí zdrojová image, skript vlastního nastavení, který se spustí a kde se distribuuje.
 
 ```azurecli-interactive
 cat helloImageTemplateLinux.json
 ```
 
-Podrobné informace o tomto souboru .json, naleznete v tématu [Image builder referenčními informacemi k šablonám](image-builder-json.md)
+Podrobnější informace o tomto souboru. JSON najdete v tématu [Referenční dokumentace k šablonám tvůrce imagí](image-builder-json.md) .
 
 ## <a name="clean-up"></a>Vyčištění
 
-Jakmile budete hotovi, můžete odstranit prostředky.
+Až budete hotovi, můžete prostředky odstranit.
 
-Odstraňte šablonu image builder.
+Odstraňte šablonu tvůrce imagí.
 
 ```azurecli-interactive
 az resource delete \
@@ -227,7 +228,7 @@ az resource delete \
     -n helloImageTemplateLinux01
 ```
 
-Odstraníte skupinu prostředků obrázků.
+Odstraňte skupinu prostředků image.
 
 ```bash
 az group delete -n $imageResourceGroup
@@ -236,4 +237,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o součástech soubor .json, používané v tomto článku najdete v tématu [referenčními informacemi k šablonám Image Builder](image-builder-json.md).
+Další informace o součástech souboru. JSON používaných v tomto článku najdete v tématu Referenční dokumentace k [šablonám tvůrce imagí](image-builder-json.md).

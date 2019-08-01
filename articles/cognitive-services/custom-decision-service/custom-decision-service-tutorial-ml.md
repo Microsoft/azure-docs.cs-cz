@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Snadné a funkce specifikace – Custom Decision Service'
+title: 'Kurz: Featurization a funkce – specifikace funkcí – Custom Decision Service'
 titlesuffix: Azure Cognitive Services
 description: Kurz pro funkcionalizaci a specifikaci funkcí strojového učení ve službě Custom Decision Service.
 services: cognitive-services
@@ -10,18 +10,19 @@ ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: 9e091d3899132509d16854ebdbe14bcbc491deec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: 409dcf7dc224eaf2a3f51325010507b9182fadf2
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829136"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707046"
 ---
-# <a name="tutorial-featurization-and-feature-specification"></a>Kurz: Specifikace snadné a funkce
+# <a name="tutorial-featurization-and-feature-specification"></a>Kurz: Featurization a specifikace funkcí
 
 Tento kurz se zabývá pokročilým strojovým učením ve službě Custom Decision Service. Kurz se skládá ze dvou částí: [funkcionalizace](#featurization-concepts-and-implementation) a [specifikace funkcí](#feature-specification-format-and-apis). Funkcionalizací se rozumí reprezentace vašich dat ve formě „funkcí“ pro účely strojového učení. Specifikace funkcí pak zabývá formátem JSON a pomocnými rozhraními API pro zadávání funkcí.
 
-Strojové učení ve službě Custom Decision Service je ve výchozím nastavení pro zákazníka transparentní. Z vašeho obsahu se automaticky extrahují funkce a použije se standardní algoritmus zpětnovazebního učení. Extrakce funkce využívá několik dalších služeb Azure Cognitive Services: [Propojování entit](../entitylinking/home.md), [rozhraní Text Analytics](../text-analytics/overview.md), [pro rozpoznávání Emocí](../emotion/home.md), a [pro počítačové zpracování obrazu](../computer-vision/home.md). Pokud budete používat pouze výchozí režim služby, můžete tento kurz přeskočit.
+Strojové učení ve službě Custom Decision Service je ve výchozím nastavení pro zákazníka transparentní. Z vašeho obsahu se automaticky extrahují funkce a použije se standardní algoritmus zpětnovazebního učení. Extrakce funkcí využívá několik dalších Cognitive Services Azure: [Propojení entit](../entitylinking/home.md), [Analýza textu](../text-analytics/overview.md), [emoce](../emotion/home.md)a [počítačové zpracování obrazu](../computer-vision/home.md). Pokud budete používat pouze výchozí režim služby, můžete tento kurz přeskočit.
 
 ## <a name="featurization-concepts-and-implementation"></a>Funkcionalizace: koncepty a implementace
 
@@ -115,7 +116,7 @@ Můžete taky zadat více mezních funkcí pro stejnou akci – se stejnými hod
 
 ### <a name="1-hot-encoding"></a>Kódování s 1 horkým bitem
 
-Můžete zvolit, že budou některé funkce reprezentovány jako bitové vektory, kde každý bit odpovídá rozsahu možných hodnot. Tento bit nastaven na hodnotu 1 tehdy a jenom tehdy, když funkce je v tomto rozsahu. Je tam tudíž jeden „horký“ bit, který je nastaven na 1, a ostatní jsou nastaveny na 0. Tato reprezentace se běžně označuje jako *kódování s 1 horkým bitem (1-hot encoding)*.
+Můžete zvolit, že budou některé funkce reprezentovány jako bitové vektory, kde každý bit odpovídá rozsahu možných hodnot. Tento bit nastaven na hodnotu 1 tehdy a jenom tehdy, když funkce je v tomto rozsahu. Je tam tudíž jeden „horký“ bit, který je nastaven na 1, a ostatní jsou nastaveny na 0. Tato reprezentace se běžně označuje jako *kódování s 1 horkým bitem (1-hot encoding)* .
 
 Kódování s 1 horkým bitem je typické pro kategorické funkce, jako je třeba zeměpisná oblast, které nemají přirozeně smysluplnou číselnou reprezentaci. Je také vhodné pro číselné funkce, jejichž vliv na odměnu bude pravděpodobně nelineární. Daný článek může být například relevantní pro konkrétní věkovou skupinu a irelevantní pro kohokoli staršího nebo mladšího.
 

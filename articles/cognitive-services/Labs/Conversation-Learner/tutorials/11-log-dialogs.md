@@ -1,7 +1,7 @@
 ---
-title: Jak se připojit dialogová okna v modelu konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Jak protokolovat dialogy v modelu Conversation Learner Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Zjistěte, jak protokolovat dialogová okna v modelu Learner konverzace.
+description: Naučte se protokolovat dialogy v modelu Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,57 +10,58 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: f1e161fa05a77682d0b5eb1c6c21975ac87028a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 388942e8195048d7528a54e5a290f1724c8e876b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387668"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703970"
 ---
-# <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Jak se připojit dialogová okna v modelu Learner konverzace
+# <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Postup při protokolování dialogových oken v modelu Conversation Learner
 
-Tento kurz ukazuje, jak dialogová okna protokolu se použijí k lepšímu trénování modelů konverzace Learner z nahraných interakcí s uživateli reálného světa.
+V tomto kurzu se dozvíte, jak se používají dialogy protokolu pro lepší výuku Conversation Learnerch modelů od zaznamenaných interakcí s uživateli reálného světa.
 
 ## <a name="video"></a>Video
 
-[![Log dialogová okna kurz ve verzi Preview](https://aka.ms/cl_Tutorial_v3_LogDialogs_Preview)](https://aka.ms/cl_Tutorial_v3_LogDialogs)
+[![Kurz dialogových oken protokolu Preview](https://aka.ms/cl_Tutorial_v3_LogDialogs_Preview)](https://aka.ms/cl_Tutorial_v3_LogDialogs)
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje, zda je spuštěna obecné kurz bot
+Tento kurz vyžaduje, aby byl spuštěný robot pro obecné kurzy.
 
     npm run tutorial-general
 
-a počasí model vytvořený v předchozích kurzech.
+a model počasí vytvořený v předchozích kurzech.
 
 ## <a name="details"></a>Podrobnosti
-Dialogová okna protokolu jsou zaznamenané protokoly svého robota interakce s koncovým uživatelům. Podle využití, tyto dialogy protokolu můžete vyřešit popisky entity a výběr akce pro zlepšení výkonu modelu a celkový výkon systému.
+Dialogová okna protokolu zaznamenávají protokoly interakce robota s koncovými uživateli. Použitím těchto dialogových oken protokolu můžete opravit popisky entit a výběr akcí, aby se zlepšil výkon modelu a celkový výkon systému.
 
 ## <a name="steps"></a>Kroky
 
-Ve webovém uživatelském rozhraní klikněte na "Import kurzy" a vyberte model s názvem "Kurzu-11-LogDialogs".
+Ve webovém uživatelském rozhraní klikněte na "Import kurzů" a vyberte model s názvem "kurz-11-LogDialogs".
 
-Tento Model obsahuje jednu entitu s názvem "city" a akce určeny pro reakce na dotazy o počasí v tomto městě. Dialogová okna dvou trénování byly použity pro trénování modelu, tak, aby byly poněkud nižší očekávaný výkon. Model by mohly zlepšit s další školicí a vystavení interakce uživatele reálného světa.
+Tento model obsahuje jednu entitu s názvem City a akce navržené k reakci na dotazy týkající se počasí v tomto městě. Pro výuku modelu byly použity dva výukové dialogy, takže očekávání výkonu jsou poněkud nízká. Model by se vylepšil o další školení a expozici skutečným interakcím uživatelů v reálném světě.
 
 ### <a name="create-a-new-conversation"></a>Vytvořit novou konverzaci
 
-1. Na levém panelu klikněte na tlačítko "Protokolu dialogů" a potom na tlačítko "Dialogové okno Nový protokol".
-2. V panelu chatu, kde říká "Zadejte zprávu...", zadejte "Předpověď počasí Austin"
-3. Klikněte na tlačítko "Testování Hotovo".
-4. Kliknutím na dialogové okno protokol "Předpověď počasí Austin" ze seznamu.
-5. Klikněte na tlačítko "Předpověď počasí Austin" utterance panelu konverzace.
-6. Klikněte na tlačítko "Austin" a potom klikněte na "city" v seznamu entit.
-7. Klikněte na tlačítko "Odeslat změny".
-    - Tuto změnu v hodnotě Entity způsobují podřízené změny konverzace, protože máme hodnoty nové entity v paměti. Pravděpodobně pozdějších akcích staly neplatnými zejména těch, které jsou zahrnující entity "city".
-8. Klikněte "Které city"? utterance panelu konverzace.
-9. Vyberte odpověď, "o počasí v Austin je pravděpodobně hezky."
-10. Klikněte na tlačítko "Uložit jako trénování dialogové okno".
-    - Školení je okamžitě spuštěna.
+1. Na levém panelu klikněte na možnost protokolovat dialogy a pak na tlačítko nový dialog protokolu.
+2. Na panelu chat, kde říká "zadejte zprávu..." zadejte "Austin počasí předpověď".
+3. Klikněte na tlačítko dokončené testování.
+4. V seznamu klikněte na dialog protokolu Austin počasí předpověď.
+5. Na panelu chat klikněte na Austin předpověď počasí na utterance.
+6. Klikněte na "Austin" a potom v seznamu entit klikněte na "City".
+7. Klikněte na tlačítko odeslat změny.
+    - Tato změna v hodnotě entity způsobí u konverzace navazující změny, protože v paměti máme nové hodnoty entit. Pozdější akce se pravděpodobně stanou neplatnými zvlášť, které zahrnují entitu "City".
+8. Klikněte na "které město?". utterance na panelu chatu.
+9. Vyberte odpověď "počasí v Austin je pravděpodobně Slunečné."
+10. Klikněte na tlačítko Uložit jako výukový dialog.
+    - Školení se okamžitě vypnulo.
 
 ![](../media/T11_logdialog.png)
 
-Poslední OneNote. Podle potřeb firmy konverzace funkce protokolování můžete vypnout tak, že přejdete na nastavení a zrušením zaškrtnutí políčka "protokolu konverzace."
+Jedna poslední poznámka. V závislosti na obchodních potřebách můžete funkci protokolování konverzace vypnout tak, že v části nastavení a zrušíte zaškrtnutí možnosti "konverzace v protokolu".
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Zpětné volání zjišťování entit](./12-entity-detection-callback.md)
+> [Zpětné volání detekce entit](./12-entity-detection-callback.md)

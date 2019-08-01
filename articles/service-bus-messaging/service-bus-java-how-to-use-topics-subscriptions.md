@@ -1,6 +1,6 @@
 ---
-title: Jak používat témata služby Azure Service Bus pomocí Javy | Dokumentace Microsoftu
-description: Použijte témata a odběry Service Bus v Azure.
+title: Použití Azure Service Bus témata a předplatných v jazyce Java
+description: Použijte Service Bus témata a předplatná v Azure.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -14,41 +14,42 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 578fd0caa8986c48b3fd50a7890bb66b14bee2f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-java-july2019
+ms.openlocfilehash: 822fadb661fd9fcdde8ff75fa4f9e60dfa44c97b
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991727"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663406"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Jak používat témata a odběry Service Bus pomocí Javy
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Jak používat Service Bus témata a odběry pomocí Java
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-V tomto rychlém startu napíšete kód v Javě pro odesílání zpráv do tématu služby Service Bus a potom přijímá zprávy z předplatných tohoto tématu. 
+V tomto rychlém startu napíšete kód Java, který odešle zprávy do Service Busho tématu, a pak dostanou zprávy z odběrů do tohoto tématu. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat vaše [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo zaregistrujte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Postupujte podle kroků v [rychlý start: Pomocí webu Azure portal k vytvoření tématu služby Service Bus a odběrů na téma](service-bus-quickstart-topics-subscriptions-portal.md) a proveďte následující úlohy:
-    1. Vytvoření služby Service Bus **obor názvů**.
-    2. Získejte **připojovací řetězec**.
-    3. Vytvoření **tématu** v oboru názvů.
-    4. Vytvoření **třemi odběry** téma v oboru názvů.
-3. [Sada Azure SDK for Java][Azure SDK for Java].
+1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Postupujte podle kroků v [rychlém startu: Pomocí Azure Portal můžete vytvořit Service Bus téma a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md) , abyste mohli provádět následující úlohy:
+    1. Vytvořte **obor názvů**Service Bus.
+    2. Získá **připojovací řetězec**.
+    3. Vytvořte **téma** v oboru názvů.
+    4. Vytvořte **tři odběry** k tématu v oboru názvů.
+3. [Sada Azure SDK pro jazyk Java][Azure SDK for Java].
 
-## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití služby Service Bus
-Ujistěte se, že jste nainstalovali [sady Azure SDK pro Javu] [ Azure SDK for Java] před vytvořením této ukázky. Pokud používáte Eclipse, můžete nainstalovat [sady Azure Toolkit pro Eclipse] [ Azure Toolkit for Eclipse] , který obsahuje sadu Azure SDK pro Javu. Poté můžete přidat **knihovny Microsoft Azure Libraries for Java** do projektu:
+## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití Service Bus
+Před vytvořením této ukázky se ujistěte, že máte nainstalovanou [sadu Azure SDK pro jazyk Java][Azure SDK for Java] . Pokud používáte zatmění, můžete nainstalovat [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] , který obsahuje sadu Azure SDK pro jazyk Java. Pak můžete přidat **knihovny Microsoft Azure pro jazyk Java** do projektu:
 
-![Cesta sestavení knihovny v nástroji Eclipse](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
+![Knihovny v cestě sestavení v zatmění](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
 
-Také je potřeba přidat následující JAR do cesta sestavení Java:
+Také je nutné přidat následující jar do cesty sestavení Java:
 
 - gson-2.6.2.jar
 - commons-cli-1.4.jar
 - proton-j-0.21.0.jar
 
-Přidat třídu s **hlavní** metoda a potom přidejte následující `import` příkazů v horní části souboru Java:
+Přidejte třídu s metodou **Main** a přidejte následující `import` příkazy do horní části souboru Java:
 
 ```java
 import com.google.gson.reflect.TypeToken;
@@ -65,10 +66,10 @@ import org.apache.commons.cli.DefaultParser;
 ```
 
 ## <a name="send-messages-to-a-topic"></a>Odeslání zprávy do tématu
-Aktualizace **hlavní** metodu pro vytvoření **TopicClient** objektu a vyvolání Pomocná metoda, která asynchronně odešle ukázkové zprávy do tématu služby Service Bus.
+Aktualizujte metodu **Main** tak, aby vytvořila objekt **TopicClient** , a vyvolá pomocnou metodu, která asynchronně pošle ukázkové zprávy do tématu Service Bus.
 
 > [!NOTE] 
-> - Nahraďte `<NameOfServiceBusNamespace>` s názvem vašeho oboru názvů služby Service Bus. 
+> - Nahraďte `<NameOfServiceBusNamespace>` názvem vašeho oboru názvů Service Bus. 
 > - Nahraďte `<AccessKey>` přístupovým klíčem pro váš obor názvů.
 
 ```java
@@ -122,10 +123,10 @@ public class MyServiceBusTopicClient {
 }
 ```
 
-Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Neexistuje žádné omezení na počet zpráv držených v tématu, ale celková velikost zpráv držených v tématu, je omezený. Velikost tématu se definuje při vytvoření, maximální limit je 5 GB.
+Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Neexistuje žádné omezení počtu zpráv držených v tématu, ale omezení celkové velikosti zpráv držených v tématu. Velikost tématu se definuje při vytvoření, maximální limit je 5 GB.
 
 ## <a name="how-to-receive-messages-from-a-subscription"></a>Jak přijmout zprávy z odběru
-Aktualizace **hlavní** metodu pro vytvoření tří **SubscriptionClient** objekty pro třemi odběry a vyvolání Pomocná metoda, která asynchronně přijímá zprávy z tématu Service Bus. Vzorový kód předpokládá, že jste vytvořili téma s názvem **BasicTopic** a třemi odběry s názvem **Subscription1**, **Subscription2**, a  **Subscription3**. Pokud jste použili pro ně různými názvy, aktualizujte kód před jeho otestováním. 
+Aktualizujte metodu **Main** tak, aby vytvořila tři objekty **SubscriptionClient** pro tři předplatná a vyvolala pomocnou metodu, která asynchronně přijímá zprávy z Service Busho tématu. Vzorový kód předpokládá, že jste vytvořili téma s názvem **BasicTopic** a tři předplatná s názvem **Subscription1**, **Subscription2**a **Subscription3**. Pokud jste pro ně použili jiné názvy, aktualizujte kód před jeho otestováním. 
 
 ```java
 public class MyServiceBusTopicClient {
@@ -189,7 +190,7 @@ public class MyServiceBusTopicClient {
 ```
 
 ## <a name="run-the-program"></a>Spuštění programu
-Spusťte program, který se zobrazí výstup podobný následující výstup:
+Spusťte program a podívejte se na výstup podobný následujícímu výstupu:
 
 ```java
 Message sending: Id = 0
@@ -455,10 +456,10 @@ Message sending: Id = 9
 ```
 
 > [!NOTE]
-> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další postup
-Další informace najdete v tématu [fronty služby Service Bus, témat a odběrů][Service Bus queues, topics, and subscriptions].
+Další informace najdete v tématu [Service Bus fronty, témata a předplatná][Service Bus queues, topics, and subscriptions].
 
 [Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/
 [Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse

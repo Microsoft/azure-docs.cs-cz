@@ -10,12 +10,13 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kylsto
-ms.openlocfilehash: 53df981564eb177da66b86022ecfc80b25f1c763
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ROBOTS: NOINDEX
+ms.openlocfilehash: df5a4ce62af0405ffab8f711fb40b3d92083a3a4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296537"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706650"
 ---
 # <a name="project-acoustics-known-issues"></a>Známé problémy v projektu
 Při použití náhledu návrháře pro akustické navýšení projektu může dojít k následujícím známým potížím.
@@ -43,6 +44,6 @@ Přečtěte si, že jste pro svůj účet Azure použili správné přihlašovac
 ## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>Zrušení zanesli opustí kartu zanesli ve stavu "odstranění".
 Akustické projekty budou vyčistit všechny prostředky Azure pro úlohu po úspěšném dokončení nebo zrušení. Tato možnost může trvat až 5 minut.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Vyzkoušejte si vzorový obsah [Unity](unity-quickstart.md) nebo [Unreal](unreal-quickstart.md)
 

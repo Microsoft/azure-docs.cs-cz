@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 588c4c267c16c72a7673c09a4c5726058302fccb
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 27c38f51104dfb170c59860c96a8e3a86973bb1e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310497"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638918"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Odkazy na úlohy ACR: YAML
 
@@ -23,7 +23,7 @@ Tento článek obsahuje referenční informace k vytváření YAML souborů úlo
 
 ## <a name="acr-taskyaml-file-format"></a>ACR-Task. yaml – formát souboru
 
-Úlohy ACR podporují deklaraci úlohy ve více krocích ve standardní syntaxi YAML. Kroky úkolu definujete v souboru YAML. Tuto úlohu pak můžete spustit ručně tak, že soubor předáte do rutiny [AZ ACR Run][az-acr-run] command. Or, use the file to create a task with [az acr task create][az-acr-task-create] , která se aktivuje automaticky v potvrzení změn Git nebo v základní aktualizaci image. I když tento článek odkazuje `acr-task.yaml` na soubor, který obsahuje kroky, úlohy ACR podporují libovolný platný název souboru s [podporovanou příponou](#supported-task-filename-extensions).
+Úlohy ACR podporují deklaraci úlohy ve více krocích ve standardní syntaxi YAML. Kroky úkolu definujete v souboru YAML. Tuto úlohu pak můžete spustit ručně tak, že soubor předáte do příkazu [AZ ACR Run][az-acr-run] . Nebo pomocí souboru vytvořte úlohu s příkazem [AZ ACR Task Create][az-acr-task-create] , který se automaticky aktivuje na základě potvrzení Git nebo aktualizaci základní image. I když tento článek odkazuje `acr-task.yaml` na soubor, který obsahuje kroky, úlohy ACR podporují libovolný platný název souboru s [podporovanou příponou](#supported-task-filename-extensions).
 
 Primitivní prvky nejvyšší úrovně `acr-task.yaml` jsou **Vlastnosti úlohy**, **typy kroků**a **Vlastnosti kroku**:
 
@@ -62,7 +62,7 @@ YAML je jediný formát souboru, který je aktuálně podporován úlohami ACR. 
 
 ## <a name="run-the-sample-tasks"></a>Spuštění ukázkových úloh
 
-V následujících částech tohoto článku je odkazováno na několik ukázkových souborů úloh. Ukázkové úlohy jsou ve veřejném úložišti GitHubu, [Azure-Samples/ACR-Tasks][acr-tasks]. You can run them with the Azure CLI command [az acr run][az-acr-run]. Ukázkové příkazy jsou podobné následujícímu:
+V následujících částech tohoto článku je odkazováno na několik ukázkových souborů úloh. Ukázkové úlohy jsou ve veřejném úložišti GitHubu, [Azure-Samples/ACR-Tasks][acr-tasks]. Můžete je spustit pomocí příkazu Azure CLI [AZ ACR Run][az-acr-run]. Ukázkové příkazy jsou podobné následujícímu:
 
 ```azurecli
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -85,7 +85,7 @@ Vlastnosti úlohy se obvykle zobrazují v horní části `acr-task.yaml` souboru
 | `version` | řetězec | Ano | Verze `acr-task.yaml` souboru, jak je analyzována službou ACR Tasks. I když se ACR úlohy snaží zachovat zpětnou kompatibilitu, tato hodnota umožňuje úlohám ACR zachovat kompatibilitu v rámci definované verze. Pokud tento parametr nezadáte, použije se výchozí verze na nejnovější verzi. | Ne | Žádné |
 | `stepTimeout` | int (sekundy) | Ano | Maximální počet sekund, po které může být krok spuštěn. Pokud je vlastnost určena na úkolu, nastaví výchozí `timeout` vlastnost všech kroků. Pokud je `timeout` vlastnost určena v kroku, Přepisuje vlastnost poskytnutou úlohou. | Ano | 600 (10 minut) |
 | `workingDirectory` | řetězec | Ano | Pracovní adresář kontejneru během běhu. Pokud je vlastnost určena na úkolu, nastaví výchozí `workingDirectory` vlastnost všech kroků. Pokud je zadáno v kroku, přepíše vlastnost poskytnutou úlohou. | Ano | `$HOME` |
-| `env` | [řetězec, řetězec,...] | Ano |  Pole řetězců ve `key=value` formátu, které definují proměnné prostředí pro úlohu. Pokud je vlastnost určena na úkolu, nastaví výchozí `env` vlastnost všech kroků. V případě zadání v kroku přepíše všechny proměnné prostředí zděděné z úlohy. | Žádné |
+| `env` | [řetězec, řetězec,...] | Ano |  Pole řetězců ve `key=value` formátu, které definují proměnné prostředí pro úlohu. Pokud je vlastnost určena na úkolu, nastaví výchozí `env` vlastnost všech kroků. V případě zadání v kroku přepíše všechny proměnné prostředí zděděné z úlohy. | Žádný |
 | `secrets` | [tajný klíč, tajný kód,...] | Ano | Pole [tajných](#secret) objektů. | Žádné |
 | `networks` | [síť, síť,...] | Ano | Pole [síťových](#network) objektů. | Žádné |
 
@@ -95,18 +95,18 @@ Objekt tajného kódu má následující vlastnosti.
 
 | Vlastnost | type | volitelná, | Popis | Výchozí hodnota |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | řetězec | Ne | Identifikátor tajného klíče | Žádný |
+| `id` | řetězec | Ne | Identifikátor tajného klíče | Žádné |
 | `keyvault` | řetězec | Ano | Adresa URL Azure Key Vault tajného klíče | Žádné |
-| `clientID` | řetězec | Ano | ID klienta spravované identity přiřazené uživatelem pro prostředky Azure. | Žádné |
+| `clientID` | řetězec | Ano | ID klienta [spravované identity přiřazené uživatelem](container-registry-tasks-authentication-managed-identity.md) pro prostředky Azure. | Žádné |
 
-### <a name="network"></a>Sítě
+### <a name="network"></a>síť
 
 Objekt sítě má následující vlastnosti.
 
 | Vlastnost | type | volitelná, | Popis | Výchozí hodnota |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | řetězec | Ne | Název sítě. | Žádné |
-| `driver` | řetězec | Ano | Ovladač pro správu sítě. | Žádný |
+| `driver` | řetězec | Ano | Ovladač pro správu sítě. | Žádné |
 | `ipv6` | bool | Ano | Zda je povolená síť s protokolem IPv6. | `false` |
 | `skipCreation` | bool | Ano | Zda se má přeskočit vytváření sítě. | `false` |
 | `isDefault` | bool | Ano | Zda je síť výchozí sítí poskytovanou pomocí Azure Container Registry | `false` |
@@ -368,20 +368,20 @@ Každý typ kroku podporuje několik vlastností vhodných pro svůj typ. Násle
 | `detach` | bool | Ano | Určuje, zda má být při spuštění odpojen kontejner. | `false` |
 | `disableWorkingDirectoryOverride` | bool | Ano | Určuje, zda `workingDirectory` má být zakázána funkce přepsání. Toto použijte v kombinaci s `workingDirectory` nástrojem, aby měla úplnou kontrolu nad pracovním adresářem kontejneru. | `false` |
 | `entryPoint` | řetězec | Ano | `[ENTRYPOINT]` Přepíše kontejner kroku. | Žádné |
-| `env` | [řetězec, řetězec,...] | Ano | Pole řetězců ve `key=value` formátu, které definují proměnné prostředí pro krok | Žádný |
+| `env` | [řetězec, řetězec,...] | Ano | Pole řetězců ve `key=value` formátu, které definují proměnné prostředí pro krok | Žádné |
 | `expose` | [řetězec, řetězec,...] | Ano | Pole portů, které jsou zpřístupněny z kontejneru. |  Žádný |
 | [`id`](#example-id) | řetězec | Ano | Jednoznačně identifikuje krok v rámci úkolu. Další kroky v úloze můžou odkazovat na krok `id`, například pro kontrolu závislosti s nástrojem. `when`<br /><br />`id` Je také název běžícího kontejneru. Procesy běžící v jiných kontejnerech v úloze můžou `id` jako název hostitele DNS odkazovat jako na jeho název hostitele DNS nebo pro přístup k němu pomocí protokolů Docker [ID], například. | `acb_step_%d`, kde `%d` je index založený na nule v souboru YAML shora dolů |
 | `ignoreErrors` | bool | Ano | Určuje, zda má být krok označen jako úspěšný bez ohledu na to, zda při provádění kontejneru došlo k chybě. | `false` |
 | `isolation` | řetězec | Ano | Úroveň izolace kontejneru. | `default` |
 | `keep` | bool | Ano | Určuje, zda má být kontejner kroku po provedení uchováván. | `false` |
 | `network` | objekt | Ano | Identifikuje síť, ve které se kontejner spouští. | Žádné |
-| `ports` | [řetězec, řetězec,...] | Ano | Pole portů, které jsou publikovány z kontejneru pro hostitele. |  Žádné |
+| `ports` | [řetězec, řetězec,...] | Ano | Pole portů, které jsou publikovány z kontejneru pro hostitele. |  Žádný |
 | `pull` | bool | Ano | Určuje, zda má být před spuštěním kontejneru vynutit stažení, aby nedocházelo k chování ukládání do mezipaměti. | `false` |
 | `privileged` | bool | Ano | Určuje, zda má být kontejner spuštěn v privilegovaném režimu. | `false` |
 | `repeat` | int | Ano | Počet opakovaných pokusů o opakování provádění kontejneru. | 0 |
 | `retries` | int | Ano | Počet opakovaných pokusů o pokus o vykonání kontejneru, pokud kontejner neprojde. Opakování se pokusí pouze v případě, že ukončovací kód kontejneru je nenulový. | 0 |
 | `retryDelay` | int (sekundy) | Ano | Zpoždění v sekundách mezi opakovanými pokusy o spuštění kontejneru. | 0 |
-| `secret` | objekt | Ano | Identifikuje Azure Key Vault tajný klíč nebo spravovanou identitu pro prostředky Azure. | Žádný |
+| `secret` | objekt | Ano | Identifikuje Azure Key Vault tajný klíč nebo [spravovanou identitu pro prostředky Azure](container-registry-tasks-authentication-managed-identity.md). | Žádné |
 | `startDelay` | int (sekundy) | Ano | Počet sekund, po který se má zpozdit spuštění kontejneru | 0 |
 | `timeout` | int (sekundy) | Ano | Maximální počet sekund, po které může krok běžet, než se ukončí. | 600 |
 | [`when`](#example-when) | [řetězec, řetězec,...] | Ano | Nakonfiguruje závislost kroku na jednom nebo několika dalších krocích v rámci úlohy. | Žádný |

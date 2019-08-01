@@ -6,21 +6,24 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 076c3318a68a50e6bd1b4f9f2a4a4b9a034533c6
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 8f1fa6f7823c643278e52ffd0faa1c0ce4972ef8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346574"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640254"
 ---
-# <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Vzorce dat mapování datových továrn Azure
+# <a name="mapping-data-flows-column-patterns"></a>Vzorce mapování datových toků
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 Několik Azure Data Factory transformacích toků dat podporuje představu o vzorcích sloupců, takže můžete vytvářet šablony sloupců založené na vzorcích místo pevně zakódovaných názvů sloupců. Tuto funkci můžete v rámci Tvůrce výrazů použít k definování vzorů, které odpovídají sloupcům pro transformaci místo vyžadování přesně specifických názvů polí. Vzorce jsou užitečné v případě, že se příchozí zdrojová pole často mění, zejména v případě změny sloupců v textových souborech nebo NoSQL databázích. Tato podmínka se někdy označuje jako "posun schématu".
 
+Toto "flexibilní schéma" zpracovává se aktuálně v odvozeném sloupci a agregované transformace a také transformace Select a jímka jako mapování na základě pravidel.
+
 ![vzory sloupců](media/data-flow/columnpattern2.png "Vzory sloupců")
 
+## <a name="column-patterns"></a>Vzory sloupců
 Vzory sloupců jsou užitečné pro zpracování obou scénářů a také v obecných scénářích. Je vhodný pro podmínky, kdy nemůžete plně znát název každého sloupce. Porovnávání vzorů můžete použít pro název sloupce a datový typ sloupce a vytvořit výraz pro transformaci, který provede tuto operaci s libovolným polem v datovém proudu, `name` který odpovídá vašim  &  `type` vzorům.
 
 Při přidávání výrazu k transformaci, která přijímá vzory, vyberte možnost "přidat vzor sloupců". Vzory sloupců umožňují, aby sloupce s posunem schématu odpovídaly vzorům.
@@ -38,5 +41,11 @@ Chcete-li vytvořit vzory založené na sloupcích, můžete se shodovat s názv
 
 ![pozice sloupce](media/data-flow/position.png "Pozice sloupce")
 
+## <a name="rule-based-mapping"></a>Mapování na základě pravidel
+Když namapujete sloupce ve zdroji a vyberete transformace, budete mít možnost zvolit "pevné mapování" nebo "mapování na základě pravidel". Pokud znáte schéma vašich dat a očekáváte konkrétní sloupce ze zdrojové datové sady, které vždy odpovídají specifickým statickým názvům, můžete použít pevné mapování. Ale při práci s flexibilními schématy použijte mapování na základě pravidel. Pomocí výše popsaných pravidel budete moct vytvořit porovnávání vzorů.
+
+![mapování na základě pravidel](media/data-flow/rule2.png "Mapování na základě pravidel")
+
 ## <a name="next-steps"></a>Další postup
-Přečtěte si další informace o jazykovém [výrazu](https://aka.ms/dataflowexpressions) toku dat mapování ADF pro transformace dat.
+* Přečtěte si další informace o jazykovém [výrazu](http://aka.ms/dataflowexpressions) toku dat mapování ADF pro transformace dat.
+* Použijte vzory sloupců v [transformaci jímky](data-flow-sink.md) a [Vyberte transformaci](data-flow-select.md) pomocí mapování založeného na pravidlech.

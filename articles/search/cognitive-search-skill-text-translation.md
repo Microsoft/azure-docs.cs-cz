@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cmacdo
 ms.custom: seodec2018
-ms.openlocfilehash: 0268a16ecc07d578e1e3dc2b15ad9208509c2a8c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c267d6b2b5a8606c8caaba15c9316a8dbcb989b9
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68351359"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698821"
 ---
-#   <a name="text-translation-cognitive-skill-preview"></a>Vnímání znalostí překladu textu (Preview)
+#   <a name="text-translation-cognitive-skill"></a>Vnímání znalostí překladu textu
 
-Dovednost **překladu textu** vyhodnocuje text a pro každý záznam vrátí text přeložený do zadaného cílového jazyka. Tato dovednost používá [Translator text API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) dostupné v Cognitive Services.  Přestože je aktuálně k dispozici v nejnovější Azure Search všeobecně dostupná verze rozhraní API, je považována za verzi Preview a měla by se považovat za neoznámenou všeobecně k dispozici.
+Dovednost **překladu textu** vyhodnocuje text a pro každý záznam vrátí text přeložený do zadaného cílového jazyka. Tato dovednost používá [Translator text API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) dostupné v Cognitive Services.
 
 Tato možnost je užitečná, pokud očekáváte, že vaše dokumenty nebudou v jednom jazyce. v takovém případě můžete normalizovat text na jeden jazyk před indexováním pro hledání pomocí překladu.  Je také užitečné pro případy použití lokalizace, kde můžete chtít, aby kopie stejného textu byly k dispozici v několika jazycích.
 

@@ -1,7 +1,7 @@
 ---
-title: Nastavení účtu Azure Batch Akustika projektu
+title: Akustické navýšení projektu Azure Batch nastavení účtu
 titlesuffix: Azure Cognitive Services
-description: Tento návod popisuje nastavení účtu Azure Batch pro použití s integrací projektu Akustika Unity a Unreal engine.
+description: Tento postup popisuje, jak nastavit účet Azure Batch pro použití s Unrealmi a integrací stroje pro projekt.
 services: cognitive-services
 author: ashtat
 manager: nitinme
@@ -10,58 +10,59 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: db4f96ff7c355f3582966e4daa945f54a6e5b847
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ROBOTS: NOINDEX
+ms.openlocfilehash: f11dfda62ebb53aba6254f2db4eace7c524141d4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616537"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704886"
 ---
-# <a name="project-acoustics-azure-batch-account-setup"></a>Nastavení účtu Azure Batch Akustika projektu
-Tento návod popisuje nastavení účtu Azure Batch pro použití s integrací projektu Akustika Unity a Unreal engine.
+# <a name="project-acoustics-azure-batch-account-setup"></a>Akustické navýšení projektu Azure Batch nastavení účtu
+Tento postup popisuje, jak nastavit účet Azure Batch pro použití s Unrealmi a integrací stroje pro projekt.
 
-## <a name="get-an-azure-subscription"></a>Získání předplatného Azure
-[Předplatné Azure](https://azure.microsoft.com/free/) se vyžaduje před nastavením účtů Batch a Storage. Pokud se zaregistrujete poprvé, Azure poskytuje několik časově omezené bezplatné materiály a kreditem 200 USD.
+## <a name="get-an-azure-subscription"></a>Získat předplatné Azure
+Před nastavením účtů Batch a Storage se vyžaduje [předplatné Azure](https://azure.microsoft.com/free/) . Pokud si zaregistrujete poprvé, Azure poskytuje několik časově omezených prostředků, které jsou časově omezené a $200 kredity.
 
-## <a name="create-azure-batch-and-storage-accounts"></a>Vytvoření účtů služby Azure Batch a storage
-Potom postupujte podle [tyto pokyny](https://docs.microsoft.com/azure/batch/batch-account-create-portal) k nastavení služby Azure Batch a související účty Azure Storage.
+## <a name="create-azure-batch-and-storage-accounts"></a>Vytvoření účtů Azure Batch a úložiště
+Dále postupujte podle [těchto pokynů](https://docs.microsoft.com/azure/batch/batch-account-create-portal) a nastavte Azure Batch a přidružené účty Azure Storage.
 
 Vyberte výchozí možnosti pro účty Batch a Storage:
   
-  ![Snímek obrazovky služby Azure Batch nové účty zobrazuje výchozí nastavení možnosti](media/new-batch-account-create.png)
+  ![Snímek obrazovky s možnostmi Azure Batch nové účty ukazující výchozí nastavení](media/new-batch-account-create.png)
 
-  ![Snímek obrazovky z účtů služby Azure Storage nové možnosti, které zobrazuje výchozí nastavení](media/batch-storage-account-create.png)
+  ![Snímek obrazovky s možnostmi Azure Storage nové účty ukazující výchozí nastavení](media/batch-storage-account-create.png)
 
-Trvá několik minut, než Azure k nasazení účty. Vyhledejte oznámení o dokončení v pravém horním rohu portálu.
+Nasazení účtů v Azure trvá několik minut. V pravém horním rohu na portálu vyhledejte oznámení o dokončení.
   
-  ![Snímek obrazovky Azure účty nasazené oznámení](media/batch-accounts-deploy-notification.png)
+  ![Snímek obrazovky s nasazenými oznámeními účtů Azure](media/batch-accounts-deploy-notification.png)
 
-Vaše účty by teď mělo zobrazit na řídicím panelu.
+Vaše účty by se teď měly zobrazit na řídicím panelu.
   
-  ![Snímek obrazovky Azure řídicí panel portal ukazující účet Batch a Storage](media/azure-portal-dashboard.png)
+  ![Snímek obrazovky řídicího panelu Azure Portal znázorňující účet Batch a úložiště](media/azure-portal-dashboard.png)
 
-## <a name="set-up-acoustics-bake-ui-with-azure-credentials"></a>Nastavit Akustika která má označení vytvoření uživatelského rozhraní pomocí přihlašovacích údajů k Azure
-Klikněte na odkaz daného účtu Batch na řídicím panelu a potom klikněte na **klíče** odkazu na stránce účtu služby Batch pro přístup k svoje přihlašovací údaje.
+## <a name="set-up-acoustics-bake-ui-with-azure-credentials"></a>Nastavení akustického uživatelského rozhraní zanesli s přihlašovacími údaji Azure
+Klikněte na odkaz účet Batch na řídicím panelu a pak klikněte na odkaz **klíče** na stránce účtu Batch, abyste měli přístup k vašim přihlašovacím údajům.
   
-  ![Účet Batch Azure – snímek obrazovky s odkazem na stránku klíče se zvýrazněnou](media/batch-access-keys.png)
+  ![Snímek obrazovky se zvýrazněnou možností účet Azure Batch se stránkou odkazy na klíče](media/batch-access-keys.png)
 
-  ![Snímek obrazovky s Azure Batch stránku klíče účtu pomocí přístupových klíčů](media/batch-keys-info.png)
+  ![Snímek obrazovky se stránkou klíčů účtu Azure Batch s přístupovými klíči](media/batch-keys-info.png)
 
-Klikněte na **účtu úložiště** odkaz na stránku pro přístup k přihlašovací údaje účtu úložiště Azure.
+Kliknutím na odkaz **účet úložiště** na stránce získáte přístup k přihlašovacím údajům k účtu Azure Storage.
   
-  ![Stránka klíče účtu snímek obrazovky s Azure Storage pomocí přístupových klíčů](media/storage-keys-info.png)
+  ![Snímek obrazovky se stránkou klíčů účtu Azure Storage s přístupovými klíči](media/storage-keys-info.png)
 
-Zadejte tyto přihlašovací údaje v [Unity která má označení vytvoření modulu plug-in](unity-baking.md) nebo [Unreal která má označení vytvoření modulu plug-in](unreal-baking.md).
+Zadejte tyto přihlašovací údaje do modulu [Plug-in Unity zanesli](unity-baking.md) nebo [modulu plug-in Unreal zanesli](unreal-baking.md).
 
-## <a name="node-types-and-region-support"></a>Typy uzlů a oblasti podpory
-Projekt Akustika vyžaduje že fsv2 a H-series – compute optimalizované uzly virtuálních počítačů Azure, které nemusí být podporované ve všech oblastech Azure. Zkontrolujte prosím [Tato tabulka](https://azure.microsoft.com/global-infrastructure/services) zajistit vybíráte správné umístění pro váš účet Batch.
-![Snímek obrazovky s Azure Virtual Machines podle oblastí](media/azure-regions.png) 
+## <a name="node-types-and-region-support"></a>Podpora typů uzlů a oblastí
+Akustické projekty vyžadují Fsv2 a výpočetní prostředí Azure optimalizované pro řady H-Series, které nemusí být podporované ve všech oblastech Azure. Zkontrolujte prosím [tuto tabulku](https://azure.microsoft.com/global-infrastructure/services) , abyste měli jistotu, že vybíráte správné umístění účtu Batch.
+![Snímek obrazovky s Virtual Machines Azure podle oblasti](media/azure-regions.png) 
 
-## <a name="upgrading-your-quota"></a>Upgrade vaší kvóty
-Účty služby Azure Batch jsou zřízené na účet vytváření s maximálně 20 výpočetních jader. Může chcete zvýšit tento limit, pro která má označení vytvoření rychlejší, protože můžete paralelní zpracování vašich úloh Akustika mezi velký počet uzlů, až počet bodů testu ve scéně. Můžete požádat o zvýšení kvóty po kliknutí na **kvóty** odkaz na stránku portálu služby Azure Batch a kliknete na **žádost o zvýšení kvóty**:
+## <a name="upgrading-your-quota"></a>Upgrade kvóty
+Účty Azure Batch se zřídí při vytváření účtu s limitem 20 výpočetních jader. Tento limit můžeme zvýšit pro rychlejší zanesli dobu, protože můžete paralelizovat úlohy akustického zatížení napříč mnoha uzly, a to až do počtu testovacích bodů ve scéně. Zvýšení kvóty můžete požádat kliknutím na odkaz na kvótu na stránce Azure Batchového portálu a následným kliknutím na **zvýšení kvóty žádostí**:
 
-![Kvóta Azure – snímek obrazovky stránky](media/azure-quotas.png)
+![Snímek obrazovky se stránkou kvót Azure](media/azure-quotas.png)
 
 ## <a name="next-steps"></a>Další postup
-* Integrujte modul plug-in Akustika projektu do vaší [Unity](unity-integration.md) nebo [Unreal](unreal-integration.md) projektu
+* Integrujte modul plug-in projektového akustického prostředí do vaší [Unity](unity-integration.md) nebo [Unreal](unreal-integration.md) projektu
 

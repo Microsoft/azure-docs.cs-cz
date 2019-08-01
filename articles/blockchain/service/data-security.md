@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain služby zabezpečení
-description: Azure Blockchain dat přístup a zabezpečení koncepty služby
+title: Zabezpečení služby Azure blockchain
+description: Koncepce přístupu k datům a zabezpečení Azure blockchain Service
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,59 +10,59 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: dd0a33364ed9395a85478798e47352c533bd47dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00d4911c0f2541ea5c64eccca3ab1b1505e06390
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028197"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608542"
 ---
-# <a name="azure-blockchain-service-security"></a>Azure Blockchain služby zabezpečení
+# <a name="azure-blockchain-service-security"></a>Zabezpečení služby Azure blockchain
 
-Služba Azure Blockchain využívá několik možnosti Azure k uložení svých dat. zabezpečených a dostupných. Data zabezpečená pomocí izolace, šifrování a ověřování.
+Služba Azure blockchain využívá několik možností Azure, které zajistí zabezpečení a dostupnost vašich dat. Data jsou zabezpečená pomocí izolace, šifrování a ověřování.
 
 ## <a name="isolation"></a>Izolace
 
-Izolaci prostředků Azure služba Blockchain v privátní virtuální síť. Každá transakce a ověření uzel je virtuální počítač (VM). Virtuální počítače v jedné virtuální síti nemůžou komunikovat přímo do virtuálních počítačů v jiné virtuální sítě. Izolace zajistí, že komunikace zůstalo soukromý v rámci virtuální sítě. Další informace o izolaci virtuálních sítí Azure najdete v tématu [izolace ve veřejném cloudu Azure](../../security/azure-isolation.md#networking-isolation).
+Prostředky služby Azure blockchain jsou izolované v privátní virtuální síti. Každá transakce a ověřovací uzel je virtuální počítač (VM). Virtuální počítače v jedné virtuální síti nemůžou komunikovat přímo s virtuálními počítači v jiné virtuální síti. Izolace zajišťuje, že komunikace zůstane soukromá v rámci virtuální sítě. Další informace o izolaci virtuálních sítí Azure najdete v tématu věnovaném [izolaci ve veřejném cloudu Azure](../../security/fundamentals/isolation-choices.md#networking-isolation).
 
 ![Diagram virtuální sítě](./media/data-security/vnet.png)
 
 ## <a name="encryption"></a>Šifrování
 
-Data uživatele uložená ve službě Azure storage. Uživatel data se šifrují přenášená i neaktivní uložená pro zabezpečení a zachováním důvěrnosti. Další informace naleznete v tématu: [Průvodci zabezpečením Azure Storage](../../storage/common/storage-security-guide.md).
+Uživatelská data se ukládají ve službě Azure Storage. Data uživatelů jsou v klidovém stavu zašifrovaná a v klidovém stavu a jejich zabezpečení a důvěrnost. Další informace naleznete v tématu: [Průvodce zabezpečením Azure Storage.](../../storage/common/storage-security-guide.md)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
-Transakce je odeslat do uzlů blockchain prostřednictvím koncového bodu protokolu RPC. Klienti komunikovat s uzlem transakce pomocí reverzního proxy serveru, že ověřování uživatele obslužné rutiny a šifruje data přes protokol SSL.
+Transakce se dají odesílat do uzlů blockchain prostřednictvím koncového bodu RPC. Klienti komunikují s uzlem transakce pomocí reverzní proxy server, která zpracovává ověřování uživatelů a šifruje data přes SSL.
 
 ![Diagram ověřování](./media/data-security/authentication.png)
 
-Existují tři režimy ověřování pro přístup ke službě RPC.
+Existují tři režimy ověřování pro přístup přes protokol RPC.
 
 ### <a name="basic-authentication"></a>Základní ověřování
 
-Základní ověřování používá autentifikační hlavička protokolu HTTP obsahující uživatelské jméno a heslo. Uživatelské jméno je název uzlu blockchain. Heslo je nastaveno během zřizování člena nebo uzel. Heslo lze změnit pomocí webu Azure portal nebo rozhraní příkazového řádku.
+Základní ověřování používá hlavičku ověřování protokolu HTTP obsahující uživatelské jméno a heslo. Uživatelské jméno je název uzlu blockchain. Heslo je nastaveno při zřizování člena nebo uzlu. Heslo lze změnit pomocí Azure Portal nebo CLI.
 
 ### <a name="access-keys"></a>Přístupové klíče
 
-Přístupové klíče pomocí náhodně generované řetězce do adresy URL koncového bodu. Dva přístupové klíče pomáhal obměny klíče. Klíče můžete znovu vygenerovány z webu Azure portal a rozhraní příkazového řádku.
+Přístupové klíče používají náhodně vygenerovaný řetězec, který je zahrnutý v adrese URL koncového bodu. Pomocí dvou přístupových klíčů můžete povolit rotaci klíčů. Klíče je možné znovu vygenerovat z Azure Portal a CLI.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Azure Active Directory (Azure AD) podle deklarací identity používá ověřovací mechanismus kde je uživatel ověřený službou Azure AD pomocí přihlašovacích údajů uživatele Azure AD. Azure AD poskytuje správu identit v cloudu a umožňuje zákazníkům používat jednu identitu napříč celou aplikace organizace a přístupu pro cloud. Služba Azure Blockchain se integruje s Azure AD umožňuje ID federace, ověření jednotného přihlašování a službou Multi-Factor Authentication. Můžete přiřadit uživatele, skupiny nebo aplikačních rolí ve vaší organizaci pro blockchain přístup člena a uzel.
+Azure Active Directory (Azure AD) používá ověřovací mechanismus založený na deklaracích identity, kde se uživatel ověřuje pomocí přihlašovacích údajů uživatele Azure AD pomocí služby Azure AD. Azure AD poskytuje cloudovou správu identit a umožňuje zákazníkům používat jedinou identitu napříč celým podnikem a přistupovat k aplikacím v cloudu. Služba Azure blockchain se integruje s Azure AD a povoluje federaci ID, jednotné přihlašování a vícefaktorové ověřování. Můžete přiřadit uživatele, skupiny a aplikační role ve vaší organizaci pro blockchain člena a přístup k uzlu.
 
-Proxy klienta služby Azure AD je k dispozici na [Githubu](https://github.com/Microsoft/azure-blockchain-connector/releases). Klient proxy uživatele přesměruje na přihlašovací stránce služby Azure AD a získá nosného tokenu po úspěšném ověření. Následně uživatel připojí aplikaci Etherea klienta, jako je třeba Geth nebo Truffle ke koncovému bodu proxy serveru klienta. Nakonec při odeslání transakce se vkládá nosný token v hlavičce protokolu http proxy serveru klienta a reverzní proxy server ověří token pomocí protokolu OAuth.
+Proxy klient služby Azure AD je k dispozici na [GitHubu](https://github.com/Microsoft/azure-blockchain-connector/releases). Klient proxy přesměruje uživatele na přihlašovací stránku Azure AD a získá token nosiče po úspěšném ověření. Následně se uživatel připojí ke koncovému bodu proxy klienta aplikace klienta Ethereem, jako je Geth nebo Truffle. Nakonec při odeslání transakce klientský proxy server vloží token nosiče v hlavičce protokolu HTTP a reverzní proxy ověří token pomocí protokolu OAuth.
 
-## <a name="keys-and-ethereum-accounts"></a>Klíče a Etherea účty
+## <a name="keys-and-ethereum-accounts"></a>Klíče a účty Ethereem
 
-Při zřizování na služby Azure Blockchain člena, je generována účet Ethereem a pár veřejného a privátního klíče. Privátní klíč se používá k odeslání transakce blockchainu. Je účet ethereum během posledních 20 bajtů hash veřejného klíče. Účet ethereum během se také nazývá kapesní.
+Při zřizování členu služby Azure blockchain se vygeneruje účet Ethereem a pár veřejného a privátního klíče. Privátní klíč se používá k posílání transakcí do blockchain. Účet Ethereem je poslední 20 bajtů hodnoty hash veřejného klíče. Účet Ethereem se také označuje jako kapesní.
 
-Pár soukromých a veřejných klíčů se ukládá jako keyfile ve formátu JSON. Privátní klíč je šifrován pomocí hesla zadá, když se vytvoří služba blockchain účetní knihy.
+Pár privátních a veřejných klíčů je uložen jako soubor klíče ve formátu JSON. Privátní klíč je zašifrovaný pomocí hesla zadaného při vytvoření služby blockchain hl.
 
-Privátní klíče se používají k digitálnímu podepisování transakce. Inteligentní smlouvy, podepsaný privátním klíčem v privátní blockchainy, představuje totožnost podepsaného. K ověření platnosti podpisu, můžete porovnat příjemce veřejný klíč podpisu s adresou ze signatury vypočítané.
+Privátní klíče slouží k digitálnímu podepisování transakcí. V soukromém blockchainy představuje inteligentní kontrakt podepsaný soukromým klíčem identitu podepisujícího. K ověření platnosti signatury může příjemce porovnat veřejný klíč podepsaného s adresou vypočítanou z podpisu.
 
-Constellation klíče se používají k jedinečné identifikaci kvora uzlu. Constellation klíče se vygeneruje při zřizování uzlu a jsou určené v parametru privateFor privátní transakce v kvora.
+Klíče Constellation slouží k jednoznačné identifikaci uzlu kvora. Klíče Constellation jsou generovány v době zřizování uzlu a jsou zadány v parametru privateFor soukromé transakce v rámci kvora.
 
 ## <a name="next-steps"></a>Další postup
 
-[Konfigurace uzlů transakce služby Azure Blockchain](configure-transaction-nodes.md)
+[Konfigurace uzlů transakcí služby Azure blockchain](configure-transaction-nodes.md)

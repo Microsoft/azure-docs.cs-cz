@@ -1,6 +1,6 @@
 ---
-title: Základní zásady vyžadovat vícefaktorové ověřování pro správce – Azure Active Directory
-description: Zásady podmíněného přístupu tak, aby vyžadovala ověření službou Multi-Factor Authentication pro správce
+title: Základní zásady vyžadují MFA pro správce – Azure Active Directory
+description: Zásada podmíněného přístupu, která vyžaduje službu Multi-Factor Authentication pro správce
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,60 +11,60 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4474283b9a233e39497cd05f0f04ea0984f02401
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 213540a5b6c77146155365133f2cca08eea25351
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560938"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608156"
 ---
-# <a name="baseline-policy-require-mfa-for-admins-preview"></a>Základní zásady: Vyžadovat vícefaktorové ověřování pro správce (preview)
+# <a name="baseline-policy-require-mfa-for-admins-preview"></a>Základní zásady: Vyžadovat MFA pro správce (Preview)
 
-Uživatelé s přístupem k privilegovaným účtům mají neomezený přístup k prostředí. Kvůli výkonu, které nemají tyto účty by měly zpracovávat s zvláštní pozornost. Běžným způsobem zlepšit ochranu privilegovaných účtů je tak, aby vyžadovala silnější formu ověření účtu, když se používají k registraci. Ve službě Azure Active Directory získáte silnější ověření účtu tak, že vyžaduje vícefaktorové ověřování (MFA).
+Uživatelé s přístupem k privilegovaným účtům mají neomezený přístup k vašemu prostředí. Vzhledem k napájení těchto účtů byste je měli považovat za zvláštní péči. Jednou z běžných metod, jak zlepšit ochranu privilegovaných účtů, je vyžadovat při přihlášení silnější formu ověření účtu. V Azure Active Directory můžete získat silnější ověření účtu tím, že budete vyžadovat vícefaktorové ověřování (MFA).
 
-**Vyžadovat vícefaktorové ověřování pro správce (preview)**  je [základní zásady](concept-baseline-protection.md) , která vyžaduje vícefaktorové ověřování pokaždé, když se jeden z následujících správce privilegovaných rolí přihlášení:
+**Vyžadovat MFA pro správce (Preview)**  je [základní zásada](concept-baseline-protection.md) , která vyžaduje MFA pokaždé, když se přihlásí jedna z následujících rolí privilegovaného správce:
 
 * Globální správce
 * Správce SharePointu
 * Správce Exchange
 * Správce podmíněného přístupu
 * Správce zabezpečení
-* Správce technické podpory nebo správce hesel
+* Správce helpdesku/správce hesel
 * Správce fakturace
 * Správce uživatelů
 
-Při zapnout vícefaktorové ověřování vyžadovat pro správce zásady, výše devět správce rolí je třeba registrace pro vícefaktorové ověřování pomocí ověřovací aplikace. Po dokončení registrace MFA musí správci provádět vícefaktorové ověřování pokaždé, když jeden přihlašuje.
+Když se povolí zásada vyžadovat MFA pro správce, bude se při registraci MFA pomocí ověřovací aplikace vyžadovat výše uvedené devět rolí správce. Po dokončení registrace MFA budou muset správci provádět vícefaktorové ověřování při každém přihlášení.
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
-Vzhledem k tomu, **vyžadovat vícefaktorové ověřování pro správce (preview)** zásady platí pro všechny kritické správce, třeba mít na paměti, které jsou potřeba provést zajistit hladký průběh nasazení. Mezi tyto aspekty patří identifikace uživatelů a zásad služby Azure AD, který nelze nebo by neměly provádět vícefaktorové ověřování, jakož i aplikacím a klientům ve své organizaci, které nepodporují moderní ověřování.
+Vzhledem k tomu, že zásady **vyžadovat MFA pro správce (Preview)** platí pro všechny kritické správce, je potřeba provést několik důležitých informací, aby bylo zajištěno hladké nasazení. Mezi tyto požadavky patří určení uživatelů a zásad služeb ve službě Azure AD, které nemůžou nebo by neměly provádět MFA, a také aplikace a klienty používané ve vaší organizaci, které nepodporují moderní ověřování.
 
 ### <a name="legacy-protocols"></a>Starší protokoly
 
-Poštovní klienti k podání žádostí o ověření používají starší verze ověřovací protokoly (IMAP, SMTP, POP3, atd.). Tyto protokoly nepodporuje vícefaktorové ověřování. Většina ohrožení účet viděli microsoftem jsou způsobeny nesprávnými účastníky provádění útoky na starších verzí protokolů pokus o obejití vícefaktorové ověřování. Zajistíte, že se vyžaduje vícefaktorové ověřování při přihlašování k účtu správce a nesprávnými účastníky nedokáží obejít MFA, tato zásada blokuje provedené účty správců od starších verzí protokolů všechny požadavky na ověření.
+Starší verze ověřovacích protokolů (IMAP, SMTP, POP3 atd.) jsou používány e-mailové klienty k provádění požadavků na ověření. Tyto protokoly vícefaktorové ověřování nepodporují. Většina kompromisů, které společnost Microsoft uvidí, je způsobena nesprávnými aktéry, které provádějí útoky proti starším protokolům, které se pokoušejí obejít MFA. Aby se zajistilo, že MFA se při přihlašování k účtu pro správu vyžaduje, a nedaří se jim tak obejít MFA, tato zásada blokuje všechny požadavky na ověření provedené pro účty správců ze starších protokolů.
 
 > [!WARNING]
-> Předtím, než tuto zásadu povolit, ujistěte se, že vaši správci nejsou používá starší verzi ověřovacích protokolů. Přečtěte si článek [jak: Blok starší verze ověřování do služby Azure AD s podmíněným přístupem](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) Další informace.
+> Než povolíte tuto zásadu, zajistěte, aby vaši správci nepoužívali starší protokoly pro ověřování. Informace najdete v [článku Postupy: Zablokovat starší ověřování do Azure AD s](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) podmíněným přístupem pro další informace.
 
-## <a name="enable-the-baseline-policy"></a>Povolit zásady směrný plán
+## <a name="enable-the-baseline-policy"></a>Povolit základní zásady
 
-Zásady **směrný plán zásad: Vyžadovat vícefaktorové ověřování pro správce (preview)** vybavená předem nakonfigurovaným a se zobrazí v horní části, když přejdete do okna podmíněného přístupu na webu Azure portal.
+Zásady standardních **hodnot zásad: Vyžadovat MFA pro správce (Preview)** je předem nakonfigurovaný a při přechodu do okna podmíněný přístup v Azure Portal se zobrazí v horní části.
 
-Tuto zásadu povolit a chránit vaše správce:
+Chcete-li povolit tuto zásadu a chránit správce:
 
-1. Přihlaste se k **webu Azure portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Přejděte do **Azure Active Directory** > **podmíněného přístupu**.
-1. V seznamu zásad, vyberte **směrný plán zásad: Vyžadovat vícefaktorové ověřování pro správce (preview)** .
-1. Nastavte **povolit zásady** k **použít zásady okamžitě**.
-1. Klikněte na tlačítko **Uložit**.
+1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přejděte na **Azure Active Directory** > **podmíněný přístup**.
+1. V seznamu zásad vyberte **základní zásady: Vyžadovat MFA pro správce (Preview)** .
+1. Nastavte **Povolit zásadu** pro **okamžité použití zásad**.
+1. Klikněte na **Uložit**.
 
 > [!WARNING]
-> Došlo možnost **povolit zásady automaticky v budoucnu** kdy tato zásada byla ve verzi preview. Odebrali jsme tuto možnost, chcete-li minimalizovat dopad na uživatele i s náhlými. Pokud jste vybrali tuto možnost, že je k dispozici, **nepoužívat zásady** automaticky je teď vybrán. Pokud chce použít tyto zásady na směrný plán, najdete v článku, aby je výše uvedené kroky.
+> V budoucnu existovala možnost **automaticky povolit zásady** , pokud byla tato zásada ve verzi Preview. Tuto možnost jsme odebrali kvůli minimalizaci náhlého dopadu na uživatele. Pokud jste tuto možnost vybrali, když byla k dispozici, není nyní automaticky vybraná možnost **Nepoužívat zásady** . Pokud chtějí použít tuto základní zásady, můžete ji povolit v části výše uvedené kroky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace naleznete v tématu:
 
-* [Zásady ochrany směrného plánu podmíněného přístupu](concept-baseline-protection.md)
-* [Zabezpečení vaší infrastruktury identit v pěti krocích](../../security/azure-ad-secure-steps.md)
+* [Zásady ochrany základní úrovně přístupu pro podmíněný přístup](concept-baseline-protection.md)
+* [Pět kroků pro zabezpečení infrastruktury identity](../../security/fundamentals/steps-secure-identity.md)
 * [Co je podmíněný přístup v Azure Active Directory?](overview.md)

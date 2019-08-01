@@ -1,9 +1,9 @@
 ---
-title: Vytvořit šablonu clusteru Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit šablonu Resource Manageru pro cluster Service Fabric. Konfigurace zabezpečení, Azure Key Vault a Azure Active Directory (Azure AD) pro ověřování klientů.
+title: Vytvoření šablony clusteru Azure Service Fabric | Microsoft Docs
+description: Naučte se, jak vytvořit šablonu Správce prostředků pro cluster Service Fabric. Nakonfigurujte zabezpečení, Azure Key Vault a Azure Active Directory (Azure AD) pro ověřování klientů.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: chackdan
 ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
@@ -13,38 +13,38 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
-ms.author: aljo
-ms.openlocfilehash: 2fdea1f088dd6eabdf7d72342c837d976133a1bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 9030a1d9d0b1e3f9b84f6636b0d3d758ab4cfa3b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386873"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599984"
 ---
-# <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Vytvoření šablony Resource Manageru clusteru Service Fabric
+# <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Vytvoření Správce prostředků šablony Service Fabric clusteru
 
-[Clusteru Azure Service Fabric](service-fabric-deploy-anywhere.md) je síťově propojená sada virtuálních počítačů, do které se nasazují a spravují mikroslužby. Cluster Service Fabric běžící v Azure je prostředek Azure a nasadíte, spravované a sledované pomocí Resource Manageru.  Tento článek popisuje, jak vytvořit šablonu Resource Manageru pro cluster Service Fabric běžící v Azure.  Po dokončení šablonu můžete [nasazení clusteru v Azure](service-fabric-cluster-creation-via-arm.md).
+[Cluster Azure Service Fabric](service-fabric-deploy-anywhere.md) je sada virtuálních počítačů připojených k síti, do kterých se nasazují a spravují vaše mikroslužby. Service Fabric cluster se systémem v Azure je prostředek Azure, který se nasazuje, spravuje a monitoruje pomocí Správce prostředků.  Tento článek popisuje, jak vytvořit šablonu Správce prostředků pro cluster Service Fabric běžící v Azure.  Po dokončení šablony můžete [cluster nasadit v Azure](service-fabric-cluster-creation-via-arm.md).
 
-Konfigurace zabezpečení clusteru při jeho nejprve nastavte není možné později změnit. Před nastavením clusteru, přečtěte si [scénáře zabezpečení clusteru Service Fabric][service-fabric-cluster-security]. V Azure Service Fabric používá x509 certifikátů k zabezpečení vašeho clusteru a její koncové body, ověřování klientů a šifrování dat. Azure Active Directory je také vhodné k zabezpečení přístupu ke koncovým bodům správy. Azure AD klienti a uživatelé musí být vytvořen před vytvořením clusteru.  Další informace najdete v článku [nastavení Azure AD pro ověřování klientů](service-fabric-cluster-creation-setup-aad.md).
+Zabezpečení clusteru je nakonfigurované při prvním nastavení clusteru a nedá se později změnit. Před nastavením clusteru si přečtěte [Service Fabric scénáře zabezpečení clusteru][service-fabric-cluster-security]. V Azure Service Fabric používá certifikát x509 k zabezpečení clusteru a jeho koncových bodů, ověřování klientů a šifrování dat. Azure Active Directory také doporučujeme zabezpečit přístup ke koncovým bodům správy. Před vytvořením clusteru je nutné vytvořit klienty a uživatele služby Azure AD.  Pokud potřebujete další informace, přečtěte si téma [Nastavení Azure AD pro ověřování klientů](service-fabric-cluster-creation-setup-aad.md).
 
-Než nasadíte cluster pro produkční prostředí ke spuštění úlohy v produkčním prostředí, ujistěte se, abyste si nejdřív přečetli [připravenosti produkční kontrolní seznam](service-fabric-production-readiness-checklist.md).
+Před nasazením produkčního clusteru pro spouštění produkčních úloh nezapomeňte nejdřív přečíst [Kontrolní seznam připravenosti na produkci](service-fabric-production-readiness-checklist.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-the-resource-manager-template"></a>Vytvoření šablony Resource Manageru
-Šablony Resource Manageru ukázky jsou k dispozici v [ukázky na Githubu v Azure](https://github.com/Azure-Samples/service-fabric-cluster-templates). Tyto šablony lze použít jako výchozí bod pro šablony clusteru.
+Ukázkové šablony Správce prostředků jsou k dispozici v [ukázkách Azure na GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). Tyto šablony lze použít jako výchozí bod pro šablonu clusteru.
 
-Tento článek používá [zabezpečeného clusteru s pěti uzly] [ service-fabric-secure-cluster-5-node-1-nodetype] příklad šablony a parametrů šablony. Stáhněte si *azuredeploy.json* a *azuredeploy.parameters.json* do vašeho počítače a otevřete oba soubory ve svém oblíbeném textovém editoru.
+Tento článek používá příklad šablony a parametrů šablony [zabezpečeného clusteru s pěti uzly][service-fabric-secure-cluster-5-node-1-nodetype] . Stáhněte si do počítače *azuredeploy. JSON* a *azuredeploy. Parameters. JSON* a otevřete oba soubory ve svém oblíbeném textovém editoru.
 
 > [!NOTE]
-> Pro národní cloudy (Azure Government, Azure China, Azure Germany), měli byste také přidat následující `fabricSettings` do šablony: `AADLoginEndpoint`, `AADTokenEndpointFormat` a `AADCertEndpointFormat`.
+> Pro národní cloudy (Azure Government, Azure Čína, Azure Německo) byste měli taky do šablony přidat `fabricSettings` následující `AADTokenEndpointFormat` : `AADLoginEndpoint`a `AADCertEndpointFormat`.
 
 ## <a name="add-certificates"></a>Přidat certifikáty
-Přidejte certifikáty do šablony Resource Manageru clusteru odkazem, který obsahuje klíče certifikátů trezor klíčů. Přidejte tyto služby key vault parametry a hodnoty v souboru parametrů šablony Resource Manageru (*azuredeploy.parameters.json*).
+Certifikáty se přidávají do šablony Správce prostředků clusteru odkazem na Trezor klíčů, který obsahuje klíče certifikátu. Přidejte tyto parametry a hodnoty trezoru klíčů do souboru parametrů šablony Správce prostředků (*azuredeploy. Parameters. JSON*).
 
-### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Přidat všechny certifikáty do osProfile sady škálování virtuálního počítače
-Každý certifikát, který je nainstalován v clusteru se musí nakonfigurovat na **osProfile** části stupnice nastavení prostředku (Microsoft.Compute/virtualMachineScaleSets). Tato akce nastaví poskytovatele prostředků k instalaci certifikátu na virtuálních počítačích. Tato instalace zahrnuje certifikát clusteru a všechny certifikáty zabezpečení aplikací, které chcete použít pro vaše aplikace:
+### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Přidat všechny certifikáty do sady škálování virtuálních počítačů osProfile
+Každý certifikát, který je nainstalovaný v clusteru, musí být nakonfigurovaný v oddílu **osProfile** prostředku sady škálování (Microsoft. COMPUTE/virtualMachineScaleSets). Tato akce vydá pokyn poskytovateli prostředků k instalaci certifikátu na virtuální počítače. Tato instalace zahrnuje certifikát clusteru i všechny certifikáty zabezpečení aplikací, které plánujete použít pro vaše aplikace:
 
 ```json
 {
@@ -78,11 +78,11 @@ Každý certifikát, který je nainstalován v clusteru se musí nakonfigurovat 
 }
 ```
 
-### <a name="configure-the-service-fabric-cluster-certificate"></a>Konfigurace certifikátu clusteru Service Fabric
+### <a name="configure-the-service-fabric-cluster-certificate"></a>Konfigurace Service Fabricho certifikátu clusteru
 
-Ověřovací certifikát clusteru musí být nakonfigurovány v obou Service Fabric prostředku clusteru (Microsoft.ServiceFabric/clusters) a rozšíření Service Fabric pro virtuální počítač škálovací sady v prostředku virtuálního počítače škálovací sady. Toto uspořádání umožňuje poskytovateli prostředků Service Fabric ji nakonfigurovat pro použití pro ověření clusteru a ověření serveru pro koncové body správy.
+Certifikát pro ověřování clusteru musí být nakonfigurovaný jak v prostředku Service Fabric clusteru (Microsoft. ServiceFabric/clustery), tak v rozšíření Service Fabric pro sady škálování virtuálních počítačů v prostředku sady škálování virtuálního počítače. Toto uspořádání umožňuje poskytovateli prostředků Service Fabric nakonfigurovat, aby se použil pro ověřování clusteru a ověřování serveru pro koncové body správy.
 
-#### <a name="add-the-certificate-information-the-virtual-machine-scale-set-resource"></a>Přidání informací o certifikátu virtuálního počítače škálovací sady prostředků
+#### <a name="add-the-certificate-information-the-virtual-machine-scale-set-resource"></a>Přidejte informace o certifikátu prostředek sady škálování virtuálního počítače.
 
 ```json
 {
@@ -115,7 +115,7 @@ Ověřovací certifikát clusteru musí být nakonfigurovány v obou Service Fab
 }
 ```
 
-#### <a name="add-the-certificate-information-to-the-service-fabric-cluster-resource"></a>Přidání informací o certifikátu pro prostředek clusteru Service Fabric
+#### <a name="add-the-certificate-information-to-the-service-fabric-cluster-resource"></a>Přidat informace o certifikátu do prostředku Service Fabric clusteru
 
 ```json
 {
@@ -141,12 +141,12 @@ Ověřovací certifikát clusteru musí být nakonfigurovány v obou Service Fab
 }
 ```
 
-## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Přidat konfiguraci Azure AD, které používají Azure AD pro klientský přístup
+## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Přidání konfigurace Azure AD pro použití Azure AD pro klientský přístup
 
-Konfigurace služby Azure AD přidejte do šablony Resource Manageru clusteru odkazem, který obsahuje klíče certifikátů trezor klíčů. Přidejte tyto služby Azure AD parametry a hodnoty v souboru parametrů šablony Resource Manageru (*azuredeploy.parameters.json*). 
+Konfiguraci služby Azure AD přidáte do šablony Správce prostředků clusteru odkazem na Trezor klíčů, který obsahuje klíče certifikátu. Přidejte parametry a hodnoty služby Azure AD do souboru parametrů šablony Správce prostředků (*azuredeploy. Parameters. JSON*). 
 
 > [!NOTE]
-> Azure AD klienti a uživatelé musí být vytvořen před vytvořením clusteru.  Další informace najdete v článku [nastavení Azure AD pro ověřování klientů](service-fabric-cluster-creation-setup-aad.md).
+> Před vytvořením clusteru je nutné vytvořit klienty a uživatele služby Azure AD.  Pokud potřebujete další informace, přečtěte si téma [Nastavení Azure AD pro ověřování klientů](service-fabric-cluster-creation-setup-aad.md).
 
 ```json
 {
@@ -175,14 +175,14 @@ Konfigurace služby Azure AD přidejte do šablony Resource Manageru clusteru od
 }
 ```
 
-## <a name="populate-the-parameter-file-with-the-values"></a>Naplnění soubor parametrů s hodnotami
+## <a name="populate-the-parameter-file-with-the-values"></a>Naplnit soubor parametrů hodnotami
 
-Nakonec použijte výstupní hodnoty ze služby key vault a příkazy Azure AD Powershellu k naplnění souboru parametrů.
+Nakonec použijte výstupní hodnoty z trezoru klíčů a příkazů Azure AD PowerShellu k naplnění souboru parametrů.
 
-Pokud máte v plánu používat moduly Powershellu služby Azure service fabric RM, není potřeba naplnění informací o certifikátu clusteru. Pokud má systém generování podepsané svým certifikátů pro zabezpečení clusteru, ponechat pouze jako hodnota null. 
+Pokud máte v úmyslu použít moduly PowerShellu pro Azure Service Fabric RM, nemusíte naplnit informace o certifikátu clusteru. Pokud chcete, aby systém vygeneroval certifikát podepsaný svým vlastníkem pro zabezpečení clusteru, zachovejte ho jenom jako null. 
 
 > [!NOTE]
-> Pro moduly RM sbírání a naplňte jimi tyto hodnoty prázdných parametrů názvy parametrů mnohem odpovídají názvům níže
+> Aby se moduly RM vybraly a naplnily tyto prázdné hodnoty parametrů, názvy parametrů velmi odpovídají názvům uvedeným níže.
 
 ```json
 "clusterCertificateThumbprint": {
@@ -199,9 +199,9 @@ Pokud máte v plánu používat moduly Powershellu služby Azure service fabric 
 },
 ```
 
-Pokud používáte certifikáty aplikace nebo používáte existující cluster, který jste odeslali do služby key vault, musíte získat tyto informace a přidejte do ní.
+Pokud používáte certifikáty aplikací nebo používáte existující cluster, který jste nahráli do trezoru klíčů, musíte tyto informace získat a naplnit je.
 
-Moduly RM nemají možnost vygenerovat konfiguraci Azure AD pro vás, tak pokud plánujete používat Azure AD pro klientský přístup, je potřeba ho naplnit.
+Moduly RM nemají možnost Generovat konfiguraci služby Azure AD, takže pokud plánujete používat Azure AD pro klientský přístup, musíte ho naplnit.
 
 ```json
 {
@@ -241,34 +241,34 @@ Moduly RM nemají možnost vygenerovat konfiguraci Azure AD pro vás, tak pokud 
 }
 ```
 
-## <a name="test-your-template"></a>Test šablony
-Pro testování soubor parametrů šablony Resource Manageru pomocí následujícího příkazu Powershellu:
+## <a name="test-your-template"></a>Testování šablony
+Pomocí následujícího příkazu PowerShellu otestujte šablonu Správce prostředků se souborem parametrů:
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
-V případě narazíte na problémy a získat zprávy jako nesrozumitelné, pak použijte "-Debug" jako možnost.
+V případě, že dojde k potížím a získání nešifrovaných zpráv, použijte jako možnost "-debug".
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 
-Následující diagram znázorňuje, které je váš trezor klíčů a konfigurace služby Azure AD umístit do šablony Resource Manageru.
+Následující diagram znázorňuje, kde se váš Trezor klíčů a konfigurace Azure AD vejdou do šablony Správce prostředků.
 
-![Mapa závislostí Resource Manageru][cluster-security-arm-dependency-map]
+![Mapa závislostí Správce prostředků][cluster-security-arm-dependency-map]
 
 ## <a name="next-steps"></a>Další postup
-Teď, když máte vytvořenou šablonu pro váš cluster, zjistěte, jak [nasazení clusteru Azure](service-fabric-cluster-creation-via-arm.md).  Pokud jste to ještě neudělali, přečtěte si [připravenosti produkční kontrolní seznam](service-fabric-production-readiness-checklist.md) před nasazením clusteru pro produkční prostředí.
+Teď, když máte šablonu pro váš cluster, zjistěte, jak [nasadit cluster do Azure](service-fabric-cluster-creation-via-arm.md).  Pokud jste to ještě neudělali, přečtěte si [Kontrolní seznam připravenosti výroby](service-fabric-production-readiness-checklist.md) ještě před nasazením produkčního clusteru.
 
-Další informace o syntaxi JSON a vlastnosti pro prostředky nasazené v tomto článku najdete v tématu:
+Další informace o syntaxi a vlastnostech JSON pro prostředky nasazené v tomto článku najdete v těchto tématech:
 
-* [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
+* [Microsoft. ServiceFabric/clustery](/azure/templates/microsoft.servicefabric/clusters)
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 * [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
 * [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
-* [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
+* [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft. COMPUTE/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md

@@ -1,9 +1,9 @@
 ---
-title: Vzdálené připojení k uzlu clusteru Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak se vzdáleně připojit k instanci škálovací sady (uzel clusteru Service Fabric).
+title: Vzdálené připojení k uzlu clusteru Azure Service Fabric | Microsoft Docs
+description: Naučte se vzdáleně připojit k instanci sady škálování (Service Fabric uzel clusteru).
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
@@ -13,57 +13,57 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
-ms.author: aljo
-ms.openlocfilehash: 4cc2d6355a0147c33048f1c2c27a3648b9223db4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 12508fd5297691f06bce46e056527672083c3a91
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110919"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599939"
 ---
-# <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Vzdálené připojení k instanci virtuálního počítače škálovací sady nebo uzel clusteru.
-V Service Fabric cluster běží v Azure, každý typ uzlu clusteru, který definujete [nastaví samostatné škálovací sadu virtuálních počítačů](service-fabric-cluster-nodetypes.md).  Vám může vzdálené připojení k instancím konkrétní škálovací sady (uzlech clusteru).  Na rozdíl od virtuálních počítačů s jednou instancí instancí škálovací sady nemají své vlastní virtuální IP adresy. To může být náročné, pokud chcete pro IP adresu a port, který můžete použít pro vzdálené připojení ke konkrétní instanci.
+# <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Vzdálené připojení k instanci sady škálování virtuálního počítače nebo uzlu clusteru
+V clusteru Service Fabric spuštěném v Azure každý typ uzlu clusteru, který definujete, [Nastaví samostatné škálování virtuálního počítače](service-fabric-cluster-nodetypes.md).  Můžete se vzdáleně připojit ke konkrétním instancím sady škálování (uzly clusteru).  Na rozdíl od virtuálních počítačů s jednou instancí nemají instance sady škálování vlastní virtuální IP adresy. To může být náročné, pokud hledáte IP adresu a port, které můžete použít ke vzdálenému připojení k určité instanci.
 
-Pokud chcete zjistit IP adresu a port, který můžete použít pro vzdálené připojení ke konkrétní instanci, proveďte následující kroky.
+Pokud chcete najít IP adresu a port, které můžete použít ke vzdálenému připojení k určité instanci, proveďte následující kroky.
 
-1. Získejte příchozích pravidel NAT pro protokol RDP (Remote Desktop).
+1. Získat pravidla příchozího překladu adres (NAT) pro protokol RDP (Remote Desktop Protocol) (RDP)
 
-    Každý typ uzlu definována ve vašem clusteru má obvykle své vlastní virtuální IP adresa a nástroj pro vyrovnávání zatížení vyhrazenou. Nástroje pro vyrovnávání zatížení pro typ uzlu je ve výchozím nastavení název v následujícím formátu: *LB-{název clusteru} – {typ uzlu}* ; například *LB-clusteru FrontEnd*. 
+    Každý typ uzlu definovaný v clusteru má obvykle vlastní virtuální IP adresu a vyhrazený Nástroj pro vyrovnávání zatížení. Ve výchozím nastavení má nástroj pro vyrovnávání zatížení pro typ uzlu název v následujícím formátu: *Dis9,1-{název clusteru}-{Node-Type}* ; například: *9,1-mycluster-front-endu*. 
     
-    Na stránce pro nástroj pro vyrovnávání zatížení na webu Azure portal vyberte **nastavení** > **pravidla příchozího překladu adres**: 
+    Na stránce nástroje pro vyrovnávání zatížení v Azure Portal vyberte **Nastavení** > **pravidla příchozího překladu adres (NAT)** : 
 
-    ![Pravidla příchozího překladu adres nástroje pro vyrovnávání zatížení](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
+    ![Příchozí pravidla NAT pro vyrovnávání zatížení](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
-    Následující snímek obrazovky ukazuje příchozích pravidel NAT pro typ uzlu s názvem front-endu: 
+    Na následujícím snímku obrazovky vidíte příchozí pravidla překladu adres (NAT) pro typ uzlu s názvem front-end: 
 
-    ![Pravidla příchozího překladu adres nástroje pro vyrovnávání zatížení](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
+    ![Příchozí pravidla NAT pro vyrovnávání zatížení](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
-    Pro každý uzel, IP adresa bude zobrazovat v **cílové** sloupci **cílové** sloupec obsahuje instance ve škálovací sadě a **služby** sloupec obsahuje číslo portu. Pro připojení ke vzdálené porty jsou přiděleny k jednotlivým uzlům ve vzestupném pořadí od port 3389.
+    Pro každý uzel se IP adresa zobrazí ve sloupci **cíl** , **cílový** sloupec vytvoří instanci sady škálování a sloupec **služby** poskytne číslo portu. Pro vzdálené připojení se porty přiřazují každému uzlu ve vzestupném pořadí počínaje portem 3389.
 
-    Pravidla příchozího překladu adres v můžete také vyhledat `Microsoft.Network/loadBalancers` šablony Resource Manageru pro váš cluster.
+    Pravidla příchozího překladu adres (NAT) najdete taky `Microsoft.Network/loadBalancers` v části šablony Správce prostředků pro svůj cluster.
     
-2. Pokud chcete potvrdit portu pro příchozí spojení na cílový port mapování pro uzel, klikněte na jeho pravidlo a podívejte se na **cílit na port** hodnotu. Na následujícím snímku obrazovky vidíte příchozí pravidlo NAT pro **front-endu (Instance 1)** uzlu v předchozím kroku. Všimněte si, že 3390 sice číslo portu (příchozí) cílový port mapují na port 3389, port pro službu protokolu RDP na cíl.  
+2. Pokud chcete potvrdit příchozí port pro mapování portu pro uzel, můžete kliknout na jeho pravidlo a podívat se na hodnotu **cílového portu** . Následující snímek obrazovky ukazuje pravidlo příchozího překladu adres (NAT) pro uzel **front-end (instance 1)** v předchozím kroku. Všimněte si, že i když je číslo portu (příchozí) 3390, je cílový port namapován na port 3389 a port pro službu RDP v cíli.  
 
-    ![Cílový port mapování](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/port-mapping.png)
+    ![Mapování cílového portu](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/port-mapping.png)
 
-    Ve výchozím nastavení v případě clusterů Windows cílový port je port 3389, který se mapuje na službu RDP na cílový uzel. Pro clustery s Linuxem cílový port je port 22, který se mapuje na služby Secure Shell (SSH).
+    Ve výchozím nastavení jsou u clusterů Windows cílový port port 3389, který se mapuje na službu RDP na cílovém uzlu. U clusterů se systémem Linux je cílovým portem port 22, který se mapuje na službu Secure Shell (SSH).
 
-3. Vzdálené připojení ke konkrétní uzel (instance škálovací sady). Můžete použít uživatelské jméno a heslo, které jste nastavili při vytváření clusteru nebo žádné jiné přihlašovací údaje, které jste nakonfigurovali. 
+3. Vzdáleně se připojte ke konkrétnímu uzlu (instance sady škálování). Můžete použít uživatelské jméno a heslo, které jste nastavili při vytváření clusteru nebo jakýchkoli jiných přihlašovacích údajů, které jste nakonfigurovali. 
 
-    Následující snímek obrazovky ukazuje použití pro připojení k připojení ke vzdálené ploše **front-endu (Instance 1)** uzlu v clusteru s Windows:
+    Následující snímek obrazovky ukazuje použití Připojení ke vzdálené ploše pro připojení k uzlu **front-end (instance 1)** v clusteru Windows:
     
     ![Připojení ke vzdálené ploše](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/rdp-connect.png)
 
-    V uzlech systému Linux můžete připojit pomocí protokolu SSH (následující příklad opakovaně používá stejnou IP adresu a port pro zkrácení):
+    V uzlech se systémem Linux se můžete připojit pomocí SSH (Následující příklad znovu používá stejnou IP adresu a port pro zkrácení):
 
     ``` bash
     ssh SomeUser@40.117.156.199 -p 3390
     ```
 
 
-Další kroky v následujících článcích:
-* Zobrazit [Přehled funkce "Nasazení kdekoli" a porovnání s využitím clusterů Azure managed](service-fabric-deploy-anywhere.md).
-* Další informace o [clusteru zabezpečení](service-fabric-cluster-security.md).
-* [Aktualizace hodnot rozsahu portů RDP](./scripts/service-fabric-powershell-change-rdp-port-range.md) v clusteru virtuální počítače po nasazení
-* [Změnit uživatelské jméno admin a heslo](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) pro virtuální počítače clusteru
+Další postup najdete v následujících článcích:
+* Podívejte se na [Přehled funkce nasazení kamkoli a porovnání s clustery spravovanými Azure](service-fabric-deploy-anywhere.md).
+* Přečtěte si o [zabezpečení clusteru](service-fabric-cluster-security.md).
+* [Aktualizace hodnot rozsahu portů RDP](./scripts/service-fabric-powershell-change-rdp-port-range.md) na virtuálních počítačích clusteru po nasazení
+* [Změna uživatelského jména a hesla správce](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) pro virtuální počítače clusteru
 

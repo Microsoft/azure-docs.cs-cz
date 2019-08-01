@@ -1,19 +1,20 @@
 ---
 title: 'Řešení potíží s Azure Backupm: Stav agenta hosta není k dispozici'
 description: Příznaky, příčiny a řešení chyb Azure Backup souvisejících s agentem, rozšířením a disky.
-author: saurabhsensharma
-manager: saurabhsensharma
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 keywords: Zálohování Azure; Agent virtuálního počítače; Připojení k síti;
 ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.author: saurse
-ms.openlocfilehash: e4337c9c89ca239bb664cbb7fb953ab9eedd3ac5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7fc288ad9e33088b1b5248c1b61ed439ac95a9c4
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465318"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688983"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backupm: Problémy s agentem nebo rozšířením
 
@@ -77,9 +78,9 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 **2. příčina: [Rozšíření zálohování se nepodařilo aktualizovat nebo načíst.](#the-backup-extension-fails-to-update-or-load)**  
 **Příčina 3: [Virtuální počítač nemá přístup k Internetu.](#the-vm-has-no-internet-access)**
 
-## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>Operace rozšíření ExtentionOperationFailedForManagedDisks-VMSnapshot se nezdařila.
+## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>Operace rozšíření ExtensionOperationFailedForManagedDisks-VMSnapshot se nezdařila.
 
-**Kód chyby**: ExtentionOperationFailedForManagedDisks <br>
+**Kód chyby**: ExtensionOperationFailedForManagedDisks <br>
 **Chybová zpráva**: Operace rozšíření VMSnapshot selhala<br>
 
 Po registraci a naplánování virtuálního počítače pro službu Azure Backup služba Backup inicializuje úlohu prostřednictvím komunikace s rozšířením zálohy virtuálního počítače, aby se pomohlo vytvořit snímek v daném časovém okamžiku. Některé z následujících podmínek mohou zabránit spuštění snímku. Pokud se snímek neaktivuje, může dojít k selhání zálohování. Proveďte následující kroky pro řešení potíží v uvedeném pořadí a opakujte operaci:  
@@ -106,7 +107,7 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 **Kód chyby**: UserErrorUnsupportedDiskSize <br>
 **Chybová zpráva**: V současné době Azure Backup nepodporuje velikosti disků větší než 4095 GB. <br>
 
-Operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 4095 GB. Už brzy bude dostupná podpora pro velké disky.  
+Operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 4095 GB. Pokud se chcete zaregistrovat k privátní verzi Preview Azure Backup podpora velkých disků pro disky větší než 4 TB až 30TB, zapište zpátky do nás AskAzureBackupTeam@microsoft.com.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nepovedlo se inicializovat zálohování, protože v tuto chvíli probíhá jiná operace zálohování.
 
@@ -216,7 +217,7 @@ Provedením těchto kroků dojde k přeinstalování rozšíření během pří�
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodu obnovení
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_`<Geo>`_.`<number>`
-3. V části **Nastavení** vyberte zámky  a zobrazte zámky.
+3. V části **Nastavení** vyberte zámky a zobrazte zámky.
 4. Pokud chcete zámek odebrat, vyberte tři tečky a klikněte na **Odstranit**.
 
     ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/delete-lock.png)

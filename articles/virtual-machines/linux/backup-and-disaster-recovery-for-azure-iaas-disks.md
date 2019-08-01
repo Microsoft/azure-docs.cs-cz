@@ -1,25 +1,17 @@
 ---
-title: Zálohování a zotavení po havárii pro disky IaaS na virtuální počítače s Linuxem v Azure | Dokumentace Microsoftu
-description: Tento článek vysvětluje, jak naplánovat zálohování a zotavení po havárii disků v Azure a virtuální počítače IaaS. Tento dokument popisuje spravované i nespravované disky.
-services: virtual-machines-linux
-cloud: Azure
-documentationcenter: na
+title: Zálohování a zotavení po havárii pro disky IaaS na virtuálních počítačích se systémem Linux v Azure | Microsoft Docs
+description: Tento článek vysvětluje, jak naplánovat zálohování a zotavení po havárii virtuálních počítačů s IaaS a disků v Azure. Tento dokument pokrývá spravované i nespravované disky.
 author: roygara
-manager: twooley
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: eec049a2dc0292f0f732d0f560b8e1e2cac08600
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3013175924d0858557d59f9db3fa77ea5f23c1f5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708333"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696160"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage.md](../../../includes/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks.md)]

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-manager: craigg
 ms.date: 02/28/2019
-ms.openlocfilehash: 775e1abe1f3d6412171b8ff5427fd905e37480b5
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 31fb6eaefe557c1f135b4558b873454d4a3a01d8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489688"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568620"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy vám pomůžou se správou a škálováním více databází Azure SQL.
 
@@ -215,7 +214,7 @@ Další informace najdete v tématu [vytvoření výstrah SQL Database v Azure P
 
   Daxko/CSI používá elastické fondy s Azure SQL Database k urychlení vývojového cyklu a vylepšení služeb a výkonu zákazníků.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Pokud chcete škálovat elastické fondy, přečtěte si téma [škálování elastických fondů](sql-database-elastic-pool-scale.md) a [škálování elastického fondu – vzorový kód](scripts/sql-database-monitor-and-scale-pool-powershell.md) .
 - Video najdete v tématu [Microsoft Virtual Academy video kurz o Azure SQL Database elastické možnosti](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)

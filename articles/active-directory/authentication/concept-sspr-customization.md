@@ -1,84 +1,92 @@
 ---
-title: Přizpůsobení služby Azure AD samoobslužné resetování hesla – Azure Active Directory
-description: Resetovat možnosti vlastního nastavení pro hesla pomocí samoobslužné služby Azure AD
+title: Přizpůsobení samoobslužného resetování hesla služby Azure AD – Azure Active Directory
+description: Možnosti vlastního nastavení pro Samoobslužné resetování hesla služby Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/30/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d38d93a1c9716cc3a71d904b7b1a46fb8b1c2ee0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 527dd99f122ec70cc47305947a5cbce3207b9664
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60415650"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666302"
 ---
-# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Přizpůsobení funkce služby Azure AD pro samoobslužné resetování hesla
+# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Přizpůsobení funkce Azure AD pro Samoobslužné resetování hesla
 
-Odborníci v oblasti IT, kteří chtějí nasadit samoobslužné resetování hesla (SSPR) ve službě Azure Active directory (Azure AD) můžete přizpůsobit prostředí tak, aby odpovídaly potřebám svých uživatelů.
+IT profesionálové, kteří chtějí nasadit Samoobslužné resetování hesla (SSPR) ve službě Azure Active Directory (Azure AD), můžou přizpůsobit prostředí tak, aby odpovídalo potřebám svých uživatelů.
 
-## <a name="customize-the-contact-your-administrator-link"></a>Přizpůsobit odkaz "Kontaktujte správce"
+## <a name="customize-the-contact-your-administrator-link"></a>Přizpůsobení odkazu "kontaktujte správce"
 
-I v případě, že není povolené samoobslužné resetování HESLA, mít uživatelé dál na portál pro resetování odkaz "Kontaktujte správce" na heslo. Pokud uživatel vybere tento odkaz je buď:
+Uživatelé samoobslužného resetování hesla mají v portálu pro resetování hesel k dispozici odkaz "kontaktujte správce". Pokud uživatel vybere tento odkaz, provede jednu z následujících akcí:
 
-* E-mailem správci a požádá o pomoc při změně uživatelského hesla.
-* Odešle uživatelům na adresu URL, které určíte pro pomoc.
+* Pokud necháte výchozí stav:
+   * E-mail se pošle vašim správcům a požádá ho, aby vám poskytl pomoc se změnou hesla uživatele. Podívejte se na [ukázkový e-mail](#sample-email) níže.
+* Pokud je přizpůsobený:
+   * Pošle uživateli na webovou stránku nebo e-mailovou adresu určenou správcem pro pomoc.
 
-Doporučujeme nastavit tento kontakt na e-mailovou adresu nebo web, který vaši uživatelé již používají pro dotazy na podporu.
+> [!TIP]
+> Pokud tuto akci přizpůsobíte, doporučujeme nastavit tuto možnost na uživatele, kteří už pro podporu znají.
+
+> [!WARNING]
+> Pokud toto nastavení přizpůsobíte pomocí e-mailové adresy a účtu, který vyžaduje resetování hesla, uživatel nemusí být schopen požádat o pomoc.
+
+### <a name="sample-email"></a>Ukázkový e-mail
 
 ![Ukázková žádost o resetování e-mailu odeslaného správci][Contact]
 
-Kontaktní e-mail je odeslán následujícím příjemcům v následujícím pořadí:
+Kontaktní e-mail se pošle následujícím příjemcům v tomto pořadí:
 
-1. Pokud **správce hesel** role je přiřazená, správci s touto rolí se zobrazí oznámení.
-2. Pokud žádné heslo správcům se přiřazuje, pak správcům **Správce uživatelů** role se zobrazí oznámení.
-3. Pokud ani jeden z předchozích role přiřadí, pak bude **globální správci** se zobrazí oznámení.
+1. Pokud je přiřazena role **správce hesel** , budou správci s touto rolí upozorněni.
+2. Pokud nejsou přiřazeni žádní správci hesla, budou upozorněni správci s rolí **Správce uživatelů** .
+3. Pokud není přiřazená žádná z předchozích rolí, budou se informovat **globální správci** .
 
-Ve všech případech se zobrazí maximálně 100 příjemců oznámení.
+Ve všech případech se oznamuje maximálně 100 příjemců.
 
-Další informace o správce jiné role a postupy je přiřadit, naleznete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Další informace o různých rolích správce a jejich přiřazení najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
-### <a name="disable-contact-your-administrator-emails"></a>Zakázat "Kontaktujte správce" e-mailů
+### <a name="disable-contact-your-administrator-emails"></a>Zakázání e-mailů s názvem "kontaktujte správce"
 
-Pokud vaše organizace nechce upozornit, že žádosti o resetování hesla správce, můžete povolit následující konfiguraci:
+Pokud vaše organizace nechce informovat správce o požadavcích na resetování hesla, můžete povolit následující konfiguraci:
 
-* Povolte samoobslužné resetování hesla pro všechny koncové uživatele. Tato možnost je v části **resetování hesla** > **vlastnosti**. Pokud nechcete, aby uživatelům resetování vlastních hesel, můžete omezit rozsah přístupu k prázdnou skupinou. *Nedoporučujeme tuto možnost.*
-* Přizpůsobení helpdesku odkaz umožňující zadat adresu URL webové nebo mailto: adresu, kterou mohou uživatelé získat pomoc. Tato možnost je v části **resetování hesla** > **přizpůsobení** > **vlastní technické podpory e-mailu nebo adresa URL**.
+* Povolit Samoobslužné resetování hesla pro všechny koncové uživatele. Tato možnost je v > části**vlastnosti**resetování hesla. Pokud nechcete, aby uživatelé obnovili vlastní hesla, můžete nastavit rozsah přístupu do prázdné skupiny. *Tuto možnost nedoporučujeme.*
+* Přizpůsobte odkaz na helpdesk, který poskytuje adresu URL webu nebo adresu mailto: adresy, které mohou uživatelé použít k získání pomoci.  > Tato možnost je v části **resetování** > hesla**vlastní e-mail helpdesku nebo adresa URL**.
 
-## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Přizpůsobení přihlašovací stránky služby AD FS pro samoobslužné resetování HESLA
+## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Přizpůsobení přihlašovací stránky AD FS pro SSPR
 
-Správce Active Directory Federation Services (AD FS) můžete přidat odkaz na přihlašovací stránku pomocí pokynů v [přidat přihlašovací stránku popis](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) článku.
+Správci Active Directory Federation Services (AD FS) (AD FS) můžou přidat odkaz na přihlašovací stránku pomocí pokynů, které najdete v článku [Přidání přihlašovací stránky](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) s popisem.
 
-Můžete přidat odkaz na přihlašovací stránku služby AD FS, použijte následující příkaz na serveru služby AD FS. Uživatelé můžou na této stránce můžete zadat pracovního postupu samoobslužné resetování HESLA.
+Chcete-li přidat odkaz na přihlašovací stránku AD FS, použijte následující příkaz na serveru AD FS. Uživatelé můžou pomocí této stránky zadat pracovní postup SSPR.
 
 ``` powershell
 Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>"
 ```
 
-## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Přizpůsobit přihlašovací stránku a přístup k panelu vzhledu a chování
+## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Přizpůsobení stránky pro přihlášení a vzhledu přístupového panelu
 
-Můžete přizpůsobit přihlašovací stránku. Můžete přidat logo, které se zobrazí spolu s bitovou kopii, která odpovídá značku své firmy.
+Přihlašovací stránku můžete přizpůsobit. Můžete přidat logo, které se zobrazí spolu s obrázkem, který odpovídá branding vaší společnosti.
 
-Grafiky, kterou zvolíte, jsou uvedeny v následujících případech:
+Obrázek, který zvolíte, se zobrazí v následujících situacích:
 
 * Poté, co uživatel zadá své uživatelské jméno
-* Když chce uživatel na přizpůsobenou adresu URL:
-   * Předáním `whr` parametr heslo resetovat stránky, jako je třeba `https://login.microsoftonline.com/?whr=contoso.com`
-   * Předáním `username` parametr heslo resetovat stránky, jako je třeba `https://login.microsoftonline.com/?username=admin@contoso.com`
+* Pokud uživatel přistupuje k přizpůsobené adrese URL:
+   * Předáním `whr` parametru na stránku pro resetování hesla, například`https://login.microsoftonline.com/?whr=contoso.com`
+   * Předáním `username` parametru na stránku pro resetování hesla, například`https://login.microsoftonline.com/?username=admin@contoso.com`
 
-Najít podrobnosti o tom, jak nakonfigurovat vlastní firemní branding v článku [přidání firemního brandingu na přihlašovací stránku ve službě Azure AD](../fundamentals/customize-branding.md).
+Podrobné informace o tom, jak nakonfigurovat Branding společnosti, najdete v článku [Přidání firemního brandingu na přihlašovací stránku ve službě Azure AD](../fundamentals/customize-branding.md).
 
 ### <a name="directory-name"></a>Název adresáře
 
-Můžete změnit atribut názvu adresáře v rámci **Azure Active Directory** > **vlastnosti**. Organizace popisný název, který zobrazuje můžete zobrazit na portálu a v rámci automatizovaného komunikace. Tato možnost je nejviditelnější automatizovaných e-mailů ve formulářích, které následují:
+V části **Azure Active Directory** > **vlastnosti**můžete změnit atribut název adresáře. Můžete zobrazit popisný název organizace, který se zobrazuje na portálu a v automatizované komunikaci. Tato možnost je nejvíce viditelná v automatizovaných e-mailech ve formulářích, které následují:
 
-* Popisný název e-mailu, například "Microsoft jménem společnosti CONTOSO ukázku".
-* Řádek předmětu e-mailu, například "CONTOSO ukázka e-mailu ověřovací kód účtu"
+* Popisný název v e-mailu, například Microsoft jménem ukázky společnosti CONTOSO
+* Řádek předmětu v e-mailu, například kód pro ověření e-mailu s ukázkovým účtem CONTOSO
 
 ## <a name="next-steps"></a>Další postup
 
@@ -95,4 +103,4 @@ Můžete změnit atribut názvu adresáře v rámci **Azure Active Directory** >
 * [Myslím, že je něco poškozené. Jak řešit problémy SSPR?](active-directory-passwords-troubleshoot.md)
 * [Mám otázku, která není zodpovězená jinde](active-directory-passwords-faq.md)
 
-[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Požádejte správce o pomoc, resetuje se heslo e-mailu příkladu"
+[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Řekněte správci, aby vám pomohli resetovat e-maily s heslem. příklad"

@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 69ae6ab6caedd9e89d277b92558931685d2ea320
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f2c6b98fd0be2061e9d8cab5c063cafadf71476a
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877308"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597450"
 ---
 # <a name="monitor-application-performance-hosted-on-azure-vm-and-azure-virtual-machine-scale-sets"></a>Monitorování výkonu aplikací hostovaných na virtuálních počítačích Azure a Azure Virtual Machine Scale Sets
 
@@ -27,7 +27,7 @@ Tento článek vás provede povolením Application Insights monitoring pomocí r
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="enable-application-insights"></a>Povolení Application Insights
+## <a name="enable-application-insights"></a>Povolit Application Insights
 
 Existují dva způsoby, jak povolit monitorování aplikací pro hostované aplikace virtuálních počítačů Azure a Azure Virtual Machine Scale set:
 
@@ -42,7 +42,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
     * Pokud potřebujete vlastní volání rozhraní API ke sledování událostí nebo závislostí, které se ve výchozím nastavení nezachycují pomocí monitorování založeného na agentech, musíte použít tuto metodu. Další informace najdete v [článku rozhraní API pro vlastní události a metriky](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) .
 
 > [!NOTE]
-> Pokud se zjistí jenom monitorování na základě agentů a ruční instrumentaci založené na sadě SDK, bude se dodržovat jenom ruční nastavení instrumentace. K tomu je potřeba zabránit odesílání duplicitních dat. Další informace o této části najdete v [části řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-apps#troubleshooting) níže.
+> Pokud se zjistí jenom monitorování na základě agentů a ruční instrumentaci založené na sadě SDK, bude se dodržovat jenom ruční nastavení instrumentace. K tomu je potřeba zabránit odesílání duplicitních dat. Další informace o této části najdete v [části řešení potíží](#troubleshooting) níže.
 
 ## <a name="manage-agent-based-monitoring-for-net-applications-on-vm-using-powershell"></a>Správa monitorování na základě agentů pro aplikace .NET na virtuálním počítači pomocí PowerShellu
 
@@ -161,6 +161,6 @@ Výstup spuštění rozšíření se protokoluje do souborů, které se nacháze
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.ApplicationMonitoringWindows\<version>\
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Naučte se, jak [nasadit aplikaci do sady škálování virtuálních počítačů Azure](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md).
 * [Nastavte webové testy dostupnosti](monitor-web-app-availability.md) , které se mají upozornit, pokud je koncový bod mimo provoz.

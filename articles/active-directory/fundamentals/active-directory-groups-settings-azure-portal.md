@@ -2,23 +2,23 @@
 title: Upravit informace o vaší skupině – Azure Active Directory | Dokumentace Microsoftu
 description: Pokyny ohledně toho, jak lze upravit informace o vaší skupiny pomocí služby Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 691f705574050b15869a0ac8b7d128507e5aae10
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dc06abca08b2522ac57552e85f7c1bac3ef854af
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248843"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561874"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Upravit skupinu informací pomocí Azure Active Directory
 
@@ -39,7 +39,7 @@ Pomocí Azure Active Directory (Azure AD), můžete upravit nastavení skupiny, 
 
 4. Vyberte skupinu **zásady MDM - západní**a pak vyberte **vlastnosti** z **spravovat** oblasti.
 
-    ![Stránka s přehledem, s informacemi o zvýrazní a možnost členů skupiny](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
+    ![Stránka s přehledem skupin s možnostmi členů a zvýrazněnými informacemi](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
 5. Aktualizace **obecné nastavení** informace podle potřeby, včetně:
 
@@ -51,7 +51,7 @@ Pomocí Azure Active Directory (Azure AD), můžete upravit nastavení skupiny, 
 
     - **Typ skupiny.** Typ skupiny nelze změnit po vytvoření. Chcete-li změnit **typ skupiny**, musíte odstranit skupinu a vytvořte novou.
     
-    - **Typ členství.** Změníte typ členství. Další informace o různých typech dostupné členy najdete v tématu [jak: Vytvoření základní skupiny a přidání členů pomocí portálu Azure Active Directory](active-directory-groups-create-azure-portal.md).
+    - **Typ členství.** Změníte typ členství. Další informace o různých dostupných typech členství najdete v tématu [How to: Vytvořte základní skupinu a přidejte členy pomocí portálu](active-directory-groups-create-azure-portal.md)Azure Active Directory.
     
     - **ID objektu.** ID objektu nelze změnit, ale můžete je zkopírovat používané k příkazům Powershellu pro skupinu. Další informace o používání rutin prostředí PowerShell najdete v tématu [rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-v2-cmdlets.md).
 

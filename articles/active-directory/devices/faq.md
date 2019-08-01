@@ -11,14 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbba3f1b753738de57aa311387e522bae1b7b523
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 57bc2ca38b5166cfba39fb20254e169ce016ea12
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499802"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706317"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
+
+## <a name="general-faq"></a>Obecné Nejčastější dotazy
 
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Otázka: Nedávno jsem zaregistroval zařízení. Proč se v Azure Portal v části informace o uživateli nezobrazují zařízení? Nebo proč je pro zařízení připojená k hybridnímu Azure Active Directory (Azure AD) vlastník zařízení označený jako neurčený jako N/A.
 
@@ -39,6 +41,11 @@ V části **uživatelská zařízení**jsou uvedena pouze následující zaříz
 
 - U zařízení s Windows 10 a Windows Server 2016 nebo novějším `dsregcmd.exe /status`spusťte příkaz.
 - Pro verze operačního systému nižší úrovně spusťte `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`.
+
+**Odpověď:** Informace o řešení potíží najdete v těchto článcích:
+- [Řešení potíží se zařízeními pomocí příkazu dsregcmd](troubleshoot-device-dsregcmd.md)
+- [Řešení potíží se zařízeními s Windows 10 a Windows serverem 2016 s připojením k hybridním Azure Active Directory](troubleshoot-hybrid-join-windows-current.md)
+- [Řešení potíží s modulem hybridní Azure Active Directory připojená zařízení nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md)
 
 ---
 
@@ -65,6 +72,8 @@ Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
 **Odpověď:** Tato operace je záměrné. V takovém případě zařízení nemá přístup k prostředkům v cloudu. Správci můžou tuto akci provést u zastaralých, ztracených nebo odcizených zařízení, aby se zabránilo neoprávněnému přístupu. Pokud se tato akce prováděla omylem, budete muset zařízení znovu povolit nebo znovu zaregistrovat, jak je popsáno níže.
 
 - Pokud je zařízení ve službě Azure AD zakázané, správce s dostatečnými oprávněními může povolit z portálu Azure AD.  
+  > [!NOTE]
+  > Pokud synchronizujete zařízení pomocí Azure AD Connect, zařízení připojená k hybridní službě Azure AD budou automaticky znovu povolena během dalšího cyklu synchronizace. Pokud tedy potřebujete zakázat hybridní zařízení připojené k Azure AD, musíte ho zakázat z místní služby AD.
 
  - Pokud se zařízení ve službě Azure AD odstraní, musíte ho znovu zaregistrovat. Pokud se chcete znovu zaregistrovat, musíte na zařízení provést ruční akci. Pokyny k opětovné registraci na základě stavu zařízení najdete níže. 
 
@@ -114,20 +123,30 @@ Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
 
 **Otázka: Proč může uživatel i nadále přistupovat k prostředkům ze zařízení, které je v Azure Portal zakázané?**
 
-**Odpověď:** Použití odvolání může trvat až hodinu.
+**Odpověď:** Může to trvat až hodinu, než se odvolat z doby, kdy je zařízení Azure AD označené jako zakázané.
 
 >[!NOTE] 
 >U zaregistrovaných zařízení doporučujeme zařízení vymazat, abyste se ujistili, že uživatelé nebudou mít přístup k prostředkům. Další informace najdete v tématu [co je registrace zařízení?](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 ---
 
+### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>Otázka: Proč jsou zařízení označená jako "čeká" v rámci zaregistrovaného sloupce v Azure Portal?
+
+**A**:  Čeká na vyřízení znamená, že zařízení není zaregistrované. Tento stav indikuje, že se zařízení synchronizovaly pomocí Azure AD Connect z místní služby AD a je připravené na registraci zařízení. U těchto zařízení je typ spojení nastaven na "připojené k hybridní službě Azure AD". Přečtěte si další informace o [Plánování implementace služby hybrid Azure Active Directory JOIN](hybrid-azuread-join-plan.md).
+
+>[!NOTE]
+>Zařízení se může také změnit z registrovaného stavu na čeká na vyřízení.
+>* Pokud se zařízení odstraní a z Azure AD se nejdřív odstraní a znovu synchronizuje z místní služby AD.
+>* Pokud je zařízení odebráno z oboru synchronizace na Azure AD Connect a bylo přidáno zpět.
+>
+>V obou případech je nutné zařízení znovu zaregistrovat ručně na každém z těchto zařízení. Chcete-li zkontrolovat, zda bylo zařízení dříve registrováno, můžete [řešit potíže se zařízeními pomocí příkazu dsregcmd](troubleshoot-device-dsregcmd.md).
+
+---
 ## <a name="azure-ad-join-faq"></a>Nejčastější dotazy ke službě Azure AD JOIN
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>Otázka: Návody odpojte zařízení připojené k Azure AD místně na zařízení?
 
-**Odpověď:** 
-- Pro zařízení připojená k hybridní službě Azure AD se ujistěte, že jste automatickou registraci vypnuli. Naplánovaná úloha pak zařízení znovu neregistruje. Pak otevřete příkazový řádek jako správce a zadejte `dsregcmd.exe /debug /leave`. Nebo spusťte tento příkaz jako skript u několika zařízení, aby se hromadně odpojování nepřipojilo.
-- U zařízení připojených k čisté službě Azure AD se ujistěte, že máte offline účet místního správce nebo si ho vytvořte. Nemůžete se přihlásit pomocí přihlašovacích údajů uživatele Azure AD. Potom přejděte na **Nastavení** > **účty** > **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **Odpojit**. Postupujte podle pokynů a po zobrazení výzvy zadejte přihlašovací údaje místního správce. Dokončete proces odpojování restartováním zařízení.
+**Odpověď:** U zařízení připojených k čisté službě Azure AD se ujistěte, že máte offline účet místního správce nebo si ho vytvořte. Nemůžete se přihlásit pomocí přihlašovacích údajů uživatele Azure AD. Potom přejděte na **Nastavení** > **účty** > **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **Odpojit**. Postupujte podle pokynů a po zobrazení výzvy zadejte přihlašovací údaje místního správce. Dokončete proces odpojování restartováním zařízení.
 
 ---
 
@@ -223,6 +242,10 @@ Toto chování:
 
 ## <a name="hybrid-azure-ad-join-faq"></a>Nejčastější dotazy k hybridní službě Azure AD
 
+### <a name="q-how-do-i-unjoin-a-hybrid-azure-ad-joined-device-locally-on-the-device"></a>Otázka: Návody odpojte zařízení připojené k hybridní službě Azure AD místně na zařízení?
+
+**Odpověď:** Pro zařízení připojená k hybridní službě Azure AD se ujistěte, že jste automatickou registraci vypnuli. Naplánovaná úloha pak zařízení znovu neregistruje. Pak otevřete příkazový řádek jako správce a zadejte `dsregcmd.exe /debug /leave`. Nebo spusťte tento příkaz jako skript u několika zařízení, aby se hromadně odpojování nepřipojilo.
+
 ### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>Otázka: Kde najdu informace o řešení potíží pro diagnostiku selhání připojení k hybridní službě Azure AD?
 
 **Odpověď:** Informace o řešení potíží najdete v těchto článcích:
@@ -234,7 +257,7 @@ Toto chování:
 
 **Odpověď:** Když uživatelé přidají své účty do aplikací na zařízení připojeném k doméně, může se zobrazit výzva k **Přidání účtu do Windows?** Pokud na příkazovém řádku zadají **Ano** , zařízení se zaregistruje do služby Azure AD. Typ vztahu důvěryhodnosti je označený jako registrovaný pro Azure AD. Když ve vaší organizaci povolíte hybridní připojení k Azure AD, zařízení taky získá připojenou hybridní službu Azure AD. Pak se dvě stavy zařízení zobrazí pro stejné zařízení. 
 
-Připojení k hybridní službě Azure AD má přednost před stavem zaregistrovánm službou Azure AD. Takže se vaše zařízení považuje za hybridní službu Azure AD připojené k ověřování a vyhodnocení podmíněného přístupu. Záznam zařízení registrovaných v Azure AD můžete bezpečně odstranit z portálu Azure AD. Naučte se [Tento duální stav na počítači s Windows 10 vyhnout nebo ho vyčistit](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know). 
+Připojení k hybridní službě Azure AD má přednost před stavem zaregistrovánm službou Azure AD. Takže se vaše zařízení považuje za hybridní službu Azure AD připojené k ověřování a vyhodnocení podmíněného přístupu. Záznam zařízení registrovaných v Azure AD můžete bezpečně odstranit z portálu Azure AD. Naučte se [Tento duální stav na počítači s Windows 10 vyhnout nebo ho vyčistit](hybrid-azuread-join-plan.md#review-things-you-should-know). 
 
 ---
 
@@ -258,10 +281,19 @@ Připojení k hybridní službě Azure AD má přednost před stavem zaregistrov
 
 ## <a name="azure-ad-register-faq"></a>Nejčastější dotazy k registru Azure AD
 
+### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>Otázka: Návody odebrat zařízení registrovaná v Azure AD místně na zařízení?
+
+**Odpověď:** 
+- U registrovaných zařízení s Windows 10 Azure AD přejděte na **Nastavení** > **účty** > **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **Odpojit**. Registrace zařízení je vázaná na uživatelský profil ve Windows 10.
+- V případě iOS a Androidu můžete použít Microsoft Authenticator **Nastavení** > aplikace**registrace zařízení** a vybrat zrušit **registraci zařízení**.
+- V případě macOS můžete pomocí aplikace Portál společnosti Microsoft Intune zrušit registraci zařízení ze správy a odebrat jakoukoli registraci. 
+
+---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>Otázka: Můžu zaregistrovat zařízení s Androidem nebo iOS BYOD?
 
 **Odpověď:** Ano, ale jenom se službou Azure Device Registration Service a pro hybridní zákazníky. U místní služby Device Registration Service v Active Directory Federation Services (AD FS) (AD FS) se nepodporuje.
 
+---
 ### <a name="q-how-can-i-register-a-macos-device"></a>Otázka: Jak můžu zaregistrovat zařízení macOS?
 
 **Odpověď:** Proveďte následující kroky:
@@ -274,7 +306,8 @@ Připojení k hybridní službě Azure AD má přednost před stavem zaregistrov
 - Uživatelé zahrnutí do zásad podmíněného přístupu potřebují pro přístup k prostředkům [podporovanou verzi Office pro MacOS](../conditional-access/technical-reference.md#client-apps-condition) . 
 - Při prvním pokusu o přístup se uživatelům zobrazí výzva k registraci zařízení pomocí portálu společnosti.
 
-## <a name="next-steps"></a>Další postup
+---
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [zařízeních registrovaných v Azure AD](concept-azure-ad-register.md)
 - Další informace o [zařízeních připojených k Azure AD](concept-azure-ad-join.md)

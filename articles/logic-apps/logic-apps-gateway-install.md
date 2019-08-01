@@ -1,6 +1,6 @@
 ---
-title: Instalace místní brány dat – Azure Logic Apps | Dokumentace Microsoftu
-description: Předtím, než jste měli přístup k datům v místní instalaci Azure Logic Apps, stáhněte a nainstalujte na místní bránu dat
+title: Instalace místní brány dat – Azure Logic Apps | Microsoft Docs
+description: Než budete moct získat přístup k datům z Azure Logic Apps, Stáhněte a nainstalujte místní bránu dat.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,27 +9,27 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 10a6e5c33f6a3c23d98e6eb3380de0d6dc6ac216
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61a9b319b9ea44f766bc6f014b76bc48d15efc57
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544490"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598453"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
-Před připojením k místním zdrojům dat z Azure Logic Apps, stáhněte a nainstalujte na místní bránu dat na místním počítači. Brána funguje jako most poskytující rychlý datové přenosy a šifrování mezi zdroje dat v místním prostředí (ne v cloudu) a logic apps. Tento článek popisuje, jak můžete stáhnout, nainstalovat a nastavit na místní bránu dat. 
+Než se budete moct připojit k místním zdrojům dat z Azure Logic Apps, Stáhněte a nainstalujte místní bránu dat do místního počítače. Brána funguje jako most, který poskytuje rychlý přenos dat a šifrování mezi zdroji dat místně (ne v cloudu) a vašimi Logic Apps. Tento článek ukazuje, jak si můžete stáhnout, nainstalovat a nastavit místní bránu dat. 
 
-Můžete použít stejnou instalaci brány s ostatními službami, jako je například Power BI, Microsoft Flow, PowerApps a Azure Analysis Services. Další informace o [jak brána dat funguje](#gateway-cloud-service).
+Můžete použít stejnou instalaci brány s jinými službami, například Power BI, Microsoft Flow, PowerApps a Azure Analysis Services. Přečtěte si další informace o [fungování brány dat](#gateway-cloud-service).
 
 <a name="supported-connections"></a>
 
-Brána podporuje [místní konektory](../connectors/apis-list.md#on-premises-connectors) v Azure Logic Apps pro tyto zdroje dat:
+Brána podporuje místní [konektory](../connectors/apis-list.md#on-premises-connectors) v Azure Logic Apps pro tyto zdroje dat:
 
 *   BizTalk Server 2016
 *   Systém souborů
 *   IBM DB2  
-*   Databáze IBM Informix
+*   IBM Informix
 *   IBM MQ
 *   MySQL
 *   Oracle Database
@@ -40,182 +40,182 @@ Brána podporuje [místní konektory](../connectors/apis-list.md#on-premises-con
 *   SQL Server
 *   Teradata
 
-Informace o tom, jak použít bránu s ostatními službami, najdete v těchto článcích:
+Informace o tom, jak používat bránu s dalšími službami, najdete v těchto článcích:
 
-* [Microsoft Power BI – místní brána dat](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Microsoft PowerApps na místní bránu dat](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Microsoft Flow na místní bránu dat](https://flow.microsoft.com/documentation/gateway-manage/)
-* [Služba Azure Analysis Services na místní brány dat](../analysis-services/analysis-services-gateway.md)
+* [Místní brána dat Power BI Microsoftu](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
+* [Microsoft PowerApps místní bránu dat](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Microsoft Flow místní bránu dat](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Azure Analysis Services místní bránu dat](../analysis-services/analysis-services-gateway.md)
 
 <a name="requirements"></a>
 
 ## <a name="prerequisites"></a>Požadavky
 
-* A [pracovního nebo školního účtu](../active-directory/fundamentals/sign-up-organization.md) , který má [předplatného Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access) 
+* [Pracovní nebo školní účet](../active-directory/fundamentals/sign-up-organization.md) s předplatným [Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access) 
 
-  Během instalace brány přihlášení k tomuto účtu tak instalaci brány můžete přidružit k vašemu předplatnému Azure. 
-  Později také použít stejný účet při vytváření prostředku Azure pro vaši instalaci brány na webu Azure Portal. 
-  Pokud nemáte ještě předplatné Azure <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrovat si bezplatný účet Azure</a>.
+  Během instalace brány se přihlásíte k tomuto účtu, abyste mohli přidružit instalaci brány k vašemu předplatnému Azure. 
+  Později také použijete stejný účet při vytváření prostředku Azure pro instalaci brány v Azure Portal. 
+  Pokud ještě nemáte předplatné Azure, zaregistrujte <a href="https://azure.microsoft.com/free/" target="_blank">si bezplatný účet Azure</a>.
 
-* Tady jsou požadavky pro místní počítač:
+* Tady jsou požadavky na váš místní počítač:
 
   **Minimální požadavky**
 
   * .NET Framework 4.5.2
-  * 64bitová verze Windows 7 nebo Windows Server 2008 R2 (nebo novější)
+  * 64. bitová verze systému Windows 7 nebo Windows Server 2008 R2 (nebo novější)
 
   **Doporučené požadavky**
 
-  * 8jádrový procesor
+  * PROCESOR s 8 jádry
   * 8 GB paměti
-  * 64bitová verze systému Windows Server 2012 R2 (nebo novější)
+  * 64. bitová verze systému Windows Server 2012 R2 (nebo novější)
 
 * **Důležité informace**
 
-  * Místní brány dat můžete nainstalovat pouze na místním počítači, není řadičem domény. Nemáte ale bránu nainstalovat na stejném počítači jako zdroj dat. Budete také potřebovat pouze jednu bránu pro všechny vaše zdroje dat, proto není potřeba nainstalovat bránu pro každý datový zdroj.
+  * Místní bránu dat můžete nainstalovat pouze v místním počítači, nikoli v řadiči domény. Bránu ale nemusíte instalovat na stejný počítač jako zdroj dat. K dispozici je také pouze jedna brána pro všechny zdroje dat, takže není nutné instalovat bránu pro každý zdroj dat.
 
     > [!TIP]
-    > Abyste minimalizovali latenci, můžete bránu instalujete jak nejblíže ke zdroji dat nebo na stejném počítači, za předpokladu, že máte oprávnění.
+    > Abyste minimalizovali latenci, můžete bránu nainstalovat co nejblíže zdroji dat nebo do stejného počítače, za předpokladu, že máte oprávnění.
 
-  * Bránu nainstalovat na počítač, který je připojený k Internetu, vždy zapnutá a *nebude* přejít do režimu spánku. Jinak brána nemůže fungovat. 
-  Kromě toho může trpět výkon bezdrátové sítě.
+  * Nainstalujte bránu na počítač, který je připojený k Internetu, vždycky zapnutý a *nepřejde do* režimu spánku. V opačném případě se brána nedá spustit. 
+  Navíc může dojít k výraznému snížení výkonu bezdrátové sítě.
 
-  * Během instalace, můžete pouze přihlásit se [pracovního nebo školního účtu](../active-directory/sign-up-organization.md) , který je spravován pomocí služby Azure Active Directory (Azure AD), například @contoso.onmicrosoft.coma ne Azure B2B (Host) účet nebo osobní Microsoft účet, jako například @hotmail.com nebo @outlook.com. 
-  Ujistěte se, že používáte stejný účet přihlášení při registraci vaší instalace brány na webu Azure Portal tak, že vytvoříte prostředek brány. 
-  Když vytvoříte připojení z aplikace logiky ke zdroji dat v místním, pak můžete vybrat tento prostředek brány. 
-  [Proč musí používat Azure AD pracovní nebo školní účet?](#why-azure-work-school-account)
+  * Během instalace se můžete přihlásit jenom pomocí [pracovního nebo školního účtu](../active-directory/sign-up-organization.md) spravovaného službou Azure Active Directory (Azure AD), například @contoso.onmicrosoft.com, a ne účtem Azure B2B (Guest) nebo osobním @hotmail.com účet Microsoft, jako je například nebo. @outlook.com. 
+  Ujistěte se, že používáte stejný přihlašovací účet při registraci instalace brány v Azure Portal vytvořením prostředku brány. 
+  Tento prostředek brány pak můžete vybrat, když vytvoříte připojení z aplikace logiky k místnímu zdroji dat. 
+  [Proč je nutné použít pracovní nebo školní účet služby Azure AD?](#why-azure-work-school-account)
 
   > [!TIP]
-  > Pokud jste si zaregistrovali nabídku Office 365 a neposkytli svůj skutečný pracovní e-mail, může mít přihlašovací adresu, která vypadá jako v tomto příkladu: `username@domain.onmicrosoft.com` 
+  > Pokud jste si zaregistrovali nabídku Office 365 a nezadali jste svůj skutečný pracovní e-mail, můžete mít přihlašovací adresu, která vypadá jako v tomto příkladu:`username@domain.onmicrosoft.com` 
   >
-  > Na používání účtu Microsoft, který má [Visual Studio na úrovni Standard předplatného](https://visualstudio.microsoft.com/vs/pricing/), první [vytvořit adresář (tenant) v Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md), nebo použijte výchozí adresář se svým účtem Microsoft. 
-  > Přidat uživatele s heslem k adresáři a poskytnout přístup k vašemu předplatnému. 
-  > Potom přihlásíte během instalace brány se toto uživatelské jméno a heslo.
+  > Pokud chcete použít účet Microsoft, který má [standardní předplatné sady Visual Studio](https://visualstudio.microsoft.com/vs/pricing/), nejprve [v Azure Active Directory vytvořte adresář (tenant)](../active-directory/develop/quickstart-create-new-tenant.md), nebo použijte výchozí adresář s účet Microsoft. 
+  > Přidejte do adresáře uživatele s heslem a pak tomuto uživateli udělte přístup k vašemu předplatnému. 
+  > Pak se můžete přihlásit při instalaci brány pomocí tohoto uživatelského jména a hesla.
 
-  * Oblast, kterou vyberete pro vaši instalaci brány určuje umístění, ve kterém později zaregistrujete bránu v Azure tak, že vytvoříte prostředek Azure. 
-  Když vytvoříte tento prostředek brány v Azure, musíte vybrat *stejné* umístění jako instalace brány. Výchozí oblast je na stejné umístění jako vašeho tenanta Azure AD, která spravuje váš účet Azure, ale můžete změnit umístění během instalace brány.
+  * Oblast, kterou vyberete pro instalaci brány, určuje umístění, kam později zaregistrujete bránu v Azure tím, že vytvoříte prostředek Azure. 
+  Při vytváření tohoto prostředku brány v Azure musíte vybrat *stejné* umístění jako instalace brány. Výchozí oblastí je stejné umístění jako váš tenant služby Azure AD, který spravuje váš účet Azure, ale během instalace brány můžete umístění změnit.
 
-  * Pokud už máte bránu, která se nastavuje pomocí instalačního programu starší než verze 14.16.6317.4, nelze změnit umístění vaší brány spuštěním nejnovější verzi Instalační služby. Však nastavit novou bránu s umístěním, které chcete místo toho můžete nejnovější verzi Instalační služby.
+  * Pokud už máte bránu, kterou jste nastavili pomocí instalačního programu starší verze než 14.16.6317.4, nemůžete změnit umístění brány spuštěním nejnovějšího instalačního programu. Pomocí nejnovějšího instalačního programu ale můžete místo toho nastavit novou bránu s umístěním, které chcete.
   
-    Pokud jste instalační program brány, která je starší než verze 14.16.6317.4, ale nemáte nainstalovanou bránu ještě, můžete stáhnout a místo toho použijte nejnovější verzi Instalační služby.
+    Pokud máte instalační program brány, který je starší než verze 14.16.6317.4, ale ještě jste nenainstalovali bránu, můžete místo toho stáhnout a použít nejnovější instalační program.
 
 ## <a name="high-availability-support"></a>Podpora vysoké dostupnosti
 
-Místní brána dat podporuje vysokou dostupnost, když máte více než jedna instalace brány a nastavit je jako clustery. Pokud máte existující bránu, když přejdete na jinou bránu vytvořit, můžete volitelně vytvořit clustery s vysokou dostupností. Tyto clustery bran uspořádejte do skupin, které vám mohou pomoci Vyhýbejte se jediným bodů selhání. Navíc všechny místní datové brány konektory teď podporují vysokou dostupnost.
+Místní brána dat podporuje vysokou dostupnost, pokud máte více než jednu instalaci brány a nastavíte ji jako clustery. Pokud máte existující bránu, když přejdete na vytvořit jinou bránu, můžete volitelně vytvořit clustery s vysokou dostupností. Tyto clustery organizují brány do skupin, které mohou přispět k zamezení selhání v jednom bodě. Všechny místní konektory pro bránu dat teď podporují vysokou dostupnost.
 
-Pokud chcete použít místní bránu dat, zkontrolujte tyto požadavky a důležité informace:
+Pokud chcete použít místní bránu dat, přečtěte si tyto požadavky a požadavky:
 
-* Již musí mít alespoň jednu bránu instalace ve stejném předplatném Azure jako primární bráně a obnovovací klíč pro instalaci. 
+* V rámci stejného předplatného Azure už musíte mít jako primární bránu a obnovovací klíč pro tuto instalaci alespoň jednu instalaci brány. 
 
-* Primární brány musí být spuštěná aktualizace brány z listopadu 2017 nebo novější.
+* V primární bráně musí být spuštěná aktualizace brány ze listopadu 2017 nebo novější.
 
-Po splnění těchto požadavků, když vytváříte další bránu, vyberte **přidat do existujícího clusteru bran**, vyberte na primární bráně clusteru a zadat obnovovací klíč pro tuto primární bránu.
+Po splnění těchto požadavků můžete při vytváření další brány vybrat možnost **Přidat do existujícího clusteru brány**, vybrat primární bránu pro cluster a zadat obnovovací klíč pro tuto primární bránu.
 Další informace najdete v tématu [clustery s vysokou dostupností pro místní bránu dat](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters).
 
 <a name="install-gateway"></a>
 
 ## <a name="install-data-gateway"></a>Instalace brány dat
 
-1. [Stáhnout, uložte a spusťte instalační program brány na místním počítači](https://aka.ms/on-premises-data-gateway-installer).
+1. [Stáhněte, uložte a spusťte instalační program brány na místním počítači](https://aka.ms/on-premises-data-gateway-installer).
 
-2. Přijměte výchozí cestu instalace, nebo zadejte umístění ve vašem počítači, ve které chcete nainstalovat bránu.
+2. Přijměte výchozí instalační cestu nebo zadejte umístění na počítači, kam chcete bránu nainstalovat.
 
-3. Přečtěte si a přijměte podmínky použití a ochrana osobních údajů a klikněte na tlačítko **nainstalovat**.
+3. Přečtěte si a přijměte podmínky použití a prohlášení o zásadách ochrany osobních údajů a zvolte možnost **nainstalovat**.
 
-   ![Přijměte podmínky použití a ochrana osobních údajů](./media/logic-apps-gateway-install/accept-terms.png)
+   ![Přijmout podmínky použití a prohlášení o zásadách ochrany osobních údajů](./media/logic-apps-gateway-install/accept-terms.png)
 
-4. Po úspěšné instalaci brány zadejte e-mailovou adresu pro váš pracovní nebo školní účet a zvolte **přihlášení**.
+4. Po úspěšné instalaci brány zadejte e-mailovou adresu svého pracovního nebo školního účtu a pak vyberte **Přihlásit**se.
 
-   ![Přihlaste se pomocí pracovního nebo školního účtu](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
+   ![Přihlaste se pomocí pracovního nebo školního účtu.](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-5. Zvolte **registrovat novou bránu na tomto počítači** > **Další**, který registruje instalaci brány se [Cloudová služba brány](#gateway-cloud-service). 
+5. **V tomto počítači** > vyberte možnost zaregistrovat novou bránu **, která**zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service). 
 
    ![Registrace brány](./media/logic-apps-gateway-install/register-new-gateway.png)
 
-6. Zadejte informace pro vaši instalaci brány:
+6. Zadejte tyto informace pro instalaci brány:
 
-   * Název, který chcete použít pro instalaci 
+   * Název, který chcete nainstalovat 
 
-   * Obnovovací klíč, který chcete vytvořit, který musí mít alespoň osm znaků
+   * Obnovovací klíč, který chcete vytvořit, který musí mít aspoň osm znaků.
 
      > [!IMPORTANT]
-     > Uložte a zachovat obnovovací klíč na bezpečném místě. Tento klíč budete potřebovat, když změníte umístění brány, nebo když migrovat, obnovit nebo převzít existující bránu.
+     > Uložte a zachovejte obnovovací klíč na bezpečném místě. Tento klíč budete potřebovat při změně umístění brány nebo při migraci, obnovení nebo převzetí existující brány.
 
-   * Potvrzení pro obnovovací klíč 
+   * Potvrzení obnovovacího klíče 
 
      ![Nastavení brány](./media/logic-apps-gateway-install/set-up-gateway.png)
 
-7. Zkontrolujte oblast vybraná Cloudová služba brány a služby Azure Service Bus, který se používá ve vaší instalaci brány. 
+7. Ověřte oblast vybranou pro cloudovou službu brány a Azure Service Bus, kterou používá instalace brány. 
 
-   ![Zkontrolujte oblast](./media/logic-apps-gateway-install/check-region.png)
+   ![Kontrolní oblast](./media/logic-apps-gateway-install/check-region.png)
 
    > [!IMPORTANT]
-   > Chcete-li změnit této oblasti po dokončení instalace brány, musíte pro tuto instalaci brány obnovovací klíč. Kromě toho je třeba odinstalovat a znovu nainstalovat bránu. Další informace najdete v tématu [změnit umístění, migrovat, obnovit nebo převzít existující bránu](#update-gateway-installation).
+   > Pro změnu této oblasti po dokončení instalace brány budete potřebovat obnovovací klíč pro tuto instalaci brány. Také je nutné bránu odinstalovat a znovu nainstalovat. Další informace najdete v tématu [Změna umístění, migrace, obnovení nebo převzetí existující brány](#update-gateway-installation).
 
-   *Proč změnit oblast pro vaši instalaci brány?* 
+   *Proč změnit oblast pro instalaci brány?* 
 
-   Například pokud chcete snížit latenci, můžete změnit oblast vaší brány do stejné oblasti jako aplikace logiky. 
-   Nebo můžete vybrat oblast co nejblíže ke zdroji dat v místním prostředí. 
-   Vaše *prostředku brány v Azure* a aplikaci logiky mohou mít jiná umístění.
+   Pokud například chcete snížit latenci, můžete změnit oblast brány na stejnou oblast jako aplikace logiky. 
+   Případně můžete vybrat oblast nejbližší k místnímu zdroji dat. 
+   Váš *prostředek brány v Azure* a aplikace logiky můžou mít různá umístění.
 
-8. Pokud chcete přijmout výchozí oblasti, zvolte **konfigurovat**. Nebo, pokud chcete změnit výchozí oblasti, postupujte podle těchto kroků:
+8. Pokud chcete přijmout výchozí oblast, klikněte na **Konfigurovat**. Pokud chcete změnit výchozí oblast, použijte následující postup:
 
-   1. Vedle aktuální oblast a vyberte **změnit oblast**. 
+   1. Vedle aktuální oblasti vyberte **změnit oblast**. 
 
-      ![Změnit oblast](./media/logic-apps-gateway-install/change-region.png)
+      ![Změna oblasti](./media/logic-apps-gateway-install/change-region.png)
 
-   2. Na další stránku, otevřete **vyberte oblast** seznamu, vyberte oblast a tlačítko **provádí**.
+   2. Na další stránce otevřete seznam **Vybrat oblast** , vyberte požadovanou oblast a zvolte možnost **Hotovo**.
 
-      ![Vyberte jiné oblasti](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![Vyberte jinou oblast.](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-9. Jakmile se objeví na stránce potvrzení vyberte **Zavřít**. 
+9. Po zobrazení stránky s potvrzením klikněte na tlačítko **Zavřít**. 
 
-   Instalační program potvrdí, že brána je nyní online a připravená k použití.
+   Instalační program potvrdí, že je vaše brána nyní online a připravená k použití.
 
-   ![Dokončení brány](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![Dokončená brána](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
-10. Teď mohli bránu registrovat v Azure pomocí [vytvoření prostředku Azure pro vaši instalaci brány](../logic-apps/logic-apps-gateway-connection.md). 
+10. Nyní Zaregistrujte bránu v Azure [vytvořením prostředku Azure pro instalaci brány](../logic-apps/logic-apps-gateway-connection.md). 
 
 <a name="update-gateway-installation"></a>
 
-## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>Změnit umístění, migrovat, obnovit nebo převzít existující bránu
+## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>Změna umístění, migrace, obnovení nebo převzetí existující brány
 
-Pokud musíte změnit umístění vaší brány, přesunutí instalace brány do nového počítače, zotavení poškozené brány nebo převzít vlastnictví pro existující bránu, je třeba obnovovací klíč, který jste zadali během instalace brány. Tato akce odpojí staré brány.
+Pokud musíte změnit umístění brány, přesunout instalaci brány do nového počítače, obnovit poškozenou bránu nebo převzít vlastnictví existující brány, budete potřebovat obnovovací klíč, který byl k dispozici při instalaci brány. Tato akce odpojí starou bránu.
 
-1. Z vašeho počítače **ovládací panely**, přejděte na stránku **programy a funkce**. V seznamu programů vyberte **On-premises data gateway**a klikněte na tlačítko **odinstalovat**.
+1. V Ovládacích panelech počítače, navštivte **ovládací panel** **programy a funkce**. V seznamu programy vyberte **místní brána dat**a pak zvolte **odinstalovat**.
 
-2. [Znovu nainstalujte místní bránu dat](https://aka.ms/on-premises-data-gateway-installer).
+2. [Přeinstalujte místní bránu dat](https://aka.ms/on-premises-data-gateway-installer).
 
-3. Až instalační program otevře, přihlaste se pomocí stejného pracovního nebo školního účtu, dříve použitým při instalaci brány.
+3. Po otevření instalačního programu se přihlaste pomocí stejného pracovního nebo školního účtu, který jste předtím použili k instalaci brány.
 
-4. Vyberte **migrace, obnovení nebo převzetí existující brány**a klikněte na tlačítko **Další**.
+4. Vyberte **migrace, obnovení nebo převzetí existující brány**a pak zvolte **Další**.
 
-   ![Vyberte "Migrace, obnovení nebo převzetí existující brány"](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
+   ![Vyberte možnost migrace, obnovení nebo převzetí existující brány.](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
-5. V části **dostupné brány** nebo **dostupné clustery brány**, vyberte možnost instalace brány, kterou chcete změnit. Zadejte obnovovací klíč pro instalaci brány. 
+5. V části **dostupné brány** nebo **dostupné clustery brány**vyberte instalaci brány, kterou chcete změnit. Zadejte obnovovací klíč pro instalaci brány. 
 
-   ![Vyberte primární brány](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![Vybrat primární bránu](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-6. Chcete-li změnit oblast, vyberte **změnit oblast** a nové oblasti.
+6. Chcete-li změnit oblast, vyberte možnost **změnit oblast** a novou oblast.
 
-7. Jakmile budete hotovi, zvolte **konfigurovat**.
+7. Až skončíte, klikněte na **Konfigurovat**.
 
 ## <a name="configure-proxy-or-firewall"></a>Konfigurace proxy serveru nebo brány firewall
 
-Místní brána dat vytvoří odchozí připojení k [Azure Service Bus](https://azure.microsoft.com/services/service-bus/). Pokud vaše pracovní prostředí vyžaduje, aby provoz směrován přes proxy server pro přístup k Internetu, toto omezení může bráně dat bránit v připojení ke cloudové službě brány. Pokud chcete zjistit, zda vaše síť používá proxy server, přečtěte si tento článek na webu superuser.com: 
+Místní brána dat vytvoří odchozí připojení k [Azure Service Bus](https://azure.microsoft.com/services/service-bus/). Pokud vaše pracovní prostředí vyžaduje, aby provoz procházel proxy serverem pro přístup k Internetu, může toto omezení zabránit bráně dat v připojení ke cloudové službě brány. Pokud chcete zjistit, jestli vaše síť používá proxy server, přečtěte si tento článek na adrese superuser.com: 
 
-[Jak zjistím, jaké proxy serveru používám? (SuperUser.com)](https://superuser.com/questions/346372/how-do-i-know-what-proxy-server-im-using) 
+[Návody vědět, co proxy server používám? (SuperUser.com)](https://superuser.com/questions/346372/how-do-i-know-what-proxy-server-im-using) 
 
-Zadejte informace o proxy serveru pro bránu, najdete v článku [konfigurace nastavení proxy serveru](https://docs.microsoft.com/power-bi/service-gateway-proxy). Chcete-li zkontrolovat, zda proxy serveru nebo brány firewall může blokovat připojení, zkontrolujte, jestli váš počítač může ve skutečnosti připojení k Internetu a [Azure Service Bus](https://azure.microsoft.com/services/service-bus/). Z příkazového řádku Powershellu spusťte tento příkaz:
+Informace o poskytnutí informací o proxy serveru pro bránu najdete v tématu [Konfigurace nastavení proxy serveru](https://docs.microsoft.com/power-bi/service-gateway-proxy). Pokud chcete zkontrolovat, jestli váš proxy server nebo brána firewall můžou blokovat připojení, zkontrolujte, jestli se Váš počítač může skutečně připojit k Internetu a [Azure Service Bus](https://azure.microsoft.com/services/service-bus/). Z příkazového řádku PowerShellu spusťte tento příkaz:
 
 `Test-NetConnection -ComputerName watchdog.servicebus.windows.net -Port 9350`
 
 > [!NOTE]
-> Tento příkaz testuje pouze připojení k síti a připojení ke službě Azure Service Bus. Příkaz nic nedělá se brána nebo brána cloudovou službu a která zašifruje a uloží přihlašovací údaje a podrobnosti brány. 
+> Tento příkaz testuje jenom připojení k síti a připojení k Azure Service Bus. Příkaz nedělá cokoli s bránou nebo cloudovou službou brány, která šifruje a ukládá vaše přihlašovací údaje a podrobnosti o bráně. 
 >
-> Také, tento příkaz je pouze k dispozici v systému Windows Server 2012 R2 nebo novější a Windows 8.1 nebo novější. V dřívějších verzích operačních systémů můžete použít protokol Telnet k testování připojení. Další informace o [Azure Service Bus a hybridní řešení](../service-bus-messaging/service-bus-messaging-overview.md).
+> Tento příkaz je také k dispozici pouze v systému Windows Server 2012 R2 nebo novějším a Windows 8.1 nebo novějším. V dřívějších verzích operačního systému můžete k otestování připojení použít program Telnet. Přečtěte si další informace o [Azure Service Bus a hybridních řešeních](../service-bus-messaging/service-bus-messaging-overview.md).
 
-Vaše výsledky by měly vypadat podobně jako tento příklad s **TcpTestSucceeded** nastavena na **True**:
+Výsledky by měly vypadat podobně jako v tomto příkladu s **TcpTestSucceeded** nastavenou na **hodnotu true**:
 
 ```text
 ComputerName           : watchdog.servicebus.windows.net
@@ -228,15 +228,15 @@ PingReplyDetails (RTT) : 0 ms
 TcpTestSucceeded       : True
 ```
 
-Pokud **TcpTestSucceeded** není nastavená na **True**, brána může být blokovaný bránou firewall. Pokud chcete být vyčerpávající, nahraďte **ComputerName** a **Port** hodnoty jsou hodnoty uvedené v části [konfigurace portů](#configure-ports) v tomto článku.
+Pokud **TcpTestSucceeded** není nastavené na **true**, brána firewall může bránu zablokovat. Pokud chcete být komplexní, nahraďte hodnoty **ComputerName** a **port** hodnotami uvedenými v části [Konfigurace portů](#configure-ports) v tomto článku.
 
-Brána firewall může také blokovat připojení, která provádí Azure Service Bus k datovým centrům Azure. Pokud k této situaci dojde, schválit (odblokovat) všechny IP adresy pro tato datová centra ve vaší oblasti. Pro tyto IP adresy [získat seznam adres IP adres Azure zde](https://www.microsoft.com/download/details.aspx?id=41653).
+Brána firewall může také blokovat připojení Azure Service Bus k datovým centrům Azure. Pokud k tomuto scénáři dojde, schvalte (odblokovat) všechny IP adresy pro ta datacentra ve vaší oblasti. Pro tyto IP adresy [Získejte seznam IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
 ## <a name="configure-ports"></a>Konfigurace portů
 
-Brána vytvoří odchozí připojení k [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) a komunikuje na odchozích portech: TCP 443 (výchozí), 5671, 5672, 9350 až 9354. Brána nevyžaduje příchozí porty. Další informace o [Azure Service Bus a hybridní řešení](../service-bus-messaging/service-bus-messaging-overview.md).
+Brána vytvoří odchozí připojení k [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) a komunikuje na odchozích portech: TCP 443 (výchozí), 5671, 5672, 9350 až 9354. Brána nevyžaduje příchozí porty. Přečtěte si další informace o [Azure Service Bus a hybridních řešeních](../service-bus-messaging/service-bus-messaging-overview.md).
 
-Brána používá tyto plně kvalifikované názvy domény:
+Brána používá tyto plně kvalifikované názvy domén:
 
 | Názvy domén | Odchozí porty | Popis | 
 | ------------ | -------------- | ----------- | 
@@ -244,27 +244,27 @@ Brána používá tyto plně kvalifikované názvy domény:
 | *.core.windows.net | 443 | HTTPS | 
 | *.frontend.clouddatahub.net | 443 | HTTPS | 
 | *.login.windows.net | 443 | HTTPS | 
-| *.microsoftonline-p.com | 443 | Slouží k ověření v závislosti na konfiguraci. | 
-| *.msftncsi.com | 443 | Použít k testování připojení k Internetu, pokud brána není dostupná ve službě Power BI. | 
-| *.servicebus.windows.net | 443, 9350-9354 | Naslouchací procesy u služby Service Bus Relay přes TCP (vyžaduje port 443 pro získání tokenu služby Access Control) | 
-| *.servicebus.windows.net | 5671-5672 | Pokročilé řízení front zpráv (AMQP) protokolu | 
+| *.microsoftonline-p.com | 443 | Používá se pro ověřování v závislosti na konfiguraci. | 
+| *.msftncsi.com | 443 | Používá se k otestování připojení k Internetu, pokud je brána nedosažitelná služba Power BI. | 
+| *.servicebus.windows.net | 443, 9350-9354 | Naslouchací procesy v Service Bus Relay přes TCP (vyžaduje 443 pro získání tokenu Access Control) | 
+| *.servicebus.windows.net | 5671-5672 | Rozšířený protokol řízení front zpráv (AMQP) (AMQP) | 
 | login.microsoftonline.com | 443 | HTTPS | 
 ||||
 
-V některých případech probíhají připojení k Azure Service Bus pomocí IP adresy místo plně kvalifikovaných názvů domény. Ano můžete do seznamu povolených IP adres pro vaši oblast v bráně firewall. Na seznamu povolených IP adres místo domény, můžete stáhnout a použít [seznamu rozsahů IP adres Datacentra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). IP adresy v tomto seznamu jsou v [notace CIDR (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) zápis.
+V některých případech se Azure Service Bus Připojení k IP adresám místo plně kvalifikovaných názvů domén. To znamená, že budete chtít povolit IP adresy pro vaši oblast dat v bráně firewall. Pokud chcete povolit IP adresy místo domén, můžete si stáhnout a použít [Seznam rozsahů IP adres Microsoft Azure datacentra](https://www.microsoft.com/download/details.aspx?id=41653). IP adresy v tomto seznamu jsou v zápisu [CIDR (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
-### <a name="force-https-communication-with-azure-service-bus"></a>Vynutit komunikaci přes protokol HTTPS s Azure Service Bus
+### <a name="force-https-communication-with-azure-service-bus"></a>Vynutit komunikaci HTTPS s Azure Service Bus
 
-Některé proxy servery umožní provoz jenom na porty 80 a 443. Ve výchozím nastavení probíhá komunikace se službou Azure Service Bus na jiné porty než 443.
-Můžete přinutit bránu komunikovat s Azure Service Bus přes protokol HTTPS, nikoli TCP s přímým přístupem, ale to uděláte tak může výrazně snížit i výkon. Pokud chcete provést tuto úlohu, postupujte takto:
+Některé proxy servery umožňují provoz jenom přes porty 80 a 443. Ve výchozím nastavení probíhá komunikace s Azure Service Bus na jiných portech než 443.
+Bránu můžete vynutit, aby komunikovala s Azure Service Bus přes protokol HTTPS, a ne přímo protokol TCP, ale v takovém případě může výrazně snížit výkon. Chcete-li provést tuto úlohu, postupujte podle následujících kroků:
 
-1. Přejděte do umístění pro místní data brány klienta, který obvykle najdete tady: ```C:\Program Files\On-premises data gateway\Microsoft.PowerBI.EnterpriseGateway.exe```
+1. Přejděte do umístění pro místního klienta pro bránu dat, který můžete obvykle najít tady:```C:\Program Files\On-premises data gateway\Microsoft.PowerBI.EnterpriseGateway.exe```
 
-   V opačném případě se najít umístění klienta, otevřete konzolu služby ve stejném počítači, Najít **On-premises data gateway služby**a zobrazit **cesta ke spustitelnému souboru** vlastnost.
+   V opačném případě pro vyhledání umístění klienta otevřete konzolu služby ve stejném počítači, najděte **službu místní brány dat**a zobrazte **cestu ke spustitelné** vlastnosti.
 
-2. Tím otevřete *konfigurace* souboru: **Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
+2. Otevřete tento *konfigurační* soubor: **Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
 
-3. Změnit **ServiceBusSystemConnectivityModeString** hodnotu **automatické rozpoznávání** k **Https**:
+3. Změňte hodnotu **ServiceBusSystemConnectivityModeString** z **automatického rozpoznávání** na **https**:
 
    ```html
    <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -274,19 +274,19 @@ Můžete přinutit bránu komunikovat s Azure Service Bus přes protokol HTTPS, 
 
 <a name="windows-service-account"></a>
 
-## <a name="windows-service-account"></a>Účet služby Windows
+## <a name="windows-service-account"></a>Účet služby systému Windows
 
-Na počítači, ve kterém nainstalujete místní bránu dat může brána běžet jako účet služby Windows s názvem "On-premises data gateway service". Ale brána používá "NT SERVICE\PBIEgwService" název "Přihlásit se jako" účet pověření uživatele. Brány má ve výchozím nastavení oprávnění "Přihlásit jako službu" na počítači, ve kterém bránu instalujete. Účet služby Windows pro danou bránu se obvykle liší od účtu, který používáte pro připojení k místním zdrojům dat a z pracovního nebo školního účtu, který používáte pro přihlášení ke cloudovým službám.
+V počítači, na který instalujete místní bránu dat, se brána spouští jako účet služby Windows s názvem "místní brána dat". Brána však používá pro přihlašovací údaje účtu "přihlásit se jako" název "NT SERVICE\PBIEgwService". Ve výchozím nastavení má brána oprávnění "přihlásit jako službu" na počítači, na který bránu instalujete. Účet služby systému Windows pro bránu se obvykle liší od účtu, který používáte pro připojení k místním zdrojům dat, a z pracovního nebo školního účtu, který používáte pro přihlášení ke cloudovým službám.
 
-Abyste mohli vytvářet a spravovat brány na webu Azure Portal, tento účet služby Windows musí mít minimálně **Přispěvatel** oprávnění. Tato oprávnění, najdete v části [správě přístupu pomocí RBAC a webu Azure portal](../role-based-access-control/role-assignments-portal.md). 
+Chcete-li vytvořit a udržovat bránu v Azure Portal, musí mít tento účet služby Windows aspoň oprávnění **Přispěvatel** . Chcete-li ověřit tato oprávnění, přečtěte si téma [Správa přístupu pomocí RBAC a Azure Portal](../role-based-access-control/role-assignments-portal.md). 
 
 <a name="restart-gateway"></a>
 
-## <a name="restart-gateway"></a>Restartování brány
+## <a name="restart-gateway"></a>Restartovat bránu
 
-Brána dat běží jako služba okna, tak stejně jako jakoukoli jinou službu Windows můžete spustit a zastavit brána různými způsoby. Můžete například otevřít příkazový řádek se zvýšenými oprávněními na počítači, ve kterém je brána spuštěná a spusťte buď příkaz:
+Brána dat se spouští jako služba systému Windows, takže stejně jako jakákoli jiná služba Windows můžete bránu spouštět a zastavovat různými způsoby. Můžete například otevřít příkazový řádek se zvýšenými oprávněními na počítači, na kterém je brána spuštěná, a spustit některý z těchto příkazů:
 
-* Pokud chcete bránu zastavit, spusťte tento příkaz:
+* Chcete-li službu zastavit, spusťte tento příkaz:
   
   `net stop PBIEgwService`
 
@@ -294,33 +294,33 @@ Brána dat běží jako služba okna, tak stejně jako jakoukoli jinou službu W
   
   `net start PBIEgwService`
 
-## <a name="tenant-level-administration"></a>Správa na úrovni tenantů 
+## <a name="tenant-level-administration"></a>Správa na úrovni tenanta 
 
-V současné době neexistuje žádné jedno místo, kde můžou správci tenantů spravovat všechny brány, které nainstalovali a nakonfigurovali ostatní uživatelé. Pokud jste správcem tenanta, můžete chtít mít uživatelé ve vaší organizaci vás přidal jako správce pro každou bránu, kterou nainstalují. Tímto způsobem můžete spravovat všechny brány ve vaší organizaci prostřednictvím stránky nastavení brány nebo prostřednictvím [příkazy prostředí PowerShell](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters). 
+V současné době není k dispozici žádné jediné místo, kde můžou správci klientů spravovat všechny brány, které nainstalovali a nakonfigurovali ostatní uživatelé. Pokud jste správcem tenanta, můžete chtít, aby se uživatelé v organizaci mohli přidat jako správce každé brány, kterou nainstalují. Tímto způsobem můžete spravovat všechny brány ve vaší organizaci prostřednictvím stránky nastavení brány nebo pomocí [příkazů PowerShellu](/data-integration/gateway/service-gateway-powershell-support). 
 
 <a name="gateway-cloud-service"></a>
 
 ## <a name="how-does-the-gateway-work"></a>Jak brána funguje?
 
-Brána dat usnadňuje rychlé a zabezpečené komunikace mezi svou aplikaci logiky, cloudové službě brány a zdroje dat místní. Cloudová služba brány šifruje a ukládá přihlašovací údaje ke zdroji dat a podrobnosti brány. Služba také směrovat dotazy a jejich výsledky mezi svou aplikaci logiky, místní bránu dat a zdroje dat v místním prostředí. 
+Brána dat zajišťuje rychlou a zabezpečenou komunikaci mezi vaší aplikací logiky, cloudovou službou brány a vaším místním zdrojem dat. Cloudová služba brány šifruje a ukládá vaše přihlašovací údaje ke zdroji dat a podrobnosti o bráně. Služba také směruje dotazy a jejich výsledky mezi vaší aplikací logiky, místní bránou dat a zdrojem dat místně. 
 
-Brána funguje s branami firewall a používá jenom odchozí připojení. Veškerý provoz pochází jako zabezpečené odchozího provozu z agenta brány. Brána přenášet data z místních zdrojů přes šifrované kanálů prostřednictvím služby Azure Service Bus. Této služby Service bus vytvoří kanál mezi bránou a volání služeb, ale nejsou uloženy v žádná data. Se šifrují všechna data, která se přenáší prostřednictvím brány.
+Brána pracuje s branami firewall a používá jenom odchozí připojení. Veškerý provoz vychází z agenta brány na zabezpečený odchozí provoz. Brána přenáší data z místních zdrojů do šifrovaných kanálů prostřednictvím Azure Service Bus. Tato služba Service Bus vytváří kanál mezi bránou a volající službou, ale neukládá žádná data. Všechna data, která jsou přenášena přes bránu, jsou zašifrovaná.
 
 ![diagram-for-on-premises-data-gateway-flow](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
-Tyto kroky popisují, co se stane, když uživatel v cloudu komunikuje s elementem, který je připojený ke zdroji dat v místním:
+Tyto kroky popisují, co se stane, když uživatel v cloudu spolupracuje s elementem, který je připojený k místnímu zdroji dat:
 
-1. Cloudová služba brány dotaz, společně se zašifrovanými přihlašovacími údaji pro zdroj dat, vytvoří a odešle dotaz do fronty pro zpracování branou.
+1. Cloudová služba brány vytvoří dotaz společně se zašifrovanými přihlašovacími údaji pro zdroj dat a odešle dotaz do fronty, kterou má brána zpracovat.
 
-2. Cloudová služba brány dotaz analyzuje a pošle žádost do služby Azure Service Bus.
+2. Cloudová služba brány dotaz analyzuje a odešle požadavek do Azure Service Bus.
 
-3. Místní brána dat dotazuje Azure Service Bus na čekající žádosti.
+3. Místní brána dat se dotáže Azure Service Bus na nevyřízené žádosti.
 
 4. Brána získá dotaz, dešifruje přihlašovací údaje a připojí se ke zdroji dat pomocí těchto přihlašovacích údajů.
 
-5. Brána odešle dotaz na zdroj dat pro spuštění.
+5. Brána odešle dotaz do zdroje dat ke spuštění.
 
-6. Výsledky se odesílají ze zdroje dat zpět do brány a ke cloudové službě brány. Cloudová služba brány potom výsledky použije.
+6. Výsledky se odešlou ze zdroje dat zpátky do brány a potom do cloudové služby brány. Cloudová služba brány pak výsledky použije.
 
 <a name="faq"></a>
 
@@ -328,128 +328,128 @@ Tyto kroky popisují, co se stane, když uživatel v cloudu komunikuje s element
 
 ### <a name="general"></a>Obecné
 
-**Q**: Potřebuji bránu pro zdroje dat v cloudu, jako je Azure SQL Database? <br/>
-**A**: Ne, brána se připojí k místním zdrojům dat pouze.
+**OTÁZKA**: Potřebuji bránu pro zdroje dat v cloudu, jako je například Azure SQL Database? <br/>
+**A**: Ne, brána se připojuje jenom k místním zdrojům dat.
 
-**Q**: Má brána nainstalovat ve stejném počítači jako zdroj dat? <br/>
-**A**: Ne, brána se připojuje ke zdroji dat s použitím informací o zadané připojení. Vezměte v úvahu brány jako klientskou aplikaci v tomto smyslu. Brána musí pouze připojení k názvu serveru, který byl poskytnut.
+**OTÁZKA**: Musí být brána nainstalovaná na stejném počítači jako zdroj dat? <br/>
+**A**: Ne, brána se připojí ke zdroji dat pomocí zadaných informací o připojení. V tomto smyslu zvažte bránu jako klientskou aplikaci. Brána potřebuje jenom možnost připojit se k zadanému názvu serveru.
 
 <a name="why-azure-work-school-account"></a>
 
-**Q**: Proč musí používat pracovní nebo školní účet pro přihlášení? <br/>
-**A**: Pracovní nebo školní účet můžete použít jenom při instalaci na místní bránu dat. Váš účet přihlášení je uložený v tenantovi, který je spravovaný službou Azure Active Directory (Azure AD). Obvykle váš účet Azure AD hlavní název uživatele (UPN) odpovídá e-mailovou adresu.
+**OTÁZKA**: Proč je nutné použít pracovní nebo školní účet k přihlášení? <br/>
+**A**: Pracovní nebo školní účet můžete použít jenom při instalaci místní brány dat. Přihlašovací účet je uložený v tenantovi spravovaném pomocí Azure Active Directory (Azure AD). Obvykle se hlavní název uživatele (UPN) vašeho účtu Azure AD shoduje s e-mailovou adresou.
 
-**Q**: Kde jsou uloženy Moje přihlašovací údaje? <br/>
-**A**: Přihlašovací údaje, které zadáte pro zdroj dat jsou zašifrované a uložené v cloudové službě brány. Přihlašovací údaje se dešifrují na místní data brány.
+**OTÁZKA**: Kam se ukládají moje přihlašovací údaje? <br/>
+**A**: Přihlašovací údaje, které zadáte pro zdroj dat, jsou zašifrované a uložené v cloudové službě brány. Přihlašovací údaje se dešifrují v místní bráně dat.
 
-**Q**: Existují nějaké požadavky na šířku pásma sítě? <br/>
-**A**: Zkontrolujte, jestli připojení k síti dobrou propustnost. Každé prostředí je jiné a množství dat odesílaných může mít vliv na výsledky. Pokud chcete zajistit úroveň propustnosti mezi místní zdroje dat a datacentry Azure, zkuste [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/). Chcete-li odhadnout propustnost, zkuste externího nástroje, jako je Azure Speed Test.
+**OTÁZKA**: Existují nějaké požadavky na šířku pásma sítě? <br/>
+**A**: Ověřte, že síťové připojení má dobrou propustnost. Každé prostředí je jiné a množství odesílaných dat může ovlivnit výsledky. Pokud chcete zaručit úroveň propustnosti mezi místním zdrojem dat a datacentry Azure, vyzkoušejte [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/). Pro zvýšení propustnosti Vyzkoušejte externí nástroj, jako je například test rychlosti Azure.
 
-**Q**: Jaká je latence pro spouštění dotazů na zdroj dat z brány? Co je nejvhodnější architektura? <br/>
-**A**: Pokud chcete snížit latenci sítě, instalace brány jako nejblíž ke zdroji dat co nejvíc. Pokud bránu můžete nainstalovat na skutečný zdroj dat, toto blízkosti minimalizuje uvedenou latenci. Zvažte také vzdálenost k datovým centrům Azure. Například pokud vaše služba používá datové centrum západ USA a SQL Server je hostovaný na Virtuálním počítači Azure, pak můžete virtuální počítače Azure v oblasti USA – západ příliš. Tato blízkosti minimalizuje latenci a vyhnete poplatky za výchozí přenos dat na virtuálním počítači Azure.
+**OTÁZKA**: Jaká je latence pro spouštění dotazů na zdroj dat z brány? Jaká je nejlepší architektura? <br/>
+**A**: Pokud chcete snížit latenci sítě, nainstalujte bránu co nejblíže zdroji dat. Pokud můžete bránu nainstalovat na skutečný zdroj dat, Tato blízkost minimalizuje zavedenou latenci. Zvažte také blízkost do datových center Azure. Pokud třeba vaše služba používá Západní USA Datacenter a máte SQL Server hostovaný na virtuálním počítači Azure, můžete chtít, aby virtuální počítač Azure byl také v oblasti Západní USA. Tato blízkost minimalizuje latenci a zabrání poplatkům za odchozí data na virtuálním počítači Azure.
 
-**Q**: Jak se výsledky odesílají zpět do cloudu? <br/>
-**A**: Výsledky se posílají přes Azure Service Bus.
+**OTÁZKA**: Jak se výsledky odesílají zpět do cloudu? <br/>
+**A**: Výsledky se odesílají prostřednictvím Azure Service Bus.
 
-**Q**: Existují nějaká příchozí připojení k bráně z cloudu? <br/>
-**A**: Ne, brána používá odchozí připojení ke službě Azure Service Bus.
+**OTÁZKA**: Existují nějaká příchozí připojení k bráně z cloudu? <br/>
+**A**: Ne, brána používá odchozí připojení k Azure Service Bus.
 
-**Q**: Co když blokuji odchozí připojení? Co je potřeba otevřít? <br/>
-**A**: Podívejte se, portů a hostitelů, které brána používá.
+**OTÁZKA**: Co když mi blokuje odchozí připojení? Co potřebuji otevřít? <br/>
+**A**: Podívejte se na porty a hostitele, které brána používá.
 
-**Q**: Co se nazývá skutečná služba Windows? <br/>
-**A**: Na kartě služby ve Správci úloh je název služby "PBIEgwService", nebo služba brány Enterprise Power BI. V konzole služby název služby je "On-premises data gateway service". Služba Windows používá "NT SERVICE\PBIEgwService" jako identifikátor SID služby (SSID).
+**OTÁZKA**: Jaká je volaná skutečná služba systému Windows? <br/>
+**A**: Na kartě služby ve Správci úloh je název služby "PBIEgwService" nebo služba brány Power BI Enterprise. V konzole služby je název služby "místní brána dat". Služba systému Windows používá "NT SERVICE\PBIEgwService" jako identifikátor SID služby (SSID).
 
-**Q**: Může služba Windows brány běžet s účtem Azure Active Directory? <br/>
-**A**: Ne, službu Windows musí mít platný účet Windows.
+**OTÁZKA**: Může služba brány systému Windows běžet s účtem Azure Active Directory? <br/>
+**A**: Ne, služba systému Windows musí mít platný účet systému Windows.
 
 ### <a name="disaster-recovery"></a>Zotavení po havárii
 
-**Q**: Jaké možnosti jsou dostupné pro zotavení po havárii? <br/>
-**A**: Obnovovací klíč slouží k obnovení nebo přesunutí brány. Při instalaci brány zadejte obnovovací klíč.
+**OTÁZKA**: Jaké možnosti jsou dostupné pro zotavení po havárii? <br/>
+**A**: K obnovení nebo přesunutí brány můžete použít obnovovací klíč. Při instalaci brány zadejte obnovovací klíč.
 
-**Q**: Co je výhodou obnovovacího klíče? <br/>
+**OTÁZKA**: Jaká je výhoda obnovovacího klíče? <br/>
 **A**: Obnovovací klíč poskytuje způsob, jak migrovat nebo obnovit nastavení brány po havárii.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Tento oddíl popisuje některé běžné problémy, ke kterým může při nastavování a pomocí místní brány dat máte.
+Tato část popisuje některé běžné problémy, které byste mohli mít při nastavování a používání místní brány dat.
 
-**Q**: Proč moje instalace brány nezdaří? <br/>
-**A**: Tento problém může stát, když antivirový software v cílovém počítači je zastaralá. Můžete buď aktualizovat antivirový software nebo zakažte antivirový software, ale pouze během instalace brány a potom znovu povolit softwaru.
+**OTÁZKA**: Proč se instalace brány nezdařila? <br/>
+**A**: K tomuto problému může dojít, pokud je antivirový software v cílovém počítači zastaralý. Můžete buď aktualizovat antivirový software, nebo zakázat antivirový software, ale jenom během instalace brány, a pak software znovu povolit.
 
-**Q**: Proč nevidím instalaci brány, při vytváření prostředku brány v Azure? <br/>
-**A**: Tento problém může nastat z těchto důvodů:
+**OTÁZKA**: Proč se mi nezobrazuje instalace brány při vytváření prostředku brány v Azure? <br/>
+**A**: K tomuto problému může dojít z těchto důvodů:
 
-* Instalace brány je už zaregistrované a převzatá podle jiného prostředku brány v Azure. Instalace brány nejsou zobrazeny v seznamu instance vytvořené prostředky brány pro ně.
-Zkontrolujte registraci brány na webu Azure Portal, najdete v tématu všech vašich prostředků Azure s **On-premises Data Gateway** zadejte *všechny* předplatných Azure. 
+* Vaše instalace brány je už zaregistrovaná a deklarovaná jiným prostředkem brány v Azure. Po vytvoření prostředků brány se instalace brány nezobrazí v seznamu instance.
+Pokud chcete zkontrolovat registrace brány v Azure Portal, Projděte si všechny vaše prostředky Azure s typem **místních bran dat** pro *všechna* předplatná Azure. 
 
-* Identity Azure AD pro osobu, která je nainstalovaná brána se liší od osoby, která přihlášení k webu Azure portal. Zkontrolujte, že jste přihlášení se stejnou identitou, která instalaci brány.
+* Identita Azure AD pro osobu, která nainstalovala bránu, se liší od osoby, která se přihlásila k Azure Portal. Ověřte, že jste přihlášeni se stejnou identitou, která bránu nainstalovala.
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-**Q**: Kde se nacházejí protokoly brány? <br/>
-**A**: Zobrazit [ **protokoly** části](#logs) dále v tomto článku.
+**OTÁZKA**: Kde se nacházejí protokoly brány? <br/>
+**A**: Další informace najdete v [části **protokoly** ](#logs) dále v tomto článku.
 
-**Q**: Jak můžu zjistit, jaké dotazy se posílají do zdroje dat v místním? <br/>
-**A**: Můžete povolit trasování dotazů, které obsahuje dotazy, které se odesílají. Nezapomeňte změnit dotaz trasování zpět na původní hodnotu po dokončení odstraňování potíží. Trasování dotazů zapnuté vytvoří větší protokoly.
+**OTÁZKA**: Jak můžu zjistit, jaké dotazy se posílají do místního zdroje dat? <br/>
+**A**: Můžete povolit trasování dotazů, které zahrnuje dotazy, které jsou odeslány. Po dokončení odstraňování potíží nezapomeňte změnit trasování dotazů zpátky na původní hodnotu. Když se zapne trasování dotazů, vytvoří se větší protokoly.
 
-Můžete se také podívat na nástroje, které váš zdroj dat používá pro trasování dotazů. Například můžete použít Extended Events nebo SQL Profiler pro SQL Server a služby Analysis Services.
+Můžete se také podívat na nástroje, které váš zdroj dat používá pro trasování dotazů. Můžete například použít rozšířené události nebo SQL Profiler pro SQL Server a Analysis Services.
 
-### <a name="outdated-gateway-version"></a>Verze brány zastaralá
+### <a name="outdated-gateway-version"></a>Zastaralá verze brány
 
-Řadě problémů může docházet, když se stane verze brány zastaralá. Jako obecné vhodné Ujistěte se, že máte nejnovější verzi. Pokud bránu neaktualizovali měsíc nebo i delší dobu, může být zvažte instalaci nejnovější verzi brány a zobrazit, pokud je problém možné reprodukovat.
+Pokud je verze brány zastaralá, mnohé problémy se můžou nastavovat. V rámci dobrého obecného postupu se ujistěte, že máte nejnovější verzi. Pokud jste bránu neaktualizovali na měsíc nebo déle, můžete zvážit instalaci nejnovější verze brány a zjistit, jestli můžete problém reprodukování.
 
 ### <a name="error-failed-to-add-user-to-group--2147463168-pbiegwservice-performance-log-users"></a>Chyba: Nepovedlo se přidat uživatele do skupiny. (-2147463168 PBIEgwService Performance Log Users)
 
-Tato chyba může zobrazit, pokud se pokusíte nainstalovat bránu na řadiči domény, což není podporováno. Ujistěte se, že se že nasazení brány na počítači, který není řadičem domény.
+Tato chyba se může zobrazit, pokud se pokusíte nainstalovat bránu na řadič domény, což se nepodporuje. Ujistěte se, že jste nasadili bránu na počítač, který není řadičem domény.
 
 <a name="logs"></a>
 
-### <a name="logs"></a>Protokoly
+### <a name="logs"></a>Logs
 
-Pomocný při řešení problémů, vždy začněte díky shromažďování a kontroly protokolů brány. Existuje několik způsobů pro shromažďování protokolů, ale je nejjednodušší možnost po instalaci brány pomocí uživatelského rozhraní Instalační program brány. 
+Při řešení potíží vždy začněte shromažďováním a kontrolou protokolů brány. Protokoly můžete shromažďovat několika způsoby, ale nejjednodušší možností po instalaci brány prostřednictvím uživatelského rozhraní instalačního programu brány. 
 
-1. V počítači spusťte instalační program brány místní data.
-2. V nabídce vlevo vyberte **diagnostiky**.
+1. V počítači otevřete instalační program pro místní bránu dat.
+2. V nabídce vlevo vyberte **Diagnostika**.
 3. V části **protokoly brány**vyberte **exportovat protokoly**.
 
-   ![Exportovat protokoly z instalační program brány](./media/logic-apps-gateway-install/export-logs.png)
+   ![Exportovat protokoly z instalačního programu brány](./media/logic-apps-gateway-install/export-logs.png)
 
-Tady jsou další lokality místo, kde najdete různé protokoly:
+Tady jsou další místa, kde můžete najít různé protokoly:
 
-| Typ protokolu | Umístění | 
+| Typ protokolu | Location | 
 |----------|----------| 
-| **Instalační protokoly** | %localappdata%\Temp\On-premises_data_gateway_<*yyyymmdd*>.<*number*>.log | 
-| **Konfigurační protokoly** | C:\Users\<*uživatelské jméno*> \AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator <*RRRRMMDD*>. <*číslo*>. protokol | 
-| **Protokoly služby brány Enterprise** | C:\Users\PBIEgwService\AppData\Local\Microsoft\On-Premises data gateway\Gateway <*RRRRMMDD*>. <*číslo*> .log | 
+| **Protokoly instalačního programu** | %localappdata%\Temp\On-premises_data_gateway_ <*rrrrmmdd*>. <*číslo*>. log | 
+| **Protokoly konfigurace** | C:\Users\<*username*> \AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator <*RRRRMMDD*>. <*Number*>. log | 
+| **Protokoly služby brány Enterprise** | C:\Users\PBIEgwService\AppData\Local\Microsoft\On-premises data gateway\Gateway <*rrrrmmdd*>. <*číslo*>. log | 
 ||| 
 
 **Protokoly událostí**
 
-Najít protokoly událostí pro bránu, postupujte podle těchto kroků:
+Pokud chcete najít protokoly událostí pro bránu, postupujte podle těchto kroků:
 
-1. Na počítači s instalací brány otevřete **Prohlížeč událostí**. 
+1. V počítači s instalací brány otevřete **Prohlížeč událostí**. 
 2. Rozbalte **Prohlížeč událostí (místní)**  > **protokoly aplikací a služeb**. 
-3. Vyberte **On-premises data gateway služby**.
+3. Vyberte **službu místní brány dat**.
 
-   ![Zobrazení protokolu událostí pro bránu](./media/logic-apps-gateway-install/event-viewer.png)
+   ![Zobrazit protokoly událostí pro bránu](./media/logic-apps-gateway-install/event-viewer.png)
 
-### <a name="review-slow-query-performance"></a>Zkontrolovat výkon pomalých dotazů
+### <a name="review-slow-query-performance"></a>Kontrola pomalého výkonu dotazů
 
-Pokud zjistíte dotazy pomalý prostřednictvím brány, můžete zapnout dodatečné protokolování, jejichž výstupem jsou dotazy a jejich doby trvání. Tyto protokoly může pomoci najít, které dotazy jsou pomalé nebo dlouho probíhající. Pro ladění výkonu dotazů, bude pravděpodobně třeba upravit zdroj dat, upravte indexů pro dotazy systému SQL Server.
+Pokud zjistíte, že dotazy běží pomalu prostřednictvím brány, můžete zapnout další protokolování, které vytváří výstup dotazů a jejich dob trvání. Tyto protokoly vám pomůžou najít, které dotazy jsou pomalé nebo dlouho spuštěné. Pro optimalizaci výkonu dotazů může být nutné upravit zdroj dat, například upravit indexy pro SQL Server dotazy.
 
-Pokud chcete určit dobu trvání dotazu, postupujte takto:
+Chcete-li určit dobu trvání dotazu, postupujte podle následujících kroků:
 
-1. Přejděte do stejného umístění jako brána klienta, které obvykle najdete tady: ```C:\Program Files\On-premises data gateway```
+1. Přejděte do stejného umístění, ve kterém je klient brány, který můžete obvykle najít tady:```C:\Program Files\On-premises data gateway```
 
-   V opačném případě se najít umístění klienta, otevřete konzolu služby ve stejném počítači, Najít **On-premises data gateway služby**a zobrazit **cesta ke spustitelnému souboru** vlastnost.
+   V opačném případě pro vyhledání umístění klienta otevřete konzolu služby ve stejném počítači, najděte **službu místní brány dat**a zobrazte **cestu ke spustitelné** vlastnosti.
 
-2. Otevřít a upravit tyto konfigurační soubory, jak je popsáno:
+2. Otevřete a upravte tyto konfigurační soubory, jak je popsáno níže:
 
    * **Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
 
-     V tomto souboru změnit **hodnotu EmitQueryTraces** hodnotu **false** k **true** tak vaše brána lze protokolovat dotazy odeslané z brány ke zdroji dat:
+     V tomto souboru změňte hodnotu **EmitQueryTraces** z **false** na **true** , aby brána mohla protokolovat dotazy odeslané z brány na zdroj dat:
 
      ```html
      <setting name="EmitQueryTraces" serializeAs="String">
@@ -458,13 +458,13 @@ Pokud chcete určit dobu trvání dotazu, postupujte takto:
      ```
 
      > [!IMPORTANT]
-     > Zapnutí nastavení funkce EmitQueryTraces může významně zvětšit velikost protokolu závislosti na využití brány. Po dokončení kontroly protokolů hesla nezapomeňte nastavit hodnotu EmitQueryTraces na **false** znovu, spíše než toto políčko nechat v dlouhodobém horizontu.
+     > Zapnutí nastavení EmitQueryTraces může významně zvýšit velikost protokolu na základě využití brány. Po dokončení kontroly protokolů se ujistěte, že jste znovu nahlásili EmitQueryTraces na **hodnotu false** , a nenechte toto nastavení pro dlouhou dobu.
 
    * **Microsoft.PowerBI.DataMovement.Pipeline.Diagnostics.dll.config**
 
-     Chcete-li mít bránu zaznamenávat položky, včetně položek, které uvádí doba trvání, změňte **TracingVerbosity** hodnotu z **4** k **5** provedením buď krok: 
+     Pokud chcete mít k dispozici podrobné položky protokolu brány, včetně položek, které zobrazují dobu trvání, změňte hodnotu **TracingVerbosity** ze **4** na **5** pomocí některého z kroků: 
 
-     * V tomto konfiguračním souboru změnit **TracingVerbosity** hodnotu **4** k **5** 
+     * V tomto konfiguračním souboru změňte hodnotu **TracingVerbosity** ze **4** na **5** . 
 
        ```html
        <setting name="TracingVerbosity" serializeAs="String">
@@ -472,29 +472,29 @@ Pokud chcete určit dobu trvání dotazu, postupujte takto:
        </setting>
        ```
 
-     * Spusťte instalační program brány, vyberte **diagnostiky**, zapněte **dodatečné protokolování**a klikněte na tlačítko **použít**:
+     * Otevřete instalační program brány, vyberte **Diagnostika**, zapněte **Další protokolování**a pak zvolte **použít**:
 
-       ![Zapnout dodatečné protokolování](./media/logic-apps-gateway-install/turn-on-additional-logging.png)
+       ![Zapnout další protokolování](./media/logic-apps-gateway-install/turn-on-additional-logging.png)
 
      > [!IMPORTANT]
-     > Zapnutí nastavení TracingVerbosity může významně zvětšit velikost protokolu závislosti na využití brány. Po dokončení kontroly protokolů, ujistěte se, že vypnete **dodatečné protokolování** v instalační program brány nebo obnovit TracingVerbosity na **4** znovu v konfiguračním souboru, nikoli nechte u tohoto nastavení na dlouhodobém horizontu.
+     > Zapnutí nastavení TracingVerbosity může významně zvýšit velikost protokolu na základě využití brány. Až provedete kontrolu protokolů, ujistěte se, že jste znovu vypnuli **Další protokolování** v instalačním programu brány nebo znovu resetujete TracingVerbosity na **4** v konfiguračním souboru, ale nenechte toto nastavení pro dlouhou dobu.
 
-3. K vyhledání doba trvání dotazu, postupujte takto:
+3. Pro vyhledání trvání dotazu použijte následující postup:
 
-   1. [Export](#logs) a otevřete protokol brány.
+   1. [Exportujte](#logs) a otevřete protokol brány.
 
-   2. Najít dotaz, vyhledáte typ aktivity, například: 
+   2. Chcete-li najít dotaz, vyhledejte typ aktivity, například: 
 
       | Typ aktivity | Popis | 
       |---------------|-------------| 
-      | MGEQ | Dotazy spouštěné přes ADO.NET. | 
-      | MGEO | Dotazy spouštěné přes OLEDB. | 
-      | MGEM | Dotazy spouštěné z modulu Mashup. | 
+      | MGEQ | Dotazy, které se spouštějí přes ADO.NET. | 
+      | MGEO | Dotazy, které se spouštějí přes OLEDB. | 
+      | MGEM | Dotazy, které se spouštějí z modulu hybridní webové aplikace | 
       ||| 
 
-   3. Všimněte si druhého identifikátoru GUID, což je žádost o ID.
+   3. Poznamenejte si druhý identifikátor GUID, což je ID žádosti.
 
-   4. Pokračujte ve vyhledávání pro typ aktivity, dokud nenajdete položku s názvem "Fireactivitycompletedsuccessfullyevent, která obsahuje", který má dobu trvání v milisekundách. 
+   4. Pokračujte v hledání typu aktivity, dokud nenajdete položku s názvem "FireActivityCompletedSuccessfullyEvent", která má dobu trvání v milisekundách. 
    Potvrďte, že položka má stejné ID žádosti, například:
 
       ```text 
@@ -502,14 +502,14 @@ Pokud chcete určit dobu trvání dotazu, postupujte takto:
       ```
 
       > [!NOTE] 
-      > Položka "FireActivityCompletedSuccessfullyEvent" je položka s komentářem a není přihlášen, není-li "TracingVerbosity" nastavení na úrovni 5.
+      > Položka "FireActivityCompletedSuccessfullyEvent" je podrobná a není protokolována, pokud není nastavení "TracingVerbosity" na úrovni 5.
 
-### <a name="trace-traffic-with-fiddler"></a>Přenos trasování pomocí Fiddleru
+### <a name="trace-traffic-with-fiddler"></a>Trasování provozu pomocí Fiddler
 
-[Fiddler](https://www.telerik.com/fiddler) je bezplatný nástroj od společnosti Telerik, který sleduje provoz HTTP. Můžete zkontrolovat tento provoz se službou Power BI z klientského počítače. Tato služba může zobrazovat chyby a jiné související informace.
+[Fiddler](https://www.telerik.com/fiddler) je bezplatný nástroj z Telerik, který monitoruje přenosy HTTP. Tento provoz můžete zkontrolovat pomocí služba Power BI z klientského počítače. Tato služba může zobrazit chyby a další související informace.
 
 ## <a name="next-steps"></a>Další postup
     
-* [Připojení k místním datům z aplikace logiky](../logic-apps/logic-apps-gateway-connection.md)
-* [Funkce integrace Enterprise](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* [Připojení k místním datům z Logic Apps](../logic-apps/logic-apps-gateway-connection.md)
+* [Funkce Enterprise Integration](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [Konektory pro Azure Logic Apps](../connectors/apis-list.md)

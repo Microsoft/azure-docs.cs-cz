@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa2254ff3223be4312f4e9b3db4d9d83da443c0
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 182b9da402e633033411f85eb59b31f76749f3cd
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311327"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666260"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Plánování nasazení cloudového ověřování Azure Multi-Factor Authentication
 
@@ -57,7 +57,7 @@ Azure Multi-Factor Authentication se nasazuje vynucenými zásadami s podmíněn
 * Síťové umístění nebo IP adresa geograficky umístěné
 * Klientské aplikace
 * Riziko přihlášení (vyžaduje ochranu identity)
-* Odpovídající zařízení
+* Vyhovující zařízení
 * Zařízení připojené k hybridní službě Azure AD
 * Schválená klientská aplikace
 
@@ -69,7 +69,7 @@ Zásady podmíněného přístupu vynutily registraci, což vyžaduje, aby regis
 
 [Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) do scénáře služby Azure Multi-Factor Authentication přispěje jak zásady registrace, tak i automatizované zásady detekce rizik a nápravy. Zásady je možné vytvořit pro vynucení změny hesla, pokud dojde k ohrožení zabezpečení identity nebo pokud je přihlášení považováno za rizikové pomocí následujících [událostí](../reports-monitoring/concept-risk-events.md):
 
-* Nevrácená pověření
+* Uniklé přihlašovací údaje
 * Přihlášení z anonymních IP adres
 * Nemožná cesta do netypických míst
 * Přihlášení z neznámých míst
@@ -102,7 +102,7 @@ Doporučujeme, aby organizace používaly podmíněný přístup k definování 
 
 Správci mohou zvolit [metody ověřování](../authentication/concept-authentication-methods.md) , které mají být uživatelům k dispozici. Je důležité, abyste povolili více než jednu metodu ověřování, takže uživatelé mají k dispozici metodu zálohování pro případ, že jejich primární metoda není k dispozici. Pro povolení správců jsou k dispozici následující metody:
 
-### <a name="notification-through-mobile-app"></a>Oznámení prostřednictvím mobilní aplikace
+### <a name="notification-through-mobile-app"></a>Oznámení přes mobilní aplikaci
 
 Do aplikace Microsoft Authenticator na vašem mobilním zařízení se pošle nabízené oznámení. Uživatel zobrazí oznámení a vybere **schválit** k dokončení ověření. Nabízená oznámení prostřednictvím mobilní aplikace poskytují uživatelům nejméně rušivou možnost. Jsou také nejspolehlivější a zabezpečený způsob, protože místo telefonního subsystému používá datové připojení.
 
@@ -113,7 +113,7 @@ Do aplikace Microsoft Authenticator na vašem mobilním zařízení se pošle na
 
 Mobilní aplikace, jako je Microsoft Authenticator aplikace, vygeneruje nový ověřovací kód OATH každých 30 sekund. Uživatel zadá ověřovací kód do přihlašovacího rozhraní. Možnost mobilní aplikace se dá použít bez ohledu na to, jestli telefon obsahuje data nebo mobilní signál.
 
-### <a name="call-to-phone"></a>Zavolat na telefon
+### <a name="call-to-phone"></a>Telefonní hovor
 
 Automatické volání hlasu je umístěno uživateli. Uživatel přijme volání a stiskne **#** na klávesnici telefonu a schválí jejich ověření. Volání na telefon je skvělou metodou zálohování pro oznámení nebo ověřovací kód z mobilní aplikace.
 
@@ -300,7 +300,7 @@ Pokud máte nasazenou instanci serveru NPS a používáte ji již v provozu, odk
 
 Vyberte, co se stane, když se uživatelé, kteří nejsou zaregistrovaní pomocí MFA, pokoušejí ověřit. Pro řízení chování funkcí `REQUIRE_USER_MATCH` použijte nastavení registru v `HKLM\Software\Microsoft\AzureMFA` cestě k registru. Toto nastavení má jedinou možnost konfigurace.
 
-| Klíč | Value | Výchozí |
+| Klíč | Hodnota | Výchozí |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | TRUE NEBO FALSE | Nenastaveno (ekvivalent hodnoty TRUE) |
 
@@ -360,6 +360,9 @@ Teď, když jste naplánovali řešení, můžete implementovat podle následuj�
    1. S [identitou Protection](../identity-protection/howto-mfa-policy.md)
 1. Odeslat komunikaci uživatele a získat uživatele k registraci na[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
 1. [Udržujte si přehled o tom, kdo je zaregistrovaný](#identify-non-registered-users)
+
+> [!TIP]
+> Uživatelé cloudu pro státní správu se můžou zaregistrovat na[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
 ## <a name="manage-your-solution"></a>Správa řešení
 

@@ -1,20 +1,20 @@
 ---
-title: Analýza sestavy Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure | Dokumentace Microsoftu
-description: Tento článek popisuje analýzu sestavy vygenerované pomocí Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure.
+title: Analýza sestavy Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii VMware do Azure | Microsoft Docs
+description: Tento článek popisuje, jak analyzovat sestavu vygenerovanou Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii VMware do Azure.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: cbea6785239c70a3cdb229d0811497f051224238
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4b63cfc67e20158e434e1a401d47144c3e0f90c
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472487"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618781"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii VMware do Azure
 
 Vygenerovaná sestava aplikace Microsoft Excel obsahuje následující listy:
 ## <a name="on-premises-summary"></a>On-premises summary (Přehled místního prostředí)
@@ -22,28 +22,25 @@ List On-premises summary (Přehled místního prostředí) poskytuje přehled pr
 
 ![On-premises summary (Přehled místního prostředí) pro prostředí VMware](media/site-recovery-vmware-deployment-planner-analyze-report/on-premises-summary-v2a.png)
 
-**Počáteční datum** a **koncové datum**: Počáteční a koncové datum dat profilace zahrnutých do generování sestavy. Ve výchozím nastavení je počátečním datem datum zahájení profilace a koncovým datem je datum zastavení profilace. Můžou to být hodnoty StartDate a EndDate, pokud se sestava generuje s použitím těchto parametrů.
+**Počáteční** a **koncové datum**: Počáteční a koncové datum dat profilace, která se považují za generování sestav. Ve výchozím nastavení je počátečním datem datum zahájení profilace a koncovým datem je datum zastavení profilace. Můžou to být hodnoty StartDate a EndDate, pokud se sestava generuje s použitím těchto parametrů.
 
-**Celkový počet dnů profilace**: Celkový počet dnů profilace mezi počáteční a koncové datum, pro které se generuje sestava.
+**Celkový počet dnů profilace**: Celkový počet dnů profilace mezi počátečním a koncovým datem, pro který je vygenerována sestava.
 
-**Počet kompatibilních virtuálních počítačů**: Celkový počet kompatibilních virtuálních počítačů, pro které se počítá požadovaná šířka pásma sítě, požadovaný počet účtů úložiště, počet jader Microsoft Azure, konfiguračních serverů a dalších procesových serverů.
+**Počet kompatibilních virtuálních počítačů**: Vypočítá se celkový počet kompatibilních virtuálních počítačů, pro které se počítá požadovaná šířka pásma sítě, požadovaný počet účtů úložiště, Microsoft Azure jader, konfiguračních serverů a dalších procesových serverů.
 
-**Celkový počet disků ve všech kompatibilních virtuálních počítačích**: Číslo, které se používá jako jeden ze vstupů pro určení počtu konfiguračních serverů a dalších procesových serverů, který se má použít v nasazení.
+**Celkový počet disků ve všech kompatibilních virtuálních počítačích**: Číslo, které se používá jako jeden ze vstupů k určení počtu konfiguračních serverů a dalších procesových serverů, které se mají v nasazení použít.
 
-**Průměrný počet disků na kompatibilní virtuální počítač**: Průměrný počet disků ve všech kompatibilních virtuálních počítačích.
+**Průměrný počet disků na kompatibilní virtuální počítač**: Průměrný počet disků vypočítaný ve všech kompatibilních virtuálních počítačích.
 
-**Průměrná velikost disku (GB)** : Vypočítaná průměrná velikost disků ve všech kompatibilních virtuálních počítačích.
+**Průměrná velikost disku (GB)** : Průměrná velikost disku vypočtená napříč všemi kompatibilními virtuálními počítači.
 
-**Desired RPO (minutes)** : Obnovení výchozí cíl bodu, nebo hodnota předaná v parametru "DesiredRPO" v okamžiku generování sestavy, sloužící k odhadu požadované šířky pásma.
+**Požadovaný cíl bodu obnovení (minuty)** : Buď výchozí cíl bodu obnovení, nebo hodnota předaná pro parametr DesiredRPO v době generování sestavy za účelem odhadu požadované šířky pásma.
 
-**Desired bandwidth (Mbps)** : Hodnota, kterou jste předali pro parametr 'Šířky pásma' při generování sestavy, sloužící k odhadu dosažitelného cíle bodu obnovení.
+**Požadovaná šířka pásma (MB/s)** : Hodnota, kterou jste předali pro parametr šířky pásma v době generování sestavy k odhadu dosažitelného cíle RPO.
 
-**Četnost změn dat vypozorovaná typických za den (GB)** : Průměrná četnost změn dat vysledovat v všech dnů profilace. Toto číslo se používá jako jeden ze vstupů pro určení počtu konfiguračních serverů a dalších procesových serverů, které se mají v nasazení použít.
+**Pozorovaná Typická četnost změn dat za den (GB)** : Průměrná četnost změn dat zjištěná v rámci všech dnů profilace. Toto číslo se používá jako jeden ze vstupů pro určení počtu konfiguračních serverů a dalších procesových serverů, které se mají v nasazení použít.
 
 ## <a name="recommendations"></a>Doporučení
-
->[!Note]
->Při replikaci přímo na spravované disky, ignorujte doporučení pro počet účtů úložiště.
 
 List sestavy nasazení VMware do Azure s doporučeními obsahuje následující podrobné údaje pro vybraný požadovaný cíl bodu obnovení:
 
@@ -52,33 +49,33 @@ List sestavy nasazení VMware do Azure s doporučeními obsahuje následující 
 ### <a name="profiled-data"></a>Profilovaná data
 ![Zobrazení profilovaných dat v Deployment Planneru](media/site-recovery-vmware-deployment-planner-analyze-report/profiled-data-v2a.png)
 
-**Období profilovaná data**: Doba, po kterou byla profilace spuštěná. Nástroj ve výchozím nastavení do výpočtu zahrnuje všechna profilovaná data, pokud sestavu negeneruje pro konkrétní období díky použití možností StartDate a EndDate během generování sestavy.
+Profilované **datové období**: Doba, po kterou bylo profilace spuštěna. Nástroj ve výchozím nastavení do výpočtu zahrnuje všechna profilovaná data, pokud sestavu negeneruje pro konkrétní období díky použití možností StartDate a EndDate během generování sestavy.
 
-**Název serveru**: Název nebo IP adresa serveru VMware vCenter nebo hostiteli ESXi, jehož virtuální počítače se sestava generuje.
+**Název serveru**: Název nebo IP adresu hostitele VMware vCenter nebo ESXi, jehož virtuální počítače se vygenerovaly.
 
-**Desired RPO**: Cíl bodu obnovení pro vaše nasazení. Ve výchozím nastavení se požadovaná šířka pásma sítě počítá pro hodnoty cíle bodu obnovení 15, 30 a 60 minut. V závislosti na výběru se na listu aktualizují ovlivněné hodnoty. Pokud jste při generování sestavy použili parametr *DesiredRPOinMin*, jako výsledný požadovaný cíl bodu obnovení se zobrazí použitá hodnota.
+**Požadovaný cíl**bodu obnovení: Cíl bodu obnovení pro vaše nasazení. Ve výchozím nastavení se požadovaná šířka pásma sítě počítá pro hodnoty cíle bodu obnovení 15, 30 a 60 minut. V závislosti na výběru se na listu aktualizují ovlivněné hodnoty. Pokud jste při generování sestavy použili parametr *DesiredRPOinMin*, jako výsledný požadovaný cíl bodu obnovení se zobrazí použitá hodnota.
 
 ### <a name="profiling-overview"></a>Přehled profilace
 
 ![Výsledky profilace v Deployment Planneru](media/site-recovery-vmware-deployment-planner-analyze-report/profiling-overview-v2a.png)
 
-**Celkový počet profilované virtuální počítače**: Celkový počet virtuálních počítačů, jejichž profilovaná data jsou k dispozici. Pokud soubor VMListFile obsahuje názvy virtuálních počítačů, které nebyly profilované, nebude se na takové virtuální počítače brát ohled při generování sestav a nezahrnou se do celkového počtu profilovaných virtuálních počítačů.
+**Celkem**profilované Virtual Machines: Celkový počet virtuálních počítačů, jejichž profilovaná data jsou k dispozici. Pokud soubor VMListFile obsahuje názvy virtuálních počítačů, které nebyly profilované, nebude se na takové virtuální počítače brát ohled při generování sestav a nezahrnou se do celkového počtu profilovaných virtuálních počítačů.
 
-**Compatible Virtual Machines**: Počet virtuálních počítačů, které lze chránit v Azure pomocí Site Recovery. Je to celkový počet kompatibilních virtuálních počítačů, pro které se počítá požadovaná šířka pásma sítě, požadovaný počet účtů úložiště, počet jader Azure a počet konfiguračních serverů a dalších procesových serverů. Podrobnosti o každém kompatibilním virtuálním počítači jsou dostupné v části Compatible VMs.
+**Kompatibilní Virtual Machines**: Počet virtuálních počítačů, které lze chránit do Azure pomocí Site Recovery. Je to celkový počet kompatibilních virtuálních počítačů, pro které se počítá požadovaná šířka pásma sítě, požadovaný počet účtů úložiště, počet jader Azure a počet konfiguračních serverů a dalších procesových serverů. Podrobnosti o každém kompatibilním virtuálním počítači jsou dostupné v části Compatible VMs.
 
-**Incompatible Virtual Machines**: Počet profilovaných virtuálních počítačů, které jsou nekompatibilní s ochranou pomocí Site Recovery. Důvody nekompatibility jsou uvedené v části Incompatible VMs. Pokud soubor VMListFile obsahuje názvy virtuálních počítačů, které nebyly profilované, nezahrnou se do celkového počtu nekompatibilních virtuálních počítačů. Takové virtuální počítače jsou uvedené jako „Data not found“ (Data nenalezena) na konci části Incompatible VMs.
+**Nekompatibilní Virtual Machines**: Počet profilových virtuálních počítačů, které jsou nekompatibilní s ochranou pomocí Site Recovery. Důvody nekompatibility jsou uvedené v části Incompatible VMs. Pokud soubor VMListFile obsahuje názvy virtuálních počítačů, které nebyly profilované, nezahrnou se do celkového počtu nekompatibilních virtuálních počítačů. Takové virtuální počítače jsou uvedené jako „Data not found“ (Data nenalezena) na konci části Incompatible VMs.
 
-**Desired RPO**: Cíl, požadované obnovení bodu v minutách. Sestava se generuje pro tři hodnoty cíle bodu obnovení: 15 (výchozí), 30 a 60 minut. Doporučení šířky pásma v sestavě se mění v závislosti na výběru možnosti v rozevíracím seznamu Desired RPO v pravé horní části listu. Pokud jste sestavu vygenerovali s použitím parametru *-DesiredRPO* s vlastní hodnotou, v rozevíracím seznamu Desired RPO se tato vlastní hodnota zobrazí jako výchozí možnost.
+**Požadovaný cíl**bodu obnovení: Požadovaný cíl bodu obnovení v řádu minut. Sestava se generuje pro tři hodnoty RPO: 15 (výchozí), 30 a 60 minut. Doporučení šířky pásma v sestavě se mění v závislosti na výběru možnosti v rozevíracím seznamu Desired RPO v pravé horní části listu. Pokud jste sestavu vygenerovali s použitím parametru *-DesiredRPO* s vlastní hodnotou, v rozevíracím seznamu Desired RPO se tato vlastní hodnota zobrazí jako výchozí možnost.
 
 ### <a name="required-network-bandwidth-mbps"></a>Požadovaná šířka pásma sítě (Mb/s)
 
 ![Požadovaná šířka pásma sítě v Deployment Planneru](media/site-recovery-vmware-deployment-planner-analyze-report/required-network-bandwidth-v2a.png)
 
-**Pro splnění cíle bodu obnovení 100 % času:** Doporučená šířka pásma v MB/s, kterou je potřeba přidělit pro splnění požadovaného cíle bodu obnovení 100 % času. Šířka pásma musí být vyhrazená pro zajištění stálé rozdílové replikace všech kompatibilních virtuálních počítačů, aby se předešlo jakémukoli narušení cíle bodu obnovení.
+**Pro splnění cíle RPO 100% času:** Doporučená šířka pásma v MB/s, která se má přidělit, aby splňovala požadované cíle RPO 100% času. Šířka pásma musí být vyhrazená pro zajištění stálé rozdílové replikace všech kompatibilních virtuálních počítačů, aby se předešlo jakémukoli narušení cíle bodu obnovení.
 
-**Pro splnění cíle bodu obnovení 90 % času**: Kvůli cenám širokopásmového připojení nebo z jiného důvodu nemůžete nastavit šířku pásma potřebnou ke splnění požadovaného cíle bodu obnovení 100 % času, můžete pro nastavení menší šířky pásma, která může splňovat váš požadovaný cíl bodu obnovení 90 % času. Abyste porozuměli dopadům nastavení menší šířky pásma, sestava poskytuje analýzu „co kdyby“ očekávaného počtu a trvání narušení cíle bodu obnovení.
+**Pro splnění cíle RPO 90% času**: Kvůli cenám širokopásmového připojení nebo z jiného důvodu nemůžete nastavit šířku pásma potřebnou ke splnění požadovaného cíle bodu obnovení 100% času. můžete se rozhodnout, že přejdete na nastavení s nižší šířkou pásma, které může splňovat požadované 90% času. Abyste porozuměli dopadům nastavení menší šířky pásma, sestava poskytuje analýzu „co kdyby“ očekávaného počtu a trvání narušení cíle bodu obnovení.
 
-**Achieved Throughput:** Propustnost ze serveru, na kterém jste spustili příkaz GetThroughput do oblasti Microsoft Azure, kde je umístěný účet úložiště. Tato hodnota propustnosti označuje odhadovanou úroveň propustnosti, které můžete dosáhnout při ochraně kompatibilních virtuálních počítačů pomocí Site Recovery za předpokladu, že charakteristiky sítě a úložiště konfiguračního serveru nebo procesového serveru budou stejné jako u serveru, ze kterého jste nástroj spustili.
+**Dosažená propustnost:** Propustnost ze serveru, na kterém jste spustili příkaz getpropustnost, do oblasti Microsoft Azure, kde se nachází účet úložiště. Tato hodnota propustnosti označuje odhadovanou úroveň propustnosti, které můžete dosáhnout při ochraně kompatibilních virtuálních počítačů pomocí Site Recovery za předpokladu, že charakteristiky sítě a úložiště konfiguračního serveru nebo procesového serveru budou stejné jako u serveru, ze kterého jste nástroj spustili.
 
 Pro účely replikace byste měli nastavit šířku pásma doporučenou pro splnění cíle bodu obnovení 100 % času. Pokud se po nastavení šířky pásma nezvýší dosažená propustnost, kterou nástroj hlásí, proveďte následující:
 
@@ -95,7 +92,7 @@ Pokud nástroj spouštíte na konfiguračním serveru nebo procesovém serveru, 
 Pro všechna podniková nasazení Site Recovery doporučujeme použít [ExpressRoute](https://aka.ms/expressroute).
 
 ### <a name="required-storage-accounts"></a>Požadované účty úložiště
-Následující graf znázorňuje celkový počet účtů služby Storage (úrovně Standard a Premium) požadovaných k ochraně všech kompatibilních virtuálních počítačů. Informace o tom, jaký účet úložiště použít pro jednotlivé virtuální počítače, najdete v části VM-storage placement.
+Následující graf znázorňuje celkový počet účtů služby Storage (úrovně Standard a Premium) požadovaných k ochraně všech kompatibilních virtuálních počítačů. Informace o tom, jaký účet úložiště použít pro jednotlivé virtuální počítače, najdete v části VM-storage placement. Pokud používáte v 2.5 Plánovač nasazení, toto doporučení zobrazuje jenom počet účtů úložiště úrovně Standard, které jsou potřeba pro replikaci, protože data se napisují přímo do Managed Disks.
 
 ![Požadované účty úložiště v Deployment Planneru](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
 
@@ -133,13 +130,13 @@ Tento souhrn pomáhá porozumět nákladům, které budete muset platit za úlo�
 
 Náklady můžete zobrazit po měsících nebo letech. Další informace o [podporovaných cílových oblastech](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions) a [podporovaných měnách](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies)
 
-**Náklady podle komponent** celkové náklady na zotavení po Havárii se dělí do čtyř komponent: Licenční náklady na výpočetní prostředky, úložiště, síť a Azure Site Recovery. Náklady se počítají na základě spotřeby, ke které dojde během replikace a v průběhu nácviku zotavení po havárii pro výpočetní funkce, úložiště (Premium a Standard), síť ExpressRoute nebo VPN, která je nakonfigurovaná mezi místní lokalitou a Azure, a licence Azure Site Recovery.
+**Náklady podle komponent** Celkové náklady na zotavení po havárii se dělí do čtyř komponent: Náklady na výpočetní prostředky, úložiště, síť a Azure Site Recovery licence. Náklady se počítají na základě spotřeby, ke které dojde během replikace a v průběhu nácviku zotavení po havárii pro výpočetní funkce, úložiště (Premium a Standard), síť ExpressRoute nebo VPN, která je nakonfigurovaná mezi místní lokalitou a Azure, a licence Azure Site Recovery.
 
 **Náklady podle stavu** Celkové náklady na zotavení po havárii jsou rozdělené do kategorií na základě dvou různých stavů – replikace a nácvik zotavení po havárii.
 
-**Náklady na replikaci**:  Náklady, které vzniknou během replikace. Zahrnují náklady na úložiště, síť a licence Azure Site Recovery.
+**Náklady na replikaci**:  Náklady, které budou účtovány během replikace. Zahrnují náklady na úložiště, síť a licence Azure Site Recovery.
 
-**DR-Drill cost**: Náklady, které vzniknou během testovacího převzetí služeb při selhání. Během testovacího převzetí služeb při selhání Azure Site Recovery rozjede virtuální počítače. Náklady na nácvik zotavení po havárii zahrnují náklady na výpočetní funkce a úložiště spuštěných virtuálních počítačů.
+**Náklady na postup zotavení po havárii**: Náklady, které budou účtovány během testovacího převzetí služeb při selhání. Během testovacího převzetí služeb při selhání Azure Site Recovery rozjede virtuální počítače. Náklady na nácvik zotavení po havárii zahrnují náklady na výpočetní funkce a úložiště spuštěných virtuálních počítačů.
 
 **Náklady na úložiště Azure za měsíc a rok:** Celkové náklady na úložiště, které vzniknou pro úložiště úrovně Standard a Premium při replikaci a nácviku zotavení po havárii.
 Podrobnou analýzu nákladů na virtuální počítač najdete na listu s [odhadem nákladů](site-recovery-vmware-deployment-planner-cost-estimation.md).
@@ -160,30 +157,28 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 ## <a name="vm-storage-placement"></a>Umístění virtuálních počítačů v účtech úložiště
 
 >[!Note]
->Při replikaci přímo na spravované disky, není nutné se starat o počet účtů úložiště. Pro úložiště použijte pouze doporučení pro typ služby storage (Standard nebo Premium). Totéž platí pro spravované disky.
+>Plánovač nasazení v 2.5 a vyšším doporučuje umístění úložiště pro počítače, které se budou replikovat přímo na spravované disky.
 
 ![Umístění virtuálních počítačů v účtech úložiště](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
-**Disk Storage Type**: Storage úrovně standard nebo premium účet, který se používá k replikaci všech odpovídajících podle virtuálních počítačů **VMs to Place** sloupce.
+**Typ úložiště replikace**: Se spravovaným diskem Standard nebo Premium, který se používá k replikaci všech odpovídajících virtuálních počítačů uvedených ve sloupci **virtuální počítače do umístění** .
 
-**Suggested Prefix**: Navrhovaná tříznaková předpona, která můžete použít k pojmenování účtu úložiště. Můžete použít vlastní předponu, ale návrh nástroje se řídí [zásadami vytváření názvů pro oddíly účtů úložiště](https://aka.ms/storage-performance-checklist).
+**Typ účtu úložiště protokolu**: Všechny protokoly replikace se ukládají do účtu úložiště úrovně Standard.
 
-**Suggested Account Name**: Název účtu úložiště po zahrnutí navrhované předpony. Název v ostrých závorkách (< a >) nahraďte vlastním názvem.
+**Navrhovaná předpona pro účet úložiště**: Navrhovaná předpona se třemi znaky, kterou lze použít k pojmenování účtu úložiště mezipaměti. Můžete použít vlastní předponu, ale návrh nástroje se řídí [zásadami vytváření názvů pro oddíly účtů úložiště](https://aka.ms/storage-performance-checklist).
 
-**Log Storage Account**: Všechny protokoly replikace se ukládají v účtu úložiště úrovně standard. Pro virtuální počítače, které se replikují do účtu služby Premium Storage, nastavte další účet služby Storage úrovně Standard pro ukládání protokolů. Jeden účet úložiště protokolů úrovně Standard může využívat více účtů úložiště replikace úrovně Premium. Virtuální počítače replikované do účtů úložiště úrovně Standard používají stejný účet i k ukládání protokolů.
+**Název navrhovaného účtu protokolu**: Název účtu úložiště po zahrnutí navrhované předpony. Název v ostrých závorkách (< a >) nahraďte vlastním názvem.
 
-**Suggested Log Account Name**: Protokol název svého účtu úložiště po zahrnutí navrhované předpony. Název v ostrých závorkách (< a >) nahraďte vlastním názvem.
+**Shrnutí umístění**: Shrnutí disků potřebných k chráněným virtuálním počítačům podle typu úložiště. Zahrnuje celkový počet virtuálních počítačů, celkovou zřízenou velikost napříč všemi disky a celkový počet disků.
 
-**Placement Summary**: Přehled celkový počet virtuálních počítačů načtěte do účtu úložiště v době replikace a testovacího převzetí služeb při selhání nebo převzetí služeb při selhání. Zahrnuje celkový počet virtuálních počítačů namapovaných na účet úložiště, celkový počet R/W IOPS ve všech virtuálních počítačích umístěných v tomto účtu úložiště, celkový počet vstupně-výstupních operací zápisu (replikace) za sekundu, celkovou nastavenou velikost všech disků a celkový počet disků.
-
-**Virtual Machines to Place**: Seznam všech virtuálních počítačů, které musí být umístěny na daný účet úložiště pro zajištění optimálního výkonu a využití.
+**Virtual Machines k umístění**: Seznam všech virtuálních počítačů, které by měly být umístěny na daném účtu úložiště pro zajištění optimálního výkonu a využití.
 
 ## <a name="compatible-vms"></a>Kompatibilní virtuální počítače
 ![Tabulka aplikace Excel s kompatibilními virtuálními počítači](media/site-recovery-vmware-deployment-planner-analyze-report/compatible-vms-v2a.png)
 
-**Název virtuálního počítače**: Název virtuálního počítače nebo IP adresu, která se používá v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky (VMDK) připojené k virtuálním počítačům. Aby se rozlišily virtuální počítače vCenter s duplicitními názvy nebo IP adresami, je součástí názvů i název hostitele ESXi. Uvedený hostitel ESXi je ten, na kterém byl virtuální počítač umístěn při zjištění nástrojem během období profilace.
+**Název virtuálního počítače**: Název nebo IP adresa virtuálního počítače, které se používají ve službě soubor vmlistfile při vygenerování sestavy. V tomto sloupci jsou uvedeny také disky (VMDK) připojené k virtuálním počítačům. Aby se rozlišily virtuální počítače vCenter s duplicitními názvy nebo IP adresami, je součástí názvů i název hostitele ESXi. Uvedený hostitel ESXi je ten, na kterém byl virtuální počítač umístěn při zjištění nástrojem během období profilace.
 
-**VM Compatibility**: Hodnoty jsou **Ano** a **Ano**\*. **Ano** \* je pro situace, kdy je virtuální počítač vhodný pro [SSD disků premium](../virtual-machines/windows/disks-types.md). V takovém případě profilovaný disk s vysokou četností změn nebo vysokým počtem IOPS spadá do kategorie P20 nebo P30, ale kvůli velikosti se disk mapuje na nižší kategorii P10 nebo P20. Účet úložiště určuje, na jaký disk služby Premium Storage se disk bude mapovat, na základě jeho velikosti. Příklad:
+**Kompatibilita virtuálních počítačů**: Hodnoty jsou **Ano** a **Ano**\*. Ano\* je pro instance, ve kterých je virtuální počítač vhodný pro [Premium SSD](../virtual-machines/windows/disks-types.md). V takovém případě profilovaný disk s vysokou četností změn nebo vysokým počtem IOPS spadá do kategorie P20 nebo P30, ale kvůli velikosti se disk mapuje na nižší kategorii P10 nebo P20. Účet úložiště určuje, na jaký disk služby Premium Storage se disk bude mapovat, na základě jeho velikosti. Příklad:
 * Menší než 128 GB je P10.
 * 128 GB až 256 GB je P15.
 * 256 GB až 512 GB je P20.
@@ -193,40 +188,38 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 
 Pokud se například díky charakteristikám úloh disk umístil do kategorie P20 nebo P30, ale kvůli velikosti je mapován na nižší typ disku služby Premium Storage, nástroj označí tento virtuální počítač jako **Yes**\*. Nástroj také doporučí změnit velikost zdrojového disku tak, aby se vešel do doporučeného typu disku služby Premium Storage, nebo po převzetí služeb při selhání změnit typ cílového disku.
 
-**Typ úložiště**: Úroveň Standard nebo premium.
+**Typ úložiště**: Standard nebo Premium.
 
-**Suggested Prefix**: Účet úložiště tříznaková předpona.
+**Asrseeddisk (spravovaný disk) byl vytvořen pro replikaci**: Název disku, který se vytvoří při povolení replikace. Ukládá data a její snímky do Azure.
 
-**Účet úložiště**: Název, který používá předponu navrhované účtu úložiště.
+**Špička R/W IOPS (s faktorem růstu)** : Počet IOPS pro čtení a zápis na disku ve špičce (výchozí hodnota je 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota je 30%). Všimněte si, že celkový počet R/W IOPS virtuálního počítače nebude vždy odpovídat součtu R/W IOPS jednotlivých disků virtuálního počítače, protože počet R/W IOPS virtuálního počítače ve špičce je maximální hodnota součtu R/W IOPS jeho jednotlivých disků v každé minutě období profilace.
 
-**R/W IOPS (with Growth Factor) ve špičce**: Úlohy/w IOPS na disku (výchozí je 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celkový počet R/W IOPS virtuálního počítače nebude vždy odpovídat součtu R/W IOPS jednotlivých disků virtuálního počítače, protože počet R/W IOPS virtuálního počítače ve špičce je maximální hodnota součtu R/W IOPS jeho jednotlivých disků v každé minutě období profilace.
+**Špička změn dat v MB/s (s použitím faktoru růstu)** : Četnost změn dat na disku ve špičce (výchozí hodnota je 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota je 30%). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače, protože četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
 
-**Peak Data Churn in Mbps (with Growth Factor)** : Ve špičce četnost změn dat na disku (výchozí je 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače, protože četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
+**Velikost virtuálního počítače Azure**: Ideální velikost mapovaného virtuálního počítače Azure Cloud Services pro tento místní virtuální počítač. Mapování vychází z velikosti paměti, počtu disků, jader nebo síťových adaptérů a počtu R/W IOPS místního virtuálního počítače. Doporučení vždy představuje nejmenší velikost virtuálního počítače Azure, která odpovídá všem charakteristikám místního virtuálního počítače.
 
-**Velikost virtuálního počítače Azure**: Ideální velikost virtuálního počítače Azure Cloud Services mapovaného pro tento místní virtuální počítač. Mapování vychází z velikosti paměti, počtu disků, jader nebo síťových adaptérů a počtu R/W IOPS místního virtuálního počítače. Doporučení vždy představuje nejmenší velikost virtuálního počítače Azure, která odpovídá všem charakteristikám místního virtuálního počítače.
+**Počet disků**: Celkový počet disků virtuálního počítače (VMDK) na VIRTUÁLNÍm počítači.
 
-**Number of Disks**: Celkový počet disků virtuálního počítače (Vmdk) ve virtuálním počítači.
+**Velikost disku (GB)** : Celková velikost instalačního programu všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
 
-**Disk size (GB)** : Celkovou nastavenou velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
+**Jádra**: Počet jader procesoru na virtuálním počítači.
 
-**Počet jader**: Počet Procesorových jader ve virtuálním počítači.
+**Paměť (MB)** : Paměť RAM na virtuálním počítači.
 
-**Paměť (MB)** : Paměť RAM ve virtuálním počítači.
+**Síťové karty**: Počet síťových adaptérů na virtuálním počítači.
 
-**Síťové adaptéry**: Počet síťových adaptérů na virtuálním počítači.
+**Typ spouštění**: Typ spuštění virtuálního počítače Může to být buď BIOS, nebo EFI.  Azure Site Recovery v současnosti podporuje virtuální počítače EFI s Windows Serverem (Windows Server 2012, 2012 R2 a 2016), za předpokladu, že počet oddílů spouštěcího disku je menší než 4 a velikost spouštěcího sektoru je 512 bajtů. Pro zajištění ochrany virtuálních počítačů EFI musí být služba mobility Azure Site Recovery ve verzi 9.13 nebo vyšší. Pro virtuální počítače EFI se podporuje jenom převzetí služeb při selhání. Navrácení služeb po obnovení se nepodporuje.  
 
-**Typ spuštění**: Typ spuštění virtuálního počítače. Může to být buď BIOS, nebo EFI.  Azure Site Recovery v současnosti podporuje virtuální počítače EFI s Windows Serverem (Windows Server 2012, 2012 R2 a 2016), za předpokladu, že počet oddílů spouštěcího disku je menší než 4 a velikost spouštěcího sektoru je 512 bajtů. Pro zajištění ochrany virtuálních počítačů EFI musí být služba mobility Azure Site Recovery ve verzi 9.13 nebo vyšší. Pro virtuální počítače EFI se podporuje jenom převzetí služeb při selhání. Navrácení služeb po obnovení se nepodporuje.  
-
-**Typ operačního systému**: Je typ operačního systému virtuálního počítače. Může to být Windows, Linux nebo jiný systém, v závislosti na šabloně zvolené ve VMware vSphere při vytváření virtuálního počítače.  
+**Typ operačního systému**: Jedná se o typ operačního systému virtuálního počítače. Může to být Windows, Linux nebo jiný systém, v závislosti na šabloně zvolené ve VMware vSphere při vytváření virtuálního počítače.  
 
 ## <a name="incompatible-vms"></a>Nekompatibilní virtuální počítače
 
 ![Tabulka aplikace Excel s nekompatibilními virtuálními počítači
 ](media/site-recovery-vmware-deployment-planner-analyze-report/incompatible-vms-v2a.png)
 
-**Název virtuálního počítače**: Název virtuálního počítače nebo IP adresu, která se používá v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky VMDK připojené k virtuálním počítačům. Aby se rozlišily virtuální počítače vCenter s duplicitními názvy nebo IP adresami, je součástí názvů i název hostitele ESXi. Uvedený hostitel ESXi je ten, na kterém byl virtuální počítač umístěn při zjištění nástrojem během období profilace.
+**Název virtuálního počítače**: Název nebo IP adresa virtuálního počítače, které se používají ve službě soubor vmlistfile při vygenerování sestavy. V tomto sloupci jsou uvedeny také disky VMDK připojené k virtuálním počítačům. Aby se rozlišily virtuální počítače vCenter s duplicitními názvy nebo IP adresami, je součástí názvů i název hostitele ESXi. Uvedený hostitel ESXi je ten, na kterém byl virtuální počítač umístěn při zjištění nástrojem během období profilace.
 
-**VM Compatibility**: Označujte, proč je daný virtuální počítač nekompatibilní se Site Recovery. Pro každý nekompatibilní disk virtuálního počítače jsou popsané důvody. V závislosti na publikovaných [omezeních úložiště](https://aka.ms/azure-storage-scalbility-performance) může důvodem být některá z následujících možností:
+**Kompatibilita virtuálních počítačů**: Určuje, proč je daný virtuální počítač nekompatibilní s Site Recovery. Pro každý nekompatibilní disk virtuálního počítače jsou popsané důvody. V závislosti na publikovaných [omezeních úložiště](https://aka.ms/azure-storage-scalbility-performance) může důvodem být některá z následujících možností:
 
 * Disk je větší než 4 095 GB. Azure Storage v současné době nepodporuje disky větší než 4 095 GB.
 
@@ -238,7 +231,7 @@ Pokud se například díky charakteristikám úloh disk umístil do kategorie P2
 
 * Source IOPS exceeds supported storage IOPS limit of 80,000 per VM (Počet zdrojových IOPS překračuje podporované omezení úložiště – 80 000 IOPS na virtuální počítač).
 
-* Average data churn exceeds supported Site Recovery data churn limit of 10 MB/s for average I/O size for the disk (Průměrná četnost změn dat překračuje podporované omezení Site Recovery pro četnost změn dat – průměrná velikost vstupně-výstupních operací disku 10 MB/s).
+* Průměrná četnost změn dat překračuje Site Recovery podporované omezení četnosti přenosů dat, které je 20 MB/s, pro průměrnou velikost vstupně-výstupních operací disku.
 
 * Průměrná četnost změn dat překračuje podporované omezení Site Recovery pro četnost změn dat, které je 25 MB/s pro průměrnou velikost vstupně-výstupních operací na virtuální počítač (součet četností všech disků).
 
@@ -251,23 +244,23 @@ Pokud se například díky charakteristikám úloh disk umístil do kategorie P2
 * Celková četnost změn dat překračuje podporovaný limit četnosti změn za den, který je 2 TB na procesový server.
 
 
-**R/W IOPS (with Growth Factor) ve špičce**: Zatížení ve špičce IOPS na disku (výchozí je 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celkový počet R/W IOPS virtuálního počítače nebude vždy odpovídat součtu R/W IOPS jednotlivých disků virtuálního počítače, protože počet R/W IOPS virtuálního počítače ve špičce je maximální hodnota součtu R/W IOPS jeho jednotlivých disků v každé minutě období profilace.
+**Špička R/W IOPS (s faktorem růstu)** : Zatížení na disku ve špičce (výchozí hodnota je 95. percentil), včetně faktoru budoucího růstu (výchozí hodnota je 30%). Všimněte si, že celkový počet R/W IOPS virtuálního počítače nebude vždy odpovídat součtu R/W IOPS jednotlivých disků virtuálního počítače, protože počet R/W IOPS virtuálního počítače ve špičce je maximální hodnota součtu R/W IOPS jeho jednotlivých disků v každé minutě období profilace.
 
-**Peak Data Churn in Mbps (with Growth Factor)** : Ve špičce četnost změn dat na disku (výchozí 95. percentil) včetně faktoru budoucího růstu (výchozí hodnota 30 %). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače, protože četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
+**Špička změn dat v MB/s (s použitím faktoru růstu)** : Četnost změn dat na disku ve špičce (výchozí 95. percentil) včetně faktoru budoucího růstu (výchozí hodnota 30%). Všimněte si, že celková četnost změn dat virtuálního počítače nebude vždy odpovídat součtu četností změn dat jednotlivých disků virtuálního počítače, protože četnost změn dat virtuálního počítače ve špičce je maximální hodnota součtu četností změn jeho jednotlivých disků v každé minutě období profilace.
 
-**Number of Disks**: Celkový počet disků Vmdk ve virtuálním počítači.
+**Počet disků**: Celkový počet VMDK na virtuálním počítači.
 
-**Disk size (GB)** : Celkovou nastavenou velikost všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
+**Velikost disku (GB)** : Celková velikost instalačního programu všech disků virtuálního počítače. Nástroj ukazuje také velikosti jednotlivých disků ve virtuálním počítači.
 
-**Počet jader**: Počet Procesorových jader ve virtuálním počítači.
+**Jádra**: Počet jader procesoru na virtuálním počítači.
 
-**Paměť (MB)** : Množství paměti RAM ve virtuálním počítači.
+**Paměť (MB)** : Velikost paměti RAM na virtuálním počítači.
 
-**Síťové adaptéry**: Počet síťových adaptérů na virtuálním počítači.
+**Síťové karty**: Počet síťových adaptérů na virtuálním počítači.
 
-**Typ spuštění**: Typ spuštění virtuálního počítače. Může to být buď BIOS, nebo EFI.  Azure Site Recovery v současnosti podporuje virtuální počítače EFI s Windows Serverem (Windows Server 2012, 2012 R2 a 2016), za předpokladu, že počet oddílů spouštěcího disku je menší než 4 a velikost spouštěcího sektoru je 512 bajtů. Pro zajištění ochrany virtuálních počítačů EFI musí být služba mobility Azure Site Recovery ve verzi 9.13 nebo vyšší. Pro virtuální počítače EFI se podporuje jenom převzetí služeb při selhání. Navrácení služeb po obnovení se nepodporuje.
+**Typ spouštění**: Typ spuštění virtuálního počítače Může to být buď BIOS, nebo EFI.  Azure Site Recovery v současnosti podporuje virtuální počítače EFI s Windows Serverem (Windows Server 2012, 2012 R2 a 2016), za předpokladu, že počet oddílů spouštěcího disku je menší než 4 a velikost spouštěcího sektoru je 512 bajtů. Pro zajištění ochrany virtuálních počítačů EFI musí být služba mobility Azure Site Recovery ve verzi 9.13 nebo vyšší. Pro virtuální počítače EFI se podporuje jenom převzetí služeb při selhání. Navrácení služeb po obnovení se nepodporuje.
 
-**Typ operačního systému**:  Je typ operačního systému virtuálního počítače. Může to být Windows, Linux nebo jiný systém, v závislosti na šabloně zvolené ve VMware vSphere při vytváření virtuálního počítače.
+**Typ operačního systému**:  Jedná se o typ operačního systému virtuálního počítače. Může to být Windows, Linux nebo jiný systém, v závislosti na šabloně zvolené ve VMware vSphere při vytváření virtuálního počítače.
 
 ## <a name="azure-site-recovery-limits"></a>Omezení Azure Site Recovery
 Následující tabulka obsahuje omezení služby Azure Site Recovery. Tato omezení se zakládají na našich testováních, nemůžou však pokrýt všechny možné kombinace vstupně-výstupních operací aplikace. Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace. Pro dosažení co nejlepších výsledků, a to i po naplánování nasazení, vždy doporučujeme provádět rozsáhlé testování aplikace pomocí testovacího převzetí služeb při selhání, abyste získali skutečnou představu o výkonu aplikace.
@@ -294,5 +287,5 @@ Toto jsou průměrné hodnoty za předpokladu, že se vstupně-výstupní operac
 Další informace o [odhadu nákladů](site-recovery-vmware-deployment-planner-cost-estimation.md)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o [odhadu nákladů](site-recovery-vmware-deployment-planner-cost-estimation.md)

@@ -1,6 +1,6 @@
 ---
-title: Hrozeb inteligenci a mapování výstrah zabezpečení ve službě Azure Security Center | Dokumentace Microsoftu
-description: Další informace o použití funkce výstrah zabezpečení hrozeb a mapa intelligence ve službě Azure Security Center k identifikaci potenciálních hrozeb na virtuálních počítačích a počítačích.
+title: Mapa hrozeb a výstraha zabezpečení v Azure Security Center | Microsoft Docs
+description: Naučte se používat mapu výstrah zabezpečení a schopnost analýzy hrozeb v Azure Security Center k identifikaci potenciálních hrozeb ve vašich virtuálních počítačích a počítačích.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,95 +14,50 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 36201bad64e5516375afe1ec9ce141c3fd311d48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0740beb3b1ffc200c36ca4b5c15b25017821587e
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574347"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662339"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Analýza hrozeb a mapa výstrah zabezpečení
-Tento článek vám umožní použít mapu výstrahy zabezpečení Azure Security Center a mapa analýzy hrozeb založený na událostech zabezpečení pro řešení potíží s související se zabezpečením.
+Tento článek vám pomůže při řešení problémů souvisejících se zabezpečením pomocí mapy výstrahy zabezpečení Azure Security Center a zabezpečení analýzy hrozeb na základě událostí zabezpečení.
 
 > [!NOTE]
-> Zabezpečení *události* tlačítko mapa se vyřadí dne 31. května 2019. Další informace a alternativní služby najdete v tématu [vyřazení Security Center nabízí (červenec 2019)](security-center-features-retirement-july2019.md#menu_securityeventsmap).
+> Tlačítko Mapa *událostí* zabezpečení bylo vyřazeno z 31. července 2019. Další informace a alternativní služby najdete v tématu [vyřazení funkcí Security Center (červenec 2019)](security-center-features-retirement-july2019.md#menu_securityeventsmap).
 
 
-## <a name="how-the-security-alerts-map-works"></a>Jak se mapují výstrahy zabezpečení funguje
-Security Center zajišťuje, že jste s mapu, která vám pomůže identifikovat bezpečnostní hrozby pro prostředí. Můžete například určit, jestli je konkrétní počítač součástí botnetu, a tam, kde je hrozby přicházející z. Počítače se můžou stát uzly v botnetu, když útočníci neoprávněně nainstalují malware, který tajně komunikuje s příkazy a ovládání, které spravují botnetu. 
+## <a name="how-the-security-alerts-map-works"></a>Jak funguje mapa výstrah zabezpečení
+Security Center vám poskytne mapu, která vám pomůže identifikovat bezpečnostní hrozby pro prostředí. Můžete například zjistit, jestli je konkrétní počítač součástí botnetu a kde hrozba přichází. Počítače se můžou stát uzly v botnetuu, když útočníci neoprávněně nainstalují malware, který tajně komunikuje s příkazy a ovládacím prvkem, který spravuje botnetu. 
 
-Pokud chcete vytvořit toto mapování, Security Center používá data přicházející z několika zdrojů v rámci Microsoft. Security Center tato data používá k mapování potenciálních hrozeb pro vaše prostředí. 
+Chcete-li vytvořit tuto mapu, Security Center používá data pocházející z více zdrojů v rámci společnosti Microsoft. Security Center tato data používá k namapování potenciálních hrozeb na vaše prostředí. 
 
 Jedním z kroků [procesu reakce na incidenty zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide#incident-response) je identifikace závažnosti napadených systémů. V této fázi byste měli provést následující úlohy:
 
 - Určit povahu útoku.
-- Určete místo původu útoku.
+- Určete bod původu útoku.
 - Určit záměr útoku. Směřoval útok na vaši organizaci za účelem získání konkrétních informací, nebo se jednalo o náhodný útok?
 - Identifikovat napadené systémy.
 - Identifikujte soubory, ke kterým byl získán přístup, a závažnost takových souborů.
 
-Mapování výstrah zabezpečení ve službě Security Center můžete pomoct s těmito úkoly.
+K usnadnění těchto úloh můžete použít mapu výstrahy zabezpečení v Security Center.
 
-## <a name="access-the-security-alerts-map"></a>Přístup k mapě výstrahy zabezpečení
-Pokud chcete vizualizovat aktuální hrozby na vašem prostředí, spusťte nástroj Mapa upozornění zabezpečení:
+## <a name="access-the-security-alerts-map"></a>Přístup k mapě výstrah zabezpečení
+Pokud chcete vizualizovat aktuální hrozby ve vašem prostředí, otevřete mapu výstrah zabezpečení:
 
 1. Otevřete řídicí panel **Security Center**.
-2. V levém podokně v části **ochrana před internetovými útoky** vyberte **mapy výstrahy zabezpečení**. Otevře se na mapě.
-3. Chcete-li získat další informace o výstraze a přijímat nápravných kroků, klikněte na upozornění tečku na mapě a postupujte podle pokynů. 
+2. V levém podokně v části **Ochrana před hrozbami** vyberte **Mapa výstrah zabezpečení**. Otevře se mapa.
+3. Chcete-li získat další informace o výstrahách a přijetí kroků k nápravě, klikněte na položku tečka na mapě na mapě a postupujte podle pokynů. 
  
-Mapa upozornění zabezpečení je založená na výstrahy. Tyto výstrahy jsou založené na aktivitách komunikace pro síť, ve které byla přidružena IP adresu, která byla úspěšně, jestli je IP adresa známá rizikové IP adresy (například známé cryptominer) nebo IP adresu, která není rozpoznána dříve jako rizikovou. Na mapě poskytuje výstrahy v rámci žádné předplatné, které jste vybrali dříve v Azure. 
+Mapa výstrah zabezpečení je založena na výstrahách. Tyto výstrahy jsou založené na aktivitách, pro které byla síťová komunikace přidružena k IP adrese, která byla úspěšně vyřešena, bez ohledu na to, zda je IP adresa známou (například známá cryptominer) nebo IP adresa, která nebyla rozpoznána. dříve jako rizikové. Mapa poskytuje výstrahy u všech předplatných, která jste dříve vybrali v Azure. 
 
-Upozornění na mapě se zobrazují podle zeměpisného umístění, kde jsou zjištěny jako pocházející z, a jsou barevně odlišeny podle závažnosti. 
+Výstrahy na mapě se zobrazují v závislosti na geografickém umístění, kde se zjišťují, jak pocházejí od, a jsou barevně kódované podle závažnosti. 
     ![Informace analýzy hrozeb](./media/security-center-threat-intel/security-center-alert-map.png)
 
-## <a name="viewing-the-event-based-threat-intelligence-dashboard"></a>Zobrazení založeného na událostech řídicímu panelu analýzy hrozeb
-Chcete-li zobrazit mapa analýzy hrozeb na základě zabezpečení nezpracovaných událostí, můžete podle následujícího postupu. Toto mapování se zobrazí pouze události, které se týkají IP adresu, která se považuje za rizikové, například IP adresu známé botnety.
-
-1. Otevřete řídicí panel **Security Center**.
-
-1. V levém podokně v části **ochrana před internetovými útoky** vyberte **mapy výstrahy zabezpečení**. Otevře se na mapě.
-2. V pravém horním rohu, klikněte na tlačítko **přejít do mapy událostí zabezpečení**.
-3. Vyberte pracovní prostor, pro které chcete zobrazit řídicí panel.
-4. V horní části stránky na mapě, vyberte **zobrazit classic hrozeb**. **Hrozeb** otevře se řídicí panel.
-
-   > [!NOTE]
-   > Pokud se ve sloupci úplně vpravo zobrazí **UPGRADUJTE PLÁN**, tento pracovní prostor používá bezplatné předplatné. Upgradujte na úroveň Standard, abyste mohli tuto funkci používat. Pokud se zobrazí ve sloupci úplně vpravo **vyžaduje aktualizaci**, aktualizujte [protokoly Azure monitoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) pro použití této funkce. Další informace o cenovém plánu najdete v článku o cenách Azure Security Center.
-   >
-5. Pokud máte k prozkoumání více než jeden pracovní prostor, určete prioritu prozkoumání podle sloupce **Škodlivá IP adresa**. Zobrazuje se v něm aktuální počet škodlivých IP adres v tomto pracovním prostoru. Vyberte pracovní prostor, který chcete použít, a pak se zobrazí řídicí panel **Analýza hrozeb**.
-
-    ![Informace Analýzy hrozeb](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
-
-6. Řídicí panel je rozdělen na čtyři dlaždice:
-
-    a.  **Typy hrozeb**. Obsahuje souhrn typů hrozeb detekovaných ve vybraném pracovním prostoru.
-
-    b.  **Země původu**. Agreguje objem přenosů podle zdrojového místa.
-
-    c.  **Poloha hrozeb**. Pomáhá identifikovat aktuální místa po celém světě, ze kterých probíhá komunikace s vaším prostředím. Oranžové (příchozí) a červené (odchozí) šipky zobrazené na mapě určují směr přenosu. Pokud některou z těchto šipek vyberete, zobrazí se typ hrozby a směr přenosu.
-
-    d.  **Podrobnosti o hrozbě**. Zobrazuje více podrobností o hrozbě, kterou jste vybrali na mapě.
-
-Řídicí panel, který se zobrazí po výběru jakékoli dlaždice možností, vychází z dotazu prohledávání protokolu. Jediným rozdílem je typ dotazu a výsledek.
-
-### <a name="threat-types"></a>Typy hrozeb
-Výběrem dlaždice **Typy hrozeb** otevřete řídicí panel **Prohledávání protokolů**. Vlevo se zobrazí možnosti filtru a vpravo výsledky dotazu.
-
-![Prohledávání protokolů](./media/security-center-threat-intel/security-center-threat-intel-fig3.png)
-
-Výsledek dotazu ukazuje hrozby podle názvu. V levém podokně můžete vybrat atribut, podle kterého chcete filtrovat. Pokud například chcete zobrazit pouze hrozby, které jsou aktuálně připojené k počítačům, v části **STAV RELACE** vyberte **Připojeno** > **Použít**.
-
-![Stav relace](./media/security-center-threat-intel/security-center-threat-intel-fig4.png)
-
-Pro virtuální počítače Azure se na řídicím panelu **Analýza hrozeb** zobrazují pouze data sítě, která prochází přes agenta. Analýza hrozeb používá také následující typy dat:
-
-- Data CEF (Type=CommonSecurityLog)
-- WireData (Type=WireData)
-- Protokoly služby IIS (Type=W3CIISLog)
-- Brána Windows Firewall (Type=WindowsFirewall)
-- Události DNS (Type=DnsEvents)
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 V tomto článku jste zjistili, jak používat analýzu hrozeb ve službě Security Center jako pomoc při identifikování podezřelých aktivit. Další informace o službě Security Center najdete v následujících článcích:
 
 * [Správa a reakce na výstrahy zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.

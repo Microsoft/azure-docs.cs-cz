@@ -1,6 +1,6 @@
 ---
-title: Pomocí vyhledávání ve službě Azure Application Insights | Dokumentace Microsoftu
-description: Vyhledávání a filtrování nezpracovaná telemetrická data odesílaná aplikací pro web.
+title: Používání služby Search v Azure Application Insights | Microsoft Docs
+description: Hledání a filtrování nezpracovaných telemetrie odesílaných vaší webovou aplikací
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,160 +10,151 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 07/30/2019
 ms.author: mbullwin
-ms.openlocfilehash: dfbaabd3d27804909334a7a370bcc89115e625c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d08fd2ac6db63eee01c0653d2dbb1623fb1b51ed
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60899970"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705422"
 ---
-# <a name="using-search-in-application-insights"></a>Pomocí vyhledávání ve službě Application Insights
-Hledání je funkce [Application Insights](../../azure-monitor/app/app-insights-overview.md) , který používáte k vyhledání a prozkoumejte telemetrická data jednotlivých položek, například zobrazení stránek, výjimky nebo webové požadavky. A můžete zobrazit trasování protokolů a událostí, které jste nakódovali.
+# <a name="using-search-in-application-insights"></a>Použití vyhledávání v Application Insights
 
-(Pro složitější dotazy na data, použijte [Analytics](../../azure-monitor/log-query/get-started-portal.md).)
+Hledání je funkce [Application Insights](../../azure-monitor/app/app-insights-overview.md) , kterou používáte k vyhledání a prohlížení jednotlivých položek telemetrie, jako jsou například zobrazení stránky, výjimky nebo webové požadavky. A můžete zobrazit protokol trasování a události, které jste nastavili.
 
-## <a name="where-do-you-see-search"></a>Kde se zobrazí hledání?
+(Pro složitější dotazy přes vaše data použijte [Analytics](../../azure-monitor/log-query/get-started-portal.md).)
 
-### <a name="in-the-azure-portal"></a>Na webu Azure Portal
+## <a name="where-do-you-see-search"></a>Kde se zobrazuje hledání?
 
-Diagnostické vyhledávání můžete otevřít explicitně v okně Přehled služby Application Insights vaší aplikace:
+### <a name="in-the-azure-portal"></a>V Azure Portal
 
-![Otevřete diagnostické vyhledávání](./media/diagnostic-search/001.png)
+Můžete otevřít vyhledávání diagnostiky z karty Přehled Application Insights vaší aplikace (nachází se na horním panelu) nebo v části prozkoumat na levé straně.
 
-![Snímek obrazovky s grafy diagnostické vyhledávání](./media/diagnostic-search/002.png)
+![Karta Hledat](./media/diagnostic-search/view-custom-events.png)
 
-Hlavní část diagnostické vyhledávání je seznam položek telemetrie – požadavky na server, stránka zobrazení, vlastní události, které jste nakódovali a tak dále. V horní části seznamu je souhrn graf zobrazující počet událostí v čase.
+Chcete-li zobrazit seznam položek telemetrie – požadavky serveru, zobrazení stránky, vlastní události, které jste nastavili, a tak dále, přejděte do rozevírací nabídky typy událostí. V horní části seznamu výsledků je souhrnný graf zobrazující počty událostí v průběhu času.
 
-Klikněte na Aktualizovat zobrazíte nové události.
+Klikněte na tlačítko z rozevírací nabídky nebo aktualizovat a získejte nové události.
 
 ### <a name="in-visual-studio"></a>V nástroji Visual Studio
 
-V sadě Visual Studio je také hledání Application Insights okno. To je zvláště užitečná pro zobrazení telemetrie události generované modulem aplikace, kterou ladíte. Ale můžete také zobrazit událostí shromažďovaných ze publikované aplikace na webu Azure portal.
+V aplikaci Visual Studio je k dispozici také okno hledání Application Insights. Je nejužitečnější pro zobrazení událostí telemetrie generovaných aplikací, kterou ladíte. Ale může také zobrazit události shromážděné z publikované aplikace na Azure Portal.
 
-Otevřete okno hledání v sadě Visual Studio:
+Otevřete okno hledání v aplikaci Visual Studio:
 
-![Visual Studio Otevřít hledání Application Insights](./media/diagnostic-search/32.png)
+![Visual Studio – otevřít Application Insights Search](./media/diagnostic-search/32.png)
 
-V okně hledání má funkce podobně jako na webovém portálu:
+Okno hledání má podobné funkce jako webový portál:
 
-![Okno hledání Visual Studio Application Insights](./media/diagnostic-search/34.png)
+![Okno hledání Application Insights sady Visual Studio](./media/diagnostic-search/34.png)
 
-Když otevřete žádost o nebo zobrazení stránky je k dispozici na kartě sledovat operaci. "Operace" je posloupnost událostí, který je přidružený k jedné žádosti nebo stránky zobrazení. Například volání závislostí, výjimek, protokoly trasování a vlastní události může být součástí jedné operace. Na kartě sledovat operaci zobrazí graficky načasování a doba trvání z těchto událostí ve vztahu k požadavku nebo stránky zobrazení. 
+Karta sledovat operaci je dostupná, když otevřete žádost nebo zobrazení stránky. ' Operation ' je posloupnost událostí, které jsou spojeny s jedním požadavkem nebo zobrazením stránky. Například volání závislostí, výjimky, protokoly trasování a vlastní události mohou být součástí jedné operace. Karta sledovat operaci znázorňuje graficky časování a dobu trvání těchto událostí ve vztahu k žádosti nebo zobrazení stránky.
 
-## <a name="inspect-individual-items"></a>Zkontrolujte jednotlivé položky
+## <a name="inspect-individual-items"></a>Kontrola jednotlivých položek
 
-Vyberte všechny položky telemetrie zobrazíte pole klíčů a souvisejícími položkami.
+Výběrem jakékoli položky telemetrie zobrazíte klíčová pole a související položky.
 
-![Snímek obrazovky s požadavkem na jednotlivých závislostí](./media/diagnostic-search/003.png)
+![Snímek obrazovky samostatné žádosti o závislost](./media/diagnostic-search/telemetry-item.png)
 
-Tím se spustí zobrazení podrobností transakcí začátku do konce:
-
-![Snímek obrazovky zobrazení podrobností transakcí začátku do konce.](./media/diagnostic-search/004.png)
+Tím se spustí zobrazení Podrobnosti o koncovém konci transakce.
 
 ## <a name="filter-event-types"></a>Filtrovat typy událostí
-Otevře se okno Filtr a vyberte typy událostí, které chcete zobrazit. (Pokud chcete později obnovit filtry, se kterými jste okno otevřeli, klikněte na resetovat.)
 
-![Vyberte filtr a vyberte typy telemetrie](./media/diagnostic-search/02-filter-req.png)
+Otevřete rozevírací nabídku typy událostí a vyberte typy událostí, které chcete zobrazit. (Pokud později chcete filtry obnovit, klikněte na tlačítko Resetovat.)
 
-Typy událostí jsou:
+Typy událostí:
 
-* **Trasování** - [diagnostické protokoly](../../azure-monitor/app/asp-net-trace-logs.md) včetně TrackTrace, log4Net, NLog a System.Diagnostic.Trace volání.
-* **Požádat o** -žádosti HTTP přijaté vaší serverové aplikace, včetně stránek, skripty, obrázky, soubory stylu a data. Tyto události se používají k vytvoření žádostí a odpovědí tabulkách Přehled.
-* **Zobrazení stránky** - [Telemetrii zaslanou klientem webového](../../azure-monitor/app/javascript.md), která slouží k vytváření sestav zobrazení stránky. 
-* **Vlastní události** - li vložit volání do funkce TrackEvent() za účelem [monitorovat využití](../../azure-monitor/app/api-custom-events-metrics.md), je zde můžete vyhledávat.
-* **Výjimka** – nezachycené [výjimky na serveru](../../azure-monitor/app/asp-net-exceptions.md)a ty, kteří se přihlašují pomocí TrackException().
-* **Závislost** - [volání z aplikace server](../../azure-monitor/app/asp-net-dependencies.md) k jiným službám, jako jsou rozhraní REST API nebo databáze a AJAX volá z vaší [klientský kód](../../azure-monitor/app/javascript.md).
-* **Dostupnost** – výsledky [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).
+* Sledujte - [diagnostické protokoly](../../azure-monitor/app/asp-net-trace-logs.md) , včetně TrackTrace, log4Net, nLOG a System. Diagnostics. Trace.
+* Žádosti **o** požadavky HTTP přijaté serverovou aplikací, včetně stránek, skriptů, obrázků, souborů stylu a dat. Tyto události se používají k vytvoření grafů s přehledem požadavků a odpovědí.
+* **Telemetrie zobrazení** - stránky[odeslané webovým klientem](../../azure-monitor/app/javascript.md), která se používá k vytvoření sestav zobrazení stránky
+* **Vlastní událost** – Pokud jste vložili volání do TrackEvent (), aby bylo možné [monitorovat využití](../../azure-monitor/app/api-custom-events-metrics.md), můžete je vyhledat tady.
+* **Výjimka** – nezachycené [výjimky na serveru](../../azure-monitor/app/asp-net-exceptions.md)a ty, které se protokolují pomocí TrackException ().
+* **Volání závislosti** - [z vaší serverové aplikace](../../azure-monitor/app/asp-net-dependencies.md) do jiných služeb, jako jsou rozhraní REST API nebo databáze, a volání AJAX z [kódu klienta](../../azure-monitor/app/javascript.md).
+* **Dostupnost** – výsledky [testů dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).
 
-## <a name="filter-on-property-values"></a>Filtrovat podle hodnoty vlastnosti
-Můžete filtrovat události na hodnoty jejich vlastností. Dostupné vlastnosti závisí na typy událostí, které jste vybrali. 
+## <a name="filter-on-property-values"></a>Filtrovat hodnoty vlastností
 
-Například vyberte žádosti s kódem konkrétní odpověď. 
+Události můžete filtrovat podle hodnot jejich vlastností. Dostupné vlastnosti závisejí na typech událostí, které jste vybrali. Klikněte na ikonu filtru. ![Ikona filtru](./media/diagnostic-search/filter-icon.png) spustí.
 
-![Rozbalte vlastnost a zvolit hodnotu](./media/diagnostic-search/03-response500.png)
+Výběr všech hodnot určité vlastnosti má stejný účinek jako výběr všech hodnot. Odpíná filtrování u této vlastnosti.
 
-Výběr žádné hodnoty konkrétní vlastnosti má stejný účinek jako volba všechny hodnoty. Ji vypne filtrování pro tuto vlastnost.
+Všimněte si, že počty napravo od hodnot filtru ukazují, kolik výskytů je v aktuální filtrované sadě.
 
-### <a name="narrow-your-search"></a>Zpřesnit hledání
-Všimněte si, že počty napravo od hodnoty filtru zobrazit, kolik výskytů existuje jsou v aktuální filtrované sadě. 
+## <a name="find-events-with-the-same-property"></a>Najde události se stejnou vlastností.
 
-V tomto příkladu je jasné, že "Záhlavím nebo zaměstnanců" požádat o výsledky ve většině "500" chyb:
+Chcete-li najít všechny položky se stejnou hodnotou vlastnosti, buď je zadejte do panelu hledání, nebo klikněte na zaškrtávací políčko při prohlížení vlastností na kartě filtr.
 
-![Rozbalte vlastnost a zvolit hodnotu](./media/diagnostic-search/04-failingReq.png)
+![Klikněte na zaškrtávací políčko vlastnosti na kartě filtr.](./media/diagnostic-search/filter-property.png)
 
-## <a name="find-events-with-the-same-property"></a>Najít akce se stejnou vlastnost
-Vyhledejte všechny položky se stejnou hodnotou vlastnosti:
-
-![Klikněte pravým tlačítkem na vlastnosti](./media/diagnostic-search/12-samevalue.png)
-
-## <a name="search-the-data"></a>Prohledávat data.
+## <a name="search-the-data"></a>Hledání dat
 
 > [!NOTE]
-> Pokud chcete psát složitější dotazy, otevřete [ **Analytics** ](../../azure-monitor/log-query/get-started-portal.md) z horní části okna hledání.
-> 
+> Pokud chcete v horní části okna hledání zapisovat složitější dotazy, otevřete [**protokoly (Analytics)** ](../../azure-monitor/log-query/get-started-portal.md) .
+>
 
-Můžete vyhledat výrazy v některém z hodnot vlastností. To je zvlášť užitečné, pokud jste napsali [vlastních událostí](../../azure-monitor/app/api-custom-events-metrics.md) s hodnotami vlastností. 
+Můžete hledat výrazy v jakékoli z hodnot vlastností. To je užitečné, pokud jste napsali [vlastní události](../../azure-monitor/app/api-custom-events-metrics.md) s hodnotami vlastností.
 
-Můžete chtít nastavit čas rozsah, jako hledání nad kratší rozsah jsou rychlejší. 
+Možná budete chtít nastavit časový rozsah, protože hledání v kratším rozsahu je rychlejší.
 
-![Otevřete diagnostické vyhledávání](./media/diagnostic-search/appinsights-311search.png)
+![Otevřít vyhledávání diagnostiky](./media/diagnostic-search/search-property.png)
 
-Hledat celá slova, ne podřetězců. Pomocí speciální znaky, uzavřete do uvozovek.
+Vyhledejte úplná slova, nikoli podřetězce. Použijte uvozovky k uzavření speciálních znaků.
 
-| string | je *není* zjištěných aplikací | ale tyto ho najít |
+| Řetězec | *Nenalezeno* | Nalezeno |
 | --- | --- | --- |
-| HomeController.About |Domovská stránka<br/>Kontroler<br/>navýšení kapacity | homecontroller<br/>o<br/>"homecontroller.about"|
-|Spojené státy|Uni<br/>videa TED|Spojené<br/>stavy<br/>Spojené státy a<br/>"USA"
+| HomeController. about |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
+|Spojené státy|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
 
-Tady jsou hledaných výrazů, které můžete použít:
+Tady jsou hledané výrazy, které můžete použít:
 
-| Ukázkový dotaz | Efekt |
+| Vzorový dotaz | Efekt |
 | --- | --- |
-| `apple` |Najít všechny události v časovém rozsahu, jejichž pole obsahují slovo "apple" |
-| `apple AND banana` <br/>`apple banana` |Najdete akce, které obsahují i slova. Použít kapitálu "a" Ne "a". <br/>Krátký tvar. |
-| `apple OR banana` |Najdete akce, které obsahují buď aplikace word. Použití "Nebo", ne "nebo". |
-| `apple NOT banana` |Najdete akce, které obsahují jedno slovo ale nikoli u druhého. |
+| `apple` |Najde všechny události v časovém rozsahu, jehož pole obsahují slovo "Apple". |
+| `apple AND banana` <br/>`apple banana` |Najde události, které obsahují obě slova. Použijte velká písmena "a", nikoli "a". <br/>Krátká forma. |
+| `apple OR banana` |Najde události, které obsahují buď slovo. Použijte "nebo", nikoli "nebo". |
+| `apple NOT banana` |Najde události, které obsahují jedno slovo, ale ne druhý. |
 
 ## <a name="sampling"></a>Vzorkování
-Pokud vaše aplikace generuje mnoho telemetrie (a vy používáte 2.0.0-beta3 verze sady SDK technologie ASP.NET nebo novější), modul adaptivního vzorkování automaticky sníží objem, který je odesílán na portál odesláním pouze reprezentativní vzorky událostí. Události, které se vztahují ke stejnému požadavku jsou však vybrané nebo nevybrány jako skupina, takže mohou procházet mezi souvisejícími událostmi. 
+
+Pokud vaše aplikace vygeneruje velké množství telemetrie (a používáte sadu SDK ASP.NET verze 2.0.0-beta3 nebo novější), modul adaptivního vzorkování automaticky zmenší svazek, který se pošle na portál, tím, že posílá jenom reprezentativní zlomek událostí. Nicméně události, které se vztahují ke stejné žádosti, se vyberou nebo odliší jako skupina, takže můžete přecházet mezi souvisejícími událostmi.
 
 [Další informace o vzorkování](../../azure-monitor/app/sampling.md).
 
 ## <a name="create-work-item"></a>Vytvořit pracovní položku
-Můžete vytvořit chybu v Githubu nebo Azure DevOps s podrobnostmi o z libovolné položky telemetrie. 
 
-![Klikněte na novou pracovní položku, upravte pole a pak klikněte na tlačítko OK.](./media/diagnostic-search/42.png)
+Můžete vytvořit chybu v GitHubu nebo v Azure DevOps s podrobnostmi z jakékoli položky telemetrie.
 
-Okamžiku, kdy to provedete, budete vyzváni ke konfiguraci propojení pro vaši organizaci Azure DevOps a projektu.
+Kliknutím na libovolnou položku telemetrie a výběrem možnosti **vytvořit pracovní položku**přejdete do zobrazení Podrobnosti o koncových transakcích.
 
-![Zadejte adresu URL služby Azure DevOps a název projektu a klikněte na tlačítko Ověřit](./media/diagnostic-search/41.png)
+![Klikněte na nová pracovní položka, upravte pole a pak klikněte na OK.](./media/diagnostic-search/work-item.png)
 
-(Můžete také nakonfigurovat na odkaz v okně pracovních položek).
+Když to uděláte poprvé, zobrazí se výzva, abyste nakonfigurovali odkaz na vaši organizaci a projekt Azure DevOps.
 
-## <a name="send-more-telemetry-to-application-insights"></a>Odeslat další telemetrická data do Application Insights
-Kromě out-of-the-box telemetrická data odesílaná sadu SDK Application Insights můžete:
+(Můžete také nakonfigurovat odkaz na kartě pracovní položky.)
 
-* Záznam trasování protokolu z vašeho oblíbeného rozhraní protokolování v [.NET](../../azure-monitor/app/asp-net-trace-logs.md) nebo [Java](../../azure-monitor/app/java-trace-logs.md). To znamená, že můžete prohledávat protokoly trasování a korelovat je s zobrazení stránek, výjimky a další události. 
-* [Psaní kódu](../../azure-monitor/app/api-custom-events-metrics.md) k odesílání vlastních událostí, zobrazení stránek a výjimky. 
+## <a name="send-more-telemetry-to-application-insights"></a>Odeslat další telemetrii do Application Insights
 
-[Zjistěte, jak odesílat protokoly a vlastní telemetrii do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
+Kromě předem připravené telemetrie, kterou odesílá Application Insights SDK, můžete:
 
-## <a name="questions"></a>Q & A
-### <a name="limits"></a>Jaká data se uchovávají?
+* Zachyťte trasování protokolu z oblíbeného protokolovacího rozhraní v [rozhraní .NET](../../azure-monitor/app/asp-net-trace-logs.md) nebo [Java](../../azure-monitor/app/java-trace-logs.md). To znamená, že můžete procházet trasování protokolu a korelovat je s zobrazeními stránky, výjimkami a dalšími událostmi.
+* [Napíšete kód](../../azure-monitor/app/api-custom-events-metrics.md) pro odesílání vlastních událostí, zobrazení stránky a výjimek.
 
-Zobrazit [souhrn omezení](../../azure-monitor/app/pricing.md#limits-summary).
+Naučte se, [Jak odesílat protokoly a vlastní telemetrii do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
 
-### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Jak lze zobrazit data příspěvek v Moje žádosti serveru?
-Automaticky jsme není protokolů následných dat ale můžete použít [TrackTrace nebo protokol volání](../../azure-monitor/app/asp-net-trace-logs.md). Vložte příspěvek data v parametru zprávy. Nelze filtrovat zprávy stejným způsobem, který můžete filtrovat podle vlastností, ale maximální velikost je delší.
+## <a name="questions"></a>OTÁZKA & A
 
-## <a name="video"></a>Video
+### <a name="limits"></a>Kolik dat se zachová?
 
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
+Podívejte se na [Souhrn omezení](../../azure-monitor/app/pricing.md#limits-summary).
+
+### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Jak se dá v žádostech na server zobrazit POST data?
+
+Data POST neprotokolují automaticky, ale můžete použít [TrackTrace nebo log Calling](../../azure-monitor/app/asp-net-trace-logs.md). Umístěte POST data do parametru zprávy. Zprávu nelze filtrovat stejným způsobem, jakým je možné filtrovat vlastnosti, ale omezení velikosti je delší.
 
 ## <a name="add"></a>Další kroky
-* [Zápis složitých dotazů v Analytics](../../azure-monitor/log-query/get-started-portal.md)
-* [Odeslání protokolů a vlastní telemetrii do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
-* [Nastavení dostupnosti a rychlosti odezvy testy](../../azure-monitor/app/monitor-web-app-availability.md)
+
+* [Zápis složitých dotazů do analýz](../../azure-monitor/log-query/get-started-portal.md)
+* [Odeslání protokolů a vlastní telemetrie do Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
+* [Nastavení testů dostupnosti a odezvy](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Odstraňování potíží](../../azure-monitor/app/troubleshoot-faq.md)

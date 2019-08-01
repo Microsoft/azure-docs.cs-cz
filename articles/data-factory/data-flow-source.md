@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: f6aed5d2ac1c4672d8d8868fe127ead053512e42
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 974ece9cd035ae29ada38f34b7933d86f682194f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314837"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696231"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro tok dat mapování 
 
@@ -28,8 +28,12 @@ Každý tok dat vyžaduje aspoň jednu zdrojovou transformaci. Přidejte tolik z
 
 Přidružte transformaci zdroje toku dat k právě jedné datové sadě Data Factory. Datová sada definuje tvar a umístění dat, ke kterým chcete zapisovat, nebo z nich číst. Ve zdroji můžete použít zástupné znaky a seznamy souborů pro práci s více než jedním souborem v jednom okamžiku.
 
-## <a name="data-flow-staging-areas"></a>Pracovní oblasti toku dat
+Když použijete možnost **vzorového zástupného znaku** , nastaví se ADF, aby prochází každou shodnou složku a soubor v jediné transformaci zdroje. Toto je velice efektivní způsob, jak zpracovat více souborů v rámci jednoho toku. Chcete-li sledovat název aktuálně zpracovávaného souboru, nastavte pole název sloupce na Uložit název souboru v možnostech zdroje.
 
+> [!NOTE]
+> Nastavte více vzorů pro porovnávání se zástupnými znaky pomocí znaménka + vedle stávajícího vzoru zástupného znaku a přidejte další pravidla zástupných znaků.
+
+## <a name="data-flow-staging-areas"></a>Pracovní oblasti toku dat
 Tok dat funguje s *přípravnými* datovými sadami, které jsou všechny v Azure. Tyto datové sady použijte pro přípravu při transformaci dat. 
 
 Data Factory má přístup k téměř 80 nativním konektorům. Chcete-li zahrnout data z těchto jiných zdrojů do toku dat, použijte nástroj pro kopírování aktivit pro přípravu těchto dat v jednom z pracovních oblastí datové sady datových toků.
@@ -101,13 +105,23 @@ Příklady zástupných znaků:
 
 V datové sadě musí být zadaný kontejner. Cesta ke zástupným znakům proto musí taky obsahovat cestu ke složce z kořenové složky.
 
+* **Kořenová cesta oddílu**: Pokud máte ve zdroji ```key=value``` souborů ve formátu dělené složky (tj. Year = 2019), můžete pomocí služby ADF požádat o přiřazení nejvyšší úrovně stromu složek oddílu k názvu sloupce v datovém proudu toku dat.
+
+Nejdřív nastavte zástupný znak tak, aby zahrnoval všechny cesty, které jsou rozdělené do oddílů, a soubory listů, které chcete číst.
+
+![Nastavení zdrojového souboru oddílu](media/data-flow/partfile2.png "Nastavení souboru oddílu")
+
+Teď použijte nastavení kořenové cesty oddílu k informování ADF, co je nejvyšší úroveň struktury složek. Když teď zobrazíte obsah vašich dat, uvidíte, že tento ADF bude přidávat vyřešené oddíly, které se nacházejí v jednotlivých úrovních vaší složky.
+
+![Kořenová cesta oddílu](media/data-flow/partfile1.png "Zobrazit kořenovou cestu oddílu")
+
 * **Seznam souborů**: Toto je sada souborů. Vytvořte textový soubor, který obsahuje seznam relativních souborů cest ke zpracování. Najeďte na tento textový soubor.
 * **Sloupec pro uložení názvu souboru**: Uložte název zdrojového souboru do sloupce v datech. Sem zadejte nový název pro uložení řetězce názvu souboru.
 * **Po dokončení**: Po spuštění toku dat vyberte, že nechcete nic dělat se zdrojovým souborem, odstraňte zdrojový soubor nebo přesuňte zdrojový soubor. Cesty pro přesun jsou relativní.
 
 Chcete-li přesunout zdrojové soubory do následujícího následného zpracování, vyberte nejprve možnost přesunout pro operaci soubor. Potom nastavte adresář "z". Pokud pro cestu nepoužíváte žádné zástupné znaky, pak bude mít nastavení "od" stejnou složku jako vaše zdrojová složka.
 
-Pokud máte zástupnou cestu ke zdroji, např.:
+Pokud máte zdrojovou cestu se zástupným znakem, vaše syntaxe bude vypadat následovně:
 
 ```/data/sales/20??/**/*.csv```
 
@@ -119,7 +133,7 @@ A "to" jako
 
 ```/backup/priorSales```
 
-V takovém případě jsou všechny podadresáře, které byly nasource, přesunuty do/data/Sales vzhledem k/backup/priorSales.
+V tomto případě se všechny soubory, které byly nasource v/data/Sales, přesunuly do/backup/priorSales.
 
 ### <a name="sql-datasets"></a>Datové sady SQL
 
@@ -152,8 +166,7 @@ Datové typy sloupců můžete upravit v pozdější transformaci odvozeného sl
 ![Nastavení pro výchozí formáty dat](media/data-flow/source2.png "Výchozí formáty")
 
 ### <a name="add-dynamic-content"></a>Přidat dynamický obsah
-
-Po kliknutí na pole na panelu nastavení se zobrazí hypertextový odkaz na Přidat dynamický obsah. Když kliknete sem, spustí se Tvůrce výrazů. Tady můžete nastavit hodnoty pro nastavení dynamicky pomocí výrazů, hodnot statických literálů nebo parametrů.
+Po kliknutí na pole na panelu nastavení se zobrazí hypertextový odkaz na Přidat dynamický obsah. Když vyberete spuštění Tvůrce výrazů, nastavíte hodnoty dynamicky pomocí výrazů, statických literálových hodnot nebo parametrů.
 
 ![Parametry](media/data-flow/params6.png "Parametry")
 

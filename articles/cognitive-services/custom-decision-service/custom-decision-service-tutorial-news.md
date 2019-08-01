@@ -10,14 +10,15 @@ ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: d8ddafe20ff93e7ae4d51e2180bbd40447729234
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: f7eafed9db25fba904d98ddea652671dc45aa01d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60863354"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707226"
 ---
-# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Kurz: Přizpůsobení článku kontextové rozhodování
+# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Kurz: Přizpůsobení článku pro rozhodování kontextového rozhodování
 
 Tento kurz se zaměřuje na přizpůsobení výběru článků na úvodní stránce webu. Služba Custom Decision Service například ovlivňuje *množství* seznamů článků na přední stránce. Stránka může být webovou stránkou se zprávami, která se zaměřuje pouze na politiku a sport. Měla by zobrazovat tři seřazené seznamy článků: politika, sport a nejnovější.
 
@@ -44,7 +45,7 @@ Každý informační kanál poskytuje seznam článků. V RSS je každý z nich 
 </channel></rss>
 ```
 
-Pořadí článků je důležité. Určuje výchozí pořadí, což je váš nejlepší odhad pro uspořádání článků. Výchozí pořadí se pak použije k porovnání výkonu na řídicím panelu.
+Pořadí článků je důležité. Určuje výchozí pořadí, což je váš nejlepší odhad pro uspořádání článků. Výchozí hodnocení se pak použije pro porovnání výkonu na řídicím panelu.
 
 Další informace o formátu informačního kanálu najdete v [referenčních informacích k rozhraní API](custom-decision-service-api-reference.md#action-set-api-customer-provided).
 

@@ -1,6 +1,6 @@
 ---
-title: Propojení účtu Azure s ID partnera | Dokumentace Microsoftu
-description: Sledovat spolupráce se zákazníky Azure díky propojení ID partnera s uživatelským účtem, který používáte ke správě prostředků zákazníka.
+title: Propojit účet Azure s ID partnera | Microsoft Docs
+description: Pomocí odkazů na uživatelský účet, který používáte ke správě prostředků zákazníka, Sledujte zapojení se zákazníky Azure.
 services: billing
 author: dhirajgandhi
 manager: dhgandhi
@@ -11,150 +11,150 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 97866a1f1299c028cdc8f86245308ae4a8b5db88
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 0448ffbccddc913bd6359f5f6bbf42988239afb4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502674"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706409"
 ---
-# <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojit ID partnera účtů Azure
+# <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojení ID partnera s účty Azure
 
-Partneři Microsoftu poskytují služby, které pomáhají zákazníkům dosáhnout obchodních a klíčových cílů používajících produkty společnosti Microsoft. Při jednání jménem zákazníka, správa, konfigurace a podpůrné služby Azure, partner uživatelé potřebovat přístup k prostředí zákazníka. Pomocí odkazu správce partnera, partnery můžete přidružit jeho ID partnera síťové přihlašovací údaje používané k poskytování služeb.
+Partneři Microsoftu poskytují služby, které zákazníkům pomůžou dosáhnout podnikatelských a organizačních cílů pomocí produktů Microsoftu. Když jednají jménem zákazníka, který spravuje, konfiguruje a podporuje služby Azure, budou mít partneři přístup k prostředí zákazníka. Pomocí odkazu správce partnerů můžou partneři přidružit své ID partnerské sítě k přihlašovacím údajům použitým pro doručování služeb.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-access-from-your-customer"></a>Získání přístupu z vašich zákazníků
+## <a name="get-access-from-your-customer"></a>Získání přístupu od zákazníka
 
-Předtím, než je propojit ID partnera, musí vaše zákazníky poskytují přístup k jejich prostředky Azure pomocí jedné z následujících možností:
+Před propojením ID partnera vám zákazník musí udělit přístup k prostředkům Azure pomocí jedné z následujících možností:
 
-- **Uživatel typu Host**: Zákazník může vás přidal jako uživatele typu Host a přiřadit přístup na základě rolí role (RBAC) ovládacího prvku. Další informace najdete v tématu [přidat uživatele typu Host z jiného adresáře](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Uživatel typu Host**: Váš zákazník se může přidat jako uživatel typu Host a přiřadit libovolné role řízení přístupu na základě role (RBAC). Další informace najdete v tématu [Přidání uživatelů typu host z jiného adresáře](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Adresář účtu**: Vašich zákazníků můžete vytvořit uživatelský účet pro vás v jejich vlastní adresáře a přiřadit libovolnou roli RBAC.
+- **Účet adresáře**: Zákazník může vytvořit uživatelský účet ve vlastním adresáři a přiřadit roli RBAC.
 
-- **Instanční objekt služby**: Vašich zákazníků můžete přidat aplikace nebo skriptu z vaší organizace v jejich directory a přiřadit libovolnou roli RBAC. Identita aplikace nebo skriptu, se označuje jako instanční objekt služby.
+- **Instanční objekt**: Zákazník může do svého adresáře přidat aplikaci nebo skript z vaší organizace a přiřadit roli RBAC. Identita aplikace nebo skriptu se označuje jako instanční objekt.
 
-## <a name="link-to-a-partner-id"></a>Propojit ID partnera.
+## <a name="link-to-a-partner-id"></a>Propojit s ID partnera
 
-Až budete mít přístup k prostředkům zákazníka, použijte na webu Azure portal, Powershellu nebo rozhraní příkazového řádku Azure k propojení vaší společnosti Microsoft ID Partner Network (MPN ID) vaše ID uživatele nebo instanční objekt. Propojte ID partnera v tenantovi každého zákazníka.
+Když máte přístup k prostředkům zákazníka, pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete propojit ID Microsoft Partner Network (MPN ID) s vaším ID uživatele nebo instančním objektem. Propojte ID partnera v každém tenantovi zákazníka.
 
-### <a name="use-the-azure-portal-to-link-to-a-new-partner-id"></a>Odkaz na nové ID partnera pomocí webu Azure portal
+### <a name="use-the-azure-portal-to-link-to-a-new-partner-id"></a>Připojení k novému ID partnera pomocí Azure Portal
 
-1. Přejděte na [odkaz s ID partnera](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade) na webu Azure Portal.
+1. Přejít na [odkaz na ID partnera](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade) v Azure Portal.
 
 2. Přihlaste se k portálu Azure.
 
-3. Zadejte ID partnera Microsoftu. ID partnera [programu Microsoft Partner Network](https://partner.microsoft.com/) ID pro vaši organizaci.
+3. Zadejte ID partnera Microsoftu. ID partnera je [Microsoft Partner Network](https://partner.microsoft.com/) ID vaší organizace.
 
-   ![Snímek obrazovky, který se zobrazí odkaz s ID partnera](./media/billing-link-partner-id/link-partner-ID.PNG)
+   ![Snímek obrazovky, který zobrazuje odkaz na ID partnera](./media/billing-link-partner-id/link-partner-ID.PNG)
 
-4. Propojit ID partnera pro odběratele jiného, přepněte adresáře. V části **přepnout adresář**, vyberte svůj adresář.
+4. Pokud chcete propojit ID partnera pro jiného zákazníka, přepněte adresář. V části **Přepnout adresář**vyberte svůj adresář.
 
-   ![Snímek obrazovky zobrazující přepnout adresář](./media/billing-link-partner-id/directory-switcher.png)
+   ![Snímek obrazovky se zobrazeným adresářem Switch](./media/billing-link-partner-id/directory-switcher.png)
 
-### <a name="use-powershell-to-link-to-a-new-partner-id"></a>Použití Powershellu k odkaz na nové ID partnera.
+### <a name="use-powershell-to-link-to-a-new-partner-id"></a>Použití PowerShellu k propojení s novým ID partnera
 
-1. Nainstalujte [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) modul prostředí PowerShell.
+1. Nainstalujte modul PowerShell [AZ. ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/) .
 
-2. Přihlaste se do tenanta zákazníka s účtem uživatele nebo instanční objekt služby. Další informace najdete v tématu [Přihlaste se pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+2. Přihlaste se k tenantovi zákazníka pomocí uživatelského účtu nebo instančního objektu. Další informace najdete v tématu věnovaném [přihlášení pomocí PowerShellu](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
    ```azurepowershell-interactive
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. Odkaz na nové ID partnera. ID partnera [programu Microsoft Partner Network](https://partner.microsoft.com/) ID pro vaši organizaci.
+3. Odkaz na nové ID partnera ID partnera je [Microsoft Partner Network](https://partner.microsoft.com/) ID vaší organizace.
 
     ```azurepowershell-interactive
     C:\> new-AzManagementPartner -PartnerId 12345
     ```
 
-#### <a name="get-the-linked-partner-id"></a>Získejte ID propojené partnera
+#### <a name="get-the-linked-partner-id"></a>Získat ID propojeného partnera
 ```azurepowershell-interactive
 C:\> get-AzManagementPartner
 ```
 
-#### <a name="update-the-linked-partner-id"></a>Aktualizace ID propojené partnera
+#### <a name="update-the-linked-partner-id"></a>Aktualizovat ID propojeného partnera
 ```azurepowershell-interactive
 C:\> Update-AzManagementPartner -PartnerId 12345
 ```
-#### <a name="delete-the-linked-partner-id"></a>Odstranit ID propojené partnera
+#### <a name="delete-the-linked-partner-id"></a>Odstranit ID propojeného partnera
 ```azurepowershell-interactive
 C:\> remove-AzManagementPartner -PartnerId 12345
 ```
 
-### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>Použití rozhraní příkazového řádku Azure pro odkaz na nové ID partnera.
+### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>Použití rozhraní příkazového řádku Azure pro odkazování na nové ID partnera
 1. Nainstalujte rozšíření Azure CLI.
 
     ```azurecli-interactive
     C:\ az extension add --name managementpartner
     ```
 
-2. Přihlaste se do tenanta zákazníka s účtem uživatele nebo instanční objekt služby. Další informace najdete v tématu [Přihlaste se pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+2. Přihlaste se k tenantovi zákazníka pomocí uživatelského účtu nebo instančního objektu. Další informace najdete v tématu [přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
     ```
 
-3. Odkaz na nové ID partnera. ID partnera [programu Microsoft Partner Network](https://partner.microsoft.com/) ID pro vaši organizaci.
+3. Odkaz na nové ID partnera ID partnera je [Microsoft Partner Network](https://partner.microsoft.com/) ID vaší organizace.
 
      ```azurecli-interactive
      C:\ az managementpartner create --partner-id 12345
       ```  
 
-#### <a name="get-the-linked-partner-id"></a>Získejte ID propojené partnera
+#### <a name="get-the-linked-partner-id"></a>Získat ID propojeného partnera
 ```azurecli-interactive
 C:\ az managementpartner show
 ```
 
-#### <a name="update-the-linked-partner-id"></a>Aktualizace ID propojené partnera
+#### <a name="update-the-linked-partner-id"></a>Aktualizovat ID propojeného partnera
 ```azurecli-interactive
 C:\ az managementpartner update --partner-id 12345
 ```
 
-#### <a name="delete-the-linked-partner-id"></a>Odstranit ID propojené partnera
+#### <a name="delete-the-linked-partner-id"></a>Odstranit ID propojeného partnera
 ```azurecli-interactive
 C:\ az managementpartner delete --partner-id 12345
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-Připojte se k diskusi v [komunitě partnerů Microsoft](https://aka.ms/PALdiscussion) přijímat aktualizace nebo poslat svůj názor.
+Připojte se k diskuzi v [komunitě partnerů Microsoftu](https://aka.ms/PALdiscussion) , abyste mohli dostávat aktualizace nebo odesílat zpětnou vazbu.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 **Kdo může propojit ID partnera?**
 
-Každý uživatel od partnerské organizace, který spravuje prostředky Azure na základě můžete propojit ID partnera účtu.
+Každý uživatel z partnerské organizace, který spravuje prostředky Azure, může propojit ID partnera s účtem.
 
-**Může být po je propojený změnit ID partnera?**
+**Může se po propojení změnit ID partnera?**
 
-Ano. ID partnera propojené lze změnit, přidat nebo odebrat.
+Ano. Propojené ID partnera lze změnit, přidat nebo odebrat.
 
-**Co když má uživatel účet ve více než jednoho tenanta zákazníka?**
+**Co když má uživatel účet ve více než jednom tenantovi zákazníka?**
 
-Propojení ID partnera a účet se provádí pro každého zákazníka tenanta. Propojte ID partnera v tenantovi každého zákazníka.
+Propojení mezi ID partnera a účtem se provádí pro každého tenanta zákazníka. Propojte ID partnera v každém tenantovi zákazníka.
 
-**Můžete dalších partnerů nebo zákazníky za upravit nebo odebrat propojení s ID partnera?**
+**Můžou jiní partneři nebo zákazníci upravit nebo odebrat propojení s ID partnera?**
 
-Odkaz na úrovni účtu uživatele souvisí. Pouze můžete upravit nebo odebrat odkaz na ID partnera. Zákazníka a dalšími partnery, nelze změnit propojení ID partnera.
+Odkaz je přidružen na úrovni uživatelského účtu. Odkaz na ID partnera můžete upravit nebo odebrat jenom vy. Zákazník a další partneři nemůžou změnit odkaz na ID partnera.
 
 
-**U kterého ID MPN by měl používat když Moje společnost má víc?**
+**Které ID MPN mám použít, pokud má moje společnost víc?**
 
-Partner umístění účtů a přidružené ID MPN by měla sloužit pro propojení ID partnera.  Další informace o [partnerské účty](https://docs.microsoft.com/partner-center/account-structure)
+Účty umístění partnera a přidružená ID MPN by se měly používat pro propojování ID partnera.  Další informace o [partnerských účtech](https://docs.microsoft.com/partner-center/account-structure)
 
-**Kde najdu vliv na výnosy vytváření sestav pro ID propojené partnera?**
+**Kde najdu nahlášení ovlivněných výnosů pro ID propojeného partnera?**
 
-Generování sestav produktu výkonu cloudu je k dispozici pro partnery v partnerském centru na [Moje přehledný řídicí panel](https://partner.microsoft.com/membership/reports/myinsights). Musíte vybrat partnerské propojení správce jako typ přidružení partnera.
+Vytváření sestav o výkonu cloudových produktů je dostupné pro partnery v partnerském centru na [řídicím panelu moje přehledy](https://partner.microsoft.com/membership/reports/myinsights). Jako typ přidružení partnera musíte vybrat odkaz partner admin.
 
-**Proč nelze zobrazit Moje zákazníka v sestavách?**
+**Proč se mi v sestavách nezobrazuje můj zákazník?**
 
-Nelze zobrazit zákazníka v sestavách z následujících důvodů
+Z následujících důvodů nelze zobrazit zákazníka v sestavách.
 
-1. Propojené uživatelský účet nemá [přístupu podle Role](https://docs.microsoft.com/azure/role-based-access-control/overview) na kterýkoli zákazník předplatné Azure nebo prostředků.
+1. Propojený uživatelský účet nemá [přístup na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview) u předplatného nebo prostředku Azure pro zákazníky.
 
-2. Předplatné Azure, kde má uživatel [přístupu podle Role](https://docs.microsoft.com/azure/role-based-access-control/overview) přístup nemá žádné využití.
+2. Předplatné Azure, ve kterém má uživatel přístup [na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview) , nemá žádné použití.
 
-**Odkaz partnera, se kterým ID funguje s Azure Stack?**
+**Funguje s Azure Stackem Link partner?**
 
-Ano, je možné propojit ID partnera pro službu Azure Stack.
+Ano, můžete propojit ID partnera pro Azure Stack.

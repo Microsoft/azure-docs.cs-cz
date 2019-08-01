@@ -1,18 +1,19 @@
 ---
 title: Azure Backup pro úlohy SQL Serveru využívající DPM
 description: Úvod k zálohování databází SQL Server pomocí služby Azure Backup
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: kasinh
-ms.openlocfilehash: 60afba5d094d730aab20f2a7d50206c063f390ff
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 744c954c9192f75489911f09a1ef7195c5bbd1fa
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466626"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689374"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
 Tento článek vás provede kroky konfigurace pro zálohování SQL Server databází pomocí Azure Backup.
@@ -107,7 +108,7 @@ Než začnete, ujistěte se, že byly splněny všechny [požadavky](backup-azur
     * Způsob práce s **offline zálohováním** je vysvětleno v tématu [pracovní postup offline zálohování v Azure Backup](backup-azure-backup-import-export.md).
 
     Vyberte příslušný přenosový mechanismus pro odeslání prvotní záložní kopie do Azure a klikněte na **Další**.
-15. Po kontrole podrobností zásad na obrazovce souhrnu  dokončete pracovní postup kliknutím na tlačítko **vytvořit skupinu** . Můžete kliknout na tlačítko **Zavřít** a monitorovat průběh úlohy v pracovním prostoru monitorování.
+15. Po kontrole podrobností zásad na obrazovce souhrnu dokončete pracovní postup kliknutím na tlačítko **vytvořit skupinu** . Můžete kliknout na tlačítko **Zavřít** a monitorovat průběh úlohy v pracovním prostoru monitorování.
 
     ![Probíhá vytváření skupiny ochrany.](./media/backup-azure-backup-sql/pg-summary.png)
 

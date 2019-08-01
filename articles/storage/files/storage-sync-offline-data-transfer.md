@@ -1,91 +1,90 @@
 ---
-title: Migrace dat do Azure File Sync s použitím Azure Data Box a další metody
-description: Migrace hromadných dat způsobem, který je kompatibilní s Azure File Sync.
-services: storage
+title: Migrace dat do Azure File Sync pomocí Azure Data Box a dalších metod
+description: Migrujte Hromadná data způsobem, který je kompatibilní s Azure File Sync.
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1ec5168b898d0aa75c12e6eb435e20c09de1929
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0c9d55846a0240dde92de16ea17e9403a112c3e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64700275"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699218"
 ---
-# <a name="migrate-bulk-data-to-azure-file-sync"></a>Migrace hromadných dat do Azure File Sync
-Hromadné dat můžete migrovat do služby Azure File Sync dvěma způsoby:
+# <a name="migrate-bulk-data-to-azure-file-sync"></a>Migrace hromadných dat na Azure File Sync
+Hromadná data můžete migrovat do Azure File Sync dvěma způsoby:
 
-* **Nahrajte soubory pomocí Azure File Sync.** Toto je nejjednodušší způsob. Přesuňte soubory místně na Windows Server 2012 R2 nebo novější a nainstalujte agenta Azure File Sync. Po nastavení synchronizace, nahraje soubory ze serveru. (Naši zákazníci aktuálně prostředí z nahrávání průměrné rychlosti 1 TiB o každé dva dny.) Aby bylo zajištěno, že váš server nepoužívá příliš velkou šířku pásma pro vaše datové centrum, můžete chtít nastavit [plán omezení šířky pásma](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter).
-* **Přenos souborů do režimu offline.** Pokud nemáte dostatečnou šířku pásma, nebudete moci nahrávat soubory do Azure v rozumném čase. Výzvu se počáteční synchronizace celou sadu souborů. Chcete-li tento problém vyřešili, použijte nástroje pro migraci offline hromadné [rodina zařízení Azure Data Box](https://azure.microsoft.com/services/storage/databox). 
+* **Nahrajte soubory pomocí Azure File Sync.** Toto je nejjednodušší způsob. Přesuňte soubory místně do systému Windows Server 2012 R2 nebo novějšího a nainstalujte agenta Azure File Sync. Po nastavení synchronizace se budou soubory nahrávat ze serveru. (Naši zákazníci aktuálně dostanou průměrnou rychlost nahrávání 1 TiB o všech dvou dnech.) Pokud chcete zajistit, aby váš server nepoužíval příliš velkou šířku pásma pro vaše datové centrum, možná budete chtít nastavit [plán omezení šířky pásma](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter).
+* **Přeneste soubory do offline režimu.** Pokud nemáte dostatečnou šířku pásma, možná nebudete moci v rozumné době nahrávat soubory do Azure. Výzvou je počáteční synchronizace celé sady souborů. K překonání této výzvy použijte offline nástroje pro hromadnou migraci, jako je například [rodina Azure Data box](https://azure.microsoft.com/services/storage/databox). 
 
-Tento článek vysvětluje, jak migrovat do režimu offline soubory tak, aby je kompatibilní s Azure File Sync. Postupujte podle těchto pokynů, aby nedocházelo ke konfliktům souborů a zachování souborů a složek seznamy řízení přístupu (ACL) a časová razítka po povolení synchronizace.
+Tento článek vysvětluje, jak migrovat soubory offline způsobem, který je kompatibilní s Azure File Sync. Postupujte podle těchto pokynů, abyste se vyhnuli konfliktům souborů a zachovali seznamy řízení přístupu (ACL) k souborům a složkám a časová razítka po povolení synchronizace.
 
-## <a name="online-migration-tools"></a>Online migrace nástroje
-Proces popisujeme v tomto článku funguje pouze pro zařízení Data Box, ale také pro jiné nástroje pro migraci v režimu offline. Funguje i pro online nástrojů, jako je AzCopy, Robocopy, nebo partnerské nástroje a služby. Ale překonat počáteční odeslat výzvu, postupujte podle kroků v tomto článku tyto nástroje používat způsobem, který je kompatibilní s Azure File Sync.
-
-
-## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>Výhody použití nástroje pro přenos dat do offline režimu
-Tady jsou hlavní výhody použití nástroj pro přenos jako zařízení Data Box pro offline migrace:
-
-- Není nutné nahrát všechny soubory v síti. Pro velké obory názvů může tento nástroj uložit významné šířky pásma a čas.
-- Při použití Azure File Sync, bez ohledu na to, které nástroj pro přenos použijete (zařízení Data Box, služba Azure Import/Export a tak dále), za provozu server odešle pouze soubory, které změna po přesunu dat do Azure.
-- Azure File Sync synchronizuje vaše soubory a složkami seznamy ACL i v případě, že nástroj pro migraci offline hromadné nebude přenosu seznamy ACL.
-- Data Box a Azure File Sync vyžadují nedojde k žádnému výpadku. Použijete-li k přenosu dat do Azure Data Box, efektivní použití šířky pásma sítě a věrnost souboru. Můžete také udržovat váš obor názvů aktuální odesláním pouze soubory, které změna po přesunu dat do Azure.
-
-## <a name="prerequisites-for-the-offline-data-transfer"></a>Předpoklady pro přenos dat offline
-Neměli byste povolit synchronizaci na serveru, který provádíte migraci dokončit přenos dat offline. Je dobré vzít v úvahu před zahájením jsou následující:
-
-- Pokud plánujete použít zařízení Data Box pro hromadné migraci: Zkontrolujte [požadavcích pro nasazení pro zařízení Data Box](../../databox/data-box-deploy-ordered.md#prerequisites).
-- Plánování topologie konečné Azure File Sync: [Plánování nasazení služby Azure File Sync](storage-sync-files-planning.md)
-- Vyberte účty úložiště Azure, která bude obsahovat sdílené složky, které chcete synchronizovat s. Ujistěte se, že se migrace hromadných stane dočasné pracovní složky ve stejném účtech úložiště. Migrace hromadných jde Povolit jenom využitím konečné a pracovní-sdílenou složku, která se nacházejí ve stejném účtu úložiště.
-- Migrace hromadných je možné využít pouze při vytváření nové relace synchronizace s umístěním serveru. Nelze povolit hromadné migrace s existující relace synchronizace.
+## <a name="online-migration-tools"></a>Online nástroje pro migraci
+Proces, který popisujeme v tomto článku, funguje nejen pro Data Box, ale také pro jiné nástroje offline migrace. Funguje taky pro online nástroje, jako jsou AzCopy, Robocopy nebo partnerské nástroje a služby. Pokud však převedete na úvodní výzvu k odeslání, postupujte podle kroků v tomto článku, abyste tyto nástroje používali způsobem, který je kompatibilní s Azure File Sync.
 
 
-## <a name="process-for-offline-data-transfer"></a>Proces pro přenos dat offline
-Tady je postup pro nastavení Azure File Sync způsobem, který je kompatibilní s nástroji pro migraci hromadné jako je například Azure Data Box:
+## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>Výhody použití nástroje k přenosu dat offline
+Tady jsou hlavní výhody použití nástroje pro přenos, jako je Data Box pro offline migraci:
 
-![Diagram znázorňující, jak nastavit službu Azure File Sync](media/storage-sync-files-offline-data-transfer/data-box-integration-1-600.png)
+- Nemusíte nahrávat všechny soubory přes síť. Pro velké obory názvů může tento nástroj ušetřit značnou šířku pásma sítě a čas.
+- Pokud používáte Azure File Sync bez ohledu na to, který nástroj pro přenos používáte (Data Box, službu Azure import/export a tak dále), Live Server nahraje pouze soubory, které se po přesunu dat do Azure mění.
+- Azure File Sync synchronizuje seznamy řízení přístupu k souborům a složkám i v případě, že offline nástroj pro hromadné migraci nepřenosuje seznamy ACL.
+- Data Box a Azure File Sync nevyžadují žádné výpadky. Když použijete Data Box k přenosu dat do Azure, použijete efektivně šířku pásma sítě a zachováte věrnost souborů. Svůj obor názvů můžete také udržovat v aktuálním stavu tím, že nahrajete pouze soubory, které se po přesunu dat do Azure změní.
+
+## <a name="prerequisites-for-the-offline-data-transfer"></a>Předpoklady pro přenos offline dat
+Před dokončením offline přenosu dat byste neměli na serveru, který migrujete, povolit synchronizaci. Další věci, které je potřeba vzít v úvahu před zahájením, jsou následující:
+
+- Pokud plánujete použít Data Box pro hromadnou migraci: Přečtěte si [požadavky nasazení pro data box](../../databox/data-box-deploy-ordered.md#prerequisites).
+- Plánování finální topologie Azure File Sync: [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)
+- Vyberte účty úložiště Azure, ve kterých budou uloženy sdílené složky, se kterými chcete synchronizovat. Ujistěte se, že se Hromadná migrace stane dočasnými pracovními podíly ve stejných účtech úložiště. Hromadná migrace se dá povolit jenom s využitím finální a pracovní sdílené složky, která se nachází ve stejném účtu úložiště.
+- Hromadná migrace se dá využít jenom při vytváření nové relace synchronizace s umístěním na serveru. Nemůžete povolit hromadnou migraci s existující relací synchronizace.
+
+
+## <a name="process-for-offline-data-transfer"></a>Postup pro přenos offline dat
+Tady je postup nastavení Azure File Sync tak, aby byl kompatibilní s nástroji pro hromadnou migraci, jako je například Azure Data Box:
+
+![Diagram znázorňující, jak nastavit Azure File Sync](media/storage-sync-files-offline-data-transfer/data-box-integration-1-600.png)
 
 | Krok | Podrobnosti |
 |---|---------------------------------------------------------------------------------------|
-| ![Krok 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Pořadí Data Box](../../databox/data-box-deploy-ordered.md). Nabídky rodiny zařízení Data Box [několik produktů](https://azure.microsoft.com/services/storage/databox/data) podle svých potřeb. Až se zobrazí Data Box, postupujte podle jeho [dokumentaci ke kopírování dat](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) do této cesty UNC na zařízení Data Box:  *\\< DeviceIPAddres\>\<StorageAccountName_AzFile\> \<ShareName\>* . Tady *ShareName* je název pracovní sdílené složky. Odeslat zpět do Azure Data Box. |
-| ![Krok 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Počkejte, dokud vaše soubory zobrazí sdílené složky Azure, které jste zvolili jako dočasné pracovní složky. *Než povolíte synchronizaci do těchto sdílených složek.* |
-| ![Krok 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Vytvořte novou prázdnou sdílenou složku pro každou sdílenou složku, která pro vás vytvořili zařízení Data Box. Této nové sdílené složky musí být ve stejném účtu úložiště jako sdílenou složku zařízení Data Box. [Jak vytvořit novou sdílenou složku Azure file](storage-how-to-create-file-share.md). |
-| ![Krok 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Vytvořit skupinu synchronizace](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) ve službě synchronizace úložiště. Odkaz na prázdnou sdílenou složku jako koncový bod cloudu. Tento krok opakujte pro každou sdílenou složku zařízení Data Box. [Nastavení Azure File Sync](storage-sync-files-deployment-guide.md). |
-| ![Krok 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [Přidání adresáře serveru za provozu jako koncový bod serveru](storage-sync-files-deployment-guide.md#create-a-server-endpoint). V procesu zadejte přesunout soubory do Azure a odkazovat na pracovní složky. Můžete povolit nebo zakázat vrstvení podle potřeby cloudu. Při vytváření odkazovat na koncový bod serveru na serveru za pracovní sdílené složky. Na **přidat koncový bod serveru** okně v části **do offline režimu přenosu dat**vyberte **povoleno**a pak vyberte pracovní sdílené složky, které musí být ve stejném účtu úložiště jako cloud koncový bod. Seznam dostupných sdílených složek se tady, filtruje tak, že účet úložiště a sdílené složky, které nejsou již probíhá synchronizace. |
+| ![Krok 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Seřazení data box](../../databox/data-box-deploy-ordered.md). Řada Data Box nabízí [několik produktů](https://azure.microsoft.com/services/storage/databox/data) , které vyhovují vašim potřebám. Po přijetí data box postupujte podle příslušné [dokumentace a zkopírujte data](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) do této cesty UNC v data box:  *\\< DeviceIPAddres StorageAccountName_AzFile\> \>\<\< Název_sdílené_položky\>* . Tady je *název* sdílené pracovní složky. Odešlete Data Box zpět do Azure. |
+| ![Krok 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Počkejte, než se soubory zobrazí ve sdílených složkách Azure, které jste zvolili jako dočasné pracovní sdílené složky. *Nepovolujte synchronizaci s těmito sdílenými složkami.* |
+| ![Krok 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Pro každou sdílenou složku, kterou Data Box vytvořili, vytvořte novou prázdnou sdílenou složku. Tato nová sdílená složka by měla být ve stejném účtu úložiště jako sdílená složka Data Box. [Jak vytvořit novou sdílenou složku Azure](storage-how-to-create-file-share.md) |
+| ![Krok 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Vytvořte skupinu synchronizace](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) ve službě synchronizace úložiště. Odkázat na prázdnou sdílenou složku jako koncový bod cloudu. Tento krok opakujte pro každou Data Box sdílenou složku. [Nastavte Azure File Sync](storage-sync-files-deployment-guide.md). |
+| ![Krok 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [Přidejte adresář živého serveru jako koncový bod serveru](storage-sync-files-deployment-guide.md#create-a-server-endpoint). V tomto procesu Určete, že jste přesunuli soubory do Azure a odkázat na pracovní sdílené složky. Můžete povolit nebo zakázat vrstvení cloudu podle potřeby. Při vytváření koncového bodu serveru na svém aktivním serveru se odkázat na pracovní sdílenou složku. V okně **přidat koncový bod serveru** v části **offline přenos dat**vyberte **povoleno**a potom vyberte pracovní sdílenou složku, která musí být ve stejném účtu úložiště jako koncový bod cloudu. Tady je seznam dostupných sdílených složek filtrovaný účtem úložiště a sdílenými složkami, které ještě nejsou synchronizované. |
 
-![Snímek obrazovky portálu Azure uživatelského rozhraní, jak povolit přenos offline dat při vytváření nového koncového bodu serveru](media/storage-sync-files-offline-data-transfer/data-box-integration-2-600.png)
+![Snímek obrazovky Azure Portal uživatelského rozhraní, který ukazuje, jak povolit offline přenos dat při vytváření nového koncového bodu serveru](media/storage-sync-files-offline-data-transfer/data-box-integration-2-600.png)
 
-## <a name="syncing-the-share"></a>Sdílené složky synchronizace
-Po vytvoření koncový bod serveru se spustí synchronizaci. Procesu synchronizace určuje, zda každý soubor na serveru existuje taky v pracovní sdílenou složku, ve kterém zařízení Data Box uloženy soubory. Pokud soubor existuje, zkopíruje procesu synchronizace souboru ze sdílené složce pracovní místo odesílání ze serveru. Pokud soubor neexistuje ve sdílené složce pracovní nebo novější verze je k dispozici na místním serveru, proces synchronizace nahraje soubor z místního serveru.
+## <a name="syncing-the-share"></a>Synchronizuje se sdílená složka
+Po vytvoření koncového bodu serveru se synchronizace spustí. Proces synchronizace Určuje, jestli každý soubor na serveru existuje i v pracovní sdílené složce, kde Data Box soubory uložily. Pokud soubor existuje, proces synchronizace zkopíruje soubor z pracovní sdílené složky a nebude ho nahrávat ze serveru. Pokud soubor v pracovní sdílené složce neexistuje nebo pokud je v místním serveru k dispozici novější verze, proces synchronizace soubor nahraje z místního serveru.
 
 > [!IMPORTANT]
-> Můžete povolit režim migrace hromadných pouze tehdy, když vytváříte koncový bod serveru. Po vytvoření koncový bod serveru nejde migrovat hromadných dat z již probíhá synchronizace serveru integrovat do oboru názvů.
+> Režim hromadné migrace můžete povolit jenom při vytváření koncového bodu serveru. Po zřízení koncového bodu serveru nemůžete integrovat hromadně migrovaná data z již synchronizovaného serveru do oboru názvů.
 
-## <a name="acls-and-timestamps-on-files-and-folders"></a>Seznamy řízení přístupu a časová razítka na soubory a složky
-Azure File Sync zajistí, že souborům a složkám seznamy ACL jsou synchronizované z serveru za provozu i v případě, že nástroj pro migraci hromadné, který jste použili nebyl původně přenosu seznamy ACL. Z tohoto důvodu pracovní sdílená složka nemusí obsahovat všechny seznamy ACL pro soubory a složky. Když povolíte funkci migrace offline dat při vytváření nového koncového bodu serveru, se synchronizují všechny seznamy ACL v souborech na serveru. Také se synchronizují nově vytvořené a upravené časové razítko.
+## <a name="acls-and-timestamps-on-files-and-folders"></a>Seznamy řízení přístupu a časová razítka pro soubory a složky
+Azure File Sync zajistí, aby byly seznamy řízení přístupu k souborům a složkám synchronizované z živého serveru i v případě, že jste použili nástroj pro hromadné migraci, který jste použili při počátečním přenosu ACL Proto pracovní sdílená složka nemusí obsahovat žádné seznamy ACL pro soubory a složky. Když při vytváření nového koncového bodu serveru povolíte funkci offline migrace dat, všechny seznamy ACL souborů se synchronizují na serveru. Synchronizována jsou také nově vytvořená a upravená časová razítka.
 
 ## <a name="shape-of-the-namespace"></a>Tvar oboru názvů
-Když povolíte synchronizaci, je obsah serveru určuje tvar oboru názvů. Pokud se soubory jsou odstraněny z místního serveru po zařízení Data Box snímků a migraci dokončit, tyto soubory nelze přesunout do oboru názvů za provozu, synchronizaci. Zůstanou ve sdílené složce pracovní, ale nejsou zkopírovány. To je nezbytné, protože synchronizace udržuje oboru názvů podle serveru za provozu. Data Box *snímku* je právě pracovní začátku pro kopírování souborů efektivní. Není autority pro obrazec za obor názvů.
+Pokud povolíte synchronizaci, obsah serveru určí tvar oboru názvů. Pokud se soubory po dokončení Data Box snímku a migrace odstraní z místního serveru, nepřesunou se tyto soubory do aktivního a synchronizovaného oboru názvů. Zůstanou v pracovní sdílené složce, ale nekopírují se. To je nezbytné, protože synchronizace udržuje obor názvů podle živého serveru. *Snímek* data box je pouze pracovní uzemnění pro efektivní kopírování souborů. Není to autorita pro tvar živého oboru názvů.
 
-## <a name="cleaning-up-after-bulk-migration"></a>Čištění po hromadné migrace 
-Server dokončení počáteční synchronizace oboru názvů, používejte soubory migrovat hromadné zařízení Data Box pracovní sdílenou složku. Na **vlastnosti koncového bodu serveru** okna portálu Azure portal, v **do offline režimu přenosu dat** části stav se změní z **probíhá** k **dokončeno** . 
+## <a name="cleaning-up-after-bulk-migration"></a>Vyčištění po hromadné migraci 
+Protože server dokončí počáteční synchronizaci oboru názvů, Data Box hromadně migrované soubory používají pracovní sdílenou složku. V okně **Vlastnosti koncového bodu serveru** v Azure Portal v části **offline přenos dat** se stav změní z **probíhá** na **dokončeno**. 
 
-![Snímek obrazovky okna Vlastnosti koncového bodu serveru, kde se nachází stavu a zakázat ovládací prvky pro offline datové přenosy](media/storage-sync-files-offline-data-transfer/data-box-integration-3-444.png)
+![Snímek obrazovky okna vlastností koncového bodu serveru, kde se nachází stav a zakázat ovládací prvky pro přenos offline dat](media/storage-sync-files-offline-data-transfer/data-box-integration-3-444.png)
 
-Nyní můžete vyčistit testovací sdílené složky pro úsporu nákladů:
+Nyní můžete vyčistit pracovní sdílenou složku a ušetřit tak náklady:
 
-1. Na **vlastnosti koncového bodu serveru** okno, pokud je stav **dokončeno**vyberte **zakázat přenos dat offline**.
-2. Zvažte odstranění pracovní sdílené složky, abyste ušetřili náklady. Pracovní sdílené složky pravděpodobně neobsahuje souborům a složkám seznamy ACL, takže není velmi užitečné. Pro účely zálohování bodu v čase, vytvořte reálné [snímek synchronizaci sdílené složky Azure](storage-snapshots-files.md). Je možné [nastavení zálohování Azure pro pořizování snímků]( ../../backup/backup-azure-files.md) podle plánu.
+1. V okně **Vlastnosti koncového bodu serveru** , když je stav **dokončený**, vyberte **Zakázat offline přenos dat**.
+2. Zvažte odstranění pracovní sdílené složky za účelem úspory nákladů. Pracovní sdílená složka pravděpodobně neobsahuje seznamy řízení přístupu k souborům a složkám, takže není velmi užitečné. Pro účely zálohování v čase vytvořte skutečný [snímek synchronizace sdílené složky Azure](storage-snapshots-files.md). Můžete [nastavit Azure Backup pro pořizování snímků]( ../../backup/backup-azure-files.md) podle plánu.
 
-Zakázat režim přenosu dat offline pouze v případě, že je stav **dokončeno** nebo pokud chcete zrušit kvůli chybě konfigurace. Je-li zakázat režim během nasazení, soubory se začnou odesílat ze serveru i v případě, že váš pracovní sdílené složky je stále k dispozici.
+Režim offline přenosu dat zakažte pouze v případě, že je stav **dokončen** nebo pokud chcete operaci zrušit z důvodu neplatného nastavení. Pokud režim během nasazování zakážete, začnou se soubory nahrávat ze serveru i v případě, že je vaše pracovní sdílená složka stále k dispozici.
 
 > [!IMPORTANT]
-> Když zakážete režim přenosu dat offline, nelze ho znovu nepovolíte, i v případě, že pracovní sdílené složky z migrace hromadných je stále k dispozici.
+> Když režim offline přenosu dat zakážete, nebudete ho moct znovu povolit, i když je stále dostupná pracovní sdílená složka z hromadné migrace.
 
 ## <a name="next-steps"></a>Další postup
-- [Plánování nasazení služby Azure File Sync](storage-sync-files-planning.md)
-- [Nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md)
+- [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)
+- [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)

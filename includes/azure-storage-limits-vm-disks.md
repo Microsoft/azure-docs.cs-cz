@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: ef9c46c0b55f97b8931f16d751f1b1e6099e6c9d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 8b25d2395811a2197aff6d653c5038a4380021e9
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68328597"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68669604"
 ---
 K virtuálnímu počítači Azure můžete připojit několik datových disků. Na základě škálovatelnosti a výkonu pro datové disky virtuálního počítače můžete určit počet a typ disku, který budete potřebovat pro splnění požadavků na výkon a kapacitu.
 
@@ -18,13 +18,13 @@ K virtuálnímu počítači Azure můžete připojit několik datových disků. 
 
 **Pro Azure Managed disks:**
 
-Následující tabulka ukazuje výchozí a maximální počet prostředků na oblast v rámci předplatného.
+Následující tabulka ukazuje výchozí a maximální počet prostředků na oblast v rámci předplatného. Neexistuje žádné omezení počtu Managed Disks, snímků a obrázků na skupinu prostředků.  
 
 > | Resource | Výchozí omezení  | Maximální omezení |
 > | --- | --- | --- |
 > | Managed disks úrovně Standard | 50,000 | 50,000 |
-> | SSD úrovně Standard spravované disky | 50,000 | 50,000 |
-> | Managed disks úrovně Premium | 50,000 | 50,000 |
+> | Spravované disky SSD úrovně Standard | 50,000 | 50,000 |
+> | Spravované disky úrovně Premium | 50,000 | 50,000 |
 > | Standard_LRS snímky | 50,000 | 50,000 |
 > | Standard_ZRS snímky | 50,000 | 50,000 |
 > | Spravovaná image | 50,000 | 50,000 |

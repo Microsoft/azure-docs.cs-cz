@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 887c27c765855424dbfb9a77f0b452da0f5de647
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 82d3656e0adc03157de57b700f8f0be6bde1f2ee
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868866"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663478"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak služba Azure Machine Learning funguje: Architektura a koncepty
 
@@ -126,7 +126,7 @@ Například konfigurace spuštění najdete v tématu [Výběr a použití výpo
 
 Datové sady poskytují metody pro práci s daty v oblíbených formátech, jako je například `from_delimited_files()` použití `to_pandas_dataframe()`nebo.
 
-Další informace najdete v tématu [Vytvoření a registrace Azure Machine Learning datových sad](how-to-create-register-datasets.md).  Další příklady použití datových sad najdete v ukázkových [poznámkových blocích](https://aka.ms/dataset-tutorial).
+Další informace najdete v tématu [Vytvoření a registrace Azure Machine Learning datových sad](how-to-create-register-datasets.md).  Další příklady použití datových sad najdete v ukázkových [poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/work-with-data/datasets).
 
 **Úložiště dat** je abstrakce úložiště v rámci účtu úložiště Azure. Úložiště dat může jako back-end úložiště použít buď kontejner Azure Blob, nebo sdílenou složku Azure. Každý pracovní prostor má výchozí úložiště dat a můžete zaregistrovat další úložiště dat. K ukládání a načítání souborů z úložiště dat použijte rozhraní Python SDK API nebo Azure Machine Learning CLI.
 
