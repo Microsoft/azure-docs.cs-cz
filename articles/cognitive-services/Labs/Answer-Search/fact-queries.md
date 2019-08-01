@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Projekt hledání odpovědí fakt dotazu'
+title: 'Rychlý start: Dotaz na hledání odpovědí na projekt'
 titlesuffix: Azure Cognitive Services
 description: Dotazy na fakta pomocí Project Answer Search
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: fca459291fbf25c5404427fdcfc96947c52a1e74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: 05b870fb0d836a89be2a7212436c5c6f91982837
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60408083"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705457"
 ---
-# <a name="quickstart-query-for-facts"></a>Rychlý start: Dotaz pro fakty
+# <a name="quickstart-query-for-facts"></a>Rychlý start: Dotaz na fakta
 
 Pokud se dotaz týká faktu, jako je například datum nebo identifikovatelná znalost, může odpověď obsahovat odpovědi typu `facts`. Odpovědi faktů obsahují relevantní výsledky extrahované z odstavců ve webových dokumentech.  Tyto dotazy vždycky vrací webové stránky. [Fakta](fact-queries.md) nebo [entity](entity-queries.md) jsou závislé na dotazu.
 
@@ -31,7 +32,7 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
 ```
 
-**Odpověď:** `subjectName` Pole obsahuje zobrazení verzi uživatele dotaz, který můžete použít jako popisek při zobrazení na skutečnost. Pokud je řetězec dotazu valentines+2016, Bing jej může změnit na Valentine's Day 2016. Pole description obsahuje fakt.
+**Základě** `subjectName` Pole obsahuje verzi dotazu uživatele, kterou můžete použít jako popisek při zobrazení faktu. Pokud je řetězec dotazu valentines+2016, Bing jej může změnit na Valentine's Day 2016. Pole description obsahuje fakt.
 
 ```
 {
@@ -69,7 +70,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 
 ```
 
-**Odpověď:** `value/description` Pole obsahuje znalostní báze nebo dotazem požadované informace.
+**Základě** `value/description` Pole obsahuje znalostní bázi nebo informace požadované dotazem.
 
 ```
   "facts": {

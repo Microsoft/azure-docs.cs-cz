@@ -10,12 +10,13 @@ ms.subservice: speaker-recognition
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 15fc320a5b76a50def634d937a02fa639dce3739
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9cdfd5d09451968487bafbcad643e179ffe82aa7
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845873"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707168"
 ---
 # <a name="speaker-recognition-api"></a>Rozhraní API pro rozpoznání mluvčího
 
@@ -38,7 +39,7 @@ Při registraci se nahraje hlas mluvčího, jak říká nějakou frázi, a potom
 
 Při ověřování se vstupní hlas a fráze porovná s hlasovým podpisem a frází registrace. Ověří se tak, zda jde o stejnou osobu a zda používá správnou frázi.
 
-Další podrobnosti o ověření mluvčího, najdete v rozhraní API [mluvčího – ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652).
+Další podrobnosti o ověřování mluvčího najdete v tématu věnovaném [ověřování mluvčího](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652)rozhraní API.
 
 ## <a name="speaker-identification"></a>Identifikace mluvčího
 
@@ -56,4 +57,4 @@ Registrace identifikace mluvčího je na textu nezávislá, což znamená, že n
 
 Během rozpoznání je k dispozici zvuk neznámého mluvčího a potenciální skupina mluvčích. Vstupní hlas se porovná se všemi mluvčími, aby se rozpoznalo, komu hlas patří, a pokud se najde shoda, výsledkem bude identita mluvčího.
 
-Další podrobnosti o identifikaci mluvčího, najdete v rozhraní API [mluvčího – identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e).
+Další podrobnosti o identifikaci mluvčího najdete v tématu [Identifikace mluvčího](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e)rozhraní API.

@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: ac1717a8e8a08fcfedc3bc21bb0f03b3e3ca2511
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ROBOTS: NOINDEX
+ms.openlocfilehash: 676b7f63b82a0e7c06264cb6dcbead8c1344a076
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60721818"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707117"
 ---
 # <a name="what-is-project-answer-search"></a>Co je Project Answer Search?
 Rozhraní API služby Project Answer Search používá k získání odpovědi na zvídavé dotazy koncový bod Bingu v7. Například na otázku „Jaký je obvod Země?“ vrátí odpověď s faktickými informacemi.  Na dotaz týkající se osoby, místa nebo věci, vrátí informace o entitě identifikované dotazem. Tyto scénáře můžou být užitečné v aplikacích, jako jsou například konverzační roboti,aplikace zasílání zpráv, čtenáři, atd.  
@@ -25,7 +26,7 @@ Dotazy vrací odpovědi, které závisí na povaze dotazu: webové stránky vrá
 ## <a name="endpoint"></a>Koncový bod
 Pokud chcete získat odpovědi na dotaz či informace o osobě, místě nebo věci, odešlete požadavek na koncový bod rozhraní API Answer Search. Můžete použít záhlaví a parametry adresy URL pro různé specifikace.  Použijte hlavičku *Ocp-Apim-Subscription-Key* s platným tokenem.  Parametr market je povinný. V tuto chvíli je podporován jenom market `en-us`.
 
-Následující dotaz načte odpovědi na otázky: "Jak se obvod všech koutech světa?"
+Následující dotaz vrátí odpovědi na otázku: "Jaký je obvod země?"
 
 GET:
 ```

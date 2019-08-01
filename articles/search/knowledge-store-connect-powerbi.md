@@ -8,12 +8,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: 04b04e8080590aa6e9fe1c17369e83fa5bb6b894
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 66a051c430be9f59569a5843c0138c7ddc15b87c
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668221"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707155"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>Vytvoření Azure Search znalostní báze Knowledge Store a připojení pomocí Power BI
 
@@ -156,7 +156,7 @@ K vytvoření úložiště Knowledge Store použijte Průvodce importem dat. Nai
 
 1. Klikněte na **Zavřít a použijte** úplně vlevo na panelu příkazů Power Query.
 
-1. Ověřte, že Power BI rozpoznává vztahy, které úložiště znalostí vytvořilo v rámci vašich dat. Klikněte na dlaždici relace v levém navigačním podokně. Všechny tři tabulky by měly souviset.
+1. Ověřte, že Power BI rozpoznává vztahy, které úložiště znalostí vytvořilo v rámci vašich dat. Klikněte na dlaždici relace v levém navigačním podokně. Všechny tři tabulky by měly souviset. Upravte vztahy a zajistěte, aby byl směr křížového filtru nastavený na obě. tím se zajistí, že se všechny vizuály aktualizují při použití filtru.
 
    ![Ověřit relace](media/knowledge-store-howto-powerbi/powerbi-relationships.png "Ověřit relace")
 

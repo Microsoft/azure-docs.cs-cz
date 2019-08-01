@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/19/2019
-ms.openlocfilehash: 3e14604955a64c7a146a947c5c320b42ea3ebcba
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 07/26/2019
+ms.openlocfilehash: 831a1457d865429fd53af1887a14c363b806300c
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325415"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516604"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
@@ -80,7 +80,22 @@ Při vytváření ISE můžete vybrat SKU pro vývojáře nebo SKU úrovně Prem
 
   Poskytuje ISE, který můžete použít pro produkční prostředí, včetně podpory SLA, integrovaných triggerů a akcí, standardních konektorů, podnikových konektorů, jediného účtu pro integraci na úrovni [Standard](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) , možností škálování kapacity a redundance během recyklace za pevnou měsíční cenu.
 
+> [!IMPORTANT]
+> Možnost SKU je k dispozici pouze při vytváření ISE a nedá se změnit později.
+
 Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/). Informace o cenách a fakturační práci pro ISEs najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing).
+
+<a name="endpoint-access"></a>
+
+## <a name="ise-endpoint-access"></a>Přístup ke koncovému bodu ISE
+
+Při vytváření ISE můžete použít buď interní nebo externí koncové body přístupu. Tyto koncové body určují, jestli triggery Request nebo Webhooku v Logic Apps ve vašem ISE můžou přijímat volání z vnějšku vaší virtuální sítě. Tyto koncové body mají také vliv na přístup k vstupům a výstupům v historii spuštění aplikace logiky.
+
+* **Interní**: Soukromé koncové body, které umožňují volání Logic Apps v ISE plus přístup k vstupům a výstupům v historii spouštění jenom *z vaší virtuální sítě*
+* **Externí**: Veřejné koncové body, které umožňují volání Logic Apps v ISE plus přístup k vstupům a výstupům v historii spouštění *mimo vaši virtuální síť*
+
+> [!IMPORTANT]
+> Možnost přístupový bod přístupu je dostupná jenom při vytváření ISE a nedá se změnit později.
 
 <a name="on-premises"></a>
 
@@ -106,6 +121,8 @@ U místních systémů, které nejsou připojené k virtuální síti nebo kter�
 
 ## <a name="next-steps"></a>Další postup
 
-* Přečtěte si, jak se [připojit k virtuálním sítím Azure z izolovaných aplikací logiky](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) .
+* [Připojení k virtuálním sítím Azure z izolovaných aplikací logiky](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+* [Přidání artefaktů do prostředí integračních služeb](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* [Správa prostředí integrační služby](../logic-apps/ise-manage-integration-service-environment.md)
 * Další informace o [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)
 * Informace o [integraci virtuální sítě pro služby Azure](../virtual-network/virtual-network-for-azure-services.md)

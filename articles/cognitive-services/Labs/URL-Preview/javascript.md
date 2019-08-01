@@ -10,14 +10,15 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 1f3c37e770c2edd76bd299771648b2de29d42dd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: ec8a7ceef8cd938984b8eedc8397f6f67294c990
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712632"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706934"
 ---
-# <a name="quickstart-url-preview-in-javascript"></a>Rychlý start: Náhled adresy URL v jazyce JavaScript 
+# <a name="quickstart-url-preview-in-javascript"></a>Rychlý start: Náhled adresy URL v JavaScriptu 
 
 Následující jednostránková aplikace používá JavaScript k vytvoření služby URL Preview pro web SwiftKey: https://swiftkey.com/en. 
 
@@ -128,7 +129,7 @@ Spusťte aplikaci:
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Rychlý start pro jazyk C#](csharp.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro Node](node-quickstart.md)

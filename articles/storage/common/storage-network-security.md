@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: cc0ba80f7aef53568e048b8285800982c818b004
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 3a49681c5c5fa081157e1264f3e9f757c3ee0e6c
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334597"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516963"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
@@ -348,19 +348,20 @@ Abychom tento typ služby práce tak, jak má, umožňují sadu důvěryhodným 
 
 Pokud povolíte **Povolit důvěryhodné služby Microsoftu...**  výjimky, tyto služby (při registraci v rámci vašeho předplatného), je udělen přístup k účtu úložiště:
 
-|Služba|Název poskytovatele prostředků|Účel|
-|:------|:---------------------|:------|
-|Azure Backup|Microsoft.RecoveryServices|Spuštění zálohování a obnovení nespravované disky ve virtuálních počítačích IAAS. (není vyžadované pro spravované disky). [Další informace](/azure/backup/backup-introduction-to-azure-backup).|
-|Azure Data Box|Microsoft.DataBox|Umožňuje importovat data do Azure pomocí Data Box. [Další informace](/azure/databox/data-box-overview).|
-|Azure DevTest Labs|Microsoft.DevTestLab|Vytváření a artefaktů instalace vlastní image. [Další informace](/azure/devtest-lab/devtest-lab-overview).|
-|Azure Event Grid|Microsoft.EventGrid|Povolit publikování událostí v úložišti objektů Blob a umožňují Event Grid k publikování do fronty úložiště. Další informace o [události služby blob storage](/azure/event-grid/event-sources) a [publikování do front](/azure/event-grid/event-handlers).|
-|Azure Event Hubs|Microsoft.EventHub|Archivace dat s Event Hubs Capture. [Další informace](/azure/event-hubs/event-hubs-capture-overview).|
-| Synchronizace souborů Azure| Microsoft.StorageSync| Umožňuje transformovat souborový server Prem na mezipaměť pro sdílené složky Azure. Povoluje se synchronizace více webů, rychlé zotavení po havárii a zálohování na straně cloudu. [Víc se uč](../files/storage-sync-files-planning.md)|
-|Azure HDInsight|Microsoft.HDInsight|Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Další informace](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/).|
-|Azure Monitor|Microsoft.Insights|Umožňuje zápis dat do účtu úložiště zabezpečené monitorování [Další](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security).|
-|Sítě Azure|Microsoft.Network|Store a analyzovat protokoly přenosů sítě. [Další informace](/azure/network-watcher/network-watcher-packet-capture-overview).|
-|Azure Site Recovery|Microsoft.SiteRecovery |Konfigurace zotavení po havárii tím, že replikace pro virtuální počítače Azure IaaS. Toto je nezbytné, pokud používáte účet úložiště povolenou bránu firewall mezipaměti nebo zdrojový účet úložiště nebo cílový účet úložiště.  [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).|
-|Azure SQL Data Warehouse|Microsoft.Sql|Umožňuje scénáře importu a exportu z konkrétních instancí databází SQL pomocí základu. [Další informace](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
+| Služba                  | Název poskytovatele prostředků     | Účel                                                                                                                                                                                                                                                                                                                      |
+|:-------------------------|:---------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure Backup             | Microsoft.RecoveryServices | Spuštění zálohování a obnovení nespravované disky ve virtuálních počítačích IAAS. (není vyžadované pro spravované disky). [Další informace](/azure/backup/backup-introduction-to-azure-backup).                                                                                                                                                     |
+| Azure Data Box           | Microsoft.DataBox          | Umožňuje importovat data do Azure pomocí Data Box. [Další informace](/azure/databox/data-box-overview).                                                                                                                                                                                                                              |
+| Azure DevTest Labs       | Microsoft.DevTestLab       | Vytváření a artefaktů instalace vlastní image. [Další informace](/azure/devtest-lab/devtest-lab-overview).                                                                                                                                                                                                                      |
+| Azure Event Grid         | Microsoft.EventGrid        | Povolit publikování událostí v úložišti objektů Blob a umožňují Event Grid k publikování do fronty úložiště. Další informace o [události služby blob storage](/azure/event-grid/event-sources) a [publikování do front](/azure/event-grid/event-handlers).                                                                                                     |
+| Azure Event Hubs         | Microsoft.EventHub         | Archivace dat s Event Hubs Capture. [Další informace](/azure/event-hubs/event-hubs-capture-overview).                                                                                                                                                                                                                           |
+| Synchronizace souborů Azure          | Microsoft.StorageSync      | Umožňuje transformovat souborový server Prem na mezipaměť pro sdílené složky Azure. Povoluje se synchronizace více webů, rychlé zotavení po havárii a zálohování na straně cloudu. [Víc se uč](../files/storage-sync-files-planning.md)                                                                                                       |
+| Azure HDInsight          | Microsoft.HDInsight        | Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Další informace](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/).                                                                                                                                    |
+| Azure Monitor            | Microsoft.Insights         | Umožňuje zápis dat do účtu úložiště zabezpečené monitorování [Další](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security).                                                                                                                                                                        |
+| Sítě Azure         | Microsoft.Network          | Store a analyzovat protokoly přenosů sítě. [Další informace](/azure/network-watcher/network-watcher-packet-capture-overview).                                                                                                                                                                                                        |
+| Azure Site Recovery      | Microsoft.SiteRecovery     | Konfigurace zotavení po havárii tím, že replikace pro virtuální počítače Azure IaaS. Toto je nezbytné, pokud používáte účet úložiště povolenou bránu firewall mezipaměti nebo zdrojový účet úložiště nebo cílový účet úložiště.  [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
+| Azure SQL Data Warehouse | Microsoft.Sql              | Umožňuje scénáře importu a exportu z konkrétních instancí databází SQL pomocí základu. [Další informace](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).                                                                                                                                                 |
+| Azure Stream Analytics   | Microsoft.StreamAnalytics  | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. Všimněte si, že tato funkce je aktuálně ve verzi Preview. [Další informace](../../stream-analytics/blob-output-managed-identity.md).                                                                                                                                        |
 
 ### <a name="storage-analytics-data-access"></a>Přístup k datům Storage analytics
 

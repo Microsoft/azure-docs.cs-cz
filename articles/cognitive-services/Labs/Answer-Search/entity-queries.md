@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Projekt dotazu Entity hledání odpovědí'
+title: 'Rychlý start: Dotaz na vyhledávací entitu odpovědí projektu'
 titlesuffix: Azure Cognitive Services
 description: Dotazy na entity pomocí Project Answer Search
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: c9f2a476353b1807bbb1c8c13dc8b8e2cdbb4ae4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ROBOTS: NOINDEX
+ms.openlocfilehash: b1dbfcfe85a7847b593553bd06cbc22cc62d2e2e
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60688618"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705470"
 ---
-# <a name="quickstart-query-for-entities"></a>Rychlý start: Dotazy na entity
+# <a name="quickstart-query-for-entities"></a>Rychlý start: Dotaz na entity
 
 Pokud dotaz požaduje informace o osobě, místě nebo určité věci, odpověď může obsahovat `entities`.  Dotazy vždycky vrací webové stránky a [fakta](fact-queries.md) nebo [entity](entity-queries.md) závislé na dotazu.
 
@@ -112,14 +113,14 @@ Odezva obsahuje odpověď `entities`. Všimněte si polí `entityScenario` a `en
 
 Dotaz může vrátit seznam, pokud je to relevantní.
 
-**Dotaz:** Následující dotaz vyhledá seznam ohrožených druhy:
+**Dotaz:** Následující dotaz najde seznam ohrožených druhů:
 
 ```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+endangered+species
 
 ```
 
-**Odpověď:** Odpověď obsahuje seznam formátovat k zobrazení jako tabulkových hodnot:
+**Základě** Odpověď obsahuje seznam formátovaný pro zobrazení jako tabulkové hodnoty:
 ```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",

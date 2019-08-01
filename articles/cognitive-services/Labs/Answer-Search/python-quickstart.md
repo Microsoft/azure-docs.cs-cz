@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: c0da596e84ac827b55affd5545c516e7623980f5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ROBOTS: NOINDEX
+ms.openlocfilehash: c35bf9649a0a22f3488c45d1f4f8729e211e0ddb
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698068"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707085"
 ---
 # <a name="quickstart-project-answer-search-with-python"></a>Rychlý start: Project Answer Search s jazykem Python
 
@@ -66,7 +67,7 @@ result = get_local()
 print (json.dumps(json.loads(result), indent=4))
 
 ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Rychlý start pro jazyk C#](c-sharp-quickstart.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro Node](node-quickstart.md)

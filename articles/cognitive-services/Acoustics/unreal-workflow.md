@@ -1,7 +1,7 @@
 ---
-title: Kurz projektu Akustika Unreal návrhu
+title: Výukový kurz pro návrh Unrealí projektů
 titlesuffix: Azure Cognitive Services
-description: Tento kurz popisuje pracovní postup návrhu pro projekt Akustika Unreal a Wwise.
+description: Tento kurz popisuje pracovní postup návrhu pro akustické projekty v Unreal a Wwise.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,136 +10,137 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1692032b093cd6189cac3ea3f63c563d9accd8ed
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5061370f43947341bb05bc30fa596604bc27ce74
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477828"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706578"
 ---
-# <a name="project-acoustics-unrealwwise-design-tutorial"></a>Kurz projektu Akustika Unreal/Wwise návrhu
-Tento kurz popisuje nastavení návrhu a pracovní postup pro projekt Akustika Unreal a Wwise.
+# <a name="project-acoustics-unrealwwise-design-tutorial"></a>Kurz pro návrh projektových Unreal/Wwise
+Tento kurz popisuje nastavení návrhu a pracovní postup pro akustické projekty v Unreal a Wwise.
 
-Požadovaný software:
-* Unreal projekt s moduly plug-in Wwise Akustika projektu a Unreal
+Požadavky na software:
+* Projekt Unreal s akustickými moduly plug-in Wwise a Unreal
 
-Chcete-li získat Unreal projekt s Akustika projektu, můžete:
-* Postupujte podle [projektu Akustika Unreal integrace](unreal-integration.md) pokynů a přidejte do projektu Unreal Akustika projektu
-* Nebo můžete použít [projektu Akustika ukázkový projekt](unreal-quickstart.md).
+Chcete-li získat projekt Unreal s akustickými možnostmi projektu, můžete:
+* Podle pokynů pro [integraci projektu Unreal](unreal-integration.md) pokyny k přidání akustického projektu do projektu Unreal
+* Nebo použijte [ukázkový projekt akustické a projekt](unreal-quickstart.md).
 
-## <a name="setup-project-wide-wwise-properties"></a>Nastavit vlastnosti Wwise celého projektu
-Wwise má globální překážky a uzavření křivky, které ovlivňují, jak modul plug-in Akustika projektu jednotky Wwise DSP zvuku.
+## <a name="setup-project-wide-wwise-properties"></a>Nastavení vlastností Wwise na úrovni projektu
+Wwise má globální překážku a překrytí křivky, které ovlivňují způsob, jakým modul plug-in nastavil v projektu procesor Wwise zvuku.
 
-### <a name="design-wwise-occlusion-curves"></a>Návrh Wwise uzavření křivek
-Při aktivním projektu Akustika reaguje na uzavření svazku, nízká pass filtru (LPF) a vysoce pass filtru (HPF) můžete nastavit v Wwise křivky. Doporučujeme nastavit typ křivky vašeho svazku na lineární s hodnotou-100 dB pro uzavření hodnotu 100.
+### <a name="design-wwise-occlusion-curves"></a>Návrh překrytí křivky Wwise
+Pokud je akustické množství projektu aktivní, reaguje na překrytí na svazek, na křivky LPF (Low-Pass Filter) a HPF (High-Pass Filter), které jste nastavili v Wwise. Doporučujeme nastavit typ křivky hlasitosti na lineární s hodnotou-100 dB pro hodnotu překrytí 100.
 
-S tímto nastavením simulace projektu Akustika vypočítá uzavření dB-18-li ji zadávat na pod křivkou u X = 18 a odpovídající Y je hodnota zeslabení použít. Poloviční uzavření proveďte nastavte koncový bod do databáze-50 místo dB-100, nebo do dB-200 exaggerate uzavření. Můžete přizpůsobit a optimalizovat všechny křivku, která je nejvhodnější pro vaši hru.
+Pokud toto nastavení způsobí, že simulace akustického projektu vypočítá překrytí of-18 dB, zapíše se k níže uvedené křivce na X = 18 a odpovídající hodnota Y se projeví. Chcete-li provést poloviční překrytí, nastavte ke službě Endpoint 50 dB místo-100 dB nebo 200 na exaggerate překrytí dB. Můžete přizpůsobit a vyladit jakoukoli křivku, která pro vaši hru vyhovuje nejlépe.
  
-![Snímek obrazovky Wwise uzavření křivky editoru](media/wwise-occlusion-curve.png)
+![Snímek obrazovky s editorem křivky Wwise překrytí](media/wwise-occlusion-curve.png)
 
-### <a name="disable-wwise-obstruction-curves"></a>Zakázat Wwise překážka křivek
-Překážka křivky Wwise vliv suchého úroveň izolace, ale Akustika projekt používá k vynucení wet/zkušební poměry ovládací prvky návrhu a simulace. Doporučujeme zakázat křivky překážka svazku. Návrh wetness, pomocí ovládacího prvku upravit Wetness popsané dále.
+### <a name="disable-wwise-obstruction-curves"></a>Zakázat křivky překážek Wwise
+Wwiseé křivky mají vliv na suchou úroveň v izolaci, ale v případě akustického projektu používá ovládací prvky návrhu a simulaci k vymáhání vlhkého a suchého poměru. Doporučujeme zakázat křivku pro překážku. Pro návrh wetness použijte ovládací prvek Wetness pro úpravy popsaný níže.
  
-Pokud používáte křivky LPF/HPF překážka pro jiné účely, ujistěte se, že jste je nastavili na Y = 0 X = 0 (to znamená, neexistuje žádný LPF nebo HPF Pokud neexistuje žádná překážka).
+Pokud používáte pro jiné účely překážku LPF/HPF, ujistěte se, že jste je nastavili na Y = 0 v X = 0 (to znamená, že pokud nedochází k žádnému překážkám, neexistují žádné LPF ani HPF).
 
-![Snímek obrazovky Wwise překážka křivky editoru](media/wwise-obstruction-curve.png)
+![Snímek obrazovky s editorem křivky překážek Wwise](media/wwise-obstruction-curve.png)
 
-### <a name="design-project-acoustics-mixer-parameters"></a>Návrh projektu Akustika mixer parametry
-Vlastnosti globální dozvuku můžete řídit návštěvou kartě mixer modulu plug-in Service Bus Akustika projektu. Chcete-li otevřít panel nastavení modulu plug-in mixer dvakrát klikněte na "Mixer Akustika projektu (vlastní)".
+### <a name="design-project-acoustics-mixer-parameters"></a>Parametry směšovače v projektech návrhu
+Globální vlastnosti reverb můžete řídit návštěvou karty Plug-in směšovače na zvukové službě projektu. Dvojitým kliknutím na položku "směšovač akustického projektu (vlastní)" otevřete panel nastavení modulu plug-in směšovače.
 
-Uvidíte také, že modul plug-in mixer má možnost "Provádět zvuk". Pokud byste chtěli raději použít projekt akustický integrované zvuk, zaškrtněte políčko "Provádět zvuk" a vyberte si z HRTF nebo pro posouvání. Ujistěte se, že chcete zakázat všechny suchého Aux sběrnice, které jste nastavili, jinak uslyšíte přímo dvakrát. Použití "Wetness nastavit" a "Dozvuku čas Škálovací faktor" pro globální kontrolu na kombinaci dozvuku využití. Mějte na paměti, je nutné restartovat Unreal a potom znovu vygenerovat soundbanks před tím play, aby přebíral změny konfigurace modulu plug-in mixer například zaškrtávací políčko "provádět zvuk.
+Můžete také vidět, že modul plug-in směšovače má možnost provést rozprostorování. Pokud místo toho chcete použít vestavěnou prostorovou práci projektu, zaškrtněte políčko provést rozklad a vyberte jednu z HRTF nebo posouvání. Ujistěte se, že jste zakázali všechny suché bussesé AUX, které jste nastavili. v opačném případě bude Přímá cesta slyšet dvakrát. K cvičení globálního řízení v kombinaci reverb použijte Wetness úpravy a faktor reverb Time Scale. Všimněte si, že musíte restartovat Unreal a pak znovu vygenerovat soundbanks, abyste mohli začít hrát změny konfigurace modulu plug-in mixer, jako je zaškrtávací políčko provést rozložení.
 
-![Snímek obrazovky projektu Akustika Wwise mixer modulu plug-in možnosti](media/mixer-plugin-global-settings.png)
+![Snímek obrazovky s možnostmi modulu plug-in Wwise mixer v projektu](media/mixer-plugin-global-settings.png)
 
-## <a name="set-project-acoustics-design-controls-in-the-wwise-actor-mixer-hierarchy"></a>Nastavit ovládací prvky návrhu projektu Akustika v hierarchii Wwise mixer objektu actor
-Ovládací prvek parametry, které jednotlivé mixer objektu actor dvakrát klikněte na objekt Actor – Mixer a potom klikněte na kartu modulu Plug-in jeho Mixer. Tady budete moci změnit všechny parametry na úrovni na zvuk. Tyto hodnoty v kombinaci s těmi nastavení na straně Unreal (popsaných níže). Například pokud je projekt Akustika Unreal modul plug-in nastaví Outdoorness úpravy na objekt, na 0,5 a Wwise sady, tak -0.25 Outdoorness úpravy, které u zvukové je 0,25.
+## <a name="set-project-acoustics-design-controls-in-the-wwise-actor-mixer-hierarchy"></a>Nastavení ovládacích prvků pro návrh akustického projektu v hierarchii Wwise actor-mixer
+Pokud chcete ovládat parametry jednotlivého směšovače Actor, poklikejte na objekt actor-mixer a pak klikněte na kartu plugin plug-in. Tady budete moct změnit všechny parametry na úrovni zvuku. Tyto hodnoty se kombinují s těmi, které jsou nastavené na Unreal straně (popsané níže). Například pokud projekt Akustickě Unreal modul plug-in vystaví úpravu tónů u objektu na 0,5 a Wwise ho nastaví na-0,25, Výsledná úprava u tohoto zvuku se projeví na 0,25.
 
-![Snímek obrazovky podle nastavení zvukové mixer v hierarchii Wwise mixer objektu actor](media/per-sound-mixer-settings.png)
+![Snímek obrazovky s nastavením zvukového směšovače v hierarchii Wwise actor-mixer](media/per-sound-mixer-settings.png)
 
-### <a name="ensure-the-aux-bus-has-dry-send-and-output-bus-has-wet-send"></a>Ujistěte se, aux Service bus má suchého odeslat a Service bus výstup má wet odeslat
-Mějte na paměti, že instalační program vyžaduje objekt actor mixer výměn obvykle suchého a vlhkou směrování v Wwise. Vytvoří dozvuku signálu na sběrnici výstup mixeru objektu actor (nastavené na Service Bus Akustika projekt) a suchého signálu podél uživatelem definované aux Service bus. Tato směrování se vyžaduje kvůli funkce modulu plug-in mixer Wwise rozhraní API, které používá modul plug-in Wwise Akustika projektu.
+### <a name="ensure-the-aux-bus-has-dry-send-and-output-bus-has-wet-send"></a>Ujistěte se, že posílaná sběrnice má suché odeslání, a výstupní sběrnice posílá
+Mějte na paměti, že požadovaná instalace objektu actor-mixer promění v Wwise normální a suché směrování. Vytváří signál reverb na výstupní sběrnici objektu actor (nastavenou na akustickou hodnotu v projektech) a suchý signál podél uživatelem definované pomocné sběrnice. Toto směrování se vyžaduje v důsledku funkcí rozhraní API pro modul plug-in Wwise mixer, které projekt využívá modulem plug-in Wwise.
 
-![Editor Wwise snímek obrazovky znázorňující pokyny k návrhu hlasu pro Akustika projektu](media/voice-design-guidelines.png)
+![Snímek obrazovky s editorem Wwise zobrazující pokyny pro návrh hlasu pro akustické projekty](media/voice-design-guidelines.png)
  
-### <a name="set-up-distance-attenuation-curves"></a>Nastavte vzdálenost zeslabení křivek
-Zkontrolujte všechny zeslabení křivky používá objekt actor – míchání pomocí projektu Akustika mít uživatelem definované aux odeslat nastavená na "výstupní Service bus svazek." Wwise to dělá ve výchozím nastavení pro nově vytvořený zeslabení křivky. Pokud migrujete existující projekt, zkontrolujte nastavení křivky.
+### <a name="set-up-distance-attenuation-curves"></a>Nastavení křivek pro zeslabení vzdálenosti
+Zajistěte, aby všechny křivky odstavování používané pomocí směšovačů actor pomocí akustických prostředí projektu měly na svazku výstupní sběrnice uživatelsky definované pomocné možnosti odeslání. Wwise to ve výchozím nastavení dělá pro nově vytvořené křivky zeslabení. Pokud migrujete existující projekt, ověřte nastavení křivky.
 
-Simulace Akustika projekt má ve výchozím nastavení protokolu radius 45 měřičů kolem player umístění. Obecně doporučujeme nastavit vaše křivka zeslabení do databáze-200 kolem tohoto vzdálenost. Tato vzdálenost není omezení. Pro některé výslovnost zbraní může být vhodné větší radius. V takových případech výstrahou je, že se bude podílet geometrie pouze v rámci 45 m player umístění. Pokud hráč v místnosti a zdroje zvuku nespadá do místnosti a okamžitě 100 mil., ji bude možné správně occluded. Pokud je zdroj v místnosti a hráč je mimo a okamžitě 100 mil., nebude occluded správně.
+Ve výchozím nastavení má simulace akustického projektu poloměr 45 měřičů kolem umístění přehrávače. Obecně doporučujeme nastavit v této vzdálenosti křivku odstavování na dB-200 dB. Tato vzdálenost není pevným omezením. U některých zvuků, jako jsou zbraně, můžete chtít větší poloměr. V takových případech je k dispozici pouze geometrie v 45 m umístění přehrávače. Pokud je hráč v místnosti a zdroj zvuku je mimo místnost a 100 milionů se, bude správně zastíněna. Pokud je zdroj v místnosti a hráč je mimo a 100 metrů, nebude správně zastíněna.
 
-![Snímek obrazovky Wwise zeslabení křivek](media/atten-curve.png)
+![Snímek obrazovky s křivkami na zeslabení Wwise](media/atten-curve.png)
 
-### <a name="post-mixer-equalization"></a>Odeslat vyrovnávací Mixer ###
- Jedna věc, kterou můžete chtít provést, je přidání ekvalizér mixer příspěvku. Můžete zpracovávat Akustika projektu Service bus jako typický dozvuku sběrnice (ve výchozím režimu dozvuku) a umístí dělat vyrovnávací filtr. Zobrazí se v projektu Akustika Wwise ukázkový projekt ukázku této.
+### <a name="post-mixer-equalization"></a>Sestavování po vymíchání ###
+ Další věc, kterou můžete chtít udělat, je přidat ekvalizér po vymíchání. Můžete nakládat se sběrnicí projektu jako typickou reverb sběrnici (ve výchozím režimu reverb) a vložit do ní filtr, aby se vyrovnala. Ukázku můžete zobrazit v projektu Ukázka akustické Wwise projektu.
 
-![Snímek obrazovky Wwise po mixer EQ](media/wwise-post-mixer-eq.png)
+![Snímek obrazovky Wwise po obmíchání EQ](media/wwise-post-mixer-eq.png)
 
-Například filtr vysokou pass můžete pomáhaly zvládat basů z bezkontaktní záznamy, které boomy, nereálný dozvuku yield. Můžete také dosáhnout větší kontrolu po která má označení vytvoření úpravou EQ prostřednictvím RTPCs umožňuje změnit barvu dozvuku během hry.
+Například filtr vysokého úspěšnosti vám může pomáhat zvládnout silné nahrávání téměř pořízených záznamů, které boomy, nereálné reverb. Další ovládací prvky po zanesli můžete také dosáhnout úpravou EQ až RTPCs, což vám umožní měnit barvu reverb v době hry.
 
-## <a name="set-up-scene-wide-project-acoustics-properties"></a>Nastavení vlastností pro projekt Akustika celou scény
+## <a name="set-up-scene-wide-project-acoustics-properties"></a>Nastavení vlastností akustického projektu na úrovni scény
 
-Objekt actor Akustika místo poskytuje mnoho ovládacích prvků, které upravují chování systému a jsou užitečné při ladění.
+Objekt actor akustického prostoru zpřístupňuje mnoho ovládacích prvků, které mění chování systému a jsou užitečné při ladění.
 
-![Snímek obrazovky Unreal Akustika rozmístění ovládacích prvků](media/acoustics-space-controls.png)
+![Snímek obrazovky s ovládacími prvky místa Unreal akustického prostoru](media/acoustics-space-controls.png)
 
-* **Akustika Data:** Toto pole musí být přiřazena k assetu dokončené Akustika z obsahu/Akustika adresáře. Modul plug-in Akustika projektu automaticky přidá adresář obsahu/Akustika zabalené adresáře vašeho projektu.
-* **Velikost dlaždice:** Rozsahy oblasti kolem naslouchací proces, který chcete Akustika data načtena do paměti RAM. Jako naslouchací proces sondy okamžitě kolem hráč jsou načteny v, výsledky jsou stejné jako načtení akustických dat pro všechny testy. Použijte víc paměti RAM větší dlaždice, ale snížení vstupně-výstupní operace disku
-* **Automatické Stream:** Při povolení automaticky načte v nové dlaždice jako naslouchací proces dosáhne edge načíst oblasti. Pokud je zakázán, bude nutné k načtení nové dlaždice ručně prostřednictvím kódu nebo podrobné plány.
-* **Škálování mezipaměti:** řídí velikost mezipaměti pro akustický dotazy použít. Menší mezipaměti používá méně paměti RAM, ale může zvýšit využití procesoru pro každý dotaz.
-* **Akustika povoleno:** Ladění ovládacího prvku umožňující rychlé A / B přepínání Akustika simulace. Tento ovládací prvek je ignorován v dodání konfigurace. Je užitečné pro vyhledání konkrétní zvuku chyby pocházející Akustika výpočtů nebo jiný problém v projektu Wwise-li ovládací prvek.
-* **Aktualizace vzdálenosti:** Tuto možnost použijte, pokud chcete použít předem dokončené Akustika informace pro dotazy vzdálenost. Tyto dotazy se podobají ray přetypování, ale nebyla předvypočítaných proto věnujte mnohem menším procesoru. Příklad použití je pro diskrétní odrazů nejbližší povrchu k naslouchacímu procesu. Plně využít to, budete muset použít kód nebo plány do dotazu vzdálenosti.
-* **Statistiky Draw:** Při jeho UE `stat Acoustics` může poskytnout vám informace o procesoru, tento stav zobrazení se zobrazí aktuálně načtené ACE souboru, využití paměti RAM a další informace o stavu v horním levém rohu obrazovky.
-* **Draw Voxels:** Překryv voxels zavřít naslouchací proces zobrazující voxel mřížky používané během interpolace modulu runtime. Pokud je vysílače uvnitř voxel modulu runtime, dojde k selhání akustický dotazy.
-* **Sondy Draw:** Zobrazit všechny testy pro tento scény. Budou různé barvy v závislosti na stavu jejich zatížení.
-* **Nakreslete vzdálenosti:** Pokud je povolená aktualizace vzdálenosti, tím se zobrazí pole na povrchu co nejblíže k naslouchacímu procesu v kvantizované směrech kolem naslouchací proces.
+* **Akustická data:** V tomto poli musí být přiřazen prostředek akustického materiálu vloženými z adresáře Content/akustické. Modul plug-in akustického projektu automaticky přidá do sbalených adresářů vašeho projektu adresář Content/akustického obsahu.
+* **Velikost dlaždice:** Rozsahy oblasti kolem naslouchacího procesu, u kterých chcete data akustického zatížení načíst do paměti RAM. Pokud se sondy naslouchacího procesu hned po načtení přehrávače nacházejí v, jsou výsledky stejné jako načítání akustických dat pro všechny sondy. Větší dlaždice využívají více paměti RAM, ale omezují I/O disku.
+* **Automatický Stream:** Pokud je povoleno, automaticky načte do nových dlaždic, protože naslouchací proces dosáhne okraje načtené oblasti. Pokud je tato zakázaná, bude nutné načíst nové dlaždice ručně prostřednictvím kódu nebo modrotisky.
+* **Škálování mezipaměti:** určuje velikost mezipaměti používané pro zvukové dotazy. Menší mezipaměť používá méně paměti RAM, ale může zvýšit využití procesoru u každého dotazu.
+* **Povolené akustické:** Ovládací prvek pro ladění umožňující rychlé A/B přepínání akustických simulací. Tento ovládací prvek se v konfiguracích expedice ignoruje. Tento ovládací prvek je užitečný pro hledání, zda konkrétní zvuková chyba vznikla v výpočtech akustického přenosu nebo v případě jiného problému v projektu Wwise.
+* **Aktualizovat vzdálenosti:** Tuto možnost použijte, pokud chcete použít vloženýmielné informace pro dotazy na vzdálenost. Tyto dotazy jsou podobné přetypování v Ray, ale byly předem vypočítány, takže Využijte mnohem méně procesoru. Příkladem použití je samostatná odraza z nejbližšího povrchu pro naslouchací proces. Abyste to mohli plně využít, budete muset pro dotazování vzdálenosti použít kód nebo plány.
+* **Statistika vykreslování:** I když vám může poskytnout informace o procesoru, zobrazí se v tomto zobrazení stav aktuálně načtený soubor ACE, využití paměti RAM a další informace o stavu v levém horním rohu obrazovky. `stat Acoustics`
+* **Voxels vykreslování:** Překrytí voxels blízko k naslouchacímu procesu ukazující Voxel mřížku používanou během interpolace za běhu. Pokud je modul pro vystavení v běhovém prostředí Voxel, dojde k selhání akustického dotazu.
+* **Vykreslit sondy:** Zobrazit všechny sondy pro tuto scénu. Budou se lišit barvy v závislosti na stavu zatížení.
+* **Kreslit vzdálenosti:** Pokud je zapnutá možnost aktualizovat vzdálenosti, zobrazí se v quantized směrech kolem naslouchacího procesu pole na nejbližším povrchu naslouchacího procesu.
 
-## <a name="actor-specific-acoustics-design-controls"></a>Ovládací prvky návrhu Akustika specifické pro objekt actor
-Tyto ovládací prvky návrhu oborem pro jednotlivé zvukové součástí Unreal.
+## <a name="actor-specific-acoustics-design-controls"></a>Ovládací prvky návrhu pro určité akustické úrovni actor
+Tyto ovládací prvky návrhu jsou vymezeny na jednotlivé komponenty zvuku v Unreal.
 
-![Snímek obrazovky Unreal zvukové součásti ovládacích prvků](media/audio-component-controls.png)
+![Snímek obrazovky s ovládacími prvky zvukové komponenty Unreal](media/audio-component-controls.png)
 
-* **Násobitel uzavření:** Určuje efekt uzavření. Hodnoty > 1 bude dál rozšiřuje vhodné. Hodnoty < 1 budou minimalizovat.
-* **Úprava wetness:** Další dozvuku dB
-* **Decay – násobitele času:** Ovládací prvky RT60 multiplicatively, na základě výstupu Akustika simulace
-* **Úprava outdoorness:** Určuje, jak venku reverberation. Hodnoty blíže 0 jsou více budovách, více venku se blíže k 1. Toto nastavení je sčítání, takže ji nastavíte na hodnotu -1 bude vynucovat budovách, nastavení na + 1 bude vynucovat venku.
-* **Přenos Db:** Vykreslení další zvuk prostřednictvím wall s této hlasitost v kombinaci s zeslabení řádku přístup na základě vzdálenosti.
-* **Vzdálenost Warp vlhkou poměr:** Upraví reverberation vlastnosti ve zdroji, jako kdyby byly blíže/další okamžitě, aniž by to ovlivnilo přímou cestu.
-* **Přehrát v nabídce Start:** Přepnout k určení, zda by měl v nabídce start scény automaticky přehrát zvuk. Ve výchozím nastavení povolené.
-* **Zobrazit akustický parametry:** Zobrazit informace o ladění přímo nad komponenty v rámci her. (pouze pro konfigurace bez přesouvání)
+* **Multiplikátor překrytí:** Ovládá efekt překrytí. Hodnoty > 1 budou doplnit překrytí. Hodnoty < 1 budou minimalizovány.
+* **Wetness úpravy:** Další reverb dB
+* **Multiplikátor Decay času:** Ovládá RT60 multiplicatively na základě výstupu simulace akustického množství.
+* **Korekce mezi dveřmi:** Určuje, jak je reverberation venku. Hodnoty blíž k 0 jsou více než jedna dvířka, blíž k 1 je více venku. Tato úprava je doplňková, takže když ji nastavíte na hodnotu-1, vynutila se dvířka a její nastavení na + 1 bude vymáhat venku.
+* **Přenosová databáze:** Vykreslete další zvuk přes zeď s touto nahlasem v kombinaci s použitím útlumu vzdálenosti na základě pohledu.
+* **Osnova vlhkého poměru na dálku:** Upraví charakteristiky reverberation ve zdroji, jako kdyby byl blíž nebo ještě více, aniž by to ovlivnilo přímou cestu.
+* **Přehrát při spuštění:** Přepínač pro určení, zda se má zvuk automaticky přehrávat při spuštění scény. Ve výchozím nastavení povoleno.
+* **Zobrazit akustické parametry:** Zobrazit informace o ladění přímo nad součástí hry (jenom pro nepřenosové konfigurace)
 
 ## <a name="blueprint-functionality"></a>Funkce podrobného plánu
-Objekt actor Akustika místa jsou přístupná přes podrobného plánu, poskytují funkce, třeba načítání mapy nebo změna nastavení prostřednictvím úrovně skriptování. Nabízíme dva příklady v tomto článku.
+Přístup k prostoru akustické paměti je přístupný prostřednictvím podrobného plánu, který poskytuje funkce, jako je načítání mapy nebo úprava nastavení prostřednictvím skriptování na úrovni. Zde uvádíme dva příklady.
 
-### <a name="add-finer-grained-control-over-streaming-load"></a>Přidat citlivější kontrolu nad streamování zatížení
-Ke správě akustických dat streamování sami místo streamování automaticky na základě player pozice, můžete použít funkci podrobného plánu platnost zatížení dlaždice:
+### <a name="add-finer-grained-control-over-streaming-load"></a>Přidat jemnější kontrolu nad zatížením streamování
+Chcete-li spravovat akustickou datovou streamování sami, místo streamování automaticky na základě pozice přehrávače, můžete použít funkci podrobného plánu dlaždice vynutit zatížení:
 
-![Snímek obrazovky streamování podrobného plánu možnosti v Unreal](media/blueprint-streaming.png)
+![Snímek obrazovky s možnostmi streamování podrobného plánu v Unreal](media/blueprint-streaming.png)
 
-* **Cíl:** AcousticsSpace objektu actor
-* **Pozice System Center:** System center oblasti, kterou potřebuje načíst data
-* **Uvolnění sondy mimo dlaždice:** Pokud je zaškrtnuto, budou všechny testy v nové oblasti není uvolněn z paměti RAM. Pokud není zaškrtnuto, nové oblasti je načten do paměti, při opuštění existující testy také načtených do paměti
-* **Blok na dokončení:** Díky synchronní operace načtení dlaždice
+* **Cílové** Objekt actor AcousticsSpace
+* **Pozice středu:** Střed oblasti, která vyžaduje načtená data
+* **Uvolnit sondy mimo dlaždici:** Pokud je zaškrtnuto, všechny sondy v nové oblasti nebudou uvolněny z paměti RAM. Pokud není zaškrtnuto, nová oblast je načtena do paměti a zároveň opouští existující sondy, které jsou načteny do paměti.
+* **Zablokování při dokončování:** Provede načtení dlaždice synchronní operaci.
 
-Před voláním platnost zatížení dlaždice musí již nastavena velikost dlaždice. Například byste mohli dělat něco jako toto tlačítko Načíst soubor ACE, nastavte velikost dlaždic a streamování v oblasti:
+Velikost dlaždice musí být nastavená před voláním dlaždice vynutit načtení. Například můžete provést něco podobného načtení souboru ACE, nastavit velikost dlaždice a Stream v oblasti:
 
-![Snímek obrazovky streamování nastavení možnosti v Unreal](media/streaming-setup.png)
+![Snímek obrazovky s možnostmi nastavení streamování v Unreal](media/streaming-setup.png)
 
-Funkce načítání dat Akustika podrobného plánu použitého v tomto příkladu má následující parametry:
+Funkce podrobného plánu dat zatížení použitá v tomto příkladu má následující parametry:
 
-* **Cíl:** AcousticsSpace objekt actor.
-* **Nové která má označení vytvoření:** Datovému assetu Akustika který se má načíst. Opuštění této prázdné/nastavení ho na hodnotu null odstraní aktuální která má označení vytvoření bez načtení nové.
+* **Cílové** Objekt actor AcousticsSpace
+* **Nové zanesli:** Datový Asset, který se má načíst. Když tento parametr necháte prázdné nebo nastavíte na hodnotu null, uvolní se aktuální zanesli bez načtení nového.
 
-### <a name="optionally-query-for-surface-proximity"></a>Volitelně můžete dotaz na povrchu blízkých výrazů
-Pokud chcete zobrazit jak blízko plochy jsou v konkrétní směr kolem naslouchací proces, můžete použít funkci vzdálenost dotazu. Tato funkce může být užitečná pro řízení směrové zpožděné odrazů nebo pro další logika hry využitím surface blízkosti. Dotaz je levnější než ray přetypování, protože výsledky se berou z Akustika vyhledávací tabulky.
+### <a name="optionally-query-for-surface-proximity"></a>Volitelně dotaz na okolí Surface
+Pokud chcete zjistit, jak se mají v rámci naslouchacího procesu v určitém směru pohybovat povrchy, můžete použít funkci vzdálenost dotazu. Tato funkce může být užitečná pro řízení zpožděných odrazů nebo pro jiné herní logiky, které jsou založené na blízkosti povrchu. Dotaz je levnější než přetypování na Ray, protože výsledky jsou načítány z vyhledávací tabulky s akustickými výsledky.
 
-![Snímek obrazovky příklad dotazu vzdálenost podrobného plánu](media/distance-query.png)
+![Snímek obrazovky s ukázkovým dotazem na vzdálenost](media/distance-query.png)
 
-* **Cíl:** AcousticsSpace objektu actor
-* **Směr vypadat:** Směr k dotazování, zarovnání na střed na naslouchací proces
-* **Vzdálenost:** Pokud dotaz úspěšný, vzdálenost na nejbližší plochu
-* **Návratová hodnota:** Boolean – hodnota true, pokud je dotaz úspěšný, jinak hodnota false
+* **Cílové** Objekt actor AcousticsSpace
+* **Směr hledání:** Směr pro dotazování v, na střed naslouchacího procesu
+* **Délku** Pokud je dotaz úspěšný, vzdálenost k nejbližšímu povrchu
+* **Návratová hodnota:** Boolean – true, pokud je dotaz úspěšný, jinak false
 
 ## <a name="next-steps"></a>Další postup
-* Seznamte se s koncepty za [návrhu procesu](design-process.md)
-* [Vytvoření účtu Azure](create-azure-account.md) k vytvoření vlastní scény
+* Prozkoumejte koncepty za [proces návrhu](design-process.md)
+* [Vytvoření účtu Azure](create-azure-account.md) pro zaneslií vlastní scény
 
 
