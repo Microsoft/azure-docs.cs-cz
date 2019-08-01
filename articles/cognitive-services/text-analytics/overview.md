@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: f84d980dd01d1e9f3ffcc00d73f712211524cb42
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: ee4551f6a31436ef2322fcea3a0c479b45036993
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667642"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697620"
 ---
-# <a name="what-is-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
+# <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
 Rozhraní API pro analýzu textu je cloudová služba, která poskytuje pokročilé zpracování přirozeného jazyka nad nezpracovaným textem a zahrnuje čtyři hlavní funkce: analýzu míněníí, extrakci klíčových frází, rozpoznávání jazyka a rozpoznávání entit.
 
@@ -25,19 +25,19 @@ Rozhraní API je součástí služby [Azure Cognitive Services](https://docs.mic
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-Analýza textu může znamenat různé věci, ale v Cognitive Services rozhraní API pro analýzu textu poskytuje čtyři typy analýz, jak je popsáno níže.
+Analýza textu může znamenat různé věci, ale v Cognitive Services rozhraní API pro analýzu textu poskytuje čtyři typy analýz, jak je popsáno níže. Tyto funkce můžete použít spolu s [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)nebo klientskou knihovnou pro [.NET](quickstarts/csharp.md), [Python](quickstarts/python-sdk.md), [Node. js](quickstarts/nodejs-sdk.md), [Přejít](quickstarts/go-sdk.md)nebo [Ruby](quickstarts/ruby-sdk.md).
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
-Pomocí [analýzy mínění](how-tos/text-analytics-how-to-sentiment-analysis.md) zjistíte, co si zákazníci myslí o vaší značce nebo tématu analýzou nezpracovaného textu pro poznámky o kladných nebo záporných mínění. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení.<br /> Modely analýzy jsou předem vytrénované pomocí rozsáhlého textu a technologiemi přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](text-analytics-supported-languages.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace. Můžete použít rozhraní [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c9) API nebo sadu [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK.
+Pomocí [analýzy mínění](how-tos/text-analytics-how-to-sentiment-analysis.md) zjistíte, co si zákazníci myslí o vaší značce nebo tématu analýzou nezpracovaného textu pro poznámky o kladných nebo záporných mínění. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení.<br /> Modely analýzy jsou předem vytrénované pomocí rozsáhlého textu a technologiemi přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](text-analytics-supported-languages.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace.
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
-Automatické [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) pro rychlé určení hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). Můžete použít rozhraní [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) API zde nebo sadu [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK.
+Automatické [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) pro rychlé určení hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál).
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
-Můžete [zjistit, který jazyk je vstupní text napsán](how-tos/text-analytics-how-to-language-detection.md) , a nahlásit jeden kód jazyka pro každý dokument odeslaný v žádosti v široké škále jazyků, variant, dialektů a některých regionálních/kulturních jazyků. Kód jazyka spárovaný se skóre označuje sílu skóre. Můžete použít rozhraní [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) API nebo sadu [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#create-the-visual-studio-solution-and-install-the-sdk) SDK.
+Můžete [zjistit, který jazyk je vstupní text napsán](how-tos/text-analytics-how-to-language-detection.md) , a nahlásit jeden kód jazyka pro každý dokument odeslaný v žádosti v široké škále jazyků, variant, dialektů a některých regionálních/kulturních jazyků. Kód jazyka spárovaný se skóre označuje sílu skóre.
 
 ## <a name="named-entity-recognition"></a>Rozpoznávání pojmenovaných entit
-[Identifikujte a Kategorizujte entity](how-tos/text-analytics-how-to-entity-linking.md) v textu jako lidi, místa, organizace, datum a čas, množství, procenta, měny a další. Také rozpozná známé entity a propojí je s dalšími informacemi na webu. Můžete použít rozhraní [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) API.
+[Identifikujte a Kategorizujte entity](how-tos/text-analytics-how-to-entity-linking.md) v textu jako lidi, místa, organizace, datum a čas, množství, procenta, měny a další. Také rozpozná známé entity a propojí je s dalšími informacemi na webu.
 
 ## <a name="use-containers"></a>Použití kontejnerů
 
@@ -47,7 +47,7 @@ Můžete [zjistit, který jazyk je vstupní text napsán](how-tos/text-analytics
 
 Pracovní postup je jednoduchý: odešlete data pro analýzu a obdržíte výstupy ve svém kódu. Analyzátory jsou používány tak, jak jsou, bez dalších konfigurací nebo přizpůsobení.
 
-1. [Zaregistrujte se](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a získejte [přístupový klíč](how-tos/text-analytics-how-to-access-key.md). Klíč musí být předán s každým požadavkem.
+1. [Vytvořte prostředek Azure](../cognitive-services-apis-create-account.md) pro analýza textu. Potom [získáte klíč](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který jste vygenerovali k ověření vašich požadavků.
 
 2. [Zformulujte požadavek](how-tos/text-analytics-how-to-call-api.md#json-schema) obsahující vaše data ve formě nezpracovaného nestrukturovaného textu ve formátu JSON.
 
@@ -75,7 +75,7 @@ Můžete začít používat rozhraní API pro analýzu textu v procesech, a to i
 
 ## <a name="supported-languages"></a>Podporované jazyky
 
-Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost. Informace o tomto obsahu naleznete v části [Podporované jazyky v rozhraní API pro analýzu textu](text-analytics-supported-languages.md).
+Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost. V rozhraní API pro analýzu textu pro tento obsah se můžete podívat na [podporované jazyky](text-analytics-supported-languages.md) .
 
 <a name="data-limits"></a>
 
@@ -83,7 +83,7 @@ Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost
 
 Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Aktuální limit je 5 120 znaků pro každý dokument; Pokud potřebujete analyzovat větší dokumenty, můžete je rozdělit do menších bloků. Pokud budete přesto potřebovat vyšší limit, [kontaktujte nás](https://azure.microsoft.com/overview/sales-number/), abychom mohli projednat vaše požadavky.
 
-| Omezení | Value |
+| Omezení | Hodnota |
 |------------------------|---------------|
 | Maximální velikost jednoho dokumentu | 5 120 znaků měřených podle [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Maximální velikost celého požadavku | 1 MB |
