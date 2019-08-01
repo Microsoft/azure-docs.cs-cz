@@ -1,40 +1,39 @@
 ---
-title: Rychlý start Azure – vytvoření a použití sdílené složky služby soubory Azure na virtuálních počítačích s Windows | Dokumentace Microsoftu
-description: V tomto rychlém startu nastavení sdílené složky služby soubory Azure na webu Azure Portal a připojte ho k virtuálnímu počítači Windows. Připojit ke sdílené složce souborů, uložit soubor do sdílené složky souborů. Potom můžete pořídit snímek sdílené složky souborů, upravte soubor ve sdílené složce souborů a obnovit předchozí snímek sdílené složky souborů.
-services: storage
+title: Rychlý Start Azure – vytvoření a použití sdílené složky Azure Files na virtuálních počítačích s Windows | Microsoft Docs
+description: V tomto rychlém startu nastavíte sdílenou složku souborů Azure v Azure Portal a připojíte ji k virtuálnímu počítači s Windows. Připojíte se ke sdílené složce souborů, nahrajte soubor do sdílené složky soubory. Pak pořídíte snímek sdílené složky, upravíte soubor ve sdílené složce a obnovíte předchozí snímek sdílené složky souborů.
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5109f4e801c1e34b2026cff8f8dd83558618e153
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 626a6a5e0449d267b67653c2f63303226dd0c99d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61482451"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699742"
 ---
-# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Rychlý start: Vytvoření a správa sdílenou složku služby soubory Azure s virtuálními počítači Windows
+# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Rychlý start: Vytváření a Správa sdílených složek Azure Files s virtuálními počítači s Windows
 
-Tento článek ukazuje základní kroky pro vytvoření a použití soubory Azure sdílet. V tomto rychlém startu důraz je o rychle nastavení sdílené složky služby soubory Azure tak můžete jak služba funguje. Pokud potřebujete podrobnější pokyny pro vytváření a používání Azure sdílených položek ve vašem prostředí, najdete v článku [sdílenými složkami Azure pomocí služby Windows](storage-how-to-use-files-windows.md).
+Tento článek popisuje základní kroky pro vytvoření a použití sdílené složky Azure Files. V tomto rychlém startu se důrazně naučí, jak rychle nastavovat sdílenou složku Azure Files, abyste se mohli setkat s tím, jak služba funguje. Pokud potřebujete podrobnější pokyny pro vytváření a používání sdílených složek Azure ve vlastním prostředí, přečtěte si téma [použití sdílené složky Azure v systému Windows](storage-how-to-use-files-windows.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
-V tomto rychlém startu můžete nastavit následující položky:
+V tomto rychlém startu nastavíte následující položky:
 
-- Účet úložiště Azure a sdílené složky Azure
-- Virtuální počítač Windows Server 2016 Datacenter
+- Účet služby Azure Storage a sdílená složka Azure
+- Virtuální počítač datacenter Windows serveru 2016
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Než začnete pracovat se sdílenými složkami Azure, budete muset vytvořit účet úložiště Azure. Účet úložiště pro obecné účely verze 2 poskytuje přístup ke všem službám Azure Storage: objekty BLOB, soubory, fronty a tabulky. Rychlém startu se vytvoří účet úložiště pro obecné účely verze 2, ale jsou podobné kroky k vytvoření libovolného typu účtu úložiště. Účet úložiště může obsahovat neomezený počet sdílených složek. Sdílená složka může obsahovat neomezený počet souborů až do výše maximální kapacity účtu úložiště.
+Než budete moct pracovat se sdílenou složkou Azure, musíte vytvořit účet úložiště Azure. Účet úložiště pro obecné účely v2 poskytuje přístup ke všem službám Azure Storage: objekty blob, soubory, fronty a tabulky. Rychlý Start vytvoří účet úložiště pro obecné účely v2, ale postup vytvoření libovolného typu účtu úložiště je podobný. Účet úložiště může obsahovat neomezený počet sdílených složek. Sdílená složka může obsahovat neomezený počet souborů až do výše maximální kapacity účtu úložiště.
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -42,139 +41,139 @@ Než začnete pracovat se sdílenými složkami Azure, budete muset vytvořit ú
 
 Dále vytvoříte sdílenou složku.
 
-1. Po dokončení nasazení účtu úložiště Azure vyberte **přejít k prostředku**.
-1. Vyberte **soubory** z podokna účtu úložiště.
+1. Po dokončení nasazení účtu úložiště Azure vyberte **Přejít k prostředku**.
+1. V podokně účet úložiště vyberte **soubory** .
 
-    ![Vyberte soubory](./media/storage-files-quick-create-use-windows/click-files.png)
+    ![Vybrat soubory](./media/storage-files-quick-create-use-windows/click-files.png)
 
-1. Vyberte **+ sdílená složka,**.
+1. Vyberte **+ sdílení souborů**.
 
-    ![Vyberte tlačítko Přidat sdílenou složku souboru](./media/storage-files-quick-create-use-windows/create-file-share.png)
+    ![Vyberte tlačítko Přidat sdílení souborů.](./media/storage-files-quick-create-use-windows/create-file-share.png)
 
-1. Název nové sdílené složky *qsfileshare* > zadejte "1" **kvóty** > vyberte **vytvořit**. Kvóta může být maximálně 5 TiB, ale potřebujete jenom 1 GB pro tento rychlý start.
-1. Vytvořte nový soubor txt *qsTestFile* na místním počítači.
-1. Vyberte novou sdílenou složku a potom na umístění sdílené složky souboru **nahrát**.
+1. Pojmenujte novou sdílenou složku > *qsfileshare* zadejte "1" **kvót** > vyberte **vytvořit**. Kvóta může být maximálně 5 TiB, ale pro tento rychlý Start stačí pouze 1 GiB.
+1. Na místním počítači vytvořte nový soubor txt s názvem *qsTestFile* .
+1. Vyberte novou sdílenou složku a potom v umístění sdílené složky vyberte **Odeslat**.
 
-    ![Nahrání souboru](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
+    ![Nahrát soubor](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
 
-1. Přejděte do umístění, ve které jste vytvořili soubor .txt > vyberte *qsTestFile.txt* > vyberte **nahrát**.
+1. Přejděte do umístění, kde jste vytvořili soubor. txt > vyberte *qsTestFile. txt* > vyberte **nahrát**.
 
-Zatím jste vytvořili účet úložiště Azure a sdílenou složku s jedním souborem v něm v Azure. Dále vytvoříte virtuální počítač Azure s Windows Server 2016 Datacenter znázornit na místním serveru v rámci tohoto rychlého startu.
+Zatím jste vytvořili účet úložiště Azure a sdílenou složku s jedním souborem v Azure. V dalším kroku vytvoříte virtuální počítač Azure s Windows serverem 2016 Datacenter, který bude představovat místní server v tomto rychlém startu.
 
 ### <a name="deploy-a-vm"></a>Nasazení virtuálního počítače
 
 1. Teď rozbalte nabídku na levé straně portálu a v levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 1. Ve vyhledávacím poli nad seznamem prostředků **Azure Marketplace** vyhledejte a vyberte **Windows Server 2016 Datacenter** a pak zvolte **Vytvořit**.
-1. V **Základy** ve skupině **podrobnosti o projektu**, vyberte skupinu prostředků, kterou jste vytvořili pro tento rychlý start.
+1. Na kartě **základy** v části **Project Details (podrobnosti projektu**) vyberte skupinu prostředků, kterou jste pro tento rychlý Start vytvořili.
 
    ![Zadání základních informací o virtuálním počítači v okně portálu](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
 
-1. V části **Instance podrobnosti**, pojmenujte virtuální počítač *qsVM*.
+1. V části **Podrobnosti instance**název virtuálního počítače *qsVM*.
 1. U položek **Oblast**, **Možnosti dostupnosti**, **Image** a **Velikost** ponechte výchozí nastavení.
-1. V části **účet správce**, přidejte *VMadmin* jako **uživatelské jméno** a zadejte **heslo** pro virtuální počítač.
+1. V části **účet správce**přidejte *VMadmin* jako **uživatelské jméno** a zadejte **heslo** pro virtuální počítač.
 1. V části **Pravidla portů pro příchozí spojení** vyberte **Povolit vybrané porty** a pak z rozevíracího seznamu vyberte **RDP (3389)** a **HTTP**.
 1. Vyberte **Zkontrolovat a vytvořit**.
 1. Vyberte **Vytvořit**. Vytvoření nového virtuálního počítače bude trvat několik minut.
 
-1. Po dokončení nasazení virtuálního počítače vyberte **přejít k prostředku**.
+1. Po dokončení nasazení virtuálního počítače vyberte **Přejít k prostředku**.
 
 Právě jste vytvořili nový virtuální počítač a připojili jste datový disk. Teď je potřeba se k tomuto virtuálnímu počítači připojit.
 
 ### <a name="connect-to-your-vm"></a>Připojení k virtuálnímu počítači
 
-1. Vyberte **připojit** na stránce vlastností virtuálního počítače.
+1. Na stránce vlastností virtuálního počítače vyberte **připojit** .
 
    ![Připojení k virtuálnímu počítači Azure z portálu](./media/storage-files-quick-create-use-windows/connect-vm.png)
 
-1. V **připojit k virtuálnímu počítači** stránce, ponechte výchozí nastavení pro připojení s **IP adresu** přes **číslo portu** *3389* a vyberte **Soubor stáhnout RDP**.
-1. Otevřete stažený soubor RDP a vyberte **připojit** po zobrazení výzvy.
-1. V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte uživatelské jméno jako *localhost\username*, kde &lt;uživatelské jméno&gt; je uživatelské jméno správce virtuálního počítače je vytvořený pro virtuální počítač. Zadejte heslo, které jste vytvořili pro virtuální počítač a pak vyberte **OK**.
+1. Na stránce **připojit k virtuálnímu počítači** ponechte výchozí možnosti připojit pomocí **IP adresy** přes **číslo portu** *3389* a vyberte **Stáhnout soubor RDP**.
+1. Otevřete stažený soubor RDP a po zobrazení výzvy vyberte **připojit** .
+1. V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte uživatelské jméno jako *localhost\username*, kde &lt;UserName&gt; je uživatelské jméno správce virtuálního počítače, které jste vytvořili pro virtuální počítač. Zadejte heslo, které jste pro virtuální počítač vytvořili, a pak vyberte **OK**.
 
    ![Další možnosti](./media/storage-files-quick-create-use-windows/local-host2.png)
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Vyberte **Ano** nebo **pokračovat** k vytvoření připojení.
+1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Vyberte **Ano** nebo **pokračovat** a vytvořte připojení.
 
-## <a name="map-the-azure-file-share-to-a-windows-drive"></a>Mapování sdílené složky Azure na jednotce Windows
+## <a name="map-the-azure-file-share-to-a-windows-drive"></a>Mapování sdílené složky Azure na jednotku s Windows
 
-1. Na webu Azure Portal, přejděte *qsfileshare* sdílení souborů a vyberte **připojit**.
-1. Obsah do druhého pole zkopírujte a vložte ji **Poznámkový blok**.
+1. V Azure Portal přejděte do sdílené složky *qsfileshare* a vyberte **připojit**.
+1. Zkopírujte obsah druhého pole a vložte ho do poznámkového **bloku**.
 
    ![Cesta UNC z podokna Připojit služby Soubory Azure](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
 
-1. Ve virtuálním počítači, otevřete **Průzkumníka souborů** a vyberte **tento počítač** v okně. Tato volba se změní v nabídkách, které jsou k dispozici na na pásu karet. Na **počítače** nabídce vyberte možnost **připojit síťovou jednotku**.
-1. Vyberte písmeno jednotky a zadejte cestu UNC. Pokud jste postupovali podle návrhy pojmenování v rámci tohoto rychlého startu, zkopírujte  *\\qsstorageacct.file.core.windows.net\qsfileshare* z **Poznámkový blok**.
+1. Na virtuálním počítači otevřete **Průzkumníka souborů** a v okně vyberte **Tento počítač** . Tato volba změní nabídky, které jsou k dispozici na pásu karet. V nabídce **počítač** vyberte **mapovat síťovou jednotku**.
+1. Vyberte písmeno jednotky a zadejte cestu UNC. Pokud jste sledovali návrhy pojmenování v tomto rychlém startu, zkopírujte  *\\z poznámkového bloku qsstorageacct. File. Core. Windows. net\qsfileshare* .
 
-   Ujistěte se, že jsou kontrolovány obou políček.
+   Ujistěte se, že jsou zaškrtnuta obě políčka.
 
    ![Snímek obrazovky s dialogovým oknem Připojit síťovou jednotku](./media/storage-files-quick-create-use-windows/mountonwindows10.png)
 
 1. Vyberte **Finish** (Dokončit).
-1. V **zabezpečení Windows** dialogové okno:
+1. V dialogovém okně **zabezpečení systému Windows** :
 
-   - V programu Poznámkový blok, zkopírujte hodnotu název účtu úložiště předponou AZURE\ a vložte ji **zabezpečení Windows** dialogové okno jako uživatelské jméno. Pokud jste postupovali podle návrhy pojmenování v rámci tohoto rychlého startu, zkopírujte *AZURE\qsstorageacct*.
-   - V programu Poznámkový blok, zkopírujte klíč účtu úložiště a vložte ji **zabezpečení Windows** dialogové okno jako heslo.
+   - V programu Poznámkový blok zkopírujte název účtu úložiště s AZURE a vložte ho do dialogového okna **zabezpečení systému Windows** jako uživatelské jméno. Pokud jste sledovali návrhy pojmenování v tomto rychlém startu, zkopírujte *AZURE\qsstorageacct*.
+   - V programu Poznámkový blok zkopírujte klíč účtu úložiště a vložte ho do dialogového okna **zabezpečení systému Windows** jako heslo.
 
       ![Cesta UNC z podokna Připojit služby Soubory Azure](./media/storage-files-quick-create-use-windows/portal_netuse_connect3.png)
 
-## <a name="create-a-share-snapshot"></a>Vytvořit snímek sdílené složky
+## <a name="create-a-share-snapshot"></a>Vytvoření snímku sdílené složky
 
-Teď, když jste změnili na jednotce, můžete vytvořit snímek.
+Teď, když jste namapovali jednotku, můžete vytvořit snímek.
 
 1. Na portálu přejděte do sdílené složky a vyberte **vytvořit snímek**.
 
    ![Vytvoření snímku](./media/storage-files-quick-create-use-windows/create-snapshot.png)
 
-1. Ve virtuálním počítači, otevřete *qstestfile.txt* a zadejte "Tento soubor byl změněn" > uložte a zavřete soubor.
-1. Vytváření jiného snímku.
+1. Na virtuálním počítači otevřete soubor *qstestfile. txt* a zadejte text "Tento soubor byl změněn" > Uložit a zavřít soubor.
+1. Vytvořte další snímek.
 
 ## <a name="browse-a-share-snapshot"></a>Procházet snímek sdílené složky
 
-1. Ve sdílené složce, vyberte **zobrazit snímky**.
-1. Na **snímky sdílené složky** podokně, vyberte první snímek v seznamu.
+1. Ve sdílené složce vyberte **Zobrazit snímky**.
+1. V podokně **snímky sdílení souborů** vyberte první snímek v seznamu.
 
-   ![Vybraný snímek v seznamu časová razítka](./media/storage-files-quick-create-use-windows/snapshot-list.png)
+   ![Vybraný snímek v seznamu časových razítek](./media/storage-files-quick-create-use-windows/snapshot-list.png)
 
-1. V podokně pro tento snímek vyberte *qsTestFile.txt*.
+1. V podokně pro tento snímek vyberte *qsTestFile. txt*.
 
 ## <a name="restore-from-a-snapshot"></a>Obnovení ze snímku
 
-1. V okně snímku sdílené složky souboru, klikněte pravým tlačítkem myši *qsTestFile*a vyberte **obnovení** tlačítko.
+1. V okně snímku sdílení souborů klikněte pravým tlačítkem na *qsTestFile*a vyberte tlačítko **obnovit** .
 1. Vyberte **přepsat původní soubor**.
 
-   ![Stahování a obnovení tlačítka](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
+   ![Tlačítka pro stažení a obnovení](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
 
-1. Ve virtuálním počítači otevřete soubor. Bylo obnoveno verzí bez úprav.
+1. Na virtuálním počítači otevřete soubor. Neupravená verze byla obnovena.
 
 ## <a name="delete-a-share-snapshot"></a>Odstranění snímku sdílené složky
 
-1. Ve sdílené složce, vyberte **zobrazit snímky**.
-1. Na **snímky sdílené složky** podokně, vyberte poslední snímek v seznamu a klikněte na tlačítko **odstranit**.
+1. Ve sdílené složce vyberte **Zobrazit snímky**.
+1. V podokně **snímky sdílení souborů** vyberte v seznamu poslední snímek a klikněte na **Odstranit**.
 
    ![Tlačítko Odstranit](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
 
 ## <a name="use-a-share-snapshot-in-windows"></a>Použití snímku sdílené složky ve Windows
 
-Stejně jako místní snímky VSS, se zobrazí snímky z připojené sdílené složky Azure pomocí karty předchozí verze.
+Stejně jako u místních snímků služby Stínová kopie svazku (VSS) můžete snímky z připojené sdílené složky Azure zobrazit pomocí karty předchozí verze.
 
-1. V Průzkumníku souborů vyhledejte připojené sdílené složky.
+1. V Průzkumníku souborů vyhledejte připojenou sdílenou složku.
 
-   ![Připojené sdílené složky v Průzkumníku souborů](./media/storage-files-quick-create-use-windows/snapshot-windows-mount.png)
+   ![Připojená sdílená složka v Průzkumníkovi souborů](./media/storage-files-quick-create-use-windows/snapshot-windows-mount.png)
 
-1. Vyberte *qsTestFile.txt* a > klikněte pravým tlačítkem a vyberte **vlastnosti** z nabídky.
+1. Vyberte *qsTestFile. txt* a > klikněte pravým tlačítkem a v nabídce vyberte **vlastnosti** .
 
    ![Nabídka pro vybraný adresář zobrazená po kliknutí pravým tlačítkem](./media/storage-files-quick-create-use-windows/snapshot-windows-previous-versions.png)
 
 1. Výběrem karty **Předchozí verze** zobrazte seznam snímků sdílené složky pro tento adresář.
 
-1. Vyberte **otevřete** otevřete snímku.
+1. Vyberte **otevřít** a otevřete snímek.
 
    ![Karta Předchozí verze](./media/storage-files-quick-create-use-windows/snapshot-windows-list.png)
 
 ## <a name="restore-from-a-previous-version"></a>Obnovení z předchozí verze
 
-1. Vyberte **obnovení**. Tato akce zkopíruje obsah rekurzivně celý adresář do původního umístění v době, kdy byl vytvořen snímek sdílené složky.
+1. Vyberte **obnovit**. Tato akce zkopíruje obsah celého adresáře rekurzivně do původního umístění v okamžiku vytvoření snímku sdílené složky.
 
-   ![Obnovit tlačítko v upozornění](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png)
+   ![Tlačítko Obnovit ve zprávě upozornění](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

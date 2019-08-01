@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Hledání odpovědí projektu, uzlu'
+title: 'Rychlý start: Hledání odpovědí projektu, uzel'
 description: Začněte používat Project Answer Search s jazykem Node.
 services: cognitive-services
 author: mikedodaro
@@ -9,12 +9,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: c44be9779cf2b856ac2f5e9e017fd9d1040a018b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 21dda323cf465f56fb3f43160dd04c27a81d5590
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60861765"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698073"
 ---
 # <a name="quickstart-project-answer-search-with-node"></a>Rychlý start: Hledání odpovědí projektu s uzlem
 
@@ -22,7 +22,7 @@ Následující příklad kódu Node vytvoří dotaz na informace o Yosemitském 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search)
 
 Tento příklad používá jazyk Node verze 8.9.4.
 
@@ -87,7 +87,7 @@ Search();
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Ukázkový kód v jazyce C#](c-sharp-quickstart.md)
 - [Rychlý start Java](java-quickstart.md)
 - [Rychlý start Python](python-quickstart.md)

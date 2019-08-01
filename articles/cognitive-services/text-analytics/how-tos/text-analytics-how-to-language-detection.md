@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/26/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 1ecb4897811e63ea33936f080791f3abce3e0b32
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 361dc10aad6f65230e1e0f4c563534d44b45f902
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618706"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697807"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Příklad: Zjistit jazyk pomocí Analýza textu
 
@@ -71,7 +71,7 @@ Další informace o definici žádosti naleznete v tématu [Call the rozhraní A
 
 + Nastavte koncový bod HTTP pro rozpoznávání jazyka. Použijte buď prostředek Analýza textu v Azure, nebo [kontejner analýza textu](text-analytics-how-to-install-containers.md)s instancemi. Musí zahrnovat `/languages` prostředek: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`.
 
-+ Nastavte hlavičku žádosti tak, aby obsahovala přístupový klíč pro operace analýzy textu. Další informace najdete v tématu [vyhledání koncových bodů a přístupových klíčů](text-analytics-how-to-access-key.md).
++ Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 
 + V textu požadavku zadejte kolekci dokumentů JSON, kterou jste si připravili pro tuto analýzu.
 
@@ -269,7 +269,7 @@ V tomto článku jste zjistili koncepty a pracovní postup pro detekci jazyka po
 
 + [Detekce jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) je dostupná pro nejrůznější jazyky, varianty, dialekty a některé regionální nebo kulturní jazyky.
 + Dokumenty JSON v textu požadavku obsahují ID a text.
-+ Požadavek post je na `/languages` koncový bod pomocí přizpůsobeného přístupového [klíče a koncového bodu](text-analytics-how-to-access-key.md) , který je platný pro vaše předplatné.
++ Požadavek post je na `/languages` koncový bod pomocí přizpůsobeného přístupového [klíče a koncového bodu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který je platný pro vaše předplatné.
 + Výstup odpovědi se skládá z identifikátorů jazyka pro každé ID dokumentu. Výstup se dá streamovat do jakékoli aplikace, která přijímá JSON. Mezi příklady aplikací patří Excel a Power BI, aby se pojmenoval několik.
 
 ## <a name="see-also"></a>Viz také:
@@ -277,7 +277,7 @@ V tomto článku jste zjistili koncepty a pracovní postup pro detekci jazyka po
  [Přehled Analýza textu](../overview.md) Nejčastější dotazy – Nejčastější [dotazy](../text-analytics-resource-faq.md)</br>
  [Produktová stránka pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759712)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Analýza mínění](text-analytics-how-to-sentiment-analysis.md)

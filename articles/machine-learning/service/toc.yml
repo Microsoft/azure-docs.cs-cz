@@ -91,6 +91,9 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Koncepty
   items:
+    - name: Hloubkové učení
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
     - name: Pracovní prostor
       displayName: concept definitions architecture
       href: concept-workspace.md
@@ -115,8 +118,6 @@
       href: concept-accelerate-with-fpgas.md
     - name: ONNX a modul runtime ONNX
       href: concept-onnx.md
-    - name: Monitorování odchylek dat
-      href: concept-data-drift.md
     - name: Zabezpečení
       items:
         - name: Přehled zabezpečení podniku

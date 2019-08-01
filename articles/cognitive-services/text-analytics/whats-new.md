@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: c090d7c5de4261891fdb3833c7ffec920f8de5b0
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: b5b7d43fc5a53bcf46874a48914bcda565a41c3e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668699"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697068"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -40,5 +40,5 @@ Podporuje angličtinu a je k dispozici ve třech oblastech: Střední Kanada, V�
 * [Příklady scénářů uživatelů](text-analytics-user-scenarios.md)
 * [Analýza mínění](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Rozpoznávání jazyka](how-tos/text-analytics-how-to-language-detection.md)
-* [Propojení entit](how-tos/text-analytics-how-to-entity-linking.md)
+* [Rozpoznávání entit](how-tos/text-analytics-how-to-entity-linking.md)
 * [Extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md)

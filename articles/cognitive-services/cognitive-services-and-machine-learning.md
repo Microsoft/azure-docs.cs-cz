@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: diberry
-ms.openlocfilehash: bae772e9fcc9f275fcf593cfd5bf9d0506a89f7c
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d7049c729140591717782b191f970f4295140cb8
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594684"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697924"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services a strojové učení
 
@@ -105,11 +105,11 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
 |[Nástroj pro rozpoznávání mluvčího](./speaker-recognition/home.md)||x||
 |[Převod textu na řeč hlasu (TTS)](speech-service/text-to-speech.md)|x|x||
-|[Převod řeči na text (STT)](/speech-service/speech-to-text.md)|x|x||
+|[Převod řeči na text (STT)](speech-service/speech-to-text.md)|x|x||
 |[Překlad řeči](speech-service/speech-translation.md)|x|||
 |[Analýza textu](./text-analytics/overview.md)|x|||
 |[Translator Text](./translator/translator-info-overview.md)|x|||
-|[Translator Text – vlastní Překladatel]()||x||
+|[Translator Text – vlastní Překladatel](./translator/custom-translator/overview.md)||x||
 
 \* Přizpůsobený modul potřebuje jenom školicí data shromážděná službou (stejně jako v reálném čase) k vyhodnocení vašich zásad a dat. Přizpůsobování nepotřebuje velké historické datové sady pro školení předem nebo Batch. 
 

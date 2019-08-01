@@ -10,22 +10,22 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 2cb3f1de803b8549a88866da1042f4f32609a601
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: ec0c8ad06480cd596365f43f13ca57fb242d364c
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827151"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698054"
 ---
-# <a name="quickstart-url-preview-query-in-c"></a>Rychlý start: Náhled adresy URL dotazu vC#
+# <a name="quickstart-url-preview-query-in-c"></a>Rychlý start: Dotaz na Náhled adresy URL vC#
 
 Následující příklady v jazyce C# vytvoří náhled adresy URL pro web SwiftKey: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bude stačit bezplatná verze Community Edition.)
+Pro spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/) . (Bude stačit bezplatná verze Community Edition.)
 
-Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search)
 
 ## <a name="code-scenario"></a>Scénář kódu
 
@@ -162,7 +162,7 @@ Spusťte aplikaci:
 3. Hodnotu `YOUR-ACCESS-KEY` nahraďte platným přístupovým klíčem pro vaše předplatné.
 4. Spusťte program.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro JavaScript](javascript.md)
 - [Rychlý start pro Node](node-quickstart.md)

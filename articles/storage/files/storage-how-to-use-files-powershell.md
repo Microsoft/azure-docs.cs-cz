@@ -1,21 +1,20 @@
 ---
 title: Rychlý start pro správu sdílených složek Azure pomocí Azure PowerShellu
 description: V tomto rychlém startu zjistíte, jak spravovat sdílené složky Azure pomocí Azure PowerShellu.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e32aead791fb84415da1b00f1e979a6ac0f28155
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 802ad497f95a43665665d7e7dbd06c9081eba74a
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729024"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699505"
 ---
-# <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rychlý start: Vytváření a správě sdílené složky Azure pomocí Azure Powershellu 
+# <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rychlý start: Vytvoření a Správa sdílené složky Azure pomocí Azure PowerShell 
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí PowerShellu. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -24,10 +23,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud chcete nainstalovat a používat PowerShell místně, tato příručka vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Verzi modulu Azure PowerShell, kterou používáte, zjistíte spuštěním rutiny `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzAccount` a přihlásit se ke svému účtu Azure.
+Pokud chcete nainstalovat a používat PowerShell místně, je nutné, aby tato příručka Azure PowerShell modul AZ verze 0,7 nebo novější. Verzi modulu Azure PowerShell, kterou používáte, zjistíte spuštěním rutiny `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzAccount` a přihlásit se ke svému účtu Azure.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pokud ještě nemáte skupinu prostředků Azure, můžete vytvořit nový s [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) rutiny. 
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pokud ještě nemáte skupinu prostředků Azure, můžete vytvořit novou pomocí rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . 
 
 Následující příklad vytvoří skupinu prostředků *myResourceGroup* v oblasti USA – východ:
 
@@ -40,7 +39,7 @@ New-AzResourceGroup `
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 Účet úložiště je sdílený fond úložiště, který můžete použít k nasazování sdílených složek Azure nebo jiných prostředků úložiště, jako jsou objekty blob nebo fronty. Účet úložiště může obsahovat neomezený počet sdílených složek a sdílená složka můžete obsahovat neomezený počet souborů až do omezení kapacity účtu úložiště.
 
-Tento příklad vytvoří účet úložiště pomocí [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) rutiny. Účet úložiště název *mystorageaccount\<náhodné číslo >* a odkaz na tento účet úložiště je uložen v proměnné **$storageAcct**. Názvy účtů úložiště musí být jedinečné, proto k názvu pomocí rutiny `Get-Random` připojte číslo, aby byl jedinečný. 
+Tento příklad vytvoří účet úložiště pomocí rutiny [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) . Účet úložiště má název *mystorageaccount\<Random Number >* a odkaz na tento účet úložiště je uložený v **$storageAcct**proměnné. Názvy účtů úložiště musí být jedinečné, proto k názvu pomocí rutiny `Get-Random` připojte číslo, aby byl jedinečný. 
 
 ```azurepowershell-interactive 
 $storageAcct = New-AzStorageAccount `
@@ -51,7 +50,7 @@ $storageAcct = New-AzStorageAccount `
 ```
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
-Teď můžete vytvořit svou první sdílenou složku Azure. Můžete vytvořit pomocí sdílení souborů [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) rutiny. Tento příklad vytvoří sdílenou složku `myshare`.
+Teď můžete vytvořit svou první sdílenou složku Azure. Sdílenou složku můžete vytvořit pomocí rutiny [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) . Tento příklad vytvoří sdílenou složku `myshare`.
 
 ```azurepowershell-interactive
 New-AzStorageShare `
@@ -70,7 +69,7 @@ Informace o připojení sdílené složky s využitím protokolu SMB najdete v n
 - [macOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Použití sdílené složky Azure se souborovým protokolem REST 
-Je možné pracovat přímo s protokolu REST souboru přímo (to znamená handcrafting REST HTTP volá sami), ale chcete použít modul Azure PowerShell je nejběžnější způsob pro použití protokolu REST souboru [rozhraní příkazového řádku Azure](storage-how-to-use-files-cli.md), nebo Azure Sada SDK úložiště, které poskytují dobrý obálku protokolu REST souboru skriptovací a programovací jazyk podle vašeho výběru.  
+Je možné pracovat přímo s protokolem REST protokolu přímo (tj. handcrafting REST HTTP), ale nejběžnějším způsobem použití protokolu REST je použít modul Azure PowerShell, rozhraní příkazového [řádku Azure](storage-how-to-use-files-cli.md)nebo sadu Azure Storage SDK. Poskytněte dobrý obálku k protokolu REST ve skriptovacím nebo programovacím jazyce podle vašeho výběru.  
 
 Ve většině případů budete se sdílenou složkou Azure pracovat přes protokol SMB, protože vám to umožní používat stávající aplikace a nástroje, které očekáváte, že budete moct použít. Existuje však několik důvodů, proč může být výhodnější místo protokolu SMB použít souborové rozhraní REST API, jako například:
 
@@ -78,10 +77,10 @@ Ve většině případů budete se sdílenou složkou Azure pracovat přes proto
 - Potřebujete spustit skript nebo aplikaci z klienta, který nedokáže připojit sdílené složky SMB, jako jsou například místní klienti s blokovaným portem 445.
 - Využíváte bezserverové prostředky, jako je služba [Azure Functions](../../azure-functions/functions-overview.md). 
 
-Následující příklady ukazují, jak použít modul Azure PowerShell k manipulaci s vaší sdílenou složku Azure pomocí REST souboru protokolu. 
+Následující příklady ukazují, jak používat modul Azure PowerShell k manipulaci s sdílenou složkou Azure pomocí protokolu File REST. 
 
-#### <a name="create-directory"></a>Vytvoření adresáře
-Chcete-li vytvořit nový adresář s názvem *myDirectory* v kořenovém adresáři sdílené složky Azure, použijte [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) rutiny.
+#### <a name="create-directory"></a>Vytvořit adresář
+Pokud chcete vytvořit nový adresář s názvem *myDirectory* v kořenovém adresáři sdílené složky Azure, použijte rutinu [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) .
 
 ```azurepowershell-interactive
 New-AzStorageDirectory `
@@ -90,8 +89,8 @@ New-AzStorageDirectory `
    -Path "myDirectory"
 ```
 
-#### <a name="upload-a-file"></a>Nahrání souboru
-K předvedení jak nahrát soubor pomocí [Set-AzStorageFileContent](/powershell/module/az.storage/Set-AzStorageFileContent) rutiny, musíme nejprve vytvořit soubor pomocné jednotce služby Cloud Shell s Powershellem odešlete. 
+#### <a name="upload-a-file"></a>Nahrát soubor
+Abychom předvedli, jak nahrát soubor pomocí rutiny [set-AzStorageFileContent](/powershell/module/az.storage/Set-AzStorageFileContent) , nejdřív musíme v Cloud Shell prostředí PowerShell vytvořit soubor k nahrání. 
 
 Tento příklad do nového souboru v pomocné jednotce vloží aktuální datum a čas a pak soubor nahraje do sdílené složky.
 
@@ -109,14 +108,14 @@ Set-AzStorageFileContent `
 
 Pokud používáte PowerShell místně, musíte nahradit `C:\Users\ContainerAdministrator\CloudDrive\` za cestu, která existuje na vašem počítači.
 
-Po nahrání souboru, můžete použít [Get-AzStorageFile](/powershell/module/Az.Storage/Get-AzStorageFile) rutiny ověřte, že soubor byl nahrán do sdílené složky Azure. 
+Po nahrání souboru můžete pomocí rutiny [Get-AzStorageFile](/powershell/module/Az.Storage/Get-AzStorageFile) zkontrolovat, jestli se soubor nahrál do sdílené složky Azure. 
 
 ```azurepowershell-interactive
 Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare" -Path "myDirectory" 
 ```
 
-#### <a name="download-a-file"></a>Stažení souboru
-Můžete použít [Get-AzStorageFileContent](/powershell/module/az.storage/Get-AzStorageFilecontent) rutiny stáhnout kopii souboru, který jste právě nahráli do pomocné jednotky vaší služby Cloud Shell.
+#### <a name="download-a-file"></a>Stáhnout soubor
+Pomocí rutiny [Get-AzStorageFileContent](/powershell/module/az.storage/Get-AzStorageFilecontent) můžete stáhnout kopii souboru, který jste právě Nahráli do pomocné jednotky vašeho Cloud Shell.
 
 ```azurepowershell-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists because you've run this example before.
@@ -139,7 +138,7 @@ Get-ChildItem -Path "C:\Users\ContainerAdministrator\CloudDrive"
 ``` 
 
 #### <a name="copy-files"></a>Kopírování souborů
-Jednou z běžných úloh je kopírování souborů z jedné sdílené složky do jiné nebo do a z kontejneru úložiště objektů blob v Azure. Abychom si předvedli tuto funkci, můžete vytvořit novou sdílenou složku a zkopírovat soubor, který jste právě nahráli do této nové sdílené složky pomocí [Start AzStorageFileCopy](/powershell/module/az.storage/Start-AzStorageFileCopy) rutiny. 
+Jednou z běžných úloh je kopírování souborů z jedné sdílené složky do jiné nebo do a z kontejneru úložiště objektů blob v Azure. Chcete-li předvést tuto funkci, můžete vytvořit novou sdílenou složku a zkopírovat soubor, který jste právě Nahráli do této nové sdílené složky pomocí rutiny [Start-AzStorageFileCopy](/powershell/module/az.storage/Start-AzStorageFileCopy) . 
 
 ```azurepowershell-interactive
 New-AzStorageShare `
@@ -166,14 +165,14 @@ Pokud teď vypíšete soubory v nové sdílené složce, měl by se zobrazit vá
 Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare2" -Path "myDirectory2" 
 ```
 
-Zatímco `Start-AzStorageFileCopy` rutiny je vhodné pro přesun mezi sdílenými složkami Azure a kontejnery úložiště objektů Blob v Azure ad hoc souborů, doporučujeme použít AzCopy pro větší přesuny (z hlediska počtu nebo velikosti přesouvaných souborů). Další informace o [AzCopy pro Windows](../common/storage-use-azcopy.md) a [AzCopy pro Linux](../common/storage-use-azcopy-linux.md). Nástroj AzCopy musí být nainstalovaný místně – ve službě Cloud Shell není dostupný. 
+I když `Start-AzStorageFileCopy` je rutina praktická pro přesun souborů mezi sdílenými složkami Azure a kontejnery úložiště objektů BLOB v Azure, doporučujeme, abyste AzCopy pro větší přesuny (s ohledem na počet a velikost přesunutých souborů). Další informace o [AzCopy pro Windows](../common/storage-use-azcopy.md) a [AzCopy pro Linux](../common/storage-use-azcopy-linux.md). Nástroj AzCopy musí být nainstalovaný místně – ve službě Cloud Shell není dostupný. 
 
 ## <a name="create-and-manage-share-snapshots"></a>Vytváření a správa snímků sdílených složek
 Další užitečnou úlohou, kterou se sdílenými složkami Azure můžete provádět, je vytváření snímků sdílených složek. Snímek uchovává sdílenou složku Azure k určitému bodu v čase. Snímky sdílených složek jsou podobné technologiím operačního systému, které už možná znáte, jako například:
 - [Služba Stínová kopie svazku (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) v případě systémů souborů Windows, jako jsou NTFS a ReFS.
 - Snímky [Správce logických svazků (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) v případě systémů Linux.
 - Snímky [systému souborů Apple (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) v případě macOS. 
- Snímek sdílené složky sdílené složky můžete vytvořit pomocí `Snapshot` metodu na objektu Powershellu pro sdílenou složku, kterou načtete pomocí [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare) rutiny. 
+ Snímek sdílené složky pro sdílenou složku můžete vytvořit pomocí `Snapshot` metody v objektu PowerShellu pro sdílenou složku, která se načte pomocí rutiny [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare) . 
 
 ```azurepowershell-interactive
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name "myshare"
@@ -213,14 +212,14 @@ Start-AzStorageFileCopy `
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Odstranění snímku sdílené složky
-Snímek sdílené složky můžete odstranit pomocí [odebrat AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) rutiny s proměnnou obsahující `$snapshot` odkaz `-Share` parametr.
+Snímek sdílené složky můžete odstranit pomocí rutiny [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) s proměnnou obsahující `$snapshot` odkaz na `-Share` parametr.
 
 ```azurepowershell-interactive
 Remove-AzStorageShare -Share $snapshot
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Jakmile budete hotovi, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) rutina pro odebrání skupiny prostředků a všech souvisejících prostředků. 
+Až budete hotovi, můžete k odebrání skupiny prostředků a všech souvisejících prostředků použít rutinu [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . 
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup

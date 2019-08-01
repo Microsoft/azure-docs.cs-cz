@@ -1,6 +1,6 @@
 ---
 title: Protokolování v aplikacích MSAL | Azure
-description: Další informace o protokolování v aplikacích Microsoft Authentication Library (MSAL).
+description: Přečtěte si o protokolování aplikací MSAL (Microsoft Authentication Library).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,35 +17,35 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58f18995d46ca61ae68a7b226bbfc9a286e73a0b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4288ff4aba216a214d10c56ba448fc03e13b81f2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544102"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693931"
 ---
 # <a name="logging"></a>Protokolování
-Aplikace Microsoft Authentication Library (MSAL) k vygenerování zprávy protokolu, které vám mohou pomoci diagnostikovat problémy a uveďte podrobnosti. Aplikace můžete nakonfigurovat protokolování pomocí pár řádků kódu a vlastní řídit úroveň podrobností a určuje, jestli se protokolují tato data osobních a podnikových. Doporučujeme nastavit protokolování MSAL zpětné volání a umožňují uživatelům odesílat protokoly, pokud jsou máte problémy s ověřováním.
+Aplikace Microsoft Authentication Library (MSAL) umožňují generovat zprávy protokolu, které mohou pomáhat diagnostikovat problémy a poskytnout podrobné informace. Aplikace může nakonfigurovat protokolování s několika řádky kódu a mít vlastní kontrolu nad úrovní podrobností a bez ohledu na to, jestli se protokolují osobní údaje a data organizace. Doporučuje se nastavit zpětné volání protokolování MSAL a poskytnout uživatelům možnost odesílat protokoly, pokud mají problémy s ověřováním.
 
-## <a name="logging-levels"></a>Úroveň protokolování
+## <a name="logging-levels"></a>Úrovně protokolování
 
-Protokolovací nástroj pro MSAL umožňuje několik úrovní podrobností bude zachycení:
+Protokolovací nástroj MSAL umožňuje zachytit několik úrovní podrobností:
 
-- Chyba: Označuje, něco se pokazilo a byla vygenerována chyba. Používá se pro ladění a identifikovat problémy.
-- Upozornění: Události, které jsou otázku a aplikace potřebuje na další informace. Existuje ještě nutně byly chybě nebo selhání, ale určená pro diagnostiku a přesné určení problémy.
-- Informace: Knihovna MSAL se budou protokolovat události určené k informačním účelům, ne tedy nutně určený pro ladění.
-- verbose: Default (Výchozí). Knihovna MSAL protokolovat velké množství informací a uvádí úplné informace o jaké chování knihovny.
+- Chyba: Indikuje, že došlo k chybě, a vygenerovala se chyba. Slouží k ladění a identifikaci problémů.
+- Upozornění: Události, které jsou otázky a aplikace, vyžadují více informací. V některých případech došlo k chybě nebo selhání, ale je určené pro diagnostiku a řešení problémů.
+- Příjemce MSAL bude protokolovat události určené pro informativní účely, které nejsou nutně určené pro ladění.
+- Podrobné Default (Výchozí). MSAL budou protokolovat velké množství informací a poskytnou úplné podrobnosti o chování knihovny.
 
-## <a name="personal-and-organizational-data"></a>Osobních a podnikových dat
-Ve výchozím nastavení protokolovač MSAL nezachytává vysoce citlivých údajů osobní nebo organizace. Knihovna poskytuje možnost Povolit protokolování osobních a podnikových dat, pokud se rozhodnete tak učinit.
+## <a name="personal-and-organizational-data"></a>Osobní a organizační data
+Protokolovací nástroj MSAL ve výchozím nastavení nezachycuje žádná citlivá osobní nebo organizační data. Knihovna poskytuje možnost povolit protokolování osobních a organizačních dat, pokud se rozhodnete k tomu.
 
-## <a name="logging-in-msalnet"></a>Protokolování v MSAL.NET
-V MSAL 3.x protokolování je nastaveno na aplikaci na vytvoření aplikace s použitím `.WithLogging` modifikátor Tvůrce. Tato metoda přebírá volitelné parametry:
+## <a name="logging-in-msalnet"></a>Přihlášení MSAL.NET
+V MSAL 3. x je protokolování nastaveno na aplikaci při vytváření aplikací pomocí `.WithLogging` modifikátoru tvůrce. Tato metoda přebírá volitelné parametry:
 
-- *Úroveň* umožňuje rozhodnout, jaké úroveň protokolování. Nastavení na chyby bude pouze dojde k chybám
-- *PiiLoggingEnabled* umožňuje protokolu osobních a podnikových dat v případě nastavenou na hodnotu true. Ve výchozím nastavení to je nastavena na hodnotu false, tak, aby vaše aplikace neprotokoluje osobní údaje.
-- *LogCallback* je nastavena na delegáta, která provádí protokolování. Pokud *PiiLoggingEnabled* má hodnotu true, tato metoda bude přijímat zprávy dvakrát: jednou pro *containsPii* rovná parametru hodnotu false a zprávu bez osobních údajů a podruhé s *containsPii* rovná parametru na hodnotu true a zpráva může obsahovat osobní údaje. V některých případech (když zpráva neobsahuje osobní údaje) zprávy budou stejné.
-- *DefaultLoggingEnabled* umožňuje je výchozí protokolování pro platformu. Ve výchozím nastavení je false. Pokud nastavíte na hodnotu true, je používá trasování událostí v Desktopu/UPW aplikacích NSLog v Iosu a logcat v Androidu.
+- *Úroveň* vám umožní rozhodnout, jakou úroveň protokolování chcete. Při jejich nastavení na chyby se zobrazí jenom chyby.
+- *PiiLoggingEnabled* umožňuje protokolovat osobní a organizační data, pokud je nastavené na true. Ve výchozím nastavení je tato hodnota nastavena na false, aby vaše aplikace neprotokoloval osobní údaje.
+- *LogCallback* je nastaven na delegáta, který provádí protokolování. Pokud má *PiiLoggingEnabled* hodnotu true, bude tato metoda přijímat zprávy dvakrát: jednou s parametrem *containsPii* se rovná false a zpráva bez osobních údajů a druhá s parametrem *containsPii* se rovná hodnotě true a zpráva může obsahovat osobní údaje. V některých případech (Pokud zpráva neobsahuje osobní údaje), bude zpráva stejná.
+- *DefaultLoggingEnabled* umožňuje výchozí protokolování pro platformu. Ve výchozím nastavení má hodnotu false. Pokud ho nastavíte na true, používá se k trasování událostí v aplikacích Desktop/UWP NSLog v iOS a Logcat na Androidu.
 
 ```csharp
 class Program
@@ -69,22 +69,22 @@ class Program
                       .Build();
 
     AuthenticationResult result = application.AcquireTokenInteractive(scopes)
-                                             .ExecuteAsnc();
+                                             .ExecuteAsync().Result;
   }
  }
  ```
 
- ## <a name="logging-in-msaljs"></a>Protokolování v MSAL.js
+ ## <a name="logging-in-msaljs"></a>Protokolování v MSAL. js
 
- Můžete povolit přihlášení MSAL.js předáním objektu protokolovací nástroj během konfigurace pro vytvoření `UserAgentApplication` instance. Tento objekt protokolovací nástroj má následující vlastnosti:
+ Můžete povolit protokolování v MSAL. js předáním objektu protokolovacího nástroje během konfigurace pro vytvoření `UserAgentApplication` instance. Tento objekt protokolovacího nástroje má následující vlastnosti:
 
-- *localCallback*: instance zpětného volání, můžete poskytuje vývojářům zpracovávejte a publikujte protokoly vlastní způsobem. Implementujte metodu localCallback v závislosti na tom, jak chcete přesměrovat protokoly.
+- *localCallback*: instance zpětného volání, kterou může vývojář poskytnout pro využívání a publikování protokolů vlastním způsobem. Implementujte metodu localCallback v závislosti na tom, jak chcete přesměrovat protokoly.
 
-- *úroveň* (volitelné): úroveň konfigurovat protokolování. Podporovaný protokol úrovně jsou: Chyba, upozornění, informace, Verbose. Výchozí hodnota je informace.
+- *úroveň* (volitelné): konfigurovatelná úroveň protokolu. Podporované úrovně protokolu jsou: Chyba, upozornění, informace, podrobný výpis. Výchozí hodnota je info.
 
-- *piiLoggingEnabled* (volitelné): umožňuje protokolu osobních a podnikových dat v případě nastavenou na hodnotu true. Ve výchozím nastavení to je nastavena na hodnotu false, aby aplikace neprotokoluje osobní údaje. Protokoly osobních údajů se nikdy zapisují do výchozí výstupů, jako je konzola, Logcat nebo NSLog. Výchozí je nastavena na hodnotu false.
+- *piiLoggingEnabled* (volitelné): umožňuje protokolovat osobní a organizační data, pokud je nastavené na true. Ve výchozím nastavení je tato hodnota nastavená na false, aby vaše aplikace neprotokoloval osobní údaje. Protokoly osobních údajů se nikdy nezapisují do výchozích výstupů, jako je konzola, Logcat nebo NSLog. Výchozí nastavení je false.
 
-- *ID korelace* (volitelné): Jedinečný identifikátor, slouží k mapování žádosti s odpovědí pro účely ladění. Výchozí hodnota je identifikátor guid RFC4122 verze 4 (128 bitů).
+- *ID korelace* (volitelné): jedinečný identifikátor, který slouží k mapování požadavku na odezvu pro účely ladění. Ve výchozím nastavení se RFC4122 identifikátor GUID verze 4 (128 bitů).
 
 ```javascript
 

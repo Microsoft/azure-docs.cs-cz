@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Hledání odpovědí projekt,C#'
+title: 'Rychlý start: Hledání odpovědí projektu,C#'
 titlesuffix: Azure Cognitive Services
 description: Ukázka kódu, která vám pomůže začít používat Project Answer Search s jazykem C#.
 services: cognitive-services
@@ -10,22 +10,22 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: dce13636cce299098c988ccea3a059f0f0e12acd
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: fe6758cb6b8d120862cbbe593574360c1bc7b17b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823262"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698107"
 ---
-# <a name="quickstart-project-answer-search-query-in-c"></a>Rychlý start: Hledání odpovědí dotazu projektu v jazyce C#
+# <a name="quickstart-project-answer-search-query-in-c"></a>Rychlý start: Vyhledávací dotaz na odpověď projektu vC#
 
 Následující příklad kódu v C# vytvoří a odešle dotaz na informace o třetím zákoně integrálního počtu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bude stačit bezplatná verze Community Edition.)
+Pro spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/) . (Bude stačit bezplatná verze Community Edition.)
 
-Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search)
 
 ## <a name="code-scenario"></a>Scénář kódu
 

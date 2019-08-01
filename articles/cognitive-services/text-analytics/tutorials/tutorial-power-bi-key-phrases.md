@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e56926b9a23e0dd649fb85347e521a6dda7863a3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: dba65e68e7c2204a4d4d7f80a603de607bba7609
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479871"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697345"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI se službou Analýza textu pro rozpoznávání
 
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 - Microsoft Power BI Desktop. [Stáhněte si ho zdarma](https://powerbi.microsoft.com/get-started/).
 - Účet Microsoft Azure. [Začněte s bezplatnou zkušební verzí](https://azure.microsoft.com/free/) nebo se [přihlaste](https://portal.azure.com/).
 - Účet rozhraní API služby Cognitive Services s rozhraním API pro analýzu textu. Pokud ho nemáte, můžete se [zaregistrovat](../../cognitive-services-apis-create-account.md) a použít pro tento kurz bezplatnou vrstvu 5000 transakcí/měsíc (viz [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)).
-- [Přístupový klíč k Analýze textu](../how-tos/text-analytics-how-to-access-key.md) vygenerovaný během registrace.
+- [Přístupový klíč k Analýze textu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) vygenerovaný během registrace.
 - Komentáře zákazníků. Můžete použít [naše ukázková data](https://aka.ms/cogsvc/ta) nebo vlastní data. V tomto kurzu se předpokládá, že použijete ukázková data.
 
 ## <a name="load-customer-data"></a>Načtení zákaznických dat
@@ -285,7 +285,7 @@ A konečně, tady je již uvedená varianta funkce Klíčové fráze, která vr�
 in  keyphrases
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 <a name="NextSteps"></a>
 
 Přečtěte si další informace o službě Analýza textu, jazyce vzorců Power Query M nebo Power BI.

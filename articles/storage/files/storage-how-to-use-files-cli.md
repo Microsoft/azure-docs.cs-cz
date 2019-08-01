@@ -1,21 +1,20 @@
 ---
 title: Rychlý start pro správu sdílených složek Azure pomocí Azure CLI
 description: V tomto rychlém startu zjistíte, jak pomocí Azure CLI spravovat službu Soubory Azure.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 43a5a72ac32d8ed3510cecb505f5e62cf91d7106
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 93baf275e93c28283836a92c71eb9b24151392fc
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710814"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699598"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rychlý start: Vytváření a správě sdílených složek Azure pomocí Azure CLI
+# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rychlý start: Vytvoření a Správa sdílených složek Azure pomocí Azure CLI
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí Azure CLI. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -26,7 +25,7 @@ Pokud se rozhodnete nainstalovat a používat Azure CLI místně, musíte použ�
 
 Ve výchozím nastavení vrací příkazy Azure CLI formát JavaScript Object Notation (JSON). Formát JSON je standardní způsob pro odesílání a přijímání zpráv z rozhraní REST API. Pro usnadnění práce s odpověďmi ve formátu JSON některé z příkladů v tomto článku používají v příkazech Azure CLI parametr *dotaz*. Tento parametr k parsování formátu JSON používá [dotazovací jazyk JMESPath](http://jmespath.org/). Další informace o způsobu použití výsledků příkazů Azure CLI prostřednictvím dotazovacího jazyka JMESPath najdete v [kurzu JMESPath](http://jmespath.org/tutorial.html).
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Pokud používáte Azure CLI místně, otevřete příkazový řádek a přihlaste se k Azure, pokud jste to ještě neudělali.
 
 ```bash 
@@ -45,7 +44,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 Účet úložiště je sdílený fond úložiště, ve kterém můžete nasazovat sdílené složky Azure nebo jiné prostředky úložiště, jako jsou objekty blob nebo fronty. Účet úložiště může obsahovat neomezený počet sdílených složek. Sdílená složka může obsahovat neomezený počet souborů až do výše maximální kapacity účtu úložiště.
 
-Následující příklad vytvoří pomocí příkazu [az storage account create](/cli/azure/storage/account) účet úložiště s názvem *mystorageaccount\<náhodné číslo\>* a pak vloží název tohoto účtu úložiště do proměnné `$STORAGEACCT`. Názvy účtů úložiště musí být jedinečný, takže nezapomeňte nahradit "mystorageacct" s jedinečným názvem.
+Následující příklad vytvoří pomocí příkazu [az storage account create](/cli/azure/storage/account) účet úložiště s názvem *mystorageaccount\<náhodné číslo\>* a pak vloží název tohoto účtu úložiště do proměnné `$STORAGEACCT`. Názvy účtů úložiště musí být jedinečné, proto nezapomeňte nahradit "mystorageacct" jedinečným názvem.
 
 ```azurecli-interactive 
 STORAGEACCT=$(az storage account create \
@@ -87,15 +86,15 @@ Informace o připojení sdílené složky s využitím protokolu SMB najdete v n
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Použití sdílené složky Azure se souborovým protokolem REST 
-Je možné pracovat přímo s REST souboru protokolu přímo (handcrafting sami volání REST HTTP), ale nejběžnější způsob pro použití REST soubor protokolu je použít rozhraní příkazového řádku Azure [modulu Azure PowerShell](storage-how-to-use-files-powershell.md), nebo sadu SDK Azure Storage , které poskytují dobrý obálku protokolu REST souboru skriptovací a programovací jazyk podle vašeho výběru.  
+Je možné pracovat přímo s protokolem REST protokolu přímo (handcrafting REST HTTP), ale nejběžnějším způsobem použití protokolu REST je použít rozhraní příkazového řádku Azure CLI, [modul Azure PowerShell](storage-how-to-use-files-powershell.md)nebo sadu Azure Storage SDK, které poskytují Dobrá obálka k protokolu REST v souboru skriptu nebo programovacím jazyce podle vašeho výběru.  
 
 Předpokládáme, že ve většině případů použití služby Soubory Azure budete chtít se sdílenými složkami Azure pracovat přes protokol SMB, protože vám to umožní používat stávající aplikace a nástroje, které očekáváte, že budete moct použít. Existuje však několik důvodů, proč může být výhodnější místo protokolu SMB použít souborové rozhraní REST API, jako například:
 
 - Procházíte sdílenou složku z prostředí Bash ve službě Azure Cloud Shell (které nedokáže připojit sdílené složky přes protokol SMB).
-- Je potřeba spustit skript nebo aplikaci z klienta, která aktuálně nedokáže připojit sdílené složky SMB, jako jsou místní klienti, které nemají odblokovaného portu 445.
+- Musíte spustit skript nebo aplikaci z klienta, který nemůže připojit sdílenou složku SMB, jako jsou místní klienti, u kterých není port 445 odblokovaný.
 - Využíváte bezserverové prostředky, jako je služba [Azure Functions](../../azure-functions/functions-overview.md). 
 
-Následující příklady ukazují, jak používat rozhraní příkazového řádku Azure k manipulaci s vaší sdílenou složku Azure pomocí REST souboru protokolu. 
+V následujících příkladech se dozvíte, jak pomocí rozhraní příkazového řádku Azure manipulovat se sdílenou složkou Azure pomocí protokolu File REST. 
 
 ### <a name="create-a-directory"></a>Vytvoření adresáře
 Pomocí příkazu [`az storage directory create`](/cli/azure/storage/directory) vytvořte nový adresář *myDirectory* v kořenovém adresáři sdílené složky Azure:
@@ -108,7 +107,7 @@ az storage directory create \
    --name "myDirectory" 
 ```
 
-### <a name="upload-a-file"></a>Nahrání souboru
+### <a name="upload-a-file"></a>Nahrát soubor
 Abychom mohli ukázat, jak soubor pomocí příkazu [`az storage file upload`](/cli/azure/storage/file) nahrát, musíte nejprve vytvořit soubor, který potom nahrajete do pomocné jednotky služby Cloud Shell. V následujícím příkladu soubor vytvoříte a potom ho nahrajete:
 
 ```azurecli-interactive
@@ -135,7 +134,7 @@ az storage file list \
     --output table
 ```
 
-### <a name="download-a-file"></a>Stažení souboru
+### <a name="download-a-file"></a>Stáhnout soubor
 Pomocí příkazu [`az storage file download`](/cli/azure/storage/file) můžete stáhnout kopii souboru, který jste nahráli do pomocné jednotky služby Cloud Shell:
 
 ```azurecli-interactive
@@ -293,7 +292,7 @@ Další možností je odebrat prostředky jednotlivě.
         --yes
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Co je služba Soubory Azure?](storage-files-introduction.md)

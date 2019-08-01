@@ -11,16 +11,16 @@
       href: quick-start.md
     - name: S využitím klientské sady SDK
       items:
-        - name: 'C#'
+        - name: S využitím .NET SDK
           items:
             - name: Analýza obsahu obrázků
               href: image-moderation-quickstart-dotnet.md
             - name: Analýza obsahu textu
               href: text-moderation-quickstart-dotnet.md
-        - name: Python
-          items:
-            - name: Analýza obsahu textu
-              href: text-moderation-quickstart-python.md
+        - name: Používání sady Python SDK
+          href: python-sdk-quickstart.md
+        - name: Používání sady Java SDK
+          href: java-sdk-quickstart.md
 - name: Kurzy
   items:
     - name: Moderování obrázků elektronického obchodování

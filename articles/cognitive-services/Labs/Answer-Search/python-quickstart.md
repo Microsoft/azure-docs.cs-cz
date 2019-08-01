@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Hledání odpovědí projektu, Python'
+title: 'Rychlý start: Hledání odpovědí na projekt, Python'
 titlesuffix: Azure Cognitive Services
 description: Začněte používat Project Answer Search s jazykem Python.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 2eaf07e041998efade1091861144a2dc4d78c56d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0da596e84ac827b55affd5545c516e7623980f5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60721534"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698068"
 ---
 # <a name="quickstart-project-answer-search-with-python"></a>Rychlý start: Project Answer Search s jazykem Python
 
@@ -23,7 +23,7 @@ Následující příklad v jazyce Python vytvoří a odešle žádost o informac
 
 ## <a name="prerequisites"></a>Požadavky
 
-Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search)
 
 V tomto příkladu se používá Python 3.6.4.
 
@@ -66,7 +66,7 @@ result = get_local()
 print (json.dumps(json.loads(result), indent=4))
 
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Rychlý start pro jazyk C#](c-sharp-quickstart.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro Node](node-quickstart.md)

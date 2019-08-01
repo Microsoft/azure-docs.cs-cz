@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Náhled adresy URL projektu, Node.js'
+title: 'Rychlý start: Náhled adresy URL projektu, Node. js'
 titlesuffix: Azure Cognitive Services
 description: Začněte používat funkci náhledu adresy URL ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 5c373505cd381108366206c21ff09f25516d7969
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92124a53c871be7a83d7b276e31f000d7c674358
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712389"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698015"
 ---
-# <a name="quickstart-url-preview-with-nodejs"></a>Rychlý start: Náhled adresy URL s využitím Node.js 
+# <a name="quickstart-url-preview-with-nodejs"></a>Rychlý start: Náhled adresy URL s Node. js 
 
 Následující příklady v jazyce Node vytvoří náhled adresy URL pro web SwiftKey: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search)
 
 ## <a name="code-scenario"></a>Scénář kódu 
 
@@ -85,7 +85,7 @@ Search();
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Ukázkový kód v jazyce C#](csharp.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro JavaScript](javascript.md)

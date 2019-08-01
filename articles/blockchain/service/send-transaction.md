@@ -1,6 +1,6 @@
 ---
-title: Odeslání transakce pomocí služby Azure Blockchain
-description: Kurz o tom, jak pomocí Azure Blockchain Service můžete nasadit inteligentní smlouvy a odeslat privátní transakce.
+title: Odesílání transakcí pomocí služby Azure blockchain
+description: Kurz, jak pomocí služby Azure blockchain nasadit inteligentní kontrakt a poslat soukromou transakci.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,102 +10,89 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 9037c7b5498a5e0a37b05e5ee09891bf8066393d
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 3cfbbdc5b95d1607738b132980320d2ff7c99788
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417488"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698380"
 ---
-# <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Kurz: Odeslání transakce pomocí služby Azure Blockchain
+# <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Kurz: Odesílání transakcí pomocí služby Azure blockchain
 
-V tomto kurzu budete vytvářet uzly transakce otestovat kontrakt a transakce o ochraně osobních údajů.  Použijete Truffle místní vývojové prostředí vytvářet a nasazovat inteligentní smlouvy a odesílat privátní transakce.
+V tomto kurzu vytvoříte uzly transakcí pro testování smluv a ochrany osobních údajů v transakci.  Truffle použijete k vytvoření místního vývojového prostředí a nasazení inteligentního kontraktu a odeslání privátní transakce.
 
 Dozvíte se, jak provést tyto akce:
 
 > [!div class="checklist"]
-> * Přidání uzlů transakce
-> * Pomocí Truffle nasadit inteligentní kontraktu
-> * Odeslat do transakce
-> * Ověření ochrany osobních údajů transakce
+> * Přidat uzly transakce
+> * Nasazení inteligentního kontraktu pomocí Truffle
+> * Odeslat transakci
+> * Ověřit ochranu osobních údajů transakce
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Kompletní [vytvořit člena blockchainu pomocí webu Azure portal](create-member.md)
-* Kompletní [rychlý start: Slouží k připojení do sítě konsorcia Truffle](connect-truffle.md)
-* Nainstalujte [Truffle](https://github.com/trufflesuite/truffle). Truffle vyžaduje instalaci několika nástrojů včetně [Node.js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-* Nainstalujte [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python je třeba Web3.
-* Install [Visual Studio Code](https://code.visualstudio.com/Download)
-* Nainstalujte [rozšíření Visual Studio Code Solidity](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)
+* Dokončení [Vytvoření člena blockchain pomocí Azure Portal](create-member.md)
+* Kompletní [rychlé spuštění: Použití Truffle pro připojení k síti konsorcia](connect-truffle.md)
+* Nainstalujte [Truffle](https://github.com/trufflesuite/truffle). Truffle vyžaduje instalaci několika nástrojů, včetně [Node. js](https://nodejs.org), [Gitu](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* Nainstalujte [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Pro Web3 je potřeba Python.
+* Nainstalovat [Visual Studio Code](https://code.visualstudio.com/Download)
+* Nainstalovat [rozšíření pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)
 
-## <a name="create-transaction-nodes"></a>Vytvoření transakce uzlů
+## <a name="create-transaction-nodes"></a>Vytváření transakčních uzlů
 
-Ve výchozím nastavení budete mít jeden uzel transakce. My budeme přidávat další dvě. Jeden z uzlů se účastní privátní transakce. Druhý není součástí privátní transakce.
+Ve výchozím nastavení máte jeden uzel transakce. Přidáváme ještě dva další. Jeden z uzlů se účastní privátní transakce. Druhá není obsažena v privátní transakci.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Přejděte do vaší Azure Blockchain člena a vyberte **transakce uzly > Přidat**.
-1. Zadejte nastavení pro nový uzel transakci s názvem `alpha`.
+1. Přejděte do svého člena Azure blockchain a vyberte **uzly transakce > přidat**.
+1. Dokončete nastavení pro nový uzel transakce s názvem `alpha`.
 
     ![Vytvořit uzel transakce](./media/send-transaction/create-node.png)
 
     | Nastavení | Hodnota | Popis |
     |---------|-------|-------------|
-    | Název | `alpha` | Název uzlu transakce. Název slouží k vytvoření adresu serveru DNS pro koncový bod transakce uzlu. Například, `alpha-mymanagedledger.blockchain.azure.com`. |
-    | Heslo | silné heslo | Heslo se používá pro přístup ke koncovému bodu uzlu transakce se základním ověřováním.
+    | Name | `alpha` | Název uzlu transakce. Název slouží k vytvoření adresy DNS pro koncový bod uzlu transakce. Například, `alpha-mymanagedledger.blockchain.azure.com`. |
+    | Heslo | Silné heslo | Heslo se používá pro přístup ke koncovému bodu uzlu transakce pomocí základního ověřování.
 
 1. Vyberte **Vytvořit**.
 
-    Nový uzel transakce zřizování trvá asi 10 minut.
+    Zřizování nového uzlu transakce trvá přibližně 10 minut.
 
-1. Opakujte kroky 2 až 4 přidejte uzel transakce `beta`.
+1. Opakujte kroky 2 až 4 pro přidání uzlu transakce s názvem `beta`.
 
-Zatímco probíhá zřizování uzly, můžete pokračovat v kurzu. Po dokončení zřizování, budete mít tři uzly transakce.
+Během zřizování uzlů můžete pokračovat v kurzu. Po dokončení zřizování budete mít tři uzly transakce.
 
-## <a name="open-truffle-console"></a>Otevřete konzolu Truffle
+## <a name="open-truffle-console"></a>Otevřít konzolu Truffle
 
-1. Otevřete příkazový řádek Node.js nebo prostředí.
-1. Změnit cesty k adresáři projektu Truffle z požadovaného softwaru [rychlý start: Slouží k připojení do sítě konsorcia Truffle](connect-truffle.md). Například
+1. Otevřete příkazový řádek Node. js nebo prostředí.
+1. Změňte cestu k adresáři projektu Truffle z požadovaného [rychlého startu: Pomocí Truffle se připojte k síti](connect-truffle.md)konsorcia. Například
 
     ```bash
     cd truffledemo
     ```
 
-1. Spuštění Truffle interaktivní vývojové konzole.
+1. Použijte konzolu Truffle pro připojení k výchozímu uzlu transakce.
 
     ``` bash
-    truffle develop
+    truffle console --network defaultnode
     ```
 
-    Truffle vytvoří blockchain místním vývojovém a nabízí interaktivní konzolu.
+    Truffle se připojí k výchozímu uzlu transakce a poskytne interaktivní konzolu.
 
-## <a name="create-ethereum-account"></a>Vytvoření účtu ethereum během
+## <a name="create-ethereum-account"></a>Vytvořit účet Ethereem
 
-Web3 použijte pro připojení k výchozí uzel transakcí a vytvoření účtu služby Etherea. Web3 připojovací řetězec můžete získat z webu Azure portal.
+Pomocí Web3 se připojte k výchozímu uzlu transakce a vytvořte účet Ethereem. Můžete volat metody v objektu Web3 pro interakci s vaším uzlem transakce.
 
-1. Na webu Azure Portal, přejděte k uzlu transakce výchozí a vyberte **transakce uzly > ukázkový kód > Web3**.
-1. Zkopírujte JavaScript z **HTTPS (přístupový klíč 1)** ![Web3 ukázkový kód](./media/send-transaction/web3-code.png)
-
-1. Vložte kód jazyka JavaScript Web3 pro výchozí uzel transakce do konzoly Truffle interaktivní vývoj. Kód vytvoří objekt Web3, který je připojený k uzlu služby Azure Blockchain transakce.
-
-    ```bash
-    truffle(develop)> var Web3 = require("Web3");
-    truffle(develop)> var provider = new Web3.providers.HttpProvider("https://myblockchainmember.blockchain.azure.com:3200/hy5FMu5TaPR0Zg8GxiPwned");
-    truffle(develop)> var web3 = new Web3(provider);
-    ```
-
-    Můžete volat metody u objektu Web3 k interakci s transakcí uzlu.
-
-1. Vytvořte nový účet na výchozí uzel transakce. Nahraďte parametr heslo na silné heslo.
+1. Vytvoří nový účet na výchozím uzlu transakce. Nahraďte parametr password vlastním silným heslem.
 
     ```bash
     web3.eth.personal.newAccount("1@myStrongPassword");
     ```
 
-    Ujistěte se, poznamenejte si adresu účtu, který je vrácen a heslo. Budete potřebovat adresu Etherea účtu a heslo v další části.
+    Poznamenejte si vrácenou adresu účtu a heslo. V další části budete potřebovat adresu a heslo účtu Ethereem.
 
-1. Ukončete Truffle vývojové prostředí.
+1. Ukončete vývojové prostředí Truffle.
 
     ```bash
     .exit
@@ -113,28 +100,28 @@ Web3 použijte pro připojení k výchozí uzel transakcí a vytvoření účtu 
 
 ## <a name="configure-truffle-project"></a>Konfigurace projektu Truffle
 
-Ke konfiguraci projektu Truffle, budete potřebovat některé informace o uzlu transakce z portálu Azure portal.
+Ke konfiguraci projektu Truffle potřebujete některé informace o uzlu transakce z Azure Portal.
 
-### <a name="transaction-node-public-key"></a>Transakce uzel veřejný klíč
+### <a name="transaction-node-public-key"></a>Veřejný klíč uzlu transakce
 
-Každý uzel transakce má veřejný klíč. Veřejný klíč vám umožní odesílat privátní transakce do uzlu. Aby bylo možné odesílat z výchozí uzel transakci do transakce *alfa* transakce uzel, je nutné *alfa* transakce uzel veřejný klíč.
+Každý uzel transakce má veřejný klíč. Veřejný klíč umožňuje odeslat do uzlu soukromou transakci. Aby bylo možné odeslat transakci z výchozího uzlu transakce do uzlu transakce *alfa* , budete potřebovat veřejný klíč uzlu *Alpha* transakce.
 
-V seznamu uzlu transakce můžete získat veřejný klíč. Zkopírujte veřejný klíč pro uzel alfa a uložte hodnotu v pozdější části kurzu.
+Veřejný klíč můžete získat ze seznamu uzly transakce. Zkopírujte veřejný klíč pro uzel Alpha a uložte hodnotu pro pozdější období v tomto kurzu.
 
-![Seznam uzlů transakce](./media/send-transaction/node-list.png)
+![Seznam uzlů transakcí](./media/send-transaction/node-list.png)
 
-### <a name="transaction-node-endpoint-addresses"></a>Adresy koncových bodů uzel transakce
+### <a name="transaction-node-endpoint-addresses"></a>Adresy koncových bodů uzlu transakce
 
-1. Na webu Azure Portal, přejděte k jednotlivým uzlům transakce a vyberte **transakce uzly > připojovací řetězce**.
-1. Zkopírujte a uložte adresu URL koncového bodu z **HTTPS (přístupový klíč 1)** pro každý uzel transakce. Adresy koncových bodů pro konfigurační soubor inteligentní smlouvy potřebovat později v tomto kurzu.
+1. V Azure Portal přejděte na jednotlivé uzly transakce a vyberte **uzly transakcí > připojovací řetězce**.
+1. Zkopírujte a uložte adresu URL koncového bodu z **https (přístupový klíč 1)** pro každý uzel transakce. Adresy koncových bodů pro konfigurační soubor inteligentních smluv budete potřebovat později v tomto kurzu.
 
     ![Adresa koncového bodu transakce](./media/send-transaction/endpoint.png)
 
-### <a name="edit-configuration-file"></a>Upravte konfigurační soubor
+### <a name="edit-configuration-file"></a>Upravit konfigurační soubor
 
-1. Spusťte Visual Studio Code a otevřete Truffle projektu adresáře složky pomocí **soubor > Otevřít složku** nabídky.
-1. Otevřete konfigurační soubor Truffle `truffle-config.js`.
-1. Nahraďte obsah souboru následující informace o konfiguraci. Přidejte proměnné obsahující informace o účtu a adresy koncových bodů. V částech ostré závorky nahraďte hodnotami, které jste shromáždili z předchozí části.
+1. Spusťte Visual Studio Code a otevřete složku adresáře projektu Truffle pomocí nabídky **soubor > otevřít složku** .
+1. Otevřete konfigurační soubor `truffle-config.js`Truffle.
+1. Nahraďte obsah souboru následujícími konfiguračními informacemi. Přidejte proměnné obsahující adresy koncových bodů a informace o účtu. Nahraďte oddíly lomené závorky hodnotami, které jste shromáždili z předchozích částí.
 
     ``` javascript
     var defaultnode = "<default transaction node connection string>";
@@ -159,31 +146,31 @@ V seznamu uzlu transakce můžete získat veřejný klíč. Zkopírujte veřejn�
           })(),
     
           network_id: "*",
-          gas: 0,
           gasPrice: 0,
           from: myAccount
         },
         alpha: {
           provider: new Web3.providers.HttpProvider(alpha),
           network_id: "*",
-          gas: 0,
-          gasPrice: 0
         },
         beta: {
           provider: new Web3.providers.HttpProvider(beta),
           network_id: "*",
-          gas: 0,
-          gasPrice: 0
+        }
+      },
+      compilers: {
+        solc: {
+          evmVersion: "byzantium"
         }
       }
     }
     ```
 
-1. Uložit změny do `truffle-config.js`.
+1. Uložte změny do `truffle-config.js`.
 
-## <a name="create-smart-contract"></a>Vytvoření inteligentního kontraktu
+## <a name="create-smart-contract"></a>Vytvořit inteligentní kontrakt
 
-1. V **kontrakty** složku, vytvořte nový soubor s názvem `SimpleStorage.sol`. Přidejte následující kód.
+1. Ve složce **smlouvy** vytvořte nový soubor s názvem `SimpleStorage.sol`. Přidejte následující kód.
 
     ```solidity
     pragma solidity >=0.4.21 <0.6.0;
@@ -205,7 +192,7 @@ V seznamu uzlu transakce můžete získat veřejný klíč. Zkopírujte veřejn�
     }
     ```
     
-1. V **migrace** složku, vytvořte nový soubor s názvem `2_deploy_simplestorage.js`. Přidejte následující kód.
+1. Ve složce **migrace** vytvořte nový soubor s názvem `2_deploy_simplestorage.js`. Přidejte následující kód.
 
     ```solidity
     var SimpleStorage = artifacts.require("SimpleStorage.sol");
@@ -219,26 +206,26 @@ V seznamu uzlu transakce můžete získat veřejný klíč. Zkopírujte veřejn�
 
 1. Nahraďte hodnoty v lomených závorkách.
 
-    | Hodnota | Popis
+    | Value | Popis
     |-------|-------------
-    | \<alpha node public key\> | Veřejný klíč alfa uzlu
-    | \<Ethereum account address\> | Adresa účtu Etherea vytvořen v výchozí uzel transakce
+    | \<alpha node public key\> | Veřejný klíč uzlu Alpha
+    | \<Ethereum account address\> | Adresa ethereem účtu vytvořená ve výchozím uzlu transakce
 
-    V tomto příkladu počáteční hodnotu **storeData** je hodnota nastavena na 42.
+    V tomto příkladu je počáteční hodnota hodnoty **storeData** nastavená na 42.
 
-    **privateFor** definuje uzly, na které je k dispozici smlouvy. V tomto příkladu uzel transakce výchozí účet můžete přetypovat privátní transakcí, které **alfa** uzlu. Přidání veřejné klíče pro všechny účastníky privátní transakce. Pokud nechcete zahrnout **privateFor:** a **z:** , inteligentní smlouvy transakce jsou veřejné a můžou je zobrazit všichni členové consortium.
+    **privateFor** definuje uzly, ke kterým je kontrakt k dispozici. V tomto příkladu může účet výchozího uzlu transakce přetypovat soukromé transakce na uzel **alfa** . Můžete přidat veřejné klíče pro všechny účastníky privátní transakce. Pokud nezahrnete **privateFor:** a **from:** , transakce Smart kontraktu jsou veřejné a mohou je zobrazit všichni členové konsorcia.
 
 1. Uložte všechny soubory tak, že vyberete **soubor > Uložit vše**.
 
-## <a name="deploy-smart-contract"></a>Nasazení inteligentních kontraktu
+## <a name="deploy-smart-contract"></a>Nasazení inteligentního kontraktu
 
-Nasazení pomocí Truffle `SimpleStorage.sol` výchozí transakce uzlu sítě.
+K nasazení `SimpleStorage.sol` do výchozí sítě uzlu transakce použijte Truffle.
 
 ```bash
 truffle migrate --network defaultnode
 ```
 
-Truffle nejprve zkompiluje a pak nasadí **SimpleStorage** inteligentní kontraktu.
+Truffle nejprve zkompiluje a potom nasadí **SimpleStorage** Smart Contract.
 
 Příklad výstupu:
 
@@ -273,11 +260,11 @@ Summary
 > Final cost:          0 ETH
 ```
 
-## <a name="validate-contract-privacy"></a>Ověřit smlouvy o ochraně osobních údajů
+## <a name="validate-contract-privacy"></a>Ověření ochrany osobních údajů smlouvy
 
-Z důvodu ochrany osobních údajů smlouvy, smlouvy hodnot se dá dotazovat jenom z uzlů jsme deklarované v **privateFor**. V tomto příkladu zadáme dotaz výchozí transakce uzel vzhledem k tomu, že účet existuje v tomto uzlu. 
+Z důvodu ochrany osobních údajů smluv se hodnoty smluv můžou dotazovat jenom z uzlů, které jsme deklarovali v **privateFor**. V tomto příkladu se můžeme dotazovat na výchozí uzel transakce, protože účet v tomto uzlu existuje. 
 
-1. Pomocí konzole Truffle se připojte k výchozí uzel transakce.
+1. Pomocí konzoly Truffle se připojte k výchozímu uzlu transakce.
 
     ```bash
     truffle console --network defaultnode
@@ -289,7 +276,7 @@ Z důvodu ochrany osobních údajů smlouvy, smlouvy hodnot se dá dotazovat jen
     SimpleStorage.deployed().then(function(instance){return instance.get();})
     ```
 
-    Pokud je úspěšné dotazování výchozí uzel transakce, je vrácena hodnota 42. Příklad:
+    Pokud je dotazování na výchozí uzel transakce úspěšný, je vrácena hodnota 42. Příklad:
 
     ```
     admin@desktop:/mnt/c/truffledemo$ truffle console --network defaultnode
@@ -303,9 +290,9 @@ Z důvodu ochrany osobních údajů smlouvy, smlouvy hodnot se dá dotazovat jen
     .exit
     ```
 
-Vzhledem k tomu, že můžeme deklarovat **alfa** uzlu veřejný klíč v **privateFor**, jsme můžete zadávat dotazy **alfa** uzlu.
+Vzhledem k tomu, že jsme v **privateFor**deklarovali veřejný klíč uzlu **alfa** , můžeme se dotázat na uzel **alfa** .
 
-1. Pomocí konzole Truffle připojit k **alfa** uzlu.
+1. Pomocí konzoly Truffle se připojte k uzlu **Alpha** .
 
     ```bash
     truffle console --network alpha
@@ -317,7 +304,7 @@ Vzhledem k tomu, že můžeme deklarovat **alfa** uzlu veřejný klíč v **priv
     SimpleStorage.deployed().then(function(instance){return instance.get();})
     ```
 
-    Pokud dotazuje **alfa** uzlu je úspěšný, je vrácena hodnota 42. Příklad:
+    Pokud je dotaz na uzel **Alpha** úspěšný, je vrácena hodnota 42. Příklad:
 
     ```
     admin@desktop:/mnt/c/truffledemo$ truffle console --network alpha
@@ -331,21 +318,21 @@ Vzhledem k tomu, že můžeme deklarovat **alfa** uzlu veřejný klíč v **priv
     .exit
     ```
 
-Protože jsme nedeklarovalo **beta** uzlu veřejný klíč v **privateFor**, nebude schopný zadávat dotazy **beta** uzlu z důvodu smlouvy o ochraně osobních údajů.
+Vzhledem k tomu, že jsme v **privateFor**nedeklarovali veřejný klíč uzlu **beta verze** , nebudeme moct zadat dotaz na uzel **beta** z důvodu ochrany osobních údajů od smlouvy.
 
-1. Pomocí konzole Truffle připojit k **beta** uzlu.
+1. Pomocí konzoly Truffle se připojte k uzlu **beta verze** .
 
     ```bash
     truffle console --network beta
     ```
 
-1. Spusťte kód, který vrací hodnotu instance kontraktu.
+1. Spusťte kód, který vrátí hodnotu instance kontraktu.
 
     ```bash
     SimpleStorage.deployed().then(function(instance){return instance.get();})
     ```
 
-1. Dotazování **beta** uzel selže, protože kontrakt je privátní. Příklad:
+1. Dotaz na uzel **beta verze** se nezdařil, protože kontrakt je privátní. Příklad:
 
     ```
     admin@desktop:/mnt/c/truffledemo$ truffle console --network beta
@@ -364,10 +351,10 @@ Protože jsme nedeklarovalo **beta** uzlu veřejný klíč v **privateFor**, neb
     .exit
     ```
     
-## <a name="send-a-transaction"></a>Odeslat do transakce
+## <a name="send-a-transaction"></a>Odeslat transakci
 
-1. Vytvořte soubor s názvem `sampletx.js`. Uložte jej v kořenové složce vašeho projektu.
-1. Následující skript nastaví kontrakt **storedData** 65 hodnoty proměnné. Přidejte kód do nového souboru.
+1. Vytvořte soubor s názvem `sampletx.js`. Uložte ho do kořenového adresáře vašeho projektu.
+1. Následující skript nastaví hodnotu proměnné **storedData** kontraktu na 65. Přidejte kód do nového souboru.
 
     ```javascript
     var SimpleStorage = artifacts.require("SimpleStorage");
@@ -388,16 +375,16 @@ Protože jsme nedeklarovalo **beta** uzlu veřejný klíč v **privateFor**, neb
     };
     ```
 
-    Nahraďte hodnoty v lomených závorkách. pak soubor uložte.
+    Nahraďte hodnoty v lomených závorkách a pak soubor uložte.
 
     | Hodnota | Popis
     |-------|-------------
-    | \<alpha node public key\> | Veřejný klíč alfa uzlu
-    | \<Ethereum account address\> | Vytvořit v uzlu transakce výchozí adresu účtu Etherea.
+    | \<alpha node public key\> | Veřejný klíč uzlu Alpha
+    | \<Ethereum account address\> | Adresa ethereem účtu vytvořená ve výchozím uzlu transakce.
 
-    **privateFor** definuje uzly, na které je k dispozici transakce. V tomto příkladu uzel transakce výchozí účet můžete přetypovat privátní transakcí, které **alfa** uzlu. Budete muset přidat veřejných klíčů pro všechny účastníky privátní transakce.
+    **privateFor** definuje uzly, ke kterým je transakce k dispozici. V tomto příkladu může účet výchozího uzlu transakce přetypovat soukromé transakce na uzel **alfa** . Je nutné přidat veřejné klíče pro všechny účastníky privátní transakce.
 
-1. Použití Truffle ke spuštění skriptu pro výchozí uzel transakce.
+1. Použijte Truffle pro spuštění skriptu pro výchozí uzel transakce.
 
     ```bash
     truffle exec sampletx.js --network defaultnode
@@ -409,7 +396,7 @@ Protože jsme nedeklarovalo **beta** uzlu veřejný klíč v **privateFor**, neb
     SimpleStorage.deployed().then(function(instance){return instance.get();})
     ```
 
-    Pokud transakce byla úspěšná, vrátí se hodnota 65. Příklad:
+    Pokud byla transakce úspěšná, vrátí se hodnota 65. Příklad:
     
     ```
     Getting deployed version of SimpleStorage...
@@ -424,11 +411,11 @@ Protože jsme nedeklarovalo **beta** uzlu veřejný klíč v **privateFor**, neb
     .exit
     ```
     
-## <a name="validate-transaction-privacy"></a>Ověření ochrany osobních údajů transakce
+## <a name="validate-transaction-privacy"></a>Ověřit ochranu osobních údajů transakce
 
-Z důvodu ochrany osobních údajů transakce, transakce lze provést pouze na uzlech jsme deklarované v **privateFor**. V tomto příkladu budeme provádět transakce vzhledem k tomu, že můžeme deklarovat **alfa** uzlu veřejný klíč v **privateFor**. 
+Z důvodu ochrany osobních údajů transakce je možné transakce provádět pouze na uzlech, které jste deklarovali v **privateFor**. V tomto příkladu můžeme provádět transakce, protože jsme deklarovali veřejný klíč uzlu **alfa** v **privateFor**. 
 
-1. Spustit transakci na pomocí Truffle **alfa** uzlu.
+1. Použijte Truffle ke spuštění transakce na uzlu **Alpha** .
 
     ```bash
     truffle exec sampletx.js --network alpha
@@ -440,7 +427,7 @@ Z důvodu ochrany osobních údajů transakce, transakce lze provést pouze na u
     SimpleStorage.deployed().then(function(instance){return instance.get();})
     ```
     
-    Pokud transakce byla úspěšná, vrátí se hodnota 65. Příklad:
+    Pokud byla transakce úspěšná, vrátí se hodnota 65. Příklad:
 
     ```
     Getting deployed version of SimpleStorage...
@@ -457,16 +444,16 @@ Z důvodu ochrany osobních údajů transakce, transakce lze provést pouze na u
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky můžete odstranit tak, že odstraníte `myResourceGroup` skupiny prostředků vytvořené službou Azure Blockchain.
+Pokud už je nepotřebujete, můžete prostředky odstranit odstraněním `myResourceGroup` skupiny prostředků, kterou jste vytvořili ve službě Azure blockchain.
 
-Pokud chcete odstranit skupinu prostředků:
+Odstranění skupiny prostředků:
 
-1. Na webu Azure Portal, přejděte na **skupiny prostředků** v levém navigačním podokně a vyberte skupinu prostředků, kterou chcete odstranit.
-1. Vyberte **Odstranit skupinu prostředků**. Ověření odstranění proveďte tak, že zadáte název skupiny prostředků a vyberte **odstranit**.
+1. V Azure Portal přejděte do **skupiny prostředků** v levém navigačním podokně a vyberte skupinu prostředků, kterou chcete odstranit.
+1. Vyberte **Odstranit skupinu prostředků**. Potvrďte odstranění zadáním názvu skupiny prostředků a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu přidáte dva uzly transakce k předvedení kontrakt a transakce o ochraně osobních údajů. Použít výchozí uzel k nasazení soukromé inteligentní smlouvy. Ochrana osobních údajů dotazování hodnot smlouvy a provádí transakce s blockchainem testování.
+V tomto kurzu jste přidali dva uzly transakce k předvedení smlouvy a ochrany osobních údajů v transakci. Použili jste výchozí uzel pro nasazení privátního kontraktu Smart. Pomocí dotazu na hodnoty kontraktu a provádění transakcí na blockchain jste otestovali soukromí.
 
 > [!div class="nextstepaction"]
-> [Vývoj pomocí služby Azure Blockchain blockchainové aplikace](develop.md)
+> [Vývoj aplikací blockchain pomocí služby Azure blockchain](develop.md)
