@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 562daa024985a546ffb49c4da11eace3bc81a659
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: b5777300f5033569caf3868218e747df3ff83a76
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314810"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640226"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Mapování posunu schématu toku dat
 
@@ -65,7 +65,7 @@ Potom budeme zaokrouhlovat a sčítat hodnoty pro každý z těchto odpovídají
 
 ```round(sum ($$))```
 
-Tuto možnost můžete otestovat pomocí Azure Data Factory ukázka toku dat "taxislužby demo". Přepněte se na relaci ladění pomocí přepínače ladění v horní části návrhové plochy toku dat, abyste viděli výsledky interaktivně:
+Tuto funkci funkce posunu schématu můžete sledovat v práci s ukázkou toku dat Azure Data Factory ukázka "taxislužby demo". Přepněte se na relaci ladění pomocí přepínače ladění v horní části návrhové plochy toku dat, abyste viděli výsledky interaktivně:
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
@@ -75,6 +75,9 @@ Když generujete nové sloupce se vzorci sloupců, budete mít k těmto novým s
 * Pomocí příkazu "byPosition" Identifikujte nové sloupce podle čísla pozice.
 * Pomocí příkazu "byName" Identifikujte nové sloupce podle jejich názvu.
 * V vzorcích sloupců použijte "název", "Stream", "Position" nebo "Type" nebo libovolnou kombinaci těchto hodnot, aby odpovídaly novým sloupcům.
+
+## <a name="rule-based-mapping"></a>Mapování na základě pravidel
+Transformace Select a jímka podporuje vzorové porovnávání prostřednictvím mapování založeného na pravidlech. To vám umožní vytvořit pravidla, která mapují sloupce po sloupcích na aliasy sloupců a zajímky těchto sloupců do cíle.
 
 ## <a name="next-steps"></a>Další postup
 V [jazyce výrazu toku dat](data-flow-expression-functions.md) najdete další možnosti pro vzorce sloupců a posun schématu, včetně "byName" a "byPosition".

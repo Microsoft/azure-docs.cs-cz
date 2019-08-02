@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení koncové body služby Azure IoT Hub | Dokumentace Microsoftu
-description: Příručka pro vývojáře – referenční informace o službě IoT Hub zařízení zákazníky i služba koncových bodů.
+title: Vysvětlení koncových bodů Azure IoT Hub | Microsoft Docs
+description: Příručka pro vývojáře – referenční informace o IoT Hub koncové body s přístupem k zařízením a ke službám.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -8,99 +8,100 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 50a1e0a6bfa6fe33f432548a4a0b485134a60c72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 689a702863dda53870f775bd8520d5dd406d242f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055358"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640601"
 ---
-# <a name="reference---iot-hub-endpoints"></a>Reference – koncové body IoT Hubu
+# <a name="reference---iot-hub-endpoints"></a>Odkazy-IoT Hub koncové body
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="iot-hub-names"></a>Názvy služby IoT Hub
+## <a name="iot-hub-names"></a>Názvy IoT Hub
 
-Název hostitele, který je hostitelem vašich koncových bodů na portálu na vaše centrum služby IoT hub můžete najít **přehled** stránky. Ve výchozím nastavení, jako název DNS služby IoT hub bude vypadat takto: `{your iot hub name}.azure-devices.net`.
+Název hostitele služby IoT Hub, který je hostitelem vašich koncových bodů, najdete na stránce s přehledem vašeho rozbočovače. Ve výchozím nastavení vypadá název DNS služby IoT Hub takto: `{your iot hub name}.azure-devices.net`.
 
-## <a name="list-of-built-in-iot-hub-endpoints"></a>Seznam předdefinovaných koncové body IoT Hubu
+## <a name="list-of-built-in-iot-hub-endpoints"></a>Seznam předdefinovaných koncových bodů IoT Hub
 
-Azure IoT Hub je víceklientská služba, která zpřístupňuje jeho funkce pro různé objekty actor. Následující diagram znázorňuje různé koncové body, aby služba IoT Hub zpřístupní.
+Azure IoT Hub je víceklientské služby, která zpřístupňuje svou funkci různým aktérům. Následující diagram znázorňuje různé koncové body, které IoT Hub zpřístupňuje.
 
 ![Koncové body IoT Hubu](./media/iot-hub-devguide-endpoints/endpoints.png)
 
 Následující seznam popisuje koncové body:
 
-* **Poskytovatel prostředků**. Poskytovatel prostředků služby IoT Hub zpřístupní [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md) rozhraní. Toto rozhraní umožňuje vlastníkům předplatného Azure vytvářet a odstraňovat centra IoT hub a k aktualizaci vlastností centra IoT. Vlastnosti služby IoT Hub určují [zásady zabezpečení na úrovni centra](iot-hub-devguide-security.md#access-control-and-permissions), na rozdíl od řízení přístupu na úrovni zařízení a funkční možnosti pro zasílání zpráv typu cloud zařízení a zařízení cloud. Poskytovatel prostředků služby IoT Hub můžete také [exportovat identit zařízení](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
+* **Poskytovatel prostředků**. Poskytovatel prostředků IoT Hub zpřístupňuje rozhraní [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) . Toto rozhraní umožňuje vlastníkům předplatného Azure vytvářet a odstraňovat centra IoT a aktualizovat vlastnosti služby IoT Hub. IoT Hub vlastnosti řídí [zásady zabezpečení na úrovni centra](iot-hub-devguide-security.md#access-control-and-permissions), na rozdíl od řízení přístupu na úrovni zařízení a funkční možnosti pro zasílání zpráv z cloudu na zařízení a ze zařízení do cloudu. Poskytovatel prostředků IoT Hub taky umožňuje [exportovat identity zařízení](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
 
-* **Správa identit zařízení**. Každý IoT hub zveřejňuje sadu koncových bodů HTTPS REST pro správu identit zařízení (vytvářet, načítat, aktualizovat a odstranit). [Identit zařízení](iot-hub-devguide-identity-registry.md) se používají pro účely řízení přístupu a ověřování zařízení.
+* **Správa identit zařízení** Každé centrum IoT zveřejňuje sadu koncových bodů protokolu HTTPS REST pro správu identit zařízení (vytváření, načítání, aktualizace a odstraňování). [Identity zařízení](iot-hub-devguide-identity-registry.md) se používají pro ověřování zařízení a řízení přístupu.
 
-* **Správa dvojčete zařízení**. Každý IoT hub zpřístupní koncový bod HTTPS REST služby přístupem k dotazování a aktualizaci sady [dvojčata zařízení](iot-hub-devguide-device-twins.md) (aktualizace značek a vlastnosti).
+* **Správa**s dvojitou podobou zařízení Každé centrum IoT zveřejňuje sadu koncových bodů protokolu HTTPS s přístupem k službě pro dotazování a aktualizaci [vláken zařízení](iot-hub-devguide-device-twins.md) (aktualizace značek a vlastností).
 
-* **Úlohy správy**. Každý IoT hub zpřístupní koncový bod HTTPS REST služby přístupem k dotazování a správu sady [úlohy](iot-hub-devguide-jobs.md).
+* **Správa úloh**. Každá služba IoT Hub zpřístupňuje sadu koncových bodů protokolu HTTPS s přístupem k službě pro dotazování a správu [úloh](iot-hub-devguide-jobs.md).
 
-* **Koncové body zařízení**. Pro každé zařízení v registru identit služby IoT Hub zveřejňuje sadu koncových bodů:
+* **Koncové body zařízení**. Pro každé zařízení v registru identity IoT Hub zpřístupňuje sadu koncových bodů:
 
-  * *Odesílání zpráv typu zařízení cloud*. Zařízení používá tento koncový bod pro [odesílání zpráv typu zařízení cloud](iot-hub-devguide-messages-d2c.md).
+  * *Posílání zpráv ze zařízení do cloudu*. Zařízení pomocí tohoto koncového bodu [odesílá zprávy typu zařízení-Cloud](iot-hub-devguide-messages-d2c.md).
 
-  * *Příjem zpráv typu cloud zařízení*. Zařízení s používá tento koncový bod pro příjem cílové [zprávy typu cloud zařízení](iot-hub-devguide-messages-c2d.md).
+  * *Příjem zpráv z cloudu do zařízení*. Zařízení pomocí tohoto koncového bodu přijímá cílené [zprávy typu cloud-zařízení](iot-hub-devguide-messages-c2d.md).
 
-  * *Zahájení nahrávání souborů*. Zařízení s používá tento koncový bod pro příjem identifikátor URI SAS úložiště Azure pomocí služby IoT Hub [nahrát soubor](iot-hub-devguide-file-upload.md).
+  * *Iniciujte nahrávání souborů*. Zařízení používá tento koncový bod pro příjem Azure Storage identifikátor URI SAS z IoT Hub pro [nahrání souboru](iot-hub-devguide-file-upload.md).
 
-  * *Načíst a aktualizovat vlastnosti dvojčat zařízení*. Zařízení používá tento koncový bod pro přístup k jeho [dvojče zařízení](iot-hub-devguide-device-twins.md)jeho vlastnosti.
+  * *Načte a aktualizuje vlastnosti vlákna zařízení*. Zařízení používá tento koncový bod pro přístup k vlastnostem, které jsou v [zařízení](iot-hub-devguide-device-twins.md).
 
-  * *Přijímat žádosti o přímé metody*. Zařízení používá k naslouchání pro tento koncový bod [přímá metoda](iot-hub-devguide-direct-methods.md)vaší žádosti.
+  * *Přijmout požadavky přímých metod*. Zařízení používá tento koncový bod k naslouchání požadavkům [přímých metod](iot-hub-devguide-direct-methods.md).
 
-    Tyto koncové body jsou přístupné přes [protokoly MQTT v3.1.1](https://mqtt.org/), HTTPS 1.1 a [protokolu AMQP 1.0](https://www.amqp.org/) protokoly. Je také k dispozici prostřednictvím protokolu AMQP [objekty Websocket](https://tools.ietf.org/html/rfc6455) na portu 443.
+    Tyto koncové body jsou vystaveny pomocí protokolů [MQTT v 3.1.1](https://mqtt.org/), https 1,1 a [AMQP 1,0](https://www.amqp.org/) . AMQP je k dispozici i přes [objekty](https://tools.ietf.org/html/rfc6455) WebSockets na portu 443.
 
-* **Koncové body služby**. Každý IoT hub zveřejňuje sadu koncových bodů pro back-endem řešení pro komunikaci ve vašich zařízeních. S jednou výjimkou tyto koncové body jsou dostupná jenom v případě použití [AMQP](https://www.amqp.org/) protokolu. Koncový bod vyvolání metody je přístupná přes protokol HTTPS.
+* **Koncové body služby**. Každé centrum IoT Hub zpřístupňuje sadu koncových bodů pro back-end řešení ke komunikaci s vašimi zařízeními. S jednou výjimkou se tyto koncové body zveřejňují jenom pomocí protokolu [AMQP](https://www.amqp.org/) . Koncový bod volání metody se zveřejňuje prostřednictvím protokolu HTTPS.
   
-  * *Příjem zpráv typu zařízení cloud*. Tento koncový bod je kompatibilní s [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Back-end služby ji můžete použít ke čtení [zpráv typu zařízení cloud](iot-hub-devguide-messages-d2c.md) zaslaná z vašich zařízení. Můžete vytvořit vlastní koncové body ve službě IoT hub kromě této integrovaný koncový bod.
+  * *Příjem zpráv ze zařízení do cloudu*. Tento koncový bod je kompatibilní s [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Back-endové služba ho může používat ke čtení [zpráv typu zařízení-Cloud](iot-hub-devguide-messages-d2c.md) odesílaných vašimi zařízeními. Kromě tohoto integrovaného koncového bodu můžete vytvořit vlastní koncové body ve službě IoT Hub.
   
-  * *Odesílat zprávy typu cloud zařízení a přijímat doručování potvrzování*. Tyto koncové body umožňují vaší back-end řešení odesílat spolehlivé [zprávy typu cloud zařízení](iot-hub-devguide-messages-c2d.md)a přijímat odpovídající doručení nebo vypršení platnosti potvrzování.
+  * *Posílání zpráv z cloudu na zařízení a příjem potvrzení o doručení*. Tyto koncové body umožňují back-endu vašeho řešení odesílat spolehlivé [zprávy z cloudu na zařízení](iot-hub-devguide-messages-c2d.md)a získávat odpovídající potvrzení o doručení nebo vypršení platnosti.
   
-  * *Dostávat oznámení soubor*. Tento koncový bod zasílání zpráv můžete dostávat upozornění z vašich zařízení úspěšně nahrát soubor. 
+  * *Přijímání oznámení o souborech*. Tento koncový bod pro zasílání zpráv umožňuje dostávat oznámení o tom, kdy zařízení úspěšně nahrála soubor. 
   
-  * *Přímá volání metody*. Tento koncový bod umožňuje službě back-end, který má být vyvolán [přímá metoda](iot-hub-devguide-direct-methods.md) na zařízení.
+  * *Přímé volání metody*. Tento koncový bod umožňuje back-endové službě vyvolat přímo na zařízení [přímou metodu](iot-hub-devguide-direct-methods.md) .
   
-  * *Monitorování událostí operace příjmu*. Tento koncový bod umožňuje přijímat operace sledování událostí, pokud byl nakonfigurován váš IoT hub a vygenerovat je. Další informace najdete v tématu [monitorování operací služby IoT Hub](iot-hub-operations-monitoring.md).
+  * *Příjem událostí monitorování operací*. Tento koncový bod umožňuje přijímat události monitorování operací, pokud vaše centrum IoT je nakonfigurované tak, aby je generovalo. Další informace najdete v tématu [monitorování provozu IoT Hub](iot-hub-operations-monitoring.md).
 
-[Sad SDK Azure IoT](iot-hub-devguide-sdks.md) článek popisuje různé způsoby pro přístup k tyto koncové body.
+Článek o sadách [SDK Azure IoT](iot-hub-devguide-sdks.md) popisuje různé způsoby přístupu k těmto koncovým bodům.
 
-Použít všechny koncové body IoT Hubu [TLS](https://tools.ietf.org/html/rfc5246) protokol a žádný koncový bod je někdy zveřejněné na nešifrované/nezabezpečené kanály.
+Všechny koncové body IoT Hub používají protokol [TLS](https://tools.ietf.org/html/rfc5246) a v nešifrovaných nebo nezabezpečených kanálech se nikdy nezveřejňuje žádný koncový bod.
 
 ## <a name="custom-endpoints"></a>Vlastní koncové body
 
-Můžete propojit existující služby Azure ve vašem předplatném tak, aby fungoval jako koncové body pro směrování zpráv služby IoT hub. Tyto koncové body fungují jako koncové body služby a slouží jako jímky pro směrování zpráv. Zařízení nemůže zapisovat přímo do další koncové body. Další informace o [směrování zpráv](../iot-hub/iot-hub-devguide-messages-d2c.md).
+Existující služby Azure v rámci vašeho předplatného můžete propojit se službou IoT Hub, aby fungovaly jako koncové body pro směrování zpráv. Tyto koncové body slouží jako koncové body služby a slouží jako jímky pro trasy zpráv. Zařízení nemůžou zapisovat přímo do dalších koncových bodů. Přečtěte si další informace o [směrování zpráv](../iot-hub/iot-hub-devguide-messages-d2c.md).
 
-Následující služby Azure IoT Hub aktuálně podporuje jako další koncové body:
+IoT Hub aktuálně podporuje následující služby Azure jako další koncové body:
 
 * Kontejnery služby Azure Storage
 * Event Hubs
 * Fronty služby Service Bus
 * Témata služby Service Bus
 
-Omezení pro počet koncových bodů můžete přidat, naleznete v tématu [kvóty a omezování](iot-hub-devguide-quotas-throttling.md).
+Omezení počtu koncových bodů, které můžete přidat, najdete v tématu [kvóty a omezování](iot-hub-devguide-quotas-throttling.md).
 
-Můžete použít rozhraní REST API [získat stav koncového bodu](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) zobrazíte stav koncových bodů. Doporučujeme použít [metriky služby IoT Hub](iot-hub-metrics.md) související s latencí směrování zprávy k identifikaci a ladit chyby, pokud stav koncového bodu je neaktivní nebo není v pořádku, jak Očekáváme, že latence být vyšší, když je koncový bod v jednom z těchto stavů.
+Ke zjištění stavu koncových bodů můžete použít REST API [získat](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) stav koncových bodů. Doporučujeme použít [IoT Hub metriky](iot-hub-metrics.md) týkající se latence zprávy směrování k identifikaci a ladění chyb, když je stav koncového bodu v pořádku nebo není v pořádku, protože při použití koncového bodu v jednom z těchto stavů očekáváme, že latence bude vyšší.
 
 |Stav|Popis|
 |---|---|
-|V pořádku|Koncový bod přijímá zprávy podle očekávání.|
-|Není v pořádku|Koncový bod není přijímání zpráv podle očekávání a se opakovaně pokouší o službě IoT Hub pro odesílání dat do tohoto koncového bodu. Stav není v pořádku koncového bodu bude aktualizován v pořádku, zřízeno konzistentní stav stavu služby IoT Hub.|
-|Neznámý|Centrum IoT ještě navázalo se připojení ke koncovému bodu. Žádné zprávy byly doručeny do nebo odmítnuta z tohoto koncového bodu.|
-|dead|Koncový bod není příjem zpráv, po služby IoT Hub opakovat dobu retrial odesílání zpráv.|
+|healthy|Koncový bod přijímá zprávy podle očekávání.|
+|není v pořádku|Koncový bod nepřijímá zprávy podle očekávání a IoT Hub se pokouší odeslat data do tohoto koncového bodu. Stav koncového bodu, který není v pořádku, bude aktualizován na stav v pořádku, když IoT Hub navázala trvalý stav stavu.|
+|Neznámé|IoT Hub nevytvořil připojení ke koncovému bodu. Z tohoto koncového bodu nebyly doručeny ani zamítnuty žádné zprávy.|
+|Zpráva|Koncový bod nepřijímá zprávy, jakmile IoT Hub znovu pokusí odeslat zprávy o zkušebním období.|
 
-## <a name="field-gateways"></a>Bran v terénu
+## <a name="field-gateways"></a>Brány polí
 
-V řešení IoT *hraniční brána* umístěná mezi vaším zařízením a vaše koncové body IoT Hubu. To je obvykle nachází v blízkosti vašich zařízení. Vaše zařízení komunikují přímo s brány pole pomocí protokolu podporovaných zařízení. Brána pole se připojí k koncový bod služby IoT Hub pomocí protokolu, který je podporovaný službou IoT Hub. Brána pole může být vyhrazené hardwarové zařízení nebo počítač nízkým výkonem softwarem vlastní bránu.
+V řešení IoT je mezi zařízeními a koncovými body IoT Hub umístěná *Brána pole* . Obvykle se nachází blízko vašich zařízení. Vaše zařízení komunikují přímo s bránou pole pomocí protokolu podporovaného zařízeními. Brána Field se připojuje k IoT Hub koncovému bodu pomocí protokolu, který podporuje IoT Hub. Brána pole může být vyhrazené hardwarové zařízení nebo počítač s nízkou spotřebou, na kterém je spuštěný vlastní software brány.
 
-Můžete použít [Azure IoT Edge](/azure/iot-edge/) implementovat hraniční brána. IoT Edge a nabízí funkce, jako je například multiplexní komunikaci od více zařízení do stejného připojení ke službě IoT Hub.
+K implementaci brány pole můžete použít [Azure IoT Edge](/azure/iot-edge/) . IoT Edge nabízí funkce, jako je například multiplexace komunikace z více zařízení do stejného IoT Hub připojení.
 
 ## <a name="next-steps"></a>Další postup
 
-Další referenční témata v této příručce pro vývojáře IoT Hub patří:
+Další referenční témata v tomto IoT Hub příručce pro vývojáře zahrnují:
 
-* [Dotazovací jazyk služby IoT Hub pro dvojčata zařízení, úlohy a směrování zpráv](iot-hub-devguide-query-language.md)
+* [IoT Hub dotazovací jazyk pro vlákna, úlohy a směrování zpráv v zařízeních](iot-hub-devguide-query-language.md)
 * [Kvóty a omezování](iot-hub-devguide-quotas-throttling.md)
-* [Podpora MQTT centra IoT](iot-hub-mqtt-support.md)
+* [Podpora IoT Hub MQTT](iot-hub-mqtt-support.md)
+* [Informace o IP adrese služby IoT Hub](iot-hub-understand-ip-address.md)

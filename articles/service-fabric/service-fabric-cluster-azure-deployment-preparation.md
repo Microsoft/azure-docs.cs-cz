@@ -1,11 +1,10 @@
 ---
-title: Naplánování nasazení clusteru Azure Service Fabric | Dokumentace Microsoftu
-description: Další informace o plánování a příprava pro produkční nasazení clusteru Service Fabric do Azure.
+title: Plánování nasazení clusteru Azure Service Fabric | Microsoft Docs
+description: Přečtěte si o plánování a přípravě nasazení produkčního Service Fabric clusteru do Azure.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
-editor: aljo
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,66 +12,66 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2019
-ms.author: aljo
-ms.openlocfilehash: 0f3a9010805ec1a18490f6f530f60d7a3c763398
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: a130e9bc8859360704c9be1c0a7fe066d2ed4567
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387855"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599999"
 ---
-# <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plánování a příprava pro nasazení clusteru
+# <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plánování a příprava nasazení clusteru
 
-Plánování a příprava pro nasazení produkčního clusteru je velmi důležité.  Existuje celá řada faktorů, které byste měli zvážit.  Tento článek vás provede kroky přípravy nasazení clusteru.
+Plánování a příprava nasazení v produkčním clusteru je velmi důležitá.  Je potřeba vzít v úvahu mnoho faktorů.  Tento článek vás provede jednotlivými kroky při přípravě nasazení clusteru.
 
-## <a name="read-the-best-practices-information"></a>Přečtěte si informace o osvědčených postupů
-Ke správě aplikace Azure Service Fabric a clustery úspěšně, jsou operace, důrazně doporučujeme že provést k optimalizaci spolehlivost vašeho produkčního prostředí.  Další informace najdete v článku [cluster a aplikace Service Fabric osvědčené postupy](service-fabric-best-practices-overview.md).
+## <a name="read-the-best-practices-information"></a>Přečtěte si informace o osvědčených postupech.
+Aby bylo možné úspěšně spravovat aplikace a clustery Azure Service Fabric, jsou k dispozici operace, které vám umožní optimalizovat spolehlivost provozního prostředí.  Další informace najdete v tématu [Service Fabric osvědčené postupy pro aplikace a cluster](service-fabric-best-practices-overview.md).
 
-## <a name="select-the-os-for-the-cluster"></a>Vyberte operační systém clusteru
-Service Fabric umožňuje vytvářet clustery Service Fabric na všechny virtuální počítače nebo počítače se systémem Windows Server nebo Linux.  Před nasazením do clusteru, musíte zvolit operační systém:  Windows nebo Linux.  Každý uzel (VM) v clusteru běží stejný operační systém, nelze kombinovat Windows a virtuální počítače s Linuxem ve stejném clusteru.
+## <a name="select-the-os-for-the-cluster"></a>Vyberte operační systém pro cluster.
+Service Fabric umožňuje vytváření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server nebo Linux.  Před nasazením clusteru je nutné zvolit operační systém:  Windows nebo Linux.  Každý uzel (virtuální počítač) v clusteru spouští stejný operační systém. virtuální počítače se systémem Windows a Linux nelze kombinovat ve stejném clusteru.
 
 ## <a name="capacity-planning"></a>Plánování kapacity
-Pro každého produkčního nasazení plánování kapacity je důležitý krok. Zde je uvedeno několik bodů, které je vhodné vzít v úvahu v rámci procesu.
+Pro jakékoli provozní nasazení je plánování kapacity důležitým krokem. Zde je uvedeno několik bodů, které je vhodné vzít v úvahu v rámci procesu.
 
 * Počáteční počet typů uzlů pro váš cluster 
-* Vlastnosti každého typu uzlu (velikost, počet instancí, primární, internetového, počet virtuálních počítačů atd.)
+* Vlastnosti každého typu uzlu (velikost, počet instancí, primární, internetový přístup, počet virtuálních počítačů atd.)
 * Spolehlivost a odolnost clusteru
 
-### <a name="select-the-initial-number-of-node-types"></a>Vyberte počáteční počet typů uzlů
-Nejprve budete muset zjistit, co se děje, kterou vytváříte cluster má být použit pro. Jaké typy aplikací, které máte v úmyslu nasadit do tohoto clusteru? Vaše aplikace mít několik služeb, a některý z nich musí být public nebo připojení k Internetu? Vaše služby, (, které tvoří vaši aplikaci) mají potřeby různé infrastruktury, jako je například větší paměť RAM nebo vyšší cyklů procesoru? Cluster Service Fabric se může skládat z více než jeden typ uzlu: typ primárního uzlu a jeden nebo více typů bez primárního uzlu. Každý typ uzlu je namapována na škálovací sadu virtuálních počítačů. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. [Vlastnosti uzlu a omezení umístění] [ placementconstraints] lze nastavit tak, chcete-li omezit určité služby na konkrétní uzel typy.  Další informace najdete v článku [počet typů uzlu clusteru je potřeba nejprve](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with).
+### <a name="select-the-initial-number-of-node-types"></a>Vyberte počáteční počet typů uzlů.
+Nejdřív musíte zjistit, k čemu se má vytvářený cluster používat. Jaké druhy aplikací plánujete nasadit do tohoto clusteru? Má vaše aplikace více služeb a některé z nich musí být veřejné nebo internetové? Mají vaše služby (z vaší aplikace) různé požadavky na infrastrukturu, jako je větší nebo vyšší počet cyklů procesoru? Cluster Service Fabric se může skládat z více než jednoho typu uzlu: primární typ uzlu a jeden nebo více typů neprimárních uzlů. Každý typ uzlu je namapován na sadu škálování virtuálního počítače. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. [Vlastnosti uzlu a omezení umístění][placementconstraints] je možné nastavit tak, aby se omezily konkrétní služby na konkrétní typy uzlů.  Další informace najdete v tématu [počet typů uzlů, ve kterých cluster potřebuje začít](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with).
 
-### <a name="select-node-properties-for-each-node-type"></a>Vyberte uzel vlastnosti pro každý typ uzlu
-Typy uzlů definují skladovou Položku virtuálního počítače, počet a vlastnosti virtuálních počítačů v sadě přidruženého měřítka.
+### <a name="select-node-properties-for-each-node-type"></a>Vybrat vlastnosti uzlu pro každý typ uzlu
+Typy uzlů definují SKU, číslo a vlastnosti virtuálních počítačů v přidružené sadě škálování.
 
-Minimální velikost virtuálních počítačů pro každý typ uzlu je určená [úroveň odolnosti] [ durability] zvolíte pro typ uzlu.
+Minimální velikost virtuálních počítačů pro každý typ uzlu je určena [úrovní odolnosti][durability] , kterou zvolíte pro typ uzlu.
 
-Minimální počet virtuálních počítačů pro primární typ uzlu je určeno [úroveň spolehlivosti] [ reliability] zvolíte.
+Minimální počet virtuálních počítačů pro typ primárního uzlu závisí na zvolené [úrovni spolehlivosti][reliability] .
 
-Zobrazit minimální doporučení pro [primárního uzlu typy](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [stavová zatížení na typy jiné než primární uzel](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads), a [Bezstavová zatížení na typy jiné než primární uzel](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
+Prohlédněte si minimální doporučení pro [typy primárních uzlů](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [stavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)a bezstavové [úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
 
-Žádné další než minimální počet uzlů by měla vycházet z počtu replik aplikace/služby, které chcete spustit v tomto typu uzlu.  [Plánování kapacity pro aplikace Service Fabric](service-fabric-capacity-planning.md) pomáhá odhadnout prostředky, které potřebujete ke spuštění vaší aplikace. Můžete vždy škálování clusteru nebo dolů později upravit pro změnu úlohy aplikace. 
+Jakékoli více než minimální počet uzlů by měl být založen na počtu replik aplikace nebo služeb, které chcete spustit v tomto typu uzlu.  [Plánování kapacity pro aplikace Service Fabric](service-fabric-capacity-planning.md) vám pomůže odhadnout prostředky, které potřebujete ke spuštění svých aplikací. Kdykoli můžete cluster škálovat nahoru nebo dolů později, aby se změnila změna aplikační úlohy. 
 
-### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Vyberte úroveň odolnosti a spolehlivosti clusteru
-Úroveň odolnosti se používá k označení systému oprávnění, které mají virtuální počítače se základní infrastrukturou Azure. Toto oprávnění umožňuje v primární typ uzlu, Service Fabric na požadavek na pozastavení všech virtuálních počítačů úrovně infrastruktury (například restartování virtuálního počítače, obnovení z Image virtuálního počítače nebo migraci virtuálních počítačů), které ovlivnit požadavky kvora pro systémové služby a stavové služby. Toto oprávnění umožňuje typy jiné než primární uzel Service Fabric se pozastavit všechny virtuální počítač úrovně infrastruktury žádosti (například restartování virtuálního počítače, obnovení z Image virtuálního počítače a migraci virtuálních počítačů), které ovlivňují požadavky kvora pro stavové služby.  Výhody různých úrovních a doporučení, na kterou úroveň se mají použít a když, naleznete v tématu [vlastnosti odolnosti clusteru][durability].
+### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Vybrat úrovně trvanlivosti a spolehlivosti pro cluster
+Úroveň odolnosti se používá k označení systému oprávnění, která vaše virtuální počítače mají s podkladovou infrastrukturou Azure. V primárním typu uzlu toto oprávnění umožňuje Service Fabric pozastavit jakoukoli žádost o infrastrukturu na úrovni virtuálního počítače (třeba restartování virtuálního počítače, obnovení virtuálního počítače nebo migraci virtuálního počítače), která mají vliv na požadavky kvora pro systémové služby a stavové služby. V neprimárních typech uzlů toto oprávnění umožňuje Service Fabric pozastavit všechny požadavky infrastruktury na úrovni virtuálního počítače (třeba restartování virtuálního počítače, obnovení bitové kopie virtuálního počítače a migrace virtuálních počítačů), které mají vliv na požadavky na kvorum pro stavové služby.  Výhody různých úrovní a doporučení, na kterých úroveň použít a kdy, najdete v tématu [charakteristiky odolnosti clusteru][durability].
 
-Úroveň spolehlivosti se používá k nastavení počtu replik systémových služeb, které chcete spustit v tomto clusteru na primární typ uzlu. Další počet replik, vyšší spolehlivost systémové služby jsou ve vašem clusteru.  Výhody různých úrovních a doporučení, na kterou úroveň se mají použít a když, naleznete v tématu [spolehlivost clusteru][reliability]. 
+Úroveň spolehlivosti slouží k nastavení počtu replik systémových služeb, které chcete v tomto clusteru spustit na primárním typu uzlu. Větší počet replik, což je spolehlivější systémové služby ve vašem clusteru.  Výhody různých úrovní a doporučení, na kterých úroveň použít a kdy, najdete v tématu [charakteristiky spolehlivosti clusteru][reliability]. 
 
-## <a name="enable-reverse-proxy-andor-dns"></a>Povolit reverzní proxy server a/nebo DNS
-Služby připojení k sobě navzájem uvnitř clusteru obecně přímo přístupné koncovým bodům, dalších služeb, protože uzly v clusteru jsou ve stejné místní síti. K usnadnění připojení mezi službami Service Fabric nabízí další služby: A [služba DNS](service-fabric-dnsservice.md) a [reverzní proxy service](service-fabric-reverseproxy.md).  Při nasazování clusteru je možné povolit obě služby.
+## <a name="enable-reverse-proxy-andor-dns"></a>Povolení reverzního proxy serveru a/nebo DNS
+Služby, které se vzájemně připojují v rámci clusteru, můžou mít přímý přístup k koncovým bodům jiných služeb, protože uzly v clusteru jsou ve stejné místní síti. Aby bylo snazší se připojovat mezi službami, Service Fabric poskytuje další služby: [Služba DNS](service-fabric-dnsservice.md) a [reverzní proxy služba](service-fabric-reverseproxy.md).  Při nasazování clusteru je možné povolit obě služby.
 
-Od mnoho služeb zejména kontejnerizovaných služeb, může mít existující název adresy URL, nebudou moct vyřešíte pomocí standardní DNS protokolu (spíše než protokol pojmenování Service) je praktické, zejména ve scénářích aplikací "metodou lift and shift". To je přesně čemu služby DNS. Umožňuje mapovat názvy DNS na název služby a proto přeložit IP adresy koncového bodu.
+Vzhledem k tomu, že řada služeb, zejména služba s využitím kontejnerů, může mít existující název adresy URL, který je schopný vyřešit pomocí standardního protokolu DNS (místo Naming Service protokolu), zejména ve scénářích "výtah a Shift". To je přesně to, co dělá služba DNS. Umožňuje mapovat názvy DNS na název služby, a proto vyřešte IP adresy koncových bodů.
 
-Reverzní proxy server adresy služby v clusteru, které zpřístupňují koncové body HTTP (včetně HTTPS). Reverzní proxy server výrazně zjednodušuje volání jiných služeb tím, že poskytuje konkrétní formát identifikátoru URI.  Reverzní proxy server zpracovává také vyřešit, připojení a opakujte kroky potřebné k jedné službě komunikovat s jinou.
+Servery reverzního proxy adresují služby v clusteru, které zveřejňují koncové body HTTP (včetně protokolu HTTPS). Reverzní proxy značně zjednodušují volání dalších služeb poskytnutím specifického formátu identifikátoru URI.  Reverzní proxy server také zpracovává kroky vyřešit, připojit a opakovat vyžadované pro komunikaci jedné služby s jinou službou.
 
 ## <a name="prepare-for-disaster-recovery"></a>Příprava na zotavení po havárii
-Důležitou součástí zajištění vysoké dostupnosti zajišťuje, že služby přežijí všechny různé druhy chyb. To je obzvláště důležité pro chyby, které neplánované a mimo vaši kontrolu. [Příprava na zotavení po havárii](service-fabric-disaster-recovery.md) popisuje některé běžné režimy selhání, které mohou být katastrofy, pokud není modelovat a spravovány správně. Také popisuje způsoby zmírnění rizik a akcí Pokud přesto došlo k havárii.
+Kritická součást poskytování vysoké dostupnosti zajišťuje, aby služby mohly zaručovat všechny různé typy selhání. To je obzvláště důležité pro neplánované chyby a mimo vaši kontrolu. [Příprava na zotavení po havárii](service-fabric-disaster-recovery.md) popisuje některé běžné režimy selhání, které by mohly selhat, pokud není modelem a spravováno správně. Zabývá se taky riziky a akcemi, které se mají provést, pokud se přesto stala havárie.
 
 ## <a name="production-readiness-checklist"></a>Kontrolní seznam připravenosti k produkci
-Je vaše aplikace a clusteru, jste připraveni udělat produkční provoz? Před nasazením do produkčního prostředí vašeho clusteru, spuštění [připravenosti produkční kontrolní seznam](service-fabric-production-readiness-checklist.md). Udržujte aplikace a clusteru, které běží plynule z práce prostřednictvím položky v tomto seznamu úkolů. Důrazně doporučujeme všechny tyto položky do odškrtli před přechodem do produkčního prostředí.
+Je vaše aplikace a cluster připravený přijmout provozní provoz? Před nasazením clusteru do produkčního prostředí spouštějte prostřednictvím [kontrolního seznamu připravenosti na produkci](service-fabric-production-readiness-checklist.md). Sledujte položky v tomto kontrolním seznamu a sledujte tak bezproblémové fungování aplikace a clusteru. Než se pustíte do produkčního prostředí, důrazně doporučujeme, abyste všechny tyto položky kontrolovali.
 
 ## <a name="next-steps"></a>Další postup
 * [Vytvoření clusteru Service Fabric se systémem Windows](service-fabric-best-practices-overview.md)
-* [Vytvoření clusteru Service Fabric s Linuxem](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+* [Vytvoření clusteru Service Fabric se systémem Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints
 [durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster

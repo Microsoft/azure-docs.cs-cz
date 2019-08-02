@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: 02281a1cad9c7e6f9680441a699fa5d34558b890
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 0504da45cbbd60629954d3e3ca3230e05761c1d6
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501491"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640369"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Ty
 > [!NOTE]
 >
 > * Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB je aktuálně dostupná jenom pro rozhraní SQL API.
-> * Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB je aktuálně dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
+> * Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB není v současnosti dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
 
 V případě úplného šetření výstrah zabezpečení doporučujeme povolit [protokolování diagnostiky v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging), které zapisuje operace do samotné databáze, včetně operací CRUD na všech dokumentech, kontejnerech a databázích.
 
@@ -39,7 +39,7 @@ V případě úplného šetření výstrah zabezpečení doporučujeme povolit [
 
 3. V okně **Upřesnit konfiguraci zabezpečení** :
 
-    * Klikněte na možnost **Rozšířená ochrana před internetovými útoky** a nastavte ji na zapnuto.
+    * Klikněte na možnost **Rozšířená ochrana před internetovými útoky** anastavte ji na zapnuto.
     * Kliknutím na **Uložit** uložte nové nebo aktualizované zásady rozšířené ochrany před internetovými útoky.   
 
 ### <a name="set-up-atp-using-rest-api"></a>Nastavení ATP pomocí REST API

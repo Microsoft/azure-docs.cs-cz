@@ -10,83 +10,82 @@ ms.topic: conceptual
 author: dalechen
 ms.author: daleche
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d278fd6ed06b58db052154e632e565de36853e77
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6dccfca256239f922c2243e2ebfab5c26835ee98
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331430"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566306"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Řešení problémů s připojením ke službě Azure SQL Database
+# <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Řešení potíží s připojením pro Azure SQL Database
 
-Při připojení ke službě Azure SQL Database selže, obdržíte [chybové zprávy](sql-database-develop-error-messages.md). Tento článek je centralizovaná téma, které vám pomohou s řešením problémům s připojením Azure SQL Database. Zavádí [nejčastější příčiny](#cause) z problémů s připojením, doporučuje [nástroje pro odstraňování potíží](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) , která pomáhá identity problém a odstraňování potíží vysvětluje, jak vyřešit [přechodné chyby](#troubleshoot-transient-errors) a [trvalé nebo nepřechodných chyb](#troubleshoot-persistent-errors). 
+Pokud se připojení k Azure SQL Database selžou, zobrazí se [chybové zprávy](sql-database-develop-error-messages.md). Tento článek je centralizované téma, které vám pomůže při řešení potíží s problémy s připojením Azure SQL Database. Zavádí [běžné příčiny](#cause) potíží s připojením, doporučuje Nástroj pro [řešení potíží](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) , který vám pomůže s tím, jak problém vyřešit, a poskytuje kroky pro řešení problémů s přechodem k [přechodným chybám](#troubleshoot-transient-errors) a trvalým nebo nepřechodným [chybám ](#troubleshoot-persistent-errors). 
 
-Pokud narazíte na problémy s připojením, vyzkoušejte postup řešení potíží, které jsou popsány v tomto článku.
+Pokud narazíte na problémy s připojením, zkuste postup řešení potíží, který je popsaný v tomto článku.
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="cause"></a>Příčina
 
-Může být způsobeno problémy s připojením pomocí některé z následujících akcí:
+Problémy s připojením mohou být způsobeny některým z následujících způsobů:
 
-* Nepodařilo se použít osvědčené postupy a pokyny pro návrh během procesu návrhu aplikace.  Zobrazit [přehled vývoje SQL Database](sql-database-develop-overview.md) začít.
-* Azure SQL Database Rekonfigurace
+* Neúspěšné použití osvědčených postupů a pokynů pro návrh během procesu návrhu aplikace.  Začněte tím, že najdete [Přehled vývoje SQL Database](sql-database-develop-overview.md) .
+* Azure SQL Database rekonfigurace
 * Nastavení brány firewall
 * Časový limit připojení
 * Nesprávné přihlašovací údaje
-* U některých prostředků Azure SQL Database se dosáhlo maximálního limitu
+* Dosáhlo se maximálního limitu u některých prostředků Azure SQL Database.
 
-Obecně platí problémy s připojením ke službě Azure SQL Database můžete klasifikovat takto:
+Obecně mohou být problémy s připojením k Azure SQL Database klasifikovány takto:
 
-* [Přechodné chyby (krátkodobé nebo přerušované)](#troubleshoot-transient-errors)
-* [Trvalé nebo nepřechodných chyb (chyb, které se pravidelně opakují)](#troubleshoot-persistent-errors)
+* [Přechodné chyby (krátkodobé nebo občasné)](#troubleshoot-transient-errors)
+* [Trvalé nebo nepřechodné chyby (chyby, které se pravidelně opakují)](#troubleshoot-persistent-errors)
 
-## <a name="try-the-troubleshooter-for-azure-sql-database-connectivity-issues"></a>Zkuste Poradce při potížích pro problémy s připojením k Azure SQL Database
+## <a name="try-the-troubleshooter-for-azure-sql-database-connectivity-issues"></a>Vyzkoušejte poradce při potížích s Azure SQL Database problémy s připojením
 
-Pokud narazíte na chyby konkrétních připojení, zkuste [tento nástroj](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database), které se vám pomohou vám rychle identifikovat a vyřešit váš problém.
+Pokud narazíte na konkrétní chybu připojení, vyzkoušejte si [Tento nástroj](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database), který vám pomůže rychle zjistit identitu a vyřešit váš problém.
 
 ## <a name="troubleshoot-transient-errors"></a>Řešení přechodných chyb
 
-Když se aplikace připojí ke službě Azure SQL database, zobrazí se následující chybová zpráva:
+Když se aplikace připojí k databázi SQL Azure, zobrazí se tato chybová zpráva:
 
 ```
 Error code 40613: "Database <x> on server <y> is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of <z>"
 ```
 
 > [!NOTE]
-> Tato chybová zpráva se nejčastěji přechodné (krátkodobou).
+> Tato chybová zpráva je obvykle přechodný (krátkodobá).
 > 
 > 
 
-Tato chyba nastane, pokud se databáze přesunout (nebo překonfigurovat) a vaše aplikace ztratí připojení k databázi. Události změny konfigurace v databázi, k nimž dochází kvůli plánované události (například upgrade softwaru) nebo neplánované události (například chybové ukončení procesu, nebo služby Vyrovnávání zatížení). Většina události změny konfigurace jsou obecně krátkodobé a by se měl dokončit za méně než 60 sekund nejvíce. Však tyto události může někdy trvat déle dokončit, například když způsobí, že velké transakce dlouhotrvající obnovení.
+K této chybě dojde, když přesunete databázi (nebo znovu nakonfigurujete) a vaše aplikace ztratí připojení k databázi. Události opětovné konfigurace databáze nastávají z důvodu plánované události (například upgrade softwaru) nebo neplánované události (například selhání procesu nebo vyrovnávání zatížení). Většina událostí opětovné konfigurace je obecně krátkodobá a měla by být dokončena během méně než 60 sekund. Tyto události mohou nicméně občas trvat déle, například když velká transakce způsobí dlouhotrvající obnovení.
 
-### <a name="steps-to-resolve-transient-connectivity-issues"></a>Kroky k vyřešení problémů s připojením přechodné
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Postup řešení potíží s přechodným připojením
 
-1. Zkontrolujte, [řídicí panel služby Microsoft Azure](https://azure.microsoft.com/status) všechny známé výpadky, ke kterým došlo během doby, během kterého byly oznámeny chyby aplikací.
-2. Aplikace, které se připojují ke cloudové službě, jako jsou Azure SQL Database by měl očekávat pravidelné Rekonfigurace události a implementovat logiku zpracování těchto chyb místo za chyby aplikace zpřístupnění uživatelům opakování. Zkontrolujte [přechodné chyby](sql-database-connectivity-issues.md) oddílu a osvědčené postupy a pokyny pro návrh na [přehled vývoje SQL Database](sql-database-develop-overview.md) Další informace a obecná strategie opakování. Poté, najdete v ukázkách kódu na [připojení knihoven pro službu SQL Database a SQL Server](sql-database-libraries.md) pro konkrétní.
-3. Jako databázi přistupuje k jeho omezení prostředků, může to vypadat třeba přechodné potíže s připojením. Zobrazit [omezení prostředků](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached).
-4. Pokud se potíže s připojením k pokračovat nebo pokud překročí 60 sekund doby trvání, pro kterou vaše aplikace došlo k chybě, nebo když se zobrazí více výskytů chyby v daném dni souborů žádost o podporu Azure tak, že vyberete **získat podporu**na [podpory Azure](https://azure.microsoft.com/support/options) lokality.
+1. Podívejte se na [řídicí panel služby Microsoft Azure](https://azure.microsoft.com/status) pro všechny známé výpadky, ke kterým došlo v době, během které aplikace ohlásila chyby.
+2. Aplikace, které se připojují ke cloudové službě, jako je třeba Azure SQL Database, by měly očekávat události pravidelného překonfigurování a implementují logiku opakování pro zpracování těchto chyb, místo aby je zpřístupnění jako chyby aplikací pro uživatele. Další informace a obecné strategie opakování najdete v části [přechodné chyby](sql-database-connectivity-issues.md) a osvědčené postupy a pokyny pro návrh při [SQL Database přehledu vývoje](sql-database-develop-overview.md) . Pak si přečtěte téma ukázky kódu v tématu [knihovny připojení pro SQL Database a SQL Server](sql-database-libraries.md) pro konkrétní.
+3. Vzhledem k tomu, že se databáze blíží omezení prostředků, může se jednat o přechodný problém s připojením. Viz [omezení prostředků](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached).
+4. Pokud potíže s připojením trvají nebo pokud doba, po kterou vaše aplikace narazí na chybu, překračuje 60 sekund, nebo pokud se v daném dni zobrazí více výskytů chyby, zastavte žádost o podporu Azure výběrem možnosti **získat podporu** na [Azure. Web podpory](https://azure.microsoft.com/support/options) .
 
-## <a name="troubleshoot-persistent-errors"></a>Řešení potíží s chybami trvalé
-Pokud aplikace trvale nepodaří připojit ke službě Azure SQL Database, obvykle znamená problém s jedním z následujících akcí:
+## <a name="troubleshoot-persistent-errors"></a>Řešení trvalých chyb
+Pokud se aplikace trvale nepřipojí k Azure SQL Database, obvykle se jedná o problém s jedním z následujících způsobů:
 
-* Konfigurace brány firewall. Azure SQL database nebo na straně klienta brána firewall blokuje připojení ke službě Azure SQL Database.
-* Změnu konfigurace na straně klienta sítě: například novou IP adresu nebo proxy server.
-* Chyba uživatele: například chybně parametry připojení, jako je například název serveru v připojovacím řetězci.
+* Konfigurace brány firewall. Služba Azure SQL Database nebo brána firewall na straně klienta blokuje připojení k Azure SQL Database.
+* Rekonfigurace sítě na straně klienta: například nová IP adresa nebo proxy server.
+* Chyba uživatele: například chybné typové parametry připojení, například název serveru v připojovacím řetězci.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroky při řešení problémů trvalého připojení
-1. Nastavit [pravidla brány firewall](sql-database-configure-firewall-settings.md) by klientovi umožňoval IP adresu. Pro dočasné pro účely testování nastavte pravidla brány firewall pomocí 0.0.0.0 jako výchozí rozsah IP adres a pomocí 255.255.255.255 jako koncový rozsah IP adres. Otevře se server pro všechny IP adresy. Pokud to řeší problém s připojením, odeberte toto pravidlo a vytvořte pravidlo brány firewall pro odpovídajícím způsobem omezené IP adresu nebo rozsah adres. 
-2. Na všechny brány firewall mezi klientem a Internetu Ujistěte se, že port 1433 je otevřený pro odchozí připojení. Kontrola [konfigurace brány Windows Firewall pro povolení přístupu k serveru SQL](https://msdn.microsoft.com/library/cc646023.aspx) a [hybridní Identity požadované porty a protokoly](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports) pro další ukazatele související s další porty, které budete muset otevřít pro Azure Ověřování služby Active Directory.
-3. Ověřte připojovací řetězec a další nastavení připojení. Naleznete v části připojovací řetězec [tématu problémy s připojením](sql-database-connectivity-issues.md#connections-to-sql-database).
-4. Kontrola stavu služeb v řídicím panelu. Pokud si myslíte, dojde k oblastnímu výpadku, přečtěte si téma [zotavení z výpadku](sql-database-disaster-recovery.md) pokyny k obnovení do nové oblasti.
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Postup řešení potíží s trvalým připojením
+1. Nastavte [pravidla brány firewall](sql-database-configure-firewall-settings.md) tak, aby povolovala IP adresu klienta. Pro účely dočasného testování nastavte pravidlo brány firewall s použitím direktivy 0.0.0.0 jako počátečního rozsahu IP adres a jako konečný rozsah IP adres použijte 255.255.255.255. Tím se Server otevře na všech IP adresách. Pokud dojde k vyřešení problému s připojením, odeberte toto pravidlo a vytvořte pravidlo brány firewall pro odpovídající omezené IP adresy nebo rozsah adres. 
+2. U všech bran firewall mezi klientem a internetem se ujistěte, že je port 1433 otevřený pro odchozí připojení. Přečtěte si téma [Konfigurace brány Windows Firewall, aby povolovala přístup k SQL serverům a aby](https://msdn.microsoft.com/library/cc646023.aspx) byly [porty a protokoly](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports) pro další ukazatele týkající se dalších portů, které je třeba otevřít pro Azure Active Directory ověřování, nemusely používat.
+3. Ověřte připojovací řetězec a další nastavení připojení. Viz část připojovací řetězec v [tématu problémy s připojením](sql-database-connectivity-issues.md#connections-to-sql-database).
+4. Ověřte stav služby na řídicím panelu. Pokud se domníváte, že se jedná o oblastní výpadky, přečtěte si téma [zotavení po výpadku](sql-database-disaster-recovery.md) , kde najdete kroky k obnovení do nové oblasti.
 
 ## <a name="next-steps"></a>Další postup
-* [Hledání v dokumentaci v Microsoft Azure](https://azure.microsoft.com/search/documentation/)
-* [Prohlédněte si nejnovější aktualizace ke službě Azure SQL Database](https://azure.microsoft.com/updates/?service=sql-database)
+* [Hledat v dokumentaci k Microsoft Azure](https://azure.microsoft.com/search/documentation/)
+* [Zobrazit nejnovější aktualizace služby Azure SQL Database](https://azure.microsoft.com/updates/?service=sql-database)
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 * [Přehled vývoje SQL Database](sql-database-develop-overview.md)
-* [Obecné pokyny přechodné zpracování chyb](../best-practices-retry-general.md)
-* [Připojení knihoven pro službu SQL Database a SQL Server](sql-database-libraries.md)
+* [Obecné pokyny pro zpracování přechodných chyb](../best-practices-retry-general.md)
+* [Knihovny připojení pro SQL Database a SQL Server](sql-database-libraries.md)
 

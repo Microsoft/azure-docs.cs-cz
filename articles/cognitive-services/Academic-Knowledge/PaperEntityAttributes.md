@@ -1,7 +1,7 @@
 ---
-title: Atributy entit papíru – Academic Knowledge API
+title: Atributy entity papíru – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Další atributy, které můžete použít s papíru entit v rozhraní Academic Knowledge API.
+description: Seznamte se s atributy, které můžete použít spolu s entitou Paper v Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,41 +10,42 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: 92844b5faf691b67617c9f3424a1322aa05429bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4b9431469a7925d26003ad9c34f6b401e5767f6d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64875743"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704937"
 ---
-# <a name="paper-entity"></a>Entity dokumentu
+# <a name="paper-entity"></a>Entita papíru
 
-<sub> * Následující atributy jsou specifická pro entity papíru. (Ty = "0") </sub>
+<sub>* Níže jsou atributy specifické pro papírovou entitu. (Ty = 0)</sub>
 
 
-Název    |Popis                                        |Type       | Operace
+Name    |Popis                                        |type       | Operace
 ------- | ------------------------------------------------- | --------- | ----------------------------
-ID      |Entity ID                                          |Int64      |Je rovno
-Ti      |Název dokumentu                                        |String     |Je rovno<br/>StartsWith
-L       |Kód jazyka papíru oddělené "\@\@\@"          |String     |Je rovno
-Ano       |Rok papíru                                         |Int32      |Je rovno<br/>IsBetween
-D       |Datum papíru                                         |Datum       |Je rovno<br/>IsBetween
-CC      |Počet citace                                     |Int32      |None  
-ECC     |Citaci odhadovaný počet                           |Int32      |None
-AA.AuN  |Jméno autora                                        |String     |Je rovno<br/>StartsWith
+Id      |ID entity                                          |Int64      |Je rovno
+Čas      |Název papíru                                        |Řetězec     |Rovná<br/>StartsWith
+O       |Kód jazyka papíru oddělený znakem "\@"\@\@          |Řetězec     |Je rovno
+Ano       |Rok papíru                                         |Int32      |Rovná<br/>Mezi
+D       |Datum papíru                                         |Date       |Rovná<br/>Mezi
+CC      |Počet citací                                     |Int32      |žádný  
+ECC     |Odhadovaný počet citací                           |Int32      |žádný
+AA.AuN  |Jméno autora                                        |Řetězec     |Rovná<br/>StartsWith
 AA.AuId |ID autora                                          |Int64      |Je rovno
-AA.AfN  |Jméno autora přidružení                            |String     |Je rovno<br/>StartsWith
-AA.AfId |ID umístění autora                              |Int64      |Je rovno
-AA.S    |Autor pořadí papíru                         |Int32      |Je rovno
-F.FN    |Pole Název studie                                |String     |Je rovno<br/>StartsWith
+Vpravo. AfN  |Název afilace autora                            |Řetězec     |Rovná<br/>StartsWith
+AA.AfId |ID přidružení autora                              |Int64      |Je rovno
+VPRAVO. PRACUJÍ    |Pořadí autora dokumentu                         |Int32      |Je rovno
+F.FN    |Pole názvu studie                                |Řetězec     |Rovná<br/>StartsWith
 F.FId   |Pole ID studie                                  |Int64      |Je rovno
-J.JN    |Název deníku                                       |String     |Je rovno<br/>StartsWith
-J.JId   |ID deníku                                         |Int64      |Je rovno
-C.CN    |Název řady konference                             |String     |Je rovno<br/>StartsWith
-C.CId   |ID číselné řady konference                               |Int64      |Je rovno
-Identifikátorů rId     |Odkazované Paper ID                              |Int64[]    |Je rovno
-W       |Slova z názvu dokumentu a Abstract současně                |Řetězec]   |Je rovno
-E       |Rozšířená metadata (viz tabulka níže)                |String     |None  
+J. JN    |Název deníku                                       |Řetězec     |Rovná<br/>StartsWith
+J. JId   |ID deníku                                         |Int64      |Je rovno
+C.CN    |Název řady konferencí                             |Řetězec     |Rovná<br/>StartsWith
+C.CId   |ID řady konferenčních kurzů                               |Int64      |Je rovno
+Mezinárodní     |ID odkazovaných dokumentů                              |Int64[]    |Je rovno
+st       |Slova z titulu a abstrakce papíru                |Řetězec []   |Je rovno
+E       |Rozšířená metadata (viz tabulka níže)                |Řetězec     |žádný  
         
 
 
@@ -52,21 +53,21 @@ E       |Rozšířená metadata (viz tabulka níže)                |String     
 
 Name    | Popis               
 --------|---------------------------    
-ROZLIŠUJÍCÍ NÁZEV      | Zobrazovaný název papíru 
-S       | Zdroje – seznam webové zdroje papíru, seřazené podle hodnocení statické
-S.Ty    | Source Type (1:HTML, 2:Text, 3:PDF, 4:DOC, 5:PPT, 6:XLS, 7:PS)
-S.U     | Adresa URL zdroje
-VFN     | Jméno a příjmení příslušností – celý název deníku nebo místa konání konference
-VSN     | Krátký název příslušností - krátký název deníku nebo místa konání konference
-V       | Svazek – svazek deníku
+ROZLIŠUJÍCÍ NÁZEV      | Zobrazovaný název dokumentu 
+ne       | Zdroje – seznam webových zdrojů dokumentu seřazený podle statického rozměru
+S. ty    | Typ zdroje (1: HTML, 2: text, 3: PDF, 4: DOC, 5: PPT, 6: XLS, 7: PS)
+S. U     | Zdrojová adresa URL
+VFN     | Celé jméno – celé jméno, deník nebo konference
+VSN     | Krátké jméno – krátký název deníku nebo konference
+V       | Svazek deníku svazků
 BV      | Název deníku
 BT      | 
 PB      | Zkratky deníku
-I       | Chyba – problém deníku
-FP      | Události FirstPage – první stránka papíru
-LP      | LastPage – poslední stránky z dokumentu
-DOI     | Identifikátor digitální objektu
-CC      | Kontexty citace – seznam odkazovaných papíru ID a odpovídající kontext v dokumentu (například [{123: ["Hnědý lišek jsou známé pro přechod, který jste použili v dokumentu 123", "opožděné psi jsou historických misnomer, jak je uvedeno v dokumentu 123"]})
-IA      | Obráceným abstraktní
-IA.IndexLength| Počet položek v indexu (počet slov na abstraktní)
-IA.InvertedIndex| Seznam abstraktní slova a jejich odpovídající pozici v původní abstraktní (například [{"the": [0, 15, 30]}, {"Hnědý": [1]}, {"fox":[2]}])
+I       | Problém – problém deníku
+FP      | FirstPage – první stránka dokumentu
+ÚLOH      | LastPage – poslední stránka dokumentu
+DOI     | Identifikátor digitálního objektu
+CC      | Kontexty citací – seznam odkazovaných ID papíru a odpovídající kontext v dokumentu (např. [{123: ["Brown Foxes jsou známy pro přechod tak, jak je odkazováno v dokumentu 123" "," opožděné psi jsou historické misnomer, jak je znázorněno na papíře 123 "]}).
+HMOTNÉ      | Obrácený abstrakt
+IA.IndexLength| Počet položek v indexu (počet slov abstrakce)
+IA.InvertedIndex| Seznam abstraktních slov a jejich odpovídající pozice v původní abstraktu (např. [{": [0, 15, 30]}, {" Brown ": [1]}, {" Fox ": [2]}])

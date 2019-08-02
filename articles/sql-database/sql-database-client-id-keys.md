@@ -1,6 +1,6 @@
 ---
-title: Získání hodnot pro ověřování pomocí služby app - Azure SQL Database | Dokumentace Microsoftu
-description: Vytvoření instančního objektu pro přístup k SQL Database z kódu.
+title: Získat hodnoty pro ověřování aplikací – Azure SQL Database | Microsoft Docs
+description: Vytvoří instanční objekt pro přístup k SQL Database z kódu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,24 +10,23 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 1d60e875b12f02c957ebd6259eb0e7267f23ee51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7c8c6788a8699c5b57c39731c148454ad8dcfcf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150200"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569328"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Získání požadovaných hodnot pro ověření aplikace pro přístup k SQL Database z kódu
 
-Vytvoření a Správa služby SQL Database z kódu je nutné zaregistrovat aplikaci v doméně Azure Active Directory (AAD) v rámci předplatného, ve kterém byly vytvořeny prostředky Azure.
+Pokud chcete vytvořit a spravovat SQL Database z kódu, musíte aplikaci zaregistrovat v doméně Azure Active Directory (AAD) v předplatném, ve kterém se vytvořily prostředky Azure.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Vytvořit instanční objekt pro přístup k prostředkům z aplikace
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Vytvoření instančního objektu pro přístup k prostředkům z aplikace
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
 Následující skript prostředí PowerShell vytvoří aplikaci Active Directory (AD) a instanční objekt, který potřebujeme k ověření naší aplikace v jazyce C#. Skript vypíše hodnoty potřebné pro předchozí ukázku v jazyce C#. Podrobné informace najdete v tématu [Vytvoření instančního objektu pro přístup k prostředkům pomocí prostředí Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
@@ -72,7 +71,7 @@ Následující skript prostředí PowerShell vytvoří aplikaci Active Directory
 
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
-* [Vytvoření databáze SQL pomocí C#](sql-database-get-started-csharp.md)
+## <a name="see-also"></a>Viz také:
+* [Vytvoření databáze SQL pomocíC#](sql-database-get-started-csharp.md)
 * [Připojení k SQL Database pomocí ověřování Azure Active Directory](sql-database-aad-authentication.md)
 

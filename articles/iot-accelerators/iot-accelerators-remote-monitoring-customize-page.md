@@ -1,6 +1,6 @@
 ---
-title: Přidání stránky do řešení vzdálené monitorování uživatelské rozhraní – Azure | Dokumentace Microsoftu
-description: Tento článek ukazuje, jak přidat nové stránky do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní.
+title: Přidání stránky do uživatelského rozhraní řešení vzdáleného monitorování – Azure | Microsoft Docs
+description: V tomto článku se dozvíte, jak přidat novou stránku do webového uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,36 +8,36 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 95830cdffb232e16f9fbae51cfa11fbd18172c3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec0b9fbdfdb96317e1e7f6fe00384ba4f8c42bcc
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447076"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607954"
 ---
-# <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní stránky pro vzdálené monitorování řešení akcelerátoru webového uživatelského rozhraní
+# <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní stránku do webového uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování
 
-Tento článek ukazuje, jak přidat nové stránky do vzdáleného monitorování řešení akcelerátoru webového uživatelského rozhraní. Tento článek popisuje:
+V tomto článku se dozvíte, jak přidat novou stránku do webového uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování. Článek popisuje:
 
 - Jak připravit místní vývojové prostředí.
-- Postup přidání nové stránky do webového uživatelského rozhraní.
+- Postup přidání nové stránky do webového uživatelského rozhraní
 
-Další návody rozšiřte tento scénář přidat na stránku, kterou přidáte další funkce.
+Další průvodce návody rozšiřuje tento scénář, aby bylo možné na stránku, kterou přidáte, přidat další funkce.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v této příručce s postupy, musíte na svém místním vývojovém počítači nainstalovaný následující software:
+K dokončení kroků v tomto průvodci, potřebujete na svém místním vývojovém počítači nainstalovaný následující software:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
-## <a name="prepare-a-local-development-environment-for-the-ui"></a>Příprava prostředí pro místní vývoj uživatelského rozhraní
+## <a name="prepare-a-local-development-environment-for-the-ui"></a>Příprava místního vývojového prostředí pro uživatelské rozhraní
 
-Akcelerátor řešení vzdálené monitorování kód uživatelského rozhraní je implementováno pomocí [React](https://reactjs.org/) Javascriptové architektury. Můžete najít zdrojový kód v [vzdálené monitorování WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) úložiště GitHub.
+Kód uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování je implementován pomocí rozhraní JavaScript s [reakci](https://reactjs.org/) . Zdrojový kód najdete v úložišti GitHub [WebUI vzdáleného monitorování](https://github.com/Azure/pcs-remote-monitoring-webui) .
 
-Chcete-li vytvořit a testovat změny v uživatelském rozhraní, můžete ji spustit na svém místním vývojovém počítači. Místní kopii lze volitelně připojit k nasazené instance akcelerátor řešení, který umožňuje pracovat s reálných nebo simulovaných zařízení.
+Chcete-li provést a otestovat změny v uživatelském rozhraní, můžete je spustit na místním vývojovém počítači. Volitelně se místní kopie může připojit k nasazené instanci akcelerátoru řešení, aby mohla spolupracovat se skutečnými nebo simulovanými zařízeními.
 
-Příprava místního vývojového prostředí, pomocí Gitu naklonujte [vzdálené monitorování WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) úložiště do svého místního počítače:
+Pokud chcete připravit místní vývojové prostředí, pomocí Gitu naklonujte úložiště [vzdáleného monitorování WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) do místního počítače:
 
 ```cmd/sh
 git clone https://github.com/Azure/pcs-remote-monitoring-webui.git
@@ -45,11 +45,11 @@ git clone https://github.com/Azure/pcs-remote-monitoring-webui.git
 
 ## <a name="add-a-page"></a>Přidat stránku
 
-Přidání stránky do webového uživatelského rozhraní, budete muset přidat zdrojové soubory, které definují stránky a změnit některé existující soubory ve webovém uživatelském rozhraní vědět nová stránka.
+Chcete-li přidat stránku do webového uživatelského rozhraní, je nutné přidat zdrojové soubory, které definují stránku, a změnit některé existující soubory tak, aby webové uživatelské rozhraní bylo na nové stránce vědomo.
 
-### <a name="add-the-new-files-that-define-the-page"></a>Přidat nové soubory, které definují stránky
+### <a name="add-the-new-files-that-define-the-page"></a>Přidat nové soubory, které definují stránku
 
-Abyste mohli začít, **src/návod/součásti/stránek/šablonou základní** složka obsahuje čtyři soubory, které definují jednoduché stránky:
+Chcete-li začít, složka **Src/názor/komponenty/Pages/šablonou základní stránky** obsahuje čtyři soubory definující jednoduchou stránku:
 
 **basicPage.container.js**
 
@@ -67,21 +67,21 @@ Abyste mohli začít, **src/návod/součásti/stránek/šablonou základní** sl
 
 [!code-javascript[Test code for basic page](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.test.js?name=test "Test code for basic page")]
 
-Vytvořte novou složku **src/součásti/stránek/příklad** a zkopírujte do něj tyto čtyři soubory.
+Vytvoří novou složku **Src/Components/Pages/example** a zkopíruje do ní tyto čtyři soubory.
 
-### <a name="add-the-new-page-to-the-web-ui"></a>Přidejte novou stránku do webového uživatelského rozhraní
+### <a name="add-the-new-page-to-the-web-ui"></a>Přidání nové stránky do webového uživatelského rozhraní
 
-Chcete-li přidat novou stránku do webového uživatelského rozhraní, proveďte následující změny k existující soubory:
+Chcete-li přidat novou stránku do webového uživatelského rozhraní, proveďte následující změny existujících souborů:
 
-1. Přidat nové stránky kontejneru **src/components/pages/index.js** souboru:
+1. Přidejte nový kontejner stránky do souboru **Src/Components/pages/index. js** :
 
     ```js
     export * from './example/basicPage.container';
     ```
 
-1. (Volitelné)  Přidáte ikonu SVG nové stránky. Další informace najdete v tématu [webui/src/utilities/README.md](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/utilities/README.md). Můžete použít existující soubor SVG.
+1. Volitelné  Přidejte ikonu SVG pro novou stránku. Další informace najdete v tématu [WebUI/src/Utilities/Readme. MD](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/utilities/README.md). Můžete použít existující soubor SVG.
 
-1. Přidejte název stránky do souboru překlady **public/locales/en/translations.json**. Webové uživatelské rozhraní používá [i18next](https://www.i18next.com/) pro internacionalizaci.
+1. Přidejte název stránky do souboru s překlady, **Public/Locals/EN/překlady. JSON**. Webové uživatelské rozhraní používá [i18next](https://www.i18next.com/) pro mezinárodní účely.
 
     ```json
     "tabs": {
@@ -89,7 +89,7 @@ Chcete-li přidat novou stránku do webového uživatelského rozhraní, proveď
     },
     ```
 
-1. Otevřít **src/components/app.js** soubor, který definuje stránce aplikace nejvyšší úrovně. Přidejte novou stránku do seznamu importů:
+1. Otevřete soubor **Src/Components/App. js** , který definuje stránku aplikace nejvyšší úrovně. Přidejte novou stránku do seznamu importů:
 
     ```javascript
     // Page Components
@@ -99,7 +99,7 @@ Chcete-li přidat novou stránku do webového uživatelského rozhraní, proveď
     } from './pages';
     ```
 
-1. Ve stejném souboru přidejte novou stránku `pagesConfig` pole. Nastavte `to` adres pro trasu, odkaz SVG ikonu a překlady přidali dříve, nastavte `component` na stránce kontejneru:
+1. Ve stejném souboru přidejte novou stránku do `pagesConfig` pole. Nastavte adresu pro trasu, odkazujte na dříve přidané ikony SVG a překlady a `component` nastavte na kontejner stránky: `to`
 
     ```js
     const pagesConfig = [
@@ -115,7 +115,7 @@ Chcete-li přidat novou stránku do webového uživatelského rozhraní, proveď
     ];
     ```
 
-1. Přidat všechny nové popisu `crumbsConfig` pole:
+1. Přidejte jakékoli nové popisy cesty k `crumbsConfig` poli:
 
     ```js
     const crumbsConfig = [
@@ -129,40 +129,40 @@ Chcete-li přidat novou stránku do webového uživatelského rozhraní, proveď
     ];
     ```
 
-    Tento příklad stránky má jenom jednu s popisem cesty, ale některé stránky mohou mít více.
+    Tato Ukázková stránka obsahuje jenom jednu popis cesty, ale některé stránky můžou mít víc.
 
-Uložte všechny provedené změny. Jste připraveni spustit ve webovém uživatelském rozhraní se přidat nové stránky.
+Uložte všechny provedené změny. Jste připraveni spustit webové uživatelské rozhraní s přidanou novou stránkou.
 
-### <a name="test-the-new-page"></a>Otestovat novou stránku
+### <a name="test-the-new-page"></a>Otestování nové stránky
 
-Na příkazovém řádku přejděte do kořenové složce místní kopie úložiště a spusťte následující příkazy instalace potřebných knihoven a spustit místně ve webovém uživatelském rozhraní:
+Na příkazovém řádku přejděte do kořenového adresáře místní kopie úložiště a spuštěním následujících příkazů nainstalujte požadované knihovny a spusťte webové uživatelské rozhraní lokálně:
 
 ```cmd/sh
 npm install
 npm start
 ```
 
-Předchozí příkaz se spustí místně na uživatelské rozhraní [ http://localhost:3000/dashboard ](http://localhost:3000/dashboard).
+Předchozí příkaz spustí uživatelské rozhraní lokálně na [http://localhost:3000/dashboard](http://localhost:3000/dashboard).
 
-Bez připojení vaší místní instance webové uživatelské rozhraní k nasazené instance akcelerátor řešení, uvidíte na řídicím panelu chyby. Tyto chyby nemají vliv na schopnost testování nové stránky.
+Bez připojení místní instance webového uživatelského rozhraní k nasazené instanci akcelerátoru řešení vidíte chyby na řídicím panelu. Tyto chyby neovlivňují vaši možnost testování vaší nové stránky.
 
-Teď můžete upravit jeho kód, zatímco je web spuštěný místně a najdete v článku webu uživatelského rozhraní dynamicky aktualizovat.
+Kód teď můžete upravovat, když je web spuštěný místně a dynamicky se zobrazuje aktualizace webového uživatelského rozhraní.
 
-## <a name="optional-connect-to-deployed-instance"></a>[Volitelné] Připojte se k nasazené instance
+## <a name="optional-connect-to-deployed-instance"></a>Volitelné Připojit k nasazené instanci
 
-Volitelně můžete připojit místní kopie spuštěné ve webovém uživatelském rozhraní pro akcelerátor řešení vzdálené monitorování v cloudu:
+Volitelně můžete připojit místní běžící kopii webového uživatelského rozhraní k akcelerátoru řešení vzdáleného monitorování v cloudu:
 
-1. Nasazení **základní** instanci pomocí akcelerátor řešení **počítače** rozhraní příkazového řádku. Poznamenejte si název vašeho nasazení a přihlašovací údaje, které jste zadali pro virtuální počítač. Další informace najdete v tématu [nasazení pomocí rozhraní příkazového řádku](iot-accelerators-remote-monitoring-deploy-cli.md).
+1. Nasaďte **základní** instanci akcelerátoru řešení pomocí rozhraní příkazového řádku pro **počítače** . Poznamenejte si název vašeho nasazení a přihlašovací údaje, které jste zadali pro virtuální počítač. Další informace najdete v tématu [nasazení pomocí rozhraní](iot-accelerators-remote-monitoring-deploy-cli.md)příkazového řádku.
 
-1. Pomocí webu Azure portal nebo [az rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) povolit přístup přes SSH k virtuálnímu počítači, který je hostitelem mikroslužeb ve vašem řešení. Příklad:
+1. Pomocí Azure Portal nebo [AZ CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) povolte přístup SSH k virtuálnímu počítači, který je hostitelem mikroslužeb ve vašem řešení. Příklad:
 
     ```sh
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    Přístup přes SSH byste měli povolit jenom během vývoj a testování. Pokud povolíte SSH, [byste měli znovu co nejdříve zakázat](../security/azure-security-network-security-best-practices.md).
+    Během testování a vývoje byste měli povolit jenom přístup přes SSH. Pokud povolíte SSH, [měli byste ho znovu deaktivovat, jakmile to bude možné](../security/fundamentals/network-best-practices.md).
 
-1. Pomocí webu Azure portal nebo [az rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) najít název a veřejnou IP adresu vašeho virtuálního počítače. Příklad:
+1. Pomocí Azure Portal nebo [AZ CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) najděte název a veřejnou IP adresu vašeho virtuálního počítače. Příklad:
 
     ```sh
     az resource list --resource-group {your solution name} -o table
@@ -171,26 +171,26 @@ Volitelně můžete připojit místní kopie spuštěné ve webovém uživatelsk
 
 1. Pomocí SSH se připojte k virtuálnímu počítači pomocí IP adresy z předchozího kroku a přihlašovací údaje, které jste zadali při spuštění **počítače** k nasazení řešení.
 
-1. Pokud chcete povolit místní uživatelského rozhraní pro připojení, spusťte následující příkazy v prostředí bash ve virtuálním počítači:
+1. Pokud chcete místnímu UŽIVATELSKÉmu prostředí připojit, spusťte v prostředí bash ve virtuálním počítači následující příkazy:
 
     ```sh
     cd /app
     sudo ./start.sh --unsafe
     ```
 
-1. Jakmile ověříte, že se příkaz dokončí a spustí webovou stránku, můžete odpojit od virtuálního počítače.
+1. Až se zobrazí příkaz dokončí se a web se spustí, můžete se z virtuálního počítače odpojit.
 
-1. V místní kopii [vzdálené monitorování WebUI](https://github.com/Azure/pcs-remote-monitoring-webui) úložiště, upravit **.env** soubor a přidejte adresu URL vašeho nasazeného řešení:
+1. V místní kopii úložiště [WebUI vzdáleného monitorování](https://github.com/Azure/pcs-remote-monitoring-webui) upravte soubor **. env** a přidejte tak adresu URL vašeho nasazeného řešení:
 
     ```config
     NODE_PATH = src/
     REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o prostředky dostupné pro vám umožní přizpůsobit uživatelské rozhraní v akcelerátoru řešení vzdáleného monitorování.
+V tomto článku jste se dozvěděli o dostupných zdrojích, které vám pomůžou přizpůsobit webové uživatelské rozhraní v akcelerátoru řešení vzdáleného monitorování.
 
-Nyní jste definovali stránku, dalším krokem je [přidat vlastní službu vzdáleného monitorování řešení akcelerátoru uživatelské rozhraní](iot-accelerators-remote-monitoring-customize-service.md) , která načte data se mají zobrazit v uživatelském rozhraní.
+Teď jste definovali stránku. dalším krokem je [Přidání vlastní služby do webového uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-customize-service.md) , které načte data, která se mají zobrazit v uživatelském rozhraní.
 
 Další koncepční informace o akcelerátoru řešení vzdáleného monitorování najdete v tématu [architektura vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md).

@@ -1,5 +1,5 @@
 ---
-title: Jak používat Azure Service Bus fronty pomocí Java | Microsoft Docs
+title: Použití Azure Service Bus front s Java
 description: Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsané v jazyce Java.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: a7e6e86be8b6fc901d9637c85794cdfe1f744fd4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.custom: seo-java-july2019
+ms.openlocfilehash: 4075ceae6c40a6be8ee2b9f6580a57fafb96e17e
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360804"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663423"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Jak používat Service Bus fronty pomocí Java
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -34,12 +35,12 @@ V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpr
     1. Přečtěte si rychlý **přehled** Service Busch **front**. 
     2. Vytvořte **obor názvů**Service Bus. 
     3. Získá **připojovací řetězec**.
-    4. Vytvořte frontu Service Bus.
+    4. Vytvořte frontuService Bus.
 3. Nainstalujte [sadu Azure SDK pro jazyk Java][Azure SDK for Java]. 
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití Service Bus
-Ujistěte se, že máte nainstalovanou [sadu Azure SDK pro jazyk Java][Azure SDK for Java] before building this sample. If you are using Eclipse, you can install the [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] , která obsahuje sadu Azure SDK pro jazyk Java. Pak můžete přidat **knihovny Microsoft Azure pro jazyk Java** do projektu:
+Před vytvořením této ukázky se ujistěte, že máte nainstalovanou [sadu Azure SDK pro jazyk Java][Azure SDK for Java] . Pokud používáte zatmění, můžete nainstalovat [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] , který obsahuje sadu Azure SDK pro jazyk Java. Pak můžete přidat **knihovny Microsoft Azure pro jazyk Java** do projektu:
 
 ![Snímek obrazovky s kartou knihovny, kde můžete přidat knihovny](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
 

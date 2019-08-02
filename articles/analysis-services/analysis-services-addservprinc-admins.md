@@ -1,52 +1,52 @@
 ---
-title: Přidání instančního objektu k roli správce serveru Azure Analysis Services | Dokumentace Microsoftu
-description: Zjistěte, jak přidat do role správce serveru instanční objekt služby automation
+title: Přidání instančního objektu do role správce serveru Azure Analysis Services | Microsoft Docs
+description: Naučte se přidat instanční objekt služby Automation do role správce serveru.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 701be795ca217c4a2dc5a7dbaa3a3717d16c85bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8fbbdbd647aa3d733a26ceaf72629058ae3a274
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61024596"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619268"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Přidání instančního objektu k roli správce serveru 
 
- K automatizaci bezobslužné úlohy prostředí PowerShell, musí mít instanční objekt služby **správce serveru** oprávnění na serveru Analysis Services, který je spravován. Tento článek popisuje postup přidání hlavního názvu služby do role správce serveru na server služby Azure jako.
+ Aby bylo možné automatizovat bezobslužné úlohy PowerShellu, instanční objekt musí mít oprávnění **Správce serveru** na spravovaném serveru Analysis Services. Tento článek popisuje, jak přidat instanční objekt do role Správci serveru na serveru Azure jako.
 
-## <a name="before-you-begin"></a>Než začnete
-Před dokončením tohoto úkolu, musí mít instanční objekt služby v Azure Active Directory.
+## <a name="before-you-begin"></a>Před zahájením
+Před dokončením této úlohy musíte mít v Azure Active Directory zaregistrovaný instanční objekt.
 
-[Vytvoření instančního objektu – Azure portal](../active-directory/develop/howto-create-service-principal-portal.md)   
+[Vytvoření instančního objektu – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Vytvoření instančního objektu – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
-Tento úkol provést, musíte mít [správce serveru](analysis-services-server-admins.md) oprávnění na serveru jako Azure. 
+K dokončení této úlohy musíte mít oprávnění [Správce serveru](analysis-services-server-admins.md) na serveru Azure as. 
 
-## <a name="add-service-principal-to-server-administrators-role"></a>Přidání instančního objektu k roli správce serveru
+## <a name="add-service-principal-to-server-administrators-role"></a>Přidání instančního objektu k roli správců serveru
 
-1. V aplikaci SSMS připojení k serveru Azure AS.
-2. V **vlastnosti serveru** > **zabezpečení**, klikněte na tlačítko **přidat**.
-3. V **vyberte uživatele nebo skupiny**, vyhledejte registrované aplikace podle názvu, vyberte a klikněte na **přidat**.
+1. V SSMS se připojte k Azure AS serveru.
+2. V nabídce**zabezpečení** **vlastností** > serveru klikněte na **Přidat**.
+3. V nabídce **Vyberte uživatele nebo skupinu**vyhledejte registrovanou aplikaci podle názvu, vyberte a pak klikněte na **Přidat**.
 
-    ![Vyhledejte účet instančního objektu](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
+    ![Hledat hlavní účet služby](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
 
-4. Ověřte ID objektu zabezpečení účtu služby a potom klikněte na **OK**.
+4. Ověřte ID účtu zabezpečení služby a pak klikněte na **OK**.
     
-    ![Vyhledejte účet instančního objektu](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
+    ![Hledat hlavní účet služby](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
 
 > [!NOTE]
-> Pro operace serveru pomocí rutin prostředí Azure PowerShell, spuštěný Plánovač instančního objektu služby musí také patřit do **vlastníka** role pro prostředek v [Azure Role-Based řízení přístupu (RBAC)](../role-based-access-control/overview.md). 
+> U operací se serverem, které používají rutiny Azure PowerShell, musí instanční objekt, který spouští Scheduler, patřit taky do role **vlastníka** pro prostředek v [Access Control na základě role (RBAC) založené na rolích Azure](../role-based-access-control/overview.md). 
 
 ## <a name="related-information"></a>Související informace
 
-* [Stáhnout modul prostředí PowerShell pro Server SQL](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [Stažení aplikace SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [Stáhnout SQL Server modul PowerShellu](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
+* [Stáhnout SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
 
 

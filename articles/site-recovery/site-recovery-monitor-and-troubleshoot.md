@@ -1,197 +1,184 @@
 ---
-title: Monitorování Azure Site Recovery | Dokumentace Microsoftu
-description: Monitorování a řešení problémů replikace Azure Site Recovery a operací pomocí portálu
+title: Azure Site Recovery monitorování | Microsoft Docs
+description: Monitorování a řešení potíží s Azure Site Recoverymi problémy a operacemi replikace pomocí portálu
 author: raynew
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 07/30/2019
 ms.author: raynew
-ms.openlocfilehash: 5a659da4bcc86544c31d7a789779253a0f571f34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa9d776df50306ab1705426c923413b5a5d545a5
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497552"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717355"
 ---
-# <a name="monitor-site-recovery"></a>Monitorování Site Recovery
+# <a name="monitor-site-recovery"></a>Site Recovery monitorování
 
-V tomto článku se dozvíte, jak používat Azure Site Recovery v sestavených funkce monitorování pro monitorování a řešení potíží. 
+V tomto článku se dozvíte, jak monitorovat [Site Recovery](site-recovery-overview.md)Azure pomocí Site Recovery sestaveného monitorování.  Můžete monitorovat:
 
-## <a name="use-the-dashboard"></a>Použití řídicího panelu
+- Stav počítačů replikovaných pomocí Site Recovery
+- Zkontrolujte stav převzetí služeb při selhání u počítačů.
+- Problémy a chyby ovlivňující konfiguraci a replikaci
+- Komponenty infrastruktury, jako jsou například místní servery.
 
-1. V trezoru, klikněte na tlačítko **přehled** otevřete řídicí panel Site Recovery. Existují stránky řídicího panelu pro Site Recovery a Backup, a můžete mezi nimi přepínat.
+
+## <a name="before-you-start"></a>Než začnete
+
+Než začnete, můžete si projít [běžné otázky týkající se monitorování](monitoring-common-questions.md) .
+
+## <a name="monitor-in-the-dashboard"></a>Monitorování na řídicím panelu
+
+1. V trezoru klikněte na **Přehled**. Řídicí panel Recovery Services slučuje všechny informace o monitorování pro trezor v jednom umístění. Existují stránky pro Site Recovery i Azure Backup službu a můžete mezi nimi přepínat.
 
     ![Řídicí panel Site Recovery](./media/site-recovery-monitor-and-troubleshoot/dashboard.png)
 
-2.  Řídicí panel slučuje všechny informace o monitorování pro úložiště na jednom místě. Z řídicího panelu můžete procházet hierarchii do různých oblastí. 
+2. Z řídicího panelu přejděte k podrobnostem do různých oblastí. 
 
     ![Řídicí panel Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png).
 
-3. Na **replikované položky**, klikněte na tlačítko **zobrazení všech** zobrazíte všechny servery v trezoru.
-4. K podrobnostem klikněte na podrobnosti o stavu v každé části. V **zobrazení infrastruktury**, informacím o monitorování můžete seřadit podle typu počítače, které replikujete.
+3. V části **replikované položky**klikněte na **Zobrazit vše** , aby se zobrazily všechny servery v trezoru.
+4. Kliknutím na podrobnosti o stavu v jednotlivých částech přejdete k podrobnostem.
+5. V **zobrazení infrastruktura**můžete seřadit informace o monitorování podle typu počítačů, které chcete replikovat.
 
-## <a name="monitor-replicated-items"></a>Sledovat replikované položky
+## <a name="monitor-replicated-items"></a>Monitorovat replikované položky
 
-V části replikované položky zobrazuje stav všech počítačů, které mají replikace povolená v trezoru.
-
-**Stav** | **Podrobnosti**
---- | ---
-V pořádku | Replikace probíhá normálně. Byly zjištěny žádné chyby nebo upozornění příznaky.
-Upozornění | Zjišťují se jeden nebo více upozornění příznaky, které může mít vliv na replikaci.
-Kritická | Jeden nebo více příznaků chyba důležité replikace byly zjištěny.<br/><br/> Příznaky tyto chyby jsou obvykle indikátory, že je replikace zablokuje nebo nepostupuje tak rychle, jak frekvence změny dat.
-Neuvedeno | Servery, které nejsou aktuálně očekává se replikovat. To může obsahovat počítače, které mají selhání.
-
-## <a name="monitor-test-failovers"></a>Monitor testu převzetí služeb při selhání
-
-Zobrazí se stav převzetí služeb při selhání testu pro počítače v trezoru.
-
-- Doporučujeme spustit testovací převzetí služeb na replikované počítače alespoň jednou za šest měsíců. Je způsob, jak zkontrolovat, že převzetí služeb při selhání funguje podle očekávání pravidla bez narušení běžného vaše produkční prostředí. 
-- Testovací převzetí služeb se považuje za úspěšná, až po převzetí služeb při selhání a post-převzetí služeb při selhání vyčištění byly úspěšně dokončeny.
+V části **replikované položky**Monitorujte stav všech počítačů v trezoru, které mají povolenou replikaci.
 
 **Stav** | **Podrobnosti**
 --- | ---
-Doporučuje se test | Počítače, u kterých nedošlo testovací převzetí služeb při selhání, protože byla povolena ochrana.
-Proběhlo úspěšně | Počítače s nebo více úspěšné testovací převzetí služeb při selhání.
-Neuvedeno | Počítače, které nejsou momentálně nárok testovací převzetí služeb při selhání. Počítače, které při selhání, třeba mít počáteční replikaci a testovací převzetí služeb při selhání/převzetí probíhá.
+V pořádku | Replikace probíhá normálně. Nezjistily se žádné chybové příznaky ani upozornění.
+Upozornění | Zjistil se jeden nebo víc příznaků upozornění, které by mohly mít vliv na replikaci.
+Kritická | Zjistil se minimálně jeden příznak kritické chyby replikace.<br/><br/> Tyto chybové příznaky jsou obvykle indikátory, které se zablokují replikací, nebo nepostupují stejně rychle jako rychlost změny dat.
+Nelze použít | Servery, které se v současné době neočekávají pro replikaci. To může zahrnovat počítače, u kterých došlo k převzetí služeb při selhání.
 
-## <a name="monitor-configuration-issues"></a>Problémy s konfigurací monitorování
+## <a name="monitor-test-failovers"></a>Monitorování testovacího převzetí služeb při selhání
 
-**Problémy s konfigurací** část obsahuje seznam problémů, které může mít vliv na schopnost úspěšně převzetí služeb při selhání.
+V případě **úspěchu testu převzetí služeb při selhání**Sledujte stav převzetí služeb při selhání u počítačů v trezoru.
 
-- Problémy s konfigurací (s výjimkou dostupnost aktualizace softwaru), se zjišťují operací pravidelné ověřování, který ve výchozím nastavení spustí každých 12 hodin. Můžete vynutit operaci program pro ověření spustit okamžitě kliknutím na ikonu aktualizace vedle možnosti **problémy s konfigurací** nadpis oddílu.
-- Kliknutím na odkazy zobrazíte další podrobnosti. Problémy s vliv na konkrétní počítače, klikněte na tlačítko **vyžaduje pozornost** v **cílové konfigurace** sloupce. Podrobnosti zahrnují doporučeními k nápravě.
+- Doporučujeme spustit testovací převzetí služeb při selhání na replikovaných počítačích nejméně jednou za šest měsíců. Je to způsob, jak ověřit, že převzetí služeb při selhání funguje podle očekávání, aniž by došlo k přerušení produkčního prostředí. 
+- Testovací převzetí služeb při selhání se považuje za úspěšné až po úspěšném dokončení a vyčištění po převzetí služeb při selhání.
 
 **Stav** | **Podrobnosti**
 --- | ---
-Chybí konfigurace | Chybí nezbytná nastavení, jako je například síť pro obnovení nebo skupinu prostředků.
-Chybějící prostředky | Zadaný prostředek nebyl nalezen nebo není k dispozici v rámci předplatného. Například prostředek se odstranil nebo migroval. Monitorovaných prostředků zahrnuté cílovou skupinu prostředků, cílové virtuální sítě nebo podsítě, účtu úložiště protokolu nebo cíle, cílová skupina dostupnosti, cílová IP adresa.
-Kvóta předplatného |  Zůstatek kvóty prostředků k dispozici předplatné se porovná zůstatek potřebné k převzetí služeb při selhání všech počítačů v trezoru.<br/><br/> Pokud nejsou k dispozici dostatek prostředků, se použije v hlášení zůstatku Nedostatečná kvóta.<br/><br/> Kvóty monitorování pro počet jader virtuálního počítače, počet virtuálních počítačů řady jader, počet síťových rozhraní (NIC) karty.
-Aktualizace softwaru | Dostupnost nové aktualizace softwaru a informace o u nichž vyprší platnost verze softwaru.
+Doporučuje se test | Počítače, u kterých došlo k testovacímu převzetí služeb při selhání, protože byla povolena ochrana.
+Úspěšně provedeno | Počítače s nebo více úspěšnými testovacími převzetím služeb při selhání.
+Nelze použít | Počítače, které aktuálně nejsou vhodné pro testovací převzetí služeb při selhání. Například počítače, u kterých došlo k převzetí služeb při selhání, mají počáteční replikaci, převzetí služeb při selhání nebo převzetí služeb při selhání.
+
+## <a name="monitor-configuration-issues"></a>Sledování problémů s konfigurací
+
+V případě **problémů s konfigurací**monitorujte všechny problémy, které by mohly mít vliv na úspěšnou převzetí služeb při selhání.
+
+- Problémy s konfigurací (s výjimkou dostupnosti aktualizace softwaru) se zjišťují pomocí pravidelné operace ověřování, která se ve výchozím nastavení spouští každých 12 hodin. Můžete vynutit, aby operace ověřování běžela okamžitě kliknutím na ikonu aktualizace vedle záhlaví oddílu **problémy s konfigurací** .
+- Kliknutím na odkazy zobrazíte další podrobnosti. U problémů, které mají vliv na konkrétní počítače, klikněte ve sloupci **cílové konfigurace** na možnost **vyžaduje pozornost** . Podrobnosti zahrnují doporučení pro nápravu.
+
+**Stav** | **Podrobnosti**
+--- | ---
+Chybějící konfigurace | Chybí nezbytné nastavení, například síť pro obnovení nebo skupina prostředků.
+Chybějící prostředky | Zadaný prostředek se nepovedlo najít nebo není v předplatném dostupný. Prostředek se například odstranil nebo migrovali. Monitorované prostředky zahrnovaly cílovou skupinu prostředků, cílovou virtuální síť, podsíť, protokol/cílový účet úložiště, cílovou skupinu dostupnosti, cílovou IP adresu.
+Kvóta předplatného |  Dostupný zůstatek kvóty prostředků předplatného se porovnává s zůstatkem, který je potřeba pro převzetí služeb při selhání u všech počítačů v trezoru.<br/><br/> Pokud není dostatek prostředků, nahlásí se nedostatečný zůstatek kvóty.<br/><br/> Kvóty monitorují počet jader virtuálních počítačů, počet jader virtuálních počítačů a počet síťových rozhraní (NIC).
+Aktualizace softwaru | Dostupnost nových aktualizací softwaru a informace o vypršení platnosti verzí softwaru.
 
 
-## <a name="monitoring-errors"></a>Sledování chyb 
-**Souhrn chyb** část ukazuje příznaky aktuálně aktivní chyby, které může mít vliv na replikaci serverů do trezoru a počet ovlivněných počítačů.
+## <a name="monitor-errors"></a>Sledování chyb
 
-- Na začátku části jsou uvedeny chyby, vliv na místní infrastrukturu komponenty. Například bez příjem prezenčního signálu od zprostředkovatele Azure Site Recovery na místní konfigurační server, VMM server nebo hostitele Hyper-V.
-- Dále replikace chyba příznaky ovlivňuje replikované servery jsou uvedeny.
-- Položky tabulky jsou seřazeny v sestupném pořadí podle závažnosti chyby a poté v sestupném pořadí počet ovlivněných počítačů.
-- Počet ovlivněných serveru je užitečný způsob, jak pochopit, jestli jeden základní problém může mít vliv na několik počítačů. Například poruchu sítě může případně ovlivnit všechny počítače, které se replikují do Azure. 
-- Na jednom serveru, může dojít k více chybám replikace. V tomto případě každý příznakem chyba počítá tento server v seznamu svých ovlivněné serverů. Jakmile je problém vyřešen, zlepšit parametry replikace a je chyba odstraněna z počítače.
+V **souhrnu chyb**monitorujte aktuálně aktivní příznaky chyb, které by mohly mít vliv na replikaci serverů v trezoru, a monitoruje počet ovlivněných počítačů.
 
-## <a name="monitor-the-infrastructure"></a>Monitorování infrastruktury.
+- Zobrazí se chyby, které mají vliv na místní součásti infrastruktury, na začátek oddílu. Například nepříjem prezenčního signálu od poskytovatele Azure Site Recovery na místním konfiguračním serveru nebo hostiteli Hyper-V.
+- V dalším kroku se zobrazí chybové příznaky při replikaci, které by ovlivnily replikované servery.
+- Položky v tabulce jsou seřazené podle klesajícího pořadí závažnosti chyby a pak podle zkrácení pořadí podle počtu ovlivněných počítačů.
+- Počet ovlivněných serverů je užitečný způsob, jak pochopit, zda jeden ze základních problémů může ovlivnit více počítačů. Například síťový porucha může potenciálně ovlivnit všechny počítače, které se replikují do Azure. 
+- Na jednom serveru může dojít k několika chybám replikace. V takovém případě každý chybový příznak počítá tento server v seznamu ovlivněných serverů. Po vyřešení problému se vylepšit parametry replikace a z počítače se vymaže chyba.
 
-**Zobrazení infrastruktury** zobrazuje součásti infrastruktury používané v replikaci a stavu připojení mezi servery a služby Azure.
+## <a name="monitor-the-infrastructure"></a>Monitorujte infrastrukturu.
 
-- Zelená čára označuje, že připojení je v pořádku.
-- Červená čára s ikonou překryté chyba značící existenci jedné nebo více příznaků chyby tohoto neovlivní připojení.
--  Umístěte ukazatel myši nad ikonu chybě a zobrazí se chyba a počet ovlivněných entit. Klikněte na ikonu pro filtrovaný seznam ovlivněných entity.
+V **zobrazení infrastruktura**Sledujte komponenty infrastruktury zapojené do replikace a stav připojení mezi servery a službami Azure.
+
+- Zelená čára indikuje, že je připojení v pořádku.
+- Červená čára s chybou překrytí označuje existenci jednoho nebo více chybových symptomů, které mají vliv na připojení.
+-  Pokud chcete zobrazit chybu a počet ovlivněných entit, najeďte ukazatelem myši na ikonu chyby. Klikněte na ikonu filtrovaného seznamu ovlivněných entit.
 
     ![Zobrazení infrastruktury Site Recovery (trezor)](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
 
-## <a name="tips-for-monitoring-the-infrastructure"></a>Tipy pro monitorování infrastruktury
+### <a name="tips-for-monitoring-the-infrastructure"></a>Tipy pro monitorování infrastruktury
 
-- Ujistěte se, že místní komponenty infrastruktury (konfigurační server, procesových serverů, servery VMM, hostitele Hyper-V, počítačů VMware) běží nejnovější verze zprostředkovatele služby Site Recovery a/nebo agenty.
-- V zobrazení infrastruktury používat všechny funkce, by měl běžet [kumulativní 22](https://support.microsoft.com/help/4072852) pro tyto součásti.
-- Pokud chcete použít zobrazení infrastruktury, vyberte scénář odpovídající replikace ve vašem prostředí. V zobrazení pro další podrobnosti můžete procházet hierarchii. Následující tabulka uvádí, jaké scénáře představují.
+- Ujistěte se, že místní součásti infrastruktury (konfigurační server, procesové servery, servery VMM, hostitelé Hyper-V, počítače VMware) používají nejnovější verze poskytovatele Site Recovery a/nebo agentů.
+- Pokud chcete používat všechny funkce v zobrazení infrastruktury, měli byste pro tyto součásti používat [kumulativní aktualizaci 22](https://support.microsoft.com/help/4072852) .
+- Chcete-li použít zobrazení infrastruktury, vyberte příslušný scénář replikace ve vašem prostředí. Další podrobnosti najdete v zobrazení podrobností. V následující tabulce jsou uvedeny scénáře, které jsou zastoupeny.
 
     **Scénář** | **Stav**  | **Zobrazit dostupné?**
     --- |--- | ---
     **Replikace mezi místními lokalitami** | Všechny stavy | Ne 
-    **Replikace virtuálních počítačů Azure mezi oblastmi Azure**  | Probíhá replikace povolena/počáteční replikace | Ano
-    **Replikace virtuálních počítačů Azure mezi oblastmi Azure** | Převzetí služeb při selhání / navrácení služeb po obnovení | Ne   
-    **Replikace VMware do Azure** | Probíhá replikace povolena/počáteční replikace | Ano     
-    **Replikace VMware do Azure** | Nepovedlo se nezdařilo nebo přes zadní | Ne      
-    **Replikace Hyper-V do Azure** | Nepovedlo se nezdařilo nebo přes zadní | Ne
+    **Replikace virtuálních počítačů Azure mezi oblastmi Azure**  | Replikace je povolená/počáteční replikace probíhá. | Ano
+    **Replikace virtuálních počítačů Azure mezi oblastmi Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | Ne   
+    **Replikace VMware do Azure** | Replikace je povolená/počáteční replikace probíhá. | Ano     
+    **Replikace VMware do Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | Ne      
+    **Replikace Hyper-V do Azure** | Převzetí služeb při selhání/navrácení služeb po obnovení | Ne
 
-- Zobrazení infrastruktury pro jeden replikujícím počítači, v nabídce trezoru klikněte na tlačítko **replikované položky**a vyberte server.  
-
-### <a name="common-questions"></a>Časté dotazy
+- Pokud chcete zobrazit zobrazení infrastruktury pro jeden počítač pro replikaci, v nabídce trezoru klikněte na **replikované položky**a vyberte server.  
 
 
-**Proč se zobrazí počet virtuálních počítačů v zobrazení infrastruktury trezoru se liší od celkového počtu v replikované položky?**
-
-Zobrazení infrastruktury úložiště je určeno scénáře replikace. Pouze počítače v aktuálně vybraných replikace scénáři jsou součástí počet zobrazení. Počítáme jenom virtuální počítače, které jsou nakonfigurované pro replikaci do Azure. Došlo k převzetí služeb počítače nebo počítače replikovat zpět do místní lokality se nepočítají v zobrazení.
-
-**Proč je počet replikovaných položek zobrazených v zásuvce Essentials liší od celkový počet replikovaných položek na řídicím panelu?**
-
-Pouze počítače, pro které počáteční replikace dokončí, které jsou zahrnuty v počet uvedené v zásuvce Essentials. Na replikované položky. obsahuje všechny počítače v trezoru, včetně těch, které počáteční replikace probíhá.
 
 
-## <a name="monitor-recovery-plans"></a>Plány obnovení monitorování
+## <a name="monitor-recovery-plans"></a>Monitorování plánů obnovení
 
-V **plány obnovení části** můžete zkontrolovat počet plánů, vytvořit nové plány a upravovat stávající.  
+V části **plány obnovení**sledujte počet plánů, vytvářejte nové plány a upravujte stávající.  
 
 ## <a name="monitor-jobs"></a>Monitorování úloh
 
-**Úlohy** části odráží stav operace Site Recovery.
+V části **úlohy**Sledujte stav operací Site Recovery.
 
-- Většinu operací ve službě Azure Site Recovery se provedl asynchronně, úlohou sledování se vytváří a používá ke sledování průběhu operace. 
-- Objekt úlohy má všechny informace, které potřebujete ke sledování stavu a průběhu zpracování operace. 
+- Většina operací v Azure Site Recovery se provádí asynchronně, přičemž probíhá vytváření úlohy sledování a používá se ke sledování průběhu operace. 
+- Objekt úlohy obsahuje všechny informace, které potřebujete ke sledování stavu a průběh operace. 
 
-Monitorování úloh následujícím způsobem:
+Sledujte úlohy následujícím způsobem:
 
-1. Na řídicím panelu > **úlohy** oddílu, můžete prohlédnout souhrnné informace o úlohy, které byly dokončeny, jsou v průběhu nebo čekání na vstup, za posledních 24 hodin. Kliknutím na jakýkoli stav zobrazíte další informace o příslušné úlohy.
-2. Klikněte na tlačítko **zobrazit všechny** zobrazíte všechny úlohy za posledních 24 hodin.
+1. V části **úlohy** >ch řídicích panelů uvidíte souhrn dokončených úloh, probíhajících operací nebo čekání na vstup za posledních 24 hodin. Můžete kliknout na libovolný stav a získat další informace o relevantních úlohách.
+2. Kliknutím na **Zobrazit vše** zobrazíte všechny úlohy za posledních 24 hodin.
 
     > [!NOTE]
-    > Informace o úloze můžete dostat taky z nabídky trezoru > **úlohy Site Recovery**. 
+    > K informacím o úloze můžete získat přístup také v nabídce trezoru > **úlohy Site Recovery**. 
 
-2. V **úlohy Site Recovery** zobrazí se seznam, seznam úloh. V horní nabídce, které můžete získat podrobnosti o chybě pro konkrétní úlohy, můžete filtrovat seznam úloh na základě určitých kritérií a exportovat vybrané podrobnosti úlohy do Excelu.
-3. Podrobnosti o úloze můžete zobrazit kliknutím. 
+2. V seznamu **úloh Site Recovery** se zobrazí seznam úloh. V horní nabídce můžete získat podrobnosti o chybě pro konkrétní úlohy, filtrovat seznam úloh na základě určitých kritérií a exportovat podrobnosti vybrané úlohy do Excelu.
+3. Kliknutím můžete přejít na úlohu. 
 
 ## <a name="monitor-virtual-machines"></a>Monitorování virtuálních počítačů
 
-Přidání řídicího panelu můžete sledovat počítače na stránce virtuální počítače. 
+V části **replikované položky**Získejte seznam replikovaných počítačů. 
+    ![Zobrazení seznamu replikovaných položek Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
 
-1. V trezoru, klikněte na tlačítko **replikované položky** zobrazíte seznam replikované počítače.  Alternativně můžete získat na filtrovaný seznam chráněných položek kliknutím na některý z oboru klávesové zkratky na stránce řídicího panelu.
-
-    ![Site Recovery replikuje zobrazení seznamu položek](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
-
-2. Na **replikované položky** stránky, můžete zobrazit a filtrovat informace. V nabídce Akce v horní části můžete provádět akce pro konkrétní počítač, včetně systémem testovací převzetí služeb při selhání nebo zobrazení konkrétní chyby.
-3. Klikněte na tlačítko **sloupce** a zobrazit další sloupce, třeba když chcete zobrazit cíl bodu obnovení, cílových problémy s konfigurací a chyby replikace.
-4. Klikněte na tlačítko **filtr** Chcete-li zobrazit informace v závislosti na konkrétní parametry, jako je například stav replikace nebo zásady konkrétní replikace.
-5. Klikněte pravým tlačítkem na počítač k zahájení operace, jako je test převzetí služeb při selhání, nebo pokud chcete zobrazit podrobnosti o chybě s ním spojená.
-6. Klikněte na počítač přejít na další podrobnosti pro něj. Podrobnosti zahrnují:
+2. Můžete zobrazit a filtrovat informace. V nabídce Akce v horní části můžete provádět akce pro konkrétní počítač, včetně spuštění testovacího převzetí služeb při selhání nebo zobrazení specifických chyb.
+3. Kliknutím na **sloupce** zobrazíte další sloupce, například chcete-li zobrazit RPO, problémy s konfigurací cíle a chyby replikace.
+4. Kliknutím na **Filtr** zobrazíte informace na základě konkrétních parametrů, jako je třeba stav replikace nebo konkrétní zásada replikace.
+5. Klikněte pravým tlačítkem na počítač a inicializujte operace, jako je třeba testovací převzetí služeb při selhání, nebo zobrazte konkrétní podrobnosti o chybách, které jsou k němu přidružené.
+6. Kliknutím na počítač můžete přejít k podrobnostem. Podrobnosti zahrnují:
    - **Informace o replikaci**: Aktuální stav a stav počítače.
-   - **Cíl bodu obnovení** (bodu obnovení rpo): Aktuální cíl bodu obnovení pro virtuální počítač a čas, kdy se naposledy spočítá cíle bodu obnovení.
-   - **Body obnovení**: Nejnovější dostupné body obnovení pro počítač.
-   - **Připravenost na převzetí služeb při selhání**: Určuje, zda testovací převzetí služeb spuštěné v počítači agenta verze, která běží na počítači (pro počítače se službou Mobility) a případných problémů s konfigurací.
-   - **Chyby**: Seznam aktuálně pozorovaný na počítač a možných příčin/příznaky Chyba replikace.
-   - **Události**: Chronologický seznam posledních událostí vliv na tento počítač. Podrobnosti o chybě zobrazuje aktuálně pozorovatelných chyba projevuje, zatímco události je Historický záznam problémů, které mají vliv počítače.
-   - **Zobrazení infrastruktury**: Zobrazuje stav infrastruktury pro scénář, když počítače se replikují do Azure.
+   - **Cíl** bodu obnovení (cíl bodu obnovení): Aktuální RPO pro virtuální počítač a čas, kdy byl naposledy vypočítán cíl RPO.
+   - **Body obnovení**: Nejnovější dostupné body obnovení pro daný počítač.
+   - **Připravenost na převzetí služeb při selhání**: Označuje, jestli se pro tento počítač spustilo testovací převzetí služeb při selhání, verze agenta běžícího na počítači (pro počítače se službou mobility) a všechny problémy s konfigurací.
+   - **Chyby**: Seznam příznaků chyb replikace aktuálně zjištěných na počítači a možných příčin/akcí.
+   - **Události**: Chronologický seznam nedávných událostí, které mají vliv na daný počítač. Podrobnosti o chybě zobrazují aktuálně pozorovatelící chybové příznaky, zatímco události jsou historické záznamy o problémech, které mají vliv na daný počítač.
+   - **Zobrazení infrastruktury**: Zobrazuje stav infrastruktury pro scénář při replikaci počítačů do Azure.
 
-     ![Site Recovery replikované položky. Podrobnosti o/overview](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
-
-
-### <a name="common-questions"></a>Časté dotazy
-
-**Čím se liší od nejnovější dostupný bod obnovení cíle bodu obnovení**
-
-
-- Site Recovery používá asynchronní vícefázový proces Pokud chcete počítače replikovat do Azure.
-- V kroku předposlední replikace nedávné změny v počítači, spolu s metadat, zkopírovány do účtu úložiště mezipaměti nebo protokolu.
-- Tyto změny, společně s značku k identifikaci bod zotavit se zapisují do účtu úložiště v cílové oblasti.
--  Site Recovery nyní mohou generovat obnovitelné bod pro virtuální počítač.
-- V tomto okamžiku cíle bodu obnovení byla splněna změny doposud nahráli do účtu úložiště. Jinými slovy, se počítač cíle bodu obnovení v tomto okamžiku je rovna množství času uplynulo od časové razítko odpovídající obnovitelné bodu.
-- Nyní Site Recovery vybere odesílaná data z účtu úložiště a platí pro repliky disky vytvořené pro počítač.
-- Site Recovery pak vytvoří bod obnovení a zpřístupňuje tohoto bodu obnovení při převzetí služeb při selhání. Proto nejnovější dostupný bod obnovení Určuje časové razítko odpovídající nejnovějším dostupným bodem obnovení, které již byly zpracovány a použity na repliku disky.
-
-> [!NOTE]
-> Nesprávné systémového času na replikaci zdrojového počítače nebo na místní servery infrastruktury se zkosení vypočtená hodnota cíle bodu obnovení. Pro správné cíl bodu obnovení vytváření sestav, zajistěte, aby u všech serverů a počítačů přesný systémových hodin. 
+     ![Podrobnosti/přehled replikované položky Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 
 ## <a name="subscribe-to-email-notifications"></a>Přihlášení k odběru e-mailových oznámení
 
-Můžete se přihlásit k odběru e-mailová oznámení pro tyto důležité události:
+Můžete se přihlásit k odběru e-mailových oznámení pro tyto kritické události:
  
-- Kritický stav pro replikované počítače.
-- Žádné připojení mezi místní infrastrukturou komponenty a služby Site Recovery. Připojení mezi Site Recovery a místní servery v trezoru zaregistrované zjistí použití mechanismu prezenčního signálu.
+- Kritický stav pro replikovaný počítač.
+- Mezi místními součástmi infrastruktury a Site Recovery službou nejsou žádné připojení. Připojení mezi Site Recovery a místními servery zaregistrovanými v trezoru se detekuje pomocí mechanismu prezenčního signálu.
 - Selhání převzetí služeb při selhání.
 
-Přihlášení odběru následujícím způsobem:
+Přihlaste se k odběru následujícím způsobem:
 
-V trezoru > **monitorování** klikněte na tlačítko **událostí ASR**.
-1. Klikněte na tlačítko **e-mailová oznámení**.
-1. V **e-mailová oznámení**, zapněte oznámení a zadejte, kdo k odeslání. Můžete odeslat na všichni správci předplatného pošle oznámení a volitelně konkrétní e-mailové adresy.
+V části Trezor > **monitoring** klikněte na **Site Recovery události**.
+1. Klikněte na **e-mailová oznámení**.
+1. V **e-mailových oznámeních**zapněte oznámení a určete, komu se má odeslat. Můžete odeslat oznámení všem správcům předplatného a volitelně konkrétní e-mailové adresy.
 
     ![E-mailová oznámení](./media/site-recovery-monitor-and-troubleshoot/email.png)
+
+## <a name="next-steps"></a>Další postup
+
+[Přečtěte si o](monitor-log-analytics.md) Site Recovery monitorování pomocí Azure monitor.

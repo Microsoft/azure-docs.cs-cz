@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 55def52d248babd439227cdcd4170c0a3ca91bb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 476bdd50a56b953585a8a4e9cea05975c9922e0f
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569826"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662958"
 ---
-# <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Vyšetřování incidentů a výstrah v Azure Security Center (Preview)
-Tento dokument vám pomůže používat funkci šetření v Azure Security Center k vyšetřování výstrah a incidentů zabezpečení.
+# <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Vyšetřování incidentů a výstrah v Azure Security Center (vyřazeno)
+Tento dokument vám pomůže s používáním funkce šetření (Preview) v Azure Security Center k prozkoumání incidentů a výstrah zabezpečení.
 
 > [!NOTE]
-> Možnosti pro zkoumání výstrah a incidentů služby se vyřadí dne 31. května 2019. Další informace a alternativní služby najdete v tématu [vyřazení Security Center nabízí (červenec 2019)](security-center-features-retirement-july2019.md#menu_investigate).
+> Prostředí pro šetření výstrah a incidentů (Preview) bylo vyřazeno od 31. července 2019. Další informace a alternativní služby najdete v tématu [vyřazení funkcí Security Center (červenec 2019)](security-center-features-retirement-july2019.md#menu_investigate).
 
 ## <a name="what-is-investigation-in-security-center"></a>Co je šetření ve službě Security Center?
 Funkce šetření ve službě Security Center umožňuje třídit, porozumět rozsahu a vysledovat původní příčinu potenciálního [incidentu zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-incident).
@@ -34,8 +34,8 @@ Cílem je zjednodušit proces šetření propojením všech entit ([výstrah zab
 
 
 > [!NOTE]
-> * [Vlastní upozornění](security-center-custom-alert.md) nepodporuje funkci šetření Security Center.
-> * Šetření je podporována pouze pro výstrahy na základě dat shromážděných ze serverů Windows.
+> * Ve vyšetřovací funkci Security Center se nepodporují [vlastní výstrahy](security-center-custom-alert.md) .
+> * Šetření se podporuje jenom pro výstrahy založené na datech shromážděných ze serverů Windows.
 
 
 ## <a name="how-investigation-works"></a>Jak šetření funguje?
@@ -65,11 +65,11 @@ Karta **Entity** zobrazuje všechny související entity seskupené podle typu. 
 
 ![Entity](./media/security-center-investigation/security-center-investigation-fig4.png)
 
-### <a name="search"></a>Search
+### <a name="search"></a>Hledat
 
 Karta **Vyhledávání** uvádí všechny typy protokolů, které jsou pro entitu k dispozici. U každého typu protokolu můžete zobrazit počet dostupných záznamů. Kliknutím na jednotlivé typy protokolů přejdete na obrazovku vyhledávání. Na obrazovce vyhledávání můžete upřesnit vaše hledání a použít různé vyhledávací funkce, například nastavení výstrah. V aktuální verzi je karta Vyhledávání dostupná pouze pro entity uživatelů a počítačů.
 
-![Search](./media/security-center-investigation/security-center-investigation-fig5.png)
+![Hledat](./media/security-center-investigation/security-center-investigation-fig5.png)
 
 ### <a name="exploration"></a>Průzkum
 
@@ -99,7 +99,7 @@ Následující položky se budou zobrazovat bez ohledu na vybraný časový rozs
 
 ## <a name="how-to-perform-an-investigation"></a>Jak se provádí šetření?
 
-S šetřením můžete začít od incidentu zabezpečení nebo výstrahy. Zvolená možnost se bude lišit podle vašich potřeb. Následující kroky slouží k zahájení šetření od výstrahy:
+S šetřením můžete začít od incidentu zabezpečení nebo výstrahy. Zvolená možnost se bude lišit podle vašich potřeb. Následující kroky se používají ke spuštění šetření z výstrahy:
 
 1.  Otevřete řídicí panel **Security Center**.
 2.  Klikněte na **Výstrahy zabezpečení** a vyberte incident, který chcete vyšetřit.
@@ -113,7 +113,7 @@ S šetřením můžete začít od incidentu zabezpečení nebo výstrahy. Zvolen
 
 Z tohoto bodu můžete zkoumat entity, které byly spojeny s tímto incidentem, a o každé z nich zkoumat další podrobnosti.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 V tomto dokumentu jste zjistili, jak používat funkci šetření ve službě Security Center. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.

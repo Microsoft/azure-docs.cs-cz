@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e563d86abe3817e4c77cc0d5c8df928e41563f8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 1654e0a8cd11ac1c7a2f4ef0667d0e99187c2374
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489074"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618314"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Vytvoření a správa katalogu v rámci správy nároků ve službě Azure AD (Preview)
 
@@ -34,7 +34,7 @@ ms.locfileid: "68489074"
 
 Katalog je kontejner prostředků a přístup k balíčkům. Katalog můžete vytvořit v případě, že chcete seskupit související prostředky a přistupovat k balíčkům. Ten vytvoří katalog jako prvního vlastníka katalogu. Vlastník katalogu může přidat další vlastníky katalogu.
 
-**Požadovaná role:** Správce uživatele nebo Tvůrce katalogu
+**Požadovaná role:** Globální správce, Správce uživatelů nebo Tvůrce katalogu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -102,7 +102,7 @@ Prostředky můžete odebrat z katalogu. Prostředek se dá z katalogu odebrat j
 
 Můžete upravit název a popis katalogu. Uživatelé uvidí tyto informace v podrobnostech balíčku přístupu.
 
-**Požadovaná role:** Správce uživatele nebo vlastník katalogu
+**Požadovaná role:** Globální správce, správce uživatele nebo vlastník katalogu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 
@@ -118,7 +118,7 @@ Můžete upravit název a popis katalogu. Uživatelé uvidí tyto informace v po
 
 Katalog můžete odstranit, ale pouze v případě, že nemá žádné balíčky přístupu.
 
-**Požadovaná role:** Správce uživatele nebo vlastník katalogu
+**Požadovaná role:** Globální správce, správce uživatele nebo vlastník katalogu
 
 1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
 

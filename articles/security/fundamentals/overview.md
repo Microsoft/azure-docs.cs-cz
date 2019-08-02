@@ -1,0 +1,399 @@
+---
+title: Seznámení se službou Azure Security | Microsoft Docs
+description: Přečtěte si o zabezpečení Azure, jeho službách a o tom, jak funguje.
+services: security
+documentationcenter: na
+author: UnifyCloud
+manager: barbkess
+editor: TomSh
+ms.assetid: ''
+ms.service: security
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 11/21/2017
+ms.author: TomSh
+ms.openlocfilehash: e269981c97f226ea43c745311238c4578f3d3dd4
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68614950"
+---
+# <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
+## <a name="overview"></a>Přehled
+Víme, že zabezpečení je úloha v cloudu a jak důležité je, že najdete přesné a včasné informace o zabezpečení Azure. Jedním z nejlepších důvodů použití Azure pro vaše aplikace a služby je využití nejrůznějších nástrojů a funkcí zabezpečení. Tyto nástroje a možnosti usnadňují vytváření zabezpečených řešení na zabezpečené platformě Azure. Microsoft Azure poskytuje důvěrnost, integritu a dostupnost zákaznických dat a zároveň umožňuje transparentní zodpovědnost.
+
+Abychom vám pomohli lépe porozumět shromažďování bezpečnostních mechanismů implementovaných v rámci Microsoft Azure z perspektiv zákazníka i od Microsoftu, je tento dokument White Paper, "Úvod do zabezpečení Azure", napsán, aby poskytoval ucelený vzhled. k dispozici je zabezpečení Microsoft Azure.
+
+### <a name="azure-platform"></a>Platforma Azure
+Azure je platforma veřejné cloudové služby, která podporuje širokou škálu operačních systémů, programovacích jazyků, architektur, nástrojů, databází a zařízení. Může spouštět kontejnery Linux s integrací Docker. Vytvářejte aplikace pomocí jazyků JavaScript, Python, .NET, PHP, Java a Node. js; Vytvořte back-endy pro zařízení s iOS, Androidem a Windows.
+
+Veřejné cloudové služby Azure podporují stejné technologie jako miliony vývojářů a odborníků na IT, kteří už využívají a důvěřují jim. Když vytváříte nebo migrujete prostředky IT na, poskytovatele veřejné cloudové služby, kterého se spoléháte na schopnosti této organizace chránit vaše aplikace a data službami a ovládacími prvky, které poskytují ke správě zabezpečení cloudových prostředků.
+
+Infrastruktura Azure je navržená z hlediska aplikací pro hostování milionů zákazníků současně a poskytuje důvěryhodný základ, na kterém podniky můžou splňovat požadavky na zabezpečení.
+
+Kromě toho Azure poskytuje řadu konfigurovatelných možností zabezpečení a možnost je ovládat, abyste mohli přizpůsobit zabezpečení, aby splňovaly jedinečné požadavky nasazení vaší organizace. Tento dokument vám pomůže pochopit, jak vám funkce zabezpečení Azure můžou tyto požadavky splnit.
+
+> [!Note]
+> Hlavním cílem tohoto dokumentu je ovládací prvky, které jsou na zákaznících, které můžete použít k přizpůsobení a zvýšení zabezpečení aplikací a služeb.
+>
+> Poskytneme vám nějaké informace o přehledu, ale podrobné informace o tom, jak Microsoft zabezpečuje platformu Azure, najdete v informacích uvedených na [webu Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).
+
+### <a name="abstract"></a>Abstraktní
+Prvotní migrace veřejných cloudů byly založené na úsporách nákladů a flexibilitě při inovacích. Zabezpečení se za nějakou dobu považuje za zásadní a dokonce i jako zátku pro migraci veřejného cloudu. Zabezpečení veřejného cloudu se ale převedlo na hlavní problém s jedním z ovladačů pro migraci do cloudu. V tomto případě je to vynikající schopnost rozsáhlých poskytovatelů veřejných cloudových služeb chránit aplikace a data cloudových prostředků.
+
+Infrastruktura Azure je od zařízení až po aplikace navržena tak, aby umožňovala hostování milionů zákazníků současně a poskytovala důvěryhodný základ pro splnění potřeb zabezpečení jednotlivých podniků. Kromě toho Azure poskytuje spoustu konfigurovatelných možností zabezpečení a možnost je ovládat, abyste mohli přizpůsobit zabezpečení tak, aby splňovalo požadavky vašich nasazení, aby splňovaly vaše zásady řízení IT a dodržovaly externí předpisy.
+
+Tento dokument popisuje přístup Microsoftu k zabezpečení v rámci Microsoft Azure cloudové platformy:
+* Funkce zabezpečení implementované Microsoftem k zabezpečení infrastruktury Azure, zákaznických dat a aplikací.
+* Služby Azure a funkce zabezpečení, které jsou k dispozici pro správu zabezpečení služeb a vašich dat v rámci předplatných Azure.
+
+## <a name="summary-azure-security-capabilities"></a>Souhrnné možnosti zabezpečení Azure
+Následující tabulka obsahuje stručný popis funkcí zabezpečení implementovaných společností Microsoft za účelem zabezpečení infrastruktury Azure, zákaznických dat a zabezpečených aplikací.
+### <a name="security-features-implemented-to-secure-the-azure-platform"></a>Funkce zabezpečení implementované k zabezpečení platformy Azure:
+Níže uvedené funkce jsou možnosti, které můžete zkontrolovat a poskytnout tak jistotu, že je platforma Azure spravovaná zabezpečeným způsobem. Odkazy jsou k dispozici pro další procházení k podrobnostem o tom, jak společnost Microsoft řeší otázky týkající se vztahů důvěryhodnosti zákazníků ve čtyřech oblastech: Zabezpečená platforma, ochrana osobních údajů & ovládací prvky, dodržování předpisů a transparentnost.
+
+
+| [Zabezpečená platforma](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Ovládací prvky ochrany osobních údajů &](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Dodržování předpisů](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Transparentnost](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
+| :-- | :-- | :-- | :-- |
+| [Cyklus vývoje zabezpečení](https://www.microsoft.com/en-us/sdl/), interní audity | [Správa dat ve všech časových intervalech](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [Centrum zabezpečení](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Jak Microsoft zabezpečuje zákaznická data ve službách Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
+| [Povinné školení zabezpečení, kontroly na pozadí](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Řízení na umístění dat](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Centrum běžných ovládacích prvků](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Jak Microsoft spravuje umístění dat ve službách Azure](https://azuredatacentermap.azurewebsites.net/)|
+| [Testování průniku](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [zjišťování neoprávněných vniknutí, DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement), [audity & protokolování](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Poskytnutí přístupu k datům podle vašich podmínek](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Cloud Services kontrolní seznam pro náležité opatrnosti](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Kdo v Microsoftu má přístup k vašim datům za podmínek](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
+| [Stav datového centra umění](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), fyzické zabezpečení, [zabezpečení sítě](https://docs.microsoft.com/azure/security/security-network-overview) | [Reakce na vynucování zákonů](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Dodržování předpisů podle služby, umístění & oboru](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Jak Microsoft zabezpečuje zákaznická data ve službách Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
+|  [Odpověď na incident zabezpečení](https://aka.ms/SecurityResponsepaper), [sdílená odpovědnost](https://aka.ms/sharedresponsibility) |[Přísné standardy ochrany osobních údajů](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Kontrola certifikace pro služby Azure, centrum průhledností](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
+
+
+
+### <a name="security-features-offered-by-azure-to-secure-data-and-application"></a>Funkce zabezpečení, které Azure nabízí k zabezpečení dat a aplikací
+V závislosti na modelu cloudové služby je k dispozici proměnlivá odpovědnost za správu zabezpečení aplikace nebo služby. Na platformě Azure jsou dostupné možnosti, které vám pomůžou s plněním těchto odpovědností prostřednictvím integrovaných funkcí a prostřednictvím partnerských řešení, která se dají nasadit do předplatného Azure.
+
+Předdefinované možnosti jsou uspořádány ve šesti (6) funkčních oblastech: Operace, aplikace, úložiště, sítě, výpočetní prostředí a identita. Další podrobnosti o funkcích a možnostech, které jsou k dispozici na platformě Azure v těchto šesti (6) oblastech, jsou poskytovány prostřednictvím souhrnných informací.
+
+## <a name="operations"></a>Operace
+V této části najdete další informace týkající se klíčových funkcí v bezpečnostních operacích a souhrnné informace o těchto funkcích.
+
+### <a name="security-and-audit-dashboard"></a>Řídicí panel Security and Audit
+[Security and Audit řešení](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) poskytuje ucelený přehled o stav zabezpečení IT vaší organizace pomocí integrovaných [vyhledávacích dotazů](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/) pro významné problémy, které vyžadují vaši pozornost. Řídicí panel [Security and Audit](https://technet.microsoft.com/library/mt484091.aspx) je domovská obrazovka pro všechno, co souvisí se zabezpečením v protokolech Azure monitor. Poskytuje podrobný přehled o stavu zabezpečení vašich počítačů. Umožňuje také zobrazit všechny události za posledních 24 hodin, 7 dní nebo za jakýkoli zadaný interval.
+
+Kromě toho můžete nakonfigurovat Security & Compliance a [automaticky provádět konkrétní akce](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) při zjištění konkrétní události.
+
+### <a name="azure-resource-manager"></a>Azure Resource Manager
+[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) vám umožní pracovat s prostředky ve vašem řešení jako se skupinou. Všechny prostředky pro vaše řešení můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace. Pro nasazení použijete [šablonu Azure Resource Manager](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) a tato šablona může fungovat v různých prostředích, jako je testování, příprava a produkce. Resource Manager poskytuje funkce zabezpečení, auditování a označování, které vám po nasazení pomohou prostředky spravovat.
+
+Azure Resource Manager nasazení na základě šablon pomáhá vylepšit zabezpečení řešení nasazených v Azure, protože standardní nastavení řízení zabezpečení a je možné je integrovat do standardizovaných nasazení založených na šablonách. Tím se snižuje riziko chyb konfigurace zabezpečení, které mohou probíhat během ručních nasazení.
+
+### <a name="application-insights"></a>Application Insights
+[Application Insights](https://docs.microsoft.com/azure/application-insights/) je rozšiřitelná služba správy výkonu aplikací (APM) pro webové vývojáře. Pomocí Application Insights můžete monitorovat živé webové aplikace a automaticky zjišťovat anomálie výkonu. Obsahuje výkonné analytické nástroje, které vám pomůžou diagnostikovat problémy a porozumět tomu, co uživatelé skutečně dělají s vašimi aplikacemi. Monitoruje vaši aplikaci pokaždé, když je spuštěná, jak během testování, tak i po jeho publikování nebo nasazení.
+
+Application Insights vytvoří grafy a tabulky, které vám ukáže například dobu, po kterou se dostanete nejvíc uživatelů, jak reagovat na aplikaci a jak dobře je obsluhovaná pomocí všech externích služeb, na kterých závisí.
+
+Pokud dojde k chybám, selháním nebo problémům s výkonem, můžete prohledat data telemetrie podrobněji a diagnostikovat příčinu. A služba vám pošle e-maily, pokud dojde ke změnám v dostupnosti a výkonu vaší aplikace. Vhledem z hlediska aplikace je tak cenný nástroj zabezpečení, protože pomáhá s dostupností v Triad zabezpečení důvěrnosti, integrity a dostupnosti.
+
+### <a name="azure-monitor"></a>Azure Monitor
+[Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) nabízí vizualizaci, dotaz, směrování, upozorňování, automatické škálování a automatizaci dat jak z infrastruktury Azure ([Protokol aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)), tak z každého jednotlivého prostředku Azure ([diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)). Pomocí Azure Monitor můžete upozorňovat na události související se zabezpečením, které jsou generovány v protokolech Azure.
+
+### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
+[Protokoly Azure monitor](https://azure.microsoft.com/documentation/services/log-analytics/) – poskytuje kromě prostředků Azure i řešení pro správu IT pro místní i cloudovou infrastrukturu (například AWS). Data z Azure Monitor můžete směrovat přímo do protokolů Azure Monitor, abyste viděli metriky a protokoly pro celé prostředí na jednom místě.
+
+Protokoly Azure Monitor můžou být užitečným nástrojem v forenzní a jiné analýze zabezpečení, protože nástroj umožňuje rychle prohledávat velké objemy položek souvisejících se zabezpečením s flexibilním přístupem k dotazům. Kromě toho je [možné místní bránu firewall a protokoly proxy exportovat do Azure a zpřístupnit je pro účely analýzy pomocí protokolů Azure monitor.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
+
+### <a name="azure-advisor"></a>Azure Advisor
+[Azure Advisor](https://docs.microsoft.com/azure/advisor/) je přizpůsobený cloudový poradce, který vám pomůže optimalizovat nasazení Azure. Analyzuje telemetrii využití a konfiguraci prostředků. Pak doporučí řešení, která pomáhají zlepšit [výkon](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), [zabezpečení](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations)a [vysokou dostupnost](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations) vašich prostředků a současně hledají příležitosti ke [snížení celkové útraty Azure](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations). Azure Advisor poskytuje doporučení pro zabezpečení, která můžou významně zlepšit celkové stav zabezpečení pro řešení nasazená v Azure. Tato doporučení se vykreslují z analýzy zabezpečení provedené [Azure Security Center.](https://docs.microsoft.com/azure/security-center/security-center-intro)
+
+### <a name="azure-security-center"></a>Azure Security Center
+[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) pomáhá předcházet hrozbám, rozpoznávat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
+
+Kromě toho Azure Security Center pomáhá s operacemi zabezpečení tím, že poskytuje jeden řídicí panel, který obchází výstrahy a doporučení, která se dají okamžitě zpracovávat. Často můžete problémy vyřešit jediným kliknutím v konzole Azure Security Center.
+## <a name="applications"></a>Aplikace
+V části najdete další informace týkající se klíčových funkcí v zabezpečení aplikací a souhrnné informace o těchto funkcích.
+
+### <a name="web-application-vulnerability-scanning"></a>Kontrola ohrožení zabezpečení webové aplikace
+Jedním z nejjednodušších způsobů, jak začít s testováním ohrožení zabezpečení ve vaší [aplikaci App Service](https://docs.microsoft.com/azure/app-service/overview) , je použití [integrace se zabezpečením TINFOIL](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) k provedení kontroly ohrožení zabezpečení na vaší aplikaci jedním kliknutím. Výsledky testů můžete zobrazit v snadno srozumitelné sestavě a Naučte se, jak opravit jednotlivé chyby zabezpečení pomocí podrobných pokynů.
+
+### <a name="penetration-testing"></a>Testování průniku
+Pokud dáváte přednost vlastním testům průniku nebo chcete použít jinou sadu nebo poskytovatele, musíte postupovat podle [procesu schválení testování průniku do Azure](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) a získat předchozí schválení k provedení požadovaných testů průniku.
+
+### <a name="web-application-firewall"></a>Firewall webových aplikací
+Firewall webových aplikací (WAF) v [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) pomáhá chránit webové aplikace před běžnými webovými útoky, jako jsou vkládání SQL, útoky skriptování mezi weby a zneužití relace. Obsahuje předem nakonfigurovanou ochranu před hrozbami, které identifikoval [projekt OWASP (Open Web Application Security) jako prvních 10 běžných ohrožení zabezpečení](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
+
+### <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
+[App Service ověřování/autorizace](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) je funkce, která poskytuje způsob, jakým se aplikace přihlásí uživatelům, aby nemuseli měnit kód back-endu aplikace. Poskytuje snadný způsob ochrany vaší aplikace a práci s daty jednotlivých uživatelů.
+
+### <a name="layered-security-architecture"></a>Vícevrstvá Architektura zabezpečení
+Vzhledem k tomu, že [prostředí App Service](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro) poskytují izolované běhové prostředí nasazené do [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview), můžou vývojáři vytvořit vrstvenou architekturu zabezpečení, která poskytuje různé úrovně přístupu k síti pro jednotlivé aplikační vrstvy. Běžným přáním je skrýt back-endy rozhraní API z obecného přístupu k Internetu a jenom v případě, že jsou rozhraní API zavolána pomocí nadřazeného webového aplikace. [Skupiny zabezpečení sítě (skupin zabezpečení sítě)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) se dají použít v podsítích Azure Virtual Network, které obsahují App Service prostředí k omezení veřejného přístupu k aplikacím API.
+
+### <a name="web-server-diagnostics-and-application-diagnostics"></a>Diagnostika webového serveru a Application Diagnostics
+App Service webové aplikace poskytují diagnostické funkce pro protokolování informací z webového serveru i z webové aplikace. Tyto jsou logicky rozděleny na [diagnostiku webových serverů](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) a [Application Diagnostics](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx). Webový server obsahuje dva hlavní pokrok při diagnostice a řešení potíží s weby a aplikacemi.
+
+První nová funkce je informace o stavu v reálném čase týkající se fondů aplikací, pracovních procesů, webů, domén aplikací a spuštěných požadavků. Druhými novými výhodami jsou podrobné události trasování, které sledují požadavek v rámci kompletního procesu požadavků a odpovědí.
+
+Aby bylo možné povolit shromažďování těchto trasovacích událostí, může být služba IIS 7 nakonfigurována tak, aby automaticky zachytává úplné protokoly trasování ve formátu XML pro všechny konkrétní požadavky na základě uplynulého času nebo kódů chybové odpovědi.
+
+#### <a name="web-server-diagnostics"></a>Diagnostika webového serveru
+Můžete povolit nebo zakázat následující typy protokolů:
+
+-   Podrobné protokolování chyb – podrobné informace o chybě pro stavové kódy HTTP indikující selhání (Stavový kód 400 nebo vyšší). Může to obsahovat informace, které vám pomůžou určit, proč Server vrátil kód chyby.
+
+-   Trasování chybných požadavků – podrobné informace o neúspěšných žádostech, včetně trasování komponent služby IIS použitých ke zpracování žádosti a doby trvání jednotlivých komponent. To může být užitečné, pokud se pokoušíte zvýšit výkon webu nebo izolovat, co způsobuje, že se může vrátit konkrétní chyba HTTP.
+
+-   Protokolování webového serveru – informace o transakcích HTTP pomocí formátu souboru protokolu W3C Extended. To je užitečné při určování celkové metriky lokality, jako je počet zpracovaných požadavků nebo kolik požadavků pochází z konkrétní IP adresy.
+
+#### <a name="application-diagnostics"></a>Diagnostika aplikace
+[Application Diagnostics](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) umožňuje zachytit informace vytvářené webovou aplikací. ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. V Application Diagnostics existují dva hlavní typy událostí, které souvisejí s výkonem aplikace a s chybami aplikací a chybami. Chyby a chyby lze dále rozdělit do potíží s připojením, zabezpečením a selháním. Problémy s chybami jsou obvykle spojeny s problémem s kódem aplikace.
+
+V Application Diagnostics můžete zobrazit události seskupené těmito způsoby:
+
+-   Vše (zobrazí všechny události)
+-   Chyby aplikací (zobrazí události výjimky)
+-   Výkon (zobrazuje události výkonu)
+
+## <a name="storage"></a>Storage
+V části najdete další informace týkající se klíčových funkcí zabezpečení Azure Storage a souhrnné informace o těchto funkcích.
+
+### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
+Svůj účet úložiště můžete zabezpečit pomocí Access Control na základě rolí (RBAC). Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a minimálních principů zabezpečení [oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou udělována přiřazením příslušné role RBAC do skupin a aplikací v určitém rozsahu. K přiřazení oprávnění uživatelům můžete použít [předdefinované role RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles), jako je Přispěvatel účtu úložiště. Přístup k klíčům úložiště pro účet úložiště pomocí modelu [Azure Resource Manager](https://docs.microsoft.com/azure/storage/storage-security-guide) můžete ovládat pomocí Access Control na základě rolí (RBAC).
+
+### <a name="shared-access-signature"></a>Sdílený přístupový podpis
+[Sdílený přístupový podpis (SAS)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. SAS znamená, že můžete klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po určitou dobu a se zadanou sadou oprávnění. Tato omezená oprávnění můžete udělit bez nutnosti sdílení přístupových klíčů k účtu.
+
+### <a name="encryption-in-transit"></a>Šifrování při přenosu
+Šifrování při přenosu je mechanismus ochrany dat při přenosu mezi sítěmi. Pomocí Azure Storage můžete zabezpečit data pomocí:
+-   [Šifrování na úrovni přenosu](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit), jako je například https při přenosu dat do nebo z Azure Storage.
+
+-   [Šifrování kabelů](https://docs.microsoft.com/azure/storage/storage-security-guide#using-encryption-during-transit-with-azure-file-shares), jako je například [šifrování SMB 3,0](https://docs.microsoft.com/azure/storage/storage-security-guide) pro [sdílené složky Azure](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-files).
+
+-   Šifrování na straně klienta, aby se data zašifroval před přenosem do úložiště a dešifrují data poté, co se přenesou z úložiště.
+
+### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
+V případě mnoha organizací je šifrování dat v klidovém případě povinný krok k ochraně dat, dodržování předpisů a suverenity dat. Existují tři funkce zabezpečení služby Azure Storage, které poskytují šifrování dat v klidovém znění:
+
+-   [Šifrování služby Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption) umožňuje požádat, aby služba úložiště při zápisu do Azure Storage automaticky zašifroval data.
+
+-   [Šifrování na straně klienta](https://docs.microsoft.com/azure/storage/storage-client-side-encryption) také poskytuje funkci šifrování v klidovém umístění.
+
+-   [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) slouží k šifrování disků s operačním systémem a datových disků, které používá virtuální počítač s IaaS.
+
+### <a name="storage-analytics"></a>Storage Analytics
+[Analýza úložiště Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) provádí protokolování a poskytuje data metrik pro účet úložiště. Tato data můžete použít k trasování požadavků, analýze trendů použití a diagnostice problémů s účtem úložiště. Analýza úložiště protokoluje podrobné informace o úspěšných a neúspěšných požadavcích službě úložiště. Tyto informace lze použít k monitorování jednotlivých požadavků a k diagnostice problémů se službou úložiště. Požadavky jsou protokolovány na základě nejlepší úsilí. Protokolují se následující typy ověřených požadavků:
+-   Úspěšné požadavky.
+
+-   Neúspěšné požadavky, včetně časového limitu, omezování, sítě, autorizace a dalších chyb.
+
+-   Požadavky využívající sdílený přístupový podpis (SAS), včetně neúspěšných a úspěšných požadavků.
+
+-   Požadavky na analytické údaje.
+
+### <a name="enabling-browser-based-clients-using-cors"></a>Povolení klientů založených na prohlížeči pomocí CORS
+[Sdílení prostředků mezi zdroji (CORS)](https://docs.microsoft.com/rest/api/storageservices/fileservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) je mechanismus, který umožňuje doménám udělit každé další oprávnění pro přístup k prostředkům ostatních zdrojů. Uživatelský agent odesílá další hlavičky, aby bylo zajištěno, že kód jazyka JavaScript načtený z konkrétní domény má povolen přístup k prostředkům umístěným v jiné doméně. Druhá doména pak odpoví s dalšími hlavičkami, které umožňují nebo odmítají původní doménu přístup k jejím prostředkům.
+
+Služba Azure Storage teď podporuje CORS, takže až nakonfigurujete pravidla CORS pro službu, vyhodnotí se správně ověřený požadavek na službu z jiné domény, aby se zjistilo, jestli je povolená podle pravidel, která jste zadali.
+## <a name="networking"></a>Sítě
+V části najdete další informace týkající se klíčových funkcí v zabezpečení sítě Azure a souhrnné informace o těchto funkcích.
+
+### <a name="network-layer-controls"></a>Ovládací prvky síťové vrstvy
+Řízení přístupu k síti je ta, která omezuje připojení k určitým zařízením nebo podsítím a představuje základní zabezpečení sítě. Cílem řízení přístupu k síti je zajistit, aby vaše virtuální počítače a služby byly dostupné jenom pro uživatele a zařízení, ke kterým chcete získat přístup.
+
+#### <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě)
+[Skupina zabezpečení sítě (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) je základní bránou firewall pro filtrování paketů a umožňuje řídit přístup na základě [5 řazených kolekcí členů](https://www.techopedia.com/definition/28190/5-tuple). Skupin zabezpečení sítě neposkytuje kontrolu aplikační vrstvy ani ověřování řízení přístupu. Dají se použít k řízení přesunu provozu mezi podsítěmi v rámci Azure Virtual Network a přenosem mezi Virtual Network Azure a internetem.
+
+#### <a name="route-control-and-forced-tunneling"></a>Řízení směrování a vynucené tunelování
+Možnost řídit chování směrování v Azure Virtual Networks je kritická funkce zabezpečení sítě a řízení přístupu. Pokud třeba chcete zajistit, aby veškerý provoz do a ze služby Azure Virtual Network procházel prostřednictvím tohoto zařízení pro virtuální zabezpečení, musíte mít přístup k řízení a přizpůsobení chování směrování. To můžete provést tak, že nakonfigurujete trasy definované uživatelem v Azure.
+
+[Trasy definované uživatelem](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) umožňují přizpůsobit příchozí a odchozí cesty pro provoz, který se přesouvá do a z jednotlivých virtuálních počítačů nebo podsítí, aby se zajistila nejvyšší možná úroveň zabezpečení trasy. [Vynucené tunelování](https://www.petri.com/azure-forced-tunneling) je mechanismus, který můžete použít k zajištění toho, aby vaše služby neumožňovaly iniciovat připojení k zařízením v Internetu.
+
+To se liší od možnosti přijímat příchozí připojení a reagovat na ně. Webové servery front-end musí odpovídat na požadavky od hostitelů v Internetu, takže internetový provoz se povoluje na tyto webové servery příchozí a webové servery můžou reagovat.
+
+Vynucené tunelování se běžně používá k vynucení odchozího provozu na internetu za účelem přechodu na místní proxy servery zabezpečení a brány firewall.
+
+#### <a name="virtual-network-security-appliances"></a>Zařízení Virtual Network zabezpečení
+I když skupiny zabezpečení sítě, uživatelsky definované trasy a vynucené tunelování poskytují úroveň zabezpečení v síťové a transportní vrstvě [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), může nastat situace, kdy budete chtít povolit zabezpečení na vyšších úrovních zásobníku. K těmto rozšířeným funkcím zabezpečení sítě máte přístup pomocí řešení zařízení zabezpečení partnerské sítě Azure. Nejaktuálnější řešení zabezpečení pro Azure Partner Network najdete na [Azure Marketplace](https://azure.microsoft.com/marketplace/) a vyhledáte "zabezpečení" a "zabezpečení sítě".
+
+### <a name="azure-virtual-network"></a>Azure Virtual Network
+
+Virtuální síť Azure (VNet) je reprezentace vaší vlastní sítě v cloudu. Jedná se o logickou izolaci prostředků infrastruktury sítě Azure vyhrazených pro vaše předplatné. V rámci této sítě máte plnou kontrolu nad bloky IP adres, nastavením DNS, zásadami zabezpečení a směrovacími tabulkami. Virtuální síť můžete segmentovat do podsítí a umísťovat virtuální počítače Azure IaaS a/nebo [cloudové služby (instance rolí PaaS)](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me) na virtuální sítě Azure.
+
+Virtuální síť můžete navíc připojit k místní síti pomocí jedné z [možností připojení](https://docs.microsoft.com/azure/vpn-gateway/) dostupných v Azure. V podstatě můžete svoji síť rozšířit do Azure s úplnou kontrolou nad bloky IP adres a s výhodou poskytovatelů Azure celopodnikového rozsahu.
+
+Síť Azure podporuje různé scénáře zabezpečeného vzdáleného přístupu. Mezi ně patří:
+
+-   [Připojení jednotlivých pracovních stanic k Azure Virtual Network](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+
+-   [Připojení místní sítě k Virtual Network Azure pomocí sítě VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)
+
+-   [Připojení místní sítě k Virtual Network Azure pomocí vyhrazeného propojení WAN](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)
+
+-   [Vzájemná propojení virtuálních sítí Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps)
+
+### <a name="vpn-gateway"></a>VPN Gateway
+Pokud chcete odesílat síťový provoz mezi Virtual Network Azure a vaší místní lokalitou, musíte pro Azure Virtual Network vytvořit bránu VPN. [Brána sítě VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) je typem brány virtuální sítě, která odesílá šifrovaný provoz přes veřejné připojení. Brány VPN můžete použít také k posílání provozu mezi virtuálními sítěmi Azure přes síťové prostředky infrastruktury Azure.
+
+### <a name="express-route"></a>ExpressRoute
+Microsoft Azure [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) je vyhrazené propojení WAN, které umožňuje rozšiřování místních sítí do cloudu Microsoftu přes vyhrazené soukromé připojení, které usnadňuje poskytovatel připojení.
+
+![ExpressRoute](./media/overview/azure-security-fig1.png)
+
+Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 a CRM Online. Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění.
+
+Připojení ExpressRoute nevyužívají veřejný Internet, a proto je lze považovat za bezpečnější než řešení založená na síti VPN. To dovoluje připojením ExpressRoute poskytovat větší spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes internet.
+
+
+### <a name="application-gateway"></a>Application Gateway
+Microsoft [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) poskytuje jako službu [kontroler doručování aplikací (ADC)](https://en.wikipedia.org/wiki/Application_delivery_controller) a nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaši aplikaci.
+
+![Application Gateway](./media/overview/azure-security-fig2.png)
+
+Umožňuje optimalizovat produktivitu webové farmy tím, že se do Application Gateway převede ukončení zátěže protokolu SSL náročné na procesor (označované také jako "snižování zátěže SSL" nebo "přemostění SSL"). Poskytuje taky další možnosti směrování vrstvy 7, jako je kruhové dotazování příchozích přenosů, spřažení relací na základě souborů cookie, směrování založené na cestách URL a možnost hostování několika webů za jedním Application Gateway. Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7.
+
+Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu.
+
+Aplikace poskytuje mnoho funkcí řadiče pro doručování aplikací (ADC), včetně vyrovnávání zatížení protokolu HTTP, spřažení relace na základě souborů cookie, přesměrování [SSL (Secure Sockets Layer) (SSL)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-powershell) , vlastních sond stavu, podpory více webů a mnoha dalších.
+
+### <a name="web-application-firewall"></a>Firewall webových aplikací
+Firewall webových aplikací je funkce služby [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) , která poskytuje ochranu webových aplikací, které používají Aplikační bránu pro standardní funkce řízení doručování aplikací (ADC). Firewall webových aplikací chrání webové aplikace před většinou z 10 nejčastějších webových hrozeb podle OWASP.
+
+![Firewall webových aplikací](./media/overview/azure-security-fig1.png)
+
+-   Ochrana před útoky prostřednictvím injektáže SQL.
+
+-   Ochrana před běžnými webovými útoky, jako je například injektáž příkazů, pronášení požadavků HTTP, rozdělování odpovědí protokolu HTTP a útok pomocí vložení vzdáleného souboru.
+
+-   Ochrana před narušením protokolu HTTP.
+
+-   Ochrana před anomáliemi protokolu HTTP, jako například chybějící údaj user-agent hostitele nebo hlavičky Accept.
+
+-   Ochrana před roboty, prohledávacími moduly a skenery.
+
+-   Detekce běžných neobvyklých konfigurací aplikací (tj. Apache, IIS atd.)
+
+
+Centralizovaný firewall webových aplikací, který chrání před webovými útoky, značně zjednodušuje správu zabezpečení a nabízí lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Firewall webových aplikací umožňuje jednoduše převést stávající aplikační brány do služby Application Gateway.
+### <a name="traffic-manager"></a>Traffic Manager
+Microsoft [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) umožňuje řídit distribuci provozu uživatelů pro koncové body služby v různých datových centrech. K koncovým bodům služby podporovaným Traffic Manager patří virtuální počítače Azure, Web Apps a cloudové služby. Službu Traffic Manager můžete používat také s externími koncovými body mimo Azure. Traffic Manager používá službu DNS (Domain Name System) k přímému směrování požadavků klientů na nejvhodnější koncový bod na základě [metody směrování provozu](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods) a stavu koncových bodů.
+
+Traffic Manager poskytuje řadu metod směrování provozu, které vyhovují různým potřebám aplikací, [monitorování](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)stavu koncových bodů a automatickému převzetí služeb při selhání. Služba Traffic Manager je odolná vůči selhání, a to i selhání celé oblasti Azure.
+### <a name="azure-load-balancer"></a>Azure Load Balancer
+[Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) zajišťuje vysokou dostupnost a výkon sítě pro vaše aplikace. Jedná se o nástroj pro vyrovnávání zatížení vrstvy 4 (TCP, UDP), který distribuuje příchozí provoz mezi zdravými instancemi služeb definovaných v sadě s vyrovnáváním zatížení. Azure Load Balancer lze nakonfigurovat na:
+
+-   Vyrovnávání zatížení příchozího internetového provozu do virtuálních počítačů. Tato konfigurace se označuje jako [internetové vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview).
+
+-   Vyrovnávání zatížení mezi virtuálními počítači ve virtuální síti, mezi virtuálními počítači v cloudových službách nebo mezi místními počítači a virtuálními počítači ve virtuální síti mezi pracovišti. Tato konfigurace se označuje jako [interní vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview). 
+
+- Přeposlání externího provozu na konkrétní virtuální počítač
+
+### <a name="internal-dns"></a>Interní DNS
+Seznam serverů DNS používaných ve virtuální síti můžete spravovat v Portál pro správu nebo v konfiguračním souboru sítě. Zákazník může pro každou virtuální síť přidat až 12 serverů DNS. Při zadávání serverů DNS je důležité ověřit, že seznam serverů DNS zákazníka je ve správném pořadí pro prostředí zákazníka. Seznamy serverů DNS nefungují v kruhovém dotazování. Používají se v pořadí, v jakém jsou specifikovány. Pokud je možné dosáhnout prvního serveru DNS v seznamu, klient použije tento server DNS bez ohledu na to, jestli server DNS funguje správně nebo ne. Pokud chcete změnit pořadí serverů DNS pro virtuální síť zákazníka, odeberte ze seznamu servery DNS a přidejte je zpátky v pořadí, v jakém zákazník požaduje. Služba DNS podporuje aspekty dostupnosti Triad zabezpečení CIA.
+
+### <a name="azure-dns"></a>Azure DNS
+[Název domény systému](https://technet.microsoft.com/library/bb629410.aspx)nebo DNS zodpovídá za překlad (nebo překladu) názvu webu nebo služby na jeho IP adresu. [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) je hostingová služba pro domény DNS a zajišťuje překlad názvů pomocí Microsoft Azure infrastruktury. Pokud svoje domény hostujete v Azure, můžete spravovat svoje DNS záznamy pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure. Služba DNS podporuje aspekty dostupnosti Triad zabezpečení CIA.
+### <a name="azure-monitor-logs-nsgs"></a>Protokoly Azure Monitor skupin zabezpečení sítě
+Můžete povolit následující kategorie diagnostického protokolu pro skupin zabezpečení sítě:
+-   Událostí Obsahuje položky, pro které se pravidla NSG aplikují na virtuální počítače a role instancí založené na adrese MAC. Stav těchto pravidel se shromáždí každých 60 sekund.
+
+-   Čítač pravidel: Obsahuje položky pro počet, kolikrát se každé pravidlo NSG použije pro odepření nebo povolení provozu.
+
+### <a name="azure-security-center"></a>Azure Security Center
+Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a poskytuje lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované monitorování zabezpečení a správu zásad napříč předplatnými Azure, pomáhá detekovat hrozby, které by jinak neinformovaly, a spolupracuje s širokou ekosystémem řešení zabezpečení. Síťová doporučení centra pro brány firewall, skupiny zabezpečení sítě, konfiguraci pravidel příchozího provozu a další.
+
+Dostupná doporučení sítě jsou následující:
+
+-   [Přidat bránu firewall nové generace](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall) Doporučuje přidat firewall nové generace (NGFW) od partnera Microsoftu, aby se zvýšila ochrana zabezpečení.
+
+-   [Směrování provozu jenom přes NGFW](https://docs.microsoft.com/azure/security-center/security-center-add-next-generation-firewall#route-traffic-through-ngfw-only) Doporučuje nakonfigurovat pravidla skupiny zabezpečení sítě (NSG), která vynutí příchozí provoz na VIRTUÁLNÍm počítači prostřednictvím vaší NGFW.
+
+-   [Povolit skupiny zabezpečení sítě v podsítích nebo virtuálních počítačích](https://docs.microsoft.com/azure/security-center/security-center-enable-network-security-groups) Doporučuje, abyste povolili skupin zabezpečení sítě v podsítích nebo virtuálních počítačích.
+
+-   [Omezení přístupu přes internetový koncový bod](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints) Doporučuje nakonfigurovat pravidla příchozího provozu pro skupin zabezpečení sítě.
+
+
+## <a name="compute"></a>Compute
+
+V této části najdete další informace týkající se klíčových funkcí v této oblasti a souhrnné informace o těchto funkcích.
+
+### <a name="antimalware--antivirus"></a>Antimalwarový & Antivirus
+S Azure IaaS můžete použít antimalwarový software od dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro, McAfee a Kaspersky, a chránit tak své virtuální počítače před škodlivými soubory, adwarem a dalšími hrozbami. [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) pro Azure Cloud Services a Virtual Machines je schopnost ochrany, která pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Microsoft Antimalware poskytuje konfigurovatelné výstrahy, když se známý škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit v systémech Azure. Microsoft Antimalware se dá nasadit taky pomocí Azure Security Center
+
+### <a name="hardware-security-module"></a>Modul hardwarového zabezpečení
+Šifrování a ověřování nevylepšuje zabezpečení, pokud klíče samotné nejsou chráněné. Můžete zjednodušit správu a zabezpečení důležitých tajných kódů a klíčů jejich uložením do [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis). Key Vault poskytuje možnost ukládat klíče v modulech hardwarového zabezpečení (HSM) s certifikací podle standardů FIPS 140-2 úrovně 2. Šifrovací klíče SQL Server pro zálohování nebo [transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx) je možné ukládat do Key Vault pomocí jakýchkoli klíčů a tajných kódů z vašich aplikací. Oprávnění a přístup k těmto chráněným položkám se spravují prostřednictvím [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+
+### <a name="virtual-machine-backup"></a>Záloha virtuálního počítače
+[Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) je řešení, které chrání data vaší aplikace pomocí nulové kapitálové investice a minimální provozní náklady. Chyby aplikací můžou poškodit vaše data a lidské chyby můžou do vašich aplikací zavádět chyby, které mohou vést k problémům se zabezpečením. Díky Azure Backup jsou virtuální počítače se systémem Windows a Linux chráněny.
+
+### <a name="azure-site-recovery"></a>Azure Site Recovery
+Důležitou součástí strategie [pro kontinuitu podnikových procesů a zotavení po havárii (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) vaší organizace se dozvíte, jak udržovat podnikové úlohy a aplikace v provozu, když dojde k plánovanému a neplánovanému výpadku. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) pomáhá orchestrovat replikaci, převzetí služeb při selhání a obnovení úloh a aplikací tak, aby byly k dispozici ze sekundárního umístění, pokud dojde k výpadku vašeho primárního umístění.
+
+### <a name="sql-vm-tde"></a>SQL VM TDE
+[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault) a šifrování na úrovni sloupce (CLE) jsou funkce šifrování SQL serveru. Tato forma šifrování vyžaduje, aby zákazníci spravovali a ukládali kryptografické klíče, které používáte pro šifrování.
+
+Služba Azure Key Vault (integrace) je navržená tak, aby vylepšila zabezpečení a správu těchto klíčů v zabezpečeném a vysoce dostupném umístění. Konektor SQL Serveru umožňuje SQL Server používat tyto klíče z Azure Key Vault.
+
+Pokud používáte SQL Server s místními počítači, můžete postupovat podle pokynů k přístupu k Azure Key Vault z místního počítače SQL Server. Ale pro SQL Server ve virtuálních počítačích Azure můžete ušetřit čas pomocí funkce Integrace Azure Key Vault. Pomocí několika rutin Azure PowerShell pro povolení této funkce můžete automatizovat konfiguraci nutnou k tomu, aby virtuální počítač SQL měl přístup k trezoru klíčů.
+
+### <a name="vm-disk-encryption"></a>Šifrování disku virtuálního počítače
+[Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) je nová funkce, která vám pomůže s šifrováním disků virtuálních počítačů s Windows a Linux IaaS. Použije standardní funkci nástroje BitLocker systému Windows a funkci DM-crypt systému Linux k poskytnutí šifrování svazku pro operační systém a datové disky. Řešení je integrované s Azure Key Vault, které vám pomůžou s řízením a správou klíčů a tajných kódů na disku v předplatném Key Vault. Řešení také zajišťuje, že všechna data na discích virtuálních počítačů jsou v klidovém stavu zašifrovaná v úložišti Azure.
+
+### <a name="virtual-networking"></a>Virtuální síť
+Virtuální počítače potřebují síťové připojení. Pro podporu tohoto požadavku Azure vyžaduje, aby se virtuální počítače připojovaly k Virtual Network Azure. Azure Virtual Network je logická konstrukce, která je postavená na fyzických prostředcích infrastruktury sítě Azure. Každý logický [Virtual Network Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) je izolovaný od všech ostatních virtuálních sítí Azure. Tato izolace vám pomůže zajistit, že síťový provoz ve vašich nasazeních není přístupný ostatním Microsoft Azurem zákazníkům.
+
+### <a name="patch-updates"></a>Aktualizace oprav
+Aktualizace oprav poskytují základ pro vyhledání a opravu potenciálních problémů a zjednodušení procesu správy aktualizací softwaru tím, že omezují počet aktualizací softwaru, které musíte nasadit v podniku, a zvýšíte možnost monitorování dodržování předpisů.
+
+### <a name="security-policy-management-and-reporting"></a>Správa zásad zabezpečení a vytváření sestav
+[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a poskytuje lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované monitorování zabezpečení a správu zásad napříč předplatnými Azure, pomáhá detekovat hrozby, které by jinak neinformovaly, a spolupracuje s širokou ekosystémem řešení zabezpečení.
+
+### <a name="azure-security-center"></a>Azure Security Center
+Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
+
+## <a name="identity-and-access-management"></a>Správa identit a přístupu
+
+Zabezpečení systémů, aplikací a dat začíná pomocí řízení přístupu na základě identity. Funkce pro správu identit a přístupu, které jsou integrované v obchodních produktech a službách společnosti Microsoft, mohou chránit vaše organizační a osobní údaje před neoprávněným přístupem a zároveň je zpřístupnit oprávněným uživatelům, kdykoli a kdekoli potřebujete.
+
+### <a name="secure-identity"></a>Zabezpečená identita
+Microsoft používá pro správu identit a přístupu více postupů a technologií zabezpečení napříč svými produkty a službami.
+-   [Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) vyžaduje, aby uživatelé používali více metod pro přístup, místně i v cloudu. Poskytuje silné ověřování s využitím široké škály možností snadného ověření a současně přihlašuje uživatele k jednoduchému procesu přihlašování.
+
+-   [Microsoft Authenticator](https://aka.ms/authenticator) poskytuje uživatelsky přívětivé prostředí Multi-Factor Authentication, které spolupracuje s účty Microsoft Azure Active Directory i Microsoft a zahrnuje podporu pro wearables a schvalování pomocí otisků prstů.
+
+-   [Vynucování zásad hesel](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/) zvyšuje zabezpečení tradičních hesel tím, že ukládá požadavky na délku a složitost, vynucené pravidelné otočení a uzamčení účtu po neúspěšných pokusech o ověření.
+
+-   [Ověřování na základě tokenu](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/) umožňuje ověřování prostřednictvím Azure Active Directory.
+
+-   [Řízení přístupu na základě role (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) umožňuje udělit přístup na základě role přiřazené uživateli, což usnadňuje uživatelům přístup pouze k množství přístupu, který potřebují k provedení svých pracovních povinností. RBAC můžete přizpůsobit podle obchodního modelu a tolerance rizik vaší organizace.
+
+-   [Integration Management (hybridní identita)](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) umožňuje udržovat řízení přístupu uživatelů mezi interní datacentry a cloudové platformy a vytvořit jednu identitu uživatele pro ověřování a autorizaci pro všechny prostředky.
+
+### <a name="secure-apps-and-data"></a>Zabezpečení aplikací a dat
+[Azure Active Directory](https://azure.microsoft.com/services/active-directory/)komplexní cloudové řešení pro správu identit a přístupu pomáhá zabezpečit přístup k datům v aplikacích v lokalitě a v cloudu a zjednodušuje správu uživatelů a skupin. Kombinuje základní adresářové služby, pokročilé řízení identit, zabezpečení a správu přístupu k aplikacím a usnadňuje vývojářům vytvářet správu identit založenou na zásadách ve svých aplikacích. Pokud chcete zvýšit úroveň Azure Active Directory, můžete přidat placené funkce prostřednictvím edic Azure Active Directory Basic, Premium P1 a Premium P2.
+
+| Bezplatné a běžné funkce     | Základní funkce    |Funkce Premium P1 |Funkce Premium P2 | Připojení Azure Active Directory – jenom Windows 10 – související funkce|
+| :------------- | :------------- |:------------- |:------------- |:------------- |
+|   [Adresářové objekty](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [Správa uživatelů a skupin (přidání/aktualizace/odstranění)/zřizování na základě uživatelů, registrace zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [jednotné přihlašování (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-editions), samoobslužná [Změna hesla pro uživatele cloudu](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [připojit (synchronizační modul rozšiřuje místní adresáře na Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [sestavy zabezpečení a využití](https://docs.microsoft.com/azure/active-directory/active-directory-editions) .       |     [Správa/zřizování přístupu na základě skupin](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [Samoobslužné resetování hesla pro uživatele](https://docs.microsoft.com/azure/active-directory/active-directory-editions)v cloudu, [Branding společnosti (přihlašovací stránky/vlastní nastavení přístupového panelu)](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [proxy aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [SLA 99,9%](https://docs.microsoft.com/azure/active-directory/active-directory-editions) |  [Samoobslužná správa skupin a aplikací/samoobslužné přidávání aplikací/dynamické skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-editions), samoobslužné [resetování hesla, změna/odemknutí s místním zpětným zápisem](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [Multi-Factor Authentication (cloudové a místní (MFA Server) )](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [MIM CAL + MIM Server](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [Connect Health](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [Automatická změna hesla pro skupinové účty](https://docs.microsoft.com/azure/active-directory/active-directory-editions)|  [Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection), [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)|  [Připojení zařízení ke službě Azure AD, Desktop SSO, Microsoft Passport pro Azure AD, obnovení pomocí nástroje BitLocker pro správu](https://docs.microsoft.com/azure/active-directory/active-directory-editions), [automatické registraci MDM, samoobslužné obnovení nástroje BitLocker, dalším místním správcům na zařízení s Windows 10 prostřednictvím služby Azure AD JOIN](https://docs.microsoft.com/azure/active-directory/active-directory-editions)|
+
+
+- [Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/active-directory-cloudappdiscovery-whatis) je funkce Premium Azure Active Directory, která umožňuje identifikovat cloudové aplikace používané zaměstnanci ve vaší organizaci.
+
+- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) je služba zabezpečení, která využívá Azure Active Directory možnosti detekce anomálií k zajištění konsolidovaného zobrazení rizikových událostí a potenciálních ohrožení zabezpečení, které by mohly ovlivnit vaši organizaci. nebyly.
+
+- [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) umožňuje připojit virtuální počítače Azure k doméně, aniž by bylo nutné nasazovat řadiče domény. Uživatelé se k těmto virtuálním počítačům přihlásí pomocí svých podnikových přihlašovacích údajů pro Active Directory a můžou bezproblémově přistupovat k prostředkům.
+
+- [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) je vysoce dostupná a globální služba pro správu identit pro aplikace zaměřené na uživatele, která umožňuje škálování na stovky milionů identit a integraci napříč mobilními a webovými platformami. Vaši zákazníci se můžou ke všem vašim aplikacím přihlašovat prostřednictvím přizpůsobitelného prostředí, které používá stávající účty sociálních médií, nebo můžete vytvořit nové samostatné přihlašovací údaje.
+
+- [Azure Active Directory spolupráce B2B](https://aka.ms/aad-b2b-collaboration) je zabezpečené integrační řešení, které podporuje vztahy mezi společnostmi tím, že umožňuje partnerům přistupovat k podnikovým aplikacím a datům selektivně pomocí vlastních identit spravovaných v rámci sebe. .
+
+- [Azure Active Directory JOIN](https://azure.microsoft.com/documentation/articles/active-directory-azureadjoin-overview/) umožňuje rozšiřování cloudových možností do zařízení s Windows 10 pro centralizovanou správu. Umožňuje uživatelům připojit se k podnikovému nebo organizačnímu cloudu prostřednictvím Azure Active Directory a zjednodušit přístup k aplikacím a prostředkům.
+
+- [Proxy aplikací služby Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/) poskytuje jednotné přihlašování a zabezpečený vzdálený přístup k webovým aplikacím hostovaným místně.
+
+## <a name="next-steps"></a>Další kroky
+- [Začínáme se zabezpečením Microsoft Azure](https://docs.microsoft.com/azure/security/azure-security-getting-started)
+
+Služby a funkce Azure, které můžete použít ke zvýšení zabezpečení služeb a dat v rámci Azure
+
+- [Azure Security Center](https://azure.microsoft.com/services/security-center/)
+
+Ochrana před hrozbami, rozpoznání hrozeb a reakce na hrozby – zvýšená viditelnost a kontrola nad zabezpečením vašich prostředků Azure
+
+- [Monitorování stavu zabezpečení pomocí Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
+
+Možnosti monitorování v Azure Security Center pro monitorování dodržování předpisů pomocí zásad.

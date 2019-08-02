@@ -1,57 +1,57 @@
 ---
-title: Zpracování události myši s Azure Maps | Dokumentace Microsoftu
-description: Jak provádět interaktivní mapu jazyka Javascript pomocí mapy událostí
+title: Zpracování událostí myši pomocí Azure Maps | Microsoft Docs
+description: Jak vytvořit interaktivní mapu JavaScriptu s událostmi mapy
 author: jingjing-z
 ms.author: jinzh
-ms.date: 11/29/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 4fce8eae25942d098bb3f3277938bfaa3dafa00b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da6b183155de0fbc370751254a6842343d280874
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60770444"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638973"
 ---
-# <a name="interact-with-the-map---mouse-events"></a>Interakce s mapou - události myši
+# <a name="interact-with-the-map---mouse-events"></a>Interakce s událostmi myši na mapě
 
-V tomto článku se dozvíte, jak používat [map – třída](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) vlastnost zvýrazněte události na mapě a na různých vrstev mapy. Je také ukazuje, jak pomocí vlastnosti události mapování třídy zvýrazněte události, kdy budete moct používat značky HTML.
+V tomto článku se dozvíte, jak použít vlastnost [události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [třídy mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) k zvýraznění událostí na mapě a v různých vrstvách mapy. Také ukazuje, jak použít vlastnost události map Class k zvýraznění událostí při interakci se značkou HTML.
 
 ## <a name="interact-with-the-map"></a>Interakce s mapou
 
-<iframe height='600' scrolling='no' title='Interakce s mapou – události myši' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>interakce s mapou – události myši</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='600' scrolling='no' title='Interakce s mapou – události myši' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>interakce s mapou – události myši</a> podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Pohrajte si s mapě výše a zobrazte odpovídající události myši zvýrazněný na pravé straně. Můžete kliknout na **JS kartu** k zobrazení a úpravy kódu jazyka JavaScript. Můžete také kliknout na **upravit na CodePen** tlačítko a úpravy kódu na CodePen.
+Přejděte na mapu výše a podívejte se na odpovídající události myši zvýrazněné vpravo. Kliknutím na **kartu js** můžete zobrazit a upravit kód JavaScriptu. Můžete také kliknout na tlačítko **Upravit při CodePen** a upravit kód v CodePen.
 
-## <a name="interact-with-map-layers"></a>Pracovat s vrstev mapy
+## <a name="interact-with-map-layers"></a>Interakce s vrstvami mapy
 
-<iframe height='600' scrolling='no' title='Interakce s mapou – vrstva událostí' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>interakce s mapou – vrstva událostí</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='600' scrolling='no' title='Interakce s mapami – události vrstev' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero v <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>interakci s mapou – události vrstev</a> podle Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Výše uvedený kód ukazuje název události, které vzplaňte nahoru, když pracujete s vrstvou Symbol. Symbol, bublin, řádku a mnohoúhelníku vrstvy všechny podporují stejnou sadu událostí. Dlaždicová vrstva nepodporuje některé z těchto událostí.
+Výše uvedený kód zvýrazní názvy událostí, které se při interakci s vrstvou symbolů spustí. Vrstva symbol, bublina, čára a mnohoúhelník podporuje stejnou sadu událostí. Vrstva dlaždice nepodporuje žádné z těchto událostí.
 
-## <a name="interact-with-html-marker"></a>Pracovat s značky HTML
+## <a name="interact-with-html-marker"></a>Interakce s HTML značkou
 
-<iframe height='500' scrolling='no' title='Interakce s mapou – značky HTML události' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>interakce s mapou – značky HTML události</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Interakce s událostmi značky HTML map' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si pero <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>s událostmi značky HTML map –</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Výše uvedený kód přidá značku HTML Javascript mapy událostí. Také zvýrazní název události, které vzplaňte si, jak budete moct používat značky HTML.
+Výše uvedený kód přidá události mapy JavaScriptu do značky HTML. Také zvýrazní názvy událostí, které se spustí při interakci se značkou HTML.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o třídy a metody používané v tomto článku:
-
-> [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-
-Naleznete v následujících článcích pro úplné příklady:
+Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Pomocí modulu služby Azure Maps](./how-to-use-services-module.md)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+Úplné příklady kódu najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Znaková stránka vzorku](https://aka.ms/AzureMapsSamples)
+> [Použití modulu služby Azure Maps Services](./how-to-use-services-module.md)
+
+> [!div class="nextstepaction"]
+> [Stránka ukázka kódu](https://aka.ms/AzureMapsSamples)

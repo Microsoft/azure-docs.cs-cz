@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: cd56df8e88a84f52933e5ee43fecd598252ba6c0
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bffb92e37ccddd43c2a64466282084bb6226c338
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479761"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570555"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -39,8 +39,6 @@ ms.locfileid: "68479761"
 
 [virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 
-> [!TIP]
-> Pacemaker v Red Hat Enterprise Linux používá agenta Azure plot k plotu uzlu clusteru, pokud je to potřeba. Je dostupná nová verze agenta Azure plotu a převzetí služeb při selhání už trvá dlouho, pokud dojde k selhání prostředku nebo uzly clusteru už vzájemně nekomunikují. Další informace najdete v tématu vytvoření [virtuálního počítače Azure se spuštěným systémem jako RHELý člen clusteru s vysokou dostupností, který může být v případě, že se virtuální počítač vypíná, neúspěšně nebo nevypršela jeho platnost](https://access.redhat.com/solutions/3408711) .
 
 Nejprve si přečtěte následující poznámky a dokumenty SAP:
 

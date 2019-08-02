@@ -9,25 +9,27 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 7d216a3706c13a5fff312850e244a521ab22ae9e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9e62dd25c3ff16e280eda1ad11053ef520a85e4d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386535"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706525"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Vytvoření šablon Azure Resource Manager pro automatizaci nasazení pro Azure Logic Apps
 
 Tento článek popisuje způsoby, jak můžete vytvořit [šablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pro aplikaci logiky, která vám umožní automatizovat vytváření a nasazení aplikace logiky. Přehled struktury a syntaxe pro šablonu, která obsahuje definici pracovního postupu a další prostředky nezbytné pro nasazení, najdete v tématu [přehled: Automatizujte nasazení Logic Apps pomocí šablon](logic-apps-azure-resource-manager-templates-overview.md)Azure Resource Manager.
 
-Azure Logic Apps poskytuje [předem připravené Logic apps Azure Resource Manager šablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) , kterou můžete použít, nejen pro vytváření aplikací logiky, ale také k definování prostředků a parametrů, které se mají použít pro nasazení. Tuto šablonu můžete použít pro vlastní obchodní scénáře nebo šablonu přizpůsobit, aby splňovala vaše požadavky. Další informace o Azure Resource Manager šablonách najdete v těchto tématech:
+Azure Logic Apps poskytuje [předem vytvořenou šablonu Azure Resource Manager aplikace logiky](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) , kterou můžete použít, nejen pro vytváření aplikací logiky, ale také k definování prostředků a parametrů, které se mají použít pro nasazení. Tuto šablonu můžete použít pro vlastní obchodní scénáře nebo šablonu přizpůsobit, aby splňovala vaše požadavky.
+
+> [!IMPORTANT]
+> Zajistěte, aby připojení ve vaší šabloně používala stejnou skupinu prostředků Azure a umístění jako vaše aplikace logiky.
+
+Další informace o Azure Resource Manager šablonách najdete v těchto tématech:
 
 * [Azure Resource Manager struktura a syntaxe šablony](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Vývoj šablon Azure Resource Manageru pro konzistenci cloudu](../azure-resource-manager/templates-cloud-consistency.md)
-
-> [!IMPORTANT]
-> Připojení ve vaší šabloně musí používat stejnou skupinu prostředků Azure a umístění jako vaše aplikace logiky.
 
 <a name="visual-studio"></a>
 
@@ -47,6 +49,13 @@ Stažením aplikace logiky získáte šablonu, která obsahuje definice pro vaš
 Správce prostředků šablony můžete vytvořit pomocí Azure PowerShell s [modulem LogicAppTemplate](https://github.com/jeffhollan/LogicAppTemplateCreator). Tento Open source modul nejprve vyhodnotí vaši aplikaci logiky a všechna připojení, která používá aplikace logiky. Modul pak vygeneruje šablony prostředků s potřebnými parametry pro nasazení.
 
 Předpokládejme například, že máte aplikaci logiky, která přijímá zprávu z fronty Azure Service Bus a odesílá data do databáze SQL Azure. Modul zachovává veškerou logiku Orchestrace a parameterizes připojovací řetězce SQL a Service Bus, takže můžete tyto hodnoty zadat a změnit na základě potřeb nasazení.
+
+Tyto ukázky ukazují, jak vytvořit a nasadit Logic Apps pomocí Azure Resource Manager šablon, Azure Pipelines v Azure DevOps a Azure PowerShell:
+
+* [Ukázka: Připojení k Azure Service Bus frontám z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Ukázka: Připojení k Azure Storage účtům z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Ukázka: Nastavení akce aplikace Function App pro Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Ukázka: Připojit se k účtu pro integraci z Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>Nainstalovat moduly PowerShellu
 

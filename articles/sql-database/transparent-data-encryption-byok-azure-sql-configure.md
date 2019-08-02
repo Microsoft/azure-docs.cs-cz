@@ -1,6 +1,6 @@
 ---
-title: 'Prostředí PowerShell a rozhraní příkazového řádku: Povolení šifrování TDE SQL - pomocí služby Azure Key Vault – přineste si vlastní klíč – Azure SQL Database | Dokumentace Microsoftu'
-description: Další informace o konfiguraci Azure SQL Database a Data Warehouse, pokud chcete začít používat transparentní šifrování dat (TDE) pro šifrování v klidovém stavu pomocí Powershellu nebo rozhraní příkazového řádku.
+title: 'PowerShell a rozhraní příkazového řádku: Povolit SQL TDE – s využitím Azure Key Vault – Přineste si vlastní klíč – Azure SQL Database | Microsoft Docs'
+description: Naučte se konfigurovat Azure SQL Database a datový sklad, abyste mohli začít používat transparentní šifrování dat (TDE) pro šifrování v klidovém formátu pomocí PowerShellu nebo rozhraní příkazového řádku.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,42 +10,41 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: c42c6175512105de38a29be260c370851e152137
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f191a9f589f54bdd657c017060f501b176a8647d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60330869"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596721"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>Prostředí PowerShell a rozhraní příkazového řádku: Povolit transparentní šifrování dat s použitím klíče spravovaného zákazníkem ze služby Azure Key Vault
+# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a rozhraní příkazového řádku: Povolit transparentní šifrování dat s klíčem spravovaným zákazníkem z Azure Key Vault
 
-Tento článek vás provede postupem použití klíče ze služby Azure Key Vault pro transparentní šifrování dat (TDE) pro SQL Database nebo datového skladu. Další informace o transparentní šifrování dat díky integraci služby Azure Key Vault – podpora přineste si vlastní klíč (BYOK), najdete v tématu [transparentní šifrování dat pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault](transparent-data-encryption-byok-azure-sql.md). 
+Tento článek vás seznámí s postupem použití klíče z Azure Key Vault pro transparentní šifrování dat (TDE) na SQL Database nebo na datovém skladu. Další informace o TDE s podporou Azure Key Vault Integration-Bring Your Own Key (BYOK) najdete v části [TDE s klíči spravovanými zákazníky v Azure Key Vault](transparent-data-encryption-byok-azure-sql.md). 
 
-## <a name="prerequisites-for-powershell"></a>Požadavky na prostředí PowerShell
+## <a name="prerequisites-for-powershell"></a>Předpoklady pro PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
-- Musíte mít předplatné Azure a mít oprávnění správce pro toto předplatné.
-- [Nepovinné ale doporučeno] Mají modulu hardwarového zabezpečení (HSM) nebo místní klíč úložiště pro vytváření místní kopie klíče ochrana TDE.
-- Musíte mít Azure PowerShell nainstalovaný a spuštěný. 
-- Vytvoření služby Azure Key Vault a klíče pro TDE.
-  - [Pokyny pro PowerShell ze služby Key Vault](../key-vault/key-vault-overview.md)
-  - [Pokyny pro používání modulu hardwarového zabezpečení (HSM) a služby Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
-    - Key vault musí mít následující vlastnost, která má být použit pro transparentní šifrování dat:
-  - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+- Musíte mít předplatné Azure a mít oprávnění správce k tomuto předplatnému.
+- [Doporučené, ale volitelné] Mít modul hardwarového zabezpečení (HSM) nebo místní úložiště klíčů pro vytvoření místní kopie materiálu klíče ochrany TDE.
+- Musíte mít nainstalovanou a spuštěnou Azure PowerShell. 
+- Vytvořte Azure Key Vault a klíč pro použití pro TDE.
+  - [Pokyny pro PowerShell z Key Vault](../key-vault/quick-create-powershell.md)
+  - [Pokyny k používání modulu hardwarového zabezpečení (HSM) a Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
+    - Trezor klíčů musí mít následující vlastnost, která se má použít pro TDE:
+  - [obnovitelné odstraňování](../key-vault/key-vault-ovw-soft-delete.md) a mazání ochrany
   - [Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu](../key-vault/key-vault-soft-delete-powershell.md) 
-- Klíč musí mít následující atributy, které se použije pro transparentní šifrování dat:
+- Klíč musí mít následující atributy, které se mají použít pro TDE:
    - Žádné datum vypršení platnosti
-   - Není zakázáno
-   - Může provádět *získat*, *zabalit klíč*, *rozbalit klíč* operace
+   - Nezakázáno
+   - Může provádět operace *Get*, *Wrap Key*, *rozbalení klíčových* operací.
 
-## <a name="step-1-assign-an-azure-ad-identity-to-your-server"></a>Krok 1. Přiřazení k vašemu serveru Azure AD identity 
+## <a name="step-1-assign-an-azure-ad-identity-to-your-server"></a>Krok 1. Přiřazení identity Azure AD k vašemu serveru 
 
-Pokud máte existující server, použijte následující identity Azure AD přidat k vašemu serveru:
+Pokud máte existující server, přidejte na server identitu Azure AD pomocí následujících kroků:
 
    ```powershell
    $server = Set-AzSqlServer `
@@ -54,7 +53,7 @@ Pokud máte existující server, použijte následující identity Azure AD při
    -AssignIdentity
    ```
 
-Při vytváření serveru, použijte [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) rutiny se značkou-Identity přidat při vytváření serveru Azure AD identity:
+Pokud vytváříte server, použijte k přidání identity Azure AD během vytváření serveru rutinu [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) s ID značky.
 
    ```powershell
    $server = New-AzSqlServer `
@@ -66,9 +65,9 @@ Při vytváření serveru, použijte [New-AzSqlServer](/powershell/module/az.sql
    -AssignIdentity 
    ```
 
-## <a name="step-2-grant-key-vault-permissions-to-your-server"></a>Krok 2. Udělení oprávnění pro Key Vault k serveru
+## <a name="step-2-grant-key-vault-permissions-to-your-server"></a>Krok 2. Udělení Key Vault oprávnění vašemu serveru
 
-Použití [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) rutiny udělit přístup k klíč serveru trezoru před pro transparentní šifrování dat pomocí klíče z něj.
+Pomocí rutiny [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) udělte vašemu serveru přístup k trezoru klíčů před použitím klíče pro TDE.
 
    ```powershell
    Set-AzKeyVaultAccessPolicy  `
@@ -77,18 +76,20 @@ Použití [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyv
    -PermissionsToKeys get, wrapKey, unwrapKey
    ```
 
-## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Krok 3. Přidat klíč služby Key Vault k serveru a nastavit ochrana TDE
+## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Krok 3. Přidejte Key Vault klíč k serveru a nastavte ochranu TDE.
 
-- Použití [přidat AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) rutiny pro přidání klíče ze služby Key Vault k serveru.
-- Použití [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) rutina pro nastavení klíče jako ochrana TDE pro všechny prostředky serveru.
-- Použití [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) rutiny a potvrďte, že ochrana TDE byl nakonfigurován tak, jak má.
+
+- Načtení ID klíče z trezoru klíčů pomocí rutiny [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0)
+- K přidání klíče z Key Vault na server použijte rutinu [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) .
+- Pomocí rutiny [set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) nastavte klíč jako ochranu TDE pro všechny prostředky serveru.
+- Pomocí rutiny [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) ověřte, že ochrana TDE byla nakonfigurovaná tak, jak má.
 
 > [!Note]
-> Celková délka pro název trezoru klíčů a název klíče nemůže být delší než 94 znaků.
+> Celková délka názvu trezoru klíčů a názvu klíče nesmí překročit 94 znaků.
 > 
 
 >[!Tip]
->Příklad ID klíče ze služby Key Vault: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+>Příklad KeyId z Key Vault: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
 >
 
    ```powershell
@@ -111,9 +112,9 @@ Použití [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyv
    -ServerName <LogicalServerName> 
    ```
 
-## <a name="step-4-turn-on-tde"></a>Krok 4. Zapnout transparentní šifrování dat 
+## <a name="step-4-turn-on-tde"></a>Krok 4. Zapnout TDE 
 
-Použití [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) rutiny zapnout TDE.
+Zapněte TDE pomocí rutiny [set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) .
 
    ```powershell
    Set-AzSqlDatabaseTransparentDataEncryption `
@@ -123,11 +124,11 @@ Použití [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql
    -State "Enabled"
    ```
 
-Nyní databázi ani na datový sklad má povoleno pomocí šifrovacího klíče ve službě Key Vault TDE.
+Databáze nebo datový sklad teď má TDE povolený šifrovací klíč v Key Vault.
 
-## <a name="step-5-check-the-encryption-state-and-encryption-activity"></a>Krok 5. Zkontrolujte stav šifrování a aktivita šifrování
+## <a name="step-5-check-the-encryption-state-and-encryption-activity"></a>Krok 5. Zkontroluje stav šifrování a aktivitu šifrování.
 
-Použití [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) zobrazíte stav šifrování a [Get-AzSqlDatabaseTransparentDataEncryptionActivity](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryptionactivity) ke kontrole průběhu šifrování pro databázi nebo datový sklad.
+Použijte [příkaz Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) k získání stavu šifrování a [Get-AzSqlDatabaseTransparentDataEncryptionActivity](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryptionactivity) pro kontrolu průběhu šifrování databáze nebo datového skladu.
 
    ```powershell
    # Get the encryption state
@@ -145,7 +146,7 @@ Použití [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql
 
 ## <a name="other-useful-powershell-cmdlets"></a>Další užitečné rutiny prostředí PowerShell
 
-- Použití [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) rutiny, chcete-li vypnout TDE.
+- Pro vypnutí TDE použijte rutinu [set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) .
 
    ```powershell
    Set-AzSqlDatabaseTransparentDataEncryption `
@@ -155,7 +156,7 @@ Použití [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql
    -State "Disabled”
    ```
  
-- Použití [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) rutina vrátí seznam klíčů služby Key Vault přidána na server.
+- Pomocí rutiny [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) vraťte seznam Key Vault klíčů přidaných na server.
 
    ```powershell
    <# KeyId is an optional parameter, to return a specific key version #>
@@ -164,7 +165,7 @@ Použití [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql
    -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
  
-- Použití [odebrat AzSqlServerKeyVaultKey](/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) odebrání klíče služby Key Vault ze serveru.
+- K odebrání Key Vault klíče ze serveru použijte [příkaz Remove-AzSqlServerKeyVaultKey](/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) .
 
    ```powershell
    <# The key set as the TDE Protector cannot be removed. #>
@@ -176,40 +177,40 @@ Použití [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql
  
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud dojde k problému zkontrolujte následující:
-- Pokud nelze najít trezor klíčů, ujistěte se, že jste pomocí správného předplatného [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) rutiny.
+Pokud dojde k problému, podívejte se na následující:
+- Pokud se Trezor klíčů nepovedlo najít, ujistěte se, že jste ve správném předplatném pomocí rutiny [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) .
 
    ```powershell
    Get-AzSubscription `
    -SubscriptionId <SubscriptionId>
    ```
 
-- Pokud se k serveru nelze přidat nový klíč, nebo nový klíč nelze aktualizovat jako ochrana TDE, zkontrolujte následující:
-   - Klíč by neměl mít datum vypršení platnosti
-   - Klíč musí mít *získat*, *zabalit klíč*, a *rozbalit klíč* operace povolena.
+- Pokud nový klíč nelze přidat na server nebo nový klíč nelze aktualizovat jako ochranu TDE, podívejte se na následující:
+   - Klíč by neměl mít datum vypršení platnosti.
+   - Klíč musí mít povolené operace *Get*, *Wrap Key*a *Unwrap Key* .
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak otočit ochrana TDE serveru k zajištění souladu s požadavky na zabezpečení: [Otočit pomocí Powershellu ochrany transparentního šifrování dat](transparent-data-encryption-byok-azure-sql-key-rotation.md).
-- V případě ohrožení zabezpečení zjistěte, jak odebrat potenciálně ohroženými ochrana TDE: [Odebrání potenciálně ohrožený klíč](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
+- Naučte se, jak otočit ochranu TDE serveru tak, aby splňovala požadavky na zabezpečení: [Otočte ochranu transparentní šifrování dat pomocí PowerShellu](transparent-data-encryption-byok-azure-sql-key-rotation.md).
+- V případě bezpečnostního rizika se dozvíte, jak odebrat potenciálně ohrožené ochrany TDE: [Odeberte potenciálně ohrožený klíč](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
 
-## <a name="prerequisites-for-cli"></a>Požadavky pro rozhraní příkazového řádku
+## <a name="prerequisites-for-cli"></a>Předpoklady pro rozhraní příkazového řádku
 
-- Musíte mít předplatné Azure a mít oprávnění správce pro toto předplatné.
-- [Nepovinné ale doporučeno] Mají modulu hardwarového zabezpečení (HSM) nebo místní klíč úložiště pro vytváření místní kopie klíče ochrana TDE.
-- Rozhraní příkazového řádku verze 2.0 nebo novější. Nainstalujte nejnovější verzi a připojte se ke svému předplatnému Azure najdete v tématu [instalace a konfigurace rozhraní příkazového řádku 2.0 pro různé platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
-- Vytvoření služby Azure Key Vault a klíče pro TDE.
-  - [Správa služby Key Vault pomocí CLI 2.0](../key-vault/key-vault-manage-with-cli2.md)
-  - [Pokyny pro používání modulu hardwarového zabezpečení (HSM) a služby Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
-    - Key vault musí mít následující vlastnost, která má být použit pro transparentní šifrování dat:
+- Musíte mít předplatné Azure a mít oprávnění správce k tomuto předplatnému.
+- [Doporučené, ale volitelné] Mít modul hardwarového zabezpečení (HSM) nebo místní úložiště klíčů pro vytvoření místní kopie materiálu klíče ochrany TDE.
+- Rozhraní příkazového řádku verze 2,0 nebo novější. Pokud chcete nainstalovat nejnovější verzi a připojit se k předplatnému Azure, přečtěte si téma [instalace a konfigurace 2,0 rozhraní příkazového řádku Azure pro více platforem](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+- Vytvořte Azure Key Vault a klíč pro použití pro TDE.
+  - [Správa Key Vault pomocí CLI 2,0](../key-vault/key-vault-manage-with-cli2.md)
+  - [Pokyny k používání modulu hardwarového zabezpečení (HSM) a Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
+    - Trezor klíčů musí mít následující vlastnost, která se má použít pro TDE:
   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
   - [Jak používat obnovitelné odstranění Key Vaultu s využitím CLI](../key-vault/key-vault-soft-delete-cli.md) 
-- Klíč musí mít následující atributy, které se použije pro transparentní šifrování dat:
+- Klíč musí mít následující atributy, které se mají použít pro TDE:
    - Žádné datum vypršení platnosti
-   - Není zakázáno
-   - Může provádět *získat*, *zabalit klíč*, *rozbalit klíč* operace
+   - Nezakázáno
+   - Může provádět operace *Get*, *Wrap Key*, *rozbalení klíčových* operací.
    
-## <a name="step-1-create-a-server-with-an-azure-ad-identity"></a>Krok 1. Vytvoření serveru s identitou služby Azure AD
+## <a name="step-1-create-a-server-with-an-azure-ad-identity"></a>Krok 1. Vytvoření serveru s identitou Azure AD
       cli
       # create server (with identity) and database
       az sql server create --name <servername> --resource-group <rgname>  --location <location> --admin-user <user> --admin-password <password> --assign-identity
@@ -217,10 +218,10 @@ Pokud dojde k problému zkontrolujte následující:
  
  
 >[!Tip]
->Zabránit "principalID" Vytvoření serveru, je použita k přiřazení trezoru klíčů oprávnění v dalším kroku id objektu
+>Ponechte "principalID" z vytváření serveru, jedná se o ID objektu používané k přiřazení oprávnění trezoru klíčů v dalším kroku.
 >
  
-## <a name="step-2-grant-key-vault-permissions-to-the-logical-sql-server"></a>Krok 2. Udělení oprávnění pro Key Vault pro logický sql server
+## <a name="step-2-grant-key-vault-permissions-to-the-logical-sql-server"></a>Krok 2. Udělení oprávnění Key Vault logickému SQL serveru
       cli
       # create key vault, key and grant permission
        az keyvault create --name <kvname> --resource-group <rgname> --location <location> --enable-soft-delete true
@@ -229,11 +230,11 @@ Pokud dojde k problému zkontrolujte následující:
 
 
 >[!Tip]
->Zachovat klíče identifikátor URI nebo keyID nový klíč na další krok, například: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+>Ponechte klíč URI nebo keyID nového klíče pro další krok, například: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
 >
  
        
-## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Krok 3. Přidat klíč služby Key Vault k serveru a nastavit ochrana TDE
+## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Krok 3. Přidejte Key Vault klíč k serveru a nastavte ochranu TDE.
   
      cli
      # add server key and update encryption protector
@@ -242,19 +243,19 @@ Pokud dojde k problému zkontrolujte následující:
 
         
   > [!Note]
-> Celková délka pro název trezoru klíčů a název klíče nemůže být delší než 94 znaků.
+> Celková délka názvu trezoru klíčů a názvu klíče nesmí překročit 94 znaků.
 > 
 
   
-## <a name="step-4-turn-on-tde"></a>Krok 4. Zapnout transparentní šifrování dat 
+## <a name="step-4-turn-on-tde"></a>Krok 4. Zapnout TDE 
       cli
       # enable encryption
       az sql db tde set --database <dbname> --server <servername> --resource-group <rgname> --status Enabled 
       
 
-Nyní databázi ani na datový sklad má povoleno pomocí klíče spravovaného zákazníkem šifrování ve službě Azure Key Vault TDE.
+Databáze nebo datový sklad teď má TDE povolený šifrovací klíč spravovaný zákazníkem v Azure Key Vault.
 
-## <a name="step-5-check-the-encryption-state-and-encryption-activity"></a>Krok 5. Zkontrolujte stav šifrování a aktivita šifrování
+## <a name="step-5-check-the-encryption-state-and-encryption-activity"></a>Krok 5. Zkontroluje stav šifrování a aktivitu šifrování.
 
      cli
       # get encryption scan progress

@@ -13,51 +13,51 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f716ccd7b2e02c9064f13cf1ffd6e8180858c9
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: c872d5151ac0b7bb650e2de68b9e631e8254ba94
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827916"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618888"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
-Pomocí sestav Azure Active Directory (Azure AD) můžete získat informace, které potřebujete ke zjištění stavu vašeho prostředí.
+Pomocí sestav Azure Active Directory (Azure AD) můžete získat informace, které potřebujete k určení toho, jak vaše prostředí dělá.
 
-Architektura generování sestav se skládá z následujících součástí:
+Architektura vytváření sestav se skládá z následujících součástí:
 
 - **Aktivita** 
-    - **Přihlášení** – [sestavy přihlášení](concept-sign-ins.md) poskytuje informace o využití spravovaných aplikací a uživatel aktivit přihlašování.
-    - **Protokoly auditu** – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny jakýchkoli prostředků v rámci Azure AD, jako jsou přidávání nebo odebírání uživatelů, aplikace, skupiny, role a zásady.
+    - **Přihlášení** – [Sestava přihlášení](concept-sign-ins.md) poskytuje informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
+    - **Protokoly auditu** – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny provedené u všech prostředků v rámci Azure AD, jako je přidávání nebo odebírání uživatelů, aplikací, skupin, rolí a zásad.
 - **Zabezpečení** 
-    - **Riziková přihlášení** – [rizikových přihlášení](concept-risky-sign-ins.md) je indikátorem pokusu přihlásit, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
-    - **Uživatelé označení příznakem rizika** – [rizikový uživatel](concept-user-at-risk.md) je indikátorem uživatelského účtu, který mohl být ohrožený.
+    - **Riziková přihlášení** – [rizikové přihlášení](concept-risky-sign-ins.md) je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
+    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](concept-user-at-risk.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
 
-Tento článek obsahuje přehled sestavy auditu.
+Tento článek vám poskytne přehled o sestavě auditu.
  
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 
-* Uživatelé v **správce zabezpečení**, **Čtenář zabezpečení**, **čtenáře sestav** nebo **globálního správce** role
-* Kromě toho všichni uživatelé (bez oprávnění správce) mohou zobrazit své vlastní aktivity auditu
+* Uživatelé v rolích **Správce zabezpečení**, **Čtenář zabezpečení**, **Čtenář sestav** nebo **globální role správce**
+* Všichni uživatelé (bez správců) můžou navíc zobrazit vlastní aktivity auditu.
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-Auditování Azure AD protokoly obsahují záznamy aktivit systému kvůli dodržování předpisů. Pro přístup k sestavě auditu, vyberte **protokoly auditu** v **aktivity** část **Azure Active Directory**. Všimněte si, že protokoly auditu mohou latenci až hodinu, tak může trvat dlouho to pro data aktivit auditu se zobrazí na portálu po dokončení úlohy.
+Protokoly auditu Azure AD poskytují záznamy systémových aktivit pro dodržování předpisů. Chcete-li získat přístup k sestavě auditu, vyberte v části **aktivita** v **Azure Active Directory**možnost **protokoly auditu** . Všimněte si, že protokoly auditu můžou až latenci, takže může trvat, než se data o auditu zobrazí na portálu po dokončení úkolu.
 
-![Protokoly auditu](./media/concept-audit-logs/61.png "Protokoly auditu")
+
 
 Protokol auditu má výchozí zobrazení seznamu, které obsahuje následující položky:
 
 - datum a čas výskytu
-- Služba, která způsobila výskytu
+- služba, která protokoluje výskyt
 - kategorie a název aktivity (*co*) 
-- Stav aktivity (úspěch nebo neúspěch)
+- stav aktivity (úspěch nebo neúspěch)
 - cíl
-- Iniciátor / objektu actor (kdo) aktivity
+- Iniciátor/actor (kdo) aktivity
 
 ![Protokoly auditu](./media/concept-audit-logs/listview.png "Protokoly auditu")
 
@@ -69,31 +69,31 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 ![Protokoly auditu](./media/concept-audit-logs/columnselect.png "Protokoly auditu")
 
-Vyberte položku v zobrazení seznamu zobrazíte podrobnější informace.
+Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
 ![Protokoly auditu](./media/concept-audit-logs/details.png "Protokoly auditu")
 
 
 ## <a name="filtering-audit-logs"></a>Filtrování protokolů auditu
 
-Můžete filtrovat data auditu pro následující pole:
+Data auditu můžete filtrovat v následujících polích:
 
 - Služba
 - Kategorie
 - Aktivita
 - Stav
 - Target
-- Spustil(a) (činitel)
+- Iniciátor (actor)
 - Rozsah dat
 
 ![Protokoly auditu](./media/concept-audit-logs/filter.png "Protokoly auditu")
 
-**Služby** filtr umožňuje vyberte z rozevíracího seznamu z následujících služeb:
+Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující služby:
 
 - Vše
 - Kontroly přístupu
 - Zřizování účtů 
-- Aplikace SSO
+- Jednotné přihlašování aplikace
 - Metody ověřování
 - B2C
 - Podmíněný přístup
@@ -103,10 +103,10 @@ Můžete filtrovat data auditu pro následující pole:
 - Pozvaní uživatelé
 - PIM
 - Samoobslužná správa skupin
-- Správa samoobslužných služeb Passord
-- Podmínky použití
+- Samoobslužná správa hesel
+- Podmínkami použití
 
-**Kategorie** filtr umožňuje vybrat jednu z následujících filtrů:
+Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 
 - Vše
 - AdministrativeUnit
@@ -125,21 +125,21 @@ Můžete filtrovat data auditu pro následující pole:
 - RoleManagement
 - UserManagement
 
-**Aktivity** filtr podle kategorií a aktivit prostředků typ výběru provedete. Můžete vybrat konkrétní aktivitu, kterou chcete zobrazit, nebo zvolit všechny. 
+Filtr **aktivity** je založen na typu kategorie a prostředku aktivity, kterou provedete. Můžete vybrat konkrétní aktivitu, kterou chcete zobrazit, nebo zvolit všechny. 
 
-Seznam všech aktivit auditu můžete získat pomocí Graph API https://graph.windows.net/ $tenantdomain/activities/auditActivityTypes?api-version=beta, kde $tenantdomain = název domény. Také se můžete podívat na článek o [událostech sestavy auditování](reference-audit-activities.md).
+Seznam všech aktivit auditu můžete získat pomocí Graph API:`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
-**Stav** filtrování umožňuje filtrovat na základě stavu operace auditu. Stav může být jeden z následujících akcí:
+Filtr **stavu** vám umožňuje filtrovat na základě stavu operace auditu. Stav může být jedna z následujících:
 
 - Vše
 - Úspěch
-- Selhání
+- Chyba
 
-**Cílové** filtr umožňuje hledat podle názvu nebo hlavní název uživatele (UPN) pro konkrétní cíl. Název cíle a hlavní název uživatele jsou malá a velká písmena. 
+**Cílový** filtr vám umožní vyhledat konkrétní cíl podle názvu nebo hlavního názvu uživatele (UPN). Název cíle a hlavní název uživatele (UPN) rozlišují velká a malá písmena. 
 
-**Iniciovaných** filtr umožňuje definovat jméno prvek "actor" nebo univerzální hlavní název (UPN). Název a hlavní název uživatele jsou malá a velká písmena.
+Filtr **iniciovaná pomocí** filtru umožňuje definovat jméno objektu actor nebo univerzální hlavní název uživatele (UPN). Název a hlavní název uživatele (UPN) rozlišují malá a velká písmena.
 
-**Rozsah kalendářních dat** filtr umožňuje definovat časový rámec pro vracená data.  
+Filtr **rozsahu data** umožňuje definovat časový rámec pro vracená data.  
 Možné hodnoty jsou:
 
 - 1 měsíc
@@ -149,7 +149,7 @@ Možné hodnoty jsou:
 
 Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a koncový čas.
 
-Můžete také stáhnout tak, že vyberete filtrovaná data, až 250 000 záznamů, **Stáhnout** tlačítko. Můžete stáhnout protokoly ve formátu CSV nebo JSON. Počet záznamů, které si můžete stáhnout, které je omezená [zásady uchování sestav Azure Active Directory](reference-reports-data-retention.md).
+Můžete si také stáhnout filtrovaná data, až 250 000 záznamů, a to tak, že vyberete tlačítko **Stáhnout** . Protokoly si můžete stáhnout buď ve formátu CSV, nebo ve formátu JSON. Počet záznamů, které si můžete stáhnout, je omezený o [Azure Active Directory zásady uchovávání sestav](reference-reports-data-retention.md).
 
 ![Protokoly auditu](./media/concept-audit-logs/download.png "Protokoly auditu")
 
@@ -180,11 +180,11 @@ S použitím sestav auditu orientovaných na uživatele a skupiny můžete nají
 
 - Jaké licence byly přiřazeny skupině nebo uživateli?
 
-Pokud chcete jenom zkontrolovat data auditování týkající se uživatelů, najdete filtrované zobrazení v sekci **protokoly auditu** v **aktivity** část **uživatelé** kartu. Tento vstupní bod má **entit správy uživatelů** jako Zkontrolujte předem vybrané kategorie.
+Pokud chcete zkontrolovat jenom auditovaná data, která se vztahují k uživatelům, můžete filtrované zobrazení najít v části **protokoly auditu** v části **aktivita** na kartě **Uživatelé** . Tento vstupní bod má **UserManagement** jako předvybranou kategorii.
 
 ![Protokoly auditu](./media/concept-audit-logs/users.png "Protokoly auditu")
 
-Pokud chcete jenom zkontrolovat data auditování týkající se skupiny, najdete filtrované zobrazení v sekci **protokoly auditu** v **aktivity** část **skupiny** kartu. Tento vstupní bod má **GroupManagement** jako Zkontrolujte předem vybrané kategorie.
+Pokud chcete zkontrolovat jenom auditovaná data, která souvisí se skupinami, najdete filtrované zobrazení v části **protokoly auditu** v části **aktivita** na kartě **skupiny** . Tento vstupní bod má **GroupManagement** jako předvybranou kategorii.
 
 ![Protokoly auditu](./media/concept-audit-logs/groups.png "Protokoly auditu")
 
@@ -192,24 +192,24 @@ Pokud chcete jenom zkontrolovat data auditování týkající se skupiny, najdet
 
 S použitím sestav auditu orientovaných na aplikace můžete najít odpovědi na otázky tohoto typu:
 
-* Které aplikace byly přidány nebo aktualizovány?
+* Jaké aplikace byly přidány nebo aktualizovány?
 * Které aplikace byly odebrány?
-* Změnil se instanční objekt pro aplikaci?
+* Změnil se objekt služby pro aplikaci?
 * Změnily se názvy aplikací?
 * Kdo udělil souhlas pro aplikaci?
 
-Pokud chcete zkontrolovat data auditování týkající se aplikací, najdete filtrované zobrazení v sekci **protokoly auditu** v **aktivity** část **podnikové aplikace** okno. Tento vstupní bod má **podnikové aplikace** Zkontrolujte předem vybrané jako **typ aplikace**.
+Pokud chcete zkontrolovat data auditu související s vašimi aplikacemi, najdete filtrované zobrazení v části **protokoly auditu** v části **aktivita** v okně **podnikové aplikace** . Tento vstupní bod má jako **Typ aplikace**předvybranou možnost **podnikové aplikace** .
 
 ![Protokoly auditu](./media/concept-audit-logs/enterpriseapplications.png "Protokoly auditu")
 
 ## <a name="office-365-activity-logs"></a>Protokoly aktivit Office 365
 
-Můžete zobrazit protokoly aktivit Office 365 z [centra pro správu služeb Microsoft 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). I když aktivita Office 365 a Azure AD aktivity protokoly sdílejí velké množství prostředků adresáře pouze centru pro správu služeb Microsoft 365 poskytuje úplný přehled protokolů aktivit Office 365. 
+Protokoly aktivit Office 365 můžete zobrazit v centru pro [správu Microsoft 365](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). I když aktivity Office 365 a protokoly aktivit služby Azure AD sdílejí spoustu prostředků adresáře, zobrazí se úplné zobrazení protokolů aktivit Office 365 jenom v centru pro správu Microsoft 365. 
 
-Programově pomocí protokolů aktivit Office 365 se dá dostat taky [rozhraní API pro správu Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
+Přístup k protokolům aktivit Office 365 můžete také programově pomocí [rozhraní API pro správu sady office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 
 ## <a name="next-steps"></a>Další postup
 
-- [Referenční informace aktivit auditu Azure AD](reference-audit-activities.md)
-- [Odkaz na uchování sestavy Azure AD](reference-reports-data-retention.md)
-- [Odkazovat na latenci protokolu Azure AD](reference-reports-latencies.md)
+- [Referenční informace o aktivitě auditu Azure AD](reference-audit-activities.md)
+- [Referenční informace o uchovávání sestav Azure AD](reference-reports-data-retention.md)
+- [Reference latence protokolu Azure AD](reference-reports-latencies.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Rozhraní SQL Java API, SDK a zdroje informací'
+title: 'Azure Cosmos DB: SQL Java API, sada SDK & prostředky'
 description: Další informace o rozhraní SQL Java API a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB SQL Java SDK.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 7af43d24b03a4c548925bdca4189fd0524c701a4
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: bf89d419bcd97c276df35701bc4fd808f599094a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341641"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637705"
 ---
-# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
+# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro SQL API: Poznámky k verzi a zdroje informací
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
@@ -27,8 +27,8 @@ ms.locfileid: "67341641"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
+> * [Hromadný prováděcí modul – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
 
 Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní podporu, použijte [SQL API asynchronní Java SDK](sql-api-sdk-async-java.md). 
 
@@ -44,22 +44,22 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
-* Oprava chyby v PartitionKey v2 Hash.
+* Opravila se chyba v PartitionKey pro algoritmus hash v2.
 
 ### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
-* Přidání podpory pro složené indexy.
-* Oprava chyby ve Správci globální koncový bod vynucení aktualizace.
-* Oprava chyby pro upsertuje s předběžné podmínky v přímém režimu.
+* Byla přidána podpora pro složené indexy.
+* Opravená chyba v globálním správci koncových bodů pro vynucení aktualizace.
+* Opravená chyba pro upsertuje s předběžnými podmínkami v přímém režimu.
 
 ### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
-* Oprava chyby v mezipaměti adresu brány.
+* Opravená chyba v mezipaměti adres brány
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Podpora více oblastí zápisu přidá pro přímý režim.
 * Přidání podpory pro zpracování IOExceptions vyvolána jako ServiceUnavailable výjimky z proxy serveru.
 * Oprava chyby v zásadách koncového bodu zjišťování opakování.
 * Je opravená chyba, aby ukazatel s hodnotou null, které nejsou ve BaseDatabaseAccountConfigurationProvider vyvolání výjimky.
-* Je opravená chyba, ujistěte se, že QueryIterator nevrací hodnoty Null.
+* Opravili jsme chybu, abyste zajistili, že QueryIterator nevrací hodnoty null.
 * Je opravená chyba, ujistěte se, že je povolené velké PartitionKey
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
@@ -127,7 +127,7 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 * Přidání podpory pro kanál změn.
 * Přidání podpory pro informace o kvótě kolekce prostřednictvím RequestOptions.setPopulateQuotaInfo.
 * Přidání podpory pro uloženou proceduru skript protokolování prostřednictvím RequestOptions.setScriptLoggingEnabled.
-* Je opravená chyba, kde dotaz v režimu DirectHttps přestane reagovat při zjištění chyb omezení.
+* Opravili jsme chybu, kdy dotaz v režimu DirectHttps může přestat reagovat při zjištění selhání omezení.
 * Oprava chyby v režimu konzistence relace.
 * Je opravená chyba, což může způsobit NullReferenceException v objektu HttpContext, když je vysoká frekvence požadavků.
 * Vylepšení výkonu DirectHttps režimu.
@@ -142,7 +142,7 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
 * Oprava chyby ve správě připojení k zabránění únikům připojení v režimu přímého připojení.
-* Oprava chyby v dotazu TOP, kde se může vyvolat výjimku NullReference.
+* Opravili jsme chybu v HORNÍm dotazu, kde může vyvolat výjimku NullReference.
 * Vylepšení výkonu snížením počtu volání sítě pro vnitřní mezipaměti.
 * Přidání stavový kód, ID aktivity a požádat o identifikátor URI v DocumentClientException pro lepší řešení potíží.
 
@@ -215,7 +215,7 @@ Nové funkce a funkce a optimalizace jsou přidány pouze aktuální sadu SDK, p
 Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítnuty službou.
 
 > [!WARNING]
-> Všechny verze **1.x** sady SQL SDK pro Javu vyřadí **30. května 2020**.
+> Všechny verze **1. x** sady SQL SDK pro jazyk Java budou vyřazeny **30. května 2020**.
 > 
 >
 
@@ -229,8 +229,8 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
 | [2.1.3](#2.1.3) |13. března 2018 |--- |
-| [2.1.2](#2.1.2) |09. března 2018 |--- |
-| [2.1.1](#2.1.1) |13. prosince 2018 |--- |
+| [2.1.2](#2.1.2) |9\. března 2018 |--- |
+| [2.1.1](#2.1.1) |DEC 13, 2018 |--- |
 | [2.1.0](#2.1.0) |20. listopadu 2018 |--- |
 | [2.0.0](#2.0.0) |21. září 2018 |--- |
 | [1.16.4](#1.16.4) |10. září 2018 |30. května 2020 |

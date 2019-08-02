@@ -1,19 +1,19 @@
 ---
 title: Co může Azure Backup Server zálohování
 description: Tento článek obsahuje matrici podpory obsahující všechny úlohy, datové typy a instalace, které Azure Backup Server chrání.
-author: rayne-wiselman
+author: dcurwin
 ms.service: backup
 keywords: ''
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.author: raynew
+ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 2e8004b07542efed3ddc2b5a390cfb12fd48cc1b
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: b601f37ad7e0f0071b38a97c84cf25d57ed11ee1
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465059"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639696"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Systém ochrany Azure Backup Serveru
 

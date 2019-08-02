@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 925461ba6c74fe0bcf286692c1a19bb4e7c02dfa
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 6217fe51a0231ee1bd34f9fbe8edef47ee073209
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254426"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609700"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services: Nejčastější dotazy
 
@@ -101,7 +101,7 @@ K obnovení certifikátů pro správu můžete použít následující příkazy
     Select-AzureSubscription -Current -SubscriptionName <your subscription name>
     Get-AzurePublishSettingsFile
 
-**Příkaz Get-AzurePublishSettingsFile** vytvoří nový certifikát pro správu v**certifikátech správy** předplatných  > v Azure Portal. Název nového certifikátu vypadá jako "YourSubscriptionNam]-[CurrentDate]-přihlašovací údaje".
+**Příkaz Get-AzurePublishSettingsFile** vytvoří nový certifikát pro správu v**certifikátech správy** předplatných > v Azure Portal. Název nového certifikátu vypadá jako "YourSubscriptionNam]-[CurrentDate]-přihlašovací údaje".
 
 ### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak automatizovat instalaci hlavního certifikátu SSL (. pfx) a zprostředkujícího certifikátu (. P7B)?
 
@@ -297,7 +297,7 @@ V úloze po spuštění můžete povolit antimalwarové rozšíření pomocí sk
 - [Vytvoření spouštěcí úlohy PowerShellu](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
 - [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
-Další informace o scénářích antimalwarového nasazení a o tom, jak je povolit z portálu, najdete v tématu [scénáře nasazení](../security/azure-security-antimalware.md#antimalware-deployment-scenarios)antimalwaru.
+Další informace o scénářích antimalwarového nasazení a o tom, jak je povolit z portálu, najdete v tématu [scénáře nasazení](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)antimalwaru.
 
 ### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>Jak povolit Indikace názvu serveru (SNI) pro Cloud Services?
 
@@ -311,7 +311,7 @@ Vazbu SNI můžete nakonfigurovat pomocí rutiny prostředí PowerShell **New-we
     
 Jak je popsáno [zde](https://technet.microsoft.com/library/ee790567.aspx), $sslFlags může být jednou z následujících hodnot:
 
-|Hodnota|Význam|
+|Value|Význam|
 ------|------
 |0|Žádné SNI|
 |1|SNI povolen |

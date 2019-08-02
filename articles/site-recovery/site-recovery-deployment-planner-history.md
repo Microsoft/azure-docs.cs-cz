@@ -1,145 +1,154 @@
 ---
-title: Historie verzí plánovače nasazení Azure Site Recovery
-description: Známé opravy různých verzí plánovače nasazení obnovení lokality a známých omezeních spolu s jejich data vydání.
+title: Historie verze Plánovač nasazení služby Azure Site Recovery
+description: Známé různé verze Site Recovery Plánovač nasazení verzích a známá omezení spolu s daty jejich vydání.
 services: site-recovery
 author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 04/24/2019
+ms.date: 07/29/2019
 ms.author: dapatil
-ms.openlocfilehash: 2edf7ce3be1402a497ceab5b826a89ee43c5c39b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64927369"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620102"
 ---
-# <a name="azure-site-recovery-deployment-planner-version-history"></a>Historie verzí plánovače nasazení Azure Site Recovery
+# <a name="azure-site-recovery-deployment-planner-version-history"></a>Historie verze Plánovač nasazení služby Azure Site Recovery
 
-Tento článek obsahuje historii všech verzí technologie Azure Site Recovery Deployment Planner spolu s opravy, známé omezení v každém a jejich data vydání.
+Tento článek obsahuje historii všech verzí Plánovač nasazení služby Azure Site Recovery spolu s opravami, známá omezení v jednotlivých verzích a jejich datum vydání.
 
-## <a name="version-24"></a>Verze 2.4
+## <a name="version-25"></a>Verze 2,5
+
+**Datum vydání: 29. července 2019**
+
+**Řeší**
+
+- U virtuálních počítačů VMware a fyzických počítačů se doporučení aktualizuje, aby byla založená na replikaci do Managed Disks.
+- Přidání podpory pro Windows 10 (x64), Windows 8.1 (x64), Windows 8 (x64), Windows 7 (x64) SP1 nebo novější
+
+## <a name="version-24"></a>Verze 2,4
 
 **Datum vydání: 17. dubna 2019**
 
-**Opravy:**
+**Řeší**
 
-- Vylepšená Kompatibilita operačního systému, zejména při zpracování chyb založené na lokalizaci.
-- Přidání virtuálních počítačů s až 20 MB/s dat změnit frekvence změny kontrolní seznam kompatibility.
+- Vylepšená kompatibilita s operačním systémem, konkrétně při zpracování chyb založených na lokalizaci.
+- Do kontrolního seznamu kompatibility se přidaly virtuální počítače s až 20 MB/s přenosovou rychlostí (změny).
 - Vylepšené chybové zprávy
-  - Přidání podpory pro vCenter 6.7.
-  - Přidání podpory pro pracovní stanice systému Windows Server 2019 a Red Hat Enterprise Linux (RHEL).
+- Přidání podpory pro vCenter 6,7.
+- Přidala se podpora pro Windows Server 2019 a pracovní stanici Red Hat Enterprise Linux (RHEL).
 
 
 
-## <a name="version-23"></a>Verze 2.3
+## <a name="version-23"></a>Verze 2,3
 
 **Datum vydání: 3. prosince 2018**
 
-**Opravy:**
+**Řeší**
 
-- Opravili jsme problém, která zabránila plánovače nasazení služby generování sestav pomocí zadané cílové umístění a předplatném.
+- Opravili jsme problém, který zabránil Plánovač nasazení generování sestavy se zadaným cílovým umístěním a předplatným.
 
-## <a name="version-22"></a>Verze 2.2 
+## <a name="version-22"></a>Verze 2,2 
 
 **Datum vydání: 25. dubna 2018**
 
-**Opravy:**
+**Řeší**
 
 - Operace GetVMList:
-  - Opravili jsme problém, který způsobil GetVMList selhat, pokud zadaná složka neexistuje. Se teď vytvoří výchozí adresář, nebo vytvoří adresář zadaný v parametru outputfile.
-  - Přidat že podrobnější selhání důvodů, proč GetVMList.
-- Byly přidané informace typu virtuálního počítače jako sloupec v seznamu kompatibilních virtuálních počítačů sestavy plánovače nasazení služby.
-- Technologie Hyper-V k zotavení po havárii Azure:
-  - Vyloučené virtuálních počítačů pomocí sdílené virtuální pevné disky a průchozí disky ze profilace. Operace Startprofiling zobrazuje seznam vyloučených virtuální počítače v konzole.
-  - Přidání virtuálních počítačů s více než 64 disků na seznam nekompatibilních virtuálních počítačů.
-  - Aktualizovat počáteční replikaci (IR) a faktor komprese rozdílová replikace (DR).
-  - Přidání omezená podpora úložiště s protokolem SMB.
+  - Opravili jsme problém, který způsobil, že GetVMList selže, pokud Zadaná složka neexistuje. Nyní buď vytvoří výchozí adresář, nebo vytvoří adresář zadaný v parametru Výstupní_soubor.
+  - Bylo přidáno podrobnější důvody selhání pro GetVMList.
+- Informace o typu virtuálního počítače byly přidány jako sloupec v seznamu kompatibilních virtuálních počítačů sestavy Plánovač nasazení.
+- Zotavení po havárii z Hyper-V do Azure:
+  - Vyloučené virtuální počítače se sdílenými virtuálními počítači a průchozí disky z profilace. Operace Startprofiling zobrazí seznam vyloučených virtuálních počítačů v konzole nástroje.
+  - Do seznamu nekompatibilních virtuálních počítačů se přidaly virtuální počítače s více než 64 disky.
+  - Aktualizace kompresního faktoru počáteční replikace (IR) a rozdílová replikace (DR).
+  - Přidání omezené podpory pro úložiště SMB.
 
-## <a name="version-21"></a>Verze 2.1
+## <a name="version-21"></a>Verze 2,1
 
 **Datum vydání: 3. ledna 2018**
 
-**Opravy:**
+**Řeší**
 
-- Aktualizovat sestavy aplikace Excel.
-- Oprava chyby v operaci GetThroughput.
-- Přidání možnost omezit počet virtuálních počítačů do profilu nebo generování sestav. Výchozí omezení je 1 000 virtuálních počítačů.
-- VMware na zotavení po havárii Azure:
-  - Opravili jsme problém, Windows Server 2016 virtuálního počítače přicházející do tabulky kompatibilní. 
-  - Aktualizace zprávy o kompatibilitě pro virtuální počítače s Windows rozhraní EFI (Extensible Firmware Interface).
-- Aktualizovat VMware do Azure a Hyper-V do Azure, četnost změn dat virtuálního počítače limit na virtuální počítač. 
-- Vylepšení spolehlivosti při analýze souboru seznamu virtuálních počítačů.
+- Aktualizace sestavy aplikace Excel
+- Opravené chyby v operaci getpropustnosti.
+- Přidání možnosti pro omezení počtu virtuálních počítačů pro profilaci nebo generování sestavy. Výchozí limit je 1 000 virtuálních počítačů.
+- Zotavení po havárii z VMware do Azure:
+  - Opravili jsme problém s virtuálním počítačem s Windows serverem 2016, který přechází do nekompatibilní tabulky. 
+  - Aktualizované zprávy o kompatibilitě pro virtuální počítače s Windows EFI (Extensible Firmware Interface).
+- Aktualizace VMware na Azure a Hyper-V do Azure, omezení četnosti dat virtuálních počítačů na virtuální počítač. 
+- Vylepšená spolehlivost analýzy souborů seznamu virtuálních počítačů.
 
 ## <a name="version-201"></a>Verze 2.0.1
 
 **Datum vydání: 7. prosince 2017**
 
-**Opravy:**
+**Řeší**
 
-- Přidání doporučení k optimalizaci šířky pásma sítě.
+- Bylo přidáno doporučení pro optimalizaci šířky pásma sítě.
 
-## <a name="version-20"></a>Verze 2.0
+## <a name="version-20"></a>Verze 2,0
 
 **Datum vydání: 28. listopadu 2017**
 
-**Opravy:**
+**Řeší**
 
-- Přidání podpory pro technologii Hyper-V pro zotavení po havárii Azure.
-- Kalkulačka dodatečný poplatek.
-- Přidání kontroly verze OS pro replikaci z VMware na zotavení po havárii Azure k určení, zda je virtuální počítač kompatibilní nebo nekompatibilní z hlediska ochrany. Nástroj používá řetězec verze operačního systému, který je vrácená serverem vCenter pro tento virtuální počítač. Verze operačního systému hosta je tento uživatel vybral při vytváření virtuálního počítače v prostředí VMware.
+- Přidala se podpora pro zotavení po havárii z Hyper-V do Azure.
+- Přidání cenové kalkulačky
+- Přidání kontroly verze operačního systému pro zotavení po havárii VMware do Azure, aby bylo možné zjistit, jestli je virtuální počítač kompatibilní nebo nekompatibilní s ochranou. Nástroj používá řetězec verze operačního systému, který je vrácen serverem vCenter pro daný virtuální počítač. Je to verze hostovaného operačního systému, kterou uživatel zvolil při vytváření virtuálního počítače ve VMware.
 
 **Známá omezení:**
 
-- Pro Hyper-V do Azure zotavení po havárii, virtuální počítač s názvem obsahujícím znaky jako: `,`, `"`, `[`, `]`, a ``` ` ``` nejsou podporovány. Je-li Profilovat, generování sestav selžou nebo budou mít nesprávný výsledek.
-- Pro replikaci z VMware na zotavení po havárii Azure nepodporuje virtuální počítač s názvem obsahující čárkami. Je-li Profilovat, selže generování sestav nebo budou mít nesprávný výsledek.
+- Pro zotavení po havárii z Hyper-V do Azure se jako virtuální počítač s názvem, `,`který obsahuje `[`tyto znaky: ``` ` ``` , `"`, `]`, a nepodporuje. Při profilování se generování sestav nezdaří nebo bude mít nesprávný výsledek.
+- Pro zotavení po havárii z VMware do Azure se virtuální počítač s názvem, který obsahuje čárka, nepodporuje. Pokud profilace, generování sestav selže nebo dojde k nesprávnému výsledku.
 
 ## <a name="version-131"></a>Verze 1.3.1
 
 **Datum vydání: 19. července 2017** 
 
-**Opravy:**
+**Řeší**
 
-- Byla přidána podpora velkých disků (> 1 TB) v generování sestav. Teď můžete použít Plánovač nasazení služby k plánování replikace pro virtuální počítače, jejichž disky větší než 1 TB (až 4 095 GB).
+- Přidání podpory pro velké disky (> 1 TB) při generování sestav. Nyní můžete použít Plánovač nasazení k naplánování replikace pro virtuální počítače, které mají velikost disků větší než 1 TB (až 4095 GB).
 Další informace o [podpoře velkých disků v Azure Site Recovery](https://azure.microsoft.com/blog/azure-site-recovery-large-disks/)
 
-## <a name="version-13"></a>Verze 1.3
+## <a name="version-13"></a>Verze 1,3
 
 **Datum vydání: 9. května 2017**
 
-**Opravy:**
+**Řeší**
 
-- Přidání podpory pro spravovaného disku v generování sestav. Počet virtuálních počítačů, které lze umístit do jednoho účtu úložiště se počítá na základě, pokud je vybrán spravovaný disk pro převzetí služeb při selhání nebo testovací převzetí služeb při selhání.
+- Přidání podpory pro spravovaný disk v generování sestav. Počet virtuálních počítačů, které se dají umístit do jednoho účtu úložiště, se vypočítá na základě toho, jestli je pro převzetí služeb při selhání nebo testovací převzetí služeb při selhání vybraný spravovaný disk.
 
-## <a name="version-12"></a>verze 1.2
+## <a name="version-12"></a>Verze 1,2
 
-**Datum vydání: 7. duben 2017**
+**Datum vydání: 7. dubna 2017**
 
-**Opravy:**
+**Řeší**
 
-- Přidání spuštění (BIOS nebo EFI) kontrol typů pro každý virtuální počítač k určení, zda je virtuální počítač kompatibilní nebo nekompatibilní z hlediska ochrany.
-- Přidání operačního systému zadejte informace pro každý virtuální počítač do kompatibilních virtuálních počítačů a listy nekompatibilní virtuální počítače.
-- Přidání podpory pro operaci GetThroughput pro oblastech US Government a Čína Microsoft Azure.
+- Byl přidán typ spouštění (BIOS nebo EFI) pro každý virtuální počítač, abyste zjistili, jestli je virtuální počítač kompatibilní nebo nekompatibilní s ochranou.
+- Pro každý virtuální počítač se přidaly informace o typu operačního systému na listech kompatibilních a nekompatibilních virtuálních počítačů.
+- Přidání podpory pro operaci getpropustnosti pro státní správu USA a Čínu Microsoft Azure oblasti.
 - Bylo přidáno několik dalších kontrol požadovaných součástí pro vCenter a ESXi Server.
-- Opravili jsme problém, vygeneruje při nastavení národního prostředí jsou nastaveny na jiné než anglické jazykové nesprávné sestavy.
+- Opravili jsme problém s vygenerováním nesprávné sestavy, když jsou nastavení národního prostředí nastavená na jinou než angličtinu.
 
-## <a name="version-11"></a>Verze 1.1
+## <a name="version-11"></a>Verze 1,1
 
 **Datum vydání: 9. března 2017**
 
-**Opravy:**
+**Řeší**
 
-- Opravili jsme problém, který zabránil profilace virtuálních počítačů, pokud existují dvě nebo více virtuálních počítačů se stejným názvem nebo IP adresou v různých hostitelích ESXi vCenter.
-- Opravili jsme problém způsobující, kopírování a vyhledávání pro kompatibilní virtuální počítače a kompatibilní virtuální počítače listů deaktivuje.
+- Opravili jsme problém, který znemožňuje profilování virtuálních počítačů, pokud existují dva nebo víc virtuálních počítačů se stejným názvem nebo IP adresou v různých hostitelích vCenter ESXi.
+- Opravili jsme problém, který způsobil, že kopírování a hledání na listech kompatibilních virtuálních počítačů a nekompatibilních virtuálních počítačů bylo zakázané.
 
-## <a name="version-10"></a>Verze 1.0
+## <a name="version-10"></a>Verze 1,0
 
 **Datum vydání: 23. února 2017**
 
 **Známá omezení:**
 
-- Podporuje jenom pro replikaci z VMware do scénáře zotavení po havárii Azure. Pro Hyper-V pro scénáře zotavení po havárii Azure, použijte [nástroj Plánovač kapacity Hyper-V](./site-recovery-capacity-planning-for-hyper-v-replication.md).
-- Nepodporuje operaci GetThroughput pro oblastech US Government a Čína Microsoft Azure.
-- Profil nelze nástroj virtuálních počítačů, pokud vCenter server obsahuje dva nebo více virtuálních počítačů se stejným názvem nebo IP adresou v různých hostitelích ESXi.
-V této verzi nástroj při zjištění duplicitních výskytů názvů nebo IP adres virtuálních počítačů v souboru VMListFile profilaci takových virtuálních počítačů přeskočí. Alternativním řešením je profilování virtuálních počítačů pomocí hostitele ESXi namísto serveru vCenter. Nezapomeňte spustit jednu instanci pro každého hostitele ESXi.
+- Podporuje se jenom pro scénáře zotavení po havárii z VMware do Azure. Pro scénáře zotavení po havárii z Hyper-V do Azure použijte [Nástroj pro plánování kapacity technologie Hyper-v](./site-recovery-capacity-planning-for-hyper-v-replication.md).
+- Nepodporuje operaci getpropustnosti pro oblasti státní správy USA a Číny Microsoft Azure.
+- Nástroj cann't Profile virtuální počítače, pokud Server vCenter obsahuje dva nebo více virtuálních počítačů se stejným názvem nebo IP adresou v různých hostitelích ESXi.
+V této verzi nástroj při zjištění duplicitních výskytů názvů nebo IP adres virtuálních počítačů v souboru VMListFile profilaci takových virtuálních počítačů přeskočí. Alternativním řešením je profilování virtuálních počítačů pomocí hostitele ESXi namísto serveru vCenter. Zajistěte, aby pro každého hostitele ESXi běžela jedna instance.

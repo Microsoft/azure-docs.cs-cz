@@ -1,7 +1,7 @@
 ---
-title: Návrh globálně dostupné služby využívající Azure SQL Database | Dokumentace Microsoftu
-description: Další informace o návrhu aplikace služby s vysokou dostupností pomocí Azure SQL Database.
-keywords: cloudové zotavení po havárii, řešení pro zotavení po havárii, zálohování dat aplikace, geografickou replikaci, plánování obchodní kontinuity podnikových procesů
+title: Návrh globálně dostupných služeb pomocí Azure SQL Database | Microsoft Docs
+description: Přečtěte si o návrhu aplikací pro služby s vysokou dostupností pomocí Azure SQL Database.
+keywords: zotavení po havárii v cloudu, řešení zotavení po havárii, zálohování dat aplikací, geografickou replikaci, plánování kontinuity podnikových aplikací
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,159 +11,158 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 46232afcaf9504d4cfbd80160e2d7e7ea958d600
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a79fa40568502a73194e467de2227d54931d0100
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61488107"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568955"
 ---
-# <a name="designing-globally-available-services-using-azure-sql-database"></a>Navrhování globálně dostupné služby využívající Azure SQL Database
+# <a name="designing-globally-available-services-using-azure-sql-database"></a>Návrh globálně dostupných služeb pomocí Azure SQL Database
 
-Při vytváření a nasazování cloudových služeb s Azure SQL Database, můžete použít [aktivní geografickou replikaci](sql-database-active-geo-replication.md) nebo [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md) zajistit odolnost místních výpadků a katastrofických selhání. Stejné funkce můžete vytvářet globálně distribuované aplikace optimalizované pro místní přístup k datům. Tento článek popisuje běžné vzory aplikací, včetně výhody a nevýhody jednotlivých možností.
-
-> [!NOTE]
-> Pokud používáte Premium nebo pro důležité obchodní informace databáze a elastické fondy, můžete provádět je odolné regionální výpadky převedením na konfiguraci nasazení redundantního zóny. Zobrazit [zónově redundantní databáze](sql-database-high-availability.md).  
-
-## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Scénář 1: Pomocí dvou oblastech Azure pro obchodní kontinuity podnikových procesů s minimálními výpadky
-
-V tomto scénáři aplikace mají následující vlastnosti:
-
-* Aplikace je aktivní v jedné oblasti Azure
-* Vyžadovat všechny relace databáze pro čtení a zápis (RW) k datům
-* Webová vrstva a datová vrstva musí být společně umístěná, abyste snížili náklady na latenci a provoz
-* V podstatě výpadku je vyšší riziko obchodní pro tyto aplikace než ztráty dat
-
-V takovém případě topologie nasazení aplikace je optimalizovaná pro zpracování regionální jiného problému ovlivňujícího při převzetí služeb při selhání společně potřebovat všechny součásti aplikace. Následující diagram znázorňuje tuto topologii. Geografická redundance jsou nasazené prostředky vaší aplikace do oblasti A a B. Prostředky v oblasti B nejsou ale využít, dokud neselže oblast odpověď. Skupiny převzetí služeb při selhání je nakonfigurovaná mezi dvěma oblastmi ke správě připojení k databázi, replikace a převzetí služeb při selhání. Webová služba v obou oblastech je nakonfigurovaná pro přístup k databázi pomocí naslouchacího procesu pro čtení i zápis  **&lt;název skupiny převzetí služeb při selhání&gt;. database.windows.net** (1). Traffic manager nastaven na použití [metody prioritního směrování](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
+Při sestavování a nasazování cloudových služeb pomocí Azure SQL Database použijete [aktivní skupiny geografických replikace](sql-database-active-geo-replication.md) nebo [automatického převzetí služeb při selhání](sql-database-auto-failover-group.md) k zajištění odolnosti proti místním výpadkům a závažným chybám. Stejná funkce vám umožní vytvářet globálně distribuované aplikace optimalizované pro místní přístup k datům. Tento článek popisuje běžné aplikační vzory, včetně výhod a kompromisů jednotlivých možností.
 
 > [!NOTE]
-> [Azure traffic Manageru](../traffic-manager/traffic-manager-overview.md) slouží jen jako ukázka v tomto článku. Můžete použít řešení vyrovnávání zatížení, který podporuje metody prioritního směrování.
+> Pokud používáte databáze úrovně Premium nebo Pro důležité obchodní informace a elastické fondy, můžete je v případě, že je převedete do konfigurace redundantního nasazení zóny, zajistit odolnost proti regionálním výpadkům. Viz [zóna – redundantní databáze](sql-database-high-availability.md).  
 
-Následující diagram znázorňuje tuto konfiguraci před výpadku:
+## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Scénář 1: Použití dvou oblastí Azure pro kontinuitu podnikových aplikací s minimálními výpadky
 
-![Scénář 1. Konfigurace před výpadek.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
+V tomto scénáři mají aplikace následující vlastnosti:
 
-Po výpadku v primární oblasti služba SQL Database zjistí, že primární databáze není dostupný a aktivuje převzetí služeb při selhání sekundární oblastí na základě parametrů zásad automatické převzetí služeb při selhání (1). V závislosti na vaší smlouvě SLA aplikace můžete nakonfigurovat období odkladu, které řídí dobu mezi detekce výpadek a převzetí služeb při selhání, samotného. Je možné, že Traffic manager inicializuje převzetí služeb při selhání koncového bodu předtím, než se aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání databáze. V takovém případě webová aplikace nemůže se připojit znovu okamžitě do databáze. Ale opětovná připojení automaticky úspěšné co nejdříve po dokončení převzetí služeb při selhání databáze. Při selhání oblasti je obnovena a znovu online, původního primárního automaticky znovu připojí jako nové sekundární. Následující diagram znázorňuje konfiguraci po převzetí služeb při selhání.
+* Aplikace je aktivní v jedné oblasti Azure.
+* Všechny relace databáze vyžadují pro data přístup pro čtení a zápis (RW).
+* Aby se snížila latence a náklady na provoz, musí být společně umístěnéhoa webová vrstva a Datová vrstva.
+* V podstatě je výpadkům pro tyto aplikace vyšší riziko, než je ztráta dat.
+
+V tomto případě je topologie nasazení aplikace optimalizována pro zpracování regionálních havárií, pokud všechny součásti aplikace potřebují převzetí služeb při selhání společně. Následující diagram znázorňuje tuto topologii. V případě geografické redundance jsou prostředky aplikace nasazeny do oblastí A a B. Prostředky v oblasti B se ale nevyužívají, dokud nebude oblast A neúspěšná. Skupina převzetí služeb při selhání je nakonfigurovaná mezi dvěma oblastmi pro správu připojení k databázi, replikaci a převzetí služeb při selhání. Webová služba v obou oblastech je nakonfigurovaná pro přístup k databázi prostřednictvím naslouchacího procesu  **&lt;pro čtení i zápis převzetí služeb při&gt;selhání-Group-Name. Database.Windows.NET** (1). Traffic Manager je nastavený tak, aby používal [metodu směrování priority](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
 
 > [!NOTE]
-> Všechny transakce potvrzena po převzetí služeb se ztratí během obnovení připojení. Po dokončení převzetí služeb aplikace v oblasti B je možné znovu připojit a znovu spusťte zpracování požadavků uživatele. Webová aplikace i primární databáze jsou teď v oblasti B a zůstat společně umístěné.
+> [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) se v tomto článku používá jenom pro ilustraci. Můžete použít jakékoli řešení vyrovnávání zatížení, které podporuje metodu směrování priority.
+
+Následující diagram znázorňuje tuto konfiguraci před výpadkem:
+
+![Scénář 1. Konfigurace před výpadkem.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
+
+Po výpadku primární oblasti zjistí služba SQL Database, že primární databáze není dostupná, a aktivuje převzetí služeb při selhání sekundární oblastí na základě parametrů zásady automatického převzetí služeb při selhání (1). V závislosti na vaší smlouvě SLA vaší aplikace můžete nakonfigurovat dobu odkladu, která určuje dobu mezi detekcí výpadku a samotným převzetím služeb při selhání. Je možné, že Traffic Manager iniciuje převzetí služeb při selhání koncového bodu předtím, než skupina převzetí služeb při selhání spustí převzetí služeb při selhání databáze V takovém případě se webová aplikace nemůže okamžitě znovu připojit k databázi. Ale opětovné připojení proběhne automaticky, jakmile se převzetí služeb při selhání databáze dokončí. Když se neúspěšná oblast obnoví a vrátí zpět do stavu online, stará primární primární se automaticky znovu připojí jako nová sekundární. Následující obrázek znázorňuje konfiguraci po převzetí služeb při selhání.
+
+> [!NOTE]
+> Všechny transakce potvrzené po převzetí služeb při selhání se při opětovném připojení ztratí. Po dokončení převzetí služeb při selhání se aplikace v oblasti B bude moci znovu připojit a znovu spustit zpracování uživatelských požadavků. Webová aplikace i primární databáze jsou nyní v oblasti B a zůstávají společně umístěné.
 
 ![Scénář 1. Konfigurace po převzetí služeb při selhání](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
 
-Pokud dojde k výpadku v oblasti B, pozastaven proces replikace mezi primární a sekundární databáze, ale propojení mezi těmito dvěma zůstává beze změny (1). Přenos spravovaných zjistí, že připojení k oblasti B je porušený a označí koncový bod webové aplikace 2 jako snížený (2). Není v tomto případě dopad na výkon vaší aplikace, ale databáze bude vystavena a proto vystavený zvýšenému riziku ztráty dat v případě oblast A vyvolá chybu v daný okamžik.
+Pokud dojde k výpadku v oblasti B, proces replikace mezi primární a sekundární databází se pozastaví, ale propojení mezi dvěma zůstává beze změny (1). Správa provozu detekuje, že připojení k oblasti B je přerušeno a označuje, že je webová aplikace koncového bodu 2 poškozená (2). V takovém případě není ovlivněn výkon aplikace, ale databáze je vystavena a je proto vyšší riziko ztráty dat v případě, že dojde k chybě v oblasti A v případě úspěchu.
 
 > [!NOTE]
-> Pro zotavení po havárii doporučujeme, abyste konfiguraci s omezenou nasazení aplikace do dvou oblastí. Je, že většina zeměpisných oblastech Azure pouze dvě oblasti. Tato konfigurace nechrání vaší aplikace z katastrofických selhání z obou oblastí. V nepravděpodobném případě takové selhání, můžete obnovit databáze v třetí oblasti pomocí [geografické obnovení operace](sql-database-disaster-recovery.md#recover-using-geo-restore).
+> Pro zotavení po havárii doporučujeme, aby konfigurace s nasazením aplikace byla omezená na dvě oblasti. Je to proto, že většina geografických oblastí Azure má pouze dvě oblasti. Tato konfigurace nechrání vaši aplikaci před současným závažným selháním obou oblastí. V nepravděpodobném případě takového selhání můžete databáze obnovit ve třetí oblasti pomocí [operace geografického obnovení](sql-database-disaster-recovery.md#recover-using-geo-restore).
 >
 
- Jakmile se výpadek je zmírnit, sekundární databáze automaticky znovu synchronizují s aplikací primární. Při synchronizaci může mít dopad na výkon primární. Konkrétní dopad závisí na množství dat nový primární získaných od převzetí služeb při selhání. Následující diagram ukazuje výpadek v sekundární oblasti:
+ Po zmírnění výpadku se sekundární databáze automaticky znovu synchronizuje s primárním. Během synchronizace může být ovlivněn výkon primární. Konkrétní dopad závisí na množství dat, které nově získal od převzetí služeb při selhání. Následující diagram znázorňuje výpadek v sekundární oblasti:
 
 ![Scénář 1. Konfigurace po výpadku v sekundární oblasti.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
 
-Klíč **výhody** tohoto vzoru návrhu jsou:
+Hlavní **výhodou** tohoto vzoru návrhu jsou:
 
-* Stejnou webovou aplikaci nasadíte pro obě oblasti bez konfigurace specifické pro oblast a nevyžaduje další logiku ke správě převzetí služeb při selhání.
-* Výkon aplikace není ovlivněn převzetí služeb při selhání jako webová aplikace a databáze jsou vždy umístěny společně.
+* Stejná webová aplikace se nasadí do obou oblastí bez jakékoli konfigurace specifické pro oblast a nevyžaduje další logiku pro správu převzetí služeb při selhání.
+* Výkon aplikace není ovlivněn převzetím služeb při selhání, protože webová aplikace a databáze jsou vždy umístěny společně.
 
-Hlavní **kompromis** je, že aplikace prostředků v oblasti B by byla málo využitá ve většině případů.
+Hlavním **kompromisem** je, že prostředky aplikace v oblasti B jsou ve většině případů nevyužité.
 
-## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>Scénář 2: Oblasti Azure pro zajištění obchodní kontinuity maximální množství dat a zachovávání s rozlišením
+## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>Scénář 2: Oblasti Azure pro kontinuitu podnikových aplikací s maximálním uchováváním dat
 
-Tato možnost je nejvhodnější pro aplikace s následujícími charakteristikami:
+Tato možnost je vhodná pro aplikace s následujícími charakteristikami:
 
-* Jakoukoli ztrátu dat, je vysoký obchodní rizika. Převzetí služeb při selhání databázi jde použít jenom jako poslední možnost je-li výpadek závažnému selhání.
-* Aplikace podporuje jen pro čtení a pro čtení i zápis režimy operace a mohou pracovat v "režimu jen pro čtení" pro určitou dobu.
+* Ztráta dat je vysokým obchodním rizikem. Převzetí služeb při selhání databáze lze použít pouze jako poslední způsob, pokud je výpadek způsoben závažnou chybou.
+* Aplikace podporuje režimy operací jen pro čtení a čtení i zápis a v časovém intervalu může pracovat v režimu jen pro čtení.
 
-V tomto vzoru aplikace se přepne do režimu jen pro čtení při připojení ke čtení a zápis začít využívat chyby časového limitu. Webová aplikace je nasazená do obou oblastí a zahrnují připojení ke koncovému bodu naslouchacího procesu pro čtení i zápis a jiné připojení na koncový bod naslouchacího zápisu jen pro čtení (1). Profil služby Traffic manager používejte [priority směrování](../traffic-manager/traffic-manager-configure-priority-routing-method.md). [Koncový bod monitorování](../traffic-manager/traffic-manager-monitoring.md) byste měli povolit pro koncový bod aplikace v jednotlivých oblastech (2).
+V tomto modelu se aplikace přepne do režimu jen pro čtení, když se na začátku připojení pro čtení a zápis začnou získávat chyby časového limitu. Webová aplikace je nasazena v obou oblastech a zahrnuje připojení ke koncovému bodu naslouchacího procesu pro čtení i zápis a jiné připojení ke koncovému bodu naslouchacího procesu jen pro čtení (1). Profil Traffic Manageru by měl používat [Směrování priority](../traffic-manager/traffic-manager-configure-priority-routing-method.md). Pro koncový bod aplikace v každé oblasti (2) by mělo být povoleno [monitorování koncových bodů](../traffic-manager/traffic-manager-monitoring.md) .
 
-Následující diagram znázorňuje tuto konfiguraci před výpadku:
+Následující diagram znázorňuje tuto konfiguraci před výpadkem:
 
-![Scénář 2. Konfigurace před výpadek.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-a.png)
+![Scénář 2. Konfigurace před výpadkem.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-a.png)
 
-Když traffic manager zjistí selhání připojení k oblasti A, automaticky se přepne provoz uživatelů na instanci aplikace v oblasti B. Tento model je důležité nastavit období odkladu se ztrátou dat na hodnotu dostatečně vysokou, například 24 hodin. Zajišťuje, že je zabráněno ztráty dat, pokud výpadek vyřešení za tu dobu. Když aktivujete webovou aplikaci v oblasti B začít operací čtení a zápis, služeb při selhání. V tomto okamžiku by měla přepnutí do režimu jen pro čtení (1). V tomto režimu se automaticky směrují požadavky na sekundární databázi. Je-li výpadek závažnému selhání, pravděpodobně ji není možné řešit v období odkladu. Jeho vypršení platnosti aktivace skupiny převzetí služeb při selhání převzetí služeb při selhání. Za naslouchací proces pro čtení a zápis k dispozici a připojení k němu zastavení služeb při selhání (2). Následující diagram znázorňuje dvě fáze procesu obnovení.
+Když Traffic Manager zjistí selhání připojení v oblasti A, automaticky přepne provoz uživatele do instance aplikace v oblasti B. V tomto modelu je důležité nastavit období odkladu s ztrátou dat na dostatečně vysokou hodnotu, například 24 hodin. Zajišťuje ztrátu dat, pokud dojde k omezení výpadku v této době. Pokud je webová aplikace v oblasti B aktivována, operace čtení i zápisu se nedaří spustit. V tomto okamžiku by měl přepnout do režimu jen pro čtení (1). V tomto režimu jsou požadavky automaticky směrovány do sekundární databáze. Pokud je výpadek způsoben závažnou chybou, pravděpodobně ho nelze zmírnit v období odkladu. Po vypršení platnosti dojde k selhání skupiny převzetí služeb při selhání. Po tom, co bude k dispozici naslouchací proces pro čtení i zápis a připojení k němu přestane selhat (2). Následující diagram znázorňuje dvě fáze procesu obnovení.
 
 > [!NOTE]
-> Pokud výpadku v primární oblasti je v období odkladu zmírnit, traffic manager zjistí obnovení připojení v primární oblasti a uživatelský provoz přepne zpět do instance aplikace v oblasti A. Tuto instanci aplikace bude pokračovat a funguje v režimu čtení a zápis v oblasti A jak je znázorněno v předchozím diagramu primární databáze.
+> Pokud dojde k zmírnění výpadku v primární oblasti v rámci období odkladu, Traffic Manager detekuje obnovení připojení v primární oblasti a přepne přenos uživatelů zpátky do instance aplikace v oblasti A. Instance aplikace bude pokračovat a funguje v režimu pro čtení i zápis pomocí primární databáze v oblasti A, jak je znázorněno v předchozím diagramu.
 
-![Scénář 2. Fáze pro zotavení po havárii.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-b.png)
+![Scénář 2. Fáze zotavení po havárii.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-b.png)
 
-Pokud dojde k výpadku v oblasti B, traffic manager zjistí selhání koncového bodu web-app-2 v oblasti B a značky degradovaný (1). Do té doby se skupiny převzetí služeb při selhání přepne jen pro čtení naslouchací proces na oblast A (2). Tento výpadek nemá vliv na prostředí koncového uživatele, ale primární databáze je přístupný během výpadku. Následující diagram znázorňuje selhání v sekundární oblasti:
+Pokud dojde k výpadku v oblasti B, Traffic Manager zjistí selhání koncového bodu Web-App-2 v oblasti B a označí ho jako snížený (1). Mezitím skupina převzetí služeb při selhání přepne naslouchací proces jen pro čtení do oblasti A (2). Tento výpadek nemá vliv na činnost koncového uživatele, ale během výpadku se zveřejňuje primární databáze. Následující diagram znázorňuje selhání v sekundární oblasti:
 
 ![Scénář 2. Výpadek sekundární oblasti.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario2-c.png)
 
-Jakmile se výpadek je zmírnit, sekundární databáze se okamžitě synchronizovány s primární a naslouchacího zápisu jen pro čtení přepne zpět do sekundární databáze v oblasti B. Během synchronizace primární může být mírně dopad na výkon v závislosti na množství dat, která musí být synchronizovány.
+Po zmírnění výpadku je sekundární databáze hned synchronizována s primární databází a naslouchací proces jen pro čtení se přepne zpět do sekundární databáze v oblasti B. V závislosti na množství dat, které je třeba synchronizovat, může být během synchronizace na primárním počítači mírně ovlivněný výkon.
 
-Tento vzor návrhu víme o několika **výhody**:
+Tento vzor návrhu má několik **výhod**:
 
-* Předchází ztrátě dat během dočasných výpadků.
-* Výpadek závisí jenom na rychlost traffic manager zjistí selhání připojení, která je konfigurovatelná.
+* Vyhne se ztrátě dat během dočasného výpadku.
+* Výpadky závisí jenom na tom, jak rychle Traffic Manager detekuje selhání připojení, což je konfigurovatelné.
 
-**Kompromis** je, že aplikace musí mít možnost pracovat v režimu jen pro čtení.
+**Kompromisem** je, že aplikace musí být schopná pracovat v režimu jen pro čtení.
 
-## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>Scénář 3: Aplikace přemístění do jiné zeměpisné oblasti bez ztráty dat a téměř nulovými výpadky
+## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>Scénář 3: Přemístění aplikace na jinou geografickou oblast bez ztráty dat a téměř nulového výpadku
 
-V tomto scénáři aplikace má následující vlastnosti:
+V tomto scénáři má aplikace následující vlastnosti:
 
-* Koncoví uživatelé přístup k aplikaci z různých zeměpisných oblastech
-* Aplikace obsahuje úlohy jen pro čtení, které nezávisí na úplnou synchronizaci s nejnovějšími aktualizacemi
-* Ve stejné zeměpisné oblasti pro většinu uživatelů by měla podporovat zápis přístup k datům
-* Latence pro čtení je velmi důležité pro činnost koncového uživatele
+* Koncoví uživatelé přistupují k aplikaci z různých geografických oblastí
+* Tato aplikace zahrnuje úlohy jen pro čtení, které nezávisí na úplné synchronizaci s nejnovějšími aktualizacemi.
+* Přístup pro zápis dat by měl být podporován ve stejné geografické oblasti pro většinu uživatelů.
+* Latence čtení je pro činnost koncového uživatele zásadní.
 
-Chcete-li splnit tyto požadavky je nutné zaručit, že uživatel zařízení **vždy** připojí k aplikaci nasazenou ve stejné zeměpisné oblasti jen pro čtení operací, jako je procházení dat analytics atd. Vzhledem k tomu OLTP operací zpracování ve stejné zeměpisné oblasti **většinu času**. Například v době den OLTP operací zpracování ve stejné zeměpisné oblasti, ale během hodin mimo jejich nebylo možné zpracovat v jiném datovém typu geography. Pokud činnost koncového uživatele se většinou dojde během pracovní doby, můžete zajistit optimální výkon pro většinu uživatelů většinu času. Následující diagram znázorňuje tuto topologii.
+Aby bylo možné splnit tyto požadavky, je třeba zaručit, že se zařízení uživatele **vždy** připojí k aplikaci nasazené ve stejné geografické oblasti pro operace jen pro čtení, například na data procházení, analýzy atd. Zatímco operace OLTP se zpracovávají ve **stejné geografické oblasti**. Například během dne se OLTP operace zpracování ve stejné geografické oblasti, ale v době mimo hodiny, kdy je možné je zpracovat v jiném geografickém období. Pokud činnost koncového uživatele většinou probíhá během pracovní doby, můžete zajistit optimální výkon pro většinu uživatelů v většinu času. Tato topologie je znázorněna na následujícím obrázku.
 
-Prostředky aplikace by měly být nasazeny v každé zeměpisné oblasti, kde mají podstatné využití nároky. Například pokud vaše aplikace se aktivně používá ve Spojených státech amerických, Evropské unie a jihovýchodní Asie aplikace by měly být nasazeny všechny tyto geografické oblasti. Primární databáze by možné dynamicky přepnout z jedné zeměpisné oblasti na další na konec pracovní doby. Tato metoda je volána "sledovat slunce". Úlohy OLTP vždy připojí k databázi pomocí naslouchacího procesu pro čtení i zápis  **&lt;název skupiny převzetí služeb při selhání&gt;. database.windows.net** (1). Úlohy jen pro čtení připojí k místní databázi přímo pomocí koncového bodu serveru databáze  **&lt;název serveru&gt;. database.windows.net** (2). Má nakonfigurovanou Traffic Manageru [metody směrování podle výkonu](../traffic-manager/traffic-manager-configure-performance-routing-method.md). Zajišťuje, že zařízení koncového uživatele je připojena k webové službě v nejbližší oblasti. Traffic Manageru byste nastavit s koncový bod monitorování povoleno pro každou webovou službu koncový bod (3).
-
-> [!NOTE]
-> Konfigurace skupiny převzetí služeb při selhání definuje, jakou oblast se používá pro převzetí služeb při selhání. Vzhledem k tomu, že nový primární je v jiném datovém typu geography převzetí služeb při selhání má za následek delší latence pro OLTP a úlohy jen pro čtení, dokud je ovlivněné oblasti zpátky do online režimu.
-
-![Scénář 3. Konfigurace s primárním v oblasti východní USA.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
-
-Na konci dne (například ve 23: 00 místního času) by měl přepnout aktivní databáze do další oblast (Severní Evropa). Tuto úlohu lze plně automatizovat využitím [Azure službu plánování](../scheduler/scheduler-intro.md).  Úloha zahrnuje následující kroky:
-
-* Přepnout primární server ve skupině převzetí služeb při selhání na Severní Evropa pomocí popisný převzetí služeb při selhání (1)
-* Odebrat skupinu převzetí služeb při selhání mezi USA – východ a Severní Evropa
-* Vytvořte novou skupinu převzetí služeb při selhání se stejným názvem, ale mezi Severní Evropa a východní Asie (2).
-* Přidejte primární do této skupiny převzetí služeb při selhání (3) v oblasti Severní Evropa a sekundární ve východní Asie.
-
-Následující diagram znázorňuje novou konfiguraci po plánované převzetí služeb při selhání:
-
-![Scénář 3. Přechod od primární severní Evropě.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
-
-Pokud kvůli výpadku dojde například v oblasti Severní Evropa, převzetí služeb při selhání automatické databáze inicializuje skupiny převzetí služeb při selhání, což účinně vede k přesunutí aplikace k další oblasti plánem (1).  V takovém případě USA – východ je jediný zbývající sekundární oblasti, dokud je zpátky do online režimu Severní Evropa. Zbývající dvě oblasti poskytovat zákazníkům ve všech zeměpisných oblastech tři přepnutím role. Azure scheduler musí být upraven. Protože zbývající oblasti získáte další uživatelský provoz z Evropy výkon vaší aplikace to má vliv nejen službou další latence, ale také navýšení počtu připojení koncového uživatele. Po vyřešení výpadek v oblasti Severní Evropa, sekundární databáze se okamžitě synchronizuje s aktuální primární. Následující diagram znázorňuje výpadku v oblasti Severní Evropa:
-
-![Scénář 3. Výpadek v oblasti Severní Evropa.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
+Prostředky aplikace by se měly nasadit v každé geografické oblasti, kde máte významné nároky na využití. Například pokud se vaše aplikace aktivně používá v USA, Evropské unii a Jižní Východní Asie aplikace by měla být nasazená do všech těchto zeměpisných oblastí. Primární databáze by se měla dynamicky přepínat mezi jednotlivými geografickými oblastmi na konci pracovní doby. Tato metoda se nazývá "následovat na Sun". Úloha OLTP se vždy připojuje k databázi prostřednictvím naslouchacího procesu  **&lt;pro čtení i zápis převzetí služeb při selhání&gt;-Group-Name. Database.Windows.NET** (1). Úloha jen pro čtení se připojuje k místní databázi přímo pomocí serveru koncového bodu  **&lt;serveru databáze-name&gt;. Database.Windows.NET** (2). Traffic Manager je nakonfigurovaný pomocí [metody směrování výkonu](../traffic-manager/traffic-manager-configure-performance-routing-method.md). Zajišťuje, aby bylo zařízení koncového uživatele připojeno k webové službě v nejbližší oblasti. Traffic Manager by měl být nastaven s povoleným monitorováním koncových bodů pro každý koncový bod webové služby (3).
 
 > [!NOTE]
-> Můžete zkrátit dobu, kdy má snížený výkon činnost koncového uživatele v Evropě tak dlouho latence. K tomu je by měl proaktivně nasadit jako kopie aplikace a vytvořte sekundární databáze v jiné místní oblasti (západní Evropa) jako náhrada za instanci offline aplikace v oblasti Severní Evropa. Když je zpátky do online režimu můžete rozhodnout, zda chcete pokračovat v používání západní Evropa nebo chcete odebrat kopii tam a přejít zpět na Severní Evropa.
+> Tato oblast se používá pro převzetí služeb při selhání konfigurace skupiny převzetí služeb při selhání. Vzhledem k tomu, že nový primární objekt je v jiné geografické úrovni, jsou výsledky převzetí služeb při selhání v delší době pro OLTP i pro úlohy jen pro čtení, dokud se ovlivněná oblast znovu nevrátí do režimu online.
 
-Klíč **výhody** tohoto návrhu jsou:
+![Scénář 3. Konfigurace s primárním v Východní USA.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-* Úlohy jen pro čtení aplikace přistupuje k datům v oblasti skříně za všech okolností.
-* Úlohy čtení a zápis aplikace přistupuje k datům v nejbližší oblasti během období nejvyšší aktivity v každé zeměpisné oblasti
-* Protože aplikace je nasazená do více oblastí, přežijí ke ztrátě oblastech bez žádné významné výpadky.
+Na konci dne (například v místním čase 23:00) by měly být aktivní databáze přepnuty do další oblasti (Severní Evropa). Tato úloha se dá plně automatizovat pomocí [služby plánování Azure](../scheduler/scheduler-intro.md).  Úkol zahrnuje následující kroky:
 
-Zde jsou některé, ale **kompromisy**:
+* Přepnutí primárního serveru ve skupině převzetí služeb při selhání na Severní Evropa s použitím popisného převzetí služeb při selhání (1
+* Odebrání skupiny převzetí služeb při selhání mezi Východní USA a Severní Evropa
+* Vytvoří novou skupinu převzetí služeb při selhání se stejným názvem, ale mezi Severní Evropa a Východní Asie (2).
+* Do této skupiny převzetí služeb při selhání přidejte primární Severní Evropa a sekundární Východní Asie.
 
-* K oblastnímu výpadku výsledků v zeměpisné oblasti ovlivní delší latence. Obsluhuje úlohy čtení a zápis i čtení aplikací v jiném datovém typu geography.
-* Úlohy jen pro čtení musí připojit k jiné koncový bod v jednotlivých oblastech.
+Následující diagram znázorňuje novou konfiguraci po plánovaném převzetí služeb při selhání:
 
-## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Obchodní kontinuity podnikových procesů plánování: Zvolte návrh aplikace pro zotavení po havárii cloudu
+![Scénář 3. Převod primárního na Severní Evropa.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-Strategie zotavení po havárii konkrétní cloud můžete kombinovat nebo rozšířit tyto způsoby návrhu, které nejvíc vyhovují potřebám vaší aplikace.  Jak už bylo zmíněno dříve, strategie, kterou zvolíte je založená na smlouvě SLA chcete nabízet vaše zákazníky a topologie nasazení aplikace. Mohou pomoci rozhodnout, následující tabulka porovnává možnosti na základě plánovaného bodu obnovení (RPO) a odhadovaný čas obnovení (ERT).
+Pokud dojde k výpadku v Severní Evropa například automatické převzetí služeb při selhání databáze je iniciováno skupinou převzetí služeb při selhání, což efektivně vede k přesunu aplikace do další oblasti před plánem (1).  V takovém případě je USA – východ jedinou zbývající sekundární oblastí, dokud Severní Evropa znovu nepřejdete do režimu online. Zbývající dvě oblasti slouží zákazníkům ve všech třech zeměpisných oblastech přepínáním rolí. Plánovač Azure je potřeba upravit odpovídajícím způsobem. Vzhledem k tomu, že zbývající oblasti získají další uživatelský provoz z Evropy, výkon aplikace bude mít vliv nejen na další latenci, ale také na zvýšený počet připojení koncových uživatelů. Po omezení výpadku v Severní Evropa je sekundární databáze okamžitě synchronizovaná s aktuální primární databází. Následující diagram znázorňuje výpadek Severní Evropa:
 
-| Vzor | CÍL BODU OBNOVENÍ | ERT |
+![Scénář 3. Výpadek v Severní Evropa.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
+
+> [!NOTE]
+> Můžete zkrátit čas, kdy se činnost koncového uživatele v Evropě sníží o dlouhou latenci. K tomu byste měli proaktivně nasadit kopii aplikace a vytvořit sekundární databáze v jiné místní oblasti (Západní Evropa) jako náhradu offline instance aplikace v Severní Evropa. Když je znovu online, můžete se rozhodnout, jestli chcete i nadále používat Západní Evropa nebo odebrat kopii aplikace a přepnout zpátky na použití Severní Evropa.
+
+Klíčové **výhody** tohoto návrhu:
+
+* Úloha aplikace jen pro čtení přistupuje k datům v oblasti skříní.
+* Úloha čtení a zápisu aplikací přistupuje k datům v nejbližší oblasti během období nejvyšší aktivity v jednotlivých geografických oblastech.
+* Vzhledem k tomu, že aplikace je nasazena do více oblastí, může dojít ke ztrátě jedné z oblastí bez jakéhokoli významného výpadku.
+
+Existují však některé **kompromisy**:
+
+* Oblastní výpadek má za následek, že by to ovlivnilo delší latenci. Aplikace v jiném geografickém programu obsluhuje pouze úlohy pro čtení i zápis i pro čtení.
+* Úlohy jen pro čtení se musí připojit k jinému koncovému bodu v každé oblasti.
+
+## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Plánování kontinuity podnikových aplikací: Zvolit návrh aplikace pro zotavení po havárii v cloudu
+
+Vaše konkrétní strategie cloudového zotavení po havárii může tyto vzory návrhu zkombinovat nebo roztáhnout tak, aby co nejlépe splňovala požadavky vaší aplikace.  Jak už bylo zmíněno dříve, strategie, kterou zvolíte, je založená na smlouvě SLA, kterou chcete nabídnout vašim zákazníkům a topologii nasazení aplikace. Následující tabulka porovnává tyto možnosti podle rozhodnutí bodu obnovení (RPO) a odhadované doby obnovení (ERT), které vám pomůžou s vaším rozhodnutím.
+
+| Vzor | Cíl bodu obnovení (RPO) | ERT |
 |:--- |:--- |:--- |
-| Aktivní pasivní nasazení pro zotavení po havárii pomocí společně umístěné databáze access |Přístup pro čtení a zápis < 5 s |Čas detekce selhání a hodnotu TTL pro DNS |
-| Aktivní aktivní nasazení pro vyrovnávání zatížení aplikací |Přístup pro čtení a zápis < 5 s |Čas detekce selhání a hodnotu TTL pro DNS |
-| Aktivní pasivní nasazení pro uchovávání dat |Přístup jen pro čtení < 5 s | Přístup jen pro čtení = 0 |
-||Přístup pro čtení a zápis = nula | Přístup pro čtení a zápis = čas detekce selhání a období odkladu se ztrátou dat |
+| Aktivní – pasivní nasazení pro zotavení po havárii s společně umístěným přístupem k databázi |Přístup pro čtení i zápis < 5 sec |Čas detekce selhání + hodnota TTL systému DNS |
+| Aktivní – aktivní nasazení pro vyrovnávání zatížení aplikace |Přístup pro čtení i zápis < 5 sec |Čas detekce selhání + hodnota TTL systému DNS |
+| Aktivní – pasivní nasazení pro zachování dat |Přístup jen pro čtení < 5 sec | Přístup jen pro čtení = 0 |
+||Přístup pro čtení i zápis = nula | Přístup pro čtení i zápis = doba detekce selhání + období odkladu s ztrátou dat |
 |||
 
 ## <a name="next-steps"></a>Další postup
 
-* Přehled zajištění provozní kontinuity podnikání a scénáře, naleznete v tématu [přehled zajištění provozní kontinuity firmy](sql-database-business-continuity.md)
-* Další informace o aktivní geografickou replikaci, najdete v článku [aktivní geografickou replikaci](sql-database-active-geo-replication.md).
-* Další informace o skupinách automatické převzetí služeb při selhání najdete v tématu [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md).
-* Informace o aktivní geografickou replikaci s elastickými fondy najdete v tématu [strategie zotavení po havárii Elastických fondů](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+* Přehled provozní kontinuity a scénářů najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md) .
+* Informace o aktivní geografické replikaci najdete v tématu [Aktivní geografická replikace](sql-database-active-geo-replication.md).
+* Další informace o skupinách automatického převzetí služeb při selhání najdete v tématu [skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md).
+* Informace o aktivní geografické replikaci s elastickými fondy najdete v tématu [strategie zotavení po havárii elastického fondu](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

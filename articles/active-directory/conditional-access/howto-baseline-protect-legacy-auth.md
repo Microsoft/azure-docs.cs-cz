@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a313240685e539b613dee1c7ff8bd56bb24eb2ba
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 91cc2707034eabf85afae70278f2448b77d3ee14
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227326"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608072"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Základní zásady: Blokovat starší verze ověřování (Preview)
 
@@ -112,10 +112,10 @@ Pokud chcete povolit tuto zásadu a chránit svoji organizaci:
 1. Nastavte **Povolit zásadu** pro **okamžité použití zásad**.
 1. Klikněte na **Uložit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace naleznete v tématu:
 
 * [Zásady ochrany základní úrovně přístupu pro podmíněný přístup](concept-baseline-protection.md)
-* [Pět kroků pro zabezpečení infrastruktury identity](../../security/azure-ad-secure-steps.md)
+* [Pět kroků pro zabezpečení infrastruktury identity](../../security/fundamentals/steps-secure-identity.md)
 * [Co je podmíněný přístup v Azure Active Directory?](overview.md)

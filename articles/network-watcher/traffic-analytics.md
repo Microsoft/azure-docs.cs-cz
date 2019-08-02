@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: yagup
-ms.openlocfilehash: ca3174ad69185da88bf89c843f641dd2b20d9ac5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 03c0106d793fc7b77ccc8a9176f158a9928ab291
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872475"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620121"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -51,11 +51,11 @@ Virtuální sítě Azure mají protokoly toku NSG, které poskytují informace o
 
 ## <a name="how-traffic-analytics-works"></a>Jak funguje Analýza provozu
 
-Analýza provozu prověřuje protokoly nezpracovaných toků NSG Flow a zachycuje omezené protokoly agregací běžných toků mezi stejnou zdrojovou IP adresou, cílovou IP adresou, cílovým portem a protokolem. Například hostitel 1 (IP adresa: 10.10.10.10) komunikace s hostitelem 2 (IP adresa: 10.10.20.10), 100 krát v období 1 hodiny s použitím portu (například 80) a protokolu (například http). Snížený protokol obsahuje jednu položku, kterou hostitel 1 & hostitel 2 komunikoval 100 krát za dobu 1 hodiny pomocí portu 80 a protokolu HTTP, místo aby bylo nutné 100 zadávat položky. Menší protokoly se zvyšují pomocí geografických, bezpečnostních a topologických informací a pak se ukládají do Log Analyticsho pracovního prostoru. Tok dat znázorňuje následující obrázek:
+Analýza provozu prověřuje protokoly nezpracovaných toků NSG Flow a zachycuje omezené protokoly agregací běžných toků mezi stejnou zdrojovou IP adresou, cílovou IP adresou, cílovým portem a protokolem. Například hostitel 1 (IP adresa: 10.10.10.10) komunikace s hostitelem 2 (IP adresa: 10.10.20.10), 100 krát v období 1 hodiny s použitím portu (například 80) a protokolu (například http). Snížený protokol obsahuje jednu položku, kterou hostitel 1 & hostitel 2 komunikoval 100 krát za dobu 1 hodiny pomocí portu *80* a protokolu *http*, místo aby bylo nutné 100 zadávat položky. Menší protokoly se zvyšují pomocí geografických, bezpečnostních a topologických informací a pak se ukládají do Log Analyticsho pracovního prostoru. Tok dat znázorňuje následující obrázek:
 
 ![Tok dat pro zpracování protokolů toku NSG](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
-## <a name="supported-regions"></a>Podporované oblasti
+## <a name="supported-regions-nsg"></a>Podporované oblasti: NSG 
 
 Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
 
@@ -80,10 +80,12 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 * Jihovýchodní Asie
 * Jižní Korea – střed
 * Střed Indie
-* Indie – jih
+* Jižní Indie
 * Japonsko – východ 
 * Japonsko – západ
 * USA (Gov) – Virginia
+
+## <a name="supported-regions-log-analytics-workspaces"></a>Podporované oblasti: Pracovní prostory Log Analytics
 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Kanada – střed
@@ -137,7 +139,7 @@ Informace o tom, jak kontrolovat přístupová oprávnění uživatelů, najdete
 
 ### <a name="enable-network-watcher"></a>Povolení Network Watcheru
 
-K analýze provozu potřebujete existující sledovací proces sítě nebo [Povolit sledovací proces sítě](network-watcher-create.md) v každé oblasti, které jste skupin zabezpečení sítě, pro který chcete analyzovat provoz. Pro skupin zabezpečení sítě hostované v některé z [podporovaných oblastí](#supported-regions)je možné povolit analýzu provozu.
+K analýze provozu potřebujete existující sledovací proces sítě nebo [Povolit sledovací proces sítě](network-watcher-create.md) v každé oblasti, které jste skupin zabezpečení sítě, pro který chcete analyzovat provoz. Pro skupin zabezpečení sítě hostované v některé z [podporovaných oblastí](#supported-regions-nsg)je možné povolit analýzu provozu.
 
 ### <a name="select-a-network-security-group"></a>Vybrat skupinu zabezpečení sítě
 
@@ -147,7 +149,7 @@ Na levé straně Azure Portal vyberte **monitor**, potom **sledovací proces sí
 
 ![Výběr skupin zabezpečení sítě, který vyžaduje povolení protokolu toku NSG](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
-Pokud se pokusíte povolit analýzu provozu pro NSG, která je hostovaná v jiné oblasti než [podporované oblasti](#supported-regions), zobrazí se chyba "Nenalezeno".
+Pokud se pokusíte povolit analýzu provozu pro NSG, která je hostovaná v jiné oblasti než [podporované oblasti](#supported-regions-nsg), zobrazí se chyba "Nenalezeno".
 
 ## <a name="enable-flow-log-settings"></a>Povolit nastavení protokolu toku
 
@@ -172,19 +174,20 @@ New-AzStorageAccount `
 
 Vyberte následující možnosti, jak je znázorněno na obrázku:
 
-1. Vybrat  pro **stav**
+1. Vybrat *pro* **stav**
 2. Vyberte *verzi 2* pro **protokol toků verze**. Verze 2 obsahuje statistiku relací toků (bajty a pakety).
-3. Vyberte existující účet úložiště, do kterého se budou ukládat protokoly toku. Pokud chcete data ukládat trvale, nastavte hodnotu na *0*. Za účet úložiště se účtují Azure Storage poplatky.
+3. Vyberte existující účet úložiště, do kterého se budou ukládat protokoly toku. Pokud chcete data ukládat trvale, nastavte hodnotu na *0*. Za účet úložiště se účtují Azure Storage poplatky. Ujistěte se, že ve vašem úložišti není nastavená možnost Data Lake Storage Gen2 hierarchický obor názvů Enabled na hodnotu true. Protokoly toku NSG se taky nedají Uložit do účtu úložiště s bránou firewall. 
 4. Nastavte dobu **uchování** na počet dní, pro které chcete ukládat data.
-5. Pro  **Analýza provozu stav**vyberte zapnuto.
-6. Vyberte pracovní prostor existující Log Analytics (OMS) nebo vyberte **vytvořit nový pracovní prostor** a vytvořte nový. Log Analytics pracovní prostor používá Analýza provozu k ukládání agregovaných a indexovaných dat, která se pak používají ke generování analýz. Pokud vyberete existující pracovní prostor, musí existovat v některé z [podporovaných oblastí](#supported-regions) a byl upgradován na nový dotazovací jazyk. Pokud nechcete upgradovat existující pracovní prostor nebo nemáte pracovní prostor v podporované oblasti, vytvořte nový. Další informace o jazycích dotazů naleznete v tématu [Azure Log Analytics upgrade na nové prohledávání protokolu](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+5. Pro **Analýza provozu stav**vyberte zapnuto.
+6. Vyberte interval zpracování. Na základě vašeho výběru budou protokoly toků shromažďovány z účtu úložiště a zpracovány Analýza provozu. Můžete zvolit interval zpracování každé 1 hodiny nebo každých 10 minut.
+7. Vyberte pracovní prostor existující Log Analytics (OMS) nebo vyberte **vytvořit nový pracovní prostor** a vytvořte nový. Log Analytics pracovní prostor používá Analýza provozu k ukládání agregovaných a indexovaných dat, která se pak používají ke generování analýz. Pokud vyberete existující pracovní prostor, musí existovat v některé z [podporovaných oblastí](#supported-regions-log-analytics-workspaces) a byl upgradován na nový dotazovací jazyk. Pokud nechcete upgradovat existující pracovní prostor nebo nemáte pracovní prostor v podporované oblasti, vytvořte nový. Další informace o jazycích dotazů naleznete v tématu [Azure Log Analytics upgrade na nové prohledávání protokolu](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     Pracovní prostor Log Analytics hostující řešení pro analýzu provozu a skupin zabezpečení sítě nemusí být ve stejné oblasti. Například můžete mít analýzu provozu v pracovním prostoru v oblasti Západní Evropa, zatímco jste si možná skupin zabezpečení sítěi Východní USA a Západní USA. Ve stejném pracovním prostoru se dá nakonfigurovat víc skupin zabezpečení sítě.
-7. Vyberte **Uložit**.
+8. Vyberte **Uložit**.
 
-    ![Výběr účtu úložiště, Log Analytics pracovního prostoru a povolení Analýza provozu](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
+    ![Výběr účtu úložiště, Log Analytics pracovního prostoru a povolení Analýza provozu](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-Předchozí kroky opakujte pro všechny ostatní skupin zabezpečení sítě, pro které chcete povolit analýzu provozu pro. Data z protokolů toků se odesílají do pracovního prostoru, takže zajistěte, aby místní zákony a předpisy ve vaší zemi nebo oblasti povolovaly ukládání dat v oblasti, kde pracovní prostor existuje.
+Předchozí kroky opakujte pro všechny ostatní skupin zabezpečení sítě, pro které chcete povolit analýzu provozu pro. Data z protokolů toků se odesílají do pracovního prostoru, takže zajistěte, aby místní zákony a předpisy ve vaší zemi povolovaly ukládání dat v oblasti, ve které pracovní prostor existuje. Pokud jste pro různé skupin zabezpečení sítě nastavili různé intervaly zpracování, budou se data shromažďovat v různých intervalech. Příklad: Pro kritická virtuální sítě a 1 hodinu pro Nekritická virtuální sítě se můžete rozhodnout pro povolení intervalu zpracování 10 minut.
 
 Analýzu provozu můžete nakonfigurovat taky pomocí rutiny [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) prostředí PowerShell v Azure PowerShell. Pokud `Get-Module -ListAvailable Az` chcete najít nainstalovanou verzi, spusťte příkaz. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 

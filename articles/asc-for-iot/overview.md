@@ -1,6 +1,6 @@
 ---
-title: Co je Azure Security Center pro náhled IoT | Dokumentace Microsoftu
-description: Další informace o službě Azure Security Center pro funkce IoT a služby.
+title: Co je Azure Security Center pro IoT | Microsoft Docs
+description: Přečtěte si o Azure Security Center pro funkce a služby IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,53 +13,47 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 2e454d3be536d908003ad9163a44089eb3a5eb99
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: fdccf486cacabda4f363f4629a4d6daa4a00c8e4
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618046"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597171"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Představujeme Azure Security Center pro IoT
 
-> [!IMPORTANT]
-> Azure Security Center pro IoT je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Sjednocení správy zabezpečení a umožnění komplexní detekce a analýzy hrozeb v rámci hybridních cloudových úloh a řešení Azure IoT. 
 
-## <a name="secure-your-azure-iot-solution"></a>Zabezpečení řešení Azure IoT 
+## <a name="protect-iot-and-hybrid-cloud-workloads-against-evolving-cyber-attacks"></a>Ochrana aplikací IoT a hybridního cloudu před vývojem v počítačovém útoku
 
-Sjednocení správy zabezpečení a povolit analýzu komplexní hrozeb a ochrana napříč hybridními cloudovými úlohami a řešení Azure IoT. 
+Internet věcí rychle transformuje náš svět. Díky možnosti získat přehledy ze svých připojených zařízení a back-endové systémů teď můžete tyto poznatky transformovat na výkonné aplikace a služby, které vaší organizaci pomůžou dosáhnout nebývalé úrovně provozu a výkonu podniku. Nicméně až miliarda nových zařízení je připojená k Internetu a integrovaná v naší každodenní síti a našim firmám; vaše týmy pro operace zabezpečení musí zajistit, aby se jejich strategie zabezpečení rychle vyvinuly, aby pokryly tyto nové plochy útoku. Stejně jako jakýkoli jiný systém, zabezpečení řešení IoT potřebuje ochranu v každé fázi implementace. 
 
-## <a name="protect-iot-and-hybrid-cloud-workloads-against-evolving-cyber-attacks"></a>Ochrana IoT a hybridních cloudových úloh proti vyvíjejícími se kybernetickými útoky
+Azure Security Center pro IoT zjednodušuje ochranu hybridních úloh tím, že poskytuje jednotnou viditelnost a kontrolu, nabízí prevenci proti hrozbám a inteligentní detekci hrozeb a reakce napříč úlohami běžícími na hraničních, místních i v Azure. Cloud. 
 
-Internet of Things rychle transformuje potýkáme. Možnost odhalit další poznatky z vašimi připojenými zařízeními a back endových systémů můžete nyní transformovat tyto přehledy o výkonné aplikace a služby vaší organizaci dosáhnout bezprecedentní úrovně provozní a obchodní výkon. Nicméně, jak miliardy nová zařízení jsou připojená k Internetu a integrovat do našich denní životy a naše produkty; Vaše týmy operace zabezpečení se muset ujistit, dostatečně rychle rozvíjet své strategie zabezpečení pro tyto nové rovin útoku. Stejně jako jakýkoli jiný systém zabezpečení řešení IoT potřebují ochranu v každé fázi implementace. 
+![Azure Security Center pro architekturu IoT](./media/architecture/azure-iot-security-architecture.png)
 
-Azure Security Center (ASC) pro IoT zjednodušuje tím, že poskytuje jednotný přehled o a ovládací prvek, adaptivní ohrožení ochrany před únikem informací a inteligentní detekce hrozeb a reakce ve úlohy běžící na hraničních zařízeních, místní, v Azure a v hybridní úlohy ochrany jiných cloudech. 
+### <a name="unified-visibility-and-control"></a>Sjednocená viditelnost a řízení
 
-![ASC architektury IoT](./media/architecture/asc-for-iot-architecture.png)
+Získejte jednotný přehled o zabezpečení všech místních i cloudových úloh včetně vašeho řešení Azure IoT. Připojte nová zařízení a pomocí zásad zabezpečení pro vaše úlohy (listová zařízení, zařízení Microsoft Edge IoT Hub) zajistěte dodržování standardů zabezpečení a vylepšení stav zabezpečení.
 
-### <a name="unified-visibility-and-control"></a>Jednotný přehled a kontrolu
+### <a name="adaptive-threat-prevention"></a>Prevence adaptivních hrozeb
 
-Získejte jednotný přehled o zabezpečení všech místních i cloudových úloh včetně vašeho řešení Azure IoT. Automaticky zjišťujte a připojujte nová zařízení a používejte zásady zabezpečení napříč svými úlohami (zařízení typu list, hraniční zařízení, IoT Hub) pro zajištění dodržování bezpečnostních standardů.
-
-### <a name="adaptive-threat-prevention"></a>Adaptivní ohrožení ochrany před únikem informací
-
-Průběžně monitorujte zabezpečení počítačů, sítí a služeb Azure, včetně vašeho řešení Azure IoT z hraničních zařízení k aplikacím pomocí ASC pro IoT. Můžete použít ze stovek integrovaných posouzení zabezpečení nebo vytvořit vlastní aplikaci v centrální ASC pro řídicí panel služby IoT Hub. Optimalizujte své nastavení zabezpečení a vylepšete své bezpečnostní skóre s využitím užitečných doporučení pro virtuální počítače, sítě, aplikace a data. Díky nově přidaným možnostem IoT teď můžete omezit možnosti útoku na vaše řešení Azure IoT a vyřešit problémy před tím, než je bude možné zneužít.
+Používejte Azure Security Center pro IoT k nepřetržitému monitorování zabezpečení počítačů, sítí a služeb Azure. Vyberte si ze stovek integrovaných posouzení zabezpečení nebo si vytvořte vlastní v centrálním Azure Security Center pro IoT Hub řídicí panel. Optimalizujte nastavení zabezpečení a Vylepšete Vaše skóre zabezpečení s užitečnými doporučeními napříč virtuálními počítači, sítěmi, aplikacemi a daty. Díky nově přidaným funkcím IoT teď můžete omezit prostor pro útoky na vaše řešení Azure IoT a vyřešit problémy dřív, než je budete moct zneužít.
 
 ### <a name="intelligent-threat-detection-and-response"></a>Inteligentní detekce hrozeb a reakce
 
-Získejte výhodu nad vyvíjejícími se kybernetickými útoky pomocí pokročilých analýz a grafu inteligentního zabezpečení Microsoftu. Integrované analýzy chování a strojové učení k identifikaci útoků a zneužití nultého dne. Monitorujte ve svých řešeních IoT příchozí útoky a aktivity po porušení zabezpečení. Zjednodušte zařízení průzkumu a nápravy pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
+Využijte pokročilou analýzu a Microsoft Intelligent Security Graph k získání hraničních zařízení, která vám pomohou vyvíjejí se počítačové útoky. Integrované analýzy chování a strojové učení identifikují útoky a zneužití funkce Zero Day. Monitorujte ve svých řešeních IoT příchozí útoky a aktivity po porušení zabezpečení. Zjednodušte zkoumání a nápravu zařízení pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto přehledu jste se dozvěděli o funkcích a službách ASC pro IoT. Další informace o ASC pro IoT architekturu, požadavky a zjistěte, jak začít, najdete v následujících článcích:
+V tomto přehledu jste se dozvěděli o funkcích a službách Azure Security Center pro IoT. Další informace o Azure Security Center pro architekturu IoT, požadavcích a informace o tom, jak začít, najdete v následujících článcích:
 
 - [Architektura](architecture.md)
-- [Požadavky na služby](service-prerequisites.md)
+- [Předpoklady služby](service-prerequisites.md)
 - [Začínáme](getting-started.md)
 - [Definice řešení](quickstart-configure-your-solution.md)
-- [ASC pro IoT – nejčastější dotazy](resources-frequently-asked-questions.md)
-- [ASC pro IoT výstrahy](concept-security-alerts.md)
+- [Nejčastější dotazy k Azure Security Center pro IoT](resources-frequently-asked-questions.md)
+- [Azure Security Center pro výstrahy IoT](concept-security-alerts.md)
 

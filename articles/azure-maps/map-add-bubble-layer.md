@@ -1,68 +1,68 @@
 ---
-title: Přidat vrstvu bublinu ke službě Azure Maps | Dokumentace Microsoftu
-description: Jak přidat vrstvu bublin mapy jazyka Javascript
+title: Přidat bublinovou vrstvu do Azure Maps | Microsoft Docs
+description: Postup přidání bublinové vrstvy do mapy JavaScriptu
 author: rbrundritt
 ms.author: richbrun
-ms.date: 10/30/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f2c4c6b8655d5efb993a2dedf536000ac94328c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 516e4f35c88ae9c0e2d63e8a4ee40eb57c05ac29
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769681"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639035"
 ---
-# <a name="add-a-bubble-layer-to-a-map"></a>Přidat vrstvu bublin k mapě
+# <a name="add-a-bubble-layer-to-a-map"></a>Přidání bublinové vrstvy do mapy
 
-Tento článek popisuje, jak může vykreslit data bodu ze zdroje dat jako vrstvu na mapě bublinu. Bublinu vrstvy bodů takto kruhy na mapě s protokolem radius opravených pixelů. 
+V tomto článku se dozvíte, jak můžete vykreslit data bodů ze zdroje dat jako bublinovou vrstvu na mapě. Bubliny vrstev vykreslí body jako kružnice na mapě s použitím poloměru s pevným pixelem. 
 
 > [!TIP]
-> Vykreslí souřadnice všechny geometrie ve zdroji dat se bubliny vrstvy ve výchozím nastavení. Omezit vrstvu tak, aby pouze vykreslí bod geometrie funkce set `filter` vlastnost vrstva `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` Pokud budete chtít zahrnout i MultiPoint funkce.
+> Bublinové vrstvy ve výchozím nastavení budou kreslit souřadnice všech geometrií ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykreslí pouze funkce geometrie bodu `filter` , nastavte vlastnost vrstvy na `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` , pokud chcete zahrnout i funkce systému MultiPoint.
 
 ## <a name="add-a-bubble-layer"></a>Přidání vrstvy bublin
 
-<iframe height='500' scrolling='no' title='Zdroj dat BubbleLayer' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='BubbleLayer zdroj dat' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>si prohlédněte <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>zdroj dat pera BubbleLayer</a> .
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
+Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
 
-V druhém bloku kódu, pole [bodu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) objekty je definovaný a přidán do [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) objektu.
+V druhém bloku kódu je pole objektů [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) definováno a přidáno do objektu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) .
 
-A [bublinu vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) vykreslí zabalené v datového bodu [zdroj dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako kruhy na mapě. Poslední blok kódu vytvoří bublinu vrstvy a přidá jej do mapy. Zobrazit vlastnosti vrstvy na bublinu [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
+[Bublinová vrstva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) vykresluje data založená na bodech zabalená ve [zdroji dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako kružnice na mapě. Poslední blok kódu vytvoří bublinovou vrstvu a přidá ji do mapy. Viz vlastnosti bublinové vrstvy na [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
 
-Pole objektů bodu, zdroje dat a vrstvy bublinu vytvořen a přidán do mapování v rámci [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce, která se ujistěte, že po plně načtení mapy, zobrazí se kruh.
+Pole objektů Point, zdroj dat a bublinová vrstva jsou vytvořeny a přidány do mapy v rámci funkce [naslouchacího procesu události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , aby se zajistilo, že se kroužek zobrazí po úplném načtení mapy.
 
-## <a name="show-labels-with-a-bubble-layer"></a>Zobrazit popisky s vrstvou bublinový
+## <a name="show-labels-with-a-bubble-layer"></a>Zobrazit popisky s bublinovou vrstvou
 
-<iframe height='500' scrolling='no' title='Zdroj dat s více vrstvami' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>MultiLayer DataSource</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='MultiLayer zdroj dat' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>si prohlédněte <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>zdroj dat pera MultiLayer</a> .
 </iframe>
 
-Výše uvedený kód se dozvíte, jak vizualizovat a popisku dat na mapě. První blok výše uvedený kód vytvoří objekt map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
+Výše uvedený kód ukazuje, jak vizualizovat a označovat data na mapě. První blok kódu výše sestaví objekt mapy. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
 
-Vytvoří druhý bloku kódu, [bodu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) objektu. Poté vytvoří objekt zdroje dat pomocí [zdroj dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy a přidá do zdroje dat je bod.
+Druhý blok kódu vytvoří objekt [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) . Potom vytvoří objekt zdroje dat pomocí třídy [zdroje dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) a přidá bod do zdroje dat.
 
-A [bublinu vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) vykreslí zabalené v datového bodu [zdroj dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako kruhy na mapě. Třetí bloku kódu vytvoří bublinu vrstvy a přidá jej do mapy. Zobrazit vlastnosti vrstvy na bublinu [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
+[Bublinová vrstva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) vykresluje data založená na bodech zabalená ve [zdroji dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako kružnice na mapě. Třetí blok kódu vytvoří bublinovou vrstvu a přidá ji do mapy. Viz vlastnosti bublinové vrstvy na [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
 
-A [symbol vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá k vykreslení dat na základě bodu zabalené v textu nebo ikony [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě. Poslední blok kódu vytvoří a přidává další vrstvu symbol, který vykreslí textový popisek pro bublin mapy. Zobrazit vlastnosti vrstvy symbolu v [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions).
+[Symbolová vrstva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá text nebo ikony pro vykreslení dat na základě bodu zabalených ve [zdroji dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě. Poslední blok kódu vytvoří a přidá na mapu symbolovou vrstvu, která vykreslí textový popisek pro bublinu. Viz Vlastnosti vrstvy symbolů na [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions).
 
-Vytvořen a přidán do mapování v rámci zdroje dat a vrstvy [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce, která se ujistěte, že data se zobrazí po plně načtení na mapě.
+Zdroj dat a vrstvy jsou vytvořeny a přidány do mapy v rámci funkce [naslouchacího procesu události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , aby se zajistilo, že se data zobrazí po úplném načtení mapy.
 
-## <a name="customize-a-bubble-layer"></a>Přizpůsobení bublinu vrstvy
+## <a name="customize-a-bubble-layer"></a>Přizpůsobení bublinové vrstvy
 
-Vrstvy bublinu má jenom pár možností stylu. Zde je nástroj, který je vyzkoušet.
+Bublinová vrstva má pouze několik možností stylu. Tady je nástroj pro jejich vyzkoušení.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Možnosti bublinu vrstvy' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>bublinový možností vrstvy</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Možnosti bublinové vrstvy' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>Možnosti vrstvy bublinového</a> pera podle<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o třídy a metody používané v tomto článku:
+Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
 > [BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)
@@ -70,10 +70,10 @@ Další informace o třídy a metody používané v tomto článku:
 > [!div class="nextstepaction"]
 > [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
 
-Naleznete v následujících článcích pro další ukázky kódu pro přidání do vaše mapy:
+Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu symbol](map-add-pin.md)
+> [Přidat vrstvu symbolů](map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Použití výrazů s daty styl](data-driven-style-expressions-web-sdk.md)
+> [Použití výrazů stylu založených na datech](data-driven-style-expressions-web-sdk.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e5674ffb4325eb27af8d0673b2d6ad5ba3a6195e
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 9a5e5dc414d487efd5f6762c89cecb77da74e3d5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854347"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592056"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -139,7 +139,7 @@ Dosáhněte vysoké dostupnosti pomocí připojení k vaší virtuální sítě 
 
 Ve směrovačích musíte implementovat atribut *místní předvolby* , aby se zajistilo, že cesta z místního prostředí do Azure je vždy upřednostňovaná na okruhech ExpressRoute.
 
-Další podrobnosti najdete [na základě](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-of-microsoft-and-public-peerings) výběru cest protokolu BGP a konfigurací běžných směrovačů. 
+Další podrobnosti najdete [na základě](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings) výběru cest protokolu BGP a konfigurací běžných směrovačů. 
 
 ### <a name="onep2plink"></a>Pokud nejsem společně umístěné v cloudové výměně a poskytovateli služeb nabízí připojení typu point-to-point, je nutné uspořádat dva fyzické připojení mezi Moje a místní sítí a Microsoftem?
 

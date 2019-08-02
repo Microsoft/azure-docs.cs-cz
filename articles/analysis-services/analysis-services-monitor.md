@@ -1,90 +1,90 @@
 ---
-title: Monitorování metrik serveru Azure Analysis Services | Dokumentace Microsoftu
-description: Další informace o monitorování metrik serveru služby Analysis Services na webu Azure portal.
+title: Monitorování Azure Analysis Services metriky serveru | Microsoft Docs
+description: Naučte se monitorovat metriky Analysis Services serveru v Azure Portal.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/26/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cdffa8e138062a91bd1876ac6e44728c47d9cdd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5431dd74629b9ed76a6a072d8ada286ce71a7633
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61065035"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596102"
 ---
 # <a name="monitor-server-metrics"></a>Monitorování metrik serveru
 
-Analysis Services poskytuje metriky, které vám pomohou při monitorování výkonu a stavu vašich serverů. Například monitorujte paměť a využití procesoru, počtu připojení klientů a spotřeba prostředků dotazu. Analysis Services používá stejné monitorování architektury jako většina ostatních služeb Azure. Další informace najdete v tématu [metriky ve službě Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+Analysis Services poskytuje metriky v Azure Průzkumník metrik, bezplatný nástroj na portálu, který vám umožní monitorovat výkon a stav serverů. Například monitorujte paměť a využití procesoru, počet připojení klientů a spotřebu prostředků dotazů. Analysis Services používá stejné rozhraní monitorování jako většina ostatních služeb Azure. Další informace najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md).
 
-K provedení další podrobnější diagnostiku, sledovat výkon a identifikovat trendy v několika prostředcích služby ve skupině prostředků nebo předplatného, použijte [Azure Monitor](https://azure.microsoft.com/services/monitor/). Azure Monitor (služba), nemusí se vám začne fakturovat služba.
+Chcete-li provádět podrobnější diagnostiku, sledovat výkon a identifikovat trendy v rámci několika prostředků služby v rámci skupiny prostředků nebo předplatného, použijte [Azure monitor](../azure-monitor/overview.md). Azure Monitor (služba) může mít za následek Fakturovatelné služby.
 
 
-## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>Monitorování metrik pro server služby Analysis Services
+## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>Monitorování metrik pro Analysis Services Server
 
-1. Na webu Azure portal, vyberte **metriky**.
+1. V Azure Portal vyberte **metriky**.
 
     ![Monitorování na webu Azure Portal](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. V **dostupné metriky**, vyberte metriky, které chcete zahrnout do grafu. 
+2. V části **dostupné metriky**vyberte metriky, které chcete zahrnout do grafu. 
 
-    ![Monitorování grafu](./media/analysis-services-monitor/aas-monitor-chart.png)
+    ![Monitorovat graf](./media/analysis-services-monitor/aas-monitor-chart.png)
 
 <a id="#server-metrics"></a>
 
-## <a name="server-metrics"></a>Metrik serveru
+## <a name="server-metrics"></a>Metriky serveru
 
-Tato tabulka slouží k určení, které metriky jsou nejvhodnější pro váš scénář monitorování. Jenom metriky se stejnými jednotkami mohou být zobrazeny ve stejném grafu.
+Pomocí této tabulky můžete určit, které metriky jsou pro váš scénář monitorování nejvhodnější. Ve stejném grafu se dají zobrazit jenom metriky stejné jednotky.
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|
 |---|---|---|---|---|
-|CommandPoolJobQueueLength|Délka fronty fondu úloh příkazu|Count|Průměr|Počet úloh ve frontě fondu vláken příkazů.|
-|CurrentConnections|Připojení: Aktuální počet připojení|Počet|Průměr|Aktuální počet navázaných připojení klientů.|
-|CurrentUserSessions|Aktuální uživatelské relace|Count|Průměr|Aktuální počet navázaných uživatelských relací.|
-|mashup_engine_memory_metric|Paměť modulu M|B|Průměr|Využití paměti procesy modulu mashupu|
-|mashup_engine_qpu_metric|QPU modulu M|Count|Průměr|Využití QPU procesy modulu mashupu|
-|memory_metric|Memory (Paměť)|B|Průměr|Paměť. V rozsahu 0-25 GB pro S1, 0 – 50 GB pro S2 a 0 – 100 GB pro S4|
-|memory_thrashing_metric|Thrashing paměti|Procento|Průměr|Průměrný thrashing paměti.|
-|CleanerCurrentPrice|Paměť: Aktuální cena čisticího modulu|Count|Průměr|Aktuální cena paměti a $/ bajt/čas, normalizovaná na 1000.|
-|CleanerMemoryNonshrinkable|Paměť: Nezmenšitelná paměť|B|Průměr|Velikost paměti v bajtech, která není v souladu s čisticí vyprazdňování procesem na pozadí.|
-|CleanerMemoryShrinkable|Paměť: Zmenšitelná paměť čisticího modulu|B|Průměr|Velikost paměti v bajtech, která čisticí procesem na pozadí se vyprázdňuje.|
-|MemoryLimitHard|Paměť: Limit paměti – pevná|B|Průměr|Limit pevné paměti, z konfiguračního souboru.|
-|MemoryLimitHigh|Paměť: Limit paměti – vysoká|B|Průměr|Limit vysoké paměti, z konfiguračního souboru.|
-|MemoryLimitLow|Paměť: Limit paměti – nízká|B|Průměr|Limit nízké paměti, z konfiguračního souboru.|
-|MemoryLimitVertiPaq|Paměť: Memory Limit VertiPaq|B|Průměr|Limit v paměti, z konfiguračního souboru.|
-|MemoryUsage|Paměť: Využití paměti|B|Průměr|Využití paměti procesu serveru, jak se používají při výpočtu cena čisticího modulu paměti. Rovnat čítači Process\PrivateBytes plus velikost dat mapovaných do paměti, ignoruje se jakákoli paměť, která byla mapována nebo přidělena modulem analýzu v paměti (VertiPaq) překračující Limit paměti modulu.|
-|Kvóta|Paměť: Kvóta|B|Průměr|Aktuální kvóta paměti, v bajtech. Kvóta paměti se taky říká rezervace paměti grant nebo paměti.|
-|QuotaBlocked|Paměť: Kvóta – blokováno|Počet|Průměr|Aktuální počet požadavků kvóty, které jsou blokovány, dokud jsou uvolněny jiné kvóty paměti.|
-|VertiPaqNonpaged|Paměť: VertiPaq Nonpaged|B|Průměr|Počet bajtů paměti uzamčených v pracovní sadě pro použití modulem v paměti.|
-|VertiPaqPaged|Paměť: VertiPaq Paged|B|Průměr|Počet bajtů stránkované paměti používaných pro data v paměti.|
-|ProcessingPoolJobQueueLength|Délka fronty fondu úloh zpracování|Počet|Průměr|Počet úloh bez vstupně-ve frontě fondu vláken zpracování.|
-|RowsConvertedPerSec|Zpracování: Řádky převést za sekundu|CountPerSecond|Průměr|Rychlost převodu řádků během zpracování.|
-|RowsReadPerSec|Zpracování: Počet přečtených řádků za sekundu|CountPerSecond|Průměr|Rychlost čtení řádků ze všech relačních databází.|
-|RowsWrittenPerSec|Zpracování: Počet zapsaných řádků za sekundu|CountPerSecond|Průměr|Rychlost zápisu řádků během zpracování.|
-|qpu_metric|QPU|Count|Průměr|QPU. Rozsah 0 až 100 pro S1, 0 až 200 pro S2 a 0 až 400 pro S4|
-|QueryPoolBusyThreads|Zaneprázdněná vlákna fondu dotazů|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken dotazů.|
-|SuccessfullConnectionsPerSec|Úspěšná spojení za sekundu|CountPerSecond|Průměr|Míra úspěšně navázaných spojení.|
-|CommandPoolBusyThreads|Vlákna: Příkaz zaneprázdněná vlákna fondu|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken příkazů.|
-|CommandPoolIdleThreads|Vlákna: Příkaz nečinná vlákna fondu|Count|Průměr|Počet nečinných vláken ve fondu vláken příkazů.|
-|LongParsingBusyThreads|Vlákna: Zaneprázdněná vlákna dlouhého parsování|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken dlouhého parsování.|
-|LongParsingIdleThreads|Vlákna: Nečinná vlákna dlouhého parsování|Count|Průměr|Počet nečinných vláken ve fondu vláken dlouhého parsování.|
-|LongParsingJobQueueLength|Vlákna: Dlouhého parsování délka fronty úloh|Count|Průměr|Počet úloh ve frontě fondu vláken dlouhého parsování.|
-|ProcessingPoolIOJobQueueLength|Vlákna: Délka fronty úloh vstupně-výstupní operace v fondu zpracování|Počet|Průměr|Počet vstupně-výstupních operací úloh ve frontě fondu vláken zpracování.|
-|ProcessingPoolBusyIOJobThreads|Vlákna: Zaneprázdněná vlákna úloh vstupně-výstupní operace fondu zpracování|Count|Průměr|Počet vláken ve fondu vláken zpracování spuštění vstupně-výstupních operací úloh.|
-|ProcessingPoolBusyNonIOThreads|Vlákna: Zaneprázdněná vlákna jiných vstupně-fondu zpracování|Count|Průměr|Počet vláken, spouštění úloh bez vstupně-ve fondu vláken zpracování.|
-|ProcessingPoolIdleIOJobThreads|Vlákna: Nečinná vlákna úloh vstupně-výstupní operace fondu zpracování|Count|Průměr|Počet nečinných vláken pro vstupně-výstupní úlohy do fondu vláken zpracování.|
-|ProcessingPoolIdleNonIOThreads|Vlákna: Nečinná vlákna jiných vstupně-fondu zpracování|Počet|Průměr|Počet nečinných vláken ve fondu vláken zpracování vyhrazeném pro úlohy bez vstupně.|
-|QueryPoolIdleThreads|Vlákna: Nečinná vlákna fondu dotazů|Count|Průměr|Počet nečinných vláken pro vstupně-výstupní úlohy do fondu vláken zpracování.|
-|QueryPoolJobQueueLength|Vlákna: Délka fronty úloh fondu dotazů|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazů.|
-|ShortParsingBusyThreads|Vlákna: Zaneprázdněná vlákna krátkého parsování|Count|Průměr|Počet zaneprázdněných vláken ve fondu vláken krátkého parsování.|
-|ShortParsingIdleThreads|Vlákna: Nečinná vlákna krátkého parsování|Počet|Průměr|Počet nečinných vláken ve fondu vláken krátkého parsování.|
-|ShortParsingJobQueueLength|Vlákna: Krátkého parsování délka fronty úloh|Počet|Průměr|Počet úloh ve frontě fondu vláken krátkého parsování.|
-|TotalConnectionFailures|Celkem nezdařených spojení|Count|Průměr|Celkový počet neúspěšných pokusů o připojení.|
-|TotalConnectionRequests|Celkem žádostí o spojení|Count|Průměr|Celkem žádostí o spojení. |
+|CommandPoolJobQueueLength|Délka fronty úloh fondu příkazů|Count|Average|Počet úloh ve frontě fondu vláken příkazů|
+|CurrentConnections|Připojení: Aktuální připojení|Count|Average|Aktuální počet navázaných připojení klientů.|
+|CurrentUserSessions|Aktuální uživatelské relace|Count|Average|Aktuální počet navázaných uživatelských relací.|
+|mashup_engine_memory_metric|Paměť motoru M|B|Average|Využití paměti procesy modulu hybridní webové aplikace|
+|mashup_engine_qpu_metric|QPU modulu M|Count|Average|QPU využití hybridních procesů v hybridních modulech|
+|memory_metric|Memory (Paměť)|B|Average|Rezident. Rozsah 0-25 GB pro S1, 0-50 GB pro S2 a 0-100 GB pro S4|
+|memory_thrashing_metric|Thrashing paměti|Percent|Average|Průměrná velikost thrashing paměti|
+|CleanerCurrentPrice|Paměť: Aktuální cena čisticího modulu|Count|Average|Aktuální cena paměti $ USD, normalizovaná na 1000.|
+|CleanerMemoryNonshrinkable|Paměť: Nezmenšovaná paměť čisticího modulu|B|Average|Množství paměti (v bajtech), které není předmětem mazání čisticím pozadím.|
+|CleanerMemoryShrinkable|Paměť: Velikost čisticí paměti|B|Average|Množství paměti (v bajtech), které se může vyčistit čisticím nástrojem na pozadí.|
+|MemoryLimitHard|Paměť: Limit paměti – pevný|B|Average|Limit pevné paměti, z konfiguračního souboru.|
+|Hodnota memorylimithigh|Paměť: Limit paměti – vysoká|B|Average|Horní limit paměti, z konfiguračního souboru.|
+|MemoryLimitLow|Paměť: Limit paměti – nízká|B|Average|Omezení nedostatku paměti, z konfiguračního souboru.|
+|MemoryLimitVertiPaq|Paměť: Limit paměti VertiPaq|B|Average|Limit v paměti, z konfiguračního souboru.|
+|MemoryUsage|Paměť: Využití paměti|B|Average|Využití paměti procesu serveru, které se používá při výpočtu ceny čisticí paměti. Je rovno čítači Process\PrivateBytes a velikosti paměti, která je namapovaná na paměť, která byla namapována nebo přidělena pomocí analytického stroje v paměti (VertiPaq), nad rámec limitu paměti stroje.|
+|Kvóta|Paměť: Kvóta|B|Average|Aktuální kvóta paměti (v bajtech). Kvóta paměti je také známá jako přidělení paměti nebo rezervace paměti.|
+|QuotaBlocked|Paměť: Kvóta blokována|Count|Average|Aktuální počet požadavků na kvótu, které jsou blokovány, dokud nebudou uvolněny jiné kvóty paměti.|
+|VertiPaqNonpaged|Paměť: VertiPaq – nestránkované|B|Average|Počet bajtů paměti uzamčených v pracovní sadě pro použití modulem v paměti.|
+|VertiPaqPaged|Paměť: VertiPaq na straně|B|Average|Počet bajtů stránkované paměti používaných pro data v paměti.|
+|ProcessingPoolJobQueueLength|Délka fronty úloh zpracování fondu|Count|Average|Počet nevstupně-výstupních úloh ve frontě fondu vláken zpracování.|
+|RowsConvertedPerSec|Zpracování: Počet převedených řádků za sekundu|CountPerSecond|Average|Rychlost převodu řádků během zpracování.|
+|RowsReadPerSec|Zpracování: Počet přečtených řádků za sekundu|CountPerSecond|Average|Rychlost čtení řádků ze všech relačních databází.|
+|RowsWrittenPerSec|Zpracování: Počet zapsaných řádků za sekundu|CountPerSecond|Average|Rychlost zápisu řádků během zpracování.|
+|qpu_metric|QPU|Count|Average|QPU. Rozsah 0-100 pro S1, 0-200 pro S2 a 0-400 pro S4|
+|QueryPoolBusyThreads|Zaneprázdněná vlákna fondu dotazů|Count|Average|Počet zaneprázdněných vláken ve fondu vláken dotazů.|
+|SuccessfullConnectionsPerSec|Úspěšná připojení za sekundu|CountPerSecond|Average|Frekvence úspěšných dokončení připojení.|
+|CommandPoolBusyThreads|Vláken Zaneprázdněná vlákna fondu příkazů|Count|Average|Počet zaneprázdněných vláken ve fondu vláken příkazů.|
+|CommandPoolIdleThreads|Vláken Nečinné podprocesy fondu příkazů|Count|Average|Počet nečinných vláken ve fondu vláken příkazů.|
+|LongParsingBusyThreads|Vláken Dlouhá vlákna s dlouhou analýzou|Count|Average|Počet zaneprázdněných vláken ve fondu vláken dlouhého analýzy.|
+|LongParsingIdleThreads|Vláken Dlouhá nečinná vlákna analýzy|Count|Average|Počet nečinných vláken ve fondu vláken dlouhého analýzy.|
+|LongParsingJobQueueLength|Vláken Délka fronty úloh dlouhého analýzy|Count|Average|Počet úloh ve frontě fondu vláken dlouhého analýzy.|
+|ProcessingPoolIOJobQueueLength|Vláken Délka fronty úloh v/v fondu zpracování|Count|Average|Počet vstupně-výstupních úloh ve frontě fondu vláken zpracování.|
+|ProcessingPoolBusyIOJobThreads|Vláken Zaneprázdněná vlákna úloh v/v fondu zpracování|Count|Average|Počet vláken, ve kterých běží úlohy v/v, ve fondu vláken zpracování.|
+|ProcessingPoolBusyNonIOThreads|Vláken Vlákna, která nejsou v/v fondu zpracování, jsou zaneprázdněná.|Count|Average|Počet vláken, ve kterých běží jiné úlohy než v/v, ve fondu vláken zpracování.|
+|ProcessingPoolIdleIOJobThreads|Vláken Zpracovávají se vstupně-výstupní vlákna nečinných fondů.|Count|Average|Počet nečinných vláken pro úlohy v/v ve fondu vláken zpracování.|
+|ProcessingPoolIdleNonIOThreads|Vláken Zpracování nečinných vstupně-výstupních vláken fondu|Count|Average|Počet nečinných vláken ve fondu vláken zpracování vyhrazeného pro úlohy bez vstupně-výstupních operací.|
+|QueryPoolIdleThreads|Vláken Nečinné vlákna fondu dotazů|Count|Average|Počet nečinných vláken pro úlohy v/v ve fondu vláken zpracování.|
+|QueryPoolJobQueueLength|Vláken Délka fronty úloh fondu dotazů|Count|Average|Počet úloh ve frontě fondu vláken dotazů.|
+|ShortParsingBusyThreads|Vláken Krátká vlákna s zaneprázdněnou analýzou|Count|Average|Počet zaneprázdněných vláken ve zkráceném fondu vláken pro analýzu.|
+|ShortParsingIdleThreads|Vláken Krátká nečinná vlákna analýzy|Count|Average|Počet nečinných vláken ve zkráceném fondu vláken pro analýzu.|
+|ShortParsingJobQueueLength|Vláken Délka fronty úlohy krátké analýzy|Count|Average|Počet úloh ve frontě krátkého analýzy fondu vláken.|
+|TotalConnectionFailures|Celkový počet selhání připojení|Count|Average|Celkový počet neúspěšných pokusů o připojení|
+|TotalConnectionRequests|Požadavky na připojení celkem|Count|Average|Celkový počet požadavků na připojení |
 
 ## <a name="next-steps"></a>Další postup
-[Monitorování v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md)   
-[Metriky ve službě Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)   
-[Metriky ve službě Azure Monitor, rozhraní REST API](/rest/api/monitor/metrics)
+[Přehled Azure Monitor](../azure-monitor/overview.md)      
+[Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md)      
+[Metriky v Azure Monitor REST API](/rest/api/monitor/metrics)

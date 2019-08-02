@@ -1,43 +1,43 @@
 ---
-title: Firewall webových aplikací (WAF) v2 vlastního pravidla ve službě Azure
-description: Tento článek obsahuje základní informace o vlastních pravidel brány Firewall webových aplikací (WAF) v2 ve službě Azure Application Gateway.
+title: Vlastní pravidla firewallu webových aplikací Azure (WAF) v2
+description: Tento článek poskytuje přehled vlastních pravidel firewallu webových aplikací (WAF) V2 v Azure Application Gateway.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f6ea831771a8ffecfdd4c7c0d6374c16894e25ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9c04f805cf410d2306eda76c84a201a67b022b84
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164664"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716621"
 ---
-# <a name="custom-rules-for-web-application-firewall-v2"></a>Vlastní pravidla pro Firewall webových aplikací v2
+# <a name="custom-rules-for-web-application-firewall-v2"></a>Vlastní pravidla pro webový Application firewall v2
 
-Azure Application Gateway Firewall webových aplikací (WAF) v2 dodává s předem nakonfigurované, spravované platformy sady pravidel, který nabízí ochranu z mnoha různých typů útoků. Tyto útoky patří mezi skriptování, útok prostřednictvím injektáže SQL a další. Pokud jste správce WAF, můžete k zapsání vlastní pravidla, která rozšiřují základní pravidla nastavení pravidel (CRS). Pravidla můžete blokovat nebo povolit požadovaný provoz na základě kritérií porovnání.
+Firewall webových aplikací pro Azure Application Gateway (WAF) v2 přináší předem nakonfigurovanou RuleSet spravovanou platformou, která nabízí ochranu před mnoha různými typy útoků. Mezi tyto útoky patří skriptování mezi weby, vkládání SQL a další. Pokud jste správce WAF, možná budete chtít napsat vlastní pravidla pro rozšíření pravidel základní sady pravidel (počítačový systém). Vaše pravidla mohou buď blokovat nebo povolovat požadovaný provoz na základě kritérií porovnání.
 
-Vlastní pravidla umožňují vytvářet vlastní pravidla, která se vyhodnotí pro každý požadavek, který prochází WAF. Tato pravidla uchování vyšší prioritu než zbytek pravidla v sadách pravidel spravovaná. Vlastní pravidla obsahují název pravidla, Priorita pravidla a podmínky odpovídající pole. Pokud jsou tyto podmínky splněny, akci (na povoleného i blokovaného).
+Vlastní pravidla umožňují vytvořit vlastní pravidla vyhodnocená pro každý požadavek, který projde WAF. Tato pravidla mají vyšší prioritu než zbývající pravidla ve spravovaných sadách pravidel. Vlastní pravidla obsahují název pravidla, prioritu pravidla a pole podmínek, které se shodují. Pokud jsou splněny tyto podmínky, je provedena akce (pro povolení nebo blokování).
 
-Například můžete blokovat všechny požadavky z IP adresy v rozsahu 192.168.5.4/24. V tomto pravidle operátor je *IPMatch*matchValues je rozsah IP adres (192.168.5.4/24) a akce se zamítne. Můžete také nastavit prioritu a název pravidla.
+Můžete například blokovat všechny požadavky z IP adresy v rozsahu 192.168.5.4/24. V tomto pravidle je operátor *IPMatch*, matchValues je rozsah IP adres (192.168.5.4/24) a akce slouží k blokování provozu. Nastavíte také název a prioritu pravidla.
 
-Vlastní pravidla podporovat použití logiky úročených provádět více rozšířených pravidel tuto adresu, které vašim požadavkům na zabezpečení. For example (1 podmínku **a** podmínka 2) **nebo** podmínka 3).  V tomto příkladu znamená, že pokud podmínka 1 **a** 2 podmínky jsou splněny, **nebo** Pokud je splněna podmínka 3, WAF zabere akce určená ve vlastní pravidlo.
+Vlastní pravidla podporují použití složené logiky k pokročilejším pravidlům, která řeší vaše požadavky na zabezpečení. Například (podmínka 1 **a** podmínka 2) **nebo** podmínka 3).  Tento příklad znamená, že pokud je splněna podmínka 1 **a** podmínka 2 **nebo** Pokud je splněna podmínka 3, WAF by měla provést akci určenou ve vlastním pravidle.
 
-Různé odpovídající podmínky v rámci stejného pravidla jsou vždy compounded pomocí **a**. Například blokovat provoz z konkrétní IP adresu, a pouze v případě, že používají některé prohlížeče.
+Různé podmínky shod v rámci stejného pravidla jsou vždy složené pomocí **a**. Například zablokujte provoz z konkrétní IP adresy a jenom v případě, že používá určitý prohlížeč.
 
-Pokud chcete **nebo** dvě různé podmínky, dvě podmínky musí být v různých pravidel. Například blokovat provoz z konkrétní IP adresa nebo blok přenosem, pokud používá určitého webového prohlížeče.
+Pokud chcete **nebo** dvě různé podmínky, musí být tyto dvě podmínky v různých pravidlech. Můžete například blokovat provoz z konkrétní IP adresy nebo blokovat provoz, pokud používají konkrétní prohlížeč.
 
 > [!NOTE]
-> Maximální počet vlastní pravidla firewallu webových aplikací je 100. Další informace o omezeních Application Gateway najdete v tématu [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md#application-gateway-limits).
+> Maximální počet vlastních pravidel WAF je 100. Další informace o omezeních Application Gateway najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md#application-gateway-limits).
 
-Regulární výrazy jsou podporovány také v vlastní pravidla, stejně jako v sady pravidel CRS. Příklady z nich najdete v tématu příklady 3 a 5 v [vytvoření a použití pravidel brány firewall na vlastních webových aplikací](create-custom-waf-rules.md).
+Regulární výrazy jsou také podporovány ve vlastních pravidlech, stejně jako v RuleSets počítačový počítač. Příklady těchto příkazů najdete v části Příklady 3 a 5 v tématu [Vytvoření a použití vlastních pravidel firewallu webových aplikací](create-custom-waf-rules.md).
 
-## <a name="allowing-vs-blocking"></a>Povolení a blokování
+## <a name="allowing-vs-blocking"></a>Povolení vs. blokování
 
-Povolení a blokování provozu je jednoduchý s vlastní pravidla. Například můžete zablokovat veškerý provoz pocházející z rozsahu IP adres. Můžete vytvořit další pravidlo pro povolení provozu, pokud požadavek pochází z určitého webového prohlížeče.
+Povolení a blokování provozu je jednoduché s vlastními pravidly. Můžete například blokovat veškerý provoz přicházející z rozsahu IP adres. Pokud požadavek pochází z konkrétního prohlížeče, můžete nastavit jiné pravidlo, které povolí provoz.
 
-Pokud chcete povolit něco, ujistěte se, že `-Action` parametr je nastaven na **povolit**. Pokud chcete zablokovat možnost něco, ujistěte se, že `-Action` parametr je nastaven na **bloku**.
+Pokud chcete něco dovolit, zajistěte `-Action` , aby byl parametr nastavený na hodnotu **povoleno**. Chcete-li něco zablokovat `-Action` , zajistěte, aby byl parametr nastaven na hodnotu **blokovat**.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -55,7 +55,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Předchozí `$BlockRule` mapuje na vlastní pravidlo, v Azure Resource Manageru:
+Předchozí `$BlockRule` mapování na následující vlastní pravidlo v Azure Resource Manager:
 
 ```json
 "customRules": [
@@ -86,80 +86,80 @@ Předchozí `$BlockRule` mapuje na vlastní pravidlo, v Azure Resource Manageru:
     ], 
 ```
 
-Tohoto vlastního pravidla obsahuje název, priority, akci a pole odpovídající podmínky, které musí být splněny pro akci k provedení. Další vysvětlení těchto polí najdete v následujících popisech pole. Například vlastní pravidla, najdete v článku [vytvoření a použití pravidel brány firewall na vlastních webových aplikací](create-custom-waf-rules.md).
+Toto vlastní pravidlo obsahuje název, prioritu, akci a pole podmínek porovnání, které musí být splněny, aby akce mohla probíhat. Další vysvětlení těchto polí naleznete v následujících popisech polí. Například vlastní pravidla najdete v tématu [Vytvoření a použití vlastních pravidel firewallu webových aplikací](create-custom-waf-rules.md).
 
 ## <a name="fields-for-custom-rules"></a>Pole pro vlastní pravidla
 
-### <a name="name-optional"></a>[Volitelné] název
+### <a name="name-optional"></a>Název [nepovinné]
 
 Toto je název pravidla. Tento název se zobrazí v protokolech.
 
 ### <a name="priority-required"></a>Priorita [povinné]
 
-- Určuje pořadí, ve kterém jsou pravidla vyhodnocována v. Čím nižší hodnota, na dřívější vyhodnocení pravidla.
-– Musí být jedinečný mezi všechna vlastní pravidla. Pravidlo s prioritou 100 se vyhodnotí před pravidlem s prioritou 200.
+- Určuje pořadí, ve kterém jsou pravidla vyhodnocována. Čím nižší hodnota, tím výše se vyhodnocuje pravidlo.
+-Musí být jedinečné mezi všemi vlastními pravidly. Pravidlo s prioritou 100 bude vyhodnoceno dříve než pravidlo s prioritou 200.
 
 ### <a name="rule-type-required"></a>Typ pravidla [povinné]
 
 V současné době musí být **MatchRule**.
 
-### <a name="match-variable-required"></a>Proměnné shody [povinné]
+### <a name="match-variable-required"></a>Match – proměnná [povinné]
 
-Musí být jedna z proměnných:
+Musí se jednat o jednu z proměnných:
 
-- RemoteAddr – IP adresa nebo název hostitele připojení vzdáleného počítače
-- RequestMethod – metoda požadavku HTTP (GET, POST, PUT, DELETE a atd.)
-- Řetězec dotazu – proměnné v identifikátoru URI
-- PostArgs – argumenty poslala v těle příspěvku
+- RemoteAddr – IP adresa/název hostitele připojení ke vzdálenému počítači
+- RequestMethod – metoda požadavku HTTP (GET, POST, PUT, DELETE atd.)
+- QueryString – proměnná v identifikátoru URI
+- PostArgs – argumenty odeslané v těle příspěvku. Vlastní pravidla, která používají tuto proměnnou shody, se aplikují jenom v případě, že je záhlaví Content-Type nastavené na Application/x-www-form-urlencoded a multipart/form-data.
 - RequestUri – identifikátor URI žádosti
-- RequestHeaders – hlavičky požadavku
-- Includesearchresults: true – text žádosti
-- RequestCookies – soubory cookie požadavku
+- RequestHeaders hostitele – hlavičky žádosti
+- Částmi – obsahuje celé tělo žádosti jako celek. Vlastní pravidla, která používají tuto proměnnou shody, se aplikují jenom v případě, že je záhlaví Content-Type nastavené na Application/x-www-form-urlencoded. 
+- RequestCookies – soubory cookie žádosti
 
-### <a name="selector-optional"></a>Selektor [volitelný]
+### <a name="selector-optional"></a>Selektor [nepovinné]
 
-Popisuje pole matchVariable kolekce. Například pokud matchVariable RequestHeaders, modulu pro výběr může být na *User-Agent* záhlaví.
+Popisuje pole kolekce matchVariable. Například pokud je matchVariable requestHeaders hostitele, selektor může být v hlavičce *User-Agent* .
 
-### <a name="operator-required"></a>[Povinné] – operátor
+### <a name="operator-required"></a>Operator [povinné]
 
-Musí být jedna z následujících operátorů:
+Musí být jedním z následujících operátorů:
 
-- IPMatch - používá pouze v případě shody proměnné je *RemoteAddr*
-- Equals – vstup je stejné jako MatchValue
+- IPMatch – používá se pouze v případě, že proměnná Match je *RemoteAddr* .
+- Equals – vstup je stejný jako MatchValue
 - Obsahuje
 - LessThan
 - GreaterThan
 - LessThanOrEqual
 - GreaterThanOrEqual
-- Začíná na
-- endsWith
-- Regex
+- Filtr začíná na
+- EndsWith
+- Regulární
 
-### <a name="negate-condition-optional"></a>Negate – podmínku [volitelný]
+### <a name="negate-condition-optional"></a>Podmínka negace [nepovinné]
 
-Neguje aktuální stav.
+Negace aktuální podmínky.
 
-### <a name="transform-optional"></a>Transformace [volitelný]
+### <a name="transform-optional"></a>Transformace [nepovinné]
 
-Dojde k pokusu o seznam řetězců s názvy transformací provedete před shodou. Může jít o následující transformace:
+Seznam řetězců s názvy transformací, které se mají provést před pokusem o shodu. Můžou to být následující transformace:
 
 - Malá
-- Trim
+- Oříznout
 - UrlDecode
 - UrlEncode 
 - RemoveNulls
 - HtmlEntityDecode
 
-### <a name="match-values-required"></a>Porovnání hodnot [povinné]
+### <a name="match-values-required"></a>Hodnoty shody [povinné]
 
-Seznam hodnot k porovnání, které si lze představit jako *nebo*"ed. Například může být IP adresy nebo jiných řetězců. Formát hodnoty závisí na předchozím operátor.
+Seznam hodnot, které mají být porovnány, což může být považováno za "je" *nebo*"Ed". Může to být například IP adresa nebo jiné řetězce. Formát hodnoty závisí na předchozím operátoru.
 
-### <a name="action-required"></a>Akce [povinné]
+### <a name="action-required"></a>Action [povinné]
 
-- Povolit – autorizuje transakce, přeskakuje se všechny další pravidla. To znamená, že zadaný požadavek se přidá do seznamu povolených a po shoda, vyhodnocení další žádost o zastavení a jsou odeslána do back-endový fond. Pravidla, která jsou na seznamu povolených položek se nevyhodnocují pro všechny další vlastní pravidla nebo spravovaný.
-- Blokovat – brání transakce v závislosti na *SecDefaultAction* (režim detekce a ochrany před únikem informací). Stejně jako akce Povolit Jakmile požadavek je vyhodnocen a přidat do seznamu zakázaných položek, vyhodnocování se zastaví a požadavek je blokován. Jakoukoli žádost po stejných podmínek, která splňuje nebude se vyhodnocovat a právě se zablokuje. 
-- Log – umožňuje pravidlo zaznamená do protokolu, ale umožňuje zbývající pravidla spuštění pro vyhodnocení. Další vlastní pravidla se vyhodnocují v pořadí podle priority, za nímž následuje spravované pravidla.
+- Allow – autorizuje transakci a přeskočí všechna další pravidla. To znamená, že zadaný požadavek se přidá do seznamu povolených a po shodě se požadavek zastaví a pošle se do fondu back-end. Pravidla, která jsou na seznamu povolených, se nevyhodnotí pro žádná další vlastní pravidla ani spravovaná pravidla.
+- Block – zablokuje transakci na základě *SecDefaultAction* (režim detekce nebo prevence). Stejně jako u akce Allow se po vyhodnocení žádosti a přidání do seznamu blokovaných hodnot zastaví a zablokuje se požadavek. Všechny žádosti, které splňují stejné podmínky, se nevyhodnotí a budou jenom blokované. 
+- Log – umožňuje zapsání pravidla do protokolu, ale umožňuje, aby zbytek pravidel běžel pro vyhodnocení. Následná vlastní pravidla se vyhodnocují v pořadí podle priority, za kterými následuje spravovaná pravidla.
 
 ## <a name="next-steps"></a>Další postup
 
-Po informace o vlastních pravidel [vytvořit vaše vlastní pravidla](create-custom-waf-rules.md).
+Jakmile se seznámíte s vlastními pravidly, [vytvořte vlastní pravidla](create-custom-waf-rules.md).

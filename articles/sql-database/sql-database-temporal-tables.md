@@ -1,6 +1,6 @@
 ---
-title: Začínáme s dočasnými tabulkami ve službě Azure SQL Database | Dokumentace Microsoftu
-description: Zjistěte, jak začít s používáním dočasných tabulek ve službě Azure SQL Database.
+title: Začínáme s dočasnými tabulkami v Azure SQL Database | Microsoft Docs
+description: Naučte se, jak začít používat dočasné tabulky v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,31 +10,30 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: ac57e873a6948e85e78849bd4e22db85491c4bfb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 39c19661a71a8b466aa6ff25be9e895189dfbfb3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441545"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566360"
 ---
-# <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Začínáme s dočasnými tabulkami ve službě Azure SQL Database
+# <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Začínáme s dočasnými tabulkami v Azure SQL Database
 
-Dočasné tabulky jsou novou funkcí programovatelnosti služby Azure SQL Database, která umožňuje sledovat a analyzovat kompletní historii změn ve vašich datech, bez nutnosti psaní vlastního kódu. Dočasných tabulek se zachovat data úzce souvisí s místní čas tak, aby uložené údaje se dá interpretovat jako platný pouze v rámci konkrétní období. Tato vlastnost dočasných tabulek se umožňuje efektivní analýzy založené na čase a získávání informací z dat vývoj.
+Dočasné tabulky představují novou funkci programovatelnosti Azure SQL Database, která umožňuje sledovat a analyzovat úplnou historii změn ve vašich datech bez nutnosti vlastního kódování. Dočasné tabulky udržují data úzce související s časovým kontextem, takže uložené fakta lze interpretovat jako platné pouze v rámci konkrétního období. Tato vlastnost dočasných tabulek umožňuje efektivně analyzovat časovou analýzu a získávat přehledy z vývoje dat.
 
-## <a name="temporal-scenario"></a>Dočasné scénář
+## <a name="temporal-scenario"></a>Dočasný scénář
 
-Tento článek ukazuje postup využívat dočasných tabulek se ve scénáři aplikace. Předpokládejme, že chcete na nový web, který je vyvíjen od začátku nebo na existující web, který chcete rozšířit pomocí analýzy chování uživatelů aktivity sledování činnosti uživatelů. V tomto příkladu zjednodušené předpokládáme, že počet navštívených webových stránek během časového období je indikátor, který je potřeba zachytit a sledovat v databázi webu, který je hostovaný na Azure SQL Database. Cílem historické analýzy aktivity uživatelů je zobrazíte vstupy přepracovat webu a poskytovat lepší prostředí pro návštěvníkům.
+Tento článek popisuje kroky, jak využít dočasné tabulky ve scénáři použití aplikace. Předpokládejme, že chcete sledovat aktivitu uživatelů na novém webu, který je vyvíjen od začátku, nebo na stávajícím webu, který chcete s analýzou aktivity od uživatele zvětšit. V tomto zjednodušeném příkladu předpokládáme, že počet navštívených webových stránek během časového období je ukazatel, který se musí zachytit a monitorovat v databázi webu, která je hostovaná na Azure SQL Database. Cílem historické analýzy aktivity uživatelů je získat vstupy pro změnu návrhu webu a poskytování lepší zkušenosti pro návštěvníky.
 
-Model databáze pro tento scénář je velmi jednoduché – s polem celá čísla, je reprezentována metriky aktivity uživatele **PageVisited**a je zachycená základní informace v profilu uživatele. Kromě toho pro analýzu podle času byste udržovali sadu řádků pro každého uživatele, kde každý řádek představuje počet stránek konkrétní uživatel navštívil v konkrétním časovém období.
+Databázový model pro tento scénář je velmi jednoduchý – metrika aktivity uživatele je reprezentovaná jediným polem typu Integer, **PageVisited**a je zachyceno spolu se základními informacemi o profilu uživatele. V případě analýzy založené na čase byste navíc měli pro každého uživatele zachovávat řadu řádků, kde každý řádek představuje počet stránek, které konkrétní uživatel navštívil během konkrétního časového období.
 
 ![Schéma](./media/sql-database-temporal-tables/AzureTemporal1.png)
 
-Naštěstí není potřeba umístit žádné úsilí ve vaší aplikaci k Udržovat informace o této aktivitě. S dočasnými tabulkami je tento proces automatizovat - poskytuje úplnou flexibilitu při návrhu webu a získejte víc času a zaměřte se na analýzu dat, samotného. Jediné, co musíte udělat, je zajistit, aby **WebSiteInfo** tabulka je nakonfigurována jako [dočasné-systémovou](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0). Přesný postup využívat dočasných tabulek se v tomto scénáři jsou popsané níže.
+Naštěstí nemusíte do vaší aplikace nadávat žádné úsilí, abyste zachovali informace o této aktivitě. Díky dočasným tabulkám je tento proces automatizovaný – poskytuje plnou flexibilitu při návrhu webů a další čas na analýzu dat, která je samotná. Jedinou věcí, kterou musíte udělat, je zajistit, aby byla tabulka **WebSiteInfo** nakonfigurovaná jako dočasná [systémovou správou verzí](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0). Přesné kroky k využití dočasných tabulek v tomto scénáři jsou popsány níže.
 
-## <a name="step-1-configure-tables-as-temporal"></a>Krok 1: Nakonfigurovat jako dočasné tabulky
-V závislosti na tom, jestli jsou počáteční vývoj nových projektů nebo upgrade stávající aplikace bude vytvoření dočasné tabulky nebo upravte stávající tak, že přidáte dočasný atributy. Obecně případu, váš scénář mohou být kombinaci těchto dvou možností. Provést tyto akce pomocí [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS), [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) nebo jakýkoli jiný nástroj pro vývoj příkazů jazyka Transact-SQL.
+## <a name="step-1-configure-tables-as-temporal"></a>Krok 1: Konfigurovat tabulky jako dočasné
+V závislosti na tom, jestli spouštíte nový vývoj nebo upgradujete stávající aplikaci, vytvoříte dočasné tabulky nebo upravíte stávající, a to přidáním dočasných atributů. V obecném případě může být váš scénář kombinací těchto dvou možností. Tuto akci proveďte pomocí [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS), [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) nebo jakéhokoli jiného vývojového nástroje Transact-SQL.
 
 > [!IMPORTANT]
 > Doporučujeme vám vždy používat nejnovější verzi aplikace Management Studio, aby se zajistila synchronizovanost s aktualizacemi Microsoft Azure a SQL Database. [Aktualizovat aplikaci SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
@@ -42,15 +41,15 @@ V závislosti na tom, jestli jsou počáteční vývoj nových projektů nebo up
 > 
 
 ### <a name="create-new-table"></a>Vytvořit novou tabulku
-Pomocí položky kontextové nabídky "Novou-systémovou tabulku" v Průzkumníku objektů aplikace SSMS otevřete editor dotazů se skriptem šablony dočasnou tabulku a pak použít "Zadejte hodnoty pro parametry šablony" (Ctrl + Shift + M) pro naplnění šablony:
+Pomocí položky místní nabídky "nová tabulka se systémovou správou" v SSMS Průzkumník objektů otevřete Editor dotazů s dočasnou šablonou tabulky a pak použijte "zadejte hodnoty pro parametry šablony" (CTRL + SHIFT + M) k naplnění šablony:
 
 ![SSMSNewTable](./media/sql-database-temporal-tables/AzureTemporal2.png)
 
-V sadě SSDT zvolte šablonu "Dočasnou tabulku (systém správy verzí)" při přidávání nových položek do projektu databáze. Který otevře se Návrhář tabulky a vám umožní snadno určit rozložení tabulky:
+V SSDT vyberte šablonu "dočasná tabulka (systémovou verzi)" při přidávání nových položek do projektu databáze. Otevře se Návrhář tabulky a umožní vám snadno zadat rozložení tabulky:
 
 ![SSDTNewTable](./media/sql-database-temporal-tables/AzureTemporal3.png)
 
-Můžete také vytvořit dočasnou tabulku zadáním příkazů jazyka Transact-SQL přímo, jak je znázorněno v následujícím příkladu. Mějte na paměti, že jsou povinné prvky každý dočasné tabulky definice období a tabulku v klauzuli SYSTEM_VERSIONING s odkazem na jiného uživatele, který uloží verze historických řádků:
+Můžete také vytvořit dočasnou tabulku zadáním příkazu jazyka Transact-SQL přímo, jak je znázorněno v následujícím příkladu. Všimněte si, že povinné prvky každé dočasné tabulky jsou definice období a klauzule SYSTEM_VERSIONING s odkazem na jinou uživatelskou tabulku, která bude ukládat verze historických řádků:
 
 ```
 CREATE TABLE WebsiteUserInfo 
@@ -65,15 +64,15 @@ CREATE TABLE WebsiteUserInfo
  WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.WebsiteUserInfoHistory));
 ```
 
-Při vytváření dočasné tabulce se systémovou správou související tabulky historie s výchozí konfigurací je automaticky vytvořen. Tabulky historie výchozí obsahuje clusterovaného indexu B-stromu na sloupce období (konec, start) se stránka komprese zapnuta. Tato konfigurace je ideální pro většinu scénářů, ve kterých se používají dočasných tabulek, zejména u [auditování dat](https://msdn.microsoft.com/library/mt631669.aspx#Anchor_0). 
+Když vytvoříte dočasnou tabulku se systémovou správou verzí, bude automaticky vytvořena dočasná tabulka historie s výchozí konfigurací. Výchozí tabulka historie obsahuje clusterovaný index B-Tree ve sloupcích období (konec, začátek) s povolenou kompresí stránky. Tato konfigurace je ideální pro většinu scénářů, ve kterých se používají dočasné tabulky, zejména pro [Auditování dat](https://msdn.microsoft.com/library/mt631669.aspx#Anchor_0). 
 
-V tomto konkrétním případě usilujeme o k analýze trendů na základě času přes delší historii dat a s větší sady dat, takže volby úložiště pro tabulku historie clusterovaný index columnstore. Clusterované columnstore poskytuje velmi dobrou kompresi a výkon pro analytické dotazy. Dočasné tabulky poskytují flexibilitu zcela nezávisle na sobě konfigurovat indexů na aktuální a dočasné tabulky. 
+V tomto konkrétním případě se zaměřujeme na analýzu trendů na základě času s delší historií dat a většími datovými sadami, takže volba úložiště pro tabulku historie je clusterovaný index columnstore. Clusterovaný cluster columnstore poskytuje pro analytické dotazy velmi dobrou kompresi a výkon. Dočasné tabulky poskytují flexibilitu pro zcela nezávisle nakonfigurovat indexy pro aktuální a dočasné tabulky. 
 
 > [!NOTE]
-> Indexy Columnstore jsou k dispozici na úrovni Premium a na úrovni Standard S3 a výše.
+> Indexy columnstore jsou k dispozici na úrovni Premium a na úrovni Standard, S3 a vyšší.
 >
 
-Tento skript je ukázkou, jak lze změnit výchozí index pro tabulku historie je clusterovaný index columnstore:
+Následující skript ukazuje, jak se výchozí index v tabulce historie dá změnit na clusterovaný columnstore:
 
 ```
 CREATE CLUSTERED COLUMNSTORE INDEX IX_WebsiteUserInfoHistory
@@ -81,12 +80,12 @@ ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
 ```
 
-Dočasné tabulky jsou reprezentovány v Průzkumníku objektů s konkrétní ikony pro snazší identifikaci během své historie tabulky se zobrazí jako podřízený uzel.
+Dočasné tabulky jsou reprezentovány v Průzkumník objektů s konkrétní ikonou pro snazší identifikaci, zatímco její tabulka historie se zobrazuje jako podřízený uzel.
 
-![AlterTable](./media/sql-database-temporal-tables/AzureTemporal4.png)
+![Alter – příkaz](./media/sql-database-temporal-tables/AzureTemporal4.png)
 
-### <a name="alter-existing-table-to-temporal"></a>Změnit existující tabulku na dočasnou
-Pojďme zahrnují alternativní scénář, ve kterém WebsiteUserInfo tabulce již existuje, ale nebyl navržen, aby uchovávala historie změn. V takovém případě můžete jednoduše rozšířit existující tabulky k dočasné, jak je znázorněno v následujícím příkladu:
+### <a name="alter-existing-table-to-temporal"></a>Změnit existující tabulku na dočasná
+Podíváme se na alternativní scénář, ve kterém už tabulka WebsiteUserInfo existuje, ale není navržená tak, aby udržovala historii změn. V takovém případě můžete jednoduše zvětšit existující tabulku tak, aby se stala dočasná, jak je znázorněno v následujícím příkladu:
 
 ```
 ALTER TABLE WebsiteUserInfo 
@@ -106,24 +105,24 @@ ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
 ```
 
-## <a name="step-2-run-your-workload-regularly"></a>Krok 2: Pravidelně spouštět vaše úlohy
-Hlavní výhodou dočasných tabulek je, že není nutné změnit nebo upravit svůj web v žádný způsob, jak provádět sledování změn. Po vytvoření dočasných tabulek se transparentně zachovat předchozí verze řádků pokaždé, když provedete změny na vašich datech. 
+## <a name="step-2-run-your-workload-regularly"></a>Krok 2: Pravidelné spouštění úloh
+Hlavní výhodou dočasných tabulek je, že nemusíte měnit ani upravovat svůj web jakýmkoli způsobem, abyste mohli provádět sledování změn. Po vytvoření dočasné tabulky transparentně uchovávají předchozí verze řádků pokaždé, když provedete úpravy dat. 
 
-Aby bylo možné plně využívat automatické sledování změn pro tento konkrétní scénář, teď právě aktualizovat sloupec **PagesVisited** pokaždé, když uživatel ukončí jejich relaci na webu:
+Aby bylo možné využít automatické sledování změn pro tento konkrétní scénář, můžeme jenom aktualizovat sloupec **PagesVisited** pokaždé, když uživatel ukončí svou relaci na webu:
 
 ```
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5 
 WHERE [UserID] = 1;
 ```
 
-Je důležité si všimněte, že dotaz pro aktualizaci nepotřebuje vědět přesný čas, kdy aktuální operace došlo k chybě, ani způsob, jakým se zachovají historická data pro pozdější analýzu. Oba tyto aspekty jsou automaticky zpracovány služba Azure SQL Database. Následující diagram znázorňuje, jak data historie je generována při každé aktualizaci.
+Je důležité si všimnout, že aktualizační dotaz nemusí znát přesný čas, kdy došlo ke skutečné operaci, a jak budou uchována historická data pro budoucí analýzu. Obě aspekty jsou automaticky zpracovány Azure SQL Database. Následující diagram znázorňuje, jak se generují data historie při každé aktualizaci.
 
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
-## <a name="step-3-perform-historical-data-analysis"></a>Krok 3: Analýza historických dat
-Teď když je povolené dočasné systému – Správa verzí, analýza historických dat je pouze jeden dotaz od vás. V tomto článku budeme poskytovat pár příkladů, které se vztahují k běžným scénářům analysis – Další informace najdete všechny podrobnosti, prozkoumejte různé možnosti, které nepředchází funkce [FOR SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) klauzuli.
+## <a name="step-3-perform-historical-data-analysis"></a>Krok 3: Provádění historických analýz dat
+Teď, když je zapnutá časová verze systému, je historická analýza dat jenom jedním dotazem. V tomto článku budeme poskytovat několik příkladů, které řeší běžné scénáře analýzy – Pokud se chcete dozvědět víc, prozkoumejte různé možnosti zavedené s klauzulí [for SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) .
 
-Pokud chcete zobrazit 10 nejčastějších uživatelů seřazených podle čísla navštívených webových stránek v době hodinou, spusťte tento dotaz:
+Pokud chcete zobrazit prvních 10 uživatelů seřazených podle počtu navštívených webových stránek před hodinou, spusťte tento dotaz:
 
 ```
 DECLARE @hourAgo datetime2 = DATEADD(HOUR, -1, SYSUTCDATETIME());
@@ -131,9 +130,9 @@ SELECT TOP 10 * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME AS OF @hourAgo
 ORDER BY PagesVisited DESC
 ```
 
-Můžete snadno upravit tento dotaz k analýze návštěvy webu od předchozí, den před měsícem, nebo v libovolném okamžiku v minulosti si přejete.
+Tento dotaz můžete snadno upravit, abyste mohli analyzovat návštěvy webu před dnešním dnem, před měsícem nebo v jakémkoli okamžiku v minulosti.
 
-K provádění statistických analýz základní za předchozí den, použijte následující příklad:
+Chcete-li provést základní statistickou analýzu předchozího dne, použijte následující příklad:
 
 ```
 DECLARE @twoDaysAgo datetime2 = DATEADD(DAY, -2, SYSUTCDATETIME());
@@ -147,7 +146,7 @@ FOR SYSTEM_TIME BETWEEN @twoDaysAgo AND @aDayAgo
 GROUP BY UserId
 ```
 
-K vyhledání konkrétního uživatele, aktivity v určitou dobu, použijte klauzuli obsažené:
+Pokud chcete v časovém intervalu vyhledat aktivity konkrétního uživatele, použijte klauzuli OBSAŽENou v:
 
 ```
 DECLARE @hourAgo datetime2 = DATEADD(HOUR, -1, SYSUTCDATETIME());
@@ -157,12 +156,12 @@ FOR SYSTEM_TIME CONTAINED IN (@twoHoursAgo, @hourAgo)
 WHERE [UserID] = 1;
 ```
 
-Grafická vizualizace je zvlášť vhodné pro dočasných dotazů, jak můžete zobrazit trendy a vzorce používání v intuitivního způsobem velmi snadno:
+Grafická vizualizace je zvláště užitečná pro dočasné dotazy, protože můžete snadno snadno zobrazit trendy a způsoby použití:
 
 ![TemporalGraph](./media/sql-database-temporal-tables/AzureTemporal6.png)
 
-## <a name="evolving-table-schema"></a>Vyvíjejí schématu tabulky
-Obvykle je potřeba změnit dočasná tabulka schématu, zatímco provádíte vývoj aplikací. K tomu stačí spustit regulární příkaz ALTER TABLE příkazy a Azure SQL Database bude odpovídajícím způsobem šířící změny do tabulky historie. Tento skript je ukázkou, jak můžete přidat další atribut pro sledování:
+## <a name="evolving-table-schema"></a>Vývoj schématu tabulky
+Obvykle budete muset při vývoji aplikací změnit schéma dočasné tabulky. V takovém případě stačí spustit příkazy ALTER TABLE a Azure SQL Database vhodně rozšíří změny v tabulce historie. Následující skript ukazuje, jak můžete přidat další atribut pro sledování:
 
 ```
 /*Add new column for tracking source IP address*/
@@ -170,7 +169,7 @@ ALTER TABLE dbo.WebsiteUserInfo
 ADD  [IPAddress] varchar(128) NOT NULL CONSTRAINT DF_Address DEFAULT 'N/A';
 ```
 
-Podobně můžete změnit definici sloupce je aktivní úlohy:
+Podobně můžete změnit definici sloupce, když je vaše zatížení aktivní:
 
 ```
 /*Increase the length of name column*/
@@ -186,16 +185,16 @@ ALTER TABLE dbo.WebsiteUserInfo
     DROP COLUMN TemporaryColumn; 
 ```
 
-Můžete také použít nejnovější [SSDT](https://msdn.microsoft.com/library/mt204009.aspx) změnit dočasná tabulka schématu jsou připojeny k databázi (online režim) nebo jako součást projektu databáze (offline režim).
+Případně můžete použít nejnovější [SSDT](https://msdn.microsoft.com/library/mt204009.aspx) ke změně schématu dočasná tabulky, když jste připojeni k databázi (online režim), nebo jako součást projektu databáze (offline režim).
 
-## <a name="controlling-retention-of-historical-data"></a>Řízení uchování historických dat.
-Pomocí dočasných tabulek se systémovou správou může zvýšit tabulky historie regulární tabulky velikost databáze více než. Tabulky historie velká a neustále se rozšiřujícímu může být problém i z důvodu náklady na úložiště pure, jakož i nastavení výkonu daň z dočasné dotazování. Proto vývoj zásadu uchovávání dat pro správu dat v tabulce historie je důležitou součástí plánování a správu životního cyklu každý dočasnou tabulku. S Azure SQL Database máte pro správu historických dat v dočasné tabulce následujících postupů:
+## <a name="controlling-retention-of-historical-data"></a>Řízení uchovávání historických dat
+S dočasnými tabulkami se systémovou správou verzí může tabulka historie zvýšit velikost databáze na více než běžných tabulkách. Ve velké a stále rostoucí tabulce historie se může jednat o problém, který je v důsledku čistých nákladů na úložiště a také při dočasném dotazování na výkon. Proto je vývoj zásad uchovávání dat pro správu dat v tabulce historie důležitým aspektem plánování a správy životního cyklu každé dočasné tabulky. V Azure SQL Database máte k dispozici následující přístupy ke správě historických dat v dočasné tabulce:
 
 * [Dělení tabulky](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_2)
-* [Skript pro vyčištění vlastní](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)
+* [Vlastní čisticí skript](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o dočasných tabulek naleznete v tématu podívejte se na [dočasných tabulek se](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables).
-- Navštivte web Channel 9 a poslechněte si [skutečné dočasné implementace úspěch příběh a zjistěte](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) a sledujte [live dočasné ukázku](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
+- Další informace o dočasných tabulkách najdete v tématu věnovaném rezervám [dočasné tabulky](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables).
+- Navštivte kanál 9, abyste slyšeli [skutečný příběh úspěšnosti v reálném čase](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) a sledovali [živý dočasný názor](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
 

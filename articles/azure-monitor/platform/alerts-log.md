@@ -5,15 +5,15 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 07/29/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 1ee4f89885bd10a116963d42e87766bcd05cc0b4
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 6dc8fcc32d7f05063da15eb6ca6bf7a7d69baebb
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67852722"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663127"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor
 
@@ -71,12 +71,12 @@ Podrobný návod, jak používat výstrahy protokolu pomocí rozhraní Azure Por
    > 
    > ![možnost agregace při](media/alerts-log/aggregate-on.png)
 
-1. *Výstrahy protokolu*: V rámci vizualizace můžete **logiku výstrah** vybrat ze zobrazených možností podmínka, agregace a nakonec prahová hodnota. Nakonec zadejte v logice čas, který se má vyhodnotit pro zadanou podmínku  , a to za použití možnosti perioda. Společně s tím, jak často se má výstraha spouštět, vyberte **četnost**. **Výstrahy protokolu** můžou být založené na:
+1. *Výstrahy protokolu*: V rámci vizualizace můžete **logiku výstrah** vybrat ze zobrazených možností podmínka, agregace a nakonec prahová hodnota. Nakonec zadejte v logice čas, který se má vyhodnotit pro zadanou podmínku , a to za použití možnosti perioda. Společně s tím, jak často se má výstraha spouštět, vyberte **četnost**. **Výstrahy protokolu** můžou být založené na:
     - [Počet záznamů](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): Pokud je počet záznamů vrácených dotazem větší nebo menší než poskytnutá hodnota, vytvoří se výstraha.
     - [Měření metrik](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): Pokud každá *agregovaná hodnota* ve výsledcích překračuje stanovenou prahovou hodnotu a je *seskupena podle* zvolené hodnoty, vytvoří se výstraha. Počet porušení pro výstrahu je počet překročení prahové hodnoty ve zvoleném časovém období. Můžete určit celkový počet porušení pro libovolnou kombinaci porušení v rámci sady výsledků nebo po sobě jdoucí porušení předpisů, aby se v následných vzorcích vyžadovalo, aby v nich došlo k narušení.
 
 
-1. Jako druhý krok definujte v poli **název pravidla výstrahy** název vaší výstrahy spolu s popisem podrobností o konkrétní výstraze  a hodnotě **závažnosti** z dostupných možností. Tyto podrobnosti se znovu použijí ve všech e-mailech výstrah, oznámeních nebo nabízených oznámeních Azure Monitor. Kromě toho může uživatel zvolit, že se pravidlo výstrahy při vytváření okamžitě aktivuje, a to tak, že **po vytvoření zvolí pravidlo Povolit** .
+1. Jako druhý krok definujte v poli **název pravidla výstrahy** název vaší výstrahy spolu s popisem podrobností o konkrétní výstraze a hodnotě **závažnosti** z dostupných možností. Tyto podrobnosti se znovu použijí ve všech e-mailech výstrah, oznámeních nebo nabízených oznámeních Azure Monitor. Kromě toho může uživatel zvolit, že se pravidlo výstrahy při vytváření okamžitě aktivuje, a to tak, že **po vytvoření zvolí pravidlo Povolit** .
 
     V případě **výstrah pouze protokolu** jsou v podrobnostech výstrahy k dispozici některé další funkce:
 
@@ -321,6 +321,23 @@ Azure Monitor – [rozhraní API pro plánovaná pravidla dotazů](https://docs.
 
 > [!NOTE]
 > Rutiny PowerShellu pro ScheduledQueryRules můžou spravovat jenom pravidla vytvořená samotným rutinou nebo [rozhraní API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)pro naplánovaná pravidla dotazování pomocí Azure monitor. Pravidla upozornění protokolů vytvořená pomocí starších [Log Analytics rozhraní API výstrah](api-alerts.md) a starších šablon [Log Analytics uložených hledání a upozornění](../insights/solutions-resources-searches-alerts.md) se dají spravovat pomocí rutin prostředí ScheduledQueryRules PowerShellu jenom po [Přepnutí uživatelského rozhraní API pro protokol. Výstrahy analýzy](alerts-log-api-switch.md).
+
+V následujícím seznamu jsou uvedené kroky pro vytvoření ukázkového pravidla upozornění protokolu pomocí rutin PowerShellu pro scheduledQueryRules.
+```powershell
+$source = New-AzScheduledQueryRuleSource -Query 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m), _ResourceId' -DataSourceId "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews"
+
+$schedule = New-AzScheduledQueryRuleSchedule -FrequencyInMinutes 15 -TimeWindowInMinutes 30
+
+$metricTrigger = New-AzScheduledQueryRuleLogMetricTrigger -ThresholdOperator "GreaterThan" -Threshold 2 -MetricTriggerType "Consecutive" -MetricColumn "_ResourceId"
+
+$triggerCondition = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator "LessThan" -Threshold 5 -MetricTrigger $metricTrigger
+
+$aznsActionGroup = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG" -EmailSubject "Custom email subject" -CustomWebhookPayload "{ \"alert\":\"#alertrulename\", \"IncludeSearchResults\":true }"
+
+$alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsActionGroup -Severity "3" -Trigger $triggerCondition
+
+New-AzScheduledQueryRule -ResourceGroupName "contosoRG" -Location "Region Name for your Application Insights App or Log Analytics Workspace" -Action $alertingAction -Enabled $true -Description "Alert description" -Schedule $schedule -Source $source -Name "Alert Name"
+```
 
 ## <a name="managing-log-alerts-using-cli-or-api"></a>Správa výstrah protokolu pomocí rozhraní příkazového řádku nebo rozhraní příkazového řádku
 

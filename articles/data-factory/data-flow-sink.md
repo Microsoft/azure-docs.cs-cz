@@ -1,92 +1,99 @@
 ---
-title: Nastavení jímky transformace ve funkci mapování toku dat služby Azure Data Factory
-description: Další informace o nastavení jímky transformace v mapování toku dat.
+title: Nastavte transformaci jímky v funkci toku dat mapování Azure Data Factory
+description: Přečtěte si, jak nastavit transformaci jímky v toku dat mapování.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 4341cbb0e24330d535f5211c088f0068eab33af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b228dfd92fe389d196a65f7152ef22751842f4bb
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596261"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640280"
 ---
-# <a name="sink-transformation-for-a-data-flow"></a>Transformace toku dat jímky
+# <a name="sink-transformation-for-a-data-flow"></a>Transformace jímky pro tok dat
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Po transformaci váš tok dat můžete jímky dat do cílové datové sadě. V transformaci jímky zvolte definici datové sady pro určení výstupní data. Může mít jak mnoho jímky transformací, jak váš tok dat vyžaduje.
+Po transformaci toku dat můžete data zpracovat do cílové datové sady. V transformaci jímky vyberte definici datové sady pro cílová výstupní data. V případě, že datový tok vyžaduje, můžete mít tolik transformací jímky.
 
-K účtu pro odchylek schématu a změny v příchozích datech do složky bez definované schéma v výstupní datovou sadu jímky výstupní data. Můžete také berete v úvahu pro změny ve sloupcích v zdrojů tak, že vyberete **povolit schématu odchylek** ve zdroji. Potom automaticky mapovat všechna pole v jímce.
+Aby se zohlednila změna schématu a změny v příchozích datech, zajímky výstupních dat do složky bez definovaného schématu ve výstupní datové sadě. V případě změn sloupců ve vašich zdrojích můžete také vybrat možnost u zdroje použít **posun schématu** . Pak automap všechna pole v jímky.
 
-![Možnosti na kartě jímky, včetně možnosti automatického mapy](media/data-flow/sink1.png "jímky 1")
+![Možnosti na kartě jímka, včetně možnosti automatické mapování](media/data-flow/sink1.png "jímka 1")
 
-Jímka všechna příchozí pole, zapněte **automaticky mapy**. Chcete-li zvolit pole do jímky do cíle, nebo chcete-li změnit názvy polí v cílovém umístění, vypněte **automaticky mapy**. Otevřete **mapování** kartu pro výstupní pole mapování.
+Chcete-li zpracovat všechna příchozí pole, zapněte **automatickou mapu**. Chcete-li vybrat pole, která mají být zajímka do cíle, nebo změnit názvy polí v cíli, vypněte **automatickou mapu**. Pak otevřete kartu **mapování** a namapujte výstupní pole.
 
-![Možnosti na kartě mapování](media/data-flow/sink2.png "jímky 2")
+![Možnosti na kartě mapování](media/data-flow/sink2.png "jímka 2")
 
 ## <a name="output"></a>Výstup 
-Pro úložiště objektů Blob v Azure nebo Data Lake Storage jímky typy výstupu Transformovaná data do složky. Spark generuje dělené výstupní soubory dat založené na schéma rozdělení oddílů, který používá transformace jímky. 
+Pro úložiště objektů BLOB v Azure nebo Data Lake Storage typy jímky výstup transformovaná data do složky. Spark generuje výstupní datové soubory rozdělené do oddílů na základě schématu dělení, které používá transformace jímky. 
 
-Můžete nastavit schéma rozdělení oddílů z **optimalizace** kartu. Pokud chcete datovou továrnu sloučit výstup do jednoho souboru, vyberte **jeden oddíl**.
+Schéma dělení můžete nastavit na kartě **optimalizace** . Pokud chcete, Data Factory sloučit výstup do jednoho souboru, vyberte **jeden oddíl**.
 
-![Možnosti na kartě Optimalizace](media/data-flow/opt001.png "jímky možnosti")
+![Možnosti na kartě optimalizace](media/data-flow/opt001.png "Možnosti jímky")
 
 ## <a name="field-mapping"></a>Mapování polí
+Na kartě **mapování** transformace jímky můžete namapovat příchozí sloupce vlevo na cílové umístění na pravé straně. Když datovou jímku zařadíte do souborů, Data Factory bude vždy zapisovat nové soubory do složky. Při mapování na datovou sadu databáze zvolíte možnosti operace databázové tabulky pro vložení, aktualizaci, Upsert nebo odstranění.
 
-Na **mapování** kartu transformace vaší jímky můžete namapovat příchozí sloupce na levé straně cíle na pravé straně. Když jímky datové toky pro soubory, Data Factory vždy psát nové soubory do složky. Při namapování na datové sady databáze můžete vygenerovat novou tabulku, která používá toto schéma tak, že nastavíte **Uložit zásadu** k **přepsat**. Nebo vkládání nových řádků v existující tabulce a poté mapování polí do existující schéma. 
+![Karta mapování](media/data-flow/sink2.png "Jímky")
 
-![Na kartě mapování](media/data-flow/sink2.png "jímky")
+V tabulce mapování můžete vícenásobný výběr propojit více sloupců, zrušit propojení více sloupců nebo mapovat více řádků na stejný název sloupce.
 
-V mapování tabulky je možné vícenásobný výběr propojení více sloupců, zrušit odkaz více sloupců nebo mapovat více řádků na stejný název sloupce.
+Chcete-li vždy mapovat příchozí sadu polí na cíl, protože jsou a plně akceptovat flexibilní definice schématu, vyberte možnost **Povolení posunu schématu**.
 
-Vždy mapovat příchozí sada polí na cíl, jak jsou a tak, aby přijímal plně flexibilní schéma definice, vyberte **povolit schématu odchylek**.
+![Karta mapování zobrazující pole mapovaná na sloupce v datové sadě](media/data-flow/multi1.png "více možností")
 
-![Na kartě mapování zobrazí pole, které jsou mapované na sloupce v datové sadě](media/data-flow/multi1.png "více možností")
+Chcete-li obnovit mapování sloupců, vyberte možnost **znovu mapovat**.
 
-Chcete-li obnovit mapování sloupce, vyberte **přemapovat**.
+![Karta jímka](media/data-flow/sink1.png "Jímka jedna")
 
-![Karta jímka](media/data-flow/sink1.png "jímky jeden")
+Pokud se změní schéma, vyberte možnost **ověřit schéma** a selhání jímky.
 
-Vyberte **ověřením schématu** jímka selže, pokud se změní schéma.
+Chcete-li zkrátit obsah složky jímky před zápisem cílových souborů do této cílové složky, vyberte možnost **zrušit zaškrtnutí složky** .
 
-Vyberte **vymazat složce** došlo ke zkrácení obsah složky jímky před zápisem cílové soubory v této cílové složky.
+## <a name="rule-based-mapping"></a>Mapování na základě pravidel
+Při vypnutí automatického mapování budete mít možnost Přidat mapování na základě sloupců (pevné mapování) nebo mapování na základě pravidel. Mapování na základě pravidel vám umožní zapisovat výrazy s porovnáváním vzorů. 
+
+![Mapování na základě pravidel](media/data-flow/rules4.png "Mapování na základě pravidel")
+
+Když zvolíte mapování na základě pravidel, budete mít k stránce ADF možnost vyhodnotit odpovídající výraz tak, aby odpovídala pravidlům příchozího vzoru, a definovat názvy odchozích polí. Můžete přidat libovolnou kombinaci polí i mapování na základě pravidel. Názvy polí se pak generují za běhu pomocí ADF na základě příchozích metadat ze zdroje. Můžete zobrazit názvy generovaných polí během ladění a pomocí podokna náhledu dat.
+
+Podrobnosti o porovnávání vzorů jsou v [dokumentaci ke vzorci sloupců](concepts-data-flow-column-pattern.md).
 
 ## <a name="file-name-options"></a>Možnosti názvu souboru
 
-Nastavte pojmenovávání souborů: 
+Nastavit pojmenování souborů: 
 
-   * **Výchozí**: Spark umožňuje soubory název založeném na výchozím nastavení součástí.
-   * **Vzor**: Zadejte vzor pro výstupní soubory. Například **půjček [n]** vytvoří loans1.csv loans2.csv a tak dále.
+   * **Výchozí**: Umožňuje Sparku pojmenovat soubory založené na výchozím nastavení části.
+   * **Vzor**: Zadejte vzor pro výstupní soubory. Například **půjčky [n]** vytvoří loans1. csv, loans2. csv a tak dále.
    * **Na oddíl**: Zadejte jeden název souboru na oddíl.
-   * **Jako data ve sloupci**: Výstupní soubor nastavena na hodnotu sloupce.
-   * **Výstup do jednoho souboru**: Pomocí této možnosti bude ADF kombinovat dělené výstupní soubory do jednoho souboru s názvem. Tato možnost dala použít, vaše datová sada musí se překládat na název složky. Navíc Upozorňujeme, že tuto operaci sloučení může selhat může být založen na velikost uzlu.
+   * **Jako data ve sloupci**: Nastavte výstupní soubor na hodnotu sloupce.
+   * **Výstup do jednoho souboru**: Pomocí této možnosti sloučí ADF výstupní soubory rozdělené do jednoho pojmenovaného souboru. Chcete-li použít tuto možnost, musí být datová sada přeložena na název složky. Všimněte si také, že tato operace sloučení může být na základě velikosti uzlu neúspěšná.
 
 > [!NOTE]
-> Pouze v případě, že máte spuštěnou aktivitu spuštění toku dat souboru počáteční operacích. Nejsou spuštění v režimu datového toku ladění.
+> Operace se soubory zahájí pouze v případě, že jste spustili aktivitu spustit tok dat. Nespustí se v režimu ladění toku dat.
 
 ## <a name="database-options"></a>Možnosti databáze
 
 Vyberte nastavení databáze:
 
-* **Metoda aktualizace**: Výchozí hodnota je umožňující vložení. Vymazat **povolit vložit** Pokud budete chtít zastavit, vložením nových řádků ze zdroje. Aktualizovat upsert, nebo odstranit řádky, nejprve přidáte transformaci alter řádků pro řádky značky pro tyto akce. 
-* **Znovu vytvořte tabulku**: Vyřaďte nebo vytvoření cílové tabulky před toku dat dokončí.
-* **Truncate table**: Předtím, než se dokončí toku dat, odeberte všechny řádky z cílové tabulce.
-* **Velikost dávky**: Zadejte číslo do kbelíku zápisy do bloků. Tuto možnost použijte pro načítání velkých objemů dat. 
-* **Zapnout pracovní režim**: Při načítání Azure Data Warehouse jako datové sady jímky pomocí PolyBase.
+* **Metoda aktualizace**: Ve výchozím nastavení je povoleno vkládání. Pokud chcete zastavit vkládání nových řádků ze zdroje, zrušte zaškrtnutí políčka **povolí vložení** . Chcete-li aktualizovat, Upsert nebo odstranit řádky, přidejte nejprve transformaci ALTER-Row k označení řádků pro tyto akce. 
+* **Znovu vytvořit tabulku**: Před dokončením toku dat vyřaďte nebo vytvořte cílovou tabulku.
+* **Zkrátit tabulku**: Před dokončením toku dat odeberte všechny řádky z cílové tabulky.
+* **Velikost dávky**: Zadejte číslo, kterým se mají zablokovat zápisy do bloků. Tato možnost slouží k načítání velkých objemů dat. 
+* **Povolit přípravu**: Použijte základnu, když načítáte datový sklad Azure jako datovou sadu jímky.
 
-![Na kartě nastavení zobrazující možnosti SQL jímky](media/data-flow/alter-row2.png "možnosti SQL")
-
-> [!NOTE]
-> V toku dat může směrovat Data Factory k vytvoření nové definice tabulky v cílové databázi. Pokud chcete vytvořit definici tabulky, nastavte datové sady v jímky transformace, která má nový název tabulky. V sadě dat SQL, pod názvem tabulky vyberte **upravit** a zadejte nový název tabulky. Potom v transformaci jímky, zapněte **povolit schématu odchylek**. Nastavte **importovat schéma** k **žádný**.
-
-![Nastavení datové sady SQL, znázorňující, kde můžete upravit název tabulky](media/data-flow/dataset2.png "SQL schématu")
+![Karta nastavení zobrazující možnosti jímky SQL](media/data-flow/alter-row2.png "Možnosti SQL")
 
 > [!NOTE]
-> Při aktualizaci nebo odstranění řádků v databázi pro jímku, je nutné nastavit klíčový sloupec. Toto nastavení umožňuje alter řádek transformace k určení jedinečném řádku v knihovna pro přesun dat (DML).
+> V toku dat můžete Data Factory přímo vytvořit novou definici tabulky v cílové databázi. Chcete-li vytvořit definici tabulky, nastavte datovou sadu v transformaci jímky, která má název nové tabulky. V datové sadě SQL pod názvem tabulky vyberte **Upravit** a zadejte nový název tabulky. Potom v transformaci jímky zapněte možnost **Povolit posun schématu**. Nastavte **schéma pro import** na **none**.
+
+![Nastavení datové sady SQL, kde se zobrazuje, kde upravit název tabulky](media/data-flow/dataset2.png "Schéma SQL")
+
+> [!NOTE]
+> Když aktualizujete nebo odstraníte řádky v jímky databáze, musíte nastavit klíčový sloupec. Toto nastavení umožňuje transformaci ALTER-Row určit jedinečný řádek v knihovně pro přesun dat (DML).
 
 ## <a name="next-steps"></a>Další postup
-
-Teď, když jste vytvořili tok dat, přidejte [aktivitu toku dat do kanálu](concepts-data-flow-overview.md).
+Teď, když jste vytvořili tok dat, přidejte [do svého kanálu aktivitu toku dat](concepts-data-flow-overview.md).

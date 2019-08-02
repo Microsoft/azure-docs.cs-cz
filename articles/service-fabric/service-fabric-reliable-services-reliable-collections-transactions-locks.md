@@ -1,9 +1,9 @@
 ---
-title: Transakce a režimy zamykání v Azure Service Fabric Reliable Collections | Dokumentace Microsoftu
-description: Azure Service Fabric Reliable State Manager a Reliable Collections transakcích a zamykání.
+title: Transakce a režimy zámků v Azure Service Fabric Reliable Collections | Microsoft Docs
+description: Azure Service Fabric Reliable State Manager a Reliable Collections – transakce a uzamykání.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: masnider,rajak
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,85 +13,85 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: aljo
-ms.openlocfilehash: 9785a09a3ac3e119507b4ac28075d887c7edc619
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 8e77e488a3c0a40a714a0e8efffba0a2947454bf
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60774059"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599330"
 ---
-# <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transakce a režimy zamykání v Azure Service Fabric Reliable Collections
+# <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transakce a režimy zámků ve službě Azure Service Fabric Reliable Collections
 
 ## <a name="transaction"></a>Transakce
-Transakce je sekvence operací provedených jako jednu logickou jednotku práce.
-Transakce musí mít následující vlastnosti ACID. (viz: https://technet.microsoft.com/library/ms190612)
-* **Atomicitu**: Transakce musí být atomickou jednotku práce. Jinými slovy jsou prováděny všechny jeho změny dat, nebo žádná z nich se provádí.
-* **Konzistence**: Po dokončení transakce ponechte všechna data v konzistentním stavu. Všechny interní datové struktury, musí být správná na konci transakce.
-* **Izolace**: Změny provedené ve souběžných transakcí musí být izolované od změny provedené ve všech ostatních souběžných transakcí. Určuje úroveň izolace, používá pro operace v rámci ITransaction IReliableState provádění této operace.
-* **Odolnost**: Po dokončení transakce jeho efekty jsou trvale zavedené v systému. Změny zachovat i v případě selhání systému.
+Transakce je posloupnost operací prováděná jako jediná logická jednotka práce.
+Transakce musí vykazovat následující vlastnosti KYSELosti. si https://technet.microsoft.com/library/ms190612)
+* **Nedělitelnost**: Transakce musí být atomická jednotka práce. Jinými slovy, buď dojde k provedení všech úprav dat, nebo žádný z nich není proveden.
+* **Konzistence**: Po dokončení transakce musí opustit všechna data v konzistentním stavu. Všechny interní datové struktury musí být na konci transakce správné.
+* **Izolace**: Změny prováděné souběžnými transakcemi musí být izolované od úprav provedených jinými souběžnými transakcemi. Úroveň izolace, která se používá pro operaci v rámci ITransaction, je určena IReliableState, který provádí operaci.
+* **Odolnost**: Po dokončení transakce jsou její účinky trvale v systému zavedeny. Úpravy zůstanou zachované i v případě selhání systému.
 
 ### <a name="isolation-levels"></a>Úrovně izolace
-Úroveň izolace určuje míru, do které musí být transakce izolované od změny provedené jinými transakcemi.
-Existují dvě úrovně izolace, které jsou podporovány v Reliable Collections:
+Úroveň izolace definuje míru, na kterou musí být transakce izolovaná od úprav provedených ostatními transakcemi.
+Ve spolehlivých kolekcích jsou podporovány dvě úrovně izolace:
 
-* **Čtení opakovatelné**: Určuje, že příkazy nelze číst data, která byla upravena, ale ještě nebyla potvrzena dalšími transakcemi a že žádné další transakce můžete upravit data, která byla načtena prostřednictvím aktuální transakce, dokud se nedokončí aktuální transakce. Další podrobnosti najdete v tématu [ https://msdn.microsoft.com/library/ms173763.aspx ](https://msdn.microsoft.com/library/ms173763.aspx).
-* **Snímek**: Určuje, že data číst libovolný příkaz v rámci transakce je transakčně konzistentní verzi dat, která byla uložena na začátku transakce.
-  Transakce můžete rozpoznat pouze změny dat, které byly potvrzeny před zahájení transakce.
-  Data změny provedené jinými transakcemi po začátku aktuální transakce nejsou viditelné pro příkazy spouští v aktuální transakci.
-  Efekt je, jako kdyby příkazů v transakci získat snímek potvrzená data tak, jak byly na začátku transakce.
-  Snímky jsou konzistentní vzhledem k aplikacím v rámci spolehlivých kolekcí.
-  Další podrobnosti najdete v tématu [ https://msdn.microsoft.com/library/ms173763.aspx ](https://msdn.microsoft.com/library/ms173763.aspx).
+* **Opakované čtení**: Určuje, že příkazy nemohou číst data, která byla upravena, ale nebyla dosud potvrzena jinými transakcemi a které žádné jiné transakce nemohou upravovat data, která byla přečtena aktuální transakcí, dokud není dokončena aktuální transakce. Další podrobnosti najdete v tématu [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
+* **Snímek**: Určuje, že data přečtená jakýmkoli příkazem v transakci jsou přemístěné konzistentní verze dat, která existovala na začátku transakce.
+  Transakce může rozpoznat pouze změny dat, které byly potvrzeny před zahájením transakce.
+  Změny dat provedené jinými transakcemi po spuštění aktuální transakce nejsou viditelné pro příkazy prováděné v aktuální transakci.
+  Efekt je, jako by příkazy v transakci získaly snímek potvrzených dat, který existoval na začátku transakce.
+  Snímky jsou konzistentní v rámci spolehlivých kolekcí.
+  Další podrobnosti najdete v tématu [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
 
-Reliable Collections automaticky vybrat úroveň izolace použitou pro danou operaci čtení v závislosti na operaci a role repliky v době vytvoření transakce.
-Tady je tabulka znázorňující úrovně výchozí nastavení izolace pro operace spolehlivého slovníku a fronty.
+Spolehlivé kolekce automaticky zvolí úroveň izolace, která se má použít pro danou operaci čtení v závislosti na operaci a roli repliky v době vytváření transakce.
+Následuje tabulka, která znázorňuje výchozí hodnoty úrovně izolace pro spolehlivé operace Dictionary a Queue.
 
-| Operace \ Role | Primární | Sekundární |
+| Operace \ role | Primární | Sekundární |
 | --- |:--- |:--- |
-| Čtení jedné Entity |Opakovatelné pro čtení |Snímek |
+| Čtení jedné entity |Opakované čtení |Snímek |
 | Výčet, počet |Snímek |Snímek |
 
 > [!NOTE]
-> Běžné příklady pro jednu entitu operace `IReliableDictionary.TryGetValueAsync`, `IReliableQueue.TryPeekAsync`.
+> Běžné příklady operací s `IReliableDictionary.TryGetValueAsync` `IReliableQueue.TryPeekAsync`jednou entitou jsou.
 > 
 
-Spolehlivého slovníku a spolehlivá fronta podporovat vaše zapíše pro čtení.
-Jinými slovy všechny zápisu v rámci transakce se nebude zobrazovat na následující pro čtení, který patří do jedné transakce.
+Spolehlivý slovník i spolehlivá fronta podporují čtení zápisů.
+Jinými slovy, jakýkoli zápis v rámci transakce bude viditelný pro následující čtení, které patří do stejné transakce.
 
 ## <a name="locks"></a>Zámky
-V Reliable Collections implementovat všechny transakce přísné dvě fáze uzamčení: transakce neuvolní zámky získala až do doby ukončení transakce s přerušení nebo potvrzení.
+Ve spolehlivých kolekcích všechny transakce implementují přísné dva zámky fáze: transakce neuvolní zámky, které získaly, dokud transakce nekončí buď přerušením, nebo potvrzením.
 
-Spolehlivého slovníku používá uzamčení pro všechny operace jednu entitu na úrovni řádků.
-Spolehlivá fronta obchoduje vypnout souběžnosti striktní transakční FIFO vlastnosti.
-Spolehlivá fronta používá úroveň zámky operace povolení jedna transakce s `TryPeekAsync` a/nebo `TryDequeueAsync` a jedna transakce s `EnqueueAsync` najednou.
-Všimněte si, že chcete zachovat FIFO, pokud `TryPeekAsync` nebo `TryDequeueAsync` stále dodržuje, spolehlivá fronta je prázdná, bude také uzamknout `EnqueueAsync`.
+Spolehlivý slovník používá uzamykání na úrovni řádků pro všechny operace s jednou entitou.
+Spolehlivá fronta se zařadí do souběžnosti pro striktní transakční vlastnost FIFO.
+Spolehlivá fronta používá zámky na úrovni operace, `TryPeekAsync` takže `EnqueueAsync` v jednom `TryDequeueAsync` okamžiku umožňuje jednu transakci s a/nebo a jednou transakcí.
+Uvědomte si, že pokud chcete zachovat `TryPeekAsync` FIFO `TryDequeueAsync` , pokud v nebo někdy znamená, že je spolehlivá fronta prázdná, `EnqueueAsync`taky se uzamkne.
 
-Zápisu operace vždy provést exkluzivní zámky.
-Pro operace čtení uzamčení závisí na několika faktorech.
-Všechny operace čtení provést pomocí izolace snímku se bez zámku.
-Všechny operace čtení opakovatelné ve výchozím nastavení používá sdílené zámky.
-Ale pro všechny operace čtení, podporující opakovatelné pro čtení, uživatel požádat o aktualizační zámek místo zámku Shared.
-Aktualizační zámek je asymetrického uzamčen, použít k zabránění tedy v běžné formě o zablokování, která nastane, pokud více transakcí zamknutí prostředků pro potenciální aktualizace později.
+Operace zápisu vždy berou exkluzivní zámky.
+Pro operace čtení závisí uzamykání na několika faktorech.
+Všechny operace čtení provedené pomocí izolace snímku jsou bez zámku.
+Všechny opakující se operace čtení ve výchozím nastavení přebírají sdílené zámky.
+Pro jakoukoliv operaci čtení, která podporuje opakované čtení, si ale uživatel může místo sdíleného zámku požádat o zámek aktualizace.
+Zámek aktualizace je asymetrický zámek, který slouží k tomu, aby se zabránilo běžnému způsobu zablokování, ke kterému dochází v případě, že více transakcí zamkne prostředky pro potenciální aktualizace později.
 
-Matice kompatibility zámek najdete v následující tabulce:
+Matice o kompatibilitě zámku najdete v následující tabulce:
 
-| Požádat o \ udělena | Žádný | Sdílené | Aktualizace | Exkluzivní |
+| Žádost – uděleno | Žádné | Sdílené | Aktualizace | Vyhrazen |
 | --- |:--- |:--- |:--- |:--- |
-| Sdílené |Žádný konflikt. |Žádný konflikt. |Konflikt |Konflikt |
-| Aktualizace |Žádný konflikt. |Žádný konflikt. |Konflikt |Konflikt |
-| Exkluzivní |Žádný konflikt. |Konflikt |Konflikt |Konflikt |
+| Sdílené |Bez konfliktu |Bez konfliktu |Konflikt |Konflikt |
+| Aktualizace |Bez konfliktu |Bez konfliktu |Konflikt |Konflikt |
+| Vyhrazen |Bez konfliktu |Konflikt |Konflikt |Konflikt |
 
-Argument vypršení časového limitu v rozhraní API pro spolehlivé kolekce slouží k rozpoznávání zablokování.
-Například dvě transakce (T1 a T2) jsou pokusu o čtení a aktualizaci K1.
-Je možné pro ně k zablokování, protože oba skončit s Sdílený zámek.
-V tomto případě jeden nebo oba z operací vyprší časový limit.
+Pro detekci zablokování se používá argument časového limitu ve spolehlivých kolekcích rozhraní API.
+Například dvě transakce (T1 a T2) se pokoušejí přečíst a aktualizovat K1.
+Je možné je zablokovat, protože oba končí sdíleným zámkem.
+V takovém případě dojde k vypršení časového limitu jedné nebo obou operací.
 
-Tento scénář zablokování je skvělé příklad, jak můžete aktualizační zámek zabránit zablokování.
+Tento scénář vzájemného zablokování je skvělým příkladem, jak může zámek aktualizace zabránit zablokování.
 
 ## <a name="next-steps"></a>Další postup
 * [Práce s Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Oznámení Reliable Services](service-fabric-reliable-services-notifications.md)
-* [Spolehlivé služby zálohování a obnovení (zotavení po havárii)](service-fabric-reliable-services-backup-restore.md)
-* [Konfigurace Reliable State Manager](service-fabric-reliable-services-configuration.md)
-* [Referenční informace pro vývojáře pro Reliable Collections](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Reliable Services zálohování a obnovení (zotavení po havárii)](service-fabric-reliable-services-backup-restore.md)
+* [Konfigurace spolehlivého správce stavu](service-fabric-reliable-services-configuration.md)
+* [Referenční informace pro vývojáře pro spolehlivé kolekce](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 

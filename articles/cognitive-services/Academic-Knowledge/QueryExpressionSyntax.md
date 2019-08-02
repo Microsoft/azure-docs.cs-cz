@@ -1,7 +1,7 @@
 ---
 title: Syntaxe výrazu dotazu – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Další informace o použití syntaxe výrazu dotazu v rozhraní Academic Knowledge API.
+description: Naučte se používat syntaxi výrazu dotazu v Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,82 +10,83 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 95c2e9d3f54f967b3ebb434c742f69251b80573e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3b87e04c2d6380a0ee4157e73db0cd4057fadee1
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61336752"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704931"
 ---
 # <a name="query-expression-syntax"></a>Syntaxe výrazu dotazu
 
-Jsme viděli, která odpověď **interpretovat** žádost obsahuje výraz dotazu. Gramatiky, který interpretován dotaz uživatele vytvořit výraz dotazu pro každý výkladu. Výraz dotazu je pak možné použít k problému **vyhodnotit** požadavek na načtení výsledků vyhledávání entit.
+Zjistili jsme, že odpověď na požadavek **interpreta** obsahuje výraz dotazu. Gramatika, která interpretuje dotaz uživatele, vytvořila výraz dotazu pro každou interpretaci. Výraz dotazu se pak dá použít k vystavení žádosti o **vyhodnocení** pro načtení výsledků hledání entit.
 
-Můžete také vytvořit vlastní výrazy dotazu a použít je v **vyhodnotit** požadavku. To může být užitečné, pokud vytváříte vlastní uživatelské rozhraní, které vytvoří výrazu dotazu v reakci na akce uživatele. Chcete-li to provést, je potřeba vědět syntaxe výrazů dotazů.  
+Můžete také vytvořit vlastní výrazy dotazu a použít je v žádosti o **vyhodnocení** . To může být užitečné, pokud vytváříte vlastní uživatelské rozhraní, které v reakci na akce uživatele vytvoří výraz dotazu. K tomu potřebujete znát syntaxi pro výrazy dotazů.  
 
-Každý atribut entity, které mohou být součástí výrazu dotazu má zvláštní datový typ a sadu operátorů dotazu je to možné. Sada atributů entity a podporované operátory pro každý atribut je zadán v [atributů Entity](EntityAttributes.md). Dotaz na hodnotu single vyžaduje atribut pro podporu *rovná* operace. Předpona dotaz vyžaduje atribut pro podporu *StartsWith* operace. Dotazy na číselný rozsah vyžaduje atribut pro podporu *IsBetween* operace.
+Každý atribut entity, který lze zahrnout do výrazu dotazu, má určitý datový typ a sadu možných operátorů dotazů. Sada atributů entity a podporované operátory pro každý atribut jsou zadány v [atributech entity](EntityAttributes.md). Dotaz s jednou hodnotou vyžaduje, aby atribut podporoval operaci *EQUAL* . Dotaz předpony vyžaduje, aby atribut podporoval operaci *StartsWith* . Dotazy číselného rozsahu vyžadují, aby atribut podporoval operaci *mezi* .
 
-Některá entity data se ukládají jako složený atributy je určeno tečku "." v názvu atributu. Například informace o autorovi/přidružení je vyjádřena jako složený atribut. Obsahuje 4 komponenty: AuN, AuId AfN, AfId. Tyto součásti jsou samostatné části data, která tvoří hodnotu atributu jedné entity.
+Některá data entity jsou ukládána jako složené atributy, které jsou označeny tečkou "." v názvu atributu. Například informace o autorovi nebo afilaci jsou reprezentovány jako složený atribut. Obsahuje 4 součásti: AuN, AuId, AfN, AfId. Tyto součásti jsou oddělené části dat, které tvoří jednu hodnotu atributu entity.
 
 
-**Atribut řetězců: Jedna hodnota** (včetně shody proti synonym)  
-Čas = "indexování službou latentní sémantické analýzy.  
-Composite(AA.AuN='sue dumais')
+**Řetězcový atribut: Jedna hodnota** (včetně shody s synonymy)  
+ČŘ = Indexing podle latentní sémantické analýzy  
+Složené (AA. AuN = ' Sue Dumais ')
 
-**Atribut řetězců: Přesná jednu hodnotu** (odpovídá pouze kanonických hodnot)  
-Ti == "indexování službou latentní sémantické analýzy.  
-Složené (AA. AuN == "dumais susan t")
+**Řetězcový atribut: Přesná jediná** hodnota (odpovídá jenom kanonickým hodnotám)  
+ČŘ = = ' indexování pomocí latentní sémantické analýzy '  
+Složené (AA. AuN = = "Zuzana t Dumais")
      
-**Atribut řetězců: Hodnota předpony**   
-Čas = 'indexování službou latentní seman'...  
-Složené (AA. AuN =... "procesní rozlišované sjednocení typu")
+**Řetězcový atribut: Hodnota předpony**   
+Ti = "indexování pomocí latentních Seman"...  
+Složené (AA. AuN = ' Sue du '...)
 
-**Číselné atribut: Jedinou hodnotu**  
+**Číselný atribut: Jedna hodnota**  
 Y=2010
  
-**Číselné atribut: Hodnota rozsahu**  
+**Číselný atribut: Hodnota rozsahu**  
 Y>2005  
-Y>=2005  
+Y > = 2005  
 Y<2010  
 Y<=2010  
-Y =\[2010, 2012\) (obsahuje hodnotu pouze levé hranice: 2010, 2011)  
-Y =\[2010, 2012\] (zahrnuje obě hodnoty hranic: 2010, 2011, 2012)
+Y =\[2010, 2012\) (zahrnuje pouze levou hranici hodnoty: 2010, 2011)  
+Y =\[2010, 2012\] (zahrnuje obě hodnoty hranice: 2010, 2011, 2012)
  
-**Číselné atribut: Hodnota předpony**  
-Y = "19"... (libovolná číselná hodnota, která začíná textem 19) 
+**Číselný atribut: Hodnota předpony**  
+Y = 19... (libovolná číselná hodnota, která začíná 19) 
  
-**Atribut Datum: Jedinou hodnotu**  
-D = "2010-02-04.
+**Atribut data: Jedna hodnota**  
+D = "2010-02-04"
 
-**Atribut Datum: Hodnota rozsahu**  
-D &GT; "2010-02-03.  
-D = ["2010-02-03", "2010-02-05"]
+**Atribut data: Hodnota rozsahu**  
+D > "2010-02-03"  
+D = [' 2010-02-03 ', ' 2010-02-05 ']
 
 **A/nebo dotazy:**  
-A (Y = 1985, čas = "disordered elektronických systémy")  
-Nebo (čas = "disordered elektronických systémy", čas = "zásady odolnost proti chybám a postupem")  
-And(OR(Y=1985,Y=2008), čas = "disordered elektronických systémy")
+A (Y = 1985, ČŘ = "neuspořádané elektronické systémy")  
+Nebo (ti = "vyřazení elektronické systémy", ČŘ = "principy a cvičení odolnosti proti chybám")  
+A (nebo (Y = 1985, Y = 2008), ti = "rozobjednávkované elektronické systémy")
  
-**Složený dotazy:**  
-Dotaz součástí složeného atributu budete muset uzavřít součástí výrazu dotazu, který odkazuje na atribut složené ve funkci Composite(). 
+**Složené dotazy:**  
+Chcete-li zadat dotaz na součásti složeného atributu, je nutné uzavřít část výrazu dotazu, který odkazuje na složený atribut v složené () funkci. 
 
-Například dotaz na dokumenty Paper podle jméno autora, použijte následující dotaz:
+Chcete-li například zadat dotaz na doklady podle jména autora, použijte následující dotaz:
 ```
 Composite(AA.AuN='mike smith')
 ```
-<br>Dotaz pro Paper konkrétním autorem, když byl autorem na konkrétní instituce, použijte následující dotaz:
+<br>Pokud chcete zadat dotaz na doklady podle konkrétního autora, zatímco autor byl na konkrétní instituci, použijte následující dotaz:
 ```
 Composite(And(AA.AuN='mike smith',AA.AfN='harvard university'))
 ```
-<br>Funkce Composite() spojuje dvě části složené atributu. To znamená, že používáme pouze ty Paper kde jedním z autorů "Jan Macek" je při pracoval bruno v Harvard. 
+<br>Funkce Composite () spojuje dvě části složeného atributu dohromady. To znamená, že budeme dostávat jenom dokumenty, ve kterých je jeden z autorů "Jan Novák", ale byl na Harvard. 
 
-Dotaz pro Paper podle konkrétního autora v umístění s (ostatní) tvůrci používající konkrétní instituce, použijte následující dotaz:
+K dotazování na doklady podle konkrétního autora v afilacích s (jinými) autory z konkrétní instituce použijte následující dotaz:
 ```
 And(Composite(AA.AuN='mike smith'),Composite(AA.AfN='harvard university'))
 ```
-<br>V této verzi protože Composite() se použije pro autora a přidružení jednotlivě před And(), získáme všech dokumentů, kde jedním z autorů je "Jan Macek" a jedním z autorů afilace je "Harvard". To zní podobně jako předchozí příklad dotazu, ale není totéž.
+<br>Vzhledem k tomu, že je v této verzi použita možnost složené () pro autor a přidružení jednotlivě před a (), získáme všechny dokumenty, u nichž jeden z autorů je "Jan Novák" a jedna z afilací autoři je "Harvard". Tyto zvuky se podobají předchozímu příkladu dotazu, ale nejedná se o stejné věci.
 
-Obecně platí zvažte následující příklad: Máme složené atribut C, který má dvě součásti A a B. Entita může mít více hodnot pro C. Toto jsou naše entity:
+V části Obecné zvažte následující příklad: Máme složený atribut C, který má dvě komponenty A a B. Entita může mít více hodnot pro C. Jedná se o naše entity:
 ```
 E1: C={A=1, B=1}  C={A=1,B=2}  C={A=2,B=3}
 E2: C={A=1, B=3}  C={A=3,B=2}
@@ -96,15 +97,15 @@ E2: C={A=1, B=3}  C={A=3,B=2}
 Composite(And(C.A=1, C.B=2))
 ```
 
-<br>odpovídá pouze entity, které mají hodnotu pro jazyk C, kde je součást C.A 1 a 2 je součást C.B. Pouze E1 se shoduje s Tento dotaz.
+<br>odpovídá pouze entitám, které mají hodnotu pro C, kde komponenta C. A je 1 a komponenta C. B je 2. Tento dotaz odpovídá pouze E1.
 
 Dotaz 
 ```
 And(Composite(C.A=1), Composite(C.B=2))
 ```
-<br>odpovídá entity, které mají hodnotu pro jazyk C, kde C.A je 1 a také obsahovat hodnotu pro jazyk C kde C.B je 2. E1 a E2 odpovídají tomuto dotazu.
+<br>odpovídá entitám, které mají hodnotu pro C, kde C. A je 1 a má také hodnotu pro C, kde C. B je 2. Tento dotaz odpovídají hodnotám E1 a E2.
 
 Poznámka:  
-- Součástí složeného atribut mimo funkci Composite() nelze odkazovat.
-- Součástí dvou různých atributů složené uvnitř stejné funkce Composite() nelze odkazovat.
-- Atribut, který není součástí složeného atribut uvnitř funkce Composite() nelze odkazovat.
+- Nejde odkazovat na část složeného atributu mimo funkci složeného ().
+- V rámci stejné složené funkce () nelze odkazovat na části dvou různých složených atributů.
+- Nejde odkazovat na atribut, který není součástí složeného atributu uvnitř složené funkce ().
