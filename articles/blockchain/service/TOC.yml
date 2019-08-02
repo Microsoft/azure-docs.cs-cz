@@ -21,7 +21,7 @@
           href: connect-truffle.md
 - name: Kurzy
   items:
-    - name: Odesílání transakcí
+    - name: Použití inteligentních kontraktů
       href: send-transaction.md
 - name: Koncepty
   items:

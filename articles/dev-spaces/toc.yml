@@ -9,18 +9,18 @@
       items:
         - name: Týmový vývoj
           href: quickstart-team-development.md
-        - name: Spuštění aplikace
+        - name: Ladění a iterace
+          items:
+            - name: Použití editoru Visual Studio Code a Javy
+              href: quickstart-java.md
+            - name: Použití editoru Visual Studio Code a .NET Core
+              href: quickstart-netcore.md
+            - name: Použití editoru Visual Studio Code a Node.js
+              href: quickstart-nodejs.md
+            - name: Použití sady Visual Studio a .NET Core
+              href: quickstart-netcore-visualstudio.md
+        - name: Vývoj s využitím rozhraní příkazového řádku
           href: quickstart-cli.md
-        - name: Spuštění aplikace s využitím souboru Dockerfile
-          href: quickstart-cli-dockerfile.md
-        - name: Spuštění a ladění Javy s využitím editoru VS Code
-          href: quickstart-java.md
-        - name: Spuštění a ladění .NET Core s využitím editoru VS Code
-          href: quickstart-netcore.md
-        - name: Spuštění a ladění Node.js s využitím editoru VS Code
-          href: quickstart-nodejs.md
-        - name: Spuštění a ladění .NET Core s využitím sady Visual Studio
-          href: quickstart-netcore-visualstudio.md
     - name: Kurzy
       items:
         - name: Java (VS Code a CLI)

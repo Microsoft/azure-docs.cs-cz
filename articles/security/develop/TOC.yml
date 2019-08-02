@@ -18,3 +18,17 @@
           href: secure-develop.md
         - name: Nasazení zabezpečených aplikací
           href: secure-deploy.md
+- name: Řešení
+  expanded: true
+  items:
+    - name: Analýza kódu zabezpečení Microsoftu
+      expanded: true
+      items:
+        - name: Přehled
+          href: security-code-analysis-overview.md
+        - name: Onboarding a instalace
+          href: security-code-analysis-onboard.md
+        - name: Konfigurace
+          href: security-code-analysis-customize.md
+        - name: Nejčastější dotazy
+          href: security-code-analysis-faq.md

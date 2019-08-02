@@ -21,6 +21,12 @@
       href: tutorial-process-mailing-list-subscriptions-workflow.md
     - name: Zpracování e-mailových příloh
       href: tutorial-process-email-attachments-workflow.md
+- name: Ukázky
+  items:
+    - name: Ukázky kódu Azure
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-logic-apps'
+    - name: Šablony pro rychlý start Resource Manageru
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
 - name: Koncepty
   items:
     - name: Konektory pro Logic Apps
@@ -349,15 +355,15 @@
           href: /azure/architecture/reference-architectures/enterprise-integration/queues-events
     - name: 'Konektory: Úplné podrobnosti'
       href: 'https://docs.microsoft.com/connectors/'
-    - name: Omezení a konfigurace
+    - name: Konfigurace a omezení služeb
       href: logic-apps-limits-and-config.md
-    - name: Měření využití
+    - name: Cenový model a měření využití
       href: logic-apps-pricing.md
     - name: Azure PowerShell
       href: /powershell/module/az.logicapp
     - name: REST API
       href: /rest/api/logic/
-    - name: Šablona Resource Manageru
+    - name: Referenční materiály k šablonám Resource Manageru
       href: /azure/templates/microsoft.logic/allversions
     - name: Jazykové schéma pro definování pracovních postupů
       href: logic-apps-workflow-definition-language.md
@@ -378,23 +384,27 @@
           href: logic-apps-track-integration-account-custom-tracking-schema.md
 - name: Zdroje a prostředky
   items:
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: 'https://docs.microsoft.com/learn/browse/?products=azure-logic-apps'
     - name: Plány Azure Logic Apps do budoucna
       href: 'https://aka.ms/logicappsroadmap/'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Příběhy zákazníků
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc'
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest'
     - name: Fórum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelogicapps'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
     - name: Twitter
       href: 'https://twitter.com/logicappsio'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Poskytnutí zpětné vazby k produktu
+      href: 'https://feedback.azure.com/forums/287593-logic-apps'
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=logic-apps'
-    - name: Příběhy zákazníků
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc'
-    - name: Videa
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest'

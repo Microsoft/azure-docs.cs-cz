@@ -579,6 +579,9 @@
         - name: Zřízení propustnosti pro databázi
           displayName: 'request units, RUs, RU, shared throughput, database level'
           href: how-to-provision-database-throughput.md
+        - name: Odhad RU/s s využitím nástroje pro plánování kapacity Cosmos
+          displayName: 'request units, RUs, RU, capacity'
+          href: estimate-ru-with-capacity-planner.md
         - name: Zjištění poplatku za jednotku žádosti
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md

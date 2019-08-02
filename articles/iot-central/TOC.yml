@@ -62,7 +62,7 @@
         - name: Použití sad zařízení
           href: howto-use-device-sets.md
         - name: Vytváření verzí šablon zařízení
-          href: howto-version-devicetemplate.md
+          href: howto-version-device-template.md
     - name: Sledování a analýza
       items:
         - name: Vytvoření pravidla telemetrie
@@ -101,12 +101,18 @@
       items:
         - name: Správa vaší aplikace
           href: howto-administer.md
+        - name: Správa uživatelů a skupin
+          href: howto-manage-users-roles.md
+        - name: Zobrazení vašeho vyúčtování
+          href: howto-view-bill.md
+        - name: Přizpůsobení uživatelského rozhraní aplikací
+          href: howto-customize-ui.md
         - name: Příprava a nahrávání image
           href: howto-prepare-images.md
         - name: Konfigurace řídicího panelu aplikací
           href: howto-configure-homepage.md
-        - name: Přizpůsobení uživatelského rozhraní aplikací
-          href: howto-customize-ui.md
+        - name: Použití dlaždic řídicího panelu
+          href: howto-use-tiles.md
         - name: Použití šablon aplikací
           href: howto-use-app-templates.md
         - name: Správa z webu Azure Portal

@@ -179,7 +179,7 @@
           items:
             - name: Aktualizace služby Mobility pro virtuální počítače Azure
               href: azure-to-azure-autoupdate.md
-            - name: Aktualizace ve službě Azure Site Recovery
+            - name: Správa aktualizací Site Recovery
               href: service-updates-how-to.md
             - name: Odebrání serverů a zakázání ochrany
               href: site-recovery-manage-registration-and-protection.md
@@ -263,7 +263,7 @@
               href: vmware-azure-manage-process-server.md
             - name: Správa serverů vCenter
               href: vmware-azure-manage-vcenter.md
-            - name: Aktualizace ve službě Azure Site Recovery
+            - name: Správa aktualizací Site Recovery
               href: service-updates-how-to.md
             - name: Odebrání serverů a zakázání ochrany
               href: site-recovery-manage-registration-and-protection.md
@@ -281,6 +281,8 @@
               href: concepts-on-premises-to-azure-networking.md
         - name: Nastavení zotavení po havárii
           items:
+            - name: Průvodce nastavením zotavení po havárii
+              href: physical-azure-disaster-recovery.md
             - name: Nastavení zdrojového prostředí
               href: physical-azure-set-up-source.md
             - name: Nastavení cílového prostředí
@@ -293,8 +295,6 @@
                   href: vmware-azure-install-mobility-service.md
                 - name: Nasazení služby Mobility s využitím System Center Configuration Manageru
                   href: vmware-azure-mobility-install-configuration-mgr.md
-                - name: Průvodce nastavením zotavení po havárii
-                  href: physical-azure-disaster-recovery.md
         - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení
           href: physical-to-azure-failover-failback.md
         - name: Spravovat
@@ -307,7 +307,7 @@
               href: vmware-azure-manage-process-server.md
             - name: Odebrání serverů a zakázání ochrany
               href: site-recovery-manage-registration-and-protection.md
-            - name: Aktualizace ve službě Azure Site Recovery
+            - name: Správa aktualizací Site Recovery
               href: service-updates-how-to.md
             - name: Odstranění trezoru
               href: delete-vault.md
@@ -361,10 +361,12 @@
               href: upgrade-2012R2-to-2016.md
             - name: Odebrání serverů a zakázání ochrany
               href: site-recovery-manage-registration-and-protection.md
-            - name: Aktualizace ve službě Azure Site Recovery
+            - name: Správa aktualizací Site Recovery
               href: service-updates-how-to.md
             - name: Odstranění trezoru
               href: delete-vault.md
+            - name: Přesun trezoru do jiné oblasti
+              href: move-vaults-across-regions.md
     - name: Zotavení po havárii pro aplikace
       items:
         - name: Nastavení zotavení po havárii do Azure pro místní aplikace
@@ -423,39 +425,45 @@
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: Přidání runbooků Azure Automation do plánů obnovení pro orchestraci převzetí služeb při selhání
       href: site-recovery-runbook-automation.md
-- name: Monitorování a odstraňování potíží
+- name: Monitorování
   items:
-    - name: Monitorování služby Azure Site Recovery
+    - name: Běžné otázky týkající se monitorování
+      href: monitoring-common-questions.md
+    - name: Monitorování Site Recovery
       href: site-recovery-monitor-and-troubleshoot.md
-    - name: Virtuální počítače Azure
+    - name: Monitorování Site Recovery s využitím protokolů Azure Monitoru
+      href: monitor-log-analytics.md
+    - name: Monitorování procesových serverů
+      href: vmware-physical-azure-monitor-process-server.md
+- name: Řešení potíží
+  items:
+    - name: Řešení potíží s virtuálními počítači Azure
       items:
-        - name: Řešení chyb replikace pro virtuální počítače Azure
+        - name: Řešení potíží s replikací virtuálních počítačů Azure
           href: azure-to-azure-troubleshoot-errors.md
-        - name: Řešení potíží s probíhající replikací pro virtuální počítače Azure
+        - name: Řešení potíží s probíhající replikací
           href: azure-to-azure-troubleshoot-replication.md
-        - name: Řešení potíží se službou Mobility pro virtuální počítače Azure
+        - name: Řešení potíží se službou Mobility
           href: site-recovery-extension-troubleshoot.md
-    - name: VMware / fyzický server
+    - name: Řešení potíží s fyzickými servery / virtuálními počítači VMware
       items:
-        - name: Monitorování procesových serverů
-          href: vmware-physical-azure-monitor-process-server.md
-        - name: Řešení potíží s replikací z VMware do Azure
+        - name: Řešení potíží s replikací fyzických serverů / virtuálních počítačů VMware
           href: vmware-azure-troubleshoot-replication.md
-        - name: Řešení potíží s konfiguračním serverem
+        - name: Řešení potíží s konfiguračními servery
           href: vmware-azure-troubleshoot-configuration-server.md
         - name: Řešení potíží procesových serverů
           href: vmware-physical-azure-troubleshoot-process-server.md
-        - name: Řešení potíží s nabízenou instalací služby Mobility pro virtuální počítače / fyzické servery VMware
+        - name: Řešení potíží s nabízenou instalací služby Mobility
           href: vmware-azure-troubleshoot-push-install.md
         - name: Řešení potíží s převzetím služeb při selhání do Azure
           href: site-recovery-failover-to-azure-troubleshoot.md
         - name: Řešení potíží s opětovným nastavením ochrany a navrácením služeb po obnovení virtuálních počítačů VMware
           href: vmware-azure-troubleshoot-failback-reprotect.md
-        - name: Řešení potíží se selháním upgradu Microsoft Azure Site Recovery Provider
+        - name: Řešení potíží se selháním upgradu poskytovatele
           href: vmware-azure-troubleshoot-upgrade-failures.md
         - name: Řešení potíží se selháním zjišťování vCenter
           href: vmware-azure-troubleshoot-vcenter-discovery-failures.md
-    - name: Hyper-V
+    - name: Řešení potíží s Hyper-V
       items:
         - name: Řešení potíží s replikaci Hyper-V
           href: hyper-v-azure-troubleshoot.md

@@ -60,6 +60,12 @@
               href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
             - name: Livy Server se nedaří spustit
               href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
+        - name: Selhání úlohy Apache Sparku – NoClassDefFoundError
+          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
+        - name: Selhání úlohy Apache Sparku – InvalidClassException
+          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
+        - name: Pomalé úlohy Apache Sparku – listStatus
+          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
         - name: Pomalé úlohy Apache Sparku – kontejner úložiště
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: Výjimka IllegalArgumentException
@@ -72,6 +78,8 @@
           href: ./apache-spark-troubleshoot-blocking-cross-origin.md
         - name: Serializace Kryo se nepovedla
           href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
+        - name: Protokol událostí Apache Sparku – RequestBodyTooLarge
+          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: Postup
   items:
     - name: Použití úložiště clusteru

@@ -95,13 +95,12 @@
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
     - name: Pracovní prostor
-      displayName: concept definitions architecture
       href: concept-workspace.md
     - name: Cílový výpočetní objekt
-      displayName: concept definitions architecture
+      displayName: 'compute, resource, target, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
     - name: Vizuální rozhraní
-      displayName: concept
+      displayName: studio
       href: ui-concept-visual-interface.md
     - name: Automatizované strojové učení
       displayName: 'automl, auto ml'
@@ -114,9 +113,10 @@
     - name: Interpretovatelnost modelů
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
-    - name: Přehled FPGA
+    - name: FPGA vs. CPU GPU ASIC
+      displayName: 'field, programmable, arrays'
       href: concept-accelerate-with-fpgas.md
-    - name: ONNX a modul runtime ONNX
+    - name: ONNX
       href: concept-onnx.md
     - name: Zabezpečení
       items:

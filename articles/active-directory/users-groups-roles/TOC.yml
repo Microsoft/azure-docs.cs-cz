@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: 'Uživatelé, skupiny, licencování a role'
+    - name: 'Uživatelé, skupiny, licencování a role Azure AD'
       href: directory-overview-user-model.md
 - name: Šablony Rychlý start
   items:
@@ -10,6 +10,8 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Přiřazení licencí k uživatelům
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Přiřazení role s využitím oboru prostředků
+      href: roles-quickstart-app-registration-limits.md
     - name: Nastavení konce platnosti skupiny
       href: groups-quickstart-expiration.md
     - name: Nastavení zásad pojmenování skupin
@@ -126,10 +128,24 @@
           href: directory-assign-admin-roles.md
         - name: Zobrazení a přiřazení rolí
           href: directory-manage-roles-portal.md
-        - name: Přiřazení rolí s využitím PowerShellu
+        - name: Přiřazení vlastních rolí v Graph API
           href: roles-assign-powershell.md
-        - name: Delegování rolí správce aplikace
-          href: roles-delegate-app-roles.md
+        - name: Vlastní role (Preview)
+          items:
+            - name: Vlastní role (Preview)
+              href: roles-custom-overview.md
+            - name: Vytvoření vlastní role
+              href: roles-create-custom.md
+            - name: Zobrazení přiřazení vlastních rolí
+              href: roles-view-assignments.md
+            - name: Přiřazování rolí v centru správy Azure AD
+              href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+            - name: Přiřazení vlastních rolí v Graph API
+              href: roles-assign-graph.md
+            - name: Oprávnění pro vlastní role (Preview)
+              href: roles-custom-available-permissions.md
+            - name: Delegování oprávnění správce aplikace
+              href: roles-delegate-app-roles.md
         - name: Role s nejnižšími oprávněními podle úkolu
           href: roles-delegate-by-task.md
         - name: Role Microsoft 365

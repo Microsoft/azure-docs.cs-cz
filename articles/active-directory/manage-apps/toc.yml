@@ -221,6 +221,8 @@
           items:
             - name: Zřizování uživatelů pro aplikace v galerii
               href: application-provisioning-config-how-to.md
+            - name: Povolení automatického zřizování uživatelů pro aplikace s více tenanty
+              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: Konfigurace automatického zřizování uživatelů
               href: configure-automatic-user-provisioning-portal.md
             - name: Přizpůsobení atributů aplikací

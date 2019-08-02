@@ -17,9 +17,9 @@
           href: time-series-insights-update-quickstart.md
 - name: Kurzy
   items:
-    - name: Zkoumání javascriptové klientské knihovny pro službu Time Series Insights
+    - name: Javascriptová klientská knihovna pro Time Series Insights
       href: tutorial-explore-js-client-lib.md
-    - name: Vytvoření jednostránkové webové aplikace Time Series Insights
+    - name: Vytvoření jednostránkové webové aplikace
       href: tutorial-create-tsi-sample-spa.md
     - name: Azure Time Series Insights verze GA
       items:
