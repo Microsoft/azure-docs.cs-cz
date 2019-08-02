@@ -66,7 +66,7 @@ Pro službu propojenou systému souborů jsou podporovány následující vlastn
 
 | Scénář | "hostitel" v definici propojené služby | "folderPath" v definici datové sady |
 |:--- |:--- |:--- |
-| Místní složky v počítači s modulem Runtime integrace: <br/><br/>Příklady: D:\\ \* nebo D:\folder\subfolder\\* |Ve formátu JSON: `D:\\`<br/>Na uživatelské rozhraní: `D:\` |Ve formátu JSON: `.\\` nebo `folder\\subfolder`<br>Na uživatelské rozhraní: `.\` nebo `folder\subfolder` |
+| Místní složky v počítači s modulem Runtime integrace: <br/><br/>Příklady: D:\\\* nebo D:\folder\subfolder\\* |Ve formátu JSON: `D:\\`<br/>Na uživatelské rozhraní: `D:\` |Ve formátu JSON: `.\\` nebo `folder\\subfolder`<br>Na uživatelské rozhraní: `.\` nebo `folder\subfolder` |
 | Vzdálené sdílené složky: <br/><br/>Příklady: \\ \\myserver\\sdílet\\ \* nebo \\ \\myserver\\sdílet\\složky\\podsložky\\* |Ve formátu JSON: `\\\\myserver\\share`<br/>Na uživatelské rozhraní: `\\myserver\share` |Ve formátu JSON: `.\\` nebo `folder\\subfolder`<br/>Na uživatelské rozhraní: `.\` nebo `folder\subfolder` |
 
 >[!NOTE]
