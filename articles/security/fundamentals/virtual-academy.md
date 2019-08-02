@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: f1d7da18-bfd1-4338-abbb-2c558fb780f9
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f06c8ec60831314dad30673fec4d2ea5901e11b6
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: efb73b46c97dc8a59442cc819898ffc70f0110ae
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68612272"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726507"
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Kurzy zabezpečení Azure od Microsoftu Virtual Academy
 Microsoft Virtual Academy poskytuje bezplatné, online školení, které umožňuje vývojářům, IT specialistům a odborníkům v oblasti IT a studentům učit se nejnovější technologie, sestavovat své dovednosti a využít jejich péče.

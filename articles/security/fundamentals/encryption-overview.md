@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomShinder
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 0120a64305d2cb207b812fa25ffeb456cf92ea23
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 62fcc19f3cfe9109097d1f2a70d785060b5bdc53
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68613650"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727354"
 ---
 # <a name="azure-encryption-overview"></a>Přehled šifrování Azure
 
@@ -200,7 +201,7 @@ Další informace o šifrování dat při přenosu v Data Lake najdete v tématu
 
 Key Vault zbavuje organizace nutnost konfigurovat, opravovat a udržovat moduly hardwarového zabezpečení (HSM) a software pro správu klíčů. Při použití Key Vault zachováte řízení. Microsoft nikdy nevidí vaše klíče a aplikace k nim nemají přímý přístup. Můžete také importovat nebo generovat klíče v HSM.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Přehled zabezpečení Azure](get-started-overview.md)
 - [Přehled zabezpečení sítě Azure](network-overview.md)

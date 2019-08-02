@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 7e5b082d-dc9c-4d4f-b3f1-75edcdafbd8f
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 05a7c52dca420f97252c68445398fb3959be8804
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
-ms.translationtype: HT
+ms.openlocfilehash: 836a0e795219640179f9e4c2ed0ef767a2e3f161
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68613494"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727284"
 ---
 # <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Praktická příručka k navrhování bezpečných řešení péče o zdravotní péči v Azure
 Při spuštění v healthovém průmyslu, integrátorech systému (SIs), nezávislých výrobců softwaru (ISV) a zdravotnických organizací, které berou v úvahě o přechodu do Azure, se hledají pokyny, které jim pomohou začlenit bezpečnostní mechanismy pro splnění povinností dodržování předpisů.

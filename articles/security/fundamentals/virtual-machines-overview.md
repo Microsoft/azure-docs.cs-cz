@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 6536105a078b762252af98282221a687fc969c3e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 186a0b0d4025f7d8a8888a9a0d2d0bd8832cf2d9
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68614521"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726492"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure Virtual Machines
 Tento článek obsahuje přehled základních funkcí zabezpečení Azure, které je možné používat s virtuálními počítači.
@@ -101,7 +102,7 @@ Azure Disk Encryption je nová možnost pro šifrování disků virtuálních po
 Další informace:
 
 * [Azure Disk Encryption pro virtuální počítače s IaaS](/azure/security/azure-security-disk-encryption-overview)
-* [Rychlé zprovoznění: Šifrování virtuálního počítače s Windows IaaS pomocí Azure PowerShell](quick-encrypt-vm-powershell.md)
+* [Rychlé zprovoznění: Šifrování virtuálního počítače s Windows IaaS pomocí Azure PowerShell](../azure-disk-encryption-linux-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>Záloha virtuálního počítače
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 70f300d83d904537aab61b95de876f4ac2edb66c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e795e1de32ce51d80062d30d6880abbca37f9386
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808993"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720271"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Kopírování dat z Zoho pomocí Azure Data Factory (Preview)
 
@@ -44,7 +44,7 @@ Zoho propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Zoho** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Zoho** | Ano |
 | endpoint | Koncový bod serveru Zoho (`crm.zoho.com/crm/private`). | Ano |
 | accessToken | Přístupový token pro ověření Zoho. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
@@ -77,7 +77,7 @@ Ke zkopírování dat z Zoho, nastavte vlastnost typ datové sady na **ZohoObjec
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **ZohoObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **ZohoObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -87,11 +87,12 @@ Ke zkopírování dat z Zoho, nastavte vlastnost typ datové sady na **ZohoObjec
     "name": "ZohoDataset",
     "properties": {
         "type": "ZohoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Zoho linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -106,7 +107,7 @@ Ke zkopírování dat z Zoho, nastavte typ zdroje v aktivitě kopírování do *
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **ZohoSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ZohoSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Accounts"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

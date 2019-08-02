@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: f22311af277f860c1501287b5be0f5dc149880b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a88c58bd52ea816aaef1c628913ccbd7fcf1cd35
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462356"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720637"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopírování dat z čtverec pomocí Azure Data Factory (Preview)
 
@@ -44,11 +44,11 @@ Následující části obsahují podrobnosti o vlastnostech, které se používa
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Čtverec** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Čtvercové** | Ano |
 | host | Adresa URL instance čtvereček. (to znamená mystore.mysquare.com)  | Ano |
 | clientId | ID klienta přidružené k aplikaci čtvereček.  | Ano |
 | clientSecret | Tajný kód klienta přidružené k aplikaci čtvereček. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| redirectUri | Adresa URL pro přesměrování přiřazené na řídicím panelu Čtvereček aplikace. (tj. http:\//localhost:2500)  | Ano |
+| redirectUri | Adresa URL pro přesměrování přiřazené na řídicím panelu Čtvereček aplikace. (tj. http:\//localhost: 2 500)  | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 | usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
@@ -81,7 +81,7 @@ Ke zkopírování dat z čtverec, nastavte vlastnost typ datové sady na **Squar
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **SquareObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **SquareObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -91,11 +91,12 @@ Ke zkopírování dat z čtverec, nastavte vlastnost typ datové sady na **Squar
     "name": "SquareDataset",
     "properties": {
         "type": "SquareObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Square linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -110,7 +111,7 @@ Ke zkopírování dat z čtverec, nastavte typ zdroje v aktivitě kopírování 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **SquareSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SquareSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Business"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

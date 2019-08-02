@@ -1,22 +1,20 @@
 ---
 title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí Go | Microsoft Docs
 description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Go k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
-services: storage
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-ms.date: 11/14/2018
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 5b5d0663166c6889d25c0fdd578aadbac3436931
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/14/2018
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152784"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726463"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí Go
+# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů BLOB pomocí jazyka přejít
 
 V tomto rychlém startu zjistíte, jak pomocí programovacího jazyka Go nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
 
@@ -26,15 +24,15 @@ V tomto rychlém startu zjistíte, jak pomocí programovacího jazyka Go nahráv
 
 Ujistěte se, že máte nainstalované následující další požadavky:
  
-* [Go verze 1.8 nebo vyšší](https://golang.org/dl/)
-* [Azure Storage Blob SDK for Go](https://github.com/azure/azure-storage-blob-go/), pomocí následujícího příkazu:
+* [Přejít 1,8 nebo vyšší](https://golang.org/dl/)
+* [Azure Storage BLOB SDK for přejít](https://github.com/azure/azure-storage-blob-go/), pomocí následujícího příkazu:
 
     ```
     go get -u github.com/Azure/azure-storage-blob-go/azblob
     ``` 
 
     > [!NOTE]
-    > Ujistěte se, že můžete využít `Azure` v adrese URL, aby nedocházelo k problémům souvisejícím s případ import při práci se sadou SDK. Také využijte `Azure` v příkazech pro import.
+    > Ujistěte se, že je `Azure` v adrese URL velká písmena, aby nedocházelo k problémům s importem případu při práci se sadou SDK. Také velká `Azure` písmena v příkazech importu.
     
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 [Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) použitá v tomto rychlém startu je základní aplikace v jazyce Go.  
@@ -112,7 +110,7 @@ Jakmile budete mít objekt ContainerURL, můžete vytvořit instanci objektu **B
 > [!IMPORTANT]
 > Názvy kontejnerů musí obsahovat jen malá písmena. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-V této části vytvoříte nový kontejner. Kontejner má název **quickstartblobs-[náhodný_řetězec]**. 
+V této části vytvoříte nový kontejner. Kontejner má název **quickstartblobs-[náhodný_řetězec]** . 
 
 ```go 
 // From the Azure portal, get your storage account name and key and set environment variables.
@@ -149,11 +147,11 @@ handleErrors(err)
 
 Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Nejčastěji používané jsou objekty blob bloku, které se používají také v tomto rychlém startu.  
 
-Pokud chcete do objektu blob nahrát soubor, otevřete soubor pomocí příkazu **os.Open**. Pak můžete soubor nahrát do zadané cesty pomocí některého z rozhraní REST API: Nahrávání (PutBlob) StageBlock/CommitBlockList (PutBlock nebo PutBlockList). 
+Pokud chcete do objektu blob nahrát soubor, otevřete soubor pomocí příkazu **os.Open**. Pak můžete soubor nahrát do zadané cesty pomocí některého z rozhraní REST API: Upload (PutBlob); StageBlock/CommitBlockList (PutBlock/PutBlockList). 
 
 Sada SDK případně nabízí [rozhraní API vysoké úrovně](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) založená na rozhraních REST API nízké úrovně. Příkladem je funkce ***UploadFileToBlockBlob***, která používá operace StageBlock (PutBlock) k souběžnému nahrání souboru po částech za účelem optimalizace propustnosti. Pokud je soubor menší než 256 MB, použije místo toho operaci Upload (PutBlob) k dokončení přenosu v rámci jediné transakce.
 
-Následující příklad nahraje soubor do kontejneru **quickstartblobs-[náhodný_řetězec]**.
+Následující příklad nahraje soubor do kontejneru **quickstartblobs-[náhodný_řetězec]** .
 
 ```go
 // Create a file to test the upload and download.
@@ -209,7 +207,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>Stažení objektu blob
 
-Objekty blob můžete stáhnout pomocí funkce nízké úrovně **Download** s použitím objektu BlobURL. Tato funkce vrátí strukturu **DownloadResponse**. Spuštěním funkce **Body** pro strukturu získáte datový proud **RetryReader** pro čtení dat. Jestliže připojení selže při čtení, budou další požadavky na obnovení připojení a pokračujte ve čtení. Pokud zadáte RetryReaderOptions s vlastností MaxRetryRequests nastavenou na hodnotu 0 (výchozí hodnota), vrátí se původní text odpovědi bez opakování. Alternativně můžete kód zjednodušit použitím rozhraní API vysoké úrovně **DownloadBlobToBuffer** nebo **DownloadBlobToFile**.
+Objekty blob můžete stáhnout pomocí funkce nízké úrovně **Download** s použitím objektu BlobURL. Tato funkce vrátí strukturu **DownloadResponse**. Spuštěním funkce **Body** pro strukturu získáte datový proud **RetryReader** pro čtení dat. Pokud při čtení dojde k chybě připojení, budou další požadavky na opětovné navázání připojení a pokračování ve čtení. Pokud zadáte RetryReaderOptions s vlastností MaxRetryRequests nastavenou na hodnotu 0 (výchozí hodnota), vrátí se původní text odpovědi bez opakování. Alternativně můžete kód zjednodušit použitím rozhraní API vysoké úrovně **DownloadBlobToBuffer** nebo **DownloadBlobToFile**.
 
 Následující kód stáhne objekt blob pomocí funkce **Download**. Obsah objektu blob se zapíše do vyrovnávací paměti a zobrazí se v konzole.
 

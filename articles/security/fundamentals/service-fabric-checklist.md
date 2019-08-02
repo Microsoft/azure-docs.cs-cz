@@ -8,18 +8,19 @@ manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: 487086cebba20278134fc33cfce423056f854b99
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 8666dfe475600e68a30b302b0cc004eaf596f5f8
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68612519"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726602"
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Kontrolní seznam zabezpečení pro Azure Service Fabric
 Tento článek poskytuje snadno použitelný kontrolní seznam, který vám pomůže zabezpečit prostředí Azure Service Fabric.

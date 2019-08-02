@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2019
 ms.author: terrylan
-ms.openlocfilehash: 3bb4addfcb5cd40eb3c98f4cec065dbe2e52246c
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
-ms.translationtype: HT
+ms.openlocfilehash: c4756c36c2243840df69f3696e7ddac3628f3a00
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68613325"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727178"
 ---
 # <a name="azure-network-architecture"></a>Architektura sítě Azure
 Architektura sítě Azure se řídí upravenou verzí modelu Core/Distribution/Access úrovně Standard, s odlišnými hardwarovými vrstvami. Mezi vrstvy patří:
@@ -94,7 +95,7 @@ Hraniční směrovače oddělí prostředí aplikace od Internetu. Tyto směrova
 
 Společnost Microsoft umisťuje síťová zařízení do umístění Access a Edge, aby fungovala jako hraniční body, ve kterých se používají příchozí nebo výstupní filtry.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o tom, co Microsoft dělá k zabezpečení infrastruktury Azure, najdete tady:
 
 - [Zařízení, místní a fyzické zabezpečení Azure](physical-security.md)

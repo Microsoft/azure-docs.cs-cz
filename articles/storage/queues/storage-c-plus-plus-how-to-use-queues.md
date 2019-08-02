@@ -1,29 +1,27 @@
 ---
-title: Používání úložiště Queue (C++) – služby Azure Storage
-description: Další informace o použití služby úložiště front v Azure. Ukázky jsou napsané v jazyce C++.
-services: storage
+title: Použití úložiště Queue (C++)-Azure Storage
+description: Naučte se používat službu Queue Storage v Azure. Ukázky jsou napsané C++v.
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: cpp
-ms.topic: article
-ms.date: 05/11/2017
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 05/11/2017
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 440033233bbd60421cc3245a04544cd04caec6f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: e268e30e8f8c512dd6efb5a50da45f173e526b62
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153120"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721644"
 ---
-# <a name="how-to-use-queue-storage-from-c"></a>Používání úložiště Queue z jazyka C++
+# <a name="how-to-use-queue-storage-from-c"></a>Použití Queue Storage zC++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Přehled
-Tato příručka se ukazují, jak provádět běžné scénáře pomocí služby Azure Queue storage. Ukázky jsou napsané v C++ a využívají [klientskou knihovnu služby Azure Storage pro C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). Mezi popsané scénáře patří **vkládání**, **prohlížení**, **získávání**, a **odstranění** fronty zpráv, stejně jako  **vytváření a odstraňování front**.
+Tato příručka vám ukáže, jak provádět běžné scénáře pomocí služby Azure Queue Storage. Ukázky jsou napsané v C++ a využívají [klientskou knihovnu služby Azure Storage pro C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). Mezi zahrnuté scénáře patří **vkládání**, **prohlížení**, **získávání**a **odstraňování** zpráv fronty a **vytváření a odstraňování front**.
 
 > [!NOTE]
 > Tato příručka je určená pro klientskou knihovnu služby Azure Storage pro C++ verze 1.0.0 nebo novější. Doporučená verze klientské knihovny služby Storage je 2.2.0, která je k dispozici přes [NuGet](https://www.nuget.org/packages/wastorage) nebo [GitHub](https://github.com/Azure/azure-storage-cpp/).
@@ -35,48 +33,48 @@ Tato příručka se ukazují, jak provádět běžné scénáře pomocí služby
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-c-application"></a>Vytvoření aplikace C++
-V této příručce se bude používat funkce úložiště, které můžou běžet v rámci aplikace v jazyce C++.
+V této příručce budete používat funkce úložiště, které se dají spouštět v rámci C++ aplikace.
 
 Abyste mohli pokračovat, musíte si nainstalovat klientskou knihovnu služby Azure Storage pro C++ a vytvořit ve svém předplatném účet úložiště Azure.
 
 Klientskou knihovnu služby Azure Storage pro C++ můžete nainstalovat následujícími způsoby:
 
-* **Linux:** Postupujte podle pokynů v [Klientská knihovna Azure Storage pro C++ – soubor README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) stránky.
-* **Windows:** V sadě Visual Studio klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**. Zadejte následující příkaz do [Konzola správce balíčků NuGet](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) a stiskněte klávesu **ENTER**.
+* **Linux** Postupujte podle pokynů uvedených na stránce [klientské knihovny Azure Storage pro C++ Readme](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) .
+* **Windows:** V sadě Visual Studio klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**. Do [konzoly Správce balíčků NuGet](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) zadejte následující příkaz a stiskněte klávesu **ENTER**.
 
 ```powershell
 Install-Package wastorage
 ```
 
-## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurace aplikace pro přístup k úložišti front
-Přidejte následující příkazy do horní části souboru C++, ve které chcete použít pro přístup k frontám rozhraním API v Azure storage zahrnují:  
+## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurace aplikace pro přístup k Queue Storage
+Přidejte následující příkazy include do horní části C++ souboru, kde chcete používat rozhraní API služby Azure Storage pro přístup k frontám:  
 
 ```cpp
 #include <was/storage_account.h>
 #include <was/queue.h>
 ```
 
-## <a name="set-up-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce služby Azure storage
-Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění v klientské aplikaci, musíte zadat připojovací řetězec úložiště v následujícím formátu, pomocí názvu účtu úložiště a přístupový klíč úložiště pro účet úložiště uvedený v seznamu [webu Azure Portal](https://portal.azure.com) pro *AccountName* a *AccountKey* hodnoty. Informace o účtech úložiště a přístupové klíče najdete v tématu [o účtech Azure Storage](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:  
+## <a name="set-up-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce služby Azure Storage
+Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění v klientské aplikaci musíte zadat připojovací řetězec úložiště v následujícím formátu pomocí názvu účtu úložiště a přístupového klíče úložiště pro účet úložiště, který je uvedený na webu [Azure Portal](https://portal.azure.com) pro název *účtu* . a *AccountKey* hodnoty. Informace o účtech úložiště a přístupových klíčích najdete v tématu [informace o Azure Storagech účtech](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:  
 
 ```cpp
 // Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-K testování aplikace v místním počítači Windows, můžete použít Microsoft Azure [emulátor úložiště](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) , který se instaluje s [sady Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště je nástroj, který simuluje objektů Blob, Queue a Table služeb dostupných v Azure na svém místním vývojovém počítači. Následující příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce k místnímu emulátoru úložiště:  
+K otestování aplikace na místním počítači s Windows můžete použít [emulátor úložiště](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) Microsoft Azure, který je nainstalovaný spolu se sadou [Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště je nástroj, který simuluje služby objektů blob, front a tabulek dostupných v Azure na vašem místním vývojovém počítači. Následující příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce k místnímu emulátoru úložiště:  
 
 ```cpp
 // Define the connection-string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Chcete-li spustit emulátor úložiště Azure, vyberte **Start** tlačítko nebo stisknutím klávesy **Windows** klíč. Začněte psát **emulátoru úložiště Azure**a vyberte **emulátor úložiště Microsoft Azure** ze seznamu aplikací.
+Emulátor úložiště Azure spustíte tak, že vyberete tlačítko **Start** nebo stisknete klávesu **Windows** . Začněte psát **Azure Storage emulátoru**a v seznamu aplikací vyberte **emulátor úložiště Microsoft Azure** .
 
 V následujících ukázkách se předpokládá, že jste pomocí některé z těchto dvou metod získali připojovací řetězec úložiště.
 
 ## <a name="retrieve-your-connection-string"></a>Načtení připojovacího řetězce
-Můžete použít **cloud_storage_account** pro reprezentaci informace o vašem účtu úložiště. K načtení informací o vašem účtu úložiště z připojovacího řetězce úložiště můžete použít metodu **parse**.
+K reprezentaci informací o účtu úložiště můžete použít třídu **cloud_storage_account** . K načtení informací o vašem účtu úložiště z připojovacího řetězce úložiště můžete použít metodu **parse**.
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -84,7 +82,7 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 ```
 
 ## <a name="how-to-create-a-queue"></a>Postup: Vytvoření fronty
-A **cloud_queue_client** objektu umožňuje získat odkaz na objekty pro fronty. Následující kód vytvoří **cloud_queue_client** objektu.
+Objekt **cloud_queue_client** umožňuje získat referenční objekty pro fronty. Následující kód vytvoří objekt **cloud_queue_client** .
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -94,7 +92,7 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 ```
 
-Použít **cloud_queue_client** můžete získat odkaz na frontu, kterou chcete použít. Můžete vytvořit frontu, pokud neexistuje.
+Pomocí objektu **cloud_queue_client** Získejte odkaz na frontu, kterou chcete použít. Tuto frontu můžete vytvořit, pokud neexistuje.
 
 ```cpp
 // Retrieve a reference to a queue.
@@ -105,7 +103,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>Postup: Vložení zprávy do fronty
-Chcete-li vložit zprávu do existující fronty, vytvořte nejdřív nový **cloud_queue_message**. Pak zavolejte **add_message** metody. A **cloud_queue_message** lze vytvořit buď z řetězce nebo **bajtů** pole. Tady je kód, který vytvoří frontu (pokud neexistuje) a vloží zprávu „Hello, World“:
+Chcete-li vložit zprávu do existující fronty, vytvořte nejprve nové **cloud_queue_message**. Dále zavolejte metodu **add_message** . **Cloud_queue_message** se dá vytvořit buď z řetězce, nebo z **bajtového** pole. Tady je kód, který vytvoří frontu (pokud neexistuje) a vloží zprávu „Hello, World“:
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -126,7 +124,7 @@ queue.add_message(message1);
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>Postup: Zobrazení náhledu další zprávy
-Můžete prohlížet zprávy ve frontě bez odebrání z fronty pomocí volání **peek_message** metody.
+Můžete prohlížet zprávu v přední části fronty bez jejího odebrání z fronty voláním metody **peek_message** .
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -146,7 +144,7 @@ std::wcout << U("Peeked message content: ") << peeked_message.content_as_string(
 ```
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>Postup: Změna obsahu zpráv zařazených ve frontě
-Podle potřeby můžete změnit obsah zprávy přímo ve frontě. Pokud zpráva představuje pracovní úlohu, mohli byste tuto funkci použít k aktualizaci stavu pracovních úloh. Následující kód aktualizuje zprávy ve frontě o nový obsah a prodlouží časový limit viditelnosti na 60 sekund. Uloží se tím stav práce spojený se zprávou a klient získá další minutu, aby mohl pokračovat ve zpracování zprávy. Tímto způsobem může sledovat vícekrokového pracovní postupy pro zprávy ve frontě, aniž by bylo nutné v případě, že krok zpracování z důvodu selhání hardwaru nebo softwaru selže, začít znovu od začátku. Obvykle byste udržovali také hodnotu počtu opakování, a pokud se zpráva, je možné vícekrát, odstranili byste ji. Je to ochrana proti tomu, aby zpráva při každém pokusu o zpracování nevyvolala chyby aplikace.
+Podle potřeby můžete změnit obsah zprávy přímo ve frontě. Pokud zpráva představuje pracovní úlohu, mohli byste tuto funkci použít k aktualizaci stavu pracovních úloh. Následující kód aktualizuje zprávy ve frontě o nový obsah a prodlouží časový limit viditelnosti na 60 sekund. Uloží se tím stav práce spojený se zprávou a klient získá další minutu, aby mohl pokračovat ve zpracování zprávy. Tímto způsobem může sledovat vícekrokového pracovní postupy pro zprávy ve frontě, aniž by bylo nutné v případě, že krok zpracování z důvodu selhání hardwaru nebo softwaru selže, začít znovu od začátku. Obvykle byste zachovali počet opakování i v případě, že se zpráva opakuje více než n krát, byste ji odstranili. Je to ochrana proti tomu, aby zpráva při každém pokusu o zpracování nevyvolala chyby aplikace.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -172,7 +170,7 @@ std::wcout << U("Changed message content: ") << changed_message.content_as_strin
 ```
 
 ## <a name="how-to-de-queue-the-next-message"></a>Postup: Vyřazení další zprávy z fronty
-Váš kód vyřazuje zprávy z fronty ve dvou krocích. Při volání **get_message**, získáte další zprávu ve frontě. Zpráva vrácená metodou **get_message** stane neviditelnou pro jakýkoli jiný kód přečte zprávy z této fronty. K dokončení odebrání zprávy z fronty, musíte také zavolat **delete_message**. Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Kód volá **delete_message** hned po zpracování zprávy.
+Váš kód vyřazuje zprávy z fronty ve dvou krocích. Když zavoláte **get_message**, dostanete další zprávu ve frontě. Zpráva vrácená z **get_message** bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Chcete-li dokončit odebrání zprávy z fronty, je nutné také volat **delete_message**. Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Váš kód volá **delete_message** hned po zpracování zprávy.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -193,7 +191,7 @@ queue.delete_message(dequeued_message);
 ```
 
 ## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Postup: Využívání dalších možností pro vyřazování zpráv z fronty
-Načítání zpráv z fronty si můžete přizpůsobit dvěma způsoby. Za prvé si můžete načíst dávku zpráv (až 32). Za druhé si můžete nastavit delší nebo kratší časový limit neviditelnosti, aby měl váš kód více nebo méně času na úplné zpracování jednotlivých zpráv. Následující příklad kódu používá **get_messages** metodu k získání 20 zpráv v jednom volání. Pak se každá zpráva zpracuje pomocí **pro** smyčky. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut. Všimněte si, že začíná pro všechny zprávy ve stejnou dobu, tak po mít 5 minut předané od posledního volání **get_messages**, všechny zprávy, které nebyly odstraněny, opět viditelné.
+Načítání zpráv z fronty si můžete přizpůsobit dvěma způsoby. Za prvé si můžete načíst dávku zpráv (až 32). Za druhé si můžete nastavit delší nebo kratší časový limit neviditelnosti, aby měl váš kód více nebo méně času na úplné zpracování jednotlivých zpráv. Následující příklad kódu používá metodu **get_messages** k získání 20 zpráv v jednom volání. Potom zpracuje každou zprávu pomocí smyčky **for** . Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut. Všimněte si, že 5 minut začne u všech zpráv současně, takže po uplynutí 5 minut od volání **get_messages**budou všechny zprávy, které nebyly odstraněny, opět viditelné.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -221,7 +219,7 @@ for (auto it = messages.cbegin(); it != messages.cend(); ++it)
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>Postup: Získání délky fronty
-Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. **Download_attributes** metoda požádá službu front o načtení atributů fronty, včetně počtu zpráv. **Approximate_message_count** metoda získá přibližný počet zpráv ve frontě.
+Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. Metoda **download_attributes** požádá služba front o načtení atributů fronty, včetně počtu zpráv. Metoda **approximate_message_count** získá přibližný počet zpráv ve frontě.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -244,7 +242,7 @@ std::wcout << U("Number of messages in queue: ") << cachedMessageCount << std::e
 ```
 
 ## <a name="how-to-delete-a-queue"></a>Postup: Odstranění fronty
-Chcete-li odstranit frontu se všemi zprávami, které v ní, zavolejte **delete_queue_if_exists** metodu na objekt fronty.
+Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte metodu **delete_queue_if_exists** u objektu Queue.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -260,11 +258,11 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 queue.delete_queue_if_exists();  
 ```
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili základy používání služby Queue storage, použijte tyto odkazy na další informace o službě Azure Storage.
+## <a name="next-steps"></a>Další kroky
+Teď, když jste se seznámili se základy úložiště front, můžete získat další informace o Azure Storage pomocí těchto odkazů.
 
-* [Používání úložiště Blob z jazyka C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [Používání úložiště Table z jazyka C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [Seznam prostředků služby Azure Storage v C++](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
-* [Klientská knihovna pro úložiště pro C++ – referenční informace](https://azure.github.io/azure-storage-cpp)
+* [Použití Blob Storage zC++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
+* [Použití Table Storage zC++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+* [Vypsat Azure Storage prostředky vC++](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+* [Klientská knihovna pro C++ úložiště pro referenci](https://azure.github.io/azure-storage-cpp)
 * [Dokumentace k Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

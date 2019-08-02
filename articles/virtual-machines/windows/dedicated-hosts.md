@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 73279a3912bdd1ca9b2cdbfcd19f2df6c0481457
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: d822bebb2e8323c075990a9225d08eb695c519cc
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700532"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725911"
 ---
 # <a name="preview-azure-dedicated-hosts"></a>Verze Preview: Vyhrazení hostitelé Azure
 
@@ -26,7 +26,5 @@ ms.locfileid: "68700532"
 ## <a name="next-steps"></a>Další postup
 
 - Vyhrazeného hostitele můžete nasadit pomocí [Azure PowerShell](dedicated-hosts-powershell.md), [portálu](dedicated-hosts-portal.md)a [Azure CLI](../linux/dedicated-hosts-cli.md).
-
-- Další informace najdete v tématu Přehled [vyhrazených hostitelů](dedicated-hosts.md) .
 
 - [Zde](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)najdete ukázkovou šablonu, která pro maximální odolnost v oblasti používá zóny i domény selhání.

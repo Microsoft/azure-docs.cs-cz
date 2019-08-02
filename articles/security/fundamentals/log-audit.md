@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: a99cb67bddb9b2310648ac9b06c6ee6a839f4c34
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b916e3073d5f6843b58980ce49c7b7c5871d218d
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68615301"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727079"
 ---
 # <a name="azure-logging-and-auditing"></a>Protokolování a auditování Azure
 
@@ -389,7 +390,7 @@ Scénáře integrace pro SIEM:
 
 * [Integrace výstrah Security Center s Azure log Integration](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration): Tento článek popisuje, jak synchronizovat výstrahy Security Center, události zabezpečení virtuálních počítačů shromažďované protokoly diagnostiky Azure a protokoly auditu Azure pomocí protokolů Azure Monitor nebo řešení SIEM.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Auditování a protokolování](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview): Chraňte data udržováním viditelnosti a rychlé reakce na včasné výstrahy zabezpečení.
 

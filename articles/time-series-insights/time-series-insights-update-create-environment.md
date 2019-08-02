@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: b462f0c427020b1422b91fbd7ac34e3023e546b8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 998471d99a785eeff39ef7c99e60e1d9b49e0d7a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677864"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725837"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: Nastavení prostředí pro Azure Time Series Insights Preview
 
@@ -62,7 +62,7 @@ V této části vytvoříte tři simulovaná zařízení, která odesílají dat
 
     [![Stránka pro vytvoření řešení simulace zařízení](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-## <a name="create-a-time-series-insights-preview-payg-environment"></a>Vytvoření PAYG prostředí Time Series Insights ve verzi Preview
+## <a name="create-a-preview-payg-environment"></a>Vytvoření verze Preview prostředí PAYG
 
 Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Preview a připojit ho ke službě IoT Hub vytvořené pomocí akcelerátoru řešení IoT pomocí [Azure Portal](https://portal.azure.com/).
 
@@ -130,7 +130,9 @@ Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Previ
 
    Pokud vaše přihlašovací údaje nejsou uvedené, musíte sami udělit oprávnění k přístupu k prostředí. Pokud se chcete dozvědět víc o nastavení oprávnění, přečtěte si téma [udělení přístupu k datům](./time-series-insights-data-access.md).
 
-## <a name="stream-data-into-your-environment"></a>Streamování dat do vašeho prostředí
+## <a name="stream-data"></a>Streamování dat
+
+Teď, když jste nasadili Time Series Insights prostředí, streamujte do něj data pro účely analýzy.
 
 1. Přejděte zpátky na [stránku akcelerátory řešení Azure IoT](https://www.azureiotsolutions.com/Accelerators). Vyhledejte řešení na řídicím panelu akcelerátoru řešení. Pak vyberte **Spustit**:
 
@@ -158,7 +160,7 @@ Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Previ
 
     [![Řídicí panel simulace Azure IoT](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
-## <a name="analyze-data-in-your-environment"></a>Analýza dat ve vašem prostředí
+## <a name="analyze-data"></a>Analýza dat
 
 V této části provedete základní analýzy dat časových řad pomocí [Průzkumníka služby Azure Time Series Insights Preview](./time-series-insights-update-explorer.md).
 

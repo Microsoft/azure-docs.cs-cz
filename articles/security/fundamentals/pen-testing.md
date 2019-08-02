@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 695d918c-a9ac-4eba-8692-af4526734ccc
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 8835c4534b6dab1e8dbfb3546257ae4bc3b9d7af
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 3a2addce83862ef109089f1474330f3821daaed7
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68614872"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726718"
 ---
 # <a name="penetration-testing"></a>Testování průniku
 Jednou z výhod používání Azure pro testování a nasazení aplikací je, že můžete rychle vytvořit prostředí vytvořená. Nemusíte se starat o přemístění, získání a "rackování a skládání" vašeho vlastního místního hardwaru.

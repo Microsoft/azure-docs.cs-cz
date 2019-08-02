@@ -1,20 +1,20 @@
 ---
 title: Porozumění celému světě bez hesel s Azure Active Directory | Microsoft Docs
 description: Tato příručka pomáhá CEOs, ředitelé informačních technologií, CISO, vedoucím architektům identity, podnikovým architektům a organizacím pro rozhodování o tom, kdo zodpovídá za výběr metody ověřování bez hesla pro svou Azure Active Directory implementaci.
-services: active-directory
 keywords: bez hesla, azuread
 author: martincoetzer
 ms.author: martinco
 ms.date: 07/09/2019
 ms.topic: article
-ms.service: active-directory
+ms.service: security
+ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 09a3c14734d86738a521cf765fcfac2880eee177
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 30c2eb2964f11b729b0ffaf58c532d5189cdc2cd
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68616185"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727775"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>World bez hesel s Azure Active Directory
 
@@ -340,7 +340,7 @@ V posledních několika letech pokračovala společnost Microsoft na jejich záv
 
 Zavedení moderních technologií Multi-Factor Authentication, jako je biometrika a kryptografie veřejného klíče v široce přístupných zařízeních, je jedním z nejdůležitějších kroků, které mohou smysluplně snížit riziko totožnosti společnosti. Bez hesla je dlouhodobý přístup k zabezpečenému ověřování a stále se vyvíjí. S ohledem na nově vznikající požadavky si organizace můžou připravit plán na zahájení přechodu na technologie bez hesla.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Přehled toho, [co je](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) nejenom pro hesla?
 * [Jak ve službě Azure AD povolit nepoužívatelné hesla](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)

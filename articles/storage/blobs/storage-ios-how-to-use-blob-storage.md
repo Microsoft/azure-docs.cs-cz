@@ -1,21 +1,18 @@
 ---
 title: Jak používat úložiště objektů (BLOB) z iOS – Azure | Microsoft Docs
 description: Ukládejte nestrukturovaná data v cloudu pomocí Azure Blob Storage (úložiště objektů).
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: objective-c
-ms.topic: article
-ms.date: 11/20/2018
 ms.author: mhopkins
-ms.reviewer: seguler
+ms.date: 11/20/2018
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 2d44dabe68900aa45b076f44cc38ed85d6938afa
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.topic: conceptual
+ms.openlocfilehash: 54085d602246d38adb970ed02f451241ca7ba19d
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249955"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726410"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Jak používat úložiště objektů BLOB ze systému iOS
 
@@ -26,16 +23,19 @@ Další informace o službě BLOB Storage najdete v tématu [Úvod do úložišt
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="import-the-azure-storage-ios-library-into-your-application"></a>Import knihovny iOS Azure Storage do vaší aplikace
+
 Do své aplikace můžete importovat knihovnu Azure Storage iOS buď pomocí [Azure Storage CocoaPod](https://cocoapods.org/pods/AZSClient) , nebo importováním souboru **architektury** . CocoaPod je doporučený způsob, jak usnadňuje integraci knihovny, ale import ze souboru rozhraní je pro váš stávající projekt méně rušivý.
 
 K použití této knihovny potřebujete následující:
+
 - iOS 8+
 - Xcode 7 +
 
 ## <a name="cocoapod"></a>CocoaPod
+
 1. Pokud jste to ještě neudělali, nainstalujte do svého počítače [CocoaPods](https://guides.cocoapods.org/using/getting-started.html#toc_3) tak, že otevřete okno terminálu a spustíte následující příkaz.
-    
-    ```shell   
+
+    ```shell
     sudo gem install cocoapods
     ```
 
@@ -51,13 +51,14 @@ K použití této knihovny potřebujete následující:
 
 3. V okně terminálu přejděte do adresáře projektu a spusťte následující příkaz.
 
-    ```shell    
+    ```shell
     pod install
     ```
 
 4. Pokud je váš. xcodeproj otevřený v Xcode, zavřete ho. V adresáři projektu otevřete nově vytvořený soubor projektu, který bude mít příponu. xcworkspace. Jedná se o soubor, ze kterého teď budete pracovat.
 
 ## <a name="framework"></a>Rozhraní .NET Framework
+
 Dalším způsobem, jak použít knihovnu, je sestavit rozhraní ručně:
 
 1. Nejdřív si stáhněte nebo naklonujte [úložiště Azure-Storage-iOS](https://github.com/azure/azure-storage-ios).
@@ -74,7 +75,8 @@ Pak můžete soubor architektury importovat do aplikace pomocí následujícího
 5. V části *propojené architektury a knihovny* klikněte na tlačítko Přidat (+).
 6. V seznamu již poskytnutých knihoven vyhledejte `libxml2.2.tbd` a přidejte ho do projektu.
 
-## <a name="import-the-library"></a>Import knihovny 
+## <a name="import-the-library"></a>Import knihovny
+
 ```objc
 // Include the following import statement to use blob APIs.
 #import <AZSClient/AZSClient.h>
@@ -91,12 +93,12 @@ Pokud používáte SWIFT, budete muset vytvořit překlenovací hlavičku a impo
 [!INCLUDE [storage-mobile-authentication-guidance](../../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="asynchronous-operations"></a>Asynchronní operace
+
 > [!NOTE]
-> Všechny metody, které provádějí požadavky na službu, jsou asynchronní operace. V ukázkách kódu zjistíte, že tyto metody mají obslužnou rutinu dokončení. Kód uvnitř obslužné rutiny dokončení se spustí **po** dokončení žádosti. Po spuštění žádosti se kód po obslužné  rutině dokončení spustí.
-> 
-> 
+> Všechny metody, které provádějí požadavky na službu, jsou asynchronní operace. V ukázkách kódu zjistíte, že tyto metody mají obslužnou rutinu dokončení. Kód uvnitř obslužné rutiny dokončení se spustí **po** dokončení žádosti. Po spuštění žádosti se kód po obslužné rutině dokončení spustí.
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
+
 Každý objekt BLOB v Azure Storage musí být umístěn v kontejneru. Následující příklad ukazuje, jak vytvořit kontejner s názvem *newcontainer*v účtu úložiště, pokud ještě neexistuje. Při volbě názvu pro svůj kontejner nezapomeňte na pravidla pojmenování uvedená výše.
 
 ```objc
@@ -128,11 +130,12 @@ Každý objekt BLOB v Azure Storage musí být umístěn v kontejneru. Následuj
 To můžete ověřit tak, že si vyhledáte [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com) a ověříte, že *newcontainer* je v seznamu kontejnerů pro váš účet úložiště.
 
 ## <a name="set-container-permissions"></a>Nastavení oprávnění kontejneru
+
 Ve výchozím nastavení jsou oprávnění kontejneru nakonfigurovaná pro **privátní** přístup. Kontejnery ale poskytují několik různých možností pro přístup k kontejneru:
 
-* **Privátní**: Data kontejneru a objektu BLOB může číst pouze vlastník účtu.
-* **Blob**: Data objektů BLOB v tomto kontejneru lze číst prostřednictvím anonymního požadavku, ale data kontejneru nejsou k dispozici. Klienti nemohou vypsat objekty BLOB v kontejneru prostřednictvím anonymního požadavku.
-* **Kontejner**: Data kontejneru a objektu BLOB lze číst prostřednictvím anonymního požadavku. Klienti mohou vytvořit výčet objektů BLOB v kontejneru prostřednictvím anonymního požadavku, ale nemohou vytvořit výčet kontejnerů v rámci účtu úložiště.
+- **Privátní**: Data kontejneru a objektu BLOB může číst pouze vlastník účtu.
+- **Blob**: Data objektů BLOB v tomto kontejneru lze číst prostřednictvím anonymního požadavku, ale data kontejneru nejsou k dispozici. Klienti nemohou vypsat objekty BLOB v kontejneru prostřednictvím anonymního požadavku.
+- **Kontejner**: Data kontejneru a objektu BLOB lze číst prostřednictvím anonymního požadavku. Klienti mohou vytvořit výčet objektů BLOB v kontejneru prostřednictvím anonymního požadavku, ale nemohou vytvořit výčet kontejnerů v rámci účtu úložiště.
 
 Následující příklad ukazuje, jak vytvořit kontejner s přístupovými oprávněními **kontejneru** , který umožní veřejný přístup jen pro čtení pro všechny uživatele na internetu:
 
@@ -163,6 +166,7 @@ Následující příklad ukazuje, jak vytvořit kontejner s přístupovými opr�
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>Nahrání objektu blob do kontejneru
+
 Jak je uvedeno v části koncepty Blob service, Blob Storage nabízí tři různé typy objektů BLOB: objekty blob bloku, doplňovací objekty BLOB a objekty blob stránky. Knihovna Azure Storage iOS podporuje všechny tři typy objektů BLOB. Ve většině případů se jako vhodný typ k použití doporučuje objekt blob bloku.
 
 Následující příklad ukazuje, jak nahrát objekt blob bloku z NSString. Pokud v tomto kontejneru již existuje objekt BLOB se stejným názvem, obsah tohoto objektu BLOB bude přepsán.
@@ -206,25 +210,28 @@ Následující příklad ukazuje, jak nahrát objekt blob bloku z NSString. Poku
 
 To můžete ověřit tak, že se podíváte na [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com) a ověříte, že kontejner *containerpublic*obsahuje objekt BLOB *sampleblob*. V této ukázce jsme použili veřejný kontejner, takže můžete také ověřit, že se tato aplikace pracovala, a to tak, že se vrátí k identifikátoru URI objektů BLOB:
 
-    https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
+```http
+https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
+```
 
 Kromě nahrávání objektu blob bloku z NSString existují podobné metody pro NSData, NSInputStream nebo místní soubor.
 
 ## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
-Následující příklad ukazuje, jak zobrazit seznam všech objektů BLOB v kontejneru. Při provádění této operace je potřeba mít na vědomí následující parametry:     
 
-* **token continuationtoken** – token pokračování představuje, kde by se měla začínat operace výpisu. Pokud není zadaný žádný token, vypíše objekty blob od začátku. Je možné uvést libovolný počet objektů blob, od nuly až po nastavené maximum. I v případě, že tato metoda vrátí nulové `results.continuationToken` výsledky, pokud není Nil, může existovat více objektů BLOB ve službě, které nebyly uvedeny.
-* **prefix** – můžete zadat předponu, která se má použít pro výpis objektu BLOB. Zobrazí se pouze objekty blob začínající touto předponou.
-* **useFlatBlobListing** – jak je uvedeno v části pojmenování [a odkazování na kontejnery a objekty blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) , i když BLOB Service je schéma plochého úložiště, můžete vytvořit virtuální hierarchii pojmenování objektů BLOB s informacemi o cestě. Neplochý seznam se ale v tuto chvíli nepodporuje. Tato funkce se už brzo blíží. Teď by tato hodnota měla být **Ano**.
-* **blobListingDetails** – můžete určit, které položky se mají zahrnout při výpisu objektů BLOB.
-  * _AZSBlobListingDetailsNone_: Vypíše jenom potvrzené objekty BLOB a nevrátí metadata objektu BLOB.
-  * _AZSBlobListingDetailsSnapshots_: Vypíše potvrzené objekty BLOB a snímky objektů BLOB.
-  * _AZSBlobListingDetailsMetadata_: Načte metadata objektu BLOB pro každý objekt BLOB vrácený v seznamu.
-  * _AZSBlobListingDetailsUncommittedBlobs_: Výpis potvrzených a nepotvrzených objektů BLOB
-  * _AZSBlobListingDetailsCopy_: Zahrnout do výpisu vlastnosti kopírování
-  * _AZSBlobListingDetailsAll_: Vypíše všechny dostupné potvrzené objekty blob, nepotvrzené objekty BLOB a snímky a vrátí všechny metadata a stav kopírování těchto objektů BLOB.
-* **maxResults** – maximální počet výsledků, které se mají vrátit pro tuto operaci. Pro omezení nepoužívejte hodnotu-1.
-* **completionHandler** – blok kódu, který se má provést s výsledky operace výpisu.
+Následující příklad ukazuje, jak zobrazit seznam všech objektů BLOB v kontejneru. Při provádění této operace je potřeba mít na vědomí následující parametry:
+
+- **token continuationtoken** – token pokračování představuje, kde by se měla začínat operace výpisu. Pokud není zadaný žádný token, vypíše objekty blob od začátku. Je možné uvést libovolný počet objektů blob, od nuly až po nastavené maximum. I v případě, že tato metoda vrátí nulové `results.continuationToken` výsledky, pokud není Nil, může existovat více objektů BLOB ve službě, které nebyly uvedeny.
+- **prefix** – můžete zadat předponu, která se má použít pro výpis objektu BLOB. Zobrazí se pouze objekty blob začínající touto předponou.
+- **useFlatBlobListing** – jak je uvedeno v části pojmenování [a odkazování na kontejnery a objekty blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) , i když BLOB Service je schéma plochého úložiště, můžete vytvořit virtuální hierarchii pojmenování objektů BLOB s informacemi o cestě. Neplochý seznam se ale v tuto chvíli nepodporuje. Tato funkce se už brzo blíží. Teď by tato hodnota měla být **Ano**.
+- **blobListingDetails** – můžete určit, které položky se mají zahrnout při výpisu objektů BLOB.
+  - _AZSBlobListingDetailsNone_: Vypíše jenom potvrzené objekty BLOB a nevrátí metadata objektu BLOB.
+  - _AZSBlobListingDetailsSnapshots_: Vypíše potvrzené objekty BLOB a snímky objektů BLOB.
+  - _AZSBlobListingDetailsMetadata_: Načte metadata objektu BLOB pro každý objekt BLOB vrácený v seznamu.
+  - _AZSBlobListingDetailsUncommittedBlobs_: Výpis potvrzených a nepotvrzených objektů BLOB
+  - _AZSBlobListingDetailsCopy_: Zahrnout do výpisu vlastnosti kopírování
+  - _AZSBlobListingDetailsAll_: Vypíše všechny dostupné potvrzené objekty blob, nepotvrzené objekty BLOB a snímky a vrátí všechny metadata a stav kopírování těchto objektů BLOB.
+- **maxResults** – maximální počet výsledků, které se mají vrátit pro tuto operaci. Pro omezení nepoužívejte hodnotu-1.
+- **completionHandler** – blok kódu, který se má provést s výsledky operace výpisu.
 
 V tomto příkladu je použita pomocná metoda pro rekurzivní volání metody list BLOBs pokaždé, když je vrácen token pro pokračování.
 
@@ -280,6 +287,7 @@ V tomto příkladu je použita pomocná metoda pro rekurzivní volání metody l
 ```
 
 ## <a name="download-a-blob"></a>Stažení objektu blob
+
 Následující příklad ukazuje, jak stáhnout objekt blob do objektu NSString.
 
 ```objc
@@ -315,6 +323,7 @@ Následující příklad ukazuje, jak stáhnout objekt blob do objektu NSString.
 ```
 
 ## <a name="delete-a-blob"></a>Odstranění objektu blob
+
 Následující příklad ukazuje, jak odstranit objekt BLOB.
 
 ```objc
@@ -347,6 +356,7 @@ Následující příklad ukazuje, jak odstranit objekt BLOB.
 ```
 
 ## <a name="delete-a-blob-container"></a>Odstranění kontejneru objektů BLOB
+
 Následující příklad ukazuje, jak odstranit kontejner.
 
 ```objc
@@ -375,14 +385,14 @@ Následující příklad ukazuje, jak odstranit kontejner.
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
 Teď, když jste se naučili, jak používat Blob Storage v iOS, použijte následující odkazy, kde se dozvíte víc o knihovně iOS a službě úložiště.
 
-* [Klientská knihovna Azure Storage pro iOS](https://github.com/azure/azure-storage-ios)
-* [Referenční dokumentace k Azure Storage iOS](https://azure.github.io/azure-storage-ios/)
-* [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage)
+- [Klientská knihovna Azure Storage pro iOS](https://github.com/azure/azure-storage-ios)
+- [Referenční dokumentace k Azure Storage iOS](https://azure.github.io/azure-storage-ios/)
+- [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+- [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage)
 
 Pokud máte dotazy týkající se této knihovny, můžete se na našem [fóru MSDN Azure](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)publikovat.
 Pokud máte návrhy na funkce pro Azure Storage, odešlete příspěvek [Azure Storage zpětnou vazbu](https://feedback.azure.com/forums/217298-storage/).
-

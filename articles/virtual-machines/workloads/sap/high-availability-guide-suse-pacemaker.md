@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: cd377e78abe328814795bb1f75465b090a13e456
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 551f140c22677bea363ad5d8f43bf9670f783a1d
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68228352"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725608"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -35,14 +35,14 @@ ms.locfileid: "68228352"
 
 Existují dvě možnosti, jak nastavit Pacemaker clusteru v Azure. Můžete použít buď agenta monitorování geografických zón, které se postará o restartování neúspěšných uzlu prostřednictvím rozhraní API služby Azure nebo můžete použít SBD zařízení.
 
-Zařízení SBD vyžaduje alespoň jeden další virtuální počítač, který funguje jako cílový server iSCSI a poskytuje SBD zařízení. Může ale být tyto cílové servery iSCSI s další clustery Pacemaker sdílí. Výhodou použití zařízení s SBD je rychlejší převzetí služeb při selhání a pokud používáte SBD zařízení místně, nevyžaduje žádné změny na tom, jak používáte pacemaker cluster. Povolit zařízení s SBD přestanou být dostupné, například při použití dílčích oprav operačního systému cílového serveru iSCSI můžete použít až tři SBD zařízení Pacemaker clusteru. Pokud chcete použít více než jedno zařízení SBD za Pacemaker, nezapomeňte nasadit více cílové servery iSCSI a připojit jeden SBD z každý cílový server iSCSI. Doporučujeme používat jedno zařízení SBD nebo tři. Pacemaker nebude možné automaticky plotu uzlem clusteru, pokud nakonfigurujete dvě SBD zařízení a jeden z nich není k dispozici. Pokud chcete být schopni plotu při jeden cílový server iSCSI je mimo provoz, budete muset použít tři SBD zařízení a proto tři cílové servery iSCSI.
+Zařízení SBD vyžaduje alespoň jeden další virtuální počítač, který funguje jako cílový server iSCSI a poskytuje SBD zařízení. Může ale být tyto cílové servery iSCSI s další clustery Pacemaker sdílí. Výhodou použití zařízení SBD je rychlejší doba převzetí služeb při selhání a pokud používáte místní zařízení SBD, nevyžaduje žádné změny v tom, jak provozovat cluster Pacemaker. Povolit zařízení s SBD přestanou být dostupné, například při použití dílčích oprav operačního systému cílového serveru iSCSI můžete použít až tři SBD zařízení Pacemaker clusteru. Pokud chcete použít více než jedno zařízení SBD za Pacemaker, nezapomeňte nasadit více cílové servery iSCSI a připojit jeden SBD z každý cílový server iSCSI. Doporučujeme používat jedno zařízení SBD nebo tři. Pacemaker nebude možné automaticky plotu uzlem clusteru, pokud nakonfigurujete dvě SBD zařízení a jeden z nich není k dispozici. Pokud chcete být schopni plotu při jeden cílový server iSCSI je mimo provoz, budete muset použít tři SBD zařízení a proto tři cílové servery iSCSI.
 
-Pokud nechcete investovat do dalšího virtuálního počítače, můžete použít také agenta Azure. Nevýhodou je, že převzetí služeb při selhání můžete provést mezi 10 až 15 minut v případě zdroje stop selže nebo uzlech clusteru nemůže komunikovat které mezi sebou už.
+Pokud nechcete investovat do jednoho dalšího virtuálního počítače, můžete také použít agenta Azure plot. Nevýhodou je, že převzetí služeb při selhání můžete provést mezi 10 až 15 minut v případě zdroje stop selže nebo uzlech clusteru nemůže komunikovat které mezi sebou už.
 
 ![Pacemaker na SLES – přehled](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Při plánování a nasazení Linuxu Pacemaker Clusterované uzly a SBD zařízení, je nezbytné pro celkovou spolehlivost úplná konfigurace clusteru, který součástí směrování mezi virtuálními počítači a virtuálních počítačů, který je hostitelem SBD zařízení neprochází přes jiná zařízení, jako jsou [síťových virtuálních zařízení](https://azure.microsoft.com/solutions/network-appliances/). V opačném případě problémy a události údržby pomocí síťového virtuálního zařízení může mít negativní dopad na stabilitu a spolehlivost na celkové konfiguraci clusteru. Pokud se chcete vyhnout tyto překážky nedefinují pravidla směrování síťových virtuálních zařízení nebo [pravidla směrování definované uživatele](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) této směrovat provoz mezi uzly clusteru a SBD zařízení prostřednictvím síťových virtuálních zařízení a podobná zařízení při plánování a nasazení Linuxu Pacemaker Clusterované uzly a SBD zařízení. 
+> Při plánování a nasazení Linuxu Pacemaker Clusterované uzly a SBD zařízení, je nezbytné pro celkovou spolehlivost úplná konfigurace clusteru, který součástí směrování mezi virtuálními počítači a virtuálních počítačů, který je hostitelem SBD zařízení neprochází přes jiná zařízení, jako jsou [síťových virtuálních zařízení](https://azure.microsoft.com/solutions/network-appliances/). V opačném případě problémy a události údržby pomocí síťového virtuálního zařízení může mít negativní dopad na stabilitu a spolehlivost na celkové konfiguraci clusteru. Abyste se vyhnuli takovým překážkám, nedefinujte pravidla směrování pro síťová virtuální zařízení nebo [uživatelsky definovaná pravidla směrování](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) , která směrují provoz mezi clusterovanými uzly a zařízeními SBD prostřednictvím síťová virtuální zařízení a podobných zařízení při plánování a nasazení clusterových uzlů pro Linux Pacemaker a Zařízení SBD. 
 >
 
 ## <a name="sbd-fencing"></a>Monitorování geografických zón SBD
@@ -53,7 +53,7 @@ Pokud chcete použít SBD zařízení pro monitorování geografických zón, po
 
 Nejdřív je potřeba vytvořit iSCSI target virtuálních počítačů. cílový server iSCSI je sdílet s více clustery Pacemaker.
 
-1. Nasaďte nový SLES 12 SP1 nebo virtuálním počítačům s vyšší a k nim připojit přes ssh. Počítače se nemusíte být velké. Velikost virtuálního počítače jako Standard_E2s_v3 nebo Standard_D2s_v3 je dostačující. Ujistěte se, že chcete používat Premium storage disk s operačním systémem.
+1. Nasaďte nový SLES 12 SP1 nebo virtuálním počítačům s vyšší a k nim připojit přes ssh. Počítače nemusí být velké. Velikost virtuálního počítače jako Standard_E2s_v3 nebo Standard_D2s_v3 je dostačující. Ujistěte se, že chcete používat Premium storage disk s operačním systémem.
 
 Spusťte následující příkazy na všech **iSCSI target virtuálních počítačů**.
 
@@ -398,6 +398,28 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
+   >[!IMPORTANT]
+   > Pokud používáte systém SUSE Linux Enterprise Server pro SAP 15, nezapomeňte aktivovat další modul a nainstalovat další součást, která je předpokladem pro použití agenta Azure plot. Další informace o SUSE modulech a rozšířeních najdete v tématu vysvětlené [moduly a rozšíření](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html). Podle pokynů níže nainstalujte sadu Azure Python SDK. 
+
+   Následující pokyny, jak nainstalovat sadu Azure Python SDK, platí jenom pro SUSE Enterprise Server pro SAP **15**.  
+
+    - Pokud používáte vlastní předplatné, postupujte podle těchto pokynů.  
+
+    <pre><code>
+    #Activate module PackageHub/15/x86_64
+    sudo SUSEConnect -p PackageHub/15/x86_64
+    #Install Azure Python SDK
+    sudo zypper in python3-azure-sdk
+    </code></pre>
+
+     - Pokud používáte předplatné s průběžnými platbami, postupujte podle těchto pokynů.  
+
+    <pre><code>#Activate module PackageHub/15/x86_64
+    zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
+    #Install Azure Python SDK
+    sudo zypper in python3-azure-sdk
+    </code></pre>
+
 1. **[A]**  Nastavit rozlišení názvu hostitele
 
    Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
@@ -443,7 +465,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. **[A]**  Corosync použít jiné přenosu a přidání seznamu konfigurace. Cluster nefunguje jinak.
+1. **[A]**  Corosync použít jiné přenosu a přidání seznamu konfigurace. Cluster nepracuje jinak.
 
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
@@ -510,7 +532,7 @@ Využitím techniky STONITH zařízení využívá instanční objekt služby k 
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Vytvořit vlastní roli pro agent síťové izolace
 
-Instanční objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Je potřeba udělit oprávnění instančního objektu pro spuštění a zastavení (uvolníte) všechny virtuální počítače v clusteru. Pokud jste ještě nevytvořili vlastní roli, můžete vytvořit pomocí [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+Objekt služby nemá ve výchozím nastavení oprávnění pro přístup k prostředkům Azure. Je potřeba udělit oprávnění instančního objektu pro spuštění a zastavení (uvolníte) všechny virtuální počítače v clusteru. Pokud jste ještě nevytvořili vlastní roli, můžete vytvořit pomocí [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
 
 Použijte následující obsah vstupního souboru. Je potřeba upravit obsah, který je pro vaše předplatná, c276fc76-9cd4-44c9-99a7-4fd71546436e a e91d47c4-76f3-4271-a796-21b4ecfe3624 nahraďte ID vašeho předplatného. Pokud máte pouze jedno předplatné, odeberte v AssignableScopes druhou položku.
 
@@ -536,7 +558,7 @@ Použijte následující obsah vstupního souboru. Je potřeba upravit obsah, kt
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** přiřazení vlastní role k instančnímu objektu
 
-Přiřazení vlastní role "Linux ohrazení agenta roli", který byl vytvořen v kapitole poslední k Instančnímu objektu. Už nepoužívají role vlastníka!
+Přiřazení vlastní role "Linux ohrazení agenta roli", který byl vytvořen v kapitole poslední k Instančnímu objektu. Tuto roli vlastníka už nepoužívejte!
 
 1. Přejít na[https://portal.azure.com](https://portal.azure.com)
 1. Otevřete v okně všechny prostředky
@@ -607,7 +629,7 @@ sudo crm configure property maintenance-mode=false
      Upozornění: CIB-Bootstrap-Options: neznámý atribut hostName_ <strong>hostname</strong>  
    > Tyto zprávy upozornění je možné ignorovat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP][deployment-guide]

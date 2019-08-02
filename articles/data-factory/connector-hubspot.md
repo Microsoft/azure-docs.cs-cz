@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 86c38818ee1632bf2d2f3fb1e1240954f3267887
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce9a1d0fb9a5e8b242db26c433a08c2426df39d9
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123699"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720755"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Kopírování dat z HubSpot pomocí Azure Data Factory (Preview)
 
@@ -44,7 +44,7 @@ HubSpot propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Hubspot** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Hubspot** | Ano |
 | clientId | ID klienta přidružené k aplikaci Hubspot.  | Ano |
 | clientSecret | Tajný kód klienta přidruženého k aplikaci Hubspot. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | accessToken | Přístupový token získané při počátečním ověřování integraci vašich OAuth. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -87,7 +87,7 @@ Ke zkopírování dat z HubSpot, nastavte vlastnost typ datové sady na **Hubspo
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **HubspotObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **HubspotObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -97,11 +97,12 @@ Ke zkopírování dat z HubSpot, nastavte vlastnost typ datové sady na **Hubspo
     "name": "HubspotDataset",
     "properties": {
         "type": "HubspotObject",
+        "typeProperties": {},
+        "schema": [],        
         "linkedServiceName": {
             "referenceName": "<Hubspot linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -116,7 +117,7 @@ Ke zkopírování dat z HubSpot, nastavte typ zdroje v aktivitě kopírování d
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **HubspotSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HubspotSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Companies where Company_Id = xxx"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

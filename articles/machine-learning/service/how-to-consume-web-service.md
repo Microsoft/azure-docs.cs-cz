@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 070dd07aa6705e97a532bdc5f53a08a9abe0f83d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7799b62b2c330610663e361bbb3930340b1ebdaf
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361009"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726280"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 
@@ -37,8 +37,10 @@ Obecný pracovní postup pro vytvoření klienta, který používá webovou slu�
 
 Třída [AzureML. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) poskytuje informace, které potřebujete k vytvoření klienta. Následující `Webservice` vlastnosti jsou užitečné při vytváření klientské aplikace:
 
-* `auth_enabled` – Pokud je povoleno ověřování, `True`; v opačném případě `False`.
+* `auth_enabled`– Pokud je povolené ověřování klíčů, `True`; `False`jinak.
+* `token_auth_enabled`– Pokud je povolené ověřování tokenu `True`,; `False`jinak.
 * `scoring_uri` Adresa – rozhraní REST API.
+
 
 Existují tři způsoby pro načtení těchto informací pro nasazené webové služby:
 
@@ -67,7 +69,15 @@ Existují tři způsoby pro načtení těchto informací pro nasazené webové s
     print(service.scoring_uri)
     ```
 
-### <a name="authentication-key"></a>Ověřovací klíč
+### <a name="authentication-for-services"></a>Ověřování pro služby
+
+Azure Machine Learning poskytuje dva způsoby, jak řídit přístup k webovým službám. 
+
+|Metoda ověření|ACI|AKS|
+|---|---|---|
+|Klíč|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povoleno|
+|Podpisový| Není dostupné| Zakázáno ve výchozím nastavení |
+#### <a name="authentication-with-keys"></a>Ověřování pomocí klíčů
 
 Pokud povolíte ověřování pro nasazení, automaticky se vytvoří ověřovací klíče.
 
@@ -85,6 +95,26 @@ print(primary)
 
 > [!IMPORTANT]
 > Pokud je potřeba znovu vygenerovat klíč, použijte [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+
+
+#### <a name="authentication-with-tokens"></a>Ověřování pomocí tokenů
+
+Pokud povolíte ověřování tokenu pro webovou službu, musí uživatel poskytnout webové službě Azure Machine Learning token JWT, aby k němu měl přístup. 
+
+* Ověřování tokenu je ve výchozím nastavení zakázáno při nasazení do služby Azure Kubernetes.
+* Ověřování tokenu není při nasazení do Azure Container Instances podporováno.
+
+K řízení ověřování tokenu použijte `token_auth_enabled` parametr při vytváření nebo aktualizaci nasazení.
+
+Pokud je povoleno ověřování tokenu, můžete použít `get_token` metodu k načtení nosného tokenu a jeho doby vypršení platnosti tokenu:
+
+```python
+token, refresh_by = service.get_tokens()
+print(token)
+```
+
+> [!IMPORTANT]
+> Po `refresh_by` čase tokenu budete muset požádat o nový token. 
 
 ## <a name="request-data"></a>Data žádosti
 

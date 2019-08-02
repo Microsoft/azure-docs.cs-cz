@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 0b94f9a3-8648-4860-812c-be689b0b327b
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 289b9b0cb2532069c01fc9c687c844bd917355f7
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: a9c064e55be718109a34d72a2b95f720ac92fe4f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68614534"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726531"
 ---
 # <a name="microsoft-trust-center"></a>Centrum zabezpečení Microsoftu
 Web Azure Security Information on Azure.com poskytuje informace, které potřebujete k zajištění bezpečného plánování, návrhu, nasazení, konfigurace a správy cloudových řešení. S centrem zabezpečení Microsoftu máte také informace, které potřebujete mít jistotu, že platforma Azure, na které spouštíte vaše služby, je zabezpečená.

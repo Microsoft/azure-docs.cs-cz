@@ -1,45 +1,43 @@
 ---
-title: Jak vytvořit objekt blob ve službě Azure Storage pomocí klientské knihovny pro Javu v7 | Dokumentace Microsoftu
-description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Potom použijte klientskou knihovnu pro úložiště Azure pro Javu v7 nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů BLOB v kontejneru.
-services: storage
+title: Vytvoření objektu BLOB v Azure Storage pomocí klientské knihovny pro Java v7 | Microsoft Docs
+description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijte Azure Storage klientské knihovny pro Java v7 k nahrání objektu blob do Azure Storage, stažení objektu BLOB a výpisu objektů BLOB v kontejneru.
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: conceptual
-ms.date: 02/04/2019
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: f7cae5b3c7b0a7da6420674635ff9c3420a6436a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/04/2019
+ms.service: storage
+ms.subservice: blobs
+ms.topic: conceptual
+ms.openlocfilehash: 8cb9a9c6dd2e84318cd4d05bf6e67e127fc39ce3
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154420"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726370"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Postup nahrání, stažení a výpis objektů BLOB pomocí klientské knihovny pro Javu v7
+# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Jak nahrávat, stahovat a vypisovat objekty BLOB pomocí klientské knihovny pro Java v7
 
-V této příručce s postupy a zjistěte, jak používat klientskou knihovnu pro Javu v7 k nahrávání, stahování a výpis objektů BLOB bloku v kontejneru v úložišti objektů Blob v Azure.
+V této příručce se dozvíte, jak pomocí klientské knihovny pro Java v7 nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů BLOB v Azure.
 
 > [!TIP]
-> Nejnovější verzi klientské knihovny Azure Storage pro Javu je v10. Společnost Microsoft doporučuje, že používáte nejnovější verzi klientské knihovny, pokud je to možné. Chcete-li začít používat v10, přečtěte si téma [rychlý start: Nahrávání, stahování a výpis objektů BLOB s využitím Java Storage SDK V10](storage-quickstart-blobs-java-v10.md).
+> Nejnovější verze Azure Storage klientské knihovny pro jazyk Java je v10 za účelem. Pokud je to možné, společnost Microsoft doporučuje používat nejnovější verzi klientské knihovny. Pokud chcete začít používat v10 za účelem, přečtěte si [rychlý Start: Nahrávání, stahování a výpis objektů BLOB pomocí sady Java Storage SDK v10 za účelem](storage-quickstart-blobs-java-v10.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Také vytvořit účet úložiště Azure [webu Azure portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Nápovědu k vytvoření účtu najdete v tématu [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
+Vytvořte také účet úložiště Azure v [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Nápovědu k vytvoření účtu najdete v tématu [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
 
-Ujistěte se, že jsou splněné následující požadavky:
+Ujistěte se, že máte následující požadavky:
 
 * Nainstalovat integrované vývojové prostředí (IDE) s integrovaným Mavenem.
 
 * Případně můžete nainstalovat a nakonfigurovat Maven pro práci z příkazového řádku.
 
-Tato příručka používá [Eclipse](https://www.eclipse.org/downloads/) s konfigurací "Eclipse IDE pro vývojáře v jazyce Java".
+Tato příručka používá [zatmění](https://www.eclipse.org/downloads/) s konfigurací "zatmění IDE pro vývojáře v jazyce Java".
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
-[Ukázkovou aplikaci](https://github.com/Azure-Samples/storage-blobs-java-quickstart) je základní Konzolová aplikace.  
+[Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-java-quickstart) je základní Konzolová aplikace.  
 
 Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojového prostředí. 
 
@@ -134,7 +132,7 @@ container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobReq
 
 ### <a name="upload-blobs-to-the-container"></a>Nahrání objektů blob do kontejneru
 
-K nahrání souboru do objektu blob bloku, získejte odkaz na objekt blob v cílovém kontejneru. Jakmile budete mít tento odkaz na objekt blob, můžete do něj nahrát data pomocí [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload). Tato operace vytvoří objekt blob, pokud ještě neexistuje, nebo objekt blob přepíše, pokud už existuje.
+Pokud chcete nahrát soubor do objektu blob bloku, získejte odkaz na objekt BLOB v cílovém kontejneru. Jakmile budete mít tento odkaz na objekt blob, můžete do něj nahrát data pomocí [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload). Tato operace vytvoří objekt blob, pokud ještě neexistuje, nebo objekt blob přepíše, pokud už existuje.
 
 Vzorový kód vytvoří místní soubor, který se použije k nahrání a stažení. Soubor k nahrání uloží do proměnné **source** a název objektu blob do proměnné **blob**. Následující příklad nahraje soubor do kontejneru **quickstartcontainer**.
 
@@ -186,7 +184,7 @@ blob.downloadToFile(downloadedFile.getAbsolutePath());
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete objekty BLOB, které jste nahráli, odstraněním celého kontejneru pomocí [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists). Tato metoda odstraní také soubory v kontejneru.
+Pokud už nepotřebujete objekty blob, které jste nahráli, můžete celý kontejner odstranit pomocí [CloudBlobContainer. DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists). Tato metoda odstraní také soubory v kontejneru.
 
 ```java
 try {
@@ -207,9 +205,9 @@ sourceFile.deleteOnExit();
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů Blob v Azure pomocí Java. Další informace o práci s Javou najdete v našem úložišti zdrojového kódu na GitHubu.
+V tomto článku jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů BLOB v Azure pomocí jazyka Java. Další informace o práci s Javou najdete v našem úložišti zdrojového kódu na GitHubu.
 
 > [!div class="nextstepaction"]
-> [Microsoft Azure Storage SDK pro Javu v10](https://github.com/azure/azure-storage-java) 
-> [Java API – referenční informace](https://docs.microsoft.com/java/azure/)
-> [ukázky kódu pro jazyk Java](../common/storage-samples-java.md)
+> [Ukázky kódu Microsoft Azure Storage SDK v10 za účelem pro Java](https://github.com/azure/azure-storage-java) 
+> [Java API](https://docs.microsoft.com/java/azure/)
+> [pro](../common/storage-samples-java.md) Java

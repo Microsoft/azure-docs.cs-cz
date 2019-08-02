@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 2c1013829a7e6e94712e22ae235a47490c8c5eaa
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3e56792673c33ac641ce23213f2b3662b889ec2a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677666"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725666"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Kurz: Zkoumání javascriptové klientské knihovny pro službu Azure Time Series Insights
 
@@ -40,14 +40,14 @@ Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/fre
 
 * V tomto kurzu se používá funkce **vývojářské nástroje** vašeho prohlížeče. Moderní webové prohlížeče ([Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [Firefox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/)a další) obvykle poskytují přístup k **zobrazení webové kontroly** přes klávesovou zkratku F12 na klávesnici. Dalším způsobem, jak získat přístup k zobrazení, je kliknout pravým tlačítkem na webovou stránku a pak vybrat **zkontrolovat element**.
 
-## <a name="video"></a>Video
+## <a name="review-video"></a>Zkontrolovat video
 
 V tomto videu zavádíme Open-Source Time Series Insights JavaScript SDK:
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
 
-## <a name="time-series-insights-sample-application"></a>Ukázková aplikace Time Series Insights
+## <a name="sample-application"></a>Ukázková aplikace
 
 V celém tomto kurzu používáme bezplatnou a hostovanou ukázkovou aplikaci Time Series Insights k prozkoumání zdrojového kódu za aplikací a k prozkoumání Time Series Insights klientské knihovny JavaScript. Pomocí ukázkové aplikace se naučíte pracovat s Time Series Insights v JavaScriptu a vizualizovat data prostřednictvím grafů a grafů.
 
@@ -100,7 +100,7 @@ Nejdřív si Podívejme [zdrojový kód HTML a JavaScript](https://github.com/Mi
 
    [![Skript textu](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png#lightbox)
 
-## <a name="time-series-insights-javascript-client-library-concepts"></a>Koncepty Time Series Insights JavaScriptu pro klientské knihovny
+## <a name="javascript-client-library"></a>Klientská knihovna JavaScript
 
 Klientská knihovna Time Series Insights (*tsiclient. js*) poskytuje abstrakce pro dvě důležité funkce JavaScriptu:
 
@@ -231,7 +231,7 @@ Po vykreslení budou tři grafy vypadat následovně:
 
 [![Několik typů grafů s použitím stejných dat](media/tutorial-explore-js-client-lib/tcs-multiple-chart-types-from-the-same-data.png)](media/tutorial-explore-js-client-lib/tcs-multiple-chart-types-from-the-same-data.png#lightbox)
 
-## <a name="advanced-features"></a>Pokročilé funkce
+## <a name="learn-about-advanced-features"></a>Další informace o rozšířených funkcích
 
 Klientská knihovna Time Series Insights obsahuje několik dalších funkcí, které můžete použít k tvůrčímu nasazení vizualizací dat.
 
@@ -317,7 +317,7 @@ Teď, když jste dokončili kurz, vyčistěte prostředky, které jste vytvořil
 1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**a vyhledejte svoji Azure Time Series Insights skupinu prostředků.
 1. Odstraňte celou skupinu prostředků (a všechny prostředky v ní obsažené) tak, že vyberete možnost **Odstranit** nebo odebrat jednotlivé prostředky zvlášť.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

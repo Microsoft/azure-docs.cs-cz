@@ -1,6 +1,6 @@
 ---
-title: Vizuálně monitorovat objekty pro vytváření dat Azure | Dokumentace Microsoftu
-description: Zjistěte, jak vizuálně monitorovat objekty pro vytváření dat Azure
+title: Vizuálně monitorujte datové továrny Azure | Microsoft Docs
+description: Naučte se vizuálně monitorovat datové továrny Azure.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -12,27 +12,27 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: shlo
-ms.openlocfilehash: df684860cd3d1b6a002a300682ca4c6398461ba6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53ead1caed47ae442670f0b6bcd54cd84956a759
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60716749"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720617"
 ---
-# <a name="visually-monitor-azure-data-factories"></a>Vizuálně monitorovat objekty pro vytváření dat Azure
+# <a name="visually-monitor-azure-data-factories"></a>Vizuálně monitorujte datové továrny Azure.
 Azure Data Factory je cloudová služba pro integraci dat umožňující vytváření pracovních postupů řízených daty v cloudu za účelem orchestrace a automatizace přesunu a transformace dat. Pomocí služby Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (nazývané kanály) se schopností ingestovat data z různorodých úložišť dat, zpracovat a transformovat tato data pomocí výpočetních služeb, jako je Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning, a publikovat výstupní data do úložišť dat, jako je Azure SQL Data Warehouse, aby je mohly využívat aplikace business intelligence (BI).
 
-V tomto rychlém startu se dozvíte, jak pro vizuální monitorování kanálů Data Factory, aniž byste museli napsat jediný řádek kódu.
+V tomto rychlém startu se naučíte vizuálně monitorovat Data Factory kanály, aniž byste museli psát jediný řádek kódu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="monitor-data-factory-pipelines"></a>Monitorování kanálů Data Factory
 
-Monitorování spuštění aktivit a kanálu pomocí jednoduché rozhraní zobrazení seznamu. Všechna spuštění se zobrazují v časovém pásmu místního prohlížeče. Můžete změnit časové pásmo a všechna pole Datum čas Přichytit k vybranému časovému pásmu.  
+Monitorování spuštění kanálu a aktivit pomocí jednoduchého rozhraní zobrazení seznamu. Všechna spuštění se zobrazí v místním časovém pásmu prohlížeče. Můžete změnit časové pásmo a všechna pole data a času se mají přitahovat k vybranému časovému pásmu.  
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-2. Přihlaste se k [webu Azure portal](https://portal.azure.com/).
-3. Přejděte do okna objekt pro vytváření dat vytvořené na webu Azure portal a klikněte na dlaždici "Monitorování a správa" ke spuštění prostředí pro vizuální monitorování služby Data Factory.
+2. Přihlaste se k [Azure Portal](https://portal.azure.com/).
+3. V Azure Portal přejděte do okna vytvořená datová továrna a klikněte na dlaždici monitorovat & spravovat a spusťte Data Factory vizuální monitorování.
 
 ## <a name="monitor-pipeline-runs"></a>Monitorování spuštění kanálu
 Zobrazení seznamu předvádí jednotlivá spuštění pro kanály Data Factory v2. Zahrnuté sloupce:
@@ -40,127 +40,139 @@ Zobrazení seznamu předvádí jednotlivá spuštění pro kanály Data Factory 
 | **Název sloupce** | **Popis** |
 | --- | --- |
 | Název kanálu | Název kanálu. |
-| Akce | Chcete-li zobrazit spuštění aktivit jedné akce. |
-| Spuštění | Kanál datum a čas spuštění (MM/DD/RRRR HH: mm: SS AM/PM) |
-| Doba trvání | Doba trvání (hh: mm:) |
-| Aktivoval | Ruční spuštění aktivační události plánovače |
-| Status | Se nezdařilo, probíhá úspěšně |
-| Parametry | Parametry (název, hodnotu páry) spuštění kanálu |
-| Chyba | Spuštění kanálu chyb (if/any) |
-| ID spuštění | ID spuštění kanálu |
+| Akce | Jedna akce dostupná pro zobrazení spuštění aktivit. |
+| Spustit spuštění | Počáteční datum a čas spuštění kanálu (MM/DD/RRRR, HH: MM: SS dop./odp.) |
+| Trvání | Doba trvání běhu (HH: MM: SS) |
+| Inicializoval | Manuální aktivační událost, aktivační událost plánovače |
+| Stav | Úspěch, úspěšně dokončeno, probíhá |
+| Parametry | Parametry běhu kanálu (dvojice název, hodnota) |
+| Chyba | Chyba spuštění kanálu (pokud/any) |
+| ID běhu | ID spuštění kanálu |
 
 ![Monitorování spuštění kanálu](media/monitor-visually/pipeline-runs.png)
 
 ## <a name="monitor-activity-runs"></a>Monitorování spuštění aktivit
-Zobrazení seznamu předvádí spuštění aktivit odpovídající jednotlivým spuštěním kanálu. Klikněte na tlačítko **spuštění aktivit** ikonu v části **"Akce"** sloupec a zobrazit aktivitu spuštění pro každé spuštění kanálu. Zahrnuté sloupce:
+Zobrazení seznamu předvádí spuštění aktivit odpovídající jednotlivým spuštěním kanálu. Kliknutím na ikonu **spuštění aktivit** ve sloupci Actions ( **Akce** ) zobrazíte spuštění aktivit pro každé spuštění kanálu. Zahrnuté sloupce:
 
 | **Název sloupce** | **Popis** |
 | --- | --- |
-| Název aktivity | Název aktivity v kanálu. |
-| Typ aktivity | Typ aktivity, jako je například kopírování, HDInsightSpark, HDInsightHive atd. |
-| Spuštění | Počáteční datum a čas spuštění aktivit (MM/DD/RRRR HH: mm: SS AM/PM) |
-| Doba trvání | Doba trvání (hh: mm:) |
-| Status | Se nezdařilo, probíhá úspěšně |
-| Vstup | Pole JSON popisující vstupech do aktivity |
-| Výstup | Pole JSON popisující výstupů aktivity |
-| Chyba | (Pokud/existuje) Chyba spuštění aktivit |
+| Název aktivity | Název aktivity uvnitř kanálu. |
+| Typ aktivity | Typ aktivity, například Copy, HDInsightSpark, HDInsightHive atd. |
+| Spustit spuštění | Datum a čas spuštění aktivity (MM/DD/RRRR, HH: MM: SS dop./odp.) |
+| Trvání | Doba trvání běhu (HH: MM: SS) |
+| Stav | Úspěch, úspěšně dokončeno, probíhá |
+| Vstup | Pole JSON popisující vstupy aktivity |
+| Výstup | Pole JSON popisující výstupy aktivity |
+| Chyba | Chyba spuštění aktivity (pokud/any) |
 
 ![Monitorování spuštění aktivit](media/monitor-visually/activity-runs.png)
 
 > [!IMPORTANT]
-> Budete muset kliknout na **'Aktualizovat'** ikonu v horní části můžete aktualizovat seznam spuštění aktivit a kanálu. Automatická aktualizace se v tuto chvíli nepodporuje.
+> Abyste mohli aktualizovat seznam spuštěných kanálů a aktivit, musíte kliknout na ikonu **aktualizovat** nahoře. Automatická aktualizace se v tuto chvíli nepodporuje.
 
-![Obnovení](media/monitor-visually/refresh.png)
+![Aktualizovat](media/monitor-visually/refresh.png)
 
-## <a name="select-a-data-factory-to-monitor"></a>Vyberte objekt pro vytváření dat monitorování
-Najeďte myší na **služby Data Factory** ikony v levém horním rohu. Klikněte na ikonu "Šipka" k zobrazení seznamu azure předplatná a datových továren, které můžete monitorovat.
+## <a name="select-a-data-factory-to-monitor"></a>Vyberte datovou továrnu, kterou chcete monitorovat.
+Najeďte myší na ikonu **Data Factory** v levém horním rohu. Kliknutím na ikonu ' šipka ' zobrazíte seznam předplatných a datových továrn Azure, které můžete monitorovat.
 
 ![Výběr datové továrny](media/monitor-visually/select-datafactory.png)
 
 ## <a name="configure-the-list-view"></a>Konfigurace zobrazení seznamu
 
-### <a name="apply-rich-ordering-and-filtering"></a>Bohaté možnosti řazení a filtrování
+### <a name="apply-rich-ordering-and-filtering"></a>Použití bohatého řazení a filtrování
 
-Spuštění kanálu pořadí ve vzestupném nebo sestupném podle začátku spuštění a spuštění kanálu filtr podle následujících sloupců:
+Pořadí spuštění kanálu v příkazu DESC/ASC spustíte spuštěním příkazu Start a filtrování se spustí pomocí následujících sloupců:
 
 | **Název sloupce** | **Popis** |
 | --- | --- |
-| Název kanálu | Název kanálu. Možnosti zahrnují rychlé filtry pro "posledních 24 hodin", "Minulý týden", "posledních 30 dní" nebo vyberte vlastní datum čas. |
-| Spuštění | Počáteční datum a čas spuštění kanálu |
-| Stav spuštění | Filtr se spouští podle stavu – úspěšné, se nezdařil, probíhá |
+| Název kanálu | Název kanálu. Mezi možnosti patří rychlé filtry za "posledních 24 hodin", "minulý týden", "posledních 30 dnů" nebo vyberte vlastní datum a čas. |
+| Spustit spuštění | Datum a čas spuštění kanálu |
+| Stav spuštění | Spuštění filtru podle stavu – úspěšné, neúspěšné, probíhá |
 
 ![Filtr](media/monitor-visually/filter.png)
 
-### <a name="add-or-remove-columns"></a>Přidání nebo odebrání sloupců
-Klikněte pravým tlačítkem na záhlaví zobrazení seznamu a vybrat sloupce, které chcete zobrazit v zobrazení seznamu
+### <a name="add-or-remove-columns"></a>Přidat nebo odebrat sloupce
+Klikněte pravým tlačítkem na záhlaví zobrazení seznamu a vyberte sloupce, které se mají zobrazit v seznamu.
 
-![Columns](media/monitor-visually/columns.png)
+![Sloupce](media/monitor-visually/columns.png)
 
-### <a name="adjust-column-widths"></a>Nastavit šířku sloupců
-Zvýšení a snížení šířky sloupců v seznamu zobrazit ukázáním myší na záhlaví sloupce
+### <a name="adjust-column-widths"></a>Upravit šířku sloupců
+Zvětšení a zmenšení šířky sloupců v zobrazení seznamu přesunutím ukazatele myši na záhlaví sloupce
 
-## <a name="promote-user-properties-to-monitor"></a>Propagace vlastnosti uživatele k monitorování
+## <a name="promote-user-properties-to-monitor"></a>Zvýšení úrovně vlastností uživatele na monitorování
 
-Můžete zvýšit úroveň jakékoli vlastnosti aktivity kanálu jako vlastnost uživatele tak, aby je entita, která můžete monitorovat. Například můžete zvýšit úroveň **zdroj** a **cílové** vlastnosti aktivity kopírování v kanálu jako vlastnosti uživatele. Můžete také vybrat **automaticky generovat** ke generování **zdroj** a **cílové** vlastnosti uživatele pro aktivitu kopírování.
+Vlastnost aktivity kanálu můžete povýšit jako vlastnost uživatele, aby se stala entitou, kterou můžete monitorovat. Můžete například propagovat vlastnosti **zdroje** a **cíle** aktivity kopírování v kanálu jako vlastnosti uživatele. Můžete také vybrat možnost **automaticky generovat** a vygenerovat vlastnosti **zdrojového** a **cílového** uživatele aktivity kopírování.
 
-![Vytvoření vlastnosti uživatele.](media/monitor-visually/monitor-user-properties-image1.png)
+![Vytvořit vlastnosti uživatele](media/monitor-visually/monitor-user-properties-image1.png)
 
 > [!NOTE]
-> Až 5 vlastnosti aktivity kanálu můžete zvýšit úroveň pouze jako vlastnosti uživatele.
+> Jako vlastnosti uživatele můžete propagovat až 5 vlastností aktivity kanálu.
 
-Po vytvoření vlastnosti uživatele, potom je monitorují kontrolní seznamy. Pokud název tabulky je zdrojem pro aktivitu kopírování, můžete monitorovat název tabulky zdrojového sloupce v aktivitě spuštění zobrazení seznamu.
+Po vytvoření vlastností uživatele je můžete monitorovat v zobrazeních seznamu monitorování. Pokud je zdrojem aktivity kopírování název tabulky, můžete monitorovat název zdrojové tabulky jako sloupec v zobrazení seznamu spuštění aktivit.
 
-![Aktivita se spustí bez vlastnosti uživatele.](media/monitor-visually/monitor-user-properties-image2.png)
+![Seznam spuštění aktivit bez vlastností uživatele](media/monitor-visually/monitor-user-properties-image2.png)
 
-![Přidání sloupce pro vlastnosti uživatele do seznamu spuštění aktivit](media/monitor-visually/monitor-user-properties-image3.png)
+![Přidat sloupce pro vlastnosti uživatele do seznamu spuštění aktivit](media/monitor-visually/monitor-user-properties-image3.png)
 
-![Seznam spuštění aktivit se sloupci pro vlastnosti uživatele.](media/monitor-visually/monitor-user-properties-image4.png)
+![Seznam spuštění aktivit se sloupci pro vlastnosti uživatele](media/monitor-visually/monitor-user-properties-image4.png)
 
-## <a name="rerun-activities-inside-a-pipeline"></a>Opětovné spuštění aktivity v kanálu
+## <a name="rerun-activities-inside-a-pipeline"></a>Opětovné spuštění aktivit v rámci kanálu
 
-Teď můžete znovu spustit aktivity v kanálu. Klikněte na tlačítko **zobrazit spuštění aktivit** a vyberte aktivitu v kanálu z bodu, který chcete spustit kanál znovu.
+V rámci kanálu teď můžete znovu spustit aktivity. Klikněte na **Zobrazit spuštění aktivit** a v kanálu vyberte aktivitu, ze které se má kanál znovu spustit.
 
 ![Zobrazení spuštění aktivit](media/monitor-visually/rerun-activities-image1.png)
 
-![Vyberte spuštění aktivit](media/monitor-visually/rerun-activities-image2.png)
+![Vybrat spuštění aktivit](media/monitor-visually/rerun-activities-image2.png)
 
-### <a name="view-rerun-history"></a>Spusťte znovu zobrazit historii
+### <a name="view-rerun-history"></a>Zobrazit historii opětovného spuštění
 
-Pro všechno, co se kanál spustí v zobrazení seznamu můžete zobrazit historii spustit znovu.
+V zobrazení seznamu můžete zobrazit historii opětovného spuštění všech spuštění kanálu.
 
 ![Zobrazení historie](media/monitor-visually/rerun-history-image1.png)
 
-Můžete také spustit znovu zobrazit historii pro konkrétní spuštění kanálu.
+Můžete si také zobrazit historii opětovného spuštění určitého běhu kanálu.
 
-![Zobrazit historii spuštění kanálu](media/monitor-visually/rerun-history-image2.png)
+![Zobrazení historie spuštění kanálu](media/monitor-visually/rerun-history-image2.png)
 
-## <a name="guided-tours"></a>Kurzy s asistencí
-Klepněte na informační ikonu v levé dolní části a klikněte na tlačítko 'S asistencí prohlídky' Chcete-li získat podrobné pokyny o tom, jak monitorovat spuštění aktivit a kanálu.
+## <a name="gantt-views"></a>Zobrazení Ganttova diagramu
 
-![Kurzy s asistencí](media/monitor-visually/guided-tours.png)
+Použijte zobrazení Ganttova diagramu k rychlé vizualizaci vašich kanálů a spuštění aktivit. Můžete se podívat na zobrazení Ganttova diagramu na kanál nebo skupinu pomocí poznámek nebo značek, které jste vytvořili ve svých kanálech.
 
-## <a name="feedback"></a>Váš názor
-Klikněte na ikonu "Názory" a sdělte nám svůj názor na různé funkce nebo uvést případné potíže, které můžete se setkat.
+![Ganttův diagram](media/monitor-visually/gantt1.png)
 
-![Váš názor](media/monitor-visually/feedback.png)
+![Poznámky k Ganttově diagramu](media/monitor-visually/gantt2.png)
 
-## <a name="alerts"></a>Výstrahy
+Délka pruhu informuje o délce trvání kanálu. Můžete také kliknout na pruh a zobrazit další podrobnosti.
 
-Může vyvolat upozornění na podporované metriky ve službě Data Factory. Vyberte **monitorování -> Výstrahy a metriky** na stránce monitorování objekt pro vytváření dat a začít pracovat.
+![Doba trvání Ganttova diagramu](media/monitor-visually/gantt3.png)
+
+## <a name="guided-tours"></a>Řízená prohlídky
+Klikněte na ikonu informace dole vlevo a pak klikněte na prohlídky s asistencí. získáte tak podrobné pokyny, jak monitorovat spuštění vašeho kanálu a aktivity.
+
+![Řízená prohlídky](media/monitor-visually/guided-tours.png)
+
+## <a name="feedback"></a>Zpětná vazba
+Klikněte na ikonu zpětné vazby a sdělte nám svůj názor na různé funkce nebo problémy, na které se můžete zajímat.
+
+![Zpětná vazba](media/monitor-visually/feedback.png)
+
+## <a name="alerts"></a>Upozornění
+
+Upozornění na podporované metriky můžete vyvolávat v Data Factory. Začněte tím, že vyberete **monitor – výstrahy > & metriky** na stránce monitorování Data Factory.
 
 ![](media/monitor-visually/alerts01.png)
 
-Pro zavedení sedm po minutách a ukázku této funkce z následujícího videa:
+Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na následující video:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Monitor-your-Azure-Data-Factory-pipelines-proactively-with-alerts/player]
 
 ### <a name="create-alerts"></a>Vytvořit výstrahy
 
-1.  Klikněte na tlačítko **nová výstraha pravidlo** vytvořit nové oznámení.
+1.  Kliknutím na **nové pravidlo** výstrahy vytvořte novou výstrahu.
 
     ![](media/monitor-visually/alerts02.png)
 
-1.  Zadejte název pravidla a vyberte příslušnou výstrahu **závažnost**.
+1.  Zadejte název pravidla a vyberte **závažnost**výstrahy.
 
     ![](media/monitor-visually/alerts03.png)
 
@@ -170,20 +182,20 @@ Pro zavedení sedm po minutách a ukázku této funkce z následujícího videa:
 
     ![](media/monitor-visually/alerts05.png)
 
-1.  Nakonfigurujte logika upozornění. Můžete vytvořit výstrahy pro vybranou metriku pro všechny kanály a odpovídající aktivity. Můžete také vybrat typ konkrétní aktivity, název aktivity, názvu kanálu nebo typ selhání.
+1.  Nakonfigurujte logiku výstrah. Pro vybranou metriku můžete vytvořit výstrahu pro všechny kanály a odpovídající aktivity. Můžete také vybrat konkrétní typ aktivity, název aktivity, název kanálu nebo typ selhání.
 
     ![](media/monitor-visually/alerts06.png)
 
-1.  Konfigurace **e-mailu/SMS nebo nabízená/hlasové** oznámení pro výstrahy. Vytvořit nebo vybrat existující **skupiny akcí** oznámení výstrah.
+1.  Konfigurace oznámení o **e-mailu, SMS/nabízení a hlasu** pro výstrahu. Vytvořte nebo vyberte existující **skupinu akcí** pro oznámení výstrah.
 
     ![](media/monitor-visually/alerts07.png)
 
     ![](media/monitor-visually/alerts08.png)
 
-1.  Vytvořte pravidlo upozornění.
+1.  Vytvořte pravidlo výstrahy.
 
     ![](media/monitor-visually/alerts09.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [monitorování a Správa kanálů prostřednictvím kódu programu](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) článku najdete informace o monitorování a Správa kanálů.
+Další informace o monitorování a správě kanálů najdete v článku [programové monitorování a Správa kanálů](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) .

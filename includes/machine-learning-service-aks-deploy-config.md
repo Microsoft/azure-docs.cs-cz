@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 07/26/2019
 ms.author: larryfr
-ms.openlocfilehash: d59482c04c4875cb6b17ceb405e9d3ab97a741d6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: b8913836baffdad200c198afa11475d617fe5d50
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565150"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68729328"
 ---
 Položky v `deploymentconfig.json` dokumentu jsou mapovány na parametry pro [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
 
@@ -24,7 +24,8 @@ Položky v `deploymentconfig.json` dokumentu jsou mapovány na parametry pro [Ak
 | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Cílové využití (v procentech z 100), které by měl modul automatického škálování zkusit zachovat pro tuto webovou službu. Výchozí hodnota `70`,. |
 | `dataCollection` | Není k dispozici | Obsahuje prvky konfigurace pro shromažďování dat. |
 | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Zda se má pro webovou službu povolit shromažďování dat modelu. Výchozí hodnota `False`,. |
-| `authEnabled` | `auth_enabled` | Určuje, zda má být povoleno ověřování webové služby. Výchozí hodnota `True`,. |
+| `authEnabled` | `auth_enabled` | Určuje, zda má být pro webovou službu povoleno ověřování klíčů. Obojí `tokenAuthEnabled` a `authEnabled` nemůže být `True`. Výchozí hodnota `True`,. |
+| `tokenAuthEnabled` | `token_auth_enabled` | Určuje, jestli se má pro webovou službu povolit ověřování tokenu. Obojí `tokenAuthEnabled` a `authEnabled` nemůže být `True`. Výchozí hodnota `False`,. |
 | `containerResourceRequirements` | Není k dispozici | Kontejner pro entity CPU a paměti |
 | &emsp;&emsp;`cpu` | `cpu_cores` | Počet jader procesoru, které se mají přidělit této webové službě. Upravovaný`0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | Velikost paměti (v GB), která má být přidělena této webové službě. Výchozí`0.5` |

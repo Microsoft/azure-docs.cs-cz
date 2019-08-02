@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 45208b5c6538ea523a7b87d6dbdeb99e792783ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b4f1cfe4dbd15f25b4fab92a4bd3b7aee309cb2
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61261873"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720837"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Kopírování dat z webová služba Amazon Marketplace pomocí Azure Data Factory (Preview)
 
@@ -44,7 +44,7 @@ Webová služba Amazon Marketplace propojené služby jsou podporovány následu
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **AmazonMWS** | Ano |
+| type | Vlastnost Type musí být nastavená na: **AmazonMWS** | Ano |
 | endpoint | Koncový bod serveru Amazon MWS (mws.amazonservices.com)  | Ano |
 | marketplaceID | Chcete načíst data z Amazon Marketplace ID. Načíst data z víc ID webu Marketplace, oddělte je středníkem (`,`). (to znamená A2EUQ1WTGCTBG2)  | Ano |
 | sellerID | ID Amazon prodejce.  | Ano |
@@ -88,7 +88,7 @@ Ke zkopírování dat z webová služba Amazon Marketplace, nastavte vlastnost t
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **AmazonMWSObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **AmazonMWSObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -98,11 +98,12 @@ Ke zkopírování dat z webová služba Amazon Marketplace, nastavte vlastnost t
     "name": "AmazonMWSDataset",
     "properties": {
         "type": "AmazonMWSObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<AmazonMWS linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 
@@ -118,7 +119,7 @@ Ke zkopírování dat z webová služba Amazon Marketplace, nastavte typ zdroje 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **AmazonMWSSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AmazonMWSSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

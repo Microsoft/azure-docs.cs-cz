@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: d26d1ca1ebceed481604d08d12cd9d5010495ab6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: c7c2ba104b4d528cd3f8443e6f5615aa6ab3e672
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618430"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720370"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -366,7 +366,8 @@ Viz [nasazení do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-servi
 
 ## <a name="consume-web-services"></a>Využívání webových služeb
 
-Každá nasazená webová služba poskytuje REST API, takže můžete vytvářet klientské aplikace v různých programovacích jazycích. Pokud jste povolili ověřování pro službu, musíte v hlavičce žádosti zadat klíč služby jako token.
+Každá nasazená webová služba poskytuje REST API, takže můžete vytvářet klientské aplikace v různých programovacích jazycích. Pokud jste povolili ověřování klíčů pro vaši službu, musíte v hlavičce žádosti zadat klíč služby jako token.
+Pokud jste povolili ověřování pomocí tokenu pro vaši službu, musíte v hlavičce žádosti zadat token Azure Machine Learning JWT jako nosný token.
 
 ### <a name="request-response-consumption"></a>Spotřeba požadavků a odpovědí
 
@@ -379,6 +380,8 @@ headers = {'Content-Type': 'application/json'}
 
 if service.auth_enabled:
     headers['Authorization'] = 'Bearer '+service.get_keys()[0]
+elif service.token_auth_enabled:
+    headers['Authorization'] = 'Bearer '+service.get_token()[0]
 
 print(headers)
 

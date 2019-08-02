@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: cbb18212f70343d8b9933bd2c787ce6aae8b145d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61cdcb98fc5c0947a25954161676c55ebf902688
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400927"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720733"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Kopírování dat ze systému Jira pomocí Azure Data Factory (Preview)
 
@@ -44,7 +44,7 @@ Jira propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Jira** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Jira** | Ano |
 | host | IP adresu nebo název hostitele služby Jira. (například jira.example.com)  | Ano |
 | port | Port TCP, který Jira server používá k naslouchání pro připojení klientů. Výchozí hodnota je 443, pokud připojení prostřednictvím protokolu HTTPS nebo 8080, pokud připojení prostřednictvím protokolu HTTP.  | Ne |
 | username jméno | Uživatelské jméno, který používáte pro přístup ke službě Jira.  | Ano |
@@ -81,7 +81,7 @@ Ke kopírování dat ze systému Jira, nastavte vlastnost typ datové sady na **
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **JiraObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **JiraObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -91,11 +91,12 @@ Ke kopírování dat ze systému Jira, nastavte vlastnost typ datové sady na **
     "name": "JiraDataset",
     "properties": {
         "type": "JiraObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Jira linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -110,7 +111,7 @@ Ke kopírování dat ze systému Jira, nastavte typ zdroje v aktivitě kopírov�
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **JiraSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **JiraSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

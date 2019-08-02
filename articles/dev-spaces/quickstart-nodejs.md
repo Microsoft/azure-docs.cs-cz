@@ -1,5 +1,5 @@
 ---
-title: Vývoj s využitím Node.js v Kubernetes pomocí Azure Dev mezery
+title: Ladění a iterace pomocí Visual Studio Code a Node. js v Kubernetes pomocí Azure Dev Spaces
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
@@ -7,43 +7,43 @@ ms.service: azure-dev-spaces
 ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Rychlý vývoj Kubernetes s kontejnery, mikroslužby a Node.js v Azure
-keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
+description: Rychlý vývoj Kubernetes pomocí kontejnerů, mikroslužeb a Node. js v Azure
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 3da6c015d46d2c83dd74c625e1e8eeaee81da2ae
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4ee11b4bebe32ff4a9af38a0789823178f388e10
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707125"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725803"
 ---
-# <a name="quickstart-develop-with-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj s využitím Node.js v Kubernetes pomocí Azure Dev mezery
+# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Ladění a iterace pomocí Visual Studio Code a Node. js v Kubernetes pomocí Azure Dev Spaces
 
 V tomto průvodci se naučíte:
 
 - Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
-- Iterativní vývoj kódu v kontejnerech pomocí nástroje Visual Studio Code.
-- Ladění kódu v prostoru dev z Visual Studio Code.
+- Iterativní vývoj kódu v kontejnerech pomocí Visual Studio Code.
+- Ladit kód ve vývojovém prostoru z Visual Studio Code.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
-- [Nainstalovat Visual Studio Code](https://code.visualstudio.com/download).
-- [Azure Dev prostory](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) rozšíření pro Visual Studio Code nainstalované.
+- [Visual Studio Code nainstalován](https://code.visualstudio.com/download).
+- Rozšíření [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) pro Visual Studio Code nainstalovaná.
 - [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru Azure Kubernetes Service
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
 
-Je potřeba vytvořit v clusteru AKS [podporované oblasti][supported-regions]. Následujících příkazů vytvořte skupinu prostředků s názvem *MyResourceGroup* a cluster AKS volá *MyAKS*.
+Cluster AKS je potřeba vytvořit v [podporované oblasti][supported-regions]. Níže uvedené příkazy vytvoří skupinu prostředků s názvem *MyResourceGroup* a cluster AKS s názvem *MyAKS*.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolit Azure Dev mezery ve vašem clusteru AKS
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS
 
-Použití `use-dev-spaces` příkazu povolit prostory vývoj ve vašem clusteru AKS a postupujte podle zobrazených výzev. Následující příkaz povolí vývoj mezery na *MyAKS* cluster v *MyResourceGroup* seskupovat a vytvoří *výchozí* dev místa.
+`use-dev-spaces` Pomocí příkazu povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí v *MyAKS* ve skupině *MyResourceGroup* vývojářské prostory a vytvoří *výchozí* místo pro vývoj.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -63,95 +63,95 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-## <a name="get-sample-application-code"></a>Získat kód ukázkové aplikace
+## <a name="get-sample-application-code"></a>Získat ukázkový kód aplikace
 
-V tomto článku budete používat [Azure Dev prostory ukázkovou aplikaci](https://github.com/Azure/dev-spaces) demonstruje použití Azure Dev mezery.
+V tomto článku pomocí [ukázkové aplikace Azure dev Spaces](https://github.com/Azure/dev-spaces) předvádíte použití Azure dev Spaces.
 
-Klonování aplikace z Githubu.
+Naklonujte aplikaci z GitHubu.
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
 ```
 
-## <a name="prepare-the-sample-application-in-visual-studio-code"></a>Příprava ukázkové aplikace ve Visual Studio Code
+## <a name="prepare-the-sample-application-in-visual-studio-code"></a>Příprava ukázkové aplikace v Visual Studio Code
 
-Otevřít Visual Studio Code, klikněte na tlačítko *souboru* pak *otevřít...* , přejděte *dev prostorů/ukázky/nodejs/získávání spustit/webfrontend* adresář a klikněte na tlačítko *otevřít*.
+Otevřete Visual Studio Code, klikněte na *soubor* a pak na otevřít *...* , přejděte do adresáře *dev-Spaces/Samples/NodeJS/Začínáme/webendu* a klikněte na *otevřít*.
 
-Teď máte *webfrontend* projekt otevřít ve Visual Studio Code. Ke spuštění aplikace v prostoru dev, Generovat graf prostředky Dockeru a Helm, pomocí rozšíření Azure Dev mezery v Pallette příkazu.
+Nyní máte projekt *webendu* otevřený v Visual Studio Code. Chcete-li aplikaci spustit ve vývojovém prostoru, vygenerujte pomocí rozšíření Azure Dev Spaces v paletě příkazů prostředky Docker a Helm Chart.
 
-Ve Visual Studio Code otevřete paletu příkazů, klikněte na tlačítko *zobrazení* pak *paletu příkazů*. Začněte psát `Azure Dev Spaces` a klikněte na `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
+Chcete-li otevřít paletu příkazů v Visual Studio Code, klikněte na tlačítko *Zobrazit* *paletu příkazů*. Začněte psát `Azure Dev Spaces` a klikněte na `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
 
-![Příprava Azure Dev prostory konfiguračních souborů](./media/common/command-palette.png)
+![Příprava konfiguračních souborů pro Azure Dev Spaces](./media/common/command-palette.png)
 
-Když Visual Studio Code také vyžaduje, je možné nakonfigurovat veřejný koncový bod, vyberte `Yes` umožňující veřejný koncový bod.
+Když Visual Studio Code také vyzve ke konfiguraci veřejného koncového bodu, vyberte `Yes` možnost Povolit veřejný koncový bod.
 
-![Vyberte veřejný koncový bod](media/common/select-public-endpoint.png)
+![Vybrat veřejný koncový bod](media/common/select-public-endpoint.png)
 
-Tento příkaz připraví projektu pro spuštění v Azure Dev prostory generováním grafu soubor Dockerfile a Helm. Zároveň se vygeneruje *.vscode* adresáře s laděním konfigurace v kořenovém adresáři vašeho projektu.
+Tento příkaz připraví projekt tak, aby běžel v Azure Dev Spaces generováním grafu typu souboru Dockerfile a Helm. Také generuje adresář *. VSCode* s konfigurací ladění v kořenovém adresáři projektu.
 
-## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Sestavení a spuštění kódu z Visual Studio Code v Kubernetes
+## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Sestavování a spouštění kódu v Kubernetes z Visual Studio Code
 
-Klikněte na *ladění* na levé straně a klikněte na ikonu *spuštění serveru (AZDS)* v horní části.
+Klikněte na ikonu *ladění* vlevo a v horní části klikněte na *spustit server (AZDS)* .
 
-![Spustit Server](media/get-started-node/debug-configuration-nodejs.png)
+![Spustit server](media/get-started-node/debug-configuration-nodejs.png)
 
-Tento příkaz vytvoří a spustí vaši službu v Azure Dev mezery. *Terminálu* v dolní části okna se zobrazí výstup sestavení a adresy URL pro vaši službu s Azure Dev prostory. *Ladění konzoly* zobrazuje výstup protokolu.
+Tento příkaz vytvoří a spustí vaši službu v Azure Dev Spaces. V dolní části okna *terminálu* se zobrazuje výstup sestavení a adresy URL pro vaši službu běžící Azure dev Spaces. *Konzola ladění* zobrazuje výstup protokolu.
 
 > [!Note]
-> Pokud nevidíte žádné příkazy Azure Dev mezery v *paletu příkazů*, ujistěte se, že jste nainstalovali [rozšíření Visual Studio Code pro Azure Dev prostory](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Ověřte také, můžete otevřít *dev prostorů/ukázky/nodejs/získávání spustit/webfrontend* ve Visual Studio Code.
+> Pokud nevidíte žádné příkazy Azure Dev Spaces v *paletě příkazů*, ujistěte se, že máte nainstalovanou [příponu Visual Studio Code pro Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Ověřte také, že jste v Visual Studio Code otevřeli adresář *dev-Spaces/Samples/NodeJS/Začínáme/webendu* .
 
-Zobrazí se tato služba spuštěna po otevření veřejnou adresu URL.
+Službu spuštěnou můžete zobrazit otevřením veřejné adresy URL.
 
-Klikněte na tlačítko *ladění* pak *Zastavit ladění* zastavit ladicí program.
+Klikněte na *ladit* a pak *Zastavit ladění* , aby se ladicí program zastavil.
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Pokud chcete nasadit aktualizovanou verzi vaší služby, můžete aktualizovat všechny soubory ve vašem projektu a znovu spustit *spusťte Server*. Příklad:
+Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit *spouštěcí Server*. Příklad:
 
-1. Pokud vaše aplikace je stále spuštěna, klikněte na tlačítko *ladění* pak *Zastavit ladění* zastavte ji.
-1. Aktualizace [řádek 13 `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) na:
+1. Pokud je vaše aplikace stále spuštěná, klikněte na tlačítko *ladění* a zastavte tak *ladění* .
+1. Aktualizujte [řádek 13 `server.js` v](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) :
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
     ```
 
 1. Uložte provedené změny.
-1. Znovu spusťte *spustit Server*.
-1. Přejděte na spuštěnou službu a sledujte změny.
-1. Klikněte na tlačítko *ladění* pak *Zastavit ladění* ukončíte aplikaci.
+1. Znovu spusťte *spouštěcí Server*.
+1. Přejděte do spuštěné služby a sledujte své změny.
+1. Klikněte na *ladit* a pak *Zastavit ladění* a zastavte aplikaci.
 
-## <a name="setting-and-using-breakpoints-for-debugging"></a>Nastavení a použití zarážky pro ladění
+## <a name="setting-and-using-breakpoints-for-debugging"></a>Nastavení a použití zarážek pro ladění
 
-Spusťte službu pomocí *spuštění serveru (AZDS)* .
+Spusťte službu pomocí *spouštěcího serveru (AZDS)* .
 
-Přejděte zpět na *Explorer* zobrazení kliknutím *zobrazení* pak *Explorer*. Otevřít `server.js` a klikněte na tlačítko někde na řádku 13 umístěte kurzor existuje. Chcete-li nastavit zarážku přístupů *F9* nebo klikněte na tlačítko *ladění* pak *Přepnout zarážku*.
+Kliknutím na tlačítko *Zobrazit* a *Průzkumník*přejděte zpět do zobrazení *Průzkumníka* . Otevřete `server.js` a kliknutím někam na řádku 13 umístěte kurzor do umístění. Chcete-li nastavit zarážku *F9* nebo klikněte na položku *ladit* a pak *Přepnout zarážku*.
 
-Otevřete svou službu v prohlížeči a Všimněte si, že se nezobrazí žádná zpráva. Vraťte se do Visual Studio Code a podívejte se, že se zvýrazní řádek 13. Nastavit zarážku bylo pozastaveno služby na řádku 13. A to obnovit ji, stiskněte *F5* nebo klikněte na tlačítko *ladění* pak *pokračovat*. Vraťte se do prohlížeče a Všimněte si, že se teď zobrazí zpráva.
+V prohlížeči otevřete službu a Všimněte si, že se nezobrazí žádná zpráva. Vraťte se na Visual Studio Code a sledujte, že je zvýrazněna řádka 13. Zarážka, kterou jste nastavili, službu pozastavila na řádku 13. Pokud chcete službu obnovit, stiskněte klávesu *F5* nebo klikněte na *ladit* a pak *pokračovat*. Vraťte se do prohlížeče a Všimněte si, že se teď zobrazí zpráva.
 
-Při spuštění služby v Kubernetes s připojen jiný ladicí program, máte plný přístup k ladění informace, jako je zásobník volání, místní proměnné a informace o výjimce.
+Při spouštění služby v Kubernetes s připojeným ladicím programem máte úplný přístup k ladicím informacím, jako je zásobník volání, místní proměnné a informace o výjimkách.
 
-Odeberte zarážku vložením kurzor na řádku 13 v `server.js` a stisknout *F9*.
+Odstraňte zarážku tak, že umístíte kurzor na řádek 13 `server.js` v a zapnete *F9*.
 
-Klikněte na tlačítko *ladění* pak *Zastavit ladění* zastavit ladicí program.
+Klikněte na *ladit* a pak *Zastavit ladění* , aby se ladicí program zastavil.
 
-## <a name="update-code-from-visual-studio-code"></a>Aktualizace kódu ze sady Visual Studio Code
+## <a name="update-code-from-visual-studio-code"></a>Aktualizace kódu z Visual Studio Code
 
-Změnit režim ladění tak *připojit k serveru (AZDS)* a spustit službu:
+Změňte režim ladění tak, aby se *připojil k serveru (AZDS)* , a spusťte službu:
 
 ![](media/get-started-node/attach-nodejs.png)
 
-Tento příkaz vytvoří a spustí vaši službu v Azure Dev mezery. Také začne [nodemon](https://nodemon.io) zpracovat v kontejneru a bude k obrazci VS Code ho vaši službu. *Nodemon* procesu umožňuje automatické restartování, pokud jsou provedeny změny zdrojového kódu, umožní vývoj rychleji vnitřní smyčky, podobně jako vývoj v místním počítači.
+Tento příkaz vytvoří a spustí vaši službu v Azure Dev Spaces. Také spustí proces [nodemon](https://nodemon.io) v kontejneru služby a připojí k němu vs Code. Proces *nodemon* umožňuje automatické restartování při změně zdrojového kódu a umožňuje rychlejší vývoj vnitřních smyček podobně jako vývoj na místním počítači.
 
-Po spuštění služby, přejděte do něj pomocí prohlížeče a pracovat s ním.
+Po spuštění služby přejděte k ní pomocí prohlížeče a s ním můžete pracovat.
 
-Zatímco je služba spuštěna, vraťte se do VS Code a aktualizaci řádku 13 v `server.js`. Příklad:
+Když je služba spuštěná, vraťte se do VS Code a aktualizujte řádek `server.js`13 v. Příklad:
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```
 
-Uložte soubor a vraťte se do služby v prohlížeči. Interakce se službou a Všimněte si, že se zobrazí aktualizovaná zpráva.
+Uložte soubor a vraťte se k vaší službě v prohlížeči. V interakci se službou a Všimněte si, že se zobrazí aktualizovaná zpráva.
 
-Při spouštění *nodemon*, proces Node se automaticky restartuje, jakmile jsou zjištěny žádné změny kódu. Tento proces automatické restartování je obdobou úpravy a restartování služby na místním počítači, poskytuje prostředí vývoje vnitřní smyčky.
+Při spuštění *nodemon*se proces uzlu automaticky restartuje hned po zjištění všech změn kódu. Tento proces automatického restartování je podobný možnosti úprav a restartování služby na místním počítači a nabízí tak prostředí pro vývoj vnitřních smyček.
 
 ## <a name="clean-up-your-azure-resources"></a>Vyčištění prostředků Azure
 
@@ -159,9 +159,9 @@ Při spouštění *nodemon*, proces Node se automaticky restartuje, jakmile jsou
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak prostory vývoj Azure vám pomůže vytvořit složitější aplikace napříč více kontejnery, a jak můžete zjednodušit spolupráce na vývoji práce s různými verzemi nebo větve kódu v různých oborech.
+Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak zjednodušit vývoj díky práci s různými verzemi nebo větvemi kódu v různých prostorech.
 
 > [!div class="nextstepaction"]
 > [Práce s více kontejnery a týmový vývoj](multi-service-nodejs.md)
