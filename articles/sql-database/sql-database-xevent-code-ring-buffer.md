@@ -1,6 +1,6 @@
 ---
-title: Kód cyklické vyrovnávací paměti XEvent pro SQL Database | Dokumentace Microsoftu
-description: Obsahuje ukázku kódu jazyka Transact-SQL, který je k rychlé a snadné použití cíle cyklické vyrovnávací paměti, ve službě Azure SQL Database.
+title: Kód vyrovnávací paměti XEvent Ring pro SQL Database | Microsoft Docs
+description: Poskytuje ukázku kódu Transact-SQL, který je v Azure SQL Database snadný a rychlý při použití cíle kruhové vyrovnávací paměti.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -10,52 +10,51 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: bb493fc0a9d3a9173ef4faf17b3cdd4e3781a557
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f1ec9cd3a4256597ade409fb3e04d44171277554
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331022"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566152"
 ---
-# <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Kód cyklické vyrovnávací paměti cílového pro rozšířené události ve službě SQL Database
+# <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Cílový kód cyklické vyrovnávací paměti pro rozšířené události v SQL Database
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Chcete ukázku dokončení kódu pro rychlé nejsnadněji se sběr dat a sestavy informace o rozšířené události během testu. Nejjednodušší cíl pro data rozšířených událostí je [cyklické vyrovnávací paměti cílového](https://msdn.microsoft.com/library/ff878182.aspx).
+Chcete vytvořit kompletní ukázku kódu pro nejsnadnější rychlý způsob, jak zachytit a ohlásit informace pro rozšířenou událost během testu. Nejjednodušší cíl pro rozšířená data události je [cíl kruhové vyrovnávací paměti](https://msdn.microsoft.com/library/ff878182.aspx).
 
-Toto téma představuje ukázku kódu jazyka Transact-SQL, který:
+Toto téma představuje ukázku kódu Transact-SQL, který:
 
-1. Vytvoří tabulku s daty k předvedení s.
-2. Vytvoří relaci pro existující rozšířené události, a to **sqlserver.sql_statement_starting**.
+1. Vytvoří tabulku s daty, která se mají demonstrovat.
+2. Vytvoří relaci pro existující rozšířenou událost, konkrétně **SqlServer. SQL _statement_starting**.
    
-   * Událost je omezená na příkazy SQL, které obsahují určitý řetězec aktualizace: **příkaz jako "aktualizace tabEmployee %"** .
-   * Zvolí možnost posílat události do cíle typu cyklické vyrovnávací paměti, a to **package0.ring_buffer**.
+   * Událost je omezená na příkazy SQL, které obsahují konkrétní řetězec aktualizace: **příkaz jako% Update tabEmployee%** .
+   * Rozhodne odeslat výstup události do cíle typu Ring buffer, jmenovitě **package0. ring_buffer**.
 3. Spustí relaci události.
-4. Problémy s několika jednoduchých příkazů SQL pro sadu VS11.
-5. Vydá příkaz SQL SELECT k načtení událostí výstup z cyklické vyrovnávací paměti.
+4. Vydává několik jednoduchých příkazů SQL UPDATE.
+5. Vydá příkaz SQL SELECT, který načte výstup události z kruhové vyrovnávací paměti.
    
-   * **Sys.dm_xe_database_session_targets** a se propojují s dalšími zobrazeními dynamické správy (DMV).
-6. Ukončí relaci události.
-7. Zahodí cíle cyklické vyrovnávací paměti, a uvolnit jeho prostředky.
-8. Zahodí relace události a ukázkové tabulky.
+   * jsou připojeni **_xe_database_session_targets sys. DM** a další zobrazení dynamické správy (zobrazení dynamické správy).
+6. Zastaví relaci události.
+7. Uvolní cíl kruhové vyrovnávací paměti pro uvolnění prostředků.
+8. Zruší relaci události a ukázkovou tabulku.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Účet a předplatné Azure. Můžete si zaregistrovat i [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* Všechny databáze, kterou vytvoříte tabulku v.
+* Všechny databáze, na kterých můžete vytvořit tabulku.
   
-  * Volitelně můžete [vytvořit **AdventureWorksLT** ukázkovou databázi](sql-database-get-started.md) během několika minut.
-* SQL Server Management Studio (ssms.exe), v ideálním případě jeho nejnovější měsíční aktualizovanou verzi. 
-  Si můžete stáhnout nejnovější ssms.exe od:
+  * Volitelně můžete [vytvořit ukázkovou databázi **AdventureWorksLT** ](sql-database-get-started.md) během několika minut.
+* SQL Server Management Studio (SSMS. exe), v ideálním případě podle nejnovější měsíční verze aktualizace. 
+  Nejnovější SSMS. exe si můžete stáhnout z těchto:
   
-  * Téma s názvem [stažení aplikace SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  * Téma s názvem [stažení SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
   * [Přímý odkaz na stažení.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Ukázka kódu
 
-S velmi malé změny můžete spustit následující vzorový kód cyklické vyrovnávací paměti na Azure SQL Database nebo Microsoft SQL Server. Rozdíl spočívá v přítomnost uzel "_databáze: název některá další zobrazení dynamické správy (DMV), použitý v klauzuli FROM v kroku 5. Příklad:
+S velmi drobnými úpravami se dá spustit následující ukázka kódu Ring bufferu buď Azure SQL Database, nebo Microsoft SQL Server. Rozdíl je přítomnost uzlu ' _database ' v názvu některých zobrazení dynamické správy (zobrazení dynamické správy), který je použit v klauzuli FROM v kroku 5. Příklad:
 
 * sys.dm_xe<strong>_database</strong>_session_targets
 * sys.dm_xe_session_targets
@@ -215,15 +214,15 @@ GO
 
 &nbsp;
 
-## <a name="ring-buffer-contents"></a>Cyklické vyrovnávací paměti obsah
+## <a name="ring-buffer-contents"></a>Obsah cyklické vyrovnávací paměti
 
-Jsme použili ssms.exe ke spuštění ukázky kódu.
+Pro spuštění ukázky kódu jsme použili SSMS. exe.
 
-Chcete-li zobrazit výsledky, jsme kliknutí na buňku pod záhlavím sloupce **target_data_XML**.
+Pokud chcete zobrazit výsledky, klikneme na buňku pod záhlavím sloupce **target_data_XML**.
 
-Potom v podokně výsledků jsme kliknutí na buňku pod záhlavím sloupce **target_data_XML**. Klikněte na tlačítko vytvořit jiný karta soubor v ssms.exe ve kterém byla zobrazena obsah buňky výsledek ve formátu XML.
+Potom v podokně výsledků jsme klikli na buňku pod záhlavím sloupce **target_data_XML**. Tím kliknete na tlačítko vytvořit další kartu soubor v SSMS. exe, ve kterém se obsah buňky výsledku zobrazil jako XML.
 
-Výstup je uveden v následující bloku. Vyhledá dlouhý, ale je právě dvě  **\<události >** elementy.
+Výstup je zobrazen v následujícím bloku. Vypadá to dlouhou dobu, ale je to pouze dva  **\<prvky > události** .
 
 &nbsp;
 
@@ -315,9 +314,9 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 ```
 
 
-#### <a name="release-resources-held-by-your-ring-buffer"></a>Uvolněte prostředky držené vaše cyklické vyrovnávací paměti
+#### <a name="release-resources-held-by-your-ring-buffer"></a>Uvolnění prostředků držených cyklickou vyrovnávací pamětí
 
-Jakmile budete hotovi s vaší cyklické vyrovnávací paměti, můžete ho odebrat a uvolnit jeho prostředky vydání **ALTER** podobně jako následující:
+Až budete s Cyklovou vyrovnávací pamětí hotovi, můžete ji odebrat a uvolnit její prostředky vyvoláním podobného **příkazu** :
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -327,7 +326,7 @@ GO
 ```
 
 
-Definice relace události je aktualizovat, ale není vyřazen. Později můžete přidat další instanci Cyklická vyrovnávací paměť do relace události:
+Definice relace události je aktualizována, ale nebyla vyřazena. Později můžete do relace události přidat další instanci kruhové vyrovnávací paměti:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -342,13 +341,13 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 
 ## <a name="more-information"></a>Další informace
 
-Primární téma pro rozšířené události pro Azure SQL Database je:
+Primárním tématem pro rozšířené události v Azure SQL Database je:
 
-* [Rozšířené události aspekty ve službě SQL Database](sql-database-xevent-db-diff-from-svr.md), která se liší od některé aspekty rozšířené události, které se liší mezi Azure SQL Database a systému Microsoft SQL Server.
+* [Rozšířené aspekty událostí v SQL Database](sql-database-xevent-db-diff-from-svr.md), které odlišují některé aspekty rozšířených událostí, které se liší od Azure SQL Database oproti Microsoft SQL Server.
 
-Další témata ukázkový kód pro rozšířené události jsou k dispozici prostřednictvím následujících odkazů. Však musí pravidelně zkontrolujte všechny ukázky a zda vzorku, zaměřuje Microsoft SQL Server a Azure SQL Database. Pak se můžete rozhodnout, zda jsou menší změny potřebné ke spuštění ukázky.
+Další témata s ukázkami kódu pro rozšířené události jsou k dispozici na následujících odkazech. Je však nutné rutinu, která je v ukázce, kontrolovat, zda Microsoft SQL Server a Azure SQL Database. Pak se můžete rozhodnout, zda ke spuštění ukázky potřebujete drobné změny.
 
-* Ukázka kódu pro Azure SQL Database: [Cílový kód souboru události pro rozšířené události ve službě SQL Database](sql-database-xevent-code-event-file.md)
+* Ukázka kódu pro Azure SQL Database: [Cílový kód souboru události pro rozšířené události v SQL Database](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

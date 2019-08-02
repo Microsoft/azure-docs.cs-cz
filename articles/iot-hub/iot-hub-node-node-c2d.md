@@ -9,14 +9,14 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: b1aa8f2ce7d271187657d57993032069639ca9c7
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: d3e4e0f4e7b1f8d3e100b3f1b3446907cfd587c5
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404101"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716944"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>Posílání zpráv z cloudu na zařízení pomocí IoT Hub (Node)
+# <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>Posílání zpráv z cloudu na zařízení pomocí IoT Hub (Node. js)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
@@ -41,7 +41,7 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Node. js:
 * **SendCloudToDeviceMessage**, která pošle zprávu typu cloud-zařízení do aplikace simulovaného zařízení prostřednictvím IoT Hub a potom obdrží potvrzení o doručení.
 
 > [!NOTE]
-> IoT Hub podporuje sadu SDK pro mnoho platforem a jazyků zařízení (včetně C, Java a JavaScriptu) prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny, jak připojit zařízení k kódu tohoto kurzu a obecně k Azure IoT Hub, najdete v [centru pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot).
+> IoT Hub podporuje sadu SDK pro mnoho platforem a jazyků zařízení (včetně C, Java, Pythonu a JavaScriptu) prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny, jak připojit zařízení k kódu tohoto kurzu a obecně k Azure IoT Hub, najdete v [centru pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot).
 >
 
 Pro absolvování tohoto kurzu potřebujete:
@@ -53,33 +53,26 @@ Pro absolvování tohoto kurzu potřebujete:
 
 V této části upravíte aplikaci simulovaného zařízení, kterou jste vytvořili v části [odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-node.md) pro příjem zpráv z cloudu na zařízení ze služby IoT Hub.
 
-1. Pomocí textového editoru otevřete soubor SimulatedDevice. js.
+1. Pomocí textového editoru otevřete soubor **SimulatedDevice. js** . Tento soubor se nachází ve složce **IoT-hub\Quickstarts\simulated-Device** v kořenovém adresáři ukázkového kódu Node. js, který jste stáhli v rámci [odesílání telemetrie ze zařízení do rychlého startu centra IoT](quickstart-send-telemetry-node.md) .
 
-2. Upravte funkci **connectCallback** pro zpracování zpráv odesílaných z IoT Hub. V tomto příkladu zařízení vždy vyvolá **úplnou** funkci, aby upozornila IoT Hub, že zprávu zpracoval. Vaše nová verze funkce **connectCallback** vypadá jako následující fragment kódu:
+2. Zaregistrujte obslužnou rutinu u klienta zařízení, aby přijímala zprávy odesílané z IoT Hub. Přidejte volání do `client.on` hned za řádek, který vytvoří klienta zařízení, jako v následujícím fragmentu kódu:
 
     ```javascript
-    var connectCallback = function (err) {
-      if (err) {
-        console.log('Could not connect: ' + err);
-      } else {
-        console.log('Client connected');
-        client.on('message', function (msg) {
-          console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
-          client.complete(msg, printResultFor('completed'));
-        });
-        // Create a message and send it to the IoT Hub every second
-        setInterval(function(){
-            var temperature = 20 + (Math.random() * 15);
-            var humidity = 60 + (Math.random() * 20);
-            var data = JSON.stringify({ deviceId: 'myFirstNodeDevice', temperature: temperature, humidity: humidity });
-            var message = new Message(data);
-            message.properties.add('temperatureAlert', (temperature > 30) ? 'true' : 'false');
-            console.log("Sending message: " + message.getData());
-            client.sendEvent(message, printResultFor('send'));
-        }, 1000);
-      }
-    };
+    var client = DeviceClient.fromConnectionString(connectionString, Mqtt);
+
+    client.on('message', function (msg) {
+      console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
+      client.complete(msg, function (err) {
+        if (err) {
+          console.error('complete error: ' + err.toString());
+        } else {
+          console.log('complete sent');
+        }
+      });
+    });
     ```
+
+    V tomto příkladu zařízení vyvolá funkci **Complete** , aby upozornila IoT Hub, že zprávu zpracoval. Volání metody **Complete** není vyžadováno, pokud používáte přenos MQTT a lze je vynechat. Vyžaduje se pro HTTPS a AMQP.
   
    > [!NOTE]
    > Pokud jako přenos použijete HTTPS místo MQTT nebo AMQP, zkontroluje instance **DeviceClient** zprávy z IoT Hub zřídka (méně než každých 25 minut). Další informace o rozdílech mezi MQTT, AMQP a podporou protokolu HTTPS a omezením IoT Hub najdete v příručce pro [vývojáře IoT Hub](iot-hub-devguide-messaging.md).
@@ -173,7 +166,7 @@ V této části vytvoříte konzolovou aplikaci Node. js, která posílá zpráv
 
 Nyní můžete spustit aplikace.
 
-1. Na příkazovém řádku ve složce **simulateddevice** spusťte následující příkaz k odeslání telemetrie do IoT Hub a pro poslech zpráv z cloudu na zařízení:
+1. Na příkazovém řádku ve složce **simulovaného zařízení** spusťte následující příkaz k odeslání telemetrie do IoT Hub a pro poslech zpráv z cloudu na zařízení:
 
     ```shell
     node SimulatedDevice.js
@@ -193,7 +186,7 @@ Nyní můžete spustit aplikace.
    > Pro zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální omezení rychlosti), jak je navrženo v článku, [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
    >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak odesílat a přijímat zprávy z cloudu do zařízení.
 

@@ -1,5 +1,5 @@
 ---
-title: Jak používat AMQP 1,0 s rozhraním API Java JMS Service Bus | Microsoft Docs
+title: Použití AMQP 1,0 s rozhraním API služby Java Message Service a Azure Service Bus
 description: Jak používat službu JMS (Java Message Service) s Azure Service Bus a rozšířený protokol řízení front zpráv (AMQP) (AMQP) 1,0.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 47b077dbb62088093c60a588660045529678c58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: seo-java-july2019
+ms.openlocfilehash: f816a5c84416b7f40e3062bf22dd70cbb356c6f1
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318460"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662886"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak používat rozhraní API Message Service (JMS) v jazyce Java s Service Bus a AMQP 1,0
 Rozšířený protokol řízení front zpráv (AMQP) (AMQP) 1,0 je efektivní a spolehlivý přenosový protokol zasílání zpráv, který můžete použít k vytváření robustních aplikací zasílání zpráv pro různé platformy.
@@ -371,9 +372,10 @@ Navíc Azure Service Bus rozdělí rovinu ovládacího prvku z roviny dat, a pro
 | createTemporaryTopic        | vytvoření tématu prostřednictvím rozhraní API pro správu/nástrojů/portálu s *AutoDeleteOnIdle* nastavenou na období vypršení platnosti |
 | createTopic                 | vytvoření tématu prostřednictvím rozhraní API pro správu/nástrojů/portálu                                           |
 | Odhlásit odběr                 | Odstranění rozhraní API/nástrojů/portálu pro správu tématu                                             |
-| createBrowser               | Neplatné. Použití funkce prohlížet () rozhraní API pro Service Bus                         |
+| createBrowser               | neplatné. Použití funkce prohlížet () rozhraní API pro Service Bus                         |
 | createQueue                 | vytvoření fronty prostřednictvím rozhraní API pro správu/nástrojů/portálu                                           | 
 | createTemporaryQueue        | vytvoření fronty prostřednictvím rozhraní API pro správu/nástrojů/portálu s *AutoDeleteOnIdle* nastavenou na období vypršení platnosti |
+| receiveNoWait               | využití metody Receive () poskytované sadou Service Bus SDK a určení velmi nízkého nebo nulového časového limitu |
 
 ## <a name="summary"></a>Souhrn
 Tato příručka ukázala, jak používat funkce Service Bus zprostředkovaných zpráv (fronty a témata pro publikování a odběr) z Java pomocí oblíbených rozhraní API pro JMS a AMQP 1,0.

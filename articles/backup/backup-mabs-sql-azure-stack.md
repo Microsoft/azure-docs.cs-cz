@@ -1,18 +1,19 @@
 ---
 title: Zálohování SQL Server úloh na Azure Stack
 description: Pomocí Azure Backup Server můžete chránit SQL Server úlohy na Azure Stack.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: adigan
-ms.openlocfilehash: 11d03a9c5cc81b915f48bc66f5a0e5ab034662ed
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 3b116e25635873429dd164288c2764fd76c8f7a7
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465157"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689001"
 ---
 # <a name="back-up-sql-server-on-stack"></a>Zálohování SQL Server v zásobníku
 Tento článek slouží ke konfiguraci serveru Microsoft Azure Backup (MABS) k ochraně SQL Server databáze na Azure Stack.
@@ -106,7 +107,7 @@ Správa zálohování SQL Server databáze do Azure a obnovení z Azure zahrnuje
     * Záloha na poslední sobotu v březnu v 12:00. odp. je uchováno po dobu 10 let
 13. Klikněte na **Další** a vyberte odpovídající možnost pro přenos prvotní záložní kopie do Azure. Můžete vybrat možnost **automaticky přes síť** .
 
-14. Po kontrole podrobností zásad na obrazovce souhrnu  dokončete pracovní postup kliknutím na **vytvořit skupinu** . Můžete kliknout na **Zavřít** a monitorovat průběh úlohy v pracovním prostoru monitorování.
+14. Po kontrole podrobností zásad na obrazovce souhrnu dokončete pracovní postup kliknutím na **vytvořit skupinu** . Můžete kliknout na **Zavřít** a monitorovat průběh úlohy v pracovním prostoru monitorování.
 
     ![Probíhá vytváření skupiny ochrany.](./media/backup-azure-backup-sql/pg-summary.png)
 

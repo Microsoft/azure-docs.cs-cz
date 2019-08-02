@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 07/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 174184993e40b60dc89022d360f0c09fb31bc60b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: a928640aa6d56f0a39011a2cabcf979b4d907a46
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501268"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561471"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>Chraňte svůj obsah pomocí Media Services dynamického šifrování
 
@@ -170,7 +170,7 @@ Můžete řídit, kdo má přístup k vašemu obsahu tím, že nakonfigurujete z
 
 Zásada pro klíč obsahu s omezeným přístupem se dá použít, když chcete licenci vydávat nikomu bez autorizace. Například pokud vaše tržby jsou založené na službě AD a nikoli na základě předplatného.  
 
-Pomocí zásad klíčového obsahu s omezeným tokenem se klíč obsahu pošle jenom klientovi, který prezentuje platný token JWT nebo jednoduchý webový token v žádosti o licenci nebo klíč. Tento token musí být vydán službou STS. 
+Pomocí zásad klíčového obsahu omezeného tokenu se klíč obsahu pošle jenom klientovi, který prezentuje platný token JWT, nebo jednoduchý webový token (SWT) v žádosti o licenci nebo klíč. Tento token musí být vydán službou STS. 
 
 Můžete použít Azure AD jako STS nebo nasadit vlastní STS. Služba tokenů zabezpečení musí být nakonfigurovaný k vytvoření tokenu podepsán zadaný klíč a vydávání deklarací identity, které jste zadali v konfiguraci omezení s tokenem. Služba Media Services License/Key Delivery Services vrátí požadovanou licenci nebo klíč klientovi, pokud existují obě tyto podmínky:
 
@@ -196,8 +196,10 @@ Funkce *prevence* opětovného přehrání tokenu umožňuje Media Services zák
 
 Zákazník se může rozhodnout použít vlastní STS k poskytování tokenů. Mezi důvody patří:
 
-* Zprostředkovatel identity využívaných zákazníkem nepodporuje službu tokenů zabezpečení. V takovém případě vlastních služeb STS, může být možnost.
-* Zákazník může být nutné flexibilní nebo užší ovládací prvek integrovat službu tokenů zabezpečení zákazníka odběratele fakturačním systémem. Například operátor MVPD mohou nabízet více balíčků OTT odběratele, jako je například premium, basic nebo sportu. Operátor může být vhodné tak, aby odpovídaly deklarací identity v tokenu s balíčkem předplatitele, tak, že jsou k dispozici pouze obsah v určitém balíčku. V takovém případě vlastních služeb STS nabízí potřebné flexibility a kontroly.
+* Zprostředkovatel identity (IDP) používaný zákazníkem nepodporuje službu STS. V takovém případě vlastních služeb STS, může být možnost.
+* Zákazník může být nutné flexibilní nebo užší ovládací prvek integrovat službu tokenů zabezpečení zákazníka odběratele fakturačním systémem. 
+
+   Například operátor služby [OTT](https://en.wikipedia.org/wiki/Over-the-top_media_services) může nabízet několik balíčků předplatitelů, jako jsou Premium, Basic a sport. Operátor může být vhodné tak, aby odpovídaly deklarací identity v tokenu s balíčkem předplatitele, tak, že jsou k dispozici pouze obsah v určitém balíčku. V takovém případě vlastních služeb STS nabízí potřebné flexibility a kontroly.
 * Pokud chcete do tokenu zahrnout vlastní deklarace identity, které se mají vybrat mezi různými ContentKeyPolicyOptions s různými licenčními parametry DRM (licence k předplatnému a licence k pronájmu).
 * Chcete-li zahrnout deklaraci identity představující identifikátor klíče obsahu klíče, ke kterému token uděluje přístup.
 

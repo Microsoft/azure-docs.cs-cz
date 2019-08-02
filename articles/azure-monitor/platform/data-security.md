@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: dd4efcd2f1d4cbf497ad1fde6936088513cb5fd0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 407aaf15808d1d1420fd1a3804651d29a407d4b3
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759938"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68606665"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat analýzy protokolů
-Účelem tohoto dokumentu je poskytnout konkrétní informace ke službě Log Analytics, což je funkce služby Azure Monitor k doplnění informací na [Centrum zabezpečení Azure](../../security/security-microsoft-trust-center.md).  
+Účelem tohoto dokumentu je poskytnout konkrétní informace ke službě Log Analytics, což je funkce služby Azure Monitor k doplnění informací na [Centrum zabezpečení Azure](../../security/fundamentals/trust-center.md).  
 
 Tento článek vysvětluje, jak shromažďovat, zpracování a zabezpečené službou Log Analytics. Agenty můžete použít pro připojení k webové službě, pomocí System Center Operations Manager ke shromažďování provozních dat nebo načíst data z diagnostiky Azure pro použití službou Log Analytics. 
 
@@ -77,7 +77,7 @@ V následující tabulce jsou uvedeny příklady typů dat:
 | --- | --- |
 | Výstrahy |Upozornění název, popis výstrahy, BaseManagedEntityId, ID problému, IsMonitorAlert, RuleId, elementu ResolutionState, prioritu, závažnost, kategorie, vlastník, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved RepeatCount TimeResolutionStateLastModified TimeResolutionStateLastModifiedInDB, |
 | Konfigurace |ID zákazníka, ID agenta, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
-| Událost |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Poznámka:** Log Analytics shromažďuje je při psaní vlastních polí v události do protokolu událostí Windows. |
+| Událost |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Poznámka:** Když zapisujete události s vlastními poli do protokolu událostí systému Windows, Log Analytics je shromáždí. |
 | Metadata |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IP adresa, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Adresa, NetbiosDomainName LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
 | Výkon |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
 | Stav |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
@@ -173,7 +173,7 @@ Jak je popsáno výše, data ze serveru pro správu nebo přímo připojených a
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Služba Log Analytics přijímá a zpracovává data
 Služba Log Analytics zajišťuje, že příchozí data z důvěryhodného zdroje pomocí ověřování certifikátů a integritu dat s ověřováním Azure. Nezpracované nezpracovaná data se pak ukládá v Centru událostí Azure v oblasti, které nakonec se uloží data v klidovém stavu. Typ dat, která je uložena závisí na typech řešení, které byly naimportovány a používá ke shromažďování dat. Log Analytics pak služby procesy nezpracovaných dat a ingestuje do databáze.
 
-Doba uchování shromážděná data uložená v databázi, závisí na vybrané cenového plánu. Pro *Free* vrstvy, shromážděných dat je k dispozici sedm dní. Pro *Paid* úrovni shromažďovat data po dobu 31 dnů ve výchozím nastavení je k dispozici, ale je možné rozšířit na 730 dnů. Data jsou uložena v klidovém stavu ve službě Azure storage k zajištění důvěrnosti data zašifrovaná a data se replikují v rámci místní oblasti pomocí místně redundantního úložiště (LRS). Poslední dva týdny dat jsou také uloženy v mezipaměti založené na jednotkách SSD a tato mezipaměť je zašifrovaný.
+Doba uchování shromážděná data uložená v databázi, závisí na vybrané cenového plánu. Pro *Free* vrstvy, shromážděných dat je k dispozici sedm dní. Pro *Paid* úrovni shromažďovat data po dobu 31 dnů ve výchozím nastavení je k dispozici, ale je možné rozšířit na 730 dnů. Data jsou uložena v klidovém stavu ve službě Azure storage k zajištění důvěrnosti data zašifrovaná a data se replikují v rámci místní oblasti pomocí místně redundantního úložiště (LRS). Poslední dva týdny dat jsou také uloženy v mezipaměti založené na SSD a Tato mezipaměť je zašifrovaná.
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Přístup k datům pomocí Log Analytics
 Pro přístup k pracovním prostoru Log Analytics, přihlášení k webu Azure portal pomocí účtu organizace nebo účtu Microsoft, který jste dřív nastavili. Všechny přenosy mezi portálem a službou Log Analytics se odesílají prostřednictvím zabezpečeného kanálu protokolu HTTPS. Během používání portálu, se vygeneruje ID relace na straně klienta uživatelské (webový prohlížeč) a data se ukládají do místní mezipaměti, dokud nebude ukončena relace. Když byla ukončena, odstraní se mezipaměť. Soubory cookie na straně klienta, které neobsahují identifikovatelné osobní údaje, se automaticky neodeberou. Soubory cookie relací jsou označeny HTTPOnly, která jsou zabezpečená. Po předem určené období nečinnosti je Azure portal relace ukončena.

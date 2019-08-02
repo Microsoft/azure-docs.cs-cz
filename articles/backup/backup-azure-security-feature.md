@@ -1,18 +1,19 @@
 ---
 title: Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy, které používají Azure Backup
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
-author: utraghuv
-manager: vijayts
+ms.reviewer: utraghuv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.author: utraghuv
-ms.openlocfilehash: 1e643e74f35b381dfb329453d81615bc69785ed7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 2c1890089bcb713d8ef80bca25b123b425d96607
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465405"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688671"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit hybridní zálohy, které používají Azure Backup
 Problémy se zabezpečením, jako je malware, ransomwarem a vniknutí, se zvyšují. Tyto problémy se zabezpečením můžou být nákladné, s ohledem na peníze i data. Z důvodu ochrany proti takovým útokům teď Azure Backup poskytuje funkce zabezpečení, které vám pomůžou chránit hybridní zálohy. Tento článek popisuje, jak povolit a používat tyto funkce pomocí agenta Azure Recovery Services a Azure Backup Server. Mezi tyto funkce patří:

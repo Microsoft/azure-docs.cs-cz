@@ -9,12 +9,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 6902bf73707dc749da76cd32fe48911fcc88ba1e
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: cd02051c0ef1dfe93b1ee67a0a9605e1611f336b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305711"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565970"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu služby Azure Blob Storage
 
@@ -29,6 +29,8 @@ Zásady správy životního cyklu vám umožňují:
 
 Vezměte v úvahu scénář, kdy data budou často přístupná v počátečních fázích životního cyklu, ale pouze občas po dvou týdnech. Po prvním měsíci se k datové sadě používá zřídka. V tomto scénáři je horké úložiště nejlépe v počátečních fázích. Studená úložiště jsou nejvhodnější pro příležitostné přístupy. Archivní úložiště je nejlepší možností po stáří dat za měsíc. Nastavením vrstev úložiště v závislosti na stáří dat můžete navrhnout nejlevnější možnosti úložiště podle vašich potřeb. Pro dosažení tohoto přechodu jsou k dispozici pravidla zásad správy životního cyklu pro přesun dat o splatnosti do úrovní chladiče.
 
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 ## <a name="storage-account-support"></a>Podpora účtu úložiště
 
 Zásady správy životního cyklu jsou dostupné s účty Pro obecné účely v2 (GPv2), účty BLOB Storage a účty úložiště blob bloku úrovně Premium. V Azure Portal můžete upgradovat existující účet Pro obecné účely (GPv1) na účet GPv2. Další informace o účtech úložiště najdete v [přehledu účtu Azure Storage](../common/storage-account-overview.md).  
@@ -39,7 +41,7 @@ Funkce správy životního cyklu je bezplatná. Zákazníkům se účtují běž
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Funkce správy životního cyklu je dostupná ve všech globálních oblastech Azure a Azure Government.
+Funkce správy životního cyklu je dostupná ve všech oblastech Azure.
 
 ## <a name="add-or-remove-a-policy"></a>Přidat nebo odebrat zásadu
 
@@ -281,7 +283,7 @@ Filtruje akce pravidla omezení na podmnožinu objektů BLOB v rámci účtu úl
 
 Filtry zahrnují:
 
-| Název filtru | Typ filtru | Poznámky | Je povinné |
+| Název filtru | Typ filtru | Poznámky | Je požadováno |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Pole předdefinovaných hodnot výčtu. | Aktuální verze podporuje `blockBlob`. | Ano |
 | prefixMatch | Pole řetězců pro předpony, které mají být shodné. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly `https://myaccount.blob.core.windows.net/container1/foo/...` v rámci pravidla, prefixMatch je. `container1/foo` | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště.  | Ne |
@@ -296,7 +298,7 @@ Správa životního cyklu podporuje vrstvení a odstraňování objektů BLOB a 
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Podpora objektů BLOB v současnosti v úrovni Hot         | Nepodporuje se |
 | tierToArchive | Podpora blobů v současnosti na horké nebo studené úrovni | Nepodporuje se |
-| delete        | Podporováno                                   | Podporováno     |
+| odstraňovat        | Podporováno                                   | Podporováno     |
 
 >[!NOTE]
 >Pokud definujete více než jednu akci u stejného objektu blob, bude správa životního cyklu v objektu BLOB platit nejméně náročná akce. Například akce `delete` je levnější než akce `tierToArchive`. Akce `tierToArchive` je levnější než akce `tierToCool`.

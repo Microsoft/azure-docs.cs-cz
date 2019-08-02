@@ -1,18 +1,18 @@
 ---
 title: Informace o zálohování virtuálních počítačů Azure
 description: Přečtěte si o zálohování virtuálních počítačů Azure a poznamenejte si Doporučené postupy.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.author: raynew
-ms.openlocfilehash: bf6aa07319b8029744a5c8898a4104d330fbb1d1
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7a470674fa9ccdde2b33bb33bfb52bead1822895
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465214"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639741"
 ---
 # <a name="about-azure-vm-backup"></a>Informace o zálohování virtuálních počítačů Azure
 
@@ -111,8 +111,8 @@ Tyto běžné scénáře mohou ovlivnit celkovou dobu zálohování:
 Když konfigurujete zálohy virtuálních počítačů, doporučujeme postupovat podle těchto postupů:
 
 - Upravte výchozí časy plánování, které jsou nastaveny v zásadě. Pokud je například výchozí čas v zásadě 12:00., zvyšte časování o několik minut, aby se prostředky optimálně používaly.
-- Pro zálohování virtuálních počítačů, které používají službu Premium Storage, doporučujeme používat nejnovější verzi Azure Backup ([okamžité obnovení](backup-instant-restore-capability.md)). Pokud nepoužíváte nejnovější verzi, zálohování se přidělí přibližně 50% celkového prostoru úložiště. Zálohovací služba vyžaduje, aby tento prostor kopíroval snímek do stejného účtu úložiště a přenáší ho do trezoru.
 - Pokud obnovujete virtuální počítače z jednoho trezoru, důrazně doporučujeme, abyste používali jiné [účty úložiště pro obecné účely v2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) , abyste zajistili, že cílový účet úložiště nebude omezený. Každý virtuální počítač například musí mít jiný účet úložiště. Pokud se například obnoví 10 virtuálních počítačů, použijte 10 různých účtů úložiště.
+- Pro zálohování virtuálních počítačů, které používají Prémiové úložiště, s okamžitým obnovením doporučujeme přidělit *50%* volného místa celkového přiděleného prostoru úložiště, který se vyžaduje **jenom** pro první zálohování. 50% volného místa není požadavkem na zálohování po dokončení prvního zálohování.
 - Obnovení z úrovně úložiště pro obecné účely V1 (snímek) bude dokončeno během několika minut, protože snímek je ve stejném účtu úložiště. Obnovení z vrstvy úložiště pro obecné účely v2 (trezor) může trvat hodiny. V případech, kdy jsou data k dispozici v úložišti pro obecné účely V1, doporučujeme pro rychlejší obnovení použít funkci [okamžitého obnovení](backup-instant-restore-capability.md) . (Pokud se data musí obnovit z trezoru, bude trvat déle.)
 - Omezení počtu disků na účet úložiště je relativní vzhledem k tom, jak intenzivně jsou disky dostupné v aplikacích, které běží na virtuálním počítači IaaS (infrastruktura jako služba). Obecně platí, že pokud se na jednom účtu úložiště nachází 5 až 10 disků nebo víc, vyvážení zátěže tím, že některé disky přesunete do samostatných účtů úložiště.
 

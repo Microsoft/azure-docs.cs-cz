@@ -1,11 +1,10 @@
 ---
-title: Změna certifikátu clusteru Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak chcete efekt přechodu certifikát clusteru Service Fabric identifikovaný běžný název certifikátu.
+title: Výměna certifikátu clusteru Azure Service Fabric | Microsoft Docs
+description: Naučte se, jak vyměnit Service Fabric certifikát clusteru identifikovaný běžným názvem certifikátu.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
-editor: aljo
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,20 +12,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
-ms.author: aljo
-ms.openlocfilehash: dd4b6026772a20c522532e1ba65c6846addfa161
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 5d11054ca8eb684f1f25a25ddeac1b53e82b3775
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66159899"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599920"
 ---
-# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ručně nespotřebujete certifikát clusteru Service Fabric
-Jakmile certifikát clusteru Service Fabric se blíží vypršení platnosti, budete muset aktualizovat certifikát.  Výměny certifikátů je jednoduchý, pokud se cluster [nastavený používat certifikáty založené na běžný název](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (namísto kryptografický otisk).  Získejte nový certifikát od certifikační autority se nové datum vypršení platnosti.  Certifikáty podepsané svým držitelem nejsou podporu pro produkční clustery Service Fabric, zahrnovat certifikáty vygenerované během Azure pracovní postup vytvoření clusteru portálu. Nový certifikát musí mít stejný běžný název jako starší certifikát. 
+# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ruční vrácení Service Fabric certifikátu clusteru
+Pokud se platnost certifikátu Service Fabric clusteru blíží k vypršení platnosti, budete muset certifikát aktualizovat.  Změna certifikátu je jednoduchá, pokud byl cluster [nastavený tak, aby používal certifikáty založené na běžném názvu](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (místo kryptografických otisků).  Získejte nový certifikát od certifikační autority s novým datem vypršení platnosti.  Certifikáty podepsané svým držitelem nejsou podporované pro produkční Service Fabric clustery, aby zahrnovaly certifikáty vygenerované během pracovního postupu vytvoření Azure Portal clusteru. Nový certifikát musí mít stejný běžný název jako starší certifikát. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Cluster Service Fabric pomocí dalších automaticky použijí deklarované certifikát do budoucí datum vypršení platnosti; Při ověření více než jeden certifikát nainstalován na hostiteli. Osvědčeným postupem je použití šablony Resource Manageru pro zřízení prostředků Azure. Následující skript pro neprodukční prostředí umožňuje nahrát nový certifikát do služby key vault a pak nainstaluje certifikát na škálovací sadu virtuálních počítačů: 
+Cluster Service Fabric bude automaticky používat deklarovaný certifikát s dalšími daty k budoucímu datu vypršení platnosti. v případě, že je na hostiteli nainstalováno více než jeden ověřovací certifikát. Osvědčeným postupem je použití šablony Správce prostředků ke zřízení prostředků Azure. V neprodukčním prostředí můžete použít následující skript k nahrání nového certifikátu do trezoru klíčů a následné instalaci certifikátu do sady škálování virtuálních počítačů: 
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -82,9 +81,9 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Virtual
 ```
 
 >[!NOTE]
-> Vypočítá tajemství nastavit škálování virtuálního počítače nepodporují stejné id prostředku pro dva samostatné tajné kódy, jako každý tajný kód je označené verzí prostředků jedinečné. 
+> Tajné klíče COMPUTE Virtual Machine Scale set nepodporují stejné ID prostředku pro dvě samostatná tajná klíče, protože každý tajný klíč je jedinečným prostředkem verze. 
 
-Další informace, přečtěte si následující:
-* Další informace o [clusteru zabezpečení](service-fabric-cluster-security.md).
-* [Aktualizace a správa certifikátů clusteru](service-fabric-cluster-security-update-certs-azure.md)
+Pokud se chcete dozvědět víc, přečtěte si následující informace:
+* Přečtěte si o [zabezpečení clusteru](service-fabric-cluster-security.md).
+* [Aktualizace a Správa certifikátů clusteru](service-fabric-cluster-security-update-certs-azure.md)
 

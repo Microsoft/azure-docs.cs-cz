@@ -1,38 +1,36 @@
 ---
-title: Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů na platformě Linux – Microsoft Azure | Dokumentace Microsoftu
-description: Další informace o škálovatelnost a výkonnostní cíle pro virtuální počítač disky připojené k virtuálním počítačům s Linuxem.
-services: virtual-machines-linux,storage
+title: Cíle škálovatelnosti a výkonu pro disky virtuálních počítačů v systému Linux-Microsoft Azure | Microsoft Docs
+description: Seznamte se s cíli škálovatelnosti a výkonu pro disky virtuálních počítačů připojené k virtuálním počítačům se systémem Linux.
 author: roygara
 ms.author: rogarana
 ms.date: 11/15/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 39e0a36b50a9e222e6016140967336ccda167514
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c1bdecdfc755db530be71a09b18542ade4519c5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771630"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695885"
 ---
-# <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů v Linuxu
+# <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů v systému Linux
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-Zobrazit [velikosti virtuálního počítače s Linuxem](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) další podrobnosti.
+Další podrobnosti najdete v tématu [velikosti virtuálních počítačů se systémem Linux](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
-## <a name="managed-virtual-machine-disks"></a>Spravované virtuální počítače s disky
+## <a name="managed-virtual-machine-disks"></a>Spravované disky virtuálních počítačů
 
-Velikosti označený hvězdičkou jsou aktuálně ve verzi preview. Najdete v našich [nejčastější dotazy k](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) se dozvíte, jaké oblasti jsou k dispozici v.
+Velikosti označené hvězdičkou jsou momentálně ve verzi Preview. V našich [nejčastějších dotazech](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) se dozvíte, jaké oblasti jsou k dispozici v.
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../../includes/azure-storage-limits-vm-disks-managed.md)]
 
-## <a name="unmanaged-virtual-machine-disks"></a>Nespravované virtuální počítače s disky
+## <a name="unmanaged-virtual-machine-disks"></a>Nespravované disky virtuálních počítačů
 [!INCLUDE [azure-storage-limits-vm-disks-standard](../../../includes/azure-storage-limits-vm-disks-standard.md)]
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits)

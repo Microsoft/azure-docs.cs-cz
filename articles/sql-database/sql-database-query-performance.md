@@ -1,6 +1,6 @@
 ---
-title: Pro službu Azure SQL Database Query Performance Insight | Dokumentace Microsoftu
-description: Sledování výkonu dotazů identifikuje většina využívání procesoru dotazů pro databázi Azure SQL.
+title: Query Performance Insight pro Azure SQL Database | Microsoft Docs
+description: Dotaz na sledování výkonu identifikuje pro databázi SQL Azure nejvíc dotazů náročných na procesor.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,243 +10,242 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 5d892005881436dec89c0d0d010f7f02e7bdebf9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 659022f625604fe31c2ce47978d1132b20b7ffc8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60585262"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567026"
 ---
-# <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight pro službu Azure SQL Database
+# <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight pro Azure SQL Database
 
-Správa a optimalizace výkonu relačních databází trvá odborných znalostí a čas. Query Performance Insight je součástí produktovou řadu inteligentních výkonu Azure SQL Database. Pomůže vám strávit míň času tím, že poskytuje řešení potíží s výkonem databáze:
+Správa a optimalizace výkonu relačních databází má zkušenosti a čas. Query Performance Insight je součástí produktového řádku inteligentního výkonu Azure SQL Database. Pomáhá věnovat méně času řešení potíží s výkonem databáze tím, že poskytuje:
 
-* Podrobnější přehledy o využití prostředků (DTU) databáze.
-* Podrobnosti o nejvyšší databázové dotazy podle počtu CPU, doba trvání a spuštění (potenciál optimalizace kandidáty pro zlepšení výkonu).
-* Možnost Přejít na podrobnosti o dotazu, chcete-li zobrazit text dotazu a historie využití prostředků.
-* Poznámky, které ukazují doporučení k výkonu z [služby SQL Database Advisor](sql-database-advisor.md).
+* Podrobnější přehled o spotřebě prostředků databází (DTU).
+* Podrobnosti o hlavních databázových dotazech podle CPU, doby trvání a počtu spuštění (možná optimalizace kandidátů na optimalizaci výkonu).
+* Možnost přejít k podrobnostem o dotazu a zobrazit text dotazu a historii využití prostředků.
+* Poznámky, které ukazují doporučení týkající se výkonu z [SQL Database Advisor](sql-database-advisor.md).
 
 ![Query Performance Insight](./media/sql-database-query-performance/opening-title.png)
 
 > [!TIP]
-> Monitorování základního výkonu pomocí Azure SQL Database, doporučujeme Query Performance Insight. Poznámka: omezení produkt publikovat v tomto článku. Pro pokročilé monitorování výkonu databáze ve velkém měřítku, doporučujeme [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md). To má vestavěné inteligentní algoritmy pro řešení potíží s výkonem automatizované. Automaticky vyladit některé z nejběžnějších problémů s výkonem databáze, doporučujeme [automatické ladění](sql-database-automatic-tuning.md).
+> Pro základní monitorování výkonu pomocí Azure SQL Database doporučujeme Query Performance Insight. Poznamenejte si omezení produktů zveřejněná v tomto článku. Pro pokročilé sledování výkonu databáze ve velkém měřítku doporučujeme [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md). Obsahuje integrované inteligentní funkce pro řešení potíží s automatickým výkonem. Pro automatické ladění některých nejběžnějších problémů s výkonem databáze doporučujeme [Automatické ladění](sql-database-automatic-tuning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Query Performance Insight vyžaduje, aby [Query Store](https://msdn.microsoft.com/library/dn817826.aspx) aktivní ve vaší databázi. Pro všechny databáze Azure SQL je automaticky povolen ve výchozím nastavení. Pokud Store dotaz není spuštěn, na webu Azure portal vás vyzve, aby je.
+Query Performance Insight vyžaduje, aby [úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx) bylo ve vaší databázi aktivní. Ve výchozím nastavení se automaticky povolí pro všechny databáze SQL Azure. Pokud není úložiště dotazů spuštěné, Azure Portal vás vyzve, abyste ho povolili.
 
 > [!NOTE]
-> Pokud na portálu se zobrazí zpráva "Query Store není správně nakonfigurována v této databázi", přečtěte si téma [optimalizace konfigurace Query Store](#optimize-the-query-store-configuration-for-query-performance-insight).
+> Pokud se v této databázi na portálu zobrazí zpráva "úložiště dotazů není správně nakonfigurované", přečtěte si téma [Optimalizace konfigurace úložiště dotazů](#optimize-the-query-store-configuration-for-query-performance-insight).
 >
 
 ## <a name="permissions"></a>Oprávnění
 
-Budete potřebovat následující [řízení přístupu na základě rolí](../role-based-access-control/overview.md) oprávnění k použití nástroje Query Performance Insight:
+K použití Query Performance Insight potřebujete následující oprávnění [řízení přístupu na základě rolí](../role-based-access-control/overview.md) :
 
-* **Čtečka**, **vlastníka**, **Přispěvatel**, **Přispěvatel databází SQL**, nebo **Přispěvatel SQL serveru** jsou vyžadována oprávnění Chcete-li zobrazit nejčastější dotazy využívání prostředků a grafy.
-* **Vlastník**, **Přispěvatel**, **Přispěvatel databází SQL**, nebo **Přispěvatel SQL serveru** oprávnění nejsou vyžadována k zobrazení textu dotazu.
+* Aby bylo možné zobrazit nejlepší dotazy a grafy náročné na prostředky, je nutné, aby byl **Čtenář**, **vlastník**, **Přispěvatel**, **Přispěvatel databáze SQL**nebo **SQL Server** oprávnění přispěvatele.
+* K zobrazení textu dotazu jsou nutná oprávnění **vlastník**, **Přispěvatel**, **Přispěvatel databáze SQL**nebo **SQL Server** oprávnění přispěvatele.
 
 ## <a name="use-query-performance-insight"></a>Použití nástroje Query Performance Insight
 
-Query Performance Insight se snadno používá:
+Query Performance Insight lze snadno použít:
 
-1. Otevřít [webu Azure portal](https://portal.azure.com/) a najít databázi, kterou chcete prozkoumat.
-2. Z nabídky levé straně otevřete **inteligentní výkonu** > **Query Performance Insight**.
+1. Otevřete [Azure Portal](https://portal.azure.com/) a vyhledejte databázi, kterou chcete prošetřit.
+2. V nabídce na levé straně otevřete **inteligentní** > **Query Performance Insight**výkonu.
   
    ![Query Performance Insight v nabídce](./media/sql-database-query-performance/tile.png)
 
-3. Na první kartě projděte si seznam hlavní dotazy využívání prostředků.
-4. Vyberte jednotlivé dotazy zobrazíte její podrobnosti.
-5. Otevřít **inteligentní výkonu** > **doporučení k výkonu** a zkontrolujte, jestli jsou k dispozici žádná doporučení k výkonu. Další informace o integrovaných výkonu doporučení najdete v tématu [služby SQL Database Advisor](sql-database-advisor.md).
-6. Pomocí jezdců nebo zvětšení ikony zjištěnou interval změnit.
+3. Na první kartě si Projděte seznam nejčastějších dotazů, které jsou náročné na prostředky.
+4. Vyberte jednotlivý dotaz, ve kterém chcete zobrazit jeho podrobnosti.
+5. Otevřete **inteligentní** > **doporučení** výkonu výkonu a ověřte, jestli jsou k dispozici nějaká doporučení pro výkon. Další informace o předdefinovaných doporučeních výkonu najdete v tématu [SQL Database Advisor](sql-database-advisor.md).
+6. Pro změnu pozorovaného intervalu použijte posuvníky nebo ikony lupy.
 
-   ![řídicí panel výkon](./media/sql-database-query-performance/performance.png)
+   ![Řídicí panel výkonu](./media/sql-database-query-performance/performance.png)
 
 > [!NOTE]
-> Pro službu SQL Database mají vykreslit informace v Query Performance Insight Query Store musí zachytit pár hodin data. Pokud databáze nemá žádné aktivity nebo Query Store nebyl aktivní v určité období, grafy bude prázdný, když Query Performance Insight zobrazí tento časový rozsah. Query Store můžete kdykoli povolit, pokud není spuštěná. Další informace najdete v tématu [osvědčené postupy s Query Store](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store).
+> Aby SQL Database vykreslila informace v Query Performance Insight, úložiště dotazů musí zachytit několik hodin dat. Pokud databáze nemá žádnou aktivitu nebo pokud nebylo úložiště dotazů v určitém období aktivní, grafy budou prázdné, pokud Query Performance Insight zobrazí tento časový rozsah. Úložiště dotazů můžete kdykoli povolit, pokud není spuštěno. Další informace najdete v tématu [osvědčené postupy s úložištěm dotazů](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store).
 
-## <a name="review-top-cpu-consuming-queries"></a>Zkontrolovat hlavní dotazy využívání procesoru
+## <a name="review-top-cpu-consuming-queries"></a>Přečtěte si nejčastější dotazy náročné na procesor
 
-Ve výchozím nastavení Query Performance Insight ukazuje prvních pěti dotazech využívání procesoru při prvním otevření.
+Ve výchozím nastavení Query Performance Insight zobrazuje pět nejlepších dotazů využívajících procesor při prvním otevření.
 
-1. Vyberte nebo zrušte zaškrtnutí jednotlivých dotazů, které chcete zahrnout nebo vyloučit z grafu pomocí zaškrtávacích políček.
+1. Zaškrtněte nebo zrušte zaškrtnutí jednotlivých dotazů, které chcete zahrnout nebo vyloučit z grafu pomocí zaškrtávacích políček.
 
-    Na horní zobrazený řádek zobrazuje celkové procentní hodnoty DTU databáze. Pruhy zobrazují procento využití procesoru, vybrané dotazy spotřebovaná při zvoleném intervalu. Například pokud **poslední týden** je vybrána, každý řádek představuje jeden den.
+    Horní řádek ukazuje celkové procento DTU pro databázi. Na pruzích se zobrazí procento využití procesoru, které vybrané dotazy spotřebují během zvoleného intervalu. Například pokud je vybrán **minulý týden** , každý řádek představuje jeden den.
 
     ![Nejčastější dotazy](./media/sql-database-query-performance/top-queries.png)
 
    > [!IMPORTANT]
-   > DTU řádku zobrazeném shromažďovány na hodnotu maximální využití v obdobích hodinová. Je určená pro vysoké úrovně porovnání pouze s statistiky provádění dotazu. V některých případech se využití DTU zdát, že příliš vysoká. ve srovnání s spouštěné dotazy, ale to nemusí být případ.
+   > Zobrazená čára DTU je agregovaná na maximální hodnotu spotřeby v jedné hodinové periodě. Je určen pro porovnání na vysoké úrovni pouze s statistikami spouštění dotazů. V některých případech se využití DTU může zdát příliš vysoké ve srovnání s provedenými dotazy, ale nemusí to být případ.
    >
-   > Například pokud dotaz maxed si jednotek DTU na 100 % na jenom pár minut, řádku DTU v Query Performance Insight se zobrazí celou hodinu jako 100 % (důsledkem maximální agregovaná hodnota).
+   > Pokud například dotaz vyčerpáním z DTU na 100% jenom na několik minut, zobrazí se na řádku DTU v Query Performance Insight celá hodina spotřeby jako 100% (důsledek maximální agregované hodnoty).
    >
-   > Lepší porovnání (až minutu) zvažte možnost vytvořit vlastní graf využití DTU:
+   > Pro přesnější porovnání (až jednu minutu) zvažte vytvoření vlastního grafu využití DTU:
    >
-   > 1. Na webu Azure Portal, vyberte **Azure SQL Database** > **monitorování**.
+   > 1. V Azure Portal vyberte **Azure SQL Database** > **monitorování**.
    > 2. Vyberte **Metriky**.
    > 3. Vyberte **+ přidat graf**.
-   > 4. Vyberte DTU procenta v grafu.
-   > 5. Kromě toho vyberte **posledních 24 hodin** v nabídce vlevo nahoře a změňte ji na jednu minutu.
+   > 4. Vyberte procento DTU v grafu.
+   > 5. Kromě toho vyberte v levé horní nabídce **Poslední 24 hodiny** a změňte ji na jednu minutu.
    >
-   > Pomocí vlastního grafu jednotek DTU na jemnější úrovni podrobností k porovnání s grafem provádění dotazu.
+   > Pomocí vlastního grafu DTU s jemnější úrovní podrobností můžete porovnat s grafem spuštění dotazu.
 
-   Mřížka dole ukazuje agregované informace pro viditelné dotazy:
+   Dolní Mřížka zobrazuje agregované informace pro viditelné dotazy:
 
-   * ID dotazu, který je jedinečný identifikátor pro dotaz do databáze.
-   * Využití procesoru podle dotazu během pozorovatelných intervalu, což závisí na agregační funkce.
-   * Doba trvání za dotaz, který také závisí na agregační funkce.
-   * Celkový počet spuštění pro konkrétní dotaz.
+   * ID dotazu, což je jedinečný identifikátor dotazu v databázi.
+   * PROCESOR na dotaz během pozorovatelního intervalu, který závisí na agregační funkci.
+   * Doba trvání na dotaz, která také závisí na agregační funkci.
+   * Celkový počet spuštění pro určitý dotaz.
 
-2. Pokud vaše data zastaralá, vyberte **aktualizovat** tlačítko.
+2. Pokud se data zastará, vyberte tlačítko **aktualizovat** .
 
-3. Pomocí jezdců a přiblížení tlačítek na hodnotu změnit interval zjišťování a vyšetřování špičky využití:
+3. Pomocí posuvníků a tlačítek lupy můžete změnit interval sledování a prozkoumat špičky spotřeby:
 
-   ![Posuvníky a přiblížení tlačítka pro změnu intervalu](./media/sql-database-query-performance/zoom.png)
+   ![Posuvníky a tlačítka lupy pro změnu intervalu](./media/sql-database-query-performance/zoom.png)
 
 4. Volitelně můžete vybrat **vlastní** kartu pro přizpůsobení zobrazení:
 
-   * Metriky (procesor, doba trvání, počet spuštění).
-   * Časový interval (posledních 24 hodin, poslední týden nebo měsíc).
+   * Metrika (CPU, doba trvání, počet spuštění).
+   * Časový interval (posledních 24 hodin, minulý týden nebo minulý měsíc).
    * Počet dotazů.
-   * Agregační funkce.
+   * Agregační funkce
   
-   ![Vlastní karty](./media/sql-database-query-performance/custom-tab.png)
+   ![Vlastní karta](./media/sql-database-query-performance/custom-tab.png)
   
-5. Vyberte **Přejít >** tlačítko přizpůsobené zobrazení.
+5. Kliknutím na tlačítko **přejít >** zobrazíte přizpůsobené zobrazení.
 
    > [!IMPORTANT]
-   > Query Performance Insight je omezena na zobrazení náročné dotazy 5-20, v závislosti na výběru na začátek. Databázi můžete spustit mnoho více dotazů nad rámec těch, které jsou zobrazeny největších a tyto dotazy se nezahrnuly do grafu.
+   > Query Performance Insight je omezené na zobrazení prvních 5-20 náročných dotazů v závislosti na vašem výběru. Vaše databáze může spustit mnoho dalších dotazů nad rámec zobrazených a tyto dotazy nebudou do grafu zahrnuty.
    >
-   > Pravděpodobně existují úlohy typ databáze, ve kterém velké množství menších dotazů, kromě těch, které jsou zobrazeny, největších častěji a použít většinou DTU. Tyto dotazy nejsou zobrazeny v grafu výkonu.
+   > Je možné, že existuje typ databázové úlohy, ve kterém se nachází spousta menších dotazů, a to nad rámec těch, které jsou zobrazené, spouštějte často a používejte většinu DTU. Tyto dotazy se nezobrazují v grafu výkonu.
    >
-   > Například dotaz může spotřebovaly vyžadovat značné množství jednotek DTU na dobu i jeho celkovou spotřebu v zjištěnou období je menší než horní využívání dotazy. V takovém případě se nezobrazilo využití prostředků tohoto dotazu v grafu.
+   > Dotaz může například spotřebovat značnou jednotku DTU za chvíli, i když je celková spotřeba v pozorovaném období menší než ostatní dotazy, které jsou v nejvyšší době k dispozici. V takovém případě se využití prostředků tohoto dotazu nezobrazí v grafu.
    >
-   > Pokud je potřeba pochopit, provádění dotazu top nad rámec omezení Query Performance Insight, zvažte použití [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) pro zajištění výkonu databází rozšířené monitorování a řešení potíží.
+   > Pokud potřebujete pochopit hlavní provádění dotazů nad rámec omezení Query Performance Insight, zvažte použití [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) pro pokročilé monitorování výkonu databáze a řešení potíží.
    >
 
-## <a name="view-individual-query-details"></a>Zobrazení podrobností o jednotlivých dotazech
+## <a name="view-individual-query-details"></a>Zobrazit podrobnosti o jednotlivých dotazech
 
-Chcete-li zobrazit podrobnosti o dotazu:
+Zobrazení podrobností dotazu:
 
-1. Vyberte libovolný dotaz v seznamu Nejčastější dotazy.
+1. V seznamu nejčastějších dotazů vyberte libovolný dotaz.
 
-    ![Seznam nejčastější dotazy](./media/sql-database-query-performance/details.png)
+    ![Seznam nejčastějších dotazů](./media/sql-database-query-performance/details.png)
 
-   Otevře podrobné zobrazení. Zobrazuje využití procesoru, doba trvání a počet spuštění v čase.
+   Otevře se podrobné zobrazení. Zobrazuje spotřebu procesoru, dobu trvání a počet spuštění v průběhu času.
 
-2. Vyberte graf funkce podrobnosti.
+2. Pro podrobnosti vyberte funkce grafu.
 
-   * Horního grafu zobrazí čáry s celkové procento DTU databáze. Pruhy jsou procento využití procesoru, které vybraného dotazu.
-   * Druhý graf ukazuje celkové doby trvání vybraného dotazu.
-   * V dolní části grafu zobrazuje celkový počet spuštění podle vybraného dotazu.
+   * V horním grafu je zobrazen řádek s celkovým procentem DTU databáze. Pruhy představují procento využití procesoru, které vybraný dotaz spotřeboval.
+   * Druhý graf znázorňuje celkovou dobu trvání vybraného dotazu.
+   * Dolní graf znázorňuje celkový počet spuštění zvoleným dotazem.
 
    ![Podrobnosti dotazu](./media/sql-database-query-performance/query-details.png)
 
-3. Volitelně můžete pomocí posuvníků, použijte tlačítka lupy nebo vyberte **nastavení** přizpůsobit, jak se zobrazí dotaz na data nebo vyberte jiný časový rozsah.
+3. Volitelně můžete použít posuvníky, použít tlačítka zvětšení nebo vybrat **Nastavení** , abyste mohli přizpůsobit způsob zobrazení dat dotazu, nebo vybrat jiný časový rozsah.
 
    > [!IMPORTANT]
-   > Query Performance Insight nezachytává všechny dotazy jazyka DDL. V některých případech se nemusí zachycovat všechny dotazy ad hoc.
+   > Query Performance Insight nezachycují žádné dotazy DDL. V některých případech nemusí zachytit všechny dotazy ad hoc.
    >
 
-## <a name="review-top-queries-per-duration"></a>Zkontrolovat hlavní dotazy podle doby trvání
+## <a name="review-top-queries-per-duration"></a>Zobrazit nejčastější dotazy na dobu trvání
 
-Dvě metriky v Query Performance Insight vám může pomoct najít potenciální slabá místa: počet dobu trvání a spuštění.
+Dvě metriky v Query Performance Insight vám pomůžou najít potenciální problémová místa: trvání a počet spuštění.
 
-Dlouho běžící dotazy mohou mít největší potenciálně zamknutí prostředků delší dobu, blokování jiných uživatelů a omezení škálovatelnosti. Jsou to taky nejlepší kandidáty na optimalizaci.
+Dlouhotrvající dotazy mají největší potenciál na uzamykání prostředků déle, blokují jiné uživatele a omezují škálovatelnost. Jsou to také nejlepší kandidáty na optimalizaci.
 
-K identifikaci dlouho běžící dotazy:
+Identifikace dlouhotrvajících dotazů:
 
-1. Otevřít **vlastní** kartu v Query Performance Insight pro vybranou databázi.
-2. Změnit metriky pro **doba trvání**.
-3. Vyberte počet dotazů a intervalu zjišťování.
-4. Vyberte funkci agregace:
+1. Otevřete **vlastní** kartu v Query Performance Insight pro vybranou databázi.
+2. Změňte metriky na **Trvání**.
+3. Vyberte počet dotazů a interval sledování.
+4. Vyberte agregační funkci:
 
-   * **Součet** sečte všechny doba provádění dotazu pro interval celý pozorování.
-   * **Maximální počet** najde dotazuje, v které doba spuštění byla maximální intervalu celý pozorování.
-   * **AVG** najde Průměrná doba zpracování všech provedení dotazu, se dozvíte těch největších tyto průměry.
+   * **Sum** sečte veškerou dobu provádění dotazu pro celý interval pozorování.
+   * **Maximální počet** vyhledá dotazy, ve kterých bylo doba spuštění pro celý interval pozorování maximum.
+   * **Prům** vyhledá průměrnou dobu provádění všech provedení dotazů a v těchto průměrech zobrazuje nejvyšší hodnoty.
 
    ![Doba trvání dotazu](./media/sql-database-query-performance/top-duration.png)
 
-5. Vyberte **Přejít >** tlačítko přizpůsobené zobrazení.
+5. Kliknutím na tlačítko **přejít >** zobrazíte přizpůsobené zobrazení.
 
    > [!IMPORTANT]
-   > Úprava zobrazení dotazu neaktualizuje řádku DTU. Řádek DTU vždycky zobrazí hodnotu maximální využití pro interval.
+   > Úprava zobrazení dotazu neaktualizuje čáru DTU. Řádek DTU vždy zobrazuje maximální hodnotu spotřeby pro daný interval.
    >
-   > Abyste pochopili spotřebu DTU databáze s více podrobnostmi (až minutu), zvažte vytvoření vlastního grafu na webu Azure Portal:
+   > Pokud chcete pochopit využití DTU databáze s více podrobnostmi (až 1 minutu), zvažte vytvoření vlastního grafu v Azure Portal:
    >
    > 1. Vyberte **Azure SQL Database** > **monitorování**.
    > 2. Vyberte **Metriky**.
    > 3. Vyberte **+ přidat graf**.
-   > 4. Vyberte DTU procenta v grafu.
-   > 5. Kromě toho vyberte **posledních 24 hodin** v nabídce vlevo nahoře a změňte ji na jednu minutu.
+   > 4. Vyberte procento DTU v grafu.
+   > 5. Kromě toho vyberte v levé horní nabídce **Poslední 24 hodiny** a změňte ji na jednu minutu.
    >
-   > Doporučujeme používat vlastní graf DTU pro porovnání s grafem výkonu dotazů.
+   > Pro porovnání s grafem Performance Query doporučujeme použít vlastní graf DTU.
    >
 
-## <a name="review-top-queries-per-execution-count"></a>Projděte si nejčastější dotazy na počet spuštění
+## <a name="review-top-queries-per-execution-count"></a>Zobrazit nejčastější dotazy na počet spuštění
 
-Uživatelská aplikace, která používá databázi, může být get pomalé, i když vysoký počet spuštění nemusí být by to ovlivnilo samotná databáze a bude malé využití prostředků.
+Uživatelská aplikace, která používá databázi, může být pomalá, i když vysoký počet spuštění nemusí ovlivnit vlastní databázi a využití prostředků je nízké.
 
-V některých případech se počet vysokou provedení může vést k větší síti, zpomalí. Má zpáteční převod vliv na výkon. Jsou to v souladu s latence sítě a podřízený server latenci.
+V některých případech může vysoký počet spuštění vést k většímu počtu zpátečních cyklů sítě. Výměna cest má vliv na výkon. Vztahují se na latenci sítě a latenci podřízeného serveru.
 
-Například mnoho webů řízených daty silně přístup k databázi pro každý požadavek uživatele. Přestože sdružování připojení pomáhá zvýšení síťových přenosů a zatížení při zpracování na databázový server může snížit výkon. Obecně platí zachovejte má zpáteční převod na minimum.
+Mnoho webů založených na datech má například vysoce přístup k databázi pro každý požadavek uživatele. I když sdružování připojení pomáhá, zvýšené zatížení sítě a zatížení na databázovém serveru může zpomalit výkon. Obecně platí, že je potřeba se na minimum zacyklovat.
 
-K identifikaci často spouštěné dotazy (příliš "upovídaným"):
+Identifikujte často spouštěné dotazy ("konverzace"):
 
-1. Otevřít **vlastní** kartu v Query Performance Insight pro vybranou databázi.
-2. Změnit metriky pro **počet spuštění**.
-3. Vyberte počet dotazů a intervalu zjišťování.
-4. Vyberte **Přejít >** tlačítko přizpůsobené zobrazení.
+1. Otevřete **vlastní** kartu v Query Performance Insight pro vybranou databázi.
+2. Změňte metriky na **počet spuštění**.
+3. Vyberte počet dotazů a interval sledování.
+4. Kliknutím na tlačítko **přejít >** zobrazíte přizpůsobené zobrazení.
 
-   ![počet spuštění dotazu](./media/sql-database-query-performance/top-execution.png)
+   ![Počet spuštění dotazu](./media/sql-database-query-performance/top-execution.png)
 
-## <a name="understand-performance-tuning-annotations"></a>Výkon ladění poznámky
+## <a name="understand-performance-tuning-annotations"></a>Vysvětlení poznámek k ladění výkonu
 
-Při průzkumu vašich úloh v Query Performance Insight, můžete si všimnout ikony se zobrazuje svislá čára nad grafem.
+Při prozkoumávání úloh v Query Performance Insight můžete všimnout ikon se svislou čárou nad grafem.
 
-Tyto ikony jsou poznámky. Zobrazí se doporučení k výkonu z [služby SQL Database Advisor](sql-database-advisor.md). Podržením ukazatele myši na poznámku, můžete získat souhrnné informace o doporučení k výkonu.
+Tyto ikony jsou poznámky. Ukazují doporučení týkající se výkonu z [SQL Database Advisor](sql-database-advisor.md). Najetím myší na poznámku můžete získat souhrnné informace o doporučeních pro výkon.
 
-   ![dotaz poznámky](./media/sql-database-query-performance/annotation.png)
+   ![Poznámka k dotazu](./media/sql-database-query-performance/annotation.png)
 
-Pokud chcete lépe pochopit, nebo použijte doporučení poradce, vyberte ikonu se otevřít podrobnosti o doporučené akce. Pokud se jedná aktivní doporučení, můžete jej použít hned z portálu.
+Pokud chcete pochopit více nebo použít doporučení poradce, vyberte ikonu pro otevření podrobností o doporučené akci. Pokud se jedná o aktivní doporučení, můžete ho použít hned z portálu.
 
-   ![Podrobnosti dotazu poznámky](./media/sql-database-query-performance/annotation-details.png)
+   ![Podrobnosti poznámky k dotazu](./media/sql-database-query-performance/annotation-details.png)
 
-V některých případech se z důvodu úroveň zvětšení je možné, že poznámky blízko u sebe, jsou sbaleny do jedné poznámky. Query Performance Insight představuje to jako ikonu poznámky skupiny. Vyberte ikonu poznámky skupiny otevře nové okno se seznamem poznámky.
+V některých případech je vzhledem k úrovni přiblížení možné, že poznámky blízko sebe jsou sbaleny do jediné poznámky. Query Performance Insight představuje ikonu poznámky skupiny. Když vyberete ikonu poznámky skupiny, otevře se nové okno se seznamem poznámek.
 
-Korelace dotazů a optimalizace výkonu akcí vám můžou pomoct lépe pochopit vaše úlohy.
+Korelace dotazů a akcí ladění výkonu vám můžou usnadnit lepší pochopení vašich úloh.
 
-## <a name="optimize-the-query-store-configuration-for-query-performance-insight"></a>Optimalizovat konfiguraci Query Store pro Query Performance Insight
+## <a name="optimize-the-query-store-configuration-for-query-performance-insight"></a>Optimalizujte konfiguraci úložiště dotazů pro Query Performance Insight.
 
-Při používání Query Performance Insight, může se zobrazit následující chybové zprávy Query Store:
+Při použití Query Performance Insight se může zobrazit následující chybová zpráva v úložišti dotazů:
 
-* "Query Store není správně nakonfigurované v této databázi. Kliknutím sem se dozvíte víc."
-* "Query Store není správně nakonfigurované v této databázi. Kliknutím sem můžete změnit nastavení. "
+* "Úložiště dotazů není v této databázi správně nakonfigurováno. Pokud se chcete dozvědět víc, klikněte sem.
+* "Úložiště dotazů není v této databázi správně nakonfigurováno. Chcete-li změnit nastavení, klikněte sem. "
 
-Tyto zprávy se obvykle zobrazují, když Store dotazu nelze shromažďovat nová data.
+Tyto zprávy se obvykle zobrazují, když úložiště dotazů nemůže shromažďovat nová data.
 
-Prvním případě se stane, když Query Store je ve stavu jen pro čtení a parametry jsou optimálně nastavené. Můžete to vyřešit zvětšením velikosti úložiště dat nebo zrušením zaškrtnutí Query Store. (Pokud zrušíte dotaz Store, všechny dříve shromážděná telemetrická data se ztratí.)
+První případ se stane, když je úložiště dotazů ve stavu jen pro čtení a nastavení parametrů je optimální. Můžete to opravit zvětšením velikosti úložiště dat nebo vymazáním úložiště dotazů. (Pokud smažete úložiště dotazů, všechna dřív shromážděná telemetrie budou ztracena.)
 
-   ![Podrobnosti dotazu Store](./media/sql-database-query-performance/qds-off.png)
+   ![Podrobnosti úložiště dotazů](./media/sql-database-query-performance/qds-off.png)
 
-Druhý případ se stane, když Store dotazu není povolena, nebo parametry nejsou nastavené optimálně. Můžete změnit zásady uchovávání informací a sběr dat a také povolit Query Store spuštěním následujících příkazů poskytované [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo na webu Azure portal.
+Druhý případ nastane, pokud není úložiště dotazů povolené, nebo nejsou parametry nastavené optimálně. Můžete změnit zásady uchovávání a zachytávání a také povolit úložiště dotazů spuštěním následujících příkazů poskytovaných z [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo Azure Portal.
 
-### <a name="recommended-retention-and-capture-policy"></a>Doporučené zásady uchovávání informací a zachycení
+### <a name="recommended-retention-and-capture-policy"></a>Doporučené zásady uchovávání a zachytávání
 
 Existují dva typy zásad uchovávání informací:
 
-* **Velikost na základě**: Pokud tato zásada je nastavená na **AUTOMATICKY**, vyčistí data automaticky, když je dosaženo téměř maximální velikost.
-* **Čas na základě**: Ve výchozím nastavení tato zásada nastavená na 30 dnů. Pokud dotaz Store místa, odstraní dotazu informace, které jsou starší než 30 dní.
+* **Na základě velikosti**: Pokud je tato zásada nastavená na hodnotu **automaticky**, vyčistí se data automaticky, pokud je dosaženo maximální velikosti.
+* **Na základě času**: Ve výchozím nastavení je tato zásada nastavená na 30 dní. Pokud dojde místo na úložišti dotazů, odstraní se informace o dotazu starší než 30 dní.
 
-Zachycení zásady můžete nastavit na:
+Zásady zachytávání můžete nastavit na:
 
-* **Všechny**: Query Store zachycuje všechny dotazy.
-* **Automatické**: Query Store ignoruje málo časté dotazy a dotazy s dobou trvání nevýznamné kompilace a spuštění. Prahové hodnoty pro počet spuštění kompilace doba trvání a doba trvání běhu se určují interně. Toto je výchozí možnost.
-* **Žádný**: Query Store zastaví sběr nové dotazy, ale budou stále shromažďovat statistické údaje o již zachycené dotazů.
+* **Vše**: Úložiště dotazů zachycuje všechny dotazy.
+* **Automaticky**: Úložiště dotazů ignoruje nečasté dotazy a dotazy s nevýznamnou kompilací a dobou trvání spuštění. Prahové hodnoty pro počet spuštění, dobu trvání kompilace a dobu běhu jsou interně určeny. Toto je výchozí možnost.
+* **Žádný**: Úložiště dotazů zastaví zachytávání nových dotazů, ale statistiky za běhu pro už zachycené dotazy se shromažďují stále.
 
-Doporučujeme nastavit všechny zásady na **AUTOMATICKY** a čisticí zásadu do 30 dnů spuštěním následujících příkazů z [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo na webu Azure portal. (Nahradit `YourDB` s názvem databáze.)
+Doporučujeme nastavit všechny zásady na **Automatické** a zásady čištění na 30 dní, a to spuštěním následujících příkazů z [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo Azure Portal. (Nahraďte `YourDB` názvem databáze.)
 
 ```sql
     ALTER DATABASE [YourDB]
@@ -259,17 +258,17 @@ Doporučujeme nastavit všechny zásady na **AUTOMATICKY** a čisticí zásadu d
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
 ```
 
-Zvětšete velikost Query Store propojíte databázi prostřednictvím [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo na webu Azure portal a spusťte následující dotaz. (Nahradit `YourDB` s názvem databáze.)
+Zvyšte velikost úložiště dotazů připojením k databázi prostřednictvím [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo Azure Portal a spuštěním následujícího dotazu. (Nahraďte `YourDB` názvem databáze.)
 
 ```T-SQL
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 ```
 
-Použití těchto nastavení bude nakonec Query Store shromažďovat telemetrii pro nové dotazy. Pokud potřebujete Query Store byla okamžitě funkční, můžete volitelně vymazat Query Store spuštěním následujícího dotazu pomocí aplikace SSMS nebo na webu Azure portal. (Nahradit `YourDB` s názvem databáze.)
+Použití těchto nastavení způsobí, že úložiště dotazů shromáždí telemetrii pro nové dotazy. Pokud potřebujete, aby úložiště dotazů bylo hned funkční, můžete volitelně zvolit vymazání úložiště dotazů spuštěním následujícího dotazu prostřednictvím SSMS nebo Azure Portal. (Nahraďte `YourDB` názvem databáze.)
 
 > [!NOTE]
-> Spuštění následujícího dotazu se odstraní všechny dříve shromážděná monitorovaných telemetrie v Query Store.
+> Spuštěním následujícího dotazu se odstraní všechna dříve shromážděná telemetrie v úložišti dotazů.
 
 ```SQL
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
@@ -277,14 +276,14 @@ Použití těchto nastavení bude nakonec Query Store shromažďovat telemetrii 
 
 ## <a name="summary"></a>Souhrn
 
-Query Performance Insight vám pomůže pochopit vliv zatížení dotazy a toho, jak souvisí spotřeba databázových prostředků. Pomocí této funkce získáte informace o využívání horní dotazy na vaši databázi a najdete tu dotazy k optimalizaci předtím, než začnou způsobovat potíže.
+Query Performance Insight vám pomůže pochopit dopad úloh na dotazy a informace o tom, jak souvisí s spotřebou databázových prostředků. S touto funkcí se dozvíte o hlavních dotazech v databázi a získáte dotazy, které se mají optimalizovat, než se stanou problémem.
 
 ## <a name="next-steps"></a>Další postup
 
-* Doporučení k výkonu databáze, vyberte [doporučení](sql-database-advisor.md) v navigačním podokně Query Performance Insight.
+* V případě doporučení pro výkon databáze vyberte v okně Query Performance Insight navigační okno [doporučení](sql-database-advisor.md) .
 
-    ![Na kartě Recommendations](./media/sql-database-query-performance/ia.png)
+    ![Karta doporučení](./media/sql-database-query-performance/ia.png)
 
-* Zvažte povolení [automatické ladění](sql-database-automatic-tuning.md) pro běžné problémy s výkonem databáze.
-* Zjistěte, jak [Intelligent Insights](sql-database-intelligent-insights.md) pomáhá automaticky řešit problémy s výkonem databáze.
-* Zvažte použití [Azure SQL Analytics]( ../azure-monitor/insights/azure-sql.md) Upřesnit monitorování velkého počtu databáze, elastické fondy a spravované instance SQL s integrovanými inteligentními funkcemi.
+* Zvažte možnost povolit [Automatické ladění](sql-database-automatic-tuning.md) pro běžné problémy s výkonem databáze.
+* Přečtěte si, jak [Intelligent Insights](sql-database-intelligent-insights.md) můžou pomoct automaticky řešit problémy s výkonem databáze.
+* Zvažte použití [Azure SQL Analytics]( ../azure-monitor/insights/azure-sql.md) pro pokročilé monitorování výkonu rozsáhlých LOĎSTEV databází SQL, elastických fondů a spravovaných instancí s integrovanými inteligentními funkcemi.

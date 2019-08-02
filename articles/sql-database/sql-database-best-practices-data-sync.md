@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy pro synchronizaci dat SQL Azure | Dokumentace Microsoftu
-description: Další informace o osvědčené postupy pro konfiguraci a spuštění synchronizace dat SQL Azure.
+title: Osvědčené postupy pro Azure Synchronizace dat SQL | Microsoft Docs
+description: Seznamte se s osvědčenými postupy pro konfiguraci a provozování Azure Synchronizace dat SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -10,232 +10,231 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 0b1e3b98fe5b934b712db2a5549ebdc865523bfb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01962770c011a0107abd4e035c25d6c0d45fa0a0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61412559"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569379"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Osvědčené postupy pro synchronizaci dat SQL 
 
-Tento článek popisuje osvědčené postupy pro synchronizaci dat SQL Azure.
+Tento článek popisuje osvědčené postupy pro Azure Synchronizace dat SQL.
 
 Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](sql-database-sync-data.md).
 
 > [!IMPORTANT]
-> Azure SQL Data synchronizace provádí vložení změn **není** v tuto chvíli podporován Azure SQL Database Managed Instance.
+> Azure Synchronizace dat SQL v tuto **chvíli nepodporuje spravovanou** instanci Azure SQL Database.
 
-## <a name="security-and-reliability"></a> Zabezpečení a spolehlivost
+## <a name="security-and-reliability"></a>Zabezpečení a spolehlivost
 
-### <a name="client-agent"></a>Klientský agent aktualizace softwaru
+### <a name="client-agent"></a>Agent klienta
 
--   Nainstalujte agenta klienta s použitím nejméně privilegovaný uživatelský účet, který má přístup k síťové službě.  
--   Nainstalujte agenta klienta na počítač, který není v místním počítači systému SQL Server.  
--   Nezaregistrujete místní databáze s více než jednoho agenta.    
-    -   Vyhněte se to i v případě, že se synchronizují různých tabulek pro různé synchronizace skupiny.  
-    -   Registrace v místní databázi s více výzev představuje agenty klientů při odstranění skupiny synchronizace.
+-   Nainstalujte klientského agenta pomocí nejmenšího privilegovaného uživatelského účtu, který má přístup k síťové službě.  
+-   Nainstalujte agenta klienta na počítač, který není místním SQL Serverm počítačem.  
+-   Neregistrujte místní databázi s více než jedním agentem.    
+    -   Vyhněte se tomu i v případě, že synchronizujete různé tabulky pro různé skupiny synchronizace.  
+    -   Registrace místní databáze s více agenty klienta představuje problémy při odstraňování jedné ze skupin synchronizace.
 
-### <a name="database-accounts-with-least-required-privileges"></a>Účty databází s nejnižší požadovaná oprávnění
+### <a name="database-accounts-with-least-required-privileges"></a>Účty databáze s minimálními požadovanými oprávněními
 
 -   **Pro nastavení synchronizace**. Vytvořit nebo Alter Table; Příkaz ALTER Database; Vytvořit proceduru; Vybrat / Alter schématu; Vytvořte uživatelsky definovaný typ.
 
--   **Pro průběžnou synchronizaci**. Vyberte / Vložit / aktualizace / odstranění tabulek, které jsou vybrány pro synchronizaci a synchronizovat metadata a sledování tabulkách. Oprávnění spouštět na uložené procedury, které jsou vytvořené službou. Spusťte oprávnění pro uživatelem definované typy.
+-   **Pro průběžnou synchronizaci**. Výběr/vložení/aktualizace/odstranění u tabulek, které jsou vybrány pro synchronizaci a pro synchronizaci metadat a sledovacích tabulek; Oprávnění EXECUTE pro uložené procedury vytvořené službou; Oprávnění EXECUTE pro uživatelsky definované typy tabulek.
 
--   **Pro zrušení zřízení**. Příkaz ALTER na tabulky součást synchronizace; Vyberte / odstranit v tabulkách metadat synchronizace. Ovládací prvek při synchronizaci sledování tabulky, uložených procedur a uživatelem definovaných typů.
+-   **Pro zrušení zřízení**. Upravit v tabulkách, které jsou součástí synchronizace; Vybrat/odstranit při synchronizaci tabulek metadat; Řízení pro tabulky sledování synchronizace, uložené procedury a uživatelsky definované typy.
 
-Azure SQL Database podporuje pouze jedinou sadu přihlašovacích údajů. K provedení těchto úloh v rámci tohoto omezení, zvažte následující možnosti:
+Azure SQL Database podporuje pouze jednu sadu přihlašovacích údajů. K provedení těchto úloh v rámci tohoto omezení Vezměte v úvahu následující možnosti:
 
--   Změna přihlašovacích údajů pro jednotlivé fáze (například *credentials1* pro instalační program a *credentials2* pro probíhající).  
--   Změnit oprávnění přihlašovací údaje (to znamená, změňte oprávnění po nastavení synchronizace).
+-   Změňte přihlašovací údaje pro různé fáze (například *credentials1* pro nastavení a *credentials2* pro průběžné).  
+-   Změňte oprávnění přihlašovacích údajů (to znamená změnit oprávnění po nastavení synchronizace).
 
 ## <a name="setup"></a>Instalace
 
-### <a name="database-considerations-and-constraints"></a> Důležité informace o databázi a omezení
+### <a name="database-considerations-and-constraints"></a>Hlediska databáze a omezení
 
 #### <a name="sql-database-instance-size"></a>Velikost instance SQL Database
 
-Když vytvoříte novou instanci SQL Database, nastavte maximální velikost tak, aby se vždy větší než databáze, kterou nasadíte. Pokud nenastavíte maximální velikost pro větší než nasazené databáze, synchronizace se nezdaří. I když se synchronizací dat SQL nenabízí automatického zvětšování, můžete spustit `ALTER DATABASE` příkaz zvýšit velikost databáze po jeho vytvoření. Ujistěte se, že se vejdete do omezení velikosti instance SQL Database.
+Při vytváření nové instance SQL Database nastavte maximální velikost tak, aby byla vždy větší než databáze, kterou nasazujete. Pokud nenastavíte maximální velikost na větší než nasazenou databázi, synchronizace se nezdařila. I když synchronizace dat SQL nenabízí Automatický růst, můžete spuštěním `ALTER DATABASE` příkazu zvětšit velikost databáze po jejím vytvoření. Ujistěte se, že zůstanete v rámci omezení velikosti instance SQL Database.
 
 > [!IMPORTANT]
-> Synchronizace dat SQL ukládá další metadata s každou databázi. Ujistěte se, když počítáte potřebné místo na účet pro tato metadata. Přidání množství režie související s šířka tabulky (například úzký tabulky vyžadují vyšší mírou režie) a objemu provozu.
+> Synchronizace dat SQL ukládá další metadata s každou databází. Ujistěte se, že při výpočtu potřebného místa budete mít k těmto metadatům účet. Množství přidaných režijních nákladů se vztahuje k šířce tabulek (například úzká tabulka vyžaduje větší režii) a množství provozu.
 
-### <a name="table-considerations-and-constraints"></a> Tabulka aspektů a omezení
+### <a name="table-considerations-and-constraints"></a>Požadavky na tabulku a omezení
 
-#### <a name="selecting-tables"></a>Výběr tabulky
+#### <a name="selecting-tables"></a>Výběr tabulek
 
-Není nutné zahrnout všechny tabulky, které jsou v databázi ve skupině synchronizace. Tabulky, které patří do skupiny synchronizace ovlivnit efektivitu a náklady. Zahrnují tabulky a tabulky, které jsou závislé na, ve skupině synchronizace pouze v případě, že obchodní potřeby vyžadují ho.
+Nemusíte zahrnovat všechny tabulky, které jsou v databázi ve skupině synchronizace. Tabulky, které zahrnete do skupiny synchronizace, mají vliv na efektivitu a náklady. Zahrnutí tabulek a tabulek, na kterých jsou závislé, ve skupině synchronizace pouze v případě, že je vyžaduje obchodní potřeby.
 
 #### <a name="primary-keys"></a>Primární klíče
 
-Každá tabulka ve skupině synchronizace musí mít primární klíč. Synchronizace dat SQL service nemůže synchronizovat tabulku, která nemá primární klíč.
+Každá tabulka ve skupině synchronizace musí mít primární klíč. Služba Synchronizace dat SQL nemůže synchronizovat tabulku, která nemá primární klíč.
 
-Než začnete používat synchronizaci dat SQL v produkčním prostředí, testování výkonu počáteční a průběžné synchronizace.
+Před použitím Synchronizace dat SQL v produkčním prostředí, počátečním a probíhajícím výkonem synchronizace.
 
 #### <a name="empty-tables-provide-the-best-performance"></a>Prázdné tabulky poskytují nejlepší výkon
 
-Prázdné tabulky poskytují nejlepší výkon během inicializace. Pokud cílová tabulka je prázdná, synchronizaci dat používá příkaz bulk insert a načíst data. V opačném případě synchronizace dat provádí porovnání řádek po řádku a vložení ke kontrole konfliktů. Pokud výkon není žádný problém, ale je můžete nastavit synchronizaci mezi tabulkami, které již obsahují data.
+Prázdné tabulky poskytují nejlepší výkon v době inicializace. Pokud je cílová tabulka prázdná, synchronizace dat načte data pomocí hromadného vložení. V opačném případě synchronizace dat provede porovnání řádek po řádku a vložení pro kontrolu konfliktů. Pokud se ale výkon netýká, můžete nastavit synchronizaci mezi tabulkami, které už data obsahují.
 
-### <a name="provisioning-destination-databases"></a> Zřizování cílové databáze
+### <a name="provisioning-destination-databases"></a>Zřizování cílových databází
 
-Synchronizace dat SQL poskytuje autoprovisioning databáze basic.
+Synchronizace dat SQL poskytuje základní zřizování databáze.
 
-Tato část popisuje omezení pro zřizování v synchronizaci dat SQL.
+Tato část popisuje omezení zřizování v Synchronizace dat SQL.
 
-#### <a name="autoprovisioning-limitations"></a>Omezení Autoprovisioning
+#### <a name="autoprovisioning-limitations"></a>Omezení pro autozřizování
 
-Synchronizace dat SQL má následující omezení pro autoprovisioning:
+Synchronizace dat SQL má při autozřizování následující omezení:
 
--   Vyberte sloupce, které jsou vytvořeny v cílové tabulce. Všechny sloupce, které nejsou součástí skupiny synchronizace nezřídil do cílových tabulek.
--   Indexy jsou vytvořeny pouze pro vybrané sloupce. Pokud zdrojové tabulky indexu má sloupce, které nejsou součástí skupiny synchronizace, tyto indexy nejsou zřízené v cílových tabulek.  
--   Indexy na sloupce typu XML nejsou zřízené.  
--   ZKONTROLUJTE, že omezení není zřízený.  
--   Existující aktivačních událostí zdrojových tabulkách nejsou zřízené.  
--   Zobrazení a uložených procedur nejsou vytvořeny v cílové databázi.
--   NA UPDATE CASCADE a ON DELETE CASCADE akce na omezení cizího klíče nejsou znovu vytvořit v cílových tabulek.
--   Pokud máte sloupce desítkový nebo číselný s přesností vetší než 28, synchronizaci dat SQL setkat problému Přetečení převodu během synchronizace. Doporučujeme omezit přesnosti desítkový nebo číselný sloupce na 28 nebo méně.
+-   Vyberte pouze sloupce, které jsou vytvořeny v cílové tabulce. Všechny sloupce, které nejsou součástí skupiny synchronizace, nejsou v cílových tabulkách zřízeny.
+-   Indexy jsou vytvořeny pouze pro vybrané sloupce. Pokud má index zdrojové tabulky sloupce, které nejsou součástí skupiny synchronizace, tyto indexy nejsou v cílových tabulkách zřízeny.  
+-   Indexy ve sloupcích typu XML nejsou zřízeny.  
+-   KONTROLNÍ omezení nejsou zřízená.  
+-   Existující triggery ve zdrojových tabulkách nejsou zřízené.  
+-   Zobrazení a uložené procedury nejsou v cílové databázi vytvořeny.
+-   Při aktualizaci na sebe a při odstraňování KASKÁDových akcí u omezení cizího klíče se v cílových tabulkách znovu nevytvoří.
+-   Pokud máte desetinné nebo číselné sloupce s přesností větší než 28, Synchronizace dat SQL může při synchronizaci dojít k potížím s přetečením převodu. Doporučujeme, abyste omezili přesnost desetinných nebo číselných sloupců na 28 nebo méně.
 
 #### <a name="recommendations"></a>Doporučení
 
--   Použijte funkci autoprovisioning synchronizace dat SQL pouze v případě, že jsou vyzkoušejte si službu.  
--   Pro produkční prostředí zřizování schématu databáze.
+-   Možnost autozřizování Synchronizace dat SQL použijte pouze při vyzkoušení služby.  
+-   V produkčním prostředí zřiďte schéma databáze.
 
-### <a name="locate-hub"></a> Umístění databáze centra
+### <a name="locate-hub"></a>Kde najít databázi centra
 
-#### <a name="enterprise-to-cloud-scenario"></a>Scénáře podnikového cloudu
+#### <a name="enterprise-to-cloud-scenario"></a>Scénář pro použití v rámci cloudu
 
-Abyste minimalizovali latenci, ponechte databázi centra blízko největší zaměření provozu databáze skupinu synchronizace.
+Aby se minimalizovala latence, udržujte databázi centra blízkou největší koncentraci provozu databáze skupiny synchronizace.
 
-#### <a name="cloud-to-cloud-scenario"></a>Scénář cloud-to-cloud
+#### <a name="cloud-to-cloud-scenario"></a>Scénář cloudu do cloudu
 
--   Pokud jsou všechny databáze ve skupině synchronizace v jednom datacentru, rozbočovače musí nacházet ve stejném datacentru. Tato konfigurace snižuje latence a nákladů za přenos dat mezi datovými centry.
--   Jsou-li databáze ve skupině synchronizace v několika datových centrech, rozbočovače musí nacházet ve stejném datacentru jako většina databází a provozu databáze.
+-   Pokud jsou všechny databáze ve skupině synchronizace v jednom datovém centru, má se centrum nacházet ve stejném datovém centru. Tato konfigurace snižuje latenci a náklady na přenos dat mezi datacentry.
+-   Pokud jsou databáze ve skupině synchronizace v několika datových centrech, musí být rozbočovač umístěný ve stejném datovém centru jako většina databází a přenosů databáze.
 
-#### <a name="mixed-scenarios"></a>Hybridní scénáře
+#### <a name="mixed-scenarios"></a>Smíšené scénáře
 
-Platí výše uvedených pokynů pro komplexní synchronizace konfigurace skupiny, jako jsou ty, které jsou kombinací scénářích podnikový cloud a cloud-to-cloud.
+Použijte předchozí pokyny ke komplexním konfiguracím skupin synchronizace, jako jsou ty, které jsou kombinací podnikových scénářů a scénářů cloudu do cloudu.
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>Synchronizovat
 
-### <a name="avoid-a-slow-and-costly-initial-synchronization"></a> Vyhněte se pomalé a nákladná počáteční synchronizace
+### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>Vyhněte se pomalé a nákladné počáteční synchronizaci
 
-V této části se podíváme na počáteční synchronizace skupiny synchronizace. Zjistěte, jak zabránit počáteční synchronizaci ze služeb trvá déle a jsou dražší než nezbytné.
+V této části se podíváme na počáteční synchronizaci skupiny synchronizace. Naučte se, jak zajistit, aby počáteční synchronizace trvala déle, než je potřeba.
 
-#### <a name="how-initial-sync-works"></a>Funguje jak počáteční synchronizace
+#### <a name="how-initial-sync-works"></a>Jak funguje úvodní synchronizace
 
-Když vytvoříte skupinu synchronizace, začněte s daty v jediné databázi. Pokud máte data ve více databázích, synchronizaci dat SQL považuje za každý řádek, který je potřeba vyřešit konflikt. Toto řešení konfliktů způsobí, že počáteční synchronizace přejít pomalu. Pokud máte data ve více databázích, počáteční synchronizace může trvat několik dní až několik měsíců, v závislosti na velikosti databáze.
+Když vytvoříte skupinu synchronizace, začněte s daty jenom v jedné databázi. Pokud máte data ve více databázích, Synchronizace dat SQL považuje každý řádek za konflikt, který je potřeba vyřešit. Toto řešení konfliktů způsobuje zpomalení počáteční synchronizace. Pokud máte data ve více databázích, počáteční synchronizace může trvat několik dní a několik měsíců v závislosti na velikosti databáze.
 
-Pokud jsou databáze v různých datových centrech, musí projít každý řádek mezi různých datových centrech. Tím se zvyšuje náklady na počáteční synchronizace.
+Pokud jsou databáze v různých datových centrech, musí každý řádek cestovat mezi různými datacentry. Tím se zvýší náklady na počáteční synchronizaci.
 
 #### <a name="recommendation"></a>Doporučení
 
-Pokud je to možné začněte s data pouze v jedné skupině synchronizace databáze.
+Pokud je to možné, začněte s daty jenom v jedné z databází skupiny synchronizace.
 
-### <a name="design-to-avoid-synchronization-loops"></a> Návrh předejděte smyčkám synchronizace
+### <a name="design-to-avoid-synchronization-loops"></a>Návrh, aby nedocházelo ke smyčkám synchronizace
 
-Synchronizace smyčky nastane, pokud jsou cyklické odkazy v rámci skupiny synchronizace. V takovém scénáři každou změnu v jedné databázi se nekonečna a sama na sebe replikuje prostřednictvím databázemi ve skupině synchronizace.   
+Ke smyčce synchronizace dojde v případě, že v rámci skupiny synchronizace existují cyklické odkazy. V takovém případě jsou všechny změny v jedné databázi nekonečné a cyklicky replikovány prostřednictvím databází ve skupině synchronizace.   
 
-Ujistěte se vyhnout smyčky synchronizace, protože způsobit snížení výkonu a může se výrazně zvýšit náklady.
+Ujistěte se, že se vyhnete smyčkám synchronizace, protože způsobují snížení výkonu a můžou významně zvýšit náklady.
 
-### <a name="handling-changes-that-fail-to-propagate"></a> Změny, které se nepodařilo rozšířit
+### <a name="handling-changes-that-fail-to-propagate"></a>Změny, které se nedaří rozšířit
 
-#### <a name="reasons-that-changes-fail-to-propagate"></a>Z důvodů, které se nepodařilo šíření změn
+#### <a name="reasons-that-changes-fail-to-propagate"></a>Důvody selhání rozšíření změn
 
-Změny se nemusí podařit šířit z jednoho z následujících důvodů:
+Změny se můžou nedaří rozšířit z některého z následujících důvodů:
 
 -   Nekompatibilita schématu/datového typu.
--   Vkládání do sloupce nepřipouštějící hodnotu null.
+-   Vkládání hodnoty null do sloupců, které nejsou null.
 -   Porušení omezení cizího klíče.
 
-#### <a name="what-happens-when-changes-fail-to-propagate"></a>Co se stane, když dojde k selhání změny rozšíření?
+#### <a name="what-happens-when-changes-fail-to-propagate"></a>Co se stane, když se změny nepodaří rozšířit?
 
--   Synchronizovat skupiny odhalí se **upozornění** stavu.
--   Podrobnosti jsou uvedené v portálu log vieweru uživatelského rozhraní.
--   Pokud se problém nevyřeší 45 dní, se změní aktuální databázi.
+-   Skupina synchronizace ukazuje, že je ve stavu **Upozornění** .
+-   Podrobnosti jsou uvedeny v prohlížeči protokolu uživatelského rozhraní portálu.
+-   Pokud se problém nevyřeší po 45 dnů, bude databáze zastaralá.
 
 > [!NOTE]
-> Tyto změny se nikdy rozšíří. Jediný způsob, jak obnovit v tomto scénáři je znovu vytvořit skupinu synchronizace.
+> Tyto změny se nikdy nešíří. Jediným způsobem, jak obnovit tento scénář, je znovu vytvořit skupinu synchronizace.
 
 #### <a name="recommendation"></a>Doporučení
 
-Monitorování stavu skupiny a databáze synchronizace pravidelně prostřednictvím rozhraní portálu a protokolu.
+Pravidelně monitorujte skupinu synchronizace a stav databáze prostřednictvím portálu a rozhraní protokolů.
 
 
 ## <a name="maintenance"></a>Údržba
 
-### <a name="avoid-out-of-date-databases-and-sync-groups"></a> Vyhněte se zastaralý databází a synchronizovat skupiny
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a>Vyhněte se neaktuálním databázím a skupinám synchronizace
 
-Skupina synchronizace nebo databáze ve skupině synchronizace může být zastaralá. Pokud je stav skupiny synchronizace **zastaralé**, přestane fungovat. Pokud je stav vaší databáze **zastaralé**, data budou ztracena. Doporučujeme, aby tento scénář namísto pokusu o obnovení z něj.
+Skupina synchronizace nebo databáze ve skupině synchronizace může být zastaralá. Když je stav skupiny synchronizace neaktuální, přestane fungovat. Je **-** li stav databáze zastaralá, může dojít ke ztrátě dat. Doporučujeme vyhnout se tomuto scénáři místo toho, abyste se museli pokoušet o zotavení z něj.
 
-#### <a name="avoid-out-of-date-databases"></a>Vyhněte se zastaralý databází
+#### <a name="avoid-out-of-date-databases"></a>Vyhněte se zastaralým databázím
 
-Stav databáze je nastaven na **zastaralé** při jejím offline pro 45 dnů nebo déle. Aby se zabránilo **zastaralé** stav na databázi, zajistěte, aby žádná z databází byly offline pro 45 dnů nebo déle.
+Stav databáze je nastaven na neaktuální , pokud byl offline až 45 dní nebo déle. Abyste se vyhnuli zastaralému stavu v databázi, zajistěte, aby žádná z databází nebyla v režimu 45 dní nebo déle offline.
 
-#### <a name="avoid-out-of-date-sync-groups"></a>Vyhněte se skupiny synchronizace. zastaralé
+#### <a name="avoid-out-of-date-sync-groups"></a>Vyhněte se neaktuálním skupinám synchronizace
 
-Skupina synchronizace stav nastaven na **zastaralé** případě změny ve skupině synchronizace nezdaří rozšíří na zbytek skupiny synchronizace pro 45 dnů nebo déle. Aby se zabránilo **zastaralé** skupinu synchronizace historie protokolu pravidelně Kontrola stavu pro skupinu synchronizace. Ujistěte se, že jsou vyřešeny všechny konflikty. proto, že se změny úspěšně rozšíří v rámci databáze skupiny synchronizace.
+Stav skupiny synchronizace je nastaven na hodnotu **zastaralé** , pokud se kterákoli změna ve skupině synchronizace nedokáže rozšířit do zbytku skupiny synchronizace po dobu 45 nebo více dní. Aby se zabránilo **zastaralému** stavu ve skupině synchronizace, pravidelně ověřte protokol historie synchronizační skupiny. Zajistěte, aby byly vyřešeny všechny konflikty, a zda byly změny úspěšně šířeny v rámci databáze skupiny synchronizace.
 
-Skupina synchronizace se nemusí podařit použít ke změně jednoho z těchto důvodů:
+Skupina synchronizace může selhat při použití změny jednoho z těchto důvodů:
 
--   Schéma nekompatibility mezi tabulkami.
--   Data nekompatibility mezi tabulkami.
--   Vložení řádků s hodnotou null ve sloupci, který nepovoluje hodnoty null.
--   Aktualizuje se řádek s hodnotou, která porušuje omezení pro cizí klíč.
+-   Nekompatibilita schématu mezi tabulkami.
+-   Nekompatibilita dat mezi tabulkami.
+-   Vložení řádku s hodnotou null ve sloupci, který nepovoluje hodnoty null.
+-   Aktualizace řádku s hodnotou, která je v rozporu s omezením cizího klíče.
 
-Aby se zabránilo skupiny synchronizace. aktuální:
+Chcete-li zabránit neaktuálním skupinám synchronizace:
 
--   Aktualizujte schéma pro povolení hodnot, které jsou obsaženy v řádcích se nezdařilo.
--   Aktualizujte hodnoty cizího klíče zahrnout hodnoty, které jsou obsaženy v řádcích se nezdařilo.
--   Aktualizujte hodnoty data v řádku selhání tak, aby byly kompatibilní s schématu nebo cizí klíče v cílové databázi.
+-   Aktualizujte schéma tak, aby povolovalo hodnoty, které jsou obsaženy v neúspěšných řádcích.
+-   Aktualizujte hodnoty cizího klíče tak, aby zahrnovaly hodnoty, které jsou obsaženy v neúspěšných řádcích.
+-   Aktualizujte hodnoty dat v neúspěšném řádku tak, aby byly kompatibilní se schématem nebo cizími klíči v cílové databázi.
 
-### <a name="avoid-deprovisioning-issues"></a> Vyhněte se zrušení zřízení problémy
+### <a name="avoid-deprovisioning-issues"></a>Vyhněte se problémům s rušením zřizování
 
-V některých případech zrušení registrace databáze s Klientský agent může dojít k selhání synchronizace.
+V některých případech může zrušení registrace databáze u agenta klienta způsobit selhání synchronizace.
 
 #### <a name="scenario"></a>Scénář
 
-1. Skupina synchronizace A byl vytvořen pomocí instance SQL Database a k místní databázi SQL serveru, který je přidružený k místní agent je 1.
-2. Místní agent 2 (Tento agent není přidružené žádné skupiny synchronizace) je zaregistrován stejné místní databáze.
-3. Zrušení registrace v místní databázi z místní agent 2 odebere sledování a synchronizovat metadata tabulky pro skupiny A pro místní databáze.
-4. Operace A skupiny synchronizace selhat s touto chybou: "Aktuální operaci nelze dokončit, protože databáze není zřízený pro synchronizaci, nebo nemáte oprávnění k tabulkám, konfigurace synchronizace."
+1. Skupina synchronizace A byla vytvořena pomocí instance SQL Database a místní databáze SQL Server, která je přidružena k místnímu agentovi 1.
+2. Stejná místní databáze je zaregistrovaná u místního agenta 2 (Tento agent není přidružený k žádné skupině synchronizace).
+3. Zrušení registrace místní databáze z místního agenta 2 odebere sledování a meta tabulky pro skupinu synchronizace a pro místní databázi.
+4. Skupina synchronizace A operace se nezdaří, došlo k této chybě: "Aktuální operaci nelze dokončit, protože databáze není zřízená pro synchronizaci, nebo nemáte oprávnění k tabulkám konfigurace synchronizace."
 
 #### <a name="solution"></a>Řešení
 
-Abyste předešli této situaci, nezaregistrujete databáze s více než jednoho agenta.
+Chcete-li se tomuto scénáři vyhnout, neregistrujte databázi s více než jedním agentem.
 
-Obnovit z tohoto scénáře:
+Postup obnovení z tohoto scénáře:
 
-1. Odebrání všech skupin synchronizace, který patří do databáze.  
-2. Přidejte databázi zpět do všech skupin synchronizace, který jste odebrali z.  
-3. Nasazení všech skupin ovlivněné synchronizace (Tato akce zřizuje databázi).  
+1. Odeberte databázi ze všech skupin synchronizace, do kterých patří.  
+2. Přidejte databázi zpátky do každé skupiny synchronizace, ze které jste ji odebrali.  
+3. Nasaďte každou ovlivněnou skupinu synchronizace (Tato akce zřídí databázi).  
 
-### <a name="modifying-your-sync-group"></a> Úprava skupiny synchronizace
+### <a name="modifying-your-sync-group"></a>Úprava skupiny synchronizace
 
-Nepokoušejte se odebrat databázi ze skupiny synchronizace a pak upravte skupinu synchronizace bez první nasazování změn.
+Nepokoušejte se odebrat databázi ze skupiny synchronizace a pak upravit skupinu synchronizace, aniž byste nejdřív nasadili jednu ze změn.
 
-Nejprve odeberte místo toho databázi ze skupiny synchronizace. Potom nasaďte změnu a počkejte na dokončení zrušení zřízení. Po dokončení zrušení zřízení můžete upravit skupinu synchronizace a změny nasazení.
+Místo toho nejprve odeberte databázi ze skupiny synchronizace. Pak nasaďte změnu a počkejte na dokončení zrušení zřízení. Po dokončení zrušení zřízení můžete upravit skupinu synchronizace a nasadit změny.
 
-Při pokusu o odebrání databáze a potom upravit skupinu synchronizace bez první nasazování změn, jeden nebo jiné operace selže. Rozhraní portálu může být nekonzistentní. Pokud k tomu dojde, aktualizujte stránku k obnovení stavu správné.
+Pokud se pokusíte odebrat databázi a pak upravit skupinu synchronizace, aniž byste nejdřív nasadili jednu ze změn, jedna nebo jiná operace se nezdaří. Rozhraní portálu může být nekonzistentní. Pokud k tomu dojde, aktualizujte stránku, aby obnovila správný stav.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o synchronizaci dat SQL najdete v tématu:
+Další informace o Synchronizace dat SQL najdete v tématech:
 
--   Přehled – [synchronizaci dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL Azure](sql-database-sync-data.md)
+-   Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí Azure synchronizace dat SQL](sql-database-sync-data.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurzu: Nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním](sql-database-get-started-sql-data-sync.md)
+    - Na portálu – [kurz: Nastavení Synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním prostředí](sql-database-get-started-sql-data-sync.md)
     - S využitím PowerShellu
         -  [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Agent – synchronizace dat [Data synchronizovat Agent pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
--   Monitorování – [protokoly monitorování synchronizace dat SQL pomocí Azure monitoru](sql-database-sync-monitor-oms.md)
--   Řešení potíží – [řešení potíží se synchronizací dat SQL Azure](sql-database-troubleshoot-data-sync.md)
--   Aktualizovat schéma synchronizace
-    -   Pomocí příkazů jazyka Transact-SQL - [automatizace replikace změn schématu synchronizace dat SQL Azure](sql-database-update-sync-schema.md)
-    -   Pomocí Powershellu – [aktualizovat schéma synchronizace ve stávající skupině synchronizace pomocí Powershellu](scripts/sql-database-sync-update-schema.md)
+-   Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](sql-database-sync-monitor-oms.md)
+-   Řešení potíží – [řešení potíží s Azure synchronizace dat SQL](sql-database-troubleshoot-data-sync.md)
+-   Aktualizace schématu synchronizace
+    -   Pomocí jazyka Transact-SQL – [Automatizace replikace změn schématu v Azure synchronizace dat SQL](sql-database-update-sync-schema.md)
+    -   Prostředí PowerShell – [použití PowerShellu k aktualizaci schématu synchronizace v existující skupině synchronizace](scripts/sql-database-sync-update-schema.md)
 
-Další informace o službě SQL Database najdete v tématu:
+Další informace o SQL Database najdete v tématech:
 
 -   [Přehled SQL Database](sql-database-technical-overview.md)
 -   [Správa životního cyklu databáze](https://msdn.microsoft.com/library/jj907294.aspx)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01a9cc4ec4788422337b77b285ed8ee440f6acd4
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 3ebeed3636ea6da77e05a9a790e51c7771ebe685
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346903"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666290"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -32,7 +32,13 @@ V rámci fáze auditu mnoho organizací zjistí, že:
 * Uživatelé často používají nezabezpečená hesla.
 * Potřebují uživatele informovat o nadcházející změně v vynucování zabezpečení, o možných dopadech na ně a o tom, jak zvolit bezpečnější hesla.
 
-Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete vynutit, aby se vyžadovalo  bezpečnější heslo, můžete přepnout konfiguraci z *auditu* . Cílené monitorování během této doby je dobrý nápad.
+Je taky možné, že se silnější ověřování hesla bude týkat stávající automatizace nasazení řadiče domény služby Active Directory. Doporučujeme, abyste při vyhodnocení období auditů nedocházelo k navýšení aspoň jedné povýšení řadiče domény a k jednomu řadiči domény, aby bylo možné tyto problémy předem odhalit.  Další informace naleznete v tématu:
+
+* [Nástroj Ntdsutil. exe nemůže nastavit slabý stav hesla režimu opravy adresářových služeb.](howto-password-ban-bad-on-premises-troubleshoot.md##ntdsutilexe-fails-to-set-a-weak-dsrm-password)
+* [Povýšení repliky řadiče domény se nepovedlo kvůli slabému heslu režimu opravy adresářových služeb.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
+* [Degradování řadiče domény se nezdařilo kvůli slabému heslu místního správce.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
+
+Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete vynutit, aby se vyžadovalo bezpečnější heslo, můžete přepnout konfiguraci z *auditu* . Cílené monitorování během této doby je dobrý nápad.
 
 ## <a name="deployment-requirements"></a>Požadavky na nasazení
 
@@ -297,7 +303,7 @@ Hlavním problémem při dostupnosti ochrany heslem je dostupnost proxy serverů
 
 Návrh softwaru agenta DC snižuje běžné problémy, které jsou spojené s vysokou dostupností. Agent řadiče domény uchovává místní mezipaměť naposledy stažených zásad hesel. I když jsou všechny registrované proxy servery nedostupné, budou agenti řadiče domény nadále vysazovat zásady hesel v mezipaměti. Přiměřená frekvence aktualizace zásad hesel ve velkém nasazení je obvykle *dny*, ne hodiny nebo méně. To znamená, že krátké výpadky proxy serverů významně neovlivňují ochranu heslem Azure AD.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste nainstalovali služby, které potřebujete pro ochranu heslem Azure AD na místních serverech, [proveďte konfiguraci po instalaci a shromážděte informace pro vytváření sestav](howto-password-ban-bad-on-premises-operations.md) , abyste mohli nasazení dokončit.
 

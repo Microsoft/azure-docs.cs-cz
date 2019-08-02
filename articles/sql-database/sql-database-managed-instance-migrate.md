@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
-manager: craigg
 ms.date: 11/07/2019
-ms.openlocfilehash: 0fa65454702c67d4b0baeedc7f412ccec402ea46
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 19a7f749ffb1af4f712d23abcd52d91653ad4544
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302308"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567384"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL Server do Azure SQL Database spravované instance
 
@@ -28,7 +27,7 @@ V tomto článku se dozvíte o metodách migrace instance verze SQL Server 2005 
 
 V případě vysoké úrovně proces migrace databáze vypadá takto:
 
-![Proces migrace](./media/sql-database-managed-instance-migration/migration-process.png)
+![proces migrace](./media/sql-database-managed-instance-migration/migration-process.png)
 
 - [Vyhodnoťte kompatibilitu spravované instance](#assess-managed-instance-compatibility) , kde byste měli zajistit, že neexistují žádné blokující problémy, které by mohly bránit migraci.
   - Tento krok zahrnuje také vytváření [standardních hodnot výkonu](#create-performance-baseline) k určení využití prostředků ve zdrojové SQL Server instanci. Tento krok je nutný, pokud chcete v nasazení spravovat správnou velikost spravované instance a ověřit, že po migraci nebudou ovlivněny funkční.
@@ -110,7 +109,7 @@ Spravovaná instance podporuje následující možnosti migrace databáze (aktu�
 - Azure Database Migration Service – migrace s téměř nulovým výpadkem,
 - Nativní `RESTORE DATABASE FROM URL` – používá nativní zálohy z SQL Server a vyžaduje určité výpadky.
 
-### <a name="azure-database-migration-service"></a>Azure Database Migration Service
+### <a name="azure-database-migration-service"></a>Služba Azure Database Migration
 
 [Azure Database Migration Service (DMS)](../dms/dms-overview.md) je plně spravovaná služba navržená tak, aby umožňovala bezproblémové migrace z více databázových zdrojů do datových platforem Azure s minimálními výpadky. Tato služba zjednodušuje úlohy potřebné k přesunu stávajících databází třetích stran a SQL Server do Azure. Mezi možnosti nasazení ve verzi Public Preview patří databáze v Azure SQL Database a databáze SQL Server na virtuálním počítači Azure. DMS je doporučená metoda migrace pro vaše podnikové úlohy.
 

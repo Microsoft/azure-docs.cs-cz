@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/17/2018
+ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 28a3183114db206e55814d1b25eaef37a2819c1d
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 4a4421b87aa094306a42212f76f7590d4f139047
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494981"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607975"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -562,7 +562,7 @@ Pro *název hostitele instance služby pas* v dialogu *instance primárního apl
   * Řešení  
     Nezapomeňte přidat pravidlo hostitele v rámci *izolace* krok za účelem povolení komunikace z virtuálního počítače s řadičem domény.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Průvodce provozem SAP HANA v Azure][hana-ops-guide]
 * [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP][deployment-guide]

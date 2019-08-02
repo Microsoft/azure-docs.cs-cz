@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: 5a7cb4ecde599a76b2d42cf874420d9cbcfda3d5
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: f8ba9508bdbb7fd436d3b693e638f29bac5065bf
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402649"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618655"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Posílání zpráv z cloudu do zařízení pomocí IoT Hub (.NET)
 
@@ -43,7 +43,7 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace .NET.
 * **SendCloudToDevice**, která pošle zprávu typu cloud-zařízení do aplikace zařízení prostřednictvím IoT Hub a potom obdrží potvrzení o doručení.
 
 > [!NOTE]
-> IoT Hub podporuje sadu SDK pro mnoho platforem a jazyků zařízení (včetně C, Java a JavaScriptu) prostřednictvím [sad SDK pro zařízení Azure IoT](iot-hub-devguide-sdks.md). Podrobné pokyny, jak připojit zařízení k kódu tohoto kurzu a obecně k Azure IoT Hub, najdete v [příručce pro vývojáře IoT Hub](iot-hub-devguide.md).
+> IoT Hub podporuje sadu SDK pro mnoho platforem a jazyků zařízení (včetně C, Java, Pythonu a JavaScriptu) prostřednictvím [sad SDK pro zařízení Azure IoT](iot-hub-devguide-sdks.md). Podrobné pokyny, jak připojit zařízení k kódu tohoto kurzu a obecně k Azure IoT Hub, najdete v [příručce pro vývojáře IoT Hub](iot-hub-devguide.md).
 >
 
 Pro absolvování tohoto kurzu potřebujete:
@@ -79,7 +79,7 @@ V této části upravíte aplikaci zařízení, kterou jste vytvořili v části
 
    `ReceiveAsync` Metoda asynchronně vrátí přijatou zprávu v okamžiku, kdy zařízení obdrží. Po určitém časovém limitu vrátí *hodnotu null* (v tomto případě je použita výchozí hodnota 1 minuty). Když aplikace obdrží *hodnotu null*, měla by nadále čekat na nové zprávy. Tento požadavek je důvodem pro `if (receivedMessage == null) continue` řádek.
 
-    Volání upozorňující `CompleteAsync()` na IoT Hub, že zpráva byla úspěšně zpracována. Zpráva může být bezpečně odebrána z fronty zařízení. Pokud se něco stalo s tím, že aplikaci pro zařízení zabránilo v dokončování zpracování zprávy, IoT Hub ji znovu doručí. V takovém případě je důležité, aby logika zpracování zpráv v aplikaci zařízení byla idempotentníá, aby se stejná zpráva zobrazovala vícekrát, což znamená stejný výsledek. 
+    Volání upozorňující `CompleteAsync()` na IoT Hub, že zpráva byla úspěšně zpracována. Zpráva může být bezpečně odebrána z fronty zařízení. Pokud se něco stalo s tím, že aplikaci pro zařízení zabránilo v dokončování zpracování zprávy, IoT Hub ji znovu doručí. V takovém případě je důležité, aby logika zpracování zpráv v aplikacizařízení byla idempotentníá, aby se stejná zpráva zobrazovala vícekrát, což znamená stejný výsledek. 
 
     Aplikace může také dočasně opustit zprávu, což vede k tomu, že centrum IoT uchová zprávu ve frontě pro budoucí spotřebu. Nebo může aplikace zprávu odmítat, což trvale odstraní zprávu z fronty. Další informace o životním cyklu zpráv z cloudu na zařízení najdete v tématu [zasílání zpráv D2C a C2D pomocí IoT Hub](iot-hub-devguide-messaging.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Správa přihlašovacích údajů v klientské knihovně elastic database | Dokumentace Microsoftu
-description: Jak nastavit správnou úroveň přihlašovací údaje správce jen pro čtení, pro elastické databáze aplikace
+title: Správa přihlašovacích údajů v klientské knihovně elastické databáze | Microsoft Docs
+description: Nastavení správné úrovně přihlašovacích údajů, správce pro aplikace elastické databáze jen pro čtení
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,75 +10,74 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 8a62ec95c715c08a8fddc09f0c8e5f5bba368556
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d89e83092775828016c2c47a96164319f5474c1e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241759"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568423"
 ---
-# <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Přihlašovací údaje použité pro přístup ke klientské knihovně Elastic Database
+# <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Přihlašovací údaje použité pro přístup k klientské knihovně Elastic Database
 
-[Klientská knihovna Elastic Database](sql-database-elastic-database-client-library.md) používá tři různé typy přihlašovacích údajů pro přístup k [správce mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md). Podle potřeby použijte přihlašovací údaje s nejnižší úroveň přístupu je to možné.
+[Klientská knihovna elastic Database](sql-database-elastic-database-client-library.md) používá pro přístup ke [Správci map horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md)tři různé druhy přihlašovacích údajů. V závislosti na potřebě použijte přihlašovací údaje s nejnižší úrovní přístupu.
 
-* **Přihlašovacích údajů pro správu**: pro vytvoření nebo manipulace s správce mapování horizontálních oddílů. (Viz [Glosář](sql-database-elastic-scale-glossary.md).)
-* **Přístup k přihlašovacím údajům**: přístup k stávající správce mapování horizontálních oddílů k získání informací o horizontálních oddílů.
-* **Přihlašovací údaje pro připojení**: pro připojení do horizontálních oddílů.
+* **Přihlašovací údaje pro správu**: pro vytvoření nebo manipulaci se správcem mapy horizontálních oddílů. (Podívejte se na [Glosář](sql-database-elastic-scale-glossary.md).)
+* **Přihlašovací údaje pro přístup**: pro přístup k existujícímu správci map horizontálních oddílů pro získání informací o horizontálních oddílů.
+* **Přihlašovací údaje pro připojení**: pro připojení k horizontálních oddílů.
 
-Viz také [Správa databází a přihlášení ve službě Azure SQL Database](sql-database-manage-logins.md).
+Viz také [Správa databází a přihlášení v Azure SQL Database](sql-database-manage-logins.md).
 
-## <a name="about-management-credentials"></a>Informace o přihlašovacích údajů pro správu
+## <a name="about-management-credentials"></a>Informace o přihlašovacích údajích pro správu
 
-Přihlašovacích údajů pro správu se používají k vytváření **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) objektu pro aplikace, které pracují s mapy horizontálních oddílů. (Viz například [přidání horizontálního oddílu používání nástrojů Elastic Database](sql-database-elastic-scale-add-a-shard.md) a [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md)). Uživatel klientské knihovny pro elastické škálování vytvoří SQL uživatelé a přihlašování SQL a zajistí, že každý jsou udělena oprávnění pro čtení a zápis na databázi mapování globální horizontálních oddílů a také všechny databáze horizontálních oddílů. Tyto přihlašovací údaje se používají k zachování mapy horizontálních oddílů globální a místní horizontálními oddíly mapy při jsou prováděny změny mapování horizontálních oddílů. Například vytvořte objekt správce mapování horizontálních oddílů pomocí přihlašovacích údajů pro správu (pomocí **GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)):
+Přihlašovací údaje pro správu se používají k vytvoření objektu **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) pro aplikace, které pracují s mapami horizontálních oddílů. (Například viz [Přidání horizontálních oddílů pomocí nástrojů elastic Database](sql-database-elastic-scale-add-a-shard.md) a [Směrování závislého na datech](sql-database-elastic-scale-data-dependent-routing.md)). Uživatel klientské knihovny pro elastické škálování vytvoří uživatele SQL a přihlášení SQL a zajistí, aby každému z nich bylo uděleno oprávnění ke čtení a zápisu v globální databázi horizontálních oddílů map a všech databázích horizontálních oddílů. Tyto přihlašovací údaje se používají k údržbě globálního mapování horizontálních oddílů a mapování místních horizontálních oddílů při provádění změn v mapě horizontálních oddílů. Například použijte pověření pro správu k vytvoření objektu Správce map horizontálních oddílů (pomocí **GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)):
 
 ```java
 // Obtain a shard map manager.
 ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager(smmAdminConnectionString,ShardMapManagerLoadPolicy.Lazy);
 ```
 
-Proměnná **smmAdminConnectionString** je připojovací řetězec, který obsahuje přihlašovacích údajů pro správu. ID uživatele a heslo poskytují přístup pro čtení a zápis k databázi mapování horizontálních oddílů a jednotlivé horizontální oddíly. Připojovací řetězec pro správu také obsahuje název serveru a název databáze pro identifikaci databáze mapování globální horizontálních oddílů. Tady je připojovací řetězec pro tento účel:
+Proměnná **smmAdminConnectionString** je připojovací řetězec, který obsahuje přihlašovací údaje pro správu. ID uživatele a heslo poskytují přístup pro čtení a zápis jak pro databázi map horizontálních oddílů, tak pro jednotlivé horizontálních oddílů. Připojovací řetězec pro správu také obsahuje název serveru a název databáze pro identifikaci globální databáze mapy horizontálních oddílů. Zde je typický připojovací řetězec pro tento účel:
 
 ```java
 "Server=<yourserver>.database.windows.net;Database=<yourdatabase>;User ID=<yourmgmtusername>;Password=<yourmgmtpassword>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;”
 ```
 
-Nepoužívejte hodnot ve formě "username@server" – místo toho použijte hodnotu "username".  Je to proto, že přihlašovací údaje musí fungovat proti databáze správce mapování horizontálních oddílů a jednotlivé horizontální oddíly, které mohou být na různých serverech.
+Nepoužívejte hodnoty ve forměusername@server"" – místo toho stačí použít hodnotu username.  Je to proto, že přihlašovací údaje musí fungovat jak pro databázi horizontálních oddílů Map Manager, tak pro jednotlivé horizontálních oddílů, které se můžou nacházet na různých serverech.
 
 ## <a name="access-credentials"></a>Přihlašovací údaje pro přístup
 
-Při vytváření správce mapování horizontálního oddílu v aplikaci, která není spravovat mapy horizontálních oddílů, použijte přihlašovací údaje, které mají oprávnění jen pro čtení na mapě globální horizontálních oddílů. Informace získané z mapy horizontálních oddílů globální v rámci těchto přihlašovacích údajů se používá pro [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md) a naplňte mezipaměť mapy horizontálního dělení na straně klienta. Přihlašovací údaje, které jsou poskytované prostřednictvím stejný vzor volání do **GetSqlShardMapManager**:
+Při vytváření správce map horizontálních oddílů v aplikaci, která nespravuje mapy horizontálních oddílů, použijte přihlašovací údaje, které mají oprávnění jen pro čtení na globální mapě horizontálních oddílů. Informace načtené z globální mapy horizontálních oddílů v rámci těchto přihlašovacích údajů se používají pro [Směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md) a naplnění mezipaměti map horizontálních oddílů v klientovi. Přihlašovací údaje jsou k dispozici prostřednictvím stejného vzoru volání jako **GetSqlShardMapManager**:
 
 ```java
 // Obtain shard map manager.
 ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager(smmReadOnlyConnectionString, ShardMapManagerLoadPolicy.Lazy);  
 ```
 
-Všimněte si použití **smmReadOnlyConnectionString** tak, aby odrážely použití jiných přihlašovacích údajů pro tento přístup jménem **bez oprávnění správce** uživatelé: nesmí tyto přihlašovací údaje poskytnout oprávnění k zápisu na mapy horizontálních oddílů globální.
+Všimněte si použití **smmReadOnlyConnectionString** k tomu, aby odráželo používání různých přihlašovacích údajů jménem uživatelů **bez oprávnění správce** : tyto přihlašovací údaje by neměly poskytovat oprávnění k zápisu na globální mapě horizontálních oddílů.
 
 ## <a name="connection-credentials"></a>Přihlašovací údaje pro připojení
 
-Další přihlašovací údaje jsou potřeba při používání **OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) metody pro přístup k horizontálním oddílu přidružený klíč horizontálního dělení. Tyto přihlašovací údaje musí poskytnout oprávnění pro přístup jen pro čtení k tabulkám, mapování místní horizontálních oddílů umístěný v horizontálním oddílu. To je potřeba k ověření připojení pro směrování závislé na datech v horizontálním oddílu. Tento fragment kódu umožňuje přístup k datům v rámci směrování závislé na datech:
+Při použití metody **OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) k přístupu k horizontálních oddílů přidruženého k klíči horizontálního dělení jsou potřeba další přihlašovací údaje. Tyto přihlašovací údaje musí poskytovat oprávnění pro přístup jen pro čtení k místním tabulkám mapy horizontálních oddílů umístěným na horizontálních oddílů. To je nutné k provedení ověřování připojení pro směrování závislé na datech na horizontálních oddílů. Tento fragment kódu umožňuje přístup k datům v kontextu směrování závislého na datech:
 
 ```csharp
 using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>(targetWarehouse, smmUserConnectionString, ConnectionOptions.Validate))
 ```
 
-V tomto příkladu **smmUserConnectionString** obsahuje připojovací řetězec pro přihlašovací údaje uživatele. Pro službu Azure SQL DB tady je připojovací řetězec pro přihlašovací údaje uživatele:
+V tomto příkladu **smmUserConnectionString** obsahuje připojovací řetězec pro přihlašovací údaje uživatele. V případě Azure SQL DB je tady typický připojovací řetězec pro přihlašovací údaje uživatele:
 
 ```java
 "User ID=<yourusername>; Password=<youruserpassword>; Trusted_Connection=False; Encrypt=True; Connection Timeout=30;”  
 ```
 
-Jak se pomocí přihlašovacích údajů správce, nepoužívejte hodnot ve formě "username@server". Místo toho použijte "username".  Všimněte si také, že připojovací řetězec neobsahuje název serveru a název databáze. Důvodem je, **OpenConnectionForKey** volání automaticky směruje připojení ke správné horizontálních oddílů na základě klíče. Název databáze a název serveru, proto nejsou zadány.
+Stejně jako u přihlašovacích údajů správce nepoužívejte hodnoty ve forměusername@server"". Místo toho stačí použít "username".  Všimněte si také, že připojovací řetězec neobsahuje název serveru a název databáze. Důvodem je, že volání **OpenConnectionForKey** automaticky směruje připojení ke správnému horizontálních oddílů na základě klíče. Název databáze a název serveru proto nejsou k dispozici.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 [Správa databází a přihlášení ve službě Azure SQL Database](sql-database-manage-logins.md)
 
 [Zabezpečení služby SQL Database](sql-database-security-overview.md)
 
-[Úlohy elastic Database](elastic-jobs-overview.md)
+[úlohy elastické databáze](elastic-jobs-overview.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

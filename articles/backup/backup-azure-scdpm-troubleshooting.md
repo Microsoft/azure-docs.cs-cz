@@ -1,18 +1,19 @@
 ---
 title: Řešení potíží s nástrojem System Center Data Protection Manager s Azure Backup
 description: Řešení problémů v nástroji System Center Data Protection Manager.
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: kasinh
-ms.openlocfilehash: 5e4aa113eda6ea53c520e6de52e4fa17d75f4095
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 501e61d06b7724147d7224ae51bde5de736279b3
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465375"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689038"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>Řešení potíží se System Center Data Protection Managerem
 

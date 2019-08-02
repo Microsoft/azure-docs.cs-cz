@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak vytvořit a používat databáze, kont
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 07/26/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 277564208a5e4a209aecf8f976aca6b35ab17781
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 9c8460380755c6057f7507443d0b564e85c2ff86
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467755"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598497"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Práce s databázemi, kontejnery a položkami v Azure Cosmos DB
 
@@ -124,6 +124,9 @@ Každá položka Azure Cosmos má následující vlastnosti definované systéme
 |\_samorozbalující | Generované systémem | Adresovatelný identifikátor URI položky | Ano | Ne | Ne | Ne | Ne |
 |id | Buď | Uživatelsky definovaný jedinečný název v logickém oddílu. Pokud uživatel nezadá ID, systém ho automaticky vygeneruje. | Ano | Ano | Ano | Ano | Ano |
 |Libovolné uživatelem definované vlastnosti | Definované uživatelem | Uživatelsky definované vlastnosti reprezentované v rozhraní API – nativní reprezentace (včetně JSON, BSON a CQL) | Ano | Ano | Ano | Ano | Ano |
+
+> [!NOTE]
+> `id` Jedinečnost vlastnosti je vynutila pouze v rámci každého logického oddílu. U více dokumentů může být stejná `id` vlastnost s různými hodnotami klíče oddílu.
 
 ### <a name="operations-on-items"></a>Operace u položek
 

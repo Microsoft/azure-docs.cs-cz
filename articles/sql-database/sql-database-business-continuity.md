@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 361613c52c00b7a7e468eccbb52bf113b6adb434
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e57427fbb7e0d3c67fc4fcbab1a50f14ef8c9501
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444516"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569346"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -153,6 +152,6 @@ Po obnovení s použitím libovolného mechanismu musíte provést následujíc�
 
 V některých případech je třeba aplikaci odebrat z důvodu plánované údržby, jako je například upgrade aplikace. [Správa upgradů aplikací](sql-database-manage-application-rolling-upgrade.md) : popisuje, jak používat aktivní geografickou replikaci k zajištění postupného upgradu vaší cloudové aplikace za účelem minimalizace výpadků během upgradů a k zadání cesty pro obnovení, pokud se něco nepovede.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Diskuzi o faktorech návrhu aplikací pro samostatné databáze a elastické fondy najdete v tématu [Návrh aplikace pro zotavení po havárii cloudu](sql-database-designing-cloud-solutions-for-disaster-recovery.md) a [strategie zotavení po havárii elastického fondu](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

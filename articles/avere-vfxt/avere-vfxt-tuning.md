@@ -1,26 +1,26 @@
 ---
-title: Avere vFXT clusteru ladění – Azure
-description: Přehled vlastních nastavení za účelem optimalizace výkonu v Avere vFXT pro Azure
+title: Ladění clusteru avere vFXT – Azure
+description: Přehled vlastního nastavení pro optimalizaci výkonu v avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: f5e780dcab20befe19ca34020908eee93c290516
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 17e55dbe84cda87ee902c94e0024c9a3aad8b31b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409155"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698345"
 ---
 # <a name="cluster-tuning"></a>Ladění clusteru
 
 
-Většina clusterů vFXT může přinést výkonu přizpůsobená nastavení. Tato nastavení pomůžou cluster tak, aby co nejlépe pracovat určitý pracovní postup, datové sady a nástroje. 
+K většině clusterů vFXT může dotěžit vlastní nastavení výkonu. Tato nastavení pomůžou clusteru fungovat nejlépe s vaším konkrétním pracovním postupem, datovou sadou a nástroji. 
 
-Toto přizpůsobení se má počítat spolu s zástupce podpory a vzhledem k tomu obvykle zahrnuje konfiguraci funkcí, které nejsou k dispozici prostřednictvím ovládacího panelu Avere.
+Toto přizpůsobení by se mělo provést společně s zástupcem podpory, protože obvykle zahrnuje konfiguraci funkcí, které nejsou k dispozici v Ovládacích panelech avere.
 
-Tato část vysvětluje, že některé vlastní optimalizace, které lze provést.
+Tato část popisuje některé vlastní ladění, které je možné provést.
 
 <!-- 
 [ xxx keep or not? \/ research this xxx ]
@@ -32,32 +32,30 @@ Tato část vysvětluje, že některé vlastní optimalizace, které lze provés
 
 ## <a name="general-optimizations"></a>Obecné optimalizace
 
-Tyto změny může být vhodné na základě vlastnosti datové sady nebo pracovního postupu style.
+Tyto změny se můžou doporučit na základě kvality datových sad nebo stylu pracovního postupu.
 
-* Pokud úlohy náročné na zápis, zvětšete velikost mezipaměti zápisu z jeho výchozí hodnotu 20 %. 
-* Pokud datová sada zahrnuje mnoho malých souborů, zvyšte omezení počtu souborů clusteru mezipaměti. 
-* Pokud práce zahrnuje kopírování nebo přesun dat mezi dvěma úložišť, upravte počet vláken, používá k přesunutí dat: 
-  * Pokud chcete zvýšit rychlost, může zvýšit počet paralelních vláken použít.
-  * Pokud je Přetěžovaná svazek úložiště back-end, můžete potřebovat snižte počet paralelních vláken použít.
-* Pokud cluster ukládá data do mezipaměti pro základní filtr, používající názvů NFSv4 seznamy ACL, povolte režim přístupu k ukládání do mezipaměti pro zjednodušení autorizace souboru pro konkrétní klienty.
+* Pokud je zatížení těžké pro zápis, zvětšete velikost mezipaměti pro zápis z výchozí hodnoty 20%. 
+* Pokud datová sada zahrnuje mnoho malých souborů, zvyšte limit počtu souborů v mezipaměti clusteru. 
+* Pokud práce zahrnuje kopírování nebo přesouvání dat mezi dvěma úložištěmi, upravte počet vláken používaných pro přesun dat: 
+  * Pro zvýšení rychlosti můžete zvýšit počet využitých paralelních vláken.
+  * Pokud je svazek úložiště back-endu přetížený, možná budete muset snížit počet využitých paralelních vláken.
+* Pokud cluster ukládá data do mezipaměti pro základní souborového, která používá seznamy ACL názvů NFSv4, povolte ukládání do mezipaměti v režimu přístupu, abyste zjednodušili autorizaci souborů pro konkrétní klienty.
 
-## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>Cloud NAS nebo cloudové brány optimalizace
+## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>Cloudové servery NAS nebo optimalizace Cloud Gateway
 
-Abyste mohli využívat vyšší rychlosti dat mezi vFXT clusteru a cloudového úložiště v cloudu NAS nebo brány scénáři (kde vFXT clusteru poskytuje NAS – vizuální styl přístup do cloudového kontejneru), zástupce doporučit, změna nastavení, jako je do více agresivní vložení dat do svazku úložiště z mezipaměti:
+Aby bylo možné využít vyšší rychlost datových přenosů mezi clusterem vFXT a cloudovým úložištěm ve scénáři cloudového nebo síťového serveru NAS (kde cluster vFXT poskytuje přístup ke každému cloudovém kontejneru pomocí serveru NAS), může váš zástupce doporučit změnu nastavení jako u více agresivní odesílání dat do svazku úložiště z mezipaměti:
 
-* Zvýšit počet připojení TCP mezi clusterem a kontejner úložiště
-* Snižte hodnotu časového limitu REST pro komunikaci mezi clusterem a úložiště opakovat zápisy dříve, pokud není úspěšné okamžitě  
-* Zvětšete velikost segmentu, tak, aby každý back-end zápis převody segmentu 8 MB bloků dat namísto 1 MB
+* Zvyšte počet připojení TCP mezi clusterem a kontejnerem úložiště.
 
-## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>Shlukování cloudu nebo hybridní optimalizace sítě WAN
+## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>Cloudové shlukování nebo optimalizace hybridní sítě WAN
 
-V cloud bursting scénáře nebo hybridní scénář úložiště optimalizace sítě WAN (vFXT clusteru zajišťuje integraci mezi cloudovým a místním hardwaru úložiště) může být užitečné tyto změny:
+Ve scénáři shlukování cloudu nebo v případě optimalizace hybridního úložiště sítě WAN (kde cluster vFXT zajišťuje integraci mezi cloudovým a místním hardwarovým úložištěm) můžou tyto změny pomoci:
 
-* Zvyšte počet povolených mezi clusterem a vyfiltrovat základní připojení protokolu TCP
-* Povolit nastavení optimalizace sítě WAN pro vzdálené core filer (Toto nastavení můžete použít vzdálený místní vyfiltrovat nebo filer core cloudu v jiné oblasti Azure.)
-* Zvětšete velikost vyrovnávací paměti soket TCP (v závislosti na nároky na zatížení a výkonu)
-* Povolit nastavení "vždycky forward" ke snížení soubory redundantně uložené v mezipaměti (v závislosti na nároky na zatížení a výkonu)
+* Zvyšte počet připojení TCP povolených mezi clusterem a základní souborového
+* Povolte nastavení optimalizace sítě WAN pro vzdálenou službu Core souborového (Toto nastavení se dá použít pro vzdálené místní souborového nebo Cloud Core souborového v jiné oblasti Azure.)
+* Zvyšte velikost vyrovnávací paměti soketu TCP (v závislosti na úlohách a požadavcích na výkon).
+* Pokud chcete omezit redundantní soubory v mezipaměti (v závislosti na požadavcích na zatížení a výkon), povolte nastavení vždy předáno.
 
-## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Nápověda optimalizace vaší Avere vFXT pro Azure
+## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Usnadnění optimalizace avere vFXT pro Azure
 
-Použijte postup popsaný v [získat nápovědu k systému](avere-vfxt-open-ticket.md) kontaktovat pracovníky podpory o těchto optimalizacích. 
+Pomocí postupu popsaného v [tématu získáte pomoc s vaším systémem](avere-vfxt-open-ticket.md) pro kontaktování pracovníků podpory o těchto optimalizacích. 

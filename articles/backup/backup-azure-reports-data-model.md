@@ -1,18 +1,19 @@
 ---
 title: Datový model pro Azure Backup
 description: Tento článek pojednává o Power BI podrobností o datových modelech pro sestavy Azure Backup.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.author: adigan
-ms.openlocfilehash: 66245a25af000d999ded87c58e3ba225b373b101
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 53051c88d5723f61fa08e431bdf7ab531e88123e
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465600"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689152"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Datový model pro sestavy Azure Backup
 Tento článek popisuje Power BI datový model, který slouží k vytváření sestav Azure Backup. Pomocí tohoto datového modelu můžete filtrovat existující sestavy na základě relevantních polí a důležitější je vytvořit vlastní sestavy pomocí tabulek a polí v modelu. 
@@ -185,7 +186,7 @@ Tato tabulka poskytuje základní pole a agregace v různých polích souvisejí
 | VaultName |Text |Název trezoru |
 | VaultTags |Text |Značky přidružené k trezoru |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Až si prohlédnete datový model pro vytváření sestav Azure Backup, přečtěte si následující články, kde najdete další podrobnosti o vytváření a zobrazování sestav v Power BI.
 
 * [Vytváření sestav v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)

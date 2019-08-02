@@ -2,28 +2,28 @@
 title: Přidání vlastní domény – Azure Active Directory | Dokumentace Microsoftu
 description: Pokyny ohledně toho, jak přidat vlastní doménu s využitím Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb29fb5ef2e755ff456ad177b66349792b2fa21c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3f90e594e69c58364b699299964273ce371e525
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248338"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561721"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Přidání vlastního názvu domény pomocí portálu Azure Active Directory
-Každý nový Azure AD tenanta se dodává s počáteční název domény, *domainname*. onmicrosoft.com. Nelze změnit ani odstranit název domény, ale vaše organizace názvy můžete přidat do seznamu. Přidání vlastních názvů domén vám pomůže vytvořit uživatelská jména, které jsou vaši uživatelé znají, jako je například *alain\@contoso.com*.
+Každý nový Azure AD tenanta se dodává s počáteční název domény, *domainname*. onmicrosoft.com. Nelze změnit ani odstranit název domény, ale vaše organizace názvy můžete přidat do seznamu. Přidání vlastních názvů domén vám pomůže vytvořit uživatelská jména, která jsou pro vaše uživatele známá, například *Alain\@contoso.com*.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Před přidáním vlastního názvu domény, musíte vytvořit název domény u registrátora domény. Akreditované doménový registrátor, naleznete v tématu [ICANN-Accredited registrátorů](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ## <a name="create-your-directory-in-azure-ad"></a>Vytvoření adresáře ve službě Azure AD
@@ -31,7 +31,7 @@ Po získání názvu domény, můžete vytvořit první adresář Azure AD.
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pro svůj adresář pomocí účtu s **vlastníka** role pro dané předplatné a pak vyberte **Azure Active Directory**. Další informace o rolích předplatného najdete v části [Classic role správců předplatného, role Azure RBAC a rolích správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles).
 
-    ![Azure portal obrazovky zobrazující možnost Azure AD](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    ![Azure Portal obrazovka se zobrazenou možností Azure AD](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
     >[!TIP]
     > Pokud máte v úmyslu federovat místní službu Windows Server AD pomocí služby Azure AD, musíte při spuštění nástroje Azure AD Connect pro synchronizaci adresářů zaškrtnout políčko **Mám v plánu nakonfigurovat pro tuto doménu jednotné přihlašování se svým místním adresářem Active Directory**. V průvodci v kroku **Doména služby Azure AD** musíte také zaregistrovat stejný název domény, který vyberete, pro federaci pomocí místního adresáře. [V těchto pokynech](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation) uvidíte, jak daný krok v průvodci vypadá. Pokud nástroj Azure AD Connect nemáte, můžete [ho stáhnout tady](https://go.microsoft.com/fwlink/?LinkId=615771).
@@ -46,7 +46,7 @@ Po vytvoření adresáře, můžete přidat vlastní název domény.
 
 1. Vyberte **vlastní názvy domén**a pak vyberte **přidat vlastní doménu**.
 
-    ![Stránka názvy vlastních domén, s přidáním vlastní domény zobrazí](media/add-custom-domain/add-custom-domain.png)
+    ![Stránka vlastní názvy domén s zobrazenou součástí přidat vlastní doménu](media/add-custom-domain/add-custom-domain.png)
 
 2. Zadejte nový název domény vaší organizace do **vlastní název domény** pole (například _contoso.com_) a pak vyberte **přidáním domény**.
 
@@ -55,7 +55,7 @@ Po vytvoření adresáře, můžete přidat vlastní název domény.
     >[!Important]
     >Musí zahrnovat .com, .net nebo jakékoli jinou příponu nejvyšší úrovně pro to správně fungovat.
 
-    ![Stránka názvy vlastních domén, s stránku přidat vlastní doménu](media/add-custom-domain/add-custom-domain-blade.png)
+    ![Stránka vlastní názvy domén pomocí stránky přidat vlastní doménu](media/add-custom-domain/add-custom-domain-blade.png)
 
 4. Kopírovat informace DNS z **Contoso** stránky. Například MS = ms64983159.
 
@@ -64,7 +64,7 @@ Po vytvoření adresáře, můžete přidat vlastní název domény.
 ## <a name="add-your-dns-information-to-the-domain-registrar"></a>Přidejte své informace o DNS pro registrátora domény
 Po přidání vlastního názvu domény do Azure AD, musíte vrátit vašeho registrátora domény a přidejte informace o Azure AD DNS ze zkopírovaného souboru TXT. Vytvoření tohoto TXT záznam pro vaši doménu "ověří" vlastnictví názvu domény.
 
--  Vraťte se do vašeho registrátora domény, vytvořte nový záznam TXT pro vaši doménu na základě zkopírovaný informací DNS, nastavte **TTL** (hodnota time to live) 3 600 sekund (60 minut) a poté uložit informace.
+-  Vraťte se do svého registrátora domény, vytvořte nový záznam TXT pro vaši doménu na základě kopírovaných informací DNS, nastavte **hodnotu TTL** (Time to Live) na 3600 sekund (60 minut) a pak informace uložte.
 
     >[!Important]
     >Můžete zaregistrovat libovolný počet názvů domén. Každá doména však získá svůj vlastní záznam TXT ze služby Azure AD. Buďte opatrní při zadávání vaše informace o souboru TXT registrátora domény. Pokud zadáte chybnou nebo duplicitní informace omylem, budete muset počkat, dokud hodnota TTL vyprší časový limit (standardně 60 minut) předtím, než můžete to zkusit znovu.
@@ -85,7 +85,7 @@ Až dokončíte registraci vlastního názvu domény, budete muset Ujistěte se,
 
     ![Stránka Contoso s informace o DNS záznam a na tlačítko Ověřit](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
 
-Po ověření vlastního názvu domény, můžete odstranit souboru TXT nebo MX ověření.
+Po ověření vlastního názvu domény můžete odstranit ověřovací soubor TXT nebo MX.
 
 ## <a name="common-verification-issues"></a>Běžné problémy ověření
 - Pokud Azure AD nemůže ověřit vlastní název domény, vyzkoušejte následující návrhy:
@@ -101,9 +101,9 @@ Po ověření vlastního názvu domény, můžete odstranit souboru TXT nebo MX 
 
 ## <a name="next-steps"></a>Další postup
 
-- Přidáte další globální správce adresáře. Další informace najdete v tématu [přiřazení role a správci](active-directory-users-assign-role-azure-portal.md).
+- Přidáte další globální správce adresáře. Další informace najdete v tématu [přiřazení rolí a správců](active-directory-users-assign-role-azure-portal.md).
 
-- Přidání uživatelů do domény, najdete v článku [postup přidání nebo odstranění uživatelů](add-users-azure-active-directory.md).
+- Přidání uživatelů do domény najdete v tématu [jak přidat nebo odstranit uživatele](add-users-azure-active-directory.md).
 
 - Spravujte vaše informace o názvu domény ve službě Azure AD. Další informace najdete v tématu [Správa vlastních názvů domén](../users-groups-roles/domains-manage.md).
 

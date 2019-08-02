@@ -1,6 +1,6 @@
 ---
-title: Zjistěte, jak začlenění řešení Update Management, Change Tracking a Inventory pro několik virtuálních počítačů ve službě Azure Automation
-description: Zjistěte, jak připojit Azure virtuální počítač pomocí řešení Update Management, Change Tracking a Inventory, která jsou součástí služby Azure Automation
+title: Naučte se integrovat řešení Update Management, Change Tracking a inventáře pro více virtuálních počítačů v Azure Automation
+description: Naučte se, jak připojit virtuální počítač Azure pomocí Update Management, Change Tracking a řešení inventáře, která jsou součástí Azure Automation
 services: automation
 ms.service: automation
 author: bobbytreed
@@ -9,153 +9,155 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 11dda62a7d8a92b17eb1d431e61086680f356195
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cf063311e5559ddf5706df397ce744a726610000
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476626"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667343"
 ---
-# <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení správy aktualizací, Change Tracking a inventář řešení na několika virtuálních počítačích
+# <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení řešení Update Management, Change Tracking a inventáře na několika virtuálních počítačích
 
-Azure Automation poskytuje řešení ke správě aktualizací zabezpečení operačního systému, sledování změn a inventáře, co je nainstalována na počítačích. Existuje několik způsobů, jak připojit počítače, můžete připojit řešení [z virtuálního počítače](automation-onboard-solutions-from-vm.md), z vaší [účtu Automation](automation-onboard-solutions-from-automation-account.md), při procházení virtuální počítače, nebo podle [runbook](automation-onboard-solutions.md). Tento článek popisuje připojení těchto řešení při procházení virtuálních počítačů v Azure.
+Azure Automation poskytuje řešení pro správu aktualizací zabezpečení operačního systému, sledování změn a inventarizaci toho, co je na vašich počítačích nainstalované. Existují různé způsoby, jak připojit počítače, můžete řešení připojit k [virtuálnímu počítači](automation-onboard-solutions-from-vm.md), z [účtu Automation](automation-onboard-solutions-from-automation-account.md), při procházení virtuálních počítačů nebo pomocí [Runbooku](automation-onboard-solutions.md). Tento článek popisuje připojování těchto řešení při procházení virtuálních počítačů v Azure.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k Azure na adrese https://portal.azure.com.
 
 ## <a name="enable-solutions"></a>Povolení řešení
 
-Na webu Azure Portal, přejděte na **virtuálních počítačů**.
+V Azure Portal přejděte na **virtuální počítače**.
 
-Pomocí zaškrtávacích políček vyberte virtuální počítače, který chcete připojit pomocí řešení Change Tracking a Inventory nebo Update Management. Registrace je dostupná pro až tří různých skupin prostředků v čase. Virtuální počítače Azure mohou existovat v libovolné oblasti bez ohledu na umístění účtu Automation.
+Pomocí zaškrtávacích políček vyberte virtuální počítače, které chcete připojit, pomocí Change Tracking a inventáře nebo Update Management. Připojování je dostupné až do tří různých skupin prostředků najednou. Virtuální počítače Azure můžou existovat v libovolné oblasti bez ohledu na umístění vašeho účtu Automation.
 
 ![Seznam virtuálních počítačů](media/automation-onboard-solutions-from-browse/vmlist.png)
 > [!TIP]
-> Ovládací prvky filtru můžete upravit seznam virtuálních počítačů a pak klikněte na nejvyšší zaškrtávací políčko, chcete-li vybrat všechny virtuální počítače v seznamu.
+> Pomocí ovládacích prvků filtru upravte seznam virtuálních počítačů a kliknutím na zaškrtávací políčko v horní části vyberte všechny virtuální počítače v seznamu.
 
-Na panelu příkazů klikněte na tlačítko **služby** a vyberte buď **řešení Change tracking**, **inventáře**, nebo **Update Management**.
+Na panelu příkazů klikněte na položku **služby** a vyberte položku **sledování změn**, **inventář**nebo **Update Management**.
 
 > [!NOTE]
-> **Sledování změn** a **inventáře** využívat stejná řešení, když je povolena jedna druhé je povolen také.
+> **Změna sledování** a **inventarizace** používá stejné řešení, pokud je povoleno, je povolen i druhý.
 
-Na následujícím obrázku je pro správu aktualizací. Change tracking a Inventory mají stejné rozložení a chování.
+Následující obrázek je určen pro Update Management. Změna sledování a inventarizace má stejné rozložení a chování.
 
-Seznam virtuálních počítačů se vyfiltruje a zobrazí pouze virtuální počítače, které jsou ve stejném předplatném a umístění. Pokud jsou vaše virtuální počítače ve více než tři skupiny prostředků, jsou vybrány první tři zdroje skupiny.
+Seznam virtuálních počítačů je filtrovaný tak, aby zobrazoval pouze virtuální počítače, které jsou ve stejném předplatném a umístění. Pokud jsou vaše virtuální počítače ve více než třech skupinách prostředků, vybere se první tři skupiny prostředků.
 
-### <a name="resource-group-limit"></a> Omezení registrace
+### <a name="resource-group-limit"></a>Omezení připojování
 
-Počet skupin prostředků, můžete použít pro připojení je omezena [omezení nasazení Resource Manageru](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Nasazení Resource Manager by se zaměňovat s nasazeními aktualizací jsou omezené na 5 skupin zdrojů na nasazení. K zajištění integrity připojováním, jsou vyhrazené 2 z těchto skupin prostředků ke konfiguraci pracovního prostoru Log Analytics, účet Automation a související prostředky. Tak zůstanou 3 skupin prostředků a vyberte pro nasazení.
+Počet skupin prostředků, které můžete použít pro registraci, je omezen [omezeními nasazení Správce prostředků](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Správce prostředků nasazení, nepleťte si s nasazeními aktualizací, jsou omezeny na 5 skupin prostředků na nasazení. Aby se zajistila integrita připojování, 2 z těchto skupin prostředků je vyhrazená pro konfiguraci Log Analyticsho pracovního prostoru, účtu Automation a souvisejících prostředků. Tím se vám ponechá 3 skupiny prostředků, které se mají vybrat pro nasazení.
 
-Použijte ovládací prvky filtru pro výběr virtuálních počítačů z různých předplatných, umístění a skupiny prostředků.
+Můžete taky použít Runbook pro registraci, další informace najdete v tématu [řešení aktualizací a řešení Change Tracking pro Azure Automation](automation-onboard-solutions.md).
 
-![Začlenění řešení Update management](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
+Pomocí ovládacích prvků filtru vyberte virtuální počítače z různých předplatných, umístění a skupin prostředků.
 
-Projděte si možnosti pro pracovní prostor Log Analytics a účet Automation. Ve výchozím nastavení jsou vybrány existující pracovní prostor a účet Automation. Pokud chcete použít jiný pracovní prostor Log Analytics a účet Automation, klikněte na tlačítko **vlastní** vybírat z **vlastní konfigurace** stránky. Při výběru pracovního prostoru Log Analytics se provede kontrola k určení, pokud je propojený s účtem Automation. Pokud je nalezen propojeného účtu Automation, zobrazí se na následující obrazovce. Až budete hotovi, klikněte na tlačítko **OK**.
+![Připojit řešení pro správu aktualizací](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-![Vyberte pracovní prostor a účet](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
+Zkontrolujte volby pro Log Analytics pracovní prostor a účet Automation. Ve výchozím nastavení je vybraný existující pracovní prostor a účet Automation. Pokud chcete použít jiný Log Analytics pracovní prostor a účet Automation, klikněte na tlačítko **vlastní** a vyberte je na stránce **vlastní konfigurace** . Když zvolíte pracovní prostor Log Analytics, provedeme kontrolu, která určí, jestli je propojený s účtem Automation. Pokud se najde propojený účet Automation, zobrazí se následující obrazovka. Až budete hotovi, klikněte na **OK**.
 
-Pokud vybraný pracovní prostor není propojený s účtem Automation, zobrazí se vám následující obrazovku. Vyberte účet Automation a klikněte na tlačítko **OK** po dokončení.
+![Vyberte pracovní prostor a účet.](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
+
+Pokud vybraný pracovní prostor není propojený s účtem Automation, zobrazí se následující obrazovka. Vyberte účet Automation a po dokončení klikněte na **OK** .
 
 ![Žádný pracovní prostor](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
 > [!NOTE]
 > Při povolování řešení se podporuje propojení pracovního prostoru služby Log Analytics a účtu Automation pouze v určitých oblastech.
 >
-> Seznam podporovaných mapování dvojic najdete v tématu [mapování oblast pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
+> Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
 
-Zrušit zaškrtnutí políčka vedle libovolného virtuálního počítače, které nechcete povolit. Virtuálních počítačů, které není možné je už vybraná.
+Zrušte zaškrtnutí políčka vedle libovolného virtuálního počítače, který nechcete povolit. Virtuální počítače, které se nedají povolit, už nejsou vybrané.
 
-Klikněte na tlačítko **povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
+Pokud chcete řešení povolit, klikněte na **Povolit** . Povolení řešení trvá přibližně 15 minut.
 
 ## <a name="unlink-workspace"></a>Zrušit propojení pracovního prostoru
 
-Následující řešení jsou závislé na pracovní prostor Log Analytics:
+Následující řešení jsou závislá na Log Analytics pracovním prostoru:
 
 * [Správa aktualizací](automation-update-management.md)
 * [Sledování změn](automation-change-tracking.md)
 * [Spuštění/zastavení virtuálních počítačů mimo špičku](automation-solution-vm-management.md)
 
-Pokud se rozhodnete, že již nechcete integrace účtu služby Automation s pracovním prostorem Log Analytics, můžete svůj účet neodpojíte přímo z portálu Azure portal. Než budete pokračovat, budete nejdřív muset odebrat řešení již bylo zmíněno dříve, jinak nebudou moct tento proces budete pokračovat. Přečtěte si článek pro konkrétní řešení, které jste importovali pochopit kroky nutné k jeho odebrání.
+Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete zrušit propojení svého účtu přímo s Azure Portal. Než budete pokračovat, musíte nejprve odebrat dříve uvedená řešení. v opačném případě bude znemožněno pokračovat v tomto procesu. Projděte si článek pro konkrétní řešení, které jste naimportovali, abyste pochopili kroky potřebné k jeho odebrání.
 
-Po odebrání těchto řešení provedením následujících kroků se zrušit propojení účtu Automation.
+Po odebrání těchto řešení můžete provést následující kroky a zrušit propojení svého účtu Automation.
 
 > [!NOTE]
-> Některá řešení, včetně starších verzí řešení monitorování Azure SQL pravděpodobně vytvořena prostředky služby automation a může také muset před rušení propojení pracovního prostoru odebrat.
+> Některá řešení, včetně dřívějších verzí řešení Azure SQL monitoring, mohla vytvořit automatizační prostředky a možná je budete muset před odpojením pracovního prostoru odebrat.
 
-1. Z portálu Azure portal otevřete svůj účet Automation, a na automatizaci účtu vyberte stránku **pracovní prostor propojený** části **související prostředky** na levé straně.
+1. V Azure Portal otevřete svůj účet Automation a na stránce účet Automation vyberte **propojený pracovní prostor** v části **související prostředky** na levé straně.
 
-2. Na stránce zrušit propojení pracovního prostoru klikněte na tlačítko **zrušit propojení pracovního prostoru**.
+2. Na stránce zrušit propojení pracovního prostoru klikněte na **Zrušit propojení pracovního prostoru**.
 
-   ![Zrušit propojení pracovního prostoru stránky](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
+   ![Zrušit propojení stránky pracovního prostoru](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
 
    Zobrazí se výzva s dotazem, jestli chcete pokračovat.
 
-3. Zatímco bude Azure Automation se pokusí zrušit propojení účtu pracovního prostoru Log Analytics, můžete sledovat průběh **oznámení** z nabídky.
+3. I když se Azure Automation pokusí odpojit účet Log Analytics pracovním prostoru, můžete sledovat průběh v nabídce **oznámení** .
 
-Pokud jste použili řešení Update Management, Volitelně můžete odebrat následující položky, které už nejsou potřeba po odebrání řešení.
+Pokud jste použili řešení Update Management, možná budete chtít po odebrání řešení odebrat následující položky, které už nepotřebujete.
 
-* Plány aktualizace – každá bude mít názvy, které odpovídají vámi vytvořených nasazení aktualizací)
+* Aktualizace plánů – každá bude mít názvy, které odpovídají vytvořeným nasazením aktualizací.
 
-* Skupiny hybridních pracovních procesů vytvořené pro dané řešení – každá bude mít název podobně jako na machine1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8).
+* Skupiny hybridních pracovních procesů vytvořené pro řešení – každá bude pojmenována podobně jako machine1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
 
-Pokud jste použili spouštění/zastavování virtuálních počítačů špičku, Volitelně můžete odebrat následující položky, které už nejsou potřeba po odebrání řešení.
+Pokud jste v době mimo špičku použili virtuální počítače spustit/zastavit, budete možná chtít po odebrání řešení odebrat následující položky, které už nepotřebujete.
 
-* Spouštět a zastavovat sady runbook plány virtuálního počítače
-* Spuštění a zastavení sad runbook virtuálního počítače
+* Spuštění a zastavení plánů Runbook VM
+* Spuštění a zastavení runbooků virtuálních počítačů
 * Proměnné
 
-Také je můžete také zrušit propojení pracovního prostoru ve svém účtu Automation z pracovního prostoru Log Analytics. Ve svém pracovním prostoru, vyberte **účtu Automation** pod **související prostředky**. Na stránce účtu Automation vyberte **zrušení propojení účtu**.
+Alternativně můžete také zrušit propojení pracovního prostoru s účtem Automation z pracovního prostoru Log Analytics. V pracovním prostoru vyberte **účet Automation** v části **související prostředky**. Na stránce účet Automation vyberte zrušit **propojení účtu**.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Při připojování více počítačů, může být počítače, které se zobrazují jako **nelze povolit**. Existují různé důvody, proč nemusí být některé počítače povolená. V následujících částech se dozvíte možným příčinám **nelze povolit** stavu na virtuálním počítači při pokusu o připojení.
+Při připojování více počítačů můžou existovat počítače, které ukazují, že se **nedají povolit**. Existují různé důvody, proč nemusí být některé počítače povolené. V následujících částech se dozvíte o možných důvodech, proč se při pokusu o připojení k virtuálnímu počítači nepodaří stav **Povolit** .
 
-### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Virtuální počítač hlásí s jiným pracovním prostorem: "\<workspaceName\>".  Změna konfigurace použít k povolení
+### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>Sestavování virtuálních počítačů do jiného pracovního\<prostoru:\>"pracovní prostor".  Změnit konfiguraci, aby se použila pro povolení
 
-**Příčina:** Tato chyba ukazuje, že virtuální počítač, který se pokoušíte připojit sestavy s jiným pracovním prostorem.
+**Příčina:** Tato chyba ukazuje, že virtuální počítač, který se pokoušíte připojit, do jiného pracovního prostoru.
 
-**Řešení**: Klikněte na tlačítko **jako konfigurace** změnit cílový pracovní prostor účtu Automation a Log Analytics.
+**Řešení**: Kliknutím na **použít jako konfigurace** změníte cílový účet Automation a Log Analytics pracovní prostor.
 
-### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Virtuální počítač sestavy do pracovního prostoru, který není v tomto předplatném k dispozici
+### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Sestavování virtuálních počítačů do pracovního prostoru, který není v tomto předplatném k dispozici
 
-**Příčina:** Pracovní prostor, který bude virtuální počítač hlásit do:
+**Příčina:** Pracovní prostor, do kterého se virtuální počítač hlásí:
 
 * Je v jiném předplatném, nebo
-* Už existuje, nebo
-* Je ve skupině prostředků nemáte oprávnění k přístupu k
+* Již neexistuje, nebo
+* Je ve skupině prostředků, ke které nemáte přístupová oprávnění.
 
-**Řešení**: Najdete účet automation přidružený, který bude virtuální počítač hlásit do pracovního prostoru a připojit virtuální počítač tak, že změníte konfiguraci oboru.
+**Řešení**: Pomocí změny konfigurace oboru Najděte účet Automation přidružený k pracovnímu prostoru, který virtuální počítač hlásí a zařadí virtuálnímu počítači.
 
-### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>Verze operačního systému virtuálního počítače nebo distribuce se nepodporuje.
+### <a name="vm-operating-system-version-or-distribution-is-not-supported"></a>Verze nebo distribuce operačního systému virtuálního počítače se nepodporuje.
 
-**Příčina:** Řešení není podporován pro všechny Linuxových distribucí nebo všechny verze Windows.
+**Způsobit** Řešení není podporováno pro všechny distribuce systému Linux nebo všechny verze systému Windows.
 
-**Řešení:** Odkazovat [seznam podporovaných klientů](automation-update-management.md#clients) řešení.
+**Řešení** Přečtěte si [seznam podporovaných klientů](automation-update-management.md#clients) pro řešení.
 
-### <a name="classic-vms-cannot-be-enabled"></a>Klasický virtuální počítač se nedá povolit.
+### <a name="classic-vms-cannot-be-enabled"></a>Klasické virtuální počítače se nedají povolit.
 
-**Příčina:** Virtuální počítače, které používají model nasazení classic se nepodporují.
+**Příčina:** Virtuální počítače, které používají model nasazení Classic, nejsou podporovány.
 
-**Řešení**: Virtuální počítač Migrate na modelu nasazení Resource Manager. Zjistěte, jak to provést, najdete v článku [migrace prostředků modelu nasazení classic](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+**Řešení**: Migrujte virtuální počítač do modelu nasazení Správce prostředků. Další informace o tom, jak to udělat, najdete v tématu [migrace prostředků modelu nasazení Classic](../virtual-machines/windows/migration-classic-resource-manager-overview.md).
 
-### <a name="vm-is-stopped-deallocated"></a>Virtuální počítač je zastavený. (přidělení zrušeno)
+### <a name="vm-is-stopped-deallocated"></a>Virtuální počítač je zastavený. přidělení zrušeno
 
-**Příčina:** Virtuální počítač není v **systémem** stavu.
+**Příčina:** Virtuální počítač není ve spuštěném stavu .
 
-**Řešení**: Za účelem připojení musí být virtuální počítač do řešení pro virtuální počítač spuštěn. Klikněte na tlačítko **spustit virtuální počítač** vložený odkaz ke spuštění virtuálního počítače bez navigaci pryč z stránky.
+**Řešení**: Aby bylo možné připojit virtuální počítač k řešení, musí virtuální počítač běžet. Kliknutím na odkaz **Spustit virtuální počítač** spustíte virtuální počítač, aniž byste museli přejít pryč ze stránky.
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když bude řešení povoleno pro vaše virtuální počítače, naleznete v článku Přehled Update Management se naučíte zobrazit posouzení aktualizací pro počítače.
+Když je teď řešení povolené pro vaše virtuální počítače, přečtěte si článek Přehled Update Management, kde se dozvíte, jak zobrazit posouzení aktualizací pro vaše počítače.
 
 > [!div class="nextstepaction"]
-> [Správa aktualizací – zobrazení posouzení aktualizací](./automation-update-management.md#viewing-update-assessments)
+> [Update Management – zobrazení posouzení aktualizací](./automation-update-management.md#viewing-update-assessments)
 
-Další kurzy o řešení a jejich použití:
+Přidání kurzů k řešením a jejich použití:
 
 * [Kurz – Správa aktualizací pro virtuální počítač](automation-tutorial-update-management.md)
 
-* [Kurz – identifikace softwaru na virtuálním počítači](automation-tutorial-installed-software.md)
+* [Kurz – určení softwaru na virtuálním počítači](automation-tutorial-installed-software.md)
 
 * [Kurz – řešení potíží se změnami na virtuálním počítači](automation-tutorial-troubleshoot-changes.md)

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
-manager: craigg
 ms.date: 05/10/2019
-ms.openlocfilehash: 5bdbd9bebfb819ae18de884a014c574e12c53ebf
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: 3f991d90dfdd5d31d1a7cf7119356f40458e7614
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371705"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568242"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database versus SQL Server
 
@@ -57,7 +56,7 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | [Databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Ano | V současné době není k dispozici [v obnovení, včetně obnovení k bodu v čase](sql-database-managed-instance-transact-sql-information.md#cant-restore-contained-database). Jedná se o chybu, která bude brzy opravena. |
 | [Uživatelé s omezením](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Ano | Ano |
 | [Řízení klíčových slov jazyka toku](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | Ano | Ano |
-| [Přihlašovací údaje](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ano, ale pouze [pověření s rozsahem databáze](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ano, ale podporují  se jenom `SHARED ACCESS SIGNATURE` Azure Key Vault a se zobrazí [Podrobnosti](sql-database-managed-instance-transact-sql-information.md#credential) . |
+| [Přihlašovací údaje](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ano, ale pouze [pověření s rozsahem databáze](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ano, ale podporují se jenom `SHARED ACCESS SIGNATURE` Azure Key Vault a se zobrazí [Podrobnosti](sql-database-managed-instance-transact-sql-information.md#credential) . |
 | [Dotazy na názvy mezi databázemi a třemi částmi](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne – zobrazit [elastické dotazy](sql-database-elastic-query-overview.md) | Ano, plus [elastické dotazy](sql-database-elastic-query-overview.md) |
 | [Transakce mezi databázemi](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne | Ano, v rámci instance. Viz [rozdíly v propojených serverech](sql-database-managed-instance-transact-sql-information.md#linked-servers) pro dotazy mezi instancemi. |
 | [Kurzory](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | Ano |Ano |
@@ -89,9 +88,10 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | [Podpora dat JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Ano](sql-database-json-features.md) | [Ano](sql-database-json-features.md) |
 | [Jazykové prvky](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Většina – viz jednotlivé prvky |  Ano – viz [rozdíly v T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Propojené servery](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne – viz [elastický dotaz](sql-database-elastic-query-horizontal-partitioning.md) | Ano. Pouze [SQL Server a SQL Database](sql-database-managed-instance-transact-sql-information.md#linked-servers) bez distribuovaných transakcí. |
+| [Propojené servery](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) , které se čtou ze souborů (CSV, Excel)| Ne. Jako alternativu pro formát CSV použijte [Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) nebo [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) . | Ne. Jako alternativu pro formát CSV použijte [Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) nebo [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) . Sledovat tyto žádosti u [položky zpětné vazby spravované instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
 | [Přesouvání protokolu](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | Každá databáze obsahuje [vysokou dostupnost](sql-database-high-availability.md) . Zotavení po havárii je popsáno v tématu [Přehled provozní kontinuity pomocí Azure SQL Database](sql-database-business-continuity.md) | Nativně integrovaná v rámci procesu migrace DMS. Není k dispozici jako řešení s vysokou dostupností, protože každá databáze obsahuje další metody [vysoké dostupnosti](sql-database-high-availability.md) a nedoporučuje se používat jako alternativu k přepravování protokolů. Zotavení po havárii najdete v tématu [Přehled provozní kontinuity pomocí Azure SQL Database](sql-database-business-continuity.md). Není k dispozici jako mechanismus replikace mezi databázemi – jako alternativu používá sekundární repliky na [úrovni pro důležité obchodní informace](sql-database-service-tier-business-critical.md), [skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md)nebo [transakční replikace](sql-database-managed-instance-transactional-replication.md) . |
 | [Přihlášení a uživatelé](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) | Příkazy Yes, `CREATE` ale `ALTER` a Login nenabízejí všechny možnosti (žádné přihlašovací údaje pro Windows a na úrovni serveru Azure Active Directory). `EXECUTE AS LOGIN`není podporováno – použijte `EXECUTE AS USER` místo toho.  | Ano, s několika [rozdíly](sql-database-managed-instance-transact-sql-information.md#logins-and-users). Přihlašovací údaje systému Windows nejsou podporovány a měly by být nahrazeny Azure Active Directory přihlášeními. |
-| [Minimální protokolování hromadného importu](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Ne | Ne |
+| [Minimální protokolování hromadného importu](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Ne, podporuje se jenom úplný model obnovení. | Ne, podporuje se jenom úplný model obnovení. |
 | [Změna systémových dat](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | Ne | Ano |
 | [Automatizace OLE](https://docs.microsoft.com/sql/database-engine/configure-windows/ole-automation-procedures-server-configuration-option) | Ne | Ne |
 | [Online operace indexu](https://docs.microsoft.com/sql/relational-databases/indexes/perform-index-operations-online) | Ano | Ano |
@@ -108,6 +108,7 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | [Predikáty](https://docs.microsoft.com/sql/t-sql/queries/predicates) | Ano | Ano |
 | [Oznámení dotazů](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Ne | Ano |
 | [Služby R](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Ano, ve [verzi Public Preview](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Ne |
+| [Modely obnovení](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) | Podporuje se jenom úplné obnovení, které zaručuje vysokou dostupnost. Jednoduché a hromadně protokolované modely obnovení nejsou k dispozici. | Podporuje se jenom úplné obnovení, které zaručuje vysokou dostupnost. Jednoduché a hromadně protokolované modely obnovení nejsou k dispozici. | 
 | [Správce prostředků](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Ne | Ano |
 | [Příkazy Restore](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Ne | Ano, s povinnými `FROM URL` možnostmi pro soubory zálohy, které jsou umístěné na Azure Blob Storage. Zobrazit [rozdíly v obnovení](sql-database-managed-instance-transact-sql-information.md#restore-statement) |
 | [Obnovit databázi ze zálohy](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Jenom z automatizovaných záloh – viz [obnovení SQL Database](sql-database-recovery-using-backups.md) | Od automatizovaných záloh – Přečtěte si téma [SQL Database Recovery](sql-database-recovery-using-backups.md) a úplné zálohy umístěné na Azure Blob Storage – viz [rozdíly v zálohování](sql-database-managed-instance-transact-sql-information.md#backup) . |
@@ -148,6 +149,7 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 | [Skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md) | Ano – všechny úrovně služeb jiné než měřítko | Ano, ve [verzi Public Preview](sql-database-auto-failover-group.md)|
 | [Azure Resource Health](/azure/service-health/resource-health-overview) | Ano | Ne |
 | [Služba migrace dat (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Ano | Ano |
+| Přístup k systému souborů | Ne. Použijte [Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) nebo [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) pro přístup k datům z Azure Blob Storage a jejich načítání z Azure jako alternativu. | Ne. Použijte [Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) nebo [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) pro přístup k datům z Azure Blob Storage a jejich načítání z Azure jako alternativu. |
 | [Geografické obnovení](sql-database-recovery-using-backups.md#geo-restore) | Ano – všechny úrovně služeb jiné než měřítko | Ano – pomocí [Azure PowerShell](https://medium.com/azure-sqldb-managed-instance/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa). |
 | [Architektura s škálovatelným škálováním](sql-database-service-tier-hyperscale.md) | Ano | Ne |
 | [Dlouhodobé uchovávání záloh – LTR](sql-database-long-term-retention.md) | Ano, zachovat automaticky zálohování po dobu až 10 let. | Zatím ne. Použijte `COPY_ONLY` [Ruční zálohování](sql-database-managed-instance-transact-sql-information.md#backup) jako dočasné alternativní řešení. |
@@ -167,7 +169,7 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 | [Sítě](../virtual-network/virtual-networks-overview.md) | Částečně, umožňuje omezený přístup pomocí [koncových bodů virtuální](sql-database-vnet-service-endpoint-rule-overview.md) sítě. | Ano, spravovaná instance je vložena do virtuální sítě zákazníka. Zobrazit [podsíť](sql-database-managed-instance-transact-sql-information.md#subnet) a [virtuální síť](sql-database-managed-instance-transact-sql-information.md#vnet) |
 
 ## <a name="tools"></a>Nástroje
-Azure SQL Database podporuje různé datové nástroje, které vám můžou Uou spravovat vaše data.
+Azure SQL Database podporuje různé datové nástroje, které vám pomůžou se správou vašich dat.
 
 | **Nástroj SQL** | **Izolované databáze a elastické fondy** | **Spravované instance** |
 | --- | --- | --- |
@@ -181,7 +183,7 @@ Azure SQL Database podporuje různé datové nástroje, které vám můžou Uou 
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Ne – viz [Rozšířené události](sql-database-xevent-db-diff-from-svr.md) | Ano |
 | [System Center Operations Manager – SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Ano](https://www.microsoft.com/download/details.aspx?id=38829) | Ne |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Informace o službě Azure SQL Database najdete v tématu [Co je SQL Database?](sql-database-technical-overview.md)
 - Informace o spravované instanci naleznete v tématu [co je spravovaná instance?](sql-database-managed-instance.md).

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 587d8040039080e15c61292279c5e5637d296b08
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: f5591a3e0ca73649b1ffc51c75aa95e86e286768
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68351347"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639091"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Nasazení Pythonu pro Azure Functions s využitím Visual Studio Code
 
@@ -94,7 +94,7 @@ Výstup, který začíná logem Azure Functions (je třeba posunout výstup naho
 
 1. V následujících dotazech:
 
-    | Výzva | Hodnota | Popis | 
+    | Výzva | Value | Popis | 
     | --- | --- | --- |
     | Zadejte složku pro projekt | Aktuální otevřená složka | Složka, ve které se má projekt vytvořit. Můžete chtít vytvořit projekt v podsložce. |
     | Vyberte jazyk pro projekt Function App. | **Python** | Jazyk, který má být použit pro funkci, která určuje šablonu použitou pro kód. |
@@ -253,7 +253,7 @@ V tomto postupu použijete rozšíření Functions k vytvoření aplikace Functi
 1. Rozšíření provádí následující akce, které můžete sledovat v Visual Studio Code automaticky otevírané zprávy a okně **výstup** (proces trvá několik minut):
 
     - Vytvořte skupinu prostředků pomocí názvu, který jste zadali (odeberou spojovníky).
-    - V této skupině prostředků vytvořte účet úložiště, plán hostování a aplikaci Function App. Ve výchozím nastavení se vytvoří [plán spotřeby](functions-scale.md#consumption-plan) . Chcete-li spustit funkce ve vyhrazeném plánu, je třeba [Povolit publikování s možností pokročilého vytvoření](functions-develop-vs-code.md#enabled-publishing-with-advanced-create-options).
+    - V této skupině prostředků vytvořte účet úložiště, plán hostování a aplikaci Function App. Ve výchozím nastavení se vytvoří [plán spotřeby](functions-scale.md#consumption-plan) . Chcete-li spustit funkce ve vyhrazeném plánu, je nutné [Povolit publikování s možností pokročilého vytvoření](functions-develop-vs-code.md).
     - Nasaďte svůj kód do aplikace Function App.
 
     **Azure: V** Průzkumníku funkcí se taky zobrazuje průběh:

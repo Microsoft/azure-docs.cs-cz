@@ -1,7 +1,7 @@
 ---
-title: Metoda CalcHistogram – Academic Knowledge API
+title: Metoda CalcHistogram-Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Pomocí této metody CalcHistogram vypočítá distribuci hodnot atributů pro sadu entit papíru.
+description: Použijte metodu CalcHistogram pro výpočet distribuce hodnot atributů pro sadu papírových entit.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,16 +10,17 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9e84b1ad37b3224ec5553d0a66ba0fc84bc88f55
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60498826"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705069"
 ---
-# <a name="calchistogram-method"></a>CalcHistogram – metoda
+# <a name="calchistogram-method"></a>Metoda CalcHistogram
 
-**Calchistogram** rozhraní REST API se používá k výpočtu distribuce hodnot atributů pro sadu entit papíru.          
+REST API **calchistogram** se používá k výpočtu distribuce hodnot atributů pro sadu papírových entit.          
 
 
 **Koncový bod REST:**
@@ -30,49 +31,49 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 
 ## <a name="request-parameters"></a>Parametry žádosti
 
-Name  |Hodnota | Požadováno?  |Popis
+Name  |Value | Požadováno?  |Popis
 -----------|----------|--------|----------
-**výraz**    |Textový řetězec | Ano  |Výraz dotazu, který určuje entity, přes která chcete vypočítat histogramy.
-**model** |Textový řetězec | Ne |Vyberte název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.
-**Atributy** | Textový řetězec | Ne<br>Výchozí hodnota: | Čárkami oddělený seznam, který určuje hodnoty atributů, které jsou zahrnuty v odpovědi. Názvy atributů rozlišují malá a velká písmena.
-**count** |Číslo | Ne<br>Výchozí hodnota: 10 |Číslo s vrácenými výsledky.
-**Posun**  |Číslo | Ne<br>Výchozí hodnota: 0 |Index první výsledek vrátit.
-**timeout**  |Číslo | Ne<br>Výchozí hodnota: 1000 |Časový limit v milisekundách. Jsou vráceny pouze interpretace nalezen předtím, než vypršel časový limit.
+**výrazu**    |Textový řetězec | Ano  |Výraz dotazu, který určuje entity, pro které se mají vypočítat histogramy.
+**model** |Textový řetězec | Ne |Vyberte název modelu, který se má dotazovat.  V současné době je hodnota standardně *nejnovější*.
+**atribut** | Textový řetězec | Ne<br>výchozí | Seznam oddělený čárkami, který určuje hodnoty atributů, které jsou zahrnuty v odpovědi. V názvech atributů se rozlišují velká a malá písmena.
+**count** |Number | Ne<br>Výchozí: 10 |Počet výsledků, které se mají vrátit
+**polohy**  |Number | Ne<br>Výchozí: 0 |Index prvního výsledku, který se má vrátit
+**prodlev**  |Number | Ne<br>Výchozí: 1000 |Časový limit v milisekundách Budou vráceny pouze interprety, které byly nalezeny před uplynutím časového limitu.
 
 ## <a name="response-json"></a>Odpověď (JSON)
 
-Název | Popis
+Name | Popis
 --------|---------
-**výraz**  |Výraz parametru z požadavku.
-**num_entities** | Celkový počet odpovídajících entit.
-**histograms** |  Pole histogramy, jeden pro každý atribut v požadavku.
-**histograms[x].attribute** | Název atributu, nad niž se spočítala histogram.
-**histograms[x].distinct_values** | Počet jedinečných hodnot mezi odpovídající entity pro tento atribut.
-**histograms[x].total_count** | Celkový počet instancí hodnotu mezi odpovídající entity pro tento atribut.
-**histograms[x].histogram** | Histogram data pro tento atribut.
-**histograms[x].histogram[y].value** |  Hodnota pro atribut.
-**histograms[x].histogram[y].logprob**  |Celkový počet přirozený logaritmus pravděpodobnost odpovídající entity s touto hodnotou atributu.
-**histograms[x].histogram[y].count**  |Počet odpovídajících entit s touto hodnotou atributu.
-**aborted** | True, pokud vypršel časový limit žádosti.
+**výrazu**  |Parametr expr z požadavku.
+**num_entities** | Celkový počet vyhovujících entit
+**histograms** |  Pole histogramů, jeden pro každý atribut zadaný v požadavku.
+**histograms[x].attribute** | Název atributu, přes který byl histogram vypočítán.
+**histograms[x].distinct_values** | Počet jedinečných hodnot mezi vyhovujícími entitami pro tento atribut.
+**histograms[x].total_count** | Celkový počet instancí hodnot mezi vyhovujícími entitami pro tento atribut.
+**histograms[x].histogram** | Data histogramu pro tento atribut.
+**histograms[x].histogram[y].value** |  Hodnota atributu.
+**histograms[x].histogram[y].logprob**  |Celková pravděpodobnost, jakou je přirozený protokol u vyhovujících entit s touto hodnotou atributu
+**histograms[x].histogram[y].count**  |Počet vyhovujících entit s touto hodnotou atributu
+**aborted** | Hodnota true, pokud vypršel časový limit žádosti
 
 
 #### <a name="example"></a>Příklad:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4
 ```
-<br>V tomto příkladu, aby se vygenerovala histogram počtu publikace podle roku pro konkrétní Autor od 2010, můžete nejprve vygenerujeme pomocí výrazu dotazu **interpretovat** rozhraní API s řetězcem dotazu: *papíry podle jaime teevan po 2012*.
+<br>V tomto příkladu je možné vygenerovat histogram počtu publikací po rocích od určitého autora od 2010. nejdřív můžete vygenerovat výraz dotazu pomocí rozhraní API pro interpretaci s řetězcem dotazu: *Paper by espinosy teevan po 2012*.
 
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime teevan after 2012
 ```
-<br>Výraz v první výklad, který je vrácen z interpretaci rozhraní API je *a (kompozitních (AA. AuN == "jaime teevan"), Y > 2012)* .
-<br>Hodnota tohoto výrazu je pak předán **calchistogram** rozhraní API. *Attributes=Y,F.FN* parametr označuje, distribuce papíru počty by měl být například podle roku a pole studie:
+<br>Výraz v první interpretaci, který je vrácen z rozhraní Interpret API, je *a (složený (AA). AuN = = ' Espinosy teevan '), Y > 2012)* .
+<br>Tato hodnota výrazu je pak předána do rozhraní **calchistogram** API. Parametr *Attributes = Y, F. FN* znamená, že distribuce počtů papíru by měla být podle roku a pole studie, např.:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4
 ```
-<br>Odpověď na tuto žádost nejdřív označuje, že jsou 37 papíry, které odpovídají výrazu dotazu.  Pro *rok* atribut, existují 3 různé hodnoty, jeden pro každý rok po 2012 (tj. 2013, 2014 a 2015), jak je uvedeno v dotazu.  Celkový počet papíru počet za 3 různé hodnoty je 37.  Pro každou *rok*, histogram zobrazuje hodnotu, celkový počet přirozený logaritmus pravděpodobnosti a počtu odpovídajících entit.     
+<br>Odpověď na tento požadavek nejprve označuje, že jsou 37 papíry, které odpovídají výrazu dotazu.  Pro atribut *year* je k dispozici 3 jedinečné hodnoty, jedna pro každý rok po 2012 (tj. 2013, 2014 a 2015), jak je uvedeno v dotazu.  Celkový počet papírů v rámci 3 jedinečných hodnot je 37.  V každém *roce*Histogram Zobrazuje hodnotu, celkovou pravděpodobnost přirozeného protokolu a počet vyhovujících entit.     
 
-Histogram pro *pole studovat* ukazuje, že jsou 34 různých polí studia. Jak dokument může být spojen s více polí studii, celkový počet (53) může být větší než počet odpovídajících entit.  I když existují 34 jedinečných hodnot, odpověď obsahuje pouze horní 4 z důvodu *počet = 4* parametru.
+Histogram pro *pole studie* ukazuje, že existuje 34 různých polí studia. V případě, že je možné přidružit k více polím studie, celkový počet (53) může být větší než počet vyhovujících entit.  I když jsou 34 odlišné hodnoty, odpověď obsahuje jenom prvních 4, protože parametr *Count = 4* .
 
 ```JSON
 {

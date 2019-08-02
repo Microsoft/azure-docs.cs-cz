@@ -1,18 +1,19 @@
 ---
 title: Azure Backup – offline zálohování nebo počáteční osazení pomocí služby Azure import/export
 description: Přečtěte si, jak Azure Backup umožňuje odesílat data mimo síť pomocí služby Azure import/export. V tomto článku se dozvíte, jak v režimu offline importu počátečních dat zálohování použít službu Azure import export.
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: saurse
-ms.openlocfilehash: e852e1595be5b564bd1a6326d41115496284506f
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 2c628b94879e54616f294e4c5f349f241fbbb98b
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466789"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689478"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování ve službě Azure Backup
 Azure Backup má několik předdefinovaných efektivit, které při počátečním úplném zálohování dat do Azure šetří náklady na síť a úložiště. Počáteční úplné zálohování obvykle přenáší velké objemy dat a vyžaduje více šířky pásma sítě ve srovnání s dalšími zálohami, které přenášejí pouze rozdíly a přírůstkové. V průběhu režimu offline osazení Azure Backup můžou použít disky k nahrání offline zálohovaných dat do Azure.

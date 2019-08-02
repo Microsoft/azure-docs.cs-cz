@@ -1,19 +1,20 @@
 ---
 title: 'Azure Backup: Obnovení virtuálních počítačů pomocí Azure Portal'
 description: Obnovení virtuálního počítače Azure z bodu obnovení pomocí Azure Portal
-author: geethalakshmig
-manager: vijayts
+ms.reviewer: geg
+author: dcurwin
+manager: carmonm
 keywords: obnovit zálohu; Jak obnovit; bod obnovení;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.author: geg
-ms.openlocfilehash: 951e42c4eb7a9d897140a7422364cdbfe83e57cc
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 0130dde483db4563926076f9bf9e641c14b1c117
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466888"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688767"
 ---
 # <a name="restore-azure-vms"></a>Obnovení virtuálních počítačů Azure
 

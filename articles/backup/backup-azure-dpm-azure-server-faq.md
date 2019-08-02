@@ -1,18 +1,19 @@
 ---
 title: Nejčastější dotazy k Azure Backup Server a DPM
 description: 'Odpovědi na běžné otázky týkající se: Azure Backup Server a DPM.'
-author: srinathvasireddy
-manager: sivan
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: srinathv
-ms.openlocfilehash: 54727daa158172ae44379b847c70602ca998c65d
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 16cf4bcb6d83d22417d83d0b20ee564431f82840
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466416"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689345"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server a DPM – Nejčastější dotazy
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Backup Server a aplikace DPM.
@@ -56,7 +57,7 @@ Ano, položku lze obnovit na původní web služby SharePoint.
 ### <a name="can-i-recover-a-sharepoint-database-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson"></a>Je možné obnovit databázi služby SharePoint do původního umístění, pokud je server SharePoint nakonfigurován pomocí technologie AlwaysOn systému SQL?
 Vzhledem k tomu, že databáze služby SharePoint jsou nakonfigurovány v technologii SQL AlwaysOn, nelze je upravovat, pokud není odebrána skupina dostupnosti. V důsledku toho DPM nemůže obnovit databázi do původního umístění. Můžete obnovit databázi SQL Server do jiné instance SQL Server.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další Nejčastější dotazy:
 

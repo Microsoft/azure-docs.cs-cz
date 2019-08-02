@@ -1,6 +1,6 @@
 ---
-title: OLTP v paměti zlepšuje výkon transakcí SQL | Dokumentace Microsoftu
-description: Přijmout OLTP v paměti pro zvýšení výkonu transakcí ve stávající databázi SQL.
+title: OLTP v paměti zlepšuje výkon SQL TXN | Microsoft Docs
+description: Přijmout OLTP v paměti pro zlepšení transakčního výkonu v existující databázi SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,56 +10,55 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
-manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 03e5540e34cd99d2b201bc763f13b42c7fa20bf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e869b2bba3bd64b58d9063e9445889ef709efdc3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785315"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567950"
 ---
-# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>OLTP v paměti použijte, chcete-li zvýšit výkon vašich aplikací ve službě SQL Database
+# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Pomocí OLTP v paměti můžete zlepšit výkon aplikace v SQL Database
 
-[OLTP v paměti](sql-database-in-memory.md) slouží ke zvýšení výkonu při zpracování transakcí, ingestování a případech přechodných dat v [úrovně Premium a pro důležité obchodní informace](sql-database-service-tiers-vcore.md) databází bez zvýšení cenové úrovně. 
+[OLTP v paměti](sql-database-in-memory.md) lze použít ke zlepšení výkonu zpracování transakcí, přijímání dat a přechodných scénářů dat v databázích [úrovně Premium a pro důležité obchodní informace](sql-database-service-tiers-vcore.md) bez zvýšení cenové úrovně. 
 
 > [!NOTE] 
-> Zjistěte, jak [kvorum zdvojnásobuje klíčové databázové úlohy při současném snižování DTU o 70 % službou SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+> Přečtěte si, jak kvorum podvoje [úlohy klíčové databáze při snižování DTU o 70% s SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 
-Následujícím postupem implementace OLTP v paměti v existující databázi.
+Pomocí těchto kroků můžete v existující databázi přijmout OLTP v paměti.
 
-## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>Krok 1: Ujistěte se, že používáte databáze úrovně Premium a pro důležité obchodní informace
+## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>Krok 1: Ujistěte se, že používáte databázi úrovně Premium a Pro důležité obchodní informace.
 
-OLTP v paměti je podporováno pouze v databázích úrovně Premium a pro důležité obchodní informace. V paměti je podporováno, pokud vrácený výsledek je 1 (není 0):
+OLTP v paměti je podporováno pouze v databázích úrovně Premium a Pro důležité obchodní informace. V paměti je podporována, pokud je vrácený výsledek 1 (ne 0):
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 ```
 
-*XTP* zastupuje *extrémní zpracování transakcí*
+*XTP* pro *extrémní zpracování transakcí*
 
 
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Krok 2: Identifikace objektů pro migraci OLTP v paměti
-SSMS zahrnuje **přehled analýzy výkonu transakce** sestavu, kterou můžete spouštět proti databázi s aktivní úlohy. Sestava identifikuje tabulky a uložené procedury, které jsou kandidáty pro migraci do OLTP v paměti.
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Krok 2: Identifikace objektů, které se mají migrovat do OLTP v paměti
+SSMS zahrnuje sestavu s **přehledem analýzy výkonu transakcí** , kterou můžete spustit pro databázi s aktivním zatížením. Tato sestava identifikuje tabulky a uložené procedury, které jsou kandidáty na migraci do OLTP v paměti.
 
-V aplikaci SSMS, generování sestav:
+V SSMS vygenerujte sestavu:
 
-* V **Průzkumník objektů**, klikněte pravým tlačítkem na uzel vaší databáze.
-* Klikněte na tlačítko **sestavy** > **standardních sestav** > **přehled analýzy výkonu transakce**.
+* V **Průzkumník objektů**klikněte pravým tlačítkem myši na uzel databáze.
+* Klikněte na **sestavy** > **standardní** > **Přehled analýzy výkonu transakce**.
 
-Další informace najdete v tématu [stanovení, pokud tabulka nebo uložené procedury by měl být přenést do OLTP v paměti](https://msdn.microsoft.com/library/dn205133.aspx).
+Další informace najdete v tématu [určení, zda by měla být tabulka nebo uložená procedura převoditelné do OLTP v paměti](https://msdn.microsoft.com/library/dn205133.aspx).
 
-## <a name="step-3-create-a-comparable-test-database"></a>Krok 3: Vytvoření databáze srovnatelné testu
-Předpokládejme, že sestava označuje, že vaše databáze má tabulka, která je výhodná převáděn na paměťově optimalizované tabulky. Doporučujeme nejprve vyzkoušet k potvrzení o testování.
+## <a name="step-3-create-a-comparable-test-database"></a>Krok 3: Vytvoření srovnatelné testovací databáze
+Předpokládejme, že se v sestavě zobrazuje vaše databáze, která by mohla být převedena na paměťově optimalizovanou tabulku. Doporučujeme, abyste nejprve otestovali, abyste ověřili indikaci testováním.
 
-Potřebujete zkušební kopii vaši produkční databázi. Test databáze by měla být na stejné úrovni úroveň služby jako produkční databázi.
+Potřebujete testovací kopii vaší provozní databáze. Testovací databáze by měla být na stejné úrovni úrovně služeb jako provozní databáze.
 
-K usnadnění, testování, upravit testovací databázi následujícím způsobem:
+Chcete-li se snadno rozzkoušet, vylepšit testovací databázi následujícím způsobem:
 
-1. Připojení k databázi testu s použitím aplikace SSMS.
-2. Abyste nemuseli možnost WITH (SNAPSHOT) v dotazech, nastavte možnost databáze, jak je znázorněno v následujícím příkazu T-SQL:
+1. Připojte se k testovací databázi pomocí SSMS.
+2. Abyste se vyhnuli nutnosti používat v dotazech možnost WITH (SNAPSHOT), nastavte možnost databáze, jak je znázorněno v následujícím příkazu T-SQL:
    
    ```
    ALTER DATABASE CURRENT
@@ -67,39 +66,39 @@ K usnadnění, testování, upravit testovací databázi následujícím způsob
         MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
    ```
 
-## <a name="step-4-migrate-tables"></a>Krok 4: Migrace tabulky
-Musíte vytvořit a naplnit kopii paměťově optimalizované tabulky, ve které chcete testovat. Můžete ho vytvořit pomocí:
+## <a name="step-4-migrate-tables"></a>Krok 4: Migrace tabulek
+Musíte vytvořit a naplnit paměťově optimalizovanou kopii tabulky, kterou chcete testovat. Můžete ho vytvořit pomocí některého z těchto:
 
-* Po ruce Průvodce optimalizace paměti v aplikaci SSMS.
+* Průvodce užitečnou optimalizací paměti v SSMS.
 * Ruční T-SQL.
 
-#### <a name="memory-optimization-wizard-in-ssms"></a>Průvodce optimalizace paměti v aplikaci SSMS
-Použití této možnosti migrace:
+#### <a name="memory-optimization-wizard-in-ssms"></a>Průvodce optimalizací paměti v SSMS
+Postup použití této možnosti migrace:
 
-1. Připojení k testovací databázi pomocí SSMS.
-2. V **Průzkumník objektů**, klikněte pravým tlačítkem na tabulku a pak klikněte na tlačítko **Advisor optimalizace paměti**.
+1. Připojte se k testovací databázi pomocí SSMS.
+2. V **Průzkumník objektů**klikněte pravým tlačítkem myši na tabulku a potom klikněte na možnost **Poradce optimalizace paměti**.
    
-   * **Advisor optimalizace paměti tabulky** průvodce se zobrazí.
-3. V průvodci klikněte na tlačítko **ověření migrace** (nebo **Další** tlačítko) Chcete-li zobrazit, jestli tabulka obsahuje všechny nepodporované funkce, které nejsou podporovány v paměťově optimalizovaných tabulkách. Další informace naleznete v tématu:
+   * Zobrazí se průvodce **poradcem pro optimalizaci paměti tabulky** .
+3. V průvodci klikněte na **Ověření migrace** (nebo na tlačítko **Další** ) a zjistěte, jestli má tabulka nějaké nepodporované funkce, které nejsou podporované v paměťově optimalizovaných tabulkách. Další informace naleznete v tématu:
    
-   * *Kontrolní seznam optimalizace paměti* v [Advisor optimalizace paměti](https://msdn.microsoft.com/library/dn284308.aspx).
-   * [Konstrukce jazyka Transact-SQL nepodporuje OLTP v paměti](https://msdn.microsoft.com/library/dn246937.aspx).
-   * [Migrace na OLTP v paměti](https://msdn.microsoft.com/library/dn247639.aspx).
-4. Pokud tabulka nemá žádné nepodporované funkce, Poradce pro vás provádět skutečné schéma a data migrace.
+   * *Kontrolní seznam optimalizace paměti* v [poradci optimalizace paměti](https://msdn.microsoft.com/library/dn284308.aspx).
+   * [OLTP v paměti nepodporují konstrukce jazyka Transact-SQL](https://msdn.microsoft.com/library/dn246937.aspx).
+   * [Migrace do OLTP v paměti](https://msdn.microsoft.com/library/dn247639.aspx).
+4. Pokud tabulka neobsahuje žádné nepodporované funkce, může poradce pro vás provést vlastní migraci schématu a dat.
 
 #### <a name="manual-t-sql"></a>Ruční T-SQL
-Použití této možnosti migrace:
+Postup použití této možnosti migrace:
 
-1. Připojení k testovací databázi pomocí aplikace SSMS (nebo podobného nástroje).
-2. Získáte celý skript T-SQL pro tabulky a jeho indexy.
+1. Připojte se k testovací databázi pomocí SSMS (nebo podobného nástroje).
+2. Získejte kompletní skript T-SQL pro tabulku a její indexy.
    
-   * V aplikaci SSMS klikněte pravým tlačítkem na uzel tabulky.
-   * Klikněte na tlačítko **skriptu tabulku jako** > **vytvořit** > **nové okno dotazu**.
-3. V okně skriptu přidat WITH (hodnotou MEMORY_OPTIMIZED = ON) k příkazu CREATE TABLE.
-4. Pokud je SESKUPENÝ index, změňte ho na NONCLUSTERED.
-5. Přejmenujte existující tabulku s použitím proceduru SP_RENAME.
-6. Vytvořte novou kopii paměťově optimalizované tabulky spuštěním svůj upravený skript CREATE TABLE.
-7. Kopírování dat do paměťově optimalizované tabulky pomocí vložení... VYBERTE * DO:
+   * V SSMS klikněte pravým tlačítkem myši na uzel tabulky.
+   * Klikněte na tlačítko **tabulka skriptů jako** > **vytvořit pro** > **nové okno dotazu**.
+3. V okně skriptu přidejte do příkazu CREATE TABLE příkaz WITH (MEMORY_OPTIMIZED = ON).
+4. Pokud existuje CLUSTEROVANÝ index, změňte ho na neclusterovaný.
+5. Přejmenujte existující tabulku pomocí SP_RENAME.
+6. Vytvořte novou paměťově optimalizovanou kopii tabulky spuštěním upravovaného CREATE TABLE skriptu.
+7. Zkopírujte data do paměťově optimalizované tabulky pomocí INSERT... VYBERTE * DO:
 
 ```
 INSERT INTO <new_memory_optimized_table>
@@ -108,18 +107,18 @@ INSERT INTO <new_memory_optimized_table>
 
 
 ## <a name="step-5-optional-migrate-stored-procedures"></a>Krok 5 (volitelné): Migrace uložených procedur
-Funkce v paměti můžete také upravit uložené procedury za účelem vylepšení výkonu.
+Funkce v paměti může také upravovat uloženou proceduru pro zlepšení výkonu.
 
-### <a name="considerations-with-natively-compiled-stored-procedures"></a>Důležité informace o s nativně kompilovanými uloženými procedurami
-Nativně kompilované uložené procedury musí mít na jeho klauzule T-SQL pomocí následujících možností:
+### <a name="considerations-with-natively-compiled-stored-procedures"></a>Otázky s nativně kompilovanými uloženými procedurami
+Nativně kompilovaná uložená procedura musí mít v klauzuli T-SQL WITH následující možnosti:
 
 * NATIVE_COMPILATION
-* SCHEMABINDING: význam tabulky, uložené procedury nesmí obsahovat jejich definice sloupců změnit žádným způsobem, který by došlo k ovlivnění uloženou proceduru, pokud odstraníte uloženou proceduru.
+* SCHEMABINDING: to znamená, že se v tabulkách, v nichž uložená procedura nemůže naměnit definice sloupců, jakýmkoli způsobem změnil, který by ovlivnil uloženou proceduru, pokud neodstraníte uloženou proceduru.
 
-Nativní modul musí používat některý velké objemy [ATOMICKÝCH bloků](https://msdn.microsoft.com/library/dn452281.aspx) pro správu transakce. Neexistuje žádná role pro explicitní BEGIN TRANSACTION, nebo pro vrácení transakce zpět. Pokud váš kód zjistí porušení obchodní pravidlo, můžete ukončit Atomický blok s [THROW](https://msdn.microsoft.com/library/ee677615.aspx) příkazu.
+Nativní modul musí používat jeden z těchto velkých [atomických bloků](https://msdn.microsoft.com/library/dn452281.aspx) pro správu transakcí. Neexistuje žádná role pro explicitní BEGIN TRANSACTION nebo transakce vrácení zpět. Pokud váš kód zjistí porušení obchodního pravidla, může ukončit atomický blok s příkazem [throw](https://msdn.microsoft.com/library/ee677615.aspx) .
 
-### <a name="typical-create-procedure-for-natively-compiled"></a>Typický postup vytvoření pro nativně kompilované
-Obvykle se podobá následující šablony T-SQL k vytvoření nativně kompilované uložené procedury:
+### <a name="typical-create-procedure-for-natively-compiled"></a>Typická procedura CREATE pro nativně kompilování
+T-SQL je typicky vytvořit nativně zkompilované uložené procedury podobně jako v následující šabloně:
 
 ```
 CREATE PROCEDURE schemaname.procedurename
@@ -134,43 +133,43 @@ CREATE PROCEDURE schemaname.procedurename
         END;
 ```
 
-* SNÍMEK pro TRANSACTION_ISOLATION_LEVEL, je nejběžnější hodnotu pro nativně kompilované uložené procedury. Ale podmnožinou jiné hodnoty jsou také podporovány:
+* Pro TRANSACTION_ISOLATION_LEVEL je snímek nejběžnější hodnotou pro nativně kompilovaných uložených procedur. Nicméně podmnožina dalších hodnot je také podporována:
   
-  * REPEATABLE READ
-  * SERIALIZOVATELNÉ
-* Hodnota jazyka musí být k dispozici v zobrazení sys.languages.
+  * OPAKOVANÉ ČTENÍ
+  * SERIALIZOVATELNÝ
+* Hodnota jazyka musí být uvedena v zobrazení sys. Languages.
 
-### <a name="how-to-migrate-a-stored-procedure"></a>Jak migrovat uložené procedury
-Kroky migrace jsou:
+### <a name="how-to-migrate-a-stored-procedure"></a>Postup migrace uložené procedury
+Postup migrace je následující:
 
-1. Získáte skript CREATE PROCEDURE interpretovaných regulárních uložené procedury.
-2. Přepište záhlaví tak, aby odpovídaly předchozí šablony.
-3. Zjistit, zda uložené procedury kód T-SQL využívá všechny funkce, které nejsou podporovány pro nativně kompilované uložené procedury. Implementovat řešení v případě potřeby.
+1. Získání skriptu pro vytvoření procedury v běžné interpretované uložené proceduře.
+2. Přepište hlavičku tak, aby odpovídala předchozí šabloně.
+3. Zjišťuje, zda kód T-SQL uložené procedury používá funkce, které nejsou podporovány pro nativně kompilované uložené procedury. V případě potřeby implementujte alternativní řešení.
    
-   * Podrobnosti najdete v tématu [problémy s migrací nativně zkompilován uložené procedury](https://msdn.microsoft.com/library/dn296678.aspx).
-4. Přejmenujte staré uložené procedury pomocí proceduru SP_RENAME. Nebo jednoduše VYŘADIT.
-5. Spusťte upravený skript vytvořit PROCEDURU T-SQL.
+   * Podrobnosti najdete v tématu [problémy s migrací u nativně kompilovaných uložených procedur](https://msdn.microsoft.com/library/dn296678.aspx).
+4. Přejmenujte starou uloženou proceduru pomocí SP_RENAME. Nebo ho jednoduše přetáhněte.
+5. Spusťte upravený skript T-SQL VYTVOŘENého postupu.
 
 ## <a name="step-6-run-your-workload-in-test"></a>Krok 6: Spuštění úlohy v testu
-Spuštění úlohy v testovací databázi, která se podobá úloze, která běží v provozní databázi. To byste měli odhalit, zvýšení výkonu dosáhnout použití funkce v paměti pro tabulky a uložené procedury.
+Spusťte v testovací databázi úlohu, která bude podobná zatížení, které běží ve vaší provozní databázi. To by mělo odhalit nárůst výkonu dosažený využitím funkce v paměti pro tabulky a uložené procedury.
 
-Hlavní atributy sady funkcí jsou:
+Hlavní atributy úlohy jsou:
 
 * Počet souběžných připojení.
-* Poměr čtení/zápis.
+* Poměr pro čtení a zápis.
 
-Chcete-li přizpůsobit a spusťte test zatížení, zvažte použití ostress.exe užitečný nástroj, který ukazuje [tady](sql-database-in-memory.md).
+Chcete-li přizpůsobit a spustit úlohu testování, zvažte použití praktického nástroje OSTRESS. exe, který je znázorněn v [tomto](sql-database-in-memory.md)příkladu.
 
-Kvůli minimalizaci latence sítě, spuštění testu ve stejné zeměpisné oblasti Azure ve kterém databáze existuje.
+Chcete-li minimalizovat latenci sítě, spusťte test ve stejné geografické oblasti Azure, kde databáze existuje.
 
-## <a name="step-7-post-implementation-monitoring"></a>Krok 7: Po implementaci monitorování
-Vezměte v úvahu monitorování výkonu účinky vaší implementace v paměti v produkčním prostředí:
+## <a name="step-7-post-implementation-monitoring"></a>Krok 7: Monitorování po implementaci
+Zvažte monitorování vlivu implementace v paměti v produkčním prostředí:
 
-* [Monitorování úložiště v paměti](sql-database-in-memory-oltp-monitoring.md).
+* [Monitorujte úložiště v paměti](sql-database-in-memory-oltp-monitoring.md).
 * [Monitorování databáze Azure SQL Database pomocí zobrazení dynamické správy](sql-database-monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>Související odkazy
-* [Paměti OLTP (Optimalizace v paměti)](https://msdn.microsoft.com/library/dn133186.aspx)
-* [Seznámení s nativně Kompilovanými uloženými procedurami](https://msdn.microsoft.com/library/dn133184.aspx)
-* [Advisor optimalizace paměti](https://msdn.microsoft.com/library/dn284308.aspx)
+* [OLTP v paměti (optimalizace v paměti)](https://msdn.microsoft.com/library/dn133186.aspx)
+* [Seznámení s nativně kompilovanými uloženými procedurami](https://msdn.microsoft.com/library/dn133184.aspx)
+* [Poradce pro optimalizaci paměti](https://msdn.microsoft.com/library/dn284308.aspx)
 

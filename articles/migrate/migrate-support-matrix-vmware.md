@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: raynew
-ms.openlocfilehash: 00ca474a6cb32c7ad3e47aef750126e958e43501
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: bbbec680cd2575cc63761c9fbe1335d548ec4d3b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372445"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640790"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci VMware
 
-[Službu Azure Migrate](migrate-overview.md) můžete použít k vyhodnocení a migraci počítačů do Microsoft Azure cloudu. Tento článek shrnuje nastavení podpory a omezení pro vyhodnocení a migraci místních virtuálních počítačů VMware.
+[Azure Migrate](migrate-overview.md) můžete použít k vyhodnocení a migraci počítačů do Microsoft Azure cloudu. Tento článek shrnuje nastavení podpory a omezení pro vyhodnocení a migraci místních virtuálních počítačů VMware.
 
 
 ## <a name="vmware-scenarios"></a>Scénáře VMware
@@ -27,35 +27,32 @@ Tabulka shrnuje podporované scénáře pro virtuální počítače VMware.
 **Nasazení** | **Podrobnosti**
 --- | ---
 **Posouzení místních virtuálních počítačů VMware** | [Nastavte](tutorial-prepare-vmware.md) své první posouzení.<br/><br/> [Spusťte](scale-vmware-assessment.md) hodnocení ve velkém měřítku.
-**Migrace virtuálních počítačů VMware** | Migraci můžete migrovat pomocí migrace bez agenta s některými omezeními nebo pomocí migrace založené na agentech. [Víc se uč](server-migrate-overview.md)
+**Migrace virtuálních počítačů VMware** | Můžete migrovat pomocí migrace bez agenta nebo pomocí migrace založené na agentech. [Víc se uč](server-migrate-overview.md)
 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate projekty
 
 **Podpora** | **Podrobnosti**
 --- | ---
-Oprávnění Azure | Chcete-li vytvořit projekt Azure Migrate, potřebujete oprávnění přispěvatele nebo vlastníka v rámci předplatného.
-Omezení VMware  | Vyhodnoťte až 35 000 virtuálních počítačů VMware v jednom projektu.
+**Oprávnění Azure** | Chcete-li vytvořit projekt Azure Migrate, potřebujete oprávnění přispěvatele nebo vlastníka v rámci předplatného.
+**Omezení VMware**  | Vyhodnoťte až 35 000 virtuálních počítačů VMware v jednom projektu. V předplatném Azure můžete vytvořit více projektů.
+**Omezení projektu** | Projekt může zahrnovat virtuální počítače VMware i virtuální počítače Hyper-V, a to až do limitů hodnocení.
+**Zeměpisné oblasti** | Azure Migrate projekt můžete vytvořit v řadě geografických oblastí. I když v těchto geografických oblastech můžete vytvářet pouze projekty, můžete vyhodnocovat nebo migrovat počítače pro jiná cílová umístění. Geografie projektu se používá pouze k uložení zjištěných metadat.
 
-Projekt může zahrnovat virtuální počítače VMware i virtuální počítače Hyper-V, a to až do limitů hodnocení.
-
-**Geografické** Existuje řada geografických oblastí, ve kterých lze vytvořit Azure Migrate projekt. I když v těchto geografických oblastech můžete vytvářet pouze projekty, můžete i nadále vyhodnocovat nebo migrovat počítače pro další cílová umístění. Geografie projektu se používá pouze k uložení zjištěných metadat.
-
-
- **Zeměpisné oblasti** | **Umístění úložiště metadat**
- --- | ---
- Azure Government | USA (Gov) – Virginia
- Asie a Tichomoří | Jihovýchodní Asie nebo Východní Asie
- Evropa | Jižní Evropa nebo Západní Evropa
- Spojené království | Velká Británie – jih nebo Velká Británie – západ
- Spojené státy | Střed USA nebo Západní USA 2
+**Zeměpisné oblasti** | **Umístění úložiště metadat**
+--- | ---
+Azure Government | USA (Gov) – Virginia
+Asie a Tichomoří | Jihovýchodní Asie nebo Východní Asie
+Evropa | Jižní Evropa nebo Západní Evropa
+Spojené království | Velká Británie – jih nebo Velká Británie – západ
+Spojené státy | Střed USA nebo Západní USA 2
 
 
  > [!NOTE]
  > Podpora Azure Government je v tuto chvíli dostupná jenom pro [starší verze](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) Azure Migrate.
 
 
-## <a name="assessment-vmware-server-requirements"></a>Posouzení – požadavky na server VMware
+## <a name="assessment-vcenter-server-requirements"></a>Posouzení – požadavky na vCenter Server
 
 Tato tabulka shrnuje podporu a omezení hodnocení pro virtualizační servery VMware.
 
@@ -65,12 +62,15 @@ Tato tabulka shrnuje podporu a omezení hodnocení pro virtualizační servery V
 
 ## <a name="assessment-vcenter-server-permissions"></a>Vyhodnocení – vCenter Server oprávnění
 
-Pouze pro posouzení potřebujete účet jen pro čtení vCenter Server.
+Pro posouzení potřebujete účet jen pro čtení vCenter Server.
 
 ## <a name="assessment-appliance-requirements"></a>Posouzení – požadavky na zařízení
 
+Zařízení Azure Migrate pro VMware je nasazeno pomocí šablony vajíček importované do vCenter Server.
+
 **Podpora** | **Podrobnosti**
 --- | ---
+**vCenter Server** | K přidělení virtuálního počítače s 32 GB paměti, 4 vCPU a externím virtuálním přepínači potřebujete dostatek prostředků na vCenter Server.<br/><br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
 **ESXi** | Virtuální počítač zařízení musí být nasazen na hostiteli ESXi, na kterém běží verze 5,5 nebo novější.
 **Azure Migrate projekt** | Zařízení může být přidruženo k jednomu projektu.
 **vCenter Server** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k jednomu vCenter Server.
@@ -81,7 +81,7 @@ Pouze pro posouzení potřebujete účet jen pro čtení vCenter Server.
 Zařízení Azure Migrate potřebuje připojení k Internetu.
 
 - Když zařízení nasadíte, Azure Migrate provede kontrolu připojení k adresám URL, které jsou shrnuté v následující tabulce.
-- Pokud používáte proxy server brány firewall založený na adrese URL, povolte přístup k těmto adresám URL a ujistěte se, že proxy překládá všechny záznamy CNAME přijaté při vyhledávání adres URL.
+- Pokud pro připojení k Internetu používáte proxy server založený na adrese URL, povolte přístup k těmto adresám URL a ujistěte se, že proxy překládá všechny záznamy CNAME přijaté při vyhledávání adres URL.
 
 **Adresa URL** | **Podrobnosti**  
 --- | --- |
@@ -94,14 +94,14 @@ dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro in
 *.servicebus.windows.net | Komunikace mezi zařízením a službou Azure Migrate.
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Připojte se k adresám URL služby Azure Migrate.
 *.blob.core.windows.net | Nahrajte data do účtů úložiště.
-
+http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Používá se k aktualizaci Azure Migrate zařízení.
 
 ## <a name="assessment-port-requirements"></a>Posouzení – požadavky na port
 
 **zařízení** | **připojení**
 --- | ---
-Zařízení | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: https://< zařízení-IP-nebo-name >: 44368 <br/>Odchozí připojení na portu 443, která odesílají metadata zjišťování a výkonu Azure Migrate.
-Server vCenter | Příchozí připojení na portu TCP 443, aby zařízení mohla shromažďovat metadata o konfiguraci a výkonu pro posouzení. <br/> Ve výchozím nastavení se zařízení připojuje ke vCenter na portu 443. Pokud Server vCenter naslouchá na jiném portu, můžete změnit port při nastavení zjišťování.
+Zařízení | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:```https://<appliance-ip-or-name>:44368``` <br/><br/>Odchozí připojení na portu 443, která odesílají metadata zjišťování a výkonu Azure Migrate.
+Server vCenter | Příchozí připojení na portu TCP 443, aby zařízení mohla shromažďovat metadata o konfiguraci a výkonu pro posouzení. <br/><br/> Ve výchozím nastavení se zařízení připojuje ke vCenter na portu 443. Pokud Server vCenter naslouchá na jiném portu, můžete změnit port při nastavení zjišťování.
 
 
 ## <a name="agentless-migration-vmware-server-requirements"></a>Migrace bez agentů – požadavky na server VMware
@@ -110,7 +110,8 @@ Tato tabulka shrnuje podporu a omezení hodnocení pro virtualizační servery V
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**Server vCenter** | Virtuální počítače VMware, které migrujete pomocí migrace bez agenta, se musí spravovat na jednom nebo víc serverech vCenter, na kterých běží 5,5, 6,0, 6,5 nebo 6,7.
+vCenter Server | Verze 5,5, 6,0, 6,5 nebo 6,7.
+VMware vSphere | Verze 5,5, 6,0, 6,5 nebo 6,7,
 
 ## <a name="agentless-migration-vcenter-server-permissions"></a>Migrace bez agenta – vCenter Server oprávnění
 
@@ -134,10 +135,20 @@ Virtuální počítač. interakce. napájení vypnuto | Umožněte, aby byl virt
 **Požadované změny pro Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure. Azure Migrate provede tyto změny automaticky pro následující operační systémy:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> – CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7, 8<br/><br/> Pro jiné operační systémy je nutné provést úpravy ručně před migrací. Příslušné články obsahují pokyny k tomu, jak to provést.
 **Spouštění ze systému Linux** | Pokud je/Boot ve vyhrazeném oddílu, měl by být umístěn na disku s operačním systémem a nesmí být rozložen na více disků.<br/> Pokud je/Boot součástí kořenového oddílu (/), musí být oddíl '/' na disku s operačním systémem a nesmí zabírat jiné disky.
 **Spouštění UEFI** | Virtuální počítače se spouštěním UEFI se pro migraci nepodporují.
+**Velikost disku** | 2 TB disk s operačním systémem; 4 TB datových disků
+**Omezení disku** |  Až 60 disků na virtuální počítač.
 **Šifrované disky/svazky** | Virtuální počítače se zašifrovanými disky nebo svazky se nepodporují pro migraci.
+**Cluster sdíleného disku** | Nepodporuje se.
+**Nezávislé disky** | Nepodporuje se.
 **RDM/průchozí disky** | Pokud virtuální počítače mají RDM nebo průchozí disky, tyto disky se nebudou replikovat do Azure.
 **NFS** | Svazky NFS připojené jako svazky na virtuálních počítačích se nebudou replikovat.
-**Cílový disk** | Virtuální počítače se dají migrovat jenom na spravované disky (Standard HHD, Premium SSD) v Azure.
+**cíle iSCSI** | Virtuální počítače s cíli iSCSI nejsou podporované pro migraci bez agenta.
+**Multipath v/v** | Nepodporuje se.
+**VMotion úložiště** | Nepodporuje se. Pokud virtuální počítač používá úložiště vMotion, replikace nebude fungovat.
+**Seskupené síťové adaptéry** | Nepodporuje se.
+**Protokolů** | Nepodporuje se.
+**Cílový disk** | Virtuální počítače se dají migrovat jenom na spravované disky (Standard HDD, Premium SSD) v Azure.
+**Současná replikace** | 100 virtuálních počítačů na vCenter Server. Pokud máte víc, migrujte je v dávkách 100.
 
 
 ## <a name="agentless-migration-appliance-requirements"></a>Migrace bez agentů – požadavky na zařízení
@@ -148,14 +159,14 @@ Virtuální počítač. interakce. napájení vypnuto | Umožněte, aby byl virt
 **ESXi** | Virtuální počítač zařízení musí být nasazen na hostiteli ESXi, na kterém běží verze 5,5 nebo novější.
 **Azure Migrate projekt** | Zařízení může být přidruženo k jednomu projektu.
 **vCenter Server** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k jednomu vCenter Server.
-**VDDK** | Pokud provádíte migraci bez agentů s migrací Azure Migrate serveru, musí být na virtuálním počítači zařízení nainstalovaná VMware vSphere VDDK (Virtual disk Development Kit).
+**VDDK** | Pokud při migraci Azure Migrate serveru používáte migraci bez agenta, musí být na virtuálním počítači zařízení nainstalovaná VMware vSphere VDDK.
 
 ## <a name="agentless-migration-url-access-requirements"></a>Migrace bez agentů – požadavky na přístup k adresám URL
 
 Zařízení Azure Migrate potřebuje připojení k Internetu.
 
 - Když zařízení nasadíte, Azure Migrate provede kontrolu připojení k adresám URL, které jsou shrnuté v následující tabulce.
-- Pokud používáte proxy server brány firewall založený na adrese URL, povolte přístup k těmto adresám URL a ujistěte se, že proxy překládá všechny záznamy CNAME přijaté při vyhledávání adres URL.
+- Pokud používáte proxy server založený na adrese URL, povolte přístup k těmto adresám URL a ujistěte se, že proxy překládá všechny záznamy CNAME přijaté při vyhledávání adres URL.
 
 **Adresa URL** | **Podrobnosti**  
 --- | ---
@@ -166,16 +177,17 @@ management.azure.com | Vytvořte pro zařízení služby Active Directory, kter�
 dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro interní monitorování
 *.vault.azure.net | Správa tajných kódů v Azure Key Vault.
 *.servicebus.windows.net | Komunikace mezi zařízením a službou Azure Migrate.
-*.discoverysrv.windowsazure.com<br/> *.migration.windowsazure.com<br/> *.hypervrecoverymanager.windowsazure.com | Připojte se k adresám URL služby Azure Migrate.
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Připojte se k adresám URL služby Azure Migrate.
 *.blob.core.windows.net | Nahrajte data do účtů úložiště.
+http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Používá se k aktualizaci Azure Migrate zařízení.
 
 
 ## <a name="agentless-migration-port-requirements"></a>Migrace bez agentů – požadavky na porty
 
 **zařízení** | **připojení**
 --- | ---
-Zařízení | Odchozí port TCP 3389 pro nahrání replikovaných dat do Azure a komunikaci s Azure Migrate pro replikaci a migraci.
-Server vCenter | Příchozí připojení na portu TCP 443, aby zařízení mohla orchestrovat replikaci – vytvářet snímky, kopírovat data, snímky verzí
+Zařízení | Odchozí připojení na portu 443 pro nahrání replikovaných dat do Azure a komunikaci s Azure Migrate službami orchestrace replikace a migrace.
+Server vCenter | Příchozí připojení na portu 443, aby zařízení mohla orchestrovat replikaci – vytvářet snímky, kopírovat data, snímky verzí
 Hostitel vSphere/EXSI | Příchozí na portu TCP 902, aby zařízení mohl replikovat data ze snímků.
 
 
@@ -185,36 +197,12 @@ Tato tabulka shrnuje podporu a omezení hodnocení pro virtualizační servery V
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**Server vCenter/ESXI** | Virtuální počítače VMware, které migrujete, musí být spravované jedním nebo více servery vCenter se systémem 5,5, 6,0, 6,5 nebo 6,7 nebo spuštěny na hostiteli ESXI s vSphere verze 5,5, 6,0, 6,5 nebo 6,7.
+vCenter Server | Verze 5,5, 6,0, 6,5 nebo 6,7.
+VMware vSphere | Verze 5,5, 6,0, 6,5 nebo 6,7.
 
 ### <a name="agent-based-migration-vcenter-server-permissions"></a>Migrace založená na agentech – vCenter Server oprávnění
 
-**Oprávnění** | **Podrobnosti**
---- | ---
-Úložiště dat. AllocateSpace | Povolí přidělování místa v úložišti dat pro virtuální počítač, snímek, klon nebo virtuální disk.
-Datastore.Browse | Povolí procházení souborů protokolu virtuálních počítačů, aby bylo možné řešit problémy při vytváření a odstraňování snímků.
-Datastore.LowLevelFileOperations | Povolí operace čtení, zápisu, odstranění a přejmenování v prohlížeči úložiště dat, aby bylo možné řešit potíže s vytvořením nebo odstraněním snímku.
-Datastore.UpdateVirtualMachineFiles | Povolení aktualizace cest k souborům virtuálního počítače v úložišti dat po přepodepsání úložiště dat
-Network.AssignNetwork | Povolte přiřazení sítě k prostředku virtuálního počítače.
-AssignVirtualMachineToResourcePool | Umožňuje přiřadit virtuálnímu počítači fond zdrojů.
-Resource.MigratePoweredOffVirtualMachine | Povolte migraci vypnutého virtuálního počítače do jiného fondu zdrojů nebo hostitele.
-Resource.MigratePoweredOnVirtualMachine | Povolte migraci pomocí vMotion na virtuálním počítači s jiným fondem zdrojů nebo na hostitele.
-Tasks.CreateTask | Umožňuje rozšíření vytvořit uživatelem definovanou úlohu.
-Tasks.UpdateTask | Umožňuje rozšíření aktualizovat uživatelsky definovaný úkol.
-VirtualMachine. Configuration. | Umožňuje konfigurovat možnosti virtuálních počítačů a zařízení.
-Virtuální počítač. interakce. AnswerQuestion | Povolí řešení problémů s přechody stavu virtuálního počítače nebo chybami za běhu.
-Virtuální počítač. interakce. DeviceConnection | Povolí změnu stavu připojení virtuálních zařízení, která se nepřipojují k virtuálnímu počítači.
-Virtuální počítač. interakce. ConfigureCDMedia | Povolí konfiguraci virtuálního DVD nebo zařízení CD-ROM.
-Virtuální počítač. interakce. ConfigureFloppyMedia | Povolí konfiguraci virtuální disketové zařízení.
-Virtuální počítač. interakce. stavu poweroff | Umožňuje, aby se virtuální počítač při migraci do Azure vypnul.
-Virtuální počítač. interakce. PowerOn | Povolte zapnutí u vypnutého virtuálního počítače a obnovování pozastaveného virtuálního počítače.
-Virtuální počítač. interakce. VMwareToolsInstall | Povolte připojení a odpojení instalačního programu CD nástrojů VMware jako disk CD-ROM hostovaného operačního systému.
-VirtualMachine.Inventory.CreateNew | Umožňuje vytvořit virtuální počítač a přidělení požadovaných prostředků.
-VirtualMachine. Inventory. Register | Umožňuje přidat existující virtuální počítač do inventáře vCenter Server nebo hostitele.
-VirtualMachine. Inventory. Unregister | Povolí zrušení registrace VMe z vCenter Server nebo inventáře hostitele.
-VirtualMachine.Provisioning.AllowVirtualMachineFilesUpload | Povoluje operace zápisu u souborů přidružených k virtuálnímu počítači, včetně VMX, disků, protokolů a paměti NVRAM.
-VirtualMachine.Provisioning.AllowVirtualMachineDownload | Povoluje operace čtení souborů přidružených k virtuálnímu počítači ke stažení protokolů pro řešení potíží.
-VirtualMachine. SnapshotManagement. RemoveSnapshot | Povoluje odebrání snímku z historie snímku.
+Účet jen pro čtení pro vCenter Server.
 
 ## <a name="agent-based-migration-replication-appliance-requirements"></a>Migrace založená na agentech – požadavky na zařízení replikace
 
@@ -228,8 +216,8 @@ V tabulce jsou shrnuty požadavky na [zařízení replikace](migrate-replication
 **Komponenta** | **Požadavek**
 --- | ---
  | **Nastavení VMware** (Zařízení VMware VM)
-**PowerCLI** | Pokud je na virtuálním počítači VMware spuštěno zařízení replikace, měla by být nainstalovaná [verze PowerCLI 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) .
-**Typ síťové karty** | VMXNET3 (Pokud je zařízení virtuálním počítačem VMware)
+PowerCLI | Pokud je na virtuálním počítači VMware spuštěno zařízení replikace, měla by být nainstalovaná [verze PowerCLI 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) .
+Typ síťové karty | VMXNET3 (Pokud je zařízení virtuálním počítačem VMware)
  | **Nastavení hardwaru**
 Procesorová jádra | 8
 Paměť RAM | 16 GB
@@ -242,7 +230,7 @@ Národní prostředí operačního systému | Angličtina (en-us)
 TLS | Je třeba povolit protokol TLS 1,2.
 .NET Framework | Na počítači by se měla nainstalovat .NET Framework 4,6 nebo novější (se zapnutým silným kryptografií.
 MySQL | Na zařízení by měl být nainstalován MySQL.<br/> Je potřeba nainstalovat MySQL. Instalaci můžete provést ručně, nebo ji Site Recovery můžete nainstalovat během nasazování zařízení.
-Jiné aplikace | Na zařízení replikace byste neměli spouštět jiné aplikace.
+Jiné aplikace | Na zařízení replikace nespouštějte jiné aplikace.
 Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V
 Zásady skupiny | Nepovolujte tyto zásady skupiny: <br> – Zabraňte přístupu k příkazovému řádku. <br> – Zabraňte přístup k nástrojům pro úpravu registru. <br> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br> -Zapnout provádění skriptu. <br> [Víc se uč](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Žádný předdefinovaný výchozí web <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443. <br>-Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)
@@ -273,11 +261,11 @@ https:\//dev.MySQL.com/get/downloads/MySQLInstaller/MySQL-Installer-Community-5.
 
 MySQL se dá nainstalovat na zařízení replikace pomocí jedné z těchto metod.
 
-**Instalace** | **Podrobnosti**
+**– Metoda** | **Podrobnosti**
 --- | ---
 Stáhnout a nainstalovat ručně | Stáhněte si aplikaci MySQL & umístěte ji do složky C:\Temp\ASRSetup a pak ji nainstalujte ručně.<br/> Když nastavíte zařízení MySQL, bude se zobrazovat jako již nainstalované.
-Nestahovat online | Umístěte aplikaci instalačního programu MySQL do složky C:\Temp\ASRSetup. Když nainstalujete zařízení a kliknete na stažení a instalaci MySQL, instalační program použije instalační program, který jste přidali.
-Stáhnout z Azure Migrate | Po instalaci zařízení a zobrazení výzvy k MySQL vyberte **Stáhnout a nainstalovat**.
+Bez online stažení | Umístěte aplikaci instalačního programu MySQL do složky C:\Temp\ASRSetup. Když nainstalujete zařízení a kliknete na stažení a instalaci MySQL, instalační program použije instalační program, který jste přidali.
+Stažení a instalace v Azure Migrate | Po instalaci zařízení a zobrazení výzvy k MySQL vyberte **Stáhnout a nainstalovat**.
 
 
 
@@ -291,7 +279,21 @@ Stáhnout z Azure Migrate | Po instalaci zařízení a zobrazení výzvy k MySQL
 **Síť/úložiště** | Nejnovější informace najdete v části požadavky na [síť](../site-recovery/vmware-physical-azure-support-matrix.md#network) a [úložiště](../site-recovery/vmware-physical-azure-support-matrix.md#storage) pro Site Recovery. Azure Migrate poskytuje identické požadavky na síť a úložiště.
 **Požadavky na Azure** | Nejnovější informace najdete v části požadavky na [síť](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [úložiště](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)a [výpočetní](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) prostředky Azure pro Site Recovery. Azure Migrate má stejné požadavky na migraci VMware.
 **Služba Mobility** | Na každý virtuální počítač, který chcete migrovat, musí být nainstalovaný agent služby mobility.
-**Cílový disk** | Virtuální počítače se dají migrovat jenom na spravované disky (Standard HHD, Premium SSD) v Azure.
+**Spouštění UEFI** | Migrovaný virtuální počítač v Azure se automaticky převede na spouštěcí virtuální počítač se systémem BIOS.<br/><br/> Disk s operačním systémem by měl mít až čtyři oddíly a svazky by měly být naformátované pomocí systému souborů NTFS.
+**Cílový disk** | Virtuální počítače se dají migrovat jenom na spravované disky (Standard HDD, Premium SSD) v Azure.
+**Velikost disku** | 2 TB disk s operačním systémem; 8 TB pro datové disky.
+**Omezení disku** |  Až 63 disků na virtuální počítač.
+**Šifrované disky/svazky** | Virtuální počítače se zašifrovanými disky nebo svazky se nepodporují pro migraci.
+**Cluster sdíleného disku** | Nepodporuje se.
+**Nezávislé disky** | Podporuje se.
+**Průchozí disky** | Podporuje se.
+**NFS** | Svazky NFS připojené jako svazky na virtuálních počítačích se nebudou replikovat.
+cíle iSCSI | Virtuální počítače s cíli iSCSI nejsou podporované pro migraci bez agenta.
+**Multipath v/v** | Nepodporuje se.
+**VMotion úložiště** | Podporováno
+**Seskupené síťové adaptéry** | Nepodporuje se.
+**Protokolů** | Nepodporuje se.
+
 
 
 
@@ -299,8 +301,8 @@ Stáhnout z Azure Migrate | Po instalaci zařízení a zobrazení výzvy k MySQL
 
 Služba mobility běžící na virtuálních počítačích VMware vyžaduje připojení k Internetu.
 
-- Když nasadíte službu mobility, provedete kontrolu připojení k adresám URL, které jsou shrnuté v následující tabulce.
-- Pokud používáte proxy server brány firewall založený na adrese URL, povolte přístup k těmto adresám URL a ujistěte se, že proxy překládá všechny záznamy CNAME přijaté při vyhledávání adres URL.
+Když nasadíte službu mobility, provedete kontrolu připojení k adresám URL, které jsou shrnuté v následující tabulce.
+
 
 **Adresa URL** | **Podrobnosti**  
 --- | ---
@@ -318,9 +320,9 @@ dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro in
 
 **zařízení** | **připojení**
 --- | ---
-virtuálních počítačů | Služba mobility spuštěná na virtuálních počítačích komunikuje s místním konfiguračním serverem na portu HTTPS 443 příchozí, pro správu replikací.<br/><br/> Virtuální počítače odesílají data replikace na procesový Server (spuštěný na počítači konfiguračního serveru) na portu HTTPS 9443 příchozí. Tento port lze změnit.
+virtuálních počítačů | Služba mobility spuštěná na virtuálních počítačích komunikuje s místním zařízením replikace (konfiguračním serverem) na portu HTTPS 443 příchozím pro správu replikací.<br/><br/> Virtuální počítače odesílají data replikace na procesový Server (spuštěný na počítači konfiguračního serveru) na portu HTTPS 9443 příchozí. Tento port lze změnit.
 Replikační zařízení | Zařízení replikace orchestruje replikaci pomocí Azure přes odchozí port HTTPS 443.
-Procesový server | Procesový server přijímá data replikace, optimalizuje je a šifruje a odesílá je do Azure Storage přes odchozí port 443.<br/> Ve výchozím nastavení běží na zařízení replikace procesový Server.
+Procesový server | Procesový server přijímá data replikace, optimalizuje je a šifruje je a odesílá je do Azure Storage přes odchozí port 443.<br/> Ve výchozím nastavení běží na zařízení replikace procesový Server.
 
 ## <a name="azure-vm-requirements"></a>Požadavky na virtuální počítače Azure
 
@@ -339,10 +341,10 @@ Sdílený virtuální pevný disk | Nepodporuje se. | Pokud je tato operace Nepo
 Disk FC | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 BitLocker | Nepodporuje se. | Před povolením replikace pro počítač musí být BitLocker zakázán.
 název virtuálního počítače | Od 1 do 63 znaků.<br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu ve vlastnostech počítače v Site Recovery.
-Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/> – Před migrací povolte RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall** -> **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135). |
+Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/> – Před migrací povolí RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall** -> **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135). |
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený. Kromě toho přidejte veřejnou IP adresu pro virtuální počítač. |  
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Připravte se na](tutorial-prepare-vmware.md) vyhodnocení a migraci VMware.

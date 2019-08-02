@@ -1,9 +1,9 @@
 ---
-title: Vytvořte pravidlo nástroje pro vyrovnávání zatížení Azure pro cluster
-description: Konfigurace služby Azure Load Balancer otevřít porty pro váš cluster Azure Service Fabric.
+title: Vytvoření pravidla Azure Load Balancer pro cluster
+description: Nakonfigurujte Azure Load Balancer pro otevření portů pro cluster Azure Service Fabric.
 services: service-fabric
 documentationcenter: na
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,43 +13,43 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: aljo
-ms.openlocfilehash: d95d2802398a61b948ff6c59fb3eab0e1ddddbc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 440d5e37e03e58a39275e715ebce4fa07961cc84
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66147460"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598581"
 ---
-# <a name="open-ports-for-a-service-fabric-cluster"></a>Otevřete porty pro cluster Service Fabric
+# <a name="open-ports-for-a-service-fabric-cluster"></a>Otevření portů pro cluster Service Fabric
 
-Nástroje pro vyrovnávání zatížení, který je nasazený pomocí clusteru Azure Service Fabric směruje provoz do vaší aplikace spuštěný v uzlu. Pokud změníte vaše aplikace bude moct používat jiný port, musí zveřejnit tento port (nebo směrovat jiný port) ve službě Azure Load Balancer.
+Nástroj pro vyrovnávání zatížení, který je nasazený s vaším clusterem Azure Service Fabric, směruje provoz do vaší aplikace spuštěné na uzlu. Pokud změníte svoji aplikaci tak, aby používala jiný port, musíte tento port (nebo směrovat jiný port) v Azure Load Balancer.
 
-Po nasazení clusteru Service Fabric do Azure pro vás byl automaticky vytvořen nástroj pro vyrovnávání zatížení. Pokud nemáte nástroj pro vyrovnávání zatížení, přečtěte si téma [konfigurace nástroje pro vyrovnávání zatížení přístupem k Internetu](../load-balancer/load-balancer-get-started-internet-portal.md).
+Když nasadíte Cluster Service Fabric do Azure, automaticky se pro vás vytvoří nástroj pro vyrovnávání zatížení. Pokud nemáte Nástroj pro vyrovnávání zatížení, přečtěte si téma [Konfigurace internetového nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-get-started-internet-portal.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="configure-service-fabric"></a>Konfigurace service fabric
+## <a name="configure-service-fabric"></a>Konfigurace Service Fabric
 
-Aplikace Service Fabric **ServiceManifest.xml** konfigurační soubor definuje koncové body očekává, že vaše aplikace používat. Po aktualizaci konfiguračního souboru k definování koncového bodu, nástroj pro vyrovnávání zatížení musí být aktualizovány k vystavení, který (nebo jinou) portu. Další informace o tom, jak vytvořit koncový bod service fabric najdete v tématu [nastavení koncového bodu](service-fabric-service-manifest-resources.md).
+Konfigurační soubor **ServiceManifest. XML** aplikace Service Fabric definuje koncové body, které vaše aplikace očekává použít. Po aktualizaci konfiguračního souboru pro definování koncového bodu musí být Nástroj pro vyrovnávání zatížení aktualizovaný, aby vystavil tento port (nebo jiný). Další informace o tom, jak vytvořit koncový bod Service Fabric, najdete v tématu [Nastavení koncového bodu](service-fabric-service-manifest-resources.md).
 
 ## <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení otevře port přístupem k Internetu a předává provoz na portu vnitřní uzlu používaný vaší aplikací. Pokud nemáte nástroj pro vyrovnávání zatížení, přečtěte si téma [konfigurace nástroje pro vyrovnávání zatížení přístupem k Internetu](../load-balancer/load-balancer-get-started-internet-portal.md).
+Pravidlo Load Balancer otevře Internetový port a přepošle provoz na port interního uzlu, který vaše aplikace používá. Pokud nemáte Nástroj pro vyrovnávání zatížení, přečtěte si téma [Konfigurace internetového nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-get-started-internet-portal.md).
 
-Vytvořte pravidlo nástroje pro vyrovnávání zatížení, je třeba shromažďovat následující informace:
+Chcete-li vytvořit pravidlo Load Balancer, je nutné shromáždit následující informace:
 
 - Název nástroje pro vyrovnávání zatížení.
-- Skupina prostředků clusteru zatížení nástroje pro vyrovnávání a service fabric.
+- Skupina prostředků nástroje pro vyrovnávání zatížení a clusteru Service Fabric.
 - Externí port.
 - Interní port.
 
 ## <a name="azure-cli"></a>Azure CLI
-Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí jediného příkazu trvá jen **rozhraní příkazového řádku Azure**. Potřebujete znát název zatížení nástroje pro vyrovnávání prostředků skupině a vytvořit nové pravidlo.
+K vytvoření pravidla nástroje pro vyrovnávání zatížení pomocí **Azure CLI**se používá jenom jeden příkaz. Jenom potřebujete znát název nástroje pro vyrovnávání zatížení a skupinu prostředků, abyste mohli vytvořit nové pravidlo.
 
 >[!NOTE]
->Pokud je potřeba určit název nástroje pro vyrovnávání zatížení, pomocí tohoto příkazu se rychle získat seznam všech nástrojů pro vyrovnávání zatížení a skupiny přidružený prostředek.
+>Pokud potřebujete určit název nástroje pro vyrovnávání zatížení, použijte tento příkaz k rychlému získání seznamu všech nástrojů pro vyrovnávání zatížení a přidružených skupin prostředků.
 >
 >`az network lb list --query "[].{ResourceGroup: resourceGroup, Name: name}"`
 >
@@ -59,31 +59,31 @@ Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí jediného p�
 az network lb rule create --backend-port 40000 --frontend-port 39999 --protocol Tcp --lb-name LB-svcfab3 -g svcfab_cli -n my-app-rule
 ```
 
-Pomocí příkazu Azure CLI má několik parametrů, které jsou popsány v následující tabulce:
+Příkaz Azure CLI má několik parametrů, které jsou popsané v následující tabulce:
 
 | Parametr | Popis |
 | --------- | ----------- |
-| `--backend-port`  | Aplikace Service Fabric portu naslouchá. |
-| `--frontend-port` | Port pro vyrovnávání zatížení poskytuje pro externí připojení. |
-| `-lb-name` | Název nástroje pro vyrovnávání zatížení, chcete-li změnit. |
-| `-g`       | Skupina prostředků, který má nástroj pro vyrovnávání zatížení a cluster Service Fabric. |
+| `--backend-port`  | Port, na který aplikace Service Fabric naslouchá. |
+| `--frontend-port` | Port, který nástroj pro vyrovnávání zatížení zveřejňuje pro externí připojení. |
+| `-lb-name` | Název nástroje pro vyrovnávání zatížení, který se má změnit. |
+| `-g`       | Skupina prostředků, která obsahuje nástroj pro vyrovnávání zatížení i Cluster Service Fabric. |
 | `-n`       | Požadovaný název pravidla. |
 
 
 >[!NOTE]
->Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí Azure CLI najdete v tématu [vytvořit nástroj pro vyrovnávání zatížení pomocí Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
+>Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí Azure CLI, najdete v tématu [Vytvoření nástroje pro vyrovnávání zatížení pomocí Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
 
 ## <a name="powershell"></a>PowerShell
 
-PowerShell je o něco složitější než rozhraní příkazového řádku Azure. Následujícím postupem koncepční vytvořit pravidlo:
+PowerShell je trochu složitější než Azure CLI. Pomocí těchto koncepčních kroků vytvořte pravidlo:
 
-1. Získejte nástroje pro vyrovnávání zatížení z Azure.
+1. Získejte nástroj pro vyrovnávání zatížení z Azure.
 2. Vytvořte pravidlo.
-3. Přidáte pravidlo pro vyrovnávání zatížení.
-4. Aktualizujte nástroj pro vyrovnávání zatížení.
+3. Přidejte pravidlo do nástroje pro vyrovnávání zatížení.
+4. Aktualizujte Nástroj pro vyrovnávání zatížení.
 
 >[!NOTE]
->Pokud je potřeba určit název nástroje pro vyrovnávání zatížení, použijte tento příkaz rychle získat seznam všech nástrojů pro vyrovnávání zatížení a přidružený prostředek skupiny.
+>Pokud potřebujete určit název nástroje pro vyrovnávání zatížení, použijte tento příkaz k rychlému získání seznamu všech nástrojů pro vyrovnávání zatížení a přidružených skupin prostředků.
 >
 >`Get-AzLoadBalancer | Select Name, ResourceGroupName`
 
@@ -104,11 +104,11 @@ $lb.LoadBalancingRules.Add($lbrule)
 $lb | Set-AzLoadBalancer
 ```
 
-Ohledně `New-AzLoadBalancerRuleConfig` příkazu `-FrontendPort` představuje port, který poskytuje nástroje pro vyrovnávání zatížení pro externí připojení, a `-BackendPort` představuje aplikace service fabric naslouchá na portu.
+V `New-AzLoadBalancerRuleConfig` `-BackendPort` souvislosti s příkazem představuje port, který nástroj pro vyrovnávání zatížení zveřejňuje pro externí připojení, a představuje port, na který aplikace Service Fabric naslouchá. `-FrontendPort`
 
 >[!NOTE]
->Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí prostředí PowerShell najdete v tématu [vytvoření nástroje pro vyrovnávání zatížení pomocí prostředí PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+>Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí PowerShellu, najdete v tématu [Vytvoření nástroje pro vyrovnávání zatížení pomocí PowerShellu](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [sítě v Service Fabric](service-fabric-patterns-networking.md).rvice fabric vzory networking.md).
+Přečtěte si další informace o [sítích v Service Fabric](service-fabric-patterns-networking.md). rvice-Fabric-Patterns-Networking.MD).

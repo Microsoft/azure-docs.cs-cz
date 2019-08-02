@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b6b4cd38ce5f591d43f27f735a48993cc1a1ab63
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 27f0ebab1fd87eb1870c5a8be21c4f80be4132f1
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414448"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698593"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace zabezpečení démon IoT Edge a modulu runtime
 
@@ -24,14 +24,6 @@ Jelikož služba IoT Edge uvolní nové verze, budete chtít aktualizovat IoT Ed
 Dvě součásti zařízení IoT Edge je potřeba aktualizovat, pokud chcete přejít na novější verzi. První je démon zabezpečení, který běží na zařízení a spouští moduly runtime při spuštění zařízení. Proces démon zabezpečení v současné době je možné pouze aktualizovat ze samotného zařízení. Druhá součást je modul runtime, který se skládá z modulů IoT Edge hub a agentů IoT Edge. V závislosti na tom, jak strukturovat vaše nasazení modul runtime aktualizovat ze zařízení nebo vzdáleně. 
 
 Nejnovější verzi služby Azure IoT Edge najdete v tématu [Azure IoT Edge uvolní](https://github.com/Azure/azure-iotedge/releases).
-
->[!IMPORTANT]
->Pokud používáte Azure IoT Edge na zařízení s Windows, neprovádějte aktualizaci na verzi 1.0.5, pokud se pro vaše zařízení používá jedna z následujících možností: 
->* Neupgradovali jste zařízení na Windows Build 17763. IoT Edge verze 1.0.5 nepodporuje buildy Windows starší než 17763.
->* Na zařízení s Windows spouštíte moduly Java nebo Node. js. 1\.0.5 verze můžete přeskočit i v případě, že jste aktualizovali zařízení s Windows na nejnovější Build. 
->
->Další informace o IoT Edge verze 1.0.5 najdete v tématu [1.0.5 – poznámky k verzi](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Další informace o tom, jak zabránit tomu, aby se vývojové nástroje aktualizovaly na nejnovější verzi, najdete [na blogu pro vývojáře IoT](https://devblogs.microsoft.com/iotdev/).
-
 
 ## <a name="update-the-security-daemon"></a>Aktualizace zabezpečení démona
 

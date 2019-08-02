@@ -1,9 +1,9 @@
 ---
-title: Upgrade samostatného clusteru Azure Service Fabric | Dokumentace Microsoftu
-description: Další informace o upgradu na verzi nebo konfiguraci samostatného clusteru Azure Service Fabric.  T
+title: Upgrade samostatného clusteru Azure Service Fabric | Microsoft Docs
+description: Přečtěte si informace o upgradu verze nebo konfigurace samostatného clusteru Azure Service Fabric.  T
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
@@ -13,44 +13,44 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
-ms.author: aljo
-ms.openlocfilehash: 1d96a2e81917af5e80bb847ea25610ccb71ad70f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: bf99d5d59354745508d8ca88abfc4b42fe608025
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711047"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599806"
 ---
-# <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Upgrade a aktualizuje samostatného clusteru Service Fabric
+# <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Upgrade a aktualizace samostatného clusteru Service Fabric
 
-Návrh pro zdokonalovány moderního systému, je klíčem k dosažení dlouhodobý úspěch vašeho produktu. Samostatný cluster Azure Service Fabric je prostředek, který vlastníte. Tento článek popisuje, co lze upgradovat nebo aktualizovat.
+Pro jakýkoliv moderní systém je pro zajištění dlouhodobé úspěšnosti produktu navržený návrh pro zajištění náročnosti. Samostatný cluster Azure Service Fabric je prostředek, který vlastníte. Tento článek popisuje, co je možné upgradovat nebo aktualizovat.
 
-## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Řízení verze prostředků infrastruktury, na kterém běží v clusteru
-Ujistěte se, že váš cluster vždy běží [podporovanou verzi Service Fabric](service-fabric-versions.md). Když Microsoft oznamuje vydání nové verze Service Fabric, předchozí verze budou označena k ukončení podpory po minimálně 60 dní od data oznámení. Oznámení nových vydaných verzích [na blog týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). Si můžete vybrat v tomto okamžiku je nová verze.
+## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Řízení verze prostředků infrastruktury, která běží na vašem clusteru
+Ujistěte se, že cluster vždy používá [podporovanou verzi Service Fabric](service-fabric-versions.md). Když společnost Microsoft oznamuje vydání nové verze Service Fabric, bude předchozí verze označena pro konec podpory po nejméně 60 dní od data oznámení. Nové verze jsou oznámeny [na blogu týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). Nová verze je dostupná k výběru v tomto okamžiku.
 
-Můžete nastavit pro příjem upgradů automatické prostředků infrastruktury, jako jsou vydané společností Microsoft nebo po ručním výběru verze podporovaných fabric, že chcete, aby váš cluster na clusteru. Další informace najdete v článku [Upgrade, na kterém běží ve vašem clusteru Service Fabric verze](service-fabric-cluster-upgrade-windows-server.md).
+Cluster můžete nastavit tak, aby přijímal automatické upgrady prostředků infrastruktury, když jsou vydané společností Microsoft, nebo můžete ručně vybrat podporovanou verzi prostředků infrastruktury, na které má být cluster zapnutý. Další informace najdete v článku [Upgrade verze Service Fabric, která běží na vašem clusteru](service-fabric-cluster-upgrade-windows-server.md).
 
 ## <a name="customize-configuration-settings"></a>Přizpůsobení nastavení konfigurace
 
-Mnoho různých [nastavení konfigurace](service-fabric-cluster-manifest.md) je možné nastavit v *ClusterConfig.json* souboru, například úroveň spolehlivosti clusteru a uzlů vlastností.  Další informace najdete v článku [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).  Mnoho dalších, rozšířené, nastavení se taky dají upravit.  Další informace najdete v článku [nastavení prostředků infrastruktury pro cluster Service Fabric](service-fabric-cluster-fabric-settings.md).
+V souboru *ClusterConfig. JSON* můžete nastavit mnoho různých [nastavení konfigurace](service-fabric-cluster-manifest.md) , jako je například úroveň spolehlivosti clusteru a vlastností uzlu.  Pokud se chcete dozvědět víc, přečtěte si téma [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).  Mnoho dalších, pokročilejších nastavení, je také možné přizpůsobit.  Další informace najdete v tématu [Service Fabric nastavení prostředků infrastruktury clusteru](service-fabric-cluster-fabric-settings.md).
 
 ## <a name="define-node-properties"></a>Definovat vlastnosti uzlu
-Někdy můžete chtít Ujistěte se, že určité úlohy spouštěny pouze v určitých typů uzlů v clusteru. Pro některé úlohy může například vyžadovat grafickými procesory nebo disky SSD a jiné ne. Pro každý typ uzlu v clusteru můžete přidat vlastní uzel vlastnosti na uzlech clusteru. Omezení umístění jsou příkazy připojených služeb, které vyberte jeden nebo více vlastností uzlu. Omezení umístění definovat, ve kterém by měly běžet služby.
+Někdy možná budete chtít zajistit, aby některé úlohy běžely jenom na určitých typech uzlů v clusteru. Některé úlohy můžou například vyžadovat GPU nebo SSD, zatímco jiné nemusí. Pro každý typ uzlu v clusteru můžete přidat vlastní vlastnosti uzlu do uzlů clusteru. Omezení umístění jsou příkazy připojené k jednotlivým službám, které jsou vybrané pro jednu nebo více vlastností uzlu. Omezení umístění definují, kde by měly služby běžet.
 
-Podrobnosti o použití omezení umístění, vlastnosti uzlu a postupy jejich definování najdete [vlastnosti uzlu a omezení umístění](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
+Podrobnosti o použití omezení umístění, vlastnostech uzlů a způsobu jejich definování, čtení [vlastností uzlu a omezení umístění](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
  
 
-## <a name="add-capacity-metrics"></a>Přidání metriky kapacity
-Pro každý typ uzlu můžete přidat vlastní metriku kapacity, kterou chcete použít ve svých aplikacích k načtení sestavy. Podrobnosti týkající se použití metriky kapacity pro načtení sestavy, najdete v Service Fabric Cluster Resource Manager dokumenty na [popisující svůj Cluster](service-fabric-cluster-resource-manager-cluster-description.md) a [metriky a zatížení](service-fabric-cluster-resource-manager-metrics.md).
+## <a name="add-capacity-metrics"></a>Přidat metriky kapacity
+Pro každý typ uzlu můžete přidat vlastní metriky kapacity, které chcete použít ve svých aplikacích, abyste nahlásili zatížení. Podrobnosti o použití metriky kapacity k načtení sestav najdete v tématu Service Fabric clusteru Správce prostředků dokumentu [popisujícího cluster](service-fabric-cluster-resource-manager-cluster-description.md) a [metriky a zatížení](service-fabric-cluster-resource-manager-metrics.md).
 
-## <a name="patch-the-os-in-the-cluster-nodes"></a>Opravy operačního systému v uzlech clusteru
-Aplikace orchestraci oprav (POA) je aplikace Service Fabric, který automatizuje operačního systému, použití dílčích oprav v clusteru Service Fabric bez jakýchkoli prostojů. [Opravy Orchestrace aplikace pro Windows](service-fabric-patch-orchestration-application.md) je možné nasadit v clusteru pro instalaci oprav iniciovat organizovaně, což způsobem při zachování služby dostupné neustále. 
+## <a name="patch-the-os-in-the-cluster-nodes"></a>Oprava operačního systému v uzlech clusteru
+Aplikace orchestrace oprav (POA) je Service Fabric aplikace, která automatizuje opravy operačního systému v clusteru Service Fabric bez výpadků. [Aplikace orchestrace oprav pro Windows](service-fabric-patch-orchestration-application.md) se dá nasadit do clusteru a instalovat opravy do Orchestrace a zároveň přitom zachovat dostupné služby. 
 
 
 ## <a name="next-steps"></a>Další postup
-* Zjistěte, jak přizpůsobit některé z [service fabric nastavení prostředků infrastruktury clusteru](service-fabric-cluster-fabric-settings.md)
-* Zjistěte, jak [dovnitř a ven škálování clusteru](service-fabric-cluster-scale-up-down.md)
-* Další informace o [upgrady aplikací](service-fabric-application-upgrade.md)
+* Informace o tom, jak přizpůsobit některá [nastavení prostředků infrastruktury Service Fabric](service-fabric-cluster-fabric-settings.md) pro clustery
+* Přečtěte si, jak [škálovat cluster na úrovni a ven](service-fabric-cluster-scale-up-down.md) .
+* Další informace o [upgradech aplikací](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

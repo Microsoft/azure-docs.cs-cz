@@ -1,7 +1,7 @@
 ---
-title: Jak používat rozhraní API volá s modelem konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Jak používat volání rozhraní API s modelem Conversation Learner Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Další informace o použití volání rozhraní API s modelem Learner konverzace.
+description: Naučte se používat volání rozhraní API s modelem Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,39 +10,40 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 1f7c7c72703d7c3134dd2acdcc466fc0182fa38a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 261536932cc82a28ad4ee3ffc3575ea41fe9ec5b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389942"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703915"
 ---
-# <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>Jak přidat volání rozhraní API do modelu Learner konverzace
+# <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>Postup přidání volání rozhraní API do modelu Conversation Learner
 
-Tento kurz ukazuje, jak přidat volání rozhraní API do modelu. Volání rozhraní API jsou funkce, které definují a zápis svého robota, a které můžete volat Learner konverzace.
+V tomto kurzu se dozvíte, jak do modelu přidat volání rozhraní API. Volání rozhraní API jsou funkce, které definujete a píšete v robotu a které Conversation Learner mohou volat.
 
 ## <a name="video"></a>Video
 
-[![Kurz Preview volání rozhraní API](https://aka.ms/cl_Tutorial_v3_APICalls_Preview)](https://aka.ms/cl_Tutorial_v3_APICalls)
+[![Kurz volání rozhraní API ve verzi Preview](https://aka.ms/cl_Tutorial_v3_APICalls_Preview)](https://aka.ms/cl_Tutorial_v3_APICalls)
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje, zda je spuštěna bot "tutorialAPICalls.ts".
+Tento kurz vyžaduje, aby byl spuštěný robot "tutorialAPICalls. TS".
 
     npm run tutorial-api-calls
 
 ## <a name="details"></a>Podrobnosti
 
-- Volání rozhraní API může číst a manipulaci s entitami.
+- Volání rozhraní API mohou číst a manipulovat s entitami.
 - Volání rozhraní API mají přístup k objektu správce paměti.
-- Volání rozhraní API můžete převzít argumenty.
+- Volání rozhraní API mohou přebírat argumenty.
 
-### <a name="open-the-demo"></a>Otevřete ukázku
+### <a name="open-the-demo"></a>Otevřete ukázku.
 
-Ve webovém uživatelském rozhraní klikněte na "Import kurzy" a vyberte model s názvem "Kurzu-14-APICalls".
+Ve webovém uživatelském rozhraní klikněte na "Import kurzů" a vyberte model s názvem "tutorial-14-APICalls".
 
 ### <a name="entities"></a>Entity
 
-Jsme definovali jednu entitu v modelu volá `number`.
+V modelu s názvem `number`jsme definovali jednu entitu.
 
 ![](../media/tutorial12_entities.PNG)
 
@@ -51,53 +52,53 @@ Kód pro volání rozhraní API je definován v tomto souboru: `C:\<installedpat
 
 ![](../media/tutorial12_apicalls.PNG)
 
-- `RandomGreeting` Zpětné volání se vrátí náhodné pozdrav definované v `greeting` pole.
-- `Multiply` Zpětné volání se vynásobí dvě čísla předaných v akci, která jej volá a vrátí výsledek, který lze vykreslit v uživatelském rozhraní.
-    - Všimněte si, že správce paměti je první argument. 
-    - Všimněte si, že zpětná volání rozhraní API může trvat více vstupů, v tomto případě `num1string` a `num2string`.
-- `ClearEntities` Zpětného volání vymaže číselné Entity, takže uživatel může zadat jinou hodnotu. 
-    - Ukazuje, jak se volání rozhraní API můžete pracovat s entitami.
+- Zpětné volání vrátí náhodný pozdrav definovaný `greeting` v poli. `RandomGreeting`
+- `Multiply` Zpětné volání vynásobí dvě čísla předaná akcí, která ji volá a vrátí výsledek, který lze vykreslit v uživatelském rozhraní.
+    - Všimněte si, že je správce paměti prvním argumentem. 
+    - Všimněte si, že zpětná volání rozhraní API mohou v tomto případě `num1string` a `num2string`využít více vstupů.
+- `ClearEntities` Zpětné volání vymaže entitu číslo, aby uživatel mohl zadat jiné číslo. 
+    - Ukazuje, jak můžou volání rozhraní API manipulovat s entitami.
 
 ### <a name="actions"></a>Akce
-Vytvořili jsme čtyři akce. Tři z nich jsou akce "Non-Wait" rozhraní API, přičemž čtvrtá kategorie je akce "Text", které uživatele vyzve, dotaz podobný co jsme viděli v dalších kurzech. Pokud chcete zobrazit, jak každou vytvořil postupujte takto:
-1. Na levém panelu klikněte na tlačítko "Akce" a potom klikněte na jednu ze čtyř akcí, které jsou uvedeny v mřížce.
-2. Všimněte si, že hodnoty jednotlivých polí ve formuláři, která se otevře.
-3. Všimněte si, že `Refresh` tlačítko vedle pole rozhraní API.
-    - Pokud bychom měli zastavit robota a ujistěte se, změnit k rozhraním API, zatímco stránka uživatelského rozhraní je v provozu, pak můžete kliknout `Refresh` tlačítko, aby se získaly nejnovější změny.
+Vytvořili jsme čtyři akce. Tři z nich jsou akce rozhraní API bez čekání, čtvrtá je akce "text", která uživateli požádá o dotaz podobný tomu, co jsme viděli v jiných kurzech. Pokud chcete zjistit, jak se každý vytvořil, udělejte toto:
+1. Na levém panelu klikněte na akce a potom klikněte na jednu ze čtyř akcí uvedených v mřížce.
+2. Všimněte si hodnot každého pole ve formuláři, které se objeví.
+3. Všimněte si `Refresh` tlačítka vedle pole rozhraní API.
+    - Pokud jsme rádi zastavili a provedli změnu v rozhraních API, když je stránka uživatelského rozhraní zapnutá, můžete kliknutím `Refresh` na tlačítko Vybrat poslední změny.
 
 ![](../media/tutorial12_actions.PNG)
 
-#### <a name="clearentities-multiply-and-randomgreeting"></a>Vynásobit ClearEntities a RandomGreeting
-Všechny tři tyto akce jsou typ rozhraní API. Každý spoléhají na funkce zpětného volání rozhraní API a provádět určitou práci a potenciálně vrátit hodnoty, které se budou zobrazovat uživateli.
+#### <a name="clearentities-multiply-and-randomgreeting"></a>ClearEntities, násobení a RandomGreeting
+Všechny tři tyto akce jsou typu rozhraní API. Každý z nich se spoléhá na funkce zpětného volání rozhraní API k provedení určité práce a případně k vrácení hodnoty, která má být prezentována uživateli.
 
 #### <a name="what-number-do-you-want-to-multiply-by-12"></a>"Jaké číslo chcete vynásobit 12"
-Jedná se o akci "Text" a to jednoduše zeptá na otázku uživatele. Zatímco tato akce ve skutečnosti nekomunikuje s jedním z zpětná volání rozhraní API, vyzve uživatele reagovat s číslem, která přejde do paměti entita, která je pak možné "Násobení" akcí, které používá jeden z zpětná volání rozhraní API.
+Jedná se o akci "text", která jednoduše požádá o otázku uživatele. I když tato akce ve skutečnosti nekomunikuje s jedním z zpětných volání rozhraní API, vyzve uživatele, aby reagoval na číslo, které bude přecházet do paměti entity, kterou lze potom použít pomocí akce vynásobení, která používá jedno z zpětných volání rozhraní API.
 
 
-### <a name="train-dialog"></a>Dialogové okno trénování
+### <a name="train-dialog"></a>Dialogové okno výuka
 
-Projděme si "Dialogové okno školení".
+Pojďme si projít dialog "školení".
 
-1. Na levém panelu klikněte na tlačítko `Train Dialogs`, pak bude `New Train Dialog` tlačítko.
-2. Typ "hello".
+1. Na levém panelu klikněte na `Train Dialogs`tlačítko a `New Train Dialog` pak na tlačítko.
+2. Zadejte "Hello".
 3. Klikněte na tlačítko `Score Actions`.
 4. Vyberte `RandomGreeting`. 
-    - Tato funkce spustí volání rozhraní API náhodné pozdrav.
-    - NENÍ to čekat na odpověď uživatele.
+    - Tím se spustí volání rozhraní API náhodného pozdravu.
+    - Tato akce nečeká na reakci uživatele.
 5. Vyberte `What number to do you want to multiply by 12?`
-6. Zadejte číslo, libovolné číslo a pouze čísla.
-    - Všimněte si, že své číslo se automaticky přiřadil popisek, jako `number` entity.
+6. Zadejte číslo, libovolné číslo a pouze číslo.
+    - Všimněte si, že vaše číslo bylo automaticky označeno `number` jako entita.
 7. Klikněte na tlačítko `Score Actions`.
-8. Vyberte `Multiply` akce.
-    - Všimněte si, že výsledek násobení hodnotou 12.
-    - Všimněte si, že tuto paměť stále obsahuje hodnotu jste zadali pro `number`
-9. Vyberte `ClearEntities` akce.
-    - Všimněte si, že hodnota Entity `number` se vymazala z paměti.
+8. `Multiply` Vyberte akci.
+    - Všimněte si výsledku násobení 15.12.00.
+    - Všimněte si, že paměť stále obsahuje hodnotu, kterou jste zadali pro`number`
+9. `ClearEntities` Vyberte akci.
+    - Všimněte si, že hodnota entity `number` pro byla vymazána z paměti.
 10. Klikněte na tlačítko `Save`.
 
-Nyní jste viděli postup registrace zpětných volání rozhraní API, jejich běžných vzorů a tom, jak definovat argumenty a přidružit hodnoty a entity v nich.
+Nyní jste viděli, jak registrovat zpětná volání rozhraní API, jejich společné vzory a jak definovat argumenty a přidružit hodnoty a entity v nich.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [1. část karty](./15-cards.md)
+> [Karty – část 1](./15-cards.md)

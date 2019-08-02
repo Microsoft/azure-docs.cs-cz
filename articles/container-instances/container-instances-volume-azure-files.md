@@ -10,10 +10,10 @@ ms.date: 07/08/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 25cac6a66baeb1587e4b5ba3f0923ca9c4394706
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325484"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Připojení sdílené složky Azure v Azure Container Instances
@@ -83,13 +83,13 @@ az container create \
 
 ## <a name="manage-files-in-mounted-volume"></a>Správa souborů na připojeném svazku
 
-Po spuštění kontejneru můžete použít jednoduchou webovou aplikaci nasazenou prostřednictvím příkazu Microsoft [ACI-hellofiles][aci-hellofiles] image to create small text files in the Azure file share at the mount path you specified. Obtain the web app's fully qualified domain name (FQDN) with the [az container show][az-container-show] :
+Po spuštění kontejneru můžete použít jednoduchou webovou aplikaci nasazenou prostřednictvím image Microsoft [ACI-hellofiles][aci-hellofiles] k vytvoření malých textových souborů ve sdílené složce Azure v zadané cestě k připojení. Získejte plně kvalifikovaný název domény (FQDN) webové aplikace pomocí příkazu [AZ Container show][az-container-show] :
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn --output tsv
 ```
 
-Po uložení textu pomocí aplikace můžete použít [Azure Portal][portal] or a tool like the [Microsoft Azure Storage Explorer][storage-explorer] k načtení a zkontrolování souboru zapsaného do sdílené složky.
+Po uložení textu pomocí aplikace můžete použít [Azure Portal][portal] nebo nástroj jako [Průzkumník služby Microsoft Azure Storage][storage-explorer] k načtení a zkontrolování souboru zapsaného do sdílené složky.
 
 ## <a name="deploy-container-and-mount-volume---yaml"></a>Nasazení kontejneru a připojení svazku – YAML
 
@@ -266,7 +266,7 @@ Dále pro každý kontejner ve skupině kontejnerů, do kterého chcete svazky p
 }]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Naučte se připojit další typy svazků v Azure Container Instances:
 

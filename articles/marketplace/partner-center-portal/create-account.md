@@ -5,14 +5,14 @@ author: mattwojo
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
-ms.topic: how-to
+ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: 24ed03cde967f0fef7abdc4c2df1f8e5d6bdb6ab
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 16ed52aa2b56a97469ae8fc47299f09593b19c45
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327125"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668348"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
 
@@ -52,7 +52,7 @@ Takže můžete doménu firemního e-mailového účtu propojit s novým účtem
 
 #### <a name="agree-to-terms-and-conditions"></a>Vyjádřit souhlas s podmínkami a ujednáními
 
-Bude nutné souhlasit se dvěma sadami podmínek a ujednání, včetně [Microsoft Online Subscription Agreement](https://go.microsoft.com/fwlink/?LinkId=870457)a [smlouvy Microsoft Marketplace vydavatele](https://go.microsoft.com/fwlink/?linkid=843476).
+Bude nutné souhlasit s podmínkami a ujednáními v rámci [smlouvy Microsoft Marketplace vydavatele](http://go.microsoft.com/fwlink/?LinkID=699560).
 
 #### <a name="provide-your-publisher-profile"></a>Zadejte svůj profil vydavatele.
 
@@ -98,6 +98,6 @@ Jiný uživatel ze stejného Azure Active Directory tenant může přidat novéh
 
 1. Po dokončení procesu můžete spravovat nově vytvořeného vydavatele tak, že v levém navigačním panelu najdeme do programu pro **komerční Marketplace** . Pokud nevidíte komerční program pro **Marketplace** , aktualizujte stránku.  Nový Vydavatel se zobrazí v seznamu **vydavatelé** .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Správa účtu komerčního tržiště v partnerském centru](./manage-account.md) 

@@ -1,6 +1,6 @@
 ---
-title: Migrovat existující standardní obory názvů služby Azure Service Bus na úrovni premium | Dokumentace Microsoftu
-description: Průvodce umožňuje migrovat existující služby Azure Service Bus standardních názvových prostorů Premium
+title: Migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium | Microsoft Docs
+description: Průvodce pro povolení migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,47 +14,47 @@ ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
 ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67566068"
 ---
-# <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrovat existující standardní obory názvů služby Azure Service Bus na úrovni premium
-Azure Service Bus nabízely dříve, obory názvů jenom na úrovni standard. Obory názvů jsou nastavení více tenantů, která jsou optimalizována pro prostředí pro vývojáře a Nízká propustnost. Úroveň premium nabízí vyhrazené prostředky na obor názvů pro předvídatelnou latenci a vyšší propustnost za pevnou cenu. Na úrovni premium je optimalizovaná pro vysokou propustnost a produkční prostředí, které vyžadují další podnikové funkce.
+# <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium
+Dřív Azure Service Bus nabízet obory názvů jenom na úrovni Standard. Obory názvů jsou nastavení pro více tenantů, která jsou optimalizovaná pro prostředí s nízkou propustností a vývojářem. Úroveň Premium nabízí vyhrazené prostředky na obor názvů pro předvídatelné latenci a vyšší propustnost za pevnou cenu. Úroveň Premium je optimalizovaná pro vysokou propustnost a produkční prostředí, která vyžadují další podnikové funkce.
 
-Tento článek popisuje, jak migrovat obory názvů stávající úrovně standard na úroveň premium.  
+Tento článek popisuje, jak migrovat existující obory názvů úrovně Standard na úroveň Premium.  
 
 >[!WARNING]
-> Migrace je určena pro standardní obory názvů služby Service Bus upgradovat na úroveň premium. Nástroj pro migraci nepodporuje Downgrade.
+> Migrace je určená pro Service Bus standardní obory názvů, které se mají upgradovat na úroveň Premium. Nástroj pro migraci nepodporuje downgrade.
 
-Některé z bodů do mějte na paměti: 
-- Tato migrace je určená nestane na místě, což znamená, že stávající aplikace odesílatele a příjemce **nevyžadují žádné změny kódu nebo konfigurace**. Bude existující připojovací řetězec bude automaticky přejděte na nový obor názvů premium.
-- **Premium** oboru názvů by měl mít **žádné entity** v něm k úspěšné migraci. 
-- Všechny **entity** ve standardním oboru názvů jsou **zkopírovat** do oboru názvů úrovně premium během procesu migrace. 
-- Podporuje migraci **1 000 entity za jednotku zasílání zpráv** na úrovni premium. Chcete-li zjistit, kolik jednotek zasílání zpráv je třeba, začněte s počet entit, které mají na vaši aktuální standardní obor názvů. 
-- Nelze migrovat přímo z **úroveň basic** k **premier úrovně**, ale můžete provést tak nepřímo migrací z úrovně basic na standard první a poté úroveň ze standard na premium v dalším kroku.
+Některé body, které je potřeba poznamenat: 
+- Tato migrace by měla být provedena, což znamená, že stávající aplikace odesílatele a přijímače **nevyžadují žádné změny kódu nebo konfigurace**. Existující připojovací řetězec bude automaticky ukazovat na nový obor názvů Premium.
+- Obor názvů **Premium** by neměl obsahovat **žádné entity** , aby migrace proběhla úspěšně. 
+- Všechny **entity** v oboru názvů Standard jsou během procesu migrace zkopírovány do oboru názvů Premium. 
+- Migrace podporuje **1 000 entit na jednu jednotku zasílání zpráv** na úrovni Premium. Pokud chcete zjistit, kolik jednotek pro zasílání zpráv potřebujete, začněte s počtem entit, které máte v aktuálním oboru názvů Standard. 
+- Nemůžete přímo migrovat z **úrovně Basic** na **úroveň Premier**, ale můžete to provést nepřímo migrací z úrovně Basic na standard a potom z standardu na prémii v dalším kroku.
 
 ## <a name="migration-steps"></a>Kroky migrace
-Některé podmínky jsou spojeny s procesem migrace. Seznamte se s následující kroky a snížení rizika vzniku chyby. Tyto kroky popisují proces migrace a podrobné informace jsou uvedeny v následující části.
+K procesu migrace jsou přidružené některé podmínky. Seznamte se s následujícími kroky, abyste snížili pravděpodobnost chyb. Tyto kroky popisují proces migrace a podrobné informace jsou uvedené v následujících oddílech.
 
-1. Vytvoření nového oboru názvů úrovně premium.
-1. Spárujte obory názvů standard a premium k sobě navzájem.
-1. Synchronizace (kopírování myší) entit na základě standardu pro obor názvů úrovně premium.
+1. Vytvořte nový obor názvů Premium.
+1. Párovat obory názvů Standard a Premium na sebe navzájem.
+1. Proveďte synchronizaci entit (kopírování) z úrovně Standard do oboru názvů Premium.
 1. Potvrďte migraci.
-1. Vyprázdnit entity ve standardním oboru názvů pomocí oboru názvů po migraci.
-1. Odstraňte obor názvů standard.
+1. Vyprázdnit entity v oboru názvů Standard pomocí názvu po migraci oboru názvů.
+1. Odstraňte obor názvů Standard.
 
 >[!IMPORTANT]
-> Po migraci byl nejdříve zapsán, přístup k původní standardní obor názvů a výpusť front a odběrů. Po zprávy mají Vyprázdněné, mohou zasílat na novém oboru názvů úrovně premium ke zpracování aplikací příjemce. Poté, co jste se nečekaně front a odběrů, doporučujeme, že jste odstranili staré obor názvů standard.
+> Po potvrzení migrace přejděte ke starému standardnímu oboru názvů a vyprázdněte fronty a odběry. Po vyprázdnění zpráv je možné je odeslat do nového oboru názvů Premium, aby je mohl zpracovat aplikace příjemce. Po vyprázdnění front a předplatných doporučujeme odstranit starý obor názvů Standard.
 
-### <a name="migrate-by-using-the-azure-cli-or-powershell"></a>Migrace pomocí Azure CLI nebo Powershellu
+### <a name="migrate-by-using-the-azure-cli-or-powershell"></a>Migrace pomocí Azure CLI nebo PowerShellu
 
-K migraci standardní obor názvů služby Service Bus Premium pomocí Azure CLI nebo PowerShell nástroje, postupujte podle těchto kroků.
+Pokud chcete migrovat obor názvů Service Bus Standard do úrovně Premium pomocí Azure CLI nebo nástroje PowerShell, postupujte podle těchto kroků.
 
-1. Vytvořte nový obor názvů služby Service Bus úrovně premium. Můžete odkazovat [šablon Azure Resource Manageru](service-bus-resource-manager-namespace.md) nebo [pomocí webu Azure portal](service-bus-create-namespace-portal.md). Je potřeba vybrat možnost **premium** pro **serviceBusSku** parametru.
+1. Vytvořte nový obor názvů Service Bus Premium. Můžete odkazovat na [šablony Azure Resource Manager](service-bus-resource-manager-namespace.md) nebo [použít Azure Portal](service-bus-create-namespace-portal.md). Nezapomeňte vybrat možnost **Premium** pro parametr **serviceBusSku** .
 
-1. Nastavte následující proměnné prostředí zjednodušit migraci příkazy.
+1. Nastavte následující proměnné prostředí, aby se zjednodušily příkazy migrace.
    ```azurecli
    resourceGroup = <resource group for the standard namespace>
    standardNamespace = <standard namespace to migrate>
@@ -63,112 +63,112 @@ K migraci standardní obor názvů služby Service Bus Premium pomocí Azure CLI
    ```
 
     >[!IMPORTANT]
-    > Po migraci/název aliasu (post_migration_dns_name) se použije pro přístup k původní po migraci obor názvů standard. Využit k vyprázdnění fronty a předplatná a pak odstraňte oboru názvů.
+    > Pro přístup k starému standardnímu oboru názvů po migraci se použije alias nebo název po migraci (post_migration_dns_name). Tuto akci použijte pro vyprázdnění front a odběrů a pak obor názvů odstraňte.
 
-1. Spárujte obory názvů standard a premium a spuštění synchronizace pomocí následujícího příkazu:
+1. Spárujte obory názvů Standard a Premium a spusťte synchronizaci pomocí následujícího příkazu:
 
     ```azurecli
     az servicebus migration start --resource-group $resourceGroup --name $standardNamespace --target-namespace $premiumNamespaceArmId --post-migration-name $postMigrationDnsName
     ```
 
 
-1. Kontrola stavu migrace s použitím následujícího příkazu:
+1. Stav migrace zkontrolujete pomocí následujícího příkazu:
     ```azurecli
     az servicebus migration show --resource-group $resourceGroup --name $standardNamespace
     ```
 
-    Migrace se považuje za dokončené, když se zobrazí následující hodnoty:
-    * MigrationState = "Active"
+    Migrace se považuje za dokončenou, když se zobrazí následující hodnoty:
+    * MigrationState = "aktivní"
     * pendingReplicationsOperationsCount = 0
-    * Stav zřizování = "ÚSPĚCH"
+    * provisioningState = "úspěch"
 
-    Tento příkaz také zobrazí konfiguraci migrace. Zkontrolujte, že hodnoty jsou nastavené správně. Zkontrolujte taky obor názvů úrovně premium na portálu, aby byly vytvořeny všechny fronty a témata, a aby odpovídaly co existovala v oboru názvů standard.
+    Tento příkaz také zobrazí konfiguraci migrace. Zkontrolujte, zda jsou hodnoty správně nastaveny. Zkontrolujte také obor názvů Premium na portálu, abyste se ujistili, že byly vytvořeny všechny fronty a témata a aby odpovídaly tomu, co existovaly v oboru názvů Standard.
 
-1. Spuštěním následujícího příkazu pro dokončení potvrzení migrace:
+1. Potvrďte migraci provedením následujícího příkazu Complete:
    ```azurecli
    az servicebus migration complete --resource-group $resourceGroup --name $standardNamespace
    ```
 
-### <a name="migrate-by-using-the-azure-portal"></a>Migrace s využitím webu Azure portal
+### <a name="migrate-by-using-the-azure-portal"></a>Migrace pomocí Azure Portal
 
-Migrace s využitím webu Azure portal má stejný logický tok jako migrace pomocí příkazů. Postupujte podle těchto kroků k migraci pomocí webu Azure portal.
+Migrace pomocí Azure Portal má stejný logický tok jako migrace pomocí příkazů. Při migraci pomocí Azure Portal postupujte podle těchto kroků.
 
-1. Na **navigace** nabídky v levém podokně vyberte **migrace na premium**. Klikněte na tlačítko **Začínáme** tlačítko Přejít na další stránku.
-    ![Migrace cílová stránka][]
+1. V **navigační** nabídce v levém podokně vyberte **migrovat na Premium**. Kliknutím na tlačítko **Začínáme** můžete pokračovat na další stránku.
+    ![Cílová stránka migrace][]
 
-1. Kompletní **nastavení**.
+1. Dokončete **Nastavení**.
    ![Nastavit obor názvů][]
-   1. Vytvořte a přiřaďte obor názvů úrovně premium pro existující obor názvů standard pro migraci.
-        ![Nastavení oboru názvů – vytvořit obor názvů úrovně premium][]
-   1. Zvolte **po migraci název**. Tento název budete používat pro přístup k obor názvů standard po dokončení migrace.
-        ![Nastavení oboru názvů – vyberte název migrace příspěvku][]
-   1. Vyberte **'Další'** pokračujte.
-1. Synchronizace entit mezi obory názvů standard a premium.
-    ![Nastavit obor názvů - synchronizace entit - start][]
+   1. Vytvořte a přiřaďte obor názvů Premium pro migraci stávajícího oboru názvů Standard na.
+        ![Nastavení oboru názvů – vytvoření oboru názvů Premium][]
+   1. Vyberte **název následné migrace**. Tento název použijete pro přístup ke standardnímu oboru názvů po dokončení migrace.
+        ![Nastavení oboru názvů – vybrat název následné migrace][]
+   1. Pokračujte výběrem **příkazu ' Next '** .
+1. Synchronizace entit mezi obory názvů Standard a Premium.
+    ![Nastavení oboru názvů – synchronizační entity – začátek][]
 
-   1. Vyberte **zahájit synchronizaci** zahajte synchronizaci entity.
-   1. Vyberte **Ano** v dialogovém okně potvrďte a spuštění synchronizace.
-   1. Počkejte, dokud neskončí synchronizace. Stav je k dispozici na na stavovém řádku.
-        ![Obor názvů - synchronizace entit – průběh instalace][]
+   1. Vyberte **Spustit synchronizaci** a začněte synchronizovat entity.
+   1. V dialogovém okně vyberte **Ano** a potvrďte a spusťte synchronizaci.
+   1. Počkejte na dokončení synchronizace. Stav je k dispozici na stavovém řádku.
+        ![Nastavení oboru názvů – synchronizační entity – průběh][]
         >[!IMPORTANT]
-        > Pokud chcete přerušit migraci z jakéhokoli důvodu, najdete v tématu přerušení tok v tomto dokumentu v části Nejčastější dotazy.
-   1. Po dokončení synchronizace vyberte **Další** v dolní části stránky.
+        > Pokud potřebujete migraci z nějakého důvodu přerušit, přečtěte si prosím tok přerušení v části Nejčastější dotazy v tomto dokumentu.
+   1. Po dokončení synchronizace vyberte v dolní části stránky **Další** .
 
-1. Zkontrolujte změny na stránce souhrnu. Vyberte **dokončit migraci** přepnout obory názvů a k dokončení migrace.
-    ![Přepnout obor názvů – přepínač nabídky][] po dokončení migrace se zobrazí na stránce potvrzení.
-    ![Obor názvů přepínače – úspěch][]
+1. Zkontrolujte změny na stránce Souhrn. Vyberte **dokončit migraci** pro přepínání oborů názvů a dokončení migrace.
+    ![Přepnout v nabídce][] přepínač oboru názvů po dokončení migrace se zobrazí stránka potvrzení.
+    ![Přepnout obor názvů – úspěch][]
 
 ## <a name="caveats"></a>Upozornění
 
-Některé z funkcí poskytovaných službou Azure Service Bus úrovně Standard nepodporují vrstva Azure Service Bus úrovně Premium. Toto jsou záměrné, protože nabízí vyhrazených prostředků pro předvídatelnou propustnost a latenci na úrovni premium.
+Některé funkce, které poskytuje Azure Service Bus úrovně Standard, nejsou podporovány Azure Service Bus úrovně Premium. Jedná se o návrh, protože úroveň Premium nabízí vyhrazené prostředky pro předvídatelné propustnost a latenci.
 
-Tady je seznam nepodporuje Premium a jejich zmírnění – funkce 
+Tady je seznam funkcí, které Premium nepodporují, a jejich zmírnění – 
 
 ### <a name="express-entities"></a>Expresní entity
 
-   Expresní entity, které není žádná data zprávy potvrzení do úložiště nejsou podporovány na úrovni Premium. Zlepšení propustnosti významné přitom zajistit, že data se ukládají, očekávaným z jakékoli Podnikové zasílání zpráv systému k dispozici vyhrazené prostředky.
+   Expresní entity, které nepotvrzují žádná data zpráv do úložiště, nejsou v úrovni Premium podporované. Vyhrazené prostředky poskytovaly výrazné zlepšení propustnosti a zároveň zajišťují, že data jsou trvalá od libovolného podnikového systému zasílání zpráv.
    
-   Během migrace některé z vašich expresní entity ve standardním oboru názvů na vytvoří názvový prostor úrovně Premium jako entita ne express.
+   Během migrace se v oboru názvů Premium vytvoří každá z vašich expresních entit jako neexpresní entita.
    
-   Pokud využíváte šablony Azure Resource Manageru (ARM), ujistěte se prosím odeberte příznak 'enableExpress' z konfigurace nasazení tak, aby vaše zautomatizované pracovní postupy se spustí bez chyb.
+   Pokud používáte šablony Azure Resource Manager (ARM), nezapomeňte z konfigurace nasazení odebrat příznak ' enableExpress ', aby byly automatizované pracovní postupy spouštěny bez chyb.
 
 ### <a name="partitioned-entities"></a>Dělené entity
 
-   Dělené entity byly podporovány na úrovni Standard zajištění lepší dostupnosti v instalačním programu více tenanty. Díky zřizovat vyhrazených prostředcích, které jsou k dispozici na obor názvů na úrovni Premium to už nebude potřeba.
+   Rozdělené entity byly podporovány na úrovni Standard, aby bylo zajištěno lepší dostupnosti instalace s více klienty. Díky zajištění dostupnosti vyhrazených prostředků na obor názvů na úrovni Premium už to není potřeba.
    
-   Během migrace jakékoli rozdělené entity ve standardním oboru názvů na se vytvoří názvový prostor úrovně Premium jako entita bez oddílů.
+   Během migrace se v oboru názvů Premium vytvoří libovolná entita s dělenou entitou jako entita, která není rozdělená na oddíly.
    
-   Pokud šablonu ARM nastaví "enablePartitioning' na 'true' pro konkrétní fronty nebo tématu, potom bude se ignorovat zprostředkovatelem.
+   Pokud šablona ARM nastaví pro konkrétní frontu nebo téma hodnotu ' enablePartitioning ' na ' true ', bude ji zprostředkovatel ignorovat.
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-### <a name="what-happens-when-the-migration-is-committed"></a>Co se stane, když se zaměřuje na migraci?
+### <a name="what-happens-when-the-migration-is-committed"></a>Co se stane, když se migrace potvrdí?
 
-Po migraci je potvrzená, připojovací řetězec, který odkazuje na obor názvů standard bude odkazovat na názvový prostor úrovně premium.
+Po potvrzení migrace se připojovací řetězec, který ukazuje na standardní obor názvů, nasměruje na obor názvů Premium.
 
-Aplikace odesílatele a příjemce se odpojit od standardní Namespace a automaticky znovu připojit k oboru názvů úrovně premium.
+Aplikace odesílatel a přijímač se z oboru názvů Standard odpojí a automaticky se znovu připojí k oboru názvů Premium.
 
-### <a name="what-do-i-do-after-the-standard-to-premium-migration-is-complete"></a>K čemu já po dokončení standard na premium migrace?
+### <a name="what-do-i-do-after-the-standard-to-premium-migration-is-complete"></a>Co mám dělat po dokončení migrace na úrovni Standard na Premium?
 
-Standard na premium migrace zajistí, že metadata entit, jako jsou témata, odběry a filtry jsou zkopírovány z obor názvů standard na obor názvů úrovně premium. Data zprávy, která byla potvrzena pro obor názvů standard není zkopírován z oboru názvů standard na obor názvů úrovně premium.
+Migrace Standard na Premium zajišťuje, že metadata entit, jako jsou témata, předplatná a filtry, se zkopírují z oboru názvů Standard do oboru názvů Premium. Data zprávy, která byla potvrzena na standardní obor názvů, se nekopírují z oboru názvů Standard do oboru názvů Premium.
 
-Obor názvů standard může mít některé zprávy, které byly odeslány a potvrzené při migraci probíhá. Tyto zprávy ze standardní Namespace ručně vyprázdnit a ručně odešlete je premium Namespace. Chcete-li ručně vyprázdnit zprávy, použijte konzolovou aplikaci nebo skript, který pozastavuje obor názvů standard entity pomocí názvu DNS migrace příspěvku, který jste zadali v příkazech migrace. Odeslat tyto zprávy pro názvový prostor úrovně premium, takže mohou být zpracovány příjemci.
+Obor názvů Standard může obsahovat zprávy, které byly odeslány a potvrzeny během migrace. Ručně vyprázdněte tyto zprávy ze standardního oboru názvů a ručně je odešlete do oboru názvů Premium. Chcete-li ručně vyprázdnit zprávy, použijte konzolovou aplikaci nebo skript, který vyprázdní standardní entity oboru názvů pomocí názvu DNS po migraci, který jste zadali v příkazech migrace. Odešlete tyto zprávy do oboru názvů Premium, aby mohly být zpracovány přijímači.
 
-Po zprávy mají Vyprázdněné, odstraňte obor názvů standard.
+Po vyprázdnění zpráv odstraňte standardní obor názvů.
 
 >[!IMPORTANT]
-> Po zprávy na obor názvů standard mají Vyprázdněné, odstraňte obor názvů standard. To je důležité, protože připojovací řetězec, který původně označuje obor názvů standard nyní odkazuje na názvový prostor úrovně premium. Už nemusíte standardní Namespace. Odstraňuje se obor názvů standard, který jste migrovali pomáhá redukovat nejasnosti novější.
+> Po vyprázdnění zpráv z oboru názvů Standard odstraňte standardní obor názvů. To je důležité, protože připojovací řetězec, který původně odkazoval na standardní obor názvů, teď odkazuje na obor názvů Premium. Obor názvů Standard už nebudete potřebovat. Odstranění standardního oboru názvů, který jste migrovali, pomáhá snižovat pozdější nejasnost.
 
-### <a name="how-much-downtime-do-i-expect"></a>Jak velká Doba výpadku můžu očekávat?
-Proces migrace slouží k očekávaných výpadků aplikací. Výpadek je snížit pomocí připojovacího řetězce, které aplikace odesílatele a příjemce použít tak, aby odkazovala na nový obor názvů premium.
+### <a name="how-much-downtime-do-i-expect"></a>Kolik výpadků se očekává?
+Proces migrace je určený ke snížení předpokládaných výpadků aplikací. Výpadky se snižují pomocí připojovacího řetězce, který aplikace odesílatel a přijímač používá k odkazování na nový obor názvů Premium.
 
-Prostoje, které se mají aplikace je omezen na čas potřebný k aktualizaci položky DNS tak, aby odkazoval na názvový prostor úrovně premium. Výpadek je přibližně 5 minut.
+Výpadek, ke kterému dochází aplikace, je omezený na dobu, po kterou je potřeba aktualizovat položku DNS, aby odkazovala na obor názvů Premium. Výpadek je přibližně 5 minut.
 
-### <a name="do-i-have-to-make-any-configuration-changes-while-doing-the-migration"></a>Je nutné provést změny konfigurace v průběhu migrace?
-Ne, nejsou žádné změny kódu nebo konfigurace potřebné k migraci. Automaticky se namapuje připojovací řetězec, který aplikace odesílatele a příjemce použít pro přístup k standardní Namespace tak, aby fungoval jako alias pro obor názvů úrovně premium.
+### <a name="do-i-have-to-make-any-configuration-changes-while-doing-the-migration"></a>Musím během migrace dělat změny v konfiguraci?
+Ne, neexistují žádné změny kódu nebo konfigurace potřebné k provedení migrace. Připojovací řetězec, který aplikace odesílatele a přijímače používají pro přístup ke standardnímu oboru názvů, je automaticky namapován na fungovat jako alias oboru názvů Premium.
 
-### <a name="what-happens-when-i-abort-the-migration"></a>Co se stane, když jsem migraci přerušit?
-Migrace může být přerušena buď pomocí `Abort` příkazu nebo pomocí webu Azure portal. 
+### <a name="what-happens-when-i-abort-the-migration"></a>Co se stane po přerušení migrace?
+Migraci můžete zrušit buď pomocí `Abort` příkazu, nebo pomocí Azure Portal. 
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -178,49 +178,49 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 
 #### <a name="azure-portal"></a>portál Azure
 
-![Přerušit tok – zrušení synchronizace][]
-![přerušit tok - přerušit dokončení][]
+![Přerušený tok – přerušení][]
+synchronizace![přerušené – přerušení dokončeno][]
 
-Při migraci byl přerušen, zruší proces kopírování entity (témata, odběry a filtry) od standardu pro obor názvů úrovně premium a zruší párování.
+Po přerušení procesu migrace přeruší proces kopírování entit (témat, odběrů a filtrů) z úrovně Standard do oboru názvů Premium a přeruší párování.
 
-Připojovací řetězec není aktualizován tak, aby odkazoval na názvový prostor úrovně premium. Vaše stávající aplikace i nadále fungovat stejným způsobem jako před zahájením migrace.
+Připojovací řetězec se neaktualizoval tak, aby odkazoval na obor názvů Premium. Stávající aplikace budou i nadále fungovat stejně jako před zahájením migrace.
 
-Ale ho nebude odstranění entit v oboru názvů úrovně premium nebo odstranit názvový prostor úrovně premium. Odstraňte ručně entity, pokud jste se rozhodli pokračovat v migraci.
+Neodstraňují ale entity v oboru názvů Premium ani neodstraní obor názvů Premium. Pokud jste se rozhodli Nepřesouvat vpřed s migrací, odstraňte entity ručně.
 
 >[!IMPORTANT]
-> Pokud se rozhodnete k migraci přerušit, odstraňte premium Namespace, které bylo zřízené pro migraci tak, aby se vám neúčtují poplatky za prostředky.
+> Pokud se rozhodnete migraci přerušit, odstraňte obor názvů Premium, který jste zřídili pro migraci, abyste se za prostředky neúčtovali.
 
-#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nechci se nyní máte k vyprázdnění zpráv. Co mám udělat?
+#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nechci zprávy vyprázdnit. Co mám udělat?
 
-Můžou existovat zprávy, které jsou odeslané aplikací odesílatele a uložena do úložiště na standardní Namespace při migraci probíhá a těsně před plánovaným migraci potvrdit.
+Může se stát, že aplikace odesílatele pošle zprávy a odešlou je do úložiště v oboru názvů Standard během migrace a těsně před potvrzením migrace.
 
-Během migrace není skutečná data/datovou část zprávy ze standardní zkopírován do oboru názvů úrovně premium. Zprávy muset ručně vyprázdnit a pak posílají do oboru názvů úrovně premium.
+Během migrace se skutečná data zprávy nebo datová část nekopírují z úrovně Standard do oboru názvů Premium. Zprávy je nutné ručně vyprázdnit a pak je odeslat do oboru názvů Premium.
 
-Pokud migrujete během intervalu plánované údržby a údržbu, a nechcete ručně vyprázdnit a odesílat zprávy, postupujte takto:
+Pokud však můžete provést migraci během plánované údržby nebo údržbu okna a nechcete zprávy ručně vyprázdnit a odeslat, postupujte podle následujících kroků:
 
-1. Zastavte aplikace odesílatele. Aplikace příjemce bude zpracovávat zprávy, které jsou v současnosti v oboru názvů standard a vyprázdní frontu.
-1. Po front a předplatných ve standardní Namespace jsou prázdné, postupujte podle kroků je popsán výše k provedení migrace od standardu pro obor názvů úrovně premium.
+1. Zastavte aplikace odesílatele. Aplikace příjemce budou zpracovávat zprávy, které jsou aktuálně ve standardním oboru názvů a vyprázdní frontu.
+1. Po vyprázdnění front a předplatných ve standardním oboru názvů použijte postup, který je popsaný výše, a spusťte migraci z úrovně Standard na obor názvů Premium.
 1. Po dokončení migrace můžete restartovat aplikace odesílatele.
-1. Odesílateli a příjemci budou nyní automaticky připojit s oborem názvů premium.
+1. Odesílatelé a příjemci se teď budou automaticky připojovat k oboru názvů Premium.
 
     >[!NOTE]
-    > Není nutné zastavit aplikace příjemce pro migraci.
+    > Nemusíte zastavovat aplikace příjemce pro migraci.
     >
-    > Po dokončení migrace aplikací příjemce se odpojit od obor názvů standard a automaticky připojit k oboru názvů úrovně premium.
+    > Po dokončení migrace se aplikace přijímače odpojí ze standardního oboru názvů a automaticky se připojí k oboru názvů Premium.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [rozdíly zasílání zpráv úrovně standard a premium](./service-bus-premium-messaging.md).
-* Další informace o [obnovení aspekty vysoké dostupnosti a geografické po havárii pro Service Bus úrovně premium](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).
+* Přečtěte si další informace o [rozdílech mezi zasíláním zpráv na úrovni Standard a Premium](./service-bus-premium-messaging.md).
+* Seznamte se s [vysokou dostupností a geografickými aspekty zotavení po havárii pro Service Bus Premium](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).
 
-[Migrace cílová stránka]: ./media/service-bus-standard-premium-migration/1.png
+[Cílová stránka migrace]: ./media/service-bus-standard-premium-migration/1.png
 [Nastavit obor názvů]: ./media/service-bus-standard-premium-migration/2.png
-[Nastavení oboru názvů – vytvořit obor názvů úrovně premium]: ./media/service-bus-standard-premium-migration/3.png
-[Nastavení oboru názvů – vyberte název migrace příspěvku]: ./media/service-bus-standard-premium-migration/4.png
-[Nastavit obor názvů - synchronizace entit - start]: ./media/service-bus-standard-premium-migration/5.png
-[Obor názvů - synchronizace entit – průběh instalace]: ./media/service-bus-standard-premium-migration/8.png
-[Obor názvů přepínač - přepínač nabídky]: ./media/service-bus-standard-premium-migration/9.png
-[Obor názvů přepínače – úspěch]: ./media/service-bus-standard-premium-migration/12.png
+[Nastavení oboru názvů – vytvoření oboru názvů Premium]: ./media/service-bus-standard-premium-migration/3.png
+[Nastavení oboru názvů – vybrat název následné migrace]: ./media/service-bus-standard-premium-migration/4.png
+[Nastavení oboru názvů – synchronizační entity – začátek]: ./media/service-bus-standard-premium-migration/5.png
+[Nastavení oboru názvů – synchronizační entity – průběh]: ./media/service-bus-standard-premium-migration/8.png
+[Přepnout nabídku oboru názvů – přepínač]: ./media/service-bus-standard-premium-migration/9.png
+[Přepnout obor názvů – úspěch]: ./media/service-bus-standard-premium-migration/12.png
 
-[Přerušit tok – zrušení synchronizace]: ./media/service-bus-standard-premium-migration/abort1.png
-[Přerušit tok - přerušit dokončení]: ./media/service-bus-standard-premium-migration/abort3.png
+[Přerušení toku – přerušení synchronizace]: ./media/service-bus-standard-premium-migration/abort1.png
+[Přerušení toku – přerušení dokončeno]: ./media/service-bus-standard-premium-migration/abort3.png

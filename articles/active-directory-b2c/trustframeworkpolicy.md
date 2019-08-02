@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 904893d4881de6be2c9055fefa9a8267cb045afd
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: b8b2cad95929d6132a4f0ae52597fb1633874ff1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849414"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592106"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -46,7 +46,7 @@ Element **TrustFrameworkPolicy** obsahuje následující atributy:
 | `PolicyId` | Ano | Jedinečný identifikátor pro zásady Tento identifikátor musí být předponou *B2C_1A_* . |
 | PublicPolicyUri | Ano | Identifikátor URI pro zásadu, která je kombinací ID tenanta a ID zásad. |
 | DeploymentMode | Ne | Možné hodnoty: `Production`, `Debugging`, nebo `Development`. `Production` je výchozí možnost. Tato vlastnost slouží k ladění zásad. Další informace najdete v tématu [shromažďování protokolů](active-directory-b2c-troubleshoot-custom.md). |
-| UserJourneyRecorderEndpoint | Ne | Koncový bod, který se používá  , pokud je DeploymentMode `Development`nastaveno na. Hodnota musí být `urn:journeyrecorder:applicationinsights`. Další informace najdete v tématu [shromažďování protokolů](active-directory-b2c-troubleshoot-custom.md). |
+| UserJourneyRecorderEndpoint | Ne | Koncový bod, který se používá , pokud je DeploymentMode `Development`nastaveno na. Hodnota musí být `urn:journeyrecorder:applicationinsights`. Další informace najdete v tématu [shromažďování protokolů](active-directory-b2c-troubleshoot-custom.md). |
 
 
 Následující příklad ukazuje, jak zadat element **TrustFrameworkPolicy** :
@@ -88,7 +88,7 @@ Aby bylo možné dědit zásadu z jiné zásady, musí být deklarován element 
 
 Element **BasePolicy** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Identifikátor vašeho tenanta Azure AD B2C. |
 | `PolicyId` | 1:1 | Identifikátor nadřazené zásady |
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase nebo B2C_1A_TrustFrameworkExtensionPolicy:
 
 Cesta uživatele definuje obchodní logiku, kterou uživatel prochází. Každou cestu uživatele tvoří sadu kroků orchestrace, které provádějí řadu akcí, a to v pořadí podle ověřování a shromažďování informací.
 
-Soubor zásad **SocialAndLocalAccounts** v [úvodní](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies) sadě obsahuje cesty uživatelů v SignUpOrSignIn, ProfileEdit a PasswordReset. Můžete přidat další cesty uživatelů pro jiné scénáře, jako je například změna e-mailové adresy nebo propojení a odpojení účtu sociální sítě.
+Soubor zásad **SocialAndLocalAccounts** v [úvodní](active-directory-b2c-get-started-custom.md#custom-policy-starter-pack) sadě obsahuje cesty uživatelů v SignUpOrSignIn, ProfileEdit a PasswordReset. Můžete přidat další cesty uživatelů pro jiné scénáře, jako je například změna e-mailové adresy nebo propojení a odpojení účtu sociální sítě.
 
 Kroky orchestrace můžou zavolat na [technický profil](technicalprofiles.md). Technický profil poskytuje rozhraní s integrovaným mechanismem pro komunikaci s různými typy stran. Technický profil může například provádět tyto akce mimo jiné:
 

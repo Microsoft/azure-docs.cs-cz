@@ -1,18 +1,19 @@
 ---
 title: Datový model Azure Monitor protokolů pro Azure Backup
 description: V tomto článku se seznámíte s informacemi o datových modelech Azure Monitor protokolů pro Azure Backup data.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.author: adigan
-ms.openlocfilehash: 6563eefffee0ed8d9ce94c3e0a1e24b0d32314f0
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 878e4e7508d82f78e82f1fd8bda69079d9468e9f
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466159"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689237"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics datový model pro Azure Backup data
 
@@ -329,12 +330,12 @@ Tato tabulka poskytuje základní pole o serverech pro správu zálohování.
 
 |Pole  |Typ dat  | Popis  |
 |---------|---------|----------|
-|BackupManagmentServerName_s     |Text         |Název serveru pro správu zálohování        |
+|BackupManagementServerName_s     |Text         |Název serveru pro správu zálohování        |
 |AzureBackupAgentVersion_s     |Text         |Verze agenta Azure Backup na serveru pro správu zálohování          |
-|BackupManagmentServerVersion_s     |Text         |Verze serveru pro správu zálohování|
-|BackupManagmentServerOSVersion_s     |Text            |Verze operačního systému serveru pro správu zálohování|
+|BackupManagementServerVersion_s     |Text         |Verze serveru pro správu zálohování|
+|BackupManagementServerOSVersion_s     |Text            |Verze operačního systému serveru pro správu zálohování|
 |BackupManagementServerType_s     |Text         |Typ záložního serveru pro správu, jako je MABS, SC DPM|
-|BackupManagmentServerUniqueId_s     |Text         |Pole pro jedinečnou identifikaci serveru pro správu zálohování       |
+|BackupManagementServerUniqueId_s     |Text         |Pole pro jedinečnou identifikaci serveru pro správu zálohování       |
 
 ### <a name="preferredworkloadonvolume"></a>PreferredWorkloadOnVolume
 

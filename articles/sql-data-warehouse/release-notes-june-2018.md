@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Data Warehouse zpráva k vydání verze. června 2018 | Dokumentace Microsoftu
-description: Zpráva k vydání verze pro Azure SQL Data Warehouse.
+title: Zpráva k vydání verze Azure SQL Data Warehouse června 2018 | Microsoft Docs
+description: Poznámky k verzi pro Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,21 +11,21 @@ ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4348a634fd5b2b33f36d8e79f28caf659b82ccf4
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67626151"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Červen 2018
-Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v červnu 2018. 
+# <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Co je nového v Azure SQL Data Warehouse? Červen 2018
+Azure SQL Data Warehouse průběžně přijímá vylepšení. Tento článek popisuje nové funkce a změny, které byly představeny v červnu 2018. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="user-defined-restore-points"></a>Uživatelem definované body obnovení
-SQL Data Warehouse automaticky pořizuje snímky datového skladu každých 8 hodin starat plánovaného bodu obnovení osm hodin (RPO). Když to automatizované snímky usnadnění správy zatížení spuštěných váš datový sklad, není potřeba dělat jeho snímky v kritické dobu podle potřeb vašeho podniku. Třeba pořízení snímku bezprostředně před významné datové zatížení nebo nasazení nové skripty do datového skladu povolit bod obnovení přímo před provedením operace. 
+SQL Data Warehouse automaticky pořizování snímků datového skladu každých 8 hodin, což garantuje dobu trvání bodu obnovení (RPO) na osm hodin. I když tyto automatizované snímky usnadňují správu datového skladu, je potřeba pořizovat snímky v kritických časech podle potřeb vaší firmy. Například pořizování snímku přímo před významnou zátěží dat nebo nasazením nových skriptů do datového skladu a povolení bodu obnovení přímo před operací. 
 
-SQL Data Warehouse teď podporuje [body obnovení uživatelem definované](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) prostřednictvím [New-AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint) rutiny.
+SQL Data Warehouse teď podporuje [uživatelsky definované body obnovení](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) prostřednictvím rutiny [New-AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint) .
 
 ```powershell
 New-AzSqlDatabaseRestorePoint
@@ -35,10 +35,10 @@ New-AzSqlDatabaseRestorePoint
     -RestorePointLabel $RestorePointName
 ```
 
-## <a name="column-level-security"></a>Zabezpečení na úrovni sloupce
-Správa přístupu k datům a zabezpečení v datovém skladu je důležité pro budování důvěry se zákazníky a partnery. SQL Data Warehouse [teď podporuje zabezpečení na úrovni sloupce (CLS)](https://azure.microsoft.com/blog/column-level-security-is-now-supported-in-azure-sql-data-warehouse/) , který umožňuje nastavit oprávnění k zobrazení citlivých dat, tím, že omezíte přístup uživatelů k určité sloupce tabulky bez nutnosti přepracovat váš datový sklad.
+## <a name="column-level-security"></a>Zabezpečení na úrovni sloupců
+Správa přístupu k datům a zabezpečení v datovém skladu je zásadní pro vytváření vztahů důvěryhodnosti se zákazníky a partnery. SQL Data Warehouse [teď podporuje zabezpečení na úrovni sloupců (CLS)](https://azure.microsoft.com/blog/column-level-security-is-now-supported-in-azure-sql-data-warehouse/) , které umožňuje upravovat oprávnění k zobrazení citlivých dat tím, že omezuje přístup uživatelů k určitým sloupcům v tabulkách, aniž by bylo nutné přenavrhovat datový sklad.
 
-Specifikace CLS umožňuje řídit přístup k sloupce tabulky na základě kontextu spuštění uživatele nebo jejich členství ve skupině pomocí standardních [udělení](https://docs.microsoft.com/azure/sql-data-warehouse/column-level-security) příkazu T-SQL. Logika omezení přístupu se nachází na úrovni databáze, samotný spíše než z dat v jiné aplikaci, která zjednodušuje jejich celkové implementace zabezpečení.
+Specifikace CLS umožňuje řídit přístup k sloupcům tabulky na základě kontextu spuštění uživatele nebo členství ve skupině pomocí příkazu standard [grant](https://docs.microsoft.com/azure/sql-data-warehouse/column-level-security) T-SQL. Logika omezení přístupu se nachází v samotné vrstvě databáze, nikoli z dat v jiné aplikaci, což zjednodušuje celkovou implementaci zabezpečení.
 
 
 ```sql
@@ -52,7 +52,7 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="objectschemaname"></a>OBJECT_SCHEMA_NAME
-[OBJECT_SCHEMA_NAME()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) funkce vrací název schématu databáze pro objekty s rozsahem schématu. Tato funkce stala běžné nástroje ETL při ověřování schématu objektu. 
+Funkce [OBJECT_SCHEMA_NAME ()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) vrátí název schématu databáze pro objekty v oboru schématu. Tato funkce je společná v nástrojích ETL při ověřování schématu objektu. 
 
 ```sql
 SELECT
@@ -72,8 +72,8 @@ dbo               nation
 dbo               orders
 ```
 
-## <a name="support-for-the-systimezoneinfo-view"></a>Podpora pro zobrazení sys.time_zone_info
-[Sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) zobrazení vrátí informace o podporovaných časových pásem v rámci Azure SQL Data Warehouse.
+## <a name="support-for-the-systimezoneinfo-view"></a>Podpora zobrazení sys. time_zone_info
+Zobrazení [Sys. time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) vrací informace o podporovaných časových pásmech v rámci Azure SQL Data Warehouse.
 
 ```sql
 SELECT * FROM [sys].[time_zone_info];
@@ -89,9 +89,9 @@ Mountain Standard Time (Mexico)   -06:00               1
 Central Standard Time             -05:00               1
 ```
 
-## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>Operace statistiky automaticky zobrazí v sys.dm_pdw_exec_requests (Změna chování)
+## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>Operace automatické statistiky se zobrazí v zobrazení sys. DM _pdw_exec_requests (změna chování).
 
-Se zavedením [automaticky Create Statistics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic), Azure SQL Data Warehouse bude generování statistik pro optimalizaci provádění dotazu. Verze z června 2018 přidává možnost sledovat, když se statistiky jsou automaticky generovanou přidáním záznam do [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) zobrazit pokaždé, když některý [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) provedením operace.
+Když zavedete [Automatické vytváření statistik](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic), Azure SQL Data Warehouse vygeneruje statistiku pro optimalizaci provádění dotazů. Vydání z června 2018 přidává možnost monitorování při automatickém generování statistiky přidáním záznamu do zobrazení [Sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) vždy, když se spustí nějaká operace [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) .
 
 ```sql
 SELECT
@@ -111,7 +111,7 @@ start_time                | end_time                | command
 ```
 
 ## <a name="next-steps"></a>Další postup
-Teď, když už víte o něco o SQL Data Warehouse, zjistěte, jak rychle [vytvořit SQL Data Warehouse][create a SQL Data Warehouse] . If you are new to Azure, you may find the [Azure glossary][Azure glossary] užitečné jako narazíte na novou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
+Teď, když víte o SQL Data Warehouse, zjistíte, jak rychle [vytvořit SQL Data Warehouse][create a SQL Data Warehouse]. Pokud s Azure začínáte, můžete využít [Glosář Azure][Azure glossary], kde najdete potřebnou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
 
 * [Úspěšné zákaznické implementace]
 * [Blogy]

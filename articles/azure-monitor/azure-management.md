@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: b56993b9ad03f2ab50fe3954ab5e8855d0d8bc0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a0d3ea3f4a63e7c69a190cf856929437d6f0b9d8
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371631"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608292"
 ---
 # <a name="azure-management---monitoring"></a>Správa Azure – monitorování
 
@@ -43,7 +43,7 @@ Konfigurace označuje počáteční nasazení a konfiguraci aplikací a prostře
 Zásady správného řízení poskytují mechanismy a postupy pro zajištění kontroly nad vašimi aplikacemi a prostředky v Azure.  Zahrnují plánování iniciativ a nastavení strategických priorit.  Zásady správného řízení v Azure jsou primárně implementované pomocí dvou služeb.  [Azure Policy](../governance/policy/overview.md) pomáhá vytvářet, přiřazovat a spravovat definice zásad, které u vašich prostředků vynucují různá pravidla a akce, aby tyto prostředky i nadále odpovídaly vašim firemním standardům a smlouvám o úrovni služeb. [Azure Cost Management by Cloudyn](../cost-management/overview.md) umožňuje sledovat využití cloudu a výdaje za prostředky Azure a dalších poskytovatelů cloudu, včetně AWS a Googlu.
 
 ## <a name="secure"></a>Zabezpečení
-Správa zabezpečení vašich aplikací, prostředků a dat zahrnuje kombinaci vyhodnocování hrozeb, shromažďování a analýzy dat zabezpečení a zajištění, že vaše aplikace a prostředky jsou navržené a nakonfigurované zabezpečeným způsobem.  Monitorování zabezpečení a analýzu hrozeb zajišťuje služba [Azure Security Center](../security-center/security-center-intro.md), která poskytuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami.  Měli byste si také projít [úvod do zabezpečení Azure](../security/azure-security.md), kde najdete kompletní informace o zabezpečení v Azure a pokyny pro zabezpečenou konfiguraci prostředků Azure.
+Správa zabezpečení vašich aplikací, prostředků a dat zahrnuje kombinaci vyhodnocování hrozeb, shromažďování a analýzy dat zabezpečení a zajištění, že vaše aplikace a prostředky jsou navržené a nakonfigurované zabezpečeným způsobem.  Monitorování zabezpečení a analýzu hrozeb zajišťuje služba [Azure Security Center](../security-center/security-center-intro.md), která poskytuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami.  Měli byste si také projít [úvod do zabezpečení Azure](../security/fundamentals/overview.md), kde najdete kompletní informace o zabezpečení v Azure a pokyny pro zabezpečenou konfiguraci prostředků Azure.
 
 
 ## <a name="protect"></a>Ochrana

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/18/2019
+ms.date: 7/26/2019
 ms.author: raiye
-ms.openlocfilehash: 2dac76ef0d0d71c11291e63fdb3a7ce307638b50
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 9f796d4fe0edd1b6a944fc96e8045b1434d939f0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405555"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592410"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Verze hostovaného operačního systému Azure a tabulka kompatibility SDK
 Poskytuje aktuální informace o nejnovějších vydáních hostovaného operačního systému Azure pro Cloud Services. Tyto informace vám pomohou naplánovat cestu upgradu před zakázáním hostovaného operačního systému. Pokud vaše role nakonfigurujete tak, aby používaly *Automatické* aktualizace HOSTOVANÉHO operačního systému, jak je popsáno v tématu [aktualizace nastavení operačního systému hosta v Azure][Azure Guest OS Update Settings], není důležité tuto stránku číst.
@@ -42,6 +42,9 @@ Poskytuje aktuální informace o nejnovějších vydáních hostovaného operač
 Nevíte, jak aktualizovat hostovaný operační systém? Podívejte se na [Toto][cloud updates] .
 
 ## <a name="news-updates"></a>Aktualizace zpráv
+
+###### <a name="july-26-2019"></a>**26. července 2019**
+Hostovaný operační systém v červenci byl uvolněn.
 
 ###### <a name="july-8-2019"></a>**8. července 2019**
 Hostovaný operační systém v červnu vydal.
@@ -98,8 +101,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-WA _201907-01 |26. července 2019 |Post 6,11 |
 | WA-GUEST-OS-6.8_201906-01 |8\. července 2019 |Post 6,10 |
-| WA-GUEST-OS-6.7_201905-01 |6\. června 2019 |Post 6,9 |
+|~~WA-HOST-OS-6.7 _201905-01~~ |6\. června 2019 |26. července 2019 |
 |~~WA-GUEST-OS-6.6_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-6.5_201903-01~~ |26. března 2019 |6\. června 2019 |
 |~~WA-GUEST-OS-6.4_201902-01~~ |12. března 2019 |7\. května 2019 |
@@ -119,8 +123,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-5.33 _201907-01 |26. července 2019 |Post 5,35 |  
 | WA-GUEST-OS-5.32_201906-01 |8\. července 2019 |Post 5,34 |
-| WA-GUEST-OS-5.31_201905-01 |6\. června 2019 |Post 5,33 |
+|~~WA-HOST-OS-5.31 _201905-01~~ |6\. června 2019 |26. července 2019 |
 |~~WA-GUEST-OS-5.30_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-5.29_201903-01~~ |26. března 2019 |6\. června 2019 |
 |~~WA-GUEST-OS-5.28_201902-01~~ |12. března 2019 |7\. května 2019 |
@@ -137,8 +142,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-4.68 _201907-01 | 26. července 2019  |Post 4,70 |
 | WA-GUEST-OS-4.67_201906-01 |8\. července 2019 |Post 4,69 |
-| WA-GUEST-OS-4.66_201905-01 |6\. června 2019 |Post 4,68 |
+|~~WA-HOST-OS-4.66 _201905-01~~ |6\. června 2019 |26. července 2019 |
 |~~WA-GUEST-OS-4.65_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-4.64_201903-01~~ |26. března 2019 |6\. června 2019 |
 |~~WA-GUEST-OS-4.63_201902-01~~ |12. března 2019 |7\. května 2019 |
@@ -155,8 +161,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-3,75 _201907-01 | 26. července 2019 |Post 3,77 |
 | WA-GUEST-OS-3.74_201906-01 |8\. července 2019 |Post 3,76 |
-| WA-GUEST-OS-3.73_201905-01 |6\. června 2019 |Post 3,75 |
+|~~WA-HOST-OS-3.73 _201905-01~~ |6\. června 2019 |26. července 2019 |
 |~~WA-GUEST-OS-3.72_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-3.71_201903-01~~ |26. března 2019 |6\. června 2019 |
 |~~WA-GUEST-OS-3.70_201902-01~~ |12. března 2019 |7\. května 2019 |
@@ -173,8 +180,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-2,88 _201907-01 | 26. července 2019 |Post 2,90 |
 | WA-GUEST-OS-2.87_201906-01 |8\. července 2019 |Post 2,89 |
-| WA-GUEST-OS-2.86_201905-01 |6\. června 2019 |Post 2,88 |
+|~~WA-HOST-OS-2.86 _201905-01~~ |6\. června 2019 |26. července 2019 |
 |~~WA-GUEST-OS-2.85_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-2.84_201903-01~~ |26. března 2019 |6\. června 2019 |
 |~~WA-GUEST-OS-2.83_201902-01~~ |12. března 2019 |7\. května 2019 |
@@ -202,7 +210,7 @@ I když [zásada vyřazení pro sadu Azure SDK][retire policy sdk] uvádí, že 
 ## <a name="guest-os-release-information"></a>Informace k vydání hostovaného operačního systému
 Existují tři kalendářní data, která jsou důležitá pro vydání hostovaných operačních systémů: datum **vydání** , datum **zakázání** a datum **vypršení platnosti** . Hostovaný operační systém se považuje za dostupný, když je na portálu a dá se vybrat jako cílový hostovaný operační systém. Když hostovaný operační systém dosáhne data **zakázání** , odebere se z Azure. Nicméně všechny cloudové služby, které cílí na hostovaný operační systém, budou i nadále fungovat jako normálně.
 
-Okno mezi zakázaným  datem a datem **vypršení platnosti** poskytuje vyrovnávací paměť, která umožňuje snadný přechod z jednoho hostovaného operačního systému na jeden novější. Pokud používáte *Automatické* použití jako hostovaný operační systém, budete mít vždycky na nejnovější verzi a nemusíte si dělat starosti s tím, že vyprší platnost.
+Okno mezi zakázaným datem a datem **vypršení platnosti** poskytuje vyrovnávací paměť, která umožňuje snadný přechod z jednoho hostovaného operačního systému na jeden novější. Pokud používáte *Automatické* použití jako hostovaný operační systém, budete mít vždycky na nejnovější verzi a nemusíte si dělat starosti s tím, že vyprší platnost.
 
 Po uplynutí data **vypršení platnosti** budou všechny cloudové služby, které tento hostovaný operační systém stále používají, zastaveny, odstraněny nebo vynuceny upgradovat. [Tady][retirepolicy]si můžete přečíst další informace o zásadách pro vyřazení.
 

@@ -1,6 +1,6 @@
 ---
-title: Přehled služby Azure SQL Database elastic query | Dokumentace Microsoftu
-description: Elastický dotaz můžete spustit dotaz jazyka Transact-SQL, která zahrnuje více databází.
+title: Přehled elastického dotazu Azure SQL Database | Microsoft Docs
+description: Elastický dotaz umožňuje spustit dotaz Transact-SQL, který zahrnuje více databází.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,152 +10,151 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-manager: craigg
 ms.date: 07/01/2019
-ms.openlocfilehash: 5188862c50895c8e3f1bdecb4e08d39409bb5f9e
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 313e8af0e42f5108a22261a475b5340208adb7bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491657"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568560"
 ---
-# <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled služby Azure SQL Database elastic query (preview)
+# <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled elastického dotazu Azure SQL Database (Preview)
 
-Funkce elastický dotaz (ve verzi preview) umožňuje spustit dotaz jazyka Transact-SQL, která zahrnuje více databází ve službě Azure SQL Database. To umožňuje provádět mezidatabázové dotazy, přístup do vzdálených tabulek a připojovat Microsoftu a třetích stran nástroji (Excel, Power BI, Tableau, atd.) pro dotazování napříč datovou vrstvou s více databází. Díky této funkci můžete horizontální navýšení kapacity dotazů na úrovně velkých objemů dat ve službě SQL Database a vizualizaci výsledků v sestav business intelligence (BI).
+Funkce elastického dotazu (ve verzi Preview) umožňuje spustit dotaz Transact-SQL, který pokrývá více databází v Azure SQL Database. Umožňuje provádět dotazy napříč databázemi pro přístup ke vzdáleným tabulkám a k propojení nástrojů společnosti Microsoft a jiných dodavatelů (Excel, Power BI, Tableau atd.) pro dotazování napříč datovými vrstvami s více databázemi. Pomocí této funkce můžete horizontální navýšení kapacity dotazů na velké vrstvy dat v SQL Database a vizualizaci výsledků v sestavách business intelligence (BI).
 
 ## <a name="why-use-elastic-queries"></a>Proč používat elastické dotazy
 
 ### <a name="azure-sql-database"></a>Azure SQL Database
 
-Dotazování napříč databázemi Azure SQL zcela v T-SQL. To umožňuje jen pro čtení dotazování vzdálené databáze a nabízí možnost pro stávající zákazníky v místním SQL serveru k migraci aplikací pomocí tří a čtyř částečný názvy nebo propojeného serveru do databáze SQL.
+Dotazování napříč databázemi SQL Azure je zcela v T-SQL. To umožňuje dotazování vzdálených databází jen pro čtení a poskytuje možnost pro současné místní SQL Server zákazníkům migrovat aplikace s využitím názvů tří a čtyř částí nebo propojeného serveru do SQL DB.
 
-### <a name="available-on-standard-tier"></a>K dispozici na úrovni standard
+### <a name="available-on-standard-tier"></a>K dispozici na úrovni Standard
 
-Elastický dotaz je podporována v úrovních Standard a Premium. V části na omezení verze Preview níže na omezení výkonu pro nižší úrovně.
+Elastický dotaz je podporován na úrovni služeb Standard a Premium. V části omezení verze Preview níže najdete omezení výkonu pro nižší úrovně služeb.
 
-### <a name="push-parameters-to-remote-databases"></a>Vložit parametry do vzdálené databáze
+### <a name="push-parameters-to-remote-databases"></a>Doručovat parametry do vzdálených databází
 
-Elastické dotazy teď může nasdílet změny parametry SQL do vzdálené databáze pro spuštění.
+Elastické dotazy teď můžou odeslat parametry SQL do vzdálených databází ke spuštění.
 
-### <a name="stored-procedure-execution"></a>Provedení uložené procedury
+### <a name="stored-procedure-execution"></a>Spuštění uložené procedury
 
-Spustit volání vzdálené uložené procedury nebo funkce remote pomocí [sp\_provést \_vzdálené](https://msdn.microsoft.com/library/mt703714).
+Spuštění vzdálených volání uložených procedur nebo vzdálených funkcí pomocí [SP\_Execute \_Remote](https://msdn.microsoft.com/library/mt703714).
 
 ### <a name="flexibility"></a>Flexibilita
 
-Externí tabulky s elastický dotaz mohou odkazovat na vzdálených tabulek s jiné schéma nebo název tabulky.
+Externí tabulky s elastickým dotazem můžou odkazovat na vzdálené tabulky s jiným názvem schématu nebo tabulky.
 
-## <a name="elastic-query-scenarios"></a>Elastický dotaz scénáře
+## <a name="elastic-query-scenarios"></a>Scénáře elastického dotazu
 
-Cílem je usnadnit dotazování scénáře, kde více databází přispívat řádků do jediné celkový výsledek. Dotaz může skládá buď podle uživatele nebo aplikace přímo nebo nepřímo prostřednictvím nástrojů, které jsou připojené k databázi. To je užitečné zejména při vytváření sestav pomocí obchodní BI nebo nástrojů pro integraci dat nebo aplikace, která se nedá změnit. Pomocí elastic query můžete zadávat dotazy napříč několika databázemi v nástrojů, jako je Excel, Power BI, Tableau nebo Cognos známým připojení k serveru SQL Server.
-Elastický dotaz umožňuje snadný přístup k celé kolekce databází prostřednictvím dotazy odeslané pomocí SQL Server Management Studio nebo Visual Studio a usnadňuje z Entity Framework nebo v jiných prostředích ORM dotazování napříč databázemi. Obrázek 1 představuje scénář, kdy existující Cloudová aplikace (které používá [Klientská knihovna elastic database](sql-database-elastic-database-client-library.md)) sestavení na horizontálním navýšením kapacity datové vrstvy a elastického dotazu se používá pro vytváření sestav napříč databázemi.
+Cílem je usnadnit dotazování scénářů, ve kterých více databází přispívá řádky do jednoho celkového výsledku. Dotaz může sestavit buď přímo uživatel, nebo aplikace, nebo nepřímo prostřednictvím nástrojů, které jsou připojené k databázi. To je užitečné hlavně při vytváření sestav, používání komerčních nástrojů BI nebo pro integraci dat nebo libovolné aplikace, kterou nelze změnit. Pomocí elastického dotazu se můžete dotazovat napříč několika databázemi pomocí známých SQL Server možností připojení v nástrojích, jako je Excel, Power BI, Tableau nebo Cognos.
+Elastický dotaz umožňuje snadný přístup k celé kolekci databází prostřednictvím dotazů vydaných SQL Server Management Studio nebo sadě Visual Studio a usnadňuje dotazování napříč databázemi z Entity Framework nebo jiných prostředí ORM. Obrázek 1 znázorňuje situaci, kdy existující cloudová aplikace (která používá [klientskou knihovnu elastické databáze](sql-database-elastic-database-client-library.md)) se vytváří na datové vrstvě s více instancemi a elastický dotaz se používá pro generování sestav mezi databázemi.
 
-**Obrázek 1** elastický dotaz použitý v horizontálním navýšením kapacity Datová vrstva
+**Obrázek 1** Elastický dotaz se používá pro datovou vrstvu s měřítkem.
 
-![Elastický dotaz použitý v horizontálním navýšením kapacity Datová vrstva][1]
+![Elastický dotaz se používá pro datovou vrstvu s měřítkem.][1]
 
-Zákazník scénáře pro elastický dotaz jsou charakteristické následující topologie:
+Scénáře zákazníků pro elastický dotaz jsou charakterizovány následujícími topologiemi:
 
-* **Vertikální dělení - mezidatabázové dotazy** (topologie 1): Data je rozdělené do vertikálních oddílů mezi několika databázemi, v datové vrstvě. Různé sady tabulek se obvykle nacházejí na různých databázích. To znamená, že schéma se liší v různých databázích. Například všechny tabulky inventáře jsou na jednu databázi, zatímco všechny tabulky související s monitorování účtů na druhém databáze. Běžné případy použití s touto topologií vyžadovat jeden pro dotazování napříč nebo ke kompilaci sestavy mezi tabulkami v několika databázích.
-* **Horizontální dělení – horizontální dělení** (topologie 2): Data jsou rozdělená vodorovně a distribuuje řádky mezi škálovaném datové vrstvy. S tímto přístupem schéma je shodné pro všechny zúčastněné databáze. Tento přístup se také nazývá "horizontálního dělení". Provést horizontálního dělení a spravované pomocí (1) elastických databází nástroje, knihovny, nebo (2) self horizontální dělení. Elastický dotaz slouží k dotazování nebo kompilací sestav napříč velkým počtem horizontálních oddílů.
+* **Vertikální dělení – mezidatabázové dotazy** (Topologie 1): Data jsou rozdělená svisle mezi několik databází v datové vrstvě. Různé sady tabulek se typicky nacházejí v různých databázích. To znamená, že schéma se liší v různých databázích. Například všechny tabulky pro inventář jsou v jedné databázi, zatímco všechny tabulky související s monitorováním účtů jsou v druhé databázi. Běžné případy použití s touto topologií vyžadují, aby se jedna použila dotaz na napříč tabulkami v několika databázích a aby mohla kompilovat sestavy.
+* **Horizontální dělení – horizontálního dělení** (Topologie 2): Data jsou rozdělená na oddíly vodorovně pro distribuci řádků napříč škálovaná datovou vrstvou. S tímto přístupem je schéma stejné ve všech zúčastněných databázích. Tento přístup se také nazývá "horizontálního dělení". Horizontálního dělení se dá provádět a spravovat pomocí (1) knihoven nástrojů elastické databáze nebo (2) sami horizontálního dělení. Elastický dotaz se používá k dotazování nebo kompilování sestav napříč mnoha horizontálních oddílů.
 
 > [!NOTE]
-> Elastický dotaz je nejvhodnější pro scénáře, kde můžete provádět většinu zpracování (filtrování, agregace) na straně externího zdroje vytváření sestav. To není vhodný pro operace ETL, kde je velké množství dat přenášených ze vzdálené databáze. Pro náročné úlohy vytváření sestav nebo datových skladů scénáře s mnohem složitější dotazy, také zvážit použití [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
+> Elastický dotaz funguje nejlépe pro scénáře vytváření sestav, kde většinu zpracování (filtrování, agregace) je možné provést na straně externího zdroje. Není vhodný pro operace ETL, kde se přenáší velké množství dat ze vzdálených databází. Pro náročné úlohy vytváření sestav nebo scénáře datového skladu pomocí složitějších dotazů Zvažte také použití [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 >  
 
-## <a name="vertical-partitioning---cross-database-queries"></a>Vertikální dělení - mezidatabázové dotazy
+## <a name="vertical-partitioning---cross-database-queries"></a>Vertikální dělení – mezidatabázové dotazy
 
-Pokud chcete začít, kódování, najdete v článku [Začínáme s mezidatabázovými dotazy (vertikální oddíly)](sql-database-elastic-query-getting-started-vertical.md).
+Chcete-li začít s kódováním, přečtěte si téma [Začínáme s mezidatabázovým dotazem (vertikální dělení)](sql-database-elastic-query-getting-started-vertical.md).
 
-Elastický dotaz můžete použít tak, aby data nachází ve službě SQL database k dispozici s jinými databázemi SQL. To umožňuje dotazy z jedné databáze k odkazování tabulek v kterékoli jiné vzdálené databáze SQL. Prvním krokem je definování externího zdroje dat pro každou vzdálenou databázi. Externí zdroj dat je definován v místní databázi, ze kterého chcete získat přístup k tabulkám, které jsou umístěné na vzdálené databáze. Žádné změny nejsou potřeba na vzdálené databáze. Pro typické vertikální dělení scénáře, kde různými databázemi. mají různé schémata elastické dotazy slouží k implementaci běžných případů použití, jako je například přístup do referenčních dat a dotazování napříč databázemi.
+Elastický dotaz lze použít k zpřístupnění dat v databázi SQL v jiných databázích SQL. To umožňuje dotazům z jedné databáze odkazovat na tabulky v jakékoli jiné vzdálené databázi SQL. Prvním krokem je definování externího zdroje dat pro každou vzdálenou databázi. Externí zdroj dat je definován v místní databázi, ze které chcete získat přístup k tabulkám umístěným ve vzdálené databázi. Ve vzdálené databázi nejsou nutné žádné změny. Pro typické scénáře vertikálního dělení, kde různé databáze mají různá schémata, je možné elastické dotazy použít k implementaci běžných případů použití, jako je například přístup k referenčním datům a dotazování mezi databázemi.
 
 > [!IMPORTANT]
-> Musí mít oprávnění ALTER ANY EXTERNAL DATA SOURCE. Toto oprávnění je součástí oprávnění ALTER DATABASE. K odkazování na podkladový zdroj dat jsou potřeba oprávnění ALTER ANY EXTERNAL DATA SOURCE.
+> Musíte mít oprávnění ke změně všech externích zdrojů dat. Toto oprávnění je součástí oprávnění ALTER DATABASE. Aby bylo možné odkazovat na podkladový zdroj dat, je třeba změnit všechna oprávnění ke zdroji externích dat.
 >
 
-**Referenční data**: Topologie se používá pro správu dat na odkaz. Na následujícím obrázku jsou dvě tabulky (T1 a T2) s referenčními daty ukládají na vyhrazený databázový. Použitím elastického dotazu, můžete teď vzdálený přístup k tabulkám, T1 a T2 z jiných databází, jak je znázorněno na obrázku. Použití topologie 1, pokud jsou malé nebo vzdálené dotazy do tabulky odkaz na referenční tabulky mají selektivní predikáty.
+**Referenční data**: Topologie se používá pro správu referenčních dat. Na následujícím obrázku jsou dvě tabulky (T1 a T2) s referenčními daty uchovávány ve vyhrazené databázi. Pomocí elastického dotazu teď můžete přistupovat k tabulkám T1 a T2 vzdáleně z jiných databází, jak je znázorněno na obrázku. Použijte topologii 1, pokud jsou referenční tabulky malé nebo vzdálené dotazy do referenční tabulky mají selektivní predikáty.
 
-**Obrázek 2** vertikální dělení – použitím elastického dotazu query referenčních dat
+**Obrázek 2** Vertikální dělení – použití elastického dotazu k dotazování na referenční data
 
-![Vertikální dělení – použitím elastického dotazu query referenčních dat][3]
+![Vertikální dělení – použití elastického dotazu k dotazování na referenční data][3]
 
-**Dotazování napříč databázemi**: Elastické dotazy umožňují případy použití, které vyžadují dotazování napříč několika databázemi SQL. Obrázek 3 znázorňuje čtyři různé databáze: CRM, inventáře, HR a produkty. Dotazy v jedné z databází potřebovat přístup k jedné nebo všech jiných databází. Použitím elastického dotazu, můžete nakonfigurovat databázi pro tento případ spuštěním několika jednoduchých příkazů DDL každého ze čtyř databází. Po tomto jednorázovou konfiguraci je stejně jednoduché jako odkazující na místní tabulku z vašich dotazů T-SQL nebo z nástrojů BI přístup k vzdálené tabulky. Tento přístup se doporučuje, když vzdálené dotazy nevrátí velké výsledky.
+**Dotazování mezi databázemi**: Elastické dotazy umožňují případy použití, které vyžadují dotazování napříč několika databázemi SQL. Obrázek 3 ukazuje čtyři různé databáze: CRM, inventář, HR a produkty. Dotazy provedené v jedné z databází také potřebují přístup k jedné nebo všem ostatním databázím. Pomocí elastického dotazu můžete pro tento případ nakonfigurovat databázi tak, že v každé ze čtyř databází spustíte několik jednoduchých příkazů DDL. Po této jednorázové konfiguraci bude mít přístup ke vzdálené tabulce jednoduché odkazy na místní tabulku z vašich dotazů T-SQL nebo z nástrojů BI. Tento přístup se doporučuje, pokud vzdálené dotazy nevrátí velké výsledky.
 
-**Obrázek 3** vertikální dělení – použitím elastického dotazu query napříč různými databázemi
+**Obrázek 3** Vertikální dělení – použití elastického dotazu k dotazování napříč různými databázemi
 
-![Vertikální dělení – použitím elastického dotazu query napříč různými databázemi][4]
+![Vertikální dělení – použití elastického dotazu k dotazování napříč různými databázemi][4]
 
-Následující kroky konfigurace elastických databázových dotazů pro vertikální dělení scénáře, které vyžadují přístup k tabulce umístěné na vzdálené databáze SQL pomocí stejné schéma:
+Následující kroky nakonfigurují elastické databázové dotazy pro scénáře vertikální dělení, které vyžadují přístup k tabulce umístěné ve vzdálených databázích SQL se stejným schématem:
 
-* [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
-* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
-* [Příkaz CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource typu **relační databázový systém**
-* [Příkaz CREATE/DROP externí tabulky](https://msdn.microsoft.com/library/dn935021.aspx) mytable
+* [Vytvořit hlavní klíč](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
+* [Vytvořit databázi s rozsahem přihlašovacích údajů](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
+* [Vytvořit nebo vyřadit externí zdroj dat](https://msdn.microsoft.com/library/dn935022.aspx) myDataSource typu **RDBMS**
+* [Vytvořit nebo vyřadit externí tabulku](https://msdn.microsoft.com/library/dn935021.aspx) myTable
 
-Po spuštění příkazů DDL, dostanete vzdálenou tabulku "mytable", jako by šlo místní tabulky. Azure SQL Database automaticky otevře připojení k vzdálené databázi, zpracování vašeho požadavku na vzdálenou databázi a vrátí výsledky.
+Po spuštění příkazů DDL máte přístup ke vzdálené tabulce "myTable", jako by šlo o místní tabulku. Azure SQL Database automaticky otevře připojení ke vzdálené databázi, zpracuje vaši žádost ve vzdálené databázi a vrátí výsledky.
 
-## <a name="horizontal-partitioning---sharding"></a>Horizontální dělení – horizontální dělení
+## <a name="horizontal-partitioning---sharding"></a>Horizontální dělení – horizontálního dělení
 
-Použitím elastického dotazu se provedly horizontálně dělené úlohám generování sestav, to znamená, horizontálně dělené do oddílů, vyžaduje datovou vrstvu [mapy horizontálních oddílů elastické databáze](sql-database-elastic-scale-shard-map-management.md) k reprezentaci databáze v datové vrstvě. Obvykle se používá pouze jeden horizontální oddíl mapy v tomto scénáři a vyhrazené databáze s možnostmi elastický dotaz (hlavní uzel) slouží jako vstupní bod pro oznámení dotazů. Pouze této vyhrazené databáze potřebuje přístup k mapy horizontálních oddílů. Obrázek 4 ukazuje tuto topologii a jeho konfigurace s mapou elastický dotaz databáze a horizontálních oddílů. Databáze v datové vrstvě může být jakékoli edici nebo verzi databáze SQL Azure. Další informace o klientské knihovně elastic database a vytváření map horizontálních oddílů, naleznete v tématu [správy mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md).
+Použití elastického dotazu k provádění úloh vytváření sestav přes horizontálně dělené, tj. horizontálně dělená Datová vrstva vyžaduje, aby [horizontálních oddílů mapa Elastické databáze](sql-database-elastic-scale-shard-map-management.md) představovala databáze datové vrstvy. V tomto scénáři se obvykle používá pouze jedna mapa horizontálních oddílů a vyhrazená databáze s funkcemi elastického dotazu (hlavní uzel) slouží jako vstupní bod pro dotazy vytváření sestav. Pouze tato vyhrazená databáze potřebuje přístup k mapě horizontálních oddílů. Obrázek 4 znázorňuje tuto topologii a její konfiguraci pomocí elastické databáze dotazů a mapy horizontálních oddílů. Databáze v datové vrstvě můžou být jakékoli Azure SQL Database verze nebo edice. Další informace o klientské knihovně elastické databáze a vytváření map horizontálních oddílů najdete v tématu [Správa map horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md).
 
-**Obrázek 4** horizontální dělení – použitím elastického dotazu pro generování sestav prostřednictvím vrstev horizontálně dělených dat
+**Obrázek 4** Horizontální dělení – použití elastického dotazu pro vytváření sestav přes horizontálně dělené úrovně dat
 
-![Horizontální dělení – použitím elastického dotazu pro generování sestav prostřednictvím vrstev horizontálně dělených dat][5]
+![Horizontální dělení – použití elastického dotazu pro vytváření sestav přes horizontálně dělené úrovně dat][5]
 
 > [!NOTE]
-> Elastický dotaz na databázi (hlavní uzel) může být samostatné databáze nebo může být stejné databáze, který je hostitelem mapy horizontálních oddílů.
-> Libovolné konfigurace, zvolte možnost, ujistěte se, že úrovně služby a vypočítat velikost této databáze je dostatečný pro zpracování očekávaného počtu požadavků na přihlášení/dotazy.
+> Elastická databáze dotazů (hlavní uzel) může být samostatná databáze nebo se může jednat o stejnou databázi, která je hostitelem mapy horizontálních oddílů.
+> Ať už si zvolíte takovou konfiguraci, ujistěte se, že je úroveň služby a výpočetní velikost této databáze dostatečně vysoká, aby bylo možné zpracovat očekávané množství žádostí o přihlášení nebo dotaz.
 
-Následující kroky konfigurace dotazy elastických databází pro horizontální dělení scénáře, které vyžadují přístup k sadě tabulek na (obvykle) několik vzdálené databáze SQL:
+Následující kroky nakonfigurují elastické databázové dotazy pro scénáře horizontálního dělení, které vyžadují přístup k sadě tabulek umístěných v (obvykle) několika vzdálených databází SQL:
 
-* [CREATE MASTER KEY](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
-* [CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
-* Vytvoření [mapy horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) představující datovou vrstvu pomocí Klientská knihovna elastic database.
-* [Příkaz CREATE/DROP EXTERNAL DATA SOURCE](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource typu **SHARD_MAP_MANAGER**
-* [Příkaz CREATE/DROP externí tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) mytable
+* [Vytvořit hlavní klíč](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
+* [Vytvořit databázi s rozsahem přihlašovacích údajů](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
+* Vytvořte [mapu horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) představující vaši datovou vrstvu pomocí klientské knihovny elastické databáze.
+* [Vytvořit nebo vyřadit externí zdroj dat](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) myDataSource typu **SHARD_MAP_MANAGER**
+* [Vytvořit nebo vyřadit externí tabulku](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) myTable
 
-Po provedení těchto kroků, dostanete horizontálně dělenou tabulku "mytable", jako by šlo místní tabulku. Azure SQL Database automaticky otevře několik paralelní připojení ke vzdálené databáze fyzicky ukládat tabulky, zpracovává požadavky pro vzdálené databáze a vrátí výsledky.
-Další informace o kroky potřebné pro horizontální dělení scénář lze najít v [elastický dotaz pro horizontální dělení](sql-database-elastic-query-horizontal-partitioning.md).
+Po provedení těchto kroků můžete získat přístup k horizontálně rozdělené tabulce "myTable", jako by šlo o místní tabulku. Azure SQL Database automaticky otevírá více paralelních připojení ke vzdáleným databázím, kde jsou fyzicky uloženy tabulky, zpracovává požadavky na vzdálené databáze a vrací výsledky.
+Další informace o krocích, které jsou potřebné pro scénář horizontálního dělení, najdete v [elastickém dotazu pro horizontální dělení na oddíly](sql-database-elastic-query-horizontal-partitioning.md).
 
-Pokud chcete začít, kódování, najdete v článku [Začínáme se službou elastický dotaz pro horizontální dělení (sharding)](sql-database-elastic-query-getting-started.md).
+Chcete-li začít s kódováním, přečtěte si téma [Začínáme s elastickým dotazem pro horizontální dělení (horizontálního dělení)](sql-database-elastic-query-getting-started.md).
 
-## <a name="t-sql-querying"></a>Dotazování na T-SQL
+## <a name="t-sql-querying"></a>Dotazování T-SQL
 
-Po definování externích datových zdrojů a externích tabulek, můžete použít regulární systému SQL Server připojovací řetězce k připojení k databázím, ve které jste definovali externí tabulky. Potom spustíte příkazy jazyka T-SQL na externí tabulky v tomto připojení s omezeními uvedených níže. Další informace a příklady dotazů T-SQL najdete v tématech dokumentace pro [horizontální dělení](sql-database-elastic-query-horizontal-partitioning.md) a [vertikální dělení](sql-database-elastic-query-vertical-partitioning.md).
+Po definování externích zdrojů dat a externích tabulek můžete použít běžné připojovací řetězce SQL Server pro připojení k databázím, kde jste definovali externí tabulky. Pak můžete v tomto připojení spustit příkazy T-SQL na svých externích tabulkách s omezeními uvedenými níže. Další informace a příklady dotazů T-SQL najdete v tématech dokumentace pro [horizontální dělení](sql-database-elastic-query-horizontal-partitioning.md) a [vertikální dělení](sql-database-elastic-query-vertical-partitioning.md).
 
-## <a name="connectivity-for-tools"></a>Připojení nástroje
+## <a name="connectivity-for-tools"></a>Možnosti připojení pro nástroje
 
-Můžete použít regulární systému SQL Server připojovací řetězce pro připojení vašich aplikací a nástrojů pro integraci BI nebo data do databáze, které mají externí tabulky. Ujistěte se, že systém SQL Server je podporovaný jako zdroj dat pro nástroj. Jakmile budete připojeni, odkazovat na dotaz na elastic database a externí tabulky v této databázi stejně jako u kterékoli jiné databáze systému SQL Server, se připojujete k s nástrojem.
+Pomocí běžných SQL Serverch připojovacích řetězců můžete propojit aplikace a nástroje pro integraci s daty a nástroji pro integraci dat s databázemi, které mají externí tabulky. Ujistěte se, že je pro nástroj SQL Server podporována jako zdroj dat. Po připojení si přečtěte databázi elastického dotazu a externí tabulky v této databázi stejně, jako byste to propojili s jinou databází SQL Server, ke které se připojíte pomocí nástroje.
 
 > [!IMPORTANT]
-> Ověřování pomocí Azure Active Directory s elastickými dotazy se momentálně nepodporuje.
+> Ověřování pomocí Azure Active Directory s elastickými dotazy není v současné době podporováno.
 
 ## <a name="cost"></a>Náklady
 
-Elastický dotaz je zahrnuté do ceny za databází Azure SQL Database. Všimněte si, že jsou podporované topologie, kde jsou vaše vzdálené databáze v různých datových center než koncový bod elastického dotazu, ale se pravidelně účtuje odchozí přenos dat ze vzdálených databází [sazeb Azure](https://azure.microsoft.com/pricing/details/data-transfers/).
+Elastický dotaz je zahrnutý do nákladů na Azure SQL Database databáze. Mějte na paměti, že topologie, ve kterých jsou vaše vzdálené databáze v jiném datovém centru, než je podporovaný koncový bod elastického dotazu, se účtují na základě pravidelného [přenosu](https://azure.microsoft.com/pricing/details/data-transfers/)dat ze vzdálených databází.
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
-* Spuštění vaší první elastického dotazu může trvat několik minut, než na úrovni Standard služby. Tentokrát je nezbytný pro načtení elastický dotaz funkce. výkon při načítání se zvyšuje s vyšší úrovní služeb a výpočty velikostí.
-* Skriptování z externích zdrojů dat nebo externích tabulek z aplikace SSMS a SSDT se ještě nepodporuje.
-* Import/Export pro SQL DB zatím nepodporuje externí zdroje dat a externí tabulky. Pokud je potřeba použít Import/Export, vyřadit tyto objekty před exportem a potom je znovu vytvořit po importu.
-* Elastický dotaz aktuálně podporuje pouze přístup jen pro čtení pro externí tabulky. Můžete však použít všechny funkce jazyka T-SQL v databázi ve kterém je definována externí tabulky. To může být užitečné, například zachovat dočasné použití, například výsledky, vyberte < column_list > do < local_table >, nebo k definování uložené procedury v databázi elastický dotaz odkazující na externí tabulky.
-* S výjimkou nvarchar(max) obchodní typy (včetně prostorové typy) nejsou podporovány v definici externí tabulky. Jako alternativní řešení můžete vytvořit zobrazení na vzdálenou databázi, která přetypovává typu LOB do nvarchar(max), definovat externí tabulky zobrazení místo v základní tabulce a přetypujte ji zpět do původního typu LOB v dotazech.
-* Sloupce datového typu nvarchar(max) ve výsledku sady zakázat rozšířené dávkování technika použitý v implementaci elastický dotaz a může mít vliv na výkon dotazu pro řád, nebo dokonce u dvou řádově v jiné kanonické případy použití, kde je velké množství neagregovaná data přenášejí výsledku dotazu.
-* Statistiky sloupce na externí tabulky nejsou aktuálně podporovány. Statistika tabulky jsou podporované, ale musí být vytvořeny ručně.
-* Elastický dotaz funguje pouze s Azure SQL Database. Nelze ho použít pro dotazování na místní SQL Server nebo SQL Server na virtuálním počítači.
+* Spuštění prvního elastického dotazu může trvat až několik minut na standardní úrovni služby. Tento čas je nezbytný pro načtení funkce elastického dotazu. načítají se výkon s vyššími úrovněmi služeb a výpočetními velikostmi.
+* Skriptování externích zdrojů dat nebo externích tabulek z SSMS nebo SSDT se ještě nepodporuje.
+* Import/export pro SQL DB ještě nepodporuje externí zdroje dat a externí tabulky. Pokud potřebujete použít import/export, vyřaďte tyto objekty před exportem a pak je znovu vytvořte po importu.
+* Elastický dotaz momentálně podporuje jenom přístup jen pro čtení k externím tabulkám. V databázi, kde je definována externí tabulka, však můžete použít úplnou funkci T-SQL. To může být užitečné, například zachovat dočasné výsledky pomocí, například vybrat < column_list > do < local_table > nebo pro definování uložených procedur v databázi elastických dotazů, které odkazují na externí tabulky.
+* S výjimkou nvarchar (max) nejsou v definicích externích tabulek podporovány typy LOB (včetně prostorových typů). Jako alternativní řešení můžete vytvořit zobrazení na vzdálené databázi, která přenese typ LOB do nvarchar (max), definovat externí tabulku přes zobrazení místo základní tabulky a následně ji přetypovat zpátky na původní typ LOB v dotazech.
+* Sloupce datového typu nvarchar (max) ve výsledné sadě zakazují pokročilou dávkovou Technics dávkování použitou při implementaci elastického dotazu a mohou ovlivnit výkon dotazů na pořadí podle velikosti nebo dokonce dva objednávky v nekanonickém případě použití, kde velké množství neagregovaná data se přenášejí jako výsledek dotazu.
+* Statistiky sloupců v externích tabulkách nejsou aktuálně podporovány. Statistiky tabulek jsou podporovány, ale je nutné je vytvořit ručně.
+* Elastický dotaz funguje pouze s Azure SQL Database. Nemůžete ho použít k dotazování na místní SQL Server nebo SQL Server na virtuálním počítači.
 
-## <a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Zpětná vazba
 
-Sdílení zpětné vazby na vaše zkušenosti s elastickými dotazy s námi níže, na fórech MSDN nebo na webu Stack Overflow. Nás zajímají všechny druhy zpětnou vazbu týkající se služby (vad, hrubé okraje, funkce).
+Flexibilní dotazy vám pomůžete sdílet s elastickými dotazy, a to na fórech MSDN nebo na Stack Overflow. Máme zájem o všechny druhy zpětné vazby k této službě (vady, hrubou hranu, nedostatky funkcí).
 
 ## <a name="next-steps"></a>Další postup
 
-* Vertikální dělení kurz najdete v tématu [Začínáme s mezidatabázovými dotazy (vertikální oddíly)](sql-database-elastic-query-getting-started-vertical.md).
-* Syntaxe a ukázkové dotazy na vertikálně dělená data, najdete v části [dotazování na vertikálně dělené data)](sql-database-elastic-query-vertical-partitioning.md)
-* Horizontální dělení (sharding) kurz najdete v tématu [Začínáme se službou elastický dotaz pro horizontální dělení (sharding)](sql-database-elastic-query-getting-started.md).
-* Syntaxe a ukázkové dotazy pro horizontálně dělená data, najdete v části [dotazování na horizontálně dělené data)](sql-database-elastic-query-horizontal-partitioning.md)
-* Naleznete v tématu [sp\_provést \_vzdálené](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provádí příkaz jazyka Transact-SQL na jeden vzdálený Azure SQL Database nebo sadu databází, které slouží jako horizontální oddíly takovým vodorovné schéma vytváření oddílů.
+* Kurz pro vertikální dělení najdete v tématu [Začínáme s mezidatabázovým dotazem (vertikální dělení)](sql-database-elastic-query-getting-started-vertical.md).
+* Syntaxe a ukázkové dotazy pro vertikálně dělená data najdete v tématu dotazování na [vertikálně dělená data](sql-database-elastic-query-vertical-partitioning.md) .
+* Kurz horizontálního dělení na oddíly (horizontálního dělení) najdete v tématu [Začínáme s elastickým dotazem pro horizontální dělení na oddíly (horizontálního dělení)](sql-database-elastic-query-getting-started.md).
+* Syntaxe a ukázkové dotazy pro horizontálně rozdělená data najdete v tématu [dotazování na horizontálně dělená data](sql-database-elastic-query-horizontal-partitioning.md) .
+* V [tématu\_SP \_Execute Remote](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, která slouží jako horizontálních oddílů ve vodorovném schématu dělení.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-overview/overview.png

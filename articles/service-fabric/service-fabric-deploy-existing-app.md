@@ -1,9 +1,9 @@
 ---
-title: Nasazení existujícího spustitelného souboru do Azure Service Fabric | Dokumentace Microsoftu
-description: Zjistěte, jak zabalit existující aplikaci jako Host spustitelného souboru, takže je možné nasadit do clusteru Service Fabric.
+title: Nasaďte existující spustitelný soubor do Azure Service Fabric | Microsoft Docs
+description: Naučte se, jak zabalit existující aplikaci jako spustitelný soubor hosta, takže se dá nasadit do clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
@@ -13,58 +13,58 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
-ms.author: aljo
-ms.openlocfilehash: bfac14c598b405a398cad916787aa3312589bfd1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 575303cc2ec3e880187bac64da06d05721df14e6
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393528"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599670"
 ---
-# <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Balení a nasazení existujícího spustitelného souboru do Service Fabric
-Při vytváření balíčku existujícího spustitelného souboru jako [spustitelný soubor typu Host](service-fabric-guest-executables-introduction.md), můžete buď použít šablonu projektu sady Visual Studio nebo [ručně vytvořit balíček aplikace](#manually). Pomocí sady Visual Studio, struktury balíček aplikace a soubory manifestu jsou vytvářeny nová šablona projektu pro vás.
+# <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Zabalit a nasadit existující spustitelný soubor pro Service Fabric
+Při balení existující spustitelný soubor jako [hostující spustitelný soubor](service-fabric-guest-executables-introduction.md)můžete zvolit buď použití šablony projektu sady Visual Studio, nebo [Vytvoření balíčku aplikace ručně](#manually). Pomocí sady Visual Studio je vytvořena šablona balíčku aplikace a soubory manifestu, které jsou vytvořeny novou šablonou projektu za vás.
 
 > [!TIP]
-> Nejjednodušší způsob, jak balíček existující spustitelný soubor do služby Windows je použití sady Visual Studio a v Linuxu pomocí Yeomana
+> Nejjednodušší způsob, jak zabalit existující spustitelný soubor systému Windows do služby, je použít sadu Visual Studio a systém Linux pro použití Yeoman
 >
 
-## <a name="use-visual-studio-to-package-and-deploy-an-existing-executable"></a>Zabalení a nasazení existujícího spustitelného souboru pomocí sady Visual Studio
-Visual Studio poskytuje šablony služby Service Fabric vám pomůžou nasadit spustitelný soubor typu Host do clusteru Service Fabric.
+## <a name="use-visual-studio-to-package-and-deploy-an-existing-executable"></a>Použití sady Visual Studio k zabalení a nasazení stávajícího spustitelného souboru
+Visual Studio poskytuje šablonu služby Service Fabric, která vám umožní nasadit spustitelný soubor hosta do clusteru Service Fabric.
 
-1. Zvolte **souboru** > **nový projekt**a vytvářet aplikace Service Fabric.
-2. Zvolte **spustitelný soubor typu Host** jako šablonu služby.
-3. Klikněte na tlačítko **Procházet** vyplňte zbývající parametry pro vytvoření služby a vyberte složku s spustitelný soubor.
-   * *Chování balíčku kódu*. Je možné nastavit ke zkopírování veškerý obsah složky do projektu sady Visual Studio, což je užitečné, pokud spustitelný soubor nezmění. Pokud očekáváte, že spustitelný soubor, měnit a chcete mít možnost, aby se získaly nové buildy dynamicky, můžete místo toho odkaz na složku. Propojené složky můžete používat při vytváření projektu aplikace v sadě Visual Studio. Toto odkazuje na umístění zdroje z v rámci projektu, umožňuje vám aktualizovat spustitelný soubor typu Host do konečného zdroje. Tyto aktualizace se stanou součástí balíčku aplikace na sestavení.
-   * *Program* určuje spustitelného souboru, který má být spuštěna, spusťte službu.
-   * *Argumenty* Určuje argumenty, které by měly být předány spustitelnému souboru. Může být seznam parametrů s argumenty.
-   * *WorkingFolder* určuje pracovní adresář pro proces, který se má spustit. Můžete zadat tři hodnoty:
-     * `CodeBase` Určuje, že v pracovním adresáři bude nastavena na adresář kódu v balíčku aplikace (`Code` adresář se v předchozím struktura souborů).
-     * `CodePackage` Určuje, že v pracovním adresáři bude nastavit do kořenového adresáře balíčku aplikace (`GuestService1Pkg` je znázorněno v předchozí strukturu souborů).
-     * `Work` Určuje, že jsou soubory umístěny v podadresáři volá práce.
+1. Vyberte **soubor** > **Nový projekt**a vytvořte aplikaci Service Fabric.
+2. Jako šablonu služby vyberte **spustitelný soubor typu Host** .
+3. Klikněte na **Procházet** a vyberte složku s vaším spustitelným souborem a vyplňte zbývající parametry a vytvořte službu.
+   * *Chování balíčku kódu*. Může být nastaveno na zkopírování veškerého obsahu vaší složky do projektu aplikace Visual Studio, což je užitečné, pokud se spustitelný soubor nemění. Pokud očekáváte, že se spustitelný soubor změní a chcete, aby se dynamicky vybrala nová sestavení, můžete místo toho použít odkaz na složku. Můžete použít propojené složky při vytváření projektu aplikace v aplikaci Visual Studio. Tato vazba odkazuje na zdrojové umístění v rámci projektu, což vám umožní aktualizovat spustitelný soubor hosta ve zdrojovém cílovém umístění. Tyto aktualizace se stanou součástí balíčku aplikace při sestavení.
+   * *Program* Určuje spustitelný soubor, který se má spustit pro spuštění služby.
+   * *Argumenty* určují argumenty, které se mají předat spustitelnému souboru. Může se jednat o seznam parametrů s argumenty.
+   * *WorkingFolder* určuje pracovní adresář pro proces, který bude spuštěn. Můžete zadat tři hodnoty:
+     * `CodeBase`Určuje, že pracovní adresář bude nastaven na adresář kódu v balíčku aplikace (`Code` adresář zobrazený v předchozí struktuře souborů).
+     * `CodePackage`Určuje, že bude pracovní adresář nastaven na kořen balíčku aplikace (`GuestService1Pkg` zobrazený v předchozí struktuře souborů).
+     * `Work`Určuje, že soubory jsou umístěny v podadresáři s názvem Work.
 4. Zadejte název služby a klikněte na **OK**.
-5. Pokud vaše služba potřebuje koncový bod pro komunikaci, můžete teď přidat protokol, port a typ do souboru ServiceManifest.xml. Například: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
-6. Teď můžete pomocí balíčku a publikování akce na místní cluster laděním řešení v sadě Visual Studio. Až budete připraveni, můžete publikovat aplikaci do vzdáleného clusteru nebo řešení do správy zdrojového kódu se změnami.
-7. Čtení [zkontrolujte spuštěné aplikaci](#check-your-running-application) se dozvíte, jak chcete-li zobrazit vaše služby spustitelné hostem spuštěné v Service Fabric Explorer.
+5. Pokud vaše služba potřebuje koncový bod pro komunikaci, můžete teď do souboru ServiceManifest. XML přidat protokol, port a typ. Například: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
+6. Pomocí ladění řešení v aplikaci Visual Studio teď můžete použít akci balíčku a publikování pro svůj místní cluster. Až budete připraveni, můžete aplikaci publikovat do vzdáleného clusteru nebo vrátit se změnami řešení do správy zdrojového kódu.
+7. Přečtěte si, jak [Spustit aplikaci](#check-your-running-application) , abyste viděli, jak zobrazit službu spustitelných souborů hosta běžící v Service Fabric Explorer.
 
-Návod příkladu najdete v tématu [vytvoření vaší první aplikace spustitelná hostem pomocí sady Visual Studio](quickstart-guest-app.md).
+Ukázkový návod najdete v tématu [Vytvoření první spustitelné aplikace hosta pomocí sady Visual Studio](quickstart-guest-app.md).
 
-## <a name="use-yeoman-to-package-and-deploy-an-existing-executable-on-linux"></a>Pomocí generátoru Yeoman balíčků a nasazení existujícího spustitelného souboru v Linuxu
+## <a name="use-yeoman-to-package-and-deploy-an-existing-executable-on-linux"></a>Zabalení a nasazení stávajícího spustitelného souboru v systému Linux pomocí Yeoman
 
-Postup pro vytvoření a nasazení v Linuxu spustitelného souboru hosta je stejný jako při nasazování aplikace csharp nebo java.
+Postup vytvoření a nasazení spustitelného souboru hosta v systému Linux je stejný jako nasazení aplikace CSharp nebo Java.
 
 1. V terminálu zadejte `yo azuresfguest`.
 2. Pojmenujte svoji aplikaci.
-3. Pojmenujte službu a uveďte podrobnosti, včetně cesta ke spustitelnému souboru a parametry, které se musí volat s.
+3. Pojmenujte službu a zadejte podrobnosti včetně cesty ke spustitelnému souboru a parametrů, které musí být vyvolány pomocí.
 
-Yeoman vytvoří balíček aplikace se příslušná aplikace a soubory manifestu spolu s instalaci a odinstalaci skripty.
+Yeoman vytvoří balíček aplikace s odpovídající aplikací a soubory manifestu spolu s instalačními a odinstalačními skripty.
 
 <a id="manually"></a>
 
-## <a name="manually-package-and-deploy-an-existing-executable"></a>Ručně zabalení a nasazení existujícího spustitelného souboru
-Proces ručně balení spustitelný soubor typu Host jsou založené na těmito obecnými kroky:
+## <a name="manually-package-and-deploy-an-existing-executable"></a>Ruční zabalení a nasazení stávajícího spustitelného souboru
+Proces ručního balení spustitelného souboru hosta je založen na následujících obecných krocích:
 
-1. Vytvoření balíčku adresářovou strukturu.
-2. Přidáte kód a konfigurační soubory aplikace.
+1. Vytvořte adresářovou strukturu balíčku.
+2. Přidejte kód a konfigurační soubory aplikace.
 3. Upravte soubor manifestu služby.
 4. Upravte soubor manifestu aplikace.
 
@@ -72,27 +72,27 @@ Proces ručně balení spustitelný soubor typu Host jsou založené na těmito 
 >[AZURE.NOTE] We do provide a packaging tool that allows you to create the ApplicationPackage automatically. The tool is currently in preview. You can download it from [here](https://aka.ms/servicefabricpacktool).
 -->
 
-### <a name="create-the-package-directory-structure"></a>Vytvoření balíčku adresářovou strukturu
-Začnete vytvořením adresářovou strukturu, jak je popsáno v [balíček aplikace služby Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps).
+### <a name="create-the-package-directory-structure"></a>Vytvořit adresářovou strukturu balíčku
+Můžete začít vytvořením adresářové struktury, jak je popsáno v části [balení aplikace Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps).
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>Přidat kód a konfigurační soubory aplikace
-Po vytvoření adresářové struktury můžete přidat kód aplikace a konfigurační soubory v části kódu a konfiguračním adresáře. Můžete také vytvořit další adresáře souborů nebo podadresáře v adresáři kódu nebo konfigurace.
+Po vytvoření adresářové struktury můžete přidat kód a konfigurační soubory aplikace do adresářů kódu a konfigurace. Můžete také vytvořit další adresáře nebo podadresáře v adresáři Code nebo config.
 
-Service Fabric se `xcopy` obsahu kořenový adresář aplikace, takže není k dispozici žádné předdefinované strukturu použít jiné než vytváření dva hlavní adresáře, kódu a nastavení. (Můžete si vybrat různé názvy potřebujete. Další podrobnosti najdete v další části.)
+Service Fabric provede `xcopy` obsah kořenového adresáře aplikace, takže není k dispozici žádná předdefinovaná struktura, která by používala více než vytváření dvou hlavních adresářů, kódů a nastavení. (Pokud chcete, můžete vybrat jiné názvy. Další podrobnosti najdete v další části.)
 
 > [!NOTE]
-> Ujistěte se, že složku zahrnujete všechny soubory a závislosti, které aplikace potřebuje. Service Fabric překopíruje obsah balíčku aplikace na všech uzlech v clusteru, kam aplikace služeb pro nasazení. Balíček měl obsahovat veškerý kód, který aplikace potřebuje ke spuštění. Nepředpokládejte, že závislosti jsou již nainstalovány.
+> Ujistěte se, že jste zahrnuli všechny soubory a závislosti, které aplikace potřebuje. Service Fabric kopíruje obsah balíčku aplikace na všech uzlech v clusteru, kde se budou nasazovat služby aplikace. Balíček by měl obsahovat veškerý kód, který aplikace potřebuje ke spuštění. Nepředpokládá se, že závislosti jsou již nainstalovány.
 >
 >
 
 ### <a name="edit-the-service-manifest-file"></a>Upravit soubor manifestu služby
-Dalším krokem je upravte soubor manifestu služby a uveďte následující informace:
+Dalším krokem je upravit soubor manifestu služby tak, aby obsahoval následující informace:
 
-* Název typu služby. To je ID, které se Service Fabric používá k identifikaci služby.
-* Příkaz ke spuštění aplikace (ExeHost) použít.
-* Jakýkoli skript, který je potřeba spustit, aby se nastavení aplikace (SetupEntrypoint).
+* Název typu služby. Toto je ID, které Service Fabric používá k identifikaci služby.
+* Příkaz, který se má použít ke spuštění aplikace (ExeHost).
+* Libovolný skript, který je třeba spustit pro nastavení aplikace (SetupEntrypoint).
 
-Následující je příklad `ServiceManifest.xml` souboru:
+Následuje příklad `ServiceManifest.xml` souboru:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -122,28 +122,28 @@ Následující je příklad `ServiceManifest.xml` souboru:
 </ServiceManifest>
 ```
 
-V následujících částech se přenášejí prostřednictvím různých součástí souboru, který je potřeba aktualizovat.
+Následující oddíly přecházejí do různých částí souboru, které je třeba aktualizovat.
 
-#### <a name="update-servicetypes"></a>ServiceType aktualizace
+#### <a name="update-servicetypes"></a>Aktualizovat ServiceType
 ```xml
 <ServiceTypes>
   <StatelessServiceType ServiceTypeName="NodeApp" UseImplicitHost="true" />
 </ServiceTypes>
 ```
 
-* Můžete vybrat libovolný název, který chcete použít pro `ServiceTypeName`. Hodnota se používá v `ApplicationManifest.xml` souboru k identifikaci služby.
-* Zadejte `UseImplicitHost="true"`. Tento atribut oznamuje Service Fabric, že služby jsou založené na samostatnou aplikaci, všechny Service Fabric je potřeba udělat, je spuštění jako proces a monitorovat jeho stav.
+* Můžete vybrat libovolný název, který chcete `ServiceTypeName`. Hodnota se v `ApplicationManifest.xml` souboru používá k identifikaci služby.
+* Zadejte `UseImplicitHost="true"`. Tento atribut oznamuje Service Fabric, že je služba založená na samostatné aplikaci, takže všechny Service Fabric musí udělat, aby je spouštěla jako proces a sledovala svůj stav.
 
-#### <a name="update-codepackage"></a>CodePackage aktualizace
-CodePackage prvek určuje umístění (a verzi) služby v kódu.
+#### <a name="update-codepackage"></a>Aktualizovat CodePackage
+Element CodePackage určuje umístění (a verzi) kódu služby.
 
 ```xml
 <CodePackage Name="Code" Version="1.0.0.0">
 ```
 
-`Name` Element slouží k určení názvu adresáře v balíčku aplikace, která obsahuje služby v kódu. `CodePackage` má také `version` atribut. To lze použít k určení verze kódu a můžete také potenciálně použije pro upgrade služby v kódu s použitím infrastruktury pro správu životního cyklu aplikací v Service Fabric.
+`Name` Prvek slouží k zadání názvu adresáře v balíčku aplikace, který obsahuje kód služby. `CodePackage`má `version` také atribut. To lze použít k určení verze kódu a lze jej také použít k upgradu kódu služby pomocí infrastruktury správy životního cyklu aplikací v Service Fabric.
 
-#### <a name="optional-update-setupentrypoint"></a>Volitelné: Aktualizace SetupEntrypoint
+#### <a name="optional-update-setupentrypoint"></a>Volitelné: Aktualizovat SetupEntrypoint
 ```xml
 <SetupEntryPoint>
    <ExeHost>
@@ -151,13 +151,13 @@ CodePackage prvek určuje umístění (a verzi) služby v kódu.
    </ExeHost>
 </SetupEntryPoint>
 ```
-Prvek SetupEntryPoint slouží k určení spustitelného souboru nebo dávkového souboru, který má být spuštěn, předtím, než se spustí služby v kódu. Je volitelný krok, takže nemusí být zahrnuta, pokud není požadována žádná inicializace. SetupEntryPoint je proveden při každém restartování služby.
+Element SetupEntryPoint slouží k určení libovolného spustitelného souboru nebo dávkového souboru, který by měl být proveden před spuštěním kódu služby. Je to volitelný krok, takže není nutné ho zahrnovat, pokud není nutná inicializace. SetupEntryPoint se spustí pokaždé, když se služba restartuje.
 
-Existuje pouze jednu SetupEntryPoint, instalačních skriptů budou muset být seskupeny do jednoho dávkový soubor, pokud instalační program aplikace vyžaduje několik skriptů. SetupEntryPoint může spustit libovolný typ souborů: spustitelné soubory, dávkové soubory a rutiny prostředí PowerShell. Další podrobnosti najdete v tématu [nakonfigurovat SetupEntryPoint](service-fabric-application-runas-security.md).
+Existuje pouze jeden SetupEntryPoint, takže instalační skripty musí být seskupeny do jednoho dávkového souboru, pokud instalace aplikace vyžaduje více skriptů. SetupEntryPoint může spustit jakýkoli typ souboru: spustitelné soubory, dávkové soubory a rutiny prostředí PowerShell. Další podrobnosti najdete v tématu [Konfigurace SetupEntryPoint](service-fabric-application-runas-security.md).
 
-V předchozím příkladu běží SetupEntryPoint dávkový soubor s názvem `LaunchConfig.cmd` , který je umístěný v `scripts` jedná o podadresář adresáře kódu (za předpokladu, že WorkingFolder prvek je nastaven na hodnotu základu kódu).
+V předchozím příkladu SetupEntryPoint spustí dávkový soubor s názvem `LaunchConfig.cmd` , který je umístěn `scripts` v podadresáři adresáře kódu (za předpokladu, že element WorkingFolder je nastaven na základ kódu).
 
-#### <a name="update-entrypoint"></a>Update EntryPoint
+#### <a name="update-entrypoint"></a>Aktualizovat vstupní bod
 ```xml
 <EntryPoint>
   <ExeHost>
@@ -168,42 +168,42 @@ V předchozím příkladu běží SetupEntryPoint dávkový soubor s názvem `La
 </EntryPoint>
 ```
 
-`EntryPoint` Element v souboru manifestu služby se používá k určení způsobu spuštění služby.
+`EntryPoint` Element v souboru manifestu služby slouží k určení způsobu spuštění služby.
 
-`ExeHost` Prvek Určuje spustitelný soubor (a argumenty), která by měla sloužit ke spuštění služby. Volitelně můžete přidat `IsExternalExecutable="true"` atribut `ExeHost` k označení, že program je externí spustitelného souboru mimo balíček kódu. Například, `<ExeHost IsExternalExecutable="true">`.
+`ExeHost` Element určuje spustitelný soubor (a argumenty), které by měly být použity ke spuštění služby. Volitelně můžete přidat `IsExternalExecutable="true"` `ExeHost` atribut, který označuje, že program je externí spustitelný soubor mimo balíček kódu. Například, `<ExeHost IsExternalExecutable="true">`.
 
-* `Program` Určuje název spustitelného souboru, který by měl spustit službu.
-* `Arguments` zadává argumenty, které by měly být předány spustitelnému souboru. Může být seznam parametrů s argumenty.
-* `WorkingFolder` Určuje pracovní adresář pro proces, který se má spustit. Můžete zadat tři hodnoty:
-  * `CodeBase` Určuje, že v pracovním adresáři bude nastavena na adresář kódu v balíčku aplikace (`Code` adresáře v předchozí strukturu souborů).
-  * `CodePackage` Určuje, že v pracovním adresáři bude nastavit do kořenového adresáře balíčku aplikace (`GuestService1Pkg` v předchozí strukturu souborů).
-    * `Work` Určuje, že jsou soubory umístěny v podadresáři volá práce.
+* `Program`Určuje název spustitelného souboru, který by měl službu spustit.
+* `Arguments`Určuje argumenty, které se mají předat spustitelnému souboru. Může se jednat o seznam parametrů s argumenty.
+* `WorkingFolder`Určuje pracovní adresář pro proces, který se bude spouštět. Můžete zadat tři hodnoty:
+  * `CodeBase`Určuje, že pracovní adresář bude nastaven na adresář kódu v balíčku aplikace (`Code` adresář v předchozí struktuře souborů).
+  * `CodePackage`Určuje, že bude pracovní adresář nastaven na kořen balíčku aplikace (`GuestService1Pkg` v předchozí struktuře souborů).
+    * `Work`Určuje, že soubory jsou umístěny v podadresáři s názvem Work.
 
-WorkingFolder je vhodné nastavit správný pracovního adresáře tak, aby aplikace nebo inicializační skripty lze použít relativní cesty.
+WorkingFolder je užitečné pro nastavení správného pracovního adresáře, aby bylo možné použít relativní cesty buď v rámci aplikace, nebo inicializačních skriptů.
 
-#### <a name="update-endpoints-and-register-with-naming-service-for-communication"></a>Aktualizovat koncové body a registraci ve službě pojmenování pro komunikaci
+#### <a name="update-endpoints-and-register-with-naming-service-for-communication"></a>Aktualizace koncových bodů a registrace u Naming Service pro komunikaci
 ```xml
 <Endpoints>
    <Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" Type="Input" />
 </Endpoints>
 
 ```
-V předchozím příkladu `Endpoint` prvek určuje koncové body, které aplikace může naslouchat. V tomto příkladu Node.js aplikace naslouchá na protokolu http na portu 3000.
+V předchozím příkladu `Endpoint` prvek určuje koncové body, na kterých může aplikace naslouchat. V tomto příkladu aplikace Node. js naslouchá na http na portu 3000.
 
-Kromě toho můžete požádat tak další služby můžete zjistit adresu koncového bodu pro tuto službu publikovat tento koncový bod ke službě pojmenování Service Fabric. To umožňuje, abyste mohli ke komunikaci mezi službami, které jsou spustitelné soubory hosta.
-Adresa koncového bodu publikované má formát `UriScheme://IPAddressOrFQDN:Port/PathSuffix`. `UriScheme` a `PathSuffix` jsou volitelné atributy. `IPAddressOrFQDN` je IP adresa nebo plně kvalifikovaný název domény uzlu získá umístit tento spustitelný soubor a se počítá za vás.
+Kromě toho můžete požádat Service Fabric o publikování tohoto koncového bodu do Naming Service, aby ostatní služby mohly zjistit adresu koncového bodu pro tuto službu. Díky tomu budete moci komunikovat mezi službami, které jsou spustitelnými soubory hosta.
+Adresa publikovaného koncového bodu je ve `UriScheme://IPAddressOrFQDN:Port/PathSuffix`formátu. `UriScheme`a `PathSuffix` jsou volitelné atributy. `IPAddressOrFQDN`je tato IP adresa nebo plně kvalifikovaný název domény uzlu, na který se tento spustitelný soubor umístí, a vypočítává se za vás.
 
-V následujícím příkladu se po nasazení služby v Service Fabric Explorer uvidíte koncový bod podobná `http://10.1.4.92:3000/myapp/` publikována pro instance služby. Nebo pokud je to místní počítač, zobrazí `http://localhost:3000/myapp/`.
+V následujícím příkladu se po nasazení služby v Service Fabric Explorer zobrazí koncový bod podobný `http://10.1.4.92:3000/myapp/` vašemu publikování pro instanci služby. Nebo pokud se jedná o místní počítač, uvidíte `http://localhost:3000/myapp/`.
 
 ```xml
 <Endpoints>
    <Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000"  UriScheme="http" PathSuffix="myapp/" Type="Input" />
 </Endpoints>
 ```
-Můžete použít tyto adresy s [reverzní proxy server](service-fabric-reverseproxy.md) ke komunikaci mezi službami.
+Pomocí těchto adres se reverzním [proxy](service-fabric-reverseproxy.md) můžete komunikovat mezi službami.
 
 ### <a name="edit-the-application-manifest-file"></a>Upravit soubor manifestu aplikace
-Po nakonfigurování `Servicemanifest.xml` souboru, je třeba provést některé změny `ApplicationManifest.xml` zajistit, že se používají služby správný typ a název souboru.
+Po nakonfigurování `Servicemanifest.xml` souboru je třeba provést některé změny v `ApplicationManifest.xml` souboru, aby se zajistilo, že bude použit správný typ služby a název.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -215,7 +215,7 @@ Po nakonfigurování `Servicemanifest.xml` souboru, je třeba provést některé
 ```
 
 #### <a name="servicemanifestimport"></a>ServiceManifestImport
-V `ServiceManifestImport` element, můžete zadat jednu nebo víc služeb, které chcete zahrnout do aplikace. Služby jsou odkazovány pomocí `ServiceManifestName`, který určuje název adresáře, kde `ServiceManifest.xml` se nachází soubor.
+`ServiceManifestImport` V elementu můžete zadat jednu nebo více služeb, které chcete do aplikace zahrnout. Na služby se odkazuje `ServiceManifestName`pomocí nástroje, který určuje název adresáře, `ServiceManifest.xml` ve kterém se soubor nachází.
 
 ```xml
 <ServiceManifestImport>
@@ -224,11 +224,11 @@ V `ServiceManifestImport` element, můžete zadat jednu nebo víc služeb, kter�
 ```
 
 ## <a name="set-up-logging"></a>Nastavení protokolování
-Pro spustitelné soubory hosta je užitečné mít možnost zobrazí protokoly konzoly a zjistěte, pokud aplikace a konfigurační skripty zobrazí případné chyby.
-Přesměrování konzoly se dá nakonfigurovat v `ServiceManifest.xml` soubor pomocí `ConsoleRedirection` elementu.
+U spustitelných souborů hosta je užitečné, abyste viděli protokoly konzoly, abyste zjistili, jestli se v aplikacích a konfiguračních skriptech zobrazují nějaké chyby.
+Přesměrování konzoly lze v `ServiceManifest.xml` souboru nakonfigurovat `ConsoleRedirection` pomocí elementu.
 
 > [!WARNING]
-> Nikdy nepoužívejte zásady přesměrování konzoly v aplikaci, která je nasazená v produkčním prostředí, protože to může mít vliv převzetí služeb při selhání aplikace. *Pouze* používá se pro místní vývoj a ladění.  
+> Nikdy nepoužívejte zásady přesměrování konzoly v aplikaci, která je nasazená v produkčním prostředí, protože to může mít vliv na převzetí služeb při selhání aplikace. Tato operace se používá *pouze* pro účely místního vývoje a ladění.  
 >
 >
 
@@ -243,16 +243,16 @@ Přesměrování konzoly se dá nakonfigurovat v `ServiceManifest.xml` soubor po
 </EntryPoint>
 ```
 
-`ConsoleRedirection` je možné přesměrovat výstup konzoly (stdout i stderr) do pracovního adresáře. To umožňuje ověřit, že neexistují žádné chyby během instalace nebo spuštění aplikace v clusteru Service Fabric.
+`ConsoleRedirection`dá se použít k přesměrování výstupu konzoly (stdout i stderr) do pracovního adresáře. Tato možnost umožňuje ověřit, že během instalace nebo provádění aplikace v clusteru Service Fabric nejsou žádné chyby.
 
-`FileRetentionCount` Určuje, kolik souborů se ukládají do pracovního adresáře. Hodnota 5, například znamená, že soubory protokolu pro předchozí pět spuštění se ukládají v pracovním adresáři.
+`FileRetentionCount`Určuje, kolik souborů je uloženo v pracovním adresáři. Hodnota 5 například znamená, že soubory protokolu pro předchozích pět spuštění jsou uloženy v pracovním adresáři.
 
-`FileMaxSizeInKb` Určuje maximální velikost souboru protokolu.
+`FileMaxSizeInKb`Určuje maximální velikost souborů protokolu.
 
-Soubory protokolu jsou uloženy v jednom z pracovních adresářů služby. Chcete-li určit, kde jsou umístěny soubory, pomocí Service Fabric Explorer rozhodnout, který uzel služby běží na a který pracovní adresář, který se používá. Tento proces se věnujeme dále v tomto článku.
+Soubory protokolu jsou uloženy v jednom z pracovních adresářů služby. Chcete-li zjistit, kde jsou soubory umístěny, použijte Service Fabric Explorer k určení uzlu, na kterém je služba spuštěna, a používaného pracovního adresáře. Tento postup je popsaný dále v tomto článku.
 
 ## <a name="deployment"></a>Nasazení
-Posledním krokem je [při nasazování aplikace](service-fabric-deploy-remove-applications.md). Následující skript prostředí PowerShell ukazuje, jak nasadit aplikaci do místního vývojového clusteru a spusťte novou službu Service Fabric.
+Posledním krokem je [nasazení aplikace](service-fabric-deploy-remove-applications.md). Následující skript prostředí PowerShell ukazuje, jak nasadit aplikaci do místního vývojového clusteru a spustit novou službu Service Fabric.
 
 ```powershell
 
@@ -271,35 +271,35 @@ New-ServiceFabricService -ApplicationName 'fabric:/nodeapp' -ServiceName 'fabric
 ```
 
 >[!TIP]
-> [Komprimovat balíček](service-fabric-package-apps.md#compress-a-package) před kopírováním pro úložiště bitových kopií, pokud balíček je velký nebo má mnoho souborů. Přečtěte si další [tady](service-fabric-deploy-remove-applications.md#upload-the-application-package).
+> [Zkomprimujte balíček](service-fabric-package-apps.md#compress-a-package) před kopírováním do úložiště imagí, pokud je balíček velký nebo obsahuje mnoho souborů. Další informace najdete [tady](service-fabric-deploy-remove-applications.md#upload-the-application-package).
 >
 
-Služba Service Fabric je možné nasadit v různých "konfigurace". Například je možné nasadit jako jeden nebo více instancí, nebo je možné nasadit tak, že existuje jedna instance služby na každém uzlu clusteru Service Fabric.
+Službu Service Fabric je možné nasadit v různých "konfiguracích". Může být například nasazena jako jediná nebo více instancí nebo může být nasazena takovým způsobem, že v každém uzlu Service Fabric clusteru existuje jedna instance služby.
 
-`InstanceCount` Parametr `New-ServiceFabricService` rutina slouží k určení, kolik instancí služby, které má být spuštěna v clusteru Service Fabric. Můžete nastavit `InstanceCount` hodnotu, v závislosti na typu aplikace, kterou nasazujete. Dvě nejběžnější scénáře jsou:
+`InstanceCount` Parametr`New-ServiceFabricService` rutiny slouží k určení, kolik instancí služby by mělo být spuštěno v clusteru Service Fabric. `InstanceCount` Hodnotu lze nastavit v závislosti na typu aplikace, kterou nasazujete. Mezi nejběžnější scénáře patří:
 
-* `InstanceCount = "1"`. V takovém případě je pouze jedna instance služby nasazené v clusteru. Service Fabric Plánovač Určuje, který uzel službu bude možné nasadit na.
-* `InstanceCount ="-1"`. V takovém případě se na všech uzlech v clusteru Service Fabric nasadí jednu instanci služby. Výsledek se nutnosti jeden (a pouze jeden) instance služby pro každý uzel v clusteru.
+* `InstanceCount = "1"`. V tomto případě je v clusteru nasazena pouze jedna instance služby. Plánovač Service Fabric určuje, na kterém uzlu bude služba nasazena.
+* `InstanceCount ="-1"`. V takovém případě se jedna instance služby nasadí na každý uzel v clusteru Service Fabric. Výsledek má jednu (a jenom jednu) instanci služby pro každý uzel v clusteru.
 
-Toto je užitečné konfigurace pro front-endové aplikace (například koncový bod REST), protože klientské aplikace potřebují "připojit" některý z uzlů v clusteru použít koncový bod. Tato konfigurace je také možné po, například všechny uzly clusteru Service Fabric jsou připojené ke službě Vyrovnávání zatížení. Komunikace s klienty lze následně distribuovat napříč službou, na kterém běží na všech uzlech v clusteru.
+Tato konfigurace je užitečná pro aplikace front-end (například koncový bod REST), protože klientské aplikace potřebují připojit k jakémukoli uzlu v clusteru, aby používaly koncový bod. Tato konfigurace se dá použít i v případě, že jsou například všechny uzly Service Fabric clusteru připojené k nástroji pro vyrovnávání zatížení. Provoz klienta je pak možné distribuovat přes službu, která běží na všech uzlech v clusteru.
 
-## <a name="check-your-running-application"></a>Zkontrolujte běžící aplikace
-V Service Fabric Explorer Identifikujte uzlu, kde je služba spuštěna. V tomto příkladu poběží Node1:
+## <a name="check-your-running-application"></a>Kontrolovat spuštěnou aplikaci
+V Service Fabric Explorer určete uzel, ve kterém je služba spuštěná. V tomto příkladu se spouští na Uzel1:
 
-![Uzel, ve kterém je spuštěna služba](./media/service-fabric-deploy-existing-app/nodeappinsfx.png)
+![Uzel, ve kterém je spuštěná služba](./media/service-fabric-deploy-existing-app/nodeappinsfx.png)
 
-Pokud přejdete do uzlu a přejděte do aplikace, se zobrazí informace o základní uzel, včetně jeho umístění na disku.
+Pokud přejdete na uzel a přejdete na aplikaci, zobrazí se základní informace o uzlu včetně umístění na disku.
 
 ![Umístění na disku](./media/service-fabric-deploy-existing-app/locationondisk2.png)
 
-Pokud přejděte do adresáře pomocí Průzkumníka serveru můžete najít pracovní adresář a složka služby protokolu, jak je znázorněno na následujícím snímku obrazovky: 
+Pokud přejdete do adresáře pomocí Průzkumník serveru, můžete najít pracovní adresář a složku protokolu služby, jak je znázorněno na následujícím snímku obrazovky: 
 
 ![Umístění protokolu](./media/service-fabric-deploy-existing-app/loglocation.png)
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak spustitelný soubor typu Host balení a nasazení do Service Fabric. Naleznete v následujících článcích pro související informace a úkoly.
+V tomto článku jste se naučili, jak zabalit spustitelný soubor hosta a nasadit ho do Service Fabric. Související informace a úlohy najdete v následujících článcích.
 
-* [Ukázka pro balení a nasazení hostujícího spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), včetně odkazu na předběžnou verzi nástroje pro balení
-* [Ukázka dvě hosta spustitelných souborů (C# a Node.js) komunikaci přes službu pojmenování pomocí rozhraní REST](https://github.com/Azure-Samples/service-fabric-containers)
+* [Ukázka balení a nasazení spustitelného souboru hosta](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), včetně odkazu na předběžnou verzi nástroje pro balení
+* [Ukázka dvou spustitelných souborů hostaC# (a NodeJS), které komunikují přes službu pojmenování pomocí REST](https://github.com/Azure-Samples/service-fabric-containers)
 * [Nasazení několika hostujících spustitelných souborů](service-fabric-deploy-multiple-apps.md)
 * [Vytvoření první aplikace Service Fabric pomocí sady Visual Studio](service-fabric-tutorial-create-dotnet-app.md)

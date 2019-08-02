@@ -1,18 +1,19 @@
 ---
 title: Příprava serveru DPM pro zálohování úloh do Azure
 description: Úvod k zálohování dat DPM do trezoru služby Azure Recovery Services.
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: kasinh
-ms.openlocfilehash: 09c324fa1c24c56ede431fab8e175b166a52b438
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 0c762054ed0df3a3781dda7057ff8793dbf82565
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466566"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689309"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 

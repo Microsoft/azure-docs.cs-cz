@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 1c30d9e70facaf9ab47bd33e5ca1fc1d35c6c979
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405854"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698291"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument obsahuje seznam některých nejběžnějších omezení Microsoft Azure, která se také někdy označují jako kvóty. Tento dokument v tuto chvíli nepokrývá všechny služby Azure. V průběhu času se seznam rozbalí a aktualizuje, aby pokryl víc služeb.
@@ -48,6 +48,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Automation](#automation-limits)
 * [Azure Cache for Redis](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
+* [Azure Cognitive Services](#azure-cognitive-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
@@ -186,7 +187,7 @@ Následující tabulka se vztahuje na SKU V1, v2, Standard a WAF, pokud není uv
 
 Další informace o limitech účtu úložiště najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle](storage/common/storage-scalability-targets.md).
 
-#### <a name="storage-resource-provider-limits"></a>Omezení poskytovatele prostředků úložiště 
+#### <a name="storage-resource-provider-limits"></a>Omezení poskytovatele prostředků úložiště
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -225,6 +226,9 @@ Další informace najdete v tématu [velikosti virtuálních počítačů](virtu
 
 ### <a name="azure-cloud-services-limits"></a>Omezení Azure Cloud Services
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
+
+### <a name="azure-cognitive-services-limits"></a>Omezení Azure Cognitive Services
+[!INCLUDE [azure-cloud-services-limits](../includes/azure-cognitive-services-limits.md)]
 
 ### <a name="app-service-limits"></a>Omezení App Service
 Následující omezení App Service zahrnují omezení pro Web Apps, Mobile Apps a API Apps.

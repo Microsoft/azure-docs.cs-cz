@@ -1,18 +1,19 @@
 ---
 title: Zálohování farmy služby SharePoint v Azure Stack
 description: Pomocí Azure Backup Server můžete zálohovat a obnovovat data služby SharePoint v Azure Stack. Tento článek poskytuje informace o konfiguraci farmy služby SharePoint, aby bylo možné ukládat požadovaná data do Azure. Chráněná data služby SharePoint můžete obnovit z disku nebo z Azure.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: adigan
-ms.openlocfilehash: 729b21095f14463cb6fb1615a9f61f1189a3bbce
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: ac87fa66b72f2d7eaaf1ae2cd71bfeb827469444
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465183"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688688"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Zálohování farmy služby SharePoint v Azure Stack
 Můžete zálohovat farmu služby SharePoint na Azure Stack a Microsoft Azure pomocí Microsoft Azure Backupho serveru (MABS), a to téměř stejným způsobem jako v případě zálohování jiných zdrojů dat. Azure Backup poskytuje flexibilitu v plánu zálohování k vytvoření denních, týdenních, měsíčních nebo ročních záložních bodů a poskytuje možnosti zásad uchovávání pro různé body zálohování. Poskytuje taky možnost ukládat kopie místních disků pro cíle rychlého obnovení (RTO) a ukládat kopie do Azure pro účely ekonomického a dlouhodobého uchovávání.

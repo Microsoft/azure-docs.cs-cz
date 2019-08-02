@@ -1,44 +1,43 @@
 ---
-title: Vytvořte sdílenou složku Azure file premium
-description: V tomto článku se dozvíte, jak vytvořit sdílenou složku Azure file premium.
-services: storage
+title: Vytvoření sdílené složky Azure Premium
+description: V tomto článku se dozvíte, jak vytvořit sdílenou složku Azure na úrovni Premium.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 63caf9a08acb04bab3712891701d32c21c22e9fc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 223efefde4fc09684504925abd0d8d5ee5e4b5ea
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449906"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699582"
 ---
-# <a name="how-to-create-an-premium-azure-file-share"></a>Jak vytvořit premium sdílené složky Azure
-Premium sdílené složky se nabízejí na úložná média disk SSD (Solid-State Drive) a jsou užitečné pro úlohy náročné na vstupně-výstupních operací, včetně, který je hostitelem databází a vysokovýkonného výpočetního prostředí (HPC). Premium sdílené složky jsou hostované v speciální druhu účtu úložiště, s názvem účet úložiště souborů. Sdílené složky Premium jsou navržené pro vysoký výkon a škálování pro podniky, stálá nízká latence, vysoké IOPS a vysokou propustnost sdílené složky.
+# <a name="how-to-create-an-premium-azure-file-share"></a>Vytvoření sdílené složky Azure Premium
+Soubory úrovně Premium jsou nabízeny na úložném médiu SSD (Solid-State disk) a jsou užitečné pro úlohy náročné na v/v, včetně hostitelských databází a prostředí HPC (High Performance Computing). Soubory úrovně Premium se hostují v typu účtu úložiště zvláštního účelu, který se nazývá účet úložiště. Prémiové sdílené složky jsou navržené pro vysoce výkonné a podnikové aplikace, které poskytují konzistentní nízkou latenci, vysoké IOPS a vysoce propustnost sdílených složek.
 
-V tomto článku se dozvíte, jak vytvořit nový typ účtu pomocí [webu Azure portal](https://portal.azure.com/), prostředí Azure PowerShell a rozhraní příkazového řádku Azure.
+V tomto článku se dozvíte, jak vytvořit tento nový typ účtu pomocí [Azure Portal](https://portal.azure.com/), Azure PowerShell a Azure CLI.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro přístup k prostředkům Azure, včetně premium sdílených složek Azure, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) předtím, než začnete.
+Pokud chcete získat přístup k prostředkům Azure, včetně sdílených složek Azure Premium, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Vytvoření sdílené složky premium pomocí webu Azure portal
+## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Vytvoření sdílené složky Premium pomocí Azure Portal
 
-### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-### <a name="create-a-filestorage-storage-account"></a>Vytvoření účtu úložiště úložiště souborů
+### <a name="create-a-filestorage-storage-account"></a>Vytvoření účtu úložiště úložiště
 
 Nyní jste připraveni vytvořit účet úložiště.
 
-Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure. Skupina prostředků je logický kontejner pro seskupení služeb Azure. Při vytváření účtu úložiště máte možnost buď vytvořit novou skupinu prostředků, nebo použít některou existující skupinu prostředků. Tento článek ukazuje, jak vytvořit novou skupinu prostředků.
+Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure. Skupina prostředků je logický kontejner pro seskupení služeb Azure. Při vytváření účtu úložiště máte možnost buď vytvořit novou skupinu prostředků, nebo použít některou existující skupinu prostředků. V tomto článku se dozvíte, jak vytvořit novou skupinu prostředků.
 
-1. Na webu Azure Portal, vyberte **účty úložiště** v nabídce vlevo.
+1. V Azure Portal v nabídce vlevo vyberte **účty úložiště** .
 
-    ![Hlavní stránky Azure portal vyberte účet úložiště](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
+    ![Azure Portal hlavní stránka – Výběr účtu úložiště](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
 1. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
 1. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
@@ -46,47 +45,47 @@ Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure
 
 1. Dále zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure. Název také musí mít délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.
 1. Vyberte pro svůj účet úložiště nějaké umístění nebo použijte výchozí umístění.
-1. Pro **výkonu** vyberte **Premium**.
-1. Vyberte **druh účtu** a zvolte **úložiště souborů**.
-1. Ponechte **replikace** nastavit na výchozí hodnotu **místně redundantní úložiště (LRS)** .
+1. Pro **výkon** vyberte **Premium**.
+1. Vyberte **druh účtu** a zvolte **úložiště**.
+1. Ponechte **replikační** sadu nastavenou na výchozí hodnotu **místně redundantního úložiště (LRS)** .
 
-    ![Jak vytvořit účet úložiště úrovně premium sdílené složky](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
+    ![Jak vytvořit účet úložiště pro sdílenou složku Premium](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
 1. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
 1. Vyberte **Vytvořit**.
 
-Jakmile se vytvořil váš prostředek účtu úložiště, přejděte na ni.
+Po vytvoření prostředku účtu úložiště přejděte na něj.
 
 ### <a name="create-a-premium-file-share"></a>Vytvoření sdílené složky úrovně Premium
 
-1. V levé nabídce pro účet úložiště, přejděte **Souborová služba** a potom vyberte **soubory**.
-1. Vyberte **+ sdílená** k vytvoření sdílené složky premium.
-1. Zadejte název a požadované kvóty pro svou sdílenou složku a pak vyberte **vytvořit**.
+1. V levé nabídce účtu úložiště přejděte do části **souborové služby** a pak vyberte **soubory**.
+1. Vyberte **+ sdílená složka** , abyste vytvořili soubor úrovně Premium.
+1. Zadejte název a požadovanou kvótu pro sdílenou složku a pak vyberte **vytvořit**.
 
 > [!NOTE]
-> Velikosti zřízené sdílené složky je určená kvóta pro sdílenou složku, sdílené složky se účtují na zřízená velikost, odkazovat [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/files/) další podrobnosti.
+> Zřízené velikosti sdílených složek určuje kvóta sdílené složky. sdílené složky se účtují podle zřízené velikosti. Další podrobnosti najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/storage/files/) .
 
    ![Vytvoření sdílené složky úrovně Premium](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete vyčistit prostředky vytvořené v tomto článku, můžete jednoduše odstranit skupinu prostředků. Odstraněním skupiny prostředků odstraníte také přidružený účet úložiště, stejně jako všechny další prostředky spojené s vybranou skupinou prostředků.
+Pokud chcete vyčistit prostředky vytvořené v rámci tohoto článku, můžete jednoduše odstranit skupinu prostředků. Odstraněním skupiny prostředků se odstraní i přidružený účet úložiště i všechny další prostředky přidružené ke skupině prostředků.
 
-## <a name="create-a-premium-file-share-using-powershell"></a>Vytvoření sdílené složky premium pomocí Powershellu
+## <a name="create-a-premium-file-share-using-powershell"></a>Vytvoření sdílené složky Premium pomocí PowerShellu
 
 ### <a name="create-an-account-using-powershell"></a>Vytvoření účtu pomocí PowerShellu
 
 Nejdřív nainstalujte nejnovější verzi [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget) modulu.
 
-Potom upgradovat modul prostředí powershell, přihlaste se ke svému předplatnému Azure, vytvořte skupinu prostředků a vytvořte účet úložiště.
+Pak upgradujte modul PowerShellu, přihlaste se ke svému předplatnému Azure, vytvořte skupinu prostředků a pak vytvořte účet úložiště.
 
-### <a name="upgrade-your-powershell-module"></a>Upgrade modulu prostředí PowerShell
+### <a name="upgrade-your-powershell-module"></a>Upgrade modulu PowerShellu
 
-K interakci s premium sdílené položky z pomocí Powershellu, budete muset nainstalovat ve verzi modulu Az.Storage 1.4.0 nebo nejnovější modul Az.Storage.
+Pokud chcete s PowerShellem pracovat ve sdílené složce Premium, budete muset nainstalovat modul AZ. Storage verze 1.4.0 nebo nejnovější modul AZ. Storage.
 
 Začněte tak, že otevřete relaci Powershellu se zvýšenými oprávněními.
 
-Instalace modulu Az.Storage:
+Nainstalujte modul AZ. Storage:
 
 ```powershell
 Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
@@ -102,7 +101,7 @@ Connect-AzAccount
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Chcete-li vytvořit novou skupinu prostředků pomocí Powershellu, použijte [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) příkaz:
+Pokud chcete vytvořit novou skupinu prostředků pomocí PowerShellu, použijte příkaz [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) :
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -112,9 +111,9 @@ $location = "westus2"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-### <a name="create-a-filestorage-storage-account"></a>Vytvoření účtu úložiště úložiště souborů
+### <a name="create-a-filestorage-storage-account"></a>Vytvoření účtu úložiště úložiště
 
-Chcete-li vytvořit účet úložiště souborů úložiště z prostředí PowerShell, použijte [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) příkaz:
+K vytvoření účtu úložiště úložiště v prostředí PowerShell použijte příkaz [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) :
 
 ```powershell
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
@@ -122,10 +121,10 @@ $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fil
 
 ### <a name="create-a-premium-file-share"></a>Vytvoření sdílené složky úrovně Premium
 
-Teď, když máte účet úložiště souborů, můžete vytvořit sdílenou složku premium. Použití [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) rutiny k jejímu vytvoření.
+Teď, když máte účet úložiště souborů, můžete vytvořit prémiovou sdílenou složku. Pomocí rutiny [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) ji vytvořte.
 
 > [!NOTE]
-> Velikosti zřízené sdílené složky je určená kvóta pro sdílenou složku, sdílené složky se účtují na zřízená velikost, odkazovat [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/files/) další podrobnosti.
+> Zřízené velikosti sdílených složek určuje kvóta sdílené složky. sdílené složky se účtují podle zřízené velikosti. Další podrobnosti najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/storage/files/) .
 
 ```powershell
 New-AzStorageShare `
@@ -135,17 +134,17 @@ New-AzStorageShare `
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Chcete-li odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkaz: 
+Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) : 
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="create-a-premium-file-share-using-azure-cli"></a>Vytvoření sdílené složky premium pomocí Azure CLI
+## <a name="create-a-premium-file-share-using-azure-cli"></a>Vytvoření sdílené složky Premium pomocí Azure CLI
 
-Pokud chcete spustit Azure Cloud Shell, přihlaste se k [webu Azure portal](https://portal.azure.com).
+Pokud chcete začít Azure Cloud Shell, přihlaste se k [Azure Portal](https://portal.azure.com).
 
-Pokud se chcete přihlásit k místní instalaci rozhraní příkazového řádku, nejprve zkontrolujte, zda že máte nejnovější verzi, spusťte přihlašovací příkaz:
+Pokud se chcete přihlásit k místní instalaci rozhraní příkazového řádku, nejprve se ujistěte, že máte nejnovější verzi, a potom spusťte příkaz pro přihlášení:
 
 ```cli
 az login
@@ -161,9 +160,9 @@ az group create `
     --location westus2
 ```
 
-### <a name="create-a-filestorage-storage-account"></a>Vytvoření účtu úložiště úložiště souborů
+### <a name="create-a-filestorage-storage-account"></a>Vytvoření účtu úložiště úložiště
 
-Chcete-li vytvořit účet úložiště souborů úložiště z příkazového řádku Azure, použijte [vytvořit účet úložiště az](/cli/azure/storage/account) příkazu.
+Pokud chcete vytvořit účet úložiště úložiště v Azure CLI, použijte příkaz [AZ Storage Account Create](/cli/azure/storage/account) .
 
 ```azurecli-interactive
 az storage account create `
@@ -176,7 +175,7 @@ az storage account create `
 
 ### <a name="get-the-storage-account-key"></a>Získání klíče účtu úložiště
 
-Klíče účtu úložiště řídí přístup k prostředkům v účtu úložiště, v tomto článku, chcete-li vytvořit sdílenou složku premium používáme klíč. Vytváří se automaticky při vytvoření účtu úložiště. Klíče vašeho účtu úložiště můžete získat pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys):
+Klíče účtu úložiště řídí přístup k prostředkům v účtu úložiště. v tomto článku používáme tento klíč, aby bylo možné vytvořit prémiovou sdílenou složku. Vytváří se automaticky při vytvoření účtu úložiště. Klíče vašeho účtu úložiště můžete získat pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys):
 
 ```azurecli-interactive 
 STORAGEKEY=$(az storage account keys list \
@@ -187,10 +186,10 @@ STORAGEKEY=$(az storage account keys list \
 
 ### <a name="create-a-premium-file-share"></a>Vytvoření sdílené složky úrovně Premium
 
-Teď, když máte účet úložiště souborů, můžete vytvořit sdílenou složku premium. Použití [vytvořit sdílenou složku úložiště az](/cli/azure/storage/share) příkaz k jejímu vytvoření.
+Teď, když máte účet úložiště souborů, můžete vytvořit prémiovou sdílenou složku. Pomocí příkazu [AZ Storage Share Create](/cli/azure/storage/share) vytvořte jednu z nich.
 
 > [!NOTE]
-> Velikosti zřízené sdílené složky je určená kvóta pro sdílenou složku, sdílené složky se účtují na zřízená velikost, odkazovat [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/files/) další podrobnosti.
+> Zřízené velikosti sdílených složek určuje kvóta sdílené složky. sdílené složky se účtují podle zřízené velikosti. Další podrobnosti najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/storage/files/) .
 
 ```azurecli-interactive
 az storage share create \
@@ -209,7 +208,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste vytvořili sdílenou složku premium. Další informace o výkonu, které nabízí tento účet, pokračujte k části úroveň výkonu příručky plánování.
+V tomto článku jste vytvořili prémiovou sdílenou složku. Pokud se chcete dozvědět o výkonu, který tento účet nabízí, přejděte do části úroveň výkonu v příručce pro plánování.
 
 > [!div class="nextstepaction"]
-> [Úrovně výkonu sdílené složky souborů](storage-files-planning.md#file-share-performance-tiers)
+> [Úrovně výkonu sdílení souborů](storage-files-planning.md#file-share-performance-tiers)

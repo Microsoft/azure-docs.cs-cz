@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 206a8d9ba45dcb948dfffff86bab17b58a33e464
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7d1bce7575272b7df185c4e261685d989f49436c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358613"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716536"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
 
@@ -151,3 +151,9 @@ Pokud provádíte operaci správy na výpočetním cíli ze vzdálené úlohy, z
 ```
 
 Například se zobrazí chyba, pokud se pokusíte vytvořit nebo připojit výpočetní cíl z kanálu ML, který je odeslán pro vzdálené spuštění.
+
+## <a name="overloaded-azurefile-storage"></a>Přetížené úložiště AzureFile
+
+Pokud se zobrazí chyba "nepovedlo se odeslat soubory projektu do pracovního adresáře v AzureFile, protože úložiště je přetížené", použijte následující alternativní řešení.
+
+Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos dat, doporučuje se použít objekty blob, aby bylo možné používat pro odeslání spuštění sdílení souborů. Úlohy můžete rozdělit také mezi dva různé pracovní prostory.

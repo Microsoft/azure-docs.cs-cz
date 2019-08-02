@@ -1,20 +1,19 @@
 ---
 title: Plánování úloh pomocí Azure IoT Hub (Python) | Microsoft Docs
 description: Jak naplánovat úlohu Azure IoT Hub k vyvolání přímé metody na více zařízeních. Sady SDK Azure IoT pro Python slouží k implementaci aplikací simulovaného zařízení a aplikace služby ke spuštění úlohy.
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 02/16/2019
-ms.author: kgremban
-ms.openlocfilehash: f4a7cbb5c4f8f4a019cbf5d63a6f2ffe8092546e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 07/30/2019
+ms.author: robinsh
+ms.openlocfilehash: 81b2145e6107558f2d9698c7e5d03658f1129b00
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405893"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667928"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Úlohy plánování a vysílání (Python)
 
@@ -48,16 +47,14 @@ Na konci tohoto kurzu máte dvě aplikace v Pythonu:
 
 **scheduleJobService.py**, která volá přímou metodu v aplikaci simulovaného zařízení a aktualizuje požadované vlastnosti pro vyplňování zařízení pomocí úlohy.
 
-Pro absolvování tohoto kurzu potřebujete:
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-* [Python 2. x nebo 3. x](https://www.python.org/downloads/). Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. Po zobrazení výzvy v průběhu instalace nezapomeňte přidat Python do proměnné prostředí pro konkrétní platformu. Pokud používáte Python 2.x, možná bude nutné [nainstalovat nebo upgradovat *pip*, systém správy balíčků Pythonu](https://pip.pypa.io/en/stable/installing/).
+Níže jsou uvedené pokyny k instalaci požadovaných součástí.
 
-* Pokud používáte operační systém Windows, je k povolení používání nativních knihoven DLL z Pythonu potřeba [balíček distribuovatelných součástí Visual C++](https://www.microsoft.com/download/confirmation.aspx?id=48145).
-
-* Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 > [!NOTE]
-> **Sada Azure IoT SDK pro Python** nepodporuje přímo funkce **úloh** . Místo toho tento kurz nabízí alternativní řešení, které využívá asynchronní vlákna a časovače. Další aktualizace najdete na stránce funkce **sady SDK klienta služby** na stránce [Azure IoT SDK pro Python](https://github.com/Azure/azure-iot-sdk-python) . 
+> **Sada Azure IoT SDK pro Python** nepodporuje přímo funkce **úloh** . Místo toho tento kurz nabízí alternativní řešení, které využívá asynchronní vlákna a časovače. Další aktualizace najdete na stránce funkce **sady SDK klienta služby** na stránce [Azure IoT SDK pro Python](https://github.com/Azure/azure-iot-sdk-python) .
 >
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
@@ -325,7 +322,7 @@ Nyní můžete spustit aplikace.
 
     ![Ukázka úlohy IoT Hub 2 – výstup zařízení](./media/iot-hub-python-python-schedule-jobs/sample2-deviceoutput.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste použili úlohu k naplánování přímé metody na zařízení a aktualizaci vlastností vlákna zařízení.
 

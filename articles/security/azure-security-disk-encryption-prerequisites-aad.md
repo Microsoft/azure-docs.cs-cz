@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5fa8e54a6a665b1bad91a87ca8e58f873df1ae8a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d7226e10140cba768486a770237f61fce8598f58
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672321"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609935"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Požadavky Azure Disk Encryption (předchozí verze)
 
@@ -24,7 +24,7 @@ Dříve než povolíte pro podporované scénáře, které byly zmíněny v Azur
 
 > [!WARNING]
 > - Některá doporučení může zvýšit dat, sítě nebo výpočetní využití prostředků, což vede k další náklady na licence nebo předplatné. Musíte mít aktivní předplatné Azure platnou k vytváření prostředků v Azure v podporovaných oblastech.
-> - Pokud jste už dřív použili [Azure Disk Encryption pomocí Azure AD app](azure-security-disk-encryption-prerequisites-aad.md) pro šifrování tento virtuální počítač, budete muset pokračovat tuto možnost použijte k šifrování virtuálního počítače. Nemůžete použít [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) na tento šifrovaný virtuální počítač jako tato akce není podporovaný scénář význam přepnutí mimo aplikaci AAD pro tento šifrovaný virtuální počítač se zatím nepodporuje. 
+> - Pokud jste už dříve použili [Azure Disk Encryption se službou Azure AD](azure-security-disk-encryption-prerequisites-aad.md) k šifrování tohoto virtuálního počítače, budete muset tuto možnost použít k ZAšifrování virtuálního počítače. V tomto šifrovaném virtuálním počítači nemůžete použít [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) , protože se nejedná o podporovaný scénář, což znamená, že pro tento zašifrovaný virtuální počítač se zatím nepodporuje přepínání z aplikace AAD. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,57 +32,57 @@ Dříve než povolíte pro podporované scénáře, které byly zmíněny v Azur
 
 ### <a name="windows"></a>Windows
 
-- Klient Windows: Windows 8 nebo novější.
-- Windows Server: Windows Server 2008 R2 nebo novější.  
+- Klient Windows: Windows 8 a novější.
+- Windows Server: Windows Server 2008 R2 a novější.  
  
 > [!NOTE] 
-> Windows Server 2008 R2 vyžaduje rozhraní .NET Framework 4.5 nainstalované pro šifrování. Nainstalujte ji z webu Windows Update, s volitelnou aktualizaci Microsoft .NET Framework 4.5.2 x64 systémů Windows Server 2008 R2 ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983)).  
+> Systém Windows Server 2008 R2 vyžaduje instalaci .NET Framework 4,5 pro šifrování; nainstalujte ji z web Windows Update s volitelnou aktualizací Microsoft .NET Framework 4.5.2 pro systémy Windows Server 2008 R2 x64 ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983)).  
 >  
-> Jádro systému Windows Server 2012 R2 a Windows Server 2016 Core vyžaduje bdehdcfg součásti nainstalovat na virtuální počítač pro šifrování.
+> Windows Server 2012 R2 Core a Windows Server 2016 Core vyžadují, aby byla na virtuálním počítači nainstalovaná součást BdeHdCfg pro šifrování.
 
 ### <a name="linux"></a>Linux 
 
-Azure Disk Encryption je podporována u podmnožiny [distribucí Linuxu schválených pro Azure](../virtual-machines/linux/endorsed-distros.md), což je podmnožina všech možných distribucí systému Linux server.
+Azure Disk Encryption je podporovaná u podmnožiny [distribucí systému Linux schváleného službou Azure](../virtual-machines/linux/endorsed-distros.md), což je podmnožina všech možných distribucí serveru se systémem Linux.
 
-![Diagram Vennův nejrůznějších distribucí systému Linux serverem, které podporují Azure Disk Encryption](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
+![Vennův diagram distribucí serveru Linux, které podporují Azure Disk Encryption](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
 
-Server distribucí systému Linux, které nejsou schválené pro Azure nepodporují Azure Disk Encryption a těch, které jsou schválené pro, podporují pouze následující distribucích a verzích Azure Disk Encryption:
+Distribuce serverů Linux, které nejsou schválené v Azure, nepodporují Azure Disk Encryption a, z nichž jsou schválené, Azure Disk Encryption podporují jenom následující distribuce a verze:
 
 | Linuxové distribuce | Verze | Typ svazku podporovaný pro šifrování|
 | --- | --- |--- |
-| Ubuntu | 18.04| Disk operačního systému a dat |
+| Ubuntu | 18,04| Disk operačního systému a dat |
 | Ubuntu | 16.04| Disk operačního systému a dat |
-| Ubuntu | 14.04.5</br>[s Azure vyladěný jádra aktualizovat, aby 4.15 nebo novější](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Disk operačního systému a dat |
-| RHEL | 7.6 | Disk s operačním systémem a daty (viz poznámka níže) |
-| RHEL | 7.5 | Disk s operačním systémem a daty (viz poznámka níže) |
-| RHEL | 7.4 | Disk s operačním systémem a daty (viz poznámka níže) |
-| RHEL | 7.3 | Disk s operačním systémem a daty (viz poznámka níže) |
-| RHEL | 7.2 | Disk s operačním systémem a daty (viz poznámka níže) |
+| Ubuntu | 14.04.5</br>[s vyladěným jádrem Azure se aktualizovala na 4,15 nebo novější.](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Disk operačního systému a dat |
+| RHEL | 7,6 | Operační systém a datový disk (viz poznámka níže) |
+| RHEL | 7.5 | Operační systém a datový disk (viz poznámka níže) |
+| RHEL | 7.4 | Operační systém a datový disk (viz poznámka níže) |
+| RHEL | 7.3 | Operační systém a datový disk (viz poznámka níže) |
+| RHEL | 7.2 | Operační systém a datový disk (viz poznámka níže) |
 | RHEL | 6.8 | Datový disk (viz poznámka níže) |
 | RHEL | 6.7 | Datový disk (viz poznámka níže) |
-| CentOS | 7.6 | Disk operačního systému a dat |
+| CentOS | 7,6 | Disk operačního systému a dat |
 | CentOS | 7.5 | Disk operačního systému a dat |
 | CentOS | 7.4 | Disk operačního systému a dat |
 | CentOS | 7.3 | Disk operačního systému a dat |
 | CentOS | 7.2N | Disk operačního systému a dat |
 | CentOS | 6.8 | Datový disk |
-| openSUSE | 42.3 | Datový disk |
+| openSUSE | 42,3 | Datový disk |
 | SLES | 12-SP4 | Datový disk |
 | SLES | 12-SP3 | Datový disk |
 
 > [!NOTE]
-> Novou implementaci ADE se podporuje pro RHEL operačního systému a datovým diskem pro Image s průběžnými platbami RHEL7. ADE není aktuálně podporována pro Image RHEL přenést-Your-vlastní – předplatné (BYOS). Zobrazit [Azure Disk Encryption pro Linux](azure-security-disk-encryption-linux.md) Další informace.
+> Nová implementace ADE je podporovaná pro RHEL operační systém a datový disk pro Image RHEL7 s průběžnými platbami. ADE se v současné době nepodporuje pro image RHEL s využitím vlastních předplatných (BYOS). Další informace najdete v tématu [Azure Disk Encryption pro Linux](azure-security-disk-encryption-linux.md) .
 
 - Azure Disk Encryption vyžaduje, aby váš trezor klíčů a virtuální počítače jsou umístěny ve stejné oblasti Azure a předplatné. Konfigurace prostředků v oblastech způsobí selhání při povolování funkce Azure Disk Encryption.
 
-#### <a name="additional-prerequisites-for-linux-iaas-vms"></a>Další požadavky pro virtuální počítače IaaS s Linuxem 
+#### <a name="additional-prerequisites-for-linux-iaas-vms"></a>Další požadavky pro virtuální počítače s IaaS Linux 
 
-- Azure Disk Encryption vyžaduje dm-crypt a moduly vfat bude k dispozici v systému. Odebrání nebo zakázání vfat z výchozí bitové kopie, nebudou moct systém čtení klíče svazku a získání klíče potřebné pro odemknutí disky na následné restartování. Kroků posílení zabezpečení systému, které modul vfat odebrat ze systému nejsou kompatibilní s Azure Disk Encryption. 
-- Před povolením šifrování, třeba správně zobrazeny v /etc/fstab datových disků k šifrování. Použijte název zařízení trvalé bloku pro tuto položku jako zařízení, které názvy ve formátu "/ dev/sdX" nelze spoléhat na přidruženy stejném disku mezi restartováními, zejména po šifrování se použije. Další podrobnosti o tomto chování najdete v článku: [Řešení potíží s změny názvu zařízení virtuálního počítače s Linuxem](../virtual-machines/linux/troubleshoot-device-names-problems.md)
+- Azure Disk Encryption vyžaduje, aby byly v systému přítomné moduly dm-crypt a vfat. Odebráním nebo zakázáním VFAT z výchozí image znemožníte systému číst klíč a získat klíč potřebný k odemknutí disků při dalším restartování. Kroky pro posílení zabezpečení systému, které odebírají modul VFAT ze systému, nejsou kompatibilní s Azure Disk Encryption. 
+- Před povolením šifrování, třeba správně zobrazeny v /etc/fstab datových disků k šifrování. Použijte název zařízení trvalé bloku pro tuto položku jako zařízení, které názvy ve formátu "/ dev/sdX" nelze spoléhat na přidruženy stejném disku mezi restartováními, zejména po šifrování se použije. Další podrobnosti o tomto chování najdete v těchto tématech: [Řešení potíží se změnami názvu zařízení virtuálních počítačů se systémem Linux](../virtual-machines/linux/troubleshoot-device-names-problems.md)
 - Ujistěte se, že nastavení /etc/fstab jsou správně nakonfigurovány pro připojení. Tato nastavení nakonfigurujete, spusťte připojení – příkaz nebo restartujte virtuální počítač a aktivuje tímto způsobem opětovné připojení. Jakmile, která se dokončí, zkontrolujte výstup příkazu lsblk k ověření, že na jednotce je pořád připojený. 
   - Pokud soubor /etc/fstab není správně připojit jednotku před povolením šifrování, Azure Disk Encryption nebude možné ji správně připojit.
   - Azure Disk Encryption proces přesune informace připojení mimo /etc/fstab a do jeho vlastní konfigurační soubor jako součást procesu šifrování. Není možné dospod vidět, že položka chybí /etc/fstab po data šifrování jednotky dokončí.
-  - Před spuštěním šifrování, je potřeba zastavit všechny služby a procesy, které může být zápis do připojené datové disky a zakázat tak, aby jejich Nerestartovat automaticky po restartu. Toto může udržují soubory otevřené v těchto oddílech, brání proces šifrování nepokusil, což způsobí selhání šifrování. 
+  - Před zahájením šifrování nezapomeňte zastavit všechny služby a procesy, které by mohly být zapsány do připojených datových disků, a zakázat je, aby se po restartování nerestartoval automaticky. V těchto oddílech můžou být soubory otevřené a brání tak postupu šifrování je znovu připojit, což způsobí selhání šifrování. 
   - Po restartování počítače bude trvat dobu procesu Azure Disk Encryption pro připojení nově šifrovanými disky. Bude okamžitě k dispozici po restartu. Proces potřebuje čas ke spuštění, odemčení a pak připojte šifrované jednotky, teprve pak ji bude k dispozici pro jiné procesy pro přístup k. Tento proces může trvat déle než minutu po restartování počítače v závislosti na charakteristikách systému.
 
 Příklad příkazy, které je možné připojit datové disky a vytvořte nezbytné/etc/fstab položky lze nalézt v [řádky 244 248 tohoto souboru skriptu](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248). 
@@ -111,14 +111,14 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
 **Zásady skupiny:**
  - Řešení Azure Disk Encryption používá ochrana externí klíče nástroje BitLocker pro virtuální počítače IaaS s Windows. Pro virtuální počítače připojené k doméně, push nemáte žádné zásady skupiny, které vynucují ochrany pomocí čipu TPM. Informace o zásadách skupiny na "Povolit BitLocker bez kompatibilního čipu TPM" najdete v tématu [odkaz zásad skupiny Bitlockeru](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
--  Zásady nástroje BitLocker na virtuálních počítačích připojených k doméně pomocí zásad vlastní skupiny, musí obsahovat následující nastavení: [Konfigurace úložiště uživatele bitlockeru informace recovery -> Povolit 256bitový obnovovací klíč](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption selže, když jsou nekompatibilní nastavení zásad vlastní skupiny pro BitLocker. Na počítačích, které nebyly k dispozici nastavení správné zásady, použijí nové zásady vynutí nové zásady aktualizace (gpupdate.exe/Force) a následného restartování může být nutné.  
+-  Zásady BitLockeru na virtuálních počítačích připojených k doméně s vlastními zásadami skupiny musí zahrnovat toto nastavení: [Konfigurace uživatelského úložiště informací pro obnovení BitLockeru – > povoluje 256 obnovovací klíč](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption se nezdaří, pokud vlastní nastavení zásad skupiny pro BitLocker nejsou kompatibilní. Na počítačích, které nebyly k dispozici nastavení správné zásady, použijí nové zásady vynutí nové zásady aktualizace (gpupdate.exe/Force) a následného restartování může být nutné.  
 
 
 ## <a name="bkmk_PSH"></a> Prostředí Azure PowerShell
-[Prostředí Azure PowerShell](/powershell/azure/overview) poskytuje sadu rutin, které používá [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md) modelu pro správu vašich prostředků Azure. Můžete ho použít ve svém prohlížeči prostřednictvím [Azure Cloud Shell](../cloud-shell/overview.md), nebo ho můžete nainstalovat na místním počítači použít v jakékoli relaci Powershellu pomocí následujícího postupu. Pokud už ho máte nainstalovaný místně, ujistěte se, že používáte nejnovější verzi Azure Powershellu ke konfiguraci Azure Disk Encryption.
+[Prostředí Azure PowerShell](/powershell/azure/overview) poskytuje sadu rutin, které používá [Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md) modelu pro správu vašich prostředků Azure. Můžete ho použít ve svém prohlížeči prostřednictvím [Azure Cloud Shell](../cloud-shell/overview.md), nebo ho můžete nainstalovat na místním počítači použít v jakékoli relaci Powershellu pomocí následujícího postupu. Pokud jste ho už nainstalovali místně, ujistěte se, že používáte nejnovější verzi Azure PowerShell ke konfiguraci Azure Disk Encryption.
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Instalace Azure Powershellu pro použití v místním počítači (volitelné):  
-1. [Instalace a konfigurace Azure Powershellu](/powershell/azure/install-az-ps). 
+1. [Instalace a konfigurace Azure PowerShell](/powershell/azure/install-az-ps). 
 
 2. Nainstalujte [modul Powershellu pro Azure Active Directory](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module). 
 
@@ -131,7 +131,7 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
       Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
       Get-Module AzureAD -ListAvailable | Select-Object -Property Name,Version,Path
       ```
-4. Přihlaste se k Azure s využitím [připojit AzAccount](/powershell/module/az.accounts/connect-azaccount) rutiny.
+4. Přihlaste se k Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
      
      ```powershell
      Connect-AzAccount
@@ -183,7 +183,7 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
 
 ## <a name="prerequisite-workflow-for-key-vault-and-the-azure-ad-app"></a>Požadované pracovní postup pro Key Vault a aplikace Azure AD
 
-Pokud jste již obeznámeni s požadavky pro Azure Disk Encryption Key Vault a Azure AD, můžete použít [skript prostředí PowerShell pro Azure Disk Encryption požadované součásti](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Další informace o používání skriptu požadavky najdete v článku [šifrování virtuálního počítače Quickstart](quick-encrypt-vm-powershell.md) a [Azure Disk Encryption příloha](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
+Pokud jste již obeznámeni s požadavky pro Azure Disk Encryption Key Vault a Azure AD, můžete použít [skript prostředí PowerShell pro Azure Disk Encryption požadované součásti](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Další informace o používání skriptu požadavky najdete v článku [šifrování virtuálního počítače Quickstart](fundamentals/quick-encrypt-vm-powershell.md) a [Azure Disk Encryption příloha](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
 
 1. Vytvoření trezoru klíčů 
 2. Nastavení aplikace Azure AD a instanční objekt služby.
@@ -200,17 +200,17 @@ Azure Disk Encryption je integrovaná s [Azure Key Vault](https://azure.microsof
 
 ### <a name="bkmk_KVPSH"></a> Vytvoření služby key vault pomocí Powershellu
 
-Můžete vytvořit trezor klíčů s použitím prostředí Azure PowerShell [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault) rutiny. Další rutiny pro Key Vault najdete v části [Az.KeyVault](/powershell/module/az.keyvault/). 
+Trezor klíčů můžete vytvořit s Azure PowerShell pomocí rutiny [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault) . Další rutiny pro Key Vault najdete v tématu [AZ. klíčů trezor](/powershell/module/az.keyvault/). 
 
 1. V případě potřeby [připojit ke svému předplatnému Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH). 
-2. V případě potřeby vytvořte novou skupinu prostředků s [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup).  Seznam datacentrum v umístění, použijte [Get-AzLocation](/powershell/module/az.resources/get-azlocation). 
+2. V případě potřeby vytvořte novou skupinu prostředků s [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup).  K vypsání umístění datového centra použijte [příkaz Get-AzLocation](/powershell/module/az.resources/get-azlocation). 
      
      ```azurepowershell-interactive
      # Get-AzLocation 
      New-AzResourceGroup –Name 'MyKeyVaultResourceGroup' –Location 'East US'
      ```
 
-3. Vytvoření nové služby key vault pomocí [AzKeyVault nový](/powershell/module/az.keyvault/New-azKeyVault)
+3. Vytvoření nového trezoru klíčů pomocí [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault)
     
       ```azurepowershell-interactive
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
@@ -254,7 +254,7 @@ Pokud je třeba šifrování, aby byla povolená na spuštěný virtuální poč
 Spusťte následující příkazy, získat a používat [modulu Azure AD PowerShell](/powershell/azure/active-directory/install-adv2). 
 
 1. V případě potřeby [připojit ke svému předplatnému Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH).
-2. Použití [New-AzADApplication](/powershell/module/az.resources/new-azadapplication) rutiny prostředí PowerShell k vytvoření aplikace Azure AD. MyApplicationHomePage a MyApplicationUri můžou být všechny hodnoty, kterou požadujete.
+2. K vytvoření aplikace Azure AD použijte rutinu [New-AzADApplication](/powershell/module/az.resources/new-azadapplication) prostředí PowerShell. MyApplicationHomePage a MyApplicationUri můžou být všechny hodnoty, kterou požadujete.
 
      ```azurepowershell
      $aadClientSecret = "My AAD client secret"
@@ -268,7 +268,7 @@ Spusťte následující příkazy, získat a používat [modulu Azure AD PowerSh
 
 ### <a name="bkmk_ADappCLI"></a> Nastavení aplikace Azure AD a služby instančního objektu pomocí Azure CLI
 
-Můžete spravovat vaše instančních objektů s použitím rozhraní příkazového řádku Azure [az ad sp](/cli/azure/ad/sp) příkazy. Další informace najdete v tématu [vytvoření instančního objektu Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
+Můžete spravovat vaše instančních objektů s použitím rozhraní příkazového řádku Azure [az ad sp](/cli/azure/ad/sp) příkazy. Další informace najdete v tématu [Vytvoření instančního objektu Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 1. V případě potřeby [připojit ke svému předplatnému Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
 2. Vytvořte nový instanční objekt.
@@ -285,18 +285,18 @@ Pomocí postupu z [použití portálu k vytvoření aplikace Azure Active Direct
 2. [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
      - Můžete použít libovolný název a adresu URL, které chcete při vytváření aplikace přihlašování.
 3. [Získání ID aplikace a ověřovací klíč](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in). 
-     - Ověřovací klíč je tajný kód klienta a slouží jako AadClientSecret pro Set-AzVMDiskEncryptionExtension. 
+     - Ověřovací klíč je tajný klíč klienta a používá se jako AadClientSecret pro set-AzVMDiskEncryptionExtension. 
         - Ověřovací klíč se používá aplikace jako přihlašovací údaje pro přihlášení k Azure AD. Na webu Azure Portal tento tajný kód se nazývá klíče, ale nemá žádný vztah k trezorům klíčů. Zabezpečte tento tajný kód správně. 
-     - ID aplikace se později použije jako AadClientId pro Set-AzVMDiskEncryptionExtension a atribut ServicePrincipalName pro Set-AzKeyVaultAccessPolicy. 
+     - ID aplikace bude použito později jako AadClientId pro set-AzVMDiskEncryptionExtension a jako ServicePrincipalName pro set-AzKeyVaultAccessPolicy. 
 
 ## <a name="bkmk_KVAP"></a> Nastavit zásady přístupu trezoru klíčů pro aplikace Azure AD
 K šifrování tajných kódů zápisu do zadané služby Key Vault, musí Azure Disk Encryption ID klienta a tajný kód klienta aplikace Azure Active Directory, který má oprávnění k zápisu tajných klíčů do služby Key Vault. 
 
 > [!NOTE]
-> Azure Disk Encryption je potřeba nakonfigurovat následující zásady přístupu pro klientské aplikace Azure AD: _WrapKey_ a _nastavit_ oprávnění.
+> Azure Disk Encryption vyžaduje, abyste v klientské aplikaci Azure AD nakonfigurovali následující zásady přístupu: _WrapKey_ a _nastavte_ oprávnění.
 
 ### <a name="bkmk_KVAPPSH"></a> Nastavit zásady přístupu trezoru klíčů pro aplikace Azure AD pomocí Azure Powershellu
-Vaše aplikace Azure AD potřebuje oprávnění pro přístup k klíčů nebo tajných klíčů v trezoru. Použití [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) rutiny k udělení oprávnění k aplikaci pomocí ID klienta (který se vygeneroval při aplikace byl zaregistrován) jako _– ServicePrincipalName_ Hodnota parametru. Další informace najdete v blogovém příspěvku [Azure Key Vault – krok za krokem](https://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx). 
+Vaše aplikace Azure AD potřebuje oprávnění pro přístup k klíčů nebo tajných klíčů v trezoru. Pomocí rutiny [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) udělte aplikaci oprávnění pomocí ID klienta (které bylo vygenerováno při registraci aplikace) jako hodnoty parametru _– servicePrincipalName_ . Další informace najdete v blogovém příspěvku [Azure Key Vault – krok za krokem](https://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx). 
 
 1. V případě potřeby [připojit ke svému předplatnému Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH).
 2. Nastavte zásady přístupu trezoru klíčů pro aplikaci AD pomocí prostředí PowerShell.
@@ -335,21 +335,21 @@ Použití [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) n
 Platforma Azure potřebuje přístup k šifrování klíčů nebo tajných klíčů v trezoru klíčů, aby byly k dispozici pro virtuální počítač pro spuštění a dešifrování svazky. Povolit šifrování disku v trezoru klíčů nebo nasazení se nezdaří.  
 
 ### <a name="bkmk_KVperPSH"></a> Nastavení trezoru klíčů pokročilé zásady přístupu pomocí Azure Powershellu
- Použijte rutinu prostředí PowerShell služby key vault [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) povolit šifrování disku pro trezor klíčů.
+ Pomocí rutiny PowerShellu pro Trezor klíčů [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) Povolte šifrování disku pro Trezor klíčů.
 
-  - **Povolení služby Key Vault pro šifrování disku:** EnabledForDiskEncryption je vyžadován pro Azure Disk encryption.
+  - **Povolit Key Vault pro šifrování disku:** EnabledForDiskEncryption se vyžaduje pro Azure Disk Encryption.
       
      ```azurepowershell-interactive 
      Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForDiskEncryption
      ```
 
-  - **Povolení služby Key Vault pro nasazení, v případě potřeby:** Umožňuje zprostředkovateli prostředků Microsoft.Compute. k načítání tajných kódů z trezoru klíčů, když tento trezor klíčů se odkazuje v vytváření prostředků, například při vytváření virtuálního počítače.
+  - **V případě potřeby povolte Key Vault pro nasazení:** Povolí poskytovateli prostředků Microsoft. COMPUTE načíst tajné kódy z tohoto trezoru klíčů, když se na tento trezor klíčů odkazuje při vytváření prostředků, například při vytváření virtuálního počítače.
 
      ```azurepowershell-interactive
       Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForDeployment
      ```
 
-  - **Povolení služby Key Vault pro šablonu nasazení, v případě potřeby:** Umožňuje získat tajné kódy z trezoru klíčů při tento trezor klíčů se odkazuje v nasazení šablony Azure Resource Manageru.
+  - **V případě potřeby povolte Key Vault pro nasazení šablony:** Umožňuje Azure Resource Manager získávat tajné klíče z tohoto trezoru klíčů, když se tento trezor klíčů odkazuje v nasazení šablony.
 
      ```azurepowershell-interactive             
      Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForTemplateDeployment
@@ -358,18 +358,18 @@ Platforma Azure potřebuje přístup k šifrování klíčů nebo tajných klí�
 ### <a name="bkmk_KVperCLI"></a> Nastavení trezoru klíčů pokročilé zásady přístupu pomocí Azure CLI
 Použití [az keyvault update](/cli/azure/keyvault#az-keyvault-update) povolit šifrování disku pro trezor klíčů. 
 
- - **Povolení služby Key Vault pro šifrování disku:** Povolené pro šifrování disků je povinný. 
+ - **Povolit Key Vault pro šifrování disku:** Je nutné povolit šifrování disku. 
 
      ```azurecli-interactive
      az keyvault update --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --enabled-for-disk-encryption "true"
      ```  
 
- - **Povolení služby Key Vault pro nasazení, v případě potřeby:** Povolit virtuální počítače k načítání certifikátů uložených jako tajné kódy z trezoru.
+ - **V případě potřeby povolte Key Vault pro nasazení:** Povolí Virtual Machines načtení certifikátů uložených jako tajných klíčů z trezoru.
      ```azurecli-interactive
      az keyvault update --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --enabled-for-deployment "true"
      ``` 
 
- - **Povolení služby Key Vault pro šablonu nasazení, v případě potřeby:** Povolit správce prostředků k načítání tajných kódů z trezoru.
+ - **V případě potřeby povolte Key Vault pro nasazení šablony:** Povolí Správce prostředků načtení tajných kódů z trezoru.
      ```azurecli-interactive  
      az keyvault update --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --enabled-for-template-deployment "true"
      ```
@@ -386,9 +386,9 @@ Použití [az keyvault update](/cli/azure/keyvault#az-keyvault-update) povolit �
 
 
 ## <a name="bkmk_KEK"></a> Nastavit šifrovací klíč klíče (volitelné)
-Pokud chcete použít šifrovací klíč klíče (KEK) pro další úroveň zabezpečení pro šifrovací klíče, přidejte do trezoru klíčů KEK. Použití [přidat AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) rutina pro vytvoření šifrovací klíč klíče v trezoru klíčů. Můžete také importovat KEK z vaší místní správy k klíče HSM. Další informace najdete v tématu [dokumentace ke službě Key Vault](../key-vault/key-vault-hsm-protected-keys.md). Pokud je zadaný šifrovací klíč klíče, Azure Disk Encryption používá tento klíč k šifrování tajných kódů zabalení před zápisem do služby Key Vault. 
+Pokud chcete použít šifrovací klíč klíče (KEK) pro další úroveň zabezpečení pro šifrovací klíče, přidejte do trezoru klíčů KEK. Pomocí rutiny [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) vytvořte šifrovací klíč klíče v trezoru klíčů. Můžete také importovat KEK z vaší místní správy k klíče HSM. Další informace najdete v tématu [dokumentace ke službě Key Vault](../key-vault/key-vault-hsm-protected-keys.md). Pokud je zadaný šifrovací klíč klíče, Azure Disk Encryption používá tento klíč k šifrování tajných kódů zabalení před zápisem do služby Key Vault. 
 
-* Při generování klíčů, použijte typ klíče RSA. Azure Disk Encryption zatím nepodporuje používání klíčů eliptické křivky.
+* Při generování klíčů použijte typ klíče RSA. Azure Disk Encryption zatím nepodporuje používání klíčů eliptické křivky.
 
 * Tajný kód trezoru klíčů a adres URL KEK musí být označené verzí. Azure vynucuje toto omezení správy verzí. Platný tajný kód a adresy URL KEK viz následující příklady:
 

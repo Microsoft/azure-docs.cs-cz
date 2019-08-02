@@ -1,33 +1,33 @@
 ---
-title: Vytváření a správa Azure Database pro koncové body služby virtuální sítě MariaDB a pravidla pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
-description: Tento článek popisuje, jak vytvářet a spravovat databáze Azure pro koncové body služby virtuální sítě MariaDB a pravidla pomocí příkazového řádku Azure CLI.
+title: Vytváření a správa koncových bodů a pravidel služby VNet Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Tento článek popisuje, jak vytvořit a spravovat Azure Database for MariaDB koncových bodů a pravidel služby VNet pomocí příkazového řádku Azure CLI.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: a86b755770dc59f196c57f1d86e7f29200ce25e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e0f2bb19e5c753c5b327781774d3fd96ec58592
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171473"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609843"
 ---
-# <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Vytvoření a správě Azure Database for koncových bodů služby virtuální sítě MariaDB pomocí rozhraní příkazového řádku Azure
+# <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Vytvoření a správa koncových bodů služby virtuální sítě Azure Database for MariaDB pomocí Azure CLI
 
-Koncové body služeb virtuální sítě (VNet) a pravidla rozšiřují privátní adresní prostor virtuální sítě k Azure Database pro MariaDB server. Pomocí pohodlné příkazů rozhraní příkazového řádku Azure (CLI), můžete vytvářet, aktualizovat, odstraňovat, seznamu a zobrazit koncové body služby virtuální sítě a pravidla ke správě serveru. Přehled služby Azure Database pro koncové body služby virtuální sítě MariaDB, včetně omezení, naleznete v tématu [– Azure Database for koncové body služby virtuální sítě serveru MariaDB](concepts-data-access-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve všech podporovaných oblastí pro službu Azure Database pro MariaDB.
+Koncovými body a pravidly služby Virtual Network (VNet) přesahují privátní adresní prostor Virtual Network na server Azure Database for MariaDB. Pomocí praktických příkazů rozhraní příkazového řádku Azure (CLI) můžete vytvářet, aktualizovat, odstraňovat, vypisovat a zobrazovat koncové body a pravidla služby virtuální sítě pro správu serveru. Přehled koncových bodů služby virtuální sítě Azure Database for MariaDB, včetně omezení, najdete v tématu [koncové body služby virtuální sítě v Azure Database for MariaDB serveru](concepts-data-access-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve všech podporovaných oblastech pro Azure Database for MariaDB.
 
 ## <a name="prerequisites"></a>Požadavky
-Pro jednotlivé kroky v této příručce s postupy, musíte:
-- Nainstalujte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) nebo použít Azure Cloud Shell v prohlížeči.
-- [– Azure Database pro MariaDB serveru a databáze](quickstart-create-mariadb-server-database-using-azure-cli.md).
+Pokud chcete projít tento průvodce, budete potřebovat:
+- Nainstalujte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) nebo použijte Azure Cloud Shell v prohlížeči.
+- [Server a databáze Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-cli.md).
 
 > [!NOTE]
 > Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
 
 ## <a name="configure-vnet-service-endpoints"></a>Konfigurace koncových bodů služby virtuální sítě
-[Az network vnet](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest) příkazy se používají ke konfiguraci virtuální sítě.
+Příkazy [AZ Network VNet](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest) se používají ke konfiguraci virtuálních sítí.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -44,20 +44,20 @@ Pokud máte více předplatných, vyberte odpovídající předplatné, ve kter�
 
 - Účet musí mít potřebná oprávnění k vytvoření virtuální sítě a koncového bodu služby.
 
-Koncové body služby může být ve virtuálních sítích nezávisle na sobě konfigurovat uživatel s oprávněním k zápisu do virtuální sítě.
+Koncové body služby je možné konfigurovat na virtuálních sítích nezávisle na uživateli s oprávněním k zápisu do virtuální sítě.
 
-Svázat prostředky služeb Azure k virtuální síti, uživatel musí mít pro přidávané podsítě oprávnění "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/". Toto oprávnění je ve výchozím nastavení součástí předdefinovaných rolí správců služeb a může se upravit vytvořením vlastních rolí.
+Aby bylo možné zabezpečit prostředky služeb Azure pro virtuální síť, musí mít uživatel pro přidávané podsítě oprávnění k Microsoft. Network/virtualNetworks/subnets/joinViaServiceEndpoint/. Toto oprávnění je ve výchozím nastavení součástí předdefinovaných rolí správců služeb a může se upravit vytvořením vlastních rolí.
 
 Další informace o [předdefinovaných rolích](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) a přiřazení konkrétních oprávnění k [vlastním rolím](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles).
 
-Virtuální sítě a prostředky služeb Azure můžou být ve stejném předplatném nebo v různých předplatných. Pokud virtuální síť a prostředky služeb Azure v různých předplatných, by měl být prostředky ve stejném tenantovi Active Directory (AD).
+Virtuální sítě a prostředky služeb Azure můžou být ve stejném předplatném nebo v různých předplatných. Pokud jsou virtuální síť a prostředky služeb Azure v různých předplatných, musí být prostředky ve stejném tenantovi Active Directory (AD). Zajistěte, aby oba odběry měly zaregistrovaný poskytovatel prostředků **Microsoft. SQL** . Další informace najdete v tématu [Resource-Manager – registrace][resource-manager-portal] .
 
 > [!IMPORTANT]
-> Důrazně doporučujeme v tomto článku o konfigurace koncového bodu služby a důležité informace před konfigurací koncových bodů služby. **Koncový bod pro služby virtuální sítě:** A [koncový bod služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md) je podsíť, jejichž hodnoty vlastností zahrnují jeden nebo víc názvů typu formální služby Azure. Koncové body služeb virtuální sítě použít název typu služby **Microsoft.Sql**, která odkazuje na službu Azure SQL Database s názvem. Tuto značku služby platí také pro Azure SQL Database, Azure Database pro MariaDB, PostgreSQL a MySQL služby. Je důležité při použití zásad skupiny pamatujte **Microsoft.Sql** značka služby do koncového bodu služby virtuální sítě konfiguruje provoz koncový bod služby pro všechny služby Azure Database, včetně Azure SQL Database, Azure Database for PostgreSQL Azure Database pro MariaDB a Azure Database for MySQL servery na podsíti.
+> Před konfigurací koncových bodů služby se důrazně doporučuje přečíst si tento článek o konfiguracích koncových bodů a požadavcích služby. **Koncový bod služby Virtual Network:** [Koncový bod služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md) je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. Koncové body služeb virtuální sítě používají název typu služby **Microsoft. SQL**, který odkazuje na službu Azure s názvem SQL Database. Tato značka služby se vztahuje také na služby Azure SQL Database, Azure Database for MariaDB, PostgreSQL a MySQL. Je důležité si uvědomit, že pokud použijete značku služby **Microsoft. SQL** pro koncový bod služby virtuální sítě, nakonfiguruje se přenos koncových bodů služby pro všechny služby Azure Database, včetně Azure SQL Database, Azure Database for PostgreSQL, Azure Database for. MariaDB a Azure Database for MySQL servery v podsíti.
 
 ### <a name="sample-script"></a>Ukázkový skript
 
-Tento ukázkový skript slouží k vytvoření serveru Azure Database for MariaDB, vytvořte virtuální síť, koncový bod služby virtuální sítě a zabezpečení serveru k podsíti se pravidlo virtuální sítě. V tomto ukázkovém skriptu změňte uživatelské jméno admin a heslo. Nahraďte ID předplatného použité v `az account set --subscription` příkaz vlastní identifikátor předplatného.
+Tento ukázkový skript slouží k vytvoření serveru Azure Database for MariaDB, vytvoření virtuální sítě a koncového bodu služby virtuální sítě a zabezpečení serveru v podsíti s pravidlem virtuální sítě. V tomto ukázkovém skriptu změňte uživatelské jméno a heslo správce. Nahraďte SubscriptionId použitou v `az account set --subscription` příkazu vlastním identifikátorem předplatného.
 
 ```azurecli-interactive
 # To find the name of an Azure region in the CLI run this command: az account list-locations
@@ -131,3 +131,6 @@ az group delete --name myresourcegroup
 <!--
 [!code-azurecli-interactive[main](../../cli_scripts/mysql/create-mysql-server-vnet/delete-mysql.sh "Delete the resource group.")]
 -->
+
+<!-- Link references, to text, Within this same GitHub repo. --> 
+[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md

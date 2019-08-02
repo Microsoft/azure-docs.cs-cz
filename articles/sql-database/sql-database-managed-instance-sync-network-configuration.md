@@ -1,6 +1,6 @@
 ---
-title: Azure App Service – synchronizace konfigurace sítě | Dokumentace Microsoftu
-description: Tento článek popisuje, jak synchronizovat konfiguraci sítě pro plán hostování služby Azure App Service.
+title: Azure App Service – synchronizace konfigurace sítě | Microsoft Docs
+description: Tento článek popisuje, jak synchronizovat konfiguraci sítě pro Azure App Service plán hostování.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,41 +10,40 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
 ms.date: 12/13/2018
-ms.openlocfilehash: 0d7920080fd61389741fbe785f5141003bef5251
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 920851e33255b0bcb5b085c541ae636c5988be72
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61314665"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567311"
 ---
-# <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Synchronizace konfigurace sítí pro plán hostování služby Azure App Service
+# <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Synchronizace konfigurace sítě pro plán hostování Azure App Service
 
-To může stát, že i když jste [vaší aplikace integrované s Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md), nelze navázat připojení k Managed Instance. Jednou z věcí, které můžete zkusit se aktualizovat konfiguraci sítě pro váš plán služby.
+Může dojít k tomu, že i když jste [aplikaci integrovanou do Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md), nemůžete navázat připojení ke spravované instanci. Jednou z věcí, které můžete vyzkoušet, je aktualizovat konfiguraci sítě pro svůj plán služby.
 
-## <a name="sync-network-configuration-for-app-service-hosting-plan"></a>Synchronizace konfigurace sítě pro plán hostování služby App Service
+## <a name="sync-network-configuration-for-app-service-hosting-plan"></a>Synchronizace konfigurace sítě pro plán hostování App Service
 
 Provedete to podle těchto kroků:  
 
-1. Přejděte na web apps plán služby App Service.
+1. Přejít do svého plánu App Service Web Apps.
 
-   ![plán služby App service](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
+   ![plán služby App Service](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
 
-2. Klikněte na tlačítko **sítě** a potom klikněte na tlačítko **kliknutím sem můžete spravovat**.
+2. Klikněte na **sítě** a potom klikněte na **tlačítko pro správu**.
 
-   ![Správa plánu služby](./media/sql-database-managed-instance-sync-networking/manage-plan.png)
+   ![Správa plánu služeb](./media/sql-database-managed-instance-sync-networking/manage-plan.png)
 
-3. Vyberte vaše **VNet** a klikněte na tlačítko **synchronizovat síť**.
+3. Vyberte **virtuální síť** a klikněte na **synchronizovat síť**.
 
-   ![Synchronizovat síť](./media/sql-database-managed-instance-sync-networking/sync.png)
+   ![synchronizovat síť](./media/sql-database-managed-instance-sync-networking/sync.png)
 
 4. Počkejte na dokončení synchronizace.
   
-   ![synchronizace provádí](./media/sql-database-managed-instance-sync-networking/sync-done.png)
+   ![synchronizace dokončena](./media/sql-database-managed-instance-sync-networking/sync-done.png)
 
-Nyní jste připraveni pokusí znovu navázat připojení k Managed Instance.
+Teď jste připraveni zkusit znovu navázat připojení ke svojí spravované instanci.
 
 ## <a name="next-steps"></a>Další postup
 
-- Informace o konfiguraci virtuální sítě pro Managed Instance najdete v tématu [Managed Instance VNet architektura](sql-database-managed-instance-connectivity-architecture.md) a [konfigurace stávající virtuální síť](sql-database-managed-instance-configure-vnet-subnet.md).
+- Informace o konfiguraci virtuální sítě pro spravovanou instanci najdete v tématu [Architektura VNet spravované instance](sql-database-managed-instance-connectivity-architecture.md) a [Jak konfigurovat stávající virtuální síť](sql-database-managed-instance-configure-vnet-subnet.md).

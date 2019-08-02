@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
 ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68381829"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Použití GPU pro úlohy náročné na výpočetní výkon ve službě Azure Kubernetes Service (AKS)
@@ -20,7 +20,7 @@ ms.locfileid: "68381829"
 Grafické procesory (GPU) se často používají pro úlohy náročné na výpočetní výkon, jako jsou například úlohy grafiky a vizualizace. AKS podporuje vytváření fondů uzlů s podporou GPU pro spouštění těchto úloh náročných na výpočetní výkon v Kubernetes. Další informace o dostupných virtuálních počítačích s podporou GPU najdete [v tématu velikosti virtuálních počítačů optimalizované pro GPU v Azure][gpu-skus]. Pro uzly AKS doporučujeme minimální velikost *Standard_NC6*.
 
 > [!NOTE]
-> Virtuální počítače s podporou GPU obsahují specializovaný hardware, který je předmětem vyšší ceny a dostupnosti oblastí. Další informace najdete v tématu [ceny][azure-pricing] tool and [region availability][azure-availability].
+> Virtuální počítače s podporou GPU obsahují specializovaný hardware, který je předmětem vyšší ceny a dostupnosti oblastí. Další informace najdete v tématu dostupnost nástroje pro [ceny][azure-pricing] a [oblasti][azure-availability].
 
 V současné době jsou fondy uzlů s podporou GPU dostupné jenom pro fondy uzlů Linux.
 

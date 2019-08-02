@@ -1,82 +1,78 @@
 ---
-title: Místní brána dat
-description: Je nutné v případě, že váš server Analysis Services v Azure se připojí k místním zdrojům dat místní bránou.
+title: Místní brána dat pro Azure Analysis Services | Microsoft Docs
+description: Místní brána je nutná v případě, že se Server Analysis Services v Azure připojí k místním zdrojům dat.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 190394481f17310784f87c9e2f642eeea0b2597f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b783e6b709700104985ef3f052443cf1284bf2d6
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062238"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678393"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
-Místní brána dat zajišťuje zabezpečený přenos dat mezi místním zdrojům dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery služby Azure Analysis Services ve stejné oblasti, nejnovější verzi brány také funguje s Azure Logic Apps, Power BI, Powerapps a Microsoft Flow. Více služeb ve stejném předplatném a stejné oblasti můžete přidružit jednu bránu. 
 
-Získání první nastavení brány je složené ze čtyř částí procesu:
+Místní brána dat zajišťuje zabezpečený přenos dat mezi místními zdroji dat a servery Azure Analysis Services v cloudu. Kromě práce s více Azure Analysis Services servery ve stejné oblasti funguje nejnovější verze brány také s Azure Logic Apps, Power BI, Power Apps a Microsoft Flow. K jedné bráně můžete přidružit více služeb ve stejném předplatném a stejné oblasti. Brána, kterou nainstalujete, je stejná pro všechny tyto služby, Azure Analysis Services a Logic Apps mít ještě nějaké další kroky.
 
-- **Stáhněte si a spusťte instalační program** – tento krok nainstaluje služba brány na počítači ve vaší organizaci. Také přihlásit k Azure pomocí účtu ve vaší [tenanta](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure AD. Azure B2B účty (Host) nejsou podporovány.
+V případě Azure Analysis Services se při prvním procesu čtyř částí získá instalační program s bránou.
 
-- **Mohli bránu registrovat** – v tomto kroku, zadejte název a obnovení klíče pro bránu a vyberte oblast, bránu zaregistrovali na cloudové službě brány. Váš prostředek brány mohou být registrovány v libovolné oblasti, ale doporučujeme, aby že měla být ve stejné oblasti jako váš Server Analysis Services. 
+- **Stažení a spuštění instalačního programu** – tento krok nainstaluje službu brány do počítače ve vaší organizaci. Přihlásíte se také k Azure pomocí účtu v Azure AD vašeho [tenanta](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) . Účty Azure B2B (Guest) se nepodporují.
 
-- **Vytváření prostředku brány v Azure** – v tomto kroku vytvoříte prostředek brány ve vašem předplatném Azure.
+- **Registrace brány** – v tomto kroku zadáte název a obnovovací klíč pro bránu a vyberete oblast a zaregistrujete bránu do cloudové služby brány. Prostředek brány je možné zaregistrovat v libovolné oblasti, ale doporučujeme, aby byl ve stejné oblasti jako servery Analysis Services. 
 
-- **Připojte své servery k prostředku brány** – Jakmile se prostředek brány v rámci vašeho předplatného, můžete začít k němu připojuje vaše servery. Pokud jsou ve stejném předplatném a stejné oblasti se můžete připojit víc serverů a dalších prostředků.
+- **Vytvoření prostředku brány v Azure** – v tomto kroku vytvoříte prostředek brány ve svém předplatném Azure.
 
-Abyste mohli hned začít, najdete v článku [instalace a konfigurace místní brány dat](analysis-services-gateway-install.md).
+- **Připojte své servery k prostředku brány** – Jakmile máte prostředek brány v předplatném, můžete k němu začít připojit své servery. Můžete propojit víc serverů a dalších prostředků, pokud jsou ve stejném předplatném a stejné oblasti.
 
 ## <a name="how-it-works"> </a>Jak to funguje
-Nainstalujte do počítače ve vaší organizaci brána běží jako služba Windows **On-premises data gateway**. Tuto službu je zaregistrován Cloudová služba brány přes Azure Service Bus. Potom vytvořte prostředek brány Cloudová služba brány pro vaše předplatné Azure. Vaše servery Azure Analysis Services jsou připojena k prostředku brány. Pokud modely na serveru musí připojovat k místním datům zdroje pro dotazy nebo zpracování, prochází skrz prostředku brány, Azure Service Bus, službu místní brány dat a zdrojů dat tok dotazy a data. 
+Bránu, kterou nainstalujete do počítače ve vaší organizaci, se spouští jako služba systému Windows, místní **Brána dat**. Tato místní služba je zaregistrovaná v cloudové službě brány prostřednictvím Azure Service Bus. Pak vytvoříte prostředek místní brány dat pro vaše předplatné Azure. Vaše Azure Analysis Services servery se pak připojí k vašemu prostředku brány Azure. Když se modely na vašem serveru potřebují připojovat k místním zdrojům dat pro dotazy nebo zpracování, dotaz a tok dat procházejí prostředek brány, Azure Service Bus, místní služby místní brány dat a zdroji dat. 
 
 ![Jak to funguje](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
 Dotazy a tok dat:
 
-1. Vytvoří dotaz je Cloudová služba s zašifrované přihlašovací údaje pro zdroj dat místní. Pak zasláním do fronty pro zpracování branou.
-2. Cloudová služba brány dotaz analyzuje a pošle žádost do [Azure Service Bus](https://azure.microsoft.com/documentation/services/service-bus/).
-3. Místní brána dat dotazuje Azure Service Bus na čekající žádosti.
-4. Brána získá dotaz, dešifruje přihlašovací údaje a připojí ke zdrojům dat pomocí těchto přihlašovacích údajů.
-5. Brána odešle dotaz na zdroj dat pro spuštění.
-6. Výsledky se odesílají ze zdroje dat zpět do brány a potom do cloudové služby a vaším serverem.
+1. Cloudová služba vytvoří dotaz s šifrovanými přihlašovacími údaji pro místní zdroj dat. Pak se pošle do fronty, kterou brána zpracuje.
+2. Cloudová služba brány dotaz analyzuje a odešle požadavek do [Azure Service Bus](https://azure.microsoft.com/documentation/services/service-bus/).
+3. Místní brána dat se dotáže Azure Service Bus na nevyřízené žádosti.
+4. Brána získá dotaz, dešifruje přihlašovací údaje a připojí se ke zdrojům dat pomocí těchto přihlašovacích údajů.
+5. Brána odešle dotaz do zdroje dat ke spuštění.
+6. Výsledky se odešlou ze zdroje dat zpátky do brány a potom do cloudové služby a vašeho serveru.
 
-## <a name="windows-service-account"> </a>Účet služby Windows
-Místní brána dat je nakonfigurován na použití *NT SERVICE\PBIEgwService* přihlašovací údaje služby Windows. Ve výchozím nastavení má právo přihlášení jako služba, v kontextu počítače, na kterém bránu instalujete. Tento přihlašovací údaj se stejný účet pro připojení k místním zdrojům dat nebo účtu Azure.  
+## <a name="installing"></a>Probíhá instalace.
 
-Pokud narazíte na problémy s proxy serverem způsobené ověřováním, můžete změnit účet služby Windows uživatele domény nebo účet spravované služby.
+Při instalaci pro prostředí Azure Analysis Services je důležité postupovat podle kroků popsaných v tématu [instalace a konfigurace místní brány dat pro Azure Analysis Services](analysis-services-gateway-install.md). Tento článek je určený pro Azure Analysis Services. Obsahuje další kroky potřebné k nastavení místního prostředku brány dat v Azure a připojení serveru Azure Analysis Services k prostředku.
 
-## <a name="ports"> </a>Porty
-Brána vytvoří odchozí připojení ke službě Azure Service Bus. Komunikuje na odchozích portech: TCP 443 (výchozí), 5671, 5672, 9350 až 9354.  Brána nevyžaduje příchozí porty.
+## <a name="ports-and-communication-settings"></a>Nastavení portů a komunikace
 
-Doporučujeme povolit IP adresy pro vaši oblast v bráně firewall. Můžete stáhnout [seznam IP adres Datacentra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Tento seznam se každý týden aktualizuje.
+Brána vytvoří odchozí připojení k Azure Service Bus. Komunikuje na odchozích portech: TCP 443 (výchozí), 5671, 5672, 9350 až 9354.  Brána nevyžaduje příchozí porty.
 
-> [!NOTE]
-> Uvedené v seznamu IP adres Azure Datacenter IP adresy jsou v zápisu CIDR. Další informace najdete v tématu [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
->
->
+Možná budete muset v bráně firewall povolit IP adresy pro vaši oblast dat. [Seznam IP adres Microsoft Azure datacentra](https://www.microsoft.com/download/details.aspx?id=41653)si můžete stáhnout. Tento seznam se každý týden aktualizuje. IP adresy, které jsou uvedené v seznamu IP adres datového centra Azure, jsou v notaci CIDR. Další informace najdete v tématu [směrování mezi doménami bez třídy](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
-Následují plně kvalifikované názvy domény používá brána.
+Níže jsou uvedené plně kvalifikované názvy domény používané bránou.
 
 | Názvy domén | Odchozí porty | Popis |
 | --- | --- | --- |
-| *.powerbi.com |80 |Pro stažení instalačního programu se používá HTTP. |
+| *.powerbi.com |80 |Protokol HTTP použitý ke stažení instalačního programu. |
 | *.powerbi.com |443 |HTTPS |
 | *.analysis.windows.net |443 |HTTPS |
-| *.login.windows.net |443 |HTTPS |
-| *.servicebus.windows.net |5671-5672 |Pokročilé řízení front zpráv (AMQP) protokolu |
-| *.servicebus.windows.net |443, 9350-9354 |Naslouchací procesy u služby Service Bus Relay přes TCP (vyžaduje port 443 pro získání tokenu služby Access Control) |
+| *. login.windows.net, login.live.com, aadcdn.msauth.net |443 |HTTPS |
+| *.servicebus.windows.net |5671-5672 |Rozšířený protokol řízení front zpráv (AMQP) (AMQP) |
+| *.servicebus.windows.net |443, 9350-9354 |Naslouchací procesy v Service Bus Relay přes TCP (vyžaduje 443 pro získání tokenu Access Control) |
 | *.frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *.msftncsi.com |443 |Použít k testování připojení k Internetu, pokud brána není dostupná ve službě Power BI. |
-| *.microsoftonline-p.com |443 |Slouží k ověření v závislosti na konfiguraci. |
+| *.msftncsi.com |443 |Používá se k otestování připojení k Internetu, pokud je brána nedosažitelná služba Power BI. |
+| *.microsoftonline-p.com |443 |Používá se pro ověřování v závislosti na konfiguraci. |
+| dc.services.visualstudio.com  |443 |Používá se v AppInsights ke shromáždění telemetrie. |
 
-### <a name="force-https"></a>Vynucení komunikaci přes protokol HTTPS s Azure Service Bus
-Můžete přinutit bránu komunikovat se službou Azure Service Bus pomocí protokolu HTTPS místo přímé TCP; však to uděláte tak může výrazně snížit výkon. Můžete upravit *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* souboru tak, že změníte hodnotu z `AutoDetect` k `Https`. Tento soubor se obvykle nachází ve *C:\Program Files\On-premises data gateway*.
+### <a name="force-https"></a>Vynucení komunikace pomocí protokolu HTTPS s Azure Service Bus
+
+Bráně můžete vynutit komunikaci s Azure Service Bus pomocí protokolu HTTPS místo přímého protokolu TCP; Nicméně to může významně snížit výkon. Soubor *Microsoft. PowerBI. datamove. Pipeline. GatewayCore. dll. config* můžete upravit změnou hodnoty z `AutoDetect` na. `Https` Tento soubor se obvykle nachází v adresáři *C:\Program Files\On-premises data Gateway*.
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -84,103 +80,15 @@ Můžete přinutit bránu komunikovat se službou Azure Service Bus pomocí prot
 </setting>
 ```
 
-## <a name="tenant-level-administration"></a>Správa na úrovni tenantů 
+## <a name="next-steps"></a>Další postup 
 
-Aktuálně neexistuje žádné jedno místo, kde můžou správci tenantů spravovat všechny brány, které nainstalovali a nakonfigurovali ostatní uživatelé.  Pokud jste správcem tenanta, doporučujeme že požádat uživatele ve vaší organizaci, aby vás přidal jako správce každé brány, kterou nainstalují. To vám umožní spravovat všechny brány ve vaší organizaci prostřednictvím stránky nastavení brány nebo prostřednictvím [příkazy prostředí PowerShell](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters). 
+V části místní brána dat je součástí obecného obsahu, který se vztahuje na všechny služby, které brána podporuje:
 
-
-## <a name="faq"></a>Nejčastější dotazy
-
-### <a name="general"></a>Obecné
-
-**Q**: Potřebuji bránu pro zdroje dat v cloudu, jako je Azure SQL Database? <br/>
-**A**: Ne. Brána je nezbytná pro připojení k místním zdrojům dat pouze.
-
-**Q**: Má brána nainstalovat ve stejném počítači jako zdroj dat? <br/>
-**A**: Ne. Brána musí pouze připojení k serveru, obvykle ve stejné síti.
-
-<a name="why-azure-work-school-account"></a>
-
-**Q**: Proč je potřeba použít pracovní nebo školní účet pro přihlášení? <br/>
-**A**: Při instalaci na místní bránu dat, můžete použít pouze organizace pracovní nebo školní účet. A že účet musí být ve stejném tenantovi, jako je předplatné můžete prostředku brány v konfiguraci. Váš účet přihlášení je uložený v tenantovi, který je spravovaný službou Azure Active Directory (Azure AD). Obvykle váš účet Azure AD hlavní název uživatele (UPN) odpovídá e-mailovou adresu.
-
-**Q**: Kde jsou uloženy Moje přihlašovací údaje? <br/>
-**A**: Přihlašovací údaje, které zadáte pro zdroj dat jsou zašifrované a uložené v cloudové službě brány. Přihlašovací údaje se dešifrují na místní data brány.
-
-**Q**: Existují nějaké požadavky na šířku pásma sítě? <br/>
-**A**: Doporučuje se, že má dobrou propustnost připojení k síti. Každé prostředí je jiné a množství dat odesílaných ovlivní výsledky. Pomocí ExpressRoute může pomoct zajistit úroveň propustnosti mezi místními a datovými centry Azure.
-Vyhodnocení této propustnosti můžete použít aplikaci Azure Speed Test nástroj třetí strany.
-
-**Q**: Jaká je latence pro spouštění dotazů na zdroj dat z brány? Co je nejvhodnější architektura? <br/>
-**A**: Pokud chcete snížit latenci sítě, instalace brány jako nejblíž ke zdroji dat co nejvíc. Pokud bránu můžete nainstalovat na skutečný zdroj dat, toto blízkosti minimalizuje uvedenou latenci. Vezměte v úvahu datových centrech moc. Například pokud vaše služba používá datové centrum západ USA a SQL Server je hostovaný na Virtuálním počítači Azure, virtuálního počítače Azure by měl být v oblasti západní USA příliš. Tato blízkosti minimalizuje latenci a vyhnete poplatky za výchozí přenos dat na virtuálním počítači Azure.
-
-**Q**: Jak se výsledky odesílají zpět do cloudu? <br/>
-**A**: Výsledky se posílají přes Azure Service Bus.
-
-**Q**: Existují nějaká příchozí připojení k bráně z cloudu? <br/>
-**A**: Ne. Brána používá odchozí připojení ke službě Azure Service Bus.
-
-**Q**: Co když blokuji odchozí připojení? Co je potřeba otevřít? <br/>
-**A**: Podívejte se, portů a hostitelů, které brána používá.
-
-**Q**: Co se nazývá skutečná služba Windows?<br/>
-**A**: Služby se brána nazývá služby On-premises data gateway.
-
-**Q**: Může služba Windows brány běžet s účtem Azure Active Directory? <br/>
-**A**: Ne. Služba Windows musí mít platný účet Windows. Ve výchozím nastavení je služba spuštěna s SID služby NT SERVICE\PBIEgwService.
-
-**Q**: Jak můžu převzetí bránu? <br/>
-**A**: K převzetí brány (spuštěním instalační program nebo změnit v Ovládacích panelech > programy), musíte být vlastníkem prostředku brány v Azure a mají obnovovací klíč. Vlastníci prostředků brány se dají konfigurovat řízení přístupu.
-
-### <a name="high-availability"></a>Vysoká dostupnost a zotavení po havárii
-
-**Q**: Jak jsme zajistit vysokou dostupnost?  
-**A**: Bránu můžete nainstalovat na jiném počítači k vytvoření clusteru. Další informace najdete v tématu [clustery s vysokou dostupností pro místní bránu dat](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters) v Power BI Gateway dokumentace.
-
-**Q**: Jaké možnosti jsou dostupné pro zotavení po havárii? <br/>
-**A**: Obnovovací klíč slouží k obnovení nebo přesunutí brány. Při instalaci brány zadejte obnovovací klíč.
-
-**Q**: Co je výhodou obnovovacího klíče? <br/>
-**A**: Obnovovací klíč poskytuje způsob, jak migrovat nebo obnovit nastavení brány po havárii.
-
-## <a name="troubleshooting"> </a>Řešení potíží
-
-**Q**: Proč nevidím moje brány v seznam instancí brány, při pokusu o vytvoření prostředku brány v Azure? <br/>
-**A**: Existují dva možné důvody. Nejprve je že již vytvořen prostředek brány v aktuální nebo některé jiné předplatné. Chcete-li odstranit tuto možnost, vytvořit výčet prostředků typu **On-premises Data Gateway** z portálu. Je nutné vybrat všechna předplatná, při vytváření výčtu všechny prostředky. Po vytvoření prostředku brány se nezobrazí v seznamu instance brány v prostředí portálu vytvořit prostředek brány. Druhá možnost je jiný než uživatel přihlášený k portálu Azure portal Azure AD identity uživatele, který instalaci brány. Pokud chcete vyřešit, přihlaste se k portálu přes stejný účet jako uživatel, který instalaci brány.
-
-**Q**: Jak můžu zjistit, jaké dotazy se posílají do zdroje dat v místním? <br/>
-**A**: Můžete povolit trasování dotazů, které obsahuje dotazy, které se odesílají. Nezapomeňte změnit dotaz trasování zpět na původní hodnotu po dokončení odstraňování potíží. Trasování dotazů zapnuté vytvoří větší protokoly.
-
-Můžete se také podívat na nástroje, které váš zdroj dat používá pro trasování dotazů. Například můžete použít Extended Events nebo SQL Profiler pro SQL Server a služby Analysis Services.
-
-**Q**: Kde se nacházejí protokoly brány? <br/>
-**A**: Dále v tomto článku naleznete v protokolech.
-
-### <a name="update"></a>Aktualizovat na nejnovější verzi
-
-Řadě problémů může docházet, když se stane verze brány zastaralá. Jako obecné vhodné Ujistěte se, že používáte nejnovější verzi. Pokud bránu neaktualizovali měsíc nebo i delší dobu, může být zvažte instalaci nejnovější verzi brány a zobrazit, pokud je problém možné reprodukovat.
-
-### <a name="error-failed-to-add-user-to-group--2147463168-pbiegwservice-performance-log-users"></a>Chyba: Nepovedlo se přidat uživatele do skupiny. (-2147463168 PBIEgwService Performance Log Users)
-
-Tato chyba může zobrazit, pokud se pokusíte nainstalovat bránu na řadiči domény, což není podporováno. Ujistěte se, že nasazení brány na počítači, který není řadičem domény.
-
-## <a name="logs"></a>Protokoly
-
-Soubory protokolu jsou důležité prostředků při řešení potíží.
-
-#### <a name="enterprise-gateway-service-logs"></a>Protokoly služby brány Enterprise
-
-`C:\Users\PBIEgwService\AppData\Local\Microsoft\On-premises data gateway\<yyyyymmdd>.<Number>.log`
-
-#### <a name="configuration-logs"></a>Konfigurační protokoly
-
-`C:\Users\<username>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator.log`
-
-#### <a name="event-logs"></a>Protokoly událostí
-
-Můžete najít protokoly brány správy dat a PowerBIGateway pod **protokoly aplikací a služeb**.
-
-## <a name="next-steps"></a>Další postup
-* [Instalace a konfigurace místní brány dat](analysis-services-gateway-install.md).   
-* [Správa služby Analysis Services](analysis-services-manage.md)
-* [Získání dat ze služby Azure Analysis Services](analysis-services-connect.md)
+* [Nejčastější dotazy k místní bráně dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
+* [Použití aplikace místní brány dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
+* [Správa na úrovni tenanta](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
+* [Konfigurace nastavení proxy serveru](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
+* [Upravit nastavení komunikace](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
+* [Konfigurace souborů protokolu](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
+* [Řešení potíží](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Monitorování a optimalizace výkonu brány](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)

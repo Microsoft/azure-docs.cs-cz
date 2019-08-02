@@ -1,6 +1,6 @@
 ---
-title: Provozní Query Store ve službě Azure SQL Database
-description: Zjistěte, jak provozovat Query Store ve službě Azure SQL Database
+title: Provozní úložiště dotazů v Azure SQL Database
+description: Naučte se pracovat s úložištěm dotazů v Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,51 +10,50 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 3ceb8569d952f2947870ce7314f869623b2d87f9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4f999818fe3b3517ee3fb48c22e616ee50f2d88
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584739"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567151"
 ---
-# <a name="operating-the-query-store-in-azure-sql-database"></a>Provozování Query Store ve službě Azure SQL Database
+# <a name="operating-the-query-store-in-azure-sql-database"></a>Provozování úložiště dotazů v Azure SQL Database
 
-Query Store v Azure je plně spravované databázové funkce, která průběžně shromažďuje a uvede podrobné historické údaje o všech dotazech. Query Store se dá chápat jako podobný zapisovač letových údajů letadlo, který výrazně zjednodušuje výkon dotazů, řešení potíží pro cloudové a místní zákazníci. Tento článek popisuje konkrétní aspekty provozování Query Store v Azure. Na základě těchto dat předem shromážděná dotazu můžete rychle diagnostikovat a vyřešit problémy s výkonem a tedy věnovat víc času, zaměřuje se na svoje podnikání. 
+Úložiště dotazů v Azure je plně spravovaná funkce databáze, která průběžně shromažďuje a prezentuje podrobné historické informace o všech dotazech. Úložiště dotazů si můžete představit podobně jako Zapisovač letových dat v letadle, který významně zjednodušuje řešení potíží s výkonem u cloudových i místních zákazníků. Tento článek vysvětluje konkrétní aspekty provozního úložiště dotazů v Azure. Pomocí těchto předem shromážděných dat dotazů můžete rychle diagnostikovat a vyřešit problémy s výkonem a tím se zaměříte na své podnikání více času. 
 
-Query Store bylo [globálně dostupné](https://azure.microsoft.com/updates/general-availability-azure-sql-database-query-store/) ve službě Azure SQL Database od listopadu 2015. Query Store je základem pro analýzu výkonu a ladění funkcí, jako například [služby SQL Database Advisor a řídicí panel Výkon](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Query Store je v době publikování tohoto článku, spuštěný ve více než 200 000 uživatelských databází v Azure, shromažďují se informace související s dotazy na několik měsíců, bez přerušení.
+Úložiště dotazů bylo [globálně k dispozici](https://azure.microsoft.com/updates/general-availability-azure-sql-database-query-store/) v Azure SQL Database od listopadu 2015. Úložiště dotazů je základem pro funkce analýzy a optimalizace výkonu, jako je například [SQL Database Advisor a řídicí panel výkonu](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). V okamžiku publikování tohoto článku je úložiště dotazů spuštěné ve více než 200 000 uživatelských databází v Azure a shromažďují informace související s dotazy po dobu několika měsíců bez přerušení.
 
 > [!IMPORTANT]
-> Microsoft se právě aktivace služby Query Store pro všechny databáze Azure SQL (existující i ty nové). 
+> Microsoft v procesu aktivuje úložiště dotazů pro všechny databáze SQL Azure (existující a nové). 
 
-## <a name="optimal-query-store-configuration"></a>Konfigurace optimální Query Store
+## <a name="optimal-query-store-configuration"></a>Optimální konfigurace úložiště dotazů
 
-Tato část popisuje výchozí hodnoty optimální konfiguraci, které jsou určeny k zaručit spolehlivý provoz Query Store a závislé součásti, jako například [služby SQL Database Advisor a řídicí panel Výkon](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Výchozí konfigurace je optimalizovaná pro souvislá datová kolekci, ve kterých je minimum času stráveného ve stavu vypnuto/READ_ONLY.
+Tato část popisuje optimální výchozí nastavení konfigurace, která jsou navržená tak, aby zajistila spolehlivé fungování úložiště dotazů a závislých funkcí, jako je například [SQL Database Advisor a řídicí panel výkonu](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Výchozí konfigurace je optimalizovaná pro kontinuální shromažďování dat, což je minimální čas strávený ve stavu vypnuto/READ_ONLY.
 
-| Konfigurace | Popis | Výchozí | Komentář |
+| Konfiguraci | Popis | Výchozí | Komentář |
 | --- | --- | --- | --- |
-| MAX_STORAGE_SIZE_MB |Určuje mez pro data místo Query Store můžete provést uvnitř databáze zákazníků |100 |Vynutit pro nové databáze |
-| INTERVAL_LENGTH_MINUTES |Definuje velikost časový interval, během kterého se agregují a trvalé statistické údaje o shromážděných pro plány dotazů. Každý dotaz služby active plán bude mít maximálně jeden řádek pro určitou dobu definované s touto konfigurací |60 |Vynutit pro nové databáze |
-| STALE_QUERY_THRESHOLD_DAYS |Čištění podle času zásad, která určuje doba uchování statistické údaje o trvalé a neaktivní dotazy |30 |Vynutit pro nové databáze a databáze s předchozím výchozí (367) |
-| SIZE_BASED_CLEANUP_MODE |Určuje, zda automatické čištění probíhá při velikost dat Query Store blíží limitu |AUTO |Vynutit pro všechny databáze |
-| QUERY_CAPTURE_MODE |Určuje, zda jsou sledovány všechny dotazy nebo jenom určité podmnožiny dotazy |AUTO |Vynutit pro všechny databáze |
-| FLUSH_INTERVAL_SECONDS |Určuje maximální dobu, během které zachycené runtime, které se statistiky jsou uloženy v paměti, než vyprázdnění na disk |900 |Vynutit pro nové databáze |
+| MAX_STORAGE_SIZE_MB |Určuje limit pro datový prostor, který může úložiště dotazů převzít v rámci databáze zákazníka. |100 |Vynutilo pro nové databáze |
+| INTERVAL_LENGTH_MINUTES |Definuje velikost časového okna, během kterého se shromažďují a uchovávají shromážděné statistiky za běhu pro plány dotazů. Každý aktivní plán dotazu má po dobu definovanou v této konfiguraci maximálně jeden řádek. |60 |Vynutilo pro nové databáze |
+| STALE_QUERY_THRESHOLD_DAYS |Zásady čištění založené na čase, které řídí dobu uchování trvalých statistik za běhu a neaktivní dotazy |30 |Vynutilo pro nové databáze a databáze s předchozí výchozí (367) |
+| SIZE_BASED_CLEANUP_MODE |Určuje, jestli se má automaticky vyčistit data, když se blíží limitu velikosti dat úložiště dotazů. |AUTO |Vynutilo pro všechny databáze |
+| QUERY_CAPTURE_MODE |Určuje, zda jsou sledovány všechny dotazy nebo pouze podmnožina dotazů. |AUTO |Vynutilo pro všechny databáze |
+| FLUSH_INTERVAL_SECONDS |Určuje maximální dobu, během které jsou zachycená běhová Statistika udržována v paměti, než se vyprázdní na disk. |900 |Vynutilo pro nové databáze |
 |  | | | |
 
 > [!IMPORTANT]
-> Tyto výchozí hodnoty se automaticky použijí v konečné fázi aktivace Query Store ve všech databázích Azure SQL (viz předchozí důležitá Poznámka:). Po této světlo nahoru Azure SQL Database nebudou měnit konfigurační hodnoty nastavit zákazníky, pokud jejich mít negativní vliv na primární úlohy nebo spolehlivé operace Query Store.
+> Tato výchozí nastavení se automaticky aplikují v konečné fázi aktivace úložiště dotazů ve všech databázích SQL Azure (viz předchozí důležitá Poznámka). Po tomto osvětlení Azure SQL Database nemění hodnoty konfigurace nastavené zákazníky, pokud nemají negativní vliv na primární úlohy nebo spolehlivé operace úložiště dotazů.
 
-Pokud chcete Zůstaňte s přední vlastní nastavení, použijte [ALTER DATABASE s možnostmi dotazu Store](https://msdn.microsoft.com/library/bb522682.aspx) se vrátit do předchozího stavu konfigurace. Podívejte se na [osvědčených postupů pomocí Query Store](https://msdn.microsoft.com/library/mt604821.aspx) další jak horní zvolili optimální parametry.
+Pokud chcete zachovat vlastní nastavení, použijte [příkaz ALTER DATABASE s možností úložiště dotazů](https://msdn.microsoft.com/library/bb522682.aspx) a obnovte konfiguraci do předchozího stavu. Podívejte se na [osvědčené postupy s úložištěm dotazů](https://msdn.microsoft.com/library/mt604821.aspx) , abyste se seznámili s tím, jak si vybrala nejlepší parametry konfigurace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[SQL Database Performance Insight](sql-database-performance.md)
+[Přehled výkonu SQL Database](sql-database-performance.md)
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-Pro další kontrolu informace v následujících článcích:
+Další informace najdete v následujících článcích:
 
-- [Zapisovač letových údajů pro vaši databázi](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database)
-- [Monitorování výkonu pomocí Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
+- [Záznam letových dat pro vaši databázi](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database)
+- [Monitorování výkonu pomocí úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx)
 - [Scénáře použití úložiště dotazů](https://msdn.microsoft.com/library/mt614796.aspx)

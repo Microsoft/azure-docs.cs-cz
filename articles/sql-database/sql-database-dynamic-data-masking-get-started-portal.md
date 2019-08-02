@@ -1,6 +1,6 @@
 ---
-title: 'Azure portal: Maskování dynamických dat SQL Database | Dokumentace Microsoftu'
-description: Jak začít s SQL Database dynamické maskování dat na webu Azure Portal
+title: 'Azure Portal: SQL Database Maskování dynamických dat | Microsoft Docs'
+description: Jak začít s SQL Database dynamické maskování dat v Azure Portal
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,53 +10,52 @@ ms.topic: conceptual
 author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/04/2018
-ms.openlocfilehash: 3d5ab203268ced1951d2ba9c852ece5bd5467c68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1400a21c3fee51bb26a3271546a7553a3429b42d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61077557"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568788"
 ---
-# <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Začínáme s dynamickými daty SQL Database pomocí webu Azure portal maskování
+# <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Začínáme s SQL Database dynamické maskování dat s využitím Azure Portal
 
-V tomto článku se dozvíte, jak implementovat [dynamické maskování dat](sql-database-dynamic-data-masking-get-started.md) pomocí webu Azure portal. Můžete taky implementovat pomocí maskování dynamických dat [rutiny služby Azure SQL Database](https://docs.microsoft.com/powershell/module/az.sql/) nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/).
+V tomto článku se dozvíte, jak implementovat [dynamické maskování dat](sql-database-dynamic-data-masking-get-started.md) pomocí Azure Portal. Dynamické maskování dat můžete také implementovat pomocí [rutin Azure SQL Database](https://docs.microsoft.com/powershell/module/az.sql/) nebo [REST API](https://docs.microsoft.com/rest/api/sql/).
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Nastavení dynamického maskování pro vaši databázi pomocí webu Azure portal dat
+## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Nastavení dynamického maskování dat pro vaši databázi pomocí Azure Portal
 
-1. Spuštění webu Azure portal na [ https://portal.azure.com ](https://portal.azure.com).
-2. Přejděte na stránku nastavení databáze, která obsahuje citlivá data, které chcete k maskování.
-3. Klikněte na tlačítko **maskování dynamických dat** dlaždici, která se spustí **maskování dynamických dat** stránka konfigurace.
+1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com).
+2. Přejděte na stránku nastavení databáze, která obsahuje citlivá data, která chcete maskovat.
+3. Klikněte na dlaždici **Maskování dynamických dat** , která spustí stránku konfigurace **dynamického maskování dat** .
 
-   * Případně přejděte dolů na **operace** části a klikněte na tlačítko **maskování dynamických dat**.
+   * Případně můžete přejít dolů na část **operace** a kliknout na **dynamické maskování dat**.
 
      ![Navigační podokno](./media/sql-database-dynamic-data-masking-get-started/4_ddm_settings_tile.png)
 
-4. V **maskování dynamických dat** stránku konfigurace, může se zobrazit některé sloupce databáze, které modul recommendations označil k maskování. Pokud chcete přijímat doporučení, stačí kliknout na **přidat masku** pro jeden nebo více sloupců a maska je založeno na výchozí typ pro tento sloupec. Funkci maskování můžete změnit kliknutím na pravidlo maskování a úpravy maskování formátu pole do jiného formátu podle svého výběru. Nezapomeňte kliknout na **Uložit** uložte nastavení.
+4. Na stránce konfigurace **dynamického maskování dat** se může zobrazit několik databázových sloupců, které modul doporučení pro maskování označil. Pokud chcete přijmout doporučení, stačí kliknout na **Přidat masku** pro jeden nebo více sloupců a na základě výchozího typu pro tento sloupec se vytvoří maska. Funkci maskování můžete změnit kliknutím na pravidlo maskování a úpravou formátu pole maskování na jiný formát podle vašeho výběru. Nezapomeňte uložit nastavení kliknutím na **Uložit** .
 
     ![Navigační podokno](./media/sql-database-dynamic-data-masking-get-started/5_ddm_recommendations.png)
 
-5. Přidat masku pro všechny sloupce v databázi, v horní části **maskování dynamických dat** stránku konfigurace, klikněte na tlačítko **přidat masku** otevřít **přidat pravidlo maskování** stránku konfigurace .
+5. Chcete-li přidat masku pro libovolný sloupec v databázi, klikněte v horní části stránky konfigurace **dynamického maskování dat** na tlačítko **Přidat masku** a otevřete konfigurační stránku **Přidat pravidlo maskování** .
 
     ![Navigační podokno](./media/sql-database-dynamic-data-masking-get-started/6_ddm_add_mask.png)
 
-6. Vyberte **schématu**, **tabulky** a **sloupec** k definování pole určené pro maskování.
-7. Zvolte **formát pole masky** ze seznamu citlivá data maskování kategorií.
+6. Vyberte **schéma**, **tabulku** a **sloupec** pro definování určeného pole pro maskování.
+7. V seznamu kategorií pro maskování citlivých dat vyberte **formát pole maskování** .
 
     ![Navigační podokno](./media/sql-database-dynamic-data-masking-get-started/7_ddm_mask_field_format.png)
 
-8. Klikněte na tlačítko **Uložit** v datech maskování pravidlo stránku aktualizovat sadu pravidel v dynamické maskování zásad dat maskování.
-9. Zadejte uživatele SQL nebo identity AAD, které mají být vyloučeny z maskování a mají přístup k odmaskovaná citlivá data. To by měl být středníkem oddělený seznam uživatelů. Uživatelé s oprávněními správce stálý přístup k původní odmaskovaná data.
+8. Pokud chcete aktualizovat sadu pravidel maskování v zásadách dynamického maskování dat, klikněte na **Uložit** na stránce pravidlo maskování dat.
+9. Zadejte uživatele SQL nebo identity AAD, které se mají vyloučit z maskování, a přístup k nemaskováným citlivým datům. Mělo by se jednat o středníkem oddělený seznam uživatelů. Uživatelé s oprávněními správce mají vždy přístup k původním nemaskováným datům.
 
     ![Navigační podokno](./media/sql-database-dynamic-data-masking-get-started/8_ddm_excluded_users.png)
 
     > [!TIP]
-    > Chcete-li tak aplikační vrstvu můžete zobrazit citlivá data pro aplikace privilegovaného uživatele, přidejte uživatele SQL nebo identity AAD, které aplikace používá k dotazování databáze. Důrazně doporučujeme, že tento seznam obsahovat minimální počet privilegovaných uživatelů, chcete-li minimalizovat rizika ohrožení citlivých dat.
+    > Aby mohla vrstva aplikace zobrazit citlivá data pro privilegované uživatele aplikace, přidejte uživatele SQL nebo identitu AAD, které aplikace používá pro dotazování databáze. Důrazně doporučujeme, aby tento seznam obsahoval minimální počet privilegovaných uživatelů, aby bylo možné minimalizovat expozici citlivých dat.
 
-10. Klikněte na tlačítko **Uložit** v maskování stránku konfigurace k uložení nových nebo aktualizovaných dat maskování zásad.
+10. Kliknutím na **Uložit** na stránce konfigurace maskování dat uložíte nové nebo aktualizované zásady maskování.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Přehled dynamické maskování dat, naleznete v tématu [dynamické maskování dat](sql-database-dynamic-data-masking-get-started.md).
-* Můžete taky implementovat pomocí maskování dynamických dat [rutiny služby Azure SQL Database](https://docs.microsoft.com/powershell/module/az.sql/) nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/).
+* Přehled dynamického maskování dat najdete v tématu [dynamické maskování dat](sql-database-dynamic-data-masking-get-started.md).
+* Dynamické maskování dat můžete také implementovat pomocí [rutin Azure SQL Database](https://docs.microsoft.com/powershell/module/az.sql/) nebo [REST API](https://docs.microsoft.com/rest/api/sql/).

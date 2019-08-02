@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5d0b41344f4a77f3205799be7c30526e2a150523
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bb2d5733704b0b31dc010cec2a90e99e1be07b56
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479924"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592026"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection pro Azure Storage
 
@@ -37,7 +37,7 @@ Rozšířená ochrana před internetovými útoky pro Azure Storage ingestuje di
 2. Přejděte na stránku konfigurace Azure Storage účtu, který chcete chránit. Na stránce **Nastavení** vyberte **Rozšířená ochrana před internetovými útoky**.
 
 3. V okně konfigurace **rozšířené ochrany před internetovými útoky**
-    * Zapnout  rozšířenou *ochranu před internetovými útoky*
+    * Zapnout rozšířenou *ochranu před internetovými útoky*
     * Kliknutím na **Uložit** uložte nové nebo aktualizované zásady rozšířené ochrany před internetovými útoky. (Ceny v imagi jsou například jenom pro účely.)
 
 ![Zapnutí Azure Storage rozšířené ochrany před internetovými útoky](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
@@ -46,7 +46,7 @@ Rozšířená ochrana před internetovými útoky pro Azure Storage ingestuje di
 
 Když se přihlásíte k odběru úrovně Standard v Azure Security Center, Rozšířená ochrana před internetovými útoky se automaticky nastaví na všechny vaše účty úložiště. Rozšířenou ochranu před internetovými útoky pro účty úložiště v rámci určitého předplatného můžete povolit nebo zakázat následujícím způsobem:
 
-1. Spusťte **Azure Security Center** v [Azure Portal]([https://portal.azure.com).
+1. Spusťte **Azure Security Center** v [Azure Portal](https://portal.azure.com).
 1. V hlavní nabídce klikněte na **ceny & nastavení**.
 1. Klikněte na předplatné, u kterého chcete povolit nebo zakázat ochranu před hrozbami pro své účty úložiště.
 
@@ -174,7 +174,7 @@ Možné příčiny:
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o [protokolech v Azure Storage účtech](/rest/api/storageservices/About-Storage-Analytics-Logging)
 

@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení využití Azure rezervace pro smlouvy Enterprise
-description: Zjistěte, jak číst využití, abyste pochopili, jak se má rezervace Azure u prováděcí smlouvy Enterprise použít.
+title: Vysvětlení použití rezervací Azure pro smlouvy Enterprise
+description: Naučte se, jak si přečíst své využití a pochopit, jak se používá rezervace Azure pro vaši podnikovou registraci.
 author: bandersmsft
 manager: yashar
 tags: billing
@@ -11,58 +11,59 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: b0c7c38ebabfdd142394152f735d40320a98dced
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798155"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598092"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Získat smlouvu Enterprise rezervace nákladů a využití
+# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Získat smlouva Enterprise náklady a využití rezervace
 
-Data o využití a náklady na rezervaci jsou dostupné pro zákazníky se smlouvou Enterprise webu Azure portal a rozhraní REST API. Tento článek vám pomůže:
+Náklady na rezervaci a data o využití jsou k dispozici pro smlouva Enterprise zákazníky v rozhraních API Azure Portal a REST. Tento článek vám pomůže:
 
-- Získání dat nákup rezervace
-- Získání rezervace snížení využití dat
-- Umořit náklady na rezervaci
-- Vrácení peněz pro rezervaci využití
-- Vypočítat úspory rezervace
+- Získat data nákupu rezervací
+- Zjistěte, které předplatné, skupina prostředků nebo prostředek použila rezervaci.
+- Vrácení peněz pro využití rezervace
+- Vypočítat úspory rezervací
+- Získat údaje o rezervacích v rámci využití
+- Náklady na amortizaci na amortizaci
 
-Poplatky za Marketplace konsolidované v datech využití. Poplatky za využití první strany, využití webu marketplace a nákupy z jednoho zdroje dat zobrazení.
+Poplatky za Marketplace jsou konsolidovány v datech o využití. Můžete si zobrazit poplatky za využití první strany, využití Marketplace a nákupy z jednoho zdroje dat.
 
-## <a name="reservation-charges-in-azure-usage-data"></a>Poplatky za rezervaci v datech využití Azure
+## <a name="reservation-charges-in-azure-usage-data"></a>Poplatky za rezervace v datech využití Azure
 
-Data je rozdělena na dvě samostatné datové sady: _Skutečné náklady_ a _Amortizovaných nákladů_. Jak se liší tyto dvě datové sady:
+Data jsou rozdělena do dvou samostatných datových sad: _Skutečné náklady_ a _náklady_na amortizaci. Jak se tyto dvě datové sady liší:
 
-**Skutečné náklady** – poskytuje data sjednotit se svoje měsíční náklady. Tato data obsahují náklady na nákup rezervace. Nemá žádný EffectivePrice za využití, která se zobrazila sleva za rezervaci.
+**Skutečné náklady** – poskytuje data, která se mají sjednotit s vaším měsíčním vyúčtováním. Tato data obsahují podrobnosti o nákupu rezervací a o rezervacích aplikace. Tato data vám pomohou zjistit, které předplatné nebo skupinu prostředků nebo prostředek přijal slevu za konkrétní den. EffectivePrice pro použití, který přijímá slevu rezervace, je nula.
 
-**Amortizovaných nákladů** -prostředků EffectiveCost, který získá sleva za rezervaci se poměrná část náklady na rezervovanou instanci. Datová sada obsahuje také náklady na nevyužité rezervace. Součet rezervace nákladů a nevyužité rezervace poskytuje denní amortizované náklady na rezervaci.
+**Náklady** na amortizaci – tato datová sada je podobná skutečné datové sadě nákladů, s výjimkou toho, že EffectivePrice pro použití, který se slevou rezervace, je poměrná cena rezervace (místo toho, aby byla nulová). To vám pomůže zjistit finanční hodnotu rezervované spotřeby pomocí předplatného, skupiny prostředků nebo prostředku a vám může pomoci vám vrátit se k využití rezervace interně. Datová sada má také nepoužité hodiny rezervace. Datová sada neobsahuje záznamy o nákupu rezervací. 
 
 Porovnání dvou datových sad:
 
-| Data | Skutečné náklady na datovou sadu | Amortizované náklady na datová sada |
+| Data | Sada skutečných dat nákladů | Sada dat pro amortizaci nákladů |
 | --- | --- | --- |
-| Nákup rezervace | K dispozici v tomto zobrazení.<br><br>  Chcete-li získat tento filtr dat na ChargeType = &quot;nákupní&quot;. <br><br> Odkazovat ReservationID nebo ReservationName vědět, jaké rezervace platí se za.  | Neplatí pro toto zobrazení. <br><br> Náklady na nákup nejsou k dispozici v amortizovaném data. |
-| effectivePrice | Hodnota je nula využití, získá sleva za rezervaci. | Hodnota se účtuje pomocí poměrného přepočítání na hodiny náklady na rezervaci pro využití, které má sleva za rezervaci. |
-| Nevyužité rezervace (poskytuje počet hodin, po které rezervace nebyl použit za den a peněžní hodnoty odpadu) | Není k dispozici v tomto zobrazení. | K dispozici v tomto zobrazení.<br><br> K získání těchto dat, filtrování ChargeType = &quot;UnusedReservation&quot;.<br><br>  Odkazovat ReservationID nebo ReservationName vědět, které rezervace se historického. To je, jak velká část rezervace byla zbytečná v den.  |
-| UnitPrice (cena prostředku z nového ceníku) | K dispozici | K dispozici |
+| Nákupy rezervací | K dispozici v tomto zobrazení.<br><br>  Pro získání tohoto filtru dat v ChargeType = &quot;purchase&quot;. <br><br> Chcete-li zjistit, na které rezervaci se účtuje poplatek, použijte ReservationID nebo reservation.  | Nelze použít pro toto zobrazení. <br><br> Náklady na nákup nejsou k dispozici v datech v amortizaci. |
+| EffectivePrice | Hodnota je nula pro použití, která vrací slevu za rezervaci. | Hodnota je sazba za hodinu průběžných nákladů na rezervaci pro použití, která má slevu za rezervaci. |
+| Nevyužitá rezervace (poskytuje počet hodin, po které se rezervace nepoužila za den a peněžní hodnota odpadu) | V tomto zobrazení nelze použít. | K dispozici v tomto zobrazení.<br><br> Chcete-li získat tato data, vyfiltrujte&quot;ChargeType = &quot;UnusedReservation.<br><br>  Pokud chcete zjistit, která rezervace byla nevyužita, přečtěte si ReservationID nebo reservation. To je počet nevyužitých rezervací za den.  |
+| JednotkováCena (cena za prostředek ze ceníku) | K dispozici | K dispozici |
 
-Další informace, které jsou k dispozici v datech využití Azure se změnil:
+Další informace, které jsou dostupné v datech o využití Azure, se změnily:
 
-- Produktu a informace o měření - Azure nenahrazuje původně spotřebované měřiče ReservationId a ReservationName, stejně jako dříve.
-- ReservationId a ReservationName – jsou vlastní pole v datech. Dříve použít k dispozici pouze v části AdditionalInfo.
-- ProductOrderId - ID objednávky rezervace přidán jako vlastní pole.
-- ProductOrderName - název produktu je zakoupená rezervace.
-- Termín - 12 měsíců nebo 36 měsíců.
-- RINormalizationRatio – k dispozici v části AdditionalInfo. Toto je poměr, ve kterém se má rezervace použít na záznam využití. Pokud velikost flexibilita instancí je zapnutá pro vaší rezervace, můžete použít jiné formáty. Hodnota zobrazuje poměr, rezervace byla použita k záznamu využití.
+- Informace o produktu a měřiči – Azure nenahrazuje původně spotřebovaný měřič s ReservationId a rezervací, jako by byl dřív.
+- ReservationId a reservation – jedná se o vlastní pole v datech. Dřív se použila k dispozici pouze v rámci AdditionalInfo.
+- ProductOrderId – ID objednávky rezervace, přidané jako své vlastní pole.
+- ProductOrderName – název produktu zakoupené rezervace.
+- Období – 12 měsíců nebo 36 měsíců.
+- RINormalizationRatio – k dispozici v rámci AdditionalInfo. Toto je poměr, ve kterém se rezervace aplikuje na záznam o využití. Pokud je pro vaši rezervaci povolená flexibilita velikosti instance, pak se může vztahovat na jiné velikosti. Hodnota zobrazuje poměr použití rezervace pro záznam o využití.
 
-## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Získat využití a rezervace využití dat Azure pomocí rozhraní API
+## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Získání dat využití a rezervace Azure pomocí rozhraní API
 
-Můžete načíst data pomocí rozhraní API nebo si ho stáhnout z webu Azure portal.
+Data můžete získat pomocí rozhraní API nebo si je stáhnout z Azure Portal.
 
-Volání [podrobnosti o použití rozhraní API](/rest/api/consumption/usagedetails/list) s verzí API &quot;2019-04-01-preview&quot; získat nová data. Podrobnosti o terminologii najdete v tématu [podmínkami použití](billing-understand-your-usage.md). Volající by měl být správce rozlehlé sítě s využitím smlouvy enterprise [portál EA](https://ea.azure.com). Enterprise Administrators jen pro čtení můžete také získat data.
+Zavoláte [rozhraní API s podrobnostmi o využití](/rest/api/consumption/usagedetails/list) pomocí rozhraní&quot; API verze &quot;2019-04-01-Preview a získáte nová data. Podrobnosti o terminologii najdete v tématu [použití podmínek](billing-understand-your-usage.md). Volající by měl být podnikovým správcem pro smlouvu Enterprise, který používá [portál EA](https://ea.azure.com). K získání dat můžou získat taky Správci firemních jen pro čtení.
 
-Data nejsou k dispozici v [Reporting rozhraní API pro podnikové zákazníky – podrobnosti o použití](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+Data nejsou k dispozici v [rozhraní API pro vytváření sestav pro podnikové zákazníky – podrobnosti o využití](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
 Tady je příklad volání rozhraní API:
 
@@ -70,82 +71,82 @@ Tady je příklad volání rozhraní API:
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
 ```
 
-Další informace o {enrollmentId} a {billingPeriodId}, najdete v článku [podrobnosti o použití – seznam](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) článku rozhraní API.
+Další informace o {Enrollmentid má} a {billingPeriodId} najdete v článku věnovaném podrobnostem o [využití – seznam](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) rozhraní API.
 
-Informace v následující tabulce o metriky a filtr můžou pomoct vyřešit běžné problémy rezervace.
+Informace v následující tabulce o metrikě a filtru můžou pomáhat vyřešit běžné problémy s rezervacemi.
 
 | **Typ dat rozhraní API** | Akce volání rozhraní API |
 | --- | --- |
-| **Všechny poplatky (využití a nákupů)** | Nahraďte ActualCost {metrika} |
-| **Využití, které je teď sleva za rezervaci** | Nahraďte ActualCost {metrika}<br><br>Nahraďte {filter}: properties/reservationId%20ne%20 |
-| **Využití, které nedostali sleva za rezervaci** | Nahraďte ActualCost {metrika}<br><br>Nahraďte {filter}: properties/reservationId%20eq%20 |
-| **Amortizované náklady (využití a nákupů)** | Nahraďte AmortizedCost {metrika} |
-| **Nevyužité rezervace sestavy** | Nahraďte AmortizedCost {metrika}<br><br>Nahraďte {filter}: properties/ChargeType%20eq%20'UnusedReservation. |
-| **Nákup rezervace** | Nahraďte ActualCost {metrika}<br><br>Nahraďte {filter}: properties/ChargeType%20eq%20'Purchase.  |
-| **Vrácení peněz** | Nahraďte ActualCost {metrika}<br><br>Nahraďte {filter}: properties/ChargeType%20eq%20'Refund. |
+| **Všechny poplatky (využití a nákupy)** | Nahradit {metric} pomocí ActualCost |
+| **Využití s slevou rezervace** | Nahradit {metric} pomocí ActualCost<br><br>Nahradit {Filter} pomocí: Properties/reservationId% 20ne% 20 |
+| **Použití, které nezískalo slevu za rezervaci** | Nahradit {metric} pomocí ActualCost<br><br>Nahradit {Filter} pomocí: Properties/reservationId% 20eq% 20 |
+| **Poplatky za amortizaci (využití a nákupy)** | Nahradit {metric} pomocí AmortizedCost |
+| **Nepoužitá sestava rezervace** | Nahradit {metric} pomocí AmortizedCost<br><br>Nahradit {Filter} pomocí: Properties/ChargeType% 20eq% 20 ' UnusedReservation ' |
+| **Nákupy rezervací** | Nahradit {metric} pomocí ActualCost<br><br>Nahradit {Filter} pomocí: Properties/ChargeType% 20eq% 20 ' purchase '  |
+| **Náhrad** | Nahradit {metric} pomocí ActualCost<br><br>Nahradit {Filter} pomocí: Properties/ChargeType% 20eq% 20 refundace |
 
-## <a name="download-the-usage-csv-file-with-new-data"></a>Stáhněte si soubor CSV využití s novými daty
+## <a name="download-the-usage-csv-file-with-new-data"></a>Stáhnout soubor CSV využití s novými daty
 
-Pokud si nejste správce EA, můžete stáhnout soubor CSV, který obsahuje nová data o využití z webu Azure portal. Tato data není k dispozici [portál EA](https://ea.azure.com).
+Pokud jste správce služby EA, můžete si stáhnout soubor CSV, který obsahuje nová data o využití z Azure Portal. Tato data nejsou k dispozici na [portálu EA](https://ea.azure.com).
 
-Na webu Azure Portal, přejděte na [Správa nákladů a fakturace](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
+V Azure Portal přejděte na [cost management + fakturace](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
 
 1. Vyberte fakturační účet.
-2. Klikněte na tlačítko **a poplatky za využití**.
+2. Klikněte na **využití + poplatky**.
 3. Klikněte na tlačítko **Stáhnout**.  
-![Příklad znázorňující, kde chcete stáhnout soubor dat využití sdíleného svazku clusteru na portálu Azure portal](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. V **stáhnout využití a poplatky za** v části **využití podrobnosti verze 2** vyberte **všechny poplatky (využití a nákupy)** a potom klikněte na stáhnout. Opakujte pro **Amortizovaných nákladů (využití a nákupy)** .
+![Příklad ukazující, kde stáhnout soubor dat o využití sdíleného svazku clusteru v Azure Portal](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
+4. V části **Stáhnout využití + poplatky** v části **Podrobnosti o využití verze 2** vyberte **všechny poplatky (využití a nákupy)** a pak klikněte na stáhnout. Zopakujte pro **poplatky za amortizaci (využití a nákupy)** .
 
-Soubory CSV, kterou stáhnete obsahovat skutečné náklady a amortizované náklady.
+Soubory CSV, které stáhnete, obsahují skutečné náklady a náklady na amortizaci.
 
-## <a name="common-cost-and-usage-tasks"></a>Běžné úlohy nákladů a využití
+## <a name="common-cost-and-usage-tasks"></a>Běžné náklady a úlohy využití
 
-V následujících částech jsou běžné úlohy, které většinu lidí slouží k zobrazení jejich data o využití a náklady na rezervaci.
+V následujících částech jsou běžné úkoly, které většina lidí používá k zobrazení svých nákladů na rezervaci a dat o využití.
 
-### <a name="get-reservation-purchase-costs"></a>Získat náklady na nákup rezervace
+### <a name="get-reservation-purchase-costs"></a>Získat nákupní náklady na rezervaci
 
-Náklady na nákup rezervace jsou dostupné ve skutečných nákladech. Filtrovat _ChargeType = nákupní_. Odkazovat na ProductOrderID k určení pořadí rezervace nákup.
+Náklady na nákup rezervací jsou k dispozici ve skutečných nákladových datech. Filtr pro _ChargeType = nákup_. Informace o tom, pro kterou objednávku rezervace se má koupit, najdete v tématu ProductOrderID.
 
-### <a name="get-underutilized-reservation-quantity-and-costs"></a>Získat množství rezervací nedostatečně využité a nákladů
+### <a name="get-underutilized-reservation-quantity-and-costs"></a>Získat nevyužité množství a náklady na rezervaci
 
-Získání dat Amortizovaných nákladů a filtrovat _ChargeType_ _= UnusedReservation_. Získáte denní množství nevyužité rezervace a náklady. Můžete filtrovat data pro rezervaci nebo pomocí objednávky rezervace _ReservationId_ a _ProductOrderId_ pole, v uvedeném pořadí. Pokud rezervaci se využívá 100 %, záznam obsahuje množství 0.
+Získejte data o amortizaci a filtr pro _ChargeType_ _= UnusedReservation_. Získáte denní nevyužité množství rezervace a náklady. Můžete filtrovat data pro rezervaci nebo objednávku rezervace pomocí polí _ReservationId_ a _ProductOrderId_ . Pokud byla využívána rezervace 100%, má záznam množství 0.
 
-### <a name="amortize-reservation-costs"></a>Umořit náklady na rezervaci
+### <a name="amortize-reservation-costs"></a>Náklady na amortizaci na amortizaci
 
-Získání dat Amortizovaných nákladů a filtrování pro používání objednávky rezervace _ProductOrderID_ získat denní amortizované náklady pro rezervaci.
+Získejte data o amortizaci a filtr pro objednávku rezervace pomocí _ProductOrderID_ a Získejte denní náklady na vynaloženou cenu za rezervaci.
 
-### <a name="chargeback-for-a-reservation"></a>Vrácení peněz pro rezervaci.
+### <a name="chargeback-for-a-reservation"></a>Vrácení peněz pro rezervaci
 
-Můžete použít vrácení peněz rezervace pro jiné organizace podle předplatného, skupiny prostředků nebo značky. Amortizované náklady dat poskytuje peněžní hodnoty rezervaci využití na následující typy dat:
+Můžete vrácení peněz použití rezervace pro jiné organizace podle předplatného, skupin prostředků nebo značek. Data z amortizace poskytují peněžní hodnotu využití rezervace v následujících datových typech:
 
 - Prostředky (například virtuální počítač)
 - Resource group
 - Tags
 - Subscription
 
-### <a name="get-the-blended-rate-for-chargeback"></a>Získání kombinaci rychlost pro vrácení peněz
+### <a name="get-the-blended-rate-for-chargeback"></a>Získat smíšenou sazbu pro vrácení peněz
 
-K určení kombinaci rychlost, získat amortizované náklady na data a agregovat celkové náklady. Pro virtuální počítače můžete použít MeterName nebo ServiceType informace z dat AdditionalInfo JSON. Rozdělte náklady podle množství použít k získání kombinaci rychlost.
+Chcete-li zjistit poměrnou sazbu, Získejte data s náklady na amortizaci a celkové náklady. Pro virtuální počítače můžete použít buď informace o měřiči nebo ServiceType z AdditionalInfo dat JSON. Vydělte celkové náklady podle množství, které se používá k získání poměru v Blendu.
 
-### <a name="audit-optimum-reservation-use-for-instance-size-flexibility"></a>Audit optimální rezervace použijte například velikost flexibilitu
+### <a name="audit-optimum-reservation-use-for-instance-size-flexibility"></a>Auditovat optimální využití rezervace pro flexibilitu velikosti instance
 
-Více množství se _RINormalizationRatio_, z AdditionalInfo. Výsledky ukazují, kolik hodin užívání rezervace byla použita k záznamu využití.
+Vícenásobné množství s _RINormalizationRatio_, od AdditionalInfo. Výsledky ukazují, kolik hodin bylo použito pro záznam o využití rezervace.
 
-### <a name="determine-reservation-savings"></a>Určení úspory rezervace
+### <a name="determine-reservation-savings"></a>Určení úspory rezervací
 
-Získání dat Amortized náklady a filtrovat data pro rezervované instance. Potom:
+Získejte data o amortizaci a filtrujte data pro rezervovanou instanci. Stisknutím
 
-1. Získejte odhadované náklady s průběžnými platbami. Vynásobit _UnitPrice_ hodnotu _množství_ hodnoty získat odhadovaný platili s průběžnými platbami, pokud se sleva za rezervaci se nepoužil, přes použití.
-2. Získejte náklady na rezervaci. Součet _náklady_ hodnoty k získání peněžní hodnoty za rezervovanou instanci. Zahrnuje náklady na použité a nevyužité rezervace.
-3. Odečte náklady na rezervaci z odhadované platili s průběžnými platbami, chcete-li získat Odhadované úspory.
+1. Získejte odhadované náklady na průběžné platby. Vynásobte hodnotu _JednotkováCena_ hodnotami _množství_ , abyste získali odhadované náklady na průběžné platby, pokud se na použití nepoužila sleva rezervace.
+2. Získejte náklady na rezervaci. Sečtěte hodnoty _nákladů_ a získejte peněžní hodnotu toho, co jste zaplatili za rezervovanou instanci. Zahrnuje využité a nevyužité náklady na rezervaci.
+3. Odečíst náklady na rezervaci z odhadovaných nákladů na průběžné platby, abyste získali Odhadované úspory.
 
-## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Nákup rezervace a amortizace v analýzy nákladů
+## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Nákupy a amortizace rezervací při analýze nákladů
 
-Náklady na rezervaci jsou k dispozici v [analýza nákladů](https://aka.ms/costanalysis). Ve výchozím nastavení, cost analysis zobrazí **skutečné náklady**, což je způsob ceny budou zobrazovat ve vašem vyúčtování. Chcete-li zobrazit nákup rezervace rozdělit a přidružené prostředky, které používají výhody, přepněte **Amortizovaných nákladů**:
+Náklady na rezervaci jsou dostupné při [analýze nákladů](https://aka.ms/costanalysis). Ve výchozím nastavení vám analýza nákladů zobrazuje **skutečné náklady**, což znamená, jak budou náklady zobrazeny na faktuře. Pokud chcete zobrazit nákupy rezervací rozdělené dolů a spojit se s prostředky, které tuto výhodu využily, přepněte na **náklady**na amortizaci:
 
-![Příklad znázorňující, kde můžete vybrat amortizované náklady v analýzy nákladů](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
+![Příklad ukazující, kde vybrat náklady na amortizaci v analýze nákladů](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Seskupit podle typu za poplatek za účelem zobrazit rozpis využití, nákupy a finanční prostředky; nebo rezervace rozpis nákladů rezervace a na vyžádání. Mějte na paměti, že pouze rezervace náklady, které se zobrazí ve skutečné náklady na nákup, ale náklady se přidělí jednotlivé prostředky, které používají benfit při prohlížení amortizované náklady. Zobrazí se také novou **UnusedReservation** účtovat typ při prohlížení amortizovaných nákladů.
+Typ seskupit podle poplatků pro zobrazení přerušení použití, nákupu a refundace; nebo rezervací pro rozpis rezervací a nákladů na vyžádání. Mějte na paměti, že jedinými náklady na rezervaci, které se zobrazí při nákupu, se účtují skutečné náklady, ale náklady budou přiděleny individuálním prostředkům, které benfit při prohledání podle amortizace. Při hledání na proložené náklady se vám zobrazí také nový typ **UnusedReservation** poplatků.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
@@ -153,12 +154,12 @@ Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](http
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o rezervacích Azure, najdete v následujících článcích:
+Další informace o Azure Reservations najdete v následujících článcích:
 
-- [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
+- [Co jsou Azure Reservations?](billing-save-compute-costs-reservations.md)
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../sql-database/sql-database-reserved-capacity.md)
 - [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
-- [Vysvětlení, jak se sleva za rezervaci použije](billing-understand-vm-reservation-charges.md)
-- [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
-- [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)
+- [Vysvětlení způsobu použití slevy rezervace](billing-understand-vm-reservation-charges.md)
+- [Vysvětlení využití rezervací pro předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
+- [Náklady na software systému Windows, které nejsou součástí rezervací](billing-reserved-instance-windows-software-costs.md)

@@ -1,49 +1,40 @@
 ---
-title: Odpojení datového disku z virtuálního počítače s Linuxem – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak odpojit datový disk od virtuálního počítače v Azure pomocí webu Azure portal nebo rozhraní příkazového řádku Azure.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Odpojení datového disku od virtuálního počítače se systémem Linux – Azure | Microsoft Docs
+description: Naučte se odpojit datový disk od virtuálního počítače v Azure pomocí rozhraní příkazového řádku Azure nebo Azure Portal.
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: azurecli
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 02cb970b5c70064abbbc71e585fe3dd1540fda90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e026617db4da58c12a454000f6d97f8b6843e95d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696723"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695864"
 ---
-# <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Jak odpojit datový disk od virtuálního počítače s Linuxem
+# <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Odpojení datového disku od virtuálního počítače se systémem Linux
 
-Když už nepotřebujete datový disk připojený k virtuálnímu počítači, můžete ho jednoduše odpojit. Odebrání disku z virtuálního počítače, ale neodebere se z úložiště. V tomto článku Pracujeme s distribucí Ubuntu LTS 16.04. Pokud používáte jiný distribuční, pokyny k odpojení disku může lišit.
+Když už nepotřebujete datový disk připojený k virtuálnímu počítači, můžete ho jednoduše odpojit. Tím se disk z virtuálního počítače odebere, ale neodebere se z úložiště. V tomto článku pracujeme s distribucí Ubuntu LTS 16,04. Pokud používáte jinou distribuci, pokyny pro odpojení disku můžou být odlišné.
 
 > [!WARNING]
-> Pokud odpojíte disk není automaticky odstraněn. Pokud odběru jste přihlášeni do Premium storage, budou dál účtovat poplatky za úložiště pro disk. Další informace najdete v tématu [ceny a fakturace při použití služby Premium Storage](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
+> Pokud disk odpojíte, nedojde k jeho automatickému odstranění. Pokud jste se přihlásili k odběru služby Premium Storage, bude se vám nadále účtovat poplatky za úložiště pro disk. Další informace najdete v tématu [ceny a fakturace při použití Premium Storage](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 
 Pokud znovu chcete použít stávající data na disku, můžete ho znovu připojit ke stejnému nebo jinému virtuálnímu počítači.  
 
 
-## <a name="connect-to-the-vm-to-unmount-the-disk"></a>Připojení k virtuálnímu počítači odpojit disk
+## <a name="connect-to-the-vm-to-unmount-the-disk"></a>Připojte se k virtuálnímu počítači a odpojte disk.
 
-Než budete moci odpojit disk pomocí portálu nebo rozhraní příkazového řádku, je třeba se odpojit disk a odebrat odkazy na-li ze svého souboru fstab.
+Než budete moci odpojit disk pomocí rozhraní příkazového řádku nebo portálu, je třeba odpojit disk a odebrat odkazy na, pokud se nacházíte v souboru fstab.
 
-Připojte se k virtuálnímu počítači. V tomto příkladu se veřejná IP adresa virtuálního počítače je *10.0.1.4* k uživatelskému jménu *azureuser*: 
+Připojte se k virtuálnímu počítači. V tomto příkladu je veřejná IP adresa virtuálního počítače *10.0.1.4* s uživatelským jménem *azureuser*: 
 
 ```bash
 ssh azureuser@10.0.1.4
 ```
 
-Nejdříve vyhledejte datový disk, který se má odpojit. Následující příklad používá k filtrování disky rozhraní SCSI dmesg:
+Nejprve najděte datový disk, který chcete odpojit. Následující příklad používá dmesg k filtrování na discích SCSI:
 
 ```bash
 dmesg | grep SCSI
@@ -59,13 +50,13 @@ Výstup se podobá následujícímu příkladu:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Tady *sdc* je disk, který chcete odpojit. Také by měl získejte identifikátor UUID disku.
+Zde je *SDC* disk, který chceme odpojit. Měli byste také vzít identifikátor UUID disku.
 
 ```bash
 sudo -i blkid
 ```
 
-Výstup vypadá podobně jako v následujícím příkladu:
+Výstup bude vypadat podobně jako v následujícím příkladu:
 
 ```bash
 /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -74,33 +65,33 @@ Výstup vypadá podobně jako v následujícím příkladu:
 ```
 
 
-Upravit */etc/fstab* souboru odebrat odkazy na disk. 
+Úpravou souboru */etc/fstab* odeberte odkazy na disk. 
 
 > [!NOTE]
-> Nesprávně úpravy **/etc/fstab** souboru by mohlo způsobit systém nelze spustit. Pokud nejste jisti, najdete v dokumentaci vaší distribuce pro informace o tom, jak správně upravit tento soubor. Doporučujeme také, že je záloha souboru /etc/fstab vytvořená před úpravou.
+> Nesprávná úprava souboru **/etc/fstab** by mohla vést k nespouštěcímu systému. Pokud si nejste jistí, přečtěte si dokumentaci k distribuci, kde najdete informace o tom, jak tento soubor správně upravit. Doporučuje se také vytvořit zálohu souboru/etc/fstab před úpravou.
 
-Otevřít */etc/fstab* souboru v textovém editoru následovně:
+V textovém editoru otevřete soubor */etc/fstab* následujícím způsobem:
 
 ```bash
 sudo vi /etc/fstab
 ```
 
-V tomto příkladu je třeba odstranit z následující řádek */etc/fstab* souboru:
+V tomto příkladu je nutné odstranit následující řádek ze souboru */etc/fstab* :
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-Použití `umount` odpojit disk. Následující příklad odpojí */dev/sdc1* z oddílu */datadrive* přípojný bod:
+K `umount` odpojení disku použijte. Následující příklad odpojí oddíl */dev/sdc1* z přípojného bodu */datadrive* :
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
 ```
 
 
-## <a name="detach-a-data-disk-using-azure-cli"></a>Odpojení datového disku pomocí rozhraní příkazového řádku Azure 
+## <a name="detach-a-data-disk-using-azure-cli"></a>Odpojení datového disku pomocí Azure CLI 
 
-Tento příklad odpojí *myDataDisk* disk od virtuálního počítače s názvem *myVM* v *myResourceGroup*.
+Tento příklad odpojí disk *myDataDisk* z virtuálního počítače s názvem *myVM* v *myResourceGroup*.
 
 ```azurecli
 az vm disk detach \
@@ -109,23 +100,23 @@ az vm disk detach \
     -n myDataDisk
 ```
 
-Disk zůstává v úložišti, ale už není připojen k virtuálnímu počítači.
+Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači.
 
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>Odpojení datového disku pomocí portálu
 
-1. V nabídce vlevo vyberte **virtuálních počítačů**.
-2. Vyberte virtuální počítač, který má datový disk, který chcete odpojit a klikněte na tlačítko **Zastavit** k uvolnění virtuálního počítače.
+1. V nabídce vlevo vyberte **Virtual Machines**.
+2. Vyberte virtuální počítač s datovým diskem, který chcete odpojit, a kliknutím na tlačítko **zastavit** nasaďte virtuální počítač.
 3. V podokně virtuální počítač vyberte **disky**.
-4. V horní části **disky** vyberte **upravit**.
-5. V **disky** podokno na pravé straně datový disk, který chcete odpojit, klikněte na tlačítko ![obrázek tlačítka odpojení](./media/detach-disk/detach.png) odpojit tlačítko.
-5. Po odebrání disku horní části podokna klikněte na Uložit.
-6. V podokně virtuální počítač, klikněte na tlačítko **přehled** a potom klikněte na tlačítko **Start** tlačítko v horní části podokna restartování virtuálního počítače.
+4. V horní části podokna **disky** vyberte **Upravit**.
+5. V podokně **disky** klikněte na úplně vpravo od datového disku, který chcete odpojit, a klikněte ![na tlačítko Odpojit obrázek](./media/detach-disk/detach.png) tlačítka odpojit.
+5. Po odebrání disku klikněte na Uložit v horní části podokna.
+6. V podokně virtuální počítač klikněte na **Přehled** a potom kliknutím na tlačítko **Start** v horní části podokna restartujte virtuální počítač.
 
-Disk zůstává v úložišti, ale už není připojen k virtuálnímu počítači.
+Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači.
 
 
 
 ## <a name="next-steps"></a>Další postup
-Pokud chcete znovu použít datový disk, jste právě [připojit k jinému virtuálnímu počítači](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Pokud chcete znovu použít datový disk, můžete [ho jednoduše připojit k jinému virtuálnímu počítači](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

@@ -1,18 +1,19 @@
 ---
 title: Ochrana DPM/Azure Backup serveru SharePointové farmy do Azure
 description: Tento článek poskytuje přehled ochrany DPM/Azure Backup serveru SharePointové farmy do Azure.
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: kasinh
-ms.openlocfilehash: 91b3105bc2aafba10f4bf105bee851743dcf5282
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: f17cc71e0666ccf08d90fcef8f18552c09761cbc
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466674"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689411"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Zálohování sharepointové farmy do Azure
 Můžete zálohovat farmu služby SharePoint a Microsoft Azure pomocí nástroje System Center Data Protection Manager (DPM), a to téměř stejným způsobem jako v případě zálohování jiných zdrojů dat. Azure Backup poskytuje flexibilitu v plánu zálohování k vytvoření denních, týdenních, měsíčních nebo ročních záložních bodů a poskytuje možnosti zásad uchovávání pro různé body zálohování. DPM poskytuje možnost ukládat kopie místních disků pro cíle rychlého obnovení (RTO) a ukládat kopie do Azure pro účely ekonomického a dlouhodobého uchovávání.
@@ -227,7 +228,7 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
     ![DPM SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. V tomto okamžiku postupujte podle kroků pro obnovení výše v tomto článku a obnovte databázi obsahu služby SharePoint z disku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o ochraně SharePointu v DPM – viz [video Series – ochrana DPM služby SharePoint](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
 * Přečtěte si [poznámky k verzi pro System Center 2012-Data Protection Manager](https://technet.microsoft.com/library/jj860415.aspx)
 * Přečtěte si [poznámky k verzi pro data Protection Manager v produktu System Center 2012 SP1](https://technet.microsoft.com/library/jj860394.aspx)

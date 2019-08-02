@@ -1,68 +1,68 @@
 ---
-title: Přidání vyskakovacího okna s Azure Maps | Dokumentace Microsoftu
-description: Postup přidání automaticky otevíraného okna na mapu jazyka Javascript
+title: Přidat automaticky otevírané okno s Azure Maps | Microsoft Docs
+description: Postup přidání automaticky otevíraného okna do mapy JavaScriptu
 author: jingjing-z
 ms.author: jinzh
-ms.date: 11/09/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a6c8a8aa954379036ce566a205b8cb4e97952727
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92d44ef3d0db8e93d4babd7441238c7fa105dbd5
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769545"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639001"
 ---
-# <a name="add-a-popup-to-the-map"></a>Přidání vyskakovacího okna mapy
+# <a name="add-a-popup-to-the-map"></a>Přidat místní nabídku na mapu
 
-Tento článek ukazuje, jak přidat automaticky otevíraného okna na bod na mapě.
+V tomto článku se dozvíte, jak přidat místní nabídku do bodu na mapě.
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
 <a id="addAPopup"></a>
 
-<iframe height='500' scrolling='no' title='Přidání místní nabídky registrace s využitím Azure mapa' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Přidání místní nabídky registrace s využitím Azure mapa</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidat automaticky otevírané okno pomocí Azure Maps' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Přidání otevřeného okna pomocí Azure Maps</a> pomocí Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny. Vytvoří také HTML obsahu, který se má zobrazit v místní nabídce.
+Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) . Také vytvoří obsah HTML, který se zobrazí v překryvném okně.
 
-Druhý bloku kódu vytvoří objekt zdroje dat pomocí [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy. Bod je [funkce](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) z [bodu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) třídy. Objekt bod s vlastnostmi název a popis pak je vytvořen a přidán do zdroje dat.
+Druhý blok kódu vytvoří objekt zdroje dat pomocí třídy [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) . Bod je [funkcí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) třídy [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) . Objekt Point s vlastnostmi název a popis je pak vytvořen a přidán do zdroje dat.
 
-A [symbol vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá k vykreslení dat na základě bodu zabalené v textu nebo ikony [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě.  Symbol vrstvy se vytvoří ve třetí bloku kódu. Zdroj dat je přidaný do vrstvy symbol, který se pak přidá do mapy.
+[Symbolová vrstva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá text nebo ikony pro vykreslení dat na základě bodu zabalených ve [zdroji dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě.  V třetím bloku kódu se vytvoří Symbolová vrstva. Zdroj dat se přidá do vrstvy symbolů, která se pak přidá do mapy.
 
-Čtvrtý bloku kódu vytvoří [místní nabídky objektu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) prostřednictvím `new atlas.Popup()`. Automaticky otevírané okno Vlastnosti, například pozici a pixelOffset jsou součástí [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions). PopupOptions lze definovat v konstruktoru automaticky otevírané okno, nebo prostřednictvím [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) funkce třídy automaticky otevíraného okna. A `mouseover` se pak vytvoří naslouchací proces událostí pro vrstvu symbol.
+Čtvrtý blok kódu vytvoří [Překryvný objekt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) prostřednictvím `new atlas.Popup()`. Místní vlastnosti, jako je například Position a pixelOffset, jsou součástí [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions). PopupOptions lze definovat v automaticky otevíraném konstruktoru nebo prostřednictvím funkce [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) třídy překryvného objektu. Vytvoří se naslouchací proces událostiprovrstvusymbolů.`mouseover`
 
-Poslední blok kódu vytvoří funkci, která se aktivuje `mouseover` naslouchací proces událostí. Nastaví obsah a vlastnosti automaticky otevíraného okna a přidá objekt automaticky otevírané okno do mapy.
+Poslední blok kódu vytvoří funkci, která je aktivována `mouseover` naslouchací proces události. Nastaví obsah a vlastnosti místní nabídky a přidá objekt místní nabídky na mapu.
 
-## <a name="reusing-a-popup-with-multiple-points"></a>Opětovné použití automaticky otevíraného okna s více bodů
+## <a name="reusing-a-popup-with-multiple-points"></a>Opakované použití automaticky otevíraného okna s více body
 
-Pokud máte spoustu body a pouze chcete zobrazit překryvné okno jeden po druhém, nejlepším řešením je vytvořit jeden místní a opakovaně používat ho místo vytvoření automaticky otevíraného okna pro jednotlivé součásti bodu. Tímto způsobem, počet prvků modelu DOM vytvořila aplikace, které je výrazně snižují které můžou poskytovat lepší výkon. Tato ukázka vytvoří 3 body. Pokud kliknete na některý z nich, zobrazí se automaticky otevíraného okna s obsahem pro tuto funkci bodu.
+Když máte spoustu bodů a chcete zobrazit jenom jedno automaticky otevírané okno najednou, nejlepším řešením je vytvořit jedno automaticky otevírané okno a znovu ho použít místo vytvoření automaticky otevírané okno pro každou funkci bodu. Tím se výrazně sníží počet prvků modelu DOM vytvořených aplikací, což může poskytovat lepší výkon. Tato ukázka vytvoří funkce 3 body. Pokud kliknete na kterýkoli z nich, zobrazí se automaticky otevírané okno s obsahem této funkce Point.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Opětovné použití automaticky otevírané okno s víc PIN kódů' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>opětovné použití automaticky otevírané okno s víc PIN kódů</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Opakované použití automaticky otevíraného okna s více PIN kódy' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>automaticky otevírané okno s více kolíky</a> pomocí Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o třídy a metody používané v tomto článku:
+Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Automaticky otevíraného okna](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Oken](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
 
-Naleznete v následujících článcích skvělé pro úplné ukázky:
+Úplné ukázky kódu najdete v následujících skvělých článcích:
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu symbol](./map-add-pin.md)
+> [Přidat vrstvu symbolů](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
 > [Přidat značku HTML](./map-add-custom-html.md)
 
 > [!div class="nextstepaction"]
-> [Přidání obrazce](./map-add-shape.md)
+> [Přidat tvar](./map-add-shape.md)

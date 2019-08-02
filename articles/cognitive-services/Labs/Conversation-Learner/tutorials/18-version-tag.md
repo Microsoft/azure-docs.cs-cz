@@ -1,7 +1,7 @@
 ---
-title: Jak pomocí označování verze modelu Learner konverzace – Azure Cognitive Services | Dokumentace Microsoftu
+title: Jak používat označování verzí s modelem Conversation Learner – Azure Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Další informace o použití správy verzí a označování s modelem Learner konverzace.
+description: Naučte se používat správu verzí a označování pomocí Conversation Learnerho modelu.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,103 +10,104 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 4067c7fb43cc200b8f49dbc14151c69a188e4e8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0279363c039e3ec3c2deac3bc7f71c32c547e9d1
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475706"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703380"
 ---
 # <a name="how-to-use-version-tagging"></a>Jak používat označování verzí
 
-Tento kurz ukazuje, jak označit verze modelu Learner konverzace a nastavit verzi je "živé".  
+Tento kurz ukazuje, jak označit verze modelu Conversation Learner a nastavit, která verze je "Live".  
 
 ## <a name="requirements"></a>Požadavky
-Tento kurz vyžaduje použití emulátoru Bot Framework k vytvoření protokolu dialogová okna, ne protokolu dialogové okno webového uživatelského rozhraní.  
+Tento kurz vyžaduje, aby se při vytváření dialogových oken protokolu, nikoli webového uživatelského rozhraní dialogového okna protokolu, používal emulátor rozhraní bot.  
 
-Tento kurz vyžaduje, zda je spuštěna obecné kurzu Bot:
+Tento kurz vyžaduje, aby byl spuštěný robot pro obecné kurzy:
 
     npm run tutorial-general
 
 ## <a name="details"></a>Podrobnosti
 
-Označený verzí modelu jsou statické; se nedají upravit ani změnit. Při úpravě modelu, který upravujete vždy hlavní verze. Když přidáte novou značku, konverzace Learner zaznamená snímek modelu v tomto okamžiku v čase. 
+Označené verze modelu jsou statické; nemůžete je upravovat ani měnit. Při úpravách modelu vždy upravujete hlavní verzi. Když přidáte novou značku, Conversation Learner zachycuje snímek modelu v daném časovém okamžiku. 
 
-Váš robot používat verzi, kterou jste vybrali jako "Živé" verze modelu, ale všechny konverzace, které je bude možné zobrazit pouze v případě, že "úpravy" je značka nastavená na "Master". Pokud je vlastnost "Úpravy značka" modelu nastavena na jinou hodnotu než "Hlavní", pak se zobrazí snímek modelu, ale už ho nemůžete změnit žádným způsobem.
+Vaše robot bude používat verzi modelu, kterou jste vybrali jako "živou" verzi, ale všechny konverzace, které mají, budou viditelné pouze v případě, že je "značka úprav" nastavena na "Master". Pokud je vlastnost "Upravit značku" modelu nastavena na jinou hodnotu než "Master", pak můžete zobrazit snímek modelu, ale nemůžete ho nijak změnit.
 
 ## <a name="steps"></a>Kroky
 
-### <a name="install-the-bot-framework-emulator"></a>Nainstalujte si emulátor Bot Framework
+### <a name="install-the-bot-framework-emulator"></a>Instalace emulátoru rozhraní bot Framework
 
 1. Přejděte do [ (Nastavení)https://github.com/Microsoft/BotFramework-Emulator](https://github.com/Microsoft/BotFramework-Emulator) (Integrace a služby).
-2. Stáhněte si a nainstalujte si emulátor.
+2. Stáhněte a nainstalujte emulátor.
 
 ### <a name="create-a-model"></a>Vytvoření modelu
 
-1. Z modelu domovské stránce seznamu, klikněte `New Model` tlačítko.
-2. V `Name` typ, pole "Kurzu-18-Versioning", stiskněte enter.
-4. Na levém panelu klikněte na "Nastavení".
+1. Na domovské stránce Seznam modelů klikněte `New Model` na tlačítko.
+2. `Name` V poli Typ pole "kurz – 18 – Správa verzí" stiskněte ENTER.
+4. Na levém panelu klikněte na nastavení.
 5. Zkopírujte obsah pole CONVERSATION_LEARNER_MODEL_ID do schránky.
 
-### <a name="configure-the-emulator"></a>Konfigurace v emulátoru
+### <a name="configure-the-emulator"></a>Konfigurace emulátoru
 
-1. V kořenové složce konverzace Learner otevřete soubor ".env".
-2. Přidá řádek do souboru ".env" tímto způsobem:
+1. V kořenové složce Conversation Learner otevřete soubor ". env".
+2. Přidejte řádek do souboru. env jako:
     - `CONVERSATION_LEARNER_MODEL_ID=[paste-model-id-from-clipboard-here]`
-3. Restartujte službu konverzace Learner ukončení z příkazového řádku a opětovné spuštění:
+3. Restartujte službu Conversation Learner ukončením z příkazového řádku a znovu spusťte:
     - `npm run tutorial-general`
-4. V emulátoru Bot Framework vytvořit novou konfiguraci robota, nastavte adresu URL koncového bodu `http://localhost:3978/api/messages`
+4. V emulátoru robot Framework vytvořte novou konfiguraci robota, nastavte adresu URL koncového bodu na.`http://localhost:3978/api/messages`
 
 ### <a name="version-1"></a>Verze 1
 
-Vytvoříme jednu akci pro verze 1.
+Vytvoříme jednu akci pro verzi 1.
 
-1. Na levém panelu webového uživatelského rozhraní, klikněte na tlačítko "Akce" a pak klikněte na tlačítko `New Action` tlačítko.
-2. V odpovědi bodu robotů také"" zadejte "Dobrý den zde (verze 1)".
+1. Na levém panelu webového uživatelského rozhraní klikněte na akce a potom klikněte na `New Action` tlačítko.
+2. V poli "odpověď robota" zadejte "Dobrý den (verze 1)".
 3. Klikněte na tlačítko `Save`.
 
-Nyní jsme budete označit jako "Verze 1" z modelu.
+Nyní tuto možnost označíte jako "verzi 1" modelu.
 
-1. Na levém panelu klikněte na "nastavení" a potom klikněte na ![](../media/tutorial18_version_tags.PNG)"Verze Tags" ikonu zobrazíte `New Tag` tlačítko, které by měl kliknete.
-    - Pojmenujte ho "Verze 1"
-1. V "Live značka" rozevírací nabídka vyberte "verze 1".  
-    - Kanály pomocí této robota nyní použije "Verze 1" z našeho modelu.
-    - Entit, akce a dialogová okna trénování modelu tato verze 1 můžete již změnit.
-    - Pokud vyberete možnost "Verze 1" jako "Úpravy značky" bude pouze zobrazení modelu a nelze ji upravit.
-    - Nechte "úpravy značka" nastavená na "Master", je jedinou verzí modelu, které lze upravovat.
+1. Na levém panelu klikněte na nastavení a potom kliknutím na ![](../media/tutorial18_version_tags.PNG)ikonu `New Tag` značky verze zobrazíte tlačítko, na které byste měli kliknout.
+    - Pojmenujte ho "verze 1"
+1. V rozevíracím seznamu "živá značka" vyberte "verze 1".  
+    - Kanály s využitím tohoto robota teď použijí verzi 1 našeho modelu.
+    - Entity, akce a výukové dialogy tohoto modelu verze 1 se už nedají změnit.
+    - Pokud jako značku úpravy vyberete "verze 1", budete moct zobrazit jenom model a neupravovat ho.
+    - Ponechte "Upravit značku" nastavenou na "Master", jedná se o jedinou verzi modelu, kterou lze upravovat.
 
-"Verze 1" se teď zobrazí v mřížce "Tags verze".
+Nyní se v mřížce "značky verze" zobrazí zpráva "verze 1".
 
 ### <a name="version-2"></a>Verze 2
 
-Nyní upravíme náš Model, aby se odlišil od verze 1.
+Nyní upravíte náš model pro odlišení od verze 1.
 
-1. V levém panelu klikněte na "Akce".
-2. V mřížce akce klikněte na "Dobrý den zde (verze 1)".
-3. Změna "bodu robotů také odpověď" pole "Dobrý den zde (verze 2)".
+1. Na levém panelu klikněte na akce.
+2. V mřížce akce klikněte na "Dobrý den (verze 1)".
+3. Změňte pole "odpověď robota" na "Dobrý den" (verze 2).
 4. Klikněte na tlačítko `Save`.
 5. Klikněte na tlačítko `New Action`.
-6. Pole v "bodu robotů také odpovědi" typ "bye bye (verze 2)".
+6. V poli "odpověď robota" zadejte "Bye Bye (verze 2)".
 
-### <a name="confirm-bot-framework-emulator-is-using-version-1"></a>Potvrďte, že je emulátor Bot Framework pomocí verze 1
+### <a name="confirm-bot-framework-emulator-is-using-version-1"></a>Potvrďte, že emulátor rozhraní robot Framework používá verzi 1.
 
-1. V emulátoru Bot Framework zadejte zprávu "Hey existuje".
-2. Všimněte si, že odpoví Bot "Dobrý den zde (verze 1)".
-    - Ověří, že je "živé" verze 1.
+1. V emulátoru robot Framework zadejte zprávu "Hey tam".
+2. Všimněte si, že robot odpoví na "Dobrý den (verze 1)".
+    - Tím se ověří, že verze 1 je "Live".
 
-### <a name="view-the-conversation-logs-in-conversation-learner-web-ui"></a>Zobrazit protokoly konverzace v konverzaci Learner webového uživatelského rozhraní
+### <a name="view-the-conversation-logs-in-conversation-learner-web-ui"></a>Zobrazení protokolů konverzace v Conversation Learner webové uživatelské rozhraní
 
-1. V levém panelu klikněte na "Protokolu dialogů"
-    - Pokud se nezobrazí všechna dialogová okna, klikněte na tlačítko Aktualizovat.
-2. Všimněte si, že značka "Verze 1" v mřížce.
-3. V mřížce, klikněte na "Dobrý den zde (verze 1)"
+1. Na levém panelu klikněte na dialogová okna protokolu.
+    - Pokud nevidíte žádná dialogová okna, klikněte na tlačítko Aktualizovat.
+2. Všimněte si značky "verze 1" v mřížce.
+3. V mřížce klikněte na "Dobrý den (verze 1)"
 
 > [!NOTE]
-> Můžeme provádět opravy výběrem ze všech aktuálně k dispozici funkce Learner konverzace, ale provedeny tyto změny do hlavní větve a verze 1.
+> Opravy můžeme udělat na základě všech aktuálně dostupných Conversation Learner funkcí, ale tyto úpravy se provedou v hlavní verzi a nikoli na verzi 1.
 
-Viděli jste nyní fungování správy verzí a jak můžete pracovat s robotem pomocí emulátoru služby Bot Framework.
+Nyní jste viděli, jak funguje Správa verzí a jak můžete s robotem pracovat pomocí emulátoru bot Framework.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Výčet entit a sady entity akcí](./tutorial-enum-set-entity.md)
+> [Vyčíslení entit a nastavení akcí entit](./tutorial-enum-set-entity.md)

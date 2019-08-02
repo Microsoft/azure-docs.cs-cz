@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s synchronizace dat Azure SQL | Dokumentace Microsoftu
-description: Zjistěte, jak řešit běžné problémy se synchronizací dat SQL Azure.
+title: Řešení potíží s Azure Synchronizace dat SQL | Microsoft Docs
+description: Naučte se řešit běžné problémy s Azure Synchronizace dat SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -10,252 +10,251 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 4e2808378834a0270586ce674e1043ca443320c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f1345c7de3ef56473b8ebd16cea20cfe76f0380e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331192"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566272"
 ---
-# <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží se synchronizací dat SQL
+# <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží s Synchronizace dat SQL
 
-Tento článek popisuje řešení známých problémů se synchronizací dat SQL Azure. Pokud je řešení problému, je tady uvedená.
+Tento článek popisuje, jak řešit známé problémy s Azure Synchronizace dat SQL. Pokud dojde k vyřešení problému, je zde k dispozici.
 
 Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](sql-database-sync-data.md).
 
 > [!IMPORTANT]
-> Azure SQL Data synchronizace provádí vložení změn **není** v tuto chvíli podporován Azure SQL Database Managed Instance.
+> Azure Synchronizace dat SQL v tuto **chvíli nepodporuje spravovanou** instanci Azure SQL Database.
 
-## <a name="sync-issues"></a>Problémům se synchronizací
+## <a name="sync-issues"></a>Problémy synchronizace
 
-- [Synchronizace se nezdaří v místních databází, které jsou spojeny s agenta klienta uživatelské rozhraní portálu](#sync-fails)
+- [Synchronizace v uživatelském rozhraní portálu pro místní databáze přidružené k agentovi klienta se nezdařila.](#sync-fails)
 
-- [Moje skupina synchronizace se zasekla v automatickém stavu zpracování](#sync-stuck)
+- [Moje skupina synchronizace je zablokovaná ve stavu zpracování.](#sync-stuck)
 
-- [Zobrazí chybná data ve svých tabulek](#sync-baddata)
+- [Zobrazuje se v tabulkách chybná data](#sync-baddata)
 
-- [Po úspěšné synchronizaci zobrazí nekonzistentní data primárního klíče](#sync-pkdata)
+- [Po úspěšné synchronizaci se zobrazuje nekonzistentní data primárního klíče](#sync-pkdata)
 
-- [Najdete v článku významné snížení výkonu](#sync-perf)
+- [Zobrazuje se významné snížení výkonu.](#sync-perf)
 
-- [Zobrazí tato zpráva: "Nelze vložit hodnoty NULL do sloupce \<sloupce >. Sloupec nepovoluje hodnoty nulls." Co to znamená, a jak ho můžou opravit?](#sync-nulls)
+- [Zobrazí se tato zpráva: "Nelze vložit hodnotu null do sloupce sloupce \<>. Sloupec nepovoluje hodnoty null. Co to znamená a jak ho můžu opravit?](#sync-nulls)
 
-- [Jak synchronizovat Data zpracovává. cyklické odkazy? To znamená, když na stejná data se synchronizují do více skupin synchronizace a neustále mění díky tomu?](#sync-circ)
+- [Jak zpracovává cyklické odkazy v synchronizaci dat? To znamená, že když jsou stejná data synchronizovaná ve více skupinách synchronizace a mění se v důsledku změny?](#sync-circ)
 
-### <a name="sync-fails"></a> Synchronizace se nezdaří v místních databází, které jsou spojeny s agenta klienta uživatelské rozhraní portálu
+### <a name="sync-fails"></a>Synchronizace v uživatelském rozhraní portálu pro místní databáze přidružené k agentovi klienta se nezdařila.
 
-Synchronizace se nezdaří v uživatelské rozhraní portálu synchronizace dat SQL pro místní databáze, které jsou spojeny s klientského agenta. V místním počítači, na kterém běží agent se zobrazí System.IO.IOException chyby v protokolu událostí. Chyby Řekněme, že disk nemá dostatek místa.
+Synchronizace se nezdařila v uživatelském rozhraní portálu Synchronizace dat SQL pro místní databáze, které jsou přidruženy k agentovi klienta. V místním počítači, na kterém je spuštěný agent, se v protokolu událostí zobrazí chyby System. IO. IOException. Chyby říká, že na disku není dostatek místa.
 
-- **Příčina**. Jednotka nemá dostatek místa.
+- **Příčina**: Na disku není dostatek místa.
 
-- **Rozlišení**. Vytvořte více místa na disku, na kterém je umístěn adresáři % TEMP %.
+- **Řešení**. Vytvořte více místa na jednotce, na které se nachází adresář% TEMP%.
 
-### <a name="sync-stuck"></a> Moje skupina synchronizace se zasekla v automatickém stavu zpracování
+### <a name="sync-stuck"></a>Moje skupina synchronizace je zablokovaná ve stavu zpracování.
 
-Skupina synchronizace v synchronizaci dat SQL bylo ve stavu zpracování po dlouhou dobu. Nebude odpovídat **Zastavit** příkazu a protokoly zobrazit žádné nové položky.
+Skupina synchronizace v Synchronizace dat SQL byla po dlouhou dobu ve stavu zpracování. Nereaguje na příkaz **stop** a protokoly nezobrazí žádné nové položky.
 
-Ve skupině synchronizace právě zablokované ve stavu zpracování může způsobit některý z následujících podmínek:
+Některá z následujících podmínek může způsobit zablokování skupiny synchronizace ve stavu zpracování:
 
-- **Příčina**. Klientský agent je offline.
+- **Příčina**: Klientský agent je offline.
 
-- **Rozlišení**. Ujistěte se, že je klientský agent online, a zkuste to znovu.
+- **Řešení**. Ujistěte se, že je klientský agent online, a zkuste to znovu.
 
-- **Příčina**. Klientský agent je odinstalovaný nebo chybí.
+- **Příčina**: Klientský agent je odinstalovaný nebo chybí.
 
-- **Rozlišení**. Pokud je klientský agent odinstalovaný nebo chybí z jiného důvodu:
+- **Řešení**. Pokud je klientský agent odinstalovaný nebo chybí z jiného důvodu:
 
     1. Odeberte z instalační složky Synchronizace dat SQL soubor XML agenta, pokud existuje.
     1. Nainstalujte agenta na místní počítač (může se jednat o stejný nebo jiný počítač). Pak odešlete klíč agenta, který se vygeneruje na portálu, pro agenta, který se zobrazuje ve stavu offline.
 
-- **Příčina**. Služba Synchronizace dat SQL je zastavená.
+- **Příčina**: Služba Synchronizace dat SQL je zastavená.
 
-- **Rozlišení**. Restartujte službu synchronizace dat SQL.
+- **Řešení**. Restartujte službu Synchronizace dat SQL.
 
-    1. V **Start** nabídky, vyhledejte **služby**.
+    1. V nabídce **Start** vyhledejte **služby**.
     1. Ve výsledcích hledání vyberte **služby**.
-    1. Najít **synchronizace dat SQL** služby.
-    1. Pokud je stav služby **Zastaveno**, klikněte pravým tlačítkem na název služby a potom vyberte **Start**.
+    1. Vyhledejte službu **synchronizace dat SQL** .
+    1. Pokud je stav služby **Zastaveno**, klikněte pravým tlačítkem myši na název služby a vyberte možnost **Spustit**.
 
 > [!NOTE]
-> Pokud se výše uvedených informací čárka nepohybuje vaší skupině synchronizace stavu zpracování, Microsoft Support můžete obnovit stav synchronizace skupiny. Mít stav synchronizace skupiny, které obnoví nastavení, v [fórum pro Azure SQL Database](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted), vytvoří příspěvek. V příspěvku zahrnují ID vašeho předplatného a ID skupiny synchronizace pro skupinu, která je potřeba resetovat. Pracovníkem Microsoft Support bude reagovat na váš příspěvek a vám dá vědět, kdy byl obnoven stav.
+> Pokud předchozí informace nepřesunou skupinu synchronizace ze stavu zpracování, podpora Microsoftu může obnovit stav skupiny synchronizace. Pokud chcete mít resetování stavu skupiny synchronizace, ve [fóru Azure SQL Database](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted)vytvořte příspěvek. V příspěvku zadejte ID předplatného a ID skupiny synchronizace pro skupinu, kterou je nutné resetovat. Podpora Microsoftu inženýr odpoví na váš příspěvek a pošle vám informace o tom, kdy byl stav resetován.
 
-### <a name="sync-baddata"></a> Zobrazí chybná data ve svých tabulek
+### <a name="sync-baddata"></a>Zobrazuje se v tabulkách chybná data
 
-Tabulky, které mají stejný název, ale jsou z různých databázových schématech je zahrnuta v synchronizaci, uvidíte chybná data v tabulkách po synchronizaci.
+Pokud jsou tabulky, které mají stejný název, ale které jsou z různých schémat databáze, zahrnuty v synchronizaci, zobrazí se po synchronizaci v tabulkách chybná data.
 
-- **Příčina**. Synchronizace dat SQL procesu zřizování používá stejné tabulky sledování pro tabulky, které mají stejný název, ale které jsou v různých schémat. Z toho důvodu se projeví změny z obou tabulek ve stejné tabulce sledování. To způsobí, že změny chybná data během synchronizace.
+- **Příčina**: Proces zřizování Synchronizace dat SQL používá stejné sledovací tabulky pro tabulky, které mají stejný název, ale které jsou v různých schématech. Z tohoto důvodu se změny z obou tabulek projeví ve stejné sledovací tabulce. Způsobí to, že během synchronizace dojde k chybným změnám dat.
 
-- **Rozlišení**. Ujistěte se, že názvy tabulek, které se účastní synchronizace se liší, i v případě, že tabulky patří do různých schémat v databázi.
+- **Řešení**. Ujistěte se, že názvy tabulek, které jsou zapojeny do synchronizace, jsou odlišné, a to i v případě, že tabulky patří do různých schémat v databázi.
 
-### <a name="sync-pkdata"></a> Po úspěšné synchronizaci zobrazí nekonzistentní data primárního klíče
+### <a name="sync-pkdata"></a>Po úspěšné synchronizaci se zobrazuje nekonzistentní data primárního klíče
 
-Synchronizace se hlásí jako úspěšné a protokol obsahuje žádné řádky se nezdařilo nebo bylo přeskočeno, ale zjistíte, že data primárního klíče je nekonzistentní mezi databázemi ve skupině synchronizace.
+Synchronizace se nahlásí jako úspěšná a v protokolu se zobrazí žádné neúspěšné nebo vynechané řádky, ale zjistíte, že data primárního klíče jsou nekonzistentní mezi databázemi ve skupině synchronizace.
 
-- **Příčina**. Tento výsledek chování je záměrné. Změny v libovolný sloupec primárního klíče za následek nekonzistentní data v řádcích, kde byl změněn primární klíč.
+- **Příčina**: Tento výsledek je záměrné. Změny v jakémkoli sloupci primárního klíče mají za následek nekonzistentní data v řádcích, ve kterých se změnil primární klíč.
 
-- **Rozlišení**. Tomuto problému předejít, ujistěte se, že žádná data v sloupec primárního klíče se nemění. Chcete-li vyřešit tento problém po došlo k chybě, odstraňte řádek, který má nekonzistentní data ze všech koncových bodů ve skupině synchronizace. Vložte řádku.
+- **Řešení**. Pokud se chcete tomuto problému vyhnout, zajistěte, aby se nezměnila žádná data ve sloupci primárního klíče. Chcete-li tento problém vyřešit po jeho výskytu, odstraňte řádek, který obsahuje nekonzistentní data ze všech koncových bodů ve skupině synchronizace. Pak řádek znovu vložte.
 
-### <a name="sync-perf"></a> Najdete v článku významné snížení výkonu
+### <a name="sync-perf"></a>Zobrazuje se významné snížení výkonu.
 
-Výkon výrazně zhorší, případně do bodu, ve kterém nelze otevřít i uživatelské rozhraní služby Data synchronizace.
+Výkon se výrazně snižuje, což může být bod, ve kterém nemůžete ani otevřít uživatelské rozhraní pro synchronizaci dat.
 
-- **Příčina**. Nejpravděpodobnější příčinou je smyčka synchronizace. Synchronizace smyčky nastane skupině synchronizace pomocí synchronizace A aktivuje synchronizovat pomocí synchronizace skupiny B, aktivuje se synchronizovat pomocí synchronizace skupiny A. Skutečné situace může být složitější, a to může zahrnovat víc než dvou skupin synchronizace ve smyčce. Tento problém je, že je kruhové aktivace synchronizace, který způsobuje vzájemně překrývající se skupiny synchronizace.
+- **Příčina**: Nejpravděpodobnější příčinou je synchronizační smyčka. Ke smyčce synchronizace dojde, když synchronizace podle skupiny synchronizace spustí synchronizaci se skupinou synchronizace B, která potom spustí synchronizaci podle skupiny synchronizace A. Skutečná situace může být složitější a může zahrnovat víc než dvě skupiny synchronizace ve smyčce. Problémem je to, že existuje cyklická aktivace synchronizace, která je způsobená skupinami synchronizace, která se překrývá mezi sebou.
 
-- **Rozlišení**. Nejlepší je ochrany před únikem informací. Ujistěte se, že není nutné cyklické odkazy do skupiny synchronizace. Všechny řádky, které se synchronizuje podle jednu skupinu synchronizace nejde synchronizovat jinou skupinou synchronizace.
+- **Řešení**. Nejlepším řešením je prevence. Ujistěte se, že ve skupinách synchronizace nemáte cyklické odkazy. Každý řádek, který je synchronizovaný jednou skupinou synchronizace, nejde synchronizovat s jinou skupinou synchronizace.
 
-### <a name="sync-nulls"></a> Zobrazí tato zpráva: "Nelze vložit hodnoty NULL do sloupce \<sloupce >. Sloupec nepovoluje hodnoty nulls." Co to znamená, a jak ho můžou opravit? 
-Tato chybová zpráva indikuje, že jeden z následujících dvou problémů došlo k chybě:
--  Tabulka nemá primární klíč. Chcete-li vyřešit tento problém, přidáte do všech tabulek, které synchronizujete primární klíč.
--  Existuje klauzule WHERE v příkazu CREATE INDEX. Synchronizace dat není zpracovat tento stav. Chcete-li vyřešit tento problém, odeberte klauzuli WHERE nebo ručně provést změny na všechny databáze. 
+### <a name="sync-nulls"></a>Zobrazí se tato zpráva: "Nelze vložit hodnotu null do sloupce sloupce \<>. Sloupec nepovoluje hodnoty null. Co to znamená a jak ho můžu opravit? 
+Tato chybová zpráva znamená, že došlo k jedné ze dvou následujících problémů:
+-  Tabulka neobsahuje primární klíč. Chcete-li tento problém vyřešit, přidejte primární klíč ke všem tabulkám, které synchronizujete.
+-  V příkazu CREATE INDEX je klauzule WHERE. Synchronizace dat nezpracovává tuto podmínku. Chcete-li tento problém vyřešit, odeberte klauzuli WHERE nebo ručně proveďte změny ve všech databázích. 
  
-### <a name="sync-circ"></a> Jak synchronizovat Data zpracovává. cyklické odkazy? To znamená, když na stejná data se synchronizují do více skupin synchronizace a neustále mění díky tomu?
-Synchronizace dat nezpracuje. cyklické odkazy. Ujistěte se, že jim vyhnout. 
+### <a name="sync-circ"></a>Jak zpracovává cyklické odkazy v synchronizaci dat? To znamená, že když jsou stejná data synchronizovaná ve více skupinách synchronizace a mění se v důsledku změny?
+Synchronizace dat nezpracovává cyklické odkazy. Ujistěte se, že se jim vyhnete. 
 
 ## <a name="client-agent-issues"></a>Problémy agenta klienta
 
-Řešení potíží s klientského agenta, najdete v článku [problémy řešit agenta synchronizace dat](sql-database-data-sync-agent.md#agent-tshoot).
+Informace o řešení problémů s agentem klienta najdete v tématu řešení potíží s [agentem synchronizace dat](sql-database-data-sync-agent.md#agent-tshoot).
 
-## <a name="setup-and-maintenance-issues"></a>Problémy s instalací a údržba
+## <a name="setup-and-maintenance-issues"></a>Problémy s instalací a údržbou
 
-- [Zobrazí se zpráva "nedostatek místa na disku"](#setup-space)
+- [Zobrazuje se zpráva o nedostatku místa na disku](#setup-space)
 
-- [Nemůžu odstranit Moje skupina synchronizace](#setup-delete)
+- [Nemůžu odstranit moji skupinu synchronizace](#setup-delete)
 
-- [Můžu nelze zrušit registraci k místní databázi SQL serveru](#setup-unreg)
+- [Nemůžu zrušit registraci místní databáze SQL Server](#setup-unreg)
 
-- [Nemáte dostatečná oprávnění ke spouštění systémových služeb](#setup-perms)
+- [Nemám dostatečná oprávnění ke spouštění systémových služeb.](#setup-perms)
 
-- [Databáze je "Zastaralé" stavu](#setup-date)
+- [Databáze má stav "zastaralé".](#setup-date)
 
-- [Skupina synchronizace se stavem "Zastaralé"](#setup-date2)
+- [Skupina synchronizace má neaktuální stav](#setup-date2)
 
-- [V rámci tří minut odinstalace nebo zastavení agenta nelze odstranit skupinu synchronizace](#setup-delete2)
+- [Skupinu synchronizace nejde odstranit do tří minut od odinstalace nebo zastavení agenta.](#setup-delete2)
 
-- [Co se stane, když obnovit ztracené nebo poškozené databáze?](#setup-restore)
+- [Co se stane, když obnovíte ztracenou nebo poškozenou databázi?](#setup-restore)
 
-### <a name="setup-space"></a> Zobrazí se zpráva "nedostatek místa na disku"
+### <a name="setup-space"></a>Zobrazuje se zpráva o nedostatku místa na disku
 
-- **Příčina**. Pokud třeba odstranit zanechání nepotřebných souborů, může se zobrazit zpráva "nedostatek místa na disku". To může způsobovat antivirový software nebo soubory jsou otevřené, kdy nedochází k pokusům o operace odstranění.
+- **Příčina**: Pokud je potřeba odstranit soubory zbylé, může se zobrazit zpráva nedostatek místa na disku. To může být způsobeno antivirovým softwarem nebo soubory, které jsou otevřeny při pokusu o odstranění operací.
 
-- **Rozlišení**. Odstraňte ručně synchronizovat soubory, které jsou ve složce % temp % (`del \*sync\* /s`). Odstraňte podsložky ve složce % temp %.
+- **Řešení**. Ručně odstraňte soubory synchronizace, které jsou ve složce% Temp% (`del \*sync\* /s`). Pak odstraňte podadresáře ve složce% Temp%.
 
 > [!IMPORTANT]
-> Neodstraňujte žádné soubory, zatímco probíhá synchronizace.
+> V průběhu synchronizace neodstraňujte žádné soubory.
 
-### <a name="setup-delete"></a> Nemůžu odstranit Moje skupina synchronizace
+### <a name="setup-delete"></a>Nemůžu odstranit moji skupinu synchronizace
 
-Pokus o odstranění skupiny synchronizace se nezdaří. Některé z následujících scénářů může mít za následek selhání se odstranit skupinu synchronizace:
+Pokus o odstranění skupiny synchronizace se nezdaří. Při odstranění skupiny synchronizace může dojít k selhání některého z následujících scénářů:
 
-- **Příčina**. Klientský agent je offline.
+- **Příčina**: Klientský agent je offline.
 
-- **Rozlišení**. Ujistěte se, že je agent klienta online a pak to zkuste znovu.
+- **Řešení**. Zajistěte, aby byl agent klienta online, a akci opakujte.
 
-- **Příčina**. Klientský agent je odinstalovaný nebo chybí.
+- **Příčina**: Klientský agent je odinstalovaný nebo chybí.
 
-- **Rozlišení**. Pokud je klientský agent odinstalovaný nebo chybí z jiného důvodu:  
+- **Řešení**. Pokud je klientský agent odinstalovaný nebo chybí z jiného důvodu:  
     a. Odeberte z instalační složky Synchronizace dat SQL soubor XML agenta, pokud existuje.  
     b. Nainstalujte agenta na místní počítač (může se jednat o stejný nebo jiný počítač). Pak odešlete klíč agenta, který se vygeneruje na portálu, pro agenta, který se zobrazuje ve stavu offline.
 
-- **Příčina**. Databáze je offline.
+- **Příčina**: Databáze je offline.
 
-- **Rozlišení**. Ujistěte se, že jsou všechny online databáze SQL serveru a databázím SQL.
+- **Řešení**. Ujistěte se, že databáze SQL a databáze SQL Server jsou všechny online.
 
-- **Příčina**. Skupina synchronizace se zřizování nebo synchronizace.
+- **Příčina**: Skupina synchronizace se zřizuje nebo synchronizuje.
 
-- **Rozlišení**. Počkejte na dokončení procesu zřizování nebo synchronizace a potom opakovat pokus o odstranění skupiny synchronizace.
+- **Řešení**. Počkejte na dokončení procesu zřizování nebo synchronizace a pak zkuste skupinu synchronizace znovu odstranit.
 
-### <a name="setup-unreg"></a> Můžu nelze zrušit registraci k místní databázi SQL serveru
+### <a name="setup-unreg"></a>Nemůžu zrušit registraci místní databáze SQL Server
 
-- **Příčina**. Pravděpodobně se pokoušíte zrušit registraci databázi, která již byla odstraněna.
+- **Příčina**: Pravděpodobně se pokoušíte zrušit registraci databáze, která již byla odstraněna.
 
-- **Rozlišení**. Pokud chcete zrušit registraci k místní databázi SQL serveru, vyberte databázi a pak vyberte **Vynutit odstranění**.
+- **Řešení**. Pokud chcete zrušit registraci místní databáze SQL Server, vyberte databázi a pak vyberte **Vynutit odstranění**.
 
-  Pokud tuto operaci se nepodařilo odebrat databázi ze skupiny synchronizace:
+  Pokud se této operaci nepodařilo odebrat databázi ze skupiny synchronizace:
 
-  1. Zastavte a restartujte službu Hostitel agenta klienta:  
-    a. Vyberte **Start** nabídky.  
-    b. Do vyhledávacího pole zadejte **services.msc**.  
-    c. V **programy** podokno, výsledky hledání oddílu dvakrát klikněte na panel **služby**.  
-    d. Klikněte pravým tlačítkem myši **synchronizace dat SQL** služby.  
-    e. Pokud je služba spuštěná, zastavte ho.  
-    f. Klikněte pravým tlačítkem na službu a pak vyberte **Start**.  
-    g. Zkontrolujte, zda je databáze pořád zaregistrovaný. Pokud už je zaregistrovaný, jste hotovi. V opačném případě pokračujte dalším krokem.
+  1. Zastavte a poté restartujte službu hostitel agenta klienta:  
+    a. Vyberte nabídku **Start** .  
+    b. Do vyhledávacího pole zadejte **Services. msc**.  
+    c. V části **programy** v podokně výsledků hledání dvakrát klikněte na položku **služby**.  
+    d. Pravým tlačítkem myši klikněte na službu **synchronizace dat SQL** .  
+    e. Pokud je služba spuštěná, zastavte ji.  
+    f. Pravým tlačítkem myši klikněte na službu a pak vyberte **Spustit**.  
+    g. Ověřte, zda je databáze stále registrována. Pokud už není zaregistrované, budete hotovi. V opačném případě pokračujte dalším krokem.
   1. Otevřete aplikaci agenta klienta (SqlAzureDataSyncAgent).
-  1. Vyberte **upravit přihlašovací údaje**a pak zadejte přihlašovací údaje pro databázi.
-  1. Pokračujte v rušení registrace.
+  1. Vyberte **Upravit přihlašovací údaje**a potom zadejte přihlašovací údaje pro databázi.
+  1. Pokračujte v zrušení registrace.
 
-### <a name="setup-perms"></a> Nemáte dostatečná oprávnění ke spouštění systémových služeb
+### <a name="setup-perms"></a>Nemám dostatečná oprávnění ke spouštění systémových služeb.
 
-- **Příčina**. K této chybě dojde ve dvou situacích:
-  -   Uživatelské jméno nebo heslo nejsou správné.
-  -   Zadaný uživatelský účet nemá dostatečná oprávnění k přihlášení jako služba.
+- **Příčina**: K této chybě dochází ve dvou situacích:
+  -   Uživatelské jméno nebo heslo není správné.
+  -   Zadaný uživatelský účet nemá dostatečná oprávnění pro přihlášení jako služba.
 
-- **Rozlišení**. Udělit log na as-a-service přihlašovací údaje pro uživatelský účet:
+- **Řešení**. Udělte uživatelskému účtu přihlašovací údaje přihlášení jako služby:
 
-  1. Přejděte na **Start** > **ovládací panely** > **nástroje pro správu** > **místní zásady zabezpečení**  >  **Místní zásady** > **uživatele Rights Management**.
-  1. Vyberte **přihlásit jako službu**.
-  1. V **vlastnosti** dialogovém okně Přidat uživatelský účet.
+  1. V nabídce **Start** > **ovládacích panelů** >  >  > **nástroje**pro správu místní zásady zabezpečení Rights Management uživatel místní zásady zabezpečení. > 
+  1. Vyberte možnost **Přihlásit se jako služba**.
+  1. V dialogovém okně **vlastnosti** přidejte uživatelský účet.
   1. Vyberte **použít**a pak vyberte **OK**.
   1. Zavřete všechna okna.
 
-### <a name="setup-date"></a> Databáze je "Zastaralé" stavu
+### <a name="setup-date"></a>Databáze má stav "zastaralé".
 
-- **Příčina**. Synchronizace dat SQL odstraní databáze, které byly offline ze služby pro 45 dnů a víc (jak se počítá od doby, kdy databáze přešel do režimu offline). Pokud databáze je v režimu offline pro 45 dnů nebo déle a pak přejde do režimu online, je jeho stav **zastaralé**.
+- **Příčina**: Synchronizace dat SQL odebere databáze, které byly od služby offline po dobu 45 dnů nebo více (počítány od doby, kdy byla databáze přepnuta do režimu offline). Pokud je databáze po dobu 45 dnů nebo déle v režimu offline a pak se vrátí zpět do režimu online **, je její**stav neaktuální.
 
-- **Rozlišení**. Můžete se vyhnout **zastaralé** stavu tím, že zajišťuje, že žádná z vašich databází přejdou do režimu offline pro 45 dnů nebo déle.
+- **Řešení**. Neaktuálnímu stavu **se** můžete vyhnout tak, že zajistíte, aby žádná databáze nepřešla do režimu offline po dobu 45 dnů nebo déle.
 
-  Pokud je stav vaší databáze **zastaralé**:
+  Je **-** li stav databáze zastaralá:
 
-  1. Odebrat databázi, která má **zastaralé** stav od skupiny synchronizace.
-  1. Přidat databázi zpět do skupiny synchronizace.
+  1. Z synchronizační skupiny odeberte databázi, která má neaktuální **stav.**
+  1. Přidejte databázi zpět do skupiny synchronizace.
 
   > [!WARNING]
-  > Můžete ztratit všechny změny provedené u této databáze, když byl v režimu offline.
+  > Ztratíte všechny změny provedené v této databázi v době, kdy byla offline.
 
-### <a name="setup-date2"></a> Skupina synchronizace se stavem "Zastaralé"
+### <a name="setup-date2"></a>Skupina synchronizace má neaktuální stav
 
-- **Příčina**. Pokud jeden nebo více změn platí pro celý uchovávají 45 dní, skupině synchronizace můžete začnou být zastaralé.
+- **Příčina**: Pokud se některé změny nepodaří použít po celou dobu uchování 45 dní, může se stát, že se skupina synchronizace zastaralá.
 
-- **Rozlišení**. Aby se zabránilo **zastaralé** stavu pro skupinu synchronizace, podívejte se na výsledky úlohy synchronizace v prohlížeči historie v pravidelných intervalech. Prozkoumat a vyřešit všechny změny, které se nepodařilo použít.
+- **Řešení**. Abyste se vyhnuli zastaralému stavu pro skupinu synchronizace, Projděte si výsledky úloh synchronizace v prohlížeči historie v pravidelných intervalech. Prozkoumejte a vyřešte všechny změny, které se nezdařily.
 
-  Pokud je stav synchronizace skupiny **zastaralé**, odstranit skupinu synchronizace a pak ji znovu vytvořit.
+  Pokud je stav skupiny synchronizace neaktuální, odstraňte skupinu synchronizace a pak ji znovu vytvořte.
 
-### <a name="setup-delete2"></a> V rámci tří minut odinstalace nebo zastavení agenta nelze odstranit skupinu synchronizace
+### <a name="setup-delete2"></a>Skupinu synchronizace nejde odstranit do tří minut od odinstalace nebo zastavení agenta.
 
-V rámci tří minut odinstalace nebo zastavení přidružené klientského agenta synchronizace dat SQL nelze odstranit skupinu synchronizace.
+Nemůžete odstranit skupinu synchronizace během tří minut od odinstalace nebo zastavení přidruženého klientského agenta Synchronizace dat SQL.
 
-- **Rozlišení**.
+- **Řešení**.
 
-  1. Odstranit skupinu synchronizace agenti přidružené synchronizace jsou online (doporučeno).
-  1. Pokud agent je v režimu offline, ale je nainstalovaná, přepněte na místní počítač je online. Počkejte, stav agenta jako **Online** na portálu pro synchronizaci dat SQL. Potom odeberte skupinu synchronizace.
-  1. Pokud je agent offline, protože byla odinstalována:  
+  1. Odebere skupinu synchronizace, pokud jsou přidružené agenti synchronizace online (doporučeno).
+  1. Pokud je agent offline, ale je nainstalovaný, převeďte ho do online režimu na místním počítači. Počkejte, než se stav agenta zobrazí jako **online** na portálu synchronizace dat SQL. Pak odeberte skupinu synchronizace.
+  1. Pokud je agent offline, protože byl odinstalován:  
     a.  Odeberte z instalační složky Synchronizace dat SQL soubor XML agenta, pokud existuje.  
     b.  Nainstalujte agenta na místní počítač (může se jednat o stejný nebo jiný počítač). Pak odešlete klíč agenta, který se vygeneruje na portálu, pro agenta, který se zobrazuje ve stavu offline.  
     c. Pokuste se odstranit skupinu synchronizace.
 
-### <a name="setup-restore"></a> Co se stane, když obnovit ztracené nebo poškozené databáze?
+### <a name="setup-restore"></a>Co se stane, když obnovíte ztracenou nebo poškozenou databázi?
 
-Pokud obnovujete ztracené nebo poškozené databáze ze zálohy, může být konvergence dat do skupiny synchronizace, na které databáze patří.
+Pokud ze zálohy obnovíte ztracenou nebo poškozenou databázi, může dojít k nekonvergenci dat v synchronizačních skupinách, do kterých databáze patří.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o synchronizaci dat SQL najdete v tématu:
+Další informace o Synchronizace dat SQL najdete v tématech:
 
--   Přehled – [synchronizaci dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL Azure](sql-database-sync-data.md)
+-   Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí Azure synchronizace dat SQL](sql-database-sync-data.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurzu: Nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním](sql-database-get-started-sql-data-sync.md)
+    - Na portálu – [kurz: Nastavení Synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním prostředí](sql-database-get-started-sql-data-sync.md)
     - S využitím PowerShellu
         -  [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Agent – synchronizace dat [Data synchronizovat Agent pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
--   Osvědčené postupy – [osvědčené postupy pro synchronizaci dat SQL Azure](sql-database-best-practices-data-sync.md)
--   Monitorování – [protokoly monitorování synchronizace dat SQL pomocí Azure monitoru](sql-database-sync-monitor-oms.md)
--   Aktualizovat schéma synchronizace
-    -   Pomocí příkazů jazyka Transact-SQL - [automatizace replikace změn schématu synchronizace dat SQL Azure](sql-database-update-sync-schema.md)
-    -   Pomocí Powershellu – [aktualizovat schéma synchronizace ve stávající skupině synchronizace pomocí Powershellu](scripts/sql-database-sync-update-schema.md)
+-   Osvědčené postupy – [osvědčené postupy pro Azure synchronizace dat SQL](sql-database-best-practices-data-sync.md)
+-   Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](sql-database-sync-monitor-oms.md)
+-   Aktualizace schématu synchronizace
+    -   Pomocí jazyka Transact-SQL – [Automatizace replikace změn schématu v Azure synchronizace dat SQL](sql-database-update-sync-schema.md)
+    -   Prostředí PowerShell – [použití PowerShellu k aktualizaci schématu synchronizace v existující skupině synchronizace](scripts/sql-database-sync-update-schema.md)
 
-Další informace o službě SQL Database najdete v tématu:
+Další informace o SQL Database najdete v tématech:
 
 -   [Přehled služby SQL Database](sql-database-technical-overview.md)
 -   [Správa životního cyklu databáze](https://msdn.microsoft.com/library/jj907294.aspx)

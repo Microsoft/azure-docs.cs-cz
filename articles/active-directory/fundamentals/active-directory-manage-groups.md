@@ -2,23 +2,23 @@
 title: Správa aplikací a přístup k prostředkům pomocí skupin – Azure Active Directory | Dokumentace Microsoftu
 description: Další informace o tom, jak spravovat přístup k prostředkům pomocí skupin Azure Active Directory, místních aplikací a cloudových aplikací vaší organizace.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c2bffad4254815d2ed51d9bbc14b32a521b5537
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: acbc19c2148a2b62ff1aa28d705591430b4fad20
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248456"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561832"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Správa aplikací a přístup k prostředkům pomocí skupin Azure Active Directory
 Azure Active Directory (Azure AD) umožňuje spravovat vaše cloudové aplikace, místním aplikacím a prostředkům pomocí skupin vaší organizace. Vaše prostředky můžou být součástí adresáře, jako je například oprávnění ke správě objektů pomocí rolí v adresáři, nebo externí vzhledem k adresáři, jako jsou pro Software jako služba (SaaS) aplikací Azure services, Sharepointové weby a místním prostředkům.
@@ -36,7 +36,7 @@ Existují čtyři způsoby, jak přiřadit přístupová práva uživatelům pro
 
 - **Přímého přiřazení.** Vlastník prostředku přiřadí uživatele přímo k prostředku.
 
-- **Skupina přiřazení.** Vlastník prostředku přiřadí k prostředku, který automaticky poskytuje všechny členy skupiny umožňuje přístup k prostředku skupiny Azure AD. Členství ve skupině spravuje vlastník skupiny a vlastníka prostředku, takže buď vlastník, přidat nebo odebrat členy ze skupiny. Další informace o přidávání nebo odebírání členství ve skupinách najdete v tématu [jak: Přidat nebo odebrat skupiny z jiné skupiny pomocí portálu Azure Active Directory](active-directory-groups-membership-azure-portal.md). 
+- **Skupina přiřazení.** Vlastník prostředku přiřadí k prostředku, který automaticky poskytuje všechny členy skupiny umožňuje přístup k prostředku skupiny Azure AD. Členství ve skupině spravuje vlastník skupiny a vlastníka prostředku, takže buď vlastník, přidat nebo odebrat členy ze skupiny. Další informace o přidání nebo odebrání členství ve skupině naleznete v [tématu How to: Přidejte nebo odeberte skupinu z jiné skupiny pomocí portálu](active-directory-groups-membership-azure-portal.md)Azure Active Directory. 
 
 - **Přiřazování na základě pravidel.** Vlastník prostředku vytvoří skupinu a pravidlo používá k definování, kteří uživatelé jsou přiřazení ke konkrétnímu prostředku. Toto pravidlo je na základě atributů, které jsou přiřazeny k jednotlivým uživatelům. Vlastník prostředku spravuje pravidla určující, které atributy a hodnoty jsou požadovány pro povolení přístupu prostředku. Další informace najdete v tématu [vytvoření dynamické skupiny a zkontrolovat stav](../users-groups-roles/groups-create-rule.md).
 

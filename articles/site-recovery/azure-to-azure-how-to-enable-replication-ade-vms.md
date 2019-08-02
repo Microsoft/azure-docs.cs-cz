@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b000610b5cba6f768a629ad797500a57597f2569
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 25f8c19ad1c574f6a3d84d50d911b4da6b52cfc3
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335699"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516507"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů s podporou Azure Disk Encryption do jiné oblasti Azure
 
@@ -23,9 +23,9 @@ Tento článek popisuje, jak replikovat virtuální počítače s podporou Azure
 >Azure Site Recovery aktuálně podporuje jenom virtuální počítače Azure, na kterých běží operační systém Windows a které mají [povolené šifrování pomocí Azure Active Directory (Azure AD)](https://aka.ms/ade-aad-app).
 
 ## <a id="required-user-permissions"></a>Požadovaná uživatelská oprávnění
-Site Recovery vyžaduje, aby měl uživatel oprávnění k vytvoření trezoru klíčů v cílové oblasti a zkopírování klíčů do oblasti.
+Site Recovery vyžaduje, aby měl uživatel oprávnění k vytvoření trezoru klíčů v cílové oblasti a zkopírování klíčů z trezoru klíčů zdrojové oblasti do trezoru klíčů cílové oblasti.
 
-Aby bylo možné povolit replikaci virtuálních počítačů s povoleným šifrováním disku z Azure Portal, uživatel potřebuje následující oprávnění:
+Aby bylo možné povolit replikaci virtuálních počítačů s povoleným šifrováním disku z Azure Portal, uživatel potřebuje následující oprávnění pro trezory klíčů **zdrojové oblasti i cílové oblasti** .
 
 - Oprávnění trezoru klíčů
     - Seznam, vytvoření a získání

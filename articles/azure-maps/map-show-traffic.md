@@ -1,50 +1,50 @@
 ---
-title: Zobrazit provozu s využitím Azure Maps | Dokumentace Microsoftu
-description: Jak zobrazit data o provozu na mapě jazyka Javascript
+title: Zobrazit provoz s Azure Maps | Microsoft Docs
+description: Jak zobrazit data o přenosech na mapě JavaScriptu
 author: jingjing-z
 ms.author: jinzh
-ms.date: 11/10/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7cd7c0dbb375dad78927183dbaffe574a0dc10c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55bfc434082b2d5b7de193e969fc34f710657cdb
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60768831"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638627"
 ---
-# <a name="show-traffic-on-the-map"></a>Na mapě Zobrazit provoz
+# <a name="show-traffic-on-the-map"></a>Zobrazit provoz na mapě
 
-Tento článek ukazuje, jak zobrazit informace o provozu a incidentů na mapě.
+V tomto článku se dozvíte, jak zobrazit informace o provozu a incidentech na mapě.
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-<iframe height='456' scrolling='no' title='Zobrazení provozu na mapě' src='//codepen.io/azuremaps/embed/WMLRPw/?height=456&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>zobrazení provozu na mapě</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='456' scrolling='no' title='Zobrazení provozu na mapě' src='//codepen.io/azuremaps/embed/WMLRPw/?height=456&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Zobrazit provoz na mapě</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](map-create.md) pokyny.
+Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy. Pokyny najdete v tématu [vytvoření mapy](map-create.md) .
 
-Druhý blok kódu používá [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) funkce v rámci mapy [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce k vykreslení přenosové toky a incidentů na mapě.
+Druhý blok kódu používá funkci [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) v rámci funkce [naslouchacího procesu naslouchacího](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) prvku mapy k vykreslování přenosových toků a incidentů na mapě.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o třídy a metody používané v tomto článku:
-
-> [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-
-Naleznete v následujících článcích pro úplné ukázky:
+Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Znaková stránka vzorku](https://aka.ms/AzureMapsSamples)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
-Vylepšení uživatelského prostředí:
-
-> [!div class="nextstepaction"]
-> [Mapování interakce s využitím událostí myši](./map-events.md)
+Úplné ukázky kódu najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Sestavování přístupné mapy](./map-accessibility.md)
+> [Stránka ukázka kódu](https://aka.ms/AzureMapsSamples)
+
+Vylepšete uživatelské prostředí:
+
+> [!div class="nextstepaction"]
+> [Mapování interakce s událostmi myši](./map-events.md)
+
+> [!div class="nextstepaction"]
+> [Sestavení přístupné mapy](./map-accessibility.md)

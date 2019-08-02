@@ -10,20 +10,21 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: nolachar
-ms.openlocfilehash: 086858f88a1b058e0e94fb356fbd06cf299b14f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: cce40c53fdfb052cc6c1f2941b2e3b4ae710ae21
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60580034"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707198"
 ---
 # <a name="custom-decision-service-workflow"></a>Pracovní postup Custom Decision Service
 
-Doporučujeme tento vzor při sestavování aplikací.
+Při sestavování aplikací doporučujeme postupovat podle tohoto vzoru.
 
 ![Pracovní postup Custom Decision Service](media/custom-decision-service-workflow.png)
 
-Přidat [připojovacího řetězce služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string).
+Přidejte [připojovací řetězec Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string).
 
 ## <a name="next-steps"></a>Další postup
 

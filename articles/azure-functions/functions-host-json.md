@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: ecb2059e529347b7eff72bf6af74b82558a4c251
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: 4688cf6fb82eb8f726205d54d0c852fd3daf8dfb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371695"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564789"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Reference Host. JSON pro Azure Functions 2. x  
 
@@ -147,7 +147,10 @@ Seznam funkcí, které hostitel úlohy spouští. Prázdné pole znamená spušt
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Označuje dobu trvání časového limitu pro všechny funkce. V plánu spotřeby bez serveru je platný rozsah od 1 sekundy do 10 minut a výchozí hodnota je 5 minut. V plánu App Service neexistuje žádný celkový limit a výchozí hodnota závisí na verzi modulu runtime. Ve verzi 2. x je výchozí hodnota pro App Service plán 30 minut. Ve verzi 1. x je *hodnota null*, což znamená, že nevypršel časový limit. Nedá se nastavit jako nekonečné. Pokud tuto hodnotu explicitně nenastavíme, bude mít výchozí hodnotu 30 minut.
+Označuje dobu trvání časového limitu pro všechny funkce. Postupuje podle formátu řetězce TimeSpan. V plánu spotřeby bez serveru je platný rozsah od 1 sekundy do 10 minut a výchozí hodnota je 5 minut.  
+Ve vyhrazeném (App Service) plánu neexistuje žádný celkový limit a výchozí hodnota závisí na verzi modulu runtime: 
++ Verze 1. x: výchozí hodnota je *null*, což znamená, že nevypršel časový limit.   
++ Verze 2. x: výchozí hodnota je 30 minut. Hodnota `-1` označuje neohraničené spuštění.
 
 ```json
 {

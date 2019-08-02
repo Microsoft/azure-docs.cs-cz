@@ -1,9 +1,9 @@
 ---
-title: Nastavení gMSA pro služby Azure Service Fabric container Service | Dokumentace Microsoftu
-description: Naučte se nastavení gMSA pro kontejneru spuštěného v Azure Service Fabric.
+title: Nastavení gMSA pro službu Azure Service Fabric Container Services | Microsoft Docs
+description: Naučte se, jak nastavit gMSA pro kontejner běžící v Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2019
 ms.author: subramar
-ms.openlocfilehash: b4aa08c10cef91b3bf2eef4c87967a74524f6500
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 09994c7676de8470efff1707598ddf32a48e41a0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621793"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599178"
 ---
-# <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>Nastavení gMSA pro kontejnery Windows se spuštěnou v Service Fabric
+# <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>Nastavení gMSA pro kontejnery Windows běžící na Service Fabric
 
-Nastavení gMSA (skupiny účtů spravované služby), soubor specifikace přihlašovacích údajů (`credspec`) je umístěn na všech uzlech v clusteru. Soubor je zkopírovat na všech uzlech, pomocí rozšíření virtuálního počítače.  `credspec` Soubor musí obsahovat informace o účtu gMSA. Další informace o `credspec` souborů naleznete v tématu [vytvoření přihlašovacích údajů specifikace](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec). Specifikace přihlašovacích údajů a `Hostname` značky jsou určené v manifestu aplikace. `Hostname` Značka musí odpovídat názvu účtu gMSA spuštěného v kontejneru.  `Hostname` Značky umožňuje kontejneru své autentizaci k dalším službám v doméně pomocí ověřování protokolem Kerberos.  Ukázky pro zadání `Hostname` a `credspec` v aplikaci je manifest ukazuje následující fragment kódu:
+Pokud chcete nastavit gMSA (skupinový účet spravované služby), uloží se soubor specifikace přihlašovacích údajů (`credspec`) do všech uzlů v clusteru. Soubor se dá zkopírovat na všech uzlech pomocí rozšíření virtuálního počítače.  `credspec` Soubor musí obsahovat informace o účtu gMSA. Další informace o `credspec` souboru najdete v tématu [Vytvoření specifikace přihlašovacích údajů](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec). Specifikace přihlašovacích údajů a `Hostname` značka jsou uvedeny v manifestu aplikace. `Hostname` Značka musí odpovídat názvu účtu gMSA, pod kterým je kontejner spuštěný.  `Hostname` Značka umožňuje kontejneru sám se ověřit s ostatními službami v doméně pomocí ověřování pomocí protokolu Kerberos.  Ukázka pro určení `Hostname` `credspec` a v manifestu aplikace je uvedena v následujícím fragmentu kódu:
 
 ```xml
 <Policies>
@@ -32,7 +32,7 @@ Nastavení gMSA (skupiny účtů spravované služby), soubor specifikace přihl
   </ContainerHostPolicies>
 </Policies>
 ```
-V dalším kroku přečtěte si následující články:
+V dalším kroku si přečtěte následující články:
 
-* [Nasazení kontejneru Windows do Service Fabric na Windows serveru 2016](service-fabric-get-started-containers.md)
-* [Nasazení kontejneru Dockeru pro Service Fabric v Linuxu](service-fabric-get-started-containers-linux.md)
+* [Nasazení kontejneru Windows pro Service Fabric v systému Windows Server 2016](service-fabric-get-started-containers.md)
+* [Nasazení kontejneru Docker pro Service Fabric v systému Linux](service-fabric-get-started-containers-linux.md)

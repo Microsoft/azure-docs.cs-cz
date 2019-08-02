@@ -1,6 +1,6 @@
 ---
-title: Sestavy napříč databázemi s horizontálním navýšením kapacity (horizontální dělení) | Dokumentace Microsoftu
-description: Použijte databázové dotazy napříč databázemi do sestavy ve více databázích.
+title: Sestava napříč cloudových databází s horizontálním škálováním (horizontální dělení) | Microsoft Docs
+description: Dotazy databázové databáze pro různé databáze můžete používat k sestavování napříč více databázemi.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,58 +10,57 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a73938c98ebaea310875f0db8b665d0f1aed55e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cc59d7cb1ce09aad834130818e5af533719e04c1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556228"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568603"
 ---
-# <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestavy napříč databázemi s horizontálním navýšením kapacity (preview)
+# <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestava napříč cloudových databází s horizontálním škálováním (Preview)
 
-Můžete vytvořit sestavy z několika databázemi Azure SQL z jednoho připojení bodu pomocí [elastický dotaz](sql-database-elastic-query-overview.md). Databáze musí být horizontálně dělené do oddílů (označované také jako "horizontálně dělené").
+Můžete vytvářet sestavy z více databází Azure SQL z jediného spojovacího bodu pomocí [elastického dotazu](sql-database-elastic-query-overview.md). Databáze musí být horizontálně rozdělené (označuje se také jako "horizontálně dělené").
 
-Pokud máte existující databázi, naleznete v tématu [migrace existujících databází do databází s horizontálním navýšením kapacity](sql-database-elastic-convert-to-use-elastic-tools.md).
+Pokud máte existující databázi, přečtěte si téma [migrace existujících databází do databází s horizontálním](sql-database-elastic-convert-to-use-elastic-tools.md)navýšení kapacity.
 
-Vysvětlení SQL objektů potřebných k dotazování, najdete v tématu [dotazování napříč databázemi s horizontálně dělené](sql-database-elastic-query-horizontal-partitioning.md).
+Pro pochopení objektů SQL potřebných pro dotazování si přečtěte téma [dotazování napříč horizontálně rozdělenými databázemi](sql-database-elastic-query-horizontal-partitioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Stáhněte a spusťte [Začínáme s ukázkou nástrojů Elastic Database](sql-database-elastic-scale-get-started.md).
+Stáhněte si a spusťte [ukázku Začínáme s nástroji pro elastic Database](sql-database-elastic-scale-get-started.md).
 
-## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Vytvořte ukázkovou aplikaci pomocí Správce mapování horizontálního oddílu
-Tady vytvoříte mapy horizontálních oddílů manager společně s několika horizontálními oddíly, za nímž následuje vložení dat do horizontální oddíly. Pokud jste už nastavení horizontálními oddíly s horizontálně dělená data v nich, můžete přeskočit následující kroky a přejít k další části.
+## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Vytvoření správce map horizontálních oddílů pomocí ukázkové aplikace
+Tady vytvoříte správce map horizontálních oddílů spolu s několika horizontálních oddílůy, za kterými následuje vložení dat do horizontálních oddílů. Pokud už máte horizontálních oddílů nastavení s horizontálně dělené daty, můžete přeskočit následující kroky a přejít k další části.
 
-1. Sestavit a spustit **Začínáme s nástroji Elastic Database** ukázkovou aplikaci. Postupujte podle pokynů až do kroku 7 v části [stažení a spuštění ukázkové aplikace](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). Na konci kroku 7 zobrazí se následující příkazový řádek:
+1. Sestavte a spusťte ukázkovou aplikaci **nástroje Začínáme s nástrojem elastic Database** . Postupujte podle kroků až do kroku 7 v části [Stažení a spuštění ukázkové aplikace](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). Na konci kroku 7 se zobrazí následující příkazový řádek:
 
-    ![Příkazový řádek][1]
-2. V příkazovém okně zadejte "1" a stiskněte klávesu **Enter**. To vytvoří správce mapování horizontálního oddílu a přidá dvě horizontálních oddílů k serveru. Potom zadejte "3" a stiskněte klávesu **Enter**; čtyřikrát opakujte akci. To vloží ukázková data řádků vaše horizontálních oddílů.
-3. [Webu Azure portal](https://portal.azure.com) by se zobrazit tři nové databáze na serveru:
+    ![příkazový řádek][1]
+2. V příkazovém okně zadejte "1" a stiskněte klávesu **ENTER**. Tím se vytvoří správce map horizontálních oddílů a na server se přidá dva horizontálních oddílů. Pak zadejte "3" a stiskněte **ENTER**; Opakujte akci čtyřikrát. Tím se vloží vzorové datové řádky do horizontálních oddílů.
+3. [Azure Portal](https://portal.azure.com) by se měly na vašem serveru zobrazovat tři nové databáze:
 
-   ![Visual Studio confirmation][2]
+   ![Potvrzení sady Visual Studio][2]
 
-   Mezidatabázové dotazy v tomto okamžiku jsou podporovány pomocí klientské knihovny Elastic Database. Možnost 4 například použijte v příkazovém okně. Výsledky z více horizontálních oddílů dotazu jsou vždy **UNION ALL** výsledků ze všech horizontálních oddílů.
+   V tomto okamžiku jsou mezidatabázové dotazy podporovány prostřednictvím klientských knihoven Elastic Database. Použijte například možnost 4 v příkazovém okně. Výsledky z dotazu multi-horizontálních oddílů jsou vždycky **sjednocením všech** výsledků ze všech horizontálních oddílů.
 
-   V další části vytvoříme koncový bod ukázkové databáze, která podporuje bohatší dotazování data napříč horizontálními oddíly.
+   V další části vytvoříme ukázkový koncový bod databáze, který podporuje bohatší dotaz na data napříč horizontálních oddílů.
 
-## <a name="create-an-elastic-query-database"></a>Vytvořte dotaz na elastic database
-1. Otevřít [webu Azure portal](https://portal.azure.com) a přihlaste se.
-2. Vytvořte novou databázi Azure SQL na stejném serveru jako nastavení horizontálními oddíly. Název databáze "ElasticDBQuery."
+## <a name="create-an-elastic-query-database"></a>Vytvoření elastické databáze dotazů
+1. Otevřete [Azure Portal](https://portal.azure.com) a přihlaste se.
+2. Vytvořte novou databázi SQL Azure na stejném serveru jako instalační program horizontálních oddílů. Pojmenujte databázi "ElasticDBQuery".
 
-    ![Cenová úroveň a webu Azure portal][3]
+    ![Azure Portal a cenová úroveň][3]
 
     > [!NOTE]
-    > můžete použít existující databázi. Pokud vám pomůžou, proto to nesmí být jeden z horizontálních oddílů, které byste chtěli provést vaše dotazy. Tato databáze se použije pro vytváření objektů metadat pro dotaz na elastickou databázi.
+    > můžete použít existující databázi. Pokud to uděláte, nesmí to být jedna z horizontálních oddílů, na kterou byste chtěli spustit dotazy. Tato databáze se použije k vytvoření objektů metadat pro dotaz elastické databáze.
     >
 
 ## <a name="create-database-objects"></a>Vytváření databázových objektů
-### <a name="database-scoped-master-key-and-credentials"></a>Hlavní klíč s rozsahem databáze a přihlašovacích údajů
-Ty se používají k připojení k správce mapování horizontálních oddílů a horizontální oddíly:
+### <a name="database-scoped-master-key-and-credentials"></a>Hlavní klíč a přihlašovací údaje v rámci databáze
+Používají se k připojení ke Správci map horizontálních oddílů a k horizontálních oddílů:
 
-1. Otevřete SQL Server Management Studio nebo SQL Server Data Tools v sadě Visual Studio.
-2. Připojení k databázi ElasticDBQuery a spusťte následující příkazy T-SQL:
+1. Otevřete SQL Server Management Studio nebo SQL Server Data Tools v aplikaci Visual Studio.
+2. Připojte se k databázi ElasticDBQuery a spusťte následující příkazy T-SQL:
 
         CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
 
@@ -69,10 +68,10 @@ Ty se používají k připojení k správce mapování horizontálních oddílů
         WITH IDENTITY = '<username>',
         SECRET = '<password>';
 
-    "username" a "password" by měla být stejná jako přihlašovací údaje použité v kroku 6 postupu [stažení a spuštění ukázkové aplikace](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) v [Začínáme s nástroji elastic database](sql-database-elastic-scale-get-started.md).
+    uživatelské jméno a heslo by mělo být stejné jako přihlašovací informace používané v kroku 6 [ke stažení a spuštění ukázkové aplikace](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) v tématu [Začínáme s nástroji elastické databáze](sql-database-elastic-scale-get-started.md).
 
 ### <a name="external-data-sources"></a>Externí zdroje dat
-K vytvoření externího zdroje dat, spusťte následující příkaz v databázi ElasticDBQuery:
+Pokud chcete vytvořit externí zdroj dat, spusťte v databázi ElasticDBQuery tento příkaz:
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
       (TYPE = SHARD_MAP_MANAGER,
@@ -82,10 +81,10 @@ K vytvoření externího zdroje dat, spusťte následující příkaz v databáz
        SHARD_MAP_NAME = 'CustomerIDShardMap'
     ) ;
 
- "CustomerIDShardMap" je název mapy horizontálních oddílů, pokud jste vytvořili mapy horizontálních oddílů a ukázka nástroje pro elastické databáze správce mapování horizontálních oddílů. Nicméně pokud jste použili vlastní nastavení pro tuto ukázku, pak je třeba název mapy horizontálních oddílů, kterou jste zvolili v aplikaci.
+ "CustomerIDShardMap" je název mapy horizontálních oddílů, pokud jste vytvořili mapu horizontálních oddílů a správce mapování horizontálních oddílů pomocí ukázky nástrojů elastické databáze. Pokud jste však pro tuto ukázku použili vlastní instalaci, měl by se jednat o název mapy horizontálních oddílů, který jste zvolili v aplikaci.
 
 ### <a name="external-tables"></a>Externí tabulky
-Vytvoření externí tabulky, která odpovídá spuštěním následujícího příkazu na databázi ElasticDBQuery tabulky Zákazníci na horizontální oddíly:
+Vytvořte externí tabulku, která odpovídá tabulce Customers na horizontálních oddílů spuštěním následujícího příkazu v databázi ElasticDBQuery:
 
     CREATE EXTERNAL TABLE [dbo].[Customers]
     ( [CustomerId] [int] NOT NULL,
@@ -96,46 +95,46 @@ Vytvoření externí tabulky, která odpovídá spuštěním následujícího p�
       DISTRIBUTION = SHARDED([CustomerId])
     ) ;
 
-## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Spuštění ukázkového dotazu T-SQL elastické databáze
-Pokud jste definovali v externím zdroji dat. a externích tabulek teď můžete úplné T-SQL na externí tabulky.
+## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Spuštění ukázkového dotazu T-SQL pro elastickou databázi
+Po definování externího zdroje dat a externích tabulek teď můžete použít plný T-SQL přes vaše externí tabulky.
 
-Spusťte tento dotaz na databázi ElasticDBQuery:
+Spustit tento dotaz v databázi ElasticDBQuery:
 
     select count(CustomerId) from [dbo].[Customers]
 
-Uvidíte, že dotaz agreguje výsledky ze všech horizontálních oddílů a poskytuje následující výstup:
+Všimněte si, že dotaz agreguje výsledky ze všech horizontálních oddílů a poskytne následující výstup:
 
 ![Podrobnosti výstupu][4]
 
-## <a name="import-elastic-database-query-results-to-excel"></a>Importovat výsledky dotazu elastické databáze do Excelu
- Můžete importovat z výsledků dotazu do Excelového souboru.
+## <a name="import-elastic-database-query-results-to-excel"></a>Import výsledků dotazu elastické databáze do aplikace Excel
+ Výsledky dotazu můžete importovat do excelového souboru.
 
-1. Spuštění Excelu 2013.
-2. Přejděte **Data** pásu karet.
-3. Klikněte na tlačítko **z jiných zdrojů** a klikněte na tlačítko **z SQL serveru**.
+1. Spusťte Excel 2013.
+2. Přejděte na pás karet **data** .
+3. Klikněte na **z jiných zdrojů** a klikněte na **z SQL Server**.
 
-   ![Import z aplikace Excel z jiných zdrojů][5]
-4. V **Průvodce datovým připojením** zadejte název a přihlašovací údaje serveru. Pak klikněte na tlačítko **Další**.
-5. V dialogovém okně **vyberte databázi, která obsahuje data, která chcete**, vyberte **ElasticDBQuery** databáze.
-6. Vyberte **zákazníkům** tabulky v zobrazení seznamu a klikněte na tlačítko **Další**. Pak klikněte na tlačítko **Dokončit**.
-7. V **Import dat** formuláře, v části **vyberte požadovaný způsob zobrazení dat v sešitu**vyberte **tabulky** a klikněte na tlačítko **OK**.
+   ![Import z jiných zdrojů z Excelu][5]
+4. V **Průvodci datovým připojením** zadejte název serveru a přihlašovací údaje. Pak klikněte na tlačítko **Další**.
+5. V dialogovém okně **Vyberte databázi**obsahující požadovaná data a vyberte databázi **ElasticDBQuery** .
+6. V zobrazení seznamu vyberte tabulku **zákazníci** a klikněte na **Další**. Pak klikněte na **Dokončit**.
+7. Ve formuláři **importovat data** v části **Vyberte, jakým způsobem chcete zobrazit tato data v sešitu**vyberte **tabulka** a klikněte na tlačítko **OK**.
 
-Všechny řádky z **zákazníkům** tabulky, uložené v různých horizontálních oddílech naplnit do Excelového souboru.
+Všechny řádky z tabulky **Customers** uložené v různých horizontálních oddílů naplní excelový list.
 
-Teď můžete použít funkce v Excelu výkonné datové vizualizace. Můžete použít připojovací řetězec s názvem serveru, název databáze a přihlašovací údaje pro připojení k databázi elastický dotaz integrace nástroje pro BI a data. Ujistěte se, že systém SQL Server je podporovaný jako zdroj dat pro nástroj. Mohou odkazovat na dotaz na elastic database a externí tabulky, stejně jako jakékoli jiné databáze systému SQL Server a tabulek systému SQL Server, které by se připojit s nástrojem.
+Nyní můžete používat výkonné funkce pro vizualizaci dat v Excelu. Připojovací řetězec s názvem vašeho serveru, názvem databáze a přihlašovacími údaji můžete použít k propojení nástrojů pro integraci BI a dat s databází elastického dotazu. Ujistěte se, že je pro nástroj SQL Server podporována jako zdroj dat. Na databázi elastických dotazů a externích tabulkách můžete odkazovat stejně jako na jakékoli jiné SQL Server databáze a SQL Server tabulky, ke kterým se připojíte pomocí nástroje.
 
 ### <a name="cost"></a>Náklady
-Neexistuje žádné další poplatky za využívání funkci dotaz na Elastic Database.
+Pro použití funkce dotazu Elastic Database se neúčtují žádné další poplatky.
 
-Informace o cenách najdete v části [podrobnosti o cenách na SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
+Informace o cenách najdete v článku informace o [cenách SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ## <a name="next-steps"></a>Další postup
 
-* Přehled elastický dotaz, naleznete v tématu [elastický dotaz přehled](sql-database-elastic-query-overview.md).
-* Vertikální dělení kurz najdete v tématu [Začínáme s mezidatabázovými dotazy (vertikální oddíly)](sql-database-elastic-query-getting-started-vertical.md).
-* Syntaxe a ukázkové dotazy na vertikálně dělená data, najdete v části [dotazování na vertikálně dělené data)](sql-database-elastic-query-vertical-partitioning.md)
-* Syntaxe a ukázkové dotazy pro horizontálně dělená data, najdete v části [dotazování na horizontálně dělené data)](sql-database-elastic-query-horizontal-partitioning.md)
-* Naleznete v tématu [sp\_provést \_vzdálené](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provádí příkaz jazyka Transact-SQL na jeden vzdálený Azure SQL Database nebo sadu databází, které slouží jako horizontální oddíly takovým vodorovné schéma vytváření oddílů.
+* Přehled elastického dotazu najdete v tématu [Přehled elastického dotazu](sql-database-elastic-query-overview.md).
+* Kurz pro vertikální dělení najdete v tématu [Začínáme s mezidatabázovým dotazem (vertikální dělení)](sql-database-elastic-query-getting-started-vertical.md).
+* Syntaxe a ukázkové dotazy pro vertikálně dělená data najdete v tématu dotazování na [vertikálně dělená data](sql-database-elastic-query-vertical-partitioning.md) .
+* Syntaxe a ukázkové dotazy pro horizontálně rozdělená data najdete v tématu [dotazování na horizontálně dělená data](sql-database-elastic-query-horizontal-partitioning.md) .
+* V [tématu\_SP \_Execute Remote](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, která slouží jako horizontálních oddílů ve vodorovném schématu dělení.
 
 
 <!--Image references-->

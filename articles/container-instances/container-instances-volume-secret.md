@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: danlep
 ms.openlocfilehash: 2e96ef73c3ff89fd7941fa14a8a1e53e6d4d8593
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325423"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Připojit tajný svazek v Azure Container Instances
 
-Použijte *tajný* svazek k poskytnutí citlivých informací do kontejnerů ve skupině kontejnerů. *Tajný* svazek ukládá vaše tajné kódy do souborů ve svazku, které jsou přístupné pro kontejnery ve skupině kontejnerů. Uložením tajných kódů  do tajného svazku se můžete vyhnout přidávání citlivých dat, jako jsou klíče SSH nebo pověření databáze, do kódu aplikace.
+Použijte *tajný* svazek k poskytnutí citlivých informací do kontejnerů ve skupině kontejnerů. *Tajný* svazek ukládá vaše tajné kódy do souborů ve svazku, které jsou přístupné pro kontejnery ve skupině kontejnerů. Uložením tajných kódů do tajného svazku se můžete vyhnout přidávání citlivých dat, jako jsou klíče SSH nebo pověření databáze, do kódu aplikace.
 
 Všechny *tajné* svazky jsou založené na [tmpfs][tmpfs], který je zálohovaný systémem souborů RAM. jejich obsah se nikdy nezapisuje do úložiště, které není volatile.
 

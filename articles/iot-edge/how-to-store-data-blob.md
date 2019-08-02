@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c5a27a8016202f7f8c9e256eaf6b3077fbef295b
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5932d51ecaca3c827ae6de268711c7f4d1b28d0a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414531"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640650"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store dat na hraničních zařízeních s Azure Blob Storage na hraničních zařízeních IoT (preview)
 
@@ -87,7 +87,7 @@ Název tohoto nastavení je`deviceToCloudUploadProperties`
 | ----- | ----- | ---- | ---- |
 | uploadOn | true, false | Nastaveno na `false` výchozí hodnotu. Pokud chcete funkci zapnout, nastavte toto pole na `true`. | `deviceToCloudUploadProperties__uploadOn={false,true}` |
 | uploadOrder | NewestFirst, OldestFirst | Umožňuje zvolit pořadí, ve kterém se data zkopírují do Azure. Nastaveno na `OldestFirst` výchozí hodnotu. Pořadí určuje čas poslední změny objektu BLOB. | `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"`je připojovací řetězec, který umožňuje určit účet Azure Storage, na který chcete data nahráli. Zadejte `Azure Storage Account Name`, `Azure Storage Account Key`, .`End point suffix` Přidejte odpovídající EndpointSuffix z Azure, kam se budou data nahrávat, se liší pro globální Azure, státní správu Azure a Microsoft Azure Stack. | `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"`je připojovací řetězec, který umožňuje určit účet úložiště, na který chcete data nahráli. Zadejte `Azure Storage Account Name`, `Azure Storage Account Key`, .`End point suffix` Přidejte odpovídající EndpointSuffix z Azure, kam se budou data nahrávat, se liší pro globální Azure, státní správu Azure a Microsoft Azure Stack. <br><br> Sem můžete zadat připojovací řetězec SAS Azure Storage. Ale po vypršení platnosti musíte tuto vlastnost aktualizovat.  | `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Umožňuje zadat názvy kontejnerů, které chcete nahrát do Azure. Tento modul umožňuje zadat název zdrojového i cílového kontejneru. Pokud nezadáte název cílového kontejneru, automaticky se přiřadí název kontejneru jako `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Můžete vytvořit řetězce šablon pro název cílového kontejneru, podívejte se do sloupce možné hodnoty. <br>*% h-> IoT Hub název (3-50 znaků). <br>*% d – > IoT Edge ID zařízení (1 až 129 znaků). <br>*% m-> název modulu (1 až 64 znaků). <br>*% c-> název zdrojového kontejneru (3 až 63 znaků). <br><br>Maximální velikost názvu kontejneru je 63 znaků a při automatickém přiřazování názvu cílového kontejneru, pokud velikost kontejneru překročí 63 znaků, se všechny oddíly (IoTHubName, IotEdgeDeviceID, Module, SourceContainerName) oříznou na 15. písmena. | `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target: <targetName>` |
 | deleteAfterUpload | true, false | Nastaveno na `false` výchozí hodnotu. Když je nastavená na `true`, automaticky se odstraní data po dokončení nahrávání do cloudového úložiště. | `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
 
@@ -101,6 +101,23 @@ Název tohoto nastavení je`deviceAutoDeleteProperties`
 | deleteOn | true, false | Nastaveno na `false` výchozí hodnotu. Pokud chcete funkci zapnout, nastavte toto pole na `true`. | `deviceAutoDeleteProperties__deleteOn={false,true}` |
 | deleteAfterMinutes | `<minutes>` | Zadejte čas v minutách. Modul automaticky odstraní objekty BLOB z místního úložiště, jakmile vyprší platnost této hodnoty. | `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
 | retainWhileUploading | true, false | Ve výchozím nastavení se nastaví na `true`a při vypršení platnosti deleteAfterMinutes zůstane objekt BLOB při nahrávání do cloudového úložiště. Můžete ho nastavit na `false` a tato data budou odstraněna, jakmile deleteAfterMinutes vyprší platnost. Poznámka: Aby tato vlastnost fungovala uploadOn, musí být nastavená na true.| `deviceAutoDeleteProperties__retainWhileUploading={false,true}` |
+
+## <a name="using-smb-share-as-your-local-storage"></a>Použití sdílené složky SMB jako místního úložiště
+Pokud nasadíte kontejner Windows tohoto modulu na hostitele Windows, můžete jako cestu k místnímu úložišti zadat sdílenou složku SMB.
+Můžete spustit `New-SmbGlobalMapping` příkaz prostředí PowerShell pro místní mapování sdílené složky SMB na zařízení IoT s Windows. Ujistěte se, že zařízení IoT může číst a zapisovat do vzdálené sdílené složky protokolu SMB.
+
+Níže jsou uvedené kroky konfigurace:
+```PowerShell
+$creds = Get-Credential
+New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
+```
+Příklad: <br>
+`$creds = Get-Credentials` <br>
+`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G: `
+
+Tento příkaz použije přihlašovací údaje k ověření u vzdáleného serveru SMB. Pak namapujte cestu vzdálené sdílené složky na G: písmeno jednotky (může to být jakékoli jiné dostupné písmeno jednotky). Zařízení IoT teď má datový svazek namapovaný na cestu na jednotce G:. 
+
+Pro nasazení `<storage directory bind>` může být hodnota **G:/ContainerData: C:/BlobRoot**.
 
 ## <a name="configure-log-files"></a>Konfigurace souborů protokolu
 
@@ -219,6 +236,6 @@ Váš názor je důležitý pro to, abychom tento modul a jeho funkce byly užit
 
 Můžete nás kontaktovat naabsiotfeedback@microsoft.com
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o [nasazení Azure Blob Storage v IoT Edge](how-to-deploy-blob.md)
+Přečtěte si, jak [nasadit Azure Blob Storage v IoT Edge](how-to-deploy-blob.md)

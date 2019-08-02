@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f3be6cebafb6d0f50b5ac9a9e40e5707202ea643
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: cdb1b49af5d3a85dc1853e5964c1cdfdd5c3a7cd
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849422"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716676"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informace o technických profilech v Azure Active Directory B2C vlastních zásadách
 
@@ -32,7 +32,7 @@ Technický profil umožňuje tyto typy scénářů:
 - **Poskytovatel telefonního faktoru** – Multi-Factor Authentication.
 - [OAuth1](oauth1-technical-profile.md) – federace s jakýmkoli poskytovatelem identity protokolu OAuth 1,0.
 - [OAuth2](oauth2-technical-profile.md) – federace s jakýmkoli poskytovatelem identity protokolu OAuth 2,0.
-- [OpenIdConnect](openid-connect-technical-profile.md) – federace s jakýmkoli poskytovatelem identity protokolu OpenId Connect.
+- [OpenID Connect](openid-connect-technical-profile.md) -Federation s libovolným poskytovatelem identity protokolu OpenID Connect.
 - [Transformace deklarací identity](claims-transformation-technical-profile.md) – volá výstupní transformace deklarací identity za účelem manipulace s hodnotami deklarací identity, ověřování deklarací identity nebo nastavení výchozích hodnot pro sadu výstupních deklarací.
 - [Poskytovatel RESTful](restful-technical-profile.md) – volání služeb REST API Services, například ověření vstupu uživatele, rozšíření uživatelských dat nebo integrace s podnikovými aplikacemi.
 - [Typu Saml2](saml-technical-profile.md) – federace s libovolným poskytovatelem identity protokolu SAML.

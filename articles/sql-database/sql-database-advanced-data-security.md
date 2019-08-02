@@ -9,14 +9,13 @@ ms.topic: conceptual
 author: monhaber
 ms.author: v-mohabe
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/31/2019
-ms.openlocfilehash: ce02fee31041222c48d62ef8410b97fedf74dfdb
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: b8fc82ca8f4b42adf595680541042ef38efe1470
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297684"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569539"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Rozšířené zabezpečení dat pro Azure SQL Database
 
@@ -58,7 +57,7 @@ Klikněte na kartu **klasifikace & zjišťování dat** , abyste viděli Doporu�
 
 Pokud chcete zobrazit a spravovat nastavení reklam, přejděte k **rozšířenému zabezpečení dat** pod hlavičkou **zabezpečení** pro váš SQL Database Server nebo spravovanou instanci. Na této stránce můžete povolit nebo zakázat reklamy a upravit nastavení posouzení ohrožení zabezpečení a rozšířené ochrany před internetovými útoky pro celý SQL Database Server nebo spravovanou instanci.
 
-![nastavení serveru](./media/sql-advanced-protection/server_settings.png) 
+![Nastavení serveru](./media/sql-advanced-protection/server_settings.png) 
 
 ## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. Správa nastavení reklam pro databázi SQL
 
@@ -72,7 +71,7 @@ Pokročilá nastavení zabezpečení dat pro váš databázový server nebo spra
 
 ![Nastavení databáze](./media/sql-advanced-protection/database_settings.png) 
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další postup 
 
 - Další informace o [klasifikaci & Discovery Data](sql-database-data-discovery-and-classification.md) 
 - Další informace o [posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) 

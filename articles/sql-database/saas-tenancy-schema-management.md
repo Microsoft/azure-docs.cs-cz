@@ -1,6 +1,6 @@
 ---
-title: Správa schématu Azure SQL Database v aplikaci s jedním tenantem | Dokumentace Microsoftu
-description: Správa schématu pro více tenantů v aplikace s jedním tenantem, která používá Azure SQL Database
+title: Správa schématu Azure SQL Database v aplikaci s jedním tenantům | Microsoft Docs
+description: Správa schématu pro více tenantů v aplikaci s jedním tenantů, která používá Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -10,127 +10,126 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: eb461367d58f7cadeccd434c0e4ab452b7fc640e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b238044fd3795ae2f49c2fa21367e6499a65672
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241915"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570125"
 ---
-# <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Správa schématu v SaaS aplikaci pomocí vzoru databáze na tenanta s Azure SQL Database
+# <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Správa schématu v aplikaci SaaS pomocí modelu databáze na tenanta s Azure SQL Database
  
-Jak databázi aplikace vyvíjí, změny nevyhnutelně musí být provedené v datech schématu nebo odkaz na databázi.  Úlohy údržby databáze je potřeba také pravidelně. Správa aplikace, která používá databázi za vzor tenanta vyžaduje použití těchto změn nebo úlohy údržby v počtu klientských databází.
+V rámci vývoje databázových aplikací je u schématu databáze nebo referenčních dat nevyhnutelná potřeba provést změny.  Úlohy údržby databáze se také pravidelně vyžadují. Správa aplikace, která používá databázi na model tenanta, vyžaduje, abyste tyto změny nebo úlohy údržby použili v rámci loďstva databází tenantů.
 
-Tento kurz zkoumá dva scénáře: nasazení aktualizací referenčních dat u všech tenantů a nové sestavení indexu pro tabulku obsahující referenční data. [Elastic jobs](elastic-jobs-overview.md) funkce se používá k provedení těchto akcí ve všech databázích tenantů a v databázi šablony použité k vytvoření nového tenanta databází.
+V tomto kurzu se seznámíte se dvěma scénáři – nasazení aktualizací referenčních dat pro všechny klienty a opětovné sestavení indexu v tabulce obsahující referenční data. Funkce [elastické úlohy](elastic-jobs-overview.md) se používá ke spouštění těchto akcí ve všech databázích tenanta a v databázi šablon použité k vytváření nových databází tenanta.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > 
-> * Vytvořit úlohu agenta
-> * Způsobit, že úlohy T-SQL ke spuštění ve všech databázích tenantů
-> * Aktualizace referenčních dat ve všech databázích tenantů
+> * Vytvoření agenta úloh
+> * Spustí úlohy T-SQL, které se mají spustit na všech databázích tenanta.
+> * Aktualizace referenčních dat ve všech databázích tenanta
 > * Vytvořit index tabulky ve všech databázích tenantů
 
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
-* Nasazení aplikace Wingtip Tickets SaaS databáze na Tenanta. Nasazení za méně než pět minut najdete v tématu [nasazení a zkoumání SaaS aplikace Wingtip Tickets databáze na tenanta aplikaci.](saas-dbpertenant-get-started-deploy.md)
+* Aplikace Wingtip Tickets SaaS Database na tenanta je nasazená. Postup nasazení za méně než pět minut najdete v tématu [nasazení a prozkoumání aplikace Wingtip Tickets SaaS Database na klienta](saas-dbpertenant-get-started-deploy.md) .
 * Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Je nainstalovaná nejnovější verze SQL Server Management Studia (SSMS). [Stažení a instalace SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 > [!NOTE]
-> Tento kurz používá funkce služby SQL Database, které jsou ve verzi limited preview (úlohy elastické databáze). Pokud chcete provést v tomto kurzu, zadejte ID svého předplatného na SaaSFeedback@microsoft.com předmět uveďte Elastic Jobs Preview. Jakmile dostanete potvrzení o aktivaci vašeho předplatného, [stáhněte a nainstalujte si nejnovější předběžnou verzi rutin úloh](https://github.com/jaredmoo/azure-powershell/releases). V této verzi preview je omezená, takže obraťte se na SaaSFeedback@microsoft.com pro dotazy související s hesly nebo podpory.
+> V tomto kurzu se používají funkce služby SQL Database, které jsou ve verzi omezené verze Preview (úlohy elastické databáze). Pokud chcete tento kurz udělat, zadejte ID předplatného do SaaSFeedback@microsoft.com složky předmět = elastické úlohy ve verzi Preview. Jakmile dostanete potvrzení o aktivaci vašeho předplatného, [stáhněte a nainstalujte si nejnovější předběžnou verzi rutin úloh](https://github.com/jaredmoo/azure-powershell/releases). Tato verze Preview je omezená, takže SaaSFeedback@microsoft.com se obraťte na související otázky nebo podporu.
 
-## <a name="introduction-to-saas-schema-management-patterns"></a>Úvod do principu správy schématu SaaS
+## <a name="introduction-to-saas-schema-management-patterns"></a>Seznámení se vzory správy schématu SaaS
 
-Databáze na tenanta vzor efektivně izoluje dat tenantů, ale zvyšuje počet databází pro správu a údržbu. [Elastické úlohy](elastic-jobs-overview.md) usnadňuje správu a Správa databází SQL. Úlohy umožňují bezpečně a spolehlivě spouštět úlohy (skriptů T-SQL) pro skupinu databází. Úlohy můžete nasadit schéma a běžným změnám referenčních dat napříč všemi databázemi tenantů v aplikaci. Elastické úlohy může také sloužit k udržování *šablony* databáze používaná k vytváření nových tenantů, aby se vždy obsahuje nejnovější schéma a referenční data.
+Model databáze na tenanta izoluje data tenanta efektivně, ale zvyšuje počet databází, které se mají spravovat a udržovat. [Elastické úlohy](elastic-jobs-overview.md) usnadňují správu a správu databází SQL. Úlohy umožňují bezpečně a spolehlivě spouštět úlohy (skripty T-SQL) pro skupinu databází. Úlohy mohou nasadit schéma a běžné referenční datové změny napříč všemi databázemi klienta v aplikaci. Elastické úlohy je také možné použít k údržbě *šablony* , která se používá k vytváření nových tenantů, a zajišťuje tak, že má vždy k dispozici nejnovější schéma a referenční data.
 
 ![obrazovka](media/saas-tenancy-schema-management/schema-management-dpt.png)
 
 
 ## <a name="elastic-jobs-limited-preview"></a>Elastic Jobs verze Limited Preview
 
-Existuje nová verze služby Elastic Jobs je teď integrované funkce služby Azure SQL Database. Tato nová verze služby Elastic Jobs je v současnosti ve verzi Limited Preview. Verze limited preview momentálně podporuje použití Powershellu k vytvoření úlohy agenta a T-SQL k vytvoření a Správa úloh.
+K dispozici je nová verze elastických úloh, která je teď integrovanou funkcí Azure SQL Database. Tato nová verze služby Elastic Jobs je v současnosti ve verzi Limited Preview. Tato omezená verze Preview aktuálně podporuje použití PowerShellu k vytvoření agenta úloh a T-SQL k vytváření a správě úloh.
 
 > [!NOTE]
-> Tento kurz používá funkce služby SQL Database, které jsou ve verzi limited preview (úlohy elastické databáze). Pokud chcete provést v tomto kurzu, zadejte ID svého předplatného na SaaSFeedback@microsoft.com předmět uveďte Elastic Jobs Preview. Jakmile dostanete potvrzení o aktivaci vašeho předplatného, [stáhněte a nainstalujte si nejnovější předběžnou verzi rutin úloh](https://github.com/jaredmoo/azure-powershell/releases). V této verzi preview je omezená, takže obraťte se na SaaSFeedback@microsoft.com pro dotazy související s hesly nebo podpory.
+> V tomto kurzu se používají funkce služby SQL Database, které jsou ve verzi omezené verze Preview (úlohy elastické databáze). Pokud chcete tento kurz udělat, zadejte ID předplatného do SaaSFeedback@microsoft.com složky předmět = elastické úlohy ve verzi Preview. Jakmile dostanete potvrzení o aktivaci vašeho předplatného, [stáhněte a nainstalujte si nejnovější předběžnou verzi rutin úloh](https://github.com/jaredmoo/azure-powershell/releases). Tato verze Preview je omezená, takže SaaSFeedback@microsoft.com se obraťte na související otázky nebo podporu.
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získat databázi SaaS aplikace Wingtip Tickets za skriptů aplikace tenanta
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získání skriptů aplikace Wingtip Tickets SaaS Database na klientské aplikace
 
-Zdrojový kód a správu skriptů aplikace jsou k dispozici v [WingtipTicketsSaaS DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) úložiště GitHub. Podívejte se [obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) pokyny ke stažení a odblokování SaaS aplikace Wingtip Tickets skripty.
+Zdrojový kód aplikace a skripty pro správu jsou k dispozici v úložišti GitHub [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) . Projděte si [Obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) ke stažení a odblokování skriptů Wingtip Tickets SaaS.
 
-## <a name="create-a-job-agent-database-and-new-job-agent"></a>Vytvoření úlohy agenta, databáze a nové úlohy agenta
+## <a name="create-a-job-agent-database-and-new-job-agent"></a>Vytvoření databáze agenta úloh a nového agenta úloh
 
-Tento kurz vyžaduje použití Powershellu k vytvoření úlohy agenta a jeho databáze agenta úloh zálohování. Databáze agenta úloh obsahuje definice úloh, stavy úloh a historii. Jakmile se vytvoří úloha agenta a jeho databáze, můžete vytvořit a monitorovat úlohy okamžitě.
+Tento kurz vyžaduje, abyste pomocí PowerShellu vytvořili agenta úloh a jeho záložní databázi agenta úloh. Databáze agenta úloh obsahuje definice úloh, stav úlohy a historii. Po vytvoření agenta úlohy a jeho databáze můžete okamžitě vytvořit a monitorovat úlohy.
 
-1. **V prostředí PowerShell ISE**, otevřete... \\Learning Modules\\Schema Management\\*Demo-SchemaManagement.ps1*.
+1. **V prostředí POWERSHELL ISE**otevřete... Výukové\\moduly:\\Správa schématu*demo-SchemaManagement. ps1.* \\
 1. Stisknutím klávesy **F5** spusťte skript.
 
-*Demo-SchemaManagement.ps1* volání skriptu *Deploy-SchemaManagement.ps1* skript k vytvoření databáze SQL s názvem *osagent* na server katalogu. Potom vytvoří úlohu agenta, pomocí databáze jako parametr.
+Skript *demo-SchemaManagement. ps1* volá skript *Deploy-SchemaManagement. ps1* , který vytvoří databázi SQL s názvem *osagent* na serveru katalogu. Pak vytvoří agenta úloh pomocí databáze jako parametru.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Vytvoření úlohy, která u všech tenantů nasadí nová referenční data
 
-V aplikaci Wingtip Tickets Každá databáze tenanta zahrnuje sadu typů míst podporované. Každé místo je místo konkrétní typ, který definuje typ události, které je možné hostovat a určuje obrázku pozadí používané v aplikaci. Pro aplikaci, aby podporovala nové typy událostí musí být těmto referenčním datům typy míst aktualizované a nové přidán.  V tomto cvičení nasadíte aktualizaci u všech databází tenantů přidat dva další typy míst: *Motorcycle Racing* a *Swimming Club*.
+V aplikaci Wingtip Tickets obsahuje každá databáze tenanta sadu podporovaných typů míst. Každé místo má konkrétní typ místa, který definuje druh událostí, které mohou být hostovány, a určuje obrázek pozadí použitý v aplikaci. Aby aplikace podporovala nové druhy událostí, je nutné aktualizovat Tato referenční data a přidat nové typy míst.  V tomto cvičení nasadíte aktualizaci do všech databází tenantů, abyste přidali dva další typy místa: *Motocykl* a závodní *klub*.
 
-Nejprve si přečtěte typy míst zahrnuta v každé databázi tenantů. Připojte se k jedné z databází tenantů v SQL Server Management Studio (SSMS) a zkontrolujte tabulku VenueTypes.  Můžete také zadávat dotazy této tabulky v editoru dotazů na webu Azure Portal k němu přistupovat z databáze. 
+Nejprve zkontrolujte typy míst, které jsou součástí každé databáze tenanta. Připojte se k jedné z databází tenantů v SQL Server Management Studio (SSMS) a prozkoumejte tabulku VenueTypes.  Tuto tabulku můžete také dotazovat v editoru dotazů v Azure Portal, ke kterému se dostanete ze stránky databáze. 
 
-1. Otevřete SSMS a připojte se k serveru tenanta: *tenants1-dpt -&lt;uživatele&gt;. database.windows.net*
-1. Zkontrolujte, že *Motorcycle Racing* a *Swimming Club* **nejsou** momentálně zahrnutá, přejděte _contosoconcerthall_ databáze na *tenants1-dpt -&lt;uživatele&gt;*  serveru a dotazování *VenueTypes* tabulky.
+1. Otevřete SSMS a připojte se k tenantovi serveru: *tenants1-DPT-&lt;User&gt;. Database.Windows.NET*
+1. Pokud si chcete ověřit, že **se** na *motocyklu* nepatří, přejděte k databázi _contosoconcerthall_ na serveru *tenants1-DPT-&lt;User&gt;*  a Dotazujte na  *Tabulka VenueTypes*
 
-Teď vytvoříme úlohu, která aktualizuje *VenueTypes* tabulky ve všech databázích tenantů pro přidání nové typy míst.
+Teď vytvoříme úlohu, která aktualizuje tabulku *VenueTypes* ve všech databázích tenantů, aby se přidaly nové typy míst konání.
 
-Chcete-li vytvořit novou úlohu, používáte sadu úloh systémové uložené procedury vytvořené v _jobagent_ databáze při vytváření úlohy agenta.
+Chcete-li vytvořit novou úlohu, použijte sadu systémových uložených procedur úloh vytvořených v databázi _Služba jobagent_ při vytvoření agenta úlohy.
 
-1. V aplikaci SSMS připojit k serveru katalogu: *katalogu-dpt -&lt;uživatele&gt;. database.windows.net* serveru 
-1. V aplikaci SSMS otevřete soubor... \\Learning Modules\\Schema Management\\DeployReferenceData.sql
-1. Upravte příkaz: Nastavte @wtpUser = &lt;uživatele&gt; a nahraďte hodnotu uživatelského jste použili při nasazení aplikace Wingtip Tickets SaaS databáze na Tenanta
-1. Zkontrolujte, že se připojení k _jobagent_ databáze a stisknutím klávesy **F5** pro spuštění skriptu
+1. V SSMS se připojte k serveru katalogu: *Catalog-DPT-&lt;&gt;User. Database.Windows.NET* Server 
+1. V SSMS otevřete soubor... Výukové\\moduly schéma\\Správa schématu DeployReferenceData. SQL \\
+1. Upravte příkaz: Set @wtpUser = &lt;User&gt; a dosadit hodnotu uživatele, která se používá při nasazení aplikace Wingtip Tickets SaaS Database na klienta
+1. Ujistěte se, že jste připojení k databázi _Služba jobagent_ , a stisknutím klávesy **F5** spusťte skript.
 
-Podívejte se následující prvky *DeployReferenceData.sql* skriptu:
-* **SP\_přidat\_cílové\_skupiny** vytvoří cílovou skupinu s názvem DemoServerGroup.
-* **SP\_přidat\_cílové\_skupiny\_člen** slouží k definování sady cílové databáze.  První _tenants1-dpt -&lt;uživatele&gt;_  přidání serveru.  Přidání serveru jako cíl způsobí, že databáze v tomto serveru v době provádění úlohy, které mají být zahrnuty do úlohy. Pak bude _basetenantdb_ databáze a *adhocreporting* databáze (používaná v pozdějších kurzech) jsou přidány jako cíle.
-* **SP\_přidat\_úlohy** vytvoří úlohu s názvem _Reference Data Deployment_.
-* **SP\_přidat\_jobstep** vytvoří krok úlohy obsahující text příkazu T-SQL k aktualizaci referenční tabulku VenueTypes.
-* Zbývající pohledy ve skriptu zobrazují existující objekty a monitorují provádění úlohy. Zkontrolujte stavovou hodnotu v pomocí těchto dotazů **životního cyklu** sloupec k určení, kdy dokončení úlohy na všechny cílové databáze.
+Ve skriptu *DeployReferenceData. SQL* Sledujte následující prvky:
+* **SP\_Přidat\_cílovouskupinu\_** vytvoří název cílové skupiny DemoServerGroup.
+* v části **Přidat\_členacílové\_skupiny\_se používá k definování sady cílových databází.\_**  Nejprve se přidá server _tenants1-&lt;DPT&gt; -User_ .  Přidání serveru jako cíle způsobí, že databáze na tomto serveru v době spuštění úlohy budou zahrnuty do úlohy. Pak se databáze _basetenantdb_ a databáze *adhocreporting* (použité v pozdějším kurzu) přidají jako cíle.
+* **SP\_Add\_Job** vytvoří úlohu s názvem _nasazení referenčních dat_.
+* **SP\_Add\_jobstep** vytvoří krok úlohy obsahující text příkazu T-SQL, který aktualizuje referenční tabulku VenueTypes.
+* Zbývající pohledy ve skriptu zobrazují existující objekty a monitorují provádění úlohy. Pomocí těchto dotazů můžete zkontrolovat hodnotu stavu ve sloupci **životní cyklus** a zjistit, kdy se úloha dokončila ve všech cílových databázích.
 
-Po dokončení skriptu můžete ověřit, že byl aktualizován referenční data.  V SSMS přejděte k *contosoconcerthall* databáze na *tenants1-dpt -&lt;uživatele&gt;*  serveru a dotazování *VenueTypes* tabulky.  Zkontrolujte, že *Motorcycle Racing* a *Swimming Club* **jsou** nyní k dispozici.
+Po dokončení skriptu můžete ověřit, zda byla referenční data aktualizována.  V SSMS přejděte k databázi *contosoconcerthall* na serveru *tenants1-DPT&lt;-&gt; User* a Dotazujte tabulku *VenueTypes* .  Ověřte, že **je teď k** dispozici *motocykl* a *plavecký klub* .
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>Vytvoření úlohy pro správu indexu referenční tabulky
 
-Toto cvičení používá úlohu chcete-li znovu sestaví index primárního klíče referenční tabulky.  Jedná se o operaci údržby typické databáze, který může být provedeno po načtení velkého objemu dat.
+Tento cvičení používá úlohu k opětovnému sestavení indexu v primárním klíči referenční tabulky.  Toto je typická operace údržby databáze, kterou je možné provést po načtení velkých objemů dat.
 
 K vytvoření úlohy použijeme stejné úlohy uložených procedur „system“.
 
-1. Otevřete SSMS a připojte se k _katalogu-dpt -&lt;uživatele&gt;. database.windows.net_ serveru
-1. Otevřete soubor _... \\Learning Modules\\Schema Management\\OnlineReindex.sql_
-1. Klikněte pravým tlačítkem, vyberte připojení a připojte se k _katalogu-dpt -&lt;uživatele&gt;. database.windows.net_ serveru, pokud již nejste připojeni
-1. Zkontrolujte, že se připojení k _jobagent_ databáze a stisknutím klávesy **F5** pro spuštění skriptu
+1. Otevřete SSMS a připojte se ke _katalogu – DPT-&lt;User&gt;. Database.Windows.NET_ Server
+1. Otevřít soubor _... Výukovémoduly\\schémaSpráva\\schématu OnlineReindex. SQL \\_
+1. Klikněte pravým tlačítkem myši, vyberte připojení a připojte se ke _katalogu –&lt;DPT&gt;-User. Database.Windows.NET_ Server (Pokud ještě není připojený).
+1. Ujistěte se, že jste připojení k databázi _Služba jobagent_ , a stisknutím klávesy **F5** spusťte skript.
 
-Podívejte se následující prvky _OnlineReindex.sql_ skriptu:
-* **SP\_přidat\_úlohy** vytvoří novou úlohu s názvem "Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885"
-* **SP\_přidat\_jobstep** vytvoří krok úlohy obsahující text příkazu T-SQL k aktualizaci indexu
-* Zbývající pohledy ve skriptu monitorují provádění úlohy. Zkontrolujte stavovou hodnotu v pomocí těchto dotazů **životního cyklu** sloupec k určení, kdy úloha byla úspěšně dokončena na všechny cílové skupiny členy.
+Ve skriptu _OnlineReindex. SQL_ Sledujte následující prvky:
+* **SP\_Add\_Job** vytvoří novou úlohu s názvem "online reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885".
+* **SP\_Add\_jobstep** vytvoří krok úlohy obsahující text příkazu T-SQL, který aktualizuje index.
+* Zbývající zobrazení ve spuštění úlohy monitoru skriptu. Pomocí těchto dotazů můžete zkontrolovat hodnotu stavu ve sloupci **životní cyklus** a zjistit, kdy byla úloha úspěšně dokončena u všech členů cílové skupiny.
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > 
-> * Vytvořit úlohu agenta ke spuštění více databází mezi úlohami T-SQL
-> * Aktualizace referenčních dat ve všech databázích tenantů
+> * Vytvoření agenta úlohy pro spuštění napříč úlohami T-SQL s více databázemi
+> * Aktualizace referenčních dat ve všech databázích tenanta
 > * Vytvořit index tabulky ve všech databázích tenantů
 
-Zkuste [vykazování Ad hoc kurzu](saas-tenancy-cross-tenant-reporting.md) prozkoumat spouštění distribuovaných vzorců napříč tenanta databází.
+Potom si v [kurzu vytváření sestav ad hoc](saas-tenancy-cross-tenant-reporting.md) Prozkoumejte spouštění distribuovaných dotazů napříč databázemi klientů.
 
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-* [Další kurzy, které vycházejí z nasazení aplikace Wingtip Tickets SaaS databáze na Tenanta](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [Další kurzy, které se sestavují na základě SaaS databáze Wingtip Tickets pro každé klientské nasazení aplikace](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Správa cloudových databází s horizontálním navýšením kapacity](elastic-jobs-overview.md)

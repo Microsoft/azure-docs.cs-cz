@@ -1,7 +1,7 @@
 ---
-title: Jak se naučit s konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Postup výuky pomocí Conversation Learner-Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Zjistěte, jak se naučit s Learner konverzace.
+description: Naučte se s Conversation Learner naučit.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,67 +10,68 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 9e5e6594a74219a22d67af18827bfe2b7cbd0fb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: a18d4c31da4ffeefebd4bda9aa441fdfec062be9
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385263"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705266"
 ---
 # <a name="how-to-teach-with-conversation-learner"></a>Výuka s využitím služby Conversation Learner 
 
-Tento dokument popisuje, co signalizuje konverzace Learner si je vědoma a popisuje, jak se naučí.  
+Tento dokument vysvětluje, k jakým signálům Conversation Learner ví, a popisuje, jak se učí.  
 
-Výuka lze rozložit na dva samostatné kroky: extrakce entity a výběr akce.
+Výuka se dá rozdělit do dvou různých kroků: extrakce entit a výběr akcí.
 
-## <a name="entity-extraction"></a>Extrakce entity
+## <a name="entity-extraction"></a>Extrakce entit
 
-Pod pokličkou, konverzace student používá [LUIS](https://www.luis.ai) pro extrakci entity.  Pokud jste se seznámili s LUIS, prostředí vztahující se k extrakci entity v Learner konverzace.
+V rámci pokrývá Conversation Learner používá [Luis](https://www.luis.ai) k extrakci entit.  Pokud jste obeznámeni s LUIS, toto prostředí se vztahuje na extrakci entit v Conversation Learner.
 
-Víme modely extrakce entity *obsah* a *kontextu* v rámci utterance uživatele.  Pokud slovo "Seattle" byly označeny jako Město v jedné utterance, jako například "Jaký je o počasí v Praze", extrakce entity je schopen uznání stejný obsah ("Seattle") jako Město v jiném utterance, jako je například "Naplnění Seattle", i v případě, projevy se velmi liší.  Naopak pokud má "Francis" uznávaná jako název v "Naplánovat schůzku s Francis", pak nový název dříve nezobrazený lze rozpoznat v kontextu podobné, jako je "Sada schůzku s Robin".  Machine learning odvodí, kdy k účasti na obsah, místní nebo obojí, podle příkladů, školení.
+Modely extrakce entit jsou vědomy *obsahu* a *kontextu* v rámci uživatele utterance.  Pokud například slovo "Praha" bylo označeno jako město v jednom utterance, například "Co je počasí v Seattlu", extrakce entit dokáže rozpoznat stejný obsah ("Praha") jako město v jiném utterance, například "populace", i když projevy se velmi liší.  Naopak, pokud je "Francis" rozpoznán jako název v "Naplánování schůzky s Francis", je možné v podobném kontextu rozpoznat nový dříve nezobrazený název, například "nastavit schůzku s dotazem".  Strojové učení je odvozeno z toho, kdy se na základě příkladů školení účastní obsah, kontext nebo obojí.
 
-V současné době se pouze extrakce entity vědět obsah aktuální utterance.  Na rozdíl od výběr akce (dole) není vědět, dialogové okno historie například předchozí systému zapne, předchozí uživatel zapne nebo dříve rozpoznaný entity.  V důsledku toho chování extrakce entity je "sdílený" všechny projevy.  Například pokud uživatel utterance "Chci, aby Apple" "Apple", které jsou označeny jako "Ovoce" typ entity v jedné utterance uživatele, extrakce entity model bude očekávat, že tento utterance ("Chci, aby Apple") by měl mít vždy "Apple", které jsou označeny jako "Ovoce".
+Extrakce entit v současnosti pouze ví o obsahu aktuální utterance.  Na rozdíl od výběru akcí (níže) neznáte historii dialogů, jako je například předchozí systém, předchozí uživatel nebo dříve rozpoznané entity.  V důsledku toho je chování při extrakci entit "Shared" v rámci všech projevy.  Pokud například uživatel utterance "Chci, aby Apple" měl "Apple" označený jako typ entity "ovoce" v jednom uživatelském utterance, model extrakce entity očekává, že tento utterance ("Chci Applu") má vždy "Apple" označený jako "ovoce".
 
-Pokud se extrakce entity se nechová podle očekávání, tady jsou mezi možné nápravy:
+Pokud se extrakce entit nechová podle očekávání, tady je možné nápravné řešení:
 
-- První věc, kterou akci má přidat další příklady školení – zejména příklady, které zjistí kontext typické entity (okolní slov) nebo výjimky
-- V případě potřeby, zvažte možnost přidat akci, vlastnost "Očekáván entit".  Další podrobnosti najdete v kurzu u entit očekávání.
-- I když je možné přidat ruční zpracování `EntityExtractionCallback` extrahovat entity pomocí kódu, totiž nejméně doporučený postup nebude těžit z vylepšení v machine learning zrání vašeho systému.
+- První věc, kterou můžete vyzkoušet, je přidat další výukové příklady – zejména příklady, které odhalí typický kontext entity (okolní slova), nebo výjimky.
+- Pokud je to vhodné, zvažte přidání vlastnosti "Očekávaná entita" do akce.  Další podrobnosti najdete v kurzu o očekávaných entitách.
+- I když je možné přidat ruční zpracování `EntityExtractionCallback` k extrakci entit pomocí kódu, jedná se o nejmenší doporučený postup, protože nebude mít výhody vylepšení strojového učení v době, kdy je váš systém vyspělý.
 
 ## <a name="action-selection"></a>Výběr akce
 
-Výběr akce používá běžné neuronové sítě, která přijímá jako vstupní všechny konverzace historie.  Výběr akce tedy stavových procesů, který zná předchozí projevy uživatele, hodnoty entit a projevy systému.  
+Výběr akce používá opakující se neuronové síť, která přijímá jako vstup veškerou historii konverzací.  Výběr akce je tedy stavový proces, který je vědom předchozích projevy uživatelů, hodnot entit a systémových projevy.  
 
-Některé signály se přirozeně upřednostňuje studijní postup.  Jinými slovy Pokud Learner konverzace se vysvětlují rozhodnutí o akce výběru pomocí více "upřednostňované" signály, bude; v případě nedostupnosti se bude používat méně "upřednostňované" signálů.
+Některé signály jsou přirozeně preferovány procesem učení.  Jinými slovy, pokud Conversation Learner může vysvětlit rozhodnutí o výběru akce pomocí "lépe upřednostňovaných" signálů, bude; Pokud to možné není, bude používat "méně preferované" signály.
 
-Následuje tabulka zobrazující všechny signály Learner konverzace a ty, které jsou používány výběr akce.  Všimněte si, že slovo pořadí v projevy uživatele se ignoruje.
+Tady je tabulka zobrazující všechny signály v Conversation Learner a ty, které se používají pro výběr akce.  Všimněte si, že pořadí slov v uživatelském projevy je ignorováno.
 
-Signál | Předvolby (1 = upřednostňovaným) | Poznámky
+Nyní | Preference (1 = upřednostňovaná) | Poznámky
 --- | --- | --- 
-Akce systému v důsledku předchozí | 1 | 
-Entity k dispozici v důsledku aktuální | 1 | 
-Zda se jedná o první zapnout | 1 |
-Přesná shoda slova v aktuální utterance uživatele | 2 | 
-Podobně jako význam slova v aktuální utterance uživatele | 3 | 
-Zapnout akcí v systému před předchozí | 4 |
-Entity k dispozici na oplátku před aktuální zapnout | 4 | 
-Zapnout projevy uživatele před aktuální | 5 | 
+Systémová akce v předchozím tahu | 1 | 
+Entity přítomné v aktuální zapínání | 1 | 
+Bez ohledu na to, zda se jedná o první zapnutí | 1 |
+Přesná shoda slov v aktuální utterance uživatele | 2 | 
+Podobná slova v aktuálním uživatelském utterance | 3 | 
+Systémové akce před předchozím zapnutím | 4 |
+Entity přítomné v zapínání před aktuálním zapnutím | 4 | 
+Uživatel projevy před aktuálním zahnutím | 5 | 
 
 > [!NOTE]
-> Výběr akce nevyužívá obsah akcí v systému – text, obsah karty, nebo název rozhraní API nebo chování – pouze identity akce systému.  V důsledku toho při změně obsahu akci nemění chování výběru modelu akce.
+> Výběr akce nebere v úvahu obsah systémových akcí – text, obsah karty ani název rozhraní API nebo chování – pouze identitu systémové akce.  V důsledku toho Změna obsahu akce neovlivní chování modelu výběru akce.
 >
-> Dále obsah a hodnoty entit nejsou použít – pouze jejich přítomnosti nebo absenci.
+> Dále platí, že obsah nebo hodnoty entit nejsou použity – pouze jejich přítomnost nebo absence.
 
-Pokud výběr akce se nechová podle očekávání, tady jsou možné náhrad:
+Pokud se výběr akce nechová podle očekávání, tady je možné nápravné řešení:
 
-- Přidejte další dialogová okna trénování, zejména dialogová okna, které ilustrují signály, které výběr akce by měla být dejte pozor na.  Například pokud výběr akce by měla přednost jednoho signálu před jiným, uvádí příklady aplikace, které ukazují upřednostňované signálu se v takovém stavu a jinými signály různé.  Některé sekvence může trvat několik dialogů školení Další.
-- Přidáte "Povinné" a "Vyřazení" entity, které definice akce.  Tato omezení při akce jsou k dispozici a může být užitečné pro rychlé obchodní pravidla a některé vzory zdravý. 
+- Přidejte další výuková dialogová okna, zejména dialogová okna, která znázorňují, na které signály se má věnovat výběr akce.  Například pokud výběr akce by měl preferovat jeden signál přes jiný, podělte příklady, které ukazují upřednostňovaný signál ve stejném stavu a ostatní signály proměnlivé.  Některé sekvence můžou několik výukových dialogů, abyste se dozvěděli.
+- Přidejte entity Required a diskvalifikovat do definice akcí.  Tato omezení, pokud jsou k dispozici akce, a mohou být užitečná pro vyjádření obchodních pravidel a některých běžných vzorů rozpoznávání. 
 
 ## <a name="updates-to-models"></a>Aktualizace modelů
 
-Kdykoli přidat nebo upravit entity, akce nebo trénování dialogového okna v uživatelském rozhraní, tím se vytvoří požadavek na opětovné trénování modelu extrakce entity a výběr modelu akce.  Tento požadavek je umístěn ve frontě a znovu školení se provádí asynchronně.  Pokud je k dispozici nový model, používá se od tohoto okamžiku a vyšší při výběru extrakce a akce entity.  Tento proces znovu trénovací často trvá přibližně 5 sekund, ale může být déle, pokud model je komplexní, nebo pokud je vysoké zatížení služby školení.
+Když v uživatelském rozhraní přidáte nebo upravíte dialogové okno entita, akce nebo výuka, vygeneruje se požadavek na opětovné vytvoření výuky modelu extrakce entit a modelu výběru akce.  Tento požadavek se umístí do fronty a provede se znovu asynchronní školení.  Když je k dispozici nový model, použije se od něj výše pro extrakci entit a výběr akcí.  Tento proces opakovaného školení často trvá přibližně 5 sekund, ale může být delší, pokud je model složitý, nebo pokud je zatížení služby školení vysoké.
 
-Protože školení se provádí asynchronně, je možné, že se okamžitě neprojeví úpravy, které jste udělali.  Pokud se extrakce nebo akce výběru entity se nechová podle očekávání, na základě změn, které jste udělali v posledních 5 až 10 sekund, to může být příčinou.
+Vzhledem k tomu, že školení se provádí asynchronně, je možné, že provedené úpravy nejsou okamžitě odrážet.  Pokud se pro extrakci entit nebo výběr akcí nechovají podle očekávání na základě změn, které jste udělali za posledních 5-10 sekund, může to způsobovat.
 
 ## <a name="next-steps"></a>Další postup
 

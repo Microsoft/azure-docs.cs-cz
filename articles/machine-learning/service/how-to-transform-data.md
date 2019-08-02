@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 08cf646d63e1a295a1bc2ff28180983cc462f084
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: add5584ccf3d9d6837e328bbf70d71598e5c0839
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360927"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694308"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
@@ -102,7 +102,7 @@ dflow.head(3)
 
 Třetí záznamu chybí hodnoty zeměpisné šířky a délky. Pro imputace těchto chybějících hodnot použijete [`ImputeMissingValuesBuilder`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py) k učení s pevným výrazem. To dává sloupce s buď výpočtová `MIN`, `MAX`, `MEAN` hodnotu, nebo `CUSTOM` hodnotu. Když `group_by_columns` není zadána, chybějící hodnoty budou uložené ve skupině s `MIN`, `MAX`, a `MEAN` počítá na skupinu.
 
-Pomocí funkce ověřte `MEAN` hodnotu sloupce Zeměpisná šířka. [`summarize()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) Tato funkce přijímá pole sloupců `group_by_columns` parametr k určení úrovně agregace. `summary_columns` Parametr přijímá `SummaryColumnsValue` volání. Toto volání funkce určuje aktuální název sloupce, nový název počítaného pole a `SummaryFunction` provádět.
+Pomocí funkce ověřte `MEAN` hodnotu sloupce Zeměpisná šířka. [`summarize()`](/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-ml-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow--summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) Tato funkce přijímá pole sloupců `group_by_columns` parametr k určení úrovně agregace. `summary_columns` Parametr přijímá `SummaryColumnsValue` volání. Toto volání funkce určuje aktuální název sloupce, nový název počítaného pole a `SummaryFunction` provádět.
 
 ```python
 dflow_mean = dflow.summarize(group_by_columns=['Arrest'],
@@ -234,9 +234,9 @@ builder.preview(skip=75, count=5)
 |-----|-----|-----|
 |0|1/3/2015 7:00|3\. ledna 2015 6:00-8:00|
 |1|1/3/2015 7:54|3\. ledna 2015 6:00-8:00|
-|2|1/29/2015 6:54|Žádný|
-|3|1/29/2015 7:00|Žádný|
-|4|1/29/2015 7:54|Žádný|
+|2|1/29/2015 6:54|Žádné|
+|3|1/29/2015 7:00|Žádné|
+|4|1/29/2015 7:54|Žádné|
 
 ```python
 builder.add_example(

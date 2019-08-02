@@ -1,20 +1,21 @@
 ---
 title: 'Azure Backup: Zálohování virtuálních počítačů Azure pomocí REST API'
 description: Správa zálohovacích operací zálohování virtuálních počítačů Azure pomocí REST API
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: REST API; Zálohování virtuálních počítačů Azure; Obnovení virtuálního počítače Azure;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: e78c7ca9e5b39beb160aeef96dbbf6bce07613e4
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 7a69fc7c9077fa10ddf808f1cd953f6739eabe20
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466840"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688728"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
 
@@ -449,7 +450,7 @@ Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokon
 |204. obsah     |         |  Obsah       |
 |202 přijato     |         |     Přijato    |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Obnovte data ze zálohy virtuálního počítače Azure](backup-azure-arm-userestapi-restoreazurevms.md).
 

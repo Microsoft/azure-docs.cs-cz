@@ -1,20 +1,20 @@
 ---
-title: Informace o Azure Site Recovery Deployment Planner pro zotavení po havárii virtuálních počítačů VMware do Azure | Dokumentace Microsoftu
-description: Přečtěte si o Azure Site Recovery Deployment Planner pro zotavení po havárii virtuálních počítačů VMware do Azure.
+title: O Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii virtuálních počítačů VMware do Azure | Microsoft Docs
+description: Přečtěte si o Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii virtuálních počítačů VMware do Azure.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 07/29/2019
 ms.author: mayg
-ms.openlocfilehash: 42ef6087663c48cad965be768f14920efa777a62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e1d27d133b2eb4e0d4d45a5de563e119513c79f
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244330"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620054"
 ---
-# <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Informace o Azure Site Recovery Deployment Planner pro replikaci z VMware do Azure
+# <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Informace o Plánovač nasazení služby Azure Site Recovery pro VMware do Azure
 Tento článek představuje uživatelskou příručku k Plánovači nasazení služby Azure Site Recovery pro produkční nasazení VMware do Azure.
 
 ## <a name="overview"></a>Přehled
@@ -41,10 +41,9 @@ Nástroj poskytuje následující podrobnosti:
 
 **Požadavky na infrastrukturu Azure**
 
-* Požadovaný typ úložiště (účet služby Storage úrovně Standard nebo Premium) pro každý virtuální počítač
-* Celkový počet účtů služby Storage úrovně Standard a Premium, které se mají nastavit pro replikaci
+* Požadavek typu úložiště (úložiště úrovně Standard nebo Premium) pro každý virtuální počítač
+* Celkový počet účtů úložiště úrovně Standard a Premium, které se mají nastavit pro replikaci (včetně účtů úložiště mezipaměti)
 * Návrhy pojmenování účtů úložiště na základě pokynů pro službu Storage
-* Umístění jednotlivých virtuálních počítačů v účtech úložiště
 * Počet jader Azure, která se mají nastavit před testovacím převzetím služeb při selhání nebo převzetím služeb při selhání v rámci předplatného
 * Doporučená velikost virtuálního počítače Azure pro každý místní virtuální počítač
 
@@ -66,7 +65,7 @@ Nástroj poskytuje následující podrobnosti:
 | | **Z VMware do Azure** |**Z Hyper-V do Azure**|**Z Azure do Azure**|**Z Hyper-V do sekundární lokality**|**Z VMware do sekundární lokality**
 --|--|--|--|--|--
 Podporované scénáře |Ano|Ano|Ne|Ano*|Ne
-Podporovaná verze | vCenter 6.7, 6.5, 6.0 nebo 5.5| Windows Server 2016, Windows Server 2012 R2 | Není k dispozici |Windows Server 2016, Windows Server 2012 R2|Není k dispozici
+Podporovaná verze | vCenter 6,7, 6,5, 6,0 nebo 5,5| Windows Server 2016, Windows Server 2012 R2 | Není k dispozici |Windows Server 2016, Windows Server 2012 R2|Není k dispozici
 Podporovaná konfigurace|vCenter, ESXi| Cluster Hyper-V, hostitel Hyper-V|Není k dispozici|Cluster Hyper-V, hostitel Hyper-V|Není k dispozici|
 Počet serverů, které je možné profilovat, na spuštěnou instanci Plánovače nasazení služby Site Recovery |Jeden (virtuální počítače, které patří k jednomu vCenter Serveru nebo jednomu serveru ESXi, jde profilovat najednou)|Více (najednou je možné profilovat virtuální počítače napříč více hostiteli nebo hostitelskými clustery)| Není k dispozici |Více (najednou je možné profilovat virtuální počítače napříč více hostiteli nebo hostitelskými clustery)| Není k dispozici
 
@@ -77,8 +76,8 @@ Nástroj má dvě hlavní fáze: profilace a generování sestav. Existuje také
 
 | Požadavek na server | Popis|
 |---|---|
-|Profilace a měření propustnosti| <ul><li>Operační systém: Windows Server 2016 nebo Windows Server 2012 R2<br>(Ideálně alespoň stejná velikost jako [doporučená velikost pro konfigurační server](https://aka.ms/asr-v2a-on-prem-components))</li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Distribuovatelné součásti Visual C++ pro Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure z tohoto serveru</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1,000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Úroveň nastavení statistiky VMware vCenter může být 1 nebo vyšší úrovni</li><li>Povolte vCenter portu (výchozí hodnota 443): Site Recovery Deployment Planner používá tento port pro připojení k serveru vCenter nebo hostiteli ESXi</ul></ul>|
-| Generování sestav | Počítače s Windows nebo Windows Server s aplikací Excel 2013 nebo novější.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Distribuovatelné součásti Visual C++ pro Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) je požadovaná jenom v případě, že předáte – možnost uživatele v příkazu generování sestav k načtení nejnovější informace o konfiguraci virtuálních počítačů z virtuálních počítačů. Deployment Planner připojí k serveru vCenter. Povolte port (standardně 443) port pro připojení k vCenter serveru vCenter.</li>|
+|Profilace a měření propustnosti| <ul><li>Operační systém: Windows Server 2016 nebo Windows Server 2012 R2<br>(Ideálně alespoň stejná velikost jako [doporučená velikost pro konfigurační server](https://aka.ms/asr-v2a-on-prem-components))</li><li>Konfigurace počítače: 8 vCPU, 16 GB paměti RAM, 300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Distribuovatelné součásti Visual C++ pro Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure z tohoto serveru</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1,000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Nastavení úrovně statistiky VMware vCenter může mít 1 nebo vyšší úroveň.</li><li>Povolený port vCenter (standardně 443): Site Recovery Plánovač nasazení používá tento port pro připojení k serveru vCenter nebo hostiteli ESXi.</ul></ul>|
+| Generování sestav | POČÍTAČ se systémem Windows nebo Windows Server s aplikací Excel 2013 nebo novější.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Distribuovatelné součásti Visual C++ pro Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6,0 R3](https://aka.ms/download_powercli) se vyžaduje jenom v případě, že jste v příkazu pro generování sestav načetli nejnovější informace o konfiguraci virtuálních počítačů z virtuálního počítače. Plánovač nasazení se připojuje k serveru vCenter. Povolte port vCenter port (standardně 443) pro připojení k serveru vCenter.</li>|
 | Uživatelská oprávnění | Oprávnění jen ke čtení pro uživatelský účet používaný pro přístup k serveru VMware vCenter nebo k hostiteli VMware vSphere ESXi během profilace |
 
 > [!NOTE]
@@ -99,13 +98,13 @@ Nástroj můžete spustit z Windows Serveru 2012 R2, pokud má server přístup 
 Složka obsahuje několik souborů a podsložek. Spustitelný soubor je ASRDeploymentPlanner.exe v nadřazené složce.
 
     Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej.
-    E:\ASR Deployment Planner_v2.3.zip
+    Nasazení E:\ASR Planner_v 2.3. zip
 
     E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="update-to-the-latest-version-of-deployment-planner"></a>Aktualizace na nejnovější verzi Plánovače nasazení
 
-Nejnovější aktualizace jsou shrnuté v Deployment Planneru [historie verzí](site-recovery-deployment-planner-history.md).
+Nejnovější aktualizace jsou shrnuté v [historii Plánovač nasazení verzí](site-recovery-deployment-planner-history.md).
 
 Pokud máte předchozí verzi Plánovače nasazení, proveďte jednu z následujících akcí:
  * Pokud nejnovější verze neobsahuje opravu profilace a ve vaší stávající verzi Deployment Planneru již profilace probíhá, pokračujte v ní.
@@ -120,8 +119,8 @@ Pokud máte předchozí verzi Plánovače nasazení, proveďte jednu z následuj
 
 
 ## <a name="version-history"></a>Historie verzí
-Nejnovější verze nástroje plánovače nasazení služby Site Recovery je 2.4.
+Nejnovější verze nástroje Site Recovery Plánovač nasazení je 2,5.
 Opravy přidané v jednotlivých aktualizacích najdete na stránce [Historie verzí Plánovače nasazení služby Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Spuštění Plánovače nasazení služby Site Recovery](site-recovery-vmware-deployment-planner-run.md)

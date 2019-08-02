@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
 ms.openlocfilehash: 09610782f211b4cfb80a1291b73ab543328376a3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68424194"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Preview – automaticky škáluje cluster tak, aby splňoval požadavky aplikace ve službě Azure Kubernetes (AKS).
@@ -32,7 +32,7 @@ Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.65 nebo novější
 
 ### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
 
-Pro použití automatického škálování clusteru potřebujete rozšíření *AKS-Preview* CLI verze 0.4.4 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] :
+Pro použití automatického škálování clusteru potřebujete rozšíření *AKS-Preview* CLI verze 0.4.4 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte, jestli nejsou dostupné aktualizace, pomocí příkazu [AZ Extension Update][az-extension-update] :
 
 ```azurecli-interactive
 # Install the aks-preview extension

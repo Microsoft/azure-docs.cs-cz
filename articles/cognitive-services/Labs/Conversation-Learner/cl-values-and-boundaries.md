@@ -1,7 +1,7 @@
 ---
-title: Konverzace Learner výchozí konfigurace – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Conversation Learner výchozí konfigurace – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Další informace o konverzaci Learner výchozí konfiguraci.
+description: Přečtěte si o výchozí konfiguraci Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,16 +10,17 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: ebdc1e1c100329e95bd19359408cb138d233b1c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: aaef6f5498e5a8da65d1c829feae8b3e85dba0fd
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385446"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705293"
 ---
 # <a name="default-values-and-boundaries"></a>Výchozí hodnoty a hranice
 
-Tento dokument popisuje výchozí konfigurace Learner konverzace a hranice klíčových služeb.
+Tento dokument popisuje výchozí konfiguraci Conversation Learner a hranice klíčových služeb.
 
 ## <a name="default-configuration"></a>Výchozí konfigurace
 
@@ -31,23 +32,23 @@ Výchozí časový limit relace | 30 minut
 
 Parametr | Omezení
 --- | --- 
-Vytváření rozhraní API, maximální HTTP volání za měsíc | 5 MIN
-Vytváření rozhraní API, maximální HTTP volání za sekundu | 25
-Relace rozhraní API, maximální HTTP volání za měsíc | 500 000
-Rozhraní API relace, maximální HTTP volání za sekundu | 10
-Maximální počet vlastních entit (bez-prostřednictvím kódu programu) na modelu | Zobrazit [LUIS hranice doc](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries); v praxi, skutečný počet může být o něco menší
-Maximální počet předem připravených entit na modelu | Zobrazit [doc hranice LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries)
-Maximální počet entit (v celkem) na modelu | 100
-Maximální počet akcí za model | 32
-Maximální počet, dialogová okna trénování za model | 1000
-Maximální počet uživatelů se změní na dialogové okno trénování | 100
-Maximální počet, dialogová okna protokolu na modelu | Žádné předem nastavený limit, ale protokol dialogová okna se uchovávají pouze na pevné období, než bude zahozen.  Navíc zobrazí rozhraní Learner konverzace 100 dialogová okna protokolu najednou. 
-Maximální počet modelů na uživatele | Žádné předem nastavený limit
-Maximální počet akcí sekvenční bez čekání | 5 (*)
+Vytváření rozhraní API, maximální počet volání HTTP za měsíc | 5 MIN
+Vytváření rozhraní API, maximální počet volání HTTP za sekundu | 25
+Rozhraní API relace, maximální počet volání HTTP za měsíc | 500 000
+Rozhraní API relace, maximální počet volání HTTP za sekundu | 10
+Maximální počet vlastních (neprogramových) entit na model | Zobrazit [Luis hranice dokumentu](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries); v praxi může být skutečný počet mírně menší
+Maximální počet předem sestavených entit na model | Zobrazit [Luis hranice dokumentu](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries)
+Maximální počet entit (celkem) na model | 100
+Maximální počet akcí na model | 32
+Maximální počet dialogových oken vlaků na model | 1000
+Maximální počet uživatelů, které se aktivují na jeden vlakový dialog | 100
+Maximální počet dialogových oken protokolu na model | Bez předem nastaveného limitu, ale dialogy protokolu se uchovávají jenom pro pevné období, než se zahodí.  Uživatelské rozhraní Conversation Learner také bude zobrazovat dialogová okna protokolu 100. 
+Maximální počet modelů na uživatele | Bez předem nastaveného limitu
+Maximální počet sekvenčních akcí, které nečekají na čekání | 5 (*)
 
-(*) Po 5 sekvenční akce bez čekání se maskují všechny akce bez čekání, a potom vybere Learner konverzace mezi akce k dispozici čekání.
+(*) Po 5 sekvenčních nečekacích akcích jsou všechny nečekací akce maskovány a Conversation Learner se budou vybírat mezi dostupnými akcemi čekání.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Začínáme s Learner konverzace](./quickstart.md)
+> [Začínáme s Conversation Learner](./quickstart.md)

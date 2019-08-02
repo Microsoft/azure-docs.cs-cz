@@ -1,28 +1,28 @@
 ---
-title: Použití Azure CLI ke správě Azure AD přístupová práva k datům objektu blob a fronty pomocí RBAC – Azure Storage
-description: Pomocí Azure CLI k přiřazení přístupu ke kontejnerům a fronty s řízením přístupu na základě rolí (RBAC). Azure Storage podporuje předdefinované a vlastní role RBAC pro ověřování pomocí Azure AD.
+title: Použití rozhraní příkazového řádku Azure ke správě přístupových práv služby Azure AD k datům objektů BLOB a front pomocí RBAC – Azure Storage
+description: Pomocí Azure CLI můžete přiřadit přístup k kontejnerům a frontám pomocí řízení přístupu na základě role (RBAC). Azure Storage podporuje integrované a vlastní role RBAC pro ověřování prostřednictvím služby Azure AD.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 07/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 1e29b8e23927ef2ff70416d1adc76e2b2b3f2d8a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8219e795bb9ab4fc0d479b71e6a93fe6300037d0
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443715"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68514903"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>Udělení přístupu k Azure data objektů blob a fronty pomocí RBAC pomocí rozhraní příkazového řádku Azure
+# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>Udělení přístupu k datům služby Azure Blob a frontě pomocí služby RBAC pomocí rozhraní příkazového řádku Azure
 
-Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Azure Storage definuje sadu předdefinované role RBAC, které zahrnuje společné sady oprávnění pro přístup k datům objektu blob nebo fronty.
+Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Azure Storage definuje sadu předdefinovaných rolí RBAC, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB nebo front.
 
-Když roli RBAC je přiřazena k objektu zabezpečení Azure AD, Azure uděluje přístup k těmto prostředkům pro tento objekt zabezpečení. Přístup se dají vymezit na úrovni předplatného, skupinu prostředků, účet úložiště nebo kontejner nebo fronty. Objekt zabezpečení Azure AD může být uživatel, skupina, instančního objektu aplikace nebo [spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+Když je role RBAC přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezený na úrovni předplatného, skupiny prostředků, účtu úložiště nebo jednotlivého kontejneru nebo fronty. Objekt zabezpečení Azure AD může být uživatelem, skupinou, instančním objektem služby nebo [spravovanou identitou pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Tento článek popisuje, jak používat rozhraní příkazového řádku Azure k seznamu předdefinované role RBAC a přiřadit je uživatelům. Další informace o použití Azure CLI najdete v tématu [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure).
+Tento článek popisuje, jak pomocí Azure CLI vypsat předdefinované role RBAC a přiřadit je uživatelům. Další informace o použití Azure CLI najdete v tématu [rozhraní příkazového řádku (CLI) Azure](https://docs.microsoft.com/cli/azure).
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>Role RBAC pro objekty BLOB a fronty
 
@@ -32,15 +32,15 @@ Tento článek popisuje, jak používat rozhraní příkazového řádku Azure k
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="list-available-rbac-roles"></a>Seznam dostupných rolí RBAC
+## <a name="list-available-rbac-roles"></a>Výpis dostupných rolí RBAC
 
-K zobrazení seznamu dostupných předdefinované role RBAC pomocí rozhraní příkazového řádku Azure, použijte [az role definition list](/cli/azure/role/definition#az-role-definition-list) příkaz:
+Pokud chcete zobrazit seznam dostupných integrovaných rolí RBAC pomocí Azure CLI, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list) :
 
 ```azurecli-interactive
 az role definition list --out table
 ```
 
-Zobrazí se vám předdefinované role dat služby Azure Storage uvedený spolu s další předdefinované role pro Azure:
+V seznamu jsou uvedené předdefinované role Azure Storage dat spolu s dalšími integrovanými rolemi pro Azure:
 
 ```Example
 Storage Blob Data Contributor             Allows for read, write and delete access to Azure Storage blob containers and data
@@ -52,19 +52,19 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-security-principal"></a>Přiřaďte roli RBAC k objektu zabezpečení
+## <a name="assign-an-rbac-role-to-a-security-principal"></a>Přiřazení role RBAC objektu zabezpečení
 
-Chcete-li přiřadit roli RBAC objektem zabezpečení, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-create) příkazu. Formát příkazu může lišit v závislosti na rozsah přiřazení. Následující příklady znázorňují způsob přiřazení role uživateli v různých oborech, ale stejný příkaz můžete použít k přiřazení role na libovolný objekt zabezpečení.
+K přiřazení role RBAC objektu zabezpečení použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) . Formát příkazu se může lišit v závislosti na rozsahu přiřazení. Následující příklady ukazují, jak přiřadit roli uživateli v různých oborech, ale můžete použít stejný příkaz k přiřazení role k libovolnému objektu zabezpečení.
 
-### <a name="container-scope"></a>Kontejner oboru
+### <a name="container-scope"></a>Rozsah kontejneru
 
-Přiřazení role obor do kontejneru, zadejte řetězec obsahující obor kontejneru `--scope` parametru. Obor pro kontejner je ve formátu:
+Chcete-li přiřadit obor role k kontejneru, zadejte řetězec obsahující obor kontejneru pro `--scope` parametr. Rozsah kontejneru je ve formátu:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-Následující příklad přiřadí **Přispěvatel dat objektu Blob úložiště** role pro uživatele, omezená na kontejner s názvem *ukázkový kontejner*. Nezapomeňte ukázkové hodnoty a zástupné hodnoty v závorkách nahraďte vlastními hodnotami: 
+Následující příklad přiřadí roli **Přispěvatel dat objektu BLOB úložiště** k uživateli s vymezeným kontejnerem s názvem *Sample-Container*. Nezapomeňte nahradit vzorové hodnoty a zástupné hodnoty v závorkách vlastními hodnotami: 
 
 ```azurecli-interactive
 az role assignment create \
@@ -73,15 +73,15 @@ az role assignment create \
     --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/sample-container"
 ```
 
-### <a name="queue-scope"></a>Oboru fronty
+### <a name="queue-scope"></a>Rozsah fronty
 
-Přiřazení role obor pro frontu, zadejte řetězec obsahující obor do fronty `--scope` parametru. Obor pro frontu je ve formátu:
+Chcete-li přiřadit obor role ke frontě, zadejte řetězec obsahující obor fronty pro `--scope` parametr. Rozsah fronty je ve formátu:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
 ```
 
-Následující příklad přiřadí **Přispěvatel dat fronty služby Storage** role pro uživatele, obor pro frontu s názvem *Ukázka fronty*. Nezapomeňte ukázkové hodnoty a zástupné hodnoty v závorkách nahraďte vlastními hodnotami: 
+Následující příklad přiřadí uživateli roli **Přispěvatel dat fronty úložiště** s vymezenou frontou s názvem *Sample-Queue*. Nezapomeňte nahradit vzorové hodnoty a zástupné hodnoty v závorkách vlastními hodnotami: 
 
 ```azurecli-interactive
 az role assignment create \
@@ -90,15 +90,15 @@ az role assignment create \
     --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/sample-queue"
 ```
 
-### <a name="storage-account-scope"></a>Obor účtů úložiště
+### <a name="storage-account-scope"></a>Rozsah účtu úložiště
 
-Přiřazení role omezená na účet úložiště, zadejte obor prostředek účtu úložiště pro `--scope` parametru. Obor pro účet úložiště je ve formátu:
+Pokud chcete přiřadit obor role k účtu úložiště, zadejte rozsah prostředku účtu úložiště pro tento `--scope` parametr. Rozsah účtu úložiště je ve formátu:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-Následující příklad ukazuje, jak přiřadit **čtecí modul dat pro úložiště objektů Blob** role pro uživatele na úrovni účtu úložiště. Nezapomeňte ukázkové hodnoty nahradit vlastními hodnotami: 
+Následující příklad ukazuje, jak přiřadit roli **čtečky dat objektů BLOB úložiště** k uživateli na úrovni účtu úložiště. Nezapomeňte nahradit vzorové hodnoty vlastními hodnotami: 
 
 ```azurecli-interactive
 az role assignment create \
@@ -107,9 +107,9 @@ az role assignment create \
     --scope "/subscriptions/<subscription-id>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/storagesamples"
 ```
 
-### <a name="resource-group-scope"></a>Obor skupiny prostředků
+### <a name="resource-group-scope"></a>Rozsah skupiny prostředků
 
-Přiřazení role vymezeny na skupinu prostředků, zadejte název skupiny prostředků nebo ID `--resource-group` parametru. Následující příklad přiřadí **Čtenář dat fronty služby Storage** role pro uživatele na úrovni skupiny prostředků. Nezapomeňte ukázkové hodnoty a zástupné hodnoty v závorkách nahraďte vlastními hodnotami: 
+Pokud chcete přiřadit obor role ke skupině prostředků, zadejte název nebo ID skupiny prostředků pro tento `--resource-group` parametr. Následující příklad přiřadí roli **čtečky dat fronty úložiště** k uživateli na úrovni skupiny prostředků. Nezapomeňte nahradit vzorové hodnoty a zástupné hodnoty v závorkách vlastními hodnotami: 
 
 ```azurecli-interactive
 az role assignment create \
@@ -118,15 +118,15 @@ az role assignment create \
     --resource-group sample-resource-group
 ```
 
-### <a name="subscription-scope"></a>Oboru předplatného
+### <a name="subscription-scope"></a>Rozsah předplatného
 
-Přiřazení role omezená na předplatné, zadejte rozsah pro odběr `--scope` parametru. Obor pro odběr je ve formátu:
+Pokud chcete přiřadit obor role k předplatnému, zadejte obor pro předplatné `--scope` daného parametru. Rozsah předplatného je ve formátu:
 
 ```
 /subscriptions/<subscription>
 ```
 
-Následující příklad ukazuje, jak přiřadit **čtecí modul dat pro úložiště objektů Blob** role pro uživatele na úrovni účtu úložiště. Nezapomeňte ukázkové hodnoty nahradit vlastními hodnotami: 
+Následující příklad ukazuje, jak přiřadit roli **čtečky dat objektů BLOB úložiště** k uživateli na úrovni účtu úložiště. Nezapomeňte nahradit vzorové hodnoty vlastními hodnotami: 
 
 ```azurecli-interactive
 az role assignment create \
@@ -137,6 +137,6 @@ az role assignment create \
 
 ## <a name="next-steps"></a>Další postup
 
-- [Správa přístupu k prostředkům Azure pomocí RBAC a Azure Powershellu](../../role-based-access-control/role-assignments-powershell.md)
-- [Udělení přístupu k Azure data objektů blob a fronty pomocí RBAC pomocí Azure Powershellu](storage-auth-aad-rbac-powershell.md)
-- [Udělení přístupu k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](storage-auth-aad-rbac-portal.md)
+- [Správa přístupu k prostředkům Azure pomocí RBAC a Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Udělení přístupu k datům služby Azure Blob a frontě pomocí RBAC pomocí Azure PowerShell](storage-auth-aad-rbac-powershell.md)
+- [Udělení přístupu k datům front a objektů blob Azure s využitím RBAC na webu Azure Portal](storage-auth-aad-rbac-portal.md)

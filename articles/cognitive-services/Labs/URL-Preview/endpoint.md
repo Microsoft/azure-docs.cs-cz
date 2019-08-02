@@ -1,7 +1,7 @@
 ---
-title: Projekt ve verzi Preview se adresy URL koncového bodu
+title: Koncový bod pro náhled adresy URL projektu
 titlesuffix: Azure Cognitive Services
-description: Přehled koncového bodu adresy URL náhledu.
+description: Souhrn koncového bodu adresy URL náhledu
 services: cognitive-services
 author: mikedodaro
 manager: nitinme
@@ -10,19 +10,20 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 43254db734a48f3e7aaa5a26a7fbf3981c9e9d87
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ef5ebd4ec88deac8c49430f36956d3711c8c535
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592873"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706941"
 ---
-# <a name="project-url-preview-endpoint"></a>Projekt ve verzi Preview se adresy URL koncového bodu
+# <a name="project-url-preview-endpoint"></a>Koncový bod pro náhled adresy URL projektu
 
-Rozhraní API ve verzi Preview adresa URL obsahuje jeden koncový bod.
+Rozhraní API pro náhled adresy URL zahrnuje jeden koncový bod.
 
 ## <a name="endpoint"></a>Koncový bod
-Pokud chcete získat adresu URL ve verzi Preview, odesílejte požadavek na následující koncový bod. Použijte pro jiné specifikace hlaviček a parametrů adresy URL.
+Pokud chcete získat Náhled adresy URL, odešlete požadavek do následujícího koncového bodu. Pro jiné specifikace použijte záhlaví a parametry adresy URL.
 
 GET:
 ```
@@ -31,14 +32,14 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 ```
 
 ### <a name="query-parameters"></a>Parametry dotazu
-|Název|Hodnota|Type|Požaduje se|  
+|Name|Value|type|Požadováno|  
 |----------|-----------|----------|--------------|  
-|q|Adresa URL ve verzi preview|String |Ano|
-|safeSearch|Neplatný obsah pro dospělé nebo nelegální obsah blokovaný s kódem chyby 400 a *isFamilyFriendly* příznak nevrátí. <p>Platný obsah pro dospělé níže je chování. Vrátí stavový kód 200 a *isFamilyFriendly* je příznak nastaven na hodnotu false.<ul><li>safeSearch=strict: Název, popis, adresu URL a image se nezobrazí.</li><li>bezpečné hledání = střední; Získejte název, adresu URL a popis, ale není popisný obraz.</li><li>bezpečné hledání = off; Získejte odpovědi objekty/všeho – název, URL, popis a obrázek.</li></ul> |String|Není nutné. </br> Výchozí hodnota je bezpečné hledání = strict.| 
+|q|Adresa URL náhledu|Řetězec |Ano|
+|safeSearch|Neplatný obsah pro dospělé nebo kradený obsah je zablokován s kódem chyby 400 a příznak *isFamilyFriendly* se nevrátí. <p>Pro zákonný obsah pro dospělé níže je toto chování. Stavový kód vrátí 200 a příznak *isFamilyFriendly* je nastaven na hodnotu false.<ul><li>Bezpečné hledání = Strict: Název, popis, adresa URL a obrázek nebudou vráceny.</li><li>Bezpečné hledání = střední; Získejte název, adresu URL a popis, ale ne popisný obrázek.</li><li>Bezpečné hledání = off; Získá všechny objekty a elementy odpovědi – název, adresu URL, popis a obrázek.</li></ul> |Řetězec|Není nutné. </br> Výchozí hodnota je bezpečné hledání = Strict.| 
 
 ## <a name="response-object"></a>Objekt odpovědi
 
-Odpověď obsahuje hlavičky protokolu HTTP a objekt webovou stránku s atributy, jak je znázorněno v následujícím příkladu: `name`, `url`, `description`, `isFamilyFriendly`, a `primaryImageOfPage`.
+Odpověď obsahuje záhlaví protokolu HTTP a objekt webové stránky s atributy, jak je znázorněno v `name`následujícím `url`příkladu `description`: `isFamilyFriendly`,, `primaryImageOfPage`, a.
 
 ```
 BingAPIs-TraceId: 15AFE52A97AA422F960433A94803F6CE
@@ -59,7 +60,7 @@ X-MSEdge-Ref: Ref A: 15AFE52A97AA422F960433A94803F6CE Ref B: PAOEDGE0418 Ref C: 
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Rychlý start pro jazyk C#](csharp.md)
 - [Rychlý start pro Javu](java-quickstart.md)
 - [Rychlý start pro JavaScript](javascript.md)

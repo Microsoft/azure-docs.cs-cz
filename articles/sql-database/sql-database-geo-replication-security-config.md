@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zabezpečení databáze SQL Azure pro zotavení po havárii | Dokumentace Microsoftu
-description: Další informace o zabezpečení pro konfiguraci a správu zabezpečení po obnovení databáze nebo převzetí služeb při selhání na sekundární server.
+title: Konfigurace zabezpečení Azure SQL Database pro zotavení po havárii | Microsoft Docs
+description: Seznamte se s požadavky na zabezpečení při konfiguraci a správě zabezpečení po obnovení databáze nebo převzetí služeb při selhání sekundárním serverem.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,95 +10,94 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 8a2a2fffa9ed3a4dae3c0768291b7585be4bfc6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d4939b7a0179216d11f594ce12f384276d15e05
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64690835"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568139"
 ---
-# <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurace a Správa zabezpečení služby Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání
+# <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurace a Správa zabezpečení Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání
 
-Tento článek popisuje požadavky na ověřování pro konfiguraci a řídit [aktivní geografickou replikaci](sql-database-active-geo-replication.md) a [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md). Také obsahuje kroky potřebné k nastavení přístupu uživatelů k sekundární databázi. Nakonec ho také popisuje, jak povolit přístup k obnovené databázi po použití [geografické obnovení](sql-database-recovery-using-backups.md#geo-restore). Další informace o možnostech obnovení najdete v tématu [přehled zajištění provozní kontinuity firmy](sql-database-business-continuity.md).
+Tento článek popisuje požadavky na ověřování ke konfiguraci a řízení [aktivní geografické replikace](sql-database-active-geo-replication.md) a [skupin s automatickým převzetím služeb při selhání](sql-database-auto-failover-group.md). Poskytuje taky kroky potřebné k nastavení přístupu uživatelů k sekundární databázi. Nakonec také popisuje, jak povolit přístup k obnovené databázi po použití geografického [obnovení](sql-database-recovery-using-backups.md#geo-restore). Další informace o možnostech obnovení najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md).
 
-## <a name="disaster-recovery-with-contained-users"></a>Zotavení po havárii pomocí uživatelé s omezením
+## <a name="disaster-recovery-with-contained-users"></a>Zotavení po havárii s uživateli s omezením
 
-Na rozdíl od tradičních uživatele, kteří musí být namapován na přihlášení v hlavní databázi, uživatele spravuje úplně samotná databáze. To má dvě výhody. Ve scénáři zotavení po havárii uživatelé můžou dál pro připojení k nové primární databázi nebo databázi obnovit, využitím geografického obnovení bez jakékoli další konfigurace, protože databáze spravuje uživatele. Existují také potenciální škálovatelnost a výkon výhody z této konfigurace z hlediska přihlášení. Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](https://msdn.microsoft.com/library/ff929188.aspx).
+Na rozdíl od tradičních uživatelů, které musí být namapovány na přihlašovací údaje v hlavní databázi, je obsažený uživatel zcela spravován samotným databází. To má dvě výhody. Ve scénáři zotavení po havárii se uživatelé mohou nadále připojovat k nové primární databázi nebo databáze obnovena pomocí geografického obnovení bez jakékoli další konfigurace, protože databáze spravuje uživatele. Z perspektivy přihlášení se z této konfigurace taky mohou využít výhody a možnosti škálovatelnosti a výkonu. Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](https://msdn.microsoft.com/library/ff929188.aspx).
 
-Hlavní nutný kompromis je, že Správa procesu pro zotavení po havárii ve velkém měřítku je složitější. Pokud máte více databází, které používají stejné přihlašovací údaje, Správa pověření pomocí uživatelé s omezením do více databází může negate výhody uživatelé s omezením. Například zásady rotace hesla vyžaduje, aby změny konzistentně ve více databázích místo změny hesla pro přihlášení v hlavní databázi jednou. Z tohoto důvodu Pokud máte více databází, které používají stejné uživatelské jméno a heslo, uživatelé s omezením použití nedoporučuje.
+Hlavním obchodem je, že Správa procesu zotavení po havárii je ve velkém rozsahu náročná. Pokud máte více databází, které používají stejné přihlašovací údaje, zajistěte, aby pověření s použitím obsažených uživatelů v několika databázích nemusely mít na starosti výhody obsažených uživatelů. Zásady rotace hesla například vyžadují, aby se změny v několika databázích udělaly konzistentně, a neměňte heslo pro přihlášení jednou v hlavní databázi. Z tohoto důvodu platí, že pokud máte více databází, které používají stejné uživatelské jméno a heslo, nedoporučuje se použít uživatele s omezením.
 
-## <a name="how-to-configure-logins-and-users"></a>Konfigurace přihlašovacích údajů a uživatelů
+## <a name="how-to-configure-logins-and-users"></a>Jak nakonfigurovat přihlášení a uživatele
 
-Pokud použijete přihlášení a uživatele (místo uživatelé s omezením), musejí udělat dodatečné kroky k zajištění, že existují stejné přihlášení v hlavní databázi. Následující oddíly popisují kroky zahrnuté a další důležité informace.
+Pokud používáte přihlašovací jména a uživatele (místo obsažených uživatelů), musíte provést další kroky, abyste zajistili, že v hlavní databázi existují stejná přihlášení. V následujících částech najdete přehled kroků a další okolnosti.
 
   >[!NOTE]
-  > Je také možné používat přihlašovací údaje Azure Active Directory (AAD) ke správě vašich databází. Další informace najdete v tématu [přihlášeních Azure SQL a uživatelé](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
+  > Ke správě databází je taky možné použít přihlášení pomocí Azure Active Directory (AAD). Další informace najdete v tématu [přihlášení a uživatelé Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 
-### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Nastavení přístupu uživatelů k sekundární nebo obnovené databáze
+### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Nastavení přístupu uživatele k sekundární nebo obnovené databázi
 
-Sekundární databáze má být použitelná jako sekundární databázi jen pro čtení a k zajištění řádného přístup k nové primární databázi nebo databázi, obnovit pomocí geografické obnovení, hlavní databázi z cílového serveru musí mít příslušná bezpečnostní konfigurace na místě před obnovení.
+Aby byla sekundární databáze použitelná jako sekundární databáze jen pro čtení a zajistila řádný přístup k nové primární databázi nebo databázi obnovená pomocí geografického obnovení, musí mít hlavní databáze cílového serveru příslušné zabezpečení. konfigurace na místě před obnovením.
 
 Konkrétní oprávnění pro jednotlivé kroky jsou popsány dále v tomto tématu.
 
-Připravuje se přístup uživatelů k sekundární geografická replikace je třeba provést v rámci konfigurace geografické replikace. Připravuje se přístup uživatelů k databázím geografické obnovení provést kdykoli původní server není online (například jako součást na postup zotavení po Havárii).
+Příprava přístupu uživatele k sekundární geografické replikaci by měla být provedena jako součást konfigurace geografické replikace. Příprava přístupu uživatelů k geograficky obnoveným databázím by se měla provádět kdykoli, když je původní server online (například jako součást postupu zotavení po havárii).
 
 > [!NOTE]
-> Pokud převzetí služeb při selhání nebo geografické obnovení na server, který nemá správně nakonfigurovanou přihlašovací jména, přístup k němu bude omezená na účet správce serveru.
+> Pokud převezmete služby při selhání nebo geografické obnovení na server, který nemá správně nakonfigurovaná přihlášení, bude přístup k tomuto účtu omezený na účet správce serveru.
 
-Nastavení přihlášení na cílový server zahrnuje tři kroky uvedené níže:
+Nastavení přihlašovacích údajů na cílovém serveru zahrnuje tři kroky popsané níže:
 
-#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. Určit přihlašovací údaje s přístupem k primární databáze
+#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. Určení přihlášení s přístupem k primární databázi
 
-Prvním krokem procesu je určit, jaké přihlašovací údaje musí být duplicitní na cílovém serveru. Toho se dosahuje pomocí dvojice příkazy SELECT, jednu v logickou hlavní databázi na zdrojovém serveru a druhou v samotné databázi primární.
+Prvním krokem procesu je určení, která přihlášení musí být duplikována na cílovém serveru. K tomu je možné využít dvojici příkazů SELECT, jednu v logické hlavní databázi na zdrojovém serveru a jednu v samotné primární databázi.
 
-Jenom správce serveru nebo člen **LoginManager** role serveru, můžete zjistit přihlašovací jména na zdrojovém serveru pomocí následujícího příkazu SELECT.
+Přihlášení na zdrojovém serveru můžou určit jenom správce serveru nebo člen role serveru **LoginManager** , a to pomocí následujícího příkazu SELECT.
 
     SELECT [name], [sid]
     FROM [sys].[sql_logins]
     WHERE [type_desc] = 'SQL_Login'
 
-Jediným členem databázové role db_owner, dbo uživatele nebo správce serveru, můžete určit všechny objekty zabezpečení uživatelů databáze v primární databázi.
+Pouze člen databázové role db_owner, uživatel dbo nebo správce serveru může určit všechny objekty zabezpečení uživatele databáze v primární databázi.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
-#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Zjistit SID pro přihlášení, určenou v kroku 1
+#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Vyhledejte SID pro přihlašovací údaje identifikované v kroku 1.
 
-Porovnání výstup dotazy z předchozí části a odpovídající identifikátory SID, můžete namapovat přihlášení serveru na uživatele databáze. Uživatelé, kteří mají uživatele databáze s odpovídajícím identifikátorem SID mít uživatelský přístup k této databázi jako hlavní databáze uživatele.
+Porovnáním výstupu dotazů z předchozí části a se shodnými identifikátory SID můžete mapovat přihlášení serveru na uživatele databáze. Přihlášení, která mají uživatele databáze se shodným identifikátorem SID, mají přístup uživatele k této databázi jako objekt zabezpečení databáze uživatele.
 
-Pokud chcete zobrazit všechny objekty zabezpečení uživatelů a jejich identifikátorů SID v databázi je možné následující dotaz. Tento dotaz můžete spustit pouze členem skupiny db_owner databáze roli nebo server správce.
+Následující dotaz se dá použít k zobrazení všech objektů zabezpečení uživatele a jejich identifikátorů SID v databázi. Tento dotaz může spustit pouze člen databázové role db_owner nebo správce serveru.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
 > [!NOTE]
-> **INFORMATION_SCHEMA** a **sys** uživatelé mají *NULL* SID a **hosta** SID je **0x00**. **Dbo** může začínat identifikátor SID *0x01060000000001648000000000048454*, pokud byl Tvůrce databází správce serveru místo členem **DbManager**.
+> Uživatelé **INFORMATION_SCHEMA** a **sys** mají *null* identifikátory SID a identifikátor SID **hosta** je **0x00**. Identifikátor SID **dbo** může začínat na *0x01060000000001648000000000048454*, pokud autor databáze byl správcem serveru, ne členem **DbManager**.
 
-#### <a name="3-create-the-logins-on-the-target-server"></a>3. Vytvoření přihlášení na cílovém serveru
+#### <a name="3-create-the-logins-on-the-target-server"></a>3. Vytvoření přihlašovacích údajů na cílovém serveru
 
-Posledním krokem je přejít na cílový server nebo servery a generovat přihlášení s odpovídající identifikátory SID. Základní syntaxe je následující.
+Posledním krokem je přejít na cílový server nebo na servery a vygenerovat přihlašovací údaje s příslušnými identifikátory zabezpečení (SID). Základní syntaxe je následující.
 
     CREATE LOGIN [<login name>]
     WITH PASSWORD = <login password>,
     SID = <desired login SID>
 
 > [!NOTE]
-> Pokud chcete udělit přístup uživatelů k sekundární, ale ne na primární, můžete to udělat změnou přihlášení uživatele na primárním serveru pomocí následující syntaxe.
+> Pokud chcete uživateli udělit přístup k sekundárnímu, ale ne k primárnímu, můžete to udělat tak, že změníte přihlašovací údaje uživatele na primárním serveru pomocí následující syntaxe.
 >
 > ```sql
 > ALTER LOGIN <login name> DISABLE
 > ```
 >
-> ZAKÁZAT nedojde ke změně hesla, takže můžete vždy povolit ji v případě potřeby.
+> Při zakázání se heslo nemění, takže v případě potřeby ho můžete kdykoli povolit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o správě přístupu k databázi a přihlašovacích údajů, naleznete v tématu [zabezpečení služby SQL Database: Správa databáze přístup a zabezpečení přihlašování](sql-database-manage-logins.md).
-* Další informace o uživatele databáze s omezením najdete v tématu [uživatelé databáze s omezením – zajištění přenositelnosti databáze](https://msdn.microsoft.com/library/ff929188.aspx).
-* Další informace o aktivní geografickou replikaci, najdete v článku [aktivní geografickou replikaci](sql-database-active-geo-replication.md).
-* Další informace o skupinách automatické převzetí služeb při selhání najdete v tématu [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md).
-* Informace o použití geografické obnovení, najdete v části [geografické obnovení](sql-database-recovery-using-backups.md#geo-restore)
+* Další informace o správě přístupu k databázi a přihlášení najdete v tématu [SQL Database Security: Správa přístupu k databázi a zabezpečení](sql-database-manage-logins.md)přihlášení.
+* Další informace o uživatelích databáze s omezením najdete v tématu databáze [uživatelů s omezením – vytvoření přenosné databáze](https://msdn.microsoft.com/library/ff929188.aspx).
+* Informace o aktivní geografické replikaci najdete v tématu [Aktivní geografická replikace](sql-database-active-geo-replication.md).
+* Další informace o skupinách automatického převzetí služeb při selhání najdete v tématu [skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md).
+* Informace o použití geografického obnovení najdete v tématu [geografické obnovení](sql-database-recovery-using-backups.md#geo-restore) .

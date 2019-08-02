@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
 ms.openlocfilehash: 232468d9b3466759d7af2b7be68a1f553ced6e6d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68348645"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
@@ -125,7 +125,7 @@ Pokud chcete nasadit konfiguraci IBM Db2, musíte postupovat podle těchto krok�
   + Nasaďte virtuální počítače.
   + Aktualizujte RHEL Linux a nakonfigurujte systémy souborů.
   + Nainstalujte a nakonfigurujte Pacemaker.
-  + Nastavit [cluster GlusterFS][glusterfs] or [Azure NetApp Files][anf-rhel]
+  + Nastavení [clusteru GlusterFS][glusterfs] nebo [Azure NetApp Files][anf-rhel]
   + Nainstalujte [ASCS/olajících do samostatného clusteru][ascs-ha-rhel].
   + Nainstalujte databázi IBM Db2 s možností distribuované/vysoké dostupnosti (SWPM).
   + Nainstalujte a vytvořte sekundární uzel databáze a instanci a nakonfigurujte HADR.
@@ -241,7 +241,7 @@ V závislosti na počátečním testování/převzetí služeb při selhání do
 
 Pokud chcete nastavit pohotovostní databázový server pomocí procedury pro homogenní systémovou kopii SAP, proveďte tyto kroky:
 
-1. Vyberte možnost **kopírování systému** >  > cílová instance**distribuované** > **databáze**.
+1. Vyberte možnost **kopírování systému** > > cílová instance**distribuované** > **databáze**.
 1. Jako metodu kopírování vyberte **homogenní systém** , abyste mohli obnovit zálohu na pohotovostní instanci serveru pomocí zálohování.
 1. Až se dostanete k kroku konec obnovení databáze pro homogenní systémovou kopii, ukončete instalační program. Obnovte databázi ze zálohy primárního hostitele. Všechny následné fáze instalace už jsou spuštěné na primárním databázovém serveru.
 

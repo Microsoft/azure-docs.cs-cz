@@ -1,7 +1,7 @@
 ---
-title: Správa dat uživatele s použitím konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Správa uživatelských dat pomocí Conversation Learner-Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Další informace o správě dat uživatele s Learner konverzace.
+description: Naučte se spravovat data uživatelů pomocí Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,36 +10,37 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 7ea0b246a16ff196a4160d9822b5db15cd39a4a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 857e899764d284e2d78f1172fa8eeac04c57d618
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385203"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705198"
 ---
-# <a name="managing-user-data"></a>Správa dat uživatele
+# <a name="managing-user-data"></a>Správa uživatelských dat
 
-Tato stránka popisuje, co protokoly služeb cloudu konverzace Learner při provádění dialogová okna s koncovými uživateli.  Také popisuje, jak přidružit protokoly Learner konverzace s ID uživatelů, tak, že můžete načíst nebo odstranit všechny protokoly, které jsou spojeny s konkrétním uživatelem.
+Tato stránka popisuje, co Conversation Learner protokoly cloudových služeb při provádění dialogových oken s koncovými uživateli.  Také popisuje, jak přidružit protokoly Conversation Learner s ID uživatelů, abyste mohli načíst nebo odstranit všechny protokoly přidružené ke konkrétnímu uživateli.
 
 ## <a name="overview-of-end-user-data-logging"></a>Přehled protokolování dat koncových uživatelů
 
-Ve výchozím nastavení cloudové službě konverzace Learner protokoly interakcí mezi koncovým uživatelům a váš robot.  Tyto protokoly jsou důležité pro zlepšení vašeho robota, umožní vám identifikovat případech, kdy váš robot extrahovat nesprávné entity nebo vybrané nesprávné akce.  Když přejdete na stránku "Protokolu dialogů" uživatelské rozhraní, opravy a ukládání tohoto dialogového okna opravený jako dialogové okno Nový trénování pak lze opravit tyto chyby. Další informace najdete v kurzu o "Protokolu dialozích."
+Ve výchozím nastavení protokoluje cloudová služba Conversation Learner interakce mezi koncovými uživateli a robotem.  Tyto protokoly jsou důležité pro vylepšení robota, což vám umožní identifikovat případy, kde robot extrahovali nesprávnou entitu nebo vybrali nesprávnou akci.  Tyto chyby se pak dají opravit tak, že na stránce "dialogová okna protokolu" v uživatelském rozhraní kliknete, provedete opravy a uložíte tuto opravenou dialogovou sadu jako nový vlakový dialog. Další informace najdete v kurzu "dialogová okna protokolu".
 
-## <a name="how-to-disable-logging"></a>Zákaz protokolování
+## <a name="how-to-disable-logging"></a>Postup zakázání protokolování
 
-Můžete řídit, jestli konverzace s koncovými uživateli se na stránce "Nastavení" pro váš model Learner konverzace.  Je zaškrtávací políčko pro "Protokolu konverzací."  Zrušením zaškrtnutí tohoto políčka, se nebudou protokolovat konverzace s koncovými uživateli.
+Můžete řídit, jestli budou konverzace s koncovými uživateli na stránce nastavení pro model Conversation Learner.  Pro "log konverzace" existuje Zaškrtávací políčko.  Když toto políčko zrušíte, konverzace s koncovými uživateli se nebudou protokolovat.
 
 ## <a name="what-is-logged"></a>Co je protokolováno 
 
-V dialogových oknech protokolu konverzace Learner ukládá vstup uživatele, hodnoty entit, vybrané akce a časová razítka pro každý na řadě vy.  Tyto protokoly jsou uloženy pro určitou dobu a potom je zahozen (podrobnosti najdete na stránce nápovědy na "výchozí hodnoty a hranice").  
+V dialogových oknech protokolu Conversation Learner ukládá vstup uživatele, hodnoty entit, vybrané akce a časová razítka pro každé vypnutí.  Tyto protokoly se ukládají po určitou dobu a pak se zahodí (podrobnosti najdete na stránce s informacemi o výchozí hodnotě a hranicích).  
 
-Konverzace Learner vytvoří jedinečné ID pro každého přihlášeného dialogového okna.  Konverzace Learner nemá *není* ukládání identifikátor uživatele pomocí protokolu dialogová okna.  
+Conversation Learner pro každé protokolované dialogové okno vytvoří jedinečné ID.  Conversation Learner *neukládá identifikátor* uživatele s protokolovanými dialogy.  
 
-## <a name="associating-logged-dialogs-with-a-user-id"></a>Dialogová okna přidružení protokolu s ID uživatele
+## <a name="associating-logged-dialogs-with-a-user-id"></a>Přidružení protokolovaných dialogových oken s ID uživatele
 
-Často je potřeba mít možnost zaznamenané dialogová okna přidružit ID uživatele – například, bude moct načíst nebo odstranit zaznamenané dialogová okna od konkrétního uživatele.  Konverzace Learner neukládá identifikátoru uživatele, musí toto přidružení zachovat kódem pro vývojáře.  
+Často je důležité, aby bylo možné přidružit přihlášená dialogová okna s ID uživatele, například aby bylo možné načíst nebo odstranit přihlášené dialogy od určitého uživatele.  Vzhledem k tomu, že Conversation Learner neukládá identifikátor uživatele, je nutné toto přidružení udržovat v kódu vývojáře.  
 
-K vytvoření tohoto mapování, získejte ID dialogu zaznamenané v `EntityDetectionCallback`; v úložišti svého robota, uložit přidružení mezi ID uživatele a toto dialogové okno Protokolované.  
+Pokud chcete vytvořit toto mapování, Získejte ID přihlášeného dialogu v `EntityDetectionCallback`. potom v úložišti robota uložte přidružení mezi ID uživatele a tímto protokolem.  
 
 ```
 cl.EntityDetectionCallback(async (text: string, memoryManager: ClientMemoryManager): Promise<void> => {
@@ -65,61 +66,61 @@ cl.EntityDetectionCallback(async (text: string, memoryManager: ClientMemoryManag
 
 ## <a name="headers-for-http-calls"></a>Hlavičky pro volání HTTP
 
-V každé volání rozhraní HTTP přidejte následující hlavičky:
+V každém volání HTTP přidejte následující hlavičku:
 
 ```
 Ocp-Apim-Subscription-Key=<LUIS_AUTHORING_KEY>
 ```
 
-kde `<LUIS_AUTHORING_KEY>` je LUIS vytváření klíč se používá pro přístup k aplikacím Learner vaší konverzace.
+kde `<LUIS_AUTHORING_KEY>` je Luis Authoring Key, který slouží k přístupu k aplikacím Conversation Learner.
 
-## <a name="how-to-obtain-raw-data-for-a-logged-dialog"></a>Získání nezpracovaných dat pro přihlášeného dialogového okna
+## <a name="how-to-obtain-raw-data-for-a-logged-dialog"></a>Jak získat nezpracovaná data pro protokolovaný dialog
 
-K získání nezpracovaných dat pro dialogové okno Protokol, můžete použít toto volání HTTP:
+Chcete-li získat nezpracovaná data pro dialogové okno protokolu, můžete použít toto volání HTTP:
 
 ```
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/logdialog/<logDialogId>
 ```
 
-Kde `<appId>` je identifikátor GUID pro tento model Learner konverzace a `<logDialgoId>` je ID protokolu dialogové okno, které chcete načíst.  
+Kde `<appId>` je identifikátor GUID tohoto Conversation Learner modelu a `<logDialgoId>` je ID dialogu protokolu, který chcete načíst.  
 
 > [!NOTE]
-> Dialogová okna protokolu může upravit vývojář a pak uloženy jako trénování dialogová okna.  Když to uděláte, konverzace Learner ukládá ID dialogu "zdroj" protokolu s dialogovým oknem trénování.  Kromě toho trénování dialogového okna je možné "větvit" v uživatelském rozhraní; Pokud dialogové okno trénovat na základě modelu má ID přidružena zdrojová protokolu dialogové okno, pak větve z dialogového okna trénování budou označeny se stejným ID. protokolu dialogového okna
+> Dialogová okna protokolu může upravit vývojář a pak se ukládají jako výuková dialogová okna.  Po dokončení Conversation Learner ukládá do dialogového okna výuka ID dialogového okna protokolu "Source".  Kromě toho může být dialogové okno s výukou v uživatelském rozhraní "větvení". Pokud má dialogové okno vlaku přidružené ID dialogu zdrojového protokolu, budou se větve z tohoto dialogového okna tohoto vlaku označovat stejným ID dialogu protokolu.
 
-Získat všechna dialogová okna trénování, které byly získány z dialogového okna protokolu, postupujte podle těchto kroků.
+Pokud chcete získat všechna dialogová okna, která byla odvozena z dialogu protokolu, postupujte podle těchto kroků.
 
-Nejdřív načtěte všechna dialogová okna trénovat na základě modelu:
+Nejdřív načtěte všechna dialogová okna s výukou:
 
 ```
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialogs
 ```
 
-Kde `<appId>` je identifikátor GUID pro tento model Learner konverzace.  
+Kde `<appId>` je identifikátor GUID tohoto Conversation Learnerho modelu.  
 
-Vrátí všechna dialogová okna trénování.  Hledat v seznamu pro přidružený `sourceLogDialogId`a Poznámka: přidruženou `trainDialogId`. 
+Vrátí všechny dialogy s výukou.  Vyhledejte v tomto seznamu přidružená `sourceLogDialogId`a Všimněte si přidruženého `trainDialogId`. 
 
-Do jediné trénování dialogové okno podle ID:
+Do jednoho výukového dialogového okna podle ID:
 
 ```
 GET https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialog/<trainDialogId>
 ```
 
-Kde `<appId>` je identifikátor GUID pro tento model Learner konverzace a `<trainDialogId>` je ID trénování dialogového okna, které chcete načíst.  
+Kde `<appId>` je identifikátor GUID tohoto Conversation Learner modelu a `<trainDialogId>` je ID dialogového okna s vlakem, který chcete načíst.  
 
-## <a name="how-to-delete-a-logged-dialog"></a>Jak odstranit zaznamenané dialogového okna
+## <a name="how-to-delete-a-logged-dialog"></a>Postup odstranění protokolovaného dialogu
 
-Pokud chcete odstranit dialogové okno Protokol zadané jeho ID, můžete použít toto volání HTTP:
+Pokud chcete odstranit dialogové okno protokolu s daným ID, můžete použít toto volání HTTP:
 
 ```
 DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/logdialog/<logDialogId>
 ```
 
-Kde `<appId>` je identifikátor GUID pro tento model Learner konverzace a `<logDialogId>` je ID dialogové okno protokolu, které chcete odstranit. 
+Kde `<appId>` je identifikátor GUID tohoto Conversation Learner modelu a `<logDialogId>` je ID dialogu protokolu, který chcete odstranit. 
 
-Pokud chcete odstranit dialogové okno trénování zadané jeho ID, můžete použít toto volání HTTP:
+Pokud chcete odstranit dialogové okno výuka s daným ID, můžete použít toto volání HTTP:
 
 ```
 DELETE https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/app/<appId>/traindialog/<trainDialogId>
 ```
 
-Kde `<appId>` je identifikátor GUID pro tento model Learner konverzace a `<trainDialogId>` je ID dialogu trénování chcete odstranit. 
+Kde `<appId>` je identifikátor GUID tohoto Conversation Learner modelu a `<trainDialogId>` je ID dialogového okna s vlakem, které chcete odstranit. 

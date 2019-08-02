@@ -3,7 +3,7 @@ title: Vytvoření clusteru Service Fabric s Linuxem v Azure | Dokumentace Micro
 description: Naučte se nasadit cluster Service Fabric s Linuxem do existující virtuální sítě Azure s použitím rozhraní příkazového řádku Azure.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 00d7e510fa43865f1427092f2f20b9847f1afa9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ba157d7bf2e6effbaf7ab129dbbbfd1ca8b9667
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60863780"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598850"
 ---
-# <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Nasazení clusteru Service Fabric s Linuxem do virtuální sítě Azure
+# <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Nasazení clusteru se systémem Linux Service Fabric do virtuální sítě Azure
 
-V tomto článku se dozvíte, jak nasadit cluster Service Fabric s Linuxem do [virtuální sítě Azure (VNET)](../virtual-network/virtual-networks-overview.md) pomocí rozhraní příkazového řádku Azure a šablony. Po dokončení budete mít v cloudu spuštěný cluster, do kterého budete moct nasazovat aplikace. Pokud chcete pomocí PowerShellu vytvořit cluster s Windows, přečtěte si článek [Vytvoření zabezpečeného clusteru s Windows v Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+V tomto článku se dozvíte, jak nasadit cluster se systémem Linux Service Fabric do [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md) pomocí rozhraní příkazového řádku Azure a šablony. Po dokončení budete mít v cloudu spuštěný cluster, do kterého budete moct nasazovat aplikace. Pokud chcete pomocí PowerShellu vytvořit cluster s Windows, přečtěte si článek [Vytvoření zabezpečeného clusteru s Windows v Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,55 +33,55 @@ Než začnete:
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nainstalujte si [rozhraní příkazového řádku Service Fabric](service-fabric-cli.md).
 * Instalace [rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli)
-* Informace o klíčových konceptech clusterů, přečtěte si téma [clusterů Azure – přehled](service-fabric-azure-clusters-overview.md)
-* [Plánování a příprava](service-fabric-cluster-azure-deployment-preparation.md) pro produkční nasazení clusteru.
+* Základní informace o klíčových konceptech clusterů najdete v tématu [Přehled clusterů Azure](service-fabric-azure-clusters-overview.md) .
+* [Naplánujte a připravte](service-fabric-cluster-azure-deployment-preparation.md) nasazení produkčního clusteru.
 
-Následující postupy vytvářejí sedm uzly clusteru Service Fabric. Pokud chcete vypočítat náklady vzniklé používáním clusteru Service Fabric v Azure, použijte [cenovou kalkulačku funkcí Azure](https://azure.microsoft.com/pricing/calculator/).
+Následující postupy vytvoří cluster se sedmi uzly Service Fabric. Pokud chcete vypočítat náklady vzniklé používáním clusteru Service Fabric v Azure, použijte [cenovou kalkulačku funkcí Azure](https://azure.microsoft.com/pricing/calculator/).
 
 ## <a name="download-and-explore-the-template"></a>Stažení a prozkoumání šablony
 
 Stáhněte si následující soubory šablon Resource Manageru:
 
-* [AzureDeploy.json][template]
-* [AzureDeploy.Parameters.json][parameters]
+* [AzureDeploy. JSON][template]
+* [AzureDeploy. Parameters. JSON][parameters]
 
-Tato šablona nasadí zabezpečený cluster sedmi virtuálních počítačů a tři typy uzlů do virtuální sítě.  Další ukázkové šablony najdete na [GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). Šablona [AzureDeploy.json][template] nasadí řadu prostředků včetně následujících.
+Tato šablona nasadí zabezpečený cluster sedmi virtuálních počítačů a tří typů uzlů do virtuální sítě.  Další ukázkové šablony najdete na [GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). [AzureDeploy. JSON][template] nasadí řadu prostředků včetně následujících.
 
 ### <a name="service-fabric-cluster"></a>Cluster Service Fabric
 
 V prostředku **Microsoft.ServiceFabric/clusters** se nasazuje cluster s Linuxem s těmito charakteristikami:
 
 * tři typy uzlů
-* pět uzlů primárního typu (možnost konfigurace v parametrech šablony), jeden uzel v každém z jiných typů uzlů
-* Operační systém: Ubuntu 16.04 LTS (možnost konfigurace v parametrech šablony)
+* pět uzlů v typu primárního uzlu (konfigurovatelné v parametrech šablony), jeden uzel v každém z ostatních typů uzlů
+* Operační systém: Ubuntu 16,04 LTS (konfigurovatelné v parametrech šablony)
 * zabezpečení pomocí certifikátu (možnost konfigurace v parametrech šablony)
 * [služba DNS](service-fabric-dnsservice.md) je povolena
 * bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
 * stříbrná [úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
-* koncový bod připojení klienta: 19000 (možnost konfigurace v parametrech šablony)
-* Koncový bod brány HTTP: 19080 (možnost konfigurace v parametrech šablony)
+* koncový bod připojení klienta: 19000 (konfigurovatelné v parametrech šablony)
+* Koncový bod služby HTTP Gateway: 19080 (konfigurovatelné v parametrech šablony)
 
 ### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 
 V prostředku **Microsoft.Network/loadBalancers** dochází ke konfiguraci nástroje pro vyrovnávání zatížení a k nastavení sond a pravidel pro následující porty:
 
 * koncový bod připojení klienta: 19000
-* Koncový bod brány HTTP: 19080
-* port aplikací: 80
-* port aplikací: 443
+* Koncový bod služby HTTP Gateway: 19080
+* Port aplikace: 80
+* Port aplikace: 443
 
 ### <a name="virtual-network-and-subnet"></a>Virtuální síť a podsíť
 
 Názvy virtuální sítě a podsítě jsou deklarované v parametrech šablony.  Adresní prostory virtuální sítě a podsítě se taky deklarují v parametrech šablony a konfigurují v prostředku **Microsoft.Network/virtualNetworks**:
 
 * adresní prostor virtuální sítě: 10.0.0.0/16
-* Adresní prostor podsítě Service Fabric: 10.0.2.0/24
+* Service Fabric adresní prostor podsítě: 10.0.2.0/24
 
 Pokud jsou potřebné další porty aplikací, je třeba upravit prostředek Microsoft.Network/loadBalancers, aby povoloval příchozí provoz.
 
 ## <a name="set-template-parameters"></a>Nastavení parametrů šablony
 
-Soubor s parametry [AzureDeploy.Parameters][parameters] deklaruje mnoho hodnot používaných pro nasazení clusteru a přidružených prostředků. Některé parametry, které možná budete muset upravit pro své nasazení:
+Soubor parametrů [AzureDeploy. Parameters][parameters] deklaruje mnoho hodnot, které se používají k nasazení clusteru a přidružených prostředků. Některé parametry, které možná budete muset upravit pro své nasazení:
 
 |Parametr|Příklad hodnoty|Poznámky|
 |---|---||
@@ -90,16 +90,16 @@ Soubor s parametry [AzureDeploy.Parameters][parameters] deklaruje mnoho hodnot p
 |clusterName|mysfcluster123| Název clusteru. |
 |location|southcentralus| Umístění clusteru. |
 |certificateThumbprint|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který se dříve odeslal do trezoru klíčů, vyplňte hodnotu kryptografického otisku certifikátu SHA1. Příklad: „6190390162C988701DB5676EB81083EA608DCCF3“. </p>|
-|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například "https:\//mykeyvault.Vault.Azure.NET:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte hodnotu zdrojového trezoru. Například: /subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT</p>|
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Nasazení virtuální sítě a clusteru
 
-Dále nastavte topologii sítě a nasaďte cluster Service Fabric. Šablona Resource Manageru [AzureDeploy.json][template] vytvoří virtuální síť a podsíť pro Service Fabric. Šablona také nasadí cluster s povoleným zabezpečením pomocí certifikátu.  Pro produkční clustery používejte certifikát clusteru od certifikační autority (CA). K zabezpečení testovacích clusterů můžete použít certifikát podepsaný svým držitelem.
+Dále nastavte topologii sítě a nasaďte cluster Service Fabric. Šablona Správce prostředků [AzureDeploy. JSON][template] vytvoří virtuální síť (VNET) a podsíť pro Service Fabric. Šablona také nasadí cluster s povoleným zabezpečením pomocí certifikátu.  Pro produkční clustery používejte certifikát clusteru od certifikační autority (CA). K zabezpečení testovacích clusterů můžete použít certifikát podepsaný svým držitelem.
 
-Šablony v tomto článku nasadit cluster, který používá kryptografický otisk certifikátu pro identifikaci certifikátu clusteru.  Žádné dva certifikáty můžou mít se stejným kryptografickým otiskem, což znesnadňuje správy certifikátů. Přepínání nasazeném clusteru pomocí kryptografické otisky certifikátů k běžnému názvu certifikátu pomocí certifikátu značně zjednodušuje správu.  Zjistěte, jak aktualizovat cluster používat běžné názvy certifikátů pro správu certifikátů, přečtěte si téma [clusteru změnit na společný název správy certifikátů](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
+Šablona v tomto článku nasadí cluster, který používá kryptografický otisk certifikátu k identifikaci certifikátu clusteru.  Žádné dva certifikáty nemohou mít stejný kryptografický otisk, což ztěžuje správu certifikátů. Přepnutím nasazeného clusteru z použití kryptografických otisků certifikátů na použití běžných názvů certifikátů je Správa certifikátů mnohem jednodušší.  Pokud se chcete dozvědět, jak cluster aktualizovat tak, aby používal běžné názvy certifikátů pro správu certifikátů, přečtěte si téma [Změna clusteru do společné správy názvů certifikátů](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>Vytvoření clusteru s použitím existujícího certifikátu
 
@@ -129,7 +129,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>Vytvoření clusteru s použitím nového certifikátu podepsaného svým držitelem
 
-Následující skript pomocí příkazu [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) a šablony nasadí do Azure nový cluster. Příkaz také vytvoří v Azure nový trezor klíčů, přidá nový certifikát podepsaný svým držitelem do služby key vault a stáhne soubor certifikátu místně.
+Následující skript pomocí příkazu [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) a šablony nasadí do Azure nový cluster. Příkaz také vytvoří nový trezor klíčů v Azure, přidá do trezoru klíčů nový certifikát podepsaný svým držitelem a stáhne soubor certifikátu místně.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
@@ -164,9 +164,9 @@ Pokud nechcete ihned pokračovat dalším článkem, můžete [cluster odstranit
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak [škálování clusteru](service-fabric-tutorial-scale-cluster.md).
+Naučte se [škálovat cluster](service-fabric-tutorial-scale-cluster.md).
 
-Šablony v tomto článku nasadit cluster, který používá kryptografický otisk certifikátu pro identifikaci certifikátu clusteru.  Žádné dva certifikáty můžou mít se stejným kryptografickým otiskem, což znesnadňuje správy certifikátů. Přepínání nasazeném clusteru pomocí kryptografické otisky certifikátů k běžnému názvu certifikátu pomocí certifikátu značně zjednodušuje správu.  Zjistěte, jak aktualizovat cluster používat běžné názvy certifikátů pro správu certifikátů, přečtěte si téma [clusteru změnit na společný název správy certifikátů](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
+Šablona v tomto článku nasadí cluster, který používá kryptografický otisk certifikátu k identifikaci certifikátu clusteru.  Žádné dva certifikáty nemohou mít stejný kryptografický otisk, což ztěžuje správu certifikátů. Přepnutím nasazeného clusteru z použití kryptografických otisků certifikátů na použití běžných názvů certifikátů je Správa certifikátů mnohem jednodušší.  Pokud se chcete dozvědět, jak cluster aktualizovat tak, aby používal běžné názvy certifikátů pro správu certifikátů, přečtěte si téma [Změna clusteru do společné správy názvů certifikátů](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json

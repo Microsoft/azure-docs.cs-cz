@@ -16,10 +16,10 @@ ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68500036"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření vzorce automatického škálování pro škálování výpočetních uzlů ve fondu služby Batch
@@ -172,14 +172,14 @@ Tyto operace jsou povoleny u typů, které jsou uvedeny v předchozí části.
 | *operátor* doubleVec doubleVec |+, -, *, / |doubleVec |
 | *operátor* TimeInterval Double |*, / |timeinterval |
 | *operátor* TimeInterval TimeInterval |+, - |timeinterval |
-| časové  razítko operátoru TimeInterval |+ |timestamp |
+| časové razítko operátoru TimeInterval |+ |timestamp |
 | *operátor* časového razítka TimeInterval |+ |timestamp |
-| časové  razítko operátoru časového razítka |- |timeinterval |
+| časové razítko operátoru časového razítka |- |timeinterval |
 | *operátor*Double |-, ! |double |
 | *operátor*TimeInterval |- |timeinterval |
 | Double – *operátor* Double |<, <=, ==, >=, >, != |double |
 | řetězec *operátoru* řetězce |<, <=, ==, >=, >, != |double |
-| časové  razítko operátoru časového razítka |<, <=, ==, >=, >, != |double |
+| časové razítko operátoru časového razítka |<, <=, ==, >=, >, != |double |
 | *operátor* TimeInterval TimeInterval |<, <=, ==, >=, >, != |double |
 | Double – *operátor* Double |&&, &#124;&#124; |double |
 
@@ -392,7 +392,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Při vytváření fondu s povoleným autoškálou, nezadávejte parametr _targetDedicatedNodes_ ani parametr _TargetLowPriorityNodes_ pro volání **CreatePool**. Místo toho zadejte vlastnosti **AutoScaleEnabled** a **AutoScaleFormula** ve fondu. Hodnoty pro tyto vlastnosti určují cílové číslo každého typu uzlu. Chcete-li ručně změnit velikost fondu s povoleným automatickým škálováním (například pomocí [BatchClient. PoolOperations. ResizePoolAsync][net_poolops_resizepoolasync]),  nejprve zakažte automatické škálování ve fondu a pak změňte jeho velikost.
+> Při vytváření fondu s povoleným autoškálou, nezadávejte parametr _targetDedicatedNodes_ ani parametr _TargetLowPriorityNodes_ pro volání **CreatePool**. Místo toho zadejte vlastnosti **AutoScaleEnabled** a **AutoScaleFormula** ve fondu. Hodnoty pro tyto vlastnosti určují cílové číslo každého typu uzlu. Chcete-li ručně změnit velikost fondu s povoleným automatickým škálováním (například pomocí [BatchClient. PoolOperations. ResizePoolAsync][net_poolops_resizepoolasync]), nejprve zakažte automatické škálování ve fondu a pak změňte jeho velikost.
 >
 >
 
@@ -714,7 +714,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Maximalizujte využití výpočetních prostředků Azure Batch pomocí souběžných úloh uzlů](batch-parallel-node-tasks.md) obsahuje podrobné informace o tom, jak můžete na výpočetních uzlech ve fondu provádět více úloh současně. Kromě automatického škálování může tato funkce pomáhat snížit dobu trvání úloh u některých úloh a ušetřit tak peníze.
 * Pro další zvýšení efektivity zajistěte, aby se v aplikaci Batch dotazoval na službu Batch optimálním způsobem. Pokud se chcete dozvědět, jak omezit množství dat, která se při dotazování na stav potenciálně tisíc výpočetních uzlů nebo úkolů přecházejí, podívejte se na téma [dotazování služby Azure Batch](batch-efficient-list-queries.md) .
 

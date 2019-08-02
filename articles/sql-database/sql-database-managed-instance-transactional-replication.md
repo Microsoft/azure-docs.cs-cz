@@ -1,6 +1,6 @@
 ---
-title: Transakční replikace s Azure SQL Database | Microsoft Docs"
-description: Další informace o použití transakční replikace systému SQL Server s jednoduché, ve fondu, a instanci databáze ve službě Azure SQL Database.
+title: Transakční replikace s Azure SQL Database | Microsoft Docs "
+description: Přečtěte si o použití SQL Server transakční replikace s databázemi s jedním, sdruženými a instancemi v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -10,78 +10,77 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 1c62fb466774a3599972d6a9cc340cca300eee59
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: db295f7644cae96eb00670cecf6e4eeba9bb6bed
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67696187"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567236"
 ---
-# <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace s jedním, ve fondu a instanci databáze ve službě Azure SQL Database
+# <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace s databázemi s jednou, sdruženými a instancemi v Azure SQL Database
 
-Transakční replikace je funkce služby Azure SQL Database a SQL Server, který umožňuje replikovat data z tabulky ve službě Azure SQL Database nebo SQL Server do tabulek umístit do vzdálené databáze. Tato funkce umožňuje synchronizovat více tabulek v různých databázích.
+Transakční replikace je funkce Azure SQL Database a SQL Server, která umožňuje replikovat data z tabulky v Azure SQL Database nebo SQL Server do tabulek umístěných ve vzdálených databázích. Tato funkce umožňuje synchronizovat více tabulek v různých databázích.
 
-## <a name="when-to-use-transactional-replication"></a>Použití transakční replikace
+## <a name="when-to-use-transactional-replication"></a>Kdy použít transakční replikaci
 
 Transakční replikace je užitečná v následujících scénářích:
-- Publikovat změny provedené v jedné nebo více tabulek v databázi a Rozdejte je jeden nebo více systému SQL Server a Azure SQL databáze, které přihlášený(á) k odběru změn.
-- Zachovat několik distribuované databáze ve stavu synchronizovaná.
-- Migrace databází z jednoho serveru SQL Server nebo spravované Instance do jiné databáze a průběžně publikujte změny.
+- Publikování změn provedených v jedné nebo více tabulkách v databázi a jejich distribuce do jedné nebo mnoha SQL Server nebo databází Azure SQL, které se přihlásily k odběru změn.
+- Udržujte několik distribuovaných databází v synchronizovaném stavu.
+- Migrujte databáze z jedné SQL Server nebo spravované instance do jiné databáze průběžným publikováním změn.
 
 ## <a name="overview"></a>Přehled
 
-Klíčové komponenty v transakční replikaci můžete vidět na následujícím obrázku:  
+Klíčové komponenty v transakční replikaci jsou uvedené na následujícím obrázku:  
 
-![Replikace SQL Database](media/replication-to-sql-database/replication-to-sql-database.png)
+![replikace s SQL Database](media/replication-to-sql-database/replication-to-sql-database.png)
 
-**Vydavatele** odesláním aktualizací k distributorovi je instance nebo serveru, který publikuje změny provedené na některé tabulky (články). Publikování do jakékoli SQL Azure je databáze z SQL serveru v místním podporuje následující verze systému SQL Server:
+**Vydavatel** je instance nebo server, který publikuje změny provedené v některých tabulkách (články) odesláním aktualizací distributorovi. Publikování do jakékoli databáze SQL Azure z místního SQL Server podporuje následující verze SQL Server:
 
 - SQL Server 2019 (preview)
 - SQL Server 2016 na SQL 2017
-- SQL Server 2014 SP1 CU3 nebo větší (12.00.4427)
+- SQL Server 2014 SP1 CU3 nebo vyšší (12.00.4427)
 - SQL Server 2014 RTM CU10 (12.00.2556)
-- SQL Server 2012 SP3 nebo větší (11.0.6020)
+- SQL Server 2012 SP3 nebo novější (11.0.6020)
 - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-- Pro jiné verze systému SQL Server, které nepodporují publikování na objekty v Azure, je možné využívat [znovu publikovat data](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) metody pro přesun dat do novější verze systému SQL Server. 
+- Pro jiné verze SQL Server, které nepodporují publikování do objektů v Azure, je možné použít metodu [opětovného publikování dat](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) k přesunu dat do novějších verzí SQL Server. 
 
-**Distributora** je instance nebo serveru, který shromažďuje údaje o změnách v článcích od vydavatele a distribuuje je pro předplatitele. Distributor může být Azure SQL Database Managed Instance nebo SQL Server (libovolná verze jak dlouhé je se rovná nebo je vyšší než verze, vydavatel). 
+**Distributor** je instance nebo server, který shromažďuje změny v článcích od vydavatele a distribuuje je odběratelům. Distributor může být buď Azure SQL Database spravovaná instance, nebo SQL Server (jakákoli verze, pokud je větší nebo rovna verzi vydavatele). 
 
-**Odběratele** je instance nebo serveru, který přijímá změny provedené ve vydavateli. Předplatitelé může být buď jedno, ve fondu, a instance databází do databází Azure SQL Database nebo SQL Server. Odběratel na jeden nebo součástí fondu databáze musí být nakonfigurován jako nabízených oznámení odběrateli. 
+**Předplatitelem** je instance nebo server, který přijímá změny provedené u vydavatele. Předplatitelé můžou být databáze jedné, sdružené a instance v Azure SQL Database nebo databázích SQL Server. Předplatitel v jedné nebo sdružené databázi musí být nakonfigurovaný jako předplatitel nabízení. 
 
-| Role | Databáze ve fondu a jeden | Instance databáze |
+| Role | Databáze s jednou a fondem | Databáze instancí |
 | :----| :------------- | :--------------- |
 | **Publisher** | Ne | Ano | 
-| **Distributor** | Ne | Ano|
-| **Předplatitele o přijetí změn** | Ne | Ano|
-| **Odběratel nabízených oznámení**| Ano | Ano|
+| **Rozdělovač** | Ne | Ano|
+| **Předplatitel pro vyžádání obsahu** | Ne | Ano|
+| **Předplatitel nabízených oznámení**| Ano | Ano|
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > Vyžádaný odběr není při distributora je Instance databáze a odběratele není podporováno. 
+  > Vyžádané odběry se nepodporují, pokud je distributor instancí databáze a předplatitel není. 
 
 Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
 
 
-| Replikace | Databáze ve fondu a jeden | Instance databáze|
+| Replikace | Databáze s jednou a fondem | Databáze instancí|
 | :----| :------------- | :--------------- |
 | [**Standardní transakční**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Ano | 
-| [**snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Ano|
-| [**Sloučení replikace**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Ne | Ne|
+| [**Snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Ano|
+| [**Sloučit replikaci**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Ne | Ne|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Ne | Ne|
 | [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Ne | Ano|
-| [**Aktualizovatelné odběry**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Ne | Ne|
+| [**Odběry, které by možné aktualizovat**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Ne | Ne|
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > - Přistoupíte ke konfiguraci replikace pomocí starší verze může vést k chybě číslo MSSQL_REPL20084 (procesu nemůže připojit k odběrateli.) a MSSQ_REPL40532 (nejde otevřít server \<name > požadovaný v přihlášení. Přihlášení se nezdařilo.)
-  > - Chcete-li používat všechny funkce služby Azure SQL Database, musíte používat nejnovější verze [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
+  > - Pokus o konfiguraci replikace pomocí starší verze může mít za následek chybu MSSQL_REPL20084 (proces se nemohl připojit k odběrateli.) a MSSQ_REPL40532 (nemůže otevřít název serveru \<> požadovaný přihlášením. Přihlášení se nezdařilo.)
+  > - Pokud chcete používat všechny funkce Azure SQL Database, musíte používat nejnovější verze [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [Nástroje pro SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
   
-  ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Matice podpory pro Instance databází a místní systémy
-  Matice podpory replikace pro instanci databáze je stejná jako ta pro místní SQL Server. 
+  ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Matice podpory pro databáze instancí a místní systémy
+  Matice podpory replikace pro databáze instancí je stejná jako ta pro SQL Server v místním prostředí. 
   
-  | **Publisher**   | **Distributor** | **Předplatitele** |
+  | **Publisher**   | **Rozdělovač** | **Roli** |
 | :------------   | :-------------- | :------------- |
 | SQL Server 2017 | SQL Server 2017 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
 | SQL Server 2016 | SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
@@ -93,64 +92,64 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 ## <a name="requirements"></a>Požadavky
 
 - Při připojování mezi účastníky replikace se používá ověřování SQL. 
-- Sdílení účet úložiště Azure pro pracovní adresář, používané při replikaci. 
-- Port 445 (odchozí TCP) musí být otevřené v pravidlech zabezpečení podsíť Managed Instance pro přístup ke sdílené složce Azure. 
-- Port 1433 (odchozí TCP) je potřeba otevřít, pokud vydavatel/distributora Managed Instance a odběratele je místní.
+- Sdílená složka účtu Azure Storage pro pracovní adresář používaný replikací. 
+- Port 445 (odchozí TCP) musí být otevřený v pravidlech zabezpečení podsítě spravované instance pro přístup ke sdílené složce Azure. 
+- Port 1433 (odchozí TCP) je nutné otevřít, pokud je Vydavatel nebo distributor na spravované instanci a předplatitelem v místním prostředí.
 
   >[!NOTE]
-  > Chyba 53 může dojít při připojování ke služby Azure File Storage, pokud je odchozí síťové zabezpečení skupiny (NSG) portu 445 blokovaný při distributora je instance databáze a odběratele je místní. [Aktualizovat virtuální síť NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) k vyřešení tohoto problému. 
+  > Při připojování k souboru Azure Storage se může zobrazit chyba 53, pokud je v případě, že je distributor instancí databáze a předplatitelem instance, zablokovaný port 445 pro skupinu zabezpečení sítě (NSG). Pokud chcete tento problém vyřešit, [aktualizujte NSG virtuální](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) sítě. 
 
-### <a name="compare-data-sync-with-transactional-replication"></a>Porovnání synchronizace dat s využitím transakční replikace
+### <a name="compare-data-sync-with-transactional-replication"></a>Porovnání synchronizace dat s transakční replikací
 
 | | Synchronizace dat | Transakční replikace |
 |---|---|---|
-| Výhody | – Podpora aktivní aktivní<br/>Obousměrné mezi místními a Azure SQL Database | -Nižší latence<br/>-Transakční konzistence<br/>-Znovu použít existující topologie po migraci |
-| Nevýhody | -5 minut nebo další latence<br/>-Žádné transakční konzistence<br/>-Vyšší dopad na výkon | -Nelze publikovat z Azure SQL Database izolovanou databázi nebo databázi ve fondu<br/>-Vysoké náklady na údržbu |
+| Výhody | – Aktivní – aktivní podpora<br/>– Obousměrné mezi místními a Azure SQL Database | – Nižší latence<br/>– Transakční konzistence<br/>-Opětovné použití existující topologie po migraci |
+| Nevýhody | – 5 min nebo větší latence<br/>-Žádná transakční konzistence<br/>– Vyšší dopad na výkon | -Nelze publikovat z Azure SQL Database izolované databáze nebo databáze ve fondu<br/>– Náklady vysoké údržby |
 | | | |
 
-## <a name="common-configurations"></a>Obvyklé konfigurace
+## <a name="common-configurations"></a>Běžné konfigurace
 
-Obecně platí vydavatelem a distributorem musí být buď v cloudu nebo místně. Podporují se následující konfigurace: 
+Obecně platí, že vydavatel a distributor musí být v cloudu i v místním prostředí. Podporují se tyto konfigurace: 
 
-### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>Vydavatele s místní Distributor na Managed Instance
+### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>Vydavatel s místním distributorem na spravované instanci
 
-![Jedna instance jako vydavateli a distributorovi](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
+![Jediná instance jako Vydavatel a distributor](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-Vydavateli a distributorovi jsou nakonfigurované v rámci jednoho Managed Instance a distribuce změny jiných Managed Instance, izolovaná databáze, databáze ve fondu, nebo místní SQL Server. V této konfiguraci vydavatel/spravované Instance distributora nelze konfigurovat pomocí [geografickou replikaci a automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md).
+Vydavatel a distributor jsou konfigurovány v rámci jedné spravované instance a distribuují změny jiné spravované instance, izolované databáze, databáze ve fondu nebo SQL Server místně. V této konfiguraci nejde spravované instance Publisher/distributora nakonfigurovat s [geografickou replikací a automaticky převzetím služeb při selhání](sql-database-auto-failover-group.md).
 
-### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Vydavatele s vzdáleného distributora na Managed Instance
+### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Vydavatel se vzdáleným distributorem na spravované instanci
 
-V této konfiguraci jednoho Managed Instance publikuje změny v distributoru umístěny na jiné mi, který může sloužit velký počet spravovaných instancí zdroje a distribuovat změny na jeden nebo více cílů na Managed Instance, izolovaná databáze, databáze ve fondu, nebo SQL Server.
+V této konfiguraci publikuje jedna spravovaná instance změny distributora umístěného na jiné spravované instanci, která může obsluhovat mnoho zdrojových spravovaných instancí a distribuovat změny do jednoho nebo více cílů na spravované instanci, izolovanou databázi, databázi ve fondu nebo SQL Server.
 
 ![Samostatné instance pro vydavatele a distributora](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
-Vydavateli a distributorovi konfigurují na dvou spravovaných instancí. V této konfiguraci
+Vydavatel a distributor jsou nakonfigurovány na dvou spravovaných instancích. V této konfiguraci
 
-- Obě Managed instance jsou ve stejné virtuální síti.
-- Obě Managed instance jsou ve stejném umístění.
-- Publikování spravované instance, které jsou hostiteli a nejde ho distributora databází [geograficky replikovaný pomocí automatického převzetí služeb při selhání groups](sql-database-auto-failover-group.md).
+- Obě spravované instance jsou ve stejné virtuální síti.
+- Obě spravované instance jsou ve stejném umístění.
+- Spravované instance hostující publikované a distributorské databáze nelze geograficky [replikovat pomocí automatických převzetí služeb při selhání – skupiny](sql-database-auto-failover-group.md).
 
-### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>Vydavateli a distributorovi místně pomocí předplatitele v rámci jednoho ve fondu a instanci databáze 
+### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>Vydavatel a distributor v místním prostředí s předplatitelem v jedné, sdružené a instance databázi 
 
-![Azure SQL Database jako odběratele](media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
+![Azure SQL DB jako předplatitel](media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
  
-V této konfiguraci je Azure SQL Database (jednou, ve fondu a instanci databáze) odběratele. Tato konfigurace podporuje migraci z místního do Azure. Pokud je předplatitel sady na jednu, nebo součástí fondu databáze, musí být v režimu nabízení.  
+V této konfiguraci je Azure SQL Database (jedna, sdružená a databáze instance) předplatitel. Tato konfigurace podporuje migraci z místního prostředí do Azure. Pokud se odběratel nachází v jedné nebo sdružené databázi, musí být v režimu push.  
 
 
 ## <a name="next-steps"></a>Další postup
 
-1. [Konfigurace replikace mezi dvěma spravované instance](replication-with-sql-database-managed-instance.md). 
-1. [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-1. [Vytvořit nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) pomocí názvu serveru Azure SQL Database jako odběratele (například `N'azuresqldbdns.database.windows.net` a název cílové databáze Azure SQL Database (například **Adventureworks**. )
+1. [Nakonfigurujte replikaci mezi dvěma spravovanými instancemi](replication-with-sql-database-managed-instance.md). 
+1. [Vytvořte publikaci](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
+1. [Vytvořte nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) pomocí názvu serveru Azure SQL Database jako předplatitele (například `N'azuresqldbdns.database.windows.net` název Azure SQL Database jako cílovou databázi (například **AdventureWorks**). )
 
 
 
 ## <a name="see-also"></a>Viz také  
 
 - [Replikace do služby SQL Database](replication-to-sql-database.md)
-- [Replikace do spravované Instance](replication-with-sql-database-managed-instance.md)
-- [Vytvořit publikaci](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Vytvořit nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
+- [Replikace do spravované instance](replication-with-sql-database-managed-instance.md)
+- [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
+- [Vytvoření nabízeného odběru](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [Typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [Sledování (replikace)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [Inicializace odběru](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [Monitorování (replikace)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Inicializovat předplatné](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  

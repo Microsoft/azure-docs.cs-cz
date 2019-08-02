@@ -2,7 +2,7 @@
 title: Resetovat heslo uživatele – Azure Active Directory | Dokumentace Microsoftu
 description: Pokyny ohledně toho, jak resetovat heslo uživatele pomocí služby Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.assetid: fad5624b-2f13-4abc-b3d4-b347903a8f16
 ms.service: active-directory
@@ -10,16 +10,16 @@ ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db6554e86cef61f2fc8e7a466919d2ce723f0e5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 382ffab090613a2b14ce710a45be10b4c36e5222
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248002"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561736"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Resetovat heslo uživatele pomocí služby Azure Active Directory
 
@@ -33,7 +33,7 @@ Jako správce můžete resetovat heslo uživatele, pokud zapomenete heslo, pokud
 
 ## <a name="to-reset-a-password"></a>Resetování hesla.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako uživatele správce nebo správce hesel. Další informace o dostupných rolí najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce uživatele nebo správce hesel. Další informace o dostupných rolí najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
 
 2. Vyberte **Azure Active Directory**vyberte **uživatelé**, vyhledejte a vyberte uživatele, který potřebuje obnovení a pak vyberte **resetovat heslo**.
 

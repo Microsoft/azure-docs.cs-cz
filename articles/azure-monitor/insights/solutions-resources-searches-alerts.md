@@ -1,6 +1,6 @@
 ---
-title: Uložená hledání v řešení pro správu | Dokumentace Microsoftu
-description: Řešení pro správu obvykle zahrnují uložené výsledky hledání v Log Analytics k analýze data shromážděná tímto řešením. Se může také definovat výstrahy upozorní uživatele, nebo automaticky provést akce v reakci na kritický problém. Tento článek popisuje, jak definovat uložené výsledky hledání v šabloně Resource Manageru, proto mohou být součástí řešení pro správu Log Analytics.
+title: Uložená hledání v řešeních pro správu | Microsoft Docs
+description: Řešení pro správu obvykle zahrnují uložená hledání v Log Analytics k analýze dat shromažďovaných řešením. Můžou také definovat výstrahy upozorňující uživatele nebo automaticky provádět akce v reakci na kritický problém. Tento článek popisuje, jak definovat Log Analytics uložených hledání v šabloně Správce prostředků, aby bylo možné je zahrnout do řešení pro správu.
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -10,54 +10,54 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2019
+ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0975b23a8f96da6fc2dfcc8bd9ad046847a68aa9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2e32fb57a5ee34da8c342649cc1740d111723ec
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104818"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662910"
 ---
-# <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložené hledání a výstrahy do řešení pro správu (Preview)
+# <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložených hledání a upozornění do řešení pro správu (Preview)
 
 > [!IMPORTANT]
-> Podrobnosti na tomto místě pro vytvoření upozornění pomocí šablony Resource Manageru jsou z data nyní [upozornění Log Analytics se rozšířily a Azure Monitor](../platform/alerts-extend.md). Podrobnosti o vytváření upozornění na protokol pomocí šablony Resource Manageru najdete v tématu [Správa upozornění protokolů pomocí šablony Azure Resource](../platform/alerts-log.md#managing-log-alerts-using-azure-resource-template).
+> Jak [jsme oznámili dřív](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), pracovní prostory Log Analytics vytvořené od *1. června 2019* – budou moct spravovat pravidla výstrah **jenom** pomocí [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)Azure scheduledQueryRules, [Azure Resource Manager šablony](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) a PowerShellu. [ rutina](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Zákazníci si můžou snadno [Přepnout do preferovaných způsobů správy pravidel výstrah](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) pro starší pracovní prostory a využít Azure monitor scheduledQueryRules jako výchozí a získat spoustu [nových výhod](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) , jako je možnost použití nativních rutin PowerShellu, zvýšené lookback časové období v pravidlech, vytváření pravidel v samostatné skupině prostředků nebo předplatném a mnohem víc.
 
 > [!NOTE]
-> Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.
+> Toto je předběžná dokumentace k vytváření řešení pro správu, která jsou momentálně ve verzi Preview. Jakékoli schéma popsané níže se může změnit.
 
-[Řešení pro správu](solutions.md) by měl obvykle zahrnovat [uložená hledání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k analýze data shromážděná tímto řešením. Můžou také definovat [výstrahy](../../azure-monitor/platform/alerts-overview.md) upozornit uživatele, nebo automaticky provést akce v reakci na kritický problém. Tento článek popisuje, jak definovat uložené výsledky hledání Log Analytics a upozornění [šablony Resource Manageru](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) tak mohou být zahrnuty v [řešení pro správu](solutions-creating.md).
+[Řešení pro správu](solutions.md) obvykle zahrnují [uložená hledání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k analýze dat shromažďovaných řešením. Můžou také definovat [výstrahy](../../azure-monitor/platform/alerts-overview.md) upozorňující uživatele nebo automaticky provádět akce v reakci na kritický problém. Tento článek popisuje, jak definovat Log Analytics uložených hledání a upozornění v [šabloně správy prostředků](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) , aby je bylo možné zahrnout do [řešení pro správu](solutions-creating.md).
 
 > [!NOTE]
-> Ukázky v tomto článku použijte parametry a proměnné, které jsou povinné nebo společné pro řešení pro správu a jsou popsány v [návrh a sestavení řešení pro správu v Azure](solutions-creating.md)
+> V ukázkách v tomto článku se používají parametry a proměnné, které jsou buď vyžadované, nebo běžné pro řešení pro správu, popsaná v článku [Návrh a sestavení řešení pro správu v Azure](solutions-creating.md) .
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že jste již obeznámeni s postupy [vytvořte řešení pro správu](solutions-creating.md) a strukturu [šablony Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) a soubor řešení.
+V tomto článku se předpokládá, že už jste obeznámeni s tím, jak [vytvořit řešení pro správu](solutions-creating.md) a strukturu [Správce prostředků šablony](../../azure-resource-manager/resource-group-authoring-templates.md) a souboru řešení.
 
 
-## <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
-Všechny prostředky ve službě Log Analytics jsou obsaženy v [pracovní prostor](../../azure-monitor/platform/manage-access.md). Jak je popsáno v [pracovní prostor Log Analytics a účet Automation](solutions.md#log-analytics-workspace-and-automation-account), pracovní prostor není zahrnutý v řešení pro správu, ale musí existovat před instalací řešení. Pokud není k dispozici, řešení instalace se nezdaří.
+## <a name="log-analytics-workspace"></a>Pracovní prostor Log Analytics
+Všechny prostředky v Log Analytics jsou obsaženy v [pracovním prostoru](../../azure-monitor/platform/manage-access.md). Jak je popsáno v [Log Analytics pracovní prostor a účet Automation](solutions.md#log-analytics-workspace-and-automation-account), pracovní prostor není zahrnutý do řešení pro správu, ale před instalací řešení musí existovat. Pokud není k dispozici, řešení se nepodařilo nainstalovat.
 
-Název pracovního prostoru je název každého prostředku Log Analytics. To se provádí v řešení se **pracovní prostor** parametr jako v následujícím příkladu elementu SavedSearch prostředku.
+Název pracovního prostoru je v názvu každého prostředku Log Analytics. To se provádí v řešení s parametrem **pracovního prostoru** , jako v následujícím příkladu elementu savedsearch prostředku.
 
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
-## <a name="log-analytics-api-version"></a>Verze rozhraní API pro analýzu protokolů
-Všechny prostředky Log Analytics, které jsou definované v šabloně Resource Manageru, mít vlastnost **apiVersion** , který určuje verzi rozhraní API prostředku by měl používat.
+## <a name="log-analytics-api-version"></a>Verze rozhraní API pro Log Analytics
+Všechny prostředky Log Analytics definované v šabloně Správce prostředků mají vlastnost **apiVersion** , která definuje verzi rozhraní API, kterou by měl prostředek použít.
 
-Následující tabulka uvádí verze rozhraní API pro prostředek, který používá v tomto příkladu.
+Následující tabulka uvádí verzi rozhraní API pro prostředek použitý v tomto příkladu.
 
 | Typ prostředku | Verze API | Dotaz |
 |:---|:---|:---|
-| savedSearches | 2017-03-15-preview | Událost &#124; kde EventLevelName == "Chyba"  |
+| savedSearches | 2017-03-15 – Preview | Událost &#124; , kde EventLevelName = = "Error"  |
 
 
 ## <a name="saved-searches"></a>Uložená hledání
-Zahrnout [uložená hledání](../../azure-monitor/log-query/log-query-overview.md) v řešení, které umožňují uživatelům provádět dotazy na data shromážděná z vašeho řešení. Uložená hledání se zobrazí v rámci **uložená hledání** na webu Azure Portal. Uložené výsledky hledání je také nutný pro každou výstrahu.
+Zahrnutí [uložených hledání](../../azure-monitor/log-query/log-query-overview.md) do řešení umožní uživatelům dotazovat se na data shromážděná řešením. Uložená hledání se zobrazí v části **uložená hledání** v Azure Portal. Pro každou výstrahu je také vyžadováno uložené hledání.
 
-[Uložené výsledky hledání log Analytics](../../azure-monitor/log-query/log-query-overview.md) prostředky mají typ `Microsoft.OperationalInsights/workspaces/savedSearches` a mají následující strukturu. To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů.
+[Log Analytics uložené prostředky hledání](../../azure-monitor/log-query/log-query-overview.md) mají typ `Microsoft.OperationalInsights/workspaces/savedSearches` a mají následující strukturu. To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů.
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",
@@ -74,36 +74,32 @@ Zahrnout [uložená hledání](../../azure-monitor/log-query/log-query-overview.
         }
     }
 
-Uložené výsledky hledání se jednotlivé vlastnosti je popsané v následující tabulce.
+Každá vlastnost uloženého hledání je popsána v následující tabulce.
 
 | Vlastnost | description |
 |:--- |:--- |
-| category | Kategorie pro uložené výsledky hledání.  Všechny uložené výsledky hledání ve stejném řešení často sdílí jednu kategorii, takže jsou seskupené dohromady v konzole. |
-| displayName | Název má být zobrazen pro uložené výsledky hledání na portálu. |
-| query | Spustit dotaz. |
+| category | Kategorie uloženého hledání  Všechna uložená hledání ve stejném řešení budou často sdílet jednu kategorii, aby byly seskupeny dohromady v konzole nástroje. |
+| displayName | Název, který se má zobrazit u uloženého hledání na portálu. |
+| query | Dotaz, který se má spustit |
 
 > [!NOTE]
-> Budete muset použít řídicí znaky v dotazu, pokud obsahuje znaky, které může být interpretován jako JSON. Například, pokud byl váš dotaz **AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"** , by měl být zadaný v souboru řešení, které **AzureActivity | OperationName: /\"Microsoft.Compute/virtualMachines/write\"** .
+> V dotazu může být nutné použít řídicí znaky, pokud obsahuje znaky, které by mohly být interpretovány jako JSON. Například pokud byl dotaz **AzureActivity | Operace: "Microsoft. COMPUTE/virtualMachines/Write"** , měl by se zapsat do souboru řešení jako **AzureActivity | OperationName\":/Microsoft. COMPUTE/\"virtualMachines/Write**.
 
-## <a name="alerts"></a>Výstrahy
-[Upozornění Azure Log](../../azure-monitor/platform/alerts-unified-log.md) jsou vytvořené pravidly upozornění Azure, které v pravidelných intervalech spouští dotazy zadaný protokol. Pokud výsledky dotazu splňují zadaná kritéria, se vytvoří záznam o upozornění a jednu nebo více akcí se spouštějí pomocí [skupiny akcí](../../azure-monitor/platform/action-groups.md).
+## <a name="alerts"></a>Upozornění
+[Výstrahy protokolu Azure](../../azure-monitor/platform/alerts-unified-log.md) se vytvářejí pomocí pravidel upozornění Azure, která v pravidelných intervalech spouštějí zadané dotazy protokolu. Pokud výsledky dotazu odpovídají zadaným kritériím, vytvoří se záznam výstrahy a jednou nebo více akcí se spustí pomocí [skupin akcí](../../azure-monitor/platform/action-groups.md).
 
-> [!NOTE]
-> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal rozšířit do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
-Pravidla výstrah v rámci řešení pro správu se skládá z následujících tří různých prostředků.
+Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Když se pracovní prostor a jeho výstrahy rozšíří na Azure, můžete načíst nebo přidat akce pomocí [šablony Azure Resource Manager skupiny akcí](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Pravidla výstrah ve starší verzi řešení pro správu se skládají z následujících tří různých prostředků.
 
-- **Uložené výsledky hledání.** Definuje prohledávání protokolu, který se spouští. Více pravidel upozornění můžete sdílet jeden uložené výsledky hledání.
-- **Plán.** Definuje, jak často je spustit prohledávání protokolů. Každé pravidlo výstrahy, má jeden a pouze jeden plán.
-- **Akce upozornění.** Každé pravidlo výstrahy má jeden prostředek skupiny akcí nebo akce prostředek (starší verze) s typem **výstraha** , který definuje podrobnosti výstrahy, jako jsou kritéria pro vytvoření záznam o upozornění a závažnost výstrahy. [Skupina akcí](../../azure-monitor/platform/action-groups.md) prostředek může mít seznam nakonfigurovaných akcí má provést, když se aktivuje upozornění – například hlasový hovor, SMS, e-mailu, webhooku, nástroji ITSM, runbook služby automation, aplikace logiky, atd.
+- **Hledání bylo uloženo.** Definuje prohledávání protokolu, které je spuštěno. Více pravidel výstrah může sdílet jedno uložené hledání.
+- **CXL.** Definuje, jak často se spouští prohledávání protokolů. Každé pravidlo výstrahy má jeden a jenom jeden plán.
+- **Akce výstrahy** Každé pravidlo výstrahy má jeden prostředek skupiny akcí nebo prostředek akce (starší verze) s typem **výstrahy** , která definuje podrobnosti výstrahy, například kritéria pro vytvoření záznamu výstrahy a závažnost výstrahy. Prostředek [skupiny akcí](../../azure-monitor/platform/action-groups.md) může obsahovat seznam nakonfigurovaných akcí, které se mají provést při spuštění výstrahy – například hlasové volání, SMS, e-mail, Webhook, nástroj ITSM, Automation Runbook, aplikace logiky atd.
 
-Zdroj akce (starší verze) bude volitelně definovala odpověď e-mailu a sady runbook.
-- **Akce Webhooku (starší verze).** Pokud pravidlo upozornění volá webhook, pak vyžaduje prostředek další akce s typem **Webhooku**.
+Uložené prostředky hledání jsou popsány výše. Další materiály jsou popsány níže.
 
-Uložené výsledky hledání, které prostředky jsou popsané výše. Další prostředky jsou popsané níže.
+### <a name="schedule-resource"></a>Plánování prostředku
 
-### <a name="schedule-resource"></a>Plán prostředku
-
-Uložené výsledky hledání může mít jeden nebo více plánů s každý plán reprezentující samostatné pravidlo upozornění. Plán definuje, jak často se hledání spuštění a časový interval nad tím, které jsou data načtena. Plánovat prostředky mají typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` a mají následující strukturu. To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů.
+Uložené hledání může mít jeden nebo více plánů s časovým plánem, který představuje samostatné pravidlo výstrahy. Plán definuje, jak často se spouští hledání, a časový interval, po který se data načítají. Prostředky plánu mají typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` a mají následující strukturu. To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů.
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name)]",
@@ -119,26 +115,25 @@ Uložené výsledky hledání může mít jeden nebo více plánů s každý pl�
             "enabled": "[variables('Schedule').Enabled]"
         }
     }
-Vlastnosti pro plán prostředky jsou popsány v následující tabulce.
+Vlastnosti pro prostředky plánu jsou popsány v následující tabulce.
 
 | Název elementu | Požaduje se | description |
 |:--|:--|:--|
-| enabled       | Ano | Určuje, zda je povoleno výstrahu, když se vytvoří. |
-| interval      | Ano | Jak často dotaz spustí během několika minut. |
-| queryTimeSpan | Ano | Časový interval v minutách, přes které se má vyhodnotit výsledky. |
+| enabled       | Ano | Určuje, zda je výstraha povolena, když je vytvořena. |
+| interval      | Ano | Jak často se dotaz spouští v řádu minut. |
+| queryTimeSpan | Ano | Doba v minutách, po které se mají vyhodnocovat výsledky. |
 
-Plán prostředku by měl záviset na uložené výsledky hledání tak, aby se vytvořené před plán.
+Prostředek plánu by měl záviset na uloženém hledání tak, aby byl vytvořen před plánem.
 > [!NOTE]
-> Název plánu musí být jedinečný v daném pracovním prostoru; dva plány nemůže mít stejné ID, i když jsou přidruženy k jiné uložená hledání. Název pro všechny uložené výsledky hledání, plány a akce, které jsou vytvořené pomocí rozhraní API pro analýzu protokolů také musí být malými písmeny.
+> Název plánu musí být v daném pracovním prostoru jedinečný; dva plány nemohou mít stejné ID i v případě, že jsou přidruženy k různým uloženým hledáním. Také název všech uložených hledání, plánů a akcí vytvořených pomocí rozhraní Log Analytics API musí být malými písmeny.
 
 ### <a name="actions"></a>Akce
 Plán může mít více akcí. Akce může definovat jeden nebo více procesy provádět například poslání e-mailu nebo spuštění sady runbook nebo ji může definovat prahové hodnoty, která určuje, kdy výsledky hledání odpovídají kritérií. Některé akce budou definovat i tak, aby procesy, které jsou prováděny při splnění prahovou hodnotu.
-Akce lze definovat pomocí [skupiny akcí] prostředku nebo akce.
-> [!NOTE]
-> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal automaticky rozšíří do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
-Existují dva typy akcí prostředek určený souborem **typ** vlastnost. Plán vyžaduje jednu **výstraha** akce, která definuje podrobnosti pravidlo upozornění a jaké akce se udělají, když se vytvoří výstraha. Akce prostředky mají typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.
+Akce lze definovat pomocí prostředku prostředků nebo prostředku akce [Action Group].
 
-Akce upozornění mají následující strukturu. To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů.
+Vlastnost **Type** obsahuje dva typy prostředku akce. Plán vyžaduje jednu akci s výstrahou, která definuje Podrobnosti pravidla výstrahy a akce, které se mají provést při vytvoření výstrahy. Prostředky akce mají typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.
+
+Akce výstrahy mají následující strukturu. To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů.
 
 ```json
 {
@@ -172,119 +167,61 @@ Akce upozornění mají následující strukturu. To zahrnuje společné proměn
 }
 ```
 
-Vlastnosti pro akce upozornění prostředky jsou popsány v následujících tabulkách.
+Vlastnosti pro prostředky akce výstrah jsou popsány v následujících tabulkách.
 
 | Název elementu | Požaduje se | description |
 |:--|:--|:--|
-| type | Ano | Typ akce.  Toto je **výstraha** pro akce výstrah. |
-| name | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidla upozornění. |
-| description | Ne | Popis výstrahy. |
-| severity | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritická**<br>**Upozornění**<br>**Informační**
+| type | Ano | Typ akce.  Toto **Upozornění se upozorní** na akce výstrah. |
+| name | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidlo výstrahy. |
+| description | Ne | Volitelný popis výstrahy |
+| severity | Ano | Závažnost záznamu výstrahy z následujících hodnot:<br><br> **kritické**<br>**Upozornění**<br>**informativní**
 
 
 #### <a name="threshold"></a>Prahová hodnota
-Tento oddíl je povinný. Definuje vlastnosti prahové hodnoty pro výstrahu.
+Tato část je povinná. Definuje vlastnosti prahové hodnoty pro výstrahu.
 
 | Název elementu | Požaduje se | description |
 |:--|:--|:--|
-| Operator | Ano | Operátor porovnání z následujících hodnot:<br><br>**gt = je větší než<br>lt = menší než** |
-| Value | Ano | Hodnota určená k porovnání výsledků. |
+| Operator | Ano | Operátor pro porovnání z následujících hodnot:<br><br>**gt = větší než<br>lt = menší než** |
+| Value | Ano | Hodnota pro porovnání výsledků. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
-Tato část je nepovinná. Zahrňte pro oznámení na základě měření metriky.
-
-> [!NOTE]
-> Upozornění metriky měření jsou aktuálně ve verzi public preview.
+Tato část je volitelná. Zahrňte pro upozornění měření metriky.
 
 | Název elementu | Požaduje se | description |
 |:--|:--|:--|
-| TriggerCondition | Ano | Určuje, zda je prahová hodnota pro celkový počet porušení nebo po sobě jdoucí porušení z následujících hodnot:<br><br>**Celkový počet<br>po sobě jdoucích** |
-| Operator | Ano | Operátor porovnání z následujících hodnot:<br><br>**gt = je větší než<br>lt = menší než** |
-| Value | Ano | Počet pokusů, které musí být splněna kritéria pro aktivaci upozornění. |
+| TriggerCondition | Ano | Určuje, zda je prahová hodnota pro celkový počet porušení nebo po sobě jdoucí porušení z následujících hodnot:<br><br>**Celkový<br>počet po sobě jdoucích** |
+| Operator | Ano | Operátor pro porovnání z následujících hodnot:<br><br>**gt = větší než<br>lt = menší než** |
+| Value | Ano | Počet, kolikrát musí být splněna kritéria pro aktivaci výstrahy. |
 
 
-#### <a name="throttling"></a>Throttling
-Tato část je nepovinná. Zahrňte v této části, pokud chcete potlačit výstrahy ze stejného pravidla pro určitou část času, po vytvoření výstrahy.
+#### <a name="throttling"></a>Omezování
+Tato část je volitelná. Tuto část uveďte, pokud chcete potlačit výstrahy ze stejného pravidla po určitou dobu po vytvoření výstrahy.
 
 | Název elementu | Požaduje se | description |
 |:--|:--|:--|
-| DurationInMinutes | Ano, pokud omezování zahrnuté – element | Kolik minut se má potlačit výstrahy, když je vytvořen ze stejné pravidlo upozornění. |
+| DurationInMinutes | Ano, pokud je zahrnutý element omezování | Počet minut, po které se mají potlačit výstrahy po jednom ze stejného pravidla výstrahy. |
 
-#### <a name="azure-action-group"></a>Skupiny akcí Azure
+#### <a name="azure-action-group"></a>Skupina akcí Azure
 Všechna upozornění v Azure, použijte skupiny akcí jako výchozího mechanismu pro zpracování akce. Pomocí skupiny akcí můžete zadat vaše akce jednou a přidružte skupinu akcí více výstrah – napříč Azure. Bez nutnosti opakovaně opětovně deklarovat stejné akce. Skupiny akcí podporovat více akcí – včetně e-mailu, SMS, hlasovým hovorem, připojení ITSM, Runbook služby Automation, Webhooku URI a dalších.
 
-Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu teď měli mít podrobnosti skupiny akcí předána spolu s prahovou hodnotou, bude moct vytvořit výstrahu. Podrobnosti o e-mailu, adresy URL Webhooku, automatických postupů Runbook. Podrobnosti a další akce, musí být definován na straně nejdříve výstrahu; před vytvořením skupiny akcí můžete vytvořit jednu [skupiny akcí ze služby Azure Monitor](../../azure-monitor/platform/action-groups.md) portálu nebo pomocí [skupiny akcí – šablona Resource](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu teď měli mít podrobnosti skupiny akcí předána spolu s prahovou hodnotou, bude moct vytvořit výstrahu. Podrobnosti e-mailu, adresy URL Webhooku, podrobnosti automatizace sady Runbook a další akce musí být před vytvořením výstrahy nejprve definovány na straně skupiny akcí; jedna z nich může vytvořit [skupinu akcí z Azure monitor](../../azure-monitor/platform/action-groups.md) na portálu nebo použít [skupinu akcí – šablona prostředků](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 | Název elementu | Požaduje se | description |
 |:--|:--|:--|
-| AzNsNotification | Ano | ID prostředku Azure akce skupiny souviset s výstrahou pro pořízení potřebné akce při splnění kritérií výstrah. |
-| CustomEmailSubject | Ne | Vlastní předmět e-mailu odeslaného na všechny adresy zadaná ve skupině přidružené akcí. |
-| CustomWebhookPayload | Ne | Vlastní datová část k odeslání do všech webhooku koncové body definované ve skupině přidružené akce. Formát závisí na co webhook očekává a by měl být platný kód JSON serializované. |
-
-#### <a name="actions-for-oms-legacy"></a>Akce pro OMS (starší verze)
-
-Každý plán obsahuje jednu **výstrah** akce. Definuje podrobnosti výstrahy a volitelně oznámení a nápravné akce. Oznámení se odešle e-mail na jeden nebo více adres. Nápravy spuštění sady runbook ve službě Azure Automation se pokusit k nápravě zjištěného problému.
-
-> [!NOTE]
-> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal automaticky rozšíří do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
-
-##### <a name="emailnotification"></a>EmailNotification
- Tato část je nepovinná zahrnout, pokud chcete výstrahu odesílat poštu do jednoho nebo více příjemců.
-
-| Název elementu | Požaduje se | description |
-|:--|:--|:--|
-| Příjemci | Ano | Čárkami oddělený seznam e-mailové adresy k odeslání oznámení, když výstraha se vytvoří, jako v následujícím příkladu.<br><br>**["recipient1\@contoso.com", "recipient2\@contoso.com"]** |
-| Subject | Ano | Řádek předmětu e-mailu. |
-| Příloha | Ne | Přílohy se momentálně nepodporují. Pokud tento prvek je součástí, mělo by být **žádný**. |
-
-##### <a name="remediation"></a>Náprava
-Tato část je nepovinná zahrnout, pokud chcete runbook spustit v reakci na upozornění. 
-
-| Název elementu | Požaduje se | description |
-|:--|:--|:--|
-| RunbookName | Ano | Název spuštění sady runbook. |
-| WebhookUri | Ano | Identifikátor URI webhook pro runbook. |
-| Vypršení platnosti | Ne | Datum a čas, jejíž platnost vyprší náprava. |
-
-##### <a name="webhook-actions"></a>Akce Webhooku
-
-Akce Webhooku spuštění procesu pomocí volání adresy URL a volitelně poskytuje datovou část, která je k odeslání. Když se podobají nápravné akce, s výjimkou jsou určeny pro webhooky, které mohou vyvolat procesy než runbooky Azure Automation. Obsahují taky další možnost poskytnout datovou část, která bude doručen do vzdáleného procesu.
-
-Pokud bude zavolání webhooku po upozornění a bude je nutné prostředek akce s typem **Webhooku** kromě **výstraha** zdroj akce.
-
-    {
-      "name": "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Webhook').Name)]",
-      "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions/",
-      "apiVersion": "[variables('LogAnalyticsApiVersion')]",
-      "dependsOn": [
-        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('SavedSearch').Name, '/schedules/', variables('Schedule').Name)]"
-      ],
-      "properties": {
-        "etag": "*",
-        "type": "[variables('Alert').Webhook.Type]",
-        "name": "[variables('Alert').Webhook.Name]",
-        "webhookUri": "[variables('Alert').Webhook.webhookUri]",
-        "customPayload": "[variables('Alert').Webhook.CustomPayLoad]"
-      }
-    }
-Vlastnosti pro prostředky akce Webhooku jsou popsány v následujících tabulkách.
-
-| Název elementu | Požaduje se | description |
-|:--|:--|:--|
-| type | Ano | Typ akce. Toto je **Webhooku** pro akce webhooku. |
-| jméno | Ano | Zobrazovaný název této akce. To se nezobrazí v konzole. |
-| webhookUri | Ano | Identifikátor URI pro webhook. |
-| customPayload | Ne | Vlastní datová část odeslání k webhooku. Formát závisí na co se očekává se webhook. |
+| AzNsNotification | Ano | ID prostředku skupiny akcí Azure, která má být přidružena k výstraze pro provedení nezbytných akcí při splnění kritérií výstrahy. |
+| CustomEmailSubject | Ne | Vlastní řádek předmětu e-mailu odeslaný všem adresám uvedeným v přidružené skupině akcí |
+| CustomWebhookPayload | Ne | Přizpůsobená datová část, která se má odeslat do všech koncových bodů webhooků definovaných v přidružené skupině akcí Formát závisí na tom, co očekává Webhook, a měl by být platný serializovaný JSON. |
 
 ## <a name="sample"></a>Ukázka
 
-Tady je příklad řešení, které obsahuje následující zdroje:
+Následuje ukázka řešení, které obsahuje následující zdroje:
 
-- Uložené hledání
+- Uložené výsledky hledání
 - Plán
 - Skupina akcí
 
-Ukázka používá [standardní řešení parametry]( solutions-solution-file.md#parameters) proměnné, které používají ho většinou v řešení, na rozdíl od hodnoty hardcoding v definicích prostředků.
+Ukázka používá [standardní proměnné parametrů řešení]( solutions-solution-file.md#parameters) , které by se běžně používaly v řešení, a to na rozdíl od hodnot zakódujeme v definicích prostředků.
 
 ```json
 {
@@ -441,7 +378,7 @@ Ukázka používá [standardní řešení parametry]( solutions-solution-file.md
 }
 ```
 
-Následující soubor parametrů obsahuje hodnoty vzorky pro toto řešení.
+Následující soubor parametrů poskytuje ukázkové hodnoty pro toto řešení.
 
 ```json
 {
@@ -471,5 +408,5 @@ Následující soubor parametrů obsahuje hodnoty vzorky pro toto řešení.
 ```
 
 ## <a name="next-steps"></a>Další postup
-* [Přidání zobrazení](solutions-resources-views.md) do řešení pro správu.
-* [Přidání runbooků služeb automatizace a dalším prostředkům](solutions-resources-automation.md) do řešení pro správu.
+* [Přidejte zobrazení](solutions-resources-views.md) do řešení pro správu.
+* [Přidejte Runbooky Automation a další prostředky](solutions-resources-automation.md) do řešení pro správu.

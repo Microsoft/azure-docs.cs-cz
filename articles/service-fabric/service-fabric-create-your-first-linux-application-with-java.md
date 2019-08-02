@@ -3,7 +3,7 @@ title: Vytvoření aplikace Azure Service Fabric Reliable Actors v Javě v Linux
 description: Zjistěte, jak za pět minut vytvořit a nasadit aplikaci Service Fabric Reliable Actors v Javě.
 services: service-fabric
 documentationcenter: java
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
-ms.author: aljo
-ms.openlocfilehash: 37d9c17ff10922aa524fa2fe3eb8abff92c83052
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 4b008c001e1c4749b6ab6f9f21eff479f007c05c
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394017"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599682"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Vytvoření první aplikace Service Fabric Reliable Actors v Javě v Linuxu
 > [!div class="op_single_selector"]
@@ -50,8 +50,8 @@ K tomu, abyste mohli začít s Reliable Actors, vám stačí pochopit pár zákl
 * **Rozhraní objektu actor**. Rozhraní objektu actor se používá k definování veřejného rozhraní objektu actor silného typu. V terminologii modelu Reliable Actors rozhraní objektu actor definuje typ zpráv, kterým objekt actor rozumí a může je zpracovat. Rozhraní objektu actor používají ostatní objekty actor a klientské aplikace k (asynchronnímu) odesílání zpráv do objektu actor. Reliable Actors můžou implementovat více rozhraní.
 * **Třída ActorProxy**. Třídu ActorProxy používají klientské aplikace k vyvolání metod zveřejněných přes rozhraní objektu actor. Třída ActorProxy zajišťuje dvě důležité funkce:
   
-  * Název řešení: Je možné vyhledat objekt actor v clusteru (najít uzel clusteru, kde je hostovaný).
-  * Zpracování selhání: Může opakovat vyvolání metod a znovu přeložit umístění objektu actor po, například selhání, které vyžaduje přemístění do jiného uzlu v clusteru objektu actor.
+  * Překlad názvů: Objekt actor je schopný najít v clusteru (Najděte uzel clusteru, ve kterém je hostovaný).
+  * Zpracování selhání: Může opakovat volání metod a znovu přeložit umístění objektu actor, například selhání, které vyžaduje přemístění objektu actor do jiného uzlu v clusteru.
 
 Za zmínku stojí následující pravidla týkající se rozhraní objektů actor:
 
@@ -219,18 +219,18 @@ Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [
 Pak rozbalte uzel **Aplikace** a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
 > [!IMPORTANT]
-> Pokud chcete nasadit aplikaci do zabezpečeného clusteru s Linuxem v Azure, budete muset nakonfigurovat certifikát pro ověření vaší aplikace pomocí modulu runtime Service Fabric. Díky tomu služby Reliable Actors ke komunikaci s základního modulu runtime Service Fabric rozhraní API. Další informace najdete v tématu [konfigurace aplikace Reliable Services ke spuštění na clusterech s Linuxem](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Pokud chcete nasadit aplikaci do clusteru zabezpečeného Linux v Azure, musíte nakonfigurovat certifikát pro ověření aplikace pomocí modulu runtime Service Fabric. To umožňuje, aby vaše služby Reliable Actors komunikovaly se základními rozhraními API Service Fabric runtime. Další informace najdete v tématu [Konfigurace aplikace Reliable Services pro spouštění v clusterech se systémem Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Spuštění klienta testování a převzetí služeb při selhání
 Samotné objekty actor nic nedělají – vyžadují, aby jim jiná služba nebo klient posílali zprávy. Šablona actor zahrnuje jednoduchý testovací skript, který můžete použít k interakci se službou actor.
 
 > [!Note]
-> Testovací klient používá třídu ActorProxy ke komunikaci s objektů actor, které musí spustit ve stejném clusteru jako služba objektu actor nebo sdílet stejnou adresní prostor IP adres.  Testovacího klienta můžete spustit ve stejném počítači jako místní vývojový cluster.  Ke komunikaci s actors ve vzdáleném clusteru, ale je nutné nasadit bránu v clusteru, který zpracovává vnitřní komunikaci externí s účastníky.
+> Testovací klient používá ke komunikaci s objekty actor třídu ActorProxy, která musí běžet v rámci stejného clusteru jako služba actor nebo sdílet stejný adresní prostor IP adres.  Testovacího klienta můžete spustit na stejném počítači jako místní vývojový cluster.  Aby bylo možné komunikovat s objekty actor ve vzdáleném clusteru, je však nutné nasadit bránu do clusteru, který zpracovává externí komunikaci s objekty Actors.
 
 1. Spusťte skript pomocí pomocného sledovacího programu a prohlédněte si výstup služby actor.  Testovací skript volá metodu `setCountAsync()` objektu actor pro zvýšení čítače a metodu `getCountAsync()` objektu actor pro získání nové hodnoty čítače, kterou zobrazí v konzole.
 
-   V případě systému MAC OS X budete muset zkopírovat složku HelloWorldTestClient některé místo uvnitř kontejneru spuštěním následujících příkazů Další.    
+   V případě systému MAC OS X je nutné zkopírovat složku HelloWorldTestClient do umístění v rámci kontejneru spuštěním následujících dalších příkazů.    
     
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
@@ -243,7 +243,7 @@ Samotné objekty actor nic nedělají – vyžadují, aby jim jiná služba nebo
     watch -n 1 ./testclient.sh
     ```
 
-2. V nástroji Service Fabric Explorer vyhledejte uzel, který je hostitelem primární repliky pro službu objektu actor. Na snímku níže je to uzel 3. Primární replika služby zpracovává operace čtení a zápisu.  Změny stavu služby se následně replikují do sekundárních replik spuštěných v uzlech 0 a 1 na snímku obrazovky níže.
+2. V nástroji Service Fabric Explorer vyhledejte uzel, který je hostitelem primární repliky pro službu objektu actor. Na snímku níže je to uzel 3. Primární replika služby zpracovává operace čtení a zápisu.  Změny stavu služby se pak replikují do sekundárních replik, které běží na uzlech 0 a 1 na snímku obrazovky níže.
 
     ![Vyhledání primární repliky v Service Fabric Exploreru][sfx-primary]
 
@@ -303,7 +303,7 @@ Podpora Service Fabric Reliable Services pro vaši aplikaci.
   }
   ```
 
-### <a name="others"></a>Ostatní
+### <a name="others"></a>Jiné
 #### <a name="transport"></a>Přenos
 
 Podpora přenosové vrstvy pro aplikace Service Fabric Java. Pokud neprogramujete na úrovni přenosové vrstvy, nemusíte tuto závislost do aplikace Reliable Actor nebo aplikace služby explicitně přidávat.

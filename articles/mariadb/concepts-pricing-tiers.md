@@ -1,97 +1,104 @@
 ---
-title: Cenové úrovně pro službu Azure Database pro MariaDB
-description: Tento článek popisuje cenové úrovně pro službu Azure Database pro MariaDB.
+title: Cenové úrovně pro Azure Database for MariaDB
+description: Tento článek popisuje cenové úrovně pro Azure Database for MariaDB.
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 7a52d05c77d0aeb8ebeba196df60e59f0647fea9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/31/2019
+ms.openlocfilehash: 6597096d0d3f4bf2f74433900f1b8686e2fdf551
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66233918"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698414"
 ---
-# <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database pro MariaDB cenové úrovně
+# <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB cenové úrovně
 
-Vytvoření Azure Database pro MariaDB server v jednom ze tří různých cenových úrovní: Basic, pro obecné účely a paměťově optimalizovaná. Cenové úrovně se liší podle množství výpočetních prostředků ve virtuálních jader, které je možné zřídit paměti na vCore a technologie úložiště používají k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru MariaDB. Server může mít jeden nebo více databází.
+Server Azure Database for MariaDB můžete vytvořit v jedné ze tří různých cenových úrovní: Basic, Pro obecné účely a paměť optimalizované. Cenové úrovně jsou rozlišené o množství výpočtů v virtuální jádra, které se dá zřídit, paměť na vCore a technologie úložiště, která se používá k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru MariaDB. Server může mít jednu nebo více databází.
 
-|    | **Basic** | **Obecné účely** | **Optimalizované z hlediska paměti** |
+|    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
-| Generace výpočetních funkcí | Gen 5 |Gen 5 | Gen 5 |
+| Generování výpočtů | Gen 5 |Gen 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Paměť na vCore | 2 GB | 5 GB | 10 GB |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
-| Typ úložiště | Azure Storage úrovně Standard | Azure Premium Storage | Azure Premium Storage |
-| Období uchovávání záloh databáze | 7 až 35 dnů | 7 až 35 dnů | 7 až 35 dnů |
+| Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
+| Doba uchování zálohy databáze | 7 až 35 dní | 7 až 35 dní | 7 až 35 dní |
 
-Zvolte cenovou úroveň, použijte jako výchozí bod v následující tabulce.
+Pokud chcete zvolit cenovou úroveň, použijte jako výchozí bod následující tabulku.
 
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
-| Basic | Úlohy vyžadující nízký výpočetní a I/O výkon. Mezi příklady patří servery používané pro vývoj a testování nebo rozsáhlé a zřídka používané aplikace. |
-| Obecné použití | Většinu obchodních úloh, které vyžadují vyvážené výpočetní a paměťové prostředky se škálovatelnou I/O propustností. Mezi příklady patří pro servery hostující webové a mobilní aplikace a jiné podnikové aplikace.|
-| Paměťově optimalizované | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti kvůli rychlejšímu zpracování transakcí a lepší souběžnosti. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční a analytické aplikace.|
+| Basic | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
+| Obecné použití | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
+| Paměťově optimalizované | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
 
-Po vytvoření serveru, počet virtuálních jader a cenovou úroveň (s výjimkou do a z Basic) lze změnit navýšit nebo snížit kapacitu během několika sekund. Také můžete samostatně upravit velikost úložiště nahoru a období uchovávání záloh navýšit nebo snížit kapacitu bez výpadků aplikace. Typ úložiště pro zálohování nelze změnit po vytvoření serveru. Další informace najdete v tématu [škálovat prostředky](#scale-resources) oddílu.
+Po vytvoření serveru se dá změnit nebo snížit počet virtuální jádra a cenová úroveň (s výjimkou a od úrovně Basic) během několika sekund. Velikost úložiště můžete také nezávisle upravovat a dobu uchovávání záloh nahoru nebo dolů bez výpadků aplikací. Po vytvoření serveru nejde typ úložiště zálohy změnit. Další informace najdete v části [Scale](#scale-resources) Resources.
 
-## <a name="compute-generations-and-vcores"></a>COMPUTE generace a virtuální jádra
+## <a name="compute-generations-and-vcores"></a>Generace a virtuální jádray výpočtů
 
-Výpočetní prostředky jsou k dispozici jako virtuální jádra, která představuje logický procesor základního hardwaru. Generace 5 logické procesory jsou založené na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech.
+Výpočetní prostředky se poskytují jako virtuální jádra, což představuje logický procesor základního hardwaru. Logické procesory Gen 5 jsou založené na procesorech Intel E5-2673 v4 (Broadwell) 2,3 GHz.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
-Úložiště, které zřizujete je objem úložné kapacity k dispozici ke službě Azure Database pro MariaDB server. Úložiště se používá pro soubory databáze, dočasných souborů, protokoly transakcí a MariaDB server protokoly. Celkový objem úložiště, který zřídíte také definuje vstupně-výstupní kapacity k dispozici pro váš server.
+Úložiště, které zřizujete, je množství úložné kapacity dostupné pro váš server Azure Database for MariaDB. Úložiště se používá pro soubory databáze, dočasné soubory, transakční protokoly a protokoly serveru MariaDB. Celková velikost úložiště, kterou zřizujete, také definuje kapacitu v/v k dispozici pro váš server.
 
-|    | **Basic** | **Obecné účely** | **Optimalizované z hlediska paměti** |
+|    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
-| Typ úložiště | Azure Storage úrovně Standard | Azure Premium Storage | Azure Premium Storage |
+| Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
-| Zvýšení velikosti úložiště | 1 GB | 1 GB | 1 GB |
-| IOPS | Proměnná |3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Maximální počet 6000 vstupně-výstupních operací | 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Maximální počet 6000 vstupně-výstupních operací |
+| Velikost přírůstku úložiště | 1 GB | 1 GB | 1 GB |
+| IOPS | Proměnná |3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 6000 IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 6000 IOPS |
 
-Můžete přidat další úložiště kapacitu během a po vytvoření serveru a povolit systému, které zvětší úložiště automaticky na základě úložiště využití vašich úloh. Úroveň Basic neposkytuje záruka vstupně-výstupních operací. V obecné účely a optimalizovaný pro paměť cenové úrovně se škálují vstupně-výstupních operací s velikost zřízeného úložiště poměr 3:1.
+Můžete přidat další úložnou kapacitu během a po vytvoření serveru a nechat systém, aby automaticky rozšiřoval úložiště na základě spotřeby úložiště vašich úloh.
 
-Můžete monitorovat spotřebu vstupně-výstupních operací na webu Azure Portal nebo pomocí příkazů rozhraní příkazového řádku Azure. Jsou důležité metriky pro monitorování [limitu úložiště, procento úložiště, využité úložiště a vstupně-výstupních operací procent](concepts-monitoring.md).
+>[!NOTE]
+> Úložiště se dá škálovat jenom nahoru, ne dolů.
 
-### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
+Úroveň Basic neposkytuje záruku IOPS. V Pro obecné účely a paměťově optimalizované cenové úrovně se za vstupně-výstupní operace v poměru 3:1 omezuje velikost IOPS s zřízenou velikostí úložiště.
 
-Servery s méně než 100 GB zřízené úložiště jsou označené, pokud volný úložný prostor je menší než 512MB nebo 5 % velikosti zřízeného úložiště jen pro čtení. Servery s více než 100 GB zřízené úložiště jsou označeny pro čtení, pouze v případě volný úložný prostor je menší než 5 GB.
+Spotřebu vstupu a výstupu můžete monitorovat v Azure Portal nebo pomocí příkazů rozhraní příkazového řádku Azure CLI. Příslušné metriky, které je potřeba monitorovat [, jsou omezení úložiště, procento úložiště, využité úložiště a procento vstupně-výstupních operací](concepts-monitoring.md).
 
-Například, pokud jste zřídili 110 GB úložiště a skutečné využití překročí 105 GB, na serveru je označen jen pro čtení. Případně pokud jste zřídili 5 GB úložiště, server je označen jen pro čtení dosáhne menší než 512 MB volného místa.
+### <a name="reaching-the-storage-limit"></a>Dosáhlo se limitu úložiště.
+
+Servery s méně než 100 GB zřízené úložiště jsou označené jen pro čtení, pokud je volné úložiště menší než 512 MB nebo 5% velikosti zřízeného úložiště. Servery s více než 100 GB zřízené úložiště jsou označené jen pro čtení, pokud je volné úložiště menší než 5 GB.
+
+Pokud jste například zřídili 110 GB úložiště a skutečné využití dosáhne více než 105 GB, server je označen jen pro čtení. Případně, pokud jste zřídili 5 GB úložiště, server je označen jen pro čtení, pokud volné úložiště dosáhne méně než 512 MB.
 
 Zatímco se služba pokouší nastavit server jen pro čtení, všechny požadavky transakcí zápisu se zablokují a stávající aktivní transakce se budou provádět dál. Když je server nastavený jen pro čtení, všechny další operace zápisu a potvrzení transakcí selžou. Dotazy na čtení budou fungovat dál bez přerušení. Jakmile navýšíte velikost zřízeného úložiště, bude server připravený znovu přijímat transakce zápisu.
 
-Doporučujeme vám zapnout úložiště auto-grow nebo nastavit upozornění pro upozornění, úložiště serveru se blíží prahové hodnoty proto můžete vyhnout převedení do stavu jen pro čtení. Další informace najdete v dokumentaci na [jak nastavit výstrahu](howto-alert-metric.md).
+Doporučujeme zapnout automatické zvětšování úložiště nebo nastavit výstrahu, která vás upozorní, když se serverové úložiště blíží prahové hodnotě, takže se můžete vyhnout přístupu do stavu jen pro čtení. Další informace najdete v dokumentaci k [Nastavení výstrahy](howto-alert-metric.md).
 
-### <a name="storage-auto-grow"></a>Auto-grow úložiště
+### <a name="storage-auto-grow"></a>Automatické zvětšování úložiště
 
-Pokud úložiště automaticky růst je povoleno, úložiště automaticky rozšíří, aniž by to ovlivnilo zatížení. Pro servery s méně než 100 GB zřízené úložiště velikost zřízeného úložiště prodloužen o 5 GB, jakmile volný úložný prostor je nižší než delší než 1 GB nebo 10 % zřízeného úložiště. Pro servery s více než 100 GB zřízeného úložiště velikost zřízeného úložiště zvětšit 5 %, pokud volný prostor úložiště je menší než 5 % velikosti zřízeného úložiště. Platí omezení maximální velikost úložiště, jak je uvedeno výše.
+Automatické zvětšování úložiště zabrání vašemu serveru v provozu z úložiště a nejenom pro čtení. Pokud je povolené automatické zvětšování úložiště, úložiště se automaticky zvětšuje, aniž by to ovlivnilo zatížení. U serverů s úložištěm menším než 100 GB zřízené úložiště se velikost zřízeného úložiště zvyšuje o 5 GB, jakmile bude volné úložiště nižší než 1 GB nebo 10% zřízené úložiště. U serverů s více než 100 GB zřízeného úložiště se velikost zřízeného úložiště zvyšuje o 5%, pokud je volný prostor úložiště pod 5% velikosti zřízeného úložiště. Platí omezení maximální velikosti úložiště, jak je uvedeno výše.
 
-Například, pokud jste zřídili 1 000 GB úložiště a skutečné využití překročí 950 GB, velikost úložiště serveru se zvýší až 1050 GB. Případně pokud jste zřídili 10 GB úložiště, velikost úložiště se zvýší až 15 GB při méně než 1 GB úložiště je zdarma.
+Pokud jste například zřídili 1000 GB úložiště a skutečné využití dosáhne více než 950 GB, zvýší se velikost úložiště serveru na 1050 GB. Případně, pokud jste zřídili 10 GB úložiště, velikost úložiště se zvýší na 15 GB, pokud je úložiště menší než 1 GB volného místa.
 
-## <a name="backup"></a>Backup
+Mějte na paměti, že úložiště je možné škálovat pouze nahoru, ne dolů.
 
-Služby trvá automatické zálohy vašeho serveru. Období minimální doby uchování pro zálohy je sedm dní. Můžete nastavit dobu uchování o délce až po dobu 35 dní. Uchovávání je možné upravit kdykoli během životního cyklu serveru. Můžete vybrat mezi místně redundantní a geograficky redundantní zálohy. Geograficky redundantní zálohy jsou také uloženy v [geograficky spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) oblasti, kde se vytvoří váš server. Tuto redundanci poskytuje úroveň ochrany v případě havárie. Můžete také získat lepší schopnost obnovení vašeho serveru do libovolné jiné oblasti Azure ve kterém je služba dostupná s geograficky redundantní zálohy. Není možné změnit mezi těmito dvěma možnostmi úložiště záloh po vytvoření serveru.
+## <a name="backup"></a>Zálohovat
+
+Služba automaticky provede zálohování vašeho serveru. Minimální doba uchovávání záloh je sedm dní. Můžete nastavit dobu uchovávání až 35 dní. Uchovávání lze v jakémkoli okamžiku během životnosti serveru upravit. Můžete si vybrat mezi místně redundantními a geograficky redundantními zálohováními. Geograficky redundantní zálohy jsou také uloženy v [geograficky spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) oblasti, kde je server vytvořen. Tato redundance poskytuje úroveň ochrany v případě havárie. Máte také možnost obnovit server do jakékoli jiné oblasti Azure, ve které je služba dostupná v geograficky redundantních zálohách. Po vytvoření serveru není možné měnit mezi dvěma možnostmi úložiště zálohování.
 
 ## <a name="scale-resources"></a>Škálování prostředků
 
-Po vytvoření serveru nezávisle na sobě můžete změnit virtuálních jader, cenová úroveň (s výjimkou do a z Basic), jaká část úložiště a období uchovávání záloh. Typ úložiště pro zálohování nelze změnit po vytvoření serveru. Počet virtuálních jader je možné škálovat směrem nahoru nebo dolů. Období uchování zálohy je možné škálovat směrem nahoru nebo dolů na 7 pro po dobu 35 dní. Velikost úložiště může být pouze zvýšena. Škálování prostředků můžete udělat buď na portálu nebo rozhraní příkazového řádku Azure. 
+Po vytvoření serveru můžete nezávisle změnit virtuální jádra, cenovou úroveň (s výjimkou a od úrovně Basic), velikost úložiště a dobu uchování zálohy. Po vytvoření serveru nejde typ úložiště zálohy změnit. Počet virtuální jádra se dá škálovat nahoru nebo dolů. Doba uchovávání záloh se dá škálovat nahoru nebo dolů od 7 do 35 dnů. Velikost úložiště se dá zvýšit jenom. Škálování prostředků se dá provést buď prostřednictvím portálu, nebo pomocí Azure CLI. 
 
 <!--For an example of scaling by using Azure CLI, see [Monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->
 
-Pokud změníte počet virtuálních jader nebo cenovou úroveň, kopii původního serveru se vytvoří s nové přidělení výpočetní prostředky. Po vytvoření a spuštění je nový server, připojení se přepnout na nový server. Během okamžiku, kdy systém přepne na nový server je možné navázat nová připojení a jsou všechny nepotvrzené transakce vráceny zpět. Toto okno se liší, ale ve většině případů je méně než minutu.
+Když změníte počet virtuální jádra nebo cenovou úroveň, vytvoří se kopie původního serveru s novým přidělením výpočtů. Po zprovoznění nového serveru se připojení přepnou na nový server. Během přepínání systému na nový server není možné navazovat nová připojení a všechny nepotvrzené transakce se vrátí zpět. Tento časový interval je různý, ale ve většině případů je kratší než minuta.
 
-Škálování úložiště a změna období uchování zálohy jsou true online operace. Neexistuje žádný výpadek a vaší aplikace neprojeví. Vstupně-výstupních operací škálování s velikost zřízeného úložiště, můžete zvýšit IOPS k dispozici pro váš server vertikálním navýšení kapacity úložiště.
+Škálování úložiště a Změna doby uchovávání záloh jsou pravdivé online operace. Nedochází k výpadkům a vaše aplikace to nijak neovlivní. Když se v případě IOPS škáluje velikost zřízeného úložiště, můžete prodloužit kapacitu úložiště, která je pro váš server dostupná.
 
 ## <a name="pricing"></a>Ceny
 
-Nejnovější informace o cenách najdete v článku Služba [stránce s cenami](https://azure.microsoft.com/pricing/details/mariadb/). Zobrazit náklady pro konfigurace, kterou chcete [webu Azure portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) ukazuje měsíční náklady na **cenová úroveň** kartu podle možností, které zvolíte. Pokud nemáte předplatné Azure, můžete získat Odhadovaná cena cenovou kalkulačku Azure. Na [cenovou kalkulačku Azure](https://azure.microsoft.com/pricing/calculator/) webu, vyberte **přidat položky**, rozbalte **databází** kategorie a zvolte **– Azure Database pro MariaDB**přizpůsobit možnosti.
+Nejaktuálnější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/mariadb/)služeb. Chcete-li zobrazit náklady na konfiguraci, kterou požadujete, [Azure Portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) na kartě **cenová úroveň** na základě možností, které jste vybrali, zobrazí měsíční náklady. Pokud nemáte předplatné Azure, můžete získat odhadovanou cenu pomocí cenové kalkulačky Azure. Na webu [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculator/) vyberte **Přidat položky**, rozbalte kategorii **databáze** a zvolte **Azure Database for MariaDB** pro přizpůsobení možností.
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [služby omezení](concepts-limits.md).
-- Zjistěte, jak [vytvoření MariaDB serveru na webu Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md).
+## <a name="next-steps"></a>Další kroky
+- Přečtěte si o [omezeních služeb](concepts-limits.md).
+- Naučte se [vytvářet MariaDB Server v Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md).
 
 <!--
 - Learn how to [monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->

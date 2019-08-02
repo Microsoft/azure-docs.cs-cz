@@ -1,6 +1,6 @@
 ---
-title: Směrování závislé na datech pomocí Azure SQL Database | Dokumentace Microsoftu
-description: Jak používat třídu ShardMapManager pro závislé na datech směrování, která je součástí horizontálně dělené databáze ve službě Azure SQL Database v aplikacích .NET
+title: Směrování závislé na datech s Azure SQL Database | Microsoft Docs
+description: Použití třídy ShardMapManager v aplikacích .NET pro směrování závislé na datech, funkce databází horizontálně dělené v Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,33 +10,32 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: fe9098592fcfde2d5e23b78a3e33f2b4ebb9e2dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f0ce4f3bdf3159e991bfd72590882dfa7412ee3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584960"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568483"
 ---
-# <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Použijte závislé na datech směrování směrovat dotaz k příslušné databázi
+# <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Směrování dotazu do příslušné databáze pomocí směrování závislého na datech
 
-**Směrování závislé na datech** je možnost používat data v dotazu pro směrování požadavku k příslušné databázi. Směrování dat závislé je základní vzor, pokud pracujete s horizontálně dělené databáze. Kontext požadavku může také sloužit pro směrování požadavku, zejména v případě, že je klíč horizontálního dělení není součástí dotazu. Je omezena na jednu databázi na jednu žádost o přístup k každé konkrétní dotaz nebo transakce v aplikaci pomocí směrování závislé na datech. Pro nástroje Azure SQL Database Elastic tento směrování se provádí pomocí **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) třídy.
+**Směrování závislé na datech** je schopnost použít data v dotazu ke směrování požadavku do příslušné databáze. Směrování závislé na datech je základní vzor při práci s databázemi horizontálně dělené. Kontext požadavku může být také použit ke směrování požadavku, zejména pokud klíč horizontálního dělení není součástí dotazu. Jednotlivé konkrétní dotazy nebo transakce v aplikaci využívající směrování závislé na datech mají omezený přístup k jedné databázi na žádost. Pro Azure SQL Database elastické nástroje se toto směrování dosahuje pomocí třídy **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)).
 
-Aplikace nemusí pro sledování různých připojovací řetězce nebo DB umístění přidružené k jiné řezy dat v horizontálně dělené prostředí. Místo toho [správce mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) otevře připojení na správné databáze, pokud je nepotřebujete, založené na datech z mapy horizontálních oddílů a hodnota klíče horizontálního dělení, která je cílem dané žádosti o aplikace. Klíč je obvykle *customer_id*, *tenant_id*, *date_key*, nebo některé konkrétní identifikátor, který je základní parametr požadavek databáze.
+Aplikace nemusí sledovat různé připojovací řetězce nebo umístění databáze přidružené k různým řezům dat v prostředí horizontálně dělené. Místo toho [správce mapy horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) otevře připojení ke správným databázím v případě potřeby na základě dat v mapě horizontálních oddílů a hodnoty klíče horizontálního dělení, který je cílem žádosti aplikace. Klíčem je obvykle *Customer_ID*, *tenant_id*, *date_key*nebo nějaký jiný konkrétní identifikátor, který je základní parametr požadavku databáze.
 
-Další informace najdete v tématu [škálování, SQL Server s směrování závislé na datech](https://technet.microsoft.com/library/cc966448.aspx).
+Další informace najdete v tématu horizontální navýšení kapacity [SQL Server se směrováním závislým na datech](https://technet.microsoft.com/library/cc966448.aspx).
 
-## <a name="download-the-client-library"></a>Stáhnout klientskou knihovnu
+## <a name="download-the-client-library"></a>Stažení klientské knihovny
 
-Stažení:
+Ke stažení:
 
-* Verze Javy knihovny, najdete v článku [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
-* Rozhraní .NET verze knihovny, najdete v článku [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
+* Verze Java knihovny, viz [centrální úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
+* Verze rozhraní .NET knihovny, viz [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
 ## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>Použití ShardMapManager v aplikaci směrování závislé na datech
 
-Aplikace by měl vytvořit instanci **ShardMapManager** při inicializaci pomocí objekt pro vytváření volání **GetSQLShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)). V tomto příkladu jak **ShardMapManager** a konkrétní **ShardMap** , který obsahuje jsou inicializovány. Tento příklad ukazuje GetSqlShardMapManager a GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap), [.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))) metody.
+Aplikace by měly vytvořit instanci **ShardMapManager** během inicializace pomocí volání metody Factory **GetSQLShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)). V tomto příkladu jsou inicializovány obě **ShardMapManager** a konkrétní **ShardMap** , které obsahuje. Tento příklad ukazuje metody GetSqlShardMapManager a GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap), [.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))).
 
 ```Java
 ShardMapManager smm = ShardMapManagerFactory.getSqlShardMapManager(connectionString, ShardMapManagerLoadPolicy.Lazy);
@@ -48,13 +47,13 @@ ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnection
 RangeShardMap<int> customerShardMap = smm.GetRangeShardMap<int>("customerMap"); 
 ```
 
-### <a name="use-lowest-privilege-credentials-possible-for-getting-the-shard-map"></a>Nejnižší oprávnění pověření možné použít pro získání mapy horizontálních oddílů
+### <a name="use-lowest-privilege-credentials-possible-for-getting-the-shard-map"></a>Použijte k získání mapy horizontálních oddílů nejnižší možné přihlašovací údaje oprávnění.
 
-Pokud aplikace není manipulace s vlastní mapy horizontálních oddílů, přihlašovací údaje použité pro výrobní metoda by měla mít oprávnění jen pro čtení na **globální mapy horizontálních oddílů** databáze. Tyto přihlašovací údaje se obvykle liší od přihlašovacích údajů, které slouží k otevření připojení do správce mapování horizontálních oddílů. Viz také [přihlašovací údaje pro přístup k Klientská knihovna Elastic Database](sql-database-elastic-scale-manage-credentials.md).
+Pokud aplikace nepracuje na samotné mapě horizontálních oddílů, musí přihlašovací údaje použité v metodě Factory mít oprávnění jen pro čtení pro **globální databázi map horizontálních oddílů** . Tyto přihlašovací údaje se obvykle liší od přihlašovacích údajů používaných k otevření připojení ke Správci map horizontálních oddílů. Viz také [pověření používaná pro přístup k klientské knihovně elastic Database](sql-database-elastic-scale-manage-credentials.md).
 
 ## <a name="call-the-openconnectionforkey-method"></a>Volání metody OpenConnectionForKey
 
-**ShardMap.OpenConnectionForKey metoda** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) vrátí připojení připravené pro vydávání příkazů k příslušné databázi podle hodnoty **klíč** parametru. Informace o horizontálním oddílu se uloží do mezipaměti v aplikaci podle **ShardMapManager**, takže tyto požadavky nezahrnují obvykle databáze vyhledávání na základě **globální mapy horizontálních oddílů** databáze.
+**Metoda ShardMap. OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) vrátí připojení připravené k vystavování příkazů příslušné databázi na základě hodnoty **klíčového** parametru. Informace horizontálních oddílů jsou v aplikaci uloženy v mezipaměti **ShardMapManager**, takže tyto požadavky obvykle nezahrnují vyhledávání databáze na **globální databázi horizontálních oddílů map** .
 
 ```Java
 // Syntax:
@@ -66,15 +65,15 @@ public Connection openConnectionForKey(Object key, String connectionString, Conn
 public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionString, ConnectionOptions options)
 ```
 
-* **Klíč** parametr se používá jako klíč vyhledávání do mapy horizontálních oddílů k určení příslušné databázi pro požadavek.
-* **ConnectionString** slouží k předání pouze uživatelská pověření pro požadovaného připojení. Žádný název databáze nebo název serveru je zahrnuté v tomto *connectionString* vzhledem k tomu, že tato metoda určí, databáze a serveru pomocí **ShardMap**.
-* **ConnectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) by mělo být nastavené **ConnectionOptions.Validate** Pokud prostředí, ve kterém může mapy horizontálních oddílů změnit a řádků může přesunout do jiné databáze jako výsledek operace dělené tunelové propojení nebo sloučení. Toto ověření zahrnuje stručný dotaz, který mapy místní horizontálních oddílů v cílové databázi (nikoli do mapy horizontálních oddílů globální) před připojení se doručí do aplikace.
+* Parametr **Key** se používá jako vyhledávací klíč k mapě horizontálních oddílů k určení vhodné databáze pro danou žádost.
+* **Připojovací řetězec** se používá k předání pouze přihlašovacích údajů uživatele pro požadované připojení. V tomto *připojovacím řetězci* není obsažen název databáze ani název serveru, protože metoda určuje databázi a Server pomocí **ShardMap**.
+* **ConnectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) by měla být nastavená na **ConnectionOptions. Validate** , pokud se může změnit prostředí, kde se mapy horizontálních oddílů mohou měnit a řádky se můžou v důsledku operací rozdělení nebo sloučení přesunout do jiných databází. Toto ověření zahrnuje stručný dotaz na místní mapu horizontálních oddílů v cílové databázi (ne na globální mapu horizontálních oddílů), než se připojení doručí do aplikace.
 
-Selže-li ověření proti mapy horizontálních oddílů místní (což znamená, že mezipaměť je nesprávné), správce mapování horizontálních oddílů dotazuje mapy horizontálních oddílů globální získat nové správnou hodnotu pro vyhledávání, aktualizace mezipaměti a získat a vrátit připojení k příslušné databázi .
+Pokud ověření proti místní mapě horizontálních oddílů selhává (což znamená, že mezipaměť není správná), správce map horizontálních oddílů se dotazuje na globální mapu horizontálních oddílů, aby získal novou správnou hodnotu pro vyhledávání, aktualizovala mezipaměť a získala a vrátila příslušné databázové připojení. .
 
-Použití **ConnectionOptions.None** pouze změny mapování horizontálních oddílů není očekávaného aplikace je online. V takovém případě hodnoty uložené v mezipaměti můžete být vždy předpokládá se, že správná a dalších round-trip ověření volání do cílové databáze mohly být bezpečně přeskočeny. Která snižuje zatížení databáze. **ConnectionOptions** může také nastavit prostřednictvím hodnoty v konfiguračním souboru k označení, zda změny horizontálního dělení se očekává, že nebo neměl určitou dobu.  
+Použijte **ConnectionOptions. None** pouze v případě, že nejsou očekávány změny mapování horizontálních oddílů v době, kdy je aplikace online. V takovém případě je možné hodnoty uložené v mezipaměti předpokládat, že budou vždy správné a že je možné přeskočit další ověřovací volání přenosové cesty do cílové databáze. Což snižuje provoz databáze. **ConnectionOptions** může být také nastaveno prostřednictvím hodnoty v konfiguračním souboru, aby označovala, zda jsou v časovém intervalu očekávány změny horizontálního dělení nebo ne.  
 
-Tento příklad používá hodnotu celého čísla klíče **CustomerID**, použití **ShardMap** objekt s názvem **customerShardMap**.  
+V tomto příkladu je použita hodnota celočíselného klíče **CustomerID**s použitím objektu **ShardMap** s názvem **customerShardMap**.  
 
 ```Java
 int customerId = 12345;
@@ -110,17 +109,17 @@ using (SqlConnection conn = customerShardMap.OpenConnectionForKey(customerId, Co
 }  
 ```
 
-**OpenConnectionForKey** metoda vrátí nové už otevřené připojení ke správné databázi. Připojení v tímto způsobem stále plně využít sdružování připojení.
+Metoda **OpenConnectionForKey** vrací nové již otevřené připojení ke správné databázi. Využívané připojení tímto způsobem stále využívají sdružování připojení.
 
-**OpenConnectionForKeyAsync metoda** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkeyasync), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync)) je také k dispozici, pokud vaše aplikace provádí asynchronní programování pomocí.
+**Metoda OpenConnectionForKeyAsync** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkeyasync), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync)) je k dispozici také v případě, že vaše aplikace využívá asynchronní programování.
 
-## <a name="integrating-with-transient-fault-handling"></a>Integrace s zpracování přechodných chyb
+## <a name="integrating-with-transient-fault-handling"></a>Integrace s dočasným zpracováním chyb
 
-Doporučujeme při vývoji aplikace přistupující k datům v cloudu je zajistit, že jsou zachyceny přechodné chyby aplikace a, operace se zopakují několikrát před došlo k chybě. Pro cloudové aplikace zpracování přechodných chyb je popsána v zpracování přechodných chyb ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling), [.NET](https://docs.microsoft.com/previous-versions/msp-n-p/dn440719(v=pandp.60))).
+Osvědčeným postupem při vývoji aplikací pro přístup k datům v cloudu je zajistit, aby byla aplikace zachycena přechodným chybám a aby se operace opakovala několikrát před vyvoláním chyby. Přechodný zpracování chyb pro cloudové aplikace je popsáno v tématu zpracování přechodného selhání ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling), [.NET](https://docs.microsoft.com/previous-versions/msp-n-p/dn440719(v=pandp.60))).
 
-Zpracování přechodných chyb mohou existovat vedle sebe přirozeně se vzorem směrování závislé na datech. Hlavním požadavkem je to chcete zkusit znovu, včetně celého datového přístupu požadavek **pomocí** blok, který se získat připojení směrování závislé na datech. V předchozím příkladu může být přepsán následujícím způsobem.
+Zpracování přechodných chyb může být přirozeně přirozeně s datovým vzorem směrování závislého na datech. Klíčovým požadavkem je opakovat celou žádost o přístup k datům, včetně bloku **using** , který získal připojení směrování závislé na datech. Předchozí příklad může být přepsán následujícím způsobem.
 
-### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Příklad – závislé na datech směrování s zpracování přechodných chyb
+### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Příklad – směrování závislé na datech s dočasným zpracováním chyb
 
 ```Java
 int customerId = 12345;
@@ -169,14 +168,14 @@ Configuration.SqlRetryPolicy.ExecuteAction(() =&gt;
 });
 ```
 
-Při vytváření elastické databáze ukázková aplikace se automaticky stáhnou balíčky, které jsou nezbytné k implementaci zpracování přechodných chyb.
+Balíčky, které jsou nezbytné k implementaci přechodného zpracování chyb, se automaticky stáhnou při vytváření ukázkové aplikace elastické databáze.
 
 ## <a name="transactional-consistency"></a>Transakční konzistence
 
-Transakční vlastnosti je zaručeno, že pro všechny operace místní do horizontálního oddílu. Můžete třeba spustit transakce odeslat prostřednictvím směrování závislé na datech v rámci oboru cílové horizontálního oddílu pro připojení. V tuto chvíli nejsou k dispozici žádné možnosti k dispozici pro uvedení více připojení do transakce, a proto neexistují žádné transakční záruky pro operace prováděné napříč horizontálními oddíly.
+Transakční vlastnosti jsou zaručené pro všechny operace, které jsou místní pro horizontálních oddílů. Například transakce odeslané prostřednictvím směrování závislého na datech se provádějí v rámci rozsahu cílového horizontálních oddílů pro připojení. V tuto chvíli nejsou k dispozici žádné možnosti pro zařazení více připojení do transakce, a proto neexistují žádné transakční záruky pro operace prováděné napříč horizontálních oddílů.
 
 ## <a name="next-steps"></a>Další postup
 
-K odpojení horizontálního oddílu, nebo se znovu připojit do horizontálního oddílu, naleznete v tématu [oprava problémů s horizontálními oddíly mapy pomocí třídy RecoveryManager](sql-database-elastic-database-recovery-manager.md)
+Chcete-li odpojit horizontálních oddílů nebo znovu připojit horizontálních oddílů, přečtěte si téma [použití třídy RecoveryManager pro řešení problémů s mapováním horizontálních oddílů](sql-database-elastic-database-recovery-manager.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

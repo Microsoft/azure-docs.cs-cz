@@ -1,7 +1,7 @@
 ---
 title: Reference k rozhraní API – Custom Decision Service
 titlesuffix: Azure Cognitive Services
-description: Kompletní příručka rozhraní API pro Custom Decision Service.
+description: Kompletní příručka k rozhraní API pro Custom Decision Service.
 services: cognitive-services
 author: slivkins
 manager: nitinme
@@ -10,22 +10,23 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
-ms.openlocfilehash: be9966f5d8e8d94aa3f49aac91b35b105195b108
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4f263e3b57103174f0084ab3d25430d8c47359fd
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60510959"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707300"
 ---
-# <a name="api"></a>Rozhraní API
+# <a name="api"></a>rozhraní API
 
-Azure Custom Decision Service nabízí dvě rozhraní API, které jsou volány pro každé rozhodnutí: [hodnocení API](#ranking-api) zadání hodnocení akce a [Reward API](#reward-api) výstup potřebu. Kromě toho poskytují [API nastavit akci](#action-set-api-customer-provided) k určení akce, které Azure Custom Decision Service. Tento článek se týká těchto tří rozhraní API. Typický scénář se používá níže má zobrazit, když Custom Decision Service optimalizuje hodnocení článků.
+Azure Custom Decision Service poskytuje dvě rozhraní API, která jsou volána pro každé rozhodnutí: [rozhraní API pro hodnocení](#ranking-api) k zadání pořadí akcí a [API](#reward-api) pro odměnu pro výstup. Kromě toho poskytujeme [rozhraní API sady akcí](#action-set-api-customer-provided) , které určuje akce pro Azure Custom Decision Service. Tento článek se zabývá těmito třemi rozhraními API. Níže se používá Typický scénář, který ukazuje, kdy Custom Decision Service optimalizuje hodnocení článků.
 
-## <a name="ranking-api"></a>Hodnocení rozhraní API
+## <a name="ranking-api"></a>Rozhraní API pro řazení
 
-Hodnocení API používá standardní [JSONP](https://en.wikipedia.org/wiki/JSONP)– vzor komunikace styl optimalizovat latenci a obejít [zásada stejného zdroje](https://en.wikipedia.org/wiki/Same-origin_policy). Druhá možnost zakazuje JavaScript načítání dat z mimo na stránce původu.
+Rozhraní API pro hodnocení používá ke optimalizaci latence a obejití [zásad stejného původu](https://en.wikipedia.org/wiki/Same-origin_policy)standardní způsob komunikace ve stylu [JSONP](https://en.wikipedia.org/wiki/JSONP). Druhá z nich zabrání v JavaScriptu načtení dat mimo počátek stránky.
 
-Tento fragment kódu vložte do HTML head přední stránky (kde se zobrazují přizpůsobený seznam článků):
+Vložte tento fragment kódu do HTML head stránky (kde se zobrazí individuální seznam článků):
 
 ```html
 // define the "callback function" to render UI
@@ -41,13 +42,13 @@ Tento fragment kódu vložte do HTML head přední stránky (kde se zobrazují p
 ```
 
 > [!IMPORTANT]
-> Funkce zpětného volání musí být definovaná před volání rozhraní API pro hodnocení.
+> Funkce zpětného volání musí být definována před voláním rozhraní API pro řazení.
 
 > [!TIP]
-> Pokud chcete zlepšit latenci, hodnocení API je zveřejněné prostřednictvím protokolu HTTP místo protokolu HTTPS, stejně jako v `https://ds.microsoft.com/api/v2/<appId>/rank/*`.
-> Koncový bod HTTPS musí ale použijí, pokud je na přední stránce poskytované přes HTTPS.
+> Pro zvýšení latence je rozhraní API pro hodnocení zveřejněné přes protokol HTTP místo protokolu HTTPS, `https://ds.microsoft.com/api/v2/<appId>/rank/*`jako v.
+> Koncový bod HTTPS je však nutné použít, pokud je Front-Page obsluhován prostřednictvím protokolu HTTPS.
 
-Při použití parametrů nejsou odpověď HTTP z rozhraní API hodnocení je řetězec ve formátu JSONP:
+Pokud se nepoužívají parametry, odpověď HTTP z rozhraní API pro hodnocení je řetězec ve formátu JSONP:
 
 ```json
 callback({
@@ -60,34 +61,34 @@ callback({
 
 Prohlížeč pak spustí tento řetězec jako volání funkce `callback()`.
 
-Parametr pro funkci zpětného volání v předchozím příkladu má následující schéma:
+Parametr funkce zpětného volání v předchozím příkladu má následující schéma:
 
-- `ranking` poskytuje pořadí adres URL, který se má zobrazit.
-- `eventId` se používá interně pomocí služby Custom Decision Service tak, aby odpovídaly toto pořadí odpovídající kliknutími.
-- `appId` povolí používání funkce zpětného volání k rozlišení mezi více aplikacemi Custom Decision Service běží na stejné webové stránce.
-- `actionSets` obsahuje všechny akce sada použitá v rámci volání rozhraní API hodnocení, spolu s časové razítko UTC poslední úspěšná aktualizace. Custom Decision Service pravidelně aktualizuje informační kanály sady akcí. Například pokud některá akce sady nejsou aktuální, funkce zpětného volání může být nutné, aby jejich výchozím nastavení se používá.
+- `ranking`poskytuje pořadí adres URL, které se mají zobrazit.
+- `eventId`se interně používá Custom Decision Service k tomu, aby odpovídala tomuto hodnocení s odpovídajícími kliknutími.
+- `appId`umožňuje funkci zpětného volání rozlišovat mezi několika aplikacemi Custom Decision Service spuštěnými na stejné webové stránce.
+- `actionSets`Vypíše každou sadu akcí použitou v volání rozhraní API řazení společně s časovým razítkem UTC poslední úspěšné aktualizace. Custom Decision Service pravidelně aktualizuje informační kanály sady akcí. Například pokud některé sady akcí nejsou aktuální, může být nutné, aby funkce zpětného volání mohla přejít zpět na výchozí hodnocení.
 
 > [!IMPORTANT]
-> Nastaví zadanou akci zpracování a pravděpodobně vyřazen a vytvoří výchozí řazení článků. Výchozí pořadí pak získá pořadí změníte a vrátila v odpovědi HTTP. Výchozí pořadí je definováno zde:
+> Zadané sady akcí jsou zpracovávány a pravděpodobně vyřazení, aby bylo možné vytvořit výchozí pořadí článků. Výchozí hodnocení pak bude přeobjednáno a vráceno v odpovědi HTTP. Výchozí hodnocení je definováno zde:
 >
-> - V rámci jednotlivých sad akce jsou vyřazeny článcích na 15 nejnovější články (Pokud se vrátí víc než 15).
-> - Pokud jsou zadány více sad akce, jsou sloučeny ve stejném pořadí jako při volání rozhraní API. Původní pořadí článků je zachováno v rámci jednotlivých sad akce. Duplicity se odeberou a místo toho použití starších kopií.
-> - První `n` články jsou uchovány z sloučený seznam článků, kde `n=20` ve výchozím nastavení.
+> - V rámci každé sady akcí se články vyřadí do 15 nejnovějších článků (Pokud se vrátí víc než 15).
+> - Pokud je zadáno více sad akcí, jsou sloučeny ve stejném pořadí jako v volání rozhraní API. Původní pořadí článků se zachová v každé sadě akcí. Duplicity se odeberou namísto předchozích kopií.
+> - První `n` články jsou uchovávány ze sloučeného seznamu článků, kde `n=20` jsou ve výchozím nastavení.
 
-### <a name="ranking-api-with-parameters"></a>Hodnocení rozhraní API s parametry
+### <a name="ranking-api-with-parameters"></a>Rozhraní API pro řazení s parametry
 
 Rozhraní API pro hodnocení umožňuje tyto parametry:
 
-- `details=1` a `details=2` vloží další podrobnosti o jednotlivých článku uvedené v `ranking`.
-- `limit=<n>` Určuje maximální počet články ve výchozím nastavení se používá. `n` musí být v rozmezí `2` a `30` (nebo jinak se zkrátí na `2` nebo `30`v uvedeném pořadí).
-- `dnt=1` Zakáže souborů cookie.
+- `details=1`a `details=2` vloží další podrobnosti o každém článku uvedeném v `ranking`tématu.
+- `limit=<n>`Určuje maximální počet článků ve výchozím hodnocení. `n`musí být v `2` rozsahu `30` až (nebo jinak je zkrácen na `2` nebo `30`v uvedeném pořadí).
+- `dnt=1`zakáže soubory cookie uživatele.
 
-Parametry lze spojit do standardní, syntaxe řetězce dotazu, třeba `details=2&dnt=1`.
+Parametry lze kombinovat v kombinaci se standardem, syntaxí řetězce dotazu `details=2&dnt=1`, například.
 
 > [!IMPORTANT]
-> Výchozí nastavení v Evropě by mělo být `dnt=1` dokud zákazník souhlasí s hlavičky souboru cookie. Také je třeba výchozí nastavení pro weby, které cílí nezletilé osoby. Další informace najdete v tématu [podmínky použití](https://www.microsoft.com/cognitive-services/en-us/legal/CognitiveServicesTerms20160804).
+> Výchozí nastavení v Evropě by mělo být `dnt=1` , dokud zákazník nesouhlasí s hlavičkou cookie. Mělo by se také jednat o výchozí nastavení pro weby, které cílí na nezletilé. Další informace najdete v tématu věnovaném [podmínkám použití](https://www.microsoft.com/cognitive-services/en-us/legal/CognitiveServicesTerms20160804).
 
-`details=1` Element vloží každého článku `guid`, pokud je poskytovaný rozhraním API nastavit akci. Odpověď HTTP:
+Element vloží každý `guid`článek, pokud je obsluhován rozhraním API sady akcí. `details=1` Odpověď HTTP:
 
 ```json
 callback({
@@ -100,12 +101,12 @@ callback({
                  {"id":"<A2>","lastRefresh":"timeStamp2"}]});
 ```
 
-`details=2` Element přidá další podrobnosti, které služby Custom Decision Service může extrahovat z článků optimalizace pro vyhledávací weby metaznačky [snadné kód](https://github.com/Microsoft/mwt-ds/tree/master/Crawl):
+Element přidá další podrobnosti, které Custom Decision Service mohou extrahovat z článku "SEO MetaTags [featurization Code:](https://github.com/Microsoft/mwt-ds/tree/master/Crawl) `details=2`
 
-- `title` z `<meta property="og:title" content="..." />` nebo `<meta property="twitter:title" content="..." />` nebo `<title>...</title>`
-- `description` z `<meta property="og:description" ... />` nebo `<meta property="twitter:description" content="..." />` nebo `<meta property="description" content="..." />`
-- `image` z `<meta property="og:image" content="..." />`
-- `ds_id` z `<meta name=”microsoft:ds_id” content="..." />`
+- `title`z `<meta property="og:title" content="..." />` nebo `<meta property="twitter:title" content="..." />` nebo`<title>...</title>`
+- `description`z `<meta property="og:description" ... />` nebo `<meta property="twitter:description" content="..." />` nebo`<meta property="description" content="..." />`
+- `image`Výsledkem`<meta property="og:image" content="..." />`
+- `ds_id`Výsledkem`<meta name=”microsoft:ds_id” content="..." />`
 
 Odpověď HTTP:
 
@@ -126,11 +127,11 @@ callback({
 [{"guid":"123"}, {"description":"some text", "ds_id":"234", "image":"ImageUrl1", "title":"some text"}]
 ```
 
-## <a name="reward-api"></a>Účet rozhraní API
+## <a name="reward-api"></a>API pro odměnu
 
-Vlastní Decision Service uživatel klikne na pouze na nejvyšší pozici. Každý kliknutím je interpretován jako reward 1. Chybějící kliknutí, je interpretován jako reward 0. Kliknutí jsou porovnány s odpovídající pořadí s použitím ID událostí, které jsou generované [hodnocení API](#ranking-api) volání. V případě potřeby event ID je možné předat pomocí souborů cookie relace.
+Custom Decision Service používá pouze kliknutí na nejvyšší pozici. Každé kliknutí je interpretováno jako odměna 1. Chybějící kliknutí je interpretováno jako odměňování 0. Kliknutí se shodují s odpovídajícím pořadím pomocí ID událostí, která jsou generována voláním [rozhraní API řazení](#ranking-api) . V případě potřeby lze ID události předat pomocí souborů cookie relace.
 
-Pro zpracování klepněte na horní pozici, vložte tento kód na přední stránce:
+Pokud chcete zpracovat kliknutí na horní slot, vložte tento kód na frontu:
 
 ```javascript
 $.ajax({
@@ -139,21 +140,21 @@ $.ajax({
     contentType: "application/json" })
 ```
 
-Tady `data` je argumentem `callback()` fungovat, jak je popsáno výše. Pomocí `data` v klikněte na kód pro zpracování vyžaduje některé péči. Příklad v tomto [kurzu](custom-decision-service-tutorial-news.md#use-the-apis).
+Tady `data` je argument `callback()` funkce, jak je popsáno výše. Použití `data` v kódu pro zpracování Click vyžaduje péči. V tomto [kurzu](custom-decision-service-tutorial-news.md#use-the-apis)se zobrazí příklad.
 
-Pouze pro testování, je možné volat rozhraní API Reward prostřednictvím [cURL](https://en.wikipedia.org/wiki/CURL):
+Pro pouze testování je možné rozhraní API pro odměnu volat prostřednictvím [oblé](https://en.wikipedia.org/wiki/CURL):
 
 ```sh
 curl -v https://ds.microsoft.com/api/v2/<appId>/reward/<eventId> -X POST -d 1 -H "Content-Type: application/json"
 ```
 
-Očekávaný výsledek je odpověď HTTP 200 (OK). Zobrazí se reward 1 pro tuto událost v protokolu a (Pokud se klíče účtu služby Azure storage byla zadána na portálu).
+Očekávaným výsledkem je odpověď HTTP 200 (OK). Pro tuto událost můžete zobrazit odměnu 1 pro tuto událost v protokolu (Pokud se na portálu zadal klíč účtu úložiště Azure).
 
-## <a name="action-set-api-customer-provided"></a>Akce – nastavit API (zajišťované zákazníkem)
+## <a name="action-set-api-customer-provided"></a>Rozhraní API sady akcí (zadáno zákazníkem)
 
-Na vysoké úrovni akci nastavení rozhraní API vrátí seznam článků (akce). Každý článek je určený její adresu URL a (volitelně) název článku a datum publikace. Můžete určit, že nastaví několik akcí na portálu. Jiný účet akce nastavení API by měla sloužit pro každou sadu akcí, jako odlišné adresy URL.
+V případě vysoké úrovně rozhraní API sady akcí vrátí seznam článků (akce). Každý článek je určen jeho adresou URL a (volitelně) názvem článku a datem publikace. Na portálu můžete zadat několik sad akcí. Pro každou sadu akcí by se mělo použít jiné rozhraní API sady akcí jako odlišná adresa URL.
 
-Každý API nastavit akci lze provést dvěma způsoby: jako kanál RSS nebo informační kanál Atom. Buď jeden by měl odpovídat standardu a vrátit správný kód XML. Informační kanály RSS tady je příklad:
+Každé rozhraní API sady akcí se dá implementovat dvěma způsoby: jako kanál RSS nebo jako informační kanál Atom. Jednu z nich by měla odpovídat standardu a vracet správný kód XML. V případě RSS tady je příklad:
 
 ```xml
 <rss version="2.0">
@@ -171,20 +172,20 @@ Každý API nastavit akci lze provést dvěma způsoby: jako kanál RSS nebo inf
 </rss>
 ```
 
-Každý nejvyšší úrovně `<item>` element popisuje akce:
+Každý element nejvyšší úrovně `<item>` popisuje akci:
 
-- `<link>` je povinný a slouží jako akce ID.
-- `<date>` se ignoruje, pokud je menší než nebo rovna hodnotě 15 položky. v opačném případě je povinný.
-  - Pokud existuje více než 15 položky, 15 nejnovější ty se používají.
-  - Musí být ve formátu standard pro informační kanály RSS nebo Atom, v uvedeném pořadí:
-    - [RFC 822](https://tools.ietf.org/html/rfc822) RSS: například `"Fri, 28 Apr 2017 18:02:06 GMT"`
-    - [RFC 3339](https://tools.ietf.org/html/rfc3339) pro Atom: například `"2016-12-19T16:39:57-08:00"`
-- `<title>` je volitelný a slouží ke generování funkcí, které popisují článku.
-- `<guid>` je volitelný a předaných funkci zpětného volání systému (Pokud `?details` je zadán parametr ve volání rozhraní API pořadí).
+- `<link>`je povinný a používá se jako ID akce.
+- `<date>`ignoruje se, pokud je menší nebo rovno 15 položkám; v opačném případě je povinná.
+  - Pokud existuje více než 15 položek, použije se 15 nejnovějších.
+  - Musí být ve standardním formátu pro RSS nebo Atom, v uvedeném pořadí:
+    - [RFC 822](https://tools.ietf.org/html/rfc822) pro RSS: například`"Fri, 28 Apr 2017 18:02:06 GMT"`
+    - [RFC 3339](https://tools.ietf.org/html/rfc3339) pro Atom: například`"2016-12-19T16:39:57-08:00"`
+- `<title>`je volitelná a slouží ke generování funkcí, které popisují článek.
+- `<guid>`je volitelná a předána systémem do funkce zpětného volání (Pokud `?details` je parametr zadán v volání rozhraní API pro řazení).
 
-Další prvky uvnitř `<item>` jsou ignorovány.
+Ostatní prvky uvnitř `<item>` jsou ignorovány.
 
-Informační kanál Atom nebyl verze používá stejnou syntaxi XML a konvence.
+Verze informačního kanálu Atom používá stejnou syntaxi a konvence XML.
 
 > [!TIP]
-> Pokud váš systém používá vlastní ID článku, mohou být předány do funkce zpětného volání ve pomocí `<guid>`.
+> Pokud váš systém používá vlastní ID článků, mohou být předány do funkce zpětného volání pomocí `<guid>`.

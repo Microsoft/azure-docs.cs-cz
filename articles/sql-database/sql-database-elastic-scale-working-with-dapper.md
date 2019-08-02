@@ -1,6 +1,6 @@
 ---
-title: Používání klientské knihovny pro elastické databáze s Dapperem | Dokumentace Microsoftu
-description: Používání klientské knihovny pro elastické databáze s Dapperem.
+title: Použití klientské knihovny elastické databáze s Dapperem | Microsoft Docs
+description: Použití klientské knihovny elastické databáze s Dapperem.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,58 +10,57 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: c6ca7637c8e251fa29781503ffc18227c51bb4da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1eafb123014effad9daca89dc1b852367d9cbbf1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335283"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568263"
 ---
-# <a name="using-elastic-database-client-library-with-dapper"></a>Používání klientské knihovny pro elastické databáze s Dapperem
-Tento dokument je pro vývojáře, kteří využívají Dapperem k vytváření aplikací, ale také chtít využívat [nástrojů elastic database](sql-database-elastic-scale-introduction.md) k vytvoření tohoto horizontálního dělení implementují pro horizontální navýšení kapacity datovou vrstvu aplikace.  Tento dokument ukazuje změny v aplikacích Dapperem, které jsou potřebné k integraci s nástroji elastic database. Našim hlavním cílem je sestavování, Správa elastických databází horizontálních oddílů a směrování závislé na datech s Dapperem. 
+# <a name="using-elastic-database-client-library-with-dapper"></a>Použití klientské knihovny elastické databáze s Dapperem
+Tento dokument je určen vývojářům, kteří se spoléhají na Dapperem k vytváření aplikací, ale také chtějí využít [elastické databázové nástroje](sql-database-elastic-scale-introduction.md) k vytváření aplikací, které implementují horizontálního dělení pro horizontální navýšení kapacity datové vrstvy.  Tento dokument popisuje změny v aplikacích založených na Dapperem, které jsou nezbytné pro integraci s nástroji elastické databáze. Naše zaměření se zaměřuje na vytváření horizontálních oddílů správy elastické databáze a směrování závislého na datech pomocí Dapperem. 
 
-**Ukázkový kód**: [Nástroje pro elastické databáze pro službu Azure SQL Database – Dapper integrace](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Vzorový kód**: [Nástroje elastické databáze pro integraci s Azure SQL Database dapperem](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
-Integrace **Dapperem** a **DapperExtensions** službou elastic database klientské knihovny pro službu Azure SQL Database je snadné. Aplikace může použít směrování závislé na datech změnou vytváření a otevírání nových [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objektů na používání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) volání z [klientské knihovny ](https://msdn.microsoft.com/library/azure/dn765902.aspx). Toto nastavení omezuje změny ve vaší aplikaci pouze tam, kde jsou vytvořeny a otevřít nové připojení. 
+Integrace **dapperem** a **DapperExtensions** s klientskou knihovnou elastické databáze pro Azure SQL Database je snadné. Vaše aplikace mohou používat směrování závislé na datech změnou vytváření a otevírání nových objektů [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) pro použití volání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) z [klientské knihovny](https://msdn.microsoft.com/library/azure/dn765902.aspx). Tím se změny v aplikaci omezí jenom na místo, kde se vytvářejí a otevřou nová připojení. 
 
-## <a name="dapper-overview"></a>Přehled dapper
-**Dapper** je objektově relační Mapovač. Mapuje se objekty .NET z vaší aplikace do relační databáze (a naopak). První část vzorový kód ukazuje, jak integrovat Klientská knihovna elastic database s Dapperem aplikace. Druhá část vzorový kód ukazuje, jak integrovat při použití Dapperem a DapperExtensions.  
+## <a name="dapper-overview"></a>Dapperem – přehled
+**Dapperem** je objektově-relační Mapovač. Mapuje objekty .NET z aplikace do relační databáze (a naopak). První část ukázkového kódu znázorňuje, jak můžete integrovat knihovnu klienta elastické databáze s aplikacemi založenými na Dapperem. Druhá část ukázkového kódu ukazuje, jak integrovat při použití Dapperem i DapperExtensions.  
 
-Mapování funkce v Dapperem poskytuje rozšiřující metody u připojení k databázi, které usnadňují odesílání příkazů T-SQL pro zpracování nebo dotazování na databázi. Například Dapperem usnadňuje mapování mezi objekty .NET a parametrů příkazů SQL pro **Execute** volání, nebo využívat výsledky svých dotazů SQL do objektů .NET pomocí **dotazu** volání z Dapperem. 
+Funkce Mapper v Dapperem poskytuje metody rozšíření pro databázová připojení, která zjednodušují odesílání příkazů T-SQL pro spuštění nebo dotazování databáze. Dapperem například usnadňuje mapování mezi objekty .NET a parametry příkazů SQL pro **spuštění** volání nebo pro využití výsledků dotazů SQL do objektů .NET pomocí volání **dotazů** z dapperem. 
 
-Když používáte DapperExtensions, musíte už poskytují příkazy SQL. Metody rozšíření jako **GetList** nebo **vložit** přes připojení k databázi vytvořit příkazy SQL na pozadí.
+Při použití DapperExtensions už nemusíte zadávat SQL příkazy. Metody rozšíření, jako je GetList nebo **INSERT** přes připojení k databázi, vytvářejí příkazy SQL na pozadí.
 
-Další výhodou Dapperem a také DapperExtensions je, že aplikace řídí vytváření připojení k databázi. Díky tomu interakci s Klientská knihovna elastic database, která můžou být zprostředkovatelé připojení na základě mapování shardletů k databázím databáze.
+Další výhodou Dapperem a také DapperExtensions je, že aplikace řídí vytvoření připojení k databázi. To pomáhá komunikovat s klientskou knihovnou elastické databáze, která poskytuje připojení databáze na základě mapování shardlety k databázím.
 
-Pokud chcete získat Dapper sestavení, naleznete v tématu [Dapper dot net](https://www.nuget.org/packages/Dapper/). Dapper rozšíření, naleznete v tématu [DapperExtensions](https://www.nuget.org/packages/DapperExtensions).
+Chcete-li získat sestavení Dapperem, přečtěte si část [dapperem tečka net](https://www.nuget.org/packages/Dapper/). Rozšíření Dapperem naleznete v tématu [DapperExtensions](https://www.nuget.org/packages/DapperExtensions).
 
-## <a name="a-quick-look-at-the-elastic-database-client-library"></a>Rychlý pohled na Klientská knihovna elastic database
-Pomocí Klientská knihovna elastic database definujete oddílů dat ve vašich aplikacích nazývá *shardletů*mapovat k databázím a poznají podle *klíče horizontálního dělení*. Může mít libovolný počet databází, podle potřeby a distribuci vašich shardletů v těchto databázích. Mapování hodnot klíče horizontálního dělení do databází se ukládá pomocí mapy horizontálních oddílů poskytuje knihovny rozhraní API. Tato funkce je volána **správy mapování horizontálních oddílů**. Mapy horizontálních oddílů slouží také jako zprostředkovatel připojení k databázi pro požadavky, které mají klíč horizontálního dělení. Tato funkce se označuje jako **směrování závislé na datech**.
+## <a name="a-quick-look-at-the-elastic-database-client-library"></a>Rychlý pohled na klientskou knihovnu elastické databáze
+Pomocí klientské knihovny elastické databáze definujete oddíly dat vaší aplikace s názvem *shardlety*, namapujete je na databáze a identifikujete je pomocí *klíčů horizontálního dělení*. Můžete mít tolik databází, kolik potřebujete, a distribuovat shardlety napříč těmito databázemi. Mapování hodnot klíče horizontálního dělení na databáze je uloženo v mapě horizontálních oddílů, kterou poskytuje rozhraní API knihovny. Tato funkce se nazývá **Správa mapování horizontálních oddílů**. Mapa horizontálních oddílů slouží také jako zprostředkovatel připojení databáze pro požadavky, které přenášejí klíč horizontálního dělení. Tato funkce se označuje jako **Směrování závislé na datech**.
 
-![Směrování závislé na datech a mapy horizontálních oddílů][1]
+![Mapy horizontálních oddílů a směrování závislé na datech][1]
 
-Správce mapování horizontálních oddílů uživatelé chrání před konzistentní zobrazení do shardletu data, která může dojít, když operace správy souběžných shardletu se dějí v databázích. Uděláte to tak, zprostředkovatele mapy horizontálních oddílů připojení k databázi pro aplikaci sestavenou pomocí knihovny. Při operacích správy horizontálních oddílů může mít vliv shardletu, díky tomu funkce mapy horizontálních oddílů automaticky ukončit připojení k databázi. 
+Správce map horizontálních oddílů chrání uživatele před nekonzistentními zobrazeními do dat shardletu, ke kterým může dojít, když se v databázích děje souběžné operace správy shardletu. Za tímto účelem horizontálních oddílů mapuje připojení databáze pro aplikaci vytvořenou pomocí knihovny. Pokud by horizontálních oddílů operace správy mohly mít vliv na shardletu, umožňuje funkce mapy horizontálních oddílů automaticky odstranit připojení k databázi. 
 
-Nemusíte používat tradiční způsob, jak vytvořit připojení pro Dapperem, budete muset použít [OpenConnectionForKey metoda](https://msdn.microsoft.com/library/azure/dn824099.aspx). Tím se zajistí, že všechny ověřování probíhá a připojení se spravují správně, pokud žádná data se pohybuje mezi horizontálními oddíly.
+Místo používání tradičního způsobu vytváření připojení pro Dapperem je nutné použít [metodu OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn824099.aspx). Tím zajistíte, že proběhne všechna ověření a že se všechna data přesunou mezi horizontálních oddílů, budou připojení spravovaná správně.
 
-### <a name="requirements-for-dapper-integration"></a>Požadavky pro integraci Dapper
-Při práci s Klientská knihovna elastic database a Dapper rozhraní API, budete chtít zachovat následující vlastnosti:
+### <a name="requirements-for-dapper-integration"></a>Požadavky na integraci Dapperem
+Při práci s knihovnou klienta elastické databáze a rozhraními API Dapperem chcete zachovat následující vlastnosti:
 
-* **Horizontální navýšení kapacity**: Chcete přidat nebo odebrat databází v horizontálně dělené aplikace podle potřeby pro požadavky kapacity aplikace datové vrstvy. 
-* **Konzistence**: Vzhledem k tomu, aplikace bude škálovat pomocí horizontálního dělení, je potřeba provést směrování závislé na datech. Chceme použít k tomu možnosti směrování závislé na datech z knihovny. Zejména chcete zachovat ověření a záruky konzistence poskytuje připojení, která jsou zprostředkované přes správce mapování horizontálních oddílů Pokud se chcete vyhnout poškození nebo nesprávné výsledků. Tím se zajistí, že se připojení k dané shardletu Zamítnutá nebo zastaven, pokud (například) shardletu aktuálně přesunout do jiného horizontálního oddílu pomocí rozhraní API pro dělení a slučování.
-* **Objekt mapování**: Chcete zachovat pohodlí mapování poskytované Dapperem pro převod mezi tříd v aplikaci a základní struktury databáze. 
+* **Horizontální**navýšení kapacity: Chceme přidat nebo odebrat databáze z datové vrstvy aplikace horizontálně dělené, jak je to nutné pro požadavky aplikace na kapacitu. 
+* **Konzistence**: Vzhledem k tomu, že se aplikace škáluje pomocí horizontálního dělení, musíte provést směrování závislé na datech. K tomu chceme použít možnosti směrování závislé na datech knihovny. Konkrétně je vhodné zachovat záruky ověřování a konzistence poskytované připojeními, které jsou zprostředkované prostřednictvím Správce map horizontálních oddílů, aby se předešlo poškození nebo špatnému výsledku dotazu. Tím zajistíte, že připojení k danému shardletuu se odmítnou nebo zastaví, pokud (například instance) shardletu je v současné době přesunuta do jiného horizontálních oddílů pomocí rozhraní API pro dělení a slučování.
+* **Mapování objektu**: Chceme zachovat pohodlí mapování poskytovaných Dapperem k překladu mezi třídami v aplikaci a podkladové struktury databáze. 
 
-Následující část obsahuje pokyny pro tyto požadavky pro aplikace na základě **Dapperem** a **DapperExtensions**.
+V následující části najdete pokyny pro tyto požadavky na aplikace založené na **dapperem** a **DapperExtensions**.
 
 ## <a name="technical-guidance"></a>Technické pokyny
 ### <a name="data-dependent-routing-with-dapper"></a>Směrování závislé na datech s Dapperem
-Aplikace s Dapperem, je obvykle zodpovědný za vytváření a otevírání připojení k podkladové databázi. Daný typ T aplikací, Dapperem vrátí výsledky dotazu jako kolekce .NET typu T. Dapper provede mapování z výsledné řádky T-SQL pro objekty typu T. Obdobně Dapperem mapuje objektů .NET do SQL hodnoty nebo parametry pro příkazy data manipulaci s language (DML). Dapperem nabízí tyto funkce prostřednictvím rozšíření metod na standardní [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objekt ADO .NET SQL klientské knihovny. Připojení SQL vrátil rozhraní API pružné škálování pro záznam DDR jsou také pravidelné [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objekty. To nám umožňuje přímo používat Dapper rozšíření nad typem vrácená rozhraním API DDR klientskou knihovnu, jako je také jednoduchý připojení klienta SQL.
+V Dapperem je aplikace obvykle odpovědná za vytváření a otevírání připojení k podkladové databázi. Při zadání typu t aplikací Dapperem vrátí výsledky dotazu, protože kolekce .NET typu T. Dapperem provede mapování z řádků výsledku T-SQL na objekty typu T. Podobně Dapperem mapuje objekty .NET do hodnot nebo parametrů SQL pro příkazy jazyka DML (data remanipulace Language). Dapperem nabízí tuto funkci prostřednictvím metod rozšíření pro běžný objekt [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) z klientských knihoven objektů ADO .NET SQL. K [SqlConnectionm](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objektům, které jsou vracené rozhraními API elastického ŠKÁLOVÁNÍ pro DDR, se také používají běžné objekty. Díky tomu můžeme přímo používat rozšíření Dapperem přes typ vrácený rozhraním API DDR klientské knihovny, protože to je také jednoduché připojení klienta SQL.
 
-Tyto poznámky zjednodušují připojení zprostředkovaných podle Klientská knihovna elastic database pro Dapperem.
+Tyto poznámky zjednodušují použití připojení, která jsou zprostředkovaná knihovnou klienta elastické databáze pro Dapperem.
 
-Tento příklad kódu (z doprovodných ukázky) ukazuje přístupu, kde je klíč horizontálního dělení poskytnutý aplikací ke knihovně pro zprostředkování připojení ke správné horizontálních oddílů.   
+Tento příklad kódu (z doprovodné ukázky) ilustruje přístup, kde horizontálního dělení klíč poskytuje aplikace do knihovny za účelem zprostředkovatele připojení ke správnému horizontálních oddílů.   
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                      key: tenantId1,
@@ -76,15 +75,15 @@ Tento příklad kódu (z doprovodných ukázky) ukazuje přístupu, kde je klí�
                         );
     }
 
-Volání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) API nahradí výchozí vytváření a otevírání připojení klienta SQL. [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) volání přijímá argumenty, které jsou požadovány pro směrování závislé na datech: 
+Volání rozhraní [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) API nahrazuje výchozí vytváření a otevírání připojení klienta SQL. Volání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) přijímá argumenty, které jsou požadovány pro směrování závislé na datech: 
 
-* Mapy horizontálních oddílů pro přístup k rozhraní směrování závislé na datech
+* Mapa horizontálních oddílů pro přístup k rozhraním směrování závislým na datech
 * Klíč horizontálního dělení k identifikaci shardletu
-* Přihlašovací údaje (uživatelské jméno a heslo) pro připojení do horizontálního oddílu
+* Přihlašovací údaje (uživatelské jméno a heslo) pro připojení k horizontálních oddílů
 
-Objekt map horizontálních oddílů vytvoří připojení do horizontálního oddílu, který má shardletu pro klíč horizontálního dělení dané. Elastické databáze klientských rozhraní API také označovat připojení k implementaci jeho záruky konzistence. Od posledního volání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) vrátí regulární objekt klienta systému SQL připojení, následné volání **Execute** rozšiřující metoda z Dapperem dodržuje standardní praxí Dapper.
+Objekt mapy horizontálních oddílů vytvoří připojení k horizontálních oddílů, které obsahuje shardletu pro daný klíč horizontálního dělení. Rozhraní API klienta elastické databáze také označí připojení k implementaci záruk konzistence. Vzhledem k tomu, že volání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) vrací běžný objekt připojení klienta SQL, následné volání metody rozšíření **Execute** z Dapperem se řídí standardním dapperem postupem.
 
-Dotazy fungují velmi podobně jako když stejné – prvním otevření připojení pomocí [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) z klientského rozhraní API. Pak můžete pomocí regulárních Dapper rozšiřující metody do objektů .NET mapovat výsledky dotazu SQL:
+Dotazy fungují velmi stejným způsobem – nejprve otevřete připojení pomocí [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) z klientského rozhraní API. Pak použijete regulární metody rozšíření Dapperem k namapování výsledků dotazu SQL do objektů .NET:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId1,
@@ -104,12 +103,12 @@ Dotazy fungují velmi podobně jako když stejné – prvním otevření připoj
             }
     }
 
-Všimněte si, že **pomocí** blokovat všechny operace databáze v rámci bloku do jednoho horizontálního oddílu, ve kterém se ukládají tenantId1 s obory připojení DDR. Dotaz vrátí pouze blogy uložené na aktuální horizontálního oddílu, ale ne těch, které jsou uložené na jiných horizontálních oddílů. 
+Všimněte si, že blok **using** s připojením DDR je oborem všech databázových operací v rámci bloku do jedné horizontálních oddílů, kde se udržuje tenantId1. Dotaz vrátí pouze Blogy uložené na aktuální horizontálních oddílů, ale ne ty, které jsou uložené na všech ostatních horizontálních oddílů. 
 
 ## <a name="data-dependent-routing-with-dapper-and-dapperextensions"></a>Směrování závislé na datech s Dapperem a DapperExtensions
-Dapperem se dodává s ekosystémem další rozšíření, které můžete zadat další abstrakce z databáze a pohodlí při vytváření databázových aplikací. DapperExtensions je příklad. 
+Dapperem obsahuje ekosystém dalších rozšíření, která poskytují lepší pohodlí a abstrakci z databáze při vývoji databázových aplikací. DapperExtensions je příklad. 
 
-Ve vaší aplikaci pomocí DapperExtensions nemění způsob vytvoření a Správa připojení k databázi. Zodpovídá za stále aplikace k otevření připojení a pravidelné objekty připojení klienta SQL se očekává metodami rozšíření. Spoléháme na [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) jak je uvedeno výš. Jak ukazují následující ukázky kódu, pouze změny je, že už máte psát příkazy jazyka T-SQL:
+Použití DapperExtensions ve vaší aplikaci nemění způsob vytváření a správy připojení k databázi. Je stále zodpovědností aplikace otevírat připojení a metody rozšíření očekávají běžné objekty připojení klienta SQL. Můžeme spoléhat na [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) , jak je uvedeno výše. Jak ukazuje následující ukázka kódu, jedinou změnou je, že již nemusíte psát příkazy T-SQL:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
@@ -120,7 +119,7 @@ Ve vaší aplikaci pomocí DapperExtensions nemění způsob vytvoření a Sprá
            sqlconn.Insert(blog);
     }
 
-A tady je příklad dotazu: 
+A zde je ukázka kódu pro dotaz: 
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
@@ -137,9 +136,9 @@ A tady je příklad dotazu:
     }
 
 ### <a name="handling-transient-faults"></a>Zpracování přechodných chyb
-Tým Microsoft Patterns a postupy publikované [přechodné Fault Handling Application Block](https://msdn.microsoft.com/library/hh680934.aspx) pomáhá vývojářům aplikací zmírnit běžné stavy přechodných chyb došlo při spuštění v cloudu. Další informace najdete v tématu [Perseverance, tajný klíč všechny vítězství: Blok aplikací zpracování přechodných chyb pomocí](https://msdn.microsoft.com/library/dn440719.aspx).
+Tým Microsoft Patterns & Practices publikoval [přechodný blok aplikace pro zpracování přechodných chyb](https://msdn.microsoft.com/library/hh680934.aspx) , který vývojářům aplikací umožní zmírnit při spuštění v cloudu časté problémy s přechodnými chybami. Další informace najdete v tématu [Perseverance (tajný kód) všech Triumphs: Pomocí bloku](https://msdn.microsoft.com/library/dn440719.aspx)aplikace pro zpracování přechodných chyb.
 
-Vzorový kód spoléhá na knihovny přechodných chyb pro ochranu proti přechodným chybám. 
+Ukázka kódu spoléhá na přechodovou knihovnu selhání k ochraně proti přechodným chybám. 
 
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
@@ -151,16 +150,16 @@ Vzorový kód spoléhá na knihovny přechodných chyb pro ochranu proti přecho
           }
     });
 
-**SqlDatabaseUtils.SqlRetryPolicy** ve výše uvedeném kódu je definován jako **SqlDatabaseTransientErrorDetectionStrategy** s počtem opakování 10 a 5 sekund čekací dobu mezi opakovanými pokusy. Pokud používáte transakce, ujistěte se, že váš rozsah opakování přejde zpět na začátek transakce v případě přechodných chyb.
+**SqlDatabaseUtils. SqlRetryPolicy** ve výše uvedeném kódu je definováno jako **SqlDatabaseTransientErrorDetectionStrategy** s počtem opakování 10 a 5 sekund čekací doba mezi opakovanými pokusy. Pokud používáte transakce, ujistěte se, že se váš rozsah opakování vrátí zpět na začátek transakce v případě přechodného selhání.
 
 ## <a name="limitations"></a>Omezení
-Přístupů popsaných v tomto dokumentu zahrnuje několik omezení:
+Přístup popsaný v tomto dokumentu má několik omezení:
 
-* Ukázkový kód pro tento dokument není ukazují, jak spravovat schéma napříč horizontálními oddíly.
-* Zadaný požadavek, předpokládáme, že všechny její zpracování databáze je součástí jeden horizontální oddíl pomocí klíče horizontálního dělení zadané v požadavku. Ale tento předpoklad vždy neobsahuje, například když není možné zpřístupnit klíč horizontálního dělení. Z toho Klientská knihovna elastic database zahrnuje [MultiShardQuery třídy](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx). Třída implementuje abstraktní připojení pro dotazování více horizontálních oddílů. Použití MultiShardQuery v kombinaci s Dapperem je nad rámec tohoto dokumentu.
+* Vzorový kód pro tento dokument neukazuje, jak spravovat schéma napříč horizontálních oddílů.
+* Vzhledem k žádosti předpokládáme, že veškeré zpracování této databáze je obsaženo v jednom horizontálních oddílů, jak je identifikované pomocí klíče horizontálního dělení, který poskytuje požadavek. Tento předpoklad ale nedrží vždycky, například když není možné zpřístupnit horizontálního dělení klíč. K tomu je potřeba, aby Klientská knihovna pro elastickou databázi obsahovala [třídu MultiShardQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx). Třída implementuje abstrakci připojení pro dotazování přes několik horizontálních oddílů. Použití MultiShardQuery v kombinaci s Dapperem je nad rámec tohoto dokumentu.
 
 ## <a name="conclusion"></a>Závěr
-Aplikace používající Dapperem nebo DapperExtensions snadno využívat nástrojů elastic database pro Azure SQL Database. Pomocí kroků uvedených v tomto dokumentu, tyto aplikace můžete použít funkci nástroje pro směrování závislé na datech změnou vytváření a otevírání nových [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objektů na používání [ OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) volání Klientská knihovna elastic database. To omezuje změny aplikace, které jsou potřeba těchto míst, kde jsou vytvořen a otevřít nové připojení. 
+Aplikace využívající Dapperem a DapperExtensions můžou snadno využívat výhod nástrojů elastické databáze pro Azure SQL Database. Pomocí kroků popsaných v tomto dokumentu mohou tyto aplikace používat schopnost nástroje pro směrování závislé na datech změnou vytváření a otevírání nových objektů [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) pro použití volání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) elastického objektu. databázová knihovna klienta. Tím se omezí změny aplikace, které jsou potřeba pro ta místa, kde se vytvoří a otevřou nová připojení. 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

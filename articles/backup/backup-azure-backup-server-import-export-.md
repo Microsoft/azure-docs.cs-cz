@@ -1,18 +1,19 @@
 ---
 title: Azure Backup – offline zálohování pro DPM a Azure Backup Server
 description: Přečtěte si, jak Azure Backup umožňuje odesílat data mimo síť pomocí služby Azure import/export. V tomto článku se dozvíte, jak v režimu offline importu počátečních dat zálohování použít službu Azure import export.
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
-ms.author: saurse
-ms.openlocfilehash: 8a8571230b24d76482c505ec22d6faaa0caec5e6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 4bc0421f16d56d34e3f3156700a7a141d38fd63d
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466720"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689381"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server
 Azure Backup má několik předdefinovaných efektivit, které při počátečním úplném zálohování dat do Azure šetří náklady na síť a úložiště. Počáteční úplné zálohování obvykle přenáší velké objemy dat a vyžaduje více šířky pásma sítě ve srovnání s dalšími zálohami, které přenášejí pouze rozdíly a přírůstkové. Azure Backup zkomprimuje počáteční zálohy. Díky procesu offline osazení může Azure Backup použít disky k nahrání komprimovaných počátečních zálohovaných dat offline do Azure.
@@ -205,6 +206,6 @@ Po dokončení úlohy importu budou data počáteční zálohy k dispozici ve va
 
 V době příštího plánovaného zálohování Azure Backup provede přírůstkové zálohování při prvotním záložním kopírování.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Všechny dotazy k pracovnímu postupu importu/exportu v Azure najdete [v tématu použití služby Microsoft Azure import/export k přenosu dat do úložiště objektů BLOB](../storage/common/storage-import-export-service.md).
 * V části offline zálohování Azure Backup [Nejčastější dotazy](backup-azure-backup-faq.md) týkající se všech otázek k pracovnímu postupu.

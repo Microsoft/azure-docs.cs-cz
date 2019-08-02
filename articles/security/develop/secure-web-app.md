@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 66719d43db277e6c82d89ee17c602309d16140f8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 89d4dc789da7fc719b61342bbf0683e99c45a72c
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489975"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698253"
 ---
 # <a name="develop-a-secure-web-app"></a>Vývoj zabezpečené webové aplikace
 
@@ -137,7 +137,7 @@ Chcete-li aplikaci nainstalovat a spustit, je nutné nainstalovat tyto nástroje
 - V systému [Git](https://git-scm.com/) . Git se používá ke klonování zdrojového kódu místně.
 - [JQ](https://stedolan.github.io/jq/), nástroj pro systém UNIX pro dotazování formátu JSON uživatelsky přívětivým způsobem.
 
-K nasazení prostředků ukázkové aplikace potřebujete předplatné Azure. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/en-us/free/) pro otestování ukázkové aplikace.
+K nasazení prostředků ukázkové aplikace potřebujete předplatné Azure. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/) pro otestování ukázkové aplikace.
 
 Po instalaci těchto nástrojů jste připraveni aplikaci nasadit do Azure.
 
@@ -303,7 +303,7 @@ Tento přístup povolíte tak, že na kartě **zabezpečení připojení** vyber
 
 ![Autorizovat IP adresu klienta](./media/secure-web-app/add-client-ip-postgres.png)
 
-Pokud místo místního nástroje psql používáte Cloud Shell, vyberte možnost **Povolení přístupu ke službám Azure** a změňte její hodnotu na zapnuto,  aby byl přístup k Cloud Shell povolen.
+Pokud místo místního nástroje psql používáte Cloud Shell, vyberte možnost **Povolení přístupu ke službám Azure** a změňte její hodnotu na zapnuto, aby byl přístup k Cloud Shell povolen.
 
 Pak se připojte k instanci spuštěním níže uvedeného příkazu psql s parametry připojovacího řetězce na kartě **připojovací řetězce** instance PostgreSQL na Azure Portal.
 Nahraďte prázdné složené závorky parametry z okna připojovací řetězec databáze a heslo heslem z Azure Key Vault.
@@ -353,7 +353,7 @@ Další informace o tom, jak nastavit ověřování SSL a certifikační autorit
 V kontejneru je zahrnutý kořenový certifikát. Postup pro získání certifikátu:
 
 1. Stáhněte si soubor certifikátu od [certifikační autority](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt).
-2. [Stáhněte a nainstalujte si OpenSSL na svém počítači](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security#download-and-install-openssl-on-your-machine).
+2. [Stáhněte a nainstalujte si OpenSSL na svém počítači](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security).
 3. Dekódování souboru certifikátu:
 
    ```powershell
@@ -717,7 +717,7 @@ Teď, když jste povolili integraci virtuální sítě, můžete do naší aplik
 
     *Přidat další odchozí pravidlo*
 
-5. V okně podsítě v NSG vyberte přidružit, vyberte virtuální síť vytvořenou v nasazení a vyberte podsíť brány s názvem **GS-Subnet**. NSG se aplikuje na podsíť.
+5. V okně podsítě v NSG vyberte přidružit, vybertevirtuální síť vytvořenou v nasazení a vyberte podsíť brány s názvem **GS-Subnet**. NSG se aplikuje na podsíť.
 
 6. Vytvořte další NSG jako v předchozím kroku, tentokrát pro instanci App Service. Zadejte název. Přidejte příchozí pravidlo pro port 443 jako u služby Application Gateway NSG.
 

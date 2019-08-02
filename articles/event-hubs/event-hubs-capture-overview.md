@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 4ba3109460616be98b5330ec7175f161a6a3b750
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326168"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Zachycení událostí pomocí Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage
@@ -73,7 +73,7 @@ Soubory vytvořené metodou Event Hubs Capture mají následující schématu Av
 
 ![Avro schéma][3]
 
-Snadný způsob, jak prozkoumat soubory Avro, je použití [nástrojů][Avro Tools] jar from Apache. You can also use [Apache Drill][Apache Drill] Avro pro zjednodušené prostředí založené na SQL nebo [Apache Spark][Apache Spark] provádění komplexního distribuovaného zpracování na ingestovaná data. 
+Snadný způsob, jak prozkoumat soubory Avro, je použití [nástroje Avro Tools][Avro Tools] jar od Apache. Na serveru [Apache][Apache Drill] můžete také využít zjednodušené prostředí založené na SQL nebo [Apache Spark][Apache Spark] k provádění komplexního distribuovaného zpracování na ingestovaná data. 
 
 ### <a name="use-apache-drill"></a>Použití možnosti Apache-podrobnosti
 
@@ -129,7 +129,7 @@ Můžete také použít nástroje Avro převést soubor do formátu JSON a prov�
 
 K provádění rozšířené zpracování, stáhněte a nainstalujte Avro pro platformy podle vašeho výběru. V době psaní tohoto návodu, nejsou k dispozici pro C, C++, C implementace\#, Java, NodeJS, Perl, PHP, Python nebo Ruby.
 
-Apache Avro obsahuje kompletní příručky Začínáme pro [jazyk Java][Java] and [Python][Python]. Také můžete přečíst [Začínáme se službou Event Hubs Capture](event-hubs-capture-python.md) článku.
+Apache Avro nabízí kompletní Příručky k Začínáme pro [jazyky Java][Java] a [Python][Python]. Také můžete přečíst [Začínáme se službou Event Hubs Capture](event-hubs-capture-python.md) článku.
 
 ## <a name="how-event-hubs-capture-is-charged"></a>Jak funkce Event Hubs Capture se účtuje
 

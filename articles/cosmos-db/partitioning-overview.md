@@ -5,13 +5,13 @@ ms.author: rimman
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1bfa7104425b5013f9cdf36ff3c1dd88107d3ec7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 08/01/2019
+ms.openlocfilehash: e80e548ceae2149fe7061da42c71ee8b61f00a72
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467856"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717559"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Vytváření oddílů v Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Následuje dobrý návod pro výběr klíče oddílu:
 
 * Jeden logický oddíl má horní limit 10 GB úložiště.  
 
-* Kontejnery Azure Cosmos mají minimální propustnost 400 jednotek žádostí za sekundu (RU/s). Požadavky na stejný klíč oddílu nepřesahují propustnost, která je přidělena oddílu. Pokud žádosti překročí přidělenou propustnost, požadavky jsou omezené na rychlost. Proto je důležité vybrat klíč oddílu, který v rámci aplikace nevede k "aktivním skvrnám".
+* Kontejnery Azure Cosmos mají minimální propustnost 400 jednotek žádostí za sekundu (RU/s). V případě, že je v databázi zajištěna propustnost, minimální počet ru na kontejner je 100 jednotek žádostí za sekundu (RU/s). Požadavky na stejný klíč oddílu nepřesahují propustnost, která je přidělena oddílu. Pokud žádosti překročí přidělenou propustnost, požadavky jsou omezené na rychlost. Proto je důležité vybrat klíč oddílu, který v rámci aplikace nevede k "aktivním skvrnám".
 
 * Vyberte klíč oddílu, který má celou řadu hodnot a vzory přístupu, které jsou rovnoměrně rozloženy mezi logické oddíly. To pomáhá rozprostřít data a aktivity ve vašem kontejneru napříč sadou logických oddílů, aby bylo možné distribuovat prostředky pro ukládání a propustnost dat napříč logickými oddíly.
 

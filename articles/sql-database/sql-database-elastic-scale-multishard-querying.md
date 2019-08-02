@@ -1,6 +1,6 @@
 ---
-title: Dotazování dělených databází Azure SQL | Dokumentace Microsoftu
-description: Spouštějte dotazy napříč horizontálními oddíly vytvořeného v klientské knihovně elastic database.
+title: Dotazování databází SQL Azure v horizontálně dělené | Microsoft Docs
+description: Spouštějte dotazy napříč horizontálních oddílů pomocí klientské knihovny elastické databáze.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,31 +10,30 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 35759f03d7cf09a4114ca6dca74bd3ee92fdcbfa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 471af9e1bc699ccaa8bc930ab930d6d40bbdc984
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761688"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568374"
 ---
-# <a name="multi-shard-querying-using-elastic-database-tools"></a>Dotazování více horizontálních oddílů pomocí nástrojů pro elastické databáze
+# <a name="multi-shard-querying-using-elastic-database-tools"></a>Dotazování na více horizontálních oddílů pomocí nástrojů elastické databáze
 
 ## <a name="overview"></a>Přehled
 
-S [nástrojů Elastic Database](sql-database-elastic-scale-introduction.md), můžete vytvořit řešení horizontálně dělené databáze. **Dotazování více horizontálních oddílů** se používá pro úkoly, jako je shromažďování a generování sestav dat, které vyžadují spuštění dotazu, který roztáhne mezi několika horizontálními oddíly. (Tuto hodnotu na kontrast [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md), který provádí veškerou práci na jeden horizontální oddíl.)
+Pomocí [nástrojů pro elastic Database](sql-database-elastic-scale-introduction.md)můžete vytvářet databázová řešení horizontálně dělené. **Dotazování na více horizontálních oddílů** se používá pro úlohy, jako je shromažďování dat nebo vytváření sestav, které vyžadují spuštění dotazu, který se roztáhne mezi několik horizontálních oddílů. (To je na rozdíl od na [Směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md), které provádí veškerou práci na jednom horizontálních oddílů.)
 
-1. Získání **RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) nebo **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.NET ](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) pomocí **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)), **TryGetListShardMap** ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)), nebo **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)) metody. Zobrazit [sestavením ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) a [získat RangeShardMap nebo ListShardMap](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
-2. Vytvoření **MultiShardConnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)) objektu.
-3. Vytvoření **MultiShardStatement nebo MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)).
-4. Nastavte **Vlastnost CommandText** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) k příkazu T-SQL.
-5. Spusťte příkaz voláním **ExecuteQueryAsync nebo ExecuteReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) metody.
-6. Zobrazit výsledky pomocí **MultiShardResultSet nebo MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)) třídy.
+1. Získejte **RangeShardMap** [(Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) nebo **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) pomocí **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)), **TryGetListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [ .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) nebo metoda **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)). Viz [Vytvoření ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) a [získání RangeShardMap nebo ListShardMap](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
+2. Vytvořte objekt **MultiShardConnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)).
+3. Vytvořte **MultiShardStatement nebo MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)).
+4. Nastavte **vlastnost CommandText** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) na příkaz T-SQL.
+5. Spusťte příkaz voláním metody **ExecuteQueryAsync nebo ExecuteReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)).
+6. Zobrazte výsledky pomocí třídy **MultiShardResultSet nebo MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)).
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
-Následující kód ukazuje použití více horizontálních oddílů pomocí dotazování daný **ShardMap** s názvem *myShardMap*.
+Následující kód ilustruje použití horizontálních oddílůho dotazování pomocí daného **ShardMap** s názvem *myShardMap*.
 
 ```csharp
 using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards(), myShardConnectionString))
@@ -59,14 +58,14 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 }
 ```
 
-Klíčovým rozdílem je konstrukce připojení více horizontálních oddílů. Kde **SqlConnection** pracuje na jednotlivé databáze, **MultiShardConnection** přijímá ***sadu horizontálních oddílů*** jako vstup. Naplnění kolekce horizontálních oddílů z mapy horizontálních oddílů. Potom spuštění dotazu na sadu horizontálních oddílů pomocí **UNION ALL** sémantiku sestavit jeden celkový výsledek. Volitelně můžete do výstupu pomocí přidali jméno horizontálních oddílů, odkud pochází řádku z **ExecutionOptions** vlastnost příkazu.
+Klíčovým rozdílem je konstrukce připojení s více horizontálních oddílů. Kde **SqlConnection** funguje v individuální databázi, **MultiShardConnection** jako vstup převezme ***kolekci horizontálních oddílů*** . Naplní kolekci horizontálních oddílů z mapy horizontálních oddílů. Dotaz se pak spustí na kolekci horizontálních oddílů s využitím **všech** sémantik pro sjednocení k sestavení jednoho celkového výsledku. Volitelně můžete název horizontálních oddílů, ze kterého řádek pochází, přidat do výstupu pomocí vlastnosti **ExecutionOptions** příkazu.
 
-Všimněte si volání **myShardMap.GetShards()** . Tato metoda načte všechny horizontální oddíly z mapy horizontálních oddílů a poskytuje snadný způsob, jak spustit dotaz napříč všemi databázemi relevantní. Kolekce horizontálních oddílů pro dotazování více horizontálních oddílů může být kontrast dále provedením dotazu LINQ nad shromažďováním vrácená z volání **myShardMap.GetShards()** . V kombinaci se zásadou částečných výsledků byla navržena tak, aby fungovat dobře pro desítky až stovek horizontálních oddílů aktuální funkce v dotazování více horizontálních oddílů.
+Poznamenejte si volání **myShardMap. GetShards ()** . Tato metoda načte všechny horizontálních oddílů z mapy horizontálních oddílů a poskytuje snadný způsob, jak spustit dotaz napříč všemi relevantními databázemi. Kolekce horizontálních oddílů pro dotaz multi-horizontálních oddílů může být dále provedená pomocí dotazu LINQ nad kolekcí vrácenou z volání metody **myShardMap. GetShards ()** . V kombinaci se zásadou částečných výsledků je aktuální schopnost dotazování s více horizontálních oddílůmi navržená tak, aby fungovala dobře až do stovek horizontálních oddílů.
 
-Omezení týkajícího se dotazování více horizontálních oddílů je aktuálně chybějící ověření pro horizontální oddíly a shardlety, které se generuje dotaz. Zatímco směrování závislé na datech ověří, jestli daný horizontálních oddílů je součástí mapy horizontálních oddílů v době dotazu, neprovádějte více horizontálních oddílů dotazy tato kontrola. To může vést k více horizontálních oddílů dotazy, které běží na databáze, které byly odebrány z mapy horizontálních oddílů.
+Omezení s horizontálních oddílů dotazování je aktuálně nedostatečné ověřování pro horizontálních oddílů a shardlety, které jsou dotazovány. V případě, že směrování závislé na datech ověřuje, že daná horizontálních oddílů je součástí mapy horizontálních oddílů v době dotazování, neprovádí se u dotazů multi-horizontálních oddílů. To může vést k tomu, aby dotazy horizontálních oddílů běžely na databázích, které byly odebrány z mapy horizontálních oddílů.
 
-## <a name="multi-shard-queries-and-split-merge-operations"></a>Více horizontálních oddílů dotazy a operace dělení a slučování
+## <a name="multi-shard-queries-and-split-merge-operations"></a>Dotazy s více horizontálních oddílů a operace dělení a slučování
 
-Dotazy na více horizontálních oddílů není ověřte, zda shardletů poslal dotaz databáze se účastní probíhající operace dělení a slučování. (Viz [škálování s využitím nástroje Elastic Database dělení a slučování](sql-database-elastic-scale-overview-split-and-merge.md).) To může vést k nekonzistencím kde zobrazit řádky ze stejného shardletu pro více databází ve stejném dotazu více horizontálních oddílů. Mějte na paměti těchto omezení a vyprázdnění probíhající operace dělení a slučování a změny mapování horizontálních oddílů v úvahu při provádění dotazů více horizontálních oddílů.
+Dotazy multi-horizontálních oddílů neověřují, jestli se shardlety v dotazované databázi účastní probíhajících operací dělení na sloučení. (Viz [škálování pomocí nástroje elastic Database pro dělení a slučování](sql-database-elastic-scale-overview-split-and-merge.md).) To může vést k nekonzistencím, kde se řádky ze stejného shardletu zobrazení pro více databází nacházejí ve stejném horizontálních oddílů dotazu. Pamatujte na tato omezení a zvažte vyprázdnění probíhajících operací rozděleného na sloučení a změny v mapě horizontálních oddílů při provádění dotazů multi-horizontálních oddílů.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

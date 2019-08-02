@@ -1,9 +1,9 @@
 ---
-title: Nasazení existujícího spustitelného souboru do Azure Service Fabric | Dokumentace Microsoftu
-description: Další informace o balení existující aplikaci jako Host spustitelného souboru, takže je možné nasadit do clusteru Service Fabric.
+title: Nasaďte existující spustitelný soubor do Azure Service Fabric | Microsoft Docs
+description: Přečtěte si o sbalení existující aplikace jako spustitelného souboru hosta, aby ji bylo možné nasadit do clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
@@ -13,42 +13,42 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/15/2018
-ms.author: aljo
-ms.openlocfilehash: b7efeb1b4d83f6a6b372f73a7c0a5ca9bffdc052
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 521c7a198d9085cdc93d325e63ad9d46cc4c7928
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946667"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599458"
 ---
-# <a name="deploy-an-existing-executable-to-service-fabric"></a>Nasazení existujícího spustitelného souboru do Service Fabric
-Jakýkoli typ kódu, jako je Node.js, Java nebo C++ v Azure Service Fabric můžete spustit jako službu. Service Fabric odkazuje na tyto typy služeb jako hostující spustitelné soubory.
+# <a name="deploy-an-existing-executable-to-service-fabric"></a>Nasaďte existující spustitelný soubor pro Service Fabric
+Můžete spustit libovolný typ kódu, jako je Node. js, Java nebo C++ v Azure Service Fabric jako služba. Service Fabric odkazuje na tyto typy služeb jako spustitelné soubory typu Host.
 
-Spustitelné soubory hosta nakládá jako bezstavové služby Service Fabric. V důsledku toho jsou umístěny na uzlech v clusteru, na základě dostupnosti a další metriky. Tento článek popisuje, jak zabalit a nasadit spustitelný soubor typu Host do clusteru Service Fabric pomocí sady Visual Studio nebo nástroj příkazového řádku.
+Spustitelné soubory hosta jsou ošetřeny Service Fabric jako bezstavové služby. V důsledku toho jsou umístěny na uzlech v clusteru, a to na základě dostupnosti a dalších metrik. Tento článek popisuje, jak zabalit a nasadit spustitelný soubor hosta do clusteru Service Fabric, pomocí sady Visual Studio nebo nástroje příkazového řádku.
 
-## <a name="benefits-of-running-a-guest-executable-in-service-fabric"></a>Výhody spuštění spustitelného souboru v Service Fabric Host
-Existuje několik výhod ke spuštění spustitelného souboru v clusteru Service Fabric Host:
+## <a name="benefits-of-running-a-guest-executable-in-service-fabric"></a>Výhody spuštění hostovaného spustitelného souboru v Service Fabric
+Pro spuštění spustitelného souboru hosta v Service Fabric clusteru je k dispozici několik výhod:
 
-* Vysoká dostupnost Aplikace spuštěné v Service Fabric jsou vysoce dostupné. Service Fabric zajišťuje, že instance aplikace běží.
-* Monitorování stavu. Monitorování stavu Service Fabric zjistí, zda aplikace běží a poskytuje diagnostické informace, pokud dojde k selhání.   
-* Správa životního cyklu aplikací. Kromě zadání upgrady bez výpadků, Service Fabric nabízí automatického vrácení zpět na předchozí verzi, pokud existuje událost stavu chybný hlášená během upgradu.    
-* Hustota. Můžete spustit několik aplikací v clusteru, není potřeba pro každou aplikaci spouštět na vlastní hardware.
-* Zjistitelnost: Pomocí rozhraní REST může volat službě pojmenování service Fabric k nalezení dalších služeb v clusteru. 
+* Vysoká dostupnost Aplikace, které běží v Service Fabric, jsou vytvořeny jako vysoce dostupné. Service Fabric zajistí, aby byly spuštěné instance aplikace.
+* Sledování stavu. Service Fabric monitoring stavu zjistí, jestli je aplikace spuštěná, a když dojde k selhání, poskytne diagnostické informace.   
+* Správa životního cyklu aplikací. Kromě poskytování upgradů bez výpadků nabízí Service Fabric automatické vrácení zpět předchozí verzi, pokud dojde k chybné události stavu hlášené během upgradu.    
+* Výsadb. V clusteru můžete spustit několik aplikací, což eliminuje nutnost spuštění každé aplikace na vlastním hardwaru.
+* Zjistitelnost Pomocí REST můžete zavolat službu pojmenování Service Fabric a najít další služby v clusteru. 
 
 ## <a name="samples"></a>Ukázky kódu
-* [Ukázka pro balení a nasazení hostujícího spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Ukázka dvě hosta spustitelných souborů (C# a Node.js) komunikaci přes službu pojmenování pomocí rozhraní REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [Ukázka balení a nasazení hostovaného spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Ukázka dvou spustitelných souborů hostaC# (a NodeJS), které komunikují přes službu pojmenování pomocí REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
-## <a name="overview-of-application-and-service-manifest-files"></a>Přehled aplikací a souborů manifestu služby
-Jako součást nasazení hostujícího spustitelného souboru, je užitečné k pochopení modelu balení a nasazení služby Service Fabric, jak je popsáno v [aplikační model](service-fabric-application-model.md). Balení modelu Service Fabric závisí na dvou souborech XML: manifesty aplikace a služby. Definice schématu pro soubor ApplicationManifest.xml a ServiceManifest.xml se instaluje se sadou Service Fabric SDK do *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
+## <a name="overview-of-application-and-service-manifest-files"></a>Přehled souborů manifestu aplikace a služby
+V rámci nasazení hostovaného spustitelného souboru je užitečné pochopit Service Fabric balíčky a model nasazení, jak je popsáno v [modelu aplikace](service-fabric-application-model.md). Model Service Fabric balení spoléhá na dva soubory XML: manifesty aplikace a služby. Definice schématu pro soubory souboru ApplicationManifest. XML a ServiceManifest. XML je nainstalovaná s Service Fabric SDK do složky *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
 
-* **Manifest aplikace** manifestu aplikace se používá k popisu aplikace. Uvádí služby, které tvoří ji a musí být nasazené další parametry, které se používají k definování jak jeden nebo více služeb, jako je počet instancí.
+* **Manifest aplikace** Manifest aplikace se používá k popisu aplikace. Uvádí služby, které ji tvoří, a další parametry, které se používají k definování toho, jak má být nasazena jedna nebo více služeb, například počet instancí.
 
-  Aplikace v Service Fabric je jednotka nasazení a upgrade. Aplikace je možné upgradovat jako jednu jednotku, ve kterém se spravují potenciální chyby a potenciální vrácení zpět. Service Fabric zaručuje, že proces upgradu je buď úspěšné, nebo pokud upgrade selže, nenechává aplikace v neznámý nebo nestabilním stavu.
-* **Manifest služby** service manifest popisuje součástí služby. Obsahuje data, jako je například název a typ služby a její kód a konfigurace. Manifest služby zahrnuje také některé další parametry, které lze použít ke konfiguraci po nasazení služby.
+  V Service Fabric je aplikace jednotka nasazení a upgrade. Aplikaci je možné upgradovat jako jednu jednotku, kde se spravují potenciální chyby a potenciální vrácení zpět. Service Fabric garantuje, že proces upgradu je buď úspěšný, nebo, pokud se upgrade nepovede, aplikace nezůstane v neznámém nebo nestabilním stavu.
+* **Manifest služby** Manifest služby popisuje součásti služby. Obsahuje data, jako jsou název a typ služby a její kód a konfigurace. Manifest služby obsahuje také některé další parametry, které lze použít ke konfiguraci služby po jejím nasazení.
 
-## <a name="application-package-file-structure"></a>Struktura souboru balíčku aplikace
-K nasazení aplikace Service Fabric, by měla aplikace postupujte podle předdefinovaného adresářovou strukturu. Následuje příklad této struktury.
+## <a name="application-package-file-structure"></a>Struktura souborů balíčku aplikace
+Chcete-li nasadit aplikaci pro Service Fabric, aplikace by měla dodržovat předdefinovanou adresářovou strukturu. Následuje příklad této struktury.
 
 ```
 |-- ApplicationPackageRoot
@@ -62,22 +62,22 @@ K nasazení aplikace Service Fabric, by měla aplikace postupujte podle předdef
     |-- ApplicationManifest.xml
 ```
 
-ApplicationPackageRoot obsahuje soubor ApplicationManifest.xml, který definuje aplikaci. Obsahuje všechny artefakty, které služba vyžaduje, aby společně podadresář pro každou službu obsažené v aplikaci. Tyto podsložky jsou ServiceManifest.xml a obvykle následující:
+ApplicationPackageRoot obsahuje soubor souboru ApplicationManifest. XML, který definuje aplikaci. Podadresář pro každou službu, která je součástí aplikace, se používá k zahrnutí všech artefaktů, které služba vyžaduje. Tyto podadresáře jsou ServiceManifest. XML a obvykle následující:
 
-* *Kód*. Tento adresář obsahuje kódu služby.
-* *Konfigurace*. Tento adresář obsahuje souboru Settings.xml (a další soubory v případě potřeby), kterým služba přístup za běhu načíst nakonfigurovat specifické nastavení.
-* *Data*. Toto je další adresář k uložení další místní data, která může být nutné službu. Data by měla sloužit k ukládání jenom dočasné data. Service Fabric při kopírování nebo replikovat změny dat adresáře, pokud služba potřebuje přemístění (například během převzetí služeb při selhání).
+* *Kód*. Tento adresář obsahuje kód služby.
+* *Konfigurace*. Tento adresář obsahuje soubor s příponou. XML (a v případě potřeby i další soubory), ke kterému má služba přístup za běhu, aby bylo možné načíst konkrétní nastavení konfigurace.
+* *Data*. Toto je další adresář pro ukládání dalších místních dat, která může služba potřebovat. Data by se měla používat k ukládání pouze dočasných dat. Service Fabric nekopíruje ani nereplikuje změny v adresáři dat, pokud je potřeba přemístění služby (například během převzetí služeb při selhání).
 
 > [!NOTE]
-> Není nutné vytvořit `config` a `data` adresářů, pokud už je nepotřebujete.
+> Pokud je nepotřebujete, `config` nemusíte vytvářet adresáře a `data` .
 >
 >
 
 ## <a name="next-steps"></a>Další postup
-Naleznete v následujících článcích pro související informace a úkoly.
+Související informace a úlohy najdete v následujících článcích.
 * [Nasazení hostujícího spustitelného souboru](service-fabric-deploy-existing-app.md)
 * [Nasazení několika hostujících spustitelných souborů](service-fabric-deploy-multiple-apps.md)
-* [Vytvoření vaší první aplikace spustitelná hostem pomocí sady Visual Studio](quickstart-guest-app.md)
-* [Ukázka pro balení a nasazení hostujícího spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), včetně odkazu na předběžnou verzi nástroje pro balení
-* [Ukázka dvě hosta spustitelných souborů (C# a Node.js) komunikaci přes službu pojmenování pomocí rozhraní REST](https://github.com/Azure-Samples/service-fabric-containers)
+* [Vytvoření první spustitelné aplikace hosta pomocí sady Visual Studio](quickstart-guest-app.md)
+* [Ukázka balení a nasazení spustitelného souboru hosta](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), včetně odkazu na předběžnou verzi nástroje pro balení
+* [Ukázka dvou spustitelných souborů hostaC# (a NodeJS), které komunikují přes službu pojmenování pomocí REST](https://github.com/Azure-Samples/service-fabric-containers)
 

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zjišťování hrozeb – Azure SQL Database managed instance | Dokumentace Microsoftu
-description: Detekce hrozeb detekuje neobvyklé databázové aktivity značící potenciální ohrožení zabezpečení databáze do spravované instance.
+title: Konfigurace detekce hrozeb – Azure SQL Database spravovaná instance | Microsoft Docs
+description: Detekce hrozeb detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze ve spravované instanci.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,39 +10,38 @@ ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
-manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: a8e9dfe70e300e6b1d0d50aae60660644f2ab31d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d1f2a9547f01de91a8e7739d827a91154842d7b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61313888"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567296"
 ---
-# <a name="configure-threat-detection-preview-in-azure-sql-database-managed-instance"></a>Konfigurace zjišťování hrozeb (Preview) ve spravované instanci Azure SQL Database
+# <a name="configure-threat-detection-preview-in-azure-sql-database-managed-instance"></a>Konfigurace detekce hrozeb (Preview) v Azure SQL Database Managed instance
 
-[Detekce hrozeb](sql-database-threat-detection-overview.md) pro [spravovanou instanci](sql-database-managed-instance-index.yml) detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. Detekce hrozeb můžete identifikovat **útok prostřednictvím injektáže SQL potenciální**, **přístup z neobvyklého umístění nebo datového centra**, **přístup z neznámého objektu zabezpečení nebo potenciálně škodlivé aplikace**, a **hrubou silou přihlašovací údaje SQL** – další podrobnosti najdete v [výstrahy detekce hrozeb](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
+[Detekce hrozeb](sql-database-threat-detection-overview.md) pro [spravovanou instanci](sql-database-managed-instance-index.yml) detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. Detekce hrozeb může identifikovat **potenciální INJEKTÁŽE SQL**, **přístup z neobvyklého umístění nebo datového centra**, **získat přístup z neznámého objektu zabezpečení nebo potenciálně škodlivé aplikace**a nepřímým vynutit **přihlašovací údaje SQL** – zobrazit další podrobnosti [výstrahy detekce hrozeb](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
 
-Budete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mailová oznámení](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) nebo [webu Azure portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)
+Můžete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mailových oznámení](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) nebo [Azure Portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)
 
-[Detekce hrozeb](sql-database-threat-detection-overview.md) je součástí [rozšířené zabezpečení dat](sql-database-advanced-data-security.md) (reklamy) nabídky, která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Detekce hrozeb je možné získat přístup a spravovat prostřednictvím portálu pro centrální SQL reklamy. Služba detekce hrozeb účtuje se 15$ / měsíc za spravované instance s prvních 30 dnů zdarma.
+[Detekce hrozeb](sql-database-threat-detection-overview.md) je součástí nabídky [pokročilých dat zabezpečení](sql-database-advanced-data-security.md) (ADS), což je jednotný balíček pro pokročilé funkce zabezpečení SQL. K detekci hrozeb se dá dostat a spravovat prostřednictvím portálu centrálních SQL ADS. Služba detekce hrozeb se účtuje 15 $/měsíc na spravovanou instanci s prvních 30 dnů zdarma.
 
-## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Nastavení detekce hrozeb pro vaše spravované instance na webu Azure Portal
+## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Nastavte detekci hrozeb pro spravovanou instanci v Azure Portal
 
-1. Spuštění webu Azure portal na [ https://portal.azure.com ](https://portal.azure.com).
-2. Přejděte na stránku konfigurace spravované instance, které chcete chránit. V **nastavení** stránce **detekce hrozeb**.
+1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com).
+2. Přejděte na stránku konfigurace spravované instance, kterou chcete chránit. Na stránce **Nastavení** vyberte možnost **detekce hrozeb**.
 3. Na stránce konfigurace detekce hrozeb
-   - Zapnout **ON** detekce hrozeb.
-   - Konfigurace **seznam e-mailů** přijímat výstrahy zabezpečení po detekci neobvyklých databázových aktivit.
-   - Vyberte **účtu služby Azure storage** kde jsou uloženy záznamy auditu neobvyklé hrozeb.
-4. Klikněte na tlačítko **Uložit** uložte zásadu detekce hrozeb nová nebo aktualizovaná.
+   - Zapněte detekci **hrozeb.**
+   - Nakonfigurujte **seznam e-mailů** , které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
+   - Vyberte **účet úložiště Azure** , ve kterém se ukládají záznamy auditu neobvyklé Threat.
+4. Kliknutím na **Uložit** uložte nové nebo aktualizované zásady detekce hrozeb.
 
-   ![Detekce hrozeb](./media/sql-database-managed-instance-threat-detection/threat-detection.png)
+   ![detekce hrozeb](./media/sql-database-managed-instance-threat-detection/threat-detection.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [detekce hrozeb](sql-database-threat-detection-overview.md).
-- Další informace o spravované instance najdete v tématu [co je managed instance](sql-database-managed-instance.md).
-- Další informace o [pro izolované databáze detekce hrozeb](sql-database-threat-detection.md).
-- Další informace o [managed instance auditování](https://go.microsoft.com/fwlink/?linkid=869430).
-- Další informace o [Azure security center](https://docs.microsoft.com/azure/security-center/security-center-intro).
+- Přečtěte si další informace o [detekci hrozeb](sql-database-threat-detection-overview.md).
+- Další informace o spravovaných instancích najdete v tématu [co je spravovaná instance](sql-database-managed-instance.md).
+- Přečtěte si další informace o [detekci hrozeb pro](sql-database-threat-detection.md)izolovanou databázi.
+- Přečtěte si další informace o [auditování spravované instance](https://go.microsoft.com/fwlink/?linkid=869430).
+- Přečtěte si další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro).

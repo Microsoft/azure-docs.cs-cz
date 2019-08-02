@@ -2,32 +2,32 @@
 title: Přidání nebo odstranění uživatelů – Azure Active Directory | Dokumentace Microsoftu
 description: Pokyny ohledně toho, jak přidat nové uživatele nebo odstranit stávající uživatele pomocí služby Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1bac4d2c0f236b8fca611c7391846abdb782796
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a8b436fbdb0d70318e6820d3f59f1e198c639e5a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60247777"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561697"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí služby Azure Active Directory
-Přidání nových uživatelů nebo odstranit stávající uživatelé z vaší organizace Azure Active Directory (Azure AD).
+Přidejte nové uživatele nebo odstraňte existující uživatele z vaší organizace Azure Active Directory (Azure AD).
 
 ## <a name="add-a-new-user"></a>Přidání nového uživatele
 Můžete vytvořit nového uživatele pomocí portálu Azure Active Directory.
 
 ### <a name="to-add-a-new-user"></a>Chcete-li přidat nového uživatele
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako správce uživatelů v organizaci.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce uživatele pro organizaci.
 
 2. Vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **nového uživatele**.
 
@@ -47,7 +47,7 @@ Můžete vytvořit nového uživatele pomocí portálu Azure Active Directory.
 
    - **Skupiny.** Volitelně můžete přidat uživatele do jednoho nebo více existujících skupin. Později můžete také přidat uživatele do skupin. Další informace o přidávání uživatelů do skupin najdete v tématu [vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md).
 
-   - **Role adresáře.** Volitelně můžete přidat uživatele k roli správce Azure AD. Můžete přiřadit uživatele jako globální správce nebo jeden nebo více rolí správce s omezením ve službě Azure AD. Další informace o přiřazování rolí najdete v tématu [přiřazení rolí uživatelům](active-directory-users-assign-role-azure-portal.md).
+   - **Role adresáře.** Volitelně můžete přidat uživatele do role správce Azure AD. Můžete přiřadit uživatele jako globální správce nebo jednu nebo více rolí s omezeným správcem v Azure AD. Další informace o přiřazování rolí najdete v tématu [přiřazení rolí uživatelům](active-directory-users-assign-role-azure-portal.md).
 
 4. Zkopírujte automaticky vytvořené heslo součástí **heslo** pole. Bude potřeba předat uživateli toto heslo pro počáteční proces přihlašování.
 
@@ -62,7 +62,7 @@ Pokud máte prostředí s Azure Active Directory (cloud) a Windows Server Active
 Můžete odstranit stávajícího uživatele pomocí portálu Azure Active Directory.
 
 ### <a name="to-delete-a-user"></a>K odstranění uživatele
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí uživatelského účtu správce v organizaci.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu správce uživatele pro organizaci.
 
 2. Vyberte **Azure Active Directory**vyberte **uživatelé**a poté vyhledejte a vyberte uživatele, kterou chcete odstranit z vašeho tenanta Azure AD. Například _Mary Parker_.
 
@@ -70,7 +70,7 @@ Můžete odstranit stávajícího uživatele pomocí portálu Azure Active Direc
 
     ![Uživatelé – všichni uživatelé stránce se zvýrazněnou odstranění uživatele](media/add-users-azure-active-directory/delete-user-all-users-blade.png)
 
-    Uživatel se odstraní a už se zobrazí na **uživatelé – všichni uživatelé** stránky. Uživatel můžete zobrazit na **odstraněných uživatelů** stránce dalších 30 dní a dají se obnovit během této doby. Další informace o obnovení uživatele najdete v tématu [jak k obnovení nedávno odstraněného uživatele trvale odeberete](active-directory-users-restore.md). Při odstranění uživatele jsou k dispozici pro ostatní uživatele, který se má používat všechny licence používané uživatele.
+    Uživatel se odstraní a už se zobrazí na **uživatelé – všichni uživatelé** stránky. Uživatel můžete zobrazit na **odstraněných uživatelů** stránce dalších 30 dní a dají se obnovit během této doby. Další informace o obnovení uživatele najdete v tématu [jak k obnovení nedávno odstraněného uživatele trvale odeberete](active-directory-users-restore.md). Po odstranění uživatele budou k dispozici všechny licence spotřebované uživatelem pro ostatní uživatele.
 
     >[!Note]
     >Identity a kontaktní údaje nebo informace o úloze pro uživatele, jehož zdrojem autorita je Windows Server Active Directory aktualizovat, musíte použít Windows Server Active Directory. Po dokončení aktualizace, je nutné počkat na další cyklus synchronizace dokončit předtím, než uvidíte změny.

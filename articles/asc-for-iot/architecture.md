@@ -1,6 +1,6 @@
 ---
-title: Principy Azure Security Center pro architekturu řešení IoT ve verzi Preview | Dokumentace Microsoftu
-description: Další informace o toku informací ve službě Azure Security Center pro služby Azure IoT.
+title: Principy Azure Security Center pro architekturu řešení IoT | Microsoft Docs
+description: Přečtěte si o toku informací Azure Security Center pro službu IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,53 +13,56 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 5cab57343f9675df0702cf4281b3d74ca96d86ae
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a013d4cfcfddc709e60e91adf57bc27c98934a96
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618549"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596561"
 ---
-# <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center pro architektury IoT
+# <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center pro architekturu IoT
 
-Tento článek popisuje architekturu funkčnosti systému Azure Security Center (ASC) pro řešení IoT. 
+Tento článek vysvětluje funkční architekturu Azure Security Center pro řešení IoT. 
 
-> [!IMPORTANT]
-> Azure Security Center pro IoT je aktuálně ve verzi public preview.
-> Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="azure-security-center-for-iot-components"></a>Azure Security Center pro komponenty IoT
 
-## <a name="asc-for-iot-components"></a>ASC pro součásti IoT
-
-ASC pro IoT se skládá z následujících součástí:
-- Agenti zařízení
-- Odeslat zprávu zabezpečení sady SDK
-- Integrace služby IoT Hub
+Azure Security Center pro IoT se skládá z následujících součástí:
+- Integrace IoT Hub
+- Agenti zařízení (volitelné)
+- Odeslat sadu SDK pro zprávy zabezpečení
 - Analytický kanál
  
-### <a name="asc-for-iot-workflow"></a>ASC pro pracovní postup IoT
+### <a name="azure-security-center-for-iot-workflows"></a>Azure Security Center pro pracovní postupy IoT
 
-ASC pro agenty zařízení IoT umožňuje snadno shromažďovat události zabezpečení nezpracovaná z vašich zařízení. Nezpracovaná bezpečnostních událostí může obsahovat připojení IP, proces vytvoření, přihlášení uživatelů a dalších informací týkajících se zabezpečení. ASC pro agenty zařízení IoT také zpracovávat události agregaci, která pomáhá zabránit sítě vysokou propustnost. Agenti jsou vysoce přizpůsobitelné, umožňují použít je pro konkrétní úlohy, jako je odeslání pouze důležité informace na nejrychlejší smlouvou SLA, nebo pro agregaci rozsáhlé zabezpečení informací a kontext do větší segmentů, jak se vyhnout vyšší náklady na službu.
- 
-Zařízení agenty a jiné použití aplikace **Azure ASC odeslat zprávu zabezpečení sady SDK** odesílat informace o zabezpečení do služby Azure IoT Hub. IoT Hub převezme tyto informace a předá jej do ASC pro služby Azure IoT.
+Azure Security Center pro IoT funguje v jednom ze dvou pracovních postupů pro funkci: Integrované a rozšířené  
 
-Po povolení ASC pro služby Azure IoT, kromě předané dat služby IoT Hub rovněž odesílá všechny svoje vnitřní data pro analýzu, ASC pro IoT. Tato data zahrnují protokoly operací typu zařízení cloud, identit zařízení a konfiguraci rozbočovače. Všechny tyto informace pomáhá vytvořit ASC pro IoT analytics kanálu.
+### <a name="built-in"></a>Předdefinované
+V **integrovaném** režimu je Azure Security Center pro IoT povolený, když se rozhodnete zapnout možnost **zabezpečení** v IoT Hub. V reálném čase nabízíme monitorování, doporučení a výstrahy, integrovaný režim nabízí jednotlivě stejné viditelnost zařízení a nespárované zabezpečení. V režimu sestavení není nutné instalovat agenta na žádná zařízení a k analýze a ochraně zařízení pole používá pokročilou analýzu u protokolovaných aktivit. 
+
+### <a name="enhanced"></a>Rozšířené 
+Když v rozšířeném režimu zapnete možnost **zabezpečení** ve vašem IoT Hub a nainstalujete Azure Security Center pro agenty zařízení IoT na vaše zařízení, budou agenti shromažďovat, agregovat a analyzovat nezpracované události zabezpečení z vašich zařízení. Nezpracované události zabezpečení můžou zahrnovat připojení IP, vytváření procesů, přihlášení uživatelů a další informace týkající se zabezpečení. Azure Security Center pro agenty zařízení IoT také zpracovávají agregaci událostí, aby se zabránilo vysoké propustnosti sítě. Agenti jsou vysoce přizpůsobitelní, což umožňuje jejich použití pro konkrétní úkoly, jako je například odesílání pouze důležitých informací na nejrychlejší smlouvu SLA nebo pro agregaci rozsáhlých informací o zabezpečení a kontextu do větších segmentů, což vyloučí vyšší náklady na službu.
+
+![Azure Security Center pro architekturu IoT](./media/architecture/azure-iot-security-architecture.png)
  
-ASC pro IoT analytics kanál také přijímat další threat intelligence datové proudy z různých zdrojů v rámci společnosti Microsoft a Microsoft partnery. ASC pro IoT analytics celý kanál funguje s každou zákazníka konfigurace služby (například vlastní výstrahy a využívání odeslat zprávu zabezpečení sady SDK).
+Agenti zařízení a další aplikace používají k posílání informací o zabezpečení do Azure IoT Hub k dismailu **sadu SDK pro zprávy zabezpečení Azure** . IoT Hub tyto informace přenese a přepošle ji do Azure Security Center pro službu IoT.
+
+Jakmile je služba Azure Security Center for IoT povolena, kromě předaných IoT Hub dat také pošle veškerá interní data pro analýzu Azure Security Center pro IoT. Mezi tato data patří protokoly operací cloudového zařízení, identity zařízení a konfigurace centra. Všechny tyto informace pomáhají vytvořit Azure Security Center pro kanál IoT Analytics.
  
-Použití kanálu analýzy, ASC pro IoT je kombinací všech datových proudů informace pro generování užitečná doporučení a výstrahy. Kanál obsahuje i vlastní pravidla vytvořená výzkumníci a odborníky, jakož i hledání odchylky od analýzy chování a riziko zařízení standard modelů strojového učení.
+Azure Security Center pro kanál IoT Analytics taky přijímá další datové proudy pro analýzu hrozeb z různých zdrojů v rámci partnerů Microsoftu a Microsoftu. Azure Security Center pro IoT pro celé účely analytického kanálu funguje se všemi zákaznickými konfiguracemi provedenými ve službě (například s vlastními výstrahami a s využitím sady SDK pro posílání zpráv zabezpečení).
  
-ASC pro IoT doporučení a výstrahy (analytický kanál výstupu) se zapíše do pracovního prostoru Log Analytics z každého zákazníka. Včetně nezpracovaných událostí v pracovním prostoru a upozornění a doporučení umožňuje podrobné informace o vyšetřování a dotazy, které používají přesné údaje o podezřelých aktivitách zjištěna.  
+Použití kanálu analýzy Azure Security Center pro IoT kombinuje všechny datové proudy s informacemi, aby vygenerovala doporučení a upozornění pro akce. Kanál obsahuje jak vlastní pravidla vytvořená výzkumnými pracovníky a odborníky z hlediska zabezpečení, tak i modely strojového učení, které hledají odchylky od standardních chování zařízení a analýzy rizik.
+ 
+Azure Security Center doporučení a upozornění IoT (výstup kanálu analýz) se zapisuje do pracovního prostoru Log Analytics každého zákazníka. Včetně nezpracovaných událostí v pracovním prostoru a výstrah a doporučení umožňují důkladná podrobně vyšetřování a dotazy pomocí přesně podrobností o zjištěných podezřelých aktivitách.  
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste se dozvěděli o základní architektuře a pracovní postup ASC pro řešení IoT. Další informace o požadavcích, jak začít pracovat a povolit řešení zabezpečení ve službě IoT Hub, najdete v následujících článcích:
+V tomto článku jste se dozvěděli o základní architektuře a pracovním postupu Azure Security Center pro řešení IoT. Další informace o požadavcích, o tom, jak začít a povolit řešení zabezpečení v IoT Hub, najdete v následujících článcích:
 
-- [Požadavky na služby](service-prerequisites.md)
+- [Předpoklady služby](service-prerequisites.md)
 - [Začínáme](getting-started.md)
 - [Konfigurace řešení](quickstart-configure-your-solution.md)
-- [Povolit zabezpečení ve službě IoT Hub](quickstart-onboard-iot-hub.md)
-- [ASC pro IoT – nejčastější dotazy](resources-frequently-asked-questions.md)
-- [ASC pro výstrahy zabezpečení IoT](concept-security-alerts.md)
-
+- [Povolit zabezpečení v IoT Hub](quickstart-onboard-iot-hub.md)
+- [Nejčastější dotazy k Azure Security Center pro IoT](resources-frequently-asked-questions.md)
+- [Azure Security Center pro výstrahy zabezpečení IoT](concept-security-alerts.md)

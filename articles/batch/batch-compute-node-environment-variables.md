@@ -13,10 +13,10 @@ ms.workload: big-compute
 ms.date: 04/23/2019
 ms.author: lahugh
 ms.openlocfilehash: 2b9d6832422b98c1064a4e9e99774c4788e801e5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68323656"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Proměnné prostředí Azure Batch runtime
@@ -67,7 +67,7 @@ Příkazové řádky spouštěné úkoly na výpočetních uzlech neběží v pr
 | AZ_BATCH_POOL_ID                | Číslo ID fondu, ve kterém je spuštěn úkol. | Všechny úlohy. | batchpool001 |
 | AZ_BATCH_TASK_DIR               | Úplná cesta k [adresáři úloh][files_dirs] na uzlu. Tento adresář obsahuje `stdout.txt` a `stderr.txt` pro úlohu a AZ_BATCH_TASK_WORKING_DIR. | Všechny úlohy. | C:\user\tasks\workitems\batchjob001\job-1\task001 |
 | AZ_BATCH_TASK_ID                | Číslo ID aktuálního úkolu. | Všechny úlohy s výjimkou spouštěcího úkolu. | task001 |
-| AZ_BATCH_TASK_SHARED_DIR | Cesta k adresáři, která je shodná s primární úlohou a každý dílčí úkol [úlohy][multi_instance] . The path exists on every node on which the multi-instance task runs, and is read/write accessible to the task commands running on that node (both the [coordination command][coord_cmd] s více instancemi a [příkazem aplikace][app_cmd]). Dílčí úkoly nebo primární úlohy, které se spouštějí na jiných uzlech, nemají vzdálený přístup k tomuto adresáři (nejedná se o sdílený síťový adresář). | Primární a dílčí úkoly s více instancemi. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
+| AZ_BATCH_TASK_SHARED_DIR | Cesta k adresáři, která je stejná pro primární úlohu a každý dílčí úkol úlohy s [více instancemi][multi_instance]. Cesta existuje na každém uzlu, na kterém je spuštěná úloha s více instancemi, a je přístup pro čtení a zápis dostupný pro příkazy úkolu spuštěné v tomto uzlu ( [příkaz koordinace][coord_cmd] i [příkaz aplikace][app_cmd]). Dílčí úkoly nebo primární úlohy, které se spouštějí na jiných uzlech, nemají vzdálený přístup k tomuto adresáři (nejedná se o sdílený síťový adresář). | Primární a dílčí úkoly s více instancemi. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | Úplná cesta [pracovního adresáře úkolu][files_dirs] na uzlu. Aktuálně spuštěná úloha má k tomuto adresáři přístup pro čtení a zápis. | Všechny úlohy. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
 | CCP_NODES                       | Seznam uzlů a počet jader na uzel, které jsou přiděleny k [úloze s více instancemi][multi_instance]. Uzly a jádra jsou uvedené ve formátu.`numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, kde je počet uzlů následován jednou nebo více IP adresami uzlu a počtem jader pro každý z nich. |  Primární a dílčí úkoly s více instancemi. |`2 10.0.0.4 1 10.0.0.5 1` |
 

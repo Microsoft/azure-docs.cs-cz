@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c962e95b3d213c4089b51f58139cab17a3332cbd
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: a96d17ae7fbe94877032e7b4b2aacb63f6e070ca
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853072"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562253"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Webová aplikace, která přihlásí uživatele – konfigurace kódu
 
@@ -110,7 +110,7 @@ Stejným způsobem by byl identifikátor URI pro odhlášení nastaven na `https
 
 ### <a name="initialization-code"></a>Inicializační kód
 
-V ASP.NET Core Web Apps (a webových rozhraních API) se kód, který provádí inicializaci aplikace, nachází `Startup.cs` v souboru, a pokud chcete přidat ověřování s platformou Microsoft identity (dříve Azure AD) v 2.0, budete muset přidat následující kód. Komentáře v kódu by měly být vysvětlivekné.
+V ASP.NET Core Web Apps (a webových rozhraních API) se kód, který provádí inicializaci aplikace, nachází `Startup.cs` v souboru, a pokud chcete přidat ověřování s platformou Microsoft identity (dříve Azure AD v 2.0), budete muset přidat následující kód. Komentáře v kódu by měly být vysvětlivekné.
 
   > [!NOTE]
   > Pokud spustíte projekt s výchozím webovým projektem ASP.NET Core v sadě Visual Studio nebo pokud `dotnet new mvc` použijete `AddAzureAD` metodu, je ve výchozím nastavení dostupná, protože související balíčky jsou automaticky načteny. Pokud však sestavíte projekt od začátku a pokoušíte se použít níže uvedený kód, doporučujeme vám přidat balíček NuGet **"Microsoft. AspNetCore. Authentication. AzureAD. UI"** do svého projektu, aby byla `AddAzureAD` metoda k dispozici.
@@ -122,7 +122,7 @@ V ASP.NET Core Web Apps (a webových rozhraních API) se kód, který provádí 
  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
  {
   // The ASP.NET core templates are currently using Azure AD v1.0, and compute
-  // the authority (as {Instance}/{TenantID}). We want to use the Microsoft Identity Platform v2.0 endpoint
+  // the authority (as {Instance}/{TenantID}). We want to use the Microsoft identity platform endpoint
   options.Authority = options.Authority + "/v2.0/";
 
   // If you want to restrict the users that can sign-in to specific organizations
@@ -133,7 +133,7 @@ V ASP.NET Core Web Apps (a webových rozhraních API) se kód, který provádí 
 
   // Set the nameClaimType to be preferred_username.
   // This change is needed because certain token claims from Azure AD v1.0 endpoint
-  // (on which the original .NET core template is based) are different in Azure AD v2.0 endpoint.
+  // (on which the original .NET core template is based) are different in Microsoft identity platform endpoint.
   // For more details see [ID Tokens](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)
   // and [Access Tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
   options.TokenValidationParameters.NameClaimType = "preferred_username";
@@ -176,7 +176,7 @@ Kód související s ověřováním ve webové aplikaci ASP.NET nebo webové roz
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
+     // The `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0
      // The `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
      ClientId = clientId,

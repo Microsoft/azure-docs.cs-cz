@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
 ms.openlocfilehash: 9cd62c378270da31079a38f89b040985105a4218
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326037"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Nastavení proměnných prostředí v instancích kontejnerů
@@ -33,7 +33,7 @@ Pokud potřebujete předat tajné klíče jako proměnné prostředí, Azure Con
 
 ## <a name="azure-cli-example"></a>Příklad rozhraní příkazového řádku Azure
 
-Chcete-li zobrazit výchozí výstup příkazu [ACI-WORDCOUNT][aci-wordcount] container, run it first with this [az container create][az-container-create] (nejsou zadány žádné proměnné prostředí):
+Chcete-li zobrazit výchozí výstup kontejneru [ACI-WORDCOUNT][aci-wordcount] , spusťte jej nejprve pomocí příkazu [AZ Container Create][az-container-create] (nejsou zadány žádné proměnné prostředí):
 
 ```azurecli-interactive
 az container create \
@@ -54,7 +54,7 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-Jakmile se stav obou kontejnerů zobrazuje  jako ukončeno, zobrazí se výstup pomocí příkazu [AZ Container show][az-container-show] to check state), display their logs with [az container logs][az-container-logs] .
+Jakmile se stav obou kontejnerů zobrazuje jako ukončeno (ke kontrole stavu použijte příkaz [AZ Container show][az-container-show] ), zobrazte jeho protokoly pomocí příkazu [AZ Container logs][az-container-logs] , aby se zobrazil výstup.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -88,7 +88,7 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 Nastavení proměnných prostředí v PowerShellu se podobá rozhraní CLI, ale používá `-EnvironmentVariable` argument příkazového řádku.
 
-Nejprve spusťte příkaz [ACI-WORDCOUNT][aci-wordcount] container in its default configuration with this [New-AzContainerGroup][new-Azcontainergroup] :
+Nejdřív spusťte kontejner [ACI-WORDCOUNT][aci-wordcount] ve své výchozí konfiguraci pomocí tohoto příkazu [New-AzContainerGroup][new-Azcontainergroup] :
 
 ```azurepowershell-interactive
 New-AzContainerGroup `

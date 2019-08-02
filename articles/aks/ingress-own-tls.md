@@ -1,6 +1,6 @@
 ---
-title: Použít certifikáty protokolu TLS pro příchozí přenos dat se cluster Azure Kubernetes Service (AKS)
-description: Zjistěte, jak nainstalovat a nakonfigurovat kontroler příchozího přenosu dat serveru NGINX, která používá vlastní certifikáty v clusteru služby Azure Kubernetes Service (AKS).
+title: Použití vlastních certifikátů TLS pro příchozí přenosy s clusterem Azure Kubernetes Service (AKS)
+description: Naučte se, jak nainstalovat a nakonfigurovat řadič NGINX příchozího přenosu dat, který používá vaše vlastní certifikáty v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -8,42 +8,42 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
 ms.openlocfilehash: 2b30ade9971ede6f9544b618504033553392e9bd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67615436"
 ---
-# <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Vytvoření řadiče příchozího přenosu dat protokolu HTTPS a používat vlastní certifikáty TLS ve službě Azure Kubernetes Service (AKS)
+# <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu HTTPS a používání vlastních certifikátů TLS ve službě Azure Kubernetes Service (AKS)
 
-Řadič služby příchozího přenosu dat je část softwaru, která poskytuje reverzní proxy server, směrování provozu konfigurovatelné a ukončení protokolu TLS pro služby Kubernetes. Prostředky Kubernetesu příchozího přenosu dat se používají ke konfiguraci pravidla příchozího přenosu dat a trasy pro jednotlivé služby Kubernetes. Použití kontroler příchozího přenosu dat a pravidla příchozího přenosu dat, jednu IP adresu je možné směrovat provoz do více služeb v clusteru Kubernetes.
+Kontroler příchozího přenosu dat je softwarový software, který poskytuje reverzní proxy, konfigurovatelné směrování provozu a ukončení protokolu TLS pro služby Kubernetes Services. Kubernetes příchozí prostředky se používají ke konfiguraci pravidel příchozího přenosu dat a tras pro jednotlivé služby Kubernetes. Pomocí řadiče příchozího přenosu dat a pravidel příchozího přenosu dat se dá jedna IP adresa používat ke směrování provozu do několika služeb v clusteru Kubernetes.
 
-V tomto článku se dozvíte, jak nasadit [kontroler příchozího přenosu dat NGINX][nginx-ingress] v clusteru služby Azure Kubernetes Service (AKS). Generovat vlastní certifikáty a vytvoření tajného kódu pro použití Kubernetes s příchozího přenosu dat trasy. Nakonec jsou dvě aplikace běží v clusteru AKS, z nichž každý je přístupný přes jednu IP adresu.
+V tomto článku se dozvíte, jak nasadit [řadič Nginx][nginx-ingress] příchozího přenosu do clusteru Azure Kubernetes Service (AKS). Vygenerujete vlastní certifikáty a vytvoříte Kubernetes tajný klíč pro použití s trasou příchozího přenosu dat. Nakonec se dvě aplikace spouští v clusteru AKS, z nichž každá je přístupná přes jednu IP adresu.
 
 Můžete také:
 
-- [Vytvoření základního příchozího přenosu dat řadiče s externí síťové připojení.][aks-ingress-basic]
+- [Vytvoření základního kontroleru příchozího přenosu dat s připojením k externí síti][aks-ingress-basic]
 - [Povolit doplněk směrování aplikace HTTP][aks-http-app-routing]
-- [Vytvoření řadiče příchozího přenosu dat, který se používá soukromé, interní sítě a IP adresy][aks-ingress-internal]
-- Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky generovat certifikáty TLS [s dynamické veřejné IP adresy][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]
+- [Vytvoření kontroleru příchozího přenosu dat, který používá interní privátní síť a IP adresu][aks-ingress-internal]
+- Vytvořte kontroler příchozího přenosu dat, který pomocí šifry umožňuje automatické generování certifikátů TLS [s dynamickou veřejnou IP adresou][aks-ingress-tls] nebo [statickou veřejnou IP adresou][aks-ingress-static-tls] .
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek používá Helm k instalaci serveru NGINX kontroler příchozího přenosu dat a ukázkovou webovou aplikaci. Musíte mít Helm inicializován v rámci clusteru AKS a pomocí účtu služby pro Tiller. Ujistěte se, že používáte nejnovější verzi nástroje Helm. Pokyny k upgradu, najdete v článku [Helm instalace dokumentace][helm-install]. For more information on configuring and using Helm, see [Install applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
+V tomto článku se pomocí Helm nainstaluje kontroler NGINX příchozího přenosu dat a Ukázková webová aplikace. Musíte mít Helm inicializovaný v rámci vašeho clusteru AKS a používat účet služby pro pokladnu. Ujistěte se, že používáte nejnovější verzi Helm. Pokyny k upgradu najdete v [dokumentaci k instalaci Helm][helm-install]. Další informace o konfiguraci a použití Helm najdete v tématu [install Applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
 
-Tento článek také vyžaduje, že používáte Azure CLI verze 2.0.64 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento článek také vyžaduje, abyste spustili Azure CLI verze 2.0.64 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-## <a name="create-an-ingress-controller"></a>Vytvoření řadiče příchozího přenosu dat
+## <a name="create-an-ingress-controller"></a>Vytvoření kontroleru příchozího přenosu dat
 
-Chcete-li vytvořit kontroler příchozího přenosu dat, použijte `Helm` instalace *nginx příchozího přenosu dat*. Pro přidání redundance dvě repliky řadiče příchozího přenosu dat NGINX nasazení se používají `--set controller.replicaCount` parametru. Pokud chcete naplno využívat s replikami kontroler příchozího přenosu dat, ujistěte se, že existuje více než jeden uzel v clusteru AKS.
+Pokud chcete vytvořit kontroler příchozího přenosu `Helm` dat, použijte k instalaci *Nginx-* příchozí. Pro přidání redundance se do `--set controller.replicaCount` parametru nasadí dvě repliky řadičů příchozího přenosu Nginx. Pokud chcete mít v clusteru AKS k dispozici více než jeden uzel, zajistěte, aby bylo možné plně využít více uzlů.
 
-Kontroler příchozího přenosu dat musí také naplánovat na uzlu systému Linux. Kontroler příchozího přenosu dat se nemůže spouštět uzly Windows serveru (aktuálně ve verzi preview ve službě AKS). Výběr uzlu je zadán pomocí `--set nodeSelector` parametr říct Kubernetes plánovač spustit kontroler příchozího přenosu dat NGINX na uzlech založených na Linuxu.
-
-> [!TIP]
-> Následující příklad vytvoří Kubernetes obor názvů pro prostředky příchozího přenosu dat s názvem *příchozího přenosu dat basic*. Podle potřeby zadejte obor názvů pro konkrétní prostředí. Pokud váš cluster AKS není povoleno RBAC, přidejte `--set rbac.create=false` k příkazům Helm.
+Řadič příchozího přenosu dat musí být také naplánován na uzel Linux. Uzly Windows serveru (v současné době ve verzi Preview v AKS) by neměli spustit kontroler příchozího přenosu dat. Selektor uzlů je určený pomocí `--set nodeSelector` parametru, aby mohl Plánovač Kubernetes spustit kontroler Nginx příchozího přenosu v uzlu založeném na systému Linux.
 
 > [!TIP]
-> Pokud chcete povolit [zachování IP klienta zdrojového][client-source-ip] požadavky do kontejnerů v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` k Helm příkaz instalovat. Zdroj klienta IP je uložen v hlavičce požadavku v rámci *X-předané-pro*. Při použití kontroler příchozího přenosu dat s zachování IP zdrojového klienta povoleno, nebude fungovat předávací protokol SSL.
+> Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic*. Podle potřeby zadejte obor názvů pro vlastní prostředí. Pokud váš cluster AKS není RBAC povolený, přidejte `--set rbac.create=false` do příkazů Helm.
+
+> [!TIP]
+> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro*. Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat SSL fungovat.
 
 ```console
 # Create a namespace for your ingress resources
@@ -57,9 +57,9 @@ helm install stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Pro kontroler příchozího přenosu dat se vytvoří během instalace Azure veřejnou IP adresu. Tato veřejná IP adresa je statická dobu životnosti kontroleru příchozího přenosu. Pokud odstraníte kontroler příchozího přenosu dat, dojde ke ztrátě přiřazení veřejné IP adresy. Pokud potom vytvoříte řadič další příchozí přenos dat, se přiřadí novou veřejnou IP adresu. Pokud chcete zachovat použijte veřejnou IP adresu, můžete místo toho [vytvořit řadič příchozího přenosu dat se statickou veřejnou IP adresu][aks-ingress-static-tls].
+Během instalace se vytvoří veřejná IP adresa Azure pro kontroler příchozího přenosu dat. Tato veřejná IP adresa je statická pro životní cyklus řadiče pro příchozí přenos dat. Pokud adaptér příchozího přenosu odstraníte, bude přiřazení veřejné IP adresy ztraceno. Pokud pak vytvoříte další kontroler příchozího přenosu dat, přiřadí se nová veřejná IP adresa. Pokud chcete zachovat použití veřejné IP adresy, můžete místo toho [vytvořit kontroler příchozího přenosu se statickou veřejnou IP adresou][aks-ingress-static-tls].
 
-Chcete-li získat veřejnou IP adresu, použijte `kubectl get service` příkazu. Trvá několik minut, než IP adresu, která přiřazené příslušné službě.
+K získání veřejné IP adresy použijte `kubectl get service` příkaz. Přiřazení IP adresy ke službě trvá několik minut.
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -69,17 +69,17 @@ virulent-seal-nginx-ingress-controller        LoadBalancer   10.0.48.240   40.87
 virulent-seal-nginx-ingress-default-backend   ClusterIP      10.0.50.5     <none>         80/TCP                       7m
 ```
 
-Poznamenejte si tuto veřejnou IP adresu, ujistěte se, jak ji v posledním kroku slouží k otestování nasazení.
+Poznamenejte si tuto veřejnou IP adresu, jak je použit v posledním kroku k otestování nasazení.
 
-Žádná pravidla příchozího přenosu dat dosud nebyly vytvořeny. Pokud přejdete na veřejnou IP adresu, zobrazí se stránka 404 výchozí kontroler příchozího přenosu dat serveru NGINX.
+Zatím se nevytvořila žádná pravidla pro příchozí přenosy. Pokud přejdete na veřejnou IP adresu, zobrazí se výchozí stránka 404 adaptéru NGINX pro příchozí přenosy.
 
-## <a name="generate-tls-certificates"></a>Vygenerovat certifikáty TLS
+## <a name="generate-tls-certificates"></a>Generování certifikátů TLS
 
-Pro účely tohoto článku, umožňuje vygenerovat certifikát podepsaný svým držitelem s `openssl`. Pro použití v produkčním prostředí by měl požádat o certifikát důvěryhodný, podepsaný prostřednictvím zprostředkovatele nebo svou vlastní certifikační autoritu (CA). V dalším kroku vygenerujete Kubernetes *tajný kód* pomocí TLS certifikát a privátní klíč vygenerovaný OpenSSL.
+V tomto článku vygenerujeme certifikát `openssl`podepsaný svým držitelem. V případě produkčního použití byste měli požádat o důvěryhodný, podepsaný certifikát prostřednictvím poskytovatele nebo vlastní certifikační autority (CA). V dalším kroku vygenerujete *tajný klíč* Kubernetes pomocí certifikátu TLS a privátního klíče vygenerovaného pomocí OpenSSL.
 
-Následující příklad generuje 2048bitového algoritmu RSA X 509 certifikát platný pro 365 dnů s názvem *aks – příchozí přenos dat – tls.crt*. Název souboru privátního klíče *aks – příchozí přenos dat – tls.key*. Tajného kódu Kubernetes TLS vyžaduje oba soubory zkompilovány.
+Následující příklad vygeneruje 2048 certifikát RSA x509 platný pro 365 dní s názvem *AKS-Ingress-TLS. CRT*. Soubor privátního klíče má název *AKS-Ingress-TLS. Key*. Tajný klíč Kubernetes TLS vyžaduje oba tyto soubory.
 
-V tomto článku funguje s *demo.azure.com* běžný název subjektu a není potřeba změnit. Pro použití v produkčním prostředí, zadat svoje vlastní organizace pro `-subj` parametr:
+Tento článek spolupracuje s běžným názvem subjektu *demo.Azure.com* a nemusí se měnit. Pro produkční použití zadejte vlastní hodnoty organizace pro `-subj` parametr:
 
 ```console
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -88,11 +88,11 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -subj "/CN=demo.azure.com/O=aks-ingress-tls"
 ```
 
-## <a name="create-kubernetes-secret-for-the-tls-certificate"></a>Vytvoření tajného klíče pro certifikát TLS Kubernetes
+## <a name="create-kubernetes-secret-for-the-tls-certificate"></a>Vytvoření tajného klíče Kubernetes pro certifikát TLS
 
-Pokud chcete povolit Kubernetes pro kontroler příchozího přenosu dat používat certifikát TLS a privátní klíč, vytvořte a používejte tajný klíč. Tajný kód je definován jednou a pomocí certifikátu a klíče soubor vytvořený v předchozím kroku. Je tento tajný kód pak odkazovat při definování příchozího přenosu dat trasy.
+Pokud chcete, aby Kubernetes mohl používat certifikát TLS a privátní klíč pro řadič příchozího přenosu dat, vytvoříte a použijete tajný klíč. Tajný kód je definován jednou a používá certifikát a soubor klíčů vytvořený v předchozím kroku. Pak se na tento tajný klíč odkazuje při definování směrování příchozího přenosu dat.
 
-Následující příklad vytvoří název tajného kódu *aks – příchozí přenos dat – protokol tls*:
+Následující příklad vytvoří tajný název *AKS-příchozí-TLS*:
 
 ```console
 kubectl create secret tls aks-ingress-tls \
@@ -101,23 +101,23 @@ kubectl create secret tls aks-ingress-tls \
     --cert aks-ingress-tls.crt
 ```
 
-## <a name="run-demo-applications"></a>Spuštění ukázkové aplikace
+## <a name="run-demo-applications"></a>Spustit ukázkové aplikace
 
-Byly nakonfigurovány kontroler příchozího přenosu dat a tajný klíč vaším certifikátem. Teď Pojďme spuštění dvě ukázkové aplikace ve vašem clusteru AKS. V tomto příkladu Helm umožňuje nasadit dvě instance aplikace jednoduchý "Hello world".
+Byl nakonfigurován kontroler příchozího přenosu dat a tajný kód s vaším certifikátem. Teď spustíme dvě ukázkové aplikace v clusteru AKS. V tomto příkladu se Helm používá k nasazení dvou instancí jednoduché aplikace Hello World.
 
-Před instalací ukázkové grafy Helm, přidejte úložiště ukázky v Azure následujícím způsobem pro vaše prostředí helmu:
+Než budete moct nainstalovat ukázkové grafy Helm, přidejte do prostředí Helm úložiště ukázek Azure následujícím způsobem:
 
 ```console
 helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 ```
 
-Vytvoření první ukázkové aplikace z grafu helmu pomocí následujícího příkazu:
+Vytvořte první ukázkovou aplikaci z grafu Helm pomocí následujícího příkazu:
 
 ```console
 helm install azure-samples/aks-helloworld --namespace ingress-basic
 ```
 
-Nyní instalaci druhé instance ukázkové aplikace. Pro druhou instanci zadejte nový název tak, že dvě aplikace jsou vizuálně distinct. Můžete také zadat jedinečný název služby:
+Nyní nainstalujte druhou instanci ukázkové aplikace. Pro druhou instanci zadáte nový název, aby byly tyto dvě aplikace vizuálně jedinečné. Zadejte také jedinečný název služby:
 
 ```console
 helm install azure-samples/aks-helloworld \
@@ -128,16 +128,16 @@ helm install azure-samples/aks-helloworld \
 
 ## <a name="create-an-ingress-route"></a>Vytvoření trasy příchozího přenosu dat
 
-Obě aplikace běží v clusteru Kubernetes, ale jsou nakonfigurované s využitím služby typu `ClusterIP`. Aplikace v důsledku toho nejsou přístupné z Internetu. Aby se daly veřejně k dispozici, vytvořte prostředek příchozího přenosu dat Kubernetes. Prostředek příchozího přenosu dat nakonfiguruje pravidla, která směrovat provoz mezi těmito dvěma aplikacemi.
+Obě aplikace jsou teď spuštěné v clusteru Kubernetes, ale nakonfigurují se se službou typu `ClusterIP`. Aplikace proto nejsou přístupné z Internetu. Pokud je chcete zpřístupnit veřejnosti, vytvořte Kubernetes prostředek příchozího přenosu dat. Prostředek příchozího přenosu dat konfiguruje pravidla, která směrují provoz do jedné z těchto dvou aplikací.
 
-V následujícím příkladu, provoz na adresu `https://demo.azure.com/` se směruje na službu s názvem `aks-helloworld`. Provoz na adresu `https://demo.azure.com/hello-world-two` směrován `ingress-demo` služby. Pro účely tohoto článku nemusíte změnit názvy hostitelů ukázku. Pro použití v produkčním prostředí zadejte názvy zadané jako část procesu žádosti a generování certifikátu.
+V následujícím příkladu je přenos do adresy `https://demo.azure.com/` směrován do služby s názvem. `aks-helloworld` Provoz na adresu `https://demo.azure.com/hello-world-two` je směrován `ingress-demo` do služby. V tomto článku nemusíte tyto názvy ukázkových hostitelů měnit. V části použití v produkčním prostředí zadejte názvy zadané jako součást procesu žádosti o certifikát a procesu generování.
 
 > [!TIP]
-> Pokud zadaný během procesu žádosti o certifikát, CN název, název hostitele není souhlasit s hostitelem definované v trase vaše příchozího přenosu dat, můžete příchozího přenosu dat kontroleru zobrazí *Kubernetes příchozího přenosu dat Kontroleru falešné certifikát*. Ujistěte se, že certifikát a příchozího přenosu dat trasy shoda názvy hostitelů.
+> Pokud se název hostitele zadaný během procesu žádosti o certifikát, název CN, neshoduje s hostitelem definovaným v trase příchozího přenosu dat, zobrazí se v něm kontroler Kubernetes příchozího *certifikátu*. Zajistěte, aby se názvy hostitelů a certifikátů příchozího směrování shodovaly.
 
-*Tls* části říká příchozího přenosu dat trasy, která má použijte tajný klíč s názvem *aks – příchozí přenos dat – protokol tls* hostitele *demo.azure.com*. Znovu pro použití v produkčním prostředí, zadejte adresu hostitele.
+Část *TLS* oznamuje trase příchozího přenosu dat s názvem *AKS-Inuse-tls* pro hostitele *demo.Azure.com*. Pro produkční použití zadejte svou vlastní adresu hostitele.
 
-Vytvořte soubor s názvem `hello-world-ingress.yaml` a kopie v následujícím příkladu YAML.
+Vytvořte soubor s názvem `hello-world-ingress.yaml` a zkopírujte ho do následujícího příkladu YAML.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -167,7 +167,7 @@ spec:
         path: /hello-world-two(/|$)(.*)
 ```
 
-Vytvoření prostředků pomocí příchozího přenosu dat `kubectl apply -f hello-world-ingress.yaml` příkazu.
+Pomocí `kubectl apply -f hello-world-ingress.yaml` příkazu vytvořte prostředek příchozího přenosu dat.
 
 ```
 $ kubectl apply -f hello-world-ingress.yaml
@@ -175,15 +175,15 @@ $ kubectl apply -f hello-world-ingress.yaml
 ingress.extensions/hello-world-ingress created
 ```
 
-## <a name="test-the-ingress-configuration"></a>Otestujte konfiguraci příchozího přenosu dat
+## <a name="test-the-ingress-configuration"></a>Test konfigurace příchozího přenosu dat
 
-K otestování certifikátů pomocí našich phishing *demo.azure.com* hostovat, použijte `curl` a zadejte *– vyřešit* parametr. Tento parametr umožňuje mapovat *demo.azure.com* názvem pro veřejnou IP adresu příchozího přenosu dat řadiče. Zadejte veřejnou IP adresu z vaší vlastní kontroler příchozího přenosu dat, jak je znázorněno v následujícím příkladu:
+K otestování certifikátů pomocí našeho falešného hostitele *demo.Azure.com* použijte `curl` a zadejte parametr *--Resolve* . Tento parametr umožňuje mapovat *demo.Azure.com* název na veřejnou IP adresu vašeho kontroleru příchozího přenosu dat. Zadejte veřejnou IP adresu vlastního kontroleru příchozího přenosu dat, jak je znázorněno v následujícím příkladu:
 
 ```
 curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 ```
 
-Žádné další cesty byla zadaná s adresou, takže kontroler příchozího přenosu dat výchozí hodnota */* trasy. Vrátí první ukázkové aplikace, jak je znázorněno v následujícím výstupu zhuštěnému příkladu:
+S adresou se nezadala žádná další cesta, takže kontroler příchozího přenosu je */* výchozí pro trasu. Vrátí se první ukázková aplikace, jak je znázorněno v následujícím zhuštěném příkladu výstupu:
 
 ```
 $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
@@ -197,7 +197,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 [...]
 ```
 
-*- V* parametr v našich `curl` příkaz vypíše podrobné informace, včetně certifikát TLS přijata. Poloviny pomocí curl výstupu, můžete ověřit, že byl použit vlastní certifikát TLS. *-K* parametru pokračuje v načítání stránky, i když používáme certifikát podepsaný svým držitelem. Následující příklad ukazuje, že *vystavitele: CN=Demo.Azure.com; O = aks – příchozí přenos dat – protokol tls* certifikát se používá:
+Parametr *-v* v našem `curl` příkazu obsahuje podrobné informace, včetně přijatého certifikátu protokolu TLS. Poloduplexní výstup můžete ověřit, že se použil vlastní certifikát TLS. Parametr *-k* pokračuje v načítání stránky i v případě, že používáme certifikát podepsaný svým držitelem. Následující příklad ukazuje, že *Vystavitel: CN = demo. Azure. com; O = AKS-příchozí certifikát TLS* byl použit:
 
 ```
 [...]
@@ -210,7 +210,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 [...]
 ```
 
-Nyní přidejte */hello-world-two* cestě na adresu, jako například `https://demo.azure.com/hello-world-two`. Vrátí druhou ukázkové aplikace s vlastní název, jak je znázorněno v následujícím výstupu zhuštěnému příkladu:
+Nyní přidejte cestu */Hello-World-Two* k adrese, například `https://demo.azure.com/hello-world-two`. Vrátí se druhá ukázková aplikace s vlastním názvem, jak je znázorněno v následujícím zhuštěném příkladu výstupu:
 
 ```
 $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/hello-world-two
@@ -226,17 +226,17 @@ $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/h
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Tento článek používá Helm k instalaci součásti příchozího přenosu dat a ukázkové aplikace. Při nasazování grafu helmu vytvoří řada prostředky Kubernetesu. Tyto prostředky zahrnují podů, nasazení a služby. K uvolnění těchto prostředků, můžete buď odstranit obor názvů celé ukázkové nebo jednotlivé prostředky.
+Tento článek používá Helm k instalaci komponent příchozího přenosu dat a ukázkových aplikací. Když nasadíte graf Helm, vytvoří se několik prostředků Kubernetes. Mezi tyto prostředky patří lusky, nasazení a služby. Chcete-li vyčistit tyto prostředky, můžete buď odstranit celý vzorový obor názvů, nebo jednotlivé prostředky.
 
-### <a name="delete-the-sample-namespace-and-all-resources"></a>Odstranit obor názvů vzorku a všechny prostředky
+### <a name="delete-the-sample-namespace-and-all-resources"></a>Odstranění ukázkového oboru názvů a všech prostředků
 
-Chcete-li odstranit obor názvů celého vzorku, použijte `kubectl delete` příkaz a zadejte název vašeho oboru názvů. Se odstraní všechny prostředky v oboru názvů.
+Chcete-li odstranit celý vzorový obor názvů, `kubectl delete` použijte příkaz a zadejte název oboru názvů. Všechny prostředky v oboru názvů jsou odstraněny.
 
 ```console
 kubectl delete namespace ingress-basic
 ```
 
-Potom odeberte Helm úložiště pro aplikace hello world AKS:
+Pak odeberte úložiště Helm pro aplikaci AKS Hello World:
 
 ```console
 helm repo remove azure-samples
@@ -244,7 +244,7 @@ helm repo remove azure-samples
 
 ### <a name="delete-resources-individually"></a>Odstranit prostředky jednotlivě
 
-Podrobnější přístupem je můžete také odstranit jednotlivé prostředky vytvoří. Seznam Helm vydává se `helm list` příkazu. Vyhledejte grafy s názvem *nginx příchozího přenosu dat* a *aks-helloworld*, jak je znázorněno v následujícím příkladu výstupu:
+Další možností je podrobnější přístup k odstranění jednotlivých vytvořených prostředků. Seznam vydaných verzí Helm `helm list` pomocí příkazu. Vyhledejte grafy s názvem *Nginx-* příchozí a *AKS-HelloWorld*, jak je znázorněno v následujícím příkladu výstupu:
 
 ```
 $ helm list
@@ -255,7 +255,7 @@ billowing-guppy 1           Tue Oct 23 16:41:38 2018    DEPLOYED    aks-hellowor
 listless-quokka 1           Tue Oct 23 16:41:30 2018    DEPLOYED    aks-helloworld-0.1.0                default
 ```
 
-Odstranit vydané verze s `helm delete` příkazu. Následující příklad odstraní nasazení serveru NGINX příchozího přenosu dat a dvě ukázkové AKS hello world aplikace.
+Odstraňte vydané verze `helm delete` příkazem. Následující příklad odstraní nasazení NGINX příchozího přenosu dat a dvě ukázkové aplikace Hello World AKS.
 
 ```
 $ helm delete virulent-seal billowing-guppy listless-quokka
@@ -265,25 +265,25 @@ release "billowing-guppy" deleted
 release "listless-quokka" deleted
 ```
 
-V dalším kroku odeberte Helm úložiště pro aplikace hello world AKS:
+Pak odeberte úložiště Helm pro aplikaci AKS Hello World:
 
 ```console
 helm repo remove azure-samples
 ```
 
-Odeberte trasu příchozího přenosu dat, která přesměruje přenosy do ukázkové aplikace:
+Odebrat trasu příchozího přenosu dat směrovaného do ukázkových aplikací:
 
 ```console
 kubectl delete -f hello-world-ingress.yaml
 ```
 
-Odstraníte certifikát tajný kód:
+Odstraňte tajný klíč certifikátu:
 
 ```console
 kubectl delete secret aks-ingress-tls
 ```
 
-Nakonec můžete odstranit samotný oboru názvů. Použití `kubectl delete` příkaz a zadejte název vašeho oboru názvů:
+Nakonec můžete odstranit samotný obor názvů. `kubectl delete` Použijte příkaz a zadejte název vašeho oboru názvů:
 
 ```console
 kubectl delete namespace ingress-basic
@@ -291,17 +291,17 @@ kubectl delete namespace ingress-basic
 
 ## <a name="next-steps"></a>Další postup
 
-Tento článek zahrnuty některé externí součásti pro AKS. Další informace o těchto komponent, naleznete na následujících stránkách projektu:
+Tento článek obsahuje některé externí komponenty, které se AKS. Další informace o těchto komponentách naleznete na následujících stránkách projektu:
 
 - [Helm CLI][helm-cli]
-- [Kontroler příchozího přenosu dat serveru NGINX][nginx-ingress]
+- [Kontroler NGINX pro příchozí přenosy][nginx-ingress]
 
 Můžete také:
 
-- [Vytvoření základního příchozího přenosu dat řadiče s externí síťové připojení.][aks-ingress-basic]
+- [Vytvoření základního kontroleru příchozího přenosu dat s připojením k externí síti][aks-ingress-basic]
 - [Povolit doplněk směrování aplikace HTTP][aks-http-app-routing]
-- [Vytvoření řadiče příchozího přenosu dat, který se používá soukromé, interní sítě a IP adresy][aks-ingress-internal]
-- Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky generovat certifikáty TLS [s dynamické veřejné IP adresy][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]
+- [Vytvoření kontroleru příchozího přenosu dat, který používá interní privátní síť a IP adresu][aks-ingress-internal]
+- Vytvořte kontroler příchozího přenosu dat, který pomocí šifry umožňuje automatické generování certifikátů TLS [s dynamickou veřejnou IP adresou][aks-ingress-tls] nebo [statickou veřejnou IP adresou][aks-ingress-static-tls] .
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm

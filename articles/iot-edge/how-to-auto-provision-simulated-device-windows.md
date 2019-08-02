@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 01247dfc0046ef722d70fe48f7ab8ee63f685962
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0236491f9ebc8e3ecf7df8b74db4fd5ff441c7f8
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153556"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677439"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Vytvoření a zřízení simulovaného zařízení TPM Edge ve Windows
 
@@ -46,7 +46,7 @@ Až vytvořit registraci ve službě Device Provisioning, budete mít příleži
 
 Vyberte jazyk sady SDK, kterou chcete použít k vytvoření simulovaného zařízení a postupujte podle pokynů až do vytvoření jednotlivé registrace.
 
-Při vytvoření jednotlivé registrace vybrat **povolit** deklarovat, že se simulované zařízení TPM na svém vývojovém počítači s Windows **zařízení IoT Edge**.
+Když vytvoříte jednotlivou registraci, vyberte **true** , aby se deklarovalo, že simulované zařízení TPM ve vývojovém počítači s Windows je **IoT Edge zařízení**.
 
 Simulované zařízení a jednotlivá registrace příručky:
 
@@ -66,9 +66,9 @@ Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho součá
 
 Postupujte podle pokynů a nainstalujte modul runtime IoT Edge na zařízení, na kterém běží simulované čipu TPM v předchozí části. Ujistěte se, že konfigurace modulu runtime IoT Edge není ruční, automatické zřizování.
 
-Vědět, službě Device Provisioning **rozsah ID** a zařízení **ID registrace** před instalací na vašem zařízení IoT Edge.
+Než na zařízení nainstalujete IoT Edge, je dobré znát **obor ID** DPS a **ID registrace** zařízení.
 
-[Instalace a automaticky zřizovat IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+[Instalace a Automatické zřizování IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 

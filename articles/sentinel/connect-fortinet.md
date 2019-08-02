@@ -1,6 +1,6 @@
 ---
-title: Propojení dat Fortinet Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
-description: Informace o připojení k Azure Sentinelu Fortinet data.
+title: Připojení dat Fortinet k Azure Sentinel Preview | Microsoft Docs
+description: Naučte se připojit data Fortinet ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,98 +13,66 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2019
+ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: f3ab4861e874074e7de059c7c50064d53749748c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 339b8c1b59720989016f68fdb94fae30c26b42f0
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611304"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679286"
 ---
-# <a name="connect-your-fortinet-appliance"></a>Připojit zařízení Fortinet
+# <a name="connect-your-fortinet-appliance"></a>Připojení zařízení Fortinet
 
 > [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
-> Tato verze preview neposkytujeme bez smlouvy o úrovni služeb. To nedoporučujeme pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v tématu [dodatečnými podmínkami použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb. Nedoporučujeme ho pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-Můžete připojit Sentinelu Azure do všech zařízení Fortinet uložením souboru protokolu jako formát cef (Syslog Common Event Format). Díky integraci s Azure Sentinelu můžete snadno spouštět analýzy a dotazy napříč data protokolů z Fortinet. Další informace o tom, jak Azure Sentinelu ingestuje CEF data, naleznete v tématu [zařízení připojit CEF](connect-common-event-format.md).
+Službu Azure Sentinel můžete připojit k jakémukoli Fortinet zařízení tím, že soubory protokolu uložíte jako formát CEF (Common Event Format) syslog. Díky integraci se službou Azure Sentinel můžete snadno spouštět analýzy a dotazy napříč daty souboru protokolu z Fortinet. Další informace o tom, jak Azure Sentinel ingestuje CEF data, najdete v tématu [připojení zařízení CEF](connect-common-event-format.md).
 
 > [!NOTE]
-> Data se ukládají v zeměpisné oblasti pracovního prostoru, na kterém jste spustili Sentinelu Azure.
+> Data se ukládají do geografického umístění pracovního prostoru, na kterém spouštíte Azure Sentinel.
 
-## <a name="step-1-connect-your-fortinet-appliance-by-using-an-agent"></a>Krok 1: Připojení vašich zařízení Fortinet pomocí agenta
+## <a name="step-1-connect-your-fortinet-appliance-by-using-an-agent"></a>Krok 1: Připojení zařízení Fortinet pomocí agenta
 
-Pro vaše zařízení Fortinet připojení k Azure Sentinelu, nasazení agenta ve vyhrazený virtuální počítač nebo místní počítač, aby mohly podporovat komunikaci mezi zařízením a Sentinelu Azure. Agenta můžete nasadit automaticky nebo ručně. Automatické nasazení je pouze k dispozici, pokud je vyhrazený počítač nový virtuální počítač, který vytvoříte v Azure.
+Pokud chcete připojit zařízení Fortinet ke službě Azure Sentinel, nasaďte agenta na vyhrazený virtuální počítač nebo místní počítač pro podporu komunikace mezi zařízením a službou Azure Sentinel. 
 
-Můžete také nasadit agenta ručně na existující virtuální počítač Azure, na virtuálním počítači v jiném cloudu nebo na místním počítači.
+Agenta můžete také nasadit ručně na stávající virtuální počítač Azure, na VIRTUÁLNÍm počítači v jiném cloudu nebo na místním počítači.
 
-Síťový diagram z obou možností najdete v tématu [připojení zdroje dat](connect-data-sources.md#agent-options).
+> [!NOTE]
+> Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení vaší organizace. Můžete třeba nakonfigurovat síť tak, aby byla v souladu se zásadami zabezpečení podnikové sítě, a změnit porty a protokoly v procesu démona tak, aby odpovídaly vašim požadavkům. 
 
-### <a name="deploy-the-agent-in-azure"></a>Nasazení agenta v Azure
+Postup zobrazení síťového diagramu obou možností najdete v tématu [připojení zdrojů dat](connect-data-sources.md#agent-options).
 
-1. Na portálu Azure Sentinelu vyberte **datové konektory** a vyberte typ zařízení.
+### <a name="deploy-the-agent"></a>Nasazení agenta
 
-1. V části **konfigurace agenta protokolu Syslog v Linuxu**:
-   - Zvolte **automatického nasazení** Pokud chcete vytvořit nový počítač, který je předinstalován pomocí agenta Azure Sentinelu a zahrnuje veškeré konfigurace nezbytné, jak je uvedeno výše. Vyberte **automatického nasazení** > **nasazení agentů pro automatickou diagnostiku**. Zobrazí se stránka nákupní vyhrazený virtuální počítač, který je automaticky připojený k pracovnímu prostoru. Je virtuální počítač **standardní virtuální počítač D2s v3 (2 virtuální procesory, 8 GB paměti)** a má veřejnou IP adresu.
-      1. Na **vlastní nasazení** stránce, zadejte své údaje, zadejte uživatelské jméno a heslo a pokud souhlasíte s podmínkami a ujednáními, zakoupit virtuální počítač.
-      1. Konfigurace vašeho zařízení k odeslání protokolů s použitím nastavení uvedených na stránce připojení. Konektor obecný Common Event Format použijte tato nastavení:
-         - Protokol = UDP
-         - Port = 514
-         - Zařízení = Local-4
-         - Format = CEF
-   - Zvolte **ručního nasazení** Pokud chcete použít existující virtuální počítač jako vyhrazený počítač Linux, na kterém je nainstalovaný agent Sentinelu Azure. 
-      1. V části **stažení a instalace agenta Syslog**vyberte **virtuálního počítače Azure s Linuxem**. 
-      1. Na **virtuálních počítačů** obrazovky, vyberte počítač, který chcete použít a vyberte **připojit**.
-      1. Na obrazovce konektor v části **konfigurace a dopředné Syslog**, můžete nastavit, jestli je vaše démon procesu Syslog **rsyslog.d** nebo **syslog-ng**. 
-      1. Zkopírujte tyto příkazy a spusťte je na vaše zařízení:
-          - Pokud jste vybrali rsyslog.d:
-              
-            1. Dejte vědět, démon procesu Syslog tak, aby naslouchala na local_4 zařízení a k odeslání zprávy Syslog do agenta Azure Sentinelu pomocí port 25226. Použijte tento příkaz: `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            1. Stáhněte a nainstalujte [security_events konfiguračního souboru](https://aka.ms/asi-syslog-config-file-linux) , který nakonfiguruje agenta Syslog pro naslouchání na port 25226. Použijte tento příkaz: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` kde {0} by měla být nahrazena identifikátor GUID pracovního prostoru.
-            1. Restartujte démona syslogu pomocí tohoto příkazu: `sudo service rsyslog restart`
-             
-          - Pokud jste vybrali syslog-ng:
+1. Na portálu Sentinel Azure klikněte na **datové konektory** a vyberte **Fortinet** a pak **otevřete stránku konektor**. 
 
-              1. Dejte vědět, démon procesu Syslog tak, aby naslouchala na local_4 zařízení a k odeslání zprávy Syslog do agenta Azure Sentinelu pomocí port 25226. Použijte tento příkaz: `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-              1. Stáhněte a nainstalujte [security_events konfiguračního souboru](https://aka.ms/asi-syslog-config-file-linux) , který nakonfiguruje agenta Syslog pro naslouchání na port 25226. Použijte tento příkaz: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` kde {0} by měla být nahrazena identifikátor GUID pracovního prostoru.
-              1. Restartujte démona syslogu pomocí tohoto příkazu: `sudo service syslog-ng restart`
-      1. Restartujte agenta Syslog pomocí tohoto příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. Potvrďte, že nejsou žádné chyby v protokolu agenta spuštěním tohoto příkazu: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+1. V části **Stáhnout a nainstalovat agenta SYSLOG**vyberte typ počítače, buď Azure, nebo místní. 
+1. Na obrazovce **virtuální počítače** , která se otevře, vyberte počítač, který chcete použít, a klikněte na **připojit**.
+1. Pokud zvolíte **Stáhnout a nainstalovat agenta pro virtuální počítače se systémem Azure Linux**, vyberte počítač a klikněte na **připojit**. Pokud jste zvolili **Stáhnout a nainstalovat agenta pro virtuální počítače, které nejsou na platformě Azure Linux**, na obrazovce **Direct agent** spusťte skript v části stáhnout a začlenit **agenta pro Linux**.
+1. Na obrazovce konektoru v části **Konfigurovat a přeposlání SYSLOG**nastavte, jestli se má démon syslog **rsyslog. d** nebo **syslog-ng**. 
+1. Zkopírujte tyto příkazy a spusťte je na svém zařízení:
+   - Pokud jste vybrali rsyslog. d:
+            
+     1. Informujte démona syslog, aby naslouchal na zařízení local_4 a odesílal zprávy syslog do agenta Azure Sentinel pomocí portu 25226. Použijte tento příkaz:`sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
+     1. Stáhněte a nainstalujte [konfigurační soubor security_events](https://aka.ms/asi-syslog-config-file-linux) , který konfiguruje agenta syslog k naslouchání na portu 25226. Použijte tento příkaz: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` kde {0} by se měl nahradit identifikátorem GUID pracovního prostoru.
+     1. Restartujte proces démona syslog pomocí tohoto příkazu:`sudo service rsyslog restart`
+            
+   - Pokud jste vybrali syslog-ng:
 
-### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>Nasazení agenta na serveru v místním systému Linux
+      1. Informujte démona syslog, aby naslouchal na zařízení local_4 a odesílal zprávy syslog do agenta Azure Sentinel pomocí portu 25226. Použijte tento příkaz:`sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
+      1. Stáhněte a nainstalujte [konfigurační soubor security_events](https://aka.ms/asi-syslog-config-file-linux) , který konfiguruje agenta syslog k naslouchání na portu 25226. Použijte tento příkaz: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` kde {0} by se měl nahradit identifikátorem GUID pracovního prostoru.
+      1. Restartujte proces démona syslog pomocí tohoto příkazu:`sudo service syslog-ng restart`
+1. Restartujte agenta syslog pomocí tohoto příkazu:`sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
+1. Spuštěním tohoto příkazu ověřte, že protokol agenta neobsahuje chyby:`tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
-Pokud Azure nepoužíváte, ručně nasaďte agenta Sentinelu Azure ke spuštění na vyhrazeném serveru Linux.
-
-1. Na portálu Azure Sentinelu vyberte **datové konektory** a vyberte typ zařízení.
-1. Chcete-li vytvořit vyhrazený virtuální počítač s Linuxem, v části **konfigurace agenta protokolu Syslog v Linuxu** vyberte **ručního nasazení**.
-
-    1. V části **stažení a instalace agenta Syslog**vyberte **počítače mimo Azure Linux**.
-    1. V **přímý agent** obrazovku, která se otevře, vyberte **agenta pro Linux** stáhněte agenta nebo spuštěním tohoto příkazu si ho stáhnout na počítač s Linuxem: `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
-
-       1. Na obrazovce konektor v části **konfigurace a dopředné Syslog**, můžete nastavit, jestli je vaše démon procesu Syslog **rsyslog.d** nebo **syslog-ng**.
-       1. Zkopírujte tyto příkazy a spusťte je na vaše zařízení:
-
-          - Pokud jste vybrali rsyslog:
-
-            1. Démon procesu Syslog pro naslouchání local_4 zařízení a k odeslání zprávy Syslog do Azure ověřovací agent používá port 25226 říct. Použijte tento příkaz: `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            1. Stáhněte a nainstalujte [security_events konfiguračního souboru](https://aka.ms/asi-syslog-config-file-linux) , který nakonfiguruje agenta Syslog pro naslouchání na port 25226. Použijte tento příkaz: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` kde {0} by měla být nahrazena identifikátor GUID pracovního prostoru.
-            1. Restartujte démona syslogu pomocí tohoto příkazu: `sudo service rsyslog restart`
-
-          - Pokud jste vybrali syslog-ng:
-
-            1. Dejte vědět, démon procesu Syslog tak, aby naslouchala na local_4 zařízení a k odeslání zprávy Syslog do agenta Azure Sentinelu pomocí port 25226. Použijte tento příkaz: `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-            1. Stáhněte a nainstalujte [security_events konfiguračního souboru](https://aka.ms/asi-syslog-config-file-linux) , který nakonfiguruje agenta Syslog pro naslouchání na port 25226. Použijte tento příkaz: `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` kde {0} by měla být nahrazena identifikátor GUID pracovního prostoru.
-            1. Restartujte démona syslogu pomocí tohoto příkazu: `sudo service syslog-ng restart`
-
-      1. Restartujte agenta Syslog pomocí tohoto příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. Potvrďte, že nejsou žádné chyby v protokolu agenta spuštěním tohoto příkazu: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
-## <a name="step-2-forward-fortinet-logs-to-the-syslog-agent"></a>Krok 2: Předávání protokolů Fortinet agentům Syslog
+## <a name="step-2-forward-fortinet-logs-to-the-syslog-agent"></a>Krok 2: Přeposílání protokolů Fortinet do agenta syslog
 
-Nakonfigurujte Fortinet předávat zprávy Syslog ve formátu CEF do pracovního prostoru Azure prostřednictvím agenta Syslog.
+Nakonfigurujte Fortinet pro přeposílání zpráv syslog ve formátu CEF do pracovního prostoru Azure prostřednictvím agenta syslog.
 
-1. Otevřete rozhraní příkazového řádku na vaše zařízení Fortinet a spusťte následující příkazy:
+1. Otevřete rozhraní příkazového řádku na zařízení Fortinet a spusťte následující příkazy:
 
         config log syslogd setting
         set format cef
@@ -115,33 +83,33 @@ Nakonfigurujte Fortinet předávat zprávy Syslog ve formátu CEF do pracovního
         set status enable
         end
 
-    - Nahraďte server **ip adresu** s IP adresou agenta.
-    - Nastavte **facility_name** používat zařízení, které jste nakonfigurovali v agentovi. Ve výchozím nastavení agent nastaví to local4.
-    - Nastavte **syslog port** k **514** nebo port nastaven na agentovi.
-    - Povolit formátu CEF v dřívějších verzích FortiOS, budete pravděpodobně potřebovat ke spuštění sady příkazů **sdíleného svazku clusteru zakázat**.
+    - Nahraďte **IP adresu** serveru IP adresou agenta.
+    - Nastavte **facility_name** na použití zařízení, které jste nakonfigurovali v agentovi. Ve výchozím nastavení je agent nastaven na LOCAL4.
+    - Nastavte **port SYSLOG** na **514** nebo na port nastavený na agentovi.
+    - Pokud chcete povolit formát CEF ve verzích rané FortiOS, možná budete muset spustit sadu příkazů **CSV Disable**.
  
    > [!NOTE] 
-   > Další informace najdete v části [knihovny dokumentů Fortinet](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Vyberte svou verzi a použít **Příručka** a **odkaz na zprávu protokolu**.
+   > Další informace najdete v [knihovně dokumentů Fortinet](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Vyberte svou verzi a použijte **odkaz na zprávu** **příručky** a protokolu.
 
- Použít příslušné schéma ve službě Azure Monitor Log Analytics pro události Fortinet, vyhledejte `CommonSecurityLog`.
+ Pokud chcete použít příslušné schéma v Azure Monitor Log Analytics pro události Fortinet, vyhledejte `CommonSecurityLog`.
 
 
-## <a name="step-3-validate-connectivity"></a>Krok 3: Ověření připojení
+## <a name="step-3-validate-connectivity"></a>Krok 3: Ověřit připojení
 
-Může trvat až 20 minut, dokud vaše protokoly spuštění se zobrazí v Log Analytics. 
+Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Analytics. 
 
-1. Ujistěte se, že používáte správné zařízení. Zařízení musí být stejné v zařízení a ověřovací Azure. Můžete zkontrolovat zařízení soubor, který používáte v Azure Sentinelu a upravte v souboru `security-config-omsagent.conf`. 
+1. Ujistěte se, že používáte správné zařízení. Zařízení musí být ve vašem zařízení stejné a v Azure Sentinel. Můžete zjistit, který soubor zařízení používáte v rámci Azure Sentinel, a upravit ho v souboru `security-config-omsagent.conf`. 
 
-2. Ujistěte se, že vaše protokoly se zobrazuje na správný port Syslog agenta. Tento příkaz spustit na počítači agenta Syslog: `tcpdump -A -ni any  port 514 -vv`. Tento příkaz zobrazí protokoly, které streamování ze zařízení do počítače Syslog. Ujistěte se, že se přijímají protokoly ze zdrojového zařízení na správný port a správné zařízení.
+2. Zajistěte, aby se protokoly načítají do správného portu agenta syslog. Spusťte tento příkaz na počítači agenta syslog: `tcpdump -A -ni any  port 514 -vv`. Tento příkaz zobrazí protokoly, které streamuje ze zařízení do počítače syslog. Zajistěte, aby byly protokoly přijímány ze zdrojového zařízení na správném portu a na správném zařízení.
 
-3. Ujistěte se, že protokoly můžete odeslat dodržovat [RFC 5424](https://tools.ietf.org/html/rfc542).
+3. Ujistěte se, že protokoly, které odesíláte, vyhovují [specifikaci RFC 3164](https://tools.ietf.org/html/rfc3164).
 
-4. V počítači běží Syslog agent, ujistěte se, že jsou porty 514 a 25226 pomocí příkazu Otevřít a naslouchá `netstat -a -n:`. Další informace o použití tohoto příkazu najdete v tématu [netstat(8) - Linux man stránky](https://linux.die.net/man/8/netstat). Pokud naslouchá správně, zobrazí:
+4. V počítači, na kterém je spuštěn Agent syslog, se ujistěte, že jsou porty 514 a 25226 otevřené a naslouchající pomocí `netstat -a -n:`příkazu. Další informace o použití tohoto příkazu naleznete v tématu [netstat (8) – Linux Man](https://linux.die.net/man/8/netstat). Pokud je naslouchá správně, zobrazí se:
 
-   ![Azure porty Sentinel](./media/connect-cef/ports.png) 
+   ![Porty Sentinel Azure](./media/connect-cef/ports.png) 
 
-5. Ujistěte se, že démon je nastaven tak, aby naslouchala na portu 514, na kterém chcete odeslat protokoly.
-    - Pro rsyslog:<br>Ujistěte se, že soubor `/etc/rsyslog.conf` tato konfigurace zahrnuje:
+5. Ujistěte se, že démon je nastaven na naslouchání na portu 514, na který odesíláte protokoly.
+    - Pro rsyslog:<br>Ujistěte se, že tento `/etc/rsyslog.conf` soubor obsahuje tuto konfiguraci:
 
            # provides UDP syslog reception
            module(load="imudp")
@@ -151,33 +119,33 @@ Může trvat až 20 minut, dokud vaše protokoly spuštění se zobrazí v Log A
            module(load="imtcp")
            input(type="imtcp" port="514")
 
-      Další informace najdete v tématu [imudp: Vstupní modulu UDP Syslog](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module) a [imtcp: Vstupní modulu TCP Syslog](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module).
+      Další informace najdete v tématu [imudp: Vstupní modul](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module) a [imtcp UDP protokolu UDP: Vstupní modul](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module)protokolu TCP syslog.
 
-   - Pro syslog-ng:<br>Ujistěte se, že soubor `/etc/syslog-ng/syslog-ng.conf` tato konfigurace zahrnuje:
+   - Pro syslog-ng:<br>Ujistěte se, že tento `/etc/syslog-ng/syslog-ng.conf` soubor obsahuje tuto konfiguraci:
 
            # source s_network {
             network( transport(UDP) port(514));
              };
-     Další informace najdete v tématu [imudp: Vstupní modulu UDP Syslog](https://rsyslog.readthedocs.io/en/latest/configuration/modules/imudp.html) a [syslog-ng Open source edice 3,16 – Příručka pro správu](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455).
+     Další informace najdete v tématu [imudp: Vstupní modul](https://rsyslog.readthedocs.io/en/latest/configuration/modules/imudp.html) protokolu UDP syslog a [syslog-ng Open Source Edition 3,16 – příručka pro správu](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455)
 
-1. Zkontrolujte, zda je komunikace mezi démona Syslogu a agenta. Tento příkaz spustit na počítači agenta Syslog: `tcpdump -A -ni any  port 25226 -vv`. Tento příkaz zobrazí protokoly, které streamování ze zařízení do počítače Syslog. Ujistěte se, že protokoly se také přijímají na agentovi.
+1. Ověřte, zda se jedná o komunikaci mezi démonem syslog a agentem. Spusťte tento příkaz na počítači agenta syslog: `tcpdump -A -ni any  port 25226 -vv`. Tento příkaz zobrazí protokoly, které streamuje ze zařízení do počítače syslog. Ujistěte se, že jsou protokoly také přijímány v agentovi.
 
-6. Pokud obě tyto příkazy úspěšné výsledky, zkontrolujte Log Analytics, pokud chcete zobrazit, pokud vaše protokoly přicházejí. Všechny události Streamovat z těchto zařízení se zobrazí v nezpracovaném tvaru v Log Analytics v části `CommonSecurityLog` typu.
+6. Pokud se oba tyto příkazy dodávají úspěšně, zkontrolujte Log Analytics a zjistěte, jestli jsou protokoly přicházející. Všechny události streamované z těchto zařízení se zobrazí v nezpracované podobě v `CommonSecurityLog` Log Analytics pod položkou Typ.
 
-7. Zkontrolujte, jestli jsou chyby, nebo pokud nejsou přicházející v protokolech, vyhledejte `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`. Když je ve stavu chyby neshoda formát protokolu, přejděte na `/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` a vyhledejte v souboru `security_events.conf`. Ujistěte se, že vaše protokoly odpovídat formátu regulárního výrazu, které se zobrazí v tomto souboru.
+7. Pokud chcete zjistit, jestli se vyskytly chyby, nebo jestli se protokoly nepřicházejí `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`, podívejte se na. Pokud se zobrazí chybové zprávy o neshodě formátu protokolu, otevřete `/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` soubor `security_events.conf`a podívejte se na něj. Ujistěte se, že protokoly odpovídají formátu regulárního výrazu, který vidíte v tomto souboru.
 
-8. Ujistěte se, že velikost výchozí zprávy Syslog je omezená na 2 048 bajtů. (2 KB). Pokud jsou příliš dlouhé protokoly, aktualizujte security_events.conf pomocí tohoto příkazu: `message_length_limit 4096`
+8. Ujistěte se, že výchozí velikost zprávy syslog je omezená na 2048 bajtů (2 KB). Pokud jsou protokoly moc dlouhé, aktualizujte security_events. conf pomocí tohoto příkazu:`message_length_limit 4096`
 
-10. Pokud vaše protokoly Fortinet nejsou přijímá agenta, spusťte tento příkaz, v závislosti na tom, jaký typ démon procesu Syslog, které používáte, k nastavení zařízení a protokoly pro hledání v protokolech slovo Fortinet nastavení:
-       - rsyslog.d: `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
+10. Pokud agent Fortinet protokoly nepřijímá, spusťte tento příkaz v závislosti na typu démona syslog, který používáte, k nastavení zařízení a nastavení protokolů pro hledání slova Fortinet v protokolech:
+       - rsyslog. d:`sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
 
-     Restartujte démona Syslogu pomocí tohoto příkazu: `sudo service rsyslog restart`
-       - Syslog-ng: `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
+     Restartujte proces démona syslog pomocí tohoto příkazu:`sudo service rsyslog restart`
+       - syslog-ng:`sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
       
-     Restartujte démona Syslogu pomocí tohoto příkazu: `sudo service syslog-ng restart`
+     Restartujte proces démona syslog pomocí tohoto příkazu:`sudo service syslog-ng restart`
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak se připojit k Azure Sentinelu Fortinet zařízení. Další informace o Azure Sentinelu, naleznete v následujících článcích:
-- Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
-- Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).
+V tomto článku jste zjistili, jak připojit zařízení Fortinet ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
 

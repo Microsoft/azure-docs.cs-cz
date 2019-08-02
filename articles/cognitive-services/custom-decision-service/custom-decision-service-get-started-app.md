@@ -1,7 +1,7 @@
 ---
 title: Volání rozhraní API z aplikace – Custom Decision Service
 titlesuffix: Azure Cognitive Services
-description: Jak volat rozhraní API pro vlastní rozhodnutí služeb z aplikace pro smartphone.
+description: Způsob volání rozhraní API Custom Decision Service z aplikace smartphone
 services: cognitive-services
 author: slivkins
 manager: nitinme
@@ -10,31 +10,32 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: slivkins
-ms.openlocfilehash: 0e5c99aae61fb927ea7f101bab74d661a747f88b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: 08fbc1716d402c83bc2c33be82cba143c1737a55
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60511545"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707255"
 ---
 # <a name="call-api-from-an-app"></a>Volání rozhraní API z aplikace
 
-Volání rozhraní API služeb Azure vlastního rozhodnutí z aplikace pro smartphone. Tento článek vysvětluje, jak začít pracovat s některých základních možností.
+Z aplikace smartphone můžete volat rozhraní API pro Azure Custom Decision Service. Tento článek vysvětluje, jak začít s některými základními možnostmi.
 
-Nezapomeňte [registrace vaší aplikace](custom-decision-service-get-started-register.md), první.
+Nezapomeňte nejdřív [zaregistrovat aplikaci](custom-decision-service-get-started-register.md).
 
-Existují dvě volání rozhraní API, provádět z aplikace pro smartphone Custom Decision Service: volání rozhraní API pro hodnocení získat seřazený seznam obsahu a volání rozhraní API Reward hlášení odměny. Tady je ukázka volání v [cURL](https://en.wikipedia.org/wiki/CURL).
+Existují dvě volání rozhraní API, která z vaší aplikace smartphone napíšete Custom Decision Service: volání rozhraní API pro řazení pro získání seřazeného seznamu obsahu a volání rozhraní API pro odměnu. Tady jsou ukázková volání v [kudrlinkou](https://en.wikipedia.org/wiki/CURL).
 
-Další informace najdete v tématu referenční [API](custom-decision-service-api-reference.md).
+Další informace najdete v referenčním [rozhraní API](custom-decision-service-api-reference.md).
 
-Začněte s volání rozhraní API pro hodnocení. Vytvoření souboru `<request.json>`, který má akci nastavit ID. Toto ID je název odpovídající RSS nebo Atom feed, který jste zadali v portálu:
+Začněte voláním rozhraní API pro řazení. Vytvořte soubor `<request.json>`s ID sady akcí. Toto ID je název odpovídajícího informačního kanálu RSS nebo Atom, který jste zadali na portálu:
 
 ```json
 {"decisions":
      [{ "actionSets":[{"id":{"id":"<actionSetId>"}}] }]}
 ```
 
-Mnoho sad akce lze upravit následujícím způsobem:
+Mnoho sad akcí lze zadat následujícím způsobem:
 
 ```json
 {"decisions":
@@ -42,13 +43,13 @@ Mnoho sad akce lze upravit následujícím způsobem:
                      {"id":{"id":"<actionSetId2>"}}] }]}
 ```
 
-Tento soubor JSON je odeslaný jako součást požadavku pořadí:
+Tento soubor JSON se pak pošle jako součást žádosti o klasifikaci:
 
 ```shell
 curl -d @<request.json> -X POST https://ds.microsoft.com/api/v2/<appId>/rank --header "Content-Type: application/json"
 ```
 
-Tady `<appId>` je název vaší aplikace zaregistrovat na portálu. Měli byste obdržet uspořádanou sadu obsahu položky, které můžete zobrazit v aplikaci. Ukázka návratový vypadá takto:
+`<appId>` Tady je název vaší aplikace zaregistrované na portálu. Měli byste obdržet uspořádanou sadu položek obsahu, kterou můžete vykreslit ve své aplikaci. Ukázka návratového souboru vypadá takto:
 
 ```json
 [{ "ranking":[{"id":"actionId3"}, {"id":"actionId1"}, {"id":"actionId2"}],
@@ -59,15 +60,15 @@ Tady `<appId>` je název vaší aplikace zaregistrovat na portálu. Měli byste 
                  {"id":"<actionSetId2>","lastRefresh":"2017-04-30T22:34:25.3401438Z"}]}]
 ```
 
-První část vrácená má seznam seřazený akce určená jejich ID akce. ID akce pro příslušný článek, je adresa URL. Celkový požadavek má také jedinečnou `<eventId>`, které byly vytvořeny v systému.
+První část vráceného seznamu obsahuje seznam seřazených akcí určených jejich ID akcí. V článku je ID akce adresa URL. Celkový požadavek má také jedinečnou `<eventId>`hodnotu vytvořenou systémem.
 
-Později, můžete zadat, pokud jste sledovali klikněte na první položku obsahu z této události, která je `<actionId3>`. Může vytvářet zprávy odměny v tomto `<eventId>` Custom Decision Service přes rozhraní API odměnu, prováděním jiné žádostí o jako například:
+Později můžete určit, jestli jste se na první položku obsahu v této události doznamenali, což je `<actionId3>`. Tuto `<eventId>` odměnu můžete následně nahlásit Custom Decision Service prostřednictvím rozhraní API pro odměnu, a to pomocí jiné žádosti, jako je například:
 
 ```shell
 curl -v https://ds.microsoft.com/api/v2/<appId>/reward/<eventId> -X POST
 ```
 
-Nakonec budete muset poskytnout API nastavit akci, která vrátí seznam článků (akce), aby bylo považováno za pomocí služby Custom Decision Service. Implementace tohoto rozhraní API jako informačního kanálu RSS, jak je znázorněno zde:
+Nakonec musíte zadat rozhraní API sady akcí, které vrátí seznam článků (akcí), které se mají považovat za Custom Decision Service. Toto rozhraní API implementujte jako informační kanál RSS, jak je znázorněno zde:
 
 ```xml
 <rss version="2.0">
@@ -84,9 +85,9 @@ Nakonec budete muset poskytnout API nastavit akci, která vrátí seznam článk
 </rss>
 ```
 
-Tady se každý nejvyšší úrovně `<item>` element popisuje článek. `<link>` Je povinný a slouží jako ID akce pomocí služby Custom Decision Service. Zadejte `<date>` (ve standardním formátu RSS) Pokud jste víc než 15 články. 15 nejnovější články používají. `<title>` Je volitelný a slouží k vytvoření funkce související s textu článku.
+Tady se v každém elementu nejvyšší `<item>` úrovně popisuje článek. `<link>` Je povinný a používá se jako ID akce Custom Decision Service. Pokud `<date>` máte více než 15 článků, zadejte (ve standardním formátu RSS). Použije se 15 nejnovějších článků. `<title>` Je volitelná a slouží k vytváření funkcí souvisejících s textem pro článek.
 
 ## <a name="next-steps"></a>Další postup
 
-* Seznámení se základními [kurzu](custom-decision-service-tutorial-news.md) podrobnější příklad.
-* Referenční příručce [API](custom-decision-service-api-reference.md) Další informace o funkcích, které zadaná.
+* Podrobnější příklad najdete v [kurzu](custom-decision-service-tutorial-news.md) .
+* Další informace o poskytovaných funkcích najdete v referenčním [rozhraní API](custom-decision-service-api-reference.md) .

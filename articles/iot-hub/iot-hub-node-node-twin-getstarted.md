@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: elioda
-ms.openlocfilehash: 8dd5269532e9eb6139d8debb0ee9b503cd2e4354
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: eb8b7c62e765ab233b50310dca9c21e9728ed56a
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68403993"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668004"
 ---
-# <a name="get-started-with-device-twins-node"></a>Začínáme s nevlákenou zařízení (Node)
+# <a name="get-started-with-device-twins-nodejs"></a>Začínáme s nevlákenou zařízení (Node. js)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
@@ -220,7 +220,7 @@ V této části vytvoříte konzolovou aplikaci Node. js, která se připojí k 
 
     ![Zobrazit myDeviceId ve výsledcích dotazu](media/iot-hub-node-node-twin-getstarted/service2.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Metadata zařízení jste přidali jako značky z back-endové aplikace a zapsali jste aplikaci simulovaného zařízení, která oznamuje informace o připojení zařízení v zařízení. Zjistili jste také, jak zadat dotaz na tyto informace pomocí dotazovacího jazyka IoT Hub, jako je třeba SQL.
 

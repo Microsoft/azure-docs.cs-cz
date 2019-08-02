@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: afc8dbfa0bc1b1ad37e5f1a0f290c42998ed1e4b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479710"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Připojovací řetězce pro Azure SQL Data Warehouse
-K SQL Data Warehouse se můžete připojit pomocí několika různých aplikačních protokolů, jako jsou například, [ADO.NET][ADO.NET], [ODBC][ODBC], [php][php] a [JDBC][JDBC]. Níže jsou uvedeny příklady řetězců připojení pro každý protokol.  Můžete také použít Azure Portal k sestavení připojovacího řetězce.  Pokud chcete vytvořit připojovací řetězec pomocí Azure Portal, přejděte v okně databáze v části *základy* klikněte na *Zobrazit databázové připojovací řetězce*.
+K SQL Data Warehouse se můžete připojit pomocí několika různých aplikačních protokolů, jako jsou například, [ADO.NET][ADO.NET], [ODBC][ODBC], [php][PHP] a [JDBC][JDBC]. Níže jsou uvedeny příklady řetězců připojení pro každý protokol.  Můžete také použít Azure Portal k sestavení připojovacího řetězce.  Pokud chcete vytvořit připojovací řetězec pomocí Azure Portal, přejděte v okně databáze v části *základy* klikněte na *Zobrazit databázové připojovací řetězce*.
 
 ## <a name="sample-adonet-connection-string"></a>Ukázkový připojovací řetězec ADO.NET
 ```csharp

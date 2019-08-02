@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory – Zákaznické případové studie | Dokumentace Microsoftu
-description: Přečtěte si o tom, jak někteří z našich zákazníků bylo pomocí Azure Data Factory.
+title: Azure Data Factory – případové studie zákazníků | Microsoft Docs
+description: Přečtěte si, jak někteří naši zákazníci používali Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,36 +13,36 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 952a8aa2dbfdabfb7f0df198a7453b847c33f7e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c636032766b90af78e7794b3d515b924fa31d6cd
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486970"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596023"
 ---
-# <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory – Zákaznické případové studie
-Data Factory je služba správy založené na cloudu informací, která automatizuje pohyb a transformaci dat. Zákazníci v mnoha oborech pomocí služby Data Factory a dalšími službami Azure a sestavit kanály jejich analýzy řešení jejich obchodních problémů.  Přímo od našich zákazníků, zjistěte, jak a proč používají Data Factory.
+# <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory – případové studie zákazníků
+Data Factory je cloudová služba pro správu informací, která automatizuje přesun a transformaci dat. Zákazníci v mnoha odvětvích používají Data Factory a další služby Azure k vytváření analytických kanálů a řešení jejich obchodních problémů.  Zjistěte přímo od našich zákazníků, jak a proč používají Data Factory.
 
 ## <a name="milliman"></a>Milliman
-[Hlavní společnost Actuarial transformace pojišťovnictví.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20096)
+[Hlavní pojistka – pevná společnost transformuje pojišťovací odvětví](https://customers.microsoft.com/en-us/story/732463-top-actuarial-firm-transforms-the-insurance-industry-w)
 
 ## <a name="rockwell-automation"></a>Rockwell Automation
-[Průmyslová automatizace pevně snižuje náklady až 90 procent s velkými objemy dat řešení](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18356)
+[Průmyslová automatizace firmy snižuje náklady až do 90 procent s řešeními pro velké objemy dat.](https://customers.microsoft.com/en-us/story/726192-industrial-automation-firm-cuts-costs-up-to-90-percent)
 
 ## <a name="ziosk"></a>Ziosk
-[Jaké hru, která má být přejde s tím, že burger? Ziosk možná už znáte.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
+[Jakou hru Chcete s tímto Burger? Ziosk už může znát.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
 
 ## <a name="alaska-airlines"></a>Alaska Airlines
-[Letecká společnost používá tablety, cloudové služby, které nabízejí větší mírou zapojení vydávaných za pochodu Zábava](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
+[Letecká společnost používá tablety, Cloud Services k tomu, aby nabízela poutavou zábavu](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
 
-## <a name="tacoma-public-schools"></a>Tacoma veřejného školy
-[Předpověď student Odpadlík rizika, zvýšení tarify za ukončení cloudech](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20703)
+## <a name="tacoma-public-schools"></a>Veřejné školy Tacoma
+[Předpověď rizik Dropout studentů a zvýšení tarifů v Cloud Analytics](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20703)
 
 ## <a name="real-madrid-fc"></a>Real Madrid FC
-[Real Madrid přibližuje svůj stadion 450 milionům fanoušků z celého světa pomocí cloudu společnosti Microsoft](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20522)
+[Real Madrid přináší do celého světa Microsoft Cloud ventilátory Stadium, a 450 000 000 to s](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20522)
 
 ## <a name="pier-1-imports"></a>Pier 1 Imports
-[Hledání lepší spojení se zákazníky prostřednictvím cloudové Machine Learning](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
+[Hledání lepšího spojení se zákazníky prostřednictvím cloudových Machine Learning](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
 
 ## <a name="microsoft-studio"></a>Microsoft Studio
-[Doručování epickou Xbox prostředí díky analýze stovky miliard herních událostí denně](https://customers.microsoft.com/en-us/story/xboxunlimited)
+[Poskytování námětuch prostředí Xbox díky analýze stovek miliard herních událostí každý den](https://customers.microsoft.com/en-us/story/xboxunlimited)

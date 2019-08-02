@@ -10,10 +10,10 @@ ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: b17004e7821bcac61ca98afdbeaf87644da2a441
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326054"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů v Azure Container Instances
@@ -41,13 +41,13 @@ Tato ukázková skupina kontejnerů:
 
 ## <a name="deployment"></a>Nasazení
 
-Tady jsou dva běžné způsoby, jak nasadit skupinu s více kontejnery: použijte [šablonu][resource-manager template] or a [YAML file][yaml-file]správce prostředků. Šablona Správce prostředků se doporučuje v případě, že při nasazování instancí kontejnerů potřebujete nasadit další prostředky služby Azure (například [soubory Azure sdílející]soubory[Azure]). Vzhledem k výstižnější povaze formátu YAML se doporučuje soubor YAML, pokud nasazení zahrnuje jenom instance kontejnerů.
+Tady jsou dva běžné způsoby, jak nasadit skupinu s více kontejnery: použijte [šablonu správce prostředků][resource-manager template] nebo [soubor YAML][yaml-file]. Když při nasazování instancí kontejnerů potřebujete nasadit další prostředky služby Azure (například [sdílenou složku Azure Files][azure-files]), doporučuje se šablona správce prostředků. Vzhledem k výstižnější povaze formátu YAML se doporučuje soubor YAML, pokud nasazení zahrnuje jenom instance kontejnerů.
 
 Pokud chcete zachovat konfiguraci skupiny kontejnerů, můžete tuto konfiguraci exportovat do souboru YAML pomocí příkazu rozhraní příkazového řádku Azure CLI [AZ Container export][az-container-export]. Export umožňuje ukládat konfigurace skupiny kontejnerů ve správě verzí pro "konfiguraci jako kód". Nebo použijte exportovaný soubor jako výchozí bod při vývoji nové konfigurace v YAML.
 
 ## <a name="resource-allocation"></a>Přidělení prostředků
 
-Azure Container Instances přiděluje prostředky, jako jsou CPU, paměť a volitelně [GPU][gpus] (preview) to a container group by adding the [resource requests][resource-requests] instancí ve skupině. Pokud jako příklad vytvoříte skupinu kontejnerů se dvěma instancemi, každý z nich bude mít každý požadavek 1 procesor, skupina kontejnerů se přidělí 2 procesory.
+Azure Container Instances přiděluje prostředky, jako jsou CPU, paměť a volitelně [GPU][gpus] (Preview), do skupiny kontejnerů přidáním [požadavků na prostředky][resource-requests] instancí ve skupině. Pokud jako příklad vytvoříte skupinu kontejnerů se dvěma instancemi, každý z nich bude mít každý požadavek 1 procesor, skupina kontejnerů se přidělí 2 procesory.
 
 Maximální počet prostředků, které jsou k dispozici pro skupinu kontejnerů, závisí na [oblasti Azure][region-availability] používané pro nasazení.
 
@@ -88,7 +88,7 @@ Příklad použití může zahrnovat:
 * Kontejner aplikace a kontejner monitorování. Kontejner monitorování pravidelně vytváří požadavek na aplikaci, aby bylo zajištěno, že je spuštěná a správně reaguje, a vyvolá výstrahu, pokud není.
 * Front-end kontejner a back-end kontejner. Front-end může sloužit webové aplikaci s back-end, který spouští službu pro načítání dat. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si, jak nasadit skupinu kontejnerů s více kontejnery pomocí šablony Azure Resource Manager:
 

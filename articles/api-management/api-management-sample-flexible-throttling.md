@@ -1,6 +1,6 @@
 ---
 title: Pokročilé omezování požadavků pomocí Azure API Management
-description: Zjistěte, jak vytvořit a použít flexibilní kvóty a omezení zásad ve službě Azure API Management sazby.
+description: Naučte se vytvářet a používat flexibilní zásady kvót a četnosti s využitím Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,24 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 22c3987121e2ab3479274c89c359c679f5f1135e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e7c6fe10467bb68417172dc95fef874d37fc97b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61087119"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696247"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Pokročilé omezování požadavků pomocí Azure API Management
-Možnost omezit příchozí žádosti je klíčovou roli služby Azure API Management. Buď pomocí řízení frekvence požadavků nebo celkový počet požadavků nebo přenesená data, API Management umožňuje poskytovateli rozhraní API pro své rozhraní API umožňuje chránit proti zneužití a vytvořit hodnotu pro různé úrovně rozhraní API produktu.
+Schopnost omezit příchozí požadavky je klíčovou rolí Azure API Management. Díky tomu, že se řídí rychlost požadavků nebo celkový počet přenesených požadavků nebo dat, API Management umožňuje poskytovatelům rozhraní API chránit svá rozhraní API před zneužitím a vytvářet hodnoty pro různé úrovně produktu API.
 
-## <a name="product-based-throttling"></a>Produkt na základě omezení
-Do dnešního dne sazba omezení funkce byly omezené je omezená na konkrétní předplatné produktu, definované na portálu Azure portal. To je užitečné pro zprostředkovatele rozhraní API nastavit omezení pro vývojáře, kteří si zaregistrovali k používání jejich rozhraní API, ale to nepomůže, například v omezení jednotlivých koncovým uživatelům rozhraní API. Je možné, že pro jednotlivé uživatele aplikace pro vývojáře spotřebovat celý kvótu a potom znemožnit ostatním zákazníkům vývojáře k používání aplikace. Několik zákazníků, kteří mohou vytvořit velký objem požadavků může také omezit přístup k občasné uživatelů.
+## <a name="product-based-throttling"></a>Omezování na základě produktů
+Do data jsou možnosti omezování míry omezené, aby byly vymezeny na konkrétní předplatné produktu definované v Azure Portal. To je užitečné pro poskytovatele rozhraní API pro použití omezení u vývojářů, kteří se zaregistrovali, aby používali své rozhraní API, ale nemůžete například při omezování jednotlivých koncových uživatelů rozhraní API. Je možné, že jednotliví uživatelé aplikace vývojáře budou využívat celou kvótu a pak můžou ostatním zákazníkům vývojářům zabránit v používání aplikace. Několik zákazníků, kteří by mohli vygenerovat velký počet požadavků, může také omezit přístup k příležitostnému uživateli.
 
-## <a name="custom-key-based-throttling"></a>Vlastní klíče na základě omezení
-Nové [rate-limit-by-key](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) a [kvóty by-key](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) zásady poskytují pružnější řešení do správy provozu. Tyto nové zásady umožňují definovat výrazy k identifikaci klíče, které se používají ke sledování využití provozu. Způsob, jakým tento postup funguje, je znázorněn nejsnažší s příkladem. 
+## <a name="custom-key-based-throttling"></a>Omezení na základě vlastního klíče
 
-## <a name="ip-address-throttling"></a>Omezení IP adres
-Tyto zásady omezují IP adresu konkrétního klienta jenom 10 volání každou minutu, s celkem 1 000 000 volání a 10 000 kilobajtů šířky pásma za měsíc. 
+> POZNÁMKA: Tato `rate-limit-by-key` zásada není dostupná, když je ve vrstvě spotřeby API Management Azure. 
+
+Nové zásady [sazeb-limit-by-Key](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) a [Quota-by-Key](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) poskytují pružnější řešení řízení provozu. Tyto nové zásady umožňují definovat výrazy k identifikaci klíčů, které se používají ke sledování využití provozu. Způsob, jak to funguje, je nejjednodušší příklad. 
+
+## <a name="ip-address-throttling"></a>Omezování IP adres
+Následující zásady omezují jednu IP adresu klienta na jenom 10 volání každou minutu, celkem 1 000 000 volání a 10 000 kilobajtů šířky pásma měsíčně. 
 
 ```xml
 <rate-limit-by-key  calls="10"
@@ -44,10 +47,10 @@ Tyto zásady omezují IP adresu konkrétního klienta jenom 10 volání každou 
           counter-key="@(context.Request.IpAddress)" />
 ```
 
-Pokud všichni klienti na Internetu použili jedinečnou IP adresu, může to být účinný způsob omezení využití ze strany uživatele. Je ale pravděpodobné, že jedna veřejná IP adresa z důvodu jejich přístup k Internetu přes zařízení NAT. sdílí několik uživatelů. Bez ohledu na to, pro rozhraní API, která povolit neověřený přístup `IpAddress` může být nejlepší možností.
+Pokud všichni klienti na Internetu používali jedinečnou IP adresu, může to být účinný způsob, jakým uživatel omezuje využití. Je však možné, že více uživatelů sdílí jednu veřejnou IP adresu, protože přistupuje k Internetu prostřednictvím zařízení NAT. I když to `IpAddress` může být nejlepší volbou pro rozhraní API, která umožňují neověřený přístup.
 
 ## <a name="user-identity-throttling"></a>Omezení identity uživatele
-Koncový uživatel je ověřen, mohou být generovány omezení klíč založený na informacích, které jednoznačně identifikuje uživatele.
+Pokud je koncový uživatel ověřený, je možné vygenerovat klíč omezování na základě informací, které tento uživatel jednoznačně identifikují.
 
 ```xml
 <rate-limit-by-key calls="10"
@@ -55,13 +58,13 @@ Koncový uživatel je ověřen, mohou být generovány omezení klíč založen�
     counter-key="@(context.Request.Headers.GetValueOrDefault("Authorization","").AsJwt()?.Subject)" />
 ```
 
-Tento příklad ukazuje, jak extrahovat autorizační hlavičky, převeďte ho na `JWT` objektu a použít předmětem token k identifikaci uživatele, který budete používat jako omezení klíč. Pokud je identita uživatele uložen v `JWT` jako jeden další deklarace identity, pak tato hodnota se daly použít v jeho umístění.
+Tento příklad ukazuje, jak extrahovat autorizační hlavičku, převést ji na `JWT` Object a použít předmět tokenu k identifikaci uživatele a použít ho jako klíč omezující rychlost. Pokud je identita uživatele uložená v `JWT` jako jedna z ostatních deklarací identity, pak se tato hodnota dá použít na svém místě.
 
 ## <a name="combined-policies"></a>Kombinované zásady
-Přestože nové zásady omezování poskytují větší kontrolu než existující zásady omezování, je stále hodnota kombinaci obou možností. Omezení šířky pásma pomocí kódu product key předplatného ([omezení četnosti volání podle předplatného](/azure/api-management/api-management-access-restriction-policies#LimitCallRate) a [nastavení kvóty využití podle předplatného](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)) je skvělý způsob, jak povolit zhodnocovat rozhraní API tím podle úrovně využití. Přesnější možnosti řízení moci omezit uživatelem je pouze doplnění a zabraňuje snížení úrovně zkušeností jiného chování jednoho uživatele. 
+I když nové zásady omezování poskytují větší kontrolu než stávající zásady omezování, stále je kombinována i hodnota obou možností. Omezení podle klíče předplatného produktu ([Omezení četnosti volání podle](/azure/api-management/api-management-access-restriction-policies#LimitCallRate) předplatného a [nastavení kvóty využití podle](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)předplatného) je skvělým způsobem, jak povolit Monetizing rozhraní API na základě úrovní využití. Přesnější kontrolu nad tím, jak je možné omezit uživatele, je doplňkové a brání chování jednoho uživatele v důsledku zhoršení prostředí jiného. 
 
-## <a name="client-driven-throttling"></a>Klient řízené omezování
-Při omezování klíč je definován pomocí [výraz zásady](/azure/api-management/api-management-policy-expressions), pak je poskytovatel rozhraní API, který je zvolíte, jak je vymezen omezení. Však vývojář chtít řídit, jak jsou omezení přenosové rychlosti jejich zákazníků. To může lze povolit ve zprostředkovateli rozhraní API zavedením vlastní hlavičky pro vývojáře klientská aplikace mohla komunikovat klíč k rozhraní API.
+## <a name="client-driven-throttling"></a>Omezování na základě klientů
+Pokud je klíč omezení definovaný pomocí [výrazu zásady](/azure/api-management/api-management-policy-expressions), pak se jedná o poskytovatele rozhraní API, který zvolí způsob, jakým je vymezený rozsah omezování. Vývojář ale může chtít určit, jak bude tato rychlost omezovat svým zákazníkům. To může poskytovatel rozhraní API povolit tím, že zavádí vlastní hlavičku, která klientské aplikaci vývojářů umožní komunikovat klíč k rozhraní API.
 
 ```xml
 <rate-limit-by-key calls="100"
@@ -69,11 +72,11 @@ Při omezování klíč je definován pomocí [výraz zásady](/azure/api-manage
           counter-key="@(request.Headers.GetValueOrDefault("Rate-Key",""))"/>
 ```
 
-To umožňuje klientská aplikace pro vývojáře rozhodnout se, jak se mají vytvořit tady klíč. Vývojáři klienta mohou vytvořit své vlastní sazby úrovně přiřazovat uživatelům sady klíčů a otáčením použití klíče.
+Tím umožníte klientským aplikacím vývojáře zvolit, jak chce vytvořit klíč omezující rychlost. Vývojáři klientů mohou vytvořit své vlastní úrovně sazeb přidělením sad klíčů uživatelům a otočením použití klíče.
 
 ## <a name="summary"></a>Souhrn
-Azure API Management poskytuje rychlost a nabídky omezování chránit i přínos pro vaši službu rozhraní API. Nové zásady omezování pomocí vlastních pravidel stanovení rozsahu inicializací umožňují jemnější kontrolu nad tyto zásady tak, aby vaši zákazníci vytvářet aplikace ještě lepší. V příkladech v tomto článku ukazují použití těchto nových zásad výrobní míru omezení klíče s klientských IP adres, identitu uživatele a klient vygeneruje hodnoty. Existují však mnoho částí zprávy, která se dá použít například uživatelský agent, fragmenty cestu adresy URL, velikost zprávy.
+Azure API Management poskytuje rychlost a cenovou omezení pro ochranu a přidání hodnoty do služby API. Nové zásady omezování s vlastními pravidly oboru vám umožní přesnější kontrolu nad těmito zásadami, aby vaši zákazníci mohli vytvářet ještě lepší aplikace. Příklady v tomto článku ukazují použití těchto nových zásad podle sazeb za zpracovatelských procesů s IP adresami klienta, identitou uživatelů a hodnotami generovanými klientem. Existuje však mnoho dalších částí zprávy, které by mohly být použity jako uživatelský agent, fragmenty cesty URL a velikost zprávy.
 
 ## <a name="next-steps"></a>Další postup
-Prosím sdělte nám svůj názor v vlákna služby Disqus pro toto téma. By bylo skvělé informace o dalších potenciálních hodnoty klíče, které byly logickou volbou ve vašich scénářích.
+Sdělte nám prosím svůj názor na toto téma v Disqus vlákně. Měli byste se seznámit s dalšími potenciálními klíčovými hodnotami, které jsou ve vašich scénářích logickou volbou.
 

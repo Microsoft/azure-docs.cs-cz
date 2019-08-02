@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae13de156d502cdd731005d460641ca452448d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d721e750ddb77ba293643ad978cecf4bd2dbac0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108663"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618810"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Práce s vlastními doménami v Proxy aplikací Azure AD
 
@@ -61,7 +61,7 @@ Až budete mít tyto tři požadavky na Připraveno, použijte následující po
 6. Odeslat certifikát PFX a heslo pro certifikát. 
 7. Vyberte **Uložit** uložte provedené změny. 
 8. Přidat [záznam DNS](../../dns/dns-operations-recordsets-portal.md) nový externí adresu URL, který přesměruje na doménou msappproxy.net.
-9. Zkontrolujte, jestli je záznam DNS nakonfigurovaný správně při použití [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) příkaz externí adresa URL je dostupný a msapproxy.net domény zobrazí jako alias.
+9. Zkontrolujte, jestli je záznam DNS správně nakonfigurovaný pomocí příkazu [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) a zjistěte, jestli je vaše externí adresa URL dostupná, a doména msapproxy.NET se zobrazí jako alias.
 
 >[!TIP] 
 >Stačí nahrát jeden certifikát na vlastní doménu. Až nahrajete certifikát, můžete vlastní doménu, při publikování nové aplikace a není nutné provést další konfiguraci, s výjimkou záznamu DNS. 
@@ -73,7 +73,7 @@ Neexistuje žádné omezení na certifikátu podpisu metody. Šifrování ECC (E
 
 Certifikát se zástupným znakem slouží jako zástupný znak odpovídá požadované externí adresu URL.
 
-Nelze použít certifikát vydaný vlastní infrastruktuře (PKI) z důvodu důležité informace o zabezpečení.
+Certifikáty vydané vaší vlastní infrastrukturou veřejných klíčů (PKI) je možné použít, pokud je v klientských zařízeních nainstalovaný řetěz certifikátů. Intune se dá použít k nasazení těchto certifikátů na spravovaná zařízení. U nespravovaných zařízení se tyto certifikáty musí nainstalovat ručně.
 
 ### <a name="changing-the-domain"></a>Změna domény
 V rozevíracím seznamu externí adresu URL pro vaši aplikaci se zobrazí všechny ověřené domény. Chcete-li změnit doménu, jen aktualizujte toto pole pro aplikaci. Pokud chcete doménu není v seznamu [ho přidat jako ověřenou doménou](../fundamentals/add-custom-domain.md). Pokud vyberete doméně, která nebude mít přidružený certifikát dosud, postupujte podle kroků 5 až 7 pro přidání certifikátu. Ujistěte se, že aktualizujte záznam DNS pro přesměrování z nové externí adresy URL. 
@@ -87,7 +87,7 @@ Aktuálně je všechny správy certifikátů prostřednictvím stránky jednotli
 
 ## <a name="next-steps"></a>Další postup
 * [Povolit jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md) pro aplikace publikované pomocí ověřování Azure AD.
-* [Zapnout zásady podmíněného přístupu](application-proxy-integrate-with-sharepoint-server.md) do publikované aplikace.
+* [Povolte podmíněný přístup](application-proxy-integrate-with-sharepoint-server.md) k publikovaným aplikacím.
 * [Přidání vlastního názvu domény do Azure AD](../fundamentals/add-custom-domain.md)
 
 

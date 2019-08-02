@@ -1,6 +1,6 @@
 ---
-title: Podívejte se, kdy konkrétní uživatel bude mít přístup k aplikaci | Dokumentace Microsoftu
-description: Jak zjistit, kdy kriticky důležité uživatel moct získat přístup k aplikaci, kterou jste nakonfigurovali pro zřizování uživatelů pomocí Azure AD
+title: Zjistěte, kdy bude mít konkrétní uživatel přístup k aplikaci | Microsoft Docs
+description: Jak zjistit, kdy uživatel s kritickou důležitosti bude mít přístup k aplikaci, kterou jste nakonfigurovali pro zřizování uživatelů pomocí Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,93 +16,93 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd6b70e7a4542a4cad2ee95fa280ddf8fbe6553
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: bf6190ae35a573ab4b9a37f5cd1f2bd75f06ca46
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310032"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667158"
 ---
-# <a name="check-the-status-of-user-provisioning"></a>Zkontrolujte stav zřizování uživatelů
+# <a name="check-the-status-of-user-provisioning"></a>Ověřit stav zřizování uživatelů
 
-Služba zřizování Azure AD spustí počáteční zřizování cyklus systému zdrojového a cílového systému, za nímž následuje pravidelné přírůstkové cykly. Při konfiguraci zřizování pro aplikace, můžete zkontrolovat aktuální stav služby zřizování a zobrazit, kdy uživatel bude mít přístup k aplikaci.
+Služba zřizování Azure AD spouští počáteční cyklus zřizování proti zdrojovému systému a cílovému systému, následovaným pravidelnými přírůstkovým cyklem. Při konfiguraci zřizování pro aplikaci můžete zjistit aktuální stav služby zřizování a zjistit, kdy uživatel bude moci získat přístup k aplikaci.
 
-## <a name="view-the-provisioning-progress-bar-preview"></a>Zobrazení přidělení přístupových práv průběh panelu (preview)
+## <a name="view-the-provisioning-progress-bar"></a>Zobrazit indikátor průběhu zřizování
 
- Na **zřizování** stránky pro aplikaci, můžete zobrazit stav zřizování služby Azure AD. **Aktuální stav** oblast v dolní části stránky části ukazuje, zda bylo zahájeno zřizování cyklus zřizování uživatelských účtů. Můžete sledovat průběh cyklu, zobrazit, kolik uživatelů a skupin se zřizují a zjistit, kolik rolí vytvářejí.
+ Na stránce **zřizování** pro aplikaci můžete zobrazit stav služby Azure AD Provisioning. V části **aktuální stav** v dolní části stránky se zobrazuje, zda zřizovací cyklus zahájil zřizování uživatelských účtů. Průběh cyklu můžete sledovat, zjistit, kolik uživatelů a skupin se zřídilo, a zjistit, kolik rolí se vytvořilo.
 
-Při první konfiguraci automatického zřizování **aktuální stav** části v dolní části stránky se zobrazí stav počáteční cyklů zřizování. Tato část aktualizuje pokaždé, když běží přírůstkové cyklu. Jsou zobrazeny následující údaje:
-- Typ zřizování cyklu (počáteční nebo přírůstkového), který je spuštěn nebo byl poslední dokončené.
-- A **indikátor průběhu** zobrazuje procento zřizování cyklu, které bylo dokončeno. Procento zobrazuje počet stránek, které jsou zřízené. Všimněte si, že každá stránka může obsahovat víc uživatelů nebo skupin, abyste procento nebude korelovat přímo na počet uživatelů, skupiny nebo role zřízený.
-- A **aktualizovat** tlačítko, které vám umožní zachovat zobrazení aktualizovat.
-- Počet **uživatelé** a **skupiny** zřízené a počet role vytvořené. Během počáteční cyklu **uživatelé** číslo přičítá nahoru o 1 při vytvoření nebo aktualizaci uživatele a při odstranění uživatele odpočítává o 1. Během přírůstkového cyklu, nemají vliv na aktualizace uživatele **uživatelé** počet; mění pouze při vytvoření nebo odstranění uživatelů.
-- A **zobrazit protokoly auditu** odkaz, který otevře auditu Azure AD protokoly pro podrobnosti o všech operacích provozované služby zřizování uživatelů, včetně zřizování stav pro jednotlivé uživatele (najdete v článku [protokoly auditu použití](#use-audit-logs-to-check-a-users-provisioning-status)níže v části).
+Při první konfiguraci automatického zřizování se v části **aktuální stav** v dolní části stránky zobrazuje stav počátečního cyklu zřizování. Tato část se aktualizuje pokaždé, když se spustí přírůstkový cyklus. Zobrazí se následující podrobnosti:
+- Typ cyklu zřizování (počáteční nebo přírůstkové), který aktuálně běží nebo byl naposledy dokončen.
+- Indikátor **průběhu** znázorňující procento dokončeného cyklu zřizování. Procento odráží počet zřízených stránek. Všimněte si, že každá stránka může obsahovat více uživatelů nebo skupin, takže procento přímo nekoreluje s počtem uživatelů, skupin nebo zřízených rolí.
+- Tlačítko pro **obnovení** , které můžete použít k udržení aktualizovaného zobrazení.
+- Počet zřízených **uživatelů** a **skupin** a počet vytvořených rolí. Během počátečního cyklu se číslo **uživatelů** při vytvoření nebo aktualizaci uživatele počítá podle 1 a při odstranění uživatele se vypočítává podle 1. Během přírůstkového cyklu nemají aktualizace uživatelů vliv na počet **uživatelů** ; Tento počet se změní pouze v případě, že jsou uživatelé vytvořeni nebo smazáni.
+- Odkaz **Zobrazit protokoly auditu** , který otevře protokoly auditu Azure AD pro podrobnosti o všech operacích spuštěných službou zřizování uživatelů, včetně stavu zřizování pro jednotlivé uživatele (viz část [použití protokolů auditu](#use-audit-logs-to-check-a-users-provisioning-status) níže).
 
-Po dokončení zřizování cyklu **statistiku k datu** část zobrazuje kumulativní počet uživatelů a skupin, které se zřizují k datu, datum dokončení a doba trvání posledního cyklu. **ID aktivity** jednoznačně identifikuje poslední cyklus zřizování. **ID úlohy** je jedinečný identifikátor pro úlohy zřizování a je specifické pro aplikaci ve vašem tenantovi.
+Po dokončení cyklu zřizování se v části **Statistika k datu** zobrazuje kumulativní počet uživatelů a skupin, které byly zřízeny do data, spolu s datem dokončení a dobou trvání posledního cyklu. **ID aktivity** jednoznačně identifikuje nejnovější cyklus zřizování. **ID úlohy** je jedinečný identifikátor pro úlohu zřizování a je specifický pro aplikaci ve vašem tenantovi.
 
-Probíhá zřizování můžete zobrazit na webu Azure Portal, v **Azure Active Directory &gt; podnikové aplikace &gt; \[název_aplikace\] &gt; zřizování** kartu.
+Průběh zřizování můžete zobrazit v Azure Portal na kartě **Azure Active Directory &gt; podnikové\] aplikace &gt; \[ &gt; název aplikace** .
 
 ![Indikátor průběhu zřizování stránky](media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
-## <a name="use-audit-logs-to-check-a-users-provisioning-status"></a>Protokoly auditu použijte ke kontrole stavu zřizování uživatele
+## <a name="use-audit-logs-to-check-a-users-provisioning-status"></a>Kontrola stavu zřizování uživatele pomocí protokolů auditu
 
-Zobrazíte stav zřizování pro vybraného uživatele najdete v protokolech auditování ve službě Azure AD. Všechny operace spuštění uživatelem služby zřizování se zaznamenávají ve službě Azure AD protokoly auditu. To zahrnuje všechny operace provedené zdrojové a cílové systémy a uživatelská data, která byla čteným nebo zapsaným během každé operace čtení a zápisu.
+Pokud chcete zobrazit stav zřizování pro vybraného uživatele, Projděte si protokoly auditu v Azure AD. Všechny operace spouštěné službou zřizování uživatelů se zaznamenávají v protokolech auditu Azure AD. To zahrnuje všechny operace čtení a zápisu provedené ve zdrojovém a cílovém systému a uživatelská data, která byla během každé operace načtena nebo zapsána.
 
-Zřizování protokolů auditu je možný na webu Azure Portal, **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt; protokoly auditu** kartu. Filtrovat protokoly **zřizování účtů** kategorie zobrazíte jen zřizování události pro tuto aplikaci. Můžete hledat uživatele na základě "Odpovídající ID", která byla konfigurována pro ně mapování atributů. 
+K protokolům auditu zřizování se dá v Azure Portal přihlašovat na kartě  **&gt; Azure Active Directory podnikové aplikace\] &gt; \[ &gt; název aplikace** . Vyfiltrujte protokoly v kategorii **zřizování účtů** , aby se zobrazily jenom události zřizování pro tuto aplikaci. Uživatele můžete vyhledat na základě "odpovídajícího ID", které bylo pro ně nakonfigurováno v mapování atributů. 
 
-Například, pokud jste nakonfigurovali "hlavní název uživatele" nebo "e-mailovou adresu" jako odpovídající atribut na straně služby Azure AD a uživatel není zřizování má hodnotu "audrey@contoso.com", potom hledání v protokolech auditu "audrey@contoso.com" a poté zkontrolovat položky Vrátí.
+Pokud například nakonfigurujete "hlavní název uživatele" nebo "e-mailovou adresu" jako atribut pro porovnání na straně Azure AD a uživatel, který není zřizováním, bude mít hodnotuaudrey@contoso.com"", vyhledejte v protokolech auditu "audrey@contoso.com" a zkontrolujte položky. vrátil.
 
-Zřizování protokoly auditu zaznamenejte všechny operace prováděné zřizovací služba, včetně:
+Protokoly auditu zřizování zaznamenávají všechny operace prováděné službou zřizování, včetně:
 
-* Dotazování služby Azure AD pro přiřazené uživatele, kteří jsou v oboru pro zřizování
-* Dotazování na cílové aplikace existenci těchto uživatelů
-* Porovnávání objektů uživatelů mezi systémem
-* Přidání, aktualizace nebo zakázání uživatelský účet v cílovém systému založené na porovnání
+* Dotazování Azure AD na přiřazené uživatele, kteří jsou v oboru pro zřizování
+* Dotazování cílové aplikace na existenci těchto uživatelů
+* Porovnání objektů uživatele mezi systémem
+* Přidání, aktualizace nebo zakázání uživatelského účtu v cílovém systému na základě porovnání
 
-Další informace o tom, jak načíst protokoly auditu na portálu Azure portal najdete v tématu [zřizování průvodce vytvářením sestav](check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly auditu v Azure Portal, najdete v [průvodci zřizováním sestav](check-status-user-account-provisioning.md).
 
-## <a name="how-long-will-it-take-to-provision-users"></a>Jak dlouho bude trvat nezajistíte zřízení uživatelů?
-Používáte automatické zřizování uživatelů pomocí aplikace Azure AD automaticky zřídí a aktualizuje uživatelské účty v aplikaci založenou na věci, jako je [přiřazení uživatelů a skupin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) při pravidelném plánovaném časový interval, obvykle každých 10 minut.
+## <a name="how-long-will-it-take-to-provision-users"></a>Jak dlouho bude trvat zřizování uživatelů?
+Při použití automatického zřizování uživatelů s aplikací Azure AD automaticky zřídí a aktualizuje uživatelské účty v aplikaci na základě toho, co je třeba [přiřazení uživatelů a skupin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) , v pravidelných plánovaných časových intervalech, obvykle každých 10 minut.
 
-Čas potřebný pro daného uživatele, které se mají zřídit závisí hlavně na tom, jestli vaše zřizování úloha běží počáteční synchronizace nebo přírůstková synchronizace.
+Čas potřebný k zřízení daného uživatele závisí hlavně na tom, jestli vaše úloha zřizování spouští počáteční synchronizaci nebo přírůstkovou synchronizaci.
 
-- Pro **počáteční synchronizace**, čas úlohy závisí na mnoha faktorech, včetně počtu uživatelů a skupin v oboru pro zřizování a celkový počet uživatelů a skupin ve zdrojovém systému. První synchronizace mezi službami Azure AD a aplikace může trvat 20 minut i několik hodin, v závislosti na velikosti adresáře služby Azure AD a počet uživatelů v oboru pro zřizování. Úplný seznam faktorů, které ovlivňují výkon počáteční replikace jsou shrnuté později v této části.
+- Pro **počáteční synchronizaci**je doba úlohy závislá na mnoha faktorech, včetně počtu uživatelů a skupin v oboru pro zřizování a celkového počtu uživatelů a skupin ve zdrojovém systému. První synchronizace mezi službou Azure AD a aplikací může trvat až 20 minut až několik hodin, a to v závislosti na velikosti adresáře služby Azure AD a počtu uživatelů v oboru pro zřizování. Podrobný seznam faktorů, které ovlivňují výkon počáteční synchronizace, jsou shrnuty dále v této části.
 
-- Pro **přírůstkové synchronizace** po počáteční synchronizaci časů úloh jsou obvykle rychlejší (například do 10 minut), jako zřizovací služba ukládá vodoznaky, představující stav obou systémů po počáteční synchronizaci, zvýšení výkonu z následných se synchronizuje. Čas úlohy závisí na počtu změn v tento cyklus zřizování. Pokud méně než 5 000 uživatelů nebo změny členství ve skupině, můžete dokončit úlohy v rámci jednoho cyklu přírůstkové zřizování. 
+- V případě přírůstkových synchronizací po počáteční synchronizaci je doba úlohy obvykle rychlejší (například během 10 minut), protože služba zřizování ukládá meze, které reprezentují stav obou systémů po počáteční synchronizaci a zvyšuje výkon následných synchronizací. Čas úlohy závisí na počtu změn zjištěných v rámci tohoto cyklu zřizování. Pokud je k dispozici méně než 5 000 změn členství uživatele nebo skupiny, může být úloha dokončena v rámci jednoho přírůstkového zřizovacího cyklu. 
 
-Následující tabulka shrnuje časů synchronizace pro běžné scénáře zřizování. V těchto scénářích zdrojového systému je Azure AD a cílovém systému je aplikace SaaS. Doba synchronizace jsou odvozeny z statistické analýzy úloh synchronizace pro aplikace SaaS, ServiceNow, síti na pracovišti, G Suite a Salesforce.
+Následující tabulka shrnuje časy synchronizace pro běžné scénáře zřizování. V těchto scénářích je zdrojový systém Azure AD a cílový systém je aplikace SaaS. Časy synchronizace se odvozují ze statistické analýzy úloh synchronizace pro aplikace SaaS ServiceNow, pracoviště, Salesforce a G Suite.
 
 
-| Konfigurace oboru | Uživatelé, skupiny a členové v oboru | Čas počáteční synchronizace | Přírůstková synchronizace |
+| Konfigurace oboru | Uživatelé, skupiny a členové v oboru | Čas prvotní synchronizace | Čas přírůstkové synchronizace |
 | -------- | -------- | -------- | -------- |
-| Přiřazení uživatelé a skupiny pouze synchronizovat |  < 1,000 |  < 30 minut | < 30 minut |
-| Přiřazení uživatelé a skupiny pouze synchronizovat |  1,000 - 10,000 | 142 - minut 708 | < 30 minut |
-| Přiřazení uživatelé a skupiny pouze synchronizovat |   10,000 - 100,000 | 1,170 - 2,340 minut | < 30 minut |
-| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  < 1,000 | < 30 minut  | < 30 minut |
-| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  1,000 - 10,000 | < 30-120 minut | < 30 minut |
-| Synchronizovat všechny uživatele a skupiny ve službě Azure AD |  10,000 - 100,000  | 713 - 1,425 minut | < 30 minut |
-| Synchronizovat všechny uživatele ve službě Azure AD|  < 1,000  | < 30 minut | < 30 minut |
-| Synchronizovat všechny uživatele ve službě Azure AD | 1,000 - 10,000  | 43 - 86 minut | < 30 minut |
+| Synchronizovat jenom přiřazené uživatele a skupiny |  < 1 000 |  < 30 minut | < 30 minut |
+| Synchronizovat jenom přiřazené uživatele a skupiny |  1,000 - 10,000 | 142 – 708 minut | < 30 minut |
+| Synchronizovat jenom přiřazené uživatele a skupiny |   10 000 – 100 000 | 1 170 – 2 340 minut | < 30 minut |
+| Synchronizovat všechny uživatele a skupiny v Azure AD |  < 1 000 | < 30 minut  | < 30 minut |
+| Synchronizovat všechny uživatele a skupiny v Azure AD |  1,000 - 10,000 | < 30-120 minut | < 30 minut |
+| Synchronizovat všechny uživatele a skupiny v Azure AD |  10 000 – 100 000  | 713 – 1 425 minut | < 30 minut |
+| Synchronizovat všechny uživatele v Azure AD|  < 1 000  | < 30 minut | < 30 minut |
+| Synchronizovat všechny uživatele v Azure AD | 1,000 - 10,000  | 43 – 86 minut | < 30 minut |
 
 
-Pro konfiguraci **synchronizace přiřazené uživatele a skupiny pouze**, těchto vzorců můžete použít k určení přibližné minimální a maximální očekávané **počáteční synchronizace** časy:
+U přiřazených **uživatelů a skupin konfigurace synchronizace**konfigurací můžete pomocí následujících vzorců určit přibližné minimální a maximální doby **počáteční synchronizace** :
 
     Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
     Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
     
-Seznam faktorů, které ovlivňují čas potřebný k dokončení **počáteční synchronizace**:
+Souhrn faktorů, které mají vliv na dobu potřebnou k dokončení **počáteční synchronizace**:
 
 - Celkový počet uživatelů a skupin v oboru pro zřizování.
 
-- Celkový počet uživatelů, skupin a členů skupiny, které jsou k dispozici ve zdrojovém systému (Azure AD).
+- Celkový počet uživatelů, skupin a členů skupiny, kteří jsou přítomni ve zdrojovém systému (Azure AD).
 
-- Určuje, zda uživatelé v oboru pro zřizování budou odpovídat existujícím uživatelům v cílové aplikaci nebo nutné vytvořit poprvé. Úlohy synchronizace pro které všichni uživatelé jsou vytvořeni poprvé trvat přibližně *dvakrát tak dlouho,* tak, jak synchronizovat úlohy, pro které všichni uživatelé budou odpovídat existujícím uživatelům.
+- Určuje, jestli uživatelé v oboru pro zřizování odpovídají existujícím uživatelům v cílové aplikaci, nebo je potřeba je vytvořit poprvé. Úlohy synchronizace, pro které jsou všichni uživatelé vytvořeni poprvé, trvají přibližně *dvakrát, pokud* úlohy synchronizace, pro které se všichni uživatelé shodují s existujícími uživateli.
 
-- Počet chyb v [protokoly auditu](check-status-user-account-provisioning.md). Pokud je mnoho chyb a služby zřizování přešel do stavu karantény je pomalejší výkon.    
+- Počet chyb v protokolech [auditu](check-status-user-account-provisioning.md). Výkon je pomalejší, pokud dojde k mnoha chybám a služba zřizování přešla do karantény.    
 
-- Požádat o šířku pásma a omezení šířky pásma implementovány cílovým systémem. Některé cílové systémy implementovat omezení frekvence požadavků a omezení, které můžou ovlivnit výkon během operací velký synchronizace. Aplikace, která přijímá příliš mnoho požadavků příliš rychle za těchto podmínek může zpomalit jeho míry odezvy nebo uzavřením připojení. Kvůli zvýšení výkonu se konektoru je potřeba upravit odesláním žádosti o aplikace rychleji, než dokáže zpracovat aplikace. Zřizování konektory vytvořené microsoftem provést tuto úpravu. 
+- Omezení rychlosti požadavků a omezování implementované cílovým systémem. Některé cílové systémy implementují omezení přenosů požadavků a omezování, což může mít vliv na výkon při rozsáhlých operacích synchronizace. V rámci těchto podmínek aplikace, která přijímá příliš mnoho požadavků, může být příliš rychlá a může zpomalit rychlost odezvy nebo ukončit připojení. Aby bylo možné zvýšit výkon, musí konektor upravit tím, že neposílá požadavky aplikace rychleji, než je aplikace dokáže zpracovat. Tuto úpravu vytváří konektory zřízené Microsoftem. 
 
-- Počet a velikost přiřazených skupin. Přiřazené skupiny synchronizace trvá déle než synchronizaci uživatelů. Počet a velikost přiřazených skupin dopad na výkon. Pokud má aplikace [mapování povolena pro skupinu synchronizace objektů](customize-application-attributes.md#editing-group-attribute-mappings)vlastnosti skupiny jako například názvy skupin a členství ve skupinách se synchronizují kromě uživatelů. Tyto další synchronizace bude trvat déle než pouze synchronizaci uživatelských objektů.
+- Počet a velikost přiřazených skupin. Synchronizace přiřazených skupin trvá déle než synchronizace uživatelů. Počet i velikost přiřazených skupin mají vliv na výkon. Pokud má aplikace [povolená mapování pro synchronizaci objektů skupin](customize-application-attributes.md#editing-group-attribute-mappings), jsou kromě uživatelů synchronizovány i vlastnosti skupiny, jako jsou názvy skupin a členství. Tyto další synchronizace budou trvat déle než jenom synchronizace uživatelských objektů.
 
 ## <a name="next-steps"></a>Další postup
 [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)

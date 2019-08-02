@@ -1,6 +1,6 @@
 ---
-title: Základní zásady ochrany koncového uživatele (preview) – Azure Active Directory
-description: Zásady podmíněného přístupu tak, aby vyžadovala vícefaktorové ověřování pro uživatele
+title: Zásada standardních hodnot – Ochrana koncového uživatele (Preview) – Azure Active Directory
+description: Zásada podmíněného přístupu, která vyžaduje vícefaktorové ověřování pro uživatele
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,69 +11,69 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2644e0e35139ac470b89f6af1b95cf510f60a0a
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: afcd9c9d3191caeabe182f499b5fd80cd8e1d8dd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561005"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608149"
 ---
-# <a name="baseline-policy-end-user-protection-preview"></a>Základní zásady: Ochrana koncového uživatele (preview)
+# <a name="baseline-policy-end-user-protection-preview"></a>Základní zásady: Ochrana koncového uživatele (Preview)
 
-Často Představujeme myslíte, že účty správců jsou to jediné účty, které potřebují ochranu pomocí služby Multi-Factor authentication (MFA). Správci mají široký přístup k citlivým informacím a můžete provádět změny nastavení na úrovni předplatného. Nesprávnými účastníky však mají tendenci cíl koncovým uživatelům. Po získání přístupu, tyto nesprávnými účastníky můžete požádat o přístup k privilegovaným informace jménem původního vlastníka účtu nebo stáhnout celý adresář k provedení útoku phishing v celé organizaci. Jeden běžnou metodu ke zlepšení ochrany pro všechny uživatele je tak, aby vyžadovala silnější formu ověření účtu, jako je například vícefaktorové ověřování (MFA).
+Doporučujeme, abyste si myslíte, že účty správců jsou jedinými účty, které potřebují ochranu pomocí vícefaktorového ověřování (MFA). Správci mají rozsáhlý přístup k citlivým informacím a můžou provádět změny nastavení pro celé předplatné. Chybné objekty actor ale mají za cíl koncové uživatele. Po získání přístupu můžou tyto vadné aktéry požádat o přístup k privilegovaným informacím jménem původního držitele účtu nebo stáhnout celý adresář, aby se v celé organizaci prováděl útok na útok phishing. Jednou z běžných metod, jak zlepšit ochranu pro všechny uživatele, je vyžadovat silnější formu ověření účtu, jako je vícefaktorové ověřování (MFA).
 
-K dosažení přiměřené rovnováhu mezi zabezpečení a použitelnost, by neměla uživatelé vyzváni pokaždé, když jeden přihlašuje. Požadavky na ověření, které odpovídají chování běžného uživatele, jako je například přihlášení ze stejného zařízení ze stejného umístění, mají nízké riziko ohrožení zabezpečení. Pouze přihlášení, která se považují za riziková a zobrazit vlastnosti objektu actor chybný měla zobrazit výzva s MFA výzvy.
+Za účelem dosažení přiměřené rovnováhy zabezpečení a použitelnosti by se uživatelům při každém přihlášení neměli zobrazovat výzva. Požadavky na ověření, které odráží normální chování uživatelů, například přihlášení ze stejného zařízení ze stejného umístění, mají nízkou pravděpodobnost napadení. V případě problémů s MFA by se měla zobrazit jenom přihlášení, která se považují za rizikové a ukazují charakteristiky vadného objektu actor.
 
-Ochrana koncového uživatele je MFA na základě rizik [základní zásady](concept-baseline-protection.md) všichni uživatelé v adresáři, včetně všech rolí správce, které chrání. Když se tyto zásady vyžaduje všichni uživatelé k registraci pro vícefaktorové ověřování pomocí ověřovací aplikace. Uživatelé můžou ignorovat řádku registrace MFA za 14 dní, po jejichž uplynutí bude se mu zablokovat přihlášení, dokud se registrace pro vícefaktorové ověřování. Po registraci pro vícefaktorové ověřování, budou uživatelé vyzváni pro vícefaktorové ověřování pouze během rizikové pokusů o přihlášení. Ohrožení uživatelských účtů jsou blokovány, dokud resetovat své heslo a zamítnutou rizikové události.
+Ochrana koncového uživatele je [zásada standardních hodnot](concept-baseline-protection.md) MFA založená na riziku, která chrání všechny uživatele v adresáři, včetně všech rolí správce. Když se tyto zásady povolí, vyžaduje se, aby se všichni uživatelé zaregistrovali pro MFA pomocí ověřovací aplikace. Uživatelé můžou ignorovat výzvu k registraci MFA po dobu 14 dnů, po které se budou zablokovat přihlášení, dokud se neregistrují pro MFA. Po registraci pro MFA se uživatelům zobrazí výzva k MFA jenom během pokusů o rizikové přihlašování. Ohrožení uživatelských účtů je zablokované, dokud se neobnoví jejich heslo a neodstranily se rizikové události.
 
 > [!NOTE]
-> Tyto zásady platí pro všechny uživatele včetně účtů typu Host a vyhodnotí při přihlašování do všech aplikací.
+> Tato zásada platí pro všechny uživatele včetně účtů hostů a při přihlašování ke všem aplikacím se vyhodnotí.
 
-## <a name="recovering-compromised-accounts"></a>Obnovení dojde k ohrožení bezpečnosti účty
+## <a name="recovering-compromised-accounts"></a>Obnovování ohrožených účtů
 
-K ochraně našich zákazníků, vyhledá uniklými přihlašovacími údaji služby páry veřejně dostupné uživatelského jména a hesla. Pokud se shodují, jedním z našich uživatelů, pomáháme zabezpečit tento účet okamžitě. Uživatelé s uniklými přihlašovacími údaji potvrzují, dojde k ohrožení bezpečnosti. Tyto uživatele bude blokovat přihlásit, dokud resetovat své heslo.
+Abychom mohli chránit naše zákazníky, služba nevrácených přihlašovacích údajů od Microsoftu vyhledá veřejně dostupné páry uživatelského jména a hesla. Pokud se shodují s jedním z našich uživatelů, pomůžeme tento účet hned zabezpečit. Uživatelé označení jako nevrácené přihlašovací údaje budou ověřeni z hlediska zabezpečení. Těmto uživatelům se zablokuje přihlášení, dokud se neobnoví jejich heslo.
 
-Uživatelé přiřazenou licenci Azure AD Premium můžete obnovit přístup prostřednictvím samoobslužného resetování hesla (SSPR), pokud je zapnutá možnost v jejich adresáře. Uživatelé bez licence premium, které budou blokovány musí kontaktovat správce provést obnovení ruční hesla a zavřít uživatel označený příznakem rizikové události.
+Uživatelům, kteří mají přiřazenou licenci Azure AD Premium, můžete obnovit přístup prostřednictvím samoobslužného resetování hesla (SSPR), pokud je funkce ve svém adresáři povolená. Uživatelé bez licence Premium, která se zablokuje, musí požádat správce, aby provedl ruční resetování hesla, a odvolat událost rizika uživatele označená příznakem.
 
-### <a name="steps-to-unblock-a-user"></a>Postup pro odblokování uživatele
+### <a name="steps-to-unblock-a-user"></a>Postup odblokování uživatele
 
-Potvrďte, že uživatel je blokován zásadami zkoumáním protokolů přihlášení uživatele.
+Kontrolou přihlašovacích protokolů uživatele zkontrolujte, jestli je uživatel zablokovaný zásadami.
 
-1. Správce musí přihlásit k **webu Azure portal** a přejděte do **Azure Active Directory** > **uživatelé** > klikněte na jméno uživatele a přejděte k přihlášení.
-1. K zahájení resetování hesla na blokovaný uživatel, musí správce přejít na **Azure Active Directory** > **uživatelé označení příznakem rizika**
-1. Kliknutím na uživatele, jehož účet je zablokovaný, chcete-li zobrazit informace o uživatele nedávných aktivit přihlašování.
-1. Klikněte na tlačítko resetovat heslo pro přiřazení dočasné heslo, které se musí změnit při dalším přihlášení.
-1. Klikněte na tlačítko Zavřít všechny události resetovat skóre rizika uživatele.
+1. Správce se musí přihlásit k **Azure Portal** a přejít **Azure Active Directory** > **uživatelům** > klikněte na jméno uživatele a přejděte k části přihlášení.
+1. Aby bylo možné iniciovat resetování hesla u blokovaného uživatele, musí správce přejít na **Azure Active Directory** > **uživatelů označených příznakem rizika** .
+1. Klikněte na uživatele, jehož účet je blokovaný, abyste si zobrazili informace o nedávných aktivitách přihlášení uživatele.
+1. Kliknutím na resetovat heslo přiřadíte dočasné heslo, které se musí změnit při dalším přihlášení.
+1. Kliknutím na tlačítko Zavřít všechny události resetujete skóre rizika uživatele.
 
-Uživatel teď může přihlásit, obnovit své heslo a přístup k aplikaci.
+Uživatel se teď může přihlásit, resetovat heslo a získat přístup k aplikaci.
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
-Vzhledem k tomu, **ochrany koncového uživatele** zásady platí pro všechny uživatele ve vašem adresáři, třeba mít na paměti, které jsou potřeba provést zajistit hladký průběh nasazení. Mezi tyto aspekty patří identifikace uživatelů a zásad služby Azure AD, který nelze nebo by neměly provádět vícefaktorové ověřování, jakož i aplikacím a klientům ve své organizaci, které nepodporují moderní ověřování.
+Vzhledem k tomu, že zásady **ochrany koncového uživatele** platí pro všechny uživatele ve vašem adresáři, je nutné provést několik důležitých informací, aby bylo zajištěno hladké nasazení. Mezi tyto požadavky patří určení uživatelů a zásad služeb ve službě Azure AD, které nemůžou nebo by neměly provádět MFA, a také aplikace a klienty používané ve vaší organizaci, které nepodporují moderní ověřování.
 
 ### <a name="legacy-protocols"></a>Starší protokoly
 
-Poštovní klienti k podání žádostí o ověření používají starší verze ověřovací protokoly (IMAP, SMTP, POP3, atd.). Tyto protokoly nepodporuje vícefaktorové ověřování.  Většina ohrožení účet viděli microsoftem jsou způsobeny nesprávnými účastníky provádění útoky na starších verzí protokolů pokus o obejití vícefaktorové ověřování. Zajistíte, že se vyžaduje vícefaktorové ověřování při přihlašování účtu a nesprávnými účastníky nedokáží obejít MFA, tato zásada blokuje provedené účty správců od starších verzí protokolů všechny požadavky na ověření.
+Starší verze ověřovacích protokolů (IMAP, SMTP, POP3 atd.) jsou používány e-mailové klienty k provádění požadavků na ověření. Tyto protokoly vícefaktorové ověřování nepodporují.  Většina kompromisů, které společnost Microsoft uvidí, je způsobena nesprávnými aktéry, které provádějí útoky proti starším protokolům, které se pokoušejí obejít MFA. Aby bylo zajištěno, že při přihlašování k účtu dojde k ověřování MFA a špatné objekty actor nebudou moci obejít MFA, tato zásada blokuje všechny požadavky na ověření provedené pro účty správců ze starších protokolů.
 
 > [!WARNING]
-> Předtím, než tuto zásadu povolit, ujistěte se, že vaši uživatelé nepoužívají starší ověřovací protokoly. Přečtěte si článek [jak: Blok starší verze ověřování do služby Azure AD s podmíněným přístupem](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) Další informace.
+> Než povolíte tuto zásadu, zajistěte, aby vaši uživatelé nepoužívali starší protokoly pro ověřování. Informace najdete v [článku Postupy: Zablokovat starší ověřování do Azure AD s](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) podmíněným přístupem pro další informace.
 
-## <a name="enable-the-baseline-policy"></a>Povolit zásady směrný plán
+## <a name="enable-the-baseline-policy"></a>Povolit základní zásady
 
-Zásady **směrný plán zásad: Ochrana koncového uživatele (preview)** vybavená předem nakonfigurovaným a se zobrazí v horní části, když přejdete do okna podmíněného přístupu na webu Azure portal.
+Zásady standardních **hodnot zásad: Ochrana koncového uživatele (Preview** ) je předem nakonfigurovaná a při přechodu do okna podmíněný přístup v Azure Portal se zobrazí v horní části.
 
-Tuto zásadu povolit a chránit uživatele:
+Chcete-li povolit tuto zásadu a chránit uživatele:
 
-1. Přihlaste se k **webu Azure portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Přejděte do **Azure Active Directory** > **podmíněného přístupu**.
-1. V seznamu zásad, vyberte **směrný plán zásad: Ochrana koncového uživatele (preview)** .
-1. Nastavte **povolit zásady** k **použít zásady okamžitě**.
-1. Klikněte na tlačítko **Uložit**.
+1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přejděte na **Azure Active Directory** > **podmíněný přístup**.
+1. V seznamu zásad vyberte **základní zásady: Ochrana koncového uživatele (Preview**).
+1. Nastavte **Povolit zásadu** pro **okamžité použití zásad**.
+1. Klikněte na **Uložit**.
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace naleznete v tématu:
 
-* [Zásady ochrany směrného plánu podmíněného přístupu](concept-baseline-protection.md)
-* [Zabezpečení vaší infrastruktury identit v pěti krocích](../../security/azure-ad-secure-steps.md)
+* [Zásady ochrany základní úrovně přístupu pro podmíněný přístup](concept-baseline-protection.md)
+* [Pět kroků pro zabezpečení infrastruktury identity](../../security/fundamentals/steps-secure-identity.md)
 * [Co je podmíněný přístup v Azure Active Directory?](overview.md)

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 6b9ebb2f7ef46fd2900d036f178201863ecbc8d4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: d26d1ca1ebceed481604d08d12cd9d5010495ab6
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358816"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618430"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -57,7 +57,7 @@ Modely strojového učení jsou zaregistrované ve vašem pracovním prostoru Az
 + **Použití rozhraní příkazového řádku**
 
   ```azurecli-interactive
-  az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment
+  az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid
   ```
 
   > [!TIP]
@@ -290,7 +290,7 @@ Informace o použití vlastní image Docker s odvozenou konfigurací najdete v t
 
 ### <a name="cli-example-of-inferenceconfig"></a>Příklad rozhraní příkazového řádku InferenceConfig
 
-[!INCLUDE [inferenceconfig](../../../includes/machine-learning-service-inference-config.md)]
+[!INCLUDE [inference config](../../../includes/machine-learning-service-inference-config.md)]
 
 Následující příkaz ukazuje, jak nasadit model pomocí rozhraní příkazového řádku:
 
@@ -308,7 +308,7 @@ Informace o použití vlastní image Docker s odvozenou konfigurací najdete v t
 
 ### <a name="3-define-your-deployment-configuration"></a>3. Definování konfigurace nasazení
 
-Před nasazením musíte definovat konfiguraci nasazení. Konfigurace nasazení je specifická pro výpočetní cíl, který bude hostitelem webové služby. Například při nasazování místně musíte zadat port, kam služba přijímá požadavky.
+Před nasazením musíte definovat konfiguraci nasazení. __Konfigurace nasazení je specifická pro výpočetní cíl, který bude hostitelem webové služby__. Například při nasazování místně musíte zadat port, kam služba přijímá požadavky.
 
 Může být také potřeba vytvořit výpočetní prostředek. Například pokud ještě nemáte službu Azure Kubernetes přidruženou k vašemu pracovnímu prostoru.
 
@@ -320,187 +320,49 @@ Následující tabulka uvádí příklad vytvoření konfigurace nasazení pro k
 | Instance kontejneru Azure | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
-Následující části ukazují, jak vytvořit konfiguraci nasazení a pak ji použít k nasazení webové služby.
-
-### <a name="optional-profile-your-model"></a>Volitelné: Profilace modelu
-
-Před nasazením modelu jako služby ho můžete profilovat a určit optimální požadavky na procesor a paměť pomocí sady SDK nebo rozhraní příkazového řádku.  Výsledky profilování modelu jsou generovány jako `Run` objekt. Úplné podrobnosti [schématu profilu modelu najdete v dokumentaci k rozhraní API](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py) .
-
-Další informace o [tom, jak profilovat model pomocí sady SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-).
-
-K profilaci modelu pomocí rozhraní příkazového řádku použijte příkaz [AZ ml model Profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
+> [!TIP]
+> Před nasazením modelu jako služby ho můžete chtít profilovat a zjistit optimální požadavky na procesor a paměť. Model můžete profilovat pomocí sady SDK nebo rozhraní příkazového řádku. Další informace najdete v tématu [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) a [AZ ml model model](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) reference.
+>
+> Výsledky profilování modelu jsou generovány jako `Run` objekt. Další informace najdete v referenčních informacích ke třídě [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py) .
 
 ## <a name="deploy-to-target"></a>Nasadit do cíle
+
+Nasazení používá odvozenou konfiguraci nasazení konfigurace k nasazení modelů. Proces nasazení je podobný bez ohledu na cíl výpočtů. Nasazení na AKS se mírně liší, protože musíte poskytnout odkaz na cluster AKS.
 
 ### <a id="local"></a>Místní nasazení
 
 K místnímu nasazení musíte mít v místním počítači **nainstalovaný Docker** .
 
-+ **Používání sady SDK**
+#### <a name="using-the-sdk"></a>Použití sady SDK
 
-  ```python
-  deployment_config = LocalWebservice.deploy_configuration(port=8890)
-  service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
-  service.wait_for_deployment(show_output = True)
-  print(service.state)
-  ```
+```python
+deployment_config = LocalWebservice.deploy_configuration(port=8890)
+service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+service.wait_for_deployment(show_output = True)
+print(service.state)
+```
 
-+ **Použití rozhraní příkazového řádku**
+Další informace naleznete v referenční dokumentaci pro [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py), [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-)a [WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py).
 
-    Chcete-li nasadit pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `mymodel:1` názvem a verzí registrovaného modelu:
+#### <a name="using-the-cli"></a>Použití rozhraní příkazového řádku
 
-  ```azurecli-interactive
-  az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
-  ```
+Chcete-li nasadit pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `mymodel:1` názvem a verzí registrovaného modelu:
 
-    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-local-deploy-config.md)]
+```azurecli-interactive
+az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
+```
+
+[!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]
+
+Další informace najdete v referenčních informacích k [nasazení modelu AZ ml model](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
 
 ### <a id="aci"></a>Azure Container Instances (DEVTEST)
 
-Použití Azure Container Instances pro nasazení modelů jako webové služby, pokud jeden nebo více z následujících podmínek je splněných:
-- Potřebujete k rychlému nasazení a ověření modelu.
-- Testování modelu, který je ve vývoji. 
-
-Pokud chcete zobrazit dostupnost kvót a oblastí pro ACI, přečtěte si článek [kvóty a dostupnost oblasti pro Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) .
-
-+ **Používání sady SDK**
-
-  ```python
-  deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
-  service = Model.deploy(ws, "aciservice", [model], inference_config, deployment_config)
-  service.wait_for_deployment(show_output = True)
-  print(service.state)
-  ```
-
-+ **Použití rozhraní příkazového řádku**
-
-    Chcete-li nasadit pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `mymodel:1` názvem a verzí registrovaného modelu. Nahraďte `myservice` názvem, který tuto službu poskytne:
-
-    ```azurecli-interactive
-    az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
-    ```
-
-    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aci-deploy-config.md)]
-
-+ **Použití VS Code**
-
-  K [nasazení modelů pomocí vs Code](how-to-vscode-tools.md#deploy-and-manage-models) nemusíte vytvářet kontejner ACI k testování předem, protože kontejnery ACI se vytvářejí za běhu.
-
-Další informace najdete v tématu v referenční dokumentaci [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) a [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) třídy.
+Viz [nasazení na Azure Container Instances](how-to-deploy-azure-container-instance.md).
 
 ### <a id="aks"></a>Služba Azure Kubernetes (DEVTEST & produkce)
 
-Můžete použít existující cluster AKS, nebo vytvořte novou pomocí sady SDK Azure Machine Learning, rozhraní příkazového řádku nebo na webu Azure portal.
-
-<a id="deploy-aks"></a>
-
-Pokud již máte připojený cluster AKS, můžete do něj nasadit. Pokud jste nevytvořili nebo nepřipojili cluster AKS, postupujte podle kroků v části <a href="#create-attach-aks">Vytvoření nového clusteru AKS</a>.
-
-+ **Používání sady SDK**
-
-  ```python
-  aks_target = AksCompute(ws,"myaks")
-  # If deploying to a cluster configured for dev/test, ensure that it was created with enough
-  # cores and memory to handle this deployment configuration. Note that memory is also used by
-  # things such as dependencies and AML components.
-  deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
-  service = Model.deploy(ws, "aksservice", [model], inference_config, deployment_config, aks_target)
-  service.wait_for_deployment(show_output = True)
-  print(service.state)
-  print(service.get_logs())
-  ```
-
-+ **Použití rozhraní příkazového řádku**
-
-    Chcete-li nasadit pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `myaks` názvem výpočetního cíle AKS. Nahraďte `mymodel:1` názvem a verzí registrovaného modelu. Nahraďte `myservice` názvem, který tuto službu poskytne:
-
-  ```azurecli-interactive
-  az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
-  ```
-
-    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aks-deploy-config.md)]
-
-+ **Použití VS Code**
-
-  Můžete ho také [nasadit do AKS prostřednictvím rozšíření vs Code](how-to-vscode-tools.md#deploy-and-manage-models), ale budete muset nakonfigurovat clustery AKS předem.
-
-Další informace o nasazení AKS a automatickém škálování najdete v referenčních informacích k [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice) .
-
-#### Vytvoření nového clusteru AKS<a id="create-attach-aks"></a>
-**Časový odhad**: Přibližně 20 minut.
-
-Vytvoření nebo připojení clusteru AKS je jednorázový proces pro váš pracovní prostor. Tento cluster pro více nasazení můžete znovu použít. Pokud odstraníte cluster nebo skupinu prostředků, která ho obsahuje, musíte při příštím nasazení vytvořit nový cluster. K vašemu pracovnímu prostoru můžete připojit více clusterů AKS.
-
-Pokud chcete vytvořit cluster AKS pro vývoj, ověřování a testování, nastavte `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` při použití. [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) Cluster vytvořený pomocí tohoto nastavení bude mít jenom jeden uzel.
-
-> [!IMPORTANT]
-> Nastavení `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` vytvoří cluster AKS, který není vhodný pro zpracování produkčního provozu. Časy odvození můžou být delší než u clusteru vytvořeného pro produkční prostředí. Odolnost proti chybám není pro clustery pro vývoj a testování zaručená.
->
-> Doporučujeme, aby clustery vytvořené pro vývoj a testování používaly alespoň dva virtuální procesory.
-
-Následující příklad ukazuje, jak vytvořit nový cluster služby Azure Kubernetes:
-
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
-
-# Use the default configuration (you can also provide parameters to customize this).
-# For example, to create a dev/test cluster, use:
-# prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksComputee.ClusterPurpose.DEV_TEST)
-prov_config = AksCompute.provisioning_configuration()
-
-aks_name = 'myaks'
-# Create the cluster
-aks_target = ComputeTarget.create(workspace=ws,
-                                  name=aks_name,
-                                  provisioning_configuration=prov_config)
-
-# Wait for the create process to complete
-aks_target.wait_for_completion(show_output=True)
-```
-
-Další informace o vytvoření clusteru AKS mimo sadu SDK Azure Machine Learning najdete v následujících článcích:
-* [Vytvoření clusteru AKS](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
-* [Vytvoření clusteru AKS (portál)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
-
-Další informace o `cluster_purpose` parametru najdete v referenčních informacích k [AksCompute. ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) .
-
-> [!IMPORTANT]
-> Pokud [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)pro vyberete vlastní hodnoty pro agent_count a vm_size, musíte zajistit, aby agent_count vynásobené vm_size je větší nebo rovna 12 virtuálním procesorům. Pokud například použijete vm_size typu "Standard_D3_v2", který má 4 virtuální procesory, měli byste vybrat agent_count z 3 nebo vyšší.
->
-> Sada SDK pro Azure Machine Learning neposkytuje podporu škálování clusteru AKS. Pro horizontální navýšení kapacity uzlů v clusteru použijte uživatelské rozhraní pro cluster AKS v Azure Portal. Můžete změnit jenom počet uzlů, nikoli velikost virtuálního počítače v clusteru.
-
-#### <a name="attach-an-existing-aks-cluster"></a>Připojit existující cluster AKS
-**Časový odhad:** Přibližně 5 minut.
-
-Pokud už máte v předplatném Azure cluster AKS a je to verze 1.12. # #, můžete ho použít k nasazení image.
-
-> [!WARNING]
-> Při připojování clusteru AKS k pracovnímu prostoru můžete definovat, jak budete cluster používat, nastavením `cluster_purpose` parametru.
->
-> Pokud parametr nezadáte nebo nastavíte `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, cluster musí mít k dispozici alespoň 12 virtuálních procesorů. `cluster_purpose`
->
-> Pokud nastavíte `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, cluster nemusí mít 12 virtuálních procesorů. Cluster nakonfigurovaný pro vývoj a testování ale nebude vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození.
-
-Následující kód ukazuje, jak připojit existující cluster AKS 1.12. # # k vašemu pracovnímu prostoru:
-
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
-# Set the resource group that contains the AKS cluster and the cluster name
-resource_group = 'myresourcegroup'
-cluster_name = 'mycluster'
-
-# Attach the cluster to your workgroup. If the cluster has less than 12 virtual CPUs, use the following instead:
-# attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-#                                         cluster_name = cluster_name,
-#                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
-attach_config = AksCompute.attach_configuration(resource_group=resource_group,
-                                                cluster_name=cluster_name)
-aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
-```
-
-Další informace o `attack_configuration()`naleznete v tématu [AksCompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) reference.
-
-Další informace o `cluster_purpose` parametru najdete v referenčních informacích k [AksCompute. ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) .
+Viz [nasazení do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
 
 ## <a name="consume-web-services"></a>Využívání webových služeb
 
@@ -546,28 +408,7 @@ Podpora pro nasazení na Edge je ve verzi Preview. Další informace najdete v �
 
 ## <a id="update"></a>Aktualizovat webové služby
 
-Při vytváření nového modelu je nutné ručně aktualizovat každou službu, kterou chcete použít pro nový model. Pokud chcete aktualizovat webovou službu, použijte `update` metody. Následující kód ukazuje, jak aktualizovat webovou službu tak, aby používala nový model:
-
-```python
-from azureml.core.webservice import Webservice
-from azureml.core.model import Model
-
-# register new model
-new_model = Model.register(model_path="outputs/sklearn_mnist_model.pkl",
-                           model_name="sklearn_mnist",
-                           tags={"key": "0.1"},
-                           description="test",
-                           workspace=ws)
-
-service_name = 'myservice'
-# Retrieve existing service
-service = Webservice(name=service_name, workspace=ws)
-
-# Update to new model(s)
-service.update(models=[new_model])
-print(service.state)
-print(service.get_logs())
-```
+[!INCLUDE [aml-update-web-service](../../../includes/machine-learning-update-web-service.md)]
 
 ## <a name="continuous-model-deployment"></a>Průběžné nasazování modelu 
 
@@ -603,7 +444,7 @@ Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 
 Další informace naleznete v referenční dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)

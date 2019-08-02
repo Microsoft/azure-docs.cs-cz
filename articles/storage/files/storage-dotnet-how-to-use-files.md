@@ -1,7 +1,6 @@
 ---
 title: Vývoj pro Soubory Azure pomocí .NET | Dokumentace Microsoftu
 description: Zjistěte, jak vyvíjet aplikace a služby .NET, které používají Soubory Azure k ukládání dat souborů.
-services: storage
 author: roygara
 ms.service: storage
 ms.devlang: dotnet
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 38bafdb4753b41a9c8acd599e6b7215e1777c6cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35f29e425fc471e4df4a037ef312af0fd041dcd7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779466"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699780"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -35,9 +34,9 @@ Další informace o službě Soubory Azure najdete v tématu [Seznámení se Sou
 
 ## <a name="understanding-the-net-apis"></a>Vysvětlení rozhraní API .NET
 
-Služba soubory Azure poskytuje dva přístupy ke klientským aplikacím: Server Message Block (SMB) a REST. V rámci .NET se tyto přístupy abstrahují prostřednictvím rozhraní `System.IO` a `WindowsAzure.Storage` API.
+Služba soubory Azure nabízí dva široké přístupy k klientským aplikacím: Protokol SMB (Server Message Block) a REST. V rámci .NET se tyto přístupy abstrahují prostřednictvím rozhraní `System.IO` a `WindowsAzure.Storage` API.
 
-Rozhraní API | Kdy je použít | Poznámky
+rozhraní API | Kdy je použít | Poznámky
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Vaše aplikace: <ul><li>Potřebuje číst/zapisovat soubory prostřednictvím SMB.</li><li>Je spuštěná v zařízení, které má prostřednictvím portu 445 přístup k vašemu účtu služby Soubory Azure.</li><li>Nemusí spravovat žádná nastavení pro správu sdílené složky.</li></ul> | Kódování vstupně-výstupních operací pro Soubory Azure přes SMB je obvykle stejné jako kódování vstupně-výstupních operací u libovolné síťové sdílené složky nebo místního úložné zařízení. Úvod k celé řadě funkcí v .NET, včetně vstupně-výstupních operací se soubory, najdete v [tomto kurzu](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter).
 [Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | Vaše aplikace: <ul><li>Nemá přístup ke službě Soubory Azure přes SMB na portu 445 kvůli bráně firewall nebo omezením poskytovatele internetových služeb.</li><li>Vyžaduje funkce pro správu, jako je například možnost nastavit kvótu sdílené složky nebo vytvořit sdílený přístupový podpis.</li></ul> | Tento článek ukazuje použití `Microsoft.Azure.Storage.File` pro vstupně-výstupní operace se soubory s využitím REST (místo SMB) a správy sdílené složky.
@@ -53,14 +52,14 @@ V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následuj
 
 Všechny příklady kódu v tomto kurzu můžete přidat do metody `Main()` v souboru `Program.cs` vaší konzolové aplikace.
 
-Můžete použít klientskou knihovnu služby Azure Storage z libovolného typu aplikace .NET, včetně Azure cloud service nebo do webové aplikace a desktopové nebo mobilní aplikace. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
+Knihovnu klienta Azure Storage můžete použít v jakémkoli typu aplikace .NET, včetně cloudové služby Azure nebo webové aplikace a desktopových a mobilních aplikací. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>Použití balíčku NuGet k instalaci požadovaných balíčků
 Abyste mohli tento kurz dokončit, potřebujete ze svého projektu odkazovat na dva balíčky:
 
-* [Společná knihovna Microsoft Azure Storage pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Tento balíček poskytuje programový přístup k běžným prostředkům ve vašem účtu úložiště.
-* [Knihovna Microsoft Azure Storage Blob pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Tento balíček poskytuje programový přístup k prostředkům Blob ve vašem účtu úložiště.
-* [Microsoft Azure Configuration Manager library for .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
+* [Microsoft Azure Storage společnou knihovnu pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Tento balíček poskytuje programový přístup k běžným prostředkům v účtu úložiště.
+* [Microsoft Azure Storage knihovny objektů BLOB pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/): Tento balíček poskytuje programový přístup k prostředkům objektů BLOB ve vašem účtu úložiště.
+* [Microsoft Azure Configuration Manager Library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Tento balíček poskytuje třídu pro analýzu připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
 
 K získání obou balíčků můžete použít balíček NuGet. Postupujte následovně:
 
@@ -325,8 +324,8 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
 Stejným způsobem můžete kopírovat objekt blob do souboru. Pokud je zdrojovým objektem objekt blob, vytvořte SAS k autorizaci přístupu k tomuto objektu blob během operace kopírování.
 
-## <a name="share-snapshots"></a>Snímky sdílené složky
-Od verze 8.5 klientskou knihovnu pro úložiště Azure, můžete vytvořit snímek sdílené složky. Umožňuje také vypsat nebo procházet snímky sdílené složky a odstranit je. Snímky sdílené složky jsou jen pro čtení, proto u snímků sdílené složky nejsou povoleny žádné operace zápisu.
+## <a name="share-snapshots"></a>Sdílet snímky
+Od verze 8,5 klientské knihovny Azure Storage můžete vytvořit snímek sdílené složky. Umožňuje také vypsat nebo procházet snímky sdílené složky a odstranit je. Snímky sdílené složky jsou jen pro čtení, proto u snímků sdílené složky nejsou povoleny žádné operace zápisu.
 
 **Vytvoření snímků sdílené složky**
 
@@ -402,7 +401,7 @@ CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTim
 ## <a name="troubleshooting-azure-files-using-metrics"></a>Řešení potíží se Soubory Azure pomocí metrik
 Analýza úložiště Azure teď podporuje metriky pro Soubory Azure. S údaji z metriky můžete sledovat žádosti a diagnostikovat potíže.
 
-Metriky můžete povolit pro soubory Azure od [webu Azure portal](https://portal.azure.com). Metriky můžete povolit také programově zavoláním operace Set File Service Properties přes rozhraní REST API nebo některou z podobných operací v Klientské knihovně pro úložiště.
+Metriky pro soubory Azure můžete povolit z [Azure Portal](https://portal.azure.com). Metriky můžete povolit také programově zavoláním operace Set File Service Properties přes rozhraní REST API nebo některou z podobných operací v Klientské knihovně pro úložiště.
 
 Následující příklad kódu ukazuje, jak můžete použít Klientskou knihovnu pro úložiště pro .NET k zapnutí metrik pro Soubory Azure.
 
@@ -458,7 +457,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 Podrobné pokyny, jak postupovat při řešení problémů, najdete v článku [Azure Files Troubleshooting Article](storage-troubleshoot-windows-file-connection-problems.md) (Soubory Azure – řešení problémů).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o službě Soubory Azure najdete na těchto odkazech.
 
 ### <a name="conceptual-articles-and-videos"></a>Koncepční články a videa
@@ -470,7 +469,7 @@ Další informace o službě Soubory Azure najdete na těchto odkazech.
 * [Použití Azure CLI s Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Řešení potíží se Soubory Azure](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### <a name="reference"></a>Referenční informace
+### <a name="reference"></a>Reference
 * [Klientská knihovna Storage pro .NET – referenční informace](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [REST API služby File – referenční informace](https://msdn.microsoft.com/library/azure/dn167006.aspx)
 

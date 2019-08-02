@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 50d91c03ac33c32577ddf3838ed6b10024133333
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: a91860e9ec8d503a01d079925466093d19bbbccf
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414533"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698605"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge
 
@@ -50,8 +50,8 @@ Následující kroky vás provedou procesem vytvoření certifikátů a jejich i
 ## <a name="prerequisites"></a>Požadavky
 
 Zařízení Azure IoT Edge jako bránu nakonfigurovat. Použijte postup instalace IoT Edge pro jeden z následujících operačních systémů:
-  * [Windows](/how-to-install-iot-edge-windows.md)
-  * [Linux](/how-to-install-iot-edge-linux.md)
+  * [Windows](how-to-install-iot-edge-windows.md)
+  * [Linux](how-to-install-iot-edge-linux.md)
 
 Tento článek odkazuje na *název hostitele brány* na několika místech. Název hostitele brány je deklarovaný v parametru **hostname** souboru config. yaml na zařízení IoT Edge brány. Používá se k vytvoření certifikátů v tomto článku a odkazuje se na připojovací řetězec zařízení pro příjem dat. Název hostitele brány musí být přeložitelný na IP adresu, a to buď pomocí DNS, nebo zadáním souboru hostitele.
 
@@ -313,6 +313,6 @@ Díky této funkci se můžou místní moduly nebo zařízení se stejným zař�
 
 Chcete-li povolit rozšířené možnosti offline, navažte vztah mezi nadřazenými a podřízenými zařízeními mezi zařízením IoT Edge brány a zařízeními pro příjem dat, která se k němu připojí. Tyto kroky jsou podrobněji vysvětleny v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když máte zařízení IoT Edge funguje jako transparentní brána, musíte pro příjem dat zařízení důvěřovat brány a odesílat zprávy do něj. Další informace najdete v tématu [připojení zařízení pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md) a [ověření zařízení pro příjem dat na Azure IoT Hub](how-to-authenticate-downstream-device.md).

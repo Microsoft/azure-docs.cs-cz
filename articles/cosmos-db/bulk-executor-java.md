@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 68c83809cba0585d99751760c0e4f51893806170
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8cb7458deddc95f33fa5e4582ffa7c25c3c64e6
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257199"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619813"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Java prováděcí modul hromadného budou provádět hromadné operace s daty služby Azure Cosmos DB
 
 Tento kurz obsahuje pokyny k používání knihovny Java prováděcí modul hromadného rozhraní Azure Cosmos DB importovat a aktualizovat dokumenty Azure Cosmos DB. Další informace o hromadně prováděcí modul knihovny a jak vám může pomoct využít mimořádně velkou propustnost a úložiště, najdete v článku [hromadně přehled knihovny prováděcí modul](bulk-executor-overview.md) článku. V tomto kurzu sestavení aplikace v Javě, která generuje náhodné dokumentů a budou hromadně importovat do kontejneru Azure Cosmos DB. Po naimportování pak hromadně aktualizovat některé vlastnosti dokumentu. 
 
-Hromadné prováděcí modul knihovny je v současné době nepodporuje rozhraní SQL API služby Azure Cosmos DB a pouze účty rozhraní Gremlin API. Tento článek popisuje, jak pomocí hromadné knihovny .NET prováděcí modul s účty SQL API. Další informace o použití knihovny hromadné prováděcí modul .NET pomocí rozhraní Gremlin API, najdete v článku [provádět hromadné operace v rozhraní Gremlin API služby Azure Cosmos DB](bulk-executor-graph-dotnet.md).
+V současné době je knihovna hromadných prováděcích modulů podporovaná jenom pomocí Azure Cosmos DB SQL API a účtů rozhraní API Gremlin. Tento článek popisuje, jak používat hromadnou prováděcí knihovnu Java s účty rozhraní SQL API. Další informace o použití knihovny hromadné prováděcí modul .NET pomocí rozhraní Gremlin API, najdete v článku [provádět hromadné operace v rozhraní Gremlin API služby Azure Cosmos DB](bulk-executor-graph-dotnet.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.  
 
-* [Službu Azure Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků. Nebo můžete použít [emulátor služby Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) s `https://localhost:8081` koncového bodu. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).  
+* Můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. Nebo můžete použít [emulátor Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) u `https://localhost:8081` koncového bodu. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).  
 
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)  
   - Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.  
@@ -37,7 +37,7 @@ Hromadné prováděcí modul knihovny je v současné době nepodporuje rozhran�
   
   - Na Ubuntu můžete Maven nainstalovat spuštěním příkazu `apt-get install maven`.
 
-* Vytvoření účtu rozhraní SQL API služby Azure Cosmos DB pomocí kroků popsaných v [vytvoření databázového účtu](create-sql-api-java.md#create-a-database-account) část tohoto článku rychlý start Java.
+* Vytvořte Azure Cosmos DB účet rozhraní SQL API pomocí postupu popsaného v části [vytvoření databázového účtu](create-sql-api-java.md#create-a-database-account) v článku rychlý Start pro Java.
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
@@ -118,8 +118,8 @@ Naklonované úložiště obsahuje dvě ukázky "hromadný import" a "bulkupdate
    |int getNumberOfDocumentsImported()  |   Celkový počet dokumentů, které byly úspěšně naimportovány z dokumentů zadaný pro hromadného importu volání rozhraní API.      |
    |dvojité getTotalRequestUnitsConsumed()   |  Jednotky celkový počet žádostí (RU) využívaný hromadného importu volání rozhraní API.       |
    |Doba trvání getTotalTimeTaken()   |    Celková doba, za kterou hromadný import volání rozhraní API k dokončení provádění.     |
-   |Seznam\<výjimky > getErrors() |  Získá seznam chyb, pokud některé dokumenty ze služby batch, zadaný do hromadného importu se nepodařilo získat vložit volání rozhraní API.       |
-   |List\<Object> getBadInputDocuments()  |    Seznam chybný formát dokumenty, které nebyly úspěšně naimportovány hromadně importovat volání rozhraní API. Uživatel musí opravit vrácených dokumentů a zkuste import zopakovat. Dokumenty ve formátu chybný obsahovat dokumenty, jejichž ID hodnota není řetězec (datový typ null nebo jakékoli jiné se považuje za neplatný).     |
+   |Vypsat\<výjimku > GetErrors () |  Získá seznam chyb, pokud některé dokumenty ze služby batch, zadaný do hromadného importu se nepodařilo získat vložit volání rozhraní API.       |
+   |Seznam\<objektů > getBadInputDocuments ()  |    Seznam chybný formát dokumenty, které nebyly úspěšně naimportovány hromadně importovat volání rozhraní API. Uživatel musí opravit vrácených dokumentů a zkuste import zopakovat. Dokumenty ve formátu chybný obsahovat dokumenty, jejichž ID hodnota není řetězec (datový typ null nebo jakékoli jiné se považuje za neplatný).     |
 
 5. Až budete mít hromadného importu aplikace připravené, sestavení pomocí příkazu 'mvn čisté balíčku' nástroj příkazového řádku ze zdroje. Tento příkaz vygeneruje v cílové složce soubor jar:  
 
@@ -182,7 +182,7 @@ Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumen
    |int getNumberOfDocumentsUpdated()  |   Celkový počet dokumentů, které byly úspěšně aktualizovány mimo dokumenty zadaný pro hromadné aktualizace volání rozhraní API.      |
    |dvojité getTotalRequestUnitsConsumed() |  Jednotky celkový počet žádostí (RU) využívaný hromadné aktualizace volání rozhraní API.       |
    |Doba trvání getTotalTimeTaken()  |   Celková doba, za kterou hromadného aktualizujte volání rozhraní API k dokončení provádění.      |
-   |Seznam\<výjimky > getErrors()   |    Získá seznam chyb, pokud hromadné aktualizace volání rozhraní API se nepodařilo získat vloží některé dokumenty ze služby batch.      |
+   |Vypsat\<výjimku > GetErrors ()   |    Získá seznam chyb, pokud hromadné aktualizace volání rozhraní API se nepodařilo získat vloží některé dokumenty ze služby batch.      |
 
 3. Až budete mít hromadné aktualizace aplikace připravené, sestavení pomocí příkazu 'mvn čisté balíčku' nástroj příkazového řádku ze zdroje. Tento příkaz vygeneruje v cílové složce soubor jar:  
 

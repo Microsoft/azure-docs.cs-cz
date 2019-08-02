@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2019
 ms.author: kumud
-ms.openlocfilehash: 9fb7fc9b4f0e5af0847876ff41b6a307f8a09749
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 857b38693ca85d6ab397cbe850f0cd530fefc88c
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348045"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598386"
 ---
 # <a name="azure-networking"></a>Sítě Azure
 
@@ -38,7 +38,7 @@ Tato část popisuje služby, které poskytují konektivitu mezi prostředky Azu
 |[VPN Gateway](#vpngateway)|Odesílá zašifrovaný provoz mezi virtuální sítí Azure a místním umístěním přes veřejný Internet.|<p>[Připojení mezi lokalitami](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[Připojení VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Připojení Point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
 |[Virtuální síť WAN](#virtualwan)|Optimalizuje a automatizuje připojení větví k Azure. Oblasti Azure slouží jako centra, ke kterým se můžete připojit ke svým větvím.|<p>[Připojení Site-to-site](../virtual-wan/virtual-wan-site-to-site-portal.md), [připojení ExpressRoute](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
 |[Azure DNS](#dns)|Hostuje domény DNS, které poskytují překlad názvů pomocí Microsoft Azure infrastruktury.|<p>[Hostování vaší domény v Azure DNS](../dns/dns-delegate-domain-azure-dns.md)</p><p>[Vytvoření záznamů DNS pro webovou aplikaci](../dns/dns-web-sites-custom-domain.md)</p> <p>[Vytvořit záznam aliasu pro Traffic Manager](../dns/tutorial-alias-tm.md)</p> <p>[Vytvořit záznam aliasu pro veřejnou IP adresu](../dns/tutorial-alias-pip.md)</p> <p>[Vytvoří záznam aliasu pro záznam prostředku zóny.](../dns/tutorial-alias-rr.md)</p>|
-|[Azure bastionu (Preview)](#bastion)|Nakonfigurujte možnosti bezpečného a bezproblémového připojení RDP/SSH k virtuálním počítačům přímo na webu Azure Portal přes SSL. Když se připojujete přes Azure bastionu, virtuální počítače nepotřebují veřejnou IP adresu.|<p>[Vytvoření hostitele Azure bastionu](../bastion/bastion-create-host-portal.md)</p><p>[Připojení pomocí SSH k virtuálnímu počítači se systémem Linux](../bastion/bastion-connect-vm-ssh.md)</p><p>[Připojení pomocí protokolu RDP k virtuálnímu počítači s Windows](/bastion/bastion-connect-vm-rdp.md)</p>|
+|[Azure bastionu (Preview)](#bastion)|Nakonfigurujte možnosti bezpečného a bezproblémového připojení RDP/SSH k virtuálním počítačům přímo na webu Azure Portal přes SSL. Když se připojujete přes Azure bastionu, virtuální počítače nepotřebují veřejnou IP adresu.|<p>[Vytvoření hostitele Azure bastionu](../bastion/bastion-create-host-portal.md)</p><p>[Připojení pomocí SSH k virtuálnímu počítači se systémem Linux](../bastion/bastion-connect-vm-ssh.md)</p><p>[Připojení pomocí protokolu RDP k virtuálnímu počítači s Windows](../bastion/bastion-connect-vm-rdp.md)</p>|
 ||||
 
 
@@ -74,7 +74,7 @@ Azure Virtual WAN je síťová služba, která poskytuje optimalizované a autom
 Azure DNS je hostitelská služba určená pro domény DNS, která zajišťuje překlad názvů s využitím infrastruktury Microsoft Azure. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure. Další informace najdete v tématu [co je Azure DNS?](../dns/dns-overview.md).
 
 ### <a name="bastion"></a>Azure bastionu (Preview)
-Služba Azure bastionu je nová plně spravovaná služba PaaS spravovaná platformou, kterou zřizujete v rámci vaší virtuální sítě. Poskytuje zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům přímo v Azure Portal přes SSL. Když se připojíte přes Azure Bastion, virtuální počítače nepotřebují veřejnou IP adresu. Další informace najdete v tématu [co je Azure bastionu?](/bastion/bastion-overview.md).
+Služba Azure bastionu je nová plně spravovaná služba PaaS spravovaná platformou, kterou zřizujete v rámci vaší virtuální sítě. Poskytuje zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům přímo v Azure Portal přes SSL. Když se připojíte přes Azure Bastion, virtuální počítače nepotřebují veřejnou IP adresu. Další informace najdete v tématu [co je Azure bastionu?](../bastion/bastion-overview.md).
 
 ![Architektura Azure bastionu](./media/networking-overview/architecture.png)
 

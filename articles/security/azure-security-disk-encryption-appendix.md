@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2872d106eea56a37c362195e7a3250058336768b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 13cec6f53af460a9e9372eedf3b7e17798d1c653
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295060"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610385"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
 
@@ -104,7 +104,7 @@ Než začnete, projděte si [požadavky](azure-security-disk-encryption-prerequi
      ```
 
 ### <a name="bkmk_prereq-script"></a> Pomocí skriptu Powershellu požadavky Azure Disk Encryption
-Pokud jste již obeznámeni s požadavky pro Azure Disk Encryption, můžete použít [skript prostředí PowerShell pro Azure Disk Encryption požadované součásti](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Příklad použití tento skript Powershellu, najdete v článku [šifrování virtuálního počítače Quickstart](quick-encrypt-vm-powershell.md). Komentáře můžete odebrat z část skriptu, počínaje řádkem 211, k šifrování všech disků pro stávající virtuální počítače v existující skupinu prostředků. 
+Pokud jste již obeznámeni s požadavky pro Azure Disk Encryption, můžete použít [skript prostředí PowerShell pro Azure Disk Encryption požadované součásti](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Příklad použití tento skript Powershellu, najdete v článku [šifrování virtuálního počítače Quickstart](fundamentals/quick-encrypt-vm-powershell.md). Komentáře můžete odebrat z část skriptu, počínaje řádkem 211, k šifrování všech disků pro stávající virtuální počítače v existující skupinu prostředků. 
 
 V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu prostředí PowerShell: 
 
@@ -133,15 +133,15 @@ V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu 
   - [Zakažte šifrování u spuštěného virtuálního počítače s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Zakázáním šifrování je povolena pouze u svazků s daty pro virtuální počítače s Linuxem.  
 
-### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>Šifrování nebo dešifrování škálovací sady virtuálních počítačů
+### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>Šifrování nebo dešifrování virtuálních počítačů Scale Sets
 
 - [Povolit šifrování disku ve škálovací sadě virtuálních počítačů spuštěné systému Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
 - [Povolit šifrování disku ve škálovací sady virtuálních počítačů spuštěných Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [Nasazení virtuálního počítače škálovací sady virtuálních počítačů s Linuxem pomocí jumpbox a povoluje šifrování na VMSS v Linuxu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Nasazení sady virtuálních počítačů se systémem Linux s využitím JumpBox a povolení šifrování na platformě Linux VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [Nasazení virtuálního počítače škálovací sady virtuálních počítačů Windows s jumpbox a povoluje šifrování na Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [Nasazení škály virtuálních počítačů s Windows pomocí JumpBox a povolení šifrování ve Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
 - [Zakázat šifrování disku ve škálovací sadě virtuálních počítačů spuštěné systému Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
@@ -206,7 +206,7 @@ Použití [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>Požadavky na šifrování disku operačního systému
 
-* Virtuální počítač musí používat kompatibilní se šifrováním disku operačního systému distribučního jak je uvedeno v [Azure Disk Encryption podporované operační systémy: Linux](azure-security-disk-encryption-prerequisites.md#linux) 
+* Virtuální počítač musí používat distribuci kompatibilní s nástrojem pro šifrování disků s operačním systémem, jak [je uvedeno v části Podporované operační systémy Azure Disk Encryption: Linux](azure-security-disk-encryption-prerequisites.md#linux) 
 * Virtuální počítač musí být vytvořené z Marketplace image v Azure Resource Manageru.
 * Virtuální počítač Azure s minimálně 4 GB paměti RAM (doporučená velikost je 7 GB).
 * (Pro RHEL a CentOS) Zakážete SELinux. Pokud chcete zakázat SELinux, naleznete v tématu "4.4.2. Zakázání SELinux"v [Průvodce SELinux uživatele a správce](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) na virtuálním počítači.
@@ -234,7 +234,7 @@ Použití [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 
 
 5. Pravidelně sledovat průběh šifrování pomocí pokynů [další části](#monitoring-os-encryption-progress).
 
-6. Po Get-AzVmDiskEncryptionStatus ukazuje "VMRestartPending", restartujte virtuální počítač po přihlášení k němu nebo pomocí portálu, Powershellu nebo rozhraní příkazového řádku.
+6. Po Get-AzVmDiskEncryptionStatus se zobrazí "VMRestartPending", restartujte virtuální počítač, a to tak, že se přihlásíte k tomuto počítači nebo pomocí portálu, PowerShellu nebo rozhraní příkazového řádku.
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -546,7 +546,7 @@ Při šifrování pomocí aplikace Azure AD (předchozí verzi), musí být tajn
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a> Tajný kód disk encryption není šifrován KEK
-Chcete-li nastavit tajný klíč v trezoru klíčů, použijte [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). Pokud máte virtuální počítače s Windows, je zakódován jako řetězec ve formátu base64 a pak nahrají do vašeho trezoru klíčů pomocí souboru klíče bek `Set-AzKeyVaultSecret` rutiny. Heslo pro Linux, jsou zakódovány jako řetězec ve formátu base64 a pak nahrají do služby key vault. Kromě toho Ujistěte se, že následující značky jsou nastaveny při vytvoření tajného klíče v trezoru klíčů.
+K nastavení tajného klíče v trezoru klíčů použijte [set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). Pokud máte virtuální počítače s Windows, je zakódován jako řetězec ve formátu base64 a pak nahrají do vašeho trezoru klíčů pomocí souboru klíče bek `Set-AzKeyVaultSecret` rutiny. Heslo pro Linux, jsou zakódovány jako řetězec ve formátu base64 a pak nahrají do služby key vault. Kromě toho Ujistěte se, že následující značky jsou nastaveny při vytvoření tajného klíče v trezoru klíčů.
 
 #### <a name="windows-bek-file"></a>Soubor klíče BEK Windows
 ```powershell

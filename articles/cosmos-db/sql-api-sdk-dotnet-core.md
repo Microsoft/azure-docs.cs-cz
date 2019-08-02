@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: de712d63fa2315a85c6c0eaf392d9c17758e4999
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ce22efd6eccdc067b05697b8389c821c4c01a347
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226183"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638590"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Poznámky k verzi a zdroje informací
 > [!div class="op_single_selector"]
@@ -28,8 +28,8 @@ ms.locfileid: "68226183"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
+> * [Hromadný prováděcí modul – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
@@ -215,7 +215,7 @@ ms.locfileid: "68226183"
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
-* Oprava problému, který občas způsobí WebException: Vzdálený název se nedal přeložit.
+* Oprava problému, který občas způsobí WebException: Vzdálený název se nedá rozpoznat.
 * Přidání podpory pro přímo tak, že přidáte nová přetížení ReadDocumentAsync rozhraní API pro čtení typu dokumentu.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1

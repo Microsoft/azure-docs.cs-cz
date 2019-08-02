@@ -2,18 +2,18 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/12/2019
+ms.date: 07/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5e251402a89f84a0aa67eee676c1794207dd24fb
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: f027f5b295d75c105e81360a10718239e5b08e4d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869894"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698266"
 ---
 | Resource | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
-| Prostředky na [skupinu prostředků](../articles/azure-resource-manager/resource-group-overview.md#resource-groups), podle typu prostředku |800 |Liší se podle typu prostředku. |
+| Prostředky na [skupinu prostředků](../articles/azure-resource-manager/resource-group-overview.md#resource-groups), podle typu prostředku |800 |Některé typy prostředků mohou překročit limit 800. Viz [zdroje, které nejsou omezeny na 800 instancí na skupinu prostředků](../articles/azure-resource-manager/resources-without-rg-limit.md). |
 | Nasazení na skupinu prostředků v historii nasazení |800<sup>1</sup> |800 |
 | Prostředky na nasazení |800 |800 |
 | Zámky pro správu na jedinečný obor |20 |20 |
@@ -25,7 +25,7 @@ ms.locfileid: "67869894"
 
 #### <a name="template-limits"></a>Omezení šablon
 
-| Value | Výchozí omezení | Maximální omezení |
+| Hodnota | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Parametry |256 |256 |
 | Proměnné |256 |256 |

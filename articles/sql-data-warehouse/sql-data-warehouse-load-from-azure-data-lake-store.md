@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 07/17/2019
+ms.date: 07/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: cbf642b47e4233cec2e2d860288b3bb35b419cf2
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 7bb775184a0d567fedf9da07cee60e5ba5a2097f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304172"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562373"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Načtení dat z Azure Data Lake Storage do SQL Data Warehouse
 Pomocí základních externích tabulek načtěte data z Azure Data Lake Storage do Azure SQL Data Warehouse. I když můžete spouštět dotazy ad hoc s daty uloženými v Data Lake Storage, doporučujeme data importovat do SQL Data Warehouse pro dosažení co nejvyššího výkonu.
@@ -32,20 +32,16 @@ Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi apl
 
 Pro spuštění tohoto kurzu budete potřebovat:
 
-* Azure Active Directory aplikaci, která se má použít pro ověřování služba-služba, pokud načítáte z Gen1. Chcete-li vytvořit, postupujte podle [ověřování služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
-
->[!NOTE] 
-> Pokud načítáte z Azure Data Lake nákladnost Gen1, budete potřebovat hodnotu koncového bodu tokenu ID klienta, klíče a OAuth2.0 vaší aplikace Active Directory, abyste se připojili k účtu úložiště z SQL Data Warehouse. Podrobnosti o tom, jak tyto hodnoty získat, najdete v odkazu výše. Pro Azure Active Directory registraci aplikace použijte ID aplikace jako ID klienta.
-> 
+* Azure Active Directory aplikaci, která se má použít pro ověřování mezi službami Chcete-li vytvořit, postupujte podle [ověřování služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
 
 * Azure SQL Data Warehouse. Viz [Vytvoření a dotazování a Azure SQL Data Warehouse](create-data-warehouse-portal.md).
 
 * Účet Data Lake Storage. Viz Začínáme [s Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). 
 
 ##  <a name="create-a-credential"></a>Vytvoření přihlašovacích údajů
-Pokud chcete získat přístup k účtu Data Lake Storage, budete muset vytvořit hlavní klíč databáze k šifrování tajného kódu přihlašovacích údajů, který jste použili v dalším kroku. Pak vytvoříte databázi s rozsahem pověření. V případě Gen1 ukládá přihlašovací údaje v oboru databáze nastavené přihlašovací údaje instančního objektu v AAD. V databázi s rozsahem pověření pro Gen2 je nutné použít klíč účtu úložiště. 
+Pokud chcete získat přístup k účtu Data Lake Storage, budete muset vytvořit hlavní klíč databáze k šifrování tajného kódu přihlašovacích údajů, který jste použili v dalším kroku. Pak vytvoříte databázi s rozsahem pověření. Při ověřování pomocí instančních objektů ukládá přihlašovací údaje v oboru databáze nastavené přihlašovací údaje instančního objektu v AAD. Můžete také použít klíč účtu úložiště v databázi s rozsahem pověření pro Gen2. 
 
-Chcete-li se připojit k Data Lake Storage Gen1, je nutné **nejprve** vytvořit aplikaci Azure Active Directory, vytvořit přístupový klíč a udělit aplikaci přístup k prostředku Data Lake Storage Gen1. Pokyny najdete v tématu [ověření pro Azure Data Lake Storage Gen1 pomocí služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+Pokud se chcete připojit k Data Lake Storage pomocí instančních objektů, musíte **nejdřív** vytvořit aplikaci Azure Active Directory, vytvořit přístupový klíč a udělit aplikaci přístup k účtu Data Lake Storage. Pokyny najdete v tématu [ověření pro Azure Data Lake Storage pomocí služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -56,7 +52,7 @@ Chcete-li se připojit k Data Lake Storage Gen1, je nutné **nejprve** vytvořit
 CREATE MASTER KEY;
 
 
--- B (for Gen1): Create a database scoped credential
+-- B (for service principal authentication): Create a database scoped credential
 -- IDENTITY: Pass the client id and OAuth 2.0 Token Endpoint taken from your Azure Active Directory Application
 -- SECRET: Provide your AAD Application Service Principal key.
 -- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/library/mt270260.aspx
@@ -67,7 +63,7 @@ WITH
     SECRET = '<key>'
 ;
 
--- B (for Gen2): Create a database scoped credential
+-- B (for Gen2 storage key authentication): Create a database scoped credential
 -- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
 -- SECRET: Provide your Azure storage account key.
 
@@ -77,7 +73,7 @@ WITH
     SECRET = '<azure_storage_account_key>'
 ;
 
--- It should look something like this for Gen1:
+-- It should look something like this when authenticating using service principals:
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
@@ -109,7 +105,7 @@ WITH (
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
 WITH (
     TYPE = HADOOP,
-    LOCATION='abfss://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfs endpoint
+    LOCATION='abfs[s]://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfss endpoint for when your account has secure transfer enabled
     CREDENTIAL = ADLSCredential
 );
 ```
@@ -221,13 +217,9 @@ Provedli jste tyto akce:
 > * Byly vytvořeny objekty databáze požadované pro načtení z Data Lake Storage Gen1.
 > * Připojeno k adresáři Data Lake Storage Gen1.
 > * Data se načetla do Azure SQL Data Warehouse.
-> 
+>
 
 Načítání dat je prvním krokem k vývoji řešení datového skladu pomocí SQL Data Warehouse. Podívejte se na naše vývojové prostředky.
 
 > [!div class="nextstepaction"]
->[Naučte se vyvíjet tabulky v SQL Data Warehouse](sql-data-warehouse-tables-overview.md)
-
-
-
-
+> [Naučte se vyvíjet tabulky v SQL Data Warehouse](sql-data-warehouse-tables-overview.md)

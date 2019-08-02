@@ -1,6 +1,6 @@
 ---
-title: Zotavení po havárii SQL Database | Dokumentace Microsoftu
-description: Zjistěte, jak obnovit databázi z místních datacenter výpadku nebo selhání pomocí Azure SQL Database aktivní geografickou replikaci a geografické obnovení funkce.
+title: SQL Database zotavení po havárii | Microsoft Docs
+description: Naučte se, jak obnovit databázi z místního výpadku nebo neúspěchu pomocí Azure SQL Database aktivní geografické replikace a možností geografického obnovení.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,115 +10,114 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 06/21/2019
-ms.openlocfilehash: 00fa1128df03befda8b15be2d7f2c527f65f9973
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 95814805d0bcb2532c09f4f68c6b8d97c3b8c6a5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341078"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568822"
 ---
-# <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Obnovení služby Azure SQL Database a převzetí služeb při selhání sekundární lokalitou
+# <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Obnovení Azure SQL Database nebo převzetí služeb při selhání sekundárním
 
-Azure SQL Database nabízí následující funkce pro obnovení po výpadku:
+Azure SQL Database nabízí následující možnosti pro zotavení po výpadku:
 
 - [Aktivní geografická replikace](sql-database-active-geo-replication.md)
 - [Skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md)
-- [Geo-restore](sql-database-recovery-using-backups.md#point-in-time-restore)
-- [Zónově redundantní databáze](sql-database-high-availability.md)
+- [Geografické obnovení](sql-database-recovery-using-backups.md#point-in-time-restore)
+- [Redundantní databáze v zóně](sql-database-high-availability.md)
 
-Další informace o obchodní kontinuity podnikových procesů scénáře a funkce podporuje tyto scénáře, naleznete v tématu [kontinuita podnikových procesů](sql-database-business-continuity.md).
-
-> [!NOTE]
-> Pokud používáte zónově redundantní databáze úrovně Premium nebo pro důležité obchodní informace nebo fondy, je automatizovaný proces obnovení a zbývající část tohoto materiálu se nedá použít.
+Další informace o scénářích kontinuity podnikových aplikací a funkcích, které tyto scénáře podporují, najdete v tématu [Kontinuita podnikových aplikací](sql-database-business-continuity.md).
 
 > [!NOTE]
-> Primární a sekundární databáze musí mít stejné úrovně služeb. Také důrazně doporučujeme, aby se vytvoří sekundární databáze se stejnou velikostí výpočetní prostředky (počet jednotek Dtu nebo virtuálních jader) jako primární. Další informace najdete v tématu [upgradu nebo downgradu jako primární databáze](sql-database-active-geo-replication.md#upgrading-or-downgrading-primary-database).
+> Pokud používáte databáze nebo fondy nadbytečná zóny nebo Pro důležité obchodní informace, proces obnovení je automatizovaný a zbytek tohoto materiálu neplatí.
 
 > [!NOTE]
-> Použití jednoho nebo několika skupin převzetí služeb při selhání pro správu převzetí služeb při selhání několika databází.
-> Pokud chcete přidat existující relaci geografické replikace do skupiny převzetí služeb při selhání, nezapomeňte že GEO-secondary má nakonfigurovanou na stejné úrovně služeb a velikost výpočetního jako primární. Další informace najdete v tématu [pomocí skupin – automatické převzetí služeb při selhání můžete povolit transparentní a koordinovaný převzetí služeb při selhání několika databází](sql-database-auto-failover-group.md).
-
-## <a name="prepare-for-the-event-of-an-outage"></a>Příprava pro případ výpadku
-
-Pro úspěšné dokončení obnovení do jiné oblasti dat pomocí skupiny převzetí služeb při selhání nebo geograficky redundantní zálohy, je nutné připravit server v jiném datovém centru výpadek stane novým primárním serverem by potřeba nastat také mít dobře definované kroky zdokumentované a testováním k zajištění obnovení proběhlo bez problémů. Tyto přípravné kroky patří:
-
-- Identifikace serveru SQL Database v jiné oblasti stane novým primárním serverem. Pro geografické obnovení, obvykle se jedná server v [spárované oblasti](../best-practices-availability-paired-regions.md) pro oblast, ve kterém je umístěna databáze. Tím se eliminují náklady na dodatečný provoz během operací geografické obnovení.
-- Identifikujte a volitelně můžete definovat pravidla firewallu protokolu IP úrovni serveru třeba uživatelům přístup k nové primární databázi.
-- Zjistěte, jak chcete přesměrovat uživatele na nový primární server, například tak, že změníte připojovací řetězce nebo při změně položky DNS.
-- Identifikovat a volitelně vytvořit přihlašovací údaje, které se musí nacházet v hlavní databázi v nové primární server a ujistěte se, že tyto přihlašovací údaje mít příslušná oprávnění v hlavní databázi, pokud existuje. Další informace najdete v tématu [zabezpečení služby SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md)
-- Určete pravidla výstrah, které je potřeba aktualizovat tak, aby namapovat na novou primární databázi.
-- Dokument konfigurace auditování u aktuální primární databáze
-- Provést [zotavení po havárii](sql-database-disaster-recovery-drills.md). Pro simulaci výpadku pro geografické obnovení, můžete odstranit nebo přejmenovat zdrojové databáze způsobit selhání připojení aplikace. Pro simulaci výpadku pomocí skupin převzetí služeb při selhání, můžete zakázat webové aplikace nebo virtuálního počítače připojené k databázi nebo převzetí služeb při selhání databáze způsobit selhání připojení k aplikaci.
-
-## <a name="when-to-initiate-recovery"></a>Při zahájení obnovení
-
-Operaci obnovení má vliv na aplikaci. Je potřeba změnit připojovací řetězec SQL nebo přesměrování pomocí DNS a může dojít ke ztrátě trvalé. Proto je třeba jej provést pouze v případě, že výpadek by mohla trvají déle než plánovanou dobu obnovení vaší aplikace. Když je aplikace nasazená do produkčního prostředí by měl provádět pravidelné kontroly stavu aplikace a použít k vyhodnocení, zda je oprávněná obnovení těchto datových bodů:
-
-1. Chyba trvalé připojení z aplikační vrstvy do databáze.
-2. Na webu Azure portal zobrazuje oznámení o incidentu v oblasti s široký dopad.
+> U primárních i sekundárních databází je potřeba, aby měly stejnou úroveň služby. Také se důrazně doporučuje vytvořit sekundární databázi se stejnou výpočetní velikostí (DTU nebo virtuální jádra) jako primární. Další informace najdete v tématu [upgrade nebo downgrading jako primární databáze](sql-database-active-geo-replication.md#upgrading-or-downgrading-primary-database).
 
 > [!NOTE]
-> Pokud používáte skupiny převzetí služeb při selhání a rozhodli jste automatické převzetí služeb při selhání, je proces obnovení automatizované a pro aplikace transparentní.
+> Pomocí jedné nebo několika skupin převzetí služeb při selhání můžete spravovat převzetí služeb při selhání více databází.
+> Pokud přidáte existující relaci geografické replikace do skupiny převzetí služeb při selhání, ujistěte se, že je geograficky sekundární nakonfigurovaná se stejnou úrovní služeb a výpočetní velikostí jako primární. Další informace najdete v tématu [použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází](sql-database-auto-failover-group.md).
 
-V závislosti na vaší aplikace tolerance výpadků a co obchodní odpovědnost měli zvážit následující možnosti obnovení.
+## <a name="prepare-for-the-event-of-an-outage"></a>Příprava na případ výpadku
 
-Použití [získat obnovitelné databáze](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) Chcete-li získat nejnovější bod obnovení geograficky replikovaný.
+V případě úspěchu s obnovením do jiné oblasti dat pomocí skupin pro převzetí služeb při selhání nebo geograficky redundantního zálohování je nutné připravit server v jiném výpadku datového centra, aby se stal novým primárním serverem, pokud by to bylo nutné, a měly by být zdokumentovány dobře definované kroky a Testováno pro zajištění hladkého obnovení. Tyto přípravné kroky zahrnují:
 
-## <a name="wait-for-service-recovery"></a>Vyčkat, než obnovení
+- Identifikujte server SQL Database v jiné oblasti, který se stane novým primárním serverem. V případě geografického obnovení se jedná o server v [spárované oblasti](../best-practices-availability-paired-regions.md) pro oblast, ve které se nachází vaše databáze. Tím se eliminují dodatečné náklady na provoz během geografického obnovení.
+- Identifikujte a volitelně definujte pravidla brány firewall IP na úrovni serveru potřebná pro uživatele, kteří budou mít přístup k nové primární databázi.
+- Určete, jak budete přesměrovat uživatele na nový primární server, například změnou připojovacích řetězců nebo změnou položek DNS.
+- Identifikujte a volitelně Vytvořte přihlašovací údaje, které se musí nacházet v hlavní databázi na novém primárním serveru, a ujistěte se, že tato přihlášení mají v hlavní databázi příslušná oprávnění, pokud existují. Další informace najdete v tématu [SQL Database Security po zotavení po havárii](sql-database-geo-replication-security-config.md) .
+- Identifikujte pravidla výstrah, která je potřeba aktualizovat, aby se namapovala na novou primární databázi.
+- Dokumentuje konfiguraci auditování v aktuální primární databázi.
+- Provedení postupu [zotavení po havárii](sql-database-disaster-recovery-drills.md). Chcete-li simulovat výpadek geografického obnovení, můžete zdrojovou databázi odstranit nebo přejmenovat a způsobit tak selhání připojení aplikace. Chcete-li simulovat výpadky pomocí skupin převzetí služeb při selhání, můžete zakázat webovou aplikaci nebo virtuální počítač připojený k databázi nebo převzetí služeb při selhání databáze a způsobit tak selhání připojení aplikace.
 
-Azure týmy pracovní usilovně obnovíte dostupnost služeb, jak rychle nejdříve ale v závislosti na kořenovém adresáři způsobí, že může trvat hodiny nebo dny.  Pokud vaše aplikace může tolerovat možnost významnějších výpadků je jednoduše počkat obnovení pro dokončení. V takovém případě nemusíte vaší nic dělat. Aktuální stav služby najdete na naší [řídicí panel stavu služby Azure](https://azure.microsoft.com/status/). Po obnovení do oblasti obnovení dostupnosti vaší aplikace.
+## <a name="when-to-initiate-recovery"></a>Kdy spustit obnovení
 
-## <a name="fail-over-to-geo-replicated-secondary-server-in-the-failover-group"></a>Převzetí služeb při selhání do geograficky replikované sekundární server ve skupině převzetí služeb při selhání
+Operace obnovení má vliv na aplikaci. Vyžaduje změnu připojovacího řetězce nebo přesměrování SQL pomocí DNS a může způsobit trvalou ztrátu dat. Proto by měl být proveden pouze v případě výpadku, který je pravděpodobně naposledy delší než cíl doby obnovení vaší aplikace. Když se aplikace nasadí do produkčního prostředí, měli byste pravidelně monitorovat stav aplikace a pomocí následujících datových bodů vyhodnotit, že se obnovení opravňuje:
 
-Pokud výpadky vašich aplikací může mít za následek obchodní závazky, byste měli použít skupiny převzetí služeb při selhání. Umožňuje aplikaci rychle obnovit dostupnosti v jiné oblasti i v případě výpadku. Podívejte se kurz [. implementace geograficky distribuované databáze](sql-database-implement-geo-distributed-database.md).
+1. Trvalá Chyba připojení z aplikační vrstvy k databázi.
+2. Azure Portal zobrazuje výstrahu týkající se incidentu v oblasti s rozsáhlým dopadem.
 
-Chcete-li obnovit dostupnosti databází budete potřebovat k zahájení převzetí služeb při selhání na sekundární server pomocí jedné z podporovaných metod.
+> [!NOTE]
+> Pokud používáte skupiny převzetí služeb při selhání a zvolíte automatické převzetí služeb při selhání, proces obnovení je automatizovaný a transparentní pro aplikaci.
 
-Převzít služby při selhání do geograficky replikované sekundární databáze, použijte jednu z následujících návodů:
+V závislosti na vaší tolerance vaší aplikace na výpadky a možné obchodní odpovědnosti můžete zvážit následující možnosti obnovení.
 
-- [Převzetí služeb při selhání do geograficky replikované sekundární server pomocí webu Azure portal](sql-database-geo-replication-portal.md)
-- [Převzetí služeb při selhání na sekundární server pomocí Powershellu](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-- [Převzetí služeb při selhání na sekundární server pomocí příkazů jazyka Transact-SQL (T-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
+K získání nejnovějšího geograficky replikovaného bodu obnovení použijte [databázi Get obnovitelné databáze](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*).
 
-## <a name="recover-using-geo-restore"></a>Obnovení s využitím geografického obnovení
+## <a name="wait-for-service-recovery"></a>Počkat na obnovení služby
 
-Pokud výpadky vašich aplikací nemá za následek odpovědnosti firmy můžete [geografické obnovení](sql-database-recovery-using-backups.md) jako způsob obnovení databáze vaší aplikace. Vytvoří kopii databáze z jeho nejnovější geograficky redundantní zálohy.
+Azure Teams funguje usilovně k tomu, aby co nejrychleji obnovil dostupnost služby, ale v závislosti na hlavní příčině může trvat hodiny nebo dny.  Pokud vaše aplikace může tolerovat významné výpadky, můžete jednoduše počkat na dokončení obnovení. V takovém případě není nutná žádná akce s vaší částí. Aktuální stav služby můžete zobrazit na našem řídicím [panelu Azure Service Health](https://azure.microsoft.com/status/). Po obnovení této oblasti se obnoví dostupnost vaší aplikace.
 
-## <a name="configure-your-database-after-recovery"></a>Nakonfigurujte databázi po obnovení
+## <a name="fail-over-to-geo-replicated-secondary-server-in-the-failover-group"></a>Převzetí služeb při selhání geograficky replikovaným sekundárním serverem ve skupině převzetí služeb při selhání
 
-Pokud používáte geografické obnovení pro obnovení po výpadku, musí zajistíte, že je správně nakonfigurované připojení k nové databáze tak, aby funkce normální aplikaci lze obnovit. Toto je kontrolní seznam úloh připravit obnovené databáze v produkčním prostředí.
+Pokud by výpadky vaší aplikace mohly vést k obchodním zodpovědnostem, měli byste používat skupiny převzetí služeb při selhání. Umožňuje aplikaci rychle obnovit dostupnost v jiné oblasti v případě výpadku. Kurz najdete v tématu [implementace geograficky distribuované databáze](sql-database-implement-geo-distributed-database.md).
+
+Chcete-li obnovit dostupnost databází, je třeba zahájit převzetí služeb při selhání sekundárním serverem pomocí jedné z podporovaných metod.
+
+Pro převzetí služeb při selhání geograficky replikovanou sekundární databází použijte jedno z následujících pokynů:
+
+- [Převzetí služeb při selhání geograficky replikovaným sekundárním serverem pomocí Azure Portal](sql-database-geo-replication-portal.md)
+- [Převzetí služeb při selhání sekundárním serverem pomocí PowerShellu](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+- [Převzetí služeb při selhání sekundárním serverem pomocí jazyka Transact-SQL (T-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
+
+## <a name="recover-using-geo-restore"></a>Obnovení pomocí geografického obnovení
+
+Pokud výpadek vaší aplikace nevede k obchodním zodpovědnostem, můžete použít [geografickou obnovu](sql-database-recovery-using-backups.md) jako metodu pro obnovení databází aplikace. Vytvoří kopii databáze z poslední geograficky redundantní zálohy.
+
+## <a name="configure-your-database-after-recovery"></a>Konfigurace databáze po obnovení
+
+Pokud k zotavení z výpadku používáte geografické obnovení, musíte zajistit, aby připojení k novým databázím bylo správně nakonfigurováno, aby bylo možné obnovit normální funkci aplikace. Toto je kontrolní seznam úkolů pro přípravu obnovené databáze.
 
 ### <a name="update-connection-strings"></a>Aktualizovat připojovací řetězce
 
-Vzhledem k tomu obnovené databáze nachází na jiném serveru, musíte aktualizovat připojovací řetězec vaší aplikace tak, aby odkazoval na tomto serveru.
+Vzhledem k tomu, že se obnovená databáze nachází na jiném serveru, musíte aktualizovat připojovací řetězec aplikace tak, aby odkazoval na tento server.
 
-Další informace o změně připojovací řetězce, naleznete v tématu příslušný vývojářský jazyk pro vaše [knihovny připojení](sql-database-libraries.md).
+Další informace o změně připojovacích řetězců najdete v příslušném vývojovém jazyce pro [knihovnu připojení](sql-database-libraries.md).
 
-### <a name="configure-firewall-rules"></a>Konfigurace pravidel brány Firewall
+### <a name="configure-firewall-rules"></a>Konfigurace pravidel brány firewall
 
-Potřebujete, abyste měli jistotu, že pravidla brány firewall nakonfigurovaná na serveru a databáze odpovídající těm, které byly nakonfigurovány na primární server a v primární databázi. Další informace najdete v tématu [jak: Konfigurace nastavení brány Firewall (Azure SQL Database)](sql-database-configure-firewall-settings.md).
+Je nutné zajistit, aby pravidla brány firewall nakonfigurovaná na serveru a v databázi odpovídala nastavením nakonfigurovaným na primárním serveru a primární databázi. Další informace najdete v tématu [jak: Nakonfigurujte nastavení brány firewall (Azure SQL Database](sql-database-configure-firewall-settings.md)).
 
 ### <a name="configure-logins-and-database-users"></a>Konfigurace přihlašovacích údajů a uživatelů databáze
 
-Potřebujete, abyste měli jistotu, že všechna přihlášení použít v aplikaci existují na serveru, který je hostitelem obnovené databáze. Další informace najdete v tématu [konfiguraci zabezpečení pro geografickou replikaci](sql-database-geo-replication-security-config.md).
+Musíte zajistit, aby všechny přihlašovací údaje, které vaše aplikace používá, existovaly na serveru, který je hostitelem obnovené databáze. Další informace najdete v tématu [Konfigurace zabezpečení pro geografickou replikaci](sql-database-geo-replication-security-config.md).
 
 > [!NOTE]
-> By měl nakonfigurovat a testovat vaše pravidla firewallu serveru a přihlašovací jména (a jejich oprávnění) během zotavení po havárii. Tyto objekty na úrovni serveru a jejich konfigurace nemusí být během výpadku dostupná.
+> Během postupu zotavení po havárii byste měli nakonfigurovat a otestovat pravidla brány firewall serveru a přihlášení (a jejich oprávnění). Tyto objekty na úrovni serveru a jejich konfigurace nemusí být k dispozici během výpadku.
 
 ### <a name="setup-telemetry-alerts"></a>Nastavení výstrah telemetrie
 
-Musíte zajistit, aby že vaše stávající nastavení pravidla upozornění se aktualizují mapovat k obnovené databázi a jiný server.
+Musíte zajistit, aby byla stávající nastavení pravidla upozornění aktualizována tak, aby se namapovala na obnovenou databázi a na jiný server.
 
-Další informace o pravidla upozornění databáze najdete v tématu [přijímat oznámení výstrah](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) a [sledovat stav služeb](../monitoring-and-diagnostics/insights-service-health.md).
+Další informace o pravidlech upozornění databáze najdete v tématu [příjem oznámení](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) o výstrahách a [sledování Service Health](../monitoring-and-diagnostics/insights-service-health.md).
 
-### <a name="enable-auditing"></a>Povolení auditování služby
+### <a name="enable-auditing"></a>Povolit auditování
 
-Pokud pro přístup k vaší databázi se vyžaduje auditování, je potřeba povolit auditování po obnovení databáze. Další informace najdete v tématu [auditování databáze](sql-database-auditing.md).
+Pokud je pro přístup k databázi vyžadováno auditování, je nutné povolit auditování po obnovení databáze. Další informace najdete v tématu [auditování databáze](sql-database-auditing.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o Azure SQL Database, automatické zálohování, naleznete v tématu [automatické zálohování SQL Database](sql-database-automated-backups.md)
-- Další informace o obchodních scénářů návrhu a obnovení kontinuity podnikových procesů najdete v tématu [scénáře kontinuitu podnikových procesů](sql-database-business-continuity.md)
-- Další informace o obnovení pomocí automatizovaného zálohování, naleznete v tématu [obnovení databáze ze záloh spouštěných službou](sql-database-recovery-using-backups.md)
+- Další informace o Azure SQL Database automatizovaných zálohách najdete v tématu [SQL Database automatizované zálohy](sql-database-automated-backups.md) .
+- Další informace o scénářích pro návrh a obnovení provozní kontinuity najdete v tématu [scénáře kontinuity](sql-database-business-continuity.md) .
+- Další informace o použití automatizovaných záloh pro obnovení najdete v tématu [obnovení databáze ze zálohy iniciované službou](sql-database-recovery-using-backups.md) .

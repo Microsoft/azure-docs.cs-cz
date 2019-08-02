@@ -1,6 +1,6 @@
 ---
-title: Automatická aktualizace služby Mobility zotavení po havárii Azure do Azure | Dokumentace Microsoftu
-description: Přehled automatické aktualizace služby Mobility při replikaci virtuálních počítačů Azure pomocí Azure Site Recovery.
+title: Automatické aktualizace služby mobility v Azure do Azure – zotavení po havárii | Microsoft Docs
+description: Přehled automatické aktualizace služby mobility při replikaci virtuálních počítačů Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
@@ -8,65 +8,65 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: rajanaki
-ms.openlocfilehash: 1d36145b2a38c0f1106b4468eab226996e270ae1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92a46f7be116d0664b438c9039e311f802c873e5
+ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65922169"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68708082"
 ---
-# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatická aktualizace služby Mobility v replikaci z Azure do Azure
+# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatické aktualizace služby mobility v Azure do Azure – replikace
 
-Azure Site Recovery používá měsíční vydávání verzí opravte všechny problémy a vylepšení stávajících funkcí nebo přidat nové značky. Zůstat aktuální ve službě, je nutné naplánovat nasazení oprava každý měsíc. Pokud chcete vyhnout režie spojené s každou upgrade, můžete místo toho povolit Site Recovery můžete spravovat aktualizace součástí.
+Azure Site Recovery používá tempo měsíčního vydání k řešení problémů a vylepšení existujících funkcí nebo přidávání nových. Chcete-li zůstat ve službě aktuální, je nutné naplánovat nasazení opravy každý měsíc. Abyste se vyhnuli režii souvisejícím s každým upgradem, můžete místo toho Site Recovery spravovat aktualizace součástí.
 
-Jak je uvedeno v [architektury pro zotavení po havárii Azure do Azure](azure-to-azure-architecture.md), služba Mobility je nainstalovaná na všech virtuálních počítačích Azure (VM) u kterých je povolená replikace při replikaci virtuálních počítačů z jedné oblasti Azure do jiné. Pokud používáte automatické aktualizace, každé nové verzi aktualizace rozšíření služby Mobility.
+Jak je uvedeno v části [Architektura zotavení po havárii z Azure do Azure](azure-to-azure-architecture.md), Služba mobility je nainstalovaná na všech virtuálních počítačích Azure, pro které je replikace povolená, a zároveň replikuje virtuální počítače z jedné oblasti Azure do jiné. Pokud používáte automatické aktualizace, každé nové vydání aktualizuje rozšíření služby mobility.
  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="how-automatic-updates-work"></a>Pracovní funkce Automatické aktualizace
+## <a name="how-automatic-updates-work"></a>Jak fungují automatické aktualizace
 
-Když použijete Site Recovery provádět správu aktualizací, nasadí globální sady runbook (používané službami Azure) přes účet automation, který je vytvořen ve stejném předplatném jako trezor. Každý trezor používá jeden účet služby automation. Sada runbook kontroluje u každého virtuálního počítače v trezoru pro aktivní automatické aktualizace a provede upgrade rozšíření služby Mobility, pokud je dostupná novější verze.
+Když ke správě aktualizací použijete Site Recovery, nasadí globální Runbook (používaný službami Azure) prostřednictvím účtu Automation, který se vytvoří ve stejném předplatném jako trezor. Každý trezor používá jeden účet Automation. Runbook vyhledá u každého virtuálního počítače v trezoru aktivní automatické aktualizace a upgraduje rozšíření služby mobility, pokud je k dispozici novější verze.
 
-Výchozí plán sad runbook se opakuje každý den v 12:00 hodin v časovém pásmu geograficky replikovaný virtuální počítač. Můžete také změnit plán sad runbook pomocí účtu služby automation.
+Výchozí plán Runbooku se opakuje každý den v 12:00 v časovém pásmu geograficky replikovaného virtuálního počítače. Můžete také změnit plán Runbooku prostřednictvím účtu Automation.
 
 > [!NOTE]
-> Počínaje 35 kumulativní aktualizace, můžete stávající účet automation, který chcete použít pro aktualizace. Před aktualizací této Site Recovery tento účet byl vytvořen ve výchozím nastavení. Tato možnost je dostupná, když povolíte replikaci pro virtuální počítač. Pokud změníte nastavení, bude platit pro všechny virtuální počítače Azure chráněná ve stejném trezoru.
+> Počínaje kumulativní aktualizací 35 můžete zvolit existující účet Automation, který se bude používat pro aktualizace. Před touto aktualizací Site Recovery tento účet ve výchozím nastavení vytvořil. Tato možnost je dostupná, když povolíte replikaci pro virtuální počítač. Pokud toto nastavení změníte, bude platit pro všechny virtuální počítače Azure chráněné ve stejném trezoru.
  
-> Zapnout automatické aktualizace nebude vyžadovat restartování virtuálních počítačů Azure nebo mít vliv na probíhající replikaci.
+> Zapnutí automatických aktualizací nevyžaduje restartování virtuálních počítačů Azure nebo vlivu na probíhající replikaci.
 
-> Úloha fakturace v účtu automation je podle počtu počet minut běhu úloh, která je použita v daném měsíci. Ve výchozím nastavení jsou zahrnuty jako volných jednotek pro účet automation 500 minut. Provádění úlohy trvá několik sekund na přibližně minutu denně a které pokrývá jako jednotky na úrovni free.
+> Fakturace úlohy v účtu Automation vychází z počtu minut běhu úloh v měsíci. Ve výchozím nastavení jsou 500 minut zahrnuty jako volné jednotky pro účet Automation. Provádění úlohy trvá několik sekund od každou minutu každý den a je zahrnuto jako volné jednotky.
 
-| Zahrnuté volné jednotky (měsíčně) | Cena |
+| Zahrnuté volné jednotky (každý měsíc) | Cena |
 |---|---|
-| 500 minut doby běhu úloh | ₹0.14 / min
+| Běhové prostředí úlohy 500 minut | ₹ 0.14 za minutu
 
 ## <a name="enable-automatic-updates"></a>Povolit automatické aktualizace
 
-Můžete povolit Site Recovery ke správě aktualizací následujícími způsoby.
+Můžete Site Recovery spravovat aktualizace následujícími způsoby.
 
-### <a name="manage-as-part-of-the-enable-replication-step"></a>Spravovat jako součást kroku povolení replikace
+### <a name="manage-as-part-of-the-enable-replication-step"></a>Spravovat jako součást kroku Povolit replikaci
 
-Když povolíte replikaci pro virtuální počítač buď počáteční [ze zobrazení virtuálního počítače](azure-to-azure-quickstart.md) nebo [z trezoru služby recovery services](azure-to-azure-how-to-enable-replication.md), můžete povolit buď Site Recovery můžete spravovat aktualizace pro rozšíření služby Site Recovery nebo spravovat účet ručně.
+Pokud povolíte replikaci pro virtuální počítač buď [od zobrazení virtuálního počítače](azure-to-azure-quickstart.md) , nebo [z trezoru služby Recovery Services](azure-to-azure-how-to-enable-replication.md), můžete povolit, aby Site Recovery spravovat aktualizace rozšíření Site Recovery, nebo ho spravovat ručně.
 
 ![Nastavení rozšíření](./media/azure-to-azure-autoupdate/enable-rep.png)
 
-### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>Přepnout rozšíření aktualizovat nastavení uvnitř tohoto trezoru
+### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>Přepínání nastavení aktualizace rozšíření v rámci trezoru
 
-1. Uvnitř tohoto trezoru, přejděte na **spravovat** > **infrastruktura Site Recovery**.
-2. V části **pro Azure Virtual Machines** > **nastavení aktualizací rozšíření**, zapněte **povolit Site Recovery spravovat** přepínací tlačítko. Chcete-li spravovat ručně, vypněte jej. 
+1. V trezoru můžete přejít na **Správa** > **Site Recovery infrastruktury**.
+2. V části pro**Nastavení aktualizace rozšíření** **Azure Virtual Machines** > zapněte přepínač **Povolit Site Recovery ke správě** . Pokud ho chcete spravovat ručně, vypněte ho. 
 3. Vyberte **Uložit**.
 
 ![Nastavení aktualizací rozšíření](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
 > [!Important]
-> Při výběru **povolit Site Recovery spravovat**, toto nastavení platí pro všechny virtuální počítače v odpovídající úložiště.
+> Když vyberete možnost **povoluje Site Recovery správě**, nastavení se použije na všechny virtuální počítače v odpovídajícím trezoru.
 
 
 > [!Note]
-> Možnost vás upozorní na účtu automation pro správu aktualizací. Pokud používáte tuto funkci v trezoru poprvé, se standardně vytvoří nový účet automation. Alternativně můžete přizpůsobit nastavení a zvolte existující účet automation. Všechny následné povolení replikace ve stejném trezoru použijte dříve vytvořenou.
+> Obě možnosti vás upozorní na účet Automation, který se používá ke správě aktualizací. Pokud tuto funkci používáte v trezoru poprvé, vytvoří se ve výchozím nastavení nový účet Automation. Alternativně můžete upravit nastavení a zvolit existující účet Automation. Všechna další povolení replikace ve stejném trezoru používají dříve vytvořenou replikaci. V současné době rozevírací seznam bude zobrazovat jenom účty Automation, které jsou ve stejné skupině prostředků jako trezor.  
 
-Vlastní automatizace účet pomocí následujícího skriptu:
+Pro vlastní účet Automation použijte tento skript:
 
 ```azurepowershell
 param(
@@ -503,46 +503,46 @@ elseif($JobsCompletedSuccessList.Count -ne $ContainerMappingList.Count)
 Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -DisplayMessageToUser
 ```
 
-### <a name="manage-updates-manually"></a>Ruční Správa aktualizací
+### <a name="manage-updates-manually"></a>Ruční správa aktualizací
 
-1. Pokud jsou k dispozici nové aktualizace pro službou Mobility nainstalovanou na vašich virtuálních počítačů, se zobrazí následující oznámení: "Je k dispozici nová aktualizace agenta replikace Site recovery. Klikněte na tlačítko nainstalovat"
+1. Pokud jsou na virtuálních počítačích nainstalované nové aktualizace služby mobility, zobrazí se následující oznámení: K dispozici je nová aktualizace agenta replikace služby Site Recovery. Kliknutím nainstalujete
 
      ![Okno replikované položky](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
-2. Vyberte oznámení a otevřete stránku výběr VM.
-3. Vyberte virtuální počítače, které chcete upgradovat a pak vyberte **OK**. Služba Mobility aktualizace spustí pro každý vybraný virtuální počítač.
+2. Vyberte oznámení a otevřete stránku výběr virtuálního počítače.
+3. Vyberte virtuální počítače, které chcete upgradovat, a pak vyberte **OK**. Služba mobility Update Service se spustí pro každý vybraný virtuální počítač.
 
-     ![Replikované položky seznamu virtuálních počítačů](./media/vmware-azure-install-mobility-service/update-okpng.png)
+     ![Seznam virtuálních počítačů replikovaných položek](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 
 ## <a name="common-issues-and-troubleshooting"></a>Běžné problémy a řešení potíží
 
-Pokud se vyskytl problém s automatickými aktualizacemi, zobrazí se oznámení o chybě v části **problémy s konfigurací** v řídicím panelu trezoru.
+Pokud dojde k potížím s automatickými aktualizacemi, zobrazí se v části **problémy s konfigurací** na řídicím panelu trezoru chybové oznámení.
 
-Pokud nelze povolit automatické aktualizace, přečtěte si následující běžné chyby a doporučené akce:
+Pokud nemůžete povolit automatické aktualizace, přečtěte si následující běžné chyby a doporučené akce:
 
-- **Chyba:** Nemáte oprávnění k vytvoření účtu spustit v Azure jako (instanční objekt) a udělení role Přispěvatel tomuto instančnímu.
+- **Chyba:** Nemáte oprávnění vytvořit účet Spustit jako pro Azure (instanční objekt) a udělit tomuto instančnímu objektu roli Přispěvatel.
 
-   **Doporučená akce**: Ujistěte se, že účet přihlášení je přiřazen jako přispěvatele a zkuste to znovu. Přečtěte si část požadovaná oprávnění v [použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) Další informace o přiřazování oprávnění.
+   **Doporučená akce**: Zajistěte, aby byl přihlášený účet přiřazen jako Přispěvatel, a akci opakujte. Pokud chcete získat další informace o přiřazování oprávnění, přečtěte si část požadovaná oprávnění v tématu [použití portálu k vytvoření aplikace služby Azure AD a instančního objektu, který má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) .
  
-   Chcete-li opravit většinu problémů, když povolíte automatické aktualizace, vyberte **opravit**. Pokud není k dispozici tlačítko opravit, zobrazuje se chybová zpráva zobrazí v podokně nastavení aktualizací rozšíření.
+   Chcete-li opravit většinu problémů po povolení automatických aktualizací, vyberte možnost **opravit**. Pokud není tlačítko opravit k dispozici, přečtěte si chybovou zprávu zobrazenou v podokně nastavení aktualizace rozšíření.
 
-   ![Site Recovery service tlačítko Opravit v nastavení aktualizací rozšíření](./media/azure-to-azure-autoupdate/repair.png)
+   ![Tlačítko pro opravu služby Site Recovery v nastavení aktualizace rozšíření](./media/azure-to-azure-autoupdate/repair.png)
 
-- **Chyba:** Účet Spustit jako nemá oprávnění pro přístup k prostředku služby recovery services.
+- **Chyba:** Účet Spustit jako nemá oprávnění pro přístup k prostředku služby Recovery Services.
 
-    **Doporučená akce**: Odstranit a potom [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Nebo, ujistěte se, že aplikace Azure Active Directory účtu Automation spustit jako má přístup k prostředku služby recovery services.
+    **Doporučená akce**: Odstraňte a [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Nebo se ujistěte, že aplikace Azure Active Directory účtu Spustit jako pro automatizaci má přístup k prostředku Recovery Services.
 
-- **Chyba:** Účet Spustit jako se nenašel. Jeden z nich byl odstraněn nebo není vytvořená: aplikace Azure Active Directory, instanční objekt, Role, prostředek certifikátu služby Automation, asset připojení Automation – nebo kryptografický otisk není mezi certifikátem a připojením identický. 
+- **Chyba:** Účet Spustit jako nebyl nalezen. Jedna z těchto položek byla odstraněna nebo nebyla vytvořena-Azure Active Directory aplikace, instanční objekt, role, Asset certifikátu Automation, Asset připojení Automation – nebo kryptografický otisk není totožný mezi certifikátem a připojením. 
 
-    **Doporučená akce**: Odstranit a potom [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+    **Doporučená akce**: Odstraňte a [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
 
--  **Chyba:** Azure spustit jako certifikát používaný účet automation brzy vyprší platnost. 
+-  **Chyba:** Platnost certifikátu spustit jako pro Azure, který používá účet Automation, brzy vyprší. 
 
-    Certifikát podepsaný svým držitelem, který je vytvořený pro účet Spustit jako, vyprší jeden rok od data vytvoření. Před vypršením platnosti ho můžete kdykoli obnovit. Pokud jste si zaregistrovali službu e-mailových oznámení, také dostanete e-mailů při akce je zapotřebí ve směru z vaší strany. Tato chyba se zobrazí 2 měsíce před datem vypršení platnosti a se změní na kritickou chybu, pokud vypršela platnost certifikátu. Jakmile platnost certifikátu vypršela, automatické aktualizace nebude funkční, dokud si neprodloužíte stejné.
+    Certifikát podepsaný svým držitelem, který se vytvoří pro účet Spustit jako, vyprší jeden rok od data vytvoření. Před vypršením platnosti ho můžete kdykoli obnovit. Pokud jste se zaregistrovali k e-mailovým oznámením, obdržíte také e-maily, když se z vaší strany vyžaduje akce. Tato chyba se zobrazí po 2 měsících před datem vypršení platnosti a v případě vypršení platnosti certifikátu se změní na kritickou chybu. Po vypršení platnosti certifikátu nebudou Automatické aktualizace funkční, dokud neobnovíte stejné.
 
-   **Doporučená akce**: Klikněte na "Opravit" a potom obnovit certifikát k vyřešení tohoto problému.
+   **Doporučená akce**: Pokud chcete tento problém vyřešit, klikněte na opravit a pak na prodloužit certifikát.
     
-   ![obnovení certifikátu](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
+   ![obnovit – certifikát](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
 
 > [!NOTE]
-> Po obnovení certifikátu, aktualizujte prosím stránku tak, aby se aktualizuje aktuální stav.
+> Po obnovení certifikátu aktualizujte stránku, aby se aktuální stav aktualizoval.

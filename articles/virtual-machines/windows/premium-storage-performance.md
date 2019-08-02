@@ -1,30 +1,28 @@
 ---
-title: 'Azure Premium Storage: Návrh pro zajištění výkonu na virtuálních počítačích s Windows | Dokumentace Microsoftu'
-description: Navrhněte výkonné aplikace pomocí služby Azure Premium Storage. Premium Storage nabízí podporu vysoce výkonných disků s nízkou latencí pro úlohy můžu vstupně-výstupními operacemi na Azure Virtual Machines.
-services: virtual-machines-windows,storage
+title: 'Premium Storage Azure: Návrh pro výkon na virtuálních počítačích s Windows | Microsoft Docs'
+description: Navrhněte vysoce výkonné aplikace s využitím Azure Premium Storage. Premium Storage nabízí podporu vysoce výkonných disků s nízkou latencí pro úlohy náročné na vstupně-výstupní operace běžící na Azure Virtual Machines.
 author: roygara
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 61f84dc871b4d7261dcb57ab430ce6feee9a0c64
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 3979920cac8e3ef856b3211733f08c21afac3e26
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67658158"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693701"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
 
 > [!NOTE]
-> V některých případech možný problém výkonu disků je ve skutečnosti sítě kritickým bodem. V takových situacích doporučujeme optimalizovat vaše [výkon sítě](../../virtual-network/virtual-network-optimize-network-bandwidth.md).
+> V některých případech se může jednat o problém s výkonem disku, což je kritické místo v síti. V těchto situacích byste měli optimalizovat [výkon sítě](../../virtual-network/virtual-network-optimize-network-bandwidth.md).
 >
-> Pokud chcete provést srovnávací testy na disku, najdete v článku na [srovnávací testy disk](disks-benchmarks.md).
+> Pokud chcete otestovat srovnávací test disku, přečtěte si náš článek o [testování disku](disks-benchmarks.md).
 >
-> Pokud váš virtuální počítač podporuje akcelerované síťové služby, by měl se ujistěte, zda že je povoleno. Pokud není povolená, můžete ji povolit na již nasazených virtuálních počítačů na obou [Windows](../../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) a [Linux](../../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
+> Pokud váš virtuální počítač podporuje akcelerované síťové služby, měli byste se ujistit, že je povolený. Pokud není povolená, můžete ji povolit na již nasazených virtuálních počítačích v [systému Windows](../../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) i [Linux](../../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
-Než začnete, pokud jste ještě na Premium Storage, nejdřív přečíst [vyberte typ, který Azure disk pro virtuální počítače IaaS](disks-types.md) a [škálovatelnost a výkonnostní cíle Azure Storage pro účty úložiště](../../storage/common/storage-scalability-targets.md).
+Než začnete, pokud s Premium Storage teprve začínáte, nejdříve si přečtěte téma [Výběr typu disku Azure pro virtuální počítače s IaaS](disks-types.md) a [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../../storage/common/storage-scalability-targets.md).
 
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]

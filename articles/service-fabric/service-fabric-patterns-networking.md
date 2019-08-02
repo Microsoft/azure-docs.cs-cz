@@ -1,9 +1,9 @@
 ---
-title: Vzory sítě pro Azure Service Fabric | Dokumentace Microsoftu
-description: Popisuje běžné vzory sítě pro Service Fabric a jak vytvořit cluster s použitím Azure síťových funkcí.
+title: Modely sítě pro Azure Service Fabric | Microsoft Docs
+description: Popisuje běžné síťové vzory pro Service Fabric a vytváření clusterů pomocí síťových funkcí Azure.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,45 +13,45 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
-ms.author: aljo
-ms.openlocfilehash: 456eac4a8d3a6cb8cbaca13ad4e4f3b2ae0309bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 0a411e0fe3b89eaaa19f4e18f5e614b03dd1d682
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67125601"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599428"
 ---
-# <a name="service-fabric-networking-patterns"></a>Service Fabric sítě vzory
-Cluster Azure Service Fabric můžete integrovat další funkce Azure sítě. V tomto článku ukážeme, jak vytvářet clustery, které používají následující funkce:
+# <a name="service-fabric-networking-patterns"></a>Modely Service Fabric sítě
+Svůj cluster Azure Service Fabric můžete integrovat s dalšími síťovými funkcemi Azure. V tomto článku vám ukážeme, jak vytvořit clustery, které používají následující funkce:
 
-- [Existující virtuální síť nebo podsítě](#existingvnet)
-- [Statické veřejné IP adresy](#staticpublicip)
-- [Nástroje pro vyrovnávání zatížení jenom pro interní](#internallb)
-- [Nástroj pro vyrovnávání zatížení interní i externí](#internalexternallb)
+- [Existující virtuální síť nebo podsíť](#existingvnet)
+- [Statická veřejná IP adresa](#staticpublicip)
+- [Jenom interní nástroj pro vyrovnávání zatížení](#internallb)
+- [Interní a externí nástroj pro vyrovnávání zatížení](#internalexternallb)
 
-Service Fabric funguje ve škálovací sadě standardní virtuální počítač. Všechny funkce, které můžete využít ve škálovací sadě virtuálních počítačů, můžete použít s clusterem Service Fabric. Sítě části šablony Azure Resource Manageru pro škálovací sady virtuálních počítačů a Service Fabric jsou identické. Po nasazení do existující virtuální sítě je snadno začlenit další funkce sítě, jako je Azure ExpressRoute, Azure VPN Gateway, skupiny zabezpečení sítě a partnerský vztah virtuální sítě.
+Service Fabric běží ve standardní sadě škálování virtuálního počítače. Všechny funkce, které můžete použít v sadě škálování virtuálního počítače, můžete použít s clusterem Service Fabric. Síťové oddíly šablon Azure Resource Manager pro Virtual Machine Scale Sets a Service Fabric jsou identické. Po nasazení do existující virtuální sítě je snadné začlenit další síťové funkce, jako je Azure ExpressRoute, Azure VPN Gateway, skupina zabezpečení sítě a partnerský vztah virtuálních sítí.
 
-Service Fabric se liší od jiných síťových funkcí v jeden aspekt. [Webu Azure portal](https://portal.azure.com) interně používá poskytovatele prostředků Service Fabric pro volání do clusteru a získat informace o uzlech a aplikace. Poskytovatel prostředků Service Fabric vyžaduje veřejně přístupné příchozí přístup k portu brány protokolu HTTP (port 19080, ve výchozím nastavení) na koncový bod správy. [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) používá koncový bod správy ke správě clusteru. Tento port dotaz na informace o clusteru, poskytovatel prostředků Service Fabric také používá k zobrazení na webu Azure Portal. 
+Service Fabric je jedinečný z dalších síťových funkcí v jednom aspektu. [Azure Portal](https://portal.azure.com) interně používá poskytovatele prostředků Service Fabric k volání clusteru k získání informací o uzlech a aplikacích. Poskytovatel prostředků Service Fabric vyžaduje veřejně přístupný příchozí přístup k portu služby HTTP Gateway (ve výchozím nastavení je ve výchozím nastavení port 19080) na koncovém bodu správy. [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) používá ke správě clusteru koncový bod správy. Poskytovatel prostředků Service Fabric používá tento port také k dotazování na informace o clusteru, aby se zobrazily v Azure Portal. 
 
-Pokud port 19080 není přístupný z poskytovatele prostředků Service Fabric, jako jsou zprávy *uzly nebyl nalezen* se zobrazí na portálu a seznamu uzlů a aplikace se zobrazí prázdné. Pokud chcete zobrazit váš cluster na webu Azure Portal, nástroj pro vyrovnávání zatížení musí vystavit veřejná IP adresa a skupiny zabezpečení sítě musí umožňovat příchozí provoz na portu 19080. Pokud nastavení těchto požadavků nesplňuje, na webu Azure portal nezobrazuje stav clusteru.
+Pokud port 19080 není dostupný od poskytovatele prostředků Service Fabric, zobrazí se na portálu zpráva jako *uzly* nenalezené a seznam uzlů a aplikací se zobrazí jako prázdný. Pokud chcete cluster zobrazit v Azure Portal, musí vystavit Nástroj pro vyrovnávání zatížení veřejnou IP adresu a vaše skupina zabezpečení sítě musí umožňovat příchozí přenos portu 19080. Pokud vaše instalace tyto požadavky nesplňuje, Azure Portal nezobrazuje stav vašeho clusteru.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="templates"></a>Šablony
 
-Všechny šablony Service Fabric jsou v [Githubu](https://github.com/Azure/service-fabric-scripts-and-templates/tree/master/templates/networking). Byste měli nasadit šablony jako-pomocí následujících příkazů Powershellu. Pokud nasazujete existující šablonu Azure Virtual Network nebo statické veřejné IP šablony, nejdřív přečíst [počáteční instalace](#initialsetup) části tohoto článku.
+Všechny šablony Service Fabric jsou na [GitHubu](https://github.com/Azure/service-fabric-scripts-and-templates/tree/master/templates/networking). Šablony byste měli být schopní nasadit pomocí následujících příkazů PowerShellu, jak je to možné. Pokud nasazujete stávající šablonu Azure Virtual Network nebo statickou veřejnou IP adresu, přečtěte si část [Úvodní nastavení](#initialsetup) tohoto článku.
 
 <a id="initialsetup"></a>
 ## <a name="initial-setup"></a>Počáteční nastavení
 
-### <a name="existing-virtual-network"></a>Existující virtuální sítě
+### <a name="existing-virtual-network"></a>Existující virtuální síť
 
-V následujícím příkladu Začneme s existující virtuální síť s názvem ExistingRG virtuální sítě v **ExistingRG** skupinu prostředků. Podsíť se nazývá výchozí. Tyto výchozí materiály jsou vytvořeny při vytvoření standardního virtuálního počítače (VM) pomocí webu Azure portal. Můžete vytvořit virtuální síť a podsíť bez vytvoření virtuálního počítače, ale hlavním cílem přidávání clusteru do existující virtuální sítě je k zajištění síťové připojení k ostatním virtuálním počítačům. Vytváří se virtuální počítač poskytuje dobrý příklad, jak je obvykle používána existující virtuální sítě. Pokud váš cluster Service Fabric používá jenom interní nástroj pro vyrovnávání zatížení, bez veřejné IP adresy, můžete virtuální počítač a jeho veřejná IP adresa jako zabezpečený *jump box*.
+V následujícím příkladu Začínáme se stávající virtuální sítí s názvem ExistingRG-VNet ve skupině prostředků **ExistingRG** . Podsíť se nazývá výchozí. Tyto výchozí prostředky se vytvoří, když použijete Azure Portal k vytvoření standardního virtuálního počítače (VM). Virtuální síť a podsíť byste mohli vytvořit bez vytvoření virtuálního počítače, ale hlavním cílem přidání clusteru do existující virtuální sítě je poskytnout síťové připojení k ostatním virtuálním počítačům. Vytvoření virtuálního počítače nabízí dobrý příklad toho, jak se používá existující virtuální síť. Pokud váš Service Fabric cluster používá jenom interní nástroj pro vyrovnávání zatížení, bez veřejné IP adresy, můžete virtuální počítač a jeho veřejnou IP adresu použít jako zabezpečené *pole*s odkazem.
 
-### <a name="static-public-ip-address"></a>Statické veřejné IP adresy
+### <a name="static-public-ip-address"></a>Statická veřejná IP adresa
 
-Statickou veřejnou IP adresu obecně je zdroj vyhrazený, která se spravují odděleně od virtuálního počítače nebo virtuální počítače, který je přiřazen. Se zřizují ve skupině vyhrazených síťových prostředků (na rozdíl od v prostředku clusteru Service Fabric seskupení samotné). Vytvoření statické veřejné IP adresy s názvem staticIP1 ve stejném ExistingRG skupině prostředků, na webu Azure Portal nebo pomocí prostředí PowerShell:
+Statická veřejná IP adresa je obecně vyhrazený prostředek, který je spravovaný samostatně z virtuálního počítače nebo virtuálních počítačů, ke kterým je přiřazený. Zřizuje se ve vyhrazené skupině síťových prostředků (na rozdíl od Service Fabric samotné skupiny prostředků clusteru). Vytvořte statickou veřejnou IP adresu s názvem staticIP1 ve stejné skupině prostředků ExistingRG, a to buď v Azure Portal, nebo pomocí prostředí PowerShell:
 
 ```powershell
 PS C:\Users\user> New-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
@@ -75,14 +75,14 @@ DnsSettings              : {
                            }
 ```
 
-### <a name="service-fabric-template"></a>Šablony Service Fabric
+### <a name="service-fabric-template"></a>Šablona Service Fabric
 
-V příkladech v tomto článku používáme template.json Service Fabric. Stáhnout šablonu z portálu, před vytvořením clusteru můžete použít Průvodce standardní portálu. Také můžete použít jednu z [ukázkových šablon](https://github.com/Azure-Samples/service-fabric-cluster-templates), třeba [zabezpečeného clusteru Service Fabric s pěti uzly](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure).
+V příkladech v tomto článku používáme Service Fabric Template. JSON. K stažení šablony z portálu před vytvořením clusteru můžete použít Průvodce standardním portálem. Můžete použít také jednu z ukázkových [šablon](https://github.com/Azure-Samples/service-fabric-cluster-templates), jako je například [zabezpečený Service Fabric cluster s pěti uzly](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure).
 
 <a id="existingvnet"></a>
-## <a name="existing-virtual-network-or-subnet"></a>Existující virtuální síť nebo podsítě
+## <a name="existing-virtual-network-or-subnet"></a>Existující virtuální síť nebo podsíť
 
-1. Změňte parametr podsítě na název existující podsíť a pak přidejte dva nové parametry tak, aby odkazovaly existující virtuální síť:
+1. Změňte parametr Subnet na název existující podsítě a pak přidejte dva nové parametry, které odkazují na stávající virtuální síť:
 
     ```json
         "subnet0Name": {
@@ -109,20 +109,20 @@ V příkladech v tomto článku používáme template.json Service Fabric. Stáh
             },*/
     ```
 
-2. Okomentujte `nicPrefixOverride` atribut `Microsoft.Compute/virtualMachineScaleSets`, protože používáte existující podsítě a jste zakázali této proměnné v kroku 1.
+2. Odkomentujte `Microsoft.Compute/virtualMachineScaleSets`atribut, protože používáte existující podsíť a tuto proměnnou jste v kroku 1 zakázali. `nicPrefixOverride`
 
     ```json
             /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
     ```
 
-3. Změnit `vnetID` proměnné tak, aby odkazovala na existující virtuální síť:
+3. `vnetID` Změňte proměnnou tak, aby odkazovala na existující virtuální síť:
 
     ```json
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
             "vnetID": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingVNetRGName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('existingVNetName'))]",
     ```
 
-4. Odebrat `Microsoft.Network/virtualNetworks` z vašich prostředků, takže Azure nevytvoří novou virtuální síť:
+4. Odeberte `Microsoft.Network/virtualNetworks` z vašich prostředků, takže Azure nevytvoří novou virtuální síť:
 
     ```json
     /*{
@@ -152,7 +152,7 @@ V příkladech v tomto článku používáme template.json Service Fabric. Stáh
     },*/
     ```
 
-5. Odkomentujte virtuálními sítěmi `dependsOn` atribut `Microsoft.Compute/virtualMachineScaleSets`, takže nejsou závislé na vytvoření nové virtuální sítě:
+5. Odkomentujte virtuální síť od `dependsOn` `Microsoft.Compute/virtualMachineScaleSets`atributu, takže nezáleží na tom, jak vytvořit novou virtuální síť:
 
     ```json
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -173,20 +173,20 @@ V příkladech v tomto článku používáme template.json Service Fabric. Stáh
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
     ```
 
-    Po nasazení, virtuální sítě by měl obsahovat novou škálovací sadu virtuálních počítačů. Typ uzlu sady škálování virtuálního počítače by se zobrazit existující virtuální síť a podsíť. Také můžete použít protokol RDP (Remote Desktop) pro přístup k virtuálnímu počítači, který už je ve virtuální síti, a na příkaz ping novou škálovací nastavte virtuální počítače:
+    Po nasazení by měla virtuální síť zahrnovat nové virtuální počítače sady škálování. Typ uzlu sady škálování virtuálního počítače by měl Ukázat existující virtuální síť a podsíť. K přístupu k virtuálnímu počítači, který už je ve virtuální síti, můžete použít taky protokol RDP (Remote Desktop Protocol) (RDP), a k otestování virtuálního počítače s novým škálováním na více virtuálních počítačích:
 
     ```
     C:>\Users\users>ping 10.0.0.5 -n 1
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-Další příklad naleznete v tématu [, který není specifický pro Service Fabric](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
+Další příklad naleznete v tématu [, které není specifické pro Service Fabric](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet).
 
 
 <a id="staticpublicip"></a>
-## <a name="static-public-ip-address"></a>Statické veřejné IP adresy
+## <a name="static-public-ip-address"></a>Statická veřejná IP adresa
 
-1. Přidáte parametry pro název existující skupiny prostředků, statické IP, název a plně kvalifikovaný název domény (FQDN):
+1. Přidejte parametry pro název existující skupiny prostředků statických IP adres, názvu a plně kvalifikovaného názvu domény (FQDN):
 
     ```json
     "existingStaticIPResourceGroup": {
@@ -200,7 +200,7 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
     }
     ```
 
-2. Odeberte `dnsName` parametru. (Statická IP adresa už má jeden.)
+2. `dnsName` Odeberte parametr. (Statická IP adresa už jednu obsahuje.)
 
     ```json
     /*
@@ -210,13 +210,13 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
     */
     ```
 
-3. Přidejte proměnnou, která odkazují na existující statická IP adresa:
+3. Přidejte proměnnou, která bude odkazovat na existující statickou IP adresu:
 
     ```json
     "existingStaticIP": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingStaticIPResourceGroup'), '/providers/Microsoft.Network/publicIPAddresses/', parameters('existingStaticIPName'))]",
     ```
 
-4. Odebrat `Microsoft.Network/publicIPAddresses` z vašich prostředků, takže Azure nevytvoří novou IP adresu:
+4. Odeberte `Microsoft.Network/publicIPAddresses` z vašich prostředků, takže Azure nevytvoří novou IP adresu:
 
     ```json
     /*
@@ -238,7 +238,7 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
     }, */
     ```
 
-5. Komentář na IP adresu z `dependsOn` atribut `Microsoft.Network/loadBalancers`, takže nejsou závislé na vytváření novou IP adresu:
+5. Odkomentujte IP adresu z `dependsOn` `Microsoft.Network/loadBalancers`atributu, takže nezáleží na vytvoření nové IP adresy:
 
     ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
@@ -252,7 +252,7 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
     "properties": {
     ```
 
-6. V `Microsoft.Network/loadBalancers` prostředek, změny `publicIPAddress` prvek `frontendIPConfigurations` odkazovat existující statickou IP adresu místo si nově vytvořený odběr:
+6. `Microsoft.Network/loadBalancers` V prostředku`publicIPAddress` změňte element`frontendIPConfigurations` na odkaz na existující statickou IP adresu namísto nově vytvořené:
 
     ```json
                 "frontendIPConfigurations": [
@@ -268,7 +268,7 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
                     ],
     ```
 
-7. V `Microsoft.ServiceFabric/clusters` prostředků, změna `managementEndpoint` na plně kvalifikovaný název domény DNS statické IP adresy. Pokud používáte zabezpečeného clusteru, ujistěte se, že změníte *http://* k *https://* . (Všimněte si, že tento krok platí jenom pro clustery Service Fabric. Pokud použijete škálovací sady virtuálních počítačů, přeskočte tento krok.)
+7. V prostředku přejděte `managementEndpoint` do plně kvalifikovaného názvu domény DNS statické IP adresy. `Microsoft.ServiceFabric/clusters` Pokud používáte zabezpečený cluster, nezapomeňte změnit *http://* na *https://* . (Upozorňujeme, že tento krok platí jenom pro Service Fabric clustery. Pokud používáte sadu škálování virtuálního počítače, přeskočte tento krok.)
 
     ```json
                     "fabricSettings": [],
@@ -288,14 +288,14 @@ Další příklad naleznete v tématu [, který není specifický pro Service Fa
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
     ```
 
-Po nasazení uvidíte, že nástroj pro vyrovnávání zatížení je vázán na statickou veřejnou IP adresu z jiné skupiny prostředků. Koncový bod připojení klienta Service Fabric a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) koncového bodu pro plně kvalifikovaný název DNS statickou IP adresu.
+Po nasazení vidíte, že je váš nástroj pro vyrovnávání zatížení vázaný na veřejnou statickou IP adresu z jiné skupiny prostředků. Koncový bod připojení klienta Service Fabric a koncový bod [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) odkazuje na plně kvalifikovaný název domény DNS statické IP adresy.
 
 <a id="internallb"></a>
-## <a name="internal-only-load-balancer"></a>Nástroje pro vyrovnávání zatížení jenom pro interní
+## <a name="internal-only-load-balancer"></a>Jenom interní nástroj pro vyrovnávání zatížení
 
-Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Service Fabric výchozí služby pouze interní load balancer. Důsledky pro na webu Azure portal a u poskytovatele prostředků Service Fabric najdete v předchozí části.
+Tento scénář nahrazuje externí nástroj pro vyrovnávání zatížení ve výchozí šabloně Service Fabric s interním nástrojem pro vyrovnávání zatížení. Důsledky pro Azure Portal a pro poskytovatele prostředků Service Fabric najdete v předchozí části.
 
-1. Odeberte `dnsName` parametru. (Není potřeba.)
+1. `dnsName` Odeberte parametr. (Není nutné.)
 
     ```json
     /*
@@ -305,7 +305,7 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
     */
     ```
 
-2. Volitelně můžete použít metodu statického přidělování, můžete přidat parametr statické IP adresy. Pokud používáte metody dynamického přidělení, není potřeba tento krok.
+2. Případně, pokud použijete statickou metodu přidělení, můžete přidat parametr statických IP adres. Pokud používáte metodu dynamického přidělení, nemusíte tento krok provádět.
 
     ```json
             "internalLBAddress": {
@@ -314,7 +314,7 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
             }
     ```
 
-3. Odebrat `Microsoft.Network/publicIPAddresses` z vašich prostředků, takže Azure nevytvoří novou IP adresu:
+3. Odeberte `Microsoft.Network/publicIPAddresses` z vašich prostředků, takže Azure nevytvoří novou IP adresu:
 
     ```json
     /*
@@ -336,7 +336,7 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
     }, */
     ```
 
-4. Odeberte IP adresu `dependsOn` atribut `Microsoft.Network/loadBalancers`, takže nejsou závislé na vytváření novou IP adresu. Přidat virtuální síť `dependsOn` atribut, protože nástroj pro vyrovnávání zatížení teď závisí na podsíť z virtuální sítě:
+4. `dependsOn` Odeberte`Microsoft.Network/loadBalancers`atribut IP adresy, takže nezáleží na tom, jak vytvořit novou IP adresu. Přidejte atribut virtuální síť `dependsOn` , protože nástroj pro vyrovnávání zatížení je teď závislý na podsíti z virtuální sítě:
 
     ```json
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -349,7 +349,7 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
                 ],
     ```
 
-5. Změna nástroje pro vyrovnávání zatížení `frontendIPConfigurations` ze pomocí nastavení `publicIPAddress`, na použití podsítě a `privateIPAddress`. `privateIPAddress` používá předdefinované statické interní IP adresu. Chcete-li použít dynamickou IP adresu, odeberte `privateIPAddress` element a pak změňte `privateIPAllocationMethod` k **dynamické**.
+5. Změňte `frontendIPConfigurations` nastavení nástroje pro vyrovnávání zatížení z `publicIPAddress`použití, aby bylo možné použít podsíť `privateIPAddress`a. `privateIPAddress`používá předdefinovanou statickou interní IP adresu. Chcete-li použít dynamickou IP adresu, `privateIPAddress` odeberte prvek a pak změňte `privateIPAllocationMethod` hodnotu na **Dynamic**.
 
     ```json
                 "frontendIPConfigurations": [
@@ -370,7 +370,7 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
                     ],
     ```
 
-6. V `Microsoft.ServiceFabric/clusters` prostředků, změna `managementEndpoint` tak, aby odkazoval na adresu interního nástroje pro vyrovnávání. Pokud používáte zabezpečeného clusteru, ujistěte se, že změníte *http://* k *https://* . (Všimněte si, že tento krok platí jenom pro clustery Service Fabric. Pokud použijete škálovací sady virtuálních počítačů, přeskočte tento krok.)
+6. V prostředku změňte `managementEndpoint` tak, aby odkazoval na adresu interního nástroje pro vyrovnávání zatížení. `Microsoft.ServiceFabric/clusters` Pokud používáte zabezpečený cluster, nezapomeňte změnit *http://* na *https://* . (Upozorňujeme, že tento krok platí jenom pro Service Fabric clustery. Pokud používáte sadu škálování virtuálního počítače, přeskočte tento krok.)
 
     ```json
                     "fabricSettings": [],
@@ -386,16 +386,16 @@ Tento scénář nahradí externím vyrovnáváním zatížení v šabloně Servi
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
-Po nasazení se používá nástroj pro vyrovnávání zatížení 10.0.0.250 statické privátní IP adresu. Pokud máte jiného počítače ve stejné virtuální síti, můžete přejít k interní [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) koncového bodu. Všimněte si, že se připojuje k jednomu z uzlů za nástrojem pro vyrovnávání zatížení.
+Po nasazení použije nástroj pro vyrovnávání zatížení privátní statickou IP adresu 10.0.0.250. Pokud máte jiný počítač ve stejné virtuální síti, můžete přejít na koncový bod interního [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) . Všimněte si, že se připojí k jednomu z uzlů za nástrojem pro vyrovnávání zatížení.
 
 <a id="internalexternallb"></a>
-## <a name="internal-and-external-load-balancer"></a>Nástroj pro vyrovnávání zatížení interní i externí
+## <a name="internal-and-external-load-balancer"></a>Interní a externí nástroj pro vyrovnávání zatížení
 
-V tomto scénáři začínat stávající typ s jedním uzlem externí nástroj pro vyrovnávání zatížení a přidejte interního nástroje pro stejný typ uzlu. Back-end port připojený k fondu back endových adres lze přiřadit pouze k nástroji pro vyrovnávání zatížení. Určete, které nástroj pro vyrovnávání zatížení bude mít vaše aplikace porty a jaké nástroje pro vyrovnávání zatížení bude mít vaše koncové body správy (porty 19000 a 19080). Když vložíte koncových bodů správy v nástroji pro vyrovnávání zatížení interní, mějte na paměti prostředku Service Fabric poskytovatele omezení popsaná v následujícím článku. V tomto příkladu používáme, správy, které zůstávají koncových bodů v externím vyrovnáváním zatížení. Také přidat port 80 port aplikace a umístěte ho na interní služby load balancer.
+V tomto scénáři začínáte s existujícím typem externího nástroje pro vyrovnávání zatížení s jedním uzlem a přidáte interní nástroj pro vyrovnávání zatížení pro stejný typ uzlu. Back-endové porty připojené k fondu back-end adres lze přiřadit pouze k jednomu nástroji pro vyrovnávání zatížení. Vyberte, který nástroj pro vyrovnávání zatížení bude mít porty vaší aplikace a který nástroj pro vyrovnávání zatížení bude mít koncové body správy (porty 19000 a 19080). Pokud umístíte koncové body správy do interního nástroje pro vyrovnávání zatížení, pamatujte na Service Fabric omezení poskytovatele prostředků popsaná výše v článku. V příkladu, který používáme, zůstávají koncové body správy v externím nástroji pro vyrovnávání zatížení. Můžete také přidat port aplikace portu 80 a umístit ho do interního nástroje pro vyrovnávání zatížení.
 
-V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížení. Další typ uzlu je v interní služby load balancer. Pro použití dvou typ uzlu clusteru, v šabloně portál vytvořil dva typ uzlu, (která je součástí nástrojů pro vyrovnávání zatížení dvou), přepněte druhý nástroj pro vyrovnávání zatížení interního nástroje. Další informace najdete v tématu [nástroje pro vyrovnávání zatížení jenom pro interní](#internallb) oddílu.
+V clusteru typu se dvěma uzly je jeden typ uzlu v externím nástroji pro vyrovnávání zatížení. Druhý typ uzlu je na interním nástroji pro vyrovnávání zatížení. Pokud chcete použít cluster se dvěma uzly, vytvořte na portálu šablonu typu se dvěma uzly, která se dodává se dvěma nástroji pro vyrovnávání zatížení, a druhý nástroj pro vyrovnávání zatížení přepněte do interního nástroje pro vyrovnávání zatížení. Další informace najdete v části Nástroj pro vyrovnávání zatížení s interním vyrovnáváním [zatížení](#internallb) .
 
-1. Přidáte parametr statické interního nástroje pro vyrovnávání IP adresa. (Poznámky související s používáním dynamickou IP adresu, najdete v dřívějších částech tohoto článku.)
+1. Přidejte parametr statické IP adresy interního nástroje pro vyrovnávání zatížení. (Poznámky související s používáním dynamické IP adresy najdete v předchozích částech tohoto článku.)
 
     ```json
             "internalLBAddress": {
@@ -404,9 +404,9 @@ V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížen
             }
     ```
 
-2. Přidáte parametr port 80 aplikace.
+2. Přidejte parametr port aplikace 80.
 
-3. Přidejte sítě proměnné, kopírovat a vkládat je interní verze stávajícího a přidejte "-Int" k názvu:
+3. Pokud chcete přidat interní verze existujících proměnných sítě, zkopírujte je a vložte a přidejte do názvu "-int":
 
     ```json
     /* Add internal load balancer networking variables */
@@ -419,7 +419,7 @@ V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížen
             /* Internal load balancer networking variables end */
     ```
 
-4. Pokud začnete se šablonou generovaný na portálu, který používá aplikace port 80, přidá výchozí šablony portálu AppPort1 (port 80) na externím vyrovnáváním zatížení. V takovém případě odeberte z nástroje pro vyrovnávání zatížení externí AppPort1 `loadBalancingRules` a testy, můžete ho přidat do interní služby load balancer:
+4. Pokud začnete s šablonou generovanou na portálu, která používá port aplikace 80, výchozí šablona portálu přidá AppPort1 (port 80) na externí nástroj pro vyrovnávání zatížení. V takovém případě odeberte AppPort1 z externího nástroje pro vyrovnávání `loadBalancingRules` zatížení a sondy, abyste je mohli přidat do interního nástroje pro vyrovnávání zatížení:
 
     ```json
     "loadBalancingRules": [
@@ -496,7 +496,7 @@ V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížen
     "inboundNatPools": [
     ```
 
-5. Přidejte druhý `Microsoft.Network/loadBalancers` prostředků. Vypadá podobně jako interního nástroje load balancer vytvořené v [nástroje pro vyrovnávání zatížení jenom pro interní](#internallb) oddílu, ale používá "-Int" proměnné nástroje pro vyrovnávání zatížení a implementuje pouze aplikace port 80. Tím se taky odeberou `inboundNatPools`, aby vaše koncové body protokolu RDP na nástroj pro vyrovnávání zatížení veřejnou. Pokud chcete protokol RDP na interní služby load balancer, přesuňte `inboundNatPools` z externí nástroj pro vyrovnávání pro tento interní nástroj pro vyrovnávání zatížení:
+5. Přidejte druhý `Microsoft.Network/loadBalancers` prostředek. Vypadá podobně jako interní nástroj pro vyrovnávání zatížení vytvořený v oddílu [Nástroje pro vyrovnávání zatížení](#internallb) , ale používá proměnné nástroje pro vyrovnávání zatížení "-int" a implementuje pouze port aplikace 80. Tím se také `inboundNatPools`odstraní, aby zůstaly koncové body RDP ve veřejném nástroji pro vyrovnávání zatížení. Pokud chcete protokol RDP na interním nástroji pro vyrovnávání `inboundNatPools` zatížení, přejděte z externího nástroje pro vyrovnávání zatížení do tohoto interního nástroje pro vyrovnávání zatížení:
 
     ```json
             /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
@@ -581,7 +581,7 @@ V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížen
             },
     ```
 
-6. V `networkProfile` pro `Microsoft.Compute/virtualMachineScaleSets` prostředků, přidat interní back endovém fondu adres:
+6. V `networkProfile` části`Microsoft.Compute/virtualMachineScaleSets` pro prostředek přidejte interní fond back-end adres:
 
     ```json
     "loadBalancerBackendAddressPools": [
@@ -603,10 +603,10 @@ V clusteru dvě typ uzlu jeden typ uzlu je v externím vyrovnáváním zatížen
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
     ```
 
-Po nasazení zobrazí se dvě služby Vyrovnávání zatížení ve skupině prostředků. Pokud přejdete nástroje pro vyrovnávání zatížení, můžete zobrazit veřejné IP adresy a správa koncových bodů (porty 19000 a 19080) přiřazenou veřejnou IP adresu. Můžete zobrazit také statické interní IP adresu a aplikace koncový bod (port 80) přiřazená interní služby load balancer. Oba nástroje pro vyrovnávání zatížení používat stejný fond back-end škálovací sady virtuálního počítače.
+Po nasazení můžete ve skupině prostředků zobrazit dvě nástroje pro vyrovnávání zatížení. Pokud procházíte nástroji pro vyrovnávání zatížení, můžete zobrazit veřejné IP adresy a koncové body správy (porty 19000 a 19080) přiřazené k veřejné IP adrese. Také se můžete podívat na statickou interní IP adresu a koncový bod aplikace (port 80) přiřazený internímu nástroji pro vyrovnávání zatížení. Obě služby Vyrovnávání zatížení používají stejný fond back-end sady škálování virtuálních počítačů.
 
 ## <a name="next-steps"></a>Další postup
 [Vytvoření clusteru](service-fabric-cluster-creation-via-arm.md)
 
-Po nasazení zobrazí se dvě služby Vyrovnávání zatížení ve skupině prostředků. Pokud přejdete nástroje pro vyrovnávání zatížení, můžete zobrazit veřejné IP adresy a správa koncových bodů (porty 19000 a 19080) přiřazenou veřejnou IP adresu. Můžete zobrazit také statické interní IP adresu a aplikace koncový bod (port 80) přiřazená interní služby load balancer. Oba nástroje pro vyrovnávání zatížení používat stejný fond back-end škálovací sady virtuálního počítače.
+Po nasazení můžete ve skupině prostředků zobrazit dvě nástroje pro vyrovnávání zatížení. Pokud procházíte nástroji pro vyrovnávání zatížení, můžete zobrazit veřejné IP adresy a koncové body správy (porty 19000 a 19080) přiřazené k veřejné IP adrese. Také se můžete podívat na statickou interní IP adresu a koncový bod aplikace (port 80) přiřazený internímu nástroji pro vyrovnávání zatížení. Obě služby Vyrovnávání zatížení používají stejný fond back-end sady škálování virtuálních počítačů.
 

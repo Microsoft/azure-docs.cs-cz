@@ -1,6 +1,6 @@
 ---
-title: Připojení Excelu k izolované databáze ve službě Azure SQL Database | Dokumentace Microsoftu
-description: Zjistěte, jak připojit Microsoft Excel k izolované databáze ve službě Azure SQL database. Naimportujte si data do Excelu, kde můžete data dále zkoumat a vytvářet z nich sestavy.
+title: Připojení Excelu k izolované databázi v Azure SQL Database | Microsoft Docs
+description: Naučte se připojit Microsoft Excel k izolované databázi ve službě Azure SQL Database. Naimportujte si data do Excelu, kde můžete data dále zkoumat a vytvářet z nich sestavy.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,54 +10,53 @@ ms.topic: conceptual
 author: joseidz
 ms.author: craigg
 ms.reviewer: ''
-manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: a6e0adc6b4abbb58504b6f56c8def72440ad370d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8711d8f7ebc00b2d0fa51ff9f420293e96766d1c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061399"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569349"
 ---
-# <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Připojení Excelu k izolované databáze ve službě Azure SQL database a vytvoření sestavy
+# <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Připojení Excelu k izolované databázi ve službě Azure SQL Database a vytvoření sestavy
 
-Připojení Excelu k izolované databáze ve službě Azure SQL Database a importovat data a vytvářet tabulky a grafy na základě hodnot v databázi. V tomto kurzu nastavíte připojení mezi Excelem a databázovou tabulkou, uložíte soubor, ve kterém jsou uložená data a informace o připojení pro Excel, a pak z hodnot v databázi vytvoříte kontingenční graf.
+Připojení Excelu k izolované databázi v Azure SQL Database a import dat a vytváření tabulek a grafů na základě hodnot v databázi. V tomto kurzu nastavíte připojení mezi Excelem a databázovou tabulkou, uložíte soubor, ve kterém jsou uložená data a informace o připojení pro Excel, a pak z hodnot v databázi vytvoříte kontingenční graf.
 
-Než začnete, budete potřebovat izolované databáze. Pokud ho nemáte, přečtěte si téma [vytvoření izolované databáze](sql-database-single-database-get-started.md) a [vytvoření brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md) zobrazíte izolované databáze s ukázkovými daty rychle zprovoznit za pár minut.
+Než začnete pracovat, budete potřebovat jednu databázi. Pokud ho nemáte, přečtěte si téma [vytvoření jedné databáze](sql-database-single-database-get-started.md) a [Vytvoření brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md) pro získání izolované databáze s ukázkovými daty v několika minutách.
 
-V tomto článku budete importovat vzorová data do aplikace Excel z tohoto článku, ale můžete podle podobných kroků s vlastními daty.
+V tomto článku naimportujete do Excelu ukázková data z tohoto článku, ale můžete postupovat podle podobných kroků s vlastními daty.
 
 Budete také potřebovat Excel. V tomto článku používáme [Microsoft Excel 2016](https://products.office.com/).
 
-## <a name="connect-excel-to-a-sql-database-and-load-data"></a>Připojení Excelu k SQL database a k načtení dat
+## <a name="connect-excel-to-a-sql-database-and-load-data"></a>Připojení Excelu k databázi SQL a načtení dat
 
 1. Když budete chtít Excel připojit k databázi SQL, otevřete ho a vytvořte nový sešit nebo otevřete existující excelový sešit.
-2. V panelu nabídek v horní části stránky vyberte **Data** kartu, vyberte možnost **získat Data**, vyberte z Azure a pak vyberte **z Azure SQL Database**. 
+2. V řádku nabídek v horní části stránky vyberte kartu **data** , vyberte **získat data**, vyberte z Azure a pak vyberte **z Azure SQL Database**. 
 
-   ![Vyberte zdroj dat: Připojení Excelu k SQL database.](./media/sql-database-connect-excel/excel_data_source.png)
+   ![Vybrat zdroj dat: Připojení Excelu k SQL Database.](./media/sql-database-connect-excel/excel_data_source.png)
 
    Otevře se Průvodce datovým připojením.
-3. V dialogovém okně **Připojit k databázovému serveru** zadejte **název serveru** SQL Database, ke kterému se chcete připojit, v následující podobě: <*název_serveru*> **. database.windows.net**. Například **msftestserver.database.windows.net**. Volitelně můžete zadejte název databáze. Vyberte **OK** otevřete okno přihlašovací údaje. 
+3. V dialogovém okně **Připojit k databázovému serveru** zadejte **název serveru** SQL Database, ke kterému se chcete připojit, v následující podobě: <*název_serveru*> **. database.windows.net**. Například **msftestserver.Database.Windows.NET**. V případě potřeby zadejte název vaší databáze. Výběrem **OK** otevřete okno přihlašovací údaje. 
 
-   ![Připojení k databázi serveru dialogovému oknu](media/sql-database-connect-excel/server-name.png)
+   ![Dialogové okno připojit k databázovému serveru](media/sql-database-connect-excel/server-name.png)
 
-4. V **databázi systému SQL Server** dialogu **databáze** na levé straně na straně a pak zadejte vaše **uživatelské jméno** a **heslo** pro Server služby SQL Database, kterou chcete připojit. Vyberte **připojit** otevřít **Navigátor**. 
+4. V dialogovém okně **SQL Server databáze** vyberte v levé části možnost **databáze** a potom zadejte **uživatelské jméno** a **heslo** pro SQL Database Server, ke kterému se chcete připojit. Kliknutím na **připojit** otevřete **navigátor**. 
 
    ![Zadejte název a přihlašovací údaje serveru.](./media/sql-database-connect-excel/connect-to-server.png)
 
    > [!TIP]
    > V závislosti na vašem síťovém prostředí nemusíte být schopni se připojit nebo může dojít ke ztrátě připojení (pokud server služby SQL Database nepovoluje přenos dat z IP adresy vašeho klienta). Přejděte na [portál Azure](https://portal.azure.com/), klikněte na SQL servery, klikněte na svůj server, v nastavení klikněte na bránu firewall a přidejte IP adresu svého klienta. Podrobnosti najdete v tématu [Jak nakonfigurovat nastavení brány firewall](sql-database-configure-firewall-settings.md).
 
-5. V **Navigátor**vyberte databáze, kterou chcete pracovat v seznamu vyberte tabulky a zobrazení, kterým chcete pracovat s (jsme zvolili **vGetAllCategories**) a pak vyberte **zatížení**pro přesun dat z databáze do Excelové tabulky.
+5. V **navigátoru**vyberte v seznamu databázi, se kterou chcete pracovat, vyberte tabulky nebo zobrazení, se kterými chcete pracovat (zvolili jsme **vGetAllCategories**), a pak vyberte **načíst** , chcete-li přesunout data z databáze do tabulky aplikace Excel.
 
     ![Vyberte databázi a tabulku.](./media/sql-database-connect-excel/select-database-and-table.png)
 
 ## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>Import dat do Excelu a vytvoření kontingenčního grafu
 
-Teď, když jste vytvořili připojení, máte několik různých možností, jak načíst data. Například následující kroky vytvoření kontingenčního grafu na základě dat v databázi SQL. 
+Teď, když jste navázali připojení, máte k dispozici několik různých možností, jak načíst data. Následující kroky například vytvoří kontingenční graf na základě dat nalezených ve vašem SQL Database. 
 
-1. Postupujte podle kroků v předchozí části, ale tentokrát místo výběru **zatížení**vyberte **načíst do** z **zatížení** rozevíracího seznamu.
-2. Potom vyberte, jak chcete zobrazit tato data v sešitu. Zvolili jsme možnost **Kontingenční graf**. Můžete také zvolit možnost **Nový list** nebo **Přidat tato data do datového modelu**. Další informace o datových modelech najdete v tématu [Vytvoření datového modelu v Excelu](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B). 
+1. Postupujte podle kroků v předchozí části, ale tentokrát místo výběru možnosti **načíst**vyberte **načíst do** v rozevíracím seznamu **načíst** .
+2. V dalším kroku vyberte, jak chcete zobrazit tato data v sešitu. Zvolili jsme možnost **Kontingenční graf**. Můžete také zvolit možnost **Nový list** nebo **Přidat tato data do datového modelu**. Další informace o datových modelech najdete v tématu [Vytvoření datového modelu v Excelu](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B). 
 
     ![Volba formátu pro data v Excelu](./media/sql-database-connect-excel/import-data.png)
 
@@ -67,35 +66,35 @@ Teď, když jste vytvořili připojení, máte několik různých možností, ja
     ![Nakonfigurujte sestavu databáze.](./media/sql-database-connect-excel/power-pivot-results.png)
 
 > [!TIP]
-> Pokud chcete k databázi připojit jiné Excelové sešity a listy, vyberte **Data** kartu a vyberte **poslední zdroje** ke spuštění **poslední zdroje** dialogové okno. Odtud, zvolte připojení, které jste vytvořili ze seznamu a potom klikněte na tlačítko **otevřít**.
+> Pokud chcete k databázi připojit jiné excelové sešity a listy, vyberte kartu **data** a vyberte **Poslední zdroje** . otevře se dialogové okno **Poslední zdroje** . Odtud ze seznamu vyberte připojení, které jste vytvořili, a pak klikněte na **otevřít**.
 > ![Dialogové okno poslední zdroje](media/sql-database-connect-excel/recent-connections.png)
 
 ## <a name="create-a-permanent-connection-using-odc-file"></a>Vytvoření trvalého připojení pomocí souboru ODC
 
-Trvale uložit podrobné informace o připojení, můžete vytvořit soubor ODC a vytvoření volitelnou možnost v rámci tohoto připojení **existující připojení** dialogové okno. 
+Chcete-li uložit podrobnosti o připojení trvale, můžete vytvořit soubor. odc a vytvořit toto připojení možnost s možností volby v dialogovém okně **existující připojení** . 
 
-1. V panelu nabídek v horní části stránky vyberte **Data** kartu a potom vyberte **existující připojení** ke spuštění **existující připojení** dialogové okno. 
-   1. Vyberte **vyhledat další** otevřít **vybrat zdroj dat** dialogové okno.   
-   2. Vyberte **+NewSqlServerConnection.odc** souboru a pak vyberte **otevřete** otevřít **Průvodce datovým připojením**.
+1. V řádku nabídek v horní části stránky vyberte kartu **data** a pak vyberte **existující připojení** . tím otevřete dialogové okno **existující připojení** . 
+   1. Pokud chcete otevřít dialogové okno **Vybrat zdroj dat** , vyberte **Vyhledat další** .   
+   2. Vyberte soubor **+ NewSqlServerConnection. odc** a pak výběrem **otevřít** otevřete **Průvodce datovým připojením**.
 
-      ![Nové dialogové okno připojení](media/sql-database-connect-excel/new-connection.png)
+      ![Nové připojení – dialogové okno](media/sql-database-connect-excel/new-connection.png)
 
-2. V **Průvodce datovým připojením**, zadejte název vašeho serveru a přihlašovací údaje vaší databáze SQL. Vyberte **Další**. 
-   1. Vyberte databázi, která obsahuje vaše data z rozevíracího seznamu. 
-   2. Vyberte tabulku nebo zobrazení, které vás zajímají. Rozhodli jsme se vGetAllCategories.
+2. V **Průvodci datovým připojením**zadejte název serveru a přihlašovací údaje pro SQL Database. Vyberte **Další**. 
+   1. Z rozevíracího seznamu vyberte databázi, která obsahuje vaše data. 
+   2. Vyberte tabulku nebo zobrazení, na které vás zajímáte. Zvolili jsme vGetAllCategories.
    3. Vyberte **Další**. 
 
       ![Průvodce datovým připojením](media/sql-database-connect-excel/data-connection-wizard.png) 
 
-3. Vyberte umístění vašeho souboru **název_souboru**a **popisný název** na další obrazovce Průvodce datovým připojením. Můžete také uložit heslo v souboru, i když to může potenciálně vystavit nežádoucí přístup k datům. Vyberte **Dokončit** Jakmile budete připraveni. 
+3. Na další obrazovce Průvodce datovým připojením vyberte umístění souboru, **název souboru**a **popisný název** . Můžete také zvolit uložení hesla do souboru, i když to může potenciálně vystavit data nežádoucímu přístupu. Po **dokončení vyberte Dokončit** . 
 
-    ![Uložení datové připojení](media/sql-database-connect-excel/save-data-connection.png)
+    ![Uložit datové připojení](media/sql-database-connect-excel/save-data-connection.png)
 
-4. Vyberte, jak chcete importovat data. Rozhodli jsme se kontingenční tabulku. Můžete také upravit vlastnosti připojení vyberete **vlastnosti**. Vyberte **OK** Jakmile budete připraveni. Pokud jste nezvolili uložit heslo k souboru, pak budete vyzváni k zadání přihlašovacích údajů. 
+4. Vyberte, jak chcete importovat data. Zvolili jsme vytvoření kontingenční tabulky. Vlastnosti připojení můžete změnit také tak, že vyberete **vlastnosti**. Až budete připraveni, vyberte **OK** . Pokud jste se nerozhodli Uložit heslo se souborem, budete vyzváni k zadání přihlašovacích údajů. 
 
-    ![Import dat](media/sql-database-connect-excel/import-data2.png)
+    ![Importovat data](media/sql-database-connect-excel/import-data2.png)
 
-5. Ověřte, že nové připojení se uložil tak, že rozbalíte **Data** kartu a vyberete **existující připojení**. 
+5. Rozbalením karty **data** a vybráním **existujících připojení**ověřte, zda bylo nové připojení uloženo. 
 
     ![Existující připojení](media/sql-database-connect-excel/existing-connection.png)
 

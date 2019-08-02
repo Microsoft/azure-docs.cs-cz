@@ -8,22 +8,25 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 2030496548df312b4f4cfab60c216d5f332c7ac2
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310396"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619879"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Omezení přístupu ke službě Azure Container Registry pomocí virtuální sítě Azure nebo pravidel brány firewall
 
 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) poskytuje zabezpečenou privátní síť pro vaše Azure a místní prostředky. Omezením přístupu k privátní službě Azure Container Registry z Azure Virtual Network zajistíte, aby se do registru přistupují pouze prostředky ve virtuální síti. U různých scénářů můžete také nakonfigurovat pravidla brány firewall tak, aby povolovala přístup k registru jenom z konkrétních IP adres.
 
-Tento článek ukazuje dva scénáře, jak vytvořit pravidla přístupu k síti pro omezení přístupu ke službě Azure Container Registry: z virtuálního počítače nasazeného ve virtuální síti nebo z veřejné IP adresy virtuálního počítače.
+Tento článek popisuje dva scénáře konfigurace příchozího pravidla přístupu k síti v registru kontejnerů: z virtuálního počítače nasazeného ve virtuální síti nebo z veřejné IP adresy virtuálního počítače.
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview a [platí některá omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 >
+
+Pokud místo toho potřebujete nastavit pravidla přístupu pro prostředky, abyste dosáhli registru kontejneru za bránou firewall, přečtěte si téma [Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall](container-registry-firewall-access-rules.md).
+
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
@@ -39,7 +42,7 @@ Tento článek ukazuje dva scénáře, jak vytvořit pravidla přístupu k síti
 
 * K používání kroků Azure CLI v tomto článku se vyžaduje Azure CLI verze 2.0.58 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-* Pokud ještě nemáte registr kontejneru, vytvořte si ho (vyžaduje se Premium SKU) a nahrajte do něj ukázkovou image `hello-world` , jako je například Docker Hub. Například použijte [Azure Portal][quickstart-portal] or the [Azure CLI][quickstart-cli] k vytvoření registru. 
+* Pokud ještě nemáte registr kontejneru, vytvořte si ho (vyžaduje se Premium SKU) a nahrajte do něj ukázkovou image `hello-world` , jako je například Docker Hub. K vytvoření registru použijte například [Azure Portal][quickstart-portal] nebo rozhraní příkazového [řádku Azure][quickstart-cli] . 
 
 * Pokud chcete omezit přístup k registru pomocí virtuální sítě v jiném předplatném Azure, musíte zaregistrovat poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Příklad:
 
@@ -352,7 +355,7 @@ az acr network-rule remove \
   --ip-address 23.45.1.0/24
 ```
 
-#### <a name="allow-access"></a>Povolení přístupu
+#### <a name="allow-access"></a>Povolit přístup
 
 Název registru nahraďte následujícím příkazem [AZ ACR Update][az-acr-update] :
 ```azurecli

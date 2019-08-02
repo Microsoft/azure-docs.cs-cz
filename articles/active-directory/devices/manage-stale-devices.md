@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3661b3f7fd37a329857a74d32d292678d98f5aef
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 3c6793581b797892c0bb468906d4f8ae72182618
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499830"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562123"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Jak: Správa zastaralých zařízení ve službě Azure AD
 
@@ -47,7 +47,7 @@ Vyhodnocení časového razítka aktivity se aktivuje při pokusu o ověření z
 - Jsou v síti aktivní zařízení s Windows 10, která jsou připojená k Azure AD nebo hybridně připojená k Azure AD. 
 - Zařízení spravovaná přes Intune se přihlásí k této službě.
 
-Pokud je rozdíl mezi stávající hodnotou časového razítka aktivity a aktuální hodnotou větší než 14 dní, nahradí se existující hodnota novou hodnotou.
+Pokud rozdíl mezi existující hodnotou časového razítka aktivity a aktuální hodnotou je více než 14 dní (odchylka od 5 dnů), stávající hodnota se nahradí novou hodnotou.
 
 ## <a name="how-do-i-get-the-activity-timestamp"></a>Jak získám časové razítko aktivity?
 
@@ -70,14 +70,14 @@ Pokud chcete ve svém prostředí efektivně uklidit zastaralá zařízení, mě
 K aktualizaci zařízení ve službě Azure AD potřebujete účet, který má přiřazenu jednu z následujících rolí:
 
 - Globální správce
-- Správce cloudového zařízení
+- Správce cloudových zařízení
 - Správce služby Intune
 
 V zásadách úklidu vyberte účty, které mají přiřazené požadované role. 
 
 ### <a name="timeframe"></a>Časové období
 
-Definujte časové období, které je ukazatelem zastaralého zařízení. Při definování časového období zohledněte 14denní interval aktualizace časového razítka aktivity. Pro ukazatel zastaralého zařízení byste například neměli uvažovat o časovém razítku, které je kratší než 14 dnů. V určitých situacích se zařízení může jevit jako zastaralé, přestože není. Vlastník takového zařízení může být například na dovolené nebo na nemocenské,  která přesahuje časové období pro zastaralá zařízení.
+Definujte časové období, které je ukazatelem zastaralého zařízení. Při definování časového rámce přihlaste okno, ve kterém se aktualizuje časové razítko aktivity, na svou hodnotu. Například byste neměli považovat časové razítko mladší než 21 dní (zahrnuje odchylku) jako indikátor pro zastaralé zařízení. V určitých situacích se zařízení může jevit jako zastaralé, přestože není. Vlastník takového zařízení může být například na dovolené nebo na nemocenské,  která přesahuje časové období pro zastaralá zařízení.
 
 ### <a name="disable-devices"></a>Zakázání zařízení
 
@@ -89,7 +89,7 @@ Pokud je zařízení pod kontrolou Intune nebo jiných řešení MDM, před zak�
 
 ### <a name="system-managed-devices"></a>Zařízení spravovaná systémem
 
-Neodstraňujte zařízení spravovaná systémem. Jedná se obecně o zařízení, jako je například autopilot. Po odstranění nelze tato zařízení znovu zřídit. Nová rutina `get-msoldevice` standardně vylučuje zařízení spravovaná systémem. 
+Neodstraňujte zařízení spravovaná systémem. Jedná se obecně o zařízení, jako je například autopilot. Po odstranění nebude možné tato zařízení znovu zřídit. Nová rutina `get-msoldevice` standardně vylučuje zařízení spravovaná systémem. 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hybridní zařízení připojená k Azure AD
 
@@ -98,15 +98,30 @@ Zařízení hybridně připojená k Azure AD by měla dodržovat zásady pro spr
 Službu Azure AD uklidíte takto:
 
 - **Zařízení s Windows 10** – zakažte nebo odstraňte zařízení s Windows 10 v místní službě AD a nechejte nástroj Azure AD Connect synchronizovat stav změněných zařízení se službou Azure AD.
-- **Windows 7/8** – zakažte nebo odstraňte zařízení s Windows 7/8 ve službě Azure AD. K zakázání nebo odstranění zařízení s Windows 7/8 ve službě Azure AD nemůžete použít Azure AD Connect.
+- **Windows 7/8** – nejdřív zakažte nebo odstraňte zařízení s Windows 7/8 v místní službě AD. K zakázání nebo odstranění zařízení s Windows 7/8 ve službě Azure AD nemůžete použít Azure AD Connect. Pokud provedete změnu v místním prostředí, musíte v Azure AD zakázat nebo odstranit.
+
+> [!NOTE]
+>* Odstranění zařízení v místní službě AD nebo Azure AD se do klienta neregistruje. Znemožní přístup k prostředkům pomocí zařízení jako identity (např. podmíněný přístup). Přečtěte si další informace o tom, jak [Odebrat registraci na klientovi](faq.md#hybrid-azure-ad-join-faq).
+>* Odstranění zařízení s Windows 10 v Azure AD znovu synchronizuje zařízení z místního prostředí pomocí služby Azure AD Connect, ale jako nový objekt ve stavu čeká na vyřízení. V zařízení se vyžaduje nová registrace.
+>* Odebrání zařízení z oboru synchronizace pro zařízení s Windows 10/serverem 2016 odstraní zařízení Azure AD. Přidáním zpátky do oboru synchronizace dojde k umístění nového objektu do stavu čeká na vyřízení. Vyžaduje se opakovaná registrace zařízení.
+>* Pokud nepoužíváte Azure AD Connect pro synchronizaci zařízení s Windows 10 (například jenom pomocí AD FS k registraci), musíte pro správu životního cyklu podobně jako u zařízení s Windows 7/8.
+
 
 ### <a name="azure-ad-joined-devices"></a>Zařízení připojená k Azure AD
 
 Zakažte nebo odstraňte zařízení připojená k Azure AD ve službě Azure AD.
 
+> [!NOTE]
+>* Odstraněním zařízení Azure AD se nepovedlo odebrat registraci na klientovi. Znemožní přístup k prostředkům pomocí zařízení jako identity (např. podmíněný přístup). 
+>* Další informace o [odpojování v Azure AD](faq.md#azure-ad-join-faq) 
+
 ### <a name="azure-ad-registered-devices"></a>Zařízení zaregistrovaná v Azure AD
 
 Zakažte nebo odstraňte zařízení zaregistrovaná v Azure AD ve službě Azure AD.
+
+> [!NOTE]
+>* Odstraněním zařízení registrovaného službou Azure AD ve službě Azure AD nedojde k odebrání registrace na klientovi. Znemožní přístup k prostředkům pomocí zařízení jako identity (např. podmíněný přístup).
+>* Další informace o [tom, jak odebrat registraci na klientovi](faq.md#azure-ad-register-faq)
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Vymazání zastaralých zařízení na webu Azure Portal  
 
@@ -148,7 +163,7 @@ Pokud je to nakonfigurováno, jsou klíče nástroje BitLocker pro zařízení s
 
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Proč se mám starat o zařízení s Windows autopilotem?
 
-Když je zařízení Azure AD přidružené k objektu Windows autopilotu, můžou se následující tři scénáře vyskytnout, pokud se zařízení v budoucnu znovu vymění:
+Když je zařízení Azure AD přidružené k objektu Windows autopilotu, můžou se tyto tři scénáře vyskytnout, pokud se zařízení bude v budoucnu změnit na účel:
 - Díky uživatelsky nasazeným samoobslužným nasazením Windows bez použití prázdných šetrnější se vytvoří nové zařízení Azure AD, které ale nebude označené ZTDID.
 - S nasazením autopilotního režimu automatického nasazení Windows se nezdaří, protože nejde najít přidružení zařízení Azure AD.  (Toto je bezpečnostní mechanismus, který zajistí, že se zařízení bez jakýchkoli přihlašovacích údajů pokusí připojit k Azure AD.) Selhání bude označovat neshodu ZTDID.
 - S bílými šetrnější nasazeními Windows autopilotu se nezdaří, protože se nepovedlo najít přidružené zařízení Azure AD. (Na pozadí budou šetrnější nasazení používat stejný proces režimu samoobslužného nasazení, aby vynutila stejné mechanismy zabezpečení.)

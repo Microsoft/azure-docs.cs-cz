@@ -1,18 +1,19 @@
 ---
 title: Možnost okamžitého obnovení Azure
 description: Možnosti a nejčastější dotazy ke službě Azure Instant Restore pro zásobník zálohování virtuálních počítačů, model nasazení Správce prostředků
-author: sogup
-manager: vijayts
+ms.reviewer: sogup
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: sogup
-ms.openlocfilehash: 8bbf24fdd05fa0d70bcadae4f21e599dc8bef3a5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 0f31320a638dd4741d940d0b459575b66149b829
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465099"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698408"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Zlepšení výkonu zálohování a obnovení pomocí funkce Azure Backup pro okamžité obnovení
 
@@ -25,7 +26,8 @@ Nový model pro okamžité obnovení nabízí následující vylepšení funkcí
 * Omezí časy zálohování a obnovení tím, že se snímky ponechají místně, a to ve výchozím nastavení po dobu dvou dnů. Tato výchozí hodnota uchování snímku se dá nakonfigurovat na libovolnou hodnotu od 1 do 5 dní.
 * Podporuje velikosti disků až do 4 TB. Změna velikosti disku se Azure Backup nedoporučuje.
 * Podporuje SSD úrovně Standard disky spolu s HDD úrovně Standard disky a SSD úrovně Premium disky.
-*   Možnost použít při obnovení původní účty úložiště (na disk) nespravovaného virtuálního počítače. Tato možnost je k dispozici i v případě, že virtuální počítač obsahuje disky distribuované mezi účty úložiště. Zrychluje operace obnovení pro širokou škálu konfigurací virtuálních počítačů.
+* Možnost při obnovení použít pro původní účty úložiště (na disk) nespravované virtuální počítače Tato možnost je k dispozici i v případě, že virtuální počítač obsahuje disky distribuované mezi účty úložiště. Zrychluje operace obnovení pro širokou škálu konfigurací virtuálních počítačů.
+* Pro zálohování virtuálních počítačů, které používají Prémiové úložiště, s okamžitým obnovením doporučujeme přidělit *50%* volného místa celkového přiděleného prostoru úložiště, který se vyžaduje **jenom** pro první zálohování. 50% volného místa není požadavkem na zálohování po dokončení prvního zálohování.
 
 
 ## <a name="whats-new-in-this-feature"></a>Co je nového v této funkci
@@ -103,4 +105,4 @@ Pokud je typ obnovení "snímke and trezor", obnoví se automaticky z místního
 Nový model nepovoluje odstranění bodu obnovení (2), pokud se neodstraní snímek (Tier1). Doporučujeme, abyste naplánujete dobu uchování bodu obnovení (2), která je delší než doba uchování snímku.
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Proč je můj snímek existující i po nastavení Doba uchování v zásadách zálohování?
-Pokud má bod obnovení snímek, který je nejnovějším dostupným RP, bude uchován až do doby, kdy bude k dispozici další úspěšná záloha. To je podle navržených zásad uvolňování paměti v dnešní době, že pro případ, že se na virtuálním počítači poběží všechna zálohování, musí mít vždycky k dispozici alespoň jeden nejnovější RP. V normálních scénářích se RPs vyčistí po dobu jejich vypršení platnosti po dobu 24 hodin.
+Pokud má bod obnovení snímek, který je nejnovějším dostupným RP, bude uchován až do doby, kdy bude k dispozici další úspěšná záloha. Toto je podle navržených zásad uvolňování paměti (GC) ještě dnes, že pro případ, že se na virtuálním počítači poběží všechny zálohy, musí mít vždycky k dispozici alespoň jeden nejnovější RP. V normálních scénářích se RPs vyčistí po dobu jejich vypršení platnosti po dobu 24 hodin.

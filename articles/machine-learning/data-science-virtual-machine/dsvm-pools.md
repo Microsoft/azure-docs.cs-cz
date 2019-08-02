@@ -4,7 +4,7 @@ description: Fondy virtuálních počítačů datové vědy nasadit jako sdílen
 keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy, vědecké zpracování týmových dat
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
-ms.author: gokuma
-ms.openlocfilehash: 5cce7f691204a0fd116627fadde1076a4505fcb2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 44983de87ce2e774356bf506e3a868da922a3ba3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502263"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558062"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Vytvoření sdíleného fondu z virtuálního počítače pro datové vědy
 
 Tento článek popisuje, jak může vytvořit sdílený fond z virtuálního počítače pro datové vědy (datové) pro tým používat. Mezi výhody používání sdíleného fondu jsou lepší využití prostředků usnadnění sdílení a spolupráci a efektivnější správu DSVM prostředků. 
 
-Mnoho metod a technologií můžete použít k vytvoření fondu datové. Tento článek se zaměřuje na fondy pro interaktivní virtuální počítače. Alternativní spravovanou výpočetní infrastruktury je Azure Machine Learning Compute. Zobrazit [nastavení cílových výpočetních prostředí](../service/how-to-set-up-training-targets.md#amlcompute) Další informace.
+Mnoho metod a technologií můžete použít k vytvoření fondu datové. Tento článek se zaměřuje na fondy pro interaktivní virtuální počítače. Alternativní spravovaná výpočetní infrastruktura je Azure Machine Learning výpočetní prostředí. Další informace najdete v tématu [nastavení cílových výpočetních](../service/how-to-set-up-training-targets.md#amlcompute) prostředků.
 
 ## <a name="interactive-vm-pool"></a>Interaktivní fond virtuálních počítačů
 

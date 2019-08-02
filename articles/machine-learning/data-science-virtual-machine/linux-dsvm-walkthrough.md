@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: Jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy.
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 editor: cgronlun
 ms.custom: seodec18
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516859"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557363"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
 Tento návod ukazuje, jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy. Systému Linux dat virtuálního počítače VĚDY je image virtuálního počítače k dispozici v Azure, který může být předinstalovaný s kolekcí nástrojů používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače umožňuje snadno a rychle začít, datových věd v řádech minut, aniž byste museli instalovat a konfigurovat každý z nástrojů jednotlivě. Můžete snadno vertikálně navýšit kapacitu virtuálních počítačů, v případě potřeby a zastavte ji není při použití. Proto tento prostředek je elastická a nákladově efektivní.
@@ -37,7 +37,7 @@ Než budete moct použít virtuální počítač s Linuxem datové vědy, musít
 * **Předplatného Azure**. Pokud není ještě nemáte, přečtěte si téma [vytvořte si bezplatný účet Azure ještě dnes](https://azure.microsoft.com/free/).
 * A [ **pro datovou vědu VM pro Linux**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informace o zřizování tohoto virtuálního počítače, naleznete v tématu [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md).
 * [X2Go](https://wiki.x2go.org/doku.php) v počítači nainstalovaný a otevřít relaci XFCE. Informace o instalaci a konfiguraci **X2Go klienta**, naleznete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
-* Pro posouvání plynulost přepnout příznak gfx.xrender.enabled v o: konfigurace v prohlížeči FireFox virtuálních počítačů. [Najdete v článku najdete tady. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Také vzít v úvahu při přepínání *mousewheel.enable_pixel_scrolling* na hodnotu False. [Pokyny v tomto poli.](https://support.mozilla.org/en-US/questions/981140)
+* Pro posouvání plynulost přepnout příznak gfx.xrender.enabled v o: konfigurace v prohlížeči FireFox virtuálních počítačů. [Najdete v článku najdete tady. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Také vzít v úvahu při přepínání *mousewheel.enable_pixel_scrolling* na hodnotu False. [Pokyny v tomto poli.](https://support.mozilla.org/questions/981140)
 * **AzureML účet**. Pokud již nemáte, zaregistrujte si novou na [domovskou stránku Azure ml](https://studio.azureml.net/). Je bezplatné využití vrstvu vám pomůžou začít.
 
 ## <a name="download-the-spambase-dataset"></a>Stáhnout spambase datovou sadu
@@ -180,10 +180,10 @@ Také si vyzkoušíme model náhodného doménové struktury. Náhodné doménov
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Nasazení modelu Azure Machine Learning studio
-[Azure Machine Learning Studio](https://studio.azureml.net/) je Cloudová služba, která umožňuje snadno vytvářet a nasazovat modely prediktivní analýzy. Mezi skvělé funkce Azure Machine Learning studio je jeho schopnost publikovat všechny funkce R jako webovou službu. Balíček Azure Machine Learning studio R usnadňuje nasazení provést přímo z našich relace jazyka R na datové VĚDY.
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Nasazení modelu do Azure Machine Learning studia
+[Azure Machine Learning Studio](https://studio.azureml.net/) je cloudová služba usnadňující sestavování a nasazování modelů prediktivní analýzy. Jednou z užitečných funkcí aplikace Azure Machine Learning Studio je schopnost publikovat všechny funkce R jako webovou službu. Balíček Azure Machine Learning Studio R usnadňuje nasazení přímo z naší relace jazyka R na DSVM.
 
-Nasazení kódu stromu rozhodnutí z předchozí části, budete muset přihlásit k Azure Machine Learning studiu. Potřebujete ID vašeho pracovního prostoru a autorizační token pro přihlášení. Tyto hodnoty vyhledat a inicializaci proměnných Azure Machine Learning s nimi:
+Nasazení kódu stromu rozhodnutí z předchozí části, budete muset přihlásit k Azure Machine Learning studiu. Potřebujete ID vašeho pracovního prostoru a autorizační token pro přihlášení. Pro vyhledání těchto hodnot a inicializaci Azure Machine Learning proměnných s těmito hodnotami:
 
 Vyberte **nastavení** v nabídce vlevo. Poznámka: vaše **ID pracovního prostoru**. ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
@@ -344,7 +344,7 @@ Několik ukázkové poznámkové bloky jsou již nainstalovány ve virtuálním 
 >
 
 ## <a name="rattle"></a>Rattle
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) grafického nástroje R pro dolování dat (R analytické nástroje pro další snadno) je. Obsahuje intuitivní rozhraní, které umožňuje snadno načíst, prozkoumat a transformace dat a sestavení a vyhodnocení modelů.  Tento článek [Rattle: Data Mining grafickým uživatelským rozhraním pro R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) poskytuje návod, který ukazuje jeho funkcí.
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) grafického nástroje R pro dolování dat (R analytické nástroje pro další snadno) je. Obsahuje intuitivní rozhraní, které umožňuje snadno načíst, prozkoumat a transformace dat a sestavení a vyhodnocení modelů.  Rattle článku [: Grafické rozhraní dolování dat pro jazyk](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) R poskytuje návod, který předvádí jeho funkce.
 
 Instalace a spuštění Rattle pomocí následujících příkazů:
 
@@ -423,7 +423,7 @@ Mezi skvělé funkce Rattle je schopnost rychle vyhodnotit a spustit několik me
 Jakmile budete hotovi, vytvářet modely, vyberte **protokolu** kartu k zobrazení kódu jazyka R spustit Rattle během vaší relace. Můžete vybrat **exportovat** tlačítko a uložte ho.
 
 > [!NOTE]
-> V aktuální verzi Rattle je chyba. K úpravě skriptu nebo ji použít k vaší kroky opakujte později, je třeba vložit znak # před *exportovat tento protokol...*  v textu v protokolu.
+> V aktuální verzi Rattle je chyba. Chcete-li změnit skript nebo použít ho k opakování kroků později, je nutné před *exportem tohoto protokolu* vložit znak #... v textu protokolu.
 >
 >
 

@@ -1,7 +1,7 @@
 ---
-title: Atributy entit Academic Graph – Academic Knowledge API
+title: Atributy entit akademického grafu – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Další informace o atributech entity, která vám pomůže s využitím rozhraní Academic Graph rozhraní Academic Knowledge API.
+description: Přečtěte si o atributech entit, které můžete použít se akademickým grafem v Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,31 +10,32 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 485775660ecfdf2291365ab98c9188295ea2cbde
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 596ce35a0d744691edd75d6071d4758691e0031b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61340175"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705017"
 ---
-# <a name="entity-attributes"></a>Atributy entit
+# <a name="entity-attributes"></a>Atributy entity
 
-Academic graph se skládá ze 7 typů entit. Všechny entity budou mít Entity ID a typ Entity.
+Akademický graf se skládá z 7 typů entit. Všechny entity budou mít ID entity a typ entity.
 
-## <a name="common-entity-attributes"></a>Běžné atributy entit
-Name    |Popis                |Type       | Operace
+## <a name="common-entity-attributes"></a>Společné atributy entit
+Name    |Popis                |type       | Operace
 ------- | ------------------------- | --------- | ----------------------------
-ID      |Entity ID                  |Int64      |Je rovno
+Id      |ID entity                  |Int64      |Je rovno
 Ty      |Typ entity                |Výčet   |Je rovno
 
-## <a name="entity-type-enum"></a>Entitu typu enum
+## <a name="entity-type-enum"></a>Výčet typu entity
 Name                                                            |value
 ----------------------------------------------------------------|-----
 [Paper](PaperEntityAttributes.md)                               |0
 [Author](AuthorEntityAttributes.md)                             |1
 [Journal](JournalEntityAttributes.md)                           |2
-[Konference řady](JournalEntityAttributes.md)                 |3
-[Konference Instance](ConferenceInstanceEntityAttributes.md)    |4
+[Série konferencí](JournalEntityAttributes.md)                 |3
+[Instance konference](ConferenceInstanceEntityAttributes.md)    |4
 [Affiliation](AffiliationEntityAttributes.md)                   |5
-[Pole studie](FieldsOfStudyEntityAttributes.md)                      |6
+[Polní studie](FieldsOfStudyEntityAttributes.md)                      |6
 

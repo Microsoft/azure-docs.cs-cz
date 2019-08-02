@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 235d29c876616948516bbe4309ddd630bc3f6dca
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 1bb88d6f74ab4b93e226fe8630f07f0a96f4ba47
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67852590"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567049"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Plánování událostí údržby Azure v Azure SQL Database
 
@@ -39,7 +38,7 @@ Každá provozní aplikace klienta, která se připojuje ke cloudové databázov
 
 V průměru se v každém měsíci vyskytují plánované události údržby 1,7.
 
-## <a name="resource-health"></a>Resource Health
+## <a name="resource-health"></a>Stav prostředku
 
 Pokud v databázi SQL dochází k chybám přihlášení, podívejte se do okna [Resource Health](../service-health/resource-health-overview.md#get-started) v [Azure Portal](https://portal.azure.com) aktuálního stavu. Část historie stavu obsahuje důvod výpadku každé události (Pokud je dostupná).
 

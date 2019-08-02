@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 0325fc8cabc43988fb27a307921977b9b487c123
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 402379a99be467e9db7fb692d7d532e9d39a54a6
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286294"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68700785"
 ---
 Velikosti virtuálních počítačů optimalizované pro GPU jsou specializované virtuální počítače dostupné s jedním nebo několika grafickými procesory NVIDIA. Tyto velikosti jsou navržené pro úlohy náročné na výpočetní výkon, náročné na grafiku a vizualizaci. Tento článek poskytuje informace o počtu a typu GPU, vCPU, datových disků a síťových karet. Propustnost úložiště a šířka pásma sítě jsou také zahrnuty pro každou velikost v tomto seskupení.
 
@@ -25,9 +25,9 @@ Velikosti virtuálních počítačů optimalizované pro GPU jsou specializovan�
 
 ## <a name="nc-series"></a>NC-Series
 
-Premium Storage:  Nepodporuje se
+Premium Storage:  Není podporováno
 
-Ukládání Premium Storage do mezipaměti:  Nepodporuje se
+Ukládání Premium Storage do mezipaměti:  Není podporováno
 
 Virtuální počítače řady NC-Series jsou napájené kartou [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) a procesorem Intel Xeon E5-2690 V3 (Haswell). Uživatelé můžou zpracovávejte data rychleji tím, že využívají CUDA pro aplikace pro průzkumy energie, simulace havárií, trasování paprsků, hloubkové učení a další. Konfigurace NC24r poskytuje síťové rozhraní s nízkou latencí a vysokou propustností optimalizované pro vysoce provázané úlohy paralelního zpracování.
 
@@ -103,9 +103,9 @@ Virtuální počítač řady NDv2-Series je novým doplňkem k rodině GPU navr�
 [Zaregistrujte se a získejte přístup k těmto počítačům ve verzi Preview](https://aka.ms/ndv2signup).
 <br>
 
-| Size | Virtuální procesory | GPU | Memory (Paměť) | Síťové karty (Max.) | Dočasné úložiště (SSD) GiB | Max. Datové disky | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální šířka pásma sítě | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_ND40s_v2 | 40 | 8 V100 (NVLink) | 672 GiB | 8 | 2948 | 32 | 80000 / 800 | 24000 MB/s |
+| Size | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální šířka pásma sítě | Maximální počet síťových karet |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_ND40s_v2 | 40 | 672 | 2948 | 8 V100 (NVLink) | 16 | 32 | 80000 / 800 | 24000 MB/s | 8 |
 
 ## <a name="nd-series"></a>ND-Series
 
@@ -132,9 +132,9 @@ Virtuální počítače řady ND-Series jsou nově přidané do rodiny GPU navr�
 
 ## <a name="nv-series"></a>NV-Series
 
-Premium Storage:  Nepodporuje se
+Premium Storage:  Není podporováno
 
-Ukládání Premium Storage do mezipaměti:  Nepodporuje se
+Ukládání Premium Storage do mezipaměti:  Není podporováno
 
 Virtuální počítače řady NV využívají technologii [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU a technologii NVIDIA Grid pro aplikace s akcelerovanými pracovními plochami a virtuálními plochami, kde zákazníci mohou vizualizovat svá data nebo simulace. Uživatelé mohou vizualizovat své pracovní postupy náročné na grafiku na instancích NV a získat tak vynikající možnosti grafiky a také spouštět úlohy s jednoduchou přesností, jako je například kódování a vykreslování. Virtuální počítače řady NV využívají i procesory Intel Xeon E5-2690 V3 (Haswell).
 

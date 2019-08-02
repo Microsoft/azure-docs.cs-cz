@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad2f25aac7f74c74eb63fd4666c5184ae751ec1f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: cce5de98fe4914e18ee0154d4ac5f1af008d32a6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499937"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561293"
 ---
 # <a name="enable-passwordless-sign-in-for-azure-ad-preview"></a>Povolení přihlášení neheslem pro Azure AD (Preview)
 
@@ -109,7 +109,7 @@ Funkce registrace pro klíče zabezpečení FIDO2 závisí na kombinované regis
 ### <a name="enable-new-passwordless-authentication-methods"></a>Povolit nové metody ověřování s nehesly
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-1. Přejít na **Azure Active Directory** > zásady ověřování**metody** > ověřování **(Preview)**
+1. Přejítna **Azure Active Directory** > zásady > ověřovánímetodyověřování >  **(Preview)**
 1. V části jednotlivé **metody**vyberte následující možnosti.
    1. **Povolit** – Ano nebo ne
    1. **Cíl** – všichni uživatelé nebo vybrat uživatele
@@ -133,7 +133,7 @@ Funkce registrace pro klíče zabezpečení FIDO2 závisí na kombinované regis
 1. Připravte si klíč a vyberte **Další** .
 1. Zobrazí se okno s žádostí o vytvoření nebo zadání kódu PIN pro klíč zabezpečení a potom pro svůj klíč použijte možnost biometrika nebo dotykové ovládání.
 1. Vrátíte se do kombinovaného prostředí pro registraci a budete požádáni o poskytnutí smysluplného názvu pro váš token, abyste mohli zjistit, který z nich máte, pokud máte víc. Klikněte na **Další**.
-1. Kliknutím  na Hotovo dokončete proces.
+1. Kliknutím na Hotovo dokončete proces.
 
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Správa klíčového bezpečnostního biometriky, PIN kódu nebo resetování klíče zabezpečení
 

@@ -1,49 +1,49 @@
 ---
-title: Apache Storm pomocí komponent v Pythonu – Azure HDInsight
-description: Zjistěte, jak vytvořit Apache Storm topologie, která používá komponent v Pythonu.
+title: Apache Storm s komponentami Pythonu – Azure HDInsight
+description: Naučte se vytvářet Apache Storm topologii, která používá součásti Pythonu.
 author: hrasheed-msft
 ms.reviewer: jasonh
-keywords: Apache storm pythonu
+keywords: Apache pro Python
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3b808a12c7a669a272bf6a1bbb253ed6b4625288
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b9faf33734ba17e9912246fe9c5c2ac45c55ba44
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078199"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598474"
 ---
-# <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Vývoj topologií Apache Storm pomocí Pythonu v HDInsight
+# <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Vývoj Apache Storm topologií pomocí Pythonu ve službě HDInsight
 
-Zjistěte, jak vytvořit [Apache Storm](https://storm.apache.org/) topologie, která používá komponent v Pythonu. Apache Storm podporuje více jazyků, dokonce i díky tomu můžete kombinovat součásti z různých jazyků v jedné topologie. [Tok](https://storm.apache.org/releases/current/flux.html) framework (zavedl se Stormem 0.10.0) umožňuje snadno vytvářet řešení, která používají komponent v Pythonu.
+Naučte se vytvářet [Apache Storm](https://storm.apache.org/) topologii, která používá součásti Pythonu. Apache Storm podporuje více jazyků, a to i v případě, že budete chtít kombinovat komponenty z několika jazyků v jedné topologii. Rozhraní [toků](https://storm.apache.org/releases/current/flux.html) (zavedené s pře0.10.0M) umožňuje snadno vytvářet řešení, která používají komponenty Pythonu.
 
 > [!IMPORTANT]  
-> Informace v tomto dokumentu byl testován pomocí Storm v HDInsight 3.6. 
+> Informace v tomto dokumentu byly testovány pomocí zaplavení v HDInsight 3,6. 
 
-Kód pro tento projekt je k dispozici na [ https://github.com/Azure-Samples/hdinsight-python-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
+Kód pro tento projekt je k dispozici [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount)na adrese.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Python 2.7 nebo novější
+* Python 2,7 nebo vyšší
 
-* Java JDK 1.8 nebo vyšší
+* Java JDK 1,8 nebo novější
 
 * [Apache Maven 3](https://maven.apache.org/download.cgi)
 
-* (Volitelné) Místní vývojové prostředí Storm. Místní prostředí Storm je potřeba pouze v případě, že chcete spustit topologii místně. Další informace najdete v tématu [nastavení vývojového prostředí](https://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
+* Volitelné Místní vývojové prostředí. Prostředí místního prostředí se vyžaduje jenom v případě, že chcete topologii spustit místně. Další informace najdete v tématu [Nastavení vývojového prostředí](http://storm.apache.org/releases/current/Setting-up-development-environment.html).
 
-## <a name="storm-multi-language-support"></a>Podpora víc jazyků Storm
+## <a name="storm-multi-language-support"></a>Podpora více jazyků
 
-Apache Storm je navržená pro práci s komponentami, které jsou napsané v libovolném programovacím jazyce. Součásti musí pochopit, jak pracovat [definici Thrift pro Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). Pro Python modul je součástí projektu Apache Storm, který umožňuje snadno spolupracovat s Storm. Můžete najít tento modul na [ https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py ](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
+Apache Storm byla navržena pro práci s komponentami napsanými pomocí libovolného programovacího jazyka. Komponenty musí pochopit, jak pracovat s definicí [Thrift pro](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift)zaplavení. V jazyce Python je modul poskytován jako součást projektu Apache Storm, který umožňuje jednoduché rozhraní se zaplavou. Tento modul můžete najít na adrese [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
-Storm je Java proces, který běží na virtuálním počítači Java (JVM). Jako podprocesů, které provádějí komponenty napsané v jiných jazycích. Storm komunikuje s těmito podprocesů, které se pomocí JSON zprávy odeslané přes stdin/stdout. Další podrobnosti o komunikaci mezi součástmi najdete v [Multi-lang protokol](https://storm.apache.org/documentation/Multilang-protocol.html) dokumentaci.
+Přetečení je proces Java, který běží na prostředí Java Virtual Machine (JVM). Komponenty napsané v jiných jazycích jsou spouštěny jako podprocesy. Zaplave komunikuje s těmito podprocesy pomocí zpráv JSON odesílaných přes STDIN/STDOUT. Další podrobnosti o komunikaci mezi komponentami najdete v dokumentaci k [protokolu multi-lang](https://storm.apache.org/documentation/Multilang-protocol.html) .
 
-## <a name="python-with-the-flux-framework"></a>Python s tokem framework
+## <a name="python-with-the-flux-framework"></a>Python s architekturou toků
 
-Tok framework umožňuje definovat topologií Storm nezávisle na součásti. Rozhraní tok YAML používá k definování topologie Storm. Následující text je příklad toho, jak odkazovat na součást Python v dokumentu YAML:
+Rozhraní služby toků umožňuje definovat topologie navýšení nezávisle na komponentách. Rozhraní toků používá YAML k definování topologie zaplavení. Následující text je příkladem, jak odkazovat na komponentu Pythonu v dokumentu YAML:
 
 ```yaml
 # Spout definitions
@@ -59,9 +59,9 @@ spouts:
     parallelism: 1
 ```
 
-Třída `FluxShellSpout` se používá ke spuštění `sentencespout.py` skript, který implementuje spout.
+Třída `FluxShellSpout` se používá ke `sentencespout.py` spuštění skriptu, který implementuje rozhraní Spout.
 
-Tok skriptů Pythonu v očekává, že `/resources` adresáře uvnitř na soubor jar obsahující topologie. Takže ukládá skriptů Pythonu v tomto příkladu `/multilang/resources` adresáře. `pom.xml` Obsahuje tento soubor pomocí následující kód XML:
+Tok očekává, že se skripty v jazyce Python `/resources` nacházejí v adresáři uvnitř souboru jar, který obsahuje topologii. Proto tento příklad ukládá skripty Pythonu do `/multilang/resources` adresáře. `pom.xml` Zahrnuje tento soubor pomocí následujícího kódu XML:
 
 ```xml
 <!-- include the Python components -->
@@ -71,30 +71,30 @@ Tok skriptů Pythonu v očekává, že `/resources` adresáře uvnitř na soubor
 </resource>
 ```
 
-Jak bylo zmíněno výše, je `storm.py` soubor, který implementuje definici Thrift pro Storm. Tok framework obsahuje `storm.py` automaticky při sestavení projektu, aby nemuseli se starat o jeho zahrnutí.
+Jak bylo `storm.py` zmíněno dříve, existuje soubor, který implementuje definici Thrift pro zaplavení. Rozhraní toků obsahuje `storm.py` automaticky, když je projekt sestaven, takže se nemusíte zabývat zahrnutím.
 
 ## <a name="build-the-project"></a>Sestavení projektu
 
-Z kořenové složky projektu použijte následující příkaz:
+Z kořenového adresáře projektu použijte následující příkaz:
 
 ```bash
 mvn clean compile package
 ```
 
-Tento příkaz vytvoří `target/WordCount-1.0-SNAPSHOT.jar` soubor, který obsahuje zkompilovaný topologie.
+Tento příkaz vytvoří `target/WordCount-1.0-SNAPSHOT.jar` soubor, který obsahuje kompilovaná topologie.
 
 ## <a name="run-the-topology-locally"></a>Místní spuštění topologie
 
-Topologie spouštět místně, použijte následující příkaz:
+Pokud chcete topologii spustit místně, použijte následující příkaz:
 
 ```bash
 storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.yaml
 ```
 
 > [!NOTE]  
-> Tento příkaz vyžaduje místní vývojové prostředí Storm. Další informace najdete v tématu [nastavení vývojového prostředí](https://storm.apache.org/releases/current/Setting-up-development-environment.html)
+> Tento příkaz vyžaduje prostředí pro vývoj v místním prostředí. Další informace najdete v tématu [Nastavení vývojového prostředí](https://storm.apache.org/releases/current/Setting-up-development-environment.html) .
 
-Po spuštění topologie vydává informace do místní konzoly podobný následujícímu textu:
+Jakmile se topologie spustí, vygeneruje informace místní konzole podobně jako v následujícím textu:
 
 
     24302 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting the cow jumped over the moon
@@ -108,43 +108,43 @@ Po spuštění topologie vydává informace do místní konzoly podobný násled
     24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 
 
-Chcete-li ukončit topologii, použijte __Ctrl + C__.
+K zastavení topologie použijte __kombinaci kláves CTRL + C__.
 
-## <a name="run-the-storm-topology-on-hdinsight"></a>Spustit topologie Storm v HDInsight
+## <a name="run-the-storm-topology-on-hdinsight"></a>Spuštění topologie pro zaplavení v HDInsight
 
-1. Použijte následující příkaz pro kopírování `WordCount-1.0-SNAPSHOT.jar` soubor do Storm na clusteru HDInsight:
+1. Pomocí následujícího příkazu zkopírujte `WordCount-1.0-SNAPSHOT.jar` soubor do vašeho clusteru HDInsight:
 
     ```bash
     scp target\WordCount-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-    Nahraďte `sshuser` s uživatele SSH pro váš cluster. Nahraďte `mycluster` s názvem clusteru. Můžete být vyzváni k zadání hesla pro uživatele SSH.
+    Nahraďte `sshuser` uživatelem SSH pro váš cluster. Nahraďte `mycluster` názvem clusteru. Může se zobrazit výzva, abyste zadali heslo pro uživatele SSH.
 
-    Další informace o použití SSH a SCP v tématu [použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    Další informace o použití SSH a SCP najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Po odeslání souboru připojte ke clusteru pomocí SSH:
+2. Po nahrání souboru se připojte ke clusteru pomocí SSH:
 
     ```bash
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-3. Z relace SSH pomocí následujícího příkazu spusťte topologie v clusteru:
+3. Z relace SSH pomocí následujícího příkazu spusťte topologii v clusteru:
 
     ```bash
     storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -r -R /topology.yaml
     ```
 
-3. Chcete-li zobrazit topologii v clusteru můžete použít uživatelské rozhraní Storm. Uživatelské rozhraní Storm se nachází na https://mycluster.azurehdinsight.net/stormui. Nahraďte `mycluster` názvem vašeho clusteru.
+3. K zobrazení topologie v clusteru můžete použít uživatelské rozhraní systému. Uživatelské rozhraní pro vyplavení https://mycluster.azurehdinsight.net/stormui se nachází na adrese. Nahraďte `mycluster` názvem vašeho clusteru.
 
 > [!NOTE]  
-> Po zahájení topologie Stormu spouští až do ukončení. Pokud chcete ukončit topologii, použijte jednu z následujících metod:
+> Po spuštění se topologie přetečení spustí až do zastavení. K zastavení topologie použijte jednu z následujících metod:
 >
-> * `storm kill TOPOLOGYNAME` Příkazu z příkazového řádku
-> * **Kill** tlačítka uživatelského rozhraní Storm.
+> * `storm kill TOPOLOGYNAME` Příkaz z příkazového řádku
+> * Tlačítko **Kill** v uživatelském rozhraní se zaplavou
 
 
 ## <a name="next-steps"></a>Další postup
 
-Najdete v následujících dokumentech další způsoby, jak používat Python s HDInsight:
+Další způsoby použití Pythonu se službou HDInsight najdete v následujících dokumentech:
 
-* [Jak používat Python uživateli definované funkce (UDF) v Apache Pig a Apache Hive](../hadoop/python-udf-hdinsight.md)
+* [Jak používat uživatelsky definované funkce Pythonu (UDF) v Apache prasete a Apache Hive](../hadoop/python-udf-hdinsight.md)

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
 ms.openlocfilehash: 7aff0fe47d1586b63157d5df7882fc338637f714
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68381976"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy týkající se služby Azure Kubernetes (AKS)
@@ -25,7 +25,7 @@ Tento článek popisuje časté otázky ke službě Azure Kubernetes Service (AK
 
 ## <a name="does-aks-support-node-autoscaling"></a>Podporuje AKS automatické škálování uzlu?
 
-Ano, schopnost automaticky škálovat uzly agentů vodorovně v AKS je v současnosti dostupná ve verzi Preview. Přečtěte si téma [Automatické škálování clusteru pro splnění požadavků aplikace v AKS][aks-cluster-autoscaler] for instructions. AKS autoscaling is based on the [Kubernetes autoscaler][auto-scaler].
+Ano, schopnost automaticky škálovat uzly agentů vodorovně v AKS je v současnosti dostupná ve verzi Preview. Pokyny najdete [v tématu Automatické škálování clusteru pro splnění požadavků aplikace v AKS][aks-cluster-autoscaler] . Automatické škálování AKS je založené na [Kubernetes automatického škálování][auto-scaler].
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Můžu AKS nasadit do existující virtuální sítě?
 
@@ -48,7 +48,7 @@ Ano, v clusteru AKS můžete pomocí různých velikostí virtuálních počíta
 Azure automaticky aplikuje opravy zabezpečení na uzly Linux v clusteru v nočním plánu. Zodpovídáte však za zajištění, že se tyto uzly Linux restartují podle potřeby. Pro restartování uzlů máte několik možností:
 
 - Ručně prostřednictvím Azure Portal nebo rozhraní příkazového řádku Azure CLI.
-- Upgradem clusteru AKS. Cluster automatically and then bring a new node online with the latest Ubuntu image and a new patch version or a minor Kubernetes version. For more information, see [Upgrade an AKS cluster][aks-upgrade]upgraduje [uzly Cordon a vyprazdňuje][cordon-drain] .
+- Upgradem clusteru AKS. Cluster upgraduje [uzly Cordon a vyprazdňuje][cordon-drain] automaticky a potom přinese nový uzel do online režimu s nejnovější imagí Ubuntu a novou verzí opravy nebo menší verzí Kubernetes. Další informace najdete v tématu [upgrade clusteru AKS][aks-upgrade].
 - Pomocí [Kured](https://github.com/weaveworks/kured)je open-source démon pro Kubernetes. Kured běží jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) a monitoruje každý uzel pro přítomnost souboru, který indikuje, že je potřeba restartovat počítač. V rámci clusteru se restartování operačního systému spravují stejným [cordonm a vyprázdněným procesem][cordon-drain] jako upgrade clusteru.
 
 Další informace o použití kured najdete v tématu [použití zabezpečení a aktualizací jádra na uzlech v AKS][node-updates-kured].

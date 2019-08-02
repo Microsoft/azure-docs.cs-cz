@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896cc495d6f369c034171833a9b90aa53e6477b6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 12452b4e9cc6caa64d4c81a310fbccb5d1717817
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234627"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678157"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Co je Správa nároků Azure AD? (Preview)
 
@@ -80,7 +80,7 @@ Můžete také řídit přístup k dalším prostředkům, které spoléhají na
 
 ## <a name="what-are-access-packages-and-policies"></a>Co jsou balíčky a zásady přístupu?
 
-Správa nároků zavádí koncept *balíčku pro přístup*. Balíček pro přístup je sada všech prostředků, které uživatel potřebuje k práci na projektu nebo k provedení jejich práce. Prostředky zahrnují přístup ke skupinám, aplikacím nebo webům. Přístupové balíčky slouží k řízení přístupu k vašim interním zaměstnancům a také uživatelům mimo vaši organizaci. Balíčky přístupu jsou definované v kontejnerech nazývaných katalogy.
+Správa nároků zavádí koncept *balíčku pro přístup*. Balíček pro přístup je sada všech prostředků, které uživatel potřebuje k práci na projektu nebo k provedení jejich práce. Prostředky zahrnují přístup ke skupinám, aplikacím nebo webům. Přístupové balíčky slouží k řízení přístupu k vašim interním zaměstnancům a také uživatelům mimo vaši organizaci. Balíčky přístupu jsou definované v kontejnerechnazývaných katalogy.
 
 Balíčky pro přístup také obsahují jednu nebo více *zásad*. Zásady definují pravidla nebo guardrails pro přístup k balíčku přístupu. Povolení zásad vynutilo, že přístup k správným prostředkům a ke správnému času získá jenom oprávnění uživatelé.
 
@@ -90,7 +90,7 @@ Pomocí balíčku pro přístup a jeho zásad definuje správce balíčků pří
 
 - Zdroje a prostředky
 - Role, které uživatelé potřebují pro prostředky
-- Interní uživatelé a externí uživatelé, kteří jsou oprávněni požádat o přístup
+- Interní uživatelé a partnerské organizace externích uživatelů, kteří mají nárok na přístup
 - Proces schvalování a uživatelé, kteří můžou schválit nebo odepřít přístup
 - Doba trvání přístupu uživatele
 
@@ -120,15 +120,15 @@ Abyste lépe pochopili správu nároků a dokumentaci, měli byste si projít n�
 | Správa nároků | Služba, která přiřazuje, odvolává a spravuje balíčky přístupu. |
 | přístup k balíčku | Kolekce oprávnění a zásad pro prostředky, které si uživatelé můžou vyžádat. Přístupový balíček je vždycky obsažený v katalogu. |
 | žádost o přístup | Žádost o přístup k balíčku přístupu Požadavek obvykle projde pracovním postupem. |
-| policy | Sada pravidel, která definuje životní cyklus přístupu, například způsob, jakým uživatelé získávají přístup, kteří můžou schvalovat a jak dlouho mají uživatelé přístup. Příklady zásad zahrnují přístup zaměstnanců a externí přístup. |
+| zásada | Sada pravidel, která definuje životní cyklus přístupu, například způsob, jakým uživatelé získávají přístup, kteří můžou schvalovat a jak dlouho mají uživatelé přístup. Příklady zásad zahrnují přístup zaměstnanců a externí přístup. |
 | catalog | Kontejner souvisejících prostředků a přístupových balíčků. |
 | Katalog pro obecné | Integrovaný katalog, který je vždy k dispozici. Pokud chcete přidat prostředky do katalogu obecné, vyžaduje určitá oprávnění. |
-| resource | Prostředek nebo služba (například skupina, aplikace nebo Web), ke kterým může uživateli být uděleno oprávnění. |
-| Typ prostředku | Typ prostředku, který zahrnuje skupiny, aplikace a weby SharePointu Online. |
+| resource | Prostředek nebo služba (například skupina Office, skupina zabezpečení, aplikace nebo web SharePointu Online), ke kterým může uživateli být uděleno oprávnění. |
+| typ prostředku | Typ prostředku, který zahrnuje skupiny, aplikace a weby SharePointu Online. |
 | role prostředku | Kolekce oprávnění přidružených k prostředku |
 | Adresář prostředků | Adresář, který obsahuje jeden nebo více prostředků ke sdílení. |
-| přiřazení uživatelé | Přiřazení balíčku přístupu uživateli nebo skupině. |
-| Aby | Proces zpřístupnění balíčku přístupu uživatelům pro vyžádání. |
+| přiřazení uživatelé | Přiřazení balíčku přístupu uživateli, aby měl uživatel všechny role prostředků tohoto balíčku přístupu. |
+| povolit | Proces zpřístupnění balíčku přístupu uživatelům pro vyžádání. |
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
@@ -136,7 +136,7 @@ Abyste lépe pochopili správu nároků a dokumentaci, měli byste si projít n�
 
 Specializované cloudy, například Azure Government, Azure Německo a Azure Čína 21Vianet, nejsou v tuto chvíli k dispozici pro použití v této verzi Preview.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Kurz: Vytvoření prvního přístupového balíčku](entitlement-management-access-package-first.md)
 - [Obvyklé scénáře](entitlement-management-scenarios.md)

@@ -1,7 +1,7 @@
 ---
-title: Atributy entit konference řady – Academic Knowledge API
+title: Atributy entity řady konference – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Další informace o atributy, které můžete použít s entitou řady místa konání konference.
+description: Přečtěte si o atributech, které můžete použít s entitou konferenčních řad.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,23 +10,24 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 38b4aa4c899668a68041f042ce6981ddd8c58219
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: feed324202f6a75ceb7e9089875b899c51cd8ae6
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61340192"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705047"
 ---
-# <a name="conference-series-entity"></a>Konference řady Entity
+# <a name="conference-series-entity"></a>Entita konferenčních řad
 
-<sub> * Následující atributy jsou specifická pro entity řady místa konání konference. (Ty = "3") </sub>
+<sub>* Následující atributy jsou specifické pro entitu konferenčních řad. (Ty = "3")</sub>
 
-Název    |Popis                            |Type       | Operace
+Name    |Popis                            |type       | Operace
 ------- | ------------------------------------- | --------- | ----------------------------
-ID      |Entity ID                              |Int64      |Je rovno
-CN      |Normalizovaný název řady konference      |String     |Je rovno
-DCN     |Zobrazovaný název řady konference         |String     |None
-CC      |Konference řady celkový počet citace         |Int32      |None  
-ECC     |Konference řady citace celkový odhadovaný počet   |Int32      |None
-F.FId   |Pole ID entity studie přiřazená k řadě konference |Int64  | Je rovno
-F.FN    |Pole Název studie přiřazená k řadě konference  | Je rovno<br/>StartsWith
+Id      |ID entity                              |Int64      |Je rovno
+CN      |Normalizovaný název konferenční řady      |Řetězec     |Je rovno
+DCN     |Zobrazovaný název řady konferencí         |Řetězec     |žádný
+CC      |Celkový počet citací řady konferencí         |Int32      |žádný  
+ECC     |Počet odhadovaných citací v řadě konferencí   |Int32      |žádný
+F.FId   |Pole ID entity studia přidružené k řadě konferencí |Int64  | Je rovno
+F.FN    |Pole názvu studie přidružené k řadě konferencí  | Rovná<br/>StartsWith

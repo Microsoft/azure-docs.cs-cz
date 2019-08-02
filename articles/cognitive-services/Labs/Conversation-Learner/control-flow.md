@@ -1,7 +1,7 @@
 ---
-title: Tok řízení konverzace Learner – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Tok řízení Conversation Learner – Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Další informace o toku řízení Learner konverzace.
+description: Přečtěte si o toku ovládacích prvků Conversation Learner.
 services: cognitive-services
 author: nitinme
 manager: nolachar
@@ -10,35 +10,36 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 22a2a3472a54188f9298c580a95d53ac681822aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ec839c1a930ffbe73989149360f1b02866a3c50
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385417"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705312"
 ---
 ## <a name="control-flow"></a>Tok řízení
 
-Tento dokument popisuje tok řízení z Learner konverzace (CL) se zobrazuje následujícím obrázku.
+Tento dokument popisuje tok řízení Conversation Learner (CL), jak je znázorněno v následujícím diagramu.
 
 ![](media/controlflow.PNG)
 
-1. Uživatel zadá termín nebo frázi v robota, například "co je o počasí v Praze?"
-1. CL předá uživatelský vstup do modelu strojového učení, který extrahuje entity
-   - Tento model je sestavení learner konverzace a hostitelem www.luis.ai
-1. Extrahovány žádné entity, a zadání textu, jsou předány metodě zpětného volání zjišťování entit v bodu robotů také kódu.
-    - Tento kód může hodnoty set/clear/manipulaci s entit
-1. CL neuronové sítě převezme výstup extrakce entity a uživatelský vstup a skóre, které se všechny akce definované v robota
-   - V tomto příkladu je poskytnout předpověď počasí nejvyšší pravděpodobnost akce:
+1. Uživatel zadá do robota termín nebo frázi, například "Co je počasí v Seattlu?"
+1. CL předá vstup uživatele do modelu strojového učení, který extrahuje entity.
+   - Tento model se sestavuje pomocí Conversation Learner a hostuje ho www.luis.ai.
+1. Všechny extrahované entity a vstupní text uživatele jsou předány metodě zpětného volání detekce entit v kódu bot.
+    - Tento kód může nastavit nebo vymazat hodnoty entit a manipulovat s nimi.
+1. Síť CL neuronové pak vezme výstup extrakce entit a vstupu uživatele a vyhodnotí všechny akce definované v robotovi.
+   - V tomto příkladu je výsledkem akce nejvyšší pravděpodobnost poskytnutí předpovědi počasí:
 
      ![](media/controlflow_forecast.PNG)
 
-1. Vybraná akce v tomto případě vyžaduje volání rozhraní API k načtení předpověď počasí. 
-1. Toto rozhraní API, která měla byla registrována pomocí CL. Potom je volána metoda AddCallback.  Výsledek tohoto rozhraní API se vrátili, aby uživatel jako zpráva – například "Sunny s vysokou 67."
-1. Volání je pak provedeno neuronové sítě určit další akce podle předchozího kroku.
-1. Neuronové sítě pak předpovídá další sadu možných akcí a vybrané akce se budou zobrazovat uživateli, v tomto případě "Cokoli?"
+1. Vybraná akce v tomto případě vyžaduje volání rozhraní API pro načtení předpovědi počasí. 
+1. Toto rozhraní API, které bylo zaregistrováno pomocí CL. Metoda AddCallback je pak vyvolána.  Výsledek tohoto rozhraní API se pak vrátí uživateli jako zpráva – například ' Slunečné s vysokou 67. '
+1. Volání se pak provede v síti neuronové k určení další akce podle předchozího kroku.
+1. Neuronové síť pak předpovídá další sadu možných akcí a vybraná akce se zobrazí uživateli, v tomto případě "cokoli jiného?"
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Tom, jak se naučit s Learner konverzace](./how-to-teach-cl.md)
+> [Postup výuky pomocí Conversation Learner](./how-to-teach-cl.md)

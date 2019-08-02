@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
 ms.openlocfilehash: 305901007180cfb197cf5c0dfb338800449560a1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68382026"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Preview – vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
@@ -42,7 +42,7 @@ Po vytvoření clusteru, který může spouštět kontejnery Windows serveru, mu
 
 ### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
 
-Pokud chcete používat kontejnery Windows serveru, potřebujete rozšíření CLI *AKS-Preview* verze 0.4.1 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] ::
+Pokud chcete používat kontejnery Windows serveru, potřebujete rozšíření CLI *AKS-Preview* verze 0.4.1 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] ::
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -120,7 +120,7 @@ Následující příklad výstupu ukazuje, že skupina prostředků byla úspě�
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Aby bylo možné spustit cluster AKS, který podporuje fondy uzlů pro kontejnery Windows serveru, musí cluster používat zásady sítě, které používají [Azure CNI][azure-cni-about] (advanced) network plugin. For more detailed information to help plan out the required subnet ranges and network considerations, see [configure Azure CNI networking][use-advanced-networking]. Pomocí příkazu [AZ AKS Create][AZ-AKS-Create] vytvořte cluster AKS s názvem *myAKSCluster*. Tento příkaz vytvoří nezbytné síťové prostředky, pokud neexistují.
+Aby bylo možné spustit cluster AKS, který podporuje fondy uzlů pro kontejnery Windows serveru, musí cluster používat zásady sítě, které používají modul plug-in [Azure CNI][azure-cni-about] (Advanced) Network plugin. Podrobnější informace, které vám pomůžou naplánovat požadované rozsahy podsítí a požadavky na síť, najdete v tématu [Konfigurace sítě Azure CNI][use-advanced-networking]. Pomocí příkazu [AZ AKS Create][az-aks-create] vytvořte cluster AKS s názvem *myAKSCluster*. Tento příkaz vytvoří nezbytné síťové prostředky, pokud neexistují.
   * Cluster je nakonfigurovaný s jedním uzlem.
   * Parametry *Windows-Admin-Password* a *Windows-admin-username* nastavily přihlašovací údaje správce pro všechny kontejnery Windows serveru vytvořené v clusteru.
 
@@ -194,7 +194,7 @@ aksnpwin987654                      Ready    agent   108s   v1.14.1
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Soubor manifestu Kubernetes definuje požadovaný stav clusteru, například jaké image kontejnerů se mají spustit. V tomto článku se k vytvoření všech objektů potřebných ke spuštění ukázkové aplikace ASP.NET v kontejneru Windows serveru používá manifest. Tento manifest obsahuje [nasazení][kubernetes-deployment] for the ASP.NET sample application and an external [Kubernetes service][kubernetes-service] Kubernetes pro přístup k aplikaci z Internetu.
+Soubor manifestu Kubernetes definuje požadovaný stav clusteru, například jaké image kontejnerů se mají spustit. V tomto článku se k vytvoření všech objektů potřebných ke spuštění ukázkové aplikace ASP.NET v kontejneru Windows serveru používá manifest. Tento manifest zahrnuje [nasazení Kubernetes][kubernetes-deployment] pro ukázkovou aplikaci ASP.NET a externí [službu Kubernetes][kubernetes-service] pro přístup k aplikaci z Internetu.
 
 Ukázková aplikace ASP.NET se poskytuje jako součást [ukázek .NET Framework][dotnet-samples] a běží v kontejneru Windows serveru. AKS vyžaduje, aby kontejnery Windows serveru byly založené na imagí *Windows serveru 2019* nebo vyšší. Soubor manifestu Kubernetes musí také definovat [selektor uzlů][node-selector] , aby mohl cluster AKS spustit na uzlu, na kterém je možné spustit kontejnery Windows serveru, na kterém je spuštěná vaše ukázková aplikace ASP.NET.
 
@@ -297,7 +297,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu [AKS a informace o instančním objektu a jejich odstranění][sp-delete].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste nasadili cluster Kubernetes a do něj jste nasadili ukázkovou aplikaci ASP.NET v kontejneru Windows serveru. Přihlaste [se k webovému řídicímu panelu Kubernetes][kubernetes-dashboard] pro cluster, který jste právě vytvořili.
 

@@ -8,119 +8,119 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: 6711506c1e489dcbd50aedd36241affc3bbed80b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: da4bc51cdd8cdfad8212ee5a288f03874f673c2c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175178"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678200"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Zásady: Pro uživatele ve vašem adresáři
 
-Pokud chcete, aby vaše zásady pro uživatele a skupiny v adresáři, který můžete požádat o tento balíček přístup, postupujte následovně.
+Postupujte podle těchto kroků, pokud chcete, aby byly zásady pro uživatele ve vašem adresáři, které mohou vyžadovat tento balíček přístupu.  **Uživatelé ve vašem adresáři** odkazují jak na interní uživatele, tak i na externí uživatele, kteří byli předtím pozváni do adresáře, a to prostřednictvím nich, kteří požadují správu nároků s jiným balíčkem přístupu nebo pozvaní s Azure AD B2B. Při definování zásady můžete zadat jednotlivé uživatele nebo skupiny uživatelů, kteří jsou často. Vaše organizace například už může mít skupinu, jako je například **Všichni zaměstnanci**.  Pokud se tato skupina přidá v zásadách pro uživatele, kteří můžou požádat o přístup, pak může každý člen této skupiny požádat o přístup.
 
-1. V **uživatelé, kteří můžou požádat o přístup** vyberte **pro uživatele ve vašem adresáři**.
+1. V části **Uživatelé, kteří můžou požádat o přístup** , vyberte **pro uživatele v adresáři**.
 
-1. V **výběr uživatelů a skupin** klikněte na tlačítko **přidávat uživatele a skupiny**.
+1. V části **Vybrat uživatele a skupiny** klikněte na **Přidat uživatele a skupiny**.
 
-1. Vybraní uživatelé a skupiny vyberte uživatele a skupiny, které chcete přidat.
+1. V podokně vybrat uživatele a skupiny vyberte uživatele a skupiny, které chcete přidat.
 
-    ![Přístup k balíčku - výběr zásad uživatele a skupiny](./media/active-directory-entitlement-management-policy/policy-select-users-groups.png)
+    ![Přístup k balíčku – zásady – výběr uživatelů a skupin](./media/active-directory-entitlement-management-policy/policy-select-users-groups.png)
 
-1. Klikněte na tlačítko **vyberte** přidávat uživatele a skupiny.
+1. Klikněte na **Vybrat** a přidejte uživatele a skupiny.
 
-1. Přejděte dolů k [zásad: Požádat o](#policy-request) oddílu.
+1. Přeskočit dolů k [zásadě: Oddíl](#policy-request) žádosti.
 
-### <a name="policy-for-users-not-in-your-directory"></a>Zásady: Pro uživatele není ve vašem adresáři
+### <a name="policy-for-users-not-in-your-directory"></a>Zásady: Pro uživatele, kteří nejsou ve vašem adresáři
 
-Pokud chcete, aby vaše zásady pro uživatele není ve vašem adresáři, který můžete požádat o tento balíček přístup, postupujte následovně. Adresáře musí být nakonfigurovaný na povolí **omezení spolupráce organizační vztahy** nastavení.
+Postupujte podle těchto kroků, pokud chcete, aby byly zásady pro uživatele, kteří nejsou ve vašem adresáři, který může vyžadovat tento balíček přístupu. Uživatelé, kteří **nejsou ve vašem adresáři** , odkazují na uživatele, kteří jsou v jiném adresáři služby Azure AD, a nemusí být do vašeho adresáře pozváni.  V nastavení **omezení spolupráce organizačních vztahů** se musí adresáře nakonfigurovat tak, aby byly povolené.
 
 > [!NOTE]
-> Uživatelský účet guest vytvoří se pro uživatele ještě nejsou součástí do adresáře, jehož žádost schválený nebo schvalovány automaticky. Host bude pozván, ale nebude dostávat pozvánky e-mailu. Místo toho se mu e-mailu při doručení jejich přiřazení přístupu k balíčku. Ve výchozím nastavení později, když tento uživatel už má přiřazení balíčku přístup, protože vypršelo nebo bylo zrušeno, jejich poslední přiřazení, že uživatelský účet guest, bude blokovaná přihlášení, odstraní. Pokud chcete mít po neomezenou dobu, zůstávají ve vašem adresáři uživatele typu Host i v případě, že nemají žádná přiřazení přístupu k balíčku, můžete změnit nastavení pro konfiguraci správy oprávnění.
+> Pro uživatele, který ještě není ve vašem adresáři, jehož požadavek je schválen nebo automaticky schválen, se vytvoří účet externího uživatele hosta. Host bude pozván, ale neobdrží e-mail s pozvánkou. Místo toho obdrží e-mail po doručení jejich přiřazení balíčku přístupu. Ve výchozím nastavení platí, že pokud už uživatel typu host již nemá žádná přiřazení balíčku přístupu, protože jejich poslední přiřazení vypršela nebo byla zrušena, bude tento uživatelský účet hosta zablokován a následně odstraněn. Pokud chcete, aby uživatelé typu Host zůstali ve vašem adresáři po neomezenou dobu, a to i v případě, že nemají žádná přiřazení balíčků přístupu, můžete změnit nastavení pro konfiguraci správy nároků.
 
-1. V **uživatelé, kteří můžou požádat o přístup** vyberte **pro uživatele není ve vašem adresáři**.
+1. V části **Uživatelé, kteří můžou požádat o přístup** , vyberte **pro uživatele, kteří nejsou ve vašem adresáři**.
 
-1. V **vyberte externí služby Azure AD directory** klikněte na tlačítko **přidat adresáře**.
+1. V části **vybrat externí adresář služby Azure AD** klikněte na **Přidat adresáře**.
 
-1. Zadejte název domény a vyhledejte externí adresář Azure AD.
+1. Zadejte název domény a vyhledejte adresář služby Azure AD s tímto názvem domény.
 
-1. Ověřte, že je na správný adresář zadaný adresář název a počáteční doména.
+1. Ověřte, že se jedná o správný adresář pomocí zadaného názvu adresáře a počáteční domény.
 
     > [!NOTE]
-    > Všichni uživatelé v adresáři budou moct požádat o tento balíček přístup. Zahrnuti jsou uživatelé z všechny subdomény, které jsou přidružené k adresáři, ne jenom domény pro hledání použita.
+    > Všichni uživatelé z adresáře budou moct požádat o tento přístupový balíček. To zahrnuje uživatele ze všech subdomén přidružených k adresáři, nikoli jenom doménu použitou ve vyhledávání.
 
-    ![Přístup k balíčku - zásad – Výběr adresáře](./media/active-directory-entitlement-management-policy/policy-select-directories.png)
+    ![Přístup k balíčku – zásady – výběr adresářů](./media/active-directory-entitlement-management-policy/policy-select-directories.png)
 
-1. Klikněte na tlačítko **přidat** přidat adresář.
+1. Kliknutím na **Přidat** Přidejte adresář.
 
-1. Opakujte tento krok a přidejte všechny další adresáře.
+1. Opakováním tohoto kroku přidejte další adresáře.
 
-1. Po přidání všech adresářů chcete zahrnout do zásady, klikněte na tlačítko **vyberte**.
+1. Po přidání všech adresářů, které chcete zahrnout do zásad, klikněte na **Vybrat**.
 
-1. Přejděte dolů k [zásad: Požádat o](#policy-request) oddílu.
+1. Přeskočit dolů k [zásadě: Oddíl](#policy-request) žádosti.
 
-### <a name="policy-none-administrator-direct-assignments-only"></a>Zásady: Žádný (pouze přiřazení přímé správce)
+### <a name="policy-none-administrator-direct-assignments-only"></a>Zásady: Žádné (pouze přímé přiřazení správce)
 
-Následujícím postupem, potřebujete zásady obejít žádosti o přístup a Povolit správcům přiřadit konkrétní uživatele přímo k přístupu k balíčku. Uživatelé nebudou muset požádat o přístup k balíčku. Stále můžete nastavit nastavení vypršení platnosti, ale nejsou žádná nastavení požadavku.
+Postupujte podle těchto kroků, pokud chcete, aby vaše zásada nepoužívala žádosti o přístup a aby správci mohli přímo přiřadit konkrétní uživatele k balíčku přístupu. Uživatelé nebudou muset vyžadovat balíček přístupu. Pořád můžete nastavit nastavení vypršení platnosti, ale neexistují žádná nastavení žádostí.
 
-1. V **uživatelé, kteří můžou požádat o přístup** vyberte **None (správce pouze přímé přiřazení**.
+1. V části **Uživatelé, kteří můžou požádat o přístup** , vyberte možnost **žádný (pouze přímá přiřazení správců**).
 
-    Když vytvoříte balíček přístup, můžete přiřadit konkrétní interní a externí uživatele přímo k přístupu k balíčku. Pokud zadáte externího uživatele, vytvoří se účet uživatele typu Host ve vašem adresáři.
+    Po vytvoření balíčku pro přístup můžete k balíčku pro přístup přímo přiřadit konkrétní interní a externí uživatele. Pokud zadáte externího uživatele, vytvoří se ve vašem adresáři uživatelský účet hosta.
 
-1. Přejděte dolů k [zásad: Vypršení platnosti](#policy-expiration) oddílu.
+1. Přeskočit dolů k [zásadě: Část](#policy-expiration) vypršení platnosti.
 
 ### <a name="policy-request"></a>Zásady: Žádost
 
-V části žádosti zadejte nastavení schválení Pokud uživatelé požadují přístup k balíčku.
+V části Request (žádost) určíte nastavení schválení, když si uživatelé vyžádají balíček pro přístup.
 
-1. Chcete-li vyžadovat schválení žádostí z vybrané uživatele, nastavte **vyžadovat schválení** přepnutím **Ano**. Pokud chcete, aby automaticky schváleny žádosti o, nastavte přepínač na **ne**.
+1. Pokud chcete pro žádosti od vybraných uživatelů vyžadovat schválení, nastavte u přepínače **vyžadovat schválení** **hodnotu Ano**. Chcete-li automaticky schvalovat požadavky, nastavte přepínač na **ne**.
 
-1. Pokud budete vyžadovat schválení, v **vybrat schvalovatele** klikněte na tlačítko **přidat schvalovatele**.
+1. Pokud požadujete schválení, v části **Vybrat schvalovatele** klikněte na **Přidat schvalovatele**.
 
-1. V podokně vyberte schvalovatelé vyberte jeden nebo více uživatelů a/nebo skupiny jako schvalovatele.
+1. V podokně vybrat schvalovatele vyberte jednoho nebo více uživatelů nebo skupin, které mají být schvalovatelé.
 
-    Pouze jeden z Vybraní schvalovatelé musí schválit žádost. Schválení všem schvalovatelům se nevyžaduje. Rozhodnutí o schválení vychází z toho schvalovatel žádost nejdřív zkontroluje.
+    Pouze jeden z vybraných schvalovatelů potřebuje schválit žádost. Schválení ze všech schvalovatelů se nevyžaduje. Rozhodnutí o schválení vychází z toho, kdo žádost nejprve zkontroluje.
 
-    ![Přístup k balíčku - schvalovatelů výběru zásady](./media/active-directory-entitlement-management-policy/policy-select-approvers.png)
+    ![Přístup k balíčku – zásady – výběr schvalovatelů](./media/active-directory-entitlement-management-policy/policy-select-approvers.png)
 
-1. Klikněte na tlačítko **vyberte** Přidání schvalovatele.
+1. Kliknutím na **Vybrat** přidejte schvalovatele.
 
-1. Klikněte na tlačítko **zobrazit pokročilé nastavení žádostí o** zobrazíte další nastavení.
+1. Kliknutím na **Zobrazit upřesňující nastavení žádostí** zobrazíte další nastavení.
 
-    ![Přístup k balíčku - zásad – Výběr adresáře](./media/active-directory-entitlement-management-policy/policy-advanced-request.png)
+    ![Přístup k balíčku – zásady – výběr adresářů](./media/active-directory-entitlement-management-policy/policy-advanced-request.png)
 
-1. Chcete-li vyžadovat, aby uživatelé odůvodnit požádat o přístup k balíčku, nastavte **vyžadovat odůvodnění** k **Ano**.
+1. Pokud chcete, aby uživatelé měli oprávnění k vyžádání balíčku pro přístup, nastavte **vyžadovat odůvodnění** na **Ano**.
 
-1. Chcete-li vyžadovat schvalovatele o uveďte její odůvodnění pro schválení žádosti o přístup k balíčku, nastavte **vyžadovat odůvodnění schvalovatelem** k **Ano**.
+1. Pokud chcete, aby schvalovatel mohl poskytnout odůvodnění pro schválení žádosti o přístup k balíčku, nastavte **vyžadovat odůvodnění schvalovatele** na **Ano**.
 
-1. V **časový limit žádosti o schválení (dny)** zadejte množství času schvalovatelů nutné zkontrolovat žádost. Pokud žádné schvalovatelů projedná za tento počet dní, žádost vyprší a uživatel bude muset odeslat další požadavek pro přístup k balíčku.
+1. V poli **časový limit žádosti o schválení (dny)** zadejte dobu, kterou schvalovatelé musí ke kontrole žádosti. Pokud je v tomto počtu dnů žádní schvalovatelé nekontrolují, platnost žádosti vyprší a uživatel bude muset odeslat další žádost o přístup k balíčku.
 
-### <a name="policy-expiration"></a>Zásady: vypršení platnosti
+### <a name="policy-expiration"></a>Zásady: Konec platnosti
 
-V části vypršení platnosti můžete určit, kdy vyprší platnost přiřazení uživatele k přístupu k balíčku.
+V části vypršení platnosti zadejte, kdy vyprší platnost přiřazení uživatele k balíčku přístupu.
 
-1. V **vypršení platnosti** nastavte **vyprší platnost přístupu k balíčku** k **datu**, **počet dní**, nebo **nikdy**.
+1. V části **vypršení platnosti** nastavte **přístup k balíčku platnost** na **Datum**, **počet dní**nebo **nikdy**.
 
-    Pro **datu**, vyberte datum vypršení platnosti v budoucnu.
+    V poli pro **Datum**vyberte datum vypršení platnosti v budoucnosti.
 
-    Pro **počet dní**, zadejte číslo mezi 0 a 3660 dnů.
+    V **části počet dnů**zadejte číslo mezi 0 a 3660 dny.
 
-    Na základě vašeho výběru, přiřazení uživatele k přístupu k balíčku vyprší v určitý den, počet dnů po schválení, nebo vůbec.
+    Na základě vašeho výběru vyprší přiřazení uživatele k balíčku pro přístup k určitému datu, určitému počtu dní od jejich schválení nebo nikdy.
 
-1. Klikněte na tlačítko **zobrazit pokročilé nastavení vypršení platnosti** zobrazíte další nastavení.
+1. Kliknutím na **Zobrazit upřesňující nastavení vypršení platnosti** zobrazíte další nastavení.
 
-1. Chcete-li povolit uživateli rozšířit svá přiřazení, nastavte **umožňují uživatelům rozšířit přístup** k **Ano**.
+1. Chcete-li uživateli dovolit, aby rozšířili přiřazení, nastavte možnost **dovolit uživatelům** , aby rozšířili přístup k **Ano**.
 
-    Pokud mají být povoleny v zásadách, uživatel dostane e-mailu 14 dnů a také 1 den před jejich přiřazení přístupu k balíčku je nastavena na vypršení platnosti vyzve uživatele k rozšíření přiřazení.
+    Pokud jsou v zásadách povolené přípony, uživatel dostane e-mail 14 dní a také 1 den před tím, než je přiřazení balíčku přístupu nastavené na vypršení platnosti, aby se toto přiřazení rozšířilo.
 
-    ![Přístup k balíčku - nastavení zásad vypršení platnosti](./media/active-directory-entitlement-management-policy/policy-expiration.png)
+    ![Přístup k balíčku-zásady – nastavení vypršení platnosti](./media/active-directory-entitlement-management-policy/policy-expiration.png)
 
 ### <a name="policy-enable-policy"></a>Zásady: Povolení zásady
 
-1. Pokud chcete balíček přístupu budou okamžitě dostupné uživatelům v zásadách, klikněte na tlačítko **Ano** povolit příslušné zásady.
+1. Pokud chcete, aby byl balíček přístupu hned dostupný pro uživatele v zásadě, klikněte na **Ano** , aby se zásady povolily.
 
-    Můžete vždy povolit ho v budoucnu po dokončení vytváření balíčku přístup.
+    Po dokončení vytváření balíčku pro přístup ho můžete v budoucnu kdykoli povolit.
 
-    ![Přístup k balíčku - nastavení zásad pro povolení zásad](./media/active-directory-entitlement-management-policy/policy-enable.png)
+    ![Přístup k balíčku – nastavení zásad – Povolit zásadu](./media/active-directory-entitlement-management-policy/policy-enable.png)
 
 1. Klikněte na tlačítko **Další** nebo **vytvořit**.

@@ -1,18 +1,19 @@
 ---
 title: Řešení potíží s agentem Azure Backup
 description: Řešení potíží s instalací a registrací agenta Azure Backup
-author: saurabhsensharma
-manager: sivan
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.author: saurse
-ms.openlocfilehash: 6dc56e4eccbad0de986551e055e877d3d051b145
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 12cc584b27134c5c109f1a95eb4ccf8a7b2f0c64
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465971"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689223"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -62,7 +63,7 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 1. Přejít na **nástroje** > **Možnosti** > Internetupřipojenínastavení > **sítě LAN**.
 1. Ověřte nastavení proxy serveru pro účet System.
 1. Pokud není nakonfigurovaný žádný proxy server a poskytnou se podrobnosti o proxy serveru, odeberte podrobnosti.
-1. Pokud je nakonfigurován proxy server a podrobnosti o serveru proxy nejsou správné, ujistěte se, že  podrobnosti o **IP adrese proxy** a portech jsou správné.
+1. Pokud je nakonfigurován proxy server a podrobnosti o serveru proxy nejsou správné, ujistěte se, že podrobnosti o **IP adrese proxy** a portech jsou správné.
 1. Zavřete aplikaci Internet Explorer.
 
 ## <a name="unable-to-download-vault-credential-file"></a>Nejde stáhnout soubor s přihlašovacími údaji trezoru.
@@ -221,6 +222,6 @@ Chybová zpráva | Doporučená akce |
 Nepodařilo se najít změny v souboru. Důvodů může být několik. Zkuste operaci zopakovat. | Chcete-li tento problém vyřešit, ověřte níže uvedené kroky a opakujte operaci:<br/> - [Zajistěte, aby byl agent MARS nejnovější.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Ověření a řešení problémů s úložištěm, které mají vliv na pomocné místo zálohy](#pre-requisites)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Přečtěte si další podrobnosti o [tom, jak zálohovat Windows Server pomocí agenta Azure Backup](tutorial-backup-windows-server-to-azure.md).
 * Pokud potřebujete obnovit zálohu, přečtěte si téma [obnovení souborů do počítače s Windows](backup-azure-restore-windows-server.md).

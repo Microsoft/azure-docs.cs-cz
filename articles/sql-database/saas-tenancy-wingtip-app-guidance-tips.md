@@ -1,6 +1,6 @@
 ---
-title: Pokyny pro SQL Database aplikace s více tenanty příklad – SaaS aplikace Wingtip | Dokumentace Microsoftu
-description: Poskytuje kroky a pokyny pro instalaci a spuštění ukázkové aplikace více tenanty využívající Azure SQL Database, SaaS aplikace Wingtip Tickets příklad.
+title: Pokyny pro SQL Database víceklientské aplikace – příklad – Wingtip SaaS | Microsoft Docs
+description: Obsahuje kroky a pokyny k instalaci a spuštění ukázkové aplikace s více klienty, která používá Azure SQL Database, jako příklad SaaS lístky Wingtip.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
@@ -10,63 +10,62 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 758cb47760f4a15e262a4d682089ac7d9fee64e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6c14fd69521be85dbda5ec4ceda991dfdff54ae0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326253"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570071"
 ---
-# <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Obecné pokyny pro práci s Wingtip Tickets ukázkové SaaS aplikace
+# <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Obecné pokyny pro práci s ukázkami lístků Wingtip SaaS Apps
 
-Tento článek obsahuje obecné pokyny pro spuštění ukázkové SaaS aplikace Wingtip Tickets, využívající Azure SQL Database. 
+Tento článek obsahuje obecné pokyny pro spouštění ukázkových lístků Wingtip SaaS, které používají Azure SQL Database. 
 
-## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Stáhněte si a odblokování SaaS aplikace Wingtip Tickets skriptů
+## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Stažení a odblokování skriptů SaaS lístků Wingtip
 
-Windows může blokovat spustitelný obsah (skripty, knihovny DLL) při stahování z externího zdroje a extrahovat soubory zip. Při extrahování skripty ze souboru zip **postupujte následovně chcete odblokovat soubor .zip před extrahováním**. Tím se zajistí, že je povolené spouštět skripty.
+Obsah spustitelného souboru (skripty, knihovny DLL) může systém Windows zablokovat, pokud jsou soubory zip staženy z externího zdroje a extrahovány. Při extrakci skriptů ze souboru ZIP **postupujte podle následujících kroků, abyste před extrahováním odblokoval soubor. zip**. Tím se zajistí, že se skripty můžou spouštět.
 
-1. Přejděte do úložiště SaaS GitHub aplikace Wingtip Tickets pro vzor databáze tenantů, kterou chcete prozkoumat: 
+1. Pro model architektury databáze, který chcete prozkoumat, přejděte na úložiště GitHub lístky Wingtip SaaSs. 
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
-2. Klikněte na tlačítko **klonovat nebo stáhnout**.
-3. Klikněte na tlačítko **stáhnout zip** a soubor uložte.
-4. Klikněte pravým tlačítkem na soubor zip a vyberte **vlastnosti**. Název souboru zip bude odpovídat názvu úložiště. (např.) _WingtipTicketsSaaS-DbPerTenant-master.zip_)
-5. Na **Obecné** kartu, vyberte možnost **Odblokovat**.
+2. Klikněte na **klonovat nebo stáhnout**.
+3. Klikněte na **Stáhnout ZIP** a uložte soubor.
+4. Klikněte pravým tlačítkem na soubor zip a vyberte **vlastnosti**. Název souboru zip bude odpovídat názvu úložiště. dodatečné. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
+5. Na kartě **Obecné** vyberte odblokovat.
 6. Klikněte na **OK**.
 7. Extrahujte soubory.
 
-Skripty jsou umístěné v *... \\Learning Modules* složky.
+Skripty jsou umístěny v *.. Složka\\výukových modulů* .
 
 
-## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Práce se skripty Powershellu Wingtip Tickets
+## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Práce se skripty PowerShellu pro lístky Wingtip
 
-Chcete-li získat co nejlépe ukázku, kterou je potřeba věnovat prozkoumání poskytnutých skriptů. Použití zarážek a procházení skriptů tak, jak spustit a prozkoumat, jak se implementují různé vzorce SaaS. Chcete-li snadno si poskytnuté skripty a moduly pro nejlepší pochopení, doporučujeme použít [prostředí PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise).
+Pokud chcete získat z ukázky co nejvíc, musíte se podrobně do zadaných skriptů. Použití zarážek a krokování skriptů při jejich spouštění a kontrola, jak jsou implementovány různé vzory SaaS. K snadnému porozumění zadaným skriptům a modulům doporučujeme použít [prostředí POWERSHELL ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise).
 
-### <a name="update-the-configuration-file-for-your-deployment"></a>Aktualizovat konfigurační soubor nasazení
+### <a name="update-the-configuration-file-for-your-deployment"></a>Aktualizace konfiguračního souboru pro nasazení
 
-Upravit **UserConfig.psm1** hodnotou prostředku skupiny a uživatele, které jste nastavili při nasazování souboru:
+Upravte soubor **userconfig. psm1** o skupinu prostředků a hodnotu uživatele, kterou jste nastavili během nasazování:
 
-1. Otevřít *prostředí PowerShell ISE* a zatížení... \\Learning Modules\\*UserConfig.psm1* 
-2. Aktualizace *ResourceGroupName* a *název* s konkrétní hodnoty pro vaše nasazení (na řádcích 10 a 11 pouze).
+1. Otevřete *POWERSHELL ISE* a Load... Výukové\\moduly*userconfig. psm1* \\ 
+2. Aktualizujte *ResourceGroupName* a *název* o konkrétní hodnoty pro vaše nasazení (jenom na řádcích 10 a 11).
 3. Uložte změny.
 
-Nastavení tyto hodnoty tady jednoduše umožňuje nebudou muset aktualizovat tyto hodnoty specifické pro nasazení ve všech skriptech.
+Nastavení těchto hodnot jednoduše zabráníte v aktualizaci těchto hodnot specifických pro konkrétní nasazení v každém skriptu.
 
-### <a name="execute-the-scripts-by-pressing-f5"></a>Spuštění skriptů stisknutím klávesy F5
+### <a name="execute-the-scripts-by-pressing-f5"></a>Spouštění skriptů stisknutím klávesy F5
 
-Řada skriptů používá *$PSScriptRoot* k procházení složek, a *$PSScriptRoot* je vyhodnocen pouze při spuštění skriptů stisknutím klávesy **F5**.  Zvýraznění a spuštění výběru (**F8**) může vést k chybám, takže stiskněte **F5** při spouštění skriptů.
+Několik skriptů používá *$PSScriptRoot* k procházení složek a *$PSScriptRoot* se vyhodnocuje jenom v případě, že se skripty spouštějí stisknutím klávesy **F5**.  Zvýrazňování a spuštění výběru (**F8**) může mít za následek chyby, takže při spouštění skriptů stiskněte klávesu **F5** .
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>Procházení skriptů k vyzkoušení implementace
 
-Nejlepší způsob, jak pochopit skripty je krokování zjistíte, co dělají. Podívejte se na zahrnutou **Demo -** skripty, které se snadno sledovat pracovní postup vysoké úrovně. **Demo -** skriptech kroky potřebné k dosažení jednotlivých úkolů, takže nastavte zarážky a přejít hlouběji do jednotlivých volání zobrazíte podrobnosti o implementaci pro různé vzorce SaaS.
+Nejlepším způsobem, jak porozumět skriptům, je projít si jejich procházením, abyste viděli, co dělají. Podívejte se na zahrnuté **ukázkové** skripty, které představují snadnou kontrolu nad pracovním postupem vysoké úrovně. **Ukázková –** skripty ukazují kroky potřebné k provedení jednotlivých úloh, nastavení zarážek a přechod k podrobnostem o jednotlivých voláních k zobrazení podrobností o implementaci pro různé vzory SaaS.
 
-Tipy pro zkoumání a krokování prostřednictvím skriptů prostředí PowerShell:
+Tipy pro zkoumání a krokování prostřednictvím skriptů PowerShellu:
 
-- Otevřít **Demo -** skriptů v prostředí ISE Powershellu.
-- Proveďte skript nebo pokračujte s **F5** (pomocí **F8** se nedoporučuje, protože *$PSScriptRoot* při spuštění výběrů skriptů).
+- Otevřete **demo-** skripty v prostředí PowerShell ISE.
+- Spustit nebo pokračovat s **F5** (použití **klávesy F8** není doporučeno, protože při spuštění výběrů skriptu není vyhodnocena *$PSScriptRoot* ).
 - Pokud chcete umístit zarážky, klikněte na řádek nebo ho vyberte a stiskněte klávesu **F9**.
 - Funkci nebo volání skriptu můžete vynechat stisknutím klávesy **F10**.
 - Na funkci nebo volání skriptu můžete přejít stisknutím klávesy **F11**.
@@ -75,48 +74,48 @@ Tipy pro zkoumání a krokování prostřednictvím skriptů prostředí PowerSh
 
 ## <a name="explore-database-schema-and-execute-sql-queries-using-ssms"></a>Prozkoumání databázového schématu a spouštění dotazů SQL pomocí SSMS
 
-Použití [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) k připojení a procházení aplikačních serverů a databází.
+K připojení a procházení aplikačních serverů a databází použijte [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) .
 
-Nasazení má na začátku klienty a servery SQL Database katalogu pro připojení k. Názvy serverů, závisí na vzor databáze tenantů (viz níže pro konkrétní). 
+Nasazení má zpočátku klienty a katalog SQL Database servery, ke kterým se připojuje. Pojmenování serverů závisí na vzoru architektury databáze (podrobnosti najdete níže). 
 
-   - **Samostatná aplikace:** servery pro každého tenanta (např.) *contosoconcerthall -&lt;uživatele&gt;*  server) a *katalogu-sa -&lt;uživatele&gt;*
-   - **Databáze na tenanta:** *tenants1-dpt -&lt;uživatele&gt;*  a *katalogu-dpt -&lt;uživatele&gt;*  servery
-   - **Databázi s více tenanty:** *tenants1-mt –&lt;uživatele&gt;*  a *katalogu-mt –&lt;uživatele&gt;*  servery
+   - **Samostatná aplikace:** servery pro každého tenanta (např. *contosoconcerthall-&lt;User&gt;*  Server) a *Catalog-SA-&lt;User&gt;*
+   - **Databáze na tenanta:** *tenants1-DPT –&lt;uživatel&gt;*  a *katalog – DPT –&lt;uživatelské&gt;*  servery
+   - **Víceklientské databáze:** *tenants1-MT-&lt;User&gt;*  and *Catalog-MT-&lt;User&gt;*  Servers
 
-Aby se zajistilo úspěšné ukázkové připojení, mají všechny servery [pravidlo brány firewall](sql-database-firewall-configure.md) povolení všech IP adres prostřednictvím.
+Aby bylo zajištěno úspěšné ukázkové připojení, všechny servery mají [pravidlo brány firewall](sql-database-firewall-configure.md) , které povoluje všechny IP adresy prostřednictvím.
 
 
-1. Otevřít *SSMS* a připojení ke klientům. Název serveru, závisí na databázi tenantů vzor vámi zvolená (viz níže pro konkrétní):
-    - **Samostatná aplikace:** servery jednotlivých tenantů (např.) *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
-    - **Databáze na tenanta:** *tenants1-dpt -&lt;uživatele&gt;. database.windows.net*
-    - **Databázi s více tenanty:** *tenants1-mt –&lt;uživatele&gt;. database.windows.net* 
+1. Otevřete *SSMS* a připojte se k tenantovi. Název serveru závisí na vzoru architektury databáze, který jste vybrali (podrobnosti najdete níže):
+    - **Samostatná aplikace:** servery jednotlivých tenantů (např. *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
+    - **Databáze na tenanta:** *tenants1-DPT-&lt;User&gt;. Database.Windows.NET*
+    - **Víceklientské databáze:** *tenants1-MT-&lt;User&gt;. Database.Windows.NET* 
 2. Klikněte na **Připojit** > **Databázový stroj...** :
 
    ![katalogový server](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. Přihlašovací údaje pro ukázku jsou: Přihlašovací jméno = *developer*, heslo = *P\@ssword1*
+3. Ukázkové přihlašovací údaje: Login = *Developer*, Password = *P\@ssword1*
 
-    Následující obrázek ukazuje přihlášení pro *databáze na tenanta* vzor. 
+    Následující obrázek ukazuje přihlášení k *databázi pro každý model klienta* . 
     ![připojení](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
     
    
 
-4. Opakujte kroky 2 až 3 a připojte se k serveru katalogu (viz níže pro konkrétní server názvy založena na vzoru databáze tenantů vybrané)
-    - **Samostatná aplikace:** *katalogu-sa -&lt;uživatele&gt;. database.windows.net*
-    - **Databáze na tenanta:** *katalogu-dpt -&lt;uživatele&gt;. database.windows.net*
-    - **Databázi s více tenanty:** *katalogu-mt –&lt;uživatele&gt;. database.windows.net*
+4. Opakujte kroky 2-3 a připojte se k serveru katalogu (dole najdete konkrétní názvy serverů na základě vybraného vzoru databáze).
+    - **Samostatná aplikace:** *Catalog-SA-&lt;User&gt;. Database.Windows.NET*
+    - **Databáze na tenanta:** *Catalog – DPT –&lt;User&gt;. Database.Windows.NET*
+    - **Víceklientské databáze:** *Catalog-MT-&lt;User&gt;. Database.Windows.NET*
 
 
-Po úspěšném připojení byste měli vidět všechny servery. Seznam databází se může lišit v závislosti na klienty, kterou jste zřídili.
+Po úspěšném připojení byste měli vidět všechny servery. Seznam databází se může lišit v závislosti na klientech, které jste zřídili.
 
-Následující obrázek ukazuje přihlášení pro *databáze na tenanta* vzor.
+Následující obrázek ukazuje, jak se přihlašujete ke vzorům *databáze pro jednotlivé klienty* .
 
 ![průzkumník objektů](media/saas-tenancy-wingtip-app-guidance-tips/object-explorer.png)
 
 
 
 ## <a name="next-steps"></a>Další postup
-- [Nasazení samostatného SaaS aplikaci Wingtip Tickets](saas-standaloneapp-get-started-deploy.md)
-- [Nasazení databáze Wingtip Tickets SaaS na Tenanta aplikaci](saas-dbpertenant-get-started-deploy.md)
-- [Nasazení aplikace Wingtip Tickets SaaS víceklientskou databází](saas-multitenantdb-get-started-deploy.md)
+- [Nasazení samostatné aplikace SaaS lístky Wingtip Tickets](saas-standaloneapp-get-started-deploy.md)
+- [Nasazení databáze Wingtip Tickets SaaS Database na klientské aplikace](saas-dbpertenant-get-started-deploy.md)
+- [Nasazení aplikace SaaS multi-tenant Database pro víceklientské lístky Wingtip](saas-multitenantdb-get-started-deploy.md)
 

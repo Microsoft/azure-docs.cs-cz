@@ -10,10 +10,10 @@ ms.topic: conceptual
 description: Jak Visual Studio Code pracuje s Azure Dev Spaces
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 ms.openlocfilehash: 0d80643b366b6d7313f24e73258056e492eb56fc
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68297869"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Jak Visual Studio Code pracuje s Azure Dev Spaces
@@ -41,7 +41,7 @@ Po vygenerování assetů pro projekt můžete spustit služby Java, Node. js a 
 
 Musíte vytvořit cluster AKS a povolit Azure Dev Spaces v clusteru mimo Visual Studio Code. K tomuto nastavení můžete použít například Azure CLI nebo Azure Portal. Můžete znovu použít stávající fázemi, Helm grafy a `azds.yaml` soubory vytvořené mimo Visual Studio Code, jako jsou například prostředky vygenerované spuštěním. `azds prep` Pokud znovu použijete prostředky vygenerované mimo Visual Studio Code, stále potřebujete mít `.vscode` adresář. Tento `.vscode` adresář je možné znovu vygenerovat pomocí Visual Studio Code a rozšíření Azure dev Spaces a nepřepíše stávající prostředky.
 
-U projektů .NET Core je nutné mít nainstalované [ C# rozšíření][csharp-extension] installed to run your .NET service from Visual Studio Code. Also for Java projects using Maven, you must have the [Java Debugger for Azure Dev Spaces extension][java-extension] i [Maven nainstalované a nakonfigurované][Maven] pro spuštění služby Java z Visual Studio Code.
+U projektů .NET Core musíte mít nainstalované [ C# rozšíření][csharp-extension] pro spuštění služby .NET z Visual Studio Code. V případě projektů Java, které používají Maven, musíte mít nainstalované [rozšíření Java debugger pro Azure dev Spaces][java-extension] a [Maven nainstalované a nakonfigurované][maven] tak, aby spouštělo službu Java od Visual Studio Code.
 
 ## <a name="debug-your-service-in-aks"></a>Ladění služby v AKS
 

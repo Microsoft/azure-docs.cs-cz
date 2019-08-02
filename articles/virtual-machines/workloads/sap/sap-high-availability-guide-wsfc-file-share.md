@@ -18,10 +18,10 @@ ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70f9264357ca1a0c1a612481f4254e86f05e41d8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479178"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -312,11 +312,11 @@ Chcete-li použít sdílenou složku se škálováním na více systémů, musí
 * Musíte použít prémiové disky Azure.
 * Doporučujeme, abyste používali Azure Managed Disks.
 * Doporučujeme formátovat svazky pomocí odolného systému souborů (ReFS).
-    * Další informace najdete v tématu [SAP Note 1869038 – podpora SAP pro systém souborů][1869038] and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem] ReFs v článku plánování svazků v prostory úložiště s přímým přístupem.
+    * Další informace najdete v tématu [SAP Note 1869038 – podpora SAP pro systém souborů ReFs][1869038] a [Výběr části systém souborů][planning-volumes-s2d-choosing-filesystem] v článku plánování svazků v prostory úložiště s přímým přístupem.
     * Ujistěte se, že jste nainstalovali [kumulativní aktualizaci Microsoft KB4025334][kb4025334].
 * Můžete použít velikosti virtuálních počítačů Azure řady DS-Series nebo DSv2-Series.
 * Pro dobrý výkon sítě mezi virtuálními počítači, který je potřeba pro Prostory úložiště s přímým přístupem synchronizaci disku, použijte typ virtuálního počítače, který má alespoň vysokou šířku pásma sítě.
-    Další informace najdete v tématu Specifikace [DSv2-Series][dv2-series] and [DS-Series][ds-series] .
+    Další informace najdete v tématu Specifikace [DSv2-Series][dv2-series] a [DS-Series][ds-series] .
 * Doporučujeme, abyste si vyhradi nějakou nepřidělenou kapacitu ve fondu úložiště. Když ponecháte nějakou nepřidělenou kapacitu ve fondu úložiště, zajistíte místo na disku možnost opravit, pokud dojde k chybě jednotky. Tím se zlepší zabezpečení a výkon dat.  Další informace najdete v tématu [Volba velikosti svazku][choosing-the-size-of-volumes-s2d].
 * Nemusíte konfigurovat interní nástroj pro vyrovnávání zatížení Azure pro síťový název sdílené složky se škálováním na více instancí, \<jako je třeba\>globální hostitel SAP. To se provádí pro \<název\> virtuálního hostitele ASCS/SCS instance SAP ASCS/SCS nebo pro DBMS. Sdílená složka se škálováním na více instancí škáluje zatížení na všech uzlech clusteru. \<Globální hostitel\> SAP používá místní IP adresu pro všechny uzly clusteru.
 

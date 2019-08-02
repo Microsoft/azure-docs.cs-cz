@@ -1,6 +1,6 @@
 ---
-title: Úrovně služby Azure SQL Database – model nákupu založený na DTU | Dokumentace Microsoftu
-description: Další informace o úrovních služeb v model nákupu založený na DTU pro databáze ve fondu a jeden kvůli velikosti výpočetního výkonu a úložiště.
+title: Azure SQL Database úrovní služeb – nákupní model založený na DTU | Microsoft Docs
+description: Přečtěte si o úrovních služeb v nákupním modelu založeném na DTU pro databáze typu Single a Pool pro zajištění výpočtů a velikosti úložiště.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,21 +10,20 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 964a2931267ad2f1e2842693eadf43f8f629a084
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: c46913f24deffc7c4db95d8a77db1c49ae54b6ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357230"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566693"
 ---
-# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služeb v model nákupu založený na DTU
+# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služeb v modelu nákupu založeném na DTU
 
-Úrovně služeb v model nákupu založený na DTU jsou rozlišené pomocí celou řadu velikostí výpočetních s pevnou velikost zahrnutého úložiště, pevné období uchování zálohy a pevnou cenu. Všechny úrovně služeb v model nákupu založený na DTU poskytují flexibilitu změny velikosti výpočetních s minimálními [výpadek](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/), nicméně je přepínač po dobu kde dojde k databázi ke ztrátě připojení pro krátkou dobu, která můžete minimalizovat použití logika opakovaných pokusů. Izolované databáze a elastické fondy se účtují po hodinách na základě úrovně služeb a výpočetního prostředí.
+Úrovně služeb v modelu nákupu na základě DTU jsou rozlišené rozsahem výpočetních velikostí s pevným množstvím zahrnutého úložiště, pevným obdobím uchovávání záloh a pevnou cenou. Všechny úrovně služeb v modelu nákupu založeném na DTU poskytují flexibilitu při změně výpočetních velikostí s minimálními [výpadky](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/). v průběhu období ale dojde k přepnutí připojení do databáze po krátkou dobu, kterou je možné zmírnit pomocí logiky opakování. Izolované databáze a elastické fondy se účtují po hodinách na základě úrovně služeb a výpočetního prostředí.
 
 > [!IMPORTANT]
-> Spravovaná instance SQL Database nepodporuje nákupní model založený na DTU. Další informace najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md).
+> SQL Database spravovaná instance nepodporuje nákupní model založený na DTU. Další informace najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md).
 > [!NOTE]
 > Informace o úrovních služeb založený na virtuálních jádrech najdete v tématu [úrovně služeb založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Informace o odlišení těchto služeb na základě jednotek DTU úrovně a úrovní služeb založený na virtuálních jádrech najdete v tématu [modely nákupu Azure SQL Database](sql-database-purchase-models.md).
 
@@ -45,7 +44,7 @@ Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikovýc
 |||||
 
 > [!NOTE]
-> Můžete získat bezplatné databázi Azure SQL na úrovni služby Basic ve spojení s bezplatným účtem Azure prozkoumat Azure. Informace najdete v tématu [vytvořte si spravovanou cloudovou databázi s bezplatným účtem Azure](https://azure.microsoft.com/free/services/sql-database/).
+> Můžete získat bezplatnou službu Azure SQL Database na úrovni služeb Basic ve spojení s bezplatným účtem Azure a prozkoumat Azure. Informace najdete v tématu [vytvořte si spravovanou cloudovou databázi s bezplatným účtem Azure](https://azure.microsoft.com/free/services/sql-database/).
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Omezení úložiště a jednotek DTU izolované databáze
 
@@ -72,9 +71,9 @@ Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro 
 |||||
 
 > [!IMPORTANT]
-> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, střed USA – Západ, oblastí pro úlohy ministerstva obrany USA a US Government centrální. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuálních omezení pro P11 – P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium, kromě těchto: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správa USA – střed. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!IMPORTANT]
-> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
 ## <a name="dtu-benchmark"></a>Srovnávací test DTU
 
@@ -88,7 +87,7 @@ Test výkonnosti a jeho metodologie jsou popsány podrobněji níže.
 
 ### <a name="benchmark-summary"></a>Přehled srovnávacích testů
 
-Test výkonnosti se měří výkon kombinaci základní databázových operací, které se vyskytují nejčastěji v online (OLTP) úloh zpracování transakcí. I když testu je navržená s cloud computingu v paměti, schéma databáze, pro naplnění dat a transakcí byly navrženy široce reprezentativní základní elementy nejčastěji používané úlohy OLTP.
+Srovnávací test měří výkon kombinace základních databázových operací, ke kterým dochází nejčastěji v úlohách OLTP (online Transaction Processing). I když testu je navržená s cloud computingu v paměti, schéma databáze, pro naplnění dat a transakcí byly navrženy široce reprezentativní základní elementy nejčastěji používané úlohy OLTP.
 
 ### <a name="schema"></a>Schéma
 

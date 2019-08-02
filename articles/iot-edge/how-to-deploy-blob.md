@@ -1,5 +1,5 @@
 ---
-title: Nasazení modulu Azure Blob Storage do zařízení – Azure IoT Edge | Dokumentace Microsoftu
+title: Nasazení modulu Azure Blob Storage do zařízení – Azure IoT Edge | Microsoft Docs
 description: Modul služby Azure Blob Storage nasadíte do zařízení IoT Edge k ukládání dat na hraničních zařízeních.
 author: arduppal
 ms.author: arduppal
@@ -9,16 +9,16 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 468e4fca5e67850949e7d5826e4bc88fa504b9d6
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 4511510dec6f488e1a6ea9a6842b771d2a298fec
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295198"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640677"
 ---
-# <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Nasazení Azure Blob Storage na modul IoT Edge do zařízení
+# <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Nasazení služby Azure Blob Storage v modulu IoT Edge do zařízení
 
-Existuje několik způsobů, jak nasadit moduly IoT Edge zařízení a všechny z nich pracovat pro službu Azure Blob Storage na moduly IoT Edge. Tyto dvě metody nejjednodušší jsou pomocí webu Azure portal nebo šablony Visual Studio Code.
+Existuje několik způsobů, jak nasadit moduly do zařízení IoT Edge a všechny je fungují pro Azure Blob Storage v IoT Edgech modulech. Tyto dvě metody nejjednodušší jsou pomocí webu Azure portal nebo šablony Visual Studio Code.
 
 > [!NOTE]
 > Azure Blob Storage na hraničních zařízeních IoT je v [ve verzi public preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -27,11 +27,11 @@ Existuje několik způsobů, jak nasadit moduly IoT Edge zařízení a všechny 
 
 - [Služby IoT hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
 - [Zařízení IoT Edge](how-to-register-device-portal.md) nainstalován modul runtime IoT Edge.
-- [Visual Studio Code](https://code.visualstudio.com/) a [nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Pokud nasazení z Visual Studio Code.
+- [Visual Studio Code](https://code.visualstudio.com/) a [nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) , pokud nasazujete z Visual Studio Code.
 
-## <a name="deploy-from-the-azure-portal"></a>Nasazení na webu Azure Portal
+## <a name="deploy-from-the-azure-portal"></a>Nasazení z Azure Portal
 
-Na webu Azure portal vás provede vytvořením manifest nasazení a doručením (push) nasazení do zařízení IoT Edge.
+Azure Portal vás provede vytvořením manifestu nasazení a vložením nasazení do IoT Edgeho zařízení.
 
 ### <a name="select-your-device"></a>Vyberte zařízení
 
@@ -42,23 +42,23 @@ Na webu Azure portal vás provede vytvořením manifest nasazení a doručením 
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
 
-Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Na webu Azure portal obsahuje průvodce, který vás provede procesem vytvoření manifestu nasazení, místo ruční vytváření dokumentů JSON. Má tři kroky: **Přidat moduly**, **trasy zadejte**, a **zkontrolujte nasazení**.
+Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasadit, tok dat mezi moduly a požadované vlastnosti dvojčat modulů. Azure Portal má průvodce, který vás provede vytvořením manifestu nasazení místo ručního vytváření dokumentu JSON. Má tři kroky: **Přidejte moduly**, **Zadejte trasy**a **Zkontrolujte nasazení**.
 
 #### <a name="add-modules"></a>Přidat moduly
 
 1. V **moduly nasazení** části stránky vyberte **přidat**.
 
-1. Typy modulů v rozevíracím seznamu vyberte **modul IoT Edge**.
+1. Z typů modulů v rozevíracím seznamu vyberte možnost **IoT Edge modul**.
 
-1. Zadejte název pro modul a poté zadejte image kontejneru:
+1. Zadejte název modulu a pak zadejte image kontejneru:
 
-   - **Název** -azureblobstorageoniotedge
-   - **Identifikátor URI image** -mcr.microsoft.com/azure-blob-storage:latest
+   - **Název** – azureblobstorageoniotedge
+   - **Identifikátor URI image** – MCR.Microsoft.com/Azure-Blob-Storage:Latest
 
    > [!IMPORTANT]
-   > Azure IoT Edge je velká a malá písmena, při volání k modulům a sady SDK služby Storage také výchozí hodnoty na malá písmena. I když název modulu v [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) je **AzureBlobStorageonIoTEdge**, mění se název na malá písmena pomáhá zajistit, aby připojení k Azure Blob Storage na modul IoT Edge nepřerušily.
+   > Azure IoT Edge rozlišuje velká a malá písmena, když provedete volání modulů a sada SDK úložiště má výchozí hodnotu malá písmena. I když je název modulu v [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) **AzureBlobStorageonIoTEdge**, změna názvu na malá písmena vám pomůže zajistit, že se připojení k Azure Blob Storage v modulu IoT Edge nepřerušila.
 
-1. Výchozí hodnota **možnosti vytvoření kontejneru** definovat hodnoty vazby portu, které váš kontejner potřebuje, ale musíte také přidat informace o vašem účtu úložiště a vazby k adresáři úložiště ve vašem zařízení. Nahraďte výchozí JSON na portálu ve formátu JSON:
+1. Výchozí nastavení **kontejnerů vytvořit** hodnoty definují vazby portů, které váš kontejner potřebuje, ale musíte také přidat informace o účtu úložiště a vazbu pro adresář úložiště na zařízení. Výchozí JSON na portálu nahraďte následujícím kódem JSON:
 
    ```json
    {
@@ -77,21 +77,21 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasad
    }
    ```
 
-1. Aktualizace ve formátu JSON, který jste zkopírovali s následujícími informacemi:
+1. Aktualizujte kód JSON, který jste zkopírovali, pomocí následujících informací:
 
-   - Nahraďte `<your storage account name>` s názvem, které si zapamatujete. Názvy účtů musí být 3 až 24 znaků dlouhá a malá písmena a číslice. Bez mezer.
+   - Nahraďte `<your storage account name>` názvem, který si můžete pamatovat. Názvy účtů by měly mít délku 3 až 24 znaků a malými písmeny a číslicemi. Žádné mezery.
 
-   - Nahraďte `<your storage account key>` s klíčem ve formátu base64 64 bajtů. Vygenerujete nějaký klíč pomocí nástrojů jako [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Použijete tyto přihlašovací údaje pro přístup k úložišti objektů blob z jiných modulů.
+   - Nahraďte `<your storage account key>` klíčem Base64 64-byte. Vygenerujete nějaký klíč pomocí nástrojů jako [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Použijete tyto přihlašovací údaje pro přístup k úložišti objektů blob z jiných modulů.
 
-   - Nahraďte `<storage directory bind>` podle operačního systému kontejneru. Zadejte název [svazku](https://docs.docker.com/storage/volumes/) nebo absolutní cesta do adresáře na zařízení IoT Edge místo modulu objektů blob pro uložení data. Vazba adresář úložiště mapuje umístění na vašem zařízení, které poskytujete nastavení umístění v modulu.
+   - Nahraďte `<storage directory bind>` v závislosti na vašem operačním systému vašeho kontejneru. Zadejte název [svazku](https://docs.docker.com/storage/volumes/) nebo absolutní cesta do adresáře na zařízení IoT Edge místo modulu objektů blob pro uložení data. Vazba adresáře úložiště mapuje umístění v zařízení, které zadáte do umístění sady v modulu.
 
-     - Pro kontejnery Linuxu ve formátu je  *\<cestu úložiště >: / blobroot*. Například **/srv/containerdata: / blobroot** nebo **tento svazek: / blobroot**.
-     - Pro kontejnery Windows ve formátu je  *\<cestu úložiště >: C: / BlobRoot*. Například **C: / ContainerData:C: / BlobRoot** nebo **my-svazku: C: / blobroot**.
+     - U kontejnerů Linux je  *\<formátem cesta úložiště >:/blobroot*. Například **/SRV/containerdata:/blobroot** nebo **My-Volume:/blobroot**.
+     - V případě kontejnerů Windows je  *\<formátem cesta úložiště >: C:/BlobRoot*. Například **c:/ContainerData: c:/BlobRoot** nebo **My-Volume: c:/BlobRoot**. Místo používání místní jednotky můžete namapovat umístění sítě protokolu SMB, kde najdete další informace v tématu [použití sdílené složky SMB jako místního úložiště](how-to-store-data-blob.md#using-smb-share-as-your-local-storage) .
 
      > [!IMPORTANT]
-     > Neměňte druhou polovinu adresáře úložiště vytvořit vazbu hodnotu, která odkazuje na konkrétní umístění v modulu. Vazba adresář úložiště by měl končit vždy **: / blobroot** pro kontejnery Linuxu a **: C: / BlobRoot** pro kontejnery Windows.
+     > Neměňte druhou polovinu hodnoty vazby adresáře úložiště, která odkazuje na konkrétní umístění v modulu. Vazba adresáře úložiště by měla vždy končit **:/blobroot** for Linux Containers a **: C:/blobroot** for Windows Containers.
 
-1. Nastavte [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) vlastnosti pro modul následující JSON zkopírováním a vložením do **požadované sady dvojče zařízení vlastnosti** pole. Konfigurace jednotlivých vlastností s odpovídající hodnotou, uložit a pokračovat s nasazením.
+1. Nastavte [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) a vlastnosti [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) pro modul tak, že zkopírujete následující kód JSON a vložíte ho do pole **požadované vlastnosti vlákna v modulu set** . Nakonfigurujte každou vlastnost s odpovídající hodnotou, uložte ji a pokračujte v nasazení.
 
    ```json
    {
@@ -117,9 +117,9 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasad
 
       ```
 
-   ![Sada kontejner vytvořit možnosti, deviceAutoDeleteProperties a deviceToCloudUploadProperties vlastnosti](./media/how-to-deploy-blob/iotedge-custom-module.png)
+   ![Nastavení možností vytvoření kontejneru, vlastností deviceAutoDeleteProperties a deviceToCloudUploadProperties](./media/how-to-deploy-blob/iotedge-custom-module.png)
 
-   Informace o konfiguraci deviceToCloudUploadProperties a deviceAutoDeleteProperties po nasazení modulu najdete v tématu [upravit dvojče modulu](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). Další informace o požadovaných vlastností najdete v tématu [definovat nebo aktualizace požadované vlastnosti](module-composition.md#define-or-update-desired-properties).
+   Informace o konfiguraci deviceToCloudUploadProperties a deviceAutoDeleteProperties po nasazení modulu najdete v tématu [editace modulu s dvojitou](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)platností. Další informace o požadovaných vlastnostech najdete v tématu [definice nebo aktualizace požadovaných vlastností](module-composition.md#define-or-update-desired-properties).
 
 1. Vyberte **Uložit**.
 
@@ -127,30 +127,30 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasad
 
 #### <a name="specify-routes"></a>Zadejte trasy
 
-Ponechte výchozí trasy a vyberte **Další** pokračujte k části revize.
+Ponechte výchozí trasy a vyberte **Další** a pokračujte do části Kontrola.
 
 #### <a name="review-deployment"></a>Zkontrolujte nasazení
 
-Zkontrolujte část pořady, kterou jste nasazení JSON manifestu byl vytvořen na základě vašeho výběru v předchozích dvou částech. Existují také dva moduly deklarovat, že jste nepřidali: **$edgeAgent** a **$edgeHub**. Tyto dva moduly tvoří [modul runtime IoT Edge](iot-edge-runtime.md) a jsou povinné výchozí hodnoty v každém nasazení.
+Zkontrolujte část pořady, kterou jste nasazení JSON manifestu byl vytvořen na základě vašeho výběru v předchozích dvou částech. K dispozici jsou také dva moduly, které jste nepřidali: **$edgeAgent** a **$edgeHub**. Tyto dva moduly tvoří [modul runtime IoT Edge](iot-edge-runtime.md) a jsou povinné výchozí hodnoty v každém nasazení.
 
 Zkontrolujte informace o nasazení a pak vyberte **odeslat**.
 
 ### <a name="verify-your-deployment"></a>Ověření nasazení
 
-Po odeslání nasazení můžete vrátit **IoT Edge** stránka služby IoT hub.
+Po odeslání nasazení se vrátíte na stránku **IoT Edge** služby IoT Hub.
 
-1. Vyberte zařízení IoT Edge, že jste určili při nasazení a otevřete její podrobnosti.
-1. V podrobnostech zařízení zkontrolujte, zda modulu služby storage blob jako **zadaný v nasazení** a **zařízení ohlásilo**.
+1. Vyberte zařízení IoT Edge, na které cílíte nasazení, a otevřete jeho podrobnosti.
+1. V podrobnostech o zařízení ověřte, že je modul BLOB Storage uveden v části **nasazení** a nahlášený **zařízením**.
 
-Může trvat několik minut pro modul na zařízení a potom hlášeny zpět do služby IoT Hub. Aktualizujte stránku, pokud chcete zobrazit aktualizovaný stav.
+Může chvíli trvat, než se modul na zařízení spustí a pak se znovu oznámí IoT Hub. Aktualizujte stránku, aby se zobrazil aktualizovaný stav.
 
 ## <a name="deploy-from-visual-studio-code"></a>Nasazení z Visual Studio Code
 
-Azure IoT Edge poskytuje šablony ve Visual Studio Code a pomohou vám vytvořit řešení edge. Použijte následující postup k vytvoření nového řešení IoT Edge s modulem úložiště objektů blob a ke konfiguraci manifest nasazení.
+Azure IoT Edge poskytuje šablony ve Visual Studio Code a pomohou vám vytvořit řešení edge. Pomocí následujících kroků můžete vytvořit nové řešení IoT Edge s modulem BLOB Storage a nakonfigurovat manifest nasazení.
 
 1. Vyberte **zobrazení** > **příkaz palety**.
 
-1. V paletu příkazů zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení IoT Edge**.
+1. V paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení**IoT Edge.
 
    ![Spustit nové řešení IoT Edge](./media/how-to-develop-csharp-module/new-solution.png)
 
@@ -158,13 +158,13 @@ Azure IoT Edge poskytuje šablony ve Visual Studio Code a pomohou vám vytvořit
 
    | Pole | Hodnota |
    | ----- | ----- |
-   | Vyberte složku | Vyberte umístění na vývojovém počítači pro Visual Studio Code k vytvoření těchto souborů řešení. |
+   | Vyberte složku | Pro vytvoření souborů řešení vyberte umístění na vývojovém počítači Visual Studio Code. |
    | Zadejte název řešení | Zadejte popisný název pro vaše řešení nebo přijměte výchozí **EdgeSolution**. |
-   | Vyberte šablonu modulu | Zvolte **existujícímu modulu (úplnou bitovou kopii zadejte adresu URL)** . |
-   | Zadejte název modulu | Zadejte název všechna malá pro modul, jako je třeba **azureblobstorageoniotedge**.<br /><br />Je důležité používat malá písmena název pro službu Azure Blob Storage na modul IoT Edge. IoT Edge je velká a malá písmena, při odkazování na moduly a sady SDK služby Storage výchozí hodnoty na malá písmena. |
-   | Použijte image Dockeru pro modul | Zadejte identifikátor URI image: **mcr.microsoft.com/azure-blob-storage:latest** |
+   | Vyberte šablonu modulu | Vyberte **existující modul (zadejte úplnou adresu URL obrázku)** . |
+   | Zadejte název modulu | Zadejte název pro váš modul, například **azureblobstorageoniotedge**.<br /><br />Je důležité používat pro Azure Blob Storage v modulu IoT Edge malý název. IoT Edge rozlišuje velká a malá písmena při odkazování na moduly a sada SDK pro úložiště je ve výchozím nastavení malá. |
+   | Poskytněte image Docker pro modul. | Zadejte identifikátor URI Image: **MCR.Microsoft.com/Azure-Blob-Storage:Latest** |
 
-   Visual Studio Code přebírá informace k dispozici, vytvoří řešení IoT Edge a nahraje je v novém okně. Šablona řešení vytvoří šablonu manifestu nasazení, která obsahuje bitové kopie modulu úložiště objektů blob, ale je potřeba nakonfigurovat možnosti vytvoření modulu.
+   Visual Studio Code převezme poskytnuté informace, vytvoří řešení IoT Edge a pak ho načte do nového okna. Šablona řešení vytvoří šablonu manifestu nasazení, která obsahuje bitové kopie modulu úložiště objektů blob, ale je potřeba nakonfigurovat možnosti vytvoření modulu.
 
 1. Otevřít *deployment.template.json* nový pracovní prostor řešení a najít **moduly** oddílu. Proveďte následující změny konfigurace:
 
@@ -185,21 +185,21 @@ Azure IoT Edge poskytuje šablony ve Visual Studio Code a pomohou vám vytvořit
       }
       ```
 
-      ![Aktualizace modulu CreateOptions field - Visual Studio Code](./media/how-to-deploy-blob/create-options.png)
+      ![CreateOptions modulu Update-Visual Studio Code](./media/how-to-deploy-blob/create-options.png)
 
-1. Nahraďte `<your storage account name>` s názvem, které si zapamatujete. Názvy účtů musí být 3 až 24 znaků dlouhá a malá písmena a číslice. Bez mezer.
+1. Nahraďte `<your storage account name>` názvem, který si můžete pamatovat. Názvy účtů by měly mít délku 3 až 24 znaků a malými písmeny a číslicemi. Žádné mezery.
 
-1. Nahraďte `<your storage account key>` s klíčem ve formátu base64 64 bajtů. Vygenerujete nějaký klíč pomocí nástrojů jako [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Použijete tyto přihlašovací údaje pro přístup k úložišti objektů blob z jiných modulů.
+1. Nahraďte `<your storage account key>` klíčem Base64 64-byte. Vygenerujete nějaký klíč pomocí nástrojů jako [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Použijete tyto přihlašovací údaje pro přístup k úložišti objektů blob z jiných modulů.
 
-1. Nahraďte `<storage directory bind>` podle operačního systému kontejneru. Zadejte název [svazku](https://docs.docker.com/storage/volumes/) nebo absolutní cesta do adresáře na zařízení IoT Edge místo modulu objektů blob pro uložení data. Vazba adresář úložiště mapuje umístění na vašem zařízení, které poskytujete nastavení umístění v modulu.  
+1. Nahraďte `<storage directory bind>` v závislosti na vašem operačním systému vašeho kontejneru. Zadejte název [svazku](https://docs.docker.com/storage/volumes/) nebo absolutní cesta do adresáře na zařízení IoT Edge místo modulu objektů blob pro uložení data. Vazba adresáře úložiště mapuje umístění v zařízení, které zadáte do umístění sady v modulu.  
 
-      - Pro kontejnery Linuxu ve formátu je  *\<cestu úložiště >: / blobroot*. Například **/srv/containerdata: / blobroot** nebo **tento svazek: / blobroot**.
-      - Pro kontejnery Windows ve formátu je  *\<cestu úložiště >: C: / BlobRoot*. Například **C: / ContainerData:C: / BlobRoot** nebo **my-svazku: C: / blobroot**.
+      - U kontejnerů Linux je  *\<formátem cesta úložiště >:/blobroot*. Například **/SRV/containerdata:/blobroot** nebo **My-Volume:/blobroot**.
+      - V případě kontejnerů Windows je  *\<formátem cesta úložiště >: C:/BlobRoot*. Například **c:/ContainerData: c:/BlobRoot** nebo **My-Volume: c:/BlobRoot**.  Místo používání místní jednotky můžete namapovat umístění sítě protokolu SMB, kde najdete další informace v tématu [použití sdílené složky SMB jako místního úložiště](how-to-store-data-blob.md#using-smb-share-as-your-local-storage) .
 
       > [!IMPORTANT]
-      > Neměňte druhou polovinu adresáře úložiště vytvořit vazbu hodnotu, která odkazuje na konkrétní umístění v modulu. Vazba adresář úložiště by měl končit vždy **: / blobroot** pro kontejnery Linuxu a **: C: / BlobRoot** pro kontejnery Windows.
+      > Neměňte druhou polovinu hodnoty vazby adresáře úložiště, která odkazuje na konkrétní umístění v modulu. Vazba adresáře úložiště by měla vždy končit **:/blobroot** for Linux Containers a **: C:/blobroot** for Windows Containers.
 
-1. Konfigurace [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) pro modul přidáním následujícího formátu JSON *deployment.template.json* souboru. Nakonfigurujte každou vlastnost s odpovídající hodnotu a uložte soubor.
+1. Nakonfigurujte [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) pro svůj modul přidáním následujícího kódu JSON do souboru *Deployment. template. JSON* . Nakonfigurujte každou vlastnost s odpovídající hodnotou a uložte soubor.
 
    ```json
    "<your azureblobstorageoniotedge module name>":{
@@ -224,21 +224,21 @@ Azure IoT Edge poskytuje šablony ve Visual Studio Code a pomohou vám vytvořit
    }
    ```
 
-   ![Nastavte požadované vlastnosti pro azureblobstorageoniotedge – Visual Studio Code](./media/how-to-deploy-blob/devicetocloud-deviceautodelete.png)
+   ![nastavit požadované vlastnosti pro azureblobstorageoniotedge-Visual Studio Code](./media/how-to-deploy-blob/devicetocloud-deviceautodelete.png)
 
-   Informace o konfiguraci deviceToCloudUploadProperties a deviceAutoDeleteProperties po nasazení modulu najdete v tématu [upravit dvojče modulu](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). Další informace o kontejneru možnosti vytváření, restartování zásad a požadované stavu, najdete v tématu [EdgeAgent požadované vlastnosti](module-edgeagent-edgehub.md#edgeagent-desired-properties).
+   Informace o konfiguraci deviceToCloudUploadProperties a deviceAutoDeleteProperties po nasazení modulu najdete v tématu [editace modulu s dvojitou](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin)platností. Další informace o možnostech vytvoření kontejneru, zásadách restartování a požadovaném stavu najdete v tématu [EdgeAgent požadované vlastnosti](module-edgeagent-edgehub.md#edgeagent-desired-properties).
 
 1. Uložte soubor *deployment.template.json*.
 
 1. Klikněte pravým tlačítkem na **deployment.template.json** a vyberte **manifest nasazení IoT Edge generovat**.
 
-1. Visual Studio Code přebírá informace, které jste zadali v *deployment.template.json* a použije ho k vytvoření nového souboru manifestu nasazení. Manifest nasazení se vytvoří v novém **config** složky v pracovním prostoru řešení. Až budete mít tento soubor, můžete postupovat podle kroků v [moduly nasazení Azure IoT Edge z Visual Studio Code](how-to-deploy-modules-vscode.md) nebo [moduly nasazení Azure IoT Edge pomocí Azure CLI 2.0](how-to-deploy-modules-cli.md).
+1. Visual Studio Code přebírá informace, které jste zadali v souboru *Deployment. template. JSON* a používá ho k vytvoření nového souboru manifestu nasazení. Manifest nasazení se vytvoří v novém **config** složky v pracovním prostoru řešení. Až budete mít tento soubor, můžete postupovat podle kroků v [moduly nasazení Azure IoT Edge z Visual Studio Code](how-to-deploy-modules-vscode.md) nebo [moduly nasazení Azure IoT Edge pomocí Azure CLI 2.0](how-to-deploy-modules-cli.md).
 
 ## <a name="deploy-multiple-module-instances"></a>Nasazení více instancí modulu
 
-Pokud budete chtít nasadit víc instancí služby Azure Blob Storage na modul IoT Edge, budete muset zadat cestu jiného úložiště a změnit `HostPort` hodnotu, která vytvoří vazbu modulu. Moduly objektu blob úložiště vždy zpřístupňuje porty 11002 v kontejneru, ale je možné deklarovat port, který je vázán na hostiteli.
+Pokud chcete nasadit více instancí služby Azure Blob Storage v modulu IoT Edge, je nutné zadat jinou cestu úložiště a změnit `HostPort` hodnotu, na kterou se modul váže. Moduly objektu blob úložiště vždy zpřístupňuje porty 11002 v kontejneru, ale je možné deklarovat port, který je vázán na hostiteli.
 
-Upravit **možnosti vytvoření kontejneru** (na portálu Azure) nebo **CreateOptions field** pole (v *deployment.template.json* soubor ve Visual Studio Code) Chcete-li změnit `HostPort` hodnotu:
+Upravit **možnosti vytvoření kontejneru** (v Azure Portal) nebo pole `HostPort` **createOptions** (v Visual Studio Code souboru *Deployment. template. JSON* ) pro změnu hodnoty:
 
 ```json
 "PortBindings":{
@@ -248,6 +248,9 @@ Upravit **možnosti vytvoření kontejneru** (na portálu Azure) nebo **CreateOp
 
 Když se připojíte k modulům další objekt blob úložiště, změňte koncový bod tak, aby odkazoval na aktualizovaném hostiteli port.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+Další informace o [Azure Blob Storage v IoT Edge](how-to-store-data-blob.md)
+
+Udržujte si přehled o nejnovějších aktualizacích a oznámeních ve [službě Azure Blob Storage na blogu IoT Edge](https://aka.ms/abs-iot-blogpost)
 
 Další informace o způsobu práce manifesty nasazení a o tom, k jejich vytvoření najdete v tématu [pochopit, jak můžete použít moduly IoT Edge a způsob jejich konfiguraci a znovu použít](module-composition.md).

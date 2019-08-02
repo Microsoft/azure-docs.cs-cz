@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2030365cd78480c25e224edfea9e395aafa6661c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 55722c35dddcbf8a20f4f51958170938225e87e5
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227923"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668387"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Sledování metrik a nasazení modelů pomocí služby MLflow a Azure Machine Learning (Preview)
 
@@ -36,8 +36,9 @@ V tomto článku se dozvíte, jak povolit sledování identifikátoru URI a prot
 
  MLflow Tracking nabízí funkce protokolování metrik a úložiště artefaktů, které jsou k dispozici pouze v případě, že jsou k dispozici pouze v [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 
-| | MLflow sledování & nasazení | Azure Machine Learning <br> Python SDK |  Azure Machine Learning <br> Rozhraní příkazového řádku | portál Azure|
-|-|-|-|-|-|-|
+
+| | MLflow sledování & nasazení | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | portál Azure|
+|---|---|---|---|---|
 | Spravovat pracovní prostor |   | ✓ | ✓ | ✓ |
 | Použití úložišť dat  |   | ✓ | ✓ | |
 | Metriky protokolu      | ✓ | ✓ |   | |
@@ -364,6 +365,6 @@ Pokud neplánujete použít zaznamenané metriky a artefakty v pracovním prosto
 
 [MLflow s poznámkovým blokům Azure ml](https://aka.ms/azureml-mlflow-examples) ukazují a rozšiřují koncepty prezentované v tomto článku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Spravujte své modely](concept-model-management-and-deployment.md).
 * Monitorujte v produkčních modelech [přenos dat](how-to-monitor-data-drift.md).

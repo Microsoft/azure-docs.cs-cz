@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39ec27c75ff5ba9164b44b0524f90a4e28ab20f1
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 420a7079a7961868277a2d78ffbac4adba240d9f
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488981"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678093"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>Řešení potíží se správou nároků Azure AD (Preview)
 
@@ -41,7 +41,7 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
 * Aby aplikace mohla být prostředkem v přístupovém balíčku, musí mít alespoň jednu roli prostředku, kterou je možné přiřadit. Role jsou definované aplikací a jsou spravované ve službě Azure AD. Všimněte si, že Azure Portal může také zobrazit instanční objekty pro služby, které nelze vybrat jako aplikace.  Konkrétně **Exchange Online** a **SharePoint Online** jsou služby, ne aplikace, které mají v adresáři role prostředků, takže je nejde zahrnout do balíčku pro přístup.  Místo toho použijte licencování na základě skupin k navázání vhodné licence pro uživatele, který potřebuje přístup k těmto službám.
 
-* Aby skupina mohla být prostředkem v přístupovém balíčku, musí být schopna být upravitelná v Azure AD.  Skupiny, které pocházejí z místní služby Active Directory, se nedají přiřadit jako prostředky, protože jejich vlastník nebo atributy členů nejde změnit v Azure AD.  
+* Aby skupina mohla být prostředkem v přístupovém balíčku, musí být schopna být upravitelná v Azure AD.  Skupiny, které pocházejí z místní služby Active Directory, se nedají přiřadit jako prostředky, protože jejich vlastník nebo atributy členů nejde změnit v Azure AD.   Skupiny, které pocházejí z Exchange Online jako distribuční skupiny, se nedají ve službě Azure AD upravovat ani v nich. 
 
 * Knihovny dokumentů SharePointu Online a jednotlivé dokumenty nelze přidat jako prostředky.  Místo toho vytvořte skupinu zabezpečení Azure AD, zahrňte tuto skupinu a roli lokality do balíčku pro přístup a v SharePointu Online použijte tuto skupinu k řízení přístupu k knihovně dokumentů nebo dokumentu.
 
@@ -55,9 +55,9 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
 ## <a name="checklist-for-request-issues"></a>Kontrolní seznam pro žádosti o problémy
 
-* Když chce uživatel požádat o přístup k balíčku přístupu, ujistěte se, že používají **odkaz Můj portál přístupu** pro balíček přístupu. Další informace najdete v tématu věnovaném [kopírování odkazu na portál přístupu](entitlement-management-access-package-edit.md#copy-my-access-portal-link).
+* Když chce uživatel požádat o přístup k balíčku přístupu, ujistěte se, že používají **odkaz Můj portál přístupu** pro balíček přístupu. Další informace najdete v tématu věnovaném [kopírování odkazu na portál přístupu](entitlement-management-access-package-edit.md#copy-my-access-portal-link).  Pokud **myAccess.Microsoft.com**navštíví externí uživatel, zobrazí se jim balíčky pro přístup k nim ve své vlastní organizaci.
 
-* Když se uživatel přihlásí k portálu pro přístup k vyžádání balíčku pro přístup, ujistěte se, že se ověřuje pomocí účtu organizace. Účet organizace může být buď účet v adresáři prostředků, nebo v adresáři, který je zahrnutý v jedné ze zásad balíčku přístupu. Pokud účet uživatele není účet organizace nebo tento adresář není zahrnutý v zásadách, uživatel nebude mít přístup k balíčku pro přístup. Další informace najdete v tématu [vyžádání přístupu k balíčku přístupu](entitlement-management-request-access.md).
+* Když se uživatel, který ještě není ve vašem adresáři, přihlásí na portál My Access, aby si vyžádal balíček pro přístup, ujistěte se, že se ověřuje pomocí účtu organizace. Účet organizace může být buď účet v adresáři prostředků, nebo v adresáři, který je zahrnutý v jedné ze zásad balíčku přístupu. Pokud účet uživatele není účet organizace nebo pokud se v zásadě nezahrne adresář, ve kterém se ověřuje, uživatel neuvidí balíček pro přístup. Další informace najdete v tématu [vyžádání přístupu k balíčku přístupu](entitlement-management-request-access.md).
 
 * Pokud se uživateli zablokuje přihlášení k adresáři prostředků, nebude moct požádat o přístup na portálu pro přístup. Než bude moct uživatel požádat o přístup, musíte z profilu uživatele odebrat blok přihlášení. Chcete-li odebrat blok přihlášení, klikněte v Azure Portal na **Azure Active Directory**, klikněte na **Uživatelé**, klikněte na uživatele a pak klikněte na **profil**. Upravte oddíl **Nastavení** a změňte zablokovat **přihlášení** na **ne**. Další informace najdete v tématu [Přidání nebo aktualizace informací o profilu uživatele pomocí Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Můžete taky zjistit, jestli se uživatel zablokoval kvůli [zásadám ochrany identity](../identity-protection/howto-unblock-user.md).
 

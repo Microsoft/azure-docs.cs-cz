@@ -1,44 +1,41 @@
 ---
-title: Podporované verze ve službě Azure Database for PostgreSQL – jeden Server
-description: Popisuje podporované verze ve službě Azure Database for PostgreSQL – jeden Server.
+title: Podporované verze v Azure Database for PostgreSQL – jeden server
+description: Popisuje podporované verze v Azure Database for PostgreSQL-jednom serveru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 07/26/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c328f0dc510c1b7d36b547e6560a292f98d72f6f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fae8dfb2e2cc532f4aed17f83f13bbee31d29113
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448043"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68551355"
 ---
 # <a name="supported-postgresql-database-versions"></a>Podporované verze databáze PostgreSQL
-Cíle společnosti Microsoft pro podporu n-2 verze stroje PostgreSQL v Azure Database for PostgreSQL – jeden Server. Verze by aktuální hlavní verze v Azure (n) a dvě předchozí hlavní verze (-2).
+Společnost Microsoft se zaměřuje na podporu n-2 verzí modulu PostgreSQL v Azure Database for PostgreSQLm jediném serveru. Verze by představovaly aktuální hlavní verzi v Azure (n) a dvě předchozí hlavní verze (-2).
 
 Azure Database for PostgreSQL aktuálně podporuje následující verze:
 
-## <a name="postgresql-version-112"></a>Verze PostgreSQL 11.2
-Odkazovat [PostgreSQL dokumentaci](https://www.postgresql.org/docs/11/static/release-11-2.html) Další informace o vylepšeních a opravách v této podverze.
+## <a name="postgresql-version-112"></a>PostgreSQL verze 11,2
+Další informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/11/static/release-11-2.html) .
 
->[!NOTE]
-> PostgreSQL verze 11 je dostupná ve verzi preview. Podpora pro vytváření pomocí webu Azure portal se nasazuje a ještě možná není k dispozici ve vaší oblasti. Můžete použít [rozhraní příkazového řádku Azure](quickstart-create-server-database-azure-cli.md) Postgres 11 server vytvoříte v libovolné oblasti. Například, `az postgres server create -g group -n server -u username -p password -l westeurope --sku-name GP_Gen5_2 --version 11`.
+## <a name="postgresql-version-107"></a>PostgreSQL verze 10,7
+Další informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/10/static/release-10-7.html) .
 
-## <a name="postgresql-version-107"></a>PostgreSQL Version 10.7
-Odkazovat [PostgreSQL dokumentaci](https://www.postgresql.org/docs/10/static/release-10-7.html) Další informace o vylepšeních a opravách v této podverze.
+## <a name="postgresql-version-9612"></a>PostgreSQL verze 9.6.12
+Další informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/9.6/static/release-9-6-12.html) .
 
-## <a name="postgresql-version-9612"></a>Verze PostgreSQL 9.6.12
-Odkazovat [PostgreSQL dokumentaci](https://www.postgresql.org/docs/9.6/static/release-9-6-12.html) Další informace o vylepšeních a opravách v této podverze.
-
-## <a name="postgresql-version-9516"></a>Verze PostgreSQL 9.5.16
-Odkazovat [PostgreSQL dokumentaci](https://www.postgresql.org/docs/9.5/static/release-9-5-16.html) se dozvíte o vylepšení a opravy v tomto podverze.
+## <a name="postgresql-version-9516"></a>PostgreSQL verze 9.5.16
+Informace o vylepšeních a opravách v této dílčí verzi najdete v [dokumentaci k PostgreSQL](https://www.postgresql.org/docs/9.5/static/release-9-5-16.html) .
 
 ## <a name="managing-updates-and-upgrades"></a>Správa aktualizací a upgradů
-Azure Database for PostgreSQL automaticky spravuje opravy podverze. Upgrade hlavní verze v současné době se nepodporuje. Například upgrade z PostgreSQL 9.5 PostgreSQL 9.6 není podporován. Pokud chcete upgradovat na novou hlavní verzi, vytvořit databázi [výpisu a obnovení](./howto-migrate-using-dump-and-restore.md) ho na server, který byl vytvořen v nové verzi modulu.
+Azure Database for PostgreSQL automaticky spravuje opravy dílčí verze. V současné době se upgrade hlavní verze nepodporuje. Například upgrade z PostgreSQL 9,5 na PostgreSQL 9,6 není podporován. Pokud chcete upgradovat na další hlavní verzi, vytvořte [výpis databáze a obnovte](./howto-migrate-using-dump-and-restore.md) ji na server, který byl vytvořen s novou verzí modulu.
 
-> Všimněte si, že před PostgreSQL verze 10, [zásad správy verzí PostgreSQL](https://www.postgresql.org/support/versioning/) považovány za _hlavní verze_ upgrade zvýší první _nebo_ druhé číslo (pro Příklad, byla považována za 9.5 k 9.6 _hlavní_ upgradu verze).
-> Od verze 10, jenom o změnu v první číslo je považován za upgrade hlavní verze (například 10.0 k 10.1 je _menší_ upgradu verze a 10: 11 je _hlavní_ upgradu verze).
+> Všimněte si, že před PostgreSQL verze 10 se [zásady správy verzí PostgreSQL](https://www.postgresql.org/support/versioning/) považovaly za upgradované na _hlavní verzi_ , aby se zvýšila první _nebo_ druhé číslo (například 9,5 až 9,6 byla považována za upgrade _hlavní_ verze).
+> Od verze 10 se jako upgrade hlavní verze považuje jenom změna v prvním čísle (například 10,0 až 10,1 je upgrade _menší_ verze a 10 až 11 je upgrade _hlavní_ verze).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Informace o podpoře různých rozšíření PostgreSQL najdete v tématu [rozšíření PostgreSQL](concepts-extensions.md).

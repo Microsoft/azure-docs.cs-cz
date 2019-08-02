@@ -1,6 +1,6 @@
 ---
-title: App Service Environment správu adresy – Azure
-description: Seznam adres správy používá k příkazu služby App Service Environment
+title: Adresy pro správu App Service Environment – Azure
+description: Zobrazí seznam adres pro správu, které se používají k příkazům App Service Environment.
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,97 +11,62 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f76dd423cb3f7fbae6cc88d064e49dc2d56f1a1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afc43005765e3ae91c829cfc6b25a3f372241e0b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60766053"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561526"
 ---
-# <a name="app-service-environment-management-addresses"></a>Adresy pro správu aplikace app Service Environment
+# <a name="app-service-environment-management-addresses"></a>Adresy pro správu App Service Environment
 
-App Service Environment (ASE) je nasazení jednoho tenanta služby Azure App Service, která běží ve službě Azure Virtual Network (VNet).  Zatímco služby ASE spouštět ve vaší virtuální síti, musí i nadále být přístupný z mnoha vyhrazené IP adresy, které se používají ve službě Azure App Service pro správu služby.  V případě služby ASE prochází provoz správy sítě řízené uživatelem. Pokud tento provoz je blokován nebo nesprávně směrovanými, že služba ASE zablokuje. Podrobnosti o sítí závislostí služby ASE najdete [síťových aspekty a App Service Environment][networking]. Obecné informace služby ase, můžete začít s [Úvod do služby App Service Environment][intro].
+App Service Environment (pomocného programu) je nasazení jednoho tenanta Azure App Service, které běží ve službě Azure Virtual Network (VNet).  I když je služba pomocného mechanismu spuštěná ve vaší virtuální síti, musí být stále přístupná z řady vyhrazených IP adres, které Azure App Service používá ke správě služby.  V případě pomocného mechanismu řízení prochází provoz pro správu síť řízenou uživatelem. Pokud je tento provoz blokovaný nebo nesměrovaný, pozastaví se. Podrobnosti o závislostech sítě služby pomocného mechanismu najdete v článku [o požadavcích na síť a App Service Environment][networking]. Obecné informace o pomocném mechanismu služby můžete začít s [úvodem do App Service Environment][intro].
 
-Všechny služby ase mají veřejnou virtuální IP Adresou stává jaký provoz správy. Příchozí provoz správy z tyto adresy pocházejí z na portech 454 a 455 na veřejných virtuálních IP adres vaší služby ase. Tento dokument obsahuje seznam zdrojové adresy služby App Service pro provoz správy do služby ASE. Tyto adresy jsou také v značka služby IP adresy s názvem AppServiceManagement.
+Všechny služby ASE mají veřejnou VIP, do které patří provoz správy. Příchozí provoz správy z těchto adres se dostane do portů 454 a 455 ve veřejné virtuální IP adrese vašeho pomocného programu. Tento dokument obsahuje App Service zdrojové adresy pro provoz správy do pomocného mechanismu služby. Tyto adresy jsou také ve značce služby IP s názvem AppServiceManagement.
 
-Níže uvedené adresy je možné nakonfigurovat ve směrovací tabulce, aby se zabránilo asymetrického směrování potíže s přenosy dat správy. Trasy reagovat na provoz na úrovni protokolu IP a nemají povědomí o směr přenosu nebo, který provoz je součástí zprávy s odpovědí protokolu TCP. Pokud adresa odpověď pro požadavek protokolu TCP je jiná než adresa, kdy byla vyslána, je nutné kvůli problému asymetrického směrování. Pokud chcete vyhnout asymetrického směrování problémy s vaší služby ASE provoz správy, je potřeba zajistit, že odpovědi jsou odesílány zpět ze stejné adresy, které byly odeslány do. Podrobnosti o tom, jak nakonfigurovat službu ASE fungovaly v prostředí, ve kterém odeslání odchozího provozu v místním prostředí, najdete v článku [konfigurace služby ASE vynucené tunelování][forcedtunnel]
+Níže uvedené adresy se dají nakonfigurovat v směrovací tabulce, aby se předešlo problémům se asymetrickým směrováním s provozem správy. Trasy působí na provoz na úrovni protokolu IP a nemají žádné povědomí o směru přenosu dat nebo o tom, že je přenos součástí zprávy s odpovědí TCP. Pokud se adresa pro odpověď pro požadavek TCP liší od adresy, na kterou byl odeslán, dojde k potížím s asymetrickým směrováním. Abyste se vyhnuli problémům s asymetrickým směrováním u provozu správy pomocného mechanismu, musíte zajistit, aby se odpovědi poslaly zpátky ze stejné adresy, na kterou byly odeslány. Podrobnosti o tom, jak nakonfigurovat přihlašování k provozu v prostředí, ve kterém se odchozí přenosy odesílají místně, najdete v tématu [konfigurace vašeho přístupového mechanismu služby s vynuceným tunelovým propojením][forcedtunnel] .
 
 ## <a name="list-of-management-addresses"></a>Seznam adres pro správu ##
 
 | Oblast | Adresy |
 |--------|-----------|
-| Všech veřejných oblastech | 13.64.115.203, 13.75.127.117, 13.94.141.115, 13.94.143.126, 13.94.149.179, 23.102.135.246, 23.102.188.65, 40.83.120.64, 40.83.121.56, 40.83.125.161, 40.124.47.188, 52.151.25.45, 52.165.152.214, 52.165.153.122, 52.165.154.193, 52.165.158.140, 52.174.22.21, 52.178.177.147, 52.178.184.149, 52.178.190.65, 52.178.195.197, 52.187.56.50, 52.187.59.251, 52.187.63.19, 52.187.63.37, 52.224.105.172, 52.225.177.153, 65.52.14.230, 65.52.172.237, 65.52.193.203, 70.37.57.58, 70.37.89.222, 104.44.129.141, 104.44.129.243, 104.44.129.255, 104.44.134.255, 104.208.54.11, 157.55.176.93, 157.55.208.185, 191.236.154.88 |
+| Všechny veřejné oblasti | 13.64.115.203, 13.66.140.0, 13.67.8.128, 13.69.64.128, 13.69.227.128, 13.70.73.128, 13.71.170.64, 13.71.194.129, 13.75.127.117, 13.77.50.128, 13.89.171.0, 13.94.141.115, 13.94.143.126, 13.94.149.179, 20.36.106.128, 20.36.114.64, 23.100.226.236, 23.102.135.246, 23.102.188.65, 40.69.106.128, 40.70.146.128, 40.71.13.64, 40.74.100.64, 40.78.194.128, 40.79.130.64, 40.83.120.64, 40.83.121.56, 40.83.125.161, 40.90.240.166, 40.91.126.196, 40.112.242.192, 40.119.4.111, 40.124.47.188, 51.140.146.64, 51.140.210.128, 52.151.25.45, 52.162.80.89, 52.162.106.192, 52.165.152.214, 52.165.153.122, 52.165.154.193, 52.165.158.140, 52.174.22.21, 52.178.177.147, 52.178.184.149, 52.178.190.65, 52.178.195.197, 52.187.56.50, 52.187.59.251, 52.187.63.19, 52.187.63.37, 52.224.105.172, 52.225.177.153, 52.231.18.64, 52.231.146.128, 65.52.14.230, 65.52.172.237, 65.52.193.203, 70.37.57.58, 70.37.89.222, 104.43.242.137, 104.44.129.141, 104.44.129.243, 104.44.129.255, 104.44.134.255, 104.208.54.11, 104.211.81.64, 104.211.146.128, 104.214.49.0, 157.55.176.93, 157.55.208.185, 191.233.203.64, 191.236.154.88 |
 | Microsoft Azure Government | 23.97.29.209, 13.72.53.37, 13.72.180.105, 23.97.0.17, 23.97.16.184 |
 
-## <a name="configuring-a-network-security-group"></a>Konfiguruje se skupina zabezpečení sítě
+## <a name="configuring-a-network-security-group"></a>Konfigurace skupiny zabezpečení sítě
 
-S použitím skupin zabezpečení sítě není nutné se starat o jednotlivé adresy nebo udržování vlastní konfigurace. Existuje značku IP služby s názvem AppServiceManagement, který je pořád aktuální se všechny adresy. Pokud chcete použít tuto značku služby IP adresu pro nsg, přejděte na portál, otevřete uživatelské rozhraní skupin zabezpečení sítě a vyberte pravidla zabezpečení příchozích dat. Pokud máte existující pravidlo k řízení příchozích přenosů, upravte ho. Pokud tato skupina zabezpečení sítě nebylo vytvořeno pomocí služby ASE nebo pokud se všechny nové, pak vyberte **přidat**. V části zdrojové rozevírací nabídce vyberte **značka služby**.  V části značka zdrojové služby vyberte **AppServiceManagement**. Nastavit zdroj rozsahů portů \*, cíl **jakékoli**, rozsahy cílových portů k **454 455**, protokol k **TCP**a akci **povolit** . Pokud provádíte pravidlo, budete muset nastavit prioritu. 
+Se skupinami zabezpečení sítě si nemusíte dělat starosti s jednotlivými adresami nebo zachovat vlastní konfiguraci. K dispozici je značka služby IP s názvem AppServiceManagement, která je stále aktuální se všemi adresami. Pokud chcete tuto značku služby IP v NSG použít, navštivte portál, otevřete uživatelské rozhraní skupin zabezpečení sítě a vyberte příchozí pravidla zabezpečení. Pokud máte již existující pravidlo pro příchozí provoz správy, upravte ho. Pokud se tento NSG nevytvořil s vaším pomocným mechanismem, nebo pokud je to vše nového, vyberte **Přidat**. V rozevíracím seznamu zdroj vyberte možnost **značka služby**.  V části značka zdrojové služby vyberte **AppServiceManagement**. Nastavte rozsahy zdrojových portů na \*, cíl na **libovolný**, rozsah cílových portů na **454-455**, protokol na **TCP**a akci, která má být **povolena**. Pokud pravidlo vytváříte, musíte nastavit prioritu. 
 
-![vytvořit skupinu zabezpečení sítě se značkou služby][1]
+![Vytvoření NSG pomocí značky služby][1]
 
 ## <a name="configuring-a-route-table"></a>Konfigurace směrovací tabulky
 
-Adresy pro správu je možné použít ve směrovací tabulce s dalším segmentem směrování do Internetu a ujistěte se, že se všechny příchozí přenosy správy přejít zpět prostřednictvím stejné cestě. Tyto postupy jsou potřeba při konfiguraci vynuceného tunelování. Pokud chcete vytvořit směrovací tabulku, můžete na portálu, Powershellu nebo rozhraní příkazového řádku Azure.  Níže jsou příkazy k vytvoření směrovací tabulky pomocí rozhraní příkazového řádku Azure z příkazového řádku Powershellu. 
+Adresy pro správu můžete umístit do směrovací tabulky s dalším segmentem směrování Internetu, aby se zajistilo, že všechny příchozí přenosy pro správu budou moct přejít zpátky přes stejnou cestu. Tyto trasy jsou potřeba při konfiguraci vynuceného tunelování. Směrovací tabulku můžete vytvořit pomocí portálu, PowerShellu nebo rozhraní příkazového řádku Azure.  Níže jsou uvedené příkazy k vytvoření směrovací tabulky pomocí Azure CLI z příkazového řádku PowerShellu. 
 
     $rg = "resource group name"
     $rt = "route table name"
     $location = "azure location"
+    $managementAddresses = "13.64.115.203", "13.66.140.0", "13.67.8.128", "13.69.64.128", "13.69.227.128", "13.70.73.128", "13.71.170.64", "13.71.194.129", "13.75.127.117", "13.77.50.128", "13.89.171.0", "13.94.141.115", "13.94.143.126", "13.94.149.179", "20.36.106.128", "20.36.114.64", "23.100.226.236", "23.102.135.246", "23.102.188.65", "40.69.106.128", "40.70.146.128", "40.71.13.64", "40.74.100.64", "40.78.194.128", "40.79.130.64", "40.83.120.64", "40.83.121.56", "40.83.125.161", "40.90.240.166", "40.91.126.196", "40.112.242.192", "40.119.4.111", "40.124.47.188", "51.140.146.64", "51.140.210.128", "52.151.25.45", "52.162.80.89", "52.162.106.192", "52.165.152.214", "52.165.153.122", "52.165.154.193", "52.165.158.140", "52.174.22.21", "52.178.177.147", "52.178.184.149", "52.178.190.65", "52.178.195.197", "52.187.56.50", "52.187.59.251", "52.187.63.19", "52.187.63.37", "52.224.105.172", "52.225.177.153", "52.231.18.64", "52.231.146.128", "65.52.14.230", "65.52.172.237", "65.52.193.203", "70.37.57.58", "70.37.89.222", "104.43.242.137", "104.44.129.141", "104.44.129.243", "104.44.129.255", "104.44.134.255", "104.208.54.11", "104.211.81.64", "104.211.146.128", "104.214.49.0", "157.55.176.93", "157.55.208.185", "191.233.203.64", "191.236.154.88"
+
     az network route-table create --name $rt --resource-group $rg --location $location
-    az network route-table route create -g $rg --route-table-name $rt -n 13.64.115.203 --next-hop-type Internet --address-prefix 13.64.115.203/32
-    az network route-table route create -g $rg --route-table-name $rt -n 13.75.127.117 --next-hop-type Internet --address-prefix 13.75.127.117/32
-    az network route-table route create -g $rg --route-table-name $rt -n 13.94.141.115 --next-hop-type Internet --address-prefix 13.94.141.115/32
-    az network route-table route create -g $rg --route-table-name $rt -n 13.94.143.126 --next-hop-type Internet --address-prefix 13.94.143.126/32
-    az network route-table route create -g $rg --route-table-name $rt -n 13.94.149.179 --next-hop-type Internet --address-prefix 13.94.149.179/32
-    az network route-table route create -g $rg --route-table-name $rt -n 23.102.135.246 --next-hop-type Internet --address-prefix 23.102.135.246/32
-    az network route-table route create -g $rg --route-table-name $rt -n 23.102.188.65 --next-hop-type Internet --address-prefix 23.102.188.65/32
-    az network route-table route create -g $rg --route-table-name $rt -n 40.83.120.64 --next-hop-type Internet --address-prefix 40.83.120.64/32
-    az network route-table route create -g $rg --route-table-name $rt -n 40.83.121.56 --next-hop-type Internet --address-prefix 40.83.121.56/32
-    az network route-table route create -g $rg --route-table-name $rt -n 40.83.125.161 --next-hop-type Internet --address-prefix 40.83.125.161/32
-    az network route-table route create -g $rg --route-table-name $rt -n 40.124.47.188 --next-hop-type Internet --address-prefix 40.124.47.188/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.151.25.45 --next-hop-type Internet --address-prefix 52.151.25.45/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.165.152.214 --next-hop-type Internet --address-prefix 52.165.152.214/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.165.153.122 --next-hop-type Internet --address-prefix 52.165.153.122/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.165.154.193 --next-hop-type Internet --address-prefix 52.165.154.193/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.165.158.140 --next-hop-type Internet --address-prefix 52.165.158.140/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.174.22.21 --next-hop-type Internet --address-prefix 52.174.22.21/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.178.177.147 --next-hop-type Internet --address-prefix 52.178.177.147/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.178.184.149 --next-hop-type Internet --address-prefix 52.178.184.149/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.178.190.65 --next-hop-type Internet --address-prefix 52.178.190.65/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.178.195.197 --next-hop-type Internet --address-prefix 52.178.195.197/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.187.56.50 --next-hop-type Internet --address-prefix 52.187.56.50/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.187.59.251 --next-hop-type Internet --address-prefix 52.187.59.251/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.187.63.19 --next-hop-type Internet --address-prefix 52.187.63.19/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.187.63.37 --next-hop-type Internet --address-prefix 52.187.63.37/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.224.105.172 --next-hop-type Internet --address-prefix 52.224.105.172/32
-    az network route-table route create -g $rg --route-table-name $rt -n 52.225.177.153 --next-hop-type Internet --address-prefix 52.225.177.153/32
-    az network route-table route create -g $rg --route-table-name $rt -n 65.52.14.230 --next-hop-type Internet --address-prefix 65.52.14.230/32
-    az network route-table route create -g $rg --route-table-name $rt -n 65.52.172.237 --next-hop-type Internet --address-prefix 65.52.172.237/32
-    az network route-table route create -g $rg --route-table-name $rt -n 65.52.193.203 --next-hop-type Internet --address-prefix 65.52.193.203/32
-    az network route-table route create -g $rg --route-table-name $rt -n 70.37.57.58 --next-hop-type Internet --address-prefix 70.37.57.58/32
-    az network route-table route create -g $rg --route-table-name $rt -n 70.37.89.222 --next-hop-type Internet --address-prefix 70.37.89.222/32
-    az network route-table route create -g $rg --route-table-name $rt -n 104.44.129.141 --next-hop-type Internet --address-prefix 104.44.129.141/32
-    az network route-table route create -g $rg --route-table-name $rt -n 104.44.129.243 --next-hop-type Internet --address-prefix 104.44.129.243/32
-    az network route-table route create -g $rg --route-table-name $rt -n 104.44.129.255 --next-hop-type Internet --address-prefix 104.44.129.255/32
-    az network route-table route create -g $rg --route-table-name $rt -n 104.44.134.255 --next-hop-type Internet --address-prefix 104.44.134.255/32
-    az network route-table route create -g $rg --route-table-name $rt -n 104.208.54.11 --next-hop-type Internet --address-prefix 104.208.54.11/32
-    az network route-table route create -g $rg --route-table-name $rt -n 157.55.176.93 --next-hop-type Internet --address-prefix 157.55.176.93/32
-    az network route-table route create -g $rg --route-table-name $rt -n 157.55.208.185 --next-hop-type Internet --address-prefix 157.55.208.185/32
-    az network route-table route create -g $rg --route-table-name $rt -n 191.236.154.88 --next-hop-type Internet --address-prefix 191.236.154.88/32
+    foreach ($ip in $managementAddresses) {
+        az network route-table route create -g $rg --route-table-name $rt -n $ip --next-hop-type Internet --address-prefix ($ip + "/32")
+    }
 
-Po vytvoření směrovací tabulky, musíte nastavit na podsíti služby ASE.  
+Po vytvoření směrovací tabulky je nutné ji nastavit v podsíti přihlášeného mechanismu.  
 
-## <a name="get-your-management-addresses-from-api"></a>Získání adresy pro správu z rozhraní API ##
+## <a name="get-your-management-addresses-from-api"></a>Získání adres pro správu z rozhraní API ##
 
-Můžete vytvořit seznam adresy pro správu, které odpovídají vaší služby ASE pomocí následujícího volání rozhraní API.
+Pomocí následujícího volání rozhraní API můžete zobrazit seznam adres pro správu, které se shodují s vaším MECHANISMem řízení.
 
     get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01
 
-Rozhraní API vrátí dokument JSON, který zahrnuje všechny příchozí adresy pro vaši službu ASE. Seznam adres zahrnuje virtuální IP adresy používané vaší služby ASE a rozsah adres podsítě služby ASE, samotný adresy pro správu.  
+Rozhraní API vrátí dokument JSON, který obsahuje všechny příchozí adresy pro váš pomocného programu. Seznam adres zahrnuje adresy pro správu, VIP využívané vaším pomocným mechanismem a rozsah adres podsítě pro pomocného mechanismu.  
 
-Pro volání rozhraní API se [armclient](https://github.com/projectkudu/ARMClient) použijte následující příkazy, ale nahraďte ID předplatného, skupiny prostředků a název služby ASE.  
+Pro volání rozhraní API pomocí [armclient](https://github.com/projectkudu/ARMClient) použijte následující příkazy, ale NAHRAĎte ID předplatného, skupinu prostředků a název pomocného programu.  
 
     armclient login
     armclient get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01

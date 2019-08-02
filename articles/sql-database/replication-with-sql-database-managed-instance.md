@@ -1,6 +1,6 @@
 ---
-title: Konfigurace replikace databáze spravované instance Azure SQL Database | Dokumentace Microsoftu
-description: Další informace o konfiguraci transakční replikace databáze spravované instance Azure SQL Database
+title: Konfigurace replikace v databázi spravované instance Azure SQL Database | Microsoft Docs
+description: Přečtěte si o konfiguraci transakční replikace v databázi spravované instance Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -10,84 +10,83 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
-manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e4d056aacf8f3969b645747e2303574f3fea3bda
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 96571b55158733f8189ddf87402fb634330ca80d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357124"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570460"
 ---
-# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurace replikace databáze spravované instance Azure SQL Database
+# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurace replikace v databázi spravované instance Azure SQL Database
 
-Transakční replikace umožňuje replikovat data do databáze spravované instance Azure SQL Database z databáze systému SQL Server nebo jiné instanci databáze. 
+Transakční replikace umožňuje replikovat data do databáze spravované instance Azure SQL Database z databáze SQL Server nebo jiné instance databáze. 
 
-Transakční replikace můžete použít také pro nasdílení změn provedených v databázi instance ve spravované instanci Azure SQL Database do:
+Transakční replikaci můžete použít taky k nahrání změn provedených v databázi instance v Azure SQL Database Managed instance:
 
-- Databáze SQL serveru.
-- Izolované databáze ve službě Azure SQL Database.
-- Ve fondu databáze v elastickém fondu Azure SQL Database.
+- Databáze SQL Server.
+- Jedna databáze v Azure SQL Database.
+- Databáze ve fondu Azure SQL Database elastického fondu.
  
-Transakční replikace je ve verzi public preview na [Azure SQL Database managed instance](sql-database-managed-instance.md). Spravovaná instance může hostovat databáze vydavatele, distributor a odběratele. Zobrazit [transakční replikace konfigurace](sql-database-managed-instance-transactional-replication.md#common-configurations) pro dostupné konfigurace.
+Transakční replikace je ve verzi Public Preview na [Azure SQL Database Managed instance](sql-database-managed-instance.md). Spravovaná instance může hostovat databáze vydavatelů, distributorů a předplatitelů. V tématu [Konfigurace transakční replikace](sql-database-managed-instance-transactional-replication.md#common-configurations) pro dostupné konfigurace.
 
   > [!NOTE]
-  > Tento článek je určený pro uživatele v konfiguraci replikace službou Azure Database managed instance od začátku do konce, od vytváření skupiny prostředků. Pokud již máte nasazené instance spravované, přeskočte k části [kroku 4](#4---create-a-publisher-database) vytvořit databázi vydavatele nebo [kroku 6](#6---configure-distribution) Pokud už máte databázi vydavatele a odběratele a můžete začít Konfigurace replikace.  
+  > Tento článek slouží jako vodítko pro uživatele při konfiguraci replikace s Azure Database Managed instance z koncového na konec, počínaje vytvořením skupiny prostředků. Pokud jste již nasadili spravované instance, přejděte k [kroku 4](#4---create-a-publisher-database) a vytvořte databázi vydavatele, nebo [Krok 6](#6---configure-distribution) , pokud již máte vydavatele a databázi odběratele a jste připraveni zahájit konfiguraci replikace.  
 
 ## <a name="requirements"></a>Požadavky
 
-Konfigurace managed instance fungovat jako vydavatel a/nebo distributora vyžaduje:
+Konfigurace spravované instance tak, aby fungovala jako Vydavatel nebo distributor, vyžaduje:
 
-- Spravované instance se teď neúčastní relace geografickou replikaci.
-- Že vydavatel spravovaná instance je ve stejné virtuální síti jako distributor a odběrateli, nebo [partnerský vztah virtuální sítě](../virtual-network/tutorial-connect-virtual-networks-powershell.md) stal mezi virtuálními sítěmi všechny tři entity. 
+- Tato spravovaná instance se momentálně neúčastní vztahu geografické replikace.
+- Zda je spravovaná instance vydavatele ve stejné virtuální síti jako distributor a předplatitel, nebo je mezi virtuálními sítěmi všech tří entit vytvořeno [partnerský vztah](../virtual-network/tutorial-connect-virtual-networks-powershell.md) virtuální sítě. 
 - Při připojování mezi účastníky replikace se používá ověřování SQL.
-- Sdílenou účtu úložiště Azure pro replikaci pracovní adresář.
-- Port 445 (odchozí TCP) je otevřen v zabezpečení pravidla NSG pro spravované instance pro přístup ke sdílené složce Azure. 
+- Sdílená složka účtu Azure Storage pro pracovní adresář replikace.
+- Port 445 (odchozí TCP) je otevřen v pravidlech zabezpečení NSG pro spravované instance pro přístup ke sdílené složce Azure. 
 
 
  > [!NOTE]
- > Předplatitelé mohou být pouze izolované databáze a databáze ve fondu ve službě Azure SQL Database. 
+ > Izolované databáze a databáze ve fondu v Azure SQL Database můžou být jenom předplatitelé. 
 
 
 ## <a name="features"></a>Funkce
 
-Podporované platformy:
+Podporuje:
 
-- Transakční replikace a replikace snímků kombinaci místní SQL Server a spravované instance Azure SQL Database.
-- Předplatitelé můžou být v místních databází SQL serveru, jediné databáze/spravované instance v Azure SQL Database nebo databáze ve fondu v elastických fondů Azure SQL Database.
-- Jednosměrné nebo obousměrné replikace.
+- Transakční a snímková replikace je kombinací SQL Server místních a spravovaných instancí v Azure SQL Database.
+- Předplatitelé můžou být v místních SQL Server databázích, izolovaných databázích nebo spravovaných instancích v Azure SQL Database nebo ve fondu databází v Azure SQL Database elastických fondech.
+- Jednosměrná nebo obousměrná replikace.
 
-Ve službě Azure SQL Database managed instance nepodporuje následující funkce:
+Ve spravované instanci nejsou v Azure SQL Database podporovány následující funkce:
 
-- [Aktualizovatelné odběry](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication).
-- [Aktivní geografická replikace](sql-database-active-geo-replication.md) a [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md) neměl by se používat, pokud je nakonfigurovaný transakční replikace.
+- Odběry, které je možné [aktualizovat](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication)
+- Pokud je nakonfigurovaná transakční replikace, neměli byste používat [aktivní geografickou replikaci](sql-database-active-geo-replication.md) a [skupiny s automatickým převzetím služeb při selhání](sql-database-auto-failover-group.md) .
  
-## <a name="1---create-a-resource-group"></a>1 – Vytvoření skupiny prostředků
+## <a name="1---create-a-resource-group"></a>1\. Vytvoření skupiny prostředků
 
-Použití [webu Azure portal](https://portal.azure.com) a vytvořte skupinu prostředků s názvem `SQLMI-Repl`.  
+Pomocí [Azure Portal](https://portal.azure.com) vytvořte skupinu prostředků s názvem `SQLMI-Repl`.  
 
-## <a name="2---create-managed-instances"></a>2\. vytvoření spravované instance
+## <a name="2---create-managed-instances"></a>2\. vytvoření spravovaných instancí
 
-Použití [webu Azure portal](https://portal.azure.com) vytvořit dvě [spravované instance](sql-database-managed-instance-create-tutorial-portal.md) na stejnou virtuální síť a podsíť. By měl být pojmenován dva spravované instance:
+Pomocí [Azure Portal](https://portal.azure.com) vytvořte dvě [spravované instance](sql-database-managed-instance-create-tutorial-portal.md) ve stejné virtuální síti a podsíti. Tyto dvě spravované instance by měly mít název:
 
 - `sql-mi-pub`
 - `sql-mi-sub`
 
-Budete také muset [konfigurace Virtuálním počítači Azure připojit](sql-database-managed-instance-configure-vm.md) k Azure SQL Database managed instance. 
+Také budete muset [nakonfigurovat virtuální počítač Azure pro připojení](sql-database-managed-instance-configure-vm.md) k vašemu Azure SQL Database spravované instance. 
 
-## <a name="3---create-azure-storage-account"></a>3 – vytvoření účtu služby Azure Storage
+## <a name="3---create-azure-storage-account"></a>3\. vytvoření účtu Azure Storage
 
-[Vytvoření účtu služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář a pak vytvořte [sdílené](../storage/files/storage-how-to-create-file-share.md) v rámci účtu úložiště. 
+[Vytvořte účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář a pak vytvořte [sdílenou složku](../storage/files/storage-how-to-create-file-share.md) v rámci účtu úložiště. 
 
-Zkopírujte cestu sdílené složky souboru ve formátu: `\\storage-account-name.file.core.windows.net\file-share-name`
+Zkopírujte cestu ke sdílené složce ve formátu:`\\storage-account-name.file.core.windows.net\file-share-name`
 
-Kopírování přístupových klíčů úložiště ve formátu: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Zkopírujte přístupové klíče úložiště ve formátu:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
  Další informace najdete v článku [Zobrazení a kopírování přístupového klíče k úložišti](../storage/common/storage-account-manage.md#access-keys). 
 
-## <a name="4---create-a-publisher-database"></a>4 – vytvoření databáze vydavatele
+## <a name="4---create-a-publisher-database"></a>4\. vytvoření databáze vydavatele
 
-Připojte se k vaší `sql-mi-pub` managed instance pomocí SQL Server Management Studio a spusťte následující kód Transact-SQL (T-SQL) k vytvoření databáze vydavatele:
+Připojte se ke `sql-mi-pub` svojí spravované instanci pomocí SQL Server Management Studio a spusťte následující kód Transact-SQL (T-SQL) k vytvoření databáze vydavatele:
 
 ```sql
 USE [master]
@@ -119,9 +118,9 @@ SELECT * FROM ReplTest
 GO
 ```
 
-## <a name="5---create-a-subscriber-database"></a>5 – vytvoření databáze odběratele
+## <a name="5---create-a-subscriber-database"></a>5\. vytvoření databáze odběratele
 
-Připojte se k vaší `sql-mi-sub` managed instance pomocí SQL Server Management Studio a spusťte následující kód T-SQL k vytvoření databáze prázdný předplatitele:
+Připojte se ke `sql-mi-sub` svojí spravované instanci pomocí SQL Server Management Studio a spusťte následující kód T-SQL k vytvoření prázdné databáze odběratele:
 
 ```sql
 USE [master]
@@ -140,9 +139,9 @@ CREATE TABLE ReplTest (
 GO
 ```
 
-## <a name="6---configure-distribution"></a>6 – Konfigurace distribuce
+## <a name="6---configure-distribution"></a>6\. konfigurace distribuce
 
-Připojte se k vaší `sql-mi-pub` managed instance pomocí SQL Server Management Studio a spusťte následující kód T-SQL nakonfigurovat distribuční databázi. 
+Připojte se ke `sql-mi-pub` svojí spravované instanci pomocí SQL Server Management Studio a spusťte následující kód T-SQL ke konfiguraci distribuční databáze. 
 
 ```sql
 USE [master]
@@ -153,9 +152,9 @@ EXEC sp_adddistributiondb @database = N'distribution';
 GO
 ```
 
-## <a name="7---configure-publisher-to-use-distributor"></a>7 – Nakonfigurujte použití distributora vydavatele 
+## <a name="7---configure-publisher-to-use-distributor"></a>7\. konfigurace vydavatele pro použití distributora 
 
-U vašeho vydavatele spravovaná instance `sql-mi-pub`, změnit tak provedení dotazu [SQLCMD](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) režimu a spusťte následující kód do nové distributora zaregistrovat u vašeho vydavatele. 
+Ve spravované instanci `sql-mi-pub`vydavatele změňte provedení dotazu na režim [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) a spuštěním následujícího kódu Zaregistrujte nového distributora s vaším vydavatelem. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -175,11 +174,11 @@ EXEC sp_adddistpublisher
   @storage_connection_string = N'$(file_storage_key)'; -- Remove this parameter for on-premises publishers
 ```
 
-Tento skript nakonfiguruje místní vydavatele na spravované instanci přidá odkazovaný server a vytvoří sadu úloh pro SQL Server Agent. 
+Tento skript nakonfiguruje místního vydavatele na spravované instanci, přidá propojený server a vytvoří sadu úloh pro agenta SQL Server. 
 
-## <a name="8---create-publication-and-subscriber"></a>8 – vytvoření publikace a odběratele
+## <a name="8---create-publication-and-subscriber"></a>8\. vytvoření publikace a odběratele
 
-Pomocí [SQLCMD](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) režimu, spusťte následující skript T-SQL k povolení replikace pro vaši databázi a konfiguraci replikace mezi vydavatele, distributor a odběratele. 
+Pomocí režimu [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) spusťte následující skript T-SQL, který povolí replikaci pro vaši databázi, a nakonfigurujte replikaci mezi vaším vydavatelem, distributorem a předplatitelem. 
 
 ```sql
 -- Set variables
@@ -256,11 +255,11 @@ EXEC sp_startpublication_snapshot
   @publication = N'$(publication_name)';
 ```
 
-## <a name="9---modify-agent-parameters"></a>9 – upravit parametry agenta
+## <a name="9---modify-agent-parameters"></a>9\. úprava parametrů agenta
 
-Spravované instance Azure SQL Database aktuálně dochází k některým problémům back-end s připojením s agenty replikace. Když je tento problém se řeší řešit, alternativní řešení pro zvýšení hodnoty časového limitu přihlášení pro agenty replikace. 
+U Azure SQL Database Managed instance v tuto chvíli dochází k problémům s back-endu s replikačními agenty. I když se tento problém řeší, alternativní řešení pro zvýšení hodnoty časového limitu přihlášení pro agenty replikace. 
 
-Spusťte následující příkaz jazyka T-SQL ve vydavateli zvýšit časový limit přihlášení: 
+Pokud chcete prodloužit časový limit přihlášení, spusťte následující příkaz T-SQL na vydavateli: 
 
 ```sql
 -- Increase login timeout to 150s
@@ -268,7 +267,7 @@ update msdb..sysjobsteps set command = command + N' -LoginTimeout 150'
 where subsystem in ('Distribution','LogReader','Snapshot') and command not like '%-LoginTimeout %'
 ```
 
-Spusťte následující příkaz T-SQL znovu a nastavte časový limit přihlášení zpět na výchozí hodnotu, budete chtít udělat:
+Znovu spusťte následující příkaz T-SQL, abyste nastavili časový limit přihlášení zpátky na výchozí hodnotu, třeba v tomto případě:
 
 ```sql
 -- Increase login timeout to 30
@@ -276,19 +275,19 @@ update msdb..sysjobsteps set command = command + N' -LoginTimeout 30'
 where subsystem in ('Distribution','LogReader','Snapshot') and command not like '%-LoginTimeout %'
 ```
 
-Restartujte všechny tři agenty k použití těchto změn. 
+Aby se tyto změny projevily, restartujte všechny tři agenty. 
 
-## <a name="10---test-replication"></a>10 – testování replikace
+## <a name="10---test-replication"></a>10. testování replikace
 
-Jakmile replikace není nakonfigurovaná, takže ji můžete otestovat vkládání nových položek ve vydavateli a sledování změn rozšíří do odběratele. 
+Po dokončení konfigurace replikace ji můžete otestovat vložením nových položek na vydavatele a sledováním změn, které se šíří do odběratele. 
 
-Spusťte následující fragment kódu jazyka T-SQL k zobrazení řádků na předplatitele:
+Spusťte následující fragment T-SQL pro zobrazení řádků v předplatiteli:
 
 ```sql
 select * from dbo.ReplTest
 ```
 
-Spusťte následující fragment kódu jazyka T-SQL vložit dodatečné řádky ve vydavateli a potom zkontrolujte řádky znovu na odběratele. 
+Spusťte následující fragment T-SQL pro vložení dalších řádků na vydavateli a potom znovu zkontrolujte řádky předplatitele. 
 
 ```sql
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
@@ -296,7 +295,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Chcete-li vyřadit publikaci, spusťte následující příkaz jazyka T-SQL:
+K vyřazení publikace spusťte následující příkaz T-SQL:
 
 ```sql
 -- Drops the publication
@@ -305,7 +304,7 @@ EXEC sp_droppublication @publication = N'PublishData'
 GO
 ```
 
-Chcete-li odebrat možnost replikace z databáze, spusťte následující příkaz jazyka T-SQL:
+Pokud chcete z databáze odebrat možnost replikace, spusťte následující příkaz T-SQL:
 
 ```sql
 -- Disables publishing of the database
@@ -314,7 +313,7 @@ EXEC sp_removedbreplication
 GO
 ```
 
-Publikování a distribuci zakážete, spusťte následující příkaz jazyka T-SQL:
+Pokud chcete zakázat publikování a distribuci, spusťte následující příkaz T-SQL:
 
 ```sql
 -- Drops the distributor
@@ -323,10 +322,10 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-Můžete vyčistit prostředky Azure podle [odstranění spravované instance prostředků ze skupiny prostředků](../azure-resource-manager/manage-resources-portal.md#delete-resources) a její následné odstranění skupiny prostředků `SQLMI-Repl`. 
+Prostředky Azure můžete vyčistit [odstraněním prostředků spravované instance ze skupiny prostředků](../azure-resource-manager/manage-resources-portal.md#delete-resources) a následným odstraněním skupiny `SQLMI-Repl`prostředků. 
 
    
 ## <a name="see-also"></a>Viz také
 
 - [Transakční replikace](sql-database-managed-instance-transactional-replication.md)
-- [Co je Managed Instance?](sql-database-managed-instance.md)
+- [Co je spravovaná instance?](sql-database-managed-instance.md)

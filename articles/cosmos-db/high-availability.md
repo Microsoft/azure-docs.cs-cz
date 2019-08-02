@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak Azure Cosmos DB poskytuje vysokou dost
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 07/31/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4dde41479c05151fa4e14c9fe4b534b9f7edf9b4
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4b039e777748499e1b9a2a120e9498d94066b735
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467741"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688288"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s Azure Cosmos DB
 
@@ -81,6 +81,8 @@ Tato funkce je k dispozici v následujících oblastech Azure:
 * East US
 * Východní USA 2 
 * Střed USA
+* Západní Evropa
+* USA – západ 2
 
 > [!NOTE] 
 > Povolení Zóny dostupnosti pro jednu oblast účtu Azure Cosmos bude mít za následek poplatky, které se rovnají přidání další oblasti do svého účtu. Podrobnosti o cenách najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) a s [náklady na více oblastí v Azure Cosmos DB](optimize-cost-regions.md) článcích. 
@@ -127,7 +129,7 @@ Zóny dostupnosti můžete povolit pomocí Azure Portal při vytváření účtu
 
 - V rámci globálně distribuovaného databázového prostředí existuje přímý vztah mezi úrovní konzistence a odolností dat při výpadku v rámci oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než se aplikace kompletně obnoví po přerušení události. Čas potřebný k úplnému obnovení aplikace je známý jako cíl doby obnovení (RTO). Také je potřeba porozumět maximálnímu intervalu nedávných aktualizací dat, které může aplikace tolerovat při obnovování po přerušení události. Časový interval aktualizací, které si můžete dovolit ztratit, se označuje jako cíl bodu obnovení (RPO). Pokud chcete zobrazit RPO a RTO pro Azure Cosmos DB, přečtěte si část [úrovně konzistence a odolnost dat](consistency-levels-tradeoffs.md#rto) .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Dále si můžete přečíst následující články:
 

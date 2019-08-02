@@ -1,18 +1,19 @@
 ---
 title: Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup | Microsoft Docs
 description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
-author: anuragm
-manager: sivan
+ms.reviewer: anuragm
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
-ms.author: anuragm
-ms.openlocfilehash: c601ecb6997834aa216de094e2809670833dd9cb
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 849065460acda36426f8a594a984ad1cc8590c34
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464923"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688819"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -124,7 +125,7 @@ Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním po�
 Než zahájíte operaci opětovného zápisu, proveďte kontrolu jednoho nebo více následujících příznaků:
 
 * Všechny operace (například zálohování, obnovení a konfigurace zálohování) selžou na virtuálním počítači s jedním z následujících kódů chyb: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
-* Stavová oblast **zálohování** pro zálohovanou položku se zobrazuje jako nedostupná. Vyloučí všechny ostatní příčiny, které by mohly mít za následek stejný stav:
+* Stavová oblast **zálohování** pro zálohovanou položku se zobrazujejako nedostupná. Vyloučí všechny ostatní příčiny, které by mohly mít za následek stejný stav:
 
   * Nedostatečná oprávnění k provádění operací souvisejících se zálohováním virtuálního počítače  
   * Vypnutí virtuálního počítače, takže zálohy nejdou uskutečnit.

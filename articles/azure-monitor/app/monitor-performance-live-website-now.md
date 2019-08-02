@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mbullwin
 ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67876423"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
@@ -64,7 +64,7 @@ Pokud je vaše aplikace hostovaná na serveru služby IIS, povolte Application I
 2. Pokud ještě není nainstalované Monitorování stavu Application Insights, [stáhněte si a spusťte instalační program](#download).
 3. V Monitorování stavu vyberte nainstalovanou webovou aplikaci nebo web, které chcete monitorovat. Přihlaste se pomocí přihlašovacích údajů Azure.
 
-    Nakonfigurujte prostředek,ve kterém chcete zobrazovat výsledky na portálu Application Insights. (Obvykle je nejlepší vytvořit nový prostředek. Vyberte existující prostředek, pokud již máte [webové testy][availability] or [client monitoring][client] pro tuto aplikaci.) 
+    Nakonfigurujte prostředek,ve kterém chcete zobrazovat výsledky na portálu Application Insights. (Obvykle je nejlepší vytvořit nový prostředek. Vyberte existující prostředek, pokud již máte [testy webu][availability] nebo [monitorování klientů][client] pro tuto aplikaci.) 
 
     ![Vyberte aplikaci a prostředek.](./media/monitor-performance-live-website-now/appinsights-036-configAIC.png)
 

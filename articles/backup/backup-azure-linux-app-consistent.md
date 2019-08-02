@@ -1,19 +1,20 @@
 ---
 title: 'Azure Backup: zálohování virtuálních počítačů se systémem Linux konzistentní vzhledem k aplikacím'
 description: Vytvářejte zálohy virtuálních počítačů s konzistentním vzhledem k aplikacím do Azure. V tomto článku se dozvíte, jak nakonfigurovat rozhraní skriptů pro zálohování virtuálních počítačů Linux nasazených v Azure. Tento článek také obsahuje informace o řešení potíží.
-author: anuragmehrotra
-manager: shivamg
+ms.reviewer: anuragm
+author: dcurwin
+manager: carmonm
 keywords: Zálohování konzistentní s aplikací; zálohování virtuálních počítačů Azure v konzistentním vzhledem k aplikacím; Zálohování virtuálních počítačů Linux; Azure Backup
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/12/2018
-ms.author: anuragm
-ms.openlocfilehash: adcadf0de2480b0f231dd8808d84cb2907685842
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: dae2268abc3771e43d717c65c19eed37b9f48e8e
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466145"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689258"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Zálohování virtuálních počítačů Azure Linux konzistentní vzhledem k aplikacím
 

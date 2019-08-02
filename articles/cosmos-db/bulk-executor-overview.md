@@ -1,54 +1,54 @@
 ---
-title: Hromadný import a aktualizace dat ve službě Azure Cosmos DB pomocí hromadné prováděcí modul knihovny
-description: Provádět hromadné operace ve službě Azure Cosmos DB pomocí hromadného importu a Hromadná aktualizace rozhraní API nabízená hromadně prováděcí modul knihovny.
+title: Hromadný import a aktualizace dat v Azure Cosmos DB pomocí knihovny hromadného prováděcího modulu
+description: Provádějte hromadné operace v Azure Cosmos DB prostřednictvím hromadného importu a rozhraní API hromadné aktualizace nabízené knihovnou hromadného prováděcího modulu.
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: e4357007ec1cfac2cf6a10d339c6b3aa3ae41488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1716bd64286f1882b9fc224712d227967d78058a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257106"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637787"
 ---
-# <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Přehled knihovny prováděcí modul hromadného služby Azure Cosmos DB
+# <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Přehled knihovny hromadného prováděcího modulu Azure Cosmos DB
  
-Azure Cosmos DB je rychlý, flexibilní a globálně distribuovaná databázová služba, který je navržený pro elastické škálování na více systémů pro podporu: 
+Azure Cosmos DB je rychlá, flexibilní a globálně distribuovaná databázová služba navržená tak, aby elasticky horizontálně rozšiřovala svou kapacitu za účelem podpory následujících scénářů: 
 
-* Velké čtení a zápis propustnost (milionů operací za sekundu).  
-* Ukládat velké objemy (stovky terabajtů nebo dokonce i více) transakční a provozní data s latencí předvídatelné milisekund.  
+* Velká propustnost čtení a zápisu (miliony operací za sekundu)  
+* Ukládání velkých objemů (stovky terabajtů nebo ještě více) transakčních a provozních dat s předvídatelnou latencí v řádu milisekund  
 
-Knihovna prováděcí modul hromadného umožňuje využívat tuto obrovskou propustnost a úložiště. Hromadné prováděcí modul knihovny lze provádět hromadné operace ve službě Azure Cosmos DB pomocí hromadného importu a hromadně aktualizovat rozhraní API. Další informace o funkcích hromadné prováděcí modul knihovny v následujících částech. 
+Knihovna Bulk Executor vám pomůže využít tuto obrovskou propustnost a úložiště. Knihovna Bulk Executor umožňuje provádět ve službě Azure Cosmos DB hromadné operace prostřednictvím rozhraní API pro hromadný import a hromadné aktualizace. Další informace o funkcích knihovny Bulk Executor najdete v následujících částech. 
 
 > [!NOTE] 
-> V současné době hromadné prováděcí modul knihovny podporuje import a aktualizace operace a tato knihovna je podporován pouze účty SQL API služby Azure Cosmos DB a Gremlin API nevztahují.
+> Knihovna hromadných prováděcích modulů v současné době podporuje operace importu a aktualizace a tato knihovna je podporována pouze pomocí Azure Cosmos DB SQL API a účtů rozhraní API Gremlin.
  
-## <a name="key-features-of-the-bulk-executor-library"></a>Klíčové funkce knihovny hromadné prováděcího modulu  
+## <a name="key-features-of-the-bulk-executor-library"></a>Klíčové funkce knihovny hromadného prováděcího modulu  
  
-* Významně snižuje na straně klienta výpočetní prostředky potřebné k saturate propustnost přidělené kontejneru. Jedna vláken aplikace zapíše data s využitím že rozhraní API hromadného importu dosáhne 10 vícekrát vyšší propustnost zápisu ve srovnání s vícevláknové aplikaci, která zapisuje data souběžně při zvýšení sytosti klienta procesoru počítače.  
+* Významně snižuje výpočetní prostředky na straně klienta potřebné k sytosti propustnosti přidělené kontejneru. Jediná aplikace s více vlákny, která zapisuje data pomocí hromadného rozhraní API pro hromadné importy, dosahuje při porovnání s vícevláknovou aplikací, která zapisuje data paralelně, při sytosti procesoru klientského počítače.  
 
-* Ji odděluje tedious úlohy vytváření aplikací logiky, která by rychlosti požadavek, vypršení časového limitu požadavku a další přechodným výjimkám díky efektivnímu zpracování je v rámci knihovny.  
+* Abstrakce nezpůsobuje zdlouhavé úlohy při psaní aplikační logiky za účelem zpracování míry omezení požadavků, časových limitů požadavků a dalších přechodných výjimek, a to díky jejich efektivnímu zpracování v rámci knihovny.  
 
-* Poskytuje zjednodušenou mechanismus pro aplikace budou provádět hromadné operace pro horizontální navýšení kapacity. Instanci prováděcího modulu jednou hromadnou běžící na Virtuálním počítači Azure mohou využívat větší než 500 tisíc RU/s a vyšší propustnosti můžete dosáhnout tak, že přidáte další instance na individuální klientské virtuální počítače.  
+* Nabízí zjednodušený mechanismus pro aplikace, které provádějí hromadné operace pro horizontální navýšení kapacity. Jedna instance hromadného prováděcího modulu spuštěná na virtuálním počítači Azure může spotřebovat víc než 500 000 RU/s a můžete dosáhnout vyšší míry propustnosti přidáním dalších instancí na jednotlivé klientské virtuální počítače.  
  
-* Importovat více než terabajtu dat ji do hodiny hromadně pomocí architektury horizontální navýšení kapacity.  
+* Může hromadně importovat více než terabajt dat za hodinu pomocí architektury škálování na více instancí.  
 
-* Jako opravy ji provést hromadnou aktualizaci existujících dat v kontejnerech služby Azure Cosmos DB. 
+* Může hromadně aktualizovat existující data v kontejnerech Azure Cosmos DB jako opravy. 
  
-## <a name="how-does-the-bulk-executor-operate"></a>Jak pracuje prováděcí modul hromadného? 
+## <a name="how-does-the-bulk-executor-operate"></a>Jak hromadný prováděcí modul funguje? 
 
-Při operaci hromadného importu nebo aktualizovat dokumenty se aktivuje pomocí služby batch entit, že jsou zpočátku které se náhodně pomíchají do intervalů odpovídající jejich rozsah klíče oddílu služby Azure Cosmos DB. V rámci každého kbelíku, která odpovídá na rozsah klíče oddílu že se člení na mini dávek a každý act zkrácené batch jako datovou část, která je potvrzena na straně serveru. Optimalizace pro souběžné spouštění těchto mini-dávek i mezi nimi rozsahů klíče oddílů má integrované knihovny hromadné prováděcího modulu. Následující obrázek ukazuje, jak hromadně prováděcí modul seskupuje data do dávek na různé klíče oddílů:  
+Když se Hromadná operace pro import nebo aktualizaci dokumentů aktivuje pomocí dávky entit, zpočátku se převedou do intervalů odpovídajících jejich Azure Cosmos DB rozsahu klíčů oddílu. V rámci každého intervalu, který odpovídá rozsahu klíče oddílu, se rozdělí na Mini dávky a každá z nich se bude chovat jako datová část, která je potvrzena na straně serveru. Knihovna hromadných prováděcích modulů obsahuje integrované optimalizace pro souběžné provádění těchto Mini dávek v rámci i napříč rozsahy klíčů oddílů. Následující obrázek znázorňuje, jak hromadně prováděč dávkuje data do různých klíčů oddílů:  
 
-![Hromadné prováděcí modul architektury](./media/bulk-executor-overview/bulk-executor-architecture.png)
+![Architektura hromadného prováděcího modulu](./media/bulk-executor-overview/bulk-executor-architecture.png)
 
-Knihovna prováděcí modul hromadného zajistí, aby lze uchovávat využití propustnosti přidělené do kolekce. Používá [mechanismus řízení zahlcení AIMD – vizuální styl](https://tools.ietf.org/html/rfc5681) pro každou službu Azure Cosmos DB rozdělit rozsah klíče pro efektivní zpracování omezení rychlosti a vypršení časového limitu. 
+Knihovna hromadného prováděcího modulu zajišťuje maximální využití propustnosti přidělené kolekci. Pro každý Azure Cosmos DB rozsah klíčů oddílu používá [mechanismus pro řízení zahlcení ve stylu](https://tools.ietf.org/html/rfc5681) , který umožňuje efektivně zpracovávat omezení a časové limity při četnosti. 
 
 ## <a name="next-steps"></a>Další kroky 
   
-* Další informace a vyzkoušejte si ukázkové aplikace využívající prováděcí modul hromadného knihovny [.NET](bulk-executor-dot-net.md) a [Java](bulk-executor-java.md).  
-* Podívejte se na hromadné prováděcí modul SDK informace a vydání poznámek [.NET](sql-api-sdk-bulk-executor-dot-net.md) a [Java](sql-api-sdk-bulk-executor-java.md).
-* Prováděcí modul hromadného knihovny je integrovaná do konektoru Cosmos DB Spark, další informace najdete v tématu [konektor Azure Cosmos DB Spark](spark-connector.md) článku.  
-* Knihovna prováděcí modul hromadného je integrovaná taky na novou verzi [konektor služby Azure Cosmos DB](https://aka.ms/bulkexecutor-adf-v2) pro službu Azure Data Factory pro kopírování dat.
+* Další informace získáte vyzkoušením ukázkových aplikací, které využívají knihovnu hromadných prováděcích modulů v jazycích [.NET](bulk-executor-dot-net.md) a [Java](bulk-executor-java.md).  
+* Projděte si informace o sadě SDK hromadného prováděcího modulu a poznámky k verzi v jazycích [.NET](sql-api-sdk-bulk-executor-dot-net.md) a [Java](sql-api-sdk-bulk-executor-java.md).
+* Knihovna hromadného prováděcího modulu je integrovaná do konektoru Cosmos DB Spark. Další informace najdete v článku [Azure Cosmos DB Spark Connector](spark-connector.md) .  
+* Knihovna hromadného prováděcího modulu je integrována také v nové verzi [konektoru Azure Cosmos DB](https://aka.ms/bulkexecutor-adf-v2) pro Azure Data Factory ke kopírování dat.

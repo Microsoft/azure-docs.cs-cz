@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
 ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68405988"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight
@@ -153,7 +153,7 @@ Následující výstrahy vám pomůžou monitorovat dostupnost clusteru:
 
 Můžete vybrat každou službu a zobrazit další informace.
 
-I když stránka služby poskytuje informace o stavu a konfiguraci jednotlivých služeb, neposkytuje informace o tom, na kterém hlavním uzlu služba běží. Chcete-li zobrazit tyto informace,  použijte odkaz hostitelé v horní části stránky. Tato stránka zobrazuje hostitele v rámci clusteru, včetně hlavních uzlů.
+I když stránka služby poskytuje informace o stavu a konfiguraci jednotlivých služeb, neposkytuje informace o tom, na kterém hlavním uzlu služba běží. Chcete-li zobrazit tyto informace, použijte odkaz hostitelé v horní části stránky. Tato stránka zobrazuje hostitele v rámci clusteru, včetně hlavních uzlů.
 
 ![Seznam hostitelů](./media/hdinsight-high-availability-linux/hosts.png)
 
@@ -192,7 +192,7 @@ Odpověď je podobná následujícímu kódu JSON:
 
 Adresa URL oznamuje, že služba je aktuálně spuštěná na hlavním uzlu s názvem **hn0-název_clusteru**.
 
-Stav oznamuje, že je služba aktuálně spuštěná nebo spuštěná .
+Stav oznamuje, že je služba aktuálně spuštěná nebo spuštěná.
 
 Pokud si nejste jisti, jaké služby jsou v clusteru nainstalovány, můžete k načtení seznamu použít následující příkaz:
 
@@ -247,7 +247,7 @@ Z webového uživatelského rozhraní Ambari vyberte službu, pro kterou chcete 
 
 Velikost uzlu lze vybrat pouze při vytváření clusteru. Seznam různých velikostí virtuálních počítačů dostupných pro HDInsight najdete na stránce s cenami za službu [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Při vytváření clusteru můžete určit velikost uzlů. Následující informace obsahují pokyny k určení velikosti pomocí [Azure Portal][preview-portal], [Azure PowerShell module Az][azure-powershell]a Azure [CLI][Azure]CLI:
+Při vytváření clusteru můžete určit velikost uzlů. Následující informace obsahují pokyny k určení velikosti pomocí [Azure Portal][preview-portal], [Azure PowerShell modulu AZ][azure-powershell]a [Azure CLI][azure-cli]:
 
 * **Azure Portal**: Při vytváření clusteru můžete nastavit velikost uzlů používaných clusterem:
 
@@ -257,7 +257,7 @@ Při vytváření clusteru můžete určit velikost uzlů. Následující inform
 
 * **Azure PowerShell**: Při použití rutiny [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) můžete nastavit velikost hlav, pracovních procesů a Zookeeper uzlů pomocí `-HeadNodeSize`parametrů, `-WorkerNodeSize`a `-ZookeeperNodeSize` .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pomocí následujících odkazů můžete získat další informace o akcích, které jsou uvedené v tomto dokumentu.
 

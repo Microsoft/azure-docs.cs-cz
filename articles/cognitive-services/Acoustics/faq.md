@@ -1,7 +1,7 @@
 ---
-title: Projekt Akustika – nejčastější dotazy
+title: Nejčastější dotazy k akustickým projektům
 titlesuffix: Azure Cognitive Services
-description: Tato stránka nabízí odpovědi na často kladené Akustika projektu, včetně otázky pokyny ke stažení a vytvoření procesu.
+description: Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se akustického projektu, včetně pokynů ke stažení a zanesli procesu.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,71 +10,72 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: a18f6b57e203c40c0f667f07e8371348cb738c9b
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ROBOTS: NOINDEX
+ms.openlocfilehash: a965fc020c5c534616459ad661b71ac67dbc2425
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827570"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704799"
 ---
-# <a name="project-acoustics-frequently-asked-questions"></a>Projekt Akustika – nejčastější dotazy
+# <a name="project-acoustics-frequently-asked-questions"></a>Nejčastější dotazy k akustickým projektům
 
 ## <a name="what-is-project-acoustics"></a>Co je Project Acoustics?
 
-Projekt Akustika sadu modulů plug-in je Akustika systém, který vypočítá zvuk wave chování před runtime podobají statické osvětlení. Cloud nemá rutinní wave fyzika výpočtů, tedy nízké náklady na modul runtime procesoru.  
+Projekt akustické sady modulů plug-in je akustický systém, který vypočítává chování zvukové vlny před modulem runtime podobají na statické osvětlení. Cloud provádí těžkou zvedání výpočetních prostředků Wave, takže náklady na procesor za běhu jsou nízké.  
 
-## <a name="where-can-i-download-the-plugin"></a>Kde lze stáhnout modul plug-in?
+## <a name="where-can-i-download-the-plugin"></a>Kde můžu stáhnout modul plug-in?
 
-Si můžete stáhnout [modulu plug-in Unity projektu Akustika](https://www.microsoft.com/download/details.aspx?id=57346) nebo [projektu Akustika Unreal modulu plug-in](https://www.microsoft.com/download/details.aspx?id=58090).
+Můžete si stáhnout modul [Plug-in Unity pro projekt](https://www.microsoft.com/download/details.aspx?id=57346) nebo [akustický modul plug-in Unreal](https://www.microsoft.com/download/details.aspx?id=58090).
 
-## <a name="does-project-acoustics-support-ltxgt-platform"></a>Podporuje projektu Akustika &lt;x&gt; platformy?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Podporuje &lt;to akustické projektové navýšení na platformě x&gt; ?
 
-Podpora platformy projektu Akustika vyvíjí podle potřeb zákazníků. Kontaktujte nás prosím na [projektu Akustika problém fórum](https://github.com/microsoft/ProjectAcoustics/issues) mohli dotázat na podporu pro další platformy.
+Podpora platforem v projektech se vyvíjí na základě zákaznických potřeb. Kontaktujte nás na [fóru problémové problémy s projektem](https://github.com/microsoft/ProjectAcoustics/issues) , kde se můžete dotazovat na podporu pro další platformy.
 
-## <a name="is-azure-used-at-runtime"></a>Azure používá za běhu?
+## <a name="is-azure-used-at-runtime"></a>Používá se Azure za běhu?
 
-Ne, cloudovou integraci se používá pouze během fáze precompute jako součást instalace scény.
+Ne, cloudová integrace se používá jenom během fáze předběžnáho zpracování jako součást nastavení scény.
  
-## <a name="what-is-simulation-input"></a>Co je simulace vstup? 
+## <a name="what-is-simulation-input"></a>Co je simulace vstupu? 
 
-Vstup simulace je 3D scény, virtuální prostředí nebo herní úroveň. Projekt Akustika provádí 3D odměrné wave simulace, které model fyzika zvuk přesně dodržovali, včetně smooth uzavření a rozptyl.
+Vstup simulace je vaše 3D scéna, virtuální prostředí nebo úroveň hry. Akustické objemy projektů provádí prostorové simulace vlnovek, které modelují hladce zvuk, včetně hladkých překrytí a bodových.
  
-## <a name="what-is-the-runtime-cost"></a>Co je běhové náklady?
+## <a name="what-is-the-runtime-cost"></a>Jaké jsou náklady na modul runtime?
 
-Akustika trvá přibližně na 0,01 % využití CPU jeden zdroj pro každý snímek. Využití paměti RAM závisí na velikosti scény a může být v rozsahu od 10 do 100 MB.
+Akustické objemy přebírají přibližně 0,01% CPU na zdroj na jeden snímek. Využití paměti RAM závisí na velikosti scény a může být v rozsahu od 10 do 100 MB.
  
-## <a name="do-i-need-to-simplify-the-level-geometry-control-triangle-count-make-meshes-watertight"></a>Je potřeba zjednodušit úrovně geometrie? Počet trojúhelník ovládací prvek? Ujistěte se, mřížek vodotěsné?
+## <a name="do-i-need-to-simplify-the-level-geometry-control-triangle-count-make-meshes-watertight"></a>Potřebuji zjednodušit geometrii úrovně? Chcete kontrolní počet trojúhelníků? Chcete mít vodotěsné sítě?
 
-Ne. Systém bude ingestovat podrobné úrovni geometrie přímo. Bude voxelized pro vnitřní zpracování.
+Ne. Systém zpracuje detailní geometrii úrovně přímo. Bude voxelized pro interní zpracování.
  
-## <a name="whats-in-the-runtime-lookup-table"></a>Novinky ve vyhledávací tabulce modulu runtime
+## <a name="whats-in-the-runtime-lookup-table"></a>Co je v běhové vyhledávací tabulce?
 
-Zahrnutí souborů ACE je tabulka akustický parametrů mezi mnoha zdroj a umístění páry naslouchací proces, jakož i geometrie scény voxelized použitý pro parametr interpolace.
+Soubor ACE obsahuje tabulku akustických parametrů mezi mnoha páry umístění zdroje a naslouchacího procesu a také geometrií voxelized scény použitou pro interpolaci parametrů.
  
-## <a name="can-project-acoustics-handle-moving-sources"></a>Dokáže zpracovat projektu Akustika přesunutí zdrojů?
+## <a name="can-project-acoustics-handle-moving-sources"></a>Můžou se prostředky z projektu manipulovat s přesunem zdrojů?
 
-Ano, projekt Akustika consults vyhledávací tabulky a aktualizuje DSP zvuku na jednotlivé takty, takže mohou zpracovat přesunutí zdrojů a naslouchacího procesu.
+Ano, akustické projekty prochází vyhledávací tabulku a aktualizuje u každého zatržení zvukový procesor DSP, aby mohl zpracovat Přesun zdrojů a naslouchací proces.
  
-## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Dokáže zpracovat Akustika projektu dynamické geometrie? Zavření dveře? Stěn úžasné hned?
+## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Mohou promítnout akustické práce zpracovat dynamickou geometrii? Zavírá se dveře? Jste plnohodnotnou zdi?
 
-Ne. Akustický parametry jsou-li předpočítané na základě statické stavu her úroveň. Doporučujeme ponechat dveře geometrie mimo Akustika a potom se použijí na základě stavu zničitelné další uzavření a nastavení přesouvatelný herním objektům pomocí techniky.
+Ne. Akustické parametry jsou předpočítány na základě statického stavu herní úrovně. Doporučujeme ponechat geometrii dvířek z akustického množství a pak použít další překrytí na základě stavu zničitelné a pohyblivých herních objektů pomocí zavedených technik.
  
-## <a name="does-project-acoustics-use-acoustic-materials"></a>Používá projektu Akustika akustický materiály?
+## <a name="does-project-acoustics-use-acoustic-materials"></a>Používají se v projektech akustické materiály?
 
-Ano. Materiály se vybírají z fyzických materiálu názvů ve vaší úrovni řízení absorptivity.
+Ano. Materiály se vybírají z fyzických názvů materiálu na úrovni, což řídí absorptivity.
  
-## <a name="what-do-the-probes-represent"></a>Co představují "sond"?
+## <a name="what-do-the-probes-represent"></a>Co představuje "sondy"?
 
-Testy jsou novým možné player umístění. Každý test představuje samostatný wave simulace scény pocházející z umístění testu. Za běhu jsou interpolovány akustický parametry pro naslouchací proces umístění z nejbližší umístění testu.
+Sondy představují vzorkování možných umístění hráčů. Každá sonda představuje samostatnou simulaci vlnovku scény, která pochází z umístění testu. V době běhu jsou akustické parametry pro umístění naslouchacího procesu interpolované od blízkých míst testu.
  
-## <a name="why-spend-so-much-compute-in-the-cloud-what-does-it-buy-me"></a>Proč trávit tolik výpočty v cloudu? Co ji zakoupit mě?
+## <a name="why-spend-so-much-compute-in-the-cloud-what-does-it-buy-me"></a>Proč strávíte spoustu výpočtů v cloudu? Co mi koupit?
 
-Projekt Akustika poskytuje přesným a spolehlivým akustický parametry i pro mimořádně složité virtuální prostředí, s ohledem všechny aspekty architektury. Poskytuje smooth uzavření a překážky a dynamické dozvuku varianta bez dělat něco ručně kreslení svazky. Vše se zbývající světla na procesoru za běhu.
+Akustické a spolehlivé zvukové parametry jsou vhodné pro vysoce složitá virtuální prostředí, která se přiřadí ke každému aspektu architektury. Poskytuje plynulé překrytí a překážky a dynamické reverb variace bez ručního fungování vykreslování svazků. Vše a zbývající světlo na CPU během běhu.
 
-## <a name="what-exactly-happens-during-baking"></a>Co se stane přesně během "pečení"?
+## <a name="what-exactly-happens-during-baking"></a>Co se přesně děje během "pečení"?
 
-Která má označení vytvoření se skládá z akustický wave simulace cuboid simulace oblastí střed na každý test naslouchacího procesu.
+Zanesli se skládá z akustických simulací vln cuboidch oblastí simulace, které jsou na každém testu naslouchacího procesu.
 
 ## <a name="next-steps"></a>Další postup
-* Zkuste [Unity projektu Akustika ukázkový obsah](unity-quickstart.md) nebo [Unreal ukázkový obsah](unreal-quickstart.md)
+* Vyzkoušejte si [projekt akustického obsahu Unity](unity-quickstart.md) nebo [ukázkový obsah Unreal](unreal-quickstart.md)
 

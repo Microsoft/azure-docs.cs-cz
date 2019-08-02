@@ -1,6 +1,6 @@
 ---
-title: 'Azure portal: Geografická replikace SQL Database | Dokumentace Microsoftu'
-description: Konfigurace geografické replikace pro jednu, nebo součástí fondu databáze ve službě Azure SQL Database pomocí webu Azure portal a zahájit převzetí služeb při selhání
+title: 'Azure Portal: SQL Database geografická replikace | Microsoft Docs'
+description: Konfigurace geografické replikace pro jednu nebo sdruženou databázi v Azure SQL Database pomocí Azure Portal a zahájení převzetí služeb při selhání
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,90 +10,89 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 8bada96c648881a9943176c45115627a829fcc58
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 058afdbc4aa134b5b3c4c8cc5e9e2f2ae6f53084
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60864056"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569648"
 ---
-# <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database webu Azure portal a zahájit převzetí služeb při selhání
+# <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database v Azure Portal a zahájení převzetí služeb při selhání
 
-V tomto článku se dozvíte, jak nakonfigurovat [aktivní geografické replikace pro jednu databázi, databázi ve fondu](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) v Azure SQL Database pomocí [webu Azure portal](https://portal.azure.com) a k zahájení převzetí služeb při selhání.
+V tomto článku se dozvíte, jak nakonfigurovat [aktivní geografickou replikaci pro databáze s jedním a fondem](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) v Azure SQL Database pomocí [Azure Portal](https://portal.azure.com) a iniciovat převzetí služeb při selhání.
 
-Informace o skupinách automatické převzetí služeb při selhání s databázemi ve fondu a jeden, naleznete v tématu [osvědčené postupy používání skupin převzetí služeb při selhání s databázemi ve fondu a jeden](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Informace o skupinách automatické převzetí služeb při selhání s spravované instance (preview) najdete v tématu [osvědčené postupy používání skupin převzetí služeb při selhání pomocí spravovaných instancí](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
+Informace o skupinách automatického převzetí služeb při selhání s databázemi s jednou a ve fondu najdete v tématu [osvědčené postupy použití skupin převzetí služeb při selhání s databázemi s jedním a fondem](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Informace o skupinách automatického převzetí služeb při selhání se spravovanými instancemi (Preview) najdete v tématu [osvědčené postupy při používání skupin převzetí služeb při selhání se spravovanými instancemi](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete nakonfigurovat aktivní geografickou replikaci s využitím webu Azure portal, potřebujete následující prostředek:
+Pokud chcete nakonfigurovat aktivní geografickou replikaci pomocí Azure Portal, budete potřebovat následující prostředek:
 
-* Azure SQL database: Primární databáze, který chcete replikovat do jiné geografické oblasti.
+* Databáze SQL Azure: Primární databáze, kterou chcete replikovat do jiné geografické oblasti.
 
 > [!Note]
-> Při použití webu Azure portal, můžete vytvořit pouze sekundární databáze v rámci stejného předplatného jako primární. Pokud aktivní sekundární databáze musí být v jiném předplatném, použijte [vytvořit Database REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) nebo [rozhraní API jazyka Transact-SQL ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
+> Při použití Azure Portal můžete vytvořit pouze sekundární databázi v rámci stejného předplatného jako primární. Pokud je nutné, aby byla sekundární databáze v jiném předplatném, použijte příkaz [Create database REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) nebo [ALTER DATABASE API jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
 
-## <a name="add-a-secondary-database"></a>Přidání sekundární databáze
+## <a name="add-a-secondary-database"></a>Přidat sekundární databázi
 
-Následující kroky vytvoření nové sekundární databáze v partnerství geografické replikace.  
+V následujících krocích se vytvoří nová sekundární databáze v partnerství geografické replikace.  
 
-Přidání sekundární databáze, musí být vlastníkem předplatného nebo spoluvlastník.
+Chcete-li přidat sekundární databázi, musíte být vlastníkem nebo spoluvlastníkem předplatného.
 
-Sekundární databáze má stejný název jako primární databáze a ve výchozím nastavení, má stejnou službu vrstvy a vypočítat velikost. Sekundární databáze může být izolovanou databázi nebo databázi ve fondu. Další informace najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
-Jakmile sekundární se vytvoří a nasadí, zahájení dat replikace z primární databáze nové sekundární databáze.
+Sekundární databáze má stejný název jako primární databáze a má ve výchozím nastavení stejnou úroveň služby a výpočetní velikost. Sekundární databází může být jedna databáze nebo databáze ve fondu. Další informace najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md).
+Po vytvoření a osazení sekundární databáze se data začnou replikovat z primární databáze do nové sekundární databáze.
 
 > [!NOTE]
-> Pokud partnerská databáze již existuje (například v důsledku ukončení předchozí relaci geografické replikace) příkaz se nezdaří.
+> Pokud Partnerská databáze již existuje (například v důsledku ukončení předchozího vztahu geografické replikace), příkaz se nezdařil.
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte do databáze, kterou chcete nastavit pro geografickou replikaci.
-2. Na stránce služby SQL database, vyberte **geografickou replikaci**a pak vyberte oblasti se má vytvořit sekundární databáze. Můžete vybrat libovolnou oblast jiné než oblasti, který je hostitelem primární databáze, ale doporučujeme, abyste [spárované oblasti](../best-practices-availability-paired-regions.md).
+1. V [Azure Portal](https://portal.azure.com)přejděte k databázi, kterou chcete nastavit pro geografickou replikaci.
+2. Na stránce databáze SQL vyberte geografickou **replikaci**a potom vyberte oblast pro vytvoření sekundární databáze. Můžete vybrat libovolnou jinou oblast, než je oblast hostující primární databázi, ale doporučujeme použít spárovánou [oblast](../best-practices-availability-paired-regions.md).
 
     ![Konfigurace geografické replikace](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
-3. Vybrat nebo nakonfigurovat server a cenovou úroveň pro sekundární databázi.
+3. Vyberte nebo nakonfigurujte server a cenovou úroveň pro sekundární databázi.
 
     ![Konfigurovat sekundární](./media/sql-database-geo-replication-portal/create-secondary.png)
-4. Volitelně můžete přidat sekundární databáze do elastického fondu. Chcete-li vytvořit sekundární databáze ve fondu, klikněte na tlačítko **elastického fondu** a vyberte fond na cílovém serveru. Fond už musí existovat v cílovém serveru. Tento pracovní postup nelze vytvořit fond.
-5. Klikněte na tlačítko **vytvořit** přidat sekundární.
-6. Sekundární databáze se vytvoří a spustí proces osazení.
+4. Volitelně můžete do elastického fondu přidat sekundární databázi. Chcete-li vytvořit sekundární databázi ve fondu, klikněte na možnost **elastický fond** a vyberte fond na cílovém serveru. Fond již musí existovat na cílovém serveru. Tento pracovní postup nevytváří fond.
+5. Kliknutím na **vytvořit** přidejte sekundárního.
+6. Sekundární databáze je vytvořena a proces osazení začíná.
 
     ![Konfigurovat sekundární](./media/sql-database-geo-replication-portal/seeding0.png)
-7. Po dokončení procesu osazení se sekundární databáze zobrazí jeho stav.
+7. Po dokončení procesu osazení sekundární databáze zobrazí svůj stav.
 
-    ![Synchronizace replik indexů dokončení](./media/sql-database-geo-replication-portal/seeding-complete.png)
+    ![Osazení dokončeno](./media/sql-database-geo-replication-portal/seeding-complete.png)
 
-## <a name="initiate-a-failover"></a>Zahájit převzetí služeb při selhání
+## <a name="initiate-a-failover"></a>Iniciovat převzetí služeb při selhání
 
-Sekundární databáze můžete přepnout na primární.  
+Sekundární databázi lze přepnout tak, aby se stala primární.  
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte na primární databázi v partnerství geografickou replikaci.
-2. V okně databáze SQL vyberte **všechna nastavení** > **geografickou replikaci**.
-3. V **sekundárních replik** vyberte databáze, kterou chcete nové primární a klikněte na tlačítko **převzetí služeb při selhání**.
+1. V [Azure Portal](https://portal.azure.com)přejděte k primární databázi v rámci partnerství geografické replikace.
+2. V okně SQL Database vyberte **všechna nastavení** > **geografické replikace**.
+3. V seznamu **sekundární** databáze vyberte databázi, která se má stát novou primární, a klikněte na **převzetí služeb při selhání**.
 
-    ![Převzetí služeb při selhání](./media/sql-database-geo-replication-failover-portal/secondaries.png)
-4. Klikněte na tlačítko **Ano** zahájíte převzetí služeb při selhání.
+    ![převzetí služeb při selhání](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+4. Kliknutím na **Ano** zahájíte převzetí služeb při selhání.
 
-Příkaz okamžitě přepne sekundární databázi do primární role. Tento proces by měl obvykle dokončí, v rámci 30 sekund nebo i rychleji.
+Příkaz okamžitě přepne sekundární databázi do primární role. Tento proces normálně by měl být dokončen do 30 sec nebo méně.
 
-Je na krátkou dobu, během které jsou obě databáze není k dispozici (v řádu 0 až 25 sekund), zatímco jsou přepnuté role. Pokud primární databáze má více sekundární databází, tento příkaz automaticky změní konfiguraci sekundární databáze pro připojení k nové primární. Celá operace by měla trvat necelou minutu dokončit za normálních okolností.
+Probíhá krátká doba, během které jsou obě databáze nedostupné (v pořadí 0 až 25 sekund) při přepínání rolí. Pokud má primární databáze více sekundárních databází, příkaz automaticky znovu nakonfiguruje ostatní sekundární sekundární připojení, aby se připojil k nové primární službě. Dokončení celé operace by za normálních okolností nemělo trvat déle než minutu.
 
 > [!NOTE]
-> Tento příkaz je určená pro rychlé obnovení databáze i v případě výpadku. Převzetí služeb při selhání se aktivuje bez synchronizace dat (Vynucené převzetí služeb při selhání).  Pokud je primární online a potvrzování transakcí při vydání příkazu se ztrátě dat může dojít.
+> Tento příkaz je určený pro rychlé obnovení databáze v případě výpadku. Vyvolá převzetí služeb při selhání bez synchronizace dat (vynucené převzetí služeb při selhání)  Pokud je primární je online a potvrzování transakcí, když je příkaz vydán, může dojít ke ztrátě dat.
 
-## <a name="remove-secondary-database"></a>Odebrání sekundární databáze
+## <a name="remove-secondary-database"></a>Odebrat sekundární databázi
 
-Tato operace trvale ukončí replikaci do sekundární databáze a roli sekundární databáze se změní na standardní databázi pro čtení i zápis. Pokud nefunguje připojení k sekundární databázi, příkazu úspěšné, ale sekundární fakturuje se nestane čtení a zápis až po připojení se obnoví.  
+Tato operace trvale ukončí replikaci do sekundární databáze a změní roli sekundární databáze na standardní databázi pro čtení a zápis. Pokud je připojení k sekundární databázi přerušeno, příkaz se zdaří, ale sekundární se nestane pro čtení a zápis až po obnovení připojení.  
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte na primární databázi v partnerství geografickou replikaci.
-2. Na stránce služby SQL database, vyberte **geografickou replikaci**.
-3. V **sekundárních replik** vyberte databáze, kterou chcete odebrat z partnerství geografickou replikaci.
-4. Klikněte na tlačítko **zastavení replikace**.
+1. V [Azure Portal](https://portal.azure.com)přejděte k primární databázi v rámci partnerství geografické replikace.
+2. Na stránce databáze SQL vyberte geografickou **replikaci**.
+3. V seznamu **sekundárních** umístění vyberte databázi, kterou chcete odebrat, ze partnerství geografické replikace.
+4. Klikněte na **zastavit replikaci**.
 
-    ![Odeberte sekundární](./media/sql-database-geo-replication-portal/remove-secondary.png)
-5. Otevře se okno s potvrzením. Klikněte na tlačítko **Ano** odebrání partnerství geografickou replikaci databáze. (Nastavit do databáze pro čtení a zápis není součástí žádné replikační.)
+    ![Odebrat sekundární](./media/sql-database-geo-replication-portal/remove-secondary.png)
+5. Otevře se okno potvrzení. Kliknutím na **Ano** odeberete databázi ze partnerství geografické replikace. (Nastavte ji na databázi pro čtení i zápis, která není součástí žádné replikace.)
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o aktivní geografickou replikaci, najdete v článku [aktivní geografickou replikaci](sql-database-active-geo-replication.md).
-* Další informace o skupinách automatické převzetí služeb při selhání najdete v tématu [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md)
-* Přehled zajištění provozní kontinuity podnikání a scénáře, naleznete v tématu [přehled zajištění provozní kontinuity firmy](sql-database-business-continuity.md).
+* Další informace o aktivní geografické replikaci najdete v tématu [Aktivní geografická replikace](sql-database-active-geo-replication.md).
+* Další informace o skupinách automatického převzetí služeb při selhání najdete v tématu [skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md) .
+* Přehled provozní kontinuity a scénáře najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md).

@@ -9,39 +9,52 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a597ab3519f4ba1696e111622541bcab89488558
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8809bf25c3bcfb26fb0ad251a2b09dfdca2a3e04
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66425434"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679196"
 ---
 # <a name="content-key-policies"></a>Zásady symetrických klíčů
 
-Pomocí služby Media Services můžete doručovat na vyžádání a živé obsah dynamicky šifrován Advanced Encryption Standard (AES-128) nebo některým z tři systémů hlavní digital rights management (DRM): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům. 
+Pomocí Media Services můžete doručovat živý obsah na vyžádání a dynamicky šifrovaný pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo kteréhokoli ze tří hlavních systémů DRM (Správa digitálních práv): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům. 
 
-Postup určení možností šifrování na datový proud, je potřeba vytvořit [streamování zásad](streaming-policy-concept.md) a přidružte jej k vaší [Lokátor streamování](streaming-locators-concept.md). Vytvoříte [zásad klíče k obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies) nakonfigurovat jak klíč obsahu (, který zajišťuje zabezpečený přístup k vaší [prostředky](assets-concept.md)) se doručí do koncovým klientům. Je nutné nastavit požadavky (omezení) na obsahu zásad klíče, které musí splnit, aby klíče se zadaným nastavením, který bude doručen do klientů. Tato zásada obsahu klíč není potřeba pro streamování nebo stažení. 
+Pokud chcete pro svůj Stream zadat možnosti šifrování, musíte vytvořit [zásadu streamování](streaming-policy-concept.md) a přidružit ji k [lokátoru streamování](streaming-locators-concept.md). [Zásadu pro klíč obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies) vytvoříte pro konfiguraci způsobu doručení klíče obsahu (který poskytuje zabezpečený přístup k vašim [prostředkům](assets-concept.md)) koncovým klientům. Je nutné nastavit požadavky (omezení) na zásady klíče obsahu, které musí být splněny, aby bylo možné klíče se zadanou konfigurací doručovat klientům. Zásady klíče obsahu není potřeba pro vymazání streamování nebo stahování. 
 
-Obvykle přidružit vaše **obsahu zásad klíče** s vaší [Lokátor streamování](streaming-locators-concept.md). Alternativně můžete zadat obsahu zásad klíče uvnitř [streamování zásad](streaming-policy-concept.md) (při vytváření vlastních zásad streamování pro pokročilé scénáře). 
+Obvykle přidružíte zásady klíčů obsahu k [lokátoru streamování](streaming-locators-concept.md). Případně můžete určit zásady klíče obsahu v rámci [zásad streamování](streaming-policy-concept.md) (při vytváření vlastních zásad streamování pro pokročilé scénáře). 
 
-Doporučujeme nechat Media Services automaticky vygenerovat symetrické klíče. Obvykle by použít dlouhodobá klíč a provedení kontroly existence zásady s **získat**. K získání klíče, je třeba volat metodu samostatnou akci pro tajné kódy a přihlašovací údaje, najdete v následujícím příkladu.
+> [!NOTE]
+> Vlastnosti zásad klíče obsahu, které jsou `Datetime` typu, jsou vždy ve formátu UTC.
 
-**Obsah zásady klíčů** je možné aktualizovat. Může trvat až 15 minut pro doručení klíče mezipaměti aktualizace a vyzvednutí aktualizované zásady. 
+## <a name="best-practices-and-considerations"></a>Osvědčené postupy a požadavky
 
 > [!IMPORTANT]
-> * Vlastnosti **obsahu zásady klíčů** jsou DateTime typu jsou vždy ve formátu UTC.
-> * Navrhněte omezenou sadu zásad pro svůj účet Media Service a znovu je použít pro vaše lokátory streamování pokaždé, když jsou potřeba stejné možnosti. Další informace najdete v tématu [kvóty a omezení](limits-quotas-constraints.md).
+> Přečtěte si následující doporučení.
 
-### <a name="example"></a>Příklad:
+* Měli byste navrhnout omezené sady zásad pro svůj účet Media Service a znovu je použít pro Lokátory streamování, pokud jsou potřeba stejné možnosti. Další informace najdete v tématu [kvóty a omezení](limits-quotas-constraints.md).
+* Zásady klíčů obsahu je možné aktualizovat. Aktualizace a výběr aktualizované zásady může trvat až 15 minut, než se mezipaměť pro doručování klíčů aktualizuje. 
 
-Chcete-li získat klíče, použijte **GetPolicyPropertiesWithSecretsAsync**, jak je znázorněno [získejte podpisový klíč ze stávající zásady](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) příklad.
+   Když tuto zásadu aktualizujete, přepíšete stávající mezipaměť CDN, která by mohla způsobit problémy s přehráváním pro zákazníky, kteří používají obsah uložený v mezipaměti.  
+* Doporučujeme, abyste pro každý Asset nevytvořili nové zásady klíče obsahu. Hlavními výhodami sdílení stejných zásad pro klíč obsahu mezi prostředky, které potřebují stejné možnosti zásad, jsou:
+   
+   * Správa malého počtu zásad je snazší.
+   * Pokud potřebujete provést aktualizace zásad klíče obsahu, změny se projeví u všech nových požadavků na licence téměř hned.
+* Pokud potřebujete vytvořit novou zásadu, budete muset vytvořit nový Lokátor streamování pro daný prostředek.
+* Doporučuje se, aby Media Services vygenerovat klíč obsahu. 
+
+   Obvykle byste používali dlouhotrvající klíč a kontrolovali existenci zásad klíče obsahu pomocí [Get](https://docs.microsoft.com/rest/api/media/contentkeypolicies/get). Chcete-li získat klíč, je nutné zavolat samostatnou metodu akce pro získání tajných kódů nebo přihlašovacích údajů, viz následující příklad.
+
+## <a name="example"></a>Příklad
+
+K získání klíče použijte `GetPolicyPropertiesWithSecretsAsync`, jak je znázorněno v příkladu [získání podpisového klíče z existujícího zásad](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) .
 
 ## <a name="filtering-ordering-paging"></a>Filtrování, řazení, stránkování
 
-Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities-overview.md).
+Viz téma [filtrování, řazení, stránkování Media Services entit](entities-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 

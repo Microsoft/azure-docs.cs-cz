@@ -1,7 +1,7 @@
 ---
-title: Atributy entit deníku – Academic Knowledge API
+title: Atributy entity deníku – Academic Knowledge API
 titlesuffix: Azure Cognitive Services
-description: Další atributy, které můžete použít s deníku entit v rozhraní Academic Knowledge API služeb Cognitive Services.
+description: Seznamte se s atributy, které můžete použít s entitou deník v Academic Knowledge API v Cognitive Services.
 services: cognitive-services
 author: alch-msft
 manager: nitinme
@@ -10,21 +10,22 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: ffb159dc684b4b6663dcb966706d4745ab88a403
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 93868bb014809693e7614e74bde7db864de95c04
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61337801"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704949"
 ---
-# <a name="journal-entity"></a>Deník Entity
+# <a name="journal-entity"></a>Entita deníku
 
-<sub> * Následující atributy jsou specifická pro entity deníku. (Ty = '2') </sub>
+<sub>* Následující atributy jsou specifické pro entitu Journal. (Ty = ' 2 ')</sub>
 
-Name    |Popis                            |Type       | Operace
+Name    |Popis                            |type       | Operace
 ------- | ------------------------------------- | --------- | ----------------------------
-ID      |Entity ID                              |Int64      |Je rovno
-DJN     |Normalizovaný název deníku                |String     |None
-JN      |Zobrazovaný název deníku                   |String     |Je rovno
-CC      |Citaci celkový počet deníku           |Int32      |None  
-ECC     |Citaci celkový odhadovaný počet deníku |Int32      |None
+Id      |ID entity                              |Int64      |Je rovno
+DJN     |Normalizovaný název deníku                |Řetězec     |žádný
+JN      |Zobrazovaný název deníku                   |Řetězec     |Je rovno
+CC      |Celkový počet citací v deníku           |Int32      |žádný  
+ECC     |Celkový počet odhadovaných citací v deníku |Int32      |žádný

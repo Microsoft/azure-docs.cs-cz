@@ -1,6 +1,6 @@
 ---
-title: Horizontální navýšení kapacity s Azure SQL Database | Dokumentace Microsoftu
-description: Software jako služba (SaaS) vývojáři můžete snadno vytvářet škálovatelné, elastické databáze v cloudu za použití těchto nástrojů
+title: Horizontální navýšení kapacity pomocí Azure SQL Database | Microsoft Docs
+description: Vývojáři SaaS (software jako služba) můžou snadno vytvářet elastické a škálovatelné databáze v cloudu pomocí těchto nástrojů.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,88 +10,87 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 59701c31e461bbd5d73ec708504139347f6075f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5ae56b2050243831f10863bbb4184a9e89f5911
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241857"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568402"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Horizontální navýšení kapacity s Azure SQL Database
-Můžete snadno škálovat databází Azure SQL Database pomocí **Elastic Database** nástroje. Tyto nástroje a funkce umožňují pracovat s prostředky databáze **Azure SQL Database** k vytváření řešení pro transakční úlohy a zvlášť Software jako služba (SaaS) aplikací. Funkce elastic Database se skládají z:
+Pomocí nástrojů **elastic Database** můžete snadno ŠKÁLOVAT databáze SQL Azure. Pomocí těchto nástrojů a funkcí můžete vytvářet řešení pro transakční úlohy a zejména aplikace SaaS (software jako služba), které jsou k disAzure SQL Database. Funkce Elastic Database se skládají z:
 
-* [Klientská knihovna elastic Database](sql-database-elastic-database-client-library.md): Klientská knihovna je funkce, která vám umožní vytvořit a udržovat horizontálně dělené databáze.  Zobrazit [Začínáme s nástroji Elastic Database](sql-database-elastic-scale-get-started.md).
-* [Elastické databáze dělení a slučování](sql-database-elastic-scale-overview-split-and-merge.md): přesouvá data mezi horizontálně dělené databáze. Tento nástroj je užitečný pro přesun dat z databáze více tenantů do jednoho tenanta databáze (nebo naopak). Zobrazit [kurz nástroj Elastic database dělení a slučování](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-* [Úlohy elastic Database](elastic-jobs-overview.md): Použití úlohy pro správu velkého počtu databází Azure SQL. Snadno proveďte operace správy, například změny schématu, Správa přihlašovacích údajů, aktualizace referenčních dat, shromažďování údajů o výkonu nebo shromažďování telemetrických dat tenanta (zákazníka) pomocí úlohy.
-* [Dotaz na elastic Database](sql-database-elastic-query-overview.md) (preview): Umožňuje spustit dotaz jazyka Transact-SQL, která zahrnuje více databází. To umožňuje připojení k vytváření sestav nástrojů, jako je Excel, Power BI, Tableau, atd.
-* [Elastické transakce](sql-database-elastic-transactions-overview.md): Tato funkce umožňuje spuštění transakce, které zahrnují několik databází ve službě Azure SQL Database. Transakcí elastické databáze jsou k dispozici pro aplikace .NET pomocí rozhraní ADO .NET a integrovat známé programování pomocí prostředí [System.Transaction třídy](https://msdn.microsoft.com/library/system.transactions.aspx).
+* [Klientská knihovna elastic Database](sql-database-elastic-database-client-library.md): Klientská knihovna je funkce, která umožňuje vytvářet a udržovat databáze horizontálně dělené.  Přečtěte si téma Začínáme [s nástroji pro elastic Database](sql-database-elastic-scale-get-started.md).
+* [Elastic Database Nástroj pro dělení a slučování](sql-database-elastic-scale-overview-split-and-merge.md): přesouvá data mezi databázemi horizontálně dělené. Tento nástroj je užitečný pro přesun dat z víceklientské databáze do databáze s jedním tenanta (nebo naopak). Viz [kurz k nástroji pro dělení a slučování elastické databáze](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+* [Úlohy elastické databáze](elastic-jobs-overview.md): Použijte úlohy pro správu velkého počtu databází Azure SQL. Pomocí úloh můžete snadno provádět operace správy, jako jsou změny schématu, Správa přihlašovacích údajů, aktualizace referenčních dat, shromažďování dat výkonu nebo shromažďování telemetrie klienta (zákazníka).
+* [Elastic Database dotaz](sql-database-elastic-query-overview.md) (Preview): Umožňuje spustit dotaz Transact-SQL, který zahrnuje více databází. To umožňuje připojení k nástrojům pro vytváření sestav, jako je Excel, Power BI, Tableau atd.
+* [Elastické transakce](sql-database-elastic-transactions-overview.md): Tato funkce umožňuje spouštět transakce, které přesahují několik databází v Azure SQL Database. Transakce elastické databáze jsou k dispozici pro aplikace .NET s využitím rozhraní ADO .NET a jsou integrovány se známým programovacím prostředím pomocí [tříd System. Transaction](https://msdn.microsoft.com/library/system.transactions.aspx).
 
-Následující obrázek znázorňuje architekturu, která zahrnuje **funkce Elastic Database** ve vztahu k kolekce databází.
+Následující obrázek ukazuje architekturu, která obsahuje **funkce elastic Database** ve vztahu ke kolekci databází.
 
-Barvy databáze na tomto obrázku představují schémata. Databáze se stejnou barvu sdílejí stejné schéma.
+V tomto obrázku barvy databáze reprezentují schémata. Databáze se stejnou barevou sdílejí stejné schéma.
 
-1. Sada **databází Azure SQL** je hostovaná v Azure s využitím architektury horizontálního dělení.
-2. **Klientská knihovna Elastic Database** slouží ke správě nastavení horizontálními oddíly.
-3. Podmnožinu databází přejde do **elastického fondu**. (Viz [co je to fond?](sql-database-elastic-pool.md)).
-4. **Úlohy elastické databáze** spouští ručně, nebo ad hoc skriptů T-SQL pro všemi databázemi.
-5. **Nástroj split-merge** se používá k přesunu dat z jednoho horizontálního oddílu do jiného.
-6. **Dotaz na elastickou databázi** umožňuje napsat dotaz, který zahrnuje všechny databáze v nastavení horizontálními oddíly.
-7. **Elastické transakce** umožňují provozovat transakcí, které zahrnují několik databází. 
+1. Sada **databází SQL Azure** je hostovaná v Azure pomocí architektury horizontálního dělení.
+2. **Klientská knihovna elastic Database** se používá ke správě horizontálních oddílů sady.
+3. Podmnožina databází je vložena do **elastického fondu**. (Podívejte [se, co je to fond?](sql-database-elastic-pool.md)).
+4. **Úloha elastic Database** spouští naplánované nebo ad hoc skripty T-SQL pro všechny databáze.
+5. **Nástroj pro dělení na sloučení** se používá k přesunu dat z jednoho horizontálních oddílů do jiného.
+6. **Dotaz elastic Database** umožňuje napsat dotaz, který zahrnuje všechny databáze ve horizontálních oddílů sadě.
+7. **Elastické transakce** umožňují spouštět transakce, které jsou rozloženy na více databází. 
 
 ![Nástroje pro elastické databáze][1]
 
 ## <a name="why-use-the-tools"></a>Proč používat nástroje?
-Dosažení pružnost a škálování cloudových aplikací byl jednoduchý pro virtuální počítače a úložiště objektů blob – jednoduše přidávat nebo odebírat jednotky, případně zvyšte power. Ale zůstal výzvu pro stavové zpracování dat v relačních databázích. Problémy se umístila v těchto scénářích:
+Zajištění pružnosti a škálování pro cloudové aplikace je pro virtuální počítače a úložiště objektů BLOB jednoduché – stačí přidat nebo odečíst jednotky nebo zvýšit výkon. Ale u relačních databází zůstala výzva pro zpracování stavových dat. V těchto scénářích se objevují problémy:
 
-* Zvětšování a zmenšování kapacitu pro relační databáze součástí vašich úloh.
-* Správa hotspotů, které mohou vzniknout by to mělo dopad na konkrétní podmnožinu dat – například zaneprázdněný koncových zákazníků (klientů).
+* Rozšiřování a zmenšení kapacity relační databáze v rámci vaší úlohy.
+* Správa aktivních oblastí, které mohou vzniknout vlivem na určitou podmnožinu dat, jako je například zaneprázdněný koncový zákazník (tenant).
 
-Tradičně scénáře, jako jsou tyto vyřeší Investujete do pracovat ve větším měřítku databázové servery k podpoře aplikace. Tato možnost je však omezená v cloudu, kde se veškeré zpracování stane na předdefinované komoditním hardwaru. Místo toho distribuci dat a zpracování v rozsáhlé skupině databází stejně jako strukturované (označované jako "horizontálního dělení" vzor horizontální navýšení kapacity) poskytuje alternativu k tradiční přístupy škálovat z hlediska nákladů a pružnost.
+V tradičních scénářích, jako jsou ty, se tyto scénáře vyřešily investováním do větších databázových serverů, které podporují aplikaci. Tato možnost je však omezená v cloudu, kde se veškeré zpracování provádí na předdefinovaném komoditním hardwaru. Místo toho můžete distribuovat data a zpracování v mnoha identicky strukturovaných databázích (model škálování na více instancí označovaný jako "horizontálního dělení"), a to z hlediska nákladů i pružnosti.
 
-## <a name="horizontal-and-vertical-scaling"></a>Vodorovné a svislé škálování
-Následující obrázek znázorňuje vodorovného a svislého rozměry škálování, které jsou základní způsoby, které je možné škálovat elastických databází.
+## <a name="horizontal-and-vertical-scaling"></a>Horizontální a svislé škálování
+Následující obrázek ukazuje vodorovné a svislé rozměry měřítka, což jsou základní způsoby škálování elastických databází.
 
-![Vodorovné a svislé horizontální navýšení kapacity][2]
+![Horizontální a vertikální horizontální navýšení kapacity][2]
 
-Horizontální škálování odkazuje na přidáním nebo odebráním databází, abyste mohli upravit kapacitu nebo celkový výkon, také vyznačeny "škálování". Horizontální dělení, ve kterém data jsou rozdělená mezi kolekce stejně jako strukturované databází je běžný způsob, jak implementovat horizontální škálování.  
+Horizontální škálování odkazuje na přidání nebo odebrání databází, aby bylo možné upravit kapacitu nebo celkový výkon, označovaný také jako "škálování na více instancí". Horizontálního dělení, ve kterém jsou data rozdělená mezi kolekce identicky strukturovaných databází, představuje běžný způsob implementace horizontálního škálování.  
 
-Vertikální škálování odkazuje na zvýšení nebo snížení výpočetní velikost jednotlivých databázových, označované také jako "vertikální navýšení kapacity."
+Vertikální škálování odkazuje na zvýšení nebo snížení velikosti výpočetní aplikace v jednotlivých databázích, označované také jako "škálování nahoru".
 
-Většina databáze aplikace v cloudovém měřítku pomocí kombinace těchto dvou strategií. Software jako služba aplikace může například použít horizontální škálování zřídit nové koncovým zákazníkům i vertikální škálování umožňující každého koncového uživatele databáze zvětšit nebo zmenšit prostředky podle potřeby úlohy.
+Většina databázových aplikací v cloudovém měřítku používá kombinaci těchto dvou strategií. Například software jako aplikace služby může používat horizontální škálování ke zřízení nových koncových zákazníků a vertikálního škálování, aby každá databáze koncových zákazníků mohla zvětšovat nebo zmenšovat prostředky podle potřeby zatížení.
 
-* Horizontální škálování se spravuje pomocí [Klientská knihovna Elastic Database](sql-database-elastic-database-client-library.md).
-* Vertikální škálování se provádí pomocí rutin prostředí Azure PowerShell Změna úrovně služby, nebo tak, že databáze v elastickém fondu.
+* Horizontální škálování je spravováno pomocí [klientské knihovny elastic Database](sql-database-elastic-database-client-library.md).
+* Vertikální škálování se dosahuje pomocí rutin Azure PowerShell ke změně úrovně služby nebo umístěním databází do elastického fondu.
 
 ## <a name="sharding"></a>Sharding
-*Horizontální dělení* je technika, velké objemy dat, stejně jako strukturované distribuovat napříč několika databázemi, nezávislé. Obvykle se zejména s vytváření Software jako služba (SAAS) nabídky pro koncové zákazníky a podniky vývojářům pro cloud. Tyto koncové zákazníky se často označuje jako "tenanty". Horizontální dělení může být třeba z nejrůznějších důvodů:  
+*Horizontálního dělení* je technika pro distribuci velkých objemů identicky strukturovaných dat napříč několika nezávislými databázemi. Je obzvláště populární pro vývojáře v cloudu, který vytváří nabídky SAAS (software jako služba) pro koncové zákazníky nebo firmy. Tito koncoví zákazníci se často označují jako "klienti". Horizontálního dělení může být vyžadováno z libovolného počtu důvodů:  
 
-* Celkové množství dat je příliš velký, aby vyhovovaly omezením jednotlivé databáze
-* Propustnost transakcí celkové zatížení překračuje možnosti jednotlivých databází
-* Tenanti můžou vyžadovat fyzickou izolaci od ostatních, tak samostatné databáze jsou potřeba pro každého klienta
-* Různé části databáze může být potřeba se nacházejí v různých zeměpisných oblastech pro dodržování předpisů, výkonu nebo geopolitických důvodů.
+* Celkový objem dat je moc velký, aby se vešel do omezení individuální databáze.
+* Propustnost transakce celkového zatížení překračuje možnosti individuální databáze.
+* Klienti můžou od sebe od sebe vyžadovat fyzickou izolaci, takže pro každého tenanta jsou potřeba samostatné databáze.
+* Různé oddíly databáze mohou být potřeba v různých geografických oblastech pro účely dodržování předpisů, výkonu nebo geopolitických důvodů.
 
-U dalších scénářů, jako je například ingestování dat z distribuované zařízení je možné tak, aby vyplnil sadu databází, které jsou uspořádány časově horizontálního dělení. Například samostatné databáze může být vyhrazen pro každého dne nebo týdne. V takovém případě klíč horizontálního dělení může být celé číslo představující datum (k dispozici ve všech řádcích horizontálně dělené tabulky) a aplikací na podmnožinu databází, které pokrývá rozsah dotyčný musejí směrovat dotazy načítají se informace pro konkrétní období.
+V jiných scénářích, jako jsou například ingestování dat z distribuovaných zařízení, lze horizontálního dělení použít k vyplnění sady databází, které jsou uspořádány do dočasného formátu. Například samostatná databáze může být vyhrazená pro každý den nebo týden. V takovém případě může být horizontálního dělení klíč celé číslo představující datum (přítomné ve všech řádcích tabulek horizontálně dělené) a dotazy, které načítají informace pro rozsah kalendářních dat, musí být směrovány pomocí aplikace do podmnožiny databází pokrývajících daný rozsah.
 
-Horizontální dělení funguje nejlépe, když každá transakce v aplikaci může být omezena na jednu hodnotu klíče horizontálního dělení. Zajistí se tak, že všechny transakce jsou místní u konkrétní databáze.
+Horizontálního dělení funguje nejlépe, když je možné každou transakci v aplikaci omezit na jednu hodnotu horizontálního dělení klíče. Tím zajistíte, aby všechny transakce byly místní pro určitou databázi.
 
-## <a name="multi-tenant-and-single-tenant"></a>Více tenantů a jednoho tenanta
-Některé aplikace používají nejjednodušším přístupem vytvořit samostatnou databázi pro každého tenanta. Tento přístup je **model horizontálního dělení jednoho tenanta** , které nabízí izolaci, možnost zálohování a obnovení a škálování na členitosti tenanta prostředků. S jedním tenantem horizontálního dělení Každá databáze je přidružená hodnota ID konkrétního tenanta (nebo hodnota klíče zákazníků), ale tento klíč nemusí být vždy k dispozici v samotných datech. Je zodpovědností aplikace směrovat každého požadavku k příslušné databázi – a to zjednodušit klientské knihovny.
+## <a name="multi-tenant-and-single-tenant"></a>Vícenásobný tenant a jeden tenant
+Některé aplikace používají nejsnadnější přístup k vytvoření samostatné databáze pro každého tenanta. Tento přístup je **jedním z horizontálního dělení vzorů tenanta** , který poskytuje izolaci, možnosti zálohování a obnovení a škálování prostředků v členitosti klienta. U jednoho tenanta horizontálního dělení je každá databáze přidružená ke konkrétní hodnotě ID tenanta (nebo hodnotě klíče zákazníka), ale tento klíč nemusí být vždy přítomen v samotných datech. Je zodpovědností aplikace při směrování jednotlivých požadavků do příslušné databáze a Klientská knihovna to může zjednodušit.
 
-![Srovnání s více tenanty jednoho tenanta][4]
+![Jeden tenant versus více tenantů][4]
 
-Jiné scénáře společně pack více tenantů do databáze, místo izolace je do samostatné databáze. Tento model je typické **model horizontálního dělení víceklientské** – a mohou být řízeny skutečnost, že aplikace spravuje velkým počtem malých tenantů. Ve víceklientské horizontální dělení jsou všechny řádků v tabulkách databáze navržené přenášet klíč, který identifikuje ID tenanta nebo klíč horizontálního dělení. Znovu aplikační vrstva zodpovídá za směrování žádosti tenanta k příslušné databázi, a to může podporovat Klientská knihovna elastic database. Kromě toho lze použít zabezpečení na úrovní řádků do filtru řádků přístup každý klient – podrobnosti najdete v tématu [aplikací s více tenanty s nástroji elastic database a zabezpečení na úrovní řádků](sql-database-elastic-tools-multi-tenant-row-level-security.md). Opětovná distribuce dat mezi databázemi. může být potřeba s model horizontální dělení více tenantů a nástroj split-merge elastických databází usnadňují. Další informace o návrhových schématech aplikací SaaS využívajících elastické fondy najdete v tématu [Návrhová schémata pro víceklientské aplikace SaaS využívající službu Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+Jiné scénáře začlení více tenantů do databází, nikoli jejich izolování do samostatných databází. Tento model je typický **horizontálního dělení vzor pro více tenantů** a může být řízený skutečností, že aplikace spravuje velký počet malých klientů. V horizontálního dělení s více klienty jsou řádky v databázových tabulkách všechny navržené tak, aby identifikovaly klíč identifikující ID tenanta nebo klíč horizontálního dělení. Aplikační vrstva je znovu zodpovědná za směrování požadavku tenanta do příslušné databáze a to může být podporováno klientskou knihovnou elastické databáze. Kromě toho je možné pomocí zabezpečení na úrovni řádků filtrovat, ke kterým řádkům má každý tenant přístup – podrobnosti najdete v tématu [víceklientské aplikace s nástroji elastické databáze a zabezpečení na úrovni řádků](sql-database-elastic-tools-multi-tenant-row-level-security.md). Redistribuce dat mezi databázemi může být potřeba u více tenantů horizontálního dělení vzoru a usnadňuje ho Nástroj pro dělení a slučování elastické databáze. Další informace o návrhových schématech aplikací SaaS využívajících elastické fondy najdete v tématu [Návrhová schémata pro víceklientské aplikace SaaS využívající službu Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Přesun dat z několika databází tenantů jedním
-Když vytváříte aplikaci SaaS, je typický a pomáhala potenciálním zákazníkům nabídnout zkušební verzi softwaru. V takovém případě je nákladově efektivní použití víceklientskou databází pro data. Jakmile potenciálního zákazníka zákazníka, databáze s jedním tenantem je však lepší vzhledem k tomu, že poskytuje lepší výkon. Pokud zákazník vytvořili dat během zkušebního období, použijte [nástroj split-merge](sql-database-elastic-scale-overview-split-and-merge.md) pro přesun dat z více tenantů do nové databáze s jedním tenantem.
+### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Přesun dat z několika do databází s jednou tenantů
+Při vytváření aplikace v SaaS je typický zákazníkům nabízet zkušební verzi softwaru pro potenciální zákazníky. V tomto případě je cenově výhodnější používat pro data víceklientské databáze. Pokud se ale potenciální zákazník stal zákazníkem, je databáze jednoho tenanta lepší, protože poskytuje lepší výkon. Pokud zákazník vytvořil během zkušebního období data, přesuňte data z více tenantů do nové databáze s jedním klientem pomocí [Nástroje pro dělení](sql-database-elastic-scale-overview-split-and-merge.md) na více tenantů.
 
 ## <a name="next-steps"></a>Další postup
-Ukázková aplikace, které ukazuje klientskou knihovnu, naleznete v tématu [Začínáme s nástroji Elastic Database](sql-database-elastic-scale-get-started.md).
+Ukázkovou aplikaci, která demonstruje knihovnu klienta, najdete v tématu Začínáme [s nástroji pro elastic Database](sql-database-elastic-scale-get-started.md).
 
-Převod existujících databází pomocí nástrojů, najdete v článku [migrace existujících databází pro horizontální navýšení kapacity](sql-database-elastic-convert-to-use-elastic-tools.md).
+Pokud chcete převést existující databáze na používání nástrojů, přečtěte si téma [migrace existujících databází pro horizontální](sql-database-elastic-convert-to-use-elastic-tools.md)navýšení kapacity.
 
-Specifika elastického fondu najdete v tématu [cenové a výkonové požadavky fondu elastické databáze](sql-database-elastic-pool.md), nebo vytvořte nový fond s [elastické fondy](sql-database-elastic-pool-manage-portal.md).  
+Pokud chcete zobrazit konkrétní informace o elastickém fondu, Projděte si téma [cenové a výkonové požadavky pro elastický fond](sql-database-elastic-pool.md)nebo vytvořte nový fond s [elastickými fondy](sql-database-elastic-pool-manage-portal.md).  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

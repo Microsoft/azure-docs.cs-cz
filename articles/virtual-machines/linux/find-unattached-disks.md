@@ -1,40 +1,31 @@
 ---
-title: Vyhledat a odstranit nepřipojené spravovaných a nespravovaných disků v Azure | Dokumentace Microsoftu
-description: Jak najít a odstranit nepřipojené spravovaných a nespravovaných (objekty BLOB virtuálních pevných disků nebo stránky) disků v Azure pomocí Azure CLI.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Vyhledání a odstranění nepřipojeného spravovaného a nespravovaného disku Azure | Microsoft Docs
+description: Jak najít a odstranit nepřipojené a nespravované disky Azure spravované a nespravované (VHD/Page BLOBS) pomocí Azure CLI.
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 21c15a943974b80469eb9bd71cbaf11a7bc34b4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e17292b3cf6edf851415efb83430331c54fbf610
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721832"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695532"
 ---
-# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Vyhledat a odstranit nepřipojené spravovaných a nespravovaných disků v Azure
-Když odstraníte virtuální počítač (VM) v Azure, ve výchozím nastavení, nebudou odstraněny všechny disky, které jsou připojené k virtuálnímu počítači. Tato funkce pomáhá zabránit ztrátě dat v důsledku neúmyslnému odstranění virtuálních počítačů. Po odstranění virtuálního počítače budete i nadále platit za nepřipojené disky. V tomto článku se dozvíte, jak najít a odstranit všechny nepřipojené disky a omezení zbytečných nákladů. 
+# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Vyhledání a odstranění nepřipojeného spravovaného a nespravovaného disku Azure
+Při odstranění virtuálního počítače v Azure se ve výchozím nastavení neodstraní všechny disky připojené k virtuálnímu počítači. Tato funkce pomáhá zabránit ztrátě dat z důvodu neúmyslného odstranění virtuálních počítačů. Po odstranění virtuálního počítače budete platit za nepřipojené disky. V tomto článku se dozvíte, jak najít a odstranit všechny nepřipojené disky a omezit zbytečné náklady. 
 
 
-## <a name="managed-disks-find-and-delete-unattached-disks"></a>Spravované disky: Vyhledat a odstranit nepřipojené disky 
+## <a name="managed-disks-find-and-delete-unattached-disks"></a>Spravované disky: Vyhledání a odstranění nepřipojených disků 
 
-Následující skript hledá nepřipojené [spravované disky](managed-disks-overview.md) porovnáním hodnoty **ManagedBy** vlastnost. Když spravovaný disk je připojený k virtuálnímu počítači, **ManagedBy** vlastnost obsahuje ID prostředku virtuálního počítače. Když spravovaný disk není připojený, **ManagedBy** vlastnost má hodnotu null. Tento skript kontroluje všechny spravované disky v rámci předplatného Azure. Pokud skript vyhledá spravovaného disku s **ManagedBy** nastavenou na hodnotu null, který určuje, zda disk není připojený.
+Následující skript vyhledá nepřipojené [spravované disky](managed-disks-overview.md) zkoumáním hodnoty vlastnosti **ManagedBy** . Po připojení spravovaného disku k virtuálnímu počítači vlastnost **ManagedBy** obsahuje ID prostředku virtuálního počítače. Pokud je nepřipojený spravovaný disk, vlastnost **ManagedBy** má hodnotu null. Skript prověřuje všechny spravované disky v rámci předplatného Azure. Když skript vyhledá spravovaný disk s vlastností **ManagedBy** nastavenou na hodnotu null, skript určí, že disk není připojený.
 
 >[!IMPORTANT]
->Nejprve spusťte skript tím, že nastavíte **deleteUnattachedDisks** proměnných na hodnotu 0. Tato akce umožní vyhledat a zobrazit všechny připojené spravované disky.
+>Nejdřív spusťte skript nastavením proměnné **deleteUnattachedDisks** na hodnotu 0. Tato akce vám umožní najít a zobrazit všechny nepřipojené spravované disky.
 >
->Poté, co si všechny nepřipojené disky, spusťte znovu skript a nastavit **deleteUnattachedDisks** proměnných na hodnotu 1. Tato akce umožňuje odstranit všechny připojené spravované disky.
+>Po kontrole všech nepřipojených disků spusťte skript znovu a nastavte proměnnou **deleteUnattachedDisks** na hodnotu 1. Tato akce umožňuje odstranit všechny nepřipojené spravované disky.
 >
 
 ```azurecli
@@ -59,14 +50,14 @@ do
 done
 ```
 
-## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Nespravované disky: Vyhledat a odstranit nepřipojené disky 
+## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Nespravované disky: Vyhledání a odstranění nepřipojených disků 
 
-Nespravované disky jsou soubory virtuálního pevného disku, které jsou uloženy jako [objekty BLOB stránky](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) v [účty služby Azure storage](../../storage/common/storage-create-storage-account.md). Následující skript hledá nepřipojené nespravované disky (objekty BLOB stránky) tím, že kontroluje hodnotu **LeaseStatus** vlastnost. Když nespravovaný disk je připojený k virtuálnímu počítači, **LeaseStatus** je nastavena na **uzamčené**. Když není připojený, nespravovaný disk **LeaseStatus** je nastavena na **Odemknutý**. Skript kontroluje všechny nespravovaných disků ve všech účtech úložiště Azure v rámci předplatného Azure. Pokud skript vyhledá nespravovaný disk s **LeaseStatus** vlastnost nastavena na hodnotu **Odemknutý**, skript určí, zda disk není připojený.
+Nespravované disky jsou soubory VHD, které se ukládají jako [objekty blob stránky](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) v [účtech úložiště Azure](../../storage/common/storage-create-storage-account.md). Následující skript vyhledá nepřipojené nespravované disky (objekty blob stránky) prozkoumáním hodnoty vlastnosti **LeaseStatus** . Pokud je k virtuálnímu počítači připojen nespravovaný disk, vlastnost **LeaseStatus** je nastavena na hodnotu **Uzamčeno**. Když není připojen nespravovaný disk, vlastnost **LeaseStatus** je nastavena na hodnotu **odemčeno**. Skript prověřuje všechny nespravované disky ve všech účtech úložiště Azure v rámci předplatného Azure. Když skript najde nespravovaný disk s vlastností **LeaseStatus** nastavenou na odemknutý, skript určí, že disk není připojený.
 
 >[!IMPORTANT]
->Nejprve spusťte skript tím, že nastavíte **deleteUnattachedVHDs** proměnných na hodnotu 0. Tato akce umožní vyhledat a zobrazit všechny nepřipojené nespravované virtuální pevné disky.
+>Nejdřív spusťte skript nastavením proměnné **deleteUnattachedVHDs** na hodnotu 0. Tato akce vám umožní najít a zobrazit všechny nepřipojené nepřipojené nespravované virtuální pevné disky.
 >
->Poté, co si všechny nepřipojené disky, spusťte znovu skript a nastavit **deleteUnattachedVHDs** proměnných na hodnotu 1. Tato akce umožňuje odstranit všechny nepřipojené nespravované virtuální pevné disky.
+>Po kontrole všech nepřipojených disků spusťte skript znovu a nastavte proměnnou **deleteUnattachedVHDs** na hodnotu 1. Tato akce umožňuje odstranit všechny nepřipojené nepřipojené nespravované virtuální pevné disky.
 >
 
 ```azurecli
@@ -112,7 +103,7 @@ do
 done 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Odstranit účet úložiště](../../storage/common/storage-create-storage-account.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Propojení dat Palo Alto Networks Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
-description: Informace o připojení k Azure Sentinelu Palo Alto Networks data.
+title: Připojit data sítí Palo Alto do Azure Sentinel Preview | Microsoft Docs
+description: Přečtěte si, jak propojit data Palo Alto Networks do Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -13,125 +13,98 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: bcc9c9db3a89b5bd088f4c546a3415dba4f295e3
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5860e1b1b817985aafd95f6f63d39553489482b9
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611365"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679221"
 ---
-# <a name="connect-your-palo-alto-networks-appliance"></a>Připojit zařízení Palo Alto Networks
+# <a name="connect-your-palo-alto-networks-appliance"></a>Připojení zařízení Palo Alto Networks
 
 > [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
+> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Je možné připojit Sentinelu Azure do všech zařízení Palo Alto Networks s ukládání souborů protokolu ve formátu Syslog CEF. Integrace s Azure Sentinelu umožňuje snadno spouštět analýzy a dotazy napříč data protokolů z Palo Alto Networks. Další informace o tom, jak Azure Sentinelu ingestuje CEF data, naleznete v tématu [zařízení připojit CEF](connect-common-event-format.md).
+Můžete připojit Azure Sentinel k jakýmkoli zařízením Palo Alto Networks tím, že soubory protokolu uložíte jako běžný formát chyb syslog (CEF). Integrace s Azure Sentinel umožňuje snadno spouštět analýzy a dotazy napříč daty souboru protokolu z Palo Alto Networks. Další informace o tom, jak Azure Sentinel ingestuje CEF data, najdete v tématu [připojení zařízení CEF](connect-common-event-format.md).
 
 > [!NOTE]
-> Data se uloží v zeměpisné oblasti pracovního prostoru, na kterém je spuštěný Sentinelu Azure.
+> Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-## <a name="step-1-connect-your-palo-alto-networks-appliance-using-an-agent"></a>Krok 1: Připojit zařízení Palo Alto Networks pomocí agenta
+## <a name="step-1-connect-your-palo-alto-networks-appliance-using-an-agent"></a>Krok 1: Připojení zařízení Palo Alto Networks pomocí agenta
 
-Pro vaše zařízení Palo Alto Networks připojení k Azure Sentinelu, budete muset nasadit agenta na vyhrazený počítač (VM v místním prostředí) aby mohly podporovat komunikaci mezi zařízením a Sentinelu Azure. Agenta můžete nasadit automaticky nebo ručně. Automatické nasazení je pouze k dispozici, pokud je vyhrazený počítač v Azure vytváříte nový virtuální počítač. 
+Pokud chcete připojit zařízení sítě Palo Alto ke službě Azure Sentinel, musíte agenta nasadit na vyhrazený počítač (virtuální počítač nebo místně) a podpořit tak komunikaci mezi zařízením a Sentinel Azure. 
 
-Alternativně můžete nasadit agenta ručně na existující virtuální počítač Azure, na virtuálním počítači v jiném cloudu nebo na místním počítači.
+Případně můžete agenta nasadit ručně na existující virtuální počítač Azure, na virtuální počítač v jiném cloudu nebo na místní počítač.
 
-Síťový diagram z obou možností najdete v tématu [připojení zdroje dat](connect-data-sources.md#agent-options).
+> [!NOTE]
+> Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení vaší organizace. Můžete třeba nakonfigurovat síť tak, aby byla v souladu se zásadami zabezpečení podnikové sítě, a změnit porty a protokoly v procesu démona tak, aby odpovídaly vašim požadavkům. 
+
+Postup zobrazení síťového diagramu obou možností najdete v tématu [připojení zdrojů dat](connect-data-sources.md#agent-options).
 
 
-### <a name="deploy-the-agent-in-azure"></a>Nasazení agenta v Azure
+### <a name="deploy-the-agent"></a>Nasazení agenta 
 
-1. Na portálu Azure Sentinelu, klikněte na tlačítko **datové konektory** a vyberte typ zařízení. 
+1. Na portálu Sentinel Azure klikněte na **datové konektory** a vyberte **Palo Alto Networks** a pak **otevřete stránku konektor**. 
 
-1. V části **konfigurace agenta protokolu Syslog v Linuxu**:
-   - Zvolte **automatického nasazení** Pokud chcete vytvořit nový počítač, který je předem nainstalovaný s agentem Azure Sentinelu a obsahuje všechny nezbytné konfigurace, jak je popsáno výše. Vyberte **automatického nasazení** a klikněte na tlačítko **nasazení agentů pro automatickou diagnostiku**. Tím přejdete na stránku nákupní pro vyhrazený virtuální počítač, který je automaticky připojena k pracovnímu prostoru, je. Je virtuální počítač **standardní virtuální počítač D2s v3 (2 virtuální procesory, 8 GB paměti)** a má veřejnou IP adresu.
-      1. V **vlastní nasazení** stránce zadejte své údaje a zvolte uživatelské jméno a heslo a pokud souhlasíte s podmínkami a ujednáními, zakoupit virtuální počítač.
-      1. Konfigurace vašeho zařízení k odeslání protokolů pomocí nastavení uvedených na stránce připojení. Konektor obecný Common Event Format použijte tato nastavení:
-         - Protokol = UDP
-         - Port = 514
-         - Zařízení = Local-4
-         - Format = CEF
-   - Zvolte **ručního nasazení** Pokud chcete použít existující virtuální počítač jako vyhrazený počítač s Linuxem do kterého by měla být nainstalován agent Sentinelu Azure. 
-      1. V části **stažení a instalace agenta Syslog**vyberte **virtuálního počítače Azure s Linuxem**. 
-      1. V **virtuálních počítačů** obrazovky, které se otevře, vyberte počítač, kterou chcete použít a klikněte na tlačítko **připojit**.
-      1. Na obrazovce konektor v části **konfigurace a dopředné Syslog**, můžete nastavit, jestli je vaše démon procesu Syslog **rsyslog.d** nebo **syslog-ng**. 
-      1. Zkopírujte tyto příkazy a spusťte je na vaše zařízení:
-          - Pokud jste vybrali rsyslog.d:
+1. V části **Stáhnout a nainstalovat agenta SYSLOG**vyberte typ počítače, buď Azure, nebo místní. 
+1. Na obrazovce **virtuální počítače** , která se otevře, vyberte počítač, který chcete použít, a klikněte na **připojit**.
+1. Pokud zvolíte **Stáhnout a nainstalovat agenta pro virtuální počítače se systémem Azure Linux**, vyberte počítač a klikněte na **připojit**. Pokud jste zvolili **Stáhnout a nainstalovat agenta pro virtuální počítače, které nejsou na platformě Azure Linux**, na obrazovce **Direct agent** spusťte skript v části stáhnout a začlenit **agenta pro Linux**.      1. Na obrazovce konektoru v části **Konfigurovat a přeposlání SYSLOG**nastavte, jestli se má démon syslog **rsyslog. d** nebo **syslog-ng**. 
+1. Zkopírujte tyto příkazy a spusťte je na svém zařízení:
+     - Pokud jste vybrali rsyslog. d:
               
-            1. Démon procesu Syslog pro naslouchání local_4 zařízení a k odeslání zprávy Syslog do Azure ověřovací agent používá port 25226 říct. `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
+       1. Informujte démona syslog, aby naslouchal na zařízení local_4 a odesílal zprávy syslog do agenta Azure Sentinel pomocí portu 25226. `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
             
-            2. Stáhněte a nainstalujte [security_events konfiguračního souboru](https://aka.ms/asi-syslog-config-file-linux) , který nakonfiguruje agenta Syslog pro naslouchání na port 25226. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` Kde {0} by měla být nahrazena identifikátor GUID pracovního prostoru.
+       2. Stáhněte a nainstalujte [konfigurační soubor security_events](https://aka.ms/asi-syslog-config-file-linux) , který konfiguruje agenta syslog k naslouchání na portu 25226. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`Kde {0} by měl být nahrazen identifikátorem GUID pracovního prostoru.
             
-            1. Restartujte démona syslogu `sudo service rsyslog restart`
+       1. Restartujte proces démona syslogu.`sudo service rsyslog restart`
              
-          - Pokud jste vybrali syslog-ng:
+    - Pokud jste vybrali syslog-ng:
 
-              1. Démon procesu Syslog pro naslouchání local_4 zařízení a k odeslání zprávy Syslog do Azure ověřovací agent používá port 25226 říct. `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-              2. Stáhněte a nainstalujte [security_events konfiguračního souboru](https://aka.ms/asi-syslog-config-file-linux) , který nakonfiguruje agenta Syslog pro naslouchání na port 25226. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` Kde {0} by měla být nahrazena identifikátor GUID pracovního prostoru.
+         1. Informujte démona syslog, aby naslouchal na zařízení local_4 a odesílal zprávy syslog do agenta Azure Sentinel pomocí portu 25226. `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
+         2. Stáhněte a nainstalujte [konfigurační soubor security_events](https://aka.ms/asi-syslog-config-file-linux) , který konfiguruje agenta syslog k naslouchání na portu 25226. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`Kde {0} by měl být nahrazen identifikátorem GUID pracovního prostoru.
 
-              3. Restartujte démona syslogu `sudo service syslog-ng restart`
-      2. Restartujte agenta Syslog pomocí tohoto příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. Potvrďte, že nejsou žádné chyby v protokolu agenta spuštěním tohoto příkazu: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
-
-### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>Nasazení agenta na serveru Linux on premises
-
-Pokud Azure nepoužíváte, ručně nasaďte agenta Sentinelu Azure ke spuštění na vyhrazeném serveru Linux.
+         3. Restartujte proces démona syslogu.`sudo service syslog-ng restart`
+ 1. Restartujte agenta syslog pomocí tohoto příkazu:`sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
+ 1. Spuštěním tohoto příkazu ověřte, že protokol agenta neobsahuje chyby:`tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
 
-1. Na portálu Azure Sentinelu, klikněte na tlačítko **datové konektory** a vyberte typ zařízení.
-1. Chcete-li vytvořit vyhrazený virtuální počítač s Linuxem, v části **konfigurace agenta protokolu Syslog v Linuxu** zvolte **ručního nasazení**.
-   1. V části **stažení a instalace agenta Syslog**vyberte **počítače mimo Azure Linux**. 
-   1. V **přímý agent** obrazovku, která se otevře, vyberte **agenta pro Linux** stáhněte agenta nebo spuštěním tohoto příkazu si ho stáhnout na počítač s Linuxem:   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
-      1. Na obrazovce konektor v části **konfigurace a dopředné Syslog**, můžete nastavit, jestli je vaše démon procesu Syslog **rsyslog.d** nebo **syslog-ng**. 
-      1. Zkopírujte tyto příkazy a spusťte je na vaše zařízení:
-         - Pokud jste vybrali rsyslog:
-           1. Démon procesu Syslog pro naslouchání local_4 zařízení a k odeslání zprávy Syslog do Azure ověřovací agent používá port 25226 říct. `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            
-           2. Stáhněte a nainstalujte [security_events konfiguračního souboru](https://aka.ms/asi-syslog-config-file-linux) , který nakonfiguruje agenta Syslog pro naslouchání na port 25226. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` Kde {0} by měla být nahrazena identifikátor GUID pracovního prostoru.
-           3. Restartujte démona syslogu `sudo service rsyslog restart`
-         - Pokud jste vybrali syslog-ng:
-            1. Démon procesu Syslog pro naslouchání local_4 zařízení a k odeslání zprávy Syslog do Azure ověřovací agent používá port 25226 říct. `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-            2. Stáhněte a nainstalujte [security_events konfiguračního souboru](https://aka.ms/asi-syslog-config-file-linux) , který nakonfiguruje agenta Syslog pro naslouchání na port 25226. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` Kde {0} by měla být nahrazena identifikátor GUID pracovního prostoru.
-            3. Restartujte démona syslogu `sudo service syslog-ng restart`
-      1. Restartujte agenta Syslog pomocí tohoto příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. Potvrďte, že nejsou žádné chyby v protokolu agenta spuštěním tohoto příkazu: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
-## <a name="step-2-forward-palo-alto-networks-logs-to-the-syslog-agent"></a>Krok 2: Předávání protokolů Palo Alto Networks agentům Syslog
+## <a name="step-2-forward-palo-alto-networks-logs-to-the-syslog-agent"></a>Krok 2: Dopředné protokoly Palo Alto Networks do agenta syslog
 
-Nakonfigurujte Palo Alto Networks předávat zprávy Syslog ve formátu CEF do pracovního prostoru Azure prostřednictvím agenta Syslog:
-1.  Přejděte na [Průvodci konfigurací formát cef (Common Event Format)](https://docs.paloaltonetworks.com/resources/cef) a stahovat pdf pro váš typ zařízení. Postupujte podle všech pokynů v Průvodci nastavit vaše zařízení Palo Alto Networks shromažďování událostí CEF. 
+Nakonfigurujte Palo Alto Networks pro přeposílání zpráv syslog ve formátu CEF do pracovního prostoru Azure prostřednictvím agenta syslog:
+1.  Přejít do [příručky konfigurace CEF (Common Event Format)](https://docs.paloaltonetworks.com/resources/cef) a stáhnout PDF pro váš typ zařízení. Podle všech pokynů v příručce nastavte zařízení sítě Palo Alto pro shromažďování událostí CEF. 
 
-1.  Přejděte na [monitorování konfigurace Syslog](https://aka.ms/asi-syslog-paloalto-forwarding) a postupujte podle kroků 2 a 3 a konfigurace předávání událostí CEF vaše zařízení Palo Alto Networks Sentinelu Azure.
+1.  Přejděte ke [konfiguraci monitorování syslogu](https://aka.ms/asi-syslog-paloalto-forwarding) a postupujte podle kroků 2 a 3 ke konfiguraci předávání událostí CEF ze zařízení Palo Alto Networks do Azure Sentinel.
 
-    1. Nezapomeňte nastavit **formát serveru Syslog** k **BSD**.
-    1. Ujistěte se, že nastavíte **zařízení číslo** na stejnou hodnotu, která jste nastavili v agentovi Syslog.
+    1. Ujistěte se, že jste nastavili **Formát serveru syslog** na **BSD**.
+    1. Ujistěte se, že jste nastavili **číslo zařízení** na stejnou hodnotu, jakou jste nastavili v agentovi syslog.
 
-> [!NOTE]
-> Operace kopírování a vložení ze souboru PDF může změnit text a vložte náhodných znaků. Abyste tomu předešli, zkopírujte text editoru a odeberte všechny znaky, které může to způsobit narušení formát protokolu před vložením, jak je vidět v tomto příkladu.
+       > [!NOTE]
+       > Operace kopírování a vkládání z PDF mohou změnit text a vkládat náhodné znaky. Aby k tomu nedocházelo, zkopírujte text do editoru a odstraňte všechny znaky, které by mohly přerušit formát protokolu před jeho vložením, jak je uvedeno v tomto příkladu.
  
-  ![CEF problém kopírovat text](./media/connect-cef/paloalto-text-prob1.png)
+        ![Problém s kopírováním textu CEF](./media/connect-cef/paloalto-text-prob1.png)
 
-6. Použít příslušné schéma v Log Analytics pro Palo Alto Networks události, vyhledejte **CommonSecurityLog**.
+2. Pokud chcete použít příslušné schéma v Log Analytics pro události sítě Palo Alto, vyhledejte **CommonSecurityLog**.
 
-## <a name="step-3-validate-connectivity"></a>Krok 3: Ověření připojení
+## <a name="step-3-validate-connectivity"></a>Krok 3: Ověřit připojení
 
-Může trvat upwards of 20 minut, než vaše protokoly spuštění se zobrazí v Log Analytics. 
+Může trvat až 20 minut, než se vaše protokoly začnou zobrazovat v Log Analytics. 
 
-1. Ujistěte se, že používáte správné zařízení. Zařízení musí být stejné v zařízení a ověřovací Azure. Můžete zkontrolovat zařízení soubor, který používáte v Azure Sentinelu a upravte v souboru `security-config-omsagent.conf`. 
+1. Ujistěte se, že používáte správné zařízení. Zařízení musí být ve vašem zařízení stejné a v Azure Sentinel. Můžete zjistit, který soubor zařízení používáte v rámci Azure Sentinel, a upravit ho v souboru `security-config-omsagent.conf`. 
 
-2. Ujistěte se, že vaše protokoly se zobrazuje na správný port Syslog agenta. Tento příkaz spustíte na počítači agenta Syslog: `tcpdump -A -ni any  port 514 -vv` Tento příkaz zobrazí protokoly, které datové proudy ze zařízení do počítače Syslog. Ujistěte se, že se přijímají protokoly ze zdrojového zařízení na správný port a správné zařízení.
+2. Zajistěte, aby se protokoly načítají do správného portu agenta syslog. Spusťte tento příkaz na počítači agenta syslog: `tcpdump -A -ni any  port 514 -vv`Tento příkaz zobrazí protokoly, které ze zařízení streamují do počítače syslog. Zajistěte, aby byly protokoly přijímány ze zdrojového zařízení na správném portu a v pravém zařízení.
 
-3. Ujistěte se, že protokoly můžete odeslat dodržovat [RFC 5424](https://tools.ietf.org/html/rfc542).
+3. Ujistěte se, že protokoly, které odesíláte, vyhovují [specifikaci RFC 3164](https://tools.ietf.org/html/rfc3164).
 
-4. Na počítači se systémem agenta Syslog, ujistěte se, že tyto porty 514, 25226 jsou otevřené a naslouchá, pomocí příkazu `netstat -a -n:`. Další informace o použití tohoto příkazu naleznete v tématu [netstat(8) - Linux man stránky](https://linux.die.net/man/8/netstat). Pokud naslouchá správně, uvidíte následující:
+4. V počítači, na kterém je spuštěn Agent syslog, se ujistěte, že jsou porty 514, 25226 otevřené a naslouchající, `netstat -a -n:`pomocí příkazu. Další informace o použití tohoto příkazu naleznete v tématu [netstat (8) – Linux Man](https://linux.die.net/man/8/netstat). Pokud je naslouchá správně, uvidíte toto:
 
-   ![Azure porty Sentinel](./media/connect-cef/ports.png) 
+   ![Porty Sentinel Azure](./media/connect-cef/ports.png) 
 
-5. Ujistěte se, že démon je nastaven tak, aby naslouchala na portu 514, na kterém chcete odeslat protokoly.
-    - Pro rsyslog:<br>Ujistěte se, že soubor `/etc/rsyslog.conf` tato konfigurace zahrnuje:
+5. Ujistěte se, že démon je nastaven na naslouchání na portu 514, na který odesíláte protokoly.
+    - Pro rsyslog:<br>Ujistěte se, že tento `/etc/rsyslog.conf` soubor obsahuje tuto konfiguraci:
 
            # provides UDP syslog reception
            module(load="imudp")
@@ -141,32 +114,32 @@ Může trvat upwards of 20 minut, než vaše protokoly spuštění se zobrazí v
            module(load="imtcp")
            input(type="imtcp" port="514")
 
-      Další informace najdete v tématu [imudp: UDP Syslog vstupu modulu](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module) a [imtcp: TCP modulu Syslog vstup](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module)
+      Další informace najdete v tématu [imudp: Vstupní modul](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html#imudp-udp-syslog-input-module) a [imtcp UDP protokolu UDP: Vstupní modul protokolu TCP syslog](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imtcp.html#imtcp-tcp-syslog-input-module)
 
-   - Pro syslog-ng:<br>Ujistěte se, že soubor `/etc/syslog-ng/syslog-ng.conf` tato konfigurace zahrnuje:
+   - Pro syslog-ng:<br>Ujistěte se, že tento `/etc/syslog-ng/syslog-ng.conf` soubor obsahuje tuto konfiguraci:
 
            # source s_network {
             network( transport(UDP) port(514));
              };
-     Další informace najdete v tématu [imudp: UDP Syslog vstupu modulu] (Další informace najdete v tématu [syslog-ng otevřít 3,16 edici zdroje – Příručka pro správu](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455).
+     Další informace naleznete v tématu [syslog-ng Open Source Edition 3,16-příručka pro správu](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455).
 
-1. Zkontrolujte, zda je komunikace mezi démona Syslogu a agenta. Tento příkaz spustíte na počítači agenta Syslog: `tcpdump -A -ni any  port 25226 -vv` Tento příkaz zobrazí protokoly, které datové proudy ze zařízení do počítače Syslog. Ujistěte se, že protokoly se také přijímají na agentovi.
+1. Ověřte, zda mezi démonem syslog a agentem probíhá komunikace. Spusťte tento příkaz na počítači agenta syslog: `tcpdump -A -ni any  port 25226 -vv`Tento příkaz zobrazí protokoly, které ze zařízení streamují do počítače syslog. Ujistěte se, že jsou protokoly také přijímány v agentovi.
 
-6. Pokud obě tyto příkazy úspěšné výsledky, zkontrolujte Log Analytics, pokud chcete zobrazit, pokud vaše protokoly přicházejí. Všechny události Streamovat z těchto zařízení se zobrazí v nezpracovaném tvaru v Log Analytics v části `CommonSecurityLog` typu.
+6. Pokud se oba tyto příkazy dodávají úspěšně, zkontrolujte Log Analytics a zjistěte, jestli jsou protokoly přicházející. Všechny události streamované z těchto zařízení se zobrazí v nezpracované podobě v `CommonSecurityLog` Log Analytics pod položkou Typ.
 
-7. Zkontrolujte, jestli jsou chyby, nebo pokud nejsou přicházející v protokolech, vyhledejte `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`. Když je ve stavu chyby neshoda formát protokolu, přejděte na `/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` a vyhledejte v souboru `security_events.conf`a ujistěte se, že vaše protokoly odpovídat formátu regulárního výrazu se zobrazí v tomto souboru.
+7. Pokud chcete zjistit, jestli se vyskytly chyby, nebo jestli se protokoly nepřicházejí `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`, podívejte se na. Pokud se vyskytnou chyby neshody formátu protokolu, přejděte na `/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` soubor `security_events.conf`a podívejte se na něj a ujistěte se, že protokoly odpovídají formátu regulárního výrazu, který vidíte v tomto souboru.
 
-8. Ujistěte se, že velikost výchozí zprávy Syslog je omezená na 2 048 bajtů. (2KB). Pokud jsou příliš dlouhé protokoly, aktualizujte security_events.conf pomocí tohoto příkazu: `message_length_limit 4096`
-
-
+8. Ujistěte se, že výchozí velikost zprávy syslog je omezená na 2048 bajtů (2 KB). Pokud jsou protokoly moc dlouhé, aktualizujte security_events. conf pomocí tohoto příkazu:`message_length_limit 4096`
 
 
 
 
 
 
-## <a name="next-steps"></a>Další kroky
-V tomto dokumentu jste zjistili, jak se připojit k Azure Sentinelu zařízení Palo Alto Networks. Další informace o Azure Sentinelu, naleznete v následujících článcích:
-- Zjistěte, jak [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
-- Začínáme [detekuje hrozby s využitím Azure Sentinelu](tutorial-detect-threats.md).
+
+
+## <a name="next-steps"></a>Další postup
+V tomto dokumentu jste zjistili, jak připojit zařízení Palo Alto Network ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
 

@@ -1,9 +1,9 @@
 ---
-title: Trvalý výstup úloh a ke službě Azure Storage pomocí služby Batch API – Azure Batch | Dokumentace Microsoftu
-description: Další informace o použití rozhraní API služby Batch pro trvalý výstup úloh a úlohy služby Batch do služby Azure Storage.
+title: Trvalý výstup úloh a úloh Azure Storage pomocí rozhraní API služby Batch – Azure Batch | Microsoft Docs
+description: Naučte se používat rozhraní API služby Batch k zachování výstupu úlohy Batch a úlohy do Azure Storage.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: batch
 ms.devlang: multiple
@@ -13,50 +13,50 @@ ms.workload: big-compute
 ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 982fe5cea633d9fd1bbbe7dc862b69d89f5f1c1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c113521a1828a27ce9454ea142cb1708b7c5a1b6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595272"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68322841"
 ---
-# <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Zachovat data úloh do služby Azure Storage pomocí rozhraní API služby Batch
+# <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Zachování dat úkolu Azure Storage pomocí rozhraní API služby Batch
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-Rozhraní API služby Batch podporuje zachování výstupní data do služby Azure Storage pro úkoly a úkolech Správce úloh, které běží u fondů s vlastností konfigurace virtuálního počítače. Při přidání úlohy, můžete zadat kontejner ve službě Azure Storage jako cíl pro výstup úkolu. Služba Batch pak zapíše veškerá výstupní data do tohoto kontejneru, když je úloha dokončena.
+Rozhraní API služby Batch podporuje ukládání výstupních dat do Azure Storage pro úlohy a úlohy Správce úloh spouštěné ve fondech s konfigurací virtuálního počítače. Když přidáte úkol, můžete zadat kontejner v Azure Storage jako cíl pro výstup úlohy. Služba Batch po dokončení úkolu zapíše do kontejneru veškerá výstupní data.
 
-Výhodou použití rozhraní API služby Batch se zachovat výstup úkolu je, že není potřeba upravovat aplikace, který je spuštěn úkol. Místo toho je možné zachovat výstup úkolu z v rámci stejný kód, který vytvoří úkol několik změn do klientské aplikace.
+Výhodou použití rozhraní API služby Batch k zachování výstupu úlohy je, že nemusíte měnit aplikaci, kterou úloha spouští. Místo toho s několika úpravami klientské aplikace můžete zachovat výstup úlohy ze stejného kódu, který úlohu vytvoří.
 
-## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>Kdy použít rozhraní API služby Batch se zachovat výstup úlohy?
+## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>Kdy se používá rozhraní API služby Batch k uchování výstupu úlohy?
 
-Azure Batch poskytuje více než jeden způsob, jak zachovat výstup úlohy. Pomocí rozhraní API služby Batch je pohodlný přístup, který je nejvhodnější pro tyto scénáře:
+Azure Batch poskytuje více než jeden způsob, jak uchovat výstup úlohy. Použití rozhraní API služby Batch je pohodlný přístup, který nejlépe vyhovuje těmto scénářům:
 
-- Chcete napsat kód, který trvalý výstup úloh z v rámci klientské aplikace beze změny aplikací, na kterém běží vaše úlohy.
-- Chcete zachovat výstup z úlohy služby Batch a úkolech Správce úloh v fondy vytvořené s konfigurací virtuálního počítače.
-- Chcete zachovat výstup do kontejneru služby Azure Storage s libovolný název.
-- Chcete zachovat výstup do kontejneru služby Azure Storage s názvem podle [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
+- Chcete napsat kód pro uchování výstupu úlohy z klientské aplikace bez změny aplikace, kterou váš úkol spouští.
+- Chcete zachovat výstup z úloh služby Batch a úloh Správce úloh ve fondech vytvořených s konfigurací virtuálního počítače.
+- Chcete zachovat výstup do kontejneru Azure Storage s libovolným názvem.
+- Chcete zachovat výstup do kontejneru Azure Storage s názvem podle standardu pro [dávkové soubory](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
 
-Pokud váš scénář se liší od těch uvedené výše, budete muset vzít v úvahu jiný přístup. Například rozhraní API služby Batch nepodporuje aktuálně streamování výstup do služby Azure Storage je spuštěn úkol. Chcete-li výstupní datový proud stream, zvažte použití knihovny Batch File Conventions dostupné pro .NET. Pro jiné jazyky musíte implementovat vlastní řešení. Další informace o dalších možnostech pro zachování výstup úlohy najdete v tématu [trvalý výstup úloh a ke službě Azure Storage](batch-task-output.md).
+Pokud se váš scénář liší od výše uvedených výše, možná budete muset zvážit jiný přístup. Rozhraní API služby Batch například v současné době nepodporuje výstup streamování do Azure Storage, zatímco je úloha spuštěná. Pokud chcete streamovat výstup, zvažte použití knihovny konvence souborů Batch, která je k dispozici pro .NET. V ostatních jazycích budete muset implementovat vlastní řešení. Další informace o dalších možnostech pro zachování výstupu úlohy najdete v tématu [trvalé uložení úloh a úloh do Azure Storage](batch-task-output.md).
 
-## <a name="create-a-container-in-azure-storage"></a>Vytvořit kontejner ve službě Azure Storage
+## <a name="create-a-container-in-azure-storage"></a>Vytvoření kontejneru v Azure Storage
 
-Chcete-li trvalý výstup úloh do služby Azure Storage, budete muset vytvořit kontejner, který slouží jako cíl pro výstupní soubory. Před spuštěním úlohy, přednostně před odesláním úlohy, vytvořte kontejner. Pokud chcete vytvořit kontejner, použijte příslušnou knihovnu klienta služby Azure Storage nebo sady SDK. Další informace o rozhraní API služby Azure Storage, najdete v článku [dokumentace ke službě Azure Storage](https://docs.microsoft.com/azure/storage/).
+Chcete-li zachovat výstup úlohy do Azure Storage, budete muset vytvořit kontejner, který slouží jako cíl pro výstupní soubory. Vytvořte kontejner před spuštěním úlohy, nejlépe předtím, než odešlete úlohu. Chcete-li vytvořit kontejner, použijte příslušnou klientskou knihovnu Azure Storage nebo sadu SDK. Další informace o rozhraních API Azure Storage najdete v [dokumentaci k Azure Storage](https://docs.microsoft.com/azure/storage/).
 
-Například pokud píšete aplikaci v jazyce C#, použijte [Klientská knihovna Azure Storage pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). Následující příklad ukazuje, jak vytvořit kontejner:
+Například při psaní aplikace v C#nástroji použijte klientskou [knihovnu Azure Storage pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). Následující příklad ukazuje, jak vytvořit kontejner:
 
 ```csharp
 CloudBlobContainer container = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
 await container.CreateIfNotExists();
 ```
 
-## <a name="get-a-shared-access-signature-for-the-container"></a>Získání sdíleného přístupového podpisu kontejneru
+## <a name="get-a-shared-access-signature-for-the-container"></a>Získání sdíleného přístupového podpisu pro kontejner
 
-Po vytvoření kontejneru získáte sdílený přístupový podpis (SAS) s oprávněním k zápisu do kontejneru. SAS poskytuje Delegovaný přístup ke kontejneru. SAS uděluje přístup s konkrétní sadou oprávnění a v zadaném časovém intervalu. Služba Batch musí SAS s oprávněním pro zápis zapisovat výstup úlohy do kontejneru. Další informace o SAS najdete v tématu [použití sdílených přístupových podpisů \(SAS\) ve službě Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Po vytvoření kontejneru Získejte sdílený přístupový podpis (SAS) s přístupem pro zápis do kontejneru. SAS poskytuje delegovaný přístup ke kontejneru. SAS udělí přístup se zadanou sadou oprávnění a v zadaném časovém intervalu. Služba Batch potřebuje k zápisu výstupu úlohy do kontejneru SAS s oprávněním k zápisu. Další informace o SAS najdete v tématu [použití SAS \(\) sdílených přístupových podpisů v Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-Když dostanete SAS pomocí rozhraní API služby Azure Storage, rozhraní API vrátí řetězec tokenu SAS. Tento token řetězec obsahuje všechny parametry SAS, včetně oprávnění a interval, přes které SAS. Pokud chcete použít SAS pro přístup ke kontejneru ve službě Azure Storage, budete muset připojit řetězec tokenu SAS URI prostředku. Identifikátor URI, společně s připojený token SAS, poskytuje ověřený přístup ke službě Azure Storage.
+Když obdržíte SAS pomocí Azure Storage rozhraní API, rozhraní API vrátí řetězec tokenu SAS. Tento řetězec tokenu zahrnuje všechny parametry SAS, včetně oprávnění a intervalu, za který je SAS platný. Chcete-li použít SAS pro přístup ke kontejneru v Azure Storage, je nutné připojit řetězec tokenu SAS k identifikátoru URI prostředku. Identifikátor URI prostředku, společně s připojením tokenu SAS, poskytuje ověřený přístup k Azure Storage.
 
-Následující příklad ukazuje, jak získat řetězec tokenu SAS jen pro zápis pro kontejner a pak sdíleného přístupového podpisu připojí k identifikátoru URI kontejneru:
+Následující příklad ukazuje, jak získat řetězec tokenu SAS jen pro zápis pro kontejner a pak připojit SAS k identifikátoru URI kontejneru:
 
 ```csharp
 string containerSasToken = container.GetSharedAccessSignature(new SharedAccessBlobPolicy()
@@ -68,11 +68,11 @@ string containerSasToken = container.GetSharedAccessSignature(new SharedAccessBl
 string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 ```
 
-## <a name="specify-output-files-for-task-output"></a>Zadejte výstupní soubory pro výstup úlohy
+## <a name="specify-output-files-for-task-output"></a>Zadat výstupní soubory pro výstup úlohy
 
-K určení výstupních souborů pro úlohu, vytvoření kolekce [OutputFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) objekty a přiřaďte ho [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) vlastnost při vytvoření úkolu.
+Chcete-li určit výstupní soubory pro úlohu, vytvořte kolekci objektů typu [Výstupní_soubor](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) a přiřaďte ji k vlastnosti [CloudTask. OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) při vytváření úlohy.
 
-Následující C# příklad kódu vytvoří úlohu, která zapíše náhodná čísla do souboru s názvem `output.txt`. Příklad vytvoří výstupní soubor pro `output.txt` k zápisu do kontejneru. Tento příklad také vytvoří výstupní soubory pro všechny soubory protokolů, které odpovídají vzoru souboru `std*.txt` (_například_, `stdout.txt` a `stderr.txt`). Adresa URL kontejneru SAS, který byl vytvořen dříve vyžaduje pro kontejner. Služba Batch používá SAS k ověření přístupu ke kontejneru:
+Následující C# příklad kódu vytvoří úlohu, která zapíše náhodná čísla do souboru s `output.txt`názvem. Příklad vytvoří výstupní soubor pro `output.txt` zápis do kontejneru. V tomto příkladu se vytvoří také výstupní soubory pro všechny soubory protokolů, které odpovídají `std*.txt` vzoru souboru ( `stdout.txt` _např._ a `stderr.txt`). Adresa URL kontejneru vyžaduje SAS, který byl vytvořen dříve pro kontejner. Služba Batch používá k ověření přístupu ke kontejneru SAS:
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
@@ -98,57 +98,57 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 }
 ```
 
-### <a name="specify-a-file-pattern-for-matching"></a>Zadejte vzorek souborů pro porovnávání
+### <a name="specify-a-file-pattern-for-matching"></a>Zadat vzor souboru pro porovnávání
 
-Když zadáte výstupní soubor, můžete použít [OutputFile.FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) vlastnosti a určit soubor vzor k porovnání. Vzor souboru může shodovat s nulovou soubory, jeden soubor nebo sady souborů, které jsou vytvořené úlohou.
+Při zadání výstupního souboru můžete použít vlastnost [Výstupní_soubor. File Pattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) k určení vzoru souboru pro porovnávání. Vzor souboru se může shodovat s nulovými soubory, s jedním souborem nebo sadou souborů, které jsou vytvořeny úlohou.
 
-**FilePattern** vlastnost podporuje zástupné znaky standardní systém souborů, jako `*` (pro nerekurzivní odpovídá) a `**` (pro rekurzivní odpovídá). Například ukázkovém kódu výše Určuje vzor souborů tak, aby odpovídaly `std*.txt` nerekurzivně:
+Vlastnost **Pattern vzor** podporuje standardní zástupné znaky systému souborů, `*` například (pro nerekurzivní shody) a `**` (pro rekurzivní shody). Například vzor kódu výše určuje vzor souboru, který se bude shodovat `std*.txt` bez rekurzivní:
 
 `filePattern: @"..\std*.txt"`
 
-Pokud chcete nahrát jeden soubor, zadejte vzorek souborů bez zástupných znaků. Například ukázkovém kódu výše Určuje vzor souborů tak, aby odpovídaly `output.txt`:
+Pokud chcete nahrát jeden soubor, určete vzorek souboru bez zástupných znaků. Například vzor kódu výše určuje vzor souboru, který se má shodovat `output.txt`:
 
 `filePattern: @"output.txt"`
 
-### <a name="specify-an-upload-condition"></a>Zadejte podmínku nahrávání
+### <a name="specify-an-upload-condition"></a>Zadat podmínku odeslání
 
-[OutputFileUploadOptions.UploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) vlastnost povoluje podmíněné odesílání výstupních souborů. Běžný scénář, kdy se má nahrát jednu sadu souborů, pokud je úloha úspěšná a jinou sadu souborů, pokud se nezdaří. Můžete například nahrát souborů podrobného protokolování, pouze pokud úloha selže a ukončí se nenulový ukončovací kód. Podobně můžete nahrát soubory s výsledky pouze v případě, že je úloha úspěšná, protože tyto soubory mohou být chybějící či neúplné, pokud se úloha nezdaří.
+Vlastnost [OutputFileUploadOptions. UploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) povoluje podmíněné nahrávání výstupních souborů. Běžným scénářem je odeslat jednu sadu souborů, pokud je úloha úspěšná, a jinou sadu souborů, pokud se nezdaří. Například můžete chtít odeslat podrobné soubory protokolu pouze v případě, že se úloha nezdařila a ukončí s nenulovým ukončovacím kódem. Podobně můžete chtít odeslat soubory výsledků, jenom pokud je úloha úspěšná, protože tyto soubory můžou chybět nebo být neúplné, pokud se úloha nezdaří.
 
-Ukázka kódu nad sad **UploadCondition** vlastnost **TaskCompletion**. Toto nastavení určuje, zda je soubor k nahrání, jakmile úkoly dokončí, bez ohledu na hodnotu ukončovacího kódu.
+Výše uvedený vzor kódu nastaví vlastnost **UploadCondition** na hodnotu **TaskCompletion**. Toto nastavení určuje, že se má soubor nahrát po dokončení úkolů, bez ohledu na hodnotu ukončovacího kódu.
 
 `uploadCondition: OutputFileUploadCondition.TaskCompletion`
 
-Další nastavení, najdete v článku [OutputFileUploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.outputfileuploadcondition) výčtu.
+Další nastavení naleznete v tématu [OutputFileUploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.outputfileuploadcondition) Enum.
 
-### <a name="disambiguate-files-with-the-same-name"></a>Rozlišit soubory se stejným názvem
+### <a name="disambiguate-files-with-the-same-name"></a>Nejednoznačnost souborů se stejným názvem
 
-Úkoly v úloze může vytvořit soubory, které mají stejný název. Například `stdout.txt` a `stderr.txt` jsou vytvořeny pro každý úkol, který běží v rámci úlohy. Protože každý úkol spustí ve vlastním kontextu, tyto soubory nejsou ve vzájemném konfliktu v systému souborů uzlu. Ale při nahrávání souborů z více úloh do sdíleného kontejneru, bude nutné k rozlišení soubory se stejným názvem.
+Úlohy v úloze můžou vytvořit soubory, které mají stejný název. Například `stdout.txt` a`stderr.txt` jsou vytvořeny pro každý úkol, který běží v rámci úlohy. Vzhledem k tomu, že každý úkol běží ve vlastním kontextu, tyto soubory nejsou v konfliktu v systému souborů uzlu. Když ale nahráváte soubory z několika úloh do sdíleného kontejneru, budete muset soubory se stejným názvem jednoznačně určit.
 
-[OutputFileBlobContainerDestination.Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) vlastnost určuje cílový objekt blob nebo virtuální adresář pro výstupní soubory. Můžete použít **cesta** nastavte na název objektu blob nebo virtuálního adresáře tak, že výstupní soubory se stejným názvem jsou pojmenovány jednoznačně ve službě Azure Storage. Pomocí ID úkolu v cestě je dobrým způsobem, jak zajistit jedinečné názvy a snadno identifikovat soubory.
+Vlastnost [OutputFileBlobContainerDestination. Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) Určuje cílový objekt BLOB nebo virtuální adresář pro výstupní soubory. Vlastnost **path** můžete použít k pojmenování objektu BLOB nebo virtuálního adresáře takovým způsobem, že výstupní soubory se stejným názvem jsou jednoznačně pojmenované v Azure Storage. Použití ID úlohy v cestě je dobrý způsob, jak zajistit jedinečné názvy a snadno identifikovat soubory.
 
-Pokud **FilePattern** je nastavena na výraz se zástupnými znaky, pak všechny soubory, které odpovídají vzoru se nahrají do virtuálního adresáře určené **cesta** vlastnost. Například, pokud je kontejner `mycontainer`, úlohy je ID `mytask`, a je vzor souborů `..\std*.txt`, pak bude vypadat podobně jako absolutní URI pro výstupní soubory ve službě Azure Storage:
+Pokud je vlastnost **Pattern vzoru** nastavená na zástupný znak, všechny soubory, které se shodují se vzorem, se nahrají do virtuálního adresáře zadaného vlastností **path** . Například pokud je `mycontainer`kontejner, ID úkolu je `mytask`a vzor souboru je `..\std*.txt`, pak absolutní identifikátory URI na výstupní soubory v Azure Storage budou vypadat podobně jako:
 
 ```
 https://myaccount.blob.core.windows.net/mycontainer/mytask/stderr.txt
 https://myaccount.blob.core.windows.net/mycontainer/mytask/stdout.txt
 ```
 
-Pokud **FilePattern** vlastnost je nastavena tak, aby odpovídaly jeden název souboru, což znamená, neobsahuje žádné zástupné znaky, pak hodnota **cesta** vlastnost určuje název objektu blob plně kvalifikovaný. Pokud očekáváte, že ke konfliktu názvů s jeden soubor z více úloh, pak zahrnete název virtuálního adresáře jako součást názvu souboru k rozlišení těchto souborů. Například nastavit **cesta** vlastnost ID úkolu, oddělovací znak (obvykle dopředné lomítko) a název souboru:
+Pokud je vlastnost **Pattern vzoru** nastavená tak, aby odpovídala jednomu názvu souboru, což znamená, že neobsahuje žádné zástupné znaky, pak hodnota vlastnosti **path** Určuje plně kvalifikovaný název objektu BLOB. Pokud očekáváte, že se pojmenování v konfliktu s jedním souborem z více úloh, pak jako součást názvu souboru přidejte název virtuálního adresáře, aby bylo možné tyto soubory odlišit. Například nastavte vlastnost **cesta** tak, aby obsahovala ID úlohy, znak oddělovače (obvykle lomítko) a název souboru:
 
 `path: taskId + @"/output.txt"`
 
-Absolutní URI do výstupních souborů pro sadu úloh, bude vypadat podobně jako:
+Absolutní identifikátory URI pro výstupní soubory pro sadu úloh budou vypadat podobně jako:
 
 ```
 https://myaccount.blob.core.windows.net/mycontainer/task1/output.txt
 https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 ```
 
-Další informace o virtuálních adresářů ve službě Azure Storage najdete v tématu [uvádět seznamy blobů v kontejneru](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container).
+Další informace o virtuálních adresářích v Azure Storage najdete v tématu [seznam objektů BLOB v kontejneru](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container).
 
-## <a name="diagnose-file-upload-errors"></a>Diagnostika chyb nahrávání souboru
+## <a name="diagnose-file-upload-errors"></a>Diagnostika chyb při nahrávání souborů
 
-Pokud odesílání výstupních souborů do služby Azure Storage se nezdaří, pak úloha přejde **dokončeno** stavu a [TaskExecutionInformation.FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) je nastavena. Zkontrolujte **FailureInformation** a určí, co k chybě. Tady je například Chyba, ke které dochází na nahrávání souborů, pokud nelze najít kontejner:
+Pokud se nahrává výstupní soubory do Azure Storage dojde k chybě, úloha se přesune do stavu **dokončeno** a vlastnost [TaskExecutionInformation. FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) je nastavena. Zkontrolujte vlastnost **FailureInformation** a určete, k jakou chybě došlo. Tady je například chyba, ke které dojde při nahrávání souboru, pokud se kontejner nedá najít:
 
 ```
 Category: UserError
@@ -156,42 +156,42 @@ Code: FileUploadContainerNotFound
 Message: One of the specified Azure container(s) was not found while attempting to upload an output file
 ```
 
-Na každé nahrání souboru zapíše dva soubory protokolu na výpočetním uzlu, Batch `fileuploadout.txt` a `fileuploaderr.txt`. Můžete prozkoumat tyto soubory protokolu na další informace o konkrétní chybě. V případech, kde samotné nahrávání souborů byl nikdy proveden pokus o, třeba protože se nepovedlo spustit vlastní úloha pak tyto soubory protokolu nebude existovat.
+Při každém nahrání souboru Batch zapisuje dva soubory protokolu do výpočetního uzlu `fileuploadout.txt` a. `fileuploaderr.txt` Můžete si prohlédnout tyto soubory protokolu a získat další informace o konkrétní chybě. V případech, kdy se odeslání souboru nikdy nepokoušelo, například kvůli tomu, že se nezdařilo spustit samotný úkol, tyto soubory protokolu nebudou existovat.
 
-## <a name="diagnose-file-upload-performance"></a>Diagnostika výkonu nahrání souboru
+## <a name="diagnose-file-upload-performance"></a>Diagnostika výkonu nahrávání souborů
 
-`fileuploadout.txt` Protokoly průběhu nahrávání souboru. Tento soubor na další informace o tom, jak dlouho trvá vaše nahrávání souborů můžete zkontrolovat. Pamatujte, že existuje celá řada faktorů přispívajících k nahrání výkonu, včetně velikost uzlu, druhé aktivity na uzlu v okamžiku odeslání, zda cílový kontejner je ve stejné oblasti jako fondu služby Batch, kolik uzlů nahráváte do stora ge účet ve stejnou dobu a tak dále.
+V `fileuploadout.txt` protokolech souborů probíhá nahrávání. V tomto souboru můžete zjistit, jak dlouho trvá nahrávání souborů. Mějte na paměti, že k odeslání výkonu, včetně velikosti uzlu, jiné aktivity na uzlu v době nahrávání, je potřeba mít na paměti, jestli je cílový kontejner ve stejné oblasti jako fond Batch a kolik uzlů se nahrává do Stora. účet GE ve stejnou dobu atd.
 
-## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>Rozhraní API služby Batch pomocí standardu Batch File Conventions
+## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>Použití rozhraní API služby Batch společně se standardními konvencemi pro dávkové soubory
 
-Když je trvalý výstup úloh pomocí rozhraní API služby Batch, můžete pojmenovat cílový kontejner a objekty BLOB, ale chcete. Můžete také pojmenovat je podle [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). Standardní File Conventions určuje názvy cílový kontejner a objektů blob ve službě Azure Storage pro danou výstupní soubor podle názvu úlohy a úkolů. Pokud použijete standardní soubor konvence pro pojmenování výstupních souborů, pak výstupní soubory jsou k dispozici pro zobrazení v [webu Azure portal](https://portal.azure.com).
+Když zachová výstup úlohy pomocí rozhraní API služby Batch, můžete svůj cílový kontejner a objekty blob pojmenovat, ale budete chtít. Můžete také zvolit jejich pojmenování podle standardu pro [dávkové soubory](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). Standardní konvence souborů určuje názvy cílového kontejneru a objektu BLOB v Azure Storage pro daný výstupní soubor na základě názvů úlohy a úlohy. Pokud pro pojmenování výstupních souborů použijete standardní konvence souborů, jsou vaše výstupní soubory k dispozici pro zobrazení v [Azure Portal](https://portal.azure.com).
 
-Pokud vyvíjíte v jazyce C#, můžete použít metody součástí [Batch File Conventions library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files). Tato knihovna vytvoří správně pojmenovaných kontejnerů a cesty k objektům blob. Například můžete volat rozhraní API, chcete-li získat správný název kontejneru, na základě názvu úlohy:
+Pokud vyvíjíte v C#nástroji, můžete použít metody integrované do [knihovny konvence pro dávkové soubory pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files). Tato knihovna vytvoří správně pojmenované kontejnery a cesty objektů BLOB. Například můžete volat rozhraní API a získat tak správný název kontejneru na základě názvu úlohy:
 
 ```csharp
 string containerName = job.OutputStorageContainerName();
 ```
 
-Můžete použít [CloudJobExtensions.GetOutputStorageContainerUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.getoutputstoragecontainerurl) metoda vrátí adresu URL sdíleného přístupového podpisu (SAS), který se používá k zápisu do kontejneru. Můžete předat tento SAS [OutputFileBlobContainerDestination](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination) konstruktoru.
+K vrácení adresy URL sdíleného přístupového podpisu (SAS), která se používá k zápisu do kontejneru, můžete použít metodu [CloudJobExtensions. GetOutputStorageContainerUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.getoutputstoragecontainerurl) . Pak můžete toto SAS předat konstruktoru [OutputFileBlobContainerDestination](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination) .
 
-Pokud vyvíjíte v jiném jazyce než v jazyce C#, je potřeba implementovat standard File Conventions sami.
+Pokud vyvíjíte v jiném jazyce než C#, bude nutné implementovat standardní konvence souborů sami.
 
 ## <a name="code-sample"></a>Ukázka kódu
 
-[PersistOutputs] [ github_persistoutputs] ukázkový projekt je jedním z [ukázky kódu Azure Batch] [ github_samples] na Githubu. Toto řešení sady Visual Studio ukazuje, jak používat klientskou knihovnu služby Batch pro .NET k uchování výstup úlohy do trvalého úložiště. Ke spuštění ukázky, postupujte podle těchto kroků:
+Vzorový projekt [PersistOutputs][github_persistoutputs] je jednou z [Azure Batch ukázek kódu][github_samples] na GitHubu. Toto řešení sady Visual Studio ukazuje, jak pomocí klientské knihovny Batch pro .NET uchovat výstup úlohy do trvalého úložiště. Chcete-li spustit ukázku, postupujte podle následujících kroků:
 
-1. Otevřete projekt v **Visual Studio 2019**.
-2. Přidání služby Batch a Storage **přihlašovací údaje účtu** k **AccountSettings.settings** Microsoft.Azure.Batch.Samples.Common projektu.
-3. **Sestavení** (ale nespouštějte) řešení. Obnovení všech balíčků NuGet, pokud se zobrazí výzva.
-4. Pomocí webu Azure portal k odeslání [balíčku aplikace](batch-application-packages.md) pro **PersistOutputsTask**. Zahrnout `PersistOutputsTask.exe` a jeho závislých sestavení v balíčku .zip, nastavte na "PersistOutputsTask" ID aplikace a verze balíčku aplikace má "1.0".
-5. **Spustit** (spustit) **PersistOutputs** projektu.
-6. Po zobrazení výzvy k výběru technologie trvalosti pro používání vzorku, zadejte **2** ke spuštění ukázky trvalý výstup úloh pomocí rozhraní API služby Batch.
-7. V případě potřeby spusťte ukázku znovu, zadávání **3** trvalý výstup pomocí rozhraní API služby Batch a také k pojmenování cílovou cestu kontejneru a objektu blob podle standardu File Conventions.
+1. Otevřete projekt v **aplikaci Visual Studio 2019**.
+2. Přidejte **přihlašovací údaje** služby Batch a účtu úložiště do **AccountSettings. Settings** v projektu Microsoft. Azure. batch. Samples. Common.
+3. **Sestavení** (ale nespouštějte) řešení. Pokud se zobrazí výzva, obnovte případné balíčky NuGet.
+4. Pomocí Azure Portal nahrajte [balíček aplikace](batch-application-packages.md) pro **PersistOutputsTask**. Zahrňte `PersistOutputsTask.exe` a jeho závislá sestavení v balíčku. zip, nastavte ID aplikace na "PersistOutputsTask" a verzi balíčku aplikace na "1,0".
+5. **Spustit** (spusťte) projektu **PersistOutputs** .
+6. Po zobrazení výzvy k výběru technologie trvalosti, která se má použít ke spuštění ukázky, zadejte **2** pro spuštění ukázky pomocí rozhraní API služby Batch pro zachování výstupu úlohy.
+7. V případě potřeby spusťte ukázku znovu a zachovejte výstup pomocí rozhraní API služby Batch a také pojmenujte cílový kontejner a cestu objektu BLOB podle standardu souborů.
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o zachování úlohy výstup pomocí knihovny File Conventions pro rozhraní .NET najdete v tématu [uchování úloh a dat do služby Azure Storage pomocí knihovny File Conventions služby Batch pro .NET](batch-task-output-file-conventions.md).
-- Informace o jiných přístupech pro zachování výstupní data ve službě Azure Batch najdete v tématu [trvalý výstup úloh a ke službě Azure Storage](batch-task-output.md).
+- Další informace o zachování výstupu úlohy pomocí knihovny konvence souborů pro rozhraní .NET najdete v tématu [zachování úloh a dat úloh pro Azure Storage s knihovnou konvence souborů Batch pro .NET](batch-task-output-file-conventions.md).
+- Informace o dalších metodách zachování výstupních dat v Azure Batch naleznete v tématu [trvalé uložení úlohy a úlohy do Azure Storage](batch-task-output.md).
 
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
