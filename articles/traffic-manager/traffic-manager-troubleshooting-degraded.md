@@ -3,20 +3,20 @@ title: Řešení potíží se stavem snížené funkčnosti v Azure Traffic Mana
 description: Jak řešit potíže s profilem Traffic Manager, když se zobrazuje jako snížený stav.
 services: traffic-manager
 documentationcenter: ''
-author: chadmath
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: genli
-ms.openlocfilehash: 19a654215377ba0fac7dacf800bf87a3481679c0
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: rohink
+ms.openlocfilehash: f8f457623dff7840ca839ef57580b744a4d916c7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357226"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565873"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Řešení potíží s degradací stavu v Azure Traffic Manager
 
@@ -30,8 +30,8 @@ Pokud stav Traffic Manager zobrazuje **neaktivní** stav, mohou být oba koncov�
 
 ## <a name="understanding-traffic-manager-probes"></a>Principy Traffic Manager sondy
 
-* Traffic Manager považuje koncový bod za ONLINE, jenom když sonda obdrží odpověď HTTP 200 z cesty testu. Jakákoli jiná odpověď, která není 200, je neúspěšná.
-* Přesměrování 30krát se nezdařila, i když Přesměrovaná adresa URL vrátí 200.
+* Traffic Manager považuje koncový bod za ONLINE, jenom když sonda obdrží odpověď HTTP 200 z cesty testu. Pokud aplikace vrátí jakýkoli jiný kód odpovědi HTTP, měli byste tento kód odpovědi přidat do [rozsahů očekávaných stavových kódů](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) vašeho profilu Traffic Manager.
+* Odpověď přesměrování 30krát se považuje za neočekávanou, pokud jste ji nezadali jako platný kód odezvy v [rozsahu očekávaných stavových kódů](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) vašeho profilu Traffic Manager. Traffic Manager netestuje cíl přesměrování.
 * V případě sond protokolu HTTPs se chyby certifikátů ignorují.
 * Skutečný obsah cesty testu nezáleží na tom, dokud se vrátí 200. Běžným způsobem je zjišťování adresy URL pro nějaký statický obsah, jako je "/favicon.ico". Dynamický obsah, podobně jako stránky ASP, nemusí vždycky vracet 200, i když je aplikace v pořádku.
 * Osvědčeným postupem je nastavit cestu testu na něco, co má dostatek logiky pro zjištění, že je lokalita nahoru nebo dolů. V předchozím příkladu nastavením cesty na "/favicon.ico" otestujete pouze to, že W3wp. exe reaguje. Tato sonda nemusí znamenat, že vaše webová aplikace je v pořádku. Lepší možností je nastavit cestu k nějakému typu, například "/PROBE.aspx", který má logiku k určení stavu webu. Můžete například použít čítače výkonu k využití procesoru nebo změřit počet neúspěšných žádostí. Nebo se můžete pokusit o přístup k prostředkům databáze nebo stavu relace, abyste se ujistili, že webová aplikace funguje.
