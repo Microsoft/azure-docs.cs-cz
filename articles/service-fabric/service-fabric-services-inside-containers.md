@@ -1,9 +1,9 @@
 ---
-title: Kontejnerizace služby Azure Service Fabric na Windows
-description: Zjistěte, jak kontejnerizovat služby Service Fabric Reliable Services a Reliable Actors ve Windows.
+title: Kontejnerizace služby Azure Service Fabric ve Windows
+description: Naučte se kontejnerizace Service Fabric Reliable Services a Reliable Actors služby ve Windows.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: anmolah
 editor: roroutra
 ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 1210b34590484379ae487ad1b87e76a433e4582a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621820"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599207"
 ---
-# <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Kontejnerizace Service Fabric Reliable Services a Reliable Actors ve Windows
+# <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Kontejnerizace Reliable Services Service Fabric a Reliable Actors ve Windows
 
-Service Fabric podporuje Service Fabric mikroslužeb uzavření do kontejneru (Reliable Services a Reliable Actors podle služby). Další informace najdete v tématu [service fabric kontejnery](service-fabric-containers-overview.md).
+Service Fabric podporuje mikroslužby Service Fabric uzavření (Reliable Services a spolehlivé služby založené na objektu actor). Další informace najdete v tématu [kontejnery Service Fabric](service-fabric-containers-overview.md).
 
-Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř kontejneru Windows.
+Tento dokument poskytuje pokyny k tomu, abyste mohli spustit službu v kontejneru Windows.
 
 > [!NOTE]
-> Aktuálně tato funkce funguje pouze pro Windows. Pro spouštění kontejnerů clusteru musí běžet na Windows serveru 2016 s kontejnery.
+> Tato funkce je v tuto chvíli funkční jenom pro Windows. Ke spuštění kontejnerů musí být cluster spuštěný v systému Windows Server 2016 s kontejnery.
 
-## <a name="steps-to-containerize-your-service-fabric-application"></a>Postup kontejnerizujte své aplikace Service Fabric
+## <a name="steps-to-containerize-your-service-fabric-application"></a>Postup kontejnerizace vaší aplikace Service Fabric
 
-1. Otevřete aplikaci Service Fabric v sadě Visual Studio.
+1. Otevřete aplikaci Service Fabric v aplikaci Visual Studio.
 
-2. Přidejte třídu [SFBinaryLoader.cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) do projektu. Kód v této třídě je pomocná správně načíst binární soubory modulu runtime Service Fabric do své aplikace při spuštění v rámci kontejneru.
+2. Přidejte do projektu třídu [SFBinaryLoader.cs](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/code/SFBinaryLoaderForContainers/SFBinaryLoader.cs) . Kód v této třídě je Pomocník pro správné načtení Service Fabric binárních souborů modulu runtime do aplikace při spuštění v rámci kontejneru.
 
-3. Pro každý balíček kódu, který byste chtěli kontejnerizace, inicializovat zavaděč v položce program bodu. Přidání statického konstruktoru je znázorněno v následujícím fragmentu kódu do souboru vstupní bod programu.
+3. Pro každý balíček kódu, který byste chtěli kontejnerizace, inicializujte zavaděč v vstupním bodě programu. Přidejte statický konstruktor zobrazený v následujícím fragmentu kódu do souboru vstupního bodu programu.
 
    ```csharp
    namespace MyApplication
@@ -55,11 +55,11 @@ Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř ko
           {
    ```
 
-4. Sestavení a [balíčku](service-fabric-package-apps.md#Package-App) váš projekt. Pro sestavování a vytváření balíčku, klikněte pravým tlačítkem na projekt aplikace v Průzkumníku řešení a zvolte **balíčku** příkazu.
+4. Sestavte a zabalite svůj projekt. [](service-fabric-package-apps.md#Package-App) Chcete-li sestavit a vytvořit balíček, klikněte pravým tlačítkem na projekt aplikace v Průzkumník řešení a vyberte příkaz **balíček** .
 
-5. Pro každý balíček kódu je potřeba kontejnerizace, spusťte skript prostředí PowerShell [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1). Použití je následujícím způsobem:
+5. Pro každý balíček kódu, který potřebujete kontejnerizace, spusťte PowerShellový skript [CreateDockerPackage. ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1). Použití je následující:
 
-    Úplné rozhraní .NET
+    Plné rozhraní .NET
       ```powershell
         $codePackagePath = 'Path to the code package to containerize.'
         $dockerPackageOutputDirectoryPath = 'Output path for the generated docker folder.'
@@ -73,11 +73,11 @@ Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř ko
         $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
         CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
       ```
-      Tento skript vytvoří složku s artefakty Dockeru na $dockerPackageOutputDirectoryPath. Upravte vygenerovaný soubor Dockerfile k `expose` žádné porty, spusťte instalační program skripty a tak dále. na základě vašich potřeb.
+      Skript vytvoří složku s artefakty Docker na $dockerPackageOutputDirectoryPath. Upravte vygenerovanou souboru Dockerfile na `expose` libovolných portech, spusťte instalační skripty a tak dále. podle vašich potřeb.
 
-6. Dál je potřeba [sestavení](service-fabric-get-started-containers.md#Build-Containers) a [nabízených](service-fabric-get-started-containers.md#Push-Containers) balíčku kontejneru Dockeru do úložiště.
+6. Dál je potřeba [sestavit](service-fabric-get-started-containers.md#Build-Containers) a [Vložit](service-fabric-get-started-containers.md#Push-Containers) balíček kontejneru Docker do úložiště.
 
-7. Upravte ServiceManifest.xml a ApplicationManifest.xml přidání image kontejneru, informace o úložišti, ověřování registru a mapování portů na hostitele. Úpravy manifestů, naleznete v tématu [vytvoření aplikace Azure Service Fabric typu kontejner](service-fabric-get-started-containers.md). Balíček definice kódu v manifestu služby je potřeba nahradit odpovídající image kontejneru. Ujistěte se, že chcete-li změnit na typ ContainerHost vstupnímu bodu.
+7. Upravte soubor souboru ApplicationManifest. XML a ServiceManifest. XML a přidejte tak image kontejneru, informace o úložišti, ověřování v registru a mapování portů na hostitele. Informace o úpravách manifestů najdete v tématu [Vytvoření aplikace Azure Service Fabric Container](service-fabric-get-started-containers.md). Definice balíčku kódu v manifestu služby musí být nahrazena odpovídající imagí kontejneru. Ujistěte se, že jste vstupní bod změnili na ContainerHost typ.
 
    ```xml
    <!-- Code package is your service executable. -->
@@ -92,7 +92,7 @@ Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř ko
    </CodePackage>
    ```
 
-8. Přidáte mapování portů na hostitele pro replikátor a koncový bod služby. Vzhledem k tomu, že oba tyto porty jsou přiřazeny, na modul runtime Service Fabric, ContainerPort nastavená na nula, pokud chcete použít pro mapování přidělenému portu.
+8. Přidejte mapování portů na hostitele pro replikátor a koncový bod služby. Vzhledem k tomu, že oba tyto porty jsou přiřazeny za běhu pomocí Service Fabric, je ContainerPort na hodnotu nula pro použití přiřazeného portu pro mapování.
 
    ```xml
    <Policies>
@@ -103,7 +103,7 @@ Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř ko
    </Policies>
    ```
 
-9. Konfigurace režimu izolace kontejneru, naleznete v tématu [konfigurace režimu izolace]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode). Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V. Následující fragmenty kódu ukazují, jak je režim izolace určený v souboru manifestu aplikace.
+9. Informace o konfiguraci režimu izolace kontejnerů najdete v tématu [Konfigurace režimu izolace]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode). Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V. Následující fragmenty kódu ukazují, jak je určen režim izolace v souboru manifestu aplikace.
 
    ```xml
    <Policies>
@@ -121,7 +121,7 @@ Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř ko
    ```
 
 > [!NOTE] 
-> Ve výchozím nastavení aplikace Service Fabric mají přístup k modulu runtime Service Fabric, ve formě koncový bod přijímá požadavky specifické pro aplikaci. Zvažte zakázání tento přístup, když aplikace hostuje nedůvěryhodného kódu. Další informace najdete v tématu [osvědčené postupy zabezpečení ve službě Service Fabric](service-fabric-best-practices-security.md#platform-isolation). Pokud chcete zakázat přístup k modulu runtime Service Fabric, přidejte následující nastavení v části zásady manifest aplikace odpovídající importovaný manifest služby, následujícím způsobem:
+> Ve výchozím nastavení mají aplikace Service Fabric přístup k modulu runtime Service Fabric ve formě koncového bodu, který přijímá požadavky specifické pro aplikaci. Zvažte zakázání tohoto přístupu, pokud je aplikace hostitelem nedůvěryhodného kódu. Další informace najdete [v tématu osvědčené postupy zabezpečení v Service Fabric](service-fabric-best-practices-security.md#platform-isolation). Chcete-li zakázat přístup k modulu Service Fabric runtime, přidejte následující nastavení do oddílu zásady manifestu aplikace odpovídající importovanému manifestu služby následujícím způsobem:
 >
 ```xml
   <Policies>
@@ -130,7 +130,7 @@ Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř ko
 ```
 >
 
-10. K otestování této aplikace, musíte ji nasadit do clusteru, který používá verzi 5.7 nebo novější. Pro modul runtime verze 6.1 nebo nižší budete muset upravit a aktualizovat nastavení clusteru povolit tuto funkci ve verzi preview. Postupujte podle kroků v tomto [článku](service-fabric-cluster-fabric-settings.md) přidat nastavení je ukázáno dále.
+10. Chcete-li otestovat tuto aplikaci, je nutné ji nasadit do clusteru se spuštěnou verzí 5,7 nebo vyšší. Pro modul runtime verze 6,1 nebo nižší je nutné upravit a aktualizovat nastavení clusteru, aby byla tato funkce ve verzi Preview povolena. Podle kroků v tomto [článku](service-fabric-cluster-fabric-settings.md) přidejte nastavení zobrazené dál.
     ```
       {
         "name": "Hosting",
@@ -143,9 +143,9 @@ Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř ko
       }
     ```
 
-11. Další [nasazení](service-fabric-deploy-remove-applications.md) upravených aplikace balíčku do tohoto clusteru.
+11. Dále [Nasaďte](service-fabric-deploy-remove-applications.md) upravený balíček aplikace do tohoto clusteru.
 
-Teď byste měli mít kontejnerizované aplikace Service Fabric spuštěná vašeho clusteru.
+Nyní byste měli mít kontejner Service Fabric aplikace, ve které je spuštěný cluster.
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o spouštění [kontejnerů v Service Fabric](service-fabric-get-started-containers.md).

@@ -1,8 +1,8 @@
 ---
-title: Návrh tabulky – Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Úvod do navrhování tabulek ve službě Azure SQL Data Warehouse.
+title: Navrhování tabulek – Azure SQL Data Warehouse | Microsoft Docs
+description: Seznámení s návrhem tabulek v Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,144 +10,144 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c22caa4b3da69d46241dfbaa7556d0209130415c
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: d97326430eebcaea64770e99c26ab593b51d5847
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626133"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68476754"
 ---
-# <a name="designing-tables-in-azure-sql-data-warehouse"></a>Navrhování tabulek ve službě Azure SQL Data Warehouse
+# <a name="designing-tables-in-azure-sql-data-warehouse"></a>Navrhování tabulek v Azure SQL Data Warehouse
 
-Přečtěte si klíčové koncepty pro navrhování tabulek ve službě Azure SQL Data Warehouse. 
+Přečtěte si klíčové koncepty pro navrhování tabulek v Azure SQL Data Warehouse. 
 
-## <a name="determine-table-category"></a>Určení kategorie Tabulka 
+## <a name="determine-table-category"></a>Určení kategorie tabulky 
 
-A [hvězdicového schématu](https://en.wikipedia.org/wiki/Star_schema) organizuje data do tabulek faktů a dimenzí. Některé tabulky se používají pro integraci nebo pracovní data předtím, než se přesune do tabulky faktů nebo dimenze. Při návrhu tabulku, rozhodněte, jestli tabulkových dat patří ve skutečnosti, dimenze nebo tabulky integrace. Toto rozhodnutí informuje struktura příslušné tabulky a distribuci. 
+[Schéma hvězdičky](https://en.wikipedia.org/wiki/Star_schema) uspořádá data do tabulek faktů a dimenzí. Některé tabulky se používají pro integraci nebo přípravu dat předtím, než se přesunou do tabulky faktů nebo dimenzí. Při návrhu tabulky se rozhodněte, jestli data tabulky patří do tabulky faktů, dimenzí nebo integrace. Toto rozhodnutí informuje příslušnou strukturu a distribuci tabulek. 
 
-- **Tabulky faktů** obsahovat kvantitativní data, která se běžně vygenerované v rámci transakčním systému a pak načíst do datového skladu. Maloobchodní prodej například generuje prodejní transakce každý den a pak načte data do tabulky faktů datového skladu pro účely analýzy.
+- **Tabulky faktů** obsahují kvantitativní data, která jsou obvykle generována v transakčním systému a následně načtena do datového skladu. Maloobchodní podnikání například vygeneruje transakce prodeje každý den a potom načte data do tabulky faktů datového skladu pro účely analýzy.
 
-- **Tabulky dimenzí** obsahovat atribut data, která se může změnit, ale obvykle mění jen zřídka. Například jméno zákazníka a adresa jsou uložena v tabulce dimenze a aktualizovat pouze, když změní zákazníka profilu. Chcete-li minimalizovat velikost velkou tabulku faktů, název a adresu zákazníka nemusíte být v každém řádku tabulky faktů. Místo toho tabulku faktů a dimenzí tabulky můžete sdílet ID zákazníka. Dotaz můžete spojit dvě tabulky pro přiřazení profilu zákazníka a transakce. 
+- **Tabulky dimenzí** obsahují data atributů, která se mohou měnit, ale obvykle se mění často. Například jméno a adresa zákazníka jsou uloženy v tabulce dimenzí a aktualizovány pouze v případě, že se změní profil zákazníka. Aby se minimalizovala velikost velké tabulky faktů, nemusí být jméno a adresa zákazníka v každém řádku tabulky faktů. Místo toho může tabulka faktů a tabulka dimenzí sdílet ID zákazníka. Dotaz se může spojit s těmito dvěma tabulkami a přidružit k němu profil a transakce zákazníka. 
 
-- **Integrace tabulky** poskytují místo pro integrace a pracovní data. Můžete vytvořit tabulku integrace jako o běžnou tabulku, externí tabulky nebo dočasnou tabulku. Například můžete načíst data do pracovní tabulky, provádět transformace dat v testovacím prostředí a vložte data do provozní tabulky.
+- **Integrační tabulky** poskytují místo pro integraci nebo přípravu dat. Tabulku pro integraci můžete vytvořit jako normální tabulku, externí tabulku nebo dočasnou tabulku. Můžete například načíst data do pracovní tabulky, provést transformaci dat v pracovním prostředí a pak tato data vložit do provozní tabulky.
 
-## <a name="schema-and-table-names"></a>Schéma a tabulku názvů.
-Schémata jsou dobrým způsobem, jak seskupených tabulek, podobným způsobem použít společně.  Pokud migrujete z místního řešení více databází do SQL Data Warehouse, funguje nejlépe migrovat všechny faktů, dimenzí a tabulek integrace pro jedno schéma v SQL Data Warehouse. Například může ukládat všechny tabulky v [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) ukázkový datový sklad v rámci volá proceduru wwi jedno schéma. Následující kód vytvoří [uživatelem definované schéma](/sql/t-sql/statements/create-schema-transact-sql) volá proceduru wwi.
+## <a name="schema-and-table-names"></a>Názvy schémat a tabulek
+Schémata jsou dobrým způsobem, jak seskupovat tabulky, a to způsobem, který se používá podobně.  Pokud migrujete více databází z řešení Prem do SQL Data Warehouse, funguje nejlépe pro migraci všech tabulek fakt, Dimension a Integration do jednoho schématu v SQL Data Warehouse. Můžete například uložit všechny tabulky v ukázkovém datovém skladu [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) v rámci jednoho schématu s názvem WWI. Následující kód vytvoří uživatelsky [definované schéma](/sql/t-sql/statements/create-schema-transact-sql) s názvem WWI.
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-Chcete-li zobrazit uspořádání tabulek v SQL Data Warehouse, že můžete použít jako předpony, jež mají názvy tabulek faktů, dimenze a int. V následující tabulce jsou uvedeny některé názvy schéma a tabulku pro WideWorldImportersDW.  
+Chcete-li zobrazit uspořádání tabulek v SQL Data Warehouse, můžete použít fakt, Dim a int jako předpony názvů tabulek. V následující tabulce jsou uvedeny některé názvy schémat a tabulek pro WideWorldImportersDW.  
 
-| WideWorldImportersDW tabulky  | Typ tabulky | SQL Data Warehouse |
+| Tabulka WideWorldImportersDW  | Typ tabulky | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
 | City | Dimenze | wwi.DimCity |
-| Objednání | Fakt | wwi.FactOrder |
+| Pořadí | Fakt | wwi.FactOrder |
 
 
-## <a name="table-persistence"></a>Tabulka trvalosti 
+## <a name="table-persistence"></a>Trvalost tabulek 
 
-Tabulky ukládat data trvale ve službě Azure Storage, dočasně ve službě Azure Storage nebo v úložišti dat pro datový sklad externí.
+Tabulky ukládají data buď trvale v Azure Storage, dočasně v Azure Storage, nebo v úložišti dat mimo datový sklad.
 
-### <a name="regular-table"></a>Běžnou tabulku
+### <a name="regular-table"></a>Běžná tabulka
 
-O běžnou tabulku ukládá data ve službě Azure Storage v rámci datového skladu. V tabulce a data zachová bez ohledu na to, jestli je otevřít relaci.  Tento příklad vytvoří o běžnou tabulku se dvěma sloupci. 
+Pravidelná tabulka ukládá data v Azure Storage jako součást datového skladu. Tabulka a data jsou trvalá bez ohledu na to, jestli je relace otevřená.  Tento příklad vytvoří běžnou tabulku se dvěma sloupci. 
 
 ```sql
 CREATE TABLE MyTable (col1 int, col2 int );  
 ```
 
-### <a name="temporary-table"></a>Dočasné tabulky
-Dočasná tabulka existuje pouze po dobu trvání relace. Dočasnou tabulku můžete použít ostatním uživatelům zabránit v zobrazení dočasný výsledky a také omezit pro vyčištění.  Dočasné tabulky používat místní úložiště nabízí rychlý výkon.  Další informace najdete v tématu [dočasné tabulky](sql-data-warehouse-tables-temporary.md).
+### <a name="temporary-table"></a>Dočasná tabulka
+Dočasná tabulka existuje pouze po dobu trvání relace. Můžete použít dočasnou tabulku a zabránit tak ostatním uživatelům v prohlížení dočasných výsledků a také k omezení nutnosti vyčištění.  Dočasné tabulky využívají místní úložiště, které nabízí rychlý výkon.  Další informace najdete v tématu [dočasné tabulky](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Externí tabulka
-Externí tabulka odkazuje na data umístěná v objektu blob Azure Storage nebo Azure Data Lake Store. Při použití ve spojení s příkazem CREATE TABLE AS SELECT, výběr z externí tabulky naimportuje data do SQL Data Warehouse. Proto jsou užitečné pro načítání dat externí tabulky. Kurz načítání najdete v tématu [použití PolyBase k načítání dat z Azure blob storage](load-data-from-azure-blob-storage-using-polybase.md).
+Externí tabulka odkazuje na data umístěná v Azure Storagem objektu BLOB nebo Azure Data Lake Store. Při použití ve spojení s příkazem CREATE TABLE jako SELECT, výběr z externí tabulky importuje data do SQL Data Warehouse. Externí tabulky jsou proto užitečné pro načítání dat. Kurz načítání najdete v tématu [použití základny k načítání dat z úložiště objektů BLOB v Azure](load-data-from-azure-blob-storage-using-polybase.md).
 
 ## <a name="data-types"></a>Typy dat
-SQL Data Warehouse podporuje nejběžněji používané datové typy. Seznam podporované datové typy najdete v tématu [datové typy v odkazu na tabulku vytvořte](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) v příkazu CREATE TABLE. Pokyny k používání datových typů najdete v tématu [datové typy](sql-data-warehouse-tables-data-types.md).
+SQL Data Warehouse podporuje nejčastěji používané datové typy. Seznam podporovaných datových typů najdete v tématu [datové typy v CREATE TABLE odkaz](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) v příkazu CREATE TABLE. Pokyny k používání datových typů najdete v tématu [datové typy](sql-data-warehouse-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Distribuované tabulky
-Základní funkce služby SQL Data Warehouse je způsob, jak můžete ukládat a pracovat s tabulkami v [distribuce](massively-parallel-processing-mpp-architecture.md#distributions).  SQL Data Warehouse podporuje tři metody pro distribuci dat, kruhové dotazování (výchozí), hodnoty hash a replikovat.
+Základní funkcí SQL Data Warehouse je způsob, jak může ukládat a pracovat s tabulkami napříč [distribucí](massively-parallel-processing-mpp-architecture.md#distributions).  SQL Data Warehouse podporuje tři metody pro distribuci dat, kruhové dotazování (výchozí), algoritmus hash a replikaci.
 
-### <a name="hash-distributed-tables"></a>Hodnoty hash distribuované tabulky
-Distribuovaná zatřiďovací tabulka distribuuje řádků na základě hodnoty ve sloupci distribuce. Distribuovaná zatřiďovací tabulka je navržená pro vysoký výkon pro dotazy na velkých tabulek. Existuje několik faktorů, které je třeba zvážit při výběru distribučního sloupce. 
+### <a name="hash-distributed-tables"></a>Hodnoty hash-distribuované tabulky
+Distribuovaná tabulka hash distribuuje řádky na základě hodnoty v distribučním sloupci. Distribuovaná tabulka s algoritmem hash je navržená tak, aby dosáhla vysokého výkonu dotazů na rozsáhlých tabulkách. Při volbě distribučního sloupce je třeba zvážit několik faktorů. 
 
-Další informace najdete v tématu [pro distribuované tabulky s pokyny k návrhu](sql-data-warehouse-tables-distribute.md).
+Další informace najdete v tématu [pokyny k návrhu distribuovaných tabulek](sql-data-warehouse-tables-distribute.md).
 
 ### <a name="replicated-tables"></a>Replikované tabulky
-Replikované tabulky má úplnou kopii tabulky, které jsou k dispozici na všech výpočetních uzlů. Rychle se spouštět dotazy replikovaných tabulkách, protože spojení v replikovaných tabulkách nevyžadují, aby přesun dat. Replikace vyžaduje dodatečné úložiště a není praktické pro velké tabulky. 
+Replikovaná tabulka má úplnou kopii tabulky, která je k dispozici na každém výpočetním uzlu. Dotazy běží rychle na replikovaných tabulkách, protože spojení v replikovaných tabulkách nevyžadují přesun dat. Replikace vyžaduje další úložiště, ale a není pro velké tabulky praktické. 
 
-Další informace najdete v tématu [pro replikované tabulky s pokyny k návrhu](design-guidance-for-replicated-tables.md).
+Další informace najdete v tématu [pokyny k návrhu replikovaných tabulek](design-guidance-for-replicated-tables.md).
 
-### <a name="round-robin-tables"></a>Kruhové dotazování tabulky
-Řádky tabulky kruhové dotazování tabulky rovnoměrně distribuuje mezi všechny distribuce. Řádky se distribuují náhodně. Načítání dat do kruhové dotazování tabulky je rychlá.  Dotazy však může vyžadovat další přesuny dat než jiné metody distribuce. 
+### <a name="round-robin-tables"></a>Tabulky kruhového dotazování
+Tabulka kruhového dotazování rozděluje řádky tabulky rovnoměrně napříč všemi distribucí. Řádky jsou náhodně distribuovány. Načítání dat do tabulky kruhového dotazování je rychlé.  Dotazy ale můžou vyžadovat větší přesun dat než jiné metody distribuce. 
 
-Další informace najdete v tématu [pro distribuované tabulky s pokyny k návrhu](sql-data-warehouse-tables-distribute.md).
+Další informace najdete v tématu [pokyny k návrhu distribuovaných tabulek](sql-data-warehouse-tables-distribute.md).
 
 ### <a name="common-distribution-methods-for-tables"></a>Běžné metody distribuce pro tabulky
-Tabulka kategorie často určuje, kterou možnost zvolte pro distribuci v tabulce. 
+Kategorie tabulka často určuje, která možnost se má zvolit pro distribuci tabulky. 
 
-| Tabulky kategorií | Možnost doporučené distribuce |
+| Kategorie tabulky | Možnost Doporučené distribuce |
 |:---------------|:--------------------|
-| Fakt           | Použijte distribuci algoritmus hash s clusterovaným indexem columnstore. Dvě tabulky hash jsou připojená na stejný sloupec distribuce zlepšuje výkon. |
-| Dimenze      | Použití replikuje menší tabulky. Pokud tabulky je příliš velký pro uložení na jednotlivých výpočetních uzlech, pomocí algoritmu hash distribuce. |
-| Staging        | Pro pracovní tabulku použijte kruhové dotazování. Zatížení pomocí příkazu CTAS je rychlá. Jakmile jsou data v pracovní tabulce, použijte INSERT... Vyberte pro přesun dat do produkčních tabulek. |
+| Fakt           | Použijte distribuci algoritmem hash s clusterovaným indexem columnstore. Zvýšení výkonu se zvyšuje, když se do stejného distribučního sloupce spojí dvě zatřiďovací tabulky. |
+| Dimenze      | Použijte replikovaný pro menší tabulky. Pokud jsou tabulky příliš velké pro uložení na každém výpočetním uzlu, použijte distribuované pomocí algoritmu hash. |
+| Fázování        | Pro pracovní tabulku použijte kruhové dotazování. Zatížení pomocí CTAS je rychlé. Jakmile jsou data v pracovní tabulce, použijte příkaz INSERT... Tuto možnost vyberte, pokud chcete přesunout data do provozních tabulek. |
 
 ## <a name="table-partitions"></a>Oddíly tabulky
-Dělenou tabulku ukládá a provede operace s řádky tabulky podle oblasti dat. Například tabulky může být dělené podle dne, měsíce nebo roku. Může zlepšit výkon dotazů pomocí eliminace oddílů, který omezuje dotazu prohledávání dat v rámci oddílu. Můžete také spravovat dat prostřednictvím přepínání oddílů. Protože je již distribuovaných dat ve službě SQL Data Warehouse, příliš mnoho oddílů může zpomalit výkon dotazů. Další informace najdete v tématu [pokyny k dělení](sql-data-warehouse-tables-partition.md).  Při přepnutí do tabulky oddílu oddíly, které nejsou prázdné, zvažte použití možnosti TRUNCATE_TARGET ve vašich [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) příkazu, pokud jsou existující data k oříznutí. Níže přepínače kód v denní Transformovaná data do SalesFact přepíše všechna existující data. 
+Dělená tabulka ukládá a provádí operace na řádcích tabulky podle rozsahů dat. Například tabulka může být rozdělená podle dne, měsíce nebo roku. Můžete zlepšit výkon dotazů prostřednictvím eliminace oddílu, což omezuje vyhledávání dotazů na data v rámci oddílu. Data můžete také udržovat pomocí přepínání oddílů. Vzhledem k tomu, že jsou data v SQL Data Warehouse již distribuována, může být příliš mnoho oddílů pomalý výkon dotazů. Další informace najdete v tématu [pokyny k dělení](sql-data-warehouse-tables-partition.md).  Při přepínání oddílu do oddílů tabulky, které nejsou prázdné, zvažte použití možnosti TRUNCATE_TARGET v příkazu [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) , pokud mají být stávající data zkrácena. Níže jsou uvedené přepínače kódu v podobě transformovaných denních dat do SalesFact, které Přepisuje všechna existující data. 
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
 ```
 
 ## <a name="columnstore-indexes"></a>Indexy Columnstore
-Ve výchozím nastavení SQL Data Warehouse ukládá tabulku jako s clusterovaným indexem columnstore. Tato forma úložiště dat dosahuje vysoké údaje komprese při přenosu a výkonu dotazování u velkých tabulek.  Clusterovaný index columnstore je většinou nejlepší volbou, ale v některých případech je clusterovaný index nebo haldu vhodnou strukturu.  Tabulky haldy může být zvláště užitečné pro načítání přechodných dat, jako je například pracovní tabulky, která je transformována do konečné tabulky.
+Ve výchozím nastavení SQL Data Warehouse ukládá tabulku jako clusterovaný index columnstore. Tato forma úložiště dat dosahuje vysoké komprese dat a výkonu dotazů ve velkých tabulkách.  Clusterovaný index columnstore je obvykle nejlepší volbou, ale v některých případech je clusterový index nebo halda odpovídající strukturou úložiště.  Tabulka haldy může být obzvláště užitečná pro načítání přechodných dat, jako je například pracovní tabulka, která se transformuje na konečnou tabulku.
 
-Seznam funkcí columnstore, naleznete v tématu [co je nového v případě indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Ke zlepšení výkonu index columnstore, naleznete v tématu [maximalizuje kvality skupiny řádků v případě indexů columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Seznam funkcí columnstore najdete v tématu [co je nového pro indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Pokud chcete zlepšit výkon indexu columnstore, přečtěte si téma [maximalizace kvality skupiny řádků pro indexy columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statistika
-Optimalizace dotazů používá Statistika na úrovni sloupce při vytváření plánu pro provedení dotazu. Pokud chcete zlepšit výkon dotazů, je důležité mít statistiky pro jednotlivé sloupce, zejména sloupce použité v dotazu spojení. [Vytvoření statistiky](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) probíhá automaticky.  Ale aktualizaci statistiky neprobíhá automaticky. Aktualizujte statistiku po velký počet řádků jsou přidány nebo změněny. Například aktualizujte statistiku po zatížení. Další informace najdete v tématu [statistiky pokyny](sql-data-warehouse-tables-statistics.md).
+Optimalizátor dotazů používá při vytváření dotazu statistiku na úrovni sloupce. Pro zlepšení výkonu dotazů je důležité mít statistiku pro jednotlivé sloupce, zejména sloupce používané v dotazech na dotazy. [Vytváření statistik](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) proběhne automaticky.  Aktualizace statistiky ale neproběhne automaticky. Aktualizuje statistiku po přidání nebo změně významného počtu řádků. Například aktualizujte statistiku po načtení. Další informace najdete v tématu [](sql-data-warehouse-tables-statistics.md)věnovaném statistickým pokynům.
 
-## <a name="commands-for-creating-tables"></a>Příkazů pro vytvoření tabulky
-Vytvořit tabulku jako nové prázdné tabulky. Můžete také vytvořit a vyplnit tabulku s výsledky příkazu select. Dále jsou uvedené příkazy jazyka T-SQL pro vytvoření tabulky.
+## <a name="commands-for-creating-tables"></a>Příkazy pro vytváření tabulek
+Tabulku můžete vytvořit jako novou prázdnou tabulku. Můžete také vytvořit a naplnit tabulku pomocí výsledků příkazu SELECT. Níže jsou uvedené příkazy T-SQL pro vytvoření tabulky.
 
-| Příkaz jazyka T-SQL | Popis |
+| Příkaz T-SQL | Popis |
 |:----------------|:------------|
-| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | Vytvoří prázdnou tabulku tak, že definujete všechny sloupce tabulky a možnosti. |
-| [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) | Vytvoří externí tabulku. Definice tabulky se ukládají ve službě SQL Data Warehouse. Data v tabulce je uložená v Azure Blob storage nebo Azure Data Lake Store. |
-| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | Naplní novou tabulku s výsledky příkazu select. Tabulka sloupce a datové typy jsou založeny na výsledky příkazu select. K importu dat, tento příkaz můžete vybrat z externí tabulky. |
-| [VYTVOŘIT EXTERNÍ TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | Vytvoří novou externí tabulku tak, že vyexportujete výsledky příkazu select na externím místě.  Umístění je Azure Blob storage nebo Azure Data Lake Store. |
+| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | Vytvoří prázdnou tabulku definováním všech sloupců a možností tabulky. |
+| [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql) | Vytvoří externí tabulku. Definice tabulky je uložená v SQL Data Warehouse. Data tabulky se ukládají do služby Azure Blob Storage nebo Azure Data Lake Store. |
+| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | Naplní novou tabulku výsledky příkazu SELECT. Sloupce tabulky a datové typy jsou založené na výsledcích příkazu SELECT. K importu dat tento příkaz může vybrat z externí tabulky. |
+| [VYTVOŘIT EXTERNÍ TABULKU JAKO SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | Vytvoří novou externí tabulku exportováním výsledků příkazu SELECT do externího umístění.  Umístění je buď úložiště objektů BLOB v Azure, nebo Azure Data Lake Store. |
 
-## <a name="aligning-source-data-with-the-data-warehouse"></a>Zarovnávání dat zdroje k datovému skladu
+## <a name="aligning-source-data-with-the-data-warehouse"></a>Zarovnávání zdrojových dat s datovým skladem
 
-Načtením dat z jiného zdroje dat se vyplní tabulky datového skladu. Pokud chcete provést úspěšné načtení, čísla a datové typy sloupců ve zdrojových datech musí být v souladu s definicí tabulky v datovém skladu. Získání dat pro zarovnání může být Nejtěžší částí navrhování tabulek. 
+Tabulky datového skladu jsou vyplněny načtením dat z jiného zdroje dat. Aby bylo možné provést úspěšné načtení, musí se počet a datové typy sloupců ve zdrojových datech zarovnat s definicí tabulky v datovém skladu. Získání dat k zarovnání může být nejzávažnější součástí návrhu tabulek. 
 
-Pokud data pocházejí z více úložišť dat, můžete přenést data do datového skladu a uložit v tabulce integrace. Jakmile budou data v tabulce integraci, můžete provádět operace transformace výkon služby SQL Data Warehouse. Jakmile je připraven data, vložíte ho do produkčních tabulek.
+Pokud data přicházejí z více úložišť dat, můžete data přenést do datového skladu a uložit je do integrační tabulky. Jakmile jsou data v tabulce integrace, můžete použít sílu SQL Data Warehouse k provádění transformačních operací. Jakmile budou data připravena, můžete je vložit do provozních tabulek.
 
-## <a name="unsupported-table-features"></a>Nepodporovaná tabulka funkce
-SQL Data Warehouse podporuje mnoho, ale ne všechny funkce tabulky nabízené ostatní databáze.  V následujícím seznamu jsou uvedeny některé tabulky funkcí, které nejsou podporované ve službě SQL Data Warehouse.
+## <a name="unsupported-table-features"></a>Nepodporované funkce tabulky
+SQL Data Warehouse podporuje mnoho, ale ne všechny, z funkcí tabulky nabízených jinými databázemi.  V následujícím seznamu jsou uvedeny některé funkce tabulky, které nejsou podporované v SQL Data Warehouse.
 
-- Primární klíč, cizí klíče, zkontrolujte, jedinečný [omezení tabulek](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
+- Primární klíč, cizí klíče, jedinečné, [omezení kontrolních tabulek](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
 
 - [Vypočítané sloupce](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
 - [Indexovaná zobrazení](/sql/relational-databases/views/create-indexed-views)
 - [Pořadí](/sql/t-sql/statements/create-sequence-transact-sql)
-- [Zhuštěný sloupec](/sql/relational-databases/tables/use-sparse-columns)
-- Náhradní klíče. Implementace s [Identity](sql-data-warehouse-tables-identity.md).
+- [Zhuštěné sloupce](/sql/relational-databases/tables/use-sparse-columns)
+- Náhradní klíče. Implementovat s [identitou](sql-data-warehouse-tables-identity.md)
 - [Synonyma](/sql/t-sql/statements/create-synonym-transact-sql)
 - [Triggery](/sql/t-sql/statements/create-trigger-transact-sql)
 - [Jedinečné indexy](/sql/t-sql/statements/create-index-transact-sql)
-- [Uživatelem definované typy](/sql/relational-databases/native-client/features/using-user-defined-types)
+- [Uživatelsky definované typy](/sql/relational-databases/native-client/features/using-user-defined-types)
 
 ## <a name="table-size-queries"></a>Dotazy na velikost tabulky
-Jeden jednoduchý způsob, jak identifikovat místa a řádky používané tabulce v každém 60 distribucí je použít [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql).
+Jedním z jednoduchých způsobů, jak identifikovat prostor a řádky spotřebované v tabulce v každé z distribucí 60, je použití [příkazu DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql).
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-Nicméně používání příkazů DBCC můžou být poměrně omezující.  Zobrazení dynamické správy (DMV) zobrazit podrobnější informace než příkazy DBCC. Začněte vytvořením tohoto zobrazení.
+Použití příkazů DBCC však může být poměrně omezené.  Zobrazení dynamické správy (zobrazení dynamické správy) zobrazují více podrobností než příkazy DBCC. Začněte tím, že vytvoříte toto zobrazení.
 
 ```sql
 CREATE VIEW dbo.vTableSizes
@@ -261,9 +261,9 @@ FROM size
 ;
 ```
 
-### <a name="table-space-summary"></a>Souhrn místa na tabulku
+### <a name="table-space-summary"></a>Souhrn prostoru tabulky
 
-Tento dotaz vrátí řádky a místo v tabulce.  Umožňuje vám informace, které tabulky jsou největší tabulky a určuje, zda jsou kruhové dotazování, replikaci, nebo hodnoty hash - distribuovány.  Pro hodnoty hash distribuované tabulky dotaz zobrazí sloupec distribuce.  
+Tento dotaz vrátí řádky a prostor podle tabulky.  Umožňuje vám zjistit, které tabulky jsou vašimi největšími tabulkami, a to bez ohledu na to, jestli jsou distribuované, replikované nebo pomocí algoritmu hash.  V případě tabulek distribuovaných algoritmem hash dotaz zobrazí sloupec distribuce.  
 
 ```sql
 SELECT 
@@ -293,7 +293,7 @@ ORDER BY
 ;
 ```
 
-### <a name="table-space-by-distribution-type"></a>Tabulkový prostor podle typu distribuce
+### <a name="table-space-by-distribution-type"></a>Prostor tabulky podle typu distribuce
 
 ```sql
 SELECT 
@@ -308,7 +308,7 @@ GROUP BY distribution_policy_name
 ;
 ```
 
-### <a name="table-space-by-index-type"></a>Tabulkový prostor typem indexu
+### <a name="table-space-by-index-type"></a>Tabulkový prostor podle typu indexu
 
 ```sql
 SELECT 
@@ -323,7 +323,7 @@ GROUP BY index_type_desc
 ;
 ```
 
-### <a name="distribution-space-summary"></a>Souhrn distribučního místa
+### <a name="distribution-space-summary"></a>Souhrn distribučního prostoru
 
 ```sql
 SELECT 
@@ -340,4 +340,4 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>Další postup
-Po vytvoření tabulek pro váš datový sklad, dalším krokem je načtení dat do tabulky.  Kurz načítání najdete v tématu [načítání dat do SQL Data Warehouse](load-data-wideworldimportersdw.md).
+Po vytvoření tabulek pro datový sklad je dalším krokem načtení dat do tabulky.  Kurz načítání najdete v tématu [načtení dat do SQL Data Warehouse](load-data-wideworldimportersdw.md).

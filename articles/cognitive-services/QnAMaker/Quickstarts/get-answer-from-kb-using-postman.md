@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Pomocí nástroje Postman se získat odpověď ze znalostní báze – QnA Maker'
-titlesuffix: Azure Cognitive Services
-description: Tento rychlý start vás provede získat odpověď ze znalostní báze pomocí nástroje Postman.
+title: 'Rychlý start: Pomocí metody post získáte odpověď ze znalostní báze Knowledge Base – QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu se dozvíte, jak získat odpověď ze znalostní báze pomocí post.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,72 +10,72 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 7083285ac81aa8eafee8de49175e40934e5d05b4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 7c419ea7cb5c9ae1d1cc419798961ec67f250160
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253816"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563005"
 ---
-# <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Rychlý start: Získat odpověď ze znalostní báze pomocí nástroje Postman
+# <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Rychlý start: Získat odpověď ze znalostní báze Knowledge Base pomocí metody post
 
-Tento rychlý start na základě Postman provede získat odpověď ze znalostní báze.
+Tento rychlý Start založený na držiteli vás provede tím, že získáte odpověď ze znalostní báze.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nejnovější [ **Postman**](https://www.getpostman.com/).
-* Musíte mít [služba QnA Maker](../How-To/set-up-qnamaker-service-azure.md) a mít [znalostní báze knowledge base s otázkami a odpověďmi](../Tutorials/create-publish-query-in-portal.md). 
+* Nejnovější [**příspěvek**](https://www.getpostman.com/).
+* Musíte mít [QnA maker službu](../How-To/set-up-qnamaker-service-azure.md) a mít [znalostní bázi s dotazy a odpověďmi](../Tutorials/create-publish-query-in-portal.md). 
 
-## <a name="publish-to-get-endpoint"></a>Publikování na získání koncového bodu
+## <a name="publish-to-get-endpoint"></a>Publikování pro získání koncového bodu
 
-Až budete připravení ke generování odpověď na dotaz zadaný ze znalostní báze [publikovat](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) znalostní báze.
+Až budete připraveni vygenerovat odpověď na otázku ze znalostní báze Knowledge Base, publikujte [](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) znalostní bázi.
 
-## <a name="use-production-endpoint-with-postman"></a>Použití produkční koncový bod pomocí nástroje Postman
+## <a name="use-production-endpoint-with-postman"></a>Použití produkčního koncového bodu s předzálohovacím
 
-Při publikování znalostní báze **publikovat** zobrazí se stránka nastavení požadavku HTTP ke generování odpovědi. Výchozí zobrazení ukazuje nastavení vyžadovaných ke generování odpověď na základě [Postman](https://www.getpostman.com).
+Když je vaše znalostní báze publikována, zobrazí se na stránce **publikovat** nastavení požadavku HTTP, které vygeneruje odpověď. Výchozí zobrazení zobrazuje nastavení požadovaná pro vygenerování odpovědi od [post](https://www.getpostman.com).
 
-Žlutý čísla na následujícím obrázku určují, které název/hodnota dvojice používat v následujících krocích.
+Žluté číslice na následujícím obrázku označují dvojice název/hodnota, které se mají použít v následujících krocích.
 
 [![Publikování výsledků](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
 
-Ke generování odpovědi pomocí Postman, proveďte následující kroky:
+Pokud chcete vygenerovat odpověď s použitím metody post, proveďte následující kroky:
 
-1. Otevřete nástroj Postman. Pokud budete vyzváni k výběru stavebním blokem, vyberte **základní žádosti** stavebním blokem. Nastavte **název žádosti** jako `Generate QnA Maker answer`a **kolekce** jako `Generate QnA Maker answers`. Pokud nechcete uložit do kolekce, vyberte **zrušit** tlačítko.
-1. V pracovním prostoru, vyberte metodu HTTP **příspěvek**.
+1. Otevřete post. Pokud jste požádáni o výběr stavebního bloku, vyberte základní stavební blok **požadavků** . Jako  `Generate QnA Maker answer`název žádosti nastavte`Generate QnA Maker answers`a jako **kolekci** . Pokud nechcete ukládat do kolekce, vyberte tlačítko **Storno** .
+1. V pracovním prostoru vyberte metodu HTTP **post**.
 
-    [![V nástroji Postman nastavte metodu POST](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
+    [![V příspěvku nastavte metodu POST](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
 
-1. Pro adresu URL zřetězíte hodnotu hostitele (č. 2 z bitové kopie) a hodnotu Post (č. 1 z image) Chcete-li vytvořit úplnou adresu URL. Kompletní příklad adresa URL vypadá jako: 
+1. V poli Adresa URL zřetězí hodnotu hostitele (#2 z obrázku) a hodnotu post (#1 z obrázku), aby se vytvořila úplná adresa URL. Kompletní příklad adresy URL vypadá takto: 
 
     `https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/e1115f8c-d01b-4698-a2ed-85b0dbf3348c/generateAnswer`
 
-    [![V nástroji Postman nastavte úplnou adresu URL](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
+    [![V poli po nastavte úplnou adresu URL.](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
 
-1. Vyberte **záhlaví** pod poli Adresa URL a potom vyberte **hromadných úprav**. 
+1. V části Adresa URL vyberte kartu **hlavičky** a pak vyberte **Hromadná úprava**. 
 
-1. Zkopírujte do textového pole hlavičky (#3 a 4 # z image).
+1. Zkopírujte hlavičky (#3 a #4 z obrázku) do textové oblasti.
 
-    [![V nástroji Postman by nastavit hlavičky](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
+    [![V poli PSČ nastavte záhlaví.](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
 
 1. Vyberte **tělo** kartu.
-1. Vyberte **nezpracovaná** formátování a zadejte ve formátu JSON (č. 5 z image), který představuje dotaz.
+1. Vyberte **nezpracovaný** formát a zadejte JSON (#5 z obrázku), který představuje otázku.
 
     `{"question":"How do I programmatically update my Knowledge Base?"}`
 
-    [![V nástroji Postman by tělo nastavit, že hodnota JSON](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
+    [![V poli PSČ nastavte hodnotu JSON body.](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
 
 1. Vyberte **odeslat** tlačítko.
-1. Odpověď obsahuje odpověď spolu s dalšími informacemi, které mohou být důležité do klientské aplikace. 
+1. Odpověď obsahuje odpověď spolu s dalšími informacemi, které mohou být pro klientskou aplikaci důležité. 
 
-    [![V nástroji Postman by tělo nastavit, že hodnota JSON](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
+    [![V poli PSČ nastavte hodnotu JSON body.](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
 
 ## <a name="use-staging-endpoint"></a>Použít pracovní koncový bod
 
-Pokud chcete získat odpověď z pracovní koncového bodu, připojte k adrese URL se `isTest` vlastnost body.
+Pokud chcete získat odpověď z pracovního koncového bodu, přidejte adresu URL s `isTest` vlastností body.
 
 ## <a name="next-steps"></a>Další postup
 
-Stránka publikovat také obsahuje informace, které [generovat odpověď](get-answer-from-kb-using-curl.md) pomocí cURL. 
+Stránka publikování také poskytuje informace pro [vygenerování odpovědi](get-answer-from-kb-using-curl.md) s kudrlinkou. 
 
 > [!div class="nextstepaction"]
-> [Metadata použít při generování odpověď.](../How-to/metadata-generateanswer-usage.md)
+> [Použití metadat při generování odpovědi](../How-to/metadata-generateanswer-usage.md)

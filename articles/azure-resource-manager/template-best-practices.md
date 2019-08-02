@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy pro šablony Azure Resource Manageru
-description: Popisuje doporučené postupy pro vytváření šablon Azure Resource Manageru. Nabízí návrhy, aby se zabránilo běžné problémy při použití šablony.
+title: Osvědčené postupy pro šablony Azure Resource Manager
+description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon. Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -9,57 +9,57 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: bcc529b02505359e6e4e320d4991a082797c5261
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cdec216187050a449f23f72474e0265acce14c5f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60389572"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "67867394"
 ---
-# <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manageru šablony osvědčené postupy
+# <a name="azure-resource-manager-template-best-practices"></a>Doporučené postupy pro šablonu Azure Resource Manager
 
-Tento článek obsahuje doporučení, jak k vytvoření šablony Resource Manageru. Tato doporučení umožňuje vyhnout se běžné problémy při použití šablony k nasazení řešení.
+Tento článek obsahuje doporučení k vytvoření šablony Správce prostředků. Tato doporučení vám pomůžou vyhnout se běžným problémům při použití šablony k nasazení řešení.
 
-Doporučení o tom, jak řídit vaše předplatná Azure, najdete v tématu [Základní kostra Azure enterprise: Zásady správného řízení předplatná](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json).
+Doporučení, jak řídit vaše předplatná Azure, najdete v [tématu uživatelské rozhraní Azure Enterprise: Zásady správného řízení](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)předplatného.
 
-Doporučení, jak vytvářet šablony, které fungují ve všech prostředích cloudu Azure, najdete v části [šablon vývoj Azure Resource Manageru pro cloud konzistence](templates-cloud-consistency.md).
+Doporučení k vytváření šablon, které fungují ve všech cloudových prostředích Azure, najdete v tématu [vývoj šablon Azure Resource Manager pro konzistenci cloudu](templates-cloud-consistency.md).
 
-## <a name="template-limits"></a>Omezení šablony
+## <a name="template-limits"></a>Omezení šablon
 
-Omezení velikosti šablony pro 1 MB a každý soubor parametrů na 64 KB. Po rozšířila s definic iterativní prostředků a hodnoty pro proměnné a parametry, platí omezení 1 MB na konečný stav šablony. 
+Omezte velikost šablony na 4 MB a každý soubor parametrů na 64 KB. Limit velikosti 4 MB se vztahuje na konečný stav šablony po rozbalení pomocí iterativních definic prostředků a hodnot proměnných a parametrů. 
 
-Také jste omezeni na:
+Máte také omezení:
 
-* 256 parametry
-* 256 proměnné
-* 800 prostředky (včetně počet kopií)
+* parametry 256
+* proměnné 256
+* 800 prostředků (včetně počtu kopií)
 * 64 výstupní hodnoty
-* 24,576 znaků ve výrazu šablony
+* 24 576 znaků ve výrazu šablony
 
-Některá omezení šablony mohou překročit pomocí vnořené šablony. Další informace najdete v tématu [použití propojených šablon při nasazování prostředků Azure](resource-group-linked-templates.md). Pokud chcete snížit počet parametrů, proměnných nebo výstupů, můžete kombinovat několik hodnot do objektu. Další informace najdete v tématu [objektů jako parametry](resource-manager-objects-as-parameters.md).
+Můžete překročit několik omezení šablon pomocí vnořené šablony. Další informace najdete v tématu [použití propojených šablon při nasazování prostředků Azure](resource-group-linked-templates.md). Chcete-li snížit počet parametrů, proměnných nebo výstupů, můžete zkombinovat několik hodnot do objektu. Další informace najdete v tématu [objekty jako parametry](resource-manager-objects-as-parameters.md).
 
-## <a name="resource-group"></a>Skupina prostředků
+## <a name="resource-group"></a>Resource group
 
-Při nasazování prostředků do skupiny prostředků, skupina prostředků ukládá metadata o prostředcích. Metadata uložená v umístění skupiny prostředků.
+Když nasadíte prostředky do skupiny prostředků, skupina prostředků uloží metadata o prostředcích. Metadata se ukládají do umístění skupiny prostředků.
 
-Pokud skupinu prostředků oblasti je dočasně nedostupná, nelze aktualizovat prostředky ve skupině prostředků, protože metadata není k dispozici. Prostředky v jiných oblastech bude i nadále fungovat podle očekávání, ale nemůže je aktualizovat. Chcete-li minimalizovat rizika, vyhledejte skupinu prostředků a prostředky ve stejné oblasti.
+Pokud je oblast skupiny prostředků dočasně nedostupná, nemůžete aktualizovat prostředky ve skupině prostředků, protože metadata nejsou k dispozici. Prostředky v jiných oblastech budou pořád fungovat podle očekávání, ale nemůžete je aktualizovat. Pokud chcete minimalizovat riziko, vyhledejte skupinu prostředků a prostředky ve stejné oblasti.
 
 ## <a name="parameters"></a>Parametry
 Informace v této části mohou být užitečné při práci s [parametry](resource-group-authoring-templates.md#parameters).
 
 ### <a name="general-recommendations-for-parameters"></a>Obecná doporučení pro parametry
 
-* Minimalizace používání parametrů. Místo toho použijte proměnné nebo literálových hodnot pro vlastnosti, které není potřeba zadat během nasazování.
+* Minimalizujte použití parametrů. Místo toho použijte proměnné nebo hodnoty literálů pro vlastnosti, které není nutné zadávat během nasazování.
 
-* Použijte formát camelCase pro názvy parametrů.
+* Pro názvy parametrů použijte ve stylu CamelCase Case.
 
-* Použití parametrů pro nastavení, které se liší podle prostředí, jako je SKU, velikost nebo kapacity.
+* Použijte parametry pro nastavení, která se liší v závislosti na prostředí, jako je SKU, velikost nebo kapacita.
 
-* Použití parametrů pro názvy prostředků, které se mají určit pro snadnější identifikaci.
+* Použijte parametry pro názvy prostředků, které chcete zadat pro snadnější identifikaci.
 
-* Zadejte popis každý parametr v metadatech:
+* Zadejte popis každého parametru v metadatech:
 
    ```json
    "parameters": {
@@ -72,7 +72,7 @@ Informace v této části mohou být užitečné při práci s [parametry](resou
    }
    ```
 
-* Definujte výchozí hodnoty pro parametry, které nejsou citlivé. Zadáním výchozí hodnota je jednodušší, pokud chcete nasadit šablonu a uživatelům vaší šablony ukázkovým odpovídající hodnotu. Všechny výchozí hodnoty pro parametr musí být platný pro všechny uživatele ve výchozí konfiguraci nasazení. 
+* Definujte výchozí hodnoty pro parametry, které nejsou citlivé. Zadáním výchozí hodnoty je snazší šablonu nasadit a uživatelé šablony uvidí příklad odpovídající hodnoty. Všechny výchozí hodnoty pro parametr musí být platné pro všechny uživatele ve výchozí konfiguraci nasazení. 
    
    ```json
    "parameters": {
@@ -86,7 +86,7 @@ Informace v této části mohou být užitečné při práci s [parametry](resou
    }
    ```
 
-* Pokud chcete zadat volitelný parametr, nepoužívejte prázdný řetězec jako výchozí hodnotu. Místo toho použijte hodnotu literálu nebo výraz jazyka k vytvoření hodnotu.
+* Chcete-li zadat volitelný parametr, nepoužívejte jako výchozí hodnotu prázdný řetězec. Místo toho použijte literálovou hodnotu nebo výraz jazyka pro vytvoření hodnoty.
 
    ```json
    "storageAccountName": {
@@ -98,17 +98,17 @@ Informace v této části mohou být užitečné při práci s [parametry](resou
    },
    ```
 
-* Nepoužívejte parametr pro verzi rozhraní API pro typ prostředku. Vlastnosti prostředku a hodnoty se můžou lišit podle čísla verze. Technologie IntelliSense v editoru kódu nelze určit správné schéma, pokud verze rozhraní API je nastavena na parametr. Místo toho verzi pevně zakódovat rozhraní API v šabloně.
+* Nepoužívejte parametr pro verzi rozhraní API pro typ prostředku. Vlastnosti a hodnoty prostředků se mohou lišit podle čísla verze. Technologie IntelliSense v editoru kódu nemůže určit správné schéma, pokud je verze rozhraní API nastavena na parametr. Místo toho je třeba v šabloně pevně nakódovat verzi rozhraní API.
 
-* Použití `allowedValues` opatrně. Používejte pouze v případě, že jste zkontrolujte, zda že některé hodnoty nejsou zahrnuté v možnosti povolené. Pokud používáte `allowedValues` příliš široce může blokovat platný nasazení podle není udržování aktuálnosti seznamu.
+* Používejte `allowedValues` zřídka. Použijte ji pouze v případě, že je nutné zajistit, aby některé hodnoty nebyly zahrnuty do povolených možností. Pokud používáte moc široce, můžete zablokovat platná nasazení tím, že seznam nezůstane v aktuálním stavu. `allowedValues`
 
-* Pokud název parametru v šabloně odpovídá parametru v příkazu pro nasazení prostředí PowerShell, správce prostředků řeší tento konflikt názvů tak, že přidáte Příponové **FromTemplate** parametru šablony. Například pokud zahrnete parametr s názvem **ResourceGroupName** v šabloně, je v konfliktu s **ResourceGroupName** parametr [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) rutiny. Během nasazení, zobrazí výzva k zadání hodnoty pro **ResourceGroupNameFromTemplate**.
+* Pokud název parametru ve vaší šabloně odpovídá parametru v příkazu PowerShell Deployment, Správce prostředků vyřeší tento konflikt názvů přidáním přípony **FromTemplate** do parametru Template. Například pokud zahrnete parametr s názvem **ResourceGroupName** v šabloně, je v konfliktu s parametrem **ResourceGroupName** v rutině [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) . Během nasazování budete vyzváni k zadání hodnoty pro **ResourceGroupNameFromTemplate**.
 
 ### <a name="security-recommendations-for-parameters"></a>Doporučení zabezpečení pro parametry
 
-* Vždy používejte parametry pro uživatelská jména a hesla (nebo tajné kódy).
+* Vždy používejte parametry pro uživatelská jména a hesla (nebo tajné klíče).
 
-* Použití `securestring` pro všechny tajné kódy a hesla. Pokud předáte citlivá data v objektu JSON, použijte `secureObject` typu. Parametry šablony zabezpečený řetězec nebo objekt zabezpečeného typy nelze přečíst po nasazení prostředků. 
+* Používá `securestring` se pro všechna hesla a tajné klíče. Pokud předáte citlivé údaje v objektu JSON, použijte `secureObject` typ. Parametry šablony se zabezpečeným řetězcem nebo typy zabezpečených objektů nelze přečíst po nasazení prostředků. 
    
    ```json
    "parameters": {
@@ -121,13 +121,13 @@ Informace v této části mohou být užitečné při práci s [parametry](resou
    }
    ```
 
-* Neposkytuje výchozí hodnoty pro uživatelská jména, hesla nebo libovolnou hodnotu, která vyžaduje `secureString` typu.
+* Nezadávejte výchozí hodnoty pro uživatelská jména, hesla ani žádná hodnota, která vyžaduje `secureString` typ.
 
-* Neposkytují výchozí hodnoty pro vlastnosti, které zvyšují možností útoku aplikace.
+* Neposkytněte výchozí hodnoty pro vlastnosti, které zvyšují prostor pro útoky v aplikaci.
 
-### <a name="location-recommendations-for-parameters"></a>Doporučení pro umístění pro parametry
+### <a name="location-recommendations-for-parameters"></a>Doporučení pro umístění parametrů
 
-* Parametr použít k určení umístění pro prostředky a nastavení výchozí hodnoty `resourceGroup().location`. Poskytuje umístění parametru umožňuje uživatelům šablony a zadejte umístění, ke kterým má oprávnění k nasazení do.
+* Pomocí parametru zadejte umístění pro prostředky a nastavte výchozí hodnotu na `resourceGroup().location`. Zadání parametru Location umožňuje uživatelům šablony určit umístění, ke kterému mají oprávnění k nasazení.
 
    ```json
    "parameters": {
@@ -141,49 +141,49 @@ Informace v této části mohou být užitečné při práci s [parametry](resou
    },
    ```
 
-* Nezadávejte `allowedValues` parametru umístění. Umístění, které jste zadali, nemusí být k dispozici ve všech cloudech.
+* Nezadávejte `allowedValues` pro parametr Location. Zadaná umístění nemusí být k dispozici ve všech cloudech.
 
-* Použijte hodnotu parametru umístění pro prostředky, které by mohly být ve stejném umístění. Tento přístup minimalizuje počet pokusů, které se uživatelům zobrazí výzva k zadání umístění informací.
+* Pro prostředky, které jsou pravděpodobně ve stejném umístění, použijte hodnotu parametru Location. Tento přístup minimalizuje počet vyzvání uživatelů k zadání informací o poloze.
 
-* Pro prostředky, které nejsou dostupné ve všech umístěních použít samostatný parametr nebo zadat hodnotu literálu umístění.
+* U prostředků, které nejsou k dispozici ve všech umístěních, použijte samostatný parametr nebo zadejte hodnotu umístění literálu.
 
 ## <a name="variables"></a>Proměnné
 
-Následující informace mohou být užitečné při práci s [proměnné](resource-group-authoring-templates.md#variables):
+Následující informace můžou být užitečné při práci s proměnnými [](resource-group-authoring-templates.md#variables):
 
-* Použijte proměnné pro hodnoty, které je nutné použít více než jednou v šabloně. Pokud hodnota je použit pouze jednou, pevně zakódované hodnotu díky šablony snadněji čtou.
+* Použijte proměnné pro hodnoty, které je třeba použít více než jednou v šabloně. Pokud se hodnota používá jenom jednou, pevně zakódovaná hodnota usnadňuje čtení šablony.
 
-* Použijte proměnné pro hodnoty, které vytvoříte z komplexních uspořádání šablony funkce. Šablona je lépe čitelný, když složitý výraz se zobrazí jenom v proměnné.
+* Použijte proměnné pro hodnoty, které vytváříte ze složitých uspořádání funkcí šablon. Pokud se složitý výraz zobrazuje pouze v proměnných, šablona je snazší číst.
 
-* Nepoužívejte proměnné pro `apiVersion` prostředku. Verze rozhraní API Určuje schéma prostředku. Často nelze změnit verzi beze změny vlastností pro prostředek.
+* Nepoužívejte proměnné pro `apiVersion` prostředek. Verze rozhraní API Určuje schéma prostředku. Často nemůžete změnit verzi, aniž byste museli měnit vlastnosti prostředku.
 
-* Nelze použít [odkaz](resource-group-template-functions-resource.md#reference) fungovat v **proměnné** část šablony. **Odkaz** funkce odvozuje svou hodnotu z prostředku běhový stav. Proměnné jsou však přeložit při počáteční analýze šablony. Konstruktor hodnoty tuto potřebu **odkaz** fungovat přímo v **prostředky** nebo **výstupy** část šablony.
+* V části **proměnné** v šabloně nemůžete použít [odkazovou](resource-group-template-functions-resource.md#reference) funkci. **Odkazovaná** funkce odvozuje svou hodnotu z běhového stavu prostředku. Proměnné jsou však při počáteční analýze šablony vyřešeny. Sestavte hodnoty, které vyžadují odkazovou funkci přímo v **části** Resources nebo Outputs šablony.
 
-* Zahrnout proměnné pro názvy prostředků, které musí být jedinečný.
+* Přidejte proměnné pro názvy prostředků, které musí být jedinečné.
 
-* Použití [kopírovací smyčkou do proměnných](resource-group-create-multiple.md#variable-iteration) vytvořit opakované vzorek objektů JSON.
+* Pomocí [smyčky kopírování v proměnných](resource-group-create-multiple.md#variable-iteration) vytvořte opakovaný vzor objektů JSON.
 
 * Odeberte nepoužité proměnné.
 
 ## <a name="resource-dependencies"></a>Závislosti prostředků
 
-Při rozhodování o tom, co [závislosti](resource-group-define-dependencies.md) k nastavení, použijte následující pokyny:
+Při rozhodování, jaké [závislosti](resource-group-define-dependencies.md) se mají nastavit, postupujte podle následujících pokynů:
 
-* Použití **odkaz** fungovat a předejte mu název prostředku implicitní závislosti mezi prostředky, které potřebují ke sdílení vlastnost nastavit. Nepřidávejte explicitní `dependsOn` prvku, když už máte definované implicitní závislostí. Tento přístup snižuje riziko toho, že zbytečné závislosti.
+* Použijte **odkazovou** funkci a předejte název prostředku k nastavení implicitní závislosti mezi prostředky, které potřebují sdílet vlastnost. Nepřidejte explicitní `dependsOn` element, pokud jste již definovali implicitní závislost. Tento přístup snižuje riziko zbytečných závislostí.
 
-* Nastavte jako závisí na jeho nadřazený prostředek podřízený prostředek.
+* Nastavte podřízený prostředek jako závislý na svém nadřazeném prostředku.
 
-* Prostředky s [podmínky](resource-group-authoring-templates.md#condition) nastaven na hodnotu false, budou automaticky odebrány z pak pořadí závislostí. Nastavte závislosti, jako kdyby je vždy nasazený prostředek.
+* Prostředky s [prvkem podmínky](resource-group-authoring-templates.md#condition) nastavenou na hodnotu false jsou automaticky odebrány z pořadí závislostí. Nastavte závislosti, jako by byl prostředek vždy nasazen.
 
-* Umožněte závislosti cascade bez nastavení je explicitně. Například vašeho virtuálního počítače závisí na rozhraní virtuální sítě a virtuální síťové rozhraní závisí na virtuální sítě a veřejné IP adresy. Proto tento virtuální počítač je nasazený všechny tři prostředky, ale není explicitně nastavit virtuální počítač jako závislé na všechny tři zdroje. Tento postup vysvětluje pak pořadí závislostí a usnadňuje později změnit šablonu.
+* Závislosti se dají uspořádat bez explicitního nastavování. Například váš virtuální počítač závisí na virtuálním síťovém rozhraní a rozhraní virtuální sítě závisí na virtuální síti a veřejných IP adresách. Proto se virtuální počítač nasadí po všech třech prostředcích, ale virtuální počítač se explicitně nenastaví jako závislý na všech třech prostředcích. Tento přístup objasňuje pořadí závislostí a usnadňuje změnu šablony později.
 
-* Pokud hodnotu nelze určit před nasazením, zkuste nasazení prostředků bez závislosti. Například hodnota konfigurace musí název jiného prostředku, nemusí potřebovat závislost. Tyto pokyny vždycky nefunguje, protože některé prostředky ověřte existenci jiný prostředek. Pokud obdržíte chybu, přidejte závislosti.
+* Pokud je možné určit hodnotu před nasazením, zkuste prostředek nasadit bez závislosti. Pokud například hodnota konfigurace potřebuje název jiného prostředku, možná nebudete potřebovat závislost. Tyto pokyny nefungují vždycky, protože některé prostředky ověřují existenci druhého prostředku. Pokud se zobrazí chyba, přidejte závislost.
 
 ## <a name="resources"></a>Zdroje a prostředky
 
-Následující informace mohou být užitečné při práci s [prostředky](resource-group-authoring-templates.md#resources):
+Následující informace můžou být užitečné při práci s [prostředky](resource-group-authoring-templates.md#resources):
 
-* Chcete-li pomoci ostatních uživatelů pochopit účel prostředku, zadejte **komentáře** pro každý prostředek v šabloně:
+* Aby mohli jiní přispěvatelé pochopit účel prostředku, zadejte **Komentáře** pro každý prostředek v šabloně:
    
    ```json
    "resources": [
@@ -198,7 +198,7 @@ Následující informace mohou být užitečné při práci s [prostředky](reso
    ]
    ```
 
-* Pokud používáte *veřejný koncový bod* v šabloně (třeba Azure Blob storage veřejný koncový bod), *nechcete pevně zakódovat* obor názvů. Použití **odkaz** funkce, která se dynamicky načíst obor názvů. Tento přístup můžete použít k nasazení šablony do prostředí jiný obor názvů veřejné beze změny ručně koncový bod v šabloně. Nastavte verzi rozhraní API na stejnou verzi, kterou používáte pro účet úložiště v šabloně:
+* Pokud v šabloně používáte *veřejný koncový bod* (například veřejný koncový bod služby Azure Blob Storage), neprovádějte *pevný kód* oboru názvů. K dynamickému načtení oboru názvů použijte **odkazovou** funkci. Tento přístup můžete použít k nasazení šablony do různých prostředí veřejného oboru názvů, aniž byste museli ručně měnit koncový bod v šabloně. Nastavte verzi rozhraní API na stejnou verzi, kterou používáte pro účet úložiště v šabloně:
    
    ```json
    "osDisk": {
@@ -209,7 +209,7 @@ Následující informace mohou být užitečné při práci s [prostředky](reso
    }
    ```
    
-   Pokud účet úložiště je nasazená ve stejné šabloně, kterou vytváříte, není nutné určit obor názvů poskytovatele při odkazování na prostředek. Následující příklad znázorňuje zjednodušenou syntaxi:
+   Pokud je účet úložiště nasazený ve stejné šabloně, kterou vytváříte, nemusíte při odkazování na prostředek zadávat obor názvů poskytovatele. Následující příklad ukazuje zjednodušenou syntaxi:
    
    ```json
    "osDisk": {
@@ -220,7 +220,7 @@ Následující informace mohou být užitečné při práci s [prostředky](reso
    }
    ```
    
-   Pokud máte jiné hodnoty v šabloně, které jsou nakonfigurovány pro použití veřejných obor názvů, změnit tyto hodnoty tak, aby odrážely stejné **odkaz** funkce. Například můžete nastavit **storageUri** vlastnost diagnostického profilu virtuálního počítače:
+   Pokud máte v šabloně jiné hodnoty, které jsou nakonfigurovány pro použití veřejného oboru názvů, změňte tyto hodnoty tak, aby odrážely stejnou **odkazovou** funkci. Můžete například nastavit vlastnost **storageUri** profilu diagnostiky virtuálního počítače:
    
    ```json
    "diagnosticsProfile": {
@@ -231,7 +231,7 @@ Následující informace mohou být užitečné při práci s [prostředky](reso
    }
    ```
    
-   Můžete také využít existující účet úložiště, který je v jiné skupině prostředků:
+   Můžete také vytvořit odkaz na existující účet úložiště, který je v jiné skupině prostředků:
 
    ```json
    "osDisk": {
@@ -242,17 +242,17 @@ Následující informace mohou být užitečné při práci s [prostředky](reso
    }
    ```
 
-* Přiřadíte veřejné IP adresy virtuálního počítače pouze v případě, že aplikace vyžaduje. Pro připojení k virtuálnímu počítači (VM) pro ladění nebo pro správu nebo účely správy, použijte pravidla příchozího překladu adres, bránu virtuální sítě nebo jumpbox.
+* Přiřaďte veřejné IP adresy virtuálnímu počítači pouze v případě, že je aplikace vyžaduje. Pokud se chcete připojit k virtuálnímu počítači (VM) pro ladění nebo pro účely správy nebo správy, použijte pravidla příchozího překladu adres (NAT), bránu virtuální sítě nebo JumpBox.
    
-     Další informace o připojení k virtuálním počítačům naleznete v tématu:
+     Další informace o připojení k virtuálním počítačům najdete v těchto tématech:
    
-   * [Spuštění virtuálních počítačů pro N-vrstvou architekturu v Azure](../guidance/guidance-compute-n-tier-vm.md)
-   * [Nastavení přístupu WinRM pro virtuální počítače v Azure Resource Manageru](../virtual-machines/windows/winrm.md)
-   * [Povolení externího přístupu k vašemu virtuálnímu počítači pomocí webu Azure portal](../virtual-machines/windows/nsg-quickstart-portal.md)
-   * [Povolení externího přístupu k vašemu virtuálnímu počítači pomocí Powershellu](../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Povolení externího přístupu k virtuálním počítačům s Linuxem pomocí Azure CLI](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+   * [Spouštění virtuálních počítačů pro N-vrstvou architekturu v Azure](../guidance/guidance-compute-n-tier-vm.md)
+   * [Nastavení přístupu WinRM pro virtuální počítače v Azure Resource Manager](../virtual-machines/windows/winrm.md)
+   * [Povolení externího přístupu k VIRTUÁLNÍmu počítači pomocí Azure Portal](../virtual-machines/windows/nsg-quickstart-portal.md)
+   * [Povolení externího přístupu k VIRTUÁLNÍmu počítači pomocí PowerShellu](../virtual-machines/windows/nsg-quickstart-powershell.md)
+   * [Povolení externího přístupu k VIRTUÁLNÍmu počítači se systémem Linux pomocí Azure CLI](../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
 
-* **Popisek_názvu_domény** vlastnost pro veřejné IP adresy musí být jedinečný. **Popisek_názvu_domény** hodnota musí být dlouhý 3 až 63 znaků a řídí se pravidly určené tento regulární výraz: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Protože **uniqueString** funkce z nich generuje řetězec, který je 13 znaků dlouhá a **dnsPrefixString** parametr je omezen na 50 znaků:
+* Vlastnost **domainNameLabel** pro veřejné IP adresy musí být jedinečná. Hodnota **domainNameLabel** musí mít délku 3 až 63 znaků a musí následovat po pravidlech určených tímto regulárním výrazem: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. Vzhledem k tomu, že funkce **uniqueString** generuje řetězec o délce 13 znaků, parametr **dnsPrefixString** je omezen na 50 znaků:
 
    ```json
    "parameters": {
@@ -269,7 +269,7 @@ Následující informace mohou být užitečné při práci s [prostředky](reso
    }
    ```
 
-* Když přidáte heslo k rozšíření vlastních skriptů, použijte **commandToExecute** vlastnost **protectedSettings** vlastnost:
+* Když přidáte heslo do rozšíření vlastních skriptů, použijte vlastnost **commandToExecute** ve vlastnosti **protectedSettings** :
    
    ```json
    "properties": {
@@ -289,13 +289,13 @@ Následující informace mohou být užitečné při práci s [prostředky](reso
    ```
    
    > [!NOTE]
-   > Chcete-li zajistit, že tajných kódů se šifrují, pokud jsou předány jako parametry pro virtuální počítače a rozšíření, použijte **protectedSettings** vlastnost příslušné rozšíření.
+   > Aby se zajistilo šifrování tajných klíčů při jejich předávání jako parametrů virtuálním počítačům a rozšířením, použijte vlastnost **protectedSettings** relevantních rozšíření.
    > 
    > 
 
 ## <a name="outputs"></a>Výstupy
 
-Pokud použijete šablonu k vytvoření veřejné IP adresy, přidejte [výstupy části](resource-group-authoring-templates.md#outputs) , který vrátí podrobnosti o IP adresu a plně kvalifikovaný název domény (FQDN). Výstupní hodnoty můžete snadno získat podrobnosti o veřejné IP adresy a plně kvalifikované názvy domény po nasazení.
+Pokud k vytvoření veřejných IP adres použijete šablonu, zahrňte [část výstupy](resource-group-authoring-templates.md#outputs) , která vrátí podrobnosti o IP adrese a plně kvalifikovaném názvu domény (FQDN). Výstupní hodnoty můžete snadno získat podrobnosti o veřejné IP adresy a plně kvalifikované názvy domény po nasazení.
 
 ```json
 "outputs": {
@@ -312,5 +312,5 @@ Pokud použijete šablonu k vytvoření veřejné IP adresy, přidejte [výstupy
 
 ## <a name="next-steps"></a>Další postup
 
-* Informace o struktuře souboru šablony Resource Manageru najdete v tématu [Princip struktury a syntaxe šablon Azure Resource Manageru](resource-group-authoring-templates.md).
-* Doporučení, jak vytvářet šablony, které fungují ve všech prostředích cloudu Azure, najdete v části [šablon vývoj Azure Resource Manageru pro cloud konzistence](templates-cloud-consistency.md).
+* Informace o struktuře souboru šablony Správce prostředků naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
+* Doporučení k vytváření šablon, které fungují ve všech cloudových prostředích Azure, najdete v tématu [vývoj šablon Azure Resource Manager pro konzistenci cloudu](templates-cloud-consistency.md).

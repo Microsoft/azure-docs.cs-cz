@@ -4,14 +4,14 @@ description: Popisuje způsob použití propojených šablon v šabloně Azure R
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4a5fe1bd2bf57fbec240ab242dd889014dde9578
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c79429d1a39e975c6bcc7fce191846a6205f9a86
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206437"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311710"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure.
 
@@ -24,7 +24,7 @@ Při použití propojených šablon, vytvoříte hlavní šablonu, která přij�
 Podívejte se kurz [kurz: vytvoření propojenými šablonami Azure Resource Manageru](./resource-manager-tutorial-create-linked-templates.md).
 
 > [!NOTE]
-> Propojené a vnořené šablony, můžete použít pouze [přírůstkové](deployment-modes.md) režimu nasazení.
+> U propojených nebo vnořených šablon můžete použít pouze [](deployment-modes.md) režim přírůstkového nasazení.
 >
 
 ## <a name="link-or-nest-a-template"></a>Odkaz nebo vnořené šablony
@@ -83,14 +83,14 @@ Chcete-li vnořené šablony v rámci hlavní šablony, použijte **šablony** v
 > [!NOTE]
 > Vnořené šablony nemůžete použít parametry a proměnné, které jsou definovány v rámci vnořené šablony. Můžete použít parametry a proměnné z hlavní šablony. V předchozím příkladu `[variables('storageName')]` načte hodnotu z hlavní šablony, ne vnořené šablony. Toto omezení se nevztahuje na externí šablony.
 >
-> Pro dva prostředky definované uvnitř vnořené šablony a jeden prostředek závisí na druhé, hodnota závislost je jednoduše název závislý prostředek:
+> Pro dva prostředky definované uvnitř vnořené šablony a jeden prostředek závisí na druhém, hodnota závislosti je jednoduše názvem závislého prostředku:
 > ```json
 > "dependsOn": [
 >   "[variables('storageAccountName')]"
 > ],
 > ```
 >
-> Nelze použít `reference` funkce v část Outputs následujícím vnořené šablony. Na návratové hodnoty pro nasazený prostředek ve vnořené šablony, převeďte vnořené šablony na propojenou šablonu.
+> `reference` Funkci nelze použít v oddílu výstupy vnořené šablony pro prostředek, který jste nasadili ve vnořené šabloně. Na návratové hodnoty pro nasazený prostředek ve vnořené šablony, převeďte vnořené šablony na propojenou šablonu.
 
 Vnořené šablony vyžaduje [stejné vlastnosti](resource-group-authoring-templates.md) jako standardní šablony.
 
@@ -149,9 +149,9 @@ Chcete-li předat hodnotu z hlavní šablony propojené šablony, použijte **pa
 
 ## <a name="using-copy"></a>Pomocí kopírování
 
-Chcete-li vytvořit více instancí prostředku s vnořené šablony, přidejte v elementu copy na úrovni **Microsoft.Resources/deployments** prostředků.
+Chcete-li vytvořit více instancí prostředku s vnořenou šablonou, přidejte element Copy na úrovni prostředku **Microsoft. Resources/Deployments** .
 
-Následující příklad šablony ukazuje, jak používat kopii pomocí vnořené šablony.
+Následující příklad šablony ukazuje, jak použít kopírování s vnořenou šablonou.
 
 ```json
 "resources": [
@@ -508,7 +508,7 @@ Následující příklad ukazuje, jak předat SAS token při propojování do š
 }
 ```
 
-V prostředí PowerShell získání tokenu pro kontejneru a nasazení šablon pomocí následujících příkazů. Všimněte si, **containerSasToken** parametr je definován v šabloně. Není parametrem **New-AzResourceGroupDeployment** příkazu.
+V prostředí PowerShell získání tokenu pro kontejneru a nasazení šablon pomocí následujících příkazů. Všimněte si, **containerSasToken** parametr je definován v šabloně. Nejedná se o parametr v příkazu **New-AzResourceGroupDeployment** .
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates

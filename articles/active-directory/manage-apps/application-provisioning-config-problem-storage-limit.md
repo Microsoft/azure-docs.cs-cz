@@ -1,6 +1,6 @@
 ---
-title: Problém s uložením přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Galerie Azure AD | Dokumentace Microsoftu
-description: Jak řešit běžné problémy, kterým čelí při konfiguraci zřizování uživatelů pro aplikace již uvedená v galerii aplikací Azure AD
+title: Problém při ukládání přihlašovacích údajů správce konfigurace aplikace Galerie Azure AD | Microsoft Docs
+description: Řešení běžných problémů při konfiguraci zřizování uživatelů pro aplikaci, která je už uvedená v galerii aplikací Azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,34 +16,34 @@ ms.date: 02/21/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e4af70ae8628f612b8858b99c0d5ae57e78ace4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 152b704ca597fb473a820124ee6147d6d9bc7845
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963616"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381481"
 ---
-# <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Potíže s uložením přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Galerie Azure Active Directory 
+# <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Galerie Azure Active Directory došlo k potížím. 
 
-Při použití na webu Azure portal ke konfiguraci [automatické zřizování uživatelů](user-provisioning.md) pro podnikové aplikace, mohou nastat situace, kde:
+Při použití Azure Portal ke konfiguraci [automatického zřizování uživatelů](user-provisioning.md) pro podnikovou aplikaci, může dojít k situaci, kdy:
 
-* **Přihlašovacích údajů správce** zadaných pro aplikaci jsou platné a **Test připojení** tlačítko funguje. Ale přihlašovací údaje nelze uložit, a vrátí obecnou chybovou zprávu na webu Azure portal.
+* **Přihlašovací údaje správce** zadané pro aplikaci jsou platné a tlačítko **Test připojení** funguje. Pověření však nelze uložit a Azure Portal vrátí obecnou chybovou zprávu.
 
-Pokud založené na SAML jednotného přihlašování je také nakonfigurováno pro stejnou aplikaci, nejpravděpodobnější příčinou chyby je limit podle aplikace, interní úložiště této Azure AD pro certifikáty a přihlašovacích údajů došlo k překročení.
+Pokud je pro stejnou aplikaci nakonfigurované jednotné přihlašování založené na SAML, je nejpravděpodobnější příčinou této chyby, že interní limit úložiště pro jednotlivé aplikace pro certifikáty a přihlašovací údaje se překročil.
 
-Azure AD momentálně má maximální úložnou kapacitu 1024 bajtů pro všechny certifikáty, tajných kódů tokenů, přihlašovacích údajů a související konfigurační data související s jednou instancí aplikace (také označované jako hlavní záznam služby ve službě Azure AD).
+Azure AD má v současné době maximální kapacitu úložiště 1024 bajtů pro všechny certifikáty, tajné tokeny, přihlašovací údaje a související konfigurační data přidružená k jedné instanci aplikace (označované také jako záznam instančního objektu ve službě Azure AD).
 
-Pokud založené na SAML jednotného přihlašování je nakonfigurovaná, certifikát používaný k podepisování tokenů SAML je zde uloženy a často využívá více než 50 % prostoru.
+Pokud je nakonfigurováno jednotné přihlašování založené na SAML, je zde uložen certifikát použitý k podepsání tokenů SAML a často spotřebovává více než 50% procent místa.
 
-Všechny tajné tokeny, identifikátory URI, oznámení e-mailové adresy, uživatelská jména a hesla, které získat zadaný během nastavení zřizování uživatelů může způsobit překročení limitu úložiště.
+U všech tajných tokenů, identifikátorů URI, e-mailových adres oznámení, uživatelských jmen a hesel, které se zadaly během nastavení zřizování uživatelů, může dojít k překročení limitu úložiště.
 
-## <a name="how-to-work-around-this-issue"></a>Jak chcete tento problém vyřešit 
+## <a name="how-to-work-around-this-issue"></a>Jak tento problém obejít 
 
-Existují dva možné způsoby, jak tento problém obejít ještě dnes:
+Existují dva možné způsoby, jak tento problém vyřešit Dnes:
 
-1. **Použijte Galerii dvě instance aplikace, jeden pro jednotné přihlašování a jeden pro zřizování uživatelů** – přepnutí aplikace Galerie [rozvoji Linkedinem](../saas-apps/linkedinelevate-tutorial.md) jako příklad, můžete přidat rozvoji Linkedinem z galerie a konfigurace je pro jednotné přihlašování. Pro zřizování, přidejte další instanci rozvoji Linkedinem z Galerie aplikací Azure AD a pojmenujte ho "LinkedIn zvýšení (zřizování)." U této druhé instance nakonfigurovat [zřizování](../saas-apps/linkedinelevate-provisioning-tutorial.md), ale ne jednotného přihlašování. Při použití tohoto řešení stejného uživatele a skupiny musí být [přiřazené](assign-user-or-group-access-portal.md) pro obě aplikace. 
+1. **Použijte dvě instance aplikace Galerie, jednu pro jednotné přihlašování a jednu pro zřizování uživatelů** – pořídit linkedinový přístup k [](../saas-apps/linkedinelevate-tutorial.md) aplikaci Galerie jako příklad můžete přidat zvýšení úrovně LinkedInu z galerie a nakonfigurovat ho pro jednotné přihlašování. V případě zřizování přidejte další instanci LinkedInu z Galerie aplikací Azure AD a pojmenujte ji "LinkedIn – zvýšení (zřizování)". Pro tuto druhou instanci nakonfigurujte [zřizování](../saas-apps/linkedinelevate-provisioning-tutorial.md), ale ne jednotné přihlašování. Při použití tohoto alternativního řešení je potřeba [přiřadit](assign-user-or-group-access-portal.md) stejné uživatele a skupiny k oběma aplikacím. 
 
-2. **Snížit objem uložených dat konfigurace** – všechny údaje zadávané do [přihlašovacích údajů správce](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) oddíl kartě zřizování je uložen na stejném místě jako certifikát SAML. Nemusí být možné zkrátit délku všechna tato data, jako jsou některá pole volitelná konfigurace **e-mailové oznámení** je možné odebrat.
+2. **Omezení množství uložených konfiguračních dat** – všechna data zadaná v části [přihlašovací údaje správce](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) na kartě zřizování se ukládají na stejné místo jako certifikát SAML. I když nemusí být možné zkrátit všechna tato data, některá volitelná konfigurační pole, jako je **e-mailová oznámení** , můžete odebrat.
 
 ## <a name="next-steps"></a>Další postup
-[Konfigurace uživatele zřizování a zrušení zřizování pro aplikace SaaS](user-provisioning.md)
+[Konfigurace zřizování uživatelů a zrušení zřizování pro aplikace SaaS](user-provisioning.md)

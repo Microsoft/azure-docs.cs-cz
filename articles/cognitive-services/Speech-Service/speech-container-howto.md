@@ -1,7 +1,7 @@
 ---
-title: Nainstalujte kontejnery řeči
+title: Instalace funkcí Speech Containers – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Nainstalujte a používejte řeč kontejnery. Převod řeči na text transcribes audiostreamy na text v reálném čase, který může využívat nebo zobrazení vaší aplikace, nástroje nebo zařízení. Převod textu na řeč převede vstupní text na řeč syntetizovaný podobnou té lidské.
+description: Instalace a spuštění kontejnerů řeči. Převod řeči na text transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Převod textu na řeč převede vstupní text na syntetizované řeč podobné člověku.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,51 +10,51 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 8f395788d4dd3c845155a52bd6b4666998838fcd
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 0778814d4a228afe3a986426684c7d1f2080b517
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490240"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553222"
 ---
-# <a name="install-and-run-speech-service-containers"></a>Instalace a spouštění kontejnerů Speech Service
+# <a name="install-and-run-speech-service-containers"></a>Instalace a spuštění kontejnerů služby Speech
 
-Kontejnery řeči zákazníkům umožní vytvářet jeden architektura řeči aplikace, které je optimalizováno pro využití možnosti robustní Cloudová a hraniční umístění. 
+Díky kontejnerům pro rozpoznávání řeči můžou zákazníci vytvářet jednu architekturu aplikace pro rozpoznávání řeči, která je optimalizovaná tak, aby využila výhod robustních cloudových funkcí i možností Edge. 
 
-Jsou dva řeči kontejnery **speech to text** a **převod textu na řeč**. 
+Dva kontejnery řeči jsou **Převod řeči na text** a **Převod textu na řeč**. 
 
-|Funkce|Funkce|nejnovější|
+|Funkce|Funkce|Latest (Nejnovější)|
 |-|-|--|
-|Převod řeči na text| <li>Transcribes průběžné v reálném čase řeči nebo služby batch záznam zvuku na text pomocí mezilehlých výsledků.|1.1.3|
-|Převod textu na řeč| <li>Převádí text do přirozeně znějící řeči. vstup ve formátu prostého textu nebo řeči syntézu Markup Language (SSML). |1.1.0|
+|Převod řeči na text| <li>Transcribes v reálném čase nepřetržité audio nebo zvukové nahrávky do textu s mezilehlé výsledky.|1.1.3|
+|Převod textu na řeč| <li>Převádí text do přirozeně znějící řeči. s prostým textem Input nebo SSML (Speech syntézy Language). |1.1.0|
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před použitím kontejnerů řeči, musí splňovat následující požadavky:
+Před použitím kontejnerů řeči musíte splnit následující předpoklady:
 
-|Požaduje se|Účel|
+|Požadováno|Účel|
 |--|--|
-|Modul docker| Je nutné modul Docker nainstalovaný na [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **Na Windows**, Docker musí být taky nakonfigurovaný pro podporu kontejnerů Linuxu.<br><br>|
-|Znalost Dockeru | Byste měli mít základní znalost konceptů Dockeru, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.| 
-|Prostředek řeči |Chcete-li použít tyto kontejnery, musíte mít:<br><br>A _řeči_ prostředků Azure můžete získat přidružený klíč účtování a fakturace identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na webu Azure portal **řeči** stránky přehled a klíče a jsou potřebná ke spuštění kontejneru.<br><br>**{BILLING_KEY}** : klíč prostředku<br><br>**{BILLING_ENDPOINT_URI}** : Příklad identifikátor URI koncového bodu je: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|Modul Docker| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
+|Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
+|Prostředek řeči |Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek Azure _Speech_ pro získání přidruženého klíče rozhraní API a identifikátoru URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách s přehledem a klíči pro Azure Portal **řeči** . Oba jsou nutné ke spuštění kontejneru.<br><br>**{API_KEY}** : Jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : Koncový bod, jak je uvedený na stránce **Přehled**|
 
 ## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
 
-Nejprve musíte vyplňte a odešlete [formulář žádosti o kontejnerech řeči Cognitive Services](https://aka.ms/speechcontainerspreview/) chcete požádat o přístup ke kontejneru. 
+Aby bylo možné požádat o přístup ke kontejneru, je nutné nejprve dokončit a odeslat [formulář žádosti o Cognitive Services kontejnerech řeči](https://aka.ms/speechcontainerspreview/) . 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
 [!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
-## <a name="the-host-computer"></a>Hostitelském počítači
+## <a name="the-host-computer"></a>Hostitelský počítač
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="advanced-vector-extension-support"></a>Rozšířená podpora vektoru rozšíření
+### <a name="advanced-vector-extension-support"></a>Rozšířená podpora rozšíření Vector
 
-**Hostitele** je počítač, který spustí kontejner dockeru. Hostitel musí podporovat [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). Můžete zkontrolovat tuto podporu na hostitelé s Linuxem pomocí následujícího příkazu: 
+**Hostitel** je počítač, který spouští kontejner Docker. Hostitel musí podporovat [Rozšířená rozšíření Vector](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2). Tuto podporu můžete na hostitelích se systémem Linux ověřit pomocí následujícího příkazu: 
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
@@ -62,22 +62,22 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
 
-Následující tabulka popisuje minimální a doporučené jader procesoru a paměti k přidělení pro každý kontejner řeči.
+V následující tabulce jsou popsány minimální a doporučené PROCESORy a paměťová jádra, která se mají přidělit každému kontejneru řeči.
 
 | Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
 |cognitive-services-speech-to-text | 2 jádra<br>2 GB paměti  | 4 jádra<br>4 GB paměti  |
 |cognitive-services-text-to-speech | 1 jádro, 0,5 GB paměti| 2 jádra, 1 GB paměti |
 
-* Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
+* Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 
-Jader a paměti odpovídají `--cpus` a `--memory` nastavení, které se používají jako součást `docker run` příkazu.
+Základní a paměť odpovídají `--cpus` nastavení a `--memory` , která se `docker run` používají jako součást příkazu.
 
-**Poznámka:** ; Minimální a doporučené vychází z Dockeru omezení *není* hostitelského počítače prostředky. Například kontejnery speech to text paměti namapovat části velké jazykový model a je _doporučuje_ , který vyhovuje celý soubor v paměti, což je o 4 až 6 GB. První spuštění buď kontejneru také může trvat déle, protože modely jsou stránkování do paměti.
+**Poznámka:** Minimum a doporučené jsou založeny na omezeních Docker, *nikoli* na prostředky hostitelského počítače. Například kontejnery Speech-to-text namapují část velkých jazykových modelů a _doporučuje_ se, aby se celý soubor vešel do paměti, což je dalších 4-6 GB. První spuštění obou kontejnerů může trvat delší dobu, protože modely jsou stránkované v paměti.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru s `docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí`docker pull`
 
-Image kontejneru pro zpracování řeči, jsou k dispozici.
+K dispozici jsou image kontejneru pro řeč.
 
 | Kontejner | Úložiště |
 |-----------|------------|
@@ -86,27 +86,27 @@ Image kontejneru pro zpracování řeči, jsou k dispozici.
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="language-locale-is-in-container-tag"></a>Jazyk národního prostředí je ve značce kontejneru
+### <a name="language-locale-is-in-container-tag"></a>Jazykové prostředí je ve značce kontejneru.
 
-`latest` Označte si `en-us` národní prostředí a `jessarus` hlasu.
+Značka vyžádá `en-us` národní prostředí a `jessarus` hlas. `latest`
 
-#### <a name="speech-to-text-locales"></a>Převod řeči na text národních prostředí
+#### <a name="speech-to-text-locales"></a>Převod řeči na textová národní prostředí
 
-Všechny značky, s výjimkou `latest` jsou v následujícím formátu, kde `<culture>` Určuje národní prostředí kontejneru:
+Všechny značky s výjimkou `latest` jsou v následujícím formátu, `<culture>` kde označuje kontejner národního prostředí:
 
 ```
 <major>.<minor>.<patch>-<platform>-<culture>-<prerelease>
 ```
 
-Následující značku je příklad formátu:
+Následující značka je příkladem formátu:
 
 ```
 1.1.3-amd64-en-us-preview
 ```
 
-V následující tabulce jsou uvedeny podporované národní prostředí pro **speech to text** v 1.1.3 verzi kontejneru:
+V následující tabulce jsou uvedeny podporované národní prostředí pro **Převod řeči na text** ve verzi 1.1.3 kontejneru:
 
-|Jazyk národního prostředí|Tags|
+|Jazykové prostředí|Tags|
 |--|--|
 |Čínština|`zh-cn`|
 |Angličtina |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
@@ -118,23 +118,23 @@ V následující tabulce jsou uvedeny podporované národní prostředí pro **s
 |Portugalština|`pt-br`|
 |Španělština|`es-es`<br>`es-mx`|
 
-#### <a name="text-to-speech-locales"></a>Národní prostředí pro převod textu na řeč
+#### <a name="text-to-speech-locales"></a>Textová prostředí pro převod textu na řeč
 
-Všechny značky, s výjimkou `latest` jsou v následujícím formátu, kde `<culture>` Určuje národní prostředí a `<voice>` označuje hlasu kontejneru:
+Všechny značky s výjimkou `latest` jsou v následujícím formátu, `<culture>` kde `<voice>` označuje národní prostředí a označuje hlas kontejneru:
 
 ```
 <major>.<minor>.<patch>-<platform>-<culture>-<voice>-<prerelease>
 ```
 
-Následující značku je příklad formátu:
+Následující značka je příkladem formátu:
 
 ```
 1.1.0-amd64-en-us-jessarus-preview
 ```
 
-V následující tabulce jsou uvedeny podporované národní prostředí pro **převod textu na řeč** v 1.1.0 verzi kontejneru:
+V následující tabulce jsou uvedeny podporované národní prostředí pro **Převod textu na řeč** v 1.1.0 verzi kontejneru:
 
-|Jazyk národního prostředí|Tags|Podporované hlasů|
+|Jazykové prostředí|Tags|Podporované hlasy|
 |--|--|--|
 |Čínština|`zh-cn`|huihuirus<br>kangkang-apollo<br>yaoyao-apollo|
 |Angličtina |`en-au`|catherine<br>hayleyrus|
@@ -147,11 +147,11 @@ V následující tabulce jsou uvedeny podporované národní prostředí pro **p
 |italština|`it-it`|cosimo-apollo<br>luciarus|
 |Japonština|`ja-jp`|ayumi-apollo<br>harukarus<br>ichiro-apollo|
 |Korejština|`ko-kr`|heamirus|
-|Portugalština|`pt-br`|daniel-apollo<br>heloisarus|
+|Portugalština|`pt-br`|Daniel – Apollo<br>heloisarus|
 |Španělština|`es-es`|elenarus<br>laura-apollo<br>pablo-apollo<br>|
 |Španělština|`es-mx`|hildarus<br>raul-apollo|
 
-### <a name="docker-pull-for-the-speech-containers"></a>Operace docker pull pro kontejnery řeči
+### <a name="docker-pull-for-the-speech-containers"></a>Vyžádání obsahu Docker pro kontejnery řeči
 
 #### <a name="speech-to-text"></a>Převod řeči na text
 
@@ -165,25 +165,25 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest
 ```
 
-## <a name="how-to-use-the-container"></a>Jak používat kontejneru
+## <a name="how-to-use-the-container"></a>Jak používat kontejner
 
-Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použijte následující postup pro práci s kontejnerem.
+Jakmile je kontejner na hostitelském [počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spuštění kontejneru](#run-the-container-with-docker-run), s nastavením fakturační povinné, ale nepoužívá se. Další [příklady](speech-container-configuration.md#example-docker-run-commands) z `docker run` příkazu jsou k dispozici.
-1. [Dotazování koncový bod kontejneru předpovědi](#query-the-containers-prediction-endpoint).
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným, ale nepoužitým nastavením fakturace. K [](speech-container-configuration.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu.
+1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
-## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s `docker run`
+## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
 
-Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění tři kontejnery. Příkaz používá následující parametry:
+Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) spusťte kterýkoli ze tří kontejnerů. Příkaz používá následující parametry:
 
-**Během období preview**, fakturace nastavení musí být platné pro spuštění kontejneru, ale za využití se nic neúčtuje.
+**Během období Preview**musí být nastavení fakturace platná pro spuštění kontejneru, ale neúčtují se za využití.
 
-| Zástupný symbol | Hodnota |
+| Zástupný symbol | Value |
 |-------------|-------|
-|{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíče řeči webu Azure portal.  |
-|{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na stránce s přehledem řeči webu Azure portal.|
+|{API_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíče pro rozpoznávání řeči v Azure Portal.  |
+|{ENDPOINT_URI} | Hodnota identifikátoru URI fakturačního koncového bodu je k dispozici na stránce Přehled řeči Azure Portal.|
 
-Tyto parametry nahraďte vlastními hodnotami v následujícím příkladu `docker run` příkazu.
+Tyto parametry nahraďte vlastními hodnotami v následujícím ukázkovém `docker run` příkazu.
 
 ### <a name="text-to-speech"></a>Převod textu na řeč
 
@@ -191,8 +191,8 @@ Tyto parametry nahraďte vlastními hodnotami v následujícím příkladu `dock
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 ### <a name="speech-to-text"></a>Převod řeči na text
@@ -201,21 +201,21 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 Tento příkaz:
 
-* Spouští řeči kontejner z image kontejneru
-* Přidělí 2 jádra procesoru a paměti 2 gigabajty (GB)
+* Spustí kontejner řeči z image kontejneru.
+* Přiděluje 2 jádra procesoru a 2 gigabajty (GB) paměti.
 * Zpřístupňuje TCP port 5000 a přiděluje pseudo-TTY pro kontejner
-* Po ukončení automaticky odstraní kontejner. Image kontejneru je stále k dispozici na hostitelském počítači.
+* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing).
 
-## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncový bod kontejneru predikcí
+## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
 
 |Kontejner|Koncový bod|
 |--|--|
@@ -224,36 +224,36 @@ Tento příkaz:
 
 ### <a name="speech-to-text"></a>Převod řeči na text
 
-Poskytuje kontejner dotazů založených na protokolu websocket koncový bod rozhraní API, které jsou přístupné prostřednictvím [sadou SDK pro řeč](index.yml).
+Kontejner poskytuje rozhraní API koncových bodů dotazů založených na protokolu WebSocket, která jsou k dispozici prostřednictvím [sady Speech SDK](index.yml).
 
-Ve výchozím nastavení používá sadou SDK pro řeč online hlasové služby. Použití kontejneru, budete muset změnit metodu inicializace. Viz následující příklady.
+Sada Speech SDK standardně používá online hlasové služby. Chcete-li použít kontejner, je nutné změnit inicializační metodu. Podívejte se na následující příklady.
 
-#### <a name="for-c"></a>ProC#
+#### <a name="for-c"></a>ForC#
 
-Přejdete od použití toto volání inicializace Azure cloud:
+Změnit z použití tohoto volání inicializace Azure-Cloud:
 
-```C#
+```csharp
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-na toto volání pomocí koncový bod kontejneru:
+do tohoto volání pomocí koncového bodu kontejneru:
 
-```C#
+```csharp
 var config = SpeechConfig.FromEndpoint(
     new Uri("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1"),
     "YourSubscriptionKey");
 ```
 
-#### <a name="for-python"></a>Pro jazyk Python
+#### <a name="for-python"></a>Pro Python
 
-Přejdete od použití toto volání inicializace cloudu Azure
+Změnit z použití tohoto volání inicializace Azure-Cloud
 
 ```python
 speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
 ```
 
-na toto volání pomocí koncový bod kontejneru:
+do tohoto volání pomocí koncového bodu kontejneru:
 
 ```python
 speech_config = speechsdk.SpeechConfig(
@@ -262,21 +262,21 @@ speech_config = speechsdk.SpeechConfig(
 
 ### <a name="text-to-speech"></a>Převod textu na řeč
 
-Kontejner poskytuje koncový bod REST API, který se nachází [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech) najdete ukázky [tady](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/).
+Kontejner poskytuje rozhraní API koncového bodu REST, které najdete [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech) a příklady najdete [tady](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/).
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Zastavit kontejner
+## <a name="stop-the-container"></a>Zastavení kontejneru
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Při spuštění kontejneru se kontejner používá **stdout** a **stderr** do výstupu informace, které jsou užitečné při řešení potíží, ke kterým dochází při spuštění nebo spuštění kontejneru.
+Když kontejner spustíte, kontejner použije **stdout** a **stderr** k výstupu informací, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
 
 ## <a name="billing"></a>Fakturace
 
-Odeslat kontejnery řeči fakturační údaje do Azure, pomocí _řeči_ prostředků v účtu Azure.
+Kontejnery řeči odesílají informace o fakturaci do Azure pomocí prostředku _řeči_ ve vašem účtu Azure.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -288,13 +288,13 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání kontejnerů řeči. Souhrn:
+V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů řeči. Souhrn:
 
-* Řeč poskytuje dva kontejnery Linuxu pro Docker, zapouzdření převod řeči na text a převod textu na řeč.
-* Image kontejneru se stahují ze soukromého registru kontejnerů v Azure.
+* Speech poskytuje pro Docker dva kontejnery pro Linux, které zapouzdří řeč na text a převod textu na řeč.
+* Image kontejneru se stáhnou z privátního registru kontejnerů v Azure.
 * Spuštění imagí kontejnerů v Dockeru.
-* Rozhraní REST API nebo sady SDK můžete použít k volání operací v kontejnerech řeči tak, že zadáte identifikátor URI kontejneru hostitele.
-* Při vytváření instance kontejneru, je nutné zadat fakturační informace.
+* Pomocí REST API nebo sady SDK můžete volat operace v kontejnerech řeči zadáním identifikátoru URI hostitele kontejneru.
+* Při vytváření instance kontejneru budete muset zadat fakturační údaje.
 
 > [!IMPORTANT]
 >  Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků (třeba image nebo text, který je analyzován) společnosti Microsoft.
@@ -302,4 +302,4 @@ V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, insta
 ## <a name="next-steps"></a>Další postup
 
 * Kontrola [konfigurace kontejnery](speech-container-configuration.md) nastavení konfigurace
-* Použití více [kontejnery Cognitive Services](../cognitive-services-container-support.md)
+* Použít více [Cognitive Servicesch kontejnerů](../cognitive-services-container-support.md)

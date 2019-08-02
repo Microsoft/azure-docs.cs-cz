@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs bohaté Push
-description: Zjistěte, jak odesílat bohaté nabízená oznámení do aplikací pro iOS z Azure. Ukázky kódu napsané v jazyce Objective-C a C#.
+title: Azure Notification Hubs Rich push
+description: Naučte se odesílat bohatá nabízená oznámení do aplikace pro iOS z Azure. Ukázky kódu napsané v cíli – C C#a.
 documentationcenter: ios
 services: notification-hubs
 author: jwargo
@@ -14,48 +14,48 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: dd808a04dff77388248bf7309f5ff804e6dd065c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fcb4a1db62abfc04d2b0c60488d35393d98c57e
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60873055"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348475"
 ---
-# <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs bohaté Push
+# <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
 
 ## <a name="overview"></a>Přehled
 
-Aby bylo možné zapojení uživatelů pomocí rychlých formátovaný obsah aplikace chtít nabízet nad rámec prostý text. Tato oznámení podporovat interakcí s uživateli a k dispozici obsah, jako jsou adresy URL, zvuky, Image/kupóny a další. Tento kurz vychází [oznamování uživatelům pomocí](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) tématu a ukazuje, jak odesílat nabízená oznámení, které zahrnují datových částí (například obrázek).
+Aby bylo možné zapojovat uživatele s okamžitým bohatým obsahem, může aplikace chtít vložit přesahující prostý text. Tato oznámení povýší interakce uživatelů a prezentují obsah, jako jsou adresy URL, zvuky, obrázky/kupóny a další. Tento kurz se sestaví v tématu [oznamujících uživatele](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) a ukazuje, jak odesílat nabízená oznámení, která obsahují datové části (například Image).
 
-Tento kurz je kompatibilní se systémem iOS 7 a 8.
+Tento kurz je kompatibilní se systémem iOS 7 & 8.
 
   ![][IOS1]
 
-Na vysoké úrovni:
+Na nejvyšší úrovni:
 
-1. Back-endu aplikace:
-   * Ukládá bohaté datová část (v tomto případě obrázek) v back-endového úložiště databáze/místní funkce
-   * ID tohoto bohaté oznámení se odešle do zařízení.
+1. Back-end aplikace:
+   * Ukládá bohatou datovou část (v tomto případě image) do back-endu databáze nebo do místního úložiště.
+   * Odešle ID tohoto bohatého oznámení do zařízení.
 2. Aplikace na zařízení:
-   * Kontaktuje požaduje bohaté datové části s ID přijme back-endu
-   * Odešle oznámení uživatelům na zařízení po dokončení načítání dat a datové části se zobrazí okamžitě, když uživatel klepnutím na další informace
+   * Kontaktuje back-end požadující bohatou datovou část s ID, které přijímá.
+   * Po dokončení načítání dat pošle uživateli oznámení na zařízení a zobrazí datovou část hned po klepnutí na Další informace.
 
-## <a name="webapi-project"></a>Projektem WebAPI
+## <a name="webapi-project"></a>Projekt WebAPI
 
-1. V sadě Visual Studio, otevřete **AppBackend** projekt, který jste vytvořili v [oznamování uživatelům pomocí](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurzu.
-2. Získat image byste chtěli upozornit uživatele a vložit ho do **img** složku v adresáři projektu.
-3. Klikněte na tlačítko **zobrazit všechny soubory** v Průzkumníku řešení klikněte pravým tlačítkem na složku, do které **zahrnout do projektu**.
-4. Image, vybraný, změnit její akce sestavení v okně Vlastnosti **integrovaný prostředek**.
+1. V aplikaci Visual Studio otevřete projekt **projekt appbackend** , který jste vytvořili v kurzu pro [upozorňování uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) .
+2. Získejte image, se kterou chcete uživatele informovat, a vložte ji do složky **img** v adresáři projektu.
+3. Klikněte na **Zobrazit všechny soubory** v Průzkumník řešení a klikněte pravým tlačítkem myši na složku, kterou chcete **zahrnout do projektu**.
+4. Když je vybraná image, změňte její akci sestavení v okno Vlastnosti na **Integrovaný prostředek**.
 
     ![][IOS2]
-5. V `Notifications.cs`, přidejte následující příkaz using:
+5. Do `Notifications.cs`přidejte následující příkaz using:
 
-    ```c#
+    ```csharp
     using System.Reflection;
     ```
-6. Aktualizovat celé `Notifications` třídy následujícím kódem. Nezapomeňte nahradit zástupné symboly pomocí vašich přihlašovacích údajů centra oznámení a název souboru obrázku.
+6. Aktualizujte celou `Notifications` třídu pomocí následujícího kódu. Nezapomeňte nahradit zástupné symboly přihlašovacími údaji centra oznámení a názvem souboru obrázku.
 
-    ```c#
+    ```csharp
     public class Notification {
         public int Id { get; set; }
         // Initial notification message to display to users
@@ -101,11 +101,11 @@ Na vysoké úrovni:
     ```
 
    > [!NOTE]
-   > (volitelné) Odkazovat na [vložení a přístup k prostředkům pomocí Vizuálu C# ](https://support.microsoft.com/kb/319292) Další informace o tom, jak přidat a získání prostředků projektu.
+   > volitelné Další informace o tom, jak přidat a získat projektové prostředky, najdete v článku [o tom, jak vkládat a přistupovat k prostředkům pomocí vizuálu C# ](https://support.microsoft.com/kb/319292) .
 
-7. V `NotificationsController.cs`, znovu definovat "NotificationsController s následující fragmenty kódu. To odesílá id počáteční tiché bohaté oznámení do zařízení a umožní na straně klienta načtení bitové kopie:
+7. V `NotificationsController.cs`, předefinujte ' NotificationsController ' pomocí následujících fragmentů kódu. Tím se pošle počáteční tiché ID oznámení na zařízení a povolí se načtení image na straně klienta:
 
-    ```c#
+    ```csharp
     // Return http response with image binary
     public HttpResponseMessage Get(int id) {
         var stream = Notifications.Instance.ReadImage(id);
@@ -134,43 +134,43 @@ Na vysoké úrovni:
         return Request.CreateResponse(HttpStatusCode.OK);
     }
     ```
-8. Nyní jsme se znovu nasadit tuto aplikaci na web Azure aby byla přístupná ze všech zařízení. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
-9. Vyberte web Azure jako váš cíl publikování. Přihlaste se pomocí svého účtu Azure a vyberte stávající nebo novou webovou stránku, poznamenejte si **cílovou adresu URL** vlastnost **připojení** kartu. Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na tlačítko **publikovat**.
+8. Tuto aplikaci teď znovu nasadíme na web Azure, aby bylo možné ji zpřístupnit ze všech zařízení. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
+9. Jako cíl publikování vyberte web Azure. Přihlaste se pomocí účtu Azure a vyberte existující nebo nový web a poznamenejte si vlastnost **cílová adresa URL** na kartě **připojení** . Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na tlačítko **publikovat**.
 
-## <a name="modify-the-ios-project"></a>Upravit projekt pro iOS
+## <a name="modify-the-ios-project"></a>Úprava projektu iOS
 
-Teď, když jste upravili back-endu aplikace k odeslání jenom *id* oznámení, se změní vaše aplikace iOS bude zpracovávat toto id a načítat bohaté zprávy z back-endu.
+Teď, když jste změnili back-end aplikace tak, aby odesílaly jenom *ID* oznámení, změníte aplikaci pro iOS tak, aby zpracovala toto ID a načetla bohatou zprávu z back-endu.
 
-1. Otevření projektu pro iOS a povolit vzdálená oznámení tak, že přejdete do cíle v hlavní aplikaci **cíle** oddílu.
-2. Klikněte na **možnosti**, zapněte **režimy běhu na pozadí**a zkontrolujte **Vzdálená oznámení** zaškrtávací políčko.
+1. Otevřete svůj projekt pro iOS a povolte vzdálená oznámení tak, že v části **cíle** spustíte hlavní cíl aplikace.
+2. Klikněte na **Možnosti**, zapnout **režimy na pozadí**a zaškrtněte políčko **Vzdálená oznámení** .
 
     ![][IOS3]
-3. Otevřít `Main.storyboard`, a ujistěte se, že máte kontroler zobrazení (označuje jako Domů kontroler zobrazení v tomto kurzu) z [upozornit uživatele](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurzu.
-4. Přidat **kontroler navigace** scénáře, a přetáhněte ovládací prvek na Domů Kontroleru zobrazení k němu **root zobrazení** navigace. Ujistěte se, že **je počáteční kontroler zobrazení** v atributech inspector je vybraná jenom kontroler navigace.
-5. Přidat **kontroler zobrazení** scénáře a přidat **zobrazení obrázku**. Toto je stránka, kterou uživatelé uvidí, když se rozhodnete další informace získáte kliknutím na oznámení. Scénář by měl vypadat takto:
+3. Otevřete `Main.storyboard`a v tomto kurzu se ujistěte, že máte kontroler zobrazení (v tomto kurzu se označuje jako kontroler [](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) domovského zobrazení).
+4. Přidejte do scénáře **navigační kontroler** a pomocí ovládacího prvku přetáhněte ho do řídicího panelu pro zobrazení domů, aby byl **kořenovým zobrazením** navigace. Ujistěte se, že je zaškrtnuto políčko **je prvotní kontroler zobrazení** v inspektoru atributů pouze pro navigační kontroler.
+5. Přidejte **kontroler zobrazení** do scénáře a přidejte **zobrazení obrázku**. Toto je stránka, kterou uživatelé uvidí, až se po výběru zobrazí další informace kliknutím na oznámení. Scénář by měl vypadat takto:
 
     ![][IOS4]
-6. Klikněte na **Domů kontroler zobrazení** ve scénáři a ujistěte se, že má **homeViewController** jako jeho **vlastní třídy** a **ID scénáře**pod inspektor Identity.
-7. Totéž proveďte pro kontroler zobrazení obrázku jako **imageViewController**.
-8. Vytvořte novou třídu Kontroleru zobrazení s názvem **imageViewController** pro zpracování uživatelského rozhraní, které jste právě vytvořili.
-9. V **imageViewController.h**, přidejte následující deklarace rozhraní kontroleru. Ujistěte se, že ovládací prvek přetažením z image zobrazení scénáře pro tyto vlastnosti pro jejich propojení:
+6. Ve scénáři klikněte na **kontroler domovského zobrazení** a ujistěte se, že se v inspektoru identity **HomeViewController** jako **vlastní třída** a **ID scénáře** .
+7. Stejnou pro kontroler zobrazení obrázku jako **imageViewController**.
+8. Pak vytvořte novou třídu kontroleru zobrazení s názvem **imageViewController** , která bude zpracovávat právě vytvořené uživatelské rozhraní.
+9. V **imageViewController. h**přidejte následující do deklarací rozhraní řadiče. Nezapomeňte ovládat – přetáhněte z zobrazení image ve scénáři na tyto vlastnosti, abyste provedli propojení dvou:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UIImageView *myImage;
     @property (strong) UIImage* imagePayload;
     ```
-10. V `imageViewController.m`, přidejte následující na konci `viewDidload`:
+10. V `imageViewController.m`přidejte následující na `viewDidload`konci:
 
     ```objc
     // Display the UI Image in UI Image View
     [self.myImage setImage:self.imagePayload];
     ```
-11. V `AppDelegate.m`, importovat image kontroleru jste vytvořili:
+11. V `AppDelegate.m`nástroji importujte vytvořený kontroler imagí:
 
     ```objc
     #import "imageViewController.h"
     ```
-12. Přidáte oddíl rozhraní s následující deklarace:
+12. Přidejte oddíl rozhraní s následující deklarací:
 
     ```objc
     @interface AppDelegate ()
@@ -187,7 +187,7 @@ Teď, když jste upravili back-endu aplikace k odeslání jenom *id* oznámení,
 
     @end
     ```
-13. V `AppDelegate`, ujistěte se, že vaše aplikace registruje tiché oznámení v `application: didFinishLaunchingWithOptions`:
+13. V `AppDelegate`nástroji se ujistěte, že vaše aplikace registruje pro `application: didFinishLaunchingWithOptions`tichá oznámení v nástroji:
 
     ```objc
     // Software version
@@ -231,7 +231,7 @@ Teď, když jste upravili back-endu aplikace k odeslání jenom *id* oznámení,
     return YES;
     ```
 
-14. Nahraďte v následující implementaci pro `application:didRegisterForRemoteNotificationsWithDeviceToken` se scénáři uživatelského rozhraní se změní na účet:
+14. Pokud `application:didRegisterForRemoteNotificationsWithDeviceToken` chcete, aby se změny uživatelského rozhraní scénáře projevily v účtu, nahraďte následující implementaci:
 
     ```objc
     // Access navigation controller which is at the root of window
@@ -240,7 +240,7 @@ Teď, když jste upravili back-endu aplikace k odeslání jenom *id* oznámení,
     homeViewController *hvc = (homeViewController *)[nc.viewControllers objectAtIndex:0];
     hvc.deviceToken = deviceToken;
     ```
-15. Pak přidejte následující metody, které `AppDelegate.m` načíst obrázek z vašeho koncového bodu a odesílat místního oznámení po dokončení načítání. Nezapomeňte nahradit zástupné `{backend endpoint}` s váš koncový bod back-endu:
+15. Pak přidejte následující metody k `AppDelegate.m` načtení obrázku z koncového bodu a odeslání místního oznámení po dokončení načítání. Nezapomeňte zástupný text `{backend endpoint}` nahradit koncovým bodem back-end:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{backend endpoint}/api/notifications";
@@ -321,7 +321,7 @@ Teď, když jste upravili back-endu aplikace k odeslání jenom *id* oznámení,
         // Add "else if" here to handle more types of rich content such as url, sound files, etc.
     }
     ```
-16. Zpracování místního oznámení nad otevřením kontroler zobrazení obrázků v `AppDelegate.m` pomocí následujících metod:
+16. Pořídí místní oznámení výše, a to otevřením kontroleru zobrazení imagí `AppDelegate.m` v nástroji pomocí následujících metod:
 
     ```objc
     // Helper: redirect users to image view controller
@@ -371,10 +371,10 @@ Teď, když jste upravili back-endu aplikace k odeslání jenom *id* oznámení,
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-1. V XCode spusťte aplikaci na fyzickém zařízení iOS (nabízená oznámení nebude fungovat v simulátoru).
-2. V uživatelském rozhraní aplikací iOS zadejte uživatelské jméno a heslo stejnou hodnotu pro ověřování a klikněte na tlačítko **přihlásit**.
-3. Klikněte na tlačítko **odesílání nabízených oznámení** a zobrazí se oznámení v aplikaci. Pokud kliknete na **Další**, přejdete do bitové kopie, které jste se rozhodli zahrnout do back-endu aplikace.
-4. Můžete také kliknout na **odesílání nabízených oznámení** a okamžitě stiskněte tlačítko Domů vašeho zařízení. Za malou chvíli obdržíte nabízené oznámení. Pokud klepnete na něm nebo klikněte na tlačítko Další, je přeneseno do vaší aplikace a obsahu bohaté bitové kopie.
+1. V XCode spusťte aplikaci na fyzickém zařízení s iOS (nabízená oznámení nebudou v simulátoru fungovat).
+2. V uživatelském rozhraní aplikace pro iOS zadejte uživatelské jméno a heslo stejné hodnoty pro ověřování a klikněte na **Přihlásit**.
+3. Klikněte na **Odeslat nabízení** oznámení a měla by se zobrazit upozornění v aplikaci. Pokud kliknete na **Další**, zobrazí se obrázek, který jste se rozhodli zahrnout do back-endu vaší aplikace.
+4. Můžete také kliknout na tlačítko **Odeslat nabízení oznámení** a hned stisknout tlačítko domů zařízení. Za chvíli vám obdržíte nabízené oznámení. Pokud na něj klepnete nebo kliknete na další, dostanete se do aplikace a obsahu s bohatou imagí.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png

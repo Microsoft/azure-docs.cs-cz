@@ -9,74 +9,75 @@ ms.topic: conceptual
 ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
-ms.date: 12/04/2018
-ms.custom: seodec18
-ms.openlocfilehash: 1e403ac0d2fbe9572a44fb3cde9d25e4df9b3db4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/12/2019
+ms.openlocfilehash: 689ee003e0923a65d3ca3f2d13c1a2d05c299dbd
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60818506"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358722"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Predikce služby batch spouštět rozsáhlé datové sady se službou Azure Machine Learning
 
-V tomto článku se dozvíte, jak asynchronně, vytvářením předpovědí na velkých objemů dat pomocí služby Azure Machine Learning.
+V tomto článku se naučíte, jak pomocí Azure Machine Learning služby provádět asynchronní práci s velkými objemy dat.
 
-Predikce služby Batch (nebo dávkové bodování) poskytuje nákladově efektivní odvození s bezkonkurenční propustnost pro asynchronní aplikace. Kanály predikcí služby batch můžete škálovat provádět odvození na terabajty dat v produkčním prostředí. Predikce služby batch je optimalizovaná pro vysokou propustnost, fire a zapomenout předpovědi pro velkou kolekci data.
+Předpovědi dávky (nebo vyhodnocování dávek) poskytuje nákladově efektivní odvození s využitím neparalelní propustnosti pro asynchronní aplikace. Kanály predikcí služby batch můžete škálovat provádět odvození na terabajty dat v produkčním prostředí. Předpověď dávky je optimalizovaná pro vysokou propustnost, předpovědi s požárem a zapomenout pro velkou kolekci dat.
 
 >[!TIP]
-> Pokud váš systém vyžaduje zpracování s nízkou latencí (pro rychlé zpracování jednoho dokumentu nebo malou sadu dokumentů), použijte [vyhodnocování v reálném čase](how-to-consume-web-service.md) místo predikcí služby batch.
+> Pokud váš systém vyžaduje zpracování s nízkou latencí (rychlé zpracování jediného dokumentu nebo malé sady dokumentů), místo předpovědi dávky použijte [bodování v reálném čase](how-to-consume-web-service.md) .
 
-V následujících krocích vytvoříte [kanálu strojového učení](concept-ml-pipelines.md) k registraci modelu které je předem vytrénované počítačového zpracování obrazu ([vzniku V3](https://arxiv.org/abs/1512.00567)). Pak použijete pretrained model pro dávkové bodování na imagích, které jsou k dispozici ve vašem účtu úložiště objektů Blob v Azure. Jsou tyto Image použít pro vyhodnocování neoznačených obrázků z [ImageNet](http://image-net.org/) datové sady.
+V následujících krocích vytvoříte [kanál strojového učení](concept-ml-pipelines.md) pro registraci předem vyučeného modelu počítačové vize ([čas zahájení-V3](https://arxiv.org/abs/1512.00567)). Pak použijete předem vyškolený model pro dávkové vyhodnocování pro Image dostupné v účtu úložiště Azure Blob. Jsou tyto Image použít pro vyhodnocování neoznačených obrázků z [ImageNet](http://image-net.org/) datové sady.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree).
+- Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušejte [bezplatnou nebo placená verzi služby Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Konfigurace vývojového prostředí pro instalaci sady SDK Azure Machine Learning. Další informace najdete v tématu [nakonfigurovat prostředí pro vývoj pro Azure Machine Learning](how-to-configure-environment.md).
 
 - Vytvoření pracovního prostoru Azure Machine Learning, která bude obsahovat všechny vaše prostředky kanálu. Pomocí následujícího kódu nebo další možnosti najdete v tématu [vytvořit konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
 
   ```python
-  ws = Workspace.create(
-     name = '<workspace-name>',
-     subscription_id = '<subscription-id>',
-     resource_group = '<resource-group>',
-     location = '<workspace_region>',
-     exist_ok = True)
+  from azureml.core import Workspace
+  ws = Workspace.create(name = '<workspace-name>',
+                        subscription_id = '<subscription-id>',
+                        resource_group = '<resource-group>',
+                        location = '<workspace_region>',
+                        exist_ok = True
+                        )
   ```
 
 ## <a name="set-up-machine-learning-resources"></a>Nastavení prostředků machine learning
 
-Následující kroky nastavit prostředky, které potřebujete ke spuštění kanálu:
+Následující postup nastaví prostředky, které potřebujete ke spuštění kanálu:
 
 - Přístup k úložišti dat, který už má, které je předem vytrénované modelu, vstupní popisky a obrázky ke stanovení skóre (nastavuje se to už pro vás).
 - Nastavení datového úložiště pro ukládání vašich výstupy.
-- Konfigurace `DataReference` objekty tak, aby odkazoval na data v předchozím úložišť.
+-  `DataReference`Nakonfigurujte objekty tak, aby odkazovaly na data z předchozích úložišť dat.
 - Nastavte výpočetní prostředky počítače nebo clustery ve kterém se spustí kanál kroky.
 
 ### <a name="access-the-datastores"></a>Přístup k úložiště dat
 
 Nejprve přístup k úložišti dat, který má model, popisků a obrázky.
 
-Použijete-li veřejného kontejneru blob s názvem *sampledata*v *pipelinedata* účet, který obsahuje Image ze sady ImageNet hodnocení. Název úložiště dat pro tento veřejný kontejner je *images_datastore*. Zaregistrujte toto úložiště dat pomocí pracovního prostoru:
+Pomocí veřejného kontejneru objektů BLOB s názvem *sampleData*v účtu *pipelinedata* , který obsahuje obrázky ze sady hodnocení ImageNet. Název úložiště dat pro tento veřejný kontejner je *images_datastore*. Zaregistrujte toto úložiště dat pomocí pracovního prostoru:
 
 ```python
-# Public blob container details
+from azureml.core import Datastore
+
 account_name = "pipelinedata"
-datastore_name="images_datastore"
-container_name="sampledata"
- 
+datastore_name = "images_datastore"
+container_name = "sampledata"
+
 batchscore_blob = Datastore.register_azure_blob_container(ws,
-                      datastore_name=datastore_name,
-                      container_name= container_name,
-                      account_name=account_name,
-                      overwrite=True)
+                                                          datastore_name=datastore_name,
+                                                          container_name=container_name,
+                                                          account_name=account_name,
+                                                          overwrite=True)
 ```
 
-Další nastavení pro použití výchozí úložiště pro výstup.
+V dalším kroku nastavte, aby se pro výstupy používaly výchozí úložiště dat.
 
-Při vytváření pracovního prostoru [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) a [úložiště objektů Blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) jsou připojeny k pracovním prostoru ve výchozím nastavení. Služba soubory Azure je výchozí úložiště dat pro pracovní prostor, ale můžete také použít úložiště objektů Blob jako datového úložiště. Další informace najdete v tématu [možnosti služby Azure storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Při vytváření pracovního prostoru jsou [soubory](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) Azure a [BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) ve výchozím nastavení připojené k pracovnímu prostoru. Služba soubory Azure je výchozím úložištěm dat pro pracovní prostor, ale můžete také použít úložiště objektů BLOB jako úložiště dat. Další informace najdete v tématu [Možnosti služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
 
 ```python
 def_data_store = ws.get_default_datastore()
@@ -86,34 +87,39 @@ def_data_store = ws.get_default_datastore()
 
 Nyní odkazují na data ve vašem kanálu jako vstupy do kanálu kroků.
 
-Zdroj dat v kanálu je reprezentována [odkaz DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) objektu.  `DataReference` Objektu odkazuje na data, která se nachází, nebo k ní z datového úložiště. Potřebujete `DataReference`  objektů v adresáři používá vstupní imagí, adresáře, ve kterém je uložen pretrained modelu adresáři popisků a výstupní adresář.
+Zdroj dat v kanálu je reprezentována [odkaz DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) objektu.  `DataReference`Objektodkazujenadata,kterájsouvnebojsoupřístupná z úložiště dat. `DataReference` Potřebujete objekty pro adresář, který se používá pro vstupní image, adresář, ve kterém je uložený předvedený model, adresář pro popisky a výstupní adresář.
 
 ```python
-input_images = DataReference(datastore=batchscore_blob, 
+from azureml.data.data_reference import DataReference
+
+input_images = DataReference(datastore=batchscore_blob,
                              data_reference_name="input_images",
                              path_on_datastore="batchscoring/images",
                              mode="download")
-                           
-model_dir = DataReference(datastore=batchscore_blob, 
+
+model_dir = DataReference(datastore=batchscore_blob,
                           data_reference_name="input_model",
                           path_on_datastore="batchscoring/models",
-                          mode="download")                          
-                         
-label_dir = DataReference(datastore=batchscore_blob, 
+                          mode="download")
+
+label_dir = DataReference(datastore=batchscore_blob,
                           data_reference_name="input_labels",
                           path_on_datastore="batchscoring/labels",
-                          mode="download")                          
-                         
-output_dir = PipelineData(name="scores", 
-                          datastore=def_data_store, 
+                          mode="download")
+
+output_dir = PipelineData(name="scores",
+                          datastore=def_data_store,
                           output_path_on_compute="batchscoring/results")
 ```
 
 ### <a name="set-up-compute-target"></a>Nastavení cílové výpočetní prostředí
 
-V Azure Machine Learning *compute* (nebo *cílové výpočetní prostředí*) odkazuje na počítačích nebo clustery, které provádějí výpočetní kroky ve vašem kanálu machine learning. Například můžete vytvořit `Azure Machine Learning compute`.
+V Azure Machine Learning *výpočetní* prostředí (nebo *target COMPUTE*) odkazuje na počítače nebo clustery, které provádějí výpočetní kroky v kanálu Machine Learning. Například můžete vytvořit `Azure Machine Learning compute`.
 
 ```python
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
+
 compute_name = "gpucluster"
 compute_min_nodes = 0
 compute_max_nodes = 4
@@ -126,20 +132,20 @@ if compute_name in ws.compute_targets:
 else:
     print('Creating a new compute target...')
     provisioning_config = AmlCompute.provisioning_configuration(
-                     vm_size = vm_size, # NC6 is GPU-enabled
-                     vm_priority = 'lowpriority', # optional
-                     min_nodes = compute_min_nodes, 
-                     max_nodes = compute_max_nodes)
+        vm_size=vm_size,  # NC6 is GPU-enabled
+        vm_priority='lowpriority',  # optional
+        min_nodes=compute_min_nodes,
+        max_nodes=compute_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws, 
-                        compute_name, 
-                        provisioning_config)
-    
+    compute_target = ComputeTarget.create(ws,
+                                          compute_name,
+                                          provisioning_config)
+
     compute_target.wait_for_completion(
-                     show_output=True, 
-                     min_node_count=None, 
-                     timeout_in_minutes=20)
+        show_output=True,
+        min_node_count=None,
+        timeout_in_minutes=20)
 ```
 
 ## <a name="prepare-the-model"></a>Příprava modelu
@@ -148,7 +154,7 @@ Před použitím pretrained modelu, budete muset stáhnout modelu a zaregistrova
 
 ### <a name="download-the-pretrained-model"></a>Stáhněte si pretrained modelu
 
-Stáhněte si modelu které je předem vytrénované počítačového zpracování obrazu (InceptionV3) z <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz>. Pak rozbalte ho do `models` podsložky.
+Stáhněte si modelu které je předem vytrénované počítačového zpracování obrazu (InceptionV3) z <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz>. Pak ho rozbalte do `models` podsložky.
 
 ```python
 import os
@@ -159,7 +165,7 @@ model_dir = 'models'
 if not os.path.isdir(model_dir):
     os.mkdir(model_dir)
 
-url="http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz"
+url = "http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz"
 response = urllib.request.urlretrieve(url, "model.tar.gz")
 tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
@@ -167,25 +173,25 @@ tar.extractall(model_dir)
 
 ### <a name="register-the-model"></a>Zaregistrujte model
 
-Tady je postup při registraci modelu:
+Tady je postup, jak tento model zaregistrovat:
 
 ```python
 import shutil
 from azureml.core.model import Model
 
-# register downloaded model 
+# register downloaded model
 model = Model.register(
-        model_path = "models/inception_v3.ckpt",
-        model_name = "inception", # This is the name of the registered model
-        tags = {'pretrained': "inception"},
-        description = "Imagenet trained tensorflow inception",
-        workspace = ws)
+    model_path="models/inception_v3.ckpt",
+    model_name="inception",  # This is the name of the registered model
+    tags={'pretrained': "inception"},
+    description="Imagenet trained tensorflow inception",
+    workspace=ws)
 ```
 
 ## <a name="write-your-scoring-script"></a>Zápis hodnoticí skript
 
 >[!Warning]
->Následující kód je jenom ukázka co je součástí [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) používané [ukázkový poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb). Budete muset vytvořit vlastní hodnoticí skript pro váš scénář.
+>Následující kód je pouze ukázka toho, co je obsaženo v [batch_score. py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) používané ukázkovým poznámkovým [blokem](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb). Pro svůj scénář budete muset vytvořit vlastní hodnoticí skript.
 
 `batch_score.py` Skript přijímá vstupní image *dataset_path*, které je předem vytrénované modelů v *model_dir,* a vypíše *výsledky label.txt* k *output_dir*.
 
@@ -205,7 +211,7 @@ def get_class_label_dict(label_file):
 
 class DataIterator:
   # Definition of the DataIterator here
-  
+
 def main(_):
     # Refer to batch-scoring Notebook for implementation.
     label_file_name = os.path.join(args.label_dir, "labels.txt")
@@ -232,23 +238,24 @@ def main(_):
         saver = tf.train.Saver()
         saver.restore(sess, model_path)
         out_filename = os.path.join(args.output_dir, "result-labels.txt")
-            
+
         # copy the file to artifacts
         shutil.copy(out_filename, "./outputs/")
 ```
 
 ## <a name="build-and-run-the-batch-scoring-pipeline"></a>Sestavte a spusťte dávkového vyhodnocování kanálu
 
-Budete mít všechno, co potřebujete k vytvoření kanálu, takže teď všech součástí dohromady.
-
 ### <a name="prepare-the-run-environment"></a>Příprava prostředí pro spuštění
 
-Určení závislostí systému conda vašeho skriptu. Tento objekt budete potřebovat později při vytváření kanálu kroku.
+Určení závislostí systému conda vašeho skriptu. Tento objekt budete potřebovat později, když vytvoříte krok kanálu.
 
 ```python
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
+from azureml.core.runconfig import RunConfiguration
+from azureml.core.conda_dependencies import CondaDependencies
 
-cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.10.0", "azureml-defaults"])
+cd = CondaDependencies.create(
+    pip_packages=["tensorflow-gpu==1.10.0", "azureml-defaults"])
 
 # Runconfig
 amlcompute_run_config = RunConfiguration(conda_dependencies=cd)
@@ -260,28 +267,30 @@ amlcompute_run_config.environment.spark.precache_packages = False
 
 ### <a name="specify-the-parameter-for-your-pipeline"></a>Zadejte parametr pro svůj kanál
 
-Vytvořit parametr kanálu pomocí [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) objektu s výchozí hodnotou.
+Vytvořte parametr kanálu pomocí objektu [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) s výchozí hodnotou.
 
 ```python
+from azureml.pipeline.core.graph import PipelineParameter
 batch_size_param = PipelineParameter(
-                    name="param_batch_size", 
-                    default_value=20)
+    name="param_batch_size",
+    default_value=20)
 ```
 
 ### <a name="create-the-pipeline-step"></a>Vytvoření kanálu krok
 
-Vytvoření kanálu krok pomocí skriptu, prostředí konfigurace a parametry. Zadejte cílové výpočetní prostředí, který je již připojen k vašemu pracovnímu prostoru jako cíl provádění skriptu. Použití [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) vytvořit kanál krok.
+Vytvořte krok kanálu pomocí skriptu, konfigurace prostředí a parametrů. Zadejte cílové výpočetní prostředí, který je již připojen k vašemu pracovnímu prostoru jako cíl provádění skriptu. Použití [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) vytvořit kanál krok.
 
 ```python
+from azureml.pipeline.steps import PythonScriptStep
 inception_model_name = "inception_v3.ckpt"
 
 batch_score_step = PythonScriptStep(
     name="batch_scoring",
     script_name="batch_score.py",
-    arguments=["--dataset_path", input_images, 
+    arguments=["--dataset_path", input_images,
                "--model_name", "inception",
-               "--label_dir", label_dir, 
-               "--output_dir", output_dir, 
+               "--label_dir", label_dir,
+               "--output_dir", output_dir,
                "--batch_size", batch_size_param],
     compute_target=compute_target,
     inputs=[input_images, label_dir],
@@ -292,12 +301,16 @@ batch_score_step = PythonScriptStep(
 
 ### <a name="run-the-pipeline"></a>Spuštění kanálu
 
-Nyní spuštění kanálu a prohlédněte si výstup, který je vytvořen. Výstup má skóre odpovídající každého vstupního obrázku.
+Teď kanál spusťte a prověřte výstup, který vytvořil. Výstup má skóre odpovídající každému vstupnímu obrázku.
 
 ```python
+import pandas as pd
+from azureml.pipeline.core import Pipeline
+
 # Run the pipeline
 pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
-pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline, pipeline_params={"param_batch_size": 20})
+pipeline_run = Experiment(ws, 'batch_scoring').submit(
+    pipeline, pipeline_params={"param_batch_size": 20})
 
 # Wait for the run to finish (this might take several minutes)
 pipeline_run.wait_for_completion(show_output=True)
@@ -306,7 +319,6 @@ pipeline_run.wait_for_completion(show_output=True)
 step_run = list(pipeline_run.get_children())[0]
 step_run.download_file("./outputs/result-labels.txt")
 
-import pandas as pd
 df = pd.read_csv("result-labels.txt", delimiter=":", header=None)
 df.columns = ["Filename", "Prediction"]
 df.head()
@@ -314,31 +326,31 @@ df.head()
 
 ## <a name="publish-the-pipeline"></a>Publikování kanálu
 
-Jakmile budete spokojeni s výsledkem spuštění, publikování kanálu, můžete ji spustit s různými hodnotami vstupní později. Když publikujete kanálu, získáte koncový bod REST. Tento koncový bod přijímá volání kanálu sadu parametrů, které již byly zahrnuty pomocí [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py).
+Až budete s výsledkem spuštění spokojeni, publikujte kanál, abyste ho mohli později spustit s různými vstupními hodnotami. Při publikování kanálu získáte koncový bod REST. Tento koncový bod akceptuje vyvolání kanálu se sadou parametrů, které jste už zahrnuli pomocí [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py).
 
 ```python
 published_pipeline = pipeline_run.publish_pipeline(
-    name="Inception_v3_scoring", 
-    description="Batch scoring using Inception v3 model", 
+    name="Inception_v3_scoring",
+    description="Batch scoring using Inception v3 model",
     version="1.0")
 ```
 
 ## <a name="rerun-the-pipeline-by-using-the-rest-endpoint"></a>Opětovné spuštění kanálu pomocí koncového bodu REST
 
-Spustit kanál znovu, budete potřebovat tokenu hlavičky ověřování Azure Active Directory, jak je popsáno v [AzureCliAuthentication třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py).
+Chcete-li znovu spustit kanál, budete potřebovat token hlaviček ověřování Azure Active Directory, jak je popsáno v tématu [Třída AzureCliAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py).
 
 ```python
+from azureml.pipeline.core.run import PipelineRun
 from azureml.pipeline.core import PublishedPipeline
 
 rest_endpoint = published_pipeline.endpoint
 # specify batch size when running the pipeline
-response = requests.post(rest_endpoint, 
-        headers=aad_token, 
-        json={"ExperimentName": "batch_scoring",
-               "ParameterAssignments": {"param_batch_size": 50}})
+response = requests.post(rest_endpoint,
+                         headers=aad_token,
+                         json={"ExperimentName": "batch_scoring",
+                               "ParameterAssignments": {"param_batch_size": 50}})
 
 # Monitor the run
-from azureml.pipeline.core.run import PipelineRun
 published_pipeline_run = PipelineRun(ws.experiments["batch_scoring"], run_id)
 
 RunDetails(published_pipeline_run).show()
@@ -346,7 +358,7 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete zobrazit tento pracovní začátku do konce, zkuste dávkového vyhodnocování Poznámkový blok v [Githubu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines). 
+Pokud se chcete podívat, jak to bude fungovat, vyzkoušejte si Poznámkový blok [](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)pro dávkové vyhodnocování v GitHubu.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

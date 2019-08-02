@@ -1,5 +1,5 @@
 ---
-title: Role pro entity
+title: Role pro entity – LUIS
 titleSuffix: Azure Cognitive Services
 description: Role jsou pojmenované, kontextové podtypy entity použít jenom ve vzorcích. Například v utterance `buy a ticket from New York to London`, jsou města New York i Londýn, ale každý má jiný význam ve větě. New York city původu a Londýn je město cílové.
 services: cognitive-services
@@ -9,25 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 318e71b68bbabeeef34c75a412f9fdd5b6db754a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4bd61ea74055a04718d8a9d8d5ccd42671af2ac
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073012"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638347"
 ---
-# <a name="entity-roles-for-contextual-subtypes"></a>Entita role pro kontextové subtypes
+# <a name="entity-roles-for-contextual-subtypes"></a>Role entit pro kontextové podtypy
 
-Role umožňují entity, které mají pojmenované podtypy. Roli můžete používat s libovolného typu předem připravená nebo vlastní entity a použít v příkladu projevy a vzory. 
+Role umožňují entitám mít pojmenované podtypy. Roli lze použít pro libovolný předem sestavený nebo vlastní typ entity a používá se v obou příkladech projevy a Patterns. 
 
 <a name="example-role-for-entities"></a>
 <a name="roles-with-prebuilt-entities"></a>
 
-## <a name="machine-learned-entity-example-of-roles"></a>Počítače zjištěné entity příklad rolí
+## <a name="machine-learned-entity-example-of-roles"></a>Příklad rolí, které se naučily pro počítač
 
-V utterance "nákupu lístků ze **New York** k **Londýn**, jsou města New York i Londýn, ale každý má jiný význam ve větě. New York city původu a Londýn je město cílové. 
+V utterance "koupit **lístek od Praha** do **Brna**jsou města Praha i Londýn, ale každá z nich má ve větě jiný význam. New York city původu a Londýn je město cílové. 
 
 ```
 buy a ticket from New York to London
@@ -40,9 +40,9 @@ Role zadejte název těchto rozdílů:
 |Jednoduchý|Location|počátek|kde opustí rovině z|
 |Jednoduchý|Location|cíl|kde jsou rovina|
 
-## <a name="non-machine-learned-entity-example-of-roles"></a>Příklad se naučili mimo počítač entity rolí
+## <a name="non-machine-learned-entity-example-of-roles"></a>Příklad rolí nenáročné na počítač, který se naučil
 
-V utterance "Naplánovat schůzku z 8 až 9", obě čísla určují dobu, ale pokaždé, když má odlišný význam v utterance. Role, zadejte název pro rozdíly. 
+V utterance "plánování schůzky od 8 do 9" obě čísla označují čas, ale pokaždé má v utterance jiný význam. Role poskytují názvy rozdílů. 
 
 ```
 Schedule the meeting from 8 to 9
@@ -50,35 +50,35 @@ Schedule the meeting from 8 to 9
 
 |Typ entity|Název role|Hodnota|
 |--|--|--|
-|Předem připravené datetimeV2|StartTime|8|
-|Předem připravené datetimeV2|Koncový čas|9|
+|Předem připravené datetimeV2|Spuštění|8|
+|Předem připravené datetimeV2|EndTime|9|
 
-## <a name="are-multiple-entities-in-an-utterance-the-same-thing-as-roles"></a>Jsou více entit v utterance totéž jako role? 
+## <a name="are-multiple-entities-in-an-utterance-the-same-thing-as-roles"></a>Jsou více entit v utterance stejné jako role? 
 
-Více entit může existovat v utterance a může být extrahována bez použití rolí. Pokud kontextu věty označuje s verze entity má hodnotu, pak by měl sloužit roli. 
+V utterance může existovat více entit a lze je extrahovat bez použití rolí. Pokud kontext věty označuje, která verze entity má hodnotu, měla by být použita role. 
 
-### <a name="dont-use-roles-for-duplicates-without-meaning"></a>Nepoužívejte duplicitní položky bez význam role
+### <a name="dont-use-roles-for-duplicates-without-meaning"></a>Nepoužívejte role pro duplicity bez významu
 
-Pokud utterance obsahuje seznam umístění, `I want to travel to Seattle, Cairo, and London.`, toto je seznam, kde každá položka nemá další význam. 
+Pokud utterance obsahuje seznam umístění, `I want to travel to Seattle, Cairo, and London.`jedná se o seznam, kde každá položka nemá další význam. 
 
-### <a name="use-roles-if-duplicates-indicate-meaning"></a>Použijte role-li význam zjištěno duplicitní položky
+### <a name="use-roles-if-duplicates-indicate-meaning"></a>Použijte role, pokud duplicitní hodnoty označují význam
 
-Pokud utterance obsahuje seznam umístění s významem, `I want to travel from Seattle, with a layover in Londen, landing in Cairo.`, tato význam o původu, layover a určení by se měly zachytávat s rolemi.
+Pokud utterance obsahuje seznam míst s významem `I want to travel from Seattle, with a layover in Londen, landing in Cairo.`, musí být tento význam původu, layover a cíl zachycen s rolemi.
 
-### <a name="roles-can-indicate-order"></a>Role můžete určit pořadí
+### <a name="roles-can-indicate-order"></a>Role můžou indikovat pořadí.
 
-Pokud utterance změnili označující pořadí, ve kterém chcete extrahovat, `I want to first start with Seattle, second London, then third Cairo`, můžete rozbalit v několika způsoby. Tokeny, které označují roli, můžete označit `first start with`, `second`, `third`. Můžete také použít předem připravených entit **pořadí** a **GeographyV2** předem připravených entit složený entity k zachycení představu o pořadí a místo. 
+Pokud se utterance změnila tak, aby označovala pořadí, které `I want to first start with Seattle, second London, then third Cairo`jste chtěli extrahovat, můžete extrahovat několika způsoby. Můžete označit tokeny, které určují roli, `first start with` `second`,, `third`. V složené entitě můžete také použít předdefinované **pořadí** entit a předem vytvořenou entitu **GeographyV2** a zachytit tak nápad pořadí a umístění. 
 
-## <a name="how-are-roles-used-in-example-utterances"></a>Jak se používají role v příkladu projevy?
+## <a name="how-are-roles-used-in-example-utterances"></a>Jak jsou role používané v příkladu projevy?
 
-Pokud entita má roli uživatele a entita je označena jako v utterance příkladu, budete mít možnost výběru pouze entity, nebo výběrem entity a role. 
+Když má entita roli a entita je označená v příkladu utterance, máte možnost vybrat jenom entitu nebo vybrat entitu a roli. 
 
-Následující příklad projevy používat entity a role:
+Následující příklad projevy použití entit a rolí:
 
-|Token zobrazení|Zobrazení entity|
+|Zobrazení tokenu|Zobrazení entity|
 |--|--|
-|Jmenuji se dozvědět více o zajímavých **Praha**|Jmenuji se chcete dozvědět více o {Location}|
-|Koupit lístek ze Seattlu do New York|Koupit lístek z {umístění: Origin} a {umístění: Destination}|
+|Jsem mi zajímavý, jak se dozvědět víc o **Seattlu**|Zajímá Vás o více informací {Location}|
+|Koupit lístek od Seattle do Praha|Koupit lístek z umístění {Location: Origin} do umístění {Location: Destination}|
 
 ## <a name="how-are-roles-used-in-patterns"></a>Jak se používají role ve vzorech?
 Role v utterance vzor šablony, se používají v rámci utterance: 
@@ -91,13 +91,13 @@ Role v utterance vzor šablony, se používají v rámci utterance:
 ## <a name="role-syntax-in-patterns"></a>Syntaxe role ve vzorcích
 Entity a role jsou uzavřeny v závorkách, `{}`. Entity a role jsou odděleny dvojtečkou. 
 
-## <a name="entity-roles-versus-collaborator-roles"></a>Entity role a role spolupracovníka
+## <a name="entity-roles-versus-collaborator-roles"></a>Role entit versus role spolupracovníka
 
-Entita role se vztahují na datový model aplikace LUIS. [Spolupracovník](luis-concept-collaborator.md) rolí platí pro úrovně přístupu pro vytváření. 
+Role entit se vztahují na datový model aplikace LUIS. [](luis-concept-collaborator.md) Role spolupracovníka se vztahují na úrovně přístupu pro vytváření. 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
 ## <a name="next-steps"></a>Další postup
 
-* Použití [praktické kurzu](tutorial-entity-roles.md) entit rolí pomocí jiných počítačů zjistili entity
+* Využijte [praktickou výuku](tutorial-entity-roles.md) s využitím rolí entit s entitami, které se nestrojově naučily.
 * Zjistěte, jak přidat [role](luis-how-to-add-entities.md#add-a-role-to-pattern-based-entity)

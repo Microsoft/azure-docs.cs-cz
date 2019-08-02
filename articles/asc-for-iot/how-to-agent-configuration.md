@@ -1,6 +1,6 @@
 ---
-title: Konfigurace pro agenta IoT ve verzi Preview Azure Security Center | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat agenty pro použití s Azure Security Center pro IoT.
+title: Konfigurace Azure Security Center pro agenta IoT | Microsoft Docs
+description: Naučte se konfigurovat agenty pro použití s Azure Security Center pro IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,132 +13,145 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 39539bb14877208e5f6af957e735a136b077f16a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 8b4764d855663325b2445f7b588b795c15f4edde
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618282"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596338"
 ---
 # <a name="tutorial-configure-security-agents"></a>Kurz: Konfigurace agentů zabezpečení
 
-> [!IMPORTANT]
-> Azure Security Center pro IoT je aktuálně ve verzi public preview.
-> Tato verze preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Tento článek vysvětluje, Azure Security Center (ASC) pro agenta zabezpečení IoT, jak změnit jejich konfigurace ASC pro agenty zabezpečení IoT.
+Tento článek vysvětluje Azure Security Center pro agenty zabezpečení IoT a podrobně popisuje, jak je změnit a nakonfigurovat. 
 
 > [!div class="checklist"]
 > * Konfigurace agentů zabezpečení
-> * Změnit chování agenta tak, že upravíte vlastnosti dvojčat
-> * Zjistit výchozí konfigurace
+> * Změna chování agenta úpravou dvojitých vlastností
+> * Zjistit výchozí konfiguraci
 
 ## <a name="agents"></a>Agenti
 
-ASC IoT zabezpečení agentů shromažďování dat ze zařízení IoT a provádět akce zabezpečení ke zmírnění zjištěná ohrožení zabezpečení. Konfigurace agenta zabezpečení je řídit, používáte sadu vlastnosti dvojčete modulu, které můžete přizpůsobit. Obecně platí jsou úlohy s řídkým sekundární aktualizace těchto vlastností.  
+Azure Security Center pro agenty zabezpečení IoT shromažďují data ze zařízení IoT a provádějí bezpečnostní akce ke zmírnění zjištěných ohrožení zabezpečení. Konfigurace agenta zabezpečení je ovladatelné pomocí sady vlastností modulu, které můžete přizpůsobit. Obecně platí, že sekundární aktualizace těchto vlastností jsou nečasté.  
 
-Pro objekt konfigurace dvojčete agenta zabezpečení IoT od ASC se formát objektu .json. Objekt konfigurace je sada nastavitelných vlastností, které můžete definovat pro řízení chování agenta. 
+Azure Security Center objekt konfigurace s dvojitou vlastností zabezpečení IoT je objekt formátu JSON. Objekt konfigurace je sada přidaných vlastností, které můžete definovat pro řízení chování agenta. 
 
-Tato konfigurace vám umožní přizpůsobit agenta pro každý scénář vyžaduje. Například automaticky bez některé události nebo udržování spotřeba energie na minimální úroveň jsou možné konfigurací těchto vlastností.  
+Tyto konfigurace vám pomůžou přizpůsobit agenta pro každý požadovaný scénář. Například automatické vyloučení některých událostí nebo udržování spotřeby energie na minimální úroveň je možné konfigurací těchto vlastností.  
 
-Použijte pro konfiguraci agenta zabezpečení IoT ASC [schématu](https://aka.ms/iot-security-github-module-schema) provádět změny.  
+K provedení změn použijte [schéma](https://aka.ms/iot-security-github-module-schema) konfigurace agenta zabezpečení služby Azure Security Center pro IoT.  
 
 ## <a name="configuration-objects"></a>Objekty konfigurace 
 
-Každý ASC pro agenta zabezpečení IoT související vlastnosti se nachází v objektu konfigurace agenta, v části požadované vlastnosti z **azureiotsecurity** modulu. 
+Vlastnosti související se všemi Azure Security Center pro agenta zabezpečení IoT jsou umístěné v objektu konfigurace agenta v části požadované vlastnosti modulu **azureiotsecurity** . 
 
-Upravit konfiguraci, vytvářet a upravovat tento objekt uvnitř **azureiotsecurity** identity dvojčete modulu. 
+Pokud chcete upravit konfiguraci, vytvořte a upravte tento objekt uvnitř **azureiotsecurity** identity modulu. 
 
-Pokud v neexistuje objekt konfigurace agenta **azureiotsecurity** dvojče zařízení, všechny hodnoty vlastností agenta zabezpečení jsou nastavené na výchozí. 
+Pokud objekt konfigurace agenta neexistuje v modulu **azureiotsecurity** s dvojitou hodnotou, všechny hodnoty vlastností agenta zabezpečení jsou nastaveny na výchozí. 
 
 ```json
 "desired": {
-  "azureiot*com^securityAgentConfiguration^1*0*0": {
+  "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
   } 
 }
 ```
 
-Ujistěte se, že chcete zkontrolovat změny konfigurace agenta před tímto [schématu](https://aka.ms/iot-security-github-module-schema).
-Agent se nespustí, pokud objekt konfigurace neodpovídá schématu.
-
 ## <a name="configuration-schema-and-validation"></a>Schéma konfigurace a ověření 
 
-Ujistěte se, že k ověření vaší konfigurace agenta před tímto [schématu](https://aka.ms/iot-security-github-module-schema). Agent se nespustí, pokud objekt konfigurace neodpovídá schématu.
+Ujistěte se, že jste ověřili konfiguraci agenta proti tomuto [schématu](https://aka.ms/iot-security-github-module-schema). Agent se nespustí, pokud objekt konfigurace neodpovídá schématu.
 
  
-Pokud je spuštěn agent, objekt konfigurace se změní na není platnou konfiguraci (konfigurace neodpovídá schématu), agent bude ignorovat neplatná konfigurace a budou i nadále používat aktuální konfiguraci. 
+Pokud je v době, kdy je spuštěn Agent nástroje, změněn objekt konfigurace na neplatnou konfiguraci (konfigurace neodpovídá schématu), Agent bude ignorovat neplatnou konfiguraci a bude pokračovat v používání aktuální konfigurace. 
 
-## <a name="editing-a-property"></a>Úpravy vlastností 
+### <a name="configuration-validation"></a>Ověření konfigurace
 
-Všechny vlastní vlastnosti musí být nastavena v objektu konfigurace agenta v rámci **azureiotsecurity** dvojčete modulu.
-Pokud chcete použít výchozí hodnotu vlastnosti, odeberte vlastnost z objektu konfigurace.
+Azure Security Center pro agenta zabezpečení IoT oznamuje svou aktuální konfiguraci v části vykázané vlastnosti v modulu **azureiotsecurity** s dvojitou identitou.
+Agent hlásí všechny dostupné vlastnosti, pokud vlastnost nebyla nastavena uživatelem, a proto agent nahlásí výchozí konfiguraci.
+
+Chcete-li ověřit konfiguraci, porovnejte hodnoty nastavené v požadovaném oddílu s hodnotami uvedenými v hlášené části.
+
+Pokud dojde k neshodě mezi požadovanými a oznámenými vlastnostmi, agent nemohl tuto konfiguraci analyzovat.
+
+Ověřte požadované vlastnosti na [schématu](https://aka.ms/iot-security-github-module-schema), opravte chyby a nastavte požadované vlastnosti znovu.
+
+> [!NOTE]
+> Výstraha chyby konfigurace bude vyvolána od agenta v případě, že agent nemohl analyzovat požadovanou konfiguraci.
+> Porovnejte hlášené a požadované části, abyste zjistili, jestli se výstraha pořád používá.
+
+## <a name="editing-a-property"></a>Úprava vlastnosti 
+
+Všechny vlastní vlastnosti musí být nastaveny uvnitř objektu konfigurace agenta v rámci modulu **azureiotsecurity** s dvojitou přesností.
+Chcete-li použít výchozí hodnotu vlastnosti, odeberte vlastnost z objektu konfigurace.
 
 ### <a name="setting-a-property"></a>Nastavení vlastnosti
 
-1. Ve službě IoT Hub vyhledejte a vyberte zařízení, které chcete změnit.
+1. V IoT Hub vyhledejte a vyberte zařízení, které chcete změnit.
 
-1. Klikněte na tlačítko na vašem zařízení a potom na **azureiotsecurity** modulu.
+2. Klikněte na zařízení a pak na modul **azureiotsecurity** .
 
-1. Klikněte na **dvojče zařízení Identity**.
+3. Klikněte na možnost nevlákenovaná **Identita modulu**.
 
-1. Upravte požadované vlastnosti zabezpečení modulu.
+4. Upravte vlastnosti, které chcete změnit v modulu zabezpečení.
    
-   Třeba ke konfiguraci připojení událostí s vysokou prioritou a shromažďování událostí s vysokou prioritou každých 7 minut, použijte následující konfiguraci.
+   Pokud například chcete konfigurovat události připojení s vysokou prioritou a shromažďovat události s vysokou prioritou každých 7 minut, použijte následující konfiguraci.
    
    ```json
     "desired": {
-      "azureiot*com^securityAgentConfiguration^1*0*0": {
-        "highPriorityMessageFrequency": "PT7M",    
-        "eventPriorityConnectionCreate": "High" 
+      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
+        "highPriorityMessageFrequency": {
+          "value" : "PT7M"
+        },    
+        "eventPriorityConnectionCreate": {
+          "value" : "High" 
+        }
       } 
     }, 
     ```
 
-1. Klikněte na **Uložit**.
+5. Klikněte na **Uložit**.
 
 ### <a name="using-a-default-value"></a>Použití výchozí hodnoty
 
-Pokud chcete použít výchozí hodnotu vlastnosti, odeberte vlastnost z objektu konfigurace.
+Chcete-li použít výchozí hodnotu vlastnosti, odeberte vlastnost z objektu konfigurace.
 
 ## <a name="default-properties"></a>Výchozí vlastnosti 
 
-Následující tabulka obsahuje nastavitelných vlastností ASC pro agenty zabezpečení IoT.
+Následující tabulka obsahuje ovladatelné vlastnosti Azure Security Center pro agenty zabezpečení IoT.
 
-Výchozí hodnoty jsou k dispozici ve správné schéma v [Githubu](https://aka.ms/iot-security-module-default).
+Výchozí hodnoty jsou k dispozici ve správném schématu [](https\://aka.ms/iot-security-module-default)v GitHubu.
 
 | Name| Stav | Platné hodnoty| Výchozí hodnoty| Popis |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|highPriorityMessageFrequency|Povinné: false |Platné hodnoty: Doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT7M |Maximální doba před zprávy s vysokou prioritou se odesílají.|
-|lowPriorityMessageFrequency |Povinné: false|Platné hodnoty: Doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT5H |Maximální doba před zprávy s nízkou prioritou jsou odeslány.| 
-|snapshotFrequency |Vyžadovat: false|Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota PT13H |Časový interval pro vytváření snímků stav zařízení.| 
-|maxLocalCacheSizeInBytes |Povinné: false |Platné hodnoty: |Výchozí hodnota: 2560000, větší než 8192 | Maximální povolená velikost úložiště (v bajtech) pro zprávu mezipaměti agenta. Maximální množství místa, které můžou ukládat zprávy na zařízení, před odesláním zprávy.| 
-|maxMessageSizeInBytes |Povinné: false |Platné hodnoty: Kladné číslo větší než 8192, menší než 262144 |Výchozí hodnota: 204800 |Maximální povolená velikost agenta na cloudové zprávě. Toto nastavení určuje maximální množství dat odeslaných v každé zprávě. |
-|eventPriority${EventName} |Povinné: false |Platné hodnoty: Vysoká, nízká vypnuto |Výchozí hodnoty: |Priorita každý agent vygeneruje událost | 
+|highPriorityMessageFrequency|Požadováno: false |Platné hodnoty: Doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT7M |Maximální časový interval před odesláním zpráv s vysokou prioritou.|
+|lowPriorityMessageFrequency |Požadováno: false|Platné hodnoty: Doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT5H |Maximální doba před odesláním zpráv s nízkou prioritou.| 
+|snapshotFrequency |Vyžadovat: false|Platné hodnoty: Doba trvání ve formátu ISO 8601 |Výchozí hodnota PT13H |Časový interval pro vytváření snímků stavu zařízení.| 
+|maxLocalCacheSizeInBytes |Požadováno: false |Platné hodnoty: |Výchozí hodnota: 2560000, větší než 8192 | Maximální povolená velikost úložiště (v bajtech) pro mezipaměť pro zprávy agenta. Maximální místo, na které je povoleno ukládat zprávy na zařízení před odesláním zprávy.| 
+|maxMessageSizeInBytes |Požadováno: false |Platné hodnoty: Kladné číslo větší než 8192, menší než 262144 |Výchozí hodnota: 204800 |Maximální povolená velikost agenta pro zprávu cloudu Toto nastavení řídí maximální množství dat odesílaných v každé zprávě. |
+|eventPriority${EventName} |Požadováno: false |Platné hodnoty: Vysoká, nízká, vypnutá |Výchozí hodnoty: |Priorita každé události generované agentem | 
 
-### <a name="supported-security-events"></a>Události podporované zabezpečení
+### <a name="supported-security-events"></a>Podporované události zabezpečení
 
-|Název události| Vlastnost PropertyName | Výchozí hodnota| Události snímků| Podrobnosti stavu  |
+|Název události| Vlastnost PropertyName | Výchozí hodnota| Událost snímku| Podrobnosti o stavu  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Diagnostické události|eventPriorityDiagnostic| Vypnuto| False| Diagnostické události týkající se agenta. Tuto událost použijte pro podrobné protokolování.| 
-|Chyba konfigurace |eventPriorityConfigurationError |Nízká |False |Analýza konfigurace agenta se nezdařila. Ověřte konfiguraci proti schématu.| 
-|Události vynechané statistiky |eventPriorityDroppedEventsStatistics |Nízká |Pravda|Statistika událostí týkající se agenta. |
-|Statistika zpráv|eventPriorityMessageStatistics |Nízká |Pravda |Agent související statistiky zpráv. |
-|Připojené hardwaru|eventPriorityConnectedHardware |Nízká |Pravda |Snímek veškerý hardware připojené k zařízení.|
-|Naslouchající porty|eventPriorityListeningPorts |Vysoká |Pravda |Snímek všech otevřených naslouchající porty na zařízení.|
-|Vytvoření procesu |eventPriorityProcessCreate |Nízká |False |Vytvoření zařízení procesu audity.|
-|Ukončit proces|eventPriorityProcessTerminate |Nízká |False |Audity zpracování ukončení na zařízení.| 
-|Systémové informace |eventPrioritySystemInformation |Nízká |Pravda |Snímek informace o systému (například: Operační systém nebo procesor).| 
-|Místní uživatele| eventPriorityLocalUsers |Vysoká |Pravda|Snímek registrovaných místních uživatelů v rámci systému. |
-|Přihlásit|  eventPriorityLogin |Vysoká|False|Kontrola událostí přihlášení k zařízení (místní a vzdálené přihlášení).|
-|Vytvoření připojení |eventPriorityConnectionCreate|Nízká|False|Audity připojení TCP vytvořili do a ze zařízení. |
-|Konfigurace brány firewall| eventPriorityFirewallConfiguration|Nízká|Pravda|Snímek konfigurace brány firewall na zařízení (pravidla brány firewall). |
-|Směrným plánem operačního systému| eventPriorityOSBaseline| Nízká|Pravda|Zkontrolujte snímek směrným plánem operačního systému zařízení.|
+|Diagnostická událost|eventPriorityDiagnostic| Vypnuto| False| Diagnostické události související s agentem. Tuto událost použijte pro podrobné protokolování.| 
+|Chyba konfigurace |eventPriorityConfigurationError |Nízká |False |Agentovi se nepovedlo analyzovat konfiguraci. Ověřte konfiguraci oproti schématu.| 
+|Statistika vyřazených událostí |eventPriorityDroppedEventsStatistics |Nízká |Pravda|Statistika událostí souvisejících s agenty |
+|Statistika zprávy|eventPriorityMessageStatistics |Nízká |Pravda |Statistika zpráv souvisejících s agenty |
+|Připojený hardware|eventPriorityConnectedHardware |Nízká |Pravda |Snímek veškerého hardwaru připojeného k zařízení.|
+|Naslouchající porty|eventPriorityListeningPorts |Vysoká |Pravda |Snímek všech otevřených naslouchajících portů na zařízení.|
+|Vytvoření procesu |eventPriorityProcessCreate |Nízká |False |Audituje vytváření procesů na zařízení.|
+|Ukončení procesu|eventPriorityProcessTerminate |Nízká |False |Audituje ukončení procesu v zařízení.| 
+|Systémové informace |eventPrioritySystemInformation |Nízká |Pravda |Snímek systémových informací (například: Operační systém nebo procesor).| 
+|Místní uživatelé| eventPriorityLocalUsers |Vysoká |Pravda|Snímek registrovaných místních uživatelů v rámci systému. |
+|Přihlásit se|  eventPriorityLogin |Vysoká|False|Auditujte události přihlášení do zařízení (místní a Vzdálená přihlášení).|
+|Vytvoření připojení |eventPriorityConnectionCreate|Nízká|False|Audituje připojení TCP vytvořená do a ze zařízení. |
+|Konfigurace brány firewall| eventPriorityFirewallConfiguration|Nízká|Pravda|Snímek konfigurace brány firewall zařízení (pravidla brány firewall). |
+|Základní hodnoty operačního systému| eventPriorityOSBaseline| Nízká|Pravda|Snímek kontroly standardních hodnot operačního systému zařízení|
+|
  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Vysvětlení ASC pro IoT doporučení](concept-recommendations.md)
-- [Prozkoumejte ASC pro IoT výstrahy](concept-security-alerts.md)
-- [Přístup k datům raw zabezpečení](how-to-security-data-access.md)
+- [Vysvětlení Azure Security Center pro doporučení IoT](concept-recommendations.md)
+- [Prozkoumejte Azure Security Center pro výstrahy IoT](concept-security-alerts.md)
+- [Přístup k nezpracovaným datům zabezpečení](how-to-security-data-access.md)

@@ -1,6 +1,6 @@
 ---
-title: Vývoj s využitím rozhraní API v3 – Azure | Dokumentace Microsoftu
-description: Tento článek popisuje pravidla, které se vztahují k entitám a rozhraním API při vývoji pomocí Media Services v3.
+title: Vývoj s použitím rozhraní V3 API – Azure | Microsoft Docs
+description: Tento článek popisuje pravidla, která se vztahují na entity a rozhraní API při vývoji s Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,61 +9,61 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a8dac6f38052f176c7a3741a664e174d0a66cbc5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 26fea4322df625b2e38028a3b7121fb41f2acf81
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612705"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311865"
 ---
-# <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím Media Services v3 rozhraní API
+# <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím rozhraní API Media Services V3
 
-Jako vývojář, můžete použít Media Services [rozhraní REST API](https://aka.ms/ams-v3-rest-ref) nebo klientských knihoven, které umožňují pracovat s rozhraním REST API snadno vytvářet, spravovat a udržovat vlastní multimediální pracovní postupy. [Media Services v3](https://aka.ms/ams-v3-rest-sdk) rozhraní API je založena na specifikaci OpenAPI (dříve označované jako Swagger).
+Jako vývojář můžete použít Media Services [REST API](https://aka.ms/ams-v3-rest-ref) nebo klientské knihovny, které vám umožní pracovat s REST API, abyste mohli snadno vytvářet, spravovat a spravovat vlastní pracovní postupy pro média. Rozhraní [Media Services V3](https://aka.ms/ams-v3-rest-sdk) API je založené na specifikaci openapi (dříve označované jako Swagger).
 
-Tento článek popisuje pravidla, které se vztahují k entitám a rozhraním API při vývoji pomocí Media Services v3.
+Tento článek popisuje pravidla, která se vztahují na entity a rozhraní API při vývoji s Media Services V3.
 
-## <a name="accessing-the-azure-media-services-api"></a>Přístup k Azure Media Services rozhraní API
+## <a name="accessing-the-azure-media-services-api"></a>Přístup k rozhraní Azure Media Services API
 
-K autorizaci pro přístup k prostředkům služby Media Services a rozhraní API služby Media Services, musíte nejprve být ověřeni. Služba Media Services podporuje [Azure Active Directory (Azure AD) – na základě](../../active-directory/fundamentals/active-directory-whatis.md) ověřování. Jsou dvě běžné možnosti ověřování:
+Aby bylo možné získat přístup k Media Services prostředkům a rozhraní Media Services API, musíte nejdřív ověřit. Media Services podporuje ověřování [založené na Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) . Mezi dvě běžné možnosti ověřování patří:
  
-* **Ověřování instančních objektů** – slouží k ověření služby (například: webové aplikace, aplikace function App, logic apps, rozhraní API a mikroslužeb). Aplikace, které se běžně používají tuto metodu ověřování jsou aplikace, na kterých běží služby démonů, střední vrstvy služby nebo podle plánu. Pro webové aplikace existuje by měl vždy být například střední vrstvy, která se připojuje ke službě Media Services pomocí instančního objektu.
-* **Ověřování uživatelů** – slouží k ověření osoba, která používá aplikace k interakci s prostředky služby Media Services. Interaktivní aplikace by měly nejprve vyzve uživatele k přihlašovacím údajům uživatele. Příkladem je aplikace konzoly správy Autorizovaní uživatelé používají ke sledování úloh kódování nebo živého streamování.
+* **Ověřování instančního objektu** – používá se k ověření služby (například webové aplikace, aplikace Function App, Logic Apps, API a mikroslužby). Aplikace, které běžně používají tuto metodu ověřování, jsou aplikace, které spouštějí služby démon, služby střední vrstvy nebo naplánované úlohy. Například pro webové aplikace by měla být vždy střední vrstva, která se připojuje k Media Services s instančním objektem.
+* **Ověřování uživatele** – používá se k ověření osoby, která aplikaci používá k interakci s Media Servicesmi prostředky. Interaktivní aplikace by nejdřív měla uživatele vyzvat k zadání přihlašovacích údajů uživatele. Příkladem je aplikace konzoly pro správu používaná autorizovanými uživateli k monitorování úloh kódování nebo živého streamování.
 
-Rozhraní API služby Media Services vyžaduje, že požádá uživatele nebo aplikace, což rozhraní REST API mít přístup k prostředku účtu Media Services a používat **Přispěvatel** nebo **vlastníka** role. Rozhraní API můžete přistupovat pomocí **čtečky** role, ale pouze **získat** nebo **seznamu**   operace bude k dispozici. Další informace najdete v tématu [řízení přístupu na základě rolí pro účty Media Services](rbac-overview.md).
+Rozhraní Media Services API vyžaduje, aby uživatel nebo aplikace, které mají žádosti REST API, měly přístup k prostředku Media Services účtu a používají roli **Přispěvatel** nebo **vlastník** . K rozhraní API se dá získat přístup **** , ale budou k dispozici jenom operace **Get** nebo **list**   . Další informace najdete v tématu [řízení přístupu na základě role pro účty Media Services](rbac-overview.md).
 
-Místo vytvoření instančního objektu, zvažte použití spravované identity pro prostředky Azure pro přístup k rozhraní API služby Media Services prostřednictvím Azure Resource Manageru. Další informace o spravovaných identit pro prostředky Azure, najdete v článku [co je spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+Místo Vytvoření instančního objektu zvažte použití spravovaných identit pro prostředky Azure pro přístup k rozhraní Media Services API prostřednictvím Azure Resource Manager. Další informace o spravovaných identitách pro prostředky Azure najdete v tématu [co jsou spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-### <a name="azure-ad-service-principal"></a>Instanční objekt Azure AD 
+### <a name="azure-ad-service-principal"></a>Instanční objekt služby Azure AD 
 
-Pokud vytváříte aplikace Azure AD a služby instančního objektu, aplikace musí být ve vlastním tenanta. Po vytvoření aplikace, dejte aplikaci **Přispěvatel** nebo **vlastníka** role přístup k účtu Media Services. 
+Pokud vytváříte aplikaci a instanční objekt služby Azure AD, musí být aplikace ve vlastním tenantovi. Po vytvoření aplikace udělte přispěvateli aplikace nebo roli **** **vlastníka** přístup k účtu Media Services. 
 
-Pokud si nejste jisti, zda máte oprávnění k vytvoření aplikace Azure AD, najdete v článku [požadovaná oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+Pokud si nejste jistí, jestli máte oprávnění k vytvoření aplikace služby Azure AD, přečtěte si téma [požadovaná oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
-Na následujícím obrázku představuje čísla tok žádostí v chronologickém pořadí:
+Na následujícím obrázku čísla reprezentují tok požadavků v chronologickém pořadí:
 
 ![Aplikace střední vrstvy](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
-1. Střední vrstvy aplikace požaduje přístupový token Azure AD, který má následující parametry:  
+1. Aplikace střední vrstvy požaduje přístupový token Azure AD s následujícími parametry:  
 
-   * Koncový bod pro tenanta Azure AD.
-   * Identifikátor URI prostředku služby Media Services.
-   * Identifikátor URI pro REST Media Services.
+   * Koncový bod tenanta Azure AD.
+   * Media Services identifikátor URI prostředku.
+   * Identifikátor URI prostředku pro Media Services REST
    * Hodnoty aplikace Azure AD: ID klienta a tajný kód klienta.
    
-   Pokud chcete získat všechny potřebné hodnoty, najdete v článku [rozhraní API k přístupu k Azure Media Services pomocí rozhraní příkazového řádku Azure](access-api-cli-how-to.md)
+   Pokud chcete získat všechny potřebné hodnoty, přečtěte si téma [přístup k rozhraní API Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md) .
 
-2. Přístupový token Azure AD se odešle do střední vrstvy.
-4. Střední vrstva odešle požadavek REST API služby Azure Media s tokenem Azure AD.
-5. Střední vrstva získá zpět data ze služby Media Services.
+2. Přístupový token Azure AD se pošle do střední úrovně.
+4. Střední vrstva odesílá požadavek do Azure Media REST API s tokenem Azure AD.
+5. Střední vrstva vrátí data z Media Services.
 
 ### <a name="samples"></a>Ukázky kódu
 
-Viz následující ukázky, které ukazují, jak se připojit pomocí instančního objektu Azure AD:
+Podívejte se na následující ukázky, které ukazují, jak se připojit pomocí instančního objektu služby Azure AD:
 
-* [Spojte se s REST](media-rest-apis-with-postman.md)  
+* [Připojit se pomocí REST](media-rest-apis-with-postman.md)  
 * [Připojení s využitím Javy](configure-connect-java-howto.md)
 * [Připojení s využitím .NET](configure-connect-dotnet-howto.md)
 * [Připojení s využitím Node.js](configure-connect-nodejs-howto.md)
@@ -75,35 +75,41 @@ Na názvy prostředků služby Azure Media Services v3 (například prostředky,
 
 Názvy prostředků služby Media Services nemůže obsahovat znaky <, >, %, &, :, &#92;, ?, /, *, +, ., jednoduché uvozovky ani žádné řídicí znaky. Všechny ostatní znaky jsou povolené. Maximální délka názvu prostředku je 260 znaků. 
 
-Další informace o zadávání názvů Azure Resource Manageru najdete v tématu: [Požadavky na pojmenování](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) a [zásady vytváření názvů](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+Další informace o Azure Resource Manager pojmenování najdete v tématech: [Požadavky](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) na pojmenování a zásady [vytváření názvů](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
-## <a name="long-running-operations"></a>Dlouho běžící operace
+## <a name="long-running-operations"></a>Dlouhodobě běžící operace
 
-Operace označené `x-ms-long-running-operation` ve službě Azure Media Services [swagger soubory](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) se dlouho běžící operace. 
+Operace označené `x-ms-long-running-operation` v Azure Media Services [soubory Swagger](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) jsou dlouhodobě běžící operace. 
 
-Podrobnosti o tom, jak sledovat asynchronních operací v Azure najdete v tématu [asynchronních operací v](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
+Podrobnosti o tom, jak sledovat asynchronní operace Azure, najdete v tématu [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
-Služba Media Services má následující dlouho běžící operace:
+Media Services má následující dlouhodobě běžící operace:
 
-* Vytvoření Livestream
-* Aktualizace Livestream
-* Odstranit Livestream
-* Spustit Livestream
-* Zastavit Livestream
-* Resetovat Livestream
-* Vytvoření LiveOutput
-* Odstranit LiveOutput
-* Vytvoření StreamingEndpoint
-* Aktualizace StreamingEndpoint
-* Odstranit StreamingEndpoint
-* Spustit StreamingEndpoint
-* Zastavit StreamingEndpoint
-* Škálování StreamingEndpoint
+* [Vytváření živých událostí](https://docs.microsoft.com/rest/api/media/liveevents/create)
+* [Aktualizovat živé události](https://docs.microsoft.com/rest/api/media/liveevents/update)
+* [Odstranit živou událost](https://docs.microsoft.com/rest/api/media/liveevents/delete)
+* [Spustit živou událost](https://docs.microsoft.com/rest/api/media/liveevents/start)
+* [Zastavit Livestream](https://docs.microsoft.com/rest/api/media/liveevents/stop)
+
+  `removeOutputsOnStop` Použijte parametr k odstranění všech přidružených výstupů živého vysílání při zastavování události.  
+* [Resetovat Livestream](https://docs.microsoft.com/rest/api/media/liveevents/reset)
+* [Vytvořit LiveOutput](https://docs.microsoft.com/rest/api/media/liveevents/create)
+* [Odstranit LiveOutput](https://docs.microsoft.com/rest/api/media/liveevents/delete)
+* [Vytvořit StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
+* [Aktualizovat StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/update)
+* [Odstranit StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/delete)
+* [Spustit StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)
+* [Zastavit StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
+* [Škálování StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
+
+Po úspěšném odeslání dlouhé operace obdržíte 202 přijato a musíte se dotázat na dokončení operace pomocí vráceného ID operace.
+
+Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vysílání je podporována pouze jedna dlouhodobě běžící operace. Po spuštění se musí dlouho běžící operace dokončit před spuštěním následné dlouhotrvající operace na stejném Livestream nebo jakýchkoli přidružených živých výstupech. U živých událostí s více živými výstupy musíte očekávat dokončení dlouhotrvající operace na jednom aktivním výstupu před aktivací dlouhotrvající operace na jiném živém výstupu. 
 
 ## <a name="sdks"></a>Sady SDK
 
 > [!NOTE]
-> Sady SDK služby Azure Media Services v3 nemusí být bezpečné pro vlákna. Při vývoji aplikace Vícevláknová, měli byste přidat vlastní logiku synchronizace vlákno při ochraně klienta nebo použít nový objekt AzureMediaServicesClient na vlákno. Také byste měli být opatrní z více vláken problémy spojené s uvedením volitelné objekty poskytované kódu do klienta (například HttpClient instance v rozhraní .NET).
+> Sady SDK Azure Media Services V3 nejsou zaručeny jako bezpečné pro přístup z více vláken. Při vývoji vícevláknové aplikace byste měli přidat vlastní logiku synchronizace vláken pro ochranu klienta nebo použití nového objektu AzureMediaServicesClient na vlákno. Měli byste také dbát na problémy s více vlákny, které přináší volitelné objekty poskytované vaším kódem, klientovi (například instance HttpClient v rozhraní .NET).
 
 |Sada SDK|Reference|
 |---|---|
@@ -116,30 +122,30 @@ Služba Media Services má následující dlouho běžící operace:
 
 ### <a name="see-also"></a>Viz také:
 
-- [EventGrid .NET SDK, která zahrnuje události mediálních služeb](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
+- [EventGrid .NET SDK zahrnující události Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definice událostí Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
 
 ## <a name="azure-media-services-explorer"></a>Průzkumník Azure Media Services
 
-[Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) je nástroj Windows zákazníkům, kteří chtějí informace o Media Services k dispozici. AMSE je jazyce Winforms /C# aplikaci, která nahrání, stažení, kódování, streamování videa na Vyžádání a živého obsahu pomocí služby Media Services. Nástroj AMSE je pro klienty, kteří chtějí testování Media Services bez psaní kódu. Kód AMSE je k dispozici jako prostředek pro zákazníky, kteří chtějí vyvíjet s využitím Media Services.
+[Průzkumník Azure Media Services](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) je nástroj dostupný pro zákazníky s Windows, kteří se chtějí dozvědět o Media Services. AMSE je WinForms neboC# aplikace, které odesílají, stahují, kódují, streamování vod a živý obsah pomocí Media Services. Nástroj AMSE je určen pro klienty, kteří chtějí testovat Media Services bez psaní kódu. Kód AMSE je k dispozici jako prostředek pro zákazníky, kteří chtějí vyvíjet pomocí Media Services.
 
-AMSE je Opensourcový projekt, je podporované komunitou (jsou hlášeny problémy https://github.com/Azure/Azure-Media-Services-Explorer/issues). Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v článku [kódu k pravidlům chování](https://opensource.microsoft.com/codeofconduct/faq/) nebo se obraťte na opencode@microsoft.com s případnými dotazy nebo připomínky.
+AMSE je otevřený zdrojový projekt. Podpora je poskytována komunitou (mohou být hlášeny https://github.com/Azure/Azure-Media-Services-Explorer/issues) problémy). Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v nejčastějších dotazech k kodexu opencode@microsoft.com nebo na kontaktování s dalšími dotazy nebo komentáři. [](https://opensource.microsoft.com/codeofconduct/faq/)
 
-## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování entit Media Services
+## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování Media Services entit
 
-Zobrazit [filtrování, řazení, stránkování entit Azure Media Services](entities-overview.md)
+Viz [filtrování, řazení, stránkování Azure Media Services entit](entities-overview.md)
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Klást otázky, váš názor, získávat aktualizace
+## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 
-Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
+Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
 ## <a name="see-also"></a>Viz také:
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* [Připojit k Media Services s Javou](configure-connect-java-howto.md)
-* [Připojit k Media Services s .NET](configure-connect-dotnet-howto.md)
-* [Připojit k Media Services s využitím Node.js](configure-connect-nodejs-howto.md)
-* [Připojit k Media Services s využitím Pythonu](configure-connect-python-howto.md)
+* [Připojení k Media Services pomocí Java](configure-connect-java-howto.md)
+* [Připojení k Media Services pomocí .NET](configure-connect-dotnet-howto.md)
+* [Připojení k Media Services pomocí Node. js](configure-connect-nodejs-howto.md)
+* [Připojení k Media Services pomocí Pythonu](configure-connect-python-howto.md)

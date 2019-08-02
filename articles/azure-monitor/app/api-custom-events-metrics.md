@@ -1,6 +1,6 @@
 ---
-title: Rozhraní API pro Application Insights pro vlastní události a metriky | Dokumentace Microsoftu
-description: Vložte několik řádků kódu v zařízení nebo plochy aplikace, webové stránky nebo služby, ke sledování využití a diagnostiku problémů.
+title: Application Insights rozhraní API pro vlastní události a metriky | Microsoft Docs
+description: Pokud chcete sledovat využití a diagnostikovat problémy, vložte do svého zařízení nebo do aplikace, webové stránky nebo služby pár řádků kódu.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,48 +12,49 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: dd4690e27be38c3fef3053562ebee773698a70d7
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 9bedb74f4e882ac6e4206ee7fef676c94dc2422d
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154772"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717451"
 ---
-# <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API pro Application Insights pro vlastní události a metriky
+# <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights rozhraní API pro vlastní události a metriky
 
-Ve vaší aplikaci a zjistěte, jak uživatelé pracují s ním, nebo pro usnadnění diagnostiky potíží stačí vložte několik řádků kódu. Odesílat telemetrická data z aplikací pro zařízení a desktop, webovými klienty a webové servery. Použití [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) core API telemetrie k odesílání vlastních událostí a metrik a verze standard telemetrická data. Toto rozhraní API je stejného rozhraní API, použít standardní kolekce dat Application Insights.
+Do své aplikace vložte pár řádků kódu, abyste zjistili, co uživatelé s ním pracují, nebo aby vám pomohla diagnostikovat problémy. Telemetrii můžete odesílat ze zařízení a desktopových aplikací, webových klientů a webových serverů. Použijte rozhraní API telemetrie [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Core k posílání vlastních událostí a metrik a vašich vlastních verzí standardní telemetrie. Toto rozhraní API je stejné rozhraní API, které používá standardní Application Insights sběrače dat.
 
 > [!NOTE]
-> `TrackMetric()` už není upřednostňovaný způsob odesílání vlastních metrik pro .NET na základě aplikací. V [verze 2,60 beta 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) sady .NET SDK Application Insights novou metodu [ `TelemetryClient.GetMetric()` ](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) byla zavedena. Od .NET Application Insights SDK [verze 2.72](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) tato funkce je teď součástí stabilní verzi.
+> `TrackMetric()`již není upřednostňovanou metodou odesílání vlastních metrik pro aplikace založené na rozhraní .NET. Ve [verzi 2,60 – beta 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) sady Application Insights .NET SDK [`TelemetryClient.GetMetric()`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) byla představena nová metoda. Od Application Insights .NET SDK [verze 2,72](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) Tato funkce je teď součástí stabilní verze.
 
 ## <a name="api-summary"></a>Souhrn rozhraní API
 
-Na všech platformách, kromě několik variant, jako je jednotné základního rozhraní API `GetMetric`(pouze .NET).
+Základní rozhraní API je na všech platformách stejné, kromě několika variant, jako `GetMetric`je (jenom .NET).
 
 | Metoda | Použití |
 | --- | --- |
-| [`TrackPageView`](#page-views) |Stránky, obrazovky, okna nebo formuláře. |
-| [`TrackEvent`](#trackevent) |Akce uživatele a další události. Používá ke sledování chování uživatelů nebo k monitorování výkonu. |
-| [`GetMetric`](#getmetric) |Nula a vícedimenzionálních metrik, centrálně nakonfigurované agregace, jenom v C#. |
-| [`TrackMetric`](#trackmetric) |Měření výkonu, jako je například délky front, které nesouvisí s konkrétní události. |
-| [`TrackException`](#trackexception) |Protokolování výjimek pro diagnostiku. Trasování, kde k nim dojde ve vztahu k jiné události a zkontrolovat trasování zásobníku. |
-| [`TrackRequest`](#trackrequest) |Protokolování četnost a doba trvání požadavků na serveru pro analýzu výkonu. |
-| [`TrackTrace`](#tracktrace) |Diagnostický protokol zpráv. Můžete také zachytit protokoly třetích stran. |
-| [`TrackDependency`](#trackdependency) |Protokolování doba trvání a četnost volání externí komponenty, které vaše aplikace závisí. |
+| [`TrackPageView`](#page-views) |Stránky, obrazovky, listy nebo formuláře. |
+| [`TrackEvent`](#trackevent) |Akce uživatele a další události. Používá se ke sledování chování uživatelů nebo ke sledování výkonu. |
+| [`GetMetric`](#getmetric) |Nulové a multidimenzionální metriky, centrálně konfigurovaná agregace, C# pouze. |
+| [`TrackMetric`](#trackmetric) |Měření výkonu, jako jsou například délky front, které nesouvisí s konkrétními událostmi. |
+| [`TrackException`](#trackexception) |Protokolování výjimek pro diagnostiku. Sledovat, kde se vyskytují ve vztahu k ostatním událostem a prozkoumávat trasování zásobníku. |
+| [`TrackRequest`](#trackrequest) |Protokolování četnosti a doby trvání požadavků serveru pro analýzu výkonu. |
+| [`TrackTrace`](#tracktrace) |Zprávy diagnostického protokolu. Můžete také zachytit protokoly třetích stran. |
+| [`TrackDependency`](#trackdependency) |Protokolování doby trvání a frekvence volání externích komponent, na kterých závisí vaše aplikace. |
 
-Je možné [připojení vlastnosti a metriky](#properties) pro většinu těchto volání telemetrická data.
+K většině těchto volání telemetrie můžete [připojit vlastnosti a metriky](#properties) .
 
 ## <a name="prep"></a>Než začnete
 
-Pokud nemáte odkaz na sadu SDK Application Insights ještě:
+Pokud ještě nemáte odkaz na Application Insights SDK, postupujte takto:
 
-* Přidejte Application Insights SDK do projektu:
+* Přidejte sadu Application Insights SDK do projektu:
 
   * [Projekt ASP.NET](../../azure-monitor/app/asp-net.md)
-  * [Projekt v Javě](../../azure-monitor/app/java-get-started.md)
-  * [Projekt Node.js](../../azure-monitor/app/nodejs.md)
-  * [V každé webové stránky JavaScript](../../azure-monitor/app/javascript.md) 
-* V zařízení nebo webového kódu serveru patří:
+  * [ASP.NET Core projekt](../../azure-monitor/app/asp-net-core.md)
+  * [Projekt Java](../../azure-monitor/app/java-get-started.md)
+  * [Projekt Node. js](../../azure-monitor/app/nodejs.md)
+  * [JavaScript na každé webové stránce](../../azure-monitor/app/javascript.md) 
+* Do kódu zařízení nebo webového serveru přidejte:
 
     *C#:* `using Microsoft.ApplicationInsights;`
 
@@ -63,9 +64,9 @@ Pokud nemáte odkaz na sadu SDK Application Insights ještě:
 
     *Node.js:* `var applicationInsights = require("applicationinsights");`
 
-## <a name="get-a-telemetryclient-instance"></a>Získání TelemetryClient instance
+## <a name="get-a-telemetryclient-instance"></a>Získat instanci TelemetryClient
 
-Získat instanci `TelemetryClient` (s výjimkou v jazyce JavaScript ve webových stránkách):
+Získat instanci `TelemetryClient` (kromě v jazyce JavaScript na webových stránkách):
 
 *C#*
 
@@ -91,9 +92,9 @@ private TelemetryClient telemetry = new TelemetryClient();
 var telemetry = applicationInsights.defaultClient;
 ```
 
-TelemetryClient je bezpečná pro vlákno.
+TelemetryClient je bezpečný pro přístup z více vláken.
 
-Pro projekty ASP.NET a Java jsou automaticky shromažďovat příchozích požadavků HTTP. Můžete chtít vytvořit další instance TelemetryClient pro ostatní moduly vaší aplikace. Například může mít jednu instanci TelemetryClient ve své třídě middleware na sestavu obchodní logiky události. Můžete nastavit vlastnosti, jako je ID uživatele a ID zařízení k identifikaci počítače. Tyto informace se připojuje ke všem událostem, které odešle instanci. 
+Pro projekty ASP.NET a Java jsou příchozí požadavky HTTP automaticky zachyceny. Možná budete chtít vytvořit další instance TelemetryClient pro jiný modul aplikace. Například můžete mít jednu instanci TelemetryClient ve vaší třídě middleware pro hlášení událostí obchodní logiky. Můžete nastavit vlastnosti, jako je například UserId a DeviceId, a identifikovat počítač. Tyto informace jsou připojeny ke všem událostem, které instance odesílá. 
 
 *C#*
 
@@ -109,15 +110,15 @@ telemetry.getContext().getUser().setId("...");
 telemetry.getContext().getDevice().setId("...");
 ```
 
-V projektech, Node.js, můžete použít `new applicationInsights.TelemetryClient(instrumentationKey?)` k vytvoření nové instance, ale to se doporučuje jenom pro scénáře, které vyžadují izolované konfiguraci z typu singleton `defaultClient`.
+V projektech Node. js můžete použít `new applicationInsights.TelemetryClient(instrumentationKey?)` k vytvoření nové instance, ale toto nastavení se doporučuje jenom pro scénáře, které vyžadují izolovanou konfiguraci z typu singleton. `defaultClient`
 
 ## <a name="trackevent"></a>TrackEvent
 
-Ve službě Application Insights *vlastní událost* je datový bod, který si můžete zobrazit v [Průzkumníka metrik](../../azure-monitor/app/metrics-explorer.md) jako agregovaného počtu a v [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md) jako jednotlivé události. (Nesouvisí se MVC nebo jiné rozhraní framework "události.")
+V Application Insights *vlastní událost* je datový bod, který lze zobrazit v [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md) jako agregovaný počet a v [diagnostickém vyhledávání](../../azure-monitor/app/diagnostic-search.md) jako jednotlivé výskyty. (Nesouvisí s událostmi MVC nebo jinými rozhraními.)
 
-Vložit `TrackEvent` volání v kódu mají spočítat různé události. Jak často uživatelé vybrat určitou funkci, jak často se dosažení určitého cíle nebo možná jak často využívají konkrétních typů chyb.
+Vložením `TrackEvent` volání do kódu můžete spočítat různé události. Jak často uživatelé vyberou konkrétní funkci, jak často dosahují konkrétního cíle, nebo jak často provádějí konkrétní typy chyb.
 
-Například herní aplikaci odeslat událost pokaždé, když se uživatel služby wins hry:
+Například v herní aplikaci můžete odeslat událost pokaždé, když uživatel hry vyhrává:
 
 *JavaScript*
 
@@ -149,11 +150,11 @@ telemetry.trackEvent("WinGame");
 telemetry.trackEvent({name: "WinGame"});
 ```
 
-### <a name="custom-events-in-analytics"></a>Vlastní události v Analytics
+### <a name="custom-events-in-analytics"></a>Vlastní události v analýzách
 
-Je k dispozici v telemetrii `customEvents` tabulku v [Application Insights Analytics](analytics.md). Každý řádek představuje volání `trackEvent(..)` ve vaší aplikaci.
+Telemetrii je k dispozici v `customEvents` tabulce v [Application Insights Analytics](analytics.md). Každý řádek představuje volání `trackEvent(..)` ve vaší aplikaci.
 
-Pokud [vzorkování](../../azure-monitor/app/sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání funkce trackEvent(), proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet vlastních událostí, proto používejte kód například `customEvents | summarize sum(itemCount)`.
+Pokud je [vzorkování](../../azure-monitor/app/sampling.md) v provozu, vlastnost vlastnost ItemCount zobrazí hodnotu větší než 1. Například vlastnost ItemCount = = 10 znamená, že u 10 volání trackEvent () proces vzorkování přenáší pouze jeden z nich. Chcete-li získat správný počet vlastních událostí, měli byste proto použít kód `customEvents | summarize sum(itemCount)`jako.
 
 ## <a name="getmetric"></a>GetMetric
 
@@ -162,8 +163,6 @@ Pokud [vzorkování](../../azure-monitor/app/sampling.md) je v provozu, vlastnos
 *C#*
 
 ```csharp
-#pragma warning disable CA1716  // Namespace naming
-
 namespace User.Namespace.Example01
 {
     using System;
@@ -249,21 +248,21 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric není upřednostňovanou metodou pro odesílání metriky. Metriky musí být vždy předem agregovat napříč časové období před odesláním. Pomocí jednoho z přetížení GetMetric(..) jak získat objekt metriky pro přístup k možnosti předběžnou agregací SDK. Při implementaci vlastní logiky předběžnou agregací, můžete použít metodu metody TrackMetric() odesílat výsledný agregace. Pokud vaše aplikace vyžaduje odeslání telemetrie samostatné položky ve všech případech mohou oprávnění bez agregace v čase, pravděpodobně máte případ použití pro telemetrii událostí; Zobrazit TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry).
+> Microsoft. ApplicationInsights. TelemetryClient. TrackMetric není upřednostňovanou metodou pro odesílání metrik. Metriky by měly být vždy před odesláním shrnuty v časovém období. K získání objektu metriky pro přístup k předagregačním funkcím sady SDK použijte jedno z přetížení getmetric (..). Pokud implementujete vlastní logiku před agregací, můžete k odeslání výsledných agregací použít metodu TrackMetric (). Pokud vaše aplikace vyžaduje odeslání samostatné položky telemetrie při každé příležitosti bez agregace v čase, budete pravděpodobně mít případ použití pro telemetrii událostí. viz TelemetryClient. TrackEvent (Microsoft. ApplicationInsights. DataContracts. EventTelemetry).
 
-Application Insights můžete graf metrik, které nejsou přiřazené k určité události. Například může monitorovat délka fronty v pravidelných intervalech. S metrikami jednotlivými měřeními jsou méně zajímavé než odchylky a trendy a proto statistické grafy.
+Application Insights mohou metriky grafů, které nejsou připojeny k určitým událostem. Můžete například monitorovat délku fronty v pravidelných intervalech. Díky metrikám jsou jednotlivá měření méně zajímavá než kolísání a trendy, takže statistické grafy jsou užitečné.
 
-Aby bylo možné odeslání metrik do Application Insights, můžete použít `TrackMetric(..)` rozhraní API. Existují dva způsoby, jak odeslat metriku:
+Aby bylo možné odesílat metriky do Application Insights, můžete použít `TrackMetric(..)` rozhraní API. Existují dva způsoby, jak odeslat metriku:
 
-* Jednu hodnotu. Pokaždé, když je ve vaší aplikaci provést měření, odesíláte do Application Insights odpovídající hodnotu. Například předpokládejme, že máte metriku popisující počet položek v kontejneru. Během určitého časového období nejprve umístit tři položky do kontejneru a pak odeberte dvě položky. Proto by volat `TrackMetric` dvakrát: nejprve předejte hodnotu `3` a potom hodnotu `-2`. Application Insights jsou obě hodnoty uloženy vaším jménem.
+* Jedna hodnota. Pokaždé, když ve své aplikaci provedete měření, odešlete odpovídající hodnotu Application Insights. Předpokládejme například, že máte metriku popisující počet položek v kontejneru. Během konkrétního časového období nejprve do kontejneru vložíte tři položky a pak odeberete dvě položky. Proto byste volali `TrackMetric` dvakrát: nejprve předání hodnoty `3` a hodnoty `-2`. Application Insights ukládá vaše jménem obě hodnoty.
 
-* Agregace. Při práci s metrikami, každé jedno měření je zřídka relevantní. Místo toho je důležité souhrn co se stalo během určitého časového období. Volá tyto Souhrn _agregace_. V předchozím příkladu je agregovaná metrika součet pro toto časové období `1` a počet hodnoty metrik je `2`. Při použití agregace přístup pouze vyvolat `TrackMetric` jednou za časové období a odeslat agregované hodnoty. Toto je doporučená, protože to může výrazně snížit náklady a výkon režie odesláním méně datových bodů do Application Insights při stále shromažďuje všechny relevantní informace.
+* Agregovat. Při práci s metrikami je každé jedno měření málo důležité. Místo toho je důležité mít přehled o tom, co se stalo během konkrétního časového období. Tento souhrn se nazývá _agregace_. Ve výše uvedeném příkladu je `1` agregovaná celková metrika pro toto časové období a počet `2`hodnot metrik. Při použití agregačního přístupu, vyvolejte `TrackMetric` pouze jednou za časové období a odešlete agregované hodnoty. To je doporučený postup, protože může významně snížit náklady a režii na výkon tím, že posílá méně datových bodů do Application Insights a přitom stále shromažďuje všechny relevantní informace.
 
 ### <a name="examples"></a>Příklady
 
 #### <a name="single-values"></a>Jednotlivé hodnoty
 
-Odeslání jedné hodnoty metrik:
+Odeslání jedné hodnoty metriky:
 
 *JavaScript*
 
@@ -292,20 +291,20 @@ telemetry.trackMetric("queueLength", 42.0);
 telemetry.trackMetric({name: "queueLength", value: 42.0});
  ```
 
-### <a name="custom-metrics-in-analytics"></a>Vlastní metriky v Analytics
+### <a name="custom-metrics-in-analytics"></a>Vlastní metriky v analýzách
 
-Je k dispozici v telemetrii `customMetrics` tabulku v [Application Insights Analytics](analytics.md). Každý řádek představuje volání `trackMetric(..)` ve vaší aplikaci.
+Telemetrii je k dispozici v `customMetrics` tabulce v [Application Insights Analytics](analytics.md). Každý řádek představuje volání `trackMetric(..)` ve vaší aplikaci.
 
-* `valueSum` – Toto je součtem měření. Střední hodnoty získáte dělit `valueCount`.
-* `valueCount` -Počet měření, které byly seskupeny do tohoto `trackMetric(..)` volání.
+* `valueSum`– Toto je součet měření. Chcete-li získat střední hodnotu, rozdělte `valueCount`.
+* `valueCount`– Počet měření, které byly agregovány do tohoto `trackMetric(..)` volání.
 
 ## <a name="page-views"></a>Zobrazení stránek
 
-V aplikaci na zařízení nebo webové stránky je odeslána telemetrie zobrazení stránky ve výchozím nastavení při načtení každou obrazovku nebo stránku. Ale můžete výběr změnit ke sledování zobrazení stránek v další nebo v různých časech. Například v aplikaci, která zobrazí karty a okna, můžete chtít sledovat na stránce pokaždé, když uživatel otevře nové okno.
+V aplikaci pro zařízení nebo webovou stránku se telemetrie zobrazení stránky ve výchozím nastavení posílá při načtení každé obrazovky nebo stránky. Ale můžete změnit, aby se zobrazení stránek sledovalo v dalších nebo různých časech. Například v aplikaci, která zobrazuje karty nebo okna, může být vhodné sledovat stránku vždy, když uživatel otevře nové okno.
 
-Data uživatele a relace se odešle jako vlastnosti spolu s zobrazení stránek, proto po telemetrie zobrazení stránky poutavější grafy uživatelů a relací.
+Data uživatelů a relací se odesílají jako vlastnosti spolu se zobrazeními stránek, takže grafy uživatelů a relací budou aktivní, když se zobrazí telemetrie zobrazení stránky.
 
-### <a name="custom-page-views"></a>Zobrazení vlastních stránek
+### <a name="custom-page-views"></a>Vlastní zobrazení stránky
 
 *JavaScript*
 
@@ -331,20 +330,20 @@ telemetry.TrackPageView("GameReviewPage")
 telemetry.trackPageView("GameReviewPage");
 ```
 
-Pokud máte několik karet na různých stránkách HTML, je příliš zadat adresu URL:
+Pokud máte v různých stránkách HTML několik karet, můžete zadat i adresu URL:
 
 ```javascript
 appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 ```
 
-### <a name="timing-page-views"></a>Zobrazení stránek časování
+### <a name="timing-page-views"></a>Zobrazení časování stránky
 
-Ve výchozím nastavení, časy označení **doba načtení zobrazení stránky** se měří z, když prohlížeč odesílá žádosti, dokud se nazývá události načtení stránky v prohlížeči.
+Ve výchozím nastavení jsou časy hlášené jako **Doba načítání zobrazení stránky** měřeny od okamžiku, kdy prohlížeč požadavek odešle, dokud není volána událost načtení stránky prohlížeče.
 
-Místo toho máte tyto možnosti:
+Místo toho můžete použít tyto kroky:
 
-* Nastavení explicitní doby trvání [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) volání: `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`.
-* Použití zobrazení stránky časování volání `startTrackPage` a `stopTrackPage`.
+* Nastavte explicitní dobu trvání ve volání [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) : `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`.
+* Použijte zobrazení na stránce s časováním `stopTrackPage`volání `startTrackPage` a.
 
 *JavaScript*
 
@@ -358,32 +357,32 @@ appInsights.startTrackPage("Page1");
 appInsights.stopTrackPage("Page1", url, properties, measurements);
 ```
 
-Název, který použijete jako první parametr přidruží spouštění a zastavování volání. Použije se výchozí název aktuální stránky.
+Název, který použijete jako první parametr, přidruží volání Start a stop. Výchozí hodnota je název aktuální stránky.
 
-Výsledný trvání načtení stránky zobrazí v Průzkumníku metrik jsou odvozeny z intervalu mezi voláními spouštění a zastavování. To je na vás jaký interval, ve skutečnosti čas.
+Výsledná trvání načtení stránky zobrazená v Průzkumník metrik jsou odvozena z intervalu mezi voláními spuštění a zastavení. To je až na vás, jaký interval ve skutečnosti vydáte.
 
-### <a name="page-telemetry-in-analytics"></a>Telemetrie stránky v Analytics
+### <a name="page-telemetry-in-analytics"></a>Telemetrie stránky v analýzách
 
-V [Analytics](analytics.md) dvou tabulek, zobrazení dat z operace prohlížeče:
+V [analytických](analytics.md) dvou tabulkách se zobrazují data z operací prohlížeče:
 
-* `pageViews` Tabulka obsahuje data týkající adresy URL a nadpis stránky
-* `browserTimings` Tabulka obsahuje data o výkonu klienta, jako je čas potřebný ke zpracování příchozích dat.
+* `pageViews` Tabulka obsahuje data o adrese URL a názvu stránky.
+* `browserTimings` Tabulka obsahuje data o výkonu klienta, například čas potřebný ke zpracování příchozích dat.
 
-Vyhledání, jak dlouho trvá prohlížeče pro zpracování různých stránkách:
+Pokud chcete zjistit, jak dlouho bude prohlížeč zpracovávat různé stránky, postupujte takto:
 
 ```kusto
 browserTimings
 | summarize avg(networkDuration), avg(processingDuration), avg(totalDuration) by name
 ```
 
-Ke zjištění popularities různými prohlížeči:
+Pro zjištění oblíbených různých prohlížečů:
 
 ```kusto
 pageViews
 | summarize count() by client_Browser
 ```
 
-Přidružit zobrazení stránek pro volání AJAX, připojte se k závislosti:
+Chcete-li přidružit zobrazení stránky voláním AJAX, připojte se k závislostem:
 
 ```kusto
 pageViews
@@ -392,19 +391,19 @@ pageViews
 
 ## <a name="trackrequest"></a>TrackRequest
 
-Server SDK používá TrackRequest k protokolování žádostí HTTP.
+Sada SDK serveru používá TrackRequest k protokolování požadavků HTTP.
 
-Můžete ji volat i sami Pokud chcete simulovat žádosti v kontextu, ve kterém nemáte spuštěný modul webové služby.
+Můžete ji také zavolat sami, pokud chcete simulovat žádosti v kontextu, ve kterém nemáte spuštěný modul webové služby.
 
-Doporučený způsob odesílání telemetrických dat požadavek je však kde žádost funguje jako <a href="#operation-context">kontext operace</a>.
+Doporučený způsob odeslání telemetrie požadavků je však, že požadavek funguje jako <a href="#operation-context">kontext operace</a>.
 
 ## <a name="operation-context"></a>Kontext operace
 
-Můžete porovnat položky telemetrie společně přidruží je kontext operace. Standardní modulu Sledování žádostí o to dělá pro výjimky a dalších událostí, které se odesílají během zpracování požadavku HTTP. V [hledání](../../azure-monitor/app/diagnostic-search.md) a [Analytics](analytics.md), můžete snadno vyhledat všechny události přidružené k požadavku pomocí jeho ID operace.
+Můžete sladit položky telemetrie dohromady jejich přidružením k kontextu operace. Standardní modul pro sledování požadavků provádí tyto výjimky a další události, které jsou odeslány během zpracování požadavku HTTP. V části [vyhledávání](../../azure-monitor/app/diagnostic-search.md) a [Analýza](analytics.md)můžete snadno najít jakékoli události přidružené k žádosti pomocí jejího ID operace.
 
-Zobrazit [korelace Telemetrie v Application Insights](../../azure-monitor/app/correlation.md) podrobné informace o korelace.
+Další informace o korelaci najdete [v tématu korelace telemetrie v Application Insights](../../azure-monitor/app/correlation.md) .
 
-Při sledování telemetrická data ručně, nejjednodušší způsob, jak zajistit korelace telemetrie pomocí tohoto vzorce:
+Při ručním sledování telemetrie je nejjednodušší způsob, jak zajistit korelace telemetrie pomocí tohoto modelu:
 
 *C#*
 
@@ -426,21 +425,21 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 } // When operation is disposed, telemetry item is sent.
 ```
 
-Spolu s nastavením objekt context operace `StartOperation` vytvoří položky telemetrie typu, který zadáte. Při vyřazení operaci, nebo pokud explicitně volat odešle položky telemetrie `StopOperation`. Pokud používáte `RequestTelemetry` jako typ telemetrie, jeho trvání je nastavena na časovaném intervalu mezi spouštění a zastavování.
+Spolu s nastavením kontextu `StartOperation` operace vytvoří položku telemetrie typu, který zadáte. Odesílá položku telemetrie při uvolnění operace, nebo pokud explicitně voláte `StopOperation`. Pokud použijete `RequestTelemetry` jako typ telemetrie, jeho doba trvání je nastavená na časový interval mezi začátkem a zastavením.
 
-Položky telemetrie hlášená v rozsahu operace budou podřízené tyto operace. Operace kontexty může být vnořený.
+Položky telemetrie hlášené v rámci oboru operace se stanou "podřízenými" takové operace. Kontexty operace můžou být vnořené.
 
-Ve službě Search je kontext operace slouží k vytvoření **související položky** seznamu:
+V části Hledat se k vytvoření seznamu **souvisejících položek** používá kontext operace:
 
 ![Související položky](./media/api-custom-events-metrics/21.png)
 
-Zobrazit [sledování vlastních operací pomocí Application Insights .NET SDK](../../azure-monitor/app/custom-operations-tracking.md) Další informace o sledování vlastních operací.
+Další informace o sledování vlastních operací najdete v tématu [sledování vlastních operací pomocí Application Insights .NET SDK](../../azure-monitor/app/custom-operations-tracking.md) .
 
-### <a name="requests-in-analytics"></a>Požadavky v Analytics
+### <a name="requests-in-analytics"></a>Požadavky v analýzách
 
-V [Application Insights Analytics](analytics.md), požadavků zobrazit až za `requests` tabulky.
+V [Application Insights Analytics](analytics.md)se žádosti zobrazují v `requests` tabulce.
 
-Pokud [vzorkování](../../azure-monitor/app/sampling.md) je v provozu, vlastnost itemCount zobrazí hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání trackRequest(), proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet požadavků a průměrná doba trvání segmentované podle názvů žádostí, použijte kód jako například:
+Pokud je [vzorkování](../../azure-monitor/app/sampling.md) v provozu, vlastnost vlastnost ItemCount zobrazí hodnotu větší než 1. Například vlastnost ItemCount = = 10 znamená, že u 10 volání trackRequest () proces vzorkování přenáší pouze jeden z nich. Chcete-li získat správný počet požadavků a průměrnou dobu, segmentované podle názvů požadavků, použijte následující kód:
 
 ```kusto
 requests
@@ -449,12 +448,12 @@ requests
 
 ## <a name="trackexception"></a>TrackException
 
-Výjimky posílat do Application Insights:
+Odeslat výjimky do Application Insights:
 
-* K [spočítat](../../azure-monitor/app/metrics-explorer.md), jako údaje o četnosti problém.
-* K [prozkoumání jednotlivých výskytů](../../azure-monitor/app/diagnostic-search.md).
+* Pokud [je chcete spočítat](../../azure-monitor/app/metrics-explorer.md), jako indikaci četnosti problému.
+* K [prohlédnutí jednotlivých výskytů](../../azure-monitor/app/diagnostic-search.md).
 
-Sestavy obsahují trasování zásobníku.
+Sestavy zahrnují trasování zásobníku.
 
 *C#*
 
@@ -505,11 +504,11 @@ catch (ex)
 }
 ```
 
-Sady SDK pro mnoho výjimek catch automaticky, proto není vždy nutné explicitně volat TrackException.
+Sady SDK zachycují mnoho výjimek automaticky, takže nemusíte vždy volat TrackException explicitně.
 
-* ASP.NET: [Napsání kódu pro zachycení výjimky](../../azure-monitor/app/asp-net-exceptions.md).
-* Java EE: [Výjimky jsou zachyceny automaticky](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures).
-* JavaScript: Výjimky jsou zachyceny automaticky. Pokud chcete zakázat automatické shromažďování, přidá řádek do kódu, který vložíte do své webové stránky:
+* ASP.NET: [Napište kód pro zachycení výjimek](../../azure-monitor/app/asp-net-exceptions.md).
+* Java EE: [Výjimky se zachycují automaticky](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures).
+* JavaScript: Výjimky se zachycují automaticky. Pokud chcete zakázat automatické shromažďování, přidejte řádek do fragmentu kódu, který vložíte do webových stránek:
 
 ```javascript
 ({
@@ -518,25 +517,25 @@ Sady SDK pro mnoho výjimek catch automaticky, proto není vždy nutné explicit
 })
 ```
 
-### <a name="exceptions-in-analytics"></a>Výjimky v Analytics
+### <a name="exceptions-in-analytics"></a>Výjimky v analýzách
 
-V [Application Insights Analytics](analytics.md), výjimky v uveden `exceptions` tabulky.
+V [Application Insights Analytics](analytics.md)se výjimky zobrazují v `exceptions` tabulce.
 
-Pokud [vzorkování](../../azure-monitor/app/sampling.md) je v provozu, `itemCount` vlastnosti zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání metody trackexception() procesu vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet výjimek segmentované podle typu výjimky, použijte kód jako například:
+Pokud je [vzorkování](../../azure-monitor/app/sampling.md) v provozu, `itemCount` vlastnost zobrazuje hodnotu větší než 1. Například vlastnost ItemCount = = 10 znamená, že u 10 volání trackException () proces vzorkování přenáší pouze jeden z nich. Chcete-li získat správný počet výjimek segmenticky podle typu výjimky, použijte kód jako:
 
 ```kusto
 exceptions
 | summarize sum(itemCount) by type
 ```
 
-Většinu informací důležité zásobník již je extrahován do samostatných proměnné, ale o přijetí změn od sebe `details` struktury a získejte další možnosti. Vzhledem k tomu, že tato struktura je dynamická, by měl přetypujte výsledek typu, který jste očekávali. Příklad:
+Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace `details` , můžete si ji stáhnout ze své struktury. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Příklad:
 
 ```kusto
 exceptions
 | extend method2 = tostring(details[0].parsedStack[1].method)
 ```
 
-Pokud chcete přidružit jejich související požadavky, výjimky, použijte spojení:
+K přidružení výjimek ke svým souvisejícím žádostem použijte spojení:
 
 ```kusto
 exceptions
@@ -545,11 +544,11 @@ exceptions
 
 ## <a name="tracktrace"></a>TrackTrace
 
-Pomocí TrackTrace pomoc s diagnostikou problémů odesláním "záznam s popisem cesty" do Application Insights. Umožňuje odesílání diagnostických dat a zkontrolujte je v [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md).
+Pomocí TrackTrace můžete diagnostikovat problémy odesláním "popisu cesty" do Application Insights. Můžete odeslat bloky diagnostických dat a zkontrolovat je v diagnostickém [vyhledávání](../../azure-monitor/app/diagnostic-search.md).
 
-V rozhraní .NET [protokolu adaptéry](../../azure-monitor/app/asp-net-trace-logs.md) pomocí tohoto rozhraní API k odeslání protokolů třetích stran na portál.
+V [adaptérech protokolů](../../azure-monitor/app/asp-net-trace-logs.md) .NET použijte toto rozhraní API k posílání protokolů třetích stran na portál.
 
-V jazyce Java pro [standardní Protokolovací nástroje, jako je Log4J, Logback](../../azure-monitor/app/java-trace-logs.md) můžete odeslat protokoly třetích stran na portál Application Insights Log4j nebo Logback Appenders.
+V jazyce Java pro [standardní protokolovací nástroje, jako je Log4J, Logback](../../azure-monitor/app/java-trace-logs.md) k odesílání protokolů třetích stran na portál použít Application Insights Log4J nebo Logback.
 
 *C#*
 
@@ -573,26 +572,26 @@ telemetry.trackTrace({
 });
 ```
 
-*JavaScript a prohlížeči klientů*
+*JavaScript na straně klienta nebo prohlížeče*
 
 ```javascript
 trackTrace(message: string, properties?: {[string]:string}, severityLevel?: AI.SeverityLevel)
 ```
 
-Protokolovat diagnostické události, například zadáním nebo opuštění metody.
+Protokoluje diagnostickou událost, jako je například zadání nebo ukončení metody.
 
  Parametr | Popis
 ---|---
-`message` | Diagnostická data. Může být mnohem déle, než název.
-`properties` | Mapa řetězce na řetězec: Další data sloužící k [filtrování výjimek](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties) na portálu. Výchozí hodnota je prázdná.
+`message` | Diagnostická data. Může být mnohem delší než název.
+`properties` | Mapování řetězce na řetězec: Další data používaná k [filtrování výjimek](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties) na portálu. Výchozí hodnota je prázdná.
 `severityLevel` | Podporované hodnoty: [SeverityLevel.ts](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/JavaScript/JavaScriptSDK.Interfaces/Contracts/Generated/SeverityLevel.ts)
 
-Můžete hledat obsah zprávy, ale (na rozdíl od hodnoty vlastností) nelze pomocí filtru na něj.
+Můžete hledat obsah zprávy, ale (na rozdíl od hodnot vlastností) nemůžete na něm filtrovat.
 
-Omezení velikosti pro `message` je mnohem větší než limit na vlastnosti.
-Výhodou TrackTrace je umístit relativně dlouho data ve zprávě. Můžete například kódovat následných dat existuje.  
+Omezení `message` velikosti je mnohem vyšší než omezení vlastností.
+Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.  
 
-Kromě toho můžete přidat úroveň závažnosti zprávě. A stejně jako další telemetrická data, můžete přidat hodnoty vlastností, které vám pomůžou filtr nebo hledaný pro různé skupiny trasování. Příklad:
+Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
 
 *C#*
 
@@ -611,17 +610,17 @@ properties.put("Database", db.ID);
 telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties);
 ```
 
-V [hledání](../../azure-monitor/app/diagnostic-search.md), potom můžete snadno filtrovat všechny zprávy konkrétní závažnosti úrovně, které se vztahují ke konkrétní databázi.
+V [hledání](../../azure-monitor/app/diagnostic-search.md)můžete snadno odfiltrovat všechny zprávy určité úrovně závažnosti, které se vztahují k určité databázi.
 
-### <a name="traces-in-analytics"></a>Trasování v Analytics
+### <a name="traces-in-analytics"></a>Trasování v analýzách
 
-V [Application Insights Analytics](analytics.md), volání TrackTrace zobrazí `traces` tabulky.
+V [Application Insights Analytics](analytics.md)se v `traces` tabulce zobrazí volání TrackTrace.
 
-Pokud [vzorkování](../../azure-monitor/app/sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání `trackTrace()`, proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet trasování volání, používejte proto kód, jako `traces | summarize sum(itemCount)`.
+Pokud je [vzorkování](../../azure-monitor/app/sampling.md) v provozu, vlastnost vlastnost ItemCount zobrazí hodnotu větší než 1. Například vlastnost ItemCount = = 10 znamená, že 10 volání do `trackTrace()`, proces vzorkování přenáší pouze jeden z nich. Chcete-li získat správný počet volání trasování, měli byste použít kód, například `traces | summarize sum(itemCount)`.
 
 ## <a name="trackdependency"></a>TrackDependency
 
-Volání TrackDependency použijte ke sledování doby odezvy a míru úspěšných volání extrení části kódu. Výsledky se zobrazí v grafech závislostí na portálu.
+Použijte volání TrackDependency ke sledování doby odezvy a míry úspěšnosti volání do externí části kódu. Výsledky se zobrazí v grafech závislostí na portálu.
 
 *C#*
 
@@ -684,26 +683,26 @@ finally
 }
 ```
 
-Mějte na paměti, že se sadami SDK serveru zahrnují [závislosti modulu](../../azure-monitor/app/asp-net-dependencies.md) , který zjišťuje a sleduje volání určitých závislostí automaticky – například k databázím a rozhraní REST API. Je třeba nainstalovat agenta na serveru, aby modul fungovat. 
+Pamatujte, že serverové sady SDK obsahují [modul závislosti](../../azure-monitor/app/asp-net-dependencies.md) , který zjišťuje a sleduje určitá volání závislosti automaticky – například pro databáze a rozhraní REST API. Abyste mohli modul pracovat, musíte na svém serveru nainstalovat agenta. 
 
-V jazyce Java, volání určitých závislostí lze automaticky sledovat pomocí [agenta Java](../../azure-monitor/app/java-agent.md).
+V jazyce Java lze určitá volání závislostí automaticky sledovat pomocí [agenta Java](../../azure-monitor/app/java-agent.md).
 
-Toto volání použít, pokud chcete sledovat volání, která není catch automatizované sledování, nebo pokud nechcete, aby pro instalaci agenta.
+Toto volání použijete, pokud chcete sledovat volání, která automatizované sledování nezachytává, nebo pokud nechcete agenta nainstalovat.
 
-Chcete-li vypnout standardní modul sledování závislostí v jazyce C#, upravte [soubor ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) a odstranit odkazy na `DependencyCollector.DependencyTrackingTelemetryModule`. V jazyce Java není nainstalujte agenta java Pokud nechcete automaticky shromažďovat standardní závislosti.
+Chcete-li vypnout standardní modul Sledování závislosti v C#nástroji, upravte soubor [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) a odstraňte odkaz na `DependencyCollector.DependencyTrackingTelemetryModule`. V jazyce Java neinstalujte agenta Java, pokud nechcete automaticky shromažďovat standardní závislosti.
 
-### <a name="dependencies-in-analytics"></a>Závislosti v Analytics
+### <a name="dependencies-in-analytics"></a>Závislosti v analýzách
 
-V [Application Insights Analytics](analytics.md), trackDependency volá zobrazit `dependencies` tabulky.
+V [Application Insights Analytics](analytics.md)se v `dependencies` tabulce zobrazí volání trackDependency.
 
-Pokud [vzorkování](../../azure-monitor/app/sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání trackDependency(), proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet závislostí segmentované komponenta cílového, použijte kód jako například:
+Pokud je [vzorkování](../../azure-monitor/app/sampling.md) v provozu, vlastnost vlastnost ItemCount zobrazí hodnotu větší než 1. Například vlastnost ItemCount = = 10 znamená, že u 10 volání trackDependency () proces vzorkování přenáší pouze jeden z nich. Chcete-li získat správný počet závislostí segmentované cílovou komponentou, použijte kód jako:
 
 ```kusto
 dependencies
 | summarize sum(itemCount) by target
 ```
 
-Chcete-li přidružit závislosti jejich související požadavky, použijte spojení:
+K přidružení závislostí ke svým souvisejícím žádostem použijte spojení:
 
 ```kusto
 dependencies
@@ -712,7 +711,7 @@ dependencies
 
 ## <a name="flushing-data"></a>Vyprazdňování dat
 
-Za normálních okolností sada SDK odesílá data v pravidelných intervalech (obvykle 30 sekund) nebo pokaždé, když se vyrovnávací paměť je zaplněn (obvykle 500 položek). Nicméně v některých případech můžete chtít vyprázdní vyrovnávací paměť – například pokud používáte sady SDK v aplikaci, která ukončí.
+V normálním případě SDK odesílá data v pevných intervalech (obvykle 30 sekund) nebo vždy, když je vyrovnávací paměť plná (obvykle 500 položek). V některých případech ale možná budete chtít vyprázdnit vyrovnávací paměť – například pokud používáte sadu SDK v aplikaci, která se vypne.
 
 *C#*
 
@@ -736,15 +735,15 @@ Thread.sleep(5000);
 telemetry.flush();
 ```
 
-Je asynchronní pro funkci [kanálu serveru telemetrie](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/).
+Funkce je asynchronní pro [kanál telemetrie serveru](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/).
 
-Metoda vyprázdnění() v ideálním případě byste měli použít ve vypnutí aktivity aplikace.
+V ideálním případě by měla být metoda flush () použita v aktivity vypnutí aplikace.
 
 ## <a name="authenticated-users"></a>Ověření uživatelé
 
-Ve webové aplikaci uživatelé (ve výchozím nastavení) označené soubory cookie. Uživatel může počítat více než jednou, pokud budou přistupovat k vaší aplikace v jiném počítači či prohlížeči, nebo pokud jsou soubory cookie odstranit.
+Ve webové aplikaci jsou uživatelé (ve výchozím nastavení) identifikováni pomocí souborů cookie. Uživatel se může při přístupu k vaší aplikaci z jiného počítače nebo prohlížeče počítat více než jednou, nebo pokud odstraní soubory cookie.
 
-Pokud se uživatelé přihlásí do vaší aplikace, můžete získat přesnější počet nastavením ID ověřeného uživatele v kódu v prohlížeči:
+Pokud se uživatelé přihlásí do vaší aplikace, můžete získat přesnější počet nastavením ID ověřeného uživatele v kódu prohlížeče:
 
 *JavaScript*
 
@@ -757,9 +756,9 @@ function Authenticated(signInId) {
 }
 ```
 
-Na webu technologie ASP.NET MVC aplikace, například:
+V aplikaci ASP.NET Web MVC například:
 
-*Syntaxe Razor*
+*Syntaxi*
 
 ```cshtml
 @if (Request.IsAuthenticated)
@@ -772,33 +771,33 @@ Na webu technologie ASP.NET MVC aplikace, například:
 }
 ```
 
-Není nutné použít skutečné přihlašovací jméno uživatele. Pouze musí být ID, které jsou jedinečné pro daného uživatele. Nesmí obsahovat mezery nebo znaky `,;=|`.
+Není nutné používat vlastní přihlašovací jméno uživatele. Musí se jednat o ID, které je pro daného uživatele jedinečné. Nesmí obsahovat mezery ani žádné znaky `,;=|`.
 
-ID uživatele je také nastavit v souboru cookie relace a odeslat na server. Pokud je nainstalovaná sada SDK pro server, ID ověřeného uživatele se odešle jako součást vlastností kontext klienta i serveru telemetrie. Potom můžete filtrovat a hledat v něm.
+ID uživatele je také nastaveno v souboru cookie relace a odesláno na server. Pokud je nainstalovaná sada SDK serveru, ověřený identifikátor uživatele se odešle jako součást vlastností kontextu telemetrie klienta i serveru. Pak ho můžete filtrovat a prohledávat.
 
-Pokud vaše aplikace ve skupině uživatelů do účtů, můžete také předat identifikátor účtu (pomocí stejného omezení pro znaky).
+Pokud vaše aplikace seskupí uživatele na účty, můžete také předat identifikátor účtu (se stejnými omezeními znaků).
 
 ```javascript
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-V [Průzkumníka metrik](../../azure-monitor/app/metrics-explorer.md), můžete vytvořit graf, který počítá **uživatelů, ověření**, a **uživatelské účty**.
+V [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md)můžete vytvořit graf, který počítá **uživatele, ověřené**a **uživatelské účty**.
 
-Můžete také [hledání](../../azure-monitor/app/diagnostic-search.md) pro datové body klienta pomocí konkrétního uživatelského jména a účty.
+Můžete také [Vyhledat](../../azure-monitor/app/diagnostic-search.md) body dat klienta s konkrétními uživatelskými jmény a účty.
 
-## <a name="properties"></a>Filtrování, hledání a segmentace vašich dat pomocí vlastností
+## <a name="properties"></a>Filtrování, vyhledávání a segmentace dat pomocí vlastností
 
-Můžete připojit vlastnosti a hodnoty pro události (a také na metriky, stránka zobrazení, výjimky a další telemetrická data).
+Můžete připojit vlastnosti a měření k událostem (a také k metrikám, zobrazením stránky, výjimkám a dalším datům telemetrie).
 
-*Vlastnosti* jsou řetězcové hodnoty, které můžete použít k filtrování telemetrických dat v sestavách využití. Například pokud vaše aplikace obsahuje několik her, můžete připojit název hry pro každou událost, kde můžete zobrazit her, které jsou další oblíbené.
+*Vlastnosti* jsou řetězcové hodnoty, které můžete použít k filtrování telemetrie v sestavách využití. Pokud například vaše aplikace nabízí několik her, můžete k jednotlivým událostem připojit název hry, abyste viděli, které hry jsou populární.
 
-Platí omezení na délku řetězce 8192. (Pokud chcete odesílat velké množství dat, použijte parametr zpráva TrackTrace.)
+Velikost řetězce je 8192. (Pokud chcete odesílat velké bloky dat, použijte parametr zprávy TrackTrace.)
 
-*Metriky* jsou číselné hodnoty, které lze zobrazit graficky. Můžete třeba chtít zjistit, jestli postupný nárůst skóre, které se svými uživateli dosáhnout. Grafy mohou být segmentovány podle vlastnosti, které jsou odesílány události, tak, aby vám samostatné nebo Skládané grafy pro různé hry.
+*Metriky* jsou číselné hodnoty, které je možné znázornit graficky. Můžete například chtít zjistit, jestli se v hodnoceních, které hráčů dosahuje, postupný nárůst. Grafy je možné rozdělit pomocí vlastností, které se odesílají s událostí, takže můžete získat samostatné nebo skládané grafy pro různé hry.
 
-Pro hodnoty metriky správně zobrazen by měla být větší než nebo rovna 0.
+Aby se hodnoty metriky správně zobrazily, měly by být větší nebo rovny 0.
 
-Zde jsou některé [omezení počtu metriky, vlastnosti a hodnoty vlastností](#limits) , který vám pomůže.
+Existují určitá [omezení počtu vlastností, hodnot vlastností a metrik](#limits) , které můžete použít.
 
 *JavaScript*
 
@@ -875,13 +874,13 @@ telemetry.trackEvent("WinGame", properties, metrics);
 ```
 
 > [!NOTE]
-> Aby se postaral aby nedošlo k protokolování osobních identifikovatelných informací v okně Vlastnosti.
+> Je třeba dbát na to, abyste do vlastností nehlásili osobně identifikovatelné osobní údaje.
 >
 >
 
 ### <a name="alternative-way-to-set-properties-and-metrics"></a>Alternativní způsob, jak nastavit vlastnosti a metriky
 
-Pokud je pohodlnější, můžete shromažďovat parametry události v samostatném objektu:
+Pokud je to pohodlnější, můžete shromáždit parametry události v samostatném objektu:
 
 ```csharp
 var event = new EventTelemetry();
@@ -897,15 +896,15 @@ telemetry.TrackEvent(event);
 ```
 
 > [!WARNING]
-> Nepoužívejte soubory stejnou instanci položky telemetrie (`event` v tomto příkladu) Track*() volat více než jednou. To může způsobit telemetrických dat k odeslání s nesprávnou konfigurací.
+> Nepoužívejte znovu stejnou instanci položky telemetrie (`event` v tomto příkladu), aby bylo volání metody Track * () několikrát voláno. To může způsobit odeslání telemetrie s nesprávnou konfigurací.
 >
 >
 
-### <a name="custom-measurements-and-properties-in-analytics"></a>Vlastní měření a vlastností v Analytics
+### <a name="custom-measurements-and-properties-in-analytics"></a>Vlastní měření a vlastnosti v analýzách
 
-V [Analytics](analytics.md), vlastní metriky a vlastnosti zobrazit v `customMeasurements` a `customDimensions` atributy každého záznamu telemetrická data.
+V [](analytics.md)rámci `customMeasurements` analýzy se vlastní metriky a vlastnosti zobrazují v atributech a `customDimensions` každého záznamu telemetrie.
 
-Například pokud jste přidali vlastnost s názvem "Konec hry" do vaší telemetrie požadavku, tento dotaz se počítá výskyty různé hodnoty "Konec hry" a zobrazit průměrnou hodnotu vlastní metriky "skóre":
+Pokud jste například přidali vlastnost s názvem "Game" do telemetrie žádosti, tento dotaz počítá výskyty různých hodnot "Game" a zobrazí průměr vlastní metriky "skóre":
 
 ```kusto
 requests
@@ -914,12 +913,12 @@ requests
 
 Všimněte si, že:
 
-* Při extrahování hodnoty z customDimensions nebo customMeasurements JSON má dynamického typu, a proto musíte vysílat `tostring` nebo `todouble`.
-* Vzít v úvahu možnost [vzorkování](../../azure-monitor/app/sampling.md), měli byste použít `sum(itemCount)`, nikoli `count()`.
+* Když extrahujete hodnotu z formátu JSON customDimensions nebo customMeasurements, má dynamický typ, takže je nutné ji `tostring` přetypovat nebo. `todouble`
+* K zohlednění možnosti [vzorkování](../../azure-monitor/app/sampling.md)byste měli použít `sum(itemCount)`, ne. `count()`
 
-## <a name="timed"></a> Události časování
+## <a name="timed"></a>Události časování
 
-Někdy budete chtít graf, jak dlouho trvá provedení akce. Například můžete chtít vědět, jak dlouho uživatelé provést zvážit možnosti ve hře. To můžete použít parametr měření.
+V některých případech je třeba, aby bylo možné graf, jak dlouho trvá provedení akce. Můžete například chtít zjistit, jak dlouho uživatelé berou v úvahu volby ve hře. Pro tuto možnost lze použít parametr měření.
 
 *C#*
 
@@ -950,7 +949,7 @@ long startTime = System.currentTimeMillis();
 
 long endTime = System.currentTimeMillis();
 Map<String, Double> metrics = new HashMap<>();
-metrics.put("ProcessingTime", endTime-startTime);
+metrics.put("ProcessingTime", (double)endTime-startTime);
 
 // Setup some properties
 Map<String, String> properties = new HashMap<>();
@@ -960,9 +959,9 @@ properties.put("signalSource", currentSignalSource.getName());
 telemetry.trackEvent("SignalProcessed", properties, metrics);
 ```
 
-## <a name="defaults"></a>Výchozí vlastnosti pro vlastní telemetrii
+## <a name="defaults"></a>Výchozí vlastnosti vlastní telemetrie
 
-Pokud chcete nastavit výchozí hodnoty vlastností pro některé vlastní události, které lze zadat, můžete je nastavit v instanci TelemetryClient. Jsou připojeny k každé položky telemetrie odesílané z daného klienta.
+Pokud chcete nastavit výchozí hodnoty vlastností pro některé vlastní události, které zapíšete, můžete je nastavit v instanci TelemetryClient. Jsou připojeny ke každé položce telemetrie, která je odeslána z tohoto klienta.
 
 *C#*
 
@@ -1008,27 +1007,27 @@ gameTelemetry.commonProperties["Game"] = currentGame.Name;
 gameTelemetry.TrackEvent({name: "WinGame"});
 ```
 
-Jednotlivé telemetrické volání můžete přepsat výchozí hodnoty v jejich vlastnost slovníky.
+Jednotlivá volání telemetrie můžou v jejich slovníkech vlastností přepsat výchozí hodnoty.
 
-*Pro jazyk JavaScript webových klientů*, použijte inicializátory telemetrických dat jazyka JavaScript.
+*Pro webové klienty v jazyce JavaScript*použijte Inicializátory telemetrie JavaScript.
 
-*Přidání vlastnosti do všech telemetrie*, včetně dat z modulů standardního shromažďování [implementovat `ITelemetryInitializer` ](../../azure-monitor/app/api-filtering-sampling.md#add-properties).
+*Chcete-li přidat vlastnosti do všechny telemetrie*, včetně dat ze standardních modulů kolekcí [, `ITelemetryInitializer`implementujte ](../../azure-monitor/app/api-filtering-sampling.md#add-properties).
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>Vzorkování, filtrování a zpracování telemetrie
 
-Můžete napsat kód pro zpracování telemetrických dat před odesláním ze sady SDK. Zpracování obsahuje data, která se odesílá ze standardní telemetrie moduly, například shromažďování požadavků HTTP a závislostí kolekce.
+Můžete napsat kód pro zpracování telemetrie před jejich odesláním ze sady SDK. Zpracování zahrnuje data odesílaná ze standardních modulů telemetrie, jako je kolekce žádostí HTTP a kolekce závislostí.
 
-[Přidání vlastností](../../azure-monitor/app/api-filtering-sampling.md#add-properties) k telemetrii implementací `ITelemetryInitializer`. Můžete například přidat čísla verzí nebo hodnoty, které se počítá z dalších vlastností.
+[Přidání vlastností](../../azure-monitor/app/api-filtering-sampling.md#add-properties) do telemetrie implementací `ITelemetryInitializer`. Můžete například přidat čísla verzí nebo hodnoty, které se počítají z jiných vlastností.
 
-[Filtrování](../../azure-monitor/app/api-filtering-sampling.md#filtering) můžete upravit nebo zrušit telemetrická data před odesláním ze sady SDK implementací `ITelemetryProcessor`. Můžete řídit, co je odeslána nebo zahozeny, ale budete muset počítat vliv na vaše metriky. V závislosti na tom, jak můžete zahodit položky můžete ztratit možnost navigace mezi související položky.
+[Filtrování](../../azure-monitor/app/api-filtering-sampling.md#filtering) může před odesláním ze sady SDK změnit nebo zahodit telemetrii implementací `ITelemetryProcessor`. Můžete řídit, co se odesílá nebo zahodí, ale budete mít k dispozici vliv na vaše metriky. V závislosti na tom, jak položky zahodíte, může být ztracena možnost navigace mezi souvisejícími položkami.
 
-[Vzorkování](../../azure-monitor/app/api-filtering-sampling.md) je zabalená řešení a snížit objem dat, který je odesílán z vaší aplikace na portál. Dělá to aniž by to ovlivnilo zobrazených metrik. A dělá to aniž by to ovlivnilo moct lépe diagnostikovat problémy tak, že přejdete mezi související položky jako výjimky, požadavků a zobrazení stránek.
+[Vzorkování](../../azure-monitor/app/api-filtering-sampling.md) je zabalené řešení, které snižuje objem dat odesílaných z vaší aplikace na portál. V takovém případě nemá vliv na zobrazené metriky. A to i bez ovlivnění vaší schopnosti diagnostikovat problémy pomocí navigace mezi souvisejícími položkami, jako jsou výjimky, požadavky a zobrazení stránek.
 
 [Další informace](../../azure-monitor/app/api-filtering-sampling.md).
 
-## <a name="disabling-telemetry"></a>Vypnutí telemetrie
+## <a name="disabling-telemetry"></a>Zakázání telemetrie
 
-K *dynamicky zastavení a spuštění* shromažďování a předávání telemetrických dat:
+Chcete-li *dynamicky zastavit a spustit* shromažďování a přenos telemetrie:
 
 *C#*
 
@@ -1044,7 +1043,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-K *zakázat vybrané standardní Kolektory*– například čítače výkonu, požadavky HTTP nebo závislosti – odstranit nebo okomentovat odpovídající řádky v [soubor ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Můžete to provedete, například pokud chcete poslat TrackRequest data.
+Chcete-li *zakázat vybrané standardní kolekce*, například čítače výkonu, požadavky HTTP nebo závislosti, odstraňte nebo Odkomentujte příslušné řádky v [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). To můžete udělat například v případě, že chcete odesílat vlastní TrackRequest data.
 
 *Node.js*
 
@@ -1052,7 +1051,7 @@ K *zakázat vybrané standardní Kolektory*– například čítače výkonu, po
 telemetry.config.disableAppInsights = true;
 ```
 
-K *zakázat vybrané standardní Kolektory*– například čítače výkonu, požadavky HTTP nebo závislosti--během inicializace, zřetězení metody konfigurace sady SDK inicializace kódu:
+Chcete-li *zakázat vybrané standardní kolekce*, například čítače výkonu, požadavky HTTP nebo závislosti – v čase inicializace, řetězení metod konfigurace do inicializačního kódu sady SDK:
 
 ```javascript
 applicationInsights.setup()
@@ -1064,11 +1063,11 @@ applicationInsights.setup()
     .start();
 ```
 
-Pokud chcete zakázat tyto kolekce po inicializaci, použijte objekt konfigurace: `applicationInsights.Configuration.setAutoCollectRequests(false)`
+Chcete-li zakázat tyto sběrače po inicializaci, použijte objekt konfigurace:`applicationInsights.Configuration.setAutoCollectRequests(false)`
 
 ## <a name="debug"></a>Vývojářský režim
 
-Během ladění, je užitečné mít telemetrie skrz kanál tak, aby ihned sledujte výsledky. Můžete také získat další zprávy, které vám pomůžou sledovat jakékoli problémy s telemetrická data. Vypněte ho v produkčním prostředí, protože to může zpomalit vaši aplikaci.
+Během ladění je vhodné, aby vaše telemetrie byly prostřednictvím kanálu urychleny, takže výsledky uvidíte okamžitě. Získáte také další zprávy, které vám pomohou trasovat případné problémy s telemetrie. Přepněte ho v produkčním prostředí, protože může zpomalit vaši aplikaci.
 
 *C#*
 
@@ -1084,7 +1083,7 @@ TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 *Node.js*
 
-Pro Node.js, můžete povolit režim pro vývojáře tím, že interní protokolování prostřednictvím `setInternalLogging` a nastavení `maxBatchSize` na hodnotu 0, což způsobí, že telemetrických dat k odeslání co nejdříve po shromáždění zpracovat.
+Pro Node. js můžete povolit vývojářský režim povolením interního protokolování prostřednictvím `setInternalLogging` a nastavením `maxBatchSize` na 0, což způsobí, že se vaše telemetrie pošle hned po shromáždění.
 
 ```js
 applicationInsights.setup("ikey")
@@ -1093,7 +1092,7 @@ applicationInsights.setup("ikey")
 applicationInsights.defaultClient.config.maxBatchSize = 0;
 ```
 
-## <a name="ikey"></a> Nastavení klíče instrumentace pro vybranou vlastní telemetrii
+## <a name="ikey"></a>Nastavení klíče instrumentace pro vybranou vlastní telemetrii
 
 *C#*
 
@@ -1103,11 +1102,11 @@ telemetry.InstrumentationKey = "---my key---";
 // ...
 ```
 
-## <a name="dynamic-ikey"></a> Dynamické Instrumentační klíč
+## <a name="dynamic-ikey"></a>Dynamický klíč instrumentace
 
-Nekombinujte se telemetrie z vývoj, testování a produkční prostředí, můžete [vytvořit samostatný prostředek Application Insights](../../azure-monitor/app/create-new-resource.md ) a změňte jejich klíče, v závislosti na prostředí.
+Abyste se vyhnuli smíchání telemetrie od vývojových, testovacích a produkčních prostředí, můžete [vytvořit samostatné prostředky Application Insights](../../azure-monitor/app/create-new-resource.md ) a změnit jejich klíče v závislosti na prostředí.
 
-Místo zobrazování Instrumentační klíč z konfiguračního souboru, můžete ho nastavit ve vašem kódu. Nastavte klíč v metodě inicializace, jako je například souboru global.aspx.cs v rámci služby technologie ASP.NET:
+Místo získání klíče instrumentace z konfiguračního souboru ho můžete nastavit ve svém kódu. Nastavte klíč v inicializační metodě, jako je například global.aspx.cs ve službě ASP.NET:
 
 *C#*
 
@@ -1128,7 +1127,7 @@ protected void Application_Start()
 appInsights.config.instrumentationKey = myKey;
 ```
 
-Na webových stránkách může být vhodné provést nastavení ze stavu webový server, než doslova kódování do skriptu. Například ve webové stránky vygenerované v aplikaci ASP.NET:
+Na webových stránkách můžete chtít nastavit ho ze stavu webového serveru, ale nemusíte ho zakódovat do skriptu. Například na webové stránce vygenerované v aplikaci ASP.NET:
 
 *JavaScript v Razor*
 
@@ -1155,47 +1154,47 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient má vlastnost kontextu, který obsahuje hodnoty, které jsou odeslány společně s všechny telemetrická data. Jsou obvykle nastaveny pomocí moduly standardní telemetrická data, ale můžete také nastavit jejich sami. Příklad:
+TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Příklad:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
 ```
 
-Pokud nastavíte některou z těchto hodnot sami, zvažte odebrání relevantní řádek z [soubor ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md), takže nemusíte nepřehledné hodnoty a standardní hodnoty.
+Pokud jste některou z těchto hodnot nastavili sami, zvažte odebrání relevantního řádku z [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md), aby se vaše hodnoty a standardní hodnoty zaměňovat.
 
-* **Komponenta**: Aplikace a její verzi.
-* **Zařízení**: Data o zařízení, ve kterém je aplikace spuštěna. (Ve službě web apps, to je na serveru nebo klientského zařízení, které se odesílá telemetrická data ze.)
-* **InstrumentationKey**: Prostředek Application Insights v Azure, ve kterém se zobrazí telemetrická data. To obvykle vyzvednutí ze souboru ApplicationInsights.config.
+* **Součást**: Aplikace a její verze
+* **Zařízení**: Data o zařízení, ve kterém je aplikace spuštěná. (Ve webových aplikacích se jedná o server nebo klientské zařízení, ze kterého se telemetrie odesílá.)
+* **InstrumentationKey**: Prostředek Application Insights v Azure, kde se objeví telemetrie. Obvykle je převzata z ApplicationInsights. config.
 * **Umístění**: Geografické umístění zařízení.
-* **Operace**: Ve službě web apps, aktuální žádosti HTTP. V další typy aplikací můžete nastavit toto seskupování událostí společně.
-  * **ID**: Vygenerovanou hodnotu, která koreluje jednotlivé události, když si prohlédnout všechny události v diagnostickém vyhledávání, abyste našli související položky.
+* **Operace**: Ve službě Web Apps aktuální požadavek HTTP. V ostatních typech aplikací můžete nastavit, aby se události seskupují společně.
+  * **ID**: Vygenerovaná hodnota, která koreluje různé události, takže při kontrole libovolné události v diagnostickém vyhledávání můžete najít související položky.
   * **Název**: Identifikátor, obvykle adresa URL požadavku HTTP.
-  * **SyntheticSource**: Pokud není null nebo prázdný řetězec, který označuje, že zdroj požadavku byly identifikovány jako robot nebo webový test. Ve výchozím nastavení je vyloučena z výpočtů v Průzkumníku metrik.
-* **Vlastnosti**: Vlastnosti, které se odesílají s všechny telemetrická data. Je možné přepsat v jednotlivých sledování * volání.
-* **Relace**: Relace uživatele. ID je nastavena na vygenerovanou hodnotu, která se změní, pokud uživatel nebyl aktivní po nějakou dobu.
+  * **SyntheticSource**: Pokud hodnota není null nebo prázdná, řetězec, který označuje, že zdroj žádosti byl identifikován jako robot nebo webový test. Ve výchozím nastavení je vyloučen z výpočtů v Průzkumník metrik.
+* **Vlastnosti**: Vlastnosti, které jsou odesílány se všemi daty telemetrie. Dá se přepsat v individuálním záznamu * volání.
+* **Relace**: Relace uživatele. ID je nastavené na generovanou hodnotu, která se změní, když uživatel nějaký čas ještě není aktivní.
 * **Uživatel**: Informace o uživateli.
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>Omezení
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
-Chcete-li zabránit v dosažení omezení četnosti data, použijte [vzorkování](../../azure-monitor/app/sampling.md).
+Aby nedošlo k překročení limitu přenosové rychlosti, použijte [vzorkování](../../azure-monitor/app/sampling.md).
 
-Chcete-li zjistit, jak dlouho se data ukládají, přečtěte si téma [uchovávání dat a ochrany osobních údajů](../../azure-monitor/app/data-retention-privacy.md).
+Informace o tom, jak dlouho se data uchovávají, najdete v tématu [uchovávání a ochrana osobních údajů](../../azure-monitor/app/data-retention-privacy.md).
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Referenční dokumentace technologie ASP.NET](https://msdn.microsoft.com/library/dn817570.aspx)
+* [Odkaz na ASP.NET](https://msdn.microsoft.com/library/dn817570.aspx)
 * [Reference k Javě](http://dl.windowsazure.com/applicationinsights/javadoc/)
-* [Referenční dokumentace jazyka JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
+* [Reference jazyka JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 * [Android SDK](https://github.com/Microsoft/ApplicationInsights-Android)
 * [Sada SDK pro iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
 
-## <a name="sdk-code"></a>Kód SDK
+## <a name="sdk-code"></a>Kód sady SDK
 
 * [Sada ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-dotnet)
-* [Balíčky Windows Server](https://github.com/Microsoft/applicationInsights-dotnet-server)
+* [Balíčky Windows serveru](https://github.com/Microsoft/applicationInsights-dotnet-server)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
@@ -1203,12 +1202,12 @@ Chcete-li zjistit, jak dlouho se data ukládají, přečtěte si téma [uchováv
 
 ## <a name="questions"></a>Otázky
 
-* *Jaké výjimky může vyvolat volání Track_()?*
+* *Jaké výjimky mohou Track_ () vyvolat volání?*
 
-    Žádné Není nutné zabalit je do klauzule try-catch. Pokud sada SDK narazí na problémy, se protokolování zpráv ve výstupu konzoly ladění a--pokud zprávy zobrazí prostřednictvím – v diagnostickém vyhledávání.
-* *Je k dispozici rozhraní REST API k získání dat z portálu?*
+    Žádné. Nemusíte je zabalit do klauzulí try-catch. Pokud sada SDK zjistí problémy, protokoluje zprávy ve výstupu konzoly ladění a--pokud se zprávy objeví v diagnostickém vyhledávání.
+* *Existuje REST API získat data z portálu?*
 
-    Ano, [rozhraní API pro přístup k datům](https://dev.applicationinsights.io/). Další možnosti, jak extrahovat data zahrnují [exportovat z analýzy do Power BI](../../azure-monitor/app/export-power-bi.md ) a [průběžný export](../../azure-monitor/app/export-telemetry.md).
+    Ano, [rozhraní API pro přístup k datům](https://dev.applicationinsights.io/). Mezi další způsoby, jak extrahovat data, patří [Export z analýzy do Power BI](../../azure-monitor/app/export-power-bi.md ) a [průběžný export](../../azure-monitor/app/export-telemetry.md).
 
 ## <a name="next"></a>Další kroky
 

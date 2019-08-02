@@ -8,18 +8,19 @@ manager: jegeib
 editor: jegeib
 ms.assetid: na
 ms.service: security
+ms.subservice: security-develop
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 0803ade7613480621a0cd87f9944ee5f55bf432c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: f443bf3111d2ab97874bdc62ec1370d17e2fc406
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68621257"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728060"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Rámec zabezpečení: Ověřování vstupu | Hrozeb 
 | Produkt nebo službu | Článek |
@@ -202,7 +203,7 @@ Všimněte si, že ve MSXML6 je ProhibitDTD ve výchozím nastavení nastaveno n
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Není k dispozici  |
 | **Odkazy**              | Není k dispozici  |
-| **Kroky** | <p>Každá aplikace, která používá protokol HTTP. sys, by měla postupovat podle těchto pokynů:</p><ul><li>Omezte délku adresy URL na maximálně 16 384 znaků (ASCII nebo Unicode). Toto je absolutní maximální délka adresy URL na základě výchozího nastavení Internetová informační služba (IIS) 6. Weby by se měly snažit s kratší délkou, pokud je to možné.</li><li>Použijte standardní .NET Framework třídy I/O souborů (například FileStream), protože budou využívat pravidla kanonikalizace v rozhraní .NET FX.</li><li>Explicitní sestavení seznamu známých názvů souborů jako povolených</li><li>Explicitně zamítnout známé typy souborů. nebudete zajišťovat nástroje UrlScan: exe, bat, cmd, com, HTW, IDA, IDQ, htr, IDC, SHTM [l], STM, tiskárna, ini, Pol, soubory dat dat.</li><li>Zachytit následující výjimky:<ul><li>System. ArgumentException (pro názvy zařízení)</li><li>System. NotSupportedException (pro datové proudy)</li><li>System. IO. FileNotFoundException (v případě neplatných řídicích názvů souborů)</li><li>System. IO. DirectoryNotFoundException (pro neplatnou řídicí adresářů)</li></ul></li><li>*Nevolejte na* vstupně-výstupní rozhraní API souborů Win32. Na neplatné adrese URL vrátí uživatel chybu 400 a zaprotokoluje skutečnou chybu.</li></ul>|
+| **Kroky** | <p>Každá aplikace, která používá protokol HTTP. sys, by měla postupovat podle těchto pokynů:</p><ul><li>Omezte délku adresy URL na maximálně 16 384 znaků (ASCII nebo Unicode). Toto je absolutní maximální délka adresy URL na základě výchozího nastavení Internetová informační služba (IIS) 6. Weby by se měly snažit s kratší délkou, pokud je to možné.</li><li>Použijte standardní .NET Framework třídy I/O souborů (například FileStream), protože budou využívat pravidla kanonikalizace v rozhraní .NET FX.</li><li>Explicitní sestavení seznamu známých názvů souborů jako povolených</li><li>Explicitně zamítnout známé typy souborů. nebudete zajišťovat nástroje UrlScan: exe, bat, cmd, com, HTW, IDA, IDQ, htr, IDC, SHTM [l], STM, tiskárna, ini, Pol, soubory dat dat.</li><li>Zachytit následující výjimky:<ul><li>System. ArgumentException (pro názvy zařízení)</li><li>System. NotSupportedException (pro datové proudy)</li><li>System. IO. FileNotFoundException (v případě neplatných řídicích názvů souborů)</li><li>System. IO. DirectoryNotFoundException (pro neplatnou řídicí adresářů)</li></ul></li><li>Nevolejte na vstupně-výstupní rozhraní API souborů Win32. Na neplatné adrese URL vrátí uživatel chybu 400 a zaprotokoluje skutečnou chybu.</li></ul>|
 
 ## <a id="controls-users"></a>Zajistěte, aby byly při přijímání souborů od uživatelů k dismístě správné ovládací prvky.
 

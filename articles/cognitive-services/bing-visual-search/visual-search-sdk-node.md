@@ -1,30 +1,30 @@
 ---
-title: 'Rychlý start: Získejte přehledy obrázků pomocí sady SDK vizuální vyhledávání Bingu pro Node.js'
+title: 'Rychlý start: Získání přehledů imagí pomocí Vizuální vyhledávání Bingu SDK pro Node. js'
 titleSuffix: Azure Cognitive Services
-description: Nahrát image pomocí sady SDK vizuální vyhledávání Bingu a získávat přehledy o něm.
+description: Nahrajte Image pomocí sady Vizuální vyhledávání Bingu SDK a Získejte přehled o ní.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 06/18/2018
+ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: 6f7740ebd09a1fde564613c38ab12513ca51fece
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: f0dd0bb82f899146956b5671497d298c7ce076ef
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204896"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360516"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Rychlý start: Získejte přehledy obrázků pomocí sady SDK vizuální vyhledávání Bingu pro Node.js
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>Rychlý start: Získání přehledů imagí pomocí Vizuální vyhledávání Bingu SDK pro Node. js
 
-V tomto rychlém startu pomocí zahájíte získat přehledy obrázků ze služby pro vizuální vyhledávání Bingu, pomocí sady Node.js SDK. Zatímco kompatibilní s Většina programovacích jazyků rozhraní REST API pro vizuální vyhledávání Bingu, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js). 
+Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z Vizuální vyhledávání Bingu služby pomocí sady Node. js SDK. I když Vizuální vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) 
 
 ## <a name="prerequisites"></a>Požadavky
 * [Node.js](https://www.nodejs.org/)
-* Vizuální vyhledávání Bingu sady SDK pro Node.js
-    * Chcete-li nastavit aplikaci konzoly pomocí sady SDK vizuální vyhledávání Bingu, spusťte následující příkazy:
+* Sada SDK Vizuální vyhledávání Bingu pro Node. js
+    * Chcete-li nastavit konzolovou aplikaci pomocí sady Vizuální vyhledávání Bingu SDK, spusťte následující příkazy:
         1. `npm install ms-rest-azure`
         2. `npm install azure-cognitiveservices-search-visualSearch`.
 
@@ -35,7 +35,7 @@ V tomto rychlém startu pomocí zahájíte získat přehledy obrázků ze služb
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor JavaScript ve vašich oblíbených prostředím IDE nebo editorem a přidejte následující požadavky. Vytvořte proměnné pro váš klíč předplatného, ID konfigurace vlastní a cesta k souboru na obrázek, který chcete nahrát. 
+1. V oblíbených IDE nebo editoru vytvořte nový soubor JavaScriptu a přidejte následující požadavky. Pak vytvořte proměnné pro svůj klíč předplatného, ID vlastní konfigurace a cestu k souboru k imagi, kterou chcete nahrát. 
 
     ```javascript
     const os = require("os");
@@ -49,15 +49,15 @@ V tomto rychlém startu pomocí zahájíte získat přehledy obrázků ze služb
     let filePath = "../Data/image.jpg";
     ```
 
-2. Vytvořit instanci klienta.
+2. Vytvořte instanci klienta.
 
     ```javascript
     let visualSearchClient = new Search.VisualSearchClient(credentials);
     ```
 
-## <a name="search-for-images"></a>Vyhledávání obrázků
+## <a name="search-for-images"></a>Hledání imagí
 
-1. Použití `fs.createReadStream()` ke čtení v souboru bitové kopie a vytváření proměnných pro požadavek hledání a výsledky. Klient pak použijte pro vyhledávání obrázků.
+1. Použijte `fs.createReadStream()` ke čtení v souboru obrázku a k vytvoření proměnných pro svůj požadavek a výsledky hledání. Pak použijte klienta k hledání imagí.
 
     ```javascript
     let fileStream = fs.createReadStream(filePath);
@@ -110,4 +110,4 @@ V tomto rychlém startu pomocí zahájíte získat přehledy obrázků ze služb
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové jednostránkové aplikace](tutorial-bing-visual-search-single-page-app.md)
+> [Sestavení webové aplikace s jednou stránkou](tutorial-bing-visual-search-single-page-app.md)

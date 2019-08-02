@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytvoření jednostránkovou webovou aplikaci Azure Time Series Insights | Dokumentace Microsoftu'
-description: Zjistěte, jak vytvořit jednostránkovou webovou aplikaci, která vyhledá a vykreslí data z prostředí Azure Time Series Insights.
+title: 'Kurz: Vytvoření webové aplikace Azure Time Series Insights jednostránkového stránkování | Microsoft Docs'
+description: Naučte se vytvořit jednostránkovou webovou aplikaci, která se dotazuje a vykresluje data z Azure Time Series Insightsho prostředí.
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
@@ -8,86 +8,86 @@ ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 8ee4cd30d5742896df96ccfd714d85ebbab194f9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4d9af918c222107cfca5863309efb391b8e6d2e0
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595703"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720868"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Kurz: Vytvoření jednostránkové webové aplikace Azure Time Series Insights
 
-Tento kurz vás provede procesem vytvoření vlastní webové jednostránkové aplikace (SPA) pro přístup k datům Azure Time Series Insights.
+Tento kurz vás provede procesem vytvoření webové aplikace s jednou stránkou (SPA) pro přístup k datům Azure Time Series Insights.
 
 V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Návrh aplikace
-> * Postup registrace vaší aplikace pomocí Azure Active Directory (Azure AD)
+> * Postup registrace aplikace pomocí Azure Active Directory (Azure AD)
 > * Postup pro sestavení, publikování a testování webové aplikace
 
 > [!NOTE]
-> * Zdrojový kód pro účely tohoto kurzu je k dispozici na [Githubu](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
-> * Time Series Insights [ukázková aplikace klientské](https://insights.timeseries.azure.com/clientsample) hostována zobrazíte dokončená aplikace použité v tomto kurzu.
+> * Zdrojový kód pro tento kurz je k dispozici [](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)na GitHubu.
+> * Ukázková [aplikace Time Series Insights klienta](https://insights.timeseries.azure.com/clientsample) je hostována k zobrazení dokončené aplikace používané v tomto kurzu.
+
+Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Zaregistrovat [bezplatné předplatné Azure](https://azure.microsoft.com/free/) pokud ho ještě nemáte.
+* Bezplatnou kopii sady Visual Studio. Začněte tím, že si stáhnete [verze komunity 2017 nebo 2019](https://www.visualstudio.com/downloads/) .
 
-* Bezplatnou kopii sady Visual Studio. Stáhněte si [verze Community 2017 nebo 2019](https://www.visualstudio.com/downloads/) začít.
+* Komponenty nástrojů IIS Express, Nasazení webu a Azure Cloud Services Core Tools pro Visual Studio. Přidejte komponenty úpravou instalace sady Visual Studio.
 
-* Služby IIS Express, Web Deploy a Azure Cloud Services core tools komponenty pro Visual Studio. Přidáte součásti úpravou instalace sady Visual Studio.
+## <a name="understand-application-design"></a>Pochopení návrhu aplikace
 
-## <a name="application-design"></a>Návrh aplikací
+Ukázka Time Series Insights SPA je základem pro návrh a kód použitý v tomto kurzu. Kód používá klientskou knihovnu Time Series Insights JavaScript. Klientská knihovna Time Series Insights poskytuje abstrakci pro dvě hlavní kategorie rozhraní API:
 
-Time Series Insights ukázková jednostránková aplikace slouží jako základ pro návrh a kód použitý v tomto kurzu. Tento kód použije klientskou knihovnu čas Series Insights JavaScript. Klientská knihovna služby Time Series Insights poskytuje abstrakci pro dvou hlavních kategorií rozhraní API:
+- **Metody obálky pro volání rozhraní API pro Time Series Insights dotazy**: Rozhraní REST API můžete použít k dotazování na data Time Series Insights pomocí výrazů založených na JSON. Metody jsou uspořádány pod oborem názvů TsiClient. Server knihovny.
 
-- **Metody obálky volání služby Time Series Insights dotazování rozhraní API**: Rozhraní REST API, můžete pro Time Series Insights dotazovat data pomocí výrazů založenými na JSON. Metody jsou uspořádány v rámci oboru názvů TsiClient.server knihovny.
+- **Metody pro vytvoření a naplnění několika typů ovládacích prvků pro vytváření grafů**: Metody, které můžete použít k vizualizaci Time Series Insights dat na webové stránce. Metody jsou uspořádány pod oborem názvů TsiClient. ux knihovny.
 
-- **Metody vytvoření a naplnění několik typů grafů ovládací prvky**: Metody, které lze použít k vizualizaci dat Time Series Insights na webové stránce. Metody jsou uspořádány v rámci oboru názvů TsiClient.ux knihovny.
+Tento kurz používá také data z Time Series Insightsho prostředí ukázkové aplikace. Podrobnosti o struktuře ukázkové aplikace Time Series Insights a způsobu použití klientské knihovny Time Series Insights naleznete v kurzu [zkoumání Azure Time Series Insights klientské knihovny JavaScriptu](tutorial-explore-js-client-lib.md).
 
-Tento kurz používá také data z prostředí Time Series Insights ukázkovou aplikaci. Další informace o struktuře Time Series Insights ukázkové aplikace a jak ji používá Klientská knihovna služby Time Series Insights, najdete v kurzu [prozkoumat klientské knihovně Azure čas Series Insights JavaScript](tutorial-explore-js-client-lib.md).
-
-## <a name="register-the-application-with-azure-ad"></a>Registrace aplikace ve službě Azure AD
+## <a name="register-with-azure-ad"></a>Registrace ve službě Azure AD
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
-## <a name="build-and-publish-the-web-application"></a>Sestavení a publikování webové aplikace
+## <a name="build-and-publish"></a>Sestavování a publikování
 
-1. Vytvořte adresář pro uložení souborů projektu vaší aplikace. Přejděte ke každé z následujících adres URL. Klikněte pravým tlačítkem myši **Raw** odkaz v pravém horním rohu stránky a pak vyberte **uložit jako** uložit soubory v adresáři projektu.
+1. Vytvořte adresář pro uložení souborů projektu vaší aplikace. Pak použijte následující adresy URL. Klikněte pravým tlačítkem myši na nezpracovaný odkaz v pravém horním rohu stránky a pak vyberte **Uložit jako** a uložte soubory do adresáře projektu.
 
-   - [*index.HTML*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): HTML a JavaScript pro danou stránku
-   - [*sampleStyles.css*]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): šablony stylů CSS
+   - [*index. html*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): HTML a JavaScript pro stránku
+   - [*sampleStyles. CSS*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): Šablona stylů CSS
 
    > [!NOTE]
-   > V závislosti na prohlížeči můžete potřebovat změnit přípony souborů HTML a CSS, než soubor uložíte.
+   > V závislosti na prohlížeči může být nutné před uložením souboru změnit přípony souborů na. html nebo. CSS.
 
-1. Ověřte, že požadované součásti jsou nainstalovány v sadě Visual Studio. Musí být nainstalovány součásti nástroje služby IIS Express, Web Deploy a Azure Cloud Services core pro sadu Visual Studio.
+1. Ověřte, zda jsou požadované součásti nainstalovány v aplikaci Visual Studio. Musí být nainstalované komponenty nástrojů IIS Express, Nasazení webu a Azure Cloud Services Core Tools pro Visual Studio.
 
-    [![Visual Studio – změnit nainstalované součásti](media/tutorial-create-tsi-sample-spa/vs-installation.png)](media/tutorial-create-tsi-sample-spa/vs-installation.png#lightbox)
+    [![Visual Studio – změna nainstalovaných komponent](media/tutorial-create-tsi-sample-spa/vs-installation.png)](media/tutorial-create-tsi-sample-spa/vs-installation.png#lightbox)
 
     > [!NOTE]
-    > Prostředí sady Visual Studio se mohou mírně lišit od znázorněné příklady v závislosti na vaší verzi a nastavení konfigurace.
+    > Vaše prostředí sady Visual Studio se může mírně lišit od zobrazených příkladů v závislosti na vaší verzi a nastavení konfigurace.
 
-1. Otevřít Visual Studio a přihlaste se. Vytvoření projektu webové aplikace na **souboru** nabídce vyberte možnost **otevřít** > **webu**.
+1. Otevřete Visual Studio a přihlaste se. Chcete-li vytvořit projekt pro webovou aplikaci, vyberte v nabídce **soubor** možnost **otevřít** > **Web**.
 
-    [![Visual Studio – vytvořit nové řešení](media/tutorial-create-tsi-sample-spa/vs-solution-create.png)](media/tutorial-create-tsi-sample-spa/vs-solution-create.png#lightbox)
+    [![Visual Studio – vytvoření nového řešení](media/tutorial-create-tsi-sample-spa/vs-solution-create.png)](media/tutorial-create-tsi-sample-spa/vs-solution-create.png#lightbox)
 
-1. V **otevřít webovou stránku** podokně, vyberte pracovní adresář, kam jste uložili soubory HTML a CSS a pak vyberte **otevřít**.
+1. V podokně **Otevřít web** vyberte pracovní adresář, kam jste ULOŽILI soubory HTML a CSS, a pak vyberte **otevřít**.
 
-   [![Visual Studio – nabídky soubor, s možností Otevřít a webové stránky](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png)](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png#lightbox)
+   [![Visual Studio – nabídka soubor s možnostmi otevřít a Web](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png)](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png#lightbox)
 
-1. V sadě Visual Studio **zobrazení** nabídce vyberte možnost **Průzkumníka řešení**. Otevře se nové řešení. Obsahuje projektu webu (Ikona zeměkoule), který obsahuje soubory HTML a CSS.
+1. V nabídce **zobrazení** v aplikaci Visual Studio vyberte možnost **Průzkumník řešení**. Otevře se nové řešení. Obsahuje projekt webu (ikonu zeměkoule), který obsahuje soubory HTML a CSS.
 
-   [![Visual Studio – nová řešení v Průzkumníku řešení](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png#lightbox)
+   [![Visual Studio – nové řešení v Průzkumník řešení](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png#lightbox)
 
-1. Před publikováním aplikace je nutné změnit nastavení konfigurace v *index.html*.
+1. Před publikováním aplikace je třeba změnit nastavení konfigurace v souboru *index. html*.
 
-   1. Zrušením komentáře u tři řádky v části komentáře `"PROD RESOURCE LINKS"` přepnout závislosti z VÝVOJOVÉHO do produkčního prostředí. Odkomentujte tři řádky v části komentáře `"DEV RESOURCE LINKS"`.
+   1. Odkomentujte tři řádky v komentáři `"PROD RESOURCE LINKS"` a přepněte závislosti z vývoje do produkčního prostředí. Odkomentujte tři řádky v komentáři `"DEV RESOURCE LINKS"`.
 
       [!code-html[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
 
-      Závislosti měli okomentován jako v následujícím příkladu:
+      Vaše závislosti by měly být uvedené v komentáři jako v následujícím příkladu:
 
       ```HTML
       <!-- PROD RESOURCE LINKS -->
@@ -101,7 +101,7 @@ Tento kurz používá také data z prostředí Time Series Insights ukázkovou a
       <link rel="stylesheet" type="text/css" href="../../dist/tsiclient.css"> -->
       ```
 
-   1. Chcete-li nakonfigurovat aplikaci, aby používala registraci ID aplikace Azure AD, změňte `clientID` hodnotu použít **ID aplikace** jste si zkopírovali v **krok 3** při vám [registrované aplikace pro používání Azure AD](#register-the-application-with-azure-ad). Pokud jste vytvořili **odhlašovací adresa URL** ve službě Azure AD, nastavte tuto hodnotu jako `postLogoutRedirectUri` hodnotu.
+   1. Pokud chcete aplikaci nakonfigurovat tak, aby používala ID registrace aplikace Azure AD, `clientID` změňte hodnotu tak, aby používala **ID aplikace** , které jste zkopírovali v **kroku 3** při [registraci aplikace pro používání služby Azure AD](#register-with-azure-ad). Pokud jste v Azure AD vytvořili odhlašovací **adresu URL** , nastavte tuto hodnotu jako `postLogoutRedirectUri` hodnotu.
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 
@@ -112,47 +112,47 @@ Tento kurz používá také data z prostředí Time Series Insights ukázkovou a
       postLogoutRedirectUri: 'https://tsispaapp.azurewebsites.net',
       ```
 
-   1. Jakmile budete hotovi, úpravy, uložte *index.html*.
+   1. Až skončíte s úpravami, uložte *index. html*.
 
-1. Publikování webových aplikací ve vašem předplatném Azure jako služby Azure App Service.  
+1. Publikujte webovou aplikaci v předplatném Azure jako Azure App Service.  
 
    > [!NOTE]
-   > Několik možností, jak na snímcích obrazovky, které jsou uvedeny v následujících krocích se automaticky vyplní data z vašeho předplatného Azure. Může trvat několik sekund pro každé podokno kompletně načtou.  
+   > Několik možností na snímcích obrazovky, které se zobrazují v následujících krocích, se automaticky vyplní daty z vašeho předplatného Azure. Načtení každého podokna zcela může trvat několik sekund.  
 
-   1. V Průzkumníku řešení klikněte pravým tlačítkem myši na uzel projektu webu a pak vyberte **publikovat webovou aplikaci**.  
+   1. V Průzkumník řešení klikněte pravým tlačítkem myši na uzel projektu webu a pak vyberte **publikovat webovou aplikaci**.  
 
-      [![Visual Studio – vyberte možnost řešení Explorer publikování webové aplikace](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png#lightbox)
+      [![Visual Studio – vyberte možnost Průzkumník řešení publikovat webovou aplikaci.](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png#lightbox)
 
-   1. Vyberte **Start** zahájíte publikování vaší aplikace.
+   1. Pokud chcete zahájit publikování aplikace, vyberte **začít** .
 
       [![Visual Studio – podokno profil publikování](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png#lightbox)
 
-   1. Vyberte předplatné, pro kterou chcete použít k publikování aplikace. Vyberte **TsiSpaApp** projektu. Pak vyberte **OK**.
+   1. Vyberte předplatné, které chcete použít k publikování aplikace. Vyberte projekt **TsiSpaApp** . Pak vyberte **OK**.
 
-      [![Visual Studio – profil publikování podokně služby App Service](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
+      [![Visual Studio – podokno App Service profil publikování](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
 
-   1. Vyberte **publikovat** k nasazení webové aplikace.
+   1. Vyberte **publikovat** a nasaďte webovou aplikaci.
 
-      [![Visual Studio – možnost publikovat a výstup protokolu publikování](media/tutorial-create-tsi-sample-spa/vs-publish-profile-output.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-output.png#lightbox)
+      [![Visual Studio – možnost publikování a výstup protokolu publikování](media/tutorial-create-tsi-sample-spa/vs-publish-profile-output.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-output.png#lightbox)
 
-   1. Úspěšné publikování protokol se zobrazí v sadě Visual Studio **výstup** podokně. Až se nasazení dokončí, sada Visual Studio spustí webovou aplikaci na kartě prohlížeče a zobrazí výzvu k přihlášení. Po úspěšném přihlášení ovládací prvky služby Time Series Insights jsou naplněný daty.
+   1. V podokně **výstup** sady Visual Studio se zobrazí úspěšný protokol publikování. Po dokončení nasazení aplikace Visual Studio otevře webovou aplikaci na kartě prohlížeče a zobrazí výzvu k přihlášení. Po úspěšném přihlášení se ovládací prvky Time Series Insights naplní daty.
 
 ## <a name="troubleshoot"></a>Řešení potíží  
 
 Kód chyby nebo chybová podmínka | Popis
 ---------------------| -----------
-*AADSTS50011: Žádná odpověď adresa je zaregistrovaný pro aplikaci.* | Registrace služby Azure AD se nenašel **adresy URL odpovědi** vlastnost. Přejděte na **nastavení** > **adresy URL odpovědí** pro registraci aplikace Azure AD. Ověřte, že **identifikátor URI pro přesměrování** jste měli možnost zadat v **kroku 2** při vám [registrované aplikace pro používání služby Azure AD](#register-the-application-with-azure-ad) je k dispozici.
-*AADSTS50011: Odpověď url zadanou v požadavku se neshoduje s odpovědních adres URL nakonfigurované pro aplikaci: "\<Identifikátor GUID aplikace >'.* | `postLogoutRedirectUri` Zadané v poli **kroku 6** v [sestavení a publikování webových aplikací](#build-and-publish-the-web-application) musí odpovídat hodnotě zadané v položce **nastavení**  >  **Adresy URL odpovědí** ve vaší registrace aplikace Azure AD. Nezapomeňte také změnit hodnotu **cílovou adresu URL** používat *https* za **kroku 5** v [sestavení a publikování webových aplikací](#build-and-publish-the-web-application).
-Načtení webové aplikace, ale nemá míru, pouze text přihlašovací stránky, s bílým pozadím. | Ověřte, že cest popsané v **kroku 4** v [sestavení a publikování webových aplikací](#build-and-publish-the-web-application) jsou správné. Pokud webová aplikace nemůže najít soubory .css, stránka nebude používat správné styly.
+*AADSTS50011: Pro aplikaci není zaregistrována žádná adresa pro odpověď.* | V registraci služby Azure AD chybí vlastnost **Adresa URL odpovědi** . Pro registraci vaší aplikace Azure AD přejít na **Nastavení** > **adresy URL pro odpovědi** . Ověřte, jestli existuje **identifikátor URI pro přesměrování** , který jste zadali v **kroku 2** nebo **4** , pokud jste [zaregistrovali aplikaci pro používání služby Azure AD](#register-with-azure-ad) .
+*AADSTS50011: Adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: '\<Identifikátor GUID ID aplikace > '.* |  >  [](#build-and-publish) Zadaná v kroku 6. b v sestavách a publikování webové aplikace se musí shodovat s hodnotou zadanou v nastavení adresy URL odpovědí v registraci aplikace služby Azure AD. `postLogoutRedirectUri` |
+Webová aplikace se načte, ale má nestylované přihlašovací stránky jenom pro text s bílým pozadím. | Ověřte, zda jsou cesty popsané v **kroku 6** v tématu [sestavení a publikování webové aplikace](#build-and-publish) správné. Pokud webová aplikace nemůže najít soubory .css, stránka nebude používat správné styly.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V tomto kurzu se vytvoří několik spuštěných služeb Azure. Pokud nechcete v této sérii kurzů dokončit, doporučujeme vám odstranit všechny prostředky, aby vám neúčtovaly zbytečné poplatky.
+V tomto kurzu se vytvoří několik spuštěných služeb Azure. Pokud neplánujete dokončit tuto řadu kurzů, doporučujeme odstranit všechny prostředky, abyste se vyhnuli zbytečným nákladům.
 
-V portálu levou nabídkou Azure:
+V nabídce Azure Portal vlevo:
 
-1. Vyberte **skupiny prostředků**a pak vyberte skupinu prostředků, kterou jste vytvořili pro prostředí Time Series Insights. V horní části stránky vyberte **odstranit skupinu prostředků**, zadejte název skupiny prostředků a pak vyberte **odstranit**.
-1. Vyberte **skupiny prostředků**a pak vyberte skupinu prostředků, který byl vytvořen akcelerátor řešení simulaci zařízení. V horní části stránky vyberte **odstranit skupinu prostředků**, zadejte název skupiny prostředků a pak vyberte **odstranit**.
+1. Vyberte **skupiny prostředků**a pak vyberte skupinu prostředků, kterou jste vytvořili pro prostředí Time Series Insights. V horní části stránky vyberte **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a pak vyberte **Odstranit**.
+1. Vyberte **skupiny prostředků**a pak vyberte skupinu prostředků, kterou vytvořil akcelerátor řešení pro simulaci zařízení. V horní části stránky vyberte **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a pak vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -160,10 +160,10 @@ V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
 > * Návrh aplikace
-> * Postup registrace vaší aplikace pomocí Azure AD
+> * Jak zaregistrovat aplikaci v Azure AD
 > * Postup pro sestavení, publikování a testování webové aplikace
 
-V tomto kurzu se integruje s Azure AD a použije identitu uživatele, který je přihlášen k získání přístupového tokenu. Zjistěte, jak získat přístup k rozhraní API čas Series Insights pomocí identitu aplikace služby nebo démona, najdete v tomto článku:
+Tento kurz se integruje s Azure AD a používá identitu uživatele, který je přihlášený k získání přístupového tokenu. Informace o tom, jak získat přístup k rozhraní Time Series Insights API pomocí identity aplikace služby nebo démona, najdete v tomto článku:
 
 > [!div class="nextstepaction"]
 > [Ověřování a autorizace pro rozhraní API služby Azure Time Series Insights](time-series-insights-authentication-and-authorization.md)

@@ -1,6 +1,6 @@
 ---
-title: JavaScript a stránku smlouvy verze – Azure Active Directory B2C | Dokumentace Microsoftu
-description: Zjistěte, jak povolit JavaScript a používání verze kontraktu stránek v Azure Active Directory B2C.
+title: Verze JavaScriptu a rozložení stránky – Azure Active Directory B2C | Microsoft Docs
+description: Naučte se, jak povolit JavaScript a používat verze rozložení stránky v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,37 +10,43 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ef474bec71a9015209b5748b6947816002bd4a5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0eb5c89387d8bdcf0e0b72c669c42f716ff5fbb3
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511984"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227108"
 ---
-# <a name="javascript-and-page-contract-versions-in-azure-active-directory-b2c"></a>Verze kontraktu jazyka JavaScript a stránky v Azure Active Directory B2C
+# <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Verze JavaScriptu a rozložení stránky v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure AD B2C poskytuje sadu obsah balíčku obsahující HTML, CSS a JavaScript pro prvky uživatelského rozhraní v toky uživatelů a vlastních zásad. Pokud chcete povolit JavaScript pro aplikace, je nutné přidat element, který má vaše [vlastní zásady](active-directory-b2c-overview-custom.md) nebo ji povolit na portálu pro toky uživatelů, vyberte smlouvy stránky a použijte [b2clogin.com](b2clogin.md) v požadavcích.
+Azure AD B2C poskytuje sadu sbaleného obsahu obsahujícího jazyky HTML, CSS a JavaScript pro prvky uživatelského rozhraní ve vašich uživatelských tocích a vlastních zásadách. Pokud chcete pro své aplikace povolit JavaScript, musíte přidat element na [vlastní zásadu](active-directory-b2c-overview-custom.md) nebo ho na portálu povolit pro toky uživatelů, vybrat rozložení stránky a použít [b2clogin.com](b2clogin.md) ve svých žádostech.
 
-Pokud máte v úmyslu povolit [JavaScript](javascript-samples.md) kód na straně klienta, je vhodné opravdu že JavaScript založenou na prvky jsou neměnné. Všechny změny v opačném případě může způsobit neočekávané chování na stránkách uživatele. K těmto potížím předešli, můžete vynutit používání kontrakt stránky a určit verzi smlouvy stránky. To zajišťuje, že obsahu definice, které jsme na základě JavaScript jsou neměnné. I když nemáte v úmyslu povolit JavaScript, můžete určit verzi smlouvy stránky pro vaše stránky.
+Pokud máte v úmyslu [](javascript-samples.md) povolit javascriptový kód na straně klienta, je vhodné zajistit, aby prvky, na kterých je váš JavaScript založen, byly neměnné. V opačném případě by jakékoli změny mohly způsobit neočekávané chování na stránkách uživatele. Chcete-li těmto problémům zabránit, můžete vynutili použití rozložení stránky a určení verze rozložení stránky. Tím zajistíte, že všechny definice obsahu, na kterých jste vycházíte z JavaScriptu, jsou neměnné. I v případě, že nechcete povolit JavaScript, můžete zadat verzi rozložení stránky pro stránky.
 
 ## <a name="user-flows"></a>Toky uživatele
 
-Ve vlastnosti toku uživatele můžete povolit JavaScript, který také vynutí použití kontraktu stránky. Potom můžete nastavit verzi smlouvy stránky, jak je popsáno v další části.
+Ve **vlastnostech**toku uživatele lze povolit jazyk JavaScript, který také vynutil použití rozložení stránky. Pak můžete nastavit verzi rozložení stránky pro tok uživatele, jak je popsáno v následující části.
 
-![Povolit nastavení jazyka JavaScript](media/user-flow-javascript-overview/javascript-settings.png)
+![Stránka vlastností toku uživatele s zvýrazněným nastavením povolit JavaScript](media/user-flow-javascript-overview/javascript-settings.png)
 
-Jestli Povolit JavaScript v vlastnosti toku uživatele, můžete určit verzi smlouvy stránce pro stránky tok uživatele. Tok uživatele otevřete a vyberte **rozložení stránek**. V části **název rozložení**vyberte stránku toku uživatele a potom **verze kontraktu stránky**.
+### <a name="select-a-page-layout-version"></a>Vybrat verzi rozložení stránky
 
-![Povolit nastavení jazyka JavaScript](media/user-flow-javascript-overview/page-contract-version.png)
+Bez ohledu na to, jestli ve vlastnostech toku uživatele povolíte JavaScript, můžete zadat verzi rozložení stránky pro stránky toku uživatele. Otevřete tok uživatele a vyberte **rozložení stránky**. V části **název rozložení**vyberte stránku tok uživatele a zvolte **verzi rozložení stránky**.
+
+Informace o různých verzích rozložení stránky naleznete v [protokolu změn verze](page-layout.md#version-change-log).
+
+![Nastavení rozložení stránky na portálu s rozevírací nabídkou verze rozložení stránky](media/user-flow-javascript-overview/page-layout-version.png)
 
 ## <a name="custom-policies"></a>Vlastní zásady
 
-Chcete-li povolit JavaScript v vlastní zásady, je přidat **ScriptExecution** element **RelyingParty** element v souboru vlastních zásad. Další informace najdete v tématu [ukázky jazyka JavaScript pro použití v Azure Active Directory B2C](javascript-samples.md).
+Chcete-li povolit jazyk JavaScript ve vlastních zásadách, přidejte element **ScriptExecution** do elementu **RelyingParty** v souboru vlastní zásady. Další informace najdete v tématu [ukázky JavaScriptu pro použití v Azure Active Directory B2C](javascript-samples.md).
 
-Jestli Povolit JavaScript v vlastní zásady, můžete určit verzi smlouvy stránky pro vaše stránky. Další informace o zadávání stránku smlouvy, naleznete v tématu [vyberte stránku smlouvu v Azure Active Directory B2C pomocí vlastních zásad](page-contract.md).
+Bez ohledu na to, jestli ve vlastních zásadách povolíte JavaScript, můžete pro své stránky zadat verzi rozložení stránky. Další informace o určení rozložení stránky najdete v tématu [Výběr rozložení stránky v Azure Active Directory B2C pomocí vlastních zásad](page-layout.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [ukázky jazyka JavaScript pro použití v Azure Active Directory B2C](javascript-samples.md).
+Informace o různých verzích rozložení stránky najdete v části **protokol změn verze** [v tématu Výběr rozložení stránky v Azure Active Directory B2C pomocí vlastních zásad](page-layout.md#version-change-log).
+
+Můžete najít příklady použití JavaScriptu v ukázkách [JavaScriptu pro použití v Azure Active Directory B2C](javascript-samples.md).

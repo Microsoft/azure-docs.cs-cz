@@ -1,6 +1,6 @@
 ---
-title: Změna mainframových hostování na Azure virtual machines
-description: Změna hostitele vašeho mainframových úlohy, jako jsou systémy pro IBM Z využití virtuálních počítačů (VM) v Microsoft Azure.
+title: Opětovné hostování sálového počítače na virtuálních počítačích Azure
+description: Využijte virtuální počítače na Microsoft Azure a znovu hostovat své sálové úlohy, jako jsou systémy založené na IBM Z.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -10,116 +10,116 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: c1d7b52bdce77ca108781a999a8a85b3e3fca0b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58755a0ac49b9549813ddb507dfbd986d83dfce5
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61487444"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305853"
 ---
-# <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Změna mainframových hostování na Azure virtual machines
+# <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Opětovné hostování sálového počítače na virtuálních počítačích Azure
 
-Úlohy migrace mainframů prostředí do cloudu vám umožní od modernizujte svou infrastrukturu a často ušetřit na nákladech. Mnoho úloh lze přenést do Azure s jen drobné úpravy v kódu změny, např. aktualizují se názvy databází.
+Migrace úloh z sálových prostředí do cloudu vám umožní modernizovat infrastrukturu a často si ušetřit náklady. Mnohé úlohy je možné přenést do Azure s pouze drobnými změnami kódu, jako je například aktualizace názvů databází.
 
-Obecně mluvený, termín *mainframových* znamená, že velké počítačového systému. Konkrétně většinu aktuálně používaných jsou servery Z systému IBM nebo IBM plug-compatible systémů, na kterých běží MVS, DOS, VSE, operačního systému/390 nebo z/OS.
+Obecně řečeno pojem sálový ** počítač znamená velký počítačový systém. Konkrétně Velká většina aktuálně používaného systému je systémy IBM System Z nebo IBM kompatibilní s modulem plug-in, které používají MVS, DOS, VSE, OS/390 nebo Z/OS.
 
-Virtuální počítač Azure (VM) se používá k izolaci a řízení prostředků pro konkrétní aplikaci na jednu instanci. Sálové počítače, jako je například IBM z/OS pomocí logické oddíly (LPARS) pro tento účel. Sálového počítače použít jeden LPAR CICS oblasti s přidružené programy COBOL a samostatné LPAR k databázi IBM Db2. Typické [n vrstvou aplikaci v Azure](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server) nasadí virtuální počítače Azure do virtuální sítě, které je možné segmentovat do podsítí pro každou vrstvu.
+Virtuální počítač Azure slouží k izolaci a správě prostředků konkrétní aplikace v jediné instanci. Sálové počítače, jako je například IBM z/OS, používají pro tento účel logické oddíly (LPARS). Sálový disk může používat jeden LPAR pro oblast CICS s přidruženými COBOL programy a samostatnou LPAR pro databázi IBM Db2. Typická [n-vrstvá aplikace v Azure](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server) nasazuje virtuální počítače Azure do virtuální sítě, která se dá rozdělit do podsítí pro každou vrstvu.
 
-Virtuální počítače Azure můžete spouštět mainframových emulace prostředí a kompilátory, které podporují scénáře lift and shift. Vývoj a testování jsou často mezi první úlohy pro migraci z sálového počítače do prostředí Azure pro vývoj/testování. Běžné komponenty serveru, které mohou napodobovat zahrnují proces online transakcí (OLTP), batch a systémy ingestování dat jak ukazuje následující obrázek.
+Virtuální počítače Azure můžou spouštět prostředí pro emulaci sálového počítače a kompilátory, které podporují scénáře navýšení a posunutí. Vývoj a testování jsou často mezi prvními úlohami, které je možné migrovat z sálového počítače do prostředí Azure dev/test. Mezi běžné serverové komponenty, které je možné emulovat, patří systémy OLTP (online Transaction Process), Batch a ingestování dat, jak ukazuje následující obrázek.
 
-![Emulace prostředí v Azure umožňuje spouštět z/OS – systémy.](media/01-overview.png)
+![Emulace prostředí v Azure umožňují spouštět systémy z/OS.](media/01-overview.png)
 
-Některé úlohy sálové počítače můžete migrovat do Azure s relativní snadností, zatímco jiné můžou rehosted v Azure pomocí partnerského řešení. Podrobné informace o výběru partnerského řešení [migrace Mainframů Azure center](https://azure.microsoft.com/migration/mainframe/) může pomoct.
+Některé úlohy z sálových počítačů je možné migrovat do Azure s relativním zachováním, zatímco jiné můžou být v Azure znovu hostovat pomocí partnerských řešení. Podrobné pokyny týkající se výběru partnerského řešení získáte prostřednictvím [centra migrace pro sálové počítače Azure](https://azure.microsoft.com/migration/mainframe/) .
 
 ## <a name="mainframe-migration"></a>Migrace mainframů
 
-Změna hostitele, znovu sestavit, nahrazení nebo vyřadit z provozu? PaaS nebo IaaS? Určení strategie správné migrace mainframů aplikace, najdete v článku [migrace Mainframů](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview) průvodce v Azure Architecture Center.
+Znovu hostovat, znovu sestavit, nahradit nebo vyřadit? IaaS nebo PaaS? Pro určení správné strategie migrace pro vaši sálovou aplikaci si Projděte příručku [migrace sálového počítače](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview) v cetrum architektury Azure.
 
-## <a name="micro-focus-rehosting-platform"></a>Platforma změna hostování Micro fokus
+## <a name="micro-focus-rehosting-platform"></a>Platforma pro opětovné hostování platformy Micro
 
-Micro fokus Enterprise Server je jednou z největších mainframových změna hostování platforem, které jsou k dispozici. Můžete spouštět úlohy z/OS na levnější x86 platform v Azure.
+Micro Enterprise Server je jednou z největších dostupných platforem pro opětovné hostování sálových počítačů. Můžete ho použít ke spuštění úloh z/OS na levnější platformě x86 v Azure.
 
 Jak začít:
 
-- [Nainstalujte Enterprise Server a Enterprise Developer v Azure](./microfocus/set-up-micro-focus-azure.md)
-- [Nastavit CICS BankDemo pro podnikové vývojáře v Azure](./microfocus/demo.md)
-- [Spuštění podnikových serveru v kontejneru Dockeru v Azure](./microfocus/run-enterprise-server-container.md)
+- [Instalace podnikového serveru a podnikového vývojáře v Azure](./microfocus/set-up-micro-focus-azure.md)
+- [Nastavení CICS BankDemo pro podnikovou vývojáře v Azure](./microfocus/demo.md)
+- [Provozování podnikového serveru v kontejneru Docker v Azure](./microfocus/run-enterprise-server-container.md)
 
 
 ## <a name="tmaxsoft-openframe-on-azure"></a>TmaxSoft OpenFrame v Azure
 
-TmaxSoft OpenFrame je Oblíbené mainframových rehosting řešení používá ve scénářích lift and shift. OpenFrame prostředí v Azure je vhodný pro vývoj ukázky, testování a produkční úlohy.
+TmaxSoft OpenFrame je oblíbené řešení pro opětovné hostování sálového počítače používané ve scénářích navýšení a posunutí. Prostředí OpenFrame v Azure je vhodné pro vývoj, ukázky, testování nebo produkční úlohy.
 
 Jak začít:
 
 - [Začínáme s TmaxSoft OpenFrame](./tmaxsoft/get-started.md)
-- [Stažení elektronické knihy](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
+- [Stažení e-knihy](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
-## <a name="ibm-zdt-120"></a>IBM zD & T 12.0
+## <a name="ibm-zdt-120"></a>IBM zD & T 12,0
 
-IBM Z vývojové a testovací prostředí (IBM zD & T) nastaví mimo produkční prostředí v Azure, kterou můžete použít pro vývoj, testování a ukázky aplikací založených na z/OS.
+Vývojové a testovací prostředí IBM Z (IBM zD & T) nastaví v Azure neprodukční prostředí, které můžete použít pro vývoj, testování a ukázky aplikací z/OS.
 
-Emulace prostředí v Azure můžete hostovat různé druhy Z instance prostřednictvím aplikace vývojáři řídit distribuce (ADCDs). ZD & T osobní edice, zD & T paralelní Sysplex a zD & T Enterprise Edition lze spustit v Azure a Azure Stack.
+Prostředí emulace v Azure může hostovat různé druhy instancí Z prostřednictvím řízených distribucí aplikací (ADCDs). V Azure a Azure Stack můžete spustit zD & T Personal Edition, zD & T Parallel Sysplex a zD & T Enterprise Edition.
 
 Jak začít:
 
-- [Nastavení IBM zD & T 12.0 v Azure](./ibm/install-ibm-z-environment.md)
+- [Nastavení IBM zD & T 12,0 v Azure](./ibm/install-ibm-z-environment.md)
 - [Nastavení ADCD na zD & T](./ibm/demo.md)
 
 ## <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale v Azure
 
-Prostředí pureScale IBM DB2 poskytuje cluster databáze pro Azure. Není stejný jako původní prostředí, ale poskytuje podobné dostupností a škálovatelností jako IBM DB2 pro spuštění v instalačním programu paralelní Sysplex z/OS.
+Prostředí IBM DB2 pureScale poskytuje databázový cluster pro Azure. Není totožný s původním prostředím, ale nabízí podobnou dostupnost a škálování jako IBM DB2 pro z/OS běžící v paralelní instalaci Sysplex.
 
-Abyste mohli začít, najdete v článku [pureScale IBM DB2 v Azure](/azure/virtual-machines/linux/ibm-db2-purescale-azure).
+Informace o tom, jak začít, najdete v článku [IBM DB2 pureScale v Azure](/azure/virtual-machines/linux/ibm-db2-purescale-azure).
 
 ## <a name="considerations"></a>Požadavky
 
-Když vám migrace mainframových úloh do infrastruktury Azure jako služba (IaaS), můžete z několika typů na vyžádání a škálovatelné výpočetní prostředky, včetně virtuálních počítačů Azure. Azure nabízí celou řadu [Linux](/azure/virtual-machines/linux/overview) a [Windows](/azure/virtual-machines/windows/overview) virtuálních počítačů.
+Když migrujete sálové úlohy do infrastruktury Azure jako služby (IaaS), můžete si vybrat z několika typů škálovatelných výpočetních prostředků na vyžádání, včetně virtuálních počítačů Azure. Azure nabízí řadu virtuálních počítačů se systémy [Linux](/azure/virtual-machines/linux/overview) a [Windows](/azure/virtual-machines/windows/overview) .
 
 ### <a name="compute"></a>Compute
 
-Azure výpočetní výkon porovnává příznivě ke kapacitě mainframů. Pokud uvažujete o přesunu mainframových úlohy do Azure, porovnejte metrika mainframových jednoho milionu instrukcí za sekundu (MIPS) na virtuální procesory. 
+Azure COMPUTE vyrovnává favorably s kapacitou sálového počítače. Pokud uvažujete o přesunutí úlohy sálového počítače do Azure, porovnejte metriku sálových počítačů s 1 000 000 instrukcí za sekundu (MIPS) na virtuální procesory. 
 
-Zjistěte, jak [do Azure přesunout výpočetní mainframových](./concepts/mainframe-compute-azure.md).
+Naučte se, jak [přesunout výpočetní sálové počítače do Azure](./concepts/mainframe-compute-azure.md).
 
-### <a name="high-availability-and-failover"></a>Zajištění vysoké dostupnosti a převzetí služeb při selhání
+### <a name="high-availability-and-failover"></a>Vysoká dostupnost a převzetí služeb při selhání
 
-Azure nabízí na základě závazku smlouvy o úrovni služeb (SLA). Více nines dostupnost je výchozí a smlouvy o úrovni služeb, lze optimalizovat místní nebo založené na geografické replikaci služby. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
+Azure nabízí smlouvy o úrovni služeb (SLA) založené na závazku. Dostupnost s více devěty je výchozí a SLA je možné optimalizovat pomocí místní nebo geografické replikace služeb. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
 
-Díky Azure IaaS, jako je například virtuální počítač, konkrétní systémové funkce poskytovat podporu převzetí služeb při selhání – například převzetí služeb clusteringu instancí a [dostupnosti](/azure/virtual-machines/windows/regions-and-availability#availability-sets). Při použití Azure platforma jako služba (PaaS) prostředky se stará platforma a převzetí služeb při selhání automaticky. Mezi příklady patří [Azure SQL Database](/azure/sql-database/sql-database-technical-overview) a [služby Azure Cosmos DB](/azure/cosmos-db/introduction).
+V případě Azure IaaS, jako je třeba virtuální počítač, poskytují konkrétní systémové funkce podporu převzetí služeb při selhání, například instance clusteringu s podporou převzetí služeb při selhání a sady dostupnosti. Když použijete prostředky Azure Platform as a Service (PaaS), platforma zpracovává převzetí služeb při selhání automaticky. Příklady zahrnují [Azure SQL Database](/azure/sql-database/sql-database-technical-overview) a [Azure Cosmos DB](/azure/cosmos-db/introduction).
 
 ### <a name="scalability"></a>Škálovatelnost
 
-Sálové počítače obvykle vertikálně navýšit kapacitu, při cloudových prostředích pro horizontální navýšení kapacity. Azure nabízí celou řadu [Linux](/azure/virtual-machines/linux/sizes) a [Windows](/azure/virtual-machines/windows/sizes) velikosti podle vašich potřeb. Cloud také škálování nahoru nebo dolů specifikací přesně uživatele shoda. Výpočetní výkon, úložiště a službám [škálování](/azure/architecture/best-practices/auto-scaling) na požádání v rámci modelu fakturace podle využití.
+Při horizontálním navýšení kapacity cloudových prostředí se většinou škálují sálové počítače. Azure nabízí řadu velikostí pro [Linux](/azure/virtual-machines/linux/sizes) a [Windows](/azure/virtual-machines/windows/sizes) , které vyhovují vašim potřebám. Cloud se také škáluje nahoru nebo dolů, aby odpovídal přesně zadaným uživatelským specifikacím. Výpočetní výkon, úložiště a služby se [škálují](/azure/architecture/best-practices/auto-scaling) na vyžádání v rámci fakturačního modelu založeného na využití.
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
-V cloudu mají celou řadu možností úložiště flexibilní, škálovatelný a platíte jenom za to co potřebujete. [Azure Storage](/azure/storage/common/storage-introduction) nabízí široce škálovatelné úložiště objektů pro datové objekty, službu systému souborů pro cloud, spolehlivé úložiště a úložiště NoSQL. Pro virtuální počítače spravované a nespravované disky poskytují trvalé a zabezpečené diskové úložiště.
+V cloudu máte řadu flexibilních a škálovatelných možností úložiště a platíte jenom za to, co potřebujete. [Azure Storage](/azure/storage/common/storage-introduction) nabízí rozsáhle škálovatelné úložiště objektů pro datové objekty, službu systému souborů pro Cloud, spolehlivé úložiště pro zasílání zpráv a NoSQL úložiště. U virtuálních počítačů poskytují spravované a nespravované disky Trvalé a zabezpečené úložiště na disku.
 
-Zjistěte, jak [do Azure přesunout úložiště mainframových](./concepts/mainframe-storage-azure.md).
+Přečtěte si, jak [přesunout sálové úložiště do Azure](./concepts/mainframe-storage-azure.md).
 
 ### <a name="backup-and-recovery"></a>Backup a obnovení
 
-Udržování vašeho vlastního webu pro zotavení po havárii může být nákladné návrh. Azure nabízí snadno implementovat a nákladově efektivní možnosti pro [zálohování](/azure/backup/backup-introduction-to-azure-backup), [obnovení](/azure/site-recovery/site-recovery-overview), a [redundance](/azure/storage/common/storage-redundancy) na místní nebo regionální úrovni nebo prostřednictvím geografickou redundancí.
+Udržování vlastního webového serveru pro zotavení po havárii může být nákladným umístěním. Azure má snadno implementované a nákladově efektivní možnosti pro [zálohování](/azure/backup/backup-introduction-to-azure-backup), [obnovu](/azure/site-recovery/site-recovery-overview)a redundanci v [](/azure/storage/common/storage-redundancy) místní nebo regionální úrovni nebo prostřednictvím geografické redundance.
 
-## <a name="azure-government-for-mainframe-migrations"></a>Azure Government pro migrace mainframů
+## <a name="azure-government-for-mainframe-migrations"></a>Azure Government pro migrace sálového počítače
 
-Mnoho instituce ve veřejném sektoru rádi přesunout jejich mainframových aplikací do Modernější a flexibilní platformu. Microsoft Azure Government je fyzicky oddělená instance globální platformy Microsoft Azure – zabalí pro státní správu federální, státní i místní systémy. Nabízí prvotřídní funkce pro zabezpečení, ochrany a dodržování předpisů služby speciálně pro instituce státní správy USA a jejich partneři.
+Řada entit veřejného sektoru by chtěla přesunout své sálové aplikace do moderní, flexibilní platformy. Microsoft Azure Government je fyzicky oddělená instance globální Microsoft Azure platformy, zabalená pro systémy federální, státní a místní správy. Poskytuje špičkové služby zabezpečení, ochrany a dodržování předpisů, které jsou určené pro USA státní úřady a jejich partnery.
 
-Azure Government vytvořené Provisional Authority to Operate (P-ATO) pro vysoký dopad FedRAMP pro systémy, které potřebují tento typ prostředí.
+Azure Government získala dočasnou autoritu pro provoz (P-ATO) pro FedRAMP vysoký dopad pro systémy, které tento typ prostředí potřebují.
 
-Abyste mohli začít, stáhněte si [cloudu Microsoft Azure Government pro mainframových aplikací](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/).
+Začněte stažením [Microsoft Azure Government cloudu pro aplikace pro sálové počítače](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/).
 
 ## <a name="next-steps"></a>Další postup
 
-Požádejte naše [partneři](partner-workloads.md) při migraci nebo opětovným hostováním mainframových aplikací. Podrobné informace o výběru partnerského řešení, najdete v článku [platformy modernizaci Alliance](https://www.platformmodernization.org/pages/mainframe.aspx) webu.
+Zeptejte se našich [partnerů](partner-workloads.md) , aby vám pomohly migrovat nebo znovu hostovat vaše sálové aplikace. Podrobné pokyny týkající se výběru partnerského řešení najdete na webu [moderning Alliance pro platformy](https://www.platformmodernization.org/pages/mainframe.aspx) .
 
 Viz také:
 
-- [Dokumenty White Paper o tématech sálového počítače](mainframe-white-papers.md)
-- [Migrace mainframů](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
+- [Dokumenty White paper o tématech z sálového počítače](mainframe-white-papers.md)
+- [Migrace sálového počítače](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Odstraňování potíží](/azure/virtual-machines/troubleshooting/)
-- [Uvedení mainframových migrace do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
+- [Migrace Demystifying z sálového počítače do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->
 [microfocus-get-started]: /microfocus/get-started.md

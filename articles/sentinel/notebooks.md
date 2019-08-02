@@ -1,6 +1,6 @@
 ---
-title: Možnosti typu pomocí poznámkových bloků ve verzi Preview Sentinelu Azure | Dokumentace Microsoftu
-description: Tento článek popisuje postup použití poznámkových bloků s funkcemi Azure Sentinelu typu.
+title: Možnosti lovu pomocí poznámkových bloků v Azure Sentinel Preview | Microsoft Docs
+description: Tento článek popisuje, jak používat poznámkové bloky s možnostmi lovu do Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -16,89 +16,89 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: cc84db4bd3dc06d4e2dbecb3be8ceee37d554ae7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 6372a7958caf108903321e5ee87ea6bf1a42271c
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619837"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689526"
 ---
-# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Použití poznámkových bloků Jupyter pro dost možná nejlepší bezpečnostní hrozby
+# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Použití poznámkových bloků Jupyter k prolovení bezpečnostních hrozeb
 
 > [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
+> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Základem Azure Sentinelu je úložiště dat; kombinuje vysoký výkon dotazování, dynamické schéma a škálování pro velké objemy dat svazků. Na portálu Azure Sentinelu a všechny nástroje Azure Sentinelu přístupu k tomuto úložišti dat pomocí běžných rozhraní API. Stejného rozhraní API je také dostupná pro externí nástroje, jako například [Jupyter](https://jupyter.org/) poznámkových bloků a Python. Přestože mnoho běžných úloh se dá provést na portálu, rozšiřuje Jupyter oboru můžete dělat s těmito daty. Kombinuje úplnou možností programování s velkou kolekci knihoven pro machine learning, vizualizace a data analýzy. Tyto atributy zkontrolujte Jupyter tohoto nástroje pro zkoumání zabezpečení a typu.
+Základem Azure Sentinel je úložiště dat; kombinuje dotazování s vysokým výkonem, dynamické schéma a škálování na obrovské objemy dat. Portál Sentinel Azure a všechny nástroje Sentinel Azure používají pro přístup k tomuto úložišti dat společné rozhraní API. Stejné rozhraní API je také k dispozici pro externí nástroje, jako jsou [Jupyter](https://jupyter.org/) notebooky a Python. I když je možné na portálu provádět mnoho běžných úloh, Jupyter rozšiřuje rozsah toho, co můžete s těmito daty dělat. Kombinuje plnou programovatelnost s velkou kolekcí knihoven pro strojové učení, vizualizaci a analýzu dat. Tyto atributy Jupyter přesvědčivý Nástroj pro vyšetřování a lov zabezpečení.
 
-![Příklad poznámkového bloku](./media/notebooks/sentinel-nb-mapandtimeline.png)
+![Příklad poznámkového bloku](./media/notebooks/sentinel-notebooks-map.png)
 
-Integrovali jsme prostředí Jupyter na portál Azure Sentinelu usnadňuje vytvoření a provedení poznámkových bloků a analyzoval vaše data. *Kqlmagic* knihovna poskytuje lepidlo, které vám umožní využít dotazy z Sentinelu Azure a spouštět je přímo do poznámkového bloku. Použití dotazů [Kusto dotazovací jazyk](https://kusto.azurewebsites.net/docs/query/index.html). Několik poznámkové bloky, vypracovanou organizací cccppf některé analytikům zabezpečení od Microsoftu, jsou sbaleny s Sentinelu Azure. Některé tyto poznámkové bloky jsou vytvořené pro konkrétní scénář a může sloužit jako-je. Ostatní jsou určeny jako ukázky pro ilustraci technik a funkce, které můžete zkopírovat nebo přizpůsobit pro použití ve vašich vlastních poznámkových bloků. Další poznámkových bloků může také importovat z komunity Azure Sentinelu Githubu.
+Prostředí Jupyter jsme integroval na portál Sentinel Azure, což usnadňuje vytváření a spouštění poznámkových bloků pro analýzu vašich dat. Knihovna *Kqlmagic* poskytuje připevňování, který umožňuje převzít dotazy z Sentinel Azure a spustit je přímo v poznámkovém bloku. Dotazy používají [dotazovací jazyk Kusto](https://kusto.azurewebsites.net/docs/query/index.html). Několik poznámkových bloků vyvinutých analytiky zabezpečení Microsoftu se zabalí do Azure Sentinel. Některé z těchto poznámkových bloků jsou sestaveny pro konkrétní scénář a lze je použít tak, jak jsou. Jiné jsou určené jako vzorky k ilustraci techniků a funkcí, které můžete zkopírovat nebo přizpůsobit pro použití ve vlastních poznámkových blocích. Další poznámkové bloky se můžou importovat taky z GitHubu komunity služby Azure Sentinel.
 
-Integrované prostředí Jupyter používá [poznámkových bloků Azure](https://notebooks.azure.com/) k ukládání, sdílet a spouštět poznámkové bloky. Tyto poznámkové bloky můžete také spouštět místně (když na počítači máte prostředí Pythonu a Jupyter) nebo v jiných prostředích JupterHub, jako je Azure Databricks.
+Integrované prostředí Jupyter používá [Azure Notebooks](https://notebooks.azure.com/) k ukládání, sdílení a spouštění poznámkových bloků. Tyto poznámkové bloky můžete také spustit lokálně (Pokud máte prostředí Pythonu a Jupyter v počítači) nebo v jiných prostředích JupterHub, jako je například Azure Databricks.
 
-Poznámkové bloky mají dvě součásti:
+Poznámkové bloky mají dvě komponenty:
 
-- rozhraní založené na prohlížeči, kde zadejte a spouštění dotazů a kód, a kde se zobrazují výsledky spuštění.
-- *jádra* , který je zodpovědné za parsování a spuštění samotný kód. 
+- rozhraní založené na prohlížeči, kde zadáváte a spouštíte dotazy a kód a kde se zobrazují výsledky spuštění.
+- *jádro* , které zodpovídá za analýzu a provádění samotného kódu. 
 
-V poznámkových bloků Azure, tento jádra běží na Azure *bezplatné cloudové výpočty a úložiště* ve výchozím nastavení. Pokud vašich poznámkových bloků zahrnutí modely komplexních strojového učení nebo vizualizace byste měli zvážit použití výkonnější, vyhrazené výpočetní prostředky, jako například [virtuální počítače pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) (DSVM). Poznámkové bloky ve vašem účtu zachovány privátní, pokud budete chtít sdílet.
+V Azure Notebooks se toto jádro ve výchozím nastavení spouští na *výpočetním a úložném cloudovém úložišti Azure Free* . Pokud vaše poznámkové bloky obsahují složité modely strojového učení nebo vizualizace, měli byste zvážit použití výkonnějších a vyhrazených výpočetních prostředků, jako jsou třeba [datové vědy Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) (DSVM). Poznámkové bloky ve vašem účtu jsou důvěrné, pokud se nerozhodnete je sdílet.
 
-Poznámkových bloků Azure Sentinelu použít mnoho Oblíbené knihovny jazyka Python, jako je například balíčky pandas, matplotlib, rozostření a dalších. Existuje spousta další balíčky Python si můžete vybírat, pokrývá oblasti, jako například:
+Poznámkové bloky Azure Sentinel používají spoustu oblíbených knihoven Pythonu, jako jsou PANDAS, matplotlib, rozostření a další. Existuje velký počet dalších balíčků Pythonu, ze kterých si můžete vybrat, a to pokrývající oblasti:
 
-- vizualizace a grafiky
-- zpracování dat a analýza
-- statistiky a numerické výpočty
-- Strojové učení a hloubkového učení
+- vizualizace a grafika
+- zpracování a analýza dat
+- statistiky a číselné výpočty
+- Machine Learning a obsáhlý Learning
 
-Vydali jsme také některé nástroje zabezpečení Jupyter open source v balíčku s názvem [msticpy](https://github.com/Microsoft/msticpy/). Tento balíček se používá v mnoha zahrnuté poznámkových bloků. Msticpy nástroje jsou navrženy speciálně pro s vytvářením poznámkových bloků pro typu a šetření a aktivně pracujeme na nových funkcí a vylepšení.
+Také jsme vydali nějaké open source nástroje zabezpečení Jupyter v balíčku s názvem [msticpy](https://github.com/Microsoft/msticpy/). Tento balíček se používá v mnoha zahrnutých poznámkových blocích. Nástroje Msticpy jsou navržené specificky pro pomoc s vytvářením poznámkových bloků pro lov a vyšetřování a aktivně pracujeme na nových funkcích a vylepšeních.
 
-Počáteční poznámkových bloků patří:
+Mezi úvodní poznámkové bloky patří:
 
-- **Šetření – proces výstrahy na základě**: Umožňuje rychle posoudit upozornění díky analýze činnost v ovlivněných hostitelích.
-- **Na základě typu – Průzkumník Windows hostitele**: Umožňuje prozkoumat aktivity účtu, spuštění procesu, síťovou aktivitou a dalších událostí na hostiteli.  
-- **Na základě typu – Office 365 zkoumání**: Nejlepší pro podezřelé aktivity Office 365 v několika datových sad O365.
+- **Řízené šetření – výstrahy procesu**: Slouží k rychlému třídění výstrah analýzou aktivity na ovlivněných hostitelích.
+- **S asistencí – Průzkumník hostitele Windows**: Umožňuje prozkoumat aktivitu účtu, provádění procesů, síťové aktivity a další události na hostiteli.  
+- **S asistencí – Office 365 – prozkoumávání**: Loven pro podezřelou aktivitu Office 365 ve více sadách dat O365.
 
-[Úložiště GitHub Sentinelu komunity Azure](https://github.com/Azure/Azure-Sentinel) je umístění pro všechny budoucí poznámkových bloků Azure Sentinelu vytvořené microsoftem nebo přispět od komunity.
+[Úložiště GitHub komunity služby Azure Sentinel](https://github.com/Azure/Azure-Sentinel) je umístění všech budoucích poznámkových bloků služby Azure Sentinel sestavených společností Microsoft nebo, které přispěly od komunity.
 
 ## <a name="run-a-notebook"></a>Spuštění poznámkového bloku
 
-V následujícím příkladu vytvoříme projekt poznámkových bloků Azure z portálu Azure Sentinelu sestavování projektu s poznámkovými bloky. Než začnete používat tyto poznámkové bloky, je vhodné vytvořit kopii Poznámkový blok a pracovat na kopii. Práce na kopie umožňuje bezpečně aktualizovat na budoucí verze poznámkových bloků, aniž byste museli přepsat data.
+V následujícím příkladu vytvoříme Azure Notebooks projekt na portálu Sentinel Azure a naplníme projekt pomocí poznámkových bloků. Před použitím těchto poznámkových bloků je vhodné vytvořit kopii poznámkového bloku a na kopii pracovat. Práce na kopiích vám umožní bezpečně aktualizovat budoucí verze poznámkových bloků bez přepsání jakýchkoli dat.
 
-1. Na portálu Azure Sentinelu, klikněte na tlačítko **poznámkových bloků** v navigační nabídce. Chcete-li vytvořit nový projekt poznámkových bloků Azure, klikněte na tlačítko **Sentinelu poznámkových bloků Azure klonování** nebo otevřete existující poznámkových bloků projekty kliknutím **přejít na vašich poznámkových bloků**.
+1. Na portálu Sentinel Azure klikněte v navigační nabídce na poznámkové **bloky** . Pokud chcete vytvořit nový projekt Azure Notebooks, klikněte na **klonovat poznámkové bloky Azure Sentinel** nebo otevřete existující projekty poznámkových bloků a klikněte na **Přejít do vašich poznámkových bloků**.
   
-   ![Vyberte poznámkové bloky](./media/notebooks/sentinel-az-notebooks-home.png)
+   ![vybrat poznámkové bloky](./media/notebooks/sentinel-azure-notebooks-home.png)
 
-2. Pokud jste zvolili **Sentinelu poznámkových bloků Azure klonování** v předchozím kroku, zobrazí se následující dialogové okno. Klikněte na tlačítko **Import** naklonujte úložiště GitHub do svého projektu poznámkových bloků Azure. Pokud nemáte účet Azure poznámkových bloků, zobrazí se výzva k vytvoření a přihlaste se.
+2. Pokud jste v předchozím kroku zvolili **klonovat poznámkové bloky Azure Sentinel** , zobrazí se následující dialogové okno. Kliknutím na **importovat** naklonujte úložiště GitHub do svého projektu Azure Notebooks. Pokud nemáte existující účet Azure Notebooks, zobrazí se výzva, abyste si ho vytvořili a přihlásili.
 
-   ![Import poznámkového bloku](./media/notebooks/sentinel-nb-signin-and-clone.png)
+   ![Importovat Poznámkový blok](./media/notebooks/sentinel-notebooks-clone.png)
 
-3. Při vytváření nového projektu, budete muset projekt pojmenujte – použijte výchozí název nebo typ v nové. Nezaškrtávejte políčko **klonování rekurzivně** možnost – tuto možnost odkazuje na propojenou úložiště GitHub. Kliknutím na **Import** začne klonování obsahu GitHub, což může trvat několik minut.
+3. Při vytváření nového projektu je nutné pojmenovat projekt – použijte výchozí název nebo zadejte nový. Nekontrolovat **rekurzivní** možnost klonování – Tato možnost se týká propojených úložišť GitHub. Po kliknutí na **Import** začne probíhat klonování obsahu GitHubu, což může trvat několik minut.
 
-   ![Import poznámkového bloku](./media/notebooks/sentinel-create-nb-project.png)
+   ![Importovat Poznámkový blok](./media/notebooks/sentinel-create-project.png)
 
-4. Otevřít **poznámkových bloků** složky poznámkových bloků. Každý Poznámkový blok vás provede kroky pro provádění hunt nebo šetření. Knihovny a další závislosti vyžadované Poznámkový blok lze nainstalovat z poznámkového bloku samotné nebo prostřednictvím procedury jednoduchou konfiguraci. Konfigurace, která spojují projektu Poznámkový blok zpět k vašemu předplatnému Azure Sentinelu automaticky zřídí v předchozích krocích. Poznámkové bloky jsou připravené ke spuštění pracovního prostoru Log Analytics Sentinelu Azure.
+4. Otevřete složku **poznámkových bloků** a zobrazte si poznámkové bloky. Každý Poznámkový blok vás provede kroky pro provedení průzkumu nebo šetření. Knihovny a další závislosti, které Poznámkový blok potřebuje, se dají nainstalovat přímo z poznámkového bloku nebo pomocí jednoduché konfigurační procedury. Konfigurace, která se přiřazuje vašemu projektu vašeho poznámkového bloku zpátky k vašemu předplatnému Azure Sentinel, se automaticky zřídí v předchozích krocích. Vaše poznámkové bloky jsou připravené ke spuštění v pracovním prostoru Sentinel služby Azure Sentinel Log Analytics.
 
-   ![Import úložiště](./media/notebooks/sentinel-open-notebook1.png)
+   ![Importovat úložiště](./media/notebooks/sentinel-open-notebook1.png)
 
-5. Otevřete Poznámkový blok. Bezplatnými výpočetními funkcemi je standardně vybraná možnost spouštět poznámkové bloky (zvýrazněno). Pokud jste nakonfigurovali DSVM použití (viz výše), vyberte datové VĚDY a ověřit před otevřením první poznámkového bloku. Klikněte na poznámkového bloku otevřete.
+5. Otevřete Poznámkový blok. Ve výchozím nastavení je vybráno bezplatné výpočetní prostředí pro spuštění poznámkových bloků (zvýrazněno). Pokud jste nakonfigurovali DSVM, který se má použít (viz výše), vyberte DSVM a před otevřením prvního poznámkového bloku ho ověřte. Klikněte na Poznámkový blok a otevřete ho.
 
-   ![Vyberte poznámkového bloku](./media/notebooks/sentinel-open-notebook2.png)
+   ![vybrat Poznámkový blok](./media/notebooks/sentinel-open-notebook2.png)
 
-6. Výběr verze Pythonu. Při prvním otevření poznámkového bloku, můžete být vyzváni k výběru verze jádra. Pokud tomu tak není, vyberte jádra použít následujícím způsobem. Python 3.6 nebo novější musí být vybraný jádra (v horním pravém rohu okna Poznámkový blok).
+6. Výběr verze Pythonu Při prvním otevření poznámkového bloku vás může zobrazit výzva k výběru verze jádra. V takovém případě vyberte jádro, které chcete použít: Python 3,6 nebo novější by měl být vybraným jádrem (v pravém horním rohu okna poznámkového bloku).
 
-   ![Vyberte poznámkového bloku](./media/notebooks/sentinel-select-kernel.png)
+   ![vybrat Poznámkový blok](./media/notebooks/sentinel-select-kernel.png)
 
-Rychlý úvod k dotazování na data v Azure Sentinelu, podívejte se na [GetStarted](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) poznámkového bloku ve složce hlavní poznámkových bloků. Další ukázkové poznámkové bloky najdete v **ukázkové poznámkové bloky** podsložky. Ukázkové poznámkové bloky se uložily. s daty, aby bylo snazší zjistit zamýšlený výstup (doporučujeme je v zobrazení [nbviewer](https://nbviewer.jupyter.org/)). **HowTos** složka obsahuje poznámkové bloky s popisem, například: nastavení výchozí verze Python, konfigurace DSVM, vytváření Sentinelu Azure záložky z poznámkového bloku a dalších tématech.
+Rychlý úvod k dotazování na data ve službě Azure Sentinel najdete v poznámkovém bloku getstarted ve složce hlavní poznámkové bloky. [](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) Další ukázkové poznámkové bloky najdete v podsložce **ukázek poznámkových bloků** . Ukázkové notebooky byly uloženy s daty, takže je snazší zobrazit zamýšlený výstup (doporučujeme je zobrazit v [nbviewer](https://nbviewer.jupyter.org/)). Složka **HowTos** obsahuje poznámkové bloky, například: nastavení výchozí verze Pythonu, konfigurace DSVM, vytváření záložek Azure Sentinel z poznámkového bloku a další předměty.
 
-Tyto poznámkové bloky jsou určeny jako obou užitečných nástrojů a obrázky a ukázky kódu, které můžete použít při vývoji vlastních poznámkových bloků.
+Tyto poznámkové bloky jsou určené jako užitečné nástroje a jako ilustrace a ukázky kódu, které můžete použít při vývoji vlastních poznámkových bloků.
 
-Vítáme zpětnou vazbu, zda máte nějaké návrhy, žádosti o funkce, kterými přispěli poznámkových bloků, zpráv o chybách nebo vylepšení a dodatky k existující poznámkových bloků. Přejděte [Azure Sentinelu komunitě GitHub](https://github.com/Azure/Azure-Sentinel) vytvoření problému nebo rozvětvení a nahrát příspěvek.
+Uvítáme zpětnou vazbu, ať už návrhy, žádosti o funkce, přidané poznámkové bloky, zprávy o chybách nebo vylepšení a přidání do stávajících poznámkových bloků. Pokud chcete vytvořit problém nebo rozvětvení a nahrát příspěvek, přejít na [GitHub komunity služby Azure Sentinel](https://github.com/Azure/Azure-Sentinel) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak chcete začít používat aplikace Jupyter notebook v Azure Sentinelu. Další informace o Azure Sentinelu, naleznete v následujících článcích:
+V tomto článku jste zjistili, jak začít používat Jupyter poznámkové bloky v Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 
-- [Proaktivně hunt hrozby](hunting.md)
-- [Použití záložek ke uložit zajímavé informace při typu](bookmarks.md)
+- [Proaktivní vylovení hrozeb](hunting.md)
+- [Použití záložek k ukládání zajímavých informací při lovu](bookmarks.md)

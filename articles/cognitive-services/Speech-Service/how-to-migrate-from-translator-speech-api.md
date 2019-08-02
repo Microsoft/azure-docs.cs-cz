@@ -1,7 +1,7 @@
 ---
-title: Migrace z Translator Speech API k Speech Service
+title: Migrace z Translator Speech API do služby pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak migrovat aplikace z rozhraní Translator Speech API k hlasové služby.
+description: Naučte se migrovat aplikace z Translator Speech API do služby pro rozpoznávání řeči.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,61 +10,61 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 1ed494cea1ccf8845a25a3ab49d3194cc6a55509
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b61aef13b113d9b2502c24e3001da25fa186c76
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785663"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559562"
 ---
-# <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrace z Translator Speech API k Speech Service
+# <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrace z Translator Speech API do služby pro rozpoznávání řeči
 
-V tomto článku použijte k migraci aplikace z Microsoft Translator Speech API k [Speech Service](index.yml). Tato příručka popisuje rozdíly mezi rozhraní Translator Speech API a Speech Service a navrhne strategie pro migraci aplikací.
+Pomocí tohoto článku migrujete své aplikace z Microsoft Translator Speech API do [služby Speech](index.yml). Tato příručka popisuje rozdíly mezi Translator Speech API a službu Speech Service a navrhuje strategie pro migraci vašich aplikací.
 
 > [!NOTE]
-> Váš klíč předplatného rozhraní Translator Speech API nebude změna přijata službou řeči. Budete muset vytvořit nové předplatné hlasové služby.
+> Služba rozpoznávání řeči nepřijímá váš klíč předplatného Translator Speech API. Budete muset vytvořit nové předplatné služby Speech Services.
 
 ## <a name="comparison-of-features"></a>Porovnání funkcí
 
 | Funkce                                           | Translator Speech API                                  | Hlasové služby | Podrobnosti                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Překlad textu                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Překlad řeči                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Globální koncový bod                                   | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Hlasové služby nenabízí globální koncový bod. Globální koncový bod může automaticky směrovat provoz na nejbližší regionální koncový bod, snížení latence ve vaší aplikaci.                                                    |
-| Místní koncové body                                | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Časový limit připojení                             | 90 minut                                               | Neomezený počet pomocí sady SDK. 10 minut s připojením Websocket.                                                                                                                                                                                                                                                                                   |
-| Klíč ověření v záhlaví                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Přeložit v jedné žádosti více jazyků | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Sady SDK k dispozici                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Zobrazit [hlasové služby dokumentaci](index.yml) pro dostupné sady SDK.                                                                                                                                                    |
-| Protokoly Websocket připojení                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Jazyky rozhraní API                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Hlasové služby podporuje stejný rozsah jazyky podle [reference k rozhraní Translator API jazyků](../translator-speech/languages-reference.md) článku. |
-| Filtr vulgárních výrazů a značky                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Převod na text                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Převod na řeč                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Globální koncový bod                                   | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Služba Speech Services nenabízí globální koncový bod. Globální koncový bod může automaticky směrovat provoz na nejbližší oblastní koncový bod a snížit latenci ve vaší aplikaci.                                                    |
+| Regionální koncové body                                | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Časový limit připojení                             | 90 minut                                               | Neomezeno pomocí sady SDK. 10 minut s připojením typu WebSockets.                                                                                                                                                                                                                                                                                   |
+| Ověřovací klíč v záhlaví                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Více jazyků, které jsou přeloženy v jednom požadavku | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Dostupné sady SDK                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Dostupné sady SDK najdete v [dokumentaci ke službám Speech](index.yml) .                                                                                                                                                    |
+| Připojení k objektům WebSocket                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Rozhraní API jazyků                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Služba Speech Services podporuje stejný rozsah jazyků popsaných v článku [referenční informace o jazycích rozhraní Translator API](../translator-speech/languages-reference.md) . |
+| Filtr a značka vulgárních výrazů                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | . WAV/PCM jako vstup                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Jiné typy souborů jako vstup                         | : heavy_minus_sign:                                              | : heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
-| Částečné výsledky.                                   | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| Částečné výsledky                                   | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Informace o časování                                       | :heavy_check_mark:                                              | : heavy_minus_sign:                 |                                                                                                                                                                 |
 | ID korelace                                    | :heavy_check_mark:                                              | : heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
-| Modely řeči                              | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Hlasové služby nabízejí modely řeči, které vám umožní přizpůsobit rozpoznávání řeči do slovníku vaší organizace jedinečný.                                                                                                                                           |
-| Vlastní překladové modely                         | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Přihlášení k odběru do rozhraní API pro překlad textu Microsoftu vám umožní použít [vlastní Translator](https://www.microsoft.com/translator/business/customization/) moct používat vaše vlastní data pro přesnější překlady.                                                 |
+| Vlastní modely řeči                              | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Služba Speech Services nabízí vlastní modely řeči, které umožňují přizpůsobit rozpoznávání řeči unikátnímu slovníku vaší organizace.                                                                                                                                           |
+| Vlastní modely překladu                         | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Přihlášení k odběru rozhraní API pro překlad textu do Microsoftu umožňuje [](https://www.microsoft.com/translator/business/customization/) používat vlastní překladatele k používání vlastních dat pro přesnější překlady.                                                 |
 
 ## <a name="migration-strategies"></a>Strategie migrace
 
-Pokud aplikace v vývojové nebo produkční prostředí, které používají rozhraní Translator Speech API máte vy nebo vaše organizace, měli byste aktualizovat je, aby používaly službu rozpoznávání řeči. Zobrazit [Speech Service](index.yml) dokumentaci dostupné sady SDK, ukázky a kurzy. Při migraci, zvažte následující:
+Pokud vy nebo vaše organizace máte aplikace ve vývojovém nebo produkčním prostředí, které používají Translator Speech API, měli byste je aktualizovat, aby používaly službu Speech. Dostupné sady SDK, ukázky kódu a kurzy najdete v dokumentaci ke [službě Speech](index.yml) . Při migraci Vezměte v úvahu následující:
 
-* Hlasové služby nenabízí globální koncový bod. Určete, pokud funkce aplikace efektivně pokud používá jeden místní koncový bod pro všechny jeho provozu. Pokud ne, použijte informace o zeměpisné poloze určit nejefektivnější koncový bod.
+* Služba Speech Services nenabízí globální koncový bod. Zjistěte, jestli vaše aplikace funguje efektivně, když používá jeden místní koncový bod pro veškerý provoz. Pokud ne, použijte geografickou polohu k určení nejefektivnějšího koncového bodu.
 
-* Pokud vaše aplikace používá s dlouhým poločasem rozpadu připojení a nemůžete použít dostupné sady SDK, můžete použít objekty Websocket připojení. Spravujte během 10 minut časový limit připojení ve vhodných chvílích.
+* Pokud vaše aplikace používá dlouhodobá připojení a nemůže využívat dostupné sady SDK, můžete použít připojení pomocí protokolu WebSockets. Nastavte časový limit 10 minut tím, že se znovu připojíte k odpovídajícím časem.
 
-* Pokud vaše aplikace používá rozhraní Translator Text API a rozhraní Translator Speech API umožňuje překlad vlastní modely, můžete přidat ID kategorie přímo pomocí Speech Service.
+* Pokud vaše aplikace používá Translator Text API a Translator Speech API k povolení vlastních modelů překladu, můžete přidat ID kategorií přímo pomocí služby Speech.
 
-* Na rozdíl od rozhraní Translator Speech API můžete dokončit hlasové služby překlady do více jazyků v jedné žádosti.
+* Na rozdíl od Translator Speech API můžou služby Speech doplňovat překlady do několika jazyků v jednom požadavku.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vyzkoušejte hlasové služby zdarma](get-started.md)
-* [Rychlé zprovoznění: Rozpoznávání řeči do aplikace pro UPW pomocí sady SDK pro řeč](quickstart-csharp-uwp.md)
+* [Vyzkoušejte si hlasové služby zdarma](get-started.md)
+* [Rychlé zprovoznění: Rozpoznávání řeči v aplikaci pro UWP pomocí sady Speech SDK](quickstart-csharp-uwp.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 * [Co je Speech Service](overview.md)
-* [Dokumentace k hlasových služeb a sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)
+* [Dokumentace ke službám Speech a sadě Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)

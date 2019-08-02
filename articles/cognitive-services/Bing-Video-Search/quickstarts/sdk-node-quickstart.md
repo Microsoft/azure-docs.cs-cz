@@ -1,55 +1,55 @@
 ---
-title: 'Rychlý start: Hledání videí pomocí Bingu Video Search SDK pro Node.js'
+title: 'Rychlý start: Hledání videí pomocí Vvyhledávání videí Bingu SDK pro Node. js'
 titleSuffix: Azure Cognitive Services
-description: Použít tento rychlý start k odesílání požadavků pro vyhledávání videí pomocí Bingu videa hledání SDK pro Node.js
+description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání videí pomocí sady SDK Vvyhledávání videí Bingu SDK pro Node. js.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 07/18/2019
 ms.author: aahi
-ms.openlocfilehash: f00f4c90d529e95aa495f68802f4da9a097d3b2b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 12eafca9c673d95813eefcd58d2b3f9ba7b54fd3
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798008"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358884"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Rychlý start: Vyhledávání videí pomocí sady SDK videa pro vyhledávání Bingu pro Node.js
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Rychlý start: Hledání videí pomocí Vvyhledávání videí Bingu SDK pro Node. js
 
-V tomto rychlém startu můžete zahájit hledání zpráv se sadou SDK vyhledávání Bingu videa pro Node.js. Při vyhledávání videí Bingu je kompatibilní s Většina programovacích jazyků rozhraní REST API, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js). Obsahuje další poznámky a funkce.
+V tomto rychlém startu můžete začít hledat zprávy s Vvyhledávání videí Bingu SDK pro Node. js. I když Vvyhledávání videí Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js) Obsahuje další poznámky a funkce.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - [Node.js](https://www.nodejs.org/)
 
-Nastavení konzolovou aplikaci pomocí sady SDK Video vyhledávání Bingu:
-* Spustit `npm install ms-rest-azure` ve vašem vývojovém prostředí.
-* Spustit `npm install azure-cognitiveservices-videosearch` ve vašem vývojovém prostředí.
+Nastavení konzolové aplikace pomocí sady Vvyhledávání videí Bingu SDK:
+* Spusťte `npm install ms-rest-azure` ve vývojovém prostředí.
+* Spusťte `npm install azure-cognitiveservices-videosearch` ve vývojovém prostředí.
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor JavaScript ve vašich oblíbených prostředím IDE nebo editorem a přidejte `require()` příkazu pro sadu SDK vyhledávání Bingu Video a `CognitiveServicesCredentials` modulu. Vytvořte proměnnou pro váš klíč předplatného. 
+1. Vytvořte nový soubor JavaScriptu v oblíbených IDE nebo editoru a přidejte `require()` příkaz pro sadu Vvyhledávání videí Bingu SDK a `CognitiveServicesCredentials` modul. Vytvořte proměnnou pro klíč předplatného. 
     
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
     const VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
     ```
 
-2. Vytvoření instance `CognitiveServicesCredentials` vaším klíčem. Pak přes ni vytvořit instanci klienta pro vyhledávání videí.
+2. Vytvořte instanci `CognitiveServicesCredentials` s klíčem. Pak ho použijte k vytvoření instance klienta hledání videí.
 
     ```javascript
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
     let client = new VideoSearchAPIClient(credentials);
     ```
 
-## <a name="send-the-search-request"></a>Poslat žádost o vyhledávání
+## <a name="send-the-search-request"></a>Odeslat požadavek hledání
 
-1. Použití `client.videosOperations.search()` k odeslání žádosti o hledání API Bingu pro vyhledávání videí. Pokud jsou vráceny výsledky hledání, použijte `.then()` protokolovat výsledek.
+1. Slouží `client.videosOperations.search()` k odeslání požadavku hledání do rozhraní API Bingu pro vyhledávání videí. Po vrácení výsledků hledání použijte `.then()` k zaznamenání výsledku.
     
     ```javascript
     client.videosOperations.search('Interstellar Trailer').then((result) => {
@@ -59,19 +59,12 @@ Nastavení konzolovou aplikaci pomocí sady SDK Video vyhledávání Bingu:
     });
     ```
 
-<!-- Remove until the response can be replace with a sanitized version.
-The code prints `result.value` items to the console without parsing any text. The results will be:
-- _type: 'VideoObjectElementType'
-
-![Video results](media/video-search-sdk-node-results.png)
--->
-
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace v jediné stránce](../tutorial-bing-video-search-single-page-app.md)
+> [Vytvoření webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také: 
 
-* [Co je API pro vyhledávání videí Bingu?](../overview.md)
+* [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)
 * [Ukázky kognitivních služeb sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

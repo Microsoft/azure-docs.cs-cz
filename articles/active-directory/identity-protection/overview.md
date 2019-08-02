@@ -1,113 +1,106 @@
 ---
-title: Azure Active Directory Identity Protection | Dokumentace Microsoftu
-description: Zjistěte, jak Azure AD Identity Protection umožňuje omezit schopnost útočníka zneužít ohrožení zabezpečení identity nebo zařízení a zabezpečit identitu nebo zařízení, který byl dříve podezřelý nebo známé u něho ohrožena bezpečnost.
+title: Azure Active Directory Identity Protection | Microsoft Docs
+description: Přečtěte si, jak Azure AD Identity Protection umožňuje omezit schopnost útočníka zneužít ohroženou identitu nebo zařízení a zabezpečit identitu nebo zařízení, které bylo dříve podezřelé nebo které bylo známo, že by mohlo dojít k ohrožení zabezpečení.
 services: active-directory
-keywords: Azure active directory identity protection, zjišťování cloudových aplikací, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 01/29/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 660793cdba61b5438283ea54a9f7349bdfbc98e1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 99a542d3208d5871d88c966fffc65cf16e0fbeee
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440498"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335386"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Co je Azure Active Directory Identity Protection?
 
-Azure Active Directory [Identity](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) Protection umožňuje organizacím nakonfigurovat automatické odpovědi na zjištěné podezřelé akce související s identit uživatelů.
+Azure Active Directory [identity](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) Protection umožňuje organizacím konfigurovat automatizované odpovědi na zjištěné podezřelé akce související s identitami uživatelů.
 
 ## <a name="get-started"></a>Začínáme
 
-Microsoft má zabezpečené cloudové identity pro více než deset let. S Azure Active Directory Identity Protection ve vašem prostředí, můžete použít samé systémy ochrany, které společnost Microsoft používá k zabezpečení identit.
+Společnost Microsoft má zabezpečené cloudové identity po dobu více než dekády. Pomocí Azure Active Directory Identity Protection můžete ve svém prostředí použít pro zabezpečení identit stejné systémy ochrany, které Microsoft používá.
 
-Většinu narušení zabezpečení se použijí při útočníci získají přístup k prostředí krádeží identity uživatele. V průběhu let staly útočníci stále častěji efektivní využití porušení třetích stran a pomocí sofistikovaných útoků phishing útoky. Jakmile útočník získá přístup k i nízkou privilegovaných uživatelské účty, je pro ně k získání přístupu k prostředkům společnosti důležité prostřednictvím taktiky Lateral Movement je poměrně snadné.
+Pokud útočníci získají přístup k prostředí tím, že ukrást identitu uživatele, dojde k převážné většině narušení zabezpečení. V průběhu let se útočníci stále ještě více dostanou používat při využívání narušení třetích stran a používání sofistikovaných útoků phishing. Jakmile útočník získá přístup k i malým privilegovaným uživatelským účtům, je poměrně snadné získat přístup k důležitým firemním prostředkům prostřednictvím bočního pohybu.
 
-Následkem toho budete muset:
+V důsledku toho je potřeba:
 
-- Chránit všechny identity bez ohledu na jejich úrovně oprávnění
+- Chránit všechny identity bez ohledu na úroveň oprávnění
+- Proaktivní zabránění zneužití ohrožených identit
 
-- Proaktivně ohrožení zabezpečení identity zabránit se zneužít
+Zjišťování ohrožených identit není jednoduché. Azure Active Directory používá pro detekci anomálií a podezřelých incidentů, které označují potenciálně ohrožené identity, algoritmy adaptivního strojového učení a heuristiky. Pomocí těchto dat aplikace Identity Protection generuje sestavy a výstrahy, které vám umožní vyhodnotit zjištěné problémy a provádět příslušné akce týkající se zmírnění nebo nápravy.
 
-Zjišťování ohrožení zabezpečení identit je žádný snadný úkol. Azure Active Directory používá algoritmy adaptivní strojového učení a heuristik detekovat anomálie a podezřelé incidenty, které indikují potenciální ohrožení identit. Ochrana Identity na základě těchto dat generuje sestavy a výstrahy, které vám umožní zjištěné problémy vyhodnotit a přijmout odpovídající omezení nebo nápravné akce.
+Azure Active Directory Identity Protection je více než Nástroj pro monitorování a vytváření sestav. Chcete-li chránit identity vaší organizace, můžete nakonfigurovat zásady založené na rizicích, které automaticky reagují na zjištěné problémy v případě dosažení zadané úrovně rizika. Tyto zásady kromě dalších ovládacích prvků podmíněného přístupu, které poskytuje Azure Active Directory a [Enterprise mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS), můžou automaticky blokovat nebo iniciovat adaptivní nápravné akce, včetně resetování hesla a vynucování Multi-Factor Authentication.
 
-Azure Active Directory Identity Protection je větší než monitorování a vytváření sestav nástroje. K ochraně identity ve vaší organizaci, můžete nakonfigurovat zásady, které automaticky reagují na zjištěné problémy, když se dosáhne úroveň zadané rizika. Tyto zásady, kromě jiných ovládacích prvků podmíněný přístup poskytuje služba Azure Active Directory a [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS), můžete buď automaticky blokovat nebo zahájit adaptivní nápravných akcí, včetně resetování hesla a vynucování služby Multi-Factor authentication.
+### <a name="identity-protection-capabilities"></a>Možnosti ochrany identity
 
-### <a name="identity-protection-capabilities"></a>Možnosti ochrany identit
+**Zjišťování chyb zabezpečení a rizikových účtů:**  
 
-**Zjišťování ohrožení zabezpečení a rizikových účty:**  
-
-- Poskytuje vlastní doporučení k vylepšení celkové postavení zabezpečení zvýrazněním ohrožení zabezpečení
-- Výpočet úrovně rizika přihlášení
-- Výpočet úrovně rizika uživatele
+- Poskytování vlastních doporučení pro zlepšení celkového zabezpečení stav zvýrazňováním ohrožení zabezpečení
+- Výpočet úrovní rizika přihlašování
+- Výpočet úrovní rizika uživatele
 
 **Zkoumání rizikových událostí:**
 
 - Odesílání oznámení pro rizikové události
-- Zkoumání pomocí relevantní a kontextové informace o rizikových událostí
-- Poskytuje základní pracovní postupy ke sledování vyšetřování
-- Poskytování snadného přístupu pro nápravné akce, jako je například resetování hesla
+- Zkoumání rizikových událostí pomocí relevantních a kontextových informací
+- Poskytování základních pracovních postupů pro sledování šetření
+- Poskytování snadného přístupu k opravám, jako je resetování hesla
 
-**Zásady podmíněného přístupu na základě rizik:**
+**Zásady podmíněného přístupu na základě rizika:**
 
-- Zásady pro blokování přihlášení nebo vyžadování výzvy ověřování službou Multi-Factor Authentication zmírnění rizikových přihlášení
-- Zásady na blokování nebo zabezpečené rizikové uživatelské účty
-- Zásadu, která vyžaduje uživatelé zaregistrovali k ověření službou Multi-Factor Authentication
+- Zásady pro zmírnění rizikových přihlášení blokováním přihlášení nebo vyžadováním výzev pro službu Multi-Factor Authentication
+- Zásady pro blokování nebo zabezpečení rizikových uživatelských účtů
+- Zásady, které vyžadují, aby si uživatelé zaregistrovali službu Multi-Factor Authentication
 
-## <a name="identity-protection-roles"></a>Role identity Protection
+## <a name="identity-protection-roles"></a>Role ochrany identity
 
-Pro vyrovnávání zatížení správy aktivit kolem vaší implementace Identity Protection můžete přiřadit několik rolí. Azure AD Identity Protection podporuje 3 role adresáře:
+K vyrovnávání zatížení aktivit správy v rámci implementace ochrany identity můžete přiřadit několik rolí. Azure AD Identity Protection podporuje 3 role adresáře:
 
-| Role | Můžete provést | Nelze provést. |
+| Role | Může | Nelze provést |
 | :-- | --- | --- |
-| Globální správce | Úplný přístup k Identity Protection, připojit Identity Protection| |
-| Správce zabezpečení | Úplný přístup k Identity Protection | Připojení Identity Protection, resetujte hesla pro uživatele |
-| Čtenář zabezpečení | Přístup k Identity Protection jen pro čtení | Oprava uživatelů připojení Identity Protection, nakonfigurovat zásady, resetování hesel |
+| Globální správce | Úplný přístup k Identity Protection a registraci Identity Protection| |
+| Správce zabezpečení | Úplný přístup k Identity Protection | Zaregistrování Identity Protection, resetování hesel pro uživatele |
+| Čtenář zabezpečení | Přístup k Identity Protection jen pro čtení | Zaregistrování Identity Protection, napravení uživatelů, konfigurace zásad, resetování hesel |
 
-Další podrobnosti najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+Další podrobnosti najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) .
 
-## <a name="detection"></a>Detection (Detekce)
+## <a name="detection"></a>Detekce
 
 ### <a name="vulnerabilities"></a>Ohrožení zabezpečení
 
-Azure Active Directory Identity Protection analyzuje konfiguraci a zjistí ohrožení zabezpečení, která může mít vliv na identity vašich uživatelů. Další podrobnosti najdete v tématu [chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection](vulnerabilities.md).
+Azure Active Directory Identity Protection analyzuje vaši konfiguraci a detekuje ohrožení zabezpečení, která mohou mít dopad na identity vašeho uživatele. Další podrobnosti najdete v tématu [chyby zabezpečení zjištěné nástrojem Azure Active Directory Identity Protection](vulnerabilities.md).
 
 ### <a name="risk-events"></a>Rizikové události
 
-Azure Active Directory používá algoritmy adaptivní strojového učení a heuristik ke zjištění podezřelé akce, které se vztahují k identity vašich uživatelů. Systém vytvoří záznam pro každé zjištěné podezřelé akce. Tyto záznamy jsou také známé jako rizikové události.  
+Azure Active Directory používá k detekci podezřelých akcí, které souvisejí s identitami vašich uživatelů, adaptivní algoritmy strojového učení a heuristiky. Systém vytvoří záznam pro každou zjištěnou podezřelou akci. Tyto záznamy se také označují jako rizikové události.  
 Další podrobnosti najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](../active-directory-identity-protection-risk-events.md).
 
 ## <a name="investigation"></a>Šetření
 
-Svou cestu prostřednictvím služby Identity Protection obvykle začíná řídicího panelu služby Identity Protection.
+Vaše cesta prostřednictvím Identity Protection obvykle začíná řídicím panelem Identity Protection.
 
-![Náprava](./media/overview/1000.png "nápravy")
+![Náprava](./media/overview/1000.png "Náprava")
 
 Tento řídicí panel poskytuje přístup k:
 
-- Sestavy, jako například **uživatelé označení příznakem rizika**, **rizikových událostí** a **ohrožení zabezpečení**
-- Nastavení, jako je konfigurace vašeho **zásady zabezpečení**, **oznámení** a **registracích vícefaktorového ověřování**
+- Sestavy, jako jsou **Uživatelé označení příznakem rizika**, **rizikové události** a **ohrožení zabezpečení**
+- Nastavení, jako je například konfigurace **zásad zabezpečení**, **oznámení** a **Registrace služby Multi-Factor Authentication**
 
-Obvykle je vaším výchozím bodem pro šetření, což je proces kontroly aktivity, protokoly a další relevantní informace související s riziková událost se rozhodnout, zda jsou nezbytné kroky ke zmírnění nebo nápravy, a jak se identita dojde k ohrožení bezpečnosti a seznamte se s použití ohrožených identity.
+Obvykle je výchozím bodem pro šetření, což je proces kontroly aktivit, protokolů a dalších relevantních informací týkajících se rizikových událostí a rozhodování o tom, zda jsou kroky pro nápravu nebo zmírnění potíží nezbytné a jak byla identita ohrožení zabezpečení a pochopení způsobu použití ohrožené identity.
 
-Vaše aktivity šetření tak můžete navázat [oznámení](notifications.md) Azure Active Directory Protection odesílá na e-mailu.
+Své vyšetřovací aktivity můžete spojit s oznámeními [](notifications.md) Azure Active Directory odesílají e-maily na e-mail.
 
 ## <a name="policies"></a>Zásady
 
-Pokud chcete implementovat automatické odpovědi, Azure Active Directory Identity Protection nabízí tři zásady:
+K implementaci automatizovaných odpovědí vám Azure Active Directory Identity Protection poskytne tři zásady:
 
-- [Zásady registrace pro vícefaktorové ověřování](howto-mfa-policy.md)
+- [Zásady registrace Multi-Factor Authentication](howto-mfa-policy.md)
 - [Zásady rizik uživatelů](howto-user-risk-policy.md)
 - [Zásady rizik přihlašování](howto-sign-in-risk-policy.md)
 
@@ -115,7 +108,7 @@ Pokud chcete implementovat automatické odpovědi, Azure Active Directory Identi
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Kanál 9: Azure AD a Identity zobrazit: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
-- [Povolení služby Azure Active Directory Identity Protection](enable.md)
+- [Kanál 9: Azure AD a zobrazení identity: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+- [Povolení Azure Active Directory Identity Protection](enable.md)

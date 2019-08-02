@@ -1,37 +1,31 @@
 ---
-title: Běžné úlohy po spuštění pro Cloud Services | Dokumentace Microsoftu
-description: Obsahuje některé příklady běžné úlohy po spuštění, které můžete provádět v cloud services webové role nebo role pracovního procesu.
+title: Běžné úlohy po spuštění pro Cloud Services | Microsoft Docs
+description: V této části najdete několik příkladů běžných úloh po spuštění, které můžete chtít provést v rámci webové role nebo role pracovního procesu Cloud Services.
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: a7095dad-1ee7-4141-bc6a-ef19a6e570f1
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 1d78ab917589af0eae72eb70e3cdc2cc751072eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 2eb299ad841444a3100eac207b225d5377959f85
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076442"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358952"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy po spuštění cloudové služby
-Tento článek obsahuje několik příkladů běžných úloh po spuštění, které můžete provádět v cloudové službě. Úlohy po spuštění můžete použít k provádění operací před zahájením roli. Operace, které můžete chtít provést zahrnout instalaci součásti, registrace komponent COM, nastavení klíče registru nebo spouští se dlouho běžící proces. 
+Tento článek popisuje několik příkladů běžných úloh po spuštění, které můžete chtít provést ve své cloudové službě. Úlohy po spuštění můžete použít k provádění operací před spuštěním role. Operace, které můžete chtít provést, zahrnují instalaci komponenty, registraci komponent modelu COM, nastavení klíčů registru nebo spuštění dlouhotrvajícího procesu. 
 
-Zobrazit [v tomto článku](cloud-services-startup-tasks.md) pochopit, jak fungují úlohy po spuštění a konkrétně jak vytvořit záznamy, které definují úlohy po spuštění.
+V [tomto článku](cloud-services-startup-tasks.md) se seznámíte s tím, jak fungují úlohy při spouštění, a konkrétně jak vytvořit položky definující úlohu po spuštění.
 
 > [!NOTE]
-> Úlohy po spuštění se nedají použít k virtuálním počítačům, jenom pro cloudové služby Web a role pracovního procesu.
+> Úlohy po spuštění se nevztahují na Virtual Machines, a to pouze na webové role a role pracovních procesů cloudové služby.
 > 
 
-## <a name="define-environment-variables-before-a-role-starts"></a>Definování proměnné prostředí před spuštěním role
-Pokud potřebujete proměnné prostředí definované pro specifické úlohy, použijte [prostředí] element v rámci [Úloha] elementu.
+## <a name="define-environment-variables-before-a-role-starts"></a>Definování proměnných prostředí před spuštěním role
+Pokud potřebujete proměnné prostředí definované pro konkrétní úlohu, použijte prvek [prostředí] uvnitř elementu [Úloha] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -48,7 +42,7 @@ Pokud potřebujete proměnné prostředí definované pro specifické úlohy, po
 </ServiceDefinition>
 ```
 
-Můžete také použít proměnné [platná hodnota Azure XPath](cloud-services-role-config-xpath.md) odkazovat něco o tomto nasazení. Namísto použití `value` atribut, definovat [RoleInstanceValue] podřízený element.
+Proměnné můžou použít taky [platnou hodnotu XPath Azure](cloud-services-role-config-xpath.md) pro odkazování na něco o nasazení. Namísto použití `value` atributu definujte podřízený element [RoleInstanceValue] .
 
 ```xml
 <Variable name="PathToStartupStorage">
@@ -57,23 +51,23 @@ Můžete také použít proměnné [platná hodnota Azure XPath](cloud-services-
 ```
 
 
-## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurace spuštění služby IIS pomocí AppCmd.exe
-[AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) nástroj příkazového řádku můžete použít ke správě nastavení služby IIS při spuštění v Azure. *AppCmd.exe* poskytuje pohodlné, příkazového řádku přístup k nastavení konfigurace pro použití v úlohy po spuštění v Azure. Pomocí *AppCmd.exe*, nastavení webu lze přidat, upravit nebo odebrat aplikace a weby.
+## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurace spouštění služby IIS pomocí nástroje AppCmd. exe
+Nástroj příkazového řádku [Appcmd. exe](https://technet.microsoft.com/library/jj635852.aspx) se dá použít ke správě nastavení IIS při spuštění v Azure. *Appcmd. exe* poskytuje pohodlný přístup k příkazovému řádku pro nastavení konfigurace pro použití v úlohách po spuštění v Azure. Pomocí nástroje *Appcmd. exe*lze nastavení webu přidat, upravit nebo odebrat pro aplikace a weby.
 
-Existuje však několik věcí, které dávejte pozor na použití *AppCmd.exe* jako úloha po spuštění:
+Existuje však několik věcí, které je třeba využít při použití nástroje *Appcmd. exe* jako úlohy po spuštění:
 
-* Úlohy po spuštění můžete spustit více než jednou mezi jednotlivými restartováními. Například když role recykluje.
-* Pokud *AppCmd.exe* akce se provádí více než jednou, to může způsobit chybu. Například pokus o přidání sekce pro *Web.config* dvakrát může způsobit chybu.
-* Úlohy po spuštění selhat, pokud vrátí nenulový ukončovací kód nebo **errorlevel**. Například když *AppCmd.exe* dojde k chybě.
+* Úlohy po spuštění lze spustit více než jednou mezi restartováními. Například při recyklaci role.
+* Pokud se akce *Appcmd. exe* provádí více než jednou, může to způsobit chybu. Například pokus o přidání oddílu do *souboru Web. config* dvakrát může vygenerovat chybu.
+* Úlohy po spuštění selžou, pokud vrátí nenulový ukončovací kód nebo hodnotu **errorlevel**. Například když *Appcmd. exe* vygeneruje chybu.
 
-Je vhodné zkontrolovat **errorlevel** po volání *AppCmd.exe*, což je snadné dělat, když zabalte volání do *AppCmd.exe* s *.cmd* souboru. Pokud zjišťování známého **errorlevel** odpovědi, můžete ji ignorovat, nebo předávání zpátky.
+Je vhodné **ověřit po volání** příkazu *Appcmd. exe*, což je snadné, pokud zabalíte volání souboru *Appcmd. exe* se souborem *. cmd* . Pokud zjistíte známou odpověď **errorlevel** , můžete ji ignorovat nebo ji předat zpátky.
 
-Errorlevel vrácený *AppCmd.exe* jsou uvedené v souboru winerror.h, můžete zobrazit také na [MSDN](/windows/desktop/Debug/system-error-codes--0-499-).
+Příkaz "Appcmd. exe" vrácený funkcí *Appcmd. exe* je uveden v souboru WinError. h a lze jej také zobrazit na [webu MSDN](/windows/desktop/Debug/system-error-codes--0-499-).
 
-### <a name="example-of-managing-the-error-level"></a>Příklad správy úroveň chyby
-V tomto příkladu přidá pro formát JSON do části komprese a komprese položku *Web.config* souboru, zpracování chyb a protokolování.
+### <a name="example-of-managing-the-error-level"></a>Příklad správy úrovně chyby
+Tento příklad přidá kompresní oddíl a položku komprese pro JSON do souboru *Web. config* s zpracováním a protokolováním chyb.
 
-V příslušných oddílech [ServiceDefinition.csdef] souboru se tady zobrazí, mezi které patří nastavení [kontextu executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) atribut `elevated` poskytnout *AppCmd.exe* dostatečná oprávnění ke změně nastavení *Web.config* souboru:
+Zde jsou uvedeny relevantní oddíly souboru [ServiceDefinition.csdef] , které zahrnují nastavení atributu `elevated` [ExecutionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) pro udělení oprávnění *Appcmd. exe* pro změnu nastavení v  *Soubor Web. config* :
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -86,7 +80,7 @@ V příslušných oddílech [ServiceDefinition.csdef] souboru se tady zobrazí, 
 </ServiceDefinition>
 ```
 
-*Startup.cmd* batch používá soubor *AppCmd.exe* přidat oddíl komprese a komprese položka pro formát JSON k *Web.config* souboru. Očekávané **errorlevel** 183 se nastaví na nulovou pomocí ověřit. Program v příkazovém řádku souboru EXE. Neočekávané hodnoty parametru ERRORLEVEL při jsou protokolovány StartupErrorLog.txt.
+Soubor *Startup. cmd* používá nástroj *Appcmd. exe* pro přidání kompresního oddílu a položku komprese pro JSON do souboru *Web. config* . Očekávaná hodnota **errorlevel** 183 je nastavena na hodnotu nula pomocí ověření. Program příkazového řádku EXE. Do StartupErrorLog. txt jsou protokolována neočekávaná ERRORLEVEL.
 
 ```cmd
 REM   *** Add a compression section to the Web.config file. ***
@@ -124,14 +118,14 @@ ECHO An error occurred during startup. ERRORLEVEL = %ERRORLEVEL% >> "%TEMP%\Star
 EXIT %ERRORLEVEL%
 ```
 
-## <a name="add-firewall-rules"></a>Přidání pravidla brány firewall
-V Azure jsou efektivně dvě brány firewall. První brány firewall řídí připojení mezi virtuálním počítačem a okolním světem. Tato brána firewall je řízen [koncové body] element v [ServiceDefinition.csdef] souboru.
+## <a name="add-firewall-rules"></a>Přidat pravidla brány firewall
+V Azure existují efektivní dvě brány firewall. První brána firewall řídí připojení mezi virtuálním počítačem a vnějším světem. Tato brána firewall je řízena elementem [Bod] v souboru [ServiceDefinition.csdef] .
 
-Druhá brána firewall řídí připojení mezi virtuálním počítačem a procesy v rámci tohoto virtuálního počítače. Tato brána firewall mohou být řízena `netsh advfirewall firewall` nástroj příkazového řádku.
+Druhá brána firewall řídí připojení mezi virtuálním počítačem a procesy v rámci tohoto virtuálního počítače. Tuto bránu firewall lze ovládat pomocí `netsh advfirewall firewall` nástroje příkazového řádku.
 
-Azure vytvoří pravidla brány firewall pro procesy spuštěné v rámci své role. Například při spuštění služby nebo programu Azure automaticky vytvoří pravidla nezbytné firewallu povolující tuto službu ke komunikaci s Internetem. Nicméně pokud vytvoříte službu, která se spustí proces mimo vaše role (jako je služba COM + nebo naplánované úlohy Windows), musíte ručně vytvořit pravidlo brány firewall umožňující přístup k této službě. Pomocí úlohy po spuštění můžete vytvořit tato pravidla brány firewall.
+Azure vytvoří pravidla brány firewall pro procesy spuštěné v rámci vašich rolí. Když třeba spustíte službu nebo program, Azure automaticky vytvoří potřebná pravidla firewallu, která této službě umožní komunikovat s internetem. Pokud ale vytvoříte službu, kterou spustí proces mimo vaši roli (třeba službu COM+ nebo plánovanou úlohu Windows), musíte ručně vytvořit pravidlo brány firewall, které umožní přístup k této službě. Tato pravidla brány firewall lze vytvořit pomocí úlohy po spuštění.
 
-Úlohy po spuštění, který vytvoří pravidlo brány firewall musí mít [kontextu executionContext][úloha] z **se zvýšenými oprávněními**. Následující úloha spuštění pro přidání [ServiceDefinition.csdef] souboru.
+Úloha po spuštění, která vytvoří pravidlo brány firewall, musí mít [ExecutionContext][úloha] se **zvýšenými oprávněními**. Přidejte následující úlohu po spuštění do souboru [ServiceDefinition.csdef] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -144,7 +138,7 @@ Azure vytvoří pravidla brány firewall pro procesy spuštěné v rámci své r
 </ServiceDefinition>
 ```
 
-Chcete-li přidat pravidla brány firewall, je nutné použít odpovídající `netsh advfirewall firewall` příkazů v dávkovém souboru při spuštění. V tomto příkladu úloha po spuštění vyžaduje zabezpečení a šifrování pro TCP port 80.
+Chcete-li přidat pravidlo brány firewall, je nutné použít `netsh advfirewall firewall` příslušné příkazy ve spouštěcím dávkovém souboru. V tomto příkladu úloha po spuštění vyžaduje zabezpečení a šifrování pro port TCP 80.
 
 ```cmd
 REM   Add a firewall rule in a startup task.
@@ -156,12 +150,12 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-## <a name="block-a-specific-ip-address"></a>Blokovat konkrétní IP adresu
-Můžete omezit přístup Azure web role na sadu ze zadaných IP adres tak, že upravíte vaší služby IIS **web.config** souboru. Budete také muset použít příkazový soubor, který odemyká **ipSecurity** část **ApplicationHost.config** souboru.
+## <a name="block-a-specific-ip-address"></a>Blokování konkrétní IP adresy
+Úpravou souboru **Web. config** služby IIS můžete omezit přístup webové role Azure na sadu zadaných IP adres. Také je nutné použít soubor příkazů, který odemkne část **IPSecurity** souboru **ApplicationHost. config** .
 
-Odemknout **ipSecurity** část **ApplicationHost.config** soubor, vytvořit soubor příkazů, která se spouští na začátku roli. Vytvoření složky na kořenové úrovni vaši webovou roli s názvem **spuštění** a v této složce vytvořte dávkový soubor s názvem **startup.cmd**. Přidejte tento soubor do projektu sady Visual Studio a nastavte vlastnosti na **vždy Kopírovat** zajistit, že je součástí vašeho balíčku.
+Chcete-li odemknout část **IPSecurity** souboru **ApplicationHost. config** , vytvořte soubor příkazů, který se spustí při spuštění role. Vytvořte složku na kořenové úrovni webové role s názvem **Startup** a v rámci této složky vytvořte dávkový soubor s názvem **Startup. cmd**. Přidejte tento soubor do projektu sady Visual Studio a nastavte vlastnosti na **Kopírovat vždy** , abyste měli jistotu, že je zahrnutý do balíčku.
 
-Následující úloha spuštění pro přidání [ServiceDefinition.csdef] souboru.
+Přidejte následující úlohu po spuštění do souboru [ServiceDefinition.csdef] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -174,7 +168,7 @@ Následující úloha spuštění pro přidání [ServiceDefinition.csdef] soubo
 </ServiceDefinition>
 ```
 
-Přidejte tento příkaz **startup.cmd** souboru:
+Přidejte tento příkaz do souboru **Startup. cmd** :
 
 ```cmd
 @echo off
@@ -184,11 +178,11 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 %windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity
 ```
 
-Způsobí, že tato úloha **startup.cmd** dávkový soubor se spustí pokaždé, když je inicializován ve webové roli, zajistit, aby požadované **ipSecurity** části je odemknuté.
+Tato úloha způsobí, že se **spouštěcí soubor Startup. cmd** spustí pokaždé, když se inicializuje webová role, a zajistí odemčení požadovaného oddílu **IPSecurity** .
 
-Nakonec upravte [oddíl system.webServer](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) webovou roli **web.config** soubor a přidejte seznam IP adres, které je udělen přístup, jak je znázorněno v následujícím příkladu:
+Nakonec v [oddílu System. webServer](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) v souboru **Web. config** webové role přidejte seznam IP adres, kterým je udělen přístup, jak je znázorněno v následujícím příkladu:
 
-Tato ukázka konfigurace **umožňuje** všechny IP adresy pro přístup k serveru s výjimkou dvě definice
+Tato ukázková konfigurace **umožňuje** všem IP adresám přístup k serveru s výjimkou definovaných dvou.
 
 ```xml
 <system.webServer>
@@ -203,7 +197,7 @@ Tato ukázka konfigurace **umožňuje** všechny IP adresy pro přístup k serve
 </system.webServer>
 ```
 
-Tato ukázka konfigurace **zakazuje** všechny IP adresy v přístupu k serveru s výjimkou dvou definované.
+Tato ukázková konfigurace **odepírá** všem IP adresám přístup k serveru s výjimkou definovaných dvou.
 
 ```xml
 <system.webServer>
@@ -218,10 +212,10 @@ Tato ukázka konfigurace **zakazuje** všechny IP adresy v přístupu k serveru 
 </system.webServer>
 ```
 
-## <a name="create-a-powershell-startup-task"></a>Vytvoření úlohy po spuštění Powershellu
-Skripty prostředí Windows PowerShell nelze volat přímo z [ServiceDefinition.csdef] souboru, ale může být vyvolána z v rámci spuštění dávkového souboru.
+## <a name="create-a-powershell-startup-task"></a>Vytvoření spouštěcí úlohy PowerShellu
+Skripty prostředí Windows PowerShell nelze volat přímo ze souboru [ServiceDefinition.csdef] , ale mohou být vyvolány v rámci spouštěcího dávkového souboru.
 
-PowerShell (ve výchozím nastavení) nejde spustit nepodepsané skripty. Pokud se váš skript, musíte nakonfigurovat prostředí PowerShell ke spouštění nepodepsaných skriptů. Ke spouštění nepodepsaných skriptů **ExecutionPolicy** musí být nastaveno na **Unrestricted**. **ExecutionPolicy** nastavení, které jste používání je založen na verzi prostředí Windows PowerShell.
+PowerShell (ve výchozím nastavení) nespouští nepodepsané skripty. Pokud váš skript nepodepisujete, budete muset nakonfigurovat PowerShell tak, aby spouštěl nepodepsané skripty. Aby bylo možné spouštět nepodepsané skripty, musí být **ExecutionPolicy** nastaven na neomezený. Používané nastavení **ExecutionPolicy** je založené na verzi Windows PowerShellu.
 
 ```cmd
 REM   Run an unsigned PowerShell script and log the output
@@ -231,7 +225,7 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-Při použití hostovaného operačního systému, který je spuštění PowerShell 2.0 nebo verze 2 pro spuštění můžete vynutit 1.0 a pokud není k dispozici, použijte verzi 1.
+Pokud používáte hostovaný operační systém, na kterém běží PowerShell 2,0 nebo 1,0, můžete vynutit spuštění verze 2 a pokud není k dispozici, použijte verzi 1.
 
 ```cmd
 REM   Attempt to set the execution policy by using PowerShell version 2.0 syntax.
@@ -248,13 +242,13 @@ EXIT /B %errorlevel%
 ```
 
 ## <a name="create-files-in-local-storage-from-a-startup-task"></a>Vytvoření souborů v místním úložišti z úlohy po spuštění
-Prostředek místního úložiště můžete ukládat soubory vytvořené ve vaší úloze po spuštění, která se později využívají vaše aplikace.
+Prostředek místního úložiště můžete použít k ukládání souborů vytvořených spouštěcí úlohou, ke kterým později přistupovala vaše aplikace.
 
-Chcete-li vytvořit místní úložiště prostředků, přidejte [LocalResources] části [ServiceDefinition.csdef] a pak přidejte [LocalStorage] podřízený element. Zadejte místní úložiště prostředků jedinečný název a odpovídající velikost pro úkol při spuštění.
+Chcete-li vytvořit prostředek místního úložiště, přidejte do souboru [ServiceDefinition.csdef] oddíl [LocalResources] a přidejte do něj podřízený element [localStorage] . Poskytněte místnímu prostředku úložiště jedinečný název a odpovídající velikost spouštěcí úlohy.
 
-Použití místního úložiště prostředků ve vaší úloze po spuštění, budete muset vytvořit proměnné prostředí odkazovat na umístění prostředků místního úložiště. Po spuštění úlohy a aplikace budou moct číst a zapisovat soubory prostředků místní úložiště.
+Pokud chcete použít prostředek místního úložiště v úloze po spuštění, musíte vytvořit proměnnou prostředí, která bude odkazovat na umístění prostředku místního úložiště. Pak bude spouštěcí úkol a aplikace moci číst a zapisovat soubory do místního prostředku úložiště.
 
-V příslušných oddílech **ServiceDefinition.csdef** souboru se tady zobrazí:
+Relevantní části souboru **ServiceDefinition. csdef** jsou uvedeny zde:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -278,7 +272,7 @@ V příslušných oddílech **ServiceDefinition.csdef** souboru se tady zobrazí
 </ServiceDefinition>
 ```
 
-Jako příklad to **Startup.cmd** batch používá soubor **PathToStartupStorage** proměnnou prostředí k vytvoření souboru **MyTest.txt** na místní úložiště.
+Například tento soubor **. cmd** Batch používá proměnnou prostředí **PathToStartupStorage** k vytvoření souboru **MyTest. txt** v umístění místního úložiště.
 
 ```cmd
 REM   Create a simple text file.
@@ -293,7 +287,7 @@ REM   Exit the batch file with ERRORLEVEL 0.
 EXIT /b 0
 ```
 
-Místní úložiště složky můžete přistupovat ze sady Azure SDK pomocí [GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) metody.
+Pomocí metody [GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) můžete získat přístup ke složce místního úložiště ze sady Azure SDK.
 
 ```csharp
 string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.GetLocalResource("StartupLocalStorage").RootPath;
@@ -301,12 +295,12 @@ string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.
 string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStoragePath, "MyTestFile.txt"));
 ```
 
-## <a name="run-in-the-emulator-or-cloud"></a>Spustit v emulátoru nebo v cloudu
-Vaše úloha po spuštění kroků různých při provozu v cloudu, když je v emulátoru služby compute v porovnání s může mít. Můžete například použít novou kopii dat SQL jenom při spouštění v emulátoru. Nebo můžete chtít provést některé optimalizace výkonu pro cloud, který není nutné provést při spouštění v emulátoru.
+## <a name="run-in-the-emulator-or-cloud"></a>Spuštění v emulátoru nebo v cloudu
+Můžete mít spouštěcí úlohu, pokud je v cloudu v porovnání s tím, kdy se nachází v emulátoru služby COMPUTE, provádět různé kroky. Například můžete chtít použít novou kopii dat SQL pouze v případě, že je spuštěna v emulátoru. Nebo možná budete chtít provést některé optimalizace výkonu pro Cloud, které nemusíte dělat při spuštění v emulátoru.
 
-Tato schopnost provádět různé akce na emulátor služby výpočty a cloudy, které lze provést tak, že vytvoříte proměnnou prostředí v [ServiceDefinition.csdef] souboru. Tato proměnná prostředí pro hodnotu potom otestovat ve vaší úloze po spuštění.
+Tato možnost provádění různých akcí s emulátorem výpočtů a cloudem je možné dosáhnout vytvořením proměnné prostředí v souboru [ServiceDefinition.csdef] . Pak otestujete proměnnou prostředí pro hodnotu v úloze po spuštění.
 
-Chcete-li vytvořit proměnnou prostředí, přidejte [Proměnná]/[RoleInstanceValue] elementu a vytvořit hodnotu XPath `/RoleEnvironment/Deployment/@emulated`. Hodnota **ComputeEmulatorRunning %** proměnná prostředí je `true` při spuštění na emulátoru služby compute, a `false` při spouštění v cloudu.
+Chcete-li vytvořit proměnnou prostředí, přidejte element [Variabilní]/[RoleInstanceValue] `/RoleEnvironment/Deployment/@emulated`a vytvořte hodnotu XPath. Hodnota proměnné prostředí **% ComputeEmulatorRunning%** je `true` spuštěna v emulátoru služby COMPUTE a `false` při spuštění v cloudu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -328,7 +322,7 @@ Chcete-li vytvořit proměnnou prostředí, přidejte [Proměnná]/[RoleInstance
 </ServiceDefinition>
 ```
 
-Nyní můžete zkontrolovat úlohy **ComputeEmulatorRunning %** proměnnou prostředí k provádění různých akcí založené na tom, jestli role běží v cloudu nebo v emulátoru. Tady je skript prostředí cmd, který kontroluje pro danou proměnnou prostředí.
+Úloha teď může zkontrolovat proměnnou prostředí **% ComputeEmulatorRunning%** , aby prováděla různé akce na základě toho, jestli je role spuštěná v cloudu, nebo v emulátoru. Tady je skript prostředí. cmd, který kontroluje tuto proměnnou prostředí.
 
 ```cmd
 REM   Check if this task is running on the compute emulator.
@@ -341,10 +335,10 @@ IF "%ComputeEmulatorRunning%" == "true" (
 ```
 
 
-## <a name="detect-that-your-task-has-already-run"></a>Zjištění, že vaše úloha již byla spuštěna
-Role může recyklovat bez restartování způsobí spuštění úkolů znovu spustit. Neexistuje žádný příznak označující, že úkol již spuštěn na hostování virtuálních počítačů. Může mít některé úlohy, ve kterém nezáleží na spuštění více než jednou. Však může narazíte na situace, kdy potřebujete zabránit úlohu ve spuštění více než jednou.
+## <a name="detect-that-your-task-has-already-run"></a>Zjištění, že váš úkol již běžel
+Role se může recyklovat bez restartování, což způsobí, že se úlohy po spuštění znovu spustí. Není k dispozici žádný příznak, který označuje, že úloha již byla spuštěna na hostitelském virtuálním počítači. Můžete mít některé úkoly, které nezáleží na tom, že se spouštějí několikrát. Můžete ale spustit v situaci, kdy potřebujete zabránit spuštění úlohy více než jednou.
 
-Nejjednodušší způsob, jak zjistit, že úkol již spuštěn, je vytvoření souboru v **% TEMP %** složky, pokud je úloha úspěšná a podívejte se na začátku úkolu. Tady je ukázkový skript prostředí příkazového řádku, které udělá za vás.
+Nejjednodušší způsob, jak zjistit, že úloha už je spuštěná, je vytvořit soubor ve složce **% TEMP%** , když je úloha úspěšná, a najít ji na začátku úkolu. Tady je ukázkový skript CMD Shell, který to dělá za vás.
 
 ```cmd
 REM   If Task1_Success.txt exists, then Application 1 is already installed.
@@ -379,21 +373,21 @@ REM   Exit normally.
 EXIT /B 0
 ```
 
-## <a name="task-best-practices"></a>Osvědčené postupy úloh
-Tady jsou některé osvědčené postupy, které byste měli postupovat při konfiguraci úlohy pro webové nebo pracovní role.
+## <a name="task-best-practices"></a>Doporučené postupy pro úlohy
+Tady jsou některé osvědčené postupy, které byste měli dodržovat při konfiguraci úlohy pro webovou roli nebo roli pracovního procesu.
 
-### <a name="always-log-startup-activities"></a>Vždy protokolů aktivit při spouštění
-Visual Studio neposkytuje ladicí program pro jednotlivé kroky v dávkových souborech, takže je vhodné získat co nejvíce data na operace dávkové soubory nejvíce. Protokolování výstupu dávkové soubory i **stdout** a **stderr**, může vám poskytnou důležité informace při pokusu o ladění a opravy dávkové soubory. Do protokolu i **stdout** a **stderr** k StartupLog.txt souboru v adresáři odkazuje **% TEMP %** proměnné prostředí, přidejte text `>>  "%TEMP%\\StartupLog.txt" 2>&1` na konec konkrétní řádky, které chcete se přihlásit. Například spusťte setup.exe v **PathToApp1Install %** adresáře:
+### <a name="always-log-startup-activities"></a>Vždy protokolovat aktivity při spuštění
+Visual Studio neposkytuje ladicí program pro procházení souborů Batch, takže je dobré získat co nejvíce dat o fungování dávkových souborů. Protokolování výstupu dávkových souborů, **stdout** a **stderr**, vám může poskytnout důležité informace při pokusu o ladění a opravě dávkových souborů. Pokud chcete protokolovat **stdout** a **stderr** do souboru StartupLog. txt v adresáři, na který ukazuje proměnná prostředí **% TEMP%** , přidejte text `>>  "%TEMP%\\StartupLog.txt" 2>&1` na konec konkrétních řádků, které chcete protokolovat. Například pro spuštění souboru Setup. exe v adresáři **% PathToApp1Install%** :
 
     "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
 
-Pro zjednodušení soubor xml, můžete vytvořit obálku *cmd* soubor, který volá všechny vaše spuštění úlohy spolu s protokolování a zajišťuje každá podřízená úloha sdílí stejné proměnné prostředí.
+Chcete-li zjednodušit XML, můžete vytvořit soubor *cmd cmd* , který volá všechny úlohy po spuštění společně s protokolováním a zajišťuje, že každá podřízená úloha sdílí stejné proměnné prostředí.
 
-Může být pro vás vám budou používat `>> "%TEMP%\StartupLog.txt" 2>&1` na konci každé úloze po spuštění. Protokolování úloh můžete vynutit tím, že vytvoříte obálku, která zpracovává protokolování za vás. Tato Obálka volání skutečné dávkový soubor, který chcete spustit. Všechny výstupy z dávkového souboru target, budete přesměrováni na *Startuplog.txt* souboru.
+Může se stát, že na konci každé `>> "%TEMP%\StartupLog.txt" 2>&1` úlohy po spuštění bude aplikace nepříjemné. Protokolování úloh můžete vynutil vytvořit obálku, která vám zpracuje protokolování. Tato obálka volá skutečný dávkový soubor, který chcete spustit. Libovolný výstup z cílového dávkového souboru bude přesměrován do souboru *Startuplog. txt* .
 
-Následující příklad ukazuje, jak přesměrovat veškerý výstup z dávkového souboru při spuštění. V tomto příkladu, vytvoří soubor ServerDefinition.csdef úlohy po spuštění, která volá *logwrap.cmd*. *logwrap.cmd* volání *Startup2.cmd*, přesměrování všechny výstup do **% TEMP %\\StartupLog.txt**.
+Následující příklad ukazuje, jak přesměrovat všechny výstupy z spouštěcího dávkového souboru. V tomto příkladu vytvoří soubor ServerDefinition. csdef úlohu po spuštění, která volá *logwrap. cmd*. *logwrap. cmd* volá *Startup2. cmd*a přesměruje veškerý výstup do **% TEMP%\\StartupLog. txt**.
 
-ServiceDefinition.cmd:
+ServiceDefinition. cmd:
 
 ```xml
 <Startup>
@@ -453,7 +447,7 @@ ECHO [%date% %time%] Some more log information about this task
 EXIT %ERRORLEVEL%
 ```
 
-Ukázkový výstup v **StartupLog.txt** souboru:
+Ukázkový výstup v souboru **StartupLog. txt** :
 
 ```txt
 [Mon 10/17/2016 20:24:46.75] == START logwrap.cmd ============================================== 
@@ -465,56 +459,56 @@ Ukázkový výstup v **StartupLog.txt** souboru:
 ```
 
 > [!TIP]
-> **StartupLog.txt** soubor se nachází v *C:\Resources\temp\\{identifikátor role} \RoleTemp* složky.
+> Soubor **StartupLog. txt** je umístěný ve složce *C:\Resources\temp\\{identifikátor role} \RoleTemp* .
 > 
 > 
 
-### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Nastavte kontextu executionContext odpovídajícím způsobem pro úlohy po spuštění
-Nastavte oprávnění pro úlohy po spuštění. Někdy úlohy po spuštění musí spustit se zvýšenými oprávněními, i v případě, že role běží s normálními oprávněními.
+### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Nastavte executionContext správně pro úlohy po spuštění.
+Nastavte patřičná oprávnění pro úlohu po spuštění. Někdy se úlohy po spuštění musí spouštět se zvýšenými oprávněními, i když role běží s normálními oprávněními.
 
-[Kontextu executionContext][úloha] atribut nastaví oprávnění na úrovni úlohy po spuštění. Pomocí `executionContext="limited"` znamená, že úloha po spuštění bude mít stejnou úroveň oprávnění roli. Pomocí `executionContext="elevated"` znamená, že úloha po spuštění má oprávnění správce, která umožní úloze po spuštění k provedení úlohy správce bez oprávnění správce pro vaši roli.
+Atribut [][úloha] ExecutionContext nastaví úroveň oprávnění pro úlohu po spuštění. Použití `executionContext="limited"` znamená, že úloha po spuštění má stejnou úroveň oprávnění jako role. Použití `executionContext="elevated"` znamená, že úloha po spuštění má oprávnění správce, což umožňuje, aby úloha po spuštění prováděla úlohy správce bez udělení oprávnění správce vaší roli.
 
-Úlohy po spuštění, který vyžaduje zvýšená oprávnění příklad je úloha po spuštění, který používá **AppCmd.exe** můžete nakonfigurovat službu IIS. **AppCmd.exe** vyžaduje `executionContext="elevated"`.
+Příkladem úlohy po spuštění, která vyžaduje zvýšená oprávnění, je úloha po spuštění, která používá nástroj **Appcmd. exe** ke konfiguraci služby IIS. Soubor **Appcmd. exe** vyžaduje `executionContext="elevated"`.
 
-### <a name="use-the-appropriate-tasktype"></a>Použít příslušné taskType
-[TaskType][úloha] atribut určuje způsob, jakým úloha po spuštění je proveden. Existují tři hodnoty: **jednoduché**, **pozadí**, a **popředí**. Úlohy na pozadí a popředí se spouští asynchronně, a potom synchronně spuštění jednoduché úlohy postupně po jednom.
+### <a name="use-the-appropriate-tasktype"></a>Použijte odpovídající taskType
+Atribut [][úloha] taskType určuje způsob, jakým je spouštěn úkol při spuštění. Existují tři hodnoty: **jednoduché**, **pozadí**a **popředí**. Úlohy na pozadí a na popředí jsou spouštěny asynchronně a jednoduché úkoly jsou spouštěny synchronně po jednom.
 
-S **jednoduché** úlohy po spuštění, můžete nastavit pořadí, ve kterém je spuštěný úkoly podle pořadí, ve kterém jsou uvedeny úkoly v souboru ServiceDefinition.csdef. Pokud **jednoduché** skončí úkol nenulový ukončovací kód a potom postup zastaví spuštění a role se nespustí.
+Pomocí **jednoduchých** úloh po spuštění můžete nastavit pořadí, ve kterém jsou úlohy spouštěny v pořadí, ve kterém jsou úlohy uvedeny v souboru ServiceDefinition. csdef. Pokud **Jednoduchá** úloha končí nenulovým ukončovacím kódem, pak se proces spuštění zastaví a role se nespustí.
 
-Rozdíl mezi **pozadí** úlohy po spuštění a **popředí** úlohy po spuštění je, že **popředí** úlohy zachovat spuštěný až do role  **popředí** úloha skončí. Zároveň to znamená, že pokud **popředí** úkol zablokuje nebo selže, role nebudou recyklovat až do **popředí** úkolu je nucen uzavřen. Z tohoto důvodu **pozadí** úlohy doporučují pro asynchronní spuštění úlohy, pokud potřebujete tuto funkci **popředí** úloh.
+Rozdíl mezi úlohami při spuštění na **pozadí** a úlohami spouštěnými v **popředí** je, že úlohy na **popředí** udržují roli spuštěnou až do ukončení úlohy na **popředí** . To také znamená, že pokud úloha na **popředí** přestane reagovat nebo dojde k selhání, nebude role recyklovat, dokud není úloha na **popředí** vynucena zavřena. Z tohoto důvodu se doporučuje úlohy na **pozadí** pro asynchronní úlohy po spuštění, pokud tuto funkci úlohy na **popředí** nepotřebujete.
 
-### <a name="end-batch-files-with-exit-b-0"></a>End dávkové soubory s UKONČOVACÍM /B 0
-Role se spustí, jenom když **errorlevel** ze všech jednoduché spuštění úkolu je nula. Nastavte všechny programy **errorlevel** (ukončovací kód) správně, takže dávkový soubor by měl končit `EXIT /B 0` Pokud vše, co byl spuštěn správně.
+### <a name="end-batch-files-with-exit-b-0"></a>Ukončit dávkové soubory s UKONČENÍm/B 0
+Role se spustí jenom v případě, že se hodnota **errorlevel** z každého jednoduchého spouštěcího úkolu rovná nule. Ne všechny programy nastavily správně **errorlevel** (ukončovací kód), takže dávkový soubor by měl končit na `EXIT /B 0` , pokud všechno běželo správně.
 
-Chybějící `EXIT /B 0` na konci dávky spuštění souboru je běžnou příčinou role, které nebudou spuštěny.
+Chybějící `EXIT /B 0` na konci spouštěcího dávkového souboru je běžnou příčinou rolí, které se nespouštějí.
 
 > [!NOTE]
-> Všimli této vnořené dávkové soubory někdy přestane reagovat při použití `/B` parametru. Můžete chtít Ujistěte se, že tento problém zablokování neodehrává volá-li jinou dávkový soubor aktuální dávkového souboru, například, pokud použijete [obálky protokolu](#always-log-startup-activities). Můžete vynechat `/B` parametrů v tomto případě.
+> Zjistili jsme, že vnořené dávkové soubory někdy při použití `/B` parametru zamrzne. Možná budete chtít mít jistotu, že tento problém se zachováním neproběhne, když jiný dávkový soubor zavolá aktuální dávkový soubor, jako kdybyste použili [obálku protokolu](#always-log-startup-activities). V tomto případě můžete `/B` parametr vynechat.
 > 
 > 
 
-### <a name="expect-startup-tasks-to-run-more-than-once"></a>Očekávané úlohy po spuštění pro spuštění více než jednou.
-Ne všechny recyklace rolí zahrnovat restartování, ale všechny recyklace rolí systémem všechny úlohy po spuštění. To znamená, že úlohy po spuštění musí být schopen mezi jednotlivými restartováními bez problémů spustit více než jednou. Tento postup je popsán v [předchozí části](#detect-that-your-task-has-already-run).
+### <a name="expect-startup-tasks-to-run-more-than-once"></a>Očekávat spouštění úloh po spuštění více než jednou
+Ne všechny recyklace rolí zahrnují restartování, ale všechny recykly role obsahují spuštěné všechny úlohy po spuštění. To znamená, že úlohy po spuštění musí být možné spouštět několikrát mezi restartováními bez problémů. Tento popis je popsán v [předchozí části](#detect-that-your-task-has-already-run).
 
-### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>Použít místní úložiště pro ukládání souborů, které musí být přístupné v roli
-Pokud chcete zkopírovat nebo během spuštění úlohy, které je pak dostupné pro vaši roli vytvoří soubor, tento soubor musí být umístěn v místním úložišti. Zobrazit [předchozí části](#create-files-in-local-storage-from-a-startup-task).
+### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>Použití místního úložiště k ukládání souborů, ke kterým je potřeba mít v roli pøístup
+Pokud chcete kopírovat nebo vytvořit soubor během úlohy po spuštění, která je pak přístupná pro vaši roli, musí být tento soubor umístěný v místním úložišti. Projděte si [předchozí část](#create-files-in-local-storage-from-a-startup-task).
 
-## <a name="next-steps"></a>Další postup
-Zkontrolujte cloudu [služby balíček a model](cloud-services-model-and-package.md)
+## <a name="next-steps"></a>Další kroky
+Kontrola [modelu a balíčku](cloud-services-model-and-package.md) cloudové služby
 
-Další informace o tom [úlohy](cloud-services-startup-tasks.md) fungovat.
+Přečtěte si další informace o práci s [úkoly](cloud-services-startup-tasks.md) .
 
-[Vytvoření a nasazení](cloud-services-how-to-create-deploy-portal.md) váš balíček cloudové služby.
+[Vytvořte a nasaďte](cloud-services-how-to-create-deploy-portal.md) balíček cloudové služby.
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
 [Úloha]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Prostředí]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Proměnná]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
+[Variabilní]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Koncové body]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[Bod]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue

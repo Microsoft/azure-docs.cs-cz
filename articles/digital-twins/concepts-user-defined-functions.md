@@ -1,52 +1,52 @@
 ---
-title: Zpracování dat a uživatelem definovaných funkcí s Dvojčaty digitální Azure | Dokumentace Microsoftu
-description: Přehled zpracování dat, procesy pro hledání shody a uživatelem definovaných funkcí s Dvojčaty digitální Azure.
+title: Zpracování dat a uživatelsky definované funkce pomocí digitálních vláken Azure | Microsoft Docs
+description: Přehled zpracování dat, odpovídajících uživatelů a uživatelsky definovaných funkcí s využitím digitálních vláken Azure
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: alinast
-ms.openlocfilehash: 4db515a931bc7f423eb11ae31b7304a602f0da46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4aa7e6660e3febdca6e0e5b1ad9f11bebaa48ea
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60925835"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638459"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Zpracování dat a uživatelsky definované funkce
 
-Azure digitální dvojče nabízí pokročilé kapacita výpočetních operací. Vývojáři můžou definovat a spouštějte vlastní funkce příchozí telemetrická data zprávy k odeslání události do předdefinovaných koncových bodů.
+Digitální vlákna Azure nabízí pokročilé výpočetní funkce. Vývojáři mohou definovat a spouštět vlastní funkce pro příchozí zprávy telemetrie pro odesílání událostí do předdefinovaných koncových bodů.
 
-## <a name="data-processing-flow"></a>Zpracování dat toku
+## <a name="data-processing-flow"></a>Tok zpracování dat
 
-Po zařízení odesílají telemetrická data do Azure digitální dvojče, vývojáři dokáže zpracovat data ve čtyřech fázích: *ověření*, *odpovídat*, *compute*, a *odeslání* .
+Jakmile zařízení odešlou data telemetrie do digitálních vláken Azure, můžou vývojáři zpracovávat data ve čtyřech fázích: *ověřování*, *Shoda*, *výpočty*a *odeslání*.
 
-![Azure tok digitální dvojče zpracování dat][1]
+![Tok zpracování dat digitálních vláken Azure][1]
 
-1. Fáze ověřit transformuje příchozí zpráva telemetrie pro běžně používané [objekt pro přenos dat](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) formátu. Tato fáze také provede ověření zařízení a senzorů.
-1. Fáze shoda najde odpovídající uživatelem definované funkce ke spuštění. Předdefinované procesy pro hledání shody najít uživatelem definované funkce na základě zařízení, senzorů a místo informace z příchozích telemetrické zprávy.
-1. Výpočetní fáze spuštění uživatelem definované funkce, shoda v předchozí fáze. Tyto funkce může číst a aktualizovat počítané hodnoty na prostorový graf uzly a může vysílat vlastní oznámení.
-1. Fáze odeslání směruje vlastní oznámení pro koncové body definované v grafu fáze výpočetní prostředky.
+1. Fáze Validate transformuje příchozí zprávu telemetrie na běžně srozumitelný formát [objektu pro přenos dat](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) . Tato fáze také provádí ověřování zařízení a senzorů.
+1. Fáze porovnávání vyhledá příslušné uživatelsky definované funkce, které se mají spustit. Předdefinované shody hledají uživatelsky definované funkce na základě informací o zařízení, snímači a prostoru z příchozí zprávy telemetrie.
+1. Výpočetní fáze spouští uživatelsky definované funkce, které odpovídají v předchozí fázi. Tyto funkce mohou číst a aktualizovat počítané hodnoty na uzlech prostorového grafu a mohou generovat vlastní oznámení.
+1. Fáze odeslání směruje všechna vlastní oznámení z výpočetní fáze do koncových bodů definovaných v grafu.
 
-## <a name="data-processing-objects"></a>Zpracování dat objektů
+## <a name="data-processing-objects"></a>Objekty zpracování dat
 
-Zpracování dat v Azure digitální dvojče spočívá v definování tři objekty: *procesy pro hledání shody*, *uživatelem definované funkce*, a *přiřazení rolí*.
+Zpracování dat v digitálních proobjektech Azure se skládá z definování tří objektů: *shody*, *uživatelsky definovaných funkcí*a *přiřazení rolí*.
 
-![Azure digitální dvojče zpracování dat objektů][2]
+![Objekty pro zpracování dat z digitálního vlákna Azure][2]
 
 <div id="matcher"></div>
 
-### <a name="matchers"></a>Procesy pro hledání shody
+### <a name="matchers"></a>Párování
 
-Procesy pro hledání shody definují sadu podmínek, které vyhodnotit, jaké akce proběhla podle příchozích telemetrických dat ze senzorů. Podmínky k určení shody může obsahovat vlastnosti od senzor senzoru nadřazené zařízení a místa nadřazené senzoru. Podmínky jsou vyjádřeny jako porovnání proti [cestu JSON](https://jsonpath.com/) jak je uvedeno v tomto příkladu:
+Koshodě definují sadu podmínek, které vyhodnocují, jaké akce probíhají na základě telemetrie pro příchozí senzory. Podmínky pro určení shody mohou zahrnovat vlastnosti ze senzoru, nadřazeného zařízení snímače a nadřazeného prostoru snímače. Podmínky jsou vyjádřeny jako porovnání s [cestou JSON](https://jsonpath.com/) , jak je uvedeno v tomto příkladu:
 
-- Všechny senzory datový typ **teploty** reprezentovaný řídicí hodnotu řetězce `\"Temperature\"`
-- S `01` v jejich portu
-- Který patří do zařízení s rozšířenou vlastnost klíče **výrobce** nastavena na hodnotu řetězce uvozený uvozovacím znakem `\"GoodCorp\"`
-- Které patří prostory typ určený v řetězci uvozený uvozovacím znakem `\"Venue\"`
-- Které jsou potomky nadřazené **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
+- Všechny snímače **teploty** datového typu reprezentované řídicí hodnotou řetězce`\"Temperature\"`
+- Má `01` na svém portu
+- Které patří do zařízení s rozšířeným **výrobcem** klíče vlastnosti nastaveným na hodnotu řetězce s řídicími znaky`\"GoodCorp\"`
+- Který patří do mezer typu určeného řídicím řetězcem`\"Venue\"`
+- Které jsou následníky nadřazeného **SpaceId**`DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
 {
@@ -83,48 +83,48 @@ Procesy pro hledání shody definují sadu podmínek, které vyhodnotit, jaké a
 ```
 
 > [!IMPORTANT]
-> - Cesty JSON jsou malá a velká písmena.
-> - Datová část JSON je stejný jako datovou část, která je vrácena:
->   - `/sensors/{id}?includes=properties,types` senzoru.
->   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes` pro zařízení nadřazené senzoru.
->   - `/spaces/{id}?includes=properties,types,location,timezone` nadřazené místo senzoru.
-> - Porovnání jsou malá a velká písmena.
+> - U cest JSON se rozlišují velká a malá písmena.
+> - Datová část JSON je shodná s datovou částí, kterou vrací:
+>   - `/sensors/{id}?includes=properties,types`pro senzor.
+>   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes`pro nadřazené zařízení snímače.
+>   - `/spaces/{id}?includes=properties,types,location,timezone`pro nadřazený prostor senzoru.
+> - Při porovnávání se nerozlišují malá a velká písmena.
 
-### <a name="user-defined-functions"></a>Uživatelem definované funkce
+### <a name="user-defined-functions"></a>Uživatelsky definované funkce
 
-Uživatelem definované funkce je provést v izolovaném prostředí Azure digitální dvojče vlastní funkci. Uživatelem definované funkce mají přístup k nezpracované senzor telemetrické zprávy získá přijetí. Uživatelem definované funkce také mají přístup ke službě prostorový graf a dispečerem. Po registraci v grafu, předávaný uživatelem definované funkce (podrobné [nad](#matcher)) musí být vytvořený zadat při provádění funkce. Například když Azure digitální dvojče obdrží nová telemetrická data z daného senzor, odpovídající uživatelem definovanou funkci můžete vypočítat klouzavý průměr v posledních několika údajů snímačů přes.
+Uživatelsky definovaná funkce je vlastní funkce spuštěná v izolovaném prostředí Azure Digital revláken. Uživatelsky definované funkce mají přístup ke zprávě telemetrie nezpracovaného senzoru, jak se obdrží. Uživatelsky definované funkce také mají přístup ke službě prostorového grafu a dispečera. Po zaregistrování uživatelsky definované funkce v grafu je nutné vytvořit shodu (podrobná [výše](#matcher)) pro určení, kdy je funkce spuštěna. Například když digitální vlákna Azure obdrží novou telemetrii od daného senzoru, odpovídající uživatelsky definovaná funkce může vypočítat klouzavý průměr za posledních několik čtených senzorů.
 
-Uživatelem definované funkce může být napsán v jazyce JavaScript. Pomocné metody interakci s grafem v prostředí pro spuštění uživatelem definované. Vývojáři mohou spouštět vlastní fragmenty kódu proti senzor telemetrické zprávy. Příklady obsahují:
+Uživatelsky definované funkce lze zapsat v JavaScriptu. Pomocné metody komunikují s grafem v uživatelsky definovaném spouštěcím prostředí. Vývojáři můžou spouštět vlastní fragmenty kódu pro zprávy telemetrie senzorů. Příklady obsahují:
 
-- Nastavte senzor čtení přímo na objekt ze senzorů v grafu.
-- Proveďte akci podle údajů různých snímačů přes v rámci místo v grafu.
-- Vytvořte oznámení při splnění určitých podmínek příchozí senzoru čtení.
-- Připojte grafu metadat do senzoru čtení před odesláním oznámení.
+- Nastavte senzor pro čtení přímo do objektu snímače v grafu.
+- Provede akci založenou na různých čteních senzorů v rámci prostoru v grafu.
+- Vytvoří oznámení v případě, že jsou splněny určité podmínky pro čtení příchozího senzoru.
+- Než odešlete oznámení, připojte metadata grafu ke senzoru, který čte.
 
-Další informace najdete v tématu [použití uživatelem definovaných funkcí](./how-to-user-defined-functions.md).
+Další informace najdete v tématu [Jak používat uživatelsky definované funkce](./how-to-user-defined-functions.md).
 
 
 #### <a name="examples"></a>Příklady
 
-[Úložiště GitHub pro digitální dvojče C# ukázka](https://github.com/Azure-Samples/digital-twins-samples-csharp/) obsahuje několik příkladů uživatelem definované funkce:
-- [Tato funkce](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) hledá oxidu uhličitého pohybu a teplotní hodnoty k určení, zda je k dispozici s těmito hodnotami v rozsahu místnosti. [Kurzy pro digitální dvojče](tutorial-facilities-udf.md) tuto funkci podrobněji prozkoumat. 
-- [Tato funkce](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) vyhledá data ze senzorů více pohybu a určuje, že místo je k dispozici, pokud žádná z nich zjistí všechny pohybu. Můžete snadno nahradit uživatelem definovaná funkce používá buď [rychlý Start](quickstart-view-occupancy-dotnet.md), nebo [kurzy](tutorial-facilities-setup.md), tím, že změny uvedené v oddílu pro komentáře na souboru. 
+[Úložiště GitHub pro C# ukázku digitálních vláken](https://github.com/Azure-Samples/digital-twins-samples-csharp/) obsahuje několik příkladů uživatelsky definovaných funkcí:
+- [Tato funkce](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) vyhledá oxid uhličitý, pohyb a teplotní hodnoty a určí, zda je místnost k dispozici s těmito hodnotami v rozsahu. [Kurzy pro digitální vlákna](tutorial-facilities-udf.md) probírají tuto funkci podrobněji. 
+- [Tato funkce](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) vyhledá data z více snímačů pohybu a určí, zda je prostor k dispozici, pokud žádný z nich nedetekuje žádné pohyby. Můžete snadno nahradit uživatelsky definovanou funkci použitou v rychlém startu [](quickstart-view-occupancy-dotnet.md)nebo v kurzech [](tutorial-facilities-setup.md)tím, že provedete změny uvedené v části komentáře v souboru. 
 
 
 
 ### <a name="role-assignment"></a>Přiřazení role
 
-Uživatelem definované funkce akce jsou v souladu s Azure digitální dvojče [řízení přístupu na základě rolí](./security-role-based-access-control.md) k zabezpečení dat v rámci služby. Přiřazení rolí definovat, které uživatelem definované funkce mít správná oprávnění k interakci s prostorový graf a jeho entit. Uživatelem definované funkce může mít například schopnost a oprávnění k *vytvořit*, *čtení*, *aktualizace*, nebo *odstranit* dat grafu v rámci dané místo. Uživatelem definované funkce úroveň přístupu je zaškrtnuté políčko při uživatelem definovanou funkci vyzve k zadání dat grafu nebo před pokusy akci. Další informace najdete v tématu [řízení přístupu na základě rolí](./security-create-manage-role-assignments.md).
+Akce uživatelsky definované funkce se řídí [řízením přístupu na základě role](./security-role-based-access-control.md) v rámci služby Azure Digital probíhají k zabezpečení dat ve službě. Přiřazení rolí definují, které uživatelsky definované funkce mají správná oprávnění k interakci s prostorovým grafem a jeho entitami. Například uživatelsky definovaná funkce může mít možnost a oprávnění k *vytváření*, *čtení*, *aktualizaci*nebo *odstraňování* dat grafu v daném prostoru. Úroveň přístupu uživatelsky definované funkce je kontrolována, když uživatelsky definovaná funkce požádá graf o data nebo se pokusí o akci. Další informace najdete v tématu [řízení přístupu na základě role](./security-create-manage-role-assignments.md).
 
-Je možné, předávaný k aktivaci uživatelem definovanou funkci, která nemá žádná přiřazení role. V takovém případě uživatelem definovanou funkci nemůže načíst žádná data z grafu.
+Ke spuštění uživatelsky definované funkce, která nemá žádné přiřazení rolí, je možné, aby se shodovala. V takovém případě funkce definovaná uživatelem nenačte žádná data z grafu.
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o tom, jak směrování událostí a telemetrie zprávy k jiným službám Azure, [trasy události a zprávy](./concepts-events-routing.md).
+- Další informace o tom, jak směrovat události a zprávy telemetrie do jiných služeb Azure, najdete v tématu [události a zprávy směrování](./concepts-events-routing.md).
 
-- Další informace o tom, jak vytvořit procesy pro hledání shody, uživatelem definované funkce a přiřazení rolí, [Průvodce používáním uživatelem definované funkce](./how-to-user-defined-functions.md).
+- Pokud chcete získat další informace o tom, jak vytvořit párování, uživatelsky definované funkce a přiřazení rolí, přečtěte si [příručku k používání uživatelsky definovaných funkcí](./how-to-user-defined-functions.md).
 
-- Zkontrolujte [uživatelem definovanou funkci klientské knihovny referenční dokumentaci](./reference-user-defined-functions-client-library.md).
+- Přečtěte si [referenční dokumentaci k klientské knihovně funkcí definovaných uživatelem](./reference-user-defined-functions-client-library.md).
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-data-processing-flow.png

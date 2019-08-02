@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Pomocí sady SDK kontrola pravopisu Bingu pro kontrolu pravopisuC#'
-titlesuffix: Azure Cognitive Services
-description: Začněte používat rozhraní API Bingu pro kontrolu pravopisu zkontrolujte REST pro kontrolu pravopisu a gramatiky.
+title: 'Rychlý start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu SDK proC#'
+titleSuffix: Azure Cognitive Services
+description: Začněte používat REST API Kontrola pravopisu Bingu pro kontrolu pravopisu a gramatiky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: adbb60c7ddbc72b8b7e5cb31c6909117ce3a10cb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d98d00275cbd89702e4bae0c93aa262805617e59
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798366"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500786"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Rychlý start: Pomocí sady SDK kontrola pravopisu Bingu pro kontrolu pravopisuC#
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Rychlý start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu SDK proC#
 
-V tomto rychlém startu můžete začít pomocí sady SDK kontrola pravopisu Bingu pro kontrolu pravopisu C#. Zatímco kontrolu pravopisu Bingu je kompatibilní s Většina programovacích jazyků rozhraní REST API, SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck).
+Pomocí tohoto rychlého startu můžete spustit kontrolu pravopisu v sadě Kontrola pravopisu Bingu C#SDK pro. I když Kontrola pravopisu Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck)
 
 ## <a name="application-dependencies"></a>Závislosti aplikace
 
-* Libovolná edice [sady Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
-* Kontrola pravopisu Bingu [balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
+* Libovolná edice sady [Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
+* [Balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck) kontrola pravopisu Bingu
 
-Chcete-li do svého projektu přidat SDK kontrola pravopisu Bingu, **spravovat balíčky NuGet** z **Průzkumníka řešení** v sadě Visual Studio. Přidejte balíček `Microsoft.Azure.CognitiveServices.Language.SpellCheck`. Tento balíček nainstaluje taky následující závislosti:
+Chcete-li přidat sadu Kontrola pravopisu Bingu SDK do projektu, vyberte možnost **Spravovat balíčky NuGet** z **Průzkumník řešení** v sadě Visual Studio. Přidejte balíček `Microsoft.Azure.CognitiveServices.Language.SpellCheck`. Balíček také nainstaluje následující závislosti:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
@@ -36,7 +36,7 @@ Chcete-li do svého projektu přidat SDK kontrola pravopisu Bingu, **spravovat b
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový C# konzole řešení v sadě Visual Studio. Pak přidejte následující `using` příkazu.
+1. Vytvořte nové C# řešení konzoly v aplikaci Visual Studio. Pak přidejte následující `using` příkaz.
     
     ```csharp
     using System;
@@ -46,9 +46,9 @@ Chcete-li do svého projektu přidat SDK kontrola pravopisu Bingu, **spravovat b
     using Microsoft.Azure.CognitiveServices.Language.SpellCheck.Models;
     ```
 
-2. Vytvořte novou třídu. Potom vytvořte asynchronní funkci volat `SpellCheckCorrection()` , který má klíč předplatného a odešle žádost o kontrolu pravopisu.
+2. Vytvořte novou třídu. Pak vytvořte asynchronní funkci s názvem `SpellCheckCorrection()` , která převezme klíč předplatného, a odešle požadavek na kontrolu pravopisu.
 
-3. Vytvořit instanci klienta tak, že vytvoříte nový `ApiKeyServiceClientCredentials` objektu. 
+3. Vytvořte instanci klienta vytvořením nového `ApiKeyServiceClientCredentials` objektu. 
 
     ```csharp
     public static class SpellCheckSample{
@@ -59,15 +59,15 @@ Chcete-li do svého projektu přidat SDK kontrola pravopisu Bingu, **spravovat b
     }
     ```
 
-## <a name="send-the-request-and-read-the-response"></a>Odeslat požadavek a čtení odpovědi
+## <a name="send-the-request-and-read-the-response"></a>Odeslat požadavek a přečíst odpověď
 
-1. Ve funkci vytvořené výše proveďte následující kroky. Odesíláte požadavek kontroly pravopisu s klientem. Přidejte text, který má být zkontroluje, aby se `text` parametr a nastavte režim na `proof`.  
+1. Ve funkci vytvořené výše proveďte následující kroky. Odešlete žádost o kontrolu pravopisu u klienta. Přidejte text, který se má zkontrolovat do `text` parametru, a nastavte režim na. `proof`  
     
     ```csharp
     var result = await client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof");
     ```
 
-2. Získáte první výsledek kontroly pravopisu, pokud existuje. Tisk vrácen první chybně napsaná slova (token), typ tokenu a počet návrhů.
+2. Získejte první výsledek kontroly pravopisu, pokud je nějaký. Vytiskněte vrácené slovo (token), typ tokenu a počet návrhů.
 
     ```csharp
     if (firstspellCheckResult != null){
@@ -80,7 +80,7 @@ Chcete-li do svého projektu přidat SDK kontrola pravopisu Bingu, **spravovat b
     }
     ```
 
-3. Získáte první navržená oprava, pokud existuje. Tisk skóre návrh a navrhované aplikace word. 
+3. Získejte první navrhovanou opravu, pokud je nějaká. Vytiskněte skóre návrhu a navrhované slovo. 
 
     ```csharp
             var suggestions = firstspellCheckResult.Suggestions;

@@ -1,109 +1,109 @@
 ---
-title: Principy – škálování aplikace ve službě Azure Kubernetes služby (AKS)
-description: Další informace o škálování ve službě Azure Kubernetes Service (AKS), včetně automatického škálování podů vodorovné, automatického škálování clusteru a konektoru Azure Container Instances.
+title: Koncepty – škálování aplikací ve službě Azure Kubernetes Services (AKS)
+description: Přečtěte si o škálování ve službě Azure Kubernetes Service (AKS), včetně horizontálního automatického škálování pod automatickým škálováním, automatického škálování clusteru a konektoru Azure Container Instances.
 services: container-service
 author: zr-msft
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 2070c79a6ce0627280b1793e412002783f385cc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c25bc316a345404c759b346b4fb877de42ee4d13
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074045"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561560"
 ---
-# <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Škálování možností pro aplikace ve službě Azure Kubernetes Service (AKS)
+# <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti škálování pro aplikace ve službě Azure Kubernetes (AKS)
 
-Při spouštění aplikací ve službě Azure Kubernetes Service (AKS), budete muset zvýšit nebo snížit množství výpočetních prostředků. Jako počet instancí aplikace, které budete potřebovat změnit počet uzlů může být také nutné změnit základní Kubernetes. Také můžete potřebovat k rychlému zřízení velký počet instancí další aplikace.
+Při spouštění aplikací ve službě Azure Kubernetes Service (AKS) možná budete muset zvýšit nebo snížit množství výpočetních prostředků. Vzhledem k počtu instancí aplikace, které potřebujete změnit, může být potřeba změnit také počet podkladových uzlů Kubernetes. Je také možné, že budete muset rychle zřídit velký počet dalších instancí aplikace.
 
-Tento článek představuje základní koncepty, které vám pomůžou škálovat aplikace ve službě AKS:
+V tomto článku se seznámíte se základními koncepty, které vám pomůžou škálovat aplikace v AKS:
 
 - [Ruční škálování](#manually-scale-pods-or-nodes)
-- [Vodorovné pod automatického škálování (HPA)](#horizontal-pod-autoscaler)
-- [Automatického škálování clusteru](#cluster-autoscaler)
-- [Integrace služby Azure Container Instance (ACI) s AKS](#burst-to-azure-container-instances)
+- [Horizontální automatické škálování pod (HPA)](#horizontal-pod-autoscaler)
+- [Automatické škálování clusteru](#cluster-autoscaler)
+- [Integrace Azure Container instance (ACI) s AKS](#burst-to-azure-container-instances)
 
-## <a name="manually-scale-pods-or-nodes"></a>Ruční škálování podů nebo uzly
+## <a name="manually-scale-pods-or-nodes"></a>Ruční škálování v luskech nebo uzlech
 
-Můžete ručně škálovat repliky (podů) a uzly pro testování, jak vaše aplikace reaguje na změnu dostupných prostředků a stavu. Ruční škálování prostředků také umožňuje definovat nastavené množství prostředků, který používají k údržbě hradit fixní částku, jako je počet uzlů. Ručně škálovat, definujete repliky nebo počtu uzlů a rozhraní Kubernetes API plány vytváření dalších podů nebo vyprazdňování uzlů.
+Můžete ručně škálovat repliky (lusky) a uzly, abyste otestovali, jak vaše aplikace reaguje na změnu dostupných prostředků a stavu. Ruční škálování prostředků také umožňuje definovat sadu množství prostředků, které se mají použít k údržbě pevných nákladů, jako je třeba počet uzlů. Chcete-li ručně škálovat, definujte počet replik nebo uzlů a plány rozhraní API Kubernetes vytvářejí další lusky nebo vyprazdňování uzlů.
 
-Abyste mohli začít s ruční škálování podů a uzly [škálování aplikací ve službě AKS][aks-scale].
+Pokud chcete začít s ručním škálováním v luskech a uzlech, přečtěte si téma [škálování aplikací v AKS][aks-scale]
 
-## <a name="horizontal-pod-autoscaler"></a>Vodorovné pod automatického škálování
+## <a name="horizontal-pod-autoscaler"></a>Automatické škálování vodorovně pod
 
-Kubernetes pomocí automatického škálování podů vodorovné (HPA) monitorovat požadavky na prostředky a automaticky škálovat počet replik. Ve výchozím nastavení kontroluje vodorovné pod automatického škálování metriky rozhraní API k nějakým nezbytným změnám v počet replik každých 30 sekund. Pokud nejsou nutné nějaké změny, počet replik zvýší nebo sníží odpovídajícím způsobem. Automatického škálování podů vodorovné pracuje s clustery AKS, které jste nasadili Server metriky pro Kubernetes 1.8 +.
+Kubernetes používá k monitorování požadavků na prostředky horizontální horizontální navýšení (HPA) a automaticky škáluje počet replik. Ve výchozím nastavení automatické škálování pod automaticky kontroluje metriky rozhraní API každých 30 sekund pro všechny požadované změny v počtu replik. Když se vyžadují změny, počet replik se odpovídajícím způsobem zvýší nebo sníží. Funkce automatického škálování pod možností horizontálního navýšení funguje s clustery AKS, které nasadily Server metrik pro Kubernetes 1.8 +.
 
-![Kubernetes horizontální automatické škálování podů](media/concepts-scale/horizontal-pod-autoscaling.png)
+![Automatické škálování Kubernetes vodorovně pod](media/concepts-scale/horizontal-pod-autoscaling.png)
 
-Při konfiguraci automatického škálování podů vodorovné pro konkrétní nasazení, můžete definovat minimální a maximální počet replik, které můžou běžet. Můžete také definovat metriky pro monitorování a škálování rozhodnutích založit na, jako je například využití procesoru.
+Když pro dané nasazení nakonfigurujete horizontální automatické škálování pod, definujete minimální a maximální počet replik, které se dají spustit. Také definujete metriku, která bude monitorovat a založit všechna rozhodnutí o škálování na, jako je například využití procesoru.
 
-Začínáme s vodorovné pod automatického škálování ve službě AKS najdete v článku [automatické škálování podů ve službě AKS][aks-hpa].
+Informace o tom, jak začít s autohorizontálně pod autoškálou v AKS, najdete v tématu [Automatické škálování v AKS][aks-hpa].
 
-### <a name="cooldown-of-scaling-events"></a>Která škálování události
+### <a name="cooldown-of-scaling-events"></a>Cooldown událostí škálování
 
-Jak automatického škálování podů vodorovné kontroly rozhraní API metrik každých 30 sekund, naleznete v předchozích událostech škálování nemusí byly úspěšně dokončeny před provedením další kontrolu. Toto chování může způsobit automatického škálování podů vodorovné Chcete-li změnit počet replik, než předchozí událost škálování byl schopný přijímat úlohy aplikace a požadavky na prostředky a odpovídajícím způsobem upravte.
+Když automatické škálování pod vodorovnou rovinou kontroluje metriky rozhraní API každých 30 sekund, předchozí události škálování se nemusely úspěšně dokončit před provedením další kontroly. Toto chování by mohlo způsobit, že horizontální dopředný automatické škálování změní počet replik předtím, než předchozí událost škálování bude schopna přijmout aplikační úlohu, a požadavky na prostředky pro odpovídající úpravu.
 
-Chcete-li minimalizovat tyto závodu události, která nebo zpoždění hodnoty lze nastavit. Tyto hodnoty definovat, jak dlouho musí čekat automatického škálování podů vodorovné po škálovací události, před další událost škálování se dá spouštět. Toto chování umožňuje novou repliku počítat se projeví a rozhraní API pro metriky odrážejí úlohách distribuovaných mezi. Ve výchozím nastavení zpoždění v měřítku události je 3 minuty a zpoždění o vertikální snížení kapacity události je 5 minut
+Pro minimalizaci těchto událostí časování jsou nastaveny hodnoty cooldown nebo Delay. Tyto hodnoty definují, jak dlouho musí automatické horizontální navýšení kapacity po událostech škálování počkat, než se může aktivovat jiná událost škálování. Toto chování umožňuje uplatnění nového počtu replik a rozhraní API metrik odráží distribuovanou úlohu. Ve výchozím nastavení je zpoždění událostí horizontálního navýšení kapacity 3 minuty a zpoždění události horizontálního navýšení kapacity je 5 minut.
 
-Budete muset vyladit tyto hodnoty která. Výchozí hodnoty která může mít dojem, že není automatického škálování podů horizontální škálování počet replik dostatečně rychle. Například rychlejší zvýšit počet replik používá, snížit `--horizontal-pod-autoscaler-upscale-delay` při vytváření vodorovné podu definice automatického škálování pomocí `kubectl`.
+V současné době nemůžete tyto hodnoty cooldown z výchozího nastavení ladit.
 
-## <a name="cluster-autoscaler"></a>Automatického škálování clusteru
+## <a name="cluster-autoscaler"></a>Automatické škálování clusteru
 
-Reagovat na měnící se požadavky pod Kubernetes má clusteru automatického škálování (aktuálně ve verzi preview ve službě AKS), který přizpůsobí počet uzlů podle požadované výpočetní prostředky ve fondu uzlů. Ve výchozím nastavení kontroluje automatického škálování clusteru serveru rozhraní API každých 10 sekund k nějakým nezbytným změnám v počtu uzlů. Pokud automatické škálování clusteru zjistí, že je vyžadována změna, počet uzlů v clusteru AKS zvýší nebo sníží odpovídajícím způsobem. Funguje automatického škálování clusteru s podporou RBAC AKS clustery se spuštěnou technologií Kubernetes 1.10.x nebo vyšší.
+Pro reakci na změnu požadavků pod Kubernetes má služba pro automatické škálování clusteru (aktuálně ve verzi Preview v AKS), která upravuje počet uzlů na základě požadovaných výpočetních prostředků ve fondu uzlů. Ve výchozím nastavení provádí automatické škálování clusteru kontrolu serveru rozhraní API každých 10 sekund pro všechny požadované změny v počtu uzlů. Pokud automatické škálování clusteru určí, že se vyžaduje změna, počet uzlů v clusteru AKS se odpovídajícím způsobem zvýší nebo sníží. Automatické škálování clusteru funguje s clustery AKS s podporou RBAC, které používají Kubernetes 1,10. x nebo vyšší.
 
-![Automatického škálování clusteru Kubernetes](media/concepts-scale/cluster-autoscaler.png)
+![Automatické škálování clusteru Kubernetes](media/concepts-scale/cluster-autoscaler.png)
 
-Automatického škálování clusteru se obvykle používá podél vodorovné pod automatického škálování. V kombinaci, automatického škálování podů horizontální zvýšení nebo snížení počtu podů založené na požadavcích aplikace a automatického škálování clusteru přizpůsobí počet uzlů podle potřeby ke spuštění těchto dalších podů odpovídajícím způsobem.
+Automatické škálování clusteru se obvykle používá společně s autohorizontálním škálováním pod. V kombinaci se horizontální automatické škálování pod ním zvyšuje nebo snižuje počet lusků v závislosti na požadavcích aplikace a automatické škálování clusteru podle potřeby upraví počet uzlů podle potřeby, aby tyto další lusky běžely odpovídajícím způsobem.
 
-Automatického škálování clusteru by měl být testován pouze ve verzi preview v clusterech AKS s fondem jeden uzel.
+Automatické škálování clusteru by se mělo testovat jenom ve verzi Preview v clusterech AKS.
 
-Začínáme s automatického škálování clusteru ve službě AKS najdete v článku [automatického škálování clusteru v AKS][aks-cluster-autoscaler].
+Pokud chcete začít s nástrojem pro automatické škálování clusteru v AKS, přečtěte si téma [Automatické škálování clusteru na AKS][aks-cluster-autoscaler].
 
-### <a name="scale-up-events"></a>Vertikálně navýšit kapacitu události
+### <a name="scale-up-events"></a>Horizontální navýšení kapacity
 
-Pokud uzel nemá dostatečný výpočetní prostředky, které spustit požadovaný pod, nemůžete tohoto podu průběhu procesu plánování. Pokud chcete pod nelze spustit, dokud další výpočetní prostředky, které jsou k dispozici v rámci fondu uzlů.
+Pokud uzel nemá dostatek výpočetních prostředků, aby mohl spustit požadovanou hodnotu, kterou v rámci procesu plánování nemůže probíhat. Uzel pod nemůže být spuštěn, pokud není v rámci fondu uzlů k dispozici další výpočetní prostředky.
 
-Při oznámení automatického škálování clusteru podů, které kvůli omezením prostředku fondu uzel se nedá naplánovat, se zvýší počet uzlů v rámci fondu uzel k poskytnutí dalších výpočetních prostředků. Pokud tyto další uzly jsou úspěšně nasazen a dostupný pro použití v rámci uzlu fondu, jsou podů pak naplánovány ke spuštění na ně.
+Když se pro automatické škálování clusteru vydává oznámení, že se nedá naplánovat kvůli omezením prostředků fondu uzlů, zvýší se počet uzlů v rámci fondu uzlů, aby se poskytly další výpočetní prostředky. Pokud jsou tyto další uzly úspěšně nasazeny a k dispozici pro použití v rámci fondu uzlů, potom je naplánováno jejich spuštění.
 
-Pokud vaše aplikace potřebuje rychle škálovat, může několik podů zůstanou ve stavu čekání na naplánované, dokud další uzly, které jsou nasazeny pomocí automatického škálování clusteru můžete přijímat plánované pody. Pro aplikace, které mají vysokou burst požadavky je možné škálovat s virtuálními uzly a Azure Container Instances.
+Pokud vaše aplikace potřebuje rychle škálovat, některé lusky můžou zůstat ve stavu, který čeká na naplánování, dokud další uzly nasazené nástrojem pro automatické škálování clusteru nemůžou akceptovat naplánované lusky. U aplikací, které mají vysoké požadavky na nárůst zatížení, můžete škálovat pomocí virtuálních uzlů a Azure Container Instances.
 
-### <a name="scale-down-events"></a>Vertikálně snížit kapacitu události
+### <a name="scale-down-events"></a>Události horizontálního navýšení kapacity
 
-Automatického škálování clusteru také sleduje pod plánování stav pro uzly, které nedávno neobdrželi nové žádosti o plánování. Tento scénář označuje, že fond uzlů má víc výpočetních prostředků, než jsou povinné a, můžete snížit počet uzlů.
+Automatické škálování clusteru také monitoruje stav plánování pod uzlem, které nedávno nepřijaly nové požadavky na plánování. Tento scénář indikuje, že fond uzlů má víc výpočetních prostředků, než kolik jich je potřeba, a že se může snížit počet uzlů.
 
-Uzel, který předává prahovou hodnotu pro už je nepotřebujete po dobu 10 minut ve výchozím nastavení je naplánováno odstranění. Pokud dojde k této situaci, podů jsou naplánovány ke spuštění na jiných uzlech v rámci fondu uzlů a automatického škálování clusteru snižuje počet uzlů.
+Uzel, který předává prahovou hodnotu pro již nepotřebnou dobu 10 minut, je ve výchozím nastavení naplánován pro odstranění. V případě, že dojde k této situaci, je naplánováno spuštění lusků na jiných uzlech v rámci fondu uzlů a automatické škálování clusteru sníží počet uzlů.
 
-Vaše aplikace může docházet některých přerušení, jako podů naplánováno na různých uzlech clusteru automatického škálování snižuje počet uzlů. Pokud chcete přerušení minimalizovat, vyhněte se aplikace, které používají jeden pod instance.
+V případě, že se při automatickém škálování clusteru sníží počet uzlů, může dojít k výpadkům v případě, že se aplikace naplánovala v různých uzlech. Aby se minimalizovalo přerušení, vyhněte se aplikacím, které používají jednu instanci pod.
 
-## <a name="burst-to-azure-container-instances"></a>Přejít na Azure Container Instances
+## <a name="burst-to-azure-container-instances"></a>Nárůst na Azure Container Instances
 
-Rychle škálovat AKS cluster, můžete integrovat s Azure Container Instances (ACI). Kubernetes má integrované komponenty škálovat počet replik a uzel. Ale pokud vaše aplikace potřebuje rychle škálovat, automatického škálování podů vodorovné může naplánovat další pody, než se můžou poskytovat pomocí existujících výpočetních prostředků na fond uzlů. Pokud nakonfigurované, tento scénář znamenalo automatického škálování clusteru k nasazení dalších uzlů ve fondu uzlu, ale může trvat několik minut, než ty uzly k úspěšné zřízení a povolit Kubernetes plánovač spustit podů na ně.
+Pokud chcete rychle škálovat cluster AKS, můžete ho integrovat s Azure Container Instances (ACI). Kubernetes má integrované součásti pro škálování počtu replik a uzlů. Pokud ale vaše aplikace potřebuje rychle škálovat, může horizontální horizontální navýšení kapacity naplánovat více lusků, než je možné v rámci fondu uzlů poskytnout stávající výpočetní prostředky. V případě konfigurace by tento scénář mohl aktivovat automatické škálování clusteru pro nasazení dalších uzlů ve fondu uzlů, ale může trvat několik minut, než se tyto uzly úspěšně zřídí a povolí plánovači Kubernetes, aby na nich běžela lusky.
 
-![Kubernetes burst škálování do služby ACI](media/concepts-scale/burst-scaling.png)
+![Škálování rozKubernetesho shluku na ACI](media/concepts-scale/burst-scaling.png)
 
-ACI vám umožní rychle nasadit kontejner instancí bez režie další infrastrukturu. Když se připojíte pomocí AKS, stane ACI zabezpečené, logické rozšíření ve vašem clusteru AKS. V clusteru AKS, který představuje ACI jako virtuální uzel Kubernetes je nainstalovaná komponenta Virtual Kubelet. Kubernetes pak můžete plánovat podů, které běží jako instance ACI prostřednictvím virtuální uzly, nikoli jako podů na uzlech virtuálních počítačů přímo ve vašem clusteru AKS. Virtuální uzly jsou momentálně ve verzi preview ve službě AKS.
+ACI umožňuje rychle nasadit instance kontejnerů bez dalších režijních nákladů na infrastrukturu. Když se připojíte pomocí AKS, ACI se bude zabezpečeným logickým rozšířením vašeho clusteru AKS. Součást Virtual Kubelet je nainstalovaná v clusteru AKS, který prezentuje ACI jako virtuální uzel Kubernetes. Kubernetes může naplánovat lusky spouštěné jako instance ACI prostřednictvím virtuálních uzlů, ne jako lusky na uzlech virtuálních počítačů přímo v clusteru AKS. Virtuální uzly jsou v současnosti ve verzi Preview v AKS.
 
-Vaše aplikace vyžaduje žádné změny použít virtuální uzly. Nasazení můžete škálovat napříč AKS a ACI a bez zpoždění jako cluster automatického škálování nasadí nové uzly v clusteru AKS.
+Vaše aplikace nevyžaduje žádné úpravy k použití virtuálních uzlů. Nasazení se můžou škálovat napříč AKS a ACI a bez prodlevy, protože automatické škálování clusteru nasazuje nové uzly v clusteru AKS.
 
-Virtuální uzly jsou nasazené do další podsítě ve stejné virtuální síti jako clusteru AKS. Tato konfigurace virtuální sítě umožňuje přenos dat mezi ACI a AKS zabezpečit. Podobně jako AKS cluster je ACI instance zabezpečené a logické výpočetní prostředek, který je izolovaný od ostatních uživatelů.
+Virtuální uzly se nasazují do další podsítě ve stejné virtuální síti jako cluster AKS. Tato konfigurace virtuální sítě umožňuje zabezpečení provozu mezi ACI a AKS. Podobně jako cluster AKS je instance ACI zabezpečeným logickým výpočetním prostředkem, který je izolovaný od ostatních uživatelů.
 
 ## <a name="next-steps"></a>Další postup
 
-Abyste mohli začít s škálování aplikací, nejdřív postupujte [rychlý start k vytvoření clusteru AKS pomocí Azure CLI][aks-quickstart]. Potom můžete spustit ručně nebo automaticky škálovat aplikace ve vašem clusteru AKS:
+Pokud chcete začít s škálováním aplikací, nejdřív postupujte podle pokynů v rychlém startu [a vytvořte cluster AKS pomocí Azure CLI][aks-quickstart]. Pak můžete začít ručně nebo automaticky škálovat aplikace v clusteru AKS:
 
-- Ruční škálování [podů] [ aks-manually-scale-pods] nebo [uzly][aks-manually-scale-nodes]
-- Použití [vodorovné pod automatického škálování][aks-hpa]
+- Ruční škálování [][aks-manually-scale-pods] v luskech nebo [uzlech][aks-manually-scale-nodes]
+- Použití [automatického škálování vodorovně pod][aks-hpa]
 - Použití [automatického škálování clusteru][aks-cluster-autoscaler]
 
-Další informace o Kubernetes základní informace a koncepty AKS naleznete v následujících článcích:
+Další informace o základních konceptech Kubernetes a AKS najdete v následujících článcích:
 
-- [Kubernetes / AKS clustery a úlohy][aks-concepts-clusters-workloads]
-- [Kubernetes / AKS přístup a identita][aks-concepts-identity]
-- [Kubernetes / zabezpečení AKS][aks-concepts-security]
-- [Kubernetes / virtuální sítě AKS][aks-concepts-network]
-- [Kubernetes / AKS storage][aks-concepts-storage]
+- [Clustery a úlohy Kubernetes/AKS][aks-concepts-clusters-workloads]
+- [Přístup a identita Kubernetes/AKS][aks-concepts-identity]
+- [Zabezpečení Kubernetes/AKS][aks-concepts-security]
+- [Virtuální sítě Kubernetes/AKS][aks-concepts-network]
+- [Úložiště Kubernetes/AKS][aks-concepts-storage]
 
 <!-- LINKS - external -->
 

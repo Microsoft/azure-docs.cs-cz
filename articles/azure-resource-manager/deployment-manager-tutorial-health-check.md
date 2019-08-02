@@ -8,38 +8,38 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0e8a9fefdf92f568001cc3352fe83a85157acf9a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3946690b24ec4123df1bb19deb05143189fd5aa5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442585"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596043"
 ---
-# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: Kontrola stavu používání v Azure Deployment Manager (Public preview)
+# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: Použití kontroly stavu v Azure Deployment Manager (Public Preview)
 
-Zjistěte, jak integrovat Kontrola stavu [Azure Deployment Manager](./deployment-manager-overview.md). V tomto kurzu vychází z [pomocí Správce nasazení Azure pomocí šablon Resource Manageru](./deployment-manager-tutorial.md) kurzu. Tento kurz je třeba provést předtím, než budete pokračovat tímto tématem.
+Přečtěte si, jak integrovat kontrolu stavu v [Azure Deployment Manager](./deployment-manager-overview.md). Tento kurz je založený na kurzu [použití Azure Deployment Manager with správce prostředků Templates](./deployment-manager-tutorial.md) . Před pokračováním v tomto kurzu je nutné provést tento kurz.
 
-V šabloně zavedení použité při [pomocí Správce nasazení Azure pomocí šablon Resource Manageru](./deployment-manager-tutorial.md), použít krok čekání. V tomto kurzu nahraďte krok čekání kroku kontroly stavu.
+V šabloně zavedení používané v části [použití Azure Deployment Manager se šablonami správce prostředků](./deployment-manager-tutorial.md)jste použili čekací krok. V tomto kurzu nahradíte krok čekání krokem kontroly stavu.
 
 > [!IMPORTANT]
-> Pokud vaše předplatné je označen pro testovací a otestujte nové funkce Azure, můžete nasadit do oblastí, testovací použít pouze Azure Deployment Manager. 
+> Pokud je vaše předplatné označené k testování nových funkcí Azure na Kanárských, můžete k nasazení do oblastí pro Kanárské použití použít jenom Azure Deployment Manager. 
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Vytvoření služby simulátor kontroly stavu
-> * Revidovat šablona uvedení
-> * Topologie nasazení
-> * Nasazení tohoto uvedení se stavem není v pořádku
+> * Vytvořit simulátor služby kontroly stavu
+> * Revidovat šablonu zavedení
+> * Nasazení topologie
+> * Nasazení zavedení do stavu není v pořádku
 > * Ověření nasazení zavedení
-> * Nasazení tohoto uvedení se stavem v pořádku
+> * Nasazení zavedení se stavem v pořádku
 > * Ověření nasazení zavedení
 > * Vyčištění prostředků
 
-Další materiály:
+Další prostředky:
 
-- [Reference k rozhraní REST API Azure Deployment Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
-- [Ukázky Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
+- [Reference k Azure Deployment Manager REST API](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- [Ukázka Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -47,23 +47,23 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 K dokončení tohoto článku potřebujete:
 
-* Kompletní [pomocí Správce nasazení Azure pomocí šablon Resource Manageru](./deployment-manager-tutorial.md).
-* Stáhněte si [šablon a artefaktů](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) , který se používá v rámci tohoto kurzu.
+* Dokončete [použití Azure Deployment Manager se šablonami správce prostředků](./deployment-manager-tutorial.md).
+* Stáhněte si [šablony a artefakty](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) , které jsou používány v tomto kurzu.
 
-## <a name="create-a-health-check-service-simulator"></a>Vytvoření služby simulátor kontroly stavu
+## <a name="create-a-health-check-service-simulator"></a>Vytvořit simulátor služby kontroly stavu
 
-V produkčním prostředí obvykle použijete jeden nebo více monitorování poskytovatelů. Aby integrace stavu co nejjednodušší, Microsoft má pracovali s některými monitorování společnosti, kde přinášejí jednoduché kopírování/vkládání řešení pro integraci kontroly stavu s nasazeními hlavní služby stavu. Seznam těchto společnostech najdete v tématu [zprostředkovatele sledování stavu](./deployment-manager-health-check.md#health-monitoring-providers). Pro účely tohoto kurzu vytvoříte [funkce Azure Functions](/azure/azure-functions/) pro simulaci sledování služby stavu. Tato funkce přebírá stavový kód a vrací stejný kód. Šablony Azure Deployment Manager používá stavový kód a zjistěte, jak chcete pokračovat s nasazením.
+V produkčním prostředí obvykle používáte jednoho nebo více poskytovatelů monitorování. Abychom mohli co nejsnáze integrovat stav, společnost Microsoft spolupracuje s některými špičkovými společnostmi sledování stavu služby, které vám poskytnou jednoduché řešení kopírování a vkládání za účelem integrace kontrol stavu s nasazeními. Seznam těchto společností najdete v tématu poskytovatelé [monitorování stavu](./deployment-manager-health-check.md#health-monitoring-providers). Pro účely tohoto kurzu vytvoříte [funkci Azure](/azure/azure-functions/) pro simulaci služby sledování stavu. Tato funkce přebírá stavový kód a vrací stejný kód. Vaše šablona Azure Deployment Manager používá stavový kód k určení, jak pokračovat v nasazení.
 
-Následující dva soubory se používají k nasazení funkce Azure functions. Není nutné stáhnout tyto soubory do absolvovat kurz.
+Následující dva soubory se používají k nasazení funkce Azure Functions. Tyto soubory nemusíte stahovat, abyste procházeli v tomto kurzu.
 
-* Šablony Resource Manageru se nachází v [ https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json ](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Nasazení této šablony můžete vytvořit funkci Azure.
-* Soubor zip se zdrojový kód funkce Azure Functions, [ https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Tato zip, volá se, je volána pomocí šablony Resource Manageru.
+* Správce prostředků šablonu umístěnou na [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json)adrese. Tuto šablonu nasadíte, chcete-li vytvořit funkci Azure Functions.
+* Soubor zip zdrojového kódu funkce Azure, [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Tato metoda ZIP je volána šablonou Správce prostředků.
 
-Pokud chcete nasadit funkci Azure, vyberte **vyzkoušet** otevřete Azure Cloud shell a vložte následující skript do okna prostředí.  Vložte kód, pravým tlačítkem myši na okno prostředí a potom vyberte **vložte**.
+Pokud chcete službu Azure Functions nasadit, vyberte **zkusit** , aby se otevřelo prostředí Azure Cloud Shell, a pak do okna prostředí vložte následující skript.  Kód vložíte tak, že kliknete pravým tlačítkem myši na okno prostředí a pak vyberete **Vložit**.
 
 > [!IMPORTANT]
-> **projectName** v Powershellu skript slouží ke generování názvů služeb Azure, které jsou nasazeny v tomto kurzu. Různé služby Azure mají různé požadavky na názvy. K zajištění, že je nasazení úspěšné, zvolte název s méně než 12 znaků s vlastností jenom malá písmena a číslice.
-> Uložte kopii názvu projektu. Můžete použít stejný název projektu v průběhu kurzu.
+> **ProjectName** ve skriptu PowerShellu se používá ke generování názvů služeb Azure, které jsou nasazené v tomto kurzu. Různé služby Azure mají různé požadavky na názvy. Chcete-li zajistit, aby bylo nasazení úspěšné, vyberte název, který má méně než 12 znaků a použijte pouze malá písmena a číslice.
+> Uložte kopii názvu projektu. V tomto kurzu použijete stejný projectName.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -74,43 +74,43 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
-Ověřit a otestovat funkce Azure Functions:
+Ověření a otestování funkce Azure Functions:
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
-1. Otevřete skupinu prostředků.  Výchozí název je název projektu s **rg** připojí.
-1. Vyberte službu app service ze skupiny prostředků.  Výchozí název služby app Service je název projektu s **webapp** připojí.
-1. Rozbalte **funkce**a pak vyberte **HttpTrigger1**.
+1. Otevřete skupinu prostředků.  Výchozí název je název projektu s připojeným **RG** .
+1. Vyberte službu App Service ze skupiny prostředků.  Výchozím názvem služby App Service je název projektu s připojenou **WebApp** .
+1. Rozbalte položku **funkce**a pak vyberte **HttpTrigger1**.
 
-    ![Azure Deployment Manager Kontrola stavu funkce Azure functions](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
+    ![Azure Deployment Manager – funkce kontroly stavu Azure Functions](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
-1. Vyberte  **&lt;/ > získat adresu URL funkce**.
-1. Vyberte **kopírování** zkopírujte adresu URL do schránky.  Adresa URL je podobný:
+1. **Vyberte&lt;nebo > získat adresu URL funkce**.
+1. Výběrem **Kopírovat** zkopírujte adresu URL do schránky.  Adresa URL je podobná:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    Nahraďte `{healthStatus}` v adrese URL se stavovým kódem. V tomto kurzu pomocí **není v pořádku** k otestování tohoto scénáře není v pořádku a použijte kterýkoli **v pořádku** nebo **upozornění** k otestování tohoto scénáře jsou v pořádku. Vytvořte dvě adresy URL. jednu se stavem není v pořádku a druhý se stavem v pořádku. Příklady:
+    Nahraďte `{healthStatus}` v adrese URL stavovým kódem. V tomto kurzu pomocí není v **pořádku** otestujete scénář, ve kterém není v pořádku, a vyzkoušíte dobrý scénář pomocí **pořádku** nebo **Upozornění** . Vytvořte dvě adresy URL, jeden se stavem není v pořádku a druhý s dobrým stavem. Příklady:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/unhealthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/healthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    Obě adresy URL k dokončení tohoto kurzu potřebujete.
+    K dokončení tohoto kurzu potřebujete obě adresy URL.
 
-1. K otestování monitorování stavu simulátoru, otevřete adresy URL, které jste vytvořili v předchozím kroku.  Výsledky pro stav není v pořádku, musí být podobně jako:
+1. Chcete-li otestovat simulátor monitorování stavu, otevřete adresy URL, které jste vytvořili v posledním kroku.  Výsledky pro stav není v pořádku budou vypadat přibližně takto:
 
     ```
     Status: unhealthy
     ```
 
-## <a name="revise-the-rollout-template"></a>Revidovat šablona uvedení
+## <a name="revise-the-rollout-template"></a>Revidovat šablonu zavedení
 
-Účelem této části je ukazují, jak mají být zahrnuty šablony zavedení kroku kontroly stavu. Není nutné vytvořit vlastní soubor CreateADMRollout.json k dokončení tohoto kurzu. Šablona revidované uvedení je sdílena v účtu úložiště, který se používá v dalších částech.
+Účelem této části je Ukázat, jak zahrnout do šablony zavedení krok kontroly stavu. K dokončení tohoto kurzu nemusíte vytvářet vlastní soubor CreateADMRollout. JSON. Šablona revidovaného zavedení se sdílí v účtu úložiště, který se používá v následujících oddílech.
 
-1. Open **CreateADMRollout.json**. Tento soubor JSON je součástí souboru ke stažení.  Viz [Požadavky](#prerequisites).
-1. Přidejte další dva parametry:
+1. Otevřete **CreateADMRollout. JSON**. Tento soubor JSON je součástí stahování.  Viz [Požadavky](#prerequisites).
+1. Přidejte dva další parametry:
 
     ```json
     "healthCheckUrl": {
@@ -127,7 +127,7 @@ Ověřit a otestovat funkce Azure Functions:
     }
     ```
 
-1. Nahraďte definici prostředků čekání krok s definicí prostředků kroku kontroly stavu:
+1. Nahraďte definici prostředků kroku čekání pomocí definice prostředku kroku kontroly stavu:
 
     ```json
     {
@@ -176,9 +176,9 @@ Ověřit a otestovat funkce Azure Functions:
     },
     ```
 
-    Na základě definice, uvedení pokračuje, pokud stav není buď *v pořádku* nebo *upozornění*.
+    V závislosti na definici pokračuje zavedení, pokud je stav buď *v pořádku* , nebo v *Upozornění*.
 
-1. Aktualizace **dependsON** definice zavedení k zahrnutí kroku kontrola nově definované stavu:
+1. Aktualizujte **dependsON** definice zavedení tak, aby zahrnovala nově definovaný krok kontroly stavu:
 
     ```json
     "dependsOn": [
@@ -187,7 +187,7 @@ Ověřit a otestovat funkce Azure Functions:
     ],
     ```
 
-1. Aktualizace **stepGroups** k zahrnutí kroku kontroly stavu. **HealthCheckStep** je volána **postDeploymentSteps** z **stepGroup2**. **stepGroup3** a **stepGroup4** nasazených pouze pokud je v pořádku stav buď *v pořádku* nebo *upozornění*.
+1. Aktualizujte **stepGroups** tak, aby zahrnoval krok kontroly stavu. **HealthCheckStep** se volá v **postDeploymentSteps** of **stepGroup2**. **stepGroup3** a **stepGroup4** se nasazují jenom v případě, že je stav v pořádku buď *v pořádku* , nebo v *Upozornění*.
 
     ```json
     "stepGroups": [
@@ -225,20 +225,20 @@ Ověřit a otestovat funkce Azure Functions:
     ]
     ```
 
-    Pokud srovnáte **stepGroup3** části před a po je revidován, tato část nyní závisí na **stepGroup2**.  To je nezbytné, kdy **stepGroup3** a následném kroku skupiny závisí na výsledcích monitorování stavu.
+    Pokud porovnáte část **stepGroup3** před a poté, co je revidována, Tato část je teď závislá na **stepGroup2**.  To je nezbytné v případě, že **stepGroup3** a další skupiny kroků závisejí na výsledcích monitorování stavu.
 
-    Následující snímek obrazovky ukazuje upravit oblasti a použití kroku kontroly stavu:
+    Na následujícím snímku obrazovky vidíte upravované oblasti a postup, jak se používá krok kontroly stavu:
 
-    ![Šablony Azure kontroly stavu Deployment Manager](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-rollout-template.png)
+    ![Šablona kontroly stavu služby Azure Deployment Manager](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-rollout-template.png)
 
-## <a name="deploy-the-topology"></a>Topologie nasazení
+## <a name="deploy-the-topology"></a>Nasazení topologie
 
-Pro zjednodušení tento kurz, topologie šablon a artefaktů jsou sdíleny v následujících umístěních tak, že není nutné připravit své vlastní kopie. Pokud chcete použít vlastní, postupujte podle pokynů v [kurzu: Pomocí Správce nasazení Azure pomocí šablon Resource Manageru](./deployment-manager-tutorial.md).
+Pro zjednodušení tohoto kurzu se šablona topologie a artefakty sdílejí v následujících umístěních, takže nemusíte připravovat svoji vlastní kopii. Pokud chcete použít vlastní, postupujte podle pokynů v [kurzu: Použijte Azure Deployment Manager se šablonami](./deployment-manager-tutorial.md)správce prostředků.
 
-* Šablona topologie: https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
-* Úložiště artefaktů: https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
+* Šablona topologie: \ https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
+* Úložiště artefaktů: \ https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
 
-Pokud chcete nasadit topologii, vyberte **vyzkoušet** otevřete Cloud shell a vložte skript prostředí PowerShell.
+Pokud chcete topologii nasadit, vyberte **vyzkoušet** a otevřete Cloud Shell a pak vložte powershellový skript.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
@@ -261,14 +261,14 @@ Pomocí webu Azure Portal ověřte úspěšné vytvoření topologie služby a p
 
 Políčko **Zobrazit skryté typy** musí být zaškrtnuté, aby se prostředky zobrazily.
 
-## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>Nasazení tohoto uvedení se stavem není v pořádku
+## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>Nasazení zavedení do stavu není v pořádku
 
-Pro zjednodušení tento kurz, je sdílen šablona revidované uvedení v následujících umístěních tak, že není nutné připravit své vlastní kopie. Pokud chcete použít vlastní, postupujte podle pokynů v [kurzu: Pomocí Správce nasazení Azure pomocí šablon Resource Manageru](./deployment-manager-tutorial.md).
+Pro zjednodušení tohoto kurzu se revidovaná Šablona zavedení sdílí v následujících umístěních, takže nemusíte připravovat svoji vlastní kopii. Pokud chcete použít vlastní, postupujte podle pokynů v [kurzu: Použijte Azure Deployment Manager se šablonami](./deployment-manager-tutorial.md)správce prostředků.
 
-* Šablona topologie: https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
-* Úložiště artefaktů: https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
+* Šablona topologie: \ https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
+* Úložiště artefaktů: \ https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
 
-Použijte adresu URL není v pořádku stav, kterou jste vytvořili v [vytvořit simulátor služby stavu zaškrtnutí](#create-a-health-check-service-simulator). Pro **managedIdentityID**, naleznete v tématu [vytvoření uživatelsky přiřazené spravovanou identitu](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity).
+Použijte adresu URL stavu není v pořádku, kterou jste vytvořili v části [Vytvoření simulátoru služby kontroly stavu](#create-a-health-check-service-simulator). **ManagedIdentityID**najdete v tématu [Vytvoření spravované identity přiřazené uživatelem](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
@@ -294,9 +294,9 @@ New-AzResourceGroupDeployment `
 ```
 
 > [!NOTE]
-> `New-AzResourceGroupDeployment` je asynchronní volání. Úspěch zprávy pouze znamená, že nasazení se úspěšně spustila. Pokud chcete ověřit nasazení, použijte `Get-AZDeploymentManagerRollout`.  Viz následující postup.
+> `New-AzResourceGroupDeployment`je asynchronní volání. Zpráva o úspěchu pouze znamená, že nasazení bylo úspěšně zahájeno. Chcete-li ověřit nasazení, `Get-AZDeploymentManagerRollout`použijte.  Podívejte se na další postup.
 
-Chcete-li zkontrolovat průběh zavedení pomocí následujícího skriptu prostředí PowerShell:
+Postup kontroly zavedení pomocí následujícího skriptu prostředí PowerShell:
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
@@ -310,7 +310,7 @@ Get-AzDeploymentManagerRollout `
     -Verbose
 ```
 
-Následující ukázkový výstup ukazuje nasazení se nezdařilo z důvodu není v pořádku, stav:
+Následující vzorový výstup ukazuje, že nasazení nebylo úspěšné, protože stav není v pořádku:
 
 ```output
 Service: myhc0417ServiceWUSrg
@@ -369,11 +369,11 @@ Id                      : /subscriptions/<Subscription ID>/resourcegroups/myhc04
 Tags                    :
 ```
 
-Po dokončení tohoto uvedení se zobrazit jedna skupina dalších prostředků vytvořené pro oblast západní USA.
+Po dokončení zavedení se zobrazí jedna další skupina prostředků vytvořená pro Západní USA.
 
-## <a name="deploy-the-rollout-with-the-healthy-status"></a>Nasazení tohoto uvedení se stavem v pořádku
+## <a name="deploy-the-rollout-with-the-healthy-status"></a>Nasazení zavedení se stavem v pořádku
 
-Opakování této části se znovu nasadit zavedení s adresou URL stav v pořádku.  Po dokončení tohoto uvedení zobrazí jeden další skupiny prostředků vytvořené v oblasti východní USA.
+Zopakováním této části znovu nasaďte zavedení do stavové adresy URL stavu v pořádku.  Po dokončení zavedení se zobrazí jedna skupina prostředků vytvořená pro Východní USA.
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
@@ -396,6 +396,6 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 5. Zopakujte poslední dva kroky a odstraňte ostatní skupiny prostředků vytvořené v rámci tohoto kurzu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak používat funkce kontroly stavu Správce nasazení Azure. Další informace najdete v [dokumentaci k Azure Resource Manageru](/azure/azure-resource-manager/).
+V tomto kurzu jste zjistili, jak používat funkci kontroly stavu služby Azure Deployment Manager. Další informace najdete v [dokumentaci k Azure Resource Manageru](/azure/azure-resource-manager/).

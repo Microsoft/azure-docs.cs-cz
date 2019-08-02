@@ -1,64 +1,62 @@
 ---
-title: 'Rychlý start: Volání službě Text Analytics pomocí sady Python SDK'
+title: 'Rychlý start: Volání služby Analýza textu pomocí sady Python SDK'
 titleSuffix: Azure Cognitive Services
-description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
+description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít s používáním rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: ctufts
 manager: assafi
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 03/28/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: b319abf22f9aa4cdd9a5fef91be0628672d47bd4
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 82f0313a237358fcaa1ae52e92821abef2b52af7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297782"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697317"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>Rychlý start: Volání službě Text Analytics pomocí sady Python SDK 
+# <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>Rychlý start: Volání služby Analýza textu pomocí sady Python SDK 
 <a name="HOLTop"></a>
 
-V tomto rychlém startu můžete začít analýzou jazyce s využitím sada Text Analytics SDK pro Python. REST API pro analýzu textu je kompatibilní s Většina programovacích jazyků, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu bez serializaci a deserializaci JSON. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py).
+Pomocí tohoto rychlého startu můžete začít s analýzou jazyka s Analýza textu SDK pro Python. I když je REST API Analýza textu kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací bez serializace a deserializace JSON. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py)
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Python 3.x](https://www.python.org/)
 
-* Rozhraní Text Analytics [sady SDK pro python](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) můžete nainstalovat balíček pomocí:
+* [Sada SDK analýza textu pro Python](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) můžete nainstalovat balíček pomocí nástroje:
 
     `pip install --upgrade azure-cognitiveservices-language-textanalytics`
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Je také nutné mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) , které byly vygenerovány pro vás během registrace.
-
 ## <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
 
-Vytvoření nové aplikace v Pythonu v oblíbeném editoru nebo prostředí IDE. Pak přidejte následující příkazy pro import do souboru.
+Vytvořte novou aplikaci v Pythonu v oblíbených editorech nebo v integrovaném vývojovém prostředí. Pak přidejte do souboru následující příkazy pro import.
 
 ```python
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
 ```
 
-## <a name="authenticate-your-credentials"></a>Ověření vašich pověření
+## <a name="authenticate-your-credentials"></a>Ověření přihlašovacích údajů
 
 > [!Tip]
-> Pro zabezpečené nasazení tajných kódů v produkční systémy doporučujeme použít [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net).
+> Pro zabezpečené nasazení tajných kódů v produkčních systémech doporučujeme použít [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net).
 >
 
-Po provedení proměnnou pro váš klíč předplatného pro analýzu textu, vytvořit instanci `CognitiveServicesCredentials` objektu s ním.
+Po vytvoření proměnné pro klíč předplatného analýza textu vytvořte instanci `CognitiveServicesCredentials` objektu.
 
 ```python
 subscription_key = "enter-your-key-here"
 credentials = CognitiveServicesCredentials(subscription_key)
 ```
 
-## <a name="create-a-text-analytics-client"></a>Vytvoření klienta pro analýzu textu
+## <a name="create-a-text-analytics-client"></a>Vytvoření klienta Analýza textu
 
-Vytvořte nový `TextAnalyticsClient` objekt s `credentials` a `text_analytics_url` jako parametr. Použijte správný oblast Azure pro vaše předplatné pro analýzu textu (například `westcentralus`).
+Vytvořte nový `TextAnalyticsClient` objekt s `credentials` parametrem `text_analytics_url` a. Použijte pro předplatné Analýza textu správnou oblast Azure (například `westcentralus`).
 
 ```
 text_analytics_url = "https://westcentralus.api.cognitive.microsoft.com/"
@@ -67,39 +65,40 @@ text_analytics = TextAnalyticsClient(endpoint=text_analytics_url, credentials=cr
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-Datová část rozhraní API se skládá ze seznamu `documents`, které jsou slovníky obsahující `id` a `text` atribut. `text` Text, který má být analyzován, úložišť atributů a `id` může být libovolná hodnota. 
+Datová část pro rozhraní API se skládá ze seznamu `documents`, který je slovníky `id` obsahující `text` atributy a. Atribut ukládá text, který má být analyzován, `id` a může být libovolná hodnota. `text` 
 
 ```python
 documents = [
-  {
-    "id": "1", 
-    "language": "en", 
-    "text": "I had the best day of my life."
-  },
-  {
-    "id": "2", 
-    "language": "en", 
-    "text": "This was a waste of my time. The speaker put me to sleep."
-  },  
-  {
-    "id": "3", 
-    "language": "es", 
-    "text": "No tengo dinero ni nada que dar..."
-  },  
-  {
-    "id": "4", 
-    "language": "it", 
-    "text": "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
-  }
+    {
+        "id": "1",
+        "language": "en",
+        "text": "I had the best day of my life."
+    },
+    {
+        "id": "2",
+        "language": "en",
+        "text": "This was a waste of my time. The speaker put me to sleep."
+    },
+    {
+        "id": "3",
+        "language": "es",
+        "text": "No tengo dinero ni nada que dar..."
+    },
+    {
+        "id": "4",
+        "language": "it",
+        "text": "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
+    }
 ]
 ```
 
-Volání `sentiment()` fungovat a získat výsledek. Potom iterování přes výsledky a tisknout ID každé dokumentu a skóre mínění. Skóre blíže 0 znamená negativní zabarvení, zatímco skóre blíže 1 označuje pozitivní mínění.
+`sentiment()` Zavolejte funkci a získejte výsledek. Potom Iterujte výsledky a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
 
 ```python
 response = text_analytics.sentiment(documents=documents)
 for document in response.documents:
-     print("Document Id: ", document.id, ", Sentiment Score: ", "{:.2f}".format(document.score))
+    print("Document Id: ", document.id, ", Sentiment Score: ",
+          "{:.2f}".format(document.score))
 ```
 
 ### <a name="output"></a>Výstup
@@ -111,33 +110,34 @@ Document Id:  3 , Sentiment Score:  0.44
 Document Id:  4 , Sentiment Score:  1.00
 ```
 
-## <a name="language-detection"></a>Detekce jazyka
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
-Vytvoří seznam adresářů, každý obsahuje dokument, který chcete analyzovat. `text` Text, který má být analyzován, úložišť atributů a `id` může být libovolná hodnota. 
+Vytvořte seznam slovníků, z nichž každý obsahuje dokument, který chcete analyzovat. Atribut ukládá text, který má být analyzován, `id` a může být libovolná hodnota. `text` 
 
 ```python
 documents = [
-    { 
-        'id': '1', 
-        'text': 'This is a document written in English.' 
+    {
+        'id': '1',
+        'text': 'This is a document written in English.'
     },
     {
-        'id': '2', 
-        'text': 'Este es un document escrito en Español.' 
+        'id': '2',
+        'text': 'Este es un document escrito en Español.'
     },
-    { 
-        'id': '3', 
-        'text': '这是一个用中文写的文件' 
+    {
+        'id': '3',
+        'text': '这是一个用中文写的文件'
     }
 ]
-``` 
+```
 
-Pomocí klienta vytvořili dříve, volání `detect_language()` a získat výsledek. Pak iterování přes výsledky a tisknout ID každé dokumentu a první vrácené jazyk.
+Pomocí dříve vytvořeného klienta volejte `detect_language()` a získejte výsledek. Pak projdete výsledky a vytiskněte ID každého dokumentu a první vrácený jazyk.
 
 ```python
 response = text_analytics.detect_language(documents=documents)
 for document in response.documents:
-    print("Document Id: ", document.id , ", Language: ", document.detected_languages[0].name)
+    print("Document Id: ", document.id, ", Language: ",
+          document.detected_languages[0].name)
 ```
 
 ### <a name="output"></a>Výstup
@@ -150,25 +150,25 @@ Document Id:  3 , Language:  Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Rozpoznávání entit
 
-Vytvořit seznam adresářů, která bude obsahovat dokumenty, které chcete analyzovat. `text` Text, který má být analyzován, úložišť atributů a `id` může být libovolná hodnota. 
+Vytvořte seznam slovníků obsahující dokumenty, které chcete analyzovat. Atribut ukládá text, který má být analyzován, `id` a může být libovolná hodnota. `text` 
 
 
 ```python
 documents = [
     {
         "id": "1",
-        "language": "en", 
+        "language": "en",
         "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."
     },
     {
         "id": "2",
-        "language": "es", 
+        "language": "es",
         "text": "La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle."
     }
 ]
 ```
 
-Pomocí klienta vytvořili dříve, volání `entities()` fungovat a získat výsledek. Potom iterování přes výsledky a tisknout ID každé dokumentu a entity jsou v něm obsažené.
+Pomocí dříve vytvořeného klienta volejte `entities()` funkci a získejte výsledek. Pak Projděte výsledky a vytiskněte ID každého dokumentu a entity, které jsou v něm obsažené.
 
 ```python
 response = text_analytics.entities(documents=documents)
@@ -177,7 +177,8 @@ for document in response.documents:
     print("Document Id: ", document.id)
     print("\tKey Entities:")
     for entity in document.entities:
-        print("\t\t", "NAME: ",entity.name, "\tType: ", entity.type, "\tSub-type: ", entity.sub_type)
+        print("\t\t", "NAME: ", entity.name, "\tType: ",
+              entity.type, "\tSub-type: ", entity.sub_type)
         for match in entity.matches:
             print("\t\t\tOffset: ", match.offset, "\tLength: ", match.length, "\tScore: ",
                   "{:.2f}".format(match.entity_type_score))
@@ -217,35 +218,35 @@ Document Id:  2
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
-Vytvořit seznam adresářů, která bude obsahovat dokumenty, které chcete analyzovat. `text` Text, který má být analyzován, úložišť atributů a `id` může být libovolná hodnota. 
+Vytvořte seznam slovníků obsahující dokumenty, které chcete analyzovat. Atribut ukládá text, který má být analyzován, `id` a může být libovolná hodnota. `text` 
 
 
 ```python
 documents = [
     {
-        "id": "1", 
-        "language": "ja", 
+        "id": "1",
+        "language": "ja",
         "text": "猫は幸せ"
     },
     {
-        "id": "2", 
-        "language": "de", 
+        "id": "2",
+        "language": "de",
         "text": "Fahrt nach Stuttgart und dann zum Hotel zu Fu."
     },
     {
-        "id": "3", 
+        "id": "3",
         "language": "en",
         "text": "My cat might need to see a veterinarian."
     },
     {
-        "id": "4", 
-        "language": "es", 
+        "id": "4",
+        "language": "es",
         "text": "A mi me encanta el fútbol!"
     }
 ]
 ```
 
-Pomocí klienta vytvořili dříve, volání `key_phrases()` fungovat a získat výsledek. Potom iterování přes výsledky a tisknout ID každé dokumentu a klíčové fráze, které jsou v něm obsažené.
+Pomocí dříve vytvořeného klienta volejte `key_phrases()` funkci a získejte výsledek. Pak Projděte výsledky a vytiskněte ID každého dokumentu a klíčové fráze, které jsou v něm obsažené.
 
 ```python
 response = text_analytics.key_phrases(documents=documents)
@@ -254,7 +255,7 @@ for document in response.documents:
     print("Document Id: ", document.id)
     print("\tKey Phrases:")
     for phrase in document.key_phrases:
-        print("\t\t",phrase)
+        print("\t\t", phrase)
 ```
 
 ### <a name="output"></a>Výstup
@@ -283,8 +284,8 @@ Document Id:  4
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-* [Co je API pro analýzu textu?](../overview.md)
-* [Ukázkové uživatelské scénáře](../text-analytics-user-scenarios.md)
+* [Co je rozhraní API pro analýzu textu?](../overview.md)
+* [Příklady scénářů uživatelů](../text-analytics-user-scenarios.md)
 * [Nejčastější dotazy](../text-analytics-resource-faq.md)

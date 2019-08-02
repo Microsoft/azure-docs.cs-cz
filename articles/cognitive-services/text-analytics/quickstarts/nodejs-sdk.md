@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití Node.js k volání rozhraní Text Analytics API'
+title: 'Rychlý start: Použití Node. js k volání rozhraní API pro analýzu textu'
 titleSuffix: Azure Cognitive Services
 description: Získejte informace a vzorové kódy, které vám pomůžou rychle začít používat rozhraní API pro analýzu textu.
 services: cognitive-services
@@ -8,55 +8,55 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/11/2019
+ms.date: 07/30/2019
 ms.author: shthowse
-ms.openlocfilehash: 7e43d53c0916cf7fdc684c9e044e632015662c3b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9b8a713d58d5753e04de050e0bc961b5e8388123
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081516"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697482"
 ---
-# <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Node.js k volání Text Analytics služby Cognitive Services
+# <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Node. js k volání služby pro rozpoznávání Analýza textu
 <a name="HOLTop"></a>
 
-V tomto rychlém startu můžete začít analýzou jazyce s využitím sada Text Analytics SDK pro Node.js. Zatímco [rozhraní Text Analytics](//go.microsoft.com/fwlink/?LinkID=759711) rozhraní REST API je kompatibilní s Většina programovacích jazyků, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js).
+Pomocí tohoto rychlého startu můžete začít s analýzou jazyka s Analýza textu SDK pro Node. js. I když je REST API [Analýza textu](//go.microsoft.com/fwlink/?LinkID=759711) kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js)
 
 Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org/)
-* Rozhraní Text Analytics [SDK pro Node.js](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) můžete nainstalovat sadu SDK s:
+* Sada SDK Analýza textu [pro Node. js](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) : sadu SDK můžete nainstalovat pomocí nástroje:
 
     `npm install azure-cognitiveservices-textanalytics`
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Dále musíte mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) vygenerovaný během registrace.
+Dále musíte mít [koncový bod a přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) vygenerovaný během registrace.
 
-## <a name="create-a-nodejs-application-and-install-the-sdk"></a>Vytvoření aplikace v Node.js a instalace sady SDK
+## <a name="create-a-nodejs-application-and-install-the-sdk"></a>Vytvoření aplikace Node. js a instalace sady SDK
 
-Po instalaci Node.js, vytvořte projekt uzlu. Vytvořte nový adresář pro vaši aplikaci a přejděte do adresáře.
+Po instalaci Node. js vytvořte projekt Node. Vytvořte pro svou aplikaci nový adresář a přejděte do jeho adresáře.
 
 ```mkdir myapp && cd myapp```
 
-Spustit ```npm init``` k vytvoření aplikace v Ruby s soubor package.json. Nainstalujte `ms-rest-azure` a `azure-cognitiveservices-textanalytics` balíčky NPM:
+Spusťte ```npm init``` pro vytvoření aplikace uzlu se souborem Package. JSON. Nainstalujte balíčky `azure-cognitiveservices-textanalytics`anpm: `ms-rest-azure`
 
 ```npm install azure-cognitiveservices-textanalytics ms-rest-azure```
 
-Soubor package.json vaší aplikace se aktualizují se závislostmi.
+Soubor Package. JSON vaší aplikace se bude aktualizovat o závislosti.
 
-## <a name="authenticate-your-credentials"></a>Ověření vašich pověření
+## <a name="authenticate-your-credentials"></a>Ověření přihlašovacích údajů
 
-Vytvořte nový soubor `index.js` v projektu kořenové a importovat nainstalované knihovny
+Vytvoří nový soubor `index.js` v kořenovém adresáři projektu a naimportuje nainstalované knihovny.
 
 ```javascript
 const CognitiveServicesCredentials = require("ms-rest-azure").CognitiveServicesCredentials;
 const TextAnalyticsAPIClient = require("azure-cognitiveservices-textanalytics");
 ```
 
-Vytvořte proměnnou pro váš klíč předplatného pro analýzu textu.
+Vytvořte proměnnou pro klíč předplatného Analýza textu.
 
 ```javascript
 let credentials = new CognitiveServicesCredentials(
@@ -65,12 +65,12 @@ let credentials = new CognitiveServicesCredentials(
 ```
 
 > [!Tip]
-> Pro zabezpečené nasazení tajných kódů v produkční systémy doporučujeme použít [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net).
+> Pro zabezpečené nasazení tajných kódů v produkčních systémech doporučujeme použít [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net).
 >
 
-## <a name="create-a-text-analytics-client"></a>Vytvoření klienta pro analýzu textu
+## <a name="create-a-text-analytics-client"></a>Vytvoření klienta Analýza textu
 
-Vytvořte nový `TextAnalyticsClient` objekt s `credentials` jako parametr. Použijte správný oblast Azure pro vaše předplatné pro analýzu textu.
+Vytvoří nový `TextAnalyticsClient` objekt s `credentials` parametrem. Použijte pro předplatné Analýza textu správnou oblast Azure.
 
 ```javascript
 //Replace 'westus' with the correct region for your Text Analytics subscription
@@ -82,7 +82,7 @@ let client = new TextAnalyticsAPIClient(
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-Vytvoří seznam objektů, která bude obsahovat dokumenty, které chcete analyzovat. Datová část rozhraní API se skládá ze seznamu `documents`, které obsahují `id`, `language`, a `text` atribut. `text` Text, který má být analyzován, úložišť atributů `language` je jazyk dokumentu a `id` může být libovolná hodnota. 
+Vytvořte seznam objektů obsahující dokumenty, které chcete analyzovat. Datová část do rozhraní API se `documents`skládá ze seznamu, který `id`obsahuje atribut, `language`a `text` . Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. `text` 
 
 ```javascript
 const inputDocuments = {documents:[
@@ -93,7 +93,7 @@ const inputDocuments = {documents:[
 ]}
 ```
 
-Volání `client.sentiment` a získat výsledek. Potom iterování přes výsledky a tisknout ID každé dokumentu a skóre mínění. Skóre blíže 0 znamená negativní zabarvení, zatímco skóre blíže 1 označuje pozitivní mínění.
+Zavolejte `client.sentiment` a získejte výsledek. Potom Iterujte výsledky a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
 
 ```javascript
 const operation = client.sentiment({multiLanguageBatchInput: inputDocuments})
@@ -106,7 +106,7 @@ operation
 });
 ```
 
-Spuštění kódu pomocí `node index.js` v okně konzoly.
+Spusťte kód `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -117,9 +117,9 @@ Spuštění kódu pomocí `node index.js` v okně konzoly.
   { id: '4', score: 1 } ]
 ```
 
-## <a name="language-detection"></a>Detekce jazyka
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
-Vytvoření seznamu objekty, které obsahují vaše dokumenty. Datová část rozhraní API se skládá ze seznamu `documents`, které obsahují `id` a `text` atribut. `text` Text, který má být analyzován, úložišť atributů a `id` může být libovolná hodnota.
+Vytvořte seznam objektů, které obsahují vaše dokumenty. Datová část do rozhraní API se skládá ze seznamu `documents`, který `id` obsahuje atribut a `text` . Atribut ukládá text, který má být analyzován, `id` a může být libovolná hodnota. `text`
 
 ```javascript
 // The documents to be submitted for language detection. The ID can be any value.
@@ -132,7 +132,7 @@ const inputDocuments = {
     };
 ```
 
-Volání `client.detectLanguage()` a získat výsledek. Pak iterování přes výsledky a tisknout ID každé dokumentu a první vrácené jazyk.
+Zavolejte `client.detectLanguage()` a získejte výsledek. Pak projdete výsledky a vytiskněte ID každého dokumentu a první vrácený jazyk.
 
 ```javascript
 const operation = client.detectLanguage({
@@ -152,7 +152,7 @@ operation
     });
 ```
 
-Spuštění kódu pomocí `node index.js` v okně konzoly.
+Spusťte kód `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -165,7 +165,7 @@ ID: 3 Language Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Rozpoznávání entit
 
-Vytvoří seznam objektů, obsahující vaše dokumenty. Datová část rozhraní API se skládá ze seznamu `documents`, které obsahují `id`, `language`, a `text` atribut. `text` Text, který má být analyzován, úložišť atributů `language` je jazyk dokumentu a `id` může být libovolná hodnota.
+Vytvořte seznam objektů, které obsahují vaše dokumenty. Datová část do rozhraní API se `documents`skládá ze seznamu, který `id`obsahuje atribut, `language`a `text` . Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. `text`
 
 ```javascript
 
@@ -177,7 +177,7 @@ Vytvoří seznam objektů, obsahující vaše dokumenty. Datová část rozhran�
 }
 ```
 
-Volání `client.entities()` a získat výsledek. Potom iterování přes výsledky a tisknout ID každé dokumentu. Pro každou zjištěnou entitu, vytisknout názvu wikipedia, typ a podtypů (pokud existuje) a také umístění původního textu.
+Zavolejte `client.entities()` a získejte výsledek. Pak Projděte výsledky a vytiskněte ID každého dokumentu. Pro každou zjištěnou entitu vytiskněte název Wikipedii, typ a dílčí typy (pokud existuje) a také umístění v původním textu.
 
 ```javascript
 const operation = client.entities({
@@ -200,7 +200,7 @@ operation
     });
 ```
 
-Spuštění kódu pomocí `node index.js` v okně konzoly.
+Spusťte kód `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -233,7 +233,7 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
-Vytvoří seznam objektů, obsahující vaše dokumenty. Datová část rozhraní API se skládá ze seznamu `documents`, které obsahují `id`, `language`, a `text` atribut. `text` Text, který má být analyzován, úložišť atributů `language` je jazyk dokumentu a `id` může být libovolná hodnota.
+Vytvořte seznam objektů, které obsahují vaše dokumenty. Datová část do rozhraní API se `documents`skládá ze seznamu, který `id`obsahuje atribut, `language`a `text` . Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. `text`
 
 ```javascript
     let inputLanguage = {
@@ -246,7 +246,7 @@ Vytvoří seznam objektů, obsahující vaše dokumenty. Datová část rozhran�
     };
 ```
 
-Volání `client.keyPhrases()` a získat výsledek. Pak iterování přes výsledky a tisknout ID každé dokumentu a všechny zjištěné klíčové fráze.
+Zavolejte `client.keyPhrases()` a získejte výsledek. Potom Iterujte výsledky a vytiskněte ID každého dokumentu a všechny zjištěné klíčové fráze.
 
 ```javascript
     let operation = client.keyPhrases({
@@ -261,7 +261,7 @@ Volání `client.keyPhrases()` a získat výsledek. Pak iterování přes výsle
     });
 ```
 
-Spuštění kódu pomocí `node index.js` v okně konzoly.
+Spusťte kód `node index.js` v okně konzoly.
 
 ### <a name="output"></a>Výstup
 
@@ -279,6 +279,6 @@ Spuštění kódu pomocí `node index.js` v okně konzoly.
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
- [Přehled analýzy textu](../overview.md) [– nejčastější dotazy (FAQ)](../text-analytics-resource-faq.md)
+ [Přehled Analýza textu](../overview.md) Nejčastější dotazy – Nejčastější [dotazy](../text-analytics-resource-faq.md)

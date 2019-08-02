@@ -1,7 +1,7 @@
 ---
-title: Nastavení vývojového prostředí Pythonu
+title: Nastavení vývojového prostředí v Pythonu
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak nakonfigurovat prostředí pro vývoj, při práci se službou Azure Machine Learning. V tomto článku se dozvíte, jak používat prostředí Conda, vytvořit konfigurační soubory a konfigurace serveru založené na cloudu Poznámkový blok, poznámkové bloky Jupyter, Azure Databricks, poznámkových bloků Azure, Integrovaná vývojová prostředí, editory kódu a virtuální počítač pro datové vědy.
+description: Naučte se konfigurovat vývojové prostředí při práci se službou Azure Machine Learning. V tomto článku se dozvíte, jak používat prostředí Conda, vytvářet konfigurační soubory a konfigurovat vlastní cloudový notebook Jupyter, poznámkové bloky, Azure Databricks, Azure Notebooks, IDEs, editory kódu a Data Science Virtual Machine.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -9,107 +9,105 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7be6c9eda6d0a70d929efe4c00f661eb67105820
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45b28b4d88c670a8b2ec34b93a342f06b80e02d7
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606424"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668478"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
-V tomto článku se dozvíte, jak nakonfigurovat vývojové prostředí pro práci se službou Azure Machine Learning. Služba Machine Learning je pro více platforem.
+V tomto článku se dozvíte, jak nakonfigurovat vývojové prostředí pro práci s Azure Machine Learning služby. Služba Azure Machine Learning je nezávislá platformy. Jediným z požadavků pro vaše vývojové prostředí je Python 3. Doporučuje se také izolované prostředí, jako je Anaconda nebo virtualenv.
 
-Jediným požadavkem pro vaše vývojové prostředí je Python 3, Anaconda (pro izolované prostředí) a konfigurační soubor, který obsahuje informace o pracovním prostoru Azure Machine Learning.
+Následující tabulka uvádí každé vývojové prostředí popsané v tomto článku spolu s odborníky a nevýhody.
 
-Tento článek se zaměřuje na tyto prostředí a nástroje:
+| Prostředí | V oblasti IT | Nevýhody |
+| --- | --- | --- |
+| [Cloudový virtuální počítač poznámkového bloku](#notebookvm) | Nejjednodušší způsob, jak začít. Celá sada SDK je už ve vašem VIRTUÁLNÍm počítači pracovního prostoru nainstalovaná a kurzy poznámkových bloků jsou předem naklonované a připravené ke spuštění. | Nedostatečná kontrola nad vývojovým prostředím a závislostmi. Dodatečné náklady vzniklé pro virtuální počítač Linux (virtuální počítač se dá zastavit, pokud se nepoužívá), aby se předešlo poplatkům. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
+| [Místní prostředí](#local) | Úplná kontrola nad vývojovým prostředím a závislostmi. Spusťte s libovolným nástrojem sestavení, prostředím nebo IDE dle vašeho výběru. | Začne trvat déle. Musí být nainstalované potřebné balíčky sady SDK a prostředí, pokud ho ještě nemáte, musí být nainstalované i v případě, že ho ještě nemáte. |
+| [Azure Databricks](#aml-databricks) | Ideální pro spouštění vysoce škálovatelných pracovních postupů strojového učení na škálované Apache Spark platformě. | Přehnaně důkladné se na experimentální strojové učení nebo experimenty s menším rozsahem a pracovní postupy. Dodatečné náklady vzniklé za Azure Databricks. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/databricks/). |
+| [Data Science Virtual Machine (DSVM)](#dsvm) | Podobně jako u cloudového poznámkového bloku (Python a SDK jsou předem nainstalované), ale mají předinstalované i další oblíbené datové vědy a nástroje pro strojové učení. Snadné škálování a kombinování s dalšími vlastními nástroji a pracovními postupy. | V porovnání s cloudovým VIRTUÁLNÍm počítačem poznámkového bloku se pomaleji Začínáme. |
+| [Azure Notebooks](#aznotebooks) | Špičková a špičková prostředí s využitím Pythonu a předem nainstalované sady SDK. | Ve srovnání s cloudovým virtuálním počítačem notebooků je k dispozici méně efektivní virtuální počítač. Izolované od pracovního prostoru a dalších prostředků. |
 
-* Vlastní [založené na cloudu poznámkového bloku virtuálního počítače](#notebookvm): Pomocí výpočetních prostředků v pracovní stanici můžete spouštět poznámkové bloky Jupyter. Je nejjednodušší způsob, jak začít, protože sada SDK Azure Machine Learning je už nainstalovaný.
+Tento článek také nabízí další tipy k používání následujících nástrojů:
 
-* [Virtuální počítač pro datové vědy (DSVM)](#dsvm): Předem nakonfigurované vývoje služby experimentování ve službě prostředí nebo v cloudu Azure, která je navržená pro datové vědy práce a mohou být nasazeny na procesoru pouze instance virtuálních počítačů nebo instancí založený na grafickém procesoru. Python 3, Conda, poznámkové bloky Jupyter a sady SDK Azure Machine Learning jsou již nainstalovány. Virtuální počítač se dodává s oblíbenými strojové učení a obsáhlý learning architektur, nástrojů a editory pro vývoj řešení strojového učení. To je pravděpodobně nejkompletnější vývojové prostředí pro strojové učení na platformě Azure.
+* [Jupyter poznámkové bloky](#jupyter): Pokud už Jupyter Notebook používáte, sada SDK obsahuje několik dalších doplňků, které byste měli nainstalovat.
 
-* [Poznámkový blok Jupyter](#jupyter): Pokud už používáte Poznámkový blok Jupyter, sady SDK má některé funkce, které byste měli nainstalovat.
-
-* [Visual Studio Code](#vscode): Pokud používáte Visual Studio Code, má některá užitečná rozšíření, které můžete nainstalovat.
-
-* [Azure Databricks](#aml-databricks): Oblíbené platformě pro analýzu dat, která je založená na Apache Sparku. Zjistěte, jak získat Azure Machine Learning SDK do vašeho clusteru tak, že můžete nasadit modely.
-
-* [Azure Notebooks](#aznotebooks): Poznámkové bloky Jupyter služba, která je hostovaná v cloudu Azure. Také snadný způsob, jak začít, protože sada SDK Azure Machine Learning je už nainstalovaný.  
-
-Pokud už máte prostředí Python 3, nebo chcete jenom základní kroky pro instalaci sady SDK, přečtěte si článek [místního počítače](#local) oddílu.
+* [Visual Studio Code](#vscode): Pokud používáte Visual Studio Code, má několik užitečných rozšíření, která můžete nainstalovat.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, najdete v článku [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md). Pracovní prostor je všechno, co potřebujete, abyste mohli začít s vlastním [server poznámkového bloku založené na cloudu](#notebookvm), [DSVM](#dsvm), [Azure Databricks](#aml-databricks), nebo [poznámkových bloků Azure](#aznotebooks).
+Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru služby Azure Machine Learning](setup-create-workspace.md). Pracovní prostor je vše, co potřebujete, abyste mohli začít s [](#notebookvm)vlastním cloudovým notebookem, [DSVM](#dsvm), [Azure Databricks](#aml-databricks)nebo [Azure Notebooks](#aznotebooks).
 
-Chcete-li nainstalovat prostředí sady SDK pro vaše [místního počítače](#local), [aplikace Jupyter Notebook server](#jupyter) nebo [Visual Studio Code](#vscode) budete také potřebovat:
+Pokud chcete nainstalovat prostředí SDK pro svůj [místní počítač](#local), [Jupyter Notebook Server](#jupyter) nebo [Visual Studio Code](#vscode) budete také potřebovat:
 
-- Buď [Anaconda](https://www.anaconda.com/download/) nebo [Miniconda](https://conda.io/miniconda.html) Správce balíčků.
+- Buď správce balíčků [Anaconda](https://www.anaconda.com/download/) nebo [Miniconda](https://conda.io/miniconda.html) .
 
-- V systému Linux nebo macOS budete potřebovat prostředí bash.
+- V systému Linux nebo macOS potřebujete prostředí bash.
 
     > [!TIP]
-    > Pokud jste v systému Linux nebo macOS a využívat prostředí, než je bash (například zsh) může dojít k chybám při spuštění některé příkazy. Chcete-li tento problém obejít, použijte `bash` příkaz ke spuštění nového prostředí bash a spusťte příkazy existuje.
+    > Pokud pracujete v systému Linux nebo macOS a používáte jiné prostředí než bash (například ZSH), může dojít k chybám při spuštění některých příkazů. Chcete-li tento problém obejít, použijte `bash` příkaz ke spuštění nového prostředí bash a spusťte příkazy existuje.
 
 - Na Windows musíte příkazový řádek nebo Anaconda řádek (nainstalovaných Anaconda a Miniconda).
 
-## <a id="notebookvm"></a>Vlastní cloudové poznámkového bloku virtuálního počítače
+## <a id="notebookvm"></a>Vlastní virtuální počítač s notebookem na bázi cloudu
 
-Virtuální počítač Poznámkový blok (Preview) je zabezpečený, založené na cloudu Azure pracovní stanici, která poskytuje datovým vědcům server poznámkového bloku Jupyter, JupyterLab a plně připravený ML prostředí. 
+Virtuální počítač s poznámkovým blokem (Preview) je zabezpečená cloudová pracovní stanice Azure, která poskytuje odborníky na data pomocí serveru Jupyter notebook, JupyterLab a plně připraveného prostředí ML.
 
-Poznámkový blok je virtuální počítač: 
+Virtuální počítač poznámkového bloku je:
 
-+ **Zabezpečení**. Od virtuálního počítače a notebooky přístup je zabezpečený pomocí protokolu HTTPS a Azure Active Directory ve výchozím nastavení, IT specialisté můžou snadno vynutit jednotného přihlašování a další funkce zabezpečení, jako je ověřování službou Multi-Factor Authentication.
++ **Zabezpečení**. Vzhledem k tomu, že je přístup k virtuálnímu počítači a poznámkovému bloku zabezpečený pomocí protokolu HTTPS a Azure Active Directory ve výchozím nastavení, můžou IT specialisté snadno vymáhat jednotné přihlašování a další funkce zabezpečení, jako je vícefaktorové ověřování.
 
-+ **Předkonfigurované**. Tato plně připravené prostředí Python ML nakreslí jeho potvrzení z oblíbených virtuálních počítačů IaaS datové vědy a zahrnuje:
-  + Azure ML sady Python SDK (nejnovější)
-  + Automatická konfigurace pro práci s pracovním prostorem
-  + Server poznámkového bloku Jupyter
-  + JupyterLab Poznámkový blok prostředí IDE
-  + Předkonfigurované ovladače GPU 
-  + Výběr architektury hloubkového učení
- 
++ **Předem nakonfigurovaná**. Toto plně připravené prostředí Python ML vykreslí svůj kmen z oblíbených IaaS Data Science VM a zahrnuje:
+  + Azure ML Python SDK (nejnovější)
+  + Automatická konfigurace pro práci s vaším pracovním prostorem
+  + Server Jupyter notebook
+  + IDE JupyterLab Poznámkový blok
+  + Předem nakonfigurované ovladače GPU
+  + Výběr architektur hloubkového učení
 
-  Pokud jste do kódu, virtuální počítač obsahuje kurzy a ukázky, které vám pomůžou prozkoumat a zjistěte, jak používat službu Azure Machine Learning. Ukázkové poznámkové bloky jsou uložené v účtu Azure Blob Storage z pracovního prostoru, díky kterým jsou ke sdílení napříč virtuálními počítači. Při spuštění také mají přístup k úložištím dat a výpočetní prostředky pracovního prostoru. 
 
-+ **Jednoduché nastavení**: Vytvořte si ho můžete kdykoli z v rámci pracovního prostoru Azure Machine Learning. Zadejte jenom název a určete typ virtuálního počítače Azure. Vyzkoušet teď s tímto [rychlý start: Začínáme s Azure Machine Learning pomocí serveru založené na cloudu Poznámkový blok](quickstart-run-cloud-notebook.md).
+  Pokud jste v kódu, obsahuje tento virtuální počítač kurzy a ukázky, které vám pomůžou prozkoumat a zjistit, jak používat službu Azure Machine Learning. Ukázkové poznámkové bloky se ukládají do účtu Azure Blob Storage ve vašem pracovním prostoru, aby je mohli sdílet napříč virtuálními počítači. Při spuštění mají také přístup k úložištím dat a výpočetním prostředkům vašeho pracovního prostoru.
 
-+ **Přizpůsobitelné**. Při spravovaného a zabezpečeného virtuálního počítače nabídky zachovat úplný přístup k funkcím hardwaru a upravit tak, aby vaše srdce přání. Rychle vytvořte například nejnovější NVidia V100 s využitím virtuálního počítače provádět podrobné ladění nové architektury Neuronové sítě.
++ **Jednoduché nastavení**: Vytvořte si ji kdykoli v pracovním prostoru Azure Machine Learning. Zadejte jenom název a zadejte typ virtuálního počítače Azure. Vyzkoušejte si to hned v [tomto rychlém startu: Začněte s Azure Machine Learning](quickstart-run-cloud-notebook.md)pomocí cloudového serveru poznámkového bloku.
 
-Chcete zastavit nabíhání poplatků za virtuální počítač Poznámkový blok, [zastavit virtuální počítač Poznámkový blok](quickstart-run-cloud-notebook.md#stop-the-notebook-vm). 
++ **Přizpůsobitelná**. I když máte spravovanou a zabezpečenou nabídku virtuálních počítačů, zachováte plný přístup k hardwarovým funkcím a přizpůsobíte ji na přání srdce. Můžete například rychle vytvořit nejnovější virtuální počítač s technologií NVidia V100 a provést tak podrobné ladění nové architektury sítě neuronové.
+
+Pokud chcete zastavit poplatky za virtuální počítač poznámkového bloku, zastavte [virtuální počítač pro notebook](quickstart-run-cloud-notebook.md#stop-the-notebook-vm).
 
 ## <a id="dsvm"></a>Virtuální počítač pro datové vědy
 
-Datové VĚDY je přizpůsobenou image virtuálního počítače (VM). Je navržen pro práci vědy data, která je předem nakonfigurovaným programem:
+DSVM je přizpůsobená image virtuálního počítače (VM). Je navržená pro práci v oblasti datové vědy, která je předem nakonfigurovaná:
 
-  - Balíčky, jako je TensorFlow, PyTorch, Scikit poučení, XGBoost a Azure Machine Learning SDK
-  - Oblíbenými datovými vědy nástrojů, jako je Spark samostatné a zotavení po havárii
-  - Nástroje Azure, jako je Azure CLI, AzCopy a Průzkumníka služby Storage
-  - Integrované vývojové prostředí (IDE), jako je Visual Studio Code a PyCharm
+  - Balíčky jako TensorFlow, PyTorch, Scikit-učení, XGBoost a sada SDK pro Azure Machine Learning
+  - Oblíbené nástroje pro datové vědy, jako je Spark Standalone a procházení
+  - Nástroje Azure, jako jsou Azure CLI, AzCopy a Průzkumník služby Storage
+  - Integrovaná vývojová prostředí (IDEs), například Visual Studio Code a PyCharm
   - Server poznámkového bloku Jupyter
 
-Azure Machine Learning SDK funguje na Ubuntu nebo Windows verzi datové VĚDY. Ale pokud máte v plánu používat jako cílové výpočetní prostředí a datové VĚDY, se podporuje jen Ubuntu.
+Sada SDK pro Azure Machine Learning funguje v DSVM ve verzi Ubuntu nebo Windows. Ale pokud plánujete používat DSVM jako cíl výpočtů, podporuje se jenom Ubuntu.
 
-Pokud chcete používat datové VĚDY jako vývojové prostředí, postupujte takto:
+Pokud chcete použít DSVM jako vývojové prostředí, udělejte toto:
 
-1. Vytvoření DSVM v některém z následujících prostředích:
+1. Vytvořte DSVM v jednom z následujících prostředí:
 
-    * Na webu Azure portal:
+    * Azure Portal:
 
-        * [Vytvoření virtuálního počítače se systémem Ubuntu datové vědy](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
+        * [Vytvoření Data Science Virtual Machine Ubuntu](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
 
-        * [Vytvoření virtuálního počítače Windows datové vědy](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm)
+        * [Vytvoření Data Science Virtual Machine Windows](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm)
 
-    * Azure CLI:
+    * Rozhraní příkazového řádku Azure:
 
         > [!IMPORTANT]
-        > * Pokud používáte rozhraní příkazového řádku Azure, musíte nejprve se přihlásit ke svému předplatnému Azure pomocí `az login` příkazu.
+        > * Když použijete rozhraní příkazového řádku Azure, musíte se nejdřív přihlásit k předplatnému Azure pomocí `az login` příkazu.
         >
-        > * Použijete-li příkazy v tomto kroku, je nutné zadat název skupiny prostředků, název virtuálního počítače, uživatelského jména a hesla.
+        > * Když použijete příkazy v tomto kroku, musíte zadat název skupiny prostředků, název virtuálního počítače, uživatelské jméno a heslo.
 
-        * Chcete-li vytvořit virtuální počítač Ubuntu datové vědy, použijte následující příkaz:
+        * Pokud chcete vytvořit Data Science Virtual Machine Ubuntu, použijte následující příkaz:
 
             ```azurecli
             # create a Ubuntu DSVM in your resource group
@@ -118,7 +116,7 @@ Pokud chcete používat datové VĚDY jako vývojové prostředí, postupujte ta
             az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:linux-data-science-vm-ubuntu:linuxdsvmubuntu:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --generate-ssh-keys --authentication-type password
             ```
 
-        * Chcete-li vytvořit virtuální počítač Windows datové vědy, použijte následující příkaz:
+        * Chcete-li vytvořit Data Science Virtual Machine Windows, použijte následující příkaz:
 
             ```azurecli
             # create a Windows Server 2016 DSVM in your resource group
@@ -126,7 +124,7 @@ Pokud chcete používat datové VĚDY jako vývojové prostředí, postupujte ta
             az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:dsvm-windows:server-2016:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --authentication-type password
             ```
 
-2. Sada SDK Azure Machine Learning je již nainstalována na datové VĚDY. Pokud chcete používat prostředí Conda, který obsahuje sadu SDK, použijte jednu z následujících příkazů:
+2. Sada Azure Machine Learning SDK je už na DSVM nainstalovaná. Pokud chcete používat prostředí Conda, který obsahuje sadu SDK, použijte jednu z následujících příkazů:
 
     * Pro Ubuntu DSVM:
 
@@ -147,74 +145,68 @@ Pokud chcete používat datové VĚDY jako vývojové prostředí, postupujte ta
     print(azureml.core.VERSION)
     ```
 
-1. Konfigurace datové VĚDY pro použití vašeho pracovního prostoru služby Azure Machine Learning, najdete v článku [vytvořit konfigurační soubor pracovního prostoru](#workspace) oddílu.
+1. Pokud chcete nakonfigurovat DSVM pro používání pracovního prostoru služby Azure Machine Learning, přečtěte si část [vytvoření konfiguračního souboru pracovního prostoru](#workspace) .
 
-Další informace najdete v tématu [virtuální počítače pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
+Další informace najdete v tématu [Virtual Machines pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
 ## <a id="local"></a>Místní počítač
 
-Při použití místního počítače (který může být také vzdálené virtuálního počítače), vytvořte Anaconda prostředí a nainstalujte sadu SDK následujícím způsobem:
+Pokud používáte místní počítač (který může být také vzdáleným virtuálním počítačem), vytvořte prostředí Anaconda a nainstalujte sadu SDK pomocí následujícího postupu:
 
-1. Stáhněte a nainstalujte [Anaconda](https://www.anaconda.com/distribution/#download-section) (verze Python 3.7) Pokud jste ho už nemáte.
+1. Stáhněte a nainstalujte [Anaconda](https://www.anaconda.com/distribution/#download-section) (verze Python 3,7), pokud ji ještě nemáte.
 
-1. Otevřít řádek Anaconda a vytvořit prostředí pomocí následujících příkazů:
+1. Otevřete příkazový řádek Anaconda a vytvořte prostředí pomocí následujících příkazů:
 
-    Spusťte následující příkaz k vytvoření prostředí.
+    Spuštěním následujícího příkazu vytvořte prostředí.
 
     ```shell
     conda create -n myenv python=3.6.5
     ```
 
-    Potom aktivujte prostředí.
+    Pak aktivujte prostředí.
 
     ```shell
     conda activate myenv
     ```
 
-    Tento příklad vytvoří prostředí, které používá python 3.6.5, ale je možné zvolit všechny konkrétní subversions. Kompatibilita sady SDK nemůže zaručit s některé hlavní verze (3.5 + je doporučeno) a doporučujeme vyzkoušet různé verze a podverze ve vašem prostředí Anaconda, pokud dojde k chybám. To bude trvat několik minut vytvořit prostředí, zatímco se stáhnou součásti a balíčky.
+    Tento příklad vytvoří prostředí pomocí Python 3.6.5, ale lze zvolit jakékoli konkrétní podverze. Kompatibilita sady SDK nemusí být zaručená u určitých hlavních verzí (doporučuje se 3,5 +) a při spuštění chyb se doporučuje vyzkoušet jinou verzi/podverzi v prostředí Anaconda. Vytvoření prostředí během stahování komponent a balíčků bude trvat několik minut.
 
-1. Spuštěním následujících příkazů v novém prostředí umožňující specifických pro prostředí ipython jádrech. Tím se zajistí, že očekávané jádra a balíčku importovat chování při práci s poznámkovými bloky Jupyter v rámci programu Anaconda prostředí:
+1. Spuštěním následujících příkazů v novém prostředí povolíte jádra IPython pro konkrétní prostředí. Tím se zajistí očekávané chování při importu jádra a balíčku při práci s poznámkovým blokům Jupyter v prostředích Anaconda:
 
     ```shell
     conda install notebook ipykernel
     ```
 
-    Pak spuštěním následujícího příkazu vytvořte jádra:
+    Pak spuštěním následujícího příkazu vytvořte jádro:
 
     ```shell
     ipython kernel install --user
     ```
 
-1. Pomocí následujících příkazů nainstalujte balíčky:
+1. K instalaci balíčků použijte následující příkazy:
 
-    Tento příkaz nainstaluje základní sadu SDK Azure Machine Learning pomocí poznámkového bloku a automl funkce. `automl` Velmi velké instalace je a může být odebrán z uvedených v závorkách, pokud se nechystáte automatizované strojovým učením. `automl` Navíc také obsahuje sadu SDK pro Azure Machine Learning Data Prep ve výchozím nastavení jako závislost.
+    Tento příkaz nainstaluje základní Azure Machine Learning SDK s poznámkovým blokem a automl. `automl` Extra je velká instalace a je možné ji odebrat z závorek, pokud nechcete spouštět automatizované experimenty strojového učení. `automl` Navíc zahrnuje také Azure Machine Learning sadu SDK pro přípravu dat jako závislost.
 
      ```shell
     pip install azureml-sdk[notebooks,automl]
     ```
 
-    Chcete-li nainstalovat sadu SDK pro Azure Machine Learning Data Prep sama o sobě, použijte tento příkaz:
-
-    ```shell
-    pip install azureml-dataprep
-    ```
-
    > [!NOTE]
-   > Pokud se zobrazí zpráva, že PyYAML nelze odinstalovat, použijte následující příkaz:
+   > Pokud se zobrazí zpráva, že PyYAML nelze odinstalovat, použijte místo toho následující příkaz:
    >
-   > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+   > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
 
-   To bude trvat několik minut nainstalovat sadu SDK. Zobrazit [Instalační příručka](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) pro další informace o možnostech instalace.
+   Instalace sady SDK bude trvat několik minut. Další informace o možnostech instalace najdete v [instalační příručce](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
 
-1. Instalace dalších balíčků pro strojového učení experimentování.
+1. Nainstalujte další balíčky pro experimentování ve službě Machine Learning.
 
-    Použijte kterýkoli z následujících příkazů a nahraďte  *\<nový balíček >* názvem balíčku, kterou chcete nainstalovat. Instalace balíčků prostřednictvím `conda install` vyžaduje, že balíček je součástí aktuální kanálů (nových kanálů můžete přidat v cloudu Anaconda).
+    Použijte některý z následujících příkazů a nahraďte  *\<> nového balíčku* balíčkem, který chcete nainstalovat. Instalace balíčků přes `conda install` vyžaduje, aby byl balíček součástí současných kanálů (nové kanály je možné přidat do Anaconda cloudu).
 
     ```shell
     conda install <new package>
     ```
 
-    Alternativně můžete nainstalovat balíčky prostřednictvím `pip`.
+    Alternativně můžete balíčky instalovat prostřednictvím `pip`nástroje.
 
     ```shell
     pip install <new package>
@@ -222,147 +214,154 @@ Při použití místního počítače (který může být také vzdálené virtu
 
 ### <a id="jupyter"></a>Poznámkové bloky Jupyter
 
-Poznámkové bloky Jupyter jsou součástí [Jupyter projektu](https://jupyter.org/). Poskytuje interaktivní prostředí pro psaní kódu ve kterém vytvoříte dokumenty, které kombinovat živého kódu s vyprávěného textu a grafiky. Poznámkové bloky Jupyter jsou také skvělý způsob, jak sdílet s ostatními, vaše výsledky, protože výstupní kód oddíly můžete uložit v dokumentu. Poznámkové bloky Jupyter můžete nainstalovat na různých platformách.
+Poznámkové bloky Jupyter jsou součástí [Jupyter projektu](https://jupyter.org/). Poskytuje interaktivní prostředí pro psaní kódu ve kterém vytvoříte dokumenty, které kombinovat živého kódu s vyprávěného textu a grafiky. Jupyter poznámkové bloky jsou také skvělým způsobem, jak sdílet výsledky s ostatními, protože výstup částí kódu v dokumentu můžete uložit. Poznámkové bloky Jupyter můžete nainstalovat na různých platformách.
 
-Podle postupu v [místního počítače](#local) části nainstaluje komponenty potřebné ke spuštění poznámkové bloky Jupyter v prostředí Anaconda. Pokud chcete povolit tyto komponenty ve vašem prostředí poznámkového bloku Jupyter, postupujte takto:
+Postup v části [místní počítač](#local) nainstaluje potřebné komponenty pro spouštění notebooků Jupyter v prostředí Anaconda. Pokud chcete povolit tyto součásti v prostředí Jupyter Notebook, udělejte toto:
 
-1. Otevřít řádek Anaconda a aktivovat vaše prostředí.
+1. Otevřete příkazový řádek Anaconda a aktivujte své prostředí.
 
     ```shell
     conda activate myenv
     ```
+    
+1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks) pro sadu ukázkových poznámkových bloků.
 
-1. Spusťte Poznámkový blok Jupyter server pomocí následujícího příkazu:
+    ```CLI
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+
+1. Spusťte Jupyter Notebook Server pomocí následujícího příkazu:
 
     ```shell
     jupyter notebook
     ```
 
-1. Pokud chcete ověřit, že sadu SDK můžete použít Poznámkový blok Jupyter, vytvořit **nový** Poznámkový blok, vyberte **Python 3** jako jádra a pak spusťte následující příkaz v buňce Poznámkový blok:
+1. Chcete-li ověřit, zda Jupyter Notebook může použít sadu SDK, vytvořte **Nový** Poznámkový blok, jako jádro vyberte **Python 3** a potom v buňce poznámkového bloku spusťte následující příkaz:
 
     ```python
     import azureml.core
     azureml.core.VERSION
     ```
 
-1. Pokud narazíte na problémy importu modulů a přijímat `ModuleNotFoundError`, zkontrolujte, že vaše jádra Jupyter je připojení na správnou cestu pro vaše prostředí spuštěním následujícího kódu do buňky poznámkového bloku.
+1. Pokud narazíte na problémy s importem modulů `ModuleNotFoundError`a přijmete, ujistěte se, že je váš Jupyter jádro připojený ke správné cestě pro vaše prostředí, a to spuštěním následujícího kódu v buňce poznámkového bloku.
 
     ```python
     import sys
     sys.path
     ```
+    
+1. Pokud chcete nakonfigurovat Jupyter Notebook, aby používala pracovní prostor služby Azure Machine Learning, přečtěte si část [vytvoření konfiguračního souboru pracovního prostoru](#workspace) .
 
-1. Chcete-li konfigurovat Poznámkový blok Jupyter pro použití vašeho pracovního prostoru služby Azure Machine Learning, přejděte na [vytvořit konfigurační soubor pracovního prostoru](#workspace) části.
 
 ### <a id="vscode"></a>Visual Studio Code
 
 Visual Studio Code je editor kódu napříč platformami. Spoléhá na místní Python 3 a Conda instalace podpory Pythonu, ale poskytuje dodatečné nástroje pro práci s umělou Inteligencí. Také poskytuje podporu pro výběr prostředí Conda z editoru kódu.
 
-Chcete-li použít Visual Studio Code pro vývoj, postupujte takto:
+Pokud chcete použít Visual Studio Code pro vývoj, udělejte toto:
 
-1. Zjistěte, jak používat Visual Studio Code pro vývoj v jazyce Python, najdete v článku [Začínáme s Pythonem v VSCode](https://code.visualstudio.com/docs/python/python-tutorial).
+1. Informace o tom, jak používat Visual Studio Code pro vývoj v Pythonu, najdete v tématu Začínáme [s Pythonem v VSCode](https://code.visualstudio.com/docs/python/python-tutorial).
 
-1. Pokud chcete vybrat prostředí Conda, otevřete VS Code a vyberte kombinaci kláves Ctrl + Shift + P (Linux a Windows) nebo příkaz + Shift + P (Mac).
-    __Příkaz palety__ otevře.
+1. Pokud chcete vybrat prostředí Conda, otevřete VS Code a pak vyberte CTRL + SHIFT + P (Linux a Windows) nebo Command + Shift + P (Mac).
+    __Paleta příkazu__ se otevře.
 
-1. Zadejte __Pythonu: Vyberte interpret__a pak vyberte prostředí Conda.
+1. Zadejte __Python: Vyberte Interpret__a pak vyberte prostředí conda.
 
-1. Pokud chcete ověřit, které můžete použít sady SDK, vytvořit a pak spusťte nový soubor Pythonu (.py), který obsahuje následující kód:
+1. Chcete-li ověřit, zda můžete použít sadu SDK, vytvořte a potom spusťte nový soubor Pythonu (. py), který obsahuje následující kód:
 
     ```python
     import azureml.core
     azureml.core.VERSION
     ```
 
-1. Instalaci rozšíření Azure Machine Learning pro Visual Studio Code najdete v tématu [Tools pro AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
+1. Pokud chcete nainstalovat rozšíření Azure Machine Learning pro Visual Studio Code, přečtěte si téma [Nástroje pro AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
 
-    Další informace najdete v tématu [pomocí Azure Machine Learning pro Visual Studio Code](how-to-vscode-tools.md).
+    Další informace najdete v tématu [použití Azure Machine Learning pro Visual Studio Code](how-to-vscode-tools.md).
 
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
-Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Poskytuje prostředí poznámkového bloku na základě spolupráci s clusterem výpočetní prostředky na základě CPU nebo GPU.
+Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Poskytuje prostředí založené na poznámkovém bloku s výpočetním clusterem založeným na procesoru nebo GPU.
 
-Jak funguje Azure Databricks se službou Azure Machine Learning:
-+ Můžete trénování modelu pomocí Spark MLlib a nasadit model s ACI a AKS z Azure databricks. 
-+ Můžete také použít [automatizované strojového učení](concept-automated-ml.md) možnosti ve speciální sadu SDK ML Azure s Azure Databricks.
-+ Azure Databricks můžete použít jako cílové výpočetní prostředí z [kanálu Azure Machine Learning](concept-ml-pipelines.md). 
+Jak Azure Databricks spolupracuje se službou Azure Machine Learning:
++ Model můžete vytvořit pomocí Spark MLlib a model nasadit do ACI/AKS v rámci Azure Databricks.
++ Automatické funkce strojového [učení](concept-automated-ml.md) můžete použít také ve speciální sadě SDK pro Azure ML s Azure Databricks.
++ Azure Databricks můžete použít jako cíl pro výpočetní prostředky z [kanálu Azure Machine Learning](concept-ml-pipelines.md).
 
-### <a name="set-up-your-databricks-cluster"></a>Nastavení clusteru Databricks
+### <a name="set-up-your-databricks-cluster"></a>Nastavení clusteru datacihly
 
-Vytvoření [Databricks pro cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Některá nastavení platí jenom v případě, že instalace sady SDK pro automatizované strojové učení v Databricks.
-**Bude trvat několik minut pro vytvoření clusteru.**
+Vytvořte [cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)datacihly. Některá nastavení platí jenom v případě, že nainstalujete sadu SDK pro automatizované Machine Learning na datacihly.
+**Vytvoření clusteru bude trvat několik minut.**
 
-Pomocí těchto nastavení:
+Použijte tato nastavení:
 
-| Nastavení |Platná pro| Hodnota |
+| Nastavení |Platná pro| Value |
 |----|---|---|
-| Název clusteru |Vždy| yourclustername |
-| Modul runtime Databricks |Vždy| Any non ML runtime (non ML 4.x, 5.x) |
-| Verze Pythonu |Vždy| 3 |
-| Pracovní procesy |Vždy| 2 nebo vyšší |
-| Typy virtuálních počítačů uzlů pracovního procesu <br>(určuje maximální počet souběžných iterací) |Automatizované strojové učení<br>Pouze| Optimalizované pro paměť virtuálního počítače upřednostňované |
-| Povolení automatického škálování |Automatizované strojové učení<br>Pouze| Zrušte zaškrtnutí políčka |
+| Název clusteru |vždy| yourclustername |
+| Modul runtime Databricks |vždy| Libovolný běhový modul bez ML (bez ML 4. x, 5. x) |
+| Verze Pythonu |vždy| 3 |
+| Pracovní procesy |vždy| 2 nebo vyšší |
+| Typy virtuálních počítačů uzlu pracovního procesu <br>(určuje maximální počet souběžných iterací) |Automatizované strojové učení<br>pouze| Preferovaný virtuální počítač pro optimalizaci paměti |
+| Povolení automatického škálování |Automatizované strojové učení<br>pouze| Zrušte zaškrtnutí políčka |
 
-Počkejte, než je cluster spuštěn, než budete pokračovat.
+Než budete pokračovat, počkejte, dokud cluster neběží.
 
-### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Nainstalujte správnou sadu SDK do knihovny Databricks
-Jakmile je cluster spuštěn, [vytvořit knihovnu](https://docs.databricks.com/user-guide/libraries.html#create-a-library) připojit odpovídající balíček sady SDK Azure Machine Learning k vašemu clusteru. 
+### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Nainstalujte správnou sadu SDK do knihovny datacihly.
+Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , která připojí příslušný balíček sady Azure Machine Learning SDK k vašemu clusteru.
 
-1. Zvolte **pouze jeden** možnost (žádné další instalace sady SDK jsou podporovány)
+1. Zvolit **jenom jednu** možnost (žádná jiná instalace sady SDK není podporovaná)
 
-   |Sada SDK&nbsp;balíčku&nbsp;funkce|source|PyPi&nbsp;název&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |Doplňky&nbsp;balíčku&nbsp;sady SDK|Source|Název&nbsp;PyPI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
-   |Pro Databricks| Nahrát Python Egg nebo PyPI | azureml-sdk[databricks]|
-   |Pro Databricks - with-<br> automatizované funkce ML| Nahrát Python Egg nebo PyPI | azureml-sdk[automl_databricks]|
+   |Pro datacihly| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [datacihly]|
+   |Pro datacihly – with-<br> Automatické možnosti ML| Nahrát vejce Pythonu nebo PyPI | azureml-sdk[automl_databricks]|
 
    > [!Warning]
-   > Je možné nainstalovat žádný další funkce sady SDK. Zvolte pouze jeden z předchozích možností [databricks] nebo [automl_databricks].
+   > Nelze nainstalovat žádné další doplňky sady SDK. Vyberte jenom jednu z předchozích možností [datacihly] nebo [automl_databricks].
 
-   * Nesmí být zvolen **automaticky připojí na všech clusterech**.
-   * Vyberte **připojit** vedle názvu vašeho clusteru.
+   * Nevybírejte možnost **Připojit automaticky ke všem clusterům**.
+   * Vedle názvu clusteru vyberte **připojit** .
 
-1. Sledování chyb, dokud se stav změní na **připojené**, což může trvat několik minut.  Pokud tento krok nezdaří, zkontrolujte následující: 
+1. Monitoruje chyby, dokud se změnystavu nepřipojí, což může trvat několik minut.  Pokud tento krok neproběhne úspěšně, ověřte následující:
 
-   Zkuste restartovat svůj cluster prostřednictvím:
-   1. V levém podokně vyberte **clustery**.
+   Zkuste cluster restartovat pomocí:
+   1. V levém podokně vyberte clustery.
    1. V tabulce vyberte název vašeho clusteru.
-   1. Na **knihovny** kartu, vyberte možnost **restartovat**.
-      
+   1. Na kartě **knihovny** vyberte **restartovat**.
+
    Zvažte také:
-   + V konfiguraci Automl, při použití Azure Databricks, přidejte následující parametry:
-       1. ```max_concurrent_iterations``` vychází z počtu uzlů pracovního procesu v clusteru. 
-        2. ```spark_context=sc``` je založena na výchozí kontext spark. 
-   + Nebo, pokud máte starší verzi sady SDK, zrušte zaškrtnutí možnosti z nainstalovaných knihoven clusteru a přesunout do koše. Nainstalujte novou verzi sady SDK a restartujte cluster. Pokud po této dochází k nějakému problému, odpojit a znovu ho připojte svůj cluster.
+   + V Automl config při použití Azure Databricks přidejte následující parametry:
+       1. ```max_concurrent_iterations```vychází z počtu pracovních uzlů v clusteru.
+        2. ```spark_context=sc```je založen na výchozím kontextu Sparku.
+   + Nebo, pokud máte starou verzi sady SDK, zrušte výběr z nainstalovaného knihovny clusteru a přesuňte se do koše. Nainstalujte novou verzi sady SDK a restartujte cluster. Pokud dojde k nějakému problému, odpojte a znovu připojte svůj cluster.
 
-Pokud byla instalace úspěšná, importované knihovny by měl vypadat jako jednu z těchto:
-   
-Sada SDK pro Databricks **_bez_** automatizované strojového učení ![Azure Machine Learning SDK for Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+Pokud byla instalace úspěšná, importovaná knihovna by měla vypadat jako jedna z následujících:
 
-Sada SDK pro Databricks **WITH** automatizované strojového učení ![SDK s automatizované strojového učení, které jsou nainstalované v Databricks](./media/how-to-configure-environment/automlonadb.jpg)
+Sada SDK pro datacihly **_bez_** automatizovaného ![strojového učení Azure Machine Learning SDK pro datacihly](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-### <a name="start-exploring"></a>Začít prozkoumávat
+Sada SDK pro datacihly **pomocí** automatizovaného ![strojového učení sady SDK s nainstalovanou službou Automated Machine Learning pro datacihly](./media/how-to-configure-environment/automlonadb.jpg)
 
-Vyzkoušejte si to:
-+ Stáhněte si [poznámkového bloku archivní soubor](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc) pro sadu SDK Azure Databricks a Azure Machine Learning a [importovat soubor archivu](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) do vašeho clusteru Databricks.  
-  Mnoho ukázkové poznámkové bloky jsou k dispozici, **pouze [tyto ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) fungují s Azure Databricks.**
-  
-+ Zjistěte, jak [vytvoření kanálu s Databricks jako výpočetní školení](how-to-create-your-first-pipeline.md).
+### <a name="start-exploring"></a>Začít zkoumat
+
+Vyzkoušet:
++ Stáhněte si [soubor archivu poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc) pro sadu Azure Databricks/Azure Machine Learning SDK a [importujte soubor archivu](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) do svého clusteru datacihly.
+  I když je k dispozici mnoho ukázkových poznámkových bloků, **fungují pouze [Tyto ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) s Azure Databricks.**
+
++ Naučte se [vytvářet kanály s datacihlami jako výpočetní](how-to-create-your-first-pipeline.md)prostředí.
 
 ## <a id="aznotebooks"></a>Poznámkových bloků Azure
 
-[Azure Notebooks](https://notebooks.azure.com) (preview) je interaktivní vývojové prostředí v cloudu Azure. Je snadný způsob, jak začít s vývojem pro Azure Machine Learning.
+[Azure Notebooks](https://notebooks.azure.com) (preview) je interaktivní vývojové prostředí v cloudu Azure. Je to snadný způsob, jak začít s vývojem Azure Machine Learning.
 
-* Sada SDK Azure Machine Learning je již nainstalována.
-* Po vytvoříte pracovní prostor služby Azure Machine Learning na webu Azure Portal, můžete kliknout na tlačítko pro automatickou konfiguraci prostředí Azure poznámkového bloku pro práci s pracovním prostorem.
+* Sada Azure Machine Learning SDK je už nainstalovaná.
+* Po vytvoření pracovního prostoru služby Azure Machine Learning v Azure Portal můžete kliknutím na tlačítko automaticky nakonfigurovat prostředí poznámkového bloku Azure pro práci s pracovním prostorem.
 
-Použití [webu Azure portal](https://portal.azure.com) Začínáme s Azure poznámkových bloků.  Otevřete pracovní prostor a od **přehled** vyberte **začít pracovat v poznámkových bloků Azure**.
+Pomocí [Azure Portal](https://portal.azure.com) můžete začít s Azure Notebooks.  Otevřete pracovní prostor a v části **Přehled** vyberte **Začínáme v Azure Notebooks**.
 
-Ve výchozím nastavení používá vrstvy bezplatná služba, která je omezena na 4GB paměti a 1GB dat poznámkových bloků Azure. Tato omezení můžete, ale odebrat připojením k instanci virtuálního počítače pro datové vědy do projektu poznámkových bloků Azure. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků Azure – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
+Ve výchozím nastavení používá Azure Notebooks k dispozici bezplatnou úroveň služby, která je omezená na 4 GB paměti a 1 GB dat. Tyto limity však můžete odebrat připojením instance Data Science Virtual Machine k projektu Azure Notebooks. Další informace najdete v tématu [Správa a konfigurace Azure Notebooksch projektů – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="workspace"></a>Vytvořte konfigurační soubor pracovního prostoru
 
-Pracovní prostor konfigurační soubor je soubor JSON s oznámením sady SDK ke komunikaci s pracovním prostorem služby Azure Machine Learning. Soubor *config.json*, a má následující formát:
+Konfigurační soubor pracovního prostoru je soubor JSON, který oznamuje sadě SDK, jak komunikovat s vaším pracovním prostorem Azure Machine Learning služby. Soubor má název *config. JSON*a má následující formát:
 
 ```json
 {
@@ -372,19 +371,19 @@ Pracovní prostor konfigurační soubor je soubor JSON s oznámením sady SDK ke
 }
 ```
 
-Tento soubor JSON musí být do struktury adresářů, který obsahuje skripty Python nebo poznámkových bloků Jupyter. Může být ve stejném adresáři, podadresáři s názvem *.azureml*, nebo v nadřazeném adresáři.
+Tento soubor JSON musí být ve struktuře adresáře, která obsahuje vaše skripty Pythonu nebo Jupyter Poznámkový blok. Může být ve stejném adresáři, v podadresáři s názvem *. AzureML*nebo v nadřazeném adresáři.
 
 Chcete-li použít tento soubor z vašeho kódu, použijte `ws=Workspace.from_config()`. Tento kód načte informace ze souboru a připojí k vašemu pracovnímu prostoru.
 
 Konfigurační soubor můžete vytvořit třemi způsoby:
 
-* **Postupujte podle kroků v [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md#sdk)** : A *config.json* vytvoří soubor v knihovně poznámkových bloků Azure. Soubor obsahuje informace o konfiguraci pro váš pracovní prostor. Stáhněte nebo zkopírujte *config.json* do jiných vývojových prostředích.
+* **Postupujte podle kroků v části [Vytvoření pracovního prostoru služby Azure Machine Learning](setup-create-workspace.md#sdk)** : V knihovně Azure Notebooks se vytvoří soubor *config. JSON* . Soubor obsahuje informace o konfiguraci pro váš pracovní prostor. *Config. JSON* si můžete stáhnout nebo zkopírovat do jiných vývojových prostředí.
 
-* **Stáhněte si soubor**: V [webu Azure portal](https://ms.portal.azure.com)vyberte **stáhnout config.json** z **přehled** části pracovního prostoru.
+* **Stáhněte si soubor**: V [Azure Portal](https://ms.portal.azure.com)v části **Přehled** pracovního prostoru vyberte **Stáhnout soubor config. JSON** .
 
      ![portál Azure](./media/how-to-configure-environment/configure.png)
 
-* **Prostřednictvím kódu programu vytvořit soubor**: V následujícím fragmentu kódu připojíte se k pracovnímu prostoru zadáním ID předplatného, skupiny prostředků a název pracovního prostoru. Konfigurace pracovního prostoru pak uloží do souboru:
+* **Vytvořte soubor programově**: V následujícím fragmentu kódu se připojíte k pracovnímu prostoru zadáním ID předplatného, skupiny prostředků a názvu pracovního prostoru. Pak uloží konfiguraci pracovního prostoru do souboru:
 
     ```python
     from azureml.core import Workspace
@@ -401,11 +400,11 @@ Konfigurační soubor můžete vytvořit třemi způsoby:
         print('Workspace not found')
     ```
 
-    Tento kód zapíše konfigurační soubor tak, *.azureml/config.json* souboru.
+    Tento kód zapíše konfigurační soubor do souboru *. AzureML/config. JSON* .
 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Trénování modelu](tutorial-train-models-with-aml.md) v Azure Machine Learning s datovou sadou mnist ručně
-- Zobrazení [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) odkaz
+- [Výuka modelu](tutorial-train-models-with-aml.md) na Azure Machine Learning s využitím datové sady mnist ručně zapsaných
+- Referenční informace o sadě [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk)
 - Další informace o [balíčku pro přípravu dat pro Azure Machine Learning](https://aka.ms/data-prep-sdk)

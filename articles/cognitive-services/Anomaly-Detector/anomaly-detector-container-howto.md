@@ -1,7 +1,7 @@
 ---
-title: Jak nainstalovat a spustit kontejnery pro používání rozhraní API detekce anomálií
+title: Jak nainstalovat a spustit kontejnery pro použití rozhraní API detektoru anomálií
 titleSuffix: Azure Cognitive Services
-description: Pomocí pokročilých algoritmů rozhraní API detekce anomálií můžete identifikovat anomálie ve vašich datech časových řad.
+description: Pomocí pokročilých algoritmů rozhraní API pro detekci anomálií můžete identifikovat anomálie v datech časových řad.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,45 +10,45 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: f84f1bab048630d6dd45085b3d082004d10bb6a8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 8d107aed75904c27b9ed231d50c884f96318a324
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721701"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321431"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>Instalace a spouštění kontejnerů detekce anomálií
+# <a name="install-and-run-anomaly-detector-containers"></a>Instalace a spuštění kontejnerů detektoru anomálií
 
-Detekce anomálií má následující kontejneru: 
+Detektor anomálií má následující kontejner: 
 
 |Funkce|Funkce|
 |-|-|
-|Detektor anomálií| <li> Detekuje anomálie, když k nim dojde v reálném čase. <li> Detekuje anomálie v celé datové sady v dávce. <li> Odvodí z něj normální očekávaný rozsah data. <li> Podporuje anomálií detekce citlivosti úpravy lépe přizpůsobit vaše data. |
+|Detektor anomálií| <li> Detekuje anomálie při jejich výskytu v reálném čase. <li> Detekuje anomálie v celé sadě dat jako dávku. <li> Odvodí očekávaný normální rozsah dat. <li> Podporuje úpravu citlivosti detekce anomálií, aby lépe vyhovovala vašim datům. |
 
-Podrobné informace o rozhraních API najdete v tématu:
-* [Další informace o službě API detekce anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
+Podrobné informace o rozhraních API najdete v těchto tématech:
+* [Další informace o službě rozhraní API detektoru anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před použitím kontejnerů detekce anomálií, musí splňovat následující požadavky:
+Než začnete používat kontejnery detektoru anomálií, musíte splnit následující předpoklady:
 
 |Požadováno|Účel|
 |--|--|
-|Modul docker| Je nutné modul Docker nainstalovaný na [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **Na Windows**, Docker musí být taky nakonfigurovaný pro podporu kontejnerů Linuxu.<br><br>|
-|Znalost Dockeru | Byste měli mít základní znalost konceptů Dockeru, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.| 
-|Prostředek detekce anomálií |Chcete-li použít tyto kontejnery, musíte mít:<br><br>_Detekce anomálií_ prostředků Azure můžete získat přidružený klíč účtování a fakturace identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách portálu Azure přehled detekce anomálií a klíče a jsou vyžadovány pro spuštění kontejneru.<br><br>**{BILLING_KEY}** : klíč prostředku<br><br>**{BILLING_ENDPOINT_URI}** : Příklad identifikátor URI koncového bodu je: `https://westus2.api.cognitive.microsoft.com`|
+|Modul Docker| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
+|Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
+|Prostředek detektoru anomálií |Aby bylo možné tyto kontejnery použít, je nutné mít následující:<br><br>Prostředek _detektoru anomálií_ Azure, který získá přidružený klíč rozhraní API a identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách **** přehled detektoru anomálií Azure Portal a klíče a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : Jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : Koncový bod, jak je uvedený na stránce **Přehled**|
 
 ## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
 
-Nejprve musíte vyplňte a odešlete [formulář žádosti o kontejneru detekce anomálií](https://aka.ms/adcontainer) chcete požádat o přístup ke kontejneru.
+Aby bylo možné požádat o přístup ke kontejneru, je nutné nejprve dokončit a odeslat [formulář žádosti o kontejner detektoru anomálií](https://aka.ms/adcontainer) .
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
 [!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
-## <a name="the-host-computer"></a>Hostitelském počítači
+## <a name="the-host-computer"></a>Hostitelský počítač
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
@@ -56,20 +56,20 @@ Nejprve musíte vyplňte a odešlete [formulář žádosti o kontejneru detekce 
 
 ### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
 
-Následující tabulka popisuje minimální a doporučené jader procesoru a paměti k přidělení pro kontejner detekce anomálií.
+V následující tabulce jsou popsány minimální a doporučené PROCESORové jádra a paměť pro přidělení kontejneru detektoru anomálií.
 
 | QPS (dotazy za sekundu) | Minimální | Doporučené |
 |-----------|---------|-------------|
-| 10 QPS | 4 jádra, 1GB paměti | 8 jader 2GB paměti |
-| 20 QPS | 8 jader, 2GB paměti | 16 jader 4GB paměti |
+| 10 QPS | 4 jádra, 1 GB paměti | 8 jader 2 – GB paměti |
+| 20 QPS | 8 jader, 2 GB paměti | 16 jader 4 – GB paměti |
 
-Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
+Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 
-Jader a paměti odpovídají `--cpus` a `--memory` nastavení, které se používají jako součást `docker run` příkazu.
+Základní a paměť odpovídají `--cpus` nastavení a `--memory` , která se `docker run` používají jako součást příkazu.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru s `docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí`docker pull`
 
-Použití [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) příkaz Stáhnout image kontejneru.
+[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) Pomocí příkazu Stáhněte image kontejneru.
 
 | Kontejner | Úložiště |
 |-----------|------------|
@@ -81,98 +81,98 @@ For a full description of available tags, such as `latest` used in the preceding
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
 
-### <a name="docker-pull-for-the-anomaly-detector-container"></a>Operace docker pull pro kontejner detekce anomálií
+### <a name="docker-pull-for-the-anomaly-detector-container"></a>Pull Docker pro kontejner detektoru anomálií
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest
 ```
 
-## <a name="how-to-use-the-container"></a>Jak používat kontejneru
+## <a name="how-to-use-the-container"></a>Jak používat kontejner
 
-Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použijte následující postup pro práci s kontejnerem.
+Jakmile je kontejner na hostitelském [počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spuštění kontejneru](#run-the-container-with-docker-run), s požadovanými fakturace nastavení. Další [příklady](anomaly-detector-container-configuration.md#example-docker-run-commands) z `docker run` příkazu jsou k dispozici. 
-1. [Dotazování koncový bod kontejneru předpovědi](#query-the-containers-prediction-endpoint). 
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K [](anomaly-detector-container-configuration.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu. 
+1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint) 
 
-## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s `docker run`
+## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
 
-Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění tři kontejnery. Příkaz používá následující parametry:
+Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) spusťte kterýkoli ze tří kontejnerů. Příkaz používá následující parametry:
 
-| Zástupný symbol | Hodnota |
+| Zástupný symbol | Value |
 |-------------|-------|
-|{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíče detekce anomálií webu Azure portal.  |
-|{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na stránce s přehledem detekce anomálií webu Azure portal.|
+|{API_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíčů detektoru anomálií Azure Portal.  |
+|{ENDPOINT_URI} | Hodnota identifikátoru URI fakturačního koncového bodu je k dispozici na stránce Přehled rozpoznávání anomálií Azure Portal.|
 
-Tyto parametry nahraďte vlastními hodnotami v následujícím příkladu `docker run` příkazu.
+Tyto parametry nahraďte vlastními hodnotami v následujícím ukázkovém `docker run` příkazu.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 Tento příkaz:
 
-* Spuštění kontejneru detekce anomálií z image kontejneru
-* Přidělí jedno Procesorové jádro a 4 gigabajty (GB) paměti
+* Spustí kontejner detektoru anomálií z image kontejneru.
+* Přiděluje jedno PROCESORové jádro a 4 gigabajty (GB) paměti.
 * Zpřístupňuje TCP port 5000 a přiděluje pseudo-TTY pro kontejner
-* Po ukončení automaticky odstraní kontejner. Image kontejneru je stále k dispozici na hostitelském počítači. 
+* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači. 
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing).
 
-### <a name="running-multiple-containers-on-the-same-host"></a>Spouštění více kontejnerů na stejném hostiteli
+### <a name="running-multiple-containers-on-the-same-host"></a>Spuštění více kontejnerů na stejném hostiteli
 
-Pokud máte v úmyslu spustit několik kontejnerů s vystavené porty, ujistěte se, že ke spuštění každý kontejner s jiným portem. Například spusťte první kontejner na portu 5000 a druhý kontejner na portu 5001.
+Pokud máte v úmyslu spustit více kontejnerů s vystavenými porty, ujistěte se, že každý kontejner spustíte s jiným portem. Například spusťte první kontejner na portu 5000 a druhý kontejner na portu 5001.
 
-Nahradit `<container-registry>` a `<container-name>` hodnotami kontejnerů použijete. Toto nemusí být stejný kontejner. Máte kontejner detekce anomálií a LUIS kontejner společně běží na HOSTITELI nebo může mít více detekce anomálií kontejnerech je spuštěná. 
+Nahraďte `<container-name>` a hodnotou kontejnerů, které používáte. `<container-registry>` Nemusí se jednat o stejný kontejner. Můžete mít kontejner detektoru anomálií a kontejner LUIS běžící na hostiteli společně nebo může být spuštěno více kontejnerů detektoru anomálií. 
 
-Spuštění prvního kontejneru na portu 5000. 
+Spusťte první kontejner na portu 5000. 
 
 ```bash 
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 <container-registry>/microsoft/<container-name> \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
-Spusťte na portu 5001 druhý kontejner.
+Spusťte druhý kontejner na portu 5001.
 
 
 ```bash 
 docker run --rm -it -p 5000:5001 --memory 4g --cpus 1 \
 <container-registry>/microsoft/<container-name> \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
-Každé následné kontejner by měl být na jiném portu. 
+Každý další kontejner by měl být na jiném portu. 
 
-## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncový bod kontejneru predikcí
+## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
 
-Kontejner poskytuje koncový bod předpovědi dotazů založených na REST API. 
+Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST. 
 
-Použít hostitele, https://localhost:5000, pro kontejner rozhraní API.
+Pro rozhraní API kontejneru https://localhost:5000 použijte hostitele.
 
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Zastavit kontejner
+## <a name="stop-the-container"></a>Zastavení kontejneru
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud spouštíte kontejner s výstupem [připojit](anomaly-detector-container-configuration.md#mount-settings) a povolení protokolování kontejneru vygeneruje soubory protokolů, které jsou užitečné při řešení potíží, ke kterým dochází při spuštění nebo spuštění kontejneru. 
+Pokud spouštíte kontejner s povoleným výstupním [připojením](anomaly-detector-container-configuration.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru. 
 
 ## <a name="billing"></a>Fakturace
 
-Odeslat kontejnery detekce anomálií fakturační údaje do Azure, pomocí _detekce anomálií_ prostředků v účtu Azure. 
+Kontejnery detektoru anomálií odesílají informace o fakturaci do Azure __ pomocí prostředku detektoru anomálií ve vašem účtu Azure. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -184,18 +184,18 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání detekce anomálií kontejnery. Souhrn:
+V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů detektoru anomálií. Souhrn:
 
-* Detekce anomálií poskytuje jeden kontejner Linuxu pro Docker, zapouzdření s vs batch streamování odvození očekávaný rozsah a optimalizace citlivost detekce anomálií.
-* Image kontejneru se stáhnou z registru kontejneru Azure privátní vyhrazené pro kontejnery ve verzi preview.
+* Detekce anomálií poskytuje jeden kontejner pro Linux pro Docker, který zapouzdřuje detekci anomálií pomocí služby Batch vs streaming, očekávalo se odvození rozsahu a optimalizace citlivosti.
+* Image kontejneru se stáhnou z privátní Azure Container Registry vyhrazené pro kontejnery ve verzi Preview.
 * Spuštění imagí kontejnerů v Dockeru.
-* Rozhraní REST API nebo sady SDK můžete použít k volání operací v kontejnerech detekce anomálií tak, že zadáte identifikátor URI kontejneru hostitele.
+* Můžete použít REST API nebo SDK pro volání operací v kontejnerech detektoru anomálií zadáním identifikátoru URI hostitele kontejneru.
 * Při vytváření instance kontejneru, je nutné zadat fakturační informace.
 
 > [!IMPORTANT]
-> Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků (například čas řady data, která je analyzován) společnosti Microsoft.
+> Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Kontejnery Cognitive Services neodesílají zákaznická data (např. Analyzovaná data časových řad) do Microsoftu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Kontrola [konfigurace kontejnery](anomaly-detector-container-configuration.md) nastavení konfigurace
-* [Další informace o službě API detekce anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
+* [Další informace o službě rozhraní API detektoru anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

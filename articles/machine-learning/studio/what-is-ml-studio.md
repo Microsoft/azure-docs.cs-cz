@@ -1,12 +1,12 @@
 ---
 title: Co je
 titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio je nástroj přetažení myší rychle vytvářet modely z připravené k použití knihovny algoritmů a modulů.
+description: Azure Machine Learning Studio je nástroj pro přetahování, který slouží k rychlému vytváření modelů z připravené knihovny algoritmů a modulů.
 services: machine-learning
 documentationcenter: ''
-author: garyericson
+author: xiaoharper
+ms.author: amlstudiodocs
 ms.custom: seodec18
-ms.author: garye
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.subservice: studio
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/20/2019
-ms.openlocfilehash: dd1eaa95a23deed0bf2098995be43402c605defc
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4ec9cff652bf1badf526d490547ad78de31ac5da
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024229"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678001"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Machine Learning Studio publikuje modely jako webové služby, které je možné snadno využívat ve vlastních aplikacích nebo nástrojích BI, například v Excelu.
@@ -29,22 +29,22 @@ Machine Learning Studio je místo, kde se setkává datová věda, prediktivní 
 
 
 ## <a name="the-machine-learning-studio-interactive-workspace"></a>Interaktivní pracovní prostor Machine Learning Studio
-K vývoji modelu prediktivní analýzy, obvykle používají data z jednoho nebo více zdrojů, transformace a analyzovat tato data prostřednictvím různých statistických funkcí a manipulace s daty a generují sadu výsledků. Vývoj takového modelu je iterativní proces. Úpravou různých funkcí a jejich parametrů se výsledky zpřesňují, dokud nebudete přesvědčeni, že máte natrénován efektivní model.
+Chcete-li vytvořit model prediktivní analýzy, obvykle používáte data z jednoho nebo více zdrojů, transformovat a analyzovat tato data prostřednictvím různých funkcí pro manipulaci s daty a statistické funkce a vygenerujeme sadu výsledků. Vývoj takového modelu je iterativní proces. Úpravou různých funkcí a jejich parametrů se výsledky zpřesňují, dokud nebudete přesvědčeni, že máte natrénován efektivní model.
 
 **Azure Machine Learning Studio** nabízí interaktivní vizuální pracovní prostor, abyste mohli snadno vytvářet, testovat a iterovat model prediktivní analýzy. Při práci přetahujete ***datové sady*** a analytické ***moduly*** na interaktivní ***plátno***, kde je vzájemně propojujete. Tím vzniká experiment, který pak spustíte v nástroji Machine Learning Studio. Iterace návrhu modelu probíhá tak, že experiment upravíte, v případě potřeby uložíte kopii, a spustíte jej znovu. Jakmile budete připraveni, můžete ***výukový experiment*** převést na ***prediktivní experiment*** a publikovat jej jako ***webovou službu***, aby k vašemu modelu měli přístup i jiní uživatelé.
 
 Nevyžaduje se žádné programování – model prediktivní analýzy se konstruuje vizuálním propojováním datových sad a modulů.
 
-![Azure Machine Learning studio diagram: Vytváření experimentů, čtení dat pro mnoho zdrojů, zápis dat se stanoveným skóre, zápis modelů.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
+![Diagram Azure Machine Learning Studio: Vytvářejte experimenty, čtěte data pro mnoho zdrojů a zapište data s skóre a napište modely.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 ## <a name="download-the-machine-learning-studio-overview-diagram"></a>Stažení diagramu s přehledem nástroje Machine Learning Studio
 Stáhněte si diagram s **přehledem možností nástroje Machine Learning Studio**, který na nejvyšší úrovni znázorňuje schéma funkcí nástroje Machine Learning Studio. Pokud ho chcete mít po ruce, můžete si ho vytisknout ve velikosti tabloid (11 × 17 palců).
 
-**Diagram tady si můžete stáhněte: [Microsoft Azure Machine Learning Studio přehled možností](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
-![Microsoft Azure Machine Learning Studio přehled možností](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
+**Diagram si můžete stáhnout tady: [](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)Přehled**možností
+MicrosoftAzureMachineLearningStudioMicrosoftAzureMachineLearningStudiopřehledmožností![](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>Začínáme s nástrojem Machine Learning Studio
-Když poprvé vstoupíte Machine Learning Studio] (https://studio.azureml.net) uvidíte **Domů** stránky. Zde si můžete zobrazit dokumentaci, videa a webináře a najdete tu i další přínosné materiály.
+Při prvním zadání [Machine Learning Studio](https://studio.azureml.net)se zobrazí domovská stránka . Tady si můžete zobrazit dokumentaci, videa a webináře a najít další cenné prostředky.
 
 Vlevo nahoře klikněte na nabídku ![Nabídka](./media/what-is-ml-studio/menu.png) a zobrazí se několik možností.
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
@@ -61,7 +61,7 @@ Kliknutím na **Studio** přejdete do nástroje **Azure Machine Learning Studio*
 * **NASTAVENÍ** – Kolekce nastavení, kterou můžete použít ke konfiguraci účtu a prostředků
 
 ### <a name="gallery"></a>Galerie
-Kliknutím na **Galerie** přejdete na ke **[galerii Azure AI](https://gallery.azure.ai/)**. Galerie je místo, kde komunita datových vědců a vývojářů sdílí řešení vytvořená pomocí komponent sady Cortana Intelligence Suite.
+Kliknutím na **Galerie** přejdete na ke **[galerii Azure AI](https://gallery.azure.ai/)** . Galerie je místo, kde komunita datových vědců a vývojářů sdílí řešení vytvořená pomocí komponent sady Cortana Intelligence Suite.
 
 Další informace o této galerii najdete v tématu věnovaném [sdílení a hledání řešení v galerii Azure AI](gallery-how-to-use-contribute-publish.md).
 
@@ -78,7 +78,7 @@ Experiment můžete vytvořit zcela od začátku, ale také můžete využít ex
 
 Příklad vytvoření jednoduchého experimentu najdete v tématu [Vytvoření jednoduchého experimentu v nástroji Azure Machine Learning Studio](create-experiment.md).
 
-Kompletní postup vytváření řešení prediktivní analýzy, najdete v části [vývoj prediktivního řešení pomocí Azure Machine Learning Studio](tutorial-part1-credit-risk.md).
+Úplnější návod k vytváření řešení prediktivní analýzy najdete v tématu [vývoj prediktivního řešení pomocí Azure Machine Learning Studio](tutorial-part1-credit-risk.md).
 
 ### <a name="datasets"></a>Datové sady
 Datová sada obsahuje data, která byla nahrána do nástroje Machine Learning Studio, aby je bylo možné použít v procesu modelování. Součástí nástroje Machine Learning Studio je několik ukázkových datových sad, se kterými můžete experimentovat. Dle potřeby můžete nahrávat další datové sady. Zde jsou některé příklady dodávaných datových sad:
@@ -87,46 +87,46 @@ Datová sada obsahuje data, která byla nahrána do nástroje Machine Learning S
 * **Data o rakovině prsu** – Diagnostická data rakoviny prsu
 * **Data o lesních požárech** – Rozsahy lesních požárů v severovýchodním Portugalsku
 
-Během vytváření experimentu je možné ze seznamu datových sad, které jsou k dispozici nalevo od plátna.
+Při sestavování experimentu si můžete vybrat ze seznamu datových sad, které jsou k dispozici nalevo od plátna.
 
 Seznam ukázkových datových sad obsažených v nástroji Machine Learning Studio, najdete v tématu o [využití ukázkových datových sad v nástroji Azure Machine Learning Studio](use-sample-datasets.md).
 
 ### <a name="modules"></a>Moduly
 Modul je algoritmus, který je možné provést na datech. Machine Learning Studio obsahuje několik modulů od funkcí pro příjem dat po procesy trénování, stanovení skóre a ověřování. Zde jsou některé příklady dodávaných modulů:
 
-* [Převod na ARFF][convert-to-arff] – Převede serializovanou datovou sadu .NET do formátu ARFF (Attribute-Relation File Format).
-* [Výpočet základních statistik][elementary-statistics] – Vypočítá základní statistiky, jako je střední hodnota, směrodatná odchylka atd.
-* [Lineární regrese][linear-regression] – Vytvoří online model lineární regrese na základě klesání gradientu.
-* [Určení skóre modelu][score-model] – Stanoví skóre pro trénovaný klasifikační nebo regresní model.
+* [Převést na arff][convert-to-arff] – převede serializovanou datovou sadu .NET na formát souboru relace atributu (arff).
+* [Základní statistiky COMPUTE][elementary-statistics] – vypočítá základní statistiky, jako je střední hodnota, směrodatná odchylka atd.
+* [Lineární regrese][linear-regression] – vytvoří model lineární regrese založený na klesání přechodu z online režimu.
+* [Skóre modelu][score-model] – vyhodnotí vyškolený model klasifikace nebo regrese.
 
 Během vytváření experimentu je možné si vybírat ze seznamu modulů, které jsou k dispozici v nabídce nalevo od plátna.
 
 Modul může obsahovat sadu parametrů, pomocí kterých je možné konfigurovat jeho vnitřní algoritmy. Když na plátnu vyberete modul, parametry modulu se zobrazí v podokně **Vlastnosti** napravo od plátna. Úpravou parametrů v tomto podokně můžete model optimalizovat.
 
-Nějaké Nápověda procházení rozsáhlé knihovny dostupných algoritmů strojového učení, naleznete v tématu [jak zvolit algoritmy pro Microsoft Azure Machine Learning Studio](algorithm-choice.md).
+Další informace o tom, jak se dá využít rozsáhlá knihovna algoritmů strojového učení, najdete v tématu [Jak zvolit algoritmy pro Microsoft Azure Machine Learning Studio](algorithm-choice.md).
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>Nasazení webové služby prediktivní analýzy
 Jakmile je váš model prediktivní analýzy připraven, můžete jej přímo v nástroji Machine Learning Studio nasadit jako webovou službu. Další podrobnosti k tomuto procesu najdete v tématu [Nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md).
 
 <a name="compare"></a>
-## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>Čím se liší od služby Azure Machine Learning Machine Learning Studio?
+## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>Jak se Machine Learning Studio liší od služby Azure Machine Learning?
 
-[Služba Azure Machine Learning](../service/overview-what-is-azure-ml.md) poskytuje obě sady SDK **- a -** visual interface(preview), chcete-li rychle pro přípravu dat, trénovat a nasazovat modely machine learningu. Toto rozhraní visual (preview) poskytuje fungují na podobném principu přetahování myší do sady Studio. Na rozdíl od proprietární výpočetní platforma sady Studio, ale vizuální rozhraní používá výpočetních prostředků a je plně integrován do služby Azure Machine Learning.
+[Služba Azure Machine Learning](../service/overview-what-is-azure-ml.md) poskytuje **Jak sady SDK** , tak i vizuální rozhraní (Preview) k rychlému přípravu dat, výuce a nasazování modelů strojového učení. Toto vizuální rozhraní (Preview) nabízí podobné prostředí pro přetahování do studia. Na rozdíl od proprietární výpočetní platformy v studiu ale používá vizuální rozhraní vaše vlastní výpočetní prostředky a je plně integrovaná do Azure Machine Learning služby.
 
-Tady je rychlý porovnání.
+Tady je rychlé porovnání.
 
 || Machine Learning Studio | Služba Azure Machine Learning:<br/>Vizuální rozhraní|
 |---| --- | --- |
-|| Obecně dostupná (GA) | Ve verzi Preview|
-|Moduly pro rozhraní| mnoho | Počáteční sadu Oblíbené moduly|
-|Cílových výpočetních prostředí pro školení| Cílové výpočetní prostředí proprietární, pouze Podpora procesoru| Podporuje Azure Machine Learning compute, GPU nebo CPU.<br/>(Další výpočetní prostředí nepodporuje v sadě Windows SDK)|
-|Nasazení cílových výpočetních prostředí| Formát vlastnické webové služby, nelze přizpůsobit | Možnosti zabezpečení organizace a službě Azure Kubernetes. <br/>([Další výpočetní prostředí](../service/how-to-deploy-and-where.md) podporováno v sadě Windows SDK) |
-|Cvičení modelu automatizované a hyperparametrů | Ne | Ještě nejsou součástí vizuální rozhraní. <br/> (Podporováno v sadě SDK a Azure portal.) | 
+|| Všeobecně dostupná (GA) | Ve verzi Preview|
+|Moduly pro rozhraní| Počtu | Počáteční sada oblíbených modulů|
+|Školení výpočetních cílů| Proprietární výpočetní cíl, jenom podpora procesoru| Podporuje Azure Machine Learning výpočetní prostředky, GPU nebo CPU.<br/>(Další výpočetní prostředky podporované v sadě SDK)|
+|Cíle výpočtů nasazení| Speciální formát webové služby, není přizpůsobitelný | Možnosti podnikového zabezpečení & služby Azure Kubernetes. <br/>([Další výpočetní](../service/how-to-deploy-and-where.md) prostředky podporované v sadě SDK) |
+|Automatizované školení modelů a ladění parametrů | Ne | Ještě není v vizuálním rozhraní. <br/> (Podporováno v sadě SDK a Azure Portal.) | 
 
-Vyzkoušejte si službu rozhraní visual (preview) [rychlý start: Příprava a vizualizace dat bez psaní kódu](../service/ui-quickstart-run-experiment.md)
+Vyzkoušejte si vizuální rozhraní (Preview) s [kurzem: Předpověď ceny automobilu pomocí vizuálního rozhraní](../service/ui-tutorial-automobile-price-train-score.md)
 
 > [!NOTE]
-> Modely vytvořené v sadě Studio nelze nasadit nebo spravované službou Azure Machine Learning. Modely vytvořené a nasazené ve vizuální rozhraní služby však můžete spravovat prostřednictvím pracovního prostoru služby Azure Machine Learning.
+> Modely vytvořené v nástroji Studio nejde nasadit nebo spravovat pomocí služby Azure Machine Learning Service. Modely vytvořené a nasazené v rámci vizuálního rozhraní služby je ale možné spravovat prostřednictvím pracovního prostoru služby Azure Machine Learning.
 
 ## <a name="free-trial"></a>Bezplatná zkušební verze
 
@@ -134,7 +134,7 @@ Vyzkoušejte si službu rozhraní visual (preview) [rychlý start: Příprava a 
 
 
 ## <a name="next-steps"></a>Další postup
-Vás seznámí se základy prediktivní analýzy a strojové učení s využitím [podrobné quickstart](create-experiment.md) a [na základě ukázek](sample-experiments.md).
+Seznamte se se základy prediktivní analýzy a strojového učení s využitím [podrobných rychlých](create-experiment.md) a sestavování [ukázek](sample-experiments.md).
 
 <!-- Module References -->
 [convert-to-arff]: https://msdn.microsoft.com/library/azure/62d2cece-d832-4a7a-a0bd-f01f03af0960/

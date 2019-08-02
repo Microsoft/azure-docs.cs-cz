@@ -1,35 +1,35 @@
 ---
-title: 'Rychlý start: Volání vlastního vyhledávání Bingu koncový bod pomocí sady Python SDK | Dokumentace Microsoftu'
+title: 'Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu pomocí sady Python SDK | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Získat vlastní výsledky hledání pomocí SDK vlastní vyhledávání Bingu pro Python.
+description: Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí sady Python SDK.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/05/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: c4c5059bc57ea33357145f6b119456dc6c5bdb7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a9d0d6619878299768e1f17b4da3280ea1ec1fc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60946637"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564610"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Rychlý start: Volání vlastního vyhledávání Bingu koncový bod pomocí sady Python SDK 
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu pomocí sady Python SDK 
 
-V tomto rychlém startu můžete začít si vyžádat výsledky hledání z vaší instance vlastního vyhledávání Bingu, pomocí sady Python SDK. Zatímco vlastní vyhledávání Bingu je kompatibilní s Většina programovacích jazyků rozhraní REST API, SDK vlastní vyhledávání Bingu poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py) zpracování dalších chyb a poznámky.
+Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí sady Python SDK. I když Vlastní vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, Vlastní vyhledávání Bingu SDK poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu s [](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py) dalšími zpracováním chyb a poznámkami.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Instanci vlastního vyhledávání Bingu. Zobrazit [rychlý start: Vytvoření první instanci vlastního vyhledávání Bingu](quick-start.md) Další informace.
-- Python [2.x nebo 3.x](https://www.python.org/) 
-- [Vlastní vyhledávání Bingu sady SDK pro Python](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) 
+- Instance Vlastní vyhledávání Bingu. Další [informace najdete v tématu rychlý Start: Pro další informace vytvořte první](quick-start.md) instanci vlastní vyhledávání Bingu.
+- Python [2. x nebo 3. x](https://www.python.org/) 
+- [Sada SDK vlastní vyhledávání Bingu pro Python](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) 
 
-## <a name="install-the-python-sdk"></a>Nainstalovat Python SDK
+## <a name="install-the-python-sdk"></a>Instalace sady Python SDK
 
-Instalace sady SDK vlastní vyhledávání Bingu pomocí následujícího příkazu.
+Pomocí následujícího příkazu nainstalujte sadu Vlastní vyhledávání Bingu SDK.
 
 ```Console
 python -m pip install azure-cognitiveservices-search-customsearch
@@ -38,28 +38,28 @@ python -m pip install azure-cognitiveservices-search-customsearch
 
 ## <a name="create-a-new-application"></a>Vytvoření nové aplikace
 
-Vytvořte nový soubor Pythonu v oblíbeném editoru nebo prostředí IDE a přidejte následující importy.
+Vytvořte nový soubor Pythonu v oblíbených editorech nebo v integrovaném vývojovém prostředí a přidejte následující importy.
 
 ```python
 from azure.cognitiveservices.search.customsearch import CustomSearchClient
 from msrest.authentication import CognitiveServicesCredentials
 ```
 
-## <a name="create-a-search-client-and-send-a-request"></a>Vytvoření klienta vyhledávání a odeslat žádost
+## <a name="create-a-search-client-and-send-a-request"></a>Vytvoření vyhledávacího klienta a odeslání žádosti
 
-1. Vytvořte proměnnou pro váš klíč předplatného.
+1. Vytvořte proměnnou pro klíč předplatného.
 
     ```python
     subscription_key = 'your-subscription-key'
     ```
 
-2. Vytvoření instance `CustomSearchClient`, použití `CognitiveServicesCredentials` objekt s klíči předplatného. 
+2. Vytvořte instanci `CustomSearchClient` `CognitiveServicesCredentials` pomocí objektu s klíčem předplatného. 
 
     ```python
     client = CustomSearchClient(CognitiveServicesCredentials(subscription_key))
     ```
 
-3. Odeslat žádost o vyhledávání s `client.custom_instance.search()`. Připojit hledaný termín `query` parametr a nastavte `custom_config` ID vlastní konfigurace pro použití vašeho hledání instance. Můžete získat ID z vašeho [vlastní vyhledávání Bingu portál](https://www.customsearch.ai/), kliknutím **produkční** kartu.
+3. Odešlete žádost o vyhledávání `client.custom_instance.search()`pomocí. Přidejte hledaný termín k `query` parametru a nastavte `custom_config` na vlastní ID konfigurace, aby bylo možné použít vaši instanci hledání. Své ID můžete získat z [portálu vlastní vyhledávání Bingu](https://www.customsearch.ai/)kliknutím na kartu **Výroba** .
 
     ```python
     web_data = client.custom_instance.search(query="xbox", custom_config="your-configuration-id")
@@ -67,7 +67,7 @@ from msrest.authentication import CognitiveServicesCredentials
 
 ## <a name="view-the-search-results"></a>Zobrazení výsledků hledání
 
-Pokud nebyly nalezeny žádné výsledky hledání webové stránky, získat první z nich a tisk jeho název, adresu URL a celkový počet webových stránek nalezen.
+Pokud byly nalezeny jakékoli výsledky hledání webové stránky, získejte první z nich a vytiskněte svůj název, adresu URL a nalezené webové stránky.
 
 ```python
 if web_data.web_pages.value:
@@ -82,4 +82,4 @@ else:
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Sestavení webové aplikace s vlastní vyhledávání](./tutorials/custom-search-web-page.md)
+> [Vytvoření vlastní vyhledávací webové aplikace](./tutorials/custom-search-web-page.md)

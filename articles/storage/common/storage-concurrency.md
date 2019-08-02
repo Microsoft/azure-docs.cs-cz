@@ -1,51 +1,51 @@
 ---
 title: Správa souběžnosti v Microsoft Azure Storage
-description: Správa souběžnosti pro služby objektů Blob, fronty, tabulky a souboru
+description: Správa souběžnosti pro služby blob, Queue, Table a File
 services: storage
 author: jasontang501
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: jasontang501
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 9e786aed031d528b8ae574444b71753ac538cf47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 427cc34cc5a2801a2da98259f932678cdcf71ef7
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728314"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870833"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
-Moderní aplikace na základě Internet obvykle mít více uživatelů, zobrazování a aktualizace dat současně. To vyžaduje, aby pečlivě zvážit, jak poskytnout předvídatelný prostředí pro koncové uživatele, zejména pro scénáře, kde můžete víc uživatelů aktualizovat stejná data vývojáři aplikace. Existují tři hlavní data souběžnosti strategie, které vývojáři obvykle vezměte v úvahu:  
+Moderní internetové aplikace obvykle mají více uživatelů, kteří prohlížejí a aktualizují data současně. To vyžaduje, aby vývojáři aplikací pečlivě prostudovali, jak zajistit předvídatelné prostředí koncovým uživatelům, zejména pro scénáře, kdy může aktualizovat stejná data více uživatelů. Existují tři hlavní strategie souběžnosti dat, které vývojáři obvykle uvažují:  
 
-1. Optimistická souběžnost – provádění aplikace, které aktualizace jako součást její aktualizace ověří, pokud se data změnila od aplikace posledního čtení tato data. Například pokud dvě uživatelům, kteří zobrazují wikistránky provést aktualizaci na stejnou stránku pak platformu wiki musíte zajistit, že druhý aktualizace nepřepisuje první aktualizace – a, že oba uživatelům pochopit, jestli jejich aktualizace byla úspěšná, či nikoli. Tato strategie je nejčastěji používají ve webových aplikacích.
-2. Pesimistická souběžnost – aplikace hledání se provede aktualizaci se zámek objektu bránit ostatním uživatelům v aktualizaci dat, dokud se zámek je uvolněn. Například ve scénáři hlavní/podřízený data replikace, kde pouze hlavní provede aktualizace hlavní server bude obvykle obsahovat výhradní zámek pro delší dobu na data, která mají Ujistěte se, že nikdo jiný ji aktualizovat.
-3. Poslední zápis – přístup, který umožňuje všechny operace aktualizace pokračovat bez ověření, pokud všechny ostatní aplikace se aktualizovala data od aplikace nejprve číst data. Tato strategie (nebo chybějící formální strategie) se obvykle používá kde data jsou rozdělená tak, že neexistuje žádná pravděpodobnost, že více uživatelů se přístup ke stejným datům. To může být také užitečné kde krátkodobou datových proudů zpracovává.  
+1. Optimistická souběžnost – aplikace, která provádí aktualizaci, bude v rámci své aktualizace ověřovat, jestli se data od posledního načtení těchto dat od aplikace změnila. Například pokud dva uživatelé, kteří si prohlížejí stránku wikiwebu, provedou aktualizaci na stejnou stránku, musí platforma wiki zajistit, aby druhá aktualizace přepsala první aktualizaci – a aby oba uživatelé pochopili, jestli byla aktualizace úspěšná. Tato strategie se nejčastěji používá ve webových aplikacích.
+2. Pesimistická souběžnost – aplikace, která se má provést aktualizace, pozastaví zámek u objektu, který ostatním uživatelům brání v aktualizaci dat, dokud se zámek neuvolní. Například ve scénáři hlavní/podřízená replikace dat, kde pouze hlavní server provede aktualizace, bude hlavní server obvykle uchovávat výhradní zámek po delší dobu na data, aby se zajistilo, že ho nikdo jiný nebude moct aktualizovat.
+3. Poslední zapisovač WINS – přístup, který umožňuje, aby všechny operace aktualizace pokračovaly bez ověření, jestli jiná aplikace aktualizovala data, protože aplikace nejdřív data načetla. Tato strategie (nebo nedostatečná formální strategie) se obvykle používá tam, kde jsou data rozdělená takovým způsobem, že neexistují žádná pravděpodobnost, že k datům budou mít přístup více uživatelů. Může být také užitečné, pokud jsou zpracovávány krátkodobé datové streamy.  
 
-Tento článek obsahuje přehled, jak platformy úložiště Azure usnadňuje vývoj tím, že poskytuje prvotřídní podporu pro všechny tři z těchto strategií souběžnosti.  
+Tento článek poskytuje přehled o tom, jak platforma Azure Storage zjednodušuje vývoj tím, že poskytuje prvotřídní podporu pro všechny tři tyto strategie souběžnosti.  
 
-## <a name="azure-storage--simplifies-cloud-development"></a>Azure Storage – zjednodušuje vývoj pro cloudové prostředí
-Službu Azure storage podporuje všechny tři strategie, i když je zvláštní v jeho schopnost poskytují úplnou podporu pro optimistické a Pesimistická souběžnost, protože byl navržen a využívat model pro zajištění konzistence, což zaručuje, že Služba Storage potvrzení dat vložte nebo všechny operace aktualizace dál přistupuje, aby mohl která data se zobrazí nejnovější aktualizace. Úložiště platformy, používající model konečné konzistence mají s menší prodlevou mezi při provádění zápis uživatelů a ostatním uživatelům, tedy komplikovali vývoji klientských aplikací, aby se zabránilo nekonzistencím z můžou vidět aktualizovaná data vliv na koncové uživatele.  
+## <a name="azure-storage--simplifies-cloud-development"></a>Azure Storage – zjednodušuje vývoj v cloudu
+Služba Azure Storage podporuje všechny tři strategie, i když je jejich schopnost poskytovat úplnou podporu pro optimistickou a pesimistickou souběžnost, protože byla navržena tak, aby procházela se silným modelem konzistence, který zaručuje, že když Služba úložiště potvrdí operaci vložení nebo aktualizace dat. další přístup k těmto datům zobrazí poslední aktualizace. Platformy úložiště, které používají model s možnou konzistencí, mají prodlevu mezi tím, kdy je zápis proveden jedním uživatelem a když se aktualizovaná data mohou zobrazit jiní uživatelé, což ztěžuje vývoj klientských aplikací, aby nedocházelo k nekonzistencím. ovlivnění koncových uživatelů.  
 
-Kromě výběru strategie odpovídající souběžnosti vývojáři měli také něco vědět o jak platforma úložiště izoluje změny – zejména změny na stejný objekt napříč transakce. Službu Azure storage používá izolaci snímku k umožnění operací čtení, která se provede současně operace zápisu v rámci jednoho oddílu. Na rozdíl od jiných úrovních izolace zaručuje izolaci snímku, které všechny operace čtení se zobrazí snímek konzistentní vzhledem k aplikacím dat dokonce i za běhu dochází k aktualizace – v podstatě tak, že vrací naposledy potvrzeny hodnoty při aktualizaci zpracování transakce.  
+Kromě toho, že byste měli vybrat vhodné vývojové strategie, by si měli být vědomi, jak platforma úložiště izoluje změny – zejména změny u stejného objektu napříč transakcemi. Služba Azure Storage používá izolaci snímků, aby mohla operace čtení probíhat souběžně s operacemi zápisu v rámci jednoho oddílu. Na rozdíl od jiných úrovní izolace zaručuje izolaci snímků, že všechny čtení uvidí konzistentní snímek dat, i když probíhá aktualizace, a to v podstatě vrácením naposledy potvrzených hodnot během zpracování transakce aktualizace.  
 
-## <a name="managing-concurrency-in-blob-storage"></a>Správa souběžnosti v úložišti objektů Blob
-Můžete se rozhodnout použít buď modely souběžného zpracování optimistického nebo pesimistického ke správě přístupu k objektům BLOB a kontejnerů ve službě blob service. Pokud explicitně neurčíte strategie poslední wins zápisy je výchozí nastavení.  
+## <a name="managing-concurrency-in-blob-storage"></a>Správa souběžnosti v úložišti objektů BLOB
+Pro správu přístupu k objektům blob a kontejnerům ve službě BLOB Service můžete použít buď optimistické, nebo pesimistické modely souběžnosti. Pokud explicitně nezadáte strategii poslední zápisy, výchozí hodnota je WINS.  
 
-### <a name="optimistic-concurrency-for-blobs-and-containers"></a>Pro objekty BLOB a kontejnerů optimistického řízení souběžnosti
-Služba úložiště přiřadí identifikátor každé objekt uložený. Tento identifikátor se aktualizuje pokaždé, když se operace aktualizace se provádí na objekt. Identifikátor je vrácen do klienta jako součást pomocí hlavičky značky ETag (značka entity), která je definována v rámci protokolu HTTP odpovědi HTTP GET. Provedení aktualizace na takový objekt uživatele a zkontrolujte, že aktualizace se vztahuje pouze na Pokud byly splněny určité podmínky – v tomto případě je podmínka hlavičku "If-Match", který vyžaduje službu Storage t odeslání původní ETag spolu s podmíněnou hlavičku o Ujistěte se, že hodnota značka ETag zadaná v žádosti o aktualizaci je shodná se ukládají ve službě úložiště.  
+### <a name="optimistic-concurrency-for-blobs-and-containers"></a>Optimistická souběžnost pro objekty BLOB a kontejnery
+Služba Storage přiřadí identifikátor každému uloženému objektu. Tento identifikátor se aktualizuje pokaždé, když se u objektu provede operace aktualizace. Identifikátor se vrátí klientovi jako součást odpovědi HTTP GET pomocí hlavičky ETag (značka entity), která je definovaná v protokolu HTTP. Uživatel, který provádí aktualizaci takového objektu, se může poslat v původním ETag spolu s podmíněnou hlavičkou, aby se zajistilo, že se aktualizace objeví jenom v případě, že je splněná určitá podmínka – v tomto případě je tato podmínka záhlaví "If-Match", které vyžaduje službu úložiště t. o zajistěte, aby byla hodnota ETag zadaná v žádosti o aktualizaci stejná jako ta, která je uložená ve službě úložiště.  
 
-Přehled tohoto procesu je následujícím způsobem:  
+Osnova tohoto procesu je následující:  
 
-1. Načtení objektu blob ze služby storage, odpověď obsahuje hodnotu hlavičky značky ETag protokolu HTTP, který identifikuje aktuální verzi objektu ve službě úložiště.
-2. Při aktualizaci objektu blob patří hodnota ETag jste získali v kroku 1 **If-Match** podmíněnou hlavičku požadavku odeslat do služby.
-3. Služba porovnává hodnota ETag v požadavku s aktuální hodnotou ETag objektu blob.
-4. Pokud je aktuální hodnotou ETag objektu blob jinou verzi než Etagu v **If-Match** podmíněnou hlavičku v žádosti o službu vrátí chybu 412 klientovi. To znamená do klienta, že jiným procesem má aktualizovat objekt blob, protože jejím načtení klienta.
-5. Pokud aktuální hodnotou ETag objektu blob se stejnou verzí jako značka ETag v **If-Match** podmíněnou hlavičku v žádosti o službu, provede požadovanou operaci a aktualizuje aktuální hodnotou ETag objektu blob zobrazit, že bylo vytvořeno Nová verze.  
+1. Načtení objektu BLOB ze služby úložiště, odpověď obsahuje hodnotu hlavičky ETag protokolu HTTP, která identifikuje aktuální verzi objektu ve službě úložiště.
+2. Při aktualizaci objektu BLOB zahrňte hodnotu ETag, kterou jste dostali v kroku 1 v podmíněné hlavičce **If-Match** žádosti, kterou odešlete do služby.
+3. Služba porovnává hodnotu ETag v žádosti s aktuální hodnotou ETag objektu BLOB.
+4. Pokud je aktuální hodnota ETag objektu BLOB odlišná od verze ETag v podmíněné hlavičce **If-Match** v žádosti, služba vrátí klientovi chybu 412. To indikuje klientovi, že objekt BLOB aktualizoval jiný proces, protože ho klient získal.
+5. Pokud má aktuální hodnota ETag objektu BLOB stejnou verzi jako ETag v podmíněné hlavičce **If-Match** v žádosti, služba provede požadovanou operaci a aktualizuje aktuální hodnotu ETag objektu blob, aby ukázala, že vytvořil novou verzi.  
 
-Následující (s využitím klientské knihovny pro úložiště 4.2.0) fragment kódu jazyka C# ukazuje jednoduchý příklad toho, jak vytvořit **If-Match AccessCondition** na základě hodnoty ETag, která je přístupná z vlastností objektu blob, který byl dříve buď načíst ani vloženy. Poté použije **AccessCondition** objektu při aktualizaci objektu blob: **AccessCondition** objekt přidá **If-Match** záhlaví žádosti. Pokud se objekt blob byl aktualizován jiným procesem, službu blob service vrátí zprávu stav HTTP 412 (Předběžná podmínka je neplatná). Úplnou ukázku si můžete stáhnout: [Správa souběžnosti pomocí služby Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
+Následující C# fragment kódu (pomocí knihovny úložiště klienta 4.2.0) ukazuje jednoduchý příklad, jak vytvořit **AccessCondition If-Match** založený na hodnotě ETag, která je k dispozici z vlastností objektu blob, který byl dříve načten nebo vložený. Pak použije objekt **AccessCondition** při aktualizaci objektu BLOB: objekt **AccessCondition** přidá do žádosti hlavičku **If-Match** . Pokud se objekt BLOB aktualizoval jiným procesem, vrátí služba BLOB stavovou zprávu HTTP 412 (Předběžná podmínka selhala). Úplnou ukázku si můžete stáhnout tady: [Správa souběžnosti pomocí Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -80,53 +80,53 @@ catch (StorageException ex)
 }  
 ```
 
-Služby úložiště, jako také zahrnuje podporu pro další podmíněné záhlaví **If-Modified-Since**, **If-bez jakýchkoli úprav-Since** a **If-None-Match** stejně jako jejich kombinace. Další informace najdete v tématu [zadání podmíněné hlavičky operace služby objektů Blob](https://msdn.microsoft.com/library/azure/dd179371.aspx) na webové stránce MSDN.  
+Služba úložiště také zahrnuje podporu dalších podmíněných hlaviček, jako je například **If-Modified-od**, **Pokud-unmodified – od** a **If-None-Match** , a také jejich kombinace. Další informace najdete v tématu [určení podmíněných hlaviček pro operace služby BLOB Service](https://msdn.microsoft.com/library/azure/dd179371.aspx) na webu MSDN.  
 
-Následující tabulka shrnuje operace kontejnerů, které podmíněné hlavičky accept, jako **If-Match** v požadavku a, která vrátí hodnotu značky ETag do odpovědi.  
+Následující tabulka shrnuje operace kontejneru, které přijímají podmíněná záhlaví, například **If-Match** v žádosti a vrací hodnotu ETag v odpovědi.  
 
-| Operace | Vrátí hodnotu ETag kontejneru | Přijímá podmíněné záhlaví |
+| Operace | Vrátí hodnotu ETag kontejneru. | Akceptuje podmíněná záhlaví |
 |:--- |:--- |:--- |
 | Vytvoření kontejneru |Ano |Ne |
 | Získat vlastnosti kontejneru |Ano |Ne |
-| Získání metadat kontejneru |Ano |Ne |
-| Nastavte Metadata kontejneru |Ano |Ano |
-| Získání seznamu ACL kontejneru |Ano |Ne |
-| Nastavení ACL kontejneru |Ano |Ano (*) |
+| Získat metadata kontejneru |Ano |Ne |
+| Nastavení metadat kontejneru |Ano |Ano |
+| Získat seznam ACL kontejneru |Ano |Ne |
+| Nastavení seznamu ACL kontejneru |Ano |Ano (*) |
 | Odstranění kontejneru |Ne |Ano |
-| Zapůjčení kontejneru |Ano |Ano |
+| Kontejner zapůjčení |Ano |Ano |
 | Výpis objektů BLOB |Ne |Ne |
 
-(*) Oprávnění určené SetContainerACL jsou uložené v mezipaměti a aktualizace tato oprávnění trvat 30 sekund na dokončení propagace, během nichž aktualizace nemusí být konzistentní vzhledem k aplikacím.  
+(*) Oprávnění definovaná pomocí SetContainerACL jsou uložená v mezipaměti a aktualizace těchto oprávnění trvá 30 sekund, než se rozšíří, protože aktualizace nejsou zaručené jako konzistentní.  
 
-Následující tabulka shrnuje operace objektů blob, které podmíněné hlavičky accept, jako **If-Match** v požadavku a, která vrátí hodnotu značky ETag do odpovědi.
+Následující tabulka shrnuje operace objektů blob, které přijímají podmíněná záhlaví, jako je například **If-Match** v požadavku a vrací hodnotu ETag v odpovědi.
 
-| Operace | Vrátí hodnotu značky ETag | Přijímá podmíněné záhlaví |
+| Operace | Vrátí hodnotu ETag. | Akceptuje podmíněná záhlaví |
 |:--- |:--- |:--- |
-| Put Blob |Ano |Ano |
-| Získání objektu Blob |Ano |Ano |
-| Získání vlastností objektu Blob |Ano |Ano |
-| Nastavit vlastnosti objektu Blob |Ano |Ano |
-| Získat Metadata objektu Blob |Ano |Ano |
-| Nastavte Metadata objektu Blob |Ano |Ano |
-| Zapůjčení objektu Blob (*) |Ano |Ano |
-| Vytvoření snímku objektu Blob |Ano |Ano |
-| Zkopírování objektu Blob |Ano |Ano (pro zdrojové a cílové objektů blob) |
-| Přerušit objekt Blob kopírování |Ne |Ne |
+| Vložení objektu BLOB |Ano |Ano |
+| Získat objekt BLOB |Ano |Ano |
+| Získat vlastnosti objektu BLOB |Ano |Ano |
+| Nastavení vlastností objektu BLOB |Ano |Ano |
+| Získat metadata objektu BLOB |Ano |Ano |
+| Nastavení metadat objektu BLOB |Ano |Ano |
+| Objekt BLOB zapůjčení (*) |Ano |Ano |
+| Objekt BLOB snímku |Ano |Ano |
+| Zkopírování objektu Blob |Ano |Ano (pro zdrojový a cílový objekt BLOB) |
+| Přerušit kopii objektu BLOB |Ne |Ne |
 | Odstranit objekt Blob |Ne |Ano |
-| Vložit blok |Ne |Ne |
-| Vložit blokovaných webů. |Ano |Ano |
-| Získat seznam blokovaných položek |Ano |Ne |
-| Vložit stránky |Ano |Ano |
-| Získání rozsahů stránek |Ano |Ano |
+| Blok vložení |Ne |Ne |
+| Seznam blokovaných umístění |Ano |Ano |
+| Získat seznam blokovaných webů |Ano |Ne |
+| Vložit stránku |Ano |Ano |
+| Získat rozsahy stránek |Ano |Ano |
 
-(*) Zapůjčení objektu Blob nezmění značku ETag na objekt blob.  
+(*) Objekt BLOB zapůjčení nemění ETag u objektu BLOB.  
 
-### <a name="pessimistic-concurrency-for-blobs"></a>Pesimistická souběžnost pro objekty BLOB
-Zamknout objekt blob pro výhradní použití, můžete získat [zapůjčení](https://msdn.microsoft.com/library/azure/ee691972.aspx) na něj. Když získáte zapůjčení, určíte, jak dlouho je nutné zapůjčení: to může být pro mezi 15 až 60 sekund nebo nekonečno, který částky výhradní zámek. Obnovení můžete provést omezené zapůjčení ji rozšířit, a až skončíte s ním můžete uvolnit všechny zapůjčení. Službu blob service automaticky uvolní omezené zapůjčení po vypršení jejich platnosti.  
+### <a name="pessimistic-concurrency-for-blobs"></a>Pesimistická souběžnost pro objekty blob
+K uzamknutí objektu BLOB pro výhradní použití můžete získat zapůjčení [](https://msdn.microsoft.com/library/azure/ee691972.aspx) . Po získání zapůjčení určíte, jak dlouho budete potřebovat zapůjčení: může to být v rozmezí od 15 do 60 sekund nebo nekonečno, což platí pro výhradní zámek. Omezené zapůjčení můžete prodloužit tak, že ho budete moct prodloužit a po dokončení práce můžete uvolnit jakékoli zapůjčení. Služba BLOB Service při vypršení platnosti nekonečná zapůjčení automaticky uvolňuje.  
 
-Zapůjčení povolení synchronizace různé strategie a proto není podporován, včetně výhradní zápis / sdílené čtení, výhradní zápisu / výhradně číst a sdílet zápisu / čtení vylučují. Pokud existuje zapůjčení na službu storage vynucuje exkluzivní zápisu (put, nastavte a operace odstraňování) ale zajistit exkluzivitu, kterou pro operace čtení vyžaduje pro vývojáře tím zajistit, že všechny klientské aplikace používají ID zapůjčení a tento klient pouze jeden po druhém ID platné zapůjčení. Operace čtení, které neobsahují výsledek ID zapůjčení sdílené čtení.  
+Zapůjčení umožňují podporovat různé strategie synchronizace, včetně exkluzivního zápisu/sdíleného čtení, exkluzivního zápisu/exkluzivního čtení a sdíleného zápisu/výhradní čtení. V případě, že existuje zapůjčení, vynutí služba úložiště exkluzivní zápisy (operace PUT, set a Delete). zajištění výhradních operací čtení ale vyžaduje, aby vývojář zajistil, že všechny klientské aplikace používají ID zapůjčení a že v jednom okamžiku má pouze jednoho klienta. platné ID zapůjčení Operace čtení, které neobsahují ID zapůjčení, mají za následek sdílené čtení.  
 
-Následující jazyka C# fragment kódu ukazuje příklad získání exkluzivní zapůjčení na 30 sekund na objekt blob, aktualizuje obsah objektu blob a pak uvolníte zapůjčení. Pokud už existuje platné zapůjčení u objektu blob při pokusu získat nové zapůjčení, službu blob service vrátí výsledek stav "Konflikt HTTP (409)". Následující fragment kódu používá **AccessCondition** objektu k zapouzdření informací o zapůjčení, pokud odešle požadavek na aktualizaci objektu blob služby storage.  Úplnou ukázku si můžete stáhnout: [Správa souběžnosti pomocí služby Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Následující C# fragment kódu ukazuje příklad získání exkluzivního zapůjčení po dobu 30 sekund v objektu blob, aktualizaci obsahu objektu BLOB a uvolnění zapůjčení. Pokud je v objektu BLOB při pokusu o získání nového zapůjčení již platné zapůjčení, služba BLOB vrátí výsledek stavu "HTTP (409)" konfliktu ". Následující fragment kódu používá objekt **AccessCondition** k zapouzdření informací o zapůjčení, když odešle požadavek na aktualizaci objektu BLOB ve službě úložiště.  Úplnou ukázku si můžete stáhnout tady: [Správa souběžnosti pomocí Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -155,60 +155,60 @@ catch (StorageException ex)
 }  
 ```
 
-Pokud se pokusíte operaci zápisu zapůjčení objektu BLOB bez při předávání ID zapůjčení, požadavek selže s chybou 412. Všimněte si, že pokud vyprší platnost zapůjčení před voláním **UploadText** metoda ale stále předat ID zapůjčení, požadavek selže i s **412** chyby. Další informace o správě dobu vypršení platnosti zapůjčení a ID zapůjčení, najdete v článku [zapůjčení objektu Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx) dokumentace k REST.  
+Pokud se pokusíte o operaci zápisu u pronajatého objektu BLOB bez předání ID zapůjčení, požadavek se nezdaří a zobrazí se chyba 412. Všimněte si, že pokud zapůjčení vyprší před voláním metody **UploadText** , ale přesto PŘEdáte ID zapůjčení, požadavek se také nezdařil s chybou **412** . Další informace o správě časů vypršení platnosti zapůjčení a ID zapůjčení najdete v dokumentaci k [zapůjčení objektu BLOB](https://msdn.microsoft.com/library/azure/ee691972.aspx) REST.  
 
-Následující operace objektů blob můžete použít ke správě Pesimistická souběžnost zapůjčení:  
+Následující operace objektů BLOB můžou použít zapůjčení ke správě pesimistické souběžnosti:  
 
-* Put Blob
-* Získání objektu Blob
-* Získání vlastností objektu Blob
-* Nastavit vlastnosti objektu Blob
-* Získat Metadata objektu Blob
-* Nastavte Metadata objektu Blob
+* Vložení objektu BLOB
+* Získat objekt BLOB
+* Získat vlastnosti objektu BLOB
+* Nastavení vlastností objektu BLOB
+* Získat metadata objektu BLOB
+* Nastavení metadat objektu BLOB
 * Odstranit objekt Blob
-* Vložit blok
-* Vložit blokovaných webů.
-* Získat seznam blokovaných položek
-* Vložit stránky
-* Získání rozsahů stránek
-* Vytvoření snímku objektu Blob - ID zapůjčení volitelné, pokud existuje zapůjčení
-* Objekt Blob kopírování – ID zapůjčení povinné, pokud existuje zapůjčení na cílový objekt blob
-* Objekt Blob kopírování přerušení - ID zapůjčení vyžaduje existenci nekonečné zapůjčení na cílový objekt blob
-* Zapůjčení objektu Blob  
+* Blok vložení
+* Seznam blokovaných umístění
+* Získat seznam blokovaných webů
+* Vložit stránku
+* Získat rozsahy stránek
+* Objekt BLOB snímku – ID zapůjčení je volitelné, pokud existuje zapůjčení.
+* Kopírovat objekt BLOB – ID zapůjčení je povinné, pokud v cílovém objektu BLOB existuje zapůjčení.
+* Přerušit kopii objektu BLOB – vyžaduje se ID zapůjčení, pokud v cílovém objektu BLOB existuje nekonečné zapůjčení.
+* Objekt BLOB zapůjčení  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Pesimistická souběžnost pro kontejnery
-Zapůjčení v kontejnerech povolit stejné strategie synchronizace podporovat jako objekty BLOB (výhradní zápisu / sdílené čtení, výhradní zápisu / výhradně číst a sdílet zápisu / čtení výhradně) ale na rozdíl od objekty BLOB služby storage pouze exkluzivitu, kterou na vynucuje operace odstranění. Pokud chcete odstranit kontejner s aktivní zapůjčení, klient musí obsahovat ID aktivní zapůjčení s žádostí o odstranění. Všechny ostatní operace kontejneru proběhnout úspěšně, v kontejneru zapůjčení včetně ID zapůjčení v takovém případě jsou sdílené operace. Pokud aktualizace (put nebo sadu) nebo operace čtení exkluzivitu, kterou je potřeba pak vývojáři se ujistěte, že všichni klienti používat ID zapůjčení a který pouze jeden klientský současně má platné zapůjčení ID.  
+Zapůjčení u kontejnerů umožňuje, aby byly stejné strategie synchronizace, jako u objektů BLOB (exkluzivní zápis/sdílené čtení, exkluzivní zápis/výhradní čtení a sdílený zápis/výhradní čtení), ale na rozdíl od objektů blob, služba Storage vynutila výhradně výhradní přístup. operace odstranění. Aby mohl klient odstranit kontejner s aktivním zapůjčením, musí do žádosti o odstranění zahrnout aktivní ID zapůjčení. Všechny ostatní operace kontejneru jsou úspěšné na pronajatém kontejneru bez zahrnutí ID zapůjčení, v takovém případě se jedná o sdílené operace. Pokud je vyžadováno právo na aktualizaci (Put nebo Set) nebo operace čtení, vývojáři by měli zajistit, aby všichni klienti používali ID zapůjčení a aby měl pouze jeden klient v jednom okamžiku platné ID zapůjčení.  
 
-Následující operace kontejnerů můžete použít ke správě Pesimistická souběžnost zapůjčení:  
+Následující operace kontejneru můžou použít zapůjčení ke správě pesimistické souběžnosti:  
 
 * Odstranění kontejneru
 * Získat vlastnosti kontejneru
-* Získání metadat kontejneru
-* Nastavte Metadata kontejneru
-* Získání seznamu ACL kontejneru
-* Nastavení ACL kontejneru
-* Zapůjčení kontejneru  
+* Získat metadata kontejneru
+* Nastavení metadat kontejneru
+* Získat seznam ACL kontejneru
+* Nastavení seznamu ACL kontejneru
+* Kontejner zapůjčení  
 
 Další informace naleznete v tématu:  
 
-* [Určení podmíněné záhlaví pro operace služby objektů Blob](https://msdn.microsoft.com/library/azure/dd179371.aspx)
-* [Zapůjčení kontejneru](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Zapůjčení objektu Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Určení podmíněných hlaviček pro operace služby BLOB Service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Kontejner zapůjčení](https://msdn.microsoft.com/library/azure/jj159103.aspx)
+* [Objekt BLOB zapůjčení](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
-## <a name="managing-concurrency-in-the-table-service"></a>Správa souběžnosti v službě Table Service
-Služba table service používá optimistické souběžnosti kontrol jako výchozí chování při práci s entitami, na rozdíl od blob service, kde je nutné explicitně vybrat k provedení kontroly optimistické souběžnosti. Rozdíl mezi službami tabulek a objektů blob je, že službou blob service můžete spravovat souběžnosti kontejnerů a objektů BLOB můžete pouze spravovat souběžnosti chování entit.  
+## <a name="managing-concurrency-in-the-table-service"></a>Správa souběžnosti ve službě Table Service
+Služba Table Service používá jako výchozí chování při práci s entitami kontroly optimistického řízení souběžnosti, na rozdíl od služby blob, kde musíte explicitně zvolit, aby se prováděly kontroly optimistického řízení souběžnosti. Dalším rozdílem mezi tabulkami a službami BLOB Services je, že můžete spravovat jenom chování souběžnosti entit, zatímco u služby BLOB Service můžete spravovat souběžnost kontejnerů a objektů BLOB.  
 
-Chcete-li použít optimistické řízení souběžnosti a zaškrtněte, pokud jiný proces upravit entity, protože jste získali z služba table storage, můžete použít hodnota ETag, který jste dostali, když se vrátí entity služby table service. Přehled tohoto procesu je následujícím způsobem:  
+Pokud chcete použít optimistickou souběžnost a ověřit, jestli jiný proces změnil entitu, protože jste ji načetli ze služby Table Storage, můžete použít hodnotu ETag, která se zobrazí, když služba Table vrátí entitu. Osnova tohoto procesu je následující:  
 
-1. Načtení entity ze služby table storage, odpověď obsahuje hodnotu ETag, která identifikuje aktuální identifikátor přidružený k entitě služby úložiště.
-2. Při aktualizaci entity zahrnují jste získali v kroku 1 povinná hodnota ETag **If-Match** záhlaví požadavku odeslat do služby.
-3. Služba porovnává hodnota ETag v požadavku s aktuální hodnotou ETag entity.
-4. Pokud aktuální hodnotou ETag entity neodpovídá Etagu v povinných **If-Match** záhlaví v žádosti o službu vrátí chybu 412 klientovi. To znamená do klienta jiný proces aktualizoval entitu od klienta jejím načtení.
-5. Pokud aktuální značka ETag hodnota entity je stejný jako značka ETag v povinných **If-Match** hlavičky v požadavku nebo **If-Match** záhlaví obsahuje zástupný znak (*), služba provádí požadovanou operaci a aktualizuje aktuální hodnotou ETag, která má být zobrazit, že byl aktualizován.  
+1. Načte entitu ze služby Table Storage. odpověď obsahuje hodnotu ETag, která identifikuje aktuální identifikátor přidružený k dané entitě ve službě úložiště.
+2. Když aktualizujete entitu, zahrňte hodnotu ETag, kterou jste dostali v kroku 1 v hlavičce povinného **If-Match** žádosti, kterou odešlete do služby.
+3. Služba porovnává hodnotu ETag v žádosti s aktuální hodnotou ETag entity.
+4. Pokud je aktuální hodnota ETag entity odlišná od značky ETag v povinné hlavičce **If-Match** v žádosti, služba vrátí klientovi chybu 412. To indikuje klientovi, že entita aktualizovala jiný proces, protože ji klient načetl.
+5. Pokud je aktuální hodnota ETag entity stejná jako značka ETag v povinné hlavičce **If-Match** v požadavku nebo hlavička **If-Match** obsahuje zástupný znak (*), služba provede požadovanou operaci a aktualizuje aktuální ETag. hodnota entity, která ukazuje, že byla aktualizována.  
 
-Upozorňujeme, že na rozdíl od služby blob service, služby table service vyžaduje klient patří **If-Match** záhlaví v žádosti o aktualizaci. Je však možné vynutit Nepodmíněný aktualizovat (poslední zapisovače služby wins strategie) a obejít řízení souběžnosti, pokud se nastaví klienta **If-Match** záhlaví zástupný znak (*) v žádosti.  
+Všimněte si, že na rozdíl od služby BLOB Service vyžaduje služba Table Service, aby klient zahrnul hlavičku **If-Match** v žádosti o aktualizaci. Je ale možné vynutit nepodmíněnou aktualizaci (poslední strategii služby WINS pro zápis) a obejít kontrolu souběžnosti, pokud klient v žádosti nastaví hlavičku **If-Match** na zástupný znak (*).  
 
-Následující fragment C# ukazuje entita zákazník, který byl dříve vytvořena nebo načíst s e-mailová adresa aktualizovat. Počáteční vložit nebo načíst operace úložiště hodnota ETag v objektu zákazníků, a protože příklad používá stejnou instanci objektu při provádění operaci nahrazení, ho odešle zpět do služby table service umožňuje službě automaticky hodnota ETag Kontrola souběžnosti porušení. Pokud jiný proces se aktualizovala entity ve službě table storage, služba vrátí zprávu stav HTTP 412 (Předběžná podmínka je neplatná).  Úplnou ukázku si můžete stáhnout: [Správa souběžnosti pomocí služby Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Následující C# fragment kódu ukazuje entitu zákazníka, která byla dříve vytvořena nebo načtena s aktualizovanou e-mailovou adresou. Operace prvotního vložení nebo načtení ukládá hodnotu ETag do objektu Customer, protože ukázka používá stejnou instanci objektu při provádění operace Replace, automaticky pošle hodnotu ETag zpátky do služby Table Service a tím umožňuje službě kontrolovat narušení souběžnosti. Pokud se entita v úložišti tabulek aktualizovala jiným procesem, služba vrátí stavovou zprávu HTTP 412 (Předběžná podmínka selhala).  Úplnou ukázku si můžete stáhnout tady: [Správa souběžnosti pomocí Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 try
@@ -227,62 +227,62 @@ catch (StorageException ex)
 }  
 ```
 
-Explicitně zakázat kontrolu souběžnosti, byste měli nastavit **ETag** vlastnost **zaměstnance** objektu "*" před provedením operace nahrazení.  
+Chcete-li explicitně zakázat kontrolu souběžnosti, měli byste nastavit vlastnost **ETag** objektu **Employee** na "*" před provedením operace Replace.  
 
 ```csharp
 customer.ETag = "*";  
 ```
 
-Následující tabulka shrnuje použití značky ETag hodnoty operace entitu tabulky:
+Následující tabulka shrnuje, jak operace entity tabulky používají hodnoty ETag:
 
-| Operace | Vrátí hodnotu značky ETag | Vyžaduje hlavičky žádosti If-Match |
+| Operace | Vrátí hodnotu ETag. | Vyžaduje hlavičku požadavku If-Match. |
 |:--- |:--- |:--- |
-| Dotazování entit |Ano |Ne |
-| Vložte Entity |Ano |Ne |
-| Aktualizace Entity |Ano |Ano |
-| Sloučit Entity |Ano |Ano |
+| Entity dotazu |Ano |Ne |
+| Vložit entitu |Ano |Ne |
+| Aktualizovat entitu |Ano |Ano |
+| Sloučit entitu |Ano |Ano |
 | Odstranit entitu |Ne |Ano |
-| Vložení nebo nahrazení Entity |Ano |Ne |
-| Vložit nebo sloučit Entity |Ano |Ne |
+| Vložit nebo nahradit entitu |Ano |Ne |
+| Vložit nebo sloučit entitu |Ano |Ne |
 
-Všimněte si, že **vložení nebo nahrazení Entity** a **vložení nebo sloučit Entity** provést operace *není* provést jakékoli souběžnosti, protože se neodesílají na hodnotu značky ETag do tabulky Služba.  
+Všimněte si, že operace **vložení nebo nahrazení entit** a **vložení nebo sloučení entit** neprovede žádné kontroly souběžnosti, protože neodesílají hodnotu ETag do služby Table Service. **  
 
-Vývojářům, kteří používají tabulky obecně by se neměla spoléhat na optimistického řízení souběžnosti, při vytváření škálovatelných aplikací. V případě potřeby pesimistické zamykání můžete jedním z přístupů vývojáři si při přístupu k tabulek je přiřadit určeného objektu blob pro každou tabulku a pokuste se provést zapůjčení pro objekt blob před fungujícími v tabulce. Tento přístup vyžaduje, aby aplikace k zajištění všechny cesty k datům přístup získat zapůjčení před fungujícími v tabulce. Také nezapomeňte přitom, že doba zapůjčení minimální je 15 sekund, které vyžaduje důkladné zvážení pro zajištění škálovatelnosti.  
+V obecných vývojářích, kteří používají tabulky, by měly při vývoji škálovatelných aplikací spoléhat na optimistickou souběžnost. Pokud je potřeba pesimistické zamykání, můžou při přístupu k tabulkám podniknout vývojáři, kteří přiřadí určený objekt BLOB pro každou tabulku a před tím, než bude v tabulce pracovat, se pokusí o objekt BLOB převzít zapůjčení. Tento přístup vyžaduje aplikaci, aby se zajistilo, že všechny cesty k datům získají zapůjčení před tím, než se v tabulce začne pracovat. Je také potřeba si uvědomit, že minimální doba zapůjčení je 15 sekund, což vyžaduje pečlivou pozornost škálovatelnosti.  
 
 Další informace naleznete v tématu:  
 
 * [Operace s entitami](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
-## <a name="managing-concurrency-in-the-queue-service"></a>Správa souběžnosti ve službě Queue
-Jeden scénář, ve které souběžnosti je problém v jejich zařazování do fronty služby je, kde jsou více klientů načítání zpráv z fronty. Při načtení zprávy z fronty odpověď obsahuje zprávy a potvrzení hodnotu, která je vyžadována k odstranění zprávy. Zpráva není automaticky odstraněn z fronty, ale poté, co se má načíst, není viditelné pro ostatní klienty pro časový interval zadaný parametrem visibilitytimeout. K odstranění zprávy po jejich zpracování a před časový limit určený parametrem TimeNextVisible element odpovědi, které se počítá na základě hodnoty parametru visibilitytimeout očekává klienta, který načte zprávu. Hodnota visibilitytimeout se přidá do doby načtení zprávy k určení hodnoty TimeNextVisible.  
+## <a name="managing-concurrency-in-the-queue-service"></a>Správa souběžnosti ve službě front
+Jedním z scénářů, ve kterých je souběžnost ve frontě ve službě Queueing, je, že více klientů načítá zprávy z fronty. Pokud je z fronty načtena zpráva, odpověď obsahuje zprávu a hodnotu pro příjem pop, která je vyžadována k odstranění zprávy. Zpráva není automaticky odstraněna z fronty, ale po jejím načtení není viditelná pro ostatní klienty v časovém intervalu určeném parametrem visibilitytimeout. Očekává se, že klient, který načte zprávu, odstraní zprávu po jejím zpracování a před časem specifikovaným prvkem TimeNextVisible odpovědi, který se vypočítá na základě hodnoty parametru visibilitytimeout. Hodnota visibilitytimeout je přidána do času, ve kterém je načtena zpráva k určení hodnoty TimeNextVisible.  
 
-Služba fronty nemá podporu pro optimistického nebo pesimistického souběžnosti a pro tuto klientů z důvodu zpracování zprávy načtené z fronty by měl zajistit zpracování zpráv způsobem idempotentní. Poslední strategie wins zapisovače se používá pro operace aktualizace, jako je například SetQueueServiceProperties, SetQueueMetaData, UpdateMessage a SetQueueACL.  
-
-Další informace naleznete v tématu:  
-
-* [Rozhraní REST API služby front](https://msdn.microsoft.com/library/azure/dd179363.aspx)
-* [Získání zprávy](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
-
-## <a name="managing-concurrency-in-the-file-service"></a>Správa souběžnosti v souboru služby
-Služba souborů lze přistupovat pomocí dva koncové body jiný protokol – SMB a REST. Podpora optimistické uzamykání, nebo pesimistické zamykání nemá žádné služby REST a všechny aktualizace brzo bude následovat poslední strategie wins zapisovače. Klienti SMB, které aktuálně připojit sdílené složky můžete využít soubor zamykání mechanismy systému pro správu přístupu ke sdíleným souborům – včetně možnosti provádět pesimistické zamykání. Po otevření souboru v klientovi SMB určuje sdílet i přístup k souborům režimu. Nastavení možnosti přístupu k souborům "Write" nebo "R/w" spolu se sdílenou složku režim "None", bude výsledkem soubor je uzamčen klientovi SMB dlouho, dokud se nezavře soubor. Při pokusu o operaci REST na soubor, ve kterém klientovi SMB je soubor uzamčen službu REST se vrátit stavový kód 409 (konflikt) s kódem chyby SharingViolation.  
-
-Když klientovi SMB se otevře soubor pro odstranění, označí soubor jako čekající na odstranění do jiných klientů protokolu SMB jsou uzavřené otevřenými popisovači v tomto souboru. Když soubor je označená jako probíhající odstranění, všechny operace REST na tento soubor vrátí stavový kód 409 (konflikt) s kódem chyby SMBDeletePending. Protože je možné, klient SMB můžete odebrat příznak čeká na odstranění před zavřením souboru není vrátil stavový kód 404 (Nenalezeno). Jinými slovy stavový kód 404 (Nenalezeno) se očekávají jenom, když se ho odebral. Všimněte si, že soubor je v SMB odstranit stav Čekání na vyřízení, nebude zahrnutý ve výsledcích seznam souborů. Nezapomeňte, že operace REST odstranit soubor a adresář odstraňte REST usilujeme o to atomicky se výsledek není ve stavu čekající na odstranění.  
+Služba front nemá podporu pro optimistickou ani pesimistickou souběžnost a z tohoto důvodu klienti zpracovávající zprávy načtené z fronty mají jistotu, že se zprávy zpracovávají idempotentní způsobem. Pro operace aktualizace, jako je SetQueueServiceProperties, SetQueueMetaData, SetQueueACL a UpdateMessage, se používá poslední strategie zapisovače WINS.  
 
 Další informace naleznete v tématu:  
 
-* [Správa souborů uzamkne](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
+* [REST API služby fronty](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [Získat zprávy](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
-## <a name="summary-and-next-steps"></a>Shrnutí a další kroky
-Služby Microsoft Azure Storage byly navržené pro potřeby nejsložitější online aplikace bez vynucení ohrožení bezpečnosti nebo znovu zamysleli nad důležité předpoklady, například souběžnosti a konzistenci dat, které se vývojáře udělit.  
+## <a name="managing-concurrency-in-the-file-service"></a>Správa souběžnosti v Souborové službě
+K Souborové službě se dá dostat pomocí dvou různých koncových bodů protokolu – SMB a REST. Služba REST nepodporuje buď optimistické zamykání, nebo pesimistické zamykání a všechny aktualizace budou následovat po strategii služby WINS pro poslední zapisovače. Klienti SMB, kteří připojují sdílené složky, můžou využít mechanismy zamykání systému souborů ke správě přístupu ke sdíleným souborům – včetně možnosti provádět pesimistické zamykání. Když klient SMB otevře soubor, určí režim přístupu k souboru i sdílení. Nastavení možnosti přístupu k souboru pro zápis nebo čtení a zápis spolu s režimem sdílení souborů "žádné" způsobí, že se soubor zamkne klientem SMB, dokud nebude soubor uzavřený. Pokud se při pokusu o operaci REST u souboru, kde je u klienta SMB soubor zamčený, služba REST vrátí stavový kód 409 (konflikt) s kódem chyby SharingViolation.  
 
-Pro kompletní ukázkovou aplikaci odkazovat v tomto blogu:  
+Když klient SMB otevře soubor pro odstranění, označí soubor jako nedokončený, dokud nebudou všechny ostatní otevřené popisovače protokolu SMB v tomto souboru zavřeny. Když je soubor označený jako čeká na odstranění, všechny operace REST na tomto souboru vrátí stavový kód 409 (konflikt) s kódem chyby SMBDeletePending. Stavový kód 404 (Nenalezeno) se nevrátí, protože klient SMB může před zavřením souboru odstranit příznak nedokončeného odstranění. Jinými slovy, stavový kód 404 (Nenalezeno) se očekává jenom v případě, že byl soubor odebraný. Všimněte si, že když je soubor ve stavu čekání na odstranění protokolu SMB, nebude zahrnutý do výsledků souborů seznamu. Všimněte si také, že operace odstranění souboru REST a odstranění adresáře REST jsou potvrzeny atomicky a nevedou k nedokončenému stavu odstranění.  
 
-* [Správa souběžnosti pomocí služby Azure Storage – ukázková aplikace](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
+Další informace naleznete v tématu:  
 
-Další informace o Azure Storage najdete:  
+* [Správa zámků souborů](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
-* [Microsoft Azure Storage domovské stránky](https://azure.microsoft.com/services/storage/)
+## <a name="summary-and-next-steps"></a>Souhrn a další kroky
+Služba Microsoft Azure Storage byla navržena tak, aby splňovala potřeby nejúčinnějších online aplikací, aniž by bylo nutné vývojářům napadnout nebo znovu považovat klíčové předpoklady pro návrh, jako je souběžnost a konzistence dat, ke kterým se přijímají. udělena.  
+
+Úplnou ukázkovou aplikaci, na kterou se odkazuje na tomto blogu:  
+
+* [Správa souběžnosti pomocí Azure Storage ukázkové aplikace](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
+
+Další informace o Azure Storage najdete v těchto tématech:  
+
+* [Microsoft Azure Storage domovskou stránku](https://azure.microsoft.com/services/storage/)
 * [Seznámení se službou Azure Storage](storage-introduction.md)
-* Začínáme se Storage [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [tabulky](../../cosmos-db/table-storage-how-to-use-dotnet.md), [fronty](../storage-dotnet-how-to-use-queues.md), a [soubory](../storage-dotnet-how-to-use-files.md)
-* Architektura úložiště – [úložiště Azure: Služby s vysokou dostupností cloudového úložiště se silnou konzistenci](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* Začínáme úložiště pro objekty [BLOB](../blobs/storage-dotnet-how-to-use-blobs.md), [tabulky](../../cosmos-db/table-storage-how-to-use-dotnet.md), [fronty](../storage-dotnet-how-to-use-queues.md)a [soubory](../storage-dotnet-how-to-use-files.md)
+* Architektura úložiště – [Azure Storage: Vysoce dostupná služba cloudového úložiště s silnou konzistencí](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

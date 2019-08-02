@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Volání Text Analytics služby Cognitive Services pomocí sady SDK pro Ruby'
+title: 'Rychlý start: Volání služby Analýza textu pro rozpoznávání pomocí sady Ruby SDK'
 titleSuffix: Azure Cognitive Services
-description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
+description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít s používáním rozhraní API pro analýzu textu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: raymondl
 manager: nitinme
@@ -10,50 +10,48 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: tasharm
-ms.openlocfilehash: 688887826fa803b616ca737bc8558aa17ed80e37
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 3f18b77fe436328e79df351b9c5edcf6dc289ad7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297775"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697273"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>Rychlý start: Volání služby pro analýzu textu pomocí sady SDK pro Ruby
+# <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>Rychlý start: Volání služby Analýza textu pomocí sady Ruby SDK
 
 <a name="HOLTop"></a>
 
 
-V tomto rychlém startu můžete začít analýzou jazyce s využitím Text Analytics SDK pro Ruby. Zatímco [rozhraní Text Analytics](//go.microsoft.com/fwlink/?LinkID=759711) rozhraní REST API je kompatibilní s Většina programovacích jazyků, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-ruby-sdk-samples/blob/master/samples/text_analytics.rb).
+Pomocí tohoto rychlého startu můžete začít s analýzou jazyka s Analýza textu SDK pro Ruby. I když je REST API [Analýza textu](//go.microsoft.com/fwlink/?LinkID=759711) kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-ruby-sdk-samples/blob/master/samples/text_analytics.rb)
 
 Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Ruby 2.5.5 nebo novější](https://www.ruby-lang.org/)
-* Rozhraní Text analytics [sady SDK pro Ruby](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
+* Sada Text Analytics [SDK pro Ruby](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
  
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Kromě toho potřebujete [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) vygenerovaný během registrace. 
-
 <a name="RubyProject"></a>
 
-## <a name="create-a-ruby-project-and-install-the-sdk"></a>Vytvořte projekt Ruby a instalace sady SDK
+## <a name="create-a-ruby-project-and-install-the-sdk"></a>Vytvoření projektu Ruby a instalace sady SDK
 
-1. Vytvoření nového projektu ruby a přidejte nový soubor s názvem `Gemfile`.
-2. Přidat Text Analytics SDK do projektu tak, že přidáte níže uvedeného kódu `Gemfile`.
+1. Vytvořte nový projekt Ruby a přidejte nový soubor s názvem `Gemfile`.
+2. Přidejte sadu Analýza textu SDK do projektu přidáním níže uvedeného kódu do `Gemfile`.
 
     ```ruby
     source 'https://rubygems.org'
     gem 'azure_cognitiveservices_textanalytics', '~>0.17.3'
     ```
 
-## <a name="create-a-text-analytics-client"></a>Vytvoření klienta Text analytics
+## <a name="create-a-text-analytics-client"></a>Vytvoření klienta pro analýzu textu
 
-1. Vytvořte nový soubor s názvem `TextAnalyticsExamples.rb` v oblíbeném editoru nebo prostředí IDE. Importujte rozhraní Text Analytics SDK.
+1. Vytvořte nový soubor s názvem `TextAnalyticsExamples.rb` v oblíbených editorech nebo v integrovaném vývojovém prostředí. Importujte sadu Analýza textu SDK.
 
-2. Objekt přihlašovacích údajů se použije klient pro analýzu textu. Vytvořte ho s `CognitiveServicesCredentials.new()` a předají se váš klíč předplatného.
+2. Klient Analýza textu použije objekt přihlašovacích údajů. Vytvořte ho pomocí `CognitiveServicesCredentials.new()` a předejte svůj klíč předplatného.
 
-3. Vytvoření klienta s správný koncový bod pro analýzu textu.
+3. Vytvořte klienta se správným koncovým bodem Analýza textu.
 
     ```ruby
     require 'azure_cognitiveservices_textanalytics'
@@ -76,11 +74,11 @@ Kromě toho potřebujete [koncový bod a přístupový klíč](../How-tos/text-a
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-Pomocí Text Analytics SDK nebo rozhraní API, můžete provádět analýzu subjektivního hodnocení na sadu záznamů text. Následující příklad zobrazí skóre mínění pro několik dokumentů.
+Pomocí Analýza textu SDK nebo rozhraní API můžete provádět analýzy mínění pro sadu textových záznamů. Následující příklad zobrazuje mínění skóre pro několik dokumentů.
 
-1. Vytvořit novou funkci s názvem `SentimentAnalysisExample()` desetinný klienta text analytics vytvořené výše jako parametr.
+1. Vytvořte novou funkci s názvem `SentimentAnalysisExample()` , která převezme klienta Text Analytics vytvořený výše jako parametr.
 
-2. Definujte sadu `MultiLanguageInput` objektů má být analyzován. Přidáte jazyk a text pro každý objekt. ID může být libovolná hodnota.
+2. Definujte sadu `MultiLanguageInput` objektů, které se mají analyzovat. Přidejte jazyk a text pro každý objekt. ID může být libovolná hodnota.
 
     ```ruby
     def SentimentAnalysisExample(client)
@@ -106,9 +104,9 @@ Pomocí Text Analytics SDK nebo rozhraní API, můžete provádět analýzu subj
       input_4.text = "L'hotel veneziano era meraviglioso. È un bellissimo pezzo di architettura."
     ```
 
-3. V rámci stejné funkce zkombinujte do seznam dokumentů. Přidejte ji tak `documents` pole `MultiLanguageBatchInput` objektu. 
+3. V rámci stejné funkce sloučí dokumenty do seznamu. Přidejte ho do `documents` pole `MultiLanguageBatchInput` objektu. 
 
-4. Volání klienta `sentiment()` pracovat `MultiLanguageBatchInput` objektu jako parametr odesílat dokumenty. Pokud jsou vráceny žádné výsledky, vytiskněte.
+4. Zavolejte `sentiment()` funkci klienta `MultiLanguageBatchInput` s objektem jako parametr pro odeslání dokumentů. Pokud se vrátí nějaké výsledky, vytiskněte je.
     ```ruby
       input_documents =  MultiLanguageBatchInput.new
       input_documents.documents = [input_1, input_2, input_3, input_4]
@@ -126,7 +124,7 @@ Pomocí Text Analytics SDK nebo rozhraní API, můžete provádět analýzu subj
     end
     ```
 
-5. Volání `SentimentAnalysisExample()` funkce.
+5. `SentimentAnalysisExample()` Zavolejte funkci.
 
     ```ruby
     SentimentAnalysisExample(textAnalyticsClient)
@@ -144,13 +142,13 @@ Document ID: 4 , Sentiment Score: 1.00
 
 <a name="LanguageDetection"></a>
 
-## <a name="language-detection"></a>Detekce jazyka
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
-Služba Text Analytics můžete rozpoznat jazyk textový dokument velkým počtem jazyky a národní prostředí. Následující příklad zobrazí několik dokumentů, které byly napsány v jazyce.
+Služba Analýza textu dokáže detekovat jazyk textového dokumentu napříč velkým počtem jazyků a národních prostředí. Následující příklad zobrazuje jazyk, ve kterém bylo napsáno několik dokumentů.
 
-1. Vytvořit novou funkci s názvem `DetectLanguageExample()` , která přijímá klienta text analytics vytvořené výše jako parametr. 
+1. Vytvořte novou funkci s názvem `DetectLanguageExample()` , která převezme klienta Text Analytics vytvořený výše jako parametr. 
 
-2. Definujte sadu `LanguageInput` objektů má být analyzován. Přidáte jazyk a text pro každý objekt. ID může být libovolná hodnota.
+2. Definujte sadu `LanguageInput` objektů, které se mají analyzovat. Přidejte jazyk a text pro každý objekt. ID může být libovolná hodnota.
 
     ```ruby
     def DetectLanguageExample(client)
@@ -168,9 +166,9 @@ Služba Text Analytics můžete rozpoznat jazyk textový dokument velkým počte
        language_input_3.text = '这是一个用中文写的文件'
     ```
 
-3. V rámci stejné funkce zkombinujte do seznam dokumentů. Přidejte ji tak `documents` pole `LanguageBatchInput` objektu. 
+3. V rámci stejné funkce sloučí dokumenty do seznamu. Přidejte ho do `documents` pole `LanguageBatchInput` objektu. 
 
-4. Volání klienta `detect_language()` pracovat `LanguageBatchInput` objektu jako parametr odesílat dokumenty. Pokud jsou vráceny žádné výsledky, vytiskněte.
+4. Zavolejte `detect_language()` funkci klienta `LanguageBatchInput` s objektem jako parametr pro odeslání dokumentů. Pokud se vrátí nějaké výsledky, vytiskněte je.
     ```ruby
        input_documents = LanguageBatchInput.new
        input_documents.documents = [language_input_1, language_input_2, language_input_3]
@@ -191,7 +189,7 @@ Služba Text Analytics můžete rozpoznat jazyk textový dokument velkým počte
      end
     ```
 
-5. Volání funkce `DetectLanguageExample`
+5. Volání funkce`DetectLanguageExample`
 
     ```ruby
     DetectLanguageExample(textAnalyticsClient)
@@ -210,11 +208,11 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Rozpoznávání entit
 
-Služba Text Analytics můžete rozlišení a extrahovat různé entity (osoby, místa a věcí) v textové dokumenty. Následující příklad zobrazuje entity v několika příklad dokumentů.
+Služba Analýza textu může v textových dokumentech odlišit a extrahovat různé entity (osoby, místa a věci). Následující příklad zobrazuje entity, které byly nalezeny v několika ukázkových dokumentech.
 
-1. Vytvořit novou funkci s názvem `Recognize_Entities()` desetinný klienta text analytics vytvořené výše jako parametr.
+1. Vytvořte novou funkci s názvem `Recognize_Entities()` , která převezme klienta Text Analytics vytvořený výše jako parametr.
 
-2. Definujte sadu `MultiLanguageInput` objektů má být analyzován. Přidáte jazyk a text pro každý objekt. ID může být libovolná hodnota.
+2. Definujte sadu `MultiLanguageInput` objektů, které se mají analyzovat. Přidejte jazyk a text pro každý objekt. ID může být libovolná hodnota.
 
     ```ruby
       def RecognizeEntitiesExample(client)
@@ -230,9 +228,9 @@ Služba Text Analytics můžete rozlišení a extrahovat různé entity (osoby, 
         input_2.text = 'La sede principal de Microsoft se encuentra en la ciudad de Redmond, a 21 kilómetros de Seattle.'
     ```
 
-3. V rámci stejné funkce zkombinujte do seznam dokumentů. Přidejte ji tak `documents` pole `MultiLanguageBatchInput` objektu. 
+3. V rámci stejné funkce sloučí dokumenty do seznamu. Přidejte ho do `documents` pole `MultiLanguageBatchInput` objektu. 
 
-4. Volání klienta `entities()` pracovat `MultiLanguageBatchInput` objektu jako parametr odesílat dokumenty. Pokud jsou vráceny žádné výsledky, vytiskněte.
+4. Zavolejte `entities()` funkci klienta `MultiLanguageBatchInput` s objektem jako parametr pro odeslání dokumentů. Pokud se vrátí nějaké výsledky, vytiskněte je.
 
     ```ruby
         input_documents =  MultiLanguageBatchInput.new
@@ -260,7 +258,7 @@ Služba Text Analytics můžete rozlišení a extrahovat různé entity (osoby, 
       end
     ```
 
-5. Volání funkce `RecognizeEntitiesExample`
+5. Volání funkce`RecognizeEntitiesExample`
     ```ruby
     RecognizeEntitiesExample(textAnalyticsClient)
     ```
@@ -309,11 +307,11 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
-Služby pro analýzu textu můžete extrakce klíčových frází v věty. Následující příklad zobrazuje entity v několika příklad dokumentů v různých jazycích.
+Služba Analýza textu může extrahovat klíčové fráze ve větách. Následující příklad zobrazuje entity, které byly nalezeny v několika příkladech dokumentů v několika jazycích.
 
-1. Vytvořit novou funkci s názvem `KeyPhraseExtractionExample()` desetinný klienta text analytics vytvořené výše jako parametr.
+1. Vytvořte novou funkci s názvem `KeyPhraseExtractionExample()` , která převezme klienta Text Analytics vytvořený výše jako parametr.
 
-2. Definujte sadu `MultiLanguageInput` objektů má být analyzován. Přidáte jazyk a text pro každý objekt. ID může být libovolná hodnota.
+2. Definujte sadu `MultiLanguageInput` objektů, které se mají analyzovat. Přidejte jazyk a text pro každý objekt. ID může být libovolná hodnota.
 
     ```ruby
     def KeyPhraseExtractionExample(client)
@@ -339,9 +337,9 @@ Služby pro analýzu textu můžete extrakce klíčových frází v věty. Násl
       input_4.text = 'A mi me encanta el fútbol!'
       ```
 
-3. V rámci stejné funkce zkombinujte do seznam dokumentů. Přidejte ji tak `documents` pole `MultiLanguageBatchInput` objektu. 
+3. V rámci stejné funkce sloučí dokumenty do seznamu. Přidejte ho do `documents` pole `MultiLanguageBatchInput` objektu. 
 
-4. Volání klienta `key_phrases()` pracovat `MultiLanguageBatchInput` objektu jako parametr odesílat dokumenty. Pokud jsou vráceny žádné výsledky, vytiskněte.
+4. Zavolejte `key_phrases()` funkci klienta `MultiLanguageBatchInput` s objektem jako parametr pro odeslání dokumentů. Pokud se vrátí nějaké výsledky, vytiskněte je.
 
     ```ruby
       input_documents =  MultiLanguageBatchInput.new
@@ -365,7 +363,7 @@ Služby pro analýzu textu můžete extrakce klíčových frází v věty. Násl
     end
     ```
 
-5. Volání funkce `KeyPhraseExtractionExample`
+5. Volání funkce`KeyPhraseExtractionExample`
 
     ```ruby
     KeyPhraseExtractionExample(textAnalyticsClient)
@@ -392,12 +390,12 @@ Document ID: 4
                 fútbol
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

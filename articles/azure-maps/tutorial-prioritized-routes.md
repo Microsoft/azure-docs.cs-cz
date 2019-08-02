@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e0d201baec253abee9ad8a998dd36968927a25a6
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: ad67b17d76e811d5977955c40f444c4b7c0a01e3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357586"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478834"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Vyhledání tras pro různé režimy dopravy s využitím Azure Maps
 
@@ -50,7 +50,7 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
 
         <script>
             var map, datasource, client;
@@ -82,7 +82,7 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
 
     Všimněte si, že hlavička HTML zahrnuje soubory prostředků šablon stylů CSS a JavaScriptu hostované knihovnou Ovládací prvek Mapa v Azure. V těle stránky si všimněte události `onload`, která po načtení těla stránky zavolá funkci `GetMap`. Tato funkce bude obsahovat vložený kód JavaScriptu pro přístup k rozhraním Azure Maps API.
 
-3. Do funkce `GetMap` přidejte následující kód JavaScriptu. Nahraďte řetězec `<Your Azure Maps Key>` s primární klíč, který jste zkopírovali ze svého účtu mapy.
+3. Do funkce `GetMap` přidejte následující kód JavaScriptu. Nahraďte řetězec `<Your Azure Maps Key>` primárním klíčem, který jste zkopírovali z účtu Maps.
 
     ```JavaScript
     //Instantiate a map object
@@ -95,7 +95,7 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
     });
     ```
 
-    `atlas.Map` Třída umožňuje ovládání vizuální a interaktivní webové mapy a je součástí služby API pro mapové ovládací Azure.
+    `atlas.Map` Třída poskytuje ovládací prvek pro vizuální a interaktivní webovou mapu a je součástí rozhraní API služby Azure ovládací prvek mapa.
 
 4. Uložte soubor a otevřete ho v prohlížeči. V tuto chvíli máte základní mapu, kterou můžete dále rozvíjet.
 
@@ -103,7 +103,7 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
 
 ## <a name="visualize-traffic-flow"></a>Vizualizace aktuálního provozu
 
-1. Přidejte do mapy zobrazení aktuálního provozu. Mapování `ready` události čeká na mapování prostředků jsou načtené a připravené k bezpečně pracovat s ním.
+1. Přidejte do mapy zobrazení aktuálního provozu. Událost Maps `ready` počká, dokud se prostředky map nenačte a neumožní bezpečně pracovat s ní.
 
     ```javascript
     map.events.add("ready", function() {
@@ -114,9 +114,9 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
     });
     ```
 
-    Na mapě `ready` obslužná rutina události, nastavení toku provozu na mapě nastavené na `relative`, která odpovídá relativní rychlosti silniční dopravy vzhledem k volnému toku. Můžete také nastavit hodnotu rychlosti silniční dopravy `absolute` nebo `relative-delay`, která zobrazuje relativní rychlost, pokud se liší od volného toku.
+    V obslužné rutině události mapy `ready` je nastavení toku přenosu na mapě nastaveno na `relative`, což je rychlost provozu vzhledem k volnému toku. Můžete také nastavit hodnotu rychlosti silniční dopravy `absolute` nebo `relative-delay`, která zobrazuje relativní rychlost, pokud se liší od volného toku.
 
-2. Uložte soubor **MapTruckRoute.html** a aktualizujte stránku v prohlížeči. Je-li pracovat s mapy a přiblížení Los Angeles, měli byste vidět ulice s aktuálními údaji provoz.
+2. Uložte soubor **MapTruckRoute.html** a aktualizujte stránku v prohlížeči. Pokud s mapou pracujete a přiblížíte se k Los Angeles, měla by se zobrazit ulice s aktuálními daty o provozu.
 
    ![Zobrazení mapy provozu](./media/tutorial-prioritized-routes/traffic-map.png)
 
@@ -126,7 +126,7 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
 
 V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna trasa využívá silnice pro automobilovou dopravu a druhá využívá silnice pro nákladní dopravu. Při vykreslení zobrazíme ikonu symbolu pro začátek a konec trasy a pro každou cestu trasy použijeme čáru jiné barvy.
 
-1. Po inicializaci mapy, přidejte následující kód jazyka JavaScript v mapách `ready` obslužné rutiny události.
+1. Po inicializaci mapy přidejte do obslužné rutiny události Maps `ready` následující kód jazyka JavaScript.
 
     ```JavaScript
     //Wait until the map resources have fully loaded.
@@ -159,9 +159,9 @@ V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna t
     });
     ```
     
-    V mapách `ready` obslužná rutina události, zdroj dat je vytvořili pro uložení postupu řádky, jakož i počáteční a koncové body. Vytvoří se vrstva čar, která se připojí ke zdroji dat a která definuje, jak se vykreslí čára trasy. Ve funkci čáry trasy se tloušťka a barva čáry načte z vlastností pomocí výrazů. Při přidávání vrstvy do mapy se předá druhý parametr s hodnotou `'labels'`, který určuje, že se má tato vrstva vykreslit pod popisky mapy. Tím se zajistí, že čára trasy nepřekryje popisky silnic. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak se vykreslí počáteční a koncový bod. V tomto případě se do ní přidaly výrazy pro načtení informací o obrázku ikony a textovém popisku z vlastností objektů jednotlivých bodů. 
+    V obslužné rutině události Maps `ready` se vytvoří zdroj dat, který bude ukládat řádky trasy i počáteční a koncové body. Vytvoří se vrstva čar, která se připojí ke zdroji dat a která definuje, jak se vykreslí čára trasy. Ve funkci čáry trasy se tloušťka a barva čáry načte z vlastností pomocí výrazů. Při přidávání vrstvy do mapy se předá druhý parametr s hodnotou `'labels'`, který určuje, že se má tato vrstva vykreslit pod popisky mapy. Tím se zajistí, že čára trasy nepřekryje popisky silnic. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak se vykreslí počáteční a koncový bod. V tomto případě se do ní přidaly výrazy pro načtení informací o obrázku ikony a textovém popisku z vlastností objektů jednotlivých bodů. 
     
-2. Pro účely tohoto kurzu jako počáteční bod nastavte fiktivní společnost Fabrikam v Seattlu a jako cílový bod nastavte pobočku Microsoftu. V mapách `ready` obslužná rutina události, přidejte následující kód.
+2. Pro účely tohoto kurzu jako počáteční bod nastavte fiktivní společnost Fabrikam v Seattlu a jako cílový bod nastavte pobočku Microsoftu. V obslužné rutině události Maps `ready` přidejte následující kód.
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -191,7 +191,7 @@ V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna t
     });
     ```
 
-    Počáteční a koncový bod se přidají ke zdroji dat. Ohraničující rámeček pro počáteční a koncový bod se vypočítá pomocí funkce `atlas.data.BoundingBox.fromData`. Tento ohraničovací rámeček slouží k nastavení zobrazení mapy kamery oproti použití celého postupu `map.setCamera` funkce. Přidá se odsazení, které kompenzuje rozměry ikon symbolů v pixelech.
+    Počáteční a koncový bod se přidají ke zdroji dat. Ohraničující rámeček pro počáteční a koncový bod se vypočítá pomocí funkce `atlas.data.BoundingBox.fromData`. Toto ohraničovací pole slouží k nastavení zobrazení mapy kamer přes celou trasu pomocí `map.setCamera` funkce. Přidá se odsazení, které kompenzuje rozměry ikon symbolů v pixelech.
 
 4. Uložte soubor a aktualizujte prohlížeč. Na mapě se zobrazí špendlíky. Teď se ve středu mapy zobrazí Seattle a můžete si všimnou modrých špendlíků, které označují počáteční a koncový bod.
 
@@ -201,9 +201,9 @@ V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna t
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>Vykreslovat trasy s určenou prioritou podle režimu dopravy
 
-Tato část ukazuje, jak použít rozhraní API pro mapy route service k vyhledání více tras z daného počátečního bodu na koncový bod příslušný režim dopravy. Route Service poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *úsporné* nebo *vzrušující* trasy mezi dvěma místy s přihlédnutím k aktuální dopravní situaci. Umožňuje uživatelům také plánovat trasy v budoucnu s použitím rozsáhlé databáze Azure s historickými dopravními informacemi a předvídat dobu trvání trasy pro kterýkoli den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Všechny následující bloky kódu by se měly přidat **do modulu eventListener pro načtení mapy**, aby se zajistilo jejich načtení po úplném načtení mapy.
+V této části se dozvíte, jak pomocí rozhraní API služby mapy tras vyhledat několik tras z daného počátečního bodu až po koncový bod na základě vašeho režimu přenosu. Route Service poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *úsporné* nebo *vzrušující* trasy mezi dvěma místy s přihlédnutím k aktuální dopravní situaci. Umožňuje uživatelům také plánovat trasy v budoucnu s použitím rozsáhlé databáze Azure s historickými dopravními informacemi a předvídat dobu trvání trasy pro kterýkoli den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Všechny následující bloky kódu by se měly přidat **do modulu eventListener pro načtení mapy**, aby se zajistilo jejich načtení po úplném načtení mapy.
 
-1. Ve funkci GetMap přidejte následující kód jazyka Javascript.
+1. Do funkce GetMap přidejte následující kód JavaScript Code.
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key
@@ -216,9 +216,9 @@ Tato část ukazuje, jak použít rozhraní API pro mapy route service k vyhled�
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   `SubscriptionKeyCredential` Vytvoří `SubscriptionKeyCredentialPolicy` k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. `atlas.service.MapsURL.newPipeline()` Přijímá `SubscriptionKeyCredential` zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) instance. `routeURL` Představuje adresu URL ke službě Azure Maps [trasy](https://docs.microsoft.com/rest/api/maps/route) operace.
+   `SubscriptionKeyCredential` VytvoříaověřípožadavkyHTTP,kterésemajíAzureMapspomocí`SubscriptionKeyCredentialPolicy` klíče předplatného. Zásada převezme a vytvoří instanci kanálu. [](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) `atlas.service.MapsURL.newPipeline()` `SubscriptionKeyCredential` Představuje adresu URL pro Azure Maps operací [směrování.](https://docs.microsoft.com/rest/api/maps/route) `routeURL`
 
-2. Po nastavení přihlašovacích údajů a adresu URL, přidejte následující JavaScript kód k vytvoření trasy od začátku na koncový bod pro nákladní vozidlo provádění USHazmatClass2 třídy nákladu a zobrazit výsledky.
+2. Po nastavení přihlašovacích údajů a adresy URL přidejte následující kód JavaScriptu, který vytvoří trasu od začátku do koncového bodu pro nákladní automobil, který vede USHazmatClass2 náklad na vydanou třídu a zobrazí výsledky.
 
     ```JavaScript
     //Start and end point input to the routeURL
@@ -245,9 +245,9 @@ Tato část ukazuje, jak použít rozhraní API pro mapy route service k vyhled�
     });
     ```
 
-    Tento fragment kódu výše uvedené dotazy směrování služby Azure Maps pomocí [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) metody. Řádku postupu pak extrahují z kolekce funkcí GeoJSON z odpovědi, které je extrahována pomocí `geojson.getFeatures()` metody. Ke zdroji dat se pak přidá trasu řádku. Přidá také indexu 0 k zajištění, že je vykreslen před dalších řádků ve zdroji dat. To se provádí proto, že výpočet trasy pro nákladní vůz bude často pomalejší než výpočet trasy pro auto, a kdyby se čára trasy pro nákladní vůz přidala ke zdroji dat až po čáře trasy pro auto, vykreslila by se nad ní. Dvě vlastnosti se přidají do řádku postupu truck stroke barva, která se odlišuje od modré a šířku tahu devět pixelů.
+    Tento fragment kódu výše se dotazuje směrovací služby Azure Maps pomocí metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . Z odpovědi, která je extrahována pomocí `geojson.getFeatures()` metody, je následně extrahována z kolekce funkcí injson. Řádek trasy se pak přidá do zdroje dat. Také přidá index 0, aby bylo zajištěno, že je vykreslen před všemi ostatními řádky ve zdroji dat. To se provádí proto, že výpočet trasy pro nákladní vůz bude často pomalejší než výpočet trasy pro auto, a kdyby se čára trasy pro nákladní vůz přidala ke zdroji dat až po čáře trasy pro auto, vykreslila by se nad ní. Do řádku trasy vozíku se přidají dvě vlastnosti, Barva tahu, která je dobrým barevným trendem modrou, a tloušťka čáry devět pixelů.
 
-3. Přidejte následující kód jazyka JavaScript sestavit trasu pro automobilu a zobrazit výsledky.
+3. Přidáním následujícího kódu jazyka JavaScript vytvořte trasu pro automobil a zobrazte výsledky.
 
     ```JavaScript
     routeURL.calculateRouteDirections(atlas.service.Aborter.timeout(10000), coordinates).then((directions) => {
@@ -265,7 +265,7 @@ Tato část ukazuje, jak použít rozhraní API pro mapy route service k vyhled�
     });
     ```
 
-    Tento fragment kódu výše uvedené dotazy směrování služby Azure Maps pomocí [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) metody. Řádku postupu pak extrahují z kolekce funkcí GeoJSON z odpovědi, které je extrahována pomocí `geojson.getFeatures()` metody. Ke zdroji dat se pak přidá trasu řádku. Dvě vlastnosti se přidají do řádku postupu car stroke barva, která je odstínu nachová a šířku tahu 5 pixelů.  
+    Tento fragment kódu výše se dotazuje směrovací služby Azure Maps pomocí metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . Z odpovědi, která je extrahována pomocí `geojson.getFeatures()` metody, je následně extrahována z kolekce funkcí injson. Řádek trasy se pak přidá do zdroje dat. Do řádku trasy automobilu jsou přidány dvě vlastnosti, Barva tahu, která je vybarvení fialová a šířka tahu je 5 pixelů.  
 
 4. Uložte soubor **MapTruckRoute.html**, aktualizujte prohlížeč a prohlédněte si výsledek. V případě úspěšného připojení s použitím rozhraní Maps API by se měla zobrazit mapa podobná následující.
 
@@ -287,12 +287,12 @@ V tomto kurzu jste se naučili:
 > [Zobrazit úplný zdrojový kód](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)
 
 > [!div class="nextstepaction"]
-> [Živé ukázkové zobrazení](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
+> [Zobrazit ukázku živého vysílání](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
 
-V dalším kurzu ukazuje proces vytvoření lokátoru jednoduché úložiště pomocí Azure Maps.
-
-> [!div class="nextstepaction"]
-> [Vytvořit úložiště pomocí Azure Maps](./tutorial-create-store-locator.md)
+V dalším kurzu se dozvíte, jak vytvořit jednoduchý Lokátor úložiště pomocí Azure Maps.
 
 > [!div class="nextstepaction"]
-> [Použití výrazů s daty styl](data-driven-style-expressions-web-sdk.md)
+> [Vytvoření lokátoru úložiště pomocí Azure Maps](./tutorial-create-store-locator.md)
+
+> [!div class="nextstepaction"]
+> [Použití výrazů stylu založených na datech](data-driven-style-expressions-web-sdk.md)

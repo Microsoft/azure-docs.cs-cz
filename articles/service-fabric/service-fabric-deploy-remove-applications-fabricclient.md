@@ -1,9 +1,9 @@
 ---
-title: Nasazení aplikace Azure Service Fabric | Dokumentace Microsoftu
-description: Rozhraní API FabricClient použijte k nasazení a odebrat aplikace v Service Fabric.
+title: Nasazení aplikace v Azure Service Fabric | Microsoft Docs
+description: Pomocí rozhraní FabricClient API můžete nasazovat a odebírat aplikace v Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
-ms.author: aljo
-ms.openlocfilehash: 4b2d88004696515169ffde96b50d2771bcc1a669
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: c04306b417c8e68f2e93c0e5e064f5873b00ddd5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428126"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599628"
 ---
-# <a name="deploy-and-remove-applications-using-fabricclient"></a>Nasazení a odebírat aplikace pomocí FabricClient
+# <a name="deploy-and-remove-applications-using-fabricclient"></a>Nasazení a odebrání aplikací pomocí FabricClient
 > [!div class="op_single_selector"]
 > * [Resource Manager](service-fabric-application-arm-resource.md)
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
@@ -32,22 +32,22 @@ ms.locfileid: "66428126"
 
 <br/>
 
-Jednou [je zabalená aplikace typu][10], byl připraven k nasazení do clusteru Azure Service Fabric. Nasazení zahrnuje následující tři kroky:
+Jakmile je [Typ aplikace zabalený][10], je připravený k nasazení do clusteru Azure Service Fabric. Nasazení zahrnuje následující tři kroky:
 
 1. Nahrání balíčku aplikace do úložiště imagí
-2. Zaregistrujte typ aplikace
-3. Odeberte balíček aplikace z úložiště imagí
+2. Registrace typu aplikace
+3. Odebrat balíček aplikace z úložiště imagí
 4. Vytvoření instance aplikace
 
-Po nasazení aplikace a spustit jednu instanci v clusteru, můžete odstranit instance aplikace a její typ aplikace. Úplně odeberte aplikaci z clusteru pomocí následujících kroků:
+Po nasazení aplikace a spuštění instance v clusteru můžete instanci aplikace a její typ aplikace odstranit. Pomocí následujících kroků úplně odeberte aplikaci z clusteru:
 
-1. Odebrání (nebo odstranění) spuštěná instance aplikace
-2. Zrušte registraci typu aplikace, pokud ho už nepotřebují
+1. Odebrat (nebo odstranit) spuštěnou instanci aplikace
+2. Zruší registraci typu aplikace, pokud ji už nepotřebujete.
 
-Pokud používáte sadu Visual Studio pro nasazování a ladění aplikací ve vašem místním vývojovém clusteru, všechny předchozí kroky jsou automaticky zpracovány pomocí skriptu prostředí PowerShell.  Tento skript se nachází v *skripty* složky projektu aplikace. Tento článek obsahuje pozadí co skript dělá, takže můžete provádět stejné operace mimo sadu Visual Studio. 
+Pokud používáte Visual Studio pro nasazení a ladění aplikací v místním vývojovém clusteru, všechny předchozí kroky se zpracují automaticky prostřednictvím skriptu PowerShellu.  Tento skript se nachází ve složce *Scripts* projektu aplikace. Tento článek poskytuje základní informace o tom, co skript dělá, abyste mohli provádět stejné operace mimo sadu Visual Studio. 
  
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
-Připojte se ke clusteru tak, že vytvoříte [FabricClient](/dotnet/api/system.fabric.fabricclient) instance předtím, než spustíte všechny příklady kódu v tomto článku. Příklady připojení k místním vývojovém clusteru nebo vzdálený cluster nebo cluster zabezpečený pomocí Azure Active Directory, X509 certifikáty, nebo si zobrazte Windows Active Directory [připojit k zabezpečenému clusteru](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis). Pro připojení k místním vývojovém clusteru, spusťte v následujícím příkladu:
+Připojte se ke clusteru vytvořením instance [FabricClient](/dotnet/api/system.fabric.fabricclient) před spuštěním libovolných příkladů kódu v tomto článku. Příklady připojení k místnímu clusteru pro vývoj nebo ke vzdálenému clusteru nebo clusteru zabezpečeného pomocí Azure Active Directory, certifikátů x509 nebo služby Windows Active Directory najdete v tématu [připojení k zabezpečenému clusteru](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis). Pokud se chcete připojit k místnímu vývojovému clusteru, spusťte následující příklad:
 
 ```csharp
 // Connect to the local cluster.
@@ -55,60 +55,60 @@ FabricClient fabricClient = new FabricClient();
 ```
 
 ## <a name="upload-the-application-package"></a>Nahrání balíčku aplikace
-Předpokládejme, že sestavit a zabalit aplikaci s názvem *MyApplication* v sadě Visual Studio. Ve výchozím nastavení je název typu aplikace uvedené v souboru ApplicationManifest.xml "MyApplicationType".  Balíček aplikace, který obsahuje manifest nezbytné aplikace, manifesty služby a balíčků kódu/config/dat, se nachází v *C:\Users\&lt; uživatelské jméno&gt;\Documents\Visual Studio 2019\Projects\ MyApplication\MyApplication\pkg\Debug*.
+Předpokládejme, že sestavíte a zabalíte aplikaci s názvem *MyApplication* v aplikaci Visual Studio. Ve výchozím nastavení je název typu aplikace uvedený v souboru souboru ApplicationManifest. XML "MyApplicationType".  Balíček aplikace, který obsahuje nezbytný manifest aplikace, manifesty služeb a balíčky Code/config/data, se nachází v části *\&C:\Users lt; UserName&gt;\Documents\Visual Studio 2019 \ Projects\MyApplication\ MyApplication\pkg\Debug*.
 
-Nahrává se balíček aplikace vloží do umístění, které je přístupné pro interní komponenty Service Fabric. Balíček aplikace Service Fabric ověřuje při registraci balíčku aplikace. Ale pokud chcete ověřit balíček aplikace místně (to znamená, že před odesílání), použijte [testovací ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) rutiny.
+Nahráním balíčku aplikace se umístí do umístění, které je přístupné pro interní Service Fabric komponenty. Service Fabric ověří balíček aplikace při registraci balíčku aplikace. Pokud však chcete ověřit balíček aplikace místně (tj. před odesláním), použijte rutinu [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) .
 
-[CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) rozhraní API odešle balíček aplikace do úložiště imagí clusteru. 
+Rozhraní API [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) odesílá balíček aplikace do úložiště imagí clusteru. 
 
-Pokud balíček aplikace je velký nebo má mnoho souborů, můžete si [je komprimovat](service-fabric-package-apps.md#compress-a-package) a zkopírujte ho do úložiště imagí pomocí Powershellu. Komprese snižuje velikost a počet souborů.
+Pokud je balíček aplikace velký nebo má mnoho souborů, můžete [ho zkomprimovat](service-fabric-package-apps.md#compress-a-package) a zkopírovat do úložiště imagí pomocí PowerShellu. Komprese zmenšuje velikost a počet souborů.
 
-Zobrazit [pochopit připojovací řetězec úložiště image](service-fabric-image-store-connection-string.md) doplňující informace o úložiště image store a image uložit připojovací řetězec.
+Další informace o úložišti imagí a připojovacím řetězci pro úložiště imagí najdete v tématu [vysvětlení připojovacího řetězce úložiště imagí](service-fabric-image-store-connection-string.md) .
 
 ## <a name="register-the-application-package"></a>Registrace balíčku aplikace
-Typ aplikace a verze deklarované v manifestu aplikace, které jsou k dispozici pro použití při registraci balíčku aplikace. Systém přečte balíček nahráli v předchozím kroku, ověří balíček, zpracuje obsah balíčku a zkopíruje zpracovaných balíček do umístění interního systému.  
+Typ a verze aplikace deklarované v manifestu aplikace budou k dispozici pro použití při registraci balíčku aplikace. Systém přečte balíček nahraný v předchozím kroku, ověří balíček, zpracuje obsah balíčku a zkopíruje zpracovaný balíček do interního systémového umístění.  
 
-[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) registrů rozhraní API aplikace do clusteru zadejte a zpřístupní ji pro nasazení.
+Rozhraní [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API registruje typ aplikace v clusteru a zpřístupňuje je pro nasazení.
 
-[GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync) rozhraní API poskytuje informace o všech typech aplikací byl úspěšně zaregistrován. Toto rozhraní API můžete použít k určení, kdy se provádí registraci.
+Rozhraní [GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync) API poskytuje informace o všech úspěšně registrovaných typech aplikací. Pomocí tohoto rozhraní API můžete určit, kdy se má registrace provést.
 
-## <a name="remove-an-application-package-from-the-image-store"></a>Odeberte balíček aplikace z úložiště imagí
-Doporučujeme odebrat balíček aplikace po úspěšné registraci aplikace.  Odstranění balíčků aplikací z úložiště image store uvolnit systémové prostředky.  Udržování balíčky nepoužívané aplikace využívá diskové úložiště a vede k problémům s výkonem aplikací. Odstranit balíček aplikace z úložiště image pomocí [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) rozhraní API.
+## <a name="remove-an-application-package-from-the-image-store"></a>Odebrání balíčku aplikace z úložiště imagí
+Doporučuje se odebrat balíček aplikace po úspěšné registraci aplikace.  Odstranění balíčků aplikace z úložiště imagí uvolní systémové prostředky.  Udržování nepoužívaných balíčků aplikací spotřebovává diskové úložiště a vede k problémům s výkonem aplikací. Odstraňte balíček aplikace z úložiště imagí pomocí rozhraní [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) API.
 
 ## <a name="create-an-application-instance"></a>Vytvoření instance aplikace
-Můžete vytvořit instanci aplikace z jakéhokoli typu aplikace, který byl úspěšně zaregistrován pomocí [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) rozhraní API. Název každé aplikace musí začínat *"prostředků infrastruktury:"* schéma a musí být jedinečná pro každou instanci aplikace (v rámci clusteru). Žádné výchozí služby definované v manifestu aplikace typ cílové aplikace se také vytvoří.
+Můžete vytvořit instanci aplikace z libovolného typu aplikace, který byl úspěšně zaregistrován pomocí rozhraní [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) API. Název každé aplikace musí začínat schématem *"Fabric:"* a musí být jedinečný pro každou instanci aplikace (v rámci clusteru). Vytvoří se také všechny výchozí služby definované v manifestu aplikace typu cílové aplikace.
 
-Několik instancí aplikace lze vytvořit danou verzi typu registrované aplikaci. Každá instance aplikace běží izolovaně, s vlastní pracovní adresář a sadu procesů.
+Pro libovolnou danou verzi registrovaného typu aplikace lze vytvořit více instancí aplikace. Každá instance aplikace se spouští izolovaně s vlastním pracovním adresářem a sadou procesů.
 
-Pokud chcete zobrazit, které s názvem aplikace a služby jsou spuštěny v clusteru, spusťte [GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) a [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync) rozhraní API.
+Pokud chcete zjistit, které pojmenované aplikace a služby běží v clusteru, spusťte rozhraní API [GetApplicationListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync) a [GetServiceListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync) .
 
 ## <a name="create-a-service-instance"></a>Vytvoření instance služby
-Můžete vytvořit instanci služby pomocí typu služby [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) rozhraní API.  Pokud služba je deklarován jako výchozí služba v manifestu aplikace, služby je vytvořena, když je vytvořena instance aplikace.  Volání [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) vrátí výjimku typu FabricException rozhraní API pro službu, která je již vytvořena instance. Výjimka bude obsahovat chybový kód s hodnotou FabricErrorCode.ServiceAlreadyExists.
+Můžete vytvořit instanci služby z typu služby pomocí rozhraní [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API.  Je-li služba deklarována jako výchozí služba v manifestu aplikace, je vytvořena instance služby při vytvoření instance aplikace.  Volání rozhraní [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) API pro službu, která již má vytvořenou instanci, vrátí výjimku typu FabricException. Výjimka bude obsahovat kód chyby s hodnotou FabricErrorCode. ServiceAlreadyExists.
 
 ## <a name="remove-a-service-instance"></a>Odebrání instance služby
-Pokud instance služby je už nepotřebujete, můžete ho odebrat z běžící instance aplikace při volání [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) rozhraní API.  
+Pokud již instance služby nepotřebujete, můžete ji odebrat z běžící instance aplikace voláním rozhraní [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) API.  
 
 > [!WARNING]
-> Tato operace je nevratná a stav služby nelze obnovit.
+> Tuto operaci nelze vrátit zpět a stav služby nelze obnovit.
 
 ## <a name="remove-an-application-instance"></a>Odebrání instance aplikace
-Když instance aplikace už je nepotřebujete, můžete trvale odebrat ji pomocí názvu [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) rozhraní API. [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) automaticky odstraní všechny služby, které patří k aplikaci stejně, trvale odebrat všechny služby stavu.
+Pokud už instanci aplikace nepotřebujete, můžete ji trvale odebrat pomocí rozhraní [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) API. [DeleteApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync) automaticky odebere všechny služby, které patří do aplikace, a trvale odebere celý stav služby.
 
 > [!WARNING]
-> Tato operace je nevratná a nedá se obnovit stav aplikace.
+> Tuto operaci nelze vrátit zpět a stav aplikace nelze obnovit.
 
-## <a name="unregister-an-application-type"></a>Zrušte registraci typu aplikace
-Pokud konkrétní verzi typu aplikace je už nepotřebujete, měli byste zrušit registraci této konkrétní verzi typu aplikace pomocí [Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) rozhraní API. Zrušení registrace nevyužité verze typů aplikace uvolní prostor úložiště využitý úložiště image store. Verze typu aplikace, můžete se zrušit registraci tak dlouho, dokud instance pro tuto verzi typu aplikace se vytvářejí žádné aplikace. Typ aplikace lze také mít žádné čekající žádosti upgrady jsou odkazující na tuto verzi typu aplikace.
+## <a name="unregister-an-application-type"></a>Zrušení registrace typu aplikace
+Pokud již určitou verzi typu aplikace nepotřebujete, měli byste zrušit registraci konkrétní verze typu aplikace pomocí rozhraní API pro [zrušení registrace](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) . Rušení registrace nepoužívaných verzí typů aplikací uvolní prostor úložiště používaný úložištěm imagí. U verze typu aplikace se může zrušit registrace, pokud se nevytváří instance žádné aplikace proti této verzi typu aplikace. Také typ aplikace nemůže mít žádné probíhající upgrady aplikace, na které se odkazuje na verzi typu aplikace.
 
 ## <a name="troubleshooting"></a>Řešení potíží
-### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Kopírování ServiceFabricApplicationPackage vyzve k zadání ImageStoreConnectionString
-Sada Service Fabric SDK prostředí byste už měli mít správné nastavení výchozí hodnoty. Ale v případě potřeby ImageStoreConnectionString pro všechny příkazy by měl odpovídat hodnotě, která používá cluster Service Fabric. V manifestu clusteru, můžete najít ImageStoreConnectionString načten pomocí možnosti [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) a Get-ImageStoreConnectionStringFromClusterManifest příkazy:
+### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage žádá o ImageStoreConnectionString
+Prostředí Service Fabric SDK by již mělo mít nastavené správné výchozí hodnoty. V případě potřeby by ale ImageStoreConnectionString pro všechny příkazy měly odpovídat hodnotě, kterou používá Cluster Service Fabric. ImageStoreConnectionString můžete najít v manifestu clusteru, který jste získali pomocí příkazů [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) a Get-ImageStoreConnectionStringFromClusterManifest:
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)
 ```
 
-**Get-ImageStoreConnectionStringFromClusterManifest** rutiny, která je součástí modulu Powershellu pro Service Fabric SDK, se používá k získání připojovacího řetězce úložiště bitové kopie.  Pokud chcete importovat modul SDK, spusťte:
+K získání připojovacího řetězce úložiště imagí slouží rutina **Get-ImageStoreConnectionStringFromClusterManifest** , která je součástí modulu Service Fabric SDK PowerShellu.  Chcete-li importovat modul SDK, spusťte příkaz:
 
 ```powershell
 Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
@@ -129,29 +129,29 @@ ImageStoreConnectionString se nachází v manifestu clusteru:
     [...]
 ```
 
-Zobrazit [pochopit připojovací řetězec úložiště image](service-fabric-image-store-connection-string.md) doplňující informace o úložiště image store a image uložit připojovací řetězec.
+Další informace o úložišti imagí a připojovacím řetězci pro úložiště imagí najdete v tématu [vysvětlení připojovacího řetězce úložiště imagí](service-fabric-image-store-connection-string.md) .
 
-### <a name="deploy-large-application-package"></a>Nasazení balíčku velké aplikace
-Problém: [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API vyprší časový limit pro velké aplikace balíčku (pořadí GB).
+### <a name="deploy-large-application-package"></a>Nasadit balíček velkých aplikací
+Problém: [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) Vyprší časový limit rozhraní API pro velký balíček aplikace (v řádu GB).
 Zkuste:
-- Zadejte většího časového limitu pro [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) metody s `timeout` parametru. Ve výchozím nastavení je časový limit 30 minut.
-- Zkontrolujte síťové připojení mezi zdrojovým počítačem a clusteru. Pokud je pomalé připojení, zvažte použití na počítači s lepší síťové připojení.
-Pokud klientský počítač je v jiné oblasti než cluster, zvažte použití klientského počítače v oblasti blíže nebo stejný jako cluster.
-- Zkontrolujte, jestli nenarážíte externí omezení šířky pásma. Například pokud je úložiště image store je konfigurován pro použití služby azure storage, může omezení nahrávání.
+- Zadejte větší časový limit pro metodu [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) s `timeout` parametrem. Ve výchozím nastavení je časový limit 30 minut.
+- Ověřte síťové připojení mezi zdrojovým počítačem a clusterem. Pokud je připojení pomalé, zvažte použití počítače s lepším připojením k síti.
+Pokud je klientský počítač v jiné oblasti než cluster, zvažte použití klientského počítače v bližší nebo stejné oblasti jako cluster.
+- Ověřte, jestli nepoužíváte externí omezení. Pokud je třeba úložiště imagí nakonfigurované tak, aby používalo úložiště Azure, může být nahrávání omezené.
 
-Problém: Nahrání balíčku se nedokončil úspěšně, ale [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API vyprší časový limit. Zkuste:
-- [Komprimovat balíček](service-fabric-package-apps.md#compress-a-package) před zkopírováním do úložiště imagí.
-Komprese snižuje velikost a počet souborů, která zase omezuje objem přenosů a pracovat v daných prostředcích služby musíte provést. Časový limit operace odeslání může být pomalejší (zejména pokud zahrnete komprese čas), ale vytvářet a rušit registraci aplikace typu jsou rychlejší.
-- Zadejte většího časového limitu pro [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API s využitím `timeout` parametru.
+Problém: Nahrání balíčku bylo úspěšně dokončeno, ale vypršel časový limit rozhraní [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API. Zkuste:
+- Před kopírováním do úložiště imagí [balíček Zkomprimujte](service-fabric-package-apps.md#compress-a-package) .
+Komprese zmenšuje velikost a počet souborů. tím se snižuje objem provozu a Service Fabric musí probíhat. Operace nahrávání může být pomalejší (obzvláště pokud zahrnete dobu komprimace), ale registraci a zrušení registrace typu aplikace jsou rychlejší.
+- Zadejte větší časový limit pro [](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) rozhraní API ProvisionApplicationAsync `timeout` s parametrem.
 
-### <a name="deploy-application-package-with-many-files"></a>Nasazení balíčku aplikace s velkým množstvím souborů
-Problém: [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) vyprší časový limit pro balíček aplikace s velkým množstvím souborů (pořadí tisíc).
+### <a name="deploy-application-package-with-many-files"></a>Nasazení balíčku aplikace s mnoha soubory
+Problém: [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) vyprší časový limit pro balíček aplikace s mnoha soubory (pořadí tisíců).
 Zkuste:
-- [Komprimovat balíček](service-fabric-package-apps.md#compress-a-package) před zkopírováním do úložiště imagí. Komprese snižuje počet souborů.
-- Zadejte většího časového limitu pro [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) s `timeout` parametru.
+- Před kopírováním do úložiště imagí [balíček Zkomprimujte](service-fabric-package-apps.md#compress-a-package) . Komprese snižuje počet souborů.
+- Zadejte větší časový limit pro [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) s `timeout` parametrem.
 
 ## <a name="code-example"></a>Příklad kódu
-Následující příklad zkopíruje balíček aplikace do úložiště imagí a zřizuje typu aplikace. Příklad poté vytvoří instanci aplikace a vytvoří instance služby. Nakonec příklad odebere instance aplikace, zruší zřízení typu aplikace a odstraní balíček aplikace z úložiště imagí.
+Následující příklad zkopíruje balíček aplikace do úložiště imagí a zřídí typ aplikace. Pak příklad vytvoří instanci aplikace a vytvoří instanci služby. Nakonec příklad odebere instanci aplikace, zruší ustanovení typu aplikace a odstraní balíček aplikace z úložiště imagí.
 
 ```csharp
 using System;
@@ -334,9 +334,9 @@ static void Main(string[] args)
 ## <a name="next-steps"></a>Další postup
 [Upgrade aplikace Service Fabric](service-fabric-application-upgrade.md)
 
-[Úvod stavu Service Fabric](service-fabric-health-introduction.md)
+[Úvod do Service Fabricho stavu](service-fabric-health-introduction.md)
 
-[Diagnostika a řešení potíží služby Service Fabric](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+[Diagnostika a řešení potíží se službou Service Fabric](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Modelování aplikace v Service Fabric](service-fabric-application-model.md)
 

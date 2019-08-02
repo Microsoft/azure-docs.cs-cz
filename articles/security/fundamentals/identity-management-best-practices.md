@@ -1,0 +1,321 @@
+---
+title: Osvědčené postupy zabezpečení Azure identity & Accessu | Microsoft Docs
+description: Tento článek poskytuje sadu osvědčených postupů pro správu identit a řízení přístupu pomocí integrovaných funkcí Azure.
+services: security
+documentationcenter: na
+author: barclayn
+manager: barbkess
+editor: TomSh
+ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
+ms.service: security
+ms.subservice: security-fundamentals
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 05/03/2019
+ms.author: barclayn
+ms.openlocfilehash: 46850ad430aa5fb8ad25a71515bdd640855350c2
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727264"
+---
+# <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení správy identit a řízení přístupu v Azure
+V tomto článku se podíváme na shromažďování osvědčených postupů zabezpečení Azure Identity Management a Access Control. Tyto osvědčené postupy se odvozují z našich zkušeností s [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) a zkušenostmi se zákazníky, jako je sami.
+
+Pro každý osvědčený postup je vysvětleno:
+
+* Co je nejlepší postup
+* Proč je vhodné Tento osvědčený postup povolit
+* To může být způsobeno tím, že nepovolíte osvědčené postupy
+* Možné alternativy k osvědčeným postupům
+* Postup, jak se naučit, jak povolit osvědčený postup
+
+Tento článek týkající se osvědčených postupů zabezpečení Azure Identity Management a Access Control je založený na konsensuch a funkcích platformy Azure a sadách funkcí, jak existují v době, kdy byl tento článek napsán. Názory a technologie se v průběhu času mění a tento článek se pravidelně aktualizuje, aby odrážel tyto změny.
+
+Osvědčené postupy zabezpečení Azure Identity Management a Access Control jsou popsané v tomto článku:
+
+* Považovat identitu za primární hraniční zabezpečení
+* Centralizovaná správa identit
+* Spravovat připojené klienty
+* Povolit jednotné přihlašování
+* Zapnutí podmíněného přístupu
+* Povolení správy hesel
+* Vymáhat vícefaktorové ověřování pro uživatele
+* Použití řízení přístupu na základě rolí
+* Nižší vystavení privilegovaných účtů
+* Ovládací prvky umístění, kde jsou umístěny prostředky
+* Použití Azure AD k ověřování úložiště
+
+## <a name="treat-identity-as-the-primary-security-perimeter"></a>Považovat identitu za primární hraniční zabezpečení
+
+Celá řada považuje identitu za primární hraniční zabezpečení. Jedná se o posun od tradičního zaměření na zabezpečení sítě. Hraniční sítě udržují více Porous a tato ochrana hranice nemůže být tak efektivní, protože byla předtím, než dojde k rozpadu zařízení [BYOD](https://aka.ms/byodcg) a cloudových aplikací.
+
+[Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) je řešení Azure pro správu identit a přístupu. Azure AD je víceklientské cloudová služba a služba pro správu identit od Microsoftu. Kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identit do jediného řešení.
+
+V následujících oddílech jsou uvedeny osvědčené postupy pro zabezpečení identity a přístupu pomocí Azure AD.
+
+## <a name="centralize-identity-management"></a>Centralizovaná správa identit
+
+Ve scénáři [hybridní identity](https://resources.office.com/ww-landing-M365E-EMS-IDAM-Hybrid-Identity-WhitePaper.html?) doporučujeme integrovat místní a cloudové adresáře. Integrace umožňuje vašemu IT týmu spravovat účty z jednoho místa bez ohledu na to, kde je účet vytvořený. Integrace taky pomáhá uživatelům zvýšit produktivitu tím, že poskytuje společnou identitu pro přístup k cloudovým i místním prostředkům.
+
+**Osvědčené postupy**: Vytvořte jednu instanci Azure AD. Konzistence a jeden autoritativní zdroj zvýší přehlednost a sníží rizika zabezpečení z lidských chyb a složitosti konfigurace.
+**Podrobnosti**: Určete jeden adresář služby Azure AD jako autoritativní zdroj pro podnikové a organizační účty.
+
+**Osvědčené postupy**: Integrujte své místní adresáře se službou Azure AD.  
+**Podrobnosti**: Použijte [Azure AD Connect](/azure/active-directory/connect/active-directory-aadconnect) k synchronizaci místního adresáře s adresářem v cloudu.
+
+> [!Note]
+> Existují [faktory, které mají vliv na výkon Azure AD Connect](../../active-directory/hybrid/plan-connect-performance-factors.md). Ujistěte se, že Azure AD Connect má dostatečnou kapacitu, aby bylo možné zabránit systémům v nedostatku zabezpečení a produktivity. Velká nebo složitá organizace (organizace, které zřizování více než 100 000 objektů) by měly dodržovat [doporučení](../../active-directory/hybrid/whatis-hybrid-identity.md) k optimalizaci Azure AD Connect implementace.
+
+**Osvědčené postupy**: Nesynchronizujte účty do služby Azure AD s vysokými oprávněními ve stávající instanci služby Active Directory.
+**Podrobnosti**: Neměňte výchozí [konfiguraci Azure AD Connect](../../active-directory/hybrid/how-to-connect-sync-configure-filtering.md) , která filtruje tyto účty. Tato konfigurace snižuje riziko nežádoucí osobyho překlopení z cloudu na místní prostředky (což by mohlo způsobit velký incident).
+
+**Osvědčené postupy**: Zapněte synchronizaci hodnot hash hesel.  
+**Podrobnosti**: Synchronizace hodnot hash hesel je funkce, která slouží k synchronizaci hodnot hash hesel uživatele z místní instance služby Active Directory s cloudovou instancí služby Azure AD. Tato synchronizace pomáhá chránit proti nevráceným přihlašovacím údajům, které se přehrávají z předchozích útoků.
+
+I když se rozhodnete použít federaci s Active Directory Federation Services (AD FS) (AD FS) nebo jinými zprostředkovateli identity, můžete volitelně nastavit synchronizaci hodnot hash hesel jako zálohu v případě, že vaše místní servery selžou nebo jsou dočasně nedostupné. Tato synchronizace umožňuje uživatelům přihlásit se ke službě pomocí stejného hesla, které používají pro přihlášení ke své místní instanci služby Active Directory. Umožňuje taky službě Identity Protection detekovat napadené přihlašovací údaje porovnáním synchronizovaných hodnot hash hesel pomocí hesel, která jsou známá k ohrožení, pokud uživatel použil stejnou e-mailovou adresu a heslo na jiných službách, které nejsou připojené ke službě Azure AD.
+
+Další informace najdete v tématu [implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization).
+
+**Osvědčené postupy**: Pro vývoj nových aplikací použijte Azure AD pro ověřování.
+**Podrobnosti**: Použijte správné možnosti pro podporu ověřování:
+
+  - Azure AD pro zaměstnance
+  - [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/) pro uživatele typu Host a externí partneři
+  - [Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/) řídit, jak se uživatelé registrují, přihlašovat a spravovat svoje profily při používání vašich aplikací
+
+Organizace, které neintegrují svou místní identitu s jejich cloudovou identitou, můžou mít větší režii při správě účtů. Tato režie zvyšuje pravděpodobnost chyb a porušení zabezpečení.
+
+> [!Note]
+> Musíte zvolit, které adresáře se budou nacházet v a jestli se používá pracovní stanice pro správu, kterou používají nové cloudové služby nebo stávající procesy. Používání stávajících procesů správy a zřizování identit může snížit některá rizika, ale může také vytvořit riziko narušení místního účtu a jeho překlopení do cloudu. Můžete chtít použít jinou strategii pro různé role (například správce IT vs. obchodní jednotky Admins). Máte dvě možnosti. První možností je vytvořit účty Azure AD, které nejsou synchronizované s vaší místní instancí Active Directory. Připojte se k pracovní stanici správce k Azure AD, kterou můžete spravovat a opravovat pomocí Microsoft Intune. Druhou možností je použít stávající účty správců synchronizací do místní instance služby Active Directory. Pro správu a zabezpečení použijte existující pracovní stanice v doméně služby Active Directory.
+
+## <a name="manage-connected-tenants"></a>Spravovat připojené klienty
+Vaše organizace zabezpečení potřebuje viditelnost, aby posoudila riziko a určila, jestli jsou dodržovány zásady vaší organizace a jakékoli zákonné požadavky. Měli byste zajistit, aby vaše organizace zabezpečení měla přehled o všech předplatných připojených k vašemu provoznímu prostředí a síti (prostřednictvím [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) nebo [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). [Globální správce nebo správce společnosti](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) ve službě Azure AD může zvýšit přístup k roli [Správce přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator) a zobrazit všechna předplatná a spravované skupiny připojené k vašemu prostředí.
+
+Projděte si téma [zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu](../../role-based-access-control/elevate-access-global-admin.md) , abyste měli jistotu, že máte a vaše skupina zabezpečení budou zobrazovat všechna předplatná nebo skupiny pro správu připojené k vašemu prostředí. Tento přístup se zvýšeným oprávněním byste měli po vyhodnocení rizik odebrat.
+
+## <a name="enable-single-sign-on"></a>Povolit jednotné přihlašování
+
+V cloudovém a prvním světě chcete povolit jednotné přihlašování (SSO) k zařízením, aplikacím a službám odkudkoli, takže uživatelé můžou být produktivní kdykoli a kdykoli. Pokud máte k dispozici více řešení pro správu identit, bude se jednat o problém správce, který není pro něj k dispozici, ale také uživatelům, kteří si musí pamatovat více hesel.
+
+Pomocí stejného řešení identity pro všechny vaše aplikace a prostředky můžete dosáhnout jednotného přihlašování. A vaši uživatelé můžou použít stejnou sadu přihlašovacích údajů pro přihlášení a přístup k prostředkům, které potřebují, a to bez ohledu na to, jestli se prostředky nacházejí místně nebo v cloudu.
+
+**Osvědčené postupy**: Povolte jednotné přihlašování.  
+**Podrobnosti**: Azure AD [rozšiřuje místní službu Active Directory](/azure/active-directory/connect/active-directory-aadconnect) do cloudu. Uživatelé můžou použít svůj primární pracovní nebo školní účet pro svá zařízení připojená k doméně, prostředky společnosti a všechny webové a SaaS aplikace, které potřebují k tomu, aby získali své úlohy. Uživatelé si nemusí pamatovat několik sad uživatelských jmen a hesel a jejich přístup k aplikacím se dá automaticky zřídit (nebo zrušit zřízení) na základě členství ve skupinách organizace a jejich stavu jako zaměstnanec. Přístup můžete řídit u aplikací z galerie i u vlastních místních aplikací, které jste nasadili a publikovali přes [Proxy aplikací služby Azure AD](/azure/active-directory/active-directory-application-proxy-get-started).
+
+Pomocí jednotného přihlašování můžete uživatelům povolit přístup k jejich [SaaS aplikacím](/azure/active-directory/active-directory-appssoaccess-whatis) na základě svého pracovního nebo školního účtu v Azure AD. To platí nejen pro aplikace Microsoft SaaS, ale i pro jiné aplikace, jako je [Google Apps](/azure/active-directory/active-directory-saas-google-apps-tutorial) nebo [Salesforce](/azure/active-directory/active-directory-saas-salesforce-tutorial). Aplikaci můžete nakonfigurovat tak, aby používala Azure AD jako zprostředkovatele [identity založeného na SAML](/azure/active-directory/fundamentals-identity) . V rámci řízení zabezpečení Azure AD nevydá token, který umožňuje uživatelům přihlásit se k aplikaci, pokud jim neudělí přístup prostřednictvím služby Azure AD. Přístup můžete udělit přímo nebo prostřednictvím skupiny, které jsou uživatelé členem.
+
+Organizace, které nevytvářejí společnou identitu k navázání jednotného přihlašování pro svoje uživatele a aplikace, jsou k dispozici ve scénářích, kdy uživatelé mají více hesel. Tyto scénáře zvyšují pravděpodobnost, že uživatelé znovu používají hesla nebo používají slabá hesla.
+
+## <a name="turn-on-conditional-access"></a>Zapnutí podmíněného přístupu
+
+Uživatelé mají přístup k prostředkům vaší organizace pomocí nejrůznějších zařízení a aplikací odkudkoli. Jako správce IT chcete zajistit, aby tato zařízení splňovala vaše standardy pro zabezpečení a dodržování předpisů. Jenom se zaměřením na to, kdo má přístup k prostředku, už není dost.
+
+Aby bylo možné zajistit rovnováhu mezi zabezpečením a produktivitou, je třeba zvážit, jak je prostředek přístupný, než můžete učinit rozhodnutí o řízení přístupu. Pomocí podmíněného přístupu Azure AD můžete tento požadavek vyřešit. S podmíněným přístupem můžete provádět automatizované rozhodování o řízení přístupu na základě podmínek pro přístup k vašim cloudovým aplikacím.
+
+**Osvědčené postupy**: Spravujte a kontrolujte přístup k podnikovým prostředkům.  
+**Podrobnosti**: Nakonfigurujte [podmíněný přístup](/azure/active-directory/active-directory-conditional-access-azure-portal) Azure AD na základě skupiny, umístění a citlivosti aplikace pro aplikace SaaS a aplikace připojené k Azure AD.
+
+**Osvědčené postupy**: Blokuje starší verze ověřovacích protokolů.
+**Podrobnosti**: Útočníci mají každý den zneužití slabých míst ve starších protokolech, zejména pro útoky prostřednictvím postřiku hesla. Nakonfigurujte podmíněný přístup k blokování starších protokolů. Podívejte se na [video Azure AD: Don'ts](https://www.youtube.com/watch?v=wGk0J4z90GI) a další informace.
+
+## <a name="enable-password-management"></a>Povolení správy hesel
+
+Pokud máte více tenantů nebo chcete uživatelům umožnit, aby [obnovili vlastní hesla](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md), je důležité použít příslušné zásady zabezpečení, abyste zabránili zneužití.
+
+**Osvědčené postupy**: Nastavte Samoobslužné resetování hesla (SSPR) pro vaše uživatele.  
+**Podrobnosti**: Použijte funkci samoobslužného [resetování hesla služby](/azure/active-directory-b2c/active-directory-b2c-reference-sspr) Azure AD.
+
+**Osvědčené postupy**: Sledujte, jak nebo jestli se SSPR skutečně používá.  
+**Podrobnosti**: Monitorujte uživatele, kteří se registrují, pomocí [sestavy aktivita registrace pro resetování hesel](/azure/active-directory/active-directory-passwords-get-insights)Azure AD. Funkce vytváření sestav, kterou poskytuje Azure AD, pomáhá odpovídat na otázky pomocí předem vytvořených sestav. Pokud máte patřičnou licenci, můžete také vytvořit vlastní dotazy.
+
+**Osvědčené postupy**: Rozšířené zásady hesel založené na cloudu pro místní infrastrukturu.
+**Podrobnosti**: Vylepšete zásady hesel ve vaší organizaci, a to tak, že provedete stejné kontroly u místních změn hesel, jako je to u cloudových změn hesel. Nainstalujte službu [Azure AD Password Protection](/azure/active-directory/authentication/concept-password-ban-bad) pro agenty Windows serveru Active Directory místně a rozšíříte seznamy zakázaných hesel na stávající infrastrukturu. Uživatelé a správci, kteří budou měnit, nastavovat nebo resetovat hesla v místním prostředí, se musí shodovat se stejnými zásadami hesel jako jenom uživatelé s pouze cloudy.
+
+## <a name="enforce-multi-factor-verification-for-users"></a>Vymáhat vícefaktorové ověřování pro uživatele
+
+Doporučujeme, abyste pro všechny uživatele vyžadovali dvoustupňové ověřování. To zahrnuje správce a jiné ve vaší organizaci, kteří můžou mít významný dopad na to, jestli je jejich účet ohrožený (například finanční důstojníci).
+
+K dispozici je více možností pro Vyžadování dvoustupňového ověřování. Nejlepší možnost závisí na vašich cílech, edici Azure AD, kterou používáte, a na licenčním programu. Podívejte se, [jak vyžadovat dvoustupňové ověřování pro uživatele](/azure/active-directory/authentication/howto-mfa-userstates) , abyste mohli určit nejlepší možnost pro vás. Další informace o licencích a cenách najdete na stránkách s cenami [služby Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) a [Azure Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) .
+
+Níže jsou uvedené možnosti a výhody pro povolení dvoustupňové ověřování:
+
+**Možnost 1**: [Povolte Multi-Factor Authentication změnou stavu uživatele](../../active-directory/authentication/howto-mfa-userstates.md).   
+**Výhody**: Toto je tradiční metoda pro Vyžadování dvoustupňového ověřování. Funguje s ověřováním [Azure Multi-Factor Authentication v cloudu a na serveru Azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-whichversion). Použití této metody vyžaduje, aby uživatelé prováděli dvoustupňové ověřování pokaždé, když se přihlásí, a přepíše zásady podmíněného přístupu.
+
+Chcete-li zjistit, kde je třeba povolit službu Multi-Factor Authentication, přečtěte si, [kterou verzi Azure MFA má pro moji organizaci právo?](/azure/active-directory/authentication/concept-mfa-whichversion).
+
+**Možnost 2**: [Povolte vícefaktorové ověřování pomocí zásad podmíněného přístupu](/azure/active-directory/authentication/howto-mfa-getstarted).
+**Výhody**: Tato možnost umožňuje zobrazit dotaz na dvoustupňové ověřování za určitých podmínek pomocí [podmíněného přístupu](/azure/active-directory/active-directory-conditional-access-azure-portal). Konkrétní podmínky se můžou přihlašovat uživateli z různých umístění, nedůvěryhodných zařízení nebo aplikací, které považujete za rizikové. Definování specifických podmínek, které vyžadují dvoustupňové ověřování, vám umožní vyhnout se tak neustálým dotazům pro uživatele, což může být nepříjemný zážitek uživatele.
+
+Toto je nejpružnější způsob, jak povolit dvoustupňové ověřování pro vaše uživatele. Povolení zásad podmíněného přístupu funguje jenom pro Azure Multi-Factor Authentication v cloudu a nabízí prémiovou funkci služby Azure AD. Další informace o této metodě najdete v [nasazení cloudového ověřování Azure Multi-Factor Authentication](/azure/active-directory/authentication/howto-mfa-getstarted).
+
+**Možnost 3**: Službu Multi-Factor Authentication se zásadami podmíněného přístupu vám umožní vyhodnotit rizika pro uživatele a přihlašování [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa).   
+**Výhody**: Tato možnost vám umožní:
+
+- Detekuje potenciální ohrožení zabezpečení, která ovlivňují identity vaší organizace.
+- Konfigurace automatizovaných odpovědí na zjištěné podezřelé akce, které se vztahují k identitám vaší organizace.
+- Prozkoumejte podezřelé incidenty a proveďte odpovídající opatření k jejich vyřešení.
+
+Tato metoda používá Azure AD Identity Protection hodnocení rizik k určení, jestli se vyžaduje dvoustupňové ověřování na základě rizika uživatele a přihlašování pro všechny cloudové aplikace. Tato metoda vyžaduje licencování Azure Active Directory P2. Další informace o této metodě najdete v [Azure Active Directory Identity Protection](/azure/active-directory/identity-protection/overview).
+
+> [!Note]
+> Možnost 1, povolení ověřování Multi-Factor Authentication změnou stavu uživatele, přepíše zásady podmíněného přístupu. Vzhledem k tomu, že možnosti 2 a 3 používají zásady podmíněného přístupu, nelze s nimi použít možnost 1.
+
+Organizace, které neposkytují další vrstvy ochrany identity, jako je například dvoustupňové ověřování, jsou náchylnější k útoku prostřednictvím krádeže přihlašovacích údajů. Útok krádeže přihlašovacích údajů může vést k ohrožení bezpečnosti dat.
+
+## <a name="use-role-based-access-control"></a>Použití řízení přístupu na základě rolí
+Správa přístupu pro cloudové prostředky je kritická pro všechny organizace, které využívají cloud. [Řízení přístupu na základě role (RBAC)](/azure/role-based-access-control/overview)pomáhá spravovat, kdo má přístup k prostředkům Azure, co s těmito prostředky může dělat a k jakým oblastem mají přístup.
+
+Označení skupin nebo jednotlivých rolí zodpovědných za konkrétní funkce v Azure pomáhá zabránit nejasnostem, které mohou vést k chybám lidského a automatizace, které vytvářejí bezpečnostní rizika. Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a minimálních principů zabezpečení [oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům.
+
+Aby mohl váš tým zabezpečení vyhodnocovat a napravovat riziko, musí mít přehled o vašich prostředcích Azure. Pokud má tým zabezpečení provozní zodpovědnost, potřebuje další oprávnění ke své práci.
+
+Pomocí [RBAC](/azure/role-based-access-control/overview) můžete přiřadit oprávnění uživatelům, skupinám a aplikacím v určitém oboru. Oborem přiřazení role může být předplatné, skupina prostředků nebo jeden prostředek.
+
+**Osvědčené postupy**: Oddělením povinností v rámci svého týmu a udělení pouze množství přístupu uživatelům, kteří potřebují k provádění svých úloh. Místo udělení všech neomezených oprávnění v rámci předplatného Azure nebo prostředků Povolte jenom určité akce v konkrétním oboru.
+**Podrobnosti**: Pomocí [integrovaných rolí RBAC](/azure/role-based-access-control/built-in-roles) v Azure můžete uživatelům přiřadit oprávnění.
+
+> [!Note]
+> Konkrétní oprávnění vytvářejí nepotřebnou složitost a nejasnost a nahromadění do konfigurace starší verze, která je obtížné opravit, aniž by došlo k obavám. Vyhněte se oprávněním pro konkrétní prostředky. Místo toho použijte pro oprávnění v rámci předplatných skupiny pro správu oprávnění a skupin prostředků pro podnikové úrovni. Vyhněte se konkrétním uživatelským oprávněním. Místo toho přiřaďte přístup ke skupinám v Azure AD.
+
+**Osvědčené postupy**: Poskytněte bezpečnostním týmům přístup pomocí zodpovědnosti Azure, aby viděli prostředky Azure, aby mohli vyhodnotit a opravit rizika.
+**Podrobnosti**: Udělte týmům zabezpečení roli [Čtenář zabezpečení](/azure/role-based-access-control/built-in-roles#security-reader) RBAC. Můžete použít kořenovou skupinu pro správu nebo skupinu pro správu segmentů v závislosti na rozsahu zodpovědnosti:
+
+- **Kořenová skupina pro správu** pro týmy zodpovědné za všechny podnikové prostředky
+- **Skupina pro správu segmentů** pro týmy s omezeným rozsahem (obvykle z důvodu zákonných nebo jiných organizačních hranic)
+
+**Osvědčené postupy**: Udělte bezpečnostním týmům vhodná oprávnění, která mají přímé pracovní povinnosti.
+**Podrobnosti**: Zkontrolujte předdefinované role RBAC pro příslušné přiřazení role. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete [pro prostředky Azure vytvořit vlastní role](/azure/role-based-access-control/custom-roles). Stejně jako u integrovaných rolí můžete uživatelům, skupinám a instančním objektům přiřadit vlastní role v předplatném, skupině prostředků a oborech prostředků.
+
+**Osvědčené postupy**: Udělte Azure Security Center přístup k rolím zabezpečení, které ho potřebují. Security Center umožňuje týmům zabezpečení rychle identifikovat a opravit rizika.
+**Podrobnosti**: Přidejte týmy zabezpečení s těmito požadavky do role [Správce zabezpečení](/azure/role-based-access-control/built-in-roles#security-admin) RBAC, aby mohli zobrazit zásady zabezpečení, zobrazovat stavy zabezpečení, upravovat zásady zabezpečení, zobrazovat výstrahy a doporučení a odpustit výstrahy a doporučení. To můžete provést pomocí kořenové skupiny pro správu nebo skupiny pro správu segmentu v závislosti na rozsahu zodpovědnosti.
+
+Organizace, které vynutily řízení přístupu k datům pomocí možností, jako je RBAC, můžou udělit větší oprávnění, než je nutné pro uživatele. To může vést k ohrožení dat tím, že uživatelům umožní získat přístup k typům dat (například vysoký dopad na firmu), které by neměli mít.
+
+## <a name="lower-exposure-of-privileged-accounts"></a>Nižší vystavení privilegovaných účtů
+
+Zabezpečení privilegovaného přístupu je důležitým prvním krokem k ochraně obchodních prostředků. Minimalizace počtu uživatelů, kteří mají přístup k zabezpečeným informacím nebo prostředkům, snižuje riziko, že uživatel se zlými úmysly získává přístup, nebo autorizovaný uživatel neúmyslně ovlivnil citlivý prostředek.
+
+Privilegované účty jsou účty, které spravují a spravují systémy IT. Internetoví útočníci cílí na tyto účty, aby získali přístup k datům a systémům organizace. Aby bylo možné zabezpečit privilegovaný přístup, měli byste izolovat účty a systémy od rizika vystaveného uživateli se zlými úmysly.
+
+Doporučujeme vyvinout a postupovat podle plánu zabezpečení privilegovaného přístupu proti internetovým útočníkům. Informace o vytvoření podrobného plánu pro zabezpečení identit a přístupu, které jsou spravované nebo nahlášené v Azure AD, Microsoft Azure, Office 365 a dalších cloudových službách, najdete [v popisu zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD. ](/azure/active-directory/users-groups-roles/directory-admin-roles-secure).
+
+Následující shrnuje osvědčené postupy, které najdete v článku [zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](/azure/active-directory/users-groups-roles/directory-admin-roles-secure):
+
+**Osvědčené postupy**: Umožňuje spravovat, řídit a monitorovat přístup k privilegovaným účtům.   
+**Podrobnosti**: Zapněte [Azure AD Privileged Identity Management](/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access). Po zapnutí Privileged Identity Management obdržíte e-mailové zprávy s oznámením o změnách role privilegovaného přístupu. Tato oznámení poskytují včasné upozornění, když se do vašeho adresáře přidají další uživatelé do vysoce privilegovaných rolí.
+
+**Osvědčené postupy**: Zajistěte, aby všechny důležité účty správců byly spravované účty Azure AD.
+**Podrobnosti**: Odeberte všechny uživatelské účty z klíčových rolí správce (například účty Microsoft, jako je hotmail.com, live.com a outlook.com).
+
+**Osvědčené postupy**: Zajistěte, aby všechny důležité role správců měly samostatný účet pro úlohy správy, aby nedocházelo k útokům phishing a dalším útokům na ohrožení oprávnění správce.
+**Podrobnosti**: Vytvořte samostatný účet správce, kterému je přiřazeno oprávnění potřebná k provádění úloh správy. Zablokovat používání těchto účtů pro správu každodenních nástrojů pro zvýšení produktivity, jako je systém Microsoft Office 365 e-mailu nebo prohlížení libovolného webu.
+
+**Osvědčené postupy**: Identifikujte a Kategorizujte účty, které jsou ve vysoce privilegovaných rolích.   
+**Podrobnosti**: Po zapnutí Azure AD Privileged Identity Management se podívejte na uživatele, kteří jsou v globálním správci, Privileged role Administrators a další role s vysokou úrovní oprávnění. Odeberte všechny účty, které už v těchto rolích nepotřebujete, a zařaďte do kategorií zbývající účty, které jsou přiřazené rolím Správce:
+
+- Samostatně přiřazené administrativním uživatelům a lze je použít pro účely bez správy (například osobní e-mail).
+- Přiřazeno individuálně správcům a určen pouze pro účely správy
+- Sdíleno mezi více uživateli
+- Pro scénáře nouzového přístupu
+- Pro automatizované skripty
+- Pro externí uživatele
+
+**Osvědčené postupy**: Implementujte přístup "just in time" (JIT) k dalšímu snížení doby expozice oprávnění a zvýšení viditelnosti používání privilegovaných účtů.   
+**Podrobnosti**: Azure AD Privileged Identity Management vám umožní:
+
+- Omezte uživatelům, aby přebírali jenom na jejich oprávnění JIT.
+- Přiřaďte role pro zkrácenou dobu trvání a jistotu, že se oprávnění odvolají automaticky.
+
+**Osvědčené postupy**: Definujte alespoň dva účty pro nouzový přístup.   
+**Podrobnosti**: Účty pro nouzový přístup umožňují organizacím omezit privilegovaný přístup v existujícím prostředí Azure Active Directory. Tyto účty jsou vysoce privilegované a nepřiřazují se konkrétním jednotlivcům. Účty pro nouzový přístup jsou omezeny na scénáře, ve kterých nelze použít běžné účty pro správu. Organizace musí omezit využívání účtu na nouzový účet jenom na nezbytné množství času.
+
+Vyhodnoťte účty, které jsou přiřazeny nebo mají nárok na roli globálního správce. Pokud nevidíte žádné účty pouze cloudu, které používají `*.onmicrosoft.com` doménu (určené pro nouzový přístup), vytvořte je. Další informace najdete v tématu [Správa účtů pro správu pro nouzový přístup ve službě Azure AD](/azure/active-directory/users-groups-roles/directory-emergency-access).
+
+**Osvědčené postupy**: V případě nouze je potřeba mít k dispozici proces "break sklo".
+**Podrobnosti**: Postupujte podle kroků v části [zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](/azure/active-directory/users-groups-roles/directory-admin-roles-secure).
+
+**Osvědčené postupy**: Vyžadovat, aby všechny kritické účty správců byly bez hesla (preferované) nebo vyžadovat vícefaktorové ověřování.
+**Podrobnosti**: Pomocí [aplikace Microsoft Authenticator](/azure/active-directory/authentication/howto-authentication-phone-sign-in) se přihlaste k jakémukoli účtu Azure AD bez použití hesla. Stejně jako ve [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification)používá Microsoft Authenticator k povolení přihlašovacích údajů uživatele, které jsou svázané se zařízením, a používá biometrické ověřování nebo PIN kód.
+
+Vyžadovat Azure Multi-Factor Authentication při přihlašování pro všechny jednotlivé uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: Globální správce, správce privilegovaných rolí, správce Exchange Online a správce SharePointu Online. Povolte službu [Multi-Factor Authentication pro účty správců](/azure/active-directory/authentication/howto-mfa-userstates) a zajistěte registraci uživatelů účtu správce.
+
+**Osvědčené postupy**: U důležitých účtů správců máte pracovní stanici správce, kde nejsou provozní úlohy povoleny (například procházení a e-mail). Tím se budou chránit účty správců před vektory útoku, které používají procházení a e-maily, a výrazně snižuje riziko závažného incidentu.
+**Podrobnosti**: Použijte pracovní stanici správce. Vyberte úroveň zabezpečení pracovní stanice:
+
+- Vysoce zabezpečená zařízení pro zvýšení produktivity poskytují pokročilé zabezpečení pro procházení a další úlohy produktivity.
+- [Pracovní stanice s privilegovaným přístupem (privilegovaným přístupem)](/windows-server/identity/securing-privileged-access/privileged-access-workstations) poskytují vyhrazený operační systém chráněný před útoky z Internetu a vektory hrozeb pro citlivé úkoly.
+
+**Osvědčené postupy**: Zrušit zřízení účtů správce, když zaměstnanci odejdou z vaší organizace.
+**Podrobnosti**: Mít zavedený proces, který zakáže nebo odstraní účty správců, když zaměstnanci odejdou z vaší organizace.
+
+**Osvědčené postupy**: Pravidelně otestujte účty správců pomocí současných technik útoku.
+**Podrobnosti**: Pomocí simulátoru útoku Office 365 nebo nabídky třetí strany můžete spouštět reálné scénáře útoku ve vaší organizaci. To vám může pomáhat najít ohrožené uživatele předtím, než dojde k reálnému útoku.
+
+**Osvědčené postupy**: Proveďte kroky pro zmírnění nejčastěji používaných technik útoku.  
+**Podrobnosti**: [Identifikujte účty Microsoft v rolích pro správu, které je potřeba přepnout na pracovní nebo školní účty.](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+
+[Zajistěte samostatné uživatelské účty a přesměrování pošty pro účty globálních správců.](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)  
+
+[Ujistěte se, že se nedávno změnila hesla účtů pro správu.](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+
+[Zapnout synchronizaci hodnot hash hesel](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)  
+
+[Vyžadovat službu Multi-Factor Authentication pro uživatele ve všech privilegovaných rolích a také vyexponovaných uživatelů](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+
+[Získání zabezpečeného skóre Office 365 (při použití Office 365)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
+
+[Přečtěte si pokyny pro zabezpečení a dodržování předpisů Office 365 (Pokud používáte Office 365).](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+
+[Konfigurace monitorování aktivit Office 365 (při použití Office 365)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
+
+[Navázání vlastníků plánů pro incidenty nebo naléhavé reakce](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#establish-incidentemergency-response-plan-owners)  
+
+[Zabezpečení místních privilegovaných účtů pro správu](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)
+
+Pokud jste nezabezpečili privilegovaný přístup, možná zjistíte, že máte příliš mnoho uživatelů v rolích s vysokou úrovní oprávnění a jsou zranitelnější vůči útokům. Škodlivé objekty actor, včetně nejčastějších útočníků, často cílí na účty správců a další prvky privilegovaného přístupu k získání přístupu k citlivým datům a systémům pomocí krádeže přihlašovacích údajů.
+
+## <a name="control-locations-where-resources-are-created"></a>Ovládací prvky umístění, kde jsou vytvářeny prostředky
+
+Povolením operátorů cloudu můžete provádět úlohy a zabránit tak jejich přerušení v přestupnosti, které jsou potřeba ke správě prostředků vaší organizace, jsou velmi důležité. Organizace, které chtějí řídit umístění, kde jsou prostředky vytvořeny, by měly zakódovat tato umístění.
+
+Pomocí [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) můžete vytvořit zásady zabezpečení, jejichž definice popisují akce nebo prostředky, které jsou výslovně odepřeny. Tyto definice zásad přiřazujete požadovanému oboru, jako je například předplatné, skupina prostředků nebo jednotlivé prostředky.
+
+> [!NOTE]
+> Zásady zabezpečení nejsou stejné jako RBAC. Ve skutečnosti používají RBAC k autorizaci uživatelů k vytváření těchto prostředků.
+>
+>
+
+Organizace, které neřídí způsob vytváření prostředků, jsou náchylnější uživatelům, kteří můžou službu zneužít, vytvořením více prostředků, než potřebují. Posílení zabezpečení procesu vytváření prostředků je důležitým krokem pro zabezpečení víceklientské scénáře.
+
+## <a name="actively-monitor-for-suspicious-activities"></a>Aktivně monitorovat podezřelé aktivity
+
+Aktivní systém monitorování identit může rychle detekovat podezřelé chování a aktivovat upozornění pro další šetření. V následující tabulce jsou uvedeny dvě možnosti služby Azure AD, které mohou organizacím monitorovat své identity:
+
+**Osvědčené postupy**: Máte metodu pro identifikaci:
+
+- Pokusy o přihlášení [bez trasování](/azure/active-directory/active-directory-reporting-sign-ins-from-unknown-sources).
+- [](/azure/active-directory/active-directory-reporting-sign-ins-after-multiple-failures) Útoky hrubou silou na konkrétní účet.
+- Pokusí se přihlásit z více míst.
+- Přihlášení z nakažených [zařízení](/azure/active-directory/active-directory-reporting-sign-ins-from-possibly-infected-devices).
+- Podezřelé IP adresy.
+
+**Podrobnosti**: Použijte Azure AD Premium [sestavy anomálií](/azure/active-directory/active-directory-view-access-usage-reports). Všechny procesy a postupy pro správce IT můžou spouštět tyto sestavy každý den nebo na vyžádání (obvykle ve scénáři reakce na incidenty).
+
+**Osvědčené postupy**: Mít aktivní monitorovací systém, který vás upozorní na rizika a může upravit úroveň rizika (vysoká, střední nebo nízká) na požadavky vaší firmy.   
+**Podrobnosti**: Použijte [Azure AD Identity Protection](/azure/active-directory/active-directory-identityprotection), které označí aktuální rizika na vlastním řídicím panelu a pošle denní souhrnná oznámení prostřednictvím e-mailu. Aby bylo možné chránit identity vaší organizace, můžete nakonfigurovat zásady založené na rizicích, které automaticky reagují na zjištěné problémy při dosažení zadané úrovně rizika.
+
+Organizace, které aktivně nemonitorují své systémy identit, jsou ohrožené tím, že mají ohrožení zabezpečení uživatele. Bez vědomí, že tyto přihlašovací údaje probíhají podezřelé aktivity, nemůžou organizace zmírnit tento typ hrozby.
+
+## <a name="use-azure-ad-for-storage-authentication"></a>Použití Azure AD k ověřování úložiště
+[Azure Storage](/azure/storage/common/storage-auth-aad) podporuje ověřování a autorizaci se službou Azure AD pro úložiště objektů BLOB a úložiště front. Pomocí ověřování Azure AD můžete použít řízení přístupu na základě role Azure k udělení konkrétních oprávnění uživatelům, skupinám a aplikacím do rozsahu samostatného kontejneru objektů BLOB nebo fronty.
+
+[Pro ověřování přístupu k úložišti doporučujeme použít službu Azure AD](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/).
+
+## <a name="next-step"></a>Další krok
+
+V článku [osvědčené postupy a vzory zabezpečení Azure](best-practices-and-patterns.md) najdete v tématu Doporučené postupy zabezpečení pro použití při navrhování, nasazování a správě cloudových řešení pomocí Azure.

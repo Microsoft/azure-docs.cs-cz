@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vyhledávání zpráv pomocí Pythonu a rozhraní API REST vyhledávání zpráv Bingu'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete odeslat požadavek na Bingu News Search REST API pomocí Pythonu a přijetí odpovědi JSON.
+title: 'Rychlý start: Proveďte hledání zpráv pomocí Pythonu a Vyhledávání zpráv Bingu REST API'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete odeslat žádost Vyhledávání zpráv Bingu REST API pomocí Pythonu a přijmout odpověď JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f8912e38e063a93a90b2e7877aad538fbfd4044d
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 2fc67cbfedccd69ff9063b0575ae51197eceb09d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339003"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423696"
 ---
-# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Pythonu a rozhraní API REST vyhledávání zpráv Bingu
+# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Rychlý start: Proveďte hledání zpráv pomocí Pythonu a Vyhledávání zpráv Bingu REST API
 
-V tomto rychlém startu můžete provést první volání do rozhraní API pro vyhledávání zpráv Bingu a získejte odpověď ve formátu JSON. Tato jednoduchá aplikace JavaScript odešle vyhledávací dotaz na rozhraní API a zpracovává výsledky. Zatímco tato aplikace je napsaný v Pythonu, je rozhraní API RESTful webových služeb kompatibilní většina programovacích jazyků.
+Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání zpráv a přijetí odpovědi JSON. Tato jednoduchá aplikace JavaScriptu pošle vyhledávací dotaz do rozhraní API a zpracuje výsledky. I když je tato aplikace napsaná v Pythonu, je rozhraní API webovou službou RESTful, která je kompatibilní s většinou programovacích jazyků.
 
-Tento vzorový kód můžete spouštět jako poznámkového bloku Jupyter [MyBinder](https://mybinder.org) kliknutím na spustit vazače označení: 
+Tuto ukázku kódu můžete spustit jako Jupyter Poznámkový blok v [MyBinder](https://mybinder.org) kliknutím na spouštěcí označení pořadače: 
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingNewsSearchAPI.ipynb)
 
-Zdrojový kód pro tuto ukázku je také k dispozici na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingNewsSearchv7.py).
+Zdrojový kód pro tuto ukázku je také k dispozici [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingNewsSearchv7.py)na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,7 +36,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor Pythonu ve vašich oblíbených prostředím IDE nebo editorem a importujte modul požadavku. Vytváření proměnných pro váš klíč předplatného, koncový bod a hledaný termín. Vyhledání vašeho koncového bodu na řídicím panelu Azure.
+1. Vytvořte nový soubor Pythonu v oblíbených IDE nebo editoru a importujte modul žádosti. Vytvořte proměnné pro klíč předplatného, koncový bod a hledaný termín. Koncový bod najdete na řídicím panelu Azure.
 
 ```python
 import requests
@@ -46,18 +46,18 @@ search_term = "Microsoft"
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
 ```
 
-### <a name="create-parameters-for-the-request"></a>Parametry pro žádost o vytvoření
+### <a name="create-parameters-for-the-request"></a>Vytvoření parametrů pro požadavek
 
-1. Přidat váš klíč předplatného do nového slovníku, pomocí `"Ocp-Apim-Subscription-Key"` jako klíč. Proveďte totéž pro parametry hledání.
+1. Přidejte klíč předplatného do nového slovníku pomocí `"Ocp-Apim-Subscription-Key"` jako klíč. Totéž proveďte pro parametry hledání.
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
     ```
 
-## <a name="send-a-request-and-get-a-response"></a>Odešle žádost a získejte odpověď
+## <a name="send-a-request-and-get-a-response"></a>Odeslat žádost a získat odpověď
 
-1. Použijte knihovnu žádosti pro volání API Bingu pro vizuální vyhledávání pomocí váš klíč předplatného a slovníku objekty vytvořené v předchozím kroku.
+1. Pomocí knihovny requests volejte rozhraní API pro vizuální vyhledávání Bingu pomocí svého klíče předplatného a objektů slovníku vytvořených v posledním kroku.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -65,7 +65,7 @@ search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
     search_results = response.json()
     ```
 
-2. `search_results` obsahuje odpověď z rozhraní API jako objekt JSON. Získat přístup k popisu článků obsažených v odpovědi.
+2. `search_results`obsahuje odpověď z rozhraní API jako objekt JSON. Přístup k popisům článků obsažených v odpovědi.
     
     ```python
     descriptions = [article["description"] for article in search_results["value"]]
@@ -82,7 +82,7 @@ rows = "\n".join(["<tr><td>{0}</td></tr>".format(desc)
 HTML("<table>"+rows+"</table>")
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)

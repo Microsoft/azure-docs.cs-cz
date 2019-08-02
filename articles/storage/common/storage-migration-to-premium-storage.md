@@ -1,6 +1,6 @@
 ---
-title: Migrace virtuálních počítačů na Azure Premium Storage | Dokumentace Microsoftu
-description: Migrujte vaše stávající virtuální počítače na Azure Premium Storage. Premium Storage nabízí podporu vysoce výkonných disků s nízkou latencí pro úlohy můžu vstupně-výstupními operacemi na Azure Virtual Machines.
+title: Migrují se virtuální počítače do Azure Premium Storage | Microsoft Docs
+description: Migrujte stávající virtuální počítače do Azure Premium Storage. Premium Storage nabízí podporu vysoce výkonných disků s nízkou latencí pro úlohy náročné na vstupně-výstupní operace běžící na Azure Virtual Machines.
 services: storage
 author: roygara
 ms.service: storage
@@ -9,164 +9,164 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 5cfb96bd3115c8f3116a28926e93df89dff54351
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b6e442ff3333a7fd085f8e452ae056e7daaba8c
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153769"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565503"
 ---
-# <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace na Azure Premium Storage (nespravované disky)
+# <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace do Azure Premium Storage (nespravované disky)
 
 > [!NOTE]
-> Tento článek popisuje, jak migrovat virtuální počítač, který používá nespravované disky standard k virtuálnímu počítači, který používá disky úrovně premium. Doporučujeme použít Azure Managed Disks pro nové virtuální počítače a další, abyste převedli výše uvedené nespravované disky na managed disks. Spravované disky popisovač základní účty úložiště, není nutné. Další informace najdete v tématu naše [Přehled služby Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
+> Tento článek popisuje, jak migrovat virtuální počítač, který používá nespravované standardní disky, do virtuálního počítače, který používá nespravované disky Premium. Doporučujeme, abyste pro nové virtuální počítače používali Azure Managed Disks a převedli jste předchozí nespravované disky na spravované disky. Managed Disks zpracovávat zdrojové účty úložiště, takže je nemusíte mít. Další informace najdete v našem [přehledu Managed disks](../../virtual-machines/windows/managed-disks-overview.md).
 >
 
-Azure Premium Storage poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače provozované můžu intenzivních vstupně-výstupních operací. Migrací vaší aplikace disky virtuálních počítačů na Azure Premium Storage můžete využít výhod rychlost a výkon těchto disků.
+Azure Premium Storage poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých běží úlohy náročné na vstupně-výstupní operace. Můžete využít rychlost a výkon těchto disků migrací disků virtuálních počítačů aplikace do Azure Premium Storage.
 
-Účel tohoto průvodce je pomoci nové uživatele služby Azure Premium Storage lepší Příprava hladkým přechodem z jejich aktuálního systému na Premium Storage. Průvodce řeší tři klíčové komponenty v tomto procesu:
+Účelem tohoto průvodce je pomáhat novým uživatelům Azure Premium Storage lépe připravit se na zajištění hladkého přechodu ze současného systému na Premium Storage. Příručka řeší tři klíčové komponenty v tomto procesu:
 
 * [Plánování migrace na Premium Storage](#plan-the-migration-to-premium-storage)
-* [Příprava a zkopírovat virtuální pevné disky (VHD) na Premium Storage](#prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage)
-* [Vytvoření virtuálního počítače Azure pomocí služby Premium Storage](#create-azure-virtual-machine-using-premium-storage)
+* [Příprava a zkopírování virtuálních pevných disků (VHD) do Premium Storage](#prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage)
+* [Vytvoření virtuálního počítače Azure pomocí Premium Storage](#create-azure-virtual-machine-using-premium-storage)
 
-Můžete migrovat virtuální počítače z jiných platforem na Azure Premium Storage, nebo migrovat stávající virtuální počítače Azure ze služby Storage úrovně Standard na Premium Storage. Tento průvodce popisuje kroky pro oba dva scénáře. Postupujte podle kroků uvedených v příslušné části v závislosti na vašem scénáři.
+Můžete buď migrovat virtuální počítače z jiných platforem do Azure Premium Storage nebo migrovat stávající virtuální počítače Azure ze služby Storage úrovně Standard do Premium Storage. Tato příručka se zabývá postupy obou dvou scénářů. Postupujte podle kroků uvedených v příslušné části v závislosti na vašem scénáři.
 
 > [!NOTE]
-> Najdete přehled funkcí a ceny premium SSD: [Vyberte typ disku pro virtuální počítače IaaS](../../virtual-machines/windows/disks-types.md#premium-ssd). Doporučujeme migrovat všechny disku virtuálního počítače vyžadující vysokou vstupně-výstupních operací na Azure Premium Storage pro zajištění nejlepšího výkonu pro vaši aplikaci. Pokud na disku nevyžaduje vysoké IOPS, můžete omezit náklady udržováním ve standardním úložišti, který ukládá data na disku virtuálního počítače na jednotky pevných disků (HDD) namísto jednotky SSD.
+> Přehled funkcí a ceny SSD úrovně Premium najdete v těchto verzích: [Vyberte typ disku pro virtuální počítače s IaaS](../../virtual-machines/windows/disks-types.md#premium-ssd). Pro dosažení optimálního výkonu vaší aplikace doporučujeme migrovat všechny disky virtuálních počítačů vyžadující vysoké IOPS do Azure Premium Storage. Pokud disk nevyžaduje vysoké IOPS, můžete omezit náklady tím, že ho zachováte ve službě Storage úrovně Standard, což ukládá data disků virtuálního počítače na jednotky pevného disku (HDD) místo SSD.
 >
 
-Dokončení procesu migrace v celém rozsahu může vyžadovat další akce před a po provedení kroků v tomto průvodci k dispozici. Mezi příklady patří konfigurace virtuálních sítí nebo koncovými body a provádění změn kódu v rámci vlastní aplikace může být nutné výpadkům ve vaší aplikaci. Tyto akce jsou jedinečné pro jednotlivé aplikace a byste měli provést spolu s kroky popsané v této příručce k úplné přechodu na Premium Storage jako bezproblémové co nejvíc.
+Dokončení procesu migrace v celém rozsahu může vyžadovat další akce před i po krocích uvedených v této příručce. Příklady zahrnují konfiguraci virtuálních sítí nebo koncových bodů nebo provádění změn kódu v rámci samotné aplikace, což může vyžadovat určité výpadky aplikace. Tyto akce jsou pro každou aplikaci jedinečné a měli byste je vyplnit spolu s kroky uvedenými v této příručce, aby byl úplný přechod Premium Storage co nejrychlejší.
 
 ## <a name="plan-the-migration-to-premium-storage"></a>Plánování migrace na Premium Storage
-Tato část zajišťuje připraveni dodržovat postupy migrace popsané v tomto článku a vám umožní nejlepší rozhodnutí o typech virtuálních počítačů a Disk.
+V této části se doručí, že budete připraveni postupovat podle kroků migrace v tomto článku, a pomůže vám to, abyste mohli provést nejlepší rozhodnutí na typech virtuálních počítačů a disků.
 
 ### <a name="prerequisites"></a>Požadavky
-* Budete potřebovat předplatné Azure. Pokud ho nemáte, můžete vytvořit jeden měsíc [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/) předplatné nebo navštivte [ceny za Azure](https://azure.microsoft.com/pricing/) další možnosti.
-* Spouštění rutin Powershellu, musíte modul Microsoft Azure PowerShell. Bod instalace a pokyny pro instalaci jsou popsané v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
-* Když plánujete použít virtuální počítače Azure běží na Premium Storage, budete muset použít virtuální počítače podporující Premium Storage. Disky Standard a Premium Storage můžete použít s podporou virtuálních počítačů služby Premium Storage. Disky storage úrovně Premium bude k dispozici s více typy virtuálních počítačů v budoucnu. Další informace o všech dostupných typů disku virtuálního počítače Azure a velikostí najdete v tématu [velikosti virtuálních počítačů](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [velikosti pro Cloud Services](../../cloud-services/cloud-services-sizes-specs.md).
+* Budete potřebovat předplatné Azure. Pokud ho nemáte, můžete si vytvořit měsíční předplatné [bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/) nebo přejít na [ceny Azure](https://azure.microsoft.com/pricing/) , kde najdete další možnosti.
+* Pokud chcete spustit rutiny prostředí PowerShell, budete potřebovat modul Microsoft Azure PowerShell. Bod instalace a pokyny pro instalaci jsou popsané v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
+* Pokud plánujete používat virtuální počítače Azure běžící na Premium Storage, je nutné použít virtuální počítače podporující Premium Storage. Můžete použít standardní i Premium Storage disky s Premium Storage podporujícími virtuální počítače. Disky Premium Storage budou v budoucnu k dispozici pro další typy virtuálních počítačů. Další informace o všech dostupných typech a velikostech disků virtuálních počítačů Azure najdete v tématu [velikosti pro virtuální počítače](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [velikosti pro Cloud Services](../../cloud-services/cloud-services-sizes-specs.md).
 
 ### <a name="considerations"></a>Požadavky
-Virtuální počítač Azure podporuje připojení několik disků Premium Storage tak, aby vaše aplikace může mít až 256 TB úložiště na každý virtuální počítač. Díky službě Premium Storage vaše aplikace dosáhnout 80 000 IOPS (vstupně výstupní operace za sekundu) na virtuálním počítači a 2 000 MB za druhé propustnost disků jednotlivých virtuálních počítačů s extrémně nízkými latencemi pro operace čtení. Máte možnost v různých virtuálních počítačů a disků. Tato část se dozvíte, jak najít možnost, která nejlépe vyhovuje vaší úlohy.
+Virtuální počítač Azure podporuje připojení několika Premium Storage disků, takže vaše aplikace můžou mít až 256 TB úložného prostoru na jeden virtuální počítač. Díky Premium Storage můžou vaše aplikace dosahovat 80 000 vstupně-výstupních operací za sekundu na virtuální počítač a propustnosti disku 2000 MB za sekundu na jeden virtuální počítač s extrémně nízkými latencemi pro operace čtení. Máte možnosti pro celou řadu virtuálních počítačů a disků. V této části vám pomůžou najít možnost, která nejlépe vyhovuje vašim úlohám.
 
 #### <a name="vm-sizes"></a>Velikost virtuálních počítačů
-Specifikace velikosti virtuálního počítače Azure jsou uvedeny v [velikosti virtuálních počítačů](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Zkontrolujte charakteristiky výkonu virtuálních počítačů, které pracují se službou Premium Storage a zvolte nejvhodnější velikosti virtuálního počítače, který nejlépe vyhovuje vaší úlohy. Ujistěte se, že je dostatečná šířka pásma dostupné na virtuálním počítači Centrum umožňující prosazovat diskové přenosy.
+Specifikace velikosti virtuálního počítače Azure jsou uvedené v části [velikosti pro virtuální počítače](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Přečtěte si výkonnostní charakteristiky virtuálních počítačů, které pracují se Premium Storage a vyberte nejvhodnější velikost virtuálního počítače, která nejlépe vyhovuje vašim úlohám. Ujistěte se, že je ve vašem VIRTUÁLNÍm počítači k dispozici dostatečná šířka pásma, aby bylo možné disk provozovat.
 
 #### <a name="disk-sizes"></a>Velikost disků
-Existuje pět typů disků, které lze použít s virtuálním Počítačem a obsahují konkrétní IOPs a propustnost omezení. Vzít v úvahu tyto limity, když vyberete typ disku pro virtuální počítač podle potřeb vaší aplikace z hlediska kapacity, výkonu, škálovatelnosti a načte ve špičce.
+Existuje pět typů disků, které lze použít s VIRTUÁLNÍm počítačem a každý má konkrétní omezení pro IOPs a propustnost. Vezměte v úvahu tato omezení při výběru typu disku pro váš virtuální počítač na základě potřeb vaší aplikace z důvodu kapacity, výkonu, škálovatelnosti a zatížení ve špičce.
 
-| Typ disky Premium  | P10   | P20   | P30            | P40            | P50            | 
+| Typ disků úrovně Premium  | P10   | P20   | P30            | P40            | P50            | 
 |:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
 | Velikost disku           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
 | Vstupně-výstupní operace za sekundu / disk       | 500   | 2300  | 5000           | 7500           | 7500           | 
 | Propustnost / disk | 100 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu |
 
-V závislosti na velikosti pracovní zátěže určí, jestli další datové disky jsou nezbytné pro váš virtuální počítač. K virtuálnímu počítači můžete připojit několik trvalých datových disků. V případě potřeby můžete prokládanou discích zvýšit kapacitu a výkon svazku. (Podívejte se, co je prokládání disků [tady](../../virtual-machines/windows/premium-storage-performance.md#disk-striping).) Pokud prokládanou datových disků Premium Storage pomocí [prostory úložiště][4], měli byste ji nakonfigurovat s jedním sloupcem pro každý disk, který se používá. Celkový výkon prokládaných svazků v opačném případě může být nižší než očekávané kvůli nerovnoměrné distribuci provozu discích. Pro virtuální počítače s Linuxem můžete použít *mdadm* nástroj to samé. Najdete v článku [konfigurace softwaru diskového pole RAID v Linuxu](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) podrobnosti.
+V závislosti na vašich úlohách Zjistěte, jestli jsou pro váš virtuální počítač potřeba další datové disky. K VIRTUÁLNÍmu počítači můžete připojit několik trvalých datových disků. V případě potřeby můžete proložením na disky zvýšit kapacitu a výkon svazku. (Další informace najdete v tématu co [](../../virtual-machines/windows/premium-storage-performance.md#disk-striping)je to disk Stripe.) Pokud Premium Storage datové disky pomocí [prostorů úložiště][4], měli byste je nakonfigurovat pomocí jednoho sloupce pro každý disk, který se používá. V opačném případě může být celkový výkon prokládaného svazku nižší, než se očekává kvůli nerovnoměrné distribuci provozu mezi disky. Pro virtuální počítače se systémem Linux můžete použít nástroj *mdadm* ke stejnému účelu. Podrobnosti najdete v článku [Konfigurace softwarového pole RAID v systému Linux](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 #### <a name="storage-account-scalability-targets"></a>Cíle škálovatelnosti účtu úložiště
-Účty úložiště úrovně Premium mají následující cíle škálovatelnosti kromě [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md). Požadavcích aplikace překročení cíle škálovatelnosti z jednoho účtu úložiště, sestavení aplikace pro použití více účtů úložiště a data rozdělit mezi tyto účty úložiště.
+Kromě [cílů Azure Storage škálovatelnosti a výkonu](storage-scalability-targets.md)Premium Storage účty mají následující cíle škálovatelnosti. Pokud požadavky vaší aplikace překračují cíle škálovatelnosti jednoho účtu úložiště, sestavte aplikaci tak, aby používala více účtů úložiště, a vytvořte oddíly dat v rámci těchto účtů úložiště.
 
-| Celkový počet účtů kapacity | Celková šířka pásma pro účet místně redundantního úložiště |
+| Celková kapacita účtu | Celková šířka pásma pro místně redundantní účet úložiště |
 |:--- |:--- |
-| Kapacita disku: 35TB<br />Kapacita snímku: 10 TB |Až na 50 gigabity za sekundu pro příchozí a odchozí |
+| Kapacita disku: 35TB<br />Kapacita snímku: 10 TB |Až 50 gigabitů za sekundu pro příchozí i odchozí |
 
-Další informace o specifikacích Premium Storage, podívejte se na [škálovatelnost a výkonnostní cíle Azure Storage](storage-scalability-targets.md#premium-performance-storage-account-scale-limits).
+Další informace o Premium Storage specifikacích najdete v [Azure Storage škálovatelnost a výkonnostní cíle](storage-scalability-targets.md#premium-performance-storage-account-scale-limits).
 
-#### <a name="disk-caching-policy"></a>Zásady ukládání do mezipaměti na disku
-Ve výchozím nastavení, disk zásady ukládání do mezipaměti je *jen pro čtení* pro všechny úrovně Premium datové disky, a *čtení a zápis* pro disk s operačním systémem Premium připojené k virtuálnímu počítači. Toto nastavení konfigurace se doporučuje pro zajištění optimálního výkonu pro vaše aplikace IOs. Náročné na zápis nebo jen pro zápis datové disky (jako jsou například soubory protokolu serveru SQL Server) Zakázání používání mezipaměti disku, takže můžete dosáhnout lepší výkon aplikace. Nastavení mezipaměti pro existující datové disky můžete aktualizovat pomocí [webu Azure portal](https://portal.azure.com) nebo *- HostCaching* parametr *Set-AzureDataDisk* rutiny.
+#### <a name="disk-caching-policy"></a>Zásady ukládání do mezipaměti disku
+Ve výchozím nastavení jsou zásady ukládání do mezipaměti disku jen pro *čtení* pro všechny disky Premium data a *ke čtení i zápisu* pro disk s operačním systémem Premium připojené k virtuálnímu počítači. Toto nastavení konfigurace se doporučuje pro dosažení optimálního výkonu pro IOs vaší aplikace. U datových disků, které jsou výhradně pro zápis nebo pouze pro zápis (například souborů protokolu SQL Server), zakažte ukládání do mezipaměti disku, abyste dosáhli lepšího výkonu aplikace. Nastavení mezipaměti pro existující datové disky se dá aktualizovat pomocí [Azure Portal](https://portal.azure.com) nebo parametru *-HostCaching* rutiny *set-AzureDataDisk* .
 
 #### <a name="location"></a>Location
-Vyberte umístění, kde je k dispozici Azure Premium Storage. Zobrazit [služeb Azure podle oblasti](https://azure.microsoft.com/regions/#services) aktuální informace o dostupných umístění. Virtuální počítače umístěné ve stejné oblasti jako účet úložiště, že úložiště disky virtuálního počítače získáte mnohem lepší výkon než pokud jsou v oblastech.
+Vyberte umístění, kde je k dispozici Azure Premium Storage. Aktuální informace o dostupných umístěních najdete v tématu [služby Azure podle oblasti](https://azure.microsoft.com/regions/#services) . Virtuální počítače umístěné ve stejné oblasti jako účet úložiště, který ukládá disky pro virtuální počítač, budou poskytovat mnohem lepší výkon, než kdyby byly v samostatných oblastech.
 
 #### <a name="other-azure-vm-configuration-settings"></a>Další nastavení konfigurace virtuálního počítače Azure
-Při vytváření virtuálního počítače Azure, zobrazí výzva ke konfiguraci určitá nastavení virtuálního počítače. Nezapomeňte, že některá nastavení jsou opravené životního cyklu virtuálního počítače, zatímco můžete upravit nebo přidat další později. Zkontrolujte nastavení konfigurace těchto virtuálních počítačů Azure a ujistěte se, že tyto jsou nakonfigurována tak, aby odpovídaly požadavkům vaší úlohy.
+Při vytváření virtuálního počítače Azure se zobrazí výzva ke konfiguraci určitých nastavení virtuálního počítače. Pamatujte si, že pro celou dobu života virtuálního počítače se opravilo několik nastavení, zatímco později můžete upravovat nebo přidávat další. Zkontrolujte tato nastavení konfigurace virtuálního počítače Azure a ujistěte se, že jsou správně nakonfigurované tak, aby odpovídaly vašim požadavkům na úlohy.
 
 ### <a name="optimization"></a>Optimalizace
-[Azure Premium Storage: Návrh pro vysoký výkon](../../virtual-machines/windows/premium-storage-performance.md) poskytuje pokyny pro vytváření vysoce výkonné aplikace využívající Azure Premium Storage. Můžete použít pokyny v kombinaci s osvědčené postupy z hlediska výkonu pro technologie, které používá vaše aplikace.
+[Azure Premium Storage: Návrh pro vysoký výkon](../../virtual-machines/windows/premium-storage-performance.md) poskytuje pokyny pro vytváření vysoce výkonných aplikací s využitím Azure Premium Storage. Můžete postupovat podle pokynů v kombinaci s osvědčenými postupy pro výkon, které platí pro technologie používané vaší aplikací.
 
-## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Příprava a zkopírovat virtuální pevné disky (VHD) na Premium Storage
-Následující část obsahuje pokyny pro přípravu virtuálních pevných disků ze svého virtuálního počítače a kopírování virtuálních pevných disků do služby Azure Storage.
+## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Příprava a zkopírování virtuálních pevných disků (VHD) do Premium Storage
+V následující části najdete pokyny k přípravě VHD z virtuálního počítače a zkopírování virtuálních pevných disků do Azure Storage.
 
-* [Scénář 1: "Existujících virtuálních počítačů Azure migruji do služby Azure Premium Storage."](#scenario1)
-* [Scénář 2: "Migruji virtuálních počítačů z jiných platforem na Azure Premium Storage."](#scenario2)
+* [Scénář 1: "Migruji jste stávající virtuální počítače Azure do Azure Premium Storage."](#scenario1)
+* [Scénář 2: "Migruji jste virtuální počítače z jiných platforem do Azure Premium Storage."](#scenario2)
 
 ### <a name="prerequisites"></a>Požadavky
-Virtuální pevné disky přípravy na migraci, budete potřebovat:
+Pokud chcete připravit virtuální pevné disky pro migraci, budete potřebovat:
 
-* Předplatné Azure, účet úložiště a kontejner v tomto účtu úložiště, do kterého můžete zkopírovat virtuální pevné disky. Všimněte si, že cílový účet úložiště může být účet Standard nebo Premium Storage podle potřeby.
-* Nástroj pro zobecnit virtuální pevný disk, pokud máte v úmyslu vytvořit několik instancí virtuálních počítačů z něj. Například nástroje sysprep pro Windows nebo virt-sysprep pro Ubuntu.
-* Nástroj pro nahrání souboru VHD do účtu úložiště. Zobrazit [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md) nebo použijte [Průzkumníka služby Azure storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). Tato příručka popisuje kopírování virtuální pevný disk pomocí nástroje AzCopy.
+* Předplatné Azure, účet úložiště a kontejner v účtu úložiště, do kterého můžete zkopírovat virtuální pevný disk. Všimněte si, že cílový účet úložiště může být účtem Standard nebo Premium Storage v závislosti na vašem požadavku.
+* Nástroj pro generalizaci VHD, pokud máte v plánu vytvořit z něj více instancí virtuálních počítačů. Například Sysprep pro Windows nebo Virt-Sysprep pro Ubuntu.
+* Nástroj pro nahrání souboru VHD do účtu úložiště. Přečtěte si téma [přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md) nebo použití [Průzkumníka služby Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). Tato příručka popisuje zkopírování VHD pomocí nástroje AzCopy.
 
 > [!NOTE]
-> Pokud zvolíte možnost synchronní kopie pomocí nástroje AzCopy, pro zajištění optimálního výkonu, zkopírujte virtuální pevný disk spuštěním jednoho z těchto nástrojů z virtuálního počítače Azure, který je ve stejné oblasti jako cílový účet úložiště. Pokud kopírujete virtuální pevný disk z virtuálního počítače Azure do jiné oblasti, může být pomalejší výkon.
+> Pokud zvolíte možnost synchronní kopírování s AzCopy a optimálním výkonem, zkopírujte virtuální pevný disk spuštěním jednoho z těchto nástrojů z virtuálního počítače Azure, který je ve stejné oblasti jako cílový účet úložiště. Pokud kopírujete virtuální pevný disk z virtuálního počítače Azure v jiné oblasti, může být výkon pomalejší.
 >
-> Kopírování velkých objemů dat přes omezenou šířkou pásma, vezměte v úvahu [posílat data do úložiště objektů Blob pomocí služby Azure Import/Export](../storage-import-export-service.md); to umožňuje přenos dat přenosem pevných disků do datacentra Azure. Služba Azure Import/Export můžete použít ke zkopírování dat na účet úložiště úrovně standard. Jakmile jsou data ve vašem účtu úložiště úrovně standard, můžete použít buď [kopírování objektů Blob rozhraní API](https://msdn.microsoft.com/library/azure/dd894037.aspx) nebo AzCopy k přenosu dat do účtu premium storage.
+> Pokud chcete kopírovat velké množství dat přes omezení šířky pásma, zvažte [použití služby Azure import/export k přenosu dat do BLOB Storage](../storage-import-export-service.md); Díky tomu můžete přenést data přenosem jednotek pevného disku do datacentra Azure. Službu Azure import/export můžete použít jenom ke kopírování dat do standardního účtu úložiště. Jakmile jsou data ve vašem účtu úložiště úrovně Standard, můžete k přenosu dat do účtu Premium Storage použít buď [kopírování rozhraní BLOB API](https://msdn.microsoft.com/library/azure/dd894037.aspx) , nebo AzCopy.
 >
-> Všimněte si, že Microsoft Azure podporuje pouze soubory virtuálního pevného disku pevné velikosti. Soubory VHDX nebo dynamický virtuální pevné disky nejsou podporovány. Pokud máte dynamický virtuální pevný disk, můžete ji převést na pevné velikosti pomocí [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) rutiny.
+> Všimněte si, že Microsoft Azure podporuje pouze pevné velikosti souborů VHD. Soubory VHDX nebo dynamické VHD se nepodporují. Pokud máte dynamický virtuální pevný disk, můžete ho převést na pevnou velikost pomocí rutiny [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) .
 >
 >
 
-### <a name="scenario1"></a>Scénář 1: "Existujících virtuálních počítačů Azure migruji do služby Azure Premium Storage."
-Pokud migrujete existující virtuální počítače Azure, zastavte virtuální počítač, virtuální pevné disky podle typu virtuálního pevného disku, které chcete připravit a pak zkopírujte virtuální pevný disk pomocí nástroje AzCopy nebo prostředí PowerShell.
+### <a name="scenario1"></a>Scénář 1: "Migruji jste stávající virtuální počítače Azure do Azure Premium Storage."
+Pokud migrujete stávající virtuální počítače Azure, zastavte virtuální počítač, připravte virtuální pevné disky na požadovaný typ VHD a pak zkopírujte VHD pomocí AzCopy nebo PowerShellu.
 
-Virtuální počítač musí být úplně dolů k migraci do čistého stavu. Bude výpadek až po dokončení migrace.
+Aby bylo možné migrovat čistý stav, musí být virtuální počítač kompletně vypnut. Až se migrace dokončí, dojde k výpadku.
 
 #### <a name="step-1-prepare-vhds-for-migration"></a>Krok 1. Příprava VHD pro migraci
-Pokud migrujete existující virtuální počítače Azure do služby Premium Storage, může být virtuální pevný disk:
+Pokud migrujete stávající virtuální počítače Azure do Premium Storage, může to mít tento virtuální pevný disk:
 
-* Bitové kopie operačního systému
-* Disk jedinečné operačního systému
+* Zobecněná bitová kopie operačního systému
+* Jedinečný disk s operačním systémem
 * Datový disk
 
-Níže najdete provedeme tyto 3 scénáře pro přípravu vašeho virtuálního pevného disku.
+Níže si projdeme tyto 3 scénáře přípravy VHD.
 
-##### <a name="use-a-generalized-operating-system-vhd-to-create-multiple-vm-instances"></a>Vytvoření víc instancí virtuálních počítačů pomocí generalizovaného virtuálního pevného disku operačního systému
-Pokud nahráváte virtuálního pevného disku, který se použije k vytvoření několika obecných instancí virtuálních počítačů Azure, musíte nejprve zobecnit virtuální pevný disk pomocí nástroje sysprep. To se vztahuje na virtuální pevný disk, který je místně nebo v cloudu. Nástroj Sysprep odebere všechny informace specifické pro počítač z virtuálního pevného disku.
+##### <a name="use-a-generalized-operating-system-vhd-to-create-multiple-vm-instances"></a>Vytvoření více instancí virtuálních počítačů pomocí zobecněného virtuálního pevného disku s operačním systémem
+Pokud nahráváte VHD, který se použije k vytvoření několika obecných instancí virtuálních počítačů Azure, musíte nejdřív provést generalizaci VHD pomocí nástroje Sysprep. To platí pro virtuální pevný disk, který je místní nebo v cloudu. Nástroj Sysprep odstraní z virtuálního pevného disku všechny informace specifické pro konkrétní počítač.
 
 > [!IMPORTANT]
-> Pořízení snímku nebo zálohování virtuálního počítače před že ji zobecníte. Spuštění sysprep se zastavit a uvolnit instanci virtuálního počítače. Postupujte podle kroků níže nástroje Sysprep virtuálního pevného disku operačního systému Windows. Všimněte si, že spuštění příkazu Sysprep bude vyžadovat, abyste vypnout virtuální počítač. Další informace o nástroji Sysprep najdete v tématu [přehled nástroje Sysprep](https://technet.microsoft.com/library/hh825209.aspx) nebo [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx).
+> Před generalizací vytvořte snímek nebo zálohujte svůj virtuální počítač. Spuštění nástroje Sysprep ukončí a uvolní instanci virtuálního počítače. Postupujte podle následujících kroků a proveďte nástroj Sysprep pro virtuální pevný disk s operačním systémem Windows. Všimněte si, že spuštění příkazu Sysprep bude vyžadovat, abyste virtuální počítač vypnuli. Další informace o nástroji Sysprep najdete v tématu [Přehled nástroje Sysprep](https://technet.microsoft.com/library/hh825209.aspx) nebo [technické Reference k nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx).
 >
 >
 
 1. Otevřete okno příkazového řádku jako správce.
-2. Zadejte následující příkaz, chcete-li spustit nástroj Sysprep:
+2. Spusťte nástroj Sysprep zadáním následujícího příkazu:
 
     ```
     %windir%\system32\sysprep\sysprep.exe
     ```
 
-3. V nástroji pro přípravu systému, vyberte prostředí systému zadejte Out-of-Box (OOBE), zaškrtněte políčko generalizace, vyberte **vypnutí**a potom klikněte na tlačítko **OK**, jak je znázorněno na následujícím obrázku. Nástroj Sysprep zobecní operační systém, který se vypnutí systému.
+3. V nástroji pro přípravu systému vyberte možnost spustit systém při spuštění prostředí (OOBE), zaškrtněte políčko generalizace, vyberte možnost **vypnout**a pak klikněte na tlačítko **OK**, jak je znázorněno na následujícím obrázku. Nástroj Sysprep provede generalizaci operačního systému a vypne systém.
 
     ![][1]
 
-Pro virtuální počítač s Ubuntu použijte to samé virt nástroje sysprep. Zobrazit [virt sysprep](https://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) další podrobnosti. Viz také některé z oblasti open source [zřizování serveru Linux softwaru](https://www.cyberciti.biz/tips/server-provisioning-software.html) u ostatních operačních systémů Linux.
+Pro virtuální počítač s Ubuntu použijte Virt-Sysprep, abyste mohli dosáhnout stejného. Další podrobnosti najdete v tématu [Virt-Sysprep](https://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) . Podívejte se také na některý z otevřených zdrojového [softwaru Linux serveru](https://www.cyberciti.biz/tips/server-provisioning-software.html) pro jiné operační systémy Linux.
 
-##### <a name="use-a-unique-operating-system-vhd-to-create-a-single-vm-instance"></a>Použijte jedinečné virtuální pevný disk operačního systému k vytvoření jedné instance virtuálního počítače
-Pokud máte aplikaci spuštěné na virtuálním počítači, který vyžaduje data konkrétního počítače, ne zobecnit virtuální pevný disk. Zobecněný virtuální pevný disk je možné vytvořit instanci virtuálního počítače Azure jedinečný. Například pokud máte řadiče domény na virtuální pevný disk, provádění programu sysprep filtrovacího řetězce se neúčinná jako řadič domény. Projděte si aplikace spuštěné na virtuálním počítači a dopad na nich spuštěné nástroje sysprep před zobecňuje se virtuální pevný disk.
+##### <a name="use-a-unique-operating-system-vhd-to-create-a-single-vm-instance"></a>Vytvoření jedné instance virtuálního počítače pomocí jedinečného virtuálního pevného disku s operačním systémem
+Pokud máte na VIRTUÁLNÍm počítači spuštěnou aplikaci, která vyžaduje data specifická pro konkrétní počítač, neprovádějte generalizaci VHD. Nezobecněný virtuální pevný disk se dá použít k vytvoření jedinečné instance virtuálního počítače Azure. Pokud máte například řadič domény na virtuálním pevném disku, spuštění nástroje Sysprep nebude mít žádný dopad jako řadič domény. Před generalizací VHD zkontrolujte spuštěné aplikace na vašem VIRTUÁLNÍm počítači a dopad spuštění programu Sysprep.
 
-##### <a name="register-data-disk-vhd"></a>Registrovat datový virtuální pevný disk
-Pokud máte v Azure k migraci datových disků, musí se zkontrolujte, zda se vypnout virtuální počítače, které používají tyto datové disky.
+##### <a name="register-data-disk-vhd"></a>Registrovat virtuální pevný disk datového disku
+Pokud máte datové disky v Azure, které se mají migrovat, musíte se ujistit, že jsou virtuální počítače, které používají tyto datové disky, vypnuté.
 
-Postupujte podle kroků popsaných níže a zkopírujte virtuální pevný disk do Azure Storage úrovně Premium a zaregistrujte ho jako zřízené datový disk.
+Pomocí kroků popsaných níže zkopírujte virtuální pevný disk do Azure Premium Storage a zaregistrujte ho jako zřízený datový disk.
 
-#### <a name="step-2-create-the-destination-for-your-vhd"></a>Krok 2. Vytvořit cíl pro vašeho virtuálního pevného disku
-Vytvoření účtu úložiště pro zachování virtuálních pevných disků. Při plánování, kam se mají ukládat vaše virtuální pevné disky, zvažte následující body:
+#### <a name="step-2-create-the-destination-for-your-vhd"></a>Krok 2. Vytvoření cíle pro virtuální pevný disk
+Vytvořte účet úložiště pro správu virtuálních pevných disků. Při plánování, kam se mají ukládat virtuální pevné disky, vezměte v úvahu následující body:
 
-* Cílový účet úložiště úrovně Premium.
-* Umístění účtu úložiště musí být stejný jako Premium Storage podporuje virtuální počítače Azure se vytvoří v konečné fázi. Můžete zkopírovat do nového účtu úložiště, nebo chcete použít stejný účet úložiště podle vašich potřeb.
-* Zkopírujte a uložte klíč účtu úložiště účtu cílového úložiště pro další fázi.
+* Cílový účet Premium Storage.
+* Umístění účtu úložiště musí být stejné jako Premium Storage podporující virtuální počítače Azure, které budete vytvářet v konečné fázi. Mohli byste zkopírovat do nového účtu úložiště nebo naplánovat použití stejného účtu úložiště podle vašich potřeb.
+* Zkopírujte a uložte klíč účtu úložiště cílového účtu úložiště pro další fázi.
 
-Pro datové disky je možné zachovat některé datové disky v účtu úložiště úrovně standard (například disky, které obsahují chladnější úložiště), ale důrazně doporučujeme, abyste přesouvání všech dat pro produkční úlohy, které chcete používat premium storage.
+U datových disků si můžete vybrat, jestli chcete zachovat některé datové disky v účtu úložiště úrovně Standard (například disky s chladicím úložištěm), ale důrazně doporučujeme, abyste všechna data pro produkční úlohy převedli na využívání služby Premium Storage.
 
-#### <a name="copy-vhd-with-azcopy-or-powershell"></a>Krok 3. Zkopírujte virtuální pevný disk pomocí nástroje AzCopy nebo prostředí PowerShell
-Je potřeba najít váš kontejner cesty a klíč účtu úložiště zpracovat kteroukoli z těchto dvou možností. Kontejner cesty a klíč účtu úložiště najdete v **webu Azure Portal** > **úložiště**. Kontejner bude mít adresu URL jako "https:\//myaccount.blob.core.windows.net/mycontainer/".
+#### <a name="copy-vhd-with-azcopy-or-powershell"></a>Krok 3. Kopírování VHD pomocí AzCopy nebo PowerShellu
+Abyste mohli zpracovat jednu z těchto dvou možností, budete muset najít cestu ke kontejneru a klíč účtu úložiště. Cesta ke kontejneru a klíč účtu úložiště najdete na webu **Azure Portal** > **Storage**. Adresa URL kontejneru bude jako https:\//myaccount.blob.Core.Windows.NET/myContainer/.
 
-##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Option 1: Zkopírujte virtuální pevný disk pomocí nástroje AzCopy (asynchronní kopie)
-Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na velikosti virtuálních pevných disků to může trvat dobu. Nezapomeňte zkontrolovat příchozí a odchozí přenos limity účtu úložiště při použití této možnosti. Zobrazit [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) podrobnosti.
+##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Možnost 1: Kopírování VHD pomocí AzCopy (asynchronní kopírování)
+Pomocí AzCopy můžete snadno nahrát virtuální pevný disk přes Internet. V závislosti na velikosti virtuálních pevných disků může to chvíli trvat. Při použití této možnosti Nezapomeňte ověřit omezení pro příchozí/odchozí přenos účtu úložiště. Podrobnosti najdete v tématu [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) .
 
-1. Stáhněte a nainstalujte nástroj AzCopy z tohoto: [Nejnovější verzi AzCopy](https://aka.ms/downloadazcopy)
-2. Otevřete prostředí Azure PowerShell a přejděte do složky, ve kterém je nástroj AzCopy nainstalovaný.
-3. Použijte následující příkaz pro kopírování souboru virtuálního pevného disku z "Zdroj" na "Cíl".
+1. Stáhněte a nainstalujte AzCopy odsud: [Nejnovější verze AzCopy](https://aka.ms/downloadazcopy)
+2. Otevřete Azure PowerShell a přejdete do složky, kde je nainstalovaná AzCopy.
+3. Pomocí následujícího příkazu zkopírujte soubor VHD ze zdroje do umístění cíl.
 
     ```azcopy
     AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
@@ -176,23 +176,23 @@ Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na ve
 
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /Pattern:abc.vhd
-    ```
+        ```
 
-    Tady jsou popisy parametrů použitých v příkazu AzCopy:
+    Here are descriptions of the parameters used in the AzCopy command:
 
-   * **/ Zdroj:  *&lt;zdroj&gt;:* ** Umístění složky nebo adresa URL kontejneru úložiště, která obsahuje virtuální pevný disk.
-   * **/SourceKey: *&lt;source-account-key&gt;:* ** Klíč účtu úložiště účtu zdrojového úložiště.
-   * **/ Dest:  *&lt;cílové&gt;:* ** Adresa URL kontejneru úložiště VHD, který chcete zkopírovat.
-   * **/ DestKey:  *&lt;klíč účtu dest&gt;:* ** Klíč účtu úložiště účtu cílového úložiště.
-   * **Nebo vzor, který:  *&lt;název souboru&gt;:* ** Zadejte název souboru VHD, který chcete zkopírovat.
+   * **/Source: _&lt;source&gt;:_** Location of the folder or storage container URL that contains the VHD.
+   * **/SourceKey: _&lt;source-account-key&gt;:_** Storage account key of the source storage account.
+   * **/Dest: _&lt;destination&gt;:_** Storage container URL to copy the VHD to.
+   * **/DestKey: _&lt;dest-account-key&gt;:_** Storage account key of the destination storage account.
+   * **/Pattern: _&lt;file-name&gt;:_** Specify the file name of the VHD to copy.
 
-Podrobnosti o použití nástroje AzCopy nástroj, najdete v článku [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md).
+For details on using AzCopy tool, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
 
-##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>Option 2: Zkopírujte virtuální pevný disk pomocí Powershellu (Synchronized kopie)
+##### Option 2: Copy a VHD with PowerShell (Synchronized copy)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Můžete také zkopírovat soubor virtuálního pevného disku pomocí Powershellové rutiny Start-AzStorageBlobCopy. Pomocí následujícího příkazu v prostředí Azure PowerShell ke kopírování virtuálního pevného disku. Hodnoty v <> nahraďte odpovídajícími hodnotami z vašeho zdrojového a cílového účtu úložiště. Pokud chcete použít tento příkaz, musíte mít kontejneru s názvem virtuální pevné disky v cílovém účtu úložiště. Pokud kontejner neexistuje, vytvořte jej před spuštěním příkazu.
+You can also copy the VHD file using the PowerShell cmdlet Start-AzStorageBlobCopy. Use the following command on Azure PowerShell to copy VHD. Replace the values in <> with corresponding values from your source and destination storage account. To use this command, you must have a container called vhds in your destination storage account. If the container doesn't exist, create one before running the command.
 
 ```powershell
 $sourceBlobUri = <source-vhd-uri>
@@ -216,54 +216,54 @@ C:\PS> $destinationContext = New-AzStorageContext  –StorageAccountName "destac
 C:\PS> Start-AzStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
 ```
 
-### <a name="scenario2"></a>Scénář 2: "Migruji virtuálních počítačů z jiných platforem na Azure Premium Storage."
-Pokud migrujete virtuální pevný disk z jiných - Azure Cloud Storage do Azure, musíte napřed exportovat virtuální pevný disk do místního adresáře. Úplný zdrojový cesty místnímu adresáři, kde je uložen virtuální pevný disk po ruce a pak pomocí nástroje AzCopy k nahrání do služby Azure Storage.
+### <a name="scenario2"></a>Scénář 2: "Migruji jste virtuální počítače z jiných platforem do Azure Premium Storage."
+Pokud migrujete VHD z jiného než Azure cloudového úložiště do Azure, musíte nejdřív exportovat virtuální pevný disk do místního adresáře. Použijte úplnou cestu ke zdroji místního adresáře, kde je virtuální pevný disk uložený, a pak pomocí AzCopy ho nahrajte do Azure Storage.
 
-#### <a name="step-1-export-vhd-to-a-local-directory"></a>Krok 1. Exportovat virtuální pevný disk do místního adresáře
-##### <a name="copy-a-vhd-from-aws"></a>Zkopírujte virtuální pevný disk z AWS
-1. Pokud používáte AWS, exportujte EC2 instance do virtuální pevný disk v kontejneru Amazon S3. Postupujte podle postupu popsaného v dokumentaci k Amazon pro export Amazon EC2 instance instalace nástrojů rozhraní příkazového řádku (CLI) Amazon EC2 a spusťte příkaz Vytvořit instance-export úlohu exportovat EC2 instance do souboru virtuálního pevného disku. Nezapomeňte použít **virtuálního pevného disku** disku&#95;IMAGE&#95;formát proměnné při spuštění **vytvořit instance-export úlohu** příkazu. Exportovaný soubor virtuálního pevného disku se uloží do kbelíku Amazon S3, který jste zadali během tohoto procesu.
+#### <a name="step-1-export-vhd-to-a-local-directory"></a>Krok 1. Export virtuálního pevného disku do místního adresáře
+##### <a name="copy-a-vhd-from-aws"></a>Kopírování VHD z AWS
+1. Pokud používáte AWS, exportujte instanci EC2 do virtuálního pevného disku v kontejneru Amazon S3. Postupujte podle kroků popsaných v dokumentaci k Amazonu pro export instance Amazon EC2, abyste nainstalovali nástroj Amazon EC2 rozhraní příkazového řádku (CLI) a spustili příkaz Create-instance-export-Task, který vyexportuje instanci EC2 do souboru VHD. Při spuštění příkazu **Create-instance-export-Task** nezapomeňte pro proměnnou formátu&#95;image&#95;disku použít **VHD** . Exportovaný soubor VHD se uloží do kontejneru Amazon S3, který jste určili během tohoto procesu.
 
     ```
     aws ec2 create-instance-export-task --instance-id ID --target-environment TARGET_ENVIRONMENT \
       --export-to-s3-task DiskImageFormat=DISK_IMAGE_FORMAT,ContainerFormat=ova,S3Bucket=BUCKET,S3Prefix=PREFIX
     ```
 
-2. Stáhněte si soubor virtuálního pevného disku z sady S3. Vyberte soubor virtuálního pevného disku, pak **akce** > **Stáhnout**.
+2. Stáhněte soubor VHD z intervalu S3. Vyberte soubor VHD a pak **Akce** > **Stáhnout**.
 
     ![][3]
 
-##### <a name="copy-a-vhd-from-other-non-azure-cloud"></a>Zkopírujte virtuální pevný disk z jiných cloudu mimo Azure
-Pokud migrujete virtuální pevný disk z jiných - Azure Cloud Storage do Azure, musíte napřed exportovat virtuální pevný disk do místního adresáře. Zkopírujte cestu úplný zdrojový místnímu adresáři, kde je uložen virtuální pevný disk.
+##### <a name="copy-a-vhd-from-other-non-azure-cloud"></a>Kopírování VHD z jiného cloudu mimo Azure
+Pokud migrujete VHD z jiného než Azure cloudového úložiště do Azure, musíte nejdřív exportovat virtuální pevný disk do místního adresáře. Zkopírujte úplnou cestu ke zdroji místního adresáře, kde je virtuální pevný disk uložený.
 
-##### <a name="copy-a-vhd-from-on-premises"></a>Zkopírujte virtuální pevný disk z on-premises
-Pokud migrujete virtuální pevný disk z místního prostředí, budete potřebovat úplný zdrojový cestu, kde je virtuální pevný disk uložený. Zdrojová cesta může být soubor nebo umístění sdílené složky na serveru.
+##### <a name="copy-a-vhd-from-on-premises"></a>Kopírování VHD z místního prostředí
+Pokud migrujete VHD z místního prostředí, budete potřebovat úplnou cestu ke zdroji, kde je uložený VHD. Zdrojovou cestou může být umístění serveru nebo sdílená složka.
 
-#### <a name="step-2-create-the-destination-for-your-vhd"></a>Krok 2. Vytvořit cíl pro vašeho virtuálního pevného disku
-Vytvoření účtu úložiště pro zachování virtuálních pevných disků. Při plánování, kam se mají ukládat vaše virtuální pevné disky, zvažte následující body:
+#### <a name="step-2-create-the-destination-for-your-vhd"></a>Krok 2. Vytvoření cíle pro virtuální pevný disk
+Vytvořte účet úložiště pro správu virtuálních pevných disků. Při plánování, kam se mají ukládat virtuální pevné disky, vezměte v úvahu následující body:
 
-* Cílový účet úložiště může být standard nebo premium storage podle požadavků vašich aplikací.
-* Oblast účtu úložiště musí být stejný jako Premium Storage podporuje virtuální počítače Azure se vytvoří v konečné fázi. Můžete zkopírovat do nového účtu úložiště, nebo chcete použít stejný účet úložiště podle vašich potřeb.
-* Zkopírujte a uložte klíč účtu úložiště účtu cílového úložiště pro další fázi.
+* V závislosti na požadavku vaší aplikace může být cílový účet úložiště Standard nebo Premium Storage.
+* Oblast účtu úložiště musí být stejná jako Premium Storage podporující virtuální počítače Azure, které budete vytvářet v konečné fázi. Mohli byste zkopírovat do nového účtu úložiště nebo naplánovat použití stejného účtu úložiště podle vašich potřeb.
+* Zkopírujte a uložte klíč účtu úložiště cílového účtu úložiště pro další fázi.
 
-Důrazně doporučujeme, abyste přesouvání všech dat pro produkční úlohy, které chcete používat premium storage.
+Důrazně doporučujeme, abyste všechna data pro produkční úlohy přesouvaný na využívání služby Premium Storage.
 
-#### <a name="step-3-upload-the-vhd-to-azure-storage"></a>Krok 3. Nahrání virtuálního pevného disku do úložiště Azure
-Teď, když máte virtuální pevný disk v místním adresáři, můžete použít nástroj AzCopy nebo AzurePowerShell k nahrání souboru VHD do služby Azure Storage. Obě možnosti jsou k dispozici zde:
+#### <a name="step-3-upload-the-vhd-to-azure-storage"></a>Krok 3. Nahrání virtuálního pevného disku do Azure Storage
+Teď, když máte virtuální pevný disk v místním adresáři, můžete k nahrání souboru. VHD do Azure Storage použít AzCopy nebo AzurePowerShell. Obě možnosti jsou k dispozici zde:
 
-##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>Option 1: Použití Azure PowerShell Add-AzureVhd pro nahrání souboru VHD
+##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>Možnost 1: Použití Azure PowerShell Add-AzureVhd pro nahrání souboru. VHD
 
 ```powershell
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-Příklad \<Uri > může být ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"***. Příklad \<FileInfo > může být ***"C:\path\to\upload.vhd"***.
+Příkladem \<> identifikátoru URI **_může https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd_** být "". Příklad \<: FileInfo > může být **_"C:\path\to\upload.VHD"_** .
 
-##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Option 2: Použití AzCopy pro nahrání souboru VHD
-Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na velikosti virtuálních pevných disků to může trvat dobu. Nezapomeňte zkontrolovat příchozí a odchozí přenos limity účtu úložiště při použití této možnosti. Zobrazit [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) podrobnosti.
+##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Možnost 2: Nahrání souboru. VHD pomocí AzCopy
+Pomocí AzCopy můžete snadno nahrát virtuální pevný disk přes Internet. V závislosti na velikosti virtuálních pevných disků může to chvíli trvat. Při použití této možnosti Nezapomeňte ověřit omezení pro příchozí/odchozí přenos účtu úložiště. Podrobnosti najdete v tématu [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) .
 
-1. Stáhněte a nainstalujte nástroj AzCopy z tohoto: [Nejnovější verzi AzCopy](https://aka.ms/downloadazcopy)
-2. Otevřete prostředí Azure PowerShell a přejděte do složky, ve kterém je nástroj AzCopy nainstalovaný.
-3. Použijte následující příkaz pro kopírování souboru virtuálního pevného disku z "Zdroj" na "Cíl".
+1. Stáhněte a nainstalujte AzCopy odsud: [Nejnovější verze AzCopy](https://aka.ms/downloadazcopy)
+2. Otevřete Azure PowerShell a přejdete do složky, kde je nainstalovaná AzCopy.
+3. Pomocí následujícího příkazu zkopírujte soubor VHD ze zdroje do umístění cíl.
 
     ```azcopy
     AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
@@ -273,93 +273,93 @@ Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na ve
 
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
-    ```
+        ```
 
-    Tady jsou popisy parametrů použitých v příkazu AzCopy:
+    Here are descriptions of the parameters used in the AzCopy command:
 
-   * **/ Zdroj:  *&lt;zdroj&gt;:* ** Umístění složky nebo adresa URL kontejneru úložiště, která obsahuje virtuální pevný disk.
-   * **/SourceKey: *&lt;source-account-key&gt;:* ** Klíč účtu úložiště účtu zdrojového úložiště.
-   * **/ Dest:  *&lt;cílové&gt;:* ** Adresa URL kontejneru úložiště VHD, který chcete zkopírovat.
-   * **/ DestKey:  *&lt;klíč účtu dest&gt;:* ** Klíč účtu úložiště účtu cílového úložiště.
-   * **/ BlobType: stránka:** Určuje, že cíl je objekt blob stránky.
-   * **Nebo vzor, který:  *&lt;název souboru&gt;:* ** Zadejte název souboru VHD, který chcete zkopírovat.
+   * **/Source: _&lt;source&gt;:_** Location of the folder or storage container URL that contains the VHD.
+   * **/SourceKey: _&lt;source-account-key&gt;:_** Storage account key of the source storage account.
+   * **/Dest: _&lt;destination&gt;:_** Storage container URL to copy the VHD to.
+   * **/DestKey: _&lt;dest-account-key&gt;:_** Storage account key of the destination storage account.
+   * **/BlobType: page:** Specifies that the destination is a page blob.
+   * **/Pattern: _&lt;file-name&gt;:_** Specify the file name of the VHD to copy.
 
-Podrobnosti o použití nástroje AzCopy nástroj, najdete v článku [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md).
+For details on using AzCopy tool, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
 
-##### <a name="other-options-for-uploading-a-vhd"></a>Další možnosti pro nahrání virtuálního pevného disku
-Můžete také nahrát VHD do účtu úložiště pomocí jedné z následujících způsobů:
+##### Other options for uploading a VHD
+You can also upload a VHD to your storage account using one of the following means:
 
-* [Objekt Blob úložiště Azure kopírování rozhraní API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-* [Objekty BLOB služby Azure Storage Explorer nahrávání](https://azurestorageexplorer.codeplex.com/)
-* [Reference k rozhraní API REST úložiště importu/exportu služby](https://msdn.microsoft.com/library/dn529096.aspx)
-
-> [!NOTE]
-> Doporučujeme používat službu Import/Export, pokud odhadované nahrávání doba je delší než 7 dní. Můžete použít [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) pro odhad doby z jednotky pro velikost a přenos dat.
->
-> Import/Export je možné zkopírovat do účtu úložiště úrovně standard. Je potřeba zkopírovat ze standard storage do účtu služby premium storage pomocí některého nástroje, například AzCopy.
->
->
-
-## <a name="create-azure-virtual-machine-using-premium-storage"></a>Vytvoření virtuálních počítačů Azure pomocí služby Premium Storage
-Po virtuální pevný disk je nahráli nebo zkopírují na požadovaný účet úložiště, postupujte podle pokynů v této části zaregistrujte virtuální pevný disk jako image operačního systému, nebo disk s operačním systémem v závislosti na vašem scénáři a pak vytvořte instance virtuálního počítače z něj. Datový virtuální pevný disk může být připojen k virtuálnímu počítači po jeho vytvoření.
-Ukázkový skript migrace najdete na konci této části. Tento jednoduchý skript neodpovídá všechny scénáře. Budete muset aktualizovat skript tak, aby odpovídaly s váš konkrétní scénář. Pokud tento skript platí pro váš scénář, najdete v sekci níže [ukázkový skript migrace](#a-sample-migration-script).
-
-### <a name="checklist"></a>Kontrolní seznam
-1. Počkat, až všechny disky virtuálního pevného disku kopírování byla dokončena.
-2. Zajistěte, aby že Premium Storage je dostupné v oblasti, kterou provádíte migraci do.
-3. Rozhodněte, nových řadách virtuálních počítačů, které budete používat. Měla by být schopný služby Premium Storage a velikost by měla být v závislosti na dostupnosti v oblasti a na základě vašich potřeb.
-4. Rozhodněte, přesnou velikost virtuálního počítače, které bude používat. Velikost virtuálního počítače musí být dostatečně velký, aby podporoval počet datových disků, které máte. Například Pokud máte 4 datové disky, virtuální počítač musí mít 2 nebo více jader. Zvažte také, výpočetní výkon, paměť a šířka pásma sítě potřebuje.
-5. Vytvoření účtu služby Premium Storage v cílové oblasti. Jedná se o účet, který budete používat pro nový virtuální počítač.
-6. Máte aktuální podrobnosti o virtuálním počítači, které jsou po ruce, včetně seznamu disků a odpovídající objekty BLOB VHD.
-
-Příprava aplikace pro výpadek. Pokud chcete provést čistou migrace, je nutné zastavit veškeré zpracování v aktuálním systému. Teprve pak můžete získat do konzistentního stavu, které můžete migrovat na novou platformu. Doba trvání výpadku bude záviset na množství dat na discích, které chcete migrovat.
+* [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+* [Azure Storage Explorer Uploading Blobs](https://azurestorageexplorer.codeplex.com/)
+* [Storage Import/Export Service REST API Reference](https://msdn.microsoft.com/library/dn529096.aspx)
 
 > [!NOTE]
-> Pokud vytváříte virtuální počítač Azure Resource Manageru ze specializovaného disku virtuálního pevného disku, najdete [Tato šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) pro nasazení virtuálních počítačů Resource Manageru pomocí existujícího disku.
+> We recommend using Import/Export Service if estimated uploading time is longer than 7 days. You can use [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) to estimate the time from data size and transfer unit.
+>
+> Import/Export can be used to copy to a standard storage account. You will need to copy from standard storage to premium storage account using a tool like AzCopy.
 >
 >
 
-### <a name="register-your-vhd"></a>Zaregistrujte svůj virtuální pevný disk
-Vytvoření virtuálního počítače z virtuálního pevného disku operačního systému nebo připojení datového disku k novému virtuálnímu počítači, je nutné je zaregistrovat. Postupujte podle kroků v závislosti na scénáři vašeho virtuálního pevného disku.
+## <a name="create-azure-virtual-machine-using-premium-storage"></a>Create Azure VMs using Premium Storage
+After the VHD is uploaded or copied to the desired storage account, follow the instructions in this section to register the VHD as an OS image, or OS disk depending on your scenario and then create a VM instance from it. The data disk VHD can be attached to the VM once it is created.
+A sample migration script is provided at the end of this section. This simple script does not match all scenarios. You may need to update the script to match with your specific scenario. To see if this script applies to your scenario, see below [A Sample Migration Script](#a-sample-migration-script).
 
-#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Zobecněný virtuální pevný disk operačního systému pro vytvoření víc instancí virtuálních počítačů Azure
-Po nahrání image operačního systému zobecněný virtuální pevný disk do účtu úložiště, zaregistrujte ho jako **Image virtuálního počítače Azure** tak, aby z ní můžete vytvořit jednu nebo víc instancí virtuálních počítačů. Pomocí následujících rutin prostředí PowerShell registrovat virtuální pevné disky jako image operačního systému virtuálního počítače Azure. Zadejte adresu URL dokončení kontejneru, kam se zkopíroval virtuálního pevného disku do.
+### Checklist
+1. Wait until all the VHD disks copying is complete.
+2. Make sure Premium Storage is available in the region you are migrating to.
+3. Decide the new VM series you will be using. It should be a Premium Storage capable, and the size should be depending on the availability in the region and based on your needs.
+4. Decide the exact VM size you will use. VM size needs to be large enough to support the number of data disks you have. E.g. if you have 4 data disks, the VM must have 2 or more cores. Also, consider processing power, memory and network bandwidth needs.
+5. Create a Premium Storage account in the target region. This is the account you will use for the new VM.
+6. Have the current VM details handy, including the list of disks and corresponding VHD blobs.
+
+Prepare your application for downtime. To do a clean migration, you have to stop all the processing in the current system. Only then you can get it to consistent state which you can migrate to the new platform. Downtime duration will depend on the amount of data in the disks to migrate.
+
+> [!NOTE]
+> If you are creating an Azure Resource Manager VM from a specialized VHD Disk, please refer to [this template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) for deploying Resource Manager VM using existing disk.
+>
+>
+
+### Register your VHD
+To create a VM from OS VHD or to attach a data disk to a new VM, you must first register them. Follow steps below depending on your VHD's scenario.
+
+#### Generalized Operating System VHD to create multiple Azure VM instances
+After generalized OS image VHD is uploaded to the storage account, register it as an **Azure VM Image** so that you can create one or more VM instances from it. Use the following PowerShell cmdlets to register your VHD as an Azure VM OS image. Provide the complete container URL where VHD was copied to.
 
 ```powershell
 Add-AzureVMImage -ImageName "OSImageName" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osimage.vhd" -OS Windows
 ```
 
-Zkopírujte a uložte název této nové Image virtuálního počítače Azure. V předchozím příkladu je *OSImageName*.
+Zkopírujte a uložte název této nové image virtuálního počítače Azure. V předchozím příkladu je to *OSImageName*.
 
-#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Jedinečné operační systém virtuálního pevného disku vytvořit jednu instanci virtuálního počítače Azure
-Po jedinečné virtuální pevný disk operačního systému se nahraje do účtu úložiště, zaregistrujte ho jako **Disk s operačním systémem Azure** tak, aby z ní můžete vytvořit instanci virtuálního počítače. Použijte tyto rutiny prostředí PowerShell k registraci vašeho virtuálního pevného disku jako Disk s operačním systémem Azure. Zadejte adresu URL dokončení kontejneru, kam se zkopíroval virtuálního pevného disku do.
+#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Jedinečný virtuální pevný disk operačního systému pro vytvoření jedné instance virtuálního počítače Azure
+Po nahrání jedinečného virtuálního pevného disku s operačním systémem do účtu úložiště ho zaregistrujete jako **disk s operačním systémem Azure** , abyste z něj mohli vytvořit instanci virtuálního počítače. Pomocí těchto rutin PowerShellu zaregistrujete VHD jako disk s operačním systémem Azure. Zadejte úplnou adresu URL kontejneru, do které se zkopíroval virtuální pevný disk (VHD).
 
 ```powershell
 Add-AzureDisk -DiskName "OSDisk" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd" -Label "My OS Disk" -OS "Windows"
 ```
 
-Zkopírujte a uložte název tohoto nového disku s operačním systémem Azure. V předchozím příkladu je *OSDisk*.
+Zkopírujte a uložte název tohoto nového disku s operačním systémem Azure. V předchozím příkladu je to *OSDisk*.
 
-#### <a name="data-disk-vhd-to-be-attached-to-new-azure-vm-instances"></a>Datový disk VHD, který chcete připojit k nové instance virtuálních počítačů Azure
-Po nahrání datového disku virtuálního pevného disku do účtu úložiště zaregistroval jako datový Disk Azure tak, aby jej bylo možné připojit k nové řady DS, DSv2 series nebo instance virtuálního počítače Azure řady GS.
+#### <a name="data-disk-vhd-to-be-attached-to-new-azure-vm-instances"></a>Virtuální pevný disk datového disku, který se má připojit k novým instancím virtuálních počítačů Azure
+Po nahrání virtuálního pevného disku s datovým diskem do účtu úložiště ho zaregistrujte jako datový disk Azure, aby se mohl připojit k nové řadě DS, DSv2 sérii nebo k instanci virtuálního počítače Azure řady GS.
 
-Použijte tyto rutiny prostředí PowerShell k registraci vašeho virtuálního pevného disku jako disku Azure Data. Zadejte adresu URL dokončení kontejneru, kam se zkopíroval virtuálního pevného disku do.
+Pomocí těchto rutin PowerShellu zaregistrujete VHD jako datový disk Azure. Zadejte úplnou adresu URL kontejneru, do které se zkopíroval virtuální pevný disk (VHD).
 
 ```powershell
 Add-AzureDisk -DiskName "DataDisk" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk.vhd" -Label "My Data Disk"
 ```
 
-Zkopírujte a uložte název tento nový datový Disk Azure. V předchozím příkladu je *DataDisk*.
+Zkopírujte a uložte název tohoto nového datového disku Azure. V předchozím příkladu je to datadisk ** .
 
-### <a name="create-a-premium-storage-capable-vm"></a>Vytvoření virtuálního počítače podporující Premium Storage
-Jednou image operačního systému nebo disk s operačním systémem byly zaregistrovány, vytvořte nové řady DS, DSv2-series nebo GS-series virtuálních počítačů. Budete používat image operačního systému nebo název disku operačního systému, které jste zaregistrovali. Vyberte typ virtuálního počítače z úrovně Premium Storage. V následujícím příkladu se používá *Standard_DS2* velikost virtuálního počítače.
+### <a name="create-a-premium-storage-capable-vm"></a>Vytvoření virtuálního počítače podporujícího Premium Storage
+Po registraci image operačního systému nebo disku s operačním systémem vytvořte nový virtuální počítač řady DS-Series, DSv2-Series nebo GS-Series. Budete používat bitovou kopii operačního systému nebo název disku operačního systému, který jste zaregistrovali. Z Premium Storage úrovně vyberte typ virtuálního počítače. V následujícím příkladu používáme velikost virtuálního počítače *Standard_DS2* .
 
 > [!NOTE]
-> Aktualizujte velikost disku, abyste měli jistotu, že odpovídá požadavkům na výkon a velikosti disku Azure a vaší kapacity.
+> Aktualizujte velikost disku, abyste se ujistili, že odpovídá vašim požadavkům na kapacitu a výkon a dostupným velikostem disků Azure.
 >
 >
 
-Pomocí rutiny Powershellu krok za krokem při vytváření nového virtuálního počítače. Nejprve nastavte běžné parametry:
+Pokud chcete vytvořit nový virtuální počítač, postupujte podle pokynů v části Krok za krokem prostředí PowerShell. Nejdřív nastavte společné parametry:
 
 ```powershell
 $serviceName = "yourVM"
@@ -371,16 +371,16 @@ $vmName ="yourVM"
 $vmSize = "Standard_DS2"
 ```
 
-Nejprve vytvořte cloudovou službu, ve kterém bude hostitelem nové virtuální počítače.
+Nejdřív vytvořte cloudovou službu, ve které budete hostovat svoje nové virtuální počítače.
 
 ```powershell
 New-AzureService -ServiceName $serviceName -Location $location
 ```
 
-Dále vytvořte instanci virtuálního počítače Azure z Image operačního systému nebo Disk s operačním systémem, které jste zaregistrovali v závislosti na vašem scénáři.
+V závislosti na vašem scénáři vytvořte instanci virtuálního počítače Azure z image operačního systému nebo disku s operačním systémem, který jste zaregistrovali.
 
-#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Zobecněný virtuální pevný disk operačního systému pro vytvoření víc instancí virtuálních počítačů Azure
-Vytvořte jeden nebo více nového virtuálního počítače Azure řady DS instance pomocí **Image operačního systému Azure** , které jste zaregistrovali. Zadejte název této Image operačního systému v konfiguraci virtuálních počítačů při vytváření nového virtuálního počítače, jak je znázorněno níže.
+#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Zobecněný virtuální pevný disk s operačním systémem pro vytvoření více instancí virtuálních počítačů Azure
+Vytvořte jednu nebo více nových instancí virtuálních počítačů Azure řady DS pomocí **image operačního systému Azure** , kterou jste zaregistrovali. Pokud vytváříte nový virtuální počítač, zadejte tento název bitové kopie operačního systému v konfiguraci virtuálního počítače, jak je znázorněno níže.
 
 ```powershell
 $OSImage = Get-AzureVMImage –ImageName "OSImageName"
@@ -392,8 +392,8 @@ Add-AzureProvisioningConfig -Windows –AdminUserName $adminUser -Password $admi
 New-AzureVM -ServiceName $serviceName -VM $vm
 ```
 
-#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Jedinečné operační systém virtuálního pevného disku vytvořit jednu instanci virtuálního počítače Azure
-Vytvoření nového DS řady virtuálních počítačů Azure instance **Disk s operačním systémem Azure** , které jste zaregistrovali. Zadejte název tohoto disku s operačním systémem v konfiguraci virtuálních počítačů při vytváření nového virtuálního počítače, jak je znázorněno níže.
+#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Jedinečný virtuální pevný disk operačního systému pro vytvoření jedné instance virtuálního počítače Azure
+Pomocí **disku s operačním systémem Azure** , který jste zaregistrovali, vytvořte novou instanci virtuálního počítače Azure řady DS. Zadejte tento název disku operačního systému v konfiguraci virtuálního počítače při vytváření nového virtuálního počítače, jak je znázorněno níže.
 
 ```powershell
 $OSDisk = Get-AzureDisk –DiskName "OSDisk"
@@ -403,12 +403,12 @@ $vm = New-AzureVMConfig -Name $vmName -InstanceSize $vmSize -DiskName $OSDisk.Di
 New-AzureVM -ServiceName $serviceName –VM $vm
 ```
 
-Zadejte další informace virtuálního počítače Azure, jako jsou cloudové služby, oblasti, účet úložiště, dostupnosti a zásady ukládání do mezipaměti. Mějte na paměti, musí být instance virtuálního počítače společně s přidružené operační systém nebo datové disky, takže vybranou cloudovou službu, oblasti a účet úložiště musí být ve stejném umístění jako základní virtuální pevné disky tyto disky.
+Zadejte další informace o virtuálním počítači Azure, jako je cloudová služba, oblast, účet úložiště, Skupina dostupnosti a zásady ukládání do mezipaměti. Všimněte si, že instance virtuálního počítače musí být umístěná společně s přidruženým operačním systémem nebo datovými disky, takže vybraná cloudová služba, oblast a účet úložiště musí být ve stejném umístění jako příslušné virtuální pevné disky těchto disků.
 
 ### <a name="attach-data-disk"></a>Připojení datového disku
-A konečně Pokud zaregistrujete datový disk virtuální pevné disky připojily k nové služby Premium Storage podporuje virtuální počítač Azure.
+Pokud jste zaregistrovali virtuální pevné disky datových disků, připojte je k novému virtuálnímu počítači Azure, který podporuje Premium Storage.
 
-Použijte následující rutinu prostředí PowerShell pro připojení datového disku k novému virtuálnímu počítači a určení zásady ukládání do mezipaměti. V následujícím příkladu je nastavena zásady ukládání do mezipaměti *jen pro čtení*.
+Pomocí následující rutiny prostředí PowerShell připojte datový disk k novému virtuálnímu počítači a určete zásady ukládání do mezipaměti. V následujícím příkladu je zásada ukládání do mezipaměti nastavená na *jen pro čtení*.
 
 ```powershell
 $vm = Get-AzureVM -ServiceName $serviceName -Name $vmName
@@ -419,27 +419,27 @@ Update-AzureVM  -VM $vm
 ```
 
 > [!NOTE]
-> Můžou existovat další kroky nutné k podpoře vaší aplikace, která je jako nepokrytý této příručce.
+> Pro podporu aplikace, na kterou se tato příručka nevztahuje, můžou být potřeba další kroky.
 >
 >
 
-### <a name="checking-and-plan-backup"></a>Kontrola a plánu zálohování
-Jakmile nový virtuální počítač je v provozu, k němu přistupovat pomocí stejné přihlašovací id a heslo je jako původní virtuální počítač a ověřte, že všechno funguje podle očekávání. Nový virtuální počítač bude obsahovat všechna nastavení, včetně prokládané svazky.
+### <a name="checking-and-plan-backup"></a>Kontrola a plánování zálohování
+Po zprovoznění nového virtuálního počítače a jeho použití se stejným přihlašovacím ID a heslem je původní virtuální počítač a ověřte, že vše funguje podle očekávání. Všechna nastavení, včetně prokládaných svazků, by byla k dispozici v novém virtuálním počítači.
 
-Posledním krokem je plán zálohování a plán údržby pro nový virtuální počítač podle potřeb vaší aplikace.
+Posledním krokem je plánování plánu zálohování a údržby pro nový virtuální počítač na základě potřeb aplikace.
 
-### <a name="a-sample-migration-script"></a>Ukázkový skript migrace
-Pokud máte více virtuálních počítačů k migraci, automatizace pomocí skriptů PowerShell budou užitečné. Tady je ukázkový skript, který automatizuje migraci virtuálního počítače. Všimněte si, který níže uvedený skript je jenom jako příklad a existuje několik předpokladů o aktuální disky virtuálních počítačů. Budete muset aktualizovat skript tak, aby odpovídaly s váš konkrétní scénář.
+### <a name="a-sample-migration-script"></a>Vzorový migrační skript
+Pokud máte víc virtuálních počítačů, které se mají migrovat, budete mít k dispozici automatizaci prostřednictvím skriptů PowerShellu. Následuje ukázkový skript, který automatizuje migraci virtuálního počítače. Všimněte si, že pod skriptem je jenom příklad, a na aktuálních discích virtuálních počítačů se udělalo několik předpokladů. Je možné, že budete muset skript aktualizovat, aby odpovídal vašemu konkrétnímu scénáři.
 
-Předpokladů jsou:
+Předpoklady:
 
 * Vytváříte klasické virtuální počítače Azure.
-* Zdrojové disky s operačním systémem a datové disky zdroje jsou ve stejném účtu úložiště a stejného kontejneru. Pokud disky s operačním systémem a datové disky nejsou na stejném místě, můžete použít AzCopy nebo prostředí Azure PowerShell mají zkopírovat virtuální pevné disky účtů úložiště a kontejnerů. Podívejte se na předchozí krok: [Zkopírujte virtuální pevný disk pomocí nástroje AzCopy nebo prostředí PowerShell](#copy-vhd-with-azcopy-or-powershell). Tento skript podle vašeho scénáře pro úpravy je jinou možnost, ale doporučujeme použít AzCopy nebo prostředí PowerShell, protože je jednodušší a rychlejší.
+* Zdrojové disky s operačním systémem a zdrojové datové disky jsou ve stejném účtu úložiště a stejném kontejneru. Pokud disky s operačním systémem a datové disky nejsou na stejném místě, můžete k kopírování VHD přes účty úložiště a kontejnery použít AzCopy nebo Azure PowerShell. Přečtěte si předchozí krok: [Zkopírujte virtuální pevný disk pomocí AzCopy nebo PowerShellu](#copy-vhd-with-azcopy-or-powershell). Úprava tohoto skriptu tak, aby splňovala váš scénář, je další volbou, ale doporučujeme používat AzCopy nebo PowerShell, protože je jednodušší a rychlejší.
 
-Automatizační skript jsou uvedeny níže. Nahradit text s informacemi a aktualizujte skript v tak, aby odpovídaly s váš konkrétní scénář.
+Skript automatizace je uvedený níže. Nahraďte text vašimi informacemi a aktualizujte skript tak, aby odpovídal vašemu konkrétnímu scénáři.
 
 > [!NOTE]
-> Použití existujícího skriptu Nezachovávat hodnotu síťovou konfiguraci vašeho zdrojového virtuálního počítače. Je potřeba znovu – konfigurace nastavení sítě na migrovaných virtuálních počítačích.
+> Použití existujícího skriptu nezachovává síťovou konfiguraci zdrojového virtuálního počítače. Na migrovaných virtuálních počítačích budete muset znovu konfigurovat nastavení sítě.
 >
 >
 
@@ -736,37 +736,37 @@ Automatizační skript jsou uvedeny níže. Nahradit text s informacemi a aktual
     New-AzureVM -ServiceName $DestServiceName -VMs $vm -Location $Location
 ```
 
-#### <a name="optimization"></a>Optimalizace
-Aktuální konfigurace virtuálního počítače lze přizpůsobit speciálně pro práci s disky Standard. Například pro zvýšení výkonu s využitím počet disků v prokládaných svazků. Například nemusíte používat samostatně 4 disky v Premium Storage, bude pravděpodobně možné optimalizovat náklady tím, že jeden disk. Optimalizace, jako jsou tyto potřeby zpracovat případ od případu a vyžadují vlastní kroky po dokončení migrace. Všimněte si také, že tento proces nemusí fungovat dobře pro databáze a aplikace, které jsou závislé na rozložení disků, které jsou definované v nastavení.
+#### <a name="optimization"></a>Vybrané
+Vaše aktuální konfigurace virtuálních počítačů může být upravena speciálně pro práci na standardních discích. Například ke zvýšení výkonu pomocí řady disků v prokládaném svazku. Například namísto použití 4 disků samostatně na Premium Storage může být možné optimalizovat náklady s použitím jediného disku. Optimalizace, jako je to potřeba, se musí v jednotlivých případech zpracovávat a vyžadují vlastní kroky po migraci. Také Upozorňujeme, že tento proces nemusí dobře fungovat pro databáze a aplikace, které závisí na rozložení disku definovaném v instalačním programu.
 
 ##### <a name="preparation"></a>Příprava
-1. Jednoduchá migrace dokončí, jak je popsáno v předchozí části. Optimalizace se provede k novému virtuálnímu počítači po migraci.
-2. Definujte nové velikosti disků, které jsou potřebné pro optimalizovanou konfiguraci.
-3. Určení mapování aktuální disky nebo svazky, které chcete nový specifikace disku.
+1. Proveďte jednoduchou migraci, jak je popsáno v předchozí části. Optimalizace budou provedeny na novém virtuálním počítači po dokončení migrace.
+2. Definujte nové velikosti disků potřebné pro optimalizovanou konfiguraci.
+3. Určete mapování aktuálních disků nebo svazků na nové specifikace disků.
 
-##### <a name="execution-steps"></a>Postup spuštění
-1. Vytvořte nové disky, které se správnými velikostmi na virtuální počítač Premium Storage.
-2. Přihlaste se k virtuálnímu počítači a kopírování dat z aktuálního svazku na nový disk, který se mapuje na tomto svazku. To lze proveďte pro všechny aktuální svazky, které je potřeba namapovat na nový disk.
-3. V dalším kroku změnit nastavení aplikace pro přepnutí na jiné disky a odpojení starých svazků.
+##### <a name="execution-steps"></a>Kroky provedení
+1. Vytvořte nové disky se správnými velikostmi na Premium Storagem virtuálním počítači.
+2. Přihlaste se k virtuálnímu počítači a zkopírujte data z aktuálního svazku na nový disk, který se mapuje na tento svazek. Udělejte to pro všechny aktuální svazky, které potřebují namapovat na nový disk.
+3. Pak změňte nastavení aplikace tak, aby se přepnulo na nové disky, a odpojte staré svazky.
 
-Ladění aplikací pro lepší výkon disků, naleznete v části Optimalizace výkonu aplikace z našich [návrh pro vysoký výkon](../../virtual-machines/windows/premium-storage-performance.md) článku.
+Chcete-li ladit aplikaci pro lepší výkon disku, přečtěte si část věnované optimalizaci výkonu aplikace v našem článku [Návrh pro zajištění vysokého výkonu](../../virtual-machines/windows/premium-storage-performance.md) .
 
 ### <a name="application-migrations"></a>Migrace aplikací
-Databáze a další komplexní aplikace může vyžadovat speciální kroky, podle definice poskytovatele aplikací pro migraci. Najdete dokumentaci k příslušné aplikace. Například Obvykle je možné migrovat databází pomocí zálohování a obnovení.
+Databáze a další komplexní aplikace mohou vyžadovat zvláštní postup definovaný poskytovatelem aplikace pro migraci. Přečtěte si příslušnou dokumentaci k aplikaci. Například databáze se obvykle dají migrovat pomocí zálohování a obnovení.
 
 ## <a name="next-steps"></a>Další postup
-Viz následující prostředky pro konkrétní scénáře pro migraci virtuálních počítačů:
+Konkrétní scénáře migrace virtuálních počítačů najdete v následujících zdrojích informací:
 
-* [Migrace virtuálních počítačů Azure mezi účty úložiště](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Vytvoření a nahrání virtuálního pevného disku Windows serverem do Azure.](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Vytvoření a nahrání linuxového virtuálního pevného disku do Azure](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Migrace virtuálních počítačů z služeb Amazon AWS k Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+* [Migrace Azure Virtual Machines mezi účty úložiště](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
+* [Vytvořte a nahrajte virtuální pevný disk s Windows serverem do Azure.](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Vytvoření a nahrání virtuálního pevného disku se systémem Linux do Azure](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Migrace Virtual Machines z Amazon AWS do Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
-Viz také následující prostředky pro další informace o Azure Storage a Azure Virtual Machines:
+Další informace o Azure Storage a službě Azure Virtual Machines najdete v následujících zdrojích informací:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Vyberte typ disku pro virtuální počítače IaaS](../../virtual-machines/windows/disks-types.md)
+* [Vyberte typ disku pro virtuální počítače s IaaS.](../../virtual-machines/windows/disks-types.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png

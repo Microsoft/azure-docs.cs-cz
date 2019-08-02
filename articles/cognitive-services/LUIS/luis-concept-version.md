@@ -1,7 +1,7 @@
 ---
-title: Správa verzí
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Verze v LUIS, jsou podobné verze v tradiční programování. Každá verze je snímku v čase aplikace. Před prováděním změn do aplikace, vytvořte novou verzi. Je snazší přejděte zpět na přesné aplikace, pak se pokuste unpeel a záměr vaší aplikace a projevy do předchozího stavu.
+title: Správa verzí – LUIS
+titleSuffix: Azure Cognitive Services
+description: Verze v LUIS se podobají verzím v tradičním programování. Každá verze je snímkem v čase aplikace. Než v aplikaci provedete změny, vytvořte novou verzi. Je snazší přejít zpět na přesnou aplikaci a pak se pokusit neloupaný záměr a projevy aplikace a vrátit se k předchozímu stavu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,61 +9,61 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 9da79e5b744f8ba70c0e265f0d1f0126b37eba49
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e13efa70d0344defeb306a92ac405439635e929
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60509679"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619704"
 ---
-# <a name="understand-how-and-when-to-use-a-luis-version"></a>Pochopit, jak a kdy používat verzi služby LUIS
+# <a name="understand-how-and-when-to-use-a-luis-version"></a>Vysvětlení, jak a kdy použít verzi LUIS
 
-Verze v LUIS, jsou podobné verze v tradiční programování. Každá verze je snímku v čase aplikace. Před prováděním změn do aplikace, vytvořte novou verzi. Je jednodušší, přejděte zpět na přesnou verzi a potom zkuste odebrat záměry a projevy do předchozího stavu.
+Verze v LUIS se podobají verzím v tradičním programování. Každá verze je snímkem v čase aplikace. Než v aplikaci provedete změny, vytvořte novou verzi. Je snazší přejít zpět na přesnou verzi a pak se pokusit odebrat záměry a projevy do předchozího stavu.
 
-Vytvořit stejnou aplikaci pomocí různých modelů [verze](luis-how-to-manage-versions.md). 
+Vytvořte různé modely stejné aplikace s [verzemi](luis-how-to-manage-versions.md). 
 
 ## <a name="version-id"></a>ID verze
-ID verze se skládá ze znaků, číslic nebo '.' a nesmí být delší než 10 znaků.
+ID verze se skládá ze znaků, číslic nebo "." a nemůže být delší než 10 znaků.
 
 ## <a name="initial-version"></a>Počáteční verze
-Počáteční verze (0,1) je výchozí verze aktivní. 
+Počáteční verze (0,1) je výchozí aktivní verze. 
 
 ## <a name="active-version"></a>Aktivní verze
-K [nastavit verzi](luis-how-to-manage-versions.md#set-active-version) jako aktivní znamená, že je aktuálně upravovat a testovat v [LUIS](luis-reference-regions.md) webu. Nastavte verzi jako aktivní, aby přístup k jeho datům, proveďte aktualizace, a jde o test a publikujete ji.
+Pokud chcete [nastavit verzi](luis-how-to-manage-versions.md#set-active-version) jako aktivní, znamená to, že je aktuálně upravována a testována na webu [Luis](luis-reference-regions.md) . Nastavte verzi jako aktivní pro přístup k datům, proveďte aktualizace a otestujte a publikujte ji.
 
-Název aktuálně aktivní verze se zobrazí v horní, levý panel za názvem aplikace. 
+Název aktuálně aktivní verze se zobrazí v horním a levém panelu za názvem aplikace. 
 
-[![Změnit verzi rozhraní active](./media/luis-concept-version/version-in-nav-bar-inline.png)](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
+[![Změna aktivní verze](./media/luis-concept-version/version-in-nav-bar-inline.png)](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
 
-## <a name="versions-and-publishing-slots"></a>Verze a publikování sloty
-Publikujete do fáze a produktu sloty. Každý slot může mít jinou verzi nebo stejnou verzi. To je užitečné pro ověření změn mezi verzemi modelu přes koncový bod, který je k dispozici pro roboty nebo jiné služby LUIS volání aplikace. 
+## <a name="versions-and-publishing-slots"></a>Verze a sloty publikování
+Publikujete do těchto fází a produktových slotů. Každá patice může mít jinou verzi nebo stejnou verzi. To je užitečné pro ověření změn mezi verzemi modelu prostřednictvím koncového bodu, který je k dispozici pro roboty nebo jiné LUIS volání aplikací. 
 
 ## <a name="clone-a-version"></a>Klonovat verze
-Klonovat verzi vytvoří kopii stávající verzi a uložte ho jako novou verzi. Klonovat verze se má použít stejný obsah stávající verze jako výchozí bod pro novou verzi. Po klonování verze stane novou verzi **aktivní** verze. 
+Naklonujte verzi, aby se vytvořila kopie existující verze, a uložte ji jako novou verzi. Naklonujte verzi tak, aby používala stejný obsah existující verze jako výchozí bod pro novou verzi. Po naklonování verze se nová verze zobrazí jako **aktivní** verze. 
 
 ## <a name="import-and-export-a-version"></a>Import a export verze
-Můžete importovat verze na úrovni aplikace. Tato verze se stane aktivní verze a použít ID verze ve vlastnosti "versionId" soubor aplikace. Na úrovni verze můžete také importovat do stávající aplikace. Nová verze stane aktivní verze. 
+Verzi můžete importovat na úrovni aplikace. Tato verze se zobrazí jako aktivní verze a v souboru aplikace se použije ID verze ve vlastnosti "versionId". Můžete také naimportovat na úrovni verze do existující aplikace. Nová verze se zobrazí jako aktivní verze. 
 
-Můžete to taky verze na úrovni aplikace nebo exportujete verze na úrovni verze. Jediným rozdílem je, že verze exportované úroveň aplikace je aktuálně aktivní verze v úrovni verze, můžete použít libovolnou verzi pro export na **[nastavení](luis-how-to-manage-versions.md)** stránky. 
+Verzi můžete exportovat na úrovni aplikace nebo můžete exportovat verzi na úrovni verze. Jediným rozdílem je, že vyexportovaná verze na úrovni aplikace je aktuálně aktivní verze, zatímco na úrovni verze můžete na stránce **[Nastavení](luis-how-to-manage-versions.md)** zvolit libovolnou verzi, kterou chcete exportovat. 
 
-Exportovaný soubor neobsahuje informace o zjištěné počítače, protože aplikace je retrained až po importu. Exportovaný soubor neobsahuje spolupracovníci – je potřeba přidat tyto zpět po verzi, se importují do nové aplikace.
+Exportovaný soubor neobsahuje informace zjištěné počítačem, protože aplikace je po importu znovu přeučena. Exportovaný soubor neobsahuje spolupracovníky – po importu verze do nové aplikace je budete muset přidat zpátky.
 
-## <a name="export-each-version-as-app-backup"></a>Exportovat všechny verze jako záloha aplikace
-Aby bylo možné zálohovat aplikace LUIS, exportovat jednotlivých verzí na **[nastavení](luis-how-to-manage-versions.md)** stránky.
+## <a name="export-each-version-as-app-backup"></a>Exportovat každou verzi jako zálohu aplikace
+Pokud chcete zálohovat aplikaci LUIS, exportujte každou verzi na stránce **[Nastavení](luis-how-to-manage-versions.md)** .
 
-## <a name="delete-a-version"></a>Odstranit verzi
-Všechny verze, s výjimkou aktivní verze můžete odstranit ze seznamu verze na stránce nastavení. 
+## <a name="delete-a-version"></a>Odstranění verze
+Všechny verze kromě aktivní verze můžete odstranit ze stránky seznam verzí na stránce nastavení. 
 
-## <a name="version-availability-at-the-endpoint"></a>Dostupnost verze v koncovém bodě
-Trénované verze nejsou automaticky k dispozici v aplikaci [koncový bod](luis-glossary.md#endpoint). Je nutné [publikovat](luis-how-to-publish-app.md) nebo znovu publikovat verzi v pořadí pro ni k dispozici na váš koncový bod aplikace. Můžete publikovat do **pracovní** a **produkční**, získáte až dvě verze aplikace, které jsou k dispozici v koncovém bodě. Pokud potřebujete další verze aplikace, které jsou k dispozici na koncový bod, by měl exportovat na verzi a znovu importovat do nové aplikace. Nová aplikace má ID jiné aplikace.
+## <a name="version-availability-at-the-endpoint"></a>Dostupnost verze na koncovém bodu
+Vyškolené verze nejsou automaticky dostupné ve vašem [koncovém bodě](luis-glossary.md#endpoint)aplikace. Je nutné [publikovat](luis-how-to-publish-app.md) nebo znovu publikovat verzi, aby byla k dispozici ve vašem koncovém bodě aplikace. Můžete publikovat do **přípravy** a **výroby**, což vám poskytne až dvě verze aplikace, která je k dispozici na koncovém bodu. Pokud potřebujete další verze aplikace, kterou máte k dispozici na koncovém bodu, měli byste verzi exportovat a znovu importovat do nové aplikace. Nová aplikace má jiné ID aplikace.
 
 ## <a name="collaborators"></a>Spolupracovníci
-Vlastníka a všechny [spolupracovníci](luis-how-to-collaborate.md) úplný přístup pro všechny verze aplikace.
+Vlastník a všichni spolupracovníci mají plný přístup ke všem verzím aplikace. [](luis-how-to-collaborate.md)
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak přidat [správy verzí](luis-how-to-manage-versions.md) na stránce nastavení aplikace. 
+Další informace najdete v tématu Postup přidání [správy verzí](luis-how-to-manage-versions.md) na stránce nastavení aplikace. 
 
-Zjistěte, jak navrhnout [záměry](luis-concept-intent.md) do modelu.
+Naučte se navrhovat [záměry](luis-concept-intent.md) do modelu.

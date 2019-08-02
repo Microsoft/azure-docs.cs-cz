@@ -1,24 +1,24 @@
 ---
 title: Geografická dostupnost a podpora měny | Azure
-description: Geografickou dostupností v Azure Marketplace a AppSource
+description: Geografická dostupnost v Azure Marketplace a AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 215a15da2868a4543ba1108899981f40f7bf4e07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 344479a270119137a256620304d88f139d0b0322
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938257"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619968"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Geografická dostupnost a podpora měny
 
-Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované fakturační adresu zákazníka a transakce se dá dokončit během 17 měny. Tabulka níže uvádí všechny podporované zeměpisné polohy, jeho [alfa kód ISO 3166 dvěma číslicemi](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)a přiřazené měny.
+Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblastech, jak jsou definované fakturační adresou zákazníka, a transakce se dají dokončit ve 17 měnách. V následující tabulce jsou uvedeny všechny podporované geografické polohy, jejich [kód ISO 3166 2-číslice alfa](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)a přiřazená měna.
 
-|   Název země/oblasti               |   ISO-2   |   Měna   |
+|   Název země nebo oblasti               |   ISO-2   |   Currency   |
 |-------------------------------------|-----------|--------------|
 | Afghánistán                         | AF        | USD          |
 | Albánie                             | AL        | USD          |
@@ -26,11 +26,11 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Andorra                             | AD        | EUR          |
 | Angola                              | AO        | USD          |
 | Argentina                           | AR        | USD          |
-| Arménie                             | AM        | USD          |
+| Arménie                             | dop.        | USD          |
 | Austrálie                           | AU        | AUD          |
 | Rakousko                             | AT        | EUR          |
 | Ázerbájdžán                          | AZ        | USD          |
-| Bahrajn                             | BH        | USD          |
+| Bahrain                             | BH        | USD          |
 | Bangladéš                          | BD        | USD          |
 | Barbados                            | BB        | USD          |
 | Bělorusko                             | BY        | USD          |
@@ -41,7 +41,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Bosna a Hercegovina              | BA        | USD          |
 | Botswana                            | BW        | USD          |
 | Brazílie                              | BR        | BRL\*        |
-| Brunei                              | BN        | USD          |
+| Brunej                              | BN        | USD          |
 | Bulharsko                            | BG        | EUR          |
 | Kamerun                            | CM        | USD          |
 | Kanada                              | CA        | CAD          |
@@ -50,43 +50,43 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Chile                               | CL        | USD          |
 | Kolumbie                            | CO        | USD          |
 | Kostarika                          | CR        | USD          |
-| Pobřeží slonoviny                       | CI        | USD          |
+| Côte d'Ivoire (Pobřeží slonoviny)                       | CI        | USD          |
 | Chorvatsko                             | HR        | EUR          |
-| Curaçao                             | CW        | USD          |
+| Curaçao                             | SKUPINA        | USD          |
 | Kypr                              | CY        | EUR          |
 | Česká republika                      | CZ        | EUR          |
 | Dánsko                             | DK        | DKK          |
 | Dominikánská republika                  | DO        | USD          |
 | Ekvádor                             | EC        | USD          |
 | Egypt                               | EG        | USD          |
-| Salvador                         | SV        | USD          |
+| El Salvador                         | SV        | USD          |
 | Estonsko                             | EE        | EUR          |
 | Etiopie                            | ET        | USD          |
 | Faerské ostrovy                       | FO        | DKK          |
 | Fidži                                | FJ        | AUD          |
 | Finsko                             | FI        | EUR          |
 | Francie                              | FR        | EUR          |
-| Gruzie                             | GE        | USD          |
+| Georgie                             | GE        | USD          |
 | Německo                             | DE        | EUR          |
 | Ghana                               | GH        | USD          |
 | Řecko                              | GR        | EUR          |
 | Guatemala                           | GT        | USD          |
 | Honduras                            | HN        | USD          |
-| Hongkong – zvláštní administrativní oblast                       | HK        | USD          |
+| Hongkong – zvláštní správní oblast                       | HK        | USD          |
 | Maďarsko                             | HU        | EUR          |
 | Island                             | IS        | EUR          |
 | Indie                               | IN        | INR          |
-| Indonésie                           | ID        | USD          |
+| Indonésie                           | id        | USD          |
 | Irák                                | IQ        | USD          |
 | Irsko                             | IE        | EUR          |
 | Izrael                              | IL        | USD          |
-| Itálie                               | IT        | EUR          |
+| Itálie                               | it        | EUR          |
 | Jamajka                             | JM        | USD          |
 | Japonsko                               | JP        | JPY          |
 | Jordánsko                              | JO        | USD          |
 | Kazachstán                          | KZ        | USD          |
 | Keňa                               | KE        | USD          |
-| Jižní Korea                       | KR        | KRW          |
+| Korea (Jižní)                       | KR        | KRW          |
 | Kuvajt                              | KW        | USD          |
 | Kyrgyzstán                          | KG        | USD          |
 | Lotyšsko                              | LV        | EUR          |
@@ -96,15 +96,15 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Litva                           | LT        | EUR          |
 | Lucembursko                          | LU        | EUR          |
 | Macao – zvláštní administrativní oblast                           | MO        | USD          |
-| Makedonie – sever                     | MK        | USD          |
+| Severní Makedonie                     | MK        | USD          |
 | Malajsie                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
-| Mauricius                           | MU        | USD          |
+| Mauricius                           | SAMOHLÁSK        | USD          |
 | Mexiko                              | MX        | USD          |
 | Moldavsko                             | MD        | USD          |
 | Monako                              | MC        | EUR          |
 | Mongolsko                            | MN        | USD          |
-| Černá Hora                          | ME        | USD          |
+| Černá Hora                          | PAMATOVAT        | USD          |
 | Maroko                             | MA        | USD          |
 | Namibie                             | Není k dispozici        | USD          |
 | Nepál                               | NP        | USD          |
@@ -147,7 +147,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Tunisko                             | TN        | USD          |
 | Turecko                              | TR        | USD          |
 | Turkmenistán                        | TM        | USD          |
-| Vatikán (Svatý stolec)             | VA        | EUR          |
+| Vatikán (Svatý stolec viz)             | VA        | EUR          |
 | Americké Panenské ostrovy | VI        | USD          |
 | Uganda                              | UG        | USD          |
 | Ukrajina                             | UA        | USD          |
@@ -158,9 +158,9 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Uzbekistán                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
-| Jemen                               | ANO VŠEM        | USD          |
+| Jemen                               | JE        | USD          |
 | Zambie                              | ZM        | USD          |
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\* Pro zákazníky v Brazílii Marketplace prostřednictvím poskytovatele CSP (Cloud Solution) používá USD.
+\*Pro zákazníky v Brazílii používá web Marketplace v rámci poskytovatelů cloudových řešení (CSP) USD.

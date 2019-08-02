@@ -1,6 +1,6 @@
 ---
-title: Jak nakonfigurovat službu Azure SQL Database managed instance | Dokumentace Microsoftu
-description: Zjistěte, jak konfigurovat a spravovat spravovanou instanci Azure SQL Database.
+title: Postup konfigurace spravované instance Azure SQL Database | Microsoft Docs
+description: Naučte se konfigurovat a spravovat Azure SQL Database spravovanou instanci.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -10,41 +10,40 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
-manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 886f06e8640891ac09d1e4624335a7bfebcd3def
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8c05ab05630e92e64a4885d5e6cdc6f5471dff2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60340787"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568057"
 ---
-# <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Jak používat ve službě Azure SQL Database managed instance
+# <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Použití spravované instance v Azure SQL Database
 
-V tomto článku najdete různé průvodce, skripty a vysvětlení, které vám mohou pomoci při správě a konfiguraci spravované instance.
+V tomto článku najdete různé příručky, skripty a vysvětlení, které vám pomůžou se správou a konfigurací spravované instance.
 
 ## <a name="migration"></a>Migrace
 
-- [Migrace do spravované instance](sql-database-managed-instance-migrate.md) – přečtěte si víc o doporučených migrace procesů a nástrojů pro migraci do spravované instance.
+- [Migrace na spravovanou instanci](sql-database-managed-instance-migrate.md) – Přečtěte si o doporučeném procesu migrace a nástrojích pro migraci do spravované instance.
 
-- [Transparentní šifrování dat certifikátu migrovat do spravované instance](sql-database-managed-instance-migrate-tde-certificate.md) – Pokud je databáze systému SQL Server je chráněné pomocí transparentního šifrování dat (TDE), potřebujete migrovat certifikát, který managed instance můžete použít k dešifrování zálohu, kterou chcete obnovit v Azure.
+- [Migrace TDE certifikátu na spravovanou instanci](sql-database-managed-instance-migrate-tde-certificate.md) – Pokud je vaše databáze SQL Server chráněná pomocí transparentního šifrování dat (TDE), budete muset migrovat certifikát, který spravovaná instance může použít k dešifrování zálohy, kterou chcete obnovit v Azure.
 
 ## <a name="network-configuration"></a>Konfigurace sítě
 
-- [Určit velikost spravované instance podsítě](sql-database-managed-instance-determine-size-vnet-subnet.md) – spravovaná instance je umístěn v vyhradí podsíť, která nelze změnit velikost, jakmile přidáte spolehlivým prostředkům. Proto je třeba k výpočtu, jaký rozsah IP adres by byla zapotřebí pro podsítě v závislosti na počtu a typů instancí, které chcete nasadit v podsíti.
-- [Vytvořit novou virtuální síť a podsíť pro spravovanou instanci](sql-database-managed-instance-create-vnet-subnet.md) – virtuální síť Azure a podsíť, ve které chcete nasadit spravované instance musí být nakonfigurované podle [je zde popsáno, požadavky na síťovou](sql-database-managed-instance-connectivity-architecture.md#network-requirements). V této příručce nenajdete nejjednodušší způsob, jak vytvořit novou virtuální síť a podsítě správně nakonfigurovaný pro spravované instance.
-- [Konfigurace stávající virtuální síť a podsíť pro spravovanou instanci](sql-database-managed-instance-configure-vnet-subnet.md) – Pokud chcete provést konfiguraci stávající virtuální síť a podsíť k nasazení spravované instance v rámci, tady najdete skript, který kontroluje, [požadavky na síťovou](sql-database-managed-instance-connectivity-architecture.md#network-requirements) a ujistěte se nakonfiguruje podle požadavků vaší podsítě.
-- [Konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md) – je potřeba nakonfigurovat vlastní DNS, pokud chcete přístup k externím prostředkům ve vlastních doménách z vaší spravované instance přes odkazovaný server db profily e-mailu.
-- [Synchronizace konfigurace sítě](sql-database-managed-instance-sync-network-configuration.md) – se může stát, že i když jste [vaší aplikace integrované s Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md), můžete&#39;t navázat připojení k managed instance. Jednou z věcí, které můžete zkusit se aktualizovat konfiguraci sítě pro váš plán služby.
-- [Vyhledat IP adresu koncového bodu správy](sql-database-managed-instance-find-management-endpoint-ip-address.md) – spravovaná instance používá veřejný koncový bod pro účely správy. Můžete určit IP adresu koncového bodu správy pomocí skriptů je popsáno zde.
-- [Ověření integrované firewall ochrany](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) – spravovaná instance je pak chráněn rozhraním integrovanou bránu firewall, které umožní provoz pouze nezbytné porty. Můžete zkontrolovat a ověření integrované brány firewall pravidla pomocí skriptů je popsáno v této příručce.
-- [Připojení aplikací](sql-database-managed-instance-connect-app.md) – spravovaná instance je umístěn ve vaší vlastní privátní virtuální sítě Azure s privátní IP adresu. Další informace o různých schématech připojení aplikací k vaší spravované instance.
+- [Určete velikost podsítě spravované instance](sql-database-managed-instance-determine-size-vnet-subnet.md) – spravovaná instance je umístěna ve vyhradení podsítě, kterou nelze po přidání prostředků do systému změnit. Proto byste museli počítat, jaký rozsah adres IP by se vyžadoval pro podsíť v závislosti na počtu a typech instancí, které chcete v podsíti nasadit.
+- [Vytvoření nové virtuální sítě a podsítě pro spravovanou instanci](sql-database-managed-instance-create-vnet-subnet.md) – virtuální síť Azure a podsíť, kde chcete spravované instance nasadit, se musí nakonfigurovat podle [požadavků sítě](sql-database-managed-instance-connectivity-architecture.md#network-requirements), které jsou zde popsané. V této příručce najdete nejjednodušší způsob, jak vytvořit novou virtuální síť a podsíť správně nakonfigurovaných pro spravované instance.
+- [Konfigurace existující virtuální sítě a podsítě pro spravovanou instanci](sql-database-managed-instance-configure-vnet-subnet.md) – Pokud chcete nakonfigurovat stávající virtuální síť a podsíť pro nasazení spravovaných instancí uvnitř, najdete tady skript, který kontroluje [požadavky na síť](sql-database-managed-instance-connectivity-architecture.md#network-requirements) a nakonfiguruje vaše podsíť podle požadavků.
+- [Konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md) – Pokud chcete získat přístup k externím prostředkům v vlastní doméně ze spravované instance pomocí propojených serverových e-mailových profilů, musíte vlastní DNS nakonfigurovat.
+- [Synchronizace konfigurace sítě](sql-database-managed-instance-sync-network-configuration.md) – může dojít k tomu, že i když jste [aplikaci integrovanou do Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md),&#39;můžete t navázat připojení ke spravované instanci. Jednou z věcí, které můžete vyzkoušet, je aktualizovat konfiguraci sítě pro svůj plán služby.
+- [Najít IP adresu koncového bodu správy](sql-database-managed-instance-find-management-endpoint-ip-address.md) – spravovaná instance používá pro účely správy veřejný koncový bod. IP adresu koncového bodu správy můžete určit pomocí skriptu, který je zde popsán.
+- [Ověřit integrovanou ochranu brány firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) – spravovaná instance je chráněná integrovanou bránou firewall, která umožňuje provoz pouze na nezbytných portech. Vestavěná pravidla brány firewall můžete zkontrolovat a ověřit pomocí skriptu popsaného v této příručce.
+- [Připojení aplikací](sql-database-managed-instance-connect-app.md) – spravovaná instance je umístěná ve vaší soukromé virtuální síti Azure s privátní IP adresou. Přečtěte si o různých vzorech pro připojení aplikací ke spravované instanci.
 
 ## <a name="feature-configuration"></a>Konfigurace funkcí
 
-- [Transakční replikace](replication-with-sql-database-managed-instance.md) umožňuje replikovat data mezi spravované instance nebo z místních SQL serveru do managed instance a naopak. Najdete další informace o tom, jak používat a konfigurovat replikaci transakcí v této příručce.
-- [Konfigurace zjišťování hrozeb](sql-database-managed-instance-threat-detection.md) – [detekce hrozeb](sql-database-threat-detection-overview.md) je integrovaná funkce Azure SQL Database, který zjistí různých potenciální útoky, jako jsou Injektáž SQL nebo přístupu z podezřelých míst. V této příručce můžete zjistěte, jak povolit a konfigurovat [detekce hrozeb](sql-database-threat-detection-overview.md) pro spravovanou instanci.
+- [Transakční replikace](replication-with-sql-database-managed-instance.md) umožňuje replikovat data mezi spravovanými instancemi nebo z místních SQL Server do spravované instance a naopak. Přečtěte si další informace o použití a konfiguraci replikace transakcí v této příručce.
+- [Konfigurace detekce hrozeb](sql-database-managed-instance-threat-detection.md) – [detekce hrozeb](sql-database-threat-detection-overview.md) je integrovaná Azure SQL Database funkce, která detekuje různé potenciální útoky, jako je například vkládání SQL nebo přístup z podezřelých umístění. V této příručce se dozvíte, jak povolit a nakonfigurovat [detekci hrozeb](sql-database-threat-detection-overview.md) pro spravovanou instanci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [provede postupy pro izolované databáze](sql-database-howto-single-database.md)
+- Přečtěte si [](sql-database-howto-single-database.md) Další informace o průvodcích s jednotlivými databázemi.

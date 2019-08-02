@@ -1,6 +1,6 @@
 ---
-title: Jak používat jiné služby Batch – hlasové služby
-titlesuffix: Azure Cognitive Services
+title: Jak používat službu Batch přepis-Speech Service
+titleSuffix: Azure Cognitive Services
 description: Přepis batch je ideální, pokud chcete přepisy velké množství zvuk v úložišti, jako jsou objekty BLOB Azure. Pomocí vyhrazené rozhraní REST API můžete odkazovat na zvukové soubory pomocí sdíleného přístupového podpisu (SAS) identifikátor URI a asynchronně přijímat přepisů.
 services: cognitive-services
 author: PanosPeriorellis
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: b71400c3ae3c1cc6737d9194b4d94bf0b9c7efa9
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 088b6ef93631cb964979de3621453caa430c5b1e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606745"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559706"
 ---
 # <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
 
@@ -32,7 +32,7 @@ Se všemi funkcemi služby řeči, při vytváření odběru klíč z [webu Azur
 
 ### <a name="custom-models"></a>Vlastní modely
 
-Pokud máte v plánu pro přizpůsobení akustických nebo jazykové modely, postupujte podle kroků v [přizpůsobení akustických modelů](how-to-customize-acoustic-models.md) a [přizpůsobení jazykových modelů](how-to-customize-language-model.md). Používat modely vytvořené v určené k transkripci batch budete potřebovat své ID modelu. Toto ID není ID koncového bodu, které se nachází v zobrazení Podrobnosti o koncovém bodu, je ID modelu, který můžete načíst při výběru Podrobnosti modelů.
+Pokud máte v úmyslu přizpůsobit akustické nebo jazykové modely, postupujte podle kroků v části [přizpůsobení akustických modelů](how-to-customize-acoustic-models.md) a [přizpůsobení jazykových modelů](how-to-customize-language-model.md). Pokud chcete v rámci dávkového přepisu použít vytvořené modely, budete potřebovat jejich ID modelu. Toto ID není ID koncového bodu, které najdete v zobrazení podrobností koncového bodu, jedná se o ID modelu, které můžete načíst, když vyberete podrobnosti modelů.
 
 ## <a name="the-batch-transcription-api"></a>Přepis rozhraní API služby Batch
 
@@ -43,7 +43,7 @@ Rozhraní API služby Batch určené k transkripci nabízí asynchronní přepis
 1. Přepisy stahování
 
 > [!NOTE]
-> Rozhraní API služby Batch určené k transkripci je ideální pro volání Center, která obvykle accumulate tisíce hodin zvukového záznamu. To usnadňuje přepisy velké objemy zvukových nahrávek.
+> Rozhraní API služby Batch určené k transkripci je ideální pro volání Center, která obvykle accumulate tisíce hodin zvukového záznamu. Díky tomu se snadno přepisovat velké objemy zvukových nahrávek.
 
 ### <a name="supported-formats"></a>Podporované formáty
 
@@ -55,11 +55,11 @@ Rozhraní API služby Batch určené k transkripci podporuje následující form
 | MP3 | PCM | 16 bitů | 8 nebo 16 mono, stereo kHz, |
 | OGG | DÍLE | 16 bitů | 8 nebo 16 mono, stereo kHz, |
 
-Přepis rozhraní API služby Batch pro stereo zvukové datové proudy, rozdělí levého a pravého kanálu během přepis. Každé dva soubory JSON s výsledkem jsou vytvořeny z jednoho kanálu. Časová razítka na utterance umožňují vývojářům vytvořit seřazený konečné přepisu. Tento ukázkový požadavek obsahuje vlastnosti pro filtrování vulgárních výrazů, interpunkce a word úrovně časová razítka.
+Přepis rozhraní API služby Batch pro stereo zvukové datové proudy, rozdělí levého a pravého kanálu během přepis. Každé dva soubory JSON s výsledkem jsou vytvořeny z jednoho kanálu. Časová razítka na utterance umožňují vývojářům vytvořit seřazený konečné přepisu. Tato ukázková žádost obsahuje vlastnosti pro filtrování vulgárních výrazů, interpunkční znaménka a časová razítka na úrovni slov.
 
-### <a name="configuration"></a>Konfigurace
+### <a name="configuration"></a>Konfiguraci
 
-Parametry konfigurace jsou k dispozici jako dokumenty JSON:
+Parametry konfigurace jsou zadány jako JSON:
 
 ```json
 {
@@ -82,31 +82,31 @@ Parametry konfigurace jsou k dispozici jako dokumenty JSON:
 
 ### <a name="configuration-properties"></a>Vlastnosti konfigurace
 
-Použijte tyto volitelné vlastnosti konfigurace určené k transkripci:
+K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
 
 | Parametr | Popis |
 |-----------|-------------|
 | `ProfanityFilterMode` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže filtrování vulgárních výrazů `masked` hvězdičky, která nahradí vulgárních výrazů `removed` výsledek, který zruší všechny vulgárních výrazů nebo `tags` které přidá značky "vulgárních výrazů". Ve výchozím nastavení je `masked`. |
 | `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže interpunkční znaménka, `dictated` což naznačuje explicitní interpunkce, `automatic` které umožní dekodér řešit interpunkční znaménka, nebo `dictatedandautomatic` což naznačuje nařízeny interpunkční znaménka nebo automaticky. |
- | `AddWordLevelTimestamps` | Určuje, pokud úroveň časová razítka slovo měla být přidána do výstupu. Platné hodnoty jsou `true` umožňující slovo úrovně časová razítka a `false` (výchozí hodnota) pro jeho zakázání. |
- | `AddSentiment` | Určuje, že se přidaly subjektivního hodnocení utterance. Platné hodnoty jsou `true` umožňující subjektivního hodnocení na utterance a `false` (výchozí hodnota) pro jeho zakázání. |
- | `AddDiarization` | Určuje, že tento diarization alalysis se provádí na vstupu, který má být mono kanál obsahující dva hlasy. Platné hodnoty jsou `true` umožňující diarization a `false` (výchozí hodnota) pro jeho zakázání. Také budete potřebovat `AddWordLevelTimestamps` nastavit na hodnotu true.|
+ | `AddWordLevelTimestamps` | Určuje, zda mají být do výstupu přidány časová razítka na úrovni aplikace Word. Přijaté hodnoty `true` umožňují, aby se časová razítka `false` na úrovni aplikace Word a (výchozí hodnota) zakázala. |
+ | `AddSentiment` | Určuje mínění by měl být přidán do utterance. Přijatelné hodnoty `true` umožňují mínění na utterance a `false` (výchozí hodnota), která ji zakáže. |
+ | `AddDiarization` | Určuje, že by se mělo provést diarization alalysis na vstupu, u kterého se očekává, že kanál mono obsahuje dvě hlasy. Přijatelné hodnoty `true` umožňují diarization a `false` (výchozí hodnota), která ji zakáže. Také je nutné `AddWordLevelTimestamps` nastavit na hodnotu true.|
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
-Služba batch podporuje určené k transkripci [úložiště objektů Blob v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) pro čtení zvuk a přepisů zápis do úložiště.
+Služba Batch přepisu podporuje [úložiště objektů BLOB v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) pro čtení zvuku a psaní přepisů do úložiště.
 
 ## <a name="webhooks"></a>webhooks
 
-Dotazování na stav určené k transkripci nemusí být většina výkonné a poskytují nejlepší uživatelské prostředí. Dotazování na stav, můžete zaregistrovat zpětná volání, které oznámí klient po dokončení dlouho běžící úlohy určené k transkripci.
+Cyklické dotazování na stav přepisu nemusí být nejvýkonnější nebo poskytovat nejlepší uživatelské prostředí. Chcete-li provést dotaz na stav, můžete zaregistrovat zpětná volání, která upozorní klienta na dokončení dlouhotrvajících úloh přepisu.
 
-Další podrobnosti najdete v tématu [Webhooky](webhooks.md).
+Další podrobnosti najdete v tématu [](webhooks.md)Webhooky.
 
 ## <a name="speaker-separation-diarization"></a>Oddělení mluvčího (Diarization)
 
-Diarization je proces oddělení reproduktorů část zvuk. Náš kanál Batch podporuje Diarization a dokáže rozpozná dva přednášející na záznamy mono kanálu.
+Diarization je proces oddělení mluvčích v rámci zvukového zařízení. Náš dávkový kanál podporuje Diarization a dokáže rozpoznat dva reproduktory na záznamech kanálů mono.
 
-Budete muset požádat o, pro diarization zpracování vaší žádosti vám přepisování zvukového záznamu, jednoduše přidat odpovídající parametr v požadavku HTTP, jak je znázorněno níže.
+Aby bylo možné požádat o zpracování požadavku na přepis zvuku pro diarization, stačí přidat příslušný parametr v požadavku HTTP, jak je znázorněno níže.
 
  ```json
 {
@@ -122,30 +122,30 @@ Budete muset požádat o, pro diarization zpracování vaší žádosti vám př
 }
 ```
 
-Úroveň časová razítka Word by také musel "zapnout" jako parametry v výše uvedeného požadavku označení.
+Časová razítka na úrovni slov by také musela být zapnutá, protože parametry výše uvedené žádosti ukazují.
 
-Odpovídající zvuk bude obsahovat přednášející identifikována číslem (aktuálně podporujeme jenom dva hlasů, takže mluvčích budou označeny jako "mluvčího 1 ' a 'Mluvčího 2') následovanou výstupem určené k transkripci.
+Odpovídající zvuk bude obsahovat reproduktory identifikované číslem (aktuálně podporujeme pouze dva hlasy, takže reproduktory budou identifikovány jako mluvčí 1 a mluvčí 2) následovaný výstupem přepisu.
 
-Všimněte si také, že Diarization není k dispozici v Stereo záznamy. Kromě toho všechny JSON výstup bude obsahovat značku mluvčího. Pokud se nepoužívá diarization, se zobrazí "mluvčího: Hodnotu NULL' v kódu JSON výstupu.
+Všimněte si také, že v stereofonních záznamech není Diarization k dispozici. Kromě toho všechen výstup JSON bude obsahovat značku mluvčího. Pokud se diarization nepoužívá, zobrazí se mluvčí: Null ve výstupu JSON.
 
 > [!NOTE]
-> Diarization jsou k dispozici ve všech oblastech a pro všechna národní prostředí.
+> Diarization je k dispozici ve všech oblastech a pro všechna národní prostředí!
 
 ## <a name="sentiment"></a>Mínění
 
-Zabarvení je nová funkce v rozhraní API služby Batch určené k transkripci a je důležité funkce v doméně center volání. Zákazníci můžou využít `AddSentiment` parametry na jejich požadavky na
+Mínění je nová funkce v rozhraní API služby Batch přepisu a je důležitou funkcí v doméně centra volání. Zákazníci mohou použít `AddSentiment` parametry pro své požadavky na
 
 1.  Získejte přehled o spokojenosti zákazníků
-2.  Získejte přehled o výkonu z agentů (týmu trvá volání)
-3.  Přesně určit přesný okamžik v čase při volání trvala zapněte ve směru záporná
-4.  Přesně určit, co šlo dobře jenom v případě zapnutí negativní volání pozitivní
-5.  Určit, co se zákazníkům líbí a co se nelíbí produkt nebo službu
+2.  Získejte přehled o výkonu agentů (při volání tohoto týmu).
+3.  Přesné určení bodu v čase, kdy volání trvalo v nezáporném směru
+4.  Určení toho, co je dobré při zapínání negativních volání na pozitivní
+5.  Určení toho, co se zákazníkům líbí a co se na produkt nebo službu nelíbí
 
-Má skóre mínění na zvukový segmentu kde zvuku segmentu je definován jako časová prodleva mezi začátkem utterance (posun) a nečinnosti zjištění konce datového proudu bajtů. Celý text v rámci tohoto segmentu se používá k výpočtu mínění. Neměňte výpočtu všechny agregované mínění hodnoty pro celý volání nebo celý řeči každý kanál. Tato agregace je ponecháno ke vlastník domény další použití.
+Mínění je vyhodnoceno na segment zvuku, kde je zvukový segment definován jako časový poměr mezi začátkem utterance (posun) a detekcí nečinnosti koncového datového proudu. K výpočtu mínění se použije celý text v tomto segmentu. Nepočítáme žádné agregované hodnoty mínění pro celé volání nebo celé rozpoznávání řeči každého kanálu. Tyto agregace jsou ponechány vlastníkovi domény, aby je bylo možné dále použít.
 
-Zabarvení se použije na lexikální formuláře.
+Mínění se používá na lexikálním formuláři.
 
-Ukázka výstupu JSON vypadá níže:
+Ukázka výstupu JSON vypadá následovně:
 
 ```json
 {
@@ -180,35 +180,35 @@ Ukázka výstupu JSON vypadá níže:
   ]
 }
 ```
-Tato funkce používá model mínění, která je aktuálně ve verzi Beta.
+Tato funkce používá model mínění, který je aktuálně ve verzi beta.
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Kompletní ukázky jsou k dispozici v [ukázkového úložiště Githubu](https://aka.ms/csspeech/samples) uvnitř `samples/batch` podadresáře.
+Kompletní ukázky jsou k dispozici v `samples/batch` [úložišti ukázek GitHub](https://aka.ms/csspeech/samples) v podadresáři.
 
-Budete muset přizpůsobit vzorový kód s informace o vašem předplatném, oblasti služby SAS URI odkazující na zvukový soubor přepisy a modelování ID v případě, že chcete použít vlastní akustických nebo jazyka modelu.
+Je nutné upravit ukázkový kód s informacemi o předplatném, s oblastí služby, identifikátorem URI SAS odkazujícím na zvukový soubor na přepisovat a ID modelu pro případ, že chcete použít vlastní akustický nebo jazykový model.
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 
-Vzorový kód bude instalace klienta a odeslat žádost o přepis. To bude potom dotazovat na informace o stavu a vytisknout podrobnosti o průběhu určené k transkripci.
+Vzorový kód nastaví klienta a odešle požadavek přepisu. Pak se zobrazí dotaz na informace o stavu a vytiskne podrobnosti o průběhu přepisu.
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
 
-Úplné podrobnosti o předchozí volání, najdete v našich [dokument Swagger](https://westus.cris.ai/swagger/ui/index). Úplnou ukázku je znázorněno zde, v části [Githubu](https://aka.ms/csspeech/samples) v `samples/batch` podadresáře.
+Úplné podrobnosti o předchozích voláních najdete v našem [dokumentu Swagger](https://westus.cris.ai/swagger/ui/index). Úplný vzorek, který vidíte tady, najdete v [](https://aka.ms/csspeech/samples) `samples/batch` podadresáři na GitHubu.
 
 Poznamenejte si nastavení asynchronní pro zvuk odesílání a příjem určené k transkripci stav. Klient, který vytvoříte je klienta .NET protokolu HTTP. Je `PostTranscriptions` metodu pro odesílání podrobnosti zvukový soubor a `GetTranscriptions` metodu pro příjem výsledků. `PostTranscriptions` Vrátí popisovač, a `GetTranscriptions` používá k vytvoření popisovače se získat stav určené k transkripci.
 
 Aktuální vzorový kód neurčuje vlastního modelu. Služba používá základní modely pro přepisování na soubor nebo soubory. K určení vzorů, můžete předat na stejné metodě jako ID modelu akustických a jazykový model.
 
 > [!NOTE]
-> Pro základní přepisů není nutné deklarovat ID pro základní modely. Pokud zadáte pouze jazyk ID modelu (a žádné ID akustický model), je automaticky vybrána odpovídající akustický model. Pokud zadáte jenom ID akustický model, je automaticky vybrána odpovídající jazykový model.
+> Pro přepisy směrného plánu není nutné deklarovat ID pro základní modely. Pokud zadáte pouze ID jazykového modelu (bez ID akustického modelu), je automaticky vybrán shodný akustický model. Pokud zadáte pouze ID akustického modelu, je automaticky vybrán shodný jazykový model.
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
-Můžete najít ukázky v `samples/batch` v adresáři [ukázkového úložiště Githubu](https://aka.ms/csspeech/samples).
+Ukázku najdete v `samples/batch` adresáři v [úložišti ukázek GitHubu](https://aka.ms/csspeech/samples).
 
 > [!NOTE]
-> Batch určené k transkripci úlohy jsou naplánovány na jak kapacita systému dovolí, neexistuje žádný časový odhad pro když se změní úlohy do stavu spuštěno. Jednou v běžícím stavu, skutečné přepis, jsou zpracovávána rychleji než zvuku reálném čase.
+> Úlohy dávkového přepisu jsou naplánovány na nejvyšší úsilí, nejedná se o časový odhad, kdy se úloha změní do stavu spuštěno. Po spuštění se skutečný přepis zpracovává rychleji než zvuk v reálném čase.
 
 ## <a name="next-steps"></a>Další postup
 

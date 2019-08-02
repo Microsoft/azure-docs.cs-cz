@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: a453e82f47bb9eed25c8d5caf986bc854085e8ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3edfa1ca63560f447d2c9ea3da3588e069b7af1
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061212"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226825"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) představují rozšiřitelnou analytickou službu, která webovým vývojářům pomůže pochopit výkon a využití živých aplikací. Použijte ho k [automaticky nástrojem požadavku, sledování závislostí a shromáždit čítače](auto-collect-dependencies.md#java), diagnostikovat problémy s výkonem a výjimkami, a [napsat kód] [ api] ke sledování, co uživatelé dělají s vaší aplikací. 
+[Application Insights](https://azure.microsoft.com/services/application-insights/) představují rozšiřitelnou analytickou službu, která webovým vývojářům pomůže pochopit výkon a využití živých aplikací. Slouží k [automatickému instrumentování požadavků, sledování závislostí a shromažďování čítačů výkonu](auto-collect-dependencies.md#java), diagnostice problémů s výkonem a výjimek a [psaní kódu][api] ke sledování toho, co uživatelé s vaší aplikací dělají. 
 
-![Snímek obrazovky Přehled ukázkových dat.](./media/java-get-started/overview-graphs.png)
+![Snímek obrazovky s přehledem ukázkových dat](./media/java-get-started/overview-graphs.png)
 
 Application Insights podporuje aplikace v Javě spuštěné v systému Linux, Unix nebo Windows.
 
@@ -91,7 +91,7 @@ Pak obnovte závislosti projektu k získání stažených binárních souborů.
 ```
 
 #### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Pokud k vytvoření dynamického webového projektu používáte Eclipse...
-Použijte [Modul Application Insights SDK pro jazyk Java][eclipse]. Poznámka: I když se použitím tohoto modulu plug-in zrychlí zprovoznění Application Insights (za předpokladu, že nepoužíváte Maven nebo Gradle), nejedná se o systém správy závislostí. Při aktualizaci modulu plug-in proto nedojde k automatické aktualizaci knihoven Application Insights ve vašem projektu.
+Použijte [sadu SDK Application Insights pro modul plug-in Java][eclipse]. Poznámka: I když se použitím tohoto modulu plug-in zrychlí zprovoznění Application Insights (za předpokladu, že nepoužíváte Maven nebo Gradle), nejedná se o systém správy závislostí. Při aktualizaci modulu plug-in proto nedojde k automatické aktualizaci knihoven Application Insights ve vašem projektu.
 
 * *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `version:'2.0.n'`. Nejnovější verzi najdete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v [artefaktech Maven](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
 * *Aktualizace na novou sadu SDK* Aktualizujte závislosti svého projektu.
@@ -150,13 +150,13 @@ Volitelně se konfigurační soubor může nacházet v jakémkoli umístění, k
 
 * Klíč instrumentace se zasílá společně s každou položkou telemetrie a říká službě Application Insights, aby ho zobrazila v prostředku.
 * Požadavek komponenty HTTP je volitelný. Automaticky odesílá telemetrii týkající se žádostí a časů odezvy na portál.
-* Korelace událostí je doplněk komponenty požadavku HTTP. Přiřadí identifikátor každé žádosti přijaté serverem a přidá ho jako vlastnost každé položce telemetrie jako vlastnost Operation.Id. Umožňuje korelovat telemetrii související s každou žádostí nastavením filtru v [diagnostickém vyhledávání][diagnostic].
+* Korelace událostí je doplněk komponenty požadavku HTTP. Přiřadí identifikátor každé žádosti přijaté serverem a přidá ho jako vlastnost každé položce telemetrie jako vlastnost Operation.Id. Umožňuje korelaci telemetrie spojené s jednotlivými požadavky nastavením filtru v [diagnostickém vyhledávání][diagnostic].
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>Alternativní způsoby nastavení klíče instrumentace
 Application Insights SDK hledá klíče v tomto pořadí:
 
 1. Systémová vlastnost: -DAPPLICATION_INSIGHTS_IKEY=váš_ikey
-2. Proměnné prostředí: APPLICATION_INSIGHTS_IKEY
+2. Proměnná prostředí: APPLICATION_INSIGHTS_IKEY
 3. Konfigurační soubor: ApplicationInsights.xml
 
 Můžete ho taky [nastavit v kódu](../../azure-monitor/app/api-custom-events-metrics.md#ikey):
@@ -169,6 +169,8 @@ Můžete ho taky [nastavit v kódu](../../azure-monitor/app/api-custom-events-me
         TelemetryConfiguration.getActive().setInstrumentationKey(instrumentationKey);
     }
 ```
+
+Upozorňujeme, že [živá metrika](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) nepodporuje čtení klíče instrumentace z kódu.
 
 ## <a name="4-add-an-http-filter"></a>4. Přidat filtr HTTP
 Poslední krok konfigurace umožňuje komponentě požadavku HTTP zaprotokolovat každý webový požadavek. (Není požadováno, pokud chcete úplné rozhraní API.)
@@ -304,13 +306,13 @@ Vraťte se do prostředku Application Insights na web [Microsoft Azure Portal](h
 
 Data požadavků HTTP se zobrazí v okně přehledu. (Pokud zde nejsou, počkejte několik sekund a pak klikněte na tlačítko Aktualizovat.)
 
-![Snímek obrazovky Přehled ukázkových dat.](./media/java-get-started/overview-graphs.png)
+![Snímek obrazovky s přehledem ukázkových dat](./media/java-get-started/overview-graphs.png)
 
 [Další informace o metrikách.][metrics]
 
 Proklikejte se prostřednictvím jakékoli grafu pro zobrazení podrobnějších agregovaných metrik.
 
-![Application Insights selhání podokno s grafy](./media/java-get-started/006-barcharts.png)
+![Podokno selhání Application Insights s grafy](./media/java-get-started/006-barcharts.png)
 
 > Application Insights předpokládá, že formát požadavků HTTP pro aplikace MVC je: `VERB controller/action`. Například `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` a `GET Home/Product/sdf96vws` se seskupí do `GET Home/Product`. Toto seskupení umožňuje smysluplné agregace požadavků, jako je počet požadavků a průměrná doba provádění pro požadavky.
 >
@@ -319,9 +321,9 @@ Proklikejte se prostřednictvím jakékoli grafu pro zobrazení podrobnějších
 ### <a name="instance-data"></a>Data instance
 Proklikejte se jednotlivými typy konkrétního požadavku pro zobrazení jednotlivých instancí.
 
-![Přejít k podrobnostem konkrétní ukázkové zobrazení](./media/java-get-started/007-instance.png)
+![Přejít k určitému ukázkovému zobrazení](./media/java-get-started/007-instance.png)
 
-### <a name="analytics-powerful-query-language"></a>Analytics: Výkonný dotazovací jazyk
+### <a name="analytics-powerful-query-language"></a>Analytics Výkonný dotazovací jazyk
 Jak shromažďujete další data, můžete spouštět dotazy obou ke shromáždění dat a k nalezení jednotlivých instancí.  [Analýzy](../../azure-monitor/app/analytics.md) představují výkonný nástroj jak pro vysvětlení výkonu, tak i využití a k diagnostickým účelům.
 
 ![Příklad analýz](./media/java-get-started/0025.png)
@@ -342,9 +344,9 @@ Teď publikujte aplikaci na server, dovolte osobám ji používat a sledujte tel
 
     (Tato komponenta povoluje čítače výkonu.)
 
-## <a name="azure-app-service-config-spring-boot"></a>Konfigurace Azure App Service (Spring Boot)
+## <a name="azure-app-service-config-spring-boot"></a>Azure App Service config (jarní spuštění)
 
-Spring Boot aplikace běžící na Windows vyžadovat dodatečnou konfiguraci ke spuštění v Azure App Service. Upravit **web.config** a přidejte následující:
+Aplikace pro spouštění pružiny spuštěné v systému Windows vyžadují další konfiguraci pro spuštění v Azure App Services. Upravte soubor **Web. config** a přidejte následující:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -364,7 +366,7 @@ Neošetřené výjimky jsou shromažďovány automaticky.
 
 Chcete-li shromažďovat data o dalších výjimkách, máte dvě možnosti:
 
-* [Vložit do kódu volání metody trackException()][apiexceptions].
+* [Do kódu vložte volání trackException ()][apiexceptions].
 * [Nainstalovat na server agenta Java](java-agent.md). Určete metody, které chcete sledovat.
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Volání metody monitorování a externí závislosti
@@ -372,16 +374,16 @@ Chcete-li shromažďovat data o dalších výjimkách, máte dvě možnosti:
 
 ## <a name="w3c-distributed-tracing"></a>Distribuované trasování W3C
 
-Application Insights Java SDK teď podporuje [W3C distribuované trasování](https://w3c.github.io/trace-context/).
+Sada Application Insights Java SDK teď podporuje [distribuované trasování W3C](https://w3c.github.io/trace-context/).
 
-Příchozí konfigurace sady SDK je vysvětleno dále v náš článek věnovaný tomu [korelace](correlation.md#w3c-distributed-tracing).
+Příchozí konfigurace sady SDK je podrobněji vysvětlena v našem článku [](correlation.md#w3c-distributed-tracing)o korelaci.
 
-Odchozí konfigurace sady SDK je definována v [AI Agent.xml](java-agent.md) souboru.
+Odchozí konfigurace sady SDK je definována v souboru [AI-agent. XML](java-agent.md) .
 
 ## <a name="performance-counters"></a>Čítače výkonu
-Otevřít **prošetření**, **metriky**, uvidíte rozsah čítačů výkonu.
+Otevřete **prozkoumat**, **metriky**a zobrazte si rozsah čítačů výkonu.
 
-![Snímek obrazovky podokna metriky s vybrali privátní bajty procesu](./media/java-get-started/011-perf-counters.png)
+![Snímek obrazovky podokna metriky se zvolenými soukromými bajty procesu](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Vlastní nastavení kolekce čítačů výkonu
 Pro zakázání shromažďování standardní sady čítačů výkonu přidejte následující kód do kořenového uzlu souboru ApplicationInsights.xml:
@@ -434,35 +436,11 @@ Každý [čítač výkonu systému Windows](https://msdn.microsoft.com/library/w
 ### <a name="unix-performance-counters"></a>Čítače výkonu Unix
 * [Nainstalujte collectd s modulem plug-in Application Insights](java-collectd.md) a získejte celou řadu dat systému a sítě.
 
-## <a name="local-forwarder"></a>Místní předávání
-
-[Místní server pro předávání](https://docs.microsoft.com/azure/application-insights/local-forwarder) je agenta, který shromažďuje Application Insights nebo [OpenCensus](https://opencensus.io/) telemetrická data z různých sad SDK a architektur a směruje je do služby Application Insights. Je schopný běžet pod Windows a Linux.
-
-```xml
-<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
-<DeveloperMode>false</DeveloperMode>
-<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
-<!-- The properties below are optional. The values shown are the defaults for each property -->
-<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
-<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
-</Channel>
-```
-
-Pokud používáte SpringBoot starter, přidejte následující konfigurační soubor (souboru application.properties):
-
-```yml
-azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
-azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
-azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
-```
-
-Výchozí hodnoty jsou stejné pro konfiguraci SpringBoot souboru application.properties a soubor applicationinsights.xml.
-
 ## <a name="get-user-and-session-data"></a>Získejte data uživatele a relace
 Takže odesíláte telemetrii z webového serveru. Teď pokud chcete získat úplné 360stupňové zobrazení vaší aplikace, můžete přidat další monitorování:
 
-* [Přidání telemetrie na webové stránky][usage] pro monitorování zobrazení stránek a metrik uživatelů.
-* [Nastavení webových testů][availability] pro zajištění, že aplikace zůstane funkční a bude reagovat.
+* [Přidejte telemetrii k webovým stránkám][usage] a sledujte zobrazení stránek a metriky uživatelů.
+* [Nastavte webové testy][availability] , abyste měli jistotu, že vaše aplikace zůstane v provozu a reaguje.
 
 ## <a name="capture-log-traces"></a>Zaznamenat trasování protokolu
 Službu Application Insights můžete použít k nařezání a rozčlenění protokolů z Log4J, Logback nebo jiných rozhraní protokolování. Protokoly mohou korelovat s požadavky HTTP a další telemetrií. [Zjistěte jak][javalogs].
@@ -470,13 +448,13 @@ Službu Application Insights můžete použít k nařezání a rozčlenění pro
 ## <a name="send-your-own-telemetry"></a>Odeslat vlastní telemetrii
 Teď, když jste nainstalovali sadu SDK, můžete použít rozhraní API k odeslání vlastní telemetrie.
 
-* [Sledujte vlastní události a metriky][api] a dozvíte se, jak uživatelé pracují s vaší aplikací.
-* [Prohledávejte události a protokoly][diagnostic] pro pomoc s diagnostikou problémů.
+* [Sledujte vlastní události a metriky][api] , abyste se dozvěděli, co uživatelé s vaší aplikací dělají.
+* [Prohledejte události a protokoly][diagnostic] , které vám pomůžou diagnostikovat problémy.
 
 ## <a name="availability-web-tests"></a>Testy dostupnosti webu
 Application Insights může otestovat váš web v pravidelných intervalech a zkontrolovat, zda je funkční a dobře reaguje.
 
-[Další informace o tom, jak nastavit testy dostupnosti webu.][availability]
+[Přečtěte si další informace o tom, jak nastavit webové testy dostupnosti.][availability]
 
 ## <a name="questions-problems"></a>Máte dotazy? Problémy?
 [Řešení potíží s Javou](java-troubleshoot.md)

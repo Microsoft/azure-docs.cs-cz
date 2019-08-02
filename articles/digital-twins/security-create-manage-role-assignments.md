@@ -1,29 +1,29 @@
 ---
-title: Vytvořit a spravovat přiřazení rolí v Azure digitální dvojče | Dokumentace Microsoftu
-description: Vytvořit a spravovat přiřazení rolí v digitální dvojče Azure.
+title: Vytváření a správa přiřazení rolí v Azure Digital provlákna | Microsoft Docs
+description: Umožňuje vytvářet a spravovat přiřazení rolí v digitálních prozdvojeních Azure.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 12/26/2018
-ms.author: lyrana
+ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a57089eb2cd87b08ba647afed002d90d6f14891a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66162134"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846663"
 ---
-# <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Vytvořit a spravovat přiřazení rolí v Azure digitální dvojče
+# <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Vytváření a správa přiřazení rolí v digitálních prozdvojeních Azure
 
-Azure digitální dvojče používá řízení přístupu na základě rolí ([RBAC](./security-role-based-access-control.md)) ke správě přístupu k prostředkům.
+Digitální vlákna Azure používá řízení přístupu na základě role ([RBAC](./security-role-based-access-control.md)) ke správě přístupu k prostředkům.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="role-assignments-overview"></a>Přehled přiřazení role
+## <a name="role-assignments-overview"></a>Přehled přiřazení rolí
 
 Každé přiřazení role odpovídá následující definici:
 
@@ -37,35 +37,35 @@ Každé přiřazení role odpovídá následující definici:
 }
 ```
 
-Následující tabulka popisuje každý atribut:
+Následující tabulka popisuje jednotlivé atributy:
 
-| Atribut | Name | Požaduje se | Typ | Popis |
+| Atribut | Name | Požadováno | Typ | Popis |
 | --- | --- | --- | --- | --- |
-| RoleId | Identifikátor definice role | Ano | String | Jedinečné ID přiřazení požadované role. Najdete definice rolí a jejich identifikátoru dotazování rozhraní API systému nebo kontrola následující tabulka. |
-| ID objektu | Identifikátor objektu | Ano | String | ID služby Azure Active Directory, ID instančního objektu služby nebo název domény. Co nebo které je přiřazeno přiřazení role. Přiřazení role musí být naformátovaná podle jeho přidruženého typu. Pro `DomainName` objectIdType, objectId musí začínat `“@”` znak. |
-| objectIdType | Typ identifikátoru objektu | Ano | String | Druh použít identifikátor objektu. Zobrazit **podporované ObjectIdTypes** níže. |
-| path | Místo cesty | Ano | String | Cesta úplný přístup k `Space` objektu. Příklad: `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy použijte Princip nejnižších oprávnění. |
-| tenantId | Identifikátor tenanta | Různé | String | Ve většině případů ID tenanta služby Azure Active Directory. Zakázáno pro `DeviceId` a `TenantId` ObjectIdTypes. Vyžaduje se pro `UserId` a `ServicePrincipalId` ObjectIdTypes. Volitelné pro DomainName ObjectIdType. |
+| RoleId | Identifikátor definice role | Ano | Řetězec | Jedinečné ID požadovaného přiřazení role Vyhledejte definice rolí a jejich identifikátor pomocí dotazu na následující tabulku rozhraní API systému nebo revize. |
+| ID objektu | Identifikátor objektu | Ano | Řetězec | ID Azure Active Directory, ID objektu zabezpečení služby nebo název domény. K čemu přiřazení role je přiřazeno. Přiřazení role musí být formátováno podle jeho přidruženého typu. Pro objectIdType musí objectID začínat `“@”` znakem. `DomainName` |
+| objectIdType | Typ identifikátoru objektu | Ano | Řetězec | Typ použitého identifikátoru objektu. Viz článek **podporované ObjectIdTypes** níže. |
+| path | Cesta k prostoru | Ano | Řetězec | Úplná cesta pro přístup k `Space` objektu. Příklad: `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy postupujte podle principu nejnižší úrovně oprávnění. |
+| tenantId | Identifikátor tenanta | Různé | Řetězec | Ve většině případů Azure Active Directory ID tenanta. Zakázáno pro `DeviceId` a `TenantId` ObjectIdTypes. Vyžaduje se `UserId` pro `ServicePrincipalId` a ObjectIdTypes. Volitelné pro domainname ObjectIdType. |
 
-### <a name="supported-role-definition-identifiers"></a>Identifikátory definice role podporovaná
+### <a name="supported-role-definition-identifiers"></a>Podporované identifikátory definice rolí
 
-Každé přiřazení role přidruží entity ve vašem prostředí Azure digitální dvojče definice role.
+Každé přiřazení role přidruží definici role k entitě ve vašem prostředí digitálních vláken Azure.
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
-### <a name="supported-object-identifier-types"></a>Identifikátor typy podporovaných objektů
+### <a name="supported-object-identifier-types"></a>Podporované typy identifikátorů objektů
 
-Dříve **objectIdType** atribut byl zaveden.
+Dřív byl zavedený atribut **objectIdType** .
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 ## <a name="role-assignment-operations"></a>Operace přiřazení role
 
-Podporuje Azure digitální dvojče úplné *vytvořit*, *čtení*, a *odstranit* operace pro přiřazení rolí. *AKTUALIZACE* operace jsou zpracovány přiřazení rolí přidání, odebrání přiřazení role nebo úpravou [prostorový graf Intelligence](./concepts-objectmodel-spatialgraph.md) uzly, které přiřazení rolí udělit přístup k.
+Funkce digitálních vláken Azure podporuje úplné operace *Vytvoření*, *čtení*a *odstranění* pro přiřazení rolí. Operace *aktualizace* jsou zpracovávány přidáním přiřazení rolí, odebráním přiřazení rolí nebo úpravou uzlů [grafu prostorové Intelligence](./concepts-objectmodel-spatialgraph.md) , ke kterým mají přiřazení role přístup.
 
 ![Koncové body přiřazení role][1]
 
-Zadaný referenční dokumentaci Swagger obsahuje další informace o všech dostupných rozhraní API koncové body, operace se žádostmi o a definice.
+Dodaná Referenční dokumentace k Swagger obsahuje další informace o všech dostupných koncových bodech rozhraní API, operacích požadavků a definicích.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
@@ -73,30 +73,30 @@ Zadaný referenční dokumentaci Swagger obsahuje další informace o všech dos
 
 <div id="grant"></div>
 
-### <a name="grant-permissions-to-your-service-principal"></a>Udělení oprávnění instančního objektu služby
+### <a name="grant-permissions-to-your-service-principal"></a>Udělení oprávnění objektu služby
 
-Udělení oprávnění pro váš objekt služby je často jeden z prvních kroků, které využijete při práci s Azure digitální dvojče. To zahrnuje:
+Udělení oprávnění k instančnímu objektu je často jedním z prvních kroků, které budete provádět při práci s digitálními vlákna Azure. Zahrnuje:
 
-1. Přihlásit se k instanci Azure pomocí Powershellu.
-1. Získání informací o instančním objektu vaší služby.
-1. Přiřazuje se požadované role k hlavní službě.
+1. Přihlaste se k instanci Azure prostřednictvím PowerShellu.
+1. Získávají se informace o instančním objektu.
+1. Přiřazení požadované role k instančnímu objektu.
 
-Vaše ID aplikace je součástí v Azure Active Directory. Další informace o konfiguraci a zřizování digitální dvojče Azure ve službě Active Directory, přečtěte si [rychlý Start](./quickstart-view-occupancy-dotnet.md).
+Vaše ID aplikace vám bylo dodáno v Azure Active Directory. Další informace o konfiguraci a zřizování digitálních vláken Azure ve službě Active Directory si můžete přečíst v rychlém startu [](./quickstart-view-occupancy-dotnet.md).
 
-Jakmile máte ID aplikace, spusťte následující příkazy Powershellu:
+Jakmile budete mít ID aplikace, spusťte následující příkazy PowerShellu:
 
 ```shell
 Login-AzAccount
 Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
 ```
 
-Uživatel s **správce** rolí potom můžete přiřadit role správce místa uživatele tím, že ověřeného požadavku HTTP POST na adresu URL:
+Uživatel s rolí správce **** může přiřadit roli správce prostoru k uživateli tím, že na adresu URL přiřadí ověřený požadavek HTTP post:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
-Spolu s následujícím textem JSON:
+S následujícím textem JSON:
 
 ```JSON
 {
@@ -112,15 +112,15 @@ Spolu s následujícím textem JSON:
 
 ### <a name="retrieve-all-roles"></a>Načíst všechny role
 
-![Role systému][2]
+![Systémové role][2]
 
-Seznam všech dostupných rolí (role definice), ujistěte se, ověřeného požadavku HTTP GET na:
+Pokud chcete zobrazit seznam všech dostupných rolí (definice rolí), proveďte ověřený požadavek HTTP GET na:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
-Vrátí pole JSON se položky pro každou roli, která může být přiřazen úspěšného požadavku:
+Úspěšná žádost vrátí pole JSON s položkami pro každou roli, která může být přiřazena:
 
 ```JSON
 [
@@ -155,9 +155,9 @@ Vrátí pole JSON se položky pro každou roli, která může být přiřazen ú
 
 <div id="check"></div>
 
-### <a name="check-a-specific-role-assignment"></a>Zkontrolujte přiřazení konkrétní roli
+### <a name="check-a-specific-role-assignment"></a>Kontrolovat přiřazení konkrétní role
 
-Pokud chcete zkontrolovat konkrétní roli přiřazení, ujistěte se, ověřeného požadavku HTTP GET na:
+Pokud chcete zkontrolovat přiřazení konkrétní role, proveďte ověřený požadavek HTTP GET na:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
@@ -165,16 +165,16 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Hodnota parametru** | **Požadováno** |  **Typ** |  **Popis** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | String |   ObjectId pro objectIdType ID uživatele. |
-| YOUR_PATH | True | String |   Vybrané cesty ke kontrole přístupu. |
-| YOUR_ACCESS_TYPE |  True | String |   Typ přístupu ke kontrole. |
-| YOUR_RESOURCE_TYPE | True | String |  Prostředek, který chcete zkontrolovat. |
+| YOUR_USER_ID |  Pravda | Řetězec |   Identifikátor objectId pro identifikátor UserId objectIdType |
+| YOUR_PATH | Pravda | Řetězec |   Vybraná cesta pro kontrolu přístupu. |
+| YOUR_ACCESS_TYPE |  Pravda | Řetězec |   Typ přístupu, který se má ověřit |
+| YOUR_RESOURCE_TYPE | Pravda | Řetězec |  Prostředek, který se má ověřit |
 
-Vrátí logickou hodnotu úspěšného požadavku `true` nebo `false` označující, zda typ přístupu se přiřadila uživateli pro danou cestu a prostředků.
+Úspěšná žádost vrátí logickou hodnotu `true` nebo `false` k označení, zda byl k dané cestě a prostředku přiřazen daný typ přístupu uživateli.
 
-### <a name="get-role-assignments-by-path"></a>Získat přiřazení role podle cesty
+### <a name="get-role-assignments-by-path"></a>Získat přiřazení rolí podle cesty
 
-Pokud chcete získat všechna přiřazení rolí pro cestu, ujistěte se, ověřeného požadavku HTTP GET na:
+Pokud chcete pro cestu získat všechna přiřazení rolí, proveďte ověřený požadavek HTTP GET na:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
@@ -182,9 +182,9 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 
 | Hodnota | Nahradit hodnotou |
 | --- | --- |
-| YOUR_PATH | Úplná cesta k oboru |
+| YOUR_PATH | Úplná cesta k prostoru |
 
-Úspěšné žádosti vrátí pole JSON se každý přiřazení role, které jsou spojené s vybranou **cesta** parametr:
+Úspěšná žádost vrátí pole JSON s každým přiřazením role přidruženým k vybranému parametru **cesty** :
 
 ```JSON
 [
@@ -198,9 +198,9 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ]
 ```
 
-### <a name="revoke-a-permission"></a>Odvolat oprávnění
+### <a name="revoke-a-permission"></a>Odvolání oprávnění
 
-Odvolat oprávnění z příjemce odstraňte přiřazení role tím, že ověřeného požadavku HTTP DELETE:
+Pokud chcete odvolat oprávnění od příjemce, odstraňte přiřazení role tím, že provedete ověřený požadavek HTTP DELETE:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
@@ -208,19 +208,19 @@ YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 
 | Parametr | Nahradit hodnotou |
 | --- | --- |
-| *YOUR_ROLE_ASSIGNMENT_ID* | **Id** odebrat přiřazení role |
+| *YOUR_ROLE_ASSIGNMENT_ID* | **ID** přiřazení role, které se má odebrat |
 
-Úspěšná žádost o odstranění vrátí stav 204 odpovědi. Ověří odebrání přiřazení role pomocí [kontrola](#check) Určuje, zda stále udržuje přiřazení role.
+Úspěšná žádost o odstranění vrátí stav odpovědi 204. Ověřte odebrání přiřazení role tím, že [zkontrolujete](#check) , jestli přiřazení role pořád obsahuje.
 
-### <a name="create-a-role-assignment"></a>Vytvořit přiřazení role
+### <a name="create-a-role-assignment"></a>Vytvoření přiřazení role
 
-Chcete-li vytvořit přiřazení role, ujistěte se, ověřeného požadavku HTTP POST na adresu URL:
+Chcete-li vytvořit přiřazení role, proveďte ověřený požadavek HTTP POST na adresu URL:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
-Ověřte, že datové části JSON odpovídá následující schéma:
+Ověřte, zda tělo JSON odpovídá následujícímu schématu:
 
 ```JSON
 {
@@ -232,7 +232,7 @@ Ověřte, že datové části JSON odpovídá následující schéma:
 }
 ```
 
-Vrátí stav odezvě 201 spolu s úspěšného požadavku **id** přiřazení nově vytvořené role:
+Úspěšná žádost vrátí stav odpovědi 201 spolu s **ID** nově vytvořeného přiřazení role:
 
 ```JSON
 "d92c7823-6e65-41d4-aaaa-f5b32e3f01b9"
@@ -240,9 +240,9 @@ Vrátí stav odezvě 201 spolu s úspěšného požadavku **id** přiřazení no
 
 ## <a name="configuration-examples"></a>Příklady konfigurace
 
-Následující příklady ukazují, jak nakonfigurovat vlastní obsah JSON v několika situacích běžně došlo k přiřazení role.
+Následující příklady ukazují, jak nakonfigurovat tělo JSON v několika běžně používaných scénářích přiřazení rolí.
 
-* **Příklad**: Uživatel potřebuje přístup správce k dolní mez prostoru tenanta.
+* **Příklad**: Uživatel potřebuje přístup správce k podlaze prostoru tenanta.
 
    ```JSON
    {
@@ -254,7 +254,7 @@ Následující příklady ukazují, jak nakonfigurovat vlastní obsah JSON v ně
    }
    ```
 
-* **Příklad**: Je aplikace spuštěna testovacích scénářů napodobování zařízení a senzorů.
+* **Příklad**: Aplikace spouští testovací scénáře, které napodobují zařízení a senzory.
 
    ```JSON
    {
@@ -266,7 +266,7 @@ Následující příklady ukazují, jak nakonfigurovat vlastní obsah JSON v ně
    }
     ```
 
-* **Příklad**: Všichni uživatelé, kteří jsou součástí domény získají přístup pro čtení pro mezery, senzory a uživatelů. Tento přístup vyžaduje odpovídající souvisejících objektů.
+* **Příklad**: Všichni uživatelé, kteří jsou součástí domény, obdrží přístup pro čtení pro prostory, senzory a uživatele. Tento přístup zahrnuje odpovídající související objekty.
 
    ```JSON
    {
@@ -279,9 +279,9 @@ Následující příklady ukazují, jak nakonfigurovat vlastní obsah JSON v ně
 
 ## <a name="next-steps"></a>Další postup
 
-- Zkontrolujte digitální dvojče Azure role-– řízení přístupu na základě-, přečtěte si téma [Role-base-access-control](./security-authenticating-apis.md).
+- Pokud si chcete projít službu Azure Digital revlákens-Control-Control, přečtěte si [role-Base-Access-Control](./security-authenticating-apis.md).
 
-- Další informace o ověřování Azure digitální dvojče API najdete v článku [ověřování API](./security-authenticating-apis.md).
+- Pokud se chcete dozvědět víc o ověřování API u digitálních vláken Azure, přečtěte si téma [ověřování rozhraní API](./security-authenticating-apis.md).
 
 <!-- Images -->
 [1]: media/security-roles/roleassignments.png

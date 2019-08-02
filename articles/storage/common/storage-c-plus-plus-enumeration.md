@@ -1,47 +1,46 @@
 ---
-title: Seznam prostředků služby Azure Storage s klientskou knihovnu pro úložiště pro C++ | Dokumentace Microsoftu
-description: Další informace o použití seznamu rozhraní API v Microsoft Azure Storage Client Library pro jazyk C++ k vytvoření výčtu kontejnerů, objektů BLOB, fronty, tabulky a entity.
-services: storage
+title: Vypíše Azure Storage prostředky s klientskou knihovnou C++ úložiště pro | Microsoft Docs
+description: Naučte se používat rozhraní API pro výpisy Microsoft Azure Storage klientské knihovny C++ pro k zobrazení výčtu kontejnerů, objektů blob, front, tabulek a entit.
 author: mhopkins-msft
-ms.service: storage
-ms.topic: article
-ms.date: 01/23/2017
 ms.author: mhopkins
-ms.reviewer: dineshm
+ms.date: 01/23/2017
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: edf50b97ff25a67b41bad266df9236145f288409
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.reviewer: dineshm
+ms.openlocfilehash: 3a87e39c9435ba02357b4b655e95e96666242b71
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146884"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721924"
 ---
-# <a name="list-azure-storage-resources-in-c"></a>Seznam prostředků služby Azure Storage v C++
-Operace výpisu jsou klíčem k mnoha vývojové scénáře se službou Azure Storage. Tento článek popisuje, jak co nejefektivněji vytvořit výčet objektů ve službě Azure Storage pomocí seznamu rozhraní API poskytovaných v Microsoft Azure Storage Client Library jazyka C++.
+# <a name="list-azure-storage-resources-in-c"></a>Vypsat Azure Storage prostředky vC++
+
+Výpis operací je klíč k mnoha vývojářským scénářům pomocí Azure Storage. Tento článek popisuje, jak efektivně vytvořit výčet objektů v Azure Storage pomocí rozhraní API pro výpisy, které jsou k dispozici v klientské knihovně Microsoft Azure Storage pro C++.
 
 > [!NOTE]
-> Tento průvodce, zaměřuje Klientská knihovna Azure Storage pro C++ verze 2.x, která je k dispozici prostřednictvím [NuGet](https://www.nuget.org/packages/wastorage) nebo [Githubu](https://github.com/Azure/azure-storage-cpp).
-> 
-> 
+> Tato příručka cílí na Azure Storage klientskou knihovnu C++ pro verzi 2. x, která je k dispozici prostřednictvím [NuGet](https://www.nuget.org/packages/wastorage) nebo [GitHubu](https://github.com/Azure/azure-storage-cpp).
 
-Klientská knihovna pro úložiště poskytuje celou řadu metod na objekty seznamu nebo dotazu ve službě Azure Storage. Tento článek se zabývá následující scénáře:
+Klientská knihovna pro úložiště poskytuje celou řadu metod pro výpis a dotazování objektů v Azure Storage. Tento článek se zabývá následujícími scénáři:
 
-* Seznam kontejnerů v účtu služby
-* Výpis objektů BLOB v kontejneru nebo objektu blob virtuálního adresáře
-* Seznam front v účtu služby
-* Seznam tabulek v účtu služby
+* Výpis kontejnerů v účtu
+* Vypsat objekty BLOB v kontejneru nebo ve virtuálním adresáři objektů BLOB
+* Výpis front v účtu
+* Výpis tabulek v účtu
 * Dotazování entit v tabulce
 
-Každá z těchto metod je zobrazit díky jiné přetížení pro různé scénáře.
+Každá z těchto metod je zobrazena pomocí různých přetížení pro různé scénáře.
 
-## <a name="asynchronous-versus-synchronous"></a>Asynchronní a synchronní
-Protože klientskou knihovnu pro úložiště pro C++ je postavený na [knihovny C++ REST](https://github.com/Microsoft/cpprestsdk), podporujeme ze své podstaty asynchronní operace s použitím [pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Příklad:
+## <a name="asynchronous-versus-synchronous"></a>Asynchronní versus synchronní
+
+Vzhledem k tomu, že klientská knihovna pro úložiště pro C++ je postavená na [ C++ knihovně REST](https://github.com/Microsoft/cpprestsdk), podporujeme asynchronní operace pomocí aplikace [PPLX:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Příklad:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
 ```
 
-Synchronní operace zabalení odpovídající asynchronních operací:
+Synchronní operace zabalí odpovídající asynchronní operace:
 
 ```cpp
 list_blob_item_segment list_blobs_segmented(const continuation_token& token) const
@@ -50,19 +49,20 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 }
 ```
 
-Pokud pracujete s více podprocesů aplikace nebo služby, doporučujeme použít asynchronní rozhraní API přímo, bez vytváření vlákna volání rozhraní API, která významně ovlivňuje výkon synchronizace.
+Pokud pracujete s více aplikacemi nebo službami vláken, doporučujeme použít asynchronní rozhraní API přímo místo vytvoření vlákna pro volání rozhraní API pro synchronizaci, což významně ovlivní váš výkon.
 
-## <a name="segmented-listing"></a>Segmentované výpis
-Škálování cloudové úložiště vyžaduje segmentovaným výpis. Například můžete mít přes miliónů objektů BLOB v kontejneru objektů blob v Azure nebo přes miliardu entity v tabulce Azure. Ty nejsou teoretické čísla, ale případy použití skutečných uživatelů.
+## <a name="segmented-listing"></a>Segmentované výpisy
 
-Proto je nepraktické, chcete-li vypsat všechny objekty v jedné odezvě. Místo toho můžete vytvořit seznam objektů pomocí stránkování. Obsahují seznam rozhraní API *segmentované* přetížení.
+Škálování cloudového úložiště vyžaduje segmentované výpisy. Můžete mít například více než milion objektů BLOB v kontejneru objektů blob Azure nebo víc než miliarda entit v tabulce Azure. Nejedná se o teoretická čísla, ale reálné případy využití zákazníků.
 
-Odpověď operace segmentovaným seznam obsahuje:
+Proto je nepraktické zobrazit seznam všech objektů v jediné odpovědi. Místo toho můžete vypsat objekty pomocí stránkování. Každé rozhraní API pro výpisy má *segmentované* přetížení.
 
-* <i>_segment</i>, který obsahuje sadu výsledků pro jednoho volání rozhraní API pro výpis.
-* *continuation_token*, který je předán do příštího volání, pokud chcete získat další stránky výsledků. Pokud neexistují žádné další výsledky vrátit, token pro pokračování není null.
+Odpověď pro segmentované operace výpisu zahrnuje:
 
-Typické volání k vypsání všech objektů BLOB v kontejneru může například vypadat jako následující fragment kódu. Kód je k dispozici v našich [ukázky](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp):
+* *_segment*, která obsahuje sadu výsledků vrácených pro jedno volání rozhraní API výpisu.
+* *continuation_token*, který se předává dalšímu volání, aby se získala další stránka výsledků. Pokud neexistují žádné další výsledky k vrácení, token pokračování má hodnotu null.
+
+Například typické volání pro výpis všech objektů BLOB v kontejneru může vypadat jako následující fragment kódu. Kód je k dispozici v [](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)našich ukázkách:
 
 ```cpp
 // List blobs in the blob container
@@ -87,7 +87,7 @@ do
 while (!token.empty());
 ```
 
-Všimněte si, že počet výsledků vrácených na stránce mohou být řízena parametr *max_results* v přetížení každé rozhraní API, například:
+Všimněte si, že počet výsledků vrácených na stránce může být řízen parametrem *max_results* v přetížení každého rozhraní API, například:
 
 ```cpp
 list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
@@ -95,14 +95,15 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
     const blob_request_options& options, operation_context context)
 ```
 
-Pokud nezadáte *max_results* parametr, výchozí maximální hodnoty až 5000 výsledky se vrátí na jedné stránce.
+Pokud nezadáte parametr *max_results* , vrátí se výchozí maximální hodnota až 5000 výsledků na jednu stránku.
 
-Všimněte si také, že dotaz využívající službu Azure Table storage může vrátit žádné záznamy nebo méně záznamů než hodnota *max_results* parametr, který jste zadali, i v případě, že token pro pokračování není prázdný. Jedním z důvodů může být, že dotaz nelze dokončit do pěti sekund. Tak dlouho, dokud token pro pokračování není prázdný, dotaz by měl pokračovat a váš kód by neměl předpokládá velikost segmentu výsledky.
+Všimněte si také, že dotaz na službu Azure Table Storage nemůže vracet žádné záznamy nebo méně záznamů než hodnota parametru *max_results* , který jste zadali, a to i v případě, že token pro pokračování není prázdný. Jedním z důvodů může být, že dotaz nelze dokončit za pět sekund. Pokud token pro pokračování není prázdný, dotaz by měl pokračovat a váš kód by neměl předpokládat velikost výsledků segmentů.
 
-Doporučený model kódování pro většinu scénářů je segmentované výpisu, který poskytuje explicitní průběh výpis nebo dotazování a jak se služba reaguje na každý požadavek. Zejména pro C++ aplikace nebo služby může pomoct nižší úrovně ovládacího prvku průběhu výpis výkon a paměť ovládacího prvku.
+Doporučený vzor kódování pro většinu scénářů je segmentující výpis, který poskytuje explicitní průběh výpisu nebo dotazování a způsob, jakým služba reaguje na jednotlivé požadavky. Zejména pro C++ aplikace nebo služby může ovládací prvek na nižší úrovni procesu výpisu zvýšit množství paměti a výkonu.
 
-## <a name="greedy-listing"></a>Výpis greedy
-Starší verze klientskou knihovnu pro úložiště pro C++ (verze si verzi 0.5.0 ve verzi Preview a starší) zahrnuté nesegmentovaný výpis rozhraní API pro tabulky a fronty, jako v následujícím příkladu:
+## <a name="greedy-listing"></a>Hladový výpis
+
+Starší verze klientské knihovny pro úložiště pro C++ (verze 0.5.0 Preview a starší) obsahují nesegmentované rozhraní API pro tabulky a fronty, jako v následujícím příkladu:
 
 ```cpp
 std::vector<cloud_table> list_tables(const utility::string_t& prefix) const;
@@ -110,13 +111,13 @@ std::vector<table_entity> execute_query(const table_query& query) const;
 std::vector<cloud_queue> list_queues() const;
 ```
 
-Tyto metody byly implementovány jako obálky segmentovaným rozhraní API. Pro každou odpověď segmentovaným výpis kód připojí výsledky do vektoru a vrátí všechny výsledky po skenování úplné kontejnery.
+Tyto metody byly implementovány jako obálky segmentovaná rozhraní API. Pro každou odpověď segmentované výpisu kód přidal výsledky do vektoru a vrátil všechny výsledky po prohledání úplných kontejnerů.
 
-Tento přístup může fungovat, pokud účet úložiště nebo tabulka obsahuje malý počet objektů. Však větší počet objektů, paměť požadovanou může zvýšit bez omezení, protože všechny výsledky zůstala v paměti. Jedné operace výpisu může trvat velmi dlouho, během které volající měl žádné informace o jeho průběh.
+Tento přístup může fungovat, když účet úložiště nebo tabulka obsahuje malý počet objektů. U zvýšení počtu objektů se ale požadovaná paměť může zvýšit bez omezení, protože všechny výsledky zůstaly v paměti. Jedna operace výpisu může trvat velmi dlouhou dobu, během které volající nedostal žádné informace o jeho průběhu.
 
-Tyto greedy výpis rozhraní API v sadě SDK v C#, Java nebo JavaScript Node.js prostředí neexistují. Aby se zabránilo potenciální problémy pomocí těchto rozhraní API greedy, jsme je odebrali ve verzi 0.6.0 Preview.
+Tato hladce vypisující rozhraní API v sadě SDK C#neexistují v prostředí, Java nebo JavaScript Node. js. Abyste se vyhnuli potenciálním problémům s používáním těchto hladových rozhraní API, odebrali jsme je ve verzi Preview 0.6.0 Preview.
 
-Pokud váš kód volá tyto greedy rozhraní API:
+Pokud váš kód volá tato hladce rozhraní API:
 
 ```cpp
 std::vector<azure::storage::table_entity> entities = table.execute_query(query);
@@ -126,7 +127,7 @@ for (auto it = entities.cbegin(); it != entities.cend(); ++it)
 }
 ```
 
-Potom byste měli upravit kód Refaktorovat pro použití segmentovaným výpis rozhraní API:
+Pak byste měli kód upravit tak, aby používal rozhraní API segmentovaná v seznamu:
 
 ```cpp
 azure::storage::continuation_token token;
@@ -142,22 +143,23 @@ do
 } while (!token.empty());
 ```
 
-Zadáním *max_results* parametr segmentu vyrovnávat mezi počty požadavků a využití paměti podle důležité informace o výkonu pro vaši aplikaci.
+Zadáním parametru *max_results* segmentu můžete vyrovnávat počet požadavků a využití paměti pro splnění požadavků na výkon vaší aplikace.
 
-Kromě toho pokud používáte segmentovaným výpis rozhraní API, ale ukládání dat v kolekci místní ve stylu "chamtivého", také důrazně doporučujeme Refaktorujte již svůj kód pro zpracování, ukládání dat v kolekci místní pečlivě ve velkém měřítku.
+Pokud navíc používáte segmentovaná rozhraní API, ale ukládáte data do místní kolekce ve stylu "hladce", důrazně doporučujeme, abyste si kód rehlásili do místní kolekce pečlivě v rozsahu.
 
-## <a name="lazy-listing"></a>Opožděné výpis
-I když greedy výpis vyvolána potenciální problémy, je vhodné, pokud již nejsou moc velký počet objektů v kontejneru.
+## <a name="lazy-listing"></a>Opožděný výpis
 
-Pokud také používáte C# nebo sady Oracle Java SDK, měli byste se seznámit s vyčíslitelné programovací model, který nabízí opožděné – styl výpisu, kde data určité posunem je pouze fetched, pokud je vyžadován. V jazyce C++ na základě iterátoru Šablona také nabízí podobný přístup.
+Přestože hladový výpis vyvolal potenciální problémy, je vhodné, pokud v kontejneru není příliš mnoho objektů.
 
-Typické opožděné výpis rozhraní API, pomocí **list_blobs** jako příklad vypadá přibližně takto:
+Pokud používáte také C# nebo Oracle Java SDK, měli byste být obeznámeni se vyčíslitelném programovacím modelem, který nabízí seznam opožděného použití, kde data na určitém posunu jsou načtena pouze v případě, že jsou požadována. V C++systému poskytuje šablona založená na iterátoru také podobný přístup.
+
+Typické rozhraní API pro opožděné výpisy, které používá **list_blobs** jako příklad, vypadá takto:
 
 ```cpp
 list_blob_item_iterator list_blobs() const;
 ```
 
-Typické kódu, která používá vzor opožděné výpis může vypadat takto:
+Typický fragment kódu, který používá model opožděného výpisu, může vypadat takto:
 
 ```cpp
 // List blobs in the blob container
@@ -175,27 +177,28 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 }
 ```
 
-Všimněte si, že opožděná výpis je k dispozici pouze v synchronním režimu.
+Upozorňujeme, že opožděný výpis je k dispozici pouze v synchronním režimu.
 
-Ve srovnání s metodou greedy výpis, opožděné výpis načte data pouze v případě potřeby. Pod pokličkou načte data ze služby Azure Storage pouze v případě, že další iterátor přesune do dalšího segmentu. Proto je řízen využití paměti a omezená velikost a je rychlá operace.
+V porovnání se hladovým seznamem načte opožděné výpisy dat pouze v případě potřeby. V rámci pokrývání načte data z Azure Storage pouze v případě, že se další iterátor přesune do dalšího segmentu. Proto je využití paměti řízeno pomocí ohraničené velikosti a operace je rychlá.
 
-Opožděné výpis rozhraní API jsou součástí klientskou knihovnu pro úložiště pro C++ ve verzi 2.2.0.
+Rozhraní API pro opožděné výpisy jsou součástí knihovny klienta C++ úložiště pro ve verzi 2.2.0.
 
 ## <a name="conclusion"></a>Závěr
-V tomto článku jsme probírali jiné přetížení pro výpis rozhraní API pro různé objekty v klientské knihovně pro úložiště pro jazyk C++. Shrnutí:
 
-* Asynchronní rozhraní API jsou důrazně doporučujeme v části scénářích s více vláken.
-* Segmentované výpisu se doporučuje pro většinu scénářů.
-* Opožděné výpis je k dispozici v knihovně jako obálka vhodné v synchronní scénáře.
-* Greedy výpisu se nedoporučuje a byla odebrána z knihovny.
+V tomto článku jsme probrali různá přetížení pro výpisy rozhraní API pro různé objekty v klientské knihovně pro úložiště C++ pro. Sumarizace:
+
+* Asynchronní rozhraní API se ve scénářích s více vlákny důrazně doporučuje.
+* Segmentace je doporučena pro většinu scénářů.
+* Opožděný výpis je v knihovně k dispozici jako vhodná obálka v synchronních scénářích.
+* Hladový výpis není doporučen a byl odebrán z knihovny.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o Azure Storage a Klientská knihovna pro C++ naleznete v tématu následující prostředky.
 
-* [Používání úložiště Blob z jazyka C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [Používání úložiště Table z jazyka C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [Používání úložiště Queue z jazyka C++](../storage-c-plus-plus-how-to-use-queues.md)
-* [Azure Klientská knihovna pro úložiště pro dokumentaci k rozhraní API jazyka C++.](https://azure.github.io/azure-storage-cpp/)
+Další informace o Azure Storage a klientské knihovně pro C++najdete v následujících zdrojích informací.
+
+* [Použití Blob Storage zC++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
+* [Použití Table Storage zC++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+* [Použití Queue Storage zC++](../storage-c-plus-plus-how-to-use-queues.md)
+* [Azure Storage klientské knihovny pro C++ dokumentaci k rozhraní API.](https://azure.github.io/azure-storage-cpp/)
 * [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Dokumentace k Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
-

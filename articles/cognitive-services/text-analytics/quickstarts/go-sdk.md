@@ -1,38 +1,36 @@
 ---
-title: 'Rychlý start: Volání služby pro analýzu textu pomocí Go SDK'
+title: 'Rychlý start: Volání služby Analýza textu pomocí sady cestách SDK'
 titleSuffix: Azure Cognitive Services
-description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro analýzu textu ve službě Microsoft Cognitive Services.
+description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít s používáním rozhraní API pro analýzu textu v Microsoft Cognitive Services.
 services: cognitive-services
 author: laramume
 manager: assafi
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/23/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 44def29292bc882fdaa08ff76667742756f178b8
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: d3644022e1877369368953b9f147c64aaae2d459
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299608"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697650"
 ---
-# <a name="quickstart-call-the-text-analytics-service-using-the-go-sdk"></a>Rychlý start: Volání služby pro analýzu textu pomocí Go SDK 
+# <a name="quickstart-call-the-text-analytics-service-using-the-go-sdk"></a>Rychlý start: Volání služby Analýza textu pomocí sady cestách SDK 
 <a name="HOLTop"></a>
 
-V tomto rychlém startu můžete začít analýzou jazyce s využitím Text Analytics SDK for Go. Tento článek ukazuje, jak zjistit jazyk, analýza mínění, extrahovat klíčové fráze a identifikovat propojených entit. Rozhraní REST API je kompatibilní s Většina programovacích jazyků, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/cognitiveservices).
+V tomto rychlém startu můžete začít s analýzou jazyka pomocí sady Analýza textu SDK for přejít. V tomto článku se dozvíte, jak detekovat jazyk, analyzovat mínění, extrahovat klíčové fráze a identifikovat propojené entity. I když je REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/cognitiveservices)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Rozhraní Text Analytics [SDK for Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
+* Sada Analýza textu [SDK for přejít](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Dále musíte mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) vygenerovaný během registrace.
+## <a name="set-up-a-new-project"></a>Nastavení nového projektu
 
-## <a name="set-up-a-new-project"></a>Vytvořte nový projekt
-
-Vytvoření nového projektu přejít v váš oblíbený editor kódu nebo prostředí IDE. Pak přidejte následující příkaz importu do souboru Go.
+Vytvořte nový projekt přejít v oblíbeném editoru kódu nebo v integrovaném vývojovém prostředí. Pak do souboru. přejít přidejte následující příkaz import.
 
 ```golang
 import (
@@ -44,7 +42,7 @@ import (
 )
 ```
 
-Do projektu přidejte následující funkce, jako parametry a vlastnosti pro tento rychlý start maximum očekávat ukazatele na řetězec a bool.
+Do projektu přidejte následující funkce jako většinu parametrů a vlastností pro tento rychlý Start. očekává se řetězec a logické ukazatele.
 
 ```golang
 // returns a pointer to the string value passed in.
@@ -58,16 +56,16 @@ func BoolPointer(v bool) *bool {
 }
 ```
 
-## <a name="create-text-analytics-client-and-authenticate-credentials"></a>Vytvořit Text Analytics klienta a ověření přihlašovacích údajů
+## <a name="create-text-analytics-client-and-authenticate-credentials"></a>Vytvoření Analýza textu klienta a ověření přihlašovacích údajů
 
-Ve funkci main projektu vytvořte nový `TextAnalytics` objektu. Použijte správný oblast Azure pro vaše předplatné pro analýzu textu. Například: `https://eastus.api.cognitive.microsoft.com`. Pokud používáte zkušební verzi klíče, není nutné aktualizovat umístění.
+V hlavní funkci projektu vytvořte nový `TextAnalytics` objekt. Použijte pro předplatné Analýza textu správnou oblast Azure. Například: `https://eastus.api.cognitive.microsoft.com`. Pokud používáte zkušební klíč, nemusíte umístění aktualizovat.
 
 ```golang
 //Replace 'eastus' with the correct region for your Text Analytics subscription
 textAnalyticsClient := textanalytics.New("https://eastus.api.cognitive.microsoft.com")
 ```
 
-Vytvořte proměnnou pro váš klíč a předat do funkce `autorest.NewCognitiveServicesAuthorizer` který pak bude možné předat klienta `authorizer` vlastnost.
+Vytvořte pro svůj klíč proměnnou a předejte ji do funkce `autorest.NewCognitiveServicesAuthorizer` , která bude poté předána `authorizer` vlastnosti klienta.
 
 ```golang
 subscriptionKey := "<<subscriptionKey>>"
@@ -76,7 +74,7 @@ textAnalyticsClient.Authorizer = autorest.NewCognitiveServicesAuthorizer(subscri
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-Vytvořit novou funkci s názvem `SentimentAnalysis()` , která přijímá klienta vytvořili dříve. Vytvoření seznamu `MultiLanguageInput` objekty obsahující dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id`, `Language` a `text` atribut. `text` Text, který má být analyzován, úložišť atributů `language` je jazyk dokumentu a `id` může být libovolná hodnota. 
+Vytvořte novou funkci s názvem `SentimentAnalysis()` , která převezme klienta vytvořeného dříve. Vytvořte seznam `MultiLanguageInput` objektů obsahující dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` `Language` a `text` atribut. Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. `text` 
 
 ```golang
 func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
@@ -109,7 +107,7 @@ func SentimentAnalysis(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Ve stejné funkci volat `textAnalyticsclient.Sentiment()` a získat výsledek. Potom iterování přes výsledky a tisknout ID každé dokumentu a skóre mínění. Skóre blíže 0 znamená negativní zabarvení, zatímco skóre blíže 1 označuje pozitivní mínění.
+Ve stejné funkci zavolejte `textAnalyticsclient.Sentiment()` a získejte výsledek. Potom Iterujte výsledky a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
 
 ```golang
 result, _ := textAnalyticsclient.Sentiment(ctx, BoolPointer(false), &batchInput)
@@ -130,7 +128,7 @@ for _,error := range *batchResult.Errors {
 }
 ```
 
-Ve funkci main projektu volat `SentimentAnalysis()`.
+V hlavní funkci projektu volejte `SentimentAnalysis()`.
 
 ### <a name="output"></a>Výstup
 
@@ -141,9 +139,9 @@ Document ID: 3 , Sentiment Score: 0.44
 Document ID: 4 , Sentiment Score: 1.00
 ```
 
-## <a name="language-detection"></a>Detekce jazyka
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
-Vytvořit novou funkci s názvem `LanguageDetection()` , která přijímá klienta vytvořili dříve. Vytvoření seznamu `LanguageInput` objekty obsahující dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` a `text` atribut. `text` Text, který má být analyzován, úložišť atributů a `id` může být libovolná hodnota. 
+Vytvořte novou funkci s názvem `LanguageDetection()` , která převezme klienta vytvořeného dříve. Vytvořte seznam `LanguageInput` objektů obsahující dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` `text` atribut a. Atribut ukládá text, který má být analyzován, `id` a může být libovolná hodnota. `text` 
 
 ```golang
 func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
@@ -168,7 +166,7 @@ func LanguageDetection(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Ve stejné funkci volat `textAnalyticsclient.DetectLanguage()` a získat výsledek. Potom iterování přes výsledky a tisknout ID každé dokumentu a zjištěný jazyk.
+Ve stejné funkci zavolejte `textAnalyticsclient.DetectLanguage()` a získejte výsledek. Pak Projděte výsledky a vytiskněte identifikátor každého dokumentu a zjištěné jazyky.
 
 ```golang
 result, _ := textAnalyticsclient.DetectLanguage(ctx, BoolPointer(false), &batchInput)
@@ -190,7 +188,7 @@ for _,error := range *result.Errors {
 }
 ```
 
-Ve funkci main projektu volat `LanguageDetection()`.
+V hlavní funkci projektu volejte `LanguageDetection()`.
 
 ### <a name="output"></a>Výstup
 
@@ -202,7 +200,7 @@ Document ID: 2 Detected Languages with Score: Chinese_Simplified 1.000000,
 
 ## <a name="entity-recognition"></a>Rozpoznávání entit
 
-Vytvořit novou funkci s názvem `ExtractEntities()` , která přijímá klienta vytvořili dříve. Vytvoření seznamu `MultiLanguageInput` objekty obsahující dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id`, `language`a `text` atribut. `text` Text, který má být analyzován, úložišť atributů `language` je jazyk dokumentu a `id` může být libovolná hodnota. 
+Vytvořte novou funkci s názvem `ExtractEntities()` , která převezme klienta vytvořeného dříve. Vytvořte seznam `MultiLanguageInput` objektů obsahující dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` `text` atribut, `language`a. Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. `text` 
 
 ```golang
 func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
@@ -225,7 +223,7 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Ve stejné funkci `call textAnalyticsclient.Entities()` a získat výsledek. Potom Iterujte přes výsledky a tisk každý dokument ID uživatele a extrahovat, stanovení skóre entity.
+Ve stejné funkci `call textAnalyticsclient.Entities()` a získejte výsledek. Pak Projděte výsledky a vytiskněte ID každého dokumentu a skóre extrahovaných entit.
 
 ```golang
     result, _ := textAnalyticsclient.Entities(ctx, BoolPointer(false), &batchInput)
@@ -254,7 +252,7 @@ Ve stejné funkci `call textAnalyticsclient.Entities()` a získat výsledek. Pot
     }
 ```
 
-Ve funkci main projektu volat `ExtractEntities()`.
+V hlavní funkci projektu volejte `ExtractEntities()`.
 
 ### <a name="output"></a>Výstup
 
@@ -292,7 +290,7 @@ Document ID: 1
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
-Vytvořit novou funkci s názvem `ExtractKeyPhrases()` , která přijímá klienta vytvořili dříve. Vytvoření seznamu `MultiLanguageInput` objekty obsahující dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id`, `language`a `text` atribut. `text` Text, který má být analyzován, úložišť atributů `language` je jazyk dokumentu a `id` může být libovolná hodnota.
+Vytvořte novou funkci s názvem `ExtractKeyPhrases()` , která převezme klienta vytvořeného dříve. Vytvořte seznam `MultiLanguageInput` objektů obsahující dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` `text` atribut, `language`a. Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. `text`
 
 ```golang
 func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
@@ -325,7 +323,7 @@ func ExtractKeyPhrases(textAnalyticsclient textanalytics.BaseClient) {
 }
 ```
 
-Ve stejné funkci volat textAnalyticsclient.KeyPhrases() a získat výsledek. Potom iterování přes výsledky a ID každého dokumentu a extrahované klíčové fráze.
+Ve stejné funkci volejte textAnalyticsclient. klíčová slova () a získejte výsledek. Potom Iterujte výsledky a vytiskněte ID každého dokumentu a extrahujte klíčové fráze.
 
 ```golang
     result, _ := textAnalyticsclient.KeyPhrases(ctx, BoolPointer(false), &batchInput)
@@ -347,7 +345,7 @@ Ve stejné funkci volat textAnalyticsclient.KeyPhrases() a získat výsledek. Po
     }
 ```
 
-Ve funkci main projektu volat `ExtractKeyPhrases()`.
+V hlavní funkci projektu volejte `ExtractKeyPhrases()`.
 
 ### <a name="output"></a>Výstup
 
@@ -378,6 +376,6 @@ Document ID: 3
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
- [Přehled analýzy textu](../overview.md) [– nejčastější dotazy (FAQ)](../text-analytics-resource-faq.md)
+ [Přehled Analýza textu](../overview.md) Nejčastější dotazy – Nejčastější [dotazy](../text-analytics-resource-faq.md)

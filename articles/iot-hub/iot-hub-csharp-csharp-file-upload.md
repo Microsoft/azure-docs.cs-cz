@@ -1,6 +1,6 @@
 ---
-title: Nahrání souborů ze zařízení do služby Azure IoT Hub pomocí .NET | Dokumentace Microsoftu
-description: Postup nahrání souborů ze zařízení do cloudu pomocí zařízení Azure IoT SDK pro .NET. Nahrané soubory se ukládají v kontejneru objektů blob v Azure storage.
+title: Nahrání souborů ze zařízení do Azure IoT Hub pomocí .NET | Microsoft Docs
+description: Postup nahrání souborů ze zařízení do cloudu pomocí sady SDK pro zařízení Azure IoT pro .NET Nahrané soubory se ukládají v kontejneru objektů BLOB služby Azure Storage.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,60 +9,60 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: 79288f2204030790b2308905d90ff8e035fe2dd9
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 6e41b1999033c00b277cd35173b3247a727e9a8a
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621867"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668140"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub pomocí .NET
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (.NET)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-V tomto kurzu vychází z kódu v [odesílat zprávy typu cloud zařízení pomocí služby IoT Hub](iot-hub-csharp-csharp-c2d.md) kurzu se dozvíte, jak pomocí funkce nahrání souboru služby IoT Hub. To se dozvíte, jak do:
+V tomto kurzu se seznámíte s kódem v tématu [posílání zpráv z cloudu do zařízení pomocí IoT Hub](iot-hub-csharp-csharp-c2d.md) kurzu, ve kterém se dozvíte, jak používat možnosti nahrávání souborů IoT Hub. Ukazuje, jak:
 
-* Zabezpečeně dodávají zařízení s Azure blob identifikátorů URI pro nahrání souboru.
+* Bezpečně poskytněte zařízení s identifikátorem URI objektu blob Azure pro nahrání souboru.
 
-* Oznámení o nahrávání souborů služby IoT Hub použijte k aktivaci zpracování souboru v back-endu aplikace.
+* Pomocí IoT Hub oznámení o nahrávání souborů můžete aktivovat zpracování souboru v back-endu vaší aplikace.
 
-[Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-dotnet.md) rychlý start a [odesílat zprávy typu cloud zařízení pomocí služby IoT Hub](iot-hub-csharp-csharp-c2d.md) kurzu se dozvíte základní funkce typu zařízení cloud a cloud zařízení zasílání zpráv IOT Rozbočovač. [Konfigurace směrování zpráv pomocí služby IoT Hub](tutorial-routing.md) kurz popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení cloud ve službě Azure blob storage. Nicméně v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně málo početnému zpráv typu zařízení cloud, které služby IoT Hub přijímá. Příklad:
+[Odeslání telemetrie ze zařízení do rychlého startu centra IoT](quickstart-send-telemetry-dotnet.md) a posílání [zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-csharp-csharp-c2d.md) kurzu zobrazuje základní funkce zasílání zpráv typu zařízení-Cloud a Cloud-zařízení IoT Hub. Kurz [Konfigurace směrování zpráv pomocí IoT Hub](tutorial-routing.md) popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení-Cloud do úložiště objektů BLOB v Azure. V některých scénářích ale nemůžete snadno namapovat data, která zařízení odesílají do relativně malých zpráv ze zařízení do cloudu, které IoT Hub přijmout. Příklad:
 
 * Velké soubory, které obsahují obrázky
 * Videa
-* Data pronikavost odebírána data v vysoká frekvence
-* Určitou formu předzpracovaná dat
+* Ukázka dat vibrací s vysokou frekvencí
+* Některá forma předzpracovaných dat
 
-Tyto soubory jsou obvykle dávkově zpracovány v cloudu pomocí nástrojů, jako [Azure Data Factory](../data-factory/introduction.md) nebo [Hadoop](../hdinsight/index.yml) zásobníku. Když budete potřebovat k nahrání souborů ze zařízení, můžete stále použít zabezpečení a spolehlivost služby IoT Hub.
+Tyto soubory jsou obvykle dávkově zpracovávány v cloudu pomocí nástrojů, jako je [Azure Data Factory](../data-factory/introduction.md) nebo zásobník [Hadoop](../hdinsight/index.yml) . Pokud potřebujete nahrávat soubory ze zařízení, můžete i nadále používat zabezpečení a spolehlivost IoT Hub.
 
 Na konci tohoto kurzu spustíte dvě konzolové aplikace .NET:
 
-* **SimulatedDevice**, upravenou verzi aplikaci vytvořenou v [odesílat zprávy typu cloud zařízení pomocí služby IoT Hub](iot-hub-csharp-csharp-c2d.md) kurzu. Tato aplikace nahraje soubor do služby storage pomocí SAS URI poskytované služby IoT hub.
+* **SimulatedDevice**je upravená verze aplikace vytvořená v kurzu [posílání zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-csharp-csharp-c2d.md) kurzu. Tato aplikace nahraje soubor do úložiště pomocí identifikátoru URI SAS, který poskytuje vaše služba IoT Hub.
 
-* **ReadFileUploadNotification**, který obdrží oznámení o nahrávání souborů ze služby IoT hub.
+* **ReadFileUploadNotification**, který přijímá oznámení o nahrávání souborů ze služby IoT Hub.
 
 > [!NOTE]
-> IoT Hub podporuje mnoho platforem zařízení a jazyků (včetně C, Javy a JavaScriptu) prostřednictvím sady SDK pro zařízení Azure IoT. Odkazovat [centrum pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot) podrobné pokyny o tom, jak připojit zařízení ke službě Azure IoT Hub.
+> IoT Hub podporuje spoustu platforem a jazyků zařízení (včetně C, Java, Pythonu a JavaScriptu) prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny k připojení zařízení k Azure IoT Hub najdete v [centru pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot) .
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * Visual Studio
 
-* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+* Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
-## <a name="upload-a-file-from-a-device-app"></a>Nahrajte soubor z aplikace pro zařízení
+## <a name="upload-a-file-from-a-device-app"></a>Nahrání souboru z aplikace zařízení
 
-V této části upravíte zařízení aplikaci, kterou jste vytvořili v [odesílat zprávy typu cloud zařízení pomocí služby IoT Hub](iot-hub-csharp-csharp-c2d.md) pro příjem zpráv typu cloud zařízení ze služby IoT hub.
+V této části upravíte aplikaci zařízení, kterou jste vytvořili v části [posílání zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-csharp-csharp-c2d.md) pro příjem zpráv z cloudu na zařízení ze služby IoT Hub.
 
-1. V sadě Visual Studio, klikněte pravým tlačítkem myši **SimulatedDevice** projektu, klikněte na tlačítko **přidat**a potom klikněte na **existující položku**. Přejděte na soubor obrázku a zahrnout do projektu. Tento kurz předpokládá, že image má název `image.jpg`.
+1. V aplikaci Visual Studio klikněte pravým tlačítkem na projekt **SimulatedDevice** , klikněte na **Přidat**a pak klikněte na **existující položka**. Přejděte do souboru obrázku a vložte ho do projektu. V tomto kurzu se předpokládá, že `image.jpg`se image jmenuje.
 
-1. Klikněte pravým tlačítkem na obrázku a potom klikněte na tlačítko **vlastnosti**. Ujistěte se, že **kopírovat do výstupního adresáře** je nastavena na **vždy Kopírovat**.
+1. Klikněte pravým tlačítkem na obrázek a pak klikněte na **vlastnosti**. Ujistěte se, že je **Složka kopírovat do výstupního adresáře** nastavená na hodnotu **vždy kopírovat**.
 
-    ![Zobrazit, kde se aktualizovat vlastnosti image pro kopírovat do výstupního adresáře](./media/iot-hub-csharp-csharp-file-upload/image-properties.png)
+    ![Zobrazit, kde aktualizovat vlastnost image pro kopírování do výstupního adresáře](./media/iot-hub-csharp-csharp-file-upload/image-properties.png)
 
-1. V **Program.cs** na začátek souboru přidejte následující příkazy:
+1. V souboru **program.cs** přidejte do horní části souboru následující příkazy:
 
     ```csharp
     using System.IO;
@@ -87,38 +87,44 @@ V této části upravíte zařízení aplikaci, kterou jste vytvořili v [odesí
     }
     ```
 
-    `UploadToBlobAsync` Metoda přijímá ve zdrojovém souboru název a datový proud souboru k odeslání a zpracovává nahrávání do úložiště. Aplikace konzoly se zobrazí čas potřebný k odeslání souboru.
+    `UploadToBlobAsync` Metoda přebírá název souboru a zdroj streamu souboru, který se má nahrát, a zpracuje odeslání do úložiště. Aplikace konzoly zobrazuje dobu potřebnou k nahrání souboru.
 
-1. Přidejte následující metodu v **hlavní** metody, těsně před `Console.ReadLine()` řádku:
+1. Do metody **Main** přidejte následující metodu, která je přímo před `Console.ReadLine()` řádkem:
 
     ```csharp
     SendToBlobAsync();
     ```
 
 > [!NOTE]
-> Pro saké pro zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu by měly implementovat zásady opakování (například exponenciální regresí), jak je navrženo v článku [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
+> V zájmu zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální omezení rychlosti), jak je navrženo v článku, [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
 
-## <a name="receive-a-file-upload-notification"></a>Přijímat oznámení o nahrání souborů
+## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
 
-V této části napíšete konzolovou aplikaci .NET, která bude přijímat zprávy oznámení nahrávání souborů ze služby IoT Hub.
+V tomto článku vytvoříte back-end službu pro příjem zpráv s oznámením o nahrávání souborů ze služby IoT Hub, kterou jste vytvořili v tématu [odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-dotnet.md). Aby bylo možné přijímat zprávy s oznámením o nahrávání souborů, vaše služba potřebuje oprávnění **k připojení služby** . Ve výchozím nastavení se všechny IoT Hub vytvoří pomocí zásad sdíleného přístupu s názvem **Služba** , která toto oprávnění udělí.
 
-1. V aktuálním řešení sady Visual Studio vytvořte projekt Visual C# Windows s použitím **konzolovou aplikaci** šablony projektu. Pojmenujte projekt **ReadFileUploadNotification**.
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-    ![Nový projekt v sadě Visual Studio](./media/iot-hub-csharp-csharp-file-upload/file-upload-project-csharp1.png)
+## <a name="receive-a-file-upload-notification"></a>Doručení oznámení o nahrání souboru
 
-2. V Průzkumníku řešení klikněte pravým tlačítkem myši **ReadFileUploadNotification** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet...** .
+V této části napíšete konzolovou aplikaci .NET, která přijímá zprávy s oznámením o nahrávání souborů z IoT Hub.
 
-3. V **Správce balíčků NuGet** okna, vyhledejte **Microsoft.Azure.Devices**, klikněte na tlačítko **nainstalovat**a přijměte podmínky použití.
+1. V aktuálním řešení sady Visual Studio vytvořte projekt Visual C# Windows pomocí šablony projektu konzolová **aplikace** . Pojmenujte projekt **ReadFileUploadNotification**.
 
-    Tato akce stáhne, nainstaluje a přidá odkaz na [balíček NuGet sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) v **ReadFileUploadNotification** projektu.
+    ![Nový projekt v aplikaci Visual Studio](./media/iot-hub-csharp-csharp-file-upload/file-upload-project-csharp1.png)
 
-4. V **Program.cs** na začátek souboru přidejte následující příkazy:
+2. V Průzkumník řešení klikněte pravým tlačítkem na projekt **ReadFileUploadNotification** a potom klikněte na **Spravovat balíčky NuGet...** .
+
+3. V okně **Správce balíčků NuGet** vyhledejte **Microsoft. Azure. Devices**, klikněte na **nainstalovat**a přijměte podmínky použití.
+
+    Tato akce stáhne, nainstaluje a přidá odkaz na [balíček NuGet sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) v projektu **ReadFileUploadNotification** .
+
+4. V souboru **program.cs** přidejte do horní části souboru následující příkazy:
 
     ```csharp
     using Microsoft.Azure.Devices;
     ```
 
-5. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem IoT hub z [odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-dotnet.md):
+5. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu [](#get-the-iot-hub-connection-string) zástupnéhosymbolupřipojovacímřetězcemIoTHub,kterýjstezkopírovalidřívevčástizískánípřipojovacíhořetězcecentra`{iot hub connection string}` IoT:
 
     ```csharp
     static ServiceClient serviceClient;
@@ -148,7 +154,7 @@ V této části napíšete konzolovou aplikaci .NET, která bude přijímat zpr�
     }
     ```
 
-    Všimněte si, že tento model receive je stejný, slouží k přijímání zpráv z cloudu do zařízení z aplikace pro zařízení.
+    Poznámka: Tento model příjmu je stejný jako použitý k přijímání zpráv z cloudu na zařízení z aplikace zařízení.
 
 7. Nakonec do metody **Main** přidejte následující řádky:
 
@@ -164,22 +170,22 @@ V této části napíšete konzolovou aplikaci .NET, která bude přijímat zpr�
 
 Nyní můžete spustit aplikace.
 
-1. V sadě Visual Studio, klikněte pravým tlačítkem na řešení a vyberte **nastavit projekty po spuštění**. Vyberte **více projektů po spuštění**a pak **Start** akce pro **ReadFileUploadNotification** a **SimulatedDevice**.
+1. V sadě Visual Studio klikněte pravým tlačítkem na své řešení a vyberte **nastavit projekty po spuštění**. Vyberte **více projektů po spuštění**a pak vyberte akci **spuštění** pro **ReadFileUploadNotification** a **SimulatedDevice**.
 
-2. Stisknutím klávesy **F5**. Obě aplikace by měla začít. Nahrávání dokončeno v jedné aplikaci konzoly a odesílání zprávy oznámení přijatých konzolovou aplikaci, byste měli vidět. Můžete použít [webu Azure portal](https://portal.azure.com/) nebo Průzkumníka serveru Visual Studia ke kontrole přítomnosti nahraný soubor ve vašem účtu úložiště Azure.
+2. Stiskněte klávesu **F5**. Obě aplikace by měly být spuštěny. Měli byste vidět, že nahrávání bylo dokončeno v jedné aplikaci konzoly a zpráva oznámení o odeslání obdržená jinou konzolovou aplikací. K vyhledání přítomnosti nahraného souboru ve vašem účtu Azure Storage můžete použít [Azure Portal](https://portal.azure.com/) nebo Průzkumník serveru sady Visual Studio.
 
-    ![Snímek obrazovky výstupu](./media/iot-hub-csharp-csharp-file-upload/run-apps1.png)
+    ![Snímek obrazovky zobrazující obrazovku výstup](./media/iot-hub-csharp-csharp-file-upload/run-apps1.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak zjednodušit nahrávání souborů ze zařízení pomocí možnosti nahrávání souborů služby IoT Hub. Můžete pokračovat k prozkoumání funkcí služby IoT hub a scénáře najdete v následujících článcích:
+V tomto kurzu jste zjistili, jak používat možnosti nahrávání souborů IoT Hub ke zjednodušení nahrávání souborů ze zařízení. Pomocí následujících článků můžete dál prozkoumat funkce a scénáře IoT Hub:
 
-* [Vytvoření centra IoT prostřednictvím kódu programu](iot-hub-rm-template-powershell.md)
+* [Programové vytvoření centra IoT Hub](iot-hub-rm-template-powershell.md)
 
-* [Seznámení s C SDK](iot-hub-device-sdk-c-intro.md)
+* [Seznámení se sadou C SDK](iot-hub-device-sdk-c-intro.md)
 
 * [Sady Azure IoT SDK](iot-hub-devguide-sdks.md)
 
-Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
+Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [Nasazení AI do hraničních zařízení pomocí služby Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Nasazení AI do hraničních zařízení pomocí Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

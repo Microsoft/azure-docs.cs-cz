@@ -1,7 +1,7 @@
 ---
-title: Konfigurace aplikací v Javě v Linuxu – Azure App Service | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat aplikace v Javě spuštěné v Azure App Service v Linuxu.
-keywords: služby Azure app service, web Apps, linux, oss, java, platformě java EE určený dží, javaee
+title: Konfigurace aplikací pro Linux Java – Azure App Service | Microsoft Docs
+description: Naučte se konfigurovat aplikace Java spuštěné v Azure App Service v systému Linux.
+keywords: Azure App Service, Web App, Linux, OSS, Java, Java EE, JEE, JavaEE
 services: app-service
 author: bmitchell287
 manager: douge
@@ -13,33 +13,33 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: af6fd7b99147396a70fccc7b2b11dfef3def15a8
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 1488dbdcc042b29880560e7255de96b8d0409779
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786295"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498508"
 ---
-# <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace v Javě v Linuxu pro Azure App Service
+# <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
-Azure App Service v Linuxu umožňuje vývojářům rychle sestavit, nasadit a škálovat své Tomcat v jazyce Java nebo Java Standard Edition (SE) zabalené webové aplikace na plně spravované služby založené na Linuxu. Nasazujte aplikace s moduly plug-in Maven z příkazového řádku nebo v editoru, jako je IntelliJ, Eclipse nebo Visual Studio Code.
+Azure App Service v systému Linux umožňuje vývojářům v jazyce Java rychle sestavit, nasadit a škálovat zabalené webové aplikace v jazyce Java Standard (SE) na plně spravovanou službu se systémem Linux. Nasaďte aplikace pomocí modulů plug-in Maven z příkazového řádku nebo v editorech, jako je IntelliJ, zatmění nebo Visual Studio Code.
 
-Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře v Javě, které používají integrované kontejneru Linuxu ve službě App Service. Pokud jste nikdy použili službu Azure App Service, postupujte podle [Java quickstart](quickstart-java.md) a [Java s PostgreSQL kurzu](tutorial-java-enterprise-postgresql-app.md) první.
+Tato příručka poskytuje klíčové koncepty a pokyny pro vývojáře v jazyce Java, kteří používají integrovaný kontejner Linux v nástroji App Service. Pokud jste Azure App Service nikdy nepoužili, postupujte nejprve podle kurzu [Java Starter](quickstart-java.md) a [Java with PostgreSQL](tutorial-java-enterprise-postgresql-app.md) .
 
-## <a name="deploying-your-app"></a>Nasazení vaší aplikace
+## <a name="deploying-your-app"></a>Nasazení aplikace
 
-Můžete použít [modul plug-in Maven pro Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) nasadit soubory .jar a .war. Nasazení s oblíbenými prostředími IDE také podporuje [sady Azure Toolkit pro IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) nebo [sady Azure Toolkit pro Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
+K nasazení souborů. jar i. War můžete použít [modul plug-in Maven pro Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) . Nasazení s oblíbenými mikroprostředími se podporuje taky [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) nebo [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
 
-V opačném případě metodě nasazení bude záviset na vašich typ archivu:
+V opačném případě vaše metoda nasazení bude záviset na typu archivu:
 
-- Chcete-li nasadit .war soubory na Tomcat, použijte `/api/wardeploy/` koncový bod účtovat souboru archivu. Další informace o tomto rozhraní API najdete v tématu [této dokumentace](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
-- K nasazení souborů .jar v Java SE Image, použijte `/api/zipdeploy/` koncový bod webu kudu. Další informace o tomto rozhraní API najdete v tématu [této dokumentace](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
+- K nasazení souborů. War do Tomcat použijte `/api/wardeploy/` koncový bod k odeslání souboru archivu. Další informace o tomto rozhraní API najdete v [této dokumentaci](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
+- Chcete-li nasadit soubory. jar na obrázcích Java se systémem, `/api/zipdeploy/` použijte koncový bod webu Kudu. Další informace o tomto rozhraní API najdete v [této dokumentaci](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
 
-Nenasazujte .war nebo .jar pomocí FTP. Nástroje serveru FTP slouží k nahrávání spouštěcí skripty, závislosti nebo jiné soubory modulu runtime. To není ideální volbou pro nasazování webových aplikací.
+Nesaďte své. War nebo. jar pomocí FTP. Nástroj FTP je určen pro nahrávání spouštěcích skriptů, závislostí nebo jiných souborů modulu runtime. Nejedná se o optimální volbu pro nasazování webových aplikací.
 
 ## <a name="logging-and-debugging-apps"></a>Protokolování a ladění aplikací
 
-Sestavy o výkonu, provoz vizualizace a kontroly stavu jsou k dispozici pro každou aplikaci na webu Azure portal. Další informace najdete v tématu [Přehled diagnostiky služby Azure App Service](../overview-diagnostics.md).
+Sestavy výkonu, vizualizace provozu a checkups stavu jsou k dispozici pro každou aplikaci prostřednictvím Azure Portal. Další informace najdete v tématu [Přehled diagnostiky Azure App Service](../overview-diagnostics.md).
 
 ### <a name="ssh-console-access"></a>Přístup ke konzole SSH
 
@@ -53,21 +53,21 @@ Další informace najdete v tématu [streamování protokolů pomocí Azure CLI]
 
 ### <a name="app-logging"></a>Protokolování aplikace
 
-Povolit [protokolování aplikací](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag) prostřednictvím webu Azure portal nebo [rozhraní příkazového řádku Azure](/cli/azure/webapp/log#az-webapp-log-config) ke konfiguraci služby App Service, zaznamená se do místní výstup standardní konzole vaší aplikace a datových proudů chyba standardní konzole systém souborů nebo úložiště objektů Blob v Azure. Instance je zakázaná 12 hodin po dokončení konfigurace protokolování do místního systému souborů služby App Service. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci zapisovat výstup do kontejneru úložiště objektů Blob. Protokoly aplikací Java a Tomcat najdete v */home/LogFiles/aplikace/* adresáře.
+Povolte [protokolování aplikací](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag) prostřednictvím Azure Portal nebo pomocí [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) a nakonfigurujte App Service tak, aby se do místního systému souborů nebo do služby Azure Blob Storage napsaly standardní a standardní chybové proudy konzolové aplikace. Protokolování do místní instance systému souborů App Service je po konfiguraci zakázáno 12 hodin. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci tak, aby zapisovala výstup do kontejneru úložiště objektů BLOB. Protokoly aplikací Java a Tomcat najdete v adresáři */Home/LogFiles/Application/* .
 
-Pokud vaše aplikace používá [Logback](https://logback.qos.ch/) nebo [Log4j](https://logging.apache.org/log4j) pro trasování, můžete předat dál trasování ke kontrole do služby Azure Application Insights pomocí pokyny ke konfiguraci protokolování framework v [Protokoly trasování prozkoumejte Java ve službě Application Insights](/azure/application-insights/app-insights-java-trace-logs).
+Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tato trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumávání protokolů trasování Java v Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
 
-### <a name="troubleshooting-tools"></a>Řešení potíží s nástroji
+### <a name="troubleshooting-tools"></a>Nástroje pro řešení potíží
 
-Integrované Image Java jsou založeny na [Alpine Linuxu](https://alpine-linux.readthedocs.io/en/latest/getting_started.html) operačního systému. Použití `apk` Správce balíčků pro instalaci řešení potíží nástroje nebo příkazy.
+Integrované image Java jsou založené na operačním systému [Alpine Linux](https://alpine-linux.readthedocs.io/en/latest/getting_started.html) . K instalaci všech nástrojů nebo příkazů pro řešení potíží použijte správce balíčků.`apk`
 
-### <a name="flight-recorder"></a>Nahrávání letu
+### <a name="flight-recorder"></a>Záznam letu
 
-Všechny Image Linuxu, Javě ve službě App Service mají nahrávání letu Zulu nainstalované, takže můžete snadno připojit k JVM a spustit profiler záznam nebo vygenerovat výpis haldy paměti.
+Všechny image pro Linux v jazyce Java v App Service mají nainstalovaný Zuluový záznam o letu, abyste se mohli snadno připojit k JVM a spustit záznam profileru nebo vygenerovat výpis haldy.
 
-#### <a name="timed-recording"></a>Vypršel časový limit nahrávání
+#### <a name="timed-recording"></a>Časový záznam vypršel
 
-K získání začít, připojte se přes SSH služby App Service a spustit `jcmd` příkazu zobrazte seznam všechny spuštěné procesy Java. Kromě jcmd samotného měli byste vidět aplikace Java spuštěná s číslem ID procesu (pid).
+Chcete-li začít, spusťte SSH do svého App Service a `jcmd` spusťte příkaz, který zobrazí seznam všech spuštěných procesů Java. Kromě samotné jcmd by se měla zobrazit vaše aplikace Java spuštěná s IDENTIFIKAČNÍm číslem procesu (PID).
 
 ```shell
 078990bbcd11:/home# jcmd
@@ -76,45 +76,51 @@ Picked up JAVA_TOOL_OPTIONS: -Djava.net.preferIPv4Stack=true
 116 /home/site/wwwroot/app.jar
 ```
 
-Spusťte následující příkaz Spustit záznam 30 sekundách JVM. Tím profil JVM a vytvořte soubor JFR *jfr_example.jfr* v domovském adresáři. (Nahradit 116 pid aplikace v jazyce Java.)
+Spuštěním následujícího příkazu zahajte záznam JVM o 30 sekund. Tím se profil JVM a vytvoří soubor JFR s názvem *jfr_example. jfr* v domovském adresáři. (Nahraďte 116 číslem PID vaší aplikace v jazyce Java.)
 
 ```shell
 jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/home/jfr_example.jfr"
 ```
 
-Během 30 druhý interval může ověřit záznam probíhat spuštěním `jcmd 116 JFR.check`. Tím se zobrazí všechny záznamy pro daný proces Javy.
+Během intervalu 30 sekund můžete ověřit, že záznam probíhá spuštěním `jcmd 116 JFR.check`. Zobrazí se všechny nahrávky pro daný proces Java.
 
-#### <a name="continuous-recording"></a>Průběžné záznam
+#### <a name="continuous-recording"></a>Průběžný záznam
 
-Nahrávání letu Zulu můžete průběžně profilu aplikace v jazyce Java s minimálním dopadem na výkon modulu runtime ([zdroj](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)). Uděláte to tak, spusťte následující příkaz rozhraní příkazového řádku Azure k vytvoření nastavení aplikace s názvem JAVA_OPTS s nezbytné konfigurace. Obsah JAVA_OPTS nastavení aplikace, které jsou předány `java` příkaz při spuštění aplikace.
+Pomocí Zulu letu můžete průběžně profilovat svoji aplikaci Java s minimálním dopadem na výkon modulu runtime ([zdroj](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)). Uděláte to tak, že spustíte následující příkaz Azure CLI, který vytvoří nastavení aplikace s názvem JAVA_OPTS s nezbytnou konfigurací. Obsah nastavení aplikace JAVA_OPTS se před zahájením aplikace předává `java` do příkazu.
 
 ```azurecli
 az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --settings JAVA_OPTS=-XX:StartFlightRecording=disk=true,name=continuous_recording,dumponexit=true,maxsize=1024m,maxage=1d
 ```
 
-Další informace najdete v tématu [Jcmd informace o příkazech](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/comline.htm#JFRRT190).
+Po zahájení nahrávání můžete data o nahrávání kdykoli vypsat pomocí `JFR.dump` příkazu.
 
-### <a name="analyzing-recordings"></a>Analýza záznamy
+```shell
+jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
+```
 
-Použití [FTPS](../deploy-ftp.md) JFR soubor stáhnout do svého místního počítače. Pokud chcete analyzovat soubor JFR, stáhněte a nainstalujte [Zulu střediskem](https://www.azul.com/products/zulu-mission-control/). Řídicí středisko Zulu, v tématu [Azul dokumentaci](https://docs.azul.com/zmc/) a [pokyny k instalaci](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
+Další informace najdete v referenčních informacích k [příkazům Jcmd](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/comline.htm#JFRRT190).
 
-## <a name="customization-and-tuning"></a>Přizpůsobení a optimalizace
+### <a name="analyzing-recordings"></a>Analýza záznamů
 
-Azure App Service pro Linux podporuje pole vyladění a přizpůsobení prostřednictvím webu Azure portal a rozhraní příkazového řádku. Projděte si následující články konfigurace Javy konkrétní webové aplikace:
+Použijte [FTPS](../deploy-ftp.md) ke stažení souboru jfr do místního počítače. Chcete-li analyzovat soubor JFR, Stáhněte a nainstalujte [řízení Zulu](https://www.azul.com/products/zulu-mission-control/). Pokyny k řízení Zulu najdete v [dokumentaci k Azul](https://docs.azul.com/zmc/) a v pokynech k [instalaci](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
 
-- [Konfigurace nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
+## <a name="customization-and-tuning"></a>Přizpůsobení a ladění
+
+Azure App Service pro Linux podporuje vyladění a přizpůsobení prostřednictvím Azure Portal a CLI. Projděte si následující články s konfigurací webové aplikace specifické pro jazyk Java:
+
+- [Konfigurovat nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
 - [Nastavení vlastní domény](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [Povolení protokolu SSL](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [Přidání sítě CDN](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [Konfigurace webu kudu](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
+- [Povolit SSL](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Přidat síť CDN](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Konfigurace webu Kudu](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
-### <a name="set-java-runtime-options"></a>Nastavte možnosti modulu runtime Java
+### <a name="set-java-runtime-options"></a>Nastavení možností modulu Java Runtime
 
-Pokud chcete nastavit přidělené paměti nebo jiné možnosti modulu runtime JVM do Tomcat a Java SE prostředí, vytvořte [nastavení aplikace, které](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) s názvem `JAVA_OPTS` s možnostmi. App Service Linux předá toto nastavení jako proměnnou prostředí Java runtime při spuštění.
+Pokud chcete nastavit přidělenou paměť nebo jiné možnosti JVM runtime v prostředích Tomcat a Java se systémem, vytvořte [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) s názvem `JAVA_OPTS` s možnostmi. App Service Linux předá toto nastavení jako proměnnou prostředí modulu runtime Java při spuštění.
 
-Na webu Azure Portal v části **nastavení aplikace** pro webovou aplikaci, vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` , který obsahuje další nastavení, jako například `-Xms512m -Xmx1204m`.
+V Azure Portal v části **nastavení aplikace** pro webovou aplikaci vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` , které obsahuje další `-Xms512m -Xmx1204m`nastavení, například.
 
-Pokud chcete nakonfigurovat nastavení aplikace, které z modulu plug-in Maven, add v sekci modul plug-in Azure nastavení/hodnota značek. Následující příklad nastaví konkrétní minimální a maximální velikost haldy Java:
+Pokud chcete nakonfigurovat nastavení aplikace z modulu plug-in Maven, přidejte do části modul plug-in Azure značky nastavení/hodnoty. Následující příklad nastaví konkrétní minimální a maximální velikost haldy Java:
 
 ```xml
 <appSettings>
@@ -125,27 +131,27 @@ Pokud chcete nakonfigurovat nastavení aplikace, které z modulu plug-in Maven, 
 </appSettings>
 ```
 
-S jednou aplikací jeden nasazovací slot v jejich plán služby App Service mohou vývojáři tyto možnosti:
+Vývojáři, kteří spouštějí jednu aplikaci s jedním slotem nasazení v plánu App Service, mohou použít následující možnosti:
 
-- Instance B1 a S1: `-Xms1024m -Xmx1024m`
-- Instance B2 a S2: `-Xms3072m -Xmx3072m`
-- Instance B3 a S3: `-Xms6144m -Xmx6144m`
+- Instance B1 a S1:`-Xms1024m -Xmx1024m`
+- Instance B2 a S2:`-Xms3072m -Xmx3072m`
+- Instance B3 a S3:`-Xms6144m -Xmx6144m`
 
-Při nastavení haldy ladění aplikace, projděte si podrobnosti vašeho plánu služby App Service a vezměte v úvahu více aplikací a slot nasazení je potřeba najít optimální přidělení paměti.
+Při ladění nastavení haldy aplikace zkontrolujte podrobnosti plánu App Service a vezměte v úvahu více aplikací a slot nasazení potřebuje k vyhledání optimálního přidělení paměti.
 
-Pokud nasazujete aplikaci JAR, by měly být pojmenovány *app.jar* tak, aby integrované image můžete správně identifikují vaši aplikaci. (Modul plug-in Maven nemá tomto přejmenování automaticky.) Pokud nechcete, aby přejmenovat váš soubor JAR pro *app.jar*, můžete nahrát skript prostředí pomocí příkazu Spustit váš soubor JAR. Vložte úplnou cestu pro tento skript [spouštěcí soubor](app-service-linux-faq.md#built-in-images) textového pole v části konfigurace na portálu.
+Pokud nasazujete aplikaci JAR, měla by být pojmenována *App. jar* , aby předdefinovaná image mohla správně identifikovat vaši aplikaci. (Modul plug-in Maven Toto přejmenování provede automaticky.) Pokud si svůj JAR nepřejete přejmenovat na *App. jar*, můžete nahrát skript prostředí pomocí příkazu, abyste mohli svůj jar spustit. Pak vložte úplnou cestu k tomuto skriptu do textového pole [spouštěcí soubor](app-service-linux-faq.md#built-in-images) v části konfigurace portálu.
 
 ### <a name="turn-on-web-sockets"></a>Zapnout webové sokety
 
-Zapněte podporu pro webové sokety na webu Azure Portal v **nastavení aplikace** pro aplikaci. Budete muset restartovat aplikaci pro nastavení projevilo.
+Zapněte podporu pro webové sokety v Azure Portal v **nastavení aplikace** pro danou aplikaci. Aby se nastavení projevilo, bude nutné aplikaci restartovat.
 
-Zapnutí podpory webových soketů pomocí Azure CLI pomocí následujícího příkazu:
+Zapněte podporu webového soketu pomocí rozhraní příkazového řádku Azure pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --web-sockets-enabled true
 ```
 
-Potom restartujte aplikaci:
+Pak restartujte aplikaci:
 
 ```azurecli-interactive
 az webapp stop --name <app-name> --resource-group <resource-group-name>
@@ -154,9 +160,9 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>Nastavit výchozí kódování znaků
 
-Na webu Azure Portal v části **nastavení aplikace** pro webovou aplikaci, vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` s hodnotou `-Dfile.encoding=UTF-8`.
+V Azure Portal v části **nastavení aplikace** pro webovou aplikaci vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` s hodnotou. `-Dfile.encoding=UTF-8`
 
-Alternativně můžete nakonfigurovat nastavení aplikace pomocí modulu plug-in App Service Maven. Přidáte nastavení názvu a hodnoty značek v konfiguraci modulu plug-in:
+Případně můžete nakonfigurovat nastavení aplikace pomocí modulu plug-in App Service Maven. Přidejte značky název a hodnota nastavení do konfigurace modulu plug-in:
 
 ```xml
 <appSettings>
@@ -167,31 +173,31 @@ Alternativně můžete nakonfigurovat nastavení aplikace pomocí modulu plug-in
 </appSettings>
 ```
 
-### <a name="adjust-startup-timeout"></a>Nastavení časového limitu pro spuštění
+### <a name="adjust-startup-timeout"></a>Upravit časový limit spuštění
 
-Pokud vaše aplikace v Javě je zejména velkých, měli byste zvýšit časový limit spuštění. Vytvořit nastavení aplikace, `WEBSITES_CONTAINER_START_TIME_LIMIT` a nastavte ho na počet sekund, po které služby App Service má čekat před vypršením časového limitu. Maximální hodnota je `1800` sekund.
+Pokud je vaše aplikace Java zvláště velká, měli byste zvýšit časový limit spuštění. Chcete-li to provést, vytvořte nastavení `WEBSITES_CONTAINER_START_TIME_LIMIT` aplikace a nastavte ji na počet sekund, po které App Service čekat před vypršením časového limitu. Maximální hodnota je `1800` sekund.
 
-### <a name="pre-compile-jsp-files"></a>Před kompilací soubory JSP
+### <a name="pre-compile-jsp-files"></a>Předem kompilovat soubory JSP
 
-Chcete-li zlepšit výkon aplikací Tomcat, můžete zkompilovat soubory JSP před nasazením do služby App Service. Můžete použít [plug-in Maven](https://sling.apache.org/components/jspc-maven-plugin/plugin-info.html) zadaná vázacích Apache prostředků nebo použití této funkce [soubor sestavení Ant](https://tomcat.apache.org/tomcat-9.0-doc/jasper-howto.html#Web_Application_Compilation).
+Chcete-li zlepšit výkon aplikací Tomcat, můžete před nasazením do App Service zkompilovat své soubory JSP. Můžete použít [modul plug-in Maven](https://sling.apache.org/components/jspc-maven-plugin/plugin-info.html) , který poskytuje Apache Sling, nebo použít tento [soubor sestavení ANT](https://tomcat.apache.org/tomcat-9.0-doc/jasper-howto.html#Web_Application_Compilation).
 
-## <a name="secure-applications"></a>Zabezpečení aplikací
+## <a name="secure-applications"></a>Zabezpečené aplikace
 
-Aplikace Java spuštěná ve službě App Service pro Linux mají stejnou sadu [osvědčené postupy zabezpečení](/azure/security/security-paas-applications-using-app-services) jako ostatní aplikace.
+Aplikace Java běžící v App Service pro Linux mají stejnou sadu osvědčených [postupů zabezpečení](/azure/security/security-paas-applications-using-app-services) jako u jiných aplikací.
 
-### <a name="authenticate-users"></a>Ověřování uživatelů
+### <a name="authenticate-users-easy-auth"></a>Ověřování uživatelů (snadné ověřování)
 
-Nastavení ověřování aplikace na webu Azure Portal s **ověřování a autorizace** možnost. Odtud můžete povolit ověřování pomocí Azure Active Directory nebo přihlašování přes sociální sítě jako je Facebook, Google nebo GitHub. Konfigurace Azure portal funguje pouze v případě konfigurace ověřování jednotným poskytovatele. Další informace najdete v tématu [konfigurace aplikace App Service pro použití přihlášení Azure Active Directory](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) a související články pro jiné zprostředkovatele identity. Pokud je potřeba povolit více poskytovatelů přihlásit, postupujte podle pokynů [přizpůsobit ověřování pomocí služby App Service](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) článku.
+Pomocí možnosti **ověřování a autorizace** nastavte ověřování aplikací v Azure Portal. Odtud můžete povolit ověřování pomocí Azure Active Directory nebo přes sociální přihlášení, jako je Facebook, Google nebo GitHub. Konfigurace Azure Portal funguje pouze při konfiguraci jednoho poskytovatele ověřování. Další informace najdete v tématu [Konfigurace aplikace App Service pro použití Azure Active Directory přihlášení](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) a souvisejících článků pro jiné poskytovatele identity. Pokud potřebujete povolit více poskytovatelů přihlašování, postupujte podle pokynů v článku [přizpůsobení App Serviceho ověřování](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) .
 
-#### <a name="tomcat"></a>Tomcat
+#### <a name="tomcat-and-wildfly"></a>Tomcat a WildFly
 
-Tomcat aplikaci může přístup k danému uživateli deklarace identity přímo z servlet Tomcat přetypováním objektu zabezpečení objektu do objektu Map. Objekt Map se namapuje každý typ deklarace identity ke kolekci pro daný typ deklarace identity. V níže uvedený kód `request` je instance `HttpServletRequest`.
+Vaše aplikace Tomcat nebo WildFly může získat přístup k deklaracím uživatele přímo z servlet přetypováním objektu zabezpečení na objekt mapy. Objekt mapy bude mapovat jednotlivé typy deklarací na kolekci deklarací pro daný typ. V následujícím `request` kódu je `HttpServletRequest`instance.
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
 ```
 
-Teď si můžete prohlédnout `Map` objekt pro jakékoli konkrétní deklarace identity. Například následující fragment kódu Iteruje přes všechny typy deklarací identity a vytiskne obsah každé z kolekcí.
+Nyní můžete zkontrolovat `Map` objekt pro všechny konkrétní deklarace identity. Například následující fragment kódu projde všechny typy deklarací a vytiskne obsah každé kolekce.
 
 ```java
 for (Object key : map.keySet()) {
@@ -205,7 +211,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-Odhlásit uživatele a provádět další akce, naleznete v dokumentaci na [použití ověřování pomocí služby App Service a autorizaci](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to). K dispozici je také oficiální dokumentaci na Tomcat [HttpServletRequest rozhraní](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) a její metody. Následující servlet, které metody jsou také HYDRATOVANÝ podle vaší konfigurace služby App Service:
+Pokud chcete uživatele podepsat, použijte `/.auth/ext/logout` cestu. Chcete-li provést další akce, přečtěte si dokumentaci k [App Service ověřování a používání autorizace](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to). K dispozici je také oficiální dokumentace k [rozhraní Tomcat HttpServletRequest](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) a jeho metodám. V závislosti na konfiguraci App Service jsou také vycházející následující metody servlet:
 
 ```java
 public boolean isSecure()
@@ -215,72 +221,72 @@ public String getScheme()
 public int getServerPort()
 ```
 
-Chcete-li tuto funkci zakázat, vytvořte nastavení aplikace s názvem `WEBSITE_AUTH_SKIP_PRINCIPAL` s hodnotou `1`. Pokud chcete zakázat všechny filtry servlet přidané ve službě App Service, vytvořte nastavení s názvem `WEBSITE_SKIP_FILTERS` s hodnotou `1`.
+Chcete-li tuto funkci zakázat, vytvořte nastavení aplikace `WEBSITE_AUTH_SKIP_PRINCIPAL` s názvem s `1`hodnotou. Chcete-li zakázat všechny filtry servlet přidané App Service, vytvořte nastavení s `WEBSITE_SKIP_FILTERS` názvem s `1`hodnotou.
 
 #### <a name="spring-boot"></a>Spring Boot
 
-Aplikace Spring Boot vývojáři mohou použít [Azure Active Directory Spring Boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) k zabezpečení aplikace pomocí známých poznámky k zabezpečení Spring a rozhraní API. Je potřeba ke zvětšení maximální záhlaví ve vaší *souboru application.properties* souboru. Doporučujeme, aby hodnota `16384`.
+Vývojáři pružinového spouštění můžou pomocí [Azure Active Directory pružiny Boot Starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) zabezpečit aplikace pomocí známých poznámek a rozhraní API pro zabezpečení pružiny. Nezapomeňte zvětšit maximální velikost hlavičky v souboru *Application. Properties* . Navrhneme hodnotu `16384`.
 
 ### <a name="configure-tlsssl"></a>Konfigurace TLS/SSL
 
-Postupujte podle pokynů [vytvoření vazby existujícího vlastního certifikátu SSL](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) nahrát stávající certifikát SSL a navázat jej na název domény vaší aplikace. Ve výchozím nastavení vaše aplikace stále umožňuje HTTP připojení – postupujte podle konkrétních kroků v kurzu k vynucení šifrování protokolu SSL a TLS.
+Podle pokynů v tématu [vytvoření vazby existujícího vlastního certifikátu SSL](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) Nahrajte stávající certifikát SSL a navažte ho k názvu domény vaší aplikace. Ve výchozím nastavení bude vaše aplikace pořád umožňovat připojení HTTP – postupujte podle kroků v tomto kurzu, abyste vynutili SSL a TLS.
 
-### <a name="use-keyvault-references"></a>Odkazy na použití trezoru klíčů
+### <a name="use-keyvault-references"></a>Použití odkazů na Trezor klíčů
 
-[Azure KeyVault](../../key-vault/key-vault-overview.md) nabízí centralizovanou správu tajných kódů pomocí historie zásad a auditování přístupu. Můžete ukládat tajné klíče (např. hesla nebo připojovací řetězce) v Key Vaultu a přístup k těchto tajných kódů v aplikaci prostřednictvím proměnných prostředí.
+[Azure webtrezor](../../key-vault/key-vault-overview.md) poskytuje centralizovanou správu tajných kódů pomocí zásad přístupu a historie auditu. Do trezoru klíčů můžete ukládat tajné kódy (například hesla nebo připojovací řetězce) a přistupovat k nim ve vaší aplikaci pomocí proměnných prostředí.
 
-Nejprve, postupujte podle pokynů pro [uděluje přístup k vaší aplikaci do služby Key Vault](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) a [odkazu služby KeyVault pro váš tajný klíč v nastavení aplikace](../app-service-key-vault-references.md#reference-syntax). Můžete ověřit, že odkaz přeloží na tajný kód s tiskem proměnnou prostředí při vzdáleném přístupu k Terminálové službě App Service.
+Nejdřív postupujte podle pokynů pro [udělení přístupu aplikace Key Vault](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) a [Vytvoření odkazu trezoru klíčů pro váš tajný klíč v nastavení aplikace](../app-service-key-vault-references.md#reference-syntax). Můžete ověřit, že se odkaz na tajný kód přeloží vytištěním proměnné prostředí a vzdáleným přístupem k App Service terminálu.
 
-Vložení těchto tajných kódů v konfiguračním souboru Spring nebo Tomcat, použijte syntaxi vkládání proměnné prostředí (`${MY_ENV_VAR}`). Spring konfigurační soubory, najdete v tématu této dokumentace na [externalized konfigurace](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
+Pro vložení těchto tajných kódů do konfiguračního souboru jarní nebo Tomcat použijte syntaxi injektáže proměnné prostředí (`${MY_ENV_VAR}`). V případě konfiguračních souborů pružiny se podívejte na tuto [](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)dokumentaci k externě nakonfigurovaným konfiguracím.
 
-## <a name="configure-apm-platforms"></a>Konfigurovat platformy APM
+## <a name="configure-apm-platforms"></a>Konfigurace platforem APM
 
-Tato část ukazuje, jak připojit aplikace v Javě nasazené ve službě Azure App Service v Linuxu pomocí nástrojů NewRelic a AppDynamics pro monitorování výkonu aplikací (APM) platformy.
+V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App Service v systému Linux pomocí platforem APM (Application Performance Monitoring) pro NewRelic a AppDynamics.
 
-[Nakonfigurujte nástroj společnosti New Relic](#configure-new-relic)
-[nakonfigurovat AppDynamics](#configure-appdynamics)
+[Konfigurace nového Relic](#configure-new-relic)
+[Konfigurace AppDynamics](#configure-appdynamics)
 
-### <a name="configure-new-relic"></a>Nakonfigurujte nástroj společnosti New Relic
+### <a name="configure-new-relic"></a>Konfigurovat nové Relic
 
-1. Vytvořit účet NewRelic na [NewRelic.com](https://newrelic.com/signup)
-2. Stáhněte agenta Java z nástrojů NewRelic, bude mít název souboru, který je podobný *newrelic-java-x.x.x.zip*.
-3. Zkopírování klíče licence, ho budete potřebovat ke konfiguraci agenta později.
-4. [Připojte se přes SSH vaší instance služby App Service](app-service-linux-ssh-support.md) a vytvořte nový adresář */home/site/wwwroot/apm*.
-5. Rozbalené soubory agenta NewRelic Java nahrát do adresáře v rámci */home/site/wwwroot/apm*. Soubory pro agenta by měla být v */home/site/wwwroot/apm/newrelic*.
-6. Upravte soubor YAML na */home/site/wwwroot/apm/newrelic/newrelic.yml* a nahraďte hodnotu zástupného symbolu licence vlastní licenční klíč.
-7. Na webu Azure Portal přejděte do vaší aplikace ve službě App Service a vytvořit nové nastavení aplikace.
-    - Pokud vaše aplikace používá **Java SE**, vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
-    - Pokud používáte **Tomcat**, vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
-    - Pokud používáte **WildFly**, naleznete v dokumentaci k špičkové funkce New Relicu [tady](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java) pokyny týkající se instalace agenta Java a JBoss konfigurace.
-    - Pokud už máte proměnnou prostředí pro `JAVA_OPTS` nebo `CATALINA_OPTS`, připojte `javaagent` možnost na konec aktuální hodnotu.
+1. Vytvoření účtu NewRelic na [NewRelic.com](https://newrelic.com/signup)
+2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný řetězci *NewRelic-Java-x. x. x. zip*.
+3. Zkopírujte licenční klíč, budete ho potřebovat ke konfiguraci agenta později.
+4. [Do své instance App Service](app-service-linux-ssh-support.md) a vytvořte nový adresář */Home/site/wwwroot/APM*.
+5. Nahrajte nebalené soubory NewRelic Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/NewRelic*.
+6. Upravte soubor YAML na */Home/site/wwwroot/APM/NewRelic/NewRelic.yml* a nahraďte hodnotu licence zástupného symbolu vlastním licenčním klíčem.
+7. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
+    - Pokud vaše aplikace používá **Java se**, vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou. `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`
+    - Pokud používáte **Tomcat**, vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou. `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`
+    - Pokud používáte **WildFly**, přečtěte si [novou dokumentaci k](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java) Relic, kde najdete pokyny k instalaci agenta Java a konfiguraci JBoss.
+    - Pokud již máte proměnnou prostředí pro `JAVA_OPTS` nebo `CATALINA_OPTS`, přidejte `javaagent` možnost na konec aktuální hodnoty.
 
 ### <a name="configure-appdynamics"></a>Konfigurace AppDynamics
 
 1. Vytvoření účtu AppDynamics na [AppDynamics.com](https://www.appdynamics.com/community/register/)
-2. Stáhněte agenta Java z webu AppDynamics, názvem souboru bude podobný *AppServerAgent x.x.x.xxxxx.zip*
-3. [Připojte se přes SSH vaší instance služby App Service](app-service-linux-ssh-support.md) a vytvořte nový adresář */home/site/wwwroot/apm*.
-4. Nahrát soubory agenta Java do adresáře v rámci */home/site/wwwroot/apm*. Soubory pro agenta by měla být v */home/site/wwwroot/apm/appdynamics*.
-5. Na webu Azure Portal přejděte do vaší aplikace ve službě App Service a vytvořit nové nastavení aplikace.
-    - Pokud používáte **Java SE**, vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` kde `<app-name>` je název vaší služby App Service.
-    - Pokud používáte **Tomcat**, vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` kde `<app-name>` je název vaší služby App Service.
-    - Pokud používáte **WildFly**, naleznete v dokumentaci k AppDynamics [tady](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) pokyny týkající se instalace agenta Java a JBoss konfigurace.
+2. Stáhněte si agenta Java z webu AppDynamics, název souboru bude podobný jako *AppServerAgent-x. x. x. xxxxx. zip*
+3. [Do své instance App Service](app-service-linux-ssh-support.md) a vytvořte nový adresář */Home/site/wwwroot/APM*.
+4. Nahrajte soubory agenta Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/AppDynamics*.
+5. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
+    - Pokud používáte **Java se**systémem, vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , kde `<app-name>` je váš App Service název.
+    - Pokud používáte **Tomcat**, vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , kde `<app-name>` je váš App Service název.
+    - Pokud používáte **WildFly**, přečtěte si dokumentaci k AppDynamics [, kde najdete](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) pokyny k instalaci agenta Java a konfiguraci JBoss.
 
-## <a name="configure-jar-applications"></a>Konfigurovat soubor JAR aplikace
+## <a name="configure-jar-applications"></a>Konfigurovat aplikace JAR
 
-### <a name="starting-jar-apps"></a>Spouští se soubor JAR aplikace
+### <a name="starting-jar-apps"></a>Spouštění aplikací JAR
 
-Ve výchozím nastavení, služby App Service očekává, že soubor JAR aplikaci s názvem *app.jar*. Pokud má tento název, se automaticky spustí. Pro uživatele Maven, můžete nastavit název JAR zahrnutím `<finalName>app</finalName>` v `<build>` část vaší *pom.xml*. [Můžete provést totéž v Gradle](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) nastavením `archiveFileName` vlastnost.
+Ve výchozím nastavení App Service očekává, že vaše aplikace JAR bude pojmenována *App. jar*. Pokud tento název obsahuje, bude automaticky spuštěn. Pro uživatele Maven můžete název jar nastavit tak, že zahrnete `<finalName>app</finalName>` `<build>` do části souboru *pom. XML*. To [samé můžete provést v Gradle](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) nastavením `archiveFileName` vlastnosti.
 
-Pokud chcete použít jiný název pro váš soubor JAR, je rovněž nutné poskytnout [spouštěcí příkaz](app-service-linux-faq.md#built-in-images) , který se spustí váš soubor JAR. Například, `java -jar my-jar-app.jar`. Můžete nastavit hodnotu pro spuštění příkazu na portálu v části Konfigurace > Obecné nastavení, nebo pomocí nastavení aplikace s názvem `STARTUP_COMMAND`.
+Pokud chcete pro svůj JAR použít jiný název, musíte zadat také [spouštěcí příkaz](app-service-linux-faq.md#built-in-images) , který SPUSTÍ soubor JAR. Například, `java -jar my-jar-app.jar`. Hodnotu pro spouštěcí příkaz můžete nastavit na portálu v části Konfigurace > Obecné nastavení nebo pomocí nastavení aplikace s názvem `STARTUP_COMMAND`.
 
 ### <a name="server-port"></a>Port serveru
 
-App Service Linux směruje příchozí žádosti na port 80, takže vaše aplikace naslouchat požadavkům na portu 80 a. Můžete to provést v konfiguraci vaší aplikace (jako je například pro Spring *souboru application.properties* souboru), nebo v po spuštění příkazu (například `java -jar spring-app.jar --server.port=80`). Podrobnosti najdete v následující dokumentaci pro běžné rozhraní Java:
+App Service Linux směruje příchozí požadavky na port 80, takže vaše aplikace by měla naslouchat i na portu 80. To můžete provést v konfiguraci aplikace (jako je například soubor *aplikace. Properties* v jaře) nebo v příkazu pro spuštění (například `java -jar spring-app.jar --server.port=80`). Podívejte se prosím na následující dokumentaci pro běžné architektury Java:
 
-- [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html#howto-use-short-command-line-arguments)
+- [Jarní spuštění](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html#howto-use-short-command-line-arguments)
 - [SparkJava](http://sparkjava.com/documentation#embedded-web-server)
 - [Micronaut](https://docs.micronaut.io/latest/guide/index.html#runningSpecificPort)
-- [Přehrát Framework](https://www.playframework.com/documentation/2.6.x/ConfiguringHttps#Configuring-HTTPS)
+- [Rozhraní Play](https://www.playframework.com/documentation/2.6.x/ConfiguringHttps#Configuring-HTTPS)
 - [Vertx](https://vertx.io/docs/vertx-core/java/#_start_the_server_listening)
 - [Quarkus](https://quarkus.io/guides/application-configuration-guide)
 
@@ -288,15 +294,15 @@ App Service Linux směruje příchozí žádosti na port 80, takže vaše aplika
 
 ### <a name="tomcat"></a>Tomcat
 
-Tyto pokyny platí pro všechna připojení k databázi. Je potřeba vyplnit zástupné symboly s názvem třídy ovladač vybrané databáze a soubor JAR. K dispozici je také tabulka s názvy tříd a soubory ke stažení ovladače pro běžné databáze.
+Tyto pokyny platí pro všechna databázová připojení. Zástupné symboly budete muset vyplnit pomocí názvu třídy ovladače zvolené databáze a souboru JAR. Poskytuje se tabulka s názvy tříd a stahování ovladačů pro běžné databáze.
 
 | Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
-| MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhněte si](https://dev.mysql.com/downloads/connector/j/) (vyberte "Nezávislé na platformě") |
+| MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (Vyberte možnost nezávislé na platformě) |
 | SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Stáhnout](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
 
-Pokud chcete nakonfigurovat Tomcat používat připojení k databázi Java (JDBC) nebo rozhraní API trvalost Java (JPA), nejprve přizpůsobit `CATALINA_OPTS` proměnnou prostředí, která přečte v Tomcatu při spuštění. Nastavte tyto hodnoty pomocí nastavení aplikace v [modulu plug-in App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
+Chcete-li nakonfigurovat Tomcat pro použití JDBC (Java Database Connectivity) nebo rozhraní Java Persistence (JPA), nejprve `CATALINA_OPTS` upravte proměnnou prostředí, která je čtena nástrojem Tomcat při spuštění. Nastavte tyto hodnoty pomocí nastavení aplikace v [modulu plug-in App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
 ```xml
 <appSettings>
@@ -307,15 +313,15 @@ Pokud chcete nakonfigurovat Tomcat používat připojení k databázi Java (JDBC
 </appSettings>
 ```
 
-Nebo nastavte proměnné prostředí **konfigurace** > **nastavení aplikace** stránky na webu Azure Portal.
+Nebo nastavte proměnné prostředí na stránce nastavení **konfigurační** > **aplikace** v Azure Portal.
 
-Dále určete, pokud zdroj dat by měla být k dispozici pro jednu aplikaci nebo pro všechny aplikace spuštěné na Tomcat servlet.
+Dále určete, zda má být zdroj dat k dispozici pro jednu aplikaci nebo pro všechny aplikace běžící na Tomcat servlet.
 
 #### <a name="application-level-data-sources"></a>Zdroje dat na úrovni aplikace
 
-1. Vytvoření *context.xml* soubor *META-INF /* adresáře vašeho projektu. Vytvořte *META-INF /* adresáře, pokud neexistuje.
+1. Vytvořte soubor *Context. XML* v adresáři *META-INF/* Directory vašeho projektu. Pokud neexistuje, vytvořte *soubor META-INF nebo* s adresářem.
 
-2. V *context.xml*, přidejte `Context` prvek, který chcete propojit zdroje dat na adresu JNDI. Nahradit `driverClassName` zástupný symbol s názvem třídy ve vašem ovladači z výše uvedené tabulky.
+2. V *kontextu. XML*přidejte `Context` element, který bude propojit zdroj dat s adresou JNDI. `driverClassName` Zástupný symbol nahraďte názvem třídy vašeho ovladače z tabulky výše.
 
     ```xml
     <Context>
@@ -330,7 +336,7 @@ Dále určete, pokud zdroj dat by měla být k dispozici pro jednu aplikaci nebo
     </Context>
     ```
 
-3. Aktualizace vaší aplikace *soubor web.xml* budou používat zdroj dat ve vaší aplikaci.
+3. Aktualizujte *Web. XML* vaší aplikace tak, aby používal zdroj dat ve vaší aplikaci.
 
     ```xml
     <resource-env-ref>
@@ -341,14 +347,14 @@ Dále určete, pokud zdroj dat by měla být k dispozici pro jednu aplikaci nebo
 
 #### <a name="shared-server-level-resources"></a>Sdílené prostředky na úrovni serveru
 
-1. Zkopírujte obsah */usr/local/tomcat/conf* do */home/tomcat/conf* ve vaší App Service pro Linux instance pomocí protokolu SSH, pokud konfigurace existuje ještě nemáte.
+1. Zkopírujte obsah */usr/local/Tomcat/conf* do */home/tomcat/conf* na instanci App Service Linux pomocí SSH, pokud ještě nemáte konfiguraci.
 
     ```bash
     mkdir -p /home/tomcat
     cp -a /usr/local/tomcat/conf /home/tomcat/conf
     ```
 
-2. Přidat element kontextu v vaše *server.xml* v rámci `<Server>` elementu.
+2. Přidejte kontextový prvek do *souboru Server. XML* v rámci `<Server>` elementu.
 
     ```xml
     <Server>
@@ -367,7 +373,7 @@ Dále určete, pokud zdroj dat by měla být k dispozici pro jednu aplikaci nebo
     </Server>
     ```
 
-3. Aktualizace vaší aplikace *soubor web.xml* budou používat zdroj dat ve vaší aplikaci.
+3. Aktualizujte *Web. XML* vaší aplikace tak, aby používal zdroj dat ve vaší aplikaci.
 
     ```xml
     <resource-env-ref>
@@ -376,123 +382,123 @@ Dále určete, pokud zdroj dat by měla být k dispozici pro jednu aplikaci nebo
     </resource-env-ref>
     ```
 
-#### <a name="finalize-configuration"></a>Dokončení konfigurace
+#### <a name="finalize-configuration"></a>Dokončit konfiguraci
 
-A konečně umístěte JAR ovladač v cestě Tomcat a restartujte službu App Service.
+Nakonec umístěte jar ovladače do cesty pro Tomcat a restartujte App Service.
 
-1. Zajistěte, aby byly soubory ovladačů JDBC k dispozici pro Tomcat classloader tak, že je */home/tomcat/lib* adresáře. (Pokud ještě neexistuje, vytvořte tento adresář.) Pokud chcete nahrát tyto soubory k vaší instanci služby App Service, postupujte následovně:
+1. Zajistěte, aby byly soubory ovladače JDBC k dispozici pro classloader Tomcat, a to jejich umístěním do adresáře */Home/Tomcat/lib* . (Pokud tento adresář ještě neexistuje, vytvořte ho.) Chcete-li odeslat tyto soubory do instance App Service, proveďte následující kroky:
 
-    1. V [Cloud Shell](https://shell.azure.com), nainstalovat rozšíření webové aplikace:
+    1. V [Cloud Shell](https://shell.azure.com)nainstalujte rozšíření WebApp:
 
       ```azurecli-interactive
       az extension add -–name webapp
       ```
 
-    2. Spusťte následující příkaz rozhraní příkazového řádku k vytvoření tunelu SSH z místního systému do služby App Service:
+    2. Spuštěním následujícího příkazu rozhraní příkazového řádku vytvořte tunel SSH z místního systému, který chcete App Service:
 
       ```azurecli-interactive
       az webapp remote-connection create --resource-group <resource-group-name> --name <app-name> --port <port-on-local-machine>
       ```
 
-    3. Připojení na místní port tunelového propojení s vašeho klienta protokolu SFTP a odesílání souborů do */home/tomcat/lib* složky.
+    3. Připojte se k místnímu tunelovém portu pomocí klienta SFTP a nahrajte soubory do složky */Home/Tomcat/lib* .
 
-    Alternativně můžete klienta FTP k nahrání ovladač JDBC. Postupujte podle těchto [pokyny k získání údajů FTP](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+    Alternativně můžete k nahrání ovladače JDBC použít klienta FTP. [Při získávání přihlašovacích údajů k FTP](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)postupujte podle těchto pokynů.
 
-2. Pokud jste nevytvořili zdroj dat na úrovni serveru, restartujte aplikaci App Service pro Linux. Tomcat resetuje `CATALINA_HOME` k `/home/tomcat/conf` a použít aktualizovanou konfiguraci.
+2. Pokud jste vytvořili zdroj dat na úrovni serveru, restartujte aplikaci App Service Linux. Tomcat se obnoví `CATALINA_HOME` `/home/tomcat/conf` a použije aktualizovanou konfiguraci.
 
 ### <a name="spring-boot"></a>Spring Boot
 
-Pro připojení ke zdrojům dat aplikace Spring Boot, doporučujeme vytvoření připojovací řetězce a vkládá je do vašeho *souboru application.properties* souboru.
+Pro připojení ke zdrojům dat v aplikacích pro pružinové spouštění doporučujeme vytvořit připojovací řetězce a vložit je do souboru *. Properties* .
 
-1. V oddílu "Konfigurace" stránka služby App Service nastavte název pro řetězec, vložte připojovací řetězec JDBC do pole hodnota a nastavit zadáním "Vlastní". Tento připojovací řetězec můžete volitelně nastavit jako nastavení slotu.
+1. V části "konfigurace" na stránce App Service nastavte název řetězce, vložte připojovací řetězec JDBC do pole hodnota a nastavte typ na Custom (vlastní). Volitelně můžete nastavit tento připojovací řetězec jako nastavení slotu.
 
-    Tento připojovací řetězec je přístupné pro naši aplikaci jako proměnné prostředí s názvem `CUSTOMCONNSTR_<your-string-name>`. Například připojovací řetězec, který jsme vytvořili výše, bude mít název `CUSTOMCONNSTR_exampledb`.
+    Tento připojovací řetězec je pro naši aplikaci přístupný jako proměnná prostředí s názvem `CUSTOMCONNSTR_<your-string-name>`. Například připojovací řetězec, který jsme vytvořili výše, bude pojmenován `CUSTOMCONNSTR_exampledb`.
 
-2. Ve vaší *souboru application.properties* souboru, odkazují na tento připojovací řetězec s názvem proměnné prostředí. V našem příkladu jsme byste použili následující.
+2. V souboru *Application. Properties* , odkazujte na tento připojovací řetězec s názvem proměnné prostředí. V našem příkladu bychom použili následující.
 
     ```yml
     app.datasource.url=${CUSTOMCONNSTR_exampledb}
     ```
 
-Podrobnosti najdete [Spring Boot dokumentaci o přístupu k datům](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html) a [externalized konfigurace](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) Další informace o tomto tématu.
+Další informace o tomto tématu najdete v [dokumentaci ke jarnímu spuštění pro přístup k datům a k](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html) externě nakonfigurovaným [konfiguracím](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) .
 
 ## <a name="configure-java-ee-wildfly"></a>Konfigurace jazyka Java EE (WildFly)
 
 > [!NOTE]
-> Platformu Java Enterprise Edition v App Service pro Linux je aktuálně ve verzi Preview. Tento stack je **není** doporučuje pro produkční přístupem k práci. informace o našich zásobníků Java SE a Tomcat.
+> Java Enterprise Edition v systému App Service Linux je momentálně ve verzi Preview. Tento zásobník se **nedoporučuje pro** práci na produkčním prostředí. informace o našich zásobnících Java SE a Tomcat.
 
-Azure App Service v Linuxu umožňuje vývojářům vytvářet, nasazovat a škálovat aplikace Java Enterprise (Java EE) na plně spravované služby založené na Linuxu v jazyce Java.  Základní běhové prostředí Java Enterprise je open source [WildFly](https://wildfly.org/) aplikačního serveru.
+Azure App Service v systému Linux umožňuje vývojářům v jazyce Java sestavovat, nasazovat a škálovat aplikace Java Enterprise (Java EE) na plně spravovanou službu se systémem Linux.  Základní běhové prostředí Java Enterprise je open source aplikační server [WildFly](https://wildfly.org/) .
 
-Tato část obsahuje následující témata:
+Tato část obsahuje následující pododdíly:
 
-- [Škálování pomocí služby App Service](#scale-with-app-service)
-- [Vlastní nastavení konfigurace aplikačního serveru](#customize-application-server-configuration)
-- [Instalace modulů a závislostí](#install-modules-and-dependencies)
-- [Konfigurace zdroje dat](#configure-data-sources)
-- [Povolení zprostředkovatelé zasílání zpráv](#enable-messaging-providers)
-- [Konfigurovat ukládání do mezipaměti relace správy](#configure-session-management-caching)
+- [Škálování pomocí App Service](#scale-with-app-service)
+- [Přizpůsobení konfigurace aplikačního serveru](#customize-application-server-configuration)
+- [Nainstalovat moduly a závislosti](#install-modules-and-dependencies)
+- [Konfigurace zdrojů dat](#configure-data-sources)
+- [Povolit poskytovatele zasílání zpráv](#enable-messaging-providers)
+- [Konfigurace ukládání do mezipaměti správy relací](#configure-session-management-caching)
 
-### <a name="scale-with-app-service"></a>Škálování pomocí služby App Service
+### <a name="scale-with-app-service"></a>Škálování pomocí App Service
 
-WildFly aplikačního serveru ve službě App Service v Linuxu spuštěnou běží v samostatném režimu, není v konfiguraci domény. Při horizontálním navýšením kapacity plánu služby App Service, každá instance WildFly je nakonfigurovaná jako samostatný server.
+Aplikační server WildFly běžící v App Service v systému Linux běží v samostatném režimu, nikoli v konfiguraci domény. Při horizontálním navýšení kapacity App Service plánu je každá instance WildFly nakonfigurovaná jako samostatný server.
 
-Vertikálně nebo horizontálně škálovat aplikaci s [škálování pravidla](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) a [zvýšit počet vašich instancí](../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+Škálujte aplikaci vertikálně nebo vodorovně pomocí [pravidel škálování](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) a [zvyšte počet instancí](../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-### <a name="customize-application-server-configuration"></a>Vlastní nastavení konfigurace aplikačního serveru
+### <a name="customize-application-server-configuration"></a>Přizpůsobení konfigurace aplikačního serveru
 
-Instance webové aplikace jsou bezstavové, takže každá nová instance spustit musí být nakonfigurovaná na spuštění WildFly konfigurace vyžadované aplikací.
-Můžete napsat po spuštění skriptu Bash pro volání rozhraní příkazového řádku WildFly pro:
+Instance webových aplikací jsou bezstavové, takže každá nově spuštěná instance musí být při spuštění nakonfigurovaná tak, aby podporovala konfiguraci WildFly, kterou vyžaduje aplikace.
+Můžete napsat spouštěcí skript bash, který volá rozhraní příkazového řádku WildFly na:
 
-- Nastavení zdroje dat
-- Konfigurace zprostředkovatelů zasílání zpráv
-- Přidejte do konfigurace serveru WildFly jiných modulů a závislosti.
+- Nastavení zdrojů dat
+- Konfigurovat poskytovatele zasílání zpráv
+- Přidejte další moduly a závislosti do konfigurace serveru WildFly.
 
-Skript se spustí při WildFly je vytvořená a spuštěná, ale před spuštěním aplikace. Skript by měl používat [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) volat z */opt/jboss/wildfly/bin/jboss-cli.sh* se konfigurace nebo po spuštění serveru potřebné změny konfigurace aplikačního serveru.
+Skript se spustí, když je WildFly v provozu, ale před spuštěním aplikace. Skript by měl používat rozhraní příkazového [řádku JBoss](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) s názvem z */opt/JBoss/WildFly/bin/JBoss-CLI.sh* ke konfiguraci aplikačního serveru s jakoukoli konfigurací nebo změnami potřebnými po spuštění serveru.
 
-Nepoužívejte ke konfiguraci WildFly interaktivní režim rozhraní příkazového řádku. Místo toho můžete poskytnout skript příkazů rozhraní příkazového řádku JBoss pomocí `--file` příkazu, například:
-
-```bash
-/opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
-```
-
-Pomocí funkce FTP k nahrání spouštěcí skript do umístění ve vaší instanci služby App Service v rámci vaší */home* adresář, jako například */home/site/deployments/tools*. Další informace najdete v tématu [nasazení aplikace do Azure App Service pomocí FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp).
-
-Nastavte **spouštěcí skript** pole na webu Azure Portal do umístění při spuštění skriptu prostředí, například */home/site/deployments/tools/your-startup-script.sh*.
-
-Zadat [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) v konfiguraci aplikace a zajistěte tak předání proměnných prostředí pro použití skriptu. Nastavení aplikace udržovat připojovací řetězce a další tajné klíče potřebné ke konfiguraci vaší aplikace ze správy verzí.
-
-### <a name="install-modules-and-dependencies"></a>Instalace modulů a závislostí
-
-Instalace modulů a jejich závislosti do cesty pro třídy WildFly prostřednictvím rozhraní příkazového řádku JBoss, musíte vytvořit následující soubory v jejich vlastní adresáře. Některé moduly a závislosti může být nutné další konfigurace, jako je například JNDI pojmenování nebo jiná konfigurace specifické pro rozhraní API, takže tento seznam je minimální sada budete potřebovat ke konfiguraci závislostí ve většině případů.
-
-- [Popisovač modulu XML](https://jboss-modules.github.io/jboss-modules/manual/#descriptors). Tento soubor XML definuje název, atributy a závislosti modulu. To [ukázkový soubor module.xml](https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource) definuje modulu Postgres, jeho závislost JDBC souboru JAR a další závislosti modulu, které vyžaduje.
-- Všechny nezbytné JAR souboru závislosti pro modul.
-- Skript se vaše příkazy rozhraní příkazového řádku JBoss konfigurace nového modulu. Tento soubor bude obsahovat vaše příkazy mají být provedeny pomocí rozhraní příkazového řádku JBoss a konfigurace serveru pro použití závislost. Dokumentace ke službě na příkazy pro přidání modulů, zdroje dat a zprostředkovatelé zasílání zpráv, najdete v tématu [tento dokument](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
-- Bash spouštěcí skript pro volání rozhraní příkazového řádku JBoss a spusťte tento skript v předchozím kroku. Tento soubor se spustí při restartování vaší instance služby App Service, nebo když nových instancí se zřizují během Škálováním. Tento skript po spuštění je, kde můžete provádět další konfigurace pro vaši aplikaci předaly JBoss příkazy rozhraní příkazového řádku JBoss. Minimálně tento soubor může být jediným příkazem k předání vašeho skriptu příkazu rozhraní příkazového řádku JBoss JBoss rozhraní příkazového řádku:
+Nepoužívejte interaktivní režim rozhraní příkazového řádku ke konfiguraci WildFly. Místo toho můžete pomocí `--file` příkazu zadat skript příkazů JBoss CLI, například:
 
 ```bash
 /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
 ```
 
-Jakmile budete mít, soubory a obsah pro modul, postupujte podle kroků níže přidejte modul WildFly aplikačního serveru.
+Pomocí protokolu FTP nahrajte spouštěcí skript do umístění v App Service instanci v adresáři */Home* , například */Home/site/Deployments/Tools*. Další informace najdete v tématu [nasazení aplikace pro Azure App Service pomocí FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp).
 
-1. Pomocí funkce FTP k nahrání souborů do umístění ve vaší instanci služby App Service v rámci vaší */home* adresář, jako například */home/site/deployments/tools*. Další informace najdete v tématu [nasazení aplikace do Azure App Service pomocí FTP/S](../deploy-ftp.md).
-2. V **konfigurace** > **obecné nastavení** stránky na webu Azure portal, nastavte **spouštěcí skript** pole do umístění vašeho prostředí spouštěcí skript pro Příklad */home/site/deployments/tools/startup.sh*.
-3. Stisknutím kombinace kláves restartování vaší instance služby App Service **restartovat** tlačítko **přehled** oddílu na portálu nebo pomocí rozhraní příkazového řádku Azure.
+Do pole **spouštěcí skript** v Azure Portal nastavte umístění spouštěcího skriptu Shell, například */Home/site/Deployments/Tools/Your-Startup-Script.sh*.
 
-### <a name="configure-data-sources"></a>Konfigurace zdroje dat
+Zadejte [Nastavení](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) aplikace v konfiguraci aplikace a předejte proměnné prostředí pro použití ve skriptu. Nastavení aplikace udržuje připojovací řetězce a další tajné kódy, které jsou potřeba ke konfiguraci vaší aplikace z řízení verze.
 
-Ke konfiguraci WildFly/JBoss pro přístup ke zdroji dat, je použít obecný postup uvedených výše v části "Instalace modulů a závislosti". V následujících částech najdete konkrétní podrobnosti o tomto procesu pro datové zdroje pro PostgreSQL, MySQL a SQL Server.
+### <a name="install-modules-and-dependencies"></a>Nainstalovat moduly a závislosti
 
-V této části se předpokládá, že již máte aplikaci, instance služby App Service a instanci služby Azure Database. Podle následujících pokynů odkazovat na název vaší služby App Service, jeho skupina prostředků a vaše informace o připojení databáze. Můžete najít tyto informace na portálu Azure portal.
+Chcete-li nainstalovat moduly a jejich závislosti do WildFly classpath prostřednictvím rozhraní příkazového řádku JBoss, budete muset vytvořit následující soubory ve svém vlastním adresáři. Některé moduly a závislosti můžou potřebovat další konfiguraci, jako je JNDI názvů nebo jiná konfigurace specifická pro rozhraní API, takže tento seznam je minimální, co budete muset nakonfigurovat na závislost ve většině případů.
 
-Pokud chcete absolvovat celý proces od začátku pomocí ukázkové aplikace, najdete v článku [kurzu: Vytvoření webové aplikace v Azure platformě Java EE určený a Postgres](tutorial-java-enterprise-postgresql-app.md).
+- [Popisovač modulu XML](https://jboss-modules.github.io/jboss-modules/manual/#descriptors). Tento soubor XML definuje název, atributy a závislosti vašeho modulu. Tento [ukázkový soubor Module. XML](https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource) definuje modul Postgres, jeho závislost JDBC souborů JAR a vyžaduje další závislosti modulů.
+- Všechny nezbytné závislosti souborů JAR pro váš modul.
+- Skript s příkazy rozhraní příkazového řádku JBoss pro konfiguraci nového modulu. Tento soubor bude obsahovat příkazy, které mají být spuštěny rozhraním příkazového řádku JBoss, aby bylo možné nakonfigurovat server tak, aby používal závislost. Dokumentaci k příkazům pro přidání modulů, zdrojů dat a poskytovatelů zasílání zpráv najdete v [tomto dokumentu](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
+- Spouštěcí skript bash, který volá rozhraní příkazového řádku JBoss a spustí skript v předchozím kroku. Tento soubor se spustí, když se vaše instance App Service restartuje nebo když se během škálování na více instancí zřídí nové instance. Tento spouštěcí skript je místo, kde můžete pro svou aplikaci provádět jakékoli další konfigurace, protože příkazy JBoss jsou předány do JBoss CLI. Tento soubor může být minimálně jediným příkazem k předání skriptu příkazu JBoss CLI do JBoss CLI:
 
-Následující postup vysvětluje požadavky pro připojení stávající službu App Service a databázi.
+```bash
+/opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
+```
 
-1. Stáhnout ovladač JDBC pro [PostgreSQL](https://jdbc.postgresql.org/download.html), [MySQL](https://dev.mysql.com/downloads/connector/j/), nebo [systému SQL Server](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server). Rozbalte stažený archiv získat ovladač soubor .jar.
+Jakmile budete mít soubory a obsah pro svůj modul, postupujte podle následujících kroků a přidejte modul do aplikačního serveru WildFly.
 
-2. Vytvořte soubor s názvem, jako je *module.xml* a přidejte následující kód. Nahradit `<module name>` zástupný text (včetně ostrých závorek) `org.postgres` pro PostgreSQL, `com.mysql` pro MySQL, nebo `com.microsoft` pro SQL Server. Nahraďte `<JDBC .jar file path>` s názvem souboru .jar v předchozím kroku, včetně úplnou cestu k umístění umístíte ho ve vaší instanci služby App Service. To může být libovolného umístění v rámci */home* adresáře.
+1. Pomocí protokolu FTP nahrajte soubory do umístění v App Service instanci v adresáři */Home* , jako je například */Home/site/Deployments/Tools*. Další informace najdete v tématu [nasazení aplikace pro Azure App Service pomocí FTP/S](../deploy-ftp.md).
+2. Na stránce**Obecné nastavení** **Konfigurace** > v Azure Portal nastavte pole **spouštěcí skript** do umístění skriptu Startup Shell, například */Home/site/Deployments/Tools/Startup.sh*.
+3. Kliknutím na tlačítko **restartovat** v části **Přehled** na portálu nebo pomocí Azure CLI Restartujte instanci App Service.
+
+### <a name="configure-data-sources"></a>Konfigurace zdrojů dat
+
+Pokud chcete nakonfigurovat WildFly/JBoss pro přístup ke zdroji dat, použijte obecný proces uvedený výše v části "nainstalovat moduly a závislosti". V následující části najdete konkrétní informace o tomto procesu pro zdroje dat PostgreSQL, MySQL a SQL Server.
+
+V této části se předpokládá, že už máte aplikaci, instanci App Service a instanci služby Azure Database Service. Níže uvedené pokyny odkazují na název App Service, jeho skupinu prostředků a informace o připojení k databázi. Tyto informace najdete na Azure Portal.
+
+Pokud raději projdete celý proces od začátku s použitím ukázkové aplikace, přečtěte si téma [kurz: Sestavte webovou aplikaci Java EE a Postgres v](tutorial-java-enterprise-postgresql-app.md)Azure.
+
+Následující kroky vysvětlují požadavky na připojení stávajících App Service a databáze.
+
+1. Stáhněte si ovladač JDBC pro [PostgreSQL](https://jdbc.postgresql.org/download.html), [MySQL](https://dev.mysql.com/downloads/connector/j/)nebo [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server). Rozbalte stažený archiv a získejte soubor Driver. jar.
+
+2. Vytvořte soubor s názvem jako *Module. XML* a přidejte následující kód. Zástupný symbol (včetně lomených závorek `org.postgres` ) nahraďte pro PostgreSQL `com.mysql` , pro MySQL nebo `com.microsoft` pro SQL Server. `<module name>` Nahraďte `<JDBC .jar file path>` názvem souboru. jar z předchozího kroku, včetně úplné cesty k umístění, kam umístíte soubor do instance App Service. Může to být jakékoli umístění v adresáři */Home* .
 
     ```xml
     <?xml version="1.0" ?>
@@ -507,7 +513,7 @@ Následující postup vysvětluje požadavky pro připojení stávající služb
     </module>
     ```
 
-3. Vytvořte soubor s názvem, jako je *datasource commands.cli* a přidejte následující kód. Nahraďte `<JDBC .jar file path>` s hodnotou, které jste použili v předchozím kroku. Nahraďte `<module file path>` s názvem souboru a cestou služby App Service v předchozím kroku, například */home/module.xml*.
+3. Vytvořte soubor s názvem, jako je *DataSource-Commands. CLI* a přidejte následující kód. Nahraďte `<JDBC .jar file path>` hodnotou, kterou jste použili v předchozím kroku. Nahraďte `<module file path>` názvem souboru a App Service cestou z předchozího kroku, například */Home/Module.XML*.
 
     **PostgreSQL**
 
@@ -545,18 +551,18 @@ Následující postup vysvětluje požadavky pro připojení stávající služb
     reload --use-current-server-config=true
     ```
 
-    Tento soubor je spuštěn při spuštění skriptu je popsáno v dalším kroku. Nainstaluje ovladač JDBC jako modul WildFly, vytvoří odpovídající zdroj dat WildFly a znovu načte serveru a ujistěte se, že změny se projeví.
+    Tento soubor se spouští spouštěcím skriptem popsaným v dalším kroku. Nainstaluje ovladač JDBC jako modul WildFly, vytvoří odpovídající zdroj dat WildFly a znovu načte server, aby se projevily změny.
 
-4. Vytvořte soubor s názvem, jako je *startup.sh* a přidejte následující kód. Nahraďte `<JBoss CLI script>` s názvem souboru, který jste vytvořili v předchozím kroku. Nezapomeňte zahrnout úplnou cestu k umístění umístíte soubor v instanci služby App Service, třeba */home/datasource-commands.cli*.
+4. Vytvořte soubor s názvem jako *Startup.sh* a přidejte následující kód. Nahraďte `<JBoss CLI script>` názvem souboru, který jste vytvořili v předchozím kroku. Nezapomeňte uvést úplnou cestu k umístění, kam umístíte soubor do instance App Service, například */Home/DataSource-Commands.CLI*.
 
     ```bash
     #!/usr/bin/env bash
     /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=<JBoss CLI script>
     ```
 
-5. Nahrát soubor .jar s JDBC, soubor XML modulu, skript rozhraní příkazového řádku JBoss a spouštěcí skript k vaší instanci služby App Service pomocí FTP. Tyto soubory do umístění, které jste zadali v předchozím postupu, jako například */home*. Další informace o protokolu FTP, naleznete v tématu [nasazení aplikace do Azure App Service pomocí FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp).
+5. Pomocí FTP nahrajte soubor JDBC. jar, soubor XML modulu, skript rozhraní příkazového řádku JBoss a spouštěcí skript do instance App Service. Tyto soubory vložte do umístění, které jste zadali v předchozích krocích, například */Home*. Další informace o FTP najdete v tématu [nasazení aplikace pro Azure App Service pomocí protokolu FTP/S](https://docs.microsoft.com/azure/app-service/deploy-ftp).
 
-6. Chcete-li přidat nastavení do služby App Service, která obsahovat vaše informace o připojení databáze pomocí Azure CLI. Nahraďte `<resource group>` a `<webapp name>` hodnotami, které používá služby App Service. Nahraďte `<database server name>`, `<database name>`, `<admin name>`, a `<admin password>` se vaše informace o připojení databáze. Informace o vaší služby App Service a databáze můžete získat z webu Azure portal.
+6. Pomocí rozhraní příkazového řádku Azure můžete přidat nastavení do App Service, která obsahují informace o připojení k databázi. Hodnoty `<resource group>` a`<webapp name>` nahraďte hodnotami, které App Service používá. `<database server name>`Nahraďte `<database name>`,, a`<admin password>` s informacemi o připojení k databázi. `<admin name>` Z Azure Portal můžete získat informace o App Service a databázi.
 
     **PostgreSQL:**
 
@@ -592,19 +598,19 @@ Následující postup vysvětluje požadavky pro připojení stávající služb
             DATABASE_CONNECTION_URL=jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
     ```
 
-    DATABASE_CONNECTION_URL hodnoty se liší pro každý server databáze a jiné než hodnoty na webu Azure portal. Jsou požadovány pro použití podle WildFly formátech adres URL je znázorněno zde (a fragmenty kódu výše):
+    Hodnoty DATABASE_CONNECTION_URL se pro každý databázový server liší a liší se od hodnot v Azure Portal. Zde uvedené formáty adres URL (a ve výše uvedených fragmentech) jsou vyžadovány pro použití v WildFly:
 
     * **PostgreSQL:** `jdbc:postgresql://<database server name>:5432/<database name>?ssl=true`
     * **MySQL:** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`
     * **SQL Server:** `jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;`
 
-7. Na webu Azure Portal, přejděte do služby App Service a najděte **konfigurace** > **obecné nastavení** stránky. Nastavte **spouštěcí skript** pole pro název a umístění spuštění skriptu, například */home/startup.sh*.
+7. V Azure Portal přejděte na App Service a Najděte stránku**Obecná nastavení** **Konfigurace** > . Do pole **spouštěcí skript** nastavte název a umístění spouštěcího skriptu, například */Home/Startup.sh*.
 
-Při příštím restartování služby App Service, bude se spouštěcí skript spouštěl a proveďte kroky nezbytné konfigurace. K otestování, zda tato konfigurace vyskytuje správně, můžete přístup k vaší službě App Service pomocí SSH a pak se spouštěcí skript spouštěl sami z příkazového řádku prostředí Bash. Můžete také zkontrolovat protokoly služby App Service. Další informace o těchto možnostech najdete v tématu [protokolování a ladění aplikací](#logging-and-debugging-apps).
+Při příštím restartování App Service spustí spouštěcí skript a provede kroky potřebné ke konfiguraci. K otestování, jestli tato konfigurace proběhne správně, můžete ke svému App Service přistupovat pomocí SSH a potom spustit spouštěcí skript sami z bash výzvy. Můžete také prostudovat protokoly App Service. Další informace o těchto možnostech najdete v tématu [protokolování a ladění aplikací](#logging-and-debugging-apps).
 
-V dalším kroku je potřeba aktualizovat konfiguraci WildFly pro vaši aplikaci a znovu ji nasadíte. Použijte k tomu následující postup:
+V dalším kroku budete muset aktualizovat konfiguraci WildFly pro vaši aplikaci a znovu ji nasadit. Použijte k tomu následující postup:
 
-1. Otevřít *src/main/resources/META-INF/persistence.xml* souboru pro vaši aplikaci a najít `<jta-data-source>` elementu. Nahraďte jeho obsah, jak je znázorněno zde:
+1. Otevřete soubor *Src/Main/Resources/META-INF/Persistence. XML* pro vaši aplikaci a `<jta-data-source>` vyhledejte element. Nahraďte jeho obsah, jak je znázorněno zde:
 
     **PostgreSQL**
 
@@ -624,68 +630,68 @@ V dalším kroku je potřeba aktualizovat konfiguraci WildFly pro vaši aplikaci
     <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
     ```
 
-2. Znovu sestavte a opětovně Nasaďte aplikaci pomocí následujícího příkazu na příkazovém řádku Bash:
+2. Znovu sestavte a znovu nasaďte aplikaci pomocí následujícího příkazu na příkazovém řádku bash:
 
     ```bash
     mvn package -DskipTests azure-webapp:deploy
     ```
 
-3. Stisknutím klávesy restartování vaší instance služby App Service **restartovat** tlačítko **přehled** části webu Azure Portal nebo pomocí rozhraní příkazového řádku Azure.
+3. Restartujte instanci App Service tak, že stisknete tlačítko **restartovat** v části **Přehled** Azure Portal nebo pomocí Azure CLI.
 
-Instance vaší služby App Service je nyní nakonfigurováno pro přístup k databázi.
+Vaše instance App Service je teď nakonfigurovaná pro přístup k databázi.
 
-Další informace o tom, jak nakonfigurovat připojení k databázi s WildFly, naleznete v tématu [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7), [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource), nebo [systému SQL Server](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898).
+Další informace o konfiguraci připojení databáze pomocí WildFly najdete v tématu [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7), [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource)nebo [SQL Server](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898).
 
-### <a name="enable-messaging-providers"></a>Povolení zprostředkovatelé zasílání zpráv
+### <a name="enable-messaging-providers"></a>Povolit poskytovatele zasílání zpráv
 
-Pokud chcete povolit zpráva řízené lusků používat jako mechanismus zasílání zpráv Service Bus:
+Postup povolení fazolových bobů v rámci zprávy pomocí Service Bus jako mechanismu zasílání zpráv:
 
-1. Použití [knihovna zpráv Apache QPId JMS](https://qpid.apache.org/proton/index.html). Patří této závislosti ve vašich pom.xml (nebo jiný soubor sestavení) pro aplikaci.
+1. Použijte [knihovnu pro zasílání zpráv Apache QPID JMS](https://qpid.apache.org/proton/index.html). Zahrňte tuto závislost do souboru pom. XML (nebo jiného souboru sestavení) pro aplikaci.
 
-2. Vytvoření [prostředky služby Service Bus](/azure/service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp). Vytvoření oboru názvů služby Azure Service Bus a fronty v rámci daného oboru názvů a zásady sdíleného přístupu s odesílání a přijímání možnosti.
+2. Vytvoření [prostředků Service Bus](/azure/service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp). Vytvoří obor názvů Azure Service Bus a zařadí do fronty v rámci tohoto oboru názvů a zásadu sdíleného přístupu s funkcemi pro odesílání a příjem.
 
-3. Předat klíč zásad sdíleného přístupu ke kódu, buď pomocí kódování URL primární klíč zásady nebo [pomocí sady SDK služby Service Bus](/azure/service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp#setup-jndi-context-and-configure-the-connectionfactory).
+3. Předejte klíč zásad sdíleného přístupu do kódu buď pomocí adresy URL, a to tak, že zadáte primární klíč zásady, nebo [použijete sadu Service Bus SDK](/azure/service-bus-messaging/service-bus-java-how-to-use-jms-api-amqp#setup-jndi-context-and-configure-the-connectionfactory).
 
-4. Postupujte podle kroků uvedených v části Instalace modulů a závislosti s modul XML popisovač, .jar závislosti, příkazů rozhraní příkazového řádku JBoss a spouštěcí skript pro JMS zprostředkovatele. Kromě čtyři soubory je také potřeba vytvořit soubor XML, který definuje název JNDI pro JMS frontu a téma. Zobrazit [toto úložiště](https://github.com/JasonFreeberg/widlfly-server-configs/tree/master/appconfig) pro odkaz na konfigurační soubory.
+4. Postupujte podle kroků uvedených v části instalace modulů a závislostí s popisovačem XML modulu, závislostmi jar, příkazy rozhraní příkazového řádku JBoss a spouštěcím skriptem pro poskytovatele JMS. Kromě těchto čtyř souborů budete také muset vytvořit soubor XML, který definuje název JNDI pro frontu JMS a téma. Podívejte se na [Toto úložiště](https://github.com/JasonFreeberg/widlfly-server-configs/tree/master/appconfig) pro referenční konfigurační soubory.
 
-### <a name="configure-session-management-caching"></a>Konfigurovat ukládání do mezipaměti relace správy
+### <a name="configure-session-management-caching"></a>Konfigurace ukládání do mezipaměti správy relací
 
-App Service v Linuxu ve výchozím nastavení bude používat soubory cookie spřažení relace k zajištění, že požadavky klientů s existující relací jsou směrovány stejnou instanci vaší aplikace. Toto výchozí chování není nutné nic konfigurovat, ale má určitá omezení:
+Ve výchozím nastavení App Service v systému Linux bude používat soubory cookie spřažení relací, aby bylo zajištěno, že požadavky klientů se stávajícími relacemi jsou směrovány na stejnou instanci aplikace. Toto výchozí chování nevyžaduje žádnou konfiguraci, ale má určitá omezení:
 
-- Pokud instance aplikace je restartován nebo kapacitu vertikálně snížit, stav relace uživatele na serveru aplikace se ztratí.
-- Pokud aplikace nastavení časového limitu relace dlouhé nebo pevný počet uživatelů, může trvat nějakou dobu došlo ke ztrátě schopnosti nové instance pro příjem zatížení, protože pouze nové relace se budou směrovat na nově spuštěná instance.
+- Pokud dojde k restartování instance aplikace nebo snížení kapacity, dojde ke ztrátě stavu uživatelské relace na aplikačním serveru.
+- Pokud mají aplikace delší časový limit relace nebo pevný počet uživatelů, může trvat nějakou dobu, než se nové instance automatického škálování dostanou načíst, protože se budou směrovat jenom nové relace na nově spuštěné instance.
 
-Můžete nakonfigurovat WildFly použít jako úložiště externí relace [mezipaměti Azure Redis](/azure/azure-cache-for-redis/). Budete muset [zakázat existující Instance spřažení směrování žádostí na aplikace](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) konfigurace vypnout relace na základě souboru cookie směrování a povolit nakonfigurované úložiště relace WildFly pracovat i bez rušení.
+WildFly můžete nakonfigurovat tak, aby používala externí úložiště relací, jako je například [Azure cache pro Redis](/azure/azure-cache-for-redis/). Pokud chcete vypnout směrování na základě souborů cookie relace a povolit, aby nakonfigurované úložiště relací WildFly fungovalo bez rušivého vlivu, budete muset [zakázat existující konfiguraci spřažení instancí ARR](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) .
 
 ## <a name="docker-containers"></a>Kontejnery Dockeru
 
-Pokud chcete použít sadu JDK Zulu podporovaných systémem Azure v kontejnerech, ujistěte se, že k vyžádání a použijte předem sestavené Image, jak je uvedeno v [podporované Azul Zulu Enterprise pro stránku pro stažení Azure](https://www.azul.com/downloads/azure-only/zulu/) nebo použijte `Dockerfile` příklady z [Úložiště Microsoft Java GitHub](https://github.com/Microsoft/java/tree/master/docker).
+Pokud chcete ve svých kontejnerech používat Zulu JDK s podporou Azure, nezapomeňte si vyžádat a použít předem připravené image, jak je uvedeno na [stránce pro stažení podporované Azul Zulu Enterprise for Azure](https://www.azul.com/downloads/azure-only/zulu/) , nebo `Dockerfile` použijte příklady z [úložiště Microsoft Java GitHub. ](https://github.com/Microsoft/java/tree/master/docker).
 
-## <a name="statement-of-support"></a>Prohlášení k podpoře
+## <a name="statement-of-support"></a>Prohlášení o podpoře
 
-### <a name="runtime-availability"></a>Dostupnost modulu runtime
+### <a name="runtime-availability"></a>Běhová dostupnost
 
-App Service pro Linux podporuje dva moduly runtime pro spravované hostování webových aplikací v Javě:
+App Service pro Linux podporuje dva moduly runtime pro spravované hostování webových aplikací Java:
 
-- [Servletový kontejner Tomcat](https://tomcat.apache.org/) ke spuštění zabalené aplikace jako webové souborech archivu (WAR). Podporované verze jsou 8.5 a 9.0.
-- Běhové prostředí Java SE pro provoz aplikací s podobu Java archivní soubory (JAR). Podporovány jsou verze Javy 8 a 11.
+- [Kontejner servlet Tomcat](https://tomcat.apache.org/) pro spuštěné aplikace zabalené jako soubory webového archivu (War). Podporované verze jsou 8,5 a 9,0.
+- Běhové prostředí Java SE spouští pro aplikace zabalené jako soubory v archivu Java (JAR). Podporované verze jsou Java 8 a 11.
 
-### <a name="jdk-versions-and-maintenance"></a>JDK verze a údržba
+### <a name="jdk-versions-and-maintenance"></a>Verze a údržba JDK
 
-Azul Zulu Enterprise sestavení OpenJDK jsou kombinace OpenJDK pro Azure a Azure Stackem zajišťovanou Microsoftem a Azul Systems bezplatného, multiplatformní a připravené pro produkční prostředí. Obsahují všechny komponenty pro vytváření a spouštění aplikací Java SE. Můžete nainstalovat sadu JDK od [Java JDK instalace](https://aka.ms/azure-jdks).
+Azul Zulu Enterprise Builds of OpenJDK jsou špičkovou distribucí do produkčního prostředí OpenJDK pro Azure a Azure Stack zajištěné systémy Microsoftu a Azul. Obsahují všechny komponenty pro vytváření a spouštění aplikací Java SE. JDK můžete nainstalovat z [instalace Java JDK](https://aka.ms/azure-jdks).
 
-Podporované JDK jsou automaticky opravit čtvrtletně v lednu, dubnu, červenci a říjnu každý rok.
+Podporované sady JDK se na čtvrtletní bázi automaticky opravují v lednu, dubnu, červenci a říjnu každého roku.
 
 ### <a name="security-updates"></a>Aktualizace zabezpečení
 
-Opravy chyb a opravy pro chyby zabezpečení hlavní vydá Jakmile budou k dispozici od Azul Systems. "Hlavní" ohrožení zabezpečení je definována základní skóre 9.0 nebo vyšší na [NIST běžné ohrožení zabezpečení hodnocení systému, verze 2](https://nvd.nist.gov/cvss.cfm).
+Opravy a opravy pro hlavní slabá místa zabezpečení budou vydány, jakmile budou dostupné ze systémů Azul. "Hlavní" ohrožení zabezpečení je definováno základním skóre 9,0 nebo vyšším v [systému NIST Common zranitelnost Standard, verze 2](https://nvd.nist.gov/cvss.cfm).
 
 ### <a name="deprecation-and-retirement"></a>Vyřazení a vyřazení z provozu
 
-Pokud podporovaného modulu runtime Java se vyřadí z provozu, vývojáře v Azure pomocí ovlivněné runtime dostanou oznámení o zastarání aspoň šest měsíců před modul runtime byl vyřazen z provozu.
+Pokud bude vyřazení podporované běhové prostředí Java, budou se vývojáři Azure, kteří používají modul runtime, předávat oznámení o zastaralosti alespoň šest měsíců před vyřazením modulu runtime.
 
 ## <a name="next-steps"></a>Další postup
 
-Přejděte [Azure pro vývojáře v Javě](/java/azure/) centra a najít rychlí průvodci Azure, kurzy a referenční dokumentace jazyka Java.
+Na webu [Azure pro vývojáře v jazyce Java](/java/azure/) najdete informace o rychlých startech, kurzech a referenční dokumentaci Java pro Azure.
 
-Obecné dotazy ohledně používání služby App Service pro Linux, které nejsou specifické pro Java development v odpovědi [nejčastější dotazy týkající se App Service Linux](app-service-linux-faq.md).
+Obecné otázky týkající se použití App Service pro Linux, které nejsou specifické pro vývoj v jazyce Java, jsou zodpovězeny v tématu [Nejčastější dotazy k App Service Linux](app-service-linux-faq.md).

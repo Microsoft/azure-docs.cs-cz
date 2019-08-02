@@ -1,106 +1,107 @@
 ---
-title: Chyba odkazu pro kontrolu stavu – Azure Container Registry
-description: Kódy chyb a možná řešení problémy nalezené pomocí příkazu az acr stav kontroly diagnostiky ve službě Azure Container Registry
+title: Odkaz na chybu pro kontrolu stavu-Azure Container Registry
+description: Kódy chyb a možná řešení problémů nalezené spuštěním příkazu AZ ACR check-Health Diagnostic v Azure Container Registry
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: danlep
-ms.openlocfilehash: fc29b27cbb7eea983140c59529d981ad95c27ae8
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 4585749c83432c19b6e62f57c1d954b3afc5ee33
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67555108"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608396"
 ---
-# <a name="health-check-error-reference"></a>Reference k chybám kontroly stavu
+# <a name="health-check-error-reference"></a>Informace o chybě kontroly stavu
 
-Toto jsou podrobnosti o kódů chyb vrácených nástrojem [az acr-stav kontroly][az-acr-check-health] příkazu. U každé chyby jsou uvedené možné řešení.
+Níže jsou uvedeny podrobnosti o kódech chyb vrácených příkazem [AZ ACR check-Health][az-acr-check-health] . Pro každou chybu jsou uvedena možná řešení.
 
 ## <a name="dockercommanderror"></a>DOCKER_COMMAND_ERROR
 
-Tato chyba znamená, že klienta Docker pro rozhraní příkazového řádku se nenašla. V důsledku toho nejsou, spusťte následující další kontroly: Vyhledání stavu démona Dockeru verze, vyhodnocování Dockeru a spuštění Docker pull příkazu.
+Tato chyba znamená, že se nepovedlo najít klienta Docker pro rozhraní příkazového řádku. V důsledku toho následující další kontroly nebudou spuštěny: hledání verze Docker, vyhodnocení stavu démona Docker a spuštění příkazu Docker Pull.
 
-*Možná řešení*: Nainstalujte klienta Dockeru. přidáte cestu Dockeru k systémovým proměnným.
+*Potenciální řešení*: Nainstalovat klienta Docker; Přidejte do systémových proměnných cestu Docker.
 
 ## <a name="dockerdaemonerror"></a>DOCKER_DAEMON_ERROR
 
-Tato chyba znamená, že stav démona Dockeru není k dispozici nebo že to není dosažitelná pomocí rozhraní příkazového řádku. Ve výsledku operace Dockeru (například `docker login` a `docker pull`) nejsou k dispozici prostřednictvím rozhraní příkazového řádku.
+Tato chyba znamená, že stav démona Docker není k dispozici nebo že k němu nelze získat přístup pomocí rozhraní příkazového řádku. V důsledku toho nejsou k dispozici operace Docker `docker login` ( `docker pull`například a) prostřednictvím rozhraní příkazového řádku.
 
-*Možná řešení*: Restartujte démona Dockeru nebo ověřit, zda je správně nainstalován.
+*Potenciální řešení*: Restartujte Docker démon nebo ověřte, že je správně nainstalovaný.
 
 ## <a name="dockerversionerror"></a>DOCKER_VERSION_ERROR
 
-Tato chyba znamená, že rozhraní příkazového řádku se nepodařilo spustit příkaz `docker --version`.
+Tato chyba znamená, že rozhraní příkazového řádku (CLI) `docker --version`nemohlo spustit příkaz.
 
-*Možná řešení*: Zkuste spustit příkaz ručně, ujistěte se, že máte nejnovější verzi rozhraní příkazového řádku a prozkoumejte chybová zpráva.
+*Potenciální řešení*: Zkuste spustit příkaz ručně, ujistěte se, že máte nejnovější verzi rozhraní příkazového řádku, a prozkoumejte chybovou zprávu.
 
 ## <a name="dockerpullerror"></a>DOCKER_PULL_ERROR
 
-Tato chyba znamená, že rozhraní příkazového řádku nebyl schopen stáhnout ukázkový obrázek do vašeho prostředí.
+Tato chyba znamená, že rozhraní příkazového řádku (CLI) nedokázalo načíst ukázkovou image do vašeho prostředí.
 
-*Možná řešení*: Ověřte, že jsou všechny komponenty potřebné k vyžádání obrázku správně funguje.
+*Potenciální řešení*: Ověřte, že všechny součásti potřebné pro vyžádání image jsou spuštěné správně.
 
 ## <a name="helmcommanderror"></a>HELM_COMMAND_ERROR
 
-Tato chyba znamená, že tento příkaz Helm klient nebyl nalezen pomocí rozhraní příkazového řádku, který vylučuje jiné operace Helm.
+Tato chyba znamená, že rozhraní příkazového řádku Helm nemůže najít klienta, což vylučuje jiné operace Helm.
 
-*Možná řešení*: Ověřte, že je nainstalován klient Helm, a že jeho cesty je přidaný do proměnných prostředí systému.
+*Potenciální řešení*: Ověřte, zda je nainstalován klient Helm a zda je jeho cesta přidána do proměnných prostředí systému.
 
 ## <a name="helmversionerror"></a>HELM_VERSION_ERROR
 
-Tato chyba znamená, že rozhraní příkazového řádku nebyl schopen určit nainstalovanou verzi Helm. K tomu může dojít, pokud verze rozhraní příkazového řádku Azure (nebo, pokud verze Helm) používá je zastaralý.
+Tato chyba znamená, že rozhraní příkazového řádku se nepodařilo zjistit nainstalovanou verzi Helm. K tomu může dojít v případě, že se používá verze Azure CLI (nebo pokud je verze Helm) zastaralá.
 
-*Možná řešení*: Aktualizovat na nejnovější verzi rozhraní příkazového řádku Azure nebo na doporučenou verzi Helm; Spusťte příkaz ručně a prozkoumat chybová zpráva.
+*Potenciální řešení*: Aktualizujte na nejnovější verzi rozhraní příkazového řádku Azure CLI nebo na doporučenou verzi Helm. Spusťte příkaz ručně a prozkoumejte chybovou zprávu.
 
 ## <a name="connectivitydnserror"></a>CONNECTIVITY_DNS_ERROR
 
-Tato chyba znamená, že DNS pro daného registru přihlašovací server byl příkaz ping, ale neodpověděl, což znamená, že není k dispozici. To může znamenat některé problémy s připojením. Můžete také nemusí existovat v registru, uživatel možná nemáte oprávnění k registru (správně načíst jeho přihlašovací server) nebo registru cílového probíhá jiný cloud, než jaký se používá v Azure CLI.
+Tato chyba znamená, že DNS pro daný přihlašovací server registru byl testovat pomocí testu, ale neodpověděl, což znamená, že není k dispozici. To může znamenat problémy s připojením. Případně může registr existovat, ale uživatel nemusí mít oprávnění k registru (aby mohl správně načíst svůj přihlašovací server), nebo cílový registr je v jiném cloudu než ten, který se používá v rozhraní příkazového řádku Azure CLI.
 
-*Možná řešení*: Ověření připojení; Zkontrolujte pravopis registru a tohoto registru existuje. Ověřte, že uživatel má správná oprávnění na něj a, cloudu v registru je stejný, který se používá v Azure CLI.
+*Potenciální řešení*: Ověřit připojení; Ověřte pravopis registru a tento registr existuje. Ověřte, zda má uživatel správná oprávnění a zda je Cloud registru stejný, který se používá v rozhraní příkazového řádku Azure CLI.
 
 ## <a name="connectivityforbiddenerror"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-Tato chyba znamená, že challenge koncový bod pro daného registru odpověděl stavem 403 Zakázáno HTTP. Tato chyba znamená, že uživatelé nemají přístup k registru, pravděpodobně z důvodu konfigurace virtuální sítě.
+Tato chyba znamená, že koncový bod výzvy pro daný registr odpověděl s 403 zakázaným stavem protokolu HTTP. Tato chyba znamená, že uživatelé nemají přístup k registru, pravděpodobně kvůli konfiguraci virtuální sítě. Chcete-li zobrazit aktuálně konfigurovaná pravidla brány firewall `az acr show --query networkRuleSet --name <registry>`, spusťte příkaz.
 
-*Možná řešení*: Odeberte pravidla virtuální sítě, nebo přidejte aktuální IP adresu klienta do seznamu povolených.
+*Potenciální řešení*: Odeberte pravidla virtuální sítě nebo do seznamu povolených adres přidejte aktuální IP adresu klienta.
 
 ## <a name="connectivitychallengeerror"></a>CONNECTIVITY_CHALLENGE_ERROR
 
-Tato chyba znamená, že koncový bod challenge cílového registru nevydala příkaz náročné.
+Tato chyba znamená, že koncový bod výzvy cílového registru nevydal výzvu.
 
-*Možná řešení*: Zkuste to znovu za chvíli. Pokud potíže potrvají, otevřete problém na https://aka.ms/acr/issues.
+*Potenciální řešení*: Zkuste to za chvíli znovu. Pokud chyba přetrvává, otevřete problém na adrese https://aka.ms/acr/issues.
 
 ## <a name="connectivityaadloginerror"></a>CONNECTIVITY_AAD_LOGIN_ERROR
 
-Tato chyba znamená, že koncový bod challenge cílového registru vydány složité, ale registru nepodporuje ověřování Azure Active Directory.
+Tato chyba znamená, že koncový bod výzvy cílového registru vystavil výzvu, ale registr nepodporuje Azure Active Directory ověřování.
 
-*Možná řešení*: Zkuste jiný způsob, jak ověřit například pomocí přihlašovacích údajů správce. Pokud uživatelé potřebují k ověření pomocí Azure Active Directory, otevřete problém na https://aka.ms/acr/issues.
+*Potenciální řešení*: Vyzkoušejte si jiný způsob ověřování, například s přihlašovacími údaji správce. Pokud se uživatelé potřebují ověřit pomocí Azure Active Directory, otevřete problém na adrese https://aka.ms/acr/issues.
 
 ## <a name="connectivityrefreshtokenerror"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
 
-Tato chyba znamená, aby byl odepřen přístup k registru cílového neodpověděl přihlašovacího serveru registru se obnovovací token. Této chybě může dojít, pokud uživatel nemá správná oprávnění registru nebo pokud jsou zastaralé přihlašovací údaje uživatele pro Azure CLI.
+Tato chyba znamená, že přihlašovací server registru neodpověděl s tokenem pro obnovení, takže přístup k cílovému registru byl odepřen. K této chybě může dojít, pokud uživatel nemá správná oprávnění k registru nebo pokud jsou přihlašovací údaje uživatele pro rozhraní příkazového řádku Azure zastaralé.
 
-*Možná řešení*: Ověřte, zda má uživatel oprávnění na registru. Spustit `az login` aktualizovat oprávnění, tokenů a přihlašovací údaje.
+*Potenciální řešení*: Ověřte, zda má uživatel správná oprávnění k registru. Spusťte `az login` příkaz k aktualizaci oprávnění, tokenů a přihlašovacích údajů.
 
 ## <a name="connectivityaccesstokenerror"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
 
-Tato chyba znamená, že přihlašovací server registru neodpověděl s přístupovým tokenem, tak, aby byl odepřen přístup k registru cíl. Této chybě může dojít, pokud uživatel nemá správná oprávnění registru nebo pokud jsou zastaralé přihlašovací údaje uživatele pro Azure CLI.
+Tato chyba znamená, že přihlašovací server registru neodpověděl pomocí přístupového tokenu, aby byl odepřen přístup k cílovému registru. K této chybě může dojít, pokud uživatel nemá správná oprávnění k registru nebo pokud jsou přihlašovací údaje uživatele pro rozhraní příkazového řádku Azure zastaralé.
 
-*Možná řešení*: Ověřte, zda má uživatel oprávnění na registru. Spustit `az login` aktualizovat oprávnění, tokenů a přihlašovací údaje.
+*Potenciální řešení*: Ověřte, zda má uživatel správná oprávnění k registru. Spusťte `az login` příkaz k aktualizaci oprávnění, tokenů a přihlašovacích údajů.
 
 ## <a name="loginservererror"></a>LOGIN_SERVER_ERROR
 
-Tato chyba znamená, že rozhraní příkazového řádku se nepodařilo najít přihlašovací server daného registru a pro aktuálního cloudu nebyl nalezen žádný výchozí příponou. Této chybě může dojít, pokud v registru neexistuje, pokud uživatel nemá správná oprávnění k registru, pokud v registru a aktuální cloudem Azure CLI se neshodují, nebo pokud je zastaralá verze rozhraní příkazového řádku Azure.
+Tato chyba znamená, že rozhraní příkazového řádku se nepodařilo najít přihlašovací server daného registru a nebyla nalezena žádná výchozí přípona pro aktuální Cloud. K této chybě může dojít, pokud registr neexistuje, pokud uživatel nemá správná oprávnění k registru, pokud se Cloud registru a aktuální cloud Azure CLI neshodují, nebo pokud je verze Azure CLI zastaralá.
 
-*Možná řešení*: Ověřte, zda je správný a zda existuje registr; Ověřte má správná oprávnění k registru, a odpovídající cloudy registru a prostředí rozhraní příkazového řádku; Aktualizujte na nejnovější verzi Azure CLI.
+*Potenciální řešení*: Ověřte, zda je pravopis správné a zda registr existuje. Ověřte, zda má uživatel správná oprávnění k registru a zda se shodují cloudy registru a prostředí CLI. Aktualizujte rozhraní příkazového řádku Azure na nejnovější verzi.
 
 ## <a name="next-steps"></a>Další postup
 
-Možnosti pro kontrolu stavu registru najdete v tématu [Kontrola stavu služby Azure container registry](container-registry-check-health.md).
+Možnosti, jak kontrolovat stav registru, najdete v tématu o [kontrole stavu služby Azure Container Registry](container-registry-check-health.md).
 
-Zobrazit [nejčastější dotazy k](container-registry-faq.md) pro nejčastější dotazy a dalších známých problémech o Azure Container Registry.
+Nejčastější dotazy [](container-registry-faq.md) a další známé problémy týkající se Azure Container Registry najdete v nejčastějších dotazech.
 
 
 

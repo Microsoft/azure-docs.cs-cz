@@ -1,69 +1,70 @@
 ---
 title: Dostupnost prostředků Azure Container Instances
-description: Dostupnost výpočetní a paměťové prostředky pro službu Azure Container Instances v různých oblastech Azure.
+description: Dostupnost výpočetních a paměťových prostředků pro službu Azure Container Instances v různých oblastech Azure.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
 ms.date: 05/14/2019
 ms.author: danlep
-ms.openlocfilehash: 64b60178413e470cc7fe9b3991c6fc29b5a0f860
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 14e7b9a3ea11e59aabeb901c4039e69208ea0cfd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794297"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325709"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
-Tento článek podrobně popisuje dostupnost výpočetní a paměťové prostředky Azure Container Instances v oblastech Azure. 
+Tento článek podrobně popisuje dostupnost Azure Container Instances výpočetních a paměťových prostředků v oblastech Azure. 
 
-Maximální prostředky, které jsou k dispozici pro nasazení jsou hodnoty uvedené [skupinu kontejnerů](container-instances-container-groups.md). Hodnoty jsou aktuální k datu publikování. 
+Zobrazené hodnoty jsou maximální počet dostupných prostředků na jedno nasazení [skupiny kontejnerů](container-instances-container-groups.md). Hodnoty jsou aktuální v době publikace. 
 
 > [!NOTE]
-> Skupin kontejnerů vytvořených v rámci těchto omezení prostředků jsou závisí na dostupnosti v rámci oblasti nasazení. V případě velkého zatížení oblasti může při nasazování instancí docházet k selhání. Selhání nasazení zmírnit, zkuste nasazení instancí s nižšími nastavení prostředků, nebo zkuste nasazení později.
+> Skupiny kontejnerů vytvořené v rámci těchto omezení prostředků podléhají dostupnosti v rámci oblasti nasazení. V případě velkého zatížení oblasti může při nasazování instancí docházet k selhání. Pro zmírnění takového selhání nasazení zkuste nasadit instance s nižšími nastaveními prostředků nebo zkuste nasazení později.
 
-Informace o kvótách a další omezení v nasazeních, naleznete v tématu [kvóty a omezení pro Azure Container Instances](container-instances-quotas.md).
+Informace o kvótách a dalších omezeních v nasazeních najdete v tématu [kvóty a omezení pro Azure Container Instances](container-instances-quotas.md).
 
 ## <a name="availability---general"></a>Dostupnost – obecné
 
-Následující oblasti a prostředky jsou k dispozici pro skupiny kontejnerů s Linuxem a [podporované](container-instances-faq.md#what-windows-base-os-images-are-supported) kontejnery založené na Windows serveru 2016.
+Pro skupiny kontejnerů se systémem Linux a podporovanými kontejnery Windows Server [](container-instances-faq.md#what-windows-base-os-images-are-supported) 2016 jsou k dispozici následující oblasti a prostředky.
 
-| Location | Operační systém | Procesor | Paměť (GB) |
+| Location | OS | Procesor | Paměť (GB) |
 | -------- | -- | :---: | :-----------: |
-| Kanada – střed, střed Indie, střed USA, východní Asie, východní USA, východní USA 2, Severní Evropa, střední část jihu USA, jihovýchodní Asie, Velká Británie – Jih, USA – západ | Linux | 4 | 16 |
-| Západní Evropa, západní USA 2 | Linux | 4 | 14 |
+| Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní USA | Linux | 4 | 16 |
+| Západní Evropa Západní USA 2 | Linux | 4 | 14 |
 | Austrálie – východ, Japonsko – východ | Linux | 2 | 8 |
-| Střed USA – sever, Indie – jih | Linux | 2 | 3,5 |
+| Střed USA – sever Jižní Indie | Linux | 2 | 3,5 |
 | Západní Evropa | Windows | 4 | 16 |
-| USA – východ, USA – západ | Windows | 4 | 14 |
-| Austrálie – východ, Kanada – střed, střed Indie, střed USA, východní Asie, východní USA 2, Japonsko – východ, severní centrální USA, Severní Evropa, střed USA – Jih, Asie – jihovýchod, Indie – Jih, Velká Británie – Jih, USA – západ 2 | Windows | 2 | 3,5 |
+| Východní USA Západní USA | Windows | 4 | 14 |
+| Austrálie – východ, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA 2, Japonsko – východ, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní USA 2 | Windows | 2 | 3,5 |
 
-## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Dostupnost – Windows Server. 2019 LTSC, 1809 nasazení (preview)
+## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Dostupnost – Windows Server 2019 LTSC, 1809 nasazení (Preview)
 
-Následující oblasti a prostředky jsou k dispozici skupin kontejnerů s kontejnery založené na Windows Server 2019 (preview).
+Následující oblasti a prostředky jsou k dispozici pro skupiny kontejnerů s kontejnery založenými na Windows serveru 2019 (Preview).
 
-| Location | Operační systém | Procesor | Paměť (GB) |
+| Location | OS | Procesor | Paměť (GB) |
 | -------- | -- | :---: | :-----------: |
-| Jihovýchodní Asie, Severní Evropa, západní Evropa, střed USA, východní USA, USA – Západ, USA – západ 2 | Windows | 4 | 16 |
+| Jihovýchodní Asie, Severní Evropa, Západní Evropa, Střed USA, Východní USA, Západní USA západní USA 2 | Windows | 4 | 16 |
 | Východní USA 2 | Windows | 2 | 3,5 |
 
 
-## <a name="availability---virtual-network-deployment-preview"></a>Dostupnost – nasazení virtuální sítě (preview)
+## <a name="availability---virtual-network-deployment-preview"></a>Dostupnost – nasazení virtuální sítě (Preview)
 
-Jsou k dispozici pro skupinu kontejnerů nasazených v těchto oblastech a prostředky [virtuální síť Azure](container-instances-vnet.md) (preview).
+Pro skupinu kontejnerů nasazené ve [službě Azure Virtual Network](container-instances-vnet.md) (Preview) jsou k dispozici následující oblasti a prostředky.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
-## <a name="availability---gpu-resources-preview"></a>Dostupnost – prostředky GPU (preview)
+## <a name="availability---gpu-resources-preview"></a>Dostupnost – prostředky GPU (Preview)
 
-Následující oblasti a prostředky jsou k dispozici pro skupinu kontejnerů nasazen s [GPU prostředky](container-instances-gpu.md) (preview).
+Pro skupinu kontejnerů nasazené s [prostředky GPU](container-instances-gpu.md) (Preview) jsou k dispozici následující oblasti a prostředky.
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Sdělte týmu vědět, pokud chcete zobrazit další oblasti nebo dostupnost zvýšení prostředků v [aka.ms/aci/feedback](https://aka.ms/aci/feedback).
+Nechejte tým informovat, pokud byste chtěli zobrazit další oblasti nebo zvýšit dostupnost prostředků na [aka.MS/ACI/Feedback](https://aka.ms/aci/feedback).
 
-Informace o řešení potíží s nasazením instance kontejneru najdete v tématu [řešení problémů s nasazením pomocí služby Azure Container Instances](container-instances-troubleshooting.md).
+Informace o řešení potíží s nasazením instance kontejneru najdete v tématu [řešení potíží s nasazením pomocí Azure Container Instances](container-instances-troubleshooting.md).

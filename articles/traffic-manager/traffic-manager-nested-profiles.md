@@ -1,7 +1,7 @@
 ---
-title: Vnořené profily Traffic Manageru v Azure
+title: Profily vnořených Traffic Manager v Azure
 titlesuffix: Azure Traffic Manager
-description: Tento článek vysvětluje funkce "vnořených profilů Azure Traffic Manageru
+description: Tento článek vysvětluje funkci "vnořené profily" v Azure Traffic Manager
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -13,93 +13,107 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: allensu
-ms.openlocfilehash: 3c5459d0474ecd45501e634c4777fa178386183c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8815d852ad9f8a1823e1c21cc2d233409518da33
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071157"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333795"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Vnořené profily Traffic Manageru
 
-Traffic Manager zahrnuje celou řadu metod směrování provozu, které umožňují řídit, jak Traffic Manager vybere, který koncový bod by měl přijímat provoz z každému koncovému uživateli. Další informace najdete v tématu [metody směrování provozu Traffic Manageru](traffic-manager-routing-methods.md).
+Traffic Manager zahrnuje škálu metod směrování provozu, které vám umožní určit, jak má Traffic Manager zvolit, jaký koncový bod by měl přijímat přenosy od každého koncového uživatele. Další informace najdete v tématu [Traffic Manager metody směrování provozu](traffic-manager-routing-methods.md).
 
-Každý profil služby Traffic Manager určuje jedinou metodu směrování provozu. Existují ale scénáře, které vyžadují složitější směrování provozu, než směrování poskytuje jeden profil Traffic Manageru. Je možné vnořovat profily Traffic Manageru zkombinovat výhod více než jednu metodu směrování provozu. Vnořené profily umožňují potlačit výchozí chování Traffic Managerem pro podporu větší a složitější nasazení aplikací.
+Každý profil Traffic Manager Určuje jednu metodu směrování provozu. Existují však scénáře, které vyžadují výkonnější směrování provozu než směrování poskytované jedním Traffic Manager profilem. Můžete vnořovat profily Traffic Manager, abyste mohli kombinovat výhody více než jedné metody směrování provozu. Vnořené profily umožňují přepsat výchozí chování Traffic Manager pro podporu většího a složitějšího nasazení aplikací.
 
-Následující příklady ukazují, jak použít vnořené profily Traffic Manageru v různých scénářích.
+Následující příklady ilustrují použití vnořených profilů Traffic Manager v různých scénářích.
 
-## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Příklad 1: Kombinování "Výkonu" a "Vážená" směrování provozu
+## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Příklad 1: Kombinování směrování provozu Performance a Weight
 
-Předpokládejme, že jste nasadili aplikace v následujících oblastech Azure: USA – Západ, západní Evropa a východní Asie. Metody směrování provozu Traffic Manageru "Výkonu" použijete k distribuci provozu na oblast nejbližší uživatelům.
+Předpokládejme, že jste nasadili aplikaci v následujících oblastech Azure: Západní USA, Západní Evropa a Východní Asie. K distribuci provozu do oblasti, která je nejblíže uživateli, slouží Traffic Manager způsob směrování provozu "Performance".
 
-![Profil služby Traffic Manager jedním][4]
+![Profil jednoho Traffic Manager][4]
 
-Předpokládejme, že chcete otestovat před distribucí více široce aktualizace do služby. Chcete použít 'vážená: metody směrování provozu ke směrování provozu do vaší testovací nasazení pro malé procento. Nastavení testu nasazení společně s existující nasazení do produkčního prostředí v oblasti západní Evropa.
+Nyní předpokládejme, že chcete otestovat aktualizaci služby před tím, než ji navedete do širšího provozu. Pro přesměrování malého procenta provozu do testovacího nasazení chcete použít metodu směrování "váženého" provozu. Testovací nasazení se nastavuje společně s existujícím provozním nasazením v Západní Evropa.
 
-Nelze kombinovat obou vážená a "výkonu – směrování provozu v jednom profilu. Pro podporu tohoto scénáře, vytvořte profil služby Traffic Manager pomocí dva koncové body západní Evropa a metodu směrování provozu "Vážená". V dalším kroku přidáte tento profil "podřízený" jako koncový bod do profilu "nadřazený". Profil nadřazené stále používá metodu směrování provozu výkonu a obsahuje jiné globální nasazení jako koncové body.
+V jednom profilu nemůžete kombinovat jak vážené, tak výkonové směrování. Pro podporu tohoto scénáře vytvoříte profil Traffic Manager pomocí dvou koncových bodů Západní Evropa a vážené metody směrování provozu. Dále přidáte tento profil podřízeného objektu jako koncový bod do profilu nadřazených objektů. Nadřazený profil stále používá metodu směrování provozu a obsahuje další globální nasazení jako koncové body.
 
-Následující diagram znázorňuje v tomto příkladu:
+Následující diagram znázorňuje tento příklad:
 
 ![Vnořené profily Traffic Manageru][2]
 
-V této konfiguraci přenášená prostřednictvím profilu nadřazené distribuuje provoz napříč oblastmi normálně. V oblasti západní Evropa vnořeného profilu distribuuje provoz do produkčního prostředí a testování koncových bodů podle váhy přiřazené.
+V této konfiguraci provoz směrované přes nadřazený profil distribuuje provoz napříč oblastmi normálně. V rámci Západní Evropa vnořený profil distribuuje provoz do produkčních a testovacích koncových bodů podle přiřazených vah.
 
-Používá-li profil nadřazené metody směrování provozu "Výkonu", musíte být přiřazeni umístění každého koncového bodu. Umístění je přiřazen, když konfigurujete koncový bod. Vyberte oblast Azure, které je nejblíže k nasazení. Oblastí Azure jsou hodnoty umístění podporován tabulka latence Internet. Další informace najdete v tématu [Traffic Manageru "Výkonu" metody směrování provozu](traffic-manager-routing-methods.md#performance).
+Pokud nadřazený profil používá metodu směrování provozu Performance, musí být každému koncovému bodu přiřazeno umístění. Umístění se přiřadí při konfiguraci koncového bodu. Vyberte oblast Azure, která je nejblíže vašemu nasazení. Oblasti Azure jsou hodnoty umístění podporované tabulkou latence Internetu. Další informace najdete v tématu [Traffic Manager metoda "Performance Traffic-Routing"](traffic-manager-routing-methods.md#performance).
 
-## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Příklad 2: Monitorování koncových bodů ve vnořené profily
+## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Příklad 2: Monitorování koncového bodu ve vnořených profilech
 
-Traffic Manager aktivně monitoruje stav každého koncového bodu služby. Pokud koncový bod není v pořádku, Traffic Manager přesměruje uživatelům výjimek alternativní koncové body pro zachování dostupnosti vaší služby. Chování koncového bodu monitorování a převzetí služeb při selhání se vztahuje na všechny metody směrování provozu. Další informace najdete v tématu [monitorování koncových bodů Traffic Manageru](traffic-manager-monitoring.md). Monitorování koncových bodů funguje jinak vnořených profilů. Vnořené profily profil nadřazené neprovádí kontroly stavu pro podřízený přímo. Místo toho stavu koncových bodů podřízené profil se používá k výpočtu celkového stavu profilu podřízené. Informace o tomto stavu se šíří hierarchii vnořeného profilu. Nadřazené profil používá toto agregovaný stav k určení, jestli ke směrování provozu do podřízených profilu. Zobrazit [nejčastější dotazy k](traffic-manager-FAQs.md#traffic-manager-nested-profiles) úplné podrobnosti o monitorování stavu vnořených profilů.
+Traffic Manager aktivně sleduje stav každého koncového bodu služby. Pokud koncový bod není v pořádku, Traffic Manager přesměruje uživatele do alternativních koncových bodů, aby se zachovala dostupnost vaší služby. Toto chování monitorování a převzetí služeb při selhání se vztahuje na všechny metody směrování provozu. Další informace najdete v tématu [Traffic Manager monitorování koncového bodu](traffic-manager-monitoring.md). Monitorování koncového bodu funguje pro vnořené profily jinak. U vnořených profilů nadřazený profil neprovádí kontroly stavu přímo u podřízeného objektu. Místo toho se k výpočtu celkového stavu podřízeného profilu používá stav koncových bodů podřízeného profilu. Tyto informace o stavu se šíří v hierarchii vnořeného profilu. Nadřazený profil pomocí tohoto agregovaného stavu určí, jestli se má směrovat provoz do podřízeného profilu. Úplné podrobnosti [](traffic-manager-FAQs.md#traffic-manager-nested-profiles) o monitorování stavu vnořených profilů najdete v nejčastějších dotazech.
 
-Vrátí do předchozího příkladu předpokládejme, že selže nasazení do produkčního prostředí v oblasti západní Evropa. Ve výchozím nastavení směruje veškerý provoz do testovací nasazení profilu "podřízený". Pokud se nasazení testu také nezdaří, nadřazené profil určuje, že profil podřízené neměli přijímat provoz od všech podřízených koncových bodů nejsou v pořádku. Profil nadřazené pak distribuuje provoz do jiných oblastí.
+Návrat k předchozímu příkladu Předpokládejme, že produkční nasazení v Západní Evropa neproběhne úspěšně. Ve výchozím nastavení profil "Child" směruje veškerý provoz do testovacího nasazení. Pokud testovací nasazení také neproběhne úspěšně, nadřazený profil určí, že podřízený profil by neměl přijímat přenosy, protože všechny podřízené koncové body nejsou v pořádku. Nadřazený profil pak distribuuje provoz do ostatních oblastí.
 
-![Vnořené profilu převzetí služeb při selhání (výchozí nastavení)][3]
+![Převzetí služeb při selhání vnořeného profilu (výchozí chování)][3]
 
-Je možné, se toto uspořádání. Nebo může být, že veškerý provoz pro oblasti západní Evropa teď bude testovací nasazení namísto omezené dílčí provoz. Bez ohledu na stav nasazení testu chcete převzetí služeb při selhání do jiných oblastí při selhání nasazení do produkčního prostředí v oblasti západní Evropa. Pokud chcete povolit toto převzetí služeb při selhání, můžete zadat parametr "MinChildEndpoints" při konfiguraci profilu podřízené jako koncový bod v nadřazené profilu. Parametr určuje minimální počet dostupných koncových bodů v podřízených profilu. Výchozí hodnota je '1'. Pro tento scénář nastavte hodnotu MinChildEndpoints na 2. Pod touto prahovou hodnotou profil nadřazené považuje za celý podřízené profilu do nedostupný a přesměruje provoz do dalších koncových bodů.
+S tímto uspořádáním možná budete spokojeni. Nebo se může stát, že veškerý provoz pro Západní Evropa nyní nachází do testovacího nasazení místo omezeného provozu podmnožiny. Bez ohledu na stav nasazení testu chcete převzít služby při selhání do ostatních oblastí, když produkční nasazení v Západní Evropa selže. Pokud chcete povolit toto převzetí služeb při selhání, můžete zadat parametr MinChildEndpoints při konfiguraci podřízeného profilu jako koncového bodu v nadřazeném profilu. Parametr určuje minimální počet dostupných koncových bodů v podřízeném profilu. Výchozí hodnota je 1. V tomto scénáři nastavíte hodnotu MinChildEndpoints na 2. Pod touto prahovou hodnotou nadřazený profil posuzuje, že celý podřízený profil nebude k dispozici a směruje provoz do ostatních koncových bodů.
 
-Následující obrázek znázorňuje tuto konfiguraci:
+Tato konfigurace je znázorněna na následujícím obrázku:
 
-![Vnořené převzetí služeb při selhání profilu 'MinChildEndpoints' = 2][4]
+![Převzetí služeb při selhání vnořeného profilu s ' MinChildEndpoints ' = 2][4]
 
 > [!NOTE]
-> Metody směrování provozu "Priority" distribuuje veškerý provoz do jediného koncového bodu. V nastavení MinChildEndpoints jiné než '1' proto není trochu účel profilu podřízené.
+> Metoda "Priorita" provoz-směrování distribuuje veškerý provoz do jednoho koncového bodu. Proto je pro podřízený profil malý účel v nastavení MinChildEndpoints, než je 1.
 
-## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Příklad 3: Seřazený podle priority převzetí služeb při selhání oblasti v směrování provozu "výkon.
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Příklad 3: Prioritní oblasti převzetí služeb při selhání ve směrování provozu výkonu
 
-Výchozí chování pro metody směrování provozu "Výkonu" je až budete mít koncové body v různých geografických lokalitách, které koncoví uživatelé jsou směrovány na "nejbližší" koncového bodu z hlediska nejnižší síťovou latencí.
+Výchozím chováním pro metodu směrování provozu Performance (výkon) je, že pokud máte koncové body v různých geografických umístěních, budou koncoví uživatelé směrováni do nejbližšího koncového bodu z hlediska nejnižší latence sítě.
 
-Předpokládejme, ale dáváte přednost převzetí služeb při selhání oblasti západní Evropa provoz do oblasti západní USA a pouze směrovat provoz do jiných oblastí, když oba koncové body nejsou k dispozici. Můžete vytvořit toto řešení využívající profil podřízené pomocí metody směrování provozu "Priority".
+Předpokládejme však, že dáváte přednost převzetí služeb při selhání Západní Evropa provozu Západní USA a pouze přímý provoz do jiných oblastí, pokud oba koncové body nejsou k dispozici. Toto řešení můžete vytvořit pomocí podřízeného profilu s metodou "Priorita" přenosu provozu.
 
-![Směrování s přednostní převzetí služeb při selhání provozu 'výkon.][6]
+![Směrování provozu výkonu s preferenčním převzetím služeb při selhání][6]
 
-Protože západní Evropa koncový bod má vyšší prioritu než koncový bod USA – Západ, všechny přenosy se odesílají do koncového bodu západní Evropa oba koncové body jsou online. Pokud se nezdaří západní Evropa, její provoz se směřuje do oblasti západní USA. Pomocí vnořeného profilu provoz se směřuje do východní Asie jenom v případě selhání oblasti západní Evropa a západní USA.
+Vzhledem k tomu, že koncový bod Západní Evropa má vyšší prioritu než koncový bod Západní USA, veškerý provoz se pošle do Západní Evropaho koncového bodu, pokud jsou oba koncové body online. Pokud se Západní Evropa nepovede, provoz se přesměruje na Západní USA. U vnořeného profilu je provoz směrován na Východní Asie pouze v případě, že dojde k selhání obou Západní Evropa a Západní USA.
 
-Tento vzor lze opakovat pro všechny oblasti. Nahraďte všechny tři koncové body v profilu nadřazené tři profily podřízené každý poskytuje seřazený podle priority převzetí služeb při selhání pořadí.
+Tento vzor můžete opakovat pro všechny oblasti. Nahradí všechny tři koncové body v nadřazeném profilu třemi podřízenými profily, přičemž každý z nich poskytuje sekvenci převzetí služeb při selhání s určenou prioritou.
 
-## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Příklad 4: Řízení "Výkonu" směrování provozu mezi více koncových bodů ve stejné oblasti
+## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Příklad 4: Řízení směrování provozu výkonu mezi několika koncovými body ve stejné oblasti
 
-Předpokládejme, že "Výkonu" metody směrování provozu se používá v profilu, který má více než jeden koncový bod v konkrétní oblasti. Ve výchozím nastavení přenášená pro tuto oblast se rovnoměrně mezi všechny dostupné koncové body v dané oblasti.
+Předpokládejme, že se v profilu, který má více než jeden koncový bod v konkrétní oblasti, používá metoda směrování provozu Performance. Ve výchozím nastavení jsou přenosy směrované do této oblasti rovnoměrně rozloženy ve všech dostupných koncových bodech v této oblasti.
 
-![Směrování provozu v oblasti distribuce (výchozí chování) provozu "výkon.][7]
+![Směrování provozu v oblasti výkonu pro distribuci provozu v oblasti (výchozí chování)][7]
 
-Místo přidání více koncových bodů v oblasti západní Evropa, tyto koncové body jsou uzavřeny v profilu samostatnou podřízenou. Profil podřízené se přidá do nadřazené jako jediný koncový bod v oblasti západní Evropa. Nastavení v profilu podřízené můžete řídit distribuci provozu s západní Evropa tím, že směrování provozu na základě priority nebo s poměrným v dané oblasti.
+Místo přidávání více koncových bodů v Západní Evropa jsou tyto koncové body uzavřeny v samostatném podřízeném profilu. Podřízený profil se přidá do nadřazeného objektu jako jediný koncový bod v Západní Evropa. Nastavení v podřízeném profilu můžou řídit distribuci provozu pomocí Západní Evropa tím, že v rámci této oblasti povolíte směrování na základě priority nebo váženého provozu.
 
-![Směrování s vlastní provozu v oblasti distribuce provozu "výkon.][8]
+![Směrování provozu výkonu s vlastní distribucí provozu v oblasti][8]
 
-## <a name="example-5-per-endpoint-monitoring-settings"></a>Příklad 5: Nastavení za koncový bod monitorování
+## <a name="example-5-per-endpoint-monitoring-settings"></a>Příklad 5: Nastavení monitorování podle koncového bodu
 
-Předpokládejme, že používáte Traffic Manageru hladce migrovat provoz ze starší verze v místním webovém serveru na novou verzi založené na cloudu hostovaná v Azure. Pro starší verze serveru chcete použít na domovské stránce identifikátor URI pro sledování stavu lokality. Pro novou cloudovou verzi, implementujete vlastní monitorování stránky, ale (cesta: / monitor.aspx "), který obsahuje další kontroly.
+Předpokládejme, že používáte Traffic Manager k plynulé migraci provozu ze zastaralého místního webu do nové cloudové verze hostované v Azure. Pro starší verzi webu chcete použít identifikátor URI domovské stránky k monitorování stavu lokality. Ale pro novou cloudovou verzi implementujete vlastní stránku monitorování (cesta '/monitor.aspx '), která obsahuje další kontroly.
 
-![Monitorování (výchozí chování) koncových bodů Traffic Manageru][9]
+![Monitorování koncového bodu Traffic Manager (výchozí chování)][9]
 
-Monitorování nastavení v profilu služby Traffic Manager platí pro všechny koncové body v rámci jediného profilu. Vnořené profily použijete profil jiné podřízené jednotlivé lokality k definování různých nastavení monitorování.
+Nastavení monitorování v profilu Traffic Manager platí pro všechny koncové body v rámci jednoho profilu. U vnořených profilů můžete pro jednotlivé lokality použít jiný podřízený profil a definovat různá nastavení monitorování.
 
-![Monitorování s za koncový bod nastavení koncových bodů Traffic Manageru][10]
+![Traffic Manager monitorování koncového bodu s nastavením pro koncový bod][10]
+
+## <a name="faqs"></a>Nejčastější dotazy
+
+* [Návody nakonfigurovat vnořené profily?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
+
+* [Kolik vrstev vnoření podporuje Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+
+* [Můžu ve stejném profilu Traffic Manager kombinovat jiné typy koncových bodů s vnořenými podřízenými profily?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+
+* [Jak model fakturace platí pro vnořené profily?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+
+* [Je pro vnořené profily dopad na výkon?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+
+* [Jak Traffic Manager počítá stav vnořeného koncového bodu v nadřazeném profilu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [profily Traffic Manageru](traffic-manager-overview.md)
+Další informace o [profilech Traffic Manager](traffic-manager-overview.md)
 
-Zjistěte, jak [vytvořit profil služby Traffic Manager](traffic-manager-create-profile.md)
+Informace o tom, jak [vytvořit profil Traffic Manager](traffic-manager-create-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

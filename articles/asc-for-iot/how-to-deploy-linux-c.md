@@ -1,6 +1,6 @@
 ---
-title: Pokyny k instalaci a nasazení agenta pro Linux C služby Azure Security Center pro IoT agenta ve verzi Preview | Dokumentace Microsoftu
-description: Zjistěte, jak Azure Security Center pro IoT agenta nainstalovat na 32bitová verze a 64bitová verze systému Linux.
+title: Průvodce instalací a nasazením agenta pro Linux C Azure Security Center pro agenta IoT | Microsoft Docs
+description: Naučte se, jak nainstalovat Azure Security Center pro agenta IoT na 32 i 64.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,22 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 7f5b98060486e6c55bb1702386cd5438f558254b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3fd4287c6dd1cc42f419cfa6b252c1d276d1d5a5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616847"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597239"
 ---
-# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Nasazení Azure Security Center pro zabezpečení na základě IoT C agenta pro Linux
+# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Nasazení Azure Security Center pro agenta zabezpečení založeného na IoT C pro Linux
 
-> [!IMPORTANT]
-> Azure Security Center pro IoT je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Tato příručka vysvětluje, jak nainstalovat a nasadit Azure Security Center (ASC) pro zabezpečení na základě IoT C agenta v Linuxu.
+Tato příručka vysvětluje, jak nainstalovat a nasadit Azure Security Center pro agenta zabezpečení založeného na službě IoT C v systému Linux.
 
 V této příručce se naučíte: 
 > [!div class="checklist"]
@@ -39,64 +35,64 @@ V této příručce se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Další platformy a typů agenta, najdete v části [vyberte správné zabezpečení agenta](how-to-deploy-agent.md).
+Další typy platforem a agentů najdete v tématu [Volba správného agenta zabezpečení](how-to-deploy-agent.md).
 
-1. Pokud chcete nasadit agenta zabezpečení, se vyžadují práva místního správce na počítači, na kterém chcete nainstalovat na (sudo).
+1. Chcete-li nasadit agenta zabezpečení, jsou na počítači, na kterém chcete nainstalovat nástroj, požadovány oprávnění místního správce (sudo).
 
-1. [Vytvoření modulu zabezpečení](quickstart-create-security-twin.md) zařízení.
+1. [Vytvořte modul zabezpečení](quickstart-create-security-twin.md) pro zařízení.
 
 ## <a name="installation"></a>Instalace 
 
-Při instalaci a nasazení agenta zabezpečení, postupujte takto:
+Chcete-li nainstalovat a nasadit agenta zabezpečení, použijte následující pracovní postup:
 
 
-1. Stáhnout nejnovější verzi na svůj počítač z [Githubu](https://aka.ms/iot-security-github-c).
+1. Stáhněte si nejnovější verzi do počítače z GitHubu [](https://aka.ms/iot-security-github-c).
 
-1. Extrahujte obsah balíčku a přejděte _/Install_ složky.
+1. Extrahujte obsah balíčku a přejděte do složky _/install_ .
 
-1. Přidat spuštěné oprávnění **InstallSecurityAgent skript** spuštěním následujícího:
+1. Spuštěním následujícího příkazu přidejte do **skriptu InstallSecurityAgent** oprávnění ke spuštění:
     
    ```
    chmod +x InstallSecurityAgent.sh
    ```
 
-1. Potom spusťte: 
+1. Dále spusťte: 
 
    ```
    ./InstallSecurityAgent.sh -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -i
    ```
    
-   Zobrazit [ke konfiguraci ověřování](concept-security-agent-authentication-methods.md) Další informace o ověření parametrů.
+   Další informace o parametrech ověřování najdete v tématu [Postup konfigurace ověřování](concept-security-agent-authentication-methods.md) .
 
-Skript provede následující akce:
+Tento skript provede následující funkci:
 
 1. Nainstaluje požadavky.
 
-2. Přidá uživatele služby (pomocí interaktivního přihlášení, zakázáno).
+2. Přidá uživatele služby (s vypnutým interaktivním přihlášením).
 
-3. Nainstaluje agenta jako **démon** – předpokládá, zařízení používá **systemd** pro správu služeb.
+3. Nainstaluje agenta jako démona – předpokládá, že zařízení používá **systém** pro správu služeb.
 
-4. Nakonfiguruje agenta s parametry ověřování k dispozici. 
+4. Nakonfiguruje agenta pomocí zadaných parametrů ověřování. 
 
-Potřebujete další pomoc, spuštěním skriptu s parametrem – nápovědy: 
+Další nápovědu získáte spuštěním skriptu s parametrem – Help: 
     
     ./InstallSecurityAgent.sh --help
 
 ### <a name="uninstall-the-agent"></a>Odinstalace agenta
 
-Odinstalace agenta, spusťte skript s – – odinstalovat parametr:
+Chcete-li odinstalovat agenta, spusťte skript s parametrem –-Uninstall:
 
     ./InstallSecurityAgent.sh -–uninstall
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Spuštěním kontroly stavu nasazení:
+Stav nasazení ověřte spuštěním:
 
     systemctl status ASCIoTAgent.service
 
 
-## <a name="next-steps"></a>Další kroky
-- Přečtěte si ASC pro služby Azure IoT [– přehled](overview.md)
-- Další informace o ASC pro IoT [architektury](architecture.md)
-- Povolit [služby](quickstart-onboard-iot-hub.md)
-- Přečtěte si [– nejčastější dotazy](resources-frequently-asked-questions.md)
-- Vysvětlení [výstrahy zabezpečení](concept-security-alerts.md)
+## <a name="next-steps"></a>Další postup
+- Přečtěte si [Přehled](overview.md) služby Azure Security Center for IoT.
+- Další informace o [architektuře](architecture.md) Azure Security Center pro IoT
+- Povolení [služby](quickstart-onboard-iot-hub.md)
+- Přečtěte si [Nejčastější dotazy](resources-frequently-asked-questions.md) .
+- Vysvětlení [výstrah zabezpečení](concept-security-alerts.md)

@@ -1,6 +1,6 @@
 ---
-title: Požadavky na systém Microsoft Azure StorSimple Virtual Array | Dokumentace Microsoftu
-description: Další informace o softwaru a síťové požadavky pro StorSimple Virtual Array
+title: Požadavky na systém Microsoft Azure StorSimple Virtual Array | Microsoft Docs
+description: Seznamte se s požadavky na software a sítě pro virtuální pole StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,125 +12,129 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/11/2019
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 65d2a21a9f40470cee1dd9d713f9f9cb5431a245
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629301"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516688"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Požadavky systému virtuálních polí StorSimple
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 ## <a name="overview"></a>Přehled
-Tento článek popisuje důležité systémové požadavky pro Microsoft Azure StorSimple Virtual Array a pro přístup k poli úložiště klienty. Doporučujeme, abyste si informace o pečlivě před nasazení systému StorSimple a pak zpátky na ni odkazovat podle potřeby během nasazení a následná operace.
 
-Systémové požadavky:
+Tento článek popisuje důležité systémové požadavky pro vaše Microsoft Azure StorSimple virtuální pole a pro klienty úložiště, kteří přistupují k poli. Doporučujeme, abyste pečlivě prostudovali informace před nasazením systému StorSimple a pak se na něj v průběhu nasazení a následné operace znovu odkazovali.
 
-* **Požadavky na software pro klienty úložiště** -popisuje podporovaný virtualizační platformy, webové prohlížeče, iniciátory iSCSI, SMB klienty, požadavky na minimální virtuální zařízení a veškeré další požadavky pro tyto operační systémy.
-* **Požadavky na síť pro zařízení StorSimple** – poskytuje informace o portech, které musí být otevřené v bráně firewall povolit pro přenosy iSCSI, cloud nebo správy.
+Požadavky na systém zahrnují:
 
-Informace požadavky systému StorSimple publikované v tomto článku se vztahují pouze na virtuálních polí StorSimple.
+* **Požadavky na software pro klienty úložiště** – popisuje podporované virtualizační platformy, webové prohlížeče, iniciátory iSCSI, klienty SMB, minimální požadavky na virtuální zařízení a jakékoli další požadavky pro tyto operační systémy.
+* **Požadavky na síť pro zařízení StorSimple** – poskytuje informace o portech, které je potřeba v bráně firewall otevřít, aby se povolily přenosy z iSCSI, cloudu nebo správy.
 
-* Pro zařízení 8000 series, přejděte na [požadavky na systém pro vaše zařízení StorSimple řady 8000](storsimple-system-requirements.md).
-* Zařízení řady 7000 najdete [požadavky na systém pro vaše zařízení řady StorSimple 5000 – 7000](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements).
+Informace o požadavcích na systém StorSimple publikované v tomto článku se vztahují pouze na virtuální pole StorSimple.
+
+* V případě zařízení řady 8000 pokračujte na [požadavky na systém pro zařízení StorSimple 8000 series](storsimple-system-requirements.md).
+* V případě zařízení řady 7000 pokračujte na [požadavky na systém pro zařízení StorSimple 5000-7000 Series](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements).
 
 ## <a name="software-requirements"></a>Požadavky na software
-Požadavky na software také informace o podporovaných webových prohlížečů, verze protokolu SMB, virtualizačních platforem a požadavky na minimální virtuální zařízení.
+Požadavky na software zahrnují informace o podporovaných webových prohlížečích, verzích SMB, virtualizačních platformách a minimálních požadavcích na virtuální zařízení.
 
-### <a name="supported-virtualization-platforms"></a>Podporovaný virtualizační platformy
-| **Hypervisor** | **Verze** |
+### <a name="supported-virtualization-platforms"></a>Podporované virtualizační platformy
+| **Hypervisoru** | **Verze** |
 | --- | --- |
 | Hyper-V |Windows Server 2008 R2 SP1 a novější |
-| VMware ESXi |5.0, 5.5, 6.0 nebo 6.5. |
+| VMware ESXi |5,0, 5,5, 6,0 a 6,5. |
 
 > [!IMPORTANT]
-> Neinstalujte na StorSimple Virtual Array; nástroje VMware Výsledkem bude má nepodporovanou konfiguraci.
+> Neinstalujte nástroje VMware Tools na virtuální pole StorSimple; Výsledkem bude Nepodporovaná konfigurace.
 
 ### <a name="virtual-device-requirements"></a>Požadavky na virtuální zařízení
 | **Komponenta** | **Požadavek** |
 | --- | --- |
 | Minimální počet virtuálních procesorů (jader) |4 |
-| Minimální velikost paměti (RAM) |8 GB <br> Pro souborový server, 8 GB pro soubory menší než 2 miliony a 16 GB 2 – 4 miliony souborů|
-| Volné místo na disku<sup>1</sup> |Disk s operačním systémem - 80 GB <br></br>Datový disk - 500 GB až 8 TB |
-| Minimální počet nejmíň jedno síťové rozhraní |1 |
-| Internetovou šířku pásma<sup>2</sup> |Minimální šířka pásma vyžadovaná: 5 MB/s <br> Doporučená šířka pásma: 100 Mb/s <br> Rychlost přenosu dat se dál škáluje s Internetovou šířku pásma. Třeba 100 GB dat trvá 2 dny pro přenos na 5 MB/s, což může vést k selhání zálohování, protože nebylo dokončeno denní zálohy za den. S šířkou pásma 100 MB/s lze přenést 100 GB dat za 2,5 hodin.   |
+| Minimální paměť (RAM) |8 GB <br> U souborového serveru 8 GB pro méně než 2 000 000 souborů a 16 GB pro 2-4 milionů souborů|
+| Místo na disku<sup>1</sup> |Disk s operačním systémem – 80 GB <br></br>Datový disk – 500 GB až 8 TB |
+| Minimální počet síťových rozhraní: |1 |
+| Šířka pásma internetu<sup>2</sup> |Minimální požadovaná šířka pásma: 5 MB/s <br> Doporučená šířka pásma: 100 Mb/s <br> Rychlost přenosu dat se škáluje s využitím šířky pásma internetu. Například 100 GB dat trvá 2 dny na přenos v 5 MB/s, což by mohlo vést k selhání zálohování, protože denní zálohování nebylo dokončeno za den. Díky šířce pásma 100 MB/s se dá 100 GB dat přenést za 2,5 hodin.   |
 
-<sup>1</sup> – dynamického zajišťování zřízené
+<sup>1</sup> – dynamicky zřízené
 
-<sup>2</sup> – požadavky na síť může lišit v závislosti na denní četnost změn dat. Například pokud zařízení potřebuje k zálohování 10 GB nebo více změn během dne, pak denní zálohování přes 5 MB/s připojení může trvat až 4,25 hodin (Pokud data nelze komprimované nebo s odstraněním duplicitních dat).
+<sup>2</sup> – požadavky na síť se můžou lišit v závislosti na denní četnosti změn dat. Pokud třeba v rámci určitého dne zařízení potřebuje zálohovat 10 GB nebo více změn, pak může trvat až 4,25 hodin (Pokud data nemůžete zkomprimovat nebo odstranit z duplicit).
 
 ### <a name="supported-web-browsers"></a>Podporované webové prohlížeče
-| **Komponenta** | **Verze** | **Další požadavky a poznámky** |
+| **Komponenta** | **Verze** | **Další požadavky/poznámky** |
 | --- | --- | --- |
 | Microsoft Edge |Nejnovější verze | |
-| Internet Explorer |Nejnovější verze |Testovat pomocí aplikace Internet Explorer 11 |
-| Google Chrome |Nejnovější verze |Testování s prohlížečem Chrome 46 |
+| Internet Explorer |Nejnovější verze |Testováno pomocí aplikace Internet Explorer 11 |
+| Google Chrome |Nejnovější verze |Testováno s použitím Chrome 46 |
 
-### <a name="supported-storage-clients"></a>Úložiště podporuje klienty
-Následující softwarové požadavky jsou určené pro iniciátory iSCSI, které přistupují k StorSimple Virtual Array (nakonfigurovaný jako iSCSI server).
+### <a name="supported-storage-clients"></a>Podporovaní klienti úložiště
+Následující požadavky na software jsou pro iniciátory iSCSI, které přistupují k virtuálnímu poli StorSimple (nakonfigurovanému jako server iSCSI).
 
-| **Podporované operační systémy** | **Požadovaná verze** | **Další požadavky a poznámky** |
+| **Podporované operační systémy** | **Vyžaduje se verze** | **Další požadavky/poznámky** |
 | --- | --- | --- |
-| Windows Server |2008R2 SP1, 2012, 2012R2 |StorSimple můžete vytvářet dynamicky zajištěné a zcela zřizované svazky. Ho nelze vytvářet částečně zřizované svazky. ISCSI svazky zařízení StorSimple jsou podporovaná jenom pro: <ul><li>Jednoduché svazky ve Windows běžné disky.</li><li>Windows: pro formátování svazku systému souborů NTFS.</li> |
+| Windows Server |2008R2 SP1, 2012, 2012R2 |StorSimple může vytvářet dynamicky zřízené a plně zřízené svazky. Nemůže vytvořit částečně zřízené svazky. StorSimple svazky iSCSI se podporují jenom pro: <ul><li>Jednoduché svazky na discích se systémem Windows Basic.</li><li>Systém Windows NTFS pro formátování svazku.</li> |
 
-Následující softwarové požadavky jsou pro klienty SMB, které přistupují k StorSimple Virtual Array (nakonfigurovali jako souborový server).
+Následující požadavky na software jsou pro klienty SMB, kteří přistupují k virtuálnímu poli StorSimple (nakonfigurovanému jako souborový server).
 
 | **Verze protokolu SMB** |
 | --- |
 | SMB 2.x |
 | SMB 3.0 |
-| SMB 3.02 |
+| SMB 3,02 |
 
 > [!IMPORTANT]
-> Při kopírování nebo ukládat soubory chráněné službou Windows souboru systému souborů EFS k souborovému serveru StorSimple Virtual Array; Výsledkem bude má nepodporovanou konfiguraci.
+> Nekopírujte ani neukládá soubory chráněné systémem Windows systém souborů EFS (Encrypting File System) (EFS) do serveru souborů virtuálního pole StorSimple. Výsledkem bude Nepodporovaná konfigurace.
 
 
-### <a name="supported-storage-format"></a>Nepodporuje formát úložiště
-Je podporován pouze úložiště objektů blob bloku Azure. Objekty BLOB stránky nejsou podporovány. Další informace o [o objekty BLOB bloku a objekty BLOB stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+### <a name="supported-storage-format"></a>Podporovaný formát úložiště
+Podporuje se jenom úložiště objektů blob bloku Azure. Objekty blob stránky nejsou podporovány. Další informace [o objektech blob bloku a objektech blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 ## <a name="networking-requirements"></a>Požadavky na síť
-Následující tabulka uvádí porty, které je potřeba otevřít v bráně firewall povolit pro iSCSI, SMB, cloud nebo přenos pro správu. V této tabulce *v* nebo *příchozí* odkazuje na směru, ze kterého příchozí požadavky klientů, přístup k vašemu zařízení. *Navýšení kapacity* nebo *odchozí* odkazuje na směru, ve kterém zařízení StorSimple, odesílá data externě, nad rámec nasazení: pro příklad, odchozí k Internetu.
+Následující tabulka uvádí porty, které je třeba v bráně firewall otevřít, aby umožňovaly přenosy z iSCSI, SMB, cloudu nebo správy. V této tabulce se *v* nebo *příchozí* odkazuje na směr, ze kterého příchozí klient žádá o přístup k vašemu zařízení. Výstupní nebo *odchozí* odkazuje na směr, ve kterém vaše zařízení StorSimple odesílá data externě, mimo nasazení: například odchozí na Internet.
 
-| **Číslo portu<sup>1</sup>** | **Snížení nebo navýšení kapacity** | **Rozsah portů** | **Požadováno** | **Poznámky** |
+| **Číslo portu.<sup>1</sup>** | **V nebo ven** | **Rozsah portů** | **Požadováno** | **Poznámky** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |navýšení kapacity |WAN |Ne |Odchozí port se používá pro přístup k Internetu pro načtení aktualizací. <br></br>Odchozí webový proxy server je konfigurovatelná uživatelem. |
-| TCP 443 (HTTPS) |navýšení kapacity |WAN |Ano |Odchozí port se používá pro přístup k datům v cloudu. <br></br>Odchozí webový proxy server je konfigurovatelná uživatelem. |
-| UDP 53 (DNS) |navýšení kapacity |WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová DNS. <br></br> Všimněte si, že pokud nasazení souborového serveru, doporučujeme použít místní server DNS. |
-| UDP 123 (NTP) |navýšení kapacity |WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová NTP.<br></br> Všimněte si, že pokud nasazení souborového serveru, doporučujeme, abyste synchronizace času se řadiče domény služby Active Directory. |
-| TCP 80 (HTTP) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. <br></br> Všimněte si, že přístup k místním uživatelského rozhraní pomocí protokolu HTTP bude automaticky přesměrovat na protokol HTTPS. |
+| TCP 80 (HTTP) |Výstup |Síť WAN |Ne |Odchozí port se používá pro přístup k Internetu k načtení aktualizací. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
+| TCP 443 (HTTPS) |Výstup |Síť WAN |Ano |Odchozí port se používá pro přístup k datům v cloudu. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
+| UDP 53 (DNS) |Výstup |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server DNS. <br></br> Upozorňujeme, že pokud nasazujete souborový server, doporučujeme použít místní server DNS. |
+| UDP 123 (NTP) |Výstup |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server NTP.<br></br> Počítejte s tím, že pokud nasazujete souborový server, doporučujeme synchronizovat čas s řadiči domény služby Active Directory. |
+| TCP 80 (HTTP) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. <br></br> Všimněte si, že přístup k místnímu uživatelskému rozhraní přes HTTP se automaticky přesměruje na HTTPS. |
 | TCP 443 (HTTPS) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. |
 | TCP 3260 (iSCSI) |V |LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
 
-<sup>1</sup> žádné příchozí porty je potřeba otevřít na veřejném Internetu.
+<sup>1</sup> na veřejném Internetu není třeba otevřít žádné příchozí porty.
 
 > [!IMPORTANT]
-> Ujistěte se, že brána firewall neupravuje nebo dešifrovat veškerý provoz protokolu SSL mezi zařízení StorSimple a Azure.
+> Ujistěte se, že brána firewall nemění ani nešifruje žádný přenos SSL mezi zařízením StorSimple a Azure.
 > 
 > 
 
 ### <a name="url-patterns-for-firewall-rules"></a>Vzory adres URL pro pravidla brány firewall
-Správci sítě můžou často konfigurace pravidla brány firewall na Upřesnit na základě vzory adres URL pro filtrování příchozího a odchozího provozu. Vaše virtuální pole a ve službě Správce zařízení StorSimple závisí na jiné aplikace od Microsoftu, jako je Azure Service Bus, Azure Active Directory Access Control, účty úložiště a serverům Microsoft Update. Vzory adres URL, které jsou přidružené k těmto aplikacím je možné nakonfigurovat pravidla brány firewall. Je důležité pochopit, že můžete změnit vzory adres URL, které jsou přidružené k těmto aplikacím. To zase vyžaduje správce sítě, monitorovat a aktualizovat pravidla brány firewall pro StorSimple jako a v případě potřeby. 
+Správci sítě mohou často konfigurovat Rozšířená pravidla brány firewall na základě vzorů adres URL pro filtrování příchozího a odchozího provozu. Vaše virtuální pole a Služba StorSimple Device Manager závisí na dalších aplikacích společnosti Microsoft, jako jsou Azure Service Bus, Azure Active Directory Access Control, účtech úložiště a Microsoft Updatech serverech. Ke konfiguraci pravidel brány firewall lze použít vzory adres URL přidružené k těmto aplikacím. Je důležité pochopit, že se vzory adres URL přidružené k těmto aplikacím můžou změnit. To zase vyžaduje, aby správce sítě sledoval a aktualizoval pravidla brány firewall pro StorSimple jako a v případě potřeby. 
 
-Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, podle StorSimple liberally pevné IP adresy, ve většině případů. Ale můžete použít následující informace pro nastavení pravidla brány firewall na pokročilé, které budete potřebovat pro vytvoření zabezpečeného prostředí.
+Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy na základě pevných IP adres StorSimple, a to ve většině případů. Pomocí níže uvedených informací ale můžete nastavit Rozšířená pravidla brány firewall, která jsou potřeba k vytváření zabezpečených prostředí.
 
 > [!NOTE]
 > 
-> * Zařízení (zdroj) IP adresy musí být vždy nastavená na všechna rozhraní sítě povolenou podporu cloudu. 
-> * Cílové IP adresy musí být nastavená na [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653).
+> * IP adresy zařízení (zdrojové) by se měly vždycky nastavit na všechna síťová rozhraní s podporou cloudu. 
+> * Cílové IP adresy by měly být nastavené na [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653).
 > 
 > 
 
-| Vzor adresy URL | Komponenta nebo funkce |
+| Vzor adresy URL | Součást/funkce |
 | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací službu|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací služba|
 | `http://*.backup.windowsazure.com` |Registrace zařízení |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odvolání certifikátu |
-| `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Účty úložiště Azure a monitorování |
-| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Servery Microsoft Update<br> |
+| `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Účty a monitorování Azure Storage |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update servery<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
-| `https://*.partners.extranet.microsoft.com/*` |Balíček pro podporu. |
-| `https://*.data.microsoft.com` |Telemetrické službě ve Windows, najdete v článku [aktualizace pro uživatelské prostředí a telemetrická data diagnostiky](https://support.microsoft.com/en-us/kb/3068708) |
+| `https://*.partners.extranet.microsoft.com/*` |Balíček pro podporu |
+| `https://*.data.microsoft.com` |Služba telemetrie ve Windows, přečtěte si část [aktualizace prostředí pro zákazníky a diagnostické telemetrie](https://support.microsoft.com/en-us/kb/3068708) |
 
 ## <a name="next-steps"></a>Další postup
-* [Příprava portálu nasazení StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)
+* [Příprava portálu na nasazení virtuálního pole StorSimple](storsimple-virtual-array-deploy1-portal-prep.md)

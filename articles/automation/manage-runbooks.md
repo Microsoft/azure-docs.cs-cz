@@ -1,6 +1,6 @@
 ---
-title: Správa runbooků ve službě Azure Automation
-description: Tento článek popisuje, jak spravovat sady runbook ve službě Azure Automation.
+title: Správa runbooků v Azure Automation
+description: Tento článek popisuje, jak spravovat Runbooky v Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,72 +9,73 @@ ms.author: robreed
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4519991f8ce3c8b4f99e1d7fb62295f3c0ece3a2
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 5a477811e46d97375d4dce4d83072dda60ca797c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478276"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717215"
 ---
-# <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků ve službě Azure Automation
+# <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků v Azure Automation
 
-Sady runbook můžete přidat do Azure Automation. buď [vytvořením nového](#create-a-runbook) nebo importováním existujícího runbooku ze souboru nebo [Galerie Runbooků](automation-runbook-gallery.md). Tento článek obsahuje informace o vytváření a import runbooků ze souboru.  Můžete získat všechny podrobnosti o přístupu k komunity runbooky a moduly v [Galerie modulů a Runbooků Azure Automation](automation-runbook-gallery.md).
+Runbook můžete přidat do Azure Automation tím, že [vytvoříte nový](#create-a-runbook) nebo naimportujete existující Runbook ze souboru nebo [Galerie runbooků](automation-runbook-gallery.md). Tento článek poskytuje informace o vytváření a importování runbooků ze souboru.  Všechny podrobnosti o přístupu k sadám Runbook a k modulům v galerii runbooků [a modulům](automation-runbook-gallery.md)můžete získat Azure Automation.
 
-## <a name="create-a-runbook"></a>Vytvoření runbooku
+## <a name="create-a-runbook"></a>Vytvořit runbook
 
-Vytvořit nový runbook ve službě Azure Automation pomocí některé z Azure Portal nebo prostředí Windows PowerShell. Po vytvoření runbooku ho můžete upravit pomocí informací v [pracovním postupu Powershellu](automation-powershell-workflow.md) a [vytváření grafického obsahu ve službě Azure Automation](automation-graphical-authoring-intro.md).
+Novou sadu Runbook můžete vytvořit v Azure Automation pomocí některého z portálů Azure nebo Windows PowerShellu. Až se Runbook vytvoří, můžete ho upravit pomocí informací v části [výuka pracovního postupu prostředí PowerShell](automation-powershell-workflow.md) a [vytváření grafického obsahu v Azure Automation](automation-graphical-authoring-intro.md).
 
-### <a name="create-a-runbook-in-the-azure-portal"></a>Vytvoření sady runbook na portálu Azure portal
+### <a name="create-a-runbook-in-the-azure-portal"></a>Vytvoření Runbooku v Azure Portal
 
 1. Na webu Azure Portal otevřete účet Automation.
-2. Z centra, vyberte **sady Runbook** otevřete seznam runbooků.
-3. Klikněte na **přidat runbook** tlačítko a pak **vytvořit nový runbook**.
-4. Zadejte **název** pro sadu runbook a vyberte jeho [typ](automation-runbook-types.md). Název runbooku musí začínat písmenem a může obsahovat písmena, číslice, podtržítka a pomlčky.
-5. Klikněte na tlačítko **vytvořit** k vytvoření sady runbook a otevřete editor.
+2. Z centra vyberte **Runbooky** a otevřete seznam runbooků.
+3. Klikněte na tlačítko **Přidat Runbook** a pak **vytvořte novou sadu Runbook**.
+4. Zadejte **název** Runbooku a vyberte jeho [typ](automation-runbook-types.md). Název runbooku musí začínat písmenem a může obsahovat písmena, číslice, podtržítka a pomlčky.
+5. Kliknutím na **vytvořit** vytvořte Runbook a otevřete Editor.
 
-### <a name="create-a-runbook-with-powershell"></a>Vytvoření sady runbook pomocí prostředí PowerShell
+### <a name="create-a-runbook-with-powershell"></a>Vytvoření Runbooku pomocí PowerShellu
 
-Můžete použít [New-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/new-azurermautomationrunbook) rutina pro vytvoření prázdné [runbook Powershellového Workflow](automation-runbook-types.md#powershell-workflow-runbooks). Použití **typ** parametr určit jeden ze čtyř typů sad runbook.
+Pomocí rutiny [New-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/new-azurermautomationrunbook) můžete vytvořit prázdnou [sadu Runbook pracovního postupu PowerShellu](automation-runbook-types.md#powershell-workflow-runbooks). Pomocí parametru **typu** zadejte jeden ze čtyř typů sad Runbook.
 
-Následující vzorové příkazy znázorňují postup vytvoření nové prázdné sady runbook.
+Následující vzorové příkazy ukazují, jak vytvořit novou prázdnou sadu Runbook.
 
 ```azurepowershell-interactive
 New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
 -Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
 ```
 
-## <a name="import-a-runbook"></a>Import sady runbook
+## <a name="import-a-runbook"></a>Import Runbooku
 
-Importováním skript prostředí PowerShell nebo pracovního postupu Powershellu (s příponou .ps1), exportované grafický runbook (.graphrunbook) nebo skript Python 2 (s příponou .py) můžete vytvořit novou sadu runbook ve službě Azure Automation.  Je nutné zadat [typu runbook](automation-runbook-types.md) , který se vytvoří během importu, přičemž v úvahu následující aspekty.
+Novou sadu Runbook můžete vytvořit v Azure Automation importem skriptu PowerShellu nebo pracovního postupu PowerShellu (přípona. ps1), exportovaného grafického Runbooku (. graphrunbook) nebo skriptu Pythonu 2 (. py Extension).  Je nutné zadat [typ Runbooku](automation-runbook-types.md) , který se vytvoří během importu, přičemž vezme v úvahu následující skutečnosti.
 
-* A `.graphrunbook` souboru může importovat jenom do nového [grafický runbook](automation-runbook-types.md#graphical-runbooks), a grafické runbooky můžou vytvářet jenom z `.graphrunbook` souboru.
-* A `.ps1` soubor, který obsahuje pracovní postup prostředí PowerShell lze importovat pouze do [runbook Powershellového Workflow](automation-runbook-types.md#powershell-workflow-runbooks).  Pokud soubor obsahuje více pracovních postupů Powershellu, import se nezdaří. Musíte uložit každý pracovní postup do vlastního souboru a importovat každý zvlášť.
-* A `.ps1` soubor, který neobsahuje pracovního postupu můžete importovat do buď [Powershellového runbooku](automation-runbook-types.md#powershell-runbooks) nebo [runbook Powershellového Workflow](automation-runbook-types.md#powershell-workflow-runbooks).  Pokud se importují do pracovních postupů Powershellu, pak je převeden do pracovního postupu a komentáře jsou zahrnuty v sadě runbook určující, které byly provedeny změny.
+* Soubor může být importován do nového [grafického Runbooku](automation-runbook-types.md#graphical-runbooks)a grafické Runbooky lze vytvořit pouze ze `.graphrunbook` souboru. `.graphrunbook`
+* Soubor obsahující pracovní postup PowerShellu se dá importovat jedině do [Runbooku pracovního postupu PowerShellu.](automation-runbook-types.md#powershell-workflow-runbooks) `.ps1` Pokud soubor obsahuje několik pracovních postupů PowerShellu, import se nezdaří. Každý pracovní postup musíte uložit do vlastního souboru a naimportovat každý samostatně.
+* Soubor obsahující pracovní postup PowerShellu by se neměl importovat do [Runbooku PowerShellu](automation-runbook-types.md#powershell-runbooks), protože ho skriptovací stroj PowerShellu nedokáže rozpoznat. `.ps1`
+* Soubor, který neobsahuje pracovní postup, se dá importovat do Runbooku PowerShellu nebo [Runbooku pracovního postupu PowerShellu](automation-runbook-types.md#powershell-workflow-runbooks). [](automation-runbook-types.md#powershell-runbooks) `.ps1`  Pokud je importována do Runbooku pracovního postupu PowerShellu, je převedena na pracovní postup a komentáře jsou součástí sady Runbook, kde jsou zadány změny, které byly provedeny.
 
-### <a name="to-import-a-runbook-from-a-file-with-the-azure-portal"></a>Import runbooku ze souboru pomocí webu Azure portal
+### <a name="to-import-a-runbook-from-a-file-with-the-azure-portal"></a>Import Runbooku ze souboru s Azure Portal
 
-Následující postup slouží k importu souboru skriptu do služby Azure Automation.  
+Pomocí následujícího postupu můžete do Azure Automation importovat soubor skriptu.
 
 > [!NOTE]
-> Všimněte si, že můžete importovat pouze souboru s příponou .ps1 do pracovního postupu Powershellu runbooku pomocí portálu.
+> Všimněte si, že můžete importovat soubor. ps1 do Runbooku pracovního postupu PowerShellu pomocí portálu.
 
 1. Na webu Azure Portal otevřete účet Automation.
-2. Z centra, vyberte **sady Runbook** otevřete seznam runbooků.
-3. Klikněte na **přidat runbook** tlačítko a pak **Import**.
-4. Klikněte na tlačítko **soubor sady Runbook** a vyberte soubor k importu
-5. Pokud **název** pole je povolená, pak máte možnost ho změnit.  Název runbooku musí začínat písmenem a může obsahovat písmena, číslice, podtržítka a pomlčky.
-6. [Typ runbooku](automation-runbook-types.md) se vybere automaticky, ale můžete změnit typ po provedení příslušných omezení v úvahu. 
-7. Nová sada runbook se zobrazí v seznamu sad runbook pro účet Automation.
-8. Je nutné [Publikovat sadu runbook](#publish-a-runbook) než budete moct spustit.
+2. Z centra vyberte **Runbooky** a otevřete seznam runbooků.
+3. Klikněte na tlačítko **Přidat Runbook** a potom na **importovat**.
+4. Kliknutím na **soubor sady Runbook** vyberte soubor, který chcete importovat.
+5. Pokud je pole **název** povolené, máte možnost ho změnit.  Název runbooku musí začínat písmenem a může obsahovat písmena, číslice, podtržítka a pomlčky.
+6. [Typ Runbooku](automation-runbook-types.md) se vybere automaticky, ale po přijetí platných omezení do účtu můžete typ změnit.
+7. Nová sada Runbook se zobrazí v seznamu sad Runbook pro účet Automation.
+8. Runbook je nutné [publikovat](#publish-a-runbook) před tím, než je možné jej spustit.
 
 > [!NOTE]
-> Jakmile dokončíte import grafický runbook nebo grafický runbook pracovního postupu Powershellu, máte možnost převést na jiný typ, pokud je potřeba. Nelze převést na textový sady runbook.
+> Po importu grafického Runbooku nebo grafického Runbooku pracovního postupu PowerShellu máte možnost převést na jiný typ, pokud je to žádoucí. Nemůžete převést na textový Runbook.
 
-### <a name="to-import-a-runbook-from-a-script-file-with-windows-powershell"></a>Import runbooku ze souboru skriptu pomocí Windows Powershellu
+### <a name="to-import-a-runbook-from-a-script-file-with-windows-powershell"></a>Import Runbooku ze souboru skriptu pomocí Windows PowerShellu
 
-Můžete použít [Import-AzureRMAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/import-azurermautomationrunbook) rutinu, která importuje soubor skriptu jako koncept runbooku pracovního postupu Powershellu. Pokud sada runbook již existuje, nebude import úspěšný, pokud nechcete použít *– platnost* parametru.
+Pomocí rutiny [Import-AzureRMAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/import-azurermautomationrunbook) můžete importovat soubor skriptu jako koncept Runbooku pracovního postupu PowerShellu. Pokud sada Runbook již existuje, import se nezdařil, pokud nepoužijete parametr *-Force* .
 
-Následující vzorové příkazy ukazují, jak importovat soubor skriptu do sady runbook.
+Následující vzorové příkazy ukazují, jak naimportovat soubor skriptu do sady Runbook.
 
 ```azurepowershell-interactive
 $automationAccountName =  "AutomationAccount"
@@ -89,33 +90,33 @@ Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>Testování runbooku
 
-Při testování sady runbook [koncept](#publish-a-runbook) spuštění a jsou dokončeny všechny akce, které aplikace provádí. Nevytvoří se žádná historie úlohy, ale [výstup](automation-runbook-output-and-messages.md#output-stream) a [upozornění a chyby](automation-runbook-output-and-messages.md#message-streams) datové proudy jsou zobrazeny v testovací podokno výstup. Zprávy [podrobné Stream](automation-runbook-output-and-messages.md#message-streams) se zobrazují v podokně výstupu pouze tehdy, pokud [proměnnou $VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) je nastavena na pokračovat.
+Při testování Runbooku se spustí [koncept verze](#publish-a-runbook) a všechny akce, které provádí, se dokončí. Nevytvoří se žádná historie úlohy, ale [](automation-runbook-output-and-messages.md#output-stream) Stream výstupů a [Upozornění a chyb](automation-runbook-output-and-messages.md#message-streams) se zobrazí v podokně výstup testu. Zprávy do [podrobného datového proudu](automation-runbook-output-and-messages.md#message-streams) se zobrazí v podokně výstup pouze v případě, že je [Proměnná $VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) nastavena na pokračovat.
 
-I když je právě spuštěna verze konceptu, sada runbook stále normálně spouští a dělá všechny akce s prostředky v prostředí. Z tohoto důvodu jste měli runbooky testovat jenom o neprodukční prostředky.
+I když je verze konceptu spuštěna, sada Runbook se stále provádí normálně a provede všechny akce s prostředky v prostředí. Z tohoto důvodu byste měli testovat pouze Runbooky na neprodukčních prostředcích.
 
-Postup pro každý test [typu runbook](automation-runbook-types.md) je stejný a neexistuje žádný rozdíl v testování mezi textový editor a grafickém editoru na webu Azure Portal.  
+Postup testování každého [typu Runbooku](automation-runbook-types.md) je stejný a při testování mezi textovým editorem a grafickým editorem v Azure Portal nedochází k žádnému rozdílu.
 
-1. Otevřete jeho koncept runbooku buď [textový editor](automation-edit-textual-runbook.md) nebo [grafický editor](automation-graphical-authoring-intro.md).
-1. Klikněte na tlačítko **Test** tlačítko otevřete stránku testu.
-1. Pokud má runbook parametry, jsou vypsáni v levém podokně, ve kterém můžete zadat hodnoty, které se použijí pro test.
-1. Pokud chcete spustit test [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), změňte **parametrů běhu** k **Hybrid Worker** a vyberte název cílové skupiny.  V opačném případě ponechte výchozí **Azure** pro spuštění testu v cloudu.
-1. Klikněte na tlačítko **Start** tlačítko pro spuštění testu.
-1. Pokud je sada runbook [pracovního postupu Powershellu](automation-runbook-types.md#powershell-workflow-runbooks) nebo [grafický](automation-runbook-types.md#graphical-runbooks), potom můžete ukončit nebo jej pozastavit, pokud je testován s tlačítky pod podoknem výstupu. Když runbook pozastavíte, dokončí aktuální aktivitu teprve pak se pozastaví. Po pozastavení sady runbook můžete ji zastavit nebo restartovat.
-1. Zkontrolujte výstup z runbooku v podokně výstup.
+1. Otevřete koncept sady Runbook buď v [textovém editoru](automation-edit-textual-runbook.md) , nebo v grafickém [editoru](automation-graphical-authoring-intro.md).
+1. Kliknutím na tlačítko **test** otevřete stránku test.
+1. Pokud má Runbook parametry, budou uvedeny v levém podokně, kde můžete zadat hodnoty, které mají být použity pro test.
+1. Pokud chcete spustit test na [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), změňte **nastavení spuštění** na **Hybrid Worker** a vyberte název cílové skupiny.  V opačném případě ponechte výchozí **Azure** spustit test v cloudu.
+1. Kliknutím na tlačítko **Spustit** spusťte test.
+1. Pokud je sada Runbook [pracovní postup PowerShellu](automation-runbook-types.md#powershell-workflow-runbooks) nebo [grafická](automation-runbook-types.md#graphical-runbooks), můžete ji zastavit nebo pozastavit, když je testována pomocí tlačítek pod podoknem výstup. Když runbook pozastavíte, dokončí aktuální aktivitu teprve pak se pozastaví. Po pozastavení sady runbook můžete ji zastavit nebo restartovat.
+1. Zkontrolujte výstup Runbooku v podokně výstup.
 
 ## <a name="publish-a-runbook"></a>Publikování runbooku
 
-Při vytváření nebo importovat nové sady runbook, musíte ji publikovat než budete moct spustit.  Každá sada runbook ve službě Automation má koncept a publikovanou verzi. Je možné spustit jenom publikovaná verze a lze upravovat pouze verzi konceptu. Publikovaná verze není ovlivněn změny konceptu. Když koncept by měla být k dispozici, pak ji publikujete, která publikovaná verze přepíše verzi konceptu.
+Když vytváříte nebo importujete novou sadu Runbook, je nutné ji publikovat, abyste ji mohli spustit.  Každá sada Runbook ve službě Automation má koncept a publikovanou verzi. Je možné spustit jenom publikovaná verze a lze upravovat pouze verzi konceptu. Publikovaná verze není ovlivněn změny konceptu. Pokud má být k dispozici koncept verze, pak ho publikujete, čímž dojde k přepsání publikované verze verzí konceptu.
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Otevřete sadu runbook na portálu Azure portal.
-2. Klikněte na tlačítko **upravit** tlačítko.
-3. Klikněte na tlačítko **publikovat** tlačítko a pak **Ano** zprávy pro ověření.
+1. Otevřete Runbook v Azure Portal.
+2. Klikněte na tlačítko **Upravit** .
+3. Klikněte na tlačítko **publikovat** a pak na ověřovací zprávu **Ano** .
 
 ### <a name="powershell"></a>PowerShell
 
-Můžete použít [Publish-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/publish-azurermautomationrunbook) rutiny publikování sady runbook pomocí prostředí Windows PowerShell. Následující vzorové příkazy znázorňují postup při publikování ukázkové sady runbook.
+K publikování Runbooku pomocí Windows PowerShellu můžete použít rutinu [Publish-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/publish-azurermautomationrunbook) . Následující vzorové příkazy ukazují, jak publikovat ukázkovou sadu Runbook.
 
 ```azurepowershell-interactive
 $automationAccountName =  "AutomationAccount"
@@ -128,6 +129,6 @@ Publish-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName `
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o tom, jak můžete využívat výhod sady Runbook a galerii modulů Powershellu najdete v tématu [Galerie modulů a Runbooků Azure Automation](automation-runbook-gallery.md)
-* Další informace o editaci v sadě textový editor sady runbook Powershellu a pracovních postupů Powershellu najdete v tématu [úpravy textových runbooků ve službě Azure Automation](automation-edit-textual-runbook.md)
-* Chcete-li další informace o vytváření grafického runbooku, přečtěte si téma [vytváření grafického obsahu ve službě Azure Automation](automation-graphical-authoring-intro.md)
+* Další informace o tom, jak můžete využít galerii modulů Runbook a PowerShellu, najdete v tématu [Galerie runbooků a modulů pro Azure Automation](automation-runbook-gallery.md)
+* Další informace o úpravách runbooků PowerShellu a PowerShellového pracovního postupu pomocí textového editoru najdete [v tématu Úprava textových runbooků v Azure Automation](automation-edit-textual-runbook.md)
+* Další informace o vytváření grafického Runbooku najdete v tématu věnovaném [vytváření grafických postupů v Azure Automation](automation-graphical-authoring-intro.md) .

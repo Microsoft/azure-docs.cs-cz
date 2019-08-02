@@ -1,7 +1,7 @@
 ---
-title: Ordinální V2 předem připravených entit
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Tento článek obsahuje ordinální V2 informace předem připravených entit v Language Understanding (LUIS).
+title: Ordinální v2 předem sestavená entita – LUIS
+titleSuffix: Azure Cognitive Services
+description: Tento článek obsahuje pořadí předem sestavených informací o entitách v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 862b962f5642e01d7ed8250f49d51a6132447083
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 972f75fd1c977e79a2fa70c44bb3069e2c69a2c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486137"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563403"
 ---
-# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Ordinální V2 předem připravených entit pro aplikace LUIS
-Ordinální číslo V2 rozbalí [pořadí](luis-reference-prebuilt-ordinal.md) zajistit relativní odkazy `next`, `last`, a `previous`. Ty nejsou extrahována pomocí ordinální předem připravených entit.
+# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Předdefinovaná entita pořadí v2 pro aplikaci pro LUIS
+Pořadové číslo v2 rozbalí [pořadí](luis-reference-prebuilt-ordinal.md) , aby poskytoval relativní odkazy `next`, například, `last`a `previous`. Tyto nejsou extrahovány pomocí pořadí předem sestavené entity.
 
-## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Řešení pro předem připravených entit ordinální V2
+## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Řešení pro předem sestavenou ordinální entitu v2
 
-### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+### <a name="api-version-2x"></a>Rozhraní API verze 2. x
 
-Následující příklad ukazuje rozlišení **builtin.ordinalV2** entity.
+Následující příklad ukazuje řešení entity **Builtin. ordinalV2** .
 
 ```json
 {
@@ -55,9 +55,9 @@ Následující příklad ukazuje rozlišení **builtin.ordinalV2** entity.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API verze 3. x
 
-Následující kód JSON je `verbose` parametr nastaven na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `false`
 
 ```json
 {
@@ -82,7 +82,7 @@ Následující kód JSON je `verbose` parametr nastaven na `false`:
 }
 ```
 
-Následující kód JSON je `verbose` parametr nastaven na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným na: `true`
 
 ```json
 {
@@ -124,4 +124,4 @@ Následující kód JSON je `verbose` parametr nastaven na `true`:
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [procento](luis-reference-prebuilt-percentage.md), [telefonní číslo](luis-reference-prebuilt-phonenumber.md), a [teploty](luis-reference-prebuilt-temperature.md) entity. 
+Přečtěte si [](luis-reference-prebuilt-percentage.md)o procentech, [telefonním číslu](luis-reference-prebuilt-phonenumber.md)a o [teplotních](luis-reference-prebuilt-temperature.md) entitách. 

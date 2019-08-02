@@ -1,8 +1,8 @@
 ---
-title: Indexování tabulky ve službě Azure SQL Data Warehouse | Microsoft Azure
-description: Doporučení a příklady pro indexování tabulky ve službě Azure SQL Data Warehouse.
+title: Indexování tabulek v Azure SQL Data Warehouse | Microsoft Azure
+description: Doporučení a příklady pro indexování tabulek v Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -11,28 +11,28 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 158b229c2c45a14ed0fd5433d1903eca92f32401
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d51bd6906a8299a25fe50ca817b1a2b6082ab91
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851652"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479847"
 ---
-# <a name="indexing-tables-in-sql-data-warehouse"></a>Indexování tabulky ve službě SQL Data Warehouse
+# <a name="indexing-tables-in-sql-data-warehouse"></a>Indexování tabulek v SQL Data Warehouse
 
-Doporučení a příklady pro indexování tabulky ve službě Azure SQL Data Warehouse.
+Doporučení a příklady pro indexování tabulek v Azure SQL Data Warehouse.
 
 ## <a name="index-types"></a>Typy indexů
 
-SQL Data Warehouse nabízí několik možností indexování včetně [Clusterované indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview), [Clusterované indexy a neclusterovaných indexů](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), a také možnost bez index [haldy ](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes).  
+SQL Data Warehouse nabízí několik možností indexování včetně [clusterovaných indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview), [clusterovaných indexů a](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)neclusterovaných indexů a možnost bez indexu, [](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)která se také označuje jako halda.  
 
-Vytvořit tabulku s indexem, najdete v článku [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) dokumentaci.
+Chcete-li vytvořit tabulku s indexem, přečtěte si dokumentaci k [Create Table (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) .
 
 ## <a name="clustered-columnstore-indexes"></a>Clusterované indexy columnstore
 
-Ve výchozím nastavení vytvoří SQL Data Warehouse při nejsou zadány žádné parametry indexu u tabulky s clusterovaným indexem columnstore. Clusterované tabulky columnstore nabízí nejvyšší úroveň komprese dat i nejlepší výkon dotazů.  Clusterované tabulky columnstore budou obecně překonat clusterovaný index nebo haldy tabulek a jsou obvykle nejlepší volbou pro velké tabulky.  Z těchto důvodů Clusterované columnstore je nejlepším místem, kde můžete spustit, když si nejste jistí, jak indexování tabulky.  
+Ve výchozím nastavení SQL Data Warehouse vytvoří clusterovaný index columnstore, pokud nejsou v tabulce zadány žádné možnosti indexu. Clusterované tabulky columnstore nabízejí nejvyšší úroveň komprese dat i nejlepší celkový výkon dotazů.  Clusterované tabulky columnstore budou všeobecně překoná clusterovaných indexů nebo tabulek haldy a jsou obvykle nejlepší volbou pro velké tabulky.  Z těchto důvodů je clusterový columnstore nejlepší místo, kde si nejste jisti, jak indexovat tabulku.  
 
-Pokud chcete vytvořit Clusterované tabulky columnstore, jednoduše zadejte CLUSTEROVANÉHO indexu COLUMNSTORE v klauzuli WITH nebo nechte pole v klauzuli WITH:
+Pokud chcete vytvořit clusterovanou tabulku columnstore, stačí v klauzuli WITH zadat CLUSTEROVANÝ INDEX COLUMNSTORE, nebo ponechte klauzuli WITH vypnuto:
 
 ```SQL
 CREATE TABLE myTable
@@ -44,19 +44,19 @@ CREATE TABLE myTable
 WITH ( CLUSTERED COLUMNSTORE INDEX );
 ```
 
-Zde je několik scénářů, kde Clusterované columnstore nemusí být vhodný:
+Existuje několik scénářů, kdy clusterový columnstore nemůže být dobrou možností:
 
-- Tabulky Columnstore nepodporuje varchar(max), nvarchar(max) a varbinary(max). Místo toho zvažte haldy nebo clusterovaný index.
-- Tabulky Columnstore je možné pro přechodná data méně efektivní. Vezměte v úvahu haldy a možná i dočasné tabulky.
-- Malé tabulky s méně než 60 milionů řádků. Vezměte v úvahu tabulky haldy.
+- Tabulky columnstore nepodporují varchar (max), nvarchar (max) a varbinary (max). Místo toho zvažte haldu nebo clusterovaný index.
+- Tabulky columnstore můžou být pro přechodná data méně efektivní. Zvažte haldu a případně i dočasné tabulky.
+- Malé tabulky s méně než 60 000 000 řádky. Zvažte tabulky haldy.
 
-## <a name="heap-tables"></a>Tabulky hald
+## <a name="heap-tables"></a>Tabulky haldy
 
-Když dočasně umisťujete data ve službě SQL Data Warehouse, můžete zjistit, že použitím tabulky haldy je celý proces zrychlí. Je to proto, že do hald načítají rychleji než do tabulky indexů a v některých případech následné čtení se dá udělat z mezipaměti.  Pokud nahráváte data pouze za účelem jejich přípravy před spuštěním dalších transformací, nahrání tabulky do tabulky haldy je mnohem rychlejší než nahrání dat do Clusterované tabulky columnstore. Kromě toho nahrání dat do [dočasnou tabulku](sql-data-warehouse-tables-temporary.md) načte rychlejší, než nahrání tabulky do trvalého úložiště.  
+Když dočasně vydáte data v SQL Data Warehouse, může se stát, že při použití tabulky haldy bude celkový proces rychlejší. Důvodem je to, že zatížení haldami je rychlejší než indexování tabulek a v některých případech je možné provést následné čtení z mezipaměti.  Pokud načítáte data pouze do fáze před spuštěním více transformací, načítání tabulky do tabulky haldy je mnohem rychlejší než načítání dat do clusterované tabulky columnstore. Kromě toho se načítání dat do [dočasné tabulky](sql-data-warehouse-tables-temporary.md) načítá rychleji než načítání tabulky do trvalého úložiště.  
 
-Pro malé vyhledávacími tabulkami, méně než 60 miliony řádků, často tabulky hald dávat smysl.  Začít dosáhli optimální komprese po více než 60 milionů řádků tabulky columnstore clusteru.
+U malých vyhledávacích tabulek, méně než 60 000 000 řádků, často jsou vhodné tabulky haldy.  Pokud je více než 60 000 000 řádků, začne docházet k optimální kompresi v tabulkách clusteru columnstore.
 
-K vytvoření tabulky haldy, zadejte jednoduše HALDY v klauzuli WITH:
+Chcete-li vytvořit tabulku haldy, stačí zadat HALDu v klauzuli WITH:
 
 ```SQL
 CREATE TABLE myTable
@@ -68,11 +68,11 @@ CREATE TABLE myTable
 WITH ( HEAP );
 ```
 
-## <a name="clustered-and-nonclustered-indexes"></a>Clusterovaných a neclusterovaných indexů
+## <a name="clustered-and-nonclustered-indexes"></a>Clustery a neseskupené indexy
 
-Clusterované indexy může překonat clusterovaných tabulek columnstore, když potřebuje rychle načíst jeden řádek. Pro dotazy, kde je potřeba výkonu s extrémně rychlostí jednu nebo velmi málo řádků vyhledávání vezměte v úvahu index clusteru nebo sekundární neclusterovaný index. Nevýhodou použití clusterovaného indexu je, že pouze dotazy, které přináší výhody jsou ty, které používají vysoce selektivní filtr na sloupec clusterovaný index. K vylepšení filtru na ostatní sloupce lze přidat neclusterovaný index na jiné sloupce. Ale každý index, který je přidán do tabulky přidá prostor i čas zpracování zátěže.
+Clusterované indexy můžou překoná clusterovaných tabulek columnstore, když je potřeba rychle načíst jeden řádek. Pro dotazy, u kterých je nutné, aby se pro výkon s extrémní rychlostí vyžadovalo jedno nebo příliš málo vyhledávání řádků, zvažte index clusteru nebo neclusterovaný sekundární index. Nevýhodou použití clusterovaného indexu je to, že pouze dotazy, které mají výhodu, jsou ty, které využívají vysoce selektivní filtr u sloupce clusterovaného indexu. Aby bylo možné vylepšit filtr na ostatních sloupcích, můžete do jiných sloupců přidat neclusterovaný index. Každý index, který je přidán do tabulky, však přidává prostor a dobu zpracování pro načtení.
 
-Pokud chcete vytvořit clusterovaný index tabulky, zadejte jednoduše CLUSTEROVANÉHO indexu v klauzuli WITH:
+Chcete-li vytvořit tabulku clusterovaných indexů, stačí zadat CLUSTEROVANÝ INDEX v klauzuli WITH:
 
 ```SQL
 CREATE TABLE myTable
@@ -84,17 +84,17 @@ CREATE TABLE myTable
 WITH ( CLUSTERED INDEX (id) );
 ```
 
-Chcete-li přidat neclusterovaný index u tabulky, použijte následující syntaxi:
+Chcete-li do tabulky přidat neclusterovaný index, použijte následující syntaxi:
 
 ```SQL
 CREATE INDEX zipCodeIndex ON myTable (zipCode);
 ```
 
-## <a name="optimizing-clustered-columnstore-indexes"></a>Optimalizace Clusterované indexy columnstore
+## <a name="optimizing-clustered-columnstore-indexes"></a>Optimalizace clusterovaných indexů columnstore
 
-Clusterované tabulky columnstore jsou uspořádány do dat do segmentů.  Segment vysoké kvality, je nezbytné k zajištění optimální výkon dotazů na tabulky columnstore.  Kvalitu segmentů lze změřit podle počtu řádků v komprimované řádek skupiny.  Kvality segmentů je optimální, pokud existuje alespoň 100 tisíc řádků na každém řádku komprimované skupině a získat výkonu jako počet řádků na koncepci skupin řádků 1 048 576 řádků, což je většina řádky, které mohou obsahovat skupinu řádků.
+Clusterované tabulky columnstore jsou v datech uspořádány do segmentů.  Pro zajištění optimálního výkonu dotazů v tabulce columnstore je klíčové vysoké kvality segmentů.  Kvalita segmentů se dá měřit počtem řádků v komprimované skupině řádků.  Kvalita segmentů je optimální, pokud existuje alespoň 100 tisíc řádků na komprimovanou skupinu řádků a získá výkon jako počet řádků na skupinu řádků s přístupem 1 048 576 řádků, což je většina řádků, které může skupina řádků obsahovat.
 
-Níže zobrazení můžete vytvořit a použít ve vašem systému pro výpočet průměrné řádků na každém řádku seskupovat a identifikovat žádné indexy columnstore neoptimálním průběhem clusteru.  Poslední sloupec v tomto zobrazení generuje příkazu SQL, který slouží k opětovnému sestavení indexů.
+Níže uvedené zobrazení je možné vytvořit a použít ve vašem systému k výpočtu průměrných řádků na skupinu řádků a určení všech dílčích indexů columnstore clusteru.  Poslední sloupec v tomto zobrazení vygeneruje příkaz SQL, který lze použít k opětovnému sestavení indexů.
 
 ```sql
 CREATE VIEW dbo.vColumnstoreDensity
@@ -143,7 +143,7 @@ GROUP BY
 ;
 ```
 
-Teď, když jste vytvořili zobrazení, spusťte tento dotaz k identifikaci se skupinami řádků tabulky s méně než 100 tisíc řádků. Samozřejmě můžete chtít zvýšit prahovou hodnotu 100 tisíc, pokud hledáte další kvality segmentů optimální.
+Teď, když jste vytvořili zobrazení, spusťte tento dotaz, abyste identifikovali tabulky se skupinami řádků s méně než 100 tisíc řádky. Je samozřejmě možné, že budete chtít zvýšit prahovou hodnotu 100 tisíc, pokud hledáte vyšší optimální kvalitu segmentů.
 
 ```sql
 SELECT    *
@@ -152,85 +152,85 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
         OR INVISIBLE_rowgroup_rows_AVG < 100000
 ```
 
-Po spuštění dotazu, který můžete začít, podívejte se na data a analyzovat výsledky. Tato tabulka vysvětluje, co se má hledat v analýze skupiny řádků.
+Jakmile spustíte dotaz, můžete začít se podívat na data a analyzovat výsledky. V této tabulce je vysvětleno, co se má v analýze skupiny řádků Hledat.
 
-| Sloupec | Použití těchto dat |
+| Sloupec | Jak používat tato data |
 | --- | --- |
-| [table_partition_count] |Pokud je tabulka rozdělená na oddíly, pak může očekáváte vidět, že počítá vyšší skupinu otevřete řádků. Každý oddíl v distribuci teoreticky mít skupinu otevřete řádek s ním spojená. Faktor to do analýzy. Malé tabulky, který se rozdělil může optimalizovat tak, že odeberete dělení úplně jako by to zlepšit komprese. |
-| [row_count_total] |Celkový počet řádků tabulky. Tuto hodnotu můžete například použít k výpočtu procentuální podíl řádků v komprimovaném stavu. |
-| [row_count_per_distribution_MAX] |Pokud jsou všechny řádky rovnoměrně distribuovaných tato hodnota by cílový počet řádků na distribuci. Porovnejte tuto hodnotu compressed_rowgroup_count. |
-| [COMPRESSED_rowgroup_rows] |Celkový počet řádků ve formátu columnstore pro tabulku. |
-| [COMPRESSED_rowgroup_rows_AVG] |Pokud průměrný počet řádků je výrazně menší než maximální počet řádků pro skupinu řádků, zvažte použití příkazu CTAS nebo ALTER INDEX REBUILD pro opětovnou data |
-| [COMPRESSED_rowgroup_count] |Počet skupin řádků ve formátu columnstore. Pokud toto číslo je velmi vysoké ve vztahu k tabulce je indikátor, že je nízká hustota columnstore. |
-| [COMPRESSED_rowgroup_rows_DELETED] |Řádky jsou logicky odstraněny ve formátu columnstore. Pokud je číslo vysokou vzhledem k velikosti tabulky, zvažte opětovné vytvoření oddílu nebo znovu sestavit index, protože se odebere fyzicky. |
-| [COMPRESSED_rowgroup_rows_MIN] |Toto použijte ve spojení s Průměrný a maximální počet sloupců porozumět rozsahu hodnot pro skupiny řádků ve vašich columnstore. Nízké číslo nad prahovou hodnotou zatížení (102,400 na distribuci zarovnání oddílů) naznačuje, že optimalizace jsou k dispozici v načtení dat |
-| [COMPRESSED_rowgroup_rows_MAX] |Stejně jako výše |
-| [OPEN_rowgroup_count] |Otevřené skupiny řádků je normální. Jeden rozumně byste očekávali jednu skupinu OTEVŘETE řádek na distribuce tabulky (60). Nadměrné čísla navrhnout data načítání napříč oddíly. Dvojitá kontrola strategie dělení a ujistěte se, zda je zvukový |
-| [OPEN_rowgroup_rows] |Každá skupina řádků může mít 1 048 576 řádků v něm jako maximální. Tuto hodnotu použijte, chcete-li zobrazit, jak otevřené skupiny řádků jsou v tuto chvíli |
-| [OPEN_rowgroup_rows_MIN] |Otevření skupin znamenat, že data jsou skapat načítání do tabulky nebo že předchozí zatížení přesahovat zbývající řádky do této skupiny řádků. Použít MIN, MAX, AVG sloupce, které chcete zobrazit, kolik dat je ne v programu OPEN řádek skupiny. Pro malé tabulky je možné, 100 % všech dat! V takovém případě ALTER INDEX REBUILD vynutí data columnstore. |
-| [OPEN_rowgroup_rows_MAX] |Stejně jako výše |
-| [OPEN_rowgroup_rows_AVG] |Stejně jako výše |
-| [CLOSED_rowgroup_rows] |Podívejte se na seskupení řádků uzavřené řádek jako kontrolu správnosti. |
-| [CLOSED_rowgroup_count] |Počet skupin uzavřené řádku by měl být nízká, pokud některý viděli vůbec. Skupiny uzavřené řádků je možné převést na komprimovaná skupina řádků pomocí příkazu ALTER INDEX... Příkaz REORGANIZOVAT. Není to ale obvykle vyžaduje. Uzavřené skupiny se automaticky převedou na skupiny řádků columnstore "přesunu řazené kolekce členů" procesem na pozadí. |
-| [CLOSED_rowgroup_rows_MIN] |Skupiny uzavřené řádků by měl mít výplně velmi vysoké míry. Pokud je míra naplnění pro skupinu uzavřené řádků s nízkou, vyžaduje se další analýza je index columnstore. |
-| [CLOSED_rowgroup_rows_MAX] |Stejně jako výše |
-| [CLOSED_rowgroup_rows_AVG] |Stejně jako výše |
-| [Rebuild_Index_SQL] |Chcete-li znovu sestavit index columnstore pro tabulku SQL |
+| [table_partition_count] |Pokud je tabulka rozdělená na oddíly, může se stát, že budete chtít zobrazit větší počet otevřených skupin řádků. Každý oddíl v distribuci se může teoreticky používat k přidružení otevřené skupiny řádků. Přiložte to do vaší analýzy. Malá tabulka, která byla rozdělená na oddíly, by mohla být optimalizovaná tak, že zcela odebere oddíly, protože by to mohlo zlepšit komprimaci. |
+| [row_count_total] |Celkový počet řádků tabulky Pomocí této hodnoty můžete například vypočítat procento řádků v komprimovaném stavu. |
+| [row_count_per_distribution_MAX] |Pokud jsou všechny řádky rovnoměrně distribuované, tato hodnota by představovala cílový počet řádků na distribuci. Porovnejte tuto hodnotu s compressed_rowgroup_count. |
+| [COMPRESSED_rowgroup_rows] |Celkový počet řádků ve formátu columnstore pro tabulku |
+| [COMPRESSED_rowgroup_rows_AVG] |Pokud je průměrný počet řádků výrazně menší než maximální počet řádků pro skupinu řádků, zvažte použití CTAS nebo ALTER INDEX rebuild pro komprimaci dat. |
+| [COMPRESSED_rowgroup_count] |Počet skupin řádků ve formátu columnstore. Pokud je toto číslo velmi vysoké ve vztahu k tabulce, jedná se o indikátor, že hustota columnstore je nízká. |
+| [COMPRESSED_rowgroup_rows_DELETED] |Řádky jsou logicky smazány ve formátu columnstore. Pokud je číslo vysoké vzhledem k velikosti tabulky, zvažte možnost znovu vytvořit oddíl nebo index znovu sestavit, protože je fyzicky odebere. |
+| [COMPRESSED_rowgroup_rows_MIN] |Tuto kombinaci použijte spolu se sloupci průměr a maximum, abyste porozuměli rozsahu hodnot pro skupiny řádků v columnstore. Nízké číslo nad prahovou hodnotou zatížení (102 400 na distribuci zarovnané na oddíl) naznačuje, že v načtení dat jsou k dispozici optimalizace. |
+| [COMPRESSED_rowgroup_rows_MAX] |Jak je uvedeno výše |
+| [OPEN_rowgroup_count] |Otevřené skupiny řádků jsou normální. Jeden z nich by měl přiměřeně očekávat jednu skupinu otevřených řádků na distribuci tabulky (60). Příliš velké počty navrhují načítání dat napříč oddíly. Zkontrolujte strategii dělení, abyste se ujistili, že se jedná o zvuk. |
+| [OPEN_rowgroup_rows] |Každá skupina řádků může mít 1 048 576 řádků jako maximum. Pomocí této hodnoty můžete zjistit, jak plné jsou aktuálně otevřené skupiny řádků. |
+| [OPEN_rowgroup_rows_MIN] |Otevřené skupiny označují, že data jsou buď trickle načtena do tabulky, nebo že předchozí zatížení se z zbývajících řádků do této skupiny řádků zavedlo. Sloupce MIN, MAX, AVG použijte, pokud chcete zjistit, kolik dat je v otevřených skupinách řádků nastaveno na hodnotu SAT. V malých tabulkách může být 100% všech dat! V takovém případě změňte INDEX opětovného sestavení za účelem vynucení dat do columnstore. |
+| [OPEN_rowgroup_rows_MAX] |Jak je uvedeno výše |
+| [OPEN_rowgroup_rows_AVG] |Jak je uvedeno výše |
+| [CLOSED_rowgroup_rows] |Prohlédněte si řádky skupiny uzavřených řádků jako správnosti kontrolu. |
+| [CLOSED_rowgroup_count] |Počet uzavřených skupin řádků by měl být nízký, pokud jsou všechny zobrazeny vůbec. Skupiny uzavřených řádků lze převést na komprimované skupiny řádků pomocí příkazu ALTER INDEX... Reorganizovat příkaz. To se ale obvykle nevyžaduje. Uzavřené skupiny se automaticky převedou na skupiny řádků columnstore na pozadí "zpracování řazené kolekce členů". |
+| [CLOSED_rowgroup_rows_MIN] |Skupiny uzavřených řádků by měly mít velmi vysokou míru výplně. Pokud je pro skupinu uzavřených řádků Nízká sazba, je potřeba další analýza columnstore. |
+| [CLOSED_rowgroup_rows_MAX] |Jak je uvedeno výše |
+| [CLOSED_rowgroup_rows_AVG] |Jak je uvedeno výše |
+| [Rebuild_Index_SQL] |SQL pro opětovné sestavení indexu columnstore pro tabulku |
 
-## <a name="causes-of-poor-columnstore-index-quality"></a>Způsobí, že špatná columnstore index kvality
+## <a name="causes-of-poor-columnstore-index-quality"></a>Příčiny špatné kvality indexu columnstore
 
-Pokud jste našli tabulky s kvality segmentů nízký, budete chtít zjistit původní příčinu.  Níže jsou uvedeny některé běžné příčiny nízký segmentu kvality:
+Pokud jste identifikovali tabulky s nízkou kvalitou segmentů, chcete identifikovat hlavní příčinu.  Níže jsou uvedeny některé další běžné příčiny špatné kvality segmentu:
 
-1. Přetížení paměti, když byl sestaven indexu
+1. Tlak paměti při sestavení indexu
 2. Velký objem operací DML
-3. Malé nebo skapat operace načítání
+3. Malé nebo trickle operace načítání
 4. Příliš mnoho oddílů
 
-Tyto faktory mohou způsobit index columnstore, aby výrazně méně než optimální 1 milion řádků na skupinu řádků. Může také dojít k tomu řádků, které mají přejít na skupinu řádků delta místo skupiny komprimovaný řádek.
+Tyto faktory můžou způsobit, že index columnstore bude mnohem menší než optimální 1 000 000 řádků na skupinu řádků. Mohou také způsobit, že řádky budou přejít do skupiny řádků Delta místo do komprimované skupiny řádků.
 
-### <a name="memory-pressure-when-index-was-built"></a>Přetížení paměti, když byl sestaven indexu
+### <a name="memory-pressure-when-index-was-built"></a>Tlak paměti při sestavení indexu
 
-Počet řádků na skupinu komprimovaný řádek přímo souvisí šířky řádku a množství paměti k dispozici pro zpracování skupinu řádků.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Osvědčeným postupem je proto poskytnout relace, která zapisuje do indexu columnstore tabulky přístup k tolik paměti co nejvíce.  Protože kompromis mezi pamětí a souběžnosti, pokyny k přidělení paměti správné závisí na data v jednotlivých řádcích tabulky, jednotky datového skladu, které jsou přiděleny do vašeho systému a slotů souběžnosti, které poskytnete k relaci který zapisuje data do tabulky.
+Počet řádků na komprimovanou skupinu řádků přímo souvisí se šířkou řádku a velikostí paměti, která je k dispozici pro zpracování skupiny řádků.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Proto je osvědčeným postupem poskytnout relaci, která zapisuje do tabulek indexu columnstore, přístup k co nejvíce paměti.  Vzhledem k tomu, že existuje kompromis mezi pamětí a souběžně, jsou pokyny týkající se správného přidělení paměti závislé na datech v jednotlivých řádcích tabulky, jednotkách datového skladu, které jsou přiděleny vašemu systému, a počtu slotů souběžnosti, které můžete k relaci poskytnout. zapisuje data do tabulky.
 
 ### <a name="high-volume-of-dml-operations"></a>Velký objem operací DML
 
-Velký objem operací DML, aktualizovat a odstraňovat řádky můžete zavést nedostatků do indexu columnstore. To platí zejména při změně většinou řádků v skupinu řádků.
+Velký objem operací DML, které aktualizují a odstraňují řádky, mohou způsobit neúčinnost do columnstore. To platí hlavně v případě, že většina řádků ve skupině řádků je upravena.
 
-- Odstranění řádku ze skupiny komprimovaný řádek pouze logicky řádek bude označen jako odstraněný. Řádek zůstává ve skupině komprimovaný řádek, dokud znovu sestavit na oddíl nebo tabulky.
-- Vložíte řádek se přidá řádek do tabulky interní rowstore názvem skupiny řádků delta. Vložené: řádek není převedena na columnstore, dokud skupina řádků rozdílů je plný a je označené jako zavřené. Skupiny řádků zavřou, když dosáhnou maximální kapacitu 1 048 576 řádků.
-- Aktualizace řádku ve formátu columnstore je zpracován jako logické delete a potom insert. Vloženého řádku mohou být uloženy v úložišti delta.
+- Odstranění řádku ze zkomprimované skupiny řádků pouze logicky označí řádek jako odstraněný. Řádek zůstane ve zkomprimované skupině řádků, dokud není oddíl nebo tabulka znovu sestavena.
+- Vložení řádku přidá řádek do interní tabulky rowstore s názvem rozdílové skupiny řádků. Vložená řádka není převedena do columnstore, dokud není skupina rozdílových řádků zaplněna a je označena jako uzavřená. Skupiny řádků se zavřou, jakmile dosáhnou maximální kapacity 1 048 576 řádků.
+- Aktualizace řádku ve formátu columnstore je zpracována jako logické odstranění a potom vložení. Vložený řádek může být uložený v rozdílovém úložišti.
 
-Dávkové aktualizace a operací vložení, které by překračovaly prahovou hodnotu hromadné 102 400 řádků na zarovnání oddílu distribuci přejít přímo do formátu columnstore. Ale za předpokladu, že rovnoměrná distribuce, musíte být upravit 6.144 milionů řádků v rámci jedné operace to dělo. Pokud počet řádků pro daný oddíl bočně zarovnaných distribuci je menší než 102,400 řádky přejít do obchodu rozdílovou a zůstávají existuje, dokud dostatečná řádků bylo vloženo nebo upravit tak, aby zavřít skupinu řádků nebo po opětovném sestavení indexu.
+Dávkové operace aktualizace a vložení, které přesahují hromadnou prahovou hodnotu 102 400 řádků na distribuci zarovnaným na oddíl, přejdou přímo do formátu columnstore. Za předpokladu rovnoměrného rozdělení byste ale museli upravovat více než 6 144 000 řádků v rámci jedné operace, aby k tomu mohlo dojít. Pokud je počet řádků pro dané rozdělení zarovnaný na oddíly menší než 102 400, řádky se přejdou do rozdílového úložiště a zůstanou tam, dokud nebudou vloženy nebo upraveny dostatečné řádky, aby se zavřela skupina řádků nebo aby byl index znovu sestaven.
 
-### <a name="small-or-trickle-load-operations"></a>Malé nebo skapat operace načítání
+### <a name="small-or-trickle-load-operations"></a>Malé nebo trickle operace načítání
 
-Malé načte, že tok do SQL Data Warehouse se také někdy označované jako skapat zatížení. Obvykle představují téměř nepřetržitý datový proud dat se přijatý systémem. Ale protože tento datový proud se blíží průběžné svazek řádků není zejména velkých. Častěji data je výrazně pod prahovou hodnotou. vyžaduje se pro přímé načítání do formátu columnstore.
+Malé zátěže, které se flowují do SQL Data Warehouse, se také někdy označují jako trickle zatížení. Typicky představují skoro konstantní datový proud dat zpracovávaných systémem. Vzhledem k tomu, že je tento datový proud blízko nepřetržitě, není objem řádků obzvláště velký. Častěji než data jsou výrazně pod prahovou hodnotou nutnou pro přímé zatížení ve formátu columnstore.
 
-V těchto situacích je často vhodnější nejprve dostat data do úložiště objektů blob v Azure a ten accumulate před načtením. Tato technika se často označuje jako *dávkování micro*.
+V těchto situacích je často lepší nakládat data jako první v úložišti objektů BLOB v Azure a nechat si je shromáždit před načtením. Tato technika se často označuje jako mikrodávkování.
 
 ### <a name="too-many-partitions"></a>Příliš mnoho oddílů
 
-Další věc, které byste měli zvážit je vlivu dělení na vaše clusterovaných tabulek columnstore.  Před dělení, SQL Data Warehouse již rozděluje data do 60 databází.  Dělení, rozdělí se další data.  Pokud svá data dělit, zvažte, který **každý** oddílu potřebuje aspoň 1 milion řádků, abyste využili výhod clusterovaného indexu columnstore.  Pokud jste ji rozdělit do oddílů do 100 oddílů, pak tabulce potřebuje alespoň 6 miliard řádků, abyste využili výhod clusterovaného indexu columnstore (60 distribucí *100 oddílů* 1 milion řádků). Pokud vaše tabulka 100 oddílů neobsahuje 6 miliard řádků, buď snižte počet oddílů, nebo zvažte místo toho použití tabulky haldy.
+Další věcí, kterou je potřeba vzít v úvahu, je dopad dělení na oddíly v clusterovaných tabulkách columnstore.  Před rozdělením SQL Data Warehouse již vaše data rozdělí do databází 60.  Dělení dále rozděluje vaše data.  Při vytváření oddílů dat je potřeba vzít v úvahu, že **každý** oddíl potřebuje aspoň 1 000 000 řádků, aby bylo možné využít clusterový index columnstore.  Pokud vytváříte oddíly tabulky na oddíly 100, je potřeba, aby tabulka měla aspoň 6 000 000 000 řádků, abyste využili výhod clusterovaného indexu columnstore (60 distribuce *100 oddíly* 1 000 000 řádků). Pokud tabulka 100-partition neobsahuje 6 000 000 000 řádků, snižte počet oddílů nebo zvažte použití tabulky haldy.
 
-Po načtení tabulky s daty postupujte níže uvedený postup k identifikaci a znovu vytvořit tabulky s neoptimálním průběhem Clusterované indexy columnstore.
+Po načtení tabulek s některými daty pomocí následujících kroků identifikujte a znovu sestavíte tabulky s dílčími optimálními clusterovanými indexy columnstore.
 
-## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Nové sestavení indexů ke zlepšení kvality segmentů
+## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Nové sestavení indexů pro zlepšení kvality segmentu
 
-### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Krok 1: Určete nebo vytvořte uživatele, který používá správný prostředek třídy
+### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Krok 1: Identifikovat nebo vytvořit uživatele, který používá správnou třídu prostředků
 
-Rychlý způsob okamžitě zlepšení kvality segmentů je index znovu sestavit.  SQL vrácený zobrazení výše vrátí příkaz ALTER INDEX REBUILD, který slouží k opětovnému sestavení indexů. Při opětovném sestavování indexů, ujistěte se, že přidělíte dostatek paměti pro relaci, která znovu sestaví indexy.  K tomuto účelu zvýšit Třída prostředků uživatele, který má oprávnění k opětovnému sestavení indexů v této tabulce na Doporučená minimální.
+Jedním z rychlých způsobů, jak okamžitě vylepšit kvalitu segmentů, je znovu sestavit index.  SQL vrácený výše uvedeným zobrazením vrátí příkaz ALTER INDEX Rebuild, který lze použít k opětovnému sestavení indexů. Při opětovném sestavování indexů se ujistěte, že přidělíte dostatek paměti relaci, která znovu sestaví index.  Provedete to tak, že zvýšíte třídu prostředků uživatele, který má oprávnění k opětovnému sestavení indexu v této tabulce do doporučeného minima.
 
-Níže je příklad toho, jak přidělit víc paměti uživateli zvýšením své třídy prostředků. Práce s třídami prostředků, najdete v článku [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).
+Níže je uveden příklad, jak přidělit uživateli více paměti tím, že zvýšíte jejich třídu prostředků. Chcete-li pracovat s třídami prostředků, přečtěte si téma [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).
 
 ```sql
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
-### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Krok 2: Znovu sestavit Clusterované indexy columnstore s větším uživatelském třídy prostředků
+### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Krok 2: Opětovné sestavení clusterovaných indexů columnstore s vyšším uživatelem třídy prostředků
 
-Přihlaste se jako uživatel z kroku 1 (třeba LoadUser), která je teď vyšší třídě prostředků, a spusťte příkazy ALTER INDEX. Ujistěte se, že tento uživatel má oprávnění ALTER na tabulky, kde index je znovu sestaven. Tyto příklady ukazují, jak znovu sestavte index columnstore celý nebo znovu sestavit jeden oddíl. U velkých tabulek je víc praktických znovu sestavit indexy jeden oddíl v čase.
+Přihlaste se jako uživatel z kroku 1 (například LoadUser), který teď používá vyšší třídu prostředků, a spusťte příkazy ALTER INDEX. Ujistěte se, že tento uživatel má oprávnění ALTER pro tabulky, ve kterých je index znovu sestaven. Tyto příklady ukazují, jak znovu sestavit celý index columnstore nebo jak znovu sestavit jeden oddíl. Ve velkých tabulkách je praktické znovu sestavovat indexy v jednom oddílu.
 
-Místo znovu sestavit index, může případně zkopírujte tabulku, do nové tabulky [použití příkazu CTAS](sql-data-warehouse-develop-ctas.md). Jakým způsobem je nejvhodnější? Pro velké objemy dat, je obvykle rychlejší než CTAS [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Pro menší objem dat ALTER INDEX se snadněji používá a není třeba vyměnit v tabulce.
+Případně místo opakovaného sestavování indexu můžete tabulku zkopírovat do nové tabulky [pomocí CTAS](sql-data-warehouse-develop-ctas.md). Jaký je nejlepší způsob? Pro velké objemy dat je CTAS obvykle rychlejší než [Změna indexu](/sql/t-sql/statements/alter-index-transact-sql). Pro menší objemy dat je snazší použít příkaz ALTER INDEX a nevyžaduje, abyste tabulku vyměnili.
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,15 +252,15 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Nové sestavení indexu ve službě SQL Data Warehouse je v režimu offline operace.  Další informace o nové sestavení indexů, naleznete v tématu v části ALTER INDEX REBUILD [defragmentace indexy Columnstore](/sql/relational-databases/indexes/columnstore-indexes-defragmentation), a [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql).
+Nové sestavení indexu v SQL Data Warehouse je operace offline.  Další informace o opětovném sestavení indexů naleznete v části ALTER INDEX Rebuild v tématu Defragmentace indexů [columnstore](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)a v článku [ALTER index](/sql/t-sql/statements/alter-index-transact-sql).
 
-### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Ověřte, že se zlepšila kvalita segmentů columnstore clusteru
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Vylepšení kvality clusterovaných segmentů columnstore
 
-Opětovné spuštění dotazu, které identifikované tabulky s špatné segmentovat kvality a ověření kvality segmentů zvýšil.  Pokud ke zlepšení kvality segmentů, je možné, že jsou velmi široké řádky v tabulce.  Zvažte použití vyšší třídě prostředků nebo DWU, když nové sestavení indexů.
+Znovu spusťte dotaz, který identifikoval tabulku s nízkou kvalitou segmentů, a ověřte, že kvalita segmentu je vylepšená.  Pokud se kvalita segmentu nezlepšila, může to být, že řádky v tabulce jsou velmi velké.  Zvažte použití vyšší třídy prostředků nebo DWU při opakovaném sestavování indexů.
 
-## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Nové sestavení indexů CTAS a přepínání oddílů
+## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Opakované sestavení indexů pomocí CTAS a přepínání oddílů
 
-V tomto příkladu [vytvořit TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) prohlášení a přepnutí opětovné sestavení oddílů tabulky oddílu.
+V tomto příkladu se používá příkaz [CREATE TABLE AS Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) a přepínání oddílů pro opětovné sestavení oddílu tabulky.
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS
@@ -283,8 +283,8 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-Další podrobnosti o opětovné vytvoření oddílů použití příkazu CTAS najdete v tématu [používání oddílů ve službě SQL Data Warehouse](sql-data-warehouse-tables-partition.md).
+Další podrobnosti o opětovném vytvoření oddílů pomocí CTAS naleznete v tématu [using partitions in SQL Data Warehouse](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o vývoji tabulky, najdete v části [vývoj tabulek](sql-data-warehouse-tables-overview.md).
+Další informace o vývoji tabulek najdete v tématu [vývoj tabulek](sql-data-warehouse-tables-overview.md).

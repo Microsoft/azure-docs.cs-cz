@@ -1,6 +1,6 @@
 ---
-title: Co je Microsoft Flow, Logic Apps, Functions a WebJobs? – Azure
-description: 'Porovnání cloudových služeb Microsoftu, které jsou optimalizované pro úlohy integrace: Microsoft Flow, Logic Apps, Functions a WebJobs.'
+title: Co jsou Microsoft Flow, Logic Apps, funkce a WebJobs? – Azure
+description: 'Porovnání cloudových služeb Microsoftu, které jsou optimalizované pro úlohy integrace: Microsoft Flow, Logic Apps, funkce a WebJobs.'
 services: functions, logic-apps
 documentationcenter: na
 author: ggailey777
@@ -12,14 +12,14 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 63b91763d4f59bc5fdd8363f97e5780cee368a40
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d6abf266d4af5c79333819f5077009124fa28247
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104319"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348243"
 ---
-# <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Co je Microsoft Flow, Logic Apps, Functions a WebJobs?
+# <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Co jsou Microsoft Flow, Logic Apps, funkce a WebJobs?
 
 Tento článek porovnává tyto cloudové služby společnosti Microsoft:
 
@@ -32,39 +32,39 @@ Všechny tyto služby dokáží řešit problémy s integrací a automatizovat o
 
 ## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>Porovnání služeb Microsoft Flow a Azure Logic Apps
 
-Microsoft Flow a Logic Apps jsou obě *založeno na návrháři* integrační služby, které můžete vytvářet pracovní postupy. Obě tyto služby se integrují s různými aplikacemi SaaS a podnikovými aplikacemi. 
+Microsoft Flow a Logic Apps jsou jak *první integrační služby pro návrháře* , které můžou vytvářet pracovní postupy. Obě tyto služby se integrují s různými aplikacemi SaaS a podnikovými aplikacemi. 
 
-Microsoft Flow je postavená na službě Logic Apps. Sdílejí stejného návrháře pracovních postupů a stejné [konektory](../connectors/apis-list.md). 
+Microsoft Flow je postaven nad Logic Apps. Sdílejí stejného návrháře pracovních postupů a stejné konektory [](../connectors/apis-list.md). 
 
-Microsoft Flow umožňuje libovolné pracovníkovi provádět jednoduché integrace (například proces schvalování v knihovně dokumentů Sharepointu) bez nutnosti kontaktovat vývojáře nebo IT. Logic Apps můžete také povolit pokročilé integrace (například procesy B2B), kde se vyžadují postupy zabezpečení a DevOps Azure podnikové úrovni. U obchodních pracovních postupů je typické, že se jejich složitost v průběhu času zvyšuje. Odpovídajícím způsobem začněte s tokem zpočátku a pak ho převést na aplikaci logiky podle potřeby.
+Microsoft Flow dá libovolnému pracovníkovi Office provádět jednoduché integrace (například proces schvalování v knihovně dokumentů služby SharePoint) bez toho, aby procházeli vývojáři nebo IT. Logic Apps taky můžou povolit pokročilou integraci (například procesy B2B), kde se vyžadují postupy zabezpečení Azure na podnikové úrovni a DevOps. U obchodních pracovních postupů je typické, že se jejich složitost v průběhu času zvyšuje. Proto můžete začít s tokem v prvním a pak ho převést na aplikaci logiky podle potřeby.
 
-Následující tabulka vám pomůže určit, jestli je nejlepší pro konkrétní integrace Microsoft Flow nebo Logic Apps:
+Následující tabulka vám pomůže určit, jestli je pro určitou integraci nejvhodnější Microsoft Flow nebo Logic Apps:
 
 |  | Microsoft Flow | Logic Apps |
 | --- | --- | --- |
 | Uživatelé |Administrativní pracovníci, podnikoví uživatelé, správci služby SharePoint |Profesionální integrátoři a vývojáře, IT profesionálové |
-| Scénáře |Samoobslužné |Pokročilé integrace |
-| Návrhářský nástroj |V prohlížeči a mobilní aplikaci, pouze uživatelské rozhraní |V prohlížeči a sadě [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), k dispozici je [zobrazení kódu](../logic-apps/logic-apps-author-definitions.md) |
-| Správa životního cyklu aplikací (ALM) |Navrhování a testování v neprodukčním prostředí, Přesun do produkčního prostředí až to budete mít |Azure DevOps: zdrojového ovládacího prvku, testování, podpora, automatizace a možnosti správy ve [Azure Resource Manageru](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
-| Prostředí pro správu |Správa zásad ochrany před únikem informací (DLP) ke ztrátě Microsoft Flow pro prostředí a dat, sledování licencí: [Centrum pro správu Microsoft Flow](https://admin.flow.microsoft.com) |Správa skupin prostředků, připojení, správy přístupu a protokolování: [Azure Portal](https://portal.azure.com) |
-| Zabezpečení |Protokoly ochrany před únikem informací, auditu Office 365 zabezpečení a dodržování předpisů [šifrování v klidovém stavu](https://wikipedia.org/wiki/Data_at_rest#Encryption) pro citlivá data |Zajištění zabezpečení Azure: [Zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [protokoly auditu](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
+| Scénáře |Samoobslužný |Pokročilé integrace |
+| Nástroj pro návrh |V prohlížeči a mobilní aplikaci, pouze uživatelské rozhraní |V prohlížeči a sadě [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), k dispozici je [zobrazení kódu](../logic-apps/logic-apps-author-definitions.md) |
+| Správa životního cyklu aplikací (ALM) |Návrh a testování v neprodukčních prostředích po připraveném zvýšení úrovně na produkční |Azure DevOps: Správa zdrojového kódu, testování, podpora, automatizace a možnosti správy v [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
+| Prostředí pro správu |Správa zásad ochrany před únikem informací Microsoft Flow prostředí a prevence ztráty dat, sledování licencí: [Centrum pro správu Microsoft Flow](https://admin.flow.microsoft.com) |Správa skupin prostředků, připojení, správy přístupu a protokolování: [Azure Portal](https://portal.azure.com) |
+| Zabezpečení |Protokoly auditu zabezpečení a dodržování předpisů Office 365, DLP, [šifrování v klidovém umístění](https://wikipedia.org/wiki/Data_at_rest#Encryption) pro citlivá data |Bezpečnostní ujištění Azure: [Zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/) [protokoly auditu](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Porovnání služeb Azure Functions a Azure Logic Apps
 
-Functions a Logic Apps jsou služby Azure, které umožňují provádění úloh bez serveru. Azure Functions je výpočetní prostředí služby, zatímco Azure Logic Apps poskytuje pracovních postupů bez serveru. Jak vytvořit komplexní *Orchestrace*. Orchestrace je kolekce funkcí nebo kroků (v Logic Apps se nazývají *akce*), jejichž spouštěním se provede složitý úkol. Při zpracování dávky objednávek, například může spustit velký počet instancí funkce současně, počkat na dokončení všech instancí a pak spustit funkci, která vypočítá výsledek pro agregaci.
+Functions a Logic Apps jsou služby Azure, které umožňují provádění úloh bez serveru. Azure Functions je služba COMPUTE bez serveru, zatímco Azure Logic Apps poskytuje pracovní postupy bez serveru. Oba můžou vytvářet složitá *orchestrace*. Orchestrace je kolekce funkcí nebo kroků (v Logic Apps se nazývají *akce*), jejichž spouštěním se provede složitý úkol. Například pro zpracování dávky objednávek můžete spustit mnoho instancí funkce paralelně, počkat na dokončení všech instancí a potom spustit funkci, která vypočítá výsledek agregace.
 
 K vývoji orchestrací pro Azure Functions se používá zápis kódu a [rozšíření Durable Functions](durable/durable-functions-concepts.md). K vytváření orchestrací pro Logic Apps se používá grafické rozhraní (GUI) nebo úprava konfiguračních souborů.
 
 Při sestavování orchestrace lze služby kombinovat, takže je možné volat funkce z aplikací logiky a volat aplikace logiky z funkcí. Způsob sestavování orchestrace volte na základě možností těchto služeb nebo podle svých potřeb. Následující tabulka uvádí některé hlavní rozdíly mezi těmito službami:
  
-|  | Odolná služba Functions | Logic Apps |
+|  | Durable Functions | Logic Apps |
 | --- | --- | --- |
 | Vývoj | Založeno na kódu (závazné) | Založeno na návrháři (deklarativní) |
 | Připojení | [Zhruba tucet předdefinovaných typů vazeb](functions-triggers-bindings.md#supported-bindings), zápis kódu pro vlastní vazby | [Rozsáhlá kolekce konektorů](../connectors/apis-list.md), [Enterprise Integration Pack pro scénáře B2B](../logic-apps/logic-apps-enterprise-integration-overview.md), [sestavení vlastních konektorů](../logic-apps/custom-connector-overview.md) |
 | Akce | Každá aktivita je funkce Azure; zápis kódu pro funkce aktivity |[Rozsáhlá kolekce předdefinovaných akcí](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| Monitorování | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [protokoly Azure monitoru](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
+| Monitorování | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [protokoly Azure monitor](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
 | Správa | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
-| Kontext spuštění | Můžete spustit [místně](functions-runtime-overview.md) nebo v cloudu | Spustí jenom v cloudu|
+| Kontext spuštění | Může běžet [místně](functions-runtime-overview.md) nebo v cloudu. | Spouští se jenom v cloudu.|
 
 <a name="function"></a>
 
@@ -74,60 +74,60 @@ Podobně jako Azure Functions je služba Azure App Service WebJobs se sadou WebJ
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>Služba WebJobs a sada WebJobs SDK
 
-Můžete použít *WebJobs* funkce služby App Service pro spuštění skriptu nebo kódu v rámci služby App Service webovou aplikaci. Sada *WebJobs SDK* je architektura navržená pro službu WebJobs, která zjednodušuje psaní kódu pro reakci na události ve službách Azure. Například je může reagovat na vytvoření objektu blob obrázku ve službě Azure Storage vytvořením miniatury. Sada WebJobs SDK se spouští jako konzolová aplikace .NET, kterou nasadíte do webové úlohy. 
+Funkci WebJobs App Service  můžete použít ke spuštění skriptu nebo kódu v kontextu webové aplikace App Service. Sada *WebJobs SDK* je architektura navržená pro službu WebJobs, která zjednodušuje psaní kódu pro reakci na události ve službách Azure. Například můžete reagovat na vytvoření objektu BLOB obrázku v Azure Storage vytvořením obrázku miniatury. Sada WebJobs SDK se spouští jako konzolová aplikace .NET, kterou nasadíte do webové úlohy. 
 
 Služba WebJobs a sada WebJobs SDK fungují nejlépe společně, ale můžete použít i službu WebJobs bez sady WebJobs SDK a naopak. Ve službě WebJobs je možné spustit jakýkoli program nebo skript, který se spouští v sandboxu služby App Service. Konzolovou aplikaci WebJobs SDK je možné spustit kdekoli, kde se konzolová aplikace spouští, například na místních serverech.
 
 ### <a name="comparison-table"></a>Srovnávací tabulka
 
-Služba Azure Functions je postavená na sadě WebJobs SDK, takže sdílí řadu stejných aktivačních událostí a připojení k dalším službám Azure. Zde jsou některé faktory vzít v úvahu, abyste dokázali vybrat mezi službami Azure Functions a WebJobs se sadou WebJobs SDK:
+Služba Azure Functions je postavená na sadě WebJobs SDK, takže sdílí řadu stejných aktivačních událostí a připojení k dalším službám Azure. Tady je několik faktorů, které je potřeba vzít v úvahu při výběru mezi Azure Functions a WebJobs se sadou WebJobs SDK:
 
-|  | Functions | Služba WebJobs se sadou WebJobs SDK |
+|  | Funkce | Služba WebJobs se sadou WebJobs SDK |
 | --- | --- | --- |
 |[Model aplikace bez serveru](https://azure.microsoft.com/solutions/serverless/) s [automatickým škálováním](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
 |[Vývoj a testování v prohlížeči](functions-create-first-azure-function.md) |✔||
 |[Ceny s platbami za použití](functions-scale.md#consumption-plan)|✔||
 |[Integrace s Logic Apps](functions-twitter-email.md)|✔||
-| Aktivační události |[Časovač](functions-bindings-timer.md)<br>[Fronty a objekty blob služby Azure Storage](functions-bindings-storage-blob.md)<br>[Fronty a témata služby Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/Webhook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Časovač](functions-bindings-timer.md)<br>[Fronty a objekty blob služby Azure Storage](functions-bindings-storage-blob.md)<br>[Fronty a témata služby Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Systém souborů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| Podporované jazyky  |C#<br>F#<br>JavaScript<br>Java (Preview) |Jazyk C#<sup>1</sup>|
+| Aktivační události |[Timer](functions-bindings-timer.md)<br>[Fronty a objekty blob služby Azure Storage](functions-bindings-storage-blob.md)<br>[Fronty a témata služby Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/Webhook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Fronty a objekty blob služby Azure Storage](functions-bindings-storage-blob.md)<br>[Fronty a témata služby Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Systém souborů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
+| Podporované jazyky  |C#<br>F#<br>JavaScript<br>Java (Preview)<br>Python (Preview) |Jazyk C#<sup>1</sup>|
 |Správci balíčků|NPM a NuGet|NuGet<sup>2</sup>|
 
-<sup>1</sup> WebJobs (bez sady WebJobs SDK) podporuje C#, JavaScript, Bash, .cmd, .bat, PowerShell, PHP, TypeScript, Python a další. Nejedná se o vyčerpávající seznam. Ve webové úloze je možné spustit jakýkoli program nebo skript, který je možné spustit v sandboxu služby App Service.
+<sup>1</sup> WebJobs (bez sady WebJobs SDK) podporuje C#, Java, JavaScript, bash,. cmd,. bat, PowerShell, php, TypeScript, Python a další. Nejedná se o vyčerpávající seznam. Ve webové úloze je možné spustit jakýkoli program nebo skript, který je možné spustit v sandboxu služby App Service.
 
-<sup>2</sup> WebJobs (bez sady WebJobs SDK) podporuje NPM a NuGet.
+<sup>2</sup> webové úlohy (bez sady WebJobs SDK) podporují npm a NuGet.
 
 ### <a name="summary"></a>Souhrn
 
-Služba Azure Functions nabízí větší produktivity pro vývojáře, než Azure App Service WebJobs. Nabízí také další možnosti pro programovací jazyky, vývojových prostředích, integraci služeb Azure a ceny. Pro většinu scénářů se jedná o nejlepší volbu.
+Azure Functions nabízí větší produktivitu vývojářů než Azure App Service WebJobs. Nabízí také více možností pro programovací jazyky, vývojová prostředí, integraci služeb Azure a ceny. Pro většinu scénářů se jedná o nejlepší volbu.
 
 Tady jsou dva scénáře, pro které může být nejlepší volbou služba WebJobs:
 
 * Potřebujete větší kontrolu nad kódem objektu `JobHost`, který naslouchá událostem. Služba Functions nabízí omezené možnosti přizpůsobení chování objektu `JobHost` v souboru [host.json](functions-host-json.md). Někdy potřebujete provádět operace, které není možné zadat řetězcem v souboru JSON. Například vlastní zásadu opakování pro službu Azure Storage umožňuje vytvořit pouze sada WebJobs SDK.
-* Máte aplikaci služby App Service, pro které chcete spouštět fragmenty kódu a chcete je spravovat společně ve stejném prostředí Azure DevOps.
+* Máte aplikaci App Service, pro kterou chcete spouštět fragmenty kódu, a chcete je spravovat společně ve stejném prostředí Azure DevOps.
 
 Pro jiné scénáře, kdy chcete spouštět fragmenty kódu pro integraci služeb Azure nebo třetích stran, místo služby WebJobs se sadou WebJobs SDK zvolte Azure Functions.
 
 <a name="together"></a>
 
-## <a name="microsoft-flow-logic-apps-functions-and-webjobs-together"></a>Microsoft Flow, Logic Apps, Functions a WebJobs společně
+## <a name="microsoft-flow-logic-apps-functions-and-webjobs-together"></a>Microsoft Flow, Logic Apps, funkce a WebJobs společně
 
-Není nutné si vybrat pouze jednu z těchto služeb. Integrují se mezi sebou i s externími službami dělají.
+Nemusíte volit jenom jednu z těchto služeb. Vzájemně se integrují i s externími službami.
 
 Tok může volat aplikaci logiky. Aplikace logiky může volat funkci a funkce může volat aplikaci logiky. Viz například [Vytvoření funkce, která se integruje s Azure Logic Apps](functions-twitter-email.md).
 
-Integrace mezi Microsoft Flow, Logic Apps a Functions pokračuje na jejich zlepšení. Můžete něco vytvořit v jedné službě a používat to v ostatních službách.
+Integrace mezi Microsoft Flow, Logic Apps a funkcemi se v průběhu času nadále vylepšuje. Můžete něco vytvořit v jedné službě a používat to v ostatních službách.
 
-Pomocí následujících odkazů můžete získat další informace o integračních službách:
+Další informace o integračních službách můžete získat pomocí následujících odkazů:
 
 * [Leveraging Azure Functions & Azure App Service for integration scenarios by Christopher Anderson](https://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/) (Využití služeb Azure Functions a Azure App Service pro scénáře integrace, autor: Christopher Anderson)
 * [Integrations Made Simple by Charles Lamanna](https://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/) (Zjednodušená integrace, autor: Charlese Lamanna)
-* [Webové vysílání spuštěné aplikace logiky](https://aka.ms/logicappslive)
-* [Nejčastější dotazy k Microsoft Flow](https://flow.microsoft.com/documentation/frequently-asked-questions/)
+* [Logic Apps živým webcast](https://aka.ms/logicappslive)
+* [Microsoft Flow nejčastějších dotazech](https://flow.microsoft.com/documentation/frequently-asked-questions/)
 
 ## <a name="next-steps"></a>Další postup
 
-Začněte vytvořením svého prvního toku, aplikace logiky nebo aplikace funkcí. Vyberte některou z následujících odkazů:
+Začněte vytvořením svého prvního toku, aplikace logiky nebo aplikace funkcí. Vyberte některý z následujících odkazů:
 
 * [Začínáme s Microsoft Flow](https://flow.microsoft.com/en-us/documentation/getting-started/)
 * [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Vytvoření první funkce Azure](functions-create-first-azure-function.md)
+* [Vytvoření první funkce Azure Functions](functions-create-first-azure-function.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor stavu v2 odstraňování a známé problémy | Dokumentace Microsoftu
-description: Známé problémy v2 monitorování stavu a řešení potíží s příklady. Sledování výkonu webu bez opětovného nasazení webu. Funguje s webové aplikace ASP.NET hostované místně, na virtuálních počítačích nebo v Azure.
+title: Řešení potíží se službou Azure Monitorování stavu v2 a známé problémy | Microsoft Docs
+description: Známé problémy Monitorování stavu v2 a příklady řešení potíží. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,39 +12,33 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: df59766ce38ac81568570cd6544ee28808ff8249
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: e34beba32eace370664893225dd85b6f4b79c886
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807013"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424095"
 ---
-# <a name="troubleshooting-status-monitor-v2"></a>Řešení potíží s stav monitorování v2
+# <a name="troubleshooting-status-monitor-v2"></a>Řešení potíží s Monitorování stavu v2
 
-Když povolíte monitorování, se mohou vyskytnout problémy, které zabrání shromažďování data.
-V tomto článku jsou uvedené všechny známé problémy a řešení problémů s příklady.
-Pokud narazíte na problém, který tu není uvedený, můžete nás kontaktovat na [Githubu](https://github.com/Microsoft/ApplicationInsights-Home/issues).
-
-
-> [!IMPORTANT]
-> Stav monitorování v2 je aktuálně ve verzi public preview.
-> Tato verze preview je k dispozici bez smlouvu o úrovni služeb, a to nedoporučujeme pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Pokud povolíte monitorování, může docházet k problémům, které zabraňují shromažďování dat.
+V tomto článku jsou uvedené všechny známé problémy, které obsahují příklady řešení potíží.
+Pokud se jedná o problém, který zde není uveden, můžete nás kontaktovat na GitHubu [](https://github.com/Microsoft/ApplicationInsights-Home/issues).
 
 ## <a name="known-issues"></a>Známé problémy
 
 ### <a name="conflicting-dlls-in-an-apps-bin-directory"></a>Konfliktní knihovny DLL v adresáři bin aplikace
 
-Pokud některý z těchto knihoven DLL jsou k dispozici v adresáři bin, nemusí podařit monitorování:
+Pokud je některá z těchto knihoven DLL přítomna v adresáři bin, může monitorování selhat:
 
 - Microsoft.ApplicationInsights.dll
 - Microsoft.AspNet.TelemetryCorrelation.dll
 - System.Diagnostics.DiagnosticSource.dll
 
-Některé z těchto knihoven DLL jsou součástí šablony aplikace výchozí sady Visual Studio, i v případě, že vaše aplikace nepoužívá.
-Můžete použít nástroje pro odstraňování potíží zobrazíte napraveny chování:
+Některé z těchto knihoven DLL jsou součástí šablon výchozích aplikací sady Visual Studio, a to i v případě, že je vaše aplikace nepoužívá.
+Pomocí nástrojů pro řešení potíží se můžete podívat na příznaky chování:
 
-- PerfView:
+- PerfView
     ```
     ThreadID="7,500" 
     ProcessorNumber="0" 
@@ -55,7 +49,7 @@ Můžete použít nástroje pro odstraňování potíží zobrazíte napraveny c
     FormattedMessage="Found 'System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' assembly, skipping attaching redfield binaries" 
     ```
 
-- Příkaz IISReset a aplikace načíst (bez telemetrie). Prozkoumejte s Sysinternals (Handle.exe a ListDLLs.exe):
+- Zaiisreset a zatížení aplikace (bez telemetrie). Prozkoumejte pomocí Sysinternals (Handle. exe a ListDLLs. exe):
     ```
     .\handle64.exe -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
     E54: File  (R-D)   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.RedfieldIISModule.dll
@@ -66,36 +60,49 @@ Můžete použít nástroje pro odstraňování potíží zobrazíte napraveny c
     0x0000000004d20000  0xb2000   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.ApplicationInsights.Extensions.Base_x64.dll
     ```
 
-### <a name="conflict-with-iis-shared-configuration"></a>Je v konfliktu s sdílenou konfiguraci služby IIS
+### <a name="conflict-with-iis-shared-configuration"></a>Konflikt se sdílenou konfigurací služby IIS
 
-Pokud máte cluster webové servery, je možné, že používáte [sdílenou konfiguraci](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
-HttpModule nelze vloženy do této sdílené konfigurace.
-Spusťte příkaz povolit na všech webových serverech, nainstalovat knihovny DLL do globální mezipaměti každý server.
+Pokud máte cluster webových serverů, můžete použít [sdílenou konfiguraci](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
+Do této sdílené konfigurace nelze vložit modul HTTP.
+Spusťte příkaz Enable na každém webovém serveru pro instalaci knihovny DLL do mezipaměti GAC každého serveru.
 
-Po spuštění příkazu Enable, proveďte tyto kroky:
-1. Přejděte do adresáře, sdílenou konfiguraci a najít soubor applicationHost.config.
-2. Přidejte následující řádek do části moduly konfigurace:
+Po spuštění příkazu Enable proveďte tyto kroky:
+1. Přejít do sdíleného konfiguračního adresáře a najít soubor applicationHost. config.
+2. Přidejte tento řádek do části moduly v konfiguraci:
     ```
     <modules>
         <!-- Registered global managed http module handler. The 'Microsoft.AppInsights.IIS.ManagedHttpModuleHelper.dll' must be installed in the GAC before this config is applied. -->
         <add name="ManagedHttpModuleHelper" type="Microsoft.AppInsights.IIS.ManagedHttpModuleHelper.ManagedHttpModuleHelper, Microsoft.AppInsights.IIS.ManagedHttpModuleHelper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="managedHandler,runtimeVersionv4.0" />
     </modules>
     ```
+
+### <a name="iis-nested-applications"></a>Vnořené aplikace IIS
+
+Ve verzi 1,0 nemusíme ve službě IIS instrumentovat vnořené aplikace.
+Tento problém sledujeme [tady](https://github.com/microsoft/ApplicationInsights-Home/issues/369).
+
+### <a name="advanced-sdk-configuration-isnt-available"></a>Pokročilá konfigurace sady SDK není k dispozici.
+
+Konfigurace sady SDK není pro koncového uživatele vystavena ve verzi 1,0.
+Tento problém sledujeme [tady](https://github.com/microsoft/ApplicationInsights-Home/issues/375).
+
+    
+    
 ## <a name="troubleshooting"></a>Řešení potíží
     
-### <a name="troubleshooting-powershell"></a>Řešení potíží s Powershellu
+### <a name="troubleshooting-powershell"></a>Řešení potíží s PowerShellem
 
-#### <a name="determine-which-modules-are-available"></a>Určit, které moduly jsou k dispozici
-Můžete použít `Get-Module -ListAvailable` příkaz k určení, které moduly jsou nainstalovány.
+#### <a name="determine-which-modules-are-available"></a>Určete, které moduly jsou k dispozici.
+Pomocí `Get-Module -ListAvailable` příkazu můžete určit, které moduly jsou nainstalovány.
 
-#### <a name="import-a-module-into-the-current-session"></a>Importování modulu do aktuální relace
-Pokud modul se nenačetl do relace prostředí PowerShell, můžete ručně načíst ji pomocí `Import-Module <path to psd1>` příkazu.
+#### <a name="import-a-module-into-the-current-session"></a>Import modulu do aktuální relace
+Pokud se modul nenačte do relace PowerShellu, můžete ho ručně načíst pomocí `Import-Module <path to psd1>` příkazu.
 
 
-### <a name="troubleshooting-the-status-monitor-v2-module"></a>Řešení potíží s modulu v2 monitorování stavu
+### <a name="troubleshooting-the-status-monitor-v2-module"></a>Řešení potíží s modulem Monitorování stavu v2
 
-#### <a name="list-the-commands-available-in-the-status-monitor-v2-module"></a>Seznam příkazů, které jsou k dispozici v modulu Sledování stavu v2
-Spusťte příkaz `Get-Command -Module Az.ApplicationMonitor` zobrazíte dostupné příkazy:
+#### <a name="list-the-commands-available-in-the-status-monitor-v2-module"></a>Vypíše příkazy dostupné v modulu Monitorování stavu v2.
+Spuštěním příkazu `Get-Command -Module Az.ApplicationMonitor` získáte dostupné příkazy:
 
 ```
 CommandType     Name                                               Version    Source
@@ -110,50 +117,50 @@ Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.4.0      Az
 Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az.ApplicationMonitor
 ```
 
-#### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>Zjistit aktuální verzi modulu v2 monitorování stavu
-Spustit `Get-ApplicationInsightsMonitoringStatus` příkazu můžete zobrazit následující informace o modulu:
-   - Verze modulu prostředí PowerShell
-   - Application Insights SDK verze
-   - Cesty k souborům modulu prostředí PowerShell
+#### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>Určení aktuální verze modulu Monitorování stavu v2
+`Get-ApplicationInsightsMonitoringStatus -PowerShellModule` Spuštěním příkazu zobrazíte následující informace o modulu:
+   - Verze modulu PowerShellu
+   - Verze sady Application Insights SDK
+   - Cesty k souborům modulu PowerShellu
     
-Zkontrolujte [reference k rozhraní API](status-monitor-v2-api-get-status.md) podrobný popis toho, jak použít tuto rutinu.
+Podrobný popis způsobu použití této rutiny najdete v referenčních informacích k [rozhraní API](status-monitor-v2-api-get-status.md) .
 
 
-### <a name="troubleshooting-running-processes"></a>Řešení potíží s spuštěné procesy
+### <a name="troubleshooting-running-processes"></a>Odstraňování potíží s běžícími procesy
 
-Můžete si prohlédnout procesy v instrumentovaném počítače k určení, zda jsou načteny všechny knihovny DLL.
-Pokud monitorování funguje, by měla být načtena alespoň 12 knihovny DLL.
+Můžete zkontrolovat procesy v počítači instrumentace a zjistit, jestli jsou všechny knihovny DLL načtené.
+Pokud monitorování funguje, měli byste načíst aspoň 12 knihoven DLL.
 
-Použití `Get-ApplicationInsightsMonitoringStatus -InspectProcess` příkaz a zkontrolujte knihovny DLL.
+K zkontrolování knihoven DLL použijte příkaz.`Get-ApplicationInsightsMonitoringStatus -InspectProcess`
 
-Zkontrolujte [reference k rozhraní API](status-monitor-v2-api-get-status.md) podrobný popis toho, jak použít tuto rutinu.
+Podrobný popis způsobu použití této rutiny najdete v referenčních informacích k [rozhraní API](status-monitor-v2-api-get-status.md) .
 
 
-### <a name="collect-etw-logs-by-using-perfview"></a>Shromažďování protokolů trasování událostí pro Windows pomocí nástroje PerfView
+### <a name="collect-etw-logs-by-using-perfview"></a>Shromažďování protokolů ETW pomocí PerfView
 
 #### <a name="setup"></a>Instalace
 
-1. Stáhněte si PerfView.exe a PerfView64.exe z [Githubu](https://github.com/Microsoft/perfview/releases).
-2. Začněte PerfView64.exe.
-3. Rozbalte **pokročilé možnosti**.
-4. Zrušte zaškrtnutí těchto políček:
-    - **PSČ**
+1. Stáhněte si PerfView. exe a PerfView64. exe [](https://github.com/Microsoft/perfview/releases)z GitHubu.
+2. Spusťte PerfView64. exe.
+3. Rozbalte položku **Pokročilá nastavení**.
+4. Zrušte zaškrtnutí políček:
+    - **Věřitel**
     - **sloučení**
-    - **Symbol kolekci .NET**
-5. Toto nastavení **dalších poskytovatelů**: `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+    - **Kolekce symbolů .NET**
+5. Nastavit tyto **Další zprostředkovatele**:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
-#### <a name="collecting-logs"></a>Shromažďování protokolů
+#### <a name="collecting-logs"></a>Shromažďují se protokoly.
 
-1. V příkazové konzole s oprávněními správce, spusťte `iisreset /stop` příkaz k vypnutí možnosti služby IIS a všech webových aplikací.
-2. V PerfView, vyberte **spustit shromažďování**.
-3. V příkazové konzole s oprávněními správce, spusťte `iisreset /start` příkaz ke spuštění služby IIS.
-4. Došlo k pokusu o přechod do vaší aplikace.
-5. Jakmile vaše aplikace je načtena, vraťte se na PerfView a vyberte **zastavit shromažďování**.
+1. V příkazové konzole s oprávněními správce spusťte `iisreset /stop` příkaz pro vypnutí služby IIS a všech webových aplikací.
+2. V PerfView vyberte **Spustit shromažďování**.
+3. V příkazové konzole s oprávněními `iisreset /start` správce spusťte příkaz a spusťte službu IIS.
+4. Zkuste přejít do aplikace.
+5. Po načtení vaší aplikace se vraťte na PerfView a vyberte **Zastavit shromažďování**.
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- Zkontrolujte [reference k rozhraní API](status-monitor-v2-overview.md#powershell-api-reference) Další informace o parametrech nebyla provedena.
-- Pokud narazíte na problém, který tu není uvedený, můžete nás kontaktovat na [Githubu](https://github.com/Microsoft/ApplicationInsights-Home/issues).
+- Podívejte se na [Reference k rozhraní API](status-monitor-v2-overview.md#powershell-api-reference) , kde najdete informace o parametrech, které jste možná vynechali
+- Pokud se jedná o problém, který zde není uveden, můžete nás kontaktovat na GitHubu [](https://github.com/Microsoft/ApplicationInsights-Home/issues).

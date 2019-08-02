@@ -1,82 +1,82 @@
 ---
-title: Přidat ovládací prvky mapy ve službě Azure Maps | Dokumentace Microsoftu
-description: Jak přidat ovládací prvek lupy, výška ovládacího prvku, otáčení ovládacího prvku a styl ovládacího prvku pro výběr do mapy ve službě Azure Maps.
+title: Přidat mapové ovládací prvky v Azure Maps | Microsoft Docs
+description: Postup přidání ovládacího prvku Lupa, ovládacího prvku sklonu, otočení ovládacího prvku a výběru stylu na mapu v Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/08/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c1f5dd329f34d64478d605c21d229d8c75a99300
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a504b8df199a3a461d5eb4e5b7238462b4c438f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62108715"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638767"
 ---
-# <a name="add-map-controls-to-azure-maps"></a>Přidání ovládacích prvků mapa ke službě Azure Maps
+# <a name="add-map-controls-to-azure-maps"></a>Přidat mapové ovládací prvky do Azure Maps
 
-Tento článek ukazuje, jak přidat ovládací prvky Mapa k mapě. Se také dozvíte, jak vytvořit mapu s všechny ovládací prvky a [výběr stylu](https://docs.microsoft.com/azure/azure-maps/choose-map-style).
+V tomto článku se dozvíte, jak přidat mapové ovládací prvky do mapy. Naučíte se také, jak vytvořit mapu se všemi ovládacími prvky a [Výběr stylu](https://docs.microsoft.com/azure/azure-maps/choose-map-style).
 
-## <a name="add-zoom-control"></a>Přidejte ovládací prvek lupy
+## <a name="add-zoom-control"></a>Přidat ovládací prvek Lupa
 
-<iframe height='500' scrolling='no' title='Přidání ovládacího prvku přiblížení' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>přidáte ovládací prvek lupy</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidání ovládacího prvku lupy' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>Přidání ovládacího prvku Lupa</a> podle Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-První blok kódu nastaví klíč předplatného a vytvoří objekt Map bez předem nastavení stylu. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
+První blok kódu vytvoří objekt mapy pomocí mechanismu anonymního ověřování. Pokyny k vytvoření mapy najdete v tématu [vytvoření mapy](./map-create.md) .
 
-Ovládací prvek lupy přidává možnost zvětšení do a z mapy. Druhý blok kódu vytvoří objekt Lupa pomocí atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Ovládací prvek lupy je v rámci mapy **naslouchací proces událostí** zajistit načte po plně načte mapy.
+Ovládací prvek Lupa přidává možnost přiblížení nebo oddálení mapy. Druhý blok kódu vytvoří objekt ovládacího prvku zvětšení pomocí ZoomControla Atlas [](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) a přidá ho k mapě pomocí ovládacího prvku mapové [ovládací prvky. přidat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metodu. Ovládací prvek přiblížení je v rámci **naslouchacího procesu** pro mapování událostí, aby se zajistilo jeho načtení po úplném načtení mapy.
 
-## <a name="add-pitch-control"></a>Přidat výšku ovládacího prvku
+## <a name="add-pitch-control"></a>Přidat ovládací prvek sklonu
 
-<iframe height='500' scrolling='no' title='Přidání ovládacího prvku od' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>přidání ovládacího prvku rozteč</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidání ovládacího prvku sklon' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>Přidání ovládacího prvku sklonu</a> pomocí<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-První blok kódu nastaví klíč předplatného a vytvoří objekt Map bez předem nastavení stylu. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
+První blok kódu vytvoří objekt mapy pomocí mechanismu anonymního ověřování. Pokyny k vytvoření mapy najdete v tématu [vytvoření mapy](./map-create.md) .
 
-Výška ovládacího prvku přidává možnost změnit výšku na mapě. Druhý bloku kódu vytvoří objekt výšku ovládacího prvku pomocí atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Výška ovládacího prvku se v mapě **naslouchací proces událostí** zajistit načte po plně načte mapy.
+Ovládací prvek sklonu přidá možnost změny sklonu mapy. Druhý blok kódu vytvoří objekt ovládacího prvku pro sklon s použitím PitchControla [](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) Atlas a přidá jej do mapy pomocí ovládacího prvku mapové [ovládací prvky. přidat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metodu. Ovládací prvek sklonu je v rámci **naslouchacího procesu** pro mapování událostí, aby se zajistilo jeho načtení po úplném načtení mapy.
 
-## <a name="add-compass-control"></a>Přidání kompasu ovládacího prvku
+## <a name="add-compass-control"></a>Přidat ovládací prvek kompas
 
-<iframe height='500' scrolling='no' title='Přidání ovládacího prvku otáčení' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>přidání ovládacího prvku otočit</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Přidání ovládacího prvku otočit' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>Přidání ovládacího prvku otočit</a> pomocí Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-První blok kódu nastaví klíč předplatného a vytvoří objekt Map bez předem nastavení stylu. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
+První blok kódu vytvoří objekt mapy pomocí mechanismu anonymního ověřování. Pokyny k vytvoření mapy najdete v tématu [vytvoření mapy](./map-create.md) .
 
-Druhý bloku kódu vytvoří objekt ovládacího prvku Compass pomocí atlas [ovládací prvek Compass](/javascript/api/azure-maps-control/atlas.control.compasscontrol). Také přidá kompasu ovládací prvek do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Ovládací prvek Compass je v rámci mapy **naslouchací proces událostí** zajistit načte po mapy načte plně.
+Druhý blok kódu vytvoří objekt ovládacího prvku kompas pomocí [ovládacího prvku](/javascript/api/azure-maps-control/atlas.control.compasscontrol)The kompas kompas. Také přidá ovládací prvek kompas na mapu pomocí ovládacího prvku mapové metody [. Add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) . Ovládací prvek kompas je v rámci **naslouchacího procesu** pro mapování událostí, aby se zajistilo jeho načtení po úplném načtení mapy.
 
-## <a name="a-map-with-all-controls"></a>Mapa u všech ovládacích prvků
+## <a name="a-map-with-all-controls"></a>Mapa se všemi ovládacími prvky
 
-<iframe height='500' scrolling='no' title='Mapování se všechny ovládací prvky' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>mapy s všechny ovládací prvky</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Mapa se všemi ovládacími prvky' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>a mapu se všemi ovládacími prvky</a> pomocí<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-První blok kódu nastaví klíč předplatného a vytvoří objekt Map bez předem nastavení stylu. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
+První blok kódu vytvoří objekt mapy pomocí mechanismu anonymního ověřování. Pokyny k vytvoření mapy najdete v tématu [vytvoření mapy](./map-create.md) .
 
-Druhý blok kódu vytvoří objekt ovládacího prvku Compass pomocí atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody.
+Druhý blok kódu vytvoří objekt ovládacího prvku kompas pomocí CompassControla Atlas [](/javascript/api/azure-maps-control/atlas.control.compasscontrol) a přidá ho k mapě pomocí ovládacího prvku mapové [ovládací prvky. přidat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metodu.
 
-Třetí bloku kódu vytvoří objekt Lupa pomocí atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody.
+Třetí blok kódu vytvoří objekt ovládacího prvku zvětšení pomocí ZoomControla Atlas a [](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) přidá ho k mapě pomocí [ovládacího prvku mapové ovládací prvky. přidat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metodu.
 
-Čtvrtý blok kódu vytvoří objekt výšku ovládacího prvku pomocí atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody.
+Čtvrtý blok kódu vytvoří objekt ovládacího prvku pro sklon pomocí PitchControlu [](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) Atlas a přidá ho k mapě pomocí ovládacího prvku mapové [ovládací prvky. přidat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metodu.
 
-Poslední blok kódu vytvoří objekt pro výběr stylu s použitím atlas [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metody. Všechny objekty ovládacího prvku se přidají do mapy **naslouchací proces událostí** zajistit, že se po načtení plně načte mapy.
+Poslední blok kódu vytvoří objekt pro výběr stylu pomocí StyleControlu Atlas a přidá [](/javascript/api/azure-maps-control/atlas.control.stylecontrol) ho k mapě pomocí ovládacího prvku mapové metody [. Add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) . Všechny řídicí objekty jsou přidány v rámci **naslouchacího procesu mapování událostí** , aby bylo zajištěno, že budou načteny po úplném načtení mapy.
 
-Pořadí ovládacího prvku objektů ve skriptu určuje pořadí, ve kterém jsou zobrazeny na mapě. Chcete-li změnit pořadí ovládacích prvků na mapě, můžete změnit jejich pořadí, ve skriptu.
+Pořadí řídicích objektů ve skriptu určuje pořadí, ve kterém se zobrazí na mapě. Chcete-li změnit pořadí ovládacích prvků na mapě, můžete změnit jejich pořadí ve skriptu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o třídy a metody používané v tomto článku:
+Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Atlas](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest)
 
-Naleznete v následujících článcích pro celý kód:
+Úplný kód najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
-> [Přidání špendlíku](./map-add-pin.md)
+> [Přidat PIN kód](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Přidání vyskakovacího okna](./map-add-popup.md)
+> [Přidat automaticky otevírané okno](./map-add-popup.md)

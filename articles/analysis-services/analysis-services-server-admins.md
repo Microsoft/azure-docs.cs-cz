@@ -1,60 +1,59 @@
 ---
-title: Správa správců serveru ve službě Azure Analysis Services | Dokumentace Microsoftu
-description: Další informace o správě správce serveru pro server služby Analysis Services v Azure.
+title: Správa správců serveru v Azure Analysis Services | Microsoft Docs
+description: Naučte se spravovat správce serveru pro Analysis Services Server v Azure.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 25eb111871bbe3b18f59b0d6c123c72f3e55c859
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb5248d374fa6212398ad652b4db1496833473ae
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60498682"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696308"
 ---
 # <a name="manage-server-administrators"></a>Správa správců serveru
 
-Správci serverů musí být platný uživatel nebo skupina zabezpečení v Azure Active Directory (Azure AD) pro tenanta, ve kterém se nachází server. Můžete použít **správci Analysis Services** pro váš server webu Azure Portal, vlastnosti serveru v aplikaci SSMS, Powershellu nebo rozhraní REST API ke správě správce serveru. 
+Správci serveru musí být platný uživatel nebo skupina zabezpečení v Azure Active Directory (Azure AD) pro tenanta, ve kterém se server nachází. Správce serverů můžete spravovat pomocí **Analysis Services správci** serveru v Azure Portal, vlastností serveru v SSMS, PowerShellu nebo REST API. 
 
-> [!NOTE]
-> Skupiny zabezpečení musí mít `MailEnabled` nastavenou na `True`.
+**Skupiny zabezpečení** musí být [povoleny poštou](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) s `MailEnabled` vlastností nastavenou na `True`. Při určování skupiny podle e-mailové `obj:groupid@tenantid`adresy použijte.
 
-## <a name="to-add-server-administrators-by-using-azure-portal"></a>Chcete-li přidat správce serveru pomocí webu Azure portal
+## <a name="to-add-server-administrators-by-using-azure-portal"></a>Přidání správců serveru pomocí Azure Portal
 
-1. Na portálu pro váš server, klikněte na tlačítko **správci Analysis Services**.
-2. V  **\<servername >-správci Analysis Services**, klikněte na tlačítko **přidat**.
-3. V **Správce serverů přidejte**, vyberte uživatelských účtů ze služby Azure AD nebo pozvání externího uživatele podle e-mailovou adresu.
+1. Na portálu klikněte pro váš server na **Analysis Services správci**.
+2. **V\<> servername-Analysis Services Admins**klikněte na **Přidat**.
+3. V nástroji **přidat správce serveru**vyberte v Azure AD uživatelské účty nebo Pozvěte externí uživatele podle e-mailové adresy.
 
-    ![Správce serveru na webu Azure portal](./media/analysis-services-server-admins/aas-manage-users-admins.png)
+    ![Správci serveru v Azure Portal](./media/analysis-services-server-admins/aas-manage-users-admins.png)
 
-## <a name="to-add-server-administrators-by-using-ssms"></a>Chcete-li přidat správce serveru pomocí SSMS
+## <a name="to-add-server-administrators-by-using-ssms"></a>Přidání správců serveru pomocí SSMS
 
-1. Klikněte pravým tlačítkem na server > **vlastnosti**.
-2. V **vlastnosti serveru Analysis Server**, klikněte na tlačítko **zabezpečení**.
-3. Klikněte na tlačítko **přidat**a pak zadejte e-mailovou adresu pro uživatele nebo skupinu ve službě Azure AD.
+1. Klikněte pravým tlačítkem na **vlastnosti**serveru >.
+2. V **Analysis Server vlastnosti**klikněte na **zabezpečení**.
+3. Klikněte na **Přidat**a potom zadejte e-mailovou adresu uživatele nebo skupiny ve službě Azure AD.
    
-    ![Přidat správce serveru v aplikaci SSMS](./media/analysis-services-server-admins/aas-manage-users-ssms.png)
+    ![Přidat správce serveru v SSMS](./media/analysis-services-server-admins/aas-manage-users-ssms.png)
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Použití [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) rutina k zadání parametrů správce při vytváření nového serveru. <br>
-Použití [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) rutiny upravte parametr správce pro existující server.
+K určení parametru správce při vytváření nového serveru použijte rutinu [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) . <br>
+Pomocí rutiny [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) můžete změnit parametr správce existujícího serveru.
 
 ## <a name="rest-api"></a>REST API
 
-Použití [vytvořit](https://docs.microsoft.com/rest/api/analysisservices/servers/create) pro určení této vlastnosti asAdministrator při vytváření nového serveru. <br>
-Použití [aktualizace](https://docs.microsoft.com/rest/api/analysisservices/servers/update) pro určení této vlastnosti asAdministrator při úpravě existujícího serveru. <br>
+K určení vlastnosti asAdministrator při vytváření nového serveru použijte [Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) . <br>
+K určení vlastnosti asAdministrator při úpravách stávajícího serveru použijte [Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update) . <br>
 
 
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 
 [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md)  
-[Spravovat databázové role a uživatele](analysis-services-database-users.md)  
+[Správa databázových rolí a uživatelů](analysis-services-database-users.md)  
 [Řízení přístupu na základě role](../role-based-access-control/overview.md)  
 

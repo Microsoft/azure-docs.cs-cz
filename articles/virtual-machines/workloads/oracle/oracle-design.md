@@ -1,6 +1,6 @@
 ---
-title: Návrh a implementace databáze Oracle v Azure | Dokumentace Microsoftu
-description: Návrh a implementace databáze Oracle ve vašem prostředí Azure.
+title: Návrh a implementace databáze Oracle v Azure | Microsoft Docs
+description: Navrhněte a implementujte databázi Oracle v prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
@@ -15,69 +15,69 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 8058246ea5f4ac87c24fab8c5ec64032eb8a1f0b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ebe6f27818df8407504e4254f16d952aa298b6cc
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710640"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348317"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
-## <a name="assumptions"></a>Předpoklady
+## <a name="assumptions"></a>Použité
 
-- Plánování migrace z místní databáze Oracle do Azure.
-- Máte [balíčku diagnostiky](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm) pro Oracle Database, které pokud chcete migrovat
-- Pochopení různých metrik máte v sestavách Oracle AWR.
-- Máte znalosti směrný plán výkonu aplikace a využití platformy.
+- Chystáte se migrovat databázi Oracle z místního prostředí do Azure.
+- Máte [balíček diagnostiky](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm) pro Oracle Database, které chcete migrovat.
+- V sestavách Oracle AWR rozumíte nejrůznějším metrikám.
+- Máte základní znalosti o výkonu aplikací a využití platforem.
 
 ## <a name="goals"></a>Cíle
 
-- Naučte se optimalizovat vaše nasazení Oracle v Azure.
-- Prozkoumejte možnosti pro Oracle database v prostředí Azure pro optimalizaci výkonu.
+- Pochopte, jak optimalizovat nasazení Oracle v Azure.
+- Prozkoumejte možnosti ladění výkonu pro databázi Oracle v prostředí Azure.
 
-## <a name="the-differences-between-an-on-premises-and-azure-implementation"></a>Rozdíly mezi místním a implementace Azure 
+## <a name="the-differences-between-an-on-premises-and-azure-implementation"></a>Rozdíly mezi místním nasazením a implementací Azure 
 
-Toto jsou některé důležité věci potřeba mít na paměti, když probíhá migrace místních aplikací do Azure. 
+Níže jsou uvedeny některé důležité věci, které je potřeba vzít v úvahu při migraci místních aplikací do Azure. 
 
-Jeden důležitý rozdíl je, že v implementaci Azure prostředky, jako jsou virtuální počítače, disky a virtuální sítě jsou odkazy sdíleny mezi ostatní klienty. Kromě toho prostředky můžu omezit na základě požadavků. Místo zaměření na zabránění selháním (MTBF), Azure víc zaměřené na zbývajících selhání (MTTR).
+Jedním z důležitých rozdílů je to, že v implementaci Azure se prostředky, jako jsou virtuální počítače, disky a virtuální sítě, sdílí mezi ostatními klienty. Prostředky je navíc možné omezit na základě požadavků. Místo toho, abyste se zazaměřili na selhání (MTBF), se Azure podrobněji zaměřuje na zbývající část (MTTR).
 
-V následující tabulce jsou uvedeny některé rozdíly mezi místní implementace a Azure implementace databáze Oracle.
+V následující tabulce jsou uvedeny některé rozdíly mezi místními implementacemi a implementací Azure databáze Oracle.
 
 > 
 > |  | **Místní implementace** | **Implementace Azure** |
 > | --- | --- | --- |
-> | **Sítě** |LAN/WAN  |SDN (software softwarově definované sítě)|
-> | **Skupina zabezpečení** |Omezení IP adresa/port nástroje |[Skupina zabezpečení sítě (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
-> | **Odolnost** |MTBF (střední doby mezi poruchami) |MTTR (průměrný čas potřebný k obnovení)|
-> | **Plánovaná údržba** |Opravy a upgrady|[Skupiny dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (opravy a upgrady spravuje Azure) |
-> | **Prostředek** |Vyhrazený  |Sdílet s ostatními klienty|
-> | **Oblasti** |Datová centra |[Párování oblastí](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
-> | **Storage** |Síť SAN nebo fyzických disků |[Spravované v Azure storage](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Sítě** |LAN/WAN  |SDN (softwarově definované sítě)|
+> | **Skupina zabezpečení** |Nástroje pro omezení IP adres nebo portů |[Skupina zabezpečení sítě (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
+> | **Odolnost** |MTBF (střední doba mezi selháními) |MTTR (Průměrná doba obnovení)|
+> | **Plánovaná údržba** |Opravy a upgrady|[Skupiny dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (opravy a upgrady spravované přes Azure) |
+> | **Prostředek** |Vyhrazený  |Sdíleno s ostatními klienty|
+> | **Oblasti** |Datacentra |[Páry oblastí](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
+> | **Storage** |SÍŤ SAN/fyzické disky |[Úložiště spravované v Azure](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Škálování** |Vertikální škálování |Horizontální škálování|
 
 
 ### <a name="requirements"></a>Požadavky
 
-- Určete rychlost velikosti a nárůst databáze.
-- Určení požadavků na vstupně-výstupních operací, které chcete-li odhadnout na základě Oracle AWR sestavy nebo jiné nástroje pro monitorování sítě.
+- Určete velikost databáze a míru růstu.
+- Určete požadavky na IOPS, které můžete odhadnout na základě sestav Oracle AWR nebo jiných nástrojů pro monitorování sítě.
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
 
-Existují čtyři potenciální oblasti, které můžete ladit ke zlepšení výkonu prostředí Azure:
+Existují čtyři možné oblasti, které můžete vyladit, aby se zlepšil výkon v prostředí Azure:
 
 - Velikost virtuálního počítače
 - Propustnost sítě
 - Typy disků a konfigurace
-- Nastavení mezipaměti disku
+- Nastavení diskové mezipaměti
 
 ### <a name="generate-an-awr-report"></a>Generování sestavy AWR
 
-Pokud máte existující databázi Oracle a plánujete migrovat do Azure, máte několik možností. Pokud máte [balíčku diagnostiky](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) pro vaše instance Oracle, můžete spustit sestavu Oracle AWR získat metriky (vstupně-výstupních operací, MB/s, GiBs a tak dále). Potom vyberte virtuální počítač na základě metrik, které jste shromáždili. Nebo můžete kontaktovat infrastruktury týmem pro získání podobné informace.
+Pokud máte existující databázi Oracle a plánujete migrovat na Azure, máte několik možností. Pokud máte [diagnostické sady](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) pro instance Oracle, můžete spuštěním sestavy Oracle AWR získat metriky (IOPS, MB/s, GiBs a tak dále). Pak zvolte virtuální počítač na základě metrik, které jste shromáždili. Případně se můžete obrátit na tým infrastruktury a získat podobné informace.
 
-Můžete zvážit spouštění sestavy AWR během pravidelné a špičku úloh, abyste mohli porovnat. Na základě těchto sestav, můžete velikost virtuálních počítačů na základě průměrné zatížení nebo maximálního zatížení.
+V rámci pravidelných i špičkových úloh můžete zvážit spuštění sestavy AWR, abyste je mohli porovnat. Na základě těchto sestav můžete virtuální počítače měnit na základě průměrné zátěže nebo maximálního zatížení.
 
-Tady je příklad toho, jak vygenerovat sestavu AWR (Generovat AWR sestav pomocí správce Oracle Enterprise, pokud vaše aktuální instalace obsahuje):
+Následuje příklad generování sestavy AWR (generování sestav AWR pomocí správce Oracle Enterprise Manageru, pokud vaše aktuální instalace obsahuje):
 
 ```bash
 $ sqlplus / as sysdba
@@ -87,153 +87,153 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 ### <a name="key-metrics"></a>Klíčové metriky
 
-Metriky, které můžete získat z AWR sestavy jsou následující:
+Níže jsou uvedené metriky, které můžete získat ze sestavy AWR:
 
 - Celkový počet jader
-- Rychlost procesoru
+- Taktová rychlost procesoru
 - Celková paměť v GB
 - Využití procesoru
 - Rychlost přenosu dat ve špičce
-- Frekvence změn vstupně-výstupních operací (čtení a zápis)
-- Znovu frekvence protokolu (MB/s)
+- Frekvence změn v/v (čtení a zápis)
+- Rychlost opakování protokolu (MB/s)
 - Propustnost sítě
-- Míra latence sítě (nízká/vysoká)
+- Frekvence latence sítě (nízká/vysoká)
 - Velikost databáze v GB
-- Počet bajtů přijatých prostřednictvím SQL * Net z/do klienta
+- Bajty přijaté přes SQL * NET od/do klienta
 
 ### <a name="virtual-machine-size"></a>Velikost virtuálního počítače
 
-#### <a name="1-estimate-vm-size-based-on-cpu-memory-and-io-usage-from-the-awr-report"></a>1. Odhad velikosti virtuálního počítače na základě využití procesoru, paměti a vstupně-výstupní operace z AWR sestavy
+#### <a name="1-estimate-vm-size-based-on-cpu-memory-and-io-usage-from-the-awr-report"></a>1. Odhad velikosti virtuálního počítače na základě využití procesoru, paměti a vstupně-výstupních operací ze sestavy AWR
 
-Jednou z věcí, podívejte se na je hlavní pět popředí vypršel časový limit události, které označují, kde jsou problémová místa systému.
+Jednou z věcí, které byste mohli nahlížet, je prvních pět událostí s vypršenou platností na popředí, které označují, kde jsou systémové body kritické.
 
-V následujícím diagramu, například synchronizace souboru protokolu je v horní části. Označuje počet počká, které jsou požadovány, než LGWR zapisuje do souboru protokolu znovu protokolu vyrovnávací paměti. Tyto výsledky označuje, že se vyžadují lépe uskutečnitelný úložiště nebo disky. Kromě toho diagram také ukazuje počet procesorů (jader) a množství paměti.
+Například v následujícím diagramu je synchronizace souborů protokolu v horní části. Označuje počet čekání, které jsou požadovány před tím, než LGWR zapíše vyrovnávací paměť protokolu do souboru protokolu opětovného odeslání. Tyto výsledky naznačují, že je potřeba úložiště nebo disky lépe provádět. Kromě toho diagram zobrazuje také počet PROCESORů (jader) a množství paměti.
 
-![Snímek obrazovky stránky sestavy AWR](./media/oracle-design/cpu_memory_info.png)
+![Snímek obrazovky se stránkou sestavy AWR](./media/oracle-design/cpu_memory_info.png)
 
-Následující diagram znázorňuje celkový počet vstupně-výstupních operací čtení a zápisu. Došlo k 59 GB, přečtěte si a 247.3 napsané v době sestavy.
+Následující diagram znázorňuje celkový počet vstupně-výstupních operací čtení a zápisu. Během sestavy bylo zapsáno 59 GB a 247,3 GB v době sestavování.
 
-![Snímek obrazovky stránky sestavy AWR](./media/oracle-design/io_info.png)
+![Snímek obrazovky se stránkou sestavy AWR](./media/oracle-design/io_info.png)
 
-#### <a name="2-choose-a-vm"></a>2. Vyberte virtuální počítač
+#### <a name="2-choose-a-vm"></a>2. Výběr virtuálního počítače
 
-Na základě informací, které jste shromáždili ze sestavy AWR, dalším krokem je vybrat virtuální počítač stejné velikosti, která splňuje vaše požadavky. Seznam dostupných virtuálních počítačů najdete v článku [paměťově optimalizované](../../linux/sizes-memory.md).
+Na základě informací, které jste shromáždili ze sestavy AWR, je dalším krokem výběr virtuálního počítače podobné velikosti, která splňuje vaše požadavky. Seznam dostupných virtuálních počítačů najdete v paměti v článku optimalizované pro [paměť](../../linux/sizes-memory.md).
 
-#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. Vyladění velikosti virtuálního počítače s podobné řadu virtuálních počítačů podle ACU
+#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. Vyladění velikosti virtuálního počítače pomocí podobné série virtuálních počítačů na základě ACU
 
-Poté, co jste se rozhodli virtuální počítač, věnujte pozornost ACU pro virtuální počítač. Můžete zvolit jiný virtuální počítač na základě hodnoty ACU, která lépe splňuje vaše požadavky. Další informace najdete v tématu [výpočetní jednotky Azure](https://docs.microsoft.com/azure/virtual-machines/windows/acu).
+Po výběru virtuálního počítače věnujte pozornost ACU pro virtuální počítač. Můžete zvolit jiný virtuální počítač na základě hodnoty ACU, která lépe vyhovuje vašim požadavkům. Další informace najdete v tématu [výpočetní jednotka Azure](https://docs.microsoft.com/azure/virtual-machines/windows/acu).
 
-![Snímek obrazovky stránky ACU jednotky](./media/oracle-design/acu_units.png)
+![Snímek obrazovky se stránkou jednotek ACU](./media/oracle-design/acu_units.png)
 
 ### <a name="network-throughput"></a>Propustnost sítě
 
-Následující diagram znázorňuje vztah mezi propustnost a vstupně-výstupních operací:
+Následující diagram znázorňuje vztah mezi propustností a IOPS:
 
 ![Snímek obrazovky s propustností](./media/oracle-design/throughput.png)
 
-Propustnost sítě celkový počet je odhad na základě následujících informací:
-- SQL*Net traffic
-- MB/s x počet serverů (jako je Oracle Data Guard výstupní proud)
-- Dalších faktorů, jako je například aplikace replikace
+Celková propustnost sítě se odhadne na základě těchto informací:
+- SQL * síťový provoz
+- MB/s × počet serverů (odchozí datový proud, jako je Oracle data Guard)
+- Další faktory, jako je například replikace aplikací
 
-![Snímek obrazovky nástroje SQL * Net propustnost](./media/oracle-design/sqlnet_info.png)
+![Snímek obrazovky SQL * NET propustnost](./media/oracle-design/sqlnet_info.png)
 
-Podle potřeby šířky pásma sítě, jsou různé typy brány můžete vybírat. Patří mezi ně basic VpnGw a Azure ExpressRoute. Další informace najdete v tématu [stránce s cenami za bránu VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/?v=17.23h).
+Na základě požadavků na šířku pásma sítě si můžete vybrat z různých typů bran. Mezi ně patří Basic, VpnGw a Azure ExpressRoute. Další informace najdete na stránce s [cenami služby VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/?v=17.23h).
 
 **Recommendations** (Doporučení)
 
-- Latence sítě vyšší ve srovnání s místním nasazením. Omezení sítě round zkracuje dobu odezvy může výrazně zlepšit výkon.
-- Pokud chcete zkrátit dobu odezvy, konsolidovat aplikace, které mají vysokou transakce nebo "příliš upovídaným" aplikací na stejný virtuální počítač.
-- Použijte virtuální počítače s [Akcelerovanými síťovými službami](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) pro lepší výkon sítě.
-- U určitých Linux distrubutions, zvažte povolení [podpora uvolnění dočasné paměti/UNMAP](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support).
-- Nainstalujte [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) na samostatném virtuálním počítači.
-- Velké stránky nejsou povolené v linuxu ve výchozím nastavení. Zvažte povolení velké stránky a nastavte `use_large_pages = ONLY` v databázi Oracle. To může pomoci zvýšit výkon. Další informace najdete [tady](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
+- V porovnání s místním nasazením je latence sítě vyšší. Snížení zatížení sítě může výrazně zlepšit výkon.
+- Pro omezení zpátečních cest Konsolidujte aplikace, které mají vysoké transakce nebo "konverzace" na stejném virtuálním počítači.
+- Pro lepší výkon [](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) sítě používejte Virtual Machines s akcelerovanými síťovými službami.
+- U některých distrubutions pro Linux doporučujeme povolit [podporu pro funkci trim/](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)oddálení.
+- Nainstalujte [správce Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) do samostatného virtuálního počítače.
+- Ve výchozím nastavení nejsou v systému Linux povoleny velké stránky. Zvažte možnost Povolit velké stránky a `use_large_pages = ONLY` nastavit Oracle DB. To může přispět ke zvýšení výkonu. Další informace najdete [tady](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
 ### <a name="disk-types-and-configurations"></a>Typy disků a konfigurace
 
-- *Výchozí disky s operačním systémem*: Tyto typy disků poskytují trvalá data a ukládání do mezipaměti. Jsou optimalizované pro přístup k operační systém při spuštění a nejsou určeny pro buď transakční nebo datového skladu (analytické) úlohy.
+- *Výchozí disky s operačním systémem*: Tyto typy disků nabízejí trvalá data a ukládání do mezipaměti. Jsou optimalizované pro přístup k operačnímu systému při spuštění a nejsou navržené pro transakční data ani pro úlohy datového skladu (analytická data).
 
-- *Nespravované disky*: Pomocí těchto typů disků nevidí spravovat účty úložiště, které ukládají soubory virtuálního pevného disku (VHD), které odpovídají disky virtuálních počítačů. Soubory virtuálního pevného disku se ukládají jako objekty BLOB stránky v účtech úložiště Azure.
+- *Nespravované disky*: Pomocí těchto typů disků můžete spravovat účty úložiště, které ukládají soubory virtuálních pevných disků (VHD), které odpovídají vašim diskům virtuálních počítačů. Soubory VHD se ukládají jako objekty blob stránky v účtech úložiště Azure.
 
-- *Spravované disky*: Azure slouží ke správě účtů úložiště, které používáte pro disky virtuálních počítačů. Zadejte typ disku (premium nebo standard) a velikost disku, které potřebujete. Azure vytvoří a spravuje disk za vás.
+- *Spravované disky*: Azure spravuje účty úložiště, které používáte pro disky virtuálních počítačů. Určíte typ disku (Premium nebo Standard) a velikost disku, který potřebujete. Azure vytvoří a spravuje disk za vás.
 
-- *Disky storage úrovně Premium*: Tyto typy disků se nejlíp hodí pro úlohy v produkčním prostředí. Storage úrovně Premium podporuje disky virtuálních počítačů, které lze připojit na konkrétní virtuální počítače velikost series, jako je například řady DS, DSv2, GS a F virtuálních počítačů. Disk úrovně premium se dodává s jinou velikostí, a můžete si vybrat mezi disky od 32 GB do 4 096 GB. Velikost každého disku má svůj vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete připojit jeden nebo víc disků k virtuálnímu počítači.
+- *Disky Premium Storage*: Tyto typy disků se nejlépe hodí pro produkční úlohy. Premium Storage podporuje disky virtuálních počítačů, které je možné připojit ke konkrétním virtuálním počítačům řady velikostí, například k virtuálním počítačům DS, DSv2, GS a F Series. Disk Premium se dodává s různými velikostmi a můžete si vybrat mezi disky od 32 do 4 096 GB. Každá velikost disku má své vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete k VIRTUÁLNÍmu počítači připojit jeden nebo více disků.
 
-Při vytváření nového spravovaného disku z portálu, můžete použít **typ účtu** pro typ disku, kterou chcete použít. Mějte na paměti, že ne všechny dostupné disky jsou uvedeny v rozevírací nabídce. Po zvolení konkrétní velikosti virtuálního počítače, v nabídce se zobrazuje pouze storage úrovně premium dostupné skladové položky, které jsou založeny na danou velikost virtuálního počítače.
+Při vytváření nového spravovaného disku z portálu můžete zvolit **typ účtu** pro typ disku, který chcete použít. Pamatujte, že ne všechny dostupné disky se zobrazí v rozevírací nabídce. Po zvolení konkrétní velikosti virtuálního počítače se v nabídce zobrazí jenom dostupné SKU Premium Storage, které jsou založené na velikosti tohoto virtuálního počítače.
 
-![Snímek obrazovky stránky spravovaného disku](./media/oracle-design/premium_disk01.png)
+![Snímek stránky spravovaného disku](./media/oracle-design/premium_disk01.png)
 
-Po dokončení konfigurace úložiště na virtuálním počítači, můžete chtít načíst testování disky před vytvořením databáze. Znalost, rychlost vstupně-výstupní operace z hlediska latence a propustnosti vám může pomoct zjistit, jestli virtuální počítače podporují očekávané propustnosti s cíli latence.
+Po konfiguraci úložiště na VIRTUÁLNÍm počítači můžete před vytvořením databáze zátěž testů načíst. Znalost vstupně-výstupních přenosů z hlediska latence a propustnosti vám může pomoci určit, jestli virtuální počítače podporují očekávanou propustnost s cíli latence.
 
-Existují různé nástroje pro testování zatížení aplikace, jako je Oracle Orion Sysbench a Fio.
+Existuje řada nástrojů pro zátěžové testování aplikací, jako je například Oracle Orion, Sysbench a FIO.
 
-Spusťte zátěžový test znovu po nasazení databáze Oracle. Spuštění úloh pravidelné a špičku a ve výsledcích zobrazí, základních hodnot v prostředí.
+Spusťte test zatížení znovu po nasazení databáze Oracle. Zahajte pravidelné a špičkové úlohy a výsledky vám ukáže základní údaje o vašem prostředí.
 
-Může být mnohem důležitější pro nastavení velikosti úložiště založené na rychlost vstupně-výstupních operací než velikost úložiště. Například požadované vstupně-výstupních operací je 5 000, ale potřebujete jenom 200 GB, vám může dostanete, i když disk úrovně premium P30 třídy i v případě, že obsahuje více než 200 GB úložiště.
+Je možné, že velikost úložiště bude důležitější na základě sazby za IOPS místo velikosti úložiště. Pokud je například požadovaný IOPS 5 000, ale potřebujete pouze 200 GB, můžete i nadále získat disk třídy P30 na úrovni Premium, i když obsahuje více než 200 GB úložiště.
 
-Rychlost vstupně-výstupních operací je získat z AWR sestavy. Je určen log znovu, fyzických čtení a zápisy míry.
+Frekvence IOPS se dá získat ze sestavy AWR. Určuje se v protokolu opětovného načtení, fyzických čtení a rychlosti zápisu.
 
-![Snímek obrazovky stránky sestavy AWR](./media/oracle-design/awr_report.png)
+![Snímek obrazovky se stránkou sestavy AWR](./media/oracle-design/awr_report.png)
 
-Například velikost znovu je 12,200,000 bajtů za sekundu, které se rovná 11.63 MB/s.
-IOPS se 12,200,000 / 2,358 = 5,174.
+Například velikost opakování je 12 200 000 bajtů za sekundu, což se rovná 11,63 MB/s.
+IOPS je 12 200 000/2 358 = 5 174.
 
-Jakmile budete mít jasnou představu o vstupně-výstupní požadavky, můžete zvolit kombinaci jednotek, které jsou nejvhodnější pro naplnění těchto požadavků.
-
-**Recommendations** (Doporučení)
-
-- Pro tabulkový datový prostor rozložil zatížení vstupně-výstupních operací na počet disků s použitím spravovaného úložiště nebo Oracle ASM.
-- Jak se zvyšuje velikost bloku vstupně-výstupních operací pro operace náročné na čtení a náročné na zápis, přidáte další datové disky.
-- Zvětšete velikost bloku pro sekvenční velké procesy.
-- Používejte kompresi dat ke snížení vstupně-výstupních operací (pro data a indexů).
-- Samostatné protokoly znovu, systém a podmínky a zpět TS na samostatné datové disky.
-- Neumisťujte žádných souborů aplikací na výchozí disky operačního systému (/ dev/sda). Tyto disky nejsou optimalizovány pro virtuální počítač rychlé spuštění a jejich nemusí poskytnout dostatečný výkon pro vaše aplikace.
-- Pokud používáte virtuální počítače řady M-Series ve službě storage úrovně Premium, umožňují [akcelerátorem zápisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) znovu na disku pro protokoly.
-
-### <a name="disk-cache-settings"></a>Nastavení mezipaměti disku
-
-Existují tři možnosti pro použití mezipaměti u hostitele:
-
-- *Jen pro čtení*: Všechny požadavky jsou ukládány do mezipaměti pro budoucí čtení. Všechny zápisy jsou trvalé přímo do Azure Blob storage.
-
-- *ReadWrite*: Toto je "čtení napřed" algoritmu. Čtení a zápisu jsou uložené v mezipaměti pro budoucí čtení. Zápisy non přímého zápisu jsou trvalé nejprve do místní mezipaměti. Také poskytuje nejnižší latenci disku pro malé úlohy. Použití mezipaměti ReadWrite do aplikace, která nezpracovává uchování požadovaná data může způsobit ztrátu dat, pokud dojde k chybě virtuální počítač.
-
-- *Žádný* (zakázáno): Když použijete tuto možnost, můžete obejít mezipaměť. Všechna data je převedena na disk a ukládají do Azure Storage. Tato metoda nabízí nejvyšší sazba vstupně-výstupních operací pro úlohy náročné na vstupně-výstupních operací. Také je potřeba vzít v úvahu "transakční náklady".
+Po jasném přehledu požadavků na vstupně-výstupní operace můžete zvolit kombinaci jednotek, které jsou nejvhodnější pro splnění těchto požadavků.
 
 **Recommendations** (Doporučení)
 
-Pro maximalizaci propustnosti, doporučujeme začít s **žádný** pro použití mezipaměti u hostitele. Pro Premium Storage, mějte "překážky" je nutné zakázat, když připojíte pomocí systému souborů **jen pro čtení** nebo **žádný** možnosti. Aktualizujte soubor /etc/fstab s UUID disky.
+- V případě datového tabulkového úložiště Rozšiřte vstupně-výstupní úlohy napříč několika disky pomocí spravovaného úložiště nebo Oracle ASM.
+- Jak velikost bloku vstupu/výstupu roste pro operace náročné na čtení a náročné na zápis, přidejte další datové disky.
+- Zvětšete velikost bloku pro velké sekvenční procesy.
+- Komprese dat slouží k omezení vstupně-výstupních operací (pro data i indexy).
+- Oddělte protokoly znovu, systém a dočasné soubory a vraťte se do služby TS TS na samostatných datových discích.
+- Neumísťujte žádné soubory aplikace na výchozí disky s operačním systémem (/dev/sda). Tyto disky nejsou optimalizované pro rychlé spouštění virtuálních počítačů a nemusí pro vaši aplikaci poskytovat dobrý výkon.
+- Při použití virtuálních počítačů řady M-Series na Premium Storage povolte [akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) na disku znovu protokoly.
 
-![Snímek obrazovky stránky spravovaného disku](./media/oracle-design/premium_disk02.png)
+### <a name="disk-cache-settings"></a>Nastavení diskové mezipaměti
 
-- Pro disky s operačním systémem, použijte výchozí **r/w** ukládání do mezipaměti.
-- Pro systém, TEMP a vrácení zpět pomocí **žádný** pro ukládání do mezipaměti.
-- Pro DATA, použijte **žádný** pro ukládání do mezipaměti. Ale pokud vaše databáze je jen pro čtení nebo pro intenzivní čtení, použijte **jen pro čtení** ukládání do mezipaměti.
+Pro ukládání do mezipaměti hostitele existují tři možnosti:
 
-Po uložení nastavení disku dat nelze změnit nastavení mezipaměti hostitele, není-li odpojit jednotku na úrovni operačního systému a znovu ho připojte po provedení změny.
+- *Jen pro čtení*: Všechny požadavky jsou ukládány do mezipaměti pro budoucí čtení. Všechna zápisy se ukládají přímo do Azure Blob Storage.
+
+- Čtení pro *čtení:* Toto je algoritmus "Read-to-dopředu". Čtení a zápisy jsou ukládány do mezipaměti pro budoucí čtení. Zápisy bez zápisů jsou nejprve trvale ukládány do místní mezipaměti. Poskytuje taky nejnižší latenci disku pro úlohy s nižšími procesy. Použití mezipaměti s podporou přečtení z aplikace, která nezpracovává trvalá potřebná data, může způsobit ztrátu dat, pokud dojde k chybě virtuálního počítače.
+
+- *Žádné* (zakázáno): Pomocí této možnosti můžete mezipaměť obejít. Všechna data se přenesou na disk a trvale Azure Storage. Tato metoda poskytuje nejvyšší počet vstupně-výstupních operací pro úlohy náročné na vstupně-výstupní operace. Také je nutné vzít v úvahu "náklady na transakci".
+
+**Recommendations** (Doporučení)
+
+Pro maximalizaci propustnosti doporučujeme začít s **možnostmi žádná** pro ukládání do mezipaměti hostitele. V případě Premium Storage Pamatujte na to, že při připojování systému souborů s možnostmi **ReadOnly** nebo **none** je nutné zakázat "překážky". Aktualizujte soubor/etc/fstab s identifikátorem UUID na disky.
+
+![Snímek stránky spravovaného disku](./media/oracle-design/premium_disk02.png)
+
+- Pro disky s operačním systémem použijte výchozí mezipaměť **pro čtení a zápis** .
+- U možnosti SYSTEM, TEMP a UNDO použijte **možnost None** pro ukládání do mezipaměti.
+- Pro DATA použijte **možnost None** pro ukládání do mezipaměti. Pokud je ale databáze jen pro čtení nebo je náročná na čtení, používejte ukládání do mezipaměti **jen pro čtení** .
+
+Po uložení nastavení datového disku nemůžete nastavení mezipaměti hostitele změnit, pokud nepřipojíte jednotku na úrovni operačního systému a pak ji znovu připojíte po provedení změny.
 
 ## <a name="security"></a>Zabezpečení
 
-Dalším krokem po nastavení a nakonfigurovat prostředí Azure je zabezpečení sítě. Zde je několik doporučení:
+Po nastavení a konfiguraci prostředí Azure je dalším krokem zabezpečení vaší sítě. Tady je několik doporučení:
 
-- *Zásady skupiny zabezpečení sítě*: Skupina zabezpečení sítě může definovat podsítě a síťový adaptér Je jednodušší pro řízení přístupu na úrovni podsítě, jak pro zabezpečení a vynucené směrování pro takové věci, jako jsou brány firewall aplikací.
+- *Zásady NSG*: NSG může být definováno podsítí nebo síťovou kartou. Je jednodušší řídit přístup na úrovni podsítě, a to jak pro zabezpečení, tak pro vynucení směrování pro věci, jako jsou brány firewall pro aplikace.
 
-- *Jumpbox*: Pro lepší zabezpečení přístupu by neměl správci připojit přímo ke službě aplikace nebo databáze. Jumpbox slouží jako média mezi správce počítače a prostředky Azure.
-![Snímek obrazovky stránky Jumpbox topologie](./media/oracle-design/jumpbox.png)
+- *JumpBox*: Pro bezpečnější přístup by se správci neměli přímo připojovat k Aplikační službě nebo databázi. JumpBox se používá jako médium mezi počítačem správce a prostředky Azure.
+![Snímek obrazovky se stránkou topologie JumpBox](./media/oracle-design/jumpbox.png)
 
-    Počítač správce by měl nabídnout IP omezený přístup k jumpboxu pouze. Jumpbox má přístup k aplikaci a databázi.
+    Počítač správce by měl nabízet jenom přístup s omezením IP adres jenom pro JumpBox. JumpBox by měl mít přístup k aplikaci a databázi.
 
-- *Privátní síť* (podsítě): Doporučujeme, aby aplikace služby a databáze v oddělených podsítích v tak lepší kontrolu můžete nastavit pomocí zásad skupiny zabezpečení sítě.
+- *Privátní síť* (podsítě): Doporučujeme, abyste měli aplikační službu a databázi v samostatných podsítích, takže lepší kontrolu můžete nastavit pomocí zásad NSG.
 
 
 ## <a name="additional-reading"></a>Další čtení
 
 - [Konfigurace Oracle ASM](configure-oracle-asm.md)
-- [Konfigurace Oracle Data Guard](configure-oracle-dataguard.md)
-- [Konfigurace Oracle Golden brány](configure-oracle-golden-gate.md)
-- [Oracle zálohování a obnovení](oracle-backup-recovery.md)
+- [Konfigurace Oracle data Guard](configure-oracle-dataguard.md)
+- [Konfigurace Oracle Zlaté brány](configure-oracle-golden-gate.md)
+- [Zálohování a obnovení Oracle](oracle-backup-recovery.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Kurz: Vytvoření vysoce dostupných virtuálních počítačů](../../linux/create-cli-complete.md)
-- [Prozkoumejte ukázky nasazení virtuálního počítače pomocí Azure CLI](../../linux/cli-samples.md)
+- [Ukázky ukázek Azure CLI pro nasazení virtuálních počítačů](../../linux/cli-samples.md)

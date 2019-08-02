@@ -1,6 +1,6 @@
 ---
-title: Jak nainstalovat a spustit kontejnery – pro počítačové zpracování obrazu
-titlesuffix: Azure Cognitive Services
+title: Jak nainstalovat a spustit kontejnery – Počítačové zpracování obrazu
+titleSuffix: Azure Cognitive Services
 description: Jak si stáhnout, nainstalovat a spouštění kontejnerů v tomto kurzu návod pro počítačové zpracování obrazu.
 services: cognitive-services
 author: IEvangelist
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: d72b47d375b8e50cde43e263261551d3010ba013
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: afccce5ca9101ed1e30f69264abae7ad85b4902b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704719"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564577"
 ---
-# <a name="install-and-run-recognize-text-containers"></a>Instalace a spouštění kontejnerů rozpoznat Text
+# <a name="install-and-run-recognize-text-containers"></a>Instalace a spuštění kontejnerů Rozpoznávání textu
 
 Rozpoznávání textu část pro počítačové zpracování obrazu je také k dispozici jako kontejner Dockeru. Umožňuje detekovat a extrahovat tištěný text z obrázků s různými povrchy a pozadími, jako je potvrzení a plakáty nebo vizitky různé objekty.  
 > [!IMPORTANT]
@@ -28,48 +28,47 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před použitím rozpoznat textových polí, musí splňovat následující požadavky:
+Před použitím Rozpoznávání textu kontejnerů musíte splnit následující předpoklady:
 
-|Požaduje se|Účel|
+|Požadováno|Účel|
 |--|--|
-|Modul docker| Je nutné modul Docker nainstalovaný na [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **Na Windows**, Docker musí být taky nakonfigurovaný pro podporu kontejnerů Linuxu.<br><br>|
-|Znalost Dockeru | Byste měli mít základní znalost konceptů Dockeru, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.| 
-|Azure `Cognitive Services` prostředků |Chcete-li použít kontejner, musíte mít:<br><br>A _služeb Cognitive Services_ prostředků Azure a související účtování klíč fakturační identifikátor URI koncového bodu. Obě hodnoty na stránce Přehled a klíče pro prostředek jsou k dispozici a jsou vyžadovány pro spuštění kontejneru. Je třeba přidat `vision/v2.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v následujícím příkladu BILLING_ENDPOINT_URI. <br><br>**{BILLING_KEY}** : klíč prostředku<br><br>**{BILLING_ENDPOINT_URI}** : Příklad identifikátor URI koncového bodu je: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+|Modul Docker| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
+|Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
+|Prostředek Počítačové zpracování obrazu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure **počítačové zpracování obrazu** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}** : Jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}** : Koncový bod, jak je uvedený na stránce **Přehled**|
 
 ## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k registru kontejneru soukromého
 
 [!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
 
-### <a name="the-host-computer"></a>Hostitelském počítači
+### <a name="the-host-computer"></a>Hostitelský počítač
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-
 ### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
 
-Následující tabulka popisuje minimální a doporučené jader procesoru a paměti k přidělení pro každý kontejner rozpoznat Text.
+V následující tabulce jsou popsány minimální a doporučené PROCESORy a paměťová jádra, která se mají přidělit pro každý Rozpoznávání textu kontejner.
 
-| Kontejner | Minimální | Doporučené |TPS<br>(Minimum, Maximum)|
+| Kontejner | Minimální | Doporučené |TPS<br>(Minimum, maximum)|
 |-----------|---------|-------------|--|
-|Rozpoznání textu|1 jádro, 8 GB paměti, 0,5 TPS|2 jádra, 8 GB paměti, 1 TPS|0.5, 1|
+|Rozpoznávání textu|1 jádro, 8 GB paměti, 0,5 TPS|2 jádra, 8 GB paměti, 1 TPS|0.5, 1|
 
-* Každé jádro, musí být aspoň 2.6 gigahertz (GHz) nebo rychlejší.
-* TPS – transakcí za sekundu
+* Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
+* TPS-transakcí za sekundu
 
-Jader a paměti odpovídají `--cpus` a `--memory` nastavení, které se používají jako součást `docker run` příkazu.
+Základní a paměť odpovídají `--cpus` nastavení a `--memory` , která se `docker run` používají jako součást příkazu.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru s `docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí`docker pull`
 
-Image kontejneru pro rozpoznání textu jsou k dispozici. 
+K dispozici jsou image kontejneru pro Rozpoznávání textu. 
 
 | Kontejner | Úložiště |
 |-----------|------------|
-|Rozpoznání textu | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
+|Rozpoznávání textu | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-Použití [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) příkaz Stáhnout image kontejneru.
+[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) Pomocí příkazu Stáhněte image kontejneru.
 
 
-### <a name="docker-pull-for-the-recognize-text-container"></a>Operace docker pull pro kontejner rozpoznat Text
+### <a name="docker-pull-for-the-recognize-text-container"></a>Vyžádané čtení Docker pro kontejner Rozpoznávání textu
 
 ```
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
@@ -77,42 +76,42 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-## <a name="how-to-use-the-container"></a>Jak používat kontejneru
+## <a name="how-to-use-the-container"></a>Jak používat kontejner
 
-Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použijte následující postup pro práci s kontejnerem.
+Jakmile je kontejner na hostitelském [počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spuštění kontejneru](#run-the-container-with-docker-run), s požadovanými fakturace nastavení. Další [příklady](computer-vision-resource-container-config.md) z `docker run` příkazu jsou k dispozici. 
-1. [Dotazování koncový bod kontejneru předpovědi](#query-the-containers-prediction-endpoint). 
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K [](computer-vision-resource-container-config.md) dispozici jsou `docker run` další příklady příkazu. 
+1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint) 
 
-## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s `docker run`
+## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
 
-Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění kontejneru. Příkaz používá následující parametry:
+Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Příkaz používá následující parametry:
 
-| Zástupný symbol | Hodnota |
+| Zástupný symbol | Value |
 |-------------|-------|
-|{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na Azure `Cognitive Services` stránka klíče.  |
-|{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI. Příkladem je: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+|{API_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíčů `Cognitive Services` Azure.  |
+|{ENDPOINT_URI} | Hodnota identifikátoru URI fakturačního koncového bodu. Příklad:`https://westus.api.cognitive.microsoft.com/vision/v2.0`|
 
-Je třeba přidat `vision/v2.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v následujícím příkladu BILLING_ENDPOINT_URI.
+Musíte přidat `vision/v2.0` směrování k identifikátoru URI koncového bodu, jak je znázorněno v následujícím příkladu BILLING_ENDPOINT_URI.
 
-Tyto parametry nahraďte vlastními hodnotami v následujícím příkladu `docker run` příkazu.
+Tyto parametry nahraďte vlastními hodnotami v následujícím ukázkovém `docker run` příkazu.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 Tento příkaz:
 
-* Spouští rozpoznávat kontejner z image kontejneru
-* Přidělí jedno Procesorové jádro a 4 gigabajty (GB) paměti
+* Spustí rozpoznávání kontejneru z image kontejneru.
+* Přiděluje jedno PROCESORové jádro a 4 gigabajty (GB) paměti.
 * Zpřístupňuje TCP port 5000 a přiděluje pseudo-TTY pro kontejner
-* Po ukončení automaticky odstraní kontejner. Image kontejneru je stále k dispozici na hostitelském počítači. 
+* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači. 
 
-Další [příklady](./computer-vision-resource-container-config.md#example-docker-run-commands) z `docker run` příkazu jsou k dispozici. 
+K [](./computer-vision-resource-container-config.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu. 
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing).
@@ -120,11 +119,11 @@ Další [příklady](./computer-vision-resource-container-config.md#example-dock
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
 
-## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncový bod kontejneru predikcí
+## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
 
-Kontejner poskytuje koncový bod předpovědi dotazů založených na REST API. 
+Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST. 
 
-Použít hostitele, `http://localhost:5000`, pro kontejner rozhraní API.
+Pro rozhraní API kontejneru `http://localhost:5000`použijte hostitele.
 
 ### <a name="asynchronous-text-recognition"></a>Rozpoznávání asynchronní textu
 
@@ -132,46 +131,46 @@ Můžete použít `POST /vision/v2.0/recognizeText` a `GET /vision/v2.0/textOper
 
 ### <a name="synchronous-text-recognition"></a>Rozpoznávání synchronní textu
 
-Můžete použít `POST /vision/v2.0/recognizeTextDirect` operace synchronně rozpoznat tištěný text v obrázku. Protože tato operace je synchronní, text požadavku pro tuto operaci je stejný jako u `POST /vision/v2.0/recognizeText` operace, ale odpověď body pro tuto operaci je stejný jako vrácené `GET /vision/v2.0/textOperations/*{id}*` operace.
+Můžete použít `POST /vision/v2.0/recognizeTextDirect` operace synchronně rozpoznat tištěný text v obrázku. Vzhledem k tomu, že je tato operace synchronní, je text žádosti pro tuto operaci stejný `POST /vision/v2.0/recognizeText` jako operace, ale tělo odpovědi pro tuto operaci je stejné jako operace, kterou vrátila `GET /vision/v2.0/textOperations/*{id}*` operace.
 
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 
-## <a name="stop-the-container"></a>Zastavit kontejner
+## <a name="stop-the-container"></a>Zastavení kontejneru
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud spouštíte kontejner s výstupem [připojit](./computer-vision-resource-container-config.md#mount-settings) a povolení protokolování kontejneru vygeneruje soubory protokolů, které jsou užitečné při řešení potíží, ke kterým dochází při spuštění nebo spuštění kontejneru. 
+Pokud spouštíte kontejner s povoleným výstupním [připojením](./computer-vision-resource-container-config.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru. 
 
 
 ## <a name="billing"></a>Fakturace
 
-Odeslat kontejnery rozpoznat Text fakturační údaje do Azure, pomocí _rozpoznat Text_ prostředků v účtu Azure. 
+Kontejnery Rozpoznávání textu odesílají informace o fakturaci do Azure pomocí prostředku _rozpoznávání textu_ na účtu Azure. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](./computer-vision-resource-container-config.md).
 
-<!--blogs/samples/video coures -->
+<!--blogs/samples/video course -->
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání kontejnerů rozpoznat Text. Souhrn:
+V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů Rozpoznávání textu. Souhrn:
 
-* Rozpoznávání textu poskytuje kontejner pro Linux pro Docker, zapouzdření rozpoznání textu.
+* Rozpoznávání textu poskytuje kontejner pro Linux pro Docker, který zapouzdřuje rozpoznávání textu.
 * Image kontejneru se stáhnou z kontejneru registru Microsoft (MCR) v Azure.
 * Spuštění imagí kontejnerů v Dockeru.
-* Rozhraní REST API nebo sady SDK můžete použít k volání operací v kontejnerech rozpoznat Text tak, že zadáte identifikátor URI kontejneru hostitele.
+* Můžete použít REST API nebo SDK pro volání operací v kontejnerech Rozpoznávání textu zadáním identifikátoru URI hostitele kontejneru.
 * Při vytváření instance kontejneru, je nutné zadat fakturační informace.
 
 > [!IMPORTANT]
-> Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků (třeba image nebo text, který je analyzován) společnosti Microsoft.
+> Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Kontejnery Cognitive Services neodesílají zákaznická data (například obrázek nebo analyzovaný text) společnosti Microsoft.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -179,4 +178,4 @@ V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, insta
 * Kontrola [přehled pro počítačové zpracování obrazu](Home.md) Další informace o rozpoznávání tištěné a rukou psaný text  
 * Odkazovat [rozhraní API pro počítačové zpracování obrazu](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) podrobné informace o metodách podporuje kontejneru.
 * Odkazovat na [– nejčastější dotazy (FAQ)](FAQ.md) k vyřešení problémů týkajících se funkce pro počítačové zpracování obrazu.
-* Použití více [kontejnery Cognitive Services](../cognitive-services-container-support.md)
+* Použít více [Cognitive Servicesch kontejnerů](../cognitive-services-container-support.md)

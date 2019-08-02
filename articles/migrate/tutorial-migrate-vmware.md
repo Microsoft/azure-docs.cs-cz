@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 885c877f219f59ab5049cf7b8e01243077d6d3eb
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 7fba9cbbaa15359e7e4dd95e66645dd5f4022431
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348398"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640779"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta)
 
@@ -41,7 +41,7 @@ Virtuální počítače VMware můžete migrovat do Azure pomocí nástroje pro 
 
 Pokud chcete rozhodnout, jestli chcete použít migraci bez agenta nebo agenta, přečtěte si tyto články:
 
-- Přečtěte si, [jak](server-migrate-overview.md) funguje migrace bez agentů, a [Zkontrolujte omezení](server-migrate-overview.md#agentless-migration-limitations).
+- [Přečtěte si, jak](server-migrate-overview.md) funguje migrace bez agentů, a porovnejte [metody migrace](server-migrate-overview.md#compare-migration-methods).
 - Pokud chcete použít metodu založenou na agentech, [Přečtěte si tento článek](tutorial-migrate-vmware-agent.md) .
 
 ## <a name="prerequisites"></a>Požadavky
@@ -93,7 +93,7 @@ Pokud chcete zařízení nastavit, postupujte podle pokynů v [tomto článku](h
 
 Azure Migrate vyžaduje změny virtuálních počítačů, aby bylo zajištěno, že virtuální počítače lze migrovat do Azure.
 
-- Pro některé [operační systémy](server-migrate-overview.md#agentless-migration-limitations)Azure Migrate provede tyto změny automaticky.
+- Pro některé operační systémy Azure Migrate provede tyto změny automaticky. [Víc se uč](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)
 - Pokud migrujete virtuální počítač, který nemá některý z těchto operačních systémů, připravte si virtuální počítač podle pokynů.
 - Před zahájením migrace je důležité tyto změny provést. Pokud před provedením změny migrujete virtuální počítač, nemusí se virtuální počítač spustit v Azure.
 - Změny konfigurace, které provedete na místních virtuálních počítačích, se po povolení replikace pro virtuální počítač replikují do Azure. Aby se zajistilo, že se změny replikují, ujistěte se, že bod obnovení, na který migrujete, je pozdější než čas, kdy se změny konfigurace provedly v místním prostředí.
@@ -145,7 +145,7 @@ Po dokončení zjišťování můžete zahájit replikaci virtuálních počíta
     - Pokud jste nespustili posouzení nebo nechcete použít nastavení posouzení, vyberte možnost **žádné** možnosti.
     - Pokud jste vybrali použití posouzení, vyberte skupinu virtuálních počítačů a název posouzení.
 
-    ![Vybrat posouzení](./media/tutorial-migrate-vmware/select-assessment.png)
+    ![Vyberte posouzení.](./media/tutorial-migrate-vmware/select-assessment.png)
 
 5. V rámci **virtuálních počítačů**podle potřeby vyhledejte virtuální počítače a ověřte všechny virtuální počítače, které chcete migrovat. Pak klikněte **na další: Nastavení**cíle
 
@@ -218,11 +218,11 @@ Proveďte migraci testu následujícím způsobem:
 
 1. V Azure Migrate **cíle** > migrace na**servery** > : **Migrace**serveru klikněte na **test migrovaných serverů**.
 
-     ![Testování migrovaných serverů](./media/tutorial-migrate-vmware/test-migrated-servers.png)
+     ![Servery, pro které proběhla testovací migrace](./media/tutorial-migrate-vmware/test-migrated-servers.png)
 
 2. Klikněte pravým tlačítkem na virtuální počítač, který chcete otestovat, a klikněte na **test migrovat**.
 
-    ![Test migrace](./media/tutorial-migrate-vmware/test-migrate.png)
+    ![Otestovat migraci](./media/tutorial-migrate-vmware/test-migrate.png)
 
 3. V části **test migrace**vyberte virtuální síť Azure, ve které bude virtuální počítač Azure umístěný po migraci. Doporučujeme použít virtuální síť, která není v produkčním prostředí.
 4. Spustí se úloha **testování migrace** . Sledujte úlohu v oznámeních na portálu.
@@ -238,10 +238,10 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 
 1. V Azure Migrate >ch **serverech** > **projektu Azure Migrate: Migrace**serveru klikněte na **replikace serverů**.
 
-    ![Replikace serverů](./media/tutorial-migrate-vmware/replicate-servers.png)
+    ![Replikují se servery.](./media/tutorial-migrate-vmware/replicate-servers.png)
 
 2. V části **replikační počítače**klikněte pravým tlačítkem na virtuální počítač > **migrovat**.
-3. V nástroji **migrovat** > vypínání**virtuálních počítačů a provádění plánované migrace bez ztráty dat**vyberte **Ano** > .
+3. V nástroji **migrovat** > vypínání**virtuálních počítačů a provádění plánované migrace bez ztráty dat**vyberte **Ano** > . ****
     - Ve výchozím nastavení Azure Migrate vypne místní virtuální počítač a spustí replikaci na vyžádání a provede synchronizaci všech změn virtuálních počítačů, ke kterým došlo od poslední replikace. To zajistí, že nedojde ke ztrátě dat.
     - Pokud nechcete virtuální počítač vypnout, vyberte **ne** .
 4. Spustí se úloha migrace pro virtuální počítač. Sledujte úlohu v oznámeních Azure.

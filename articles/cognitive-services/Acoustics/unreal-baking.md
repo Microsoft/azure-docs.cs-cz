@@ -1,7 +1,7 @@
 ---
-title: Kurz Unreal která má označení vytvoření Akustika projektu
+title: Kurz Unreal zanesli v projektu
 titlesuffix: Azure Cognitive Services
-description: Tento dokument popisuje proces odesílání Akustika která má označení vytvoření pomocí rozšíření Unreal editoru.
+description: Tento dokument popisuje proces odeslání akustické zanesli pomocí rozšíření editoru Unreal.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,211 +10,212 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: 6b49a6b9e235414cd63eacdbad523bbda8646963
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ROBOTS: NOINDEX
+ms.openlocfilehash: 47946570db305ff3d54dfed9ea6f698e5deb7b72
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304300"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704788"
 ---
-# <a name="project-acoustics-unreal-bake-tutorial"></a>Kurz Unreal která má označení vytvoření Akustika projektu
-Tento dokument popisuje proces odesílání Akustika která má označení vytvoření pomocí rozšíření Unreal editoru.
+# <a name="project-acoustics-unreal-bake-tutorial"></a>Kurz Unreal zanesli v projektu
+Tento dokument popisuje proces odeslání akustické zanesli pomocí rozšíření editoru Unreal.
 
-Existuje pět kroků až po provádění která má označení vytvoření:
+Zanesli je pět kroků:
 
-1. Vytvořit nebo označit vaše síť player navigace
-2. Značka Akustika geometrie
-3. Přiřazení vlastností akustický materiály geometrie
-4. Umístění testu ve verzi Preview
-5. Vytvoření
+1. Vytvoření nebo označení navigační mřížky přehrávače
+2. Geometrie akustického příznaku
+3. Přiřazení vlastností akustického materiálu geometrii
+4. Náhled umístění testu paměti
+5. Zanesli
 
-## <a name="open-the-project-acoustics-editor-mode"></a>Otevřete projekt Akustika režimu úprav
+## <a name="open-the-project-acoustics-editor-mode"></a>Otevřete režim editoru akustického projektu
 
-Importujte balíček modulu plug-in Akustika projektu do projektu. Vám pomůžou s tím, [Unreal integrace](unreal-integration.md) tématu. Jakmile je integrovaný modul plug-in, otevřete kliknutím na ikonu nový režim Akustika uživatelské rozhraní Akustika.
+Importujte balíček modulu plug-in pro projekt akustického prostředí do projektu. Nápovědu k tomuto řešení najdete v tématu věnovaném [integraci Unreal](unreal-integration.md) . Jakmile je modul plug-in integrovaný, otevřete uživatelské rozhraní akustického prostředí kliknutím na ikonu nové zvukové režimy.
 
-![Snímek obrazovky režimu Akustika Unreal editoru – možnost](media/acoustics-mode.png)
+![Snímek obrazovky s možností režimu akustického Unreal editoru](media/acoustics-mode.png)
 
-## <a name="tag-actors-for-acoustics"></a>Značka actors pro Akustika
+## <a name="tag-actors-for-acoustics"></a>Označit objekty actor jako akustické
 
-Na kartě objekty je první karta, který se zobrazí při otevření Akustika režimu. Na této kartě lze značka actors ve vaší úrovni, který přidá **AcousticsGeometry** nebo **AcousticsNavigation** značky pro účastníky.
+Karta objekty je první karta, která se zobrazí při otevření režimu akustického zobrazení. Pomocí této karty můžete označit objekty actor na úrovni, které do objektů actor přidávají značky **AcousticsGeometry** nebo **AcousticsNavigation** .
 
-Vyberte jeden nebo více objektů v Tvorba osnovy svět, nebo použijte **Hromadný výběr** části vám pomohou s výběrem všechny objekty konkrétní kategorie. Jakmile jsou vybrané objekty, použijte **označení** části použití požadované značky pro vybrané objekty.
+Vyberte jeden nebo více objektů na světovém průřezu nebo použijte část hromadného **výběru** , která vám umožní vybrat všechny objekty určité kategorie. Po výběru objektů použijte oddíl **označování** k použití požadované značky pro vybrané objekty.
 
-Pokud něco nemá **AcousticsGeometry** ani **AcousticsNavigation** značky, bude se ignorovat simulace. Pouze statické OK, nav mřížky a prostředí jsou podporovány. Pokud označíte cokoli jiného, bude se ignorovat.
+Pokud něco nemá značku **AcousticsGeometry** ani **AcousticsNavigation** , bude v simulaci ignorována. Podporují se jenom statické sítě, navigační mřížky a krajiny. Pokud označíte cokoli jiného, bude se ignorovat.
 
-### <a name="for-reference-the-objects-tab-parts"></a>Pro referenci: Karta částí objektů
+### <a name="for-reference-the-objects-tab-parts"></a>Pro referenci: Části karty objekty
 
-![Snímek obrazovky Akustika objekty kartě Unreal](media/unreal-objects-tab-details.png)
+![Obrazovka karty akustické objekty v Unreal](media/unreal-objects-tab-details.png)
 
-1. Výběr tlačítka kartu (**objekty** vybraná karta). Pomocí těchto tlačítek lze projít různé kroky dělat Akustika která má označení vytvoření, shora dolů.
-2. Stručný popis co je potřeba provést pomocí této stránky.
-3. K dispozici selektory pro objekty actor na úrovni.
-4. Kliknutím na **vyberte** vybere všechny objekty na úrovni, které odpovídají alespoň jeden z typů checked objektu actor.
-5. Kliknutím na **zrušit výběr** vymaže aktuální výběr. To je stejný jako dosažení klávesou ESC.
-6. Pomocí těchto přepínačů vyberte, jestli se má použít značku geometrie a navigace pro vybrané objekty actor.
-7. Kliknutím na **značka** Přidá vybranou značku pro všechny vybrané objekty actor.
-8. Kliknutím na **Odtagovat** se odebrat vybranou značku ze všech aktuálně vybraných objektů actor.
-9. Kliknutím na **vyberte označené** zrušit aktuální výběr a vyberte všechny actors s aktuálně vybranou značkou.
-10. Na tyto statistiky ukazují, kolik actors jsou označené pomocí jednotlivých typů značek.
+1. Tlačítka výběru karet (vybraná karta**objekty** ). Pomocí těchto tlačítek můžete procházet různými kroky při zanesli akustického provozu od shora dolů.
+2. Stručný popis toho, co je třeba použít na této stránce.
+3. K dispozici jsou selektory pro aktéry na úrovni.
+4. Po kliknutí na tlačítko **Vybrat** budou vybrány všechny objekty na úrovni, které odpovídají alespoň jednomu z zkontrolovaných typů actor.
+5. Kliknutím na zrušit **Výběr** se zruší aktuální výběr. To je totéž jako při stisknutí klávesy Escape.
+6. Pomocí těchto přepínačů vyberte, zda chcete pro vybrané objekty actor použít geometrii nebo navigační značku.
+7. Kliknutím na **značku** se přidá vybraná značka všem aktuálně vybraným aktérům.
+8. Kliknutím na **Zrušit označení** se odebere vybraná značka ze všech aktuálně vybraných objektů Actors.
+9. Kliknutím na **Vybrat značku** smažete aktuální výběr a vyberete všechny objekty actor s aktuálně vybranou značkou.
+10. Tyto statistiky ukazují, kolik objektů actor je označeno jednotlivými typy značek.
 
-### <a name="tag-acoustics-occlusion-and-reflection-geometry"></a>Značka Akustika uzavření a reflexe geometrie
+### <a name="tag-acoustics-occlusion-and-reflection-geometry"></a>Překrytíy značek a geometrie reflexe
 
-Otevřete kartu objekty Akustika okna. Pokud by měl occlude, odrážejí nebo vyrovnat se s zvuk, označte jako Akustika geometrie žádné objekty. Geometrie Akustika patří takové věci, jako základu stěn, střechy, windows & okno lupy, jiných textilních podlahových krytin a velké nábytek. Můžete použít libovolný libovolného úroveň složitosti pro tyto objekty. Protože je Scéna voxelized před simulace, vysoce podrobné mřížky, jako je například stromové struktury s mnoha malých listy, nejsou dražší než zjednodušené objekty zanést.
+Otevřete kartu objekty v okně akustické množství. Označte všechny objekty jako akustickou geometrii, pokud by měly occlude, odrážely nebo absorbovat zvuk. Geometrie akustického množství může zahrnovat věci, jako je například uzemnění, zdi, střechy, okna Windows & skla, rugs a velký nábytek. Pro tyto objekty můžete použít libovolnou úroveň složitosti. Vzhledem k tomu, že se scéna před simulací voxelized, vysoce podrobné sítě, jako jsou stromy s mnoha malými listy, nejsou dražší pro zanesli než zjednodušené objekty.
 
-Nezahrnují věcí, které by neměla mít vliv Akustika, jako jsou neviditelná kolizí mřížky.
+Nezahrnovat věci, které by neměly mít vliv na akustické, například na neviditelné sítě kolizí.
 
-Transformace objektu v okamžiku výpočtu sondy (na kartě testy níže) problém je vyřešený v která má označení vytvoření výsledky. Přesunete označené jako objekty na scéně. bude nutné opakování výpočtu testu a rebaking scény.
+Transformace objektu v době výpočtu sondy (na kartě sondy níže) je opravena ve výsledcích zanesli. Přesunutí libovolného z označených objektů ve scéně bude vyžadovat, aby se výpočet sondy prováděl znovu a aby se scény mohla znovu vylepšovat.
 
-### <a name="create-or-tag-a-navigation-mesh"></a>Vytvořit nebo označení sítě navigace
+### <a name="create-or-tag-a-navigation-mesh"></a>Vytvoření nebo označení navigační mřížky
 
-Navigace síť se používá k umístění bodů sondy pro simulaci. Můžete použít pro Unreal [svazku hranice sítě Nav](https://api.unrealengine.com/INT/Engine/AI/BehaviorTrees/QuickStart/2/index.html), nebo můžete zadat vlastní síť navigace. Musíte označit alespoň jeden objekt jako **Akustika navigace**. Pokud používáte síť navigace pro Unreal, ujistěte se, že máte ho sestaveny jako první.
+Navigační síť slouží k umístění testovacích bodů pro simulaci. Můžete použít navigační mřížku [](https://api.unrealengine.com/INT/Engine/AI/BehaviorTrees/QuickStart/2/index.html)Unreal, nebo můžete zadat vlastní navigační síť. Je nutné označit alespoň jeden objekt jako **akustickou navigaci**. Pokud používáte navigační mřížku Unreal, ujistěte se, že jste ji vytvořili jako první.
 
-### <a name="acoustics-volumes"></a>Akustika svazky ###
+### <a name="acoustics-volumes"></a>Svazky s akustickými objemy ###
 
-Existuje další, pokročilé přizpůsobení, které můžete dělat na vaše navigační oblasti s **Akustika svazky**. **Svazky Akustika** aktéry přidáte ke scéně, které lze vybrat možnost zahrnout a ignorovat z mřížky navigační oblasti. Objekt actor zpřístupňuje vlastnost, která lze přepnout mezi "Zahrnutí" a "Vyloučit". "Zahrnutí" svazky zajistit pouze oblasti mřížky navigace v nich obsažené jsou považovány za a "Vyloučit" svazky označte tyto oblasti ignorovat. "Vyloučit" svazky se vždy použijí po "Zahrnutí" svazky. Ujistěte se, že ke značce **Akustika svazky** jako **Akustika navigace** obvykle procesem v kartě objekty. Jsou tyto objekty actor ***není*** automaticky označené.
+Existují další rozšířené možnosti přizpůsobení, které můžete provádět v navigačních oblastech pomocí **akustických svazků**. **Akustické svazky** jsou objekty actor, které můžete přidat do své scény, které umožňují vybrat oblasti, které se mají zahrnout do navigační mřížky a ignorovat je. Objekt actor zpřístupňuje vlastnost, kterou lze přepnout mezi "include" a "Exclude". "Include" svazky zajistí, že se budou brát v úvahu jenom oblasti navigační mřížky a "vyloučit" svazky, které tyto oblasti mají ignorovat. Svazky "vyloučit" se vždycky používají po svazcích "include". Nezapomeňte označit akustické **objemy** , jako je například **Navigace** prostřednictvím běžného procesu na kartě objekty. Tyto objekty actor ***nejsou automaticky označeny*** .
 
-![Snímek obrazovky Akustika svazku vlastností v Unreal](media/unreal-acoustics-volume-properties.png)
+![Snímek vlastností svazků s akustickými Hlasitostmi v Unreal](media/unreal-acoustics-volume-properties.png)
 
-"Vyloučit" svazky jsou určené hlavně k poskytují detailní kontrolu, ve kterém není můžete umístit sondy upevňování využití prostředků.
+"Vyloučit" svazky jsou primárně určeny k poskytnutí jemně odstupňované kontroly nad tím, kam neumísťují sondy pro zpřísnění využití prostředků.
 
-![Snímek obrazovky vyloučení Akustika svazku v Unreal](media/unreal-acoustics-volume-exclude.png)
+![Snímek obrazovky s vyloučenými objemy akustického objemu v Unreal](media/unreal-acoustics-volume-exclude.png)
 
-"Zahrnutí" svazky jsou užitečné pro vytváření ruční části scény, například pokud budete chtít rozdělit do několika zón akustický vaše Scéna. Pokud máte velké scény, mnoho kilometrů spolehlivosti a budete mít dvě oblasti zájmu chcete zanést Akustika na. Můžete kreslit dva velké svazky "Zahrnutí" ve scéně a vytvářet soubory ACE pro každý z nich postupně po jednom. Potom ve hře, můžete použít aktivační událost svazků s voláními podrobného plánu odpovídající ACE soubor načíst, když hráč blíží Každá dlaždice.
+"Include" svazky jsou užitečné pro vytváření ručních sekcí scény, například pokud chcete svou scénu rozdělit do několika akustických zón. Například pokud máte velkou scénu, mnoho kilometrů je na druhou a máte dvě oblasti zájmu, na které chcete zanesli akustické množství. Do scény můžete nakreslit dva velké "vložené" svazky a pro každou z nich vytvořit soubory ACE po druhém. Potom můžete ve hře použít aktivační svazky kombinované s voláními podrobného plánu a načíst příslušný soubor ACE, když hráč přiblíží ke každé dlaždici.
 
-**Svazky Akustika** pouze omezení navigaci a ***není*** geometrii. Každý test v "Zahrnutí" **Akustika svazku** bude stále získává všechny nezbytné geometrie mimo svazku při provádění simulací wave. Proto by neměly být žádné nespojitosti v uzavření nebo jiných Akustika vyplývající z přecházení mezi z jednoho oddílu do jiného přehrávače.
+**Zvukové svazky** omezují pouze navigaci a ***nikoli*** geometrii. Každý test v rámci "zahrnutého" **akustického svazku** bude při provádění simulace vlnovek stále vyžádat všechny potřebné geometrie mimo svazek. Proto by nemělo dojít k žádným výpadkům v překrytí ani jiným akustickým důsledkům, které pocházejí z přehrávače z jednoho oddílu do druhého.
 
-## <a name="select-acoustic-materials"></a>Vyberte akustický materiály
+## <a name="select-acoustic-materials"></a>Vybrat akustické materiály
 
-Po označení jsou objekty, klikněte na tlačítko **materiály** tlačítko přejdete na kartu materiály. Na této kartě se použije k určení vlastností materiálu pro každý materiálu na úrovni. Před všechny objekty actor jsou označené, bude prázdné.
+Jakmile jsou objekty označené, klikněte na tlačítko **materiály** a přejděte na kartu materiály. Tato karta se použije k určení vlastností materiálu pro každý materiál na úrovni. Předtím, než budou všechny objekty actor označeny, bude prázdná.
 
-Akustický materiály řízení velikosti šířky zvukové energie projeví zpět z každé povrchu. Výchozí zvukové materiál má absorpční podobný konkrétní. Projekt Akustika navrhuje materiálů na základě názvu materiálu scény.
+Akustické materiály ovládají množství zvukové energie, které se projeví zpátky z každého povrchu. Výchozí akustický materiál má absorpci podobnou konkrétní. Akustické projekty naznačují materiály na základě názvu materiálu scény.
 
-Čas reverberation dané materiálů v místnosti nepřímo souvisí jeho pohltivosti většina materiálů s absorpce hodnoty v rozsahu 0.01, 0.20 a novější. Jsou velmi absorpčního materiály s absorpční koeficienty nad tento rozsah. Například pokud místnosti zvuky příliš reverberant, změňte na něco vyšší absorptivity akustický materiálu stěn, dolní mez nebo horní mez. Akustický materiálu přiřazení se vztahuje na všechny objekty actor, které používají tento materiál scény.
+Reverberation čas daného materiálu v místnosti je nezávisle na jeho faktor absorpce s největšími materiály, které mají hodnoty absorpce v rozsahu 0,01 až 0,20. Materiály s absorpčními koeficienty nad tímto rozsahem jsou velmi absorpční. Pokud například zvuk místnosti je příliš reverberantý, změňte akustický materiál zdí, patra nebo horní meze na něco z vyšších absorptivity. Přiřazení akustického materiálu se vztahuje na všechny aktéry, které používají daný materiál scény.
 
-![Graf zobrazující negativní korelace reverberation čas, který nabízí pohltivosti](media/reverb-time-graph.png)
+![Graf znázorňující zápornou korelaci reverberation času s koeficientem absorpce](media/reverb-time-graph.png)
 
-### <a name="for-reference-parts-of-the-materials-tab"></a>Pro referenci: Součástí kartě materiály
+### <a name="for-reference-parts-of-the-materials-tab"></a>Pro referenci: Části karty materiály
 
-![Snímek obrazovky Akustika objekty kartě Unreal](media/unreal-materials-tab-details.png)
+![Obrazovka karty akustické objekty v Unreal](media/unreal-materials-tab-details.png)
 
-1. **Materiály** tlačítko kartu, zobrazí tato stránka se používá.
-2. Stručný popis co je potřeba provést pomocí této stránky.
-3. Označí seznam materiálů na úrovni, na základě aktéry **AcousticsGeometry**. Kliknutím na materiály sem vybere všechny objekty ve scéně, použít tento materiál.
-4. Ukazuje akustický materiálu, že byla přiřazena materiálu scény. Klikněte na rozevírací seznam pro změnu přiřazení scény materiál, který různých akustický materiálu.
-5. Ukazuje akustický pohltivosti materiálu vybrána v předchozím sloupci. Hodnota nula znamená, že nemusíte zajistit dokonalou reflektivní (žádné absorpční), při hodnota 1 znamená, že nemusíte zajistit dokonalou pohlcující (žádné reflexi). Změna této hodnoty Akustika materiál (krok #4), který se aktualizuje **vlastní**.
+1. Tlačítko karty **materiály** , které slouží k uvedení této stránky.
+2. Stručný popis toho, co je třeba použít na této stránce.
+3. Seznam materiálů použitých v úrovni, které jsou pořízeny od objektů actor označených jako **AcousticsGeometry**. Když kliknete na nějaký materiál, vyberou se všechny objekty ve scéně, které tento materiál používají.
+4. Zobrazuje akustický materiál, ke kterému byl přiřazen materiál scény. Kliknutím na rozevírací seznam znovu přiřadíte materiál scény k jinému akustickému materiálu.
+5. Zobrazuje koeficient akustické absorpce materiálu vybraného v předchozím sloupci. Hodnota nula znamená dokonale odrážet (bez absorpce), zatímco hodnota 1 znamená dokonale absorptive (bez reflexe). Změnou této hodnoty dojde k aktualizaci akustického materiálu (krok #4) na **vlastní**.
 
-Pokud provedete změny materiály ve scéně, je potřeba přepnout karty v modulu plug-in Akustika projektu zobrazíte tyto změny pozorovat ve **materiály** kartu.
+Pokud provedete změny v materiálech v rámci scény, budete muset přepnout tabulátory v modulu plug-in akustického projektu, aby se tyto změny projevily na kartě **materiály** .
 
-## <a name="calculate-and-review-listener-probe-locations"></a>Výpočet a zkontrolujte umístění testu naslouchací proces
+## <a name="calculate-and-review-listener-probe-locations"></a>Výpočet a kontrola umístění testu naslouchacího procesu
 
-Po přiřazení materiály, přepněte **sondy** kartu.
+Po přiřazení materiálů přepněte na kartu sondy .
 
-### <a name="for-reference-parts-of-the-probes-tab"></a>Pro referenci: Na kartě testy částí
+### <a name="for-reference-parts-of-the-probes-tab"></a>Pro referenci: Části karty sondy
 
-![Snímek obrazovky sondy Akustika kartě Unreal](media/unreal-probes-tab-details.png)
+![Snímek karty sondy akustického testu v Unreal](media/unreal-probes-tab-details.png)
 
-1. **Sondy** kartu tlačítko použít zobrazíte na této stránce
-2. Stručný popis, co je potřeba provést pomocí této stránky
-3. Použijte k výběru řešení hrubý nebo jemné simulace. Hrubé je rychlejší, ale má některé kompromisy. Zobrazit [zanést rozlišení](bake-resolution.md) níže podrobnosti.
-4. Vyberte umístění, kde mají být data soubory Akustika umístěny podle tohoto pole. Klikněte na tlačítko s "..." použití ovládacího prvku pro výběr složky. Další informace o datových souborů najdete v tématu [datové soubory](#Data-Files) níže.
-5. Datové soubory pro tento scény bude mít název pomocí předpony k dispozici tady. Výchozí hodnota je "_AcousticsData [název úrovně]".
-6. Klikněte na tlačítko **Calculate** tlačítko voxelize scény a vypočítat umístění bodů testu. To se provádí místně na svém počítači a je nutné provést před tím, která má označení vytvoření. Poté, co vypočítali sond, ovládacích prvků nad bude zakázán a toto tlačítko se změní na Řekněme, že **vymazat**. Klikněte na tlačítko **vymazat** tlačítko Vymazat výpočty a povolit ovládacích prvků tak, aby znovu vypočte pomocí nového nastavení.
+1. Tlačítko karty sondy použité k uvedení této stránky
+2. Stručný popis toho, co je potřeba udělat pomocí této stránky
+3. Tuto možnost použijte k výběru hrubého nebo jemného rozlišení simulace. Hrubý je rychlejší, ale má určité kompromisy. Podrobnosti najdete v tématu věnovaném [řešení zanesli](bake-resolution.md) .
+4. Vyberte umístění, do kterého se mají pomocí tohoto pole umístit datové soubory s akustickými daty. Klikněte na tlačítko s "..." pro použití výběru složky. Další informace o datových souborech najdete v tématu [datové soubory](#Data-Files) níže.
+5. Datové soubory pro tuto scénu budou pojmenovány pomocí předpony uvedené zde. Výchozí hodnota je [název úrovně] _AcousticsData.
+6. Kliknutím na tlačítko **Vypočítat** voxelize scénu a vypočítejte umístění zkušebních bodů. To se provádí místně na vašem počítači a musí se provést před tím, než zanesli. Po výpočtu sond budou výše uvedené ovládací prvky zakázané a toto tlačítko se změní na **jasné**. Kliknutím na tlačítko **Vymazat** vymažete výpočty a povolíte ovládací prvky, aby bylo možné přepočítat pomocí nových nastavení.
 
-Sondy musí být umístěn prostřednictvím automatizovaného procesu součástí **sondy** kartu.
-
-
-### <a name="what-the-calculate-button-calculates"></a>Co se počítá na tlačítko "Vypočítat"
-
-**Calculate** tlačítko trvá všechna data, které jste zatím zadali (geometrie, navigace, materiály a hrubý/jemné nastavení) a prochází několik kroků:
-
-1. Přijímá geometrie od scény mřížek a vypočítá voxel svazku. Svazek voxel je 3rozměrné svazku, který obklopuje celý scény a se skládá z malých kubické "voxels". Velikost voxels se určuje podle frekvence simulace, která se nastavuje přes **simulace rozlišení** nastavení. Každý voxel je označen jako buď "Otevřít vzduchu" nebo obsahující geometrie scény. Pokud voxel obsahuje geometrie voxel příznakem s pohltivosti materiálu, který je přiřazen k této geometrie.
-2. Navigace dat pak použije k výpočtu akusticky zajímavé umístění, kam se můžou obrátit hráč. Pokusí se najít měly být přiměřeně malé sadu z těchto umístění, která zahrnuje menší oblasti, jako je například dveří a předsálí a potom do místnosti, otevřete mezery. Pro malé scény obvykle jde méně než 100 umístění během velké scén může mít až tisíců.
-3. Pro každé umístění poslední naslouchací proces, který vypočítává Určuje, že určité parametry, jako je například jak "otevřená" je místo, velikost místa, které je v atd.
-4. Výsledky tyto výpočty jsou uloženy v souborech v umístění, které zadáte (viz [datové soubory](#Data-Files) níže)
-
-V závislosti na velikosti vaší scény a rychlosti vašeho počítače můžete tyto výpočty trvat několik minut.
-
-Po dokončení těchto výpočtů lze zobrazit náhled dat voxel a umístění testu bod k zajištění, že která má označení vytvoření získáte dobré výsledky. Věci jako chybný navigace sítě nebo chybějící/největší geometrie obvykle bude rychle viditelné ve verzi preview, můžete ho opravit.
+Sondy musí být umístěné prostřednictvím automatizovaného procesu, který je k dispozici na kartě sondy.
 
 
-## <a name="debug-display"></a>Zobrazení ladění
+### <a name="what-the-calculate-button-calculates"></a>Co vypočítá tlačítko "vypočítat"
 
-Po dokončení testu výpočtu nového objektu actor se zobrazí v Tvorba osnovy World, volá **AcousticsDebugRenderer**. Kontroluje **vykreslení sondy** a **vykreslení Voxels** zaškrtávací políčka vám umožní zobrazení ladění uvnitř zobrazení editoru.
+Tlačítko **Vypočítat** přijímá všechna data, která jste doposud poskytli (geometrie, navigace, materiály a hrubá/jemné nastavení) a projde několik kroků:
 
-![Snímek obrazovky zobrazující Akustika ladění nástroj pro vykreslování objektu actor v editoru Unreal](media/acoustics-debug-renderer.png)
+1. Vezme geometrii z mřížek scény a vypočítá Voxel svazek. Voxel svazek je prostorový svazek, který obklopuje celou scénu a skládá se z malých krychlí "voxels". Velikost voxels je určena frekvencí simulace, která je nastavena nastavením **rozlišení simulace** . Každý Voxel je označený jako "otevřený vzduch" nebo obsahuje geometrii scény. Pokud Voxel obsahuje geometrii, Voxel je označen koeficientem absorpce materiálu přiřazeného k této geometrii.
+2. Pak pomocí navigačních dat vypočítá akusticky zajímavá místa, kde může hráč přejít. Pokusí se najít přiměřeně malou sadu těchto umístění, která zahrnuje menší oblasti, jako jsou například dveře a předsálí, a pak do místností pro otevření mezer. Pro malé scény je obvykle méně než 100 míst, zatímco velké scény mohou mít až 1000.
+3. Pro každé z konečných umístění naslouchacího procesu, které počítá, určí počet parametrů, jako je například "otevřít" prostor, velikost místnosti, v níž se nachází, atd.
+4. Výsledky těchto výpočtů jsou uloženy v souborech v umístění, které zadáte (viz [datové soubory](#Data-Files) níže).
 
-Pokud nevidíte žádné voxels nebo testy jako překryvný obrázek na úroveň, ujistěte se, že v zobrazení je povoleno vykreslení v reálném čase.
+V závislosti na velikosti scény a rychlosti počítače můžou tyto výpočty trvat několik minut.
+
+Po dokončení těchto výpočtů můžete zobrazit náhled dat Voxel a míst testovacího bodu, abyste zajistili, že zanesli vám poskytne dobré výsledky. Věci, jako je chybná navigační mřížka nebo chybějící/další geometrie, budou obvykle ve verzi Preview snadno viditelné, takže je můžete opravit.
+
+
+## <a name="debug-display"></a>Zobrazit ladění
+
+Po dokončení výpočtu sondy se nový objekt actor objeví na světovém obrysu s názvem **AcousticsDebugRenderer**. Zaškrtnutím políček **sondy vykreslování** a **vykreslení Voxels** povolíte zobrazení ladění v zobrazení editoru.
+
+![Snímek obrazovky s informacemi o proobjektech pro vykreslování objektů pro vyladění v editoru Unreal](media/acoustics-debug-renderer.png)
+
+Pokud nevidíte žádné voxels nebo se překrývající testy na úrovni, ujistěte se, že je v zobrazení povolené vykreslování v reálném čase.
 
 ![Snímek obrazovky s možností vykreslování v reálném čase v Unreal](media/unreal-real-time-rendering.png)
 
 ### <a name="voxels"></a>Voxels
 
-Voxels se zobrazují v okně scény jako zelená datových krychlí kolem zúčastněných geometry. Voxels, které obsahují pouze air nejsou zobrazeny. Existuje velké zeleného pole kolem celého scéně, která označuje dokončení voxel svazek, který se použije v simulaci.
-Pohyb scéně a ověřte, zda má geometrie akusticky occluding voxels. Zkontrolujte také, že bez Akustika objekty, jako je OK kolizí nebyly voxelized. Fotoaparát scény musí být v rámci objektu pro voxels zobrazíte přibližně 5 měřiče.
+Voxels se zobrazí v okně scéna jako zelené kostky kolem zahrnuté geometrie. Voxels, které obsahují jenom Air, se nezobrazují. Kolem celé scény se nachází velký zelený rámeček, který označuje kompletní Voxel svazek, který se použije v simulaci.
+Pohybujte kolem své scény a ověřte, jestli má voxels akustickou a occluding geometrii. Také ověřte, že neakustické objekty, jako jsou třeba sítě kolizí, nebyly voxelizedy. Kamera scény musí být v rozmezí od 5 měřičů objektu, aby se voxels zobrazovalo.
 
-Pokud srovnáte voxels vytvořené pomocí řešení jemné hrubé řešení vs, zobrazí hrubý voxels jsou dvakrát velké.
+Pokud porovnáte voxels vytvořenou s hrubou přesností a přesnější rozlišením, uvidíte, že hrubý voxels bude dvakrát velký.
 
-![Snímek obrazovky Akustika voxels ve verzi preview v Unreal editoru](media/unreal-voxel-preview.png)
+![Snímek obrazovky s akustickými voxelsy ve verzi Preview v editoru Unreal](media/unreal-voxel-preview.png)
 
-### <a name="probe-points"></a>Body pro zjišťování
+### <a name="probe-points"></a>Body testu
 
-Test body jsou synonymem umístění možné player (naslouchací proces). Když pečení, simulace vypočítá Akustika připojení všechny možné zdrojová umístění pro každý bod testu. Za běhu je umístění naslouchací proces interpolovaných mezi blízkými body testu.
+Body testu jsou synonyma s možnými umístěními přehrávače (naslouchacího procesu). Při pečení vypočítává simulace akustické a propojující všechna možná umístění zdroje do každého bodu sondy. Za běhu se umístění naslouchacího procesu interpoluje mezi okolními zkušebními body.
 
-Je důležité zkontrolovat, že existují test body všude, kde hráč má cestují ve scéně. Test body jsou umístěny na síť navigace modulem Akustika projektu a nelze přesunout nebo upravovat, zajistěte proto na pozadí síť navigace všech možných player umístění zkontrolováním bodů testu.
+Je důležité ověřit, zda existují body sondy kdekoli, kde se očekává, že hráč nacestuje na scéně. Body sondy jsou umístěny v navigační síti strojem akustického projektu a nelze je přesunout ani upravit, takže se ujistěte, že navigační síť pokrývá všechna možná umístění přehrávače kontrolou bodů sondy.
 
-![Snímek obrazovky Akustika testy ve verzi preview v Unreal](media/unreal-probes-preview.png)
+![Snímek obrazovky s ukázkami sond v Unreal](media/unreal-probes-preview.png)
 
-Zobrazit [zanést rozlišení](bake-resolution.md) podrobné informace o hrubý vs jemné řešení.
+Další podrobnosti najdete v tématu věnovaném řešení hrubého a jemného rozlišení v [zanesli](bake-resolution.md) .
 
-## <a name="bake-your-level-using-azure-batch"></a>Vytvoření vaší úrovni pomocí služby Azure Batch
+## <a name="bake-your-level-using-azure-batch"></a>Zanesli vaší úrovně pomocí Azure Batch
 
-Můžete zanést vaše Scéna s výpočetní cluster v cloudu pomocí služby Azure Batch. Modul plug-in pro projekt Akustika Unreal připojuje přímo k Azure Batch k vytvoření instance, spravovat a dovolí pro každý která má označení vytvoření clusteru služby Azure Batch. Na kartě, která má označení vytvoření zadejte přihlašovací údaje Azure, vyberte typ počítače clusteru a velikost a klikněte na která má označení vytvoření.
+Svou scénu můžete zanesli s výpočetním clusterem v cloudu pomocí služby Azure Batch. Modul plug-in Unrealí projektu se připojuje přímo k Azure Batch k vytvoření instance, správě a odtržení Azure Batch clusteru pro každou zanesli. Na kartě zanesli zadejte svoje přihlašovací údaje Azure, vyberte typ a velikost počítače clusteru a klikněte na zanesli.
 
-### <a name="for-reference-parts-of-the-bake-tab"></a>Pro referenci: Částí, která má označení vytvoření karty
+### <a name="for-reference-parts-of-the-bake-tab"></a>Pro referenci: Části karty zanesli
 
-![Snímek obrazovky vytvoření Akustika kartě Unreal](media/unreal-bake-tab-details.png)
+![Snímek obrazovky s akustickými Zanesliy v Unreal](media/unreal-bake-tab-details.png)
 
-1. Vytvoření karty tlačítka sloužícího k otevřete tuto stránku.
-2. Stručný popis toho, jak provést na této stránce.
-3. Pole k zadání přihlašovacích údajů Azure po vytvoření účtu Azure. Další informace najdete v tématu [vytvořit účet Azure Batch](create-azure-account.md).
-4. Spuštění webu Azure portal ke správě vašich předplatných, sledování využití a zobrazit informace o fakturaci atd. 
-5. Služba Azure batch výpočetní uzel typ, který se použije k výpočtu. Typ uzlu musí podporovat vaše umístěním Azure datového centra. Pokud nejste si jistí, ponechte **Standard_F8s_v2**.
-6. Počet uzlů pro tento výpočet. Číslo, které tady zadáte ovlivňuje dobu pro dokončení která má označení vytvoření a přidělení základní služby Azure Batch, je omezen. Výchozí přidělení pouze umožňuje uzly dva 8 jader nebo uzlu jeden 16 jader, ale můžete rozšířit. Další informace o omezení přidělení core najdete v tématu [vytvořit účet Azure Batch](create-azure-account.md).
-7. Zaškrtnutím tohoto políčka konfigurovat fond výpočetních používat [uzly s nízkou prioritou](https://docs.microsoft.com/azure/batch/batch-low-pri-vms). Uzlů s nízkou prioritou mají mnohem nižší náklady, ale nemusí být vždy k dispozici nebo může dojít ke zrušení kdykoli.
-8. Množství uplynulého času, který se očekává, abyste mohli pro vaše úlohy určené ke spuštění v cloudu. To nezahrnuje čas spuštění uzlu. Po spuštění úlohy, jde o tom, jak dlouho by mělo být předtím, než se dostanete zpět výsledky. Všimněte si, že se jedná pouze o odhad.
-9. Celkové množství výpočetního času potřebné ke spuštění simulace. Toto je celková velikost uzlu výpočetního času, který se použije v Azure. Zobrazit [odhadování nákladů která má označení vytvoření](#Estimating-bake-cost) níže pro další informace o použití této hodnoty.
-10. Klikněte na tlačítko která má označení vytvoření k odeslání, která má označení vytvoření do cloudu. Když úloha běží, zobrazí se **zrušit úlohu** místo. Pokud na této kartě nejsou žádné chyby, nebo pokud pracovní postup na **sondy** kartu nebyla dokončena, toto tlačítko bude zakázané.
-11. Počet sondy pro vaše Scéna spočítané na **sondy** kartu. Počet sond určuje počet simulace, které je nutné spustit v cloudu. Nelze zadat více uzlů, než jsou testy.
-12. Tato zpráva znamená, aktuální stav úlohy, nebo pokud na této kartě nejsou žádné chyby, co tyto chyby jsou.
+1. Tlačítko karty zanesli, které slouží k uvedení této stránky
+2. Stručný popis toho, co dělat na této stránce.
+3. Pole, která se mají zadat v přihlašovacích údajích Azure po vytvoření účtu Azure. Další informace najdete v tématu [Vytvoření účtu Azure Batch](create-azure-account.md).
+4. Spusťte Azure Portal ke správě předplatných, monitorování využití a zobrazení informací o fakturaci atd. 
+5. Typ výpočetního uzlu služby Azure Batch, který se má použít pro výpočet. Typ uzlu musí být podporován vaším umístěním datového centra Azure. Pokud si to nejste jistí, ponechte na **Standard_F8s_v2**.
+6. Počet uzlů, které se mají použít pro tento výpočet Číslo, které zde zadáte, bude mít vliv na čas k dokončení zanesli a je omezené vaším přidělením Azure Batchho jádra. Výchozí přidělení umožňuje pouze dva základní uzly a uzel 1 16 Core, ale lze je rozšířit. Další informace o omezeních přidělení základní části najdete v tématu [Vytvoření účtu Azure Batch](create-azure-account.md).
+7. Zaškrtnutím tohoto políčka nakonfigurujete výpočetní fond tak, aby používal [uzly s nízkou prioritou](https://docs.microsoft.com/azure/batch/batch-low-pri-vms). Výpočetní uzly s nízkou prioritou mají mnohem nižší náklady, ale nemusí být vždy k dispozici nebo mohou být kdykoli přerušeny.
+8. Doba, po kterou se očekává, že bude trvat spuštění úlohy v cloudu. To nezahrnuje čas spuštění uzlu. Po spuštění úlohy se jedná o to, jak dlouho by měla být předtím, než se vrátí výsledky. Všimněte si, že toto je pouze odhad.
+9. Celková velikost výpočetní doby potřebná ke spuštění simulace. Toto je celková velikost výpočetního času uzlu, který se bude používat v Azure. Další informace o použití této hodnoty najdete v tématu [odhad zanesli nákladů](#Estimating-bake-cost) níže.
+10. Kliknutím na tlačítko zanesli odešlete zanesli do cloudu. Když je úloha spuštěná, zobrazí se místo toho **úloha zrušení úlohy** . Pokud na této kartě dojde k nějakým chybám nebo pokud pracovní postup na kartě sondy není dokončený, toto tlačítko se zakáže.
+11. Počet testů pro vaši scénu, jak je vypočítáno na kartě **sondy** . Počet sond určuje počet simulací, které je třeba spustit v cloudu. Nemůžete zadat více uzlů, než jsou sondy.
+12. Tato zpráva obsahuje informace o aktuálním stavu úlohy nebo o chybách na této kartě, o tom, co tyto chyby jsou.
 
-Vždy můžete získat podrobnější informace o aktivních úloh, fondů výpočetních a úložiště na webu [webu Azure portal](https://portal.azure.com).
+Vždy můžete získat úplné informace o aktivních úlohách, výpočetních fondech a úložišti na [Azure Portal](https://portal.azure.com).
 
-Když úloha běží **zanést** tlačítko se změní na **zrušit úlohu**. Pomocí tohoto tlačítka můžete zrušit probíhající úlohu. Zrušení úlohy nejde vrátit zpět, nebudou k dispozici žádné výsledky a vám bude nadále účtovat kdykoli výpočetní prostředky Azure, která je použita před zrušení.
+Zatímco úloha spouští tlačítko **zanesli** , se změní na **Zrušit úlohu**. Pomocí tohoto tlačítka můžete zrušit probíhající úlohu. Zrušení úlohy nelze vrátit zpět, nebudou k dispozici žádné výsledky a bude vám stále účtován za libovolný výpočetní čas Azure, který se používá před zrušením.
 
-Po zahájení která má označení vytvoření, Unreal můžete zavřít. V závislosti na projektu, typ a počet uzlů která má označení vytvoření cloudu může trvat několik hodin. Stav úlohy která má označení vytvoření aktualizuje při načtení projektu a otevřete okno Akustika. Pokud se úloha dokončí, stáhnou se výstupní soubor.
+Po spuštění zanesli můžete Unreal zavřít. V závislosti na projektu, typu uzlu a počtu uzlů může zanesli cloudu trvat několik hodin. Stav úlohy zanesli se aktualizuje, když znovu nasadíte projekt a otevřete okno akustické. Pokud byla úloha dokončena, bude stažen výstupní soubor.
 
-Přihlašovací údaje Azure jsou bezpečně uložené na místním počítači a přidružené Unreal projektu. Slouží pouze k navázat zabezpečené připojení k Azure.
+Přihlašovací údaje Azure se bezpečně ukládají na vašem místním počítači a jsou přidružené k vašemu projektu Unreal. Používají se výhradně k navázání zabezpečeného připojení k Azure.
 
-### <a name="Estimating-bake-cost"></a> Provádí se odhad nákladů Azure která má označení vytvoření
+### <a name="Estimating-bake-cost"></a>Odhad nákladů na Azure zanesli
 
-Pokud chcete odhadnout, co bude daný která má označení vytvoření nákladů, přijmout hodnoty zobrazené pro **odhadované náklady na výpočetní**, což je dobu trvání a vícenásobně ve každou hodinu nákladů ve vaší místní měně **typ uzlu virtuálního počítače** jste vybrali. Výsledek nebude obsahovat uzel době potřebné ke zprovoznění uzly a spouštění. Pokud vyberete třeba **Standard_F8s_v2** typu uzlu, který má náklady 0,40 $/ hod a odhadované náklady na výpočetní je 3 hodiny a 57 minut, odhadované náklady na spuštění úlohy bude $0,40 * ~ 4 hodin = ~ $1.60. Skutečné náklady se pravděpodobně o něco vyšší kvůli čas navíc k získání uzly spuštěna. Hodinové náklady na uzel můžete najít [ceny služby Azure Batch](https://azure.microsoft.com/pricing/details/virtual-machines/linux) stránky (vyberte "optimalizováno pro výpočty" nebo "vysokovýkonné výpočetní prostředí" kategorie).
+K odhadu toho, jaké zanesli budou náklady, vezměte hodnotu zobrazenou pro **Odhadované výpočetní náklady**, což je doba trvání, a vynásobte ji hodinovou sazbou v místní měně vybraného **typu uzlu virtuálního počítače** . Výsledek nebude zahrnovat čas uzlu potřebný k zprovoznění uzlů. Pokud například vyberete **Standard_F8s_v2** pro typ uzlu, který má cenu $0.40/hod, a odhadované náklady na výpočetní výkon jsou 3 hodiny a 57 minut, odhadované náklady na spuštění úlohy budou $0,40 × ~ 4 hodiny = ~ $1,60. Skutečné náklady budou pravděpodobně vyšší než vyšší čas na to, aby bylo možné uzly získat. Náklady na hodinové uzly najdete na stránce s [cenami za Azure Batch](https://azure.microsoft.com/pricing/details/virtual-machines/linux) (pro kategorii vyberte výpočetní optimalizované nebo vysoký výkon).
 
-### <a name="reviewing-the-bake-results"></a>Vyhodnocení výsledků která má označení vytvoření
+### <a name="reviewing-the-bake-results"></a>Kontrola výsledků zanesli
 
-Po dokončení která má označení vytvoření, zkontrolujte, zda body voxels a kontroly jsou v jejich očekávané umístění spuštěním modulu runtime.
+Po dokončení zanesli ověřte, že se body voxels a sondy nacházejí v jejich očekávaných umístěních spuštěním modulu plug-in modulu runtime.
 
 ## <a name="Data-Files"></a>Datové soubory
 
-Existují čtyři datové soubory, které vytvořil tento modul plug-in v různých fázích. Pouze jeden z nich je potřeba za běhu a je umístěn ve složce obsahu nebo Akustika vašeho projektu, která se automaticky přidá do vašeho projektu balení cesty. Ostatní tři ve složce Akustika Data a nejsou zabaleny.
+Tento modul plug-in vytváří čtyři datové soubory v různých bodech. Za běhu je potřeba jenom jeden z nich a je umístěný ve složce Content/akustické obsah projektu, která se automaticky přidá do cesty k balíčku projektu. Ostatní tři jsou uvnitř zvukové složky dat a nejsou zabaleny.
 
-* **[Project]/Config/ProjectAcoustics.cfg**: Tento soubor uchovává data, která zadáte do polí v Uživatelském režimu Akustika. Umístění a název tohoto souboru nelze změnit. Existují jiné hodnoty uložené v tomto souboru, které mají vliv která má označení vytvoření, ale jsou určené pro pokročilé uživatele a neměl měnit.
-* **[Project]/Content/Acoustics/[LevelName]\_AcousticsData.ace**: Tento soubor je, co se vytvoří během simulace která má označení vytvoření a obsahuje vyhledávací data použít k vykreslení Akustika vaše Scéna modulem runtime. Umístění a název tohoto souboru lze změnit pomocí pole na **sondy** kartu. Pokud chcete přejmenujte tento soubor po jeho vytvoření, odstranění UAsset z projektu Unreal, přejmenujte soubor mimo Unreal v Průzkumníku souborů a znovu tento soubor importovat do Unreal k vytvoření nové UAsset. Přejmenování UAsset samostatně nebude fungovat.
-* **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData.vox**: Tento soubor uchovává geometrie Akustika voxelized a vlastností materiálu. Vypočítán s použitím **Calculate** tlačítko **sondy** kartu. Umístění a název tohoto souboru lze změnit pomocí pole na **sondy** kartu.
-* **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData\_config.xml**: Tento soubor uchovává vypočítán s použitím parametrů **Calculate** tlačítko **sondy** kartu. Umístění a název tohoto souboru lze změnit pomocí pole na **sondy** kartu.
+* **[Project]/Config/ProjectAcoustics.cfg**: Tento soubor ukládá data, která zadáte do polí v uživatelském rozhraní režimu akustického prostředí. Umístění a název tohoto souboru nelze změnit. V tomto souboru jsou uložené další hodnoty, které mají vliv na zanesli, ale jsou pro pokročilé uživatele a neměly by se měnit.
+* **[Project]/Content/Acoustics/[level]\_AcousticsData. ACE**: Tento soubor je vytvořený během simulace zanesli a obsahuje vyhledávací data používaná modulem runtime k vykreslování akustických dat scény. Umístění a název tohoto souboru lze změnit pomocí polí na kartě **sondy** . Pokud chcete tento soubor po vytvoření přejmenovat, odstraňte UAsset z projektu Unreal, přejmenujte soubor mimo Unreal v Průzkumníkovi souborů a pak tento soubor znovu importujte do Unreal a vytvořte nový UAsset. Přejmenování UAsset sám na sebe nebude fungovat.
+* **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData.vox**: Tento soubor uchovává geometrii akustické voxelized a vlastnosti materiálu. Vypočítáno pomocí tlačítka **Vypočítat** na kartě sondy. Umístění a název tohoto souboru lze změnit pomocí polí na kartě **sondy** .
+* **[Project]/plugins/ProjectAcoustics/AcousticsData/[level]\_AcousticsData\_config. XML**: Tento soubor uchovává parametry vypočítané pomocí tlačítka **Vypočítat** na kartě **sondy** . Umístění a název tohoto souboru lze změnit pomocí polí na kartě **sondy** .
 
-Aby se postaral neodstraňovat *.ace soubor stažený z webu Azure. Tento soubor nebude obnovitelné s výjimkou rebaking scény.
+Je potřeba dbát, abyste neodstranili soubor *. ACE stažený z Azure. Tento soubor se nedá obnovit s výjimkou úprav scény.
 
-## <a name="next-steps"></a>Další postup
-* Prozkoumejte [návrh ovládacích prvků pro Unreal](unreal-workflow.md)
-* Prozkoumejte [konceptů návrhu Akustika projektu](design-process.md)
+## <a name="next-steps"></a>Další kroky
+* Prozkoumejte [ovládací prvky návrhu pro Unreal](unreal-workflow.md)
+* Prozkoumejte [Koncepty návrhu projektových](design-process.md) řešení
 

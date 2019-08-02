@@ -1,7 +1,7 @@
 ---
-title: Vyhledávání entit pomocí rozhraní API Bingu pro vyhledávání entit
-titlesuffix: Azure Cognitive Services
-description: Použití rozhraní API Bingu pro vyhledávání entit extrahovat a vyhledávat entity a místa z vyhledávacích dotazů.
+title: Hledání entit pomocí rozhraní API Bingu pro vyhledávání entit
+titleSuffix: Azure Cognitive Services
+description: K extrakci a hledání entit a míst z vyhledávacích dotazů použijte rozhraní API Bingu pro vyhledávání entit.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: c205f792138ebd7e8094b3bd7cd303d54dfa8d8f
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 54c295c353e83c5d7068c30952d1cbf125788f60
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389861"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404982"
 ---
-# <a name="searching-for-entities-with-the-bing-entity-api"></a>Vyhledávání entit pomocí rozhraní API Bingu pro Entity
+# <a name="searching-for-entities-with-the-bing-entity-api"></a>Hledání entit pomocí rozhraní API entity Bingu
 
-## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Navrhnout hledané výrazy s rozhraním API pro automatické návrhy Bingu
+## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Navrhněte hledané výrazy pomocí rozhraní API pro automatické návrhy Bingu
 
 Pokud nabízíte vyhledávací pole, do kterého může uživatel zadat hledaný termín, můžete hledání vylepšit s využitím [rozhraní API pro automatické návrhy Bingu](../../bing-autosuggest/get-suggested-search-terms.md). Toto rozhraní API vrací navrhované řetězce dotazů na základě částečné shody hledaných termínů zadávaných uživatelem.
 
@@ -36,15 +36,15 @@ Pokud hledaný výraz obsahuje chybu pravopisu, odpověď na vyhledávání obsa
 }
 ```
 
-## <a name="the-bing-entity-search-api-response"></a>Odpověď rozhraní API pro vyhledávání entit Bingu
+## <a name="the-bing-entity-search-api-response"></a>Odpověď rozhraní API Bingu pro vyhledávání entit
 
-Obsahuje odpověď rozhraní API [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) objektu. Pokud Bing najde relevantní entitu nebo místo, obsahuje objekt pole `entities`, pole `places` nebo obojí. V opačném případě objekt odpovědi neobsahuje žádné pole.
+Odpověď rozhraní API obsahuje objekt [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) . Pokud Bing najde relevantní entitu nebo místo, obsahuje objekt pole `entities`, pole `places` nebo obojí. V opačném případě objekt odpovědi neobsahuje žádné pole.
 > [!NOTE]
 > Odpovědi na entity podporují různé trhy, ale odpovědi na místa podporují pouze obchodní místa v USA. 
 
 Pole `entities` je objekt [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference), který obsahuje seznam objektů[Entity](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) (viz pole `value`). Seznam může obsahovat jednu dominantní entitu nebo více nejednoznačných entit nebo obojí. 
 
-Dominantní entity je vrácena, když Bingu se řídí zásadou bude pouze entity, která splňuje požadavek (nedochází k nejednoznačnosti ohledně toho, která splňuje entita požadavku). Pokud může žádosti vyhovět více entit, seznam obsahuje více než jednu nejednoznačnou entitu. Například pokud požadavek používá obecný název filmové franšízy, seznam pravděpodobně obsahuje nejednoznačné entity. Pokud však požadavek specifikuje konkrétní název franšízy, seznam pravděpodobně obsahuje jednu dominantní entitu.
+Dominantní entita se vrátí, když Bing považuje za jedinou entitu, která požadavek splní (nejedná se o nejednoznačnost, jakou entita požadavek splňuje). Pokud může žádosti vyhovět více entit, seznam obsahuje více než jednu nejednoznačnou entitu. Například pokud požadavek používá obecný název filmové franšízy, seznam pravděpodobně obsahuje nejednoznačné entity. Pokud však požadavek specifikuje konkrétní název franšízy, seznam pravděpodobně obsahuje jednu dominantní entitu.
 
 Entity obsahují dobře známé osobnosti jako jsou zpěváci, herci, sportovci, modelky atd. Také obsahují místa a památky jako je Mount Rainier nebo Lincoln Memorial a věci jako banán, goldendoodle, kniha nebo název filmu. Pole [EntityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) obsahuje pomocné parametry, které určují typ entity. Například, jestli se jedná o osobu, film, zvíře nebo atrakci. Seznam možných typů najdete v tématu [typy entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
 
@@ -174,7 +174,7 @@ Při zobrazení informací o entitách (název, popis a obrázek), musíte taky 
 
 ## <a name="find-places"></a>Najít místa
 
-`places` Je pole [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) objekt, který obsahuje seznam [místo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) objekty (naleznete v tématu [typy entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) Další informace). Seznam obsahuje jeden nebo více místních entit, které vyhovují požadavku.
+Pole je objekt [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) , který obsahuje seznam objektů místa (Další informace najdete v tématu [typy entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) ). [](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) `places` Seznam obsahuje jeden nebo více místních entit, které vyhovují požadavku.
 
 Místa zahrnují restaurace, hotely nebo místní firmy. Pole [EntityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) obsahuje pomocné parametry, které určují typ místní entity. Seznam obsahuje seznam pomocných parametrů, jako je místo, místní firma nebo restaurace. Každý další použitý pomocný parametr zužuje možnosti typu entity. Seznam možných typů najdete v tématu [typy entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
 
@@ -333,4 +333,4 @@ Pokud si nejste jistí, jestli vaše prostředí může být považované za vyh
 
 ## <a name="next-steps"></a>Další postup
 
-* Vyzkoušejte [rychlý Start](../quickstarts/csharp.md) začít vyhledávat entity, které rozhraní API Bingu pro vyhledávání entit.
+* Vyzkoušejte si [rychlý Start](../quickstarts/csharp.md) a začněte hledat entity pomocí rozhraní API Bingu pro vyhledávání entit.

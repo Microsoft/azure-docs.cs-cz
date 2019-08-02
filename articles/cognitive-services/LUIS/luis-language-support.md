@@ -1,5 +1,5 @@
 ---
-title: Podpora jazyků
+title: Jazyková podpora – LUIS
 titleSuffix: Azure Cognitive Services
 description: Služba LUIS má celou řadu funkcí v rámci služby. Ne všechny funkce jsou na stejné paritu jazyka. Ujistěte se, že funkce, které vás zajímají jsou podporované v jazykové verzi jazyka, který cílíte. Aplikace LUIS je specifické pro jazykovou verzi a nedá se změnit, jakmile je nastavena.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 8f067bc005c4de9ddc87ed598b1717f8fbb29a6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26127f9f6ed718e33a77b986f2edb0d2dc81b2c1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072382"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563570"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyka a oblasti pro LUIS
 
@@ -30,7 +30,7 @@ Pokud potřebujete více jazyků LUIS klientské aplikace jako je například ch
 
 Služba LUIS rozumí projevy v následujících jazycích:
 
-| Jazyk |Národní prostředí  |  Předem připravená doména | Předem připravených entit | Seznam doporučení fráze | **[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Mínění a<br>Klíčová slova)|
+| Jazyk |Národní prostředí  |  Předem připravená doména | Předem připravených entit | Doporučení pro seznam frází | **[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Mínění a<br>Klíčová slova)|
 |--|--|:--:|:--:|:--:|:--:|
 | Americkou angličtinu |`en-US` | ✔ | ✔  |✔|✔|
 | *[Čínština](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
@@ -44,7 +44,7 @@ Služba LUIS rozumí projevy v následujících jazycích:
 | Portugalština (Brazílie) |`pt-BR` |-| ✔ |✔ |Ne všechny dílčí jazykových verzí|
 | Španělština (Španělsko) |`es-ES` |-| ✔ |✔|✔|
 | Španělština (Mexiko)|`es-MX` |-|  -   |✔|✔|
-| turečtina | `tr-TR` |-|-|-|Pouze mínění|
+| turečtina | `tr-TR` |-|-|-|Jenom mínění|
 
 
 Podpora jazyků se liší u [předem připravených entit](luis-reference-prebuilt-entities.md) a [předem připravených domén](luis-reference-prebuilt-domains.md).
@@ -53,7 +53,7 @@ Podpora jazyků se liší u [předem připravených entit](luis-reference-prebui
 
  - V `zh-cn` jazykovou verzi, LUIS očekává zjednodušené čínštiny znakové sady namísto tradičních znakovou sadu.
  - Názvy tříd Intent, entity, funkce a regulární výrazy mohou být znaky čínské nebo římské číslice.
- - Najdete v článku [předem připravených domén odkaz](luis-reference-prebuilt-domains.md) informace, na kterém jsou předem připravených domén podporovány v `zh-cn` jazykovou verzi.
+ - Informace o [](luis-reference-prebuilt-domains.md) tom, které předem sestavené domény jsou v `zh-cn` jazykové verzi podporované, najdete v referenčních informacích k předdefinovaným doménám.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>\* Japonské podporuje poznámky
@@ -95,16 +95,16 @@ Pro strojové učení, LUIS, rozdělí do utterance [tokeny](luis-glossary.md#to
 |Španělština (es-ES)|✔||||
 |Španělština (es-MX)|✔||||
 
-### <a name="custom-tokenizer-versions"></a>Verze vlastního tokenizátor
+### <a name="custom-tokenizer-versions"></a>Vlastní verze provádějících tokenizaci
 
-Následující jazykové verze mají vlastní tokenizátor verze:
+Následující jazykové verze mají vlastní verze provádějících tokenizaci:
 
 |Jazyková verze|Version|Účel|
 |--|--|--|
-|Němčina<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí machine learning na základě tokenizátor, který se pokusí rozdělit složeného slova do jejich jedné součásti.<br>Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, bude převedena na `Ich fahre einen kranken wagen`. Umožňuje označení `kranken` a `wagen` nezávisle na sobě jako různé entity.|
-|Němčina<br>`de-de`|1.0.2|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, zůstává jeden token. Proto `krankenwagen` je označen jako jednu entitu. |
+|Němčina<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí provádějících tokenizaci založeného na strojovém učení, které se pokusí rozdělit složené slova do jejich jediné součásti.<br>Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, je `Ich fahre einen kranken wagen`zapnutý. Povolení označení `kranken` a `wagen` nezávislého označování jako různých entit.|
+|Němčina<br>`de-de`|1.0.2|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, zůstane jeden token. Proto `krankenwagen` je označen jako jediná entita. |
 
-### <a name="migrating-between-tokenizer-versions"></a>Migrace mezi verzemi tokenizátor
+### <a name="migrating-between-tokenizer-versions"></a>Migrace mezi verzemi provádějících tokenizaci
 <!--
 Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
 
@@ -207,6 +207,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-Tokenizace se odehrává na úrovni aplikace. Není dostupná podpora Tokenizace úrovni verze. 
+K tokenizace dochází na úrovni aplikace. Neexistuje žádná podpora pro tokeny na úrovni verze. 
 
-[Importovat soubor jako novou aplikaci](luis-how-to-start-new-app.md#import-an-app-from-file), místo verze. Tato akce znamená, že nová aplikace má ID jiné aplikace, ale používá tokenizátor verze zadaná v souboru. 
+[Importujte soubor jako novou aplikaci](luis-how-to-start-new-app.md#import-an-app-from-file)místo verze. Tato akce znamená, že nová aplikace má jiné ID aplikace, ale používá verzi provádějících tokenizaci zadanou v souboru. 

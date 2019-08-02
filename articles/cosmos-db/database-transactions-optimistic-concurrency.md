@@ -1,67 +1,67 @@
 ---
-title: Databázové transakce a optimistického řízení souběžnosti ve službě Azure Cosmos DB
-description: Tento článek popisuje databázové transakce a optimistického řízení souběžnosti ve službě Azure Cosmos DB
+title: Transakce databáze a kontrola optimistického řízení souběžnosti v Azure Cosmos DB
+description: Tento článek popisuje transakce databáze a kontrolu optimistického řízení souběžnosti v Azure Cosmos DB
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1da5dabad04d72c903072a33dfb7b0229f99c62d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b58255aa471fe78c84b5f6a7432c0f3d402f0875
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978991"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467907"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Řízení optimistické souběžnosti a transakce
 
-Databázové transakce poskytují bezpečné a předvídatelné programovací model řešit souběžných změny v datech. Tradičních relačních databází, jako je SQL Server, umožňuje psát obchodní logiku pomocí uložené procedury a triggery, odeslat ho na server pro spuštění přímo uvnitř databázového stroje. Pomocí tradičních relačních databází, je nutné řešit dva různé programovací jazyky (netransakční) aplikačního programovacího jazyka, jako je JavaScript, Python, C#, Java, atd. a transakční programovací jazyk ( například T-SQL), která nativně provádí databáze.
+Transakce databáze poskytují bezpečný a předvídatelný programovací model, který umožňuje zabývat se souběžnými změnami dat. Tradiční relační databáze, jako je SQL Server, umožňují napsat obchodní logiku pomocí uložených procedur a/nebo triggerů a odeslat je na server, aby je bylo možné spouštět přímo v databázovém stroji. V případě tradičních relačních databází je nutné se zabývat dvěma různými programovacími jazyky (netransakční) programovací jazyk aplikací (netransakční), jako je C#JavaScript, Python,, Java atd., a transakční programovací jazyk ( například T-SQL), který je nativně spuštěn databází.
 
-Databázový stroj ve službě Azure Cosmos DB podporuje úplnou kyseliny (atomicitu, konzistence, izolaci, odolnosti) kompatibilní s transakcí s izolací snímku. Všechny databázové operace v rámci oboru kontejneru [logický oddíl](partition-data.md) jsou transakčně spouštět přímo z databázového stroje, který je hostitelem repliky oddílu. Obě tyto operace zahrnují operace čtení a zápisu (aktualizuje jednu nebo více položek v rámci logického oddílu). Následující tabulka ilustruje různé operace a typy transakcí:
+Databázový stroj v Azure Cosmos DB podporuje úplnou transakci (kyselost, konzistenci, izolaci, odolnost) vyhovující požadavkům na izolaci snímků. Všechny databázové operace v oboru [logického oddílu](partition-data.md) kontejneru jsou v rámci databázového stroje, který je hostitelem repliky oddílu, revykonávány. Tyto operace zahrnují zápis (aktualizace jedné nebo více položek v rámci logického oddílu) a operace čtení. Následující tabulka ilustruje různé operace a typy transakcí:
 
-| **Operace**  | **Typ operace** | **Jeden nebo více položek transakce** |
+| **Operace**  | **Typ operace** | **Transakce jedné nebo více položek** |
 |---------|---------|---------|
-| Vložit (bez předzálohovacího nebo pozálohovacího aktivační události) | Zápis | Transakce jednu položku |
-| Vložit (triggerem předzálohovacího nebo pozálohovacího) | Zápis a čtení | Transakce více položek |
-| Nahradit (bez předzálohovacího nebo pozálohovacího aktivační události) | Zápis | Transakce jednu položku |
-| Nahraďte (aktivační událost předzálohovacího nebo pozálohovacího) | Zápis a čtení | Transakce více položek |
-| Upsert (bez předzálohovacího nebo pozálohovacího aktivační události) | Zápis | Transakce jednu položku |
-| Upsert (triggerem předzálohovacího nebo pozálohovacího) | Zápis a čtení | Transakce více položek |
-| Odstranit (bez předzálohovacího nebo pozálohovacího aktivační události) | Zápis | Transakce jednu položku |
-| Odstranit (triggerem předzálohovacího nebo pozálohovacího) | Zápis a čtení | Transakce více položek |
-| Spustit uloženou proceduru | Zápis a čtení | Transakce více položek |
-| Provádění procedury sloučení zahájené systému | Zápis | Transakce více položek |
-| Systém zahájené spuštění odstranění položky podle vypršení platnosti (TTL) položky | Zápis | Transakce více položek |
-| Čtení | Čtení | Transakce jedné položky |
-| Kanál změn | Čtení | Transakce více položek |
-| Stránkovaná pro čtení | Čtení | Transakce více položek |
-| Stránkovaných dotazů | Čtení | Transakce více položek |
-| Spuštění UDF jako součást stránkovaných dotazů | Čtení | Transakce více položek |
+| Vložit (bez aktivační události před/po) | Zápis | Transakce jedné položky |
+| Vložit (s aktivační událostí před/po) | Zápis a čtení | Transakce s více položkami |
+| Nahradit (bez aktivační události před/po) | Zápis | Transakce jedné položky |
+| Nahradit (s aktivační událostí před/po) | Zápis a čtení | Transakce s více položkami |
+| Upsert (bez aktivační události před/po) | Zápis | Transakce jedné položky |
+| Upsert (s aktivační událostí před/po) | Zápis a čtení | Transakce s více položkami |
+| Odstranit (bez aktivační události před/po) | Zápis | Transakce jedné položky |
+| Odstranit (s aktivační událostí před/po) | Zápis a čtení | Transakce s více položkami |
+| Spustit uloženou proceduru | Zápis a čtení | Transakce s více položkami |
+| Systém inicioval provádění procesu sloučení | Zápis | Transakce s více položkami |
+| Systém inicioval provádění odstraňování položek na základě vypršení platnosti položky (TTL) | Zápis | Transakce s více položkami |
+| Čtení | Čtení | Transakce s jednou položkou |
+| Kanál změn | Čtení | Transakce s více položkami |
+| Stránkované čtení | Čtení | Transakce s více položkami |
+| Stránkované dotaz | Čtení | Transakce s více položkami |
+| Spustit systém souborů UDF jako součást stránkovaného dotazu | Čtení | Transakce s více položkami |
 
-## <a name="multi-item-transactions"></a>Transakce více položek
+## <a name="multi-item-transactions"></a>Transakce s více položkami
 
-Azure Cosmos DB umožňuje psát [uložené procedury, triggery předzálohovacího nebo pozálohovacího uživatelem definované – funkce (UDF)](stored-procedures-triggers-udfs.md) a sloučit procedury v jazyce JavaScript. Azure Cosmos DB nativně podporuje spouštění JavaScriptu uvnitř jeho databázový stroj. Můžete zaregistrovat uložené procedury, předzálohovacího nebo pozálohovacího aktivační události, uživatelem definované – funkce (UDF) a postupy sloučení na kontejner a později je spouštět transakčně přímo z databázového stroje Azure Cosmos. Psaní aplikační logiky v jazyce JavaScript umožňuje přirozené vyjádření tok řízení, proměnné rozsahu, přiřazení a integrace primitivních elementů v rámci databázové transakce přímo v jazyce JavaScript zpracování výjimek.
+Azure Cosmos DB umožňuje psát [uložené procedury, aktivační události před/po, uživatelsky definované funkce (UDF)](stored-procedures-triggers-udfs.md) a slučovací procedury v JavaScriptu. Azure Cosmos DB nativně podporují spouštění JavaScriptu uvnitř svého databázového stroje. Uložené procedury, aktivační události před/po, uživatelsky definované funkce (UDF) a slučovací procedury můžete registrovat v kontejneru a později je provádět v rámci databázového stroje Azure Cosmos. Zápis aplikační logiky v JavaScriptu umožňuje přirozený výraz toku řízení, určení proměnné, přiřazení a integraci primitivních operací zpracování výjimek v rámci transakcí databáze přímo v jazyce JavaScript.
 
-Bázi jazyka JavaScript uložené procedury, aktivační události, uživatelem definovanými funkcemi a sloučení postupy jsou zabaleny v rámci ambientní transakci ACID s izolací snímku přes všechny položky v rámci logického oddílu. V průběhu jeho spuštění Pokud program jazyka JavaScript vyvolá výjimku, celá transakce byla přerušena a vrácena zpět. Výsledný programovací model je jednoduchý výkonné. Vývojáře v JavaScriptu získejte odolné programovací model, zatímco stále pomocí jejich dobře známého jazyka vytvoří a knihovny primitiv.
+Uložené procedury, triggery, UDF a slučovací procedury založené na jazyce JavaScript jsou zabaleny do transakce s KYSELINou v okolí s izolací snímku napříč všemi položkami v rámci logického oddílu. V průběhu provádění, pokud program JavaScript vyvolá výjimku, je celá transakce přerušena a vrácena zpět. Výsledný programovací model je jednoduchý, ale výkonný. Vývojáři JavaScriptu získají trvalý programovací model a stále používají své známé jazykové konstrukce a primitivní prvky knihovny.
 
-Spouštění jazyka JavaScript přímo uvnitř databázového stroje zajišťuje výkon a transakční provádění databázových operací u položek kontejneru. Navíc vzhledem modul databáze Azure Cosmos nativně podporuje JSON a JavaScript, není žádný vzniklé vzájemné napětí Neshoda mezi systémy typ aplikace a databáze.
+Schopnost spustit JavaScript přímo v rámci databázového stroje poskytuje výkon a transakční provádění operací databáze proti položkám kontejneru. Vzhledem k tomu, že Azure Cosmos Database Engine nativně podporuje JSON a JavaScript, nedochází k neshodě mezi systémy typů aplikace a databáze.
 
-## <a name="optimistic-concurrency-control"></a>Optimistického řízení souběžnosti 
+## <a name="optimistic-concurrency-control"></a>Optimistické řízení souběžnosti 
 
-Optimistického řízení souběžnosti umožňuje zabránit ztrátou určitých aktualizací a odstraní. Souběžné, konfliktní operace podléhají regulární pesimistické zamykání databázového stroje hostuje logický oddíl, který vlastní položku. Při pokusu o dvě souběžná operace aktualizovat nejnovější verzi položky v rámci logického oddílu, jeden z nich vyhraje a druhý se nezdaří. Nicméně pokud jedna nebo dvě operace pokus o aktualizaci souběžně jedné položce bylo dříve přečtené starší hodnota položky, databáze nebude vědět, pokud dříve čtení podle jedné nebo obou konfliktní operace byla zadána hodnota skutečně nejnovější hodnotu položky. Naštěstí můžete zjistit této situaci se **řízení přístupu (optimistického řízení souběžnosti OCC)** před s informacemi zadejte dvě operace transakce hranice v databázovém stroji. OCC chrání vaše data před náhodnému přepsání změny provedené jinými uživateli. Je také zabrání ostatním náhodnému přepsání vlastní změny.
+Optimistické řízení souběžnosti umožňuje zabránit ztrátě aktualizací a odstraňování. Souběžné a konfliktní operace se vztahují na běžné pesimistické zamykání databázového stroje hostovaného logickým oddílem, který tuto položku vlastní. Když se dvě souběžné operace pokusí aktualizovat nejnovější verzi položky v rámci logického oddílu, jedna z nich se podaří a druhá se nezdaří. Pokud však jedna nebo dvě operace, které se pokoušejí současně aktualizovat stejnou položku, dříve přečetly starší hodnotu položky, databáze neví, zda byla dříve přečtena buď konfliktní operace, nebo jak v obou konfliktních operacích byla skutečně aktuální hodnota položky. Naštěstí tuto situaci lze zjistit pomocí **optimistického řízení souběžnosti (OCC)** předtím, než umožníte dvěma operacím zadat hranici transakce uvnitř databázového stroje. OCC chrání vaše data před náhodným přepsáním změn provedených ostatními. Zabrání taky ostatním v neúmyslném přepsání vašich změn.
 
-Souběžná aktualizace položky podléhají OCC vrstvou komunikace protokolu služby Azure Cosmos DB. Databáze Azure Cosmos se zajistí, že klientské verze položky, která jsou aktualizace (nebo odstranění) je stejná jako verze položky v kontejneru Azure Cosmos. Zaručí se tak, že zápisů jsou chráněny před přepsáním omylem podle zápisy ostatních a naopak. V prostředí s více uživateli optimistického řízení souběžnosti ovládacím prvku chrání proti náhodnému odstranění nebo aktualizaci chybná verze položky. V důsledku toho jsou položky chráněné proti nechvalně známý "ztracené aktualizace" nebo "ztráty delete" problémy.
+Souběžné aktualizace položky podléhají OCC vrstvě komunikačního protokolu Azure Cosmos DB. Azure Cosmos Database zajišťuje, že verze položky na straně klienta, kterou aktualizujete (nebo odstraňujete), je stejná jako verze položky v kontejneru Azure Cosmos. To zaručuje, že vaše zápisy jsou před náhodným zápisem přepsány zápisy ostatních a naopak. V prostředí s více uživateli vám optimistické řízení souběžnosti chrání před náhodným odstraněním nebo aktualizací nesprávné verze položky. V takovém případě jsou položky chráněny proti problémům s inFamous "ztráty aktualizace" nebo "ztráty odstranění".
 
-Systém definované měla každá položka uložená v kontejneru Azure Cosmos `_etag` vlastnost. Hodnota `_etag` automaticky vygeneruje a aktualizovat server pokaždé, když je položka aktualizována. `_etag` je možné s zadaná klientem `if-match` hlavičku požadavku umožňující server se rozhodnout, zda lze položky aktualizovat podmíněně. Hodnota `if-match` záhlaví shoduje s hodnotou `_etag` na serveru, se pak aktualizuje položku. Pokud hodnota `if-match` hlavičku požadavku už není aktuální, server zamítne operaci s "HTTP 412 selhání předběžné podmínky" zprávy s odpovědí. Klient pak může položku znovu načtěte k získání aktuální verze položky na serveru nebo přepsání verze položky na serveru s vlastním `_etag` hodnotu pro položku. Kromě toho `_etag` jde použít s `if-none-match` hlavičky k určení, jestli je potřeba znovu načíst prostředku. 
+Každá položka uložená v kontejneru Azure Cosmos má vlastnost definovanou `_etag` systémem. Hodnota `_etag` je automaticky generována a aktualizována serverem při každém aktualizaci položky. `_etag`dá se použít spolu s hlavičkou `if-match` žádosti, která je součástí klienta, aby mohl server rozhodnout, jestli může být položka podmíněně aktualizována. Hodnota `if-match` hlavičky odpovídá hodnotě na `_etag` serveru, položka se pak aktualizuje. Pokud hodnota `if-match` hlavičky požadavku již není aktuální, server odmítne operaci se zprávou odpovědi "selhání předběžné podmínky HTTP 412". Klient pak může znovu načíst položku k získání aktuální verze položky na serveru nebo přepsat verzi položky na serveru vlastní `_etag` hodnotou položky. Kromě toho `_etag` lze použít `if-none-match` s hlavičkou k určení, zda je nutné znovu načíst prostředek. 
 
-Položky `_etag` hodnota změny pokaždé, když je položka aktualizována. Pro operace položku nahradit `if-match` musí být explicitně vyjádřena jako součást možnosti žádosti. Příklad najdete v tématu ukázkový kód v [Githubu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446). `_etag` hodnoty jsou implicitně kontroluje všechny položky písemné přistupovala uloženou proceduru. V případě jakéhokoli konfliktu se detekuje, uložené procedury se vraťte transakci zpět a vyvolají výjimku. Pomocí této metody se používají atomicky all nebo žádný zápisy v rámci uložené procedury. Toto je signál, který se aplikace znovu použít aktualizace a zkuste to znovu původní požadavek klienta.
+`_etag` Hodnota položky se změní pokaždé, když je položka aktualizována. V případě operací `if-match` nahradit položku musí být explicitně vyjádřena jako součást možností žádosti. Příklad najdete v ukázkovém kódu na GitHubu [](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446). `_etag`hodnoty jsou implicitně kontrolovány u všech zapsaných položek, které jsou v rámci uložené procedury změněny. Pokud je zjištěn nějaký konflikt, uložená procedura vrátí transakci zpět a vyvolá výjimku. Pomocí této metody se v rámci uložené procedury nepoužívají buď všechny, nebo žádné zápisy. Toto je signál k aplikaci pro opětovné použití aktualizací a původní požadavek klienta.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o databázové transakce a optimistického řízení souběžnosti v následujících článcích:
+Další informace o transakcích databáze a kontrole optimistického řízení souběžnosti najdete v následujících článcích:
 
-- [Práce s databází Azure Cosmos, kontejnery a položek](databases-containers-items.md)
+- [Práce s databázemi, kontejnery a položkami Azure Cosmos](databases-containers-items.md)
 - [Úrovně konzistence](consistency-levels.md)
-- [Zásady rozlišení a typy konfliktů](conflict-resolution-policies.md)
-- [Uložené procedury, triggery a uživatelem definovaných funkcí](stored-procedures-triggers-udfs.md)
+- [Typy konfliktů a zásady řešení](conflict-resolution-policies.md)
+- [Uložené procedury, triggery a uživatelsky definované funkce](stored-procedures-triggers-udfs.md)

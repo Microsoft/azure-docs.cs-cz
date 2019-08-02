@@ -1,6 +1,6 @@
 ---
 title: Strategie nasazení a osvědčené postupy pro optimalizaci výkonu – Azure Search
-description: Zjistěte, techniky a osvědčené postupy pro optimalizaci výkonu Azure Search a konfigurace optimálního škálování.
+description: Naučte se techniky a osvědčené postupy pro optimalizaci Azure Search výkonu a konfigurace optimálního škálování.
 author: LiamCavanagh
 manager: jlembicz
 services: search
@@ -10,102 +10,102 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 32352a857f0a74dc008dc1ad76b4a5951a36b956
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4578e26df5a6c29e80a0bbd2e0a30725e3733ee
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024553"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370640"
 ---
-# <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Strategie nasazení a osvědčené postupy pro optimalizaci výkonu v Azure Search
+# <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Strategie nasazení a osvědčené postupy pro optimalizaci výkonu na Azure Search
 
-Tento článek popisuje osvědčené postupy pro pokročilé scénáře se složité požadavky pro zajištění škálovatelnosti a dostupnosti. 
+Tento článek popisuje osvědčené postupy pro pokročilé scénáře se sofistikovanými požadavky na škálovatelnost a dostupnost. 
 
-## <a name="develop-baseline-numbers"></a>Vývoj čísla směrného plánu
-Při optimalizaci výkonu vyhledávání, měli byste se zaměřit na zkrácení doby provádění dotazu. K tomu je potřeba vědět, vypadá typické dotazové zatížení. Podle následujících pokynů můžete přejít na čísla směrného plánu dotazu.
+## <a name="develop-baseline-numbers"></a>Vývoj základních čísel
+Při optimalizaci pro výkon vyhledávání byste se měli zaměřit na omezení doby provádění dotazů. Chcete-li to provést, potřebujete znát, co vypadá obvyklým způsobem načítání dotazů. Následující pokyny vám pomůžou s příchodem na čísla dotazů na základní hodnoty.
 
-1. Výběr cílovou latencí (nebo maximální množství času), který žádost o typickém hledání by měla být provedena.
-2. Vytvořte a otestujte skutečná zátěž proti vaší vyhledávací služby s datovou sadou reálného měření latence sazby.
-3. Začněte v malém počtu dotazů za sekundu (QPS) a postupně zvyšujte počet provedených v testu, dokud latence dotazu klesne pod definovanou cílovou latencí. To je důležité srovnávací test vám pomohou při plánování pro škálování využití růstem vaší aplikace.
-4. Kdykoli je to možné, opakovaně používat připojení prostřednictvím protokolu HTTP. Pokud používáte Azure Search .NET SDK, to znamená, že by měl znovu použít instanci nebo [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) instance, a pokud používáte rozhraní REST API, by měl znovu použít jeden HttpClient.
-5. Tak, že hledání probíhá přes různé části indexu se liší látku požadavků na dotazy. Varianta je důležité, protože pokud neustále spustí stejný požadavků hledání, ukládání dat do mezipaměti se začátkem výkonu vypadat lépe, než ji může s více různorodé dotazy nastavit.
-6. Struktura požadavků na dotazy liší, takže budete mít různé typy dotazů. Ne každá vyhledávací dotaz provádí na stejné úrovni. Například návrh vyhledávání nebo vyhledejte dokument je obvykle rychlejší než dotaz s velký počet omezujících vlastností a filtry. Složení test by měl obsahovat různých dotazů v přibližně stejnou poměry dle očekávání v produkčním prostředí.  
+1. Vyberte cílovou latenci (nebo maximální dobu), po kterou by měla být dokončena typická žádost o hledání.
+2. Pro měření těchto latencí můžete vytvořit a otestovat reálné zatížení pro vaši vyhledávací službu s reálným datovou sadou.
+3. Začněte s malým počtem dotazů za sekundu (QPS) a postupně zvyšujte počet provedených v testu, dokud latence dotazu neklesne pod definovanou cílovou latenci. Toto je důležitý srovnávací test, který vám pomůže při plánování škálování, protože vaše aplikace roste v používání.
+4. Pokud je to možné, znovu použijte připojení HTTP. Pokud používáte sadu Azure Search .NET SDK, znamená to, že byste měli znovu použít instanci nebo instanci [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) a pokud používáte REST API, měli byste znovu použít jeden HttpClient.
+5. Lišící se v závislosti na požadavcích na dotazy, takže vyhledávání probíhá přes různé části indexu. Variace je důležitá, protože pokud průběžně spouštíte stejné požadavky na hledání, zahájí ukládání dat do mezipaměti lepší výkon, než může s více různými množinami dotazů.
+6. Můžete měnit strukturu požadavků na dotazy, abyste získali různé typy dotazů. Ne každý vyhledávací dotaz provádí na stejné úrovni. Například vyhledávání dokumentů nebo návrh hledání je obvykle rychlejší než dotaz s významným počtem omezujících vlastností a filtrů. Složení testu by mělo zahrnovat různé dotazy, přibližně stejné poměry, jako byste očekávali v produkčním prostředí.  
 
-Při vytváření tyto testovací úlohy, existují některé vlastnosti služby Azure Search brát v úvahu:
+Při vytváření těchto testovacích úloh jsou k dispozici některé charakteristiky Azure Search, které je potřeba vzít v úvahu:
 
-+ Je možné přetížit služby v jednom okamžiku formou moc velký počet vyhledávacích dotazů. Pokud k tomu dojde, zobrazí se kódy odpovědí protokolu HTTP 503. Aby se zabránilo 503 během testování, spusťte s různými rozsahy žádostí o hledání zjistit rozdíly v rychlosti latence při přidávání více žádostí o hledání.
++ Je možné přetížit vaši službu tím, že najednou zadáváme příliš mnoho vyhledávacích dotazů. Pokud k tomu dojde, zobrazí se kódy odpovědí HTTP 503. Abyste se vyhnuli 503 během testování, začněte s různými rozsahy žádostí o hledání, abyste viděli rozdíly v sazbách latence při přidávání dalších požadavků hledání.
 
-+ Služba Azure Search nejde spustit indexování úloh na pozadí. Jestliže vaše služba zpracovává dotazů a indexování úloh současně, vzít v úvahu zavedením buď indexování úloh do testování dotazu nebo při zkoumání možností pro spouštění indexování úloh během mimo špičku.
++ Azure Search nespouští úlohy indexování na pozadí. Pokud vaše služba současně zpracovává úlohy dotazů a indexování, vezměte tuto možnost v úvahu tím, že zavedete indexování úloh do testů dotazů nebo prozkoumáte možnosti spouštění úloh indexování v době mimo špičku.
 
 > [!NOTE]
-> [Visual Studio zátěžové testování](https://www.visualstudio.com/docs/test/performance-testing/run-performance-tests-app-before-release) je opravdu dobrým způsobem, jak provádět vaše srovnávacího testu testy jako umožňuje provádění požadavků protokolu HTTP, jako je třeba pro provádění dotazů u Azure Search a umožňuje paralelního zpracování požadavků.
+> [Zátěžové testování sady Visual Studio](https://www.visualstudio.com/docs/test/performance-testing/run-performance-tests-app-before-release) je opravdu dobrým způsobem, jak provádět testy testů http, které byste potřebovali ke spouštění dotazů na Azure Search a umožňují paralelní zpracování požadavků.
 > 
 > 
 
-## <a name="scaling-for-high-query-volume-and-throttled-requests"></a>Škálování pro svazek vysokou dotazu a omezené požadavky
-Když obdrželi příliš mnoho omezené požadavky nebo překračují sazby latence cíl z zvýšenou dotazové zatížení, můžete se podívat na snížení latence plateb v jednom ze dvou způsobů:
+## <a name="scaling-for-high-query-volume-and-throttled-requests"></a>Škálování pro velké objemy dotazů a omezené požadavky
+Když přijímáte příliš mnoho omezených požadavků nebo překročíte cílové míry latence od zvýšeného zatížení dotazu, můžete se podívat na snížení sazeb latence jedním ze dvou způsobů:
 
-1. **Zvýšení replik:**  Replika je jako kopie vašich dat umožňuje Azure Search k vyrovnávání zatížení způsobeného požadavky na více kopií.  Všechny Vyrovnávání zatížení a replikace dat mezi replik spravuje Azure Search a je možné změnit počet replik přidělena pro vaši službu kdykoli.  Můžete přidělit až 12 replik ve standardní službu vyhledávání a 3 repliky ve službě základní hledání. Repliky mohou být upraveny buď z [webu Azure portal](search-create-service-portal.md) nebo [Powershellu](search-manage-powershell.md).
-2. **Zvýšit úroveň hledání:**  Služba Azure Search je k dispozici ve [počet úrovní](https://azure.microsoft.com/pricing/details/search/) a každá z těchto úrovní nabízí různé úrovně výkonu.  V některých případech může mít mnoho dotazů na úrovni, ke kterému jste na neposkytuje sazby za dostatečně s nízkou latencí, i v případě, že repliky jsou maxed navýšení kapacity. V takovém případě můžete chtít zvážit využití jeden z vyšší úrovně vyhledávání, jako je Azure Search S3 vrstvu, je vhodné pro scénáře s velkým počtem dokumentů a velmi vysoké dotazu úlohy.
+1. **Zvýšit repliky:**  Replika je jako kopie vašich dat, což umožňuje Azure Search vyrovnávat zatížení žádostí na více kopií.  Veškeré vyrovnávání zatížení a replikace dat mezi replikami se spravují pomocí Azure Search a kdykoli můžete změnit počet replik, které jsou pro vaši službu vyhrazené.  V rámci standardní vyhledávací služby můžete přidělit až 12 replik a 3 repliky ve službě Basic Search. Repliky je možné upravit buď z [Azure Portal](search-create-service-portal.md) , nebo [](search-manage-powershell.md)pomocí PowerShellu.
+2. **Zvýšit úroveň vyhledávání:**  Azure Search se nachází v [řadě vrstev](https://azure.microsoft.com/pricing/details/search/) a každá z těchto vrstev nabízí různé úrovně výkonu.  V některých případech můžete mít tolik dotazů, že úroveň, na kterou se nacházíte, nemůže poskytovat dostatečně nízkou míru latence, a to i v případě, že se repliky vyčerpáním. V takovém případě je vhodné zvážit použití jedné z vyšších úrovní vyhledávání, jako je například vrstva Azure Search S3, která je vhodná pro scénáře s velkým počtem dokumentů a velmi vysokými úlohami dotazů.
 
-## <a name="scaling-for-slow-individual-queries"></a>Škálování pomalé jednotlivé dotazy
-Dalším důvodem pro sazby vysokou latencí je pomocí jediného dotazu trvá moc dlouho. V takovém případě přidání repliky nepomůže. Dvě možnosti, které můžou pomoct následující možnosti:
+## <a name="scaling-for-slow-individual-queries"></a>Škálování pro pomalé jednotlivé dotazy
+Dalším důvodem pro vysokou latenci je, že dokončení jednoho dotazu trvá příliš dlouho. V takovém případě vám nebudou přidány repliky. K dispozici jsou dvě možné možnosti, které mohou obsahovat následující informace:
 
-1. **Zvýšit oddíly** oddíl je mechanismus pro rozdělení dat na další prostředky. Přidání druhý oddíl na dva rozdělí data, třetí oddíl rozdělí do tří a tak dále. Jednu pozitivní vedlejší efekt je, že pomalejší dotazy někdy provádět rychlejší z důvodu paralelní výpočty. Jsme jste si poznamenali paralelizace dotazů s nízkou selektivitu, jako jsou dotazy, které odpovídají mnoha dokumenty nebo omezující vlastnosti poskytuje počty přes velký počet dokumentů. Protože významné výpočtu se vyžaduje ke stanovení skóre relevanci dokumenty nebo mají spočítat počet dokumentů, přidávání dalších oddílů pomáhá dotazy rychleji.  
+1. **Zvětšit oddíly** Oddíl je mechanismus pro rozdělení dat mezi další prostředky. Přidání druhého oddílu rozdělí data na dva, třetí oddíl je rozdělí na tři a tak dále. Jedním z pozitivních vedlejších účinků je to, že pomalejší dotazy někdy provádějí rychleji v důsledku paralelního zpracování. Poznamenali jsme paralelní zpracování dotazů s nízkou selektivitou, jako jsou dotazy, které odpovídají mnoha dokumentům, nebo omezující vlastnosti, které poskytují počty přes velký počet dokumentů. Vzhledem k tomu, že je potřeba významné výpočty, aby bylo možné určit skóre relevanci dokumentů nebo počet dokumentů, přidání dalších oddílů pomáhá rychleji provádět dotazy.  
    
-   Může být maximálně 12 oddílů ve standardní službu vyhledávání a 1 oddíl ve službě základní hledání.  Oddíly mohou být upraveny buď z [webu Azure portal](search-create-service-portal.md) nebo [Powershellu](search-manage-powershell.md).
+   Ve standardní službě vyhledávání může být maximálně 12 oddílů a 1 oddíl služby Basic Search.  Oddíly lze upravit buď z [Azure Portal](search-create-service-portal.md) , nebo z [prostředí PowerShell](search-manage-powershell.md).
 
-2. **Limit vysokou kardinalitou pole:** Pole vysokou kardinalitou se skládá z facetable nebo filtrovatelná pole, která má velký počet jedinečných hodnot a proto spotřebovávají značné množství prostředků při výpočtu výsledků. Například nastavení pole ID produktu nebo popis, jako filtrovatelné a kategorizovatelné by byl započítán jako vysokou kardinalitou protože většina hodnot z dokumentu do dokumentu jsou jedinečné. Kdykoli je to možné, omezte počet polí velkou mohutností.
+2. **Omezit pole vysoké mohutnosti:** Pole s vysokou mohutnou sestává z pole s vysokou hodnotou, které má velký počet jedinečných hodnot, a výsledkem je, že při výpočtu výsledků spotřebovává významné prostředky. Například když nastavíte pole ID produktu nebo popis jako plošku nebo filtr, bude se počítat jako vysoká mohutnost, protože většina hodnot z dokumentu do dokumentu je jedinečná. Pokud je to možné, omezte počet polí vysoké mohutnosti.
 
-3. **Zvýšit úroveň hledání:**  Přesun do vyšší úrovně Azure Search může být jiný způsob, jak zlepšit výkon pomalých dotazů. Každá vyšší úroveň poskytuje rychlejší procesory a více paměti, které mají pozitivní dopad na výkon dotazů.
+3. **Zvýšit úroveň vyhledávání:**  Přechod až na vyšší úroveň Azure Search může být jiný způsob, jak zlepšit výkon pomalých dotazů. Každá vyšší úroveň poskytuje rychlejší procesory a více paměti, které mají pozitivní dopad na výkon dotazů.
 
-## <a name="scaling-for-availability"></a>Škálování pro dostupnost
-Repliky nejen pomoct snížit latenci dotazů, ale můžete také povolit pro zajištění vysoké dostupnosti. S jednou replikou měli byste očekávat pravidelné výpadku v důsledku restartování serveru po aktualizacích softwaru nebo pro jiné události údržby, ke kterým dojde.  V důsledku toho je důležité vzít v úvahu, pokud vaše aplikace vyžaduje vysokou dostupnost služby vyhledávání (dotazy) a také zápisy (indexování události). Služba Azure Search nabízí SLA možnosti na všech placených hledání nabídek s následujícími atributy:
+## <a name="scaling-for-availability"></a>Škálování dostupnosti
+Repliky neumožňují nejen snížit latenci dotazů, ale můžou taky umožňovat vysokou dostupnost. U jedné repliky byste měli očekávat pravidelné výpadky, protože se server restartuje po aktualizacích softwaru nebo pro jiné události údržby, ke kterým dojde.  V důsledku toho je důležité vzít v úvahu, jestli vaše aplikace vyžaduje vysokou dostupnost hledání (dotazů) a také zápisy (indexování událostí). Azure Search nabízí možnosti smlouvy SLA pro všechny placené nabídky vyhledávání s následujícími atributy:
 
-* 2 repliky pro zajištění vysoké dostupnosti úloh jen pro čtení (dotazy)
-* 3 nebo více replik pro zajištění vysoké dostupnosti pro čtení i zápis úlohy (dotazů a indexování)
+* 2 repliky pro vysokou dostupnost úloh jen pro čtení (dotazů)
+* 3 nebo více replik pro vysokou dostupnost úloh pro čtení a zápis (dotazy a indexování)
 
-Další podrobnosti o to, najdete [smlouvu o úrovni služeb Azure Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Další podrobnosti najdete na [Azure Search smlouva SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-Protože repliky jsou kopie vašich dat, s několika replikami umožňuje Azure Search k sadě machine restartování nebo Údržba na jednu repliku zároveň umožní provádění dotazů, pokračujte na další repliky. Naopak pokud nepodniknete repliky jinam, bude, vznikne vám snížení výkonu dotazů, za předpokladu, že tyto repliky se prostředek nevyužitých.
+Vzhledem k tomu, že repliky jsou kopie dat, může mít několik replik Azure Search restartování počítače a údržbu proti jedné replice a zároveň umožnit provádění dotazů pokračovat v jiných replikách. Naopak pokud ponecháte repliky, budete mít k disgradaci výkonu dotazů. za předpokladu, že tyto repliky byly prostředkem, který se používá.
 
-## <a name="scaling-for-geo-distributed-workloads-and-geo-redundancy"></a>Geograficky distribuované úlohy a geografické redundanci škálování
-Geograficky distribuované úlohy a bude mít uživatele, kteří se nacházejí daleko od datového centra, hostování Azure Search vyšší míru latence. Jeden omezení rizik je zřídit několik vyhledávací služby v oblasti se blíže na tyto uživatele. Služba Azure Search napříč oblastmi aktuálně neposkytuje metodu automatizované geografické replikaci indexů Azure Search, ale existují některé techniky, které je možné, které můžete provést tento postup snadno implementovat a spravovat. Tyto jsou popsány v následujících částech.
+## <a name="scaling-for-geo-distributed-workloads-and-geo-redundancy"></a>Škálování pro geografické distribuované úlohy a geografickou redundanci
+Pro geograficky distribuovaná zatížení budou mít uživatelé, kteří se nacházejí daleko od hostování datového centra Azure Search vyšší míry latence. Jedním z rizik je zřídit několik vyhledávacích služeb v oblastech s užším okolím pro tyto uživatele. Azure Search aktuálně neposkytuje automatizovanou metodu geografické replikace Azure Search indexů napříč oblastmi, ale existují některé techniky, které mohou tento proces snadno implementovat a spravovat. Ty jsou popsány v následujících částech.
 
-Cílem sady geograficky distribuované služby vyhledávání je mít dva nebo více indexů, které jsou k dispozici ve dvou nebo více oblastech, kde se směruje uživatele do služby Azure Search, která poskytuje nejnižší latenci, jak je vidět v tomto příkladu:
+Cílem geografické distribuované sady vyhledávacích služeb je mít dva nebo více indexů, které jsou k dispozici ve dvou nebo více oblastech, kde je uživatel směrován do služby Azure Search, která poskytuje nejnižší latenci, jak je vidět v tomto příkladu:
 
-   ![Karta různé služby v jednotlivých oblastech][1]
+   ![Mezi kartami služeb podle oblasti][1]
 
-### <a name="keeping-data-in-sync-across-multiple-azure-search-services"></a>Udržování synchronizace dat napříč několika službami Azure Search
-Existují dvě možnosti pro zachování vašich distribuovaných vyhledávací služby synchronizace které tvoří buď pomocí [indexeru Azure Search](search-indexer-overview.md) nebo rozhraní Push API (také nazývané [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/)).  
+### <a name="keeping-data-in-sync-across-multiple-azure-search-services"></a>Udržování synchronizovaných dat napříč více Azure Search službami
+Existují dvě možnosti, jak udržovat vaše distribuované služby vyhledávání v synchronizaci, které se skládají buď pomocí [Azure Search indexeru](search-indexer-overview.md) nebo rozhraní API push (také označovaného jako [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/)).  
 
-### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Použití indexerů pro aktualizaci obsahu na několika službách
+### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Použití indexerů pro aktualizaci obsahu ve více službách
 
-Pokud už používáte indexer na jednu službu, můžete nakonfigurovat druhý indexer na druhou službu, která používá stejný objekt zdroje dat, načítání dat ze stejného umístění. Každá služba v každé z nich má vlastní indexeru a cílový index (indexu vyhledávání se nesdílí, což znamená, že data jsou duplikovaná), ale každý indexer odkazuje stejného datového zdroje.
+Pokud již indexer používáte v jedné službě, můžete u druhé služby nakonfigurovat druhý indexer tak, aby používal stejný objekt zdroje dat, a nastavovat data ze stejného umístění. Každá služba v každé oblasti má svůj vlastní indexer a cílový index (váš index vyhledávání není sdílený, což znamená, že data jsou duplicitní), ale každý indexer odkazuje na stejný zdroj dat.
 
-Tady je podrobný vizuálu této architektuře by vypadat.
+Tady je přehled toho, co by architektura vypadala jako.
 
-   ![Jeden zdroj dat s kombinací služby a distribuované indexeru][2]
+   ![Jeden zdroj dat s kombinacemi distribuovaných indexerů a služeb][2]
 
-### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Pomocí rozhraní REST API pro vkládání obsahu aktualizací na několika službách
-Pokud používáte rozhraní REST API pro Azure Search [push obsah v indexu Azure Search](https://docs.microsoft.com/rest/api/searchservice/update-index), abyste mohli různé vyhledávací služby synchronizace podle doručením (push) změny do všech vyhledávacích služeb pokaždé, když se vyžaduje se aktualizace. Ve vašem kódu Ujistěte se, že pro zpracování v případech, kdy aktualizace jeden vyhledávací služby nezdaří, ale pro ostatní služby search se nezdaří.
+### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Použití rozhraní REST API pro doručování aktualizací obsahu ve více službách
+Pokud používáte Azure Search REST API k [nabízení obsahu v indexu Azure Search](https://docs.microsoft.com/rest/api/searchservice/update-index), můžete uchovávat různé služby vyhledávání v synchronizaci tím, že zadáte změny ve všech vyhledávacích službách pokaždé, když se vyžaduje aktualizace. V kódu se ujistěte, že se nezdařily případy, kdy aktualizace jedné služby vyhledávání selže, ale u jiných vyhledávacích služeb je úspěšná.
 
-## <a name="leverage-azure-traffic-manager"></a>Využijte Azure Traffic Manageru
-[Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) umožňuje směrování požadavků na několika geograficky rozmístěná weby, které jsou potom se opírá o několik služeb Azure Search. Jednou z výhod Traffic Manager je, že můžete sběru dat Azure Search k zajištění, že je k dispozici a směrování uživatelů do alternativní hledání služeb v případě výpadku. Kromě toho pokud jsou směrování žádostí o hledání prostřednictvím webů Azure, Azure Traffic Manager umožňuje načíst zůstatek případech, kdy webu nahoru, ale ne Azure Search. Tady je příklad jaké architektury, které využívá Traffic Manageru.
+## <a name="leverage-azure-traffic-manager"></a>Využití Azure Traffic Manager
+[Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) umožňuje směrovat požadavky na více geograficky umístěných webů, které jsou pak zajištěné více službami Azure Search. Jednou z výhod Traffic Manager je, že se může test Azure Search, aby se zajistilo, že je k dispozici a v případě výpadku směruje uživatele na alternativní vyhledávací služby. Pokud navíc odesíláte žádosti o vyhledávání prostřednictvím webů Azure, Azure Traffic Manager umožňuje vyrovnávat zatížení případů, kdy web není Azure Search. Tady je příklad, jak architektura, která využívá Traffic Manager.
 
-   ![Mezi – karta služeb podle oblastí, s využitím centrální Traffic Manageru][3]
+   ![Křížové karty služeb podle oblasti s centrálním Traffic Manager][3]
 
 ## <a name="monitor-performance"></a>Monitorování výkonu
-Azure Search nabízí možnost analyzovat a sledovat výkon vaší služby prostřednictvím [Analýza provozu vyhledávání](search-traffic-analytics.md). Když tuto funkci povolit a přidat instrumentaci vaší klientské aplikace, můžete volitelně protokolovat operace jednotlivé hledání, jakož i agregovaná metrika k účtu služby Azure Storage, který může pak zpracovány pro analýzu nebo vizualizují v Power BI. Metriky zachycení tímto způsobem poskytují výkon statistiky, jako je průměrný počet dotazů nebo pomalejší doby odezvy. Kromě toho operaci protokolování umožňuje přejít k podrobnostem konkrétní vyhledávací operace.
+Azure Search nabízí možnost analyzovat a monitorovat výkon služby prostřednictvím [vyhledávání analýz provozu](search-traffic-analytics.md). Když tuto funkci povolíte a přidáte do své klientské aplikace instrumentaci, můžete si volitelně protokolovat jednotlivé operace hledání i agregované metriky na účet Azure Storage, který se pak dá zpracovat pro analýzu nebo vizuální Power BI. Metriky zachycují tento způsob, jak poskytuje statistiku výkonu, jako je průměrný počet dotazů nebo doba odezvy na dotazy. Kromě toho protokolování operací umožňuje přejít k podrobnostem o konkrétních operacích hledání.
 
-Analýza provozu je užitečné pro pochopení latence kurzy z této perspektivě Azure Search. Protože metriky výkonu dotazů protokoluje jsou založeny na čas, který dotaz na úplné zpracování ve službě Azure Search (od okamžiku, kdy je požádali o odeslání navýšení kapacity), je možné využit k určí, jestli problémy s latencí je z výpisů nebo na straně služby Azure Search integrované vývojové prostředí služby, jako třeba latence sítě.  
+Analýza provozu je užitečná pro porozumění sazbám latence z této Azure Search perspektivy. Vzhledem k tomu, že jsou zaznamenané metriky výkonu dotazu založeny na čase, kdy je dotaz plně zpracován v Azure Search (od okamžiku, kdy je požadavek odeslán), můžete to použít k určení, zda dochází k problémům s latencí ze strany Azure Search nebo z přebírání služeb. rozhraní IDE služby, jako je například latence sítě.  
 
-## <a name="next-steps"></a>Další postup
-Další informace o omezeních cenové úrovně a služby pro každé z nich najdete v tématu [omezení služby Azure Search](search-limits-quotas-capacity.md).
+## <a name="next-steps"></a>Další kroky
+Další informace o cenových úrovních a omezeních služeb pro každé z nich najdete v tématu [omezení služby v Azure Search](search-limits-quotas-capacity.md).
 
-Navštivte [plánování kapacity](search-capacity-planning.md) získat další informace o kombinaci oddílů a replik.
+Další informace o kombinacích oddílů a replik najdete v [plánování kapacity](search-capacity-planning.md) .
 
-Další podrobnosti o výkonu a zobrazíte některé ukázky implementace optimalizace popisovaných v tomto článku z následujícího videa:
+Další podrobnosti o výkonu a o tom, jak implementovat optimalizace popsané v tomto článku, najdete v následujícím videu:
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
 > 

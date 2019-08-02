@@ -1,25 +1,25 @@
 ---
-title: 'Rychlý start: Navrhnout vyhledávací dotazy pomocí REST API pro automatické návrhy Bingu a Node.js'
-titlesuffix: Azure Cognitive Services
-description: Zjistěte, jak rychle začít, navrhněte hledaný text v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
+title: 'Rychlý start: Navrhnout vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a Node. js'
+titleSuffix: Azure Cognitive Services
+description: Naučte se, jak rychle začít navrhovat hledané výrazy v reálném čase pomocí rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: a8782951baccd63d3087ef0628a8fca31b9a4bc1
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 0dd25f5ff3767e65eeb293d6a046da034d5c8879
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390409"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564670"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Rychlý start: Navrhnout vyhledávací dotazy pomocí REST API pro automatické návrhy Bingu a Node.js
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Rychlý start: Navrhnout vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a Node. js
 
-Použití v tomto rychlém startu zahájíte provádění volání rozhraní API pro automatické návrhy Bingu a získání odpovědi JSON. Tato jednoduchá aplikace Node.js k rozhraní API odešle dotaz částečné vyhledávání a vrátí návrhů pro hledání. Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js)
+Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automatické návrhy Bingu a získat odpověď JSON. Tato jednoduchá aplikace Node. js pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js) na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,7 +37,7 @@ Použití v tomto rychlém startu zahájíte provádění volání rozhraní API
     let https = require ('https');
     ```
 
-2. Vytváření proměnných pro hostitele koncového bodu rozhraní API a cesty, váš klíč předplatného [uvedení na trh kód](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes), s hledaným termínem.
+2. Vytvořte proměnné pro hostitele koncového bodu rozhraní API a cestu, klíč předplatného, [kód trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a hledaný termín.
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -52,13 +52,13 @@ Použití v tomto rychlém startu zahájíte provádění volání rozhraní API
 
 ## <a name="construct-the-search-request-and-query"></a>Sestavení žádosti o vyhledávání a dotazu
 
-1. Parametry řetězce dotazu s vytvořením připojení trhu kód, který `mkt=` parametr a dotaz a `q=` parametru.
+1. Vytvořte řetězec parametrů pro dotaz připojením kódu na trhu k `mkt=` parametru a dotazem `q=` na parametr.
 
     ```javascript 
     let params = '?mkt=' + mkt + '&q=' + query;
     ```
 
-2. Vytvořit funkci s názvem `get_suggestions()`. Použití proměnné z poslední kroky pro formátování adresa URL pro hledání pro žádosti na rozhraní API. Hledaný výraz musí být kódovaná adresou URL před odesláním do rozhraní API.
+2. Vytvořte funkci s názvem `get_suggestions()`. Použijte proměnné z posledních kroků k formátování adresy URL pro hledání pro požadavek rozhraní API. Před odesláním do rozhraní API musí být hledaný výraz zakódovaný pomocí adresy URL.
 
     ```javascript
     let get_suggestions = function () {
@@ -74,7 +74,7 @@ Použití v tomto rychlém startu zahájíte provádění volání rozhraní API
     }
     ```
 
-    1. Ve stejné funkci použijte knihovnu žádost odeslat dotaz na rozhraní API. `response_handler` se bude definovat v další části.
+    1. Ve stejné funkci použijte knihovnu požadavků k odeslání dotazu do rozhraní API. `response_handler` se bude definovat v další části.
     
         ```javascript
         //...
@@ -82,9 +82,9 @@ Použití v tomto rychlém startu zahájíte provádění volání rozhraní API
         req.end();
         ```
 
-## <a name="create-a-search-handler"></a>Vytvořte obslužnou rutinu hledání
+## <a name="create-a-search-handler"></a>Vytvoření obslužné rutiny vyhledávání
 
-1. Definujte funkci s názvem `response_handler`, která jako parametr přijímá volání protokolu HTTP `response`. Proveďte následující kroky v rámci této funkce:
+1. Definujte funkci s názvem `response_handler`, která jako parametr přijímá volání protokolu HTTP `response`. V rámci této funkce proveďte následující kroky:
     
     1. Definujte proměnnou, která bude obsahovat text odpovědi JSON.  
 
@@ -102,7 +102,7 @@ Použití v tomto rychlém startu zahájíte provádění volání rozhraní API
         });
         ```
 
-    3. Když **koncový** signalizován příznak uživatele `JSON.parse()` a `JSON.stringify()` k tisku odpověď.
+    3. Když je příznak **ukončení** signálem, uživatel `JSON.parse()` a `JSON.stringify()` vytiskne odpověď.
     
         ```javascript
         response.on ('end', function () {
@@ -115,9 +115,9 @@ Použití v tomto rychlém startu zahájíte provádění volání rozhraní API
         });
         ```
 
-2. Volání `get_suggestions()` odešlete žádost na rozhraní API pro automatické návrhy Bingu.
+2. Voláním `get_suggestions()` odešlete požadavek do rozhraní API pro automatické návrhy Bingu.
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -185,7 +185,7 @@ Použití v tomto rychlém startu zahájíte provádění volání rozhraní API
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](../tutorials/autosuggest.md)

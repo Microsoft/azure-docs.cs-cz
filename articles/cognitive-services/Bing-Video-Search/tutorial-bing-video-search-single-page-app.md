@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Sestavení jednostránkové aplikace Bingu pro vyhledávání videí'
-titlesuffix: Azure Cognitive Services
+title: 'Kurz: Vytvoření jednostránkové aplikace Vvyhledávání videí Binguovou stránkou'
+titleSuffix: Azure Cognitive Services
 description: Vysvětluje, jak používat rozhraní API Bingu pro vyhledávání videí v jednostránkové webové aplikaci.
 services: cognitive-services
 author: aahill
@@ -10,14 +10,14 @@ ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: a14954de1f8ae073780098f9286aa70502472dcd
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: d2cd3d37801fc1a42a9bcbd5f70a6a55e78aaf08
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867869"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500064"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>Kurz: Vyhledávání videí jednostránkové aplikace
+# <a name="tutorial-single-page-video-search-app"></a>Kurz: Aplikace Vyhledávání videí s jednou stránkou
 Rozhraní API Bingu pro vyhledávání videí umožňuje hledat na webu a získávat výsledky videí relevantní pro vyhledávací dotaz. V tomto kurzu sestavíme jednostránkovou webovou aplikaci, která používá rozhraní API pro vyhledávání Bingu k zobrazení výsledků hledání na stránce. Aplikace zahrnuje komponenty HTML, CSS a JavaScriptu.
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -308,7 +308,7 @@ Výsledky hledání se v odpovědi JSON vrátí jako objekt `value` nejvyšší 
 
 Rozhraní API Bingu pro vyhledávání zpráv vrátí až čtyři různé druhy souvisejících výsledků, každý ve vlastním objektu nejvyšší úrovně. Jsou to tyto:
 
-|Relace|Popis|
+|Vztah|Popis|
 |-|-|
 |`pivotSuggestions`|Dotazy, které nahradí pivotové slovo v původním vyhledávání jiným. Pokud třeba vyhledáváte „červené květiny“, pivotové slovo může být „červené“ a pivotový návrh může být „žluté květiny“.|
 |`queryExpansions`|Dotazy, které původní hledání zúží přidáním dalších výrazů. Pokud třeba vyhledáváte „Microsoft Surface“, rozšíření dotazu může být „Microsoft Surface Pro“.|
@@ -373,7 +373,7 @@ Funkce rendereru:
 > * Vytvoří značky HTML `<a>`, které odkazují na obrázek a na stránku, která ho obsahuje.
 > * Vytvoří popis, který zobrazuje informace o obrázku a webu, na kterém se nachází.
 
-Velikost miniatury se používá ve značce `<img>` i v polích `h` a `w` v adrese URL miniatury. Bing vrátí [miniaturu](../bing-web-search/resize-and-crop-thumbnails.md) přesně zadané velikosti.
+Velikost miniatury se používá ve značce `<img>` i v polích `h` a `w` v adrese URL miniatury. Bing vrátí miniaturu [](../bing-web-search/resize-and-crop-thumbnails.md) přesně této velikosti.
 
 ## <a name="persisting-client-id"></a>Zachování ID klienta
 Odpovědi z rozhraní API pro vyhledávání Bingu můžou zahrnovat hlavičku `X-MSEdge-ClientID`, která by se měla odesílat zpět do rozhraní API v následných požadavcích. Pokud se používá více rozhraní API pro vyhledávání Bingu, mělo by se pro všechny používat stejné ID klienta, pokud je to možné.
@@ -389,7 +389,7 @@ Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavi�
 > [!NOTE]
 > V produkční webové aplikaci byste měli požadavek provádět na straně serveru. Jinak musí být klíč rozhraní API pro vyhledávání Bingu součástí webové stránky, kde je k dispozici každému, kdo si zobrazí zdroj. Účtuje se vám veškeré využívání vašeho klíče předplatného rozhraní API, dokonce i požadavky provedené neoprávněnými stranami, proto je důležité klíč nezveřejňovat.
 
-Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď od takový proxy server má `Access-Control-Expose-Headers` hlavičku, která umožňuje hlavičky odpovědi a zpřístupňuje je pro jazyk JavaScript.
+Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které umožňuje použití hlaviček odpovědí a zpřístupňuje je pro JavaScript.
 
 Nainstalovat proxy server CORS a povolit naší ukázkové aplikaci přístup k hlavičce ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
 

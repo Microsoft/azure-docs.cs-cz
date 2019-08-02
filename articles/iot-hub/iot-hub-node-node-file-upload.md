@@ -1,6 +1,6 @@
 ---
-title: Nahrání souborů ze zařízení do služby Azure IoT Hub s uzlem | Dokumentace Microsoftu
-description: Postup nahrání souborů ze zařízení do cloudu pomocí zařízení Azure IoT SDK pro Node.js. Nahrané soubory se ukládají v kontejneru objektů blob v Azure storage.
+title: Nahrání souborů ze zařízení do Azure IoT Hub s využitím uzlu | Microsoft Docs
+description: Postup nahrání souborů ze zařízení do cloudu pomocí sady SDK pro zařízení Azure IoT pro Node. js Nahrané soubory se ukládají v kontejneru objektů BLOB služby Azure Storage.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,52 +9,52 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: d52e0e1093668a65e76bd6600329619240aee182
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: da97dde43a6ef13db204f1d3be1229a0dfc30af5
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612591"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668038"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Node. js)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-V tomto kurzu vychází z kódu v [odesílat zprávy typu cloud zařízení pomocí služby IoT Hub](iot-hub-node-node-c2d.md) kurzu se dozvíte, jak používat [soubor nahrát možnosti služby IoT Hub](iot-hub-devguide-file-upload.md) nahrát soubor do [objektů blob v Azure úložiště](../storage/index.yml). V tomto kurzu získáte informace o následujících postupech:
+V tomto kurzu se seznámíte s kódem v tématu [posílání zpráv z cloudu do zařízení pomocí IoT Hub](iot-hub-node-node-c2d.md) kurzu, ve kterém se dozvíte, jak pomocí [možností nahrávání souborů IoT Hub](iot-hub-devguide-file-upload.md) nahrát soubor do [úložiště objektů BLOB v Azure](../storage/index.yml). V tomto kurzu získáte informace o následujících postupech:
 
-* Zabezpečeně dodávají zařízení s Azure blob identifikátorů URI pro nahrání souboru.
+* Bezpečně poskytněte zařízení s identifikátorem URI objektu blob Azure pro nahrání souboru.
 
-* Oznámení o nahrávání souborů služby IoT Hub použijte k aktivaci zpracování souboru v back-endu aplikace.
+* Pomocí IoT Hub oznámení o nahrávání souborů můžete aktivovat zpracování souboru v back-endu vaší aplikace.
 
-[Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-node.md) rychlý start ukazuje základní funkce zasílání zpráv typu zařízení cloud ze služby IoT Hub. Nicméně v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně málo početnému zpráv typu zařízení cloud, které služby IoT Hub přijímá. Příklad:
+[Možnost Odeslat telemetrii ze zařízení do centra IoT](quickstart-send-telemetry-node.md) se rychlým startem předvádí základní funkce zasílání zpráv typu zařízení-Cloud IoT Hub. V některých scénářích ale nemůžete snadno namapovat data, která zařízení odesílají do relativně malých zpráv ze zařízení do cloudu, které IoT Hub přijmout. Příklad:
 
 * Velké soubory, které obsahují obrázky
 * Videa
-* Data pronikavost odebírána data v vysoká frekvence
-* Určitou formu předem zpracovaná data.
+* Ukázka dat vibrací s vysokou frekvencí
+* Některá forma předem zpracovaných dat.
 
-Tyto soubory jsou obvykle dávkově zpracovány v cloudu pomocí nástrojů, jako [Azure Data Factory](../data-factory/introduction.md) nebo [Hadoop](../hdinsight/index.yml) zásobníku. Když budete potřebovat hornatých souborů ze zařízení, můžete stále použít zabezpečení a spolehlivost služby IoT Hub.
+Tyto soubory jsou obvykle dávkově zpracovávány v cloudu pomocí nástrojů, jako je [Azure Data Factory](../data-factory/introduction.md) nebo zásobník [Hadoop](../hdinsight/index.yml) . Pokud potřebujete nakládat soubory ze zařízení, můžete i nadále používat zabezpečení a spolehlivost IoT Hub.
 
-Na konci tohoto kurzu spustíte dvě konzolové aplikace Node.js:
+Na konci tohoto kurzu spustíte dvě konzolové aplikace Node. js:
 
-* **SimulatedDevice.js**, který nahraje soubor do úložiště pomocí SAS URI poskytované služby IoT hub.
+* **SimulatedDevice. js**, který nahraje soubor do úložiště pomocí identifikátoru URI SAS, který poskytuje vaše služba IoT Hub.
 
-* **ReadFileUploadNotification.js**, který obdrží oznámení o nahrávání souborů ze služby IoT hub.
+* **ReadFileUploadNotification. js**, který přijímá oznámení o nahrávání souborů ze služby IoT Hub.
 
 > [!NOTE]
-> IoT Hub podporuje mnoho platforem zařízení a jazyků (včetně C, .NET, Javascript, Python a Java) prostřednictvím sady SDK pro zařízení Azure IoT. Podrobné pokyny o tom, jak připojit zařízení ke službě Azure IoT Hub najdete [Azure středisko pro vývojáře IoT].
+> IoT Hub podporuje spoustu platforem a jazyků zařízení (včetně C, .NET, JavaScriptu, Pythonu a Java) prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny k připojení zařízení k Azure IoT Hub najdete v tématu [středisko pro vývojáře Azure IoT].
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Verze Node.js 10.0.x nebo novější.
+* Node. js verze 10.0. x nebo novější.
 
-* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+* Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
-## <a name="upload-a-file-from-a-device-app"></a>Nahrajte soubor z aplikace pro zařízení
+## <a name="upload-a-file-from-a-device-app"></a>Nahrání souboru z aplikace zařízení
 
-V této části vytvoříte aplikaci pro nahrání souboru do služby IoT hub zařízení.
+V této části vytvoříte aplikaci pro zařízení pro nahrání souboru do centra IoT.
 
 1. Vytvořte prázdnou složku s názvem ```simulateddevice```.  Ve složce ```simulateddevice``` vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
 
@@ -80,7 +80,7 @@ V této části vytvoříte aplikaci pro nahrání souboru do služby IoT hub za
     var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
     ```
 
-5. Přidejte proměnnou `deviceconnectionstring` a použijte ji k vytvoření instance **klienta**.  Nahraďte `{deviceconnectionstring}` s názvem zařízení, kterou jste vytvořili v *vytvoření služby IoT Hub* části:
+5. Přidejte proměnnou `deviceconnectionstring` a použijte ji k vytvoření instance **klienta**.  Nahraďte `{deviceconnectionstring}` názvem zařízení, které jste vytvořili v části *Vytvoření IoT Hub* :
 
     ```javascript
     var connectionString = '{deviceconnectionstring}';
@@ -88,16 +88,16 @@ V této části vytvoříte aplikaci pro nahrání souboru do služby IoT hub za
     ```
 
     > [!NOTE]
-    > Z důvodu zjednodušení připojovací řetězec je zahrnuta v kódu: Toto není doporučený postup a v závislosti na případu použití a architektury můžete chtít zvážit bezpečnější způsoby ukládání tento tajný kód.
+    > V zájmu jednoduchosti je připojovací řetězec zahrnutý v kódu: nejedná se o doporučený postup a v závislosti na vašem případu použití a architektuře možná budete chtít zvážit bezpečnější způsoby ukládání tohoto tajného klíče.
 
-6. Přidejte následující kód k připojení klienta:
+6. Přidejte následující kód pro připojení klienta:
 
     ```javascript
     var client = clientFromConnectionString(connectionString);
     console.log('Client connected');
     ```
 
-7. Vytvořte zpětné volání a použijte **uploadToBlob** funkce pro nahrání souboru.
+7. Vytvořte zpětné volání a použijte funkci **uploadToBlob** pro nahrání souboru.
 
     ```javascript
     fs.stat(filename, function (err, stats) {
@@ -115,13 +115,19 @@ V této části vytvoříte aplikaci pro nahrání souboru do služby IoT hub za
 
 8. Soubor **SimulatedDevice.js** uložte a zavřete.
 
-9. Kopírování souboru obrázku, který `simulateddevice` složku a přejmenujte jej `myimage.png`.
+9. Zkopírujte soubor obrázku do `simulateddevice` složky a přejmenujte ho. `myimage.png`
 
-## <a name="receive-a-file-upload-notification"></a>Přijímat oznámení o nahrání souborů
+## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
 
-V této části vytvoříte konzolovou aplikaci Node.js, která bude přijímat zprávy oznámení nahrávání souborů ze služby IoT Hub.
+V tomto článku vytvoříte back-end službu pro příjem zpráv s oznámením o nahrávání souborů ze služby IoT Hub, kterou jste vytvořili v tématu [odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-node.md). Aby bylo možné přijímat zprávy s oznámením o nahrávání souborů, vaše služba potřebuje oprávnění **k připojení služby** . Ve výchozím nastavení se všechny IoT Hub vytvoří pomocí zásad sdíleného přístupu s názvem **Služba** , která toto oprávnění udělí.
 
-Můžete použít **iothubowner** připojovací řetězec ze služby IoT Hub k dokončení této části. Vás bude připojovací řetězec [webu Azure portal](https://portal.azure.com/) na **zásady sdíleného přístupu** okno.
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
+
+## <a name="receive-a-file-upload-notification"></a>Doručení oznámení o nahrání souboru
+
+V této části vytvoříte konzolovou aplikaci Node. js, která přijímá zprávy s oznámením o nahrávání souborů z IoT Hub.
+
+K dokončení této části můžete použít připojovací řetězec **iothubowner** ze svého IoT Hub. Připojovací řetězec najdete v okně [Azure Portal](https://portal.azure.com/) v okně **zásady sdíleného přístupu** .
 
 1. Vytvořte prázdnou složku s názvem ```fileuploadnotification```.  Ve složce ```fileuploadnotification``` vytvořte soubor package.json pomocí následujícího příkazu na příkazovém řádku.  Přijměte všechny výchozí hodnoty:
 
@@ -129,15 +135,15 @@ Můžete použít **iothubowner** připojovací řetězec ze služby IoT Hub k d
     npm init
     ```
 
-2. Na příkazovém řádku v ```fileuploadnotification``` složky, spusťte následující příkaz k instalaci **azure-iothub** balíčku sady SDK:
+2. Na příkazovém řádku ve ```fileuploadnotification``` složce spusťte následující příkaz k instalaci balíčku **Azure-iothub** SDK:
 
     ```cmd/sh
     npm install azure-iothub --save
     ```
 
-3. Pomocí textového editoru, vytvořte **FileUploadNotification.js** soubor `fileuploadnotification` složky.
+3. Pomocí textového editoru vytvořte ve `fileuploadnotification` složce soubor **FileUploadNotification. js** .
 
-4. Přidejte následující `require` příkazy na začátku **FileUploadNotification.js** souboru:
+4. Na začátek souboru `require` **FileUploadNotification. js** přidejte následující příkazy:
 
     ```javascript
     'use strict';
@@ -145,22 +151,22 @@ Můžete použít **iothubowner** připojovací řetězec ze služby IoT Hub k d
     var Client = require('azure-iothub').Client;
     ```
 
-5. Přidejte proměnnou `iothubconnectionstring` a použijte ji k vytvoření instance **klienta**.  Nahraďte `{iothubconnectionstring}` připojovacím řetězcem ke službě IoT hub, kterou jste vytvořili v _vytvoření služby IoT Hub_ části:
+5. Přidejte proměnnou `iothubconnectionstring` a použijte ji k vytvoření instance **klienta**.  Nahraďte hodnotu [](#get-the-iot-hub-connection-string) zástupnéhosymbolupřipojovacímřetězcemIoTHub,kterýjstezkopírovalidřívevčástizískánípřipojovacíhořetězcecentra`{iothubconnectionstring}` IoT:
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
     ```
 
     > [!NOTE]
-    > Z důvodu zjednodušení připojovací řetězec je zahrnuta v kódu: Toto není doporučený postup a v závislosti na případu použití a architektury můžete chtít zvážit bezpečnější způsoby ukládání tento tajný kód.
+    > V zájmu jednoduchosti je připojovací řetězec zahrnutý v kódu: nejedná se o doporučený postup a v závislosti na vašem případu použití a architektuře možná budete chtít zvážit bezpečnější způsoby ukládání tohoto tajného klíče.
 
-6. Přidejte následující kód k připojení klienta:
+6. Přidejte následující kód pro připojení klienta:
 
     ```javascript
     var serviceClient = Client.fromConnectionString(connectionString);
     ```
 
-7. Otevřít klienta a použít **getFileNotificationReceiver** funkci pro příjem aktualizace stavu.
+7. Otevřete klienta a použijte funkci **getFileNotificationReceiver** pro příjem aktualizací stavu.
 
     ```javascript
     serviceClient.open(function (err) {
@@ -182,42 +188,42 @@ Můžete použít **iothubowner** připojovací řetězec ze služby IoT Hub k d
     });
     ```
 
-8. Uložte a zavřete **FileUploadNotification.js** souboru.
+8. Uložte a zavřete soubor **FileUploadNotification. js** .
 
 ## <a name="run-the-applications"></a>Spuštění aplikací
 
 Nyní můžete spustit aplikace.
 
-Na příkazovém řádku v `fileuploadnotification` složky, spusťte následující příkaz:
+Na příkazovém řádku ve `fileuploadnotification` složce spusťte následující příkaz:
 
 ```cmd/sh
 node FileUploadNotification.js
 ```
 
-Na příkazovém řádku v `simulateddevice` složky, spusťte následující příkaz:
+Na příkazovém řádku ve `simulateddevice` složce spusťte následující příkaz:
 
 ```cmd/sh
 node SimulatedDevice.js
 ```
 
-Následující snímek obrazovky ukazuje výstup z **SimulatedDevice** aplikace:
+Následující snímek obrazovky ukazuje výstup z aplikace **SimulatedDevice** :
 
 ![Výstup z aplikace simulovaného zařízení](./media/iot-hub-node-node-file-upload/simulated-device.png)
 
-Následující snímek obrazovky ukazuje výstup z **FileUploadNotification** aplikace:
+Následující snímek obrazovky ukazuje výstup z aplikace **FileUploadNotification** :
 
-![Výstup z aplikace pro čtení souboru odeslání oznámení](./media/iot-hub-node-node-file-upload/read-file-upload-notification.png)
+![Výstup z aplikace pro čtení-soubor-nahrávání-oznámení](./media/iot-hub-node-node-file-upload/read-file-upload-notification.png)
 
-Na portálu můžete použít k zobrazení nahraných souborů v kontejneru úložiště, které jste nakonfigurovali:
+K zobrazení nahraného souboru v kontejneru úložiště, který jste nakonfigurovali, můžete použít portál:
 
 ![Nahraný soubor](./media/iot-hub-node-node-file-upload/uploaded-file.png)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak zjednodušit nahrávání souborů ze zařízení pomocí možnosti nahrávání souborů služby IoT Hub. Můžete pokračovat k prozkoumání funkcí služby IoT hub a scénáře najdete v následujících článcích:
+V tomto kurzu jste zjistili, jak používat možnosti nahrávání souborů IoT Hub ke zjednodušení nahrávání souborů ze zařízení. Pomocí následujících článků můžete dál prozkoumat funkce a scénáře IoT Hub:
 
-* [Vytvoření centra IoT prostřednictvím kódu programu](iot-hub-rm-template-powershell.md)
+* [Programové vytvoření centra IoT Hub](iot-hub-rm-template-powershell.md)
 
-* [Seznámení s C SDK](iot-hub-device-sdk-c-intro.md)
+* [Seznámení se sadou C SDK](iot-hub-device-sdk-c-intro.md)
 
 * [Sady Azure IoT SDK](iot-hub-devguide-sdks.md)

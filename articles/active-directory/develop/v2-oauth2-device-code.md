@@ -1,6 +1,6 @@
 ---
-title: Platforma identit Microsoft používá k přihlášení uživatelů na zařízeních bez prohlížeče | Azure
-description: Vytváření toků vložené a prohlížeče bez ověřování pomocí udělení kódu zařízení.
+title: Použití platformy Microsoft identity k přihlašování uživatelů v zařízeních bez prohlížeče | Azure
+description: Pomocí udělení kódu zařízení Sestavte toky pro ověřování Embedded a bez prohlížeče.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,47 +17,47 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e92e4d0e296e83b413cfd2a67041a5749c16699e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 274c4e89ff3f996cc71cdacdfb7b5b72e813ae4b
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482232"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297662"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Platforma identit Microsoft a tok OAuth 2.0 zařízení kódu
+# <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft Identity Platform a tok kódu zařízení OAuth 2,0
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Podporuje Microsoft identity platform [udělení kódu zařízení](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), což umožňuje uživatelům umožní přihlásit k omezené vstupní zařízení, jako jsou inteligentní TV, zařízení IoT nebo tiskárny.  Pokud chcete povolit tento tok, má zařízení uživatele navštivte webovou stránku ve svém prohlížeči na jiném zařízení pro přihlášení.  Když se uživatel přihlásí, zařízení je možné získat přístupové tokeny a podle potřeby obnovovacích tokenů.  
+Platforma Microsoft identity podporuje [udělení kódu zařízení](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), které umožňuje uživatelům přihlašovat se ke vstupním zařízením omezeným na zařízení, jako je například inteligentní televizní vysílání, zařízení IoT nebo tiskárna.  Pokud chcete tento tok povolit, zařízení uživateli navštíví webovou stránku v prohlížeči na jiném zařízení, abyste se přihlásili.  Jakmile se uživatel přihlásí, zařízení může získat přístupové tokeny a aktualizovat tokeny podle potřeby.  
 
 > [!IMPORTANT]
-> V tuto chvíli podporuje koncový bod Microsoft identity platform tok zařízení pouze pro klienty Azure AD, ale ne osobní účty.  To znamená, že je nutné použít koncový bod nastavit jako tenant nebo `organizations` koncového bodu.  Tato podpora bude brzy povolená. 
+> V současné době koncový bod platformy Microsoft Identity Platform podporuje jenom tok zařízení pro klienty Azure AD, ale ne osobní účty.  To znamená, že musíte použít koncový bod nastavený jako tenant nebo `organizations` koncový bod.  Tato podpora bude brzy povolená. 
 >
-> Osobní účty, které se pozvat do tenanta služby Azure AD bude moct používat toku udělení zařízení, ale pouze v rámci tenanta.
+> Osobní účty, které jsou pozvány klientovi služby Azure AD, budou moci používat udělení toku zařízení, ale pouze v kontextu tenanta.
 >
-> Jako další Všimněte si `verification_uri_complete` pole odpovědi není zahrnutý nebo v tuto chvíli nepodporuje.  
+> V takovém případě není pole odpovědizahrnutoanipodporováno.`verification_uri_complete`  
 
 > [!NOTE]
-> Koncový bod Microsoft identity platform nepodporuje všechny scénáře Azure Active Directory a funkce. Pokud chcete zjistit, zda by měl použít koncový bod Microsoft identity platform, přečtěte si informace o [Microsoft identity platform omezení](active-directory-v2-limitations.md).
+> Koncový bod platformy Microsoft Identity Platform nepodporuje všechny Azure Active Directory scénáře a funkce. Pokud chcete zjistit, jestli byste měli použít koncový bod platformy Microsoft identity, přečtěte si informace o [omezeních platformy Microsoft Identity](active-directory-v2-limitations.md).
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 
-Následující diagram podobný tok kódu celého zařízení. Každý z kroků dále v tomto článku popisujeme.
+Celý tok kódu zařízení vypadá podobně jako u dalšího diagramu. Každý z těchto kroků popisujeme dále v tomto článku.
 
-![Tok kódu při zařízení](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
+![Tok kódu zařízení](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
-## <a name="device-authorization-request"></a>Žádost o ověření zařízení
+## <a name="device-authorization-request"></a>Žádost o autorizaci zařízení
 
-Nejdřív musíte zkontrolovat klienta se serverem ověřování pro zařízení a uživatelský kód, který je použitý k provedení ověřování. Shromažďuje této žádosti z klienta `/devicecode` koncového bodu. V této žádosti klienta by měly také zahrnovat oprávnění, která je potřeba získat od uživatele. Odesláním požadavku v okamžiku, že uživatel má pouze 15 minut pro přihlášení (obvykle hodnota `expires_in`), takže pouze tuto žádost vytvořit, když uživatel uvedl, budou připravené k přihlášení.
+Klient se musí nejdřív ověřit pomocí ověřovacího serveru pro zařízení a uživatelský kód, který se používá k inicializaci ověřování. Klient shromáždí tuto žádost z `/devicecode` koncového bodu. V této žádosti by měl klient také zahrnovat oprávnění, která potřebuje k získání od uživatele. Od chvíle, kdy se tato žádost pošle, se uživateli přihlásí jenom 15 minut (obvyklá hodnota pro `expires_in`), takže tuto žádost udělejte jenom v případě, že uživatel označil, že jsou připravené na přihlášení.
 
 > [!TIP]
-> Pokuste se spustit tuto žádost do Postman!
-> [![Zkuste spustit tento požadavek v nástroji Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Zkuste tento požadavek provést v nástroji post!
+> [![Pokus o spuštění této žádosti v předzálohovacím](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
 
-POST https://login.microsoftonline.com/{tenant}/devicecode
+POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/devicecode
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
@@ -67,28 +67,28 @@ scope=user.read%20openid%20profile
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| `tenant` | Požaduje se |Tenantu Active directory, kterou chcete požádat o oprávnění. To může být ve formátu popisný název nebo identifikátor GUID.  |
-| `client_id` | Požaduje se | **ID aplikace (klient)** , který [webu Azure portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené vaší aplikaci. |
-| `scope` | Doporučené | Místo oddělený seznam [obory](v2-permissions-and-consent.md) , že má uživatel vyjádřit souhlas.  |
+| `tenant` | Požadováno |Tenant adresáře, ze kterého chcete požádat o oprávnění. Může se jednat o formát GUID nebo popisný název.  |
+| `client_id` | Požadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
+| `scope` | Doporučené | Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md) , ke kterým má uživatel udělit souhlas.  |
 
-### <a name="device-authorization-response"></a>Zařízení odpovědi ověřování.
+### <a name="device-authorization-response"></a>Odpověď na autorizaci zařízení
 
-Úspěšná odpověď bude objekt JSON obsahující požadované informace umožňující uživateli umožní přihlásit.  
+Úspěšná odpověď bude objekt JSON, který obsahuje požadované informace, aby se uživatel mohl přihlásit.  
 
 | Parametr | Formát | Popis |
 | ---              | --- | --- |
-|`device_code`     | String | Dlouhý řetězec používaného k ověřování relací mezi klientem a serverem ověřování. Klient použije tento parametr k žádosti o přístupový token od autorizačního serveru. |
-|`user_code`       | String | Krátký řetězec, který se zobrazí uživateli, který se používá k identifikaci relaci na sekundární zařízení.|
-|`verification_uri`| Identifikátor URI | Identifikátor URI by měl uživatel přejde na s `user_code` abyste se mohli přihlásit. |
-|`expires_in`      | int | Počet sekund před `device_code` a `user_code` vypršení platnosti. |
-|`interval`        | int | Počet sekund, po které klient by měl čekat mezi požadavků dotazování. |
-| `message`        | String | Čitelný řetězec s pokyny pro uživatele. To může být lokalizována zahrnutím **parametr dotazu** v požadavku ve formátu `?mkt=xx-XX`, plnění v příslušné jazykové jazykovou verzi kódu. |
+|`device_code`     | Řetězec | Dlouhý řetězec, který slouží k ověření relace mezi klientem a autorizačním serverem. Klient používá tento parametr k vyžádání přístupového tokenu z autorizačního serveru. |
+|`user_code`       | Řetězec | Krátký řetězec zobrazený uživateli, který se používá k identifikaci relace v sekundárním zařízení.|
+|`verification_uri`| Identifikátor URI | Identifikátor URI, který by měl uživatel přejít `user_code` na, aby se mohl přihlásit. |
+|`expires_in`      | int | Počet sekund před `device_code` vypršením platnosti a `user_code` . |
+|`interval`        | int | Počet sekund, po které má klient čekat mezi požadavky na dotazování. |
+| `message`        | Řetězec | Uživatelsky čitelný řetězec s pokyny pro uživatele. To lze lokalizovat zahrnutím **parametru dotazu** do žádosti formuláře `?mkt=xx-XX`a vyplněním příslušného kódu jazykové kultury. |
 
-## <a name="authenticating-the-user"></a>Ověření uživatele
+## <a name="authenticating-the-user"></a>Ověřování uživatele
 
-Po přijetí `user_code` a `verification_uri`, klient se zobrazí tyto uživateli, pokynem k přihlášení pomocí jejich mobilní telefon nebo PC prohlížeče.  Kromě toho může klient použít kód QR nebo mechanismus podobný zobrazíte `verfication_uri_complete`, což bude trvat krok zadávání `user_code` pro uživatele.
+Po přijetí `user_code` a `verification_uri`se klient zobrazí uživateli, který jim dává pokyn k přihlášení pomocí svého mobilního telefonu nebo prohlížeče počítače.  Kromě toho může klient použít kód QR nebo podobný mechanizmus k zobrazení `verfication_uri_complete`, který provede krok `user_code` zadání pro uživatele.
 
-Když se uživatel ověřuje na `verification_uri`, klient by měl být cyklického dotazování `/token` koncový bod pro požadovaný token pomocí `device_code`.
+Při ověřování uživatele v `verification_uri`systému by měl klient dotazovat `/token` koncový bod požadovaného tokenu pomocí `device_code`.
 
 ``` 
 POST https://login.microsoftonline.com/tenant/oauth2/v2.0/token
@@ -99,26 +99,26 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 ```
 
-| Parametr | Požaduje se | Popis|
+| Parametr | Požadováno | Popis|
 | -------- | -------- | ---------- |
-| `grant_type` | Požaduje se | musí být `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Požaduje se | Musí odpovídat `client_id` použít v prvotní žádosti. |
-| `device_code`| Požaduje se | `device_code` Vráceny v žádosti o ověření zařízení.  |
+| `grant_type` | Požadováno | Musí být`urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Požadováno | Musí odpovídat `client_id` použitému v počátečním požadavku. |
+| `device_code`| Požadováno | `device_code` Vrácený v žádosti o autorizaci zařízení.  |
 
-### <a name="expected-errors"></a>Očekávaný chyby
+### <a name="expected-errors"></a>Očekávané chyby
 
-Tok kódu zařízení je protokol dotazování, takže váš klient musí by se měl zobrazit chyby předtím, než uživatel dokončí ověřování.  
+Tok kódu zařízení je protokol cyklického dotazování, aby klient musel obdržet chyby, než se uživatel dokončí ověřováním.  
 
 | Chyba | Popis | Akce klienta |
 | ------ | ----------- | -------------|
-| `authorization_pending` | Uživatel nebyl dokončen, ověřování, ale nebyla zrušena toku. | Opakovat žádost po nejméně `interval` sekund. |
-| `authorization_declined` | Koncový uživatel zamítl žádost o autorizaci.| Zastavit cyklického dotazování a vrátit se do neověřené stavu.  |
-| `bad_verification_code`| `device_code` Odesílat `/token` koncový bod nebyl rozpoznán. | Ověřte, že klient zasílá správné `device_code` v požadavku. |
-| `expired_token` | Alespoň `expires_in` prošly sekund a ověřování se už nedají pomocí to `device_code`. | Zastavit cyklického dotazování a vrátit se do neověřené stavu. |
+| `authorization_pending` | Uživatel nedokončil ověřování, ale nezrušil tok. | Požadavek opakujte po nejméně `interval` sekundách. |
+| `authorization_declined` | Koncový uživatel zamítl žádost o autorizaci.| Zastaví cyklické dotazování a vrátí se do neověřeného stavu.  |
+| `bad_verification_code`| `device_code` Odeslání`/token` do koncového bodu nebylo rozpoznáno. | Ověřte, že klient posílá v žádosti správné `device_code` požadavky. |
+| `expired_token` | Nejméně `expires_in` sekund uplynulo a ověřování již není s tímto důvodem `device_code`možné. | Zastaví cyklické dotazování a vrátí se do neověřeného stavu. |
 
-### <a name="successful-authentication-response"></a>Ověření úspěšné odpovědi
+### <a name="successful-authentication-response"></a>Úspěšná ověřovací odpověď
 
-Úspěšné odpovědi tokenu bude vypadat takto:
+Úspěšná odpověď tokenu bude vypadat takto:
 
 ```json
 {
@@ -133,11 +133,11 @@ Tok kódu zařízení je protokol dotazování, takže váš klient musí by se 
 
 | Parametr | Formát | Popis |
 | --------- | ------ | ----------- |
-| `token_type` | String| Vždy "nosiče. |
-| `scope` | Oddělené mezerou řetězce | Pokud byl vrácen přístupového tokenu, vypíšou se přístupový token je platný pro obory. |
-| `expires_in`| int | Počet sekund před zahrnuté přístupový token je platný pro. |
-| `access_token`| Neprůhledný řetězec | Vydaný pro [obory](v2-permissions-and-consent.md) , které bylo vyžádáno.  |
-| `id_token`   | JWT | Vydaný if původní `scope` parametr zahrnuté `openid` oboru.  |
-| `refresh_token` | Neprůhledný řetězec | Pokud vydaných původní `scope` parametr `offline_access`.  |
+| `token_type` | Řetězec| Vždy "nosič". |
+| `scope` | Řetězce oddělené mezerami | V případě vrácení přístupového tokenu zobrazí seznam oborů, pro které je přístupový token platný. |
+| `expires_in`| int | Počet sekund, než je zahrnutý přístupový token platný pro. |
+| `access_token`| Neprůhledný řetězec | Vydány pro [](v2-permissions-and-consent.md) požadované obory.  |
+| `id_token`   | JWT | Vydáno, pokud původní `scope` parametr `openid` zahrnoval obor.  |
+| `refresh_token` | Neprůhledný řetězec | Vydáno, pokud je `scope` zahrnut `offline_access`původní parametr.  |
 
-Token obnovení můžete použít k získání nových přístupových tokenů a obnovovacích tokenů pomocí stejný tok dokumentovány v článku [dokumentace ke službě flow kód OAuth](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  
+Obnovovací token můžete použít k získání nových přístupových tokenů a k aktualizaci tokenů pomocí stejného toku, který je popsán v [dokumentaci toku kódu OAuth](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  

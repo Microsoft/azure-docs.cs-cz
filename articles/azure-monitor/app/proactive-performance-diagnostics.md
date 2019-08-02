@@ -1,6 +1,6 @@
 ---
-title: Inteligentní zjišťování – anomálie výkonu | Dokumentace Microsoftu
-description: Application Insights provádí inteligentní analýzy telemetrie vaší aplikace a upozorní vás na potenciální problémy. Tato funkce vyžaduje žádné nastavení.
+title: Inteligentní zjišťování – anomálie výkonu | Microsoft Docs
+description: Application Insights provádí inteligentní analýzu telemetrie aplikací a upozorňuje na potenciální problémy. Tato funkce nepotřebuje žádné nastavení.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -13,181 +13,181 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: b1a3b04427839736359c88f8ad6a8db5eedf8488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ccff22a74b0cb1edcbae40fca087fe3197cb6ca
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61294028"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867714"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) automaticky analyzuje výkon svojí webové aplikace a může vás upozorní na potenciální problémy. Vám může být čtení to vzhledem k tomu, že jste nedostali některou z našich upozornění inteligentního zjišťování.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) automaticky analyzuje výkon webové aplikace a může vás upozornit na potenciální problémy. Můžete si ho přečíst, protože jste dostali jednu z našich oznámení inteligentního zjišťování.
 
-Tato funkce vyžaduje žádné speciální instalační program, než je konfigurace aplikace pro službu Application Insights (na [ASP.NET](../../azure-monitor/app/asp-net.md), [Java](../../azure-monitor/app/java-get-started.md), nebo [Node.js](../../azure-monitor/app/nodejs.md)a v [webové stránky kód](../../azure-monitor/app/javascript.md)). Je aktivní, když vaše aplikace generuje dost telemetrických dat.
+Tato funkce nevyžaduje žádné speciální nastavení, kromě konfigurace vaší aplikace pro Application Insights (na [ASP.NET](../../azure-monitor/app/asp-net.md), [Java](../../azure-monitor/app/java-get-started.md)nebo [Node. js](../../azure-monitor/app/nodejs.md)a v [kódu webové stránky](../../azure-monitor/app/javascript.md)). Je aktivní, když vaše aplikace vygeneruje dostatek telemetrie.
 
-## <a name="when-would-i-get-a-smart-detection-notification"></a>Při obdržení oznámení inteligentního zjišťování
+## <a name="when-would-i-get-a-smart-detection-notification"></a>Kdy získám oznámení inteligentního zjišťování?
 
-Application Insights zjistil, že výkon vaší aplikace má snížený výkon v jednom z těchto způsobů:
+Application Insights zjistil, že výkon vaší aplikace se snížil jedním z následujících způsobů:
 
-* **Zhoršení doby odezvy** -aplikace byla spuštěna reagování na žádosti pomaleji než dřív. Tato změna byla pravděpodobně rychlé, například protože Regrese ve vašem nasazení nejnovější. Nebo by mohlo být postupné, možná způsobené nevracení paměti. 
-* **Snížení doby trvání závislosti** – vaše aplikace provádí volání rozhraní REST API, databáze nebo další závislosti. Závislost odpovídá pomaleji než dřív.
-* **Nízký výkon vzor** – aplikace se zobrazí mít problému s výkonem, který ovlivňuje pouze některé požadavky. Například se stránky načítají pomaleji na jeden typ prohlížeče než jiné; nebo požadavky jsou obsluhovány pomaleji z jednoho konkrétního serveru. V současné době naše algoritmy podívejte se na dobu načítání stránek, dobu odezvy požadavku a doby odezvy závislostí.  
+* **Snížení doby odezvy** – vaše aplikace začala reagovat na požadavky pomaleji než při použití. Tato změna může být rychlá, například v případě, že v nejnovějším nasazení došlo k regresi. Nebo to může být postupný, možná způsobené nevrácenou pamětí. 
+* **Snížení doby trvání závislosti** – vaše aplikace volá REST API, databázi nebo jiné závislosti. Závislost reaguje pomaleji než při použití.
+* **Vzorek pomalého výkonu** – vaše aplikace se zdá mít problémy s výkonem, které ovlivňují jenom některé požadavky. Například stránky se načítají pomaleji na jeden typ prohlížeče než jiné. nebo jsou požadavky obsluhovány pomaleji z jednoho konkrétního serveru. V současné době naše algoritmy hledají dobu načítání stránek, dobu odezvy na žádosti a doby odezvy závislostí.  
 
-Inteligentní zjišťování vyžaduje minimálně 8 dní telemetrických dat na svazku funkční stanovení základní úrovně běžným výkonem. Ano za běhu aplikace pro toto období jakýkoli významný problém způsobí oznámení.
+Inteligentní zjišťování vyžaduje alespoň 8 dní telemetrie na funkčním svazku, aby bylo možné vytvořit standardní hodnotu normálního výkonu. Takže po spuštění vaší aplikace v této době budou všechny významné problémy mít za následek oznámení.
 
 
-## <a name="does-my-app-definitely-have-a-problem"></a>Moje aplikace jednoznačně má problém?
+## <a name="does-my-app-definitely-have-a-problem"></a>Má moje aplikace konečně nějaký problém?
 
-Ne, oznámení neznamená, že vaše aplikace jednoznačně došlo k problému. Je jednoduše návrh o něco, že kdy je vhodné podívat se na informace pečlivě.
+Ne, oznámení neznamená, že vaše aplikace má jednoznačně problém. Je to je jednoduše návrh ohledně něčeho, co byste měli blíže prozkoumat.
 
 ## <a name="how-do-i-fix-it"></a>Jak ho mám opravit?
 
-Oznámení zahrnují diagnostické informace. Tady je příklad:
+Oznámení obsahují diagnostické informace. Tady je příklad:
 
 
-![Tady je příklad detekce zhoršení doby odezvy serveru](media/proactive-performance-diagnostics/server_response_time_degradation.png)
+![Tady je příklad detekce degradace doby odezvy serveru.](media/proactive-performance-diagnostics/server_response_time_degradation.png)
 
-1. **Třídění**. Oznámení se dozvíte, jak mnoho operací se vliv na jeden nebo kolik uživatelů. Můžete přiřadit prioritu problému.
-2. **Obor**. Tento problém ovlivňuje veškerý provoz, nebo jen některé stránky? Je omezen na konkrétní prohlížeče nebo umístění? Tyto informace můžete získat z oznámení.
-3. **Diagnostika**. Diagnostické informace v oznámení často, bude navrhovat povaze problému. Například pokud doba odezvy zpomalí, když je vysoká frekvence požadavků, který naznačuje, že server nebo závislosti jsou přetížené. 
+1. **Třídění**. V oznámení se dozvíte, kolik uživatelů nebo kolik operací je ovlivněno. To vám může přispět k přiřazení priority k problému.
+2. **Rozsah**. Má tento problém vliv na veškerý provoz, nebo jenom na nějaké stránky? Je omezená na konkrétní prohlížeče nebo umístění? Tyto informace lze získat z oznámení.
+3. **Diagnostikujte**. Diagnostické informace v oznámení budou často navrhovat povahu problému. Například pokud se doba odezvy zpomaluje, když je rychlost požadavků vysoká, navrhne se, aby váš server nebo závislosti byly přetížené. 
 
-    V opačném případě otevřete okno výkon ve službě Application Insights. Tam najdete [Profiler](profiler.md) data. Pokud jsou výjimky vyvolány, můžete také zkusit [snapshot debuggeru](../../azure-monitor/app/snapshot-debugger.md).
+    V opačném případě otevřete okno výkon v Application Insights. Tady najdete data profileru [](profiler.md) . Pokud jsou výjimky vyvolány, můžete také vyzkoušet [ladicí program snímku](../../azure-monitor/app/snapshot-debugger.md).
 
 
 
 ## <a name="configure-email-notifications"></a>Konfigurace e-mailových oznámení
 
-Inteligentní detekce oznámení jsou ve výchozím nastavení povolené a odeslat na ty, kteří mají [vlastníci, přispěvatelé a čtenáři přístup k prostředku Application Insights](../../azure-monitor/app/resources-roles-access-control.md). Chcete-li toto nastavení změnit, **konfigurovat** v e-mailové oznámení, nebo otevřete nastavení inteligentního zjišťování ve službě Application Insights. 
+Oznámení inteligentní detekce jsou ve výchozím nastavení povolená a odesílají se uživatelům, kteří mají [Čtenář monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) a [monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) , přístup k předplatnému, ve kterém se Application Insights prostředek nachází. Pokud ho chcete změnit, buď v e-mailovém oznámení klikněte na **Konfigurovat** , nebo otevřete nastavení inteligentního zjišťování v Application Insights. 
   
   ![Nastavení inteligentního zjišťování](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
-  * Můžete použít **zrušit odběr** odkaz v e-mailu inteligentního zjišťování k ukončení přijímání oznámení e-mailu.
+  * Pokud chcete zastavit příjem e-mailových oznámení, můžete použít odkaz zrušit **odběr** v e-mailu inteligentní detekce.
 
-E-mailů o inteligentní detekce anomálie výkonu jsou omezené na jeden e-mailu za den pro každý prostředek Application Insights. E-mail bude odeslán, pouze v případě, že existuje alespoň jeden nový problém, který byl zjištěn v daný den. Nezískáte opakování žádné zprávy. 
+U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Application Insights prostředku omezí na jeden e-mail za den. E-mail se pošle jenom v případě, že se v daném dni našel aspoň jeden nový problém. Žádná zpráva se neopakuje. 
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-* *Ano zaměstnanci Microsoftu podívejte se na moje data?*
-  * Ne. Tato služba je plně automatická. Pouze dostanete oznámení. Vaše data jsou [privátní](../../azure-monitor/app/data-retention-privacy.md).
-* *Analýza všech dat shromážděných službou Application Insights?*
-  * Není v současné době. V současné době analyzujeme požadavku, že doba odezvy, závislosti, doby odezvy a o načítání stránek čas. Analýza další metriky je v backlogu a Těšíme se.
+* *Proto si zaměstnanci Microsoftu prohledají moje údaje?*
+  * Ne. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](../../azure-monitor/app/data-retention-privacy.md).
+* *Analyzujete všechna data shromažďovaná v Application Insights?*
+  * V současné době není k dispozici. V současné době analyzujeme dobu odezvy požadavku, dobu odezvy závislosti a dobu načítání stránky. Analýza dalších metrik je na našich nevyřízených položkách, které jsou vyhledány.
 
-* Jaké typy aplikací to funguje?
-  * Zjišťují se tyto snížení výkonnosti v jakékoli aplikaci, která generuje telemetrická data odpovídající. Pokud jste nenainstalovali Application Insights ve webové aplikaci, pak požadavky a závislosti jsou automaticky sleduje. Ale v back-endovým službám nebo jiných aplikací, je-li vložit volání [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) nebo [TrackDependency](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency), inteligentní zjišťování bude fungovat stejným způsobem.
+* Jaké typy aplikací Tato práce funguje?
+  * Tyto degradace se zjišťují v jakékoli aplikaci, která generuje příslušnou telemetrii. Pokud jste ve své webové aplikaci nainstalovali Application Insights, jsou požadavky a závislosti automaticky sledovány. I když jste do služby back-endu nebo jiných aplikací vložili volání do [TrackRequest ()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) nebo [TrackDependency](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency), inteligentní zjišťování bude fungovat stejným způsobem.
 
-* *Můžete vytvořit vlastní anomálií pravidla zjišťování nebo upravit stávající pravidla?*
+* *Můžu vytvořit vlastní pravidla detekce anomálií nebo přizpůsobit stávající pravidla?*
 
-  * Dosud ale můžete:
-    * [Nastavení výstrah](../../azure-monitor/app/alerts.md) , který říct, pokud metrika překročí mezní hodnotu.
-    * [Export telemetrie](../../azure-monitor/app/export-telemetry.md) k [databáze](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) nebo [do PowerBI](../../azure-monitor/app/export-power-bi.md ), kde je můžete analyzovat sami.
-* *Jak často se provádí analýzu?*
+  * Ještě ne, ale můžete:
+    * [Nastavte výstrahy](../../azure-monitor/app/alerts.md) , které vás upozorní, když metrika přechází do prahové hodnoty.
+    * [Exportujte telemetrii](../../azure-monitor/app/export-telemetry.md) do [databáze](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) nebo [do PowerBI](../../azure-monitor/app/export-power-bi.md ), kde ji můžete analyzovat sami.
+* *Jak často se provádí analýza?*
 
-  * Zajišťuje každodenní provoz analýzy každý den na telemetrická data z předchozího dne (celý den v časovém pásmu UTC).
-* *Postupy zločinců se nahradit tuto [upozornění na metriku](../../azure-monitor/app/alerts.md)?*
-  * Ne.  Jsme není potvrzení se zjišťováním každý chování, které můžete zvážit neobvyklé.
+  * Analýzy provedeme denně na telemetrie z předchozího dne (celý den v časovém pásmu UTC).
+* *To znamená, že tyto [výstrahy metriky](../../azure-monitor/app/alerts.md)nahrazují?*
+  * Ne.  Nepotvrzuji jsme zjišťování všech chování, která by se vám mohla považovat za neobvyklou.
 
 
-* *Pokud se mi nic nedělají v reakci na oznámení, mi poskytne připomenutí?*
-  * Ne, dostanete zprávu o jednotlivých problémů pouze jednou. Pokud se problém nevyřeší, budou aktualizovány v inteligentní zjišťování kanálu okno.
-* *Mohu ztratit e-mailu. Kde najdu oznámení na portálu?*
-  * V přehledu nástroje Application Insights vaší aplikace, klikněte na tlačítko **inteligentního zjišťování** dlaždici. Existuje budete moct najít všechna oznámení až 90 dnů zpět.
+* *Pokud v reakci na oznámení něco neudělám, zobrazí se vám připomenutí?*
+  * Ne, zobrazí se zpráva o každém problému jenom jednou. Pokud potíže potrvají, bude aktualizováno v okně kanálu inteligentního zjišťování.
+* *Ztratil jsem e-mail. Kde najdu oznámení na portálu?*
+  * V přehledu Application Insights vaší aplikace klikněte na dlaždici **inteligentního zjišťování** . Budete moct najít všechna oznámení až do 90 dnů zpátky.
 
-## <a name="how-can-i-improve-performance"></a>Jak můžu vylepšit výkon?
-Pomalé a neúspěšných odpovědí jsou jedním z největších frustrations pro webovou stránku uživatele, jak už víte, své vlastní prostředí. Je tedy důležité pro řešení problémů.
+## <a name="how-can-i-improve-performance"></a>Jak můžu zvýšit výkon?
+Pomalé a neúspěšné odpovědi jsou jedním z největších frustrations pro uživatele webů, jak znáte vlastní prostředí. Proto je důležité problémy vyřešit.
 
 ### <a name="triage"></a>Třídění
-Nejprve je důležité? Pokud je vždy pomalé načítání stránky, ale pouze 1 % uživatelů daného webu třeba podívat na to, možná bude nutné důležité věci v něm můžete vnímat. Na druhé straně Pokud pouze 1 % uživatelů, otevřete ho ale pokaždé, když se vyvolá výjimky, která může být vhodné prošetřit.
+Jako první se to dělá? Pokud je stránka vždy pomalu načtena, ale pouze 1% uživatelů vaší lokality se někdy musí podívat na IT, možná máte důležitější věci, které je třeba zvážit. Na druhé straně, pokud je otevře pouze 1% uživatelů, ale vyvolá výjimky pokaždé, co by mohlo být prozkoumání.
 
-Jako obecné vodítko použít příkaz dopad (ovlivnění uživatelé nebo % provoz), ale mějte na paměti, že není kompletní představu. Další důkazy pro potvrzení.
+Jako obecné vodítko použijte příkaz dopadu (ovlivněné uživatele nebo% provozu), ale mějte na paměti, že se nejedná o celý příběh. Shromážděte další legitimace k potvrzení.
 
-Vezměte v úvahu parametry problém. Pokud je závislé na zeměpisné oblasti, nastavit [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) včetně tuto oblast: existuje může být jednoduše problémy se sítí v této oblasti.
+Vezměte v úvahu parametry problému. Pokud se jedná o geograficky závislé, nastavte [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) , včetně této oblasti: v této oblasti můžou být jenom problémy se sítí.
 
-### <a name="diagnose-slow-page-loads"></a>Diagnostika pomalé načítání stránek
-V čem je problém? Server je pomalý, je velmi dlouhá stránky nebo udělat spoustu práce zobrazíte ho nemá v prohlížeči?
+### <a name="diagnose-slow-page-loads"></a>Diagnostika pomalých načítání stránek
+Kde se jedná o problém? Reaguje Server pomaleji, je stránka velmi dlouhá nebo je v něm nutné, aby si ji mohl zobrazit i prohlížeč hodně práce?
 
-Otevřete okno prohlížeče metriky. Segmentované zobrazení prohlížeče stránka zatížení čas ukazuje, kam čas. 
+Otevřete okno metrika prohlížeče. Segmentované zobrazení času načtení stránky v prohlížeči ukazuje, kde se bude zobrazovat čas. 
 
-* Pokud **odeslat doba požadavku** je vysoké, buď server reaguje pomalu nebo žádosti je post s velkým množstvím dat. Podívejte se na [metriky výkonu](../../azure-monitor/app/web-monitor-performance.md#metrics) k prozkoumání doby odezvy.
-* Nastavit [sledování závislostí](../../azure-monitor/app/asp-net-dependencies.md) Přesvědčte se, zda pomalost je z důvodu externích služeb nebo databáze.
-* Pokud **přijetí odpovědi** převládá, stránce a jeho závislé součásti – JavaScript, CSS, obrázky a tak dále (ale ne asynchronně načtená data) jsou dlouhé. Nastavení [test dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md)a nezapomeňte nastavit možnost načíst závislé součásti. Pokud jste získali nějaké výsledky, Otevřít podrobnosti výsledku a rozbalte ho a podívejte se dobu načítání různých souborů.
-* Vysoká **doba zpracování klienta** navrhuje skripty běží pomalu. Pokud z důvodu není zřejmé, zvažte přidání některých časování kód a odeslat časy v trackMetric volání.
+* Pokud je **čas požadavku na odeslání** vysoký, znamená to, že server reaguje pomalu nebo se jedná o příspěvek s velkým množstvím dat. Podívejte se na [metriky výkonu](../../azure-monitor/app/web-monitor-performance.md#metrics) a prozkoumejte dobu odezvy.
+* Nastavením [sledování závislostí](../../azure-monitor/app/asp-net-dependencies.md) zjistíte, jestli je zpomalení způsobeno externími službami nebo databází.
+* Pokud je **příjem odpovědi** převládající, vaše stránka a její závislé součásti – JavaScript, CSS, obrázky atd. (ale ne asynchronně načtená data) jsou dlouhé. Nastavte [Test dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md)a nezapomeňte nastavit možnost načítání závislých částí. Když dostanete nějaké výsledky, otevřete Podrobnosti výsledku a rozbalte ho, abyste viděli dobu načítání různých souborů.
+* Vysoká **Doba zpracování klienta** navrhuje spouštění skriptů pomalu. Pokud důvod není zjevný, zvažte přidání nějakého kódu časování a odeslání času v voláních trackMetric.
 
-### <a name="improve-slow-pages"></a>Zlepšení pomalé stránky
-Existuje webového plné poradit se správným určením zlepšení odezvy serveru a časy načtení stránek, proto jsme se nebude pokoušet zopakovat to všechno tady. Tady je několik tipů, které pravděpodobně už víte o, stačí, abyste mohli uvažujete:
+### <a name="improve-slow-pages"></a>Zlepšení pomalých stránek
+Na webu je dostatek Rady na vylepšení odezvy serveru a doby načítání stránek, proto se nebudeme opakovat tady. Tady je několik tipů, o kterých už jste se seznámili, stačí vám to, abyste se seznámili:
 
-* Pomalé načítání kvůli velké soubory: Skripty a další části načtěte asynchronně. Pomocí sdružování skriptů. Hlavní stránka přerušit pomůcky, který se načítá svá data samostatně. Neposílat prostý starý kód HTML pro dlouhé tabulky: použít skript, který žádost o data jako JSON nebo jiných kompaktním formátu a vyplnění tabulky na místě. Nejsou k dispozici skvělý platformy, které usnadní to vše. (Také má za následek velký objem skripty, samozřejmě.)
-* Pomalé server závislosti: Vezměte v úvahu zeměpisné umístění součásti. Například pokud používáte Azure, ujistěte se, že webový server a databáze jsou ve stejné oblasti. Dotazy načítají více informací, než budou potřebovat? By ukládání do mezipaměti nebo dávkování nápovědu?
-* Kapacity problémy: Podívejte se na server metrik doby odezvy a počty žádostí. Pokud doby odezvy nepřiměřeně špičky poptávek po prostředcích počty žádostí, je pravděpodobné, že jsou vaše servery roztažená.
+* Pomalé načítání z důvodu velkých souborů: Načtěte skripty a další součásti asynchronně. Použijte sdružování skriptů. Oddělte hlavní stránku na widgety, které data načítají samostatně. Neodesílat obyčejné staré HTML pro dlouhé tabulky: pomocí skriptu si vyžádejte data jako JSON nebo jiné kompaktní formátování a pak tabulku vyplňte. Existují Skvělé architektury, které vám pomůžou s tímto. (Zahrnuje také velké skripty samozřejmě.)
+* Pomalé závislosti serveru: Zvažte zeměpisná umístění vašich komponent. Pokud například používáte Azure, ujistěte se, že webový server a databáze jsou ve stejné oblasti. Načítají dotazy Další informace, než potřebují? Mohlo by to být v ukládání do mezipaměti nebo v dávce?
+* Problémy s kapacitou: Podívejte se na metriky serveru doby odezvy a počty požadavků. Pokud se špičky odezvy ve špičce v počtu požadavků neúměrně sníží, je pravděpodobný, že se vaše servery roztáhnou.
 
 
-## <a name="server-response-time-degradation"></a>Zhoršení doby odezvy serveru
+## <a name="server-response-time-degradation"></a>Snížení doby odezvy serveru
 
-Oznámení snížení času odezvy dozvíte:
+Oznámení o snížení úrovně doby odezvy vám oznamuje:
 
-* Doba odezvy ve srovnání s normální odezvu pro tuto operaci.
-* Kolik uživatelů se TOP týká.
-* Průměrná doba odezvy a 90. percentil doba odezvy pro tuto operaci zjišťování a 7 dní před dnem. 
-* Počet žádostí této operace den detekce a 7 dní před.
-* Korelace mezi pokles tuto operaci a snížení výkonnosti v související závislosti. 
-* Obsahuje odkazy na při diagnostice problému.
-  * Profiler trasování můžete zobrazit, kde byl stráven čas operace (odkaz je k dispozici, pokud Profiler trasování příklady, které byly shromážděny pro tuto operaci v období zjišťování). 
-  * Sestavy o výkonu v Průzkumníku metrik, kde je můžete vyfiltrování a rozčlenění čas/filtry rozsahu pro tuto operaci.
-  * Hledání pro toto volání, chcete-li zobrazit vlastnosti konkrétního volání.
-  * Chyba sestavy – Pokud count > 1 to znamenat, že došlo k selhání v této operaci, která může přispět ke snížení výkonu.
+* Doba odezvy v porovnání s normální dobou odezvy pro tuto operaci.
+* Kolik uživatelů je ovlivněno.
+* Průměrná doba odezvy a doba odezvy 90 procent pro tuto operaci v den zjišťování a 7 dní před. 
+* Počet žádostí o tuto operaci v den zjišťování a 7 dní před.
+* Korelace mezi snížením v této operaci a snížením úrovně v souvisejících závislostech. 
+* Odkazy, které vám pomůžou diagnostikovat problém.
+  * Trasování profileru, která vám pomůžou zobrazit, kde se vybrala doba provozu (odkaz je dostupný, pokud se pro tuto operaci během období zjišťování shromáždily příklady trasování profileru). 
+  * Sestavy výkonu v Průzkumníkovi metrik, kde můžete pro tuto operaci rozdělit časový rozsah nebo filtry na řezy a indexy.
+  * Vyhledáním tohoto volání zobrazíte konkrétní vlastnosti volání.
+  * Hlášení o selhání – Pokud se počítá > 1, znamená to, že v této operaci došlo k chybám, které mohly přispět ke snížení výkonu.
 
 ## <a name="dependency-duration-degradation"></a>Snížení doby trvání závislosti
 
-Moderní aplikace čím dál tím víc přijmout přístup návrh mikroslužby, což v mnoha případech vede k velkým spolehlivosti u externích služeb. Například pokud vaše aplikace závisí na některé datové platformy nebo i v případě vytvoříte vlastní bot service, které bude pravděpodobně přenášet na některé poskytovatele služeb cognitive services umožníte robotům, aby interagovaly víc jako lidé a některé služby úložiště dat pro robota na vyžádání z odpovědi m.  
+Moderní aplikace ještě více a více přijímá přístup k návrhu mikroslužeb, který v mnoha případech má za následek velkou spolehlivost externích služeb. Například pokud vaše aplikace spoléhá na určitou datovou platformu, nebo i když sestavíte vlastní službu bot, budete pravděpodobně přenášet na některého poskytovatele služeb rozpoznávání, aby vaše roboty mohli pracovat efektivněji, a některé služby úložiště dat pro roboty, které získají odpovědi z. 4m.  
 
-Příklad oznámení snížení závislost:
+Příklad oznámení o degradování závislostí:
 
-![Tady je příklad detekce snížení doby trvání závislosti](media/proactive-performance-diagnostics/dependency_duration_degradation.png)
+![Tady je příklad detekce snížení stupně trvání závislosti.](media/proactive-performance-diagnostics/dependency_duration_degradation.png)
 
-Všimněte si, že musíte:
+Všimněte si, že vám oznamuje:
 
-* Doba trvání v porovnání s normální odezvu pro tuto operaci
-* Kolik uživatelů se TOP týká
-* Průměrná doba trvání a 90. percentil doby trvání pro tuto závislost na den detekce a 7 dní před
-* Počet závislostí volání na den detekce a 7 dní před
-* Odkazy na při diagnostice problému
-  * Sestavy o výkonu v Průzkumníku metrik pro tuto závislost
-  * Vyhledejte a zobrazte vlastnosti volání volá tuto závislost
-  * Chyba sestavy – Pokud count > 1 to znamená, které bylo neúspěšné závislosti volání během období zjišťování, která může přispět ke zhoršení doby trvání. 
-  * Otevřete Analytics s dotazy, které vypočítá tato doba trvání závislosti a počet  
+* Doba trvání v porovnání s normální dobou odezvy pro tuto operaci
+* Kolik uživatelů je ovlivněno
+* Průměrná doba trvání a 90 procent trvání této závislosti v den zjišťování a 7 dní před
+* Počet volání závislosti v den detekce a 7 dní před
+* Odkazy, které vám pomůžou diagnostikovat problém
+  * Sestavy výkonu v Průzkumníkovi metrik pro tuto závislost
+  * Vyhledat tato volání závislosti pro zobrazení vlastností volání
+  * Hlášení o selhání – Pokud je počet > 1, znamená to, že během období zjišťování došlo k neúspěšným voláním závislostí, která mohla přispět ke snížení doby trvání. 
+  * Otevřete analytiky s dotazy, které počítají tuto dobu trvání a počet závislostí.  
 
-## <a name="smart-detection-of-slow-performing-patterns"></a>Inteligentní zjišťování pomalé provádění vzory 
+## <a name="smart-detection-of-slow-performing-patterns"></a>Inteligentní zjišťování pomalých způsobů provádění vzorců 
 
-Application Insights vyhledá problémy s výkonem, které mohou ovlivňují jenom část z vašich uživatelů, nebo mají vliv jenom uživatelé v některých případech. Například oznámení o načítání stránek je pomalejší na jeden typ prohlížeče než u jiných typů prohlížečů, nebo pokud požadavky se obsluhují pomaleji z určitého serveru. Problémy související s kombinací vlastnosti, může také vyhledat, jako je pomalé stránka načte v jedné zeměpisné oblasti pro klienty, kteří používají konkrétní operační systém.  
+Application Insights vyhledá problémy s výkonem, které by mohly ovlivnit jenom část vašich uživatelů, nebo mají vliv jenom na uživatele v některých případech. Například oznámení o zatížení stránek je pomalejší na jednom typu prohlížeče než na jiných typech prohlížečů, nebo pokud jsou požadavky obsluhovány pomaleji z konkrétního serveru. Také může zjišťovat problémy spojené s kombinacemi vlastností, například pomalé načítání stránek v jedné geografické oblasti pro klienty používající konkrétní operační systém.  
 
-Anomálie obdobné jsou velmi obtížné zjistit jen, že se podíváte data, ale jsou mnohem běžnější, než si možná myslíte. Často jsou pouze docházet, pokud si vaši zákazníci začnou stěžovat. Během této doby bude příliš pozdě: ovlivnění uživatelé jsou již přepnutí na konkurencí!
+Anomálie, jako jsou ty, jsou velmi obtížné detekovat pouhým zkontrolováním dat, ale jsou běžnější, než byste si museli představit. Často se jenom při stížnosti vašich zákazníků. V tuto chvíli je to moc pozdě: ovlivnění uživatelé už přecházejí na vaše konkurenty.
 
-V současné době naše algoritmy podívejte se na dobu načítání stránek, dobu odezvy požadavku na serveru a doby odezvy závislostí.  
+V současné době naše algoritmy hledají dobu načítání stránek, dobu odezvy na server a dobu odezvy na závislosti.  
 
-Nemáte žádné prahové hodnoty nebo nakonfigurovat pravidla. Machine learning a algoritmy dolování dat se používají pro detekci abnormálních vzorů.
+Nemusíte nastavovat žádné prahové hodnoty ani konfigurovat pravidla. Algoritmy strojového učení a dolování dat slouží k detekci neobvyklých vzorů.
 
-![Z e-mailové upozornění klikněte na odkaz k otevření diagnostickou zprávu v Azure](./media/proactive-performance-diagnostics/03.png)
+![Kliknutím na odkaz v e-mailové výstraze otevřete diagnostickou sestavu v Azure.](./media/proactive-performance-diagnostics/03.png)
 
-* **Když** zobrazuje čas zjištění problému.
+* **** Zobrazuje čas zjištěného problému.
 * **Co** popisuje:
 
   * Problém, který byl zjištěn;
-  * Zobrazí vlastnosti sadu událostí, která jsme našli chování problém.
-* Tabulka porovnává nedostatečně výkonným sady s průměrnou chování všechny další události.
+  * Charakteristiky sady událostí, které jsme našli, se zobrazilo chování problému.
+* Tabulka porovnává nesprávně prováděnou sadu s průměrnou vlastností všech ostatních událostí.
 
-Kliknutím na odkazy na relevantní sestavy, filtruje se podle času a vlastnosti pomalé provádění sady otevřete Průzkumník metrik a vyhledávání.
+Kliknutím na odkazy otevřete Průzkumníka metrik a vyhledejte příslušné sestavy filtrované podle času a vlastností pomalého nastavování.
 
-Upravte časový rozsah a filtry a prozkoumejte telemetrická data.
+Upravte časový rozsah a filtry pro prozkoumání telemetrie.
 
-## <a name="next-steps"></a>Další postup
-Tyto diagnostické nástroje umožňují kontrolovat telemetrie z vaší aplikace:
+## <a name="next-steps"></a>Další kroky
+Tyto diagnostické nástroje vám pomůžou zkontrolovat telemetrii z vaší aplikace:
 
 * [Profiler](profiler.md) 
-* [Ladicí program snímků](../../azure-monitor/app/snapshot-debugger.md)
+* [Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md)
 * [Analýzy](../../azure-monitor/log-query/get-started-portal.md)
 * [Inteligentní Diagnostika Analytics](../../azure-monitor/app/analytics.md)
 
-Inteligentní detekce je úplně automatický. Ale možná chcete nastavit některé další oznámení?
+Inteligentní detekce jsou zcela automatické. Možná byste ale chtěli nastavit ještě nějaké další výstrahy?
 
-* [Ručně konfigurované metriky výstrahy](../../azure-monitor/app/alerts.md)
-* [Testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Ručně nakonfigurované výstrahy metriky](../../azure-monitor/app/alerts.md)
+* [Webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md)

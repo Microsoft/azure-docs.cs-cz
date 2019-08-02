@@ -1,45 +1,45 @@
 ---
-title: 'Rychlý start: U entit s SDK vyhledávání entit Bingu pro vyhledáváníC#'
+title: 'Rychlý start: Hledat entity s Vyhledávání entit Bingu SDK proC#'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete u entit s SDK vyhledávání entit Bingu pro vyhledávání C#.
+description: V tomto rychlém startu můžete vyhledat entity pomocí sady Vyhledávání entit Bingu SDK C#pro.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 07/15/2019
 ms.author: aahi
-ms.openlocfilehash: 13ef0734345df17adb2303471b8cb4178f95a2f6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 20f76c0adfcbd756c71769979214ea975cb5d6d9
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813751"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360595"
 ---
-# <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Odeslat požadavek s SDK vyhledávání entit Bingu pro vyhledáváníC#
+# <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Odeslat žádost o vyhledávání pomocí sady Vyhledávání entit Bingu SDK proC#
 
-Můžete začít u entit s SDK vyhledávání entit Bingu pro vyhledávání v tomto rychlém startu C#. Při vyhledávání entit Bingu je kompatibilní s Většina programovacích jazyků rozhraní REST API, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch).
+V tomto rychlém startu můžete začít vyhledávat entity pomocí sady Vyhledávání entit Bingu SDK C#pro. I když Vyhledávání entit Bingu má REST API kompatibilní s většinou programovacích jazyků, poskytuje sada SDK snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch)
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Libovolná edice [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
+* Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 * Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
-* [Balíček NuGet sady SDK pro vyhledávání zpráv Bingu](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0). Instaluje se tento balíček nainstaluje taky následující:
+* [Balíček NuGet sady vyhledávání zpráv Bingu SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0). Instalace tohoto balíčku také nainstaluje následující:
     * Microsoft.Rest.ClientRuntime
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
 
-Chcete-li přidat do projektu sady Visual Studio SDK vyhledávání entit Bingu, použijte **spravovat balíčky NuGet** možnost **Průzkumníku řešení**a přidejte `Microsoft.Azure.CognitiveServices.Search.EntitySearch` balíčku.
+Chcete-li přidat sadu vyhledávání entit Bingu SDK do projektu aplikace Visual Studio, použijte možnost **Spravovat balíčky NuGet** z **Průzkumník řešení** `Microsoft.Azure.CognitiveServices.Search.EntitySearch` a přidejte balíček.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-an-application"></a>Vytváření a inicializace aplikace
+## <a name="create-and-initialize-an-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový C# konzole řešení v sadě Visual Studio. Pak přidejte následující kód do souboru hlavní kód.
+1. Vytvořte nové C# řešení konzoly v aplikaci Visual Studio. Pak přidejte následující do hlavního souboru kódu.
 
     ```csharp
     using System;
@@ -50,37 +50,37 @@ Chcete-li přidat do projektu sady Visual Studio SDK vyhledávání entit Bingu,
     using Newtonsoft.Json;
     ```
 
-## <a name="create-a-client-and-send-a-search-request"></a>Vytvoření klienta a odeslat žádost o vyhledávání
+## <a name="create-a-client-and-send-a-search-request"></a>Vytvoření klienta a odeslání žádosti o vyhledávání
 
-1. Vytvořte nového klienta vyhledávání. Přidat klíč předplatného. tím, že vytvoříte nový `ApiKeyServiceClientCredentials`.
+1. Vytvořit nového klienta vyhledávání. Přidejte svůj klíč předplatného tak, `ApiKeyServiceClientCredentials`že vytvoříte nový.
 
     ```csharp
     var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
-1. Použití klienta `Entities.Search()` funkce vyhledávání pro váš dotaz:
+1. K vyhledání dotazu použijte `Entities.Search()` funkci klienta:
     
     ```csharp
     var entityData = client.Entities.Search(query: "Satya Nadella");
     ```
 
-## <a name="get-and-print-an-entity-description"></a>Získání a vytisknout popis entity
+## <a name="get-and-print-an-entity-description"></a>Získání a tisk popisu entity
 
-1. Pokud rozhraní API vrátí výsledky hledání, získání hlavního entity z `entityData`.
+1. Pokud rozhraní API vrátilo výsledky hledání, Získejte hlavní entitu `entityData`z.
 
     ```csharp
     var mainEntity = entityData.Entities.Value.Where(thing => thing.EntityPresentationInfo.EntityScenario == EntityScenario.DominantEntity).FirstOrDefault();
     ```
 
-2. Vytisknout popis hlavních entity 
+2. Tisk popisu hlavní entity 
 
     ```csharp
     Console.WriteLine(mainEntity.Description);
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové webové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Co je API pro vyhledávání entit Bingu?](../overview.md )
+* [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )

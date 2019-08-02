@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
-ms.openlocfilehash: 8e3ae84242a1a9b76fbb18a8d8164c97a62a97d9
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: a6e5cd69a0655bf8235bf5755ab596ca2bde0387
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68003911"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716157"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
@@ -90,6 +90,12 @@ Chování Upsert je *vloženo nebo nahrazeno*.
 **Předchozí úrovně:** Hodnoty byly zkráceny na základě cílového typu.
 
 **úroveň 1,2:** Hodnoty, které se nevejdou do cílového typu, se zpracovávají podle zásad výstupních chyb.
+
+### <a name="record-and-array-serialization-when-writing-to-sql-output"></a>Záznam a serializace pole při zápisu do výstupu SQL
+
+**Předchozí úrovně:** Záznamy byly zapsány jako "Record" a pole byly zapsána jako "Array".
+
+**úroveň 1,2:** Záznamy a pole jsou serializovány ve formátu JSON.
 
 ### <a name="strict-validation-of-prefix-of-functions"></a>Striktní ověření předpony funkcí
 

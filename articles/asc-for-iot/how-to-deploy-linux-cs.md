@@ -1,6 +1,6 @@
 ---
-title: Pokyny k instalaci a nasazení Linuxu C# agenta služby Azure Security Center pro náhled IoT | Dokumentace Microsoftu
-description: Zjistěte, jak Azure Security Center pro IoT agenta nainstalovat na 32bitová verze a 64bitová verze systému Linux.
+title: Průvodce instalací a nasazením agenta C# pro Linux Azure Security Center pro IoT | Microsoft Docs
+description: Naučte se, jak nainstalovat Azure Security Center pro agenta IoT na 32 i 64.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 808ff912a997a4c09a22048ada7546daab895701
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0d77a1be2a3469282dabb646b02c43e350313ce5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618249"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596298"
 ---
-# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Nasazení Azure Security Center pro IoT C#– na základě zabezpečení agenta pro Linux
+# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Nasazení Azure Security Center pro agenta C# zabezpečení založeného na IoT pro Linux
 
-> [!IMPORTANT]
-> Azure Security Center pro IoT je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tato příručka vysvětluje, jak nainstalovat a nasadit Azure Security Center (ASC) pro IoT C#-agent zabezpečení založeného na Linuxu.
+Tato příručka vysvětluje, jak nainstalovat a nasadit Azure Security Center pro agenta zabezpečení C#založeného na službě IoT na platformě Linux.
 
 V této příručce se naučíte: 
 > [!div class="checklist"]
@@ -39,62 +36,62 @@ V této příručce se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Další platformy a typů agenta, najdete v části [vyberte správné zabezpečení agenta](how-to-deploy-agent.md).
+Další typy platforem a agentů najdete v tématu [Volba správného agenta zabezpečení](how-to-deploy-agent.md).
 
-1. Nasaďte agenta nástroje zabezpečení, se vyžadují oprávnění místního správce na počítači, který chcete nainstalovat. 
+1. Chcete-li nasadit agenta zabezpečení, jsou na počítači, na kterém chcete nainstalovat, požadovány oprávnění místního správce. 
 
-1. [Vytvoření modulu zabezpečení](quickstart-create-security-twin.md) zařízení.
+1. [Vytvořte modul zabezpečení](quickstart-create-security-twin.md) pro zařízení.
 
 ## <a name="installation"></a>Instalace 
 
-Pokud chcete nasadit agenta zabezpečení, postupujte takto:
+Chcete-li nasadit agenta zabezpečení, použijte následující postup:
 
-1. Stáhnout nejnovější verzi na svůj počítač z [Githubu](https://aka.ms/iot-security-github-cs).
+1. Stáhněte si nejnovější verzi do počítače z GitHubu [](https://aka.ms/iot-security-github-cs).
 
-1. Extrahujte obsah balíčku a přejděte _/Install_ složky.
+1. Extrahujte obsah balíčku a přejděte do složky _/install_ .
 
-1. Přidat spuštěné oprávnění **InstallSecurityAgent skript** spuštěním `chmod +x InstallSecurityAgent.sh` 
+1. Do **skriptu InstallSecurityAgent** přidejte spuštěná oprávnění spuštěním`chmod +x InstallSecurityAgent.sh` 
 
-1. Potom spusťte: 
+1. Dále spusťte: 
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
    ```
    
-   Zobrazit [ke konfiguraci ověřování](concept-security-agent-authentication-methods.md) Další informace o ověření parametrů.
+   Další informace o parametrech ověřování najdete v tématu [Postup konfigurace ověřování](concept-security-agent-authentication-methods.md).
 
-Skript provede následující akce:
+Tento skript provede následující akce:
 
 - Nainstaluje požadavky.
 
-- Přidá uživatele služby (pomocí interaktivního přihlášení, zakázáno).
+- Přidá uživatele služby (s vypnutým interaktivním přihlášením).
 
-- Nainstaluje agenta jako **démon** – předpokladem zařízení používá **systemd** pro správu služeb.
+- Nainstaluje agenta jako démona – předpokládá, že zařízení používá **systém** pro klasický model nasazení.
 
-- Nakonfiguruje **sudoers** smí agent k provádění určitých úloh jako uživatel root.
+- Konfiguruje **sudoers** , aby mohl agentovi provádět určité úlohy jako kořen.
 
-- Nakonfiguruje agenta pomocí zadaného ověřovacího parametry.
+- Nakonfiguruje agenta pomocí zadaných parametrů ověřování.
 
 
-Potřebujete další pomoc, spuštěním skriptu s parametrem – nápovědy: `./InstallSecurityAgent.sh --help`
+Další nápovědu získáte spuštěním skriptu s parametrem – Help:`./InstallSecurityAgent.sh --help`
 
 ### <a name="uninstall-the-agent"></a>Odinstalace agenta
 
-Pokud chcete agenta odinstalovat, spusťte skript s parametrem – u: `./InstallSecurityAgent.sh -u`. 
+Chcete-li odinstalovat agenta, spusťte skript s parametrem-u: `./InstallSecurityAgent.sh -u`. 
 
 > [!NOTE]
-> Odinstalace neodebere chybějící požadované součásti, které byly nainstalované při instalaci.
+> Odinstalace neodebere žádné chybějící součásti, které byly nainstalovány během instalace.
 
 ## <a name="troubleshooting"></a>Řešení potíží  
 
-1. Spuštěním kontroly stavu nasazení:
+1. Stav nasazení ověřte spuštěním:
 
     `systemctl status ASCIoTAgent.service`
 
-2. Povolení protokolování.  
-   Pokud agenta nepodaří spustit, zapněte protokolování zobrazíte další informace.
+2. Povolit protokolování.  
+   Pokud se agent nespustí, zapněte protokolování a získejte další informace.
 
-   Zapnutí protokolování podle:
+   Zapnout protokolování podle:
 
    1. Otevřete konfigurační soubor pro úpravy v libovolném editoru Linux:
 
@@ -108,25 +105,25 @@ Pokud chcete agenta odinstalovat, spusťte skript s parametrem – u: `./Install
       <add key="diagnosticVerbosityLevel" value="Some" /> 
       <add key="logFilePath" value="IotAgentLog.log"/>
       ```
-       **LogFilePath** hodnota je konfigurovatelná. 
+       Hodnota **LogFilePath** se dá nakonfigurovat. 
 
        > [!NOTE]
-       > Doporučujeme vám zapnout protokolování **vypnout** po dokončení odstraňování potíží. Opuštění protokolování **na** zvýšení protokolování využití velikost a data souborů.
+       > Doporučujeme, abyste po dokončení řešení potíží vypnuli protokolování. Zanechávání **protokolování zvyšuje velikost** souboru protokolu a využití dat.
 
    1. Restartujte agenta spuštěním:
 
        `systemctl restart ASCIoTAgent.service`
 
-   1. Zobrazte soubor protokolu pro další informace o selhání.  
+   1. Další informace o selhání najdete v souboru protokolu.  
 
-       Umístění souboru protokolu je: `/var/ASCIoTAgent/IotAgentLog.log`
+       Umístění souboru protokolu:`/var/ASCIoTAgent/IotAgentLog.log`
 
-       Změňte cestu k umístění souboru podle názvu, který jste zvolili pro **logFilePath** v kroku 2. 
+       Změňte cestu umístění souboru podle názvu, který jste zvolili pro **LogFilePath** v kroku 2. 
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si ASC pro služby Azure IoT [– přehled](overview.md)
-- Další informace o ASC pro IoT [architektury](architecture.md)
-- Povolit [služby](quickstart-onboard-iot-hub.md)
-- Přečtěte si [– nejčastější dotazy](resources-frequently-asked-questions.md)
-- Vysvětlení [výstrahy](concept-security-alerts.md)
+- Přečtěte si [Přehled](overview.md) služby Azure Security Center for IoT.
+- Další informace o [architektuře](architecture.md) Azure Security Center pro IoT
+- Povolení [služby](quickstart-onboard-iot-hub.md)
+- Přečtěte si [Nejčastější dotazy](resources-frequently-asked-questions.md) .
+- Vysvětlení [výstrah](concept-security-alerts.md)

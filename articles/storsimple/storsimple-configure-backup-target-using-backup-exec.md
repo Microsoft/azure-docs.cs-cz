@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: 85c04b6ea3e40f1f1dcd12eb5d6f4a8f53836867
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67876784"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple jako cíl zálohování pomocí Backup Exec
@@ -233,7 +233,7 @@ Nastavte své řešení podle pokynů v následujících částech.
 -   StorSimple podporuje zálohování exec a úplné a přírůstkové zálohování. Doporučujeme, abyste nepoužívali syntetické a rozdílové zálohy.
 -   Soubory dat zálohy by měly obsahovat pouze data pro konkrétní úlohu. Například připojení k médiím v různých úlohách není povoleno.
 -   Zakáže ověřování úlohy. V případě potřeby by se mělo ověřování naplánovat po poslední úloze zálohování. Je důležité pochopit, že tato úloha má vliv na okno zálohování.
--   Vyberte **úložiště** > **vlastnosti** **Podrobnosti o** > disku > . Vypněte **volbu předem přidělit místo na disku**.
+-   Vyberte **úložiště** > **vlastnosti** **Podrobnosti o** ****  > disku > . Vypněte **volbu předem přidělit místo na disku**.
 
 Nejnovější nastavení služby Backup Exec a osvědčené postupy pro implementaci těchto požadavků najdete [na webu Veritas](https://www.veritas.com).
 
@@ -310,11 +310,11 @@ Následující obrázek ukazuje mapování typického svazku na úlohu zálohov�
 
 Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
 
-| Frekvence/typ zálohování | Úplná | Přírůstkové (dny 1-5)  |   
+| Frekvence/typ zálohování | Úplný | Přírůstkové (dny 1-5)  |   
 |---|---|---|
 | Týdně (týdny 1-4) | Sobota | Pondělí – pátek |
 | Měsíční  | Sobota  |   |
-| Rok | Sobota  |   |
+| Ročně | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování Backup Exec
@@ -323,7 +323,7 @@ Následující sekvence předpokládá, že Backup Exec a cílový hostitel jsou
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování Backup Exec
 
-1.   > V konzole pro správu Backup Exec > vyberte zálohovat zálohování záloh**na disk**.
+1.   > V konzole pro správu Backup **exec vyberte** > zálohovat zálohování záloh**na disk**.
 
     ![Backup Exec – Konzola pro správu, výběr hostitele, zálohování a zálohování na disk](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
@@ -381,14 +381,14 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS příklad plánu: GFS rotace týdně, měsíčně a ročního plánu
 
-| Týden | Úplná | Přírůstkový den 1 | Přírůstkový den 2 | Přírůstkový den 3 | Přírůstkový den 4 | Přírůstkový den 5 |
+| Týden | Úplný | Přírůstkový den 1 | Přírůstkový den 2 | Přírůstkový den 3 | Přírůstkový den 4 | Přírůstkový den 5 |
 |---|---|---|---|---|---|---|
 | Týden 1 | Místní svazek RAID  | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID | Místní svazek RAID |
 | Týden 2 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 3 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 4 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Měsíční | StorSimple měsíčně |   |   |   |   |   |
-| Rok | StorSimple ročně  |   |   |   |   |   |
+| Ročně | StorSimple ročně  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>Přiřazení svazků StorSimple ke službě Backup Exec a úloze odstranění duplicitních dat
@@ -419,7 +419,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 
     ![Backup Exec – Konzola pro správu, vlastnosti definice zálohování a duplicitní možnosti](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
-7.  Do sloupce **záloha** přidejte novou fázi. Pro zdroj použijte přírůstkové . Jako cíl vyberte svazek StorSimple, na kterém je Archivovaná úloha přírůstkového zálohování. Opakujte kroky 1-6.
+7.  Do sloupce **záloha** přidejte novou fázi. Pro zdroj použijte přírůstkové. Jako cíl vyberte svazek StorSimple, na kterém je Archivovaná úloha přírůstkového zálohování. Opakujte kroky 1-6.
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple cloudové snímky
 
@@ -487,7 +487,7 @@ Následující dokumenty byly odkazovány na tento článek:
 - [Použití jednotek GPT](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Nastavení stínových kopií pro sdílené složky](https://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o tom, jak [obnovit ze zálohovacího skladu](storsimple-restore-from-backup-set-u2.md).
 - Další informace o tom, jak provést [převzetí služeb při selhání a zotavení po havárii zařízení](storsimple-device-failover-disaster-recovery.md).

@@ -1,47 +1,47 @@
 ---
-title: Vytvoření nové nabídky SaaS v komerční Marketplace
-description: Jak vytvořit nový Software jako služba (SaaS) nabídka pro výpis nebo prodej na webu Azure Marketplace, AppSource, nebo prostřednictvím programu Cloud Solution Provider (CSP) pomocí portálu pro komerční Marketplace na Microsoft Partner Center.
+title: Vytvoření nové nabídky SaaS na komerčním webu Marketplace
+description: Postup vytvoření nové nabídky software jako služba (SaaS) pro výpis nebo prodej v Azure Marketplace, AppSource nebo prostřednictvím programu poskytovatel cloudového řešení (CSP) pomocí portálu pro komerční tržiště na partnerském centru Microsoftu.
 author: mattwojo
 manager: evansma
 ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: db1074046adc52ad859a325c2b875da84dbdb0cd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a4947349e64d5f9bf95a9213701dc62a0e018b8f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701399"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501310"
 ---
-# <a name="create-a-new-saas-offer"></a>Vytvoření nové nabídky SaaS
+# <a name="create-a-new-saas-offer"></a>Vytvořit novou nabídku SaaS
 
-Zahajte proces vytváření softwaru, jako služba (SaaS) nabízí, ujistěte se, které jste první [vytvořit účet v partnerském centru](./create-account.md) a otevřete [řídicí panel komerční Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), s **přehled** vybraná karta.
+Pokud chcete začít vytvářet nabídky software jako služba (SaaS), ujistěte se, že jste nejdřív [vytvořili účet partnerského centra](./create-account.md) a otevřete [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)s vybranou kartou **Přehled** .
 
-![Komerční řídicího panelu webu Marketplace na partnerské Centrum](./media/new-offer-overview.png)
+![Řídicí panel komerčního tržiště v partnerském centru](./media/new-offer-overview.png)
 
-Vyberte + **nová nabídka...** tlačítko a pak vyberte **Software jako služba** položky nabídky. 
+Vyberte nabídku + **Nová...** a potom vyberte položku nabídky **software jako služba** . 
 
-Pokud vyberete jednu z ostatních typů nabídky, budete přesměrováni na starší [portál partnerů cloudu](https://cloudpartner.azure.com/).  V tuto chvíli jsou k dispozici v komerční Marketplace portál na partnerském centru jenom nabídky SaaS. 
+Pokud vyberete jeden z ostatních typů nabídek, budete přesměrováni na starší [portál partnerů cloudu](https://cloudpartner.azure.com/).  V tomto okamžiku jsou k dispozici pouze nabídky SaaS na portálu pro komerční tržišti v partnerském centru. 
 
-![Vytvoření nabídky okna na partnerské Centrum](./media/new-offer-click.png)
+![Vytvořit okno nabídky na partnerském centru](./media/new-offer-click.png)
 
-**Nová nabídka** se zobrazí dialogové okno. 
+Zobrazí se dialogové okno **Nová nabídka** . 
 
 ![Dialogové okno Nová nabídka](./media/new-offer-popup.png)
 
 
 ## <a name="offer-id-and-alias"></a>ID nabídky a alias
 
-- **ID nabídky**: Jedinečný identifikátor pro každou nabídku, ve vašem účtu. Toto ID se nebude zobrazovat na zákazníky v adresu URL pro tuto nabídku marketplace a šablon Azure Resource Manageru (pokud existuje). ID nabídky musí být malými písmeny, alfanumerické znaky (včetně spojovníky a podtržítka, ale bez mezer). To je omezen na 50 znaků a nedá se změnit po výběru *vytvořit*.  
-Příklad: test nabídka-1
-<br>Výsledkem je adresa URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
+- **ID nabídky**: Jedinečný identifikátor pro každou nabídku ve vašem účtu. Toto ID uvidí zákazníci v adrese URL pro nabídku Marketplace a šablony Azure Resource Manager (pokud jsou k dispozici). ID nabídky musí být malé, alfanumerické (včetně spojovníků a podtržítka, ale bez mezer). Tato možnost je omezená na 50 znaků a po výběru *vytvořit*se nedá změnit.  
+Příklad: test-nabídka-1
+<br>Výsledkem je adresa URL:`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
-- **Alias nabízejí**: Název používaný k odkazování na nabídku v rámci portálu partnerského centra. Tento název se nepoužije na webu Marketplace a se liší od *název nabídky* a jiné hodnoty, které se zobrazí pro zákazníky. Tuto hodnotu nelze změnit po výběru *vytvořit*.
+- **Alias nabídky**: Název, který se používá k odkazování na nabídku v rámci portálu partnerského centra. Tento název se na webu Marketplace nepoužívá a liší se od *názvu nabídky* a dalších hodnot, které se zákazníkům zobrazí. Tuto hodnotu nelze změnit po výběru možnost *vytvořit*.
 
-<br>Příklad: Nabídka testování 1&#8482;
+<br>Příklad: Nabídka testu 1&#8482;
 
-Vyberte **Vytvořit**.  **Nabízí přehled** stránka je vytvořena pro tuto nabídku.  
+Vyberte **Vytvořit**.  Pro tuto nabídku se vytvoří stránka s **přehledem nabídky** .  
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
@@ -49,453 +49,542 @@ Vyberte **Vytvořit**.  **Nabízí přehled** stránka je vytvořena pro tuto na
 
 ## <a name="offer-overview"></a>Přehled nabídky
 
-**Nabízí přehled** stránka obsahuje: 
+Stránka **Přehled nabídky** obsahuje: 
 
-- **Stav publikování** zobrazí vizuální znázornění kroky potřebné k publikování v rámci této nabídky a jak dlouho bude trvat jednotlivé kroky k dokončení. Neúplné publikování ikony kroku bude zapnutá. 
+- **Stav publikování** zobrazí vizuální znázornění kroků požadovaných k publikování této nabídky a dobu, po kterou bude každý krok trvat. Nedokončené ikony kroků publikování budou šedé. 
 
-- **Nabízí přehled** nabídka obsahuje seznam odkazů pro provádění operací v rámci této nabídky. Tento seznam operací se budou měnit v závislosti na výběru, který provedete pro vaši nabídku.  
-    - Pokud tato nabídka je koncept – návrh Delete 
-    - Pokud je v provozu – nabídka Stop prodávat nabídky 
-    - Pokud tato nabídka je ve verzi preview – uvedení do provozu 
-    - Pokud jste nedokončili vydavatele odhlašování – zrušení publikování
+- Nabídka **Přehled** nabídky obsahuje seznam odkazů pro provádění operací s touto nabídkou. Tento seznam operací se změní v závislosti na výběru provedeném pro vaši nabídku.  
+    - Pokud je nabídka koncept – odstranit koncept 
+    - Pokud je nabídka živá – zastavit prodej nabídky 
+    - Pokud je nabídka ve verzi Preview – přejít do provozu 
+    - Pokud jste nedokončili registraci vydavatele, zrušte publikování
 
-## <a name="offer-setup"></a>Nabídka nastavení
+## <a name="offer-setup"></a>Nastavení nabídky
 
-**Nabízejí nastavení** kartu vyzve k zadání následujících informací. Vyberte **Uložit** po dokončení těchto polí.
+Karta **nastavení nabídky** požádá o následující informace. Po dokončení těchto polí vyberte **Uložit** .
 
-- **Chcete prodávat prostřednictvím společnosti Microsoft?** (Ano/Ne)
-    - **Ano**, které byste rádi prodej vaší nabídky Microsoftu s Microsoftem, který je hostitelem transakce marketplace vaším jménem; nebo 
-    - **Ne**, si přejete právě seznamu vaši nabídku prostřednictvím Tržiště, zpracování jakékoli peněžní transakce nezávisle na Microsoft.    
+- **Chtěli byste prodávat přes Microsoft?** (Ano/ne)
+    - **Ano**, vaši nabídku byste mohli prodávat prostřednictvím Microsoftu, s hostováním transakcí Marketplace Microsoftu pro váš účet; ani 
+    - **Ne**, budete chtít, abyste si mohli jenom vypsat nabídku prostřednictvím Marketplace a zpracovávat peněžní transakce nezávisle na Microsoftu.    
 
-### <a name="sell-through-microsoft"></a>Jejím prostřednictvím – Microsoft
+### <a name="sell-through-microsoft"></a>Prodej prostřednictvím Microsoftu
 
-Prodej prostřednictvím Microsoft poskytuje lepší zjišťování zákazníka a akvizice, umožňuje společnosti Microsoft na webu marketplace transakce hostitele vaším jménem a využívá možnosti globálně dostupné obchodování od Microsoftu.
+Prodej prostřednictvím Microsoftu poskytuje lepší zjišťování a nabývání zákazníků, umožňuje Microsoftu hostovat transakce v Marketplace vaším jménem a využívat výhod celosvětově dostupných možností obchodování Microsoftu.
 
-#### <a name="saas-offer-requirements"></a>Nabídky SaaS požadavky
+#### <a name="saas-offer-requirements"></a>Požadavky na nabídku SaaS
 
-Pokud chcete vypsat Software jako služba (SaaS) nabízí komerční Marketplace na partnerském centru, musí splňovat následující kritéria:
+K vypsání nabídek SaaS (software jako služba) s komerčním Marketplace v partnerském centru je potřeba splnit následující kritéria:
 
-- Musíte použít vaši nabídku [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) ke správě identit a ověřování.
-- Musíte použít vaši nabídku [rozhraním API SaaS splnění](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) můžete integrovat s Azure Marketplace.
-- Rozsáhlejší požadavky najdete v tématu [Průvodce publikováním nabídky SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
+- Vaše nabídka musí používat [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) pro správu identit a ověřování.
+- Vaše nabídka musí používat [rozhraní API pro splnění SaaS](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) pro integraci s Azure Marketplace.
+- Rozsáhlejší požadavky najdete v [příručce pro publikování nabídky SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
-#### <a name="saas-on-azure-billing-infrastructure-costs"></a>SaaS na náklady na infrastrukturu Azure Billing
-Pokud se nabídka SaaS je hostované v Azure, jako vydavatel, musíte vzít v úvahu poplatky za využití infrastruktury Azure a licenční poplatky za software jako náklady na jednu položku. Tyto náklady je vyjádřena jako fixní měsíční poplatek, abyste zákazníka. Využití infrastruktury Azure je spravovaná a fakturuje se vám, partner, přímo. Poplatky za využití infrastruktury skutečný nevidí zákazníka. Vydavatelé se obvykle optimalizované poplatky za využití infrastruktury Azure začlenit do svých ceny licencí softwaru. 
+#### <a name="saas-on-azure-billing-infrastructure-costs"></a>SaaS na náklady na fakturační infrastrukturu Azure
+Pokud je nabídka SaaS hostovaná v Azure, musíte jako vydavatel, účet pro poplatky za využití infrastruktury Azure a licenční poplatky za software jako jednu položku nákladů. Tyto náklady jsou pro zákazníka vyjádřené jako paušální měsíční poplatek. Využití infrastruktury Azure se spravuje a účtuje přímo na vás, ale partnera. Zákazníky nevidí skutečné poplatky za využití infrastruktury. Vydavatelé obvykle můžou využít poplatky za využití infrastruktury Azure na ceny za licence na software. 
 
-Software licenční poplatky se zobrazují jako měsíční, opakované odběr založený na webu paušální poplatek a nejsou měřené nebo na základě spotřeby.
+Licenční poplatky za software se zobrazují jako měsíční poplatky za paušální předplatné založené na webu a neúčtují se na základě měření nebo spotřeby.
 
-|**Vaše náklady na licence**|**100 USD za měsíc**|
+|**Náklady na licenci**|**$100 za měsíc**|
 |:---|:---|
-|Náklady na využití Azure (D1 / 1jader)|Účtuje se přímo k vydavateli, nejste zákazník|
-|Microsoft účtuje|100,00 USD za měsíc (vydavatel musí odpovídat žádné náklady na infrastrukturu vzniklých nebo průchozí v licenční poplatek za)|
+|Náklady na využití Azure (D1/1 – jádro)|Účtuje se přímo vydavateli, nikoli zákazník.|
+|Zákazník se účtuje Microsoftem.|$100,00 za měsíc (Vydavatel musí mít v licenčním poplatku vynaložené nebo předávací náklady na infrastrukturu)|
 
-- V tomto scénáři Microsoft účtuje 100,00 USD pro licence na software a zaplatí si $80,00 k vydavateli.
-- Partneři, kteří prokázali způsobilost pro **snižuje poplatek za služby webu Marketplace** uvidí poplatek nižší transakce na SaaS, nabízí z května 2019 až do roku 2020 dne. V tomto scénáři Microsoft účtuje 100,00 USD pro licence na software a zaplatí si $90.00 k vydavateli.
+- V tomto scénáři Microsoft účtuje $100,00 pro vaši softwarovou licenci a vyplatí $80,00 vydavateli.
+- Partneři, kteří mají nárok na **snížený poplatek za službu Marketplace** , uvidí za snížený poplatek za transakce SaaS z května 2019 do června 2020. V tomto scénáři Microsoft účtuje $100,00 pro vaši softwarovou licenci a vyplatí $90,00 vydavateli.
 
 > [!NOTE]
-> **Snížená poplatek za služby webu Marketplace**: U určitých SaaS nabízí, že jste publikovali na naše obchodní Marketplace, Microsoft omezí jeho poplatek za služby webu Marketplace z 20 % (jak je popsáno ve smlouvě vydavatele Microsoft) na 10 %. V pořadí pro vaši nabídku k vyfiltrování alespoň jedna z nabídek musí mít určená microsoftem jako připravený pro společný prodej IP nebo společný prodej IP nastaveno jako prioritní.  Způsobilost musí být splněny alespoň pět (5) pracovních dní před koncem každého kalendářního měsíce dostávat toto snížené poplatek za služby webu Marketplace za měsíc.  Servisní poplatek nižší Marketplace se nevztahuje na virtuální počítače, spravované aplikace nebo žádné produkty k dispozici prostřednictvím našeho komerční webu Marketplace.  Servisní poplatek nižší Marketplace budou k dispozici pouze na kvalifikovaný nabídky poplatky za licence shromažďovaná společností Microsoft mezi 1. května 2019 a 30. června 2020.  Po uplynutí této doby poplatek za služby webu Marketplace vrátí na jeho normální množství. 
+> **Nižší poplatek za službu Marketplace**: U některých nabídek SaaS, které jste publikovali na komerčním tržišti, společnost Microsoft sníží svůj poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídka mohla být kvalifikována, musí být alespoň jedna z vašich nabídek označena Microsoftem jako přizpůsobená priorita nebo prodej IP.  Aby bylo možné získat tento snížený poplatek za službu Marketplace na daný měsíc, musí být nárok splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce.  Snížený poplatek za službu Marketplace se nevztahuje na virtuální počítače, spravované aplikace ani žádné jiné produkty, které jsou dostupné prostřednictvím našeho komerčního tržiště.  Snížený poplatek za službu Marketplace bude dostupný jenom pro kvalifikované nabídky pro poplatky za licence shromážděné Microsoftem mezi 1. května 2019 a 30. června 2020.  Po uplynutí této doby se poplatek za službu Marketplace vrátí do normálního množství. 
 
-|**Microsoft bills**|**100 USD za měsíc**|
+|**Účty Microsoft**|**$100 za měsíc**|
 |:---|:---|
-|Společnost Microsoft platí, 80 % vaše náklady na licence <br>**Pro kvalifikované aplikace SaaS společnost Microsoft platí 90 % vaše náklady na licence*|80,00 $ za měsíc <br>*$* 90.00 za měsíc *|
+|Společnost Microsoft vám zaplatí 80% vašich licenčních nákladů. <br>**Pro kvalifikované aplikace SaaS přináší společnost Microsoft 90% vašich licenčních nákladů.*|$80,00 za měsíc <br>*$* 90,00 za měsíc *|
 
 
-#### <a name="csp-program-opt-in"></a>CSP Program Opt-in
-[Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) program umožňuje nabídky softwaru umožňuje oslovit miliony kvalifikovaný zákazníkům Microsoftu s minimálními marketingové a prodejní investice.
+#### <a name="csp-program-opt-in"></a>Výslovný souhlas programu CSP
+Program [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) umožňuje softwarovým nabídkám oslovit miliony kvalifikovaných zákazníků Microsoftu s minimálními marketingovými a prodejními investicemi.
 
-- **Kanály: Uvolněte své nabídky do programu CSP** (zaškrtávací políčko)
+- **Barev Zpřístupní moji nabídku v programu** CSP (zaškrtávací políčko).
 
-Jak zvolit zpřístupnění vaší nabídky v programu CSP umožňuje poskytovatele Cloud Solution Provider, aby je prodal produktu jako součást sady řešení svým zákazníkům. 
+Pokud chcete, aby vaše nabídka byla k dispozici v programu CSP, umožní poskytovatelům cloudového řešení prodávat vaše produkty jako součást řešení svým zákazníkům. 
 
-### <a name="list-through-microsoft"></a>Seznam prostřednictvím společnosti Microsoft
+### <a name="list-through-microsoft"></a>Seznam prostřednictvím Microsoftu
 
-Tím, že vytvoříte tržišti propagaci vašeho podnikání s Microsoftem. Výběr vypisovat jenom nabídky a není transact prostřednictvím Microsoft znamená, že společnost Microsoft není součástí přímo transakce licence softwaru. Se neúčtují žádné poplatky přidružené transakce a vydavatel udržuje 100 % žádné poplatky, shromážděných od zákazníka pro licencování softwaru. Vydavatel je však zodpovědní za technickou podporu všech aspektů transakce licence softwaru, včetně, ale nikoli výhradně: order splnění, měření, fakturace, fakturaci, platby a kolekce. 
+Vytvořte seznam na webu Marketplace a zvyšte své podnikání pomocí Microsoftu. Výběrem této nabídky zobrazíte pouze seznam a nikoli transakční prostřednictvím Microsoftu znamená, že se společnost Microsoft neúčastní přímo v transakcích licencí na software. Není k dispozici žádný přidružený transakční poplatek a vydavatel udržuje 100% jakýchkoli licenčních poplatků za software shromážděných od zákazníka. Vydavatel je však zodpovědný za podporu všech aspektů licenčních transakcí softwaru, mimo jiné: splnění objednávek, měření, fakturace, fakturace, platby a shromažďování. 
 
-- **Jak chcete potenciálních zákazníků pro interakci s touto nabídkou výpis**
+- **Jak chcete potenciálním zákazníkům pracovat s touto nabídkou pro výpis?**
 
-##### <a name="get-it-now-free"></a>Získat (zdarma)
-Seznam vaší nabídky zákazníkům zdarma tím, že poskytuje platnou adresu URL (začíná http nebo https), ve kterém přístup k aplikaci.  Příklad: `https://contoso.com/saas-app`
+##### <a name="get-it-now-free"></a>Získat hned (zdarma)
+Seznamte se svým zákazníkům zdarma tím, že zadáte platnou adresu URL (počínaje *protokolem HTTP* nebo *https*), ke které mají přístup k vaší aplikaci.  Příklad: `https://contoso.com/saas-app`
 
-##### <a name="free-trial-listing"></a>Bezplatná zkušební verze (výpisu)
-Seznam vaší nabídky zákazníkům s odkazem na bezplatnou zkušební verzi tím, že poskytuje platnou adresu URL (začíná http nebo https), ve kterém přístup k aplikaci.  Například: `https://contoso.com/trial/saas-app`. Nabídky bezplatné zkušební verze se vytvářejí a spravované a konfigurace v rámci služby a proveďte není mají předplatné spravované microsoftem.
+##### <a name="free-trial-listing"></a>Bezplatná zkušební verze (výpis)
+Seznamte se s vaší nabídkou pro zákazníky s odkazem na bezplatnou zkušební verzi tím, že poskytnete platnou adresu URL (počínaje *protokolem HTTP* nebo *https*), kde můžou získat zkušební verzi prostřednictvím [ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials).  Například: `https://contoso.com/trial/saas-app`. Nabídka pro výpis bezplatných zkušebních verzí se vytváří, spravuje a konfiguruje pomocí vaší služby a nemá předplatné spravované Microsoftem.
+
+> [!NOTE]
+> Tokeny, které vaše aplikace získá prostřednictvím zkušebního připojení, se dají použít jenom k získání informací o uživateli přes Azure AD k automatizaci vytváření účtů ve vaší aplikaci. Pro ověřování pomocí tohoto tokenu se nepodporují účty Microsoft (MSA).
 
 ##### <a name="contact-me"></a>Kontaktujte mě
-Shromážděte kontaktní údaje zákazníků propojením váš systém řízení vztahů se zákazníky (CRM). Zákazník budete vyzváni k zadání oprávnění ke sdílení svých informací. Tyto podrobnosti o zákazníkovi, společně se název nabídky, ID a marketplace zdroj, kde najdou vaši nabídku, se odešlou do systému CRM, které jste nakonfigurovali. Další informace o konfiguraci CRM, naleznete v tématu [Správa potenciálních zákazníků připojit](#connect-lead-management). 
+Shromažďovat kontaktní údaje zákazníka propojením systému pro správu vztahů se zákazníky (CRM). Zákazník bude požádán o oprávnění ke sdílení svých informací. Tyto podrobnosti o zákaznících spolu s názvem nabídky, ID a zdrojem Marketplace, kde si vaši nabídku našli, budou odeslány do systému CRM, který jste nakonfigurovali. Další informace o konfiguraci CRM najdete v tématu [připojení správy zájemců](#connect-lead-management). 
 
-## <a name="example-marketplace-offer-listing"></a>Příklad marketplace nabízí seznam
+## <a name="example-marketplace-offer-listing"></a>Příklad seznamu nabídek Marketplace
 
-![Nabídky marketplace příklad s poznámkami](./media/marketplace-offer.svg)
+![Příklad seznamu nabídek Marketplace s poznámkami](./media/marketplace-offer.svg)
 
-## <a name="enable-a-test-drive"></a>Povolit testovací verze
+## <a name="enable-a-test-drive"></a>Povolit testovací jednotku
 
-Testovací verze je skvělý způsob, jak jim umožňuje "před zakoupením vyzkoušet", což vede k vyšší převodu a vytváření vysoce kvalifikovaných prodejních příležitostí prezentaci vaší nabídky pro potenciální zákazníky. [Další informace o testu jednotek.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+Testovací jednotka představuje skvělý způsob, jak předvést vaši nabídku potenciálním zákazníkům tím, že jim nabídne možnost vyzkoušet si před nákupem. Výsledkem je zvýšená konverze a generace vysoce kvalifikovaných potenciálních zákazníků. [Přečtěte si další informace o testovacích jednotkách.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-- **Povolit testovací verze** (checkbox) 
+- **Povolit testovací jednotku** prvku 
 
-Tím, že testovací verze, bude výzva ke konfiguraci ukázky prostředí pro zákazníky, kteří akci nabídky pro pevné časové období. 
+Povolením testovacích jednotek budete požádáni o konfiguraci demonstračního prostředí pro zákazníky, kteří budou chtít vaši nabídku vyzkoušet na určitou dobu. 
 
-### <a name="type-of-test-drive"></a>Typ testu jednotky
+### <a name="type-of-test-drive"></a>Typ testovací jednotky
 
-- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : Nasazení šablony, která obsahuje všechny prostředky Azure, které tvoří vašeho řešení. Produkty, které patří tento scénář používat jenom prostředky Azure.
-- **[Dynamics 365 for Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : Společnost Microsoft hostuje a udržuje službu test jednotky (včetně nasazení a zřizování) pro Business Central systému na plánování podnikových zdrojů (finance, operations, dodavatelského řetězce, CRM, atd.).  
-- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : Společnost Microsoft hostuje a udržuje službu test jednotky (včetně nasazení a zřizování) pro systém Customer Engagement (prodej, služby, služby projektu služby, služby atd.).  
-- **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : Společnost Microsoft hostuje a udržuje službu test jednotky (včetně nasazení a zřizování) pro Finance and Operations enterprise prostředek plánování system (finance, operations, výroby, dodavatelský řetězec, atd.). 
-- **[Aplikace logiky](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : Šablonu nasazení, včetně všech architekturách komplexní řešení. Všechny vlastní produkty, používejte tohoto typu testovací verze.
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : Vložený odkaz na míru sestavené řídicí panel. Produkty, které chcete prokázat, že že interaktivní vizuálu Power BI by měl použít tento typ testovací verze. Vše, co potřebujete k nahrání zde je vaše adresa URL vložené Power BI.
+- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : Šablona nasazení obsahující všechny prostředky Azure, které tvoří vaše řešení. Produkty, které vyhovují tomuto scénáři, používají pouze prostředky Azure.
+- **[Dynamics 365 pro firmy – střed](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : Společnost Microsoft hostuje a udržuje službu testovacích jednotek (včetně zřizování a nasazení) pro podnikový systém plánování podnikových zdrojů (finance, operace, dodavatelský řetězec, CRM atd.).  
+- **[Dynamics 365 pro zákaznickou zapojení](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : Společnost Microsoft hostuje a udržuje službu testovacích jednotek (včetně zřizování a nasazení) pro systém zákaznických rezervací (prodej, služba, Project Service, služba pole atd.).  
+- **[Dynamics 365 pro operace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : Společnost Microsoft hostuje a udržuje službu testovacích jednotek (včetně zřizování a nasazení) pro finanční a provozní systém prostředků podnikového plánování (finance, operace, výroba, dodavatelský řetězec atd.). 
+- **[Aplikace logiky](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : Šablona nasazení zahrnuje všechny komplexní architektury řešení. Všechny vlastní produkty by měly používat tento typ testovacích jednotek.
+- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : Vložený odkaz na uživatelsky sestavený řídicí panel. Produkty, které chtějí předvést interaktivní Power BI vizuál, by měly používat tento typ testovacích jednotek. Vše, co je třeba nahrát, je vaše vložená Power BI adresa URL.
 
-#### <a name="additional-test-drive-resources"></a>Další testovací jednotky prostředky
-- [Test jednotky technické osvědčené postupy](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Vyzkoušejte si marketingové osvědčené postupy](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [Test jednotky přehled jeden stránkování](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+#### <a name="additional-test-drive-resources"></a>Další zdroje testovacích jednotek
+- [Technické osvědčené postupy testovacích jednotek](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Osvědčené postupy pro testování a uvádění na trh](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Přehled testovacích jednotek – jeden pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
-## <a name="connect-lead-management"></a>Připojte se správa potenciálních zákazníků
+## <a name="connect-lead-management"></a>Připojit řízení zájemců
 
-Spojení se zákazníky přímo tak, že výpis vaší nabídky v tržišť a zapojování váš systém řízení vztahů se zákazníky (CRM) tak, aby bylo možné přijímat kontaktní údaje zákazníků, ihned po vyjadřuje zájmu zákazníka nebo nasadí váš produkt.
+Spojte se se zákazníky přímo, a to tak, že na tržištích zadáte nabídku a zapojíte systém pro řízení vztahů se zákazníky (CRM), abyste mohli dostávat kontaktní údaje zákazníka hned, co zákazník vyjádří zájem nebo nasadí vaše produktu.
 
-- **Vyberte cíl zájemce** (rozevírací nabídky): Zadejte podrobnosti připojení k systému CRM, kde chcete poslat potenciálních zákazníků. 
+- **Zvolit cíl zájemce** (rozevírací nabídka): Poskytněte podrobnosti o připojení do systému CRM, kam chcete poslat zájemce zákazníkům. 
 
-Partnerské centrum podporuje následující systémy CRM pro Správa potenciálních zákazníků. Vyberte odkaz pro pokyny k instalaci.
+Partnerské centrum podporuje následující systémy CRM pro správu potenciálních zákazníků. Vyberte odkaz pro pokyny k instalaci.
 
-- Azure Blob – zadat kontaktní e-mailu, název kontejneru a připojovací řetězec účtu úložiště. 
-- [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) – zadat kontaktní e-mailu a připojovací řetězec účtu úložiště. 
-- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) – zadat kontaktní e-mailové adresy URL a režim ověřování (Office 365 nebo Azure Active Directory).
-- [Koncový bod HTTPS](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) – zadejte kontaktní e-mail a adresa URL koncového bodu HTTPS. 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) – zadat kontaktní e-mailu, ID formuláře, Munchkin ID účtu a ID serveru.
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) -zadat kontaktní e-mailu a ID organizace. 
+- Objekt blob Azure – zadejte kontaktní e-mail, název kontejneru a připojovací řetězec účtu úložiště. 
+- [Tabulka Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) – zadejte kontaktní e-mail a připojovací řetězec účtu úložiště. 
+- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) – poskytněte kontaktní e-mail, adresu URL a režim ověřování (Office 365 nebo Azure Active Directory).
+- [Koncový bod HTTPS](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) – zadejte kontaktní e-mail a adresu URL koncového bodu https. 
+- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) – poskytněte kontaktní e-mail, ID formuláře, ID účtu Munchkin a ID serveru.
+- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) – poskytněte kontaktní E-mail a ID organizace. 
 
-#### <a name="additional-lead-management-resources"></a>Další vedoucí řízení zdrojů
-- [Vedoucí řízení nejčastější dotazy](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
+#### <a name="additional-lead-management-resources"></a>Další zdroje informací o vedoucím řízení
+- [Nejčastější dotazy ke správě potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
 - [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Vedoucí jednoho stránkování přehled správy](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+- [Přehled řízení vedoucích – jeden pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
-Nezapomeňte **Uložit** přejde k další části!
+Před přechodem k další části si nezapomeňte **Uložit** .
 
 ## <a name="properties"></a>Vlastnosti
-**Vlastnosti** kartu vás vyzve k definování kategorií a průmysl používá k seskupení vaší nabídky na Tržiště, právní smlouvy podporou vaší nabídky a verze vaší aplikace. 
+Karta **vlastnosti** vás vyzve k definování kategorií a odvětví používaných k seskupení vaší nabídky na tržištích, platných smluv podporujících vaši nabídku a verze vaší aplikace. 
 
-Vyberte **Uložit** po dokončení těchto polí. 
+Po dokončení těchto polí vyberte **Uložit** . 
 
 ### <a name="category"></a>Kategorie
-Vyberte minimálně z jedné (1) a maximálně tři (3) kategorií určena k seskupování vaší nabídky do oblasti vyhledávání odpovídající marketplace. Požádejte o tom, jak vaši nabídku podporuje tyto kategorie v popis nabídky. 
+Vyberte minimálně jednu (1) a maximálně tři (3) kategorie použité pro seskupení nabídek do příslušných oblastí hledání na webu Marketplace. Zavolejte prosím, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. 
 
-### <a name="industry"></a>Odvětví
-Vyberte až dva (2) odvětví určena k seskupování vaší nabídky do oblasti vyhledávání odpovídající marketplace. Pokud vaše nabídka není specifické pro odvětví, nesmí být zvolen jeden. Požádejte o tom, jak vaši nabídku podporuje vybrané obory v popis nabídky. 
+### <a name="industry"></a>Obor
+Vyberte až dva obory (2), které se používají k seskupení vaší nabídky, do příslušných oblastí hledání na webu Marketplace. Pokud vaše nabídka není specifická pro odvětví, nevybírejte ji. Zavolejte prosím, jak vaše nabídka podporuje vybrané odvětví v popisu nabídky. 
 
 ### <a name="app-version"></a>verze aplikace
-Toto je volitelné pole používá k identifikaci číslo verze vaší nabídky na webu Marketplace AppSource. 
+Toto je volitelné pole, které se používá na webu AppSource Marketplace k identifikaci čísla verze vaší nabídky. 
 
 ### <a name="standard-contract"></a>Standardní kontrakt
 
-- **Použít standardní smlouvy?**
+- **Používáte standardní smlouvu?**
 
-Zjednodušit proces zajišťování pro zákazníky a snižuje složitost právní pro dodavatele softwaru, společnost Microsoft nabízí standardní smluvní šablony k usnadnění transakce na webu Marketplace. 
+Pro zjednodušení procesu nákupu pro zákazníky a omezení právní složitosti pro dodavatele softwaru nabízí společnost Microsoft standardní šablonu smlouvy, aby usnadnila transakci na webu Marketplace. 
 
-Místo vytváření vlastních podmínek a ujednání, můžete zvolit standardní smlouvou, který zákazníci potřebují pouze jednou přijmout a ověřte svůj software nabízet vydavatelům Azure Marketplace. 
+Místo vytváření vlastních podmínek a ujednání můžou Azure Marketplace vydavatelé zvolit, že mají nabízet svůj software v rámci standardní smlouvy, které zákazníci potřebují, aby je Vet a přijali jenom jednou. 
 
-Standardní smlouvy najdete tady: https://go.microsoft.com/fwlink/?linkid=2041178.
+Standardní kontrakt najdete tady: https://go.microsoft.com/fwlink/?linkid=2041178.
 
 #### <a name="terms-of-use"></a>Podmínky použití
 
-Pokud licenční podmínky se liší od standardní smlouvy, můžete se rozhodnout zadejte vlastní právní podmínky použití zde. Můžete také zadat až 10 000 znaků textu v tomto poli. Pokud vaše podmínky použití vyžadovat delší popis, zadejte odkaz na jednu adresu URL do tohoto pole, kde můžete najít další licenční podmínky. Zákazníkům se zobrazí jako odkaz na aktivní.
+Pokud se vaše licenční smlouvy liší od standardní smlouvy, můžete zde zadat vlastní právní podmínku použití. Do tohoto pole můžete také zadat až 10 000 znaků textu. Pokud vaše podmínkami použití vyžadují delší popis, zadejte do tohoto pole odkaz na jednu adresu URL, kde najdete další licenční smlouvy. Zobrazí se zákazníkům jako aktivní odkaz.
 
-Zákazníkům je potřeba přijmout tyto podmínky předtím, než se pokusí vaší aplikace. 
+Zákazníci musí tyto podmínky přijmout, aby mohli svoji aplikaci vyzkoušet. 
 
-Nezapomeňte **Uložit** přejde k další části!
+Před přechodem k další části si nezapomeňte **Uložit** .
 
-## <a name="offer-listing"></a>Výpis nabídky
+## <a name="offer-listing"></a>Seznam nabídek
 
-Nabídky zobrazí kartu jazyky (a trhy), kde je k dispozici vaší nabídky, aktuálně Angličtina (Spojené státy) je k dispozici pouze umístění. Kromě toho tato stránka zobrazuje stav výpis specifické pro jazyk a datum a čas, který byl přidán. Budete muset zadat podrobnosti marketplace (nabízejí název, popis, hledané termíny, atd.) pro jednotlivé jazyky / uvedení na trh.
+Karta seznam nabídek zobrazuje jazyky (a trhy), kde je vaše nabídka dostupná. v současné době je dostupná jenom Anglická verze (USA). Kromě toho tato stránka zobrazuje stav seznamu pro konkrétní jazyk a datum a čas, kdy byl přidán. Pro každý jazyk nebo trh budete muset definovat podrobnosti o Marketplace (název nabídky, popis, hledané výrazy atd.).
 
 > [!NOTE]
-> Nabídky obsah (například popis nabídky, dokumenty, snímky obrazovky, podmínky použití a ochrana osobních údajů zásad) nemusí být v angličtině, dokud popis nabídky začíná věta, "Tato aplikace je k dispozici pouze v [jiném než anglickém jazyce]." Je také k poskytování přijatelné *užitečný odkaz URL* nabízel obsah v jiném jazyce než jaký se používá v zveřejněné obsah nabídky.
+> Obsah seznamu nabídek (například popis nabídky, dokumenty, snímky obrazovky, podmínky použití a zásady ochrany osobních údajů) nemusí být v anglickém jazyce, pokud popis nabídky začíná frází "Tato aplikace je dostupná pouze v jazyce [jazyk, který není v angličtině]." Je také přijatelné poskytnout *užitečnou adresu URL pro odkaz* k poskytnutí obsahu v jiném jazyce, než který je použit v obsahu nabídky.
 
-### <a name="offer-listings"></a>: Výpisy nabídek
+### <a name="offer-listings"></a>Výpisy nabídky
 
-Zadejte podrobnosti o který se má zobrazit na webu Marketplace, včetně popisu vaší nabídky a marketingové prostředky.
+Zadejte podrobnosti, které se mají zobrazit na webu Marketplace, včetně popisů vaší nabídky a marketingových prostředků.
 
-- **Název** (povinné): Název definovaný v tomto poli se zobrazí jako nadpis vašich nabídek zveřejněných na marketplace(s), kterou jste zvolili. Název je předem podle předchozího **nová nabídka** položka.  To může být obchodní značkou.  To nesmí obsahovat prázdné znaky, emoji (pokud jsou symboly pravidlech používání značky a autorských práv) a musí být maximálně 50 znaků.
-- **Souhrn** (povinné): Zadejte krátký popis vaší nabídky, který se má použít ve výsledcích hledání listing(s) marketplace. V tomto poli je třeba zadat maximálně 100 znaků textu.
-- **Popis** (povinné): Zadejte popis vaší nabídky, který se má zobrazit v přehledu listing(s) marketplace. Zvažte návrh hodnoty, klíčové výhody, kategorie nebo odvětví přidružení, nákupy v aplikaci příležitosti potřebné informace a odkaz na další informace.
-V tomto poli je třeba zadat maximálně 3 000 znaků textu. Další tipy naleznete v článku [napsat skvělou aplikaci popis](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
-- **Klíčová slova pro vyhledávání**: Zadejte až tři klíčová slova pro vyhledávání, které zákazníci můžou využít k hledání marketplace(s) vaší nabídky.
-- **Začínáme se službou pokyny** (povinné): Vysvětluje postup při konfiguraci a začít používat aplikace pro potenciální zákazníky.  Tento rychlý start může obsahovat odkazy na podrobnější online dokumentaci. V tomto poli je třeba zadat maximálně 3 000 znaků textu. 
+- **Název** (povinné): Zde definovaný název se zobrazí jako název vaší nabídky na webu Marketplace, který jste zvolili. Název je předem vyplněný na základě vaší předchozí **nové položky nabídky** .  To může být ochranné známky.  Nesmí obsahovat prázdné znaky, Emoji (Pokud se nejedná o symboly ochranné známky a copyrightu) a musí být omezeny na 50 znaků.
+- **Souhrn** (povinné): Zadejte krátký popis vaší nabídky, která se má použít ve výsledcích hledání seznamů Marketplace. Do tohoto pole lze zadat až 100 znaků textu.
+- **Popis** (povinné): Zadejte popis nabídky, která se má zobrazit v seznamech Marketplace. Vezměte v úvahu zahrnutí hodnot do kategorií, klíčových výhod, jakékoli kategorie nebo přidružení oboru, možností nákupu v aplikaci, všech potřebných zveřejnění a odkazu na Další informace.
+Do tohoto pole lze zadat až 3 000 znaků textu. Další tipy najdete v článku o [zápisu skvělého popisu aplikace](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
+- **Hledaná klíčová slova**: Zadejte až tři klíčová slova pro hledání, která můžou zákazníci použít k vyhledání vaší nabídky na webu Marketplace.
+- **Pokyny k začátku** (povinné): Vysvětlete, jak nakonfigurovat a začít používat vaši aplikaci pro potenciální zákazníky.  Tento rychlý Start může obsahovat odkazy na podrobnější online dokumentaci. Do tohoto pole lze zadat až 3 000 znaků textu. 
+
+#### <a name="description"></a>**Popis**
+
+Toto pole je povinné. Položky, které se mají zahrnout do popisu: 
+
+* Jasně popište, jak se má v prvních několika větách popisu v této nabídce vyhodnotit.  
+* Mějte na paměti, že ve výsledcích vyhledávacího modulu se může zobrazit několik prvních vět.  
+* Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou doručujete.  
+* Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami. 
+
+Základní komponenty pro vaši polohu hodnoty by měly obsahovat následující informace: 
+
+* Popis produktu 
+* Typ uživatele, který je z produktu přínosný 
+* Zákaznické potřeby nebo bolesti adres produktů. 
+
+Aby bylo možné podrobnější popis nabídky, můžete k formátování popisu použít značky HTML. 
+
+1. Pokud chcete vytvořit odstavce, přidejte `<p>` na BEGGING textu a přidejte `</p>` na konec.
+
+    **Příklad**: 
+
+    `<p>`Toto je můj první odstavec. `</p>` <br>
+    `<p>`Toto je můj druhý odstavec. `</p>` <br>
+
+    Výše uvedená by vypadala takto:
+
+    <p> Toto je můj první odstavec. </p>
+    <p> Toto je můj druhý odstavec. </p>
+
+1. Pokud chcete přidat **seznam položek s**odrážkami, umístěte text do `<li>` značek níže. `<li>` V rámci `</li>` značeka`</ul>`můžete kopírovat a vkládat další položky s odrážkami (položky mezi značkami a). `<ul>` Ujistěte se `<ul></ul>`, že jste přidali. 
+
+    **Příklad**:
+
+    ```
+    <ul> 
+        <li>add text here</li> 
+        <li> add text here </li> 
+        <li> add text here </li> 
+    </ul> 
+    ```
+
+    Výše uvedená by vypadala takto:
+    <ul> 
+        <li>sem přidejte text</li> 
+        <li> sem přidejte text </li> 
+        <li> sem přidejte text </li> 
+    </ul> 
+
+1. Do **tučného** obsahu přidejte `<b>` na začátek textu, který chcete formátovat tučně, a přidejte `</b>` na konec textu, který chcete formátovat tučně. 
+
+    **Příklad**: `<b>`BEZPLATNÁ ZKUŠEBNÍ VERZE`</b>`
+    
+    Výše uvedená by způsobila, že se slova bezplatné zkušební verze budou zobrazovat tučně v popisu nabídky v prezentace. 
+
+    **BEZPLATNÁ ZKUŠEBNÍ VERZE**
+
+1. Chcete-li přidat **zalomení řádků** mezi vaším `<br>` obsahem, přidejte před obsah, který chcete spustit na novém řádku. Pokud chcete opustit mezeru a zajistěte, aby se obsah spouštěl na novém řádku, `<br><br>` přidejte před něj obsah. 
+
+    **Příklad**:
+
+    Toto je textový řádek. `<br>`Toto je textový řádek, který začne na novém řádku. `<br><br>`Jedná se o řádek, který spustí dva řádky níže. 
+
+    Výše uvedená by vypadala takto:
+
+    Toto je textový řádek. <br> Toto je textový řádek, který začne na novém řádku. <br><br> Jedná se o řádek, který spustí dva řádky níže. 
+
+1. Chcete-li **zvětšit velikost textu**, vyberte nejprve, jak velký má být text. Použijte níže uvedené příklady. Po výběru velikosti textu přidejte odpovídající `<H*></H*>` značky na začátek a konec textu. 
+
+    **Příklad**:
+
+    `<h1>`Toto je nadpis 1.`</h1>` <br>
+    `<h2>`Toto je Nadpis 2`</h2>` <br>
+    `<h3>`Toto je nadpis 3`</h3>` <br>
+    `<h4>`Toto je nadpis 4.`</h4>` <br>
+    `<h5>`Toto je nadpis 5.`</h5>` <br>
+    `<h6>`Toto je nadpis 6.`</h6>` 
+
+    Výše uvedená by vypadala takto:
+
+    <h1>Toto je nadpis 1.</h1> 
+    <h2>Toto je Nadpis 2</h2> 
+    <h3>Toto je nadpis 3</h3> 
+    <h4>Toto je nadpis 4.</h4> 
+    <h5>Toto je nadpis 5.</h5> 
+    <h6>Toto je nadpis 6.</h6> 
 
 #### <a name="links"></a>Odkazy
 
-- **Zásady ochrany osobních údajů** (povinné): Odkaz na zásady ochrany osobních údajů vaší organizace. Zodpovídáte za to, že vaše aplikace odpovídá ochrany osobních údajů zákonům a předpisům a k zajištění zásady platné ochrany osobních údajů
-- **Marketingové materiály programu CSP** (volitelné): Je nutné zadat odkaz na marketingové materiály, pokud budete chtít rozšířit vaši nabídku [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) programu. CSP umožňuje partnerům CSP vytvořit balíček na trhu a dál prodávat vaše nabídka rozšiřuje vaši nabídku k širší škále způsobilým zákazníkům. Prodejci bude potřebovat přístup k materiály pro marketingu vaší nabídky. Další informace najdete v tématu [Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
-- **Užitečné odkazy** (volitelné): Volitelné další online dokumenty o vaši aplikaci nebo související služby uvedené tím, že poskytuje **Title** a **URL**. Kliknutím na Přidat další užitečné odkazy **+ přidat adresu URL**.
+- **Zásady ochrany osobních údajů** (povinné): Připojte se k zásadám ochrany osobních údajů vaší organizace. Zodpovídáte za to, že vaše aplikace vyhovuje předpisům a zákonům o ochraně osobních údajů a poskytuje platné zásady ochrany osobních údajů.
+- **Marketingové materiály programu CSP** (volitelné): Pokud se rozhodnete tuto nabídku rozšíříte do programu [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) , musíte zadat odkaz na marketingové materiály. CSP rozšiřuje vaši nabídku na širší škálu kvalifikovaných zákazníků tím, že umožňuje partnerům CSP, aby si mohli seskupit, uvádět na trh a prodávat vaše nabídky. Tito prodejci budou potřebovat přístup k materiálům pro účely marketingu vaší nabídky. Další informace najdete v tématu [služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
+- **Užitečné odkazy** (volitelné): Volitelné dodatečné online dokumenty týkající se vaší aplikace nebo související služby, které jsou uvedené v seznamu, zadáním **názvu** a **adresy URL**. Přidejte další užitečné odkazy kliknutím na **+ Přidat adresu URL**.
 
-#### <a name="contact-information"></a>Kontaktní informace
+#### <a name="contact-information"></a>Kontaktní údaje
 
-- **Kontakty**: Pro každého zákazníka kontaktu, poskytují zaměstnanci **název** , **telefonní číslo**, a **e-mailu** adresu.  (Tyto *nebudou* veřejně zobrazovat,). A **adresu URL podpory** je také nutné pro **kontakt podpory** skupiny.  (Tyto informace *bude* veřejně zobrazovat,).
+- **Kontakty**: U každého kontaktu zákazníka zadejte **jméno** zaměstnance, **telefonní číslo**a **e-mailovou** adresu.  (Nebudou  se zobrazovat veřejně). Pro skupinu **kontaktů podpory** je také vyžadována **Adresa URL podpory** .  (Tyto informace *se* zobrazí veřejně).
 
-**Kontaktujte podporu** (povinné): Pro obecné dotazy.
+**Kontakt podpory** (povinné): Pro obecné dotazy k podpoře.
 
-**Technické kontakt** (povinné): Pro technické dotazy.
+**Technický kontakt** (povinné): Pro technické dotazy.
 
-**Kontaktujte správce kanálu** (povinné): Pro prodejce pro otázky týkající se programu CSP.
+**Kontakt Správce kanálů** (povinné): Pro otázky prodejců související s programem CSP.
 
-#### <a name="files-and-images"></a>Soubory a obrázky
+#### <a name="files-and-images"></a>Soubory a image
 
-- **Dokumenty** (povinné): Přidáte související dokumenty marketingu vaší nabídky ve formátu PDF, minimálně z jedné (1) a maximálně tři (3) dokumentů na nabídku.
-- **Obrázky** (volitelné): Existuje více místa, kde vaši nabídku logo obrázky můžou vypadat v celém marketplace(s), které vyžadují následující formáty--(krátkodobé používání): 48 x 48 pixelů _(povinné),_ médium: 90 x 90 pixelů, velké: pixely 216 x 216 _(povinné),_ široké: 255 x 115 pixelů a Hero: 815 x 290 pixelů. Všechny Image musí být v. Formát PNG.
-- **Snímky obrazovky** (povinné): Přidáte snímky obrazovky demonstrace vaší nabídky. Maximálně pět (5) snímky obrazovky můžete přidat a musí mít velikost v pixelech 1280 × 720. Všechny Image musí být v. Formát PNG.
-- **Videa** (volitelné): Přidáte odkazy na videa demonstrace vaší nabídky. Můžete použít odkazy na videa YouTube nebo Vimeo, které se zobrazují společně s vaší nabídky zákazníkům. Budete taky muset zadat miniaturu videa, velikost, aby 1280 × 720 pixelech ve formátu PNG. Můžete zobrazit maximálně čtyři videí na nabídku.
+- **Dokumenty** (povinné): Přidejte související marketingové dokumenty pro vaši nabídku ve formátu PDF, který poskytuje minimálně jeden (1) a maximálně tři (3) dokumentů na jednu nabídku.
+- **Bitové kopie** (volitelné): K dispozici jsou několik míst, kde se na webu Marketplace můžou zobrazit obrázky loga vaší nabídky, a to vyžaduje následující velikosti: 48 x 48 pixelů _(povinné),_ střední: 90 x 90 pixelů, Velká: 216 x 216 pixelů _(požadováno), v_ rozsahu: 255 x 115 pixelů a Hero: 815 x 290 pixelů. Všechny obrázky musí být v. Formát PNG.
+- **Snímky obrazovky** (povinné): Přidejte snímky obrazovky, které demonstrují vaši nabídku. Je možné přidat maximálně pět (5) snímků obrazovky a velikost by měla být 1280 × 720 pixelů. Všechny obrázky musí být v. Formát PNG.
+- **Videa** (volitelné): Přidejte odkazy na videa, která demonstrují vaši nabídku. Můžete použít odkazy na videa YouTube nebo Vimeo, která se zobrazí spolu s vaší nabídkou pro zákazníky. Budete taky muset zadat miniaturu videa, ve formátu PNG se velikost nastaví na 1280 x 720 pixelů. Můžete zobrazit maximálně čtyři videa na jednu nabídku.
 
-Nezapomeňte **Uložit** přejde k další části!
+Před přechodem k další části si nezapomeňte **Uložit** .
 
-#### <a name="additional-marketplace-listing-resources"></a>Další marketplace výpis prostředků
+#### <a name="additional-marketplace-listing-resources"></a>Další prostředky pro výpis Marketplace
 
-- [Osvědčené postupy pro marketplace nabízí výpisy](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Osvědčené postupy pro výpisy nabídky na webu Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 
 ## <a name="preview"></a>Náhled
 
-**Ve verzi Preview** karta vám umožní definovat omezeného **cílovou skupinou ve verzi Preview** pro uvolnění vaši nabídku před publikováním nabídky za provozu pro širší cílovou skupinu webu marketplace.
+Karta **Náhled** umožňuje definovat **skupinu omezené verze Preview** pro uvolnění vaší nabídky před publikováním vaší nabídky do širší cílové skupiny na webu Marketplace.
 
 > [!IMPORTANT]
-> Musíte vybrat **vysílat živě** před nabídky bude možné v přednášce publikované živě k veřejné čtenářům nebo divákům marketplace po kontrole nabídky ve verzi Preview.
+> Před tím, než se vaše nabídka po kontrole ve verzi Preview vrátí do veřejné skupiny Marketplace, musíte vybrat možnost **Přejít na aktivní** .
 
-- **Definujte cílovou skupinou ve verzi Preview: Přidáte e-mail účtu AAD/MSA na řádek, spolu s volitelný popis.**
+- **Definujte cílovou skupinu verze Preview: Přidejte jeden e-mailový účet AAD/MSA na každý řádek a volitelně také popis.**
 
-Ručně přidejte e-mailové adresy až deset (10) nebo dvacet (20), pokud chcete nahrát soubor CSV pro existující účet Microsoft (MSA) nebo účty Azure Active Directory (AAD), abychom vám pomohli s ověřování vaši nabídku před publikováním live. Přidáním těchto účtů, definujete, která se bude dát přístup k verzi preview pro vaši nabídku před publikováním marketplace(s) cílové skupině. Pokud vaše nabídka je už v provozu, může stále definovat cílovou skupinou ve verzi preview pro testování změny nebo aktualizace pro vaši nabídku.
+Přidejte až deset (10) e-mailových adres ručně, nebo dvacet (20) při nahrávání souboru CSV, pro stávající účet Microsoft (MSA) nebo účty Azure Active Directory, které vám pomůžou při ověřování vaší nabídky před publikováním živě. Přidáním těchto účtů definujete cílovou skupinu, pro kterou bude přístup k vaší nabídce povolený ve verzi Preview, než bude publikována na webu Marketplace. Pokud je vaše nabídka už živá, můžete i nadále definovat cílovou skupinu verze Preview pro testování změn nebo aktualizací vaší nabídky.
 
 > [!NOTE]
-> Cílová skupina ve verzi preview se liší od privátní cílovou skupinu. Cílová skupina ve verzi preview je povolen přístup k vaší nabídce _předchozí_ k publikovanému za provozu v tržišť. Můžete také vytvořit plán a zpřístupnit pouze pro privátní cílovou skupinu. V **plánování výpis** kartu, můžete definovat privátní cílovou skupinu s **Toto je plán soukromý** zaškrtávací políčko. Potom můžete definovat privátní cílové skupiny až 20 000 zákazníků pomocí ID Tenanta Azure.
+> Cílová skupina verze Preview se liší od soukromé cílové skupiny. Cílová skupina Preview má povolený přístup k vaší nabídce _před_ publikováním živě na Marketplace. Můžete se také rozhodnout vytvořit plán a zpřístupnit ho pouze pro privátní cílovou skupinu. Na kartě **seznam plánů** můžete definovat privátní cílovou skupinu pomocí zaškrtávacího políčka **Toto je soukromý plán** . Pak můžete definovat privátní cílovou skupinu až 20 000 zákazníků, kteří používají ID tenantů Azure.
 
-## <a name="technical-configuration"></a>Technické konfigurace
+## <a name="technical-configuration"></a>Technická konfigurace
 
-**Technické konfigurace** kartě definuje technické podrobnosti (cesta adresy URL webhooku, ID tenanta a ID aplikace), použít pro připojení k vaší nabídce. Toto připojení umožňuje nám to zřízení nabídky pro koncového zákazníka, pokud se rozhodnete ho získat. Diagramy s popisem využití shromážděné pole jsou k dispozici v dokumentaci k [splnění SaaS API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
+Karta **Technická konfigurace** definuje technické podrobnosti (cesta URL, Webhook, ID TENANTA a ID aplikace), které se používají pro připojení k vaší nabídce. Toto připojení nám umožňuje zřídit vaši nabídku pro koncového zákazníka, pokud se k tomu rozhodne získat. Diagramy popisující použití shromážděných polí jsou k dispozici v dokumentaci pro [rozhraní API pro plnění SaaS](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
 
-- **Adresa URL cílové stránky** (povinné): Definují adresu URL webu, který zákazníkům přesměrováni na po získání vaši nabídku z webu marketplace. Tato adresa URL bude koncovým bodem, který přijme token, když zákazník se směruje na stránku. Tento token může probíhat pro zřizování podrobně popisuje použití vyřešit v plnění rozhraní API. Tyto údaje a všechny ostatní shromážděných může sloužit jako část vytvořené v prostředí zákazníka interaktivní webové stránky k dokončit registraci a aktivaci nákupu.
+- **Adresa URL cílové stránky** (povinné): Zadejte adresu URL webu, na kterou budou zákazníci zakládat po získání vaší nabídky z webu Marketplace. Tato adresa URL bude koncovým bodem, který obdrží token při směrování zákazníka na stránku. Tento token se dá vyměňovat pro podrobnosti zřizování pomocí řešení v rozhraních API pro plnění. Tyto podrobnosti a všechny ostatní, které shromažďujete, se dají použít jako součást interaktivní webové stránky zákazníka integrované v rámci vašeho prostředí k dokončení registrace a aktivaci jejich nákupu.
 
-- **Připojení webhooku** (povinné): Pro všechny asynchronní události, které je potřeba poslat jménem zákazníka Microsoftu (Příklad: Předplatné SaaS náramků RFID neplatný), potřebujeme, abyste k poskytování připojení webhooku. Pokud ještě nemáte systému webhooku v místě, je nejjednodušší konfiguraci, aby aplikace logiky koncový bod HTTP, který bude naslouchat žádné události odeslání do ní a odpovídajícím způsobem jejich zpracování (například https:\//prod-1westus.logic.azure.com:443/work). Další informace najdete v tématu [volání triggeru, nebo vnořené pracovní postupy s koncovými body HTTP ve službě logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Webhook připojení** (povinné): Pro všechny asynchronní události, které Microsoft potřebuje k odeslání jménem zákazníka (příklad: Předplatné SaaS je neplatné. vyžadujeme vám, abyste poskytli Webhook připojení. Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu http, která bude naslouchat všem událostem, které se do ní odesílají, a pak je správně zpracovat (např. https\/:/prod-1westus.Logic.Azure.com:443/Work). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
-- **ID tenanta Azure AD** (povinné): Uvnitř webu Azure portal, můžeme požadovat, aby vám [vytvoření aplikace Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) tak, že abychom mohli ověřit připojení mezi naše dvě služby je za ověřené komunikaci. Najít [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in), přejděte do služby Azure Active Directory a vyberte **vlastnosti**, potom se podívejte **ID adresáře** uvedené číslo (např.) 50c464d3-4930-494c-963c-1e951d15360e).
+- **ID tenanta Azure AD** (povinné): V Azure Portal musíme [vytvořit aplikaci Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , abyste mohli ověřit, že připojení mezi našimi dvěma službami je za ověřenou komunikací. [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti**a pak vyhledáte uvedené číslo **ID adresáře** (např. 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **ID aplikace Azure AD** (povinné): Budete také potřebovat vaše [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) a ověřovací klíč. K získání těchto hodnot, přejděte na Azure Active Directory a vyberte **registrace aplikací**, potom se podívejte **ID aplikace** číslo uvedené (třeba 50c464d3-4930-494c-963c-1e951d15360e). Pokud chcete najít ověřovací klíč, přejděte na **nastavení** a vyberte **klíče**. Je potřeba zadat popis a dobu trvání a pak bude třeba zadat číselnou hodnotu.
+- **ID aplikace Azure AD** (povinné): Budete také potřebovat [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) a ověřovací klíč. Tyto hodnoty získáte tak, že přejdete na Azure Active Directory a vyberete **Registrace aplikací**a pak vyhledáte uvedené číslo **ID aplikace** (např. 50c464d3-4930-494c-963c-1e951d15360e). Ověřovací klíč najdete tak, že přejdete na **Nastavení** a vyberete **klíče**. Budete muset zadat popis a dobu trvání a pak zadat číselnou hodnotu.
 
- Všimněte si, že je ID aplikace Azure přidružené k ID vydavatele, proto se ujistěte, že stejné ID aplikace se používá v všechny nabídky.
+ Všimněte si, že ID aplikace Azure je přidružené k vašemu ID vydavatele, takže se ujistěte, že se stejné ID aplikace používá ve všech vašich nabídkách.
 
 ## <a name="plan-overview"></a>Přehled plánu
 
-**Plán přehled** kartu umožňuje poskytnout širokou škálu možností plán v rámci stejné nabídky. Tyto plány (někdy označované jako skladové položky) se může lišit jde o verzi, finanční zhodnocení nebo úrovně služby. Musíte vytvořit aspoň jeden plán, aby bylo možné prodej vaší nabídky na webu Marketplace.
+Karta **Přehled plánu** umožňuje v rámci stejné nabídky poskytnout nejrůznější možnosti plánu. Tyto plány (někdy označované jako SKU) se mohou lišit v souvislosti s verzemi, finanční zhodnocení a úrovněmi služby. Aby bylo možné nabídku prodávat na webu Marketplace, musíte nastavit aspoň jeden plán.
 
-Po vytvoření se zobrazí plán názvy, identifikátory, cenové modely, dostupnost (veřejné a privátní), aktuální stav a všechny dostupné akce publikování.
+Po vytvoření se zobrazí vaše názvy plánů, ID, cenové modely, dostupnost (veřejné nebo soukromé), aktuální stav publikování a všechny dostupné akce.
 
-**Akce** k dispozici v **plán přehled** lišit v závislosti na aktuální stav vašeho plánu a mohou zahrnovat:
+**Akce** , které jsou k dispozici v **přehledu plánu** , se liší v závislosti na aktuálním stavu plánu a mohou zahrnovat:
 
 - Pokud je stav plánu **koncept** – odstranit koncept
-- Pokud je stav plánu **Live** – zastavení prodávat plán nebo privátní cílovou skupinu synchronizace
+- Pokud je stav plánu **Live** – zastavit prodej plánu nebo synchronizovat soukromou cílovou skupinu
 
-**Vytvořit nový plán** (minimálně jeden plán pro ty, kteří vyberte prodávat přes Microsoft)
+**Vytvořit nový plán** (minimálně jeden plán pro ty, kteří si vybrali prodej prostřednictvím Microsoftu)
 
-- **ID plánu:** Vytvoření plánu Jedinečný ID pro každý plán v rámci této nabídky. Toto ID se nebude zobrazovat na zákazníky v produktu Azure Resource Manageru a adresy URL šablony (pokud existuje). Použijte pouze malé alfanumerické znaky, pomlčky nebo podtržítka. Pro toto ID plánu. jsou povoleny maximálně 50 znaků. Všimněte si, že ID nemůže modifikovat po výběru vytvořit.
-- **Název plánu:** Zákazníci uvidí tento název při rozhodování o tom, které chcete vybrat v rámci vaší nabídky. Vytvoření nabídky jedinečný název pro každý plán v rámci této nabídky. Název plánu se používá k rozlišení softwarové plány, které mohou být součástí stejné nabídka (například Název nabídky: Windows Server. plány: Windows Server 2016, Windows Server 2019).
+- **ID plánu:** Pro každý plán v této nabídce Vytvořte jedinečné ID plánu. Toto ID se bude zobrazovat zákazníkům v adrese URL produktu a šablony Azure Resource Manager (pokud jsou k dispozici). Používejte jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. Pro toto ID plánu je povoleno maximálně 50 znaků. Všimněte si, že po výběru možnosti vytvořit nelze ID změnit.
+- **Název plánu:** Zákazníci uvidí tento název při rozhodování, který plán vybrat v rámci vaší nabídky. Pro každý plán v této nabídce Vytvořte jedinečný název nabídky. Název plánu slouží k rozlišení softwarových plánů, které mohou být součástí stejné nabídky (např. Název nabídky: Windows Server; plánují Windows Server 2016, Windows Server 2019).
 
-### <a name="plan-listing"></a>Výpis plán
+### <a name="plan-listing"></a>Výpis plánu
 
-**Plánování výpis** karta zobrazuje jazyků (a trhy), kde váš plán je k dispozici, aktuálně Angličtina (Spojené státy) je jediným umístěním, které jsou k dispozici. Kromě toho tato stránka zobrazuje stav výpis specifické pro jazyk a datum a čas, který byl přidán. Budete muset zadat podrobnosti marketplace (nabízejí název, popis, hledané termíny, atd.) pro jednotlivé jazyky / uvedení na trh.
+Karta **seznam plánů** zobrazuje jazyky (a trhy), kde je váš plán k dispozici, v současné době je dostupná jenom angličtina (USA). Kromě toho tato stránka zobrazuje stav seznamu pro konkrétní jazyk a datum a čas, kdy byl přidán. Pro každý jazyk nebo trh budete muset definovat podrobnosti o Marketplace (název nabídky, popis, hledané výrazy atd.).
 
-#### <a name="plan-listing-details"></a>Podrobnosti plánu
+#### <a name="plan-listing-details"></a>Podrobnosti výpisu plánu
 
-Když vyberete některý z jazyků plán se zobrazí **plánování výpis** informace, včetně **název** a **popis.**
+Výběrem jednoho z jazyků plánování se zobrazí informace o **seznamu plánu** , včetně **názvu** a **popisu.**
 
-- **Název**: Předem vyplní podle ve verzi preview **nový plán** položky a zobrazí se jako název vaší nabídky "plán softwaru" zobrazí na webu Marketplace.
-- **Popis:** Tento popis je příležitost k vysvětlení, co tento plán softwaru je jedinečný a případné rozdíly z jiné plány softwaru v rámci vaší nabídky. Může obsahovat až 500 znaků.
+- **Název**: Tato možnost se předem vyplní na základě vaší **nové položky plánu** Preview a zobrazí se jako název "softwarového plánu vaší nabídky" zobrazeného na webu Marketplace.
+- **Popis:** Tento popis je příležitost vysvětlit, co dělá tento plán softwaru jedinečný a jakékoli rozdíly od jiných plánů softwaru v rámci vaší nabídky. Může obsahovat až 500 znaků.
 
-Vyberte **Uložit** po dokončení těchto polí.
+Po dokončení těchto polí vyberte **Uložit** .
 
-#### <a name="plan-pricing-and-availability"></a>Ceny plánu a dostupnost
+#### <a name="plan-pricing-and-availability"></a>Plánování cen a dostupnosti
 
-**Ceny a dostupnost** karta vám umožní nakonfigurovat trhy, které budou k dispozici v tomto plánu požadované finanční zhodnocení modelu, ceny a fakturační období. Kromě toho můžete určit, zda má být plán viditelné pro všechny uživatele nebo pouze pro konkrétní zákazníky (privátní cílové skupiny).
+Karta **ceny a dostupnost** vám umožní nakonfigurovat trhy, na které bude tento plán dostupný, požadovaný finanční zhodnocení model, cenu a fakturační období. Kromě toho můžete určit, jestli se má plán zviditelnit všem uživatelům, nebo jenom pro konkrétní zákazníky (soukromou cílovou skupinu).
 
-##### <a name="enabling-free-trials"></a>Povolení bezplatné zkušební verze
+##### <a name="enabling-free-trials"></a>Povolení bezplatných zkušebních verzí
 
-Nabídky SaaS z komerční Tržiště umožňují poskytovat měsíční bezplatné zkušební verze při prodeji prostřednictvím společnosti Microsoft. Pro všechny fakturační modely a podmínky s výjimkou plánů Účtovaná podle objemu dat se podporují bezplatné zkušební verze. Tato možnost umožňuje zákazníkům mají nízké barrier k položce až jeden měsíc bezplatný přístup.  Pokud budete chtít povolit bezplatnou zkušební verzi pro plány v rámci vaší nabídky, zákazník nebude možné převést na placené předplatné před koncem počáteční měsíčního období.  Během této doby můžete zakoupení vaší nabídky zákazníkům vyzkoušet si některé z podporovaných plány, které mají bezplatnou zkušební verzi povolená a převodu mezi nimi.  Převod na placené předplatné se automaticky provádí na konci období.
-
->[!Note]
->Pokud zákazník vybere pro převod na plán bez bezplatné zkušební verze, převod se provede, ale bezplatné zkušební verze se ztratí okamžitě.  Také Jakmile zákazník začne platit za plán, už měli bezplatnou zkušební verzi ve stejném předplatném, i v případě, že se převést na SKU, které podporuje bezplatné zkušební verze.
-
-Umožňuje nakonfigurovat bezplatnou zkušební verzi je k dispozici pro každý plán ve vaší nabídce. Jednoduše přejděte do ceny a dostupnosti pro každou nabídku a zaškrtněte políčko pro povolení k měsíční zkušební verzi.
-
-![Bezplatná zkušební verze políčko jeden měsíc](./media/free-trial-enable.png)
-
-Pokud chcete získat informace o zákazníkovi aktuálně součástí bezplatné zkušební verze předplatného, použijte vlastnost nové rozhraní API `isFreeTrial`, které budou označeny jako true nebo false. Zobrazit [SaaS získat předplatné API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) Další informace.
+SaaS prostřednictvím komerčního tržiště vám umožní poskytovat měsíční bezplatnou zkušební verzi při prodeji prostřednictvím Microsoftu. Pro všechny fakturační modely a výrazy s výjimkou měřených plánů se podporují bezplatné zkušební verze. Tato možnost umožňuje zákazníkům, aby po jednom měsíci bezplatného přístupu vstoupili na nižší bariéru.  Pokud se rozhodnete povolit bezplatnou zkušební verzi pro plány v rámci vaší nabídky, zákazník nebude moct převést na placené předplatné před uplynutím počátečního měsíčního období.  Během této doby můžou zákazníci nakoupit vaši nabídku vyzkoušet některý z podporovaných plánů, které mají povolenou bezplatnou zkušební verzi, a převádět je mezi nimi.  Převod na placené předplatné se provádí automaticky na konci období.
 
 >[!Note]
->Bezplatné zkušební verze nejsou podporovány pro plány, které využívají službu monitorování míry využití webu marketplace.
+>Pokud se zákazník rozhodne převést na plán bez bezplatných zkušebních verzí, dojde k převodu, ale bezplatná zkušební verze bude okamžitě ztracena.  Jakmile zákazník začne platit za plán, nebude už moct znovu získat bezplatnou zkušební verzi ve stejném předplatném, a to i v případě, že převedou na SKU, které podporuje bezplatné zkušební verze.
+
+Možnost konfigurace bezplatné zkušební verze je k dispozici pro každý plán v nabídce. Jednoduše přejděte na ceny a dostupnost každé nabídky a zaškrtněte políčko pro povolení měsíční zkušební verze.
+
+![Zaškrtávací políčko pro bezplatnou zkušební verzi v jednom měsíci](./media/free-trial-enable.png)
+
+Pokud chcete získat informace o zákaznických předplatných, která se aktuálně účastní bezplatné zkušební verze `isFreeTrial`, použijte novou vlastnost rozhraní API, která bude označená jako true nebo false. Další informace najdete v tématu [rozhraní API pro SaaS získat předplatné](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) .
+
+>[!Note]
+>Bezplatné zkušební verze se nepodporují pro plány, které využívají službu měření na webu Marketplace.
 
 #### <a name="markets"></a>Trhy
 
-- **Upravit trhy** (volitelné)
+- **Upravit trhy** volitelné
 
-Každý plán musí být k dispozici aspoň jeden na trhu. Zaškrtněte políčko pro libovolného místa na trhu, kde chcete zpřístupnit tento plán. Vyhledávací pole a tlačítko pro výběr "Daně uhrazené" zemí, ve kterých Microsoft vrátí prodeje a použití daně za vás, jsou pro lepší. 
+Každý plán musí být k dispozici alespoň v jednom trhu. Zaškrtněte políčko pro jakékoli místo na trhu, kde byste chtěli tento plán zpřístupnit. K nápovědě jsou k dispozici vyhledávací pole a tlačítko pro výběr zemí "daňového přiznání", ve kterých společnost Microsoft provádí prodej a používání daně vaším jménem. 
 
 
-Pokud jste už nastavili cen pro váš plán ve Spojených státech amerických dolarů (USD) a přidejte na trhu jinam, bude cena za nový trh vypočítává podle aktuální kurzů. Vždy byste měli zkontrolovat ceny pro každý trh před publikováním. Pomocí odkazu "Export ceny (xlsx)" po uložení změn můžete zkontrolovat ceny.
+Pokud jste už pro svůj plán nastavili ceny v USA dolary (USD) a přidáte další místo na trhu, cena za nový trh se vypočítá podle aktuálních směnných kurzů. Před publikováním byste měli vždycky zkontrolovat cenu za každý trh. Po uložení změn můžete pomocí odkazu exportovat ceny (XLSX) zkontrolovat ceny.
 
 #### <a name="pricing"></a>Ceny
 
-- **Cenový model**: Paušální sazba. nezáleží nebo licenci na základě
+- **Cenový model**: Paušální sazba nebo na základě pracovních stanic
 
-**Paušální sazba.** Povolení přístupu k vaší nabídky s cenou paušální sazba. nezáleží jednu cenu měsíční nebo roční. To se někdy označuje jako ceny založené na webu.
+**Paušální sazba:** Umožněte přístup k vaší nabídce s jednou měsíčně nebo roční cenou za paušální cenu. Tato situace se někdy označuje jako ceny na základě lokality. Pomocí tohoto cenového modelu můžete volitelně definovat měřené plány, které používají rozhraní API služby pro měření softwaru Marketplace k účtování zákazníků podle nestandardních jednotek.  Další informace o měřených fakturách najdete v tématu [účtované vyúčtování pomocí služby měření na webu Marketplace](./saas-metered-billing.md).
 
-**Licenci na základě:** Povolení přístupu k vaší nabídky s cenami na základě počtu uživatelů přístup k nabídky nebo zabírá *licence*. Tento model založené na pracovní stanici vám umožní nastavit minimální a maximální počtu licencí povolených na základě ceny. Tímto způsobem lze nakonfigurovat různých cenových bodech, podle počtu uživatelů tím, že nakonfigurujete více plánů.  Tato pole jsou volitelná. Pokud pole ponecháte prázdné, bude tak, že nemusí omezení (min 1) a rozdílu mezi maximálním tolik, může systém podporovat interpretovat počet licencí. Tato pole lze upravit jako součást aktualizace pro váš plán.
+**Založeno na sedadle:** Umožněte přístup ke svojí nabídce za cenu na základě počtu uživatelů, kteří přistupují k nabídce nebo při používání *stanic*. Tento model založený na sedadle vám umožní nastavit minimální a maximální počet míst povolených na základě ceny. Tímto způsobem lze nakonfigurovat různé cenové body na základě počtu uživatelů konfigurací více plánů.  Tato pole jsou volitelná. Pokud je ponecháno prázdné, počet sedadel bude interpretován tak, aby neměl omezení (minimum 1 a maximum, kolik může systém podporovat). Tato pole je možné upravovat v rámci aktualizace vašeho plánu.
 
-Po publikování se nedá změnit fakturační cenový model podle výběru. Kromě toho všechny plány pro stejnou nabídku musejí sdílet stejnou cenový model.
+Po publikování se volba cenového modelu fakturace nedá změnit. Kromě toho musí všechny plány pro stejnou nabídku sdílet stejný cenový model.
 
-- **Fakturační období**: Měsíční nebo roční
+- **Fakturační období**: Měsíčně nebo roční
 
-Vyberte frekvenci, kterou zákazníci musí platit ceny uvedené. Musí být zadaná aspoň jeden měsíční nebo roční cena, nebo obě možnosti mohou být k dispozici zákazníkům.
+Vyberte frekvenci, kterou zákazníci musí platit v uvedené ceně. Musí se zadat aspoň jedna měsíční nebo roční cena nebo můžou být dostupné obě možnosti pro zákazníky.
 
 - **Cena**: USD za měsíc nebo USD za rok
 
-Ceny v místní měně set (USD = americký dolar) jsou převedeny do místní měny všechny vybrané trhy aktuální podle sazeb exchange, které jsou k dispozici během instalace. Tyto ceny před publikováním ověřte tak, že vyexportujete ceny tabulky a kontrola cena v trhy. Pokud chcete nastavit vlastní ceny jednotlivých na trhu, úpravě a importu cenovou tabulky. Zodpovídají za ověření, ceny a vlastní nastavení.
-**Musíte nejprve uložit změny cen Povolit export data o cenách.*
+Ceny nastavené v místní měně (USD = USA dolar) se převedou na místní měnu všech vybraných trhů pomocí aktuálních kurzů pro Exchange, které jsou k dispozici během instalace. Před publikováním tyto ceny ověřte, a to tak, že vyexportujete tabulku cen a zkontrolujete cenu na každém trhu. Pokud chcete nastavit vlastní ceny v individuálním trhu, upravte a importujte tabulku s cenami. Zodpovídáte za ověřování těchto cen a jejich nastavení.
+**Aby bylo možné exportovat data o cenách, musíte nejdřív Uložit změny cen.*
 
-Zkontrolujte ceny pečlivě před publikováním, jsou některá omezení, co můžete změnit plán po publikování:
+Před publikováním pečlivě zkontrolujte své ceny, protože existují určitá omezení, co se může po publikování plánu změnit:
 
-- Po publikování plánu nelze změnit cenový model.
-- Po fakturačního období je publikování pro plán, nemůžete později odebral.
-- Po publikování cenu na trhu v plánu není možné později změnit.
+- Po publikování plánu se cenový model nedá změnit.
+- Po publikování fakturačního období pro určitý plán ho nebude možné odebrat později.
+- Jakmile je cena za trh v plánu publikovaná, nedá se později změnit.
 
-### <a name="plan-audience"></a>Plánování cílové skupiny
+### <a name="plan-audience"></a>Cílová skupina plánu
 
-Máte možnost konfigurovat každý plán viditelný pro všechny uživatele nebo pouze konkrétní cílové skupiny podle svého výběru. Můžete přiřadit členství v této cílové skupiny s omezeným přístupem, pomocí ID tenantů Azure AD.
+Máte možnost nakonfigurovat každý plán tak, aby byl viditelný pro všechny uživatele, nebo jenom pro konkrétní cílovou skupinu, kterou zvolíte. V této omezené cílové skupině můžete přiřadit členství pomocí ID tenanta Azure AD.
 
 #### <a name="privacy"></a>Ochrana osobních údajů
 
-- **Toto je plán soukromý** (volitelné zaškrtávací políčko)
+- **Toto je soukromý plán** . (Volitelné zaškrtávací políčko)
 
-Zaškrtněte toto políčko, aby váš plán soukromý a viditelné jenom pro omezený cílové skupiny podle svého výběru. Po publikování jako privátní plánu, můžete aktualizace cílové skupiny nebo zvolit, jestli plán k dispozici všem uživatelům. Jakmile plán byl publikován jako viditelným pro všechny uživatele, musí zůstat viditelné všem uživatelům. (Tento plán nelze konfigurovat jako privátní plán znovu).
+Zaškrtnutím tohoto políčka zajistíte, aby byl váš plán soukromý a viditelný jenom pro skupinu s omezeným přístupem, kterou zvolíte. Po zveřejnění jako soukromého plánu můžete cílovou skupinu aktualizovat nebo si vybrat, že plán bude dostupný všem. Jakmile je plán publikován jako viditelný pro všechny, musí zůstat viditelný pro všechny. (Plán se nedá nakonfigurovat jako privátní plán.)
 
-- **Cílové skupiny s omezeným přístupem (ID Tenanta)**
+- **Skupina s omezeným přístupem (ID klientů)**
 
-Přiřaďte cílové skupiny, který bude mít přístup k tomuto privátní plánu. Je přiřazen přístup pomocí ID tenantů s možností Zahrnout popis každé ID tenanta, které jsou přiřazeny. Je možné přidat maximálně 10 tenant ID nebo 20 000 zákazníků ID tenanta, pokud naimportováním souboru CSV.
+Přiřaďte cílovou skupinu, která bude mít přístup k tomuto privátnímu plánu. Přístup se přiřazuje pomocí ID klientů s možností zahrnutí popisu každého přiřazeného ID tenanta. Pokud importujete soubor tabulky. csv, můžete přidat maximálně 10 ID klientů nebo 20 000 ID klientů.
 
-Tenant je reprezentace organizace s ID reprezentována jako identifikátor GUID (globálně jedinečný identifikátor, 128-bit integer číslo používané pro identifikaci prostředků,). Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikací obdrží při vytvoření partnerství s Microsoftem, například registrací do Azure, Microsoft Intune nebo Microsoft 365. Každý klient Azure AD se odlišuje a je oddělený od ostatních klientů Azure AD. Ke kontrole klienta, přihlaste se k webu Azure portal pomocí účtu, který chcete použít ke správě vaší aplikace. Pokud tenanta máte, budete k němu automaticky přihlášeni a název tenanta se zobrazí přímo pod názvem vašeho účtu. Najeďte myší na název vašeho účtu v pravém horním rohu webu Azure Portal, zobrazí se vaše jméno, e-mail, ID adresáře nebo tenanta (GUID) a vaše doména. Pokud je k vašemu účtu přidruženo více tenantů, můžete výběrem názvu vašeho účtu otevřít nabídku, ve které můžete mezi jednotlivými tenanty přepínat. Každý tenant má vlastní ID tenanta. Můžete také vyhledat pomocí adresy URL názvu domény na ID tenanta vaší organizace: [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com).
+Tenant je reprezentace organizace s ID reprezentovanou jako identifikátor GUID (globálně jedinečný identifikátor, 128 celé číslo, které se používá k identifikaci prostředků). Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikací obdrží při vytvoření partnerství s Microsoftem, například registrací do Azure, Microsoft Intune nebo Microsoft 365. Každý klient Azure AD se odlišuje a je oddělený od ostatních klientů Azure AD. Pokud chcete zjistit tenanta, přihlaste se k Azure Portal pomocí účtu, který chcete použít ke správě aplikace. Pokud tenanta máte, budete k němu automaticky přihlášeni a název tenanta se zobrazí přímo pod názvem vašeho účtu. Najeďte myší na název vašeho účtu v pravém horním rohu webu Azure Portal, zobrazí se vaše jméno, e-mail, ID adresáře nebo tenanta (GUID) a vaše doména. Pokud je k vašemu účtu přidruženo více tenantů, můžete výběrem názvu vašeho účtu otevřít nabídku, ve které můžete mezi jednotlivými tenanty přepínat. Každý tenant má vlastní ID tenanta. ID tenanta vaší organizace můžete také vyhledat pomocí adresy URL názvu domény na adrese: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
-Nabídky SaaS používají ID tenantů k definování privátní cílové skupiny, ale ostatní typy nabídek použít ID předplatného Azure, (které jsou také reprezentované jako identifikátory GUID).
+I když SaaS nabízí použití ID tenanta k definování soukromé cílové skupiny, můžou používat i jiné typy nabídek ID předplatných Azure (které jsou také reprezentované jako identifikátory GUID).
 
 > [!NOTE]
-> Privátní cílové skupiny (nebo cílové skupiny s omezeným přístupem) se liší od cílové skupiny ve verzi preview. V **[ve verzi Preview](#preview)** kartu, můžete definovat cílovou skupinou ve verzi preview. Cílová skupina ve verzi preview je povolen přístup k vaší nabídce *předchozí* nabídku zveřejněná v za provozu na webu Marketplace. Při označení privátní cílovou skupinu platí jenom pro konkrétní plán, cílová skupina ve verzi preview můžete zobrazit všechny plány (privátní nebo ne), ale pouze během období ve verzi limited preview, zatímco plán je otestovali a ověřili.
+> Privátní skupina (nebo skupina s omezeným přístupem) se liší od cílové skupiny verze Preview. Na kartě **[Náhled](#preview)** můžete definovat cílovou skupinu verze Preview. Cílová skupina Preview má povolený přístup k vaší nabídce před tím, *než* je nabídka publikovaná živě na webu Marketplace. I když se označení soukromé cílové skupiny vztahuje pouze na konkrétní plán, cílová skupina Preview může zobrazit všechny plány (soukromě nebo ne), ale pouze během období omezené verze Preview, zatímco je plán testován a ověřen.
 
-## <a name="example-list-of-plans-within-a-marketplace-offer"></a>Příklad seznam plánů v rámci nabídky na webu marketplace
+## <a name="example-list-of-plans-within-a-marketplace-offer"></a>Příklad seznamu plánů v rámci nabídky Marketplace
 
-![Příklad plánu marketplace výpis s poznámkami](./media/marketplace-plan.svg)
+![Ukázkový výpis plánu Marketplace s poznámkami](./media/marketplace-plan.svg)
 
 ## <a name="test-drive"></a>Testovací verze
 
-**Testovací verze** karta vám umožní nastavit si ukázku (nebo "testovací verze") který umožní zákazníkům vyzkoušet vaši nabídku před potvrzením ji zakoupit. Další informace najdete v článku [co je to Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive). Pokud už nechcete si testovací jízdu zadat pro vaši nabídku, vraťte se ke **[nabízejí nastavení](#offer-setup)** stránce a zrušte zaškrtnutí políčka **povolení testu jednotky**.
+Karta **testovací jednotka** vám umožní nastavit ukázku (nebo "testovací jednotku"), která zákazníkům umožní vyzkoušet si vaši nabídku před tím, než se ji zakoupí. Další informace najdete v článku [co je Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive). Pokud již nechcete poskytnout testovací verzi vaší nabídky, vraťte se na stránku **[nastavení nabídky](#offer-setup)** a zrušte zaškrtněte **možnost Povolit testovací jednotku**.
 
-### <a name="technical-configuration"></a>Technické konfigurace
-K dispozici jsou následující typy zkoušky každého s vlastní požadavky na konfiguraci technické.
+### <a name="technical-configuration"></a>Technická konfigurace
+K dispozici jsou následující typy testovacích jednotek, z nichž každá má vlastní požadavky na technickou konfiguraci.
 
 - [Azure Resource Manager](#technical-configuration-for-azure-resource-manager-test-drive)
 - [Dynamics 365](#technical-configuration-for-dynamics-365-test-drive)
 - [Aplikace logiky](#technical-configuration-for-logic-app-test-drive)
-- [Power BI](#technical-configuration-not-required-for-power-bi-test-drives) (technické konfigurace není požadováno)
+- [Power BI](#technical-configuration-not-required-for-power-bi-test-drives) (Technická konfigurace není nutná)
 
-#### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Vyzkoušejte si technickou konfiguraci pro Azure Resource Manageru
+#### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Technická konfigurace pro Azure Resource Manager testovacích jednotek
 
-Nasazení šablony, která obsahuje všechny prostředky Azure, které tvoří vašeho řešení. Produkty, které patří tento scénář používat jenom prostředky Azure. Další informace o nastavení [Azure Resource Manageru testovací verze](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive).
+Šablona nasazení obsahující všechny prostředky Azure, které tvoří vaše řešení. Produkty, které vyhovují tomuto scénáři, používají pouze prostředky Azure. Přečtěte si další informace o nastavení [Azure Resource Manager testovacích jednotek](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive).
 
-- **Oblasti** (povinné): Aktuálně jsou dostupné ve kterém může být vaše testovací verze k dispozici 26 oblastech podporovaných systémem Azure. Obvykle budete chtít zpřístupnit vaše testovací verze v oblastech, kde očekáváte, že největší počet zákazníků, takže mohou vybrat nejbližší oblasti pro zajištění nejlepšího výkonu. Musíte zajistit, že vaše předplatné může nasadit všechny prostředky potřebné ve všech oblastech, které vyberete.
+- **Oblasti** (povinné): V současné době je k dispozici 26 oblastí podporovaných v Azure, ve kterých je možné provést testovou jednotku. Obvykle budete chtít, aby byla testovací jednotka dostupná v oblastech, kde očekáváte největší počet zákazníků, aby mohli vybrat nejbližší oblast pro nejlepší výkon. Budete se muset ujistit, že vaše předplatné bude mít povolené nasazení všech prostředků potřebných v každé z oblastí, které vyberete.
 
-- **Instance**: Vyberte typ (horká nebo studených) a počet instancí k dispozici, vynásobený číslem oblastech, kde je k dispozici vaší nabídky.
+- **Instance**: Vyberte typ (horká nebo studená) a počet dostupných instancí, které se vynásobí počtem oblastí, ve kterých je vaše nabídka dostupná.
 
-**Horké**: Tento typ instance je nasazen a čeká se na přístup za vybrané oblasti. Zákazníci mohou okamžitě přístup k *Hot* instancí si testovací jízdu, namísto nutnosti čekat nasazení. Výměnou za to je, že tyto instance nepřetržitý provoz na vaše předplatné Azure, takže bude mít za následek větší dostupnost nákladů. Důrazně doporučujeme mít alespoň jednu *Hot* instancí, jak je většina zákazníků nechtějí čekat pro úplné nasazení, výsledkem odkládací v využití ze strany zákazníků, pokud žádné *Hot* instance je k dispozici.
+**Horká**: Tento typ instance je nasazený a čeká na přístup na vybranou oblast. Zákazníci můžou okamžitě přistupovat  k horkým instancím testovacích jednotek, ale nemusíte čekat na nasazení. Výměnou za to je, že tyto instance nepřetržitý provoz na vaše předplatné Azure, takže bude mít za následek větší dostupnost nákladů. Důrazně doporučujeme mít aspoň jednu *aktivní* instanci, protože většina zákazníků nechce čekat na plná nasazení, takže když není k dispozici žádná *Hot* instance, výsledkem je vypnutí v zákaznickém využívání.
 
-**Studená**: Tento typ instance představuje celkový počet instancí, které je možné nasadit v jedné oblasti. Studená instance vyžadují celý Test jednotky Resource Manageru šablony nasazení, když zákazník požádá o testovací verze, tak *studenou* instance jsou mnohem pomalejší než načíst *Hot* instancí. Výměnou za to je, že budete muset platit po dobu trvání testu jednotky, je *není* vždy spuštěné v předplatném Azure jako pomocí *Hot* instance.
+**Studené**: Tento typ instance představuje celkový počet instancí, které lze případně nasadit na oblast. Studené instance vyžadují pro nasazení celé testovací jednotky Správce prostředků šablonu, když zákazník požádá o testovací verzi, takže *studené* instance budou mnohem pomalejší, než se dosadí *za horké* instance. Kompromisy je, že je nutné platit jenom za dobu trvání testovacích jednotek, ale v předplatném Azure *není vždycky* spuštěná jako s *horkou* instancí.
 
-- **Šablony Azure Resource Manageru test jednotky**: Nahrajte .zip, který obsahuje šablony Azure Resource Manageru.  Další informace o vytváření šablony Azure Resource Manageru v tomto článku rychlý Start [vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+- **Šablona testovacích jednotek Azure Resource Manager**: Nahrajte soubor. zip obsahující šablonu Azure Resource Manager.  Další informace o vytvoření šablony Azure Resource Manager v článku rychlý Start [vytváření a nasazování Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-- **Doba trvání test drivu** (povinné): Zadejte dobu, která zůstane aktivní, počet hodin na testovací verzi. Po skončení tohoto období se automaticky ukončí na testovací verzi. V této hodnotě duration může pouze tipu sady podle celočíselný počet hodin (např.) hodin "2", "1,5" je neplatný).
+- **Doba trvání testovacího disku** (povinné): Zadejte dobu, po kterou testovací jednotka zůstane aktivní, v počtu hodin. Po skončení tohoto období se automaticky ukončí na testovací verzi. Toto trvání může být pouze nastaveno na celé číslo hodiny (např. "2" hodiny, "1,5" není platné).
 
-#### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Vyzkoušejte si technickou konfiguraci pro Dynamics 365
+#### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Technická konfigurace pro testovací jednotku Dynamics 365
 
-Microsoft může zbavte se složité nastavování si testovací jízdu hostování a Správa služby zřizování a nasazování pomocí tohoto typu testovací verze. Konfigurace pro tento typ hostované testovací verze je stejný bez ohledu na to, zda testovací verze je cílen na verzi Business Central Customer Engagement operace nebo cílové skupiny.
+Společnost Microsoft může odebrat složitost nastavení testovacích jednotek hostováním a údržbou zřizování a nasazení služby pomocí tohoto typu testovacích jednotek. Konfigurace pro tento typ hostované testovací jednotky je stejná bez ohledu na to, jestli je testovací jednotka cílena na obchodní oddělení, zapojení zákazníků nebo cílovou skupinu operací.
 
-- **Maximální počet souběžných testovací verze** (povinné): Nastavení maximálního počtu zákazníků, které můžou používat vaše testovací verze najednou. Každý souběžných uživatelských spotřebuje licenci Dynamics 365, testovací verze je aktivní, takže budete muset zajistit, že máte dostatek licencí, které jsou k dispozici pro podporu maximální nastavený limit. Doporučená hodnota 3 – 5.
+- **Maximální počet souběžných testovacích jednotek** (povinné): Nastavte maximální počet zákazníků, kteří můžou používat testovací jednotku najednou. Každý souběžný uživatel bude spotřebovat licenci Dynamics 365, zatímco je testovací jednotka aktivní, takže budete muset zajistit, aby bylo k dispozici dostatek licencí pro podporu maximálního limitu. Doporučená hodnota 3-5.
 
-- **Doba trvání test drivu** (povinné): Zadejte dobu, která Test Drive zůstane aktivní, tak, že definujete počet hodin. Po tomto počtu hodin bude relace ukončit a už nebude používat jednu licenci. Doporučujeme, abyste hodnotu 2 až 24 hodin v závislosti na složitosti vaší nabídky. V této hodnotě duration může pouze tipu sady podle celočíselný počet hodin (např.) hodin "2", "1,5" je neplatný).  Uživatel může požádat o novou relaci, dojde k jejich spuštění mimo časový limit a chtějí mít přístup k testovací verze.
+- **Doba trvání testovacího disku** (povinné): Zadejte dobu, po kterou testovací jednotka zůstane aktivní, a to tak, že definujete počet hodin. Po uplynutí této doby bude relace končit a už nebude využívat jednu z vašich licencí. V závislosti na složitosti vaší nabídky doporučujeme hodnotu 2-24 hodin. Toto trvání může být pouze nastaveno na celé číslo hodiny (např. "2" hodiny, "1,5" není platné).  Uživatel může požádat o novou relaci, pokud dojde k nedostatku času a chcete znovu získat přístup k testovací jednotce.
 
-- **Adresa URL instance** (povinné): Adresa URL, kde se zákazník začne jejich testovací verze. Obvykle adresu URL vaší instance Dynamics 365, používající vaši aplikaci s ukázkovými daty nainstalovaná (třeba https://testdrive.crm.dynamics.com).
+- **Adresa URL instance** (povinné): Adresa URL, na které zákazník zahájí svoji testovací jednotku. Obvykle adresa URL vaší instance Dynamics 365 spouští vaši aplikaci s nainstalovanou ukázkovou daty (např https://testdrive.crm.dynamics.com).
 
-- **Instance adresy URL webového rozhraní API** (povinné): Načíst přihlášením do svého účtu Microsoft 365 a přejdete na adresu URL webového rozhraní API pro vaši instanci Dynamics 365 **nastavení** \&gt; **Přizpůsobení** \&gt; **Materiály pro vývojáře** \&gt; **Instance webové rozhraní API (kořenovou adresu URL)** , zkopírujte adresu URL najdete tady (třeba https://testdrive.crm.dynamics.com/api/data/v9.0).
+- **Adresa URL webového rozhraní API instance** (povinné): Načtěte adresu URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení** \&gt;. **Vlastní nastavení** \&gt; **Materiály pro vývojáře** \&gt; **Instance webového rozhraní API (adresa URL kořenového adresáře služby)** zkopírujte zde NALEZENOU adresu https://testdrive.crm.dynamics.com/api/data/v9.0) URL (např.
 
-- **Název role** (povinné): Zadejte název role zabezpečení, které jste definovali ve vaší vlastní testovací verze Dynamics 365. Tím se přiřadí uživateli při jejich testovací verze (například test-drive role).
+- **Název role** (povinné): Zadejte název role zabezpečení, který jste definovali ve vlastní testovací jednotce Dynamics 365. Tato funkce se uživateli přiřadí během testovacích jednotek (např. Test-Drive-role).
 
-#### <a name="technical-configuration-for-logic-app-test-drive"></a>Technické konfigurace pro testovací verze aplikace logiky
+#### <a name="technical-configuration-for-logic-app-test-drive"></a>Technická konfigurace pro testovací jednotku aplikace logiky
 
-Jakékoli vlastní produkty používejte tento typ testu jednotky nasazení šablony, která zahrnuje celou řadu architektur komplexní řešení. Další informace o nastavení aplikace logiky testů jednotek, navštivte [operace](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) a [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) na Githubu.
+Všechny vlastní produkty by měly používat tento typ šablony nasazení testovacích jednotek, který zahrnuje celou řadu složitých architektur řešení. Další informace o nastavení testovacích jednotek aplikace logiky najdete v [provozu](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) na webu GitHub a na službě [Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) .
 
-- **Oblast** (povinné, jedním výběrem rozevírací seznam): Aktuálně jsou dostupné ve kterém může být vaše testovací verze k dispozici 26 oblastech podporovaných systémem Azure. Prostředky pro vaše aplikace logiky se nasadí v oblasti, kterou vyberete. Pokud vaše aplikace logiky má všechny vlastní prostředky uložené v konkrétní oblasti, ujistěte se, že se tady vyberete danou oblast. Nejlepší způsob, jak to provést, je plně nasazení vaší aplikace logiky místně v rámci předplatného Azure na portálu a ověřte, že funguje správně před provedením tohoto výběru.
+- **Oblast** (povinný, rozevírací seznam s jedním výběrem): V současné době je k dispozici 26 oblastí podporovaných v Azure, ve kterých je možné provést testovou jednotku. Prostředky vaší aplikace logiky se nasadí do vybrané oblasti. Pokud vaše aplikace logiky obsahuje nějaké vlastní prostředky uložené v konkrétní oblasti, ujistěte se, že je zde vybraná oblast. Nejlepším způsobem, jak to provést, je plně nasadit vaši aplikaci logiky lokálně na vaše předplatné Azure na portálu a před provedením tohoto výběru ověřit, jestli funguje správně.
 
-- **Maximální počet souběžných testovací verze** (povinné): Nastavení maximálního počtu zákazníků, které můžou používat vaše testovací verze najednou. Tyto testovací jednotky už nasazená, takže se zákazníci můžou pro okamžitě přístup k nim bez čekání na nasazení.
+- **Maximální počet souběžných testovacích jednotek** (povinné): Nastavte maximální počet zákazníků, kteří můžou používat testovací jednotku najednou. Tyto testovací jednotky jsou už nasazené a umožňují zákazníkům okamžitý přístup k nim bez čekání na nasazení.
 
-- **Doba trvání test drivu** (povinné): Zadejte dobu, která zůstane aktivní, počet hodin na testovací verzi. Po skončení tohoto období se automaticky ukončí na testovací verzi.
+- **Doba trvání testovacího disku** (povinné): Zadejte dobu, po kterou testovací jednotka zůstane aktivní, v počtu hodin. Testovací jednotka se po skončení tohoto časového období ukončí automaticky.
 
-- **Název skupiny prostředků Azure** (povinné): Zadejte [skupiny prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) název, kde je uložena vaše testovací verze aplikace logiky.
+- **Název skupiny prostředků Azure** (povinné): Zadejte název [skupiny prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) , kde se vaše testovací jednotka aplikace logiky uloží.
 
-- **Název aplikace logiky Azure** (povinné): Zadejte název aplikace logiky, která uživateli přiřadí na testovací verzi. Tato aplikace logiky musí být uložen ve skupině prostředků Azure výše.
+- **Název aplikace logiky Azure** (povinné): Zadejte název aplikace logiky, která uživateli přiřadí testovací jednotku. Tato aplikace logiky se musí uložit do skupiny prostředků Azure výše.
 
-- **Název aplikace logiky pro zrušení zřízení** (povinné): Zadejte název aplikace logiky, která po dokončení zákazník deprovisions testovací verze. Tato aplikace logiky musí být uložen ve skupině prostředků Azure výše.
+- **Zrušit zřízení názvu aplikace logiky** (povinné): Zadejte název aplikace logiky, který po dokončení zákazníka odzřídí testovací jednotku. Tato aplikace logiky se musí uložit do skupiny prostředků Azure výše.
 
-#### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>Technické konfigurace není vyžadováno pro testovací verze Power BI
+#### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>Pro Power BI testovacích jednotek není nutná technická konfigurace.
 
-Produkty, které chcete prokázat, že že interaktivní vizuálu Power BI můžete použít vložený odkaz ke sdílení řídicího panelu vlastními silami sestavených jako jejich testovací verze, žádné další technické nezbytné konfigurace. Další informace o nastavení[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview) šablony aplikací.
+Produkty, které chtějí předvést interaktivní Power BI vizuál, můžou pomocí vloženého odkazu sdílet vlastní řídicí panel jako svoji testovací jednotku, nevyžaduje se žádná další technická konfigurace. Přečtěte si další informace[](https://docs.microsoft.com/power-bi/service-template-apps-overview) o nastavení Power BIch šablonových aplikací.
 
-### <a name="deployment-subscription-details"></a>Podrobnosti o předplatném nasazení
+### <a name="deployment-subscription-details"></a>Podrobnosti předplatného nasazení
 
-Pokud chcete nasadit na testovací verzi vaším jménem, vytvoření a zajištění samostatné jedinečné předplatným Azure. (Není vyžadované pro testovací verze Power BI).
+Chcete-li nasadit testovací jednotku vaším jménem, vytvořte a poskytněte samostatné jedinečné předplatné Azure. (Nevyžaduje se pro Power BI testovací jednotky).
 
-- **ID předplatného Azure** (povinné pro Azure Resource Manageru a Logic apps): Zadejte ID předplatného pro udělení přístupu k vašim službám účtu Azure pro využití prostředků, vytváření sestav a fakturaci. Doporučujeme vám zvážit [vytvoření samostatné předplatné Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) má použít pro testovací verze, pokud již nemáte. ID vašeho předplatného Azure najdete po přihlášení k [webu Azure portal](https://portal.azure.com/) a přejdete do **předplatná** kartu v levé nabídce. Výběrem karty zobrazí ID vašeho předplatného (třeba "a83645ac-1234-5ab6-6789-1h234g764ghty").
+- **ID předplatného Azure** (požadováno pro Azure Resource Manager a Logic Apps): Zadejte ID předplatného, které poskytuje přístup ke službám účtů Azure za účelem vytváření sestav a fakturace využívání prostředků. Doporučujeme zvážit [vytvoření samostatného předplatného Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) , které se použije pro testovací jednotky, pokud ho ještě nemáte. ID vašeho předplatného Azure můžete najít tak, že se přihlásíte k [Azure Portal](https://portal.azure.com/) a přejdete na kartu předplatná v nabídce na levé straně. Výběrem karty zobrazíte ID předplatného (například a83645ac-1234-5ab6-6789-1h234g764ghty).
 
-- **ID tenanta Azure AD** (povinné): Zadejte vaše Azure Active Directory (AD) [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Toto ID najít, přihlaste se k [webu Azure portal](https://portal.azure.com/), v nabídce vlevo vyberte kartu Active Directory, vyberte **vlastnosti** , potom se podívejte **ID adresáře** uvedené číslo (např.) 50c464d3-4930-494c-963c-1e951d15360e). Můžete také vyhledat pomocí váš název domény adresy URL v ID tenanta vaší organizace: [ https://www.whatismytenantid.com ](https://www.whatismytenantid.com).
+- **ID tenanta Azure AD** (povinné): Zadejte [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **vlastnosti** a vyhledejte číslo **ID adresáře** (např. 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta vaší organizace můžete také vyhledat pomocí adresy URL vašeho názvu domény na adrese: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
-- **Název tenanta Azure AD** (vyžadováno pro Dynamics 365): Zadejte název vaší služby Azure Active Directory (AD). Zjištění názvu, přihlaste se k [webu Azure portal](https://portal.azure.com/), v pravém horním rohu se zobrazí název tenanta pod názvem vašeho účtu.
+- **Název tenanta Azure AD** (vyžadováno pro dynamickou 365): Zadejte název Azure Active Directory (AD). Pokud chcete najít tento název, přihlaste se k [Azure Portal](https://portal.azure.com/)v pravém horním rohu bude název vašeho tenanta uvedený pod názvem vašeho účtu.
 
-- **ID aplikace Azure AD** (povinné): Zadejte vaše Azure Active Directory (AD) [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Toto ID najít, přihlaste se k [webu Azure portal](https://portal.azure.com/), v nabídce vlevo vyberte kartu Active Directory, vyberte **registrace aplikací**, potom se podívejte **ID aplikace** číslo uvedené (třeba 50c464d3-4930-494c-963c-1e951d15360e).
+- **ID aplikace Azure AD** (povinné): Zadejte [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **Registrace aplikací**a vyhledejte uvedené číslo **ID aplikace** (např. 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Tajný kód klienta aplikace Azure AD** (povinné): Zadejte vaše aplikace Azure AD [tajný kód klienta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets). Chcete-li tuto hodnotu najít, přihlaste [webu Azure portal](https://portal.azure.com/). Vyberte **Azure Active Directory** v nabídce vlevo vyberte kartu **registrace aplikací**, pak vyberte vaši aplikaci test jednotky. V dalším kroku vyberte **certifikátů a tajných kódů**vyberte **nový tajný kód klienta**, zadejte popis, vyberte **nikdy** pod **Expires**, pak Zvolte **přidat**. Nezapomeňte si poznamenejte hodnotu. (Není stránku opustit předtím, než to uděláte, jinak nebude mít přístup k hodnotě.)
+- **Tajný kód klienta aplikace Azure AD** (povinné): Zadejte [tajný kód klienta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)aplikace Azure AD. Tuto hodnotu najdete tak, že se přihlásíte k [Azure Portal](https://portal.azure.com/). V nabídce vlevo vyberte kartu **Azure Active Directory** , vyberte **Registrace aplikací**a pak vyberte svoji aplikaci Test Drive. V dalším kroku vyberte **certifikáty a tajné klíče**, vyberte **nový tajný klíč klienta**, zadejte popis, v části **platnost**vyberte **nikdy** a pak zvolte **Přidat**. Nezapomeňte hodnotu zkopírovat. (Před tím, než to uděláte, opustíte stránku, nebo jinak nemáte přístup k této hodnotě.)
 
-Nezapomeňte **Uložit** přejde k další části!
+Před přechodem k další části si nezapomeňte **Uložit** .
 
-### <a name="test-drive-listings-optional"></a>Test jednotky výpisy (volitelné)
+### <a name="test-drive-listings-optional"></a>Výpisy testovacích jednotek (volitelné)
 
-**Test Drive výpisy** možnost nalezené pod **testovací verze** karta zobrazuje jazyků (a trhy), kde je k dispozici, vaše testovací verze Angličtina (Spojené státy) je aktuálně k dispozici pouze umístění . Kromě toho tato stránka zobrazuje stav výpis specifické pro jazyk a datum a čas, který byl přidán. Je potřeba zadat podrobnosti testu jednotky (popis, uživatelská příručka, videa atd.) pro každý jazyk/trh.
+Možnost **výpisy testovacích jednotek** , která se nachází na kartě **testovací jednotka** , zobrazuje jazyky (a trhy), kde je k dispozici vaše testovací jednotka. v současné době je v angličtině (USA) dostupná pouze poloha. Kromě toho tato stránka zobrazuje stav seznamu pro konkrétní jazyk a datum a čas, kdy byl přidán. Pro každý jazyk nebo trh budete muset definovat podrobnosti testovacích jednotek (popis, uživatelská příručka, videa atd.).
 
-- **Popis** (povinné): Popisují vaše testovací verze, co se prokáže, cílů pro uživatele můžete experimentovat, funkce, které chcete prozkoumat a všechny příslušné informace umožňující uživateli určit, jestli se má získat vaší nabídky. V tomto poli je třeba zadat maximálně 3 000 znaků textu. 
+- **Popis** (povinné): Popište si testovou jednotku, co se zobrazí, cíle pro uživatele, které se mají experimentovat, funkce, které se mají prozkoumat, a všechny relevantní informace, které uživatelům pomůžou určit, jestli se má vaše nabídka získat. Do tohoto pole lze zadat až 3 000 znaků textu. 
 
-- **Přístup k informacím o** (požadováno pro Azure Resource Manageru a logika testování jednotek): Vysvětluje, co zákazník potřebuje vědět, aby bylo možné přistupovat a používat tato testovací verze. Provede scénáře použití vaší nabídky a přesně toho, co zákazník musí znáte pro přístup k funkcím v průběhu testu jednotky. Maximálně 10 000 znaků textu lze zadat v tomto poli.
+- **Přístup k informacím** (požadováno pro Azure Resource Manager a logické testovací jednotky): Vysvětlete, co zákazník potřebuje pro přístup k této testovací jednotce a k používání této zkušební verze znát. Projděte si scénář pro použití vaší nabídky a přesně toho, co by měl zákazník znát pro přístup k funkcím v rámci testovacích jednotek. Do tohoto pole lze zadat až 10 000 znaků textu.
 
-- **Uživatelská příručka** (povinné): Podrobný návod, prostředí test jednotky. Uživatelská příručka zahrnovat představ zákazník získat nepocítí testovací verze a slouží jako reference pro nějaké dotazy, které můžou mít. Soubor musí být ve formátu PDF a po nahrání jmenovat (max. 255 znaků).
+- **Uživatelská příručka** (povinné): Podrobný návod k vašemu prostředí testovacích jednotek. Ruční příručka uživatele by měla pokrývat přesně to, co chcete zákazníkovi získat ze zkušební jednotky a sloužit jako odkaz na případné dotazy, které mohou mít. Soubor musí být ve formátu PDF a po nahrání má název (maximálně 255 znaků).
 
-- **Videa: Přidávání videí** (volitelné): Videa můžete uložit na YouTube nebo Vimeo a odkazujete pomocí odkazu a miniaturu obrázku (533 x 324 pixelů), tak, aby zákazník může zobrazit provede informace pro lepší pochopení testovací verze, včetně postupu pro úspěšné fungování funkce vaše nabídky a scénáře, které jejich výhody.
-  - **Název** (povinné)
-  - **Adresa URL (YouTube nebo Vimeo pouze)** (povinné)
-  - **Miniatura (533 x 324px)** : Soubor bitové kopie musí být ve formátu PNG.
+- **Videa Přidat videa** (volitelné): Videa se dají nahrát na YouTube nebo Vimeo a tady se odkazuje s odkazem a obrázkem miniatury (533 x 324 pixelů), aby si zákazník mohli prohlédnout informace, které jim pomohou lépe pochopit testovací verzi, včetně toho, jak úspěšně používat funkce vašeho Nabídka a pochopení scénářů, které zvýrazní jejich výhody
+  - **Název** požadovanou
+  - **Adresa URL (jenom YouTube nebo Vimeo)** požadovanou
+  - **Miniatura (533 x 324px)** : Soubor obrázku musí být ve formátu PNG.
 
-Vyberte **Uložit** po dokončení těchto polí.
+Po dokončení těchto polí vyberte **Uložit** .
 
 ## <a name="publish"></a>Publikování
 
-#### <a name="submit-offer-to-preview"></a>Odeslat nabídnout ve verzi preview
+#### <a name="submit-offer-to-preview"></a>Odeslat nabídku do verze Preview
 
-Až dokončíte všechny požadované části nabídky, vyberte **publikovat** v pravém horním rohu portálu. Bude znovu orientovaného na **revize a publikovat** stránky. 
+Až dokončíte všechny požadované části nabídky, vyberte **publikovat** v pravém horním rohu portálu. Budete přesměrováni na stránku **Revize a publikování** . 
 
-Pokud je to poprvé publikování v rámci této nabídky, můžete:
+Pokud tuto nabídku publikujete poprvé, můžete:
 
-- Zobrazení stavu dokončení pro každou část nabídky.
-    - *Nezahájeno* – znamená, že se některé části a je potřeba dokončit.
-    - *Neúplné* – znamená, že v části obsahuje chyby, které je potřeba opravit nebo vyžaduje další údaje. Vraťte se oddíly a aktualizujte ji.
-    - *Kompletní* – znamená, že v části hotový, poskytl všechna požadovaná data a nejsou žádné chyby. Všechny části nabídky musí být ve stavu dokončení, před odesláním nabídky.
-- Poskytují pokyny testovací tým certifikace zajistit, že vaše aplikace je testována správně, kromě jakékoli dodatečné poznámky, které jsou užitečné k pochopení vaší aplikace.
-- Odešlete nabídku k publikování tak, že vyberete **odeslat**. Pošleme vám e-mail s oznámením při předběžnou verzi nabídky je k dispozici si můžete zkontrolovat a schválit. Musíte se vrátit do partnerského centra a vyberte **pro uvedení do provozu** pro nabídku k publikování vaší nabídky na veřejnosti (nebo pokud soukromé nabídky privátní cílové skupině).
+- Podívejte se na téma stav dokončení pro jednotlivé části nabídky.
+    - Nezahájeno – znamená, že se oddíl nedotkl a musí se dokončit.
+    - *Nedokončeno* – znamená, že oddíl obsahuje chyby, které je třeba opravit, nebo vyžaduje, aby bylo k dispozici více informací. Vraťte se prosím k oddílům a aktualizujte je.
+    - *Complete* – znamená, že část je dokončena, byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
+- Poskytněte pokyny k testování certifikačního týmu, abyste měli jistotu, že vaše aplikace je testována správně, kromě doplňkových poznámek, které jsou užitečné pro porozumění vaší aplikaci.
+- Kliknutím na **Odeslat**nabídku pro publikování odešlete. Pošleme vám e-mail s oznámením, že je k dispozici verze Preview vaší nabídky, kterou si můžete prohlédnout a schválit. Je nutné, abyste se vrátili do partnerského centra **a vybrali možnost** pro publikování nabídky na veřejném webu (nebo v případě soukromé nabídky pro privátní cílovou skupinu).
 
 ## <a name="next-steps"></a>Další postup
 
-- [Aktualizace stávající nabídky na webu Marketplace obchodní](./update-existing-offer.md)
+- [Aktualizace stávající nabídky na komerčním webu Marketplace](./update-existing-offer.md)

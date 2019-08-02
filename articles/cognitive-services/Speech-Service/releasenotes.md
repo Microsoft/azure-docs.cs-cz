@@ -1,238 +1,238 @@
 ---
-title: Zpráva k vydání verze – hlasové služby
-titlesuffix: Azure Cognitive Services
-description: Zobrazit spuštěné protokol vydání funkcí, vylepšení, oprav chyb a známé problémy pro hlasové služby Azure.
+title: Poznámky k verzi – služba pro rozpoznávání řeči
+titleSuffix: Azure Cognitive Services
+description: Podívejte se na běžící protokol vydaných verzí, vylepšení, opravy chyb a známé problémy služby Speech.
 services: cognitive-services
-author: wolfma61
+author: BrianMouncer
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 609443a4926fabd991846faee4a0a7dffe3a696b
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 12eecc4998153cbeedeb907ecad33c56141a50e6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490178"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559130"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
-## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: 2019 – červen vydání
+## <a name="speech-sdk-160-2019-june-release"></a>1\.6.0 sady Speech SDK: 2019. června – verze
 
 **Ukázky**
-*   Ukázky kódu pro rychlý start pro převod textu na řeč na UPW a Unity
-*   Ukázky rychlý start pro Swift v Iosu
-*   Ukázky v Unity pro zpracování řeči a rozpoznávání záměru a překladu
-*   Aktualizace úvodní ukázky pro DialogServiceConnector
+*   Ukázky rychlý Start pro převod textu na řeč pro UWP a Unity
+*   Ukázka rychlého startu pro SWIFT v iOS
+*   Ukázky Unity pro rozpoznávání řeči & Rozpoznávání záměru a překlad
+*   Aktualizované ukázky rychlý Start pro DialogServiceConnector
 
-**Vylepšení / změny**
-* Dialogové okno obor názvů:
+**Vylepšení/změny**
+* Obor názvů dialogového okna:
     * SpeechBotConnector byl přejmenován na DialogServiceConnector
     * BotConfig byl přejmenován na DialogServiceConfig
-    * BotConfig::FromChannelSecret() má byla přeřazena na DialogServiceConfig::FromBotSecret()
-    * Všechny stávající klienty s přímým přístupem řeči řádku nadále podporovány po přejmenování
-* Aktualizace adaptéru REST převod textu na ŘEČ pro podporu proxy, trvalé připojení
-* Zlepšení chybovou zprávu, když je předána neplatná oblast
-* Kód SWIFT a Objective-C:
-    * Vylepšené hlášení chyb: Metody, které může dojít k chybě, jsou teď k dispozici ve dvou verzích: Ten, který poskytuje `NSError` objekt pro zpracování chyb a ten, který vyvolává výjimku. Předchozí jsou vystaveny Swift. Tato změna vyžaduje úpravy existující kód Swift.
-    * Zpracování událostí vylepšené
+    * BotConfig:: FromChannelSecret () byl přemapován na DialogServiceConfig:: FromBotSecret ()
+    * Po přejmenování budou dál podporovány všechny existující klienty s přímým ovládáním řeči.
+* Aktualizace adaptéru pro převod textu na řeč pro podporu proxy a trvalého připojení
+* Vylepšit chybovou zprávu, když je předána neplatná oblast
+* SWIFT/objektiv-C:
+    * Vylepšené zasílání zpráv o chybách: Metody, které mohou mít za následek chybu, jsou nyní k dispozici ve dvou verzích: Ten, který zpřístupňuje `NSError` objekt pro zpracování chyb a druhý, který vyvolá výjimku. Bývalé jsou zpřístupněny SWIFT. Tato změna vyžaduje úpravu stávajícího kódu SWIFT.
+    * Vylepšené zpracování událostí
 
 **Opravy chyb**
-*   Oprava pro převod textu na ŘEČ: kde SpeakTextAsync budoucnost vrátila bez čekání, dokud se nedokončí zvuk vykreslování
-*   Oprava pro zařazování řetězců v C# povolit úplné jazyková podpora
-*   Oprava problému aplikace .NET core se načíst knihovnu core s cílovou architekturu net461 ve vzorcích
-*   Oprava pro občasné problémy, které je nasazování nativních knihoven do výstupní složky ve vzorcích
-*   Oprava pro zavření spolehlivě webové sokety
-*   Oprava pro možných chyb při otevírání připojení velmi při velkém zatížení v Linuxu
-*   Oprava pro chybějí metadata v rámci sadě pro macOS
-*   Oprava problémů s `pip install --user` na Windows
+*   Oprava pro TTS: kde se SpeakTextAsync budoucí vrácení bez čekání, dokud se nedokončí vykreslování zvuku
+*   Oprava pro zařazovací řetězce v C# pro povolení úplné jazykové podpory
+*   Oprava problému aplikace .NET Core pro načtení základní knihovny s cílovou architekturou net461 v ukázkách
+*   Oprava pro příležitostné problémy s nasazováním nativních knihoven do výstupní složky v ukázkách
+*   Oprava pro spolehlivou zavírání webového soketu
+*   Oprava pro možnou chybu při otevírání připojení v rámci velmi velkého zatížení systému Linux
+*   Oprava chybějících metadat v sadě rozhraní pro macOS
+*   Oprava pro problémy s `pip install --user` Windows
 
 
-## <a name="speech-sdk-151"></a>Speech SDK 1.5.1
+## <a name="speech-sdk-151"></a>Sada Speech SDK 1.5.1
 
-Toto je vydání opravy chyb a pouze by to ovlivnilo sady SDK nativního/spravovaného. Není to by to ovlivnilo verze jazyka JavaScript sady SDK.
+Toto je vydání opravy chyby a ovlivňuje pouze nativní/spravované sady SDK. Nemá vliv na verzi JavaScriptu sady SDK.
 
 **Opravy chyb**
 
-* Opravte FromSubscription při použití s určené k transkripci konverzace.
-* Oprava chyby v hledání pro hlasové první virtuálních asistentů – klíčové slovo.
+* Opravte FromSubscription při použití s přepisem konverzace.
+* Opravte chybu v klíčovém slovu hledání pro hlasového prvního virtuálního pomocníka.
 
 
-## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK 1.5.0: Května 2019 vydání
+## <a name="speech-sdk-150-2019-may-release"></a>1\.5.0 sady Speech SDK: 2019 – může vydávat
 
 **Nové funkce**
 
-* Funkce probuzení Wordu (klíčové slovo zjišťování/KWS) je teď dostupná pro Windows a Linux. Funkce KWS může fungovat s jakýmkoli typem mikrofon, oficiální KWS podporu, ale aktuálně je omezená na mikrofon pole najdete v Azure Kinect DK hardwaru nebo sadou SDK pro řeč zařízení.
-* Fráze pomocný parametr funkce je dostupná prostřednictvím sady SDK. Další informace najdete v tématu [tady](how-to-phrase-lists.md).
-* Funkce určené k transkripci konverzace je k dispozici prostřednictvím sady SDK. Zobrazit [tady](conversation-transcription-service.md).
-* Přidání podpory pro hlasové první virtuální Asistenti pomocí kanálu s přímým přístupem řádku řeči.
+* Funkce Wake Word (klíčové slovo hledání/KWS) je teď k dispozici pro Windows a Linux. Funkce KWS můžou pracovat s jakýmkoli typem mikrofonu. oficiální podpora KWS se ale v současné době omezila na pole mikrofonu, která najdete v sadě Azure Kinect DK hardware nebo v sadě Speech SDK (Speech Devices SDK).
+* Funkce pomocných parametrů fráze je dostupná prostřednictvím sady SDK. Další informace najdete [tady](how-to-phrase-lists.md).
+* Funkce přepisu konverzace je k dispozici prostřednictvím sady SDK. Podívejte se [sem](conversation-transcription-service.md).
+* Přidání podpory pro virtuální asistenty hlasových kanálů pomocí přímého kanálu pro rozpoznávání řádků.
 
 **Ukázky**
 
-* Přidání ukázky pro nové funkce nebo nové služeb podporovaných službou SDK.
+* Byly přidány ukázky pro nové funkce nebo nové služby, které sada SDK podporuje.
 
-**Vylepšení / změny**
+**Vylepšení/změny**
 
-* Přidá různé vlastnosti rozlišovač k úpravě chování služby nebo výsledků služby (např. maskování vulgárních výrazů a další).
-* Teď můžete nakonfigurovat nástroj pro rozpoznávání prostřednictvím vlastnosti standardní konfigurace i v případě, že jste vytvořili nástroj pro rozpoznávání `FromEndpoint`.
-* C: cíl `OutputFormat` SPXSpeechConfiguration byla přidána vlastnost.
-* Sada SDK teď podporuje Debian 9 jako Linuxovou distribuci.
+* Přidání různých vlastností nástroje pro rozpoznávání pro úpravu chování služby nebo výsledků služby (například vulgárních výrazů a dalších).
+* Nástroj pro rozpoznávání teď můžete nakonfigurovat pomocí standardních vlastností konfigurace, a to i v případě, že jste vytvořili `FromEndpoint`Nástroj pro rozpoznávání.
+* Cíl-C: `OutputFormat` vlastnost byla přidána do SPXSpeechConfiguration.
+* Sada SDK teď podporuje Debian 9 jako distribuci Linux.
 
 **Opravy chyb**
 
-* Opravili jsme problém, kde byl prostředek mluvčího zničené příliš brzy v převodu textu na řeč.
-## <a name="speech-sdk-142"></a>Speech SDK 1.4.2
+* Opravili jsme problém, kdy byl prostředek mluvčíe ve fázi převodu textu na řeč příliš nestrukturované.
+## <a name="speech-sdk-142"></a>Sada Speech SDK 1.4.2
 
-Toto je vydání opravy chyb a pouze by to ovlivnilo sady SDK nativního/spravovaného. Není to by to ovlivnilo verze jazyka JavaScript sady SDK.
+Toto je vydání opravy chyby a ovlivňuje pouze nativní/spravované sady SDK. Nemá vliv na verzi JavaScriptu sady SDK.
 
-## <a name="speech-sdk-141"></a>Speech SDK 1.4.1
+## <a name="speech-sdk-141"></a>Sada Speech SDK 1.4.1
 
-Jedná se o verzi jen pro JavaScript. Nepřidaly se žádné funkce. Byly provedeny následující opravy:
+Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly provedeny následující opravy:
 
-* Zabránit web balíček načtení agenta proxy https.
+* Zabrání webovému balíčku načíst agenta HTTPS-proxy-.
 
-## <a name="speech-sdk-140-2019-april-release"></a>Speech SDK 1.4.0: 2019 dubna vydání
+## <a name="speech-sdk-140-2019-april-release"></a>1\.4.0 sady Speech SDK: 2019. dubna
 
 **Nové funkce** 
 
-* Sada SDK teď podporuje převod textu na řeč služby jako beta verze. Podporováno od Windows a Linuxem plochy z C++ a C#. Další informace najdete [převod textu na řeč přehled](text-to-speech.md#get-started-with-text-to-speech).
-* Sada SDK teď podporuje zvukové soubory MP3 a díle/OGG jako datový proud vstupních souborů. Tato funkce je dostupná jenom v Linuxu z jazyka C++ a C# a je aktuálně ve verzi beta (Další podrobnosti [tady](how-to-use-codec-compressed-audio-input-streams.md)).
-* Sadou SDK pro řeč pro Javu, .NET core, C++ a Objective-C získali podporu pro macOS. Podpora jazyka Objective-C pro macOS je aktuálně ve verzi beta.
-* iOS: Sadou SDK pro řeč pro iOS (Objective-C) nyní jsme publikovali také CocoaPod.
-* JavaScript: Podpora pro jiné než výchozí mikrofon jako vstupní zařízení.
-* JavaScript: Podpora proxy pro Node.js.
+* Sada SDK teď podporuje službu převodu textu na řeč jako beta verzi. Podporuje se v systémech Windows a Linux Desktop z C++ a C#. Další informace najdete v [přehledu převod textu na řeč](text-to-speech.md#get-started-with-text-to-speech).
+* Sada SDK teď podporuje zvukové soubory MP3 a Opus/OGG jako vstupní soubory streamu. Tato funkce je dostupná jenom pro Linux z C++ a C# a je momentálně ve verzi beta (další podrobnosti najdete [tady](how-to-use-codec-compressed-audio-input-streams.md)).
+* Sada Speech SDK pro jazyky Java, .NET Core C++ a objektivní-C získala podporu MacOS. Podpora pro macOS je v současnosti ve verzi beta.
+* iOS: Sada Speech SDK pro iOS (cíl-C) je teď publikovaná taky jako CocoaPod.
+* JavaScript: Podpora pro jiné než výchozí mikrofony jako vstupní zařízení.
+* JavaScript: Podpora proxy serveru pro Node. js.
 
 **Ukázky**
 
-* Přidali jsme ukázky pro použití v jazyce C++ a Objective-c. sadou SDK pro řeč v systému macOS.
-* Ukázky demonstrace využití převod textu na řeč služby byly přidány.
+* Byly přidány ukázky pro použití sady Speech C++ SDK s cíli-C v MacOS.
+* Byly přidány ukázky demonstrující použití služby převodu textu na řeč.
 
-**Vylepšení / změny**
+**Vylepšení/změny**
 
-* Python: Další vlastnosti výsledky rozpoznávání jsou teď dostupné prostřednictvím `properties` vlastnost.
-* Pro další rozvoj a podporu ladění, můžete přesměrovat SDK protokolování a diagnostické informace do souboru protokolu (Další podrobnosti [tady](how-to-use-logging.md)).
-* JavaScript: Zlepšení výkonu zpracování zvuku.
+* Python: Další vlastnosti výsledků rozpoznávání jsou nyní zpřístupněny prostřednictvím `properties` vlastnosti.
+* Pro další podporu vývoje a ladění můžete přesměrovat informace o protokolování a diagnostice sady SDK do souboru protokolu (další podrobnosti najdete [tady](how-to-use-logging.md)).
+* JavaScript: Zvyšte výkon zpracování zvuku.
 
 **Opravy chyb**
 
-* Mac/iOS: Byl opraven chybu, která vedla k dlouhého čekání, když nelze navázat připojení ke službě řeči.
-* Python: zlepšení zpracování chyb pro argumenty v Pythonu zpětná volání.
-* JavaScript: Oprava nesprávného stavu vytváření sestav pro zpracování řeči, skončila RequestSession.
+* Mac/iOS: Došlo k chybě, která vedla k dlouhému čekání v případě, že nebylo možné navázat spojení se službou Speech.
+* Python: zlepšení zpracování chyb pro argumenty v zpětných voláních Pythonu.
+* JavaScript: Opravené chybné vytváření sestav stavu pro rozpoznávání řeči skončilo v RequestSession.
 
-## <a name="speech-sdk-131-2019-february-refresh"></a>Speech SDK 1.3.1: Aktualizace února 2019
+## <a name="speech-sdk-131-2019-february-refresh"></a>Sada Speech SDK 1.3.1: 2019. února – aktualizace
 
-Toto je vydání opravy chyb a pouze by to ovlivnilo sady SDK nativního/spravovaného. Není to by to ovlivnilo verze jazyka JavaScript sady SDK.
+Toto je vydání opravy chyby a ovlivňuje pouze nativní/spravované sady SDK. Nemá vliv na verzi JavaScriptu sady SDK.
 
 **Oprava chyby**
 
-* Oprava nevracení paměti při použití mikrofonu vstup. Na základě Stream nebo vstupní soubor nemá vliv.
+* Při použití vstupu mikrofonu byla vyřešena nevracení paměti. Na základě datového proudu nebo vstupu souboru není ovlivněno.
 
-## <a name="speech-sdk-130-2019-february-release"></a>Speech SDK 1.3.0: 2019 Únorová verze
+## <a name="speech-sdk-130-2019-february-release"></a>1\.3.0 sady Speech SDK: 2019. února – vydání
 
 **Nové funkce**
 
-* Sadou SDK pro řeč podporuje výběr vstupní mikrofonu prostřednictvím AudioConfig třídy. Umožňuje zvukových dat datový proud do hlasové služby z jiné než výchozí mikrofonu. Další informace najdete v dokumentaci popisující [vstupní zvuková zařízení výběr](how-to-select-audio-input-devices.md). Tato funkce není k dispozici z jazyka JavaScript.
-* Sadou SDK pro řeč teď podporuje Unity v beta verzi. Poskytnout zpětnou vazbu prostřednictvím v části problém [ukázkového úložiště Githubu](https://aka.ms/csspeech/samples). Tato verze podporuje Unity na Windows x86 a x64 (desktop nebo aplikací univerzální platformy Windows) a Android (ARM32/64, x86). Další informace najdete v našich [rychlý start Unity](quickstart-csharp-unity.md).
-* Soubor `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (k dispozici v předchozích verzích) už není potřeba. Funkce je teď integrovaná v core SDK.
+* Sada Speech SDK podporuje výběr vstupního mikrofonu přes třídu AudioConfig. To umožňuje streamovat zvuková data do služeb řeči z jiného než výchozího mikrofonu. Další informace najdete v dokumentaci popisující [Výběr zvukového vstupního zařízení](how-to-select-audio-input-devices.md). Tato funkce není ještě dostupná z JavaScriptu.
+* Sada Speech SDK teď ve verzi beta verze podporuje Unity. Poskytněte zpětnou vazbu v části problém v [ukázkovém úložišti GitHubu](https://aka.ms/csspeech/samples). Tato verze podporuje Unity v systémech Windows x86 a x64 (desktopové nebo Univerzální platforma Windows aplikace) a Androidu (ARM32/64, x86). Další informace najdete v našem rychlém startu pro [Unity](quickstart-csharp-unity.md).
+* Soubor `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dodán v předchozích verzích) už není potřeba. Tato funkce je teď integrovaná do základní sady SDK.
 
 
 **Ukázky**
 
-Následující nový obsah je k dispozici v našich [ukázkové úložiště](https://aka.ms/csspeech/samples):
+V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)je k dispozici následující nový obsah:
 
-* Další ukázky pro AudioConfig.FromMicrophoneInput.
-* Další ukázky Pythonu pro rozpoznání záměru a převodu.
-* Další ukázky pro IOS pomocí objekt připojení.
-* Další ukázky v Javě pro překlad textů pomocí zvukového výstupu.
-* Nové ukázky pro použití [rozhraní REST API služby Batch určené k transkripci](batch-transcription.md).
+* Další ukázky pro AudioConfig. FromMicrophoneInput.
+* Další ukázky Pythonu pro rozpoznávání a překlad záměrů.
+* Další ukázky pro použití objektu připojení v iOS
+* Další ukázky Java pro překlad pomocí zvukového výstupu.
+* Nová ukázka použití [dávkového přepisu REST API](batch-transcription.md).
 
-**Vylepšení / změny**
+**Vylepšení/změny**
 
 * Python
-  * Vylepšené parametr ověření a chybové zprávy v SpeechConfig.
-  * Přidání podpory pro objekt připojení.
-  * Podpora Pythonu 32-bit (x86) na Windows.
-  * Z beta verze je sadou SDK pro řeč pro Python.
+  * Vylepšené ověřování parametrů a chybové zprávy v SpeechConfig.
+  * Přidejte podporu pro objekt připojení.
+  * Podpora 32-bitové verze Pythonu (x86) ve Windows.
+  * Sada Speech SDK for Python je mimo verzi beta.
 * iOS
-  * Sada SDK je teď integrovaný proti sady iOS SDK verze 12.1.
-  * Sada SDK nyní podporuje iOS verze 9.2 a vyšší.
-  * Zlepšení referenční dokumentaci a opravte několik názvů vlastností.
+  * Sada SDK je teď založená na sadě iOS SDK verze 12,1.
+  * Sada SDK teď podporuje iOS verze 9,2 a novější.
+  * Vylepšete referenční dokumentaci a opravte několik názvů vlastností.
 * JavaScript
-  * Přidání podpory pro objekt připojení.
-  * Přidání souborů definic typů pro připojené jazyka JavaScript
-  * Počáteční podpora a implementaci pro pomocné parametry frázi.
-  * Vrátí kolekci properties službou JSON pro rozpoznávání
-* Knihovny DLL Windows teď obsahují verzi prostředku.
-* Pokud jste vytvořili rozpoznávání `FromEndpoint` můžete přidat parametry přímo na adresu URL koncového bodu. Pomocí `FromEndpoint` nejde nakonfigurovat nástroj pro rozpoznávání prostřednictvím vlastnosti standardní konfigurace.
+  * Přidejte podporu pro objekt připojení.
+  * Přidat soubory definice typu pro seskupené JavaScripty
+  * Počáteční podpora a implementace pro pomocný parametr fráze
+  * Návratová kolekce vlastností s JSON služby pro rozpoznávání
+* Knihovny DLL systému Windows teď obsahují prostředek verze.
+* Pokud vytvoříte Nástroj pro rozpoznávání `FromEndpoint` , můžete přidat parametry přímo k adrese URL koncového bodu. Pomocí `FromEndpoint` standardních vlastností konfigurace nemůžete konfigurovat nástroj pro rozpoznávání.
 
 **Opravy chyb**
 
-* Prázdný proxy uživatelské jméno a heslo pro proxy server nebyly zpracovány správně. V této vydané verzi pokud ji nastavíte proxy uživatelské jméno a heslo pro proxy server na prázdný řetězec, se nebude odeslat při připojování k proxy serveru.
-* ID relace je vytvořena pomocí sady SDK nebyly vždy skutečně náhodného pro některé jazyky&nbsp;/ prostředí. Přidat inicializační generátor náhodných odstranění tohoto problému.
-* Zlepšení zpracování autorizační token. Pokud chcete použít autorizační token, zadejte v SpeechConfig a nechte prázdné, pokud klíč předplatného. Vytvořte nástroj pro rozpoznávání jako obvykle.
-* V některých případech připojení nebylo správně uvolnění objektu. Tento problém byl vyřešen.
-* Ukázková JavaScript byl nastaven na podporují zvukového výstupu pro překlad syntézu také v Safari.
+* Prázdné uživatelské jméno proxy serveru a heslo proxy serveru nebyly zpracovány správně. Pokud v této verzi nastavíte uživatelské jméno a heslo proxy serveru na prázdný řetězec, nebudou odeslány při připojování k proxy serveru.
+* Identifikátor SessionID, který sada SDK vytvořil, nebyl vždycky pro některé jazyky&nbsp;nebo prostředí vždy náhodný. K vyřešení tohoto problému se přidala inicializace náhodného generátoru.
+* Vylepšete zpracování autorizačního tokenu. Pokud chcete použít autorizační token, zadejte v SpeechConfig a nechte klíč předplatného prázdný. Pak vytvořte Nástroj pro rozpoznávání obvyklým způsobem.
+* V některých případech se objekt připojení neuvolnil správně. Tento problém byl vyřešen.
+* Ukázka JavaScriptu byla opravena tak, aby podporovala zvukový výstup pro syntézu překladu i v Safari.
 
-## <a name="speech-sdk-121"></a>Speech SDK 1.2.1
+## <a name="speech-sdk-121"></a>Sada Speech SDK 1.2.1
 
-Jedná se o verzi jen pro JavaScript. Nepřidaly se žádné funkce. Byly provedeny následující opravy:
+Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly provedeny následující opravy:
 
-* Konec datového proudu na turn.end, ne na speech.end vyvolat.
-* Oprava chyby v zvuku čerpadla, že nebyla plánovat nebude dále odeslat, pokud aktuální odeslání se nezdařilo.
-* Oprava průběžné rozpoznávání s ověřovací token.
-* Oprava chyby pro různé rozlišovač nebo koncové body.
+* Požárový konec streamu. konec, ne na řeč. end.
+* Oprava chyby v zvukové pumpě, která neplánovala další odeslání, pokud se aktuální odeslání nepovedlo.
+* Opravte průběžné rozpoznávání pomocí ověřovacího tokenu.
+* Oprava chyb pro různé funkce pro rozpoznávání nebo koncové body.
 * Dokumentace k vylepšení.
 
-## <a name="speech-sdk-120-2018-december-release"></a>Speech SDK 1.2.0: Verze prosince 2018
+## <a name="speech-sdk-120-2018-december-release"></a>1\.2.0 sady Speech SDK: verze 2018 – prosinec
 
 **Nové funkce**
 
 * Python
-  * Je k dispozici v této vydané verzi Beta verze podpory Pythonu (3.5 a vyšší). Další informace najdete v tématu here](quickstart-python.md).
+  * V této verzi je k dispozici beta verze podpory Pythonu (3,5 a novější). Další informace naleznete zde] (rychlý Start – python.md).
 * JavaScript
-  * Open source se sadou SDK pro řeč pro jazyk JavaScript. Zdrojový kód je k dispozici na [Githubu](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
-  * Nyní podporujeme Node.js, najdete další informace o [tady](quickstart-js-node.md).
-  * Omezení délky pro zvuk relace byla odebrána, opětovné připojení v rámci obálek provede automaticky.
+  * Sada Speech SDK pro JavaScript je open source. Zdrojový kód je k dispozici [](https://github.com/Microsoft/cognitive-services-speech-sdk-js)na GitHubu.
+  * Nyní podporujeme Node. js. Další informace najdete [tady](quickstart-js-node.md).
+  * Omezení délky pro zvukové relace bylo odebráno, k automatickému připojení dojde v rámci pokrytí.
 * Objekt připojení
-  * Z rozpoznávání rukopisu můžete použít objekt připojení. Tento objekt umožňuje explicitně iniciovat připojení k službě a přihlaste se k připojení a odpojení události odběru.
-    (Tato funkce není dosud k dispozici z jazyka JavaScript a Python.)
-* Podpora pro Ubuntu 18.04.
+  * Z nástroje pro rozpoznávání můžete získat přístup k objektu připojení. Tento objekt vám umožňuje explicitně iniciovat připojení služby a přihlásit se k odběru událostí a odpojovat se.
+    (Tato funkce ještě není dostupná z JavaScriptu a Pythonu.)
+* Podpora pro Ubuntu 18,04.
 * Android
-  * Povolené ProGuard podporují během generování APK.
+  * Povolená podpora ProGuard během generování APK
 
 **Vylepšení**
 
-* Vylepšení ve využití interní vlákna, snížení počtu vláken, zámky, vzájemně vyloučené přístupy.
-* Vylepšené hlášení chyb a informace. V několika případech ještě nebyly rozšířeny chybové zprávy si jak.
-* Aktualizovat závislosti vývoj v jazyce JavaScript použití aktuální modulů.
+* Vylepšení využití interního vlákna, což snižuje počet vláken, zámků a mutexů.
+* Vylepšené zasílání zpráv o chybách/informace. V několika případech se chybové zprávy nerozšířily tak, jak jsou.
+* Aktualizované závislosti vývoje v JavaScriptu pro použití aktuálnosti modulů.
 
 **Opravy chyb**
 
-* Z důvodu neshody typu v RecognizeAsync nevracení pevné paměti.
-* V některých případech se za následek únik výjimek.
-* Oprava nevracení paměti v argumentech události překladu.
-* Oprava zamykání problém na znovu připojit v dlouho spuštěna relace.
-* Opravili jsme problém, který může vést k chybějící konečný výsledek pro překlady se nezdařilo.
-* C#: Pokud asynchronní operace nebyla očekávána v hlavním vlákně, bylo možné že nástroj pro rozpoznávání může být uvolněn předtím, než se asynchronní úloha byla dokončena.
-* Java: Opravili jsme problém, což vede k chybovému ukončení virtuálního počítače Java.
-* Objective-C: Oprava výčtu mapování; RecognizedIntent vrátila místo RecognizingIntent.
-* JavaScript: Nastavení výchozího formátu výstupu na jednoduché v SpeechConfig.
-* JavaScript: Odebírá se nekonzistence mezi vlastnosti objektu konfigurace v jazyce JavaScript a další jazyky.
+* Pevná nevracení paměti kvůli neshodě typu v RecognizeAsync.
+* V některých případech došlo k úniku výjimek.
+* Oprava nevrácené paměti v argumentech události překladu.
+* Opravili jsme problém se zámkem při opětovném připojení v dlouho spuštěných relacích.
+* Opravili jsme problém, který by mohl vést k chybějícímu konečnému výsledku pro neúspěšné překlady.
+* C#: Pokud v hlavním vlákně nečekala asynchronní operace, bylo by bylo možné odstranit Nástroj pro rozpoznávání před dokončením asynchronní úlohy.
+* Java: Opravili jsme problém, což vedlo k chybě virtuálního počítače Java.
+* Cíl-C: Pevné mapování výčtu; Místo RecognizingIntent se vrátilo RecognizedIntent.
+* JavaScript: Nastavte výchozí výstupní formát na "jednoduchý" v SpeechConfig.
+* JavaScript: Odebrání nekonzistence mezi vlastnostmi objektu konfigurace v jazyce JavaScript a dalších jazycích.
 
 **Ukázky**
 
-* Aktualizace a opravy několik vzorových (například výstup hlasy pro překlad atd.).
-* Přidání ukázky Node.js v [ukázkové úložiště](https://aka.ms/csspeech/samples).
+* Aktualizovali a opravili jsme několik ukázek (například výstupní hlasy pro překlad atd.).
+* Do [ukázkového úložiště](https://aka.ms/csspeech/samples)se přidaly ukázky pro Node. js.
 
-## <a name="speech-sdk-110"></a>Speech SDK 1.1.0
+## <a name="speech-sdk-110"></a>Sada Speech SDK 1.1.0
 
 **Nové funkce**
 
 * Podpora pro Android x86/x64.
-* Podpora proxy serveru: V objektu SpeechConfig můžete nyní volání funkce nastavíte informace o proxy serveru (název hostitele, port, uživatelské jméno a heslo). Tato funkce není k dispozici v systému iOS.
+* Podpora proxy serveru: V objektu SpeechConfig nyní můžete zavolat funkci pro nastavení informací o proxy serveru (název hostitele, port, uživatelské jméno a heslo). Tato funkce není k dispozici v systému iOS.
 * Vylepšené chybové kód a zprávy. Pokud rozlišení vrátil chybu, to již nastaven `Reason` (v případě zrušené) nebo `CancellationDetails` (v výsledek rozpoznání) k `Error`. Zrušené událost teď obsahuje dva další členy, `ErrorCode` a `ErrorDetails`. Pokud server vrátil Další informace o chybě s oznámenou chybu, teď bude k dispozici v nové členy.
 
 **Vylepšení**
@@ -243,7 +243,7 @@ Jedná se o verzi jen pro JavaScript. Nepřidaly se žádné funkce. Byly proved
 
 **Opravy chyb**
 
-* Opravili jsme několik výjimek, které jsou součástí nástrojů pro rozpoznávání. Kromě toho jsou výjimky zachycena a převeden na událost zrušení.
+* Opravili jsme několik výjimek, které jsou součástí nástrojů pro rozpoznávání. Kromě toho jsou výjimky zachyceny a převedeny na zrušené události.
 * Opravte nevracení paměti v vlastnost správy.
 * Oprava chyby, ve kterém zvukový vstupní soubor mohlo způsobit chybu rozlišovače.
 * Je opravená chyba, kde může přijaté události po události ukončení relace.
@@ -258,21 +258,21 @@ Jedná se o verzi jen pro JavaScript. Nepřidaly se žádné funkce. Byly proved
 
 * Přidání C++ a C# samplea pull a push využití datový proud v [ukázkové úložiště](https://aka.ms/csspeech/samples).
 
-## <a name="speech-sdk-101"></a>Speech SDK 1.0.1
+## <a name="speech-sdk-101"></a>Sada Speech SDK 1.0.1
 
 Vylepšení spolehlivosti a opravy chyb:
 
 * Oprava potenciální závažná chyba z důvodu časování v uvolňování modulu pro rozpoznávání
 * Oprava potenciální závažná chyba v případě zrušit nastavení vlastnosti.
 * Přidané Další chyba a Kontrola parametrů.
-* Objective-C: Oprava možné závažná chyba způsobila přepsáním název v NSString.
-* Objective-C: Upravené viditelnost rozhraní API
-* JavaScript: Opravili jsme týkající se událostí a instalační soubory.
+* Cíl-C: Opravili jsme možnou závažnou chybu způsobenou přepsáním názvu v NSString.
+* Cíl-C: Upravená viditelnost rozhraní API
+* JavaScript: Opravené související události a jejich datové části.
 * Dokumentace k vylepšení.
 
 V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidán nový ukázky pro jazyk JavaScript.
 
-## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Služby cognitive Services řeči SDK 1.0.0: Verze září 2018
+## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services 1.0.0 Speech SDK: 2018. září verze
 
 **Nové funkce**
 
@@ -281,17 +281,17 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 
 **Rozbíjející změny v**
 
-* V této verzi představeny počet nejnovější změny.
-  Zkontrolujte [na této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) podrobnosti.
+* V této verzi se zavádí určitý počet nezměněných změn.
+  Podrobnosti najdete na [této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) .
 
-## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Sada SDK 0.6.0 řeči služeb cognitive Services: Verze srpna 2018
+## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services 0.6.0 Speech SDK: 2018. srpna
 
 **Nové funkce**
 
 * Aplikace UPW vytvořené pomocí sadou SDK pro řeč teď můžete předat Kit certifikaci aplikace Windows (souboru).
   Podívejte se [UPW quickstart](quickstart-csharp-uwp.md).
 * Podpora pro .NET Standard 2.0 pro Linux (Ubuntu 16.04 x 64).
-* Experimentální: Podpora jazyka Java 8 na Windows (64 bitů) a Linux (Ubuntu 16.04 x 64).
+* Zkušební Podpora jazyka Java 8 v systému Windows (64 bitů) a Linux (Ubuntu 16,04 x64).
   Podívejte se [rychlý start Java Runtime Environment](quickstart-java-jre.md).
 
 **Funkční změny**
@@ -310,15 +310,15 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 * Opravili jsme problém, kde může ukončit dlouhotrvající rozpoznávání uprostřed přenosu.
 * Oprava časování v modulu pro rozpoznávání vypnutí.
 
-## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Sada SDK si verzi 0.5.0 řeči služeb cognitive Services: Července 2018
+## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services 0.5.0 Speech SDK: verze 2018 – červenec
 
 **Nové funkce**
 
-* Podpora platformy Android (API 23: Android 6.0 Marshmallow nebo vyšší). Podívejte se [Android rychlý Start](quickstart-java-android.md).
+* Podpora platformy Android (rozhraní API 23: Android 6,0 Marshmallow nebo vyšší). Podívejte se [Android rychlý Start](quickstart-java-android.md).
 * Podpora .NET Standard 2.0 na Windows. Podívejte se [rychlý start pro .NET Core](quickstart-csharp-dotnetcore-windows.md).
-* Experimentální: Podpora UWP na Windows (verze 1709 nebo novější).
+* Zkušební Podpora UWP ve Windows (verze 1709 nebo novější).
   * Podívejte se [UPW quickstart](quickstart-csharp-uwp.md).
-  * Poznámka: Aplikace UPW vytvořené pomocí sadou SDK pro řeč ještě nepředávejte Kit certifikaci aplikace Windows (souboru).
+  * Poznámka: Aplikace UWP vytvořené pomocí sady Speech SDK ještě nepředá certifikační sadu aplikací pro Windows (WACK).
 * Podporují rozpoznávání dlouhotrvající se automatické obnovení připojení.
 
 **Funkční změny**
@@ -329,25 +329,25 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 
 **Rozbíjející změny v**
 
-* Rozpoznávání události: Typ události NoMatch se nesloučila do událost chyby.
+* Události rozpoznávání: Typ události neshody byl sloučen do chybové události.
 * SpeechOutputFormat v jazyce C# se přejmenoval na OutputFormat zůstat zarovnané s jazykem C++.
 * Návratový typ některé metody `AudioInputStream` rozhraní se mírně změní:
    * V jazyce Java `read` metody nyní vrací `long` místo `int`.
    * V jazyce C# `Read` metody nyní vrací `uint` místo `int`.
    * V jazyce C++ `Read` a `GetFormat` metody nyní návratový `size_t` místo `int`.
-* C++: Instance vstupního audiostreamy nyní mohou být předány pouze jako `shared_ptr`.
+* C++: Instance zvukových vstupních streamů se teď dají předat jenom jako `shared_ptr`.
 
 **Opravy chyb**
 
 * Oprava nesprávné návratové hodnoty ve výsledku Pokud `RecognizeAsync()` vyprší časový limit.
 * Závislost na knihovny media foundation ve Windows se odebrala. Sada SDK nyní používá rozhraní API Core zvuk.
-* Oprava dokumentace: Přidá [oblastech](regions.md) stránky k popisu podporovaných oblastí.
+* Oprava dokumentace: Přidání stránky [oblastí](regions.md) pro popis podporovaných oblastí.
 
 **Známý problém**
 
 * Sadou SDK pro řeč pro Android nemá sestavy o výsledcích syntézu řeči pro překlad. Tento problém bude vyřešen v příští verzi.
 
-## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Sada SDK 0.4.0 řeči služeb cognitive Services: Verze června 2018
+## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Cognitive Services 0.4.0 Speech SDK: 2018. června – verze
 
 **Funkční změny**
 
@@ -383,6 +383,6 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 
 Další ukázky byly přidány a jsou neustále aktualizovány. Nejnovější sadu ukázek, najdete v článku [úložišti GitHub s ukázkami sadou SDK pro řeč](https://aka.ms/csspeech/samples).
 
-## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>Sada SDK 0.2.12733 řeči služeb cognitive Services: Verze v květnu 2018
+## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>Cognitive Services 0.2.12733 Speech SDK: 2018 – může vydávat
 
 Tato verze je první verze public preview služby Cognitive Services SDK řeči.

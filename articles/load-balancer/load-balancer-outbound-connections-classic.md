@@ -1,10 +1,10 @@
 ---
-title: Odchozích připojení v Azure (klasické)
+title: Odchozí připojení v Azure (Classic)
 titlesuffix: Azure Load Balancer
-description: Tento článek vysvětluje, jak Azure umožňuje cloudové služby pro komunikaci s veřejné internetové služby.
+description: Tento článek vysvětluje, jak Azure umožňuje cloudovým službám komunikovat s veřejnými službami sítě Internet.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,174 +12,174 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
-ms.author: kumud
-ms.openlocfilehash: 3267d79387586f5ca8475d7ac0ed0f86d3f64f0d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 10af3b4838aae1565bac1d996997c117a74cedbc
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595049"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274672"
 ---
-# <a name="outbound-connections-classic"></a>Odchozí připojení (Classic)
+# <a name="outbound-connections-classic"></a>Odchozí připojení (klasická)
 
-Azure poskytuje odchozí připojení pro nasazení zákazníků prostřednictvím několika různých mechanismů. Tento článek popisuje, co jsou scénáře, kdy se vztahují, jak fungují a jejich správě.
+Azure poskytuje odchozí konektivitu pro zákaznická nasazení prostřednictvím několika různých mechanismů. Tento článek popisuje, co jsou scénáře, kdy se používají, jak fungují a jak je spravovat.
 
 >[!NOTE]
->Tento článek se týká pouze nasazení Classic.  Kontrola [odchozí připojení](load-balancer-outbound-connections.md) pro všechny scénáře nasazení Resource Manageru v Azure.
+>Tento článek se zabývá jenom klasickými nasazeními.  Projděte si [odchozí připojení](load-balancer-outbound-connections.md) pro všechny scénáře nasazení Správce prostředků v Azure.
 
-Nasazení v Azure může komunikovat s koncovými body mimo Azure v veřejný adresní prostor IP adres. Když instance zahájí odchozího toku k cíli v veřejný adresní prostor IP adres, Azure dynamicky mapuje privátní IP adresu na veřejnou IP adresu. Po vytvoření tohoto mapování návratový přenos pro tento tok odchozí pocházející ze dosáhnout taky privátní IP adresa původu toku.
+Nasazení v Azure může komunikovat s koncovými body mimo Azure ve veřejném adresním prostoru IP adres. Když instance inicializuje odchozí tok do cílového umístění ve veřejném adresním prostoru IP adres, Azure dynamicky mapuje privátní IP adresu na veřejnou IP adresu. Po vytvoření tohoto mapování se může vrátit přenos pro tento odchozí výstupní tok a získat tak privátní IP adresu, ve které tok vznikl.
 
-Azure používá k provedení této funkce překlad síťových adres zdroje (SNAT). Když více privátní IP adresy se vydávají za jednu veřejnou IP adresu, Azure využívá [port překladu adres (Jan)](#pat) k maskovat privátních IP adres. Dočasné porty se používají pro token PAT a jsou [předpřidělené](#preallocatedports) na základě velikosti fondu.
+Azure používá k provedení této funkce překlad zdrojového síťového adres (SNAT). Při maskování více privátních IP adres za jednou veřejnou IP adresou využívá Azure k maskování privátních IP adres [port (Pat) adresování](#pat) . Dočasné porty se používají pro PAT a jsou vyčerpány na základě velikosti fondu. [](#preallocatedports)
 
-Existuje více [odchozí scénáře](#scenarios). Tyto scénáře můžete kombinovat podle potřeby. Seznamte se s nimi pečlivě pro pochopení možností, omezení a vzory, která je použita k modelu nasazení a scénář aplikace. Přečtěte si pokyny pro [Správa těchto scénářů](#snatexhaust).
+Existuje několik [odchozích scénářů](#scenarios). Tyto scénáře můžete v případě potřeby kombinovat. Pečlivě si přečtěte informace o možnostech, omezeních a vzorech, které se vztahují na váš model nasazení a scénář aplikace. Přečtěte si pokyny pro [správu těchto scénářů](#snatexhaust).
 
-## <a name="scenarios"></a>Přehled scénářů
+## <a name="scenarios"></a>Přehled scénáře
 
-Azure nabízí tři různých způsobů dosažení klasickými nasazeními odchozí připojení.  Ne všechna nasazení Classic mají všechny tři scénáře, která je jim dostupná:
+Azure poskytuje tři různé metody pro zajištění klasických nasazení pro odchozí připojení.  Ne všechna klasická nasazení mají k dispozici všechny tři scénáře:
 
-| Scénář | Metoda | Protokoly IP | Popis | Webová Role pracovního procesu | IaaS | 
+| Scénář | Metoda | Protokoly IP | Popis | Role webového pracovního procesu | IaaS | 
 | --- | --- | --- | --- | --- | --- |
-| [1. Virtuální počítač s veřejnou IP adresu Instance úroveň adresou](#ilpip) | SNAT, ho maskují portu se nepoužívá. | TCP, UDP, ICMP, ESP | Azure používá veřejné IP adresy přiřazené virtuálního počítače. Instance má všechny dočasné porty, které jsou k dispozici. | Ne | Ano |
-| [2. veřejný koncový bod s vyrovnáváním zatížení](#publiclbendpoint) | SNAT s ho maskují port (cesta) k veřejnému koncovému bodu | TCP, UDP | Azure sdílí s několika koncovými body privátní veřejné IP adresy veřejného koncového bodu. Azure používá pro token PAT dočasné porty veřejného koncového bodu. | Ano | Ano |
-| [3. Samostatný virtuální počítač](#defaultsnat) | SNAT pomocí portu ho maskují (cesta) | TCP, UDP | Azure automaticky označí veřejnou IP adresu pro SNAT, sdílí tuto veřejnou IP adresu s celého nasazení a používá dočasné porty koncový bod veřejné IP adresy pro token PAT. Toto je základní scénář pro předchozí scénáře. Pokud potřebujete viditelnosti a kontroly to nedoporučujeme. | Ano | Ano |
+| [1. Virtuální počítač s veřejnou IP adresou na úrovni instance](#ilpip) | SNAT, maskování portů se nepoužívá. | TCP, UDP, ICMP, ESP | Azure používá virtuální počítač přiřazený k veřejné IP adrese. Instance má k dispozici všechny dočasné porty. | Ne | Ano |
+| [2. veřejný koncový bod s vyrovnáváním zatížení](#publiclbendpoint) | SNAT s maskou portů (PAT) k veřejnému koncovému bodu | TCP, UDP | Azure sdílí veřejný koncový bod veřejné IP adresy s více privátními koncovými body. Azure používá dočasné porty veřejného koncového bodu pro PAT. | Ano | Ano |
+| [3. Samostatný virtuální počítač](#defaultsnat) | SNAT s maskou portů (PAT) | TCP, UDP | Azure automaticky určí veřejnou IP adresu pro SNAT, sdílí tuto veřejnou IP adresu s celým nasazením a používá dočasné porty IP adresy veřejného koncového bodu pro PAT. Toto je nouzový scénář pro předchozí scénáře. Nedoporučujeme ho, pokud potřebujete viditelnost a kontrolu. | Ano | Ano |
 
-Toto je podmnožinou odchozí připojení funkce k dispozici pro nasazení Resource Manager v Azure.  
+Toto je podmnožina funkcí odchozího připojení, která je dostupná pro Správce prostředků nasazení v Azure.  
 
-Jiné nasazení v modelu Classic mají různé funkce:
+Různá nasazení v klasickém prostředí mají různé funkce:
 
-| Klasické nasazení | Funkce je dostupná | 
+| Klasické nasazení | Dostupné funkce | 
 | --- | --- |
-| Virtuální počítač | scénář [1](#ilpip), [2](#publiclbendpoint), nebo [3](#defaultsnat) |
-| Webová Role pracovního procesu | pouze scénář [2](#publiclbendpoint), [3](#defaultsnat) | 
+| Virtuální počítač | scénář [1](#ilpip), [2](#publiclbendpoint)nebo [3](#defaultsnat) |
+| Role webového pracovního procesu | pouze scénář [2](#publiclbendpoint), [3](#defaultsnat) | 
 
-[Zmírnění dopadů strategie](#snatexhaust) mít také stejný rozdíly.
+[Strategie zmírnění rizik](#snatexhaust) mají také stejné rozdíly.
 
-Algoritmus používaný pro předběžné přidělování dočasné porty pro token PAT pro nasazení classic je stejná jako nasazení prostředků Azure Resource Manageru.
+Algoritmus používaný k předrozdělování dočasných portů pro PAT pro nasazení Classic je stejný jako u Azure Resource Managerch nasazení prostředků.
 
-### <a name="ilpip"></a>Scénář 1: Virtuální počítač s veřejnou IP adresu Instance úroveň adresou
+### <a name="ilpip"></a>Scénář 1: Virtuální počítač s veřejnou IP adresou na úrovni instance
 
-V tomto scénáři má virtuální počítač instanci úroveň veřejné IP (ILPIP) přiřazenou. Jde o odchozích připojení, nezáleží, jestli virtuální počítač má koncový bod s vyrovnáváním zatížení, nebo ne. Tento scénář má přednost před ostatní. Při použití ILPIP, virtuální počítač ILPIP používá pro všechny odchozí toky.  
+V tomto scénáři má virtuální počítač přiřazenou veřejnou IP adresu na úrovni instance (ILPIP). Vzhledem k tomu, že se jedná o odchozí připojení, nezáleží na tom, jestli má virtuální počítač koncový bod s vyrovnáváním zatížení. Tento scénář má přednost před ostatními. Když se použije ILPIP, virtuální počítač použije ILPIP pro všechny odchozí toky.  
 
-Veřejné IP adresa přiřazená k virtuálnímu počítači je 1:1 vztahu (spíše než 1:many) a je implementovaný jako bezstavové NAT. 1:1  Port maskování (Jan) se nepoužívá a virtuální počítač má všechny dočasné porty, které jsou k dispozici pro použití.
+Veřejná IP adresa přiřazená k virtuálnímu počítači je vztah 1:1 (nikoli 1: mnoho) a implementovaný jako bezstavové 1:1 NAT.  Maskování portů (PAT) se nepoužívá a virtuální počítač má k dispozici všechny dočasné porty, které je možné použít.
 
-Pokud aplikace zahájí mnoho odchozích toků a dochází k vyčerpání portů SNAT, vezměte v úvahu přiřazení [ILPIP ke zmírnění SNAT omezení](#assignilpip). Kontrola [Správa SNAT vyčerpání](#snatexhaust) v celém rozsahu.
+Pokud vaše aplikace zahájí mnoho odchozích toků a dojde k vyčerpání portů SNAT, zvažte přiřazení [ILPIP pro zmírnění omezení SNAT](#assignilpip). Přečtěte si celou [správu vyčerpání SNAT](#snatexhaust) .
 
 ### <a name="publiclbendpoint"></a>Scénář 2: Veřejný koncový bod s vyrovnáváním zatížení
 
-V tomto scénáři je spojené s veřejnou IP adresu prostřednictvím koncových bodů s vyrovnáváním zatížení virtuálního počítače nebo webová Role pracovního procesu. Virtuální počítač nemá přiřazenou veřejnou IP adresu. 
+V tomto scénáři je virtuální počítač nebo role webového pracovního procesu přidružena k veřejné IP adrese prostřednictvím koncového bodu s vyrovnáváním zatížení. K virtuálnímu počítači není přiřazená žádná veřejná IP adresa. 
 
-Při vytváření virtuálního počítače s vyrovnáváním zatížení odchozího toku, přeloží Azure privátní zdrojové IP adresy odchozí tok veřejnou IP adresu veřejný koncový bod s vyrovnáváním zatížení. Azure používá k provedení této funkce SNAT. Azure také používá [token PAT](#pat) k maskovat více privátních IP adres za veřejné IP adresy. 
+Když virtuální počítač s vyrovnáváním zatížení vytvoří odchozí tok, Azure převede privátní zdrojovou IP adresu odchozího toku na veřejnou IP adresu veřejného koncového bodu s vyrovnáváním zatížení. Azure používá k provedení této funkce SNAT. Azure také používá [Pat](#pat) k maskování více privátních IP adres za veřejnou IP adresou. 
 
-Dočasné porty nástroje pro vyrovnávání zatížení veřejnou IP adresu front-endovou slouží k rozlišení jednotlivých toků, vytvoří se virtuální počítač. Dynamicky používá SNAT [předpřidělené dočasné porty](#preallocatedports) při vytvoření odchozích toků. V tomto kontextu se označují jako dočasné porty používané pro SNAT SNAT porty.
+Dočasné porty front-endu veřejné IP adresy nástroje pro vyrovnávání zatížení se používají k odlišení jednotlivých toků, které pocházejí z virtuálního počítače. SNAT dynamicky používá [předpřidělené dočasné porty](#preallocatedports) při vytváření odchozích toků. V tomto kontextu se dočasné porty používané pro SNAT nazývají porty SNAT.
 
-SNAT porty jsou předpřidělené, jak je popsáno v [SNAT principy a token PAT](#snat) oddílu. Jsou to omezené prostředek, který může dojít k vyčerpání. Je důležité pochopit, jak jsou [spotřebované](#pat). Chcete-li pochopit, jak navrhnout za toto využití a zmírnit podle potřeby, zkontrolovat [Správa SNAT vyčerpání](#snatexhaust).
+Porty SNAT jsou předpřidělené, jak je popsáno v části [Princip SNAT a Pat](#snat) . Jsou to konečný prostředek, který je možné vyčerpat. Je důležité pochopit, jak se [spotřebovávají](#pat). Informace o tom, jak navrhnout tuto spotřebu a zmírnit podle potřeby, najdete v tématu [Správa vyčerpání SNAT](#snatexhaust).
 
-Když [několik veřejných koncových s vyrovnáváním zatížení bodů](load-balancer-multivip.md) existují některé z těchto veřejné IP adresy jsou kandidátem pro odchozí toky a jedna náhodně vybraná.  
+Pokud existuje [více veřejných koncových bodů](load-balancer-multivip.md) s vyrovnáváním zatížení, každá z těchto veřejných IP adres je kandidátem pro odchozí toky a jedna je vybrána náhodně.  
 
-### <a name="defaultsnat"></a>Scénář 3: Přidružená žádná veřejná IP adresa
+### <a name="defaultsnat"></a>Scénář 3: Není přidružená žádná veřejná IP adresa.
 
-V tomto případě virtuální počítač nebo webová ROle pracovního procesu není součástí veřejný koncový bod s vyrovnáváním zatížení.  A v případě virtuálních počítačů, nemá ILPIP adresu přiřazenou. Když virtuální počítač vytvoří odchozí tok, přeloží Azure privátní zdrojové IP adresy odchozí tok veřejné Zdrojová IP adresa. Veřejnou IP adresu použít pro tento odchozí tok není Konfigurovatelný a nepočítá s limitem předplatného veřejný IP prostředek.  Platforma Azure automaticky přiřadí tuto adresu.
+V tomto scénáři není virtuální počítač nebo ROle webového pracovního procesu součástí veřejného koncového bodu s vyrovnáváním zatížení.  A v případě virtuálního počítače k němu není přiřazená ILPIP adresa. Když virtuální počítač vytvoří odchozí tok, Azure převede IP adresu privátního zdroje odchozího toku do veřejné zdrojové IP adresy. Veřejnou IP adresu, která se používá pro tento výstupní tok, nejde konfigurovat a nepočítá se s limitem veřejných IP adres předplatného.  Azure tuto adresu automaticky přidělí.
 
-Azure používá SNAT s ho maskují port ([token PAT](#pat)) k provedení této funkce. Tento scénář je podobný scénáři 2, s výjimkou není žádnou kontrolu nad tím IP adresa používá. Toto je základní scénář pro při scénáře 1 a 2 neexistují. Pokud chcete řídit odchozí adresy nedoporučujeme tento scénář. Pokud odchozí připojení jsou důležitou součástí vaší aplikace, byste zvolili jiný scénář.
+Azure používá k provedení této funkce SNAT s maskou portů ([Pat](#pat)). Tento scénář je podobný scénáři 2, s výjimkou toho, že se používá žádná kontrola nad použitou IP adresou. Toto je nouzový scénář pro případy, kdy scénáře 1 a 2 neexistují. Tento scénář nedoporučujeme, pokud chcete mít kontrolu nad odchozí adresou. Pokud jsou odchozí připojení důležitou součástí vaší aplikace, měli byste zvolit jiný scénář.
 
-SNAT porty jsou předpřidělené, jak je popsáno v [SNAT principy a token PAT](#snat) oddílu.  Počet virtuálních počítačů nebo sdílení veřejné IP adresy webových rolí pracovního procesu určuje počet předběžně přidělené dočasné porty.   Je důležité pochopit, jak jsou [spotřebované](#pat). Chcete-li pochopit, jak navrhnout za toto využití a zmírnit podle potřeby, zkontrolovat [Správa SNAT vyčerpání](#snatexhaust).
+Porty SNAT jsou předpřidělené, jak je popsáno v části [Princip SNAT a Pat](#snat) .  Počet virtuálních počítačů nebo rolí webového pracovního procesu, které sdílí veřejnou IP adresu, určuje počet předpřidělených dočasných portů.   Je důležité pochopit, jak se [spotřebovávají](#pat). Informace o tom, jak navrhnout tuto spotřebu a zmírnit podle potřeby, najdete v tématu [Správa vyčerpání SNAT](#snatexhaust).
 
-## <a name="snat"></a>Principy SNAT a token PAT
+## <a name="snat"></a>Porozumění SNAT a PAT
 
-### <a name="pat"></a>Port maskování SNAT PAT
+### <a name="pat"></a>Maskování portů SNAT (PAT)
 
-Při nasazení vytvoří odchozí připojení, je přepsán každý zdroj odchozí připojení. Zdroj je přepsán z privátní adresní prostor IP adres na veřejnou IP adresu přidruženou k nasazení (založené na scénářích popsaných výše). V veřejný prostor IP adres musí být jedinečný 5-n-tice tok (Zdrojová IP adresa, zdrojový port, přenosový protokol IP, cílová IP adresa, cílový port).  
+Když nasazení provede odchozí připojení, přepíše se každý zdroj odchozího připojení. Zdroj se přepíše z privátního adresního prostoru IP adres na veřejnou IP adresu přidruženou k nasazení (na základě výše popsaných scénářů). Ve veřejném adresním prostoru IP adres musí být pět záznamů toku (zdrojová IP adresa, zdrojový port, transportní protokol IP, cílová IP adresa, cílový port) jedinečný.  
 
-Dočasné porty (SNAT) umožňují dosáhnete po přepisování privátní zdrojovou IP adresu, protože více toků pocházejí z jedné veřejné IP adresy. 
+Dočasné porty (porty SNAT) se používají k dosažení tohoto toho po přepsání privátní zdrojové IP adresy, protože více toků pochází z jedné veřejné IP adresy. 
 
-Na jeden tok do jedné cílové IP adresy, portu a protokolu se spotřebovává jeden port SNAT. Každý tok pro více toků do stejné cílové IP adresy, portu a protokolu, využívá jeden port SNAT. Tím se zajistí, že toky jsou jedinečné, když pocházejí z stejnou veřejnou IP adresu a přejděte do stejné cílové IP adresy, portu a protokolu. 
+Jeden port SNAT se spotřebovává na jeden tok na jednu cílovou IP adresu, port a protokol. U více toků na stejnou cílovou IP adresu, port a protokol využívá každý tok jeden port SNAT. Tím je zajištěno, že toky budou jedinečné, když pocházejí ze stejné veřejné IP adresy a jdou na stejnou cílovou IP adresu, port a protokol. 
 
-Více toků, každý z nich různé cílové IP adresy, portu a protokolu, sdílet jeden port SNAT. Cílové IP adresy, portu a protokolu zkontrolujte toky jedinečný bez nutnosti dalších zdrojových portů k rozlišení toků v veřejný adresní prostor IP adres.
+Několik toků, z nichž každý má jinou cílovou IP adresu, port a protokol, sdílí jeden port SNAT. Cílová IP adresa, port a protokol vytvářejí toky jedinečné bez nutnosti dalších zdrojových portů, které by rozlišily toky ve veřejném adresním prostoru IP adres.
 
-Když jsou k vyčerpání prostředků port SNAT, odchozí toky neúspěšné, dokud stávající toky release SNAT porty. Nástroje pro vyrovnávání zatížení uvolňuje SNAT porty, když tok se zavře a použije [časový limit nečinnosti 4 minuty](#idletimeout) pro opětovné získání SNAT porty z nečinnosti toky.
+Po vyčerpání prostředků portů SNAT dojde k selhání odchozích toků, dokud nebudou stávající toky vydány porty SNAT. Load Balancer redeklaracích portů SNAT po ukončení toku a používá prodlevu nečinnosti ve [4 minutách](#idletimeout) pro uvolnění portů SNAT z nečinných toků.
 
-Vzory podmínky, které běžně vedou k vyčerpání portů SNAT zmírnit, najdete v tématu [Správa SNAT](#snatexhaust) oddílu.
+V případě vzorů pro zmírnění podmínek, které běžně vedou k vyčerpání portů SNAT, si přečtěte část [Správa SNAT](#snatexhaust) .
 
-### <a name="preallocatedports"></a>Předběžné přidělení dočasných portů pro port ho maskují SNAT PAT
+### <a name="preallocatedports"></a>Předběžné přidělení portu SNAT pro maskování portů SNAT (PAT)
 
-Azure používá algoritmus k určení počtu předpřidělené SNAT portů jsou k dispozici na základě velikosti fondu back-endu při použití portu maskování SNAT ([token PAT](#pat)). SNAT porty jsou dočasné porty, které jsou k dispozici pro konkrétní veřejné zdrojové adresy IP.
+Azure používá algoritmus k určení počtu předem přidělených portů SNAT na základě velikosti back-endu při použití maskování portů SNAT ([Pat](#pat)). Porty SNAT jsou dočasné porty, které jsou k dispozici pro konkrétní zdrojovou adresu veřejné IP adresy.
 
-Azure preallocates SNAT porty při nasazení podle počtu instancí virtuálního počítače nebo Role pracovního procesu webové sdílet dané veřejné IP adresy instance.  Při vytváření odchozích toků [token PAT](#pat) dynamicky využívá (až do limitu předběžně přidělené) a po tok zavře nebo dochází k vypršení časového limitu nečinnosti uvolní tyto porty.
+Azure při nasazení instance předem přidělí porty SNAT v závislosti na tom, kolik instancí virtuálních počítačů nebo instancí role webového pracovního procesu sdílí danou veřejnou IP adresu.  Při vytváření odchozích toků se [](#pat) Jana dynamicky spotřebovává (až do limitu před přidělením) a uvolní tyto porty, když dojde k ukončení toku nebo vypršení nečinnosti.
 
-Následující tabulka uvádí preallocations SNAT port pro úrovně velikosti fondů back-endu:
+V následující tabulce jsou uvedena předalokace portů SNAT pro vrstvy velikostí back-endu:
 
-| Instance | Předběžně přidělené SNAT porty na instanci |
+| Instance | Předběžně přidělené porty SNAT na instanci |
 | --- | --- |
 | 1-50 | 1,024 |
 | 51-100 | 512 |
 | 101-200 | 256 |
 | 201-400 | 128 |
 
-Mějte na paměti, že počet dostupných portů SNAT nepřekládá přímo na počet toků. Jeden port SNAT můžete znovu použít pro více míst jedinečný. Porty se spotřebuje, pouze pokud je nutné vytvářet toky jedinečný. Pokyny k návrhu a zmírnění distribuovaných útoků, přečtěte si část o [jak ke správě tohoto prostředku vyčerpatelným](#snatexhaust) a v části popisující [token PAT](#pat).
+Pamatujte, že počet dostupných portů SNAT se nepřevádí přímo na počet toků. Jeden port SNAT lze znovu použít pro více jedinečných umístění. Porty se spotřebují jenom v případě, že je potřeba, aby toky byly jedinečné. Pokyny pro návrh a zmírnění najdete v části o [tom, jak spravovat tento prostředek exhaustible](#snatexhaust) a část popisující [Pat](#pat).
 
-Změna velikosti vašeho nasazení může mít vliv na některé zavedené toků. Pokud velikost fondu back-endu zvyšuje a přejde na další úroveň, polovinu vaše předběžně přidělené SNAT portů je vyžádá zpět systém během přechodu na další úroveň větší fond back-endu. Toky, které jsou spojeny s portem uvolňovaného SNAT vyprší časový limit a musí být zrušena. Při pokusu o nový tok, tok proběhne úspěšně okamžitě, za předpokladu, předběžně přidělené porty jsou k dispozici.
+Změna velikosti nasazení může mít vliv na některé z vašich navázaných toků. Pokud se velikost fondu back-endu zvyšuje a přejde do další úrovně, během přechodu na další větší úroveň fondu back-end se uvolní polovina předpřidělených portů SNAT. Toky, které jsou přidružené k uvolněnému portu SNAT, vyprší časový limit a je nutné je znovu vytvořit. Pokud se pokusíte o nový tok, tok se okamžitě dokončí, dokud nebudou dostupné porty k dispozici.
 
-Pokud se zmenší velikost pro nasazení a zvyšuje počet dostupných portů SNAT přechody do nižší úrovně. V tomto případě existující přidělených SNAT portů a jejich příslušné toky to nebude mít vliv.
+Pokud se velikost nasazení zmenší a přejde do nižší úrovně, zvýší se počet dostupných portů SNAT. V takovém případě nebudou ovlivněny existující porty SNAT a jejich příslušné toky.
 
-Pokud cloudovou službu se znovu nasadit nebo změnit, infrastruktura může hlásit dočasně back-endového fondu bude až dvakrát jako velká jako skutečné a Azure se pak předběžné přidělení méně SNAT porty na instanci než se očekávalo.  Dočasně to můžete zvýšit pravděpodobnost vyčerpání portů SNAT. Nakonec velikost fondu přejde na skutečnou velikost a Azure bude automaticky zvětšovala v předběžně přidělené SNAT porty očekávaný počet podle výše uvedené tabulce.  Toto chování je záměrné a nelze ji konfigurovat.
+Pokud dojde k opětovnému nasazení nebo změně cloudové služby, může infrastruktura dočasně hlásit back-end fond až dvakrát tak velké, než se čekalo, a Azure pak předem přidělit porty SNAT na jednu instanci.  To může dočasně zvýšit pravděpodobnost vyčerpání portů SNAT. Nakonec se velikost fondu převede na skutečnou velikost a Azure automaticky zvýší počet předběžně přidělených portů SNAT na očekávané číslo podle výše uvedené tabulky.  Toto chování je záměrné a nedá se konfigurovat.
 
-Přidělení SNAT porty jsou konkrétní IP přenosový protokol (TCP a UDP se zachovají samostatně) a se vydávají za následujících podmínek:
+Přidělení portů SNAT jsou specifická pro protokol IP (TCP a UDP se uchovávají samostatně) a vydávají se za následujících podmínek:
 
-### <a name="tcp-snat-port-release"></a>Port TCP SNAT vydání verze
+### <a name="tcp-snat-port-release"></a>Verze portu TCP SNAT
 
-- Pokud obě server/klient odešle FIN/potvrzení, bude vydána SNAT port po 240 sekund.
-- Pokud je zobrazena RVNÍ, bude vydána SNAT port po 15 sekundách.
-- bylo dosaženo časového limitu nečinnosti
+- Pokud server/klient posílá FIN/ACK, port SNAT se uvolní po 240 sekundách.
+- Pokud je zjištěna RST, port SNAT se uvolní po 15 sekundách.
+- byl dosažen časový limit nečinnosti.
 
-### <a name="udp-snat-port-release"></a>Port UDP SNAT vydání verze
+### <a name="udp-snat-port-release"></a>Vydání portu UDP SNAT
 
-- bylo dosaženo časového limitu nečinnosti
+- byl dosažen časový limit nečinnosti.
 
-## <a name="problemsolving"></a> Řešení problémů 
+## <a name="problemsolving"></a>Řešení problémů 
 
-Tato část je určena pro zmírnění SNAT vyčerpání a další scénáře, které mohou nastat u odchozích připojení v Azure.
+Tato část je určená k omezení vyčerpání SNAT a dalších scénářů, ke kterým může dojít u odchozích připojení v Azure.
 
-### <a name="snatexhaust"></a> Správa vyčerpání portů SNAT PAT
-[Dočasné porty](#preallocatedports) používá pro [token PAT](#pat) jsou vyčerpatelným prostředků, jak je popsáno v [žádné přidružena veřejná IP adresa](#defaultsnat) a [veřejný koncový bod s vyrovnáváním zatížení](#publiclbendpoint).
+### <a name="snatexhaust"></a>Správa vyčerpání portů SNAT (PAT)
+[Dočasné porty](#preallocatedports) používané pro [Pat](#pat) jsou prostředek exhaustible, jak je popsáno v tématu [bez přidružené veřejné IP adresy](#defaultsnat) a [veřejného koncového bodu s vyrovnáváním zatížení](#publiclbendpoint).
 
-Pokud víte, že jste zahajování mnoho odchozí připojení TCP nebo UDP na stejnou cílovou IP adresu a port, a radí, podpora, že jste spotřebovává SNAT porty nebo sledovat selhání odchozí připojení (předpřidělené [dočasné porty](#preallocatedports) používané [token PAT](#pat)), máte několik možností, jak obecná omezení rizik. Prohlédněte si tyto možnosti a rozhodnout, co je k dispozici a pro váš scénář nejvhodnější. Je možné, že jeden nebo více může pomoct spravovat tento scénář.
+Pokud víte, že zahajujete mnoho odchozích připojení TCP nebo UDP ke stejné cílové IP adrese a portu, a sledujete neúspěšné odchozí připojení nebo se vám doporučuje podpora, že vyčerpáte porty SNAT (předběžně přidělené [dočasné porty](#preallocatedports) ). pomocí [Pat](#pat)) máte několik obecných možností pro zmírnění rizik. Projděte si tyto možnosti a rozhodněte, co je k dispozici a co nejlépe vyhovuje vašemu scénáři. Je možné, že jeden nebo více může pomáhat při správě tohoto scénáře.
 
-Pokud máte potíže s principy odchozích připojení chování, můžete použít statistiky zásobníku IP (netstat). Nebo může být užitečné při sledování chování připojení pomocí zachytávání paketů.
+Pokud se vám nedaří pochopit chování odchozího připojení, můžete použít statistiku protokolu IP stack (netstat). Nebo může být užitečné sledovat chování připojení pomocí zachycení paketů.
 
-#### <a name="connectionreuse"></a>Úprava aplikace opakovaně používat připojení 
-Můžete snížit poptávka po dočasné porty, které se používají pro SNAT opakovaným připojení ve vaší aplikaci. To platí zejména pro protokoly HTTP/1.1, kde opakované použití připojení je výchozí nastavení. A zase využívat jiné protokoly, které používají protokol HTTP jako jejich přenos (například REST). 
+#### <a name="connectionreuse"></a>Úprava aplikace pro opětovné použití připojení 
+Můžete snížit poptávku za dočasné porty, které se používají pro SNAT, a to tak, že znovu použijete připojení ve vaší aplikaci. To platí hlavně pro protokoly jako HTTP/1.1, kde je výchozí nastavení opětovného použití připojení. A další protokoly, které používají protokol HTTP jako jejich přenos (například REST), můžou mít výhodu. 
 
-Vždy je lepší než osobou, atomické připojení TCP pro každý požadavek znovu. Znovu použít výsledky v výkonnější, velmi efektivní TCP transakce.
+Opakované použití je vždy lepší než individuální, atomické připojení TCP pro každý požadavek. Opakované použití má za následek více výkonné, velmi efektivní transakce TCP.
 
-#### <a name="connection pooling"></a>Upravit aplikaci, aby používala sdružování připojení
-Můžete použít připojení sdružování schéma ve vaší aplikaci, kde jsou požadavky interně distribuované napříč fixní sadu připojení (každý opětovné použití tam, kde je to možné). Toto schéma omezí počet dočasných portů používá a vytvoří prostředí s lépe předvídatelným. Toto schéma může také zvýšit propustnost požadavků tím, že více souběžných operací, když blokuje jedno připojení pro odpověď operace.  
+#### <a name="connection pooling"></a>Úprava aplikace pro použití sdružování připojení
+Ve své aplikaci můžete použít schéma sdružování připojení, ve kterém jsou požadavky interně distribuovány přes pevně danou sadu připojení (podle toho, co je to možné). Toto schéma omezuje počet dočasných používaných portů a vytvoří předvídatelné prostředí. Toto schéma může také zvýšit propustnost žádostí tím, že umožňuje více souběžných operací, když je jedno připojení blokováno na reakci operace.  
 
-Sdružování připojení možná již existuje v rámci, které používáte k vývoji vaší aplikace a nastavení konfigurace pro vaši aplikaci. Můžete kombinovat s opakované použití připojení sdružování připojení. Více požadavků je pak využívat pevná a předvídatelná počet portů, které mají stejnou cílovou IP adresu a port. Požadavky také výhody efektivní využití TCP transakcí snížení latence a využití prostředků. UDP transakce mohou také těžit, protože správa UDP toků můžete zase vyhnout výfukového podmínky a spravovat využití portu SNAT.
+Sdružování připojení může již existovat v rámci rozhraní, které používáte k vývoji aplikace nebo nastavení konfigurace aplikace. Sdružování připojení můžete kombinovat s opětovným použitím připojení. Vaše vícenásobné požadavky pak spotřebovávají pevný a předvídatelný počet portů na stejnou cílovou IP adresu a port. Požadavky také využívají efektivní využití transakcí TCP, které snižují latenci a využití prostředků. Transakce UDP můžou také těžit z toho důvodu, že správa počtu toků UDP se může vyhnout podmínkám výfuku a spravovat využití portů SNAT.
 
-#### <a name="retry logic"></a>Upravit aplikaci, aby používala méně agresivní logika opakovaných pokusů
-Když [předpřidělené dočasné porty](#preallocatedports) používá pro [token PAT](#pat) jsou vyčerpání nebo aplikace dojde k selhání, agresivní nebo útokům hrubou silou opakuje bez decay a omezení rychlosti logiku způsobit vyčerpání dojít, nebo zachovat. Poptávka po dočasné porty můžete omezit použitím méně agresivní logika opakovaných pokusů. 
+#### <a name="retry logic"></a>Upravit aplikaci tak, aby používala méně agresivní logiku opakování
+Pokud jsou [předběžně přidělené dočasné porty](#preallocatedports) používané pro [Pat](#pat) vyčerpány nebo dojde k selhání aplikace, agresivní nebo nepřímý pokus o opakování při nedecay a omezení rychlostií služby Logic způsobuje vyčerpání nebo uchování. Můžete snížit poptávku za dočasné porty pomocí méně agresivní logiky opakování. 
 
-Dočasné porty mít 4 minutách nečinnosti časový limit (není možné nastavit). Pokud opakované pokusy jsou příliš agresivní, vyčerpání nemá žádnou možnost Vymazat sama o sobě. Vzhledem k tomu, jak – a jak často – aplikace opakování transakce je proto zásadní součástí tohoto návrhu.
+Dočasné porty mají časový limit nečinnosti 4 minut (není upravitelný). Pokud jsou opakované pokusy příliš agresivní, vyčerpání není nijak jasné. Proto zvažte, jak--a jak často--vaše aplikace pokusy o opakování jsou důležitou součástí návrhu.
 
-#### <a name="assignilpip"></a>Přiřadit úrovni veřejná IP adresa Instance pro každý virtuální počítač
-Přiřazení ILPIP změní váš scénář [úroveň veřejná IP adresa Instance k virtuálnímu počítači](#ilpip). Všechny dočasné porty veřejné IP adresy, které se používají pro jednotlivé virtuální počítače jsou k dispozici k virtuálnímu počítači. (Na rozdíl od scénáře kde jsou všechny virtuální počítače přidružené k příslušné nasazení sdílené dočasné porty veřejnou IP adresu.) Existují kompromisy vzít v úvahu, jako je možný dopad na seznam povolených velký počet jednotlivých IP adres.
+#### <a name="assignilpip"></a>Přiřazení veřejné IP adresy na úrovni instance ke každému virtuálnímu počítači
+Přiřazení ILPIP mění scénář pro [veřejnou IP adresu na úrovni instance virtuálního počítače](#ilpip). Pro virtuální počítač jsou k dispozici všechny dočasné porty veřejné IP adresy, které se používají pro každý virtuální počítač. (Na rozdíl od scénářů, kdy jsou dočasné porty veřejné IP adresy sdílené se všemi virtuálními počítači přidruženými k příslušnému nasazení.) Existují kompromisy, které je potřeba vzít v úvahu, například potenciální dopad na povolený velký počet individuálních IP adres.
 
 >[!NOTE] 
->Tato možnost není k dispozici v případě webových rolí pracovního procesu.
+>Tato možnost není k dispozici pro role webového pracovního procesu.
 
-### <a name="idletimeout"></a>Keepalive použít k resetování odchozí časový limit nečinnosti
+### <a name="idletimeout"></a>Obnovení odchozího nečinného časového limitu pomocí kontroly stavu
 
-Odchozí připojení mají časový limit nečinnosti 4 minuty. Tento časový limit není měnitelné. Aktualizace nečinné toku a obnovit tento časový limit nečinnosti v případě potřeby však můžete použít přenosu (například TCP keepalive) nebo keepalive aplikační vrstvu.  Obraťte se na dodavatele jakémkoli zabaleném softwaru na to, zda je podporováno nebo jak se dá povolit.  Obecně pouze jedna strana musí generovat keepalive resetovat časový limit nečinnosti. 
+Odchozí připojení mají časový limit nečinnosti 4 minut. Tento časový limit není upravitelný. Můžete ale v případě potřeby použít přenos (například kontroly stavu protokolu TCP) nebo udržení naživu v aplikační vrstvě a obnovit tento časový limit nečinnosti.  Obraťte se na dodavatele jakéhokoli zabaleného softwaru, ať už je to podporováno, nebo jak ho povolit.  Obecně pouze jedna strana potřebuje k vygenerování kontroly stavu obnovení, aby se obnovil časový limit nečinnosti. 
 
-## <a name="discoveroutbound"></a>Zjišťování veřejné IP adresy, která používá virtuální počítač
-Existuje mnoho způsobů, jak určit IP adresu veřejné zdrojového odchozí připojení. OpenDNS poskytuje službu, která můžete zobrazit veřejnou IP adresu vašeho virtuálního počítače. 
+## <a name="discoveroutbound"></a>Zjištění veřejné IP adresy, kterou virtuální počítač používá
+Existuje mnoho způsobů, jak určit veřejnou zdrojovou IP adresu odchozího připojení. OpenDNS poskytuje službu, která vám umožní zobrazit veřejnou IP adresu vašeho virtuálního počítače. 
 
-Při použití příkazu nslookup, můžete odeslat dotaz DNS pro název myip.opendns.com OpenDNS překládání. Služba vrátí zdrojovou IP adresu, která jste použili k zaslání dotazu. Při spuštění následujícího dotazu z vašeho virtuálního počítače je odpověď na veřejnou IP adresu použít pro tento virtuální počítač:
+Pomocí příkazu nslookup můžete odeslat dotaz DNS pro název myip.opendns.com do překladače OpenDNS. Služba vrátí zdrojovou IP adresu, která se použila k odeslání dotazu. Když z virtuálního počítače spustíte následující dotaz, odpověď je veřejná IP adresa používaná pro tento virtuální počítač:
 
     nslookup myip.opendns.com resolver1.opendns.com
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [nástroje pro vyrovnávání zatížení](load-balancer-overview.md) používá v nasazení Resource Manager.
-- Další informace o [odchozí připojení](load-balancer-outbound-connections.md) scénáře, které jsou k dispozici v nasazení Resource Manager.
+- Přečtěte si další informace o [Load Balancer](load-balancer-overview.md) používaném v nasazeních Správce prostředků.
+- Přečtěte si informace o scénářích [odchozího připojení](load-balancer-outbound-connections.md) , které jsou dostupné v Správce prostředků nasazeních.

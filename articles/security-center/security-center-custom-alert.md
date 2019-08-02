@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 984bd4d5db210679884655721be0cbcdac8c1705
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8845cb0a91edefa0350558f35488519ec37d064d
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485285"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663571"
 ---
-# <a name="custom-alert-rules-in-azure-security-center-preview"></a>Vlastní pravidla výstrah v Azure Security Center (Preview)
-Tento dokument vám pomůže vytvořit vlastní pravidla výstrah v Azure Security Center.
+# <a name="custom-alert-rules-in-azure-security-center-retired"></a>Vlastní pravidla výstrah v Azure Security Center (vyřazeno)
+Tento dokument vám pomůže vytvořit vlastní pravidla upozornění (ve verzi Preview) v Azure Security Center.
 
 > [!NOTE]
-> Vlastní upozornění byl vyřazen ze služby Security Center. 
+> Vlastní výstrahy byly vyřazeny z Azure Security Center 30. června 2019. 
 
-## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Vyřazení oznámení na vlastní pravidla ve službě Azure Security Center
+## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Vyřazení vlastních pravidel výstrah v Azure Security Center
 
-Prostředí vlastní upozornění 30. června 2019 byla vyřazena z důvodu vyřazení základní infrastruktury spoléhal na. všechny vlastní výstrahy definované před retriement se neprojeví a se negenerují výstrahy zabezpečení na základě těchto pravidel vlastní upozornění. Můžete si pořád zobrazit vaše vlastní pravidla upozornění dotazy ve službě Security Center Chcete-li je znovu vytvořit v alternativy uvedených níže:
+V důsledku vyřazení základní infrastruktury, na kterou se spoléhala, se vlastní prostředí výstrah vyřadí z 30. června 2019. Jakékoli vlastní výstrahy definované před opětovným pokusy se neprojeví a výstrahy zabezpečení založené na těchto vlastních pravidlech výstrah se negenerují. Dotazy na vlastní pravidla upozornění můžete zobrazit v Security Center, aby je bylo možné znovu vytvořit v níže uvedených alternativách:
 
-Uživatelé by měli buď:
-- Povolit [Azure Sentinelu](https://azure.microsoft.com/services/azure-sentinel/) a použít jeho integrovaný [analytics](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) funkce k opětovnému vytvoření pravidla výstrah
-- Znovu vytvořit s využitím upozornění log Azure Monitor výstrah
+Uživatelům se doporučuje:
+- Povolit [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) a používat integrovanou analytickou [](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) funkci k opětovnému vytvoření pravidel upozornění
+- Znovu vytvořit výstrahy s Azure Monitormi výstrahami protokolu
                                      
-Chcete-li zachovat existující výstrahy a znovu je vytvořte v Azure Sentinelu, [spusťte Azure Sentinelu](https://portal.azure.com/#create/Microsoft.ASI/preview). Jako první krok vyberte pracovní prostor, kde jsou uložené vaše vlastní výstrahy a poté vyberte položku nabídky "Analytics" nastavit pravidla pro vlastní upozornění. Navštivte prosím [dokumentaci](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) pro další informace.
+Pokud chcete zachovat stávající výstrahy a znovu je vytvořit v Azure Sentinel, spusťte prosím službu [Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview). Jako první krok vyberte pracovní prostor, ve kterém jsou uložené vaše vlastní výstrahy, a pak vyberte položku nabídky Analytics a nastavte vlastní pravidla upozornění. Další informace najdete v [dokumentaci](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) .
 
 > [!NOTE]
-> Vlastní upozornění pomocí [hledání](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) nebo [sjednocení](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) nepodporuje příkazy dotazy Sentinelu Azure. Před provedením migrace prosím upravte tyto výstrahy.
+> Vlastní upozornění pomocí dotazů na příkazy [hledání](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) nebo [sjednocení](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) se v ověřovacích dotazech Azure nepodporují. Před provedením migrace prosím tyto výstrahy upravte.
 
-Znovu vytvořte upozornění pomocí Azure monitoru upozornění protokolů, najdete v tématu: [Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) pokyny o tom, jak vytvořit upozornění protokolů. Obecný přehled o upozornění protokolů ve službě Azure Monitor, klikněte na tlačítko [tady](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
+Informace o tom, jak znovu vytvořit výstrahy pomocí výstrah protokolu Azure Monitor najdete v tématu [Vytvoření, zobrazení a správa výstrah protokolu pomocí Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log). Obecné informace najdete [v tématu protokolování výstrah v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 ## <a name="what-are-custom-alert-rules-in-security-center"></a>Co jsou vlastní pravidla výstrah ve službě Security Center?
 
@@ -49,7 +49,7 @@ Služba Security Center obsahuje sadu předdefinovaných [výstrah zabezpečení
 Vlastní pravidla výstrah ve službě Security Center umožňují definovat nové výstrahy zabezpečení na základě již shromážděných dat z vašeho prostředí. Můžete vytvořit dotazy a výsledky těchto dotazů použít jako kritéria pro vlastní pravidlo, které se provede po splnění těchto kritérií. K vytváření vlastních dotazů můžete použít také události zabezpečení počítačů, protokoly partnerských řešení zabezpečení nebo data ingestovaná pomocí rozhraní API.
 
 > [!NOTE]
-> Vlastní výstrahy nejsou podporované ve službě Security Center [pročtěte](security-center-investigation.md).
+> Ve [vyšetřovací funkci](security-center-investigation.md)Security Center se nepodporují vlastní výstrahy.
 >
 >
 
@@ -64,16 +64,16 @@ Otevřete řídicí panel **Security Center** a podle těchto kroků vytvořte v
 
 3.  Zobrazí se stránka Vytvořit vlastní pravidlo výstrah, která obsahuje následující možnosti:
 
-    ![Vytvořit](./media/security-center-custom-alert/security-center-custom-alert-fig2.png)
+    ![Create](./media/security-center-custom-alert/security-center-custom-alert-fig2.png)
 
 4.  Do pole **Název** zadejte název tohoto vlastního pravidla.
 5.  Do pole **Popis** zadejte stručný popis vyjadřující záměr tohoto pravidla.
 6.  V poli **Závažnost** vyberte úroveň závažnosti (Vysoká, Střední, Nízká) podle svých potřeb.
 7.  V poli **Předplatné** vyberte předplatné, na které se toto pravidlo vztahuje.
-8.  Vyberte pracovní prostor, který chcete monitorovat pomocí tohoto pravidla v **pracovní prostor** pole a **vyhledávací dotaz** pole dotazu, který chcete použít k získání výsledků.
+8.  V poli **pracovní prostor** vyberte pracovní prostor, který chcete pomocí tohoto pravidla monitorovat, a v poli **vyhledávací dotaz** zadejte dotaz, který chcete použít k získání výsledků.
 
     > [!NOTE]
-    > V pracovním prostoru, kterou Pokud chcete ukládat vlastní upozornění potřebujete oprávnění zapisovat.
+    > V pracovním prostoru budete potřebovat oprávnění k zápisu, které jste vybrali k uložení vlastní výstrahy.
     >
     >
 
@@ -97,7 +97,7 @@ Po dokončení vytváření se nové pravidlo výstrah zobrazí v seznamu vlastn
 
 Všimněte si, že výstraha vlastního pravidla obsahuje parametry (vyhledávací dotaz, prahová hodnota atd.) vytvořené při vytváření tohoto pravidla.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 V tomto dokumentu jste zjistili, jak vytvořit vlastní pravidlo výstrah v Azure Security Center. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.

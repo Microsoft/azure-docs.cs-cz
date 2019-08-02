@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric diagnostikovat chyby balíčku kódu | Dokumentace Microsoftu
-description: Zjistěte, jak řešit běžné chyby balíčku kódu s Azure Service Fabric
+title: Diagnostikujte běžné chyby balíčku kódu pomocí Service Fabric | Microsoft Docs
+description: Přečtěte si, jak řešit běžné chyby balíčků kódu pomocí Azure Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: grzuber
@@ -14,56 +14,58 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 235952388d2c044cc141b3020c67944c4250ea3d
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 320a55e8b14648b1d7e256855582ab31846a63cf
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276948"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249226"
 ---
-# <a name="diagnose-common-code-package-errors-with-service-fabric"></a>Diagnostikovat běžné chyby balíčku kódu s využitím Service Fabric
+# <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Diagnostikujte běžné chyby balíčku kódu pomocí Service Fabric
 
-Tento článek ukazuje, co znamená pro balíček kódu k neočekávanému ukončení a poskytuje podrobné informace o možných příčin běžné kódy chyb, jakož i řešení potíží, které mohou potenciálně tyto problémy zmírnit.
+Tento článek popisuje, co znamená, aby balíček kódu neočekávaně ukončil. Poskytuje pohled na možné příčiny běžných chybových kódů spolu s postupem řešení potíží.
 
-## <a name="when-does-a-process-or-container-terminate-unexpectedly"></a>Pokud procesů nebo kontejnerů dojde k neočekávanému ukončení?
+## <a name="when-does-a-process-or-container-terminate-unexpectedly"></a>Kdy dojde k neočekávanému ukončení procesu nebo kontejneru?
 
-Když Service Fabric obdrží požadavek na spuštění kódu balíčku, začne Příprava prostředí na místní systém založený na možnosti konfigurace, nastavte v manifesty služby a aplikace. Rezervace koncové body sítě nebo prostředky, konfigurace pravidel brány firewall nebo nastavení omezení zásad správného řízení prostředků může zahrnovat tyto přípravy. Po prostředí, že správně nakonfigurujete, pokusí se Service Fabric se balíček kódu. Tento krok je považován za úspěšné, pokud modul runtime operačního systému nebo kontejner hlásí, že procesů nebo kontejnerů se aktivoval úspěšně. Pokud se aktivace neproběhla úspěšně, měla zobrazit zpráva stavu v SFX s upozorněním
+Když Azure Service Fabric obdrží požadavek na spuštění balíčku kódu, začne připravovat prostředí v místním systému podle možností nastavených v manifestech aplikací a služeb. Tyto přípravy můžou zahrnovat rezervaci koncových bodů a prostředků sítě, konfiguraci pravidel brány firewall nebo nastavení omezení zásad správného řízení prostředků. 
+
+Po správném nakonfigurování prostředí se Service Fabric pokusí balíček kódu vyvolat. Tento krok je považován za úspěšný, pokud modul runtime operačního systému nebo kontejneru hlásí, že proces nebo kontejner byl úspěšně aktivován. Pokud se aktivace nezdařila, měla by se zobrazit zpráva o stavu v SFX, která vypadá přibližně takto:
 
 ```
 There was an error during CodePackage activation. Service host failed to activate. Error: 0xXXXXXXXX
 ```
 
-Jakmile balíček kódu má byly úspěšně aktualizovány, Service Fabric zahájí monitorování svého životního cyklu. V tomto okamžiku procesu nebo kontejneru můžete ukončit kdykoli z několika důvodů. Může se nepodařilo inicializovat knihovnu DLL operačního systému může vyčerpala volné místo v haldě klasické pracovní plochy, atd. Pokud se váš balíček kódu, měla zobrazit zpráva stavu v SFX s upozorněním
+Po úspěšné aktivaci balíčku kódu Service Fabric začne sledovat jeho životnost. V tomto okamžiku může být proces nebo kontejner kdykoli ukončen z několika důvodů. Může se například stát, že se nepovedlo inicializovat knihovnu DLL, nebo když se operační systém vyčerpal z prostoru haldy plochy. Pokud byl balíček kódu ukončen, měla by se zobrazit následující zpráva o stavu v SFX:
 
 ```
 The process/container terminated with exit code: XXXXXXXX. Please look at your application logs/dump or debug your code package for more details. For information about common termination errors, please visit https://aka.ms/service-fabric-termination-errors
 ```
 
-Ukončovací kód procesu k dispozici v tomto stavu zpráva je pouze naznačuje poskytované procesu nebo kontejneru, proč byl ukončen a by byly vytvořeny libovolné úrovni zásobníku. Je obtížné pochopit, pokud tento kód ukončení byl v relaci, například chybu operačního systému, problém .NET, nebo byla vyvolána pomocí kódu. Proto tento článek slouží jako výchozí bod pro diagnostiku zdrojového ukončovací kódy ukončení a možná řešení s vědomím, že tyto představují obecná řešení běžných scénářů a nemusí vztahovat na chybu, můžete se sdělením.
+Ukončovací kód v této zprávě o stavu je jediný, který znamená, že proces nebo kontejner poskytuje informace o tom, proč se ukončil. Může být vygenerována libovolnou úrovní zásobníku. Například tento kód ukončení může souviset s chybou operačního systému nebo .NET nebo může být vyvolán vaším kódem. Tento článek slouží jako výchozí bod pro diagnostiku zdroje ukončovacích kódů ukončení a možných řešení. Mějte ale na paměti, že se jedná o obecná řešení běžných scénářů a nemusí se vztahovat na chybu, kterou si vidíte.
 
-## <a name="how-can-i-tell-if-service-fabric-terminated-my-code-package"></a>Jak poznám, že pokud Service Fabric ukončen Můj balíček kódu?
+## <a name="how-can-i-tell-if-service-fabric-terminated-my-code-package"></a>Jak poznám, jestli Service Fabric ukončil balíček kódu?
 
-Service Fabric může také zodpovídat za ukončení vašeho balíčku kódu pro celou řadu důvodů. Například může rozhodnout umístěte balíček kódu v jiném uzlu pro vyrovnávání zatížení účely. Poznáte, pokud váš balíček kódu byl ukončen Service Fabric, pokud se zobrazí z ukončovacích kódů v následující tabulce:
+Service Fabric může být zodpovědný za ukončení balíčku kódu z nejrůznějších důvodů. Může se například rozhodnout umístit balíček kódu na jiný uzel pro účely vyrovnávání zatížení. Můžete ověřit, zda balíček kódu Service Fabric ukončil, pokud se zobrazí libovolný ukončovací kód v následující tabulce.
 
 >[!NOTE]
-> Pokud váš proces/kontejner skončí s ukončovacím kódem než těch, které jsou v následující tabulce, Service Fabric nezodpovídá za zrušení.
+> Pokud se proces nebo kontejner ukončí s ukončovacím kódem jiným než kódy v následující tabulce, Service Fabric není zodpovědný za jeho ukončení.
 
 Ukončovací kód | Popis
 --------- | -----------
-7147 | Tyto kódy chyb znamenat, že Service Fabric řádné ukončení procesu nebo kontejneru a odeslat ho Ctrl + C signál.
-7148 | Tyto kódy chyb znamenat, že Service Fabric byl ukončen proces/kontejneru. Tento kód chyby v některých případech může znamenat, že je po odeslání Ctrl + C signál, takže musí být ukončen proces/kontejneru neodpověděl včas.
+7147 | Indikuje, že Service Fabric řádným vypnutím procesu nebo kontejneru odesláním signálu CTRL + C.
+7148 | Indikuje, že Service Fabric ukončil proces nebo kontejner. Někdy tento kód chyby indikuje, že proces nebo kontejner neodpověděl včas po odeslání signálu CTRL + C a musel být ukončen.
 
 
 ## <a name="other-common-error-codes-and-their-potential-fixes"></a>Další běžné kódy chyb a jejich možné opravy
 
-Ukončovací kód | Šestnáctková hodnota | Krátký popis | Původní příčina | Potenciální oprava
+Ukončovací kód | Hexadecimální hodnota | Krátký popis | Původní příčina | Potenciální Oprava
 --------- | --------- | ----------------- | ---------- | -------------
-3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Tato chyba může znamenat potenciálně počítač nemá dostatek místa v haldě klasické pracovní plochy. Tato příčina je zvláště pravděpodobné, pokud máte velký počet procesů, které patří k aplikaci spuštěné na uzlu. | Pokud váš program nebyl vytvořen na kombinaci kláves Ctrl + C signál, můžete povolit nastavení "EnableActivateNoWindow" v manifestu clusteru. Povolení tohoto nastavení by znamenal, že váš balíček kódu běžet bez okno s grafickým uživatelským rozhraním a nebude přijímat signály Ctrl + C, ale snižuje množství místa klasické pracovní plochy haldy, které každý proces spotřebovává. Pokud váš kód balíček musí přijímat signály Ctrl + C, můžete zvýšit velikost haldy váš uzel klasické pracovní plochy.
-3762504530 | 0xe0434352 | neuvedeno | Tato hodnota je kód chyby pro nezpracovanou výjimku ze spravovaného kódu (.NET). | Pokud dojde k této ukončovací kód, předpokládá, že vaše aplikace vyvolá výjimku, která zůstala neošetřené a byl ukončen proces. Ladění aplikace protokolů a výpisů paměti by měla být prvním krokem při určování, co způsobilo chybu.
+3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Tato chyba někdy znamená, že počítač má nedostatek prostoru v haldě plochy. Tato příčina je obzvláště pravděpodobná v případě, že máte mnoho procesů, které patří do vaší aplikace spuštěné na uzlu. | Pokud váš program není sestavený tak, aby reagoval na signály CTRL + C, můžete povolit nastavení **EnableActivateNoWindow** v manifestu clusteru. Povolení tohoto nastavení znamená, že se balíček kódu spustí bez okna grafického uživatelského rozhraní a neobdrží signály CTRL + C. Tato akce také snižuje množství prostoru haldy plochy, který každý proces spotřebovává. Pokud váš balíček kódu potřebuje přijmout signály CTRL + C, můžete zvětšit velikost haldy plochy uzlu.
+3762504530 | 0xe0434352 | Není k dispozici | Tato hodnota představuje kód chyby pro neošetřenou výjimku ze spravovaného kódu (tj. .NET). | Tento ukončovací kód označuje, že vaše aplikace vyvolala výjimku, která zůstává neošetřená a která ukončila proces. Jako první krok při určení toho, co aktivoval tuto chybu, proveďte ladění protokolů aplikace a souborů výpisu paměti.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [Diagnostika další běžné scénáře](service-fabric-diagnostics-common-scenarios.md)
-* Získejte podrobnější přehled o protokoly Azure monitoru a nabízí načtením [co je Azure Monitor protokoly?](../operations-management-suite/operations-management-suite-overview.md)
-* Další informace o protokolech Azure Monitor [upozorňování](../log-analytics/log-analytics-alerts.md) pro usnadnění detekce a Diagnostika.
-* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízí jako součást protokoly Azure monitoru
+* Přečtěte si další informace o [diagnostice jiných běžných scénářů](service-fabric-diagnostics-common-scenarios.md).
+* Získejte podrobnější přehled o Azure Monitorch protokolech a možnostech, které nabízí [Azure monitor přehled](../operations-management-suite/operations-management-suite-overview.md).
+* Přečtěte si další informace [](../log-analytics/log-analytics-alerts.md) o tom, jak protokoly Azure monitor upozorňování na pomoc při detekci a diagnostice.
+* Seznamte se s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) , které nabízí jako součást protokolů Azure monitor.

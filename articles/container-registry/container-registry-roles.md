@@ -1,27 +1,27 @@
 ---
-title: Služba Azure Container Registry – role a oprávnění
-description: Pomocí řízení přístupu Azure na základě rolí (RBAC) a správu identit a přístupu (IAM) poskytují jemně odstupňovaná oprávnění k prostředkům ve službě Azure container registry.
+title: Azure Container Registry – role a oprávnění
+description: Využijte řízení přístupu na základě role (RBAC) Azure a správu identit a přístupu (IAM) k zajištění podrobných oprávnění k prostředkům v registru kontejnerů Azure.
 services: container-registry
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
-ms.openlocfilehash: d62dd6c65975d63a0127bb5dd1c62cd741b59ac6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 793dbf056201a3315a9b77dfebbb9331a8ed7db1
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068004"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310605"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry role a oprávnění
 
-Služba Azure Container Registry podporuje sadu role služby Azure, které poskytují různé úrovně oprávnění do služby Azure container registry. Použití Azure [řízení přístupu na základě rolí](../role-based-access-control/index.yml) (RBAC) k přiřazení konkrétních oprávnění uživatelům nebo instanční, které potřebují komunikovat pomocí registru.
+Služba Azure Container Registry podporuje sadu rolí Azure, které poskytují různé úrovně oprávnění ke službě Azure Container Registry. [Řízení přístupu na základě role](../role-based-access-control/index.yml) (RBAC) v Azure můžete použít k přiřazení konkrétních oprávnění uživatelům nebo instančním objektům, které potřebují pracovat s registrem.
 
-| Role a oprávnění       | [Přístup k Resource Manageru](#access-resource-manager) | [Vytváření/odstraňování registru](#create-and-delete-registry) | [Nahrání image](#push-image) | [Stáhněte si image](#pull-image) | [Odstranit data bitové kopie](#delete-image-data) | [Změna zásad](#change-policies) |   [Znak bitových kopií](#sign-images)  |
+| Role/oprávnění       | [Přístup Správce prostředků](#access-resource-manager) | [Vytvořit nebo odstranit registr](#create-and-delete-registry) | [Obrázek push](#push-image) | [Obrázek pro vyžádání obsahu](#pull-image) | [Odstranit data obrázku](#delete-image-data) | [Změnit zásady](#change-policies) |   [Podepsat obrázky](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| Vlastník | X | X | X | X | X | X |  |  
+| Owner | X | X | X | X | X | X |  |  
 | Přispěvatel | X | X | X |  X | X | X |  |  
 | Čtenář | X |  |  |  |  |  |  |
 | AcrPush |  |  | X | X | |  |  |  
@@ -29,52 +29,52 @@ Služba Azure Container Registry podporuje sadu role služby Azure, které posky
 | AcrDelete |  |  |  |  | X |  |  |
 | AcrImageSigner |  |  |  |  |  |  | X |
 
-## <a name="differentiate-users-and-services"></a>Rozlišení uživatelů a služeb
+## <a name="differentiate-users-and-services"></a>Odlišení uživatelů a služeb
 
-Žádná oprávnění čas se použijí, je osvědčeným postupem zajistit nejvíc omezenou sadu oprávnění pro osoby nebo služby, k provádění různých úloh. Následující sady oprávnění představují sadu funkcí, které mohou využívat člověka a bezobslužného služby.
+Pokaždé, když se uplatní oprávnění, osvědčeným postupem je poskytnout nejvíce omezené sady oprávnění pro osobu nebo službu, aby bylo možné úkol provést. Následující sady oprávnění reprezentují sadu funkcí, které mohou používat lidé a bezobslužné služby.
 
 ### <a name="cicd-solutions"></a>Řešení CI/CD
 
-Při automatizaci `docker build` příkazy z řešení pro CI/CD, budete potřebovat `docker push` možnosti. Pro tyto scénáře bezobslužného služby doporučujeme přiřazení **AcrPush** role. Tato role, na rozdíl od širší **Přispěvatel** role, zabraňuje účtu z provádění jiných operací registru nebo přístup k Azure Resource Manageru.
+Při automatizaci `docker build` příkazů z řešení CI/CD potřebujete `docker push` možnosti. Pro tyto scénáře bezpostupné služby doporučujeme přiřadit roli **AcrPush** . Tato role na rozdíl od širší role **přispěvatele** zabraňuje účtu v provádění jiných operací registru nebo přístupu k Azure Resource Manager.
 
-### <a name="container-host-nodes"></a>Uzly Container hostitele
+### <a name="container-host-nodes"></a>Uzly hostitele kontejneru
 
-Podobně, musí uzly spuštěnými kontejnery **AcrPull** role, ale neměli byste potřebovat **čtečky** možnosti.
+Podobně uzly se spuštěnými kontejnery potřebují roli **AcrPull** , ale neměly by vyžadovat možnosti **čtenářů** .
 
-### <a name="visual-studio-code-docker-extension"></a>Rozšíření sady Visual Studio Code Dockeru
+### <a name="visual-studio-code-docker-extension"></a>Rozšíření Docker Visual Studio Code
 
-Pro nástroje, jako je Visual Studio Code [rozšíření Docker](https://code.visualstudio.com/docs/azure/docker), je nutné mít další prostředků poskytovatele přístup do seznamu k dispozici Azure container Registry. V takovém případě poskytují uživatelům přístup k **čtečky** nebo **Přispěvatel** role. Pracovníci v těchto rolích povolit `docker pull`, `docker push`, `az acr list`, `az acr build`a další možnosti. 
+Pro nástroje, jako je [rozšíření docker](https://code.visualstudio.com/docs/azure/docker)Visual Studio Code, je pro výpis dostupných registrů kontejnerů Azure potřeba další přístup od poskytovatele prostředků. V takovém případě Poskytněte uživatelům přístup k roli **Čtenář** nebo **Přispěvatel** . Tyto role umožňují `docker pull` `docker push` ,,`az acr build`,adalšífunkce. `az acr list` 
 
-## <a name="access-resource-manager"></a>Přístup k Resource Manageru
+## <a name="access-resource-manager"></a>Přístup Správce prostředků
 
-Přístup ke službě Azure Resource Manageru se vyžaduje pro správu Azure portal a registru s [rozhraní příkazového řádku Azure](/cli/azure/). Například chcete získat seznam registrů pomocí `az acr list` příkaz, musíte toto oprávnění nastavena. 
+Pro Azure Portal a správu registru se v [Azure CLI](/cli/azure/)vyžaduje přístup k Azure Resource Manager. Chcete-li například získat seznam registrů pomocí `az acr list` příkazu, budete potřebovat tuto sadu oprávnění. 
 
-## <a name="create-and-delete-registry"></a>Vytvářet a odstraňovat registru
+## <a name="create-and-delete-registry"></a>Vytvoření a odstranění registru
 
-Možnost vytvářet a odstraňovat registry kontejnerů Azure.
+Možnost vytvářet a odstraňovat Registry kontejnerů Azure.
 
-## <a name="push-image"></a>Nahrání image
+## <a name="push-image"></a>Obrázek push
 
-Schopnost `docker push` bitové kopie, nebo jiné doručit [podporované artefaktů](container-registry-image-formats.md) například helmu k registru. Vyžaduje [ověřování](container-registry-authentication.md) s registrem pomocí oprávnění identity. 
+Možnost `docker push` obrázku nebo vložení dalšího podporovaného artefaktu [](container-registry-image-formats.md) , jako je například graf Helm, do registru. Vyžaduje [ověření](container-registry-authentication.md) pomocí registru pomocí autorizované identity. 
 
-## <a name="pull-image"></a>Stáhněte si image
+## <a name="pull-image"></a>Obrázek pro vyžádání obsahu
 
-Schopnost `docker pull` jiných-umístí do karantény image, nebo o přijetí změn jiného [podporované artefaktů](container-registry-image-formats.md) například helmu z registru. Vyžaduje [ověřování](container-registry-authentication.md) s registrem pomocí oprávnění identity.
+Možnost `docker pull` obrázku mimo v karanténě nebo si z registru vyžádejte jiný [podporovaný artefakt](container-registry-image-formats.md) , jako je například Helm graf. Vyžaduje [ověření](container-registry-authentication.md) pomocí registru pomocí autorizované identity.
 
-## <a name="delete-image-data"></a>Odstranit data bitové kopie
+## <a name="delete-image-data"></a>Odstranit data obrázku
 
-Schopnost [odstranit Image kontejneru](container-registry-delete.md), nebo odstranění jiných [podporované artefakty](container-registry-image-formats.md) například helmu z registru.
+Možnost [Odstranit image kontejneru](container-registry-delete.md)nebo odstranit jiné [podporované artefakty](container-registry-image-formats.md) , jako jsou grafy Helm, z registru.
 
-## <a name="change-policies"></a>Změna zásad
+## <a name="change-policies"></a>Změnit zásady
 
-Umožňuje nakonfigurovat zásady v registru. Zásady zahrnovat image vyprazdňování, povolení karantény a podepisování bitové kopie.
+Možnost konfigurovat zásady v registru. Zásady zahrnují vymazání imagí, povolení karantény a podepisování obrázků.
 
-## <a name="sign-images"></a>Znak bitových kopií
+## <a name="sign-images"></a>Podepsat obrázky
 
-Možnost přihlásit se Image, obvykle přiřazená automatizovaný proces, který by použít instanční objekt služby. Toto oprávnění je obvykle kombinovat s [nabízených image](#push-image) umožňující nahráním důvěryhodného image do registru. Podrobnosti najdete v tématu [obsahu důvěryhodnosti ve službě Azure Container Registry](container-registry-content-trust.md).
+Schopnost podepisovat obrázky obvykle přiřazené automatizovanému procesu, který by používal instanční objekt. Toto oprávnění je obvykle kombinováno s [imagí push](#push-image) , aby umožňovalo vložení důvěryhodného obrázku do registru. Podrobnosti najdete v tématu [vztah důvěryhodnosti obsahu v Azure Container Registry](container-registry-content-trust.md).
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o přiřazení role RBAC pro Azure identity pomocí [webu Azure portal](../role-based-access-control/role-assignments-portal.md), [rozhraní příkazového řádku Azure](../role-based-access-control/role-assignments-cli.md), nebo jiné nástroje pro Azure.
+* Přečtěte si další informace o přiřazení rolí RBAC k identitě Azure pomocí [Azure Portal](../role-based-access-control/role-assignments-portal.md), rozhraní příkazového [řádku Azure](../role-based-access-control/role-assignments-cli.md)nebo dalších nástrojů Azure.
 
-* Další informace o [možnosti ověřování](container-registry-authentication.md) pro službu Azure Container Registry.
+* Seznamte se s [možnostmi ověřování](container-registry-authentication.md) pro Azure Container Registry.

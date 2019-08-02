@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a správa Azure SQL úlohy Elastic Database pomocí jazyka Transact-SQL (T-SQL) | Dokumentace Microsoftu
-description: Spusťte skripty v rozsáhlé skupině databází se agent Elastických úloh databáze pomocí příkazů jazyka Transact-SQL (T-SQL).
+title: Vytváření a správa úloh Azure SQL Elastic Database pomocí jazyka Transact-SQL (T-SQL) | Microsoft Docs
+description: Pomocí rutiny Transact-SQL (T-SQL) spouštějte pomocí rutiny Transact-SQL skripty mezi mnoha databázemi pomocí agenta Elastic Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -10,27 +10,26 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 683297e32c40f73c64dc40b18f279d92e2396e8d
-ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
+ms.openlocfilehash: d1123affa79f401b5142af604adbd757bdfb7d73
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568277"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641039"
 ---
-# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
+# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Vytvoření a správa úloh Elastic Database pomocí jazyka Transact-SQL (T-SQL)
 
-Tento článek obsahuje mnoho ukázkové scénáře, abyste mohli začít pracovat s Elastickými úlohami pomocí jazyka T-SQL.
+Tento článek poskytuje mnoho ukázkových scénářů, které vám pomohou začít pracovat s elastickými úlohami pomocí jazyka T-SQL.
 
-V příkladech se používá [uložených procedur komponentami TableAdapter](#job-stored-procedures) a [zobrazení](#job-views) k dispozici v [ *databáze úloh*](sql-database-job-automation-overview.md#job-database).
+V příkladech se používají [uložené procedury](#job-stored-procedures) a [zobrazení](#job-views) , které jsou k dispozici v [*databázi úloh*](sql-database-job-automation-overview.md#job-database).
 
-Příkaz Transact-SQL (T-SQL) slouží k vytváření, konfiguraci, spuštění a Správa úloh. Vytvoření agenta Elastických úloh není podporováno v T-SQL, proto je nutné nejprve vytvořit *agenta Elastických úloh* pomocí portálu, nebo [Powershellu](elastic-jobs-powershell.md#create-the-elastic-job-agent).
+Pomocí jazyka Transact-SQL (T-SQL) se dají vytvářet, konfigurovat, spouštět a spravovat úlohy. Vytvoření agenta elastické úlohy není v T-SQL podporované, takže musíte nejdřív vytvořit *agenta elastické úlohy* pomocí portálu nebo [PowerShellu](elastic-jobs-powershell.md#create-the-elastic-job-agent).
 
 
-## <a name="create-a-credential-for-job-execution"></a>Vytvoření pověření pro provádění úloh
+## <a name="create-a-credential-for-job-execution"></a>Vytvoření přihlašovacích údajů pro spuštění úlohy
 
-Přihlašovací údaje, které se používá pro připojení k vaší cílové databáze pro spuštění skriptu. Přihlašovací údaje, které musí mít příslušná oprávnění pro databáze určená cílová skupina úspěšně spustit skript. Při použití serveru a/nebo člena skupiny cílový fond, důrazně doporučujeme, abyste vytvořit hlavní pověření pro použití k aktualizaci přihlašovacích údajů před rozšíření serveru a/nebo fond v době provádění úlohy. Přihlašovací údaje s rozsahem databáze se vytvoří na databáze agenta úloh. Musí být stejné přihlašovací údaje, které slouží k *Vytvořte přihlašovací údaje* a *vytvořit uživatele z přihlášení k udělení oprávnění databáze přihlášení* na cílové databáze.
+Přihlašovací údaje se používají pro připojení k cílovým databázím pro spuštění skriptu. K úspěšnému provedení skriptu potřebuje přihlašovací údaje příslušná oprávnění v databázích určených cílovou skupinou. Při použití členu cílové skupiny serveru nebo fondu se důrazně doporučuje vytvořit hlavní přihlašovací údaje, které se použijí k aktualizaci přihlašovacích údajů před rozšířením serveru a/nebo fondu v době provádění úlohy. Přihlašovací údaje v oboru databáze se vytvoří v databázi agenta úloh. Stejné přihlašovací údaje se musí použít k *Vytvoření přihlášení* a *Vytvoření uživatele z přihlašovacího jména a udělení oprávnění přihlašovací databáze* na cílové databáze.
 
 
 ```sql
@@ -50,10 +49,10 @@ CREATE DATABASE SCOPED CREDENTIAL mymastercred WITH IDENTITY = 'mastercred',
 GO
 ```
 
-## <a name="create-a-target-group-servers"></a>Vytvořte cílovou skupinu (servery)
+## <a name="create-a-target-group-servers"></a>Vytvořit cílovou skupinu (servery)
 
-Následující příklad ukazuje, jak spustit úlohu proti všem databázím na serveru.  
-Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
+Následující příklad ukazuje, jak spustit úlohu se všemi databázemi na serveru.  
+Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 
 ```sql
@@ -75,10 +74,10 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ```
 
 
-## <a name="exclude-an-individual-database"></a>Vyloučit jednotlivé databáze
+## <a name="exclude-an-individual-database"></a>Vyloučení individuální databáze
 
-Následující příklad ukazuje, jak spustit úlohu proti všem databázím na serveru SQL Database, s výjimkou databázi s názvem *MappingDB*.  
-Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
+Následující příklad ukazuje, jak spustit úlohu se všemi databázemi na serveru SQL Database, s výjimkou databáze s názvem *MappingDB*.  
+Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -118,10 +117,10 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ```
 
 
-## <a name="create-a-target-group-pools"></a>Vytvořte cílovou skupinu (fondy)
+## <a name="create-a-target-group-pools"></a>Vytvořit cílovou skupinu (fondy)
 
-Následující příklad ukazuje, jak cílit na všechny databáze v jedné nebo víc elastických fondů.  
-Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
+Následující příklad ukazuje, jak cílit na všechny databáze v jednom nebo více elastických fondech.  
+Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -143,10 +142,10 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ```
 
 
-## <a name="deploy-new-schema-to-many-databases"></a>Nasazení nové schéma pro velký počet databází
+## <a name="deploy-new-schema-to-many-databases"></a>Nasazení nového schématu do mnoha databází
 
-Následující příklad ukazuje, jak nasadit nové schéma pro všechny databáze.  
-Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
+Následující příklad ukazuje, jak nasadit nové schéma do všech databází.  
+Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 
 ```sql
@@ -165,20 +164,20 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 ```
 
 
-## <a name="data-collection-using-built-in-parameters"></a>Shromažďování dat pomocí předdefinovaných parametrů
+## <a name="data-collection-using-built-in-parameters"></a>Shromažďování dat pomocí integrovaných parametrů
 
-V mnoha scénářích shromažďování dat může být užitečné zahrnout některé z těchto proměnných skriptovací umožňující výsledky úlohy následného zpracování.
+V mnoha scénářích shromažďování dat může být užitečné zahrnout některé z těchto proměnných skriptování, které vám pomůžou při následném zpracování výsledků úlohy.
 
-- $(job_name)
-- $(job_id)
-- $(job_version)
-- $(step_id)
-- $(step_name)
+- $ (job_name)
+- $ (job_id)
+- $ (job_version)
+- $ (step_id)
+- $ (STEP_NAME)
 - $(job_execution_id)
 - $(job_execution_create_time)
-- $(target_group_name)
+- $ (target_group_name)
 
-Například skupinu pro všechny výsledky z společně provedení stejné úlohy, použijte *$(job_execution_id)* jak je znázorněno v následujícím příkazu:
+Chcete-li například seskupit všechny výsledky ze stejného spuštění úlohy společně, použijte *$ (job_execution_id)* , jak je znázorněno v následujícím příkazu:
 
 
 ```sql
@@ -188,14 +187,14 @@ Například skupinu pro všechny výsledky z společně provedení stejné úloh
 
 ## <a name="monitor-database-performance"></a>Monitorování výkonu databáze
 
-Následující příklad vytvoří novou úlohu ke shromažďování dat výkonu z několika databází.
+Následující příklad vytvoří novou úlohu pro shromažďování údajů o výkonu z více databází.
 
-Ve výchozím nastavení bude vypadat agent úlohy k vytvoření této tabulky můžete ukládat výsledky vrácené v. Díky tomu přihlašovací jméno přidružené k pověření použité pro přihlašovací údaje, které výstup muset mít dostatečná oprávnění k provedení této. Pokud chcete ručně vytvořit tabulku předem je potřeba mít následující vlastnosti:
-1. Sloupce se správným názvem a datové typy pro sadu výsledků dotazu.
+Ve výchozím nastavení bude Agent úlohy v nástroji Hledat tabulku pro uložení vrácených výsledků. V důsledku toho bude nutné přihlášení přidružené k přihlašovacím údajům použitým pro výstupní přihlašovací údaje mít dostatečná oprávnění k provedení této akce. Pokud chcete tabulku vytvořit znovu před časem, musí mít následující vlastnosti:
+1. Sloupce se správným názvem a datovými typy pro sadu výsledků.
 2. Další sloupec pro internal_execution_id s datovým typem uniqueidentifier.
-3. Neclusterovaný index s názvem `IX_<TableName>_Internal_Execution_ID` internal_execution_id sloupec.
+3. Neclusterovaný index s názvem `IX_<TableName>_Internal_Execution_ID` ve sloupci internal_execution_id
 
-Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkazy:
+Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkazy:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -263,10 +262,10 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 ```
 
 
-## <a name="view-job-definitions"></a>Definice zobrazení úloh
+## <a name="view-job-definitions"></a>Zobrazit definice úloh
 
-Následující příklad ukazuje, jak zobrazit aktuální definice úlohy.  
-Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
+Následující příklad ukazuje, jak zobrazit aktuální definice úloh.  
+Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -286,8 +285,8 @@ select * from jobs.jobsteps
 
 ## <a name="begin-ad-hoc-execution-of-a-job"></a>Zahájit ad hoc provádění úlohy
 
-Následující příklad ukazuje, jak chcete okamžitě spustit úlohu.  
-Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
+Následující příklad ukazuje, jak okamžitě spustit úlohu.  
+Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -307,10 +306,10 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 ```
 
 
-## <a name="schedule-execution-of-a-job"></a>Plánování spouštění úlohy
+## <a name="schedule-execution-of-a-job"></a>Plánování provádění úlohy
 
-Následující příklad ukazuje, jak naplánovat úlohu pro budoucí spouštění.  
-Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
+Následující příklad ukazuje, jak naplánovat úlohu pro pozdější spuštění.  
+Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -322,10 +321,10 @@ EXEC jobs.sp_update_job
 @schedule_interval_count=15
 ```
 
-## <a name="monitor-job-execution-status"></a>Stav provádění úlohy monitorování
+## <a name="monitor-job-execution-status"></a>Monitorovat stav spuštění úlohy
 
-Následující příklad ukazuje, jak chcete-li zobrazit podrobnosti o stavu spuštění pro všechny úlohy.  
-Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
+Následující příklad ukazuje, jak zobrazit podrobnosti o stavu spuštění pro všechny úlohy.  
+Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -353,8 +352,8 @@ ORDER BY start_time DESC
 
 ## <a name="cancel-a-job"></a>Zrušení úlohy
 
-Následující příklad ukazuje, jak zrušit úlohy.  
-Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
+Následující příklad ukazuje, jak zrušit úlohu.  
+Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -370,10 +369,10 @@ EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
 ```
 
 
-## <a name="delete-old-job-history"></a>Odstranit staré historie úlohy
+## <a name="delete-old-job-history"></a>Odstranit starou historii úlohy
 
-Následující příklad ukazuje, jak odstranit historii úloh před k určitému datu.  
-Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
+Následující příklad ukazuje, jak odstranit historii úlohy před určitým datem.  
+Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -384,10 +383,10 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 --Note: job history is automatically deleted if it is >45 days old
 ```
 
-## <a name="delete-a-job-and-all-its-job-history"></a>Odstranění úlohy a všechny jeho historie úloh
+## <a name="delete-a-job-and-all-its-job-history"></a>Odstraní úlohu a celou její historii úloh.
 
-Následující příklad ukazuje, jak odstranit úlohu a všechny související historie úlohy.  
-Připojte se k [ *databáze úloh* ](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
+Následující příklad ukazuje, jak odstranit úlohu a všechny související historie úloh.  
+Připojte se k [*databázi úloh*](sql-database-job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -400,27 +399,27 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 
 
-## <a name="job-stored-procedures"></a>Úloha uložené procedury
+## <a name="job-stored-procedures"></a>Uložené procedury úlohy
 
-Následující uložené procedury jsou v [úloh databáze](sql-database-job-automation-overview.md#job-database).
+Následující uložené procedury jsou v [databázi Jobs](sql-database-job-automation-overview.md#job-database).
 
 
 
 |Uložená procedura  |Popis  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Přidá novou úlohu.    |
-|[sp_update_job](#sp_update_job)    |      Aktualizuje existující úlohy.   |
-|[sp_delete_job](#sp_delete_job)     |      Odstraní existující úlohy.   |
-|[sp_add_jobstep](#sp_add_jobstep)    |    Přidá nový krok do úlohy.     |
+|[sp_update_job](#sp_update_job)    |      Aktualizuje existující úlohu.   |
+|[sp_delete_job](#sp_delete_job)     |      Odstraní existující úlohu.   |
+|[sp_add_jobstep](#sp_add_jobstep)    |    Přidá krok do úlohy.     |
 |[sp_update_jobstep](#sp_update_jobstep)     |     Aktualizuje krok úlohy.    |
 |[sp_delete_jobstep](#sp_delete_jobstep)     |     Odstraní krok úlohy.    |
-|[sp_start_job](#sp_start_job)    |  Začne provádět úlohy.       |
+|[sp_start_job](#sp_start_job)    |  Spustí provádění úlohy.       |
 |[sp_stop_job](#sp_stop_job)     |     Zastaví provádění úlohy.   |
 |[sp_add_target_group](#sp_add_target_group)    |     Přidá cílovou skupinu.    |
 |[sp_delete_target_group](#sp_delete_target_group)     |    Odstraní cílovou skupinu.     |
-|[sp_add_target_group_member](#sp_add_target_group_member)     |    Přidá do skupiny cílové databázi nebo skupině databází.     |
-|[sp_delete_target_group_member](#sp_delete_target_group_member)     |     Odebere z cílová skupina členem cílové skupiny.    |
-|[sp_purge_jobhistory](#sp_purge_jobhistory)    |    Odebere záznamy historie úlohy.     |
+|[sp_add_target_group_member](#sp_add_target_group_member)     |    Přidá databázi nebo skupinu databází do cílové skupiny.     |
+|[sp_delete_target_group_member](#sp_delete_target_group_member)     |     Odebere člena cílové skupiny z cílové skupiny.    |
+|[sp_purge_jobhistory](#sp_purge_jobhistory)    |    Odebere záznamy historie pro úlohu.     |
 
 
 
@@ -447,54 +446,54 @@ Přidá novou úlohu.
   
 #### <a name="arguments"></a>Argumenty  
 
-[  **\@hodnotu job_name =** ] "hodnotu job_name.  
-Název úlohy. Název musí být jedinečné a nesmí obsahovat procent (%) znak. hodnotu job_name je nvarchar(128) bez výchozí hodnoty.
+**[\@job_name =** ] ' job_name '  
+Název úlohy. Název musí být jedinečný a nesmí obsahovat procenta (%). optické. job_name je nvarchar (128) bez výchozího nastavení.
 
-[  **\@popis =** ] "popisu"  
-Popis úlohy. Popis je nvarchar(512), výchozí hodnota je NULL. Pokud popis je vynechán, použije se prázdný řetězec.
+**[\@Description =** ] ' Description '  
+Popis úlohy Description je nvarchar (512) s výchozí hodnotou NULL. Pokud je popis vynechán, je použit prázdný řetězec.
 
-[  **\@povoleno =** ] povolená  
-Plán úloh Určuje, zda je povoleno. Povolena je bit, výchozí hodnota je 0 (zakázáno). Pokud je 0, úloha není povoleno a nespustí podle zadaného plánu; Nicméně jej lze spustit ručně. Pokud 1, úloha se spustí podle zadaného plánu a můžete spustit také ručně.
+**[\@Enabled =** ] povoleno  
+Určuje, jestli je plán úlohy povolený. Enabled je bit s výchozí hodnotou 0 (zakázáno). Pokud je 0, úloha není povolená a neběží podle jejího plánu. dá se ale spustit ručně. Pokud je nastavená na 1, úloha se spustí podle plánu a dá se spustit taky ručně.
 
 [ **\@schedule_interval_type =** ] schedule_interval_type  
-Hodnota znamená, když je úloha má být proveden. schedule_interval_type je nvarchar(50), výchozí hodnota je jednou a může být jedna z následujících hodnot:
-- Jednou,
-- 'Minuty'
-- 'Hodiny'
-- "Days",
-- "Týdnů.
-- "Měsíců.
+Hodnota označuje, kdy má být úloha spuštěna. schedule_interval_type je nvarchar (50), má výchozí hodnotu jednou a může to být jedna z následujících hodnot:
+- ' Jednou ',
+- ' Minuty ',
+- ' Hodiny ',
+- ' Days ',
+- ' Týdny ',
+- Měsíci
 
 [ **\@schedule_interval_count =** ] schedule_interval_count  
-Počet období schedule_interval_count ke kterým dochází mezi každé spuštění úlohy. schedule_interval_count je int, výchozí hodnota je 1. Hodnota musí být větší než nebo rovno 1.
+Počet období schedule_interval_count, která se mají provést mezi jednotlivými spuštěními úlohy. schedule_interval_count je int, výchozí hodnota je 1. Hodnota musí být větší než nebo rovna 1.
 
-[  **\@schedule_start_time =** ] schedule_start_time  
-Datum, na jaké úlohy můžete začít spuštění. schedule_start_time DATETIME2, je výchozí 00:00:00.0000000 0001-01-01.
+**[\@schedule_start_time =** ] schedule_start_time  
+Datum, kdy může spuštění úlohy začít. schedule_start_time je DATETIME2, výchozí hodnota je 0001-01-01 00:00:00.0000000.
 
-[  **\@schedule_end_time =** ] schedule_end_time  
-Datum, které úlohy můžete zastavit provádění. schedule_end_time DATETIME2, je výchozí 9999-12-31 11:59:59.0000000. 
+**[\@schedule_end_time =** ] schedule_end_time  
+Datum, kdy se může zastavit spuštění úlohy. schedule_end_time je DATETIME2, výchozí hodnota je 9999-12-31 11:59:59.0000000. 
 
-[  **\@parametrem job_id =** ] parametrem job_id výstupu  
-Identifikační číslo úlohy přiřazených k úloze, pokud byl úspěšně vytvořen. parametrem job_id je proměnná výstupní typ uniqueidentifier.
+**[\@job_id =** ] výstup job_id  
+Identifikační číslo úlohy přiřazené úloze, pokud bylo úspěšně vytvořeno. job_id je výstupní proměnná typu uniqueidentifier.
 
-#### <a name="return-code-values"></a>Hodnoty návratový kód
+#### <a name="return-code-values"></a>Hodnoty návratového kódu
 
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-sp_add_job se musí spouštět z databáze agenta úloh při vytvoření úlohy agenta.
-Po přidání úloha spustila sp_add_job, sp_add_jobstep je možné přidat kroky, které provádějí činnosti úlohy. Číslo úlohy počáteční verze je 0, což se zvýší na 1 při prvním krokem je přidání.
+sp_add_job je nutné spustit z databáze agenta úlohy zadané při vytváření agenta úloh.
+Po provedení sp_add_job pro přidání úlohy se sp_add_jobstep dá použít k přidání kroků, které provádějí aktivity pro úlohu. Počáteční číslo verze úlohy je 0, což se při přidání prvního kroku zvýší na 1.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
 
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 ### <a name="sp_update_job"></a>sp_update_job
 
-Aktualizuje existující úlohy.
+Aktualizuje existující úlohu.
 
 #### <a name="syntax"></a>Syntaxe
 
@@ -510,54 +509,54 @@ Aktualizuje existující úlohy.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **\@hodnotu job_name =** ] "hodnotu job_name.  
-Název úlohy aktualizovat. hodnotu job_name je nvarchar(128).
+**[\@job_name =** ] ' job_name '  
+Název úlohy, která se má aktualizovat. job_name je nvarchar (128).
 
-[  **\@nový_název =** ] "Nový_název.  
-Nový název úlohy. nový_název je nvarchar(128).
+**[\@new_name =** ] ' new_name '  
+Nový název úlohy. new_name je nvarchar (128).
 
-[  **\@popis =** ] "popisu"  
-Popis úlohy. Popis je nvarchar(512).
+**[\@Description =** ] ' Description '  
+Popis úlohy Popis je nvarchar (512).
 
-[  **\@povoleno =** ] povolená  
-Určuje, jestli plán úloh je povoleno (1) nebo nejsou povolené (0). Povolena je bit.
+**[\@Enabled =** ] povoleno  
+Určuje, jestli je plán úlohy povolený (1) nebo není povolený (0). Povoleno je bit.
 
 [ **\@schedule_interval_type=** ] schedule_interval_type  
-Hodnota znamená, když je úloha má být proveden. schedule_interval_type je nvarchar(50) a může být jedna z následujících hodnot:
+Hodnota označuje, kdy má být úloha spuštěna. schedule_interval_type je nvarchar (50) a může to být jedna z následujících hodnot:
 
-- Jednou,
-- 'Minuty'
-- 'Hodiny'
-- "Days",
-- "Týdnů.
-- "Měsíců.
+- ' Jednou ',
+- ' Minuty ',
+- ' Hodiny ',
+- ' Days ',
+- ' Týdny ',
+- Měsíci
 
-[ **\@schedule_interval_count=** ] schedule_interval_count  
-Počet období schedule_interval_count ke kterým dochází mezi každé spuštění úlohy. schedule_interval_count je int, výchozí hodnota je 1. Hodnota musí být větší než nebo rovno 1.
+**[\@schedule_interval_count =** ] schedule_interval_count  
+Počet období schedule_interval_count, která se mají provést mezi jednotlivými spuštěními úlohy. schedule_interval_count je int, výchozí hodnota je 1. Hodnota musí být větší než nebo rovna 1.
 
-[  **\@schedule_start_time =** ] schedule_start_time  
-Datum, na jaké úlohy můžete začít spuštění. schedule_start_time DATETIME2, je výchozí 00:00:00.0000000 0001-01-01.
+**[\@schedule_start_time =** ] schedule_start_time  
+Datum, kdy může spuštění úlohy začít. schedule_start_time je DATETIME2, výchozí hodnota je 0001-01-01 00:00:00.0000000.
 
-[  **\@schedule_end_time =** ] schedule_end_time  
-Datum, které úlohy můžete zastavit provádění. schedule_end_time DATETIME2, je výchozí 9999-12-31 11:59:59.0000000. 
+**[\@schedule_end_time =** ] schedule_end_time  
+Datum, kdy se může zastavit spuštění úlohy. schedule_end_time je DATETIME2, výchozí hodnota je 9999-12-31 11:59:59.0000000. 
 
-#### <a name="return-code-values"></a>Hodnoty návratový kód
+#### <a name="return-code-values"></a>Hodnoty návratového kódu
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Po přidání úloha spustila sp_add_job, sp_add_jobstep je možné přidat kroky, které provádějí činnosti úlohy. Číslo úlohy počáteční verze je 0, což se zvýší na 1 při prvním krokem je přidání.
+Po provedení sp_add_job pro přidání úlohy se sp_add_jobstep dá použít k přidání kroků, které provádějí aktivity pro úlohu. Počáteční číslo verze úlohy je 0, což se při přidání prvního kroku zvýší na 1.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 
 
 ### <a name="sp_delete_job"></a>sp_delete_job
 
-Odstraní existující úlohy.
+Odstraní existující úlohu.
 
 #### <a name="syntax"></a>Syntaxe
 
@@ -567,29 +566,29 @@ Odstraní existující úlohy.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **\@hodnotu job_name =** ] "hodnotu job_name.  
-Název úlohy, která se má odstranit. hodnotu job_name je nvarchar(128).
+**[\@job_name =** ] ' job_name '  
+Název úlohy, která se má odstranit job_name je nvarchar (128).
 
-[  **\@vynutit =** ] vynutit  
-Určuje, jestli se má odstranit, pokud úloha nemá žádné spuštění v průběhu a zrušení všech probíhajících spuštění (1) nebo převzetí služeb při, pokud všechny prováděné úlohy jsou v průběhu (0). platnost je bit.
+**[\@Force =** ] Force  
+Určuje, jestli se má odstranit v případě, že úloha obsahuje nějaké probíhající úlohy, a zrušte všechny probíhající úlohy (1) nebo selže, pokud dojde k probíhajícímu provádění úloh (0). síla je bit.
 
-#### <a name="return-code-values"></a>Hodnoty návratový kód
+#### <a name="return-code-values"></a>Hodnoty návratového kódu
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Historie úlohy automaticky odstraní při odstranění úlohy.
+Historie úlohy je automaticky odstraněna při odstranění úlohy.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 
 
 ### <a name="sp_add_jobstep"></a>sp_add_jobstep
 
-Přidá nový krok do úlohy.
+Přidá krok do úlohy.
 
 #### <a name="syntax"></a>Syntaxe
 
@@ -622,94 +621,94 @@ Přidá nový krok do úlohy.
 
 #### <a name="arguments"></a>Argumenty
 
-[  **\@hodnotu job_name =** ] "hodnotu job_name.  
-Název úlohy, ke kterému chcete přidat krok. hodnotu job_name je nvarchar(128).
+**[\@job_name =** ] ' job_name '  
+Název úlohy, do které chcete krok přidat. job_name je nvarchar (128).
 
-[  **\@step_id =** ] step_id  
-Identifikační číslo sekvence pro krok úlohy. Krok identifikační čísla začínají znakem 1 a zvýšit bez mezer. Pokud toto id již existující krok, pak krok a všechny další kroky se budou mít jejich id uživatele zvýší tak, aby tento nový krok může být vložen do sekvence. Pokud není zadán, step_id automaticky přiřadí na poslední v pořadí kroků. step_id je celé číslo
+**[\@step_id =** ] step_id  
+Identifikační číslo sekvence pro krok úlohy Identifikační čísla kroků začínají 1 a se zvětšují bez mezer. Pokud již existuje stávající krok s tímto ID, pak tento krok a všechny následující kroky budou mít své ID zvýšeny, aby tento nový krok mohl být vložen do sekvence. Pokud není zadaný, step_id se automaticky přiřadí k poslednímu kroku v pořadí kroků. step_id je int.
 
-[  **\@step_name =** ] step_name  
-Název kroku. Musí být zadána, s výjimkou první krok úlohy, která má výchozí název 'JobStep' (pro usnadnění práce). STEP_NAME je nvarchar(128).
+**[\@STEP_NAME =** ] STEP_NAME  
+Název kroku. Musí být zadáno, s výjimkou prvního kroku úlohy, která (pro usnadnění) má výchozí název "JobStep". STEP_NAME je nvarchar (128).
 
-[  **\@command_type =** ] "command_type.  
-Typ příkazu, který provádí tento krok úlohy. command_type je nvarchar(50) s výchozí hodnotou TSql, to znamená, že hodnota @command_type parametr je skript T-SQL.
+**[\@command_type =** ] ' command_type '  
+Typ příkazu, který je proveden tímto jobstep. command_type je nvarchar (50) s výchozí hodnotou TSql, což znamená, že hodnota @command_type parametru je skript T-SQL.
 
-Je-li zadána, hodnota musí být TSql.
+Je-li tento parametr zadán, musí být hodnota TSql.
 
-[  **\@command_source =** ] "command_source.  
-Typ umístění, kde je uložen příkazu. command_source je nvarchar(50) s výchozí hodnotou vloženého, to znamená, že hodnota @command_source parametr je literál text příkazu.
+**[\@command_source =** ] ' command_source '  
+Typ umístění, kde je příkaz uložen. command_source je nvarchar (50) s výchozí hodnotou inline, což znamená, že hodnota @command_source parametru je literálový text příkazu.
 
-Je-li zadána, hodnota musí být vložená.
+Je-li tento parametr zadán, musí být vložena hodnota.
 
-[  **\@příkaz =** ] 'command'  
-Příkaz musí být platný skript T-SQL a pak provádí tento krok úlohy. příkaz je nvarchar(max), výchozí hodnota je NULL.
+**[\@Command =** ] – příkaz  
+Příkaz musí být platný skript T-SQL, který pak provede tento krok úlohy. příkaz má hodnotu nvarchar (max), která má výchozí hodnotu NULL.
 
-[  **\@credential_name =** ] "credential_name.  
-Název databáze s rozsahem přihlašovací údaje uložené v této databázi řízení úloh, který se používá pro připojení ke každé z cílové databáze v cílové skupině při spuštění tohoto kroku. credential_name je nvarchar(128).
+**[\@credential_name =** ] ' credential_name '  
+Název databáze s rozsahem přihlašovacích údajů uložených v této databázi řízení úloh, která se používá pro připojení ke každé z cílových databází v cílové skupině v případě provedení tohoto kroku. credential_name je nvarchar (128).
 
-[ **\@target_group_name =** ] 'target-group_name'  
-Název cílové skupiny, která obsahuje cílové databáze, které se spustí krok úlohy na. target_group_name je nvarchar(128).
+**[\@target_group_name =** ] ' Target-group_name '  
+Název cílové skupiny, která obsahuje cílové databáze, na kterých se spustí krok úlohy. target_group_name je nvarchar (128).
 
-[ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
-Zpoždění před prvním opakováním pokus selže při pokusu o provedení počáteční krok úlohy. initial_retry_interval_seconds je int, s výchozí hodnotou 1.
+**[\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+Zpoždění před prvním pokusem, pokud se krok úlohy nezdaří při prvotním pokusu o spuštění. initial_retry_interval_seconds je int a má výchozí hodnotu 1.
 
-[  **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
-Maximální zpoždění mezi opakovanými pokusy. Pokud by růst větší než tato hodnota zpoždění mezi opakovanými pokusy, to je se na tuto hodnotu místo toho uzavřeny. maximum_retry_interval_seconds je int, s výchozí hodnotou 120.
+**[\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+Maximální prodleva mezi opakovanými pokusy. Pokud by zpoždění mezi opakovanými pokusy růst větší než tato hodnota, je místo toho omezené na tuto hodnotu. maximum_retry_interval_seconds je int a má výchozí hodnotu 120.
 
 [ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
-Násobitel použít na zpoždění opakování, pokud více úloh kroku spuštění pokusí selhání. Například pokud prvním opakováním měli trvat 5 sekund a omezení rychlosti multiplikátor je 2.0, pak druhý opakování budou mít ke zpoždění 10 sekund a třetí opakování budou mít ke zpoždění 20 sekund. retry_interval_backoff_multiplier je skutečný s výchozí hodnotou 2.0.
+Násobitel, který se má použít u zpoždění při opakování, pokud se několik pokusů o spuštění kroku úlohy nezdaří. Například pokud první pokus má zpoždění 5 sekund a násobitel omezení rychlosti je 2,0, pak druhé opakování bude mít zpoždění 10 sekund a třetí opakování bude mít zpoždění 20 sekund. retry_interval_backoff_multiplier je reálné, má výchozí hodnotu 2,0.
 
-[  **\@retry_attempts =** ] retry_attempts  
-Počet pokusů o zopakování provedení počáteční pokus nebude úspěšný. Například pokud je hodnota retry_attempts 10, pak bude 1 počáteční pokus a 10 pokusy o opakování, poskytuje celkový počet pokusů o zadání 11. Pokud se poslední opakovaný pokus nezdaří, bude ukončen provádění úlohy se životního cyklu se nezdařilo. retry_attempts je int, s výchozí hodnotou 10.
+**[\@retry_attempts =** ] retry_attempts  
+Počet pokusů o opakování provedení, pokud se počáteční pokus nezdaří Pokud je například hodnota retry_attempts 10, bude se jednat o 1 počáteční pokus a 10 opakovaných pokusů, což bude mít celkem 11 pokusů. Pokud se poslední pokus o opakování nezdaří, spuštění úlohy skončí s neúspěšným životním cyklem. retry_attempts je int s výchozí hodnotou 10.
 
-[ **\@step_timeout_seconds =** ] step_timeout_seconds  
-Maximální množství času kroku ke spuštění. Pokud dojde k překročení této doby bude ukončen provádění úlohy s životního cyklu vypršel časový limit. step_timeout_seconds je int, s výchozí hodnotou 43 200 sekund (12 hodin).
+**[\@step_timeout_seconds =** ] step_timeout_seconds  
+Maximální doba, po kterou je možné krok provést. V případě překročení tohoto času se provádění úlohy ukončí s časovým limitem vypršení časového limitu. step_timeout_seconds je int, má výchozí hodnotu 43 200 sekund (12 hodin).
 
-[ **\@output_type =** ] 'output_type'  
-Pokud není null, typ cílového umístění, které sady výsledků dotazu prvním příkazu je zapsán do. output_type je nvarchar(50), výchozí hodnota je NULL.
+**[\@output_type =** ] ' output_type '  
+Pokud hodnota není null, typ cíle, na který je první sada výsledků příkazu zapisována. output_type je nvarchar (50) s výchozí hodnotou NULL.
 
-Je-li zadána, hodnota musí být SQL Database.
+Je-li tento parametr zadán, musí být hodnota SqlDatabase.
 
-[  **\@output_credential_name =** ] "output_credential_name.  
-Pokud není null, název databáze s rozsahem přihlašovací údaj, který se používá pro připojení k cílové databázi výstup. Je třeba zadat Pokud output_type rovná SQL Database. output_credential_name je nvarchar(128) s výchozí hodnotou Null.
+**[\@output_credential_name =** ] ' output_credential_name '  
+Pokud není null, název databáze s rozsahem pověření, která se používá pro připojení k výstupní cílové databázi. Je nutné zadat, pokud se output_type rovná SqlDatabase. output_credential_name je nvarchar (128) s výchozí hodnotou NULL.
 
-[  **\@output_subscription_id =** ] "output_subscription_id.  
-Popis musí.
+**[\@output_subscription_id =** ] ' output_subscription_id '  
+Vyžaduje popis.
 
-[  **\@output_resource_group_name =** ] "output_resource_group_name.  
-Popis musí.
+**[\@output_resource_group_name =** ] ' output_resource_group_name '  
+Vyžaduje popis.
 
-[ **\@output_server_name =** ] 'output_server_name'  
-Pokud není null, plně kvalifikovaný název DNS serveru, který obsahuje výstup cílové databázi. Je třeba zadat Pokud output_type rovná SQL Database. output_server_name je nvarchar(256), výchozí hodnota je NULL.
+**[\@output_server_name =** ] ' output_server_name '  
+Pokud hodnota není null, plně kvalifikovaný název DNS serveru, který obsahuje výstupní cílovou databázi. Je nutné zadat, pokud se output_type rovná SqlDatabase. output_server_name je nvarchar (256) s výchozí hodnotou NULL.
 
-[  **\@output_database_name =** ] "output_database_name.  
-Pokud není null, název databáze, která obsahuje výstupní cílové tabulky. Je třeba zadat Pokud output_type rovná SQL Database. output_database_name je nvarchar(128), výchozí hodnota je NULL.
+**[\@output_database_name =** ] ' output_database_name '  
+Pokud hodnota není null, název databáze obsahující výstupní cílovou tabulku. Je nutné zadat, pokud se output_type rovná SqlDatabase. output_database_name je nvarchar (128) s výchozí hodnotou NULL.
 
-[ **\@output_schema_name =** ] 'output_schema_name'  
-Pokud není null, název schématu SQL, který obsahuje výstup cílové tabulky. Pokud output_type shodná s SQL Database, výchozí hodnota je dbo. output_schema_name je nvarchar(128).
+**[\@output_schema_name =** ] ' output_schema_name '  
+Pokud není null, název schématu SQL obsahující výstupní cílovou tabulku. Pokud se output_type rovná SqlDatabase, výchozí hodnota je dbo. output_schema_name je nvarchar (128).
 
-[  **\@output_table_name =** ] "output_table_name.  
-Pokud není null, název tabulky, která nastavit první výsledek příkazu se zapíšou do. Pokud v tabulce ještě neexistuje, vytvoří se závislosti na schématu vrací sadu výsledků. Je třeba zadat Pokud output_type rovná SQL Database. output_table_name je nvarchar(128) s výchozí hodnotou Null.
+**[\@output_table_name =** ] ' output_table_name '  
+Pokud hodnota není null, název tabulky, do které bude první sada výsledků příkazu zapisován. Pokud tabulka ještě neexistuje, vytvoří se na základě schématu vrácení sady výsledků. Je nutné zadat, pokud se output_type rovná SqlDatabase. output_table_name je nvarchar (128) s výchozí hodnotou NULL.
 
-[  **\@job_version =** ] job_version výstupu  
-Výstupní parametr, který se přiřadí nové číslo verze úlohy. job_version je int.
+**[\@job_version =** ] výstup job_version  
+Výstupní parametr, kterému bude přiřazeno nové číslo verze úlohy job_version je int.
 
-[  **\@max_parallelism =** ] max_parallelism výstupu  
-Maximální úroveň paralelismus za elastický fond. Pokud sadu a pak krok úlohy bude omezený spustit jenom na maximum, které velký počet databází na elastický fond. To platí pro každý elastický fond, který je buď přímo součástí cílové skupiny nebo se nachází uvnitř serveru, který je součástí cílové skupiny. max_parallelism je int.
+**[\@max_parallelism =** ] výstup max_parallelism  
+Maximální úroveň paralelismu na elastický fond. Když se nastaví, krok úlohy se omezí tak, aby se spouštěl jenom z maximálního počtu databází na elastický fond. To platí pro každý elastický fond, který je buď přímo součástí cílové skupiny, nebo se nachází uvnitř serveru, který je součástí cílové skupiny. max_parallelism je int.
 
 
-#### <a name="return-code-values"></a>Hodnoty návratový kód
+#### <a name="return-code-values"></a>Hodnoty návratového kódu
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Po úspěšném sp_add_jobstep se zvýší, aktuální číslo verze úlohy. Při příštím spuštění úlohy se použije na novou verzi. Pokud úloha právě probíhá, tohoto spuštění nebude obsahovat nový krok.
+Po úspěšném dokončení sp_add_jobstep se zvýší aktuální číslo verze úlohy. Při dalším spuštění úlohy se použije nová verze. Pokud se úloha právě provádí, toto spuštění nebude obsahovat nový krok.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:  
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:  
 
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 
 
@@ -746,101 +745,101 @@ Aktualizuje krok úlohy.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **\@hodnotu job_name =** ] "hodnotu job_name.  
-Název úlohy, ke kterému patří kroku. hodnotu job_name je nvarchar(128).
+**[\@job_name =** ] ' job_name '  
+Název úlohy, ke které krok patří job_name je nvarchar (128).
 
-[  **\@step_id =** ] step_id  
-Identifikační číslo pro krok úlohy, které má být upraven. Musí být zadán buď step_id nebo step_name. step_id je celé číslo
+**[\@step_id =** ] step_id  
+Identifikační číslo pro krok úlohy, který se má upravit. Musí být zadán buď step_id nebo STEP_NAME. step_id je int.
 
-[  **\@step_name =** ] "step_name.  
-Název kroku změnit. Musí být zadán buď step_id nebo step_name. STEP_NAME je nvarchar(128).
+**[\@STEP_NAME =** ] ' STEP_NAME '  
+Název kroku, který má být upraven. Musí být zadán buď step_id nebo STEP_NAME. STEP_NAME je nvarchar (128).
 
-[  **\@new_id =** ] new_id  
-Nové identifikační číslo sekvence pro krok úlohy. Krok identifikační čísla začínají znakem 1 a zvýšit bez mezer. Pokud je krok v pořadí změníte, pak ostatní kroky budou automaticky označuje.
+**[\@new_id =** ] new_id  
+Nové identifikační číslo sekvence pro krok úlohy. Identifikační čísla kroků začínají 1 a se zvětšují bez mezer. Pokud se změní pořadí kroků, automaticky se přečíslují i další kroky.
 
-[  **\@nový_název =** ] "Nový_název.  
-Nový název kroku. nový_název je nvarchar(128).
+**[\@new_name =** ] ' new_name '  
+Nový název kroku. new_name je nvarchar (128).
 
-[  **\@command_type =** ] "command_type.  
-Typ příkazu, který provádí tento krok úlohy. command_type je nvarchar(50) s výchozí hodnotou TSql, to znamená, že hodnota @command_type parametr je skript T-SQL.
+**[\@command_type =** ] ' command_type '  
+Typ příkazu, který je proveden tímto jobstep. command_type je nvarchar (50) s výchozí hodnotou TSql, což znamená, že hodnota @command_type parametru je skript T-SQL.
 
-Je-li zadána, hodnota musí být TSql.
+Je-li tento parametr zadán, musí být hodnota TSql.
 
-[  **\@command_source =** ] "command_source.  
-Typ umístění, kde je uložen příkazu. command_source je nvarchar(50) s výchozí hodnotou vloženého, to znamená, že hodnota @command_source parametr je literál text příkazu.
+**[\@command_source =** ] ' command_source '  
+Typ umístění, kde je příkaz uložen. command_source je nvarchar (50) s výchozí hodnotou inline, což znamená, že hodnota @command_source parametru je literálový text příkazu.
 
-Je-li zadána, hodnota musí být vložená.
+Je-li tento parametr zadán, musí být vložena hodnota.
 
-[  **\@příkaz =** ] 'command'  
-Příkazy musí být platný skript T-SQL a pak provádí tento krok úlohy. příkaz je nvarchar(max), výchozí hodnota je NULL.
+**[\@Command =** ] – příkaz  
+Příkazy musí být platný skript T-SQL a pak se spustí tímto krokem úlohy. příkaz má hodnotu nvarchar (max), která má výchozí hodnotu NULL.
 
-[  **\@credential_name =** ] "credential_name.  
-Název databáze s rozsahem přihlašovací údaje uložené v této databázi řízení úloh, který se používá pro připojení ke každé z cílové databáze v cílové skupině při spuštění tohoto kroku. credential_name je nvarchar(128).
+**[\@credential_name =** ] ' credential_name '  
+Název databáze s rozsahem přihlašovacích údajů uložených v této databázi řízení úloh, která se používá pro připojení ke každé z cílových databází v cílové skupině v případě provedení tohoto kroku. credential_name je nvarchar (128).
 
-[ **\@target_group_name =** ] 'target-group_name'  
-Název cílové skupiny, která obsahuje cílové databáze, které se spustí krok úlohy na. target_group_name je nvarchar(128).
+**[\@target_group_name =** ] ' Target-group_name '  
+Název cílové skupiny, která obsahuje cílové databáze, na kterých se spustí krok úlohy. target_group_name je nvarchar (128).
 
-[ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
-Zpoždění před prvním opakováním pokus selže při pokusu o provedení počáteční krok úlohy. initial_retry_interval_seconds je int, s výchozí hodnotou 1.
+**[\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+Zpoždění před prvním pokusem, pokud se krok úlohy nezdaří při prvotním pokusu o spuštění. initial_retry_interval_seconds je int a má výchozí hodnotu 1.
 
-[  **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
-Maximální zpoždění mezi opakovanými pokusy. Pokud by růst větší než tato hodnota zpoždění mezi opakovanými pokusy, to je se na tuto hodnotu místo toho uzavřeny. maximum_retry_interval_seconds je int, s výchozí hodnotou 120.
+**[\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+Maximální prodleva mezi opakovanými pokusy. Pokud by zpoždění mezi opakovanými pokusy růst větší než tato hodnota, je místo toho omezené na tuto hodnotu. maximum_retry_interval_seconds je int a má výchozí hodnotu 120.
 
 [ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
-Násobitel použít na zpoždění opakování, pokud více úloh kroku spuštění pokusí selhání. Například pokud prvním opakováním měli trvat 5 sekund a omezení rychlosti multiplikátor je 2.0, pak druhý opakování budou mít ke zpoždění 10 sekund a třetí opakování budou mít ke zpoždění 20 sekund. retry_interval_backoff_multiplier je skutečný s výchozí hodnotou 2.0.
+Násobitel, který se má použít u zpoždění při opakování, pokud se několik pokusů o spuštění kroku úlohy nezdaří. Například pokud první pokus má zpoždění 5 sekund a násobitel omezení rychlosti je 2,0, pak druhé opakování bude mít zpoždění 10 sekund a třetí opakování bude mít zpoždění 20 sekund. retry_interval_backoff_multiplier je reálné, má výchozí hodnotu 2,0.
 
-[  **\@retry_attempts =** ] retry_attempts  
-Počet pokusů o zopakování provedení počáteční pokus nebude úspěšný. Například pokud je hodnota retry_attempts 10, pak bude 1 počáteční pokus a 10 pokusy o opakování, poskytuje celkový počet pokusů o zadání 11. Pokud se poslední opakovaný pokus nezdaří, bude ukončen provádění úlohy se životního cyklu se nezdařilo. retry_attempts je int, s výchozí hodnotou 10.
+**[\@retry_attempts =** ] retry_attempts  
+Počet pokusů o opakování provedení, pokud se počáteční pokus nezdaří Pokud je například hodnota retry_attempts 10, bude se jednat o 1 počáteční pokus a 10 opakovaných pokusů, což bude mít celkem 11 pokusů. Pokud se poslední pokus o opakování nezdaří, spuštění úlohy skončí s neúspěšným životním cyklem. retry_attempts je int s výchozí hodnotou 10.
 
-[ **\@step_timeout_seconds =** ] step_timeout_seconds  
-Maximální množství času kroku ke spuštění. Pokud dojde k překročení této doby bude ukončen provádění úlohy s životního cyklu vypršel časový limit. step_timeout_seconds je int, s výchozí hodnotou 43 200 sekund (12 hodin).
+**[\@step_timeout_seconds =** ] step_timeout_seconds  
+Maximální doba, po kterou je možné krok provést. V případě překročení tohoto času se provádění úlohy ukončí s časovým limitem vypršení časového limitu. step_timeout_seconds je int, má výchozí hodnotu 43 200 sekund (12 hodin).
 
-[ **\@output_type =** ] 'output_type'  
-Pokud není null, typ cílového umístění, které sady výsledků dotazu prvním příkazu je zapsán do. Resetovat hodnotu output_type zpět na hodnotu NULL, nastavte hodnotu tohoto parametru na "(prázdný řetězec). output_type je nvarchar(50), výchozí hodnota je NULL.
+**[\@output_type =** ] ' output_type '  
+Pokud hodnota není null, typ cíle, na který je první sada výsledků příkazu zapisována. Chcete-li obnovit hodnotu output_type zpět na hodnotu NULL, nastavte hodnotu parametru na ' ' (prázdný řetězec). output_type je nvarchar (50) s výchozí hodnotou NULL.
 
-Je-li zadána, hodnota musí být SQL Database.
+Je-li tento parametr zadán, musí být hodnota SqlDatabase.
 
-[  **\@output_credential_name =** ] "output_credential_name.  
-Pokud není null, název databáze s rozsahem přihlašovací údaj, který se používá pro připojení k cílové databázi výstup. Je třeba zadat Pokud output_type rovná SQL Database. Resetovat hodnotu output_credential_name zpět na hodnotu NULL, nastavte hodnotu tohoto parametru na "(prázdný řetězec). output_credential_name je nvarchar(128) s výchozí hodnotou Null.
+**[\@output_credential_name =** ] ' output_credential_name '  
+Pokud není null, název databáze s rozsahem pověření, která se používá pro připojení k výstupní cílové databázi. Je nutné zadat, pokud se output_type rovná SqlDatabase. Chcete-li obnovit hodnotu output_credential_name zpět na hodnotu NULL, nastavte hodnotu parametru na ' ' (prázdný řetězec). output_credential_name je nvarchar (128) s výchozí hodnotou NULL.
 
-[ **\@output_server_name =** ] 'output_server_name'  
-Pokud není null, plně kvalifikovaný název DNS serveru, který obsahuje výstup cílové databázi. Je třeba zadat Pokud output_type rovná SQL Database. Resetovat hodnotu output_server_name zpět na hodnotu NULL, nastavte hodnotu tohoto parametru na "(prázdný řetězec). output_server_name je nvarchar(256), výchozí hodnota je NULL.
+**[\@output_server_name =** ] ' output_server_name '  
+Pokud hodnota není null, plně kvalifikovaný název DNS serveru, který obsahuje výstupní cílovou databázi. Je nutné zadat, pokud se output_type rovná SqlDatabase. Chcete-li obnovit hodnotu output_server_name zpět na hodnotu NULL, nastavte hodnotu parametru na ' ' (prázdný řetězec). output_server_name je nvarchar (256) s výchozí hodnotou NULL.
 
-[  **\@output_database_name =** ] "output_database_name.  
-Pokud není null, název databáze, která obsahuje výstupní cílové tabulky. Je třeba zadat Pokud output_type rovná SQL Database. Resetovat hodnotu output_database_name zpět na hodnotu NULL, nastavte hodnotu tohoto parametru na "(prázdný řetězec). output_database_name je nvarchar(128), výchozí hodnota je NULL.
+**[\@output_database_name =** ] ' output_database_name '  
+Pokud hodnota není null, název databáze obsahující výstupní cílovou tabulku. Je nutné zadat, pokud se output_type rovná SqlDatabase. Chcete-li obnovit hodnotu output_database_name zpět na hodnotu NULL, nastavte hodnotu parametru na ' ' (prázdný řetězec). output_database_name je nvarchar (128) s výchozí hodnotou NULL.
 
-[ **\@output_schema_name =** ] 'output_schema_name'  
-Pokud není null, název schématu SQL, který obsahuje výstup cílové tabulky. Pokud output_type shodná s SQL Database, výchozí hodnota je dbo. Resetovat hodnotu output_schema_name zpět na hodnotu NULL, nastavte hodnotu tohoto parametru na "(prázdný řetězec). output_schema_name je nvarchar(128).
+**[\@output_schema_name =** ] ' output_schema_name '  
+Pokud není null, název schématu SQL obsahující výstupní cílovou tabulku. Pokud se output_type rovná SqlDatabase, výchozí hodnota je dbo. Chcete-li obnovit hodnotu output_schema_name zpět na hodnotu NULL, nastavte hodnotu parametru na ' ' (prázdný řetězec). output_schema_name je nvarchar (128).
 
-[  **\@output_table_name =** ] "output_table_name.  
-Pokud není null, název tabulky, která nastavit první výsledek příkazu se zapíšou do. Pokud v tabulce ještě neexistuje, vytvoří se závislosti na schématu vrací sadu výsledků. Je třeba zadat Pokud output_type rovná SQL Database. Resetovat hodnotu output_server_name zpět na hodnotu NULL, nastavte hodnotu tohoto parametru na "(prázdný řetězec). output_table_name je nvarchar(128) s výchozí hodnotou Null.
+**[\@output_table_name =** ] ' output_table_name '  
+Pokud hodnota není null, název tabulky, do které bude první sada výsledků příkazu zapisován. Pokud tabulka ještě neexistuje, vytvoří se na základě schématu vrácení sady výsledků. Je nutné zadat, pokud se output_type rovná SqlDatabase. Chcete-li obnovit hodnotu output_server_name zpět na hodnotu NULL, nastavte hodnotu parametru na ' ' (prázdný řetězec). output_table_name je nvarchar (128) s výchozí hodnotou NULL.
 
-[  **\@job_version =** ] job_version výstupu  
-Výstupní parametr, který se přiřadí nové číslo verze úlohy. job_version je int.
+**[\@job_version =** ] výstup job_version  
+Výstupní parametr, kterému bude přiřazeno nové číslo verze úlohy job_version je int.
 
-[  **\@max_parallelism =** ] max_parallelism výstupu  
-Maximální úroveň paralelismus za elastický fond. Pokud sadu a pak krok úlohy bude omezený spustit jenom na maximum, které velký počet databází na elastický fond. To platí pro každý elastický fond, který je buď přímo součástí cílové skupiny nebo se nachází uvnitř serveru, který je součástí cílové skupiny. Resetovat hodnotu max_parallelism zpět na hodnotu null, nastavte hodnotu tohoto parametru na hodnotu -1. max_parallelism je int.
+**[\@max_parallelism =** ] výstup max_parallelism  
+Maximální úroveň paralelismu na elastický fond. Když se nastaví, krok úlohy se omezí tak, aby se spouštěl jenom z maximálního počtu databází na elastický fond. To platí pro každý elastický fond, který je buď přímo součástí cílové skupiny, nebo se nachází uvnitř serveru, který je součástí cílové skupiny. Chcete-li obnovit hodnotu max_parallelism zpět na hodnotu null, nastavte hodnotu parametru na hodnotu-1. max_parallelism je int.
 
 
-#### <a name="return-code-values"></a>Hodnoty návratový kód
+#### <a name="return-code-values"></a>Hodnoty návratového kódu
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Tyto zásady neovlivní žádné v průběhu provádění úlohy. Po úspěšném sp_update_jobstep se zvýší číslo verze úlohy. Při příštím spuštění úlohy se použije na novou verzi.
+Jakékoli probíhající spouštění úlohy nebudou ovlivněny. Po úspěšném dokončení sp_update_jobstep se zvýší číslo verze úlohy. Při dalším spuštění úlohy se použije nová verze.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
 
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete použít tuto uloženou proceduru upravit atributy úlohy, které vlastní jiní uživatelé
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 
 
 
 ### <a name="sp_delete_jobstep"></a>sp_delete_jobstep
 
-Krok úlohy zruší úlohu.
+Odebere krok úlohy z úlohy.
 
 #### <a name="syntax"></a>Syntaxe
 
@@ -853,31 +852,31 @@ Krok úlohy zruší úlohu.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **\@hodnotu job_name =** ] "hodnotu job_name.  
-Název úlohy, ze kterého se krok se odebere. hodnotu job_name je nvarchar(128) bez výchozí hodnoty.
+**[\@job_name =** ] ' job_name '  
+Název úlohy, ze které se bude krok odebrat job_name je nvarchar (128) bez výchozího nastavení.
 
-[  **\@step_id =** ] step_id  
-Identifikační číslo pro krok úlohy odstranění. Musí být zadán buď step_id nebo step_name. step_id je celé číslo
+**[\@step_id =** ] step_id  
+Identifikační číslo pro krok úlohy, který se má odstranit Musí být zadán buď step_id nebo STEP_NAME. step_id je int.
 
-[  **\@step_name =** ] "step_name.  
-Název kroku, která se má odstranit. Musí být zadán buď step_id nebo step_name. STEP_NAME je nvarchar(128).
+**[\@STEP_NAME =** ] ' STEP_NAME '  
+Název kroku, který se má odstranit Musí být zadán buď step_id nebo STEP_NAME. STEP_NAME je nvarchar (128).
 
-[  **\@job_version =** ] job_version výstupu  
-Výstupní parametr, který se přiřadí nové číslo verze úlohy. job_version je int.
+**[\@job_version =** ] výstup job_version  
+Výstupní parametr, kterému bude přiřazeno nové číslo verze úlohy job_version je int.
 
-#### <a name="return-code-values"></a>Hodnoty návratový kód
+#### <a name="return-code-values"></a>Hodnoty návratového kódu
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Tyto zásady neovlivní žádné v průběhu provádění úlohy. Po úspěšném sp_update_jobstep se zvýší číslo verze úlohy. Při příštím spuštění úlohy se použije na novou verzi.
+Jakékoli probíhající spouštění úlohy nebudou ovlivněny. Po úspěšném dokončení sp_update_jobstep se zvýší číslo verze úlohy. Při dalším spuštění úlohy se použije nová verze.
 
-Další kroky úlohy budou automaticky označuje k vyplnění mezer doleva o krok odstraněné úlohy.
+Ostatní kroky úlohy budou automaticky přečíslované, aby vyplnila mezeru levou krok odstraněné úlohy.
  
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 
 
@@ -886,7 +885,7 @@ Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části opr
 
 ### <a name="sp_start_job"></a>sp_start_job
 
-Začne provádět úlohy.
+Spustí provádění úlohy.
 
 #### <a name="syntax"></a>Syntaxe
 
@@ -897,23 +896,23 @@ Začne provádět úlohy.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **\@hodnotu job_name =** ] "hodnotu job_name.  
-Název úlohy, ze kterého se krok se odebere. hodnotu job_name je nvarchar(128) bez výchozí hodnoty.
+**[\@job_name =** ] ' job_name '  
+Název úlohy, ze které se bude krok odebrat job_name je nvarchar (128) bez výchozího nastavení.
 
-[  **\@job_execution_id =** ] job_execution_id výstupu  
-Výstupní parametr, který se přiřadí id spuštění úlohy. job_version je typ uniqueidentifier.
+**[\@job_execution_id =** ] výstup job_execution_id  
+Výstupní parametr, kterému bude přiřazeno ID spuštění úlohy. job_version je uniqueidentifier.
 
-#### <a name="return-code-values"></a>Hodnoty návratový kód
+#### <a name="return-code-values"></a>Hodnoty návratového kódu
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Žádné
+Žádné.
  
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 ### <a name="sp_stop_job"></a>sp_stop_job
 
@@ -928,20 +927,20 @@ Zastaví provádění úlohy.
 
 
 #### <a name="arguments"></a>Argumenty
-[  **\@job_execution_id =** ] job_execution_id  
-Identifikační číslo provádění úlohy zastavení. job_execution_id je uniqueidentifier s výchozí hodnotou NULL.
+**[\@job_execution_id =** ] job_execution_id  
+Identifikační číslo spuštění úlohy, které se má zastavit. job_execution_id je uniqueidentifier a má výchozí hodnotu NULL.
 
-#### <a name="return-code-values"></a>Hodnoty návratový kód
+#### <a name="return-code-values"></a>Hodnoty návratového kódu
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Žádné
+Žádné.
  
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 
 ### <a name="sp_add_target_group"></a>sp_add_target_group
@@ -958,22 +957,22 @@ Přidá cílovou skupinu.
 
 
 #### <a name="arguments"></a>Argumenty
-[ **\@target_group_name =** ] 'target_group_name'  
-Název cílové skupiny, chcete-li vytvořit. target_group_name je nvarchar(128) bez výchozí hodnoty.
+**[\@target_group_name =** ] ' target_group_name '  
+Název cílové skupiny, která se má vytvořit. target_group_name je nvarchar (128) bez výchozího nastavení.
 
-[  **\@target_group_id =** ] target_group_id výstup cílové skupině identifikační číslo přiřazené do úlohy, pokud byl úspěšně vytvořen. target_group_id je proměnná výstupního typu UniqueIdentifier, výchozí hodnota je NULL.
+**[\@target_group_id =** ] target_group_id výstup identifikačního čísla cílové skupiny přiřazeného k úloze v případě úspěšného vytvoření. target_group_id je výstupní proměnná typu uniqueidentifier s výchozí hodnotou NULL.
 
-#### <a name="return-code-values"></a>Hodnoty návratový kód
+#### <a name="return-code-values"></a>Hodnoty návratového kódu
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Cílové skupiny poskytují snadný způsob, jak cílit na úlohu v kolekci databází.
+Cílové skupiny poskytují snadný způsob, jak zaměřit úlohu na kolekci databází.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 ### <a name="sp_delete_target_group"></a>sp_delete_target_group
 
@@ -988,24 +987,24 @@ Odstraní cílovou skupinu.
 
 
 #### <a name="arguments"></a>Argumenty
-[ **\@target_group_name =** ] 'target_group_name'  
-Název cílové skupiny odstraňte. target_group_name je nvarchar(128) bez výchozí hodnoty.
+**[\@target_group_name =** ] ' target_group_name '  
+Název cílové skupiny, která se má odstranit target_group_name je nvarchar (128) bez výchozího nastavení.
 
-#### <a name="return-code-values"></a>Hodnoty návratový kód
+#### <a name="return-code-values"></a>Hodnoty návratového kódu
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Žádné
+Žádné.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 ### <a name="sp_add_target_group_member"></a>sp_add_target_group_member
 
-Přidá do skupiny cílové databázi nebo skupině databází.
+Přidá databázi nebo skupinu databází do cílové skupiny.
 
 #### <a name="syntax"></a>Syntaxe
 
@@ -1022,45 +1021,45 @@ Přidá do skupiny cílové databázi nebo skupině databází.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[ **\@target_group_name =** ] 'target_group_name'  
-Název cílové skupiny, ke které se přidají člena. target_group_name je nvarchar(128) bez výchozí hodnoty.
+**[\@target_group_name =** ] ' target_group_name '  
+Název cílové skupiny, do které bude člen přidán. target_group_name je nvarchar (128) bez výchozího nastavení.
 
-[  **\@membership_type =** ] "membership_type.  
-Určuje, pokud cílový člen skupiny budou zahrnuty nebo vyloučeny. target_group_name je nvarchar(128) s výchozí hodnotu "Zahrnutí". Platné hodnoty pro target_group_name jsou "Zahrnutí" nebo "Vyloučit".
+**[\@membership_type =** ] ' membership_type '  
+Určuje, jestli bude cílový člen skupiny zahrnutý nebo vyloučený. target_group_name je nvarchar (128) s výchozí hodnotou include. Platné hodnoty pro target_group_name jsou include nebo Exclude.
 
 [ **\@target_type =** ] 'target_type'  
-Typ cílové databázi nebo kolekci databází, včetně všech databází na serveru, všechny databáze v Elastickém fondu, všechny databáze v mapě horizontálních oddílů nebo jednotlivé databáze. target_type is nvarchar(128), with no default. Target_type – platné hodnoty jsou "Systému SQL Server", "SqlElasticPool", "SqlDatabase" nebo "SqlShardMap". 
+Typ cílové databáze nebo kolekce databází včetně všech databází na serveru, všech databází v elastickém fondu, všech databází v mapě horizontálních oddílů nebo jednotlivé databáze. target_type je nvarchar (128) bez výchozího nastavení. Platné hodnoty pro target_type jsou "SqlServer", "SqlElasticPool", "SqlDatabase" nebo "SqlShardMap". 
 
-[  **\@refresh_credential_name =** ] "refresh_credential_name.  
-Název databáze SQL serveru. refresh_credential_name je nvarchar(128) bez výchozí hodnoty.
+**[\@refresh_credential_name =** ] ' refresh_credential_name '  
+Název serveru SQL Database. refresh_credential_name je nvarchar (128) bez výchozího nastavení.
 
-[ **\@server_name =** ] 'server_name'  
-Název databáze SQL serveru, který by měl být přidán do zadanou cílovou skupinu. název_serveru musí být zadaný po target_type – "Systému SQL Server". název_serveru je nvarchar(128) bez výchozí hodnoty.
+**[\@název_serveru =** ] ' název_serveru '  
+Název serveru SQL Database, který se má přidat do zadané cílové skupiny. parametr název_serveru by měl být zadán, pokud je target_type SqlServer. název_serveru je nvarchar (128) bez výchozího nastavení.
 
-[  **\@název_databáze =** ] "název_databáze.  
-Název databáze, který by měl být přidán do zadanou cílovou skupinu. target_type – po "SqlDatabase" musí být zadaný název databáze database_name. Název databáze database_name je nvarchar(128) bez výchozí hodnoty.
+**[\@název_databáze =** ] ' název_databáze '  
+Název databáze, která se má přidat do zadané cílové skupiny. hodnota název_databáze by měla být zadána, pokud je target_type ' SqlDatabase '. název_databáze je nvarchar (128) bez výchozího nastavení.
 
-[ **\@elastic_pool_name =** ] 'elastic_pool_name'  
-Název elastického fondu, který by měl být přidán do zadanou cílovou skupinu. elastic_pool_name musí být zadaný po target_type – "SqlElasticPool". elastic_pool_name je nvarchar(128) bez výchozí hodnoty.
+**[\@elastic_pool_name =** ] ' elastic_pool_name '  
+Název elastického fondu, který má být přidán do zadané cílové skupiny. elastic_pool_name by měla být zadána, pokud target_type je ' SqlElasticPool '. elastic_pool_name je nvarchar (128) bez výchozího nastavení.
 
-[  **\@shard_map_name =** ] "shard_map_name.  
-Název fondu mapy horizontálních oddílů, který by měl být přidán do zadanou cílovou skupinu. elastic_pool_name musí být zadaný po target_type – "SqlSqlShardMap". shard_map_name je nvarchar(128) bez výchozí hodnoty.
+**[\@shard_map_name =** ] ' shard_map_name '  
+Název fondu mapování horizontálních oddílů, který se má přidat do zadané cílové skupiny. elastic_pool_name by měla být zadána, pokud target_type je ' SqlSqlShardMap '. shard_map_name je nvarchar (128) bez výchozího nastavení.
 
-[  **\@target_id =** ] target_group_id výstupu  
-Identifikační číslo cílového přiřazeny k členovi cílové skupiny, pokud vytvořili přidán do cílové skupině. target_id je proměnná výstupního typu UniqueIdentifier, výchozí hodnota je NULL.
-Návratové hodnoty kód 0 (úspěch) nebo 1 (chyba)
+**[\@target_id =** ] výstup target_group_id  
+Cílové identifikační číslo přiřazené k cílovému členu skupiny, pokud je vytvořeno do cílové skupiny. target_id je výstupní proměnná typu uniqueidentifier s výchozí hodnotou NULL.
+Hodnoty návratového kódu 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Úloha se spustí na všech izolovaných databází v rámci databáze SQL serveru nebo v elastickém fondu v době provádění, když server služby SQL Database nebo elastický fond je zahrnuta v cílové skupině.
+Úloha se spustí na všech samostatných databázích v rámci serveru SQL Database nebo v elastickém fondu v době spuštění, když je SQL Database Server nebo elastický fond zahrnutý v cílové skupině.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 #### <a name="examples"></a>Příklady
-Následující příklad přidá všechny databáze v Londýně a NewYork serverů do skupiny informace o zákaznících údržba serverů. Musíte se připojit k databázi úloh při vytvoření agent úlohy v tomto případě ElasticJobs.
+Následující příklad přidá všechny databáze na serverech Londýn a NewYork do skupinových serverů, které udržují informace o zákaznících. V tomto případě je nutné se připojit k databázi Jobs zadané při vytváření agenta úloh v tomto případě ElasticJobs.
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
@@ -1094,7 +1093,7 @@ GO
 
 ### <a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
 
-Odebere z cílová skupina členem cílové skupiny.
+Odebere člena cílové skupiny z cílové skupiny.
 
 #### <a name="syntax"></a>Syntaxe
 
@@ -1106,26 +1105,26 @@ Odebere z cílová skupina členem cílové skupiny.
 
 
 
-Argumenty [ @target_group_name =] "target_group_name.  
-Název cílové skupiny, ze kterého chcete odebrat člena cílové skupiny. target_group_name je nvarchar(128) bez výchozí hodnoty.
+Argumenty [ @target_group_name =] ' target_group_name '  
+Název cílové skupiny, ze které se má odebrat člen cílové skupiny. target_group_name je nvarchar (128) bez výchozího nastavení.
 
-[ @target_id = ] target_id  
- Cíl identifikační číslo přiřazené cílový člen skupiny má být odebrán. target_id je uniqueidentifier, výchozí hodnota je NULL.
+[ @target_id =] target_id  
+ Cílové identifikační číslo přiřazené cílovému členu skupiny, který se má odebrat target_id je typ uniqueidentifier s výchozí hodnotou NULL.
 
-#### <a name="return-code-values"></a>Hodnoty návratový kód
+#### <a name="return-code-values"></a>Hodnoty návratového kódu
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Cílové skupiny poskytují snadný způsob, jak cílit na úlohu v kolekci databází.
+Cílové skupiny poskytují snadný způsob, jak zaměřit úlohu na kolekci databází.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 #### <a name="examples"></a>Příklady
-Následující příklad odebere server Londýn ze skupiny informace o zákaznících údržba serverů. Musíte se připojit k databázi úloh při vytvoření agent úlohy v tomto případě ElasticJobs.
+Následující příklad odebere Londýn server ze skupin serverů, které udržují informace o zákaznících. V tomto případě je nutné se připojit k databázi Jobs zadané při vytváření agenta úloh v tomto případě ElasticJobs.
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
@@ -1145,7 +1144,7 @@ GO
 
 ### <a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
 
-Odebere záznamy historie úlohy.
+Odebere záznamy historie pro úlohu.
 
 #### <a name="syntax"></a>Syntaxe
 
@@ -1157,26 +1156,26 @@ Odebere záznamy historie úlohy.
 ```
 
 #### <a name="arguments"></a>Argumenty
-[  **\@hodnotu job_name =** ] "hodnotu job_name.  
-Název úlohy, pro kterou chcete odstranit záznamy historie. hodnotu job_name je nvarchar(128), výchozí hodnota je NULL. Musí být zadán parametrem job_id nebo hodnotu job_name, ale nelze zadat obě.
+**[\@job_name =** ] ' job_name '  
+Název úlohy, pro kterou chcete odstranit záznamy historie. job_name je nvarchar (128) s výchozí hodnotou NULL. Musí být zadán buď job_id nebo job_name, ale nelze zadat obě.
 
-[  **\@parametrem job_id =** ] parametrem job_id  
- Identifikační číslo úlohy úlohy pro záznamy, které chcete odstranit. parametrem job_id je uniqueidentifier, výchozí hodnota je NULL. Musí být zadán parametrem job_id nebo hodnotu job_name, ale nelze zadat obě.
+**[\@job_id =** ] job_id  
+ Identifikační číslo úlohy pro záznamy, které mají být odstraněny. job_id je uniqueidentifier a má výchozí hodnotu NULL. Musí být zadán buď job_id nebo job_name, ale nelze zadat obě.
 
-[ **\@oldest_date =** ] oldest_date  
- Nejstarší záznam, který chcete uchovat v historii. oldest_date DATETIME2, je výchozí hodnota je NULL. Pokud je zadána oldest_date, sp_purge_jobhistory pouze odebere záznamy, které jsou starší než hodnota zadaná.
+**[\@oldest_date =** ] oldest_date  
+ Nejstarší záznam, který se uchová v historii. oldest_date je DATETIME2 s výchozí hodnotou NULL. Když zadáte oldest_date, sp_purge_jobhistory odebere jenom záznamy, které jsou starší než zadaná hodnota.
 
-#### <a name="return-code-values"></a>Hodnoty návratový kód
-0 (úspěch) nebo 1 (chyba) poznámky cílové skupiny poskytují snadný způsob, jak cílit na úlohu v kolekci databází.
+#### <a name="return-code-values"></a>Hodnoty návratového kódu
+0 (úspěch) nebo 1 (selhání) poznámky cílové skupiny poskytují snadný způsob, jak zaměřit úlohu na kolekci databází.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení mohou tuto uloženou proceduru spustit členové pevné role serveru sysadmin. Omezují uživatele jenom na to, že budou moct monitorovat úlohy, a vy můžete v databázi agenta úlohy zadat, aby se při vytváření agenta úloh účastnila Tato databázová role:
 - jobs_reader
 
-Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
+Podrobnosti o oprávnění těchto rolí najdete v části oprávnění v tomto dokumentu. Tuto uloženou proceduru mohou použít pouze členové sysadmin k úpravě atributů úloh, které vlastní jiní uživatelé.
 
 #### <a name="examples"></a>Příklady
-Následující příklad přidá všechny databáze v Londýně a NewYork serverů do skupiny informace o zákaznících údržba serverů. Musíte se připojit k databázi úloh při vytvoření agent úlohy v tomto případě ElasticJobs.
+Následující příklad přidá všechny databáze na serverech Londýn a NewYork do skupinových serverů, které udržují informace o zákaznících. V tomto případě je nutné se připojit k databázi Jobs zadané při vytváření agenta úloh v tomto případě ElasticJobs.
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
@@ -1188,162 +1187,162 @@ GO
 ```
 
 
-## <a name="job-views"></a>Zobrazení úlohy
+## <a name="job-views"></a>Zobrazení úloh
 
-Jsou k dispozici v následujících zobrazení [úloh databáze](sql-database-job-automation-overview.md#job-database).
+V [databázi Jobs](sql-database-job-automation-overview.md#job-database)jsou k dispozici následující zobrazení.
 
 
 |Zobrazení  |Popis  |
 |---------|---------|
-|[jobs_executions](#jobs_executions-view)     |  Zobrazí historii spuštění úlohy.      |
-|[Úlohy](#jobs-view)     |   Zobrazí všechny úlohy.      |
-|[job_versions](#job_versions-view)     |   Zobrazí všechny verze úlohy.      |
-|[kroky úlohy](#jobsteps-view)     |     Zobrazí všechny kroky v aktuální verzi každou úlohu.    |
+|[job_executions](#job_executions-view)     |  Zobrazuje historii spuštění úlohy.      |
+|[úlohy](#jobs-view)     |   Zobrazí všechny úlohy.      |
+|[job_versions](#job_versions-view)     |   Zobrazuje všechny verze úloh.      |
+|[jobsteps](#jobsteps-view)     |     Zobrazuje všechny kroky v aktuální verzi každé úlohy.    |
 |[jobstep_versions](#jobstep_versions-view)     |     Zobrazí všechny kroky ve všech verzích každé úlohy.    |
 |[target_groups](#target_groups-view)     |      Zobrazí všechny cílové skupiny.   |
-|[target_group_members](#target_groups_members-view)     |   Zobrazuje všechny členy všechny cílové skupiny.      |
+|[target_group_members](#target_groups_members-view)     |   Zobrazí všechny členy všech cílových skupin.      |
 
 
-### <a name="jobs_executions-view"></a>jobs_executions zobrazení
+### <a name="job_executions-view"></a>zobrazení job_executions
 
-[jobs].[jobs_executions]
+[úlohy]. [job_executions]
 
-Zobrazí historii spuštění úlohy.
+Zobrazuje historii spuštění úlohy.
 
 
-|Název sloupce|   Typ dat   |Popis|
+|Název sloupce|   Datový typ   |Popis|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  Jedinečné ID instance provádění úlohy.
-|**hodnotu job_name**   |nvarchar(128)  |Název úlohy.
-|**job_id** |uniqueidentifier|  Jedinečné ID úlohy.
-|**job_version**    |int    |Verze úlohy (automaticky aktualizuje pokaždé, když se upraví úlohy).
-|**step_id**    |int|   (Pro tuto úlohu) Jedinečný identifikátor pro krok. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
-|**is_active**| bit |Určuje, zda informace jsou aktivní nebo neaktivní. 1 označuje aktivní úlohy a 0 označuje neaktivní.
-|**lifecycle**| nvarchar(50)|Hodnotu označující stav úlohy: 'Vytvořit', v průběhu, 'se nezdařil., "Bylo úspěšné", "Bylo přeskočeno", "SucceededWithSkipped"|
-|**create_time**|   datetime2(7)|   Datum a čas vytvoření úlohy.
-|**start_time** |datetime2(7)|  Datum a čas spuštění úlohy spuštění. Hodnota NULL, pokud úloha ještě nebyla spuštěna.
-|**end_time**|  datetime2(7)    |Datum a čas dokončení provádění úlohy. Hodnota NULL, pokud úloha ještě nebyla spuštěna, nebo nebylo dosud dokončen.
-|**current_attempts**   |int    |Počet pokusů, které se na krok opakovat. Nadřazená úloha bude 0, podřízená úloha spuštění bude 1 nebo větší podle zásady spouštění.
-|**current_attempt_start_time** |datetime2(7)|  Datum a čas spuštění úlohy spuštění. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
-|**last_message**   |nvarchar(max)| Zpráva historie úloh nebo krok. 
-|**target_type**|   nvarchar(128)   |Typ cílové databázi nebo kolekci databází, včetně všech databází serveru, všechny databáze v Elastickém fondu nebo v databázi. Valid values for target_type are ‘SqlServer’, ‘SqlElasticPool’ or ‘SqlDatabase’. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
-|**target_id**  |uniqueidentifier|  Jedinečné ID člena cílové skupiny.  Hodnota NULL znamená, že to je provádění nadřazené úlohy.
-|**target_group_name**  |nvarchar(128)  |Název cílové skupiny. Hodnota NULL znamená, že to je provádění nadřazené úlohy.
-|**target_server_name**|    nvarchar(256)|  Název databáze SQL serveru, obsažené v cílové skupině. Zadat jenom v případě target_type – je "Systému SQL Server". Hodnota NULL znamená, že to je provádění nadřazené úlohy.
-|**target_database_name**   |nvarchar(128)| Název databáze, které jsou obsaženy v cílové skupině. Zadat, jenom když target_type – je "SqlDatabase". Hodnota NULL znamená, že to je provádění nadřazené úlohy.
+|**job_name**   |nvarchar (128)  |Název úlohy
+|**job_id** |uniqueidentifier|  Jedinečné ID úlohy
+|**job_version**    |int    |Verze úlohy (automaticky aktualizované při každé změně úlohy)
+|**step_id**    |int|   Jedinečný identifikátor (pro tento úkol) pro krok Hodnota NULL znamená, že se jedná o spuštění nadřazené úlohy.
+|**is_active**| bit |Označuje, zda jsou informace aktivní nebo neaktivní. 1 označuje aktivní úlohy a 0 označuje neaktivní.
+|**Nejčastější**| nvarchar (50)|Hodnota označující stav úlohy: ' vytvořeno ', ' probíhá ', ' neúspěšné ', ' úspěch ', ' vynecháno ', ' SucceededWithSkipped '|
+|**create_time**|   datetime2 (7)|   Datum a čas vytvoření úlohy.
+|**start_time** |datetime2 (7)|  Datum a čas spuštění úlohy. Hodnota NULL, pokud úloha ještě nebyla provedena.
+|**end_time**|  datetime2 (7)    |Datum a čas, kdy byla úloha dokončena. Hodnota NULL, pokud se úloha ještě nespustila nebo ještě neproběhla její provádění.
+|**current_attempts**   |int    |Počet opakovaných pokusů o krok. Nadřazená úloha bude 0, spuštění podřízené úlohy bude na základě zásad spouštění 1 nebo vyšší.
+|**current_attempt_start_time** |datetime2 (7)|  Datum a čas spuštění úlohy. Hodnota NULL znamená, že se jedná o spuštění nadřazené úlohy.
+|**last_message**   |nvarchar(max)| Zpráva historie úlohy nebo kroku. 
+|**target_type**|   nvarchar (128)   |Typ cílové databáze nebo kolekce databází včetně všech databází na serveru, všech databází v elastickém fondu nebo v databázi. Platné hodnoty pro target_type jsou "SqlServer", "SqlElasticPool" nebo "SqlDatabase". Hodnota NULL znamená, že se jedná o spuštění nadřazené úlohy.
+|**target_id**  |uniqueidentifier|  Jedinečné ID cílového člena skupiny  Hodnota NULL znamená, že se jedná o spuštění nadřazené úlohy.
+|**target_group_name**  |nvarchar (128)  |Název cílové skupiny Hodnota NULL znamená, že se jedná o spuštění nadřazené úlohy.
+|**target_server_name**|    nvarchar(256)|  Název SQL Database serveru obsažený v cílové skupině. Zadáno pouze v případě, že target_type je SqlServer. Hodnota NULL znamená, že se jedná o spuštění nadřazené úlohy.
+|**target_database_name**   |nvarchar (128)| Název databáze obsažená v cílové skupině. Zadáno pouze v případě, že je target_type ' SqlDatabase '. Hodnota NULL znamená, že se jedná o spuštění nadřazené úlohy.
 
 
 ### <a name="jobs-view"></a>zobrazení úloh
 
-[úlohy]. [úloh]
+[úlohy]. úlohy
 
 Zobrazí všechny úlohy.
 
-|Název sloupce|   Typ dat|  Popis|
+|Název sloupce|   Datový typ|  Popis|
 |------|------|-------|
-|**hodnotu job_name**|  nvarchar(128)   |Název úlohy.|
-|**job_id**|    uniqueidentifier    |Jedinečné ID úlohy.|
-|**job_version**    |int    |Verze úlohy (automaticky aktualizuje pokaždé, když se upraví úlohy).|
-|**description**    |nvarchar(512)| Popis pro úlohu. povolené bit označuje, zda je povoleno úlohy. 1 znamená povolené úlohy a 0 znamená zakázané úlohy.|
-|**schedule_interval_type** |nvarchar(50)   |Hodnota určující, kdy úloha má být provedena: "Po", 'Minuty', 'Hodiny', ' dnů","Týden","měsíců.
-|**schedule_interval_count**|   int|    Počet období schedule_interval_type ke kterým dochází mezi každé spuštění úlohy.|
-|**schedule_start_time**    |datetime2(7)|  Datum a čas, kdy byl poslední bylo zahájeno spuštění úlohy.|
-|**schedule_end_time**| datetime2(7)|   Datum a čas, kdy byl poslední dokončené spuštění úlohy.|
+|**job_name**|  nvarchar (128)   |Název úlohy|
+|**job_id**|    uniqueidentifier    |Jedinečné ID úlohy|
+|**job_version**    |int    |Verze úlohy (automaticky aktualizované při každé změně úlohy)|
+|**název**    |nvarchar (512)| Popis úlohy bit Enabled označuje, zda je úloha povolená nebo zakázaná. 1 označuje povolené úlohy a 0 indikuje zakázané úlohy.|
+|**schedule_interval_type** |nvarchar (50)   |Hodnota, která indikuje, kdy se má úloha spustit: jednou, minutami, ' hodiny ', ' days ', ' weeks ', ' months '
+|**schedule_interval_count**|   int|    Počet období schedule_interval_type, která se mají provést mezi jednotlivými spuštěními úlohy.|
+|**schedule_start_time**    |datetime2 (7)|  Datum a čas posledního spuštění úlohy.|
+|**schedule_end_time**| datetime2 (7)|   Datum a čas, kdy se úloha naposledy dokončila.|
 
 
-### <a name="job_versions-view"></a>job_versions zobrazení
+### <a name="job_versions-view"></a>zobrazení job_versions
 
-[jobs].[job_versions]
+[úlohy]. [job_versions]
 
-Zobrazí všechny verze úlohy.
+Zobrazuje všechny verze úloh.
 
-|Název sloupce|   Typ dat|  Popis|
+|Název sloupce|   Datový typ|  Popis|
 |------|------|-------|
-|**hodnotu job_name**|  nvarchar(128)   |Název úlohy.|
-|**job_id**|    uniqueidentifier    |Jedinečné ID úlohy.|
-|**job_version**    |int    |Verze úlohy (automaticky aktualizuje pokaždé, když se upraví úlohy).|
+|**job_name**|  nvarchar (128)   |Název úlohy|
+|**job_id**|    uniqueidentifier    |Jedinečné ID úlohy|
+|**job_version**    |int    |Verze úlohy (automaticky aktualizované při každé změně úlohy)|
 
 
-### <a name="jobsteps-view"></a>Zobrazit kroky úlohy
+### <a name="jobsteps-view"></a>zobrazení JobSteps
 
-[úlohy]. [kroky úlohy]
+[úlohy]. [jobsteps]
 
-Zobrazí všechny kroky v aktuální verzi každou úlohu.
+Zobrazuje všechny kroky v aktuální verzi každé úlohy.
 
-|Název sloupce    |Typ dat| Popis|
+|Název sloupce    |Datový typ| Popis|
 |------|------|-------|
-|**hodnotu job_name**   |nvarchar(128)| Název úlohy.|
-|**job_id** |uniqueidentifier   |Jedinečné ID úlohy.|
-|**job_version**|   int|    Verze úlohy (automaticky aktualizuje pokaždé, když se upraví úlohy).|
-|**step_id**    |int    |(Pro tuto úlohu) Jedinečný identifikátor pro krok.|
-|**STEP_NAME**  |nvarchar(128)  |(Pro tuto úlohu) jedinečný název kroku.|
-|**command_type**   |nvarchar(50)   |Typ příkazu ke spuštění v krok úlohy. Pro v1, musí hodnota rovná a výchozí hodnota je "TSql".|
-|**command_source** |nvarchar(50)|  Umístění příkazu. "Vložené" pro v1, je výchozí a přijatelný jenom hodnoty.|
-|**Příkaz**|   nvarchar(max)|  Příkazy mají být provedeny pomocí Elastických úloh prostřednictvím command_type.|
-|**credential_name**|   nvarchar(128)   |Název přihlašovacích údajů s rozsahem databáze použitý k provádění úlohy.|
-|**target_group_name**| nvarchar(128)   |Název cílové skupiny.|
-|**target_group_id**|   uniqueidentifier|   Jedinečné ID cílové skupiny.|
-|**initial_retry_interval_seconds**|    int |Zpoždění před první pokus o opakování. Výchozí hodnota je 1.|
-|**maximum_retry_interval_seconds** |int|   Maximální zpoždění mezi opakovanými pokusy. Pokud by růst větší než tato hodnota zpoždění mezi opakovanými pokusy, to je se na tuto hodnotu místo toho uzavřeny. Výchozí hodnota je 120.|
-|**retry_interval_backoff_multiplier**  |real|  Násobitel použít na zpoždění opakování, pokud více úloh kroku spuštění pokusí selhání. Výchozí hodnota je 2.0.|
-|**retry_attempts** |int|   Počet opakovaných pokusů použít, pokud tento krok nezdaří. Výchozí hodnota 10, označující žádné pokusy o opakování.|
-|**step_timeout_seconds**   |int|   Množství času během několika minut mezi pokusy o opakování. Výchozí hodnota je 0, což označuje 0 minut.|
-|**output_type**    |nvarchar(11)|  Umístění příkazu. "Vložené" v aktuální verzi preview, je výchozí a přijatelný jenom hodnoty.|
-|**output_credential_name**|    nvarchar(128)   |Nastavit název přihlašovacích údajů, který se má použít pro připojení k cílovému serveru můžete ukládat výsledky.|
-|**output_subscription_id**|    uniqueidentifier|   Jedinečné ID předplatného cílového server\database výsledků nastavit na spuštění dotazu.|
-|**output_resource_group_name** |nvarchar(128)| Název skupiny prostředků, ve které se nachází cílový server.|
+|**job_name**   |nvarchar (128)| Název úlohy|
+|**job_id** |uniqueidentifier   |Jedinečné ID úlohy|
+|**job_version**|   int|    Verze úlohy (automaticky aktualizované při každé změně úlohy)|
+|**step_id**    |int    |Jedinečný identifikátor (pro tento úkol) pro krok|
+|**step_name**  |nvarchar (128)  |Jedinečný název (pro tuto úlohu) pro krok|
+|**command_type**   |nvarchar (50)   |Typ příkazu, který se má provést v kroku úlohy Pro V1 se hodnota musí rovnat hodnotě a výchozí hodnota je ' TSql '.|
+|**command_source** |nvarchar (50)|  Umístění příkazu Pro v1 je jako výchozí výchozí a jenom přijatá hodnota.|
+|**systému**|   nvarchar(max)|  Příkazy, které mají být provedeny elastickými úlohami prostřednictvím command_type.|
+|**credential_name**|   nvarchar (128)   |Název databáze s rozsahem přihlašovacích údajů, které se použily k provedení úlohy|
+|**target_group_name**| nvarchar (128)   |Název cílové skupiny|
+|**target_group_id**|   uniqueidentifier|   Jedinečné ID cílové skupiny|
+|**initial_retry_interval_seconds**|    int |Zpoždění před prvním opakovaným pokusem. Výchozí hodnota je 1.|
+|**maximum_retry_interval_seconds** |int|   Maximální prodleva mezi opakovanými pokusy. Pokud by zpoždění mezi opakovanými pokusy růst větší než tato hodnota, je místo toho omezené na tuto hodnotu. Výchozí hodnota je 120.|
+|**retry_interval_backoff_multiplier**  |real|  Násobitel, který se má použít u zpoždění při opakování, pokud se několik pokusů o spuštění kroku úlohy nezdaří. Výchozí hodnota je 2,0.|
+|**retry_attempts** |int|   Počet opakovaných pokusů, které se mají použít, pokud tento krok neproběhne úspěšně. Výchozí hodnota je 10, což znamená, že se neopakují žádné pokusy.|
+|**step_timeout_seconds**   |int|   Množství času v minutách mezi pokusy o opakování. Výchozí hodnota je 0, což znamená interval 0 minut.|
+|**output_type**    |nvarchar (11)|  Umístění příkazu V aktuální verzi Preview je možnost inline výchozí a jenom přijatá hodnota.|
+|**output_credential_name**|    nvarchar (128)   |Název přihlašovacích údajů, které se mají použít k připojení k cílovému serveru pro uložení sady výsledků.|
+|**output_subscription_id**|    uniqueidentifier|   Jedinečné ID odběru cílového server\databaseu pro výsledky nastavené z provádění dotazu.|
+|**output_resource_group_name** |nvarchar (128)| Název skupiny prostředků, ve které se nachází cílový server.|
 |**output_server_name**|    nvarchar(256)   |Název cílového serveru pro sadu výsledků.|
-|**output_database_name**   |nvarchar(128)| Název cílové databáze sady výsledků.|
-|**output_schema_name** |nvarchar(max)| Název cílové schéma. Výchozí hodnota je dbo, pokud není zadaný.|
-|**output_table_name**| nvarchar(max)|  Název tabulky můžete ukládat výsledky nastavení z výsledků dotazu. Tabulka se vytvoří automaticky v závislosti na schématu výsledky nastavte, pokud ještě neexistuje. Schéma musí odpovídat schématu sady výsledků.|
-|**max_parallelism**|   int|    Maximální počet databází na každý elastický fond, který krok úlohy poběží současně. Výchozí hodnota je NULL, což znamená bez omezení. |
+|**output_database_name**   |nvarchar (128)| Název cílové databáze pro sadu výsledků.|
+|**output_schema_name** |nvarchar(max)| Název cílového schématu. Výchozí hodnota je dbo, pokud není zadána.|
+|**output_table_name**| nvarchar(max)|  Název tabulky, do které se uloží sady výsledků dotazu. Tabulka se vytvoří automaticky v závislosti na schématu sady výsledků, pokud ještě neexistuje. Schéma musí odpovídat schématu sady výsledků.|
+|**max_parallelism**|   int|    Maximální počet databází na elastický fond, ve kterém se spustí krok úlohy v čase. Výchozí hodnota je NULL, což znamená bez omezení. |
 
 
-### <a name="jobstep_versions-view"></a>jobstep_versions zobrazení
+### <a name="jobstep_versions-view"></a>zobrazení jobstep_versions
 
-[jobs].[jobstep_versions]
+[úlohy]. [jobstep_versions]
 
-Zobrazí všechny kroky ve všech verzích každé úlohy. Schéma je stejný jako [kroky úlohy](#jobsteps-view).
+Zobrazí všechny kroky ve všech verzích každé úlohy. Schéma je stejné jako [JobSteps](#jobsteps-view).
 
-### <a name="target_groups-view"></a>target_groups view
+### <a name="target_groups-view"></a>zobrazení target_groups
 
 [jobs].[target_groups]
 
-Uvádí všechny cílové skupiny.
+Zobrazí seznam všech cílových skupin.
 
-|Název sloupce|Typ dat| Popis|
+|Název sloupce|Datový typ| Popis|
 |-----|-----|-----|
-|**target_group_name**| nvarchar(128)   |Název cílové skupiny, kolekce databází. 
-|**target_group_id**    |uniqueidentifier   |Jedinečné ID cílové skupiny.
+|**target_group_name**| nvarchar (128)   |Název cílové skupiny, kolekce databází. 
+|**target_group_id**    |uniqueidentifier   |Jedinečné ID cílové skupiny
 
-### <a name="target_groups_members-view"></a>target_groups_members view
+### <a name="target_groups_members-view"></a>zobrazení target_groups_members
 
 [jobs].[target_groups_members]
 
-Zobrazuje všechny členy všechny cílové skupiny.
+Zobrazí všechny členy všech cílových skupin.
 
-|Název sloupce|Typ dat| Popis|
+|Název sloupce|Datový typ| Popis|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar (128|Název cílové skupiny, kolekce databází. |
-|**target_group_id**    |uniqueidentifier   |Jedinečné ID cílové skupiny.|
-|**membership_type**    |int|   Určuje, zda je cílový člen skupiny zahrnuty nebo vyloučeny v cílové skupině. Platné hodnoty pro target_group_name jsou "Zahrnutí" nebo "Vyloučit".|
-|**target_type**    |nvarchar(128)| Typ cílové databázi nebo kolekci databází, včetně všech databází serveru, všechny databáze v Elastickém fondu nebo v databázi. Target_type – platné hodnoty jsou "Systému SQL Server", "SqlElasticPool", "SqlDatabase" nebo "SqlShardMap".|
-|**target_id**  |uniqueidentifier|  Jedinečné ID člena cílové skupiny.|
-|**refresh_credential_name**    |nvarchar(128)  |Název databáze s rozsahem přihlašovací údaje použité pro připojení k cílové člena skupiny.|
-|**subscription_id**    |uniqueidentifier|  Jedinečné ID předplatného.|
-|**resource_group_name**    |nvarchar(128)| Název skupiny prostředků, ve kterém se nachází cílový člen skupiny.|
-|**server_name**    |nvarchar(128)  |Název databáze SQL serveru, obsažené v cílové skupině. Zadat jenom v případě target_type – je "Systému SQL Server". |
-|**database_name**  |nvarchar(128)  |Název databáze, které jsou obsaženy v cílové skupině. Zadat, jenom když target_type – je "SqlDatabase".|
-|**elastic_pool_name**  |nvarchar(128)| Název elastického fondu obsažené v cílové skupině. Zadat, jenom když target_type – je "SqlElasticPool".|
-|**shard_map_name** |nvarchar(128)| Název mapy horizontálních oddílů, které jsou obsaženy v cílové skupině. Zadat, jenom když target_type – je "SqlShardMap".|
+|**target_group_id**    |uniqueidentifier   |Jedinečné ID cílové skupiny|
+|**membership_type**    |int|   Určuje, jestli je cílový člen skupiny zahrnutý nebo vyloučený v cílové skupině. Platné hodnoty pro target_group_name jsou include nebo Exclude.|
+|**target_type**    |nvarchar (128)| Typ cílové databáze nebo kolekce databází včetně všech databází na serveru, všech databází v elastickém fondu nebo v databázi. Platné hodnoty pro target_type jsou "SqlServer", "SqlElasticPool", "SqlDatabase" nebo "SqlShardMap".|
+|**target_id**  |uniqueidentifier|  Jedinečné ID cílového člena skupiny|
+|**refresh_credential_name**    |nvarchar (128)  |Název databáze s rozsahem pověření používané pro připojení k cílovému členu skupiny.|
+|**subscription_id**    |uniqueidentifier|  Jedinečné ID předplatného|
+|**resource_group_name**    |nvarchar (128)| Název skupiny prostředků, ve které se nachází cílový člen skupiny.|
+|**server_name**    |nvarchar (128)  |Název SQL Database serveru obsažený v cílové skupině. Zadáno pouze v případě, že target_type je SqlServer. |
+|**název_databáze**  |nvarchar (128)  |Název databáze obsažená v cílové skupině. Zadáno pouze v případě, že je target_type ' SqlDatabase '.|
+|**elastic_pool_name**  |nvarchar (128)| Název elastického fondu obsažený v cílové skupině. Zadáno pouze v případě, že je target_type ' SqlElasticPool '.|
+|**shard_map_name** |nvarchar (128)| Název mapy horizontálních oddílů obsažené v cílové skupině. Zadáno pouze v případě, že je target_type ' SqlShardMap '.|
 
 
 ## <a name="resources"></a>Zdroje a prostředky
 
- - ![Ikona odkaz tématu](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "ikonu odkazu tématu") [konvencí syntaxe Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+ - ![Ikona odkazu na téma](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Ikona odkazu na téma") [Konvence syntaxe Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
 ## <a name="next-steps"></a>Další postup
 
 - [Vytváření a správa elastických úloh s využitím PowerShellu](elastic-jobs-powershell.md)
-- [Autorizace a oprávnění systému SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)
+- [Autorizace a oprávnění SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)

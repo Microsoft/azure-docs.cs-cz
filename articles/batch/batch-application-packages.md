@@ -1,10 +1,10 @@
 ---
-title: Instalovat balíčky aplikací na výpočetních uzlech – Azure Batch | Dokumentace Microsoftu
-description: Použití funkce balíčky aplikací služby Azure Batch můžete snadno spravovat více aplikací a verzí pro instalaci na Batch výpočetních uzlů.
+title: Instalovat balíčky aplikací na výpočetních uzlech – Azure Batch | Microsoft Docs
+description: Pomocí funkce balíčky aplikací Azure Batch můžete snadno spravovat víc aplikací a verzí pro instalaci na výpočetních uzlech služby Batch.
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
 ms.service: batch
@@ -15,193 +15,193 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c17835a4155e97395e8ae1b8e9ba6d2a42433f71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5967f2ac8c766005cee876b5b42109062abad6a1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66298735"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68323837"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
-Funkce balíčky aplikací služby Azure Batch poskytuje snadnou správu aplikací úloh a jejich nasazení do výpočetních uzlů ve fondu. Pomocí balíčků aplikací můžete odesílat a spravovat více verzí aplikací, které vaše úkoly spouštět, včetně jejich podpůrné soubory. Můžete pak automaticky nasadit jednu nebo více těchto aplikací do výpočetních uzlů ve fondu.
+Funkce balíčků aplikací v Azure Batch poskytuje snadnou správu aplikací úkolů a jejich nasazení na výpočetní uzly ve fondu. Pomocí balíčků aplikací můžete nahrávat a spravovat více verzí aplikací, které vaše úkoly spouštějí, včetně jejich podpůrných souborů. Potom můžete automaticky nasadit jednu nebo více těchto aplikací na výpočetní uzly ve fondu.
 
-V tomto článku se dozvíte, jak můžete odesílat a spravovat balíčky aplikací na webu Azure Portal. Pak se naučíte k instalaci na vytvoření fondu výpočetních uzlů s [Batch .NET] [ api_net] knihovny.
+V tomto článku se dozvíte, jak nahrávat a spravovat balíčky aplikací v Azure Portal. Pak se dozvíte, jak je nainstalovat do výpočetních uzlů fondu pomocí knihovny [Batch .NET][api_net] .
 
 > [!NOTE]
 > Balíčky aplikací jsou podporované ve všech fondech služby Batch vytvořených po 5. červenci 2017. Ve fondech služby Batch vytvořených mezi 10. březnem 2016 a 5. červencem 2017 jsou podporované, pouze pokud byl fond vytvořen pomocí konfigurace cloudové služby. Fondy služby Batch vytvořené před 10. březnem 2016 nepodporují balíčky aplikací.
 >
-> Rozhraní API pro vytváření a správu balíčky aplikací jsou součástí [rozhraní Batch Management .NET] [ api_net_mgmt] knihovny. Rozhraní API pro instalaci balíčků aplikací na výpočetní uzly jsou součástí [Batch .NET] [ api_net] knihovny. V dostupných rozhraní API služby Batch pro ostatní jazyky jsou srovnatelné funkce. 
+> Rozhraní API pro vytváření a správu balíčků aplikací jsou součástí knihovny [Batch Management .NET][api_net_mgmt] . Rozhraní API pro instalaci balíčků aplikací na výpočetním uzlu jsou součástí knihovny [Batch .NET][api_net] . Srovnatelné funkce jsou v dostupných rozhraních API služby Batch pro jiné jazyky. 
 >
-> Funkce balíčky aplikací, je zde popsáno, nahrazuje dostupnými v předchozích verzích služby Batch aplikace funkcí.
+> Funkce balíčků aplikací, které jsou zde popsané, nahrazuje funkci Batch Apps dostupnou v předchozích verzích služby.
 
 ## <a name="application-package-requirements"></a>Požadavky na balíček aplikace
-Chcete-li používat balíčky aplikací, je potřeba [propojit účet Azure Storage](#link-a-storage-account) k účtu Batch.
+Chcete-li použít balíčky aplikací, je třeba [propojit účet Azure Storage](#link-a-storage-account) s účtem Batch.
 
-## <a name="about-applications-and-application-packages"></a>Informace o aplikacích a balíčcích aplikací
-V rámci služby Azure Batch *aplikace* odkazuje na sadu verze binárních souborů, které se automaticky stáhnou do výpočetních uzlů ve fondu. *Balíčku aplikace* odkazuje na *konkrétní sady* tyto binární soubory a představuje daný *verze* aplikace.
+## <a name="about-applications-and-application-packages"></a>O aplikacích a balíčcích aplikací
+V rámci Azure Batch *aplikace* odkazuje na sadu binárních souborů s verzí, které se dají automaticky stáhnout do výpočetních uzlů ve fondu. *Balíček aplikace* odkazuje na *konkrétní sadu* těchto binárních souborů a představuje danou *verzi* aplikace.
 
-![Vysokoúrovňový diagram aplikacích a balíčcích aplikací][1]
+![Diagram vysoké úrovně pro balíčky aplikací a aplikací][1]
 
 ### <a name="applications"></a>Aplikace
-Aplikace ve službě Batch obsahuje jeden nebo více aplikací, balíčky a určuje možnosti konfigurace pro aplikaci. Aplikace můžete například určit výchozí verze balíčku aplikace k instalaci na výpočetních uzlech a určuje, zda jeho balíčky můžete aktualizovat ani odstranit.
+Aplikace ve službě Batch obsahuje jeden nebo více balíčků aplikace a určuje možnosti konfigurace aplikace. Například aplikace může určit výchozí verzi balíčku aplikace, která má být nainstalována na výpočetních uzlech a zda lze její balíčky aktualizovat nebo odstranit.
 
 ### <a name="application-packages"></a>Balíčky aplikací
-Balíček aplikace je soubor .zip, který obsahuje binární soubory aplikace a podpůrné soubory, které jsou požadovány pro své úkoly ke spuštění aplikace. Každý balíček aplikace představuje konkrétní verzi aplikace.
+Balíček aplikace je soubor s příponou. zip, který obsahuje binární soubory aplikace a podpůrné soubory, které se vyžadují pro vaše úlohy ke spuštění aplikace. Každý balíček aplikace představuje konkrétní verzi aplikace.
 
-Určíte balíčky aplikací na úrovni fondu nebo úkolu. Při vytváření fondu nebo úkolu můžete zadat jednu nebo více z těchto balíčků a (volitelně) verze.
+Balíčky aplikací můžete zadat na úrovni fondu a úloh. Při vytváření fondu nebo úlohy můžete určit jeden nebo více těchto balíčků a (volitelně) verzi.
 
-* **Balíčky aplikací fondu** jsou nasazené na *každý* uzlu ve fondu. Aplikace se nasadí, když se uzel připojí fondu a když ho restartuje nebo obnoví z Image.
+* **Balíčky aplikací fondu** se nasazují do *všech* uzlů ve fondu. Aplikace se nasazují, když se uzel připojí k fondu, a když se restartuje nebo obnoví z image.
   
-    Balíčky aplikací fondu jsou odpovídající po provedení všech uzlů ve fondu úkolů úlohy. Při vytváření fondu, a můžete přidat nebo aktualizovat balíčky existujícího fondu, můžete určit jeden nebo více balíčků aplikací. Při aktualizaci existujícího fondu, balíčky aplikací, je nutné restartovat jeho uzly k instalaci nového balíčku.
-* **Balíčky aplikací úkolů** jsou nasazeny pouze na výpočetním uzlu naplánované spuštění úlohy, stačí před spuštěním příkazového řádku úkolu. Pokud zadaný balíček aplikace a verze je již na uzlu, se znovu nasadit a používá se existující balíček.
+    Balíčky aplikací fondu jsou vhodné, pokud všechny uzly ve fondu spouštějí úkoly úlohy. Při vytváření fondu můžete určit jeden nebo více balíčků aplikace a můžete přidat nebo aktualizovat existující balíčky fondu. Pokud aktualizujete balíčky aplikací existujícího fondu, musíte restartovat své uzly a nainstalovat tak nový balíček.
+* **Balíčky aplikací úloh** se nasazují jenom na výpočetní uzel naplánovaný ke spuštění úlohy těsně před spuštěním příkazového řádku úkolu. Pokud je zadaný balíček aplikace a verze již na uzlu, nedojde k opětovnému nasazení a použije se existující balíček.
   
-    Balíčky aplikací úkolů jsou užitečné v prostředích sdíleného fondu, různé úlohy spouštějí v jednom fondu, kde se fond neodstraní po dokončení úlohy. Pokud má vaše úloha méně úkolů, než je uzlů ve fondu, balíčky aplikací úkolů můžou omezit přenosy dat, protože se aplikace může nasadit jen na uzly, které úkoly budou skutečně provádět.
+    Balíčky aplikací úkolů jsou užitečné v prostředích se sdíleným fondem, kde se spouštějí různé úlohy v jednom fondu a fond se po dokončení úlohy neodstraní. Pokud má vaše úloha méně úkolů, než je uzlů ve fondu, balíčky aplikací úkolů můžou omezit přenosy dat, protože se aplikace může nasadit jen na uzly, které úkoly budou skutečně provádět.
   
-    Další scénáře, které může přinést balíčky aplikací úkolů jsou úlohy, které spouštějí rozsáhlé aplikace, ale pouze několik úloh. Například fázi předběžného zpracování nebo úlohu sloučení, ve kterém je aplikace předběžného zpracování nebo sloučení těžký, mohou s výhodou využít balíčky aplikací úkolů.
+    Další scénáře, které můžou využívat balíčky aplikací úloh, jsou úlohy, které spouštějí velkou aplikaci, ale jenom pro několik úkolů. Například fáze předběžného zpracování nebo úloha sloučení, kde je předzpracování nebo sloučení aplikace těžké, můžou využívat balíčky aplikací pro úlohy.
 
 > [!IMPORTANT]
-> Existují omezení počtu aplikacích a balíčcích aplikací v rámci účtu Batch a aplikace maximální velikost balíčku. Zobrazit [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md) podrobnosti o těchto omezeních.
+> Existují omezení počtu aplikací a balíčků aplikací v rámci účtu Batch a maximální velikosti balíčku aplikace. Podrobnosti o těchto omezeních najdete v tématu [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md) .
 > 
 > 
 
-### <a name="benefits-of-application-packages"></a>Výhody balíčky aplikací
-Balíčky aplikací můžete zjednodušit kód, který do vašeho řešení Batch a snížení režie nezbytné ke správě aplikací, které vaše úkoly spouštět.
+### <a name="benefits-of-application-packages"></a>Výhody balíčků aplikací
+Balíčky aplikací můžou zjednodušit kód v řešení Batch a snížit režii potřebnou ke správě aplikací, které vaše úkoly spouštějí.
 
-Pomocí balíčků aplikací nemusí váš fond spouštěcí úkol určit dlouhý seznam jednotlivých prostředků soubory pro instalaci na uzlech. Není nutné ručně spravovat více verzí souborů aplikace ve službě Azure Storage, nebo na svých uzlech. A není nutné se starat o generování [adres URL SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md) a zajistit tak přístup k souborům ve vašem účtu úložiště. Služba batch pracuje s Azure Storage k ukládání balíčků aplikací a nasazovat je do výpočetních uzlů na pozadí.
+U balíčků aplikací nemusí spouštěcí úkol fondu určovat dlouhý seznam jednotlivých souborů prostředků, které se mají na uzlech nainstalovat. Nemusíte ručně spravovat více verzí souborů aplikace v Azure Storage nebo na vašich uzlech. A nemusíte se starat o generování [adres URL SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md) , abyste mohli poskytovat přístup k souborům v účtu úložiště. Batch funguje na pozadí s Azure Storage k ukládání balíčků aplikací a jejich nasazování do výpočetních uzlů.
 
 > [!NOTE] 
-> Celková velikost spouštěcího úkolu nesmí přesahovat 32768 znaků, včetně souborů prostředků a proměnných prostředí. Pokud spouštěcí úkol překročí tento limit, pak pomocí balíčků aplikací je další možností. Můžete také vytvořit komprimovaný archiv obsahující vaše soubory prostředků, nahrajte ho jako objekt blob do služby Azure Storage a rozbalte ho z příkazového řádku spouštěcí úkol. 
+> Celková velikost spouštěcího úkolu nesmí přesahovat 32768 znaků, včetně souborů prostředků a proměnných prostředí. Pokud spouštěcí úkol tento limit překročí, pak je použití balíčků aplikací Další možností. Můžete také vytvořit archiv ZIP obsahující soubory prostředků, nahrát ho jako objekt BLOB a Azure Storage a pak ho rozbalit z příkazového řádku spouštěcího úkolu. 
 >
 >
 
-## <a name="upload-and-manage-applications"></a>Odesílat a spravovat aplikace
-Můžete použít [webu Azure portal] [ portal] nebo rozhraní API služby Batch Management ke správě balíčků aplikací v účtu Batch. V následujících částech budeme nejprve ukazují, jak propojit účet úložiště a diskutovat o přidání aplikací a balíčků a správa pomocí portálu.
+## <a name="upload-and-manage-applications"></a>Nahrávání a Správa aplikací
+Pomocí [Azure Portal][portal] nebo rozhraní API pro správu služby Batch můžete spravovat balíčky aplikací v účtu Batch. V následujících částech jsme nejdřív ukázali, jak propojit účet úložiště, a pak diskutovat o přidávání aplikací a balíčků a jejich správě s portálem.
 
-### <a name="link-a-storage-account"></a>Propojí účet služby Storage
-Použití balíčků aplikací, musíte si nejdříve propojit [účtu služby Azure Storage](batch-api-basics.md#azure-storage-account) k účtu Batch. Pokud jste ještě nenakonfigurovali účet úložiště, na webu Azure portal zobrazí upozornění při prvním kliknete **aplikací** ve svém účtu Batch.
+### <a name="link-a-storage-account"></a>Propojení účtu úložiště
+Chcete-li použít balíčky aplikací, musíte nejprve propojit [účet Azure Storage](batch-api-basics.md#azure-storage-account) s účtem Batch. Pokud jste ještě nenakonfigurovali účet úložiště, Azure Portal zobrazí upozornění při prvním kliknutí na **aplikace** v účtu Batch.
 
 
 
-![Upozornění 'Nakonfigurovaný žádný účet úložiště' na webu Azure portal][9]
+![Upozornění na nenakonfigurovaný účet úložiště není v Azure Portal][9]
 
-Služba Batch používá přidružený účet úložiště k ukládání balíčky aplikací. Jakmile propojíte dva účty, služby Batch můžete automaticky nasadit balíčky uložených v propojeném účtu úložiště do výpočetních uzlů. Chcete-li s účtem Batch propojit účet úložiště, klikněte na tlačítko **účtu úložiště** na **upozornění** okna a pak klikněte na tlačítko **účtu úložiště** znovu.
+Služba Batch používá přidružený účet úložiště k ukládání balíčků aplikací. Po propojení těchto dvou účtů může služba Batch automaticky nasadit balíčky uložené v propojeném účtu úložiště do vašich výpočetních uzlů. Pokud chcete propojit účet úložiště s účtem Batch, klikněte v okně **Upozornění** na **účet úložiště** a pak znovu klikněte na **účet úložiště** .
 
-![Na webu Azure portal vyberte okno účet úložiště][10]
+![V Azure Portal vyberte okno účtu úložiště.][10]
 
-Doporučujeme vytvořit účet úložiště *konkrétně* pro použití s vaším účtem Batch a vyberte ho tady. Po vytvoření účtu úložiště, si můžete propojit ho k účtu Batch pomocí **účtu úložiště** okna.
+Doporučujeme vytvořit účet úložiště *konkrétně* pro použití s účtem Batch a vybrat ho tady. Po vytvoření účtu úložiště ho můžete propojit s účtem Batch pomocí okna **účtu úložiště** .
 
 > [!NOTE] 
-> Momentálně nelze použít balíčky aplikací pomocí účtu Azure Storage, který je nakonfigurovaný s [pravidla brány firewall](../storage/common/storage-network-security.md).
+> V současné době nemůžete použít balíčky aplikací s účtem Azure Storage, který je nakonfigurovaný pomocí [pravidel brány firewall](../storage/common/storage-network-security.md).
 > 
 
-Služba Batch používá Azure Storage k ukládání balíčky aplikací jako objekty BLOB bloku. Jste [účtovat jako za normálních okolností] [ storage_pricing] pro objekt blob bloku dat a velikost každého balíčku nesmí přesáhnout [velikost objektu blob bloku maximální](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets). Je potřeba vzít v úvahu velikost a počet balíčky aplikací a pravidelně odebrat zastaralé balíčky, které umožní minimalizovat náklady.
+Služba Batch používá Azure Storage k ukládání balíčků aplikací jako objektů blob bloku. Poplatky za data objektů blob bloku se [účtují jako normální][storage_pricing] a velikost každého balíčku nemůže překročit [maximální velikost objektu blob bloku](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets). Nezapomeňte vzít v úvahu velikost a počet balíčků aplikací a pravidelně odebírat zastaralé balíčky pro minimalizaci nákladů.
 > 
 > 
 
 ### <a name="view-current-applications"></a>Zobrazit aktuální aplikace
-Chcete-li zobrazit aplikace v účtu Batch, klikněte na tlačítko **aplikací** položky nabídky v nabídce vlevo při zobrazení vaší **účet Batch**.
+Pokud chcete zobrazit aplikace ve vašem účtu Batch, klikněte v levé nabídce na položku nabídky **aplikace** a zobrazte si **účet Batch**.
 
 ![Dlaždice aplikace][2]
 
-Výběrem této možnosti se otevře **aplikací** okno:
+Po výběru této možnosti nabídky se otevře okno **aplikace** :
 
 ![Výpis aplikací][3]
 
-Toto okno zobrazuje ID každé aplikace v účtu a následující vlastnosti:
+V tomto okně se zobrazuje ID jednotlivých aplikací ve vašem účtu a následující vlastnosti:
 
-* **Balíčky**: Číslo verze přidružené k této aplikaci.
-* **Výchozí verze**: Verze aplikace nainstalovat, pokud při zadávání žádosti o fond nevyžadují verze. Toto nastavení je volitelné.
-* **Povolit aktualizace**: Hodnota, která určuje, jestli balíček aktualizace, odstranění a přidání jsou povoleny. Pokud je nastavené na **ne**, balíček aktualizace a odstranění jsou zakázané pro aplikaci. Je možné přidat pouze nové verze balíčku aplikace. Výchozí hodnota je **Yes** (Ano).
+* **Balíčky**: Počet verzí přidružených k této aplikaci.
+* **Výchozí verze**: Verze aplikace je nainstalována, pokud při určování aplikace pro fond neurčíte verzi. Toto nastavení je volitelné.
+* **Povolení aktualizací**: Hodnota, která určuje, zda jsou povoleny aktualizace balíčků, odstraňování a přidání. Pokud je toto nastavení nastaveno na **ne**, aktualizace balíčků a odstranění jsou pro aplikaci zakázané. Přidat lze pouze nové verze balíčku aplikace. Výchozí hodnota je **Yes** (Ano).
 
-Pokud chcete zobrazit strukturu souboru balíčku aplikace na výpočetním uzlu, přejděte k účtu Batch na portálu. V účtu Batch, přejděte na **fondy**. Vyberte fond, který obsahuje výpočetní uzly, které vás zajímají.
+Pokud chcete zobrazit strukturu souborů balíčku aplikace na výpočetním uzlu, přejděte na portál na účet Batch. Z účtu Batch přejděte na **fondy**. Vyberte fond, který obsahuje výpočetní uzel (y), na které vás zajímáte.
 
 ![Uzly ve fondu][13]
 
-Po výběru fondu, přejděte do balíčku aplikace nainstalované na výpočetním uzlu. Tady jsou podrobnosti balíčku aplikace umístěné v **aplikací** složky. Další složky na výpočetním uzlu obsahovat jiné soubory, jako je například spouštěcích úkolů, výstupní soubory, chybový výstup atd.
+Po výběru fondu přejděte do výpočetního uzlu, na kterém je balíček aplikace nainstalovaný. Odtud jsou podrobnosti balíčku aplikace umístěny ve složce **aplikace** . Další složky na výpočetním uzlu obsahují další soubory, jako jsou například úlohy spuštění, výstupní soubory, výstup chyb atd.
 
-![Soubory v uzlu][14]
+![Soubory na uzlu][14]
 
-### <a name="view-application-details"></a>Zobrazení podrobností aplikace
-Chcete-li zobrazit podrobnosti o aplikaci, vyberte aplikaci v **aplikací** okna.
+### <a name="view-application-details"></a>Zobrazit podrobnosti o aplikaci
+Chcete-li zobrazit podrobnosti o aplikaci, vyberte aplikaci v okně **aplikace** .
 
 ![Podrobnosti o aplikaci][4]
 
-V podrobnostech aplikací můžete nakonfigurovat následující nastavení pro vaši aplikaci.
+V podrobnostech o aplikaci můžete pro svou aplikaci nakonfigurovat následující nastavení.
 
-* **Povolit aktualizace**: Určete, zda jeho balíčky aplikací můžete aktualizovat ani odstranit. Dále v tomto článku najdete v článku "Aktualizace nebo odstranění balíčku aplikace".
+* **Povolení aktualizací**: Určete, jestli se mají balíčky aplikací aktualizovat nebo odstranit. Viz část "aktualizace nebo odstranění balíčku aplikace" dále v tomto článku.
 * **Výchozí verze**: Zadejte výchozí balíček aplikace pro nasazení do výpočetních uzlů.
-* **Zobrazovaný název**: Zadejte popisný název, který vaše řešení Batch můžete použít při zobrazení informací o aplikaci, například v uživatelském rozhraní služby poskytovat vašim zákazníkům prostřednictvím služby Batch.
+* **Zobrazovaný název**: Zadejte popisný název, který může vaše řešení Batch použít, když zobrazuje informace o aplikaci, například v uživatelském rozhraní služby, které poskytnete vašim zákazníkům prostřednictvím služby Batch.
 
-### <a name="add-a-new-application"></a>Přidejte novou aplikaci
-Chcete-li vytvořit novou aplikaci, přidání balíčku aplikace a zadat ID nové, jedinečné aplikace. První balíčku aplikace, které můžete přidat pomocí nového ID aplikace také vytvoří novou aplikaci.
+### <a name="add-a-new-application"></a>Přidat novou aplikaci
+Chcete-li vytvořit novou aplikaci, přidejte balíček aplikace a zadejte nové jedinečné ID aplikace. První balíček aplikace, který přidáte s novým ID aplikace, vytvoří také novou aplikaci.
 
 Klikněte na **Aplikace** > **Přidat**.
 
-![Nové okno aplikace na webu Azure portal][5]
+![Okno Nová aplikace v Azure Portal][5]
 
-**Novou aplikaci** okno obsahuje následující pole a zadejte nastavení nové aplikace a balíček aplikace.
+**Nové okno aplikace** poskytuje následující pole k určení nastavení nového aplikace a balíčku aplikace.
 
 **ID aplikace**
 
-Toto pole určuje ID vaší nové aplikace, který je v souladu s standardní ověřovací pravidla ID dávky Azure. Pravidla pro zajištění ID aplikace jsou následující:
+Toto pole určuje ID vaší nové aplikace, které podléhá standardním ověřovacím pravidlům Azure Batch ID. Pravidla pro poskytnutí ID aplikace jsou následující:
 
-* Na uzlech Windows toto ID může obsahovat libovolnou kombinaci alfanumerické znaky, spojovníky a podtržítka. Na uzly s Linuxem jsou povolené jenom alfanumerické znaky nebo podtržítka.
-* Nesmí obsahovat víc než 64 znaků.
-* Musí být jedinečný v rámci účtu Batch.
-* Je zachování případ a velká a malá písmena.
+* V uzlech systému Windows ID může obsahovat libovolnou kombinaci alfanumerických znaků, spojovníků a podtržítka. V uzlech systému Linux jsou povoleny pouze alfanumerické znaky a podtržítka.
+* Nemůže obsahovat více než 64 znaků.
+* Musí být v rámci účtu Batch jedinečný.
+* Rozlišuje velká a malá písmena.
 
 **Verze**
 
-Toto pole určuje verzi balíčku aplikace, které nahráváte. Řetězce verze se vztahují následující pravidla ověřování:
+Toto pole určuje verzi balíčku aplikace, kterou nahráváte. Pro řetězce verze se vztahují následující pravidla ověřování:
 
-* Na uzlech Windows verze řetězec může obsahovat libovolnou kombinaci alfanumerických znaků, pomlčky, podtržítka a tečky. Na uzly s Linuxem řetězce verze může obsahovat jenom alfanumerické znaky nebo podtržítka.
-* Nesmí obsahovat víc než 64 znaků.
-* Musí být jedinečný v rámci aplikace.
-* Jsou zachována a velká a malá písmena.
+* V uzlech systému Windows může řetězec verze obsahovat libovolnou kombinaci alfanumerických znaků, spojovníků, podtržítka a tečky. V uzlech systému Linux může řetězec verze obsahovat pouze alfanumerické znaky a podtržítka.
+* Nemůže obsahovat více než 64 znaků.
+* Musí být v rámci aplikace jedinečné.
+* Zachovává velká a malá písmena.
 
 **Balíček aplikace**
 
-Toto pole určuje soubor .zip, který obsahuje binární soubory aplikace a podpůrné soubory, které jsou nutné ke spuštění aplikace. Klikněte na tlačítko **vyberte soubor** pole nebo na ikonu složky a vyhledejte a vyberte soubor .zip, který obsahuje soubory vaší aplikace.
+Toto pole určuje soubor. zip, který obsahuje binární soubory aplikace a podpůrné soubory, které jsou požadovány ke spuštění aplikace. Klikněte na tlačítko **Vybrat soubor** nebo na ikonu složky a vyhledejte a vyberte soubor. zip, který obsahuje soubory vaší aplikace.
 
-Po výběru souboru, klikněte na tlačítko **OK** a zahajte nahrávání do služby Azure Storage. Po dokončení operace nahrávání na portálu se zobrazí oznámení. V závislosti na rychlosti připojení k síti a velikost souboru, který odesíláte tato operace může trvat nějakou dobu.
+Po výběru souboru kliknutím na tlačítko **OK** zahajte nahrávání na Azure Storage. Po dokončení operace nahrávání se na portálu zobrazí oznámení. V závislosti na velikosti souboru, který nahráváte, a rychlosti síťového připojení může tato operace nějakou dobu trvat.
 
 > [!WARNING]
-> Nezavírejte **novou aplikaci** okno před dokončením operace nahrávání. Tím se zastaví proces nahrávání.
+> Nezavírejte okno **nové aplikace** před dokončením operace nahrávání. Tím se zastaví proces nahrávání.
 > 
 > 
 
 ### <a name="add-a-new-application-package"></a>Přidat nový balíček aplikace
-Pokud chcete přidat verze balíčku aplikace pro existující aplikace, vyberte aplikaci v **aplikací** windows a klikněte na **balíčky** > **přidat**.
+Chcete-li přidat verzi balíčku aplikace pro existující aplikaci, vyberte aplikaci v oknech **aplikace** a klikněte na **balíčky** > **Přidat**.
 
-![Přidat okno balíčku aplikací na webu Azure portal][8]
+![Okno Přidat balíček aplikace v Azure Portal][8]
 
-Jak je vidět, pole odpovídají objektu **novou aplikaci** okna, ale **ID aplikace** pole je zakázaná. Stejně jako nové aplikace, zadejte **verze** pro nový balíček, přejděte do vaší **balíčku aplikace** .zip soubor a potom klikněte na **OK** pro nahrání balíčku.
+Jak vidíte, pole se shodují s hodnotami v okně **Nová aplikace** , ale pole **ID aplikace** je zakázané. Stejně jako u nové aplikace zadejte **verzi** nového balíčku, vyhledejte soubor **Package** . zip a kliknutím na tlačítko **OK** balíček nahrajte.
 
 ### <a name="update-or-delete-an-application-package"></a>Aktualizace nebo odstranění balíčku aplikace
-Aktualizovat nebo odstranit existující balíček aplikace, otevřete podrobnosti o aplikaci, klikněte na tlačítko **balíčky**, klikněte na tlačítko **tlačítko se třemi tečkami** v řádku, který chcete upravit a vyberte balíček aplikace Akce, kterou chcete provést.
+Chcete-li aktualizovat nebo odstranit existující balíček aplikace, otevřete podrobnosti aplikace, klikněte na možnost **balíčky**, klikněte na **tři tečky** na řádku balíčku aplikace, který chcete upravit, a vyberte akci, kterou chcete provést.
 
-![Aktualizace nebo odstranění balíčku na webu Azure portal][7]
+![Aktualizace nebo odstranění balíčku v Azure Portal][7]
 
 **Aktualizace**
 
-Po kliknutí na **aktualizace**, **balíček aktualizace** se zobrazí okno. Toto okno se podobá **nový balíček aplikace** okna, ale pouze pole výběru balíčku je povoleno, vám umožní zadat nový soubor ZIP k nahrání.
+Po kliknutí na tlačítko **aktualizovat**se zobrazí okna **aktualizace balíčku** . Toto okno je podobné novému oknu **balíčku aplikace** , ale je povolené jenom pole pro výběr balíčku, které umožňuje zadat nový soubor zip, který se má nahrát.
 
-![Aktualizovat balíček okna portálu Azure portal][11]
+![Okno aktualizace balíčku v Azure Portal][11]
 
 **Odstranění**
 
-Po kliknutí na **odstranit**, zobrazí se výzva k potvrzení odstranění balíčku verze a Batch odstraní balíček ze služby Azure Storage. Pokud odstraníte výchozí verzi aplikace, **výchozí verze** odebrat nastavení pro aplikaci.
+Po kliknutí na **Odstranit**se zobrazí výzva k potvrzení odstranění verze balíčku a dávka odstraní balíček z Azure Storage. Odstraníte-li výchozí verzi aplikace, bude pro aplikaci odebrána **výchozí nastavení verze** .
 
-![Odstranit aplikaci ][12]
+![Odstranit aplikaci][12]
 
 ## <a name="install-applications-on-compute-nodes"></a>Instalace aplikací na výpočetní uzly
-Teď, když jsme zjistili, jak spravovat balíčky aplikací pomocí webu Azure portal, můžete si popíšeme, jak nasadit do výpočetních uzlů a spusťte je s úkoly služby Batch.
+Teď, když jste se naučili, jak spravovat balíčky aplikací pomocí Azure Portal, můžeme diskutovat o tom, jak je nasadit do výpočetních uzlů a jak je spouštět s úkoly Batch.
 
 ### <a name="install-pool-application-packages"></a>Instalovat balíčky aplikací fondu
-Chcete-li nainstalovat balíček aplikace na všech výpočetních uzlech ve fondu, zadejte balíček aplikace jeden nebo více *odkazy* pro fond. Balíčky aplikací, které zadáte pro fond jsou nainstalovány na každém výpočetním uzlu, když se takový uzel připojí k fondu a když se uzel restartuje nebo obnoví z Image.
+Chcete-li nainstalovat balíček aplikace na všech výpočetních uzlech ve fondu, zadejte jeden nebo více *odkazů* na balíčky aplikací pro daný fond. Balíčky aplikací, které zadáte pro fond, se nainstalují do každého výpočetního uzlu, když se tento uzel připojí k fondu, a když se uzel restartuje nebo obnoví z image.
 
-V rozhraní .NET služby Batch, zadejte jeden nebo více [CloudPool][net_cloudpool].[ ApplicationPackageReferences] [ net_cloudpool_pkgref] při vytvoření nového fondu, nebo pro už existující fond. [ApplicationPackageReference] [ net_pkgref] třída určuje ID aplikace a verze pro instalaci na vytvoření fondu výpočetních uzlů.
+V rozhraní Batch .NET zadejte jednu nebo více [CloudPool][net_cloudpool]. [ApplicationPackageReferences][net_cloudpool_pkgref] při vytváření nového fondu nebo pro stávající fond. Třída [ApplicationPackageReference][net_pkgref] Určuje ID a verzi aplikace, která se má nainstalovat na výpočetní uzly fondu.
 
 ```csharp
 // Create the unbound CloudPool
@@ -226,14 +226,14 @@ await myCloudPool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Pokud z nějakého důvodu selže nasazení balíčku aplikace, služba Batch označí uzel [nepoužitelné][net_nodestate], a nejsou žádné úkoly jsou naplánovány k provedení v tomto uzlu. V takovém případě byste měli **restartovat** uzel, který má inicializujte nasazení balíčku. Restartování uzlu taky umožňuje znovu plánování úkolů na uzlu.
+> Pokud se nasazení balíčku aplikace z nějakého důvodu nepovede, služba Batch označí uzel [][net_nodestate]jako nepoužitelný a žádné úlohy se naplánují pro provádění na tomto uzlu. V takovém případě byste měli **restartovat** uzel a znovu zahájit nasazení balíčku. Restartování uzlu také umožňuje znovu naplánovat úlohu na uzlu.
 > 
 > 
 
-### <a name="install-task-application-packages"></a>Instalovat balíčky aplikací úkolů
-Podobně jako u fondu, zadejte balíček aplikace *odkazy* pro úlohu. Když je úloha naplánována ke spuštění na uzlu, balíček stáhnout a extrahovat těsně před provedením příkazového řádku úkolu. Pokud zadaného balíčku a verzi je již nainstalován na uzlu, balíček se nestáhne, a používá se existující balíček.
+### <a name="install-task-application-packages"></a>Instalovat balíčky aplikací úloh
+Podobně jako fond určujete *odkazy* na balíčky aplikací pro úlohu. Když je naplánováno spuštění úlohy na uzlu, balíček je stažen a extrahován těsně před provedením příkazového řádku úkolu. Pokud je v uzlu již nainstalován zadaný balíček a verze, balíček se nestáhne a použije se existující balíček.
 
-Instalace balíčku aplikace úkolu, nakonfigurujte úkolu [CloudTask][net_cloudtask].[ ApplicationPackageReferences] [ net_cloudtask_pkgref] vlastnost:
+Chcete-li nainstalovat balíček aplikace úkolu, nakonfigurujte [CloudTask][net_cloudtask]úlohy. Vlastnost [ApplicationPackageReferences][net_cloudtask_pkgref] :
 
 ```csharp
 CloudTask task =
@@ -252,43 +252,43 @@ task.ApplicationPackageReferences = new List<ApplicationPackageReference>
 ```
 
 ## <a name="execute-the-installed-applications"></a>Spustit nainstalované aplikace
-Balíčky, které jste zadali pro fond nebo úloh jsou stažené a rozbalené na adresář s názvem v rámci `AZ_BATCH_ROOT_DIR` uzlu. Služba Batch také vytvoří proměnné prostředí, který obsahuje cestu k adresáři s názvem. Příkazové řádky úkolu použijte tuto proměnnou prostředí při odkazování na aplikace na uzlu. 
+Balíčky, které jste zadali pro fond nebo úlohu, se stáhnou a extrahují do pojmenovaného adresáře v rámci `AZ_BATCH_ROOT_DIR` uzlu. Batch také vytvoří proměnnou prostředí, která obsahuje cestu k pojmenovanému adresáři. Příkazové řádky úkolu používají tuto proměnnou prostředí při odkazování aplikace na uzlu. 
 
-Na uzlech Windows je proměnná v následujícím formátu:
+V uzlech systému Windows je proměnná v následujícím formátu:
 
 ```
 Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Formát na uzly s Linuxem, je mírně liší. Tečky (.), spojovníky (-) a symboly čísla (#) se sloučí do podtržítka v proměnné prostředí. Všimněte si také, že případ ID aplikace je zachováno. Příklad:
+V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Příklad:
 
 ```
 Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID` a `version` jsou hodnoty, které odpovídají verzi aplikací a balíčků, jste zadali pro nasazení. Například, pokud jste zadali této verze 2.7 aplikace *blenderu* by měly být nainstalovány na uzlech Windows příkazové řádky úkolu by použití této proměnné prostředí pro přístup k jeho soubory:
+`APPLICATIONID`a `version` jsou hodnoty, které odpovídají verzi aplikace a balíčku, který jste zadali pro nasazení. Pokud jste například zadali, že by měla být na uzlech systému Windows nainstalována verze 2,7 nástroje *Blend* pro aplikace, budou příkazové řádky úlohy používat pro přístup ke svým souborům tuto proměnnou prostředí:
 
 ```
 Windows:
 AZ_BATCH_APP_PACKAGE_BLENDER#2.7
 ```
 
-V uzlech systému Linux zadejte proměnnou prostředí v tomto formátu. Sloučit tečky (.), spojovníky (-) a znaky čísla (#) k podtržítka a zachovat tak ID aplikace:
+V uzlech systému Linux zadejte proměnnou prostředí v tomto formátu. Rozveďte do podtržítek tečky (.), spojovníky (-) a znaménko (#) a zachovejte velikost ID aplikace:
 
 ```
 Linux:
 AZ_BATCH_APP_PACKAGE_blender_2_7
 ``` 
 
-Při nahrávání balíčku aplikace, můžete určit výchozí verzi pro nasazení do výpočetních uzlů. Pokud jste určili výchozí verze pro aplikaci, můžete vynechat přípony verze při odkazu aplikaci. Můžete určit výchozí verzi aplikace na webu Azure Portal, v **aplikací** okna, jak je znázorněno v [odesílat a spravovat aplikace](#upload-and-manage-applications).
+Při nahrávání balíčku aplikace můžete zadat výchozí verzi, která se má nasadit do výpočetních uzlů. Pokud jste pro aplikaci zadali výchozí verzi, můžete při odkazování na aplikaci vynechat příponu verze. Výchozí verzi aplikace můžete zadat v Azure Portal v okně **aplikace** , jak je znázorněno v části nahrání [a Správa aplikací](#upload-and-manage-applications).
 
-Například pokud nastavíte jako výchozí verze pro aplikaci "2.7" *blenderu*a následující proměnné prostředí odkazovat na vaše úkoly a pak uzly Windows se spustí verze 2.7:
+Například pokud nastavíte "2,7" jako výchozí verzi pro *Blend*aplikace a vaše úkoly odkazují na následující proměnnou prostředí, budou vaše uzly Windows spouštět verzi 2,7:
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 
-Následující fragment kódu ukazuje příklad příkazového řádku úkolu, který se spustí výchozí verzi *blenderu* aplikace:
+Následující fragment kódu ukazuje příklad příkazového řádku úlohy, který spouští výchozí verzi aplikace *Blend* :
 
 ```csharp
 string taskId = "blendertask01";
@@ -298,18 +298,18 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> Zobrazit [nastavení prostředí pro úkoly](batch-api-basics.md#environment-settings-for-tasks) v [přehled funkcí Batch](batch-api-basics.md) Další informace o nastavení prostředí výpočetního uzlu.
+> Další informace o nastavení prostředí výpočetních uzlů najdete v tématu [nastavení prostředí pro úlohy](batch-api-basics.md#environment-settings-for-tasks) v [přehledu funkcí služby Batch](batch-api-basics.md) .
 > 
 > 
 
 ## <a name="update-a-pools-application-packages"></a>Aktualizace balíčků aplikací fondu
-Pokud existujícího fondu je již nakonfigurován s balíčkem aplikace, můžete zadat nový balíček pro fond. Pokud zadáte nový odkaz na balíček pro fond, následujících podmínek:
+Pokud je už existující fond nakonfigurovaný pomocí balíčku aplikace, můžete pro tento fond zadat nový balíček. Pokud zadáte nový odkaz na balíček pro fond, platí následující:
 
-* Služba Batch nainstaluje nově zadaný balíček na všechny nové uzly, které se připojí k fondu a na jakékoli existující uzel, který restartuje nebo obnoví z Image.
-* Výpočetní uzly, které jsou již ve fondu, když aktualizujete odkazy na balíček automaticky neinstaluje nového balíčku aplikace. Tyto výpočetní uzly musí restartuje nebo obnoví z Image pro příjem nový balíček.
-* Po nasazení nového balíčku vytvořené proměnné, aby odrážela nové odkazy na balíček aplikace.
+* Služba Batch nainstaluje nově zadaný balíček na všech nových uzlech, které se připojí k fondu, a na všech stávajících uzlech, které se restartují nebo obnoví z image.
+* Výpočetní uzly, které už jsou ve fondu, když aktualizujete odkazy na balíček, neinstalují automaticky nový balíček aplikace. Aby bylo možné získat nový balíček, musí se tyto výpočetní uzly restartovat nebo obnovit z image.
+* Při nasazení nového balíčku odrážejí vytvořené proměnné prostředí odkazy na nové balíčky aplikací.
 
-V tomto příkladu má existující fond verze 2.7 *blenderu* aplikace konfigurovaná jako jeden z jeho [CloudPool][net_cloudpool].[ ApplicationPackageReferences][net_cloudpool_pkgref]. S verzí 2.76b aktualizovat uzly fondu, zadejte nový [ApplicationPackageReference] [ net_pkgref] s novou verzí a potvrzení změn.
+V tomto příkladu má existující fond verzi 2,7 aplikace *Blendu* nakonfigurovanou jako jednu z jeho [CloudPool][net_cloudpool]. [ApplicationPackageReferences][net_cloudpool_pkgref]. Chcete-li aktualizovat uzly fondu pomocí verze 2.76 b, zadejte nový [ApplicationPackageReference][net_pkgref] s novou verzí a potvrďte změnu.
 
 ```csharp
 string newVersion = "2.76b";
@@ -323,10 +323,10 @@ boundPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await boundPool.CommitAsync();
 ```
 
-Teď, když byl nakonfigurován na novou verzi, služba Batch nainstaluje kterékoli verzi 2.76b *nové* uzel, který se připojí k fondu. Chcete-li nainstalovat 2.76b na uzly, které jsou *již* ve fondu, restartovat nebo obnovit z Image je. Všimněte si, že restartovaná uzly zachovat soubory z předchozích nasazení balíčku.
+Teď, když je nová verze nakonfigurovaná, služba Batch nainstaluje verzi 2.76 b na jakýkoliv *Nový* uzel, který se připojí k fondu. Pokud chcete nainstalovat 2.76 b na uzlech, které *už* jsou ve fondu, restartujte je nebo je znovu naimagí. Všimněte si, že restartované uzly uchovávají soubory z předchozích nasazení balíčků.
 
-## <a name="list-the-applications-in-a-batch-account"></a>Seznam aplikací v účtu Batch
-Můžete vytvořit seznam aplikací a balíčků v účtu Batch pomocí [ApplicationOperations][net_appops].[ ListApplicationSummaries] [ net_appops_listappsummaries] metody.
+## <a name="list-the-applications-in-a-batch-account"></a>Výpis aplikací v účtu Batch
+Pomocí [ApplicationOperations][net_appops]můžete v účtu Batch zobrazit seznam aplikací a jejich balíčků. Metoda [ListApplicationSummaries][net_appops_listappsummaries]
 
 ```csharp
 // List the applications and their application packages in the Batch account.
@@ -343,11 +343,11 @@ foreach (ApplicationSummary app in applications)
 ```
 
 ## <a name="wrap-up"></a>Zabalit
-S balíčky aplikací, které pomáhají zákazníkům vybrat aplikace pro svou práci a určit přesné verze se má použít při zpracování úloh pomocí služby podporují službu Batch. Můžete také zadat možnost pro vaše zákazníky k nahrání a sledovat jejich vlastních aplikací ve službě.
+Pomocí balíčků aplikací můžete svým zákazníkům pomáhat vybrat aplikace pro své úlohy a určit přesnou verzi, která se má použít při zpracování úloh pomocí služby pro dávkovou práci. Můžete také poskytnout zákazníkům možnost nahrávat a sledovat vlastní aplikace ve vaší službě.
 
 ## <a name="next-steps"></a>Další postup
-* [Rozhraní REST API služby Batch] [ api_rest] také poskytuje podporu pro práci s balíčky aplikací. Viz například [applicationPackageReferences] [ rest_add_pool_with_packages] prvek [přidání fondu k účtu] [ rest_add_pool] informace o tom, jak zadat balíčky pro instalaci s použitím rozhraní REST API. Zobrazit [aplikací] [ rest_applications] podrobné informace o tom, jak získat informace o aplikaci pomocí rozhraní REST API služby Batch.
-* Zjistěte, jak prostřednictvím kódu programu [Správa účtů služby Azure Batch a kvót pomocí rozhraní Batch Management .NET](batch-management-dotnet.md). [Rozhraní Batch Management .NET] [ api_net_mgmt] knihovny můžete povolit funkce vytváření a odstraňování účtu služby Batch aplikace nebo služby.
+* [REST API dávky][api_rest] také poskytují podporu pro práci s balíčky aplikací. Podívejte se například na element [applicationPackageReferences][rest_add_pool_with_packages] v části [Přidání fondu k účtu][rest_add_pool] , kde najdete informace o tom, jak určit balíčky k instalaci pomocí REST API. Podrobnosti o tom, jak získat informace o aplikaci pomocí dávkové REST API, najdete v tématu [aplikace][rest_applications] .
+* Naučte se programově [Spravovat účty Azure Batch a kvóty pomocí rozhraní Batch Management .NET](batch-management-dotnet.md). Knihovna [.NET Batch Management][api_net_mgmt] může povolit funkce vytváření a odstraňování účtů pro vaši aplikaci nebo službu Batch.
 
 [api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet
 [api_net_mgmt]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet
@@ -368,16 +368,16 @@ S balíčky aplikací, které pomáhají zákazníkům vybrat aplikace pro svou 
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 [rest_add_pool_with_packages]: https://msdn.microsoft.com/library/azure/dn820174.aspx#bk_apkgreference
 
-[1]: ./media/batch-application-packages/app_pkg_01.png "Vysokoúrovňový diagram balíčky aplikací"
-[2]: ./media/batch-application-packages/app_pkg_02.png "Dlaždice aplikace na webu Azure portal"
-[3]: ./media/batch-application-packages/app_pkg_03.png "Okno aplikace na webu Azure portal"
-[4]: ./media/batch-application-packages/app_pkg_04.png "Podrobnosti o okně aplikace na webu Azure portal"
-[5]: ./media/batch-application-packages/app_pkg_05.png "Nové okno aplikace na webu Azure portal"
-[7]: ./media/batch-application-packages/app_pkg_07.png "Aktualizace nebo odstranění balíčků rozevírací seznam na webu Azure portal"
-[8]: ./media/batch-application-packages/app_pkg_08.png "Nové okno balíčku aplikace na webu Azure portal"
-[9]: ./media/batch-application-packages/app_pkg_09.png "Žádná výstraha propojeného účtu úložiště"
-[10]: ./media/batch-application-packages/app_pkg_10.png "Na webu Azure portal vyberte okno účet úložiště"
-[11]: ./media/batch-application-packages/app_pkg_11.png "Aktualizovat balíček okna portálu Azure portal"
-[12]: ./media/batch-application-packages/app_pkg_12.png "Odstranit balíček potvrzovací dialogové okno na webu Azure portal"
-[13]: ./media/batch-application-packages/package-file-structure.png "Výpočetní uzel informace na webu Azure portal"
-[14]: ./media/batch-application-packages/package-file-structure-node.png "Soubory na výpočetním uzlu, zobrazí na webu Azure portal"
+[1]: ./media/batch-application-packages/app_pkg_01.png "Diagram vysoké úrovně balíčků aplikací"
+[2]: ./media/batch-application-packages/app_pkg_02.png "Dlaždice aplikace v Azure Portal"
+[3]: ./media/batch-application-packages/app_pkg_03.png "Okno aplikace v Azure Portal"
+[4]: ./media/batch-application-packages/app_pkg_04.png "Okno podrobností aplikace v Azure Portal"
+[5]: ./media/batch-application-packages/app_pkg_05.png "Okno Nová aplikace v Azure Portal"
+[7]: ./media/batch-application-packages/app_pkg_07.png "Rozevírací seznam aktualizovat nebo odstranit balíčky v Azure Portal"
+[8]: ./media/batch-application-packages/app_pkg_08.png "Okno nového balíčku aplikace v Azure Portal"
+[9]: ./media/batch-application-packages/app_pkg_09.png "Nejedná se o výstrahu propojeného účtu úložiště."
+[10]: ./media/batch-application-packages/app_pkg_10.png "V Azure Portal vyberte okno účtu úložiště."
+[11]: ./media/batch-application-packages/app_pkg_11.png "Okno aktualizace balíčku v Azure Portal"
+[12]: ./media/batch-application-packages/app_pkg_12.png "Dialogové okno pro potvrzení odstranění balíčku v Azure Portal"
+[13]: ./media/batch-application-packages/package-file-structure.png "Informace o výpočetním uzlu v Azure Portal"
+[14]: ./media/batch-application-packages/package-file-structure-node.png "Soubory na výpočetním uzlu zobrazeném v Azure Portal"

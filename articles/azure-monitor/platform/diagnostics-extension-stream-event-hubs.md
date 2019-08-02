@@ -1,6 +1,6 @@
 ---
-title: Stream dat diagnostiky Azure do služby Event Hubs
-description: Konfigurace diagnostiky Azure pomocí služby Event Hubs komplexní pokyny pro běžné scénáře včetně.
+title: Streamování dat Azure Diagnostics do Event Hubs
+description: Konfigurace Azure Diagnostics s využitím kompletních Event Hubs, včetně pokynů pro běžné scénáře.
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
@@ -10,16 +10,16 @@ ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "64922807"
 ---
-# <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování dat diagnostiky Azure do horké cesty s využitím služby Event Hubs
-Diagnostika Azure nabízí flexibilní možnosti, jak shromažďovat metriky a protokoly z cloudové služby virtuálních počítačů (VM) a přenést výsledky do služby Azure Storage. Od března 2016 (SDK 2.9) časový rámec, můžete odeslání diagnostiky do vlastní zdroje dat a přenos dat kritickou cestu během několika sekund pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
+# <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování Azure Diagnostics dat v Hot Path pomocí Event Hubs
+Azure Diagnostics poskytuje flexibilní způsoby shromažďování metrik a protokolů z virtuálních počítačů cloudových služeb a výsledků přenosu do Azure Storage. Počínaje časovým rámcem, který začíná 2016. března (SDK 2,9), můžete do vlastních zdrojů dat odeslat diagnostiku a přenést data za provozu za pár sekund pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
 
-Podporované datové typy patří:
+Mezi podporované datové typy patří:
 
 * Události Trasování událostí pro Windows
 * Čítače výkonu
@@ -27,25 +27,25 @@ Podporované datové typy patří:
 * Protokoly aplikací
 * Protokolů infrastruktury Azure Diagnostics
 
-Tento článek ukazuje, jak konfigurovat diagnostiku Azure pomocí služby Event Hubs od začátku do konce. Poskytujeme také pokyny pro následující běžné scénáře:
+V tomto článku se dozvíte, jak nakonfigurovat Azure Diagnostics pomocí Event Hubs od konce do konce. Doprovodné materiály jsou také k dispozici v následujících běžných scénářích:
 
-* Jak přizpůsobit protokoly a metriky, které odesílání do služby Event Hubs
-* Postup změny konfigurace v jednotlivých prostředích
-* Jak zobrazit data datového proudu Event Hubs
-* Řešení potíží s připojení  
+* Jak přizpůsobit protokoly a metriky, které se odesílají do Event Hubs
+* Změna konfigurací v jednotlivých prostředích
+* Postup zobrazení dat Event Hubs streamu
+* Řešení potíží s připojením  
 
 ## <a name="prerequisites"></a>Požadavky
-Event Hubs příjem dat z Azure Diagnostics se podporuje v cloudových služeb, virtuálních počítačů, Škálovací sady virtuálních počítačů a spuštění v Azure SDK 2.9 a odpovídající nástroje Azure pro sadu Visual Studio Service Fabric.
+Event Hubs Příjem dat z Azure Diagnostics podporuje v Cloud Services, virtuálních počítačích, Virtual Machine Scale Sets a Service Fabric od Azure SDK 2,9 a odpovídajících nástrojů Azure pro Visual Studio.
 
-* Rozšíření Azure Diagnostics 1.6 ([sady Azure SDK pro .NET 2.9 nebo novější](https://azure.microsoft.com/downloads/) cílí to ve výchozím nastavení)
+* Azure Diagnostics rozšíření 1,6 (ve výchozím nastavení se[Azure SDK pro .net 2,9 nebo novější](https://azure.microsoft.com/downloads/) zaměřuje)
 * [Visual Studio 2013 nebo novější](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
-* Existující konfigurace diagnostiky Azure v aplikaci s využitím *.wadcfgx* soubor a jeden z následujících metod:
-  * Visual Studio: [Konfiguruje se Diagnostika pro Azure Cloud Services a Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
-  * Windows PowerShell: [Povolení diagnostiky v Azure Cloud Services pomocí Powershellu](../../cloud-services/cloud-services-diagnostics-powershell.md)
-* Zřízeno na článek, obor názvů služby Event Hubs [Začínáme se službou Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* Existující konfigurace Azure Diagnostics v aplikaci pomocí souboru *. wadcfgx* a jedné z následujících metod:
+  * Visual Studio: [Konfigurace diagnostiky pro Azure Cloud Services a Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
+  * Windows PowerShell: [Povolení diagnostiky v Azure Cloud Services s využitím PowerShellu](../../cloud-services/cloud-services-diagnostics-powershell.md)
+* Event Hubs obor názvů zřízený podle článku [Začínáme s Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
-## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Připojení diagnostiky Azure do služby Event Hubs jímky
-Ve výchozím nastavení Azure Diagnostics vždy posílá protokoly a metriky pro účet služby Azure Storage. Aplikace může také posílat do služby Event Hubs tak, že přidáte nový **jímky** části **PublicConfig** / **WadCfg** elementu *. wadcfgx* souboru. V sadě Visual Studio *.wadcfgx* soubor je uložený v následujícím umístění: **Cloudový projekt služby** > **role** >  **(RoleName)**  > **diagnostics.wadcfgx** souboru.
+## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Připojení Azure Diagnostics k Event Hubs jímky
+Ve výchozím nastavení Azure Diagnostics vždy odesílá protokoly a metriky na účet Azure Storage. Aplikace může také odesílat data do Event Hubs přidáním nového oddílu **jímky** v rámci**WadCfg** elementu **PublicConfig** / souboru. *wadcfgx* . V aplikaci Visual Studio je soubor *. wadcfgx* uložený v následující cestě: > Soubor**Diagnostics. wadcfgx** **role** > projektu cloudové služby **(roleName)**  > .
 
 ```xml
 <SinksConfig>
@@ -68,18 +68,18 @@ Ve výchozím nastavení Azure Diagnostics vždy posílá protokoly a metriky pr
 }
 ```
 
-V tomto příkladu je adresa URL centra událostí nastaven na plně kvalifikovaný obor názvů centra událostí: Obor názvů služby Event Hubs + "/" + název centra událostí.  
+V tomto příkladu je adresa URL centra událostí nastavená na plně kvalifikovaný obor názvů centra událostí: Obor názvů Event Hubs + "/" + název centra událostí.  
 
-Adresa URL se zobrazí v Centru událostí [webu Azure portal](https://go.microsoft.com/fwlink/?LinkID=213885) na řídicím panelu služby Event Hubs.  
+Adresa URL centra událostí se zobrazí v [Azure Portal](https://go.microsoft.com/fwlink/?LinkID=213885) na řídicím panelu Event Hubs.  
 
-**Jímky** název lze nastavit na libovolný platný řetězec, tak dlouho, dokud se stejnou hodnotu konzistentně používá v konfiguračním souboru.
+Název **jímky** lze nastavit na libovolný platný řetězec, pokud je stejná hodnota použita konzistentně v rámci konfiguračního souboru.
 
 > [!NOTE]
-> Můžou existovat další jímky, jako například *applicationInsights* nakonfigurované v této části. Diagnostika Azure umožňuje jeden nebo více jímky definováno, pokud každý jímky je také deklarován **PrivateConfig** oddílu.  
+> V této části můžou být nakonfigurované další jímky, jako je *applicationInsights* . Azure Diagnostics umožňuje definovat jednu nebo více umyvadel, pokud je každá jímka také deklarována v oddílu **PrivateConfig** .  
 >
 >
 
-Jímce služby Event Hubs musí také být deklarovány a definovány v **PrivateConfig** část *.wadcfgx* konfiguračního souboru.
+Jímka Event Hubs musí být také deklarována a definována v oddílu **PrivateConfig** konfiguračního souboru *. wadcfgx* .
 
 ```XML
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -100,19 +100,19 @@ Jímce služby Event Hubs musí také být deklarovány a definovány v **Privat
 }
 ```
 
-`SharedAccessKeyName` Hodnota musí odpovídat klíče sdíleného přístupového podpisu (SAS) a zásadu, která je definována v **Event Hubs** oboru názvů. Přejděte na řídicí panel služby Event Hubs [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **konfigurovat** kartu a nastavení s názvem zásady (například "SendRule"), který má *odeslat* oprávnění. **StorageAccount** je také deklarován **PrivateConfig**. Není nutné měnit hodnoty sem, pokud používají. V tomto příkladu jsme ponechte hodnoty prázdná, což je znak, že bude podřízený prostředek nastavte hodnoty. Například *ServiceConfiguration.Cloud.cscfg* prostředí konfiguračního souboru nastaví prostředí odpovídající názvy a klíče.  
+Hodnota `SharedAccessKeyName` se musí shodovat s klíčem sdíleného přístupového podpisu (SAS) a zásadou, které jsou definované v oboru názvů **Event Hubs** . V [Azure Portal](https://portal.azure.com)přejděte na řídicí panel Event Hubs, klikněte na kartu **Konfigurovat** a nastavte pojmenovanou zásadu (například "SendRule"), která má oprávnění *Odeslat* . **StorageAccount** je také deklarován v **PrivateConfig**. Pokud fungují, nemusíte tady měnit hodnoty. V tomto příkladu ponecháme hodnoty prázdné, což je znaménko, že se pro podřízený Asset nastavují hodnoty. Například konfigurační soubor prostředí *ServiceConfiguration. Cloud. cscfg* nastaví názvy a klíče odpovídající prostředí.  
 
 > [!WARNING]
-> Klíč SAS centra událostí je uložený ve formátu prostého textu v *.wadcfgx* souboru. Často tento klíč se změnami do správy zdrojového kódu nebo je k dispozici jako prostředek v serveru sestavení, měli byste ho chránit podle potřeby. Doporučujeme používat klíč SAS se tady *odeslat pouze* oprávnění tak, aby uživatel se zlými úmysly nelze zapisovat do centra událostí, ale naslouchání na ni nebo ho spravovat.
+> Event Hubs klíč SAS je uložený v souboru *. wadcfgx* do prostého textu. Tento klíč je často vrácen se změnami do správy zdrojového kódu nebo je k dispozici jako prostředek na serveru sestavení, takže byste ho měli chránit podle potřeby. Doporučujeme použít klíč SAS v tomto umístění s oprávněním *Odeslat jenom* , aby uživatel se zlými úmysly mohl zapisovat do centra událostí, ale neposlouchal ho ani nespravuje.
 >
 >
 
-## <a name="configure-azure-diagnostics-to-send-logs-and-metrics-to-event-hubs"></a>Konfigurace diagnostiky Azure do služby Event Hubs odesílat protokoly a metriky
-Jak je popsáno výše, všechny výchozí a vlastní diagnostická data, to znamená, metriky a protokoly, je automaticky odeslána do služby Azure Storage v nakonfigurovaných intervalech. Pomocí služby Event Hubs a jakékoli další jímky můžete zadat libovolný kořenové nebo listový uzel v hierarchii k odeslání do centra událostí. To zahrnuje události trasování událostí pro Windows, čítače výkonu, protokoly událostí Windows a protokoly aplikací.   
+## <a name="configure-azure-diagnostics-to-send-logs-and-metrics-to-event-hubs"></a>Konfigurace Azure Diagnostics pro odesílání protokolů a metrik do Event Hubs
+Jak už jsme uvedli, všechna výchozí a vlastní diagnostická data, která jsou metriky a protokoly, se automaticky odesílají do Azure Storage v nakonfigurovaných intervalech. Pomocí Event Hubs a jakýchkoliv dalších umyvadel můžete v hierarchii určit kterýkoli kořenový uzel nebo uzel na úrovni listu, který se odešle do centra událostí. To zahrnuje události ETW, čítače výkonu, protokoly událostí systému Windows a protokoly aplikací.   
 
-Je důležité vzít v úvahu, kolik datových bodů by ve skutečnosti se měly převést do služby Event Hubs. Vývojáři obvykle přenos horká cesta data s nízkou latencí, která musí být spotřebovány a interpretovat rychle. Příklady jsou systémy, které monitorují výstrahy nebo pravidla automatického škálování. Vývojáři můžou také nakonfigurujte úložiště alternativní analýzy nebo hledání úložiště – například Azure Stream Analytics, Elasticsearch, vlastní monitorovacího systému nebo oblíbený systém monitorování od ostatních.
+Je důležité vzít v úvahu, kolik datových bodů by se mělo ve skutečnosti přenést do Event Hubs. Vývojáři obvykle přenášejí data s nízkou latencí v Hot-Path, která musí být spotřebována a interpretována rychle. Příklady jsou systémy, které sledují výstrahy nebo pravidla automatického škálování. Vývojář může také nakonfigurovat alternativní úložiště analýzy nebo úložiště pro hledání, například Azure Stream Analytics, Elasticsearch, vlastní systém monitorování nebo oblíbený monitorovací systém od ostatních.
 
-Tady jsou některé ukázkové konfigurace.
+Následuje několik ukázkových konfigurací.
 
 ```xml
 <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="HotPath">
@@ -142,7 +142,7 @@ Tady jsou některé ukázkové konfigurace.
 }
 ```
 
-Ve výše uvedeném příkladu se použije jímka pro nadřazenou **čítače výkonu** uzel v hierarchii, což znamená, že všechny podřízené **čítače výkonu** se odešlou do služby Event Hubs.  
+V předchozím příkladu se jímka aplikuje na nadřazený uzel **čítače výkonu** v hierarchii, což znamená, že všechny podřízené **čítače výkonu** se odešlou do Event Hubs.  
 
 ```xml
 <PerformanceCounters scheduledTransferPeriod="PT1M">
@@ -184,9 +184,9 @@ Ve výše uvedeném příkladu se použije jímka pro nadřazenou **čítače v�
 }
 ```
 
-V předchozím příkladu je jímka použijí pouze tři čítače: **Požadavky ve frontě**, **požadavků odmítnutých**, a **% času procesoru**.  
+V předchozím příkladu se jímka používá jenom pro tři čítače: **Žádosti zařazené do fronty**, **Zamítnuté požadavky**a **% času procesoru**.  
 
-Následující příklad ukazuje, jak může vývojář omezit množství odesílaných dat bude důležité metriky, které se používají pro tuto službu stavu.  
+Následující příklad ukazuje, jak může vývojář omezit množství odeslaných dat na kritické metriky, které se používají pro stav této služby.  
 
 ```XML
 <Logs scheduledTransferPeriod="PT1M" sinks="HotPath" scheduledTransferLogLevelFilter="Error" />
@@ -199,32 +199,32 @@ Následující příklad ukazuje, jak může vývojář omezit množství odesí
 }
 ```
 
-Jímka v tomto příkladu se použije pro protokoly a filtrovat jenom pro úroveň trasování chyba.
+V tomto příkladu se jímka aplikuje na protokoly a je filtrovaná jenom na trasování úrovně chyby.
 
-## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Nasazení a aktualizace konfigurace aplikace a Diagnostika cloudových služeb
-Visual Studio nabízí nejsnadnější způsob, jak nasadit aplikace a služby Event Hubs jímky konfigurace. Chcete-li zobrazit a upravit soubor, otevřete *.wadcfgx* souboru v sadě Visual Studio, upravte ho a uložte ho. Cesta je **projekt cloudové služby** > **role** >  **(RoleName)**  > **diagnostics.wadcfgx**.  
+## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Nasazení a aktualizace Cloud Services aplikace a konfigurace diagnostiky
+Visual Studio poskytuje nejjednodušší cestu k nasazení aplikace a konfigurace jímky Event Hubs. Pokud chcete soubor zobrazit a upravit, otevřete soubor *. wadcfgx* v aplikaci Visual Studio, upravte ho a uložte. Cesta jsou > **role** >  **** projektu > cloudové služby **(roleName)** Diagnostics. wadcfgx.  
 
-V tomto okamžiku všechny nasazení a nasazení aktualizací akcí ve Visual Studio, Visual Studio Team System a všechny příkazy nebo skripty, které jsou založené na MSBuild a použití **/t: publikování** zahrnout cíl *.wadcfgx* v procesu vytváření balíčků. Kromě toho nasazení a aktualizace nasazení souboru do Azure pomocí příslušné rozšíření agenta diagnostiky Azure na virtuálních počítačích.
+V tomto okamžiku všechny akce nasazení a nasazení v aplikaci Visual Studio, Visual Studio Team System a všechny příkazy nebo skripty, které jsou založené na MSBuild a používají **parametr/t: publikovat** , zahrnují v procesu balení soubor *. wadcfgx* . Nasazení a aktualizace navíc nasadí soubor do Azure pomocí vhodného rozšíření agenta Azure Diagnostics na vašich virtuálních počítačích.
 
-Po nasazení aplikace a konfigurace diagnostiky Azure, okamžitě uvidíte aktivity na řídicím panelu Centra událostí. To znamená, že jste připraveni přejít k zobrazení dat horká cesta v naslouchací proces klienta nebo analýzy nástroje podle vašeho výběru.  
+Po nasazení aplikace a konfigurace Azure Diagnostics se na řídicím panelu centra událostí okamžitě zobrazí aktivita. To znamená, že jste připraveni přejít k zobrazení dat pro cestu k Hot-PATH v nástroji pro naslouchání nebo pro analýzu podle vašeho výběru.  
 
-Na následujícím obrázku zobrazuje řídicí panel služby Event Hubs v dobrém stavu odesílání diagnostická data do centra událostí spuštění nějakou dobu po 23: 00. Právě to byla aplikace nasazená s aktualizovanou *.wadcfgx* byl správně nakonfigurován soubor a jímky.
+Na následujícím obrázku Event Hubs řídicí panel zobrazovat v pořádku odesílání diagnostických dat do centra událostí, a to od času po 11./odp. To je v případě, že aplikace byla nasazena s aktualizovaným souborem *. wadcfgx* a jímka byla správně nakonfigurována.
 
 ![][0]  
 
 > [!NOTE]
-> Když provádíte aktualizace do konfiguračního souboru Azure Diagnostics (.wadcfgx), se doporučuje nahrání aktualizace do celé aplikace, jakož i konfigurace s použitím sady Visual Studio publikování nebo skriptu prostředí Windows PowerShell.  
+> Když provedete aktualizace konfiguračního souboru Azure Diagnostics (. wadcfgx), doporučujeme, abyste tyto aktualizace navložili do celé aplikace i do konfigurace pomocí publikování sady Visual Studio nebo skriptu prostředí Windows PowerShell.  
 >
 >
 
-## <a name="view-hot-path-data"></a>Data zobrazení horké cesty
-Jak je popsáno výše, existuje mnoho případy použití pro příjem a zpracování dat služby Event Hubs.
+## <a name="view-hot-path-data"></a>Zobrazení dat za horkou cestu
+Jak bylo popsáno dříve, existuje mnoho případů použití pro příjem a zpracování dat Event Hubs.
 
-Jeden jednoduchý přístupem je vytvoření konzolové aplikace malý test naslouchat službě eventhub a tisknout do výstupního datového proudu. Můžete provádět následující kód, který je podrobněji vysvětleno [Začínáme se službou Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)), v konzolové aplikaci.  
+Jedním jednoduchým přístupem je vytvořit malou testovací konzolovou aplikaci, která bude naslouchat centru událostí a tisknout výstupní datový proud. Můžete umístit následující kód, který je podrobněji vysvětlen v tématu [Začínáme s Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)), v konzolové aplikaci.  
 
-Všimněte si, že musí obsahovat konzolovou aplikaci [balíček NuGet hostitel procesoru událostí](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
+Všimněte si, že Konzolová aplikace musí zahrnovat [balíček NuGet pro procesor událostí](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
 
-Nezapomeňte nahradit hodnoty v lomených závorkách v **hlavní** funkce s hodnotami pro vaše prostředky.   
+Nezapomeňte nahradit hodnoty v lomených závorkách **Hlavní** funkce hodnotami vašich prostředků.   
 
 ```csharp
 //Console application code for EventHub test client
@@ -307,21 +307,21 @@ namespace EventHubListener
 }
 ```
 
-## <a name="troubleshoot-event-hubs-sinks"></a>Řešení potíží s Event Hubs jímky
-* Centrum událostí se nezobrazují příchozí nebo odchozí událost činnost dle očekávání.
+## <a name="troubleshoot-event-hubs-sinks"></a>Řešení potíží s Event Hubsmi jímkami
+* Centrum událostí nezobrazuje příchozí nebo odchozí aktivitu události podle očekávání.
 
-    Zkontrolujte, že je vaše Centrum událostí úspěšně zřízený. Všechny informace o připojení v **PrivateConfig** část *.wadcfgx* musí odpovídat hodnotám prostředku, jak je vidět na portálu. Ujistěte se, že máte SAS zásady definované ("SendRule" v příkladu) na portálu a který *odeslat* je povolení uděleno.  
-* Po aktualizaci centra událostí už nebude zobrazovat aktivity události příchozí nebo odchozí.
+    Ověřte, že se vaše centrum událostí úspěšně zřídilo. Všechny informace o připojení v oddílu **PrivateConfig** v souboru *. wadcfgx* se musí shodovat s hodnotami prostředku, jak je vidět na portálu. Ujistěte se, že máte definované zásady SAS (v příkladu "SendRule") na portálu a že je udělené oprávnění *Odeslat* .  
+* Po aktualizaci přestane centrum událostí zobrazovat příchozí nebo odchozí aktivitu události.
 
-    Nejprve se ujistěte, že události rozbočovače a konfigurační informace, které je správný, jak bylo popsáno dříve. Někdy **PrivateConfig** obnovit v nasazení aktualizace. Doporučené opravy je, aby všechny změny *.wadcfgx* v projektu a nabízených oznámení aplikace dokončena a aktualizace. Pokud to není možné, ujistěte se, že aktualizace diagnostiky nabízených oznámení dokončení **PrivateConfig** , který obsahuje klíč SAS.  
-* Byl proveden o návrhy a centra událostí není funkční.
+    Nejdřív se ujistěte, že je centrum událostí a informace o konfiguraci správné, jak je vysvětleno výše. V některých případech se **PrivateConfig** resetuje v aktualizaci nasazení. Doporučenou opravou je udělat v projektu všechny změny v *. wadcfgx* a pak odeslat úplnou aktualizaci aplikace. Pokud to není možné, ujistěte se, že aktualizace diagnostiky nahraje úplný **PrivateConfig** , který obsahuje klíč SAS.  
+* Vyzkoušel jsem návrhy a centrum událostí stále nepracuje.
 
-    Zkuste se podívat v tabulce Azure Storage, který obsahuje chyby a protokolování Azure Diagnostics, vlastní: **WADDiagnosticInfrastructureLogsTable**. Jednou z možností je použít nástroj, jako například [Průzkumníka služby Azure Storage](https://www.storageexplorer.com) pro připojení k tomuto účtu úložiště, zobrazit tuto tabulku a přidat dotaz pro časové razítko za posledních 24 hodin. Nástroj můžete exportovat soubor CSV a otevřít ji v aplikaci jako je třeba aplikace Microsoft Excel. Excelu umožňuje snadno hledat řetězce volání karty, jako například **EventHubs**, abyste si zobrazili, jaká chyba se nahlásí.  
+    Zkuste hledat v tabulce Azure Storage, která obsahuje protokoly a chyby pro Azure Diagnostics sebe sama: **WADDiagnosticInfrastructureLogsTable**. Jednou z možností je použít pro připojení k tomuto účtu úložiště nástroj, například [Průzkumník služby Azure Storage](https://www.storageexplorer.com) , zobrazit tuto tabulku a přidat dotaz pro časové razítko za posledních 24 hodin. Pomocí tohoto nástroje můžete exportovat soubor. csv a otevřít ho v aplikaci, jako je Microsoft Excel. Aplikace Excel usnadňuje hledání řetězců volacích karet, jako je například **EventHubs**, k zobrazení informace o tom, jaká chyba je hlášena.  
 
 ## <a name="next-steps"></a>Další postup
-• [Další informace o službě Event Hubs](https://azure.microsoft.com/services/event-hubs/)
+• Další [informace o Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 
-## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Dodatek: Kompletní příklad souboru (.wadcfgx) konfigurace diagnostiky Azure
+## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Obsažen Úplný příklad souboru konfigurace Azure Diagnostics (. wadcfgx)
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <DiagnosticsConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -375,7 +375,7 @@ namespace EventHubListener
 </DiagnosticsConfiguration>
 ```
 
-Doplňková *ServiceConfiguration.Cloud.cscfg* pro tento příklad bude vypadat jako následující.
+Doplňkový *ServiceConfiguration. Cloud. cscfg* pro tento příklad vypadá podobně jako následující.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -389,9 +389,9 @@ Doplňková *ServiceConfiguration.Cloud.cscfg* pro tento příklad bude vypadat 
 </ServiceConfiguration>
 ```
 
-Je ekvivalentní nastavení JSON pro virtuální počítače takto:
+Ekvivalentní nastavení JSON pro virtuální počítače je následující:
 
-Nastavení veřejné:
+Veřejné nastavení:
 ```JSON
 {
     "WadCfg": {
@@ -491,7 +491,7 @@ Nastavení veřejné:
 
 ```
 
-Chráněná nastavení pro:
+Chráněná nastavení:
 ```JSON
 {
     "storageAccountName": "{account name}",
@@ -505,7 +505,7 @@ Chráněná nastavení pro:
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
 * [Přehled služby Event Hubs](../../event-hubs/event-hubs-about.md)

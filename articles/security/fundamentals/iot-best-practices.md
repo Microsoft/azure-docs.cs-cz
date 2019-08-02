@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 2d5598c5-4c30-481d-b8f4-51ee024ea9a7
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: eb84bce28266445861be76e900f9a749b20d482a
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 14f1905b1acd60acdf7b3dad0686e3fa34629953
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68612987"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727061"
 ---
 # <a name="internet-of-things-security-best-practices"></a>Osvědčené postupy zabezpečení Internet věcí
 
@@ -42,7 +43,7 @@ Pokud jste výrobcem hardwaru IoT nebo hardwarového integrátoru, postupujte po
 
 * **Rozsah hardwaru na minimální požadavky**: návrh hardwaru by měl zahrnovat minimální funkce vyžadované pro provoz hardwaru a nic dalšího. 
 * **Kontrola manipulace**s hardwarem: sestavení v mechanismech pro detekci fyzické manipulace s hardwarem, jako je například otevření krytého zařízení, odebrání části zařízení atd. 
-* Sestavování s zabezpečeným hardwarem [: Pokud je](https://en.wikipedia.org/wiki/Cost_of_goods_sold) to povoleno, Sestavujte bezpečnostní funkce, jako je zabezpečené a šifrované úložiště a spouštěcí funkce založené na čipu TPM (Trusted Platform Module).
+* Sestavování s zabezpečeným [](https://en.wikipedia.org/wiki/Cost_of_goods_sold) **hardwarem**: Pokud je to povoleno, Sestavujte bezpečnostní funkce, jako je zabezpečené a šifrované úložiště a spouštěcí funkce založené na čipu TPM (Trusted Platform Module).
 * **Zabezpečený upgrade**: upgrade firmwaru během životnosti zařízení je nevyhnutelný.
 
 ## <a name="iot-solution-developer"></a>Vývojář řešení IoT

@@ -1,30 +1,30 @@
 ---
-title: Popisovač duplicitních dat v Průzkumníku dat Azure
-description: Toto téma vám ukáže, různé přístupy k řešení duplicitních dat při použití Průzkumníku dat Azure.
+title: Zpracování duplicitních dat v Azure Průzkumník dat
+description: V tomto tématu se dozvíte o různých přístupech k práci s duplicitními daty při použití Azure Průzkumník dat.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 60ec2b86e0205060f907f1fe39d084dca3aac1cd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445766"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608231"
 ---
-# <a name="handle-duplicate-data-in-azure-data-explorer"></a>Popisovač duplicitních dat v Průzkumníku dat Azure
+# <a name="handle-duplicate-data-in-azure-data-explorer"></a>Zpracování duplicitních dat v Azure Průzkumník dat
 
-Zařízení, odesílání dat do cloudu zachovat data v místní mezipaměti. V závislosti na velikosti dat v místní mezipaměti může ukládat data pro dny nebo dokonce měsíce. Chcete chránit vaše analytické databáze z nefunkční zařízení, která znovu odeslat data uložená v mezipaměti a způsobit, že duplicitních dat. analytické databáze. Toto téma popisuje doporučené postupy pro zpracování duplicitních dat pro tyto druhy scénářů.
+Zařízení odesílající data do cloudu udržují místní mezipaměť dat. V závislosti na velikosti dat můžou místní mezipaměť ukládat data pro dny nebo dokonce měsíce. Chcete chránit vaše analytické databáze před nefunkčními zařízeními, která znovu odesílají data z mezipaměti a způsobují duplicity dat v analytické databázi. Toto téma popisuje osvědčené postupy pro zpracování duplicitních dat pro tyto typy scénářů.
 
-Nejlepší řešení pro duplicity dat brání duplicity. Pokud je to možné tento problém vyřešit, dříve v kanálu dat, která šetří náklady spojené s přesuny dat podél datového kanálu a zabraňuje zbavuje prostředky zvládnutí duplicitních dat přijatých do systému. Ale v situacích, kdy nelze upravit zdrojový systém, existují různé způsoby, jak řešit tento scénář.
+Nejlepší řešení pro duplikaci dat znemožňuje duplikaci. Pokud je to možné, vyřešte problém dříve v datovém kanálu, který šetří náklady spojené s pohybem dat v datovém kanálu, a vyhnete se tak útratě prostředků v kopírování s duplicitními daty, která se do systému ingestují. V situacích, kdy se zdrojový systém nedá upravit, existují různé způsoby, jak s tímto scénářem pracovat.
 
-## <a name="understand-the-impact-of-duplicate-data"></a>Na vědomí následky duplicitních dat.
+## <a name="understand-the-impact-of-duplicate-data"></a>Pochopení dopadu duplicitních dat
 
-Monitorování procentuální podíl duplicitní data. Ihned po zjištění procento duplicitní data můžete analyzovat oboru problém a obchodní dopad na chod firmy a výběr vhodné řešení.
+Monitoruje procento duplicitních dat. Po zjištění procentuální hodnoty duplicitních dat můžete analyzovat rozsah problému a dopad na firmu a vybrat vhodné řešení.
 
-Ukázkový dotaz k identifikaci procento duplicitní záznamy:
+Vzorový dotaz pro identifikaci procenta duplicitních záznamů:
 
 ```kusto
 let _sample = 0.01; // 1% sampling
@@ -39,17 +39,17 @@ _data
 | extend duplicate_percentage = (duplicateRecords / _sample) / _totalRecords  
 ```
 
-## <a name="solutions-for-handling-duplicate-data"></a>Řešení pro zpracování duplicitních dat.
+## <a name="solutions-for-handling-duplicate-data"></a>Řešení pro zpracování duplicitních dat
 
-### <a name="solution-1-dont-remove-duplicate-data"></a>Řešení #1: Neodebírat duplicitních dat.
+### <a name="solution-1-dont-remove-duplicate-data"></a>#1 řešení: Neodstraňovat duplicitní data
 
-Pochopení vašich obchodních požadavků a odolnost duplicitních dat. Některé datové sady můžete spravovat společně procento duplicitní data. Pokud duplicitní data nemá významný vliv, můžete ignorovat jeho přítomnost. Výhodou není odstranění duplicitních dat je spojena žádná další režie na příjem výkon procesu nebo dotazu.
+Pochopení podnikových požadavků a tolerance duplicitních dat. Některé datové sady mohou spravovat s určitou procentuální hodnotou duplicitních dat. Pokud duplicitní data nemají významný dopad, můžete tuto přítomnost ignorovat. Výhodou neodebrání duplicitních dat není žádná další režie na proces příjmu nebo výkon dotazů.
 
-### <a name="solution-2-handle-duplicate-rows-during-query"></a>Řešení #2: Popisovač duplicitních řádků během zpracování dotazu
+### <a name="solution-2-handle-duplicate-rows-during-query"></a>#2 řešení: Zpracování duplicitních řádků během dotazu
 
-Další možností je vyfiltrovat všechny duplicitní řádky v datech během zpracování dotazu. [ `arg_max()` ](/azure/kusto/query/arg-max-aggfunction) Agregované funkci lze použít k filtrování duplicitních záznamů a vrátí poslední záznam na základě časového razítka (nebo jiný sloupec). Výhodou této metody je rychlejšího příjmu, protože duplicit spadá čas dotazu. Kromě toho jsou k dispozici pro auditování a řešení potíží s všechny záznamy (včetně duplikáty). Nevýhodou použití `arg_max` funkce je zatížení procesoru a čas dalšího dotazu pokaždé, když se dotazuje data. V závislosti na množství dat, která je dotazována toto řešení může být nefunkční nebo využívání paměti a bude vyžadovat přepínání na další možnosti.
+Další možností je vyfiltrovat duplicitní řádky v datech během dotazu. [`arg_max()`](/azure/kusto/query/arg-max-aggfunction) Agregovaná funkce se dá použít k vyfiltrování duplicitních záznamů a vrácení posledního záznamu na základě časového razítka (nebo jiného sloupce). Výhodou použití této metody je rychlejší příjem dat, protože během doby dotazu dojde ke zrušení duplicity. Kromě toho jsou k dispozici všechny záznamy (včetně duplicitních) pro účely auditování a řešení potíží. Nevýhodou použití `arg_max` funkce je další doba dotazování a zatížení procesoru pokaždé, když se data dotazují. V závislosti na objemu dat, která se dotazují, může být toto řešení nefunkční nebo náročné na paměť a bude vyžadovat přepnutí na jiné možnosti.
 
-V následujícím příkladu zadáme dotaz na poslední záznam přijatých pro sadu sloupců, které určují jedinečné záznamy:
+V následujícím příkladu se dotazuje na poslední záznam, který se ingestuje pro sadu sloupců, které určují jedinečné záznamy:
 
 ```kusto
 DeviceEventsAll
@@ -57,7 +57,7 @@ DeviceEventsAll
 | summarize hint.strategy=shuffle arg_max(EventDateTime, *) by DeviceId, EventId, StationId
 ```
 
-Tento dotaz lze také umístit uvnitř funkce namísto přímého dotazování v tabulce:
+Tento dotaz lze také umístit do funkce místo přímého dotazování na tabulku:
 
 ```kusto
 .create function DeviceEventsView
@@ -68,19 +68,19 @@ DeviceEventsAll
 }
 ```
 
-### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>Řešení #3: Duplicitní filtr během příjmu
+### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>#3 řešení: Filtrovat duplicity během procesu přijímání
 
-Druhým řešením je filtrovat duplicity během příjmu. Systém ignoruje duplicitních dat při ingestování do tabulek Kusto. Data se ingestují do pracovní tabulky a zkopírovány do jiné tabulky po odebrání duplicitních řádků. Výhodou tohoto řešení je výrazně zvyšuje výkon dotazů srovnání s předchozím řešením. Nevýhody zahrnují zvýšení ingestování čas a náklady na úložiště další data.
+Dalším řešením je filtrovat duplicity během procesu přijímání. Systém ignoruje duplicitní data během přijímání do tabulek Kusto. Data se ingestují do pracovní tabulky a po odebrání duplicitních řádků se zkopírují do jiné tabulky. Výhodou tohoto řešení je, že výkon dotazů se výrazně zvyšuje ve srovnání s předchozím řešením. Nevýhody zahrnují zvýšenou dobu přijímání a další náklady na úložiště dat. Další toto řešení funguje jenom v případě, že duplikace nejsou souběžně ingestovaná. Pokud existuje více souběžných přijímání, které obsahují duplicitní záznamy, mohou být všechny z nich ingestované, protože proces odstranění duplicitních dat nenalezne žádné záznamy v tabulce, které by odpovídaly.    
 
 Následující příklad znázorňuje tuto metodu:
 
-1. Vytvoření další tabulky pomocí stejné schéma:
+1. Vytvořte další tabulku se stejným schématem:
 
     ```kusto
     .create table DeviceEventsUnique (EventDateTime: datetime, DeviceId: int, EventId: int, StationId: int)
     ```
 
-1. Vytvoření funkce k filtrování duplicitních záznamů pomocí proti spojovacího nové záznamy, přičemž dříve přijaté.
+1. Vytvořte funkci pro odfiltrování duplicitních záznamů tím, že se spojí nové záznamy s dříve ingesty.
 
     ```kusto
     .create function RemoveDuplicateDeviceEvents()
@@ -97,9 +97,9 @@ Následující příklad znázorňuje tuto metodu:
     ```
 
     > [!NOTE]
-    > Spojení operace vázané na procesor a přidat další zátěž na systém.
+    > Spojení jsou operace vázané na procesor a v systému se dodávají další zatížení.
 
-1. Nastavte [zásady aktualizace](/azure/kusto/management/update-policy) na `DeviceEventsUnique` tabulky. Aktualizace zásada se aktivuje, když nová data přesunou do `DeviceEventsAll` tabulky. Modul Kusto se automaticky spustí funkci jako nové [rozsahy](/azure/kusto/management/extents-overview) jsou vytvořeny. Zpracování je vymezen na nově vytvořený data. Následující příkaz spojí zdrojová tabulka (`DeviceEventsAll`), cílové tabulky (`DeviceEventsUnique`) a funkce `RemoveDuplicatesDeviceEvents` dohromady a vytvoří zásadu aktualizace.
+1. Nastavte [zásady aktualizace](/azure/kusto/management/update-policy) pro `DeviceEventsUnique` tabulku. Zásady aktualizace se aktivují, když se do `DeviceEventsAll` tabulky přecházejí nová data. Modul Kusto bude tuto funkci automaticky spouštět, protože se [](/azure/kusto/management/extents-overview) vytvoří nové rozsahy. Zpracování je vymezeno na nově vytvořená data. Následující příkaz spojí zdrojovou tabulku (`DeviceEventsAll`), cílovou tabulku (`DeviceEventsUnique`) a funkci `RemoveDuplicatesDeviceEvents` dohromady a vytvoří zásadu aktualizace.
 
     ```kusto
     .alter table DeviceEventsUnique policy update
@@ -107,9 +107,9 @@ Následující příklad znázorňuje tuto metodu:
     ```
 
     > [!NOTE]
-    > Zásady aktualizace rozšiřuje trvání ingestování, protože data jsou filtrovány během příjmu a pak přijatých dvakrát (na `DeviceEventsAll` tabulky a `DeviceEventsUnique` tabulky).
+    > Zásada aktualizace rozšiřuje dobu trvání příjmu, protože data se filtrují během ingestování a pak se pokaždé ingestují `DeviceEventsAll` dvakrát (do tabulky `DeviceEventsUnique` a do tabulky).
 
-1. (Volitelné) Nastavit na nižší uchovávání dat `DeviceEventsAll` tabulka, která se vyhněte se ukládání kopie dat. Zvolte počet dní v závislosti na objemu dat a dobu, kterou chcete uchovat data pro řešení potíží. Můžete nastavit na `0d` dnů uchovávání dat pro uložení COGS a zvýšit výkon, protože se data nahrají do úložiště.
+1. Volitelné Nastavte menší dobu uchovávání dat v `DeviceEventsAll` tabulce, aby nedocházelo k ukládání kopií dat. Vyberte počet dnů v závislosti na objemu dat a dobu, po kterou chcete uchovávat data pro řešení potíží. Můžete ho nastavit na `0d` dny uchovávání za účelem úspory nákladů a zvýšení výkonu, protože data nejsou nahrána do úložiště.
 
     ```kusto
     .alter-merge table DeviceEventsAll policy retention softdelete = 1d
@@ -117,7 +117,7 @@ Následující příklad znázorňuje tuto metodu:
 
 ## <a name="summary"></a>Souhrn
 
-Duplikace dat mohou být zpracovány v několika způsoby. Zhodnotit možnosti pečlivě, s ohledem na účet cenou a výkonem, určit správnou metodu pro vaši firmu.
+Duplikaci dat lze zpracovat několika způsoby. Pečlivě vyhodnoťte možnosti a vezměte v úvahu cenu a výkon a určete tak správnou metodu pro vaši firmu.
 
 ## <a name="next-steps"></a>Další postup
 

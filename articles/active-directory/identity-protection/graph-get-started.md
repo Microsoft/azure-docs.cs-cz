@@ -1,194 +1,167 @@
 ---
-title: Microsoft Graph pro Azure Active Directory Identity Protection | Dokumentace Microsoftu
-description: Zjistěte, jak provádět dotazy Microsoft Graphu seznam rizikových událostech a přidružené informace ze služby Azure Active Directory.
+title: Microsoft Graph pro Azure Active Directory Identity Protection | Microsoft Docs
+description: Naučte se, jak zadat dotaz na Microsoft Graph seznam rizikových událostí a přidružených informací z Azure Active Directory.
 services: active-directory
-keywords: Azure active directory identity protection, rizikovou událost, ohrožení zabezpečení, zásady zabezpečení, Microsoft Graphu
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: fa109ba7-a914-437b-821d-2bd98e681386
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 01/25/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
-ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3357cfd5e845346534f263c768b5cf6b6a38ea4e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f939811bec312baa1f4c37f0f915d2e881121af
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60296201"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334076"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 
-Microsoft Graph je Microsoft unified koncový bod rozhraní API a Domovská [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) rozhraní API. Existují tři rozhraní API, které poskytují informace o rizikových uživatelů a přihlášení. Prvního rozhraní API, **identityRiskEvents**, umožňuje dotazů Microsoft Graphu seznam [rizikových událostí](../reports-monitoring/concept-risk-events.md) a související informace. Druhé rozhraní API, **riskyUsers**, informace o uživatelích Identity Protection zjistilo, že rizik vám umožní dotazů Microsoft Graphu. Rozhraní API třetí **signIn**, umožňuje dotazů Microsoft Graphu informace o službě Azure AD přihlášení mají určité vlastnosti související s stav rizika, podrobnosti a úroveň. Tento článek vám pomůže začít s připojením k Microsoft Graphu a dotazování na tato rozhraní API. Důkladný úvod, úplnou dokumentaci a přístup ke Graph Exploreru, najdete v článku [webu Microsoft Graphu](https://graph.microsoft.io/) nebo konkrétní referenční dokumentaci pro tato rozhraní API:
+Microsoft Graph je koncový bod rozhraní Microsoft Unified API a jeho Domovská stránka rozhraní API pro [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) . Existují tři rozhraní API, která zveřejňují informace o rizikových uživatelích a přihlášeních. První rozhraní API, **identityRiskEvents**, umožňuje dotazovat se na Microsoft Graph seznam rizikových [událostí](../reports-monitoring/concept-risk-events.md) a přidružených informací. Druhé rozhraní API, **riskyUsers**, vám umožní dotazovat se na Microsoft Graph informace o ochraně identity uživatelů zjištěné jako rizika. Třetí rozhraní API vám umožní dotazovat se na Microsoft Graph pro informace o přihlášeních k Azure AD s konkrétními vlastnostmi, které se týkají stavu rizika, podrobností a úrovně. Tento článek vám pomůže začít s připojením k Microsoft Graph a dotazování na tato rozhraní API. Podrobné informace o tom, úplnou dokumentaci a přístup k Průzkumníku graphu, najdete na [webu Microsoft Graph](https://graph.microsoft.io/) nebo v konkrétní referenční dokumentaci pro tato rozhraní API:
 
-* [identityRiskEvents rozhraní API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
-* [riskyUsers rozhraní API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
-* [signIn rozhraní API](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
+* [rozhraní API pro identityRiskEvents](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
+* [rozhraní API pro riskyUsers](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
+* [Přihlášení k rozhraní API](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
 
+## <a name="connect-to-microsoft-graph"></a>Připojit k Microsoft graphu
 
-## <a name="connect-to-microsoft-graph"></a>Připojte se k Microsoft graphu
+Existují čtyři kroky pro přístup k datům Identity Protection prostřednictvím Microsoft Graph:
 
-Přístup k Identity Protection datům prostřednictvím Microsoft Graphu čtyři kroky:
-
-1. Načtení názvu domény.
-2. Vytvoření registrace nové aplikace. 
-3. Tento tajný kód a pár dalších informací použijte k ověření u Microsoft Graphu, kam budete dostávat ověřovací token. 
-4. Pomocí tohoto tokenu Zkontrolujte požadavky na koncový bod rozhraní API a získat zpět data Identity Protection.
+1. Načtěte název domény.
+2. Vytvořte novou registraci aplikace. 
+3. Pomocí tohoto tajného klíče a několika dalších informací můžete ověřit Microsoft Graph, kde obdržíte ověřovací token. 
+4. Pomocí tohoto tokenu můžete vytvářet požadavky na koncový bod rozhraní API a znovu získat data o ochraně identit.
 
 Než začnete, budete potřebovat:
 
 * Oprávnění správce k vytvoření aplikace ve službě Azure AD
-* Název domény vašeho tenanta (například contoso.onmicrosoft.com).
+* Název domény tenanta (například contoso.onmicrosoft.com)
 
+## <a name="retrieve-your-domain-name"></a>Načíst název domény 
 
-## <a name="retrieve-your-domain-name"></a>Načtení názvu domény 
+1. [](https://portal.azure.com) Přihlaste se k vašemu Azure Portal jako správce. 
+1. V levém navigačním podokně klikněte na **Active Directory**. 
 
-1. [Přihlaste se](https://portal.azure.com) na webu Azure portal jako správce. 
+   ![Vytvoření aplikace](./media/graph-get-started/41.png)
 
-2. V levém navigačním podokně klikněte na tlačítko **služby Active Directory**. 
-   
-    ![Vytvoření aplikace](./media/graph-get-started/41.png)
+1. V části **Spravovat** klikněte na **vlastnosti**.
 
+   ![Vytvoření aplikace](./media/graph-get-started/42.png)
 
-3. V **spravovat** klikněte na tlačítko **vlastnosti**.
-
-    ![Vytvoření aplikace](./media/graph-get-started/42.png)
-
-4. Zkopírujte název vaší domény.
-
+1. Zkopírujte název domény.
 
 ## <a name="create-a-new-app-registration"></a>Vytvoření registrace nové aplikace
 
-1. Na **služby Active Directory** stránku, **spravovat** klikněte na tlačítko **registrace aplikací**.
+1. Na stránce **Active Directory** klikněte v části **Spravovat** na **Registrace aplikací**.
 
-    ![Vytvoření aplikace](./media/graph-get-started/42.png)
+   ![Vytvoření aplikace](./media/graph-get-started/42.png)
 
+1. V nabídce v horní části klikněte na **Registrace nové aplikace**.
 
-2. V nabídce v horní části klikněte na tlačítko **registrace nové aplikace**.
-   
-    ![Vytvoření aplikace](./media/graph-get-started/43.png)
+   ![Vytvoření aplikace](./media/graph-get-started/43.png)
 
-3. Na **vytvořit** stránce, proveďte následující kroky:
-   
-    ![Vytvoření aplikace](./media/graph-get-started/44.png)
+1. Na stránce **vytvořit** proveďte následující kroky:
 
-    a. V **název** textového pole zadejte název pro vaši aplikaci (například: AADIP rizikové události rozhraní API aplikace).
-   
-    b. Jako **typ**vyberte **webové aplikace a / nebo webové rozhraní API**.
-   
-    c. V **přihlašovací adresa URL** textové pole, typ `http://localhost`.
+   ![Vytvoření aplikace](./media/graph-get-started/44.png)
 
-    d. Klikněte na možnost **Vytvořit**.
+   1. Do textového pole **název** zadejte název vaší aplikace (například: AADIP riziková událost pro aplikace API.
 
-4. Chcete-li otevřít **nastavení** stránky, v seznamu aplikací, klikněte na nově vytvořenou aplikaci registrace. 
+   1. Jako **typ**vyberte **Webová aplikace nebo webové rozhraní API**.
 
-5. Kopírovat **ID aplikace**.
+   1. Do textového pole **přihlašovací adresa URL** zadejte `http://localhost`.
 
+   1. Klikněte na možnost **Vytvořit**.
+1. Stránku **Nastavení** otevřete tak, že v seznamu aplikace kliknete na nově vytvořenou registraci aplikace. 
+1. Zkopírujte **ID aplikace**.
 
-## <a name="grant-your-application-permission-to-use-the-api"></a>Udělení oprávnění k vaší aplikaci k používání rozhraní API
+## <a name="grant-your-application-permission-to-use-the-api"></a>Udělit aplikaci oprávnění používat rozhraní API
 
-1. Na **nastavení** klikněte na **požadovaná oprávnění**.
-   
-    ![Vytvoření aplikace](./media/graph-get-started/15.png)
+1. Na stránce **Nastavení** klikněte na **požadovaná oprávnění**.
 
-2. Na **požadovaná oprávnění** klikněte na stránku, na panelu nástrojů v horní části **přidat**.
-   
-    ![Vytvoření aplikace](./media/graph-get-started/16.png)
-   
-3. Na **přístup přes rozhraní API přidat** klikněte na **vyberte rozhraní API**.
-   
-    ![Vytvoření aplikace](./media/graph-get-started/17.png)
+   ![Vytvoření aplikace](./media/graph-get-started/15.png)
 
-4. Na **vyberte rozhraní API** stránce **Microsoft Graphu**a potom klikněte na tlačítko **vyberte**.
-   
-    ![Vytvoření aplikace](./media/graph-get-started/18.png)
+1. Na stránce **požadovaná oprávnění** klikněte na panelu nástrojů v horní části na **Přidat**.
 
-5. Na **přístup přes rozhraní API přidat** klikněte na **vyberte oprávnění**.
-   
-    ![Vytvoření aplikace](./media/graph-get-started/19.png)
+   ![Vytvoření aplikace](./media/graph-get-started/16.png)
 
-6. Na **povolit přístup z** klikněte na **přečíst všechny informace o identitě riziko**a potom klikněte na tlačítko **vyberte**.
-   
-    ![Vytvoření aplikace](./media/graph-get-started/20.png)
+1. Na stránce **Přidat přístup přes rozhraní API** klikněte na **Vybrat rozhraní API**.
 
-7. Na **přístup přes rozhraní API přidat** klikněte na **provádí**.
-   
-    ![Vytvoření aplikace](./media/graph-get-started/21.png)
+   ![Vytvoření aplikace](./media/graph-get-started/17.png)
 
-8. Na **požadovaná oprávnění** klikněte na **udělit oprávnění**a potom klikněte na tlačítko **Ano**.
-   
-    ![Vytvoření aplikace](./media/graph-get-started/22.png)
+1. Na stránce **Vyberte rozhraní API** vyberte **Microsoft Graph**a pak klikněte na **Vybrat**.
 
+   ![Vytvoření aplikace](./media/graph-get-started/18.png)
 
+1. Na stránce **Přidat přístup přes rozhraní API** klikněte na **vybrat oprávnění**.
+
+   ![Vytvoření aplikace](./media/graph-get-started/19.png)
+
+1. Na stránce **Povolit přístup** klikněte na **číst všechny informace o rizikech identity**a pak klikněte na **Vybrat**.
+
+   ![Vytvoření aplikace](./media/graph-get-started/20.png)
+
+1. Na stránce **Přidat přístup přes rozhraní API** klikněte na Hotovo.
+
+   ![Vytvoření aplikace](./media/graph-get-started/21.png)
+
+1. Na stránce **požadovaná oprávnění** klikněte na **udělit oprávnění**a potom klikněte na **Ano**.
+
+   ![Vytvoření aplikace](./media/graph-get-started/22.png)
 
 ## <a name="get-an-access-key"></a>Získání přístupového klíče
 
-1. Na **nastavení** klikněte na **klíče**.
-   
-    ![Vytvoření aplikace](./media/graph-get-started/23.png)
+1. Na stránce **Nastavení** klikněte na **klíče**.
 
-2. Na **klíče** stránce, proveďte následující kroky:
-   
-    ![Vytvoření aplikace](./media/graph-get-started/24.png)
+   ![Vytvoření aplikace](./media/graph-get-started/23.png)
 
-    a. V **Popis klíče** textového pole zadejte popis (například *AADIP riziková událost*).
-    
-    b. Jako **doba trvání**vyberte **v 1 rok**.
+1. Na stránce **klíče** proveďte následující kroky:
 
-    c. Klikněte na **Uložit**.
-   
-    d. Hodnotu klíče si zkopírujte a vložte ho do bezpečného umístění.   
+   ![Vytvoření aplikace](./media/graph-get-started/24.png)
+
+   1. Do textového pole **Popis klíče** zadejte popis (například *AADIP riziková událost*).
+   1. Jako **dobu trvání**vyberte **v 1 roce**.
+   1. Klikněte na **Uložit**.
+   1. Zkopírujte hodnotu klíče a vložte ji do bezpečného umístění.   
    
    > [!NOTE]
-   > Pokud ztratíte tento klíč, budete muset vrátit do této části a vytvořte nový klíč. Zachovat tento klíč tajný klíč: každý, kdo to má přístup k vašim datům.
-   > 
+   > Pokud tento klíč ztratíte, budete se muset vrátit do této části a vytvořit nový klíč. Zachovat tento klíč jako tajný klíč: kdokoli, kdo má přístup k vašim datům.
    > 
 
-## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-events-api"></a>Ověření u Microsoft Graphu a dotazování do rozhraní API události rizika Identity
+## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-events-api"></a>Ověřování pro Microsoft Graph a dotazování rozhraní API pro události rizik identity identity
 
 V tomto okamžiku byste měli mít:
 
-- Název domény vašeho tenanta
-
+- Název domény tenanta
 - ID klienta 
-
 - Klíč 
 
+K ověření odešlete požadavek `https://login.microsoft.com` post s následujícími parametry v těle:
 
-Pokud chcete ověřit, odeslat požadavek post do `https://login.microsoft.com` s následujícími parametry v textu:
-
-- grant_type: “**client_credentials**”
-
--  prostředek: `https://graph.microsoft.com`
-
+- grant_type: "**client_credentials**"
+- partner`https://graph.microsoft.com`
 - client_id: \<ID klienta\>
+- client_secret: \<váš klíč\>
 
-- Hodnota client_secret: \<klíč\>
+V případě úspěchu tato akce vrátí ověřovací token.  
+Chcete-li volat rozhraní API, vytvořte hlavičku s následujícím parametrem:
 
+```
+`Authorization`=”<token_type> <access_token>"
+```
 
-Pokud je úspěšná, vrátí ověřovací token.  
-Pro volání rozhraní API, vytvořte hlavičku s následující parametr:
+Při ověřování můžete v vráceném tokenu najít typ tokenu a přístupový token.
 
-    `Authorization`=”<token_type> <access_token>"
+Poslat tuto hlavičku jako požadavek na následující adresu URL API:`https://graph.microsoft.com/beta/identityRiskEvents`
 
+Odpověď, pokud je úspěšná, je kolekce rizikových událostí identity a přidružených dat ve formátu OData JSON, který se dá analyzovat a zpracovat podle potřeby.
 
-Při ověřování, můžete najít typ tokenu a tokenu v vráceného tokenu.
+Tady je ukázkový kód pro ověřování a volání rozhraní API pomocí PowerShellu.  
+Stačí přidat ID klienta, tajný klíč a doménu tenanta.
 
-Odešlete tuto hlavičku jako požadavek na následující adresu URL rozhraní API: `https://graph.microsoft.com/beta/identityRiskEvents`
-
-Odpověď, a to v případě úspěchu je kolekce identity rizikové události a související data ve formátu OData JSON, který je možné analyzovat a zpracovat podle svých potřeb.
-
-Tady je ukázkový kód pro ověření a volání rozhraní API pomocí Powershellu.  
-Stačí přidáte doména tenanta, ID klienta a tajný klíč.
-
+```PowerShell
     $ClientID       = "<your client ID here>"        # Should be a ~36 hex character string; insert your info here
     $ClientSecret   = "<your client secret here>"    # Should be a ~44 character string; insert your info here
     $tenantdomain   = "<your tenant domain here>"    # For example, contoso.onmicrosoft.com
@@ -216,55 +189,46 @@ Stačí přidáte doména tenanta, ID klienta a tajný klíč.
     } else {
         Write-Host "ERROR: No Access Token"
     } 
+```
 
-## <a name="query-the-apis"></a>Dotaz rozhraní API
+## <a name="query-the-apis"></a>Dotazování rozhraní API
 
-Tyto tři API poskytují množství příležitostí k načtení informací o rizikových uživatelů a přihlášení ve vaší organizaci. Níže jsou uvedeny některé běžné případy použití pro tato rozhraní API a související ukázkové požadavky. Můžete spustit tyto dotazy pomocí ukázkového kódu nad nebo s použitím [Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer).
+Tato tři rozhraní API poskytují řadu příležitostí k načtení informací o rizikových uživatelích a přihlášeních ve vaší organizaci. Níže jsou uvedeny některé běžné případy použití pro tato rozhraní API a přidružené ukázkové požadavky. Tyto dotazy můžete spustit pomocí výše uvedeného ukázkového kódu nebo pomocí [Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer).
 
-### <a name="get-the-high-risk-and-medium-risk-events-identityriskevents-api"></a>Získat události (identityRiskEvents rozhraní API) s vysokým rizikem a středním rizikem
+### <a name="get-the-high-risk-and-medium-risk-events-identityriskevents-api"></a>Získání vysoce rizikových a středních rizikových událostí (identityRiskEvents API)
 
-Střední a rizikové události představují těch, které můžou mít možnost aktivační události přihlášení k Identity Protection nebo zásady rizik uživatelů. Protože mají střední nebo vysoká pravděpodobnost, že pokus o přihlášení uživatele není vlastníkem oprávněné identity, oprava tyto události by měla být prioritu. 
+Střední a vysoce rizikové události reprezentují ty, které mohou mít možnost aktivovat zásady přihlašování a rizik ochrany identity. Vzhledem k tomu, že mají střední nebo vysokou pravděpodobnost, že se uživatel pokouší přihlásit, není legitimní vlastník identity, oprava tyto události by měly být prioritní. 
 
 ```
 GET https://graph.microsoft.com/beta/identityRiskEvents?`$filter=riskLevel eq 'high' or riskLevel eq 'medium'" 
 ```
 
-### <a name="get-all-of-the-users-who-successfully-passed-an-mfa-challenge-triggered-by-risky-sign-ins-policy-riskyusers-api"></a>Získá všechny uživatele, kteří úspěšně prošli výzvu MFA aktivované zásady rizikových přihlášení (riskyUsers rozhraní API)
+### <a name="get-all-of-the-users-who-successfully-passed-an-mfa-challenge-triggered-by-risky-sign-ins-policy-riskyusers-api"></a>Získat všechny uživatele, kteří úspěšně prošli výzvou MFA aktivovanou zásadou pro rizikové přihlášení (riskyUsers API)
 
-Na vědomí následky Identity Protection, že zásady mají na vaši organizaci můžete dotazovat, všichni uživatelé, kteří úspěšně prošli výzvu MFA aktivované zásadu riziková přihlášení. Tyto informace můžou pomoct pochopit, které uživatelé Identity Protection může mít falešně zjistí na rizika a která oprávněným uživatelům může provádět akce, které AI považuje za riziková.
+Aby bylo možné pochopit vliv zásad na základě rizik ochrany identit identity na organizaci, můžete se dotazovat na všechny uživatele, kteří úspěšně prošli výzvou MFA aktivované zásadami rizikových přihlášení. Tyto informace vám můžou porozumět tomu, kteří uživatelé Identity Protection možná nepravdivě zjistili riziko a že legitimní uživatelé můžou provádět akce, které AI považuje za rizikové.
 
 ```
 GET https://graph.microsoft.com/beta/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
 ```
 
-### <a name="get-all-the-risky-sign-ins-for-a-specific-user-signin-api"></a>Získat všechny rizikových přihlášení pro konkrétního uživatele (signIn rozhraní API)
+### <a name="get-all-the-risky-sign-ins-for-a-specific-user-signin-api"></a>Získání všech rizikových přihlášení pro konkrétního uživatele (přihlášení k rozhraní API)
 
-Když budete přesvědčeni, že uživatel možná ohrožené, můžete lépe porozumět stavu svých rizika načítáním všech jejich rizikových přihlášení. 
+Pokud se domníváte, že došlo k ohrožení uživatele, můžete lépe pochopit stav jejich rizik tím, že načtete všechna jejich riziková přihlášení. 
 
 ```
 https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>' and riskState eq 'atRisk'
 ```
-
-
-
-
 ## <a name="next-steps"></a>Další postup
 
-Blahopřejeme, právě provedli první volání Microsoft graphu.  
-Teď můžete zadávat dotazy identity rizikové události a používat data, ale podle potřeby.
+Blahopřejeme, právě jste nastavili své první volání do Microsoft Graph!  
+Nyní se můžete dotazovat na rizikové události identity a používat data, která se ale budou zobrazovat.
 
+Další informace o Microsoft Graph a o tom, jak sestavovat aplikace pomocí Graph API, najdete v [dokumentaci](https://docs.microsoft.com/graph/overview) a mnohem víc na [webu Microsoft Graph](https://developer.microsoft.com/graph). 
 
-Další informace o tom, jak vytvářet aplikace využívající rozhraní Graph API a Microsoft Graph, podívejte se [dokumentaci](https://docs.microsoft.com/graph/overview) a mnohem více na [webu Microsoft Graphu](https://developer.microsoft.com/graph). 
+Související informace najdete v těchto tématech:
 
-
-Související informace naleznete v tématu:
-
--  [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-
--  [Typy rizikových událostí detekovaných službou Azure Active Directory Identity Protection](../reports-monitoring/concept-risk-events.md)
-
+- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Typy rizikových událostí zjištěných Azure Active Directory Identity Protection](../reports-monitoring/concept-risk-events.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
-
 - [Přehled Microsoft Graphu](https://developer.microsoft.com/graph/docs)
-
-- [Azure AD Identity Protection Service Root](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)
+- [Kořenová služba Azure AD Identity Protection](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)

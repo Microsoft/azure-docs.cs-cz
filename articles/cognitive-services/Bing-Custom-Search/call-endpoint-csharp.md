@@ -1,34 +1,34 @@
 ---
-title: 'Rychlý start: Volání pomocí koncových bodů vlastního vyhledávání Bingu C# | Dokumentace Microsoftu'
-titlesuffix: Azure Cognitive Services
-description: V tomto rychlém startu můžete začít si vyžádat výsledky hledání od vaší instance vlastního vyhledávání Bingu ve C#.
+title: 'Rychlý start: Volání koncového bodu Vlastní vyhledávání Bingu C# pomocí | Microsoft Docs'
+titleSuffix: Azure Cognitive Services
+description: Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu C#v.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 06/18/2018
+ms.date: 07/15/2019
 ms.author: maheshb
-ms.openlocfilehash: 87c6744dd9ee0a921a422320563f10acff9ed875
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c1b118ec08e00705ad3eab9141d116fb9e6ef257
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206216"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405187"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Rychlý start: Volání pomocí koncových bodů vlastního vyhledávání BinguC# 
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Rychlý start: Volání Vlastní vyhledávání Binguho koncového bodu pomocíC# 
 
-V tomto rychlém startu můžete začít si vyžádat výsledky hledání od vaší instance vlastního vyhledávání Bingu. Zatímco tato aplikace je napsána v C#, rozhraní API pro vlastní vyhledávání Bingu je kompatibilní s Většina programovacích jazyků rozhraní RESTful webová služba. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs).
+Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu. I když je tato aplikace napsaná v C#, rozhraní API pro vlastní vyhledávání Bingu je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs)
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Instanci vlastního vyhledávání Bingu. Zobrazit [rychlý start: Vytvoření první instanci vlastního vyhledávání Bingu](quick-start.md) Další informace.
+- Instance Vlastní vyhledávání Bingu. Další [informace najdete v tématu rychlý Start: Pro další informace vytvořte první](quick-start.md) instanci vlastní vyhledávání Bingu.
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- Libovolná edice [Visual Studio 2019 nebo novější](https://www.visualstudio.com/downloads/)
+- Libovolná edice sady [Visual Studio 2019 nebo novější](https://www.visualstudio.com/downloads/)
 - Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
-- [Vlastní vyhledávání Bingu](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) balíček NuGet. 
-    - Z **Průzkumníka řešení** v sadě Visual Studio, klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet** z nabídky. Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Při instalaci balíčku NuGet pro vlastní vyhledávání se nainstalují také následující sestavení:
+- Balíček NuGet [Vlastní vyhledávání Bingu](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) . 
+    - Z **Průzkumník řešení** v aplikaci Visual Studio klikněte pravým tlačítkem myši na projekt a v nabídce vyberte možnost **Spravovat balíčky NuGet** . Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Při instalaci balíčku NuGet pro vlastní vyhledávání se nainstalují také následující sestavení:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -37,7 +37,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte novou aplikaci konzoly C# v sadě Visual Studio. Pak přidejte do projektu následující balíčky.
+1. Vytvořte novou C# konzolovou aplikaci v aplikaci Visual Studio. Pak přidejte do projektu následující balíčky.
 
     ```csharp
     using System;
@@ -46,7 +46,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
     using Newtonsoft.Json;
     ```
 
-2. Vytvořte následující třídy úložiště search výsledky vrácené rozhraní API pro vlastní vyhledávání Bingu.
+2. Vytvořte následující třídy pro uložení výsledků hledání vrácených rozhraní API pro vlastní vyhledávání Bingu.
 
     ```csharp
     public class BingCustomSearchResponse {        
@@ -70,7 +70,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
     }
     ```
 
-3. V hlavní metodě váš projekt Vytvořte proměnné pro váš klíč rozhraní API pro vyhledávání Bingu vlastní předplatného, ID search instance vlastní konfigurace a hledaný termín.
+3. V hlavní metodě projektu vytvořte proměnné pro klíč předplatného rozhraní API pro vlastní vyhledávání Bingu, ID vlastní konfigurace vaší instance hledání a hledaný termín.
 
     ```csharp
     var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
@@ -78,7 +78,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
     var searchTerm = args.Length > 0 ? args[0]:"microsoft";
     ```
 
-4. Vytvořit žádost o adresu URL připojením hledaný termín `q=` parametr dotazu a search instance vlastní ID konfigurace `customconfig=`. oddělení parametrů s `&` znak. 
+4. Vytvořte adresu URL žádosti připojením hledaného termínu k `q=` parametru dotazu a `customconfig=`ID vlastní konfigurace vaší instance hledání. parametry oddělte `&` znakem. 
 
     ```csharp
     var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
@@ -86,16 +86,16 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
                 "customconfig=" + customConfigId;
     ```
 
-## <a name="send-and-receive-a-search-request"></a>Odeslat a přijmout žádost o vyhledávání 
+## <a name="send-and-receive-a-search-request"></a>Odeslání a přijetí žádosti o vyhledávání 
 
-1. Vytvořit požadavek klienta a přidat váš klíč předplatného na `Ocp-Apim-Subscription-Key` záhlaví.
+1. Vytvořte klienta žádosti a přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného.
 
     ```csharp
     var client = new HttpClient();
     client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
     ```
 
-2. Provedení požadavku hledání a získejte odpověď jako objekt JSON.
+2. Proveďte požadavek Search a získejte odpověď jako objekt JSON.
 
     ```csharp
     var httpResponseMessage = client.GetAsync(url).Result;
@@ -104,7 +104,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
     ```
    ## <a name="process-and-view-the-results"></a>Zpracování a zobrazení výsledků
 
-3. Iterujte přes objekt odpovědi k zobrazení informací o jednotlivých výsledek hledání, včetně názvu, adresu url a datum, byl naposledy procházen webovou stránku.
+3. Iterujte přes objekt odpovědi, aby se zobrazily informace o každém výsledku hledání, včetně jeho názvu, adresy URL a data posledního procházení webové stránky.
 
     ```csharp
     for(int i = 0; i < response.webPages.value.Length; i++) {                
@@ -121,7 +121,7 @@ V tomto rychlém startu můžete začít si vyžádat výsledky hledání od va�
     Console.ReadKey();
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Sestavení webové aplikace s vlastní vyhledávání](./tutorials/custom-search-web-page.md)
+> [Vytvoření vlastní vyhledávací webové aplikace](./tutorials/custom-search-web-page.md)

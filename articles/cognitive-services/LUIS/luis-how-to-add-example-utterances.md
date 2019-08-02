@@ -1,6 +1,6 @@
 ---
-title: Přidat ukázkové promluvy
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Přidat příklad projevy-LUIS
+titleSuffix: Azure Cognitive Services
 description: Příklad projevy jsou příkladem text otázky uživatele nebo příkazy. Představuje Language Understanding (LUIS), že je potřeba přidat příklad projevy záměru.
 services: cognitive-services
 author: diberry
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: af43697dc864019c6fd86b041e231a54d8aa8b40
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 04f0944173df59989745ee9167984b493f202b14
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827488"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638231"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Přidání entity do příklad projevy 
 
 Příklad projevy jsou příkladem text otázky uživatele nebo příkazy. Představuje Language Understanding (LUIS), budete muset přidat [příklad projevy](luis-concept-utterance.md) do [záměr](luis-concept-intent.md).
 
-Obvykle přidáte příkladu utterance záměru první, a pak vytvářet entity a označovat projevy na **záměry** stránky. Pokud byste raději entity nejprve vytvoříte, přečtěte si téma [přidat entity](luis-how-to-add-entities.md).
+Obvykle nejprve do záměru přidáte příklad utterance a potom na stránce **záměry** vytvoříte entity a popisek projevy. Pokud byste raději entity nejprve vytvoříte, přečtěte si téma [přidat entity](luis-how-to-add-entities.md).
 
 ## <a name="marking-entities-in-example-utterances"></a>Označení entity v příkladu projevy
 
@@ -32,20 +32,20 @@ Některé typy entit, jako je například předem připravených entit a entit r
 
 ## <a name="add-a-simple-entity"></a>Přidat jednoduchou entitu
 
-V následujícím postupu vytvoříte a označit vlastní entity v rámci následující utterance **záměry** stránky:
+V následujícím postupu vytvoříte a označíte vlastní entitu v rámci následujících utterance na stránce záměry:
 
 ```text
 Are there any SQL server jobs?
 ```
 
-1. Vyberte `SQL server` v utterance a označte jej jako jednoduchou entitu. V rozevíracím seznamu pole entity, které se zobrazí můžete vybrat existující entity nebo přidat novou entitu. Chcete-li přidat novou entitu, zadejte jeho název `Job` v textovém poli a pak vyberte **vytvořit novou entitu**.
+1. Vyberte `SQL server` v utterance a označte jej jako jednoduchou entitu. V rozevíracím seznamu pole entity, které se zobrazí můžete vybrat existující entity nebo přidat novou entitu. Chcete-li přidat novou entitu, zadejte `Job` její název do textového pole a pak vyberte **vytvořit novou entitu**.
 
     ![Snímek obrazovky zadání názvu entity](./media/luis-how-to-add-example-utterances/create-simple-entity.png)
 
     > [!NOTE]
     > Při výběru slova ke značce jako entity:
     > * Pro jednoho slova stačí vyberte ji. 
-    > * Pro sadu dvou nebo více slov vyberte první slovo a konečné slovo.
+    > * V případě sady dvou nebo více slov vyberte první slovo a potom konečné slovo.
 
 1. V **jaký typ entity chcete vytvořit?** v místním okně, ověřte název entity a vyberte **jednoduché** typu entity a pak vyberte **provádí**.
 
@@ -53,11 +53,11 @@ Are there any SQL server jobs?
 
 ## <a name="add-a-list-entity"></a>Přidat seznam entit
 
-Seznam entit představují sadu přesný text odpovídá souvisejících slov ve vašem systému. 
+Seznam entit představuje sadu přesně vyhovujících textů souvisejících slov v systému. 
 
 Pro seznam oddělení vaší společnosti, můžete mít normalizované hodnoty: `Accounting` a `Human Resources`. Každý normalizovaný název má synonym. Pro oddělení můžete tato synonyma zahrnout všechny oddělení zkratky, čísla nebo slang. Není nutné znát všechny hodnoty při vytvoření entity. Můžete přidat více až po kontrole projevy uživatelů s synonym.
 
-1. V utterance příklad na **záměry** vyberte slovo nebo slovní spojení, které chcete do nového seznamu. Jakmile se zobrazí rozevírací seznam entit, zadejte název pro novou entitu seznamu v horní textového pole a pak vyberte **vytvořit novou entitu**.   
+1. V příkladu utterance na stránce **záměry** vyberte slovo nebo frázi, které chcete v seznamu nový. Když se zobrazí rozevírací seznam entita, do horního textového pole zadejte název nové entity seznamu a pak vyberte **vytvořit novou entitu**.   
 
 1. V **jaký typ entity chcete vytvořit?** v místním okně, název entity a vyberte **seznamu** jako typ. Přidání synonym této položky seznamu a pak vyberte **provádí**. 
 
@@ -65,17 +65,17 @@ Pro seznam oddělení vaší společnosti, můžete mít normalizované hodnoty:
 
     Označování jiných projevy, nebo úpravou entity z můžete přidat další položky seznamu nebo další položku synonyma **entity** v levém navigačním panelu. [Úpravy](luis-how-to-add-entities.md#add-list-entities) entity, které vám dává možnosti zadávání další položky s odpovídající synonymům nebo import seznamu. 
 
-## <a name="add-a-composite-entity"></a>Přidat složené entitu
+## <a name="add-a-composite-entity"></a>Přidání složené entity
 
-Složený entity jsou vytvořeny z existujících **entity** tvoří nadřazená entita. 
+Složené entity jsou vytvořeny z existujících **entit** pro vytvoření nadřazené entity. 
 
-Za předpokladu, že utterance, `Does John Smith work in Seattle?`, složený utterance může vrátit informace o entitě názvu zaměstnance `John Smith`a umístění `Seattle` složený entity. Podřízené entity už musí existovat v aplikaci a označit v příkladu utterance před vytvořením složený entity.
+Za předpokladu, `Does John Smith work in Seattle?`že utterance, může složený utterance vracet informace o entitě názvu `John Smith`zaměstnance a umístění `Seattle` ve složené entitě. Podřízené entity už musí existovat v aplikaci a musí být označené v příkladu utterance před vytvořením složené entity.
 
-1. Chcete-li zabalit podřízené entity do složeného entity, vyberte **první** označené jako entity (nejvíce vlevo) v utterance složený entity. Rozevírací seznam, zobrazí se možnosti pro tento výběr.
+1. Pokud chcete podřízené entity zabalit do složené entity, vyberte v utterance pro složenou entitu **první** označenou entitou (vlevo-nejvíce). Zobrazí se rozevírací seznam pro zobrazení možností pro tento výběr.
 
-1. Vyberte **zabalit do složeného entity** z rozevíracího seznamu. 
+1. V rozevíracím seznamu vyberte možnost **zalamovat v složené entitě** . 
 
-1. Vyberte poslední slovo složený entity (nejvíce vpravo). Všimněte si, že zelená čára následuje složený entity. Toto je vizuální označení pro složené entity a musí být ve všech slov ve entita složený z nejvíce vlevo podřízené entity, která má úplně vpravo podřízené entity.
+1. Vyberte poslední slovo složený entity (nejvíce vpravo). Všimněte si, že zelená čára následuje složený entity. Toto je vizuální indikátor pro složenou entitu a měl by být v rámci všech slov v složené entitě z podřízené entity nejvíce vlevo až po podřízenou entitu nejvíce vpravo.
 
 1. Zadejte název složený entity v rozevíracím seznamu.
 
@@ -89,11 +89,11 @@ Za předpokladu, že utterance, `Does John Smith work in Seattle?`, složený ut
 
     ![Stránce s podrobnostmi o snímek obrazovky s příkazy, pomocí složeného entity](./media/luis-how-to-add-example-utterances/hr-create-composite-4.png)
 
-## <a name="add-entitys-role-to-utterance"></a>Přidání entity role utterance
+## <a name="add-entitys-role-to-utterance"></a>Přidat roli entity do utterance
 
-Role je pojmenovaný podtypem typu entity, určit podle kontextu utterance. Můžete označí entitu v rámci utterance jako entity, nebo vyberte roli v rámci této entity. Každá entita může mít role včetně vlastních entit, které jsou zjištěné počítače (jednoduché a složené entit), nejsou zjištěné počítače (předem připravených entit, regulární výraz entity seznam entit). 
+Role je pojmenovaný podtyp entity určený kontextem utterance. Entitu můžete označit v rámci utterance jako entitu nebo vybrat roli v této entitě. Každá entita může mít role, včetně vlastních entit, které jsou učené strojem (jednoduché entity a složené entity), se nedozvěděly na stroji (předem připravené entity, entity regulárních výrazů, seznam entit). 
 
-Přečtěte si [jak označit utterance s rolemi entity](tutorial-entity-roles.md) z praktické kurzu. 
+Naučte [se, jak označit utterance pomocí rolí entit](tutorial-entity-roles.md) z praktického kurzu. 
 
 ## <a name="entity-status-predictions"></a>Predikce stavu entity
 
@@ -107,7 +107,7 @@ Vyberte slova, která jsou podtrženy červeně utterance.
 
 Zobrazí pole entity **stav Entity** se červený vykřičník Pokud dojde k neshodě předpovědi. Chcete-li zobrazit stav Entity s informacemi o rozdílech mezi s popiskem a prediktivní entity, vyberte **stav Entity** vyberte položku na pravé straně.
 
-![Snímek obrazovky Entity stav výběru](./media/luis-how-to-add-example-utterances/entity-prediction-error-correction.png)
+![Snímek obrazovky výběru stavu entity](./media/luis-how-to-add-example-utterances/entity-prediction-error-correction.png)
 
 Může se zobrazit řádku červeně na některý z následujících časech:
 
@@ -131,15 +131,15 @@ Můžete provádět akce na příkladu projevy jako vybranou skupinu nebo jednot
 
 ### <a name="remove-entity-labels-from-utterances"></a>Odebrání popisků entity z projevy
 
-Zjištěné počítače entity popisky můžete odebrat z utterance na stránce záměry. Pokud subjektem není zjištěné počítače, nelze odebrat ze utterance. Pokud potřebujete k odebrání utterance na jiné počítače zjistili entitu, musíte odstranit entitu z celé aplikace. 
+Na stránce záměry můžete odebrat popisky entit učené počítačem z utterance. Pokud subjektem není zjištěné počítače, nelze odebrat ze utterance. Pokud potřebujete k odebrání utterance na jiné počítače zjistili entitu, musíte odstranit entitu z celé aplikace. 
 
 Odebrání popisku se naučili počítač entity ze utterance, vyberte entitu utterance. Potom vyberte **odebrat popisek** v rozevíracím seznamu pole entity, které se zobrazí.
 
-### <a name="add-a-prebuilt-entity-label"></a>Přidejte popisek předem připravených entit
+### <a name="add-a-prebuilt-entity-label"></a>Přidat předem sestavený popisek entity
 
 Když přidáte do aplikace LUIS předem připravených entit, není nutné projevy značky s těmito entitami. Další informace o tom předem připravených entit a jak je přidat, naleznete v tématu [přidat entity](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
-### <a name="add-a-regular-expression-entity-label"></a>Přidejte popisek entity regulárního výrazu
+### <a name="add-a-regular-expression-entity-label"></a>Přidat popisek entity regulárního výrazu
 
 Pokud regulární výraz entity, které přidáte do aplikace LUIS, není nutné projevy značky s těmito entitami. Další informace o regulární výraz entity a jak je přidat, naleznete v tématu [přidat entity](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts).
 
@@ -149,7 +149,7 @@ Pokud regulární výraz entity, které přidáte do aplikace LUIS, není nutné
 Zobrazit [přidat vzorek z existující utterance na stránce záměr nebo entity](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 
 
-### <a name="add-a-patternany-entity"></a>Přidání pattern.any entity
+### <a name="add-a-patternany-entity"></a>Přidejte vzor. libovolnou entitu
 
 Pokud přidáte pattern.any entity do aplikace LUIS, nelze označit projevy s těmito entitami. Jsou platné ve vzorech. Další informace o pattern.any entity a jak je přidat, naleznete v tématu [přidat entity](luis-how-to-add-entities.md#add-patternany-entities-to-capture-free-form-entities).
 
@@ -159,4 +159,4 @@ Po přidání, úprava nebo odebrání projevy, [trénování](luis-how-to-train
 
 ## <a name="next-steps"></a>Další postup
 
-Po označení projevy v vaše **záměry**, teď můžete vytvářet [složený entity](luis-how-to-add-entities.md).
+Po označení projevy ve svých **záměrech**teď můžete vytvořit složenou entitu [](luis-how-to-add-entities.md).

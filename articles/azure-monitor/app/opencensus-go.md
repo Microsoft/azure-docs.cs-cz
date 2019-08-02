@@ -1,6 +1,6 @@
 ---
-title: OpenCensus přejít trasování pomocí Azure Application Insights | Dokumentace Microsoftu
-description: Poskytuje pokyny k integraci OpenCensus přejít trasování pomocí místní služby předávání a Application Insights
+title: OpenCensus přejít ke sledování pomocí Azure Application Insights | Microsoft Docs
+description: Poskytuje pokyny pro integraci trasování OpenCensus na cestách s místním doposíláním a Application Insights
 services: application-insights
 keywords: ''
 author: mrbullwinkle
@@ -9,22 +9,22 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 56e66f17e9ce1d2482463f619e82dfd29d48f191
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577792"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990305"
 ---
-# <a name="collect-distributed-traces-from-go-preview"></a>Shromažďovat distribuované trasování z Go (Preview)
+# <a name="collect-distributed-traces-from-go-preview"></a>Shromažďovat distribuované trasování z webu přejít (Preview)
 
-Application Insights teď podporuje distribuované trasování z aplikací Go díky integraci se sadou [OpenCensus](https://opencensus.io) a naše nové [místní předávání](./opencensus-local-forwarder.md). Tento článek vás provede procesem nastavení OpenCensus for Go a získávají se vaše data trasování do Application Insights.
+Application Insights teď podporuje distribuované trasování aplikací v cestách prostřednictvím integrace s [OpenCensus](https://opencensus.io) a naší novou [místní službou pro předávání](./opencensus-local-forwarder.md). Tento článek vás seznámí s postupem nastavení OpenCensus pro přechod a získávání dat trasování pro Application Insights.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Mít předplatné Azure.
-- Go je třeba nainstalovat, tento článek používá verze 1.11 [přejít Stáhnout](https://golang.org/dl/).
-- Postupujte podle pokynů k instalaci [místní předávání jako služba Windows](./opencensus-local-forwarder.md).
+- Chcete-li nainstalovat nástroj, použijte verzi 1,11 [ke stažení](https://golang.org/dl/).
+- Postupujte podle pokynů k instalaci [místního serveru pro přeposílání jako služby systému Windows](./opencensus-local-forwarder.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -32,32 +32,34 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-application-insights-resource"></a>Vytvořte prostředek Application Insights
+## <a name="create-application-insights-resource"></a>Vytvořit prostředek Application Insights
 
-Nejprve je nutné vytvořit prostředek Application Insights, která bude generovat instrumentačním klíčem (Instrumentační klíč). Ikey pak slouží ke konfiguraci místního serveru pro předávání k odesílání distribuované trasování z aplikace OpenCensus instrumentována pro Application Insights.   
+Nejdřív je potřeba vytvořit prostředek Application Insights, který vygeneruje klíč instrumentace (ikey). Ikey se pak použije ke konfiguraci místního předávacího serveru pro odesílání distribuovaných trasování z vaší OpenCensus instrumentované aplikace, aby bylo možné Application Insights.   
 
 1. Vyberte **vytvořit prostředek** > **vývojářské nástroje** > **Application Insights**.
 
    ![Přidání prostředku Application Insights](./media/opencensus-Go/0001-create-resource.png)
 
+ > [!NOTE]
+   >Pokud vytvoříte prostředek Application Insightse poprvé, můžete se dozvědět víc v článku [vytvoření prostředku Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) .
+
    Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 
-    | Nastavení        | Hodnota           | Popis  |
+    | Nastavení        | Value           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
-   | **Typ aplikace** | Obecné | Typ aplikace, kterou monitorujete |
    | **Skupina prostředků**     | myResourceGroup      | Název pro novou skupinu prostředků, která bude hostovat data App Insights |
-   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Location** | East US | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
 2. Klikněte na možnost **Vytvořit**.
 
-## <a name="configure-local-forwarder"></a>Nakonfigurovat místní server pro předávání
+## <a name="configure-local-forwarder"></a>Konfigurace místního serveru pro směrování
 
 1. Vyberte **Přehled** > **Základy** a zkopírujte **instrumentační klíč** vaší aplikace.
 
-   ![Snímek obrazovky Instrumentační klíč](./media/opencensus-Go/0003-instrumentation-key.png)
+   ![Snímek obrazovky klíč instrumentace](./media/opencensus-Go/0003-instrumentation-key.png)
 
-2. Upravit vaše `LocalForwarder.config` a přidejte svůj Instrumentační klíč. Pokud jste postupovali podle pokynů [předpoklad](./opencensus-local-forwarder.md) soubor se nachází v `C:\LF-WindowsServiceHost`
+2. `LocalForwarder.config` Upravte soubor a přidejte svůj klíč instrumentace. Pokud jste postupovali podle pokynů v části [požadavky](./opencensus-local-forwarder.md) , je soubor umístěný v`C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -74,18 +76,18 @@ Nejprve je nutné vytvořit prostředek Application Insights, která bude genero
     </LocalForwarderConfiguration>
     ```
 
-3. Restartování aplikace **místní předávání** služby.
+3. Restartujte službu pro zakládání **místní** aplikace.
 
-## <a name="opencensus-go-packages"></a>OpenCensus Go packages
+## <a name="opencensus-go-packages"></a>Balíčky OpenCensus přejít
 
-1. Instalace balíčků otevřete sčítání přejít z příkazového řádku:
+1. Nainstalujte otevřené balíčky sčítání pro přechod z příkazového řádku:
 
     ```go
     go get -u go.opencensus.io
     go get -u contrib.go.opencensus.io/exporter/ocagent
     ```
 
-2. Přidejte následující kód do souboru .go a pak sestavit a spustit. (V tomto příkladu je odvozen z oficiální OpenCensus pokyny k přidání kódu, která usnadňuje integraci s místním předávání)
+2. Přidejte následující kód do souboru. přejít a pak Sestavte a spusťte. (Tento příklad je odvozen od oficiálních pokynů pro OpenCensus s přidaným kódem, který usnadňuje integraci s místním přesměrováním).
 
      ```go
         // Copyright 2018, OpenCensus Authors
@@ -184,45 +186,45 @@ Nejprve je nutné vytvořit prostředek Application Insights, která bude genero
         }
      ```
 
-3. Jakmile je spuštění jednoduché aplikace v jazyce go přejděte do `http://localhost:50030`. Každá aktualizace v prohlížeči vygeneruje textu "hello world" doplněny odpovídající značky span data, která převezme místní server pro předávání.
+3. Po spuštění aplikace Simple směřuje přejděte na `http://localhost:50030`. Každá aktualizace prohlížeče vygeneruje text "Hello World", spolu s odpovídajícími daty, která jsou vybrána místním serverem pro přeposílání.
 
-4. Zkontrolujte, že **místní předávání** sbírá kontrola trasování `LocalForwarder.config` souboru. Pokud jste postupovali podle kroků v [předpoklad](https://docs.microsoft.com/azure/application-insights/local-forwarder), bude nacházet v `C:\LF-WindowsServiceHost`.
+4. Chcete-li potvrdit, že **místní předávací server** vybírá trasování, zkontrolujte `LocalForwarder.config` soubor. Pokud jste postupovali podle kroků [](https://docs.microsoft.com/azure/application-insights/local-forwarder)v předpokladech, bude se nacházet `C:\LF-WindowsServiceHost`v.
 
-    Na obrázku níže souboru protokolu vidíte, že před spuštěním druhý skriptu, které jsme přidali Exportér `OpenCensus input BatchesReceived` je 0. Jakmile jsme začali používat aktualizovaný skript `BatchesReceived` zvýšena stejný počet hodnot, které jsme zadali:
+    Na obrázku níže v souboru protokolu vidíte, že před spuštěním druhého skriptu, kde jsme přidali exportéra `OpenCensus input BatchesReceived` , byl 0. Po spuštění aktualizovaného skriptu `BatchesReceived` , který se zvyšuje, se rovná počtu zadaných hodnot:
     
     ![Formulář Nový prostředek App Insights](./media/opencensus-go/0004-batches-received.png)
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Zahájení monitorování na webu Azure Portal
 
-1. Teď můžete znovu otevřít Application Insights **přehled** stránky na webu Azure Portal, chcete-li zobrazit podrobné informace o aktuálně spuštěné aplikaci. Vyberte **Live Stream metrik**.
+1. Nyní můžete znovu otevřít stránku **přehled** Application Insights v Azure Portal a zobrazit podrobnosti o aktuálně spuštěné aplikaci. Vyberte **živý stream metriky**.
 
-   ![Snímek obrazovky podokna přehled s živý stream metrik, které jsou vybrané v červeným rámečkem](./media/opencensus-go/0005-overview-live-metrics-stream.png)
+   ![Snímek obrazovky s aktivním datovým proudem metriky vybraným v červeném poli](./media/opencensus-go/0005-overview-live-metrics-stream.png)
 
-2. Pokud znovu spustíte druhou aplikaci Go a spustit aktualizaci prohlížeče pro `http://localhost:50030`, zobrazí se živá data trasování, jako je e-mailu ve službě Application Insights ze služby předávání místní.
+2. Pokud znovu spustíte aplikaci s druhým přechodem a začnete aktualizovat prohlížeč pro `http://localhost:50030`, zobrazí se data o živém trasování, která se dostanou do Application Insights z místní služby pro doručování.
 
-   ![Snímek obrazovky se zobrazí data o výkonu živý stream metrik](./media/opencensus-go/0006-stream.png)
+   ![Snímek obrazovky živého streamu metrik se zobrazenými daty o výkonu](./media/opencensus-go/0006-stream.png)
 
-3. Přejděte zpět **přehled** stránku a vybrat **Mapa aplikace** pro vizuální rozložení vztahů závislosti a časování volání mezi komponentami vaší aplikace.
+3. Přejděte zpět na stránku **Přehled** a vyberte **Mapa aplikace** pro vizuální rozložení vztahů závislosti a časování volání mezi komponentami vaší aplikace.
 
-    ![Snímek obrazovky základní aplikace mapy](./media/opencensus-go/0007-application-map.png)
+    ![Snímek obrazovky se základní mapou aplikace](./media/opencensus-go/0007-application-map.png)
 
-    Protože jsme byly trasování pouze jedno volání metody, není jako zajímavé Mapa aplikace. Ale můžete škálovat mapu aplikace k vizualizaci mnohem více distribuované aplikace:
+    Vzhledem k tomu, že jsme provedli pouze trasování jednoho volání metody, není naše mapa aplikace zajímavá. Mapa aplikace se ale může škálovat a vizualizovat mnohem více distribuovaných aplikací:
 
    ![Mapa aplikace](media/opencensus-go/application-map.png)
 
-4. Vyberte **zkoumání výkonu** provádět podrobnou analýzu výkonu a určení původní příčiny snížení výkonu.
+4. Vyberte možnost **prozkoumat výkon** a proveďte podrobnou analýzu výkonu a určete původní příčinu pomalého výkonu.
 
-    ![Snímek obrazovky podokna výkonu](./media/opencensus-go/0008-performance.png)
+    ![Snímek obrazovky s podoknem výkonu](./media/opencensus-go/0008-performance.png)
 
-5. Výběr **ukázky** a potom kliknutím na některé z ukázek, které se zobrazují v pravém podokně se spustí prostředí podrobnosti transakce začátku do konce. Když naše ukázková aplikace se pouze zobrazí jednu událost, složitější aplikaci umožní prozkoumat začátku do konce transakcí na úrovni jednotlivých událostí zásobníku volání.
+5. Když vyberete **ukázky** a pak kliknete na kteroukoli z ukázek, které se zobrazí v pravém podokně, spustí se prostředí s podrobnostmi o koncových transakcích. I když naše ukázková aplikace zobrazí jenom jednu událost, složitější aplikace vám umožní prozkoumat koncovou transakci dolů na úroveň zásobníku volání jednotlivých událostí.
 
-     ![Snímek obrazovky začátku do konce transakce rozhraní](./media/opencensus-go/0009-end-to-end-transaction.png)
+     ![Snímek obrazovky s koncovým rozhraním transakce](./media/opencensus-go/0009-end-to-end-transaction.png)
 
-## <a name="opencensus-trace-for-go"></a>Trasování OpenCensus for Go
+## <a name="opencensus-trace-for-go"></a>OpenCensus trasování pro přejít
 
-Jsme probrali pouze základní informace o integraci OpenCensus for Go s místní server pro předávání a Application Insights. [Oficiální informace o používání OpenCensus Go](https://godoc.org/go.opencensus.io) zahrnuje pokročilejší témata.
+Pokryli jsme základní informace o integraci OpenCensus for a k místnímu serveru pro posílání a Application Insights. Oficiální témata týkající se [používání OpenCensus najdete](https://godoc.org/go.opencensus.io) v tématu popisujícím pokročilé postupy.
 
 ## <a name="next-steps"></a>Další postup
 
 * [Mapa aplikace](./../../azure-monitor/app/app-map.md)
-* [Sledování výkonu začátku do konce](./../../azure-monitor/learn/tutorial-performance.md)
+* [Monitorování výkonu na konci](./../../azure-monitor/learn/tutorial-performance.md)
