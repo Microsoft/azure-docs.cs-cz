@@ -1,6 +1,6 @@
 ---
-title: Integrace Azure ExpressRoute se zotavení po havárii pro virtuální počítače Azure pomocí služby Azure Site Recovery | Dokumentace Microsoftu
-description: Popisuje, jak nastavit zotavení po havárii pro virtuální počítače Azure pomocí Azure Site Recovery a Azure ExpressRoute
+title: Integrace Azure ExpressRoute s zotavením po havárii pro virtuální počítače Azure pomocí služby Azure Site Recovery | Microsoft Docs
+description: Popisuje, jak nastavit zotavení po havárii pro virtuální počítače Azure pomocí Azure Site Recovery a Azure ExpressRoute.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -8,213 +8,213 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0974e2ed78e557168357c51b5c77a94de2f56dc5
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772378"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722108"
 ---
-# <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace Azure ExpressRoute se zotavení po havárii pro virtuální počítače Azure
+# <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace Azure ExpressRoute s zotavením po havárii pro virtuální počítače Azure
 
 
-Tento článek popisuje, jak integrovat Azure ExpressRoute s [Azure Site Recovery](site-recovery-overview.md), při nastavování zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure.
+Tento článek popisuje, jak integrovat Azure ExpressRoute s [Azure Site Recovery](site-recovery-overview.md)při nastavování zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure.
 
-Site Recovery umožňuje zotavení po havárii virtuálních počítačů Azure pomocí replikace dat virtuálního počítače Azure do Azure.
+Site Recovery umožňuje zotavení po havárii virtuálních počítačů Azure tím, že replikuje data virtuálních počítačů Azure do Azure.
 
-- Pokud používáte virtuální počítače Azure [Azure managed disks](../virtual-machines/windows/managed-disks-overview.md), data virtuálního počítače se replikují na replikované spravovaného disku v sekundární oblasti.
-- Pokud virtuální počítače Azure se používat spravované disky, virtuální počítač data se replikují do účtu služby Azure storage.
-- Koncové body replikace jsou veřejné, ale provoz replikace pro virtuální počítače Azure není napříč Internetem.
+- Pokud virtuální počítače Azure používají [spravované disky Azure](../virtual-machines/windows/managed-disks-overview.md), replikují se data virtuálních počítačů do replikovaného spravovaného disku v sekundární oblasti.
+- Pokud virtuální počítače Azure nepoužívají spravované disky, replikují se data virtuálních počítačů do účtu služby Azure Storage.
+- Koncové body replikace jsou veřejné, ale provoz replikace pro virtuální počítače Azure nepřekračuje Internet.
 
-ExpressRoute umožňuje rozšířit místní sítě do cloudu Microsoft Azure přes soukromé připojení zajišťované poskytovatelem připojení. Pokud máte nakonfigurovaný ExpressRoute, integruje s využitím Site Recovery následujícím způsobem:
+ExpressRoute umožňuje rozšiřování místních sítí do cloudu Microsoft Azure přes privátní připojení, které usnadňuje poskytovatel připojení. Pokud máte nakonfigurovanou ExpressRoute, integruje se Site Recovery následujícím způsobem:
 
-- **Během replikace mezi oblastmi Azure**: Provoz replikace pro zotavení po havárii virtuálního počítače Azure je jenom v rámci Azure a ExpressRoute není potřeba ani používanou k replikaci. Pokud se připojujete z místní lokality do virtuálních počítačů Azure v primární lokalitě Azure, existují však některé problémy, které je třeba vědět, když při nastavování zotavení po havárii pro tyto virtuální počítače Azure.
-- **Převzetí služeb při selhání mezi oblastmi Azure**: Když dojde k výpadku, můžete převzetí služeb při selhání virtuálních počítačů Azure z primární do sekundární oblasti Azure. Po převzetí služeb při selhání do sekundární oblasti, existuje mnoho kroků provést, aby přístup k virtuálním počítačům Azure v sekundární oblasti přes ExpressRoute.
+- **Během replikace mezi oblastmi Azure**: Provoz replikace pro zotavení po havárii virtuálního počítače Azure je jenom v Azure a ExpressRoute není potřeba ani se nepoužívá pro replikaci. Pokud se ale připojujete z místní lokality k virtuálním počítačům Azure v primární lokalitě Azure, při nastavování zotavení po havárii pro tyto virtuální počítače Azure máte vědět několik problémů.
+- **Převzetí služeb při selhání mezi oblastmi Azure**: Pokud dojde k výpadku, dojde při selhání virtuálních počítačů Azure z primární do sekundární oblasti Azure. Po převzetí služeb při selhání do sekundární oblasti existuje několik kroků, které je potřeba provést, abyste měli přístup k virtuálním počítačům Azure v sekundární oblasti pomocí ExpressRoute.
 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Než začnete, ujistěte se, že rozumíte následující pojmy:
+Než začnete, ujistěte se, že rozumíte následujícím koncepcím:
 
-- ExpressRoute [okruhy](../expressroute/expressroute-circuit-peerings.md)
-- ExpressRoute [domény směrování](../expressroute/expressroute-circuit-peerings.md#routingdomains)
+- [Okruhy](../expressroute/expressroute-circuit-peerings.md) ExpressRoute
+- [Domény směrování](../expressroute/expressroute-circuit-peerings.md#routingdomains) ExpressRoute
 - ExpressRoute [umístění](../expressroute/expressroute-locations.md).
-- Virtuální počítač Azure [architektura replikace](azure-to-azure-architecture.md)
-- Jak [nastavení replikace](azure-to-azure-tutorial-enable-replication.md) pro virtuální počítače Azure.
-- Jak [převzetí služeb při selhání](azure-to-azure-tutorial-failover-failback.md) virtuální počítače Azure.
+- [Architektura replikace](azure-to-azure-architecture.md) virtuálních počítačů Azure
+- Jak [nastavit replikaci](azure-to-azure-tutorial-enable-replication.md) pro virtuální počítače Azure.
+- Jak [převzít služby při selhání](azure-to-azure-tutorial-failover-failback.md) virtuálních počítačů Azure.
 
 
 ## <a name="general-recommendations"></a>Obecná doporučení
 
-Osvědčený postup a zajistit efektivní cíle plánované doby obnovení (RTO) pro zotavení po havárii doporučujeme, abyste že při nastavování Site Recovery můžete integrovat s ExpressRoute se postupujte takto:
+Osvědčeným postupem a zajištění efektivního plánovaného času obnovení (RTO) při zotavení po havárii doporučujeme při nastavení Site Recovery pro integraci s ExpressRoute provést následující akce:
 
-- Zřízení síťové součásti před převzetí služeb při selhání do sekundární oblasti:
-    - Když povolíte replikaci pro virtuální počítače Azure, Site Recovery můžete automaticky nasadit síťové prostředky, jako jsou sítě, podsítě a bran v cílové oblasti Azure, na základě zdrojové síťové nastavení.
-    - Site Recovery nejde automaticky nastavit síťové prostředky, jako jsou brány virtuální sítě.
-    - Doporučujeme, abyste že zřízení těchto dalších síťových prostředků před převzetí služeb při selhání. Malý výpadek souvisí s tímto nasazením, a pokud jste účet pro něj při plánování nasazení může mít dopad čas celkové zotavení.
-- Spusťte po havárii pravidelně cvičení obnovení:
-    - Postup ověří vaši strategii replikace bez ztráty dat, bez výpadku a bez dopadu na vaše produkční prostředí. To pomáhá předejít problémy s konfigurací poslední minutu, které může nepříznivě ovlivnit RTO.
-    - Při spuštění testovací převzetí služeb při selhání na postup zotavení, doporučujeme použít samostatnou síť virtuálních počítačů Azure, ne výchozí síť, který je nastavený při aktivaci replikace.
-- Použijte jinou adresní prostory IP adres, pokud máte jeden okruh ExpressRoute.
-    - Doporučujeme použít jiný prostor IP adres pro cílová virtuální síť. Tím se vyhnete problémy při navazování připojení při místní výpadky.
-    - Pokud nemůžete použít samostatné adresní prostor, je nutné spustit po havárii obnovení procházení testovací převzetí služeb při selhání na samostatný test sítě s jinou IP adresy. Nejde propojit dvě virtuální sítě s překrývající se adresní prostor IP adres ke stejnému okruhu ExpressRoute.
+- Zřizování síťových součástí před převzetím služeb při selhání do sekundární oblasti:
+    - Když povolíte replikaci pro virtuální počítače Azure, Site Recovery může automaticky nasadit síťové prostředky, jako jsou sítě, podsítě a brány, v cílové oblasti Azure na základě nastavení zdrojové sítě.
+    - Site Recovery nemůžou automaticky nastavit síťové prostředky, třeba brány virtuální sítě.
+    - Před převzetím služeb při selhání doporučujeme zřídit tyto další síťové prostředky. K tomuto nasazení je přidruženo malé výpadky a může mít vliv na celkovou dobu obnovení, pokud jste to nepoužili během plánování nasazení.
+- Spustit pravidelné cvičení zotavení po havárii:
+    - Postup ověří vaši strategii replikace bez ztráty dat, bez výpadku a bez dopadu na vaše produkční prostředí. Pomáhá předejít problémům s konfigurací poslední minuty, které by mohly mít nepříznivý dopad na RTO.
+    - Při spuštění testovacího převzetí služeb při selhání pro procházení doporučujeme použít samostatnou síť virtuálních počítačů Azure namísto výchozí sítě, která je nastavená při povolení replikace.
+- Pokud máte jeden okruh ExpressRoute, použijte jiné adresní prostory IP adres.
+    - Doporučujeme pro cílovou virtuální síť použít jiný adresní prostor IP adres. Tím se vyhnete problémům při navazování připojení během regionálních výpadků.
+    - Pokud nemůžete použít oddělený adresní prostor, nezapomeňte spustit testovací převzetí služeb při selhání pro zotavení po havárii v samostatné testovací síti s různými IP adresami. Nemůžete propojit dva virtuální sítě s překrývajícím se adresním prostorem IP adres na stejný okruh ExpressRoute.
 
-## <a name="replicate-azure-vms-when-using-expressroute"></a>Replikace virtuálních počítačů Azure při používání ExpressRoute
+## <a name="replicate-azure-vms-when-using-expressroute"></a>Replikace virtuálních počítačů Azure při použití ExpressRoute
 
 
-Pokud chcete nastavení replikace pro virtuální počítače Azure v primární lokalitě a připojujete k těmto virtuálním počítačům z místní lokality přes ExpressRoute, zde je, co je potřeba udělat:
+Pokud chcete nastavit replikaci pro virtuální počítače Azure v primární lokalitě a připojujete se k těmto virtuálním počítačům z místního serveru přes ExpressRoute, je potřeba udělat tyto kroky:
 
-1. [Povolení replikace](azure-to-azure-tutorial-enable-replication.md) pro každý virtuální počítač Azure.
-2. Volitelně můžete nechat Site Recovery nastavení sítě:
-    - Když nakonfigurujete a povolíte replikaci, Site Recovery nastaví sítí, podsítí a podsítě brány v cílové oblasti Azure, tak, aby odpovídala těm ve zdrojové oblasti. Site Recovery také zajišťuje mapování mezi zdrojovou a cílovou virtuální sítí.
-    - Pokud nechcete, aby Site Recovery k tomu automaticky, vytvoření cílové straně síťových prostředků, než povolíte replikaci.
-3. Vytvoření dalších síťových prvků:
-    - Site Recovery nepodporuje vytvoření směrovací tabulky, brány virtuální sítě, připojení brány virtuální sítě, VNet peering, nebo jiné síťové prostředky a připojení v sekundární oblasti.
-    - Je potřeba vytvořit tyto další síťové prvky v sekundární oblasti, kdykoli před spuštěním převzetí služeb při selhání z primární oblasti.
-    - Můžete použít [plány obnovení](site-recovery-create-recovery-plans.md) a skripty pro automatizaci nastavení a připojení těchto síťových prostředků.
-1. Pokud máte síťové virtuální zařízení (NVA) nasazené pro řízení toku síťového provozu, Všimněte si, že:
-    - Azure pro výchozí systémovou trasu pro replikaci virtuálních počítačů Azure je 0.0.0.0/0.
-    - Nasazení síťové virtuální zařízení obvykle také definovat výchozí trasa (0.0.0.0/0), která vynutí odchozí internetové přenosy do probíhat přes síťové virtuální zařízení. Výchozí trasa se používá při najdete žádná jiná konfigurace konkrétní trasy.
-    - Pokud je to tento případ, síťové virtuální zařízení mohou být přetíženy, pokud všechny replikace provoz prochází přes síťové virtuální zařízení.
-    - Stejné omezení platí také při použití výchozí trasy pro směrování veškerého provozu virtuálních počítačů Azure do místní nasazení.
-    - V tomto scénáři doporučujeme, aby vám [vytvořit koncový bod služby sítě](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) ve vaší virtuální síti pro službu Microsoft.Storage tak, aby provoz replikace nebude neopustí hranice Azure.
+1. [Povolte replikaci](azure-to-azure-tutorial-enable-replication.md) pro každý virtuální počítač Azure.
+2. Volitelně Site Recovery nastavit síť:
+    - Když konfigurujete a povolíte replikaci, Site Recovery nastaví sítě, podsítě a podsítě brány v cílové oblasti Azure tak, aby odpovídaly hodnotám ve zdrojové oblasti. Site Recovery se také mapují mezi zdrojovou a cílovou virtuální sítí.
+    - Pokud nechcete, Site Recovery to udělat automaticky, vytvořte před povolením replikace síťové prostředky na straně cíle.
+3. Vytvořit další prvky sítě:
+    - Site Recovery nevytváří směrovací tabulky, brány virtuální sítě, připojení bran virtuální sítě ani jiné síťové prostředky a připojení v sekundární oblasti.
+    - Tyto další prvky sítě je třeba vytvořit v sekundární oblasti, kdykoli před spuštěním převzetí služeb při selhání z primární oblasti.
+    - K nastavení a připojení těchto síťových prostředků můžete použít [plány obnovení](site-recovery-create-recovery-plans.md) a skripty pro automatizaci.
+1. Pokud máte nasazené síťové virtuální zařízení (síťové virtuální zařízení) pro řízení toku síťového provozu, pamatujte na to, že:
+    - Výchozí systémová trasa Azure pro replikaci virtuálních počítačů Azure je 0.0.0.0/0.
+    - Nasazení síťové virtuální zařízení obvykle definují výchozí trasu (0.0.0.0/0), která vynucuje tok odchozího internetového provozu prostřednictvím síťové virtuální zařízení. Výchozí trasa se používá v případě, že není možné najít žádnou jinou konkrétní konfiguraci směrování.
+    - V takovém případě může být síťové virtuální zařízení přetížený, pokud veškerý provoz replikace projde přes síťové virtuální zařízení.
+    - Stejné omezení platí i v případě, že používáte výchozí trasy pro směrování všech přenosů virtuálních počítačů Azure do místních nasazení.
+    - V tomto scénáři doporučujeme [vytvořit koncový bod síťové služby](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) ve vaší virtuální síti pro službu Microsoft. Storage, aby provoz replikace nezůstal na hranici Azure.
 
 ## <a name="replication-example"></a>Příklad replikace
 
-V případě podnikového nasazení obvykle mají úlohy rozdělit mezi více virtuálními sítěmi Azure, pomocí připojení k centrální rozbočovač pro externí připojení k Internetu a místními umístěními. Hvězdicová topologie se obvykle používá spolu s ExpressRoute.
+Podniková nasazení obvykle mají rozdělení úloh v několika virtuální sítě Azure s centrálním centrem pro připojení pro externí připojení k Internetu a místním webům. Topologie rozbočovače a paprsků se obvykle používá společně s ExpressRoute.
 
-![V místní – Azure pomocí ExpressRoute před převzetí služeb při selhání](./media/azure-vm-disaster-recovery-with-expressroute/site-recovery-with-expressroute-before-failover.png)
+![Místní – Azure s ExpressRoute před převzetím služeb při selhání](./media/azure-vm-disaster-recovery-with-expressroute/site-recovery-with-expressroute-before-failover.png)
 
-- **Oblast**. Aplikace nasazená v oblasti východní Asie Azure.
-- **Virtuální sítě paprsků**. Jsou aplikace nasazené ve dvou virtuálních sítích paprsků:
-    - **Zdroj vNet1**: 10.1.0.0/24.
-    - **Zdroj vNet2**: 10.2.0.0/24.
-    - Virtuální síť každého paprsku je připojen k **virtuální síť centra**.
-- **Virtuální síť centra**. Je virtuální síť centra **virtuální síť centra zdroje**: 10.10.10.0/24.
-  - Tato virtuální síť centra funguje jako vrátný.
-  - Veškerá komunikace mezi podsítěmi, projděte si toto centrum.
-    - **Podsítě virtuální sítě centra**. Virtuální síť centra má dvě podsítě:
-    - **Podsíť síťových virtuálních zařízení**: 10.10.10.0/25. Tato podsíť obsahuje síťové virtuální zařízení (. 10.10.10.10).
-    - **Podsíť brány**: 10.10.10.128/25. Tato podsíť obsahuje bránu ExpressRoute připojené k připojení ExpressRoute, který směruje k místní lokalitě přes privátní partnerský vztah domény směrování.
-- Místní datové centrum má připojení okruhu ExpressRoute prostřednictvím partnerů hrany v Hongkong –.
-- Všechny směrování je řízen pomocí tabulek Azure trasu (UDR).
-- Veškerý odchozí provoz mezi virtuálními sítěmi nebo do místního datového centra je směrován přes síťové virtuální zařízení.
+- **Oblast**. Aplikace se nasazují v oblasti Azure Východní Asie.
+- **Paprskový virtuální sítě**. Aplikace se nasazují ve dvou paprskových virtuální sítě:
+    - **VNet1 zdroje**: 10.1.0.0/24.
+    - **VNet2 zdroje**: 10.2.0.0/24.
+    - Každá virtuální síť paprsků je připojená k **virtuální síti centra**.
+- **Virtuální síť centra** Existuje **virtuální síť rozbočovače zdroje**virtuální sítě: 10.10.10.0/24.
+  - Tato virtuální síť centra funguje jako server gatekeeper.
+  - Veškerá komunikace napříč podsítěmi prochází přes toto centrum.
+    - **Podsítě virtuální sítě rozbočovače**. Virtuální síť centra má dvě podsítě:
+    - **Síťové virtuální zařízení podsíť**: 10.10.10.0/25. Tato podsíť obsahuje síťové virtuální zařízení (10.10.10.10).
+    - **Podsíť brány**: 10.10.10.128/25. Tato podsíť obsahuje ExpressRoute bránu připojenou k ExpressRoute připojení, které směruje na místní lokalitu prostřednictvím domény směrování privátního partnerského vztahu.
+- Místní datacentrum má připojení okruhu ExpressRoute prostřednictvím hraničního partnera v Hongkongu.
+- Všechna směrování se řídí prostřednictvím tabulek Azure Route (UDR).
+- Veškerý odchozí provoz mezi virtuální sítě nebo místním datacentrem se směruje přes síťové virtuální zařízení.
 
-### <a name="hub-and-spoke-peering-settings"></a>Střed a paprsek nastavení partnerského vztahu
+### <a name="hub-and-spoke-peering-settings"></a>Nastavení partnerského vztahu hub a paprsků
 
 #### <a name="spoke-to-hub"></a>Od paprsku k centru
 
 **Směr** | **Nastavení** | **Stav**
 --- | --- | ---
-Od paprsku k centru | Povolit virtuální síťová adresa | Enabled
+Od paprsku k centru | Povolení adresy virtuální sítě | Enabled
 Od paprsku k centru | Povolit přesměrovaný přenos | Enabled
 Od paprsku k centru | Povolit průchod bránou | Zakázáno
-Od paprsku k centru | Odebrání brány použít | Enabled
+Od paprsku k centru | Použít odebrání bran | Enabled
 
- ![Paprsků centra konfigurace partnerského vztahu](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
+ ![Konfigurace partnerského vztahu paprsků k rozbočovači](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
 #### <a name="hub-to-spoke"></a>Od centra k paprsku
 
 **Směr** | **Nastavení** | **Stav**
 --- | --- | ---
-Od centra k paprsku | Povolit virtuální síťová adresa | Enabled
+Od centra k paprsku | Povolení adresy virtuální sítě | Enabled
 Od centra k paprsku | Povolit přesměrovaný přenos | Enabled
 Od centra k paprsku | Povolit průchod bránou | Enabled
-Od centra k paprsku | Odebrání brány použít | Zakázáno
+Od centra k paprsku | Použít odebrání bran | Zakázáno
 
- ![Centrum paprsků konfigurace partnerského vztahu](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
+ ![Konfigurace partnerského vztahu mezi rozbočovači a paprsky](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
 
 ### <a name="example-steps"></a>Příklady kroků
 
-V našem příkladu následující by měl nastat při povolení replikace pro virtuální počítače Azure ve zdrojové síti:
+V našem příkladu by se při povolování replikace virtuálních počítačů Azure ve zdrojové síti mělo provést následující:
 
-1. Můžete [povolit replikaci](azure-to-azure-tutorial-enable-replication.md) pro virtuální počítač.
-2. Site Recovery vytvoří v cílové oblasti repliky virtuálních sítí, podsítí a podsítě brány.
-3. Mapování mezi sítěmi zdrojové a cílové sítě repliky, který vytvoří nastavení vytvoří Site Recovery.
-4. Ruční vytvoření brány virtuální sítě, připojení brány virtuální sítě, partnerský vztah virtuální sítě, nebo jakékoli jiné síťové prostředky nebo připojení.
-
-
-## <a name="fail-over-azure-vms-when-using-expressroute"></a>Při použití ExpressRoute převzetí služeb při selhání virtuálních počítačů Azure
-
-Po převzetí služeb při selhání virtuálních počítačů Azure do cílové oblasti Azure pomocí Site Recovery, které můžete k nim přistupovat pomocí ExpressRoute [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering).
-
-- Je potřeba připojení k cílové virtuální sítě s novým připojením ExpressRoute. Existující připojení ExpressRoute se automaticky převedena.
-- Způsob, ve kterém můžete nastavit připojení ExpressRoute k cílové síti, závisí na vaší topologie ExpressRoute.
+1. [Povolíte replikaci](azure-to-azure-tutorial-enable-replication.md) pro virtuální počítač.
+2. V cílové oblasti vytvoří Site Recovery virtuální sítě repliky, podsítě a podsítě brány.
+3. Site Recovery vytvoří mapování mezi zdrojovými sítěmi a cílovými sítěmi repliky, které vytvoří.
+4. Ručně vytvoříte brány virtuální sítě, připojení brány virtuální sítě, partnerský vztah virtuálních sítí nebo jakékoli jiné síťové prostředky nebo připojení.
 
 
-### <a name="access-with-two-circuits"></a>Přístup se dva okruhy
+## <a name="fail-over-azure-vms-when-using-expressroute"></a>Převzetí služeb při selhání virtuálních počítačů Azure při použití ExpressRoute
 
-#### <a name="two-circuits-with-two-peering-locations"></a>Dva okruhy s dvěma umístění partnerského vztahu
+Po selhání virtuálních počítačů Azure přes cílovou oblast Azure pomocí Site Recovery můžete k nim přistupovat pomocí privátního partnerského [vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering)ExpressRoute.
 
-Tato konfigurace pomáhá chránit okruhy ExpressRoute proti regionálního. Pokud vaše primární umístění partnerského vztahu ocitne mimo provoz, můžete pokračovat v připojení z jiného umístění.
-
-- Okruh připojené do produkčního prostředí je obvykle primární. Sekundární okruh obvykle má menší šířku pásma, které je možné zvýšit, pokud dojde k havárii.
-- Po převzetí služeb při selhání můžete vytvořit připojení k cílové síti ze sekundární okruh ExpressRoute. Alternativně můžete mít nastavené a připravené v případě havárie, snížit celkový čas obnovení připojení.
-- Souběžná připojení pro obě primární a cílové virtuální sítě Ujistěte se, že používá směrování jen na místní sekundární okruh a připojení po převzetí služeb při selhání.
-- Zdrojové a cílové virtuální sítě můžete dostávat nové IP adresy nebo zachovat shodné, po převzetí služeb při selhání. V obou případech je možné navázat připojení sekundární před převzetí služeb při selhání.
+- Musíte připojit ExpressRoute k cílové virtuální síti s novým připojením. Existující připojení ExpressRoute se automaticky nepřenáší.
+- Způsob, jakým nastavíte připojení ExpressRoute k cílové virtuální síti, závisí na vaší topologii ExpressRoute.
 
 
-#### <a name="two-circuits-with-single-peering-location"></a>Dva okruhy pomocí jednoho umístění partnerského vztahu
+### <a name="access-with-two-circuits"></a>Přístup se dvěma okruhy
 
-Tato konfigurace pomáhá chránit proti selhání primární okruh ExpressRoute, ale ne v případě, že jeden umístění partnerského vztahu ExpressRoute se ocitne mimo provoz, vliv na obou okruzích.
+#### <a name="two-circuits-with-two-peering-locations"></a>Dva okruhy se dvěma umístěními partnerských vztahů
 
-- Souběžná připojení z místního datového centra zdrojová virtuální síť s primární okruh a cílové virtuální sítě s sekundární okruh může mít.
-- Současných připojení k primární a cílové Ujistěte se, která pro místní směrování pouze používá sekundární okruh a připojení po převzetí služeb při selhání.
--   Obě okruhy nemůže připojit ke stejné virtuální síti okruhy vytvořené ve stejném umístění partnerského vztahu.
+Tato konfigurace pomáhá chránit okruhy ExpressRoute proti regionální havárii. Pokud se primární umístění partnerského vztahu neukončí, můžou připojení pokračovat z druhého umístění.
+
+- Okruh připojený k produkčnímu prostředí je obvykle primární. Sekundární okruh má typicky menší šířku pásma, což se dá zvýšit, pokud dojde k havárii.
+- Po převzetí služeb při selhání můžete navázat připojení ze sekundárního okruhu ExpressRoute k cílové virtuální síti. Případně můžete připojení nastavit a připravit v případě havárie, abyste snížili celkovou dobu obnovení.
+- Při současných připojeních k primárním i cílovým virtuální sítě se ujistěte, že místní směrování používá jenom sekundární okruh a připojení po převzetí služeb při selhání.
+- Zdrojový a cílový virtuální sítě můžou dostávat nové IP adresy nebo po převzetí služeb při selhání zachovat stejné. V obou případech je možné navázat sekundární připojení před převzetím služeb při selhání.
+
+
+#### <a name="two-circuits-with-single-peering-location"></a>Dva okruhy s jedním umístěním partnerského vztahu
+
+Tato konfigurace pomáhá chránit před selháním primárního okruhu ExpressRoute, ale ne v případě, že dojde k výpadku jednoho umístění partnerského vztahu ExpressRoute, což by ovlivnilo oba okruhy.
+
+- Můžete mít současná připojení z místního datacentra ke zdrojové virtuální síti s primárním okruhem a k cílové virtuální síti se sekundárním okruhem.
+- U současných připojení k primárnímu a cílovému cíli se ujistěte, že místní směrování používá pouze sekundární okruh a připojení po převzetí služeb při selhání.
+-   Oba okruhy nemůžete připojit ke stejné virtuální síti, pokud jsou okruhy vytvářeny ve stejném umístění partnerského vztahu.
 
 ### <a name="access-with-a-single-circuit"></a>Přístup pomocí jednoho okruhu
 
-V této konfiguraci je jenom jeden okruh Expressroute. I když je okruh má redundantní připojení v případě, že jeden ocitne mimo provoz, jednu trasu okruhu neposkytne odolnost, pokud partnerského vztahu oblast přestane fungovat. Všimněte si, že:
+V této konfiguraci je k dispozici pouze jeden okruh ExpressRoute. I když má okruh redundantní připojení v případě, že dojde k výpadku, jeden okruh trasy nebude poskytovat odolnost, pokud vaše oblast partnerského vztahu vychází z oblasti. Všimněte si, že:
 
-- Můžete replikovat virtuální počítače Azure do jakékoliv oblasti Azure v [stejné zeměpisné polohy](azure-to-azure-support-matrix.md#region-support). Není-li cílovou oblastí Azure ve stejném umístění jako zdroj, je potřeba povolit ExpressRoute Premium, pokud používáte jeden okruh ExpressRoute. Další informace o [umístění ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) a [ceny za ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
-- Nemůžete se připojit zdrojové a cílové virtuální sítě současně k okruhu Pokud se používá stejné adresní prostor IP adres v cílové oblasti. V tomto scénáři:    
-    -  Odpojit připojení na straně zdroje a potom musí vytvořit připojení na straně cíl. Tato změna připojení možnost využívat skripty jako součást plánu obnovení Site Recovery. Všimněte si, že:
-        - Selhání v oblasti pokud je primární oblast nedostupná operace odpojení, může selhat. Může to mít dopad vytvoření připojení k cílové oblasti.
-        - Pokud jste nevytvořili připojení v cílové oblasti a později obnoví primární oblasti, pokud může dojít k drops paketů dvě souběžná připojení se pokusí připojit k stejném adresním prostoru.
-        - Chcete-li tomu zabránit, ukončete ihned primární připojení.
-        - Za virtuální počítač navrácení služeb po obnovení do primární oblasti primární připojovací lze znovu navázat, po odpojení sekundárního připojení.
--   Pokud různé adresní prostory se používá v cílové virtuální sítě, můžete současně připojit k virtuálním sítím zdroj a cíl z stejnému okruhu ExpressRoute.
+- Virtuální počítače Azure můžete replikovat do jakékoli oblasti Azure ve [stejném geografickém umístění](azure-to-azure-support-matrix.md#region-support). Pokud cílová oblast Azure není ve stejném umístění jako zdroj, musíte povolit ExpressRoute Premium, pokud používáte jeden okruh ExpressRoute. Přečtěte si o [ExpressRoute umístěních](../expressroute/expressroute-locations.md) a [cenách ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/).
+- Zdrojový a cílový virtuální sítě nejde současně připojit k okruhu, pokud je v cílové oblasti použit stejný adresní prostor IP adres. V tomto scénáři:    
+    -  Odpojte zdrojové připojení a pak vytvořte cílové připojení na straně. Tato změna připojení se dá skriptovat jako součást plánu obnovení Site Recovery. Všimněte si, že:
+        - Pokud je primární region nepřístupná, může při selhání dojít k selhání operace odpojení. To může mít vliv na vytvoření připojení do cílové oblasti.
+        - Pokud jste připojení vytvořili v cílové oblasti a primární oblast se obnoví později, může docházet k poklesu paketů v případě, že se dvě současná připojení pokusí připojit ke stejnému adresnímu prostoru.
+        - Chcete-li tomu zabránit, ukončete okamžitě primární připojení.
+        - Po navrácení služeb po obnovení virtuálního počítače do primární oblasti se po odpojení sekundárního připojení může znovu vytvořit primární připojení.
+-   Pokud se v cílové virtuální síti používá jiný adresní prostor, můžete se připojit ke zdrojovému a cílovému virtuální sítě ze stejného okruhu ExpressRoute.
 
 
 ## <a name="failover-example"></a>Příklad převzetí služeb při selhání
 
-V našem příkladu používáme následující topologie:
+V našem příkladu používáme následující topologii:
 
-- Dva různé okruhy ExpressRoute ve dvou různých umístění partnerského vztahu.
-- Zachovat privátní IP adresy pro virtuální počítače Azure po převzetí služeb při selhání.
-- Cílová oblast pro obnovení je Azure jihovýchodní Asie.
-- Sekundární připojení okruhu ExpressRoute pokládáme stav, prostřednictvím partnera edge in Singapore.
+- Dva různé okruhy ExpressRoute ve dvou různých umístěních partnerských vztahů.
+- Po převzetí služeb při selhání uchování privátních IP adres pro virtuální počítače Azure.
+- Cílová oblast obnovení je Azure jihovýchodní Asie.
+- Sekundární připojení okruhu ExpressRoute je vytvořeno prostřednictvím hraničního partnera v Singapuru.
 
-Pro jednoduchou topologie, který používá jeden okruh ExpressRoute pomocí stejné IP adresy po převzetí služeb při selhání [k tomuto článku](site-recovery-retain-ip-azure-vm-failover.md#hybrid-resources-full-failover).
+V případě jednoduché topologie, která používá jeden okruh ExpressRoute se stejnou IP adresou po převzetí služeb při selhání, [si přečtěte tento článek](site-recovery-retain-ip-azure-vm-failover.md#hybrid-resources-full-failover).
 
 ### <a name="example-steps"></a>Příklady kroků
-Co je potřeba automatizovat zotavení v tomto příkladu se pro:
+Chcete-li v tomto příkladu automatizovat obnovení, je třeba provést následující kroky:
 
-1. Postupujte podle kroků pro nastavení replikace.
-2. [Převzetí služeb při selhání virtuálních počítačů Azure](azure-to-azure-tutorial-failover-failback.md), tímto postupem další během nebo po převzetí služeb.
+1. Při nastavování replikace postupujte podle pokynů.
+2. Převzetí služeb při selhání [virtuálními počítači Azure](azure-to-azure-tutorial-failover-failback.md)s těmito dalšími kroky během nebo po převzetí služeb při selhání.
 
-    a. Vytvořte bránu Azure ExpressRoute ve virtuální síti centra cílové oblasti. To je nutné se připojit virtuální síť centra cíl k okruhu ExpressRoute.
+    a. Vytvořte bránu Azure ExpressRoute ve virtuální síti centra cílové oblasti. To je potřeba k připojení cílové virtuální sítě rozbočovače k okruhu ExpressRoute.
 
-    b. Vytvoření připojení z virtuální sítě centra cíl k cíli okruh ExpressRoute.
+    b. Vytvořte připojení z cílové virtuální sítě rozbočovače k cílovému okruhu ExpressRoute.
 
-    c. Nastavte partnerské vztahy virtuálních sítí mezi centrem cílové oblasti a virtuálními sítěmi paprsků. Vlastnosti partnerského vztahu v cílové oblasti budou stejné jako ty ve zdrojové oblasti.
+    c. Nastavte partnerské vztahy virtuální sítě mezi virtuálními sítěmi oblasti a paprsky cílové oblasti. Vlastnosti partnerského vztahu v cílové oblasti budou stejné jako u zdrojové oblasti.
 
-    d. Nastavte trasy definované uživatelem ve virtuální síti centra a dvě virtuální sítě paprsků.
+    d. Nastavte udr ve virtuální síti centra a dvě paprskové virtuální sítě.
 
-    - Vlastnosti straně cíle trasy definované uživatelem se shodují s nastaveními na straně zdroje při pomocí stejné IP adres.
-    - S jinou cílovou IP adresy třeba upravit odpovídajícím způsobem trasy definované uživatelem.
+    - Vlastnosti udr cílové strany jsou stejné jako u na straně zdroje při použití stejných IP adres.
+    - V případě odlišných cílových IP adres by se udr měl odpovídajícím způsobem upravit.
 
 
-Jako součást možnost využívat skripty výše uvedené kroky [plánu obnovení](site-recovery-create-recovery-plans.md). V závislosti na připojení k aplikaci a požadavky na čas obnovení je možné výše uvedené kroky provést i před spuštěním převzetí služeb při selhání.
+Výše uvedené kroky lze vytvořit pomocí skriptu v rámci [plánu obnovení](site-recovery-create-recovery-plans.md). V závislosti na požadavcích na připojení a dobu obnovení aplikace můžete před spuštěním převzetí služeb při selhání dokončit i výše uvedené kroky.
 
 #### <a name="after-recovery"></a>Po obnovení
 
-Po obnovení virtuálních počítačů a dokončením připojení, je obnovení prostředí.
+Po obnovení virtuálních počítačů a dokončení připojení je prostředí obnovení následující.
 
-![V místní – Azure pomocí ExpressRoute po převzetí služeb při selhání](./media/azure-vm-disaster-recovery-with-expressroute/site-recovery-with-expressroute-after-failover.png)
+![Místní – Azure s ExpressRoute po převzetí služeb při selhání](./media/azure-vm-disaster-recovery-with-expressroute/site-recovery-with-expressroute-after-failover.png)
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o používání [plány obnovení](site-recovery-create-recovery-plans.md) automatizovat převzetí služeb při selhání aplikace.
+Další informace o použití [plánů obnovení](site-recovery-create-recovery-plans.md) k automatizaci převzetí služeb při selhání aplikace.

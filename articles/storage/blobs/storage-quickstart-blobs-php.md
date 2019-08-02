@@ -1,20 +1,18 @@
 ---
 title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí PHP | Microsoft Docs
 description: Rychle se naučíte, jak přenášet objekty do a z úložiště objektů blob v Azure pomocí PHP.
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: php
-ms.topic: quickstart
-ms.date: 11/14/2018
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 790c6a372021542daa1098e94209c91b7bcecfd5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/14/2018
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149462"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726393"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Přenos objektů do a z úložiště objektů blob v Azure pomocí PHP
 V tomto rychlém startu zjistíte, jak pomocí PHP nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
@@ -124,7 +122,7 @@ V této části vytvoříte instanci klienta úložiště Azure, instanci objekt
 
 Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Nejčastěji používané jsou objekty blob bloku, které se používají také v tomto rychlém startu.  
 
-Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody **createBlockBlob()**. 
+Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody **createBlockBlob()** . 
 
 Ukázkový kód vezme místní soubor a nahraje ho do Azure. Soubor se uloží jako **myfile** a název objektu blob se v kódu uloží jako **fileToUpload**. Následující příklad nahraje soubor do kontejneru **quickstartblobs**.
 
@@ -143,11 +141,11 @@ Ukázkový kód vezme místní soubor a nahraje ho do Azure. Soubor se uloží j
     $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 ```
 
-Pokud chcete upravit část obsahu objektu blob bloku, použijte metodu **createblocklist()**. Objekty blob bloku můžou mít velikost až 4,7 TB a můžou být čímkoli od tabulky aplikace Excel po velké videosoubory. Objekty blob stránky se používají hlavně pro soubory VHD využívané virtuálními počítači IaaS. Doplňovací objekty blob se používají k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Doplňovací objekt blob by se měl používat v modelu s jedním zapisujícím procesem. Většina objektů blob ukládaných do úložiště jsou typu blok.
+Pokud chcete upravit část obsahu objektu blob bloku, použijte metodu **createblocklist()** . Objekty blob bloku můžou mít velikost až 4,7 TB a můžou být čímkoli od tabulky aplikace Excel po velké videosoubory. Objekty blob stránky se používají hlavně pro soubory VHD využívané virtuálními počítači IaaS. Doplňovací objekty blob se používají k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Doplňovací objekt blob by se měl používat v modelu s jedním zapisujícím procesem. Většina objektů blob ukládaných do úložiště jsou typu blok.
 
 ### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Seznam souborů v kontejneru můžete získat pomocí metody **listBlobs()**. Následující kód načte seznam objektů blob, pak je ve smyčce projde a zobrazí názvy nalezených objektů blob v kontejneru.  
+Seznam souborů v kontejneru můžete získat pomocí metody **listBlobs()** . Následující kód načte seznam objektů blob, pak je ve smyčce projde a zobrazí názvy nalezených objektů blob v kontejneru.  
 
 ```PHP
     $listBlobsOptions = new ListBlobsOptions();
@@ -168,7 +166,7 @@ Seznam souborů v kontejneru můžete získat pomocí metody **listBlobs()**. N�
 
 ### <a name="get-the-content-of-your-blobs"></a>Získání obsahu objektů blob
 
-Obsah objektů blob získáte pomocí metody **getBlob()**. Následující kód zobrazí obsah objektu blob nahraného v předchozí části.
+Obsah objektů blob získáte pomocí metody **getBlob()** . Následující kód zobrazí obsah objektu blob nahraného v předchozí části.
 
 ```PHP
     $blob = $blobClient->getBlob($containerName, $fileToUpload);
@@ -176,7 +174,7 @@ Obsah objektů blob získáte pomocí metody **getBlob()**. Následující kód 
 ```
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu, můžete celý kontejner odstranit pomocí metody **deleteContainer()**. Pokud už nepotřebujete vytvořené soubory, pomocí metody **deleteBlob()** je odstraníte.
+Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu, můžete celý kontejner odstranit pomocí metody **deleteContainer()** . Pokud už nepotřebujete vytvořené soubory, pomocí metody **deleteBlob()** je odstraníte.
 
 ```PHP
     // Delete blob.

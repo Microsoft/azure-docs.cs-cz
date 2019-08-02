@@ -1,20 +1,20 @@
 ---
 title: Vyberte správnou metodu ověřování pro řešení hybridní identity Azure AD | Microsoft Docs
 description: Tato příručka pomáhá CEOs, ředitelé informačních technologií, CISO, hlavní architekty identity, podnikovým architektům a organizacím pro rozhodování IT, kteří zodpovídají za výběr metody ověřování pro řešení hybridních identit v Azure AD ve středně velkých organizacích.
-services: active-directory
 keywords: ''
 author: martincoetzer
 ms.author: martinco
 ms.date: 04/12/2018
 ms.topic: article
-ms.service: active-directory
+ms.service: security
+ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 8b096720bd1f3c4d29b0077a00f887df854cc0af
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: e1910348b53cf147530037283442f453edf2694f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68613767"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727551"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity. 
 
@@ -178,7 +178,7 @@ Následující diagramy popisují komponenty architektury nejvyšší úrovně, 
 |:-----|:-----|:-----|:-----|
 |Kde k ověřování dochází?|V cloudu|V cloudu po výměně zabezpečeného ověřování hesla pomocí místního ověřovacího agenta|Místní|
 |Jaké jsou požadavky na místní server mimo systém zřizování: Azure AD Connect?|Žádné|Jeden server pro každého dalšího ověřovacího agenta|Dva nebo více AD FS serverů<br><br>Dva nebo více serverů WAP v hraniční/DMZ síti|
-|Jaké jsou požadavky na místní Internet a sítě mimo zřizovací systém?|Žádný|[Odchozí internetový přístup](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) ze serverů používajících ověřovací agenty|[Příchozí internetový přístup](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) k serverům WAP v hraniční síti<br><br>Příchozí síťový přístup k serverům AD FS ze serverů WAP v hraniční síti<br><br>Vyrovnávání zatížení sítě|
+|Jaké jsou požadavky na místní Internet a sítě mimo zřizovací systém?|Žádné|[Odchozí internetový přístup](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) ze serverů používajících ověřovací agenty|[Příchozí internetový přístup](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) k serverům WAP v hraniční síti<br><br>Příchozí síťový přístup k serverům AD FS ze serverů WAP v hraniční síti<br><br>Vyrovnávání zatížení sítě|
 |Existuje požadavek na certifikát SSL?|Ne|Ne|Ano|
 |Existuje nějaké řešení pro monitorování stavu?|Nevyžadováno|Stav agenta poskytnutý [centrem pro správu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|
 |Přihlašuje uživatelé k prostředkům cloudu jednotné přihlašování ze zařízení připojených k doméně v podnikové síti?|Ano, [bez problémů](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) s jednotným přihlašováním|Ano, [bez problémů](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) s jednotným přihlašováním|Ano|

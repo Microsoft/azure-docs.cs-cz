@@ -1,20 +1,19 @@
 ---
 title: Horké, studené a archivní úrovně přístupu pro objekty blob – Azure Storage
 description: Horká, studená a archivní úroveň přístupu pro účty Azure Storage.
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.topic: conceptual
-ms.date: 03/23/2019
 ms.author: mhopkins
-ms.reviewer: clausjor
+ms.date: 03/23/2019
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: dcfec25cd2bf01d59a7c0b3f72d8b1a618a9f699
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.topic: conceptual
+ms.reviewer: clausjor
+ms.openlocfilehash: d370a8ac93de20596b2c15f52427d09f11c2b1bd
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565993"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722061"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: horká, studená a archivní úroveň přístupu
 
@@ -236,7 +235,7 @@ Ovládání datových vrstev na úrovni objektů blob a úložiště archivu pod
 
 Úložiště dat spolu s dalšími omezeními se nastavuje na úrovni účtu a ne na úrovni přístupu. Proto se můžete rozhodnout použít celý limit v jedné vrstvě nebo ve všech třech vrstvách. Další informace najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 ### <a name="evaluate-hot-cool-and-archive-in-gpv2-blob-storage-accounts"></a>Vyhodnocení horké, studené a archivní úrovně v účtech GPv2 a Blob Storage
 

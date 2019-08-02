@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37634a76b0c8e08d7a4688a7ba3fd913391cd408
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400453"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726139"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopírování dat ze služby Marketo pomocí Azure Data Factory (Preview)
 
@@ -33,7 +33,7 @@ Kopírovat data ze služby Marketo pro jakékoli podporovaného úložiště dat
 Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
 
 >[!NOTE]
->Tento konektor služby Marketo je postavená na službě Marketo REST API. Mějte na paměti, služby Marketo má [limit souběžných žádostí](https://developers.marketo.com/rest-api/) na straně služby. Pokud dosáhnete chyby se říká "při pokusu o použití rozhraní REST API došlo k chybě: Max. rychlost překročil se limit "100" s "20" sekund (606) "nebo" při pokusu o použití rozhraní REST API došlo k chybě: Souběžný přístup omezit '10' bylo dosaženo (615) ", zvažte snížení kopírování souběžných spuštění aktivit a snížit počet požadavků ve službě.
+>Tento konektor služby Marketo je postavená na službě Marketo REST API. Mějte na paměti, služby Marketo má [limit souběžných žádostí](https://developers.marketo.com/rest-api/) na straně služby. Pokud dojde k chybám, při pokusu o použití REST API došlo k chybě: Limit maximální frekvence 100 se překročil v 20 s (606) nebo při pokusu o použití REST API došlo k chybě: Dosáhlo se limitu souběžného přístupu 10 (615). zvažte omezení spuštění souběžné aktivity kopírování, aby se snížil počet požadavků na službu.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -47,7 +47,7 @@ Pro Marketo propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Marketo** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Marketo** | Ano |
 | endpoint | Koncový bod služby Marketo serveru. (to znamená 123-ABC-321.mktorest.com)  | Ano |
 | clientId | Id služby Marketo klienta.  | Ano |
 | clientSecret | Tajný klíč klienta služby Marketo. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -82,7 +82,7 @@ Pro kopírování dat ze služby Marketo, nastavte vlastnost typ datové sady na
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **MarketoObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **MarketoObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -92,11 +92,12 @@ Pro kopírování dat ze služby Marketo, nastavte vlastnost typ datové sady na
     "name": "MarketoDataset",
     "properties": {
         "type": "MarketoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Marketo linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -111,7 +112,7 @@ Pro kopírování dat ze služby Marketo, nastavte typ zdroje v aktivitě kopír
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **MarketoSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MarketoSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Activitiy_Types"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

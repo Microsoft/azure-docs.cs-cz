@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0130dde483db4563926076f9bf9e641c14b1c117
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f961f472c0b00932bf5ee6302af58f39fa8421ed
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688767"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720451"
 ---
 # <a name="restore-azure-vms"></a>Obnovení virtuálních počítačů Azure
 
@@ -112,7 +112,8 @@ Jako jednu z [možností obnovení](#restore-options)můžete vytvořit disk z b
 
 4. V **nastavení obnovit konfiguraci**vyberte **OK**. V části **obnovit**klikněte na **obnovit** , aby se spustila operace obnovení.
 
-Během obnovení virtuálního počítače Azure Backup nepoužívá účet úložiště. Ale v případě **obnovení disků** a **okamžitého obnovení**se používá účet úložiště k ukládání šablon.
+Když virtuální počítač používá spravované disky a vyberete možnost **vytvořit virtuální počítač** , Azure Backup nepoužije zadaný účet úložiště. V případě **obnovení disků** a okamžitého **obnovení**se účet úložiště používá jenom pro ukládání šablony. Spravované disky se vytvářejí v zadané skupině prostředků.
+Když virtuální počítač používá nespravované disky, obnoví se jako objekty blob do účtu úložiště.
 
 ### <a name="use-templates-to-customize-a-restored-vm"></a>Přizpůsobení obnoveného virtuálního počítače pomocí šablon
 
@@ -163,7 +164,7 @@ K dispozici je řada běžných scénářů, ve kterých může být nutné obno
 **Virtuální počítače připojené k zóně** | Azure Backup podporuje zálohování a obnovení připnutých virtuálních počítačů v zóně. [Víc se uč](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>Sledovat operaci obnovení
-Po aktivaci operace obnovení vytvoří služba Backup úlohu pro sledování. Azure Backup zobrazuje oznámení o úloze na portálu. Pokud nejsou viditelné, klikněte na symbol **oznámení** a zobrazte je.
+Po aktivaci operace obnovení vytvoří služba Backup úlohu pro sledování. Azure Backup zobrazuje oznámení o úloze na portálu. Pokud nejsou viditelné, vyberte symbol **oznámení** a pak výběrem **Zobrazit všechny úlohy** zobrazte stav procesu obnovení.
 
 ![Obnovení aktivované](./media/backup-azure-arm-restore-vms/restore-notification1.png)
 
@@ -194,7 +195,7 @@ Po obnovení virtuálního počítače je potřeba poznamenat si několik věcí
 - Pokud jste virtuální počítač obnovili do stejné skupiny prostředků, která má stejný název jako původně zálohovaný virtuální počítač, zálohování pokračuje po obnovení na VIRTUÁLNÍm počítači.
 - Pokud jste virtuální počítač obnovili do jiné skupiny prostředků nebo jste pro obnovený virtuální počítač určili jiný název, musíte pro obnovený virtuální počítač nastavit zálohu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Pokud se během procesu obnovení setkáte s problémy, [Projděte si](backup-azure-vms-troubleshoot.md#restore) běžné problémy a chyby.
 - Po obnovení virtuálního počítače se dozvíte víc o [správě virtuálních počítačů](backup-azure-manage-vms.md) .

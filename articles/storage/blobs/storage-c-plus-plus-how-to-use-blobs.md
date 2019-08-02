@@ -1,46 +1,44 @@
 ---
-title: Používání úložiště objektů (Blob) z jazyka C++ – Azure | Dokumentace Microsoftu
-description: Store nestrukturovaných dat v cloudu s využitím úložiště objektů Blob v Azure (objekt).
-services: storage
+title: Jak používat úložiště objektů (BLOB) z C++ – Azure | Microsoft Docs
+description: Ukládejte nestrukturovaná data v cloudu pomocí úložiště objektů BLOB (Object) Azure.
 author: mhopkins-msft
-ms.service: storage
-ms.topic: conceptual
-ms.date: 03/21/2018
 ms.author: mhopkins
-ms.reviewer: seguler
+ms.date: 03/21/2018
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 32601fc15e6b6a25a1005b6d95499d4aae4fb0d2
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.topic: conceptual
+ms.openlocfilehash: f64856d5b0140d529e939d92d4be61b074928d6e
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461185"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726428"
 ---
-# <a name="how-to-use-blob-storage-from-c"></a>Používání úložiště Blob z jazyka C++
+# <a name="how-to-use-blob-storage-from-c"></a>Jak používat úložiště objektů BLOB zC++
 
-Tato příručka ukazuje, jak provádět běžné scénáře pomocí úložiště objektů Blob v Azure. Příklady ukazují, jak nahrání, výpisu, stahování a odstraňování objektů BLOB. Ukázky jsou napsané v C++ a využívají [klientskou knihovnu služby Azure Storage pro C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).   
+Tato příručka ukazuje, jak provádět běžné scénáře pomocí úložiště objektů BLOB v Azure. Příklady ukazují, jak nahrát, vypsat, stáhnout a odstranit objekty blob. Ukázky jsou napsané v C++ a využívají [klientskou knihovnu služby Azure Storage pro C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).   
 
-Další informace o službě Blob storage najdete v tématu [seznámení se službou Azure Blob storage](storage-blobs-introduction.md).
+Další informace o službě BLOB Storage najdete v tématu [Úvod do úložiště objektů BLOB v Azure](storage-blobs-introduction.md).
 
 > [!NOTE]
-> Tato příručka je určená pro klientskou knihovnu služby Azure Storage pro C++ verze 1.0.0 nebo novější. Společnost Microsoft doporučuje používat nejnovější verzi klientské knihovny úložiště pro C++, k dispozici prostřednictvím [NuGet](https://www.nuget.org/packages/wastorage) nebo [Githubu](https://github.com/Azure/azure-storage-cpp).
+> Tato příručka je určená pro klientskou knihovnu služby Azure Storage pro C++ verze 1.0.0 nebo novější. Microsoft doporučuje používat nejnovější verzi klientské knihovny pro úložiště pro C++, která je dostupná přes [NuGet](https://www.nuget.org/packages/wastorage) nebo [GitHub](https://github.com/Azure/azure-storage-cpp).
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-c-application"></a>Vytvoření aplikace C++
-V této příručce se bude používat funkce úložiště, které můžou běžet v rámci aplikace v jazyce C++.  
+V této příručce budete používat funkce úložiště, které se dají spouštět v rámci C++ aplikace.  
 
 Abyste mohli pokračovat, musíte si nainstalovat klientskou knihovnu služby Azure Storage pro C++ a vytvořit ve svém předplatném účet úložiště Azure.   
 
 Klientskou knihovnu služby Azure Storage pro C++ můžete nainstalovat následujícími způsoby:
 
-* **Linux:** Postupujte podle pokynů v [Klientská knihovna Azure Storage pro C++ – soubor README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) stránky.  
-* **Windows:** V sadě Visual Studio klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**. Zadejte následující příkaz do [Konzola správce balíčků NuGet](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) a stiskněte klávesu **ENTER**.  
+* **Linux** Postupujte podle pokynů uvedených na stránce [klientské knihovny Azure Storage pro C++ Readme](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) .  
+* **Windows:** V sadě Visual Studio klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**. Do [konzoly Správce balíčků NuGet](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) zadejte následující příkaz a stiskněte klávesu **ENTER**.  
   
      Install-Package wastorage
 
-## <a name="configure-your-application-to-access-blob-storage"></a>Konfigurace aplikace pro přístup k úložišti objektů Blob
-Přidejte následující příkazy do horní části souboru C++, ve které chcete použít Azure storage rozhraní API pro přístup k objektům BLOB obsahují:  
+## <a name="configure-your-application-to-access-blob-storage"></a>Konfigurace aplikace pro přístup k úložišti objektů BLOB
+Přidejte následující příkazy include do horní části C++ souboru, kde chcete používat rozhraní API služby Azure Storage pro přístup k objektům blob:  
 
 ```cpp
 #include <was/storage_account.h>
@@ -49,34 +47,34 @@ Přidejte následující příkazy do horní části souboru C++, ve které chce
 #include <cpprest/containerstream.h> 
 ```
 
-## <a name="setup-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce služby Azure storage
-Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění v klientské aplikaci, musíte zadat připojovací řetězec úložiště v následujícím formátu, pomocí názvu účtu úložiště a přístupový klíč úložiště pro účet úložiště uvedený v seznamu [webu Azure Portal](https://portal.azure.com) pro *AccountName* a *AccountKey* hodnoty. Informace o účtech úložiště a přístupové klíče najdete v tématu [o účtech Azure Storage](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:  
+## <a name="setup-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce úložiště Azure
+Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění v klientské aplikaci musíte zadat připojovací řetězec úložiště v následujícím formátu pomocí názvu účtu úložiště a přístupového klíče úložiště pro účet úložiště, který je uvedený na webu [Azure Portal](https://portal.azure.com) pro název *účtu* . a *AccountKey* hodnoty. Informace o účtech úložiště a přístupových klíčích najdete v tématu [informace o Azure Storagech účtech](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:  
 
 ```cpp
 // Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-K testování aplikace v místním počítači Windows, můžete použít Microsoft Azure [emulátor úložiště](../storage-use-emulator.md) , který se instaluje s [sady Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště je nástroj, který simuluje objektů Blob, Queue a Table služeb dostupných v Azure na svém místním vývojovém počítači. Následující příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce k místnímu emulátoru úložiště:
+K otestování aplikace na místním počítači s Windows můžete použít [emulátor úložiště](../storage-use-emulator.md) Microsoft Azure, který je nainstalovaný spolu se sadou [Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště je nástroj, který simuluje služby objektů blob, front a tabulek dostupných v Azure na vašem místním vývojovém počítači. Následující příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce k místnímu emulátoru úložiště:
 
 ```cpp
 // Define the connection-string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Chcete-li spustit emulátor úložiště Azure, vyberte **Start** tlačítko nebo stisknutím klávesy **Windows** klíč. Začněte psát **emulátoru úložiště Azure**a vyberte **emulátor úložiště Microsoft Azure** ze seznamu aplikací.  
+Emulátor úložiště Azure spustíte tak, že vyberete tlačítko **Start** nebo stisknete klávesu **Windows** . Začněte psát **Azure Storage emulátoru**a v seznamu aplikací vyberte **emulátor úložiště Microsoft Azure** .  
 
 V následujících ukázkách se předpokládá, že jste pomocí některé z těchto dvou metod získali připojovací řetězec úložiště.  
 
-## <a name="retrieve-your-storage-account"></a>Načtení vašeho účtu úložiště
-Můžete použít **cloud_storage_account** pro reprezentaci informace o vašem účtu úložiště. K načtení informací o vašem účtu úložiště z připojovacího řetězce úložiště můžete použít metodu **parse**.  
+## <a name="retrieve-your-storage-account"></a>Načtení účtu úložiště
+K reprezentaci informací o účtu úložiště můžete použít třídu **cloud_storage_account** . K načtení informací o vašem účtu úložiště z připojovacího řetězce úložiště můžete použít metodu **parse**.  
 
 ```cpp
 // Retrieve storage account from connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-V dalším kroku získáte odkaz na **cloud_blob_client** třídy, protože umožňuje načíst objekty, které představují kontejnery a objekty BLOB uložené v úložišti objektů Blob. Následující kód vytvoří **cloud_blob_client** pomocí objekt účtu úložiště, můžeme načíst výše:  
+Potom Získejte odkaz na třídu **cloud_blob_client** , protože umožňuje načíst objekty, které reprezentují kontejnery a objekty blob uložené v úložišti objektů BLOB. Následující kód vytvoří objekt **cloud_blob_client** pomocí objektu účtu úložiště, který jsme získali výše:  
 
 ```cpp
 // Create the blob client.
@@ -109,7 +107,7 @@ catch (const std::exception& e)
 }  
 ```
 
-Ve výchozím nastavení nový kontejner je privátní a je nutné zadat přístupový klíč úložiště pro objekty BLOB můžete stáhnout z tohoto kontejneru. Pokud chcete zpřístupnit soubory (objektů BLOB) v rámci kontejneru, můžete nastavit kontejner, aby se veřejné, pomocí následujícího kódu:  
+Ve výchozím nastavení je nový kontejner privátní a musíte zadat přístupový klíč k úložišti pro stahování objektů BLOB z tohoto kontejneru. Pokud chcete, aby byly soubory (objekty BLOB) v kontejneru dostupné všem uživatelům, můžete nastavit, aby byl kontejner veřejný, a to pomocí následujícího kódu:  
 
 ```cpp
 // Make the blob container publicly accessible.
@@ -118,12 +116,12 @@ permissions.set_public_access(azure::storage::blob_container_public_access_type:
 container.upload_permissions(permissions);  
 ```
 
-Kdokoli na Internetu může vidět objekty BLOB ve veřejném kontejneru, ale můžete upravit nebo odstranit jenom v případě, že máte příslušný přístupový klíč.  
+Kdokoli na internetu může vidět objekty blob ve veřejném kontejneru, ale můžete je upravit nebo odstranit jenom v případě, že máte příslušný přístupový klíč.  
 
 ## <a name="how-to-upload-a-blob-into-a-container"></a>Postup: Nahrání objektu blob do kontejneru
-Azure Blob storage podporuje bloku, objekty BLOB a objekty BLOB stránky. Ve většině případů se jako vhodný typ k použití doporučuje objekt blob bloku.  
+Úložiště objektů BLOB v Azure podporuje objekty blob bloku a objekty blob stránky. Ve většině případů se jako vhodný typ k použití doporučuje objekt blob bloku.  
 
-Když chcete nahrát soubor do objektu blob bloku, získejte odkaz na kontejner a použijte ho k získání odkazu objektu blob bloku. Jakmile budete mít odkaz na objekt blob, můžete nahrát jakýkoli proud dat k němu voláním **upload_from_stream** metody. Tahle operace vytvoří objekt blob, pokud už dříve neexistoval, nebo ho přepíše, pokud už existoval. Následující příklad ukazuje, jak nahrát objekt blob do kontejneru, zároveň předpokládá, že kontejner byl již vytvořen.  
+Když chcete nahrát soubor do objektu blob bloku, získejte odkaz na kontejner a použijte ho k získání odkazu objektu blob bloku. Jakmile budete mít odkaz na objekt blob, můžete do něj nahrát libovolný datový proud zavoláním metody **upload_from_stream** . Tahle operace vytvoří objekt blob, pokud už dříve neexistoval, nebo ho přepíše, pokud už existoval. Následující příklad ukazuje, jak nahrát objekt blob do kontejneru, zároveň předpokládá, že kontejner byl již vytvořen.  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -153,10 +151,10 @@ azure::storage::cloud_block_blob blob3 = container.get_block_blob_reference(U("m
 blob3.upload_text(U("other text"));  
 ```
 
-Alternativně můžete použít **upload_from_file** metodu pro nahrání souboru do objektu blob bloku.
+Alternativně můžete použít metodu **upload_from_file** pro nahrání souboru do objektu blob bloku.
 
 ## <a name="how-to-list-the-blobs-in-a-container"></a>Postup: Zobrazí seznam objektů blob v kontejneru
-Pokud chcete mít seznam objektů blob v kontejneru, nejdřív získejte odkaz na kontejner. Pak můžete použít kontejneru **list_blobs** metodu pro načtení objektů BLOB a/nebo obsažené adresáře. Pro přístup k bohaté sadě vlastností a metod vrácené **list_blob_item**, je třeba zavolat **list_blob_item.as_blob** metodu k získání **cloud_blob** objektu, nebo **list_blob.as_directory** metodu k získání objektu cloud_blob_directory. Následující kód ukazuje, jak načíst a výstup URI pro každou položku v **Moje ukázkový kontejner** kontejneru:
+Pokud chcete mít seznam objektů blob v kontejneru, nejdřív získejte odkaz na kontejner. Pak můžete pomocí metody **list_blobs** kontejneru načíst objekty blob nebo adresáře, které jsou v něm. Chcete-li získat přístup k bohatě se sadou vlastností a metod vrácených **list_blob_item**, je nutné volat metodu **list_blob_item. as _blob** pro získání objektu **cloud_blob** nebo metody **list_blob. as _directory** pro získání cloud_blob_. objekt adresáře. Následující kód ukazuje, jak načíst a vystavit výstup identifikátoru URI každé položky v kontejneru **My-Sample-Container** :
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -183,10 +181,10 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 }
 ```
 
-Další podrobnosti týkající se operací výpisu najdete v tématu [výpis prostředků úložiště Azure v jazyce C++](../storage-c-plus-plus-enumeration.md).
+Další informace o výpisu operací najdete [v tématu seznam Azure Storage prostředků C++v ](../storage-c-plus-plus-enumeration.md).
 
 ## <a name="how-to-download-blobs"></a>Postup: Stáhnout objekty blob
-Pokud chcete stáhnout objekty BLOB, nejdřív načtěte odkaz objektu blob a pak zavolat **download_to_stream** metody. V následujícím příkladu **download_to_stream** způsob přenosu obsahu objektu blob na objekt datového proudu, který je pak možné zachovat do místního souboru.  
+Pokud chcete stáhnout objekty blob, nejdřív načtěte odkaz na objekt BLOB a potom zavolejte metodu **download_to_stream** . Následující příklad používá metodu **download_to_stream** k přenosu obsahu objektu blob do objektu streamu, který můžete uložit do místního souboru.  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -213,8 +211,8 @@ outfile.write((char *)&data[0], buffer.size());
 outfile.close();  
 ```
 
-Alternativně můžete použít **download_to_file** metody ke stahování obsahu objektu blob do souboru.
-Kromě toho můžete také použít **download_text** metody ke stahování obsahu objektu blob jako textový řetězec.  
+Alternativně můžete pomocí metody **download_to_file** stáhnout obsah objektu blob do souboru.
+Kromě toho můžete také pomocí metody **download_text** stáhnout obsah objektu BLOB jako textový řetězec.  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -234,7 +232,7 @@ utility::string_t text = text_blob.download_text();
 ```
 
 ## <a name="how-to-delete-blobs"></a>Postup: Odstranění objektů blob
-Chcete-li odstranit objekt blob, nejdřív získejte odkaz na objekt blob a poté zavolejte **delete_blob** metoda na něm.  
+Pokud chcete odstranit objekt blob, nejdřív Získejte odkaz na objekt BLOB a pak na něj zavolejte metodu **delete_blob** .  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -254,12 +252,12 @@ blockBlob.delete_blob();
 ```
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili základy používání blob storage, použijte tyto odkazy na další informace o službě Azure Storage.  
+Teď, když jste se naučili základy služby Blob Storage, můžete získat další informace o Azure Storage pomocí těchto odkazů.  
 
-* [Používání úložiště Queue z jazyka C++](../storage-c-plus-plus-how-to-use-queues.md)
-* [Používání úložiště Table z jazyka C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [Seznam prostředků služby Azure Storage v C++](../storage-c-plus-plus-enumeration.md)
-* [Klientská knihovna pro úložiště pro C++ – referenční informace](https://azure.github.io/azure-storage-cpp)
+* [Použití Queue Storage zC++](../storage-c-plus-plus-how-to-use-queues.md)
+* [Použití Table Storage zC++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+* [Vypsat Azure Storage prostředky vC++](../storage-c-plus-plus-enumeration.md)
+* [Klientská knihovna pro C++ úložiště pro referenci](https://azure.github.io/azure-storage-cpp)
 * [Dokumentace k Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Přenos dat pomocí nástroje příkazového řádku AzCopy](../storage-use-azcopy.md)
 

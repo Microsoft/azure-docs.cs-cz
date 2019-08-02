@@ -8,18 +8,19 @@ manager: jegeib
 editor: jegeib
 ms.assetid: na
 ms.service: security
+ms.subservice: security-develop
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: 726f5bb9e944517f155178e9d1dc170c733d3a46
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: d8e6aa96ef2296cfaa876823e671d279e42cea0f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68621166"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727936"
 ---
 # <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Threat Modeling Tool, vydání aktualizace 7.1.51023.1 – 1. 11. 2018
 
@@ -31,7 +32,7 @@ Jak jsme původně uvedli v poznámkách k [verzi GA](threat-modeling-tool-relea
 
 ## <a name="feature-changes"></a>Změny funkcí
 
-- Žádné
+- Žádný
 
 ## <a name="system-requirements"></a>Požadavky na systém
 
@@ -46,6 +47,6 @@ Jak jsme původně uvedli v poznámkách k [verzi GA](threat-modeling-tool-relea
 
 - Dokumentace k Threat Modeling Tool je umístěna na [docs.Microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool)a obsahuje informace [o použití nástroje](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Stáhněte si nejnovější verzi [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool).

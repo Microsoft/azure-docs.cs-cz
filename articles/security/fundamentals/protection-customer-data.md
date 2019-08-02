@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 06ae18fa2217d7e7cfef7924473520d8d21a8a3e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68612597"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726680"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrana zákaznických dat Azure   
 Přístup k zákaznickým datům podle operací Microsoftu a pracovníků podpory je ve výchozím nastavení zakázaný. Když se udělí přístup k zákaznickým datům, vyžaduje se schválení vedoucího a pak se pečlivě spravuje a protokoluje přístup. Požadavky na řízení přístupu jsou navázány následujícími zásadami zabezpečení Azure:

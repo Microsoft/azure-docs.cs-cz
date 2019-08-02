@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 27f327493fbf3d7856b9488ecd0dd2509976ccfc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3cd734380e2a3e3fbf35439ff807738c549a086
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60533962"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726153"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Kopírování dat z Couchbase pomocí Azure Data Factory (Preview)
 
@@ -44,8 +44,8 @@ Couchbase propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Couchbase** | Ano |
-| connectionString | ODBC připojovací řetězec služby pro připojení k Couchbase. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Řetězec přihlašovacích údajů v Azure Key Vault a o přijetí změn můžete také umístit `credString` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
+| type | Vlastnost Type musí být nastavená na: **Couchbase** | Ano |
+| connectionString | ODBC připojovací řetězec služby pro připojení k Couchbase. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Do Azure Key Vault také můžete vložit řetězec přihlašovacích údajů a z `credString` připojovacího řetězce si pak tuto konfiguraci vyžádat. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad:**
@@ -69,7 +69,7 @@ Couchbase propojené služby jsou podporovány následující vlastnosti:
 }
 ```
 
-**Příklad: uložení řetězce přihlašovacích údajů ve službě Azure Key Vault**
+**Příklad: uložení řetězce přihlašovacích údajů v Azure Key Vault**
 
 ```json
 {
@@ -106,7 +106,7 @@ Ke zkopírování dat z Couchbase, nastavte vlastnost typ datové sady na **Couc
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **CouchbaseTable** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **CouchbaseTable** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 
@@ -117,11 +117,12 @@ Ke zkopírování dat z Couchbase, nastavte vlastnost typ datové sady na **Couc
     "name": "CouchbaseDataset",
     "properties": {
         "type": "CouchbaseTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Couchbase linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -136,7 +137,7 @@ Ke zkopírování dat z Couchbase, nastavte typ zdroje v aktivitě kopírování
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **CouchbaseSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **CouchbaseSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

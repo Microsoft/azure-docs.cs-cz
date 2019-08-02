@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: c25232abf20bbe3d01672b7620e5d2f5e31d5c8a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4bb56155e925f9e19570d89d091342afd594009
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343507"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725971"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Kopírování dat z Shopify pomocí Azure Data Factory (Preview)
 
@@ -44,7 +44,7 @@ Shopify propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Shopify** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Shopify** | Ano |
 | host | Koncový bod serveru Shopify. (to znamená mystore.myshopify.com)  | Ano |
 | accessToken | Přístupový token rozhraní API, který slouží pro přístup k datům společnosti Shopify. Pokud je v režimu offline režimu, nemá prošlou platnost tokenu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
@@ -77,7 +77,7 @@ Ke zkopírování dat z Shopify, nastavte vlastnost typ datové sady na **Shopif
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **ShopifyObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **ShopifyObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -87,11 +87,12 @@ Ke zkopírování dat z Shopify, nastavte vlastnost typ datové sady na **Shopif
     "name": "ShopifyDataset",
     "properties": {
         "type": "ShopifyObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Shopify linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -106,7 +107,7 @@ Ke zkopírování dat z Shopify, nastavte typ zdroje v aktivitě kopírování d
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **ShopifySource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ShopifySource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

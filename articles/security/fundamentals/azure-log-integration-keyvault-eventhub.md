@@ -7,16 +7,17 @@ manager: barbkess
 editor: TomShinder
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 985c6eadbc1ef4da4a15825d263b3ebe95de8107
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 01ab4f6f0535f137c7ffeb99c36ecd1e831de6f7
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68615899"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727660"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure Log Integration kurz: Zpracování událostí Azure Key Vault pomocí Event Hubs
 
@@ -178,7 +179,7 @@ Pro každé centrum událostí spusťte příkaz AzLog:
 
 Po minutě nebo spuštění posledních dvou příkazů by se měly zobrazit generované soubory JSON. Můžete to ověřit tím, že budete sledovat adresář **C:\users\AzLog\EventHubJson**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Nejčastější dotazy k Azure Log Integration](azure-log-integration-faq.md)
 - [Začínáme s Azure Log Integration](azure-log-integration-get-started.md)

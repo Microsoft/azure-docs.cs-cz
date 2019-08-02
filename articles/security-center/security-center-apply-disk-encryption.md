@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: c76e99c2588181a596a2a91ddd138cb9d7ae4a5a
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 1abb0a5f5523032440086932eb9a1621d4cef455
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610303"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726239"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Použít šifrování disku v Azure Security Center
 Azure Security Center doporučuje použít šifrování disku, pokud máte disky virtuálních počítačů se systémem Windows nebo Linux, které nejsou šifrovány pomocí Azure Disk Encryption. Šifrování disku umožňuje šifrovat disky virtuálních počítačů s Windows a Linux IaaS.  Na virtuálním počítači se doporučuje šifrování svazku operačního systému i svazku s daty.
@@ -44,7 +44,7 @@ K šifrování Azure Virtual Machines identifikovaných Security Center podle po
 * Získejte a spusťte Azure Disk Encryption předpoklady Azure PowerShell skriptu.
 * Zašifrujte své virtuální počítače.
 
-[Šifrování virtuálního počítače s Windows IaaS pomocí Azure PowerShell](../security/fundamentals/quick-encrypt-vm-powershell.md) vás provede těmito kroky. V tomto tématu se předpokládá, že používáte klientský počítač Windows, ze kterého konfigurujete šifrování disku.
+[Šifrování virtuálního počítače s Windows IaaS pomocí Azure PowerShell](../security/azure-disk-encryption-linux-powershell-quickstart.md) vás provede těmito kroky. V tomto tématu se předpokládá, že používáte klientský počítač Windows, ze kterého konfigurujete šifrování disku.
 
 K dispozici je mnoho přístupů, které lze použít pro Azure Virtual Machines. Pokud jste už s Azure PowerShellem nebo rozhraním příkazového řádku Azure CLI dobře obeznámeni, dáte možná přednost alternativním přístupům. Další informace o těchto dalších přístupech najdete v tématu [Azure Disk Encryption](../security/azure-security-disk-encryption.md).
 

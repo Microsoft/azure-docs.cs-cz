@@ -1,24 +1,23 @@
 ---
-title: Rychlý start Azure – vytvoření fronty ve službě Azure Storage pomocí webu Azure portal | Dokumentace Microsoftu
-description: V tomto rychlém startu použijete Azure portal můžete vytvořit frontu. Pak použijete k přidání zprávy, zobrazit vlastnosti zprávy a odstranění z fronty zprávy na webu Azure portal.
-services: storage
+title: Rychlý Start Azure – vytvoření fronty v Azure Storage pomocí Azure Portal | Microsoft Docs
+description: V tomto rychlém startu použijete Azure Portal k vytvoření fronty. Pak použijete Azure Portal k přidání zprávy, zobrazení vlastností zprávy a vyřazení zprávy do fronty.
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-ms.date: 03/06/2019
 ms.author: mhopkins
+ms.date: 03/06/2019
+ms.service: storage
+ms.subservice: queues
+ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: 3b355aa2f3fd5e381ca922ada1444dd281fe74ec
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d2f7b01c03b877a3dede496fc02f0d0cc9525cef
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138272"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721321"
 ---
-# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Rychlý start: Vytvořit frontu a přidat zprávu pomocí webu Azure portal
+# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Rychlý start: Vytvořte frontu a přidejte zprávu s Azure Portal
 
-V tomto rychlém startu se dozvíte, jak používat [webu Azure portal](https://portal.azure.com/) vytvoření fronty ve službě Azure Storage a k přidání a odstranění z fronty zpráv.
+V tomto rychlém startu se dozvíte, jak pomocí [Azure Portal](https://portal.azure.com/) vytvořit frontu v Azure Storage a přidat a vyřadit zprávy z fronty.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,45 +25,45 @@ V tomto rychlém startu se dozvíte, jak používat [webu Azure portal](https://
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 
-Můžete vytvořit frontu na webu Azure Portal, postupujte podle těchto kroků:
+Pokud chcete vytvořit frontu v Azure Portal, postupujte podle těchto kroků:
 
 1. Na webu Azure Portal přejděte k novému účtu úložiště.
-2. V levé nabídce pro účet úložiště, přejděte **služba front** a potom vyberte **fronty**.
-3. Vyberte **+ fronta** tlačítko.
-4. Zadejte název pro novou frontu. Název fronty musí obsahovat malá písmena, musí začínat písmenem nebo číslicí a může obsahovat jenom písmena, číslice a znak spojovníku (-).
-6. Vyberte **OK** vytvořte frontu.
+2. V levé nabídce účtu úložiště přejděte do části **Služba front** a pak vyberte **fronty**.
+3. Klikněte na tlačítko **+ fronta** .
+4. Zadejte název nové fronty. Název fronty musí být malými písmeny, musí začínat písmenem nebo číslicí a může obsahovat jenom písmena, číslice a spojovníky (-).
+6. Vyberte **OK** a vytvořte frontu.
 
-    ![Snímek obrazovky ukazující, jak vytvořit frontu na webu Azure Portal](media/storage-quickstart-queues-portal/create-queue.png)
+    ![Snímek obrazovky ukazující, jak vytvořit frontu v Azure Portal](media/storage-quickstart-queues-portal/create-queue.png)
 
 ## <a name="add-a-message"></a>Přidat zprávu
 
-V dalším kroku přidáte zprávu do fronty nová. Zpráva může být velikost až 64 KB.
+V dalším kroku přidejte do nové fronty zprávu. Zpráva může mít velikost až 64 KB.
 
-1. Vyberte ze seznamu front v účtu úložiště novou frontu.
-1. Vyberte **+ přidat zprávu** tlačítko pro přidání zprávy do fronty. Zadejte zprávu v **text zprávy** pole. 
-1. Určete, kdy vyprší platnost zprávy. Maximální doba může zpráva zůstat fronty je 7 dní.
-1. Označuje, jestli se má zakódovat zprávu jako Base64. Kódování binárních dat se doporučuje.
-1. Vyberte **OK** tlačítko Přidat zprávu.
+1. Vyberte novou frontu ze seznamu front v účtu úložiště.
+1. Vyberte tlačítko **+ přidat zprávu** a přidejte zprávu do fronty. Zadejte zprávu do pole **text zprávy** . 
+1. Určete, kdy vyprší platnost zprávy. Maximální doba, po kterou může zpráva zůstat ve frontě, je 7 dní.
+1. Určuje, zda se má zpráva kódovat jako base64. Doporučuje se kódování binárních dat.
+1. Kliknutím na tlačítko **OK** přidejte zprávu.
 
     ![Snímek obrazovky ukazující, jak přidat zprávu do fronty](media/storage-quickstart-queues-portal/add-message.png)
 
-## <a name="view-message-properties"></a>Zobrazení vlastností zpráv
+## <a name="view-message-properties"></a>Zobrazit vlastnosti zprávy
 
-Po přidání zprávy na webu Azure portal zobrazuje seznam všech zpráv ve frontě. Zobrazí se ID zprávy, obsah zprávy, zprávu vložení čas a čas vypršení platnosti zpráv. Můžete také zobrazit kolikrát byla tato zpráva dequeued.
+Po přidání zprávy Azure Portal zobrazí seznam všech zpráv ve frontě. Můžete zobrazit ID zprávy, obsah zprávy, čas vložení zprávy a čas vypršení platnosti zprávy. Můžete si také prohlédnout, kolikrát byla tato zpráva odstraněna z fronty.
 
-![Snímek obrazovky znázorňující zprávu vlastnosti](media/storage-quickstart-queues-portal/view-message-properties.png)
+![Snímek obrazovky se zobrazením vlastností zprávy](media/storage-quickstart-queues-portal/view-message-properties.png)
 
-## <a name="dequeue-a-message"></a>Odstranit zprávu z fronty
+## <a name="dequeue-a-message"></a>Vyřadit zprávu do fronty
 
-Odstranění z fronty zprávu od začátku fronty na webu Azure Portal. Při odstranění z fronty zprávu, odstraní zprávu. 
+Z Azure Portal můžete vyřadit zprávu z fronty před frontou. Když vyřadíte zprávu z fronty, zpráva se odstraní. 
 
-Dequeueing vždy odstraní nejstarší zprávy ve frontě. 
+Při zrušení zařazení do fronty se vždy odebere nejstarší zpráva ve frontě. 
 
-![Snímek obrazovky ukazující, jak vyřazovat je z ní zprávu z portálu](media/storage-quickstart-queues-portal/dequeue-message.png)
+![Snímek obrazovky ukazující, jak vyřadit z fronty zprávu z portálu](media/storage-quickstart-queues-portal/dequeue-message.png)
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste zjistili, jak vytvořit frontu, přidejte zprávu, zobrazit vlastnosti zprávy a odstranění z fronty zpráv na webu Azure Portal.
+V tomto rychlém startu jste zjistili, jak vytvořit frontu, přidat zprávu, zobrazit vlastnosti zprávy a odstranit zprávu ve frontě Azure Portal.
 
 > [!div class="nextstepaction"]
 > [Co jsou fronty Azure?](storage-queues-introduction.md)

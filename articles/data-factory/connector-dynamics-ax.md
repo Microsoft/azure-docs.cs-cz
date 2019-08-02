@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z aplikace Dynamics AX pomocí služby Azure Data Factory (Preview) | Dokumentace Microsoftu
-description: Zjistěte, jak ke zkopírování dat z aplikace Dynamics AX do úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat z Dynamics AX pomocí Azure Data Factory (Preview) | Microsoft Docs
+description: Naučte se, jak kopírovat data z Dynamics AX do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,33 +10,33 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 05bd4fdd220b47b11dfed9857dbc8dbe25b236df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2b1e8b9829bab56f0e49eafc50b7c56594de96b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61347775"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720823"
 ---
-# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory-preview"></a>Kopírování dat z aplikace Dynamics AX pomocí služby Azure Data Factory (Preview)
+# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory-preview"></a>Kopírování dat z Dynamics AX pomocí Azure Data Factory (Preview)
 
-Tento článek popisuje, jak používat aktivitu kopírování, která ve službě Azure Data Factory pro kopírování dat ze zdroje aplikace Dynamics AX. Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat ze zdroje Dynamics AX. Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
-Kopírování dat z aplikace Dynamics AX do jakékoli podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
+Data z Dynamics AX můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Konkrétně tento konektor Dynamics AX podporuje kopírování dat z aplikace Dynamics AX pomocí **protokolu OData** s **ověřování instančního objektu**.
+Konkrétně tento konektor Dynamics AX podporuje kopírování dat z Dynamics AX pomocí **protokolu OData** s **ověřováním instančního objektu**.
 
 >[!TIP]
->Tento konektor můžete také použít ke zkopírování dat z **Dynamics 365 Finance and Operations**. Přečtěte si Dynamics 365 [podporu protokolu OData](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata) a [metodu ověřování](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication).
+>Pomocí tohoto konektoru můžete také kopírovat data z **Dynamics 365 finance a operace**. Podívejte se na podporu a [metodu ověřování](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication) [OData](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata) Dynamics 365.
 
 ## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které lze použít k definování entit služby Data Factory, které jsou specifické pro konektor Dynamics AX.
+Následující části obsahují podrobné informace o vlastnostech, které můžete použít k definování Data Factory entit, které jsou specifické pro konektor Dynamics AX.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,21 +48,21 @@ Pokud chcete používat ověřování instančních objektů, postupujte takto:
     - Klíč aplikace
     - ID tenanta
 
-2. Přejděte do aplikace Dynamics AX a udělte této služby hlavní správná oprávnění pro přístup k Dynamics AX.
+2. Přejděte na Dynamics AX a udělte tomuto instančnímu objektu správná oprávnění pro přístup k aplikaci Dynamics AX.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Následující vlastnosti jsou podporovány pro Dynamics AX propojené služby:
+Pro propojenou službu Dynamics AX jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | **Typ** musí být vlastnost nastavena na **aplikace Dynamics AX**. |Ano |
-| url | Dynamics AX (nebo Dynamics 365 Finance and Operations) instance koncový bod OData. |Ano |
+| type | Vlastnost **Type** musí být nastavená na **DynamicsAx**. |Ano |
+| url | Koncový bod OData instance Dynamics AX (nebo finance a operace Dynamics 365). |Ano |
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Načtení podržením ukazatele myši v pravém horním rohu webu Azure portal. | Ano |
-| aadResourceId | Zadejte prostředku AAD, které jste požádali o registraci. Například, pokud je vaše adresa URL Dynamics `https://sampledynamics.sandbox.operations.dynamics.com/data/`, odpovídající prostředek AAD je obvykle `https://sampledynamics.sandbox.operations.dynamics.com`. | Ano |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Můžete vybrat prostředí Azure Integration Runtime nebo v místním prostředí Integration Runtime (Pokud je vaše úložiště dat se nachází v privátní síti). Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
+| aadResourceId | Zadejte prostředek AAD, který požadujete pro autorizaci. Například pokud je `https://sampledynamics.sandbox.operations.dynamics.com/data/`adresa URL vašeho Dynamics, odpovídající prostředek AAD je obvykle `https://sampledynamics.sandbox.operations.dynamics.com`. | Ano |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Můžete zvolit Azure Integration Runtime nebo v místním prostředí Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad**
 
@@ -92,16 +92,16 @@ Následující vlastnosti jsou podporovány pro Dynamics AX propojené služby:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Tato část obsahuje seznam vlastností, které podporuje datové sady Dynamics AX.
+V této části najdete seznam vlastností, které podporuje datová sada Dynamics AX.
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). 
 
-Chcete-li kopírovat data z Dynamics AX, nastavte **typ** vlastnosti datové sady na **DynamicsAXResource**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z Dynamics AX, nastavte vlastnost **Type** datové sady na **DynamicsAXResource**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | **Typ** musí být nastavena vlastnost datové sady **DynamicsAXResource**. | Ano |
-| path | Cesta k entitě Dynamics AX OData. | Ano |
+| type | Vlastnost **Type** datové sady musí být nastavená na **DynamicsAXResource**. | Ano |
+| path | Cesta k entitě Dynamics AX OData | Ano |
 
 **Příklad**
 
@@ -113,6 +113,7 @@ Chcete-li kopírovat data z Dynamics AX, nastavte **typ** vlastnosti datové sad
         "typeProperties": {
             "path": "<entity path e.g. dd04tentitySet>"
         },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Dynamics AX linked service name>",
             "type": "LinkedServiceReference"
@@ -123,18 +124,18 @@ Chcete-li kopírovat data z Dynamics AX, nastavte **typ** vlastnosti datové sad
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Tato část obsahuje seznam vlastností, které podporuje zdroji Dynamics AX.
+V této části najdete seznam vlastností, které podporuje zdroj Dynamics AX.
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md). 
 
 ### <a name="dynamics-ax-as-source"></a>Dynamics AX jako zdroj
 
-Chcete-li kopírovat data z Dynamics AX, nastavte **zdroj** typ v aktivitě kopírování do **DynamicsAXSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Chcete-li kopírovat data z Dynamics AX, nastavte typ **zdroje** v aktivitě kopírování na **DynamicsAXSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | **Typ** musí být nastavena vlastnost zdroje aktivity kopírování **DynamicsAXSource**. | Ano |
-| query | Možnosti dotazu OData pro filtrování dat Příklad: `"?$select=Name,Description&$top=5"`.<br/><br/>**Poznámka:** Konektor kopíruje data z adresy URL pro kombinované: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Další informace najdete v tématu [OData pro adresy URL komponenty](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
+| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **DynamicsAXSource**. | Ano |
+| query | Možnosti dotazu OData pro filtrování dat Příklad: `"?$select=Name,Description&$top=5"`.<br/><br/>**Poznámka:** Konektor kopíruje data z kombinované adresy URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
 
 **Příklad**
 

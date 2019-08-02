@@ -1,20 +1,18 @@
 ---
 title: 'Rychlý start: Klientská knihovna pro úložiště objektů BLOB v Azure pro .NET'
 description: V tomto rychlém startu se dozvíte, jak pomocí klientské knihovny Azure Blob Storage pro .NET vytvořit kontejner a objekt BLOB v úložišti objektů BLOB (objekt). Dále se dozvíte, jak stáhnout objekt blob do místního počítače a jak zobrazit seznam všech objektů blob, které jsou v kontejneru.
-services: storage
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-ms.date: 07/20/2019
 ms.author: mhopkins
+ms.date: 07/20/2019
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: a030aee18303d20ccf91c6939d349285c4a4bac4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.topic: quickstart
+ms.openlocfilehash: 40ee855aa01a9b24e35fb9863221e3607786d407
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565931"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722025"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>Rychlý start: Klientská knihovna pro úložiště objektů BLOB v Azure pro .NET
 

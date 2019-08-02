@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: f57a83fb83152055692e6f614b7958d099b6c70d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48ebdca1b6abf57a84927e25bca1f85b023fa208
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808912"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726162"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopírování dat z Concur pomocí Azure Data Factory (Preview)
 
@@ -47,7 +47,7 @@ Concur propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Concur** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Concur** | Ano |
 | clientId | Aplikace client_id poskytnutých Concur správy aplikací.  | Ano |
 | username | Uživatelské jméno, který používáte pro přístup ke službě Concur.  | Ano |
 | password | Heslo odpovídající uživatelské jméno, které jste zadali do pole uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -82,7 +82,7 @@ Ke zkopírování dat z Concur, nastavte vlastnost typ datové sady na **ConcurO
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **ConcurObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **ConcurObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 
@@ -93,11 +93,12 @@ Ke zkopírování dat z Concur, nastavte vlastnost typ datové sady na **ConcurO
     "name": "ConcurDataset",
     "properties": {
         "type": "ConcurObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Concur linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -112,7 +113,7 @@ Ke zkopírování dat z Concur, nastavte typ zdroje v aktivitě kopírování do
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **ConcurSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ConcurSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Opportunities where Id = xxx "`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

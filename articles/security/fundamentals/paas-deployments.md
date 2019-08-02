@@ -8,18 +8,19 @@ manager: barbkess
 editor: techlake
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: a98e08b7f08fdf7a0d1cb9c6eb12941734d9cd8b
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
-ms.translationtype: HT
+ms.openlocfilehash: a562630ef19c134c227ef44b944c1dd921ff2e46
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68612649"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726811"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 

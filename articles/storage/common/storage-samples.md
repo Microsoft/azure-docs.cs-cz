@@ -1,27 +1,25 @@
 ---
-title: Ukázky kódu pro Azure Storage | Dokumentace Microsoftu
-description: Zobrazit, stáhnout a spustit ukázkový kód a aplikace pro službu Azure Storage. Objevte úvodními ukázkami pro objekty BLOB, fronty, tabulky a soubory, pomocí klientské knihovny úložiště .NET, Java, Node.js a C++.
-services: storage
+title: Ukázka kódu Azure Storage | Microsoft Docs
+description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Pomocí knihoven .NET, Java, Node. js a C++ klientských knihoven pro úložiště se naučíte úvodní ukázky pro objekty blob, fronty, tabulky a soubory.
 author: mhopkins-msft
-ms.service: storage
-ms.topic: article
-ms.date: 06/03/2017
 ms.author: mhopkins
-ms.reviewer: seguler
+ms.date: 06/03/2017
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: c3bf695527db19513125d9190796c9b5df312aaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: sample
+ms.openlocfilehash: ad2881221d1c748016ff4f026ac8ffb3ed683f43
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153490"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721774"
 ---
 # <a name="azure-storage-samples"></a>Ukázky Azure Storage
 
-Pomocí odkazů níže můžete zobrazit a stáhnout ukázky kódu Azure Storage a aplikací.
+Pomocí níže uvedených odkazů můžete zobrazit a stáhnout Azure Storage ukázkový kód a aplikace.
 
-## <a name="azure-code-samples-library"></a>Knihovna ukázky kódu Azure
-[Vzorových kódů Azure](https://azure.microsoft.com/documentation/samples/?service=storage) knihovna obsahuje ukázky pro Azure Storage, který lze stáhnout a spustit místně. Ukázka knihovny kódu poskytuje ukázkový kód ve formátu ZIP. Alternativně můžete procházet a naklonujte úložiště GitHub pro každý vzorek.
+## <a name="azure-code-samples-library"></a>Knihovna ukázek kódu Azure
+Knihovna [ukázek kódu Azure](https://azure.microsoft.com/documentation/samples/?service=storage) obsahuje ukázky pro Azure Storage, které můžete stáhnout a spustit místně. Knihovna ukázek kódu poskytuje vzorový kód ve formátu ZIP. Případně můžete procházet a klonovat úložiště GitHub pro každou ukázku.
 
 <!--## Getting started samples-->
 <!-- after our quick starts are available, replace this link with a link to one of those. 
@@ -31,45 +29,45 @@ Had to remove this article, it refers to the VS quickstarts, and they've stopped
 -->
 
 ## <a name="net-samples"></a>Ukázky .NET
-Prozkoumejte ukázky .NET, stáhněte si [klientské knihovny úložiště .NET](https://www.nuget.org/packages/WindowsAzure.Storage/) z NuGet. Klientská knihovna pro úložiště .NET je také k dispozici v [sady Azure SDK for .NET](https://azure.microsoft.com/downloads/).
+Chcete-li prozkoumat ukázky .NET, Stáhněte si z NuGet [knihovnu klienta úložiště .NET](https://www.nuget.org/packages/WindowsAzure.Storage/) . Klientská knihovna pro úložiště .NET je také dostupná v sadě [Azure SDK pro .NET](https://azure.microsoft.com/downloads/).
 
 * [Ukázky pro Azure Storage s použitím .NET](storage-samples-dotnet.md)
 
 ## <a name="java-samples"></a>Ukázky Java
-Prozkoumejte ukázky v Javě, stáhněte si [Klientská knihovna pro úložiště Java](https://github.com/azure/azure-storage-java).
+Chcete-li prozkoumat ukázky Java, Stáhněte si [klientskou knihovnu pro úložiště Java](https://github.com/azure/azure-storage-java).
 
 * [Ukázky pro Azure Storage s použitím Javy](storage-samples-java.md)
 
 ## <a name="nodejs-samples"></a>Ukázky Node.js
-Chcete-li prozkoumat ukázky Node.js, stáhněte si [Klientská knihovna pro úložiště Node.js](https://github.com/Azure/azure-storage-node).
+Chcete-li prozkoumat ukázky Node. js, Stáhněte si [klientskou knihovnu pro úložiště Node. js](https://github.com/Azure/azure-storage-node).
 
 * [Odeslání objektu BLOB](https://github.com/Azure/azure-storage-node/tree/master/examples/blobuploader)
-* [Nahrání a stažení objektů blob](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/blobuploaddownloadsample.js)
+* [Nahrání a stažení objektu BLOB](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/blobuploaddownloadsample.js)
 * [Token pro pokračování](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js)
 * [Zásady opakování](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/retrypolicysample.js)
 * [Sdílený přístupový podpis](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/sassample.js)
-* [snímek](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
+* [Snímek](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
 * [Dotaz na tabulku](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
 
-## <a name="c-samples"></a>C++ – ukázky
-Chcete-li prozkoumat ukázky jazyka C++, stáhněte si [Klientská knihovna pro úložiště C++](https://www.nuget.org/packages/wastorage/) z NuGet.
+## <a name="c-samples"></a>C++vzory
+Pokud chcete prozkoumat C++ ukázky, Stáhněte si z NuGet [ C++ knihovnu klienta úložiště](https://www.nuget.org/packages/wastorage/) .
 
-* [Začínáme s bloby](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted)
+* [Začínáme s objekty blob](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted)
 * [Začínáme s tabulkami](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted)
 * [Začínáme s frontami](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted)
 
-## <a name="api-reference-and-source-code"></a>Rozhraní API reference a zdrojový kód
+## <a name="api-reference-and-source-code"></a>Reference k rozhraní API a zdrojový kód
 
 | Jazyk | API – referenční informace | Zdrojový kód |
 |----------|---------------|-------------|
-| .NET | [Referenční dokumentace knihoven klienta .NET](https://msdn.microsoft.com/library/azure/mt347887.aspx) | [Zdrojový kód klientské knihovny úložiště .NET](https://github.com/Azure/azure-storage-net) |
-| Java | [Referenční dokumentace knihoven jazyka Java klienta](https://docs.microsoft.com/java/api/overview/azure/storage) | [Zdrojový kód klientské knihovny úložiště pro Javu](https://github.com/azure/azure-storage-java) |
-| Node.js | [Referenční dokumentace knihoven klienta Node.js](https://azure.github.io/azure-storage-node) | [Zdrojový kód klientské knihovny úložiště pro Node.js](https://github.com/Azure/azure-storage-node) |
-| C++ | [Referenční dokumentace knihoven klienta jazyka C++](https://azure.github.io/azure-storage-cpp/) | [Zdrojový kód klientské knihovny úložiště jazyka C++](https://github.com/Azure/azure-storage-cpp)|
+| .NET | [Reference ke klientské knihovně .NET](https://msdn.microsoft.com/library/azure/mt347887.aspx) | [Zdrojový kód pro klientskou knihovnu úložiště .NET](https://github.com/Azure/azure-storage-net) |
+| Java | [Reference ke klientské knihovně Java](https://docs.microsoft.com/java/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu pro úložiště Java](https://github.com/azure/azure-storage-java) |
+| Node.js | [Reference ke klientské knihovně Node. js](https://azure.github.io/azure-storage-node) | [Zdrojový kód pro klientskou knihovnu pro úložiště Node. js](https://github.com/Azure/azure-storage-node) |
+| C++ | [C++Reference klientské knihovny](https://azure.github.io/azure-storage-cpp/) | [Zdrojový kód pro klientskou knihovnu C++ úložiště](https://github.com/Azure/azure-storage-cpp)|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V následujících článcích indexování všech ukázek službu (objektu blob, soubor, frontu, tabulku).
+Následující články indexují každou ze vzorků podle služby (objekt blob, soubor, fronta, tabulka).
 
 * [Ukázky pro Azure Storage s použitím .NET](storage-samples-dotnet.md)
 * [Ukázky pro Azure Storage s použitím Javy](storage-samples-java.md)

@@ -8,18 +8,19 @@ manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 7430f69136a79cc36817afae9bc4d8e8992c09d3
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 84b675f72666b85aa837250b942bdebcf6b12dab
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68612779"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726891"
 ---
 # <a name="azure-operational-security-checklist"></a>Kontrolní seznam pro operační zabezpečení Azure
 Nasazení aplikace v Azure je rychlé, jednoduché a nákladově efektivní. Před nasazením cloudové aplikace v produkčním prostředí je vhodné mít kontrolní seznam, který vám pomůže při vyhodnocování vaší aplikace před seznamem základních a doporučených provozních akcí zabezpečení, které je potřeba vzít v úvahu.
@@ -50,7 +51,7 @@ Tento kontrolní seznam je určený k tomu, aby podniky při nasazování sofist
 ## <a name="conclusion"></a>Závěr
 Mnoho organizací úspěšně nasadilo a provozoval své cloudové aplikace v Azure. Uvedené kontrolní seznamy zvýrazňují několik kontrolních seznamů, které jsou nezbytné, a umožňují zvýšit pravděpodobnost úspěchu nasazení a frustrace operací bez provozu. Důrazně doporučujeme tyto provozní a strategické požadavky na vaše stávající a nové nasazení aplikací v Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o zabezpečení najdete v následujících článcích:
 
 - [Návrh a provozní zabezpečení](https://www.microsoft.com/trustcenter/security/designopsecurity).

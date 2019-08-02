@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcf4bc04a1c111e545d545af64f3940d3aa4585d
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: ae773bc1a4e1831dbe462149bb827c26b7e74b96
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707705"
+ms.locfileid: "68722299"
 ---
 # <a name="create-a-custom-role-and-assign-a-resource-scope-in-azure-active-directory"></a>Vytvoření vlastní role a přiřazení oboru prostředků v Azure Active Directory
 
@@ -135,19 +135,13 @@ $customAdmin = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -Disp
     "rolePermissions":
     [
         {
-            "resourceActions":
-            {
-                "allowedResourceActions":
-                [
-                    "microsoft.directory/applications/basic/update",
-                    "microsoft.directory/applications/credentials/update"
-                ]
-            },
-            "condition":null
+            "allowedResourceActions": 
+            [
+                "microsoft.directory/applications/basic/read",
+                "microsoft.directory/applications/credentials/update"
+            ]
         }
-    ],
-    "templateId":"<GET NEW GUID AND INSERT HERE>",
-    "version":"1"
+    ]
     }
     ```
 
@@ -167,7 +161,7 @@ $customAdmin = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -Disp
     {
     "principalId":"<GUID OF USER>",
     "roleDefinitionId":"<GUID OF ROLE DEFINITION>",
-    "resourceScopes":["/<GUID OF APPLICATION REGISTRATION>"]
+    "resourceScope":["/<GUID OF APPLICATION REGISTRATION>"]
     }
     ```
 

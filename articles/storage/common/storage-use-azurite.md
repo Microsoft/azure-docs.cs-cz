@@ -1,19 +1,18 @@
 ---
 title: Použití Azurite Open Source emulátoru pro vývoj a testování BLOB Storage (Preview)
 description: Azurite Open Source emulátor (Preview) poskytuje bezplatné místní prostředí pro testování aplikací služby Azure Blob Storage.
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.topic: article
-ms.date: 06/12/2019
 ms.author: mhopkins
+ms.date: 06/12/2019
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 2ccb19253c762bad69875a7b7bba7cd11d46e132
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.topic: conceptual
+ms.openlocfilehash: ebecd6cf9af5395e4da2b395ca9b2ff974a75409
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869791"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721695"
 ---
 # <a name="use-the-azurite-open-source-emulator-for-blob-storage-development-and-testing-preview"></a>Použití Azurite Open Source emulátoru pro vývoj a testování BLOB Storage (Preview)
 
@@ -228,7 +227,7 @@ azurite -d path/debug.log
 
 ## <a name="authorization-for-tools-and-sdks"></a>Autorizace pro nástroje a sady SDK
 
-Připojte se k Azurite z Azure Storage sady SDK nebo nástrojů, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), pomocí jakékoli strategie ověřování. Vyžaduje se ověření. Azurite podporuje autorizaci pomocí sdílených klíčů a podpisů sdíleného přístupu (SAS). Azurite také podporuje anonymní přístup k veřejným kontejnerům.
+Připojte se k Azurite z Azure Storage sady SDK nebo nástrojů, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), pomocí jakékoli strategie ověřování. Je požadováno ověřování. Azurite podporuje autorizaci pomocí sdílených klíčů a podpisů sdíleného přístupu (SAS). Azurite také podporuje anonymní přístup k veřejným kontejnerům.
 
 ### <a name="well-known-storage-account-and-key"></a>Dobře známý účet úložiště a klíč
 
@@ -252,7 +251,7 @@ Nejjednodušší způsob, jak se připojit k Azurite z vaší aplikace, je nakon
 
 Další informace najdete v tématu [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md).
 
-### <a name="storage-explorer"></a>Storage Explorer
+### <a name="storage-explorer"></a>Průzkumník služby Storage
 
 V Průzkumník služby Azure Storage se připojte k Azurite kliknutím na ikonu **Přidat účet** a pak vyberte **připojit k místnímu emulátoru** a klikněte na **připojit**.
 
@@ -298,7 +297,7 @@ Azurite podporuje geograficky redundantní replikaci s přístupem pro čtení (
 
 Příspěvky a návrhy pro Azurite jsou Vítá vás. Přejít na stránku [projektu GitHubu](https://github.com/Azure/Azurite/projects) Azurite nebo [problémy GitHubu](https://github.com/Azure/Azurite/issues) pro milníky a pracovní položky, které sledujeme pro nadcházející funkce a opravy chyb. Podrobné pracovní položky jsou také sledovány na GitHubu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Použijte emulátor úložiště Azure pro vývoj a testování](storage-use-emulator.md) dokumentů staršího emulátoru úložiště Azure, který nahrazuje Azurite.
 * [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md) vysvětluje, jak sestavit platný připojovací řetězec úložiště Azure.

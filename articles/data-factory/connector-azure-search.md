@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat do indexu vyhledávání pomocí služby Azure Data Factory | Dokumentace Microsoftu
-description: Další informace o tom, jak vložit nebo kopírování dat do indexu Azure search s využitím aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat do indexu vyhledávání pomocí Azure Data Factory | Microsoft Docs
+description: Přečtěte si, jak vložit nebo zkopírovat data do indexu Azure Search pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,46 +10,46 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: faf0cab55ec0cef034638d218f2172f3676ff39b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: edf475ac11168c33a6b11ccda3482ac44579e8d8
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245114"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726221"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopírování dat do indexu Azure Search pomocí Azure Data Factory
 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-azure-search-connector.md)
 > * [Aktuální verze](connector-azure-search.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat do indexu Azure Search. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data do indexu Azure Search. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
-Kopírovat data ze všech podporovaných zdrojů úložišť dat do indexu Azure Search. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data můžete kopírovat z libovolného podporovaného zdrojového úložiště dat do indexu Azure Search. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory, které jsou specifické pro konektor Azure Search.
+Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro Azure Search konektor.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro službu Azure Search propojené se podporují následující vlastnosti:
+Pro Azure Search propojenou službu jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **AzureSearch** | Ano |
-| url | Adresa URL pro službu Azure Search. | Ano |
+| type | Vlastnost Type musí být nastavená na: **AzureSearch** | Ano |
+| url | Adresa URL služby Azure Search | Ano |
 | key | Klíč správce pro službu Azure Search. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 > [!IMPORTANT]
-> Při kopírování dat z cloudového úložiště dat do indexu Azure Search ve službě Azure Search propojenou službu, musíte odkazovat prostředí Azure Integration Runtime s explicitní oblastí v connactVia. Nastavte oblast jako ten, který se nachází Azure Search. Další informace z [prostředí Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
+> Při kopírování dat z cloudového úložiště dat do indexu Azure Search v Azure Search propojená služba musíte odkazovat na Azure Integration Runtime s explicitní oblastí v connactVia. Nastavte oblast jako tu, kde se Azure Search. Další informace o [Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime).
 
 **Příklad:**
 
@@ -75,14 +75,14 @@ Pro službu Azure Search propojené se podporují následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností, které podporuje datové sady Azure Search.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných sadou Azure Search DataSet.
 
-Můžete kopírovat data do Azure Search, jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data do Azure Search, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **AzureSearchIndex** | Ano |
-| indexName | Název indexu Azure Search. Objekt pro vytváření dat, nevytvoří index. Index musí existovat ve službě Azure Search. | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **AzureSearchIndex** | Ano |
+| indexName | Název indexu Azure Search. Data Factory nevytváří index. Index musí existovat v Azure Search. | Ano |
 
 **Příklad:**
 
@@ -91,12 +91,13 @@ Můžete kopírovat data do Azure Search, jsou podporovány následující vlast
     "name": "AzureSearchIndexDataset",
     "properties": {
         "type": "AzureSearchIndex",
+        "typeProperties" : {
+            "indexName": "products"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Search linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties" : {
-            "indexName": "products"
         }
    }
 }
@@ -104,32 +105,32 @@ Můžete kopírovat data do Azure Search, jsou podporovány následující vlast
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastnosti podporované službou Azure Search zdroje.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. V této části najdete seznam vlastností podporovaných zdrojem Azure Search.
 
-### <a name="azure-search-as-sink"></a>Služba Azure Search jako jímka
+### <a name="azure-search-as-sink"></a>Azure Search jako jímka
 
-Můžete kopírovat data do Azure Search, nastavte typ zdroje v aktivitě kopírování do **AzureSearchIndexSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky** části:
+Chcete-li kopírovat data do Azure Search, nastavte typ zdroje v aktivitě kopírování na **AzureSearchIndexSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **AzureSearchIndexSink** | Ano |
-| writeBehavior | Určuje, jestli se má sloučit nebo nahradit, již existuje dokument v indexu. Zobrazit [WriteBehavior vlastnost](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **Sloučit** (výchozí), a **nahrát**. | Ne |
-| writeBatchSize | Nahrání dat do indexu Azure Search writeBatchSize dosáhne velikosti vyrovnávací paměti. Zobrazit [WriteBatchSize vlastnost](#writebatchsize-property) podrobnosti.<br/><br/>Povolené hodnoty jsou: celé číslo 1 až 1 000; Výchozí hodnota je 1000. | Ne |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AzureSearchIndexSink** | Ano |
+| writeBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **Sloučit** (výchozí) a **nahrání**. | Ne |
+| writeBatchSize | Nahraje data do indexu Azure Search, když velikost vyrovnávací paměti dosáhne writeBatchSize. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) .<br/><br/>Povolené hodnoty jsou: celé číslo 1 až 1 000; Výchozí hodnota je 1000. | Ne |
 
 ### <a name="writebehavior-property"></a>Vlastnost WriteBehavior
 
-Při zápisu dat AzureSearchSink upsertuje. Jinými slovy při zápisu dokumentu, pokud klíč dokumentu již existuje v indexu Azure Search, Azure Search aktualizuje stávající dokument namísto vyvolání výjimky konflikt.
+AzureSearchSink upsertuje při zápisu dat. Jinými slovy, při psaní dokumentu, pokud klíč dokumentu již existuje v indexu Azure Search, Azure Search aktualizuje existující dokument namísto vyvolání výjimky konfliktu.
 
-AzureSearchSink poskytuje následujících dvou upsert chování (pomocí sady SDK AzureSearch):
+AzureSearchSink poskytuje následující dvě chování Upsert (pomocí sady AzureSearch SDK):
 
-- **Sloučit**: kombinovat všechny sloupce v nový dokument s existujícím. Pro sloupce s hodnotou null v nového dokumentu je hodnota v existujícím zachována.
-- **Nahrát**: Nový dokument nahradí stávající. U sloupců není zadáno v nového dokumentu je hodnota nastavena na hodnotu null, zda je hodnota jiná než null v k existujícímu dokumentu nebo ne.
+- **Merge**: kombinovat všechny sloupce v novém dokumentu s existujícím. U sloupců s hodnotou null v novém dokumentu je zachována hodnota existující.
+- **Nahrát**: Nový dokument nahradí stávající. Pro sloupce, které nejsou zadány v novém dokumentu, je hodnota nastavena na hodnotu null, zda je v existujícím dokumentu hodnota jiná než null, nebo ne.
 
-Výchozí chování je **sloučit**.
+Výchozí chování je **sloučeno**.
 
 ### <a name="writebatchsize-property"></a>Vlastnost WriteBatchSize
 
-Služba Azure Search podporuje psaní dokumentů v dávce. Batch může obsahovat 1 až 1 000 akcí. Akce zpracovává jeden dokument k provedení této operace nahrávání/merge.
+Služba Azure Search podporuje psaní dokumentů jako dávky. Dávka může obsahovat 1 až 1 000 akcí. Akce zpracovává jeden dokument k provedení operace Odeslat/sloučit.
 
 **Příklad:**
 
@@ -163,13 +164,13 @@ Služba Azure Search podporuje psaní dokumentů v dávce. Batch může obsahova
 ]
 ```
 
-### <a name="data-type-support"></a>Podpora typ dat
+### <a name="data-type-support"></a>Podpora datových typů
 
-Následující tabulka určuje, zda je nebo není podporováno typem dat Azure Search.
+Následující tabulka určuje, zda je podporován datový typ Azure Search.
 
-| Azure Search datový typ | Podporované v Azure Search jímky |
+| Azure Search datový typ | Podporované v Azure Search jímka |
 | ---------------------- | ------------------------------ |
-| String | Ano |
+| Řetězec | Ano |
 | Int32 | Ano |
 | Int64 | Ano |
 | Double | Ano |

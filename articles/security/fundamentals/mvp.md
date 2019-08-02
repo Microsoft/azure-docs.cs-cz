@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 34f4bdf0-7332-4c4a-b186-05263da700cf
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: b0eb9af425b14c1300fad7bf757b9a967b3d1328
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7407746d54968773177e60043cf10713c9781bbf
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68615080"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726965"
 ---
 # <a name="azure-security-mvp-program"></a>Program MVP pro zabezpečení Azure
 

@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: d883a9672ce8e33a1c13c96bca727b925bfbd84f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 74b0fa4643907493904e77ce333d1ec1dba01f49
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68613299"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727109"
 ---
 # <a name="azure-sql-database-security-features"></a>Funkce zabezpečení Azure SQL Database    
 Azure SQL Database poskytuje službu relačních databází v Azure. Aby bylo možné chránit zákaznická data a poskytovat silné bezpečnostní funkce, které zákazníci očekávají od služby relační databáze, SQL Database mají vlastní sady možností zabezpečení. Tyto možnosti se sestavují na ovládací prvky, které jsou zděděné z Azure.

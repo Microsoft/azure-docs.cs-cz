@@ -6,12 +6,13 @@ ms.author: TomSh
 ms.date: 06/21/2018
 ms.topic: article
 ms.service: security
-ms.openlocfilehash: 87010b3256fb8eef6871d76f80db2999760386b4
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
-ms.translationtype: HT
+ms.subservice: security-fundamentals
+ms.openlocfilehash: cf59f6343960a164be66ae27170d722eb26dc173
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68614196"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727702"
 ---
 # <a name="azure-functions-and-serverless-platform-security"></a>Zabezpečení platformy Azure Functions a bez serveru
 ## <a name="abstract"></a>Abstraktní

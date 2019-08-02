@@ -9,12 +9,12 @@ ms.date: 07/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 921528c50bae03b67800bf3ccab8b5cd9bb704f6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4c81daa1f55167fa868c69f3bff388dbaa4887cd
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677748"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725745"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Kurz: Vytvoření prostředí Azure Time Series Insights
 
@@ -34,7 +34,7 @@ Tento kurz vás provede procesem vytvoření Azure Time Series Insights prostře
 
 * Účet pro přihlášení do Azure musí být také členem role **vlastníka** předplatného. Další informace najdete v tématu [Správa přístupu pomocí řízení přístupu na základě role a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="video"></a>Video
+## <a name="review-video"></a>Zkontrolovat video
 
 ### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-time-series-insights-br"></a>Naučte se, jak pomocí akcelerátoru řešení Azure IoT vygenerovat data a začít s Time Series Insights. </br>
 
@@ -116,7 +116,7 @@ Za druhé vytvořte v předplatném Azure Time Series Insights prostředí.
 
    [![Nasazení prostředí Time Series Insights bylo úspěšné.](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
 
-## <a name="run-device-simulation-to-stream-data"></a>Spustit simulaci zařízení pro streamování dat
+## <a name="run-device-simulation"></a>Spustit simulaci zařízení
 
 Po dokončení nasazení a počáteční konfigurace naplňte Time Series Insights prostředí pomocí ukázkových dat z [simulovaných zařízení vytvořených akcelerátorem](#create-a-device-simulation).
 

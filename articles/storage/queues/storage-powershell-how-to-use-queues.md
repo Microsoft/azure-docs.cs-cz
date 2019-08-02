@@ -1,41 +1,40 @@
 ---
-title: Provádění operací ve službě Azure Queue storage pomocí prostředí PowerShell – Azure Storage
-description: Jak k provádění operací v Azure Queue storage s využitím Powershellu
-services: storage
+title: Provádění operací s Azure Queue Storage pomocí PowerShellu – Azure Storage
+description: Jak provádět operace s Azure Queue Storage pomocí PowerShellu
 author: mhopkins-msft
-ms.service: storage
-ms.topic: conceptual
-ms.date: 05/15/2019
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 05/15/2019
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 6e8640b136c52f500de010f842ab73678acdce4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: bf5cf668620eb08e0d808c2052eac59b15af740c
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991356"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721226"
 ---
-# <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provádění operací Azure Queue storage pomocí Azure Powershellu
+# <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provádění operací Azure Queue Storage s Azure PowerShell
 
-Azure Queue storage je služba pro ukládání velkého počtu zpráv, které můžete přistupovat odkudkoli na světě prostřednictvím protokolu HTTP nebo HTTPS. Podrobné informace najdete v tématu [seznámení s frontami Azure](storage-queues-introduction.md). Tento článek popisuje běžné operacemi Queue storage. Získáte informace o těchto tématech:
+Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke kterým se dá dostat odkudkoli na světě přes HTTP nebo HTTPS. Podrobné informace najdete v tématu [Úvod do front Azure](storage-queues-introduction.md). Tento článek s návody popisuje běžné operace s úložištěm front. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
 > * Vytvoření fronty
-> * Načíst do fronty
+> * Načtení fronty
 > * Přidat zprávu
 > * Přečíst zprávu
-> * Odstranění zprávy
+> * Odstraní zprávu.
 > * Odstranění fronty
 
-Tento návod vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
+Tento postup vyžaduje Azure PowerShell modul AZ verze 0,7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
-Neexistují žádné rutiny Powershellu pro rovinu dat front. K provedení data ploché operace, jako přidat zprávu, přečtěte si zprávu a odstraní zprávu, budete muset použít klientskou knihovnu pro úložiště .NET, jako je přístupný v prostředí PowerShell. Vytvořte objekt zprávu a pak můžete použít příkazech, jako je AddMessage k provádění operací na tuto zprávu. V tomto článku se dozvíte, jak to provést.
+Pro tuto rovinu dat pro fronty neexistují žádné rutiny prostředí PowerShell. Chcete-li provádět operace roviny dat, například přidat zprávu, přečíst zprávu a odstranit zprávu, je nutné použít klientskou knihovnu úložiště .NET, protože je vystavena v prostředí PowerShell. Vytvoříte objekt zprávy a potom můžete k provádění operací s touto zprávou použít příkazy, jako je například AddMessage. V tomto článku se dozvíte, jak to provést.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se ke svému předplatnému Azure pomocí příkazu `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
@@ -45,7 +44,7 @@ Connect-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Načíst seznam umístění
 
-Pokud nevíte, jaké umístění máte použít, můžete vypsat všechna dostupná umístění. Po zobrazení seznamu vyhledejte umístění, které chcete použít. V tomto cvičení použijete **eastus**. To Store v proměnné **umístění** pro budoucí použití.
+Pokud nevíte, jaké umístění máte použít, můžete vypsat všechna dostupná umístění. Po zobrazení seznamu vyhledejte umístění, které chcete použít. Toto cvičení použije **eastus**. Uložte ho do **umístění** proměnné pro budoucí použití.
 
 ```powershell
 Get-AzLocation | select Location
@@ -54,9 +53,9 @@ $location = "eastus"
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) příkazu.
+Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) .
 
-Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Název skupiny prostředků Store do proměnné pro budoucí použití. V tomto příkladu skupina prostředků s názvem *howtoqueuesrg* se vytvoří v *eastus* oblasti.
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Uložte název skupiny prostředků do proměnné pro budoucí použití. V tomto příkladu se vytvoří skupina prostředků s názvem *howtoqueuesrg* v oblasti *eastus* .
 
 ```powershell
 $resourceGroup = "howtoqueuesrg"
@@ -65,7 +64,7 @@ New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>Vytvoření účtu úložiště
 
-Vytvořit účet úložiště úrovně standard pro obecné účely s využitím místně redundantní úložiště (LRS) [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Získáte kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když používáte účet úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext.
+Vytvořte standardní účet úložiště pro obecné účely s místně redundantním úložištěm (LRS) pomocí [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Získejte kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když používáte účet úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext.
 
 ```powershell
 $storageAccountName = "howtoqueuestorage"
@@ -79,18 +78,18 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 
-Následující příklad nejprve vytvoří připojení k Azure Storage pomocí kontext účtu úložiště, který obsahuje název účtu úložiště a jeho přístupový klíč. Dále volá [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) rutiny můžete vytvořit frontu s názvem "queuename".
+Následující příklad napřed vytvoří připojení k Azure Storage pomocí kontextu účtu úložiště, který zahrnuje název účtu úložiště a jeho přístupový klíč. Dále volá rutinu [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) , která vytvoří frontu s názvem "Queue".
 
 ```powershell
 $queueName = "howtoqueue"
 $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
-Informace o vytváření názvů pro službu front Azure, najdete v části [pojmenování front a Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx).
+Informace o zásadách vytváření názvů pro službu Azure Queue najdete v tématu pojmenování [front a metadat](https://msdn.microsoft.com/library/azure/dd179349.aspx).
 
-## <a name="retrieve-a-queue"></a>Načíst do fronty
+## <a name="retrieve-a-queue"></a>Načtení fronty
 
-Můžete vyhledat a načíst konkrétní frontu nebo seznam všech front v účtu úložiště. Následující příklady ukazují, jak načíst všechny fronty v účtu úložiště a konkrétní fronty; Oba příkazy používají [Get-AzStorageQueue](/powershell/module/az.storage/Get-AzStorageQueue) rutiny.
+Můžete zadávat dotazy a načítat konkrétní frontu nebo seznam všech front v účtu úložiště. Následující příklady ukazují, jak načíst všechny fronty v účtu úložiště a konkrétní frontu. Oba příkazy používají rutinu [Get-AzStorageQueue](/powershell/module/az.storage/Get-AzStorageQueue) .
 
 ```powershell
 # Retrieve a specific queue
@@ -102,9 +101,9 @@ $queue
 Get-AzStorageQueue -Context $ctx | select Name
 ```
 
-## <a name="add-a-message-to-a-queue"></a>Přidání zprávy do fronty
+## <a name="add-a-message-to-a-queue"></a>Přidat zprávu do fronty
 
-Operace, které mají vliv skutečné zprávy ve frontě pomocí klientské knihovny úložiště .NET jako viditelné v prostředí PowerShell. Přidat zprávu do fronty, vytvořte novou instanci objektu zpráva [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) třídy. Pak zavolejte metodu [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage). CloudQueueMessage lze vytvořit z řetězce (ve formátu UTF-8) nebo s polem bajtů.
+Operace, které mají vliv na skutečné zprávy ve frontě, používají klientskou knihovnu pro úložiště .NET jako zveřejněnou v prostředí PowerShell. Chcete-li přidat zprávu do fronty, vytvořte novou instanci objektu zprávy, třídy [Microsoft. Azure. Storage. Queue. CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) . Pak zavolejte metodu [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage). CloudQueueMessage se dá vytvořit buď z řetězce (ve formátu UTF-8), nebo pole bajtů.
 
 Následující příklad ukazuje, jak přidat zprávu do fronty.
 
@@ -124,17 +123,17 @@ $queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMe
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
 
-Pokud používáte [Průzkumníka služby Azure Storage](https://storageexplorer.com), můžete připojit ke svému účtu Azure a zobrazit front v účtu úložiště a podrobnostem do fronty k zobrazení zpráv ve frontě.
+Pokud používáte [Průzkumník služby Azure Storage](https://storageexplorer.com), můžete se připojit k účtu Azure a zobrazit fronty v účtu úložiště a přejít k podrobnostem o frontě a zobrazit tak zprávy ve frontě.
 
-## <a name="read-a-message-from-the-queue-then-delete-it"></a>Čtení zpráv z fronty, odstraňte ji.
+## <a name="read-a-message-from-the-queue-then-delete-it"></a>Přečtěte si zprávu z fronty a pak ji odstraňte.
 
-Zprávy jsou čteny nejlepší – zkuste first-in-first-out pořadí. To není zaručeno. Při čtení zprávy z fronty, stane neviditelnou pro všechny ostatní procesy, které jsou ve frontě. Tím se zajistí, že pokud váš kód se nepodařilo zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, jiná instance vašeho kódu můžete získat stejná zpráva a zkuste to znovu.  
+Zprávy jsou čteny nejlépe při prvním prvním vyzkoušení. To není zaručeno. Když si přečtete zprávu z fronty, bude se neviditelná pro všechny ostatní procesy, které prohlíží ve frontě. Tím je zajištěno, že pokud váš kód nedokáže zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, může jiná instance kódu získat stejnou zprávu a opakovat akci.  
 
-To **časový limit neviditelnosti** definuje, jak dlouho zpráva zůstává neviditelná dřív, než bude opět k dispozici pro zpracování. Výchozí hodnota je 30 sekund.
+Tento **časový limit** neviditelnosti definuje, jak dlouho zpráva zůstane neviditelná, než se znovu zpřístupní pro zpracování. Výchozí hodnota je 30 sekund.
 
-Váš kód načítá zprávy z fronty ve dvou krocích. Při volání [Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) metoda, získáte další zprávu ve frontě. Zpráva vrácená metodou **GetMessage** se stane neviditelnou pro jakýkoli jiný kód, který čte zprávy z této fronty. K dokončení odebrání zprávy z fronty, volání [Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) metody.
+Kód přečte zprávu z fronty ve dvou krocích. Když zavoláte metodu [Microsoft. Azure. Storage. Queue. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) , dostanete další zprávu ve frontě. Zpráva vrácená metodou **GetMessage** se stane neviditelnou pro jakýkoli jiný kód, který čte zprávy z této fronty. Chcete-li dokončit odebrání zprávy z fronty, zavoláte metodu [Microsoft. Azure. Storage. Queue. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) .
 
-V následujícím příkladu, přečtěte si tři fronty zpráv a potom počkejte 10 sekund (vypršel časový limit neviditelnosti). Číst tři zprávy znovu, odstranění zprávy po přečtení voláním **DeleteMessage**. Pokud se pokusíte načíst fronty po odstranění zprávy, $queueMessage budou vráceny jako hodnota NULL.
+V následujícím příkladu si přečtete tři zprávy fronty a pak počkáte 10 sekund (časový limit neviditelnosti). Pak znovu přečtete tři zprávy a po jejich přečtení je zavoláte pomocí **DeleteMessage**. Pokud se po odstranění zpráv pokusíte tuto frontu přečíst, $queueMessage bude vrácena jako NULL.
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue
@@ -165,7 +164,7 @@ $queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Resul
 
 ## <a name="delete-a-queue"></a>Odstranění fronty
 
-Pokud chcete odstranit frontu se všemi zprávami, které v ní, zavolejte rutinu Remove-AzStorageQueue. Následující příklad ukazuje, jak odstranit použité v tomto cvičení pomocí rutiny Remove-AzStorageQueue konkrétní fronty.
+Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte rutinu Remove-AzStorageQueue. Následující příklad ukazuje, jak odstranit specifickou frontu použitou v tomto cvičení pomocí rutiny Remove-AzStorageQueue.
 
 ```powershell
 # Delete the queue
@@ -174,26 +173,26 @@ Remove-AzStorageQueue –Name $queueName –Context $ctx
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Chcete-li odebrat všechny prostředky, které jste vytvořili v tomto cvičení, odeberte skupinu prostředků. Tím se odstraní také všechny prostředky, které skupina obsahuje. V takovém případě odebere účet úložiště, který jste vytvořili a samotnou skupinu prostředků.
+Pokud chcete odebrat všechny prostředky, které jste v tomto cvičení vytvořili, odeberte skupinu prostředků. Tím se odstraní také všechny prostředky, které skupina obsahuje. V takovém případě se odebere účet úložiště, který je vytvořený, a skupinu prostředků.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto článku s postupy jste se dozvěděli o základních fronty úložiště Powershellu ke správě, také se naučíte:
+V tomto článku se seznámíte se základní správou úložiště front pomocí PowerShellu, včetně toho, jak:
 
 > [!div class="checklist"]
 >
 > * Vytvoření fronty
-> * Načíst do fronty
+> * Načtení fronty
 > * Přidat zprávu
-> * Přečtěte si další zprávy
-> * Odstranění zprávy
+> * Přečtěte si další zprávu.
+> * Odstraní zprávu.
 > * Odstranění fronty
 
-### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Rutiny Powershellu pro úložiště Microsoft Azure
+### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Microsoft Azure PowerShell rutiny úložiště
 
 * [Rutiny PowerShellu pro úložiště](/powershell/module/az.storage)
 

@@ -6,15 +6,16 @@ documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 ms.service: security
+ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: caac311930f2ce4e0ecdf89b5e3a980019e38381
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: be39a623dc5dac09dcfe47de67e025191b5c7de3
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68615834"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727497"
 ---
 # <a name="security-attributes-for-azure-services"></a>Atributy zabezpečení pro služby Azure
 
@@ -658,7 +659,7 @@ SQL Database zahrnuje [jednu databázi](/azure/sql-database/sql-database-single-
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
 | Ověřování| Ano | Azure Active Directory (Azure AD) |
-| Authorization| Ano | Žádný |
+| Authorization| Ano | Žádné |
 
 ### <a name="audit-trail"></a>Záznam pro audit
 
@@ -671,7 +672,7 @@ SQL Database zahrnuje [jednu databázi](/azure/sql-database/sql-database-single-
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace, jako je například Správa verzí konfigurace| Ne  | Žádné |
+| Podpora správy konfigurace, jako je například Správa verzí konfigurace| Ne  | Žádný |
 
 ### <a name="additional-security-attributes-for-sql-database"></a>Další atributy zabezpečení pro SQL Database
 

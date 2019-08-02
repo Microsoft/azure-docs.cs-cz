@@ -9,12 +9,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Jak Visual Studio Code pracuje s Azure Dev Spaces
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 0d80643b366b6d7313f24e73258056e492eb56fc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7809f0215137b0c473e13143404a031497906ebf
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68297869"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725819"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Jak Visual Studio Code pracuje s Azure Dev Spaces
 
@@ -52,9 +52,9 @@ Po spuštění projektu můžete ladit služby Java, Node. js a .NET Core spouš
 
 V následujících rychlých startech můžete vidět Visual Studio Code a rozšíření Azure Dev Spaces pracující s Azure Dev Spaces:
 
-* [Vývoj s použitím Java][quickstart-java]
-* [Vývoj s využitím .NET][quickstart-netcore]
-* [Vývoj s využitím Node. js][quickstart-node]
+* [Rychlé iterování a ladění pomocí Visual Studio Code a Java][quickstart-java]
+* [Rychlé iterování a ladění pomocí Visual Studio Code a .NET][quickstart-netcore]
+* [Rychlé iterace a ladění pomocí Visual Studio Code a Node. js][quickstart-node]
 
 [azds-extension]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azds-yaml]: how-dev-spaces-works.md#prepare-your-code

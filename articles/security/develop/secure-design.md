@@ -1,322 +1,323 @@
 ---
 title: Návrh zabezpečených aplikací v Microsoft Azure
-description: Tento článek popisuje osvědčené postupy, které byste měli zvážit během fáze požadavků a návrhu projektu webové aplikace.
+description: Tento článek popisuje osvědčené postupy, které je potřeba zvážit během fází požadavků a návrhů projektu webové aplikace.
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
 ms.date: 06/11/2019
 ms.topic: article
 ms.service: security
+ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 12b9793cabb261368c437bd2ae2dbb39cf078bef
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 67687e217372c17b007982ef99bf1f80c3e6be5f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653286"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728702"
 ---
 # <a name="design-secure-applications-on-azure"></a>Návrh zabezpečených aplikací v Azure
-V tomto článku Představujeme aktivity související se zabezpečením a ovládací prvky, které je třeba zvážit při návrhu aplikací pro cloud. Školení prostředků spolu s bezpečnostní otázky a koncepty, které je vhodné zvážit během požadavky a navrhnout fáze Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) se vztahuje. Cílem je může pomoci určit činností a služeb Azure, které slouží k návrhu bezpečnější aplikace.
+V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při návrhu aplikací pro Cloud. Pojednává o školicích materiálech spolu s bezpečnostními otázkami a koncepty, které je potřeba vzít v úvahu během fází vývoje požadavků a návrhů na [životní cyklus Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k návrhu bezpečnější aplikace.
 
-Následující fáze SDL jsou popsané v tomto článku:
+V tomto článku jsou uvedené tyto fáze SDL:
 
 - Školení
 - Požadavky
 - Návrh
 
 ## <a name="training"></a>Školení
-Než začnete vyvíjet cloudové aplikace, trvat dobu vysvětlení zabezpečení a ochrany osobních údajů v Azure. Provedením tohoto kroku můžete snížit množství a závažnosti chyb zabezpečení zneužitelné ve vaší aplikaci. Budete mít více připravení na odpovídajícím způsobem reagovat na neustále se měnící světě hrozeb.
+Než začnete vyvíjet cloudovou aplikaci, pochopíte si dobu zabezpečení a ochrany osobních údajů v Azure. Provedením tohoto kroku můžete snížit počet a závažnost zneužití ohrožení zabezpečení ve vaší aplikaci. Připravili jste příslušně na to, aby reagovala vhodně na na ni neustále se měnícím ohrožením.
 
-Použijte následující zdroje během fáze školení, seznamte se se službami Azure, které jsou k dispozici pro vývojáře a s osvědčenými postupy pro zabezpečení v Azure:
+Během školení použijte následující zdroje, abyste se seznámili se službami Azure, které jsou dostupné vývojářům a s osvědčenými postupy zabezpečení v Azure:
 
-  - [Příručka pro vývojáře k Azure](https://azure.microsoft.com/campaigns/developer-guide/) ukazuje, jak začít s Azure. V Průvodci se dozvíte, služby, které můžete použít pro provozování vašich aplikací, ukládání dat, začlenit intelligence, vývoj IoT aplikací a nasazení řešení tak efektivní a zabezpečený.
+  - [Příručka pro vývojáře k Azure](https://azure.microsoft.com/campaigns/developer-guide/) vám ukáže, jak začít s Azure. V této příručce se dozvíte, které služby můžete používat ke spouštění aplikací, ukládání dat, začleňování inteligentních aplikací, sestavování aplikací IoT a k efektivnějšímu a bezpečnému nasazení řešení.
 
-  - [Příručka Začínáme pro vývojáře v Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide) poskytuje základní informace pro vývojáře, kteří chtějí Začínáme s využitím platformy Azure pro potřeby jejich vývoje.
+  - [Příručka Začínáme pro vývojáře v Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide) poskytuje základní informace pro vývojáře, kteří chtějí začít používat platformu Azure pro potřeby vývoje.
 
-  - [Sady SDK a nástroje](https://docs.microsoft.com/azure/index#pivot=sdkstools) popisuje nástroje, které jsou k dispozici v Azure.
+  - Sady [SDK a nástroje](https://docs.microsoft.com/azure/index#pivot=sdkstools) popisují nástroje, které jsou k dispozici v Azure.
 
-  - [Služby Azure DevOps](https://docs.microsoft.com/azure/devops/) poskytuje vývojové nástroje pro spolupráci. Tyto nástroje zahrnují vysoce výkonných kanálů, bezplatná úložiště Git, konfigurovatelné karty kanban a rozsáhlé automatizované a cloudové zátěžové testování.
-    [DevOps Resource Center](https://docs.microsoft.com/azure/devops/learn/) spojuje naše materiály pro seznámení s DevOps postupy Git správy verzí, agilní metodologie, jak Pracujeme s DevOps v Microsoftu a jak můžete vyhodnotit vlastní postup DevOps.
+  - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) poskytuje vývojové nástroje pro spolupráci. Mezi tyto nástroje patří kanály s vysokým výkonem, bezplatné úložiště Git, konfigurovatelné kanbanové desky a rozsáhlé automatizované testování zatížení založené na cloudu.
+    [Centrum prostředků DevOps](https://docs.microsoft.com/azure/devops/learn/) kombinuje naše prostředky pro vzdělávací postupy DevOps, správu verzí Git, agilní metody, způsob, jakým spolupracujeme s DevOps v Microsoftu, a jak si můžete vyhodnotit vlastní pokrok v DevOps.
 
-  - [Prvních 5 pět položek zabezpečení, které je třeba zvážit před doručením (push) do produkčního prostředí](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) ukazuje, jak pomoci zabezpečit vaše webové aplikace v Azure a Chraňte své aplikace před webovými útoky aplikace nejběžnější a nebezpečné.
+  - [Hlavní 5 položek zabezpečení, které je třeba zvážit před odesláním do produkčního](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) prostředí, ukazuje, jak vám pomůžou zabezpečit webové aplikace v Azure a chránit vaše aplikace před nejběžnějšími a nebezpečnými útoky na webové aplikace.
 
-  - [Secure DevOps Kit pro Azure](https://azsk.azurewebsites.net/index.html) je kolekce skripty, nástroje, rozšíření a automatizace, které určeného pro komplexní Azure předplatném a prostředcích požadavkům na zabezpečení týmy DevOps, které používají rozsáhlé služby automation. Sady Secure DevOps Kit pro Azure můžete zobrazit jak hladce integrovat zabezpečení do nativních pracovních postupů DevOps. Sadě řeší nástroje jako testy ověření zabezpečení (SVTs), které může pomoci vývojářům psát bezpečný kód a otestovat konfiguraci zabezpečení svých cloudových aplikací v rané fázi a kódování fází vývoje.
+  - [Sada Secure DevOps Kit pro Azure](https://azsk.azurewebsites.net/index.html) je kolekce skriptů, nástrojů, rozšíření a automatizace, které se v rámci služby DevOps pro týmy, které používají rozsáhlou automatizaci, využívají k komplexnímu předplatnému Azure a potřebám zabezpečení prostředků. Sada Secure DevOps Kit pro Azure vám může ukázat, jak plynule integrovat zabezpečení do vašich nativních pracovních postupů DevOps. Sada SDK adresuje nástroje jako testy zabezpečení (SVTs), které vývojářům pomůžou psát zabezpečený kód a testovat zabezpečenou konfiguraci svých cloudových aplikací ve fázích kódování a předčasného vývoje.
 
-  - [Osvědčené postupy zabezpečení pro řešení Azure](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions) poskytuje kolekci zabezpečení osvědčené postupy při práci podle návrhu, nasazení a správa cloudových řešení pomocí služby Azure.
+  - [Osvědčené postupy zabezpečení pro řešení Azure](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions) poskytují sadu osvědčených postupů zabezpečení, které můžete použít při návrhu, nasazení a správě cloudových řešení pomocí Azure.
 
 ## <a name="requirements"></a>Požadavky
-Fáze definice požadavků je zásadní krok při definování co vaše aplikace je a co bude po vydání. Požadavky na fázi je také doba vnímat kontrolní mechanismy zabezpečení, že vytvoříte do vaší aplikace. V této fázi můžete také začít s kroky, které vás přenesou v průběhu proces SDL vydání a nasazení zabezpečené aplikace.
+Fáze definice požadavků je zásadním krokem při definování toho, co je vaše aplikace a co se při vydání uvolní. Fáze požadavků je také čas, který se zamyslete nad ovládacími prvky zabezpečení, které budete sestavovat do vaší aplikace. V průběhu této fáze taky zahájíte kroky, které provedete v celém SDL, abyste měli jistotu, že vydáváte a nasazujete zabezpečenou aplikaci.
 
-### <a name="consider-security-and-privacy-issues"></a>Vezměte v úvahu problémy zabezpečení a ochrana osobních údajů
-Tato fáze je nejlepší vzít v úvahu základní zabezpečení a ochrany osobních údajů. Definování přijatelnou úroveň zabezpečení a ochrany osobních údajů na začátku projektu pomáhá týmu:
+### <a name="consider-security-and-privacy-issues"></a>Zvažte problémy se zabezpečením a ochranou osobních údajů.
+Tato fáze je nejlepší čas pro zvážení základních problémů zabezpečení a ochrany osobních údajů. Definování přijatelných úrovní zabezpečení a ochrany osobních údajů na začátku projektu pomáhá týmu:
 
-- Vysvětlení rizika spojená s problémy se zabezpečením.
-- Zjistit a opravit chyby zabezpečení během vývoje.
-- Použití zavedené úrovní zabezpečení a ochrany osobních údajů v rámci celého projektu.
+- Pochopení rizik spojených s problémy se zabezpečením.
+- Identifikujte a opravte chyby zabezpečení během vývoje.
+- V celém projektu použijte zavedené úrovně zabezpečení a ochrany osobních údajů.
 
-Při zápisu požadavků pro vaši aplikaci, je nutné zvážit kontrolní mechanismy zabezpečení, které pomáhají zabezpečit vaše aplikace a data.
+Při psaní požadavků pro aplikaci nezapomeňte vzít v úvahu ovládací prvky zabezpečení, které vám pomůžou zajistit bezpečnost aplikace a dat.
 
-### <a name="ask-security-questions"></a>Klást otázky zabezpečení
-Klást otázky zabezpečení, jako jsou:
+### <a name="ask-security-questions"></a>Zeptat se na bezpečnostní otázky
+Zeptejte se na bezpečnostní otázky:
 
-  - Obsahuje aplikaci citlivá data?
+  - Obsahuje moje aplikace citlivá data?
 
-  - Nemá aplikaci shromažďovat nebo ukládání dat, která je třeba dodržovat standardy a programů dodržování předpisů, jako je [federální finanční instituce zkoumání Rady (FFIEC)](https://docs.microsoft.com/azure/security/blueprints/ffiec-analytics-overview) nebo [odvětví platebních karet Data Security Standards (PCI DSS)](https://docs.microsoft.com/azure/security/blueprints/pcidss-analytics-overview)?
+  - Shromažďuje moje aplikace nebo ukládá data, která vyžadují, aby vyhovovala oborovým standardům a programům dodržování předpisů, jako je [Rada pro posuzování federálních finančních institucí (FFIEC)](https://docs.microsoft.com/azure/security/blueprints/ffiec-analytics-overview) nebo [standardy zabezpečení dat v odvětví platební karty (PCI DSS) ](https://docs.microsoft.com/azure/security/blueprints/pcidss-analytics-overview)?
 
-  - Moje aplikace shromažďovat a obsahovat citlivé osobní nebo zákaznický data, která je možné, samostatně nebo s jinými obraťte se na informace, pokud chcete zjistit, nebo vyhledejte jedné osobě?
+  - Má moje aplikace shromažďovat nebo obsahovat citlivá osobní nebo zákaznická data, která je možné použít, a to buď samostatně, nebo s dalšími informacemi, identifikovat, kontaktovat nebo najít jednu osobu?
 
-  - Moje aplikace shromažďování nebo obsahovat data, která slouží pro přístup k medical jednotlivce, vzdělávání, finanční, nebo informace o zaměstnání? Identifikace míře citlivosti dat v průběhu fáze požadavky pomáhá klasifikovat data a určit způsob ochrany dat, které budete používat pro vaši aplikaci.
+  - Shromažďuje moje aplikace nebo obsahuje data, která lze použít pro přístup k údajům o lékařské, vzdělávací, finanční nebo pracovní síti jednotlivce? Identifikace citlivosti vašich dat během fáze požadavků vám pomůže klasifikovat vaše data a identifikovat způsob ochrany dat, který budete používat pro svou aplikaci.
 
-  - Kde a jak se ukládají Moje data? Zvažte, jak budete monitorovat služby úložiště, které vaše aplikace používá pro všechny neočekávané změny (například pomalejší doby odezvy). Budete moci ovlivnit protokolování, aby se shromažďovat detailní data a analyzovat problém do hloubky?
+  - Kde a jak se ukládají moje data? Vezměte v úvahu, jak budete monitorovat služby úložiště, které vaše aplikace používá pro jakékoli neočekávané změny (například pomalejší doby odezvy). Budete moci ovlivnit protokolování a shromažďovat podrobnější data a analyzovat problém podrobněji?
 
-  - Bude Moje aplikace dostupné pro veřejnost (na Internetu) nebo interně jedinou? Pokud je aplikace dostupná, jak můžete zabezpečit data, která mohou být shromažďovány z používání v ukázka nesprávného způsobu? Pokud vaše aplikace je k dispozici interně pouze, zvažte, kdo ve vaší organizaci měli přístup k aplikaci a jak dlouho by měly mít přístup.
+  - Bude moje aplikace k dispozici veřejnosti (na internetu) nebo jenom interně? Pokud je vaše aplikace k dispozici pro veřejnost, jak chránit data, která se můžou shromažďovat nesprávným způsobem? Pokud je vaše aplikace dostupná jenom interně, zvažte, kdo ve vaší organizaci by měl mít přístup k aplikaci a jak dlouho mají mít přístup.
 
-  - Rozumíte modelu identity před zahájením práce na návrhu vaší aplikace? Jak se můžete zjistit, kdo, Řekněme, že jsou uživatelé jsou a jaké je uživatel autorizovaný udělat?
+  - Chápete svůj model identity ještě před tím, než začnete navrhovat aplikaci? Jak zjistíte, že uživatelé říkají, kdo jsou a k čemu má uživatel autorizaci?
 
-  - Moje aplikace provádět citlivé nebo důležité úkoly (například přenosu peníze, odemknutí dveří nebo doručování lékařství)?
-    Vezměte v úvahu, jak se ověřit, zda je uživatel provádějící citlivá úloha oprávnění k provedení úlohy a ověřování, který říká, že jsou osoba je. Autorizace (AuthZ) je v rámci udělení oprávnění objektu zabezpečení v ověření zabezpečení něco udělat. Ověření (AuthN) je v rámci náročné stranu pro legitimních přihlašovacích údajů.
+  - Provádí moje aplikace citlivé nebo důležité úkoly (například přenos peněz, odemknutí dveří nebo doručování lékařství)?
+    Vezměte v úvahu, jak ověříte, že uživatel, který provádí citlivou úlohu, má autorizaci k provedení této úlohy a jak ověřit, že se jedná o osobu, kterou říkají. Autorizace (AuthZ) je zákonem, který umožňuje udělení oprávnění objektu zabezpečení ověřený. Ověřování (AuthN) je to, že je smluvní strana pro legitimní přihlašovací údaje náročná.
 
-  - Moje aplikace provádět žádné rizikové softwaru aktivity, jako jsou uživatelé si můžou nahrávat nebo stahovat soubory nebo jiná data? Pokud vaše aplikace provést rizikové aktivity, zvažte, jak vaše aplikace bude chránit uživatele před zpracování škodlivé soubory nebo data.
+  - Provádí moje aplikace jakékoli rizikové softwarové aktivity, jako je například umožnění uživatelům odesílat nebo stahovat soubory nebo jiná data? Pokud vaše aplikace provádí rizikové aktivity, vezměte v úvahu, jak bude aplikace chránit uživatele před manipulací se škodlivými soubory nebo daty.
 
-### <a name="review-owasp-top-10"></a>Kontrola OWASP top 10
-Vezměte v úvahu revize [ <span class="underline">OWASP Top 10 aplikace bezpečnostní rizika</span>](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
-Prvních 10 OWASP řeší důležité bezpečnostní rizika pro webové aplikace.
-Sledování těchto rizik zabezpečení můžete požadavků a návrhu rozhodnutí, které minimalizují těchto rizik ve vaší aplikaci.
+### <a name="review-owasp-top-10"></a>Zkontrolovat prvních 10 OWASP
+Zvažte možnost projít si [<span class="underline">OWASP hlavních 10 rizik zabezpečení aplikací</span>](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
+OWASP Top 10 řeší kritická bezpečnostní rizika pro webové aplikace.
+Povědomí o těchto bezpečnostních rizicích vám může usnadnit rozhodování a navrhovat rozhodnutí, která minimalizují tato rizika ve vaší aplikaci.
 
-Je důležité uvažovat kontrolní mechanismy zabezpečení, aby se zabránilo narušení.
-Ale můžete také chtít [předpokládaného narušení zabezpečení](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/security-in-devops) dojde. Porušení zabezpečení za předpokladu, že vám pomůže zodpovědět některé důležité otázky týkající se zabezpečení předem, abyste nemuseli dělat oni zodpovězení ve stavu nouze:
+Zamyslete se nad ovládacími prvky zabezpečení, abyste zabránili narušení.
+Nicméně ale chcete předpokládat, že dojde k [porušení](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/security-in-devops) . Za předpokladu, že porušení vám pomůže předem zodpovědět některé důležité otázky týkající se zabezpečení, takže se nemusí v naléhavosti zodpovědět:
 
-  - Jak se detekuje útok?
+  - Jak zjistím útok?
 
-  - Co se udělat, pokud jde o útoku nebo porušení zabezpečení?
+  - Co mám dělat, když dojde k útoku nebo porušení?
 
-  - Jak budu obnovit před útoky, jako jsou data úniku nebo manipulace?
+  - Jak se dá zotavit z útoku, jako je únik dat nebo manipulace?
 
 ## <a name="design"></a>Návrh
 
-Fáze návrhu je velmi důležité pro stanovení osvědčené postupy pro návrh a funkční specifikace. Také je důležité pro provádění analýzy rizik, která pomáhá zmírnit problémy zabezpečení a ochrana osobních údajů v celém projektu.
+Fáze návrhu je zásadní pro vytváření osvědčených postupů pro návrh a funkční specifikace. Je také zásadní pro provádění analýzy rizik, která pomáhá zmírnit problémy zabezpečení a ochrany osobních údajů v celém projektu.
 
-Pokud jsou splněné požadavky na zabezpečení a použijete koncepty zabezpečeného návrhu, můžete vyhnout nebo je minimalizovat příležitosti pro chyby zabezpečení. Chyba zabezpečení je dohledu v návrhu aplikace, kterým by uživatel k provádění škodlivých aktivit nebo neočekávané akcí po vydání vaší aplikace.
+Pokud máte zavedené požadavky na zabezpečení a používáte koncepce zabezpečeného návrhu, můžete se vyhnout nebo minimalizovat příležitosti pro chybu zabezpečení. Chyba zabezpečení je dohledem v návrhu aplikace, která může uživateli dovolit, aby při vydání vaší aplikace prováděla škodlivé nebo neočekávané akce.
 
-Během fáze návrhu také přemýšlejte o tom, jak můžete použít zabezpečení vrstvy. jeden stupeň ochrany, není dostatečně nutně. Co se stane, pokud útočník získá za firewall webových aplikací (WAF)? Chcete, aby jiný ovládací prvek zabezpečení na místě se chránit před tohoto útoku.
+Ve fázi návrhu si také myslíte, jak můžete použít zabezpečení v vrstvách. Jedna úroveň obrany není nutně dostatečná. Co se stane, když útočník získá za bránou firewall webových aplikací (WAF)? Chcete chránit před tímto útokem další kontrolu zabezpečení.
 
-S myslete na to probereme následující pojmy zabezpečeného návrhu a ovládací prvky zabezpečení, které je třeba vyřešit jako při návrhu zabezpečených aplikací:
+V takovém případě probereme následující koncepce zabezpečeného návrhu a bezpečnostní prvky, které byste měli řešit při návrhu zabezpečených aplikací:
 
-- Použijte zabezpečené kódování knihovny a představuje softwarové rozhraní.
-- Vyhledejte zranitelné komponenty.
-- Použijte při návrhu aplikace modelování hrozeb.
-- Snižte útoky.
-- Přijmout zásady identity jako primárního obvodu zabezpečení.
-- Vyžadovat opakované ověření pro důležité transakce.
-- K zabezpečení klíčů, pověření a dalších tajných kódů pomocí řešení správy klíčů.
+- Použijte zabezpečenou knihovnu kódování a softwarové rozhraní.
+- Vyhledá ohrožené součásti.
+- Použití modelování hrozeb při návrhu aplikace
+- Snižte plochu pro útok.
+- Připraví zásadu identity jako primární hraniční zabezpečení.
+- Vyžaduje opakované ověření pro důležité transakce.
+- Použijte řešení správy klíčů k zabezpečení klíčů, přihlašovacích údajů a dalších tajných kódů.
 - Chraňte citlivá data.
-- Implementujte odolný proti selhání opatření.
-- Využijte výhod zpracování chyb a výjimek.
-- Použití protokolování a upozorňování.
+- Implementujte míry bezpečné pro selhání.
+- Využijte možnosti zpracování chyb a výjimek.
+- Použijte protokolování a výstrahy.
 
-### <a name="use-a-secure-coding-library-and-a-software-framework"></a>Použít zabezpečené kódování knihovny a představuje softwarové rozhraní
+### <a name="use-a-secure-coding-library-and-a-software-framework"></a>Použití zabezpečené knihovny kódování a softwarového rozhraní
 
-Pro vývoj použijte zabezpečené kódování knihovny a architektura softwaru, který obsahuje vložené zabezpečení. Vývojáři mohou využít stávající, prověřené funkcí (šifrování, kanalizace vstupní, výstupní kódování, klíče nebo připojovací řetězce a cokoliv jiného, co může být považovaná za řízení zabezpečení) namísto vývoj ovládacích prvků zabezpečení od začátku. To pomáhá chránit proti související se zabezpečením návrhu a implementace chyby.
+Pro vývoj použijte knihovnu zabezpečeného kódování a softwarové rozhraní, které má integrované zabezpečení. Vývojáři mohou použít stávající, osvědčené funkce (šifrování, vstupní kanalizace, výstupní kódování, klíče nebo připojovací řetězce a cokoli jiného, co by bylo považováno za řízení zabezpečení) místo vývoje bezpečnostních mechanismů od začátku. To pomáhá chránit před chybami návrhu a implementace souvisejících se zabezpečením.
 
-Ujistěte se, že používáte nejnovější verzi rozhraní framework a všechny funkce zabezpečení, které jsou k dispozici v rámci. Společnost Microsoft nabízí komplexní [sadu vývojových nástrojů](https://azure.microsoft.com/product-categories/developer-tools/) pro všechny vývojáře pracující na libovolnou platformu a jazyk, dodávat cloudové aplikace. Můžete kódovat v jazyce podle vašeho výběru výběrem z různých [sady SDK](https://azure.microsoft.com/downloads/).
-Můžete využít výhod plně vybavené integrované vývojové prostředí (IDE) a editorů, které mají pokročilé schopnosti ladění a integrovanou podporou Azure.
+Ujistěte se, že používáte nejnovější verzi vašeho rozhraní a všechny funkce zabezpečení, které jsou k dispozici v rozhraní. Microsoft nabízí komplexní [sadu vývojářských nástrojů](https://azure.microsoft.com/product-categories/developer-tools/) pro všechny vývojáře a pracuje na libovolné platformě a v jakémkoli jazyce, abyste mohli doručovat cloudové aplikace. Můžete si kód s vámi zvoleným jazykem vybrat z různých [sad SDK](https://azure.microsoft.com/downloads/).
+Můžete využívat plnohodnotná integrovaná vývojová prostředí (IDEs) a editory s pokročilými možnostmi ladění a integrovanou podporou Azure.
 
-Společnost Microsoft nabízí širokou škálu [jazyky, platformy a nástroje](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all) , můžete použít k vývoji aplikací v Azure. Příkladem je [Azure pro vývojáře v rozhraní .NET a .NET Core](https://docs.microsoft.com/dotnet/azure/). Pro každý jazyk a rozhraní, které nabízíme najdete rychlé starty, kurzy a Reference k rozhraní API můžete začít rychle pracovat.
+Microsoft nabízí celou řadu [jazyků, platforem a nástrojů](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all) , které můžete použít k vývoji aplikací v Azure. Příkladem je [Azure pro vývojáře na platformě .NET a .NET Core](https://docs.microsoft.com/dotnet/azure/). Pro každý jazyk a rozhraní, které nabízíme, najdete rychlé starty, kurzy a Reference k rozhraní API, které vám pomůžou rychle začít.
 
-Azure nabízí širokou škálu služeb, které můžete použít k hostování webů a webových aplikací. Tyto služby umožňují vyvíjet ve svém oblíbeném jazyce, zda je .NET, .NET Core, Javy, Ruby, Node.js, PHP nebo Python.
-[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (Web Apps) je jedním z těchto služeb.
+Azure nabízí celou řadu služeb, které můžete použít k hostování webů a webových aplikací. Tyto služby umožňují vyvíjet ve svém oblíbeném jazyce, ať už se jedná o .NET, .NET Core, Java, Ruby, Node. js, PHP nebo Python.
+[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (Web Apps) je jednou z těchto služeb.
 
-Výkon Microsoft Azure Web Apps přidá do vaší aplikace. Zahrnuje zabezpečení, Vyrovnávání zatížení, automatické škálování a automatizovanou správu. Můžete také využít možnosti DevOps sady ve službě Web Apps, jako je Správa balíčků, přípravná prostředí, vlastní domény, certifikáty SSL/TLS a průběžné nasazování z Azure DevOps, Githubu, Docker Hubu a dalších zdrojů.
+Web Apps zvyšuje výkon aplikace Microsoft Azure. Zahrnuje zabezpečení, Vyrovnávání zatížení, automatické škálování a automatizovanou správu. Můžete také využít možnosti DevOps v Web Apps, jako je Správa balíčků, pracovní prostředí, vlastní domény, certifikáty SSL/TLS a průběžné nasazování z Azure DevOps, GitHubu, Docker Hub a dalších zdrojů.
 
-Azure nabízí další služby, které můžete použít k hostování webů a webových aplikací. Pro většinu scénářů je nejlepší volbou služba Web Apps. Architektura micro služby, zvažte [Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric).
+Azure nabízí další služby, které můžete použít k hostování webů a webových aplikací. Pro většinu scénářů je nejlepší volbou služba Web Apps. V případě architektury Micro Service zvažte [Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric).
 Pokud potřebujete větší kontrolu nad virtuálními počítači, na kterých se kód spouští, zvažte službu [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
-Další informace o tom, jak si vybrat mezi tyto služby Azure, najdete v článku [srovnání Azure App Service, Virtual Machines, Service Fabric a Cloud Services](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm).
+Další informace o tom, jak si vybrat mezi těmito službami Azure, najdete v tématu [porovnání Azure App Service, Virtual Machines, Service Fabric a Cloud Services](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm).
 
-### <a name="apply-updates-to-components"></a>Použití aktualizací pro komponenty
+### <a name="apply-updates-to-components"></a>Použít aktualizace pro součásti
 
-Aby se zabránilo ohrožení zabezpečení, by měl průběžně inventáře komponenty na straně klienta i stranu serveru (například architektury a knihovny) a jejich závislostí pro aktualizace. Neustále jsou vydávány nová ohrožení zabezpečení a verze aktualizace softwaru. Ujistěte se, že máte probíhající plán pro monitorování, třídění a aktualizace nebo změny konfigurace do knihovny a komponenty, které používáte.
+Aby se zabránilo ohrožení zabezpečení, měli byste průběžně docházet na klientské komponenty i na straně serveru (například architektury a knihovny) a jejich závislosti na aktualizacích. Nové chyby zabezpečení a aktualizované verze softwaru jsou vydávány průběžně. Ujistěte se, že máte průběžný plán monitorování, třídění a uplatnění aktualizací nebo změn konfigurace u knihoven a komponent, které používáte.
 
-Najdete v článku [Open Web Application zabezpečení projektu (OWASP)](https://www.owasp.org/index.php/Main_Page) na stránce [komponenty pomocí známých chyb zabezpečení](https://www.owasp.org/index.php/Top_10-2017_A9-Using_Components_with_Known_Vulnerabilities) nástroj návrhy. Můžete také odebírat e-mailové výstrahy pro chyby zabezpečení, které se vztahují k součásti, které používáte.
+Na stránce [Otevřít projekt zabezpečení webové aplikace (OWASP)](https://www.owasp.org/index.php/Main_Page) najdete informace o [Používání komponent se známými chybami zabezpečení](https://www.owasp.org/index.php/Top_10-2017_A9-Using_Components_with_Known_Vulnerabilities) pro návrhy nástrojů. Můžete se také přihlásit k odběru e-mailových upozornění pro slabá místa zabezpečení související s komponentami, které používáte.
 
-### <a name="use-threat-modeling-during-application-design"></a>Použijte při návrhu aplikace modelování hrozeb
+### <a name="use-threat-modeling-during-application-design"></a>Použití modelování hrozeb během návrhu aplikace
 
-Modelování ohrožení je proces identifikace potenciálních bezpečnostních hrozeb pro vaše podnikání a aplikace a pak zajistit, že správné zmírnění rizik jsou na místě. Do procesu SDL Určuje, že týmy by měly zapojit do během fáze návrhu, při řešení potíží s potenciální je poměrně snadné a hospodárné modelování hrozeb. Použití před internetovými útoky modelování ve fázi návrhu může výrazně snížit vaše celkové náklady na vývoj.
+Modelování hrozeb je proces identifikace potenciálních bezpečnostních hrozeb pro vaši firmu a aplikaci a následnému zajištění, že jsou zavedena správná omezení rizik. SDL určuje, že týmy by se měly během fáze návrhu zapojit do modelování hrozeb, zatímco řešení potenciálních problémů je poměrně jednoduché a nákladově efektivní. Použití modelování hrozeb ve fázi návrhu může výrazně snížit celkové náklady na vývoj.
 
-Pro usnadnění hrozeb proces modelování, jsme navrhovali [nástroj pro modelování hrozeb SDL](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) s odborníky nesouvisí se zabezpečením v úvahu. Tento nástroj usnadňuje modelování hrozeb pro všechny vývojáře tím, že poskytuje jasné pokyny o tom, jak vytvořit a analyzovat modely hrozeb.
+Abychom vám usnadnili proces modelování hrozeb, navrhli jsme [Threat Modeling Tool SDL](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) s ohledem na nebezpečnostní odborníky. Tento nástroj usnadňuje modelování hrozeb všem vývojářům tím, že poskytuje jasné pokyny, jak vytvářet a analyzovat modely hrozeb.
 
-Modelování návrhu aplikace a vytváření výčtů [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) hrozeb – falšování, manipulace, Odvolatelnost, zpřístupnění informací, dostupnost služby a zvýšení úrovně oprávnění – ve všech důvěryhodnosti hranice ukázal efektivní způsob k zachycení chyb návrhu raném stádiu. Následující tabulka uvádí hrozby ROZTEČ a poskytuje některá příklad zmírnění rizik, které používají funkce, které poskytuje Azure. Tyto způsoby zmírnění rizik nebudou fungovat ve všech situacích.
+Modelování návrhu aplikace a vytváření [výčtu hrozeb a](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) jejich výčet – falšování identity, manipulace, odmítnutí, zpřístupnění informací, odepření služby a zvýšení oprávnění – napříč všemi hranicemi vztahů důvěryhodnosti byl prověřen účinný způsob, jak zachytit chyby návrhu. od začátku. V následující tabulce jsou uvedeny hrozby pro rozteč a poskytuje několik ukázkových rizik, která využívají funkce poskytované Azure. Tato zmírnění rizika nebudou v každé situaci fungovat.
 
-| Před internetovými útoky | Vlastnost zabezpečení | Ke zmírnění potenciální platformou Azure. |
+| Nebezpečí | Vlastnost zabezpečení | Potenciální omezení pro platformu Azure |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Falšování identity               | Ověřování        | [Vyžadovat připojení prostřednictvím protokolu HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
-| Manipulace              | Integrita             | Ověřte certifikáty SSL/TLS. Aplikace, které používají protokol SSL/TLS plně ověřte certifikáty X.509 entity, které se připojují. Použití certifikátů v Azure Key Vault [spravovat vaše x509 certifikáty](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates). |
-| odmítnutí            | Nepopiratelnost odpovědnosti       | Povolení služby Azure [monitorováním a diagnostikou](https://docs.microsoft.com/azure/architecture/best-practices/monitoring).|
-| Zpřístupnění informací | Důvěrnost       | Šifrovat citlivá data [v klidovém stavu](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) a [přenášená](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit). |
-| Odepření služby      | Dostupnost          | Monitorovat metriky výkonu pro potenciální odmítnutí podmínek služby. Implementace připojení filtry. [Azure DDoS protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps), v kombinaci s osvědčené postupy pro navrhování aplikací, poskytuje ochranu před útoky DDoS.|
-| Zvýšení oprávnění | Authorization         | Použití Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
+| Falšování identity               | Ověřování        | [Vyžadovat připojení HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Manipulace              | Integrita             | Ověřte certifikáty protokolu SSL/TLS. Aplikace, které používají protokol SSL/TLS, musí plně ověřit certifikáty X. 509 entit, ke kterým se připojují. Pomocí Azure Key Vault certifikátů můžete [spravovat certifikáty x509](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates). |
+| Popírání odpovědnosti            | Neodvolatelnost       | Povolte [monitorování a diagnostiku](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)Azure.|
+| Zpřístupnění informací | Chovávat       | Šifrování citlivých dat v [klidovém umístění](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) a [přenosu](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit). |
+| Odepření služby      | Dostupnost          | Monitoruje metriky výkonu pro potenciální odepření podmínek poskytování služeb. Implementujte filtry připojení. [Ochrana Azure DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps)v kombinaci s osvědčenými postupy pro návrh aplikací poskytuje ochranu před útoky DDoS.|
+| Zvýšení oprávnění | Authorization         | Použijte Azure Active Directory <span class="underline"></span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
 
-### <a name="reduce-your-attack-surface"></a>Snižte útoky
+### <a name="reduce-your-attack-surface"></a>Omezit potenciální oblast útoku
 
-Rovinu útoku je celkový součet kterých může dojít k potenciální ohrožení zabezpečení. V tomto dokumentu abychom se zaměřit na aplikace pro možný útok.
-Zaměřuje se na ochraně aplikace před útoky. Rychlý a jednoduchý způsob, jak minimalizovat útoky je odebrat nevyužité prostředky a kód ze své aplikace. Menší aplikace, menší útoky. Například odeberte:
+Plocha pro útok je celkový součet, kde může dojít k možným ohrožením zabezpečení. V tomto dokumentu se zaměřujeme na plochu útoku aplikace.
+Zaměřuje se na ochranu aplikace před útoky. Jednoduchým a rychlým způsobem minimalizace prostoru pro útok je odebrání nepoužívaných prostředků a kódu z vaší aplikace. Menší vaše aplikace, menší plocha pro útok. Například odeberte:
 
-- Kód pro funkce, které nebyly dosud všeobecně dostupné.
-- Kód na podporu ladění.
-- Síťová rozhraní a protokoly, které nepoužívají nebo jsou zastaralé.
+- Kód pro funkce, které jste ještě neuvolnili.
+- Ladění kódu podpory.
+- Síťová rozhraní a protokoly, které se nepoužívají nebo které jsou zastaralé.
 - Virtuální počítače a další prostředky, které nepoužíváte.
 
-Provádění pravidelných vyčištění prostředků a zajištění, že odeberete nepoužívané kódu jsou skvělé způsoby, jak zajistit, že jsou méně možností pro útočníky vůči útokům.
+Pravidelným vyčištěním vašich prostředků a zajištěním, že odeberete nepoužitý kód, jsou skvělé způsoby, jak zajistit, aby se škodlivým aktérům při útoku staly méně.
 
-Podrobnější a podrobné způsob, jak snížit útoky se na dokončení analýzy možností útoku. Analýzu útoku umožňuje mapovat částí systému, který je potřeba zkontrolovat a jsou testovány z hlediska ohrožení zabezpečení.
+Podrobnější a podrobný způsob, jak omezit prostor pro útoky, je provést analýzu prostoru pro útoky. Analýza prostoru pro útoky vám pomůže namapovat části systému, které je potřeba zkontrolovat a otestovat pro slabá místa zabezpečení.
 
-Účelem analýzu útoku je pochopit riziko oblasti v aplikaci tak, aby byly vědět, jaké části aplikace, které jsou otevřené k útoku na vývojáře a odborníky na zabezpečení. Pak najdete způsoby, jak minimalizovat sledování této potenciální, kdy a jak pro možný útok změny a co to znamená, že z hlediska rizik.
+Účelem analýzy roviny útoku je pochopit oblasti rizik v aplikaci, aby se vývojáři a odborníci na zabezpečení dozvěděli, jaké části aplikace jsou otevřeny k útokům. Pak můžete najít možnosti pro minimalizaci tohoto potenciálu, sledování, kdy a jak se změní prostor pro útoky a co to znamená z hlediska rizika.
 
-Analýza možností útoku pomáhá identifikovat:
+Analýza plochy pro útoky vám pomůže identifikovat:
 
-- Funkce a části systému, budete muset zkontrolovat a testovat ohrožení zabezpečení.
-- S vysokým rizikem oblasti kódu, které vyžadují ochranu defense v hloubce (částí systému, který je potřeba chránit).
-- Pokud příkaz alter pro možný útok a musíme ho obnovit posouzení hrozeb.
+- Funkce a části systému, které potřebujete ke kontrole a testování bezpečnostních chyb zabezpečení.
+- Vysoce rizikové oblasti kódu, které vyžadují ochranu důkladnou ochranou (části systému, které je třeba chránit).
+- Když změníte plochu pro útok a potřebujete aktualizovat posouzení hrozeb.
 
-Snížení příležitosti pro útočníci zneužít ohrožená místa potenciální slabé místo nebo ohrožení zabezpečení vyžaduje, abyste důkladně analyzovat celkové útok vaší aplikace. Zahrnuje také zakázáním nebo omezením přístupu ke službám systému, použití principu nejnižší úrovně oprávnění a použití vrstvy ochrany, kdykoli je to možné.
+Snížení příležitostí útočníků pro zneužití potenciálně slabého místa nebo ohrožení zabezpečení vyžaduje důkladnou analýzu celkového prostoru pro útoky vaší aplikace. Zahrnuje taky zakázání nebo omezení přístupu k systémovým službám, použití principu nejnižší úrovně oprávnění a využívání obrany s vrstvami bez ohledu na to, kde je to možné.
 
-Můžeme probírat [provádějící surface revize útoku](secure-develop.md#conduct-attack-surface-review) ve fázi ověření do procesu SDL.
-
-> [!NOTE]
-> **Jaký je rozdíl mezi modelování hrozeb a útoků analýzu?**
-Modelování ohrožení je proces identifikace potenciálních bezpečnostních hrozeb pro vaši aplikaci a zajištění řádné zmírnění proti hrozbám na místo. Analýza prostoru pro útok identifikuje s vysokým rizikem oblasti kódu, které jsou otevřené pro útok. Zahrnuje hledání způsobů, jak chránit aplikace a revizí a testování těchto oblastí kódu před nasazením aplikace s vysokým rizikem oblasti.
-
-### <a name="adopt-a-policy-of-identity-as-the-primary-security-perimeter"></a>Přijmout zásady identity jako primárního obvodu zabezpečení
-
-Při návrhu cloudových aplikací, je potřeba rozbalit zaměření obvodu zabezpečení přístup orientovaný na síti zaměřená na identitu přístup. V minulosti byl obvodu zabezpečení místní sítě organizace. Většina návrhy zabezpečení místních používat síť jako primární zabezpečení pivot. Pro cloudové aplikace jsou lépe vyhovovat vycházet identity jako primárního obvodu zabezpečení.
-
-Co vám pomohou vyvíjet zaměřená na identitu přístup k vývoji webových aplikací:
-
-- Vynutit ověřování Multi-Factor Authentication pro uživatele.
-- Použijte silné ověřování a autorizace platformy.
-- Použití principu nejnižší úrovně oprávnění.
-- Implementovat přístup just-in-time.
-
-#### <a name="enforce-multi-factor-authentication-for-users"></a>Vynutit ověřování Multi-Factor Authentication pro uživatele
-
-Pomocí dvojúrovňového ověřování. Dvoufaktorové ověřování je aktuálním standardem pro ověřování a autorizaci, protože se eliminuje slabá místa zabezpečení, které vyplývají z uživatelského jména a hesla typy ověřování. Přístup k rozhraním Azure management (Azure portal/vzdáleného prostředí PowerShell) a ke službám určených pro zákazníky by navržené a nakonfigurovány pro použití [ověřování Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication).
-
-#### <a name="use-strong-authentication-and-authorization-platforms"></a>Použijte silné ověřování a autorizace platformy
-
-Mechanismy ověřování a autorizace, které byly zadané platformy nahrazujícím vlastní kód. Je to proto vývoj vlastního ověřovacího kódu mohou být náchylné k chybám. Komerční kódu (např. z Microsoft) často je široce zkontrolovat, jestli zabezpečení. [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) je řešení Azure pro správu identit a přístupů. Tyto nástroje služby Azure AD a služby pomáhají s vývojem pro zabezpečené:
-
-- [Azure AD platformou identity (Azure AD pro vývojáře)](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) je Cloudová služba identit, které vývojáři vytvářet aplikace, které bezpečně přihlásit uživatele. Azure AD pomáhá vývojářům, kteří zodpovídají za tvorbu jednoho tenanta, obchodní aplikace (LOB) a vývojáři, kteří chtějí vyvíjet aplikace s více tenanty. Kromě základních přihlásí aplikace, které jsou vytvořeny pomocí služby Azure AD můžete volat APIs Microsoft i vlastní rozhraní API, která jsou postavené na platformě Azure AD. Platforma identit Azure AD podporuje standardní protokoly jako jsou OAuth 2.0 a OpenID Connect.
-
-- [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/) je služba pro správu identit můžete použít k přizpůsobení a řízení, jak se zákazníci registrují do, přihlaste se a při používání vašich aplikací spravují své profily. Patří sem aplikace vyvinuté pro iOS, Android a .NET, mimo jiné. Azure AD B2C umožňuje tyto akce při ochraně identit zákazníků.
-
-#### <a name="apply-the-principle-of-least-privilege"></a>Použití principu nejnižší úrovně oprávnění
-
-Koncept [nejnižší možná oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) znamená, že poskytuje přesnou úroveň přístupu a řízení, potřebují dělat svou práci a žádné další uživatelé.
-
-Softwarový vývojář bude potřebovat oprávnění správce domény? Asistent by potřebují přístup k správu ovládacích prvků na svém osobním počítači? Vyhodnocování přístup k softwaru se nijak neliší. Pokud používáte [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) poskytnout různé možnosti uživatelů a autority ve vaší aplikaci, nebude dát všem uživatelům přístup ke všemu, co. Omezením přístupu k co je potřeba pro každou roli, můžete omezit riziko výskytu problému zabezpečení.
-
-Ujistěte se, že vaše aplikace vynucuje [nejnižší možná oprávnění](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) v celé jeho vzorce přístupu.
+Probereme během ověřovací fáze SDL [kontrolu prostoru pro útoky](secure-develop.md#conduct-attack-surface-review) .
 
 > [!NOTE]
->  Pravidla nejnižší možná oprávnění se mají použít na software a uživatelům vytvářejícím software. Vývojáři softwaru může být velmi velké riziko pro zabezpečení IT, pokud jim neudělíte příliš mnoho přístup. Vývojář se zlými úmysly nebo příliš mnoho přístup může být závažné důsledky. Doporučujeme vám, že pravidla nejnižší možná oprávnění použita pro vývojáře v průběhu životního cyklu vývoje.
+> **Jaký je rozdíl mezi modelováním hrozeb a analýzou možností útoku?**
+Modelování hrozeb je proces identifikace potenciálních bezpečnostních hrozeb pro vaši aplikaci a zajištění, že jsou zavedena správná zmírnění hrozeb proti hrozbám. Analýza povrchu útoku identifikuje vysoce rizikové oblasti kódu, které jsou otevřeny pro útok. Zahrnuje hledání způsobů, jak chránit vysoce rizikové oblasti vaší aplikace a kontrola a testování těchto oblastí kódu před nasazením aplikace.
 
-#### <a name="implement-just-in-time-access"></a>Implementovat přístup just-in-time
+### <a name="adopt-a-policy-of-identity-as-the-primary-security-perimeter"></a>Přijmout zásadu identity jako primární hraniční zabezpečení
 
-Implementace *just-in-time* přístup (JIT) dále snížit dobu expozice oprávnění. Použití [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#stage-3-build-visibility-and-take-full-control-of-admin-activity) na:
+Když navrhujete cloudové aplikace, je důležité rozšířit fokus hraničního zabezpečení ze sítě zaměřené na přístup k identitě orientovaný na identitu. Historicky primární místní bezpečnostní zóna byla síť organizace. Většina místních návrhů zabezpečení používá síť jako primární Pivot zabezpečení. U cloudových aplikací je lepší pracovat s tím, že jako primární hraniční zabezpečení zvažujete identitu.
 
-- Uživatelům udělte oprávnění, které potřebují pouze JIT.
-- Přiřazení rolí zkrácený dobu bez obav, že jsou oprávnění automaticky odvolat.
+Věci, které můžete využít k vývoji přístupu zaměřeného na identitu pro vývoj webových aplikací:
+
+- Vynutili službu Multi-Factor Authentication pro uživatele.
+- Používejte silné ověřování a platformy pro autorizaci.
+- Použijte princip nejnižších oprávnění.
+- Implementujte přístup za běhu.
+
+#### <a name="enforce-multi-factor-authentication-for-users"></a>Vynutilit službu Multi-Factor Authentication pro uživatele
+
+Používejte dvojúrovňové ověřování. Dvojúrovňové ověřování je aktuální standard pro ověřování a autorizaci, protože se vyhne slabým a bezpečnostním omezením vyplývajícím z uživatelského jména a hesla ověřování. Přístup k rozhraním pro správu Azure (Azure Portal/vzdáleným PowerShellu) a službám orientovaným na zákazníky by měly být navržené a nakonfigurované pro použití [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication).
+
+#### <a name="use-strong-authentication-and-authorization-platforms"></a>Použití silných ověřovacích a autorizačních platforem
+
+Místo vlastního kódu použijte mechanismy ověřování a autorizace dodané platformou. Důvodem je, že vývoj vlastního ověřovacího kódu může být náchylný k chybě. Komerční kód (například od společnosti Microsoft) je často výrazně přezkoumán z hlediska zabezpečení. [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) je řešení Azure pro správu identit a přístupu. Tyto nástroje a služby Azure AD vám pomůžou s zabezpečeným vývojem:
+
+- [Azure AD identity Platform (Azure AD pro vývojáře)](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) je cloudová služba identit, kterou vývojáři používají k vytváření aplikací, které se bezpečně přihlásí uživatelům. Azure AD pomáhá vývojářům, kteří sestavují aplikace pro jednoho tenanta, obchodní aplikace (LOB) a vývojáře, kteří chtějí vyvíjet aplikace s více klienty. Kromě základního přihlašování můžou aplikace sestavené pomocí Azure AD volat rozhraní API Microsoftu a vlastní rozhraní API, která jsou postavená na platformě Azure AD. Platforma identity Azure AD podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect.
+
+- [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/) je služba pro správu identit, kterou můžete použít k přizpůsobení a řízení způsobu registrace, přihlašování a správy profilů při používání vašich aplikací. To zahrnuje aplikace vyvinuté pro iOS, Android a .NET mimo jiné. Azure AD B2C tyto akce povoluje při ochraně zákaznických identit.
+
+#### <a name="apply-the-principle-of-least-privilege"></a>Použít princip nejnižších oprávnění
+
+Koncept nejnižších [oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) znamená, že uživatelé budou mít přesnou úroveň přístupu a ovládají jejich úlohy a ještě nic dalšího.
+
+Potřebuje vývojář softwaru práva správce domény? Má asistent pro správu přístup k administrativním ovládacím prvkům na svém osobním počítači? Vyhodnocení přístupu k softwaru se neliší. Pokud používáte [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) , abyste uživatelům poskytli různé možnosti a autority v aplikaci, nebudete mít přístup ke všemu všem. Omezením přístupu na to, co je potřeba pro jednotlivé role, můžete omezit riziko výskytu potíží se zabezpečením.
+
+Ujistěte se, že vaše aplikace v celém vzoru přístupu vynutila [nejnižší oprávnění](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) .
+
+> [!NOTE]
+>  Pravidla nejnižší úrovně oprávnění musí platit pro software a osoby vytvářející software. Vývojáři softwaru můžou být velkým rizikem zabezpečení IT, pokud mají k disvelkému množství přístup. Důsledky můžou být závažné, pokud má vývojář škodlivý záměr nebo máte příliš velký přístup. Doporučujeme, abyste pro vývojáře v průběhu životního cyklu vývoje použili pravidla s minimálním oprávněním.
+
+#### <a name="implement-just-in-time-access"></a>Implementace přístupu za běhu
+
+Implementujte přístup za běhu (Just *-in-time* ) k dalšímu snížení doby expozice oprávnění. Použít [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#stage-3-build-visibility-and-take-full-control-of-admin-activity) k:
+
+- Poskytněte uživatelům oprávnění, která potřebují pouze JIT.
+- Přiřaďte role pro zkrácenou dobu trvání a jistotu, že se oprávnění odvolají automaticky.
 
 ### <a name="require-re-authentication-for-important-transactions"></a>Vyžadovat opakované ověření pro důležité transakce
 
-[Padělání žádosti více webů](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (označované také jako *XSRF* nebo *CSRF*) je útok na hostované webové aplikace, v které škodlivý webové aplikace ovlivňuje interakce mezi klientského prohlížeče a webové aplikace, která důvěřuje prohlížeče. Útoky proti padělání žádosti více webů je možné, protože webové prohlížeče odeslat některé typy ověřování tokenů automaticky při každé žádosti na web.
-Tato forma využívání se taky říká *jedním kliknutím útoku* nebo *relace záleželo* protože využívá výhod platformy útoku uživatele ověřený relace.
+[Padělání žádostí mezi weby](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (označuje se také jako *XSRF* nebo *CSRF*) je útok proti aplikacím hostovaným na webu, ve kterých škodlivá webová aplikace ovlivňuje interakci mezi klientským prohlížečem a webovou aplikací, která tento prohlížeč důvěřuje. Útoky na padělání žádostí mezi weby jsou možné, protože webové prohlížeče odesílají některé typy ověřovacích tokenů automaticky pomocí všech požadavků na web.
+Tato forma využití se označuje také jako útok s *jedním kliknutím* nebo při *jízdě relace* , protože útok využívá dřív ověřenou relaci uživatele.
 
-Nejlepší způsob, jak chránit před tento druh útoku je požádali uživatele o něco, co před každou transakci důležitá, například nákup, deaktivaci účtu nebo změna hesla můžete zadat jenom na uživatele. Může požádat uživatele, aby znovu zadat heslo, dokončení testu captcha, nebo odešlete token tajného kódu, který by měla pouze uživatele. Nejběžnější přístup je token tajného kódu.
+Nejlepším způsobem, jak chránit před tímto druhem útoku, je požádat uživatele o něco, co může jenom uživatel poskytnout před každou důležitou transakci, jako je nákup, deaktivace účtu nebo změna hesla. Můžete požádat uživatele, aby znovu zadal heslo, dokončili CAPTCHA nebo odeslali tajný token, který by měl mít jenom uživatel. Nejběžnějším přístupem je tajný token.
 
-### <a name="use-a-key-management-solution-to-secure-keys-credentials-and-other-secrets"></a>Pomocí řešení správy klíčů pro zabezpečení klíčů, pověření a dalších tajných kódů
+### <a name="use-a-key-management-solution-to-secure-keys-credentials-and-other-secrets"></a>Použití řešení pro správu klíčů k zabezpečení klíčů, přihlašovacích údajů a dalších tajných kódů
 
-Došlo ke ztrátě klíčů a přihlašovacích údajů je běžný problém. Jediné, co horší ztráty klíčů a přihlašovacích údajů, je, aniž by bylo neoprávněným stran získat přístup k nim. Útočníci mohou využít výhod automatizované a manuální techniky, které chcete najít klíče a tajné kódy, které jsou uložené v úložištích kódu jako GitHub. Neumisťujte klíčů a tajných kódů v těchto úložištích veřejného kódu nebo na jiném serveru.
+Ztráta klíčů a přihlašovacích údajů je běžný problém. Jediná věc, kterou neztratí vaše klíče a přihlašovací údaje, má přístup k nim neoprávněná osoba. Útočníci můžou využít automatizovaných a ručních technik k nalezení klíčů a tajných kódů, které jsou uložené v úložištích kódu jako GitHub. Neumísťujte klíče a tajné klíče do těchto veřejných úložišť kódu ani na žádný jiný server.
 
-Vždy umístíte certifikáty, klíče, tajné klíče a připojovací řetězce v rámci řešení pro správu klíčů. Můžete použít centralizované řešení, ve kterém jsou uloženy klíče a tajné klíče v modulech hardwarového zabezpečení (HSM). Azure vám poskytne modulu hardwarového zabezpečení v cloudu s využitím [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis).
+Klíče, certifikáty, tajné kódy a připojovací řetězce vždy umístěte do řešení správy klíčů. Můžete použít centralizované řešení, ve kterém klíče a tajné klíče jsou uložené v modulech hardwarového zabezpečení (HSM). Azure poskytuje modul HARDWAROVÉho zabezpečení v cloudu s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis).
 
-Key Vault je *úložiště tajných kódů*: je centralizovaná Cloudová služba pro ukládání tajných klíčů aplikací. Key Vault uchovává důvěrná data bezpečné uchovávání tajných klíčů aplikací v jednom centrálním umístění a poskytuje zabezpečený přístup, oprávnění k řízení a protokolování přístupu.
+Key Vault je *tajné úložiště*: Jedná se o centralizovanou cloudovou službu pro ukládání tajných klíčů aplikací. Key Vault udržuje bezpečí důvěrných dat tím, že zachovává tajné klíče aplikace v jediném, centrálním umístění a poskytuje zabezpečený přístup, řízení oprávnění a přístup k protokolování.
 
-Tajné kódy jsou uložené v jednotlivých *trezory*. Každý trezor má vlastní konfigurace a zásady zabezpečení pro řízení přístupu. Dostanete k datům prostřednictvím rozhraní REST API nebo Klientská sada SDK, která je k dispozici pro většinu programovacích jazyků.
+Tajné kódy jsou uložené vjednotlivých trezorech. Každý trezor má vlastní konfiguraci a zásady zabezpečení pro řízení přístupu. K datům získáte přístup pomocí REST API nebo prostřednictvím klientské sady SDK, která je dostupná pro většinu programovacích jazyků.
 
 > [!IMPORTANT]
-> Služba Azure Key Vault je navržená k ukládání tajných kódů konfigurace pro serverové aplikace. Není určena pro ukládání dat, která patří uživatelům aplikace. Toto je zohledněno v jeho výkonové charakteristiky, rozhraní API a modelu nákladů.
+> Azure Key Vault je navržená tak, aby ukládala konfigurační tajné klíče pro serverové aplikace. Není určený pro ukládání dat, která patří uživatelům aplikace. To se projeví ve vlastnostech výkonu, rozhraní API a modelu nákladů.
 >
-> Uživatelská data by měla být uložena kdekoli, jako v instanci Azure SQL Database, která je transparentní šifrování dat (TDE) nebo v účtu úložiště, který používá Azure Storage Service Encryption. Tajné kódy, které se používají v aplikaci pro přístup k úložišti těchto dat můžete uchovávat ve službě Azure Key Vault.
+> Uživatelská data by se měla ukládat jinde, například v instanci Azure SQL Database, která má transparentní šifrování dat (TDE) nebo v účtu úložiště, který používá Azure Storage šifrování služby. Tajné kódy, které vaše aplikace používá pro přístup k těmto úložištím dat, se můžou uchovávat v Azure Key Vault.
 
-### <a name="protect-sensitive-data"></a>Ochrana citlivých dat
+### <a name="protect-sensitive-data"></a>Chránit citlivá data
 
-Ochrana dat je důležitou součástí strategie zabezpečení.
-Klasifikace dat a identifikace ochrany vašich dat, musí vám usnadní návrh aplikace s ohledem na bezpečnost data. Klasifikace (kategorizace) data ukládaná citlivosti a dopad na chod firmy pomáhá vývojářům určit rizika, které jsou spojeny s daty.
+Ochrana dat je zásadní součástí vaší strategie zabezpečení.
+Klasifikace dat a určení vašich potřeb ochrany dat vám pomůžou při návrhu aplikace s ohledem na zabezpečení dat. Klasifikace (kategorizace) uložených dat podle citlivosti a dopadu firmy pomáhá vývojářům určit rizika spojená s daty.
 
-Označte všechna data příslušných jako citlivé při návrhu datových formátů. Ujistěte se, že aplikace považuje za citlivé na příslušné data. Tyto postupy mohou přispět k ochraně citlivých dat:
+Při návrhu formátů dat označte všechna relevantní data jako citlivá. Ujistěte se, že aplikace považuje příslušná data za citlivá. Tyto postupy vám pomůžou chránit citlivá data:
 
 - Použijte šifrování.
-- Vyhnuli pevnému zakódování tajné kódy jako jsou klíče a hesla.
-- Ujistěte se, že jsou splněné řízení přístupu a auditování.
+- Vyhněte se kódování tajných kódů, jako jsou klíče a hesla.
+- Ujistěte se, že jsou na místě řízení přístupu a auditování.
 
-#### <a name="use-encryption"></a>Používat šifrování
+#### <a name="use-encryption"></a>Použít šifrování
 
-Ochrana dat by měl být nedílnou součást vaší strategie zabezpečení.
-Pokud vaše data jsou uložená v databázi nebo přesun vpřed a zpět mezi umístění, použijte šifrování [dat v klidovém stavu](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) (během činnosti v databázi) a šifrování [přenášená data](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit) (na cestě do a z uživatelů, databáze, API nebo koncový bod služby). Doporučujeme vždy používat protokoly SSL/TLS pro výměnu dat. Ověřte, že používáte nejnovější verzi TLS pro šifrování (v současné době Toto je verze 1.2).
+Ochrana dat by měla být důležitou součástí vaší strategie zabezpečení.
+Pokud jsou vaše data uložená v databázi nebo se mezi místy pohybují, používejte šifrování neaktivních uložených [dat](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) (v databázi) a šifrování přenášených [dat](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit) (na cestě a od uživatele, databáze, rozhraní API nebo koncového bodu služby). Pro výměnu dat doporučujeme vždy používat protokoly SSL/TLS. Ujistěte se, že používáte nejnovější verzi TLS pro šifrování (aktuálně se jedná o verzi 1,2).
 
-#### <a name="avoid-hard-coding"></a>Vyhnuli pevnému zakódování
+#### <a name="avoid-hard-coding"></a>Vyhnout se hardwarovému kódování
 
-Některé možnosti by nikdy neměly být pevně zakódované v softwaru. Některé příklady jsou názvy hostitelů nebo IP adresy, adresy URL, e-mailové adresy, uživatelská jména, hesla, klíče účtu úložiště a jiných kryptografických klíčů. Zvažte implementaci požadavky týkající se, co může nebo nemůže být pevně zakódované v kódu, včetně v části komentáře kódu.
+Některé věci by nikdy neměly být v softwaru pevně zakódované. Některé příklady jsou názvy hostitelů nebo IP adresy, adresy URL, e-mailové adresy, uživatelská jména, hesla, klíče účtu úložiště a další kryptografické klíče. Zvažte implementaci požadavků kolem toho, co může nebo nemůže být v kódu pevně zakódováno, včetně v oddílech komentářů vašeho kódu.
 
-Při uvádění komentáře v kódu, ujistěte se, že Neukládat žádné citlivé údaje. Jedná se o e-mailovou adresu, hesla, připojovací řetězce, informace o vaší aplikaci, která by být známé pouze někým ve vaší organizaci a cokoliv jiného, která může přidělit útočník výhodu v útocích vaše aplikace nebo organizace .
+Při vložení komentářů do kódu se ujistěte, že neuložíte žádné citlivé informace. Patří sem vaše e-mailová adresa, hesla, připojovací řetězce, informace o vaší aplikaci, které by znali jenom někdo ve vaší organizaci, a cokoli jiného, co by útočník mohl využít k útoku na vaši aplikaci nebo organizaci. .
 
-V podstatě předpokládat, že všechno, co ve svém vývojářském projektu bude veřejná znalosti při nasazení. Vyhněte citlivá data jakéhokoli druhu v projektu.
+V podstatě předpokládáme, že vše ve vývojovém projektu bude při nasazení veřejné. Vyhněte se zahrnutí citlivých dat jakéhokoli druhu v projektu.
 
-Dříve jsme probírali [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis). Key Vault můžete ukládat tajné kódy jako jsou klíče a hesla místo pevného kódování je. Při použití služby Key Vault v kombinaci s spravovaných identit pro prostředky Azure, webové aplikace Azure přístupná hodnoty tajných kódů konfigurace snadno a bezpečně bez ukládání do správy zdrojového kódu nebo konfigurace jakýchkoli tajných kódů. Další informace najdete v tématu [správu tajných kódů v inteligentních aplikacích serveru se službou Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
+Dříve jsme probrali [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis). Key Vault můžete použít k ukládání tajných kódů, jako jsou klíče a hesla, místo jejich hardwarového kódování. Když použijete Key Vault v kombinaci se spravovanými identitami pro prostředky Azure, vaše webová aplikace Azure může snadno a bezpečně přistupovat k hodnotám konfigurace tajných klíčů bez uložení tajných kódů v konfiguraci nebo správě zdrojového kódu. Další informace najdete v tématu [Správa tajných klíčů ve vašich serverových aplikacích pomocí Azure Key Vault](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/).
 
-### <a name="implement-fail-safe-measures"></a>Implementujte odolný proti selhání míry
+### <a name="implement-fail-safe-measures"></a>Implementace opatření v bezpečí selhání
 
-Aplikace musí být schopna zpracovávat [chyby](https://docs.microsoft.com/dotnet/standard/exceptions/) , dojde k během provádění konzistentním způsobem. Aplikace by měly zachytit všechny chyby a buď neúspěšné bezpečné "nebo" Uzavřeno.
+Vaše aplikace musí být schopna zpracovat [chyby](https://docs.microsoft.com/dotnet/standard/exceptions/) , ke kterým došlo během provádění konzistentním způsobem. Aplikace by měla zachytit všechny chyby a nemusí být bezpečná nebo uzavřená.
 
-Také se ujistěte, že chyby se protokolují pod dostatečný kontext uživatele k identifikaci škodlivé nebo podezřelé aktivity. Protokoly uchovávání pro dostatek času umožňující zpožděné forenzní analýzu. Protokoly by měl být ve formátu, který může snadno používat řešení pro správu protokolů. Ujistěte se, že se aktivují upozornění, chyby, které se týkají zabezpečení. Nedostatečná protokolování a monitorování útočníkům umožňuje, aby dál útoku systémy a udržovat trvalosti.
+Zajistěte také, aby byly chyby zaznamenávány do protokolu s dostatečným uživatelským kontextem k identifikaci podezřelých nebo škodlivých aktivit. Protokoly by měly být uchovány dostatečně dlouho, aby bylo možné provést opožděnou forenzní analýzu. Protokoly by měly být ve formátu, který je možné snadno spotřebovat pomocí řešení správy protokolů. Zajistěte, aby se aktivovaly výstrahy týkající se chyb souvisejících se zabezpečením. Nedostatečné protokolování a monitorování umožňuje útočníkům lépe napadnout systémy a zachovat trvalost.
 
-### <a name="take-advantage-of-error-and-exception-handling"></a>Využijte výhod zpracování chyb a výjimek
+### <a name="take-advantage-of-error-and-exception-handling"></a>Využijte zpracování chyb a výjimek
 
-Implementace opravte chyby a [zpracování výjimek](https://docs.microsoft.com/dotnet/standard/exceptions/best-practices-for-exceptions) je důležitou součástí obranné kódování. Zpracování chyb a výjimek jsou důležité k zajištění systému, spolehlivou a zabezpečenou. Chyby při zpracování chyb může vést k různé druhy ohrožení zabezpečení, jako jsou informace, které útočníci nevrácení a pomáhá útočníci lépe pochopit, jaké platformy a návrhu.
+Implementace správného zpracování chyb a [výjimek](https://docs.microsoft.com/dotnet/standard/exceptions/best-practices-for-exceptions) je důležitou součástí kódování obrannou linií. Zpracování chyb a výjimek je důležité pro zajištění spolehlivého a zabezpečeného systému. Chyby při zpracování chyb můžou vést k různým druhům ohrožení zabezpečení, jako jsou nevracení informací útočníkům a pomoc útočníkům, které pochopí více o vaší platformě a návrhu.
 
 Ujistěte se, že:
 
-- Zpracování výjimek centralizovanou vyhnout duplicitní [try/catch – bloky](https://docs.microsoft.com/dotnet/standard/exceptions/how-to-use-the-try-catch-block-to-catch-exceptions) v kódu.
+- Výjimky se zpracovávají centralizovaným způsobem, aby se předešlo duplicitním [blokům try/catch](https://docs.microsoft.com/dotnet/standard/exceptions/how-to-use-the-try-catch-block-to-catch-exceptions) v kódu.
 
-- V aplikaci jsou zpracovány všechny neočekávané chování.
+- V rámci aplikace jsou zpracovávána všechna neočekávaná chování.
 
-- Zprávy, které se uživatelům zobrazí není způsobit únik těchto důležitých dat, ale neposkytuje dostatek informací, které popisují potíže.
+- Zprávy, které se zobrazují uživatelům, nevrátí kritická data, ale poskytnou dostatek informací pro vysvětlení problému.
 
-- Výjimky jsou protokolovány a poskytují dostatek informací pro forenzní účely nebo incidentem týmy odpovědi k prozkoumání.
+- Výjimky jsou protokolovány a poskytují dostatek informací pro prošetření forenzní nebo týmů reakce na incidenty.
 
-[Služba Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) poskytuje prvotřídní prostředí pro [zpracování chyb a výjimek](https://docs.microsoft.com/azure/logic-apps/logic-apps-exception-handling) , které jsou způsobeny závislých systémů. Logic Apps můžete použít k vytvoření pracovní postupy pro automatizaci úloh a procesů, které se integrují aplikace, data, systémy a služby napříč podniky a organizacemi.
+[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) poskytuje prvotřídní prostředí pro [zpracování chyb a výjimek](https://docs.microsoft.com/azure/logic-apps/logic-apps-exception-handling) , které jsou způsobeny závislými systémy. Pomocí Logic Apps můžete vytvářet pracovní postupy pro automatizaci úloh a procesů, které integrují aplikace, data, systémy a služby napříč podniky a organizacemi.
 
 ### <a name="use-logging-and-alerting"></a>Použití protokolování a upozorňování
 
-[Protokol](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1) problémy zabezpečení pro zabezpečení šetření a vyvolá upozornění o problémech, které chcete zajistit, že lidé vědět o problémech včas. Povolte auditování a protokolování pro všechny komponenty. Protokoly auditu byste zaznamenat uživatelský kontext a identifikovat všechny důležité události.
+[Protokolujte](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1) své problémy se zabezpečením pro vyšetřování zabezpečení a aktivujte výstrahy týkající se problémů, abyste zajistili, že lidé budou včas informovat o problémech. Povolte auditování a protokolování pro všechny součásti. Protokoly auditu by měly zachytit kontext uživatele a identifikovat všechny důležité události.
 
-Zkontrolujte, jestli není přihlásíte citlivá data, která uživatel odešle na váš web. Příklady citlivá data:
+Ověřte, že nechcete protokolovat žádná citlivá data, která uživatel odešle do vaší lokality. Mezi příklady citlivých dat patří:
 
 - Přihlašovací údaje uživatele
-- Čísla sociálního zabezpečení nebo jiné identifikační informace
-- Čísla platebních karet nebo jiných finančních informací
+- Čísla sociálního pojištění nebo jiné identifikační údaje
+- Čísla platebních karet nebo jiné finanční informace
 - Informace o stavu
-- Privátní klíče nebo jiná data, která slouží k dešifrování šifrovaných informací
-- Systém nebo aplikace, informace, které lze použít k efektivněji útoku na aplikace
+- Soukromé klíče nebo jiná data, která lze použít k dešifrování šifrovaných informací
+- Informace o systému nebo aplikaci, které lze použít k efektivnějšímu útoku aplikace
 
-Ujistěte se, že aplikace sleduje události správy uživatele jako je přihlášení úspěšné i neúspěšné uživatelů, resetování hesla, změny hesel, uzamčení účtu a registrace uživatele. Protokolování pro tyto události vám pomůže zjistit a reagovat na potenciálně podezřelé chování. Také vám umožňuje shromažďovat data operace, například kdo přistupuje k aplikaci.
+Ujistěte se, že aplikace monitoruje události správy uživatelů, jako jsou úspěšná a Nezdařená přihlášení uživatelů, resetování hesla, změny hesla, uzamčení účtu a registrace uživatele. Protokolování těchto událostí pomáhá detekovat a reagovat na potenciálně podezřelé chování. Umožňuje taky shromažďovat data o operacích, jako je přístup k aplikaci.
 
 ## <a name="next-steps"></a>Další postup
-V následujících článcích doporučujeme kontrolních mechanismů pro zabezpečení a aktivity, které vám umožňují vývoj a nasazení zabezpečené aplikace.
+V následujících článcích doporučujeme bezpečnostní mechanismy a aktivity, které vám pomůžou s vývojem a nasazením zabezpečených aplikací.
 
 - [Vývoj zabezpečených aplikací](secure-develop.md)
-- [Nasazení zabezpečené aplikace](secure-deploy.md)
+- [Nasazení zabezpečených aplikací](secure-deploy.md)

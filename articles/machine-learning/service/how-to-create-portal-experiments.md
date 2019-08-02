@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: 7fdef246e4fcffafa626fa16e3bcecaf480c16ab
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: eb6ae11bb4ffb39d9e9bcc692f17559fa2cde674
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716880"
+ms.locfileid: "68720241"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Vytváření, zkoumání a nasazení automatických experimentů strojového učení v Azure Portal (Preview)
 
@@ -100,7 +100,7 @@ Vyberte **vytvořit experiment** a naplňte na nový formulář pro **Automatick
 
 <a name="profile"></a>
 
-### <a name="data-profiling"></a>Profilace dat
+## <a name="data-profiling--summary-stats"></a>Statistiky profilace dat & souhrnu
 
 V rámci datové sady můžete získat velké množství různých souhrnných statistik, abyste ověřili, jestli je vaše datová sada připravená na ML. Pro nečíselné sloupce obsahují jenom základní statistiky, jako je min, Max a počet chyb. Pro číselné sloupce si můžete prohlédnout i jejich statistické momenty a odhadované quantiles. Konkrétně náš datový profil zahrnuje:
 
@@ -126,7 +126,7 @@ Míra fluktuace| Měření, jak často se data tohoto sloupce v porovnání s no
 
 <a name="preprocess"></a>
 
-### <a name="advanced-preprocessing"></a>Pokročilý předzpracování
+## <a name="advanced-preprocessing-options"></a>Rozšířené možnosti předběžného zpracování
 
 Při konfiguraci experimentů můžete povolit rozšířené nastavení `Preprocess`. To znamená, že následující kroky předběžného zpracování dat a featurization se provádí automaticky.
 
@@ -173,7 +173,7 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
     + Možnost 2: Chcete-li nasadit konkrétní model iterace z tohoto experimentu, přejděte k podrobnostem v modelu a otevřete stránku s podrobnostmi o spuštění a vyberte nasadit model.
 1. Naplnit podokno **nasazení modelu**
 
-    Pole| Value
+    Pole| Hodnota
     ----|----
     Název nasazení| Zadejte jedinečný název pro vaše nasazení.
     Popis nasazení| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.

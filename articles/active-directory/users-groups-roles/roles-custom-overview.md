@@ -13,18 +13,20 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf6c0c68d13cf179f0635085296fe9953a45a255
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 546abdae5d7c03bb0d4b49f9485fe06b521fdc1d
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707692"
+ms.locfileid: "68722233"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Vlastní role správců v Azure Active Directory (Preview)
 
-Tento článek popisuje, jak pochopit nové vlastní role v Azure Active Directory (Azure AD). Azure AD umožňuje přiřadit oprávnění pro správu omezená na přizpůsobený obor prostředků služby Azure AD. Vlastní role, jako jsou ty, jsou součástí verze Preview modelu řízení přístupu založeného na rolích Azure AD. [Předdefinované role](directory-assign-admin-roles.md) poskytují adekvátní členitost v mnoha situacích, ale pokud chcete získat přesnější oprávnění, můžete vytvořit vlastní role a snížit tak rozsah řízení role na úroveň jednoho prostředku Azure AD.
+Tento článek popisuje, jak pochopit nové vlastní RBAC (řízení přístupu na základě rolí) a obory prostředků v Azure Active Directory (Azure AD). Vlastní role RBAC obcházejí základní oprávnění k předdefinovaným [rolím](directory-assign-admin-roles.md) , takže můžete vytvářet a organizovat vlastní role. Obory prostředků poskytují způsob, jak přiřadit vlastní roli pro správu některých prostředků (např. jedna aplikace) bez udělení přístupu všem prostředkům (všem aplikacím).
 
-Verze Preview řízení přístupu na základě role Azure AD zveřejňuje dva obory: rozsah celé organizace (povolení povolených akcí pro všechny prostředky Azure AD v organizaci) a vlastní obor s oprávněními omezenými na registrace aplikací. . V této vlastní roli můžete upravovat oprávnění k registraci aplikace. V průběhu času se přidají další oprávnění k prostředkům organizace, jako jsou podnikové aplikace, uživatelé a zařízení.
+Udělení oprávnění pomocí vlastních rolí RBAC je proces se dvěma kroky. Nejprve vytvoříte vlastní definici role a přidáte do ní oprávnění ze seznamu přednastavení. Jedná se o stejná oprávnění, která se používají ve vestavěných rolích. Jakmile roli vytvoříte, přiřadíte ji někomu vytvořením přiřazení role. Tento dvoustupňový proces vám umožní vytvořit jednu roli a přiřadit ji v různých oborech mnohokrát. Vlastní role může být přiřazena v oboru adresáře nebo může být přiřazena v oboru objektu. Příkladem oboru objektu může být jedna aplikace. Tímto způsobem je možné přiřadit stejnou roli Sally přes všechny aplikace v adresáři a pak Naveen jenom přes aplikaci společnosti Contoso pro sestavy výdajů.
+
+Tato první verze vlastních rolí RBAC zahrnuje možnost vytvořit roli pro přiřazení oprávnění pro správu registrací aplikací. V průběhu času se přidají další oprávnění k prostředkům organizace, jako jsou podnikové aplikace, uživatelé a zařízení.
 
 Funkce ve verzi Preview:
 

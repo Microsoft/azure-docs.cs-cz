@@ -8,18 +8,19 @@ manager: jegeib
 editor: jegeib
 ms.assetid: na
 ms.service: security
+ms.subservice: security-develop
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 7f5de6c81ee8691826bc181346310ef34c2837be
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: e3c6769cc832a897cfbab5548de5328d743884b2
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68621348"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728586"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Přehled funkcí Threat Modeling Tool
 
@@ -205,7 +206,7 @@ Až dokončíte měnící se priority a aktualizujete stav každé vygenerované
 
 ![Zpráva](./media/threat-modeling-tool-feature-overview/report.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Pošlete své dotazy, komentáře a obavy do tmtextsupport@microsoft.com. Začněte **[stažením](https://aka.ms/threatmodelingtool)** Threat Modeling Tool.
 - Pokud chcete přispívat šablonu pro komunitu, podívejte se na naši stránku [GitHub](https://github.com/Microsoft/threat-modeling-templates) .

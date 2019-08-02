@@ -8,6 +8,7 @@ manager: barbkess
 editor: TerryLanfear
 ms.assetid: 9c1346e1-baf8-4975-b2f2-42ae05b2dc0a
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.workload: na
 ms.date: 05/28/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 31d6512d7fd24a1a0abafb3b653b6d031176b274
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 9ba4a64268bcc57f04e92be83edb2ac71f18bcaf
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68614287"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727598"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Úvod do Azure Log Integration
 
@@ -68,7 +69,7 @@ Pokud nejsou k dispozici žádné další možnosti, zvažte použití Azure Log
 
 Pokud potřebujete pomoc, můžete vytvořit [žádost o podporu](/azure/azure-supportability/how-to-create-azure-support-request). Pro tuto službu vyberte **log Integration**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tento článek vám představil, abyste Azure Log Integration. Další informace o Azure Log Integration a podporovaných typech protokolů najdete v následujících článcích:
 

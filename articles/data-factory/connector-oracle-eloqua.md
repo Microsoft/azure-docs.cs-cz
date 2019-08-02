@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: bb0e146ef32ba24c3911bae86806c84768c005ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b62cbe6be7f48aa05bf3756580df0777aeee8cae
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405949"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726084"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Kopírování dat z Oracle Eloqua pomocí Azure Data Factory (Preview)
 
@@ -44,7 +44,7 @@ Oracle Eloqua propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Eloqua** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Eloqua** | Ano |
 | endpoint | Koncový bod serveru Eloqua. Eloqua podporuje více datových center, chcete-li zjistit koncový bod služby, přihlaste se k https://login.eloqua.com s vašimi přihlašovacími údaji, zkopírujte **základní adresa URL** část z přesměrovaných adresy URL s vzor `xxx.xxx.eloqua.com`. | Ano |
 | username | Název lokality a uživatelské jméno účtu Eloqua ve formě: `SiteName\Username` třeba `Eloqua\Alice`.  | Ano |
 | password | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -79,7 +79,7 @@ Ke zkopírování dat z Oracle Eloqua, nastavte vlastnost typ datové sady na **
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **EloquaObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **EloquaObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -89,11 +89,12 @@ Ke zkopírování dat z Oracle Eloqua, nastavte vlastnost typ datové sady na **
     "name": "EloquaDataset",
     "properties": {
         "type": "EloquaObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Eloqua linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -108,7 +109,7 @@ Ke zkopírování dat z Oracle Eloqua, nastavte typ zdroje v aktivitě kopírov�
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **EloquaSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **EloquaSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Accounts"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

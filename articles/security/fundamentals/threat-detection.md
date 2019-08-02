@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 5bcd17c841c3c8d981e7540172d9ca691f6ee9e8
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 500ae75f9bf53c1633290e706e33165dd9d67a88
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68612285"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726616"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
 
@@ -381,7 +382,7 @@ Firewall webových aplikací nabízí následující výhody:
 
 Příklady bran firewall webových aplikací, které jsou k dispozici v Azure Marketplace, najdete v tématu [Barracuda WAF, firewall pro Virtual Web Application firewall (vWAF), Imperva SecureSphere a ThreatSTOP IP adresa](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Možnosti detekce Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-detection-capabilities): Pomáhá identifikovat aktivní hrozby, které cílí na vaše prostředky Azure, a poskytuje přehledy, které potřebujete k rychlé reakci.
 

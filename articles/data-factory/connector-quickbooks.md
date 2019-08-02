@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 8f5e3958588a597bde04ae1c8e4873006b281458
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c490c9eb23ad62559a6246f1588f80080851014
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405813"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726048"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopírování dat z QuickBooks Online pomocí Azure Data Factory (Preview)
 
@@ -46,7 +46,7 @@ QuickBooks propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **QuickBooks** | Ano |
+| type | Vlastnost Type musí být nastavená na: **QuickBooks** | Ano |
 | endpoint | Koncový bod serveru QuickBooks Online. (to znamená quickbooks.api.intuit.com)  | Ano |
 | companyId | ID společnosti QuickBooks společnosti k autorizaci. Informace o tom, jak najít ID společnosti, naleznete v tématu [jak najít ID společnosti?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Ano |
 | consumerKey | Uživatelský klíč pro ověřování OAuth 1.0. | Ano |
@@ -92,7 +92,7 @@ Ke zkopírování dat z QuickBooks Online, nastavte vlastnost typ datové sady n
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **QuickBooksObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **QuickBooksObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -102,11 +102,12 @@ Ke zkopírování dat z QuickBooks Online, nastavte vlastnost typ datové sady n
     "name": "QuickBooksDataset",
     "properties": {
         "type": "QuickBooksObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<QuickBooks linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -121,7 +122,7 @@ Ke zkopírování dat z QuickBooks Online, nastavte typ zdroje v aktivitě kopí
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **QuickBooksSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **QuickBooksSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

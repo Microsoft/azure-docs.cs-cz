@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat do a z Azure Table storage pomocí služby Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data z podporované zdrojové úložiště Azure Table storage nebo Table storage do jímky podporované úložišť pomocí služby Data Factory.
+title: Kopírování dat do a z úložiště tabulek v Azure pomocí Data Factory | Microsoft Docs
+description: Naučte se, jak kopírovat data z podporovaných úložišť zdrojů do úložiště tabulek Azure nebo z tabulkového úložiště do podporovaných úložišť jímky pomocí Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,50 +10,50 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 7ef8f80f44c921cc1f2524351c8acb78ebd713bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4ea3c93daac1ebb88bae2b8cb01485d955be2bb
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153562"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726195"
 ---
-# <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopírování dat do a z Azure Table storage pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+# <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopírování dat z a do úložiště tabulek v Azure pomocí Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-azure-table-connector.md)
 > * [Aktuální verze](connector-azure-table-storage.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat do a z Azure Table storage. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z a do úložiště tabulek Azure. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
-Kopírovat data ze všech podporovaných zdrojů úložišť dat do Table storage. Také můžete zkopírovat data z Table storage pro všechny podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data můžete kopírovat z libovolného podporovaného zdrojového úložiště dat do tabulkového úložiště. Data z úložiště tabulek také můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Konkrétně tento konektor podporuje Azure Table kopírování dat pomocí klíče účtu a služby sdílet přístup k ověření podpisu.
+Konkrétně tato konektorová tabulka Azure podporuje kopírování dat pomocí ověření klíče účtu a sdíleného přístupového podpisu služby.
 
 ## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní Table Storage.
+Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro úložiště tabulek.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-### <a name="use-an-account-key"></a>Použít klíč účtu
+### <a name="use-an-account-key"></a>Použití klíče účtu
 
-Můžete vytvořit propojenou službu Azure Storage s použitím klíče účtu. Poskytuje objekt pro vytváření dat s globálním přístupem k úložišti. Jsou podporovány následující vlastnosti.
+Propojenou službu Azure Storage můžete vytvořit pomocí klíče účtu. Poskytuje datovou továrnu s globálním přístupem k úložišti. Jsou podporovány následující vlastnosti.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na **AzureTableStorage**. |Ano |
-| connectionString | Zadejte informace potřebné pro připojení k úložišti pro vlastnost připojovací řetězec. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. Klíč účtu můžete také vložit do služby Azure Key Vault a o přijetí změn `accountKey` konfigurace z připojovacího řetězce. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. |Ano |
-| connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
+| type | Vlastnost Type musí být nastavená na **AzureTableStorage**. |Ano |
+| connectionString | Zadejte informace potřebné pro připojení k úložišti pro vlastnost připojovací řetězec. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také umístit klíč účtu do Azure Key Vault a `accountKey` získat konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. |Ano |
+| connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!NOTE]
->Pokud jste používali "AzureStorage" typu propojené služby, je stále podporovány jako-se, když se doporučují používat tento nový "AzureTableStorage" propojené služby typu od dané chvíle.
+>Pokud jste použili propojenou službu typu "AzureStorage", je stále podporovaná tak, jak je, a když jste se rozhodli použít tento nový typ propojené služby "AzureTableStorage", který se bude přesměrovat.
 
 **Příklad:**
 
@@ -76,7 +76,7 @@ Můžete vytvořit propojenou službu Azure Storage s použitím klíče účtu.
 }
 ```
 
-**Příklad: klíč účtu úložiště ve službě Azure Key Vault**
+**Příklad: klíč účtu úložiště v Azure Key Vault**
 
 ```json
 {
@@ -105,11 +105,11 @@ Můžete vytvořit propojenou službu Azure Storage s použitím klíče účtu.
 }
 ```
 
-### <a name="use-shared-access-signature-authentication"></a>Ověřování pomocí sdíleného přístupového podpisu
+### <a name="use-shared-access-signature-authentication"></a>Použít ověřování pomocí sdíleného přístupového podpisu
 
-Propojenou službu Storage, můžete vytvořit také pomocí sdíleného přístupového podpisu. Poskytuje objekt pro vytváření dat s přístupem s omezením pomocí specifikátoru/časově vázaná na konkrétní/všechny prostředky ve službě storage.
+Propojenou službu úložiště můžete také vytvořit pomocí sdíleného přístupového podpisu. Poskytuje datovou továrnu s omezeným/časově vázaným přístupem ke všem/konkrétním prostředkům v úložišti.
 
-Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Můžete ho poskytnout že klientovi omezená oprávnění k objektům v účtu úložiště pro určitou dobu a s konkrétní sadou oprávnění. Nemusíte sdílet přístupové klíče vašeho účtu. Sdílený přístupový podpis je identifikátor URI, který zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště v jeho parametry dotazu. Pro přístup k prostředkům úložiště pomocí sdíleného přístupového podpisu, musí klient pouze a zajistěte tak předání sdílený přístupový podpis odpovídajícího konstruktoru nebo metody. Další informace o sdílených přístupových podpisů najdete v tématu [sdílené přístupové podpisy: Vysvětlení modelu sdíleného přístupového podpisu](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Můžete ji použít k udělení omezeného oprávnění klienta k objektům v účtu úložiště po určitou dobu a se zadanou sadou oprávnění. Nemusíte sdílet přístupové klíče vašeho účtu. Sdílený přístupový podpis je identifikátor URI, který zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště v jeho parametry dotazu. Pro přístup k prostředkům úložiště pomocí sdíleného přístupového podpisu, musí klient pouze a zajistěte tak předání sdílený přístupový podpis odpovídajícího konstruktoru nebo metody. Další informace o sdílených přístupových podpisech najdete [v tématu signatury sdíleného přístupu: Pochopení modelu](../storage/common/storage-dotnet-shared-access-signature-part-1.md)sdíleného přístupového podpisu.
 
 > [!NOTE]
 > Data Factory teď podporuje obě **služby sdílené přístupové podpisy** a **účet sdílené přístupové podpisy**. Další informace o těchto dvou typů a jejich vytváření najdete v tématu [druhy sdílených přístupových podpisů](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). 
@@ -119,16 +119,16 @@ Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům v
 > `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
-Použít sdílený přístupový podpis ověřování, jsou podporovány následující vlastnosti.
+Chcete-li použít ověřování pomocí sdíleného přístupového podpisu, jsou podporovány následující vlastnosti.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na **AzureTableStorage**. |Ano |
-| sasUri | Zadejte identifikátor URI SAS URI sdíleného přístupového podpisu do tabulky. <br/>Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory. SAS token můžete také vložit do Azure Key Vault a využívat automatické rotace a odebrat část tokenu. Podívejte se na následující ukázky a [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md) článku s dalšími podrobnostmi. | Ano |
+| type | Vlastnost Type musí být nastavená na **AzureTableStorage**. |Ano |
+| sasUri | Zadejte identifikátor URI SAS identifikátoru URI sdíleného přístupového podpisu k tabulce. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Do Azure Key Vault můžete také vložit token SAS a využít tak automatické otočení a odebrat část tokenu. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
 | connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!NOTE]
->Pokud jste používali "AzureStorage" typu propojené služby, je stále podporovány jako-se, když se doporučují používat tento nový "AzureTableStorage" propojené služby typu od dané chvíle.
+>Pokud jste použili propojenou službu typu "AzureStorage", je stále podporovaná tak, jak je, a když jste se rozhodli použít tento nový typ propojené služby "AzureTableStorage", který se bude přesměrovat.
 
 **Příklad:**
 
@@ -151,7 +151,7 @@ Použít sdílený přístupový podpis ověřování, jsou podporovány násled
 }
 ```
 
-**Příklad: klíč účtu úložiště ve službě Azure Key Vault**
+**Příklad: klíč účtu úložiště v Azure Key Vault**
 
 ```json
 {
@@ -184,18 +184,18 @@ Při vytváření identifikátor URI sdíleného přístupového podpisu, zvažt
 
 - Nastavit oprávnění odpovídající čtení a zápisu u objektů podle použití propojené služby (čtení, zápisu, čtení a zápis) ve službě data factory.
 - Nastavte **čas vypršení platnosti** odpovídajícím způsobem. Ujistěte se, že přístup k objektům úložiště platnost pasu nevyprší do aktivního období kanálu.
-- Identifikátor URI musí být vytvořené na úrovni pravé tabulky podle potřeby.
+- Identifikátor URI by měl být vytvořen na pravé úrovni tabulky podle potřeby.
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje datová sada tabulky Azure.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných datovou sadou tabulky Azure.
 
-Pro kopírování dat do a z Azure Table, nastavte vlastnost typ datové sady na **AzureTable**. Jsou podporovány následující vlastnosti.
+Pokud chcete kopírovat data z tabulky Azure a z ní, nastavte vlastnost Type datové sady na **Azure**. Jsou podporovány následující vlastnosti.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na **AzureTable**. |Ano |
-| tableName |Název tabulky instance databáze úložiště tabulky, která odkazuje propojenou službu. |Ano |
+| type | Vlastnost Type datové sady musí být nastavená na **Azure**. |Ano |
+| tableName |Název tabulky instance databáze úložiště tabulky, na kterou odkazuje propojená služba. |Ano |
 
 **Příklad:**
 
@@ -205,12 +205,13 @@ Pro kopírování dat do a z Azure Table, nastavte vlastnost typ datové sady na
     "properties":
     {
         "type": "AzureTable",
+        "typeProperties": {
+            "tableName": "MyTable"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Table storage linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "MyTable"
         }
     }
 }
@@ -218,56 +219,56 @@ Pro kopírování dat do a z Azure Table, nastavte vlastnost typ datové sady na
 
 ### <a name="schema-by-data-factory"></a>Schéma službou Data Factory
 
-Data Factory pro úložišť dat bez schématu, jako je Azure Table, odvodí schéma v jednom z následujících způsobů:
+Pro úložiště dat bez schémat, jako je například tabulka Azure, Data Factory odvodí schéma jedním z následujících způsobů:
 
-* Pokud určíte strukturu dat pomocí **struktura** vlastnost v definici datové sady Data Factory respektuje tato struktura jako schéma. V takovém případě pokud řádku neobsahuje hodnotu pro sloupec, hodnoty null se poskytuje pro ho.
-* Pokud nezadáte strukturu dat s použitím **struktura** vlastnost v definici datové sady Data Factory odvodí schéma pomocí prvního řádku v datech. V takovém případě pokud první řádek neobsahuje úplného schématu, některé sloupce promeškají ve výsledku operace kopírování.
+* Pokud určíte strukturu dat pomocí **struktura** vlastnost v definici datové sady Data Factory respektuje tato struktura jako schéma. V takovém případě, pokud řádek neobsahuje hodnotu pro sloupec, je pro něj k dispozici hodnota null.
+* Pokud neurčíte strukturu dat pomocí vlastnosti **Structure** v definici datové sady, Data Factory odvodí schéma pomocí prvního řádku v datech. V takovém případě, pokud první řádek neobsahuje úplné schéma, některé sloupce v důsledku operace kopírování chybí.
 
-Pro zdroje dat bez schématu, nejlepším postupem je určení strukturu dat pomocí **struktura** vlastnost.
+V případě zdrojů dat bez schématu je osvědčeným postupem určení struktury dat pomocí vlastnosti **struktury** .
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které podporuje Azure Table zdroje a jímky.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. V této části najdete seznam vlastností, které podporuje zdroj a jímka tabulky Azure.
 
-### <a name="azure-table-as-a-source-type"></a>Tabulek v Azure jako typ zdroje
+### <a name="azure-table-as-a-source-type"></a>Tabulka Azure jako typ zdroje
 
-Ke zkopírování dat z Azure Table, nastavte typ zdroje v aktivitě kopírování do **AzureTableSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** oddílu.
+Pokud chcete kopírovat data z tabulky Azure, nastavte typ zdroje v aktivitě kopírování na **AzureTableSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** oddílu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na **AzureTableSource**. |Ano |
-| azureTableSourceQuery |Použijte vlastní dotaz úložiště Table číst data. Příklady naleznete v následující části. |Ne |
-| azureTableSourceIgnoreTableNotFound |Určuje, jestli se má povolit výjimku tabulka neexistuje.<br/>Povolené hodnoty jsou **True** a **False** (výchozí). |Ne |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AzureTableSource**. |Ano |
+| azureTableSourceQuery |Pro čtení dat použijte dotaz vlastního tabulkového úložiště. Podívejte se na příklady v následující části. |Ne |
+| azureTableSourceIgnoreTableNotFound |Určuje, zda má být povolena výjimka tabulky neexistuje.<br/>Povolené hodnoty jsou **True** a **False** (výchozí). |Ne |
 
 ### <a name="azuretablesourcequery-examples"></a>Příklady azureTableSourceQuery
 
-Pokud je tabulka Azure sloupec typu datum a čas:
+Pokud je sloupec tabulky Azure typu DateTime:
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime gt datetime'2017-10-01T00:00:00' and LastModifiedTime le datetime'2017-10-02T00:00:00'"
 ```
 
-Je-li sloupec tabulky Azure typu řetězec:
+Pokud je sloupec tabulky Azure v typu řetězce:
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime ge '201710010000_0000' and LastModifiedTime le '201710010000_9999'"
 ```
 
-Pokud použijete parametr kanálu, přetypujte hodnotu Datum a čas na správném formátu podle předchozí ukázky.
+Použijete-li parametr kanálu, přetypování hodnoty DateTime ke správnému formátu podle předchozích vzorků.
 
-### <a name="azure-table-as-a-sink-type"></a>Tabulek v Azure jako typ jímky
+### <a name="azure-table-as-a-sink-type"></a>Tabulka Azure jako typ jímky
 
-Ke zkopírování dat do tabulky Azure, nastavte typ jímky v aktivitě kopírování do **AzureTableSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky** oddílu.
+Pokud chcete kopírovat data do tabulky Azure, nastavte typ jímky v aktivitě kopírování na **AzureTableSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Nastavte vlastnost typ jímky aktivity kopírování **AzureTableSink**. |Ano |
-| azureTableDefaultPartitionKeyValue |Výchozí hodnota klíče oddílu, který je možné jímkou. |Ne |
-| azureTablePartitionKeyName |Zadejte název sloupce, jejichž hodnoty se používají jako klíče oddílu. Pokud není zadán, "AzureTableDefaultPartitionKeyValue" slouží jako klíč oddílu. |Ne |
-| azureTableRowKeyName |Zadejte název sloupce, jejichž hodnoty sloupce se používají jako klíč řádku. Pokud není zadán, použijte identifikátor GUID pro každý řádek. |Ne |
-| azureTableInsertType |Režim, který chcete vložit data do tabulky Azure. Tato vlastnost určuje, zda existující řádky v tabulce výstup s odpovídajícími klíče oddílu a řádku mají jejich hodnoty, nahrazení nebo sloučení. <br/><br/>Povolené hodnoty jsou **sloučení** (výchozí) a **nahradit**. <br/><br> Toto nastavení se vztahuje na úrovni řádků nejsou úrovni tabulky. Žádná možnost odstraní řádky ve výstupní tabulce, které neexistují ve vstupu. Další informace o fungování sloučení a nahradit nastavení najdete v tématu [entity Insert nebo merge](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení entity](https://msdn.microsoft.com/library/azure/hh452242.aspx). |Ne |
-| writeBatchSize |Při dosažení writeBatchSize nebo writeBatchTimeout vloží data do tabulek Azure.<br/>Povolené hodnoty jsou integer (počet řádků). |Ne (výchozí hodnota je 10 000) |
-| writeBatchTimeout |Při dosažení writeBatchSize nebo writeBatchTimeout vloží data do tabulek Azure.<br/>Povolené jsou hodnoty timespan. Příkladem je "00:20:00" (20 minut). |Ne (výchozí hodnota je 90 sekund, výchozí hodnota časového limitu klienta úložiště) |
+| type | Vlastnost Type jímky aktivity kopírování musí být nastavená na **AzureTableSink**. |Ano |
+| azureTableDefaultPartitionKeyValue |Výchozí hodnota klíče oddílu, kterou může jímka použít. |Ne |
+| azureTablePartitionKeyName |Zadejte název sloupce, jehož hodnoty se používají jako klíče oddílů. Pokud není zadaný, použije se jako klíč oddílu "AzureTableDefaultPartitionKeyValue". |Ne |
+| azureTableRowKeyName |Zadejte název sloupce, jehož hodnoty sloupce slouží jako klíč řádku. Není-li tento parametr zadán, použijte pro každý řádek identifikátor GUID. |Ne |
+| azureTableInsertType |Režim pro vložení dat do tabulky Azure. Tato vlastnost určuje, zda mají být existující řádky ve výstupní tabulce se shodnými klíči oddílů a řádky nahrazeny nebo sloučeny. <br/><br/>Povolené hodnoty jsou **Sloučit** (výchozí) a **nahradit**. <br/><br> Toto nastavení platí na úrovni řádku, nikoli na úrovni tabulky. Možnost ani neodstraní řádky ve výstupní tabulce, které neexistují ve vstupu. Další informace o tom, jak nastavení sloučit a nahradit funguje, najdete v tématu věnovaném [vložení nebo sloučení entit](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení entity](https://msdn.microsoft.com/library/azure/hh452242.aspx). |Ne |
+| writeBatchSize |Když se writeBatchSize nebo writeBatchTimeout, vloží data do tabulky Azure.<br/>Povolené hodnoty jsou celé číslo (počet řádků). |Ne (výchozí hodnota je 10 000) |
+| writeBatchTimeout |Když se writeBatchSize nebo writeBatchTimeout, vloží data do tabulky Azure.<br/>Povolené hodnoty jsou TimeSpan. Příkladem je "00:20:00" (20 minut). |Ne (výchozí hodnota je 90 sekund, výchozí časový limit klienta úložiště) |
 
 **Příklad:**
 
@@ -304,9 +305,9 @@ Ke zkopírování dat do tabulky Azure, nastavte typ jímky v aktivitě kopírov
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
 
-Zdrojový sloupec namapovat na cílový sloupec s použitím **"translator"** vlastnost, abyste mohli používat jako azureTablePartitionKeyName cílového sloupce.
+Než budete moci použít cílový sloupec jako azureTablePartitionKeyName, namapujte zdrojový sloupec na cílový sloupec pomocí vlastnosti **Translator** .
 
-V následujícím příkladu je zdrojový sloupec DivisionID namapována na cílový sloupec DivisionID:
+V následujícím příkladu je zdrojový sloupec DivisionID namapován na cílový sloupec DivisionID:
 
 ```json
 "translator": {
@@ -315,7 +316,7 @@ V následujícím příkladu je zdrojový sloupec DivisionID namapována na cíl
 }
 ```
 
-"DivisionID" je zadán jako klíč oddílu.
+"DivisionID" je zadáno jako klíč oddílu.
 
 ```json
 "sink": {
@@ -324,22 +325,22 @@ V následujícím příkladu je zdrojový sloupec DivisionID namapována na cíl
 }
 ```
 
-## <a name="data-type-mapping-for-azure-table"></a>Mapování datového typu pro Azure Table
+## <a name="data-type-mapping-for-azure-table"></a>Mapování datových typů pro tabulku Azure
 
-Při kopírování dat z a do tabulky Azure, se používají následující mapování z Azure Table datových typů do služby Data Factory dočasné datových typů. Další informace o jak aktivita kopírování mapuje typ zdroje schéma a data jímky, najdete v článku [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md).
+Když kopírujete data z a do tabulky Azure, používají se následující mapování z datových typů tabulky Azure k Data Factory dočasných datových typů. Další informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ k jímky, najdete v tématu [mapování schémat a datových typů](copy-activity-schema-and-type-mapping.md).
 
-Při přesunu dat do a z Azure Table, následující [mapování definovaná v tabulce Azure](https://msdn.microsoft.com/library/azure/dd179338.aspx) se používají z Azure Table OData typů na typ .NET a naopak.
+Když přesunete data do a z tabulky Azure, použijí se následující [mapování definovaná tabulkou Azure](https://msdn.microsoft.com/library/azure/dd179338.aspx) z tabulky Azure Table OData do typu .NET a naopak.
 
-| Azure typ pro tabulková data | Data Factory dočasné datový typ | Podrobnosti |
+| Datový typ tabulky Azure | Data Factory dočasné datový typ | Podrobnosti |
 |:--- |:--- |:--- |
-| Edm.Binary |Byte |Pole bajtů až 64 KB. |
+| Edm.Binary |Byte |Pole bajtů až do 64 KB. |
 | Edm.Boolean |bool |Logická hodnota. |
-| Edm.DateTime |DateTime |Hodnota 64-bit, vyjádřené jako koordinovaný univerzální čas (UTC). V podporovaném rozsahu datum a čas zahájení půlnocí, 1, 1601. ledna (C.E.), UTC. Rozsah končí 31. prosince 9999. |
-| Edm.Double |double |Bod hodnotu s plovoucí desetinnou čárkou 64bitové. |
-| Edm.Guid |Guid |128bitové globálně jedinečný identifikátor. |
-| Edm.Int32 |Int32 |32bitové celé číslo. |
-| Edm.Int64 |Int64 |64bitové celé číslo. |
-| Edm.String |String |Hodnota kódování UTF-16. Řetězcové hodnoty můžete mít až 64 KB. |
+| Edm.DateTime |Datetime |64 hodnota vyjádřená jako koordinovaný světový čas (UTC). Podporovaný rozsah DateTime začíná půlnocí 1. ledna 1601 (C.E.), UTC. Rozsah končí 31. prosince 9999. |
+| Edm.Double |double |Hodnota 64-bit s plovoucí desetinnou čárkou. |
+| Edm.Guid |Guid |Globálně jedinečný identifikátor 128. |
+| Edm.Int32 |Int32 |32 celé číslo. |
+| Edm.Int64 |Int64 |64 celé číslo. |
+| Edm.String |Řetězec |Hodnota kódovaná v kódování UTF-16. Hodnoty řetězce můžou být až 64 KB. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
