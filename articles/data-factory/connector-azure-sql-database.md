@@ -612,7 +612,7 @@ Po zkopírování dat z nebo do služby Azure SQL Database se používají násl
 | numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
-| ROWVERSION |Byte[] |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
