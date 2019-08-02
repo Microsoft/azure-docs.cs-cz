@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/01/2019
 ms.author: jowargo
-ms.openlocfilehash: d1aac5bb399fc113b57ad7e59f17d19f8bb1c97f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 39fa004b62bf7e2e2a50500f32fa7edcb0c4b6ba
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728832"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742438"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení pro aplikace Xamarin. Android s využitím Azure Notification Hubs
 
@@ -66,6 +66,9 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Vytvoření projektu sady Visual Studio a přidání balíčků NuGet
 
+> [!NOTE]
+> Kroky popsané v tomto kurzu jsou pro Visual Studio 2017. 
+
 1. V aplikaci Visual Studio otevřete nabídku **soubor** , vyberte možnost **Nový**a pak vyberte možnost **projekt**. V okně **Nový projekt** proveďte tyto kroky:
     1. Rozbalte položku **nainstalované**, **vizuál C#** a potom klikněte na možnost **Android**.
     2. V seznamu vyberte **aplikace pro Android (Xamarin)** .
@@ -80,12 +83,18 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 3. V okně **Průzkumník řešení** rozbalte **Vlastnosti** a klikněte na **AndroidManifest.xml**. Aktualizujte název balíčku, aby odpovídal názvu balíčku, který jste v konzole Google Firebase Console zadali, když jste do projektu přidávali službu Firebase Cloud Messaging.
 
     ![Název balíčku v GCM](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
-4. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.
-5. Vyberte kartu **Procházet**. Najděte **Xamarin.GooglePlayServices.Base**. V seznamu výsledků vyberte **Xamarin.GooglePlayServices.Base**. Pak vyberte **Nainstalovat**.
+4. Nastavte cílovou verzi Androidu pro projekt na **android 9,0 (výseč)** pomocí následujících kroků: 
+    1. Klikněte pravým tlačítkem na projekt a vyberte **vlastnosti**. 
+    1. **Pro kompilaci pomocí verze Androidu: (Cílová architektura) Vyberte možnost **Android 9,0 (výseč).**** 
+    1. V okně se zprávou vyberte **Ano** , pokud chcete pokračovat se změnou cílové architektury.
+1. Pomocí následujících kroků přidejte do projektu požadované balíčky NuGet:
+    1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.
+    1. Přepněte na kartu **Installed (instalovat** ), vyberte **Xamarin. Android. support. Design**a v pravém podokně vyberte **aktualizovat** , aby se balíček aktualizoval na nejnovější verzi.
+    1. Přepněte na kartu **Procházet** . Najděte **Xamarin.GooglePlayServices.Base**. V seznamu výsledků vyberte **Xamarin.GooglePlayServices.Base**. Pak vyberte **Nainstalovat**.
 
-    ![Balíček NuGet služeb Google Play](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
-6. V okně **Správce balíčků NuGet** najděte **Xamarin.Firebase.Messaging**. V seznamu výsledků vyberte **Xamarin.Firebase.Messaging**. Pak vyberte **Nainstalovat**.
-7. Potom najděte **Xamarin.Azure.NotificationHubs.Android**. V seznamu výsledků vyberte **Xamarin.Azure.NotificationHubs.Android**. Pak vyberte **Nainstalovat**.
+        ![Balíček NuGet služeb Google Play](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
+    6. V okně **Správce balíčků NuGet** najděte **Xamarin.Firebase.Messaging**. V seznamu výsledků vyberte **Xamarin.Firebase.Messaging**. Pak vyberte **Nainstalovat**.
+    7. Potom najděte **Xamarin.Azure.NotificationHubs.Android**. V seznamu výsledků vyberte **Xamarin.Azure.NotificationHubs.Android**. Pak vyberte **Nainstalovat**.
 
 ### <a name="add-the-google-services-json-file"></a>Přidání souboru JSON služeb Google
 
@@ -313,7 +322,7 @@ Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti **Te
 
 Nabízená oznámení se většinou posílají ve službě back-end, jako je služba Mobile Services, nebo v technologii ASP.NET pomocí kompatibilní knihovny. Pokud pro váš back-end není dostupná žádná knihovna, můžete k posílání oznámení použít také REST API přímo.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovaným back-endem. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením s Androidem, pokračujte následujícím kurzem:
 

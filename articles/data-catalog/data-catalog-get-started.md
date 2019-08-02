@@ -1,23 +1,23 @@
 ---
 title: Vytvoření Azure Data Catalogu
-description: Rychlý start pro vytvoření služby Azure Data Catalog.
+description: Rychlý Start pro vytvoření Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
-ms.date: 04/05/2019
-ms.openlocfilehash: f00e9eaf56f3973b357792a8d1923a4b5998e0a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/01/2019
+ms.openlocfilehash: df2f536dc95dd74dbae1c8bda1a9934a73fd1fe0
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61003265"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736493"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Rychlý start: Vytvoření Azure Data Catalogu
 
 Azure Data Catalog je plně spravovaná cloudová služba, která slouží jako systém pro registraci a zjišťování podnikových datových assetů. Podrobný přehled naleznete v části [Co je Azure Data Catalog?](overview.md).
 
-Tento rychlý start vám pomůže začít s vytvářením služby Azure Data Catalog.
+Tento rychlý Start vám pomůže začít s vytvářením Azure Data Catalog.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -25,58 +25,58 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Abyste mohli začít, musíte mít:
 
-* A [Microsoft Azure](https://azure.microsoft.com/) předplatného.
-* Potřebujete mít vlastní [tenanta Azure Active Directory](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
+* [Microsoft Azure](https://azure.microsoft.com/) předplatné.
+* Musíte mít vlastního [klienta Azure Active Directory](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
-Nastavení katalogu dat, musí být vlastník nebo spoluvlastník předplatného Azure.
+Pokud chcete nastavit Data Catalog, musíte být vlastníkem nebo spoluvlastníkem předplatného Azure.
 
-## <a name="create-a-data-catalog"></a>Vytvoření katalogu dat
+## <a name="create-a-data-catalog"></a>Vytvoření katalogu Data Catalog
 
-Můžete zřídit pouze jeden katalog dat na organizaci (doména Azure Active Directory). Proto pokud vlastník nebo spoluvlastník předplatného Azure, který patří k této doméně Azure Active Directory byla již vytvořena katalog, pak nelze vytvořit katalog znovu i v případě, že máte více předplatných Azure. Pokud chcete otestovat, jestli byl ve vaší doméně Azure Active Directory uživatelem vytvořen katalog dat, přejděte na [domovskou stránku Azure Data Catalog ](http://azuredatacatalog.com) a podívejte, jestli se vám tu katalog zobrazuje. Pokud byl pro vás už katalog vytvořen, přeskočte následující postup a přejděte do další sekce.
+Můžete zřídit pouze jeden katalog dat na organizaci (doména Azure Active Directory). Proto pokud vlastník nebo Spoluvlastník předplatného Azure, který patří do této Azure Active Directory domény, vytvořil katalog, nemůžete vytvořit katalog znovu ani v případě, že máte více předplatných Azure. Pokud chcete otestovat, jestli byl ve vaší doméně Azure Active Directory uživatelem vytvořen katalog dat, přejděte na [domovskou stránku Azure Data Catalog ](http://azuredatacatalog.com) a podívejte, jestli se vám tu katalog zobrazuje. Pokud byl pro vás už katalog vytvořen, přeskočte následující postup a přejděte do další sekce.
 
-1. Přejděte [webu Azure portal](https://portal.azure.com) > **vytvořit prostředek** a vyberte **katalogu Data Catalog**.
+1. Přejít na [Azure Portal](https://portal.azure.com) > **vytvořit prostředek** a vybrat **Data Catalog**.
 
-    ![Vytvoření katalogu dat](media/data-catalog-get-started/data-catalog-create.png)
+    ![Vytvořit Data Catalog](media/data-catalog-get-started/data-catalog-create.png)
 
-2. Zadejte **název** pro katalog data catalog **předplatné** chcete použít, **umístění** katalogu a **cenovou úroveň**. Potom vyberte **Vytvořit**.
+2. Zadejte **název** katalogu dat, **předplatné** , které chcete použít, **umístění** katalogu a cenovou **úroveň**. Potom vyberte **Vytvořit**.
 
 3. Přejděte na [domovskou stránku služby Azure Data Catalog](http://azuredatacatalog.com) a klikněte na tlačítko **Publikovat data**.
 
    ![Azure Data Catalog – tlačítko Publikovat data](media/data-catalog-get-started/data-catalog-publish-data.png)
 
-   Můžete také získat na domovskou stránku katalogu dat z [stránku služby Data Catalog](https://azure.microsoft.com/services/data-catalog) tak, že vyberete **Začínáme**.
+   Můžete se také dostat na domovskou stránku Data Catalog na [stránce služby Data Catalog](https://azure.microsoft.com/services/data-catalog) výběrem možnosti Začínáme.
 
    ![Azure Data Catalog – marketingová cílová stránka](media/data-catalog-get-started/data-catalog-marketing-landing-page.png)
 
-4. Přejděte **nastavení** stránky.
+4. Přejít na stránku **Nastavení** .
 
     ![Azure Data Catalog – zřízení katalogu dat](media/data-catalog-get-started/data-catalog-create-azure-data-catalog.png)
 
-5. Rozbalte **ceny** a ověřte váš Azure Data Catalog **edition** (Free nebo Standard).
+5. Rozbalte položku **ceny** a ověřte **edici** Azure Data Catalog (zdarma nebo Standard).
 
     ![Azure Data Catalog – výběr edice](media/data-catalog-get-started/data-catalog-create-catalog-select-edition.png)
 
-6. Pokud se rozhodnete *standardní* edition jako svou cenovou úroveň můžete rozbalit **skupiny zabezpečení** a povolit autorizaci skupin zabezpečení služby Active Directory pro přístup ke katalogu dat a povolit automatickou úpravu fakturace.
+6. Pokud jako cenovou úroveň zvolíte *Standard* Edition, můžete rozbalit **skupiny zabezpečení** a povolit autorizaci skupin zabezpečení služby Active Directory pro přístup k Data Catalog a povolení automatické úpravy fakturace.
 
-    ![Skupiny zabezpečení služby Azure Data Catalog](media/data-catalog-get-started/data-catalog-standard-security-groups.png)
+    ![Azure Data Catalog skupiny zabezpečení](media/data-catalog-get-started/data-catalog-standard-security-groups.png)
 
-7. Rozbalte položku **Uživatelé katalogu** a kliknutím na tlačítko **Přidat** přidejte pro katalog dat uživatele. Můžete automaticky přidané do této skupiny.
+7. Rozbalte položku **Uživatelé katalogu** a kliknutím na tlačítko **Přidat** přidejte pro katalog dat uživatele. Do této skupiny se automaticky přidávají.
 
     ![Azure Data Catalog – uživatelé](media/data-catalog-get-started/data-catalog-add-catalog-user.png)
 
-8. Pokud se rozhodnete *standardní* edition jako svou cenovou úroveň můžete rozbalit **správci glosáře** a klikněte na tlačítko **přidat** pro přidání uživatelů Správce glosáře. Můžete automaticky přidané do této skupiny.
+8. Pokud jako cenovou úroveň zvolíte *Standard* Edition, můžete rozbalit správce **glosáře** a kliknutím na **Přidat** přidat uživatele glosářových uživatelů. Do této skupiny se automaticky přidávají.
 
-    ![Správci glosáře služby Azure Data Catalog](media/data-catalog-get-started/data-catalog-standard-glossary-admin.png)
+    ![Správci glosáře Azure Data Catalog](media/data-catalog-get-started/data-catalog-standard-glossary-admin.png)
 
-9. Rozbalte položku **Správci katalogu** a kliknutím na tlačítko**Přidat**přidejte pro katalog dat další správce. Můžete automaticky přidané do této skupiny.
+9. Rozbalte položku **Správci katalogu** a kliknutím na tlačítko**Přidat**přidejte pro katalog dat další správce. Do této skupiny se automaticky přidávají.
 
     ![Azure Data Catalog – správci](media/data-catalog-get-started/data-catalog-add-catalog-admins.png)
 
-10. Rozbalte **nadpis portálu** a přidat další text, který se zobrazí v nadpis portálu.
+10. Rozbalte **Název portálu** a přidejte další text, který se zobrazí v nadpisu portálu.
 
-    ![Azure Data Catalog – portál název](media/data-catalog-get-started/data-catalog-portal-title.png)
+    ![Azure Data Catalog – název portálu](media/data-catalog-get-started/data-catalog-portal-title.png)
 
-11. Po dokončení **nastavení** stránce, potom přejděte **publikovat** stránky.
+11. Po dokončení stránky **Nastavení** přejděte na stránku publikování a potom klikněte na **publikovat** .
 
     ![Azure Data Catalog – vytvořeno](media/data-catalog-get-started/data-catalog-created.png)
 
@@ -84,11 +84,11 @@ Můžete zřídit pouze jeden katalog dat na organizaci (doména Azure Active Di
 
 1. Na samostatné kartě nebo v samostatném okně webového prohlížeče přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se pomocí stejného účtu, který jste v předchozím kroku použili k vytvoření katalogu dat.
 
-2. Vyberte **všechny služby** a potom klikněte na tlačítko **katalogu Data Catalog**.
+2. Vyberte **všechny služby** a pak klikněte na **Data Catalog**.
 
     ![Azure Data Catalog – procházení Azure](media/data-catalog-get-started/data-catalog-browse-azure-portal.png)
 
-    Uvidíte katalog dat, který jste vytvořili.
+    Zobrazí se Katalog dat, který jste vytvořili.
 
     ![Azure Data Catalog – zobrazení katalogu v seznamu](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
 
@@ -102,7 +102,7 @@ Můžete zřídit pouze jeden katalog dat na organizaci (doména Azure Active Di
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste zjistili, jak vytvořit službu Azure Data Catalog pro vaši organizaci. Teď můžete registrovat zdroje dat ve službě data catalog.
+V tomto rychlém startu jste se naučili, jak vytvořit Azure Data Catalog pro vaši organizaci. Nyní můžete zaregistrovat zdroje dat v katalogu dat.
 
 > [!div class="nextstepaction"]
-> [Registrace zdrojů dat ve službě Azure Data Catalog](data-catalog-how-to-register.md)
+> [Registrace zdrojů dat v Azure Data Catalog](data-catalog-how-to-register.md)

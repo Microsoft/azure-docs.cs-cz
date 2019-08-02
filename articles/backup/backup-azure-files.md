@@ -1,5 +1,5 @@
 ---
-title: Zálohování sdílených složek Azure
+title: Zálohování a obnovení sdílených složek Azure
 description: Tento článek podrobně popisuje, jak zálohovat a obnovovat sdílené složky Azure, a vysvětluje úlohy správy.
 author: dcurwin
 ms.author: dacurwin
@@ -7,14 +7,14 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9cb0150efcb4860af98b47aa5da4cfd24d2e9de9
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: c2e78f6925ae8ff72e7f603c886376b32e40cd94
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602015"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737258"
 ---
-# <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
+# <a name="back-up-and-restore-azure-file-shares"></a>Zálohování a obnovení sdílených složek Azure
 Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
 
 V této příručce se naučíte:

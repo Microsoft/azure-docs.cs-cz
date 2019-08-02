@@ -4,12 +4,12 @@ ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: 8b2a9561a0933e435649c81334706481531c9ce9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: bfefefc365f2725f9f3feacf1e6159d09cc43ba9
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "67836867"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736196"
 ---
 ## <a name="use-azure-cloud-shell"></a>Použití služby Azure Cloud Shell
 
@@ -20,7 +20,7 @@ Spuštění Azure Cloud Shell:
 | Možnost | Příklad nebo propojení |
 |-----------------------------------------------|---|
 | Zvolte **Vyzkoušet** v pravém horním rohu bloku kódu. Při výběru možnosti **vyzkoušet** se kód automaticky nezkopíruje do Cloud Shell. | ![Příklad pokusu o Azure Cloud Shell](./media/cloud-shell-try-it/cli-try-it.png) |
-| V prohlížeči otevřete Cloud Shell kliknutím na tlačítko **Spustit Cloud Shell.** [https://shell.azure.com](https://shell.azure.com) | <a href="https://shell.azure.com" title="Spustit Azure Cloud Shell"><img name="launch-cloud-shell" src="https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/launchcloudshell.png" /></a> |
+| V prohlížeči otevřete Cloud Shell kliknutím na tlačítko **Spustit Cloud Shell.** [https://shell.azure.com](https://shell.azure.com) | [![Spustit Cloud Shell v novém okně](media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
 | Vyberte tlačítko **Cloud Shell** v pravém horním panelu nabídek v [Azure Portal](https://portal.azure.com). | ![Tlačítko Cloud Shell na webu Azure Portal](./media/cloud-shell-try-it/cloud-shell-menu.png) |
 
 Chcete-li spustit kód v tomto článku v Azure Cloud Shell:

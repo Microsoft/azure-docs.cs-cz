@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 2b4ba646a037b2f5561dabf97dee14454c07c573
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ff93d006b7599eaa3f97c33efb047ce480c301c
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614228"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740957"
 ---
-# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Kurz: Příprava aplikace pro Azure Kubernetes Service (AKS)
+# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Kurz: Příprava aplikace pro službu Azure Kubernetes (AKS)
 
 V tomto kurzu, který je první částí sedmidílné série, se připraví vícekontejnerová aplikace pro použití v Kubernetes. Pomocí existujících vývojových nástrojů, jako je Docker Compose, se aplikace místně sestaví a otestuje. Získáte informace o těchto tématech:
 
@@ -28,13 +28,13 @@ Po dokončení bude ve vašem místním vývojovém prostředí spuštěná nás
 
 ![Obrázek clusteru Kubernetes v Azure](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
-V dalších kurzech se image kontejneru nahraje do služby Azure Container Registry a pak nasadí do clusteru AKS.
+V dalších kurzech se image kontejneru nahraje do Azure Container Registry a pak se nasadí do clusteru AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a příkazy `docker`. Základní informace o kontejnerech najdete v článku [Get started with Docker][docker-get-started] (Začínáme s Dockerem).
 
-K dokončení tohoto kurzu potřebujete místní vývojové prostředí pro Docker se spuštěnými kontejnery Linuxu. Docker nabízí balíčky pro konfiguraci Dockeru na [Mac][docker-for-mac], [Windows][docker-for-windows], nebo [Linux][dockeru pro linux] systému.
+K dokončení tohoto kurzu potřebujete místní vývojové prostředí pro Docker se spuštěnými kontejnery Linuxu. Docker poskytuje balíčky, které konfigurují Docker v systému [Mac][docker-for-mac], [Windows][docker-for-windows]nebo [Linux][docker-for-linux] .
 
 Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kroků v těchto kurzech. Proto doporučujeme použít úplné vývojové prostředí pro Docker.
 
@@ -48,7 +48,7 @@ Pomocí příkazu [git][] naklonujte ukázkovou aplikaci do svého vývojového 
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Změnit na klonovaný adresář.
+Přejděte do klonovaného adresáře.
 
 ```console
 cd azure-voting-app-redis
@@ -58,7 +58,7 @@ Tento adresář obsahuje zdrojový kód aplikace, předem vytvořený soubor Doc
 
 ## <a name="create-container-images"></a>Vytváření imagí kontejneru
 
-[Docker Compose][docker-compose] můžete použít k automatizaci vytváření imagí kontejnerů a nasazení vícekontejnerových aplikací.
+[Docker Compose][docker-compose] lze použít k automatizaci vytváření imagí kontejnerů a nasazování aplikací s více kontejnery.
 
 Pomocí ukázkového souboru `docker-compose.yaml` vytvořte image kontejneru, stáhněte image Redis a spusťte aplikaci:
 
@@ -77,7 +77,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Spustit [docker ps][docker-ps] příkazu zobrazte spuštěné kontejnery:
+Spuštěním příkazu [Docker PS][docker-ps] Zobrazte spuštěné kontejnery:
 
 ```
 $ docker ps
@@ -97,15 +97,15 @@ Pokud chcete zobrazit spuštěnou aplikaci, zadejte v místním webovém prohlí
 
 Teď, když jste ověřili funkčnost aplikace, můžete zastavit a odebrat spuštěné kontejnery. Neodstraňujte image kontejnerů – v dalším kurzu se image *azure-vote-front* nahraje do instance služby Azure Container Registry.
 
-Zastavit a odstranit instance kontejnerů a prostředky s [docker-compose dolů][docker-compose-down] příkaz:
+Zastavte a odeberte instance kontejnerů a prostředky pomocí příkazu [Docker – vytvořit][docker-compose-down] příkaz:
 
 ```console
 docker-compose down
 ```
 
-Po odebrání místní aplikace budete mít image Dockeru obsahující aplikaci Azure Vote *azure-front-front*, kterou můžete použít v dalším kurzu.
+Po odebrání místní aplikace máte k dispozici image Docker, která obsahuje hlasovací aplikaci Azure, *hlasování pro Azure*pro použití s dalším kurzem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu se otestovala aplikace a vytvořily se pro ni image kontejnerů. Naučili jste se tyto postupy:
 

@@ -7,9 +7,7 @@
     - name: PowerShell – rychlý start
       href: quickstart-powershell.md
 - name: Funkce a nástroje
-  items:
-    - name: Funkce a nástroje
-      href: features.md
+  href: features.md
 - name: Kurzy
   items:
     - name: Ansible

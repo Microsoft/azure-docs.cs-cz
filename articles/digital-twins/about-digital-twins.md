@@ -3,116 +3,116 @@ title: Přehled služby Azure Digital Twins | Microsoft Docs
 description: V tomto článku najdete další informace o službě Azure Digital Twins, řešení Azure IoT pro prostorovou inteligenci.
 author: julieseto
 ms.author: jseto
-ms.date: 05/31/2019
+ms.date: 08/01/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 0bbbb924cace93e44af84fd96926a2d7153dd5f8
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 6bd4e3bb688e92d30a21c39599e2e5bdb7b17dba
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67459023"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736964"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Přehled služby Azure Digital Twins
 
-Azure digitální dvojče ve verzi Preview je služba Azure IoT, která vytvoří komplexní modely fyzických prostředí. Je možné vytvořit prostorové řady grafů pro modelování vztahů a interakce mezi lidmi, mezery a zařízení.
+Azure Digital Preview je služba Azure IoT, která vytváří komplexní modely fyzického prostředí. Může vytvořit grafy prostorových informací pro modelování vztahů a interakcí mezi lidmi, mezerami a zařízeními.
 
-S Azure digitální dvojče se můžete dotazovat data z fyzického místa na disku, nikoli z mnoha různorodých senzorů. Tato služba vám pomůže vytvořit opakovaně použitelný, vysoce škálovatelné a jinými objekty používající prostředí, které jsou propojeny streamovaná data po celém světě digitální i fyzické. Vaše aplikace jsou vylepšené tyto kontextové jednoznačně odpovídající funkce. 
+Pomocí digitálních vláken Azure můžete zadávat dotazy na data z fyzického místa a nikoli z mnoha různorodých senzorů. Tato služba vám pomůže vytvořit opakovaně použitelné, vysoce škálovatelné a prostorové prostředí, které umožňuje propojit streamovaná data napříč digitálním a fyzickým světem. Vaše aplikace se zvyšují pomocí těchto jednoznačně relevantních kontextových funkcí. 
 
-Azure digitální dvojče platí pro všechny typy prostředí, například, sklady, pobočky, školách, nemocnice a bank. Může dokonce sloužit pro stadionech, objekty pro vytváření, parkovací velké, parků, inteligentní mřížky a města. Tady jsou některé scénáře, kde digitální dvojče Azure může být užitečné:
+Digitální vlákna Azure se vztahují na všechny typy prostředí, jako jsou například sklady, kanceláře, školy, nemocnic a bank. Dá se použít i pro Stadium, továrny, parkovací dávky, parky, inteligentní mřížky a města. Níže jsou uvedeny některé scénáře, ve kterých může být užitečné digitální vlákna Azure:
 
-- Předvídejte potřebu údržby pro objekt pro vytváření.
-- Analyzujte požadavky na energie v reálném čase k elektrické mřížky.
-- Optimalizujte využití volného místa pro office.
-- Sledovat denní teploty v rámci více státech.
-- Monitorování zaneprázdněn dronu cest.
-- Identifikujte autonomní vozidel.
-- Analyzujte obsazení úrovně budovy.
-- Najdete za nejvytíženější pokladna ve vašem úložišti.
+- Předvídání potřeb údržby pro továrnu.
+- Analyzujte požadavky na energii v reálném čase pro elektrickou mřížku.
+- Optimalizuje používání dostupného místa pro Office.
+- Sledovat každodenní teplotu v několika stavech.
+- Monitorujte zaneprázdněné pomocí dronů cesty.
+- Identifikujte autonomní vozidla.
+- Analyzujte úrovně obsazení pro budova.
+- Najděte si pokladnu nejvytíženější v úložišti.
 
-Cokoli, co je vaše každodenní praxe podnikový scénář, je velmi pravděpodobné že odpovídající instance digitální dají zřídit prostřednictvím digitální dvojče Azure.
+Bez ohledu na to, jaký je skutečný podnikový scénář, je velmi pravděpodobný, ale odpovídající digitální instance může být zajištěna prostřednictvím digitálních vláken Azure.
 
-V následujícím videu trvá bližší pohled na digitální dvojče Azure.
+Následující video se podrobněji podíváte na digitální vlákna Azure.
 
 > [!VIDEO https://www.youtube.com/embed/TvN_NxpgyzQ]
 
 ## <a name="key-capabilities"></a>Klíčové funkce
 
-Azure digitální dvojče má následující klíčové funkce.
+Digitální vlákna Azure mají následující klíčové funkce.
 
 ### <a name="spatial-intelligence-graph"></a>Graf prostorové inteligence
 
-[ *Prostorové řady grafu*](./concepts-objectmodel-spatialgraph.md#graph), nebo *prostorový graf*, je virtuální reprezentace fyzického prostředí. Můžete ho použít pro modelování vztahů mezi osoby, místa a zařízení.
+[*Graf prostorových informací*](./concepts-objectmodel-spatialgraph.md#graph)nebo *prostorový graf*je virtuální reprezentace fyzického prostředí. Můžete ji použít k modelování vztahů mezi lidmi, místy a zařízeními.
 
-Vezměte v úvahu aplikace s inteligentní nástroj, který zahrnuje několik měřiče využití elektrické energie napříč okolí. Inteligentní nástroj společnosti musí přesně sledovat a předpovídat využití elektrické energie a účtování. Každé zařízení a senzorů musí modelovat s kontextem o umístění a Zákazník, který se bude účtovat. Prostorové řady grafu můžete použít k modelování tyto druhy složité vztahy.
+Vezměte v úvahu aplikaci inteligentního nástroje, která zahrnuje několik měřičů spotřeby elektřiny připojených přes okolí. Společnost inteligentního nástroje musí přesně monitorovat a předpovědět využití elektřiny a fakturace. Každé zařízení a senzor musí být modelovány s využitím kontextu umístění a zákazníka, kterému se má fakturovat. Graf prostorových informací můžete použít k modelování těchto typů komplexních vztahů.
 
 ### <a name="digital-twin-object-models"></a>Objektové modely služby Digital Twins
 
-[Digitální dvojče objektové modely](./concepts-objectmodel-spatialgraph.md#model) jsou předdefinované zařízení protokoly a data schématu. Zařízení vyhovují potřebám vašeho řešení specifického pro doménu k urychlení a zjednodušení vývoje.
+[Digitální objekty](./concepts-objectmodel-spatialgraph.md#model) s dvojitým datovým modelem jsou předdefinované protokoly zařízení a data schématu. Zarovnají a zjednodušují vývoj specifické pro doménu vašeho řešení.
 
-Aplikace obsazení místa může například použít předdefinované místo typy jako campus, sestavování, floor a místnosti.
+Například aplikace pro obsazení místnosti může používat předdefinované typy prostorů, jako jsou areály, budovy, Podlahová plocha a místnost.
 
 ### <a name="multiple-and-nested-tenants"></a>Více tenantů a vnoření tenanti
 
-Můžete vytvářet řešení, které bezpečně škálování a lze opětovně použít pro více tenantů. Můžete také vytvořit více subtenants, které jde přistupovat a používat izolované a zabezpečené způsobem.
+Můžete vytvářet řešení, která se budou bezpečně škálovat a je možné je znovu použít pro více tenantů. Můžete také vytvořit více tenantů, které jsou k dispozici a používány izolovaně a zabezpečeným způsobem.
 
-Příkladem je aplikace využití místa, který je nakonfigurován k izolaci dat klienta od jiných klientů v rámci jednoho sestavení. Nebo aplikace se používá k kombinovat data pro jednoho tenanta s mnoha budovy.
+Příkladem je aplikace s využitím prostoru, která je nakonfigurovaná tak, aby izoluje data klienta z dat ostatních tenantů v rámci jedné budovy. Nebo se aplikace používá ke kombinování dat pro jednoho tenanta s mnoha budovami.
 
 ### <a name="advanced-compute-capabilities"></a>Pokročilé výpočetní funkce
 
-S [uživatelem definované funkce](./concepts-user-defined-functions.md), můžete definovat a spouštět vlastní funkce příchozí [data zařízení](./concepts-device-ingress.md) můžete posílat signály předdefinovaných koncových bodů. Tato rozšířená funkce zlepšuje přizpůsobení a automatizaci úloh zařízení.
+Pomocí [uživatelsky definovaných funkcí](./concepts-user-defined-functions.md)můžete definovat a spouštět vlastní funkce pro příchozí [data zařízení](./concepts-device-ingress.md) a odesílat signály předem definovaným koncovým bodům. Tato pokročilá funkce vylepšuje přizpůsobení a automatizaci úloh zařízení.
 
-Příkladem je inteligentní zemědělství aplikaci, která obsahuje uživatelem definovanou funkci k vyhodnocení údajů snímačů přes půdě vlhkosti a předpovědí počasí. Aplikace pak odešle signály o zavlažování potřebám.
+Příkladem je aplikace inteligentního zemědělství, která zahrnuje uživatelsky definovanou funkci pro vyhodnocení čtení snímačů vlhkosti v půdě a předpovědi počasí. Aplikace pak pošle signály týkající se potřeb zavlažování.
 
 ### <a name="built-in-access-control"></a>Integrované řízení přístupu
 
-Pomocí funkcí pro správu přístupu a identit, jako [řízení přístupu na základě rolí](./security-role-based-access-control.md) a [Azure Active Directory](./security-authenticating-apis.md), můžete bezpečně řídit přístup pro jednotlivce a zařízení.
+Pomocí funkcí správy přístupu a identit, jako je [řízení přístupu na základě rolí](./security-role-based-access-control.md) a [Azure Active Directory](./security-authenticating-apis.md), můžete bezpečně řídit přístup jednotlivců a zařízení.
 
-Příkladem je aplikace pro správu zařízení, která nakonfigurována, aby umožňovala cestujících místnosti nastavit teploty do zadaného rozsahu. Zařízení správci můžou nastavit teplota v žádný prostor na libovolnou hodnotu.
+Příkladem je aplikace správy zařízení, která je nakonfigurovaná tak, aby umožňovala uživatelům místnosti nastavit teplotu v zadaném rozsahu. Správci zařízení můžou v každé místnosti nastavit teplotu na libovolnou hodnotu.
 
 ### <a name="ecosystem"></a>Ekosystém
 
-Instance digitální dvojče Azure můžete připojit k řadě služeb Azure výkonné. Mezi tyto služby patří Azure Stream Analytics, Azure AI a Azure Storage. Zahrnují taky, že Azure Maps, smíšené Reality Microsoft, Dynamics 365 nebo Office 365.
+Instanci digitálních vláken Azure můžete připojit k mnoha výkonným službám Azure. Mezi tyto služby patří Azure Stream Analytics, Azure AI a Azure Storage. Zahrnují taky Azure Maps, Microsoft Mixed reality, Dynamics 365 nebo Office 365.
 
-Příkladem je inteligentní office vytváření aplikace, která používá Azure digitální dvojče představující týmy a zařízení umístěných na mnoho podlahy. Jako zařízení streamování živých dat do zřízené instance digitální dvojče, Stream Analytics zpracuje tato data k poskytování klíčové přehledy. Data jsou uložená ve službě Azure Storage a převést do formátu ke sdílení souborů. Soubor je distribuován v celé organizaci v Office 365.
+Příkladem je aplikace pro vytváření inteligentních aplikací pro Office, která používá digitální vlákna Azure k reprezentaci týmů a zařízení umístěných v mnoha podlahách. Zařízení streamují živá data do zřízené digitálního vlákna, Stream Analytics zpracovává Tato data, aby poskytovala užitečné klíčové přehledy. Data jsou uložena v Azure Storage a převedena do formátu sdíleného souboru. Soubor se distribuuje napříč celou organizací pomocí Office 365.
 
 ## <a name="solutions-that-benefit-from-azure-digital-twins"></a>Řešení, kterým služba Azure Digital Twins přináší výhody
 
-Azure digitální dvojče je užitečné pro představující fyzického světa a jeho mnoho relací. Zjednodušuje modelování, zpracování dat, zpracování událostí a sledování zařízení IoT. Vezměte v úvahu jenom některé z následujících scénářů v několika oborech. Výhody jeho použití pro:
+Digitální vlákna Azure je užitečné pro vyjádření fyzického světa a jeho mnoha vztahů. Zjednodušuje modelování IoT, zpracování dat, zpracování událostí a sledování zařízení. V různých oborech zvažte jenom několik následujících scénářů. Využívají k tomu tyto výhody:
 
-* Zobrazit společnost úrovně obsazení prostoru v průběhu času glean přehledů o doporučené způsoby konfigurace jeho kancelářská budova.
-* Aktivační událost pracovní lístky pořadí pro mobilní aplikace. Použijte ho k odeslání chrání zabezpečení a údržba plánu a dalším službám v prodejní místa nebo sportovní míst.
-* Zobrazit sestavení cestujícího místnosti, které budou obsazeny v budově v reálném čase. Potom pomoct cestujícího rezervovat pracovní prostory, které podle jejich potřeb.
-* Sledujte, kde se nachází v prostoru prostředky.
-* Optimalizujte electric vozidla účtování podle uživatelských předvoleb a energetické síti omezení modelování.
+* Zobrazuje, jakou společnost má Správa vlastností na úrovni prostoru v čase až po glean přehledy o nejlepších způsobech konfigurace své kancelářské budovy.
+* Aktivovat lístky pracovních objednávek pro mobilní aplikaci. Využijte ji k odesílání ochranných Guard a naplánování janitorial a dalších služeb v maloobchodním prostoru nebo na místě sportovního sportu.
+* Ukažte na staveništi, které místnosti se v reálném čase zabírají v budově. Potom pomůžete uživatelům rezervovat pracovní prostory, které vyhovují jejich potřebám.
+* Sledovat, kde se nacházejí prostředky v prostoru.
+* Optimalizujte zpoplatnění elektrického vozidla modelováním uživatelských preferencí a omezeními pro energetickou mřížku.
 
-## <a name="azure-digital-twins-in-the-context-of-other-iot-services"></a>Digitální dvojče Azure v rámci dalších služeb IoT
+## <a name="azure-digital-twins-in-the-context-of-other-iot-services"></a>Digitální vlákna Azure v kontextu jiných služeb IoT
 
-Azure Digital Twins se pomocí služby Azure IoT Hub připojuje k zařízením a senzorům IoT, které zajišťují stálou synchronizaci s fyzickým světem. Následující diagram znázorňuje, jak Azure digitální dvojče má vztah k jiné služby Azure IoT.
+Azure Digital Twins se pomocí služby Azure IoT Hub připojuje k zařízením a senzorům IoT, které zajišťují stálou synchronizaci s fyzickým světem. Následující diagram znázorňuje způsob, jakým se digitální vlákna Azure týkají jiných služeb Azure IoT.
 
 ![Azure Digital Twins je služba postavená na službě Azure IoT Hub][1]
 
-Další informace o IoT najdete v tématu [technologie Azure IoT a řešení](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies).
+Další informace o IoT najdete v tématu [technologie a řešení Azure IoT](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies).
 
 ## <a name="next-steps"></a>Další postup
 
-Přejdete na krátkou ukázku o digitální dvojče Azure:
+Přejít na krátkou ukázku o digitálních Zdvojeních Azure:
 
 >[!div class="nextstepaction"]
->[Rychlé zprovoznění: Najít dostupné místnosti s použitím digitálních Dvojčat Azure](./quickstart-view-occupancy-dotnet.md)
+>[Rychlé zprovoznění: Vyhledání dostupných místností pomocí digitálních vláken Azure](./quickstart-view-occupancy-dotnet.md)
 
-Prohlédněte si blíže aplikace pro správu zařízení pomocí Dvojčat digitální Azure:
+Prohlédněte si úzce v aplikaci pro správu zařízení pomocí digitálních vláken Azure:
 
 >[!div class="nextstepaction"]
->[Kurz: Digitální dvojče Azure nasadit a nakonfigurovat prostorový graf](./tutorial-facilities-setup.md)
+>[Kurz: Nasazení digitálních vláken Azure a konfigurace prostorového grafu](./tutorial-facilities-setup.md)
 
 Seznamte se se základními koncepty služby Azure Digital Twins:
 
 >[!div class="nextstepaction"]
->[Principy digitální dvojče objektový model a Prostorové řady grafu](./concepts-objectmodel-spatialgraph.md)
+>[Seznamte se s digitálními objekty a graf prostorové logiky](./concepts-objectmodel-spatialgraph.md)
 
 <!-- Images -->
 [1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

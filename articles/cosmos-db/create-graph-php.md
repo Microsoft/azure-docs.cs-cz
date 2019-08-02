@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Gremlin API s využitím PHP – Azure Cosmos DB'
+title: 'Rychlý start: Rozhraní API Gremlin s PHP-Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní Azure Cosmos DB Gremlin API k vytvoření aplikace pomocí portálu Azure a jazyka PHP.
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 15d312ff4dfdb789cb0d9ee85941ea8760ddb08f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480600"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736645"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Rychlý start: Vytvořit databázi grafu ve službě Azure Cosmos DB pomocí PHP a webu Azure portal
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Rychlý start: Vytvoření databáze grafů v Azure Cosmos DB pomocí PHP a Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Konzola Gremlin](create-graph-gremlin-console.md)
@@ -113,7 +113,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
     ```php
     $db = new Connection([
-        'host' => 'testgraphacct.graphs.azure.com',
+        'host' => 'testgraphacct.gremlin.cosmosdb.azure.com',
         'username' => '/dbs/<db>/colls/<coll>',
         'password' => 'your_primary_key'
         ,'port' => '443'
@@ -123,9 +123,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
     ]);
     ```
 
-3. Pokud se účet databáze grafů vytvořil 20. prosince 2017 nebo později, v názvu hostitele změňte `graphs.azure.com` na `gremlin.cosmosdb.azure.com`.
-
-4. Změňte parametr `username` v objektu Connection na název vaší databáze a grafu. Pokud jste použili doporučené hodnoty `sample-database` a `sample-graph`, měl by vypadat jako v následujícím kódu:
+3. Změňte parametr `username` v objektu Connection na název vaší databáze a grafu. Pokud jste použili doporučené hodnoty `sample-database` a `sample-graph`, měl by vypadat jako v následujícím kódu:
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
@@ -133,7 +131,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
     ```php
     $db = new Connection([
-        'host' => 'testgraphacct.graphs.azure.com',
+        'host' => 'testgraphacct.gremlin.cosmosdb.azure.com',
         'username' => '/dbs/sample-database/colls/sample-graph',
         'password' => 'your_primary_key',
         'port' => '443'
@@ -143,7 +141,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
     ]);
     ```
 
-5. Na portálu Azure pomocí tlačítka pro kopírování zkopírujte PRIMÁRNÍ KLÍČ a vložte ho místo `your_primary_key` v parametru password.
+4. Na portálu Azure pomocí tlačítka pro kopírování zkopírujte PRIMÁRNÍ KLÍČ a vložte ho místo `your_primary_key` v parametru password.
 
     Inicializace objektu Connection by teď měla vypadat jako v následujícím kódu:
 
@@ -159,7 +157,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
     ]);
     ```
 
-6. Uložte soubor `connect.php`.
+5. Uložte soubor `connect.php`.
 
 ## <a name="run-the-console-app"></a>Spuštění aplikace konzoly
 
@@ -196,7 +194,7 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
    ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png)
 
-2. V seznamu **Výsledky** si všimněte nových uživatelů přidaných do grafu. Vyberte **ben** a Všimněte si, že jste připojení k dotazování. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
+2. V seznamu **Výsledky** si všimněte nových uživatelů přidaných do grafu. Vyberte možnost **Robert** a Všimněte si, že jsou připojeni k dotazování. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
 
    ![Nové vrcholy v grafu v Průzkumníku dat na webu Azure Portal](./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png)
 
@@ -206,13 +204,13 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 4. Zadejte popisek *person* (osoba).
 
-5. Kliknutím na **Přidat vlastnost** přidejte následující vlastnosti. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Vyžaduje se pouze klíč id.
+5. Kliknutím na **Přidat vlastnost** přidejte následující vlastnosti. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Vyžaduje se jenom klíč **ID** .
 
-    key|hodnota|Poznámky
+    Klíč | Value | Poznámky
     ----|----|----
-    id|ashley|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
-    gender (pohlaví)|female (žena)| 
-    tech (technologie) | java | 
+    **id** | ashley | Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
+    **pohlaví** | female (žena) | 
+    **Odbor** | java | 
 
     > [!NOTE]
     > V tomto rychlém startu vytvoříte kolekci bez oddílů. Pokud však vytvoříte dělenou kolekci zadáním klíče oddílu při vytváření kolekce, pak každý nový vrchol bude muset zahrnovat klíč oddílu jako klíč. 
@@ -224,12 +222,12 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 8. Zadejte popisek *person* (osoba).
 
 9. Kliknutím na **Přidat vlastnost** přidejte následující vlastnosti:
-
-    key|hodnota|Poznámky
+    
+    Klíč | Value | Poznámky
     ----|----|----
-    id|rakesh|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
-    gender (pohlaví)|male (muž)| 
-    school (škola)|MIT| 
+    **id** | rakesh | Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
+    **pohlaví** | male (muž) | 
+    **docházk** | MIT | 
 
 10. Klikněte na **OK**. 
 

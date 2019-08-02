@@ -1,5 +1,5 @@
 ---
-title: Zálohování databází SQL Server do Azure | Microsoft Docs
+title: Zálohování SQL Server databází do Azure
 description: V tomto kurzu se dozvíte, jak zálohovat SQL Server do Azure. Článek také vysvětluje SQL Server obnovení.
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: cddb540eb0d6892426c4857b152ab6caa746f6da
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 989a5689edf7b071d9afe06b1554fdbb0d7d2ebc
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639801"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737206"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 

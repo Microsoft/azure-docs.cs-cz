@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: e3577a1a0da7809298697c55c84662bc15b0f1e7
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: a4fbfeb96d2316ce6af100cb16fcbf0d13f230f2
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639629"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737121"
 ---
-# <a name="what-is-azure-backup"></a>Co je Azure Backup?
+# <a name="what-is-the-azure-backup-service"></a>Co je služba Azure Backup?
 
 Služba Azure Backup Zálohuje data do cloudu Microsoft Azure. Můžete zálohovat místní počítače a úlohy a virtuální počítače Azure.
 
@@ -135,7 +135,7 @@ Následující tabulka uvádí maximální četnost zálohování pro jednotliv�
 Šifrování v klidovém stavu<br/> (Šifrování dat, kde se chovají/ukládají) | K šifrování dat se používá heslo zadané zákazníkem. | K šifrování dat uložených v trezoru se používá Azure [šifrování služby Storage (SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) .<br/><br/> Zálohování automaticky šifruje data před jejich uložením. Před načtením Azure Storage data dešifruje. Použití klíčů spravovaných zákazníkem pro SSE není aktuálně podporováno.<br/><br/> Můžete zálohovat virtuální počítače, které používají [Azure Disk Encryption (ADE)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) k šifrování operačních systémů a datových disků. Azure Backup podporuje virtuální počítače zašifrované pouze klíče bek a klíče bek i [KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/). Zkontrolujte [omezení](backup-azure-vms-encryption.md#encryption-support). | Azure Backup podporuje zálohování databází SQL Server nebo serveru s povoleným [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) . Zálohování podporuje TDE pomocí klíčů spravovaných pomocí Azure nebo klíčů spravovaných zákazníkem (BYOK).<br/><br/> V rámci procesu zálohování neprovede zálohování žádné šifrování SQL.
 Šifrování při přenosu<br/> (Šifrování dat se přesouvá z jednoho umístění do druhého) | Data se šifrují pomocí AES256 a odesílají do trezoru v Azure přes HTTPS. | V rámci Azure je data mezi službou Azure Storage a trezorem chráněná protokolem HTTPS. Tato data zůstávají v páteřní síti Azure.<br/><br/> V případě obnovení souborů chrání iSCSI data přenášená mezi trezorem a virtuálním počítačem Azure. Zabezpečené tunelování chrání kanál iSCSI. | V rámci Azure je data mezi službou Azure Storage a trezorem chráněná protokolem HTTPS.<br/><br/> Obnovení souborů není relevantní pro SQL.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Projděte si](backup-architecture.md) architekturu a součásti pro různé scénáře zálohování.
 - [Ověřte](backup-support-matrix.md) požadavky na podporu a omezení pro zálohování a [zálohování virtuálních počítačů Azure](backup-support-matrix-iaas.md).

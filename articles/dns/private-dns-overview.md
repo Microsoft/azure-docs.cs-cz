@@ -1,93 +1,93 @@
 ---
 title: Co je Privátní DNS v Azure?
-description: Přehled privátní DNS, který hostuje službu v Microsoft Azure.
+description: Přehled privátní služby hostování DNS v Microsoft Azure.
 services: dns
 author: vhorne
 ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: aedace031eaedf2709993b5185979e8777821759
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 35a4c7410b36e9716d2ee9625ed98fcc34043e58
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444839"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742465"
 ---
 # <a name="what-is-azure-private-dns"></a>Co je Privátní DNS v Azure?
 
 > [!IMPORTANT]
-> Azure Private DNS je aktuálně ve verzi public preview.
+> Služba Azure Privátní DNS je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Domain Name System nebo DNS, je zodpovědný za převod (nebo řešení) název služby na jeho IP adresu.  Azure DNS je hostitelská služba určená pro domény DNS a zajišťuje překlad názvů využitím infrastruktury Microsoft Azure. Kromě podpory domén DNS směřujících k Internetu, Azure DNS podporuje také privátní zóny DNS.
+Název domény systému nebo DNS zodpovídá za překlad (neboli překladu) názvu služby na jeho IP adresu.  Azure DNS je hostingová služba pro domény DNS a zajišťuje překlad adres IP pomocí Microsoft Azure infrastruktury. Kromě podpory internetových domén DNS Azure DNS podporuje i privátní zóny DNS.
 
-Privátní DNS Azure nabízí spolehlivou a zabezpečenou službu DNS pro správu a řešení názvů domén ve virtuální síti, aniž by bylo nutné přidat vlastního řešení DNS. S využitím privátních zón DNS, můžete použít vlastní názvy vlastních domén, místo ještě dnes dostupných názvů poskytovaných Azure. Pomocí vlastních názvů domén vám umožní přizpůsobit Architektura virtuální sítě podle potřeb vaší organizace. Nabízí řešení názvů pro virtuální počítače (VM) v rámci virtuální sítě a mezi virtuálními sítěmi. Navíc můžete konfigurovat názvy zón s rozděleným zobrazením, což umožňuje, aby privátní a veřejné zóny DNS název sdílené složky.
+Azure Privátní DNS poskytuje spolehlivou a zabezpečenou službu DNS pro správu a překlad názvů domén ve virtuální síti, aniž by bylo nutné přidávat vlastní řešení DNS. Pomocí privátních zón DNS můžete místo dostupných názvů poskytovaných v Azure použít vlastní názvy domén, a to v současnosti. Použití vlastních názvů domén vám pomůže přizpůsobit svoji architekturu virtuální sítě tak, aby vyhovovala potřebám vaší organizace. Poskytuje překlad IP adres pro virtuální počítače v rámci virtuální sítě a mezi virtuálními sítěmi. Kromě toho můžete nakonfigurovat názvy zón pomocí zobrazení s rozděleným horizontem, které umožňuje privátní a veřejné zóně DNS sdílet název.
 
-Chcete-li vyřešit záznamy privátní zóny DNS z vaší virtuální sítě, je třeba propojit virtuální sítě v zóně. Propojené virtuální sítě získáte plný přístup a může překládat všechny záznamy DNS, které jsou zveřejněné v privátní zónu. Kromě toho můžete také povolit Automatická registrace na propojení virtuální sítě. Pokud jsou povolená Automatická registrace na propojení virtuální sítě záznamy DNS pro virtuální počítače ve virtuální síti jsou registrovány v privátní zónu. Pokud je povolená Automatická registrace, Azure DNS také aktualizuje záznamy zóny pokaždé, když je vytvořen virtuální počítač, změny jeho "IP adresu, nebo je odstranit.
+Pokud chcete vyřešit záznamy privátní zóny DNS z vaší virtuální sítě, musíte propojit virtuální síť se zónou. Propojené virtuální sítě mají úplný přístup a můžou vyřešit všechny záznamy DNS publikované v privátní zóně. Kromě toho můžete také povolit autoregistraci na propojení virtuální sítě. Pokud povolíte autoregistraci na propojení virtuální sítě, záznamy DNS pro virtuální počítače v této virtuální síti se zaregistrují v privátní zóně. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
 
-![Přehled systému DNS](./media/private-dns-overview/scenario.png)
+![Přehled služby DNS](./media/private-dns-overview/scenario.png)
 
 > [!NOTE]
-> Jako osvědčený postup, nepoužívejte *.local* domény pro privátní zóny DNS. Všechny operační systémy podporují.
+> Jako osvědčený postup nepoužívejte pro privátní zónu DNS *místní* doménu. Ne všechny operační systémy tuto podporu podporují.
 
 ## <a name="benefits"></a>Výhody
 
-Azure Private DNS poskytuje následující výhody:
+Azure Privátní DNS přináší následující výhody:
 
-* **Eliminuje nutnost vlastního řešení DNS**. Mnoho zákazníků vytvořili vlastní DNS řešení ke správě zón DNS v jejich virtuální sítě. Teď můžete spravovat zóny DNS pomocí nativní infrastrukturu Azure, který odstraní starosti související s vytvořením a správou vlastního řešení DNS.
+* **Odstraňuje nutnost vlastních řešení DNS**. Dřív řada zákazníků vytvořila vlastní řešení DNS ke správě zón DNS ve své virtuální síti. Teď můžete spravovat zóny DNS pomocí nativní infrastruktury Azure, která odstraňuje zátěž pro vytváření a správu vlastních řešení DNS.
 
-* **Použít všechny běžné typy záznamů DNS**. Azure DNS podporuje záznamy A, AAAA, CNAME, MX, PTR, SOA, SRV a TXT.
+* **Použijte všechny běžné typy záznamů DNS**. Azure DNS podporuje záznamy typu AAAA, AAAA, CNAME, MX, PTR, SOA, SRV a TXT.
 
-* **Správa záznamů automatické hostname**. Spolu s hostitelem vašich vlastních záznamů DNS, Azure automaticky uchovávat záznamy názvů hostitelů pro virtuální počítače v zadané virtuální sítě. V tomto scénáři můžete optimalizovat názvy domén, které používáte, bez nutnosti vytvoření vlastního řešení DNS nebo úprava aplikací.
+* **Automatická správa záznamů názvu hostitele**. Společně s hostováním vašich vlastních záznamů DNS Azure automaticky udržuje záznamy názvů hostitelů pro virtuální počítače v zadaných virtuálních sítích. V tomto scénáři můžete optimalizovat názvy domén, které použijete, bez nutnosti vytvářet vlastní řešení DNS nebo upravovat aplikace.
 
-* **Překlad názvů hostitelů mezi virtuálními sítěmi**. Na rozdíl od názvů hostitelů poskytuje Azure mohou být sdíleny privátních zón DNS virtuální sítě. Tato možnost zjednodušuje scénáře různé sítě a zjišťování služby, třeba partnerský vztah virtuální sítě.
+* **Překlad názvů hostitelů mezi virtuálními sítěmi**. Na rozdíl od názvů hostitelů poskytovaných Azure se můžou privátní zóny DNS sdílet mezi virtuálními sítěmi. Tato možnost zjednodušuje scénáře mezi sítí a zjišťováním služeb, jako je třeba partnerský vztah virtuálních sítí.
 
-* **Známé nástroje a činnost koncových uživatelů**. Aby se snížilo učit se, tato služba využívá zavedené nástroje Azure DNS (portál Azure portal, prostředí Azure PowerShell, rozhraní příkazového řádku Azure, šablon Azure Resource Manageru a rozhraní REST API).
+* **Známé nástroje a uživatelské prostředí**. K omezení výukové křivky používá tato služba dobře zřízené Azure DNS nástroje (Azure Portal, Azure PowerShell, Azure CLI, šablony Azure Resource Manager a REST API).
 
-* **Podpora DNS zobrazením Split-horizon**. S Azure DNS můžete vytvořit zóny se stejným názvem, které odkazují na různé odpovědi z v rámci virtuální sítě a z veřejného Internetu. Typický scénář pro službu DNS zobrazením split-horizon je poskytnout vyhrazený verze služby pro použití ve vaší virtuální síti.
+* **Podpora DNS pro dělené**Časové horizonty. Pomocí Azure DNS můžete vytvořit zóny se stejným názvem, které se překládají na různé odpovědi z virtuální sítě a z veřejného Internetu. Typickým scénářem pro DNS s odděleným horizontem je poskytnutí vyhrazené verze služby pro použití v rámci vaší virtuální sítě.
 
-* **K dispozici ve všech oblastech Azure**. Funkce privátních zón Azure DNS je k dispozici ve všech oblastech Azure ve veřejném cloudu Azure.
+* **K dispozici ve všech oblastech Azure**. Funkce privátních zón Azure DNS je dostupná ve všech oblastech Azure ve veřejném cloudu Azure.
 
 ## <a name="capabilities"></a>Možnosti
 
 Azure DNS poskytuje následující možnosti:
 
-* **Automatická registrace virtuálních počítačů z virtuální sítě, který je propojený s privátní zóny s povolená Automatická registrace**. Virtuální počítače jsou registrované (přidal) do privátní zóny jako záznamy odkazující na jejich privátní IP adresy. Při odstranění virtuálního počítače ve virtuální síti odkaz s povolená Automatická registrace Azure DNS také automaticky odebere odpovídající záznam DNS z propojené privátní zónu.
+* **Automatická registrace virtuálních počítačů z virtuální sítě, která je propojená s privátní zónou s povolenou automatickou registrací**. Virtuální počítače jsou zaregistrované (přidávané) do privátní zóny jako záznamy odkazující na jejich privátní IP adresy. Když se odstraní virtuální počítač ve virtuální síti s povolenou automatickou registrací, Azure DNS taky automaticky odebere odpovídající záznam DNS z propojené privátní zóny.
 
-* **Přední rozlišení serveru DNS je podporována mezi virtuálními sítěmi, které jsou propojeny s privátní zóny**. Pro různé virtuální síť překlad názvů DNS neexistuje žádná explicitní závislost tak, aby mezi sebou vytvoření partnerského vztahu virtuálních sítí. Však můžete chtít vytvořit partnerský vztah virtuálních sítí pro další scénáře (například přenosy HTTP).
+* **Předávání překladu DNS je podporované napříč virtuálními sítěmi, které jsou propojené s privátní zónou**. V případě překladu názvů DNS mezi virtuálními sítěmi neexistuje žádná explicitní závislost tak, aby byly virtuální sítě navzájem navzájem partnerské. Je však možné, že budete chtít vytvořit partnerský vztah virtuálních sítí pro jiné scénáře (například přenos HTTP).
 
-* **Zpětné vyhledávání DNS je podporována v rámci virtuální sítě oboru**. Zpětné vyhledávání DNS pro privátní IP adresu v rámci virtuální sítě, které jsou přiřazeny k privátní zóně vrátí plně kvalifikovaný název domény, který obsahuje název hostitele/záznamu a zóny název jako přípona.
+* **Zpětné vyhledávání DNS je podporované v rámci oboru virtuální sítě**. Zpětné vyhledávání DNS pro soukromou IP adresu v rámci virtuální sítě přiřazené k privátní zóně vrátí plně kvalifikovaný název domény, který obsahuje název hostitele nebo záznamu a název zóny jako příponu.
 
 ## <a name="known-issues"></a>Známé problémy
-Následující položky jsou známé chyby a problémy ve verzi preview:
-* Pokud odstraníte virtuální sítě propojené s privátní zóny DNS, nedojde k odstranění odkazů na privátní zóny DNS. Odkaz se nezdaří, pokud znovu vytvořte virtuální síť se stejným názvem a skupinu prostředků a zkuste jej znovu připojit k libovolné privátní zóny DNS. Chcete-li tento problém obejít, vytvořte virtuální síť v jiné skupině prostředků nebo s jiným názvem ve stejné skupině prostředků.
-* Pokud přesunete virtuální sítě do jiné skupiny prostředků nebo předplatného, že neaktualizuje odkazy pro privátní zóny DNS. Překlad názvů pro přesunutý virtuální sítě i nadále fungovat, ale uvidíte původní ID ARM ve virtuální síti, když zobrazujete propojení virtuální sítě privátní zóny DNS.
-* V současné době může selhat propojené virtuální sítě, které jsou hostované v Spojené arabské emiráty – sever, střed Spojené arabské emiráty, Jihoafrická republika – Západ, Jihoafrická republika – sever, Kanada – východ, Francie – jih a může se zobrazit přerušované problémy překlad DNS. 
+Následující položky jsou známé chyby a problémy v rámci verze Preview:
+* Odstraníte-li virtuální síť propojenou s privátní zónou DNS, nebudou odstraněny odkazy na privátní zónu DNS. Odkaz se nezdařil, pokud znovu vytvoříte virtuální síť se stejným názvem a skupinou prostředků a pokusíte se ji propojit znovu se všemi privátními zónami DNS. Pokud chcete tento problém obejít, vytvořte virtuální síť v jiné skupině prostředků nebo s jiným názvem ve stejné skupině prostředků.
+* Když přesunete virtuální síť do jiné skupiny prostředků nebo předplatného, neaktualizují se odkazy na privátní zónu DNS. Překlad IP adres pro přesunutou virtuální síť bude i nadále fungovat, ale při prohlížení odkazů na virtuální síť v privátní zóně DNS se zobrazí stará ID ARM virtuální sítě.
+* Aktuálně propojené virtuální sítě hostované v Spojené arabské emiráty sever, Spojené arabské emiráty Central, Jižní Afrika – západ, Jižní Afrika – sever, Kanada – východ, Francie – jih může selhat a může se zobrazit občasné problémy s rozlišením DNS. 
 
 
 ## <a name="other-considerations"></a>Další důležité informace
 
 Azure DNS má následující omezení:
 
-* Konkrétnímu virtuálnímu síťovému lze propojit pouze jednu privátní zónu, jako kdyby je povolená Automatická registrace záznamů DNS virtuálního počítače. Můžete však propojit s několika virtuálními sítěmi jednu zónu DNS.
-* Reverzní DNS funguje pouze pro privátní adresní prostor IP v propojené virtuální sítě
-* Reverzních záznamů DNS pro privátní IP adresu pro virtuální síť propojenou vrátí "internal.cloudapp.net" jako výchozí přípona pro virtuální počítač. Pro virtuální sítě, které jsou propojeny s privátní zónou s povolená Automatická registrace, reverzní DNS pro privátní IP adresa vrátí 2 plně kvalifikované názvy domén, s výchozí příponou *internal.cloudapp.net* a druhou s příponou privátní zónu.
-* Podmíněné předávání se v tuto chvíli nepodporuje nativně. Aby bylo možné rozlišení mezi Azure a místní sítí. Zobrazit [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
+* Konkrétní virtuální síť lze propojit pouze s jednou privátní zónou, jako by byla povolena automatická registrace záznamů DNS virtuálních počítačů. Můžete však propojit více virtuálních sítí s jednou zónou DNS.
+* Reverzní DNS funguje jenom pro privátní IP místo v propojené virtuální síti.
+* Reverzní DNS pro soukromou IP adresu pro propojenou virtuální síť vrátí "internal.cloudapp.net" jako výchozí příponu pro virtuální počítač. U virtuálních sítí, které jsou propojeny se soukromou zónou s povolenou autoregistrací, vrátí služba DNS pro privátní IP adresu 2 plně kvalifikované názvy domény, jednu s výchozí příponou *internal.cloudapp.NET* a jinou s příponou privátní zóny.
+* Podmíněné předávání není v současnosti podporováno. Aby bylo možné povolit řešení mezi Azure a místními sítěmi. Viz [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
  
 ## <a name="pricing"></a>Ceny
 
-Informace o cenách najdete v tématu [ceny služby Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
+Informace o cenách najdete v tématu [Azure DNS ceny](https://azure.microsoft.com/pricing/details/dns/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak vytvořit privátní zónu v Azure DNS s využitím [prostředí Azure PowerShell](./private-dns-getstarted-powershell.md) nebo [rozhraní příkazového řádku Azure](./private-dns-getstarted-cli.md).
+* Naučte se, jak vytvořit privátní zónu v Azure DNS pomocí [Azure PowerShell](./private-dns-getstarted-powershell.md) nebo [Azure CLI](./private-dns-getstarted-cli.md).
 
-* Přečtěte si informace o některé běžné [scénáře pro privátní zóny](./private-dns-scenarios.md) , která se dají realizovat s privátními zónami v Azure DNS.
+* Přečtěte si o některých běžných [scénářích privátní zóny](./private-dns-scenarios.md) , které je možné v Azure DNS realizovat s privátními zónami.
 
-* Pro běžné otázky a odpovědi k privátní zóny v Azure DNS, včetně konkrétní chování můžete očekávat pro některé typy operací, najdete v článku [nejčastější dotazy k DNS privátní](./dns-faq-private.md).
+* Běžné otázky a odpovědi týkající se privátních zón v Azure DNS, včetně konkrétního chování, které můžete očekávat u určitých druhů operací, najdete v tématu [privátní DNS Nejčastější dotazy](./dns-faq-private.md).
 
-* Další informace o záznamy a zóny DNS najdete [Přehled záznamů a zón DNS](dns-zones-records.md).
+* Seznamte se s informacemi o zónách a záznamech DNS návštěvou [přehledu zón a záznamů DNS](dns-zones-records.md).
 
 * Informace o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.
