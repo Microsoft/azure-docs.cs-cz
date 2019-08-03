@@ -20,8 +20,6 @@
     - name: Vytvoření kanálu pro kopírování dat
       href: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
       items:
-        - name: portál Azure
-          href: data-factory-copy-activity-tutorial-using-azure-portal.md
         - name: Průvodce kopírováním
           href: data-factory-copy-data-wizard-tutorial.md
         - name: Visual Studio
