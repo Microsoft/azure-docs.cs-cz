@@ -10,12 +10,12 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3087f0ac69126c6d509eee77abe15cc35319dfb
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: eda457747a6a3e374e7fdea571f64446e15ded21
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693921"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774181"
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory
 
@@ -33,7 +33,7 @@ Azure AD je určený pro:
 
 - **Správci IT.** Jako správce IT můžete použít Azure AD pro řízení přístupu pro vaše aplikace a prostředky aplikace založené na vašich obchodních požadavcích. Například můžete použít Azure AD tak, aby vyžadovala vícefaktorové ověřování při přístupu k důležitým prostředkům organizace. Kromě toho můžete použít Azure AD k automatizaci zřizování uživatelů mezi stávající Windows Server AD a cloudovým aplikacím, včetně Office 365. A konečně Azure AD poskytuje výkonné nástroje k automatické ochraně identit uživatelů a přihlašovacích údajů a aby splňovaly vaše požadavky zásad správného řízení přístupu. Abyste mohli začít, zaregistrujte si [bezplatné 30denní zkušební verze Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/).
 
-- **Vývojáři aplikací.** Jako vývojář aplikací Azure AD vám přístup založené na standardech pro přidání jednotného přihlašování (SSO) do vaší aplikace, díky kterému jej pro práci s již existujících přihlašovacích údajů uživatele. Azure AD taky poskytuje rozhraní API, která vám pomůžou sestavovat přizpůsobená prostředí aplikací pomocí stávajících dat organizace. Abyste mohli začít, zaregistrujte si [bezplatné 30denní zkušební verze Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/). Další informace, můžete také zobrazit [Azure Active Directory pro vývojáře](../develop/index.yml).
+- **Vývojáři aplikací.** Jako vývojář aplikace můžete použít Azure AD jako přístup založený na standardech pro přidání jednotného přihlašování (SSO) do vaší aplikace a tím umožníte, aby fungoval s předem existujícími přihlašovacími údaji uživatele. Azure AD taky poskytuje rozhraní API, která vám pomůžou sestavovat přizpůsobená prostředí aplikací pomocí stávajících dat organizace. Abyste mohli začít, zaregistrujte si [bezplatné 30denní zkušební verze Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/). Další informace, můžete také zobrazit [Azure Active Directory pro vývojáře](../develop/index.yml).
 
 - **Odběratelé, kteří Microsoft 365, Office 365, Azure nebo Dynamics CRM Online.** Jako předplatitel které už používáte Azure AD. Každý tenant Microsoft 365, Office 365, Azure a Dynamics CRM Online je automaticky tenanta služby Azure AD. Můžete okamžitě začít spravovat přístup k integrované cloudové aplikace.
 

@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7fdf9c52df502bc94519ab6c65be2e9fb546ce48
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e5088cfa417c76933be6785188f2b173b7b461d0
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699141"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772578"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Prozkoumejte Azure Machine Learning službu pomocí poznámkových bloků Jupyter
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak získat přístup k úložišti z následujíc
 <a name="notebookvm"></a>
 ## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Získat ukázky na virtuálním počítači s Azure Machine Learning poznámkového bloku
 
-Nejjednodušší způsob, jak začít s ukázkami, je dokončení cloudového [poznámkového bloku pro rychlý Start](quickstart-run-cloud-notebook.md). Po dokončení budete mít k dispozici vyhrazený server poznámkového bloku předem načtený pomocí sady SDK a ukázkového úložiště. Nepotřebujete žádné soubory ke stažení nebo instalaci.
+Nejjednodušší způsob, jak začít s ukázkami, je provést tento [kurz: Nastavte prostředí a pracovní](tutorial-1st-experiment-sdk-setup.md)prostor. Po dokončení budete mít k dispozici vyhrazený server poznámkového bloku předem načtený pomocí sady SDK a ukázkového úložiště. Nepotřebujete žádné soubory ke stažení nebo instalaci.
 
 <a name="byo"></a>
 

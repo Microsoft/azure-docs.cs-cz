@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/23/2019
 ms.author: jowargo
-ms.openlocfilehash: baf7d5bdb156cc85a06ea2e315caca87832f3810
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: ba392f69c0c5803768a04b94d9f9c0ed4f032fbf
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742511"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775025"
 ---
 # <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení do aplikací pro Xamarin. iOS pomocí Azure Notification Hubs
 
@@ -56,25 +56,6 @@ V tomto kurzu vytvoříte nebo aktualizujete kód tak, aby prováděl následuj�
 Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy služby Notification Hubs pro aplikace Xamarin.iOS.
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
-
-## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>Konfigurace centra oznámení pro nabízená oznámení iOS
-
-Tato části vás provede jednotlivými kroky vytvoření nového centra oznámení a konfigurace ověřování s použitím služby APNs a dříve vytvořeného nabízeného certifikátu **.p12**. Pokud chcete použít centrum oznámení, které jste již vytvořili, můžete přeskočit na krok 5.
-
-[!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
-
-### <a name="configure-ios-settings-for-the-notification-hub"></a>Konfigurace nastavení iOS pro centrum oznámení
-
-1. Ve skupině **NASTAVENÍ OZNÁMENÍ** vyberte **Apple (APNs)** .
-2. Vyberte **Certifikát**, klikněte na ikonu **souboru** a vyberte soubor **.p12**, který jste vyexportovali dříve.
-3. Zadejte **heslo** pro certifikát.
-4. Vyberte režim **Sandbox**. **Produkční** režim použijte pouze v případě, že chcete zasílat nabízená oznámení uživatelům, kteří si zakoupili aplikaci z obchodu s aplikacemi.
-
-    ![Konfigurace služby APNs na webu Azure Portal][6]
-
-    ![Konfigurace certifikační služby APNs na webu Azure Portal][7]
-
-Vaše centrum oznámení je teď nakonfigurované pro práci se službou APNs. Zároveň máte připojovací řetězce, pomocí kterých můžete zaregistrovat svou aplikaci a odesílat nabízená oznámení.
 
 ## <a name="connect-your-app-to-the-notification-hub"></a>Připojte aplikaci k centru oznámení
 
@@ -229,7 +210,7 @@ Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti *Tes
 
 Nabízená oznámení se většinou posílají ve službě back-end, jako je služba Mobile Apps, nebo v technologii ASP.NET pomocí kompatibilní knihovny. Pokud pro váš back-end není dostupná žádná knihovna, můžete k zasílání zpráv oznámení použít také přímo rozhraní REST API.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste rozeslali oznámení do všech zařízení s iOS zaregistrovaných v back-endu. V následujícím kurzu se dozvíte, jak zasílat nabízená oznámení do konkrétních zařízení iOS:
 

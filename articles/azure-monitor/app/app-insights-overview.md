@@ -13,18 +13,18 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5e42c36e6a321775e6017a2318857e20b7dcaf0d
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: d702b2f76531bad53e3fd98645d2b6bbf0582c54
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876464"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774737"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node. js a Java EE, hostované místně, hybridním nebo jakýmkoli veřejným cloudem. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
 
 ## <a name="how-does-application-insights-work"></a>Jak Application Insights funguje?
-Do aplikace nainstalujete malý instrumentační balíček a vytvoříte prostředek Application Insights na webu Microsoft Azure Portal. Instrumentace monitoruje vaši aplikaci a odesílá telemetrická data na portál. (Aplikace se dá spustit kdekoli, nemusí být hostovaná v Azure.)
+Do aplikace nainstalujete malý instrumentační balíček a vytvoříte prostředek Application Insights na webu Microsoft Azure Portal. Instrumentace monitoruje vaši aplikaci a odesílá data telemetrie do Azure Monitor. (Aplikace se dá spustit kdekoli, nemusí být hostovaná v Azure.)
 
 Instrumentovat můžete nejenom aplikaci webové služby, ale také libovolné komponenty na pozadí a JavaScript na samotných webových stránkách. 
 
@@ -32,8 +32,7 @@ Instrumentovat můžete nejenom aplikaci webové služby, ale také libovolné k
 
 Kromě toho můžete využít telemetrii z hostitelských prostředí, jako jsou třeba čítače výkonu, diagnostika Azure nebo protokoly Dockeru. Můžete také nastavit webové testy, které webové službě pravidelně odesílají umělé požadavky.
 
-Všechny tyto telemetrické datové proudy jsou integrované na webu Azure Portal, kde můžete nezpracovaná data využít výkonné analytické a vyhledávací nástroje.
-
+Všechny tyto streamy telemetrie jsou integrované do Azure Monitor. V Azure Portal můžete použít výkonné analytické a vyhledávací nástroje na nezpracovaná data.
 
 ### <a name="whats-the-overhead"></a>Jaká je s tím spojená režie?
 Dopad na výkon vaší aplikace je velmi malý. Sledovací volání neblokují, spojují se do dávek a odesílají v samostatném vlákně.
