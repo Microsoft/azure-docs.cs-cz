@@ -29,7 +29,7 @@
         - name: Co je Azure AD Connect a Connect Health?
           href: whatis-azure-ad-connect.md
         - name: Volba vhodného ověřování
-          href: 'https://docs.microsoft.com/azure/security/azure-ad-choose-authn'
+          href: 'https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn'
         - name: Synchronizace identit a odolnost duplicitních atributů
           href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     - name: Synchronizace hodnot hash hesel

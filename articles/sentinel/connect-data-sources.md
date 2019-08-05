@@ -1,6 +1,6 @@
 ---
-title: Připojení zdrojů dat Sentinelu ve verzi Preview Azure? | Dokumentace Microsoftu
-description: Informace o připojení zdroje dat do Azure Sentinelu.
+title: Připojit zdroje dat ke službě Azure Sentinel Preview? | Microsoft Docs
+description: Naučte se připojit zdroje dat ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -16,83 +16,83 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9f64497cdf27729cebc243deca1def9ff1e5c680
-ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
+ms.openlocfilehash: 4928657aa9052b50faf1f326cc09797c5aaf69bb
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673859"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780505"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
 > [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
+> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 
-Do vlaku Sentinelu Azure musíte nejprve připojit ke zdrojům dat. Azure Sentinel se dodává s celou řadou konektorů pro Microsoft solutions, k dispozici z pole a poskytuje v reálném čase, integrace, včetně řešení pro ochranu před internetovými útoky Microsoft a Microsoft 365 zdrojů, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a další. Kromě toho jsou integrované konektory do širšího ekosystému zabezpečení pro řešení jiného subjektu než Microsoft. Můžete také použít běžný formát události Syslog nebo rozhraní REST API pro připojení zdroje dat pomocí Azure Sentinelu také.  
+Aby bylo možné připojit se ke službě Azure Sentinel, musíte se nejdřív připojit ke zdrojům dat. Služba Azure Sentinel se dodává s řadou konektorů pro řešení Microsoftu, které jsou dostupné předem a poskytuje integraci v reálném čase, včetně řešení ochrany před internetovými útoky Microsoftu a Microsoft 365 zdrojů, včetně Office 365, Azure AD, Azure ATP a Microsoft Cloud App Security a další. Kromě toho jsou k dispozici Integrované konektory k širšímu ekosystému zabezpečení pro řešení jiných výrobců než Microsoftu. Pro připojení zdrojů dat k Azure Sentinel taky můžete použít také běžné formáty událostí, syslog nebo REST API.  
 
-1. V nabídce vyberte **datové konektory**. Tato stránka umožňuje zobrazit úplný seznam konektorů, které poskytuje Azure Sentinelu a jejich stav. Vyberte konektor, kterou chcete připojit a vyberte **stránku otevřít konektoru**. 
+1. V nabídce vyberte **datové konektory**. Tato stránka vám umožní zobrazit úplný seznam konektorů, které poskytuje Azure Sentinel, a jejich stav. Vyberte konektor, který chcete připojit, a vyberte **stránku otevřít konektor**. 
 
-   ![Kolekce dat](./media/collect-data/collect-data-page.png)
+   ![Sběrače dat](./media/collect-data/collect-data-page.png)
 
-1. Na stránce speciálního konektoru Ujistěte se, že splnili všechny požadavky a postupujte podle pokynů pro připojení dat k Sentinelu Azure. Může trvat nějakou dobu spuštění synchronizace s Azure ověřovacích protokolů. Až se připojíte, zobrazí se souhrn dat v **Data přijatá** grafu a stavu připojení datových typů.
+1. Na stránce konkrétní konektor se ujistěte, že jste splnili všechny předpoklady, a postupujte podle pokynů pro připojení dat ke službě Azure Sentinel. Může chvíli trvat, než se protokoly spustí synchronizace s Sentinel Azure. Po připojení se zobrazí souhrn dat v grafu **přijatá data** a stav připojení datových typů.
 
-   ![Připojení kolekce](./media/collect-data/opened-connector-page.png)
+   ![Kolektory připojení](./media/collect-data/opened-connector-page.png)
   
-1. Klikněte na tlačítko **další kroky** kartu seznam ověřovacích Azure poskytuje pro konkrétní datový typ obsahu out-of-the-box.
+1. Kliknutím na kartu **Další kroky** zobrazíte seznam předem připraveného obsahu Azure Sentinel pro konkrétní datový typ.
 
-   ![Kolekce dat](./media/collect-data/data-insights.png)
+   ![Sběrače dat](./media/collect-data/data-insights.png)
  
 
 ## <a name="data-connection-methods"></a>Metody datového připojení
 
-Podporuje následující datové připojení metody Sentinelu Azure:
+Služba Azure Sentinel podporuje následující metody datového připojení:
 
-- **Služby Microsoft**:<br> Služby jsou připojené nativní využití Azure základ pro pole out v integraci, následující řešení můžete připojit pomocí několika kliknutí:
+- **Služby Microsoftu**:<br> Služby společnosti Microsoft jsou nativně propojeny, což využívá Azure Foundation k předem připravené integraci, lze pomocí několika kliknutí připojit následující řešení:
     - [Office 365](connect-office-365.md)
-    - [Azure AD audit, přihlášení a protokolování](connect-azure-active-directory.md)
-    - [Azure Activity](connect-azure-activity.md)
+    - [Protokoly a přihlášení k auditu Azure AD](connect-azure-active-directory.md)
+    - [Aktivita Azure](connect-azure-activity.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Azure Security Center](connect-azure-security-center.md)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Rozšířená ochrana před internetovými útoky Azure](connect-azure-atp.md)
     - [Cloud App Security](connect-cloud-app-security.md)
-    - [Události zabezpečení Windows](connect-windows-security-events.md) 
-    - [Brána Windows firewall](connect-windows-firewall.md)
+    - [Události zabezpečení systému Windows](connect-windows-security-events.md) 
+    - [Brána Windows Firewall](connect-windows-firewall.md)
 
-- **Externí řešení přes rozhraní API**: Některé zdroje dat jsou připojené připojených zdrojů dat pomocí rozhraní API, která jsou k dispozici. Většina zabezpečení technologie obvykle poskytují sadu rozhraní API, pomocí kterého se dá načíst protokoly událostí. Rozhraní API pro připojení k Azure Sentinelu a shromažďovat konkrétní datové typy a odeslat do služby Azure Log Analytics. Zařízení připojené přes rozhraní API patří:
+- **Externí řešení prostřednictvím rozhraní API**: Některé zdroje dat jsou propojeny pomocí rozhraní API, která jsou poskytována připojeným zdrojem dat. Většina technologií zabezpečení obvykle poskytuje sadu rozhraní API, pomocí kterých lze načíst protokoly událostí. Rozhraní API se připojují k Azure Sentinel a shromažďují konkrétní datové typy a odesílají je do Azure Log Analytics. Mezi zařízení připojená přes rozhraní API patří:
     - [Barracuda](connect-barracuda.md)
     - [Symantec](connect-symantec.md)
-- **Externí řešení prostřednictvím agenta**: Azure Sentinel může být připojen k všechny ostatní zdroje dat, které můžete provádět, streamování v reálném čase protokolů pomocí protokolu Syslog, prostřednictvím agenta. <br>Většina zařízení pomocí protokolu Syslog odesílat zprávy o událostech, které zahrnují protokolu samostatně a data o protokolu. Formát protokoly se liší, ale většina zařízení podporují standardní formát cef (Common Event Format). <br>Agent Azure Sentinelu, která je založena na agenta Microsoft Monitoring Agent, převede protokoly ve formátu CEF do formátu, který je možné ingestovat službou Log Analytics. V závislosti na typu zařízení je agent nainstalovaný přímo na zařízení nebo na vyhrazeném serveru Linux. Agenta pro Linux přes protokol UDP. přijímá události z procesu démona Syslogu, ale v případech, kde je očekávána počítač s Linuxem ke shromažďování k velkému počtu události procesu Syslog, odešlou přes TCP z procesu démona Syslogu na agenta a z něj ke službě Log Analytics.
+- **Externí řešení prostřednictvím agenta**: Pomocí protokolu syslog prostřednictvím agenta je možné připojit Azure Sentinel ke všem dalším zdrojům dat, které mohou provádět streamování protokolů v reálném čase pomocí protokolu syslog. <br>Většina zařízení používá protokol syslog k posílání zpráv o událostech, které obsahují samotný protokol a data o protokolu. Formát protokolů se liší, ale většina zařízení podporuje standard CEF (Common Event Format). <br>Agent Azure Sentinel, který je založený na Microsoft Monitoring Agent, převede protokoly naformátované na CEF do formátu, který je možné pomocí Log Analytics ingestovat. V závislosti na typu zařízení se agent nainstaluje buď přímo na zařízení, nebo na vyhrazený server Linux. Agent pro Linux přijímá události z procesu démona syslog přes protokol UDP, ale pokud se očekává, že počítač se systémem Linux shromáždí velký objem událostí syslog, pošle se přes protokol TCP z procesu démona syslog do agenta a tam, kde Log Analytics.
     - Brány firewall, proxy servery a koncové body:
         - [F5](connect-f5.md)
-        - [Check Point](connect-checkpoint.md)
+        - [Kontrolní bod](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Fortinet](connect-fortinet.md)
         - [Palo Alto](connect-paloalto.md)
-        - [Ostatní zařízení CEF](connect-common-event-format.md)
-        - [Ostatní zařízení Syslog](connect-syslog.md)
+        - [Jiná zařízení CEF](connect-common-event-format.md)
+        - [Jiná zařízení syslog](connect-syslog.md)
     - Řešení ochrany před únikem informací
-    - [Poskytovatelů analýzy hrozeb](connect-threat-intelligence.md)
-    - [DNS počítače](connect-dns.md) -agent instaluje přímo do počítače DNS
-    - Servery s Linuxem
-    - Jiné cloudy
+    - [Poskytovatelé analýzy hrozeb](connect-threat-intelligence.md)
+    - [Počítače DNS](connect-dns.md) – agent nainstalovaný přímo na počítači DNS
+    - Servery Linux
+    - Další cloudy
     
 ## Možnosti připojení agenta<a name="agent-options"></a>
 
-Připojení externích zařízení k Azure Sentinelu, musí být agent nasazený na vyhrazený počítač (VM nebo v místním prostředí) aby mohly podporovat komunikaci mezi zařízením a Azure Sentinelu. Agenta můžete nasadit automaticky nebo ručně. Automatické nasazení je pouze k dispozici, pokud je vyhrazený počítač v Azure vytváříte nový virtuální počítač. 
+Aby bylo možné připojit externí zařízení ke službě Azure Sentinel, musí být agent nasazen na vyhrazeném počítači (VM nebo místně), aby podporoval komunikaci mezi zařízením a službou Azure Sentinel. Agenta můžete nasadit automaticky nebo ručně. Automatické nasazení je dostupné jenom v případě, že váš vyhrazený počítač je nový virtuální počítač, který vytváříte v Azure. 
 
 
 ![CEF v Azure](./media/connect-cef/cef-syslog-azure.png)
 
-Alternativně můžete nasadit agenta ručně na existující virtuální počítač Azure, na virtuálním počítači v jiném cloudu nebo na místním počítači.
+Případně můžete agenta nasadit ručně na existující virtuální počítač Azure, na virtuální počítač v jiném cloudu nebo na místní počítač.
 
-![CEF v místním prostředí](./media/connect-cef/cef-syslog-onprem.png)
+![Místní CEF](./media/connect-cef/cef-syslog-onprem.png)
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Abyste mohli začít s Azure Sentinelu, budete potřebovat předplatné Microsoft Azure. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
-- Zjistěte, jak [připojit vaše data do Azure Sentinelu](quickstart-onboard.md), a [umožňuje získat přehled vaše data a potenciální hrozby](quickstart-get-visibility.md).
+- Abyste mohli začít používat službu Azure Sentinel, potřebujete Microsoft Azure předplatné. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
+- Naučte se, jak začlenit [data do Azure Sentinel](quickstart-onboard.md)a [získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).

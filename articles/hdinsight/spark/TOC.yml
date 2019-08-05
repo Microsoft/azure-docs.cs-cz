@@ -35,21 +35,21 @@
 - name: Ukázky
   items:
     - name: Ukázky .NET
-      href: ../hdinsight-sdk-dotnet-samples.md
+      href: ../hdinsight-sdk-dotnet-samples.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Ukázky Java
-      href: ../hdinsight-sdk-java-samples.md
+      href: ../hdinsight-sdk-java-samples.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Ukázky Pythonu
-      href: ../hdinsight-sdk-python-samples.md
+      href: ../hdinsight-sdk-python-samples.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
 - name: Koncepty
   items:
     - name: Použití VSCode ke spouštění dotazů Apache Sparku
-      href: ../hdinsight-for-vscode.md
+      href: ../hdinsight-for-vscode.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Součásti systému Apache Hadoop ve službě HDInsight
-      href: ../hdinsight-component-versioning.md
+      href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
+      href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru a Ambari
-      href: ../hdinsight-cluster-availability.md
+      href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Řešení potíží
       items:
         - name: Výjimka OutOfMemoryError
@@ -85,79 +85,79 @@
     - name: Použití úložiště clusteru
       items:
         - name: S využitím Azure Storage
-          href: ../hdinsight-hadoop-use-blob-storage.md
+          href: ../hdinsight-hadoop-use-blob-storage.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: S využitím služby Azure Data Lake Storage Gen2
-          href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md
+          href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: S využitím služby Azure Data Lake Storage Gen1
-          href: ../hdinsight-hadoop-use-data-lake-store.md
-        - name: Vývoj
-          items:
-            - name: Použití interaktivního prostředí Apache Sparku
-              href: apache-spark-shell.md
-            - name: Vzdálené úlohy s Apache Livy
-              href: apache-spark-livy-rest-interface.md
-            - name: Vytváření aplikací pomocí Eclipse
-              href: apache-spark-eclipse-tool-plugin.md
-            - name: Vytváření aplikací pomocí IntelliJ
-              href: apache-spark-intellij-tool-plugin.md
-            - name: Vzdálené ladění úloh Apache Spark pomocí IntelliJ přes SSH
-              href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-            - name: Vzdálené ladění úloh Apache Spark pomocí IntelliJ přes síť VPN
-              href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
-            - name: Vytváření aplikací .NET HDInsight pro neinteraktivní ověřování
-              href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
-        - name: Použití nástrojů HDInsight
-          items:
-            - name: Nástroje pro sadu Visual Studio
-              href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md
-            - name: Nástroje pro VSCode
-              href: ../hdinsight-for-vscode.md
-            - name: Nástroje pro IntelliJ
-              href: apache-spark-intellij-tool-plugin.md
-            - name: Nástroje pro Eclipse
-              href: apache-spark-eclipse-tool-plugin.md
-            - name: PySpark pro VSCode
-              href: ../set-up-pyspark-interactive-environment.md
-            - name: Ladění Apache Sparku v IntelliJ
-              href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-        - name: Použití poznámkových bloků s Apache Sparkem
-          items:
-            - name: Použití místní aplikace Jupyter Notebook
-              href: apache-spark-jupyter-notebook-install-locally.md
-            - name: Jádra aplikace Jupyter Notebook
-              href: apache-spark-jupyter-notebook-kernels.md
-            - name: Použití externích balíčků s Jupyterem s využitím magických příkazů v buňkách
-              href: apache-spark-jupyter-notebook-use-external-packages.md
-            - name: Použití externích balíčků s Jupyterem s využitím akcí skriptů
-              href: apache-spark-python-package-installation.md
-            - name: Použití poznámkových bloků Apache Zeppelin
-              href: apache-spark-zeppelin-notebook.md
-        - name: Použití s ostatními službami Azure
-          items:
-            - name: Použití se službou Data Lake Storage
-              href: apache-spark-use-with-data-lake-store.md
-            - name: Připojení k databázi Azure SQL
-              href: apache-spark-connect-to-sql-database.md
-            - name: Implementace architektury lambda pomocí Apache Sparku a Cosmos DB
-              href: ../../cosmos-db/lambda-architecture.md
-            - name: Spuštění úloh Azure ML pomocí AutoML
-              href: apache-spark-run-machine-learning-automl.md
-        - name: Streamování Apache Sparku
-          items:
-            - name: Přehled streamování
-              href: apache-spark-streaming-overview.md
-            - name: Přehled strukturovaného streamování
-              href: apache-spark-structured-streaming-overview.md
-            - name: Vytvoření vysoce dostupných streamovacích úloh Apache Sparku v Apache Hadoop YARNu
-              href: apache-spark-streaming-high-availability.md
-            - name: Strukturované streamování s využitím Apache Kafka
-              href: ../hdinsight-apache-kafka-spark-structured-streaming.md
-            - name: Strukturované streamování z Apache Kafka do CosmosDB
-              href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
-            - name: Streamování Sparku (DStream) s využitím Apache Kafka
-              href: ../hdinsight-apache-spark-with-kafka.md
-            - name: Vytvoření streamovacích úloh Apache Sparku s přesně jedním zpracováním událostí
-              href: apache-spark-streaming-exactly-once.md
+          href: ../hdinsight-hadoop-use-data-lake-store.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: Vývoj
+      items:
+        - name: Použití interaktivního prostředí Apache Sparku
+          href: apache-spark-shell.md
+        - name: Vzdálené úlohy s Apache Livy
+          href: apache-spark-livy-rest-interface.md
+        - name: Vytváření aplikací pomocí Eclipse
+          href: apache-spark-eclipse-tool-plugin.md
+        - name: Vytváření aplikací pomocí IntelliJ
+          href: apache-spark-intellij-tool-plugin.md
+        - name: Vzdálené ladění úloh Apache Spark pomocí IntelliJ přes SSH
+          href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
+        - name: Vzdálené ladění úloh Apache Spark pomocí IntelliJ přes síť VPN
+          href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
+        - name: Vytváření aplikací .NET HDInsight pro neinteraktivní ověřování
+          href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
+    - name: Použití nástrojů HDInsight
+      items:
+        - name: Nástroje pro sadu Visual Studio
+          href: ../hadoop/apache-hadoop-visual-studio-tools-get-started.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+        - name: Nástroje pro VSCode
+          href: ../hdinsight-for-vscode.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+        - name: Nástroje pro IntelliJ
+          href: apache-spark-intellij-tool-plugin.md
+        - name: Nástroje pro Eclipse
+          href: apache-spark-eclipse-tool-plugin.md
+        - name: PySpark pro VSCode
+          href: ../set-up-pyspark-interactive-environment.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+        - name: Ladění Apache Sparku v IntelliJ
+          href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
+    - name: Použití poznámkových bloků s Apache Sparkem
+      items:
+        - name: Použití místní aplikace Jupyter Notebook
+          href: apache-spark-jupyter-notebook-install-locally.md
+        - name: Jádra aplikace Jupyter Notebook
+          href: apache-spark-jupyter-notebook-kernels.md
+        - name: Použití externích balíčků s Jupyterem s využitím magických příkazů v buňkách
+          href: apache-spark-jupyter-notebook-use-external-packages.md
+        - name: Použití externích balíčků s Jupyterem s využitím akcí skriptů
+          href: apache-spark-python-package-installation.md
+        - name: Použití poznámkových bloků Apache Zeppelin
+          href: apache-spark-zeppelin-notebook.md
+    - name: Použití s ostatními službami Azure
+      items:
+        - name: Použití se službou Data Lake Storage
+          href: apache-spark-use-with-data-lake-store.md
+        - name: Připojení k databázi Azure SQL
+          href: apache-spark-connect-to-sql-database.md
+        - name: Implementace architektury lambda pomocí Apache Sparku a Cosmos DB
+          href: ../../cosmos-db/lambda-architecture.md
+        - name: Spuštění úloh Azure ML pomocí AutoML
+          href: apache-spark-run-machine-learning-automl.md
+    - name: Streamování Apache Sparku
+      items:
+        - name: Přehled streamování
+          href: apache-spark-streaming-overview.md
+        - name: Přehled strukturovaného streamování
+          href: apache-spark-structured-streaming-overview.md
+        - name: Vytvoření vysoce dostupných streamovacích úloh Apache Sparku v Apache Hadoop YARNu
+          href: apache-spark-streaming-high-availability.md
+        - name: Strukturované streamování s využitím Apache Kafka
+          href: ../hdinsight-apache-kafka-spark-structured-streaming.md
+        - name: Strukturované streamování z Apache Kafka do CosmosDB
+          href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
+        - name: Streamování Sparku (DStream) s využitím Apache Kafka
+          href: ../hdinsight-apache-spark-with-kafka.md
+        - name: Vytvoření streamovacích úloh Apache Sparku s přesně jedním zpracováním událostí
+          href: apache-spark-streaming-exactly-once.md
     - name: Apache Spark a Machine Learning
       items:
         - name: Předpověď výsledků kontroly potravin
@@ -175,29 +175,29 @@
             - name: Apache Hive s Apache Sparkem
               href: ../interactive-query/apache-hive-warehouse-connector.md
             - name: Použití Apache Sparku ke čtení a zápisu dat Apache HBase
-              href: ../hdinsight-using-spark-query-hbase.md
+              href: ../hdinsight-using-spark-query-hbase.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Analýza protokolů Telemetrie Application Insights
               href: apache-spark-analyze-application-insight-logs.md
         - name: Rozšíření clusterů
           items:
             - name: Přizpůsobení clusterů pomocí Bootstrap
-              href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
+              href: ../hdinsight-hadoop-customize-cluster-bootstrap.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Přizpůsobení clusterů pomocí akce skriptu
-              href: ../hdinsight-hadoop-customize-cluster-linux.md
+              href: ../hdinsight-hadoop-customize-cluster-linux.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Vývoj akcí skriptů
-              href: ../hdinsight-hadoop-script-actions-linux.md
+              href: ../hdinsight-hadoop-script-actions-linux.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Přidání knihoven Apache Hivu
-              href: ../hdinsight-hadoop-add-hive-libraries.md
+              href: ../hdinsight-hadoop-add-hive-libraries.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Použití Apache Giraphu
-              href: ../hdinsight-hadoop-giraph-install-linux.md
+              href: ../hdinsight-hadoop-giraph-install-linux.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Použití Hue
-              href: ../hdinsight-hadoop-hue-linux.md
+              href: ../hdinsight-hadoop-hue-linux.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Použití prázdných hraničních uzlů
-              href: ../hdinsight-apps-use-edge-node.md
+              href: ../hdinsight-apps-use-edge-node.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Vytváření aplikací HDInsight
               items:
                 - name: Instalace vlastních aplikací
-                  href: ../hdinsight-apps-install-custom-applications.md
+                  href: ../hdinsight-apps-install-custom-applications.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Použití REST k instalací aplikací
                   href: 'https://msdn.microsoft.com/library/mt706515.aspx'
                 - name: Publikování aplikací HDInsight na Azure Marketplace
@@ -205,13 +205,13 @@
         - name: Zabezpečení
           items:
             - name: Použití SSH s HDInsightem
-              href: ../hdinsight-hadoop-linux-use-ssh-unix.md
+              href: ../hdinsight-hadoop-linux-use-ssh-unix.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Použití tunelového propojení SSH
-              href: ../hdinsight-linux-ambari-ssh-tunnel.md
+              href: ../hdinsight-linux-ambari-ssh-tunnel.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Omezení přístupu k datům
-              href: ../hdinsight-storage-sharedaccesssignature-permissions.md
+              href: ../hdinsight-storage-sharedaccesssignature-permissions.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Autorizace uživatelů pro zobrazení Apache Ambari
-              href: ../hdinsight-authorize-users-to-ambari.md
+              href: ../hdinsight-authorize-users-to-ambari.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Spravovat
           items:
             - name: Správa prostředků clusteru
@@ -225,15 +225,15 @@
             - name: Povolení ukládání do mezipaměti s využitím IO Cache
               href: apache-spark-improve-performance-iocache.md
             - name: Plánování kapacity clusteru
-              href: ../hdinsight-capacity-planning.md
+              href: ../hdinsight-capacity-planning.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Vytváření clusterů HDInsight
-              href: ../hdinsight-hadoop-provision-linux-clusters.md
+              href: ../hdinsight-hadoop-provision-linux-clusters.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
               items:
                 - name: Použití webu Azure Portal
-                  href: ../hdinsight-hadoop-create-linux-clusters-portal.md
+                  href: ../hdinsight-hadoop-create-linux-clusters-portal.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Použití šablon Azure Resource Manageru
                   displayName: 'resource manager template, arm template, resource manager group'
-                  href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
+                  href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Použití sady SDK pro .NET
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
                 - name: Použití sady SDK pro Python
@@ -241,15 +241,15 @@
                 - name: Použití sady SDK pro Javu
                   href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster'
                 - name: Použití Azure Powershell
-                  href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+                  href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Použití cURL a rozhraní Azure REST API
-                  href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+                  href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Použití Azure CLI
-                  href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+                  href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Vytváření clusterů na vyžádání
-                  href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+                  href: ../hdinsight-hadoop-create-linux-clusters-adf.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Správa clusterů v HDInsightu
-              href: ../hdinsight-administer-use-portal-linux.md
+              href: ../hdinsight-administer-use-portal-linux.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
               items:
                 - name: Použití sady SDK pro .NET
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management'
@@ -260,47 +260,47 @@
                 - name: Použití sady SDK pro Go (Preview)
                   href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
                 - name: Použití Azure Powershell
-                  href: ../hdinsight-administer-use-powershell.md
+                  href: ../hdinsight-administer-use-powershell.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Použití Azure CLI
-                  href: ../hdinsight-administer-use-command-line.md
+                  href: ../hdinsight-administer-use-command-line.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari
-              href: ../hdinsight-hadoop-manage-ambari.md
+              href: ../hdinsight-hadoop-manage-ambari.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
               items:
                 - name: Optimalizace clusterů s využitím webového uživatelského rozhraní Apache Ambari
-                  href: ../hdinsight-changing-configs-via-ambari.md
+                  href: ../hdinsight-changing-configs-via-ambari.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Použití rozhraní Apache Ambari REST API
-                  href: ../hdinsight-hadoop-manage-ambari-rest-api.md
+                  href: ../hdinsight-hadoop-manage-ambari-rest-api.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Správa protokolů pro cluster HDInsight
-              href: ../hdinsight-log-management.md
+              href: ../hdinsight-log-management.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Přidání účtů úložiště
-              href: ../hdinsight-hadoop-add-storage.md
+              href: ../hdinsight-hadoop-add-storage.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Nahrání dat pro úlohy Apache Hadoopu
-              href: ../hdinsight-upload-data.md
+              href: ../hdinsight-upload-data.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Několik clusterů HDInsight se službou Data Lake Storage
-              href: ../hdinsight-multiple-clusters-data-lake-store.md
+              href: ../hdinsight-multiple-clusters-data-lake-store.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Import a export dat pomocí Apache Sqoopu
-              href: ../hadoop/hdinsight-use-sqoop.md
+              href: ../hadoop/hdinsight-use-sqoop.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
               items:
                 - name: Připojení přes SSH
-                  href: ../hadoop/apache-hadoop-use-sqoop-mac-linux.md
+                  href: ../hadoop/apache-hadoop-use-sqoop-mac-linux.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Spuštění pomocí cURL
-                  href: ../hadoop/apache-hadoop-use-sqoop-curl.md
+                  href: ../hadoop/apache-hadoop-use-sqoop-curl.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Spuštění pomocí sady SDK pro .NET
-                  href: ../hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md
+                  href: ../hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Spuštění pomocí Azure PowerShellu
-                  href: ../hadoop/apache-hadoop-use-sqoop-powershell.md
+                  href: ../hadoop/apache-hadoop-use-sqoop-powershell.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Použití Apache Oozie pro pracovní postupy
-              href: ../hdinsight-use-oozie-linux-mac.md
+              href: ../hdinsight-use-oozie-linux-mac.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Porty a identifikátory URI clusterů a služeb
-              href: ../hdinsight-hadoop-port-settings-for-services.md
+              href: ../hdinsight-hadoop-port-settings-for-services.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Migrace do vývojových nástrojů Resource Manageru
-              href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
+              href: ../hdinsight-hadoop-development-using-azure-resource-manager.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Dostupnost a spolehlivost
-              href: ../hdinsight-high-availability-linux.md
+              href: ../hdinsight-high-availability-linux.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Upgrade clusteru HDInsight na novější verzi
-              href: ../hdinsight-upgrade-cluster.md
+              href: ../hdinsight-upgrade-cluster.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Opravy operačního systému pro cluster HDInsight
-              href: ../hdinsight-os-patching.md
+              href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Řešení potíží
           items:
             - name: Ladění úloh Apache Spark
@@ -310,31 +310,31 @@
             - name: Použití IntelliJ k ladění úloh Apache Spark
               href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
             - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
-              href: ../hdinsight-troubleshoot-failed-cluster.md
+              href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Řešení potíží s Apache Sparkem
               href: apache-troubleshoot-spark.md
             - name: Řešení potíží s Apache Hadoop HDFS
-              href: ../hdinsight-troubleshoot-hdfs.md
+              href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Řešení potíží s Apache Hadoop YARN
-              href: ../hdinsight-troubleshoot-yarn.md
+              href: ../hdinsight-troubleshoot-yarn.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Známé problémy
               href: apache-spark-known-issues.md
             - name: Zdroje a prostředky
               items:
                 - name: Informace o používání HDInsightu v Linuxu
-                  href: ../hdinsight-hadoop-linux-information.md
+                  href: ../hdinsight-hadoop-linux-information.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Výkon a paměť Apache Hadoopu
-                  href: ../hdinsight-hadoop-stack-trace-error-messages.md
+                  href: ../hdinsight-hadoop-stack-trace-error-messages.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Přístup k protokolům aplikací Apache Hadoop YARN v Linuxu
-                  href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
+                  href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Povolení výpisů paměti haldy pro služby Apache Hadoop
-                  href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
+                  href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Vysvětlení a řešení chyb WebHCat
-                  href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
+                  href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Nastavení Apache Hivu pro opravu chyb typu Nedostatek paměti
-                  href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
+                  href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Optimalizace dotazů Apache Hive
-                  href: ../hdinsight-hadoop-optimize-hive-query.md
+                  href: ../hdinsight-hadoop-optimize-hive-query.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
 - name: Referenční informace
   items:
     - name: Ukázky kódů
@@ -363,12 +363,12 @@
     - name: "Poznámky k\_verzi"
       items:
         - name: Poznámky k aktuální verzi
-          href: ../hdinsight-release-notes.md
+          href: ../hdinsight-release-notes.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
           items:
             - name: Archivované poznámky k verzi
-              href: ../hdinsight-release-notes-archive.md
+              href: ../hdinsight-release-notes-archive.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
             - name: Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
-              href: ../hdinsight-migrate-granular-access-cluster-configurations.md
+              href: ../hdinsight-migrate-granular-access-cluster-configurations.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Plány Azure do budoucna
           href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
         - name: Získejte pomoc na fóru
@@ -386,38 +386,38 @@
     - name: Podnikové zabezpečení
       items:
         - name: Přehled
-          href: ../domain-joined/hdinsight-security-overview.md
+          href: ../domain-joined/hdinsight-security-overview.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Plán pro podnikové zabezpečení
-          href: ../domain-joined/apache-domain-joined-architecture.md
+          href: ../domain-joined/apache-domain-joined-architecture.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Konfigurace podnikového zabezpečení ve službě HDInsight
-          href: ../domain-joined/apache-domain-joined-configure.md
+          href: ../domain-joined/apache-domain-joined-configure.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Konfigurace podnikového zabezpečení ve službě HDInsight s využitím Azure AD DS
-          href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md
+          href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Konfigurace zásad Apache Hivu
-          href: ../domain-joined/apache-domain-joined-run-hive.md
+          href: ../domain-joined/apache-domain-joined-run-hive.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Správa clusterů s podnikovým zabezpečením
-          href: ../domain-joined/apache-domain-joined-manage.md
+          href: ../domain-joined/apache-domain-joined-manage.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Zabezpečení dat
-      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Síťový přístup
       items:
         - name: Architektura virtuálních sítí HDInsight
-          href: ../hdinsight-virtual-network-architecture.md
+          href: ../hdinsight-virtual-network-architecture.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Plánování virtuálních sítí pro HDInsight
-          href: ../hdinsight-plan-virtual-network-deployment.md
+          href: ../hdinsight-plan-virtual-network-deployment.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Vytváření virtuálních sítí pro HDInsight
-          href: ../hdinsight-create-virtual-network.md
+          href: ../hdinsight-create-virtual-network.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Požadované IP adresy pro skupiny zabezpečení sítě a UDR
-          href: ../hdinsight-management-ip-addresses.md
+          href: ../hdinsight-management-ip-addresses.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Použití brány firewall k omezení odchozího provozu
-          href: ../hdinsight-restrict-outbound-traffic.md
+          href: ../hdinsight-restrict-outbound-traffic.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Připojení služby HDInsight k místní síti
-          href: ../connect-on-premises-network.md
+          href: ../connect-on-premises-network.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Monitorování s využitím protokolů Azure Monitoru
       items:
         - name: Použití protokolů Azure Monitoru
-          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Použití dotazů s protokoly Azure Monitoru
-          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: Monitorování výkonu clusteru
-          href: ../hdinsight-key-scenarios-to-monitor.md
+          href: ../hdinsight-key-scenarios-to-monitor.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json

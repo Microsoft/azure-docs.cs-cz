@@ -1,5 +1,5 @@
 ---
-title: Nastavte si Apache Kafka v HDInsight pomocí Azure Resource Manageru – rychlý start
+title: Nastavení Apache Kafka ve službě HDInsight pomocí Azure Resource Manager – rychlý Start
 description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Kafka v Azure HDInsight pomocí portálu Azure Portal. Také se seznámíte s tématy, předplatiteli a konzumenty Kafka.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -7,18 +7,18 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 5f2a959bcea533174feedb324cecf20ca12bd39b
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 75b774a59d3a2a94f1f1132a79c26dcca7b4b6f7
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137203"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780788"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí šablony Resource Manageru
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí šablony Správce prostředků
 
-[Apache Kafka](https://kafka.apache.org/) je open source distribuovaná streamovací platforma. Často se používá jako zprostředkovatel zpráv, protože nabízí funkce podobné frontě pro publikování a odběr zpráv. 
+[Apache Kafka](https://kafka.apache.org/) je open source platforma pro distribuované streamování. Často se používá jako zprostředkovatel zpráv, protože nabízí funkce podobné frontě pro publikování a odběr zpráv. 
 
-V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https://kafka.apache.org) pomocí šablony Azure Resource Manager. Dozvíte se také, jak používat obsažené nástroje k odesílání a příjmu zpráv pomocí platformy Kafka. Můžete zobrazit podobné šablony [šablony rychlý start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular). Odkaz na šablonu najdete [tady](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions).
+V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https://kafka.apache.org) pomocí šablony Azure Resource Manager. Dozvíte se také, jak používat obsažené nástroje k odesílání a příjmu zpráv pomocí platformy Kafka. Podobné šablony můžete zobrazit v [šablonách rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular). Odkaz na šablonu najdete [tady](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions).
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -28,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-an-apache-kafka-cluster"></a>Vytvoření clusteru Apache Kafka
 
@@ -38,10 +38,10 @@ Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache
 
 2. K vytvoření clusteru Kafka použijte tyto hodnoty:
 
-    | Vlastnost | Hodnota |
+    | Vlastnost | Value |
     | --- | --- |
-    | Předplatné | Vaše předplatné Azure. |
-    | Skupina prostředků | Skupina prostředků, ve které se cluster vytvoří. |
+    | Subscription | Vaše předplatné Azure. |
+    | Resource group | Skupina prostředků, ve které se cluster vytvoří. |
     | Location | Oblast Azure, ve které se cluster vytvoří. |
     | Název clusteru | Název clusteru Kafka. |
     | Uživatelské jméno přihlášení clusteru | Název účtu používaného pro přihlášení ke službám založeným na protokolu HTTPs hostovaným v clusteru. |
@@ -67,7 +67,7 @@ Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache
 
     Po připojení se zobrazí informace podobné tomuto textu:
     
-    ```text
+    ```output
     Authorized uses only. All activity may be monitored and reported.
     Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
     
@@ -85,12 +85,11 @@ Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache
     Welcome to Kafka on HDInsight.
     
     Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-    ssuhuser@hn0-mykafk:~$
     ```
 
-## <a id="getkafkainfo"></a>Získání informací o Apache Zookeeper a Broker hostiteli
+## <a id="getkafkainfo"></a>Získání informací o hostiteli Apache Zookeeper a Broker
 
-Při práci s platformou Kafka musíte znát *Apache Zookeeper* a *zprostředkovatele* hostitele. Tito hostitelé se používají s rozhraním Kafka API s mnohými z nástrojů, které se s tímto systémem dodávají.
+Při práci s Kafka je nutné znát hostitele *Apache Zookeeper* a *Broker* . Tito hostitelé se používají s rozhraním Kafka API s mnohými z nástrojů, které se s tímto systémem dodávají.
 
 V této části získáte informace o hostiteli z rozhraní REST API Ambari v clusteru.
 
@@ -108,7 +107,7 @@ V této části získáte informace o hostiteli z rozhraní REST API Ambari v cl
 
     Po zobrazení výzvy zadejte název clusteru Kafka.
 
-3. Chcete-li nastavit proměnné prostředí s informace o hostiteli Zookeeper, pomocí následujícího příkazu. Příkaz načte všechny hostitelích Zookeeper a potom vrátí pouze první dvě položky. Je to proto, že chcete určitou redundanci pro případ, že jeden hostitel bude nedosažitelný.
+3. K nastavení proměnné prostředí s informacemi o hostiteli Zookeeper použijte následující příkaz. Příkaz načte všechny hostitele Zookeeper a potom vrátí pouze první dvě položky. Je to proto, že chcete určitou redundanci pro případ, že jeden hostitel bude nedosažitelný.
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
@@ -168,7 +167,7 @@ Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí n�
 
         Kafka nemá o doménách selhání Azure žádné informace. Při vytváření replik oddílu pro témata se nemusí repliky distribuovat správně z hlediska vysoké dostupnosti.
 
-        Pokud chcete zajistit vysokou dostupnost, použijte [nástroj pro obnovení rovnováhy oddílů Apache Kafka](https://github.com/hdinsight/hdinsight-kafka-tools). Tento nástroj se musí spustit z připojení SSH k hlavnímu uzlu clusteru Kafka.
+        Pokud chcete zajistit vysokou dostupnost, použijte [Nástroj pro obnovení rovnováhy oddílu Apache Kafka](https://github.com/hdinsight/hdinsight-kafka-tools). Tento nástroj se musí spustit z připojení SSH k hlavnímu uzlu clusteru Kafka.
 
         K zajištění nejvyšší dostupnosti dat Kafka byste měli obnovit rovnováhu replik oddílů pro vaše téma v těchto situacích:
 
@@ -229,7 +228,7 @@ Pokud chcete uložit záznamy do dříve vytvořeného tématu test a pak je na�
 
 4. Konzumenta zastavíte stisknutím __Ctrl+C__.
 
-Můžete také programově vytvořit producenty a spotřebitele. Příklad použití tohoto rozhraní API, najdete v článku [Apache Kafka Producer and Consumer API ve službě HDInsight](apache-kafka-producer-consumer-api.md) dokumentu.
+Můžete také programově vytvořit producenty a spotřebitele. Příklad použití tohoto rozhraní API najdete v dokumentu [rozhraní API pro Apache Kafka výrobce a příjemce s](apache-kafka-producer-consumer-api.md) využitím služby HDInsight.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -249,4 +248,4 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Použití Apache Sparku s využitím Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)
+> [Použití Apache Spark s Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

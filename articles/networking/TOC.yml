@@ -13,7 +13,7 @@
         - name: Hvězdicová topologie
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke'
         - name: Osvědčené postupy zabezpečení sítě
-          href: ../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json
+          href: ../security/fundamentals/network-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Vysoce dostupná virtuální síťová zařízení
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha'
         - name: Kombinace metod vyrovnávání zatížení
