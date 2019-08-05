@@ -305,6 +305,8 @@
           href: logic-apps-enterprise-integration-accounts.md
         - name: Správa prostředí integrační služby
           href: ise-manage-integration-service-environment.md
+        - name: Přesun prostředků aplikace logiky
+          href: move-logic-app-resources.md
         - name: Migrace na nejnovější schéma
           href: ../connectors/connectors-schema-migration.md
     - name: Test

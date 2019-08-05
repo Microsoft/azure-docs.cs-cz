@@ -536,6 +536,8 @@
           href: how-to-schedule-azure-ssis-integration-runtime.md
         - name: Připojení Azure-SSIS IR k virtuální síti
           href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: Konfigurace místního prostředí IR jako proxy pro Azure-SSIS IR
+          href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Povolení ověřování Azure AD pro Azure-SSIS IR
           href: enable-aad-authentication-azure-ssis-ir.md
         - name: Zřízení Enterprise Edition pro Azure-SSIS IR

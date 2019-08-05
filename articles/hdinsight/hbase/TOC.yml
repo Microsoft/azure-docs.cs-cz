@@ -25,6 +25,10 @@
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
+    - name: Řešení potíží
+      items:
+        - name: Časové limity s příkazem hbase hbck
+          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
 - name: Postup
   items:
     - name: Použití úložiště clusteru

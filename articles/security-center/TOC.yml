@@ -43,6 +43,8 @@
       href: security-center-incident.md
     - name: Reakce na incidenty
       href: security-center-incident-response.md
+    - name: Správa napříč tenanty
+      href: security-center-cross-tenant-management.md
 - name: Návody
   items:
     - name: Zlepšení skóre Secure Score
@@ -81,6 +83,8 @@
       items:
         - name: Co jsou doporučení zabezpečení
           href: security-center-recommendations.md
+        - name: Oprava doporučení
+          href: security-center-remediate-recommendations.md
         - name: Posílení stavu zabezpečení
           href: security-center-monitoring.md
         - name: Ochrana vašich počítačů a aplikací
