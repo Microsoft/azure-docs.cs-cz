@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: d03abee7c7a4adb65e1d6146501ee5b7d9e1534c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 3db63be8856b5bd57323ecd0be767d09032404e9
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348665"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741887"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalace a spuštění kontejnerů pro rozpoznávání formulářů
 
@@ -97,7 +97,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recogn
 
 Po dokončení kontejneru v hostitelském [počítači](#the-host-computer)použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-by-using-the-docker-run-command)s požadovaným, ale nepoužitým nastavením fakturace. K [](form-recognizer-container-configuration.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu.
+1. [Spusťte kontejner](#run-the-container-by-using-the-docker-run-command)s požadovaným nastavením fakturace. K [](form-recognizer-container-configuration.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu.
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-by-using-the-docker-run-command"></a>Spuštění kontejneru pomocí příkazu Docker run

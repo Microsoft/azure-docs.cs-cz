@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: a164276d41d182c5b439efc691d80693f1ac831e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2bc036fcde7ac541dbf7d8511f82080e52135777
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360125"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772618"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
@@ -120,8 +120,8 @@ Balíčky domény pro počítačové zpracování obrazu, Text Analytics a progn
 
 Přečtěte si o [nejnovější architektuře služby Azure Machine Learning Service](concept-azure-machine-learning-architecture.md). 
 
-Přehled služby najdete v článku [co je služba Azure Machine Learning?](overview-what-is-azure-ml.md)
+Přehled služby najdete v článku [co je služba Azure Machine Learning?](overview-what-is-azure-ml.md).
 
-Pro rychlý Start, který ukazuje, jak spustit skript a prozkoumat historii spuštění skriptu pomocí nejnovější verze služby Azure Machine Learning, zkuste začít [pracovat se službou Azure Machine Learning](quickstart-run-cloud-notebook.md).
+Vytvoření prvního experimentu pomocí dvoufázové příručky pro [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md) a [výuka vašeho prvního modelu](tutorial-1st-experiment-sdk-train.md)
 
 Podrobnější informace o tomto pracovním postupu najdete v [kurzu pro celou délku](tutorial-train-models-with-aml.md) , který obsahuje podrobné kroky pro školení a nasazení modelů pomocí služby Azure Machine Learning. 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 0778814d4a228afe3a986426684c7d1f2080b517
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 14a360e7dc672266e8445a5ae5eb2168ae766af8
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553222"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741869"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalace a spuštění kontejnerů služby Speech
 
@@ -169,7 +169,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 Jakmile je kontejner na hostitelském [počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným, ale nepoužitým nastavením fakturace. K [](speech-container-configuration.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu.
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K [](speech-container-configuration.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu.
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
