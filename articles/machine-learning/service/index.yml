@@ -43,6 +43,9 @@ sections:
       - type: list
         style: unordered
         items:
+          - html: 'Začínáme: <a href="tutorial-first-experiment-automated-ml">Trénování a nasazení</a> prvního automatizovaného modelu ML na webu Azure Portal'
+          - html: 'Začínáme: <a href="tutorial-1st-experiment-sdk-setup">Nastavení vývojového prostředí</a> a <a href="tutorial-1st-experiment-sdk-train"></a> s využitím poznámkového bloku Jupyter (<b>dvoudílná série</b>)'
+          - html: 'Začínáme: <a href="ui-tutorial-automobile-price-train-score">Trénování</a> a <a href="ui-tutorial-automobile-price-deploy">nasazení</a> prvního experimentu ML s využitím vizuálního rozhraní umožňujícího přetahovat položky (<b>dvoudílná série</b>)'
           - html: <a href="tutorial-train-models-with-aml">Trénování</a> a <a href="tutorial-deploy-models-with-aml">nasazování</a> modelů klasifikace obrázků (<b>dvoudílná série</b>)
           - html: <a href="tutorial-data-prep">Příprava dat</a> a <a href="tutorial-auto-train-models">použití automatizovaného strojového učení</a> k trénování a vyladění regresních modelů (<b>dvoudílná série</b>)
           - html: <a href="ui-tutorial-automobile-price-train-score">Predikce cen automobilů</a> s využitím vizuálního rozhraní a <a href="ui-tutorial-automobile-price-deploy">nasazení</a> regresního modelu

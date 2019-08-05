@@ -87,6 +87,8 @@
       items:
         - name: Vytvoření šablony
           href: how-to-create-template.md
+        - name: Typ a název podřízeného prostředku
+          href: child-resource-name-type.md
         - name: Vytvoření prostředků a skupin prostředků v předplatném
           displayName: subscription level deployment
           href: deploy-to-subscription.md

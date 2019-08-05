@@ -68,6 +68,8 @@
       items:
         - name: Migrace databáze SQL Serveru
           href: virtual-machines-windows-migrate-sql.md
+        - name: Virtuální počítač do nové oblasti
+          href: virtual-machines-windows-sql-move-different-region.md
     - name: Konfigurace vysoké dostupnosti
       items:
         - name: Použití služby Azure Storage pro zálohování a obnovení

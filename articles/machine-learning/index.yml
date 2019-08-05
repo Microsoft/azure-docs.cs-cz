@@ -36,6 +36,26 @@ sections:
           - html: <a href="service/quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
         style: unordered
         type: list
+      - text: '<b>Kurz: Trénování a nasazení prvního automatizovaného modelu ML na webu Azure Portal:</b>'
+        type: paragraph
+      - items:
+          - html: <a href="service/tutorial-first-experiment-automated-ml">Využití automatizovaného strojového učení k trénování a nasazení prvního modelu klasifikace</a>
+        style: unordered
+        type: list
+      - text: '<b>Kurz: Trénování prvního modelu ML s využitím SDK:</b>'
+        type: paragraph
+      - items:
+          - html: 'Část 1: <a href="service/tutorial-1st-experiment-sdk-setup">Nastavení prostředí a pracovního prostoru</a>'
+          - html: 'Část 2: <a href="service/tutorial-1st-experiment-sdk-train">Trénování prvního modelu</a>'
+        style: unordered
+        type: list
+      - text: '<b>Kurz: Trénování a nasazení prvního experimentu s využitím vizuálního rozhraní:</b>'
+        type: paragraph
+      - items:
+          - html: 'Část 1: <a href="service/ui-tutorial-automobile-price-train-score">Trénování regresního modelu</a>'
+          - html: 'Část 2: <a href="service/ui-tutorial-automobile-price-deploy">Nasazení modelu</a>'
+        style: unordered
+        type: list
       - text: '<b>Kurz: Klasifikace obrázků dat MNIST s využitím SDK:</b>'
         type: paragraph
       - items:
