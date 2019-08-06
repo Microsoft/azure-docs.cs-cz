@@ -1,6 +1,6 @@
 ---
-title: Sentinel rychlý start Azure – Začínáme s náhledem Sentinelu Azure | Dokumentace Microsoftu
-description: Sentinel rychlý start Azure – Začínáme s Azure Sentinelu
+title: Rychlý Start pro Azure Sentinel – Začínáme s Azure Sentinel Preview | Microsoft Docs
+description: Rychlý Start pro Azure Sentinel – Začínáme s Sentinel Azure
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -16,88 +16,88 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 75bfdce02313ab7e799f6535f247407c239653b8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c6434b4f5808c349d5e0ab04dafc5233f6ec63ac
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619808"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780472"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Rychlý start: Začínáme s Azure Sentinelu ve verzi Preview
+# <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Rychlý start: Začínáme s Azure Sentinel Preview
 
 > [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
+> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-V tomto rychlém startu se dozvíte, jak rychle bude moct zobrazovat a monitorovat, co se děje v prostředí pomocí ověřovacích Azure. Po připojení zdroje dat do Azure Sentinelu, získáte okamžitý vizualizace a analýzy dat, abyste věděli, co se děje pro všechny připojené datové zdroje. Azure Sentinel poskytuje řídicí panely, které vám poskytnou výkon nástroje, které jsou aktuálně k dispozici v Azure a jak tabulky a grafy, které jsou součástí poskytují analýzy protokolů a dotazy. Můžete použít integrované řídicí panely nebo vytvořit nový řídicí panel, od začátku nebo na základě na existující řídicí panel. 
+V tomto rychlém startu se dozvíte, jak rychle zobrazit a monitorovat, co se děje ve vašem prostředí pomocí Azure Sentinel. Po připojení zdrojů dat ke službě Azure Sentinel získáte okamžitou vizualizaci a analýzu dat, abyste mohli zjistit, co se děje napříč všemi připojenými zdroji dat. Pomocí služby Azure Sentinel získáte řídicí panely, které jsou už dostupné v Azure, a také tabulky a grafy, které jsou integrované pro poskytování analýz pro vaše protokoly a dotazy. Můžete buď použít předdefinované řídicí panely, nebo vytvořit nový řídicí panel snadno, od nuly nebo na základě existujícího řídicího panelu. 
 
-## <a name="get-visualization"></a>Získat vizualizace
+## <a name="get-visualization"></a>Získat vizualizaci
 
-Vizualizace a získat analýzy, co se děje ve vašem prostředí, nejprve, podívejte se na přehled řídicího panelu, kde získáte představu o stavu zabezpečení vaší organizace. Můžete kliknout na každý prvek z těchto dlaždic pro procházení nezpracovaná data, ze které se vytvářejí. Můžete omezit informační šum a minimalizovat počet výstrah, které budete muset zkontrolovat a zjistit, Sentinelu Azure používá techniku fusion ke korelaci výstrahy do případů. **Případy** jsou skupiny souvisejících výstrah, které společně vytvářejí užitečné incident, který můžete prozkoumat a vyřešit.
+Aby bylo možné vizualizovat a získat analýzu toho, co se děje ve vašem prostředí, nejprve se podívejte na řídicí panel přehled, abyste získali představu o stav zabezpečení vaší organizace. Můžete kliknout na jednotlivé prvky těchto dlaždic a přejít k podrobnostem o nezpracovaná data, ze kterých jsou vytvořena. K tomu, abyste snížili šum a minimalizovali počet výstrah, které je třeba zkontrolovat a prozkoumat, využívá Azure Sentinel způsob fúze ke korelaci upozornění na incidenty. **incidenty** jsou skupiny souvisejících výstrah, které společně vytvářejí incident s možnou činností, který můžete prozkoumat a vyřešit.
 
-- Na webu Azure Portal vyberte Sentinelu Azure a pak vyberte pracovní prostor, který chcete monitorovat.
+- V Azure Portal vyberte možnost Azure Sentinel a pak vyberte pracovní prostor, který chcete monitorovat.
 
   ![Přehled služby Azure Sentinel](./media/qs-get-visibility/overview.png)
 
-- Panelu nástrojů v horní části se dozvíte, jak mnoho událostí, které jste získali za vybrané časové období a jejím srovnání s předchozím 24 hodinám. Panelu nástrojů sděluje, z těchto událostí, výstrah, které se aktivuje (malé číslo představuje změny za posledních 24 hodin), a pak vám sdělí pro události, kolik byly otevřené, probíhající a uzavřený. Zaškrtněte, pokud chcete zobrazit, že není výrazné zvýšení nebo pokles počtu událostí. Pokud existuje pokles, je možné, že připojení přestaly se generovat sestavy na Sentinelu Azure. Pokud dojde navýšení, něco podezřelého mohlo dojít. Zkontrolujte, jestli máte nové výstrahy.
+- Na panelu nástrojů v horní části se dozvíte, kolik událostí jste ve vybraném časovém období, a porovná je s předchozími 24 hodinami. Panel nástrojů vás od těchto událostí upozorní, aktivované výstrahy (malé číslo představuje změnu za posledních 24 hodin) a pak vás upozorní na tyto události, počet otevřených, probíhajících a uzavřených. Zkontrolujte, že se nejedná o výrazné zvýšení ani pokles počtu událostí. Pokud dojde k přerušení, může to být tím, že připojení zastavilo hlášení do Azure Sentinel. Pokud dojde ke zvýšení, může dojít k nějaké podezřelé situaci. Podívejte se, jestli máte nové výstrahy.
 
-   ![Azure Trychtýř Sentinel](./media/qs-get-visibility/funnel.png)
+   ![Filtr Sentinel Azure](./media/qs-get-visibility/funnel.png)
 
-Hlavní stránka s přehledem poskytuje přehled o na první pohled na stav zabezpečení vašeho pracovního prostoru:
+Hlavní část stránky s přehledem poskytuje rychlý přehled o stavu zabezpečení vašeho pracovního prostoru:
 
-- **Události a upozornění v průběhu času**: Obsahuje počet událostí a počet výstrah vytvořených z těchto událostí. Pokud se zobrazí prudký nárůst, který neobvyklá, že pokud existuje něco neobvyklého kdy nedojde k prudkému události, ale nevidíte oznámení, měli byste vidět výstrahy pro něj –, může být příčinou znepokojení.
+- **Události a výstrahy v průběhu času**: Vypíše počet událostí a kolik výstrah bylo z těchto událostí vytvořeno. Pokud se zobrazí špička, která je neobvyklá, měla by se vám zobrazit upozornění – pokud se vyskytnou špička v událostech, ale výstrahy nevidíte, může to způsobovat obavy.
 
-- **Potenciální škodlivých událostech**: Při zjištění provozu ze zdroje, které jsou známé jako škodlivý, Sentinelu Azure vás upozorní na mapě. Pokud se zobrazí oranžově, je příchozí provoz: někdo pokouší o přístup k vaší organizaci ze známé škodlivé IP adresy. Pokud se aktivita odchozí (červená), znamená to, streamování dat z vaší sítě mimo vaši organizaci známé škodlivé IP adresy.
+- **Potenciální škodlivé události**: Když se zjistí provoz ze zdrojů, u kterých se ví, že jsou škodlivé, výstrahy Azure Sentinel na mapě. Pokud vidíte oranžová, jedná se o příchozí provoz: někdo se snaží o přístup k vaší organizaci ze známé škodlivé IP adresy. Pokud se zobrazí odchozí (červená) aktivita, znamená to, že data z vaší sítě se streamují z vaší organizace na známou škodlivou IP adresu.
 
-   ![Azure mapa Sentinel](./media/qs-get-visibility/map.png)
-
-
-- **Nedávné případy**: Chcete-li zobrazit nedávné případy, závažnosti a počet výstrah, které jsou přidružené k tento případ. Pokud se zobrazí jako i s náhlými špičku v konkrétním typu výstrahy, může to znamenat, že je aktivní útoku aktuálně běží. Například pokud máte i s náhlými ve špičce 20 událostí Pass-the-hash z ochrany ATP v programu Azure je možné, že se někdo aktuálně snaží útoku je.
-
-- **Zdroje dat anomálie**: Microsoftu pro datové analytiky vytvořené modely, které neustále hledat data ze zdrojů dat pro anomálie. Pokud nejsou k dispozici anomálie, nezobrazí se. Anomálie se zjišťují, měli byste podrobné informace o nich chcete zobrazit, co se stalo. Klikněte například na nárůst aktivit Azure. Můžete kliknout na **grafu** uvidí, když se stalo zásobníku a vyfiltrujte pro aktivity, ke kterým došlo během tohoto časového období zobrazíte, co způsobilo zásobníku.
-
-   ![Azure mapa Sentinel](./media/qs-get-visibility/anomolies.png)
-
-## Pomocí předdefinovaných řídicích panelů<a name="dashboards"></a>
-
-Integrované řídicí panely poskytují integrované data z vašich připojených zdrojů dat umožňuje hloubkové podrobně události generované v těchto služeb. Integrované řídicí panely zahrnují Azure ID, události aktivit v Azure a v místním prostředí, které mohou být data z události Windows ze serverů, z první strany výstrah, z jakékoli třetí strany, včetně protokolů přenosů brány firewall, Office 365 a nezabezpečené protokoly založené na Windows události.
-
-1. V části **nastavení**vyberte **řídicí panely**. V části **nainstalováno**, zobrazí se všechny řídicí panely nainstalované. V části **všechny** můžete zobrazit celou galerii integrované řídicí panely, které jsou k dispozici pro instalaci. 
-2. Hledat na konkrétním řídicím panelu zobrazíte celý seznam a popis co každá nabízí. 
-3. Za předpokladu, že jste pomocí Azure AD, zprovoznit a s Azure Sentinelu, doporučujeme vám nainstalovat minimálně následující řídicí panely:
-   - **Azure AD**: Použijte jednu nebo obě z následujících akcí:
-       - **Azure AD přihlášení** analyzuje přihlášení v čase, abyste viděli, jestli jsou anomálie. Tento řídicí panel poskytuje neúspěšné přihlášení pomocí aplikací, zařízení a umístění, takže můžete zjistíte, na první pohled je-li se stane něco neobvyklého. Věnujte pozornost několik neúspěšných přihlášení. 
-       - **Protokoly auditu Azure AD** analyzuje aktivity správy, jako jsou například změny uživatelů (přidání, odebrání, atd.), vytvoření skupiny a úpravy.  
-
-   - Přidání řídicího panelu ke své bráně firewall. Například přidáte řídicí panel Palo Alto. Řídicí panel analyzuje provoz brány firewall, vám poskytnou korelace mezi událostmi hrozeb a data vaší brány firewall a zvýrazní podezřelé události napříč entitami. Řídicí panely vám poskytne informace o trendech v provozu a umožňuje procházet a filtrovat výsledky. 
-
-      ![PAL Alto řídicí panel](./media/qs-get-visibility/palo-alto-week-query.png)
+   ![Mapování Sentinel Azure](./media/qs-get-visibility/map.png)
 
 
-Můžete přizpůsobit řídicí panely, buď tak, že upravíte hlavního dotazu ![tlačítko](./media/qs-get-visibility/edit-query-button.png). Kliknete na tlačítko ![tlačítko](./media/qs-get-visibility/go-to-la-button.png) přejdete na [Log Analytics k úpravě dotazu existuje](../azure-monitor/log-query/get-started-portal.md), a můžete vybrat na tři tečky (...) a vyberte **přizpůsobit data dlaždice**, což vám umožní Upravit filtr času hlavní nebo odebrat konkrétní dlaždice na řídicím panelu.
+- **Nedávné incidenty**: Pokud si chcete zobrazit poslední incidenty, jejich závažnost a počet výstrah přidružených k incidentu. Pokud se u určitého typu výstrahy zobrazí jako náhlé špičky, může to znamenat, že aktuálně probíhá aktivní útok. Pokud máte například náhlou špičku 20 událostí pass-the-hash z Azure ATP, je možné, že se někdo aktuálně snaží o útok.
 
-Další informace o práci s dotazy, naleznete v tématu [kurzu: Vizuálních dat v Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
+- **Anomálie zdroje dat**: Analytiky dat Microsoftu vytvořily modely, které neustále vyhledávají data ze zdrojů dat, a to kvůli anomáliím. Pokud neexistují žádné anomálie, nic se nezobrazí. Pokud se zjistí anomálie, měli byste je podrobněovat, abyste zjistili, co se stalo. Například klikněte na špička v aktivitě Azure. Kliknutím na **graf** můžete zobrazit, kdy špička proběhla, a potom filtrovat aktivity, ke kterým došlo během tohoto časového období, abyste viděli, co způsobilo špičku.
+
+   ![Mapování Sentinel Azure](./media/qs-get-visibility/anomolies.png)
+
+## Použití vestavěných řídicích panelů<a name="dashboards"></a>
+
+Vestavěné řídicí panely poskytují integrovaná data z vašich připojených zdrojů dat a umožňují tak důkladné podrobně události vygenerované v těchto službách. Vestavěné řídicí panely zahrnují Azure ID, události aktivit Azure a místní, což může být data z událostí systému Windows ze serverů, výstrahy od první strany, od jakékoli třetí strany, včetně protokolů přenosů firewallu, Office 365 a nezabezpečených protokolů založených na systému Windows. událost.
+
+1. V části **Nastavení**vyberte **řídicí panely**. Včásti nainstalováno uvidíte všechny nainstalované řídicí panely. V části **vše** můžete zobrazit celou galerii vestavěných řídicích panelů, které jsou k dispozici pro instalaci. 
+2. Pokud chcete zobrazit celý seznam a popis jednotlivých nabídek, vyhledejte konkrétní řídicí panel. 
+3. Za předpokladu, že používáte Azure AD, můžete začít pracovat se službou Azure Sentinel. doporučujeme nainstalovat alespoň následující řídicí panely:
+   - **Azure AD**: Použijte buď jednu z těchto možností, nebo obě z těchto možností:
+       - **Přihlášení Azure AD** analyzuje přihlášení v průběhu času, aby bylo možné zjistit, jestli existují anomálie. Tento řídicí panel poskytuje aplikacím, zařízením a umístěním neúspěšné přihlášení, takže můžete na první pohled všimnout, pokud se nestane něco neobvyklého. Věnujte pozornost několika neúspěšným přihlášením. 
+       - **Protokoly auditu Azure AD** analyzují aktivity správců, například změny uživatelů (přidávání, odebírání atd.), vytváření skupin a změny.  
+
+   - Přidejte řídicí panel pro bránu firewall. Přidejte například řídicí panel Palo Alto. Řídicí panel analyzuje provoz brány firewall a poskytuje korelace mezi daty brány firewall a událostmi hrozeb a zvýrazňuje podezřelé události napříč entitami. Řídicí panely poskytují informace o trendech v provozu a umožňují přechod k podrobnostem a filtrování výsledků. 
+
+      ![Řídicí panel PAL Alto](./media/qs-get-visibility/palo-alto-week-query.png)
+
+
+Řídicí panely můžete přizpůsobit úpravou tlačítka ![](./media/qs-get-visibility/edit-query-button.png)hlavní dotaz. Kliknutím na ![tlačítko tlačítka](./media/qs-get-visibility/go-to-la-button.png) můžete přejít na Log Analytics a [Upravit dotaz tam](../azure-monitor/log-query/get-started-portal.md). můžete také vybrat tři tečky (...) a vybrat **přizpůsobit data dlaždice**, což vám umožní upravit hlavní filtr času nebo odebrat konkrétní dlaždice z řídicího panelu.
+
+Další informace o práci s dotazy najdete v tématu [kurz: Vizuální data v Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 ### <a name="add-a-new-tile"></a>Přidat novou dlaždici
 
-Pokud chcete přidat novou dlaždici, můžete ho přidat na existující řídicí panel, ten, který vytvoříte nebo Azure Sentinelu integrovaný řídicí panel. 
-1. V Log Analytics, vytvoření dlaždice s pomocí pokynů uvedených v [kurzu: Vizuálních dat v Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
-2. Po vytvoření dlaždice, v části **Pin**, vyberte řídicí panel, ve kterém chcete dlaždici se zobrazí.
+Pokud chcete přidat novou dlaždici, můžete ji přidat na existující řídicí panel, který vytvoříte, nebo na integrovaný řídicí panel Azure Sentinel. 
+1. V Log Analytics vytvořte dlaždici pomocí pokynů uvedených v [kurzu: Vizuální data v Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
+2. Po vytvoření dlaždice vyberte v části **připnout**řídicí panel, ve kterém se má dlaždice zobrazit.
 
-## <a name="create-new-dashboards"></a>Vytvořit nové řídicí panely
-Můžete vytvořit nový řídicí panel úplně od začátku nebo použít integrovaný řídicí panel jako základ pro váš nový řídicí panel.
+## <a name="create-new-dashboards"></a>Vytvoření nových řídicích panelů
+Nový řídicí panel můžete vytvořit úplně od začátku nebo použít vestavěný řídicí panel jako základ pro váš nový řídicí panel.
 
-1. Chcete-li vytvořit zcela nový řídicí panel, vyberte **řídicí panely** a potom **+ nový řídicí panel**.
-2. Vyberte předplatné, které se vytvoří řídicí panel v a přiřaďte jí popisný název. Každý řídicí panel je prostředek Azure stejně jako jakýkoli jiný, a můžete ji můžete přiřadit role (RBAC) k definování a omezení, kdo má přístup k. 
-3. Se objeví v řídicích panelech a připnout vizualizace na povolit, je nutné ho sdílet. Klikněte na tlačítko **sdílenou složku** a potom **spravovat uživatele**. 
+1. Pokud chcete vytvořit nový řídicí panel od začátku, vyberte **řídicí panely** a potom **+ nový řídicí panel**.
+2. Vyberte předplatné, ve kterém se řídicí panel vytvoří, a sdělte mu popisný název. Každý řídicí panel je prostředek Azure, podobně jako kterýkoli jiný, a k definování a omezení přístupu k nim můžete přiřadit role (RBAC). 
+3. Pokud ho chcete povolit, aby se zobrazoval ve vašich řídicích panelech, abyste mohli vizualizace připnout na, budete ho muset sdílet. Klikněte na **sdílet** a pak na **Spravovat uživatele**. 
  
-1. Použití **zkontrolovat přístup** a **přiřazení rolí** stejně jako pro libovolné prostředky Azure. Další informace najdete v tématu [řídicích panelů sdílenou složku Azure pomocí RBAC](../azure-portal/azure-portal-dashboard-share-access.md).
+1. Použijte přiřazení **přístupových oprávnění** a **rolí** stejně jako u všech ostatních prostředků Azure. Další informace najdete v tématu [sdílení řídicích panelů Azure pomocí RBAC](../azure-portal/azure-portal-dashboard-share-access.md).
 
 
-## <a name="new-dashboard-examples"></a>Příklady nový řídicí panel
+## <a name="new-dashboard-examples"></a>Nové příklady řídicích panelů
 
-Následující ukázkový dotaz můžete porovnat trendy provoz napříč týdnů. Můžete snadno přepínat, spusťte dotaz na zdroj dat a dodavatele zařízení. Tento příklad používá SecurityEvent z Windows, můžete přepnout jeho spuštění v AzureActivity nebo CommonSecurityLog na jakoukoli jinou bránu firewall.
+Následující vzorový dotaz vám umožní porovnat trendy provozu v různých týdnech. Můžete snadno přepnout daného dodavatele zařízení a zdroje dat, na kterém jste dotaz spustili. V tomto příkladu se používá SecurityEvent ze systému Windows, takže ho můžete přepnout na AzureActivity nebo CommonSecurityLog na kterékoli jiné brány firewall.
 
      |where DeviceVendor = = "Palo Alto Networks":
       // week over week query
@@ -107,7 +107,7 @@ Následující ukázkový dotaz můžete porovnat trendy provoz napříč týdn�
       | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
 
 
-Můžete chtít vytvořit dotaz, který zahrnuje data z více zdrojů. Můžete vytvořit dotaz, který se zabývá protokolů auditu Azure Active Directory pro nové uživatele, které byly vytvořeny pouze a kontroly protokolů Azure zobrazit, pokud uživatel spustí provádění změn přiřazení rolí během 24 hodin od vytvoření. Podezřelé aktivity se zobrazují na tomto řídicím panelu:
+Možná budete chtít vytvořit dotaz, který zahrnuje data z více zdrojů. Můžete vytvořit dotaz, který bude Azure Active Directory protokoly auditu pro nové uživatele, které jste právě vytvořili, a pak zkontrolovat protokoly Azure, abyste viděli, jestli uživatel začal provádět změny přiřazení role během 24 hodin od vytvoření. Tato podezřelá aktivita by se zobrazila na tomto řídicím panelu:
 
     AuditLogs
     | where OperationName == "Add user"
@@ -117,26 +117,26 @@ Můžete chtít vytvořit dotaz, který zahrnuje data z více zdrojů. Můžete 
     | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
     | project-away user1
 
-Můžete vytvořit na základě role osoby prohlížení dat a co hledají různých řídicích panelech. Můžete například vytvořit řídicí panel pro správce sítě, která obsahuje data brány firewall. Můžete také vytvořit řídicí panely založené na tom, jak často chcete podívejte se na ně, zda věcí, které chcete zkontrolovat každý den a jiné položky, které chcete zkontrolovat jednou za hodinu, například můžete chtít podívat na přihlášení Azure AD za hodinu pro hledání anomali ES. 
+Můžete vytvořit různé řídicí panely na základě role osoby, která si vyhledává data a co hledají. Můžete například vytvořit řídicí panel pro správce sítě, který obsahuje data brány firewall. Můžete také vytvořit řídicí panely na základě toho, jak často je chcete zobrazit, zda existují věci, které chcete kontrolovat denně, a další položky, které chcete kontrolovat jednou za hodinu, například můžete chtít v každé hodiny podívat se na vaše přihlášení ke službě Azure AD a vyhledat anomálii. jednomu. 
 
 ## <a name="create-new-detections"></a>Vytvořit nové detekce
 
-Generovat detekce [zdroje dat, které jste se připojili k Azure Sentinelu](connect-data-sources.md) k prošetření hrozeb ve vaší organizaci.
+Vygenerujte zjišťování [zdrojů dat, ke kterým jste se připojili ke službě Azure Sentinel,](connect-data-sources.md) a prozkoumejte hrozby ve vaší organizaci.
 
-Při vytváření nové detekce, využijte integrované detekce vytvořený zabezpečení odborníky společnosti Microsoft, které jsou přizpůsobené ke zdrojům dat, ke kterému jste připojeni.
+Když vytváříte nové zjišťování, využijte integrované detekce vytvořené odborníky na zabezpečení Microsoftu, které jsou přizpůsobené zdrojům dat, které jste připojili.
 
-1. [V komunitě GitHub](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) přejděte **detekce** složky a vyberte příslušné složky.
-   ![příslušné složky](./media/qs-get-visibility/detection-folders.png)
+1. [Ve komunitě GitHubu](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) přejít do složky **detekce** a vyberte příslušné složky.
+   ![relevantní složky](./media/qs-get-visibility/detection-folders.png)
  
-3.  Přejděte **Analytics** kartě a vyberte **přidat**.
-   ![Vytvoření pravidla v Log Analytics](./media/qs-get-visibility/query-params.png)
+3.  Přejít na kartu **Analytics** a vyberte **Přidat**.
+   ![vytvořit pravidlo v Log Analytics](./media/qs-get-visibility/query-params.png)
 
-3.  Zkopírujte všechny parametry do pravidla a klikněte na tlačítko **vytvořit**.
-   ![Vytvořit pravidlo upozornění](./media/qs-get-visibility/create-alert-rule.png)
+3.  Zkopírujte všechny parametry do pravidla a klikněte na **vytvořit**.
+   ![vytvořit pravidlo výstrahy](./media/qs-get-visibility/create-alert-rule.png)
 
  
 ## <a name="next-steps"></a>Další postup
-V tomto rychlém startu jste zjistili, jak chcete začít používat Azure Sentinelu. Dál najdete v tomto kurzu [jak detekovat hrozby](tutorial-detect-threats.md).
+V tomto rychlém startu jste zjistili, jak začít používat Azure Sentinel. Pokračujte v tomto kurzu, [](tutorial-detect-threats.md)kde zjistíte hrozby.
 > [!div class="nextstepaction"]
-> [Detekce hrozeb](tutorial-detect-threats.md) k automatizaci vaše odpovědi na ně.
+> [Detekuje hrozby](tutorial-detect-threats.md) pro automatizaci reakcí na hrozby.
 
