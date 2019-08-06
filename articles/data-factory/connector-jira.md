@@ -47,7 +47,7 @@ Jira propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost Type musí být nastavená na: **Jira** | Ano |
 | host | IP adresu nebo název hostitele služby Jira. (například jira.example.com)  | Ano |
 | port | Port TCP, který Jira server používá k naslouchání pro připojení klientů. Výchozí hodnota je 443, pokud připojení prostřednictvím protokolu HTTPS nebo 8080, pokud připojení prostřednictvím protokolu HTTP.  | Ne |
-| username jméno | Uživatelské jméno, který používáte pro přístup ke službě Jira.  | Ano |
+| username | Uživatelské jméno, který používáte pro přístup ke službě Jira.  | Ano |
 | password | Heslo odpovídající uživatelské jméno, které jste zadali do pole uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
