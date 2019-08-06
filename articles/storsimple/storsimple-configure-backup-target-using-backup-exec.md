@@ -55,8 +55,8 @@ Stejně jako u jakéhokoli řešení úložiště je velmi důležité vyhodnoti
 
 StorSimple je navržený tak, aby poskytoval úložiště pro aplikace, které pracují s dobře definovanou pracovní sadou dat (Hot data). V tomto modelu se pracovní sada dat ukládá v místních vrstvách a zbývající nepracovní/studená a archivní sada dat je vrstvená do cloudu. Tento model je reprezentován na následujícím obrázku. Skoro plochá zelená čára představuje data uložená v místních vrstvách zařízení StorSimple. Červená čára představuje celkové množství dat uložených v řešení StorSimple napříč všemi úrovněmi. Prostor mezi plochou zelenou čárou a exponenciální červenou křivkou představuje celkové množství dat uložených v cloudu.
 
-
-Diagram vrstvení![StorSimple vrstev StorSimple](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
+**Diagram vrstvení![** 
+StorSimple vrstev StorSimple](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
 
 V této architektuře se dozvíte, že StorSimple je ideálním řešením pro provoz jako cíl zálohování. StorSimple můžete použít k těmto akcím:
 -   Proveďte nejčastější obnovení z místní pracovní sady dat.
@@ -233,7 +233,7 @@ Nastavte své řešení podle pokynů v následujících částech.
 -   StorSimple podporuje zálohování exec a úplné a přírůstkové zálohování. Doporučujeme, abyste nepoužívali syntetické a rozdílové zálohy.
 -   Soubory dat zálohy by měly obsahovat pouze data pro konkrétní úlohu. Například připojení k médiím v různých úlohách není povoleno.
 -   Zakáže ověřování úlohy. V případě potřeby by se mělo ověřování naplánovat po poslední úloze zálohování. Je důležité pochopit, že tato úloha má vliv na okno zálohování.
--   Vyberte **úložiště** > **vlastnosti** **Podrobnosti o** ****  > disku > . Vypněte **volbu předem přidělit místo na disku**.
+-   Vyberte **úložiště** > **vlastnosti** **Podrobnosti o** > disku > . Vypněte **volbu předem přidělit místo na disku**.
 
 Nejnovější nastavení služby Backup Exec a osvědčené postupy pro implementaci těchto požadavků najdete [na webu Veritas](https://www.veritas.com).
 

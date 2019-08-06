@@ -19,7 +19,7 @@ Pomocí FTP a místního Gitu můžete nasadit webovou aplikaci Azure s využit�
 
 Konfigurace uživatele nasazení, spusťte [az webapp deployment uživatele sadu](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) příkazu ve službě Azure Cloud Shell. Nahraďte \<uživatelské jméno > a \<heslo > nasazení uživatelské jméno a heslo. 
 
-- Uživatelské jméno musí být jedinečný v rámci Azure a místní Git nesmí obsahovat nabízených oznámení, "@" symbol. 
+- Uživatelské jméno musí být jedinečný v rámci Azure a místní Git nesmí obsahovat nabízených oznámení, "\@" symbol. 
 - Heslo musí obsahovat alespoň osm znaků dlouhá a dva z následujících: písmena, číslice a symboly. 
 
 ```azurecli-interactive

@@ -136,7 +136,7 @@ Přidejte **$OrderBy** pro řazení výsledků podle jiného pole než skóre vy
 
 5. Po výběru index a verze rozhraní API zadejte na panelu hledání hledané výrazy nebo plně kvalifikované výrazy dotazu a klikněte na **Hledat** , které se spustí.
 
-   ![Zadejte hledané výrazy a klikněte na Hledat] . (./media/search-explorer/search-explorer-query-string-example.png "Zadejte hledané výrazy a klikněte na Hledat") .
+   ![Zadejte hledané výrazy a klikněte na Hledat](./media/search-explorer/search-explorer-query-string-example.png "Zadejte hledané výrazy a klikněte na Hledat") .
 
 Tipy pro hledání v **Průzkumníkovi služby Search**:
 

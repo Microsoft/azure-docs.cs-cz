@@ -53,8 +53,8 @@ Pokud vytváříte nový virtuální počítač pro bitovou kopii, použijte jak
 
 > [!NOTE]
 > Nemůžete použít image třetí strany, která má další licenci a jako základní image. Informace o těchto obrázcích na webu Marketplace najdete v tématu pokyny [pro](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) virtuální počítače](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) se systémem Linux nebo [Windows.
+) virtuální počítače [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) se systémem Linux nebo.
 
 
 * Ujistěte se, že je virtuální počítač vytvořený pomocí spravovaného disku. Toto je výchozí nastavení úložiště při vytváření virtuálního počítače.

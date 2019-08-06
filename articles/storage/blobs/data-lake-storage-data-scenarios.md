@@ -87,7 +87,7 @@ Další informace o nastavení dalších aspektů zabezpečení najdete v témat
 
 V této části se vysvětlují různé zdroje dat a různé způsoby, kterými je možné data do účtu Data Lake Storage Gen2 ingestovat.
 
-Ingestování ![dat do data Lake Storage Gen2] Ingestování (./media/data-lake-storage-data-scenarios/ingest-data.png "dat do data Lake Storage Gen2")
+Ingestování ![dat do data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/ingest-data.png "Ingestování dat do data Lake Storage Gen2")
 
 ### <a name="ad-hoc-data"></a>Ad hoc data
 

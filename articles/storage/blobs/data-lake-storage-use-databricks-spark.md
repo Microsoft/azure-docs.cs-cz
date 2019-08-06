@@ -128,7 +128,7 @@ Pomocí AzCopy zkopírujte data ze souboru *. csv* do účtu Data Lake Storage G
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
    ```
 
-   * Nahraďte hodnotu  zástupnéhosymbolucestouksouboru.`<csv-folder-path>` CSV.
+   * Nahraďte hodnotu zástupnéhosymbolucestouksouboru.`<csv-folder-path>` CSV.
 
    * Nahraďte `<storage-account-name>` hodnotu zástupného symbolu názvem vašeho účtu úložiště.
 
@@ -142,7 +142,7 @@ V této části vytvoříte systém souborů a složku v účtu úložiště.
 
 2. Na levé straně vyberte **pracovní prostor**. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** > **Poznámkový blok**.
 
-    ![Vytvoření poznámkového bloku v] datacihlech (./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Vytvoření poznámkového bloku v") datacihlech
+    ![Vytvoření poznámkového bloku v datacihlech](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Vytvoření poznámkového bloku v") datacihlech
 
 3. V dialogovém okně **Vytvořit poznámkový blok** zadejte název poznámkového bloku. Jako jazyk vyberte **Python** a pak vyberte cluster Spark, který jste vytvořili dříve.
 
@@ -225,7 +225,7 @@ Teď můžete začít vytvářet dotazy na data, která jste nahráli do svého 
 
 Chcete-li vytvořit datové rámce pro zdroje dat, spusťte následující skript:
 
-* Nahraďte hodnotu  zástupnéhosymbolucestouksouboru.`<csv-folder-path>` CSV.
+* Nahraďte hodnotu zástupnéhosymbolucestouksouboru.`<csv-folder-path>` CSV.
 
 ```python
 # Copy this into a Cmd cell in your notebook.
