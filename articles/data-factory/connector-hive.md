@@ -42,7 +42,7 @@ Pro Hive propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type musí být nastavená na: **Hive** | Ano |
-| hostitel | IP adresa nebo název hostitele serveru Hive, oddělených pomocí ';' u více hostitelů (pouze v případě serviceDiscoveryMode povolit).  | Ano |
+| host | IP adresa nebo název hostitele serveru Hive, oddělených pomocí ';' u více hostitelů (pouze v případě serviceDiscoveryMode povolit).  | Ano |
 | port | Port TCP, který používá Hive server k naslouchání pro připojení klientů. Pokud se připojíte k Azure HDInsights, zadejte port 443. | Ano |
 | serverType | Typ serveru Hive. <br/>Povolené hodnoty jsou: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Ne |
 | thriftTransportProtocol | Protokol přenos, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binary**, **SASL**, **HTTP** | Ne |
