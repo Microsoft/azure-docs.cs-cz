@@ -178,12 +178,12 @@ Při kopírování dat z MongoDB, se používají následující mapování z Mo
 |:--- |:--- |
 | Binary |Byte[] |
 | Boolean |Boolean |
-| Datum |DateTime |
+| Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
-| Řetězec |String |
+| String |String |
 | UUID |Guid |
 | Object |Renormalized do sloučit sloupce s "_" jako vnořené oddělovač |
 
