@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 031367a8a05defad475ae077f9b38b7294837460
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559397"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815259"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Podpora jazyků a oblastí pro hlasové služby
 
@@ -31,12 +31,12 @@ Sada SDK pro rozpoznávání řeči od Microsoftu i REST API podporují následu
  ar – například | Arabština (Egypt), moderní standard | Ne | Ano | Ne
  ES certifikační autority | Katalánština | Ne | Ne | Ne
  da-DK | Dánština (Dánsko) | Ne | Ne | Ne
- de-DE | Němčina (Německo) | Ano | Ano | Ne
- cs AU | angličtina (Austrálie) | Ne | Ano | Ano
- cs CA | angličtina (Kanada) | Ne | Ano | Ano
- en-GB | Angličtina (Spojené království) | Ne | Ano | Ano
- en-IN | English (India) | Ano | Ano | Ano
- cs NZ | angličtina (Nový Zéland) | Ne | Ano | Ano  
+ de-DE | Němčina (Německo) | Ano | Ano | Ano
+ cs AU | angličtina (Austrálie) | Ne | Ano | Ne
+ cs CA | angličtina (Kanada) | Ne | Ano | Ne
+ en-GB | Angličtina (Spojené království) | Ne | Ano | Ne
+ en-IN | English (India) | Ano | Ano | Ne
+ cs NZ | angličtina (Nový Zéland) | Ne | Ano | Ne 
  en-US | Angličtina (Spojené státy) | Ano | Ano | Ano
  es-ES | Španělština (Španělsko) | Ano | Ano | Ne
  es-MX | Španělština (Mexiko) | Ne | Ano | Ne
