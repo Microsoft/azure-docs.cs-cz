@@ -283,7 +283,7 @@ Ke zkopírování dat z protokolu HTTP v **Parquet nebo formátu odděleného te
 | requestMethod            | Metoda HTTP <br>Povolené hodnoty jsou **získat** (výchozí) a **příspěvek**. | Ne       |
 | addtionalHeaders         | Další hlavičky požadavků HTTP.                             | Ne       |
 | Includesearchresults: true              | Obsah žádosti protokolu HTTP.                               | Ne       |
-| RequestTimeout           | Časový limit ( **TimeSpan** hodnotu) pro požadavek HTTP získat odpověď. Tato hodnota je časový limit získat odpověď, nevypršel časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**. | Ne       |
+| requestTimeout           | Časový limit ( **TimeSpan** hodnotu) pro požadavek HTTP získat odpověď. Tato hodnota je časový limit získat odpověď, nevypršel časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**. | Ne       |
 | maxConcurrentConnections | Počet připojení pro připojení k úložišti storage současně. Zadejte pouze v případě, že chcete omezit souběžných připojení k úložišti. | Ne       |
 
 > [!NOTE]
