@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 8b89f5572ae94986590fe76096daeb0ad088fe59
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 66a0c625d300a74787e3640992675d5a3f31610c
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668613"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828544"
 ---
-# <a name="tutorial-train-your-first-model"></a>Kurz: Výuka prvního modelu
+# <a name="tutorial-train-your-first-model"></a>Kurz: Trénování prvního modelu
 
 Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [vytvořili pracovní prostor a zvolili vývojové prostředí](tutorial-1st-experiment-sdk-setup.md). V tomto kurzu se naučíte základní vzory návrhu ve službě Azure Machine Learning Service a naučíte se jednoduchý model scikit-učení založený na diabetes sadě dat. Po dokončení tohoto kurzu budete mít praktické znalosti sady SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
 
@@ -111,7 +111,7 @@ Po dokončení školení volejte `experiment` proměnnou, která načte odkaz na
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td><a href="" target="_blank" rel="noopener">Odkaz na Azure Portal</a></td><td><a href="" target="_blank" rel="noopener">Odkaz na dokumentaci</a></td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Portal</td><td>Odkaz na dokumentaci</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Zobrazit výsledky školení na portálu
 
@@ -181,7 +181,7 @@ Pokud jste použili server cloudového poznámkového bloku, zastavte virtuáln�
 
 1. V pracovním prostoru vyberte **virtuální počítače poznámkového bloku**.
 
-   ![Zastavení serveru VM](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![Zastavení serveru VM](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. V seznamu vyberte virtuální počítač.
 

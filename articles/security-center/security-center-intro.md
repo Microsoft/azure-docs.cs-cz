@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f0ee4a1129246cedd7899056359144cab75f9475
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 7bd18ab0cedf94f0ecc08c3523a608a8d554e6b2
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782437"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827919"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -126,9 +126,9 @@ Security Center vám pomůže omezit vystavení útokům hrubou silou. Omezením
 
 Security Center obsahuje možnosti, které vám pomůžou provést automatickou klasifikaci vašich dat v Azure SQL. Můžete také získat vyhodnocení potenciálních chyb zabezpečení napříč službou Azure SQL a služby úložiště a doporučení, jak je zmírnit.
 
-### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>Ochrana úloh IoT a hybridního cloudu (Preview)
+### <a name="protect-iot-and-hybrid-cloud-workloads"></a>Ochrana úloh IoT a hybridního cloudu
 
-Azure Security Center for IoT (Internet věcí) zjednodušuje ochranu hybridních úloh tím, že poskytuje jednotnou viditelnost a kontrolu, preventivní prevenci a inteligentní detekci hrozeb a reakce napříč úlohami běžícími na hraničních zařízeních, v místním prostředí. Azure a v jiných cloudech. Další informace najdete v tématu [Azure Security Center pro IoT (Preview)](https://docs.microsoft.com/azure/asc-for-iot/).
+Azure Security Center for IoT (Internet věcí) zjednodušuje ochranu hybridních úloh tím, že poskytuje jednotnou viditelnost a kontrolu, preventivní prevenci a inteligentní detekci hrozeb a reakce napříč úlohami běžícími na hraničních zařízeních, v místním prostředí. Azure a v jiných cloudech. Další informace najdete v tématu [Azure Security Center pro IoT](https://docs.microsoft.com/azure/asc-for-iot/).
 
 ## <a name="get-secure-faster"></a>Rychlejší získání zabezpečení
 

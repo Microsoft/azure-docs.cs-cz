@@ -1,6 +1,6 @@
 ---
-title: Příručka Začínáme pro operátory Azure IT | Dokumentace Microsoftu
-description: Získání Příručka Začínáme pro operátory Azure IT
+title: Úvodní příručka pro operátory IT Azure | Microsoft Docs
+description: Úvodní příručka pro operátory IT Azure
 services: ''
 documentationcenter: ''
 author: themichaelbender-ms
@@ -15,91 +15,91 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 1f8972c89ecb0fc7d8cc7ceb9bfdeab9e905e862
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b6f5534bc4127e11d7be4b1a52b92a22b75cbb5a
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570602"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828091"
 ---
-# <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
+# <a name="get-started-for-azure-it-operators"></a>Začínáme s operátory IT Azure
 
-Tato příručka představuje základní koncepty související s nasazením a správa infrastruktury Microsoft Azure. Pokud jste ještě ke cloud computingu, nebo v Azure, tento průvodce pomůže rychle vám pomůžou začít s koncepty, nasazení a správu podrobnosti. Mnoho oddíly této příručky popisují určité operace, například nasazení virtuálního počítače a pak zadejte odkaz na hlubší technické podrobnosti.
+Tato příručka přináší základní koncepty související s nasazením a správou infrastruktury Microsoft Azure. Pokud začínáte s cloud computingem nebo samotným Azure, tato příručka vám pomůže rychle začít s koncepty, nasazením a podrobnostmi o správě. Mnoho částí této příručky popisuje operace, jako je například nasazení virtuálního počítače, a pak poskytuje odkaz na podrobné technické podrobnosti.
 
 ## <a name="cloud-computing-overview"></a>Přehled cloud computingu
 
-Cloud computingu, poskytuje moderní alternativu tradičních místních Datacenter. Dodavatelé veřejného cloudu poskytovat a spravovat všechny výpočetní infrastrukturu a software pro správu základní. Tyto dodavatelé poskytují celou řadu cloudových služeb. Cloudové služby v tomto případě pravděpodobně virtuální počítač, webový server nebo hostované v cloudu databázového stroje. Jako zákazník poskytovatele cloudu zapůjčení těchto cloudových služeb na základě podle potřeby. Přitom převedete investičních výdajů za údržbu hardwaru do provozní výdaje. Cloudová služba taky poskytuje následující výhody:
+Cloud Computing nabízí moderní alternativu k tradičnímu místnímu datovému centru. Dodavatelé veřejného cloudu poskytují a spravují veškerou výpočetní infrastrukturu a základní software pro správu. Tito dodavatelé poskytují širokou škálu cloudových služeb. Cloudová služba v tomto případě může být virtuálním počítačem, webovým serverem nebo databázovým strojem hostovaným v cloudu. Jako zákazník poskytovatele cloudu tyto cloudové služby zapůjčujete podle potřeby. V takovém případě převedete kapitálovou cenu údržby hardwaru na provozní náklady. Cloudová služba také nabízí tyto výhody:
 
 - Rychlé nasazení velkých výpočetních prostředí
 
-- Rychlé zrušení přidělení systémů, které se už nevyžadují
+- Rychlé navracení systémů, které už nejsou potřeba
 
-- Snadné nasazení tradičně komplexních systémů, jako jsou nástroje pro vyrovnávání zatížení
+- Snadné nasazení tradičně složitých systémů, jako jsou nástroje pro vyrovnávání zatížení
 
-- Schopnost poskytovat flexibilní výpočetní kapacity nebo určený počet číslic v případě potřeby
+- Možnost poskytovat flexibilní výpočetní kapacitu nebo škálování v případě potřeby
 
-- Více nákladově efektivní výpočetních prostředí
+- Cenově výhodné výpočetní prostředí
 
-- Přistupovat z libovolného místa s webový portál nebo Automatizace prostřednictvím kódu programu
+- Přístup odkudkoli pomocí webového portálu nebo programového automatizace
 
-- Cloudové služby, které splňují většina nároky na výpočetní prostředky a aplikace
+- Cloudové služby pro splnění většiny požadavků na výpočetní výkon a aplikace
 
-Pomocí místní infrastruktury máte plnou kontrolu nad hardware a software, který je nasazený. V minulosti to vedlo k rozhodnutí o nákup hardwaru, které se zaměřují na vertikální navýšení kapacity. Příkladem je nákup serveru s více jádry podle potřeb výkonu ve špičce. Tato infrastruktura může bohužel nevyužité mimo časové období poptávky. S Azure můžete nasadit jenom infrastruktury potřebné a upravit toto směrem nahoru nebo dolů v každém okamžiku. To vede k zaměřením na horizontální navýšení kapacity až po nasazení dalších výpočetních uzlů k uspokojení Internetu věcí a potřebovali výkonu. Horizontální navýšení kapacity cloudových služeb začne být cenově výhodnější než vertikální navýšení kapacity pomocí drahého hardware.
+S místní infrastrukturou máte plnou kontrolu nad hardwarem a softwarem, který je nasazený. Historicky to vedlo k rozhodování o nákupu hardwaru, které se soustředí na horizontální navýšení kapacity. Příkladem je nákup serveru s více jádry pro splnění požadavků na výkon ve špičce. Tato infrastruktura bohužel může být nevyužitá mimo okno poptávky. S Azure můžete nasadit jenom infrastrukturu, kterou potřebujete, a kdykoli ji upravit. To vede k zaměření na horizontální navýšení kapacity v rámci nasazení dalších výpočetních uzlů, které splní požadavky na výkon. Horizontální navýšení kapacity Cloud Services je efektivnější než při vertikálním navýšení kapacity prostřednictvím nákladného hardwaru.
 
-Microsoft má mnoho datových centrech Azure po celém světě, nasadit další plánované. Kromě toho Microsoft roste suverénních cloudů v oblastech, jako je Číny a Německa. Pouze po největší globální podniky nasadit datových centrech tímto způsobem, aby pomocí Azure usnadňuje podnikům jakékoli velikosti pro nasazení služeb co nejblíž zákazníkům.
+Společnost Microsoft nasadila spoustu datových center Azure po celém světě a plánuje se efektivněji. Společnost Microsoft navíc rozšiřuje cloudy v zemích, jako je Čína a Německo. Tímto způsobem můžou nasazovat datacentra jenom největší globální podniky. díky tomu Azure usnadňuje podnikům libovolné velikosti nasazení svých služeb blízko zákazníkům.
 
-Pro malé firmy umožňuje Azure pro položku s nízkými náklady, s možností škálování rychle, jak poptávka po výpočetních zvýšení. To zabraňuje velké počáteční kapitálových investic do infrastruktury a poskytuje flexibilitu při navrhovat a podle potřeby upravovat architekturu systémy. Použití cloud computingu přizpůsobí s modelem Rychlé škálování a typu fail-fast spuštění růstu.
+Pro malé firmy Azure umožňuje využít vstupní bod s nízkými náklady a možnost rychle škálovat na zvýšení poptávky. Tím se zabrání velkému objemu investic do infrastruktury v infrastruktuře a v případě potřeby poskytuje flexibilitu architektům a novým systémům. Používání cloud computingu zapadá do kvalitního a rychlého modelu nárůstu po spuštění.
 
-Další informace o dostupných oblastí Azure najdete v tématu [oblastí Azure](https://azure.microsoft.com/regions/).
+Další informace o dostupných oblastech Azure najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/).
 
-### <a name="cloud-computing-model"></a>Cloudový model computingu
+### <a name="cloud-computing-model"></a>Model cloud computingu
 
-Azure využívá cloud computingu modelu na základě kategorií služby k dispozici zákazníkům. Tři kategorie služby patří infrastruktura jako služba (IaaS), platforma jako služba (PaaS) a Software jako služba (SaaS). Dodavatelé sdílení některých nebo všech odpovědnost za součástí výpočetní zásobníku v každém z těchto kategorií. Pojďme se podívat na jednotlivé kategorie pro cloud computingu.
-![Cloud Computing porovnání zásobníku](./media/cloud-computing-comparison.png)
+Azure používá model cloud computingu založený na kategoriích služby poskytovaných zákazníkům. Mezi tyto tři kategorie služeb patří infrastruktura jako služba (IaaS), platforma jako služba (PaaS) a software jako služba (SaaS). Dodavatelé sdílejí určitou nebo veškerou odpovědnost za komponenty v zásobníku computingu v každé z těchto kategorií. Pojďme se podívat na všechny kategorie pro cloud computing.
+![Porovnání zásobníku cloud computingu](./media/cloud-computing-comparison.png)
 
-#### <a name="iaas-infrastructure-as-a-service"></a>IaaS: Infrastruktura jako služba
+#### <a name="iaas-infrastructure-as-a-service"></a>IaaS Infrastruktura jako služba
 
-Na dodavatele cloudu IaaS spouští a spravuje všechny fyzické výpočetní prostředky a požadovaný software, který chcete povolit virtualizaci počítače. Zákazník tato služba nasadí virtuální počítače v těchto hostovaných datacentrech. I když virtuální počítače jsou umístěné v datovém centru mimo pracoviště, uživatel IaaS má kontrolu nad konfiguraci a správu operačního systému byste museli opustit základní infrastruktury pro dodavatele cloudu.
+Dodavatel IaaS cloudu spouští a spravuje všechny fyzické výpočetní prostředky a požadovaný software, který umožňuje virtualizaci počítačů. Zákazník této služby nasadí virtuální počítače v těchto hostovaných datacentrech. I když se virtuální počítače nacházejí v datacentru mimo pracoviště, příjemce IaaS má kontrolu nad konfigurací a správou operačního systému, který ponechává základní infrastrukturu pro dodavatele cloudu.
 
-Azure obsahuje několik řešení IaaS, včetně virtuálních počítačů, škálovací sady virtuálních počítačů a související síťové infrastruktury. Jsou virtuální počítače oblíbenými volbou pro počáteční migraci služeb na Azure, protože umožňuje modelu migrace "metodou lift and shift". Můžete nakonfigurovat virtuální počítač jako infrastrukturu aktuálně spuštěné služby ve vašem datovém centru a potom migrovat vašeho softwaru do nového virtuálního počítače. Možná budete muset provést aktualizace konfigurace, jako jsou adresy URL k jiným službám nebo úložiště, ale mnoho aplikací tímto způsobem můžete migrovat.
+Azure zahrnuje několik řešení IaaS, včetně virtuálních počítačů, virtuálních počítačů a služby Virtual Machine Scale Sets a související síťové infrastruktury. Virtuální počítače jsou oblíbená volba pro prvotní migraci služeb do Azure, protože umožňuje model migrace "výtah a Shift". V datovém centru můžete nakonfigurovat virtuální počítač, jako je aktuálně běžící vaše služby, a pak svůj software migrovat do nového virtuálního počítače. Je možné, že budete muset provést aktualizace konfigurace, jako jsou adresy URL pro jiné služby nebo úložiště, ale tímto způsobem můžete migrovat mnoho aplikací.
 
-Škálovací sady virtuálních počítačů jsou postavené na Azure Virtual Machines a poskytují snadný způsob, jak nasadit clustery identických virtuálních počítačů. Škálovací sady virtuálních počítačů také podporují automatické škálování tak, aby nové virtuální počítače je možné nasadit automaticky, pokud to vyžaduje. Díky tomu škálovací sady virtuálních počítačů ideální platformu na vyšší úrovni mikroslužeb výpočetní clustery hostitelů, jako je Azure Service Fabric a Azure Container Service.
+Sada škálování virtuálních počítačů je postavená na Azure Virtual Machines a poskytuje snadný způsob, jak nasadit clustery identických virtuálních počítačů. Sada škálování virtuálních počítačů také podporuje automatické škálování, aby bylo možné v případě potřeby nasadit nové virtuální počítače automaticky. Díky tomu bude škálování virtuálního počítače ideální platformou pro hostování výpočetních clusterů mikroslužeb vyšší úrovně, jako je například Azure Service Fabric a Azure Container Service.
 
 #### <a name="paas-platform-as-a-service"></a>PaaS: Platforma jako služba
 
-Modelu paas nasazení aplikace do prostředí, které poskytuje dodavatel cloudové služby. Dodavatele nemá všechny správy infrastruktury, abyste se mohli soustředit na vývoj aplikací a data správy.
+Pomocí PaaS nasadíte aplikaci do prostředí, které poskytuje dodavatel cloudové služby. Dodavatel provádí veškerou správu infrastruktury, takže se můžete soustředit na vývoj aplikací a správu dat.
 
-Azure poskytuje že několik PaaS compute nabídek, včetně funkcí Web Apps v Azure App Service a Azure Cloud Services (webové a pracovní role). V obou případech se vývojáři mají několik způsobů, jak nasazovat aplikace bez znalosti nic o nuts a bolty, které ji podporují. Vývojáři nemuseli k vytvoření virtuálních počítačů (VM), přihlaste se ke každé z nich pomocí protokolu RDP (Remote Desktop) nebo instalaci aplikace. Jen klikněte tlačítko (nebo ji zavřít) a nástroje poskytované společností Microsoft, zřídit virtuální počítače a pak nasaďte a instalaci aplikace na ně.
+Azure poskytuje několik PaaS výpočetních nabídek, včetně funkce Web Apps Azure App Service a Azure Cloud Services (webová role a role pracovních procesů). V obou případech mají vývojáři více způsobů, jak nasadit své aplikace bez znalosti o ořechech a šroubech, které to podporují. Vývojáři nepotřebují vytvářet virtuální počítače, pomocí protokol RDP (Remote Desktop Protocol) (RDP) se přihlaste ke každému z nich, nebo aplikaci nainstalujte. Stačí tlačítko (nebo se na něj zavřít) a nástroje poskytované společností Microsoft zřídit virtuální počítače a potom na ně nasadit a nainstalovat aplikaci.
 
-#### <a name="saas-software-as-a-service"></a>SaaS: Software jako služba
+#### <a name="saas-software-as-a-service"></a>SaaS Software jako služba
 
-SaaS je software, který je centrálně hostované a spravované. Obvykle je založen na víceklientské architektury – jedna verze aplikace se používá pro všechny zákazníky. To lze škálovat na více instancí pro zajištění nejlepšího výkonu ve všech umístěních. SaaS software je obvykle licencován prostřednictvím měsíční nebo roční předplatné. SaaS software je obvykle licencován prostřednictvím měsíční nebo roční předplatné. Dodavatelé softwaru SaaS zodpovídají za všechny součásti softwaru zásobníku, takže všechno, co můžete spravovat služby poskytované.
+SaaS je software, který je centrálně hostovaný a spravovaný. Obvykle je založena na víceklientské architektuře – jedna verze aplikace se používá pro všechny zákazníky. Dá se škálovat na více instancí, abyste zajistili nejlepší výkon ve všech umístěních. SaaS software je obvykle licencován prostřednictvím měsíčního nebo ročního předplatného. Výrobci softwaru SaaS jsou odpovědní za všechny komponenty softwarového zásobníku, takže spravovat budou jenom poskytované služby.
 
-Microsoft Office 365 je dobrým příkladem SaaS, nabízí. Předplatitelé zaplatit poplatek, měsíční nebo roční předplatné, a dostanou Microsoft Exchange, Microsoft OneDrive a zbývající sady Microsoft Office jako služba. Předplatitelé získají vždy na nejnovější verzi a serveru Exchange server se spravuje za vás. Ve srovnání s instalací a upgradem Office každý rok, to je levnější a vyžaduje menší úsilí.
+Systém Microsoft Office 365 je dobrým příkladem nabídky SaaS. Předplatitelé platí měsíční nebo roční poplatek za předplatné a jako službu získají Microsoft Exchange, Microsoft OneDrive a zbytek systém Microsoft Office Suite. Předplatitelé vždycky získají nejnovější verzi a pro vás spravuje Exchange Server. V porovnání s instalací a upgradem Office každý rok je to levnější a vyžaduje menší úsilí.
 
 ## <a name="azure-services"></a>Služby Azure
 
-Azure nabízí mnoho služeb v jeho platforma pro cloud computing. Tyto služby patří.
+Azure nabízí ve své platformě cloud computingu spoustu služeb. Mezi tyto služby patří:
 
 ### <a name="compute-services"></a>Výpočetní služby
 
-Služby hostování a spuštění aplikace úlohy:
+Služby pro hostování a spouštění aplikačních úloh:
 
-- Azure Virtual Machines – Linux a Windows
+- Azure Virtual Machines – Linux i Windows
 
-- App Services (Web Apps, Mobile Apps, Logic Apps, API Apps a aplikace Function App)
+- App Services (Web Apps, Mobile Apps, Logic Apps, API Apps a aplikace Functions)
 
-- Azure Batch (pro rozsáhlých paralelních a dávkových výpočetních úloh)
+- Azure Batch (pro rozsáhlé paralelní a dávkové výpočetní úlohy)
 
 - Azure Service Fabric
 
 - Azure Container Service
 
-### <a name="data-services"></a>Datové služby
+### <a name="data-services"></a>Data Services
 
 Služby pro ukládání a správu dat:
 
-- Azure Storage (zahrnuje služby Azure Blob, fronty, tabulky a souboru)
+- Azure Storage (zahrnuje služby Azure Blob, Queue, Table a File)
 
 - Azure SQL Database
 
@@ -111,367 +111,367 @@ Služby pro ukládání a správu dat:
 
 ### <a name="application-services"></a>Aplikační služby
 
-Služby pro vytváření a provozování aplikací:
+Služby pro sestavování a provoz aplikací:
 
 - Azure Active Directory (Azure AD)
 
-- Azure Service Bus pro připojení distribuovaných systémů
+- Azure Service Bus pro propojení distribuovaných systémů
 
-- Azure HDInsight ke zpracování velkých objemů dat
+- Azure HDInsight pro zpracování velkých objemů dat
 
-- Azure Scheduler
+- Plánovač Azure
 
 - Azure Media Services
 
 ### <a name="network-services"></a>Síťové služby
 
-Služby v rámci Azure i mezi datacentry Azure a místní sítě:
+Služby pro sítě v rámci Azure i mezi Azure a místními datacentry:
 
 - Azure Virtual Network
 
 - Azure ExpressRoute
 
-- Poskytuje Azure DNS
+- DNS poskytovaný službou Azure
 
 - Azure Traffic Manager
 
 - Azure Content Delivery Network
 
-Podrobnou dokumentaci na služby Azure, najdete v části [dokumentace ke službě Azure service](https://docs.microsoft.com/azure).
+Podrobnou dokumentaci ke službám Azure najdete v [dokumentaci ke službě Azure](https://docs.microsoft.com/azure).
 
-## <a name="azure-key-concepts"></a>Klíčové koncepty Azure
+## <a name="azure-key-concepts"></a>Klíčové pojmy Azure
 
-### <a name="datacenters-and-regions"></a>Datovými centry a oblastmi
+### <a name="datacenters-and-regions"></a>Datová centra a oblasti
 
-Azure je globální Cloudová platforma, která je obecně dostupná v mnoha oblastech po celém světě. Když si zřídíte službu, aplikace nebo virtuálního počítače v Azure, budete vyzváni k výběru oblasti. Vybraná oblast představuje speciﬁc datacenter, ve kterém vaše aplikace spuštěná. Další informace najdete v tématu [oblastí Azure](https://azure.microsoft.com/regions/).
+Azure je globální cloudová platforma, která je obecně dostupná v mnoha oblastech po celém světě. Při zřizování služby, aplikace nebo virtuálního počítače v Azure budete požádáni o výběr oblasti. Vybraná oblast představuje konkrétní datové centrum, ve kterém je vaše aplikace spuštěná. Další informace najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/).
 
-Jednou z beneﬁts pomocí Azure je, že můžete nasadit aplikace do různých datových centrech po celém světě. Oblast, kterou zvolíte můžete aﬀect výkon vaší aplikace. Je optimální vyberte oblast, která je blíž ke nejvíce svým zákazníkům snížit latenci v síťové požadavky. Můžete také vybrat oblast pro splnění zákonných požadavků na distribuce aplikace v určitých zemích nebo oblastech.
+Jednou z výhod používání Azure je to, že můžete své aplikace nasadit do různých Datacenter po celém světě. Oblast, kterou zvolíte, může ovlivnit výkon aplikace. Je optimální zvolit oblast, která je blíže většině vašich zákazníků, aby se snížila latence v případě síťových požadavků. Můžete také vybrat oblast, která bude vyhovovat zákonným požadavkům pro distribuci aplikace v určitých zemích nebo oblastech.
 
 ### <a name="azure-portal"></a>portál Azure
 
-Na webu Azure portal je webová aplikace, který slouží k vytvoření, správě a odebrání prostředků Azure a služeb. Na webu Azure portal se nachází na [portal.azure.com](https://portal.azure.com). Zahrnuje přizpůsobitelný řídicí panel a nástroje pro správu prostředků Azure. Poskytuje také informace o fakturaci a předplatné. Další informace najdete v tématu [přehled portálu Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Správa prostředků Azure prostřednictvím portálu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
+Azure Portal je webová aplikace, která se dá použít k vytváření, správě a odebírání prostředků a služeb Azure. Azure Portal najdete na adrese [Portal.Azure.com](https://portal.azure.com). Zahrnuje přizpůsobitelný řídicí panel a nástroje pro správu prostředků Azure. Poskytuje také informace o fakturaci a předplatném. Další informace najdete v tématu [přehled portál Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Správa prostředků Azure prostřednictvím portálu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
 ### <a name="resources"></a>Zdroje a prostředky
 
-Prostředky Azure se jednotlivých výpočetních, sítí, dat nebo aplikace, který je hostitelem služby, které jsou nasazené do předplatného Azure. Mezi běžné prostředky patří virtuální počítače, účty úložiště nebo databáze SQL. Služby Azure se často skládají z několika souvisejících prostředků Azure. Virtuální počítač Azure může obsahovat například virtuální počítač, účet úložiště, síťový adaptér a veřejnou IP adresu. Tyto prostředky může vytvořit, spravované a odstranit samostatně nebo jako skupinu. Prostředky Azure se budeme věnovat jednotlivě podrobněji dále v této příručce.
+Prostředky Azure jsou individuální výpočetní prostředí, sítě, data nebo služby hostování aplikací, které se nasadily do předplatného Azure. Mezi běžné prostředky patří virtuální počítače, účty úložiště nebo databáze SQL. Služby Azure se často skládají z několika souvisejících prostředků Azure. Virtuální počítač Azure může například zahrnovat virtuální počítač, účet úložiště, síťový adaptér a veřejnou IP adresu. Tyto prostředky je možné vytvořit, spravovat a odstranit jednotlivě nebo jako skupinu. Prostředky Azure jsou podrobněji popsány dále v této příručce.
 
 ### <a name="resource-groups"></a>Skupiny prostředků
 
-Skupina prostředků Azure je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení, nebo jenom prostředky, které chcete spravovat jako skupinu. Skupiny prostředků Azure se budeme věnovat jednotlivě podrobněji dále v této příručce.
+Skupina prostředků Azure je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze prostředky, které chcete spravovat jako skupinu. Skupiny prostředků Azure jsou podrobněji popsány dále v této příručce.
 
 ### <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
-Šablony Azure Resource Manageru je soubor JavaScript Object Notation (JSON), který definuje jeden nebo více prostředků k nasazení do skupiny prostředků. Definuje také závislosti mezi nasazených prostředků. Šablony Resource Manageru se budeme věnovat jednotlivě podrobněji dále v této příručce.
+Šablona Azure Resource Manager je soubor JavaScript Object Notation (JSON), který definuje jeden nebo více prostředků pro nasazení do skupiny prostředků. Definuje také závislosti mezi nasazenými prostředky. Šablony Správce prostředků jsou podrobněji popsány dále v této příručce.
 
 ### <a name="automation"></a>Automation
 
-Kromě vytváření, správu a odstraňování prostředků pomocí webu Azure portal můžete automatizovat tyto aktivity pomocí Powershellu nebo rozhraní příkazového řádku Azure (CLI).
+Kromě vytváření, správy a odstraňování prostředků pomocí Azure Portal můžete automatizovat tyto aktivity pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure (CLI).
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-Prostředí Azure PowerShell je sada modulů, které poskytují rutiny pro správu Azure. Rutiny můžete použít k vytvoření, správě a odebrání služby Azure. Rutiny vám umožňují dosáhnete konzistentní vzhledem k aplikacím, opakovatelným a bezobslužnou nasazení. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
+Azure PowerShell je sada modulů, které poskytují rutiny pro správu Azure. Pomocí rutin můžete vytvářet, spravovat a odebírat služby Azure. Rutiny vám pomůžou dosáhnout konzistentních, opakovaných a praktických nasazení. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 
 #### <a name="azure-command-line-interface"></a>rozhraní příkazového řádku Azure
 
-Rozhraní příkazového řádku Azure je nástroj, který můžete použít k vytvoření, správě a odebrat prostředky Azure z příkazového řádku. Azure CLI je k dispozici pro Linux, Mac OS X a Windows. Další informace a technické podrobnosti najdete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
+Rozhraní příkazového řádku Azure je nástroj, který můžete použít k vytvoření, správě a odebrání prostředků Azure z příkazového řádku. Rozhraní příkazového řádku Azure je dostupné pro Linux, Mac OS X a Windows. Další informace a technické podrobnosti najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 #### <a name="rest-apis"></a>Rozhraní REST API
 
-Azure je postavený na sadu rozhraní REST API, která podporuje uživatelské rozhraní portálu Azure. Většina těchto rozhraní REST API jsou podporovány také umožňuje programově zřizovat a spravovat vaše prostředky Azure a aplikace z jakéhokoli zařízení využívajících Internet. Další informace najdete v tématu [Reference k rozhraní Azure REST SDK](https://docs.microsoft.com/rest/api/index).
+Azure je založený na sadě rozhraní REST API, které podporují uživatelské rozhraní Azure Portal. Většina těchto rozhraní REST API se taky podporuje, aby vám umožnila programové zřizování a správu prostředků a aplikací Azure z libovolného zařízení s podporou Internetu. Další informace najdete v referenčních informacích k [sadě Azure REST SDK](https://docs.microsoft.com/rest/api/index).
 
 ### <a name="azure-cloud-shell"></a>Azure Cloud Shell
 
-Správci mohou přistupovat k prostředí Azure PowerShell a rozhraní příkazového řádku Azure prostřednictvím prohlížeče přístupné prostředí volá Azure Cloud Shell. Toto interaktivní rozhraní poskytuje flexibilní nástroj pro systémy Linux a Windows správce používat jejich rozhraní příkazového řádku podle vlastní volby, Bashe nebo Powershellu. Azure Cloud Shell lze přistupovat pomocí portálu, jako samostatné webové rozhraní na [shell.azure.com](https://shell.azure.com), nebo z mnoha jiných přístupových bodů. Další informace najdete v tématu [Přehled služby Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+Správci mají přístup k Azure PowerShell a Azure CLI prostřednictvím prostředí přístupného pro prohlížeč, které se nazývá Azure Cloud Shell. Toto interaktivní rozhraní poskytuje flexibilní nástroj pro správce systémů Linux a Windows, aby používal své rozhraní příkazového řádku, které je zvoleno, buď bash nebo PowerShell. Azure Cloud Shell může mít přístup prostřednictvím portálu, jako samostatné webové rozhraní na [Shell.Azure.com](https://shell.azure.com), nebo z řady dalších přístupových bodů. Další informace najdete v tématu [přehled Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 ## <a name="azure-subscriptions"></a>Předplatná Azure
 
-Předplatné je logické seskupení služeb Azure, který je propojený s účtem Azure. Jeden účet Azure může obsahovat několik předplatných. Fakturace za služby Azure se provádí na základě za předplatné. Předplatná Azure mít účet správce, který má plnou kontrolu nad předplatné, a Správce služby, který má kontrolu nad všechny služby v rámci předplatného. Informace o správcích klasickém modelu předplatného najdete v tématu [přidat nebo změnit správce předplatného Azure](../../billing/billing-add-change-azure-subscription-administrator.md). Kromě správci, lze udělit jednotlivým účtům podrobné řízení prostředků Azure pomocí [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md).
+Předplatné je logické seskupení služeb Azure, které jsou propojené s účtem Azure. Jeden účet Azure může obsahovat několik předplatných. Fakturace služeb Azure se provádí na základě jednotlivých předplatných. Předplatná Azure mají správce účtu, který má plnou kontrolu nad předplatným, a správce služeb, který má kontrolu nad všemi službami v rámci předplatného. Informace o klasických správcích předplatných najdete v tématu [Přidání nebo změna správců předplatného Azure](../../billing/billing-add-change-azure-subscription-administrator.md). Kromě správců může být jednotlivým účtům přiděleno podrobné řízení prostředků Azure pomocí [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md).
 
-### <a name="select-and-enable-an-azure-subscription"></a>Vybrat a povolit předplatné Azure
+### <a name="select-and-enable-an-azure-subscription"></a>Výběr a povolení předplatného Azure
 
-Než začnete pracovat se službami Azure, musíte mít předplatné. Několik typů předplatného jsou k dispozici.
+Než budete moct pracovat se službami Azure, potřebujete předplatné. K dispozici je několik typů předplatného.
 
-**Bezplatné účty**: Odkaz pro registraci bezplatného účtu je na [web Azure](https://azure.microsoft.com/). Získáte kredit v průběhu 30 dnů vyzkoušet libovolnou kombinaci prostředků v Azure. Při překročení kreditu, který vaše, váš učet je zablokovaný. Na konci zkušebního období vaše služby jsou vyřazeny z provozu a přestane fungovat. Můžete upgradovat na předplatné s průběžnými platbami kdykoli.
+**Bezplatné účty**: Odkaz pro registraci bezplatného účtu se nachází na [webu Azure](https://azure.microsoft.com/). Díky tomu budete mít kredit v průběhu 30 dnů a vyzkoušíte jakoukoli kombinaci prostředků v Azure. Pokud částku svého kreditu překročíte, váš účet se pozastaví. Na konci zkušebního období se vaše služby vyřadí z provozu a nebudou už fungovat. Můžete kdykoli upgradovat na předplatné s průběžnými platbami.
 
-**Předplatná MSDN**: Pokud máte předplatné MSDN, můžete získat určitou velikostí v kreditech Azure každý měsíc. Například pokud máte Microsoft Enterprise sady Visual Studio s předplatným MSDN získáte \$150 USD v kreditech Azure.
+**Předplatná MSDN**: Pokud máte předplatné MSDN, získáte každý měsíc určitou částku na kredit Azure. Pokud máte například Microsoft Visual Studio Enterprise s předplatným MSDN, získáte \$kredit Azure 150 měsíčně.
 
-Při překročení kreditu, který, služby jsou zakázané, dokud nezačne další měsíc. Můžete vypnout limit útraty a přidat platební kartu pro další náklady. Některé tyto náklady Dáváme pro účty MSDN. Například platíte cenu Linux pro virtuální počítače s Windows serverem a neexistuje žádné další poplatky za servery společnosti Microsoft, jako je Microsoft SQL Server. Díky tomu MSDN účty ideální pro scénáře vývoje a testování.
+Pokud překročíte částku kreditu, bude služba zakázána, dokud se nespustí další měsíc. Limit útraty můžete vypnout a přidat platební kartu, která se má použít pro další náklady. Některé z těchto nákladů se uvažují pro účty MSDN. Platíte například cenu za Linux pro virtuální počítače s Windows serverem a za servery Microsoftu se neúčtují žádné další poplatky, jako je Microsoft SQL Server. To umožňuje vytvářet účty MSDN ideální pro scénáře vývoje a testování.
 
-**Účty BizSpark**: Program Microsoft BizSpark má spoustu výhod pro začínající firmy. Jednou z těchto výhod je přístup k veškerému softwaru Microsoftu pro vývojová a testovací prostředí pro účty až o pěti MSDN. Získejte 150 USD v kreditech Azure pro každou z těchto pět MSDN účtů a platit nižší sazby pro několik služeb Azure, jako jsou virtuální počítače.
+**Účty BizSpark**: Program Microsoft BizSparke poskytuje mnoho výhod pro spouštění. Jednou z těchto výhod je přístup ke všem softwarovým prostředím Microsoftu pro vývoj a testování až na pět účtů MSDN. Pro každý z těchto pěti účtů MSDN získáte poplatky za $150 a platíte nižší sazby za několik služeb Azure, například Virtual Machines.
 
-**Průběžné platby**: Toto předplatné platíte za použití připojením kreditní nebo debetní kartu k účtu. Pokud organizace, můžete je také schválené pro fakturaci.
+Průběžné **platby**: V tomto předplatném platíte za to, co využijete, připojením platební karty nebo debetní karty k účtu. Pokud jste organizace, můžete také schválit fakturaci.
 
-**Smlouvy Enterprise**: Se smlouvou enterprise zavázat k využívání počet služeb v Azure v příštím roce a vy platíte šířka předem. Závazek, který se spotřebovává během roku. Pokud překročíte závazku odečítá, můžete platit Nadlimitní využití za uplynulé čtvrtletí. V závislosti na množství závazku Získejte slevu na služby v Azure.
+**Smlouvy Enterprise**: Se smlouvou Enterprise se po příštím roce zavazujeme, že v Azure použijete určitý počet služeb a platíte tuto částku před časem. Závazek, který provedete, se spotřebovává po celý rok. Pokud překročíte částku závazku, můžete nadlimitní využití zaplatit v nedoplatkech. V závislosti na objemu závazku získáte slevu služby v Azure.
 
-### <a name="grant-administrative-access-to-an-azure-subscription"></a>Udělit přístup správce k předplatnému Azure
+### <a name="grant-administrative-access-to-an-azure-subscription"></a>Udělení přístupu pro správu k předplatnému Azure
 
-RBAC má několik předdefinovaných rolí, které vám umožní přiřadit oprávnění. Chcete-li uživatel správcem předplatného Azure, přiřaďte jim [vlastníka](../../role-based-access-control/built-in-roles.md#owner) role v oboru předplatného. Role vlastníka poskytuje úplný přístup uživatelů ke všem prostředkům v rámci předplatného, včetně práva na delegovat přístup ostatním uživatelům.
+RBAC má několik předdefinovaných rolí, které můžete použít k přiřazení oprávnění. Pokud chcete, aby uživatel měl správce předplatného Azure, přiřaďte mu roli [vlastníka](../../role-based-access-control/built-in-roles.md#owner) v oboru předplatného. Role vlastníka poskytuje uživateli úplný přístup ke všem prostředkům v rámci předplatného, včetně práva na delegování přístupu jiným uživatelům.
 
-Další informace najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
+Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
-### <a name="view-billing-information-in-the-azure-portal"></a>Zobrazovat fakturační informace na webu Azure Portal
+### <a name="view-billing-information-in-the-azure-portal"></a>Zobrazit fakturační údaje v Azure Portal
 
-Důležitou součástí pomocí Azure je možnost zobrazit informace o fakturaci. Na webu Azure portal nabízí podrobný pohled na Azure fakturační údaje.
+Důležitou součástí používání Azure je možnost zobrazit informace o fakturaci. Azure Portal poskytuje podrobný přehled o fakturačních informacích Azure.
 
-Další informace najdete v tématu [ke stažení Azure billing invoice a denní data o využití](../../billing/billing-download-azure-invoice-daily-usage-date.md).
+Další informace najdete v tématu [stažení fakturačních faktur Azure a dat o denním využití](../../billing/billing-download-azure-invoice-daily-usage-date.md).
 
-### <a name="get-billing-information-from-billing-apis"></a>Získat fakturační údaje z rozhraní API pro fakturaci
+### <a name="get-billing-information-from-billing-apis"></a>Získat fakturační informace z rozhraní API pro fakturaci
 
-Kromě zobrazování fakturace na portálu, přístupné pomocí skriptu nebo programu prostřednictvím rozhraní REST API fakturace Azure fakturační údaje:
+Kromě zobrazení fakturace na portálu můžete získat přístup k fakturačním údajům pomocí skriptu nebo programu přes rozhraní REST API pro účtování Azure:
 
-- Rozhraní API využití Azure můžete použít k načtení data o využití. Označování související prostředky Azure, lze optimalizovat fakturační informace o využití. Můžete například označit všechny prostředky ve skupině prostředků s názvem oddělení nebo název projektu a pak je sledovat náklady speciálně pro tuto jednu značku.
+- K načtení dat o využití můžete použít rozhraní API využití Azure. Informace o využití fakturace můžete vyladit pomocí označení souvisejících prostředků Azure. Můžete například označit každý z prostředků ve skupině prostředků s názvem oddělení nebo názvem projektu a pak sledovat náklady konkrétně pro tuto jednu značku.
 
-- Rozhraní API Azure míra karty můžete vypíše všechny dostupné prostředky, spolu s metadata a ceny informace o každém z těchto prostředků.
+- K vypsání všech dostupných prostředků spolu s informacemi o metadatech a cenách jednotlivých prostředků můžete použít rozhraní API služby Azure Rate Card.
 
-Další informace najdete v tématu [získání přehledů o spotřebě prostředků Microsoft Azure](../../billing/billing-usage-rate-card-overview.md).
+Další informace najdete v tématu [Získání přehledů o spotřebě prostředků Microsoft Azure](../../billing/billing-usage-rate-card-overview.md).
 
-### <a name="forecast-cost-with-the-pricing-calculator"></a>Prognózy náklady pomocí cenové kalkulačky
+### <a name="forecast-cost-with-the-pricing-calculator"></a>Náklady na prognózu pomocí cenové kalkulačky
 
-Ceny pro každou službu v Azure se liší. Mnoho služeb Azure nabízí úrovní Basic, Standard a Premium. Každá úroveň má obvykle několik úrovní cenou a výkonem. S použitím [online cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator), odhady cen je možné vytvořit. Kalkulačce zahrnuje flexibilitu pro odhad nákladů na jeden prostředek nebo skupinu prostředků.
+Ceny za každou službu v Azure se liší. Řada služeb Azure poskytuje úrovně Basic, Standard a Premium. Každá úroveň má obvykle několik cen a úrovní výkonu. Pomocí [cenové kalkulačky online](https://azure.microsoft.com/pricing/calculator)můžete vytvořit odhad cen. Kalkulačka zahrnuje flexibilitu při odhadování nákladů na jeden prostředek nebo skupinu prostředků.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Azure Resource Manager je nasazení, správu a organizace mechanismus pro prostředky Azure. Pomocí Resource Manageru můžete shromáždit mnoho jednotlivé prostředky ve skupině prostředků.
+Azure Resource Manager je mechanismus nasazení, správy a organizace pro prostředky Azure. Pomocí Správce prostředků můžete do skupiny prostředků umístit mnoho jednotlivých prostředků dohromady.
 
-Resource Manageru také zahrnuje možnosti nasazení, které umožňují přizpůsobit nasazení a konfigurace související prostředky. Například pomocí Resource Manageru můžete nasadit aplikaci, která se skládá z několika virtuálních počítačů, nástroj pro vyrovnávání zatížení a SQL database jako jeden celek. Vývoj těchto nasazení pomocí šablony Resource Manageru.
+Správce prostředků taky zahrnuje možnosti nasazení, které umožňují přizpůsobitelné nasazení a konfiguraci souvisejících prostředků. Například pomocí Správce prostředků můžete nasadit aplikaci, která se skládá z několika virtuálních počítačů, nástroje pro vyrovnávání zatížení a databáze SQL jako jedné jednotky. Tato nasazení vyvíjíte pomocí šablony Správce prostředků.
 
 Resource Manager poskytuje několik výhod:
 
 - Můžete všechny prostředky pro vaše řešení nasadit, spravovat a monitorovat jako skupinu a nemusíte je zpracovávat jednotlivě.
 
-- Můžete opakovaně nasadit v průběhu životního cyklu vývoje řešení a mít přitom jistotu, že se prostředky nasadí konzistentně.
+- Řešení můžete opakovaně nasadit v průběhu životního cyklu vývoje a mít jistotu, že vaše prostředky budou nasazeny v konzistentním stavu.
 
 - Infrastrukturu můžete spravovat pomocí deklarativních šablon místo skriptů.
 
 - Můžete definovat závislosti mezi prostředky, takže se nasadí ve správném pořadí.
 
-- Řízení přístupu můžete použít ke všem službám ve vaší skupině prostředků a protože RBAC je nativně integrováno do platformy pro správu.
+- Řízení přístupu můžete použít pro všechny služby ve vaší skupině prostředků, protože RBAC je nativně integrovaná do platformy pro správu.
 
-- Použít značky u prostředků logicky tak uspořádat všechny prostředky ve vašem předplatném.
+- Můžete použít značky pro prostředky a logicky uspořádat všechny prostředky v rámci vašeho předplatného.
 
-- Můžete zpřehlednit fakturaci svojí organizace zobrazením nákladů na skupinu prostředků, které sdílejí stejnou značku.
+- Můžete vyjasnit fakturaci vaší organizace zobrazením nákladů na skupinu prostředků, které sdílejí stejnou značku.
 
-### <a name="tips-for-creating-resource-groups"></a>Tipy pro vytváření skupiny prostředků
+### <a name="tips-for-creating-resource-groups"></a>Tipy pro vytváření skupin prostředků
 
-Když děláte rozhodnutí o vaší skupiny prostředků, vezměte v úvahu tyto tipy:
+Při rozhodování o skupinách prostředků Vezměte v úvahu tyto tipy:
 
-- Všechny prostředky ve skupině prostředků by měl mít stejný životní cyklus.
+- Všechny prostředky ve skupině prostředků by měly mít stejný životní cyklus.
 
-- Prostředek můžete přiřadit jenom jedné skupiny najednou.
+- V jednom okamžiku můžete přiřadit prostředek jenom k jedné skupině.
 
-- Můžete přidat nebo odebrat zdroje ze skupiny prostředků kdykoli. Každý prostředek musí patřit do skupiny prostředků. Takže pokud odeberete prostředek z jedné skupiny, musíte jej přidat do druhé.
+- Prostředek můžete kdykoli přidat nebo odebrat ze skupiny prostředků. Každý prostředek musí patřit do skupiny prostředků. Takže pokud odeberete prostředek z jedné skupiny, musíte ho přidat do jiného.
 
-- Většina typů prostředků můžete přesunout do jiné skupiny prostředků kdykoli.
+- Většinu typů prostředků můžete kdykoli přesunout do jiné skupiny prostředků.
 
 - Prostředky ve skupině prostředků mohou být v různých oblastech.
 
-- Skupinu prostředků můžete použít k řízení přístupu pro prostředky v ní.
+- Skupinu prostředků můžete použít k řízení přístupu k prostředkům v ní.
 
-### <a name="building-resource-manager-templates"></a>Vytváření šablon Resource Manageru
+### <a name="building-resource-manager-templates"></a>Vytváření šablon Správce prostředků
 
-Šablony Resource Manageru pomocí deklarace definice prostředků a konfigurace prostředků, které se nasadí do jedné skupiny prostředků. Šablony Resource Manageru můžete orchestrovat složité nasazení bez nutnosti skriptování nadbytečná nebo ruční konfigurace. Poté, co při vývoji šablony, můžete ji nasadit více než jednou – pokaždé, když s nejistým identické.
+Správce prostředků šablony deklarativně definují prostředky a konfigurace prostředků, které budou nasazeny do jedné skupiny prostředků. Šablony Správce prostředků můžete použít k orchestraci složitých nasazení bez nutnosti nadbytečného skriptování nebo ruční konfigurace. Po vytvoření šablony ji můžete nasadit několikrát – pokaždé se stejným výsledkem.
 
-Šablony Resource Manageru se skládá ze čtyř částí:
+Šablona Správce prostředků se skládá ze čtyř částí:
 
-- **Parametry**: Jedná se o vstupy nasazení. Hodnoty parametru lze zadat člověk nebo automatizovaného procesu. Jako příklad parametr může být správce uživatelské jméno a heslo pro virtuální počítač s Windows. Hodnoty parametrů se používají v rámci nasazení, když jste zadali.
+- **Parametry**: Jedná se o vstupy pro nasazení. Hodnoty parametrů lze zadat pomocí lidského nebo automatizovaného procesu. Příkladem parametru může být uživatelské jméno a heslo správce pro virtuální počítač s Windows. Hodnoty parametrů jsou v rámci nasazení použity, když jsou zadány.
 
-- **Proměnné**: Ty se používají pro uchování hodnoty, které se používají v rámci nasazení. Na rozdíl od parametry hodnotu proměnné není k dispozici v době nasazení. Místo toho je obtížné kódované nebo generuje dynamicky.
+- **Proměnné**: Používají se k ukládání hodnot, které se používají v rámci nasazení. Na rozdíl od parametrů není hodnota proměnné k dispozici v době nasazení. Místo toho je pevně zakódována nebo dynamicky generována.
 
-- **Prostředky:** Tato část šablony definuje prostředky k nasazení, jako jsou virtuální počítače, účty úložiště a virtuální sítě.
+- **Prostředky:** Tato část šablony definuje prostředky, které mají být nasazeny, například virtuální počítače, účty úložiště a virtuální sítě.
 
-- **Výstup**: Po dokončení nasazení Resource Manageru můžete vrátit data, jako jsou dynamicky generované připojovací řetězce.
+- **Výstup**: Po dokončení nasazení může Správce prostředků vracet data jako dynamicky generované připojovací řetězce.
 
-Jsou k dispozici pro automatizaci nasazení následujících mechanismů:
+Pro automatizaci nasazení jsou k dispozici následující mechanismy:
 
-- **Funkce:** Můžete použít několik funkcí v šablonách Resource Manageru. Patří mezi ně operací, jako je například převod řetězce na malá písmena, nasazení více instancí definovaných prostředků a dynamicky vrácení cílová skupina prostředků. Funkce Resource Manageru vám pomůžou rozvíjet dynamických nasazení.
+- **Funkce:** Můžete použít několik funkcí v šablonách Správce prostředků. Patří mezi ně operace, jako je převod řetězce na malá písmena, nasazení více instancí definovaného prostředku a dynamické vrácení cílové skupiny prostředků. Správce prostředků Functions vám pomůžou vytvářet dynamická nasazení.
 
-- **Závislosti prostředků**: Při nasazování několika prostředcích, některé prostředky budou mít závislost na ostatní. Pro usnadnění nasazení, můžete použít deklarace závislostí tak, aby ostatní jsou nasazena závislé prostředky.
+- **Závislosti prostředků**: Pokud nasazujete více prostředků, některé prostředky budou mít závislost na dalších. Pro usnadnění nasazení můžete použít deklaraci závislosti, aby byly závislé prostředky nasazeny před ostatními.
 
-- **Propojení šablony**: Z v rámci jedné šablony Resource Manageru můžete propojit s jinou šablonu. To umožňuje rozložené nasazení na sadu cílových, zaměřené na konkrétní účel šablony.
+- **Šablona propojuje**: V rámci jedné šablony Správce prostředků můžete propojit s jinou šablonou. To umožňuje, aby bylo nasazení rozloženo do sady cílových šablon specifických pro účel.
 
-Můžete vytvářet šablony Resource Manageru v libovolném textovém editoru. Ale sady Azure SDK for Visual Studio obsahuje nástroje, které vám pomohou. Pomocí sady Visual Studio můžete přidat prostředky do šablony v průvodci, potom nasadit a ladit šablonu přímo z Visual Studia. Další informace najdete v tématu [šablon pro vytváření Azure Resource Manageru](../../resource-group-authoring-templates.md).
+Šablony Správce prostředků lze vytvořit v libovolném textovém editoru. Sada Azure SDK pro Visual Studio ale obsahuje nástroje, které vám pomůžou. Pomocí sady Visual Studio můžete přidat prostředky do šablony prostřednictvím průvodce a potom nasadit a ladit šablonu přímo z aplikace Visual Studio. Další informace najdete v tématu [vytváření Azure Resource Manager šablon](../../resource-group-authoring-templates.md).
 
-Nakonec můžete převést existující skupiny prostředků opakovaně použitelné šablony z portálu Azure portal. To může být užitečné, pokud chcete vytvořit šablonu nasadit existující skupinu prostředků, nebo chcete jenom zkontrolovat základní JSON. Pokud chcete exportovat skupiny prostředků, vyberte **automatizační skript** tlačítko Nastavení skupiny prostředků.
+Nakonec můžete převést existující skupiny prostředků na opakovaně použitelnou šablonu z Azure Portal. To může být užitečné, pokud chcete vytvořit nasazenou šablonu existující skupiny prostředků nebo chcete jenom prostudovat základní JSON. Pokud chcete exportovat skupinu prostředků, vyberte tlačítko **skript Automation** z nastavení skupiny prostředků.
 
 ## <a name="security-of-azure-resources-rbac"></a>Zabezpečení prostředků Azure (RBAC)
 
-Můžete udělit provozní přístup k uživatelským účtům v zadaném oboru: předplatné, skupinu prostředků nebo samostatný prostředek. To znamená, že můžete nasadit sadu prostředků do skupiny prostředků, jako je například virtuální počítač a všechny související prostředky a udělení oprávnění pro konkrétního uživatele nebo skupiny. Tento přístup omezuje přístup k prostředkům, které patří k cílové skupině prostředků. Můžete také udělit přístup na jeden prostředek, jako je například virtuální počítač nebo virtuální sítě.
+Operačnímu účtu můžete udělit přístup k uživatelským účtům v zadaném oboru: předplatné, skupina prostředků nebo individuální prostředek. To znamená, že můžete nasadit sadu prostředků do skupiny prostředků, jako je například virtuální počítač a všechny související prostředky, a udělit oprávnění konkrétnímu uživateli nebo skupině. Tento přístup omezuje přístup jenom na prostředky, které patří do cílové skupiny prostředků. Můžete taky udělit přístup k jednomu prostředku, jako je třeba virtuální počítač nebo virtuální síť.
 
-Pokud chcete udělit přístup, přiřadíte roli pro uživatele nebo skupiny uživatelů. Existuje mnoho předdefinovaných rolí. Můžete také definovat vlastní role.
+Chcete-li udělit přístup, přiřaďte roli uživateli nebo skupině uživatelů. Existuje mnoho předdefinovaných rolí. Můžete také definovat vlastní role.
 
-Tady je příklad několika [předdefinované role v Azure](../../role-based-access-control/built-in-roles.md):
+Tady je několik příkladů [předdefinovaných rolí v Azure](../../role-based-access-control/built-in-roles.md):
 
-- **Vlastník**: Uživatel s touto rolí můžou spravovat všechno včetně přístupu.
+- **Vlastník**: Uživatel s touto rolí může spravovat všechno, včetně přístupu.
 
-- **Reader**: Uživatel s touto rolí může číst prostředky všech typů (s výjimkou tajné kódy), ale nemůže provádět změny.
+- **Čtecí modul**: Uživatel s touto rolí může číst prostředky všech typů (s výjimkou tajných klíčů), ale nemůže provádět změny.
 
-- **Přispěvatel virtuálních počítačů**: Uživatel s touto rolí může spravovat virtuální počítače, ale nemůže spravovat virtuální sítě pro které jsou připojené nebo účet úložiště, kde se nachází soubor virtuálního pevného disku.
+- **Přispěvatel virtuálních počítačů**: Uživatel s touto rolí může spravovat virtuální počítače, ale nemůže spravovat virtuální síť, ke které jsou připojené, nebo účet úložiště, ve kterém se nachází soubor VHD.
 
-- **Přispěvatel databází SQL**: Uživatel s touto rolí můžou spravovat databáze SQL, ale ne jejich zásady související se zabezpečením.
+- **Přispěvatel databáze SQL**: Uživatel s touto rolí může spravovat databáze SQL, ale ne jejich zásady související se zabezpečením.
 
-- **SQL Security Manager**: Uživatel s touto rolí můžou spravovat zásad souvisejících se zabezpečením SQL serverů a databází.
+- **Správce zabezpečení SQL**: Uživatel s touto rolí může spravovat zásady týkající se zabezpečení serverů a databází SQL.
 
-- **Přispěvatel účtů úložiště**: Uživatel s touto rolí můžou spravovat účty úložiště, ale nemůžete spravovat přístup k účtům úložiště.
+- **Přispěvatel účtu úložiště**: Uživatel s touto rolí může spravovat účty úložiště, ale nemůže spravovat přístup k účtům úložiště.
 
-Další informace najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
+Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
-Azure Virtual Machines je jedním z centrální služby IaaS v Azure. Azure Virtual Machines podporuje nasazení virtuálních počítačů s Windows nebo Linuxem v datacentru Microsoft Azure. S Azure Virtual Machines, mají úplnou kontrolu nad konfigurací virtuálních počítačů a odpovídáte za všechny instalace softwaru, konfigurace a údržby.
+Azure Virtual Machines je jednou z centrálních služeb IaaS v Azure. Azure Virtual Machines podporuje nasazení virtuálních počítačů se systémem Windows nebo Linux v datovém centru Microsoft Azure. S Azure Virtual Machines máte celkovou kontrolu nad konfigurací virtuálních počítačů a zodpovídáte za veškerou instalaci, konfiguraci a údržbu softwaru.
 
-Při nasazení virtuálního počítače Azure, můžete vybrat image z Azure Marketplace, nebo je můžete zadat vlastní generalizované image. Tato image se používá k aplikování operačního systému a počáteční konfiguraci. Během nasazení bude Resource Manageru zpracovávat některá nastavení konfigurace, jako je například přiřazení názvu počítače, pověření pro správu a konfiguraci sítě. Rozšíření virtuálního počítače Azure můžete použít k automatizaci další konfigurace, jako je instalace softwaru, antivirové konfiguraci a monitorování řešení.
+Když nasazujete virtuální počítač Azure, můžete vybrat obrázek z Azure Marketplace, nebo můžete zadat vlastní zobecněnou bitovou kopii. Tato image se používá k aplikování operačního systému a počáteční konfigurace. Při nasazení Správce prostředků zpracuje některá nastavení konfigurace, jako je například přiřazení názvu počítače, pověření pro správu a konfigurace sítě. Rozšíření virtuálních počítačů Azure můžete použít k dalšímu automatizaci konfigurací, jako je instalace softwaru, konfigurace antivirového programu a řešení monitorování.
 
-Virtuální počítače můžete vytvořit mnoho různých velikostí. Velikost virtuálního počítače určuje přidělení prostředků, jako je zpracování, paměť a kapacitu úložiště. V některých případech jsou dostupné pouze určité velikosti virtuálních počítačů s konkrétní funkce, jako je RDMA povolené síťové adaptéry nebo disky SSD. Úplný seznam velikostí virtuálních počítačů a možnosti najdete v části "Velikosti virtuálních počítačů v Azure" pro [Windows](../../virtual-machines/windows/sizes.md) a [Linux](../../virtual-machines/linux/sizes.md).
+Virtuální počítače můžete vytvářet v mnoha různých velikostech. Velikost virtuálního počítače určuje přidělování prostředků, jako je například zpracování, paměť a kapacita úložiště. V některých případech jsou specifické funkce, jako jsou síťové adaptéry s podporou RDMA a disky SSD, dostupné jenom pro určité velikosti virtuálních počítačů. Úplný seznam velikostí a možností virtuálních počítačů najdete v tématu "velikosti pro virtuální počítače v Azure" pro [systémy Windows](../../virtual-machines/windows/sizes.md) a [Linux](../../virtual-machines/linux/sizes.md).
 
 ### <a name="use-cases"></a>Případy použití
 
-Protože virtuální počítače Azure nabízejí plnou kontrolu nad konfigurací, jsou ideální pro širokou škálu úloh serveru, které se nehodí do modelu PaaS. Jiné úlohy serveru jako jsou třeba servery databáze (SQL Server, Oracle nebo MongoDB), Windows Server Active Directory, Microsoft SharePoint a mnoha dalších stát možné spustit na platformě Microsoft Azure. V případě potřeby můžete tyto úlohy přesunout z místního datacentra do jedné nebo několika oblastech Azure, bez velké množství Rekonfigurace.
+Vzhledem k tomu, že virtuální počítače Azure nabízejí úplnou kontrolu nad konfigurací, jsou ideální pro celou řadu úloh serveru, které se nevejdou do modelu PaaS. Zatížení serveru, jako jsou databázové servery (SQL Server, Oracle nebo MongoDB), Windows Server Active Directory, Microsoft SharePoint a spousta dalších možností spuštění na Microsoft Azure platformě. V případě potřeby můžete přesunout takové úlohy z místního datacentra do jedné nebo víc oblastí Azure, aniž byste museli velkou velikost znovu nakonfigurovat.
 
 ### <a name="deployment-of-virtual-machines"></a>Nasazení virtuálních počítačů
 
-Virtuální počítače Azure můžete nasadit pomocí webu Azure portal, pomocí modulu Powershellu pro Azure automation nebo pomocí automatizace pomocí rozhraní příkazového řádku pro různé platformy.
+Virtuální počítače Azure můžete nasadit pomocí Azure Portal pomocí automatizace s modulem Azure PowerShell nebo pomocí automatizace s rozhraním příkazového řádku pro různé platformy.
 
 #### <a name="portal"></a>Portál
 
-Nasazení virtuálního počítače pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Můžete vybrat celou řadu imagí různých operačních systémů s různými konfiguracemi. Všechny požadavky na síť a úložiště jsou nakonfigurované během nasazení. Další informace viz "Vytvoření virtuálního počítače na webu Azure Portal" pro [Windows](../../virtual-machines/windows/quick-create-portal.md) a [Linux](../../virtual-machines/linux/quick-create-portal.md).
+Nasazení virtuálního počítače pomocí Azure Portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Můžete vybrat spoustu různých imagí operačního systému s různými konfiguracemi. Všechny požadavky na úložiště a síť jsou nakonfigurované během nasazování. Další informace najdete v části "Vytvoření virtuálního počítače v Azure Portal pro [systémy Windows](../../virtual-machines/windows/quick-create-portal.md) a [Linux](../../virtual-machines/linux/quick-create-portal.md).
 
-Kromě nasazení virtuálního počítače z portálu Azure portal, můžete nasadit šablonu Azure Resource Manageru z portálu. To nasadí a nakonfiguruje všechny prostředky, jak jsou definovány v šabloně. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a webu Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Kromě nasazení virtuálního počítače z Azure Portal můžete nasadit Azure Resource Manager šablonu z portálu. Tím se nasadí a nakonfigurují všechny prostředky, jak jsou definované v šabloně. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 #### <a name="powershell"></a>PowerShell
 
-Nasazení virtuálního počítače Azure s použitím prostředí PowerShell umožňuje automatizaci kompletního nasazení ve všech prostředcích související virtuálního počítače, včetně úložiště a sítě. Další informace najdete v tématu [vytvoření virtuálního počítače s Windows pomocí Resource Manageru a Powershellu](../../virtual-machines/windows/quick-create-powershell.md).
+Nasazení virtuálního počítače Azure pomocí prostředí PowerShell umožňuje kompletní automatizaci nasazení všech souvisejících prostředků virtuálních počítačů, včetně úložiště a sítě. Další informace najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí Správce prostředků a PowerShellu](../../virtual-machines/windows/quick-create-powershell.md).
 
-Kromě individuálně nasazení výpočetní prostředky Azure, můžete použít modul Azure PowerShell k nasazení šablony Azure Resource Manageru. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a prostředí Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
+Kromě nasazení výpočetních prostředků Azure můžete použít modul Azure PowerShell k nasazení Azure Resource Manager šablony. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
 
 #### <a name="command-line-interface-cli"></a>Rozhraní příkazového řádku (CLI)
 
-Stejně jako u modulu prostředí PowerShell, rozhraní příkazového řádku Azure poskytuje automatizaci nasazení a můžou používat v systémech Windows, OS X nebo Linux. Pokud používáte rozhraní příkazového řádku Azure **rychlé vytvoření virtuálního počítače** příkaz a všechny související prostředky virtuálního počítače (včetně úložiště a sítě) a celý virtuální počítač se nasadí. Další informace najdete v tématu [vytvoření virtuálního počítače s Linuxem v Azure pomocí rozhraní příkazového řádku](../../virtual-machines/linux/quick-create-cli.md).
+Stejně jako modul PowerShellu nabízí rozhraní příkazového řádku Azure automatizaci nasazení a dá se použít v systémech Windows, OS X a Linux. Když použijete příkaz pro **rychlé vytvoření virtuálního počítače** Azure CLI, nasadí se všechny související prostředky virtuálního počítače (včetně úložiště a sítě) a samotného virtuálního počítače. Další informace najdete v tématu [Vytvoření virtuálního počítače se systémem Linux v Azure pomocí rozhraní](../../virtual-machines/linux/quick-create-cli.md)příkazového řádku.
 
-Podobně můžete použít rozhraní příkazového řádku Azure k nasazení šablony Azure Resource Manageru. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md).
+Podobně můžete pomocí rozhraní příkazového řádku Azure nasadit šablonu Azure Resource Manager. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md).
 
 ### <a name="access-and-security-for-virtual-machines"></a>Přístup a zabezpečení pro virtuální počítače
 
-Přístup k virtuálnímu počítači z Internetu vyžaduje přidružená síťová rozhraní, nebo pokud je k dispozici, nakonfigurovat veřejnou IP adresu nástroje pro vyrovnávání zatížení. Veřejná IP adresa obsahuje název DNS, který se přeložit na virtuální počítač nebo nástroj pro vyrovnávání zatížení. Další informace najdete v tématu [IP adresách v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+Přístup k virtuálnímu počítači z Internetu vyžaduje přidružené síťové rozhraní nebo nástroj pro vyrovnávání zatížení, aby se nakonfigurovala veřejná IP adresa. Veřejná IP adresa zahrnuje název DNS, který se bude překládat na virtuální počítač nebo nástroj pro vyrovnávání zatížení. Další informace najdete v tématu [IP adresy v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
 
-Můžete spravovat přístup k virtuálnímu počítači přes veřejnou IP adresu pomocí síťového zabezpečení skupiny (NSG) prostředku. Skupina zabezpečení sítě funguje jako brána firewall a povoluje nebo odepírá provoz přes rozhraní sítě nebo podsítě na sadu definované porty. Například vytvořit relaci vzdálené plochy s Virtuálním počítači Azure, budete muset nakonfigurovat skupinu zabezpečení sítě, které povolí příchozí provoz na portu 3389. Další informace najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí webu Azure portal](../../virtual-machines/windows/nsg-quickstart-portal.md).
+Přístup k virtuálnímu počítači můžete spravovat přes veřejnou IP adresu pomocí prostředku skupiny zabezpečení sítě (NSG). NSG funguje jako brána firewall a povoluje nebo zakazuje provoz napříč síťovým rozhraním nebo podsítí na sadě definovaných portů. Pokud třeba chcete vytvořit relaci vzdálené plochy s virtuálním počítačem Azure, musíte nakonfigurovat NSG, aby povolovala příchozí provoz na portu 3389. Další informace najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí Azure Portal](../../virtual-machines/windows/nsg-quickstart-portal.md).
 
-A konečně stejně jako u správy všechny počítače, byste měli poskytnout zabezpečení pro virtuální počítač Azure na operační systém pomocí pověření zabezpečení a software brány firewall.
+Stejně jako u jakéhokoli počítačového systému byste měli zajistit zabezpečení pro virtuální počítač Azure v operačním systému pomocí zabezpečovacích přihlašovacích údajů a bran firewall softwaru.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Azure Storage je služba spravovaná Microsoftem, která poskytuje odolné, škálovatelné a redundantní úložiště. Účet úložiště Azure můžete přidat jako prostředek do libovolné skupiny prostředků pomocí libovolné metody nasazení prostředků. Azure obsahuje čtyři typy úložiště: Úložiště objektů BLOB, File Storage, Table storage a Queue storage. Při nasazení účtu úložiště, dva typy účtů jsou k dispozici, pro obecné účely a úložiště objektů blob. Účet úložiště pro obecné účely poskytuje přístup pro všechny čtyři typy úložiště. Účty úložiště BLOB jsou podobné účtům pro obecné účely, ale obsahovat specializované objekty BLOB, které zahrnují přístup horké a studené úrovně. Další informace o úložišti objektů blob najdete v tématu [úložiště objektů Blob v Azure](../../storage/blobs/storage-blob-storage-tiers.md).
+Azure Storage je služba spravovaná Microsoftem, která poskytuje trvalé, škálovatelné a redundantní úložiště. Účet služby Azure Storage můžete přidat jako prostředek do jakékoli skupiny prostředků pomocí libovolné metody nasazení prostředků. Azure zahrnuje čtyři typy úložišť: Úložiště objektů blob, File Storage, úložiště tabulek a Queue Storage. Při nasazování účtu úložiště jsou k dispozici dva typy účtů, obecné účely a BLOB Storage. Účet úložiště pro obecné účely vám umožní přístup ke všem čtyřem typům úložišť. Účty BLOB Storage jsou podobné účtům pro obecné účely, ale obsahují specializované objekty blob, které zahrnují horké a studené úrovně přístupu. Další informace o službě BLOB Storage najdete v tématu [úložiště objektů BLOB v Azure](../../storage/blobs/storage-blob-storage-tiers.md).
 
-Účty úložiště Azure můžete nakonfigurovat různé úrovně redundance:
+Účty Azure Storage je možné nakonfigurovat s různými úrovněmi redundance:
 
-- **Místně redundantní úložiště** poskytuje vysokou dostupnost díky zajištění, že tři kopie všech dat probíhají synchronně předtím, než se zápis se bude považovat za úspěšné. Tyto kopie jsou uloženy v jednoho zařízení v jedné oblasti. Repliky jsou umístěny v samostatných doménách selhání a upgradovacími doménami. To znamená, že data jsou k dispozici i v případě, že uzel úložiště, který drží vašich dat selže nebo je převedeno do režimu offline aktualizaci.
+- **Místně redundantní úložiště** poskytuje vysokou dostupnost tím, že zajišťuje synchronní dokončení tří kopií všech dat předtím, než se zápis považuje za úspěšný. Tyto kopie jsou uloženy v jednom zařízení v jedné oblasti. Repliky se nacházejí v samostatných doménách selhání a upgradovacích doménách. To znamená, že data jsou k dispozici i v případě, že uzel úložiště, který uchovává vaše data, není úspěšný nebo je offline aktualizován.
 
-- **Geograficky redundantní úložiště** vytvoří tři synchronních kopií dat v primární oblasti pro zajištění vysoké dostupnosti a potom asynchronně provádí tři repliky v spárované oblasti pro zotavení po havárii.
+- **Geograficky redundantní úložiště** zajišťuje pro vysokou dostupnost tři synchronní kopie dat v primární oblasti a pak asynchronně vytváří tři repliky v spárované oblasti pro zotavení po havárii.
 
-- **Geograficky redundantní úložiště jen pro čtení** je geograficky redundantní úložiště, a navíc schopnost číst data v sekundární oblasti. Tato možnost je vhodná k částečné zotavení po havárii. Pokud dojde k problému s primární oblastí, můžete změnit vaše aplikace měla přístup jen pro čtení pro spárované oblasti.
+- **Geograficky redundantní úložiště s přístupem pro čtení** je geograficky redundantní úložiště a možnost číst data v sekundární oblasti. Tato možnost je vhodná pro částečné zotavení po havárii. Pokud dojde k potížím s primární oblastí, můžete změnit aplikaci tak, aby měla přístup jen pro čtení k spárované oblasti.
 
 ### <a name="use-cases"></a>Případy použití
 
-Každý typ úložiště má případ použití v odlišných.
+Každý typ úložiště má jiný případ použití.
 
 #### <a name="blob-storage"></a>Blob Storage
 
-Slovo *blob* je zkratka pro *binární rozsáhlý objekt*. Objekty BLOB jsou nestrukturovaných soubory podobné těm, které ukládáte ve vašem počítači. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Blob storage se také nazývá úložiště objektů. Azure Blob storage taky obsahuje datové disky Azure Virtual Machines.
+*Objekt BLOB* Word je zkratka pro *binární rozsáhlý objekt*. Objekty blob jsou nestrukturované soubory, jako jsou ty, které ukládáte ve vašem počítači. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Blob storage se také nazývá úložiště objektů. Úložiště objektů BLOB v Azure taky obsahuje datové disky Azure Virtual Machines.
 
-Azure Storage podporuje tři typy objektů blob:
+Azure Storage podporuje tři druhy objektů BLOB:
 
-- **Objekty BLOB bloku** se používají k uložení obyčejných souborů až 195 GB velikosti (4 MB × 50 000 bloků). Případem primárního použití pro objekty BLOB bloku je úložiště souborů, které jsou čtení od začátku do konce, jako je například mediální soubory nebo soubory obrázků pro weby. Protože soubory větší než 64 MB musí být odeslán jako malé bloky jsou pojmenovány objekty BLOB bloku. Tyto bloky jsou pak konsolidovat (nebo potvrzené) do konečného objektu blob.
+- **Objekty blob bloku** se používají pro uchovávání běžných souborů o velikosti až 195 GB (4 MB × 50 000 bloků). Primárním případem použití objektů blob bloku je úložiště souborů, které jsou čteny od začátku do konce, například mediální soubory nebo soubory obrázků pro weby. Jsou pojmenované objekty blob bloku, protože soubory větší než 64 MB se musí nahrát jako malé bloky. Tyto bloky se pak konsolidují (nebo potvrdí) do konečného objektu BLOB.
 
-- **Objekty BLOB stránky** se používají k uložení náhodný přístup soubory ve velikosti až 1 TB. Objekty BLOB stránky se používají především jako záložní úložiště pro virtuální pevné disky, které poskytují trvalé disky pro virtuální počítače Azure, IaaS výpočetní služby v Azure. Objekty BLOB stránky jsou pojmenovány protože poskytují přístup k náhodné čtení a zápis na stránky o velikosti 512 bajtů.
+- **Objekty blob stránky** se používají k ukládání souborů s náhodným přístupem o velikosti až 1 TB. Objekty blob stránky se používají hlavně jako záložní úložiště pro virtuální pevné disky, které poskytují trvalé disky pro Azure Virtual Machines, výpočetní služby IaaS v Azure. Jsou pojmenované objekty blob stránky, protože poskytují náhodný přístup pro čtení a zápis až na 512 bajtů stránek.
 
-- **Doplňovací objekty BLOB** skládají z bloků, jako jsou objekty BLOB bloku, ale jsou optimalizované pro doplňovací operace. Často používají k protokolování informací z jednoho nebo více zdrojů do stejného objektu blob. Například můžete zapsat všechny vaše protokolování trasování do stejné doplňovací objekt blob pro aplikaci, která běží na několika virtuálních počítačů. Jeden doplňovací objekt blob může být až 195 GB.
+- **Doplňovací objekty blob** se skládají z bloků, jako jsou objekty blob bloku, ale jsou optimalizované pro operace připojení. Tyto informace se často používají k protokolování informací z jednoho nebo více zdrojů do stejného objektu BLOB. Můžete například zapsat všechna trasování protokolování do stejného doplňovací objektu BLOB pro aplikaci, která běží na více virtuálních počítačích. Jeden doplňovací objekt BLOB může mít až 195 GB.
 
-Další informace najdete v tématu [Začínáme s Azure Blob storage pomocí .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+Další informace najdete v tématu Začínáme [s úložištěm objektů BLOB v Azure pomocí .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
 #### <a name="file-storage"></a>File Storage
 
-Azure File storage je služba, která nabízí sdílené složky v cloudu s využitím standardního protokolu zprávy bloku SMB (Server). Služba podporuje SMB 2.1 i SMB 3.0. Se službou Azure File storage můžete migrovat aplikace, které spoléhají na sdílené složky Azure, rychle a bez nákladných přepisů. Aplikace běžící na virtuálních počítačích Azure, v cloudových službách nebo z místních klientů připojit sdílenou složku v cloudu. To se podobá jak desktopová aplikace připojí typickou sdílenou složku SMB. Potom může sdílenou složku File Storage připojit a používat libovolný počet aplikací.
+Azure File Storage je služba, která nabízí sdílené složky v cloudu pomocí standardního protokolu SMB (Server Message Block). Služba podporuje SMB 2,1 a SMB 3,0. Pomocí služby Azure File Storage můžete migrovat aplikace, které spoléhají na sdílené složky do Azure, rychle a bez nákladných přepisů. Aplikace běžící na virtuálních počítačích Azure, v cloudových službách nebo z místních klientů mohou připojit sdílení souborů v cloudu. To se podobá tomu, jak desktopová aplikace připojí typickou sdílenou složku SMB. Potom může sdílenou složku File Storage připojit a používat libovolný počet aplikací.
 
-Protože sdílená složka File storage je standardní sdílené složky SMB, aplikace běžící v Azure můžou k datům ve sdílené složce přistupovat přes rozhraní API vstupně-výstupních operací systému souborů. Vývojáři tedy můžete použít své dovednosti a znalosti kódu při migraci stávajících aplikací. IT specialisté můžou použít rutiny prostředí PowerShell k vytváření, připojování a správě sdílených složek File storage v rámci správy aplikací Azure.
+Vzhledem k tomu, že sdílená složka úložiště je standardní sdílená složka SMB, aplikace běžící v Azure mají přístup k datům ve sdílené složce přes rozhraní API v/v systému souborů. Vývojáři proto můžou použít svůj existující kód a dovednosti k migraci stávajících aplikací. IT specialisté můžou použít rutiny prostředí PowerShell k vytváření, připojování a správě sdílených složek úložiště souborů v rámci správy aplikací Azure.
 
-Další informace najdete v tématu [Začínáme s Azure File storage ve Windows](../../storage/files/storage-how-to-use-files-windows.md) nebo [postupy používání Azure File storage s Linuxem](../../storage/files/storage-how-to-use-files-linux.md).
+Další informace najdete v tématu Začínáme [se službou Azure File Storage ve Windows](../../storage/files/storage-how-to-use-files-windows.md) nebo [používání služby Azure File Storage se systémem Linux](../../storage/files/storage-how-to-use-files-linux.md).
 
-#### <a name="table-storage"></a>Úložiště Table
+#### <a name="table-storage"></a>Úložiště tabulek
 
-Azure Table Storage je služba, která ukládá strukturovaná data typu NoSQL v cloudu. Úložiště Table je úložiště klíčů/atributů s návrhem bez schématu. Table storage je bez schématu, je snadné data přizpůsobovat měnícím potřebám vaší aplikace. Přístup k datům je rychlý a cenově výhodný pro všechny typy aplikací. Využívání úložiště Table Storage obvykle znamená výrazně nižší náklady než tradiční SQL pro podobné objemy dat.
+Azure Table Storage je služba, která ukládá strukturovaná data typu NoSQL v cloudu. Table Storage je úložiště klíčů/atributů s návrhem bez schématu. Vzhledem k tomu, že je tabulka úložiště bez schématu, je snadné přizpůsobit data, jak se vyvíjí vaše aplikace. Přístup k datům je rychlý a cenově výhodný pro všechny typy aplikací. Využívání úložiště Table Storage obvykle znamená výrazně nižší náklady než tradiční SQL pro podobné objemy dat.
 
-Úložiště Table Storage můžete používat k ukládání flexibilních datových sad, například uživatelských dat pro webové aplikace, adresářů, informací o zařízení a dalších typů metadat, které vaše služba vyžaduje. V tabulce můžete uložit libovolný počet entit. Účet úložiště může obsahovat libovolný počet tabulek, až do limitu kapacity účtu úložiště.
+Úložiště Table Storage můžete používat k ukládání flexibilních datových sad, například uživatelských dat pro webové aplikace, adresářů, informací o zařízení a dalších typů metadat, které vaše služba vyžaduje. V tabulce můžete uložit libovolný počet entit. Účet úložiště může obsahovat libovolný počet tabulek až do limitu kapacity účtu úložiště.
 
-Další informace najdete v tématu [Začínáme s Azure Table storage](../../cosmos-db/table-storage-how-to-use-dotnet.md).
+Další informace najdete v tématu [Začínáme s úložištěm Azure Table](../../cosmos-db/table-storage-how-to-use-dotnet.md).
 
 #### <a name="queue-storage"></a>Queue Storage
 
-Úložiště Azure Queue zajišťuje cloudový přenos zpráv mezi součástmi aplikace. Při navrhování aplikací pro škálování, součásti aplikací často oddělené, aby se mohly škálovat nezávisle. Queue Storage zajišťuje asynchronní přenos zpráv pro komunikaci mezi součástmi aplikace bez ohledu na to, jestli běží v cloudu, na desktopu, na místním serveru nebo na mobilním zařízení. Queue Storage také podporuje správu asynchronních úloh a pracovní postupy procesů sestavování buildů.
+Úložiště Azure Queue zajišťuje cloudový přenos zpráv mezi součástmi aplikace. Při navrhování aplikací pro škálování jsou součásti aplikace často odděleny, takže je lze škálovat nezávisle. Queue Storage zajišťuje asynchronní přenos zpráv pro komunikaci mezi součástmi aplikace bez ohledu na to, jestli běží v cloudu, na desktopu, na místním serveru nebo na mobilním zařízení. Queue Storage také podporuje správu asynchronních úloh a pracovní postupy procesů sestavování buildů.
 
-Další informace najdete v tématu [Začínáme s Azure Queue storage](../../storage/queues/storage-dotnet-how-to-use-queues.md).
+Další informace najdete v tématu [Začínáme s úložištěm Azure Queue](../../storage/queues/storage-dotnet-how-to-use-queues.md).
 
 ### <a name="deploying-a-storage-account"></a>Nasazení účtu úložiště
 
-Existuje několik možností pro nasazení účtu úložiště.
+K dispozici je několik možností nasazení účtu úložiště.
 
 #### <a name="portal"></a>Portál
 
-Nasazení účtu úložiště pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nový účet úložiště můžete nasadit do skupiny nové nebo existující prostředek. Po vytvoření účtu úložiště, můžete vytvořit objektů blob v kontejneru nebo ve sdílené složce pomocí portálu. Můžete vytvářet tabulky a fronty úložiště entity prostřednictvím kódu programu. Další informace najdete v článku o [vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md).
+Nasazení účtu úložiště pomocí Azure Portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nový účet úložiště můžete nasadit do nové nebo existující skupiny prostředků. Po vytvoření účtu úložiště můžete vytvořit kontejner objektů BLOB nebo sdílení souborů pomocí portálu. Entity úložiště tabulky a fronty můžete vytvářet programově. Další informace najdete v článku o [vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md).
 
-Kromě nasazení účtu úložiště na webu Azure Portal, můžete nasadit šablonu Azure Resource Manageru z portálu. To nasadí a nakonfiguruje všechny prostředky, jak jsou definovány v šabloně, včetně účtů úložiště. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a webu Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Kromě nasazení účtu úložiště z Azure Portal můžete nasadit Azure Resource Manager šablonu z portálu. Tím se nasadí a nakonfigurují všechny prostředky, jak jsou definované v šabloně, včetně všech účtů úložiště. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 #### <a name="powershell"></a>PowerShell
 
-Nasazení účtu služby Azure storage s použitím prostředí PowerShell umožňuje automatizaci kompletního nasazení účtu úložiště. Další informace najdete v tématu [pomocí Azure Powershellu s Azure Storage](../../storage/common/storage-powershell-guide-full.md).
+Nasazení účtu Azure Storage pomocí prostředí PowerShell umožňuje kompletní automatizaci nasazení účtu úložiště. Další informace najdete v tématu [použití Azure PowerShell s Azure Storage](../../storage/common/storage-powershell-guide-full.md).
 
-Kromě individuálně nasazení prostředků Azure, můžete použít modul Azure PowerShell k nasazení šablony Azure Resource Manageru. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a prostředí Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
+Kromě nasazení prostředků Azure můžete použít modul Azure PowerShell k nasazení Azure Resource Manager šablony. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
 
 #### <a name="command-line-interface-cli"></a>Rozhraní příkazového řádku (CLI)
 
-Stejně jako u modulu prostředí PowerShell, rozhraní příkazového řádku Azure poskytuje automatizaci nasazení a můžou používat v systémech Windows, OS X nebo Linux. Můžete použít rozhraní příkazového řádku Azure **vytvořit účet úložiště** příkaz k vytvoření účtu úložiště. Další informace najdete v tématu [pomocí Azure CLI s Azure Storage.](../../storage/common/storage-azure-cli.md)
+Stejně jako modul PowerShellu nabízí rozhraní příkazového řádku Azure automatizaci nasazení a dá se použít v systémech Windows, OS X a Linux. K vytvoření účtu úložiště můžete použít příkaz **vytvořit účet úložiště** Azure CLI. Další informace najdete v tématu [použití rozhraní příkazového řádku Azure s Azure Storage.](../../storage/common/storage-azure-cli.md)
 
-Podobně můžete použít rozhraní příkazového řádku Azure k nasazení šablony Azure Resource Manageru. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../resource-group-template-deploy-cli.md).
+Podobně můžete pomocí rozhraní příkazového řádku Azure nasadit šablonu Azure Resource Manager. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../resource-group-template-deploy-cli.md).
 
-### <a name="access-and-security-for-azure-storage"></a>Přístup a zabezpečení pro službu Azure Storage
+### <a name="access-and-security-for-azure-storage"></a>Přístup a zabezpečení pro Azure Storage
 
-Úložiště Azure přistupuje různými způsoby, včetně i když na webu Azure portal, při vytváření virtuálního počítače a operaci a z klientských knihoven pro úložiště.
+K Azure Storage dochází různými způsoby, včetně Azure Portal i když během vytváření a operace virtuálních počítačů a z klientských knihoven úložiště.
 
 #### <a name="virtual-machine-disks"></a>Disky virtuálních počítačů
 
-Když nasazujete virtuální počítač, musíte také vytvořit účet úložiště pro uložení disku s operačním systémem virtuálního počítače a všechny další datové disky. Můžete vybrat existující účet úložiště nebo vytvořte novou. Vzhledem k tomu, že 1 024 GB je maximální velikost objektu blob, jeden virtuální počítač disk má maximální velikost 1,023 GB. Ke konfiguraci větší datový disk, můžete k dispozici více datových disků k virtuálnímu počítači a fondu je společně jako jednu logického disku. Další informace najdete v části "Správa disků v Azure" pro [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) a [Linux](../../virtual-machines/linux/tutorial-manage-disks.md).
+Pokud nasazujete virtuální počítač, budete muset také vytvořit účet úložiště, který bude uchovávat disk s operačním systémem virtuálního počítače a všechny další datové disky. Můžete vybrat existující účet úložiště nebo vytvořit nový. Vzhledem k tomu, že maximální velikost objektu BLOB je 1 024 GB, má jeden disk virtuálního počítače maximální velikost 1 023 GB. Pokud chcete nakonfigurovat větší datový disk, můžete k virtuálnímu počítači prezentovat více datových disků a seskupovat je jako jeden logický disk. Další informace najdete v tématu Správa disků Azure pro [systémy Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) a [Linux](../../virtual-machines/linux/tutorial-manage-disks.md).
 
-#### <a name="storage-tools"></a>Nástroje pro úložiště
+#### <a name="storage-tools"></a>Nástroje úložiště
 
-Účty úložiště Azure přistupuje prostřednictvím mnoha průzkumníci jiného úložiště, jako je například Visual Studio Cloud Explorer. Tyto nástroje umožňují procházet účty úložiště a data. Další informace a seznam průzkumníci úložiště k dispozici, najdete v části [klientské nástroje pro Azure Storage](../../storage/common/storage-explorers.md).
+K účtům Azure Storage se dá dostat prostřednictvím mnoha různých Průzkumníka úložišť, jako je Visual Studio Cloud Explorer. Tyto nástroje umožňují procházení účtů a dat úložiště. Další informace a seznam dostupných Průzkumníka úložišť najdete v tématu [Azure Storage nástrojů klienta](../../storage/common/storage-explorers.md).
 
-#### <a name="storage-api"></a>API služby Storage
+#### <a name="storage-api"></a>Rozhraní API pro úložiště
 
-Úložiště prostředků je možný v jakémkoliv jazyce, který umí vytvářet požadavky HTTP/HTTPS. Azure Storage dále nabízí programovací knihovny pro několik oblíbených jazyků. Tyto knihovny zjednodušují práci s Azure Storage pomocí drobnosti jako synchronní a asynchronní vyvolání, dávkování operací, řízení výjimek a automatické opakování pokusů. Další informace najdete v tématu [odkaz na rozhraní REST API pro službu Azure Storage](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
+Prostředky úložiště jsou dostupné v jakémkoli jazyce, který může dělat požadavky HTTP/HTTPS. Azure Storage dále nabízí programovací knihovny pro několik oblíbených jazyků. Tyto knihovny usnadňují práci s Azure Storage tím, že zpracovávají podrobnosti jako synchronní a asynchronní vyvolání, dávkování operací, správu výjimek a automatické opakování. Další informace najdete v tématu informace o [REST API Azure Storage služby](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
 
 #### <a name="storage-access-keys"></a>Přístupové klíče k úložišti
 
-Každý účet úložiště má dva ověřovací klíče, primární a sekundární lokalitou. Buď je možné pro operací přístupu k úložišti. Tyto klíče úložiště se používají k zabezpečení účtu úložiště a jsou požadovány pro programový přístup k datům. Existují dva klíče, abyste povolili občasné výměny klíčů pro zvýšení zabezpečení. Je důležité k lepšímu zabezpečení klíče, protože jejich vlastnictví spolu s názvem účtu umožňuje neomezený přístup k žádným datům v účtu úložiště.
+Každý účet úložiště má dva ověřovací klíče, primární a sekundární. Jednu z nich je možné použít pro operace přístupu k úložišti. Tyto klíče úložiště slouží k lepšímu zabezpečení účtu úložiště a jsou vyžadovány pro programové přistupování k datům. Existují dva klíče, které umožňují příležitostné výměny klíčů pro zvýšení zabezpečení. Je důležité zachovat zabezpečení klíčů, protože jejich vlastnictví, společně s názvem účtu, umožňuje neomezený přístup k žádným datům v účtu úložiště.
 
 #### <a name="shared-access-signatures"></a>Sdílené přístupové podpisy
 
-Pokud je potřeba povolit uživatelům mít řízený přístup ke svým prostředkům úložiště, můžete vytvořit sdílený přístupový podpis. Sdílený přístupový podpis je token, který lze připojit k URL a který umožní Delegovaný přístup k prostředku úložiště. Každý, kdo má token, který může přistupovat k prostředku, který odkazuje na s oprávněními, určuje, pro časový interval, že je platný. Další informace najdete v tématu [použití sdílených přístupových podpisů](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Pokud potřebujete, aby mohli uživatelé řídit přístup k prostředkům úložiště, můžete vytvořit sdílený přístupový podpis. Sdílený přístupový podpis je token, který se dá připojit k adrese URL, která umožňuje delegovaný přístup k prostředku úložiště. Každý, kdo má token, má přístup k prostředku, na který odkazuje, s oprávněními, která určuje, po dobu, po kterou je platný. Další informace najdete v tématu [použití sdílených přístupových podpisů](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 
-Virtuální sítě jsou nezbytné pro podporu komunikace mezi virtuálními počítači. Můžete definovat podsítě, vlastní IP adresu, nastavení DNS, zabezpečení, filtrování a vyrovnávání zatížení. Azure podporuje různá použití případů: čistě cloudové sítě nebo hybridní virtuální sítě.
+Virtuální sítě jsou nezbytné k podpoře komunikace mezi virtuálními počítači. Můžete definovat podsítě, vlastní IP adresu, nastavení DNS, filtrování zabezpečení a vyrovnávání zatížení. Azure podporuje různé případy použití: jenom pro cloudové sítě nebo hybridních virtuálních sítí.
 
-### <a name="cloud-only-virtual-networks"></a>Výhradně cloudový virtuální sítě
+### <a name="cloud-only-virtual-networks"></a>Jenom cloudové virtuální sítě
 
-Virtuální síť Azure, ve výchozím nastavení, budou přístupné jenom pro prostředky uložené v Azure. Prostředky, které jsou připojeny ke stejné virtuální síti komunikovat mezi sebou. Můžete přidružit síťových rozhraní virtuálního počítače a služby s veřejnou IP adresu virtuálního počítače zpřístupnit přes Internet Vyrovnávání zatížení. Pomocí skupiny zabezpečení sítě můžete líp zabezpečit přístup do veřejně vystavené prostředky.
+Služba Azure Virtual Network je ve výchozím nastavení dostupná jenom pro prostředky uložené v Azure. Prostředky připojené ke stejné virtuální síti můžou vzájemně komunikovat. K zpřístupnění virtuálního počítače přes Internet můžete přidružit síťová rozhraní virtuálního počítače a nástroje pro vyrovnávání zatížení s veřejnou IP adresou. Zabezpečený přístup k veřejně vystaveným prostředkům můžete zvýšit pomocí skupiny zabezpečení sítě.
 
-![Azure Virtual Network úrovně 2 webové aplikace](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
+![Azure Virtual Network pro webovou aplikaci ve dvou vrstvách](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
 
 ### <a name="hybrid-virtual-networks"></a>Hybridní virtuální sítě
 
-Místní sítě můžete připojit ke službě Azure virtual network s využitím ExpressRoute nebo připojení site-to-site VPN. V této konfiguraci virtuální sítě Azure je v podstatě založené na cloudu rozšíření místní sítě.
-![Hybridní virtuální síti pomocí sítě VPN](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
+Místní síť můžete připojit k virtuální síti Azure pomocí ExpressRoute nebo připojení VPN typu Site-to-site. V této konfiguraci je virtuální síť Azure v podstatě cloudové rozšíření vaší místní sítě.
+![Hybridní Virtual Network pomocí sítě VPN](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
 
-Vzhledem k tomu, že virtuální síť Azure je připojený k vaší místní síti, mezi různými místy, že virtuální sítě musíte použít jedinečný části adresního prostoru, který vaše organizace používá. Stejným způsobem, který různých sídlech jsou přiřazeny konkrétní podsíť protokolu IP Azure stane jinam, jak můžete svoji síť rozšířit.
-Existuje několik možností pro nasazení virtuální sítě.
+Vzhledem k tomu, že je virtuální síť Azure připojená k vaší místní síti, musí virtuální sítě mezi různými místy používat jedinečnou část adresního prostoru, který vaše organizace používá. Podobně jako u různých podnikových umístění je přiřazena konkrétní podsíť protokolu IP, Azure se v rámci rozšiřování sítě bude lišit od jiného umístění.
+Existuje několik možností, jak nasadit virtuální síť.
 
 - [Azure Portal](../..//virtual-network/quick-create-portal.md)
 
@@ -479,17 +479,17 @@ Existuje několik možností pro nasazení virtuální sítě.
 
 - [Rozhraní příkazového řádku (CLI)](../../virtual-network/quick-create-cli.md)
 
-- Šablony Azure Resource Manageru
+- Šablony Azure Resource Manager
 
-> **Kdy použít**: Když pracujete s virtuálními počítači v Azure, budete pracovat s virtuálními sítěmi. To umožňuje segmentace vašich virtuálních počítačů do podsítí veřejných a privátních podobné místních datových centrech.
+> **Kdy použít**: Kdykoli pracujete s virtuálními počítači v Azure, budete pracovat s virtuálními sítěmi. To umožňuje segmentovat vaše virtuální počítače do veřejných nebo privátních podsítí podobných v místních datových centrech.
 > 
-> **Začínáme**: Nasazení služby Azure virtual network pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nové virtuální sítě můžete nasadit do skupiny nové nebo existující prostředek. Při vytváření nového virtuálního počítače z portálu, můžete vybrat existující virtuální síť nebo vytvořte novou. Začínáme a [vytvořit virtuální síť pomocí webu Azure portal](../../virtual-network/quick-create-portal.md).
+> **Začínáme**: Nasazení služby Azure Virtual Network pomocí Azure Portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Novou virtuální síť můžete nasadit do nové nebo existující skupiny prostředků. Když vytváříte nový virtuální počítač z portálu, můžete vybrat existující virtuální síť nebo vytvořit novou. Začněte a [vytvořte virtuální síť pomocí Azure Portal](../../virtual-network/quick-create-portal.md).
 
 ### <a name="access-and-security-for-virtual-networks"></a>Přístup a zabezpečení pro virtuální sítě
 
-Zabezpečení virtuální sítě Azure může pomoct s použitím skupiny zabezpečení sítě. Skupiny Nsg obsahují seznam pravidel seznamu ACL řízení přístupu, která povolují nebo odpírají síťový provoz do vašich instancí virtuálních počítačů ve virtuální síti. Skupiny Nsg můžete přidružit podsítě nebo jednotlivých instancí virtuálních počítačů v této podsíti. Pokud přidružíte skupinu NSG k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti. Kromě toho můžete dále omezit provoz do konkrétního virtuálního počítače tím, že přidružíte skupinu NSG přímo se tento virtuální počítač. Další informace najdete v tématu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../../virtual-network/security-overview.md).
+Pomocí skupiny zabezpečení sítě můžete přispět k zabezpečení virtuálních sítí Azure. Skupin zabezpečení sítě obsahují seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo zakazují síťové přenosy do instancí virtuálních počítačů ve virtuální síti. V rámci této podsítě můžete přidružit skupin zabezpečení sítě buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů. Když přidružíte NSG k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v dané podsíti. Kromě toho můžete dál omezit provoz na jednotlivé virtuální počítače tím, že přidružíte NSG přímo k tomuto virtuálnímu počítači. Další informace viz [Filtrování provozu sítě s použitím skupin zabezpečení sít](../../virtual-network/security-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vytvoření virtuálního počítače Windows](../../virtual-machines/windows/quick-create-portal.md)
+- [Vytvoření virtuálního počítače s Windows](../../virtual-machines/windows/quick-create-portal.md)
 - [Vytvoření virtuálního počítače s Linuxem](../../virtual-machines/linux/quick-create-portal.md)

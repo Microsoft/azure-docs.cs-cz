@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Gremlin API s využitím Pythonu – Azure Cosmos DB'
+title: 'Rychlý start: Rozhraní API Gremlin pomocí Pythonu – Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní Azure Cosmos DB Gremlin API k vytvoření aplikace pomocí portálu Azure a jazyka Python.
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: 18f54e64498c7809e662ceb71d1e497a0f275ad6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 545f679b11295485567a817d144225b361a262ce
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480448"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815228"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Rychlý start: Vytvořit databázi grafu ve službě Azure Cosmos DB pomocí Pythonu a webu Azure portal
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Rychlý start: Vytvoření databáze grafů v Azure Cosmos DB pomocí Pythonu a Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Konzola Gremlin](create-graph-gremlin-console.md)
@@ -173,13 +173,13 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>Kontrola a přidání ukázkových dat
 
-Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané do grafu a přidat další datové body.
+Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobrazit vrcholy přidané do grafu a přidat další datové body.
 
 1. Klikněte na **Průzkumník dat**, rozbalte **sample-graph**, klikněte na **Graf** a potom klikněte na **Použít filtr**. 
 
    ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
 
-2. V seznamu **Výsledky** si všimněte nových uživatelů přidaných do grafu. Vyberte **ben** a Všimněte si, že jste připojení k dotazování. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
+2. V seznamu **výsledků** si všimněte, že se do grafu přidávají tři noví uživatelé. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
 
    ![Nové vrcholy v grafu v Průzkumníku dat na webu Azure Portal](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
 
@@ -193,6 +193,7 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
     key|hodnota|Poznámky
     ----|----|----
+    PK|/pk| 
     id|ashley|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
     gender (pohlaví)|female (žena)| 
     tech (technologie) | java | 
@@ -210,6 +211,7 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
     key|hodnota|Poznámky
     ----|----|----
+    PK|/pk| 
     id|rakesh|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
     gender (pohlaví)|male (muž)| 
     school (škola)|MIT| 

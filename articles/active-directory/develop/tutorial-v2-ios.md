@@ -3,7 +3,7 @@ title: Začínáme s iOS – Microsoft Identity Platform | Azure
 description: Jak aplikace iOS (SWIFT) můžou volat rozhraní API, které vyžaduje přístupové tokeny pomocí platformy Microsoft Identity Platform
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: tylermsft
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f22cf95fcf13f0038525b2cac282f01959fa7eb6
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 2432d35964134f240904060d2e3c9212905e0394
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335536"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823843"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-app"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph z aplikace pro iOS.
 
@@ -58,7 +58,7 @@ V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kur
 4. Nastavte **jazyk** na **SWIFT** a vyberte **Další**.
 5. Vyberte složku pro vytvoření aplikace a klikněte na **vytvořit**.
 
-## <a name="register-your-application"></a>Registrace vaší aplikace
+## <a name="register-your-application"></a>Zaregistrujte svoji aplikaci.
 
 1. Přejděte na web [Azure Portal](https://aka.ms/MobileAppReg).
 2. Otevřete okno [Registrace aplikací](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) a klikněte na **+ Nová registrace**.

@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0abeb3235f296e2dc873bcfe88910cdd12555d71
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a5ba45fce2870b44a6ebb1be43cc1f36b3cda311
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476217"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815160"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Správa účtu služby Azure Cosmos DB
 
-Tento článek popisuje, jak spravovat různé úlohy na účtu služby Azure Cosmos pomocí webu Azure portal, prostředí Azure PowerShell, Azure CLI a šablon Azure Resource Manageru.
+Tento článek popisuje, jak spravovat různé úlohy v účtu Azure Cosmos pomocí Azure Portal, Azure PowerShell, Azure CLI a šablon Azure Resource Manager.
 
-## <a name="create-an-account"></a>Vytvoření účtu
+## <a name="create-an-account"></a>Vytvořit účet
 
 ### <a id="create-database-account-via-portal"></a>Azure Portal
 
@@ -28,7 +28,7 @@ Tento článek popisuje, jak spravovat různé úlohy na účtu služby Azure Co
 ```azurecli-interactive
 # Create an account
 $resourceGroupName = 'myResourceGroup'
-$accountName = 'myaccountname' # must be lower case.
+$accountName = 'myaccountname' # must be lower case and < 31 characters
 
 az cosmosdb create \
    --name $accountName \
@@ -45,7 +45,7 @@ az cosmosdb create \
 # Create an Azure Cosmos account for Core (SQL) API
 $resourceGroupName = "myResourceGroup"
 $location = "West US"
-$accountName = "mycosmosaccount" # must be lower case.
+$accountName = "mycosmosaccount" # must be lower case and < 31 characters
 
 $locations = @(
     @{ "locationName"="West US"; "failoverPriority"=0 },
@@ -70,9 +70,9 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-### <a id="create-database-account-via-arm-template"></a>Šablona Azure Resource Manageru
+### <a id="create-database-account-via-arm-template"></a>Šablona Azure Resource Manager
 
-Tuto šablonu Azure Resource Manageru se vytvoření účtu služby Azure Cosmos pro všechny podporované rozhraní API nakonfigurovat dvě oblasti a v možnostech úrovně konzistence, automatické převzetí služeb při selhání a více hlavních databází. Chcete-li nasadit tuto šablonu, klikněte na nasadit do Azure na stránce readme [účet služby Azure Cosmos vytvářet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account)
+Tato šablona Azure Resource Manager vytvoří účet Azure Cosmos pro všechna podporovaná rozhraní API nakonfigurovaná se dvěma oblastmi a možnostmi výběru úrovně konzistence, automatického převzetí služeb při selhání a více hlavních serverů. Pokud chcete tuto šablonu nasadit, klikněte na stránce Readme na nasadit do Azure a [vytvořte účet Azure Cosmos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account) .
 
 ## <a name="addremove-regions-from-your-database-account"></a>Přidání oblastí do účtu databáze nebo jejich odebrání
 
@@ -80,25 +80,25 @@ Tuto šablonu Azure Resource Manageru se vytvoření účtu služby Azure Cosmos
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
 
-1. Přejděte ke svému účtu Azure Cosmos a otevřete **globální replikace dat** nabídky.
+1. Přejděte k účtu Azure Cosmos a otevřete nabídku replikovat **data globálně** .
 
-1. Přidat oblasti, vyberte Šestiúhelníky na mapě s **+** popisek, který odpovídá požadované oblasti. Můžete také přidat oblast, vyberte **+ přidat oblast** a z rozevírací nabídky vyberte oblast.
+1. Chcete-li přidat oblasti, vyberte šestiúhelníky na mapě pomocí **+** popisku, který odpovídá vašim požadovaným oblastem (y). Pokud chcete přidat oblast, vyberte možnost **+ Přidat oblast** a v rozevírací nabídce vyberte oblast.
 
-1. Pokud chcete odebrat oblasti, zrušte tak, že vyberete modré Šestiúhelníky se zaškrtnutím jedné nebo několika oblastech z mapy. Nebo vyberte "Koš" (🗑) ikonu vedle oblast na pravé straně.
+1. Chcete-li odebrat oblasti, zrušte zaškrtnutí jedné nebo více oblastí z mapy tak, že vyberete modré šestiúhelníky se značkami zaškrtnutí. Nebo vyberte ikonu "wastebasket" (🗑) vedle oblasti na pravé straně.
 
-1. Chcete-li uložit změny, vyberte **OK**.
+1. Pokud chcete změny uložit, vyberte **OK**.
 
-   ![Přidání nebo odebrání oblastí nabídky](./media/how-to-manage-database-account/add-region.png)
+   ![Nabídka Přidat nebo odebrat oblasti](./media/how-to-manage-database-account/add-region.png)
 
-V jedné oblasti zápisu režimu, že nelze odebrat oblasti pro zápis. Musíte převzetí služeb při selhání do jiné oblasti než budete moct odstranit aktuální oblasti pro zápis.
+V režimu zápisu s jednou oblastí nemůžete odebrat oblast zápisu. Než budete moct odstranit aktuální oblast pro zápis, musíte převzít služby při selhání do jiné oblasti.
 
-Ve více oblastech režimu, můžete přidat nebo odebrat libovolnou oblast, pokud máte alespoň jedné oblasti zápisu.
+V režimu zápisu ve více oblastech můžete přidat nebo odebrat libovolnou oblast, pokud máte aspoň jednu oblast.
 
 ### <a id="add-remove-regions-via-cli"></a>Azure CLI
 
 ```azurecli-interactive
 $resourceGroupName = 'myResourceGroup'
-$accountName = 'myaccountname'
+$accountName = 'myaccountname' # must be lower case and <31 characters
 
 # Create an account with 1 region
 az cosmosdb create --name $accountName --resource-group $resourceGroupName --locations regionName=westus failoverPriority=0 isZoneRedundant=False
@@ -116,7 +116,7 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName --loc
 # Create an account with 1 region
 $resourceGroupName = "myResourceGroup"
 $location = "West US"
-$accountName = "mycosmosaccount" # must be lower case.
+$accountName = "mycosmosaccount" # must be lower case and <31 characters
 
 $locations = @( @{ "locationName"="West US"; "failoverPriority"=0 } )
 $consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
@@ -162,18 +162,18 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-## <a id="configure-multiple-write-regions"></a>Konfigurace více oblastí zápisu
+## <a id="configure-multiple-write-regions"></a>Konfigurace více oblastí pro zápis
 
 ### <a id="configure-multiple-write-regions-portal"></a>Azure Portal
 
-Otevřít **replikovat Data globálně** kartě a vyberte **povolit** povolit více oblastí zápisu. Po povolení více oblastí zápisu všech oblastí čtení, které máte aktuálně na účtu se stanou čtení a zápis oblastech. 
+Otevřete kartu **replikace dat globálně** a výběrem **Povolit** povolte zápisy ve více oblastech. Po povolení zápisů ve více oblastech se všechny oblasti čtení, které v daném účtu aktuálně máte, stanou oblastmi pro čtení a zápis. 
 
 > [!NOTE]
-> Po povolení více oblastí zápisu se nedá vypnout. 
+> Když povolíte zápis ve více oblastech, nemůžete ho zakázat. 
 
-![Účet služby Azure Cosmos nakonfiguruje snímek obrazovky s několika hlavními databázemi](./media/how-to-manage-database-account/single-to-multi-master.png)
+![Účet Azure Cosmos konfiguruje snímek s více hlavními servery.](./media/how-to-manage-database-account/single-to-multi-master.png)
 
-Kontaktujte prosím askcosmosdb@microsoft.com alias další dotazy týkající se této funkce. 
+Pokud chcete získat další otázky askcosmosdb@microsoft.com k této funkci, obraťte se na tento alias. 
 
 ### <a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
@@ -201,7 +201,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="configure-multiple-write-regions-arm"></a>Šablona Resource Manageru
 
-Účet můžete migrovat z jednoho hlavní větve do více hlavních databází nasazením šablona Resource Manageru použitá k vytvoření účtu a nastavení `enableMultipleWriteLocations: true`. Následující šablony Azure Resource Manageru je úplné minimální šablonu, která nasadí účet Azure Cosmos pro rozhraní SQL API s jedné oblasti a více hlavních databází povolena.
+Účet lze migrovat z jednoho hlavního serveru do více hlavních serverů nasazením šablony Správce prostředků používané k vytvoření účtu a nastavení `enableMultipleWriteLocations: true`. Následující šablona Azure Resource Manager je minimální šablona, která nasadí účet Azure Cosmos pro rozhraní SQL API se dvěma oblastmi a více umístěními pro zápis povolených.
 
 ```json
 {
@@ -214,6 +214,18 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
         "location": {
             "type": "String",
             "defaultValue": "[resourceGroup().location]"
+        },
+        "primaryRegion":{
+            "type":"string",
+            "metadata": {
+                "description": "The primary replica region for the Cosmos DB account."
+            }
+        },
+        "secondaryRegion":{
+            "type":"string",
+            "metadata": {
+              "description": "The secondary replica region for the Cosmos DB account."
+          }
         }
     },
     "resources": [
@@ -227,10 +239,15 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
             "properties": {
                 "databaseAccountOfferType": "Standard",
                 "consistencyPolicy": { "defaultConsistencyLevel": "Session" },
-                "locations": [
+                "locations":
+                [
                     {
-                        "locationName": "[parameters('location')]",
+                        "locationName": "[parameters('primaryRegion')]",
                         "failoverPriority": 0
+                    },
+                    {
+                        "locationName": "[parameters('secondaryRegion')]",
+                        "failoverPriority": 1
                     }
                 ],
                 "enableMultipleWriteLocations": true
@@ -240,19 +257,19 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 }
 ```
 
-## <a id="automatic-failover"></a>Povolit automatické převzetí služeb při selhání pro váš účet Azure Cosmos
+## <a id="automatic-failover"></a>Povolení automatického převzetí služeb při selhání pro účet Azure Cosmos
 
-Možnost automatického převzetí služeb při selhání umožňuje službě Azure Cosmos DB převzetí služeb při selhání do oblasti s nejvyšší prioritou převzetí služeb při selhání se žádné akce uživatele by měla oblast k dispozici. Pokud je povoleno automatické převzetí služeb při selhání, může být upraveno priority oblasti. Účet musí mít dva nebo více oblastí, které chcete povolit automatické převzetí služeb při selhání.
+Možnost automatického převzetí služeb při selhání umožňuje Azure Cosmos DB převzetí služeb při selhání do oblasti s nejvyšší prioritou převzetí služeb při selhání bez akce uživatele, pokud se oblast stane nedostupnou. Když je povolené automatické převzetí služeb při selhání, může se upravit priorita oblasti. Aby bylo možné povolit automatické převzetí služeb při selhání, musí mít účet dvě nebo více oblastí.
 
 ### <a id="enable-automatic-failover-via-portal"></a>Azure Portal
 
-1. Ze svého účtu Azure Cosmos, otevřete **globální replikace dat** podokně.
+1. Z účtu Azure Cosmos otevřete podokno **globálně replikovat data** .
 
 2. V horní části podokna vyberte **automatické převzetí služeb při selhání**.
 
    ![Nabídka Globální replikace dat](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. Na **automatické převzetí služeb při selhání** podokno, ujistěte se, že **povolit automatické převzetí služeb při selhání** je nastavena na **ON**. 
+3. V podokně **automatické převzetí služeb při selhání** ověřte, že je **možnost povolit automatické převzetí služeb při** selhání nastavena na **zapnuto**. 
 
 4. Vyberte **Uložit**.
 
@@ -286,24 +303,24 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Nastavení priorit převzetí služeb při selhání pro váš účet Azure Cosmos
+## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Nastavte priority převzetí služeb při selhání pro účet Azure Cosmos.
 
-Po Cosmos účet je nakonfigurovaný pro automatické převzetí služeb při selhání, můžete změnit prioritu převzetí služeb při selhání pro oblasti.
+Po nakonfigurování účtu Cosmos pro automatické převzetí služeb při selhání je možné změnit prioritu převzetí služeb při selhání pro oblasti.
 
 > [!IMPORTANT]
-> Nelze změnit oblast zápisu (priority převzetí služeb při selhání nula) Pokud je účet nakonfigurovaný pro automatické převzetí služeb při selhání. Chcete-li změnit oblast zápisu, musíte zakázat automatické převzetí služeb při selhání a proveďte ruční převzetí služeb při selhání.
+> Pokud je účet nakonfigurovaný na automatické převzetí služeb při selhání, nemůžete upravit oblast zápisu (priorita převzetí služeb při selhání nula). Chcete-li změnit oblast zápisu, je nutné zakázat automatické převzetí služeb při selhání a provést ruční převzetí služeb při selhání.
 
 ### <a id="set-failover-priorities-via-portal"></a>Azure Portal
 
-1. Ze svého účtu Azure Cosmos, otevřete **globální replikace dat** podokně.
+1. Z účtu Azure Cosmos otevřete podokno **globálně replikovat data** .
 
 2. V horní části podokna vyberte **automatické převzetí služeb při selhání**.
 
    ![Nabídka Globální replikace dat](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. Na **automatické převzetí služeb při selhání** podokno, ujistěte se, že **povolit automatické převzetí služeb při selhání** je nastavena na **ON**.
+3. V podokně **automatické převzetí služeb při selhání** ověřte, že je **možnost povolit automatické převzetí služeb při** selhání nastavena na **zapnuto**.
 
-4. Změna priority převzetí služeb při selhání, přetáhněte oblastí pro čtení přes na tři tečky na levé straně, který se zobrazí při najetí myši na řádek.
+4. Pokud chcete změnit prioritu převzetí služeb při selhání, přetáhněte oblasti čtení přes tři tečky na levé straně řádku, která se zobrazí, když na ně najedete myší.
 
 5. Vyberte **Uložit**.
 
@@ -337,27 +354,27 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
     -ResourceGroupName $resourceGroupName -Name $accountName -Parameters $failoverPolicies
 ```
 
-## <a id="manual-failover"></a>Proveďte ruční převzetí služeb při selhání v rámci účtu Azure Cosmos
+## <a id="manual-failover"></a>Provedení ručního převzetí služeb při selhání v účtu Azure Cosmos
 
 > [!IMPORTANT]
-> Účet Azure Cosmos musí být nakonfigurovaný pro ruční převzetí služeb při selhání pro tato operace proběhla úspěšně.
+> Aby tato operace proběhla úspěšně, musí být účet Azure Cosmos nakonfigurovaný na ruční převzetí služeb při selhání.
 
-Součástí procesu pro ruční převzetí služeb při selhání je změna oblasti zápisu na účet (priority převzetí služeb při selhání = 0) do jiné oblasti, které jsou nakonfigurované pro účet.
+Proces ručního převzetí služeb při selhání zahrnuje změnu oblasti zápisu účtu (priorita převzetí služeb při selhání = 0) na jinou oblast nakonfigurovanou pro tento účet.
 
 > [!NOTE]
-> Účty s několika hlavními databázemi nelze převzít ručně. Pro aplikace pomocí sady SDK služby Azure Cosmos bude sada SDK rozpoznat, kdy se oblast stane nedostupnou, potom automaticky přesměrovat na další nejbližší oblasti, pokud používáte vícenásobné navádění rozhraní API v sadě SDK.
+> Pro účty s více hlavními servery nejde ručně převzít službu při selhání. V případě aplikací, které používají sadu Azure Cosmos SDK, bude sada SDK detekovat, kdy se oblast přestane používat, a pak automaticky přesměruje na nejbližší nejbližší oblast, pokud v sadě SDK používáte rozhraní API pro více koncových míst.
 
 ### <a id="enable-manual-failover-via-portal"></a>Azure Portal
 
-1. Přejděte ke svému účtu Azure Cosmos a otevřete **globální replikace dat** nabídky.
+1. Přejděte k účtu Azure Cosmos a otevřete nabídku replikovat **data globálně** .
 
-2. V horní nabídce vyberte **ruční převzetí služeb při selhání**.
+2. V horní části nabídky vyberte **ruční převzetí služeb při selhání**.
 
    ![Nabídka Globální replikace dat](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. Na **ruční převzetí služeb při selhání** nabídku, vyberte novou oblast zápisu. Zaškrtněte políčko označující, že chápete, že se že tato možnost změní vaše oblast pro zápis.
+3. V nabídce **ruční převzetí služeb při selhání** vyberte novou oblast pro zápis. Zaškrtnutím políčka označíte, že pochopení této možnosti mění vaši oblast zápisu.
 
-4. Chcete-li aktivovat převzetí služeb při selhání, vyberte **OK**.
+4. Pokud chcete převzetí služeb při selhání aktivovat, vyberte **OK**.
 
    ![Nabídka portálu Ruční převzetí služeb při selhání](./media/how-to-manage-database-account/manual-failover.png)
 
@@ -397,9 +414,9 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace a příklady o tom, jak spravovat účet služby Azure Cosmos stejně jako databáze a kontejnerů najdete v následujících článcích:
+Další informace a příklady, jak spravovat účet Azure Cosmos i databáze a kontejnery, najdete v následujících článcích:
 
-* [Správa služby Azure Cosmos DB pomocí Azure Powershellu](manage-with-powershell.md)
-* [Správa služby Azure Cosmos DB pomocí rozhraní příkazového řádku Azure](manage-with-cli.md)
+* [Správa Azure Cosmos DB pomocí Azure PowerShell](manage-with-powershell.md)
+* [Správa služby Azure Cosmos DB pomocí Azure CLI](manage-with-cli.md)

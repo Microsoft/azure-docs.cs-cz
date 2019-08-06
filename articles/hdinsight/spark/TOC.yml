@@ -53,13 +53,7 @@
     - name: Řešení potíží
       items:
         - name: Výjimka OutOfMemoryError
-          items:
-            - name: Nedostatek paměti haldy
-              href: ./apache-spark-troubleshoot-outofmemory-heap.md
-            - name: Místo v haldě Javy
-              href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
-            - name: Livy Server se nedaří spustit
-              href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
+          href: ./apache-spark-troubleshoot-outofmemory.md
         - name: Selhání úlohy Apache Sparku – NoClassDefFoundError
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: Selhání úlohy Apache Sparku – InvalidClassException

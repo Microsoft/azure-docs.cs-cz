@@ -1,60 +1,60 @@
 ---
-title: Nastavení oznámení služby pro virtuální plochy Windows – Azure
-description: Jak nastavit službu Azure Service Health pro příjem oznámení služby pro virtuální plochy Windows.
+title: Nastavení upozornění služby pro virtuální počítače s Windows – Azure
+description: Jak nastavit Azure Service Health pro příjem oznámení služby pro virtuální počítač s Windows
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
-ms.author: v-chjenk
-ms.openlocfilehash: cae75f16da2cad453c74b7e6e9fb62dd789fe5c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: helohr
+ms.openlocfilehash: cbd55d3243426f2e6ec84986a2147ff94574bdda
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081368"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816378"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>Kurz: Nastavení oznámení služby
+# <a name="tutorial-set-up-service-alerts"></a>Kurz: Nastavení upozornění služeb
 
-Azure Service Health můžete použít ke sledování problémů se službou a poradci pro stav pro virtuální plochy Windows. Azure Service Health můžete informovat prostřednictvím různých typech výstrah (například e-mail nebo SMS), vám pomůžou pochopit vliv problém, a zachovat, můžete aktualizovat, protože tento problém řeší. Azure Service Health vám také umožňují snížit prostoje a příprava na plánovanou údržbu a změny, které by mohly ovlivnit dostupnost vašich prostředků.
+Pomocí Azure Service Health můžete monitorovat problémy služby a Poradce pro stav pro virtuální počítače s Windows. Azure Service Health vás může informovat s různými typy výstrah (například e-mailem nebo SMS), pomůže vám pochopit dopad problému a průběžně ho aktualizovat, jakmile se problém vyřeší. Azure Service Health vám taky může pomáhat zmírnit výpadky a připravit se na plánovanou údržbu a změny, které by mohly ovlivnit dostupnost vašich prostředků.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření a konfigurace výstrah služeb.
+> * Vytvořte a nakonfigurujte výstrahy služby.
 
-Další informace o Azure Service Health, najdete v článku [dokumentaci k Azure stavu](https://docs.microsoft.com/azure/service-health/).
+Další informace o Azure Service Health najdete v dokumentaci ke [službě Azure Health](https://docs.microsoft.com/azure/service-health/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Kurz: Vytvořit tenanta v náhledu virtuální plochy Windows](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
-- [Kurz: Vytvoření instančních objektů a přiřazení role pomocí prostředí PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
-- [Kurz: Vytvoření fondu hostitele pomocí webu Azure Marketplace](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
+- [Kurz: Vytvoření tenanta ve verzi Preview pro virtuální počítač s Windows](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
+- [Kurz: Vytvoření instančních objektů a přiřazení rolí pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
+- [Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
 
-## <a name="create-service-alerts"></a>Vytvořit oznámení služby
+## <a name="create-service-alerts"></a>Vytvoření výstrah služby
 
-V této části se dozvíte, jak nakonfigurovat služby Azure Service Health a jak nastavit upozornění, které je k dispozici na na webu Azure portal. Můžete nastavit různé typy výstrah a naplánují je upozornit vás včas.
+V této části se dozvíte, jak nakonfigurovat Azure Service Health a jak nastavit oznámení, ke kterým můžete přistupovat v Azure Portal. Můžete nastavit různé typy výstrah a naplánovat jejich včasné oznámení.
 
-### <a name="recommended-service-alerts"></a>Doporučená služba Výstrahy
+### <a name="recommended-service-alerts"></a>Doporučené výstrahy služby
 
-Doporučujeme že vytvořit následující typy událostí stavu výstrahy služby:
+Doporučujeme vytvořit výstrahy služby pro následující typy událostí stavu:
 
-- **Služba problému:** Přijímání oznámení na hlavní problémy, které ovlivňují připojení uživatelů ke službě nebo možnost správy vašeho tenanta virtuální plochy Windows.
-- **Poradce pro stav:** Dostávat oznámení, které vyžadují vaši pozornost. Následují příklady tohoto typu oznámení:
-    - Virtuální počítače (VM) není bezpečné nakonfigurované jako otevřený port 3389.
-    - Zastarání funkcí
+- **Problém se službou:** Dostávat oznámení o podstatných problémech, které mají vliv na připojení vašich uživatelů ke službě, nebo s možností spravovat tenanta virtuálních klientů ve Windows.
+- **Poradenský Poradce pro stav:** Dostanou oznámení, která vyžadují vaši pozornost. Níže jsou uvedeny některé příklady tohoto typu oznámení:
+    - Virtual Machines (virtuální počítače) nejsou bezpečně nakonfigurované jako otevřený port 3389.
+    - Vyřazení funkčnosti
 
-### <a name="configure-service-alerts"></a>Konfigurace výstrah služeb
+### <a name="configure-service-alerts"></a>Konfigurace výstrah služby
 
-Konfigurace výstrah služeb:
+Konfigurace výstrah služby:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte **stavu služby.**
-3. Postupujte podle pokynů v [vytvoření upozornění protokolu aktivit pro oznámení služby](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) nastavit výstrahy a oznámení.
+2. Vyberte **Service Health.**
+3. Pomocí pokynů v tématu [vytvoření výstrah protokolu aktivit v oznámeních služby](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) nastavte výstrahy a oznámení.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak nastavit a používat služby Azure Service Health ke sledování problémů se službou a poradci pro stav pro virtuální plochy Windows. Další informace o tom, jak se přihlásit k virtuálnímu klientovi Windows, i nadále připojit k virtuální ploše postupy Windows.
+V tomto kurzu jste zjistili, jak nastavit a použít Azure Service Health k monitorování problémů služby a Poradce pro stav pro virtuální počítače s Windows. Další informace o tom, jak se přihlásit k virtuálnímu počítači s Windows, najdete v tématu připojení k virtuálnímu počítači s Windows.
 
 > [!div class="nextstepaction"]
-> [Připojte se ke klientovi vzdálené plochy na Windows 7 a Windows 10](./connect-windows-7-and-10.md)
+> [Připojení ke klientovi vzdálené plochy v systému Windows 7 a Windows 10](./connect-windows-7-and-10.md)

@@ -1,77 +1,71 @@
 ---
-title: Nasazení do služby Azure Functions pomocí modulu plug-in Jenkins Azure Functions
-description: Informace o nasazení do služby Azure Functions pomocí modulu plug-in Jenkins Azure Functions
+title: Nasazení do Azure Functions pomocí modulu plug-in Azure Functions Jenkinse
+description: Přečtěte si, jak nasadit do Azure Functions pomocí modulu plug-in Azure Functions Jenkinse
 ms.service: jenkins
-keywords: jenkins, azure, devops, java, služba azure functions
+keywords: Jenkinse, Azure, DevOps, Java, Azure Functions
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 02/23/2019
-ms.openlocfilehash: bd8fa10ca0a9809891efc67ff930ab01d502eda9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1ee5a8d5f55422c9f8a0f20f3c6eb039f080dc2d
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60640952"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815735"
 ---
-# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Nasazení do služby Azure Functions pomocí modulu plug-in Jenkins Azure Functions
+# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Nasazení do Azure Functions pomocí modulu plug-in Azure Functions Jenkinse
 
-[Služba Azure Functions](/azure/azure-functions/) je výpočetní služba bez serveru. Pomocí služby Azure Functions, můžete spustit kód na vyžádání bez zřizování nebo správy infrastruktury. Tento kurz ukazuje, jak nasadit funkci Java do služby Azure Functions pomocí modulu plug-in Azure Functions.
+[Azure Functions](/azure/azure-functions/) je služba COMPUTE bez serveru. Pomocí Azure Functions můžete spustit kód na vyžádání bez zřízení nebo správy infrastruktury. V tomto kurzu se dozvíte, jak nasadit funkci Java, která Azure Functions pomocí modulu plug-in Azure Functions.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
-- **Jenkins server**: Pokud nemáte server Jenkins nainstalovali, najdete v článku [vytvoření serveru Jenkins v Azure](./install-jenkins-solution-template.md).
+- **Jenkinse Server**: Pokud nemáte nainstalovaný server Jenkinse, přečtěte si článek [vytvoření serveru Jenkinse v Azure](./install-jenkins-solution-template.md).
 
   > [!TIP]
-  > Zdrojový kód používá pro účely tohoto kurzu je umístěn v [úložiště Visual Studio China GitHub](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java).
+  > Zdrojový kód, který se používá pro tento kurz, se nachází v [úložišti GitHub sady Visual Studio Čína](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java).
 
-## <a name="create-a-java-function"></a>Vytvoření funkce jazyka Java
+## <a name="create-a-java-function"></a>Vytvoření funkce Java
 
-Pokud chcete vytvořit funkci jazyka Java pomocí zásobník modulu runtime Java, použijte buď [webu Azure portal](https://portal.azure.com) nebo [rozhraní příkazového řádku Azure](/cli/azure/?view=azure-cli-latest).
+Chcete-li vytvořit funkci Java pomocí zásobníku Java Runtime, použijte buď [Azure Portal](https://portal.azure.com) , nebo rozhraní příkazového [řádku Azure](/cli/azure/?view=azure-cli-latest).
 
-Následující kroky ukazují, jak vytvořit funkci jazyka Java pomocí Azure CLI:
+Následující kroky ukazují, jak vytvořit funkci Java pomocí rozhraní příkazového řádku Azure:
 
-1. Vytvořte skupinu prostředků, nahraďte  **&lt;resource_group >** zástupný symbol název skupiny prostředků.
+1. Vytvořte skupinu prostředků a nahraďte  **&lt;zástupný symbol resource_group >** názvem vaší skupiny prostředků.
 
     ```cli
     az group create --name <resource_group> --location eastus
     ```
 
-1. Vytvoření účtu služby Azure storage, nahraďte zástupné symboly příslušnými hodnotami.
+1. Vytvořte účet úložiště Azure a nahraďte zástupné symboly příslušnými hodnotami.
  
     ```cli
     az storage account create --name <storage_account> --location eastus --resource-group <resource_group> --sku Standard_LRS    
     ```
 
-1. Vytvoření aplikace funkcí test, nahraďte zástupné symboly příslušnými hodnotami.
+1. Vytvořte aplikaci funkcí testu a nahraďte zástupné symboly příslušnými hodnotami.
 
     ```cli
     az functionapp create --resource-group <resource_group> --consumption-plan-location eastus --name <function_app> --storage-account <storage_account>
     ```
-    
-1. Aktualizujte modul runtime verze 2.x, nahraďte zástupné symboly příslušnými hodnotami.
 
-    ```cli
-    az functionapp config appsettings set --name <function_app> --resource-group <resource_group> --settings FUNCTIONS_EXTENSION_VERSION=~2
-    ```
+## <a name="prepare-jenkins-server"></a>Příprava serveru Jenkinse
 
-## <a name="prepare-jenkins-server"></a>Příprava serveru Jenkins
+Následující postup vysvětluje, jak připravit server Jenkinse:
 
-Následující postup vysvětluje, jak připravit Jenkins server:
+1. Nasazení [serveru Jenkinse](https://aka.ms/jenkins-on-azure) v Azure. Pokud ještě nemáte nainstalovanou instanci serveru Jenkinse, provede vás celým procesem [vytvoření serveru Jenkinse v Azure](./install-jenkins-solution-template.md) .
 
-1. Nasazení [serveru Jenkins](https://aka.ms/jenkins-on-azure) v Azure. Pokud ještě nemáte instance serveru Jenkins nainstalovali, článku, [vytvoření serveru Jenkins v Azure](./install-jenkins-solution-template.md) vás provede procesem.
+1. Přihlaste se k instanci Jenkinse pomocí SSH.
 
-1. Přihlaste se do instance Jenkinse pomocí protokolu SSH.
-
-1. Instance Jenkinse instalace nástroje maven pomocí následujícího příkazu:
+1. V instanci Jenkinse nainstalujte Maven pomocí následujícího příkazu:
 
     ```terminal
     sudo apt install -y maven
     ```
 
-1. Instance Jenkinse, nainstalujte [nástrojů Azure Functions Core](/azure/azure-functions/functions-run-local) vydáním následujících příkazů v terminálu řádku:
+1. V instanci Jenkinse nainstalujte [Azure Functions Core Tools](/azure/azure-functions/functions-run-local) , a to tak, že na příkazovém řádku zadáte následující příkazy:
 
     ```terminal
     wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
@@ -85,27 +79,27 @@ Následující postup vysvětluje, jak připravit Jenkins server:
     - Modul plug-in Azure Functions
     - Modul plug-in EnvInject
 
-1. Jenkins musí instanční objekt Azure k ověřování a přístup k prostředkům Azure. Odkazovat [nasazení do služby Azure App Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md) podrobné pokyny.
+1. Pro ověření a přístup k prostředkům Azure potřebuje Jenkinse instanční objekt Azure. Podrobné pokyny najdete v tématu věnovaném [nasazení na Azure App Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md) .
 
-1. "Microsoft Azure Service instančního objektu" typ přihlašovacích údajů pomocí instančního objektu Azure, přidejte v Jenkinsu. Odkazovat [nasazení do služby Azure App Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md#add-service-principal-to-jenkins) kurzu.
+1. Pomocí instančního objektu Azure přidejte do Jenkinse typ přihlašovacích údajů "Microsoft Azure instančního objektu". Přečtěte si kurz [nasazení na Azure App Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md#add-service-principal-to-jenkins) .
 
 ## <a name="fork-the-sample-github-repo"></a>Rozvětvení ukázkového úložiště GitHub
 
-1. [Přihlaste se k úložišti Githubu pro aplikaci liché nebo dokonce ukázka](https://github.com/VSChina/odd-or-even-function.git).
+1. Přihlaste se [k úložišti GitHub pro vzorovou nebo stejnou ukázkovou aplikaci](https://github.com/VSChina/odd-or-even-function.git).
 
-1. V pravém horním rohu v Githubu, zvolte **Forku**.
+1. V pravém horním rohu GitHubu vyberte možnost rozvětvení.
 
-1. Postupujte podle pokynů dokončit větvení a vyberte účet GitHub.
+1. Podle pokynů vyberte svůj účet GitHub a dokončete rozvětvení.
 
-## <a name="create-a-jenkins-pipeline"></a>Vytvoření kanálu Jenkins
+## <a name="create-a-jenkins-pipeline"></a>Vytvoření kanálu Jenkinse
 
-V této části vytvoříte [kanálu Jenkins](https://jenkins.io/doc/book/pipeline/).
+V této části vytvoříte [kanál Jenkinse](https://jenkins.io/doc/book/pipeline/).
 
 1. V řídicím panelu Jenkinse vytvořte kanál.
 
-1. Povolit **Příprava prostředí pro běh**.
+1. Povolte **přípravu prostředí pro běh**.
 
-1. Přidejte následující proměnné prostředí v **vlastnosti obsahu**, nahraďte zástupné symboly příslušnými hodnotami pro vaše prostředí:
+1. Přidejte následující proměnné prostředí do **obsahu vlastnosti**a nahraďte zástupné symboly odpovídajícími hodnotami pro vaše prostředí:
 
     ```
     AZURE_CRED_ID=<service_principal_credential_id>
@@ -113,9 +107,9 @@ V této části vytvoříte [kanálu Jenkins](https://jenkins.io/doc/book/pipeli
     FUNCTION_NAME=<function_name>
     ```
     
-1. V **kanálu -> definice** vyberte **kanálu skriptu ze Správce řízení služeb**.
+1. V části **> kanálu – definice** vyberte **skript kanálu z SCM**.
 
-1. Zadejte svého forku Githubu adresy URL a skript cestu ("doc/zdroje/jenkins/souboru JenkinsFile") pro použití v [příklad souboru JenkinsFile](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile).
+1. Zadejte adresu URL a cestu ke svému rozvětvení GitHubu ("doc/Resources/Jenkinse/JenkinsFile"), abyste je mohli použít v [příkladu JenkinsFile](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile).
 
    ```
    node {
@@ -137,18 +131,18 @@ V této části vytvoříte [kanálu Jenkins](https://jenkins.io/doc/book/pipeli
     }
     ```
 
-## <a name="build-and-deploy"></a>Vytvoření a nasazení
+## <a name="build-and-deploy"></a>Sestavení a nasazení
 
-Nyní je čas ke spuštění úlohy Jenkins.
+Teď je čas spustit úlohu Jenkinse.
 
-1. Nejprve získat autorizační klíč pomocí pokynů [aktivace protokolu HTTP služby Azure Functions a vazby](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys) článku.
+1. Nejdřív Získejte autorizační klíč pomocí pokynů v článku [Azure Functions aktivační události a vazby protokolu HTTP](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys) .
 
-1. V prohlížeči zadejte adresu URL aplikace. Nahraďte zástupné symboly příslušnými hodnotami a zadat číselnou hodnotu pro  **&lt;input_number >** jako vstup pro funkci jazyka Java.
+1. V prohlížeči zadejte adresu URL aplikace. Zástupné symboly nahraďte odpovídajícími hodnotami a zadejte číselnou hodnotu pro  **&lt;input_number >** jako vstup pro funkci Java.
 
     ```
     https://<function_app>.azurewebsites.net/api/HttpTrigger-Java?code=<authorization_key>&number=<input_number>
     ```
-1. Zobrazí se vám výsledky podobně jako následující příklad výstupu (kde liché číslo - 365 - byl použit jako test):
+1. Výsledky jsou podobné jako v následujícím příkladu výstupu (kde bylo použito liché číslo-365 – bylo použito jako test):
 
     ```output
     The number 365 is Odd.
@@ -156,7 +150,7 @@ Nyní je čas ke spuštění úlohy Jenkins.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikaci používat, odstraňte prostředky, které jste vytvořili s následujícím způsobem:
+Pokud nebudete tuto aplikaci nadále používat, odstraňte prostředky, které jste vytvořili, pomocí následujícího kroku:
 
 ```cli
 az group delete -y --no-wait -n <resource_group>
@@ -164,6 +158,6 @@ az group delete -y --no-wait -n <resource_group>
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o službě Azure Functions, najdete v následujících prostředků:
+Další informace o Azure Functions najdete v následujících zdrojích:
 > [!div class="nextstepaction"]
-> [Dokumentace ke službě Azure Functions](/azure/azure-functions/)
+> [Dokumentace k Azure Functions](/azure/azure-functions/)

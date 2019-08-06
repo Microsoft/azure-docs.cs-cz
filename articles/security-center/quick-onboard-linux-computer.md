@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 110dcb1531390b207ae741af07fe0ad18964aae1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60910560"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816134"
 ---
-# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Linuxem ke službě Azure Security Center
-Po připojení předplatných Azure můžete zřízením agenta pro Linux povolit službu Security Center pro prostředky Linuxu spuštěné mimo Azure, například v místním prostředí nebo jiných cloudech.
+# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rychlý start: Zprovoznění počítačů se systémem Linux pro Azure Security Center
+Po připojení předplatných Azure můžete povolit Security Center pro prostředky Linux spuštěné mimo Azure, například místně nebo v jiných cloudech, zřízením agenta. Agent se nazývá Microsoft Monitoring Agent (MMA), ale je také označován jako agent OMS.
 
-V tomto rychlém startu se dozvíte, jak nainstalovat agenta pro Linux na počítač s Linuxem.
+V tomto rychlém startu se dozvíte, jak nainstalovat agenta na počítač se systémem Linux.
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-Než začnete s tímto rychlým startem, musíte mít službu Security Center na cenové úrovni Standard. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Můžete zkusit Security Center úrovně Standard zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
+Než začnete s tímto rychlým startem, musíte mít službu Security Center na cenové úrovni Standard. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Můžete vyzkoušet Standard Security Center na žádné náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Přidání nového počítače s Linuxem
 
@@ -44,7 +44,7 @@ Než začnete s tímto rychlým startem, musíte mít službu Security Center na
 
 5. V části **Přidat počítače umístěné mimo Azure** klikněte na **Konfigurovat**. Zobrazí se seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento nebo jiný pracovní prostor, který chcete použít.
 
-    ![Přidání počítače umístěného mimo Azure](./media/quick-onboard-linux-computer/non-azure.png)
+    ![Přidat počítač mimo Azure](./media/quick-onboard-linux-computer/non-azure.png)
 
 6. Na stránce **Přímý agent** v části **STÁHNOUT A PŘOPOJIT AGENTA PRO LINUX** výběrem tlačítka pro **kopírování** zkopírujte příkaz *wget*.
 
@@ -57,7 +57,7 @@ Než začnete s tímto rychlým startem, musíte mít službu Security Center na
 
    ![Instalace agenta][5]
 
-Protokoly agenta služby Security Center pro Linux najdete v: */var/opt/microsoft/omsagent/\<id pracovního prostoru > /log/*
+Protokoly pro agenta najdete na adrese: */var/opt/Microsoft/omsagent/\<v pracovním prostoru ID >/log/*
 
   ![Protokoly agenta][6]
 
@@ -69,7 +69,7 @@ Teď můžete na jednom místě monitorovat své virtuální počítače Azure i
 
   ![icon1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Počítač umístěný mimo Azure
 
-  ![icon2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Virtuální počítač Azure
+  ![icon2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už ho nepotřebujete, můžete agenta z počítače s Linuxem odebrat.

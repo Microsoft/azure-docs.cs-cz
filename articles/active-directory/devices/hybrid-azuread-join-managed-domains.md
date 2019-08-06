@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7781651536275eba60bfde49e00a450dde6d3e1
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 787900918035dc8b14d3a173496ab1a23b0f93bb
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357039"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68813088"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridního Azure Active Directory připojení ke spravovaným doménám
 
@@ -74,6 +74,8 @@ Pokud nepoužíváte protokol WPAD a potřebujete nakonfigurovat nastavení prox
 > Pokud nakonfigurujete nastavení proxy serveru na svém počítači pomocí nastavení WinHTTP, nepůjde se připojit k Internetu bez jakýchkoli počítačů, které se nemůžou připojit k nakonfigurovanému proxy serveru.
 
 Pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím ověřeného odchozího proxy serveru, musíte se ujistit, že počítače s Windows 10 se můžou úspěšně ověřit u odchozího proxy serveru. Vzhledem k tomu, že počítače s Windows 10 spouští registraci zařízení pomocí kontextu počítače, musíte nakonfigurovat ověřování odchozího proxy serveru pomocí kontextu počítače. Požadavky na konfiguraci vám sdělí váš poskytovatel odchozího proxy serveru.
+
+Pokud chcete ověřit, jestli má zařízení přístup k výše uvedeným prostředkům Microsoftu pod účtem System, můžete použít skript pro [připojení k registraci testovacího zařízení](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) .
 
 ## <a name="configure-hybrid-azure-ad-join"></a>Konfigurace hybridního připojení k Azure AD
 
@@ -161,7 +163,7 @@ Při kontrole podrobností služby použijte rutinu **Get-MSolDevice** :
 
 - Musí existovat objekt s **ID zařízení** , které odpovídá ID na klientském počítači se systémem Windows.
 - Hodnota **DeviceTrustType** (Stav důvěryhodnosti zařízení) musí být nastavená na **Domain Joined** (Připojeno k doméně). Toto nastavení se rovná stavu připojenému k **hybridní službě Azure AD** na stránce **zařízení** na portálu Azure AD.
-- U zařízení, která se používají v podmíněném přístupu, musí  být povolená hodnota **true** a musí se **DeviceTrustLevel** **Spravovat**.
+- U zařízení, která se používají v podmíněném přístupu, musí být povolená hodnota **true** a musí se **DeviceTrustLevel** **Spravovat**.
 
 **Postup kontroly podrobností služby**:
 

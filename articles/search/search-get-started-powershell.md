@@ -8,14 +8,13 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
-ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 6bff2c84a4bfd81b94054b85744c17a1cd217756
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.topic: quickstart
+ms.openlocfilehash: abfe418e8feac1693aea279d44b4a41fca3d1875
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847069"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828736"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>Rychlý start: Vytvoření indexu Azure Search v PowerShellu pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -400,7 +399,7 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny pr
 
 Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste pomocí PowerShellu procházeli základní pracovní postup pro vytváření a přístup k obsahu v Azure Search. V případě konceptů doporučujeme přejít k pokročilejším scénářům, jako je například indexování ze zdrojů dat Azure;
 

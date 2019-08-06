@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s rozvoji Linkedinem | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a zvýšení oprávnění LinkedIn.
+title: 'Kurz: Azure Active Directory integrace se zvýšením úrovně LinkedInu | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a se zvýšením úrovně LinkedInu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,53 +16,53 @@ ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b16d928e2e4fc4b5376d30b81eb39e5a46e54b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b7cb8d6ab34a632e36ea2fd1c87005a038bc523
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098030"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823710"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Kurz: Integrace Azure Active Directory s rozvoji Linkedinem
+# <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Kurz: Azure Active Directory integrace se zvýšením úrovně LinkedInu
 
-V tomto kurzu se dozvíte, jak integrovat zvýšení Linkedinu s Azure Active Directory (Azure AD).
-Integrace zvýšení Linkedinu s Azure AD poskytuje následující výhody:
+V tomto kurzu se naučíte integrovat zvýšení úrovně LinkedInu pomocí Azure Active Directory (Azure AD).
+Integrace zvýšení úrovně LinkedInu pomocí Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k rozvoji Linkedinem.
-* Uživatelům se automaticky přihlášeni k rozvoji Linkedinem (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete kontrolovat v Azure AD, kteří mají přístup ke zvýšení oprávnění LinkedInu.
+* Uživatelům můžete povolit, aby se automaticky přihlásili ke zvýšení úrovně LinkedInu (jednotné přihlašování) se svými účty Azure AD.
 * Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s rozvoji Linkedinem, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD se zvýšením úrovně LinkedInu potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Rozvoji Linkedinem jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
+* Předplatné LinkedIn úrovně Standard s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Rozvoji Linkedinem podporuje **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
+* Zvýšení oprávnění LinkedInu podporuje **SP a IDP** iniciované jednotné přihlašování
 
-* Rozvoji Linkedinem podporuje **JIT** zřizování uživatelů
+* Zvýšení oprávnění LinkedInu podporuje **jenom při** zřizování uživatelů
 
-* Rozvoji Linkedinem podporuje [ **automatizovaná** zřizování uživatelů](linkedinelevate-provisioning-tutorial.md)
+* Zvýšení oprávnění LinkedInu podporuje [ **automatizované** zřizování uživatelů](linkedinelevate-provisioning-tutorial.md)
 
-## <a name="adding-linkedin-elevate-from-the-gallery"></a>Přidání rozvoji Linkedinem z Galerie
+## <a name="adding-linkedin-elevate-from-the-gallery"></a>Přidání zvýšení oprávnění LinkedInu z Galerie
 
-Pokud chcete nakonfigurovat integraci rozvoji Linkedinem do služby Azure AD, musíte doplnit rozvoji Linkedinem z Galerie váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci LinkedInu v Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat zvýšení úrovně LinkedInu z galerie.
 
-**Chcete-li přidat rozvoji Linkedinem z galerie, postupujte následovně:**
+**Pokud chcete přidat zvýšení oprávnění LinkedInu z Galerie, proveďte následující kroky:**
 
 1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
     ![V okně podnikové aplikace](common/enterprise-applications.png)
 
@@ -70,91 +70,91 @@ Pokud chcete nakonfigurovat integraci rozvoji Linkedinem do služby Azure AD, mu
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **rozvoji Linkedinem**vyberte **rozvoji Linkedinem** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **zvýšení oprávnění LinkedInu**, vyberte možnost povýšení **LinkedInu** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![LinkedIn zvýšit v seznamu výsledků](common/search-new-app.png)
+    ![Zvýšení úrovně LinkedInu v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, konfigurace a testování Azure AD jednotné přihlašování pomocí Linkedinu zvýšit oprávnění na základě testovací uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v rozvoji Linkedinem.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD se zvýšením úrovně LinkedInu na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být navázán vztah odkazu mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci zvýšení oprávnění LinkedInu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s rozvoji Linkedinem, které potřebujete k dokončení následujících stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD se zvýšením úrovně LinkedInu, je potřeba, abyste dokončili tyto stavební bloky:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace LinkedIn zvýšení Single Sign-On](#configure-linkedin-elevate-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování](#configure-linkedin-elevate-single-sign-on)** na LinkedInu a nakonfigurujete nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
 4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele rozvoji Linkedinem](#create-linkedin-elevate-test-user)**  – Pokud chcete mít protějšek Britta Simon v Linkedinu zvýšení oprávnění, který je propojený s Azure AD reprezentace uživatele.
+5. **[Vytvoření testovacího uživatele zvýšení úrovně LinkedInu](#create-linkedin-elevate-test-user)** – Chcete-li mít protějšek Britta Simon ve službě LinkedIn, který je propojený s reprezentací uživatele Azure AD.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s rozvoji Linkedinem, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí zvýšení úrovně LinkedInu, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **rozvoji Linkedinem** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace na webu **LinkedIn – zvýšení úrovně** vyberte **jednotné přihlašování**.
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![LinkedIn zvýšení domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Informace o jednotném přihlašování v doméně a adrese WebSign-on pro LinkedIn](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte **Entity ID** hodnotu, bude zkopírujte hodnotu Entity ID z portálu Linkedin vysvětleny dále v tomto kurzu.
+    a. Do textového pole **Identifier (identifikátor** ) zadejte hodnotu **ID entity** , kterou zkopírujete z portálu LinkedIn, který se vysvětluje dále v tomto kurzu.
 
-    b. V **adresy URL odpovědi** text, zadejte **Assertion Consumer přístupu (ACS) adresy Url** hodnotu, bude zkopírujte adresu Url Assertion Consumer přístupu (ACS) hodnotu z Linkedinu portálu vysvětleny dále v tomto kurzu.
+    b. Do textového pole **Adresa URL odpovědi** zadejte hodnotu **adresy URL pro řízení přístupu uživatele (ACS)** . na portálu LinkedIn je vysvětleno později v tomto kurzu.
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![LinkedIn zvýšení domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
+    ![Informace o jednotném přihlašování v doméně a adrese WebSign-on pro LinkedIn](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=elevate&applicationInstanceId=<InstanceId>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=elevate&applicationInstanceId=<InstanceId>`
 
-6. Rozvoji Linkedinem aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Rozvoji Linkedinem aplikace očekává nameidentifier namapovat s **user.mail**, takže budete muset upravit mapování atributů kliknutím na ikonu úprav a změnit mapování atributů.
+6. Žádost o zvýšení úrovně LinkedInu očekává, že se kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Žádost o zvýšení úrovně LinkedInu očekává, že NameIdentifier budou namapovány pomocí **User. mail**, takže potřebujete upravit mapování atributů kliknutím na ikonu Upravit a změnit mapování atributů.
 
     ![image](common/edit-attribute.png)
 
-7. Kromě toho výše rozvoji Linkedinem aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V části deklarace identity uživatelů na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
+7. Kromě toho bude aplikace LinkedIn zvýšení oprávnění v odpovědi SAML v reakci na několik atributů předána zpátky. V části deklarace identity uživatelů v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
     | Name | Zdrojový atribut|
     | -------| -------------|
-    | Oddělení | user.department |
+    | Oddělení | User. Department |
 
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Nechte **Namespace** prázdné.
+    c. Ponechte **obor názvů** prázdný.
 
-    d. Vyberte zdroj jako **atribut**.
+    d. Jako **atribut**vyberte zdroj.
 
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
     f. Klikněte na tlačítko **Ok**
 
     g. Klikněte na **Uložit**.
 
-8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+8. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-9. Na **nastavení Linkedinu zvýšení** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+9. V části **nastavit zvýšení oprávnění LinkedInu** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
@@ -162,27 +162,27 @@ Ke konfiguraci Azure AD jednotné přihlašování s rozvoji Linkedinem, proveď
 
     c. Adresa URL – odhlášení
 
-### <a name="configure-linkedin-elevate-single-sign-on"></a>Konfigurace LinkedIn zvýšení jednotného přihlašování
+### <a name="configure-linkedin-elevate-single-sign-on"></a>Konfigurace jednotného přihlašování na LinkedInu
 
-1. V okně prohlížeče jiných webových přihlašování k vašemu tenantovi rozvoji Linkedinem jako správce.
+1. V jiném okně webového prohlížeče se přihlaste do svého tenanta LinkedInu jako správce.
 
-1. V **centra pro účty**, klikněte na tlačítko **globální nastavení** pod **nastavení**. Kromě toho **zvýšení – zvýšení testu AAD** z rozevíracího seznamu.
+1. V **centru účtů**klikněte na **globální nastavení** v části **Nastavení**. Také v rozevíracím seznamu vyberte **zvýšit úroveň testu AAD** .
 
     ![Konfigurace jednotného přihlašování](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
 
-1. Klikněte na **nebo klikněte sem pro načítání a kopírování jednotlivých polí ve formuláři** a proveďte následující kroky:
+1. Kliknutím **nebo kliknutím sem načtěte a zkopírujte jednotlivá pole z formuláře** a proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
 
-    a. Kopírování **Entity Id** a vložte ho do **identifikátor** textové pole **základní konfiguraci SAML** na webu Azure Portal.
+    a. Zkopírujte **ID entity** a vložte ho do textového pole **identifikátor** v **základní konfiguraci SAML** v Azure Portal.
 
-    b. Kopírování **Assertion Consumer přístupu (ACS) adresy Url** a vložte ho do **adresy URL odpovědi** textové pole **základní konfiguraci SAML** na webu Azure Portal.
+    b. Zkopírujte **adresu URL pro přístup uživatelů kontrolního výrazu (ACS)** a vložte ji do textového pole **Adresa URL odpovědi** v **základní konfiguraci SAML** v Azure Portal.
 
-1. Přejděte na **nastavení Linkedinu správce** oddílu. Nahrajte soubor XML, který jste si stáhli z portálu Azure portal kliknutím na možnost nahrát XML soubor.
+1. Přejít na část **Nastavení správce LinkedIn** . Kliknutím na možnost nahrát soubor XML nahrajte soubor XML, který jste stáhli z Azure Portal.
 
     ![Konfigurace jednotného přihlašování](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
 
-1. Klikněte na tlačítko **na** pro povolení jednotného přihlašování. Stav jednotného přihlašování se změní z **Nepřipojeno** k **připojeno**
+1. Kliknutím na povolíte jednotné přihlašování. Stav jednotného přihlašování se změní z nepřipojeného k **připojenému**
 
     ![Konfigurace jednotného přihlašování](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
 
@@ -196,49 +196,49 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
 3. Ve vlastnosti uživatele proveďte následující kroky.
 
     ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k rozvoji Linkedinem.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup ke zvýšení oprávnění LinkedInu.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **rozvoji Linkedinem**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **zvýšit úroveň LinkedInu**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **rozvoji Linkedinem**.
+2. V seznamu aplikace vyberte možnost **Prozvýšit úroveň LinkedInu**.
 
-    ![Zvýšit oprávnění Linkedinu propojení v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na zvýšení oprávnění LinkedInu v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
     ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
 5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-linkedin-elevate-test-user"></a>Vytvoření rozvoji Linkedinem testovacího uživatele
+### <a name="create-linkedin-elevate-test-user"></a>Vytvořit testovacího uživatele ve zvýšení úrovně LinkedIn
 
-LinkedIn zvýšit oprávnění aplikace podporuje pouze v době zřizování uživatelů a po ověření uživatele budou vytvořeny v aplikaci automaticky. Na správce stránky nastavení na portálu vyfiltrují rozvoji Linkedinem přepínač **automaticky přiřadit licence** na aktivní pouze v čase zřizování a to se také přiřadit licenci uživateli. Rozvoji Linkedinem také podporuje automatické zřizování uživatelů, další podrobnosti můžete najít [tady](linkedinelevate-provisioning-tutorial.md) o tom, jak nakonfigurovat automatické zřizování uživatelů.
+Aplikace pro zvýšení úrovně LinkedIn podporuje při zřizování uživatelů jenom v čase a po ověření, že se uživatelé budou automaticky vytvářet v aplikaci. Na stránce nastavení pro správu na portálu pro přístup LinkedInu na webu překlopte přepínač **automaticky přiřazovat licence** k aktivnímu způsobu zřizování a k tomu se taky přiřadí licence uživateli. Zvýšení oprávnění LinkedInu podporuje taky Automatické zřizování uživatelů. Další podrobnosti najdete [tady](linkedinelevate-provisioning-tutorial.md) , jak nakonfigurovat automatické zřizování uživatelů.
 
    ![Vytváří se testovací uživatele služby Azure AD](./media/linkedinelevate-tutorial/LinkedinUserprovswitch.png)
 
@@ -246,7 +246,7 @@ LinkedIn zvýšit oprávnění aplikace podporuje pouze v době zřizování už
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici rozvoji Linkedinem na přístupovém panelu, můžete by měl být automaticky přihlášeni ke zvýšení LinkedIn, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici zvýšení úrovně LinkedInu na přístupovém panelu, měli byste se automaticky přihlásit ke zvýšení oprávnění LinkedInu, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 

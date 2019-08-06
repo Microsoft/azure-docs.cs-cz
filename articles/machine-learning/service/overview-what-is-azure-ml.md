@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 05/02/2019
+ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1ec9db2b026dd1853eceb1f110878d6b2beb4d4
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5323c996b8d974c9db11a508503f767cfee80301
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678026"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828107"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co je služba Azure Machine Learning?
 
@@ -29,7 +29,7 @@ Díky předpovědím neboli predikcím ze strojového učení můžou být aplik
 
 ## <a name="what-is-azure-machine-learning-service"></a>Co je služba Azure Machine Learning?
 
-Služba Azure Machine Learning poskytuje cloudové prostředí, které můžete použít k přípravu dat, výuce, testování, nasazování, správě a sledování modelů strojového učení. Spusťte školení na místním počítači a pak nahorizontální navýšení kapacity do cloudu. Služba plně podporuje Open Source technologie, jako jsou PyTorch, TensorFlow a scikit-Learning a dá se použít pro jakýkoliv druh strojového učení, od klasického ml až po obsáhlý Learning, pod dohledem a bez dohledu. 
+Služba Azure Machine Learning poskytuje cloudové prostředí, které můžete použít k přípravu dat, výuce, testování, nasazování, správě a sledování modelů strojového učení. Spusťte školení na místním počítači a pak nahorizontální navýšení kapacity do cloudu. Služba plně podporuje Open Source technologie, jako jsou PyTorch, TensorFlow a scikit-Learning a dá se použít pro jakýkoliv druh strojového učení, od klasického ml až po obsáhlý Learning, pod dohledem a bez dohledu.
 
 Prozkoumejte a připravte modely dat, výukové a testovací modely a nasaďte je pomocí bohatých nástrojů, jako jsou:
 + [Vizuální rozhraní](ui-tutorial-automobile-price-train-score.md) , ve kterém můžete přetahovat moduly na více systémů, abyste mohli sestavovat experimenty a pak nasazovat modely
@@ -55,20 +55,25 @@ Můžete také [automatizovat školicí a optimalizační model](tutorial-auto-t
 V případě školení bez kódu zkuste:
 
 + Vizuální rozhraní pro experimentování a nasazování přetažení
-    
+
     ![Visual interface pro službu Azure Machine Learning](media/overview-what-is-azure-ml/visual-interface.png)
 
 + Možnost Azure Portal pro automatizované experimenty ML
 
 ### <a name="operationalization-mlops"></a>Provozní operace (MLOps)
 
-Pokud máte správný model, můžete ho snadno použít ve webové službě, v zařízení IoT nebo v Power BI. Další informace najdete v článku věnovaném [nasazení a umístění](how-to-deploy-and-where.md). 
+Pokud máte správný model, můžete ho snadno použít ve webové službě, v zařízení IoT nebo v Power BI. Další informace najdete v článku věnovaném [nasazení a umístění](how-to-deploy-and-where.md).
 
-Pak můžete nasadit nasazené modely pomocí [sady Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) nebo [Azure Portal](https://portal.azure.com/). 
+Pak můžete nasadit nasazené modely pomocí [sady Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) nebo [Azure Portal](https://portal.azure.com/).
 
 Tyto modely lze spotřebovat a vracet předpovědi v [reálném čase](how-to-consume-web-service.md) nebo [asynchronně](how-to-run-batch-predictions.md) u velkých objemů dat.
 
-A díky pokročilým [kanálům strojového učení](concept-ml-pipelines.md)můžete v rámci přípravy dat, školení a vyhodnocení modelu spolupracovat na všech krocích prostřednictvím nasazení.
+A díky pokročilým [kanálům strojového učení](concept-ml-pipelines.md)můžete v rámci přípravy dat, školení a vyhodnocení modelu spolupracovat na všech krocích prostřednictvím nasazení. Kanály umožňují:
+
+* automatizace kompletního procesu strojového učení v cloudu
+* znovu použít komponenty a pouze kroky znovu spustit, pokud potřebujete
+* použití různých výpočetních prostředků v každém kroku
+* Spustit úlohy dávkového vyhodnocování
 
 Pokud chcete začít používat službu Azure Machine Learning, přečtěte si [Další kroky](#next-steps).
 
@@ -76,7 +81,7 @@ Pokud chcete začít používat službu Azure Machine Learning, přečtěte si [
 
 [Machine Learning Studio](../studio/what-is-ml-studio.md) je spolupráce, přetahováním vizuálního pracovního prostoru, kde můžete sestavovat, testovat a nasazovat řešení strojového učení, aniž byste museli psát kód. Používá předem sestavené a předem nakonfigurované algoritmy strojového učení a moduly pro zpracování dat a také speciální výpočetní platformu.
 
-Služba Azure Machine Learning poskytuje **Jak sady SDK** , tak i vizuální rozhraní (Preview) k rychlému přípravu dat, výuce a nasazování modelů strojového učení. Toto vizuální rozhraní (Preview) nabízí podobné prostředí pro přetahování do studia. Na rozdíl od proprietární výpočetní platformy v studiu ale používá vizuální rozhraní vaše vlastní výpočetní prostředky a je plně integrovaná do Azure Machine Learning služby.
+Služba Azure Machine Learning poskytuje jak sady SDK, tak i vizuální rozhraní (Preview) k rychlému přípravu dat, výuce a nasazování modelů strojového učení. Toto vizuální rozhraní (Preview) nabízí podobné prostředí pro přetahování do studia. Na rozdíl od proprietární výpočetní platformy v studiu ale používá vizuální rozhraní vaše vlastní výpočetní prostředky a je plně integrovaná do Azure Machine Learning služby.
 
 Tady je rychlé porovnání.
 
@@ -86,7 +91,7 @@ Tady je rychlé porovnání.
 |Moduly pro rozhraní| Počtu | Počáteční sada oblíbených modulů|
 |Školení výpočetních cílů| Proprietární výpočetní cíl, jenom podpora procesoru| Podporuje Azure Machine Learning výpočetní prostředky, GPU nebo CPU.<br/>(Další výpočetní prostředky podporované v sadě SDK)|
 |Cíle výpočtů nasazení| Speciální formát webové služby, není přizpůsobitelný | Možnosti podnikového zabezpečení & služby Azure Kubernetes. <br/>([Další výpočetní](how-to-deploy-and-where.md) prostředky podporované v sadě SDK) |
-|Automatizované školení modelů a ladění parametrů | Ne | Ještě není v vizuálním rozhraní. <br/> (Podporováno v sadě SDK a Azure Portal.) | 
+|Automatizované školení modelů a ladění parametrů | Ne | Ještě není v vizuálním rozhraní. <br/> (Podporováno v sadě SDK a Azure Portal.) |
 
 Vyzkoušejte si vizuální rozhraní (Preview) s [kurzem: Předpovídat cenu automobilu pomocí vizuálního rozhraní](ui-tutorial-automobile-price-train-score.md).
 
@@ -103,8 +108,8 @@ Získáte kredity, které můžete využít na služby Azure. Po jejich vyčerp�
 
 - Začněte tím, [že vytvoříte pracovní prostor služby Machine Learning](setup-create-workspace.md) .
 
-- Sledujte kurzy s plnou délkou: 
-  + [Výuka modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md) 
+- Sledujte kurzy s plnou délkou:
+  + [Výuka modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md)
   + [Příprava dat a použití automatizovaného strojového učení k automatickému výuce regresního modelu](tutorial-data-prep.md)
 
 - Seznamte se s [kanály strojového učení](/azure/machine-learning/service/concept-ml-pipelines), které umožňují vytvářet, optimalizovat a spravovat scénáře strojového učení.

@@ -1,6 +1,6 @@
 ---
-title: Příklad PowerShellu – Auditování a detekce hrozeb ve službě Azure SQL Database | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu pro konfiguraci auditování a detekce hrozeb ve službě Azure SQL Database
+title: Příklad prostředí PowerShell auditování a rozšířené ochrany před internetovými útoky – Azure SQL Database | Microsoft Docs
+description: Azure PowerShell ukázkový skript pro konfiguraci auditování a rozšířené ochrany před internetovými útoky v Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,18 +9,18 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: ronitr
 ms.author: ronitr
-ms.reviewer: carlrab
-ms.date: 03/12/2019
-ms.openlocfilehash: c0293cd8f06a1988d89e9a88d9b03f71f1181765
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.reviewer: carlrab, vanto
+ms.date: 08/05/2019
+ms.openlocfilehash: f9ef894f4c4d1d0ad0ab43b538c984f9cf5b2d01
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570034"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816686"
 ---
-# <a name="use-powershell-to-configure-sql-database-auditing-and-threat-detection"></a>Konfigurace auditování a detekce hrozeb ve službě SQL Database pomocí PowerShellu
+# <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>Konfigurace auditování SQL Database a rozšířené ochrany před internetovými útoky pomocí prostředí PowerShell
 
-Tento ukázkový skript PowerShellu nakonfiguruje auditování a detekci hrozeb ve službě SQL Database.
+Tento ukázkový skript PowerShellu Nakonfiguruje auditování SQL Database a pokročilou ochranu před internetovými útoky.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -51,7 +51,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří izolovanou databázi nebo elastický fond. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Vytvoří účet úložiště. |
 | [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing) | Nastaví pro databázi zásady auditu. |
-| [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Nastaví pro databázi zásadu detekce hrozeb. |
+| [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Nastaví pro databázi pokročilé zásady ochrany před internetovými útoky. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 

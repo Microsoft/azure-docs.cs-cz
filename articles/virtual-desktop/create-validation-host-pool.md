@@ -1,55 +1,55 @@
 ---
-title: Vytvoření fondu ve verzi preview hostitele virtuální plochy Windows k ověření aktualizace služby – Azure
-description: Postup vytvoření fondu ověření hostitele ke sledování služby aktualizací před zavedením aktualizace do produkčního prostředí.
+title: Vytvoření fondu hostitelů ve verzi Preview pro virtuální počítače s Windows pro ověření aktualizací služby – Azure
+description: Jak vytvořit fond ověřovacích hostitelů pro monitorování aktualizací služby před výstupem aktualizací do produkčního prostředí.
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 05/08/2019
-ms.author: v-chjenk
-ms.openlocfilehash: c9b2a593a6943fe2e9577acc61b1d5a7bcd98607
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: helohr
+ms.openlocfilehash: a23d9fe932556b0a685b373b060901d2c7fb8c85
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070665"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816460"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Kurz: Vytvoření fondu hostitelů pro ověření aktualizací služeb
 
-Hostitel fondy jsou kolekce jednoho nebo víc stejných virtuálních počítačů v prostředí klienta Windows virtuální plochy, ve verzi Preview. Před nasazením hostitele fondy do produkčního prostředí, důrazně doporučujeme že vytvořit fond ověřování hostitele. Aktualizace se použijí nejprve pro ověření hostitele fondy, umožňuje monitorování služby aktualizací před jejich zavádět do produkčního prostředí. Bez ověřování hostitele fondu nemusí zjišťovat změny, které představují chyby, které by mohly vést k výpadku pro uživatele v produkčním prostředí.
+Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta ve verzi Preview virtuálních počítačů s Windows. Před nasazením fondů hostitelů do provozního prostředí důrazně doporučujeme vytvořit fond hostitelů ověřování. Aktualizace se používají jako první k ověření fondů hostitelů, takže můžete sledovat aktualizace služby, než je zavedete do produkčního prostředí. Bez hostitelského fondu pro ověřování nesmíte zjišťovat změny, které zavádějí chyby, což by mohlo vést k výpadkům uživatelů v produkčním prostředí.
 
-Aby vaše aplikace pracují s nejnovějšími aktualizacemi, by měl být podobný fondy hostitele v produkčním prostředí nejvíce fondu ověřování hostitele. Uživatelé by tak často, připojit k fondu ověření hostitele, stejně jako do fondu produkční hostitele. Pokud automatizované testování ve vašem fondu hostitele by měl obsahovat, automatizovaného testování ve fondu ověřování hostitele.
+Pokud chcete zajistit, aby vaše aplikace pracovaly s nejnovějšími aktualizacemi, fond hostitelů ověření by měl být podobně jako fondy hostitelů ve vašem produkčním prostředí. Uživatelé by se měli často připojovat k fondu ověřování pro ověřování stejně jako k produkčnímu fondu hostitelů. Pokud máte ve fondu hostitelů automatizované testování, měli byste zahrnout automatizované testování do fondu ověřovacích hostitelů.
 
-Můžete ladit problémy ve fondu ověření hostitele s oběma [funkce Diagnostika](diagnostics-role-service.md) nebo [článků o řešení potíží virtuální plochy Windows](https://docs.microsoft.com/Azure/virtual-desktop/troubleshoot-set-up-overview).
+Problémy v hostitelském fondu ověřování můžete ladit buď pomocí [diagnostické funkce](diagnostics-role-service.md) , nebo článků pro [řešení potíží s virtuálním počítačem s Windows](https://docs.microsoft.com/Azure/virtual-desktop/troubleshoot-set-up-overview).
 
 >[!NOTE]
-> Doporučujeme ponechat fondu ověření hostitele v místo, kde můžete testovat všechny budoucí aktualizace.
+> Pro otestování všech budoucích aktualizací doporučujeme opustit fond hostitelů ověřování na místě.
 
-Než začnete, [stáhněte a naimportujte modul Powershellu virtuální plochy Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), pokud jste tak již neučinili.
+Než začnete, [Stáhněte a importujte modul PowerShell virtuálního klienta Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), pokud jste to ještě neudělali.
 
-## <a name="create-your-host-pool"></a>Vytvoření fondu hostitele
+## <a name="create-your-host-pool"></a>Vytvoření fondu hostitelů
 
-Můžete vytvořit fond hostitele podle pokynů v některém z těchto článků:
-- [Kurz: Vytvoření fondu hostitele pomocí webu Azure Marketplace](create-host-pools-azure-marketplace.md)
-- [Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru](create-host-pools-arm-template.md)
-- [Vytvoření hostitele fondu pomocí Powershellu](create-host-pools-powershell.md)
+Fond hostitelů můžete vytvořit podle pokynů uvedených v některém z těchto článků:
+- [Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace](create-host-pools-azure-marketplace.md)
+- [Vytvoření fondu hostitelů pomocí šablony Azure Resource Manager](create-host-pools-arm-template.md)
+- [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md)
 
-## <a name="define-your-host-pool-as-a-validation-host-pool"></a>Definovat svůj fond hostitele jako hostitele fond ověření
+## <a name="define-your-host-pool-as-a-validation-host-pool"></a>Zadejte fond hostitelů jako fond pro ověření ověřování.
 
-Spusťte následující rutiny Powershellu k definování nového fondu hostitele jako hostitele fond ověření. Nahraďte hodnoty v uvozovkách podle hodnoty, které jsou relevantní pro vaši relaci:
+Spusťte následující rutiny PowerShellu k definování nového fondu hostitelů jako fondu hostitelů ověření. Hodnoty v uvozovkách nahraďte hodnotami, které jsou relevantní pro vaši relaci:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Set-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool" -ValidationEnv $true
 ```
 
-Spusťte následující rutinu prostředí PowerShell pro potvrzení, jestli je nastavená vlastnost ověření. Nahraďte hodnoty v uvozovkách podle hodnoty, které jsou relevantní pro vaši relaci.
+Spuštěním následující rutiny prostředí PowerShell potvrďte, že byla nastavena vlastnost ověření. Hodnoty v uvozovkách nahraďte hodnotami, které jsou relevantní pro vaši relaci.
 
 ```powershell
 Get-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool" -ValidationEnv $true
 ```
 
-Výsledky z rutiny by měly vypadat podobně jako tento výstup:
+Výsledky rutiny by měly vypadat podobně jako tento výstup:
 
 ```
     TenantName          : contoso 
@@ -65,13 +65,13 @@ Výsledky z rutiny by měly vypadat podobně jako tento výstup:
     Ring                :
 ```
 
-## <a name="update-schedule"></a>Aktualizace plánu
+## <a name="update-schedule"></a>Aktualizovat plán
 
-Ve verzi preview služba aktualizují přibližně měsíční čím dál. Pokud jsou hlavní problémy, důležité aktualizace budou poskytovat častější čím dál.
+Ve verzi Preview se aktualizace služby vyskytují přibližně měsíčně tempo. V případě závažných problémů budou důležité aktualizace k dispozici na častých tempo.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jste vytvořili fond ověření hostitele, se dozvíte, jak nasadit a připojit se k nástroj pro správu pro správu prostředků služby Microsoft virtuálního klienta.
+Teď, když jste vytvořili fond hostitelů pro ověření, si můžete přečíst, jak nasadit a připojit se k nástroji pro správu pro správu prostředků virtuálních ploch Microsoftu.
 
 > [!div class="nextstepaction"]
-> [Kurz nástroj pro správu nasazení](./manage-resources-using-ui.md)
+> [Kurz nasazení nástroje pro správu](./manage-resources-using-ui.md)

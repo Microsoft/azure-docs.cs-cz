@@ -1,24 +1,24 @@
 ---
-title: 'Rychlý start: Dotazování na data pomocí knihovny Pythonu v Azure Průzkumník dat'
-description: V tomto rychlém startu se naučíte dotazovat data z Azure Data Exploreru pomocí Pythonu.
+title: Dotazování na data pomocí knihovny Pythonu v Azure Průzkumník dat
+description: V tomto článku se naučíte, jak zadávat dotazy na data z Azure Průzkumník dat pomocí Pythonu.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 10/16/2018
-ms.openlocfilehash: 253629bab6b0985ab8f540c653f3671c49e6d278
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.topic: conceptual
+ms.date: 08/05/2019
+ms.openlocfilehash: 2c32e67bb2b47a24036a341ea4e1b83037abbaee
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360231"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827531"
 ---
-# <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>Rychlý start: Dotazování na data pomocí knihovny Pythonu v Azure Průzkumník dat
+# <a name="query-data-using-the-azure-data-explorer-python-library"></a>Dotazování na data pomocí knihovny Pythonu v Azure Průzkumník dat
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer poskytuje [datovou klientskou knihovnu pro Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Pomocí této knihovny můžete data dotazovat z kódu. V tomto rychlém startu se připojíte k tabulce na *clusteru nápovědy*, který jsme zřídili pro podporu výuky. Pak provedete dotaz na tabulku v tomto clusteru a vrátíte výsledky.
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer poskytuje [datovou klientskou knihovnu pro Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Pomocí této knihovny můžete data dotazovat z kódu. V tomto článku se připojíte k tabulce v *clusteru Help* , kterou jsme nastavili na podporu učení. Pak provedete dotaz na tabulku v tomto clusteru a vrátíte výsledky.
 
-Tento rychlý start je dostupný také v podobě [poznámkového bloku Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb).
+Tento článek je také k dispozici jako [notebook Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -98,4 +98,4 @@ Měli byste vidět prvních deset výsledků z tabulky StormEvents.
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Ingestování dat pomocí knihovny Pythonu v Azure Průzkumník dat](python-ingest-data.md)
+> [Ingestování dat pomocí knihovny Pythonu v Azure Průzkumník dat](python-ingest-data.md)

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 55bcce3c5a4b0dd00d9217d6cb3cc2cfbe6d5828
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: da7e41ae77226c2a18b92329507855ac30891058
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753806"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816088"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Přehled Azure Service Fabric
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb a kontejnerů. Service Fabric se také zaměřuje na problematiku vývoje a správy nativních cloudových aplikací. Vývojáři a správci se můžou vyhnout komplexním problémům s infrastrukturou a soustředit se na implementaci důležitých a náročných úloh, které jsou škálovatelné, spolehlivé a spravovatelné. Service Fabric představuje novou generaci platforem pro vytváření a správu těchto podnikových cloudových aplikací 1. úrovně spouštěných v kontejnerech.
@@ -29,7 +29,7 @@ Toto krátké video představuje Service Fabric a mikroslužby:
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 ## <a name="compliance"></a>Dodržování předpisů
-Azure poskytovatele prostředků Service Fabric je dostupná ve všech oblastech Azure a je kompatibilní se všechny certifikáty dodržování předpisů, které Azure nabízí; To zahrnuje následující: SOC, ISO, PCI DSS, HIPAA a podle nařízení GDPR. Zkontrolujte následující pro úplný seznam certifikátů dodržování předpisů: [Nabídky dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
+Poskytovatel prostředků Azure Service Fabric je k dispozici ve všech oblastech Azure a je kompatibilní se všemi certifikáty dodržování předpisů, které má Azure. To zahrnuje následující: SOC, ISO, PCI DSS, HIPAA a GDPR. Úplný seznam certifikátů dodržování předpisů najdete v následujících příkladech: [Nabídky dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
 
 ## <a name="applications-composed-of-microservices"></a>Aplikace skládající se z mikroslužeb 
 Service Fabric umožňuje vytvářet a spravovat škálovatelné a odolné aplikace skládající se z mikroslužeb, které se spouštějí s vysokou hustotou ve sdíleném fondu počítačů, který se označuje jako cluster. Poskytuje propracovaný a nenáročný modul runtime pro sestavování distribuovaných, škálovatelných, bezstavových a stavových mikroslužeb spouštěných v kontejnerech. Poskytuje také komplexní možnosti správy aplikací umožňující zřizování, nasazování, monitorování, upgradování, opravování a odstraňování nasazených aplikací, včetně kontejnerizovaných služeb.
@@ -59,7 +59,7 @@ Další informace o vytváření clusterů najdete v tématu popisujícím [vytv
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Bezstavové a stavové mikroslužby pro Service Fabric
 Service Fabric umožňuje sestavovat aplikace, které se skládají z mikroslužeb nebo kontejnerů. Bezstavové mikroslužby (například brány protokolů a webové proxy) si mimo požadavek a odpověď ze služby neudržují měnitelný stav. Role pracovních procesů služby Azure Cloud Services jsou příkladem stavové služby. Stavové mikroslužby (například uživatelské účty, databáze, zařízení, nákupní košíky a fronty) si udržují měnitelný a autoritativní stav i mimo požadavek a odpověď. Dnešní aplikace v internetovém měřítku se skládají z kombinace bezstavových a stavových mikroslužeb. 
 
-Odlišuje Service Fabric je silným zaměřením na sestavování stavových služeb, buď pomocí [integrovaných programovacích modelů](service-fabric-choose-framework.md) nebo kontejnerizovaných stavových služeb. [Scénáře aplikací](service-fabric-application-scenarios.md) popisují scénáře, ve kterých se používají stavové služby.
+Klíčovým rozlišením Service Fabric je jeho silný fokus při vytváření stavových služeb, a to buď s [integrovanými programovacími modely](service-fabric-choose-framework.md) , nebo s využitím kontejnerových stavových služeb. [Scénáře aplikací](service-fabric-application-scenarios.md) popisují scénáře, ve kterých se používají stavové služby.
 
 
 ## <a name="application-lifecycle-management"></a>Správa životního cyklu aplikací
@@ -67,7 +67,7 @@ Service Fabric poskytuje podporu pro celý životní cyklus aplikací a CI/CD cl
 
 Možnosti správy životního cyklu aplikací Service Fabric umožňují správcům aplikací a IT operátorům používat ke zřizování, nasazování, opravování a monitorování aplikací jednoduché pracovní postupy, které téměř nevyžadují úpravy. Tyto integrované pracovní postupy výrazně snižují zátěž kladenou na IT operátory kvůli udržování neustále dostupných aplikací.
 
-Většina aplikací se skládá z kombinace bezstavových a stavových mikroslužeb, kontejnerů a dalších spustitelných souborů, které se nasazují společně. Díky vynucování silných typů aplikací umožňuje Service Fabric nasazení více instancí aplikace. Každá instance se spravuje a upgraduje samostatně. Důležité je, že Service Fabric dokáže nasadit kontejnery nebo jakékoli spustitelné soubory a zajistit jejich spolehlivost. Service Fabric dokáže nasadit například kód v .NET, ASP.NET Core nebo Node.js, kontejnery Windows, kontejnery Linuxu, virtuální počítače Java, skripty, kód Angular nebo prakticky cokoli, z čeho se vaše aplikace skládá.
+Většina aplikací se skládá z kombinace bezstavových a stavových mikroslužeb, kontejnerů a dalších spustitelných souborů, které se nasazují společně. Díky vynucování silných typů aplikací umožňuje Service Fabric nasazení více instancí aplikace. Každá instance se spravuje a upgraduje samostatně. Důležité je, že Service Fabric dokáže nasadit kontejnery nebo jakékoli spustitelné soubory a zajistit jejich spolehlivost. Service Fabric například můžou nasazovat .NET, ASP.NET Core, Python, Node. js, kontejnery Windows, kontejnery pro Linux, virtuální počítače Java, skripty, úhlové nebo doslova cokoli, co tvoří vaši aplikaci.
 
 Platforma Service Fabric je integrovaná s nástroji CI/CD, jako jsou [Azure Pipelines](https://www.visualstudio.com/team-services/), [Jenkins](https://jenkins.io/index.html) a [Octopus Deploy](https://octopus.com/), a můžete ji používat s jakýmkoli jiným oblíbeným nástrojem CI/CD.
 

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: baeb175c57573e557d298ff3197394ab619434ff
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: b3fdcfbb9869c0199c91f5bbc6ca1f02fec996cf
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772635"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828670"
 ---
 # <a name="tutorial-setup-environment-and-workspace"></a>Kurz: Nastavení prostředí a pracovního prostoru
 
@@ -49,14 +49,12 @@ Z pracovního prostoru vytvoříte cloudový prostředek, abyste mohli začít p
 
 1. Vyberte **+ Nová** a vytvořte virtuální počítač poznámkového bloku.
 
-     ![Výběr nového virtuálního počítače](./media/quickstart-run-cloud-notebook/add-workstation.png)
+     ![Výběr nového virtuálního počítače](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
 
 1. Zadejte název vašeho virtuálního počítače. Potom vyberte **Vytvořit**.
 
     > [!NOTE]
     > Název virtuálního počítače poznámkového bloku musí mít délku 2 až 16 znaků. Platné znaky jsou písmena, číslice a znak-znaku.  Název musí být taky jedinečný v rámci vašeho předplatného Azure.
-
-    ![Vytvoření nového virtuálního počítače](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. Počkejte, než se stav změnína spuštěno.
 
@@ -66,7 +64,7 @@ Po spuštění virtuálního počítače pomocí části **virtuální počíta�
 
 1. Vyberte **Jupyter** ve sloupci **identifikátor URI** pro váš virtuální počítač.
 
-    ![Spuštění serveru Jupyter notebook](./media/quickstart-run-cloud-notebook/start-server.png)
+    ![Spuštění serveru Jupyter notebook](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
     Odkaz spustí svůj server poznámkového bloku a otevře webovou stránku Jupyter poznámkového bloku na nové kartě prohlížeče.  Tento odkaz bude fungovat jenom pro osobu, která virtuální počítač vytvořila. Každý uživatel pracovního prostoru musí vytvořit svůj vlastní virtuální počítač.
 
@@ -87,7 +85,7 @@ Pokud jste použili server cloudového poznámkového bloku, zastavte virtuáln�
 
 1. V pracovním prostoru vyberte **virtuální počítače poznámkového bloku**.
 
-   ![Zastavení serveru VM](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![Zastavení serveru VM](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. V seznamu vyberte virtuální počítač.
 

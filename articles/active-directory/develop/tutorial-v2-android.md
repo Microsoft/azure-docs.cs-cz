@@ -3,7 +3,7 @@ title: Začínáme s Androidem – Microsoft Identity Platform | Azure
 description: Jak aplikace pro Android získá přístupový token a zavolá Microsoft Graph rozhraní API nebo rozhraní API, které vyžadují přístupové tokeny od platformy Microsoft Identity Platform.
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: tylermsft
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd19b6094d68277130916b5cda565ba9e633c59
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 76547fd708f880bdf5167d71db121e69fc5b1d30
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334120"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823796"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph z aplikace pro Android.
 
@@ -62,7 +62,7 @@ V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kur
 5. Nastavte **minimální úroveň rozhraní API** na **rozhraní API 19** nebo vyšší a klikněte na **Dokončit**.
 6. V zobrazení projektu vyberte v rozevíracím seznamu **projekt** a zobrazte zdrojové a nezdrojové soubory projektu, otevřete **App/Build. Gradle** a nastavte `targetSdkVersion` na `27`.
 
-## <a name="register-your-application"></a>Registrace vaší aplikace
+## <a name="register-your-application"></a>Zaregistrujte svoji aplikaci.
 
 1. Přejděte na [Azure Portal](https://aka.ms/MobileAppReg).
 2. Otevřete okno [Registrace aplikací](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) a klikněte na **+ Nová registrace**.
@@ -83,7 +83,7 @@ V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kur
 
 1. V podokně projektu Android Studio přejděte na **app\src\main\res**.
 2. Klikněte pravým tlačítkem na položku **res** a vyberte možnost **Nový** > **adresář**. Jako `raw` název nového adresáře zadejte a klikněte na **OK**.
-3. Včásti**zdrojový zdroj**  >  >  `auth_config.json`aplikaceRAW vytvořte nový soubor JSON s názvem a vložte konfiguraci MSAL, kterou jste předtím uložili. >  Další informace najdete v tématu [Konfigurace MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app).
+3. Včásti**zdrojový zdroj** >  >  `auth_config.json`aplikaceRAW vytvořte nový soubor JSON s názvem a vložte konfiguraci MSAL, kterou jste předtím uložili. >  Další informace najdete v tématu [Konfigurace MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app).
 4. V **části app** > **Src** > **Main** **souboru AndroidManifest.** XML přidejte`BrowserTabActivity`aktivituníže.  >  Tato položka umožňuje, aby Microsoft po dokončení ověřování vrátil zpět do vaší aplikace:
 
     ```xml

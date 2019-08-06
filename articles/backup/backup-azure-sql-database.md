@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 989a5689edf7b071d9afe06b1554fdbb0d7d2ebc
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 7312821320084c766f5b3357fe64c061df83673b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737206"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827647"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -25,7 +25,7 @@ Toto řešení využívá rozhraní API systému SQL Native k převzetí záloh 
 * Jakmile zadáte SQL Server virtuální počítač, který chcete chránit, a dotaz na databáze v něm, služba Azure Backup Service nainstaluje na virtuálním počítači rozšíření zálohování úlohy pomocí přípony názvu `AzureBackupWindowsWorkload`.  
 * Toto rozšíření se skládá z koordinátora a modulu plug-in SQL. I když je koordinátor zodpovědný za aktivaci pracovních postupů pro různé operace, jako je konfigurace zálohování, zálohování a obnovení, je za skutečný tok dat zodpovědný modul plug-in.
 * Aby bylo možné zjišťovat databáze na tomto virtuálním počítači, Azure Backup účet `NT SERVICE\AzureWLBackupPluginSvc`vytvoří. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL. Azure Backup využívá `NT AUTHORITY\SYSTEM` účet pro zjišťování nebo dotaz databáze, takže tento účet musí být veřejným přihlášením na SQL. Pokud jste virtuální počítač SQL Server z Azure Marketplace nevytvořili, může se zobrazit chyba **UserErrorSQLNoSysadminMembership**. Pokud k tomu dojde, [postupujte podle těchto pokynů](backup-azure-sql-database.md).
-* Jakmile na vybraných databázích spustíte konfiguraci ochrany, služba zálohování nastaví koordinátora s plány zálohování a dalšími podrobnostmi zásad, které rozšíření ukládá do mezipaměti místně na virtuálním počítači. 
+* Jakmile na vybraných databázích spustíte konfiguraci ochrany, služba zálohování nastaví koordinátora s plány zálohování a dalšími podrobnostmi zásad, které rozšíření ukládá do mezipaměti místně na virtuálním počítači.
 * V naplánovaném čase koordinátor komunikuje s modulem plug-in a spustí streamování zálohovaných dat z SQL serveru pomocí infrastruktury virtuálních klientských počítačů (VDI).  
 * Modul plug-in odesílá data přímo do trezoru služby Recovery Services. tím eliminuje nutnost pracovní umístění. Data jsou zašifrovaná a uložená službou Azure Backup v účtech úložiště.
 * Po dokončení přenosu dat koordinátor potvrdí potvrzení u služby zálohování.
@@ -45,7 +45,7 @@ Než začnete, ověřte následující:
 **Podpora** | **Podrobnosti**
 --- | ---
 **Podporovaná nasazení** | Virtuální počítače Azure Marketplace a virtuální počítače mimo Marketplace (SQL Server ručně nainstalované) jsou podporované.
-**Podporované zeměpisných oblastech** | Austrálie – jihovýchod (pomocného mechanismu), východní Austrálie (AE) <br> Brazílie – jih (BRS)<br> Kanada – střed (CNC), Kanada – východ (CE)<br> Jižní Východní Asie (moře), Východní Asie (EA) <br> Východní USA (EUS), Východní USA 2 (EUS2), Středozápadní USA (WCUS), Západní USA (WUS); Západní USA 2 (WUS 2) Střed USA – sever (NCUS) Střed USA (kapacitní jednotky) Střed USA – jih (SCUS) <br> Indie – střed (INC), Indie – jih (in) <br> Japonsko – východ (JPE), Japonsko – západ (JPW) <br> Korea – střed (KRC), Korea – jih (KRS) <br> Severní Evropa (NE), Západní Evropa <br> Velká Británie – jih (UKS), Velká Británie – západ (UKW)
+**Podporované zeměpisných oblastech** | Austrálie – jihovýchod (pomocného mechanismu), východní Austrálie (AE) <br> Brazílie – jih (BRS)<br> Kanada – střed (CNC), Kanada – východ (CE)<br> Jižní Východní Asie (moře), Východní Asie (EA) <br> Východní USA (EUS), Východní USA 2 (EUS2), Středozápadní USA (WCUS), Západní USA (WUS); Západní USA 2 (WUS 2) Střed USA – sever (NCUS) Střed USA (kapacitní jednotky) Střed USA – jih (SCUS) <br> Indie – střed (INC), Indie – jih (in) <br> Japonsko – východ (JPE), Japonsko – západ (JPW) <br> Korea – střed (KRC), Korea – jih (KRS) <br> Severní Evropa (NE), Západní Evropa <br> Velká Británie – jih (UKS), Velká Británie – západ (UKW) <br> US Gov – Arizona, US Gov – Virginie, US Gov – Texas, US DoD – střed US DoD – východ
 **Podporované operační systémy** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux není aktuálně podporován.
 **Podporované verze SQL Server** | SQL Server 2017, jak je popsáno [zde](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 a SPS, jak je uvedeno [zde](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, web, Developer, Express.
 **Podporované verze rozhraní .NET** | .NET Framework 4.5.2 a vyšší nainstalované na virtuálním počítači
@@ -230,7 +230,7 @@ catch
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si o](backup-sql-server-database-azure-vms.md) zálohování SQL Server databází.
 * [Přečtěte si informace o](restore-sql-database-azure-vm.md) obnovení zálohovaných SQL Server databází.

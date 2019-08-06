@@ -1,33 +1,33 @@
 ---
 title: 'Kurz: Analýza událostí ze systému Azure Digital Twins | Microsoft Docs'
-description: Zjistěte, jak vizualizovat a analyzovat události z prostory vaší digitální dvojče Azure s Azure Time Series Insights pomocí kroků v tomto kurzu.
+description: Pomocí kroků v tomto kurzu zjistíte, jak vizualizovat a analyzovat události z prostorů digitálních vláken Azure pomocí Azure Time Series Insights.
 services: digital-twins
 author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/18/2018
+ms.date: 08/05/2019
 ms.author: alinast
-ms.openlocfilehash: 3f6111457d3438b80ace8cd557747ab8c799efd3
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0244d6ac51b7cad6b74139c39914223928e2b627
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484740"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827831"
 ---
-# <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Kurz: Vizualizujte a analyzujte události z prostory vaší digitální dvojče Azure s využitím Time Series Insights
+# <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Kurz: Vizualizujte a analyzujte události z digitálních vláken Azure pomocí Time Series Insights
 
-Po zřízení prostory vaší nasazení vaší instance Azure digitální dvojče a implementujte vlastní funkce pro monitorování určitých podmínek, můžete vizualizovat události a data přicházející z prostory vaší podívat na trendy a anomálie.
+Po nasazení instance digitálních vláken Azure si můžete zřídit své prostory a implementovat vlastní funkci pro monitorování konkrétních podmínek. můžete vizualizovat události a data přicházející z vašich prostorů a hledat trendy a anomálie.
 
-V [první kurz](tutorial-facilities-setup.md), jste nakonfigurovali prostorový graf imaginární budovy, s prostor, který obsahuje pohybu, oxidu uhličitého a teploty senzorů. V [druhém kurzu](tutorial-facilities-udf.md) jste si zřídili graf a uživatelem definovanou funkci. Funkce monitoruje tyto hodnoty snímačů a aktivuje oznámení pro správné podmínky. To znamená prostor je prázdný a teploty a k oxidu uhličitého úrovně je normální.
+V [prvním kurzu](tutorial-facilities-setup.md)jste nakonfigurovali prostorový graf imaginární budovy s místností, která obsahuje snímače pro pohyb, oxid uhličitý a teplotu. V [druhém kurzu](tutorial-facilities-udf.md) jste si zřídili graf a uživatelem definovanou funkci. Funkce monitoruje tyto hodnoty senzoru a aktivuje oznámení pro správné podmínky. To znamená, že místnost je prázdná a hladina teploty a oxidu uhličitého jsou normální.
 
-Tento kurz vám ukáže, jak integrovat, oznámení a data přicházející z nastavení digitální dvojče Azure s Azure Time Series Insights. Potom můžete vizualizovat hodnoty snímačů v čase. Můžete vyhledat trendy, jako jsou místa, které je stále nejlépe využil a které jsou za nejvytíženější v které denní době. Můžete také detekovat anomálie jako stuffier a hotter pocit, že které místnosti nebo zda je oblast v budově odeslání konzistentně vysoké teplotní hodnoty určující klimatizace vadný.
+V tomto kurzu se dozvíte, jak můžete integrovat oznámení a data přicházející z nastavení digitálních vláken Azure pomocí Azure Time Series Insights. V průběhu času můžete vizualizovat hodnoty snímačů. Můžete hledat trendy, jako je například ta, kterou místnost získává nejvíc a které jsou nejvytíženější denním časem. Můžete také detekovat anomálie, například které místnosti jsou stuffier a Hotter, nebo zda oblast ve vaší budově posílá konzistentně vysoké hodnoty teploty, což značí vadné klimatizace.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Stream dat pomocí Azure Event Hubs.
-> * Analýza s Time Series Insights.
+> * Streamování dat pomocí Event Hubs Azure
+> * Analýza pomocí Time Series Insights.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,11 +36,11 @@ V tomto kurzu se předpokládá, že jste [nakonfigurovali](tutorial-facilities-
 - [Účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Spuštěná instance služby Digital Twins.
 - Pracovní počítač se staženými a extrahovanými [ukázkami služby Digital Twins v jazyce C#](https://github.com/Azure-Samples/digital-twins-samples-csharp).
-- [Sada .NET core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) na vývojovém počítači ke spuštění ukázky. Spustit `dotnet --version` ověření nainstalovanou správnou verzi.
+- [.NET Core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) ve vývojovém počítači pro spuštění ukázky. Spusťte `dotnet --version` , chcete-li ověřit, zda je nainstalovaná správná verze.
 
-## <a name="stream-data-by-using-event-hubs"></a>Stream dat s využitím služby Event Hubs
+## <a name="stream-data-by-using-event-hubs"></a>Streamování dat pomocí Event Hubs
 
-Můžete použít [Event Hubs](../event-hubs/event-hubs-about.md) služby k vytvoření kanálu, abyste mohli Streamovat data. V této části se dozvíte, jak vytvořit Centrum událostí jako konektor mezi vaší instancí Azure digitální dvojče a Time Series Insights.
+Službu [Event Hubs](../event-hubs/event-hubs-about.md) můžete použít k vytvoření kanálu pro streamování dat. V této části se dozvíte, jak vytvořit centrum událostí jako konektor mezi digitálními a Time Series Insights instancemi Azure.
 
 ### <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
@@ -50,34 +50,34 @@ Můžete použít [Event Hubs](../event-hubs/event-hubs-about.md) služby k vytv
 
 1. Vyhledejte a vyberte **Event Hubs**. Vyberte **Vytvořit**.
 
-1. Zadejte **název** pro váš obor názvů služby Event Hubs. Zvolte **standardní** pro **cenová úroveň**, vaše **předplatné**, **skupiny prostředků** , který jste použili pro vaši instanci digitální dvojče a **umístění**. Vyberte **Vytvořit**.
+1. Zadejte **název** oboru názvů Event Hubs. Pro cenovou **úroveň**, vaše **předplatné**, **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a **umístění**, vyberte **Standard** . Vyberte **Vytvořit**.
 
-1. V nasazení oboru názvů služby Event Hubs, vyberte **přehled** podokně, vyberte **přejít k prostředku**.
+1. V Event Hubs nasazení oboru názvů vyberte podokno **Přehled** a pak vyberte **Přejít k prostředku**.
 
-    ![Obor názvů služby Event Hubs po nasazení](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
+    ![Event Hubs obor názvů po nasazení](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
 
-1. V oboru názvů služby Event Hubs **přehled** podokně, vyberte **centra událostí** tlačítko v horní části.
+1. V podokně **přehledu** oboru názvů Event Hubs vyberte tlačítko **centra událostí** v horní části.
     ![Tlačítko centra událostí](./media/tutorial-facilities-analyze/create-event-hub.png)
 
-1. Zadejte **název** centra událostí, a vyberte **vytvořit**.
+1. Zadejte **název** centra událostí a vyberte **vytvořit**.
 
-   Po nasazení centra událostí se zobrazí v **Event Hubs** podokně oboru názvů Event Hubs pomocí **aktivní** stav. Vyberte centra událostí a otevřete její **přehled** podokně.
+   Po nasazení centra událostí se zobrazí v podokně **Event Hubs** Event Hubs oboru názvů s **aktivním** stavem. Vyberte toto centrum událostí a otevřete jeho podokno **přehledu** .
 
-1. Vyberte **skupinu příjemců** tlačítko v horní části a zadejte název, například **tsievents** skupině příjemců. Vyberte **Vytvořit**.
+1. V horní části vyberte tlačítko **Skupina příjemců** a jako skupinu příjemců zadejte název, třeba **tsievents** . Vyberte **Vytvořit**.
 
     ![Skupina uživatelů centra událostí](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)
 
-   Po vytvoření se skupina uživatelů se zobrazí v seznamu dole v Centru událostí **přehled** podokně.
+   Jakmile se skupina uživatelů vytvoří, zobrazí se v seznamu v dolní části podokna **přehledu** centra událostí.
 
-1. Otevřít **zásady sdíleného přístupu** podokně centra událostí, a vyberte **přidat** tlačítko. Zadejte **ManageSend** jako název zásady, ujistěte se, že jsou vybrány všechna zaškrtávací políčka a vyberte **vytvořit**.
+1. Otevřete podokno **zásady sdíleného přístupu** pro centrum událostí a vyberte tlačítko **Přidat** . Jako název zásady zadejte **ManageSend** , ujistěte se, že jsou zaškrtnutá všechna políčka, a vyberte **vytvořit**.
 
     ![Připojovací řetězce centra událostí](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)
 
-1. Otevřete ManageSend zásadu, kterou jste vytvořili a zkopírujte hodnoty **připojovací řetězec – primární klíč** a **připojovací řetězec – sekundární klíč** do dočasného souboru. Bude nutné tyto hodnoty a vytvořte koncový bod centra událostí v další části.
+1. Otevřete zásadu ManageSend, kterou jste vytvořili, a zkopírujte hodnoty připojovacího **řetězce – primární klíč** a **připojovací řetězec – sekundární klíč** do dočasného souboru. Tyto hodnoty budete potřebovat pro vytvoření koncového bodu centra událostí v další části.
 
-### <a name="create-an-endpoint-for-the-event-hub"></a>Vytvořit koncový bod centra událostí
+### <a name="create-an-endpoint-for-the-event-hub"></a>Vytvoření koncového bodu centra událostí
 
-1. V příkazovém okně, ujistěte se, že jste v **obsazení quickstart\src** složky Ukázky digitální dvojče Azure.
+1. V příkazovém okně se ujistěte, že jste ve složce **Occupancy-quickstart\src** v ukázce digitálních vláken Azure.
 
 1. Otevřete soubor **actions\createEndpoints.yaml** v editoru. Obsah souboru nahraďte následujícím kódem:
 
@@ -99,22 +99,22 @@ Můžete použít [Event Hubs](../event-hubs/event-hubs-about.md) služby k vytv
       path: Name_of_your_Event_Hub
     ```
 
-1. Nahraďte zástupné symboly `Primary_connection_string_for_your_event_hub` s hodnotou **připojovací řetězec – primární klíč** pro Centrum událostí. Ujistěte se, že formát tento připojovací řetězec vypadá takto:
+1. Zástupné symboly `Primary_connection_string_for_your_event_hub` nahraďte hodnotou **připojovací řetězec – primární klíč** pro centrum událostí. Ujistěte se, že formát tohoto připojovacího řetězce je následující:
 
    ```plaintext
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Nahraďte zástupné symboly `Secondary_connection_string_for_your_event_hub` s hodnotou **připojovací řetězec – sekundární klíč** pro Centrum událostí. Ujistěte se, že formát tento připojovací řetězec vypadá takto: 
+1. Nahraďte zástupné symboly `Secondary_connection_string_for_your_event_hub` hodnotou **připojovacího řetězce – sekundární klíč** pro centrum událostí. Ujistěte se, že formát tohoto připojovacího řetězce je následující: 
 
    ```plaintext
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Nahraďte zástupné symboly `Name_of_your_Event_Hub` s názvem vašeho centra událostí.
+1. Zástupné symboly `Name_of_your_Event_Hub` nahraďte názvem vašeho centra událostí.
 
     > [!IMPORTANT]
-    > Všechny hodnoty zadávejte bez uvozovek. Ujistěte se, že existuje alespoň jeden znak po dvojtečky v souboru YAML. Můžete také ověřit váš obsah souboru YAML pomocí jakékoli online validátoru YAML [tento nástroj](https://onlineyamltools.com/validate-yaml).
+    > Všechny hodnoty zadávejte bez uvozovek. Ujistěte se, že je alespoň jeden znak mezery za dvojtečkami v souboru YAML. Obsah souboru YAML můžete také ověřit pomocí libovolného ověřovacího modulu online YAML, jako je například [Tento nástroj](https://onlineyamltools.com/validate-yaml).
 
 1. Uložte soubor a zavřete ho. V příkazovém okně spusťte následující příkaz a po zobrazení výzvy se přihlaste ke svému účtu Azure.
 
@@ -122,56 +122,56 @@ Můžete použít [Event Hubs](../event-hubs/event-hubs-about.md) služby k vytv
     dotnet run CreateEndpoints
     ```
 
-   Vytvoří dva koncové body pro vaše Centrum událostí.
+   Vytvoří dva koncové body centra událostí.
 
    ![Koncové body pro službu Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)
 
 ## <a name="analyze-with-time-series-insights"></a>Analýza s využitím služby Time Series Insights
 
-1. V levém podokně [webu Azure portal](https://portal.azure.com)vyberte **vytvořit prostředek**. 
+1. V levém podokně [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**. 
 
 1. Vyhledejte a vyberte nový prostředek **Time Series Insights**. Vyberte **Vytvořit**.
 
-1. Zadejte **Název** vaší instance služby Time Series Insights a pak vyberte své **Předplatné**. Vyberte **skupiny prostředků** , který jste použili pro vaši instanci digitální dvojče a **umístění**. Vyberte **Další: Zdroj události** tlačítko nebo **zdroj události** kartu.
+1. Zadejte **Název** vaší instance služby Time Series Insights a pak vyberte své **Předplatné**. Vyberte **skupinu prostředků** , kterou jste použili pro instanci digitálního vlákna a vaši **polohu**. Vyberte **další: Tlačítko zdroje** události nebo karta **zdroje událostí** .
 
-    ![Vybrané možnosti pro vytvoření instance služby Time Series Insights](./media/tutorial-facilities-analyze/create-tsi.png)
+    ![Výběry pro vytvoření instance Time Series Insights](./media/tutorial-facilities-analyze/create-tsi.png)
 
-1. V **zdroj události** kartu, zadejte **název**vyberte **centra událostí** jako **typ zdroje**a ujistěte se, že jsou vybrány další hodnoty správně. Vyberte **ManageSend** pro **název zásad přístupu centra událostí**a pak vyberte skupinu příjemců, který jste vytvořili v předchozí části pro **skupinu uživatelů centra událostí**. Vyberte **Zkontrolovat a vytvořit**.
+1. Na kartě **zdroj události** zadejte **název**, vyberte **centrum událostí** jako **typ zdroje**a ujistěte se, že jsou vybrané jiné hodnoty správně. Vyberte **ManageSend** pro **název zásady přístupu centra událostí**a pak vyberte skupinu uživatelů, kterou jste vytvořili v předchozí části **skupiny uživatelů centra událostí**. Vyberte **Zkontrolovat a vytvořit**.
 
-    ![Vybrané možnosti pro vytvoření zdroje událostí](./media/tutorial-facilities-analyze/tsi-event-source.png)
+    ![Výběry pro vytvoření zdroje událostí](./media/tutorial-facilities-analyze/tsi-event-source.png)
 
-1. V **zkontrolovat a vytvořit** podokno, zkontrolujte zadané informace a vyberte **vytvořit**.
+1. V podokně **Revize + vytvořit** zkontrolujte zadané informace a vyberte **vytvořit**.
 
-1. V podokně nasazení vyberte zdroj Time Series Insights, který jste právě vytvořili. Otevře se **přehled** podokno pro vaše prostředí Time Series Insights.
+1. V podokně nasazení vyberte prostředek Time Series Insights, který jste právě vytvořili. Otevře se podokno **Přehled** pro vaše Time Series Insights prostředí.
 
-1. Vyberte **přejít na prostředí** tlačítko v horní části. Pokud dojde k přístupu k datům upozornění, otevřete **zásady přístupu k datům** podokno pro vaši instanci služby Time Series Insights, vyberte **přidat**vyberte **Přispěvatel** roli a vyberte příslušné uživatele.
+1. V horní části vyberte tlačítko **Přejít k prostředí** . Pokud obdržíte upozornění pro přístup k datům, otevřete podokno **zásady přístupu k datům** pro vaši instanci Time Series Insights, vyberte **Přidat**, jako roli vyberte **Přispěvatel** a vyberte příslušného uživatele.
 
-1. **Přejít na prostředí** tlačítko otevře [Průzkumníka služby Time Series Insights](../time-series-insights/time-series-insights-explorer.md). Pokud se nezobrazí žádné události, simulace událostí zařízení tak, že přejdete na **připojení zařízení** digitální dvojče vzorku a spuštění projektu `dotnet run`.
+1. Tlačítko **Přejít na prostředí** otevře [Průzkumníka Time Series Insights](../time-series-insights/time-series-insights-explorer.md). Pokud se nezobrazí žádné události, simulovat události zařízení můžete tak, že přejdete na projekt pro **připojení zařízení** , který je ukázkou digitálního vlákna, a `dotnet run`spustíte.
 
-1. Po několika simulovaných události se generují, přejděte zpět do Průzkumníku Time Series Insights a vyberte tlačítko pro aktualizaci v horní části. Měli byste vidět analytické grafy pro data ze simulovaných senzorů. 
+1. Po vygenerování několika simulovaných událostí se vraťte do Průzkumníka Time Series Insights a v horní části vyberte tlačítko Aktualizovat. Měli byste vidět analytické grafy, které se vytvářejí pro Simulovaná data senzorů. 
 
-    ![Grafu v Průzkumníku Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer.png)
+    ![Graf v Průzkumníkovi Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer.png)
 
-1. V Průzkumníku Time Series Insights potom můžete generovat grafy a Heat mapy pro jednotlivé události a data z vašich prostorách, senzorů a dalších prostředků. Na levé straně, použijte **míru** a **ROZDĚLIT podle** rozevírací seznamy a vytvářet vlastní vizualizace. 
+1. V Průzkumníku Time Series Insights můžete vygenerovat grafy a Heat mapy pro různé události a data z místností, senzorů a dalších prostředků. Na levé straně můžete pomocí rozevíracích seznamů **měření** a **rozdělení** vytvořit vlastní vizualizace. 
 
-   Vyberte například **události** pro **míru** a **DigitalTwins SensorHardwareId** pro **ROZDĚLIT podle**můžete generovat Heat pro každou z senzory. Heat mapě bude vypadat jako na následujícím obrázku:
+   Například vyberte **události** pro **míru** a **DIGITALTWINS-SensorHardwareId** pro **rozdělení podle**, abyste vygenerovali heatmapu pro každé z vašich senzorů. Heatmapu bude vypadat podobně jako na následujícím obrázku:
 
-   ![V Průzkumníku Time Series Insights Heatmapu](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)
+   ![Heatmapu v Průzkumníkovi Time Series Insights](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete zastavit zkoumání digitální dvojče Azure nad rámec tohoto bodu, bez obav odstraňte prostředky vytvořené v tomto kurzu:
+Pokud chcete přestat zkoumat digitální vlákna Azure nad rámec tohoto bodu, nebojte se odstranit prostředky vytvořené v tomto kurzu:
 
-1. V levé nabídce v [webu Azure portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte skupinu prostředků digitální dvojče a pak vyberte **odstranit**.
+1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte svou skupinu prostředků digitálního vynechání a pak vyberte **Odstranit**.
 
     > [!TIP]
     > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.
 
-2. V případě potřeby odstraňte ukázkové aplikace na svém počítači práce.
+2. V případě potřeby odstraňte ukázkové aplikace v pracovním počítači.
 
 ## <a name="next-steps"></a>Další postup
 
-Přejdete k dalším článku se dozvíte další informace o Prostorové řady grafů a objektové modely v digitální dvojče Azure.
+V dalším článku se dozvíte víc o grafech prostorových informací a objektových modelech v digitálních prostředcích Azure.
 
 > [!div class="nextstepaction"]
 > [Vysvětlení grafu prostorové inteligence a objektových modelů služby Digital Twins](concepts-objectmodel-spatialgraph.md)

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/13/2019
+ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c20256fb712d9381ba2adc90e2e68ce4fdc8911a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: d4ca21ecf7ad0707ad33220a8e8c2700638f8e25
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382778"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824812"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Nastavení informací o zabezpečení (Preview) na příkazovém řádku přihlašovací stránky
 
@@ -75,7 +75,7 @@ Postupujte podle těchto kroků a nastavte bezpečnostní údaje pro svůj praco
 
 8. Schvalte oznámení v aplikaci Microsoft Authenticator a pak vyberte **Další**.
 
-    ![Oznámení o úspěšnosti, připojení aplikace a účtu](media/security-info/securityinfo-prompt-auth-app-success.png).
+    ![Oznámení o úspěšnosti, připojení aplikace a účtu](media/security-info/securityinfo-prompt-auth-app-success.png)
 
     Vaše bezpečnostní údaje se aktualizují tak, aby ve výchozím nastavení používaly aplikaci Microsoft Authenticator k ověření vaší identity při použití dvoustupňového ověřování nebo resetování hesla.
 
@@ -89,7 +89,7 @@ Postupujte podle těchto kroků a nastavte bezpečnostní údaje pro svůj praco
 
     ![Testování účtu pomocí textové zprávy](media/security-info/securityinfo-prompt-text-msg-enter-code.png)
 
-11. Přečtěte si oznámení o úspěšnosti a potom vyberte Hotovo.
+11. Přečtěte si oznámení o úspěšnosti apotom vyberte Hotovo.
 
     ![Oznámení o úspěchu](media/security-info/securityinfo-prompt-call-answered-success.png)
 
@@ -98,6 +98,40 @@ Postupujte podle těchto kroků a nastavte bezpečnostní údaje pro svůj praco
 12. Zkontrolujte stránku **úspěch** a ověřte, že jste úspěšně nastavili aplikaci Microsoft Authenticator a telefon (buď textovou zprávu nebo telefonní hovor) pro vaše bezpečnostní údaje, a pak vyberte Hotovo.
 
     ![Stránka průvodce byla úspěšně dokončena.](media/security-info/securityinfo-prompt-setup-success.png)
+
+    >[!Note]
+    >Pokud vaše organizace vyžaduje, abyste používali hesla aplikací, může se v tomto průvodci zobrazit další část, kde ji můžete nastavit. Pokud se zobrazí třetí část s názvem **hesla aplikací**, je nutné ji vyplnit předtím, než budete moci průvodce Dokončit. Postup přidání hesla aplikace najdete v části [Správa hesel aplikací](#manage-your-app-passwords) v tomto článku.
+
+### <a name="manage-your-app-passwords"></a>Správa hesel aplikací
+
+Některé aplikace, jako je například Outlook 2010, nepodporují dvoustupňové ověřování. Tato nedostatečná podpora znamená, že pokud ve vaší organizaci používáte dvoustupňové ověřování, aplikace nebude fungovat. Pokud se chcete tomuto problému vyhnout, můžete vytvořit automaticky vygenerované heslo, které se použije u každé neprohlížečové aplikace, oddělené od normálního hesla.
+
+>[!Note]
+>Pokud tuto možnost nevidíte v průvodci, znamená to, že ji správce nevytvořil. Pokud tato možnost není nastavená, ale víte, že je potřeba použít hesla aplikací, můžete postupovat podle kroků uvedených v části [Nastavení hesel aplikací na stránce informace o zabezpečení (Preview)](security-info-app-passwords.md).
+
+Při používání hesel aplikací je důležité pamatovat:
+
+- Hesla aplikací se generují automaticky a zadávají se jenom jednou pro každou aplikaci.
+
+- Pro každého uživatele je povolený limit 40 hesel. Pokud se po uplynutí tohoto limitu pokusíte jeden vytvořit, budete vyzváni k odstranění existujícího hesla, než bude povoleno vytvoření nového.
+
+- Použijte jedno heslo aplikace na zařízení, ne na aplikaci. Můžete například vytvořit jedno heslo pro všechny aplikace na přenosném počítači a další jedno heslo pro všechny aplikace na ploše.
+
+#### <a name="to-add-app-passwords-in-the-sign-in-wizard"></a>Přidání hesel aplikací v průvodci přihlášením
+
+1. Po dokončení předchozích částí průvodce vyberte **Další** a dokončete oddíl **heslo aplikace** .
+
+2. Zadejte název aplikace, která potřebuje heslo, například `Outlook 2010`a potom vyberte **Další**.
+
+    ![Přidání názvu hesla aplikace v Průvodci](media/security-info/app-password-app-password.png)
+
+3. Zkopírujte kód pro heslo z obrazovky pro **heslo aplikace** a vložte ho do oblasti **hesla** aplikace (v tomto příkladu je to Outlook 2010).
+
+    ![Stránka hesla aplikace s heslem pro kopírování](media/security-info/app-password-copy-password.png)
+
+4. Po zkopírování hesla a jeho vložení do aplikace se vraťte k tomuto průvodci a ujistěte se, že všechny informace o způsobu přihlašování jsou přesné a potom vyberte Hotovo.
+
+    ![Stránka hesla aplikace s upozorněním na dokončení](media/security-info/app-password-complete.png)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,26 +4,16 @@
   expanded: true
   items:
     - name: Co je služba Azure Machine Learning?
-      displayName: AML services overview
+      displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
     - name: Jak služba funguje
-      displayName: architecture concepts definitions
+      displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: Nastavení
   items:
     - name: Vytvoření pracovního prostoru
       displayName: install sdk workspace
       href: setup-create-workspace.md
-- name: Šablony Rychlý start
-  items:
-    - name: Python SDK
-      items:
-        - name: Spuštění experimentu v cloudu
-          displayName: workspace
-          href: quickstart-run-cloud-notebook.md
-        - name: Spuštění experimentu v místním prostředí
-          displayName: 'workspace, install, sdk'
-          href: quickstart-run-local-notebook.md
 - name: Kurzy
   items:
     - name: Python SDK
@@ -52,10 +42,10 @@
     - name: Vizuální rozhraní
       items:
         - name: Trénování regresního modelu
-          displayName: experiment drag-and-drop visual interface Tutorial 1
+          displayName: studio
           href: ui-tutorial-automobile-price-train-score.md
         - name: Nasazení regresního modelu
-          displayName: experiment drag-and-drop visual interface Tutorial 2
+          displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: Automatizované strojové učení
       items:
@@ -65,27 +55,27 @@
 - name: Ukázky
   items:
     - name: Notebooks
-      displayName: 'example, examples, jupyter, azure notebooks, python, notebook, github'
+      displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
     - name: Experimenty s vizuálním rozhraním
       items:
         - name: Predikce ceny
-          displayName: 'Basic Sample, training, regression, sample 1'
+          displayName: 'regression, studio'
           href: ui-sample-regression-predict-automobile-price-basic.md
         - name: Predikce ceny (pokročilá)
-          displayName: 'Advanced Sample, training, regression, sample 2'
+          displayName: 'regression, studio'
           href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
         - name: Predikce úvěrového rizika
-          displayName: 'Basic Sample, training, classification, sample 3'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-credit-risk-basic.md
         - name: Predikce úvěrového rizika (pokročilá)
-          displayName: 'Advanced Sample, training, classification, sample 4'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
         - name: Predikce četnosti změn
-          displayName: 'Basic Sample, training, classification, sample 5'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-churn.md
         - name: Predikce zpoždění letů
-          displayName: 'Basic Sample, training, classification, sample 6'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-flight-delay.md
     - name: Otevřené datové sady Azure
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
@@ -97,7 +87,7 @@
     - name: Pracovní prostor
       href: concept-workspace.md
     - name: Cílový výpočetní objekt
-      displayName: 'compute, resource, target, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
     - name: Vizuální rozhraní
       displayName: studio
@@ -106,7 +96,7 @@
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
     - name: Správa modelů (MLOps)
-      displayName: 'deploy, deployment, mlops, operationalize, operationalization'
+      displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
     - name: Kanály ML
       href: concept-ml-pipelines.md
@@ -157,15 +147,15 @@
           href: how-to-vscode-tools.md
     - name: Práce s daty
       items:
+        - name: Získání dat z úložiště dat
+          displayName: 'blob, get, fileshare, access storage'
+          href: how-to-access-data.md
         - name: Přidání a registrace datových sad
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
         - name: Zkoumání dat
           displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
           href: how-to-explore-prepare-data.md
-        - name: Získání dat z úložiště dat
-          displayName: blob get fileshare access storage
-          href: how-to-access-data.md
         - name: Příprava s využitím azureml.dataprep
           items:
             - name: Načtení dat
@@ -229,7 +219,7 @@
     - name: Nasazení a obsluha modelů
       items:
         - name: Kde a jak nasadit
-          displayName: publish web service
+          displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
         - name: Azure Container Instances
           href: how-to-deploy-azure-container-instance.md
@@ -285,13 +275,13 @@
 - name: Referenční informace
   items:
     - name: Sada Machine Learning SDK
-      displayName: api core package python data prep
-      href: 'https://aka.ms/aml-sdk'
+      displayName: 'api, core, package, python, class'
+      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
     - name: Machine Learning CLI
-      displayName: 'cli, extension, command line, command-line, az, ci/cd, automate, automated'
+      displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
     - name: Moduly vizuálního rozhraní
-      displayName: module reference
+      displayName: 'module, reference, algorithm, studio'
       items:
         - name: Přehled referenčních informací k modulům
           href: ../algorithm-module-reference/module-reference.md
@@ -384,7 +374,7 @@
 - name: Zdroje a prostředky
   items:
     - name: "Poznámky k\_verzi"
-      displayName: what's new issues bugs
+      displayName: 'what''s, new, issues, bugs'
       href: azure-machine-learning-release-notes.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
@@ -393,7 +383,7 @@
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Známé problémy
-      displayName: bugs errors troubleshoot
+      displayName: 'bugs, errors, troubleshoot'
       href: resource-known-issues.md
     - name: Uživatelské fórum
       href: 'https://aka.ms/aml-forum-service'
@@ -402,5 +392,5 @@
     - name: Porovnání našich produktů ML
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Co se stalo s Workbenchem
-      displayName: desktop ui Workbench upgrade update transfer
+      displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md

@@ -1,6 +1,6 @@
 ---
-title: Co je OPC dvojče – Azure | Dokumentace Microsoftu
-description: Přehled dvojčete OPC
+title: Co je OPC s dvojitou podporou – Azure | Microsoft Docs
+description: Přehled vláken OPC
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,38 +8,38 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d58dc18d5513259d5c01f7ddcc54736796e5c824
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c0d824e23a98aa14081fbd21bd6a9fbec5d583e0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603627"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815935"
 ---
-# <a name="what-is-opc-twin"></a>Co je OPC Dvojčat?
+# <a name="what-is-opc-twin"></a>Co je OPC s dvojitým obsahem?
 
-Dvojče OPC se skládá z mikroslužeb, které slouží k připojení cloudu a objekt pro vytváření sítí Azure IoT Edge a IoT Hub. Dvojče OPC poskytuje zjišťování, registrace a vzdáleného řízení průmyslová zařízení prostřednictvím rozhraní REST API. Dvojče OPC nevyžaduje architekturu Unified OPC (OPC UA) sady SDK, je programování jazykově nezávislé a můžou být součástí bez serveru pracovního postupu. Tento článek popisuje několik případů použití Dvojčat OPC.
+OPC se skládá z mikroslužeb, které používají Azure IoT Edge a IoT Hub k propojení cloudu a sítě továrny. OPC vlákna poskytuje zjišťování, registraci a vzdálené řízení průmyslových zařízení prostřednictvím rozhraní REST API. OPC vláken nevyžaduje sadu SDK OPC UA (OPC Unified Architecture), je programovací jazyk nezávislá a může být součástí pracovního postupu bez serveru. Tento článek popisuje několik OPC vlákenných případů použití.
 
 ## <a name="discovery-and-control"></a>Zjišťování a řízení
-Pro jednoduché pro registraci a zjišťování můžete použít dvojče OPC.
+OPC je možné použít pro jednoduché zjišťování a registraci.
 
 ### <a name="simple-discovery-and-registration"></a>Jednoduché zjišťování a registrace
-Dvojče OPC umožňuje objekt pro vytváření operátory pro skenování sítě factory tak, aby servery OPC UA lze zjistit a zaregistrován. Jako alternativu operátory objekt pro vytváření také ručně registrovat pomocí adresy URL pro zjišťování známého zařízení OPC UA. Například pro připojení pro všechna zařízení OPC UA po instalaci brány IoT Edge se modul OPC Dvojčete ve výrobě, factory operátora vzdáleně spustit prohledávání sítě a vizuálně zobrazit všechny servery OPC UA. 
+OPC s sebou umožňuje operátorům továrny kontrolovat síť továrny, aby bylo možné zjistit a zaregistrovat servery OPC UA. Jako alternativu můžou obsluhy továrny taky ručně registrovat zařízení OPC UA pomocí známé adresy URL zjišťování. Pokud se třeba chcete připojit ke všem zařízením OPC UA po instalaci brány s doIoT Edge daným modulem OPC v produkčním patře, může operátor Factory vzdáleně aktivovat kontrolu sítě a vizuálně zobrazit všechny servery OPC UA. 
 
-### <a name="simple-control"></a>Jednoduché ovládací prvek
-Dvojče OPC umožňuje operátorům factory reagovat na události a překonfigurujte jejich factory floor počítačů z cloudu automaticky nebo ručně v reálném čase. Dvojče OPC poskytuje rozhraní REST API můžete volat služby na serveru OPC UA, vyhledejte jeho adresní prostor ke čtení a zápis proměnné a spouštět metody. Například kotel používá teploty klíčový ukazatel výkonu pro řízení výrobní linky. Senzor teploty publikuje změny v datech použití vydavatele OPC. Factory operátora obdrží upozornění, že teplota dosáhla prahová hodnota. Výrobní linky chladí automaticky prostřednictvím OPC Dvojčete. Factory operátora informován o nástrojů dolů.
+### <a name="simple-control"></a>Jednoduchý ovládací prvek
+OPC, což umožňuje operátorům továrny reagovat na události a změnit jejich tovární nastavení z cloudu buď automaticky, nebo ručně. OPC s dvojitou platností poskytuje rozhraní REST API k vyvolání služeb na serveru OPC UA, procházení jeho adresního prostoru i pro čtení/zápis proměnných a provádění metod. Například kotl používá k řízení výrobní linky klíčový ukazatel výkonu. Senzor teploty publikuje změnu v datech pomocí vydavatele OPC. Operátor továrny obdrží výstrahu, že teplota dosáhla prahové hodnoty. Výrobní čára se chladí automaticky prostřednictvím OPC vlákna. Pracovník pro továrnu obdrží oznámení o vychladnutí.
 
 ## <a name="authentication"></a>Ověřování
-Pro jednoduché ověřování a pro jednoduché vývojové prostředí můžete použít dvojče OPC.
+OPC je možné použít pro jednoduché ověřování a pro jednoduché prostředí pro vývojáře.
 
 ### <a name="simple-authentication"></a>Jednoduché ověřování 
-Dvojče OPC používá ověřování pomocí Azure Active Directory AAD a auditování od konce do konce. Například dvojče OPC umožní aplikaci postavené na dvojče OPC, chcete-li zjistit, co má operátor provádí na počítači. Na straně počítače je prostřednictvím OPC UA auditování. Na straně cloudu je pomocí ukládání protokolu auditu neměnné klientů a ověřování AAD pomocí rozhraní REST API.
+OPC se Azure Active Directory pomocí ověřování a auditu založeného na AAD používá od konce do konce. Například OPC vlákna umožňuje, aby aplikace byla sestavena na základě OPC vláken, aby bylo možné určit, který operátor byl na počítači proveden. Na straně počítače se jedná prostřednictvím auditování OPC UA. Na straně cloudu je ukládání neměnného protokolu auditu klienta a ověřování AAD na REST API.
 
-### <a name="simple-developer-experience"></a>Jednoduché vývojářské prostředí 
-Dvojče OPC jde použít s aplikace napsané v libovolném programovacím jazyce prostřednictvím rozhraní REST API. Jako vývojáři integrovat do řešení klienta OPC UA, není nutné znalosti o sadě SDK OPC UA. Dvojče OPC můžete bez problémů integrovat do architektury bezstavové, bez serveru. Například web vývojáře plnohodnotných, který vyvíjí aplikaci pro řídicí panel upozornění a události můžou psát logiku pro reakci na události v jazyce JavaScript nebo TypeScript pomocí OPC Dvojčete bez znalosti jazyka C, C#, nebo toto plně implementováno zásobníku OPC UA. 
+### <a name="simple-developer-experience"></a>Jednoduché prostředí pro vývojáře 
+OPC je možné použít s aplikacemi napsanými v libovolném programovacím jazyce prostřednictvím rozhraní REST API. Protože vývojáři integrují klienta OPC UA do řešení, není nutné znát OPC sady SDK pro UA. OPC je možné bezproblémově integrovat do bezstavové architektury bez serveru. Například plný zásobník webového vývojáře, který vyvíjí aplikaci pro alarm a řídicí panel události, může napsat logiku, aby reagovala na události v JavaScriptu nebo TypeScript pomocí OPC vlákna bez znalosti jazyka C, C#nebo úplné implementace zásobníku OPC UA. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se dozvěděli o Dvojčete OPC a jeho použití, je zde navrhované další krok:
+Teď, když jste se naučili o neOPCi a o jejích použitích, je tady doporučený další krok:
 
 > [!div class="nextstepaction"]
-> [Co je trezor OPC](overview-opc-twin-architecture.md)
+> [Co je trezor OPC](overview-opc-vault.md)

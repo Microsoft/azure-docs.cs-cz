@@ -29,7 +29,7 @@ sections:
             image:
               src: ../media/index/i_overview.svg
             title: Co je Analýza textu?
-          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-signup
+          - href: /azure/cognitive-services/cognitive-services-apis-create-account
             html: '<p>Přečtěte si, jak si zaregistrovat rozhraní API pro analýzu textu.</p>'
             image:
               src: ../media/index/i_get-started.svg

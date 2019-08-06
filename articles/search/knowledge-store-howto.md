@@ -5,15 +5,15 @@ manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: 5794a24931b613bf1bdddd983799367bb02cf44d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 139cb598ee774e52da8d97e8d209e11ec4ffc94d
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641004"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828449"
 ---
 # <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Jak začít se službou Knowledge Store v Azure Search
 
@@ -22,7 +22,7 @@ ms.locfileid: "68641004"
 >
 [Znalostní báze](knowledge-store-concept-intro.md) šetří soubory AI, které se vytvořily během indexování vašeho účtu Azure Storage pro dolování dat v jiných aplikacích. Pomocí uložených rozšíření můžete také pochopit a zdokonalit Azure Search kanál indexování. 
 
-Znalostní databáze je definována *dovednosti* a vytvořeným *indexerem*. Fyzický výraz úložiště znalostí je *určen pomocí projekcí* , které určují datové struktury v úložišti. V době, kdy jste tento návod dokončili, jste vytvořili všechny tyto objekty a vy budete znát, jak se budou všechny vzájemně přizpůsobovat. 
+Znalostní databáze je definována *dovednosti* a vytvořeným *indexerem*. Fyzický výraz úložiště znalostí je určen pomocí projekcí, které určují datové struktury v úložišti. V době, kdy jste tento návod dokončili, jste vytvořili všechny tyto objekty a vy budete znát, jak se budou všechny vzájemně přizpůsobovat. 
 
 V tomto cvičení začněte s ukázkovými daty, službami a nástroji a Naučte se základní pracovní postup pro vytváření a používání vašeho prvního obchodu s poznatky s důrazem na dovednosti definition.
 
@@ -487,7 +487,7 @@ Je důležité si uvědomit, že je úložiště znalostí zcela odpojeno od Azu
 
 Nyní jste vytvořili první znalostní bázi Knowledge Store ve službě Azure Storage a použili Průzkumník služby Storage k zobrazení rozšíření. Toto je základní prostředí pro práci s uloženými rozšířeními. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Shaper dovednost provádí těžkou zvedání vytváření podrobných datových formulářů, které lze kombinovat do nových tvarů. V dalším kroku si Projděte referenční stránku pro tuto dovednost, kde najdete podrobnosti o tom, jak se používá.
 

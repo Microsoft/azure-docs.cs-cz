@@ -4,14 +4,14 @@ description: Informace o správě konfliktů ve službě Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 06/25/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 96171d4729187ca03f1e9529551a7fb6a26c6976
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 77fb0e195cee03405c4a601fe8c57d4a2690a4b2
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360376"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815072"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Správa zásad řešení konfliktů v Azure Cosmos DB
 
@@ -19,7 +19,7 @@ V případě zápisů ve více oblastech může dojít ke konfliktům, pokud ví
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Vytvoření zásad řešení konfliktů pro poslední zápis a službu WINS
 
-V těchto ukázkách se dozvíte, jak nastavit kontejner pomocí zásad řešení konfliktů pro poslední zápis a službu WINS. Výchozí cesta pro poslední zapisovač – WINS je pole časového razítka nebo `_ts` vlastnost. To může být také nastaveno na uživatelsky definovanou cestu pro číselný typ. V konfliktu je nejvyšší hodnota služba WINS. Pokud cesta není nastavena nebo je neplatná, nastaví se jako výchozí `_ts`. Konflikty vyřešené s touto zásadou se v informačním kanálu konfliktu nezobrazují. Tuto zásadu můžou používat všechna rozhraní API.
+V těchto ukázkách se dozvíte, jak nastavit kontejner pomocí zásad řešení konfliktů pro poslední zápis a službu WINS. Výchozí cesta pro poslední zapisovač – WINS je pole časového razítka nebo `_ts` vlastnost. Pro rozhraní SQL API to může být také nastaveno na uživatelsky definovanou cestu s číselným typem. V konfliktu je nejvyšší hodnota služba WINS. Pokud cesta není nastavena nebo je neplatná, nastaví se jako výchozí `_ts`. Konflikty vyřešené s touto zásadou se v informačním kanálu konfliktu nezobrazují. Tuto zásadu můžou používat všechna rozhraní API.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
@@ -114,7 +114,6 @@ Uložené procedury řešení Custom konfliktů by se měly implementovat pomoc�
 
 > [!IMPORTANT]
 > Stejně jako u jakékoli uložené procedury má vlastní procedura řešení konfliktů přístup k jakýmkoli datům se stejným klíčem oddílu a může provést jakoukoli operaci vložení, aktualizace nebo odstranění pro vyřešení konfliktů.
-
 
 Tato ukázková uložená procedura vyřeší konflikty výběrem nejnižší hodnoty z `/myCustomId` cesty.
 
@@ -273,7 +272,6 @@ udp_collection = self.try_create_document_collection(
 
 Po vytvoření kontejneru je nutné vytvořit `resolver` uloženou proceduru.
 
-
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Vytvoření vlastní zásady řešení konfliktů
 
 Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů. Tyto konflikty se zobrazí v informačním kanálu o konfliktech.
@@ -424,14 +422,14 @@ while conflict:
     conflict = next(conflicts_iterator, None)
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si o následujících konceptech Azure Cosmos DB:
 
-* [Globální distribuce – pod kapotou](global-dist-under-the-hood.md)
-* [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md)
-* [Konfigurace klientů pro vícedomé služby](how-to-manage-database-account.md#configure-multiple-write-regions)
-* [Přidat nebo odebrat oblasti z Azure Cosmos DB účtu](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md).
-* [Dělení a distribuce dat](partition-data.md)
-* [Indexování v Azure Cosmos DB](indexing-policies.md)
+- [Globální distribuce – pod kapotou](global-dist-under-the-hood.md)
+- [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md)
+- [Konfigurace klientů pro vícedomé služby](how-to-manage-database-account.md#configure-multiple-write-regions)
+- [Přidat nebo odebrat oblasti z Azure Cosmos DB účtu](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+- [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md).
+- [Dělení a distribuce dat](partition-data.md)
+- [Indexování v Azure Cosmos DB](indexing-policies.md)
