@@ -50,7 +50,7 @@
         - name: Šifrování disků pro virtuální počítače IaaS
           items:
             - name: Informace o službě Azure Disk Encryption
-              displayName: 'Bitlocker, bek'
+              displayName: 'BitLocker, bek'
               href: azure-security-disk-encryption-overview.md
             - name: Šablony Rychlý start
               items:
@@ -70,7 +70,7 @@
                   href: azure-security-disk-encryption-windows.md
                 - name: Šifrování disků pro virtuální počítače s Linuxem
                   href: azure-security-disk-encryption-linux.md
-                - name: Šifrování disků s nastavením pořadí rozšíření VMSS
+                - name: Šifrování disku s nastavením pořadí rozšíření pro škálované sady virtuálních počítačů
                   href: azure-security-disk-encryption-extension-sequencing.md
                 - name: Dodatek k šifrování disků
                   href: azure-security-disk-encryption-appendix.md
@@ -332,49 +332,3 @@
     - name: Testování průniku
       displayName: penetration
       href: ./fundamentals/pen-testing.md
-    - name: Nástroj Microsoftu pro modelování hrozeb
-      displayName: stride
-      href: ./develop/threat-modeling-tool.md
-      items:
-        - name: Začínáme
-          href: ./develop/threat-modeling-tool-getting-started.md
-        - name: Přehled funkcí
-          href: ./develop/threat-modeling-tool-feature-overview.md
-        - name: Hrozby
-          href: ./develop/threat-modeling-tool-threats.md
-        - name: Vydání
-          href: ./develop/threat-modeling-tool-releases.md
-          items:
-            - name: 'Threat Modeling Tool, vydání GA 7.1.5091.2 – 12. 9. 2018'
-              href: ./develop/threat-modeling-tool-releases-71509112.md
-            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.51023.1 – 1. 10. 2018'
-              href: ./develop/threat-modeling-tool-releases-71510231.md
-            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.60126.1 – 29. 1. 2019'
-              href: ./develop/threat-modeling-tool-releases-71601261.md
-            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.60408.1 – 9. 4. 2019'
-              href: ./develop/threat-modeling-tool-releases-71604081.md
-            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.60702.1 – 2. 7. 2019'
-              href: ./develop/threat-modeling-tool-releases-71607021.md
-        - name: Omezení rizik
-          href: ./develop/threat-modeling-tool-mitigations.md
-          items:
-            - name: Auditování a protokolování
-              href: ./develop/threat-modeling-tool-auditing-and-logging.md
-            - name: Authentication
-              href: ./develop/threat-modeling-tool-authentication.md
-            - name: Autorizace
-              href: ./develop/threat-modeling-tool-authorization.md
-            - name: Zabezpečení komunikace
-              href: ./develop/threat-modeling-tool-communication-security.md
-            - name: Správa konfigurace
-              href: ./develop/threat-modeling-tool-configuration-management.md
-            - name: Kryptografie
-              href: ./develop/threat-modeling-tool-cryptography.md
-            - name: Správa výjimek
-              href: ./develop/threat-modeling-tool-exception-management.md
-            - name: Ověření vstupu
-              href: ./develop/threat-modeling-tool-input-validation.md
-            - name: Citlivá data
-              href: ./develop/threat-modeling-tool-sensitive-data.md
-            - name: Správa relací
-              href: ./develop/threat-modeling-tool-session-management.md

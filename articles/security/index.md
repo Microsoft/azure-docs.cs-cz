@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 06/11/2019
 ms.author: angrobe
-ms.openlocfilehash: d921e529140bc7446e3c9f97b33ba226431d7b91
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 7c41b09c35de7ef8694f9215b8f3dc271e243de2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143518"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780494"
 ---
 # <a name="azure-security-documentation"></a>Dokumentace ke službě Azure Security
 
@@ -49,7 +49,7 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">Zvažuji Azure pro svou společnost. Jaké zabezpečení Azure nabízí?</p>
+                            <p style="font-size: 1.12rem;">Zvažujeme Azure pro naši společnost. Jaké zabezpečení Azure nabízí?</p>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">Jak sdílí Microsoft odpovědnost za zabezpečení s mojí organizací?</p>
+                            <p style="font-size: 1.12rem;">Jak Microsoft sdílí odpovědnost za zabezpečení s naší organizací?</p>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-infrastructure">
+        <a href="/azure/security/fundamentals/infrastructure">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -135,7 +135,7 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-encryption-atrest">
+        <a href="/azure/security/fundamentals/encryption-atrest">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -192,13 +192,13 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
                                 <a class="barLink" href="https://aka.ms/SecurityResponsepaper">Odpověď Azure na zabezpečení v cloudu</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-threat-detection">Rozšířená detekce hrozeb Azure</a>
+                                <a class="barLink" href="/azure/security/fundamentals/threat-detection">Rozšířená detekce hrozeb Azure</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-azure-network-security">Zabezpečení sítě Azure</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-network-security>Azure network security"</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-develop-secure-apps">Vývoj zabezpečených aplikací v Azure</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-develop-secure-apps">Vývoj zabezpečených aplikací v Azure</a>
                             </li>
                         </ul>
                     </div>
@@ -218,25 +218,25 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
                                 <a class="barLink" href="https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/">Osvědčené postupy zabezpečení pro Azure</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-network-security-best-practices">Zabezpečení sítě</a>
+                                <a class="barLink" href="/azure/security/fundamentals/network-best-practices">Zabezpečení sítě</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-data-encryption-best-practices">Zabezpečení dat</a>
+                                <a class="barLink" href="/azure/security/fundamentals/data-encryption-best-practices">Zabezpečení dat</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/azure-security-best-practices-vms">Zabezpečení virtuálních počítačů</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-identity-management-best-practices">Identita a přístup</a>
+                                <a class="barLink" href="/azure/security/fundamentals/identity-management-best-practices">Identita a přístup</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-iaas">Zabezpečení IaaS</a>
+                                <a class="barLink" href="/azure/security/fundamentals/iaas">Zabezpečení IaaS</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/security-paas-deployments">Zabezpečená nasazení PaaS</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-global-admin">Zabezpečené účty správce Azure</a>
+                                <a class="barLink" href="/azure/security/fundamentals/global-admin">Zabezpečené účty správce Azure</a>
                             </li>
                         </ul>
                     </div>
@@ -380,12 +380,12 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-cyber-services">
+        <a href="/azure/security/fundamentals/cyber-services">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">Poradenství pro zabezpečení</p>
+                            <p style="font-size: 1.12rem;">Poradenství pro kybernetickou bezpečnost</p>
                         </div>
                     </div>
                 </div>
@@ -393,7 +393,7 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-pen-testing">
+        <a href="/azure/security/fundamentals/pen-testing">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -463,7 +463,7 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">Multi-Factor Authentication (MFA)</p>
+                            <p style="font-size: 1.12rem;">Vícefaktorové ověřování (MFA)</p>
                         </div>
                     </div>
                 </div>

@@ -64,6 +64,8 @@
           href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Převod certifikátu instančního objektu
           href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: Problémy s prezenčním signálem Apache Ambari
+          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
 - name: Postup
   items:
     - name: Použití sandboxu Apache Hadoopu

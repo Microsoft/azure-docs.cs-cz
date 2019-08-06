@@ -13,7 +13,7 @@
   items:
     - name: Rozpoznávání podezřelých hrozeb
       href: tutorial-detect-threats.md
-    - name: Prozkoumávání případů
+    - name: Šetření incidentů
       href: tutorial-investigate-cases.md
     - name: Reakce na hrozby
       href: tutorial-respond-threats-playbook.md

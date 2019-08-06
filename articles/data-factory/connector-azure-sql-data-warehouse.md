@@ -556,7 +556,7 @@ V následující tabulce jsou uvedené příklady toho, jak zadat **tableName** 
 | Schéma databáze | Název tabulky | **tableName** vlastnost JSON               |
 | --------- | ---------- | ----------------------------------------- |
 | dbo       | MyTable    | MyTable nebo dbo.MyTable nebo [dbo].[MyTable] |
-| dbo1      | MyTable    | dbo1. Tabulka nebo [dbo1].[MyTable]          |
+| dbo1      | MyTable    | dbo1.MyTable [dbo1].[MyTable]          |
 | dbo       | My.Table   | [My.Table] nebo [dbo].[My.Table]            |
 | dbo1      | My.Table   | [dbo1].[My.Table]                         |
 
