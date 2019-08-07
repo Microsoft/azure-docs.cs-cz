@@ -56,14 +56,20 @@
       maintainContext: true
     - name: Řešení potíží
       items:
+        - name: Provizorní uzamčení – CPU
+          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
+        - name: InvalidNetworkConfigurationErrorCode – vytvoření clusteru se nepovedlo
+          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+        - name: InvalidNetworkSecurityGroupSecurityRules – vytvoření clusteru se nepovedlo
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Nejde se přihlásit ke clusteru HDInsight
           href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
         - name: Nejde přidat uzly do clusteru HDInsight
           href: ./hdinsight-troubleshoot-unable-add-nodes.md
-        - name: InvalidNetworkSecurityGroupSecurityRules – vytvoření clusteru se nepovedlo
-          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: Převod certifikátu instančního objektu
           href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: Místní HDFS se zablokuje v bezpečném režimu
+          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
         - name: Problémy s prezenčním signálem Apache Ambari
           href: ./apache-ambari-troubleshoot-heartbeat-issues.md
 - name: Postup

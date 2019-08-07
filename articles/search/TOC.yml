@@ -53,15 +53,21 @@
           href: cognitive-search-tutorial-blob-python.md
 - name: Ukázky
   items:
-    - name: Ukázky kódu Azure
-      href: 'https://azure.microsoft.com/resources/samples/?service=search'
+    - name: 'Ukázky C#'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
+    - name: Ukázky Java
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+    - name: Ukázky Pythonu
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
+    - name: Ukázky REST
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=rest'
 - name: Školení
   items:
-    - name: Bootcamp dolování ze znalostní báze
-      href: 'https://azure.github.io/LearnAI-KnowledgeMiningBootcamp/'
+    - name: Úvod (Microsoft Learn)
+      href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
     - name: Přidání vyhledávání do aplikací (Pluralsight)
       href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
-    - name: Kurz pro vývojáře v Microsoft Azure (Pluralsight)
+    - name: Kurz pro vývojáře (Pluralsight)
       href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
 - name: Koncepty
   items:

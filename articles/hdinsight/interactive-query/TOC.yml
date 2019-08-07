@@ -28,6 +28,10 @@
           items:
             - name: Překročení limitu režie GC
               href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: V zobrazení Apache Hivu se nezobrazuje chybová zpráva
+          href: ./interactive-query-troubleshoot-error-message-hive-view.md
+        - name: Nepřístupné zobrazení Apache Hivu
+          href: ./interactive-query-troubleshoot-inaccessible-hive-view.md
         - name: ZooKeeperHiveClientException – konfigurace HiveServer2
           href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
         - name: Výkon dotazů Apache Hive LLAP

@@ -27,64 +27,31 @@ sections:
         style: cards
         type: list
   - items:
-      - text: 'Nastavte službu Azure Machine Learning a začněte ji využívat:'
+      - text: Nastavte službu Azure Machine Learning a začněte ji využívat.
         type: paragraph
-      - text: '<b>Rychlá zprovoznění:</b>'
-        type: paragraph
-      - items:
-          - html: <a href="service/quickstart-run-cloud-notebook">Spuštění experimentu v cloudu</a> (nevyžaduje se žádná instalace)
-          - html: <a href="service/quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
-        style: unordered
-        type: list
-      - text: '<b>Kurz: Trénování a nasazení prvního automatizovaného modelu ML na webu Azure Portal:</b>'
+      - text: 'K trénování, nasazování a správě modelů ML využijte Azure Portal, snadno použitelné rozhraní bez kódu:'
         type: paragraph
       - items:
+          - html: <a href="service/ui-tutorial-automobile-price-train-score">Trénování prvního experimentu ve vizuálním uživatelském rozhraní podporujícím přetahování</a>
           - html: <a href="service/tutorial-first-experiment-automated-ml">Využití automatizovaného strojového učení k trénování a nasazení prvního modelu klasifikace</a>
         style: unordered
         type: list
-      - text: '<b>Kurz: Trénování prvního modelu ML s využitím SDK:</b>'
+      - text: 'K trénování, nasazování a správě modelů ML využijte Python SDK ve skriptech a poznámkových blocích:'
         type: paragraph
       - items:
-          - html: 'Část 1: <a href="service/tutorial-1st-experiment-sdk-setup">Nastavení prostředí a pracovního prostoru</a>'
-          - html: 'Část 2: <a href="service/tutorial-1st-experiment-sdk-train">Trénování prvního modelu</a>'
+          - html: <a href="service/tutorial-1st-experiment-sdk-setup">Nastavení prostředí a trénování prvního experimentu ML</a>
+          - html: <a href="service/tutorial-train-models-with-aml">Trénování a nasazování modelů klasifikace obrázků</a>
+          - html: <a href="service/tutorial-data-prep">Příprava dat a využití automatizovaného ML k predikci ceny jízdy taxíkem</a>
         style: unordered
         type: list
-      - text: '<b>Kurz: Trénování a nasazení prvního experimentu s využitím vizuálního rozhraní:</b>'
-        type: paragraph
-      - items:
-          - html: 'Část 1: <a href="service/ui-tutorial-automobile-price-train-score">Trénování regresního modelu</a>'
-          - html: 'Část 2: <a href="service/ui-tutorial-automobile-price-deploy">Nasazení modelu</a>'
-        style: unordered
-        type: list
-      - text: '<b>Kurz: Klasifikace obrázků dat MNIST s využitím SDK:</b>'
-        type: paragraph
-      - items:
-          - html: 'Část 1: <a href="service/tutorial-train-models-with-aml">Trénování vlastního modelu</a>'
-          - html: 'Část 2: <a href="service/tutorial-deploy-models-with-aml">Nasazení tohoto modelu</a>'
-        style: unordered
-        type: list
-      - text: '<b>Kurz: Predikce ceny jízdy taxíkem s využitím SDK:</b>'
-        type: paragraph
-      - items:
-          - html: 'Část 1: <a href="service/tutorial-data-prep">Příprava dat pro modelování</a>'
-          - html: 'Část 2: <a href="service/tutorial-auto-train-models">Automatické trénování modelů ML</a>'
-        style: unordered
-        type: list
-      - text: '<b>Kurz: Predikce ceny automobilu s využitím vizuálního rozhraní:</b>'
-        type: paragraph
-      - items:
-          - html: 'Část 1: <a href="service/ui-tutorial-automobile-price-train-score">Predikce ceny automobilů</a>'
-          - html: 'Část 2: <a href="service/ui-tutorial-automobile-price-deploy">Nasazení regresního modelu</a>'
-        style: unordered
-        type: list
-      - text: '<b>Využívání vašich modelů:</b>'
+      - text: 'Využívání vašich modelů:'
         type: paragraph
       - items:
           - html: <a href="service/how-to-consume-web-service">Využití modelu žádost-odpověď</a>
           - html: <a href="service/how-to-run-batch-predictions">Dávkové predikce s využitím kanálů ML</a>
         style: unordered
         type: list
-    title: Rychlé starty a kurzy
+    title: Podrobné kurzy
   - items:
       - className: cardsM
         columns: 2

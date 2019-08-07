@@ -70,6 +70,8 @@
     - name: Znalostní báze
       href: Concepts/knowledge-base.md
       displayName: 'metadata, pair'
+    - name: S využitím LUIS a QnA Makeru
+      href: ../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json
     - name: Životní cyklus vývoje znalostní báze
       href: Concepts/development-lifecycle-knowledge-base.md
     - name: Osvědčené postupy

@@ -27,28 +27,25 @@ abstract:
     href: 'https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/'
     width: 250
 sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: "Po \_ <a href=\"setup-create-workspace\">vytvoření pracovního prostoru</a> pro službu Azure Machine Learning můžete začít s využitím těchto rychlých zprovoznění:"
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="quickstart-run-cloud-notebook">Spuštění experimentu v cloudu</a> (nevyžaduje se žádná instalace)
-          - html: <a href="quickstart-run-local-notebook">Spuštění experimentu s využitím místního serveru poznámkového bloku</a> (místní instalace SDK)
   - title: Podrobné kurzy
     items:
       - type: paragraph
-        text: 'Naučte se připravovat data, nastavovat experimenty, trénovat a zprovoznit vaše modely strojového učení:'
+        text: 'Naučte se připravovat data, nastavovat experimenty, trénovat a zprovozňovat vaše modely strojového učení.'
+      - type: paragraph
+        text: '<b>Pro strojové učení využijte Azure Portal</b>, snadno použitelné rozhraní bez kódu:'
       - type: list
         style: unordered
         items:
-          - html: 'Začínáme: <a href="tutorial-first-experiment-automated-ml">Trénování a nasazení</a> prvního automatizovaného modelu ML na webu Azure Portal'
-          - html: 'Začínáme: <a href="tutorial-1st-experiment-sdk-setup">Nastavení vývojového prostředí</a> a <a href="tutorial-1st-experiment-sdk-train"></a> s využitím poznámkového bloku Jupyter (<b>dvoudílná série</b>)'
-          - html: 'Začínáme: <a href="ui-tutorial-automobile-price-train-score">Trénování</a> a <a href="ui-tutorial-automobile-price-deploy">nasazení</a> prvního experimentu ML s využitím vizuálního rozhraní umožňujícího přetahovat položky (<b>dvoudílná série</b>)'
-          - html: <a href="tutorial-train-models-with-aml">Trénování</a> a <a href="tutorial-deploy-models-with-aml">nasazování</a> modelů klasifikace obrázků (<b>dvoudílná série</b>)
-          - html: <a href="tutorial-data-prep">Příprava dat</a> a <a href="tutorial-auto-train-models">použití automatizovaného strojového učení</a> k trénování a vyladění regresních modelů (<b>dvoudílná série</b>)
-          - html: <a href="ui-tutorial-automobile-price-train-score">Predikce cen automobilů</a> s využitím vizuálního rozhraní a <a href="ui-tutorial-automobile-price-deploy">nasazení</a> regresního modelu
+          - html: <a href="tutorial-first-experiment-automated-ml">Trénování prvního automatizovaného experimentu strojového učení</a>
+          - html: <a href="ui-tutorial-automobile-price-train-score">Trénování prvního experimentu ve vizuálním uživatelském rozhraní podporujícím přetahování</a>
+      - type: paragraph
+        text: '<b>Pro strojové učení využijte Python SDK</b> ve skriptech a poznámkových blocích:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial-1st-experiment-sdk-setup">Nastavení prostředí a trénování prvního experimentu ML</a>
+          - html: <a href="tutorial-train-models-with-aml">Trénování a nasazování modelů klasifikace obrázků</a>
+          - html: <a href="tutorial-data-prep">Příprava dat a automatizovaného ML k predikci ceny jízdy taxíkem</b></a>
   - title: Ukázky
     items:
       - type: paragraph

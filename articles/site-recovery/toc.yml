@@ -23,7 +23,7 @@
           href: azure-to-azure-tutorial-failover-failback.md
         - name: Spuštění navrácení služeb po obnovení
           href: azure-to-azure-tutorial-failback.md
-    - name: Přesun virtuálních počítačů Azure
+    - name: Přesunout
       items:
         - name: Přesun virtuálních počítačů Azure do jiné oblasti
           href: azure-to-azure-tutorial-migrate.md
@@ -31,6 +31,8 @@
           href: move-Azure-VMs-AVset-Azone.md
         - name: Přesun virtuálních počítačů Azure mezi oblastmi Government a veřejnými oblastmi
           href: region-move-cross-geos.md
+        - name: Přesun trezoru do jiné oblasti
+          href: move-vaults-across-regions.md
     - name: Zotavení po havárii virtuálního počítače VMware do Azure
       items:
         - name: Příprava Azure
@@ -365,8 +367,6 @@
               href: service-updates-how-to.md
             - name: Odstranění trezoru
               href: delete-vault.md
-            - name: Přesun trezoru do jiné oblasti
-              href: move-vaults-across-regions.md
     - name: Zotavení po havárii pro aplikace
       items:
         - name: Nastavení zotavení po havárii do Azure pro místní aplikace
@@ -441,6 +441,8 @@
       items:
         - name: Řešení potíží s replikací virtuálních počítačů Azure
           href: azure-to-azure-troubleshoot-errors.md
+        - name: Řešení potíží s připojením k virtuálnímu počítači Azure
+          href: azure-to-azure-troubleshoot-network-connectivity.md
         - name: Řešení potíží s probíhající replikací
           href: azure-to-azure-troubleshoot-replication.md
         - name: Řešení potíží se službou Mobility

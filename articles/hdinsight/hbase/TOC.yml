@@ -27,6 +27,8 @@
       href: ../hdinsight-version-release.md
     - name: Řešení potíží
       items:
+        - name: Apache HBase REST nereaguje
+          href: ./hbase-troubleshoot-rest-not-spending.md
         - name: Plně vytížený procesor na serveru oblasti
           href: ./hbase-troubleshoot-pegged-cpu-region-server.md
         - name: Časové limity s příkazem hbase hbck

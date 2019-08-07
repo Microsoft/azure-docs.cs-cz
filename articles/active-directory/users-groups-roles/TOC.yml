@@ -128,8 +128,6 @@
           href: directory-assign-admin-roles.md
         - name: Zobrazení a přiřazení rolí
           href: directory-manage-roles-portal.md
-        - name: Přiřazení vlastních rolí v Graph API
-          href: roles-assign-powershell.md
         - name: Vlastní role (Preview)
           items:
             - name: Vlastní role (Preview)
@@ -142,6 +140,8 @@
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
             - name: Přiřazení vlastních rolí v Graph API
               href: roles-assign-graph.md
+            - name: Přiřazení vlastních rolí v PowerShellu
+              href: roles-assign-powershell.md
             - name: Oprávnění pro vlastní role (Preview)
               href: roles-custom-available-permissions.md
             - name: Delegování oprávnění správce aplikace

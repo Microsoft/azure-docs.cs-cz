@@ -7,12 +7,12 @@ ms.service: blueprints
 ms.topic: sample
 ms.date: 06/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: ccee11a9b2e5505073bac9f5cb2e9d3efb8816e1
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: c5541eab6707bab12fb75f4d0eaf8bae1f025ebb
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249611"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816041"
 ---
 # <a name="azure-blueprints-samples"></a>Ukázky Azure Blueprints
 
@@ -22,6 +22,7 @@ Následující tabulka obsahuje odkazy na ukázky pro Azure Blueprints. Všechny
 
 |  |  |
 |---------|---------|
+| [ISO 27001](./iso27001/index.md) | Poskytuje ochranné mantinely pro dodržování předpisů ISO 27001. |
 | [ISO 27001: Sdílené služby](./iso27001-shared/index.md) | Poskytuje sadu kompatibilních vzorů infrastruktury a ochranné mantinely zásad, které pomáhají zajistit osvědčení ISO 27001. |
 | [Úloha ISO 27001 App Service Environment/SQL Database](./iso27001-ase-sql-workload/index.md) | Poskytuje další infrastrukturu pro ukázku podrobného plánu [ISO 27001: Sdílené služby](./iso27001-shared/index.md). |
 | [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | Poskytuje ochranné mantinely k dodržování předpisů pro NIST SP 800-53 R4. |

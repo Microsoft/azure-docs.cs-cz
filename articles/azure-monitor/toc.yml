@@ -131,6 +131,8 @@
   items:
     - name: Správa Azure Monitoru
       items:
+        - name: Návrh nasazení pracovního prostoru
+          href: platform/design-logs-deployment.md
         - name: Zabezpečení a oprávnění rolí
           href: platform/roles-permissions-security.md
         - name: IP adresy
