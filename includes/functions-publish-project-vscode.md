@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ba3cf3e77e5414804e881e0cddb151fb14fb7fd5
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: abb8b6bed6766ff0ea85eab1434014a057af4ca3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669586"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843171"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikování projektu do Azure
 
 Visual Studio Code umožňuje publikovat projekt funkcí přímo do Azure. Během postupu vytvoříte aplikaci funkcí a související prostředky ve vašem předplatném Azure. Aplikace funkcí poskytuje kontext spuštění pro vaše funkce. Projekt se zabalí a nasadí do nové aplikace funkcí ve vašem předplatném Azure.
 
-Ve výchozím nastavení Visual Studio vytvoří všechny prostředky Azure, které jsou potřeba k vytvoření vaší aplikace Function App. Názvy těchto prostředků jsou založené na zvoleném názvu aplikace Function App. Pokud potřebujete mít úplnou kontrolu nad vytvořenými prostředky, můžete místo toho [publikovat pomocí pokročilých možností](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options).
+Ve výchozím nastavení Visual Studio Code vytvoří všechny prostředky Azure potřebné k vytvoření aplikace Function App. Názvy těchto prostředků jsou založené na zvoleném názvu aplikace Function App. Pokud potřebujete mít úplnou kontrolu nad vytvořenými prostředky, můžete místo toho [publikovat pomocí pokročilých možností](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options).
 
 V této části se předpokládá, že vytváříte novou aplikaci Function App v Azure.
 

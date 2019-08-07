@@ -4,16 +4,17 @@ description: Vytvořte úložiště znalostí pomocí Průvodce importem dat v A
 author: heidisteen
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: 66a051c430be9f59569a5843c0138c7ddc15b87c
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 518a96ae8ace5c9630d594fe70487635b6ec1d2c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707155"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840840"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>Vytvoření Azure Search znalostní báze Knowledge Store a připojení pomocí Power BI
 
@@ -99,10 +100,10 @@ K vytvoření úložiště Knowledge Store použijte Průvodce importem dat. Nai
 
 1. Nakonfigurujte index pro volitelné dotazy fulltextového vyhledávání v Azure Search. I když je fokus tohoto návodu Power BI připojen ke službě Azure Table Storage, průvodce **importem dat** může také vytvořit index, který se používá pro fulltextové vyhledávání v Azure Search. 
 
-   Průvodce vyvzorkuje zdroj dat pro odvození polí a datových typů, takže stačí vybrat potřebné atributy pro dosažení požadovaného chování. Například možnost získatelné *znamená,* že obsah pole lze načíst ze služby, zatímco prohledávatelné umožňuje fulltextové vyhledávání u vybraných polí.
+   Průvodce vyvzorkuje zdroj dat pro odvození polí a datových typů, takže stačí vybrat potřebné atributy pro dosažení požadovaného chování. Například možnost získatelné znamená, že obsah pole lze načíst ze služby, zatímco *prohledávatelné* umožňuje fulltextové vyhledávání u vybraných polí.
 
    - Zadejte název indexu, například *Hotel-recenze-IDX*.
-   - Nastavte všechna **pole jako**získatelné.
+   - Nastavte všechna pole jakozískatelné.
    - Nastavte *City*, *Name*, *reviews_text*, *Language*, klíčová *fráze* jako **prohledávatelné**.
    - Nastavte *mínění*, *Language*, klíčová *fráze* jako **Filtered** a **Face**. 
    
@@ -112,7 +113,7 @@ K vytvoření úložiště Knowledge Store použijte Průvodce importem dat. Nai
 
    Klikněte **na další: Vytvořte indexer** , abyste mohli pokračovat k dalšímu kroku.
 
-1. Nakonfigurujte indexer tak, že mu udělíte název a spuštění tempo. Pro tento návod použijte jako název indexeru *idxr hotelového přezkoumání* a **použijte výchozí plán** pro okamžité spuštění indexeru.
+1. Nakonfigurujte indexer tak, že mu udělíte název a spuštění tempo. Pro tento návod použijte jako název indexeru *idxr hotelového přezkoumání* a použijte výchozí plán pro okamžité spuštění indexeru.
 
    Provádění indexeru vloží všechny předchozí konfigurace v pohybu. V tomto kroku se nachází extrakce, zpracování a ingestování všech situací.
 

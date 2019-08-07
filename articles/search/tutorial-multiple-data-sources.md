@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Index více zdrojů dat – Azure Search'
+title: C#Návodu Index více zdrojů dat – Azure Search
 description: Naučte se importovat data z více zdrojů dat do jednoho Azure Search indexu.
 author: RobDixon22
 manager: HeidiSteen
@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.author: v-rodixo
-ms.openlocfilehash: dcc4a7f267d1e852fcd50050f6683baa0e736199
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: heidist
+ms.openlocfilehash: 2776bcd095c570be500fa6ddb2675820b2259716
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827198"
+ms.locfileid: "68840674"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Návodu Kombinování dat z více zdrojů dat v jednom Azure Search indexu
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Indexování dat z databáze Azure SQL C# ukázkový kód – Azure Search'
-description: A C# příklad kódu ukazuje, jak se připojit ke službě Azure SQL database, extrahujte prohledávatelná data a jejich načtení do indexu Azure Search.
+title: C#Návodu Indexování dat z databází SQL Azure – Azure Search
+description: Příklad C# kódu, který ukazuje, jak se připojit ke službě Azure SQL Database, extrahovat hledaná data a načíst je do indexu Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -10,20 +10,20 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bb082fb83f8c2521b0deabced6f851e62b785e8f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c88ff0d7e408e03216707ff9282d640fb7d28500
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485392"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840687"
 ---
-# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Kurz: Procházejte databázi Azure SQL pomocí indexerů Azure Search
+# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Návodu Procházení databáze SQL Azure pomocí Azure Search indexerů
 
-Zjistěte, jak nakonfigurovat indexer pro extrahování prohledávatelných dat z ukázkové databáze Azure SQL. [Indexery](search-indexer-overview.md) jsou součástí služby Azure Search, které procházejí externí zdroje dat a naplňují [index vyhledávání](search-what-is-an-index.md) obsahem. Ze všech indexerů je nejpoužívanější indexer pro Azure SQL Database. 
+Naučte se konfigurovat indexer pro extrakci prohledávatelných dat z ukázkové databáze SQL Azure. [Indexery](search-indexer-overview.md) jsou součástí služby Azure Search, které procházejí externí zdroje dat a naplňují [index vyhledávání](search-what-is-an-index.md) obsahem. U všech indexerů je indexer pro Azure SQL Database nejčastěji používaný. 
 
 Znalost konfigurace indexeru je užitečná, protože zjednodušuje množství kódu, který musíte psát a spravovat. Místo přípravy a nabízení datové sady JSON odpovídající schématu můžete ke zdroji dat připojit indexer a nechat ho extrahovat data a vložit je do indexu. Volitelně také můžete indexer spouštět podle plánu opakování, aby přebíral změny v základním zdroji.
 
-V tomto kurzu, používá [klientských knihoven Azure Search pro .NET](https://aka.ms/search-sdk) a konzolovou aplikaci .NET Core pro provádět následující úlohy:
+V tomto kurzu použijete [klientské knihovny Azure Search .NET](https://aka.ms/search-sdk) a konzolovou aplikaci .NET Core k provádění následujících úloh:
 
 > [!div class="checklist"]
 > * Přidání informací o vyhledávací službě do nastavení aplikace
@@ -37,39 +37,39 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Následující služby, nástroje a data se používají v tomto rychlém startu. 
+V tomto rychlém startu se používají následující služby, nástroje a data. 
 
-[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu.
+[Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu.
 
-[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) ukládá externí zdroj dat používaný indexerem. Ukázkové řešení obsahuje datový soubor SQL pro vytvoření tabulky. Postup vytvoření služby a databáze jsou k dispozici v tomto kurzu.
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) ukládá externí zdroj dat používaný indexerem. Ukázkové řešení obsahuje datový soubor SQL pro vytvoření tabulky. Postup pro vytvoření služby a databáze jsou k dispozici v tomto kurzu.
 
-[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), všechny edice, lze použít ke spuštění ukázkové řešení. Ukázky kódu a instrukce byly testovány v bezplatná edice Community.
+Pro spuštění ukázkového řešení lze použít [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), libovolné vydání. Vzorový kód a pokyny byly testovány na bezplatnou edici Community.
 
-[Azure – ukázky/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) poskytuje ukázkové řešení nachází v úložišti Githubu ukázky v Azure. Stažení a extrakci řešení. Ve výchozím nastavení řešení jsou jen pro čtení. Klikněte pravým tlačítkem na řešení a vymažte atribut jen pro čtení tak, že můžete upravovat soubory.
+[Azure-Samples/Search-dotnet-Začínáme](https://github.com/Azure-Samples/search-dotnet-getting-started) poskytuje ukázkové řešení, které najdete v úložišti GitHub Samples Azure. Stáhněte a extrahujte řešení. Ve výchozím nastavení jsou řešení jen pro čtení. Klikněte pravým tlačítkem na řešení a zrušte zaškrtnutí atributu jen pro čtení, aby bylo možné upravovat soubory.
 
 > [!Note]
 > Pokud používáte bezplatnou službu Azure Search, platí pro vás omezení na tři indexy, tři indexery a tři zdroje dat. V tomto kurzu se vytváří od každého jeden. Ujistěte se, že ve své službě máte místo pro příjem nových prostředků.
 
-## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
+## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
 Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-1. [Přihlaste se k webu Azure portal](https://portal.azure.com/)a ve vyhledávací službě **přehled** stránce, získat adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V **nastavení** > **klíče**, získat klíč pro úplná práva správce na službu. Existují dva klíče zaměnitelné správce, v případě, že budete potřebovat k výměně jeden k dispozici zajišťuje nepřetržitý chod podniků. U požadavků můžete použít buď primární nebo sekundární klíč pro přidání, úpravy a odstraňování objektů.
+1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-![Získejte koncový bod a přístupový klíč rozhraní HTTP](media/search-get-started-postman/get-url-key.png "získat HTTP koncový bod a přístupový klíč")
+![Získání koncového bodu http a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu http a přístupového klíče")
 
-Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslaného do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
 ## <a name="set-up-connections"></a>Nastavení připojení
 Informace o připojení k požadovaným službám se zadává do souboru **appsettings.json** v řešení. 
 
-1. V sadě Visual Studio, otevřete **DotNetHowToIndexers.sln** souboru.
+1. V aplikaci Visual Studio otevřete soubor **DotNetHowToIndexers. sln** .
 
-1. V Průzkumníku řešení otevřete **appsettings.json** tak, aby mohli vyplnit všechna nastavení.  
+1. V Průzkumník řešení otevřete **appSettings. JSON** , abyste mohli naplnit jednotlivá nastavení.  
 
-První dvě položky můžete přejít k vyplnění právě teď pomocí adresy URL a Správce klíčů pro službu Azure Search. Zadaný koncový bod `https://mydemo.search.windows.net`, je název služby k poskytování `mydemo`.
+První dvě položky, které můžete hned vyplnit, pomocí adresy URL a klíčů pro správu služby Azure Search. V případě koncového `https://mydemo.search.windows.net`bodu je `mydemo`název služby, který má být poskytnut.
 
 ```json
 {
@@ -79,7 +79,7 @@ První dvě položky můžete přejít k vyplnění právě teď pomocí adresy 
 }
 ```
 
-Poslední položka vyžaduje existující databáze. Vytvoříte ho v dalším kroku.
+Poslední položka vyžaduje existující databázi. Vytvoříte ho v dalším kroku.
 
 ## <a name="prepare-sample-data"></a>Příprava ukázkových dat
 
@@ -87,9 +87,9 @@ V tomto kroku vytvoříte externí zdroj dat, který může indexer procházet. 
 
 Následující cvičení předpokládá, že neexistuje žádný server ani databáze, a v kroku 2 poskytuje pokyny k jejich vytvoření. Pokud máte existující prostředek, volitelně můžete tabulku hotels přidat do něj podle pokynů od kroku 4 dále.
 
-1. [Přihlaste se k webu Azure portal](https://portal.azure.com/). 
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/). 
 
-2. Vyhledat nebo vytvořit **Azure SQL Database** vytvořit databázi, server a skupinu prostředků. Můžete použít výchozí hodnoty a nejnižší cenovou úroveň. Jednou z výhod vytvoření serveru je, že můžete zadat uživatelské jméno a heslo správce, které jsou potřeba k vytvoření a načtení tabulek v pozdějším kroku.
+2. Pokud chcete vytvořit databázi, server a skupinu prostředků, najděte nebo vytvořte **Azure SQL Database** . Můžete použít výchozí hodnoty a nejnižší cenovou úroveň. Jednou z výhod vytvoření serveru je, že můžete zadat uživatelské jméno a heslo správce, které jsou potřeba k vytvoření a načtení tabulek v pozdějším kroku.
 
    ![Stránka Nová databáze](./media/search-indexer-tutorial/indexer-new-sqldb.png)
 
@@ -99,7 +99,7 @@ Následující cvičení předpokládá, že neexistuje žádný server ani data
 
    ![Stránka databáze SQL](./media/search-indexer-tutorial/hotels-db.png)
 
-4. V navigačním podokně klikněte na tlačítko **editor dotazů (preview)** .
+4. V navigačním podokně klikněte na **Editor dotazů (Preview)** .
 
 5. Klikněte na **Přihlášení** a zadejte uživatelské jméno a heslo správce serveru.
 
@@ -137,7 +137,7 @@ Následující cvičení předpokládá, že neexistuje žádný server ani data
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-Po nastavení a konfigurace dat jsou na místě, ukázkový program v **DotNetHowToIndexers.sln** je připraven k sestavení a spuštění. Než to provedete, věnujte chvíli prostudování definic indexu a indexeru pro tuto ukázku. Důležitý kód je ve dvou souborech:
+Jakmile jsou data a nastavení konfigurace na místě, vzorový program v **DotNetHowToIndexers. sln** je připravený k sestavování a spouštění. Než to provedete, věnujte chvíli prostudování definic indexu a indexeru pro tuto ukázku. Důležitý kód je ve dvou souborech:
 
   + **hotel.cs**, který obsahuje schéma definující index
   + **Program.cs**, který obsahuje funkce pro vytváření a správu struktur ve vaší službě
@@ -155,13 +155,13 @@ public string HotelName { get; set; }
 
 Schéma může obsahovat také další elementy, včetně profilů vyhodnocování pro zvýšení skóre vyhledávání, vlastních analyzátorů a dalších konstrukcí. Pro naše účely je však schéma definováno řídce a skládá se pouze z polí, která jsou v ukázkových datových sadách.
 
-V tomto kurzu indexer přetahuje data z jednoho zdroje dat. V praxi můžete připojit několik indexerů ke stejnému indexu, vytváření tak společný prohledávatelný index z různých zdrojů dat. V závislosti na tom, kde potřebujete flexibilitu, můžete použít stejný pár indexu a indexeru a měnit pouze zdroje dat nebo jeden index s různými kombinacemi indexeru a zdroje dat.
+V tomto kurzu indexer přetahuje data z jednoho zdroje dat. V praxi můžete ke stejnému indexu připojit více indexerů a vytvořit tak konsolidovanou prohledávatelný index z více zdrojů dat. V závislosti na tom, kde potřebujete flexibilitu, můžete použít stejný pár indexu a indexeru a měnit pouze zdroje dat nebo jeden index s různými kombinacemi indexeru a zdroje dat.
 
 ### <a name="in-programcs"></a>Soubor Program.cs
 
-Hlavní program obsahuje logiku pro vytvoření klienta, index, zdroj dat a indexeru. Kód předpokládá, že byste tento program mohli spustit několikrát, a proto kontroluje a odstraňuje existující prostředky se stejným názvem.
+Hlavní program obsahuje logiku pro vytváření klienta, index, zdroj dat a indexer. Kód předpokládá, že byste tento program mohli spustit několikrát, a proto kontroluje a odstraňuje existující prostředky se stejným názvem.
 
-Objekt zdroje dat je nakonfigurován s nastavením, které jsou specifické pro prostředky databáze Azure SQL, včetně [přírůstkové indexování](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) pro využití integrovaných [změníte některé funkce detekce](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) Azure SQL. Ukázková databáze hotely v Azure SQL má sloupec s názvem "obnovitelné odstranění" **IsDeleted**. Když tento sloupec je nastaven na hodnotu true v databázi, indexer, odebere odpovídající dokumentu z indexu Azure Search.
+Objekt zdroje dat je nakonfigurovaný s nastavením, která jsou specifická pro prostředky Azure SQL Database, včetně [přírůstkového indexování](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) pro využití integrovaných [funkcí detekce změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) v Azure SQL. Ukázková databáze hotelů v Azure SQL má sloupec "obnovitelné odstranění" s názvem **IsDeleted**. Pokud je tento sloupec v databázi nastaven na hodnotu true, indexer odebere odpovídající dokument z Azure Search indexu.
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -178,7 +178,7 @@ Objekt zdroje dat je nakonfigurován s nastavením, které jsou specifické pro 
   searchService.DataSources.CreateOrUpdateAsync(dataSource).Wait();
   ```
 
-Objekt indexeru je nezávislý na platformě, kde stejný bez ohledu na zdroji jsou konfigurace, plánování a vyvolání. Tento příklad indexer zahrnuje plán, má možnost resetování, který vymaže historii indexeru a volá metodu pro vytvoření a spuštění indexeru okamžitě.
+Objekt indexeru je Platform-nezávislá, kde konfigurace, plánování a volání jsou stejné bez ohledu na zdroj. Tento příklad indexeru zahrnuje plán, možnost resetu, která vymaže historii indexeru a volá metodu pro vytvoření a spuštění indexeru hned.
 
   ```csharp
   Console.WriteLine("Creating Azure SQL indexer...");
@@ -256,8 +256,8 @@ Na webu Azure Portal na stránce Přehled vyhledávací služby klikněte v horn
 
 Všechny indexery, včetně toho, který jste právě vytvořili prostřednictvím kódu programu, jsou uvedené na portálu. Můžete otevřít definici indexeru a zobrazit jeho zdroj dat nebo nakonfigurovat plán aktualizace pro přebírání nových a změněných řádků.
 
-1. [Přihlaste se k webu Azure portal](https://portal.azure.com/)a ve vyhledávací službě **přehled** stránce, kliknutí na příslušné odkazy pro **indexy**, **indexery**, a **dat Zdroje**.
-3. Vyberte jednotlivé objekty lze zobrazit nebo upravit nastavení konfigurace.
+1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby klikněte na odkazy pro **indexy**, indexerya **zdroje dat**.
+3. Vyberte jednotlivé objekty, které chcete zobrazit nebo upravit nastavení konfigurace.
 
    ![Dlaždice Indexery a Zdroje dat](./media/search-indexer-tutorial/tiles-portal.png)
 
@@ -267,7 +267,7 @@ Nejrychlejším způsobem, jak po kurzu všechno uklidit, je odstranit skupinu p
 
 ## <a name="next-steps"></a>Další postup
 
-Algoritmy AI rozšíření můžete připojit ke kanálu indexeru. Jako další krok pokračujte následujícím kurzem.
+K kanálu indexeru můžete připojit algoritmy obohacení AI. Jako další krok pokračujte následujícím kurzem.
 
 > [!div class="nextstepaction"]
 > [Indexování dokumentů ve službě Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)

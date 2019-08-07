@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start Pythonu: Vytváření, načítání a dotazování indexů pomocí Azure Search rozhraní REST API – Azure Search'
+title: 'Rychlý Start Pythonu: Vytváření, načítání a dotazování indexů pomocí rozhraní REST API – Azure Search'
 description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Pythonu, poznámkových bloků Jupyter a REST API Azure Search.
 ms.date: 07/11/2019
 author: heidisteen
@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 8b9c6ad4560d613941e5e73e2e6b7b5abede7019
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9e12133179ca02c3474e768305feb8ae19a6178e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828750"
+ms.locfileid: "68840761"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Rychlý start: Vytvoření indexu Azure Search v Pythonu pomocí poznámkových bloků Jupyter
 > [!div class="op_single_selector"]

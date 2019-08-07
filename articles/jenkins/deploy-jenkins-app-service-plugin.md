@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 29a842f7dfcf720f29fcff80d2e736893c824f5a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 9f7e0e23a04c6b141c6e0c5ff88b3d5ff2d76e1d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949553"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840426"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Nasazení do Azure App Service s využitím modulu plug-in Jenkinse 
 
@@ -35,7 +35,7 @@ Pokud ještě nemáte hlavní server Jenkinse, začněte [šablonou řešení](i
 * [Azure Credentials](https://plugins.jenkins.io/azure-credentials) verze 1.2
 * [Azure App Service](https://plugins.jenkins.io/azure-app-service) verze 0.1
 
-Pomocí modulu plug-in Jenkinse můžete nasadit webovou aplikaci v jakémkoli jazyce, který podporuje funkce Web Apps, jako je například jazyk C#, PHP, Java a Node.js. V tomto kurzu použijeme [jednoduchou webovou aplikaci v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Pokud chcete vytvořit fork úložiště do svého vlastního účtu GitHub, vyberte tlačítko **Fork** (Vytvořit fork) v pravém horním rohu rozhraní GitHubu.  
+Modul plug-in Jenkinse můžete použít k nasazení webové aplikace v jakémkoli jazyce podporovaném Web Apps, například C#php, Python, Java a Node. js. V tomto kurzu použijeme [jednoduchou webovou aplikaci v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Pokud chcete vytvořit fork úložiště do svého vlastního účtu GitHub, vyberte tlačítko **Fork** (Vytvořit fork) v pravém horním rohu rozhraní GitHubu.  
 
 > [!NOTE]
 > K sestavení projektu v Javě se vyžaduje sada Java JDK a Maven. Nainstalujte tyto komponenty na hlavní server Jenkinse nebo do agenta virtuálního počítače, pokud pro účely průběžné integrace využíváte agenta. Pokud nasazujete aplikaci Java SE, je na sestavovacím serveru potřebný také ZIP.
@@ -55,7 +55,7 @@ Pokud chcete provést nasazení do funkce Web App for Containers, na hlavní ser
 K nasazení do Azure budete potřebovat instanční objekt Azure. 
 
 
-1. Chcete-li vytvořit instanční objekt služby Azure, použijte [rozhraní příkazového řádku Azure](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) nebo [webu Azure portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+1. K vytvoření instančního objektu Azure použijte rozhraní příkazového [řádku](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) Azure nebo [Azure Portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 2. Na řídicím panelu Jenkinse vyberte **Přihlašovací údaje** > **Systém**. Pak vyberte **Global credentials (unrestricted)** (Globální přihlašovací údaje (neomezené)).
 3. Pokud chcete přidat instanční objekt Microsoft Azure, vyberte **Add Credentials** (Přidat přihlašovací údaje). Zadejte odpovídající hodnoty do polí **Subscription ID** (ID předplatného), **Client ID** (ID klienta), **Client Secret** (Tajný klíč klienta) a **OAuth 2.0 Token Endpoint** (Koncový bod tokenu OAuth 2.0). V poli **ID** nastavte hodnotu **mySp**. Toto ID použijeme v dalších krocích v tomto článku.
 
@@ -90,7 +90,7 @@ Před nastavením úlohy v Jenkinsu potřebujete plán služby Azure App Service
 ### <a name="set-up-the-jenkins-job"></a>Nastavení úlohy Jenkinse
 
 1. Na řídicím panelu Jenkinse vytvořte nový projekt **freestyle** (Volný projekt).
-2. V poli **Source Code Management** (Správa zdrojového kódu) nakonfigurujte použití vašeho místního forku úložiště [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte hodnotu **Repository URL** (Adresa URL úložiště). Příklad: http:\//github.com/&lt;your_ID > / javawebappsample.
+2. V poli **Source Code Management** (Správa zdrojového kódu) nakonfigurujte použití vašeho místního forku úložiště [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte hodnotu **Repository URL** (Adresa URL úložiště). Například: http:\//GitHub.com/&lt;your_ID >/javawebappsample.
 3. Přidáním příkazu **Execute shell** (Spustit prostředí) přidejte krok nasazení projektu pomocí Mavenu. V tomto příkladu potřebujeme další příkaz k přejmenování souboru \*.war v cílové složce na **ROOT.war**:   
     ```bash
     mvn clean package
@@ -100,7 +100,7 @@ Před nastavením úlohy v Jenkinsu potřebujete plán služby Azure App Service
 4. Výběrem možnosti **Publish an Azure Web App** (Publikovat webovou aplikaci Azure) přidejte akci po sestavení.
 5. Jako instanční objekt Azure zadejte **mySP**. Tento instanční objekt jste uložili jako [přihlašovací údaje Azure](#service-principal) v předchozím kroku.
 6. V části **App Configuration** (Konfigurace aplikace) zvolte skupinu prostředků a webovou aplikaci ve vašem předplatném. Modul plug-in Jenkinse automaticky rozpozná, jestli je webová aplikace založená na Windows nebo Linuxu. Pro webovou aplikaci pro Windows se zobrazí možnost **Publish Files** (Publikovat soubory).
-7. Vyplňte soubory, které chcete nasadit. Pokud například používáte Javu, zadejte balíček WAR. Pomocí volitelných parametrů **Zdrojový adresář** a **Cílový adresář** můžete určit, které zdrojové a cílové složky se k nasazení souborů použijí. Webová aplikace v Javě se v Azure spouští na serveru Tomcat. Proto pro Javu, nahrajete váš balíček WAR ke složce webové aplikace. V tomto příkladu nastavte hodnotu **Source Directory** (Zdrojový adresář) na **target** a hodnotu **Target Directory** (Cílový adresář) na **webapps**.
+7. Vyplňte soubory, které chcete nasadit. Pokud například používáte Javu, zadejte balíček WAR. Pomocí volitelných parametrů **Zdrojový adresář** a **Cílový adresář** můžete určit, které zdrojové a cílové složky se k nasazení souborů použijí. Webová aplikace v Javě se v Azure spouští na serveru Tomcat. Proto pro jazyk Java nahrajete balíček WAR do složky webapps. V tomto příkladu nastavte hodnotu **Source Directory** (Zdrojový adresář) na **target** a hodnotu **Target Directory** (Cílový adresář) na **webapps**.
 8. Pokud chcete provést nasazení do jiného než produkčního slotu, můžete také nastavit název **slotu**.
 9. Uložte projekt a sestavte ho. Po dokončení sestavení se vaše webová aplikace se nasadí do Azure.
 
@@ -131,7 +131,7 @@ Modul plug-in Jenkinse pro Azure App Service je připravený k použití v kaná
 
 ## <a name="configure-jenkins-to-deploy-web-app-for-containers"></a>Konfigurace Jenkinse pro nasazení do funkce Web App for Containers
 
-Web Apps on Linux podporuje nasazení s využitím Dockeru. K nasazení vaší webové aplikace s využitím Dockeru, musíte zadat soubor Dockerfile, která zabalí vaší webové aplikace s modulem runtime služby do image Dockeru. Modul plug-in Jenkinse pak image sestaví, odešle do registru Dockeru a nasadí do vaší webové aplikace.
+Web Apps on Linux podporuje nasazení s využitím Dockeru. K nasazení webové aplikace pomocí Docker musíte zadat souboru Dockerfile, který zabalí webovou aplikaci s modulem runtime služby do image Docker. Modul plug-in Jenkinse pak image sestaví, odešle do registru Dockeru a nasadí do vaší webové aplikace.
 
 Web App on Linux podporuje také tradiční způsoby nasazení, jako je Git a nahrání souborů, ale pouze pro integrované jazyky (.NET Core, Node.js, PHP a Ruby). V případě ostatních jazyků je potřeba kód aplikace a modul runtime služby zabalit do image Dockeru a pomocí Dockeru ji nasadit.
 
@@ -143,7 +143,7 @@ Před nastavením úlohy v Jenkinsu budete potřebovat webovou aplikaci v Linuxu
 ### <a name="set-up-the-jenkins-job-for-docker"></a>Nastavení úlohy Jenkinse pro Docker
 
 1. Na řídicím panelu Jenkinse vytvořte nový projekt **freestyle** (Volný projekt).
-2. V poli **Source Code Management** (Správa zdrojového kódu) nakonfigurujte použití vašeho místního forku úložiště [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte hodnotu **Repository URL** (Adresa URL úložiště). Příklad: http:\//github.com/&lt;your_ID > / javawebappsample.
+2. V poli **Source Code Management** (Správa zdrojového kódu) nakonfigurujte použití vašeho místního forku úložiště [jednoduché webové aplikace v Javě pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte hodnotu **Repository URL** (Adresa URL úložiště). Například: http:\//GitHub.com/&lt;your_ID >/javawebappsample.
 3. Přidáním příkazu **Execute shell** (Spustit prostředí) přidejte krok nasazení projektu pomocí Mavenu. Do příkazu přidejte následující řádek:
     ```bash
     mvn clean package
@@ -161,7 +161,7 @@ Jako hodnotu **Docker registry URL** (Adresa URL registru Dockeru) zadejte adres
     az acr credential show -n <yourRegistry>
     ```
 
-10. Hodnoty názvu image a značky Dockeru na kartě **Advanced** (Upřesnit) jsou volitelné. Ve výchozím nastavení se hodnota pro název image získá z názvu image, který jste nakonfigurovali na webu Azure Portal v nastavení **Kontejner Dockeru**. Značka se generuje z $BUILD_NUMBER.
+10. Hodnoty názvu image a značky Dockeru na kartě **Advanced** (Upřesnit) jsou volitelné. Ve výchozím nastavení se hodnota pro název image získá z názvu image, který jste nakonfigurovali na webu Azure Portal v nastavení **Kontejner Dockeru**. Značka je vygenerována z $BUILD _NUMBER.
     > [!NOTE]
     > Nezapomeňte určit název image na webu Azure Portal nebo zadat hodnotu **Docker Image** (Image Dockeru) na kartě **Advanced** (Upřesnit). V tomto příkladu nastavte hodnotu **Docker image** (Image Dockeru) na &lt;váš_registr>.azurecr.io/calculator a hodnotu **Docker Image Tag** (Značka image Dockeru) ponechte prázdnou.
 
@@ -206,7 +206,7 @@ Jako hodnotu **Docker registry URL** (Adresa URL registru Dockeru) zadejte adres
     Sun Jun 17 16:39:10 UTC 2017
     ```
 
-3. Přejděte na adresu http://&lt;název_vaší_aplikace>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>. Nahraďte &lt;x> and &lt;y> libovolnými čísly, aby se zobrazil součet x + y. Kalkulačce zobrazí součet: ![Kalkulačka: Přidat](./media/execute-cli-jenkins-pipeline/calculator-add.png)
+3. Přejděte na adresu http://&lt;název_vaší_aplikace>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>. Nahraďte &lt;x> and &lt;y> libovolnými čísly, aby se zobrazil součet x + y. Kalkulačka zobrazuje součet: ![Kalkulačka: přidat](./media/execute-cli-jenkins-pipeline/calculator-add.png)
 
 ### <a name="for-azure-app-service-on-linux"></a>Azure App Service v Linuxu
 

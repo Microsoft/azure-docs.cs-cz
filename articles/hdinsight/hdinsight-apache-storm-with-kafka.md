@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 001739d337d8c123023ccbf037933938113aaf2a
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 181d052501b9c418fad10a2069dde928a7ff9f38
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779590"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840252"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Storm s Apache Kafka v HDInsight
 
@@ -130,7 +130,7 @@ V tomto kurzu se využívají dvě topologie:
     >
     > Akce skriptu je umístěna v [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) umístění a je použita na uzel správce a Nimbus v clusteru s více clustery. Další informace o použití akcí skriptu najdete v dokumentu [Přizpůsobení HDInsightu pomocí akcí skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
-Topologie se definují pomocí komponenty [Flux](https://storm.apache.org/releases/1.1.2/flux.html). Flux byl uveden ve Stormu 0.10.x a umožňuje oddělení konfigurace topologie od kódu. Pro topologie používající architekturu Flux se topologie definuje v souboru YAML. Soubor YAML je možné zahrnout jako součást topologie. Může to ale být také samostatný soubor, který použijete při odesílání topologie. Flux také podporuje různé substituce za běhu, což se využívá i v tomto příkladu.
+Topologie se definují pomocí komponenty [Flux](https://storm.apache.org/releases/current/flux.html). Flux byl uveden ve Stormu 0.10.x a umožňuje oddělení konfigurace topologie od kódu. Pro topologie používající architekturu Flux se topologie definuje v souboru YAML. Soubor YAML je možné zahrnout jako součást topologie. Může to ale být také samostatný soubor, který použijete při odesílání topologie. Flux také podporuje různé substituce za běhu, což se využívá i v tomto příkladu.
 
 Pro tyto topologie jsou za běhu nastaveny následující parametry:
 
@@ -144,7 +144,7 @@ Pro tyto topologie jsou za běhu nastaveny následující parametry:
 
 * `${hdfs.write.dir}`: Adresář, do kterého se zapisují data
 
-Další informace o topologiích Flux najdete zde: [https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html)
+Další informace o topologiích Flux najdete zde: [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)
 
 ### <a name="kafka-writer"></a>Kafka-writer
 
@@ -631,7 +631,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak používat topologii [Apache Storm](https://storm.apache.org/) k zápisu do [Apache Kafka](https://kafka.apache.org/) ve službě HDInsight a čtení z nich. Zjistili jste také, jak ukládat data do úložiště kompatibilního s [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) používaného službou HDInsight.
 

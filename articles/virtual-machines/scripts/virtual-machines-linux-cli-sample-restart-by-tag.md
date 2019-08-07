@@ -3,8 +3,8 @@ title: Ukázkový skript Azure CLI – Restartování virtuálních počítačů
 description: Ukázkový skript Azure CLI – Restartování virtuálních počítačů podle značky a podle ID
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: allclark
-manager: douge
+author: cynthn
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: douge
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ae036d02f0655d046de8b284bfd196eda92c45db
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 78e646887a0e595589b9d0cc794029dcd4be91ca
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875415"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841395"
 ---
 # <a name="restart-vms"></a>Restartování virtuálních počítačů
 
@@ -61,7 +61,7 @@ Dva z nich jsou označené.
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/restart-by-tag/provision.sh "Provision the VMs")]
 
-### <a name="wait"></a>Wait
+### <a name="wait"></a>Čekání
 
 Tento skript každých 20 sekund kontroluje stav zřizování, dokud se nezřídí všechny tři virtuální počítače nebo zřízení některého z nich neselže.
 
@@ -94,7 +94,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [az vm restart](https://docs.microsoft.com/cli/azure/vm) | Restartuje virtuální počítače. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

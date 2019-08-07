@@ -7,14 +7,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
-ms.date: 10/04/2018
+ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1f80d7e63d994f0e3eb3733b99afaa1b056f4686
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7682670131b0ef50a1480285bc379b634169e49e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252403"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840615"
 ---
 # <a name="publish-an-azure-managed-application-definition"></a>Publikování definice aplikace spravované Azure
 
@@ -41,7 +41,7 @@ Při definování spravované aplikace vybíráte uživatele, skupinu nebo aplik
 Pro získání ID objektu vaší identity v následujícím příkazu zadejte hlavní název uživatele (UPN):
 
 ```azurecli-interactive
-userid=$(az ad user show --upn-or-object-id example@contoso.org --query objectId --output tsv)
+userid=$(az ad user show --id example@contoso.org --query objectId --output tsv)
 ```
 
 Dál potřebujete ID definice role pro předdefinovanou roli RBAC, ke které chcete uživateli udělit přístup. Následující příkaz ukazuje, jak získat ID definice role pro roli vlastníka:
@@ -68,14 +68,14 @@ Po dokončení příkazu máte definici spravované aplikace ve vaší skupině 
 
 Některé z parametrů použitých v předchozím příkladu:
 
-* **resource-group**: Název skupiny prostředků, ve kterém se vytvoří definice spravované aplikace.
-* **Úroveň zámku**: Typ zámku nastaveného na spravovanou skupinu prostředků. Zabraňuje zákazníkovi v provádění nežádoucích operací s touto skupinou prostředků. Jedinou podporovanou úrovní zámku momentálně je ReadOnly. Prostředky, které jsou ve spravované skupině prostředků dostupné, může při zadání úrovně ReadOnly zákazník jenom číst. Zámek se nevztahuje na identity vydavatelů s uděleným přístupem ke spravované skupině prostředků.
-* **povolení**: Popisuje ID objektu zabezpečení a ID definice role, které se používají k udělení oprávnění pro spravovanou skupinu prostředků. tento parametr je zadaný ve formátu `<principalId>:<roleDefinitionId>`. Pokud je potřeba zadat více hodnot, zadejte je ve formátu `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Jednotlivé hodnoty jsou oddělené mezerou.
-* **package-file-uri**: Umístění balíčku .zip, který obsahuje požadované soubory. Balíček musí obsahovat soubory **mainTemplate.json** a **createUiDefinition.json**. Soubor **mainTemplate.json** definuje prostředky Azure, které se mají vytvořit jako součást spravované aplikace. Šablona se nijak neliší od běžné šablony Resource Manageru. **createUiDefinition.json** generuje uživatelské rozhraní pro uživatele, kteří vytvářejí spravované aplikace prostřednictvím portálu.
+* **resource-group**: Název skupiny prostředků, ve které se vytvoří definice spravované aplikace.
+* **Úroveň zámku**: Typ zámku, který je umístěn ve spravované skupině prostředků. Zabraňuje zákazníkovi v provádění nežádoucích operací s touto skupinou prostředků. Jedinou podporovanou úrovní zámku momentálně je ReadOnly. Prostředky, které jsou ve spravované skupině prostředků dostupné, může při zadání úrovně ReadOnly zákazník jenom číst. Zámek se nevztahuje na identity vydavatelů s uděleným přístupem ke spravované skupině prostředků.
+* **autorizace**: V této části najdete popis ID objektu zabezpečení a ID definice role, které slouží k udělení oprávnění pro spravovanou skupinu prostředků. tento parametr je zadaný ve formátu `<principalId>:<roleDefinitionId>`. Pokud je potřeba zadat více hodnot, zadejte je ve formátu `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Jednotlivé hodnoty jsou oddělené mezerou.
+* **package-file-uri**: Umístění balíčku. zip, který obsahuje požadované soubory. Balíček musí obsahovat soubory **mainTemplate.json** a **createUiDefinition.json**. Soubor **mainTemplate.json** definuje prostředky Azure, které se mají vytvořit jako součást spravované aplikace. Šablona se nijak neliší od běžné šablony Resource Manageru. **createUiDefinition.json** generuje uživatelské rozhraní pro uživatele, kteří vytvářejí spravované aplikace prostřednictvím portálu.
 
 ## <a name="next-steps"></a>Další postup
 
 Publikovali jste definici spravované aplikace. Teď se dozvíte, jak nasadit instanci této definice.
 
 > [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Nasazení aplikace katalogu služeb](deploy-service-catalog-quickstart.md)
+> [Rychlé zprovoznění: Nasadit aplikaci katalogu služeb](deploy-service-catalog-quickstart.md)
