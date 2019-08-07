@@ -48,11 +48,11 @@ Pro služby OData propojené se podporují následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | **Typ** musí být vlastnost nastavena na **OData**. |Ano |
+| type | **type** musí být vlastnost nastavena na **OData**. |Ano |
 | url | Kořenovou adresu URL služby OData. |Ano |
 | authenticationType | Typ ověřování používaný pro připojení ke zdroji OData. Povolené hodnoty jsou **anonymní**, **základní**, **Windows**, **AadServicePrincipal**, a **ManagedServiceIdentity** . Uživatel se nepodporuje na základě OAuth. | Ano |
-| userName | Zadejte **uživatelské jméno** Pokud používáte ověřování Basic nebo Windows. | Ne |
-| password | Zadejte **heslo** uživatele účtu, který jste zadali pro **uživatelské jméno**. Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| userName | Zadejte **userName** Pokud používáte ověřování Basic nebo Windows. | Ne |
+| password | Zadejte **password** uživatele účtu, který jste zadali pro **uživatelské jméno**. Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | servicePrincipalId | Zadejte ID klienta aplikace Azure Active Directory. | Ne |
 | aadServicePrincipalCredentialType | Určení typu pověření pro ověřování instančních objektů. Povolené hodnoty jsou: `ServicePrincipalKey` nebo `ServicePrincipalCert`. | Ne |
 | servicePrincipalKey | Zadejte klíč aplikace Azure Active Directory. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
