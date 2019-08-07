@@ -1,52 +1,51 @@
 ---
 title: Jak zabezpečit přístup k Azure Data Catalog
-description: Tento článek vysvětluje postup při zabezpečení katalogu dat a jeho datovým assetům.
-services: data-catalog
+description: V tomto článku se dozvíte, jak zabezpečit data Catalog a jeho datové assety.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 6c09b509399647f4cacbc96427200da5a1b00ac9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: c6c99eb62ba628ffc8c84799a6729540b572c580
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61000708"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736386"
 ---
-# <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>Jak zabezpečit přístup ke katalogu dat a datových assetů
+# <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>Postup zabezpečení přístupu ke katalogu dat a datovým assetům
 > [!IMPORTANT]
-> Tato funkce je dostupná jenom v edici standard služby Azure Data Catalog.
+> Tato funkce je k dispozici pouze v edici Standard Azure Data Catalog.
 
-Azure Data Catalog umožňuje určit, kdo má přístup k katalogu dat a jaké operace (zaregistrovat, opatřit poznámkami, převzít vlastnictví) můžete provádět na metadat v katalogu. 
+Azure Data Catalog vám umožní určit, kdo má mít přístup ke katalogu Data Catalog a jaké operace (zaregistrovat, opatřit poznámkami, převzít vlastnictví), můžou provádět metadata v katalogu. 
 
-## <a name="catalog-users-and-permissions"></a>Uživatelé katalogu a oprávnění
-Zadejte uživatele nebo skupinu přístup ke katalogu dat a nastavení oprávnění:
+## <a name="catalog-users-and-permissions"></a>Uživatelé a oprávnění katalogu
+Chcete-li uživateli nebo skupině udělit přístup ke katalogu dat a nastavit oprávnění:
 
-1. Na [domovskou stránku služby data catalog](https://www.azuredatacatalog.com), klikněte na tlačítko **nastavení** na panelu nástrojů.
+1. Na [domovské stránce katalogu Data Catalog](https://www.azuredatacatalog.com)klikněte na **Nastavení** na panelu nástrojů.
 
-    ![data catalog – nastavení](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
-2. Na stránce nastavení, rozbalte **uživatelé katalogu** oddílu.
-    ![Katalog uživatelé – přidat](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
-3. Klikněte na tlačítko **Add** (Přidat).
-4. Zadejte plně kvalifikovaný **uživatelské jméno** nebo název **skupiny zabezpečení** v Azure Active Directory (AAD) přidružené k katalogu. Čárkou (', ') jako oddělovač, pokud chcete přidat více než jeden uživatel nebo skupina.
-    ![Uživatelé katalogu - uživatele nebo skupiny](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
-5. Stisknutím klávesy **ENTER** nebo **kartu** z textového pole. 
-6.  Ujistěte se, že všechna oprávnění (**opatřit poznámkami**, **zaregistrovat**, a **převzít vlastnictví**) jsou přiřazeny k těmto uživatelům nebo skupinám ve výchozím nastavení. To znamená, že uživatel nebo skupina můžete [registrace datových assetů]( data-catalog-how-to-register.md), [opatřit poznámkami datové assety]( data-catalog-how-to-annotate.md), a [převzít vlastnictví datových assetů]( data-catalog-how-to-manage.md). 
+    ![Data Catalog – nastavení](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
+2. Na stránce nastavení rozbalte část **Uživatelé katalogu** .
+    ![Uživatelé katalogu – přidat](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
+3. Klikněte na **Přidat**.
+4. Zadejte plně kvalifikované **uživatelské jméno** nebo název **skupiny zabezpečení** v Azure Active Directory (AAD) přidružené ke katalogu. Pokud přidáváte více než jednoho uživatele nebo skupinu, použijte čárku (,) jako oddělovač.
+    ![Uživatelé katalogu – uživatelé nebo skupiny](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
+5. V textovém poli stiskněte klávesu **ENTER** nebo **TAB** . 
+6.  Ověřte, že jsou ve výchozím nastavení přiřazenavšechna oprávnění (**opatřit poznámkami**, registrací a **převzít vlastnictví**) těmto uživatelům nebo skupinám. To znamená, že uživatel nebo skupina může [Registrovat datové assety]( data-catalog-how-to-register.md), [opatřit poznámkami datové prostředky]( data-catalog-how-to-annotate.md)a [převzít vlastnictví datových assetů]( data-catalog-how-to-manage.md). 
     ![Uživatelé katalogu – výchozí oprávnění](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
-7.  Zadejte uživatele nebo skupinu pouze přístup pro čtení do katalogu, zrušte **opatřit poznámkami** možnost pro uživatele nebo skupiny. Pokud tak učiníte, uživatele nebo skupinu nelze opatřit poznámkami datové assety v katalogu, ale je mohou zobrazit. 
-8.  Odepřít uživatele nebo skupiny v registraci datových assetů, zrušte **zaregistrovat** možnost pro uživatele nebo skupiny.
-9.  Odepřít uživatele z převzetí vlastnictví k datovému assetu, zrušte **převzít vlastnictví** možnost pro uživatele nebo skupiny. 
-10. Pokud chcete odstranit uživatele nebo skupiny uživatelů katalogu, klikněte na tlačítko **x** pro uživatele nebo skupiny v dolní části seznamu. 
+7.  Pokud chcete uživateli nebo skupině udělit jenom přístup pro čtení ke katalogu, zrušte pro daného uživatele nebo skupinu možnost **opatřit poznámkami** . Když to uděláte, uživatel nebo skupina nebude moci přidávat poznámky k datovým assetům v katalogu, ale může je zobrazit. 
+8.  Chcete-li odepřít uživateli nebo skupině v registraci datových prostředků, zrušte zaškrtnutí možnosti **Registrovat** pro daného uživatele nebo skupinu.
+9.  Pokud chcete uživateli odepřít převzít vlastnictví datového assetu, zrušte zaškrtnutí možnosti **převzít vlastnictví** pro daného uživatele nebo skupinu. 
+10. Pokud chcete uživatele nebo skupinu odstranit z katalogu uživatelů, klikněte na **x** pro uživatele nebo skupinu ve spodní části seznamu. 
     ![Uživatelé katalogu – odstranit uživatele](media/data-catalog-how-to-secure-catalog/data-catalog-delete-user.png)
 
     > [!IMPORTANT]
-    > Doporučujeme vám, že přidáte funkci skupin zabezpečení katalogu přímo uživatelům a místo přidání uživatelů a přiřazení oprávnění. Pak přidejte uživatele do skupin zabezpečení, které odpovídají jejich rolí a jejich požadovaný přístup ke katalogu.
+    > Doporučujeme přidat skupiny zabezpečení do katalogu uživatelů místo toho, aby přidávali uživatele přímo a nepřiřadili oprávnění. Pak přidejte uživatele do skupin zabezpečení, které odpovídají jejich rolím, a jejich požadovaný přístup ke katalogu.
 
 ## <a name="special-considerations"></a>Zvláštní upozornění
 
-- Oprávnění přiřazená skupinám zabezpečení jsou aditivní. Řekněme uživatel je ve dvou skupinách. Jedna skupina má poznámkami oprávnění a jiná skupina není mají opatřit poznámkami oprávnění. Uživatel potom má opatřit poznámkami oprávnění. 
-- Oprávnění přiřazená uživateli explicitně přepsat oprávnění přiřazená do skupiny, do kterých uživatel patří. V předchozím příkladu předpokládejme, že explicitně přidáte uživateli katalogu uživatelů a provést nelze přiřadit oprávnění opatřovat je poznámkami. Uživatele nelze opatřit poznámkami datové assety, i když je uživatel členem skupiny, které mají oprávnění opatřovat je poznámkami.
+- Oprávnění přiřazená ke skupinám zabezpečení jsou aditivní. Řekněme, že uživatel je ve dvou skupinách. Jedna skupina má oprávnění k přidávání poznámek a jiná skupina nemá oprávnění k přidávání poznámek. Pak uživatel má oprávnění k přidání poznámek. 
+- Oprávnění přiřazená explicitně uživateli přepíší oprávnění přiřazená skupinám, ke kterým uživatel patří. V předchozím příkladu řekněme, že jste explicitně přidali uživatele do katalogu a nepřiřadíte oprávnění k přidávání poznámek. Uživatel nemůže přidávat poznámky k datovým assetům i v případě, že je uživatel členem skupiny, která má oprávnění k přidání poznámek.
 
 ## <a name="next-steps"></a>Další postup
 - [Začínáme s Azure Data Catalogem](data-catalog-get-started.md)

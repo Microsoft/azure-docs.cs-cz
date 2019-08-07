@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/29/2019
+ms.date: 08/05/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60474148d1eac6ca9d85fbc1d103ad612787aeae
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4af30a24c5913abec1c2c2287e1b0f145470f42c
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607863"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828374"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -34,20 +34,8 @@ Jedinečnost Azure pro SAP HANA je nabídka, která nastavuje Azure odděleně. 
 
 Hostování scénářů pro úlohy SAP v Azure taky může vytvořit požadavky na integraci identit a jednotné přihlašování. K této situaci může dojít, když použijete Azure Active Directory (Azure AD) k propojení různých komponent SAP a SAP software-as-a-Service (SaaS) nebo Platform-as-a-Service (PaaS). Seznam takových scénářů integrace a jednotného přihlašování s entitami služby Azure AD a SAP je popsán v části "AAD SAP Identity Integration and Single přihlašování".
 
-## <a name="change-log"></a>Protokol změn
-
-- Změny v [clusteru jsou instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky v Azure](sap-high-availability-guide-wsfc-file-share.md) , aby odrážela podporu prostoru úložiště s přímým přístupem Azure Site Recovery službami.
-- Vydání [skupin umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md)
-- Vydání nové Příručky k [IBM DB2 hadr na serveru Red Hat Enterprise](high-availability-guide-rhel-ibm-db2-luw.md)
-- Vydání [vysoké dostupnosti pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](high-availability-guide-rhel-netapp-files.md)
-- Představujeme rychlou cestu ExpressRoute a Global Reach pro velké instance HANA v [SAP Hana (velké instance) síťové architektury](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) a související dokumenty
-- Vydání [rozsáhlých instancí Azure Hana prostřednictvím Azure Portal](hana-li-portal.md)
-- Vydání [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](high-availability-guide-suse-netapp-files.md)
-- Vydání [instalace SAP NETWEAVER ASCS pro SAP HANA na Azure NetAppFiles (ANF) BETA verze](lama-installation.md)
-
-
-
-
+## <a name="changes-to-the-sap-workload-section"></a>Změny v části úlohy SAP
+Změny dokumentů v části věnované úlohám SAP v Azure najdete na konci tohoto článku.
 
 
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA v Azure (velké instance)
@@ -132,5 +120,13 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 - [Azure Data Factory nabízí integraci dat pro SAP HANA a Business Warehouse](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
+## <a name="change-log"></a>Protokol změn
+
+- 08/01/2019: Změny [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) pro integraci změn konkrétně pro SLES 15 
+- 07/23/2019: Změny v [clusteru jsou instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky v Azure](sap-high-availability-guide-wsfc-file-share.md) , aby odrážela podporu prostoru úložiště s přímým přístupem Azure Site Recovery službami.
+- 07/14/2019: Vydání [skupin umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md)
+- 07/11/2019: Změny v různých dokumentech, které pokrývají velké instance HANA, zahrnují revize 4 velkých instancí HANA
+- 07/09/2019: Vydání nové Příručky k [IBM DB2 hadr na serveru Red Hat Enterprise](high-availability-guide-rhel-ibm-db2-luw.md)
+- 06/13/2019: Vydání [vysoké dostupnosti pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](high-availability-guide-rhel-netapp-files.md)
 
 

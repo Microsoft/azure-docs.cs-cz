@@ -1,63 +1,61 @@
 ---
 title: Běžné scénáře služby Azure Data Catalog
-description: Přehled běžných scénářů pro Azure Data Catalog, včetně registraci a zjišťování zdrojů dat vysoké hodnoty, povolení samoobslužné služby business intelligence a zaznamenávání stávající znalosti o zdrojích dat a procesů.
-services: data-catalog
+description: Přehled běžných scénářů pro Azure Data Catalog, včetně registrace a zjišťování zdrojů dat s vysokými hodnotami, povolení samoobslužného business intelligence a zachytávání stávajících znalostí o zdrojích a procesech dat.
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 60930d78-d2d4-4d5d-9651-bdda50b0da0e
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: e95cc64b9086a6fb4c5e2d42521a5fd3f44244ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: aeae505b510f563a6640726c384ea358983eb24f
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61003952"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736462"
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Běžné scénáře služby Azure Data Catalog
 Tento článek představuje běžné scénáře, kde Azure Data Catalog může pomoci organizaci získat větší hodnotu z její existující zdroje dat.
 
-## <a name="scenario-1-registration-of-central-data-sources"></a>Scénář 1: Registrace zdrojů dat centrální
-Organizace často mají mnoho zdrojů dat vysoké hodnoty. Tyto zdroje dat patří-obchodní, online zpracování systémy (OLTP), datových skladů a business intelligence a analýzy databází transakcí. Počet systémů a překrytí mezi nimi, obvykle v čase měnících se potřeb firmy a zvětšuje podnik sám vyvíjí prostřednictvím, například fúze a akvizice.
+## <a name="scenario-1-registration-of-central-data-sources"></a>Scénář 1: Registrace centrálních zdrojů dat
+Organizace často mají mnoho zdrojů dat s vysokými hodnotami. Tyto zdroje dat zahrnují systémy, OLTP (online Transaction Processing), datové sklady a databáze business intelligence/Analytics. Počet systémů a překryv mezi nimi obvykle roste v čase podle toho, jak se podniková potřeby vyvíjí, a samotný podnik se vyvíjí, například fúze a akvizice.
 
-Může být obtížné pro členy organizace vědět, kam umístit data v rámci těchto zdrojů dat. Jsou všechny moc známé otázky vypadat asi takto:
+U členů organizace může být obtížné zjistit, kde najít data v těchto zdrojích dat. Otázky, jako jsou následující, jsou příliš běžné:
 
-* Tři HR systémů používaných v rámci společnosti, které mám použít k vytvoření tohoto typu sestavy?
-* Kde najdu získat certifikovaných prodejní čísla pro fiskální rok, který právě skončila?
-* Kdo by měl požádat, nebo jaký je proces, který mám použít k získání přístupu k datovému skladu?
-* Nevím, pokud tyto hodnoty jsou správné. Kdo mi požádat o insight na jak tato data by měla použít předtím, než se dá sdílet tento řídicí panel s mého týmu?
+* Ze tří systémů HR používaných v rámci společnosti, které mám použít k vytvoření tohoto typu sestavy?
+* Kde mám přejít k získání certifikovaných prodejních čísel pro fiskální rok, který jste právě ukončili?
+* Kdo má požádat o přístup k datovému skladu, nebo jaký je proces, který mám použít k získání přístupu?
+* Nevím, jestli jsou tato čísla pravá. Kdo můžu požádat o přehled o tom, jak se mají tato data použít, než budu sdílet tento řídicí panel s týmem?
 
-Na tyto a další otázky Azure Data Catalog může poskytnout odpovědi. Zdroje dat centrální vysoké hodnoty, spravuje IT, které se používají v organizacích jsou často logické výchozí bod pro vyplnění katalogu. I když každý uživatel může zaregistrovat zdroj dat, kick-started se zdroji dat, které bývají nejčastějším zadejte hodnotu pro maximální počet uživatelů katalogu pomůže dokázal(a) a použití systému. 
+Na tyto a další otázky vám Azure Data Catalog můžou poskytnout odpovědi. Střední, vysoká hodnota, spravované zdroje dat, které jsou používány napříč organizacemi, jsou často logickým výchozím bodem pro naplnění katalogu. I když kterýkoli uživatel může zaregistrovat zdroj dat, který zahájí katalog s daty, který je nejpravděpodobnější pro největší počet uživatelů, pomáhá při přijímání a používání systému. 
 
-Pokud začínáte se službou Azure Data Catalog, identifikujete a zaregistrujete klíčových zdrojích dat, které jsou používány mnoha různými týmy spotřebitelé dat může být prvním krokem k úspěchu.
+Pokud začínáte s Azure Data Catalog, identifikujte a zaregistrujete klíčové zdroje dat, které používá mnoho různých týmů uživatelů dat, může být prvním krokem úspěšné.
 
-Tento scénář také představuje příležitost k přidání poznámek ke zdrojům dat vysoké hodnoty, aby se daly snadněji pochopit a přístup. Klíčový aspekt tomto úsilí je také informace o tom, jak uživatelé si mohou vyžádat přístup ke zdroji dat. S Azure Data Catalog zadáte e-mailovou adresu uživatele nebo týmu, který je zodpovědný za řízení přístupu zdroj dat, odkazy do existujících nástrojů nebo v dokumentaci nebo libovolný text, který popisuje proces žádosti o přístup. Tyto informace pomáhají členy, kteří zjišťovat registrované datové zdroje, ale který ještě nemáte oprávnění pro přístup k datům pomocí procesů, které jsou definovány a řídí vlastníky zdroj dat snadno požádáte o přístup.
+Tento scénář také představuje příležitost k tomu, abyste porozuměli zdrojům dat s vysokými hodnotami, aby bylo snazší pochopit a přistupovat k nim. Jedním z klíčových aspektů tohoto úsilí je zahrnout informace o tom, jak můžou uživatelé požádat o přístup ke zdroji dat. Pomocí Azure Data Catalog můžete zadat e-mailovou adresu uživatele nebo týmu, který je zodpovědný za řízení přístupu ke zdroji dat, odkazů na existující nástroje nebo dokumentaci nebo na bezplatný text, který popisuje proces přístupu-požadavek. Tyto informace pomáhají členům, kteří zjišťují registrované zdroje dat, ale kteří ještě nemají oprávnění k přístupu k datům, aby mohli snadno požádat o přístup pomocí procesů, které jsou definovány a řízeny vlastníky zdrojů dat.
 
-## <a name="scenario-2-self-service-business-intelligence"></a>Scénář 2: Samoobslužné služby business intelligence
-Přestože tradiční řešení business intelligence i nadále být neocenitelnou součástí řada organizací datových prostředí, změna tempem byznysu provedl samoobslužné funkce BI čím dál tím víc důležité. Pomocí samoobslužné funkce BI informační pracovníci a analytici můžete vytvořit vlastní sestavy, sešity a řídicí panely bez nutnosti spoléhat se na střed IT tým nebo jsou omezené na základě plánu a dostupnosti IT tým.
+## <a name="scenario-2-self-service-business-intelligence"></a>Scénář 2: Samoobslužná služba business intelligence
+I když tradiční podniková podniková řešení i nadále jsou nepotřebná součást mnoha organizací data na úrovni cloudu, měnící se tempo firmy tak, že je samoobslužné a důležitější. Pomocí samoobslužného BI můžou informační pracovníci a analytiké vytvářet vlastní sestavy, sešity a řídicí panely, aniž by se museli spoléhat na centrálního IT oddělení nebo omezit plán a dostupnost tohoto týmu.
 
-V samoobslužné BI scénáře uživatelé běžně kombinovat data z víc zdrojů, z nichž mnohá nemusí již byl použit pro BI a analýzy. I když některé z těchto zdrojů dat už může být známé, může být náročné Pokud chcete zjistit, co dělat, vyhledejte a vyhodnotit potenciální zdroje dat pro danou úlohu.
+Ve scénářích samoobslužného BI uživatelé často slučují data z více zdrojů, mnohé z nich se ještě nemusely použít pro BI a analýzy. I když některé z těchto zdrojů dat již mohou být známy, může být obtížné zjistit, co se má udělat pro vyhledání a vyhodnocení potenciálních zdrojů dat pro danou úlohu.
 
-Tradičně, tento proces zjišťování je ruční: analytici použít k identifikaci ostatní, kteří pracují s daty se žádá o jejich síťová připojení partnera. Po zdroj dat je nalezen a použit, proces se opakuje znovu pro každý další samoobslužné BI úsilí, s více uživatelů, kteří provádějí redundantní ruční proces zjišťování.
+Tradičně je tento proces zjišťování ručním: analytici používají připojení k síti rovnocenných sítí k identifikaci dalších uživatelů, kteří pracují s daty, která jsou požadována. Po nalezení a použití zdroje dat se tento proces zopakuje znovu pro každou následnou samoobslužnou práci BI s více uživateli, kteří provádějí redundantní ruční proces zjišťování.
 
-S Azure Data Catalog vaše organizace můžete přerušit tento cyklus úsilí. Po zjištění zdroje dat prostřednictvím tradičních prostředky, můžete zaregistrovat analytikovi ho tak, aby se snadněji zjistitelné jinými uživateli v budoucnu. I když analytik můžete přidat další hodnoty anotací registrovaných datových assetů, není potřeba probíhat ve stejnou dobu jako registrace tuto poznámku. Uživatelé mohou přispívat v čase, jako jejich plány povolení postupně přínos pro zdroje dat registrované v katalogu.
+S Azure Data Catalog může vaše organizace tento cyklus úsilí porušit. Po zjištění zdroje dat prostřednictvím tradičních prostředků ho analytik může zaregistrovat, aby ho snadněji vypracovali jiní uživatelé v budoucnu. I když analytik může přidat další hodnotu tím, že se zapisují do registrovaných datových assetů, tato poznámka se nemusí nakonat ve stejnou dobu jako registrace. Uživatelé mohou přispívat v průběhu času, jak plány umožňují, postupně přidávají hodnoty do zdrojů dat zaregistrovaných v katalogu.
 
-Tento organickým růstem katalogu obsahu je přirozené doplněk k počáteční registraci centrální datových zdrojů. Předem vyplnění katalogu s daty, která bude nutné mnoho uživatelů může být motivator pro počáteční použití a zjišťování. Povolení uživatelům zaregistrujte a opatřete poznámkami další zdroje může být způsob, jak je a ostatní členové organizace, zapojení.
+Tento ekologický růst obsahu katalogu je přirozeným doplňkem k registraci centrálních zdrojů dat předem. Předem naplnění katalogu daty, které bude potřebovat mnoho uživatelů, může být Motivator pro počáteční použití a zjišťování. Umožnění registrace dalších zdrojů a přidávání poznámek do nich může být způsob, jak zajistit, aby se mohli i ostatní členové organizace zabývají.
 
-Je vhodné poznamenat, že i když tento scénář se zaměřuje konkrétně na samoobslužné funkce BI, stejné vzory a problémy platí pro rozsáhlé podnikové BI projekty i. Používání katalogu Data Catalog, můžete zlepšit vaše organizace žádné úsilí, která zahrnuje ruční proces zjišťování zdrojů dat.
+Je potřeba poznamenat, že i když se tento scénář zaměřuje konkrétně na samoobslužné služby BI, stejné vzory a problémy se taky vztahují i na rozsáhlé podnikové projekty BI. Pomocí Data Catalog může vaše organizace zlepšit jakékoli úsilí, které zahrnuje ruční zpracování zjišťování zdrojů dat.
 
-## <a name="scenario-3-capturing-tribal-knowledge"></a>Scénář 3: Zachytávání znalosti
-Jak víte, jaká data je třeba provést úlohy a kde najít data?
+## <a name="scenario-3-capturing-tribal-knowledge"></a>Scénář 3: Zachytávání znalostí samosprávné
+Jak zjistíte, jaká data potřebujete k provedení úlohy a kde tato data najít?
 
-Pokud jste v úloze, nějakou dobu, pravděpodobně stačí vědět. Prošli postupné procesem učení a postupně se naučili o zdrojích dat, které jsou klíčem k své každodenní práci.
+Pokud jste v průběhu chvilky pracovali s vaší úlohou, pravděpodobně jste právě znali. Prošli jste postup postupného učení a v průběhu času jste se dozvěděli o zdrojích dat, které jsou klíčem ke každodenní práci.
 
-Poté, co nového zaměstnance připojí vašeho týmu, jak tato osoba vědět, jaká data jsou potřebné pro úlohu a kde ho najít?
+Když se tým připojí k vašemu týmu, jak tato osoba ví, jaká data jsou potřebná pro úlohu a kde ji najít?
 
-Pravděpodobné se nové osobě, vám přinášejí tyto otázky.
+Lichá se vám nová osoba dostane s těmito otázkami.
 
-Tento probíhající přenos znalosti je součástí procesu zjišťování zdrojů dat v malé i velké organizace. Vedoucí a zkušení členové týmu mají vytvořená znalostní báze v průběhu let a novější členové týmu se naučili, jak požádejte ho, když se na něco zeptat. Nejvíce důležitých informací často existuje pouze v vedoucích několik klíčových osob a pokud se tito uživatelé budou na dovolenou nebo týmu opustí tým, organizace trpí.
+Tento nepřetržitý přenos samosprávné znalostí je součástí procesu zjišťování zdrojů dat v organizacích, které jsou velké a malé. Další zkušení a zkušení členové týmu sestavili znalostní bázi během let a dozvěděli se o tom, že se k nim členové týmu dozvěděli. Nejdůležitější informace často existují jenom v hlavice několika klíčových osob, a když jsou lidé volní nebo odejdou z týmu, organizace utrpí.
 
-Odborníků na data obvykle měli snažit dokumentu své znalosti sdílení e-mailem nebo do dokumentů aplikace Word na týmový web Sharepointu. Přestože tento přístup může být důležité, zavádí nové zjišťování problém: jak uživatelé věděli, jaké dokumentaci existuje a kde ho najít?
+Odborníky na data obvykle vyvinou úsilí k dokumentaci svých znalostí a jejich sdílení prostřednictvím e-mailu nebo dokumentů aplikace Word na týmovém webu služby SharePoint. I když tento přístup může být užitečný, zavádí nový problém zjišťování: jak uživatelé vědí, jaká dokumentace existuje a kde ji najít?
 
-S Azure Data Catalog má vaše organizace jednom centrálním umístění pro ukládání a sdílení tyto kmenové znalosti a díky tomu snadno zjistitelné. Ve službě Data Catalog odborníků na data můžete opatřit poznámkami datové assety a poskytují odkazy na stávající dokumentaci. Když členové organizace pomocí katalogu objeví zdroj dat, naleznou nejen zdroj samotný, ale také s vědomím, že dříve existoval pouze ve vaší organizaci odborníků.
+V Azure Data Catalog má vaše organizace jedno centrální umístění pro ukládání a sdílení těchto samosprávnéch znalostí a usnadňuje zjistitelnost. V Data Catalog můžou odborníci na data dokomentovat datové assety přímo a poskytnout odkazy na stávající dokumentaci. Když členové organizace použijí Katalog ke zjištění zdroje dat, zjistí nejen samotný zdroj, ale také znalosti, které dříve existovaly pouze v mozkyi expertů vaší organizace.

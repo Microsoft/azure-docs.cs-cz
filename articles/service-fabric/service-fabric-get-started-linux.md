@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 49e80c3fc8935064aceef8ef4e2bd3257c41e5e7
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 6916eea26f03d7b9cd0b3792fa65354619f97f74
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514191"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828502"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -103,11 +103,11 @@ Pokud chcete nainstalovat sadu SDK a přidružený balíček modulu runtime pomo
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Přidejte do své APT Azul JDK klíč a nastavení jeho úložiště.
+7. Přidejte klíč JDK Azul do svého správce klíčů APT a nastavte jeho úložiště.
 
     ```bash
-    curl -fsSL https://repos.azul.com/azul-repo.key | sudo apt-key add -
-    sudo add-apt-repository 'deb http://repos.azulsystems.com/ubuntu stable main'
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
+    sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
 8. Obnovte seznamy balíčků na základě nově přidaných úložišť.
@@ -178,7 +178,7 @@ Modul runtime Service Fabric, který je součástí instalace sady SDK, obsahuje
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicitně převzato z npm | latest |
+Ubuntu | 2.0.0 | AzulJDK 1,8 | Implicitně převzato z npm | latest |
 RHEL | - | OpenJDK 1.8 | Implicitně převzato z npm | latest |
 
 ## <a name="set-up-a-local-cluster"></a>Nastavení místního clusteru
@@ -239,7 +239,7 @@ Pokud chcete začít [vytvářet aplikace Service Fabric v jazyce C#](service-fa
 
 ## <a name="set-up-java-development"></a>Nastavení pro vývoj v Javě
 
-K sestavení služeb Service Fabric pomocí Javy, nainstalujte Gradle pro spouštění úloh sestavení. Spustit následující příkaz k instalaci Gradle. Knihovny Service Fabric Java se berou z Mavenu.
+Chcete-li vytvořit služby Service Fabric pomocí jazyka Java, nainstalujte Gradle a spusťte úlohy sestavení. Spusťte následující příkaz pro instalaci Gradle. Knihovny Service Fabric Java se berou z Mavenu.
 
 
 * Ubuntu
@@ -272,7 +272,7 @@ Modul plug-in Eclipse pro Service Fabric můžete nainstalovat z integrovaného 
 > 
 > V Ubuntu doporučujeme provést instalaci přímo z webu Eclipse, a nepoužívat instalační program balíčků (`apt` nebo `apt-get`). Tím zajistíte, že budete mít nejnovější verzi Eclipse. Můžete nainstalovat integrované vývojové prostředí Eclipse pro vývojáře v Javě nebo v Javě EE.
 
-1. V Eclipse se ujistěte, že máte nainstalovanou verzi Eclipse Neon nebo novější a Buildship verze 2.2.1 nebo novější. Verze nainstalovaných komponent zkontrolujte tak, že vyberete **Help** (Nápověda) > **About Eclipse** (O Eclipse) > **Installation Details** (Podrobnosti o instalaci). Buildship můžete aktualizovat pomocí pokynů na adrese [Eclipse Buildship: Moduly plug-in Eclipse pro Gradle][buildship-update].
+1. V Eclipse se ujistěte, že máte nainstalovanou verzi Eclipse Neon nebo novější a Buildship verze 2.2.1 nebo novější. Verze nainstalovaných komponent zkontrolujte tak, že vyberete **Help** (Nápověda) > **About Eclipse** (O Eclipse) > **Installation Details** (Podrobnosti o instalaci). Můžete aktualizovat buildy pomocí pokynů v sestavách [na pozatmění: Moduly plug-in zatmění pro][buildship-update]Gradle.
 
 2. Pokud chcete nainstalovat modul plug-in Service Fabric, vyberte **Help** (Nápověda) > **Install New Software** (Instalace nového softwaru).
 

@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 07/19/2019
-ms.openlocfilehash: 763d424d9d462c4a9531df84f3e5e26bfc1b0a14
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 08/02/2019
+ms.openlocfilehash: 5c300cb7d5416ada435811872e2cea8865e3c657
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68502274"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781270"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Platba za Virtual Machines s využitím Azure Reserved VM Instances (RI)
 
@@ -36,7 +36,7 @@ Rezervace virtuálních počítačů se můžou vztahovat na využití virtuáln
 
 Nastavení flexibility velikosti instance Určuje, které služby získají slevy za rezervované instance.
 
-Bez ohledu na to, jestli je nastavení zapnuté nebo vypnuté, se slevy za rezervované automaticky  vztahují na `Microsoft.Compute`všechny vyhovující využití virtuálních počítačů, když je ConsumedService. Ověřte proto data o využití pro hodnotu *ConsumedService* . Možné příklady:
+Bez ohledu na to, jestli je nastavení zapnuté nebo vypnuté, se slevy za rezervované automaticky vztahují na `Microsoft.Compute`všechny vyhovující využití virtuálních počítačů, když je ConsumedService. Ověřte proto data o využití pro hodnotu *ConsumedService* . Možné příklady:
 
 - Virtuální počítače
 - Škálovací sady virtuálních počítačů
@@ -132,13 +132,9 @@ Po nákupu nemůžete provést následující typy změn přímo:
 
 Můžete ale *vyměnit* rezervaci, pokud chcete provést změny.
 
-## <a name="cancellations-and-exchanges"></a>Zrušení a výměny
+## <a name="cancel-exchange-or-refund-reservations"></a>Rezervace zrušení, výměna nebo refundace
 
-Pokud potřebujete zrušit svou rezervaci, může se vám účtovat poplatek za předčasné ukončení ve výši 12 %. Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší. Výše vrácených peněz je omezená na 50 000 USD za rok. Výše vrácených peněz, které obdržíte, je zbývající poměrný zůstatek minus poplatek za předčasné ukončení ve výši 12 %. Pokud ho chcete zrušit, pokračujte na rezervaci v Azure Portal a vyberte **refundace**.
-
-Pokud potřebujete změnit rezervaci rezervovaných instancí virtuálních počítačů na jinou oblast, skupinu velikostí virtuálních počítačů nebo termín, můžete si ji vyměňovat. Výměna musí být pro jinou rezervaci, která má stejnou nebo větší hodnotu. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. Jeden nebo tři roky začíná při vytváření nové rezervace. Chcete-li vyměnit server Exchange, pokračujte na rezervaci v Azure Portal a vyberte možnost **Exchange**.
-
-Další informace o výměně nebo refundaci rezervacích najdete v tématu věnovaném [výměnám a refundacím rezervací](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Rezervace můžete zrušit, vyměnit nebo vrátit refundaci s určitými omezeními. Další informace najdete v tématu věnovaném [výměnám samoobslužných služeb a refundacím pro Azure reservations](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 

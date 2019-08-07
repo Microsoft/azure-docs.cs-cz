@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 40ccee7a993ce39a9b4c7a86309b0554daa56026
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f122ec2474c09cdd6c9ada4ddc59b1adb44f619f
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298266"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780014"
 ---
 # <a name="prepay-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Platba za Azure App Service izolované poplatky za razítko s rezervovanou kapacitou
 
@@ -47,7 +47,7 @@ Rezervovanou kapacitu rezervovaného razítka si můžete koupit v [Azure Portal
 **K nákupu:**
 
 1. Přejít na [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D).
-1. Vyberte předplatné. Pomocí seznamu  předplatných vyberte předplatné, které se používá k placení rezervované kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervovanou kapacitu. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo průběžné platby (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P) nebo předplatné CSP.
+1. Vyberte předplatné. Pomocí seznamu předplatných vyberte předplatné, které se používá k placení rezervované kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervovanou kapacitu. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo průběžné platby (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P) nebo předplatné CSP.
     - V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití.
     - V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.
 1. Vyberte **obor** pro výběr oboru předplatného.
@@ -62,13 +62,9 @@ Rezervovanou kapacitu rezervovaného razítka si můžete koupit v [Azure Portal
 
 Po zakoupení můžete zobrazit stav nákupu a kdykoli ho monitorovat po nákupu, přejít na [rezervace](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) .
 
-## <a name="cancellations-and-exchanges"></a>Zrušení a výměny
+## <a name="cancel-exchange-or-refund-reservations"></a>Rezervace zrušení, výměna nebo refundace
 
-Pokud potřebujete zrušit rezervovanou kapacitu rezervovaného razítka, může se jednat o 12% poplatek za předčasné ukončení. Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší. Refundace jsou omezeny na $50 000,00 za rok. Sazba, kterou obdržíte, je zbývající poměrné množství minus 12% poplatek za předčasné ukončení. Pokud ho chcete zrušit, pokračujte na rezervaci v Azure Portal a vyberte **refundace**.
-
-Pokud potřebujete kapacitu rezervované kapacity izolovaného razítka přesunout do jiné oblasti, můžete ji vyměnit pro jinou rezervaci, která má stejnou nebo větší hodnotu. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. Po třech letech se spustí při vytváření nové rezervace. Pokud chcete Exchange přejít na Azure Portal, vyberte rezervaci, kterou chcete vyměnit, a vyberte **Exchange**.
-
-Další informace o výměně nebo refundaci rezervacích najdete v tématu věnovaném [výměnám a refundacím rezervací](billing-azure-reservations-self-service-exchange-and-refund.md).
+Rezervace můžete zrušit, vyměnit nebo vrátit refundaci s určitými omezeními. Další informace najdete v tématu věnovaném [výměnám samoobslužných služeb a refundacím pro Azure reservations](billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="discount-application-shown-in-usage-data"></a>Aplikace slevy zobrazená v datech o využití
 

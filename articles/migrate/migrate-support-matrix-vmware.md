@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: bbbec680cd2575cc63761c9fbe1335d548ec4d3b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ed7e53570127f12dbe41932481a3286a78865dde
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640790"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828280"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci VMware
 
@@ -42,8 +42,12 @@ Tabulka shrnuje podporované scénáře pro virtuální počítače VMware.
 **Zeměpisné oblasti** | **Umístění úložiště metadat**
 --- | ---
 Azure Government | USA (Gov) – Virginia
-Asie a Tichomoří | Jihovýchodní Asie nebo Východní Asie
-Evropa | Jižní Evropa nebo Západní Evropa
+Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
+Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
+Kanada | Kanada – střed nebo Kanada – východ
+Evropa | Severní Evropa nebo Západní Evropa
+Indie | Střed Indie nebo Jižní Indie
+Japonsko |  Japonsko – východ nebo Japonsko – západ
 Spojené království | Velká Británie – jih nebo Velká Británie – západ
 Spojené státy | Střed USA nebo Západní USA 2
 
@@ -70,7 +74,7 @@ Zařízení Azure Migrate pro VMware je nasazeno pomocí šablony vajíček impo
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**vCenter Server** | K přidělení virtuálního počítače s 32 GB paměti, 4 vCPU a externím virtuálním přepínači potřebujete dostatek prostředků na vCenter Server.<br/><br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
+**vCenter Server** | K přidělení virtuálního počítače 32 GB RAM, 8 vCPU a externímu virtuálnímu přepínači potřebujete dostatek prostředků na vCenter Server.<br/><br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
 **ESXi** | Virtuální počítač zařízení musí být nasazen na hostiteli ESXi, na kterém běží verze 5,5 nebo novější.
 **Azure Migrate projekt** | Zařízení může být přidruženo k jednomu projektu.
 **vCenter Server** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k jednomu vCenter Server.
@@ -345,6 +349,6 @@ Připojit po migraci – Windows | Připojení k virtuálním počítačům Azur
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený. Kromě toho přidejte veřejnou IP adresu pro virtuální počítač. |  
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Připravte se na](tutorial-prepare-vmware.md) vyhodnocení a migraci VMware.

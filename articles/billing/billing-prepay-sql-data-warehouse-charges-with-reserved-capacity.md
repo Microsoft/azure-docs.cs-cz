@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 08c9f958f5103da9961f4c2d29be97f455cecc4b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6ee7a661434bb756c6cf196937229db19d06b373
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359265"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779987"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Platba za SQL Data Warehouse poplatky s rezervovanou kapacitou
 
@@ -61,21 +61,17 @@ Předpokládejme například, že vaše celková spotřeba SQL Data Warehouse je
 8. Vyberte **Koupit**.
 9. Pokud chcete zobrazit stav nákupu, vyberte **Zobrazit tuto rezervaci** .
 
-## <a name="cancellations-and-exchanges"></a>Zrušení a výměny
+## <a name="cancel-exchange-or-refund-reservations"></a>Rezervace zrušení, výměna nebo refundace
 
-Pokud potřebujete zrušit svou SQL Data Warehouse rezervovanou kapacitu, může se jednat o 12% poplatek za předčasné ukončení. Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší. Refundace jsou omezeny na $50 000,00 za rok. Sazba, kterou obdržíte, je zbývající poměrné množství minus 12% poplatek za předčasné ukončení. Pokud ho chcete zrušit, pokračujte na rezervaci v Azure Portal a vyberte **refundace**.
+Rezervace můžete zrušit, vyměnit nebo vrátit refundaci s určitými omezeními. Další informace najdete v tématu věnovaném [výměnám samoobslužných služeb a refundacím pro Azure reservations](billing-azure-reservations-self-service-exchange-and-refund.md).
 
-Pokud potřebujete změnit svou SQL Data Warehouse rezervovanou kapacitu na jinou oblast nebo termín, můžete si ji vyměňovat pro jinou rezervaci, která má stejnou nebo větší hodnotu. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. Jeden nebo tři roky se spustí při vytvoření nové rezervace. Na Exchange otevřete rezervaci v Azure Portal a vyberte **Exchange**.
-
-Další informace o výměně nebo refundaci rezervacích najdete v tématu věnovaném [výměnám a refundacím rezervací](billing-azure-reservations-self-service-exchange-and-refund.md).
-
-Sleva rezervace se automaticky použije na počet instancí SQL Data Warehouse, které odpovídají SQL Data Warehouse rezervovanému rozsahu kapacity a oblasti. Rozsah SQL Data Warehouse rezervované kapacity můžete aktualizovat pomocí [Azure Portal](https://portal.azure.com/), PowerShellu, CLI nebo přes rozhraní API.
+Sleva rezervace se automaticky aplikuje na počet instancí SQL Data Warehouse, které odpovídají SQL Data Warehouse rezervovanému rozsahu kapacity a oblasti. Rozsah SQL Data Warehouse rezervované kapacity můžete aktualizovat pomocí [Azure Portal](https://portal.azure.com/), PowerShellu, CLI nebo přes rozhraní API.
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o tom, jak se slevy za rezervace vztahují na Azure SQL Data Warehouse, najdete v tématu [jak se vztahují slevy na rezervace na Azure SQL Data Warehouse](billing-prepay-sql-data-warehouse-charges-with-reserved-capacity.md).
 

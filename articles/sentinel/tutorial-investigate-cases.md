@@ -1,6 +1,6 @@
 ---
-title: Prozkoumat případů s Sentinelu ve verzi Preview Azure | Dokumentace Microsoftu
-description: A zjistěte, jak prozkoumat případy s Sentinelu Azure pomocí tohoto kurzu.
+title: Prozkoumat incidenty pomocí Azure Sentinel Preview | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak prozkoumat incidenty pomocí služby Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -15,65 +15,65 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 82fac23fc2d718aa908f6291241abaa2aedb8815
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bad3fddd6caf7e6eb455e59280f181c787b95a4e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621187"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780387"
 ---
-# <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>Kurz: Prozkoumat případů s Azure Sentinelu ve verzi Preview
+# <a name="tutorial-investigate-incidents-with-azure-sentinel-preview"></a>Kurz: Prozkoumat incidenty pomocí Azure Sentinel Preview
 
 > [!IMPORTANT]
-> Azure Sentinel je aktuálně ve verzi public preview.
+> Služba Azure Sentinel je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tento kurz pomůže odhalit hrozby s využitím Azure Sentinelu.
+Tento kurz vám pomůže detekovat hrozby pomocí služby Azure Sentinel.
 
-Poté co [připojené zdroje dat](quickstart-onboard.md) Sentinelu Azure chcete budete upozorněni, když se stane něco podezřelé. Pokud chcete povolit, můžete k tomu, Sentinelu Azure, které vytvoříte upřesňující pravidla výstrah, které generují případů, které můžete přiřadit a použití jak hluboko zjistit anomálie a hrozby ve vašem prostředí. 
+Po [připojení zdrojů dat](quickstart-onboard.md) ke službě Azure Sentinel chcete být upozorněni, když dojde k nějaké podezřelé situaci. Abyste to mohli udělat, Azure Sentinel vám umožní vytvářet Pokročilá pravidla výstrah, která generují incidenty, které můžete přiřadit a použít k hloubku šetření anomálií a hrozeb ve vašem prostředí. 
 
 > [!div class="checklist"]
-> * Vytvořte případy
-> * Prozkoumávání případů
+> * Vytvořit incidenty
+> * Šetření incidentů
 > * Reakce na hrozby
 
-## <a name="investigate-cases"></a>Prozkoumávání případů
+## <a name="investigate-incidents"></a>Šetření incidentů
 
-Případ může obsahovat více výstrah. Je souhrn všech důkazy, které jsou relevantní pro konkrétní šetření. Případ je založeno na výstrahy, kterou jste definovali v **Analytics** stránky. Vlastnosti související s výstrahami, jako je například stav a závažnost jsou nastaveny na úrovni případu. Po necháte Azure Sentinelu vědět, jaké druhy hrozeb, které hledáte a jak je najít, můžete monitorovat hrozby, kterých se zjišťují šetření případů. 
+incident může zahrnovat více výstrah. Jedná se o agregaci všech relevantních důkazů pro konkrétní šetření. incident se vytvoří na základě výstrah, které jste definovali na stránce **Analytics** . Vlastnosti související s výstrahami, jako je závažnost a stav, se nastavují na úrovni incidentu. Až budete chtít, aby služba Azure Sentinel znala, jaké druhy hrozeb hledáte, a jak je najít, můžete monitorovat hrozby zjištěné vyšetřováním incidentů. 
 
-1. Vyberte **případů**. **Případů** stránky vám umožňuje vědět, kolik případů budete mít, kolik se otevře, kolik jste nastavili **probíhá**, a kolik jsou zavřené. Pro každý případ můžete zobrazit čas, kdy se k němu došlo a stav případu. Podívejte se na závažnosti při rozhodování o zpracování první. V **případů** stránky, klikněte na tlačítko **výstrahy** kartu zobrazíte všechny výstrahy, které souvisí s případem. Entity, které jste namapovali jako součást tento případ, lze zobrazit v dříve **entity** kartu.  Případy můžete filtrovat podle potřeby, například podle stavu nebo závažnosti. Když se podíváte **případů** kartě, zobrazí se vám otevřených případů, které obsahují upozornění aktivované testováním vaše pravidla detekce, které jsou definované v **Analytics**. V horní části uvidíte aktivních obchodních případů, nové případy a v průběhu případy. Naleznete v tématu Přehled o všech případů podle závažnosti.
+1. Vyberte **incidenty**. Na stránce incidenty se dozvíte, kolik incidentů máte, kolik jich je otevřených, kolik se vám nastavilo **v průběhu**a kolik se zavřelo. U každého incidentu můžete vidět čas, ke kterému došlo, a stav incidentu. Podívejte se na závažnost, abyste se rozhodli, co se má zpracovat jako první. Kliknutím na kartu **výstrahy** na stránce **incidenty** zobrazíte všechny výstrahy, které se vztahují k incidentu. Entity, které jste namapovali dříve jako součást incidentu, lze zobrazit na kartě **entity** .  Incidenty můžete podle potřeby filtrovat, například podle stavu nebo závažnosti. Když se podíváte na kartu incidenty, zobrazí se otevřené incidenty obsahující výstrahy, které aktivovala vaše pravidla detekce definovaná v tématu **Analýza**. V horní části uvidíte aktivní incidenty, nové incidenty a probíhající incidenty. Můžete si také prohlédnout přehled všech incidentů podle závažnosti.
 
    ![Řídicí panel výstrah](./media/tutorial-investigate-cases/cases.png)
 
-2. Pokud chcete začít šetření, klikněte na zvláštní případ. Na pravé straně zobrazí se podrobné informace o tento případ, včetně závažnosti, souhrn počtu účastnící se entity (podle mapování pracovního). Každý případ má jedinečné ID. Závažnost případu se určuje podle nejvyšší závažnost výstrahy, které jsou zahrnuté v případě.  
+2. Chcete-li zahájit šetření, klikněte na konkrétní incident. Na pravé straně můžete zobrazit podrobné informace o incidentu včetně jeho závažnosti, souhrnu počtu zúčastněných entit (na základě vašeho mapování). Každý incident má jedinečné ID. Závažnost incidentu je určena podle nejzávažnějšího upozornění, které je součástí incidentu.  
 
-1. Chcete-li zobrazit další podrobnosti o výstrahách a entit v případě, klikněte na **zobrazit úplné podrobnosti** v případě stránky a zkontrolujte příslušné karty, které shrnují informací o případu.  Zobrazení úplného případů konsoliduje všechny důkazy v upozornění, související výstrahy a entity.
+1. Pokud chcete zobrazit další podrobnosti o výstrahách a entitách v incidentu, klikněte na **Zobrazit úplné podrobnosti** na stránce incidentu a Projděte si příslušné karty, které shrnují informace o incidentu.  Zobrazení úplného incidentu slučuje všechny legitimace v výstrahy, související výstrahy a entity.
 
-1. V **výstrahy** kartu, přezkoumejte toto upozornění, samotný – když se aktivuje a kolik překročení prahových hodnot, které jste nastavili. Zobrazí se všechny relevantní informace o dané výstraze – dotaz, který aktivoval výstrahu, počet výsledků vrácených na dotaz a možnost spustit playbooky na výstrahy. Přejít dolů ještě dál do případu, klikněte na počet přístupů. Otevře se dotaz, který vygeneroval výsledky a výsledky, které se aktivuje upozornění v Log Analytics.
+1. Na kartě **výstrahy** si přečtěte samotnou výstrahu, když byla aktivována, a podle toho, kolik překročilo nastavené prahové hodnoty. Zobrazí se všechny relevantní informace o výstraze – dotaz, který aktivoval výstrahu, počet vrácených výsledků na dotaz a možnost spustit playbooky na výstrahách. Pokud chcete ještě více přejít k incidentu, klikněte na počet přístupů. Otevře se dotaz, který vygeneroval výsledky, a výsledky, které vyvolaly výstrahu v Log Analytics.
 
-3. V **entity** kartě, zobrazí se všechny entity, které jste namapovali jako součást definice pravidla upozornění. 
+3. Na kartě **entity** můžete zobrazit všechny entity, které jste namapovali jako součást definice pravidla výstrahy. 
 
-4. Pokud budete aktivně ho prověřují případ, je vhodné nastavit stav případu **probíhá** dokud ho neukončíte. Můžete zavřít i v případě, kde **uzavřeno přeložit** je stav pro případy, které označují, že byla zpracována incident, při **uzavřeno dismissed** je stav pro případy, které nevyžadují zpracování. Vysvětlení jsou požadovány, s vysvětlením, vaše důvody pro uzavření případu.
+4. Pokud aktivně zkoumáte incident, je vhodné nastavit stav incidentu na **probíhá** , dokud ho nezavřete. Incident můžete také uzavřít, kde uzavřená **vyřešená** je stav incidentů, který signalizuje, že byl incident zpracován, zatímco **uzavřený** je stav incidentů, které nevyžadují zpracování. Jsou požadovány vysvětlení, která objasňují důvody uzavření incidentu.
 
-5. Případy můžete přiřadit pro konkrétního uživatele. Pro každý případ můžete přiřadit vlastníka, tak, že nastavíte tak **vlastníka** pole. Všechny případy start jako nepřiřazené. Můžete přejít do případy a filtrovat podle vaše jméno, zobrazí všechny případy, které vlastníte. 
+5. Incidenty je možné přiřadit konkrétnímu uživateli. U každého incidentu můžete vlastníka přiřadit nastavením pole **vlastník** incidentu. Všechny incidenty začínají jako nepřiřazené. Pokud chcete zobrazit všechny incidenty, které vlastníte, můžete přejít na incidenty a filtrovat podle vašeho jména. 
 
-5. Klikněte na tlačítko **prošetření** zobrazíte mapa šetření a rozsahu porušení s kroky k nápravě. 
+5. Kliknutím na **prozkoumat** zobrazte mapu a rozsah porušení s postupem nápravy. 
 
 
 
 ## <a name="respond-to-threats"></a>Reakce na hrozby
 
-Azure Sentinel poskytuje dvě primární možnosti pro reakce na hrozby pomocí playbooků. Můžete nastavit playbook spustit automaticky, když se aktivuje upozornění, nebo můžete ručně spustit playbooku v reakci na výstrahy.
+Azure Sentinel nabízí dvě primární možnosti pro reagování na hrozby pomocí playbooky. Můžete nastavit, aby se PlayBook spouštěla automaticky, když se aktivuje výstraha, nebo můžete ručně spustit PlayBook v reakci na výstrahu.
 
-- Můžete nastavit playbook spustit automaticky, když se aktivuje upozornění, když konfigurujete playbooku. 
+- Můžete nastavit, aby se PlayBook spouštěla automaticky, když se aktivuje výstraha, když nakonfigurujete PlayBook. 
 
-- Playbook z uvnitř výstrahu, můžete spustit ručně kliknutím **zobrazit playbooky** a následným výběrem playbook ke spuštění.
+- Můžete ručně spustit PlayBook z výstrahy, a to tak, že kliknete na **Zobrazit playbooky** a pak vyberete PlayBook, které se má spustit.
 
 
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu jste zjistili, jak začít šetření případů použití ověřovacích Azure. Dál najdete v tomto kurzu [týkající se reakce na hrozby pomocí automatizovaných playbooky](tutorial-respond-threats-playbook.md).
+V tomto kurzu jste zjistili, jak začít s vyšetřováním incidentů pomocí služby Azure Sentinel. Přejděte k kurzu, [jak reagovat na hrozby pomocí automatizovaného playbooky](tutorial-respond-threats-playbook.md).
 > [!div class="nextstepaction"]
-> [Reakce na hrozby](tutorial-respond-threats-playbook.md) k automatizaci vaše odpovědi na ně.
+> [Reakce](tutorial-respond-threats-playbook.md) na hrozby pro automatizaci reakcí na hrozby.
 

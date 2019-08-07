@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: 6537bfe5df8de298593428fb21448181ad8075fc
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663468"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827322"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -42,7 +42,7 @@ Zařízení má nainstalované tyto agenty.
 
 **Agent** | **Podrobnosti**
 --- | ---
-Agent zjišťování | Shromažďuje konfigurační data z místních virtuálních počítačů.
+Agent zjišťování | Shromažďuje konfigurační data místních virtuálních počítačů.
 Agent posouzení | Profiluje místní prostředí pro shromažďování dat o výkonu virtuálních počítačů.
 Adaptér migrace | Orchestruje replikaci virtuálních počítačů a koordinuje komunikaci mezi virtuálními počítači a Azure.
 Brána migrace | Odesílá replikovaná data virtuálního počítače do Azure.
@@ -200,8 +200,8 @@ Zařízení se upgraduje, protože Azure Migrate agenti, kteří běží na zař
 
 - K tomu dochází automaticky, protože ve výchozím nastavení je automaticky povolena automatická aktualizace na zařízení.
 - Toto výchozí nastavení můžete změnit tak, aby se agenti aktualizovaly ručně.
-- Postup zakázání automatických aktualizací, nastavení automatické aktualizace klíčového zařízení registru v HKLM\SOFTWAREMicrosoft\Azure.
-
+- Automatické aktualizace zakážete tak, že přejdete do editoru registru > HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance a nastavíte klíč registru-"AutoUpdate" na hodnotu 0 (DWORD).
+ 
 ### <a name="set-agent-updates-to-manual"></a>Nastavit aktualizace agenta na ruční
 
 V případě ručních aktualizací nezapomeňte aktualizovat všechny agenty na zařízení ve stejnou dobu, a to pomocí tlačítka **aktualizovat** pro každého zastaralého agenta na zařízení. Nastavení aktualizace můžete kdykoli přepnout zpátky na automatické aktualizace.

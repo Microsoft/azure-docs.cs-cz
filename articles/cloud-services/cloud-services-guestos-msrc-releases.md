@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/26/2019
+ms.date: 8/2/2019
 ms.author: raiye
-ms.openlocfilehash: dd0adbe7cc27389e3b1d6533b038042824daea22
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 534a77ad29338ca1cdba22a3adeb8113521a6246
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592430"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780078"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
@@ -28,7 +28,6 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Produktová kategorie | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 |  Rel. 19-07   |  [4507434]  |  Internet Explorer   |  2,88, 3,75, 4,68  |  9\. července 2019  |
-|  Rel. 19-07   |  [4506621]  |  Zabezpečení systému Windows   |  2,88, 3,75, 4,68  |  9\. července 2019  |
 |  Rel. 19-07   |  [4506966]  |  Zabezpečení rozhraní .NET 4.5.2   |  2,88  |  9\. července 2019  |
 |  Rel. 19-07   |  [4506976]  |  Zabezpečení rozhraní .NET 3.5.1   |  2,88  |  9\. července 2019  |
 |  Rel. 19-07   |  [4507456]  |  Zabezpečení systému Windows   |  2,88  |  9\. července 2019  |
