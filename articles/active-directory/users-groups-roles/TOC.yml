@@ -138,8 +138,6 @@
               href: roles-view-assignments.md
             - name: Přiřazování rolí v centru správy Azure AD
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-            - name: Přiřazení vlastních rolí v Graph API
-              href: roles-assign-graph.md
             - name: Přiřazení vlastních rolí v PowerShellu
               href: roles-assign-powershell.md
             - name: Oprávnění pro vlastní role (Preview)

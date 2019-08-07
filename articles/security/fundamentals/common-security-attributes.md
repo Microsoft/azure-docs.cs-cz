@@ -10,12 +10,12 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: be39a623dc5dac09dcfe47de67e025191b5c7de3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 43eb7e5c4cab722eb97f9e2fe819c9c79bae45d9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727497"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828781"
 ---
 # <a name="security-attributes-for-azure-services"></a>Atributy zabezpečení pro služby Azure
 
@@ -646,7 +646,7 @@ SQL Database zahrnuje [jednu databázi](/azure/sql-database/sql-database-single-
 | Podpora koncového bodu služby| Ano | Platí pouze pro [jedinou databázi](/azure/sql-database/sql-database-single-index) . |
 | Podpora injektáže v Azure Virtual Network| Ano | Platí jenom pro [spravovanou instanci](/azure/sql-database/sql-database-managed-instance) . |
 | Izolace sítě a podpora brány firewall| Ano | Brána firewall na úrovni databáze i serveru. Izolace sítě je určena pouze pro [spravovanou instanci](/azure/sql-database/sql-database-managed-instance) . |
-| Podpora vynuceného tunelování| Ano | [Spravovaná instance](/azure/sql-database/sql-database-managed-instance) prostřednictvím sítě VPN [ExpressRoute](/azure/expressroute/index.yml) |
+| Podpora vynuceného tunelování| Ano | [Spravovaná instance](/azure/sql-database/sql-database-managed-instance) prostřednictvím sítě VPN [ExpressRoute](/azure/expressroute/index) |
 
 ### <a name="detection"></a>Detekce
 
@@ -672,7 +672,7 @@ SQL Database zahrnuje [jednu databázi](/azure/sql-database/sql-database-single-
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace, jako je například Správa verzí konfigurace| Ne  | Žádný |
+| Podpora správy konfigurace, jako je například Správa verzí konfigurace| Ne  | Žádné |
 
 ### <a name="additional-security-attributes-for-sql-database"></a>Další atributy zabezpečení pro SQL Database
 

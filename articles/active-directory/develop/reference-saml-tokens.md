@@ -1,6 +1,6 @@
 ---
-title: Další informace o jiný token a typy, které podporuje Azure AD | Dokumentace Microsoftu
-description: Příručka pro pochopení a zhodnocení deklarace identity v tokenech SAML 2.0 a webové tokeny JSON (JWT) tokeny vystavené službou Azure Active Directory (AAD)
+title: Přečtěte si o různých typech tokenů a deklarací, které podporuje Azure AD | Microsoft Docs
+description: Průvodce pro porozumění a vyhodnocení deklarací v tokenech SAML 2,0 a JSON web tokens (JWT) vydaných službou Azure Active Directory (AAD)
 documentationcenter: na
 author: rwike77
 services: active-directory
@@ -10,7 +10,7 @@ ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/22/2018
@@ -18,42 +18,42 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a18d0b5ebc9aef1f8fa03d6351e53e4df6d9931f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: af8f1e9150efca4441356a80c263a58fafefcfaf
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65601994"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834836"
 ---
-# <a name="azure-ad-saml-token-reference"></a>Odkaz tokenu Azure AD SAML
+# <a name="azure-ad-saml-token-reference"></a>Reference k tokenu SAML v Azure AD
 
-Azure Active Directory (Azure AD) vysílá několika typy tokenů zabezpečení ve zpracování každý tok ověřování. Tento dokument popisuje formátu, vlastnosti zabezpečení a obsah každého typu token.
+Azure Active Directory (Azure AD) emituje několik typů tokenů zabezpečení při zpracování každého toku ověřování. Tento dokument popisuje formát, charakteristiky zabezpečení a obsah každého typu tokenu.
 
 ## <a name="claims-in-saml-tokens"></a>Deklarace identity v tokenech SAML
 
 > [!div class="mx-codeBreakAll"]
-> | Název | Equivalent JWT Claim | Popis | Příklad: |
+> | Name | Ekvivalentní deklarace JWT | Popis | Příklad |
 > | --- | --- | --- | ------------|
-> |Cílová skupina | `aud` |Zamýšlený příjemce tokenu. Aplikace, která přijímá token musí zkontrolujte, že hodnoty cílové skupiny je správný a odmítnout všechny tokeny, určené pro jinou cílovou skupinu. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
-> | Okamžik ověření | |Zaznamenává data a času, kdy došlo k ověřování. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
-> |Metoda ověřování | `amr` |Určuje, jak byl předmět token ověření. | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
-> |Křestní jméno | `given_name` |Nabízí první nebo "zadány" jméno uživatele, jako je nastaven na objekt uživatele Azure AD. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
-> |Skupiny | `groups` |Poskytuje ID objektů, které představují členství ve skupinách daného subjektu. Tyto hodnoty jsou jedinečné (viz ID objektu) a lze jej bezpečně používat při správě přístupu, jako je například vynucování autorizaci pro přístup k prostředku. Skupiny součástí skupiny deklarace identity jsou nakonfigurované na základě jednotlivých aplikací prostřednictvím vlastnosti "groupMembershipClaims" manifestu aplikace. Hodnotu null, vyloučí všechny skupiny, hodnota "Skupiny SecurityGroup" bude obsahovat pouze členství ve skupinách zabezpečení Active Directory a hodnota "Vše" bude obsahovat skupiny zabezpečení a Office 365 distribuční seznamy. <br><br> **Poznámky k**: <br> Pokud počet skupin, které je uživatel v překročí limit (150 pro SAML, 200 pro token JWT) pak deklaraci identity při překročení limitu se přidají zdroje deklarací identity směřující na koncový bod grafu obsahující seznam skupin pro daného uživatele. (v. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
-> | Při překročení limitu indikátor skupiny | `groups:src1` | Pro žádosti o tokeny, které nejsou omezena délka (naleznete v tématu `hasgroups` výše), ale stále příliš velký pro daný token, odkaz na seznam úplné skupiny pro uživatele, budou zahrnuty. Pro SAML, tím se přidá jako novou deklaraci místo `groups` deklarací identity. | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
-> |Zprostředkovatel identity | `idp` |Zaznamenává zprostředkovatele identity, který ověřil subjekt tokenu. Tato hodnota se shoduje s hodnotu deklarace identity vystavitele, pokud je uživatelský účet v jiném tenantovi než vystavitele. | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
-> |IssuedAt | `iat` |Ukládá čas, kdy byl token vydán. Často se používá k měření token aktuálnosti. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
-> |Vystavitel | `iss` |Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token. V tokenech, které vrací Azure AD že vystavitel je sts.windows.net. Identifikátor GUID v hodnotě deklarace identity vystavitele je ID tenanta adresáře Azure AD. ID tenanta je identifikátor neměnné a spolehlivé adresáře. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
-> |Příjmení | `family_name` |Jak je definováno v objektu uživatele Azure AD poskytuje poslední jméno, příjmení nebo příjmení uživatele. | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |Name | `unique_name` |Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota nemusí být jedinečný v rámci tenanta a je určený pouze pro účely zobrazení. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
-> |ID objektu | `oid` |Obsahuje jedinečný identifikátor objektu ve službě Azure AD. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. ID objektu použijte k identifikaci objektu v dotazech ke službě Azure AD. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
-> |Role | `roles` |Představuje všechny aplikační role, které předmět bylo uděleno přímo i nepřímo prostřednictvím členství ve skupinách a je možné vynutit řízení přístupu na základě rolí. Aplikační role jsou definované na základě jednotlivých aplikací prostřednictvím `appRoles` vlastnosti manifestu aplikace. `value` Vlastnost jednotlivé aplikační role je hodnota, která se zobrazí v deklarace identity rolí. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
-> |Subject | `sub` |Určuje objekt o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nejde ji přiřadit nebo opakovaně používat, proto ji lze použít k provedení kontroly autorizace bezpečně. Protože předmět je vždy přítomna v tokenech problémy s Azure AD, je doporučeno použití této hodnoty v rámci obecné účely autorizace systému. <br> `SubjectConfirmation` není deklarace identity. Popisuje, jak ověřit předmětem token. `Bearer` Označuje, předmět je potvrzen jejich vlastnictví tokenu. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
-> |ID tenanta | `tid` |Neměnné a jednorázovým identifikátor, který identifikuje tenantu Active directory, která token vydala. Tuto hodnotu můžete použít pro přístup k prostředkům specifickým pro tenanta adresáře v aplikaci s více tenanty. Tuto hodnotu můžete například použít k identifikaci tenanta služby ve volání rozhraní Graph API. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
-> |Živostnost tokenu | `nbf`, `exp` |Definuje časový interval, ve kterém je token platný. Služba, která ověří token, který by měl ověřte, že aktuální datum v rámci dobu životnosti tokenu, jiný ji by měl odmítnout token. Služba může umožnit až pět minut mimo rozsah životnost tokenu aby se zohlednily případné rozdíly v čase ("čas Nerovnoměrná distribuce") mezi službami Azure AD a služby. | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
+> |Cílová skupina | `aud` |Zamýšlený příjemce tokenu. Aplikace, která obdrží token, musí ověřit, zda je hodnota cílové skupiny správná a zamítnuta všechny tokeny určené pro jinou cílovou skupinu. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
+> | Okamžik ověření | |Zaznamenává datum a čas, kdy došlo k ověření. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
+> |Metoda ověření | `amr` |Určuje způsob ověření předmětu tokenu. | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
+> |Křestní jméno | `given_name` |Poskytuje první nebo "dané" jméno uživatele, jak je nastaveno v objektu uživatele Azure AD. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
+> |Skupiny | `groups` |Poskytuje ID objektů, které představují členství ve skupině daného subjektu. Tyto hodnoty jsou jedinečné (viz ID objektu) a lze je bezpečně použít ke správě přístupu, jako je vynucení autorizace pro přístup k prostředku. Skupiny zahrnuté v deklaraci skupin jsou nakonfigurovány na základě jednotlivých aplikací prostřednictvím vlastnosti "groupMembershipClaims" manifestu aplikace. Hodnota null bude vyloučit všechny skupiny, hodnota "Security Group" bude zahrnovat pouze členství ve skupině zabezpečení služby Active Directory a hodnota "vše" bude zahrnovat skupiny zabezpečení a distribuční seznamy Office 365. <br><br> **Poznámky**: <br> Pokud počet skupin, na kterých uživatel patří, se nachází v rámci limitu (150 pro SAML, 200 pro JWT), pak bude deklarace nadlimitního využití přičtena do koncového bodu grafu obsahujícího seznam skupin pro uživatele. pro. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
+> | Indikátor překročení skupin | `groups:src1` | Pro žádosti o tokeny, které nejsou omezené na `hasgroups` délku (viz výše), ale u tokenu je ještě moc velká, se zobrazí odkaz na seznam úplných skupin pro uživatele. V případě SAML se přidá jako nová deklarace místo `groups` deklarace identity. | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
+> |Zprostředkovatel identit | `idp` |Zaznamenává zprostředkovatele identity, který ověřil subjekt tokenu. Tato hodnota je shodná s hodnotou deklarace vystavitele, pokud se uživatelský účet nepoužívá v jiném tenantovi než Vystavitel. | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
+> |IssuedAt | `iat` |Ukládá čas, kdy byl token vydán. Často se používá k měření aktuálnosti tokenů. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
+> |Vystavitel | `iss` |Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token. V tokenech, které Azure AD vrací, je Vystavitel sts.windows.net. Identifikátor GUID v hodnotě deklarace vystavitele je ID tenanta adresáře služby Azure AD. ID tenanta je neměnný a spolehlivý identifikátor adresáře. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
+> |Příjmení | `family_name` |Poskytuje příjmení, příjmení nebo rodinné jméno uživatele, jak je definováno v objektu uživatele Azure AD. | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
+> |Name | `unique_name` |Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota není zaručena jako jedinečná v rámci tenanta a je navržena tak, aby se používala pouze pro účely zobrazení. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |ID objektu | `oid` |Obsahuje jedinečný identifikátor objektu ve službě Azure AD. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Pomocí ID objektu Identifikujte objekt v dotazech do služby Azure AD. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
+> |Role | `roles` |Představuje všechny aplikační role, na které byl subjekt udělen přímo i nepřímo prostřednictvím členství ve skupině a lze jej použít k vyřízení přístupu na základě rolí. Aplikační role jsou definovány na základě jednotlivých aplikací prostřednictvím `appRoles` vlastnosti manifestu aplikace. `value` Vlastnost každé aplikační role je hodnota, která se zobrazí v deklaraci identity rolí. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
+> |Subject | `sub` |Určuje objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nedá se znovu přiřadit ani použít znovu, takže ji můžete použít k bezpečnému provádění kontrol autorizace. Protože předmět je vždy přítomen v tokenech, které jsou v Azure AD problémy, doporučujeme tuto hodnotu použít v systému autorizace pro obecné účely. <br> `SubjectConfirmation`není deklarací identity. Popisuje, jak je ověřen předmět tokenu. `Bearer`indikuje, že subjekt je potvrzený jeho držitelem. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
+> |ID tenanta | `tid` |Neproměnlivý, neopakovaně použitelný identifikátor, který identifikuje tenanta adresáře, který token vystavil. Tuto hodnotu můžete použít pro přístup k prostředkům adresáře pro konkrétního tenanta v aplikaci s více klienty. Tuto hodnotu můžete například použít k identifikaci tenanta při volání Graph API. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
+> |Živostnost tokenu | `nbf`, `exp` |Definuje časový interval, ve kterém je token platný. Služba, která ověřuje token, by měla ověřit, že aktuální datum spadá do doby životnosti tokenu, jinak by měl token odmítnout. Tato služba může trvat až pět minut, než se rozsah životnosti tokenu přihlíží k jakýmkoli rozdílům v časovém intervalu ("časový interval") mezi službou Azure AD a službou. | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
 
-## <a name="sample-saml-token"></a>Ukázka tokenu SAML
+## <a name="sample-saml-token"></a>Vzorový token SAML
 
-Toto je ukázka typické tokenu SAML.
+Toto je ukázka typického tokenu SAML.
 
     <?xml version="1.0" encoding="UTF-8"?>
     <t:RequestSecurityTokenResponse xmlns:t="http://schemas.xmlsoap.org/ws/2005/02/trust">
@@ -156,8 +156,8 @@ Toto je ukázka typické tokenu SAML.
     </t:RequestSecurityTokenResponse>
 
 ## <a name="related-content"></a>Související obsah
-* V tématu Azure AD Graph [operace se zásadami](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) a [entita zásad](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity), další informace o správě životnosti tokenu zásad prostřednictvím rozhraní Azure AD Graph API.
-* Další informace a ukázky pro správu zásad prostřednictvím rutin Powershellu, včetně ukázek, naleznete v tématu [konfigurovatelné životností tokenů ve službě Azure AD](active-directory-configurable-token-lifetimes.md). 
-* Přidat [vlastní a volitelných deklarací](active-directory-optional-claims.md) tokeny pro vaši aplikaci.
-* Použití [jednotné přihlašování (SSO) pomocí SAML](single-sign-on-saml-protocol.md).
-* Použití [Azure jednotné přihlašování SAML protokol](single-sign-out-saml-protocol.md)
+* Další informace o správě zásad životnosti tokenů prostřednictvím Graph API Azure AD najdete v tématu [operace zásad](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) Azure AD graphu a [entitu zásady](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity).
+* Další informace a ukázky správy zásad pomocí rutin PowerShellu, včetně ukázek, najdete v tématu [konfigurovatelné životnosti tokenů ve službě Azure AD](active-directory-configurable-token-lifetimes.md). 
+* Přidejte [vlastní a volitelné deklarace](active-directory-optional-claims.md) do tokenů pro vaši aplikaci.
+* Použijte [jednotné přihlašování (SSO) s SAML](single-sign-on-saml-protocol.md).
+* Použití [protokolu SAML pro jednotné odhlašování v Azure](single-sign-out-saml-protocol.md)

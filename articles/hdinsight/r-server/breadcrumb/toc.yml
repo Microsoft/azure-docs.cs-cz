@@ -1,0 +1,14 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: HDInsight
+      tocHref: /azure/hdinsight/
+      topicHref: /azure/hdinsight/index
+      items:
+        - name: Služby ML
+          tocHref: /azure/hdinsight/hadoop/
+          topicHref: /azure/hdinsight/r-server/index
+        - name: Služby ML
+          tocHref: /azure/hdinsight/domain-joined/
+          topicHref: /azure/hdinsight/r-server/index

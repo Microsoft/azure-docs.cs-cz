@@ -1,29 +1,29 @@
 ---
-title: Řešení Azure VMware přístupu podle CloudSimple – portál
-description: Popisuje, jak získat přístup k řešení VMware portálem CloudSimple z webu Azure portal
+title: Přístup k řešení Azure VMware podle CloudSimple – portál
+description: Popisuje, jak získat přístup k řešení VMware pomocí portálu CloudSimple z Azure Portal
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/04/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 61c3d37f365034984231c780199e181872c010c6
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 5bb1a4dd9d652481dfe1a2727ee0e5fe7601e96a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544128"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812769"
 ---
-# <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Přístup k řešení VMware s CloudSimple portálu z webu Azure portal
+# <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Přístup k řešení VMware pomocí portálu CloudSimple z Azure Portal
 
-Pro přístup k portálu CloudSimple se podporuje jednotné přihlašování. Po přihlášení k webu Azure portal můžete přistupovat na portál CloudSimple bez opakovaného přihlášení. Při prvním přístupu CloudSimple portál zobrazí výzva k autorizaci [autorizace služby CloudSimple](#consent-to-cloudsimple-service-authorization-application) aplikace.  Autorizace je jednorázová akce.
+Pro přístup k portálu CloudSimple je podporováno jednotné přihlašování. Po přihlášení k Azure Portal máte přístup k portálu CloudSimple bez opětovného přihlášení. Při prvním přístupu k portálu CloudSimple se zobrazí výzva k autorizaci [autorizační aplikace služby CloudSimple](#consent-to-cloudsimple-service-authorization-application) .  Autorizace je jednorázová akce.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Uživatelé s builtin **vlastníka** a **Přispěvatel** role portálu CloudSimple přístup.  Role musí být nakonfigurované ve skupině prostředků, ve kterém je nasazená služba CloudSimple.  Role dá konfigurovat i na CloudSimple objekt služby.  Další informace o kontrole vaší role, naleznete v tématu [zobrazit přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access) článku.
+Uživatelé s rolemi Builtin **Owner** a **Přispěvatel** mají přístup k portálu CloudSimple.  Role musí být nakonfigurované ve skupině prostředků, ve které je nasazená služba CloudSimple.  Role je také možné nakonfigurovat v objektu služby CloudSimple.  Další informace o kontrole role najdete v článku [zobrazení přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access) .
 
-Pokud používáte vlastní role, role by měl mít některý z následujících operací v části ```Actions```.  Další informace o vlastních rolích najdete v tématu [vlastní role pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  Pokud všechny operace, je součástí ```NotActions```, uživatel nemá přístup k portálu CloudSimple. 
+Pokud používáte vlastní role, role by měla mít následující operace ```Actions```.  Další informace o vlastních rolích najdete v tématu [vlastní role pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  Pokud je některá z operací součástí ```NotActions```, uživatel nemá přístup k portálu CloudSimple. 
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -32,7 +32,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*
 Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 ```
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
@@ -40,36 +40,36 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 1. Vyberte **Všechny služby**.
 
-2. Vyhledejte **CloudSimple služby**.
+2. Vyhledejte **služby CloudSimple Services**.
 
-3. Vyberte službu CloudSimple, na kterém chcete vytvořit privátní Cloud.
+3. Vyberte službu CloudSimple, na které chcete vytvořit privátní cloud.
 
-4. Na **přehled** klikněte na **přejít na portál CloudSimple**.  Pokud přistupujete k portálu CloudSimple z portálu Azure portal poprvé, budete vyzváni k autorizaci [autorizace služby CloudSimple](#consent-to-cloudsimple-service-authorization-application) aplikace. 
+4. Na stránce **Přehled** klikněte na **Přejít na portál CloudSimple**.  Pokud k portálu CloudSimple přistupujete poprvé z Azure Portal, budete vyzváni k autorizaci [autorizační aplikace služby CloudSimple](#consent-to-cloudsimple-service-authorization-application) . 
 
-    ![Spusťte portál CloudSimple](media/launch-cloudsimple-portal.png)
+    ![Spustit portál CloudSimple](media/launch-cloudsimple-portal.png)
 
 > [!TIP]
-> Pokud vyberete operace privátního cloudu (jako je například vytvoření nebo rozšíření privátního cloudu) přímo z portálu Azure portal, CloudSimple portálu se otevře na stránce uvedené.
+> Pokud vyberete operaci privátního cloudu (například vytvoření nebo rozšíření privátního cloudu) přímo z Azure Portal, otevře se portál CloudSimple se zvýrazněnou stránkou.
 
-Na portálu CloudSimple vyberte **Domů** v nabídce na straně zobrazíte souhrnné informace o privátních Cloudů. Prostředků a kapacity privátních cloudů, zobrazují společně s výstrahami a úlohami, které vyžadují pozornost. Pro běžné úlohy klikněte na tlačítko s názvem ikony v horní části stránky.
+Na portálu CloudSimple vyberte **Domů** v nabídce vedle sebe, aby se zobrazily souhrnné informace o vašich privátních cloudech. Zobrazí se prostředky a kapacita vašich privátních cloudů spolu s výstrahami a úlohami, které vyžadují pozornost. U běžných úloh klikněte na pojmenované ikony v horní části stránky.
 
 ![Domovská stránka](media/cloudsimple-portal-home.png)
 
-## <a name="consent-to-cloudsimple-service-authorization-application"></a>Souhlas s aplikací CloudSimple autorizace služby
+## <a name="consent-to-cloudsimple-service-authorization-application"></a>Souhlas s aplikací autorizace služby CloudSimple
 
-Spuštění portálu CloudSimple z portálu Azure portal poprvé vyžaduje váš souhlas pro aplikaci CloudSimple autorizace služby.  Vyberte **přijmout** udělit požadovaná oprávnění a přístup k portálu CloudSimple. 
+Spuštění portálu CloudSimple z Azure Portal poprvé vyžaduje souhlas s aplikací autorizace služby CloudSimple.  Vyberte **přijmout** a udělte vám požadovaná oprávnění a přístup k portálu CloudSimple. 
 
-![Souhlas s autorizace služby CloudSimple – správci](media/cloudsimple-azure-consent.png)
+![Souhlas s autorizací služby CloudSimple – správci](media/cloudsimple-azure-consent.png)
 
-Pokud máte oprávnění globálního správce, vyjadřujete souhlas pro vaši organizaci.  Vyberte **souhlas jménem svojí organizace**.
+Pokud máte oprávnění globálního správce, můžete vyjádřit souhlas s vaší organizací.  Vyberte **souhlas jménem vaší organizace**.
 
-![Souhlas s autorizace služby CloudSimple – globální správce](media/cloudsimple-azure-consent-global-admin.png)
+![Souhlas s autorizací služby CloudSimple – globální správce](media/cloudsimple-azure-consent-global-admin.png)
 
-Pokud vaše oprávnění nedovolují přístup k portálu CloudSimple, obraťte se na globálního správce vašeho tenanta udělit požadovaná oprávnění.  Globální správce může dát souhlas jménem svojí organizace.
+Pokud vaše oprávnění nepovolují přístup k portálu CloudSimple, obraťte se na globálního správce vašeho tenanta, aby udělil požadovaná oprávnění.  Globální správce může vyjádřit souhlas jménem vaší organizace.
 
-![Souhlas s autorizace služby CloudSimple – vyžaduje správci](media/cloudsimple-azure-consent-requires-administrator.png)
+![Souhlas s autorizací služby CloudSimple – vyžaduje správce.](media/cloudsimple-azure-consent-requires-administrator.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* Zjistěte, jak [vytvoření privátního cloudu](https://docs.azure.cloudsimple.com/create-private-cloud/)
-* Zjistěte, jak [konfigurace prostředí privátního cloudu](quickstart-create-private-cloud.md)
+* Informace o tom, jak [vytvořit privátní cloud](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* Informace o tom, jak [nakonfigurovat prostředí privátního cloudu](quickstart-create-private-cloud.md)
