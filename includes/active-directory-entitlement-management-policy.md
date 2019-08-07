@@ -5,21 +5,23 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 05/16/2019
+ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: da4bc51cdd8cdfad8212ee5a288f03874f673c2c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678200"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817207"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Zásady: Pro uživatele ve vašem adresáři
 
 Postupujte podle těchto kroků, pokud chcete, aby byly zásady pro uživatele ve vašem adresáři, které mohou vyžadovat tento balíček přístupu.  **Uživatelé ve vašem adresáři** odkazují jak na interní uživatele, tak i na externí uživatele, kteří byli předtím pozváni do adresáře, a to prostřednictvím nich, kteří požadují správu nároků s jiným balíčkem přístupu nebo pozvaní s Azure AD B2B. Při definování zásady můžete zadat jednotlivé uživatele nebo skupiny uživatelů, kteří jsou často. Vaše organizace například už může mít skupinu, jako je například **Všichni zaměstnanci**.  Pokud se tato skupina přidá v zásadách pro uživatele, kteří můžou požádat o přístup, pak může každý člen této skupiny požádat o přístup.
 
 1. V části **Uživatelé, kteří můžou požádat o přístup** , vyberte **pro uživatele v adresáři**.
+
+    Všimněte si, že nastavení **pro uživatele v adresáři** zahrnuje členské uživatele i uživatele typu Host, kteří byli přidáni do vašeho adresáře. Pokud chcete zahrnout pouze členy uživatelů a nikoli uživatele typu Host, vyberte možnost **pro uživatele v adresáři** a pak vyberte skupinu členů uživatelů. V případě potřeby můžete vytvořit dynamickou skupinu členů členských uživatelů (User. userType-EQ "Member"). Další informace najdete v tématu [dynamická pravidla členství pro skupiny v Azure Active Directory](../articles/active-directory/users-groups-roles/groups-dynamic-membership.md).
 
 1. V části **Vybrat uživatele a skupiny** klikněte na **Přidat uživatele a skupiny**.
 

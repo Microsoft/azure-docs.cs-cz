@@ -1,57 +1,61 @@
 ---
-title: Azure Active Directory passwordless přihlášení (preview)
-description: Passwordless přihlášení ke službě Azure AD pomocí klíčů zabezpečení FIDO2 nebo aplikace Microsoft Authenticator (preview)
+title: Přihlášení se Azure Active Directory nejenom heslem (Preview)
+description: Přihlaste se k Azure AD pomocí klíčů zabezpečení FIDO2 nebo aplikace Microsoft Authenticator (Preview), přihlaste se svým heslem.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/05/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d80b359be0a6249327ba1ba1d51ffbc330bb073
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3ae8f6854241240249cb3b7494872cbbd8fd41e6
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712082"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823765"
 ---
-# <a name="what-is-passwordless"></a>Co je passwordless?
+# <a name="what-is-passwordless"></a>Co není heslo?
 
-Vícefaktorové ověřování (MFA) je skvělý způsob, jak zabezpečit vaši organizaci, ale uživatelé získají frustrovaní s další vrstvu nad museli pamatovat si hesla. Metody ověřování passwordless jsou pohodlnější, protože heslo je odebrán a nahrazen parametrem něco, co máte navíc něco, co jste nebo něco, co znáte.
+Multi-Factor Authentication (MFA) je skvělý způsob, jak zabezpečit vaši organizaci, ale uživatelé získají frustrovaní s dodatečnou vrstvou a zapamatují si jejich hesla. Metody ověřování bez hesla jsou pohodlnější, protože heslo se odebírá a nahrazuje něco, co jste vy nebo něco věděli.
 
-|   | Něco, co máte | Něco se nebo vědět |
+|   | Něco, co máte | Něco, co se vám nebo znáte |
 | --- | --- | --- |
-| Bez hesla | Klíč telefonního nebo zabezpečení | Biometriku nebo PIN kód |
+| Bez hesla | Telefonní nebo bezpečnostní klíč | Biometrika nebo PIN |
 
-Uvědomujeme, že každá organizace má jiné potřeby, pokud jde o ověřování. Společnost Microsoft aktuálně nabízí Windows Hello, náš přední passwordless prostředí u počítačů s Windows. Přidali jsme nové přihlašovací údaje passwordless řady: Aplikace Microsoft Authenticator a FIDO2 zabezpečení klíčů.
+Každá organizace má při ověřování jiné požadavky. Microsoft v současnosti nabízí Windows Hello, naše pro počítače s Windows. Přidáváme aplikaci Microsoft Authenticator a bezpečnostní klíče FIDO2 k rodině, která nepoužívá hesla.
 
 ## <a name="microsoft-authenticator-app"></a>Aplikace Microsoft Authenticator
 
-Povolte nadřízeného zaměstnance telefon se metoda passwordless ověřování. Už využíváte aplikaci Microsoft Authenticator jako možnost pohodlný ověřování službou Multi-Factor Authentication kromě hesla. Ale nyní je k dispozici jako passwordless možnost.
+Umožňuje, aby se telefon od zaměstnance stal metodou ověřování pomocí hesla. Kromě hesla už možná používáte aplikaci Microsoft Authenticator jako pohodlný možnost vícefaktorového ověřování. Ale teď je dostupná jako možnost bez hesla.
 
-Změní se žádné iOS nebo telefon s Androidem na silné a passwordless pověření tím, že uživatelům umožní přihlásit na jakoukoli platformu a prohlížeč získávání upozornění na svůj telefon, odpovídající číslo zobrazené na obrazovce a v telefonu a následným použitím jejich biometrické) touch nebo identifikace tváře a) nebo PIN kód k potvrzení.
+![Přihlášení k Microsoft Edge pomocí aplikace Microsoft Authenticator](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-## <a name="fido2-security-keys"></a>FIDO2 zabezpečení klíčů
+Přepíná telefon s iOS nebo Androidem do silných přihlašovacích údajů bez hesla tím, že se uživatelům umožní přihlásit se k libovolné platformě nebo prohlížeči, a to tak, že se jim na telefonu zobrazí oznámení, které odpovídá číslu zobrazenému na obrazovce a pak pomocí jejich biometriky ( a potvrďte ji nebo připnout.
 
-Metoda unphishable založené na standardech passwordless ověřování, která můžou mít libovolné provedení jsou FIDO2 zabezpečení klíče. Rychlé identitu Online (FIDO) je otevřený standard passwordless ověřování. Umožňuje uživatelům a organizacím využívat standardní pro přihlášení ke svým prostředkům bez uživatelského jména a hesla použijte externí bezpečnostní klíč nebo klíč platformy Integrovaná zařízení.
+## <a name="fido2-security-keys"></a>FIDO2 klíče zabezpečení
 
-Zaměstnanci ve veřejné verzi preview, můžete použít externí zabezpečení klíčů pro přihlášení ke svým počítačům Azure Active Directory Windows 10 připojená k (s verzí 1809 nebo vyšší) a získat jednotné přihlašování do cloudových prostředků. Můžete také přihlásí k podporovaných prohlížečů.
+Klíče zabezpečení FIDO2 jsou nenáročné metody ověřování bez hesla založené na standardech, které mohou být v libovolném formuláři. Rychlá identita online (FIDO) je otevřený standard pro ověřování neheslem. Umožňuje uživatelům a organizacím využít standard pro přihlášení ke svým prostředkům bez uživatelského jména nebo hesla pomocí externího bezpečnostního klíče nebo klíče platformy integrovaného do zařízení.
 
-I když existují mnoho klíče, které jsou FIDO2 certifikovaný FIDO Alliance, Microsoft vyžaduje od některé volitelné rozšíření specifikaci FIDO2 CTAP k implementaci dodavatelem pro zajištění maximálního zabezpečení a dosažení co nejlepších výsledků.
+Ve verzi Public Preview můžou zaměstnanci použít externí bezpečnostní klíče pro přihlášení ke svým Azure Active Directory připojeným počítačům s Windows 10 (se spuštěnou verzí 1809 nebo vyšší) a k získání jednotného přihlašování ke svým cloudovým prostředkům. Můžou se také přihlásit k podporovaným prohlížečům.
 
-Klíč zabezpečení **musí** implementovat následující funkce a rozšíření z protokolu FIDO2 CTAP být kompatibilní se službou Microsoft:
+![Přihlaste se k Microsoft Edge pomocí bezpečnostního klíče.](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
-| # | Funkce / důvěřovat rozšíření | Proč je to se vyžaduje? |
+I když existuje mnoho klíčů, které jsou FIDO2 certifikovány nástrojem FIDO Alliance, společnost Microsoft vyžaduje, aby dodavatel implementoval některá volitelná rozšíření FIDO2 CTAP pro zajištění maximálního zabezpečení a nejlepšího prostředí.
+
+Bezpečnostní klíč **musí** implementovat následující funkce a rozšíření od protokolu FIDO2 CTAP, aby byl kompatibilní s Microsoftem:
+
+| # | Vztah důvěryhodnosti funkcí nebo rozšíření | Proč je tato funkce nebo rozšíření nutná? |
 | --- | --- | --- |
-| 1 | Rezidentní klíč | Tato funkce umožňuje bezpečnostní klíč k být portable, přičemž svoje přihlašovací údaje jsou uloženy na klíč zabezpečení. |
-| 2 | PIN kód klienta | Tato funkce umožňuje ochraně vašich přihlašovacích údajů pomocí druhého faktoru a platí pro zabezpečení klíčů, které nemají uživatelské rozhraní. |
-| 3 | hmac-secret | Toto rozšíření se zajistí, že se že můžete se přihlásit k zařízení při je offline nebo v režim v letadle. |
-| 4 | Více účtů na poskytovatele prostředků | Tato funkce zajišťuje, že používáte stejný klíč zabezpečení napříč několika službami, jako jsou Microsoft Account a Azure Active Directory. |
+| 1 | Rezidentní klíč | Tato funkce umožňuje přenos bezpečnostního klíče, kde se ukládají přihlašovací údaje na klíč zabezpečení. |
+| 2 | Kód PIN klienta | Tato funkce umožňuje chránit vaše přihlašovací údaje pomocí druhého faktoru a vztahuje se na klíče zabezpečení, které nemají uživatelské rozhraní. |
+| 3 | hmac-secret | Toto rozšíření zajišťuje, že se můžete přihlásit k zařízení, když je v režimu online nebo v letadle. |
+| 4 | Více účtů na RP | Tato funkce zajišťuje, že můžete použít stejný bezpečnostní klíč v rámci více služeb, jako je například účet Microsoft a Azure Active Directory. |
 
-Následující poskytovatelé nabízejí různé typy zařízení, které jsou známé jako kompatibilní s prostředím paswordless FIDO2 zabezpečení klíče. Společnost Microsoft doporučuje zákazníkům kontaktovat dodavatele, stejně jako FIDO Alliance a vyhodnocení zabezpečení vlastnosti těchto klíčů.
+Následující poskytovatelé nabízejí bezpečnostní klíče FIDO2 různých faktorů, u kterých je známo, že jsou kompatibilní s prostředím paswordless. Společnost Microsoft doporučuje zákazníkům vyhodnotit vlastnosti zabezpečení těchto klíčů kontaktováním dodavatele i FIDO Alliance.
 
 | Poskytovatel | Kontakt |
 | --- | --- |
@@ -61,25 +65,27 @@ Následující poskytovatelé nabízejí různé typy zařízení, které jsou z
 | Ensurity | [https://ensurity.com/contact-us.html](https://ensurity.com/contact-us.html) |
 | eWBM | [https://www.ewbm.com/page/sub1_5](https://www.ewbm.com/page/sub1_5) |
 
-Pokud jste dodavatel a chcete, aby vaše zařízení v tomto seznamu, obraťte se na [ Fido2Request@Microsoft.com ](mailto:Fido2Request@Microsoft.com).
+Pokud jste dodavatel a chcete v tomto seznamu získat své zařízení, obraťte [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)se na.
 
-FIDO2 zabezpečení klíče jsou skvělou možnost pro podniky, které jsou velmi citlivé z hlediska zabezpečení nebo mít scénáře nebo zaměstnancům, kteří nejsou ochoten nebo schopen jejich telefon používat jako druhý faktor.
+Klíče zabezpečení FIDO2 představují skvělou možnost pro podniky, které jsou velmi citlivé na zabezpečení, nebo které mají scénáře nebo zaměstnanci, kteří nejsou ochotni nebo nedokázali používat svůj telefon jako druhý faktor.
 
-## <a name="what-scenarios-work-with-the-preview"></a>Jaké scénáře fungovat s verzí preview?
+## <a name="what-scenarios-work-with-the-preview"></a>Jaké scénáře fungují s verzí Preview?
 
-1. Správci mohou povolit metody passwordless ověřování pro svého tenanta
-1. Správci mohou cílit na všechny uživatele nebo vyberte uživatele nebo skupiny v rámci svého tenanta pro každou metodu
-1. Koncovým uživatelům můžete registrovat a spravovat tyto metody passwordless ověřování na portálu účtu
-1. Koncoví uživatelé můžou přihlásit se pomocí těchto metod passwordless ověřování
-   1. Aplikace Microsoft Authenticator: Bude práce v každý scénář, ve kterém se používá ověřování Azure AD, včetně ve všech prohlížečích, během Windows 10 si nastavení pole (OOBE) a s integrovat mobilní aplikace pro všechny operační systémy.
-   1. Zabezpečení klíčů: Bude fungovat na zamykací obrazovce Windows 10 verze 1809 nebo vyšší a web v podporovaných prohlížečích, jako je Microsoft Edge.
+- Správci můžou u svého tenanta povolit metody ověřování nejenom heslem.
+- Správci můžou cílit na všechny uživatele nebo vybrat uživatele/skupiny v rámci svého tenanta.
+- Koncoví uživatelé můžou tyto metody ověřování s heslem zaregistrovat a spravovat na portálu účtů.
+- Koncoví uživatelé se můžou přihlásit pomocí těchto metod ověřování bez hesla.
+   - Microsoft Authenticator aplikace: Bude fungovat v situacích, kdy se používá ověřování Azure AD, včetně všech prohlížečů, během instalace systému Windows 10 (OOBE) a s integrovanými mobilními aplikacemi v jakémkoli operačním systému.
+   - Klíče zabezpečení: Bude fungovat na zamykací obrazovce pro Windows 10 verze 1809 nebo vyšší a na webu v podporovaných prohlížečích, jako je Microsoft Edge.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Povolit passwordless možnosti ve vaší organizaci](howto-authentication-passwordless-enable.md)
+[Povolení možností passwordlesss klíče zabezpečení FIDO2 ve vaší organizaci](howto-authentication-passwordless-security-key.md)
+
+[Povolení možností pro bezheslem na telefonu ve vaší organizaci](howto-authentication-passwordless-phone.md)
 
 ### <a name="external-links"></a>Externí odkazy
 
 [FIDO Alliance](https://fidoalliance.org/)
 
-[Specifikace FIDO2 CTAP](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html)
+[Specifikace CTAP FIDO2](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html)

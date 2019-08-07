@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/30/2019
+ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 7ee7d6434058da63883f8db0eae6a3f91c778338
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 14fbca6dea735ed1ee13fca20f19379cc2c4d0a9
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325136"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742327"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server
 
@@ -39,7 +39,7 @@ SQL Server na virtuálním počítači Azure IaaS nebo místně.| [Clustering s 
 SQL Server na virtuálním počítači Azure IaaS nebo místně.| [Zrcadlení databáze (režim vysokého výkonu)](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | Čas potřebný k vynucení služby, který jako server jako teplého pohotovostního serveru používá zrcadlený server. | Replikace je asynchronní. Zrcadlení databáze může být trochu zpožděné za hlavní databází. Prodleva je obvykle malá. Může se ale stát, že v případě vysoké zátěže dojde k velkému zatížení systému objektu zabezpečení nebo zrcadlového serveru.<br/><br/>Přesouvání protokolu může být doplňkem k zrcadlení databáze. Je to příznivá alternativa k zrcadlení asynchronní databáze.
 SQL as Platform as a Service (PaaS) v Azure.<br/><br/>Tento typ nasazení zahrnuje elastické fondy a servery Azure SQL Database. | Aktivní geografická replikace | 30 sekund po aktivaci převzetí služeb při selhání.<br/><br/>Při aktivaci převzetí služeb při selhání pro jednu ze sekundárních databází se všechny ostatní sekundární repliky automaticky propojí s novým primárním objektem. | PLÁNOVANÝ bod obnovení je 5 sekund.<br/><br/>Aktivní geografická replikace používá technologii SQL Server Always On. Asynchronně replikuje potvrzené transakce v primární databázi do sekundární databáze pomocí izolace snímků.<br/><br/>Sekundárním datům je zaručeno, že nikdy nebude mít částečné transakce.
 SQL jako PaaS nakonfigurovaný s aktivní geografickou replikací v Azure<br/><br/>Tento typ nasazení zahrnuje SQL Database spravovanou instanci, elastické fondy a servery SQL Database. | Skupiny automatického převzetí služeb při selhání | RTO jednu hodinu. | PLÁNOVANÝ bod obnovení je 5 sekund.<br/><br/>Skupiny s automatickým převzetím služeb při selhání poskytují sémantiku skupiny nad aktivní geografickou replikací. Ale používá se stejný mechanismus asynchronní replikace.
-SQL Server na virtuálním počítači Azure IaaS nebo místně.| Replikace s Azure Site Recovery | RTO je obvykle méně než 15 minut. Pokud se chcete dozvědět víc, přečtěte si [smlouvu SLA pro RTO, kterou poskytuje Site Recovery](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). | Jedna hodina konzistence aplikace a pět minut pro konzistenci selhání.
+SQL Server na virtuálním počítači Azure IaaS nebo místně.| Replikace s Azure Site Recovery | RTO je obvykle méně než 15 minut. Pokud se chcete dozvědět víc, přečtěte si [smlouvu SLA pro RTO, kterou poskytuje Site Recovery](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). | Jedna hodina konzistence aplikace a pět minut pro konzistenci selhání. Pokud hledáte nižší cíl bodu obnovení, použijte další BCDR technologie.
 
 > [!NOTE]
 > Několik důležitých doporučení, když pomáháte chránit úlohy SQL pomocí Site Recovery:

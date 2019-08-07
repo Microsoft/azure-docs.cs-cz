@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 12a80f77720a6e93a6631947f13247b667c34897
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3d5b2afd642a7eb042b2e6e07ef93a505f6b9648
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254734"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774698"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -50,6 +50,7 @@ Podívejte se na příklad specifické pro jazyk:
 * [F#](#trigger---f-example)
 * [Java](#trigger---java-example)
 * [JavaScript](#trigger---javascript-example)
+* [Python](#trigger---python-example)
 
 ### <a name="trigger---c-example"></a>Aktivační události – příklad v jazyce C#
 
@@ -212,6 +213,57 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
+### <a name="trigger---python-example"></a>Trigger – příklad Pythonu
+
+Následující příklad ukazuje, jak číst zprávu fronty ServiceBus prostřednictvím triggeru.
+
+Vazba ServiceBus je definována v *Function. JSON* , kde *typ* je nastaven na `serviceBusTrigger`.
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "inputqueue",
+      "connection": "AzureServiceBusConnectionString"
+    }
+  ]
+}
+```
+
+Kód v `func.ServiceBusMessage`   *_\_příkazu init_\_. py* deklaruje parametr, který umožňuje číst zprávy fronty ve funkci.
+
+```python
+import azure.functions as func
+
+import logging
+import json
+
+def main(msg: func.ServiceBusMessage):
+    logging.info('Python ServiceBus queue trigger processed message.')
+
+    result = json.dumps({
+        'message_id': msg.message_id,
+        'body': msg.get_body().decode('utf-8'),
+        'content_type': msg.content_type,
+        'expiration_time': msg.expiration_time,
+        'label': msg.label,
+        'partition_key': msg.partition_key,
+        'reply_to': msg.reply_to,
+        'reply_to_session_id': msg.reply_to_session_id,
+        'scheduled_enqueue_time': msg.scheduled_enqueue_time,
+        'session_id': msg.session_id,
+        'time_to_live': msg.time_to_live,
+        'to': msg.to,
+        'user_properties': msg.user_properties,
+    })
+
+    logging.info(result)
+```
+
 ## <a name="trigger---attributes"></a>Aktivační události – atributy
 
 V [knihoven tříd C#](functions-dotnet-class-library.md), můžete nakonfigurovat aktivační událost služby Service Bus následující atributy:
@@ -367,6 +419,7 @@ Podívejte se na příklad specifické pro jazyk:
 * [F#](#output---f-example)
 * [Java](#output---java-example)
 * [JavaScript](#output---javascript-example)
+* [Python](#output---python-example)
 
 ### <a name="output---c-example"></a>Výstup – příklad v jazyce C#
 
@@ -555,6 +608,56 @@ module.exports = function (context, myTimer) {
     context.bindings.outputSbQueue.push("2 " + message);
     context.done();
 };
+```
+
+### <a name="output---python-example"></a>Výstup – příklad Pythonu
+
+Následující příklad ukazuje, jak zapisovat do fronty ServiceBus v Pythonu.
+
+Definice vazby ServiceBue je definována v *Function. JSON* , kde *typ* je nastaven na `serviceBus`.
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "AzureServiceBusConnectionString",
+      "name": "msg",
+      "queueName": "outqueue"
+    }
+  ]
+}
+```
+
+`set` V   *_init\__ .pymůžetedofrontynapsat\_* zprávu předáním hodnoty metodě.
+
+```python
+import azure.functions as func
+
+def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
+
+    input_msg = req.params.get('message')
+
+    msg.set(input_msg)
+
+    return 'OK'
 ```
 
 ## <a name="output---attributes"></a>Výstup – atributy

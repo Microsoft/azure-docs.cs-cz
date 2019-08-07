@@ -4,14 +4,14 @@ description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/31/2019
+ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7548b75f201c896e3a5248cb9d0154a9a676a86f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2ec6e58438e7be953e1f672fb815ff3f68a7f252
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698201"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839253"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -342,8 +342,8 @@ Vrátí objekt představující stav prostředků modulu runtime.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceName nebo resourceIdentifier |Ano |řetězec |Název nebo identifikátor prostředku. |
-| apiVersion |Ne |řetězec |Verze rozhraní API zadaný prostředek. Zahrnout tento parametr, pokud prostředek není zřízený v rámci stejné šablony. Obvykle ve formátu **rrrr mm-dd**. |
+| resourceName nebo resourceIdentifier |Ano |řetězec |Název nebo identifikátor prostředku. Při odkazování na prostředek v aktuální šablony, zadejte pouze název prostředku jako parametr. Při odkazování na dříve nasazený prostředek zadejte ID prostředku. |
+| apiVersion |Ne |řetězec |Verze rozhraní API zadaný prostředek. Zahrnout tento parametr, pokud prostředek není zřízený v rámci stejné šablony. Obvykle ve formátu **rrrr mm-dd**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
 | "Úplné" |Ne |řetězec |Hodnota, která určuje, jestli se má vrátit objekt úplné prostředku. Pokud nezadáte `'Full'`, je vrácen pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID prostředku a umístění. |
 
 ### <a name="return-value"></a>Návratová hodnota
@@ -352,17 +352,7 @@ Každý typ prostředku vrátí různé vlastnosti pro odkaz na funkci. Funkce n
 
 ### <a name="remarks"></a>Poznámky
 
-Odkaz na funkci načte běhový stav již nasazený prostředek nebo prostředek nasazený v aktuální šablony. Tento článek ukazuje příklady pro oba scénáře. Při odkazování na prostředek v aktuální šablony, zadejte pouze název prostředku jako parametr. Při odkazování na prostředek už nasazenou, zadejte ID prostředku a verze rozhraní API pro prostředek. Můžete určit platná verze rozhraní API pro prostředek v [referenčními informacemi k šablonám](/azure/templates/).
-
-Odkaz na funkci jde použít jenom ve vlastnosti definice prostředku a část Outputs následujícím šablony nebo nasazení. Při použití s [iterací vlastnosti](resource-group-create-multiple.md#property-iteration)můžete použít referenční funkci pro `input` , protože výraz je přiřazen vlastnosti prostředku. Nelze jej použít s `count` , protože počet musí být určen před vyřešením Referenční funkce.
-
-V výstupech [vnořené šablony](resource-group-linked-templates.md#nested-template) nelze použít referenční funkci pro vrácení prostředku, který jste nasadili ve vnořené šabloně. Místo toho použijte [propojenou šablonu](resource-group-linked-templates.md#external-template-and-external-parameters).
-
-Pomocí funkce odkaz na implicitně deklarujete, jeden prostředek závisí na jiný prostředek, pokud je oba odkazované prostředky poskytnutém v rámci stejné šablony a reference na prostředek má název (není ID prostředku). Není nutné použít také vlastnost dependsOn. Funkce není vyhodnocen, dokud odkazované prostředky dokončení nasazení.
-
-Použijete-li **referenční** funkci v prostředku, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen.  Pokud odkazovaná funkce odkazuje na prostředek, který neexistuje, zobrazí se chyba. Použijte funkci **if** a ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Podívejte se na [funkci IF](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a odkaz s podmíněně nasazeným prostředkem.
-
-Pokud chcete zobrazit názvy a hodnoty pro typ prostředku, vytvořte šablonu, která vrátí objekt v část outputs. Pokud máte existující prostředek tohoto typu, šablony vrátí objekt bez nutnosti nasazovat žádné nové prostředky. 
+Odkaz na funkci načte běhový stav již nasazený prostředek nebo prostředek nasazený v aktuální šablony. Tento článek ukazuje příklady pro oba scénáře.
 
 Obvykle se používají **odkaz** funkci vrátíte konkrétní hodnoty z objektu, jako je identifikátor URI koncového bodu objektu blob nebo plně kvalifikovaný název domény.
 
@@ -403,9 +393,47 @@ Použití `'Full'` Pokud potřebujete hodnoty prostředků, které nejsou souč�
     ...
 ```
 
-Úplný příklad předchozí šablonu postupem, naleznete v tématu [Windows do služby Key Vault](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo08.msiWindowsToKeyvault.json). Podobný příklad je k dispozici pro [Linux](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo07.msiLinuxToArm.json).
+### <a name="valid-uses"></a>Platná použití
 
-### <a name="example"></a>Příklad:
+Odkaz na funkci jde použít jenom ve vlastnosti definice prostředku a část Outputs následujícím šablony nebo nasazení. Při použití s [iterací vlastnosti](resource-group-create-multiple.md#property-iteration)můžete použít referenční funkci pro `input` , protože výraz je přiřazen vlastnosti prostředku. Nelze jej použít s `count` , protože počet musí být určen před vyřešením Referenční funkce.
+
+V výstupech [vnořené šablony](resource-group-linked-templates.md#nested-template) nelze použít referenční funkci pro vrácení prostředku, který jste nasadili ve vnořené šabloně. Místo toho použijte [propojenou šablonu](resource-group-linked-templates.md#external-template-and-external-parameters).
+
+Použijete-li **referenční** funkci v prostředku, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen.  Pokud odkazovaná funkce odkazuje na prostředek, který neexistuje, zobrazí se chyba. Použijte funkci **if** a ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Podívejte se na [funkci IF](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a odkaz s podmíněně nasazeným prostředkem.
+
+### <a name="implicit-dependency"></a>Implicitní závislost
+
+Pomocí funkce odkaz na implicitně deklarujete, jeden prostředek závisí na jiný prostředek, pokud je oba odkazované prostředky poskytnutém v rámci stejné šablony a reference na prostředek má název (není ID prostředku). Není nutné použít také vlastnost dependsOn. Funkce není vyhodnocen, dokud odkazované prostředky dokončení nasazení.
+
+### <a name="resource-name-or-identifier"></a>Název nebo identifikátor prostředku
+
+Když odkazujete na prostředek, který je nasazený ve stejné šabloně, zadejte název prostředku.
+
+```json
+"value": "[reference(parameters('storageAccountName'))]"
+```
+
+Když odkazujete na prostředek, který není nasazený ve stejné šabloně, zadejte ID prostředku.
+
+```json
+"value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
+```
+
+Aby nedocházelo k nejednoznačnosti prostředků, na které odkazujete, můžete zadat plně kvalifikovaný název prostředku.
+
+```json
+"value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')))]"
+```
+
+Při sestavování plně kvalifikovaného odkazu na prostředek, pořadí pro kombinování segmentů z typu a název není pouhým zřetězením obou. Místo toho je nutné po oboru názvů použít sekvenci dvojic *typů a názvů* z nejméně specifických na nejvíc:
+
+**{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
+
+Příklad:
+
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`je správné `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` , není správné.
+
+### <a name="example"></a>Příklad
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) nasadí prostředku a odkazuje na tento prostředek.
 
@@ -539,7 +567,9 @@ Vrácený objekt je v následujícím formátu:
 {
   "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
   "name": "{resourceGroupName}",
+  "type":"Microsoft.Resources/resourceGroups",
   "location": "{resourceGroupLocation}",
+  "managedBy": "{identifier-of-managing-resource}",
   "tags": {
   },
   "properties": {
@@ -547,6 +577,8 @@ Vrácený objekt je v následujícím formátu:
   }
 }
 ```
+
+Vlastnost **ManagedBy** je vrácena pouze pro skupiny prostředků, které obsahují prostředky, které jsou spravovány jinou službou. Pro spravované aplikace, datacihly a AKS je hodnota vlastnosti ID prostředku správy prostředku.
 
 ### <a name="remarks"></a>Poznámky
 
@@ -592,6 +624,7 @@ V předchozím příkladu vrátí objekt v následujícím formátu:
 {
   "id": "/subscriptions/{subscription-id}/resourceGroups/examplegroup",
   "name": "examplegroup",
+  "type":"Microsoft.Resources/resourceGroups",
   "location": "southcentralus",
   "properties": {
     "provisioningState": "Succeeded"
@@ -777,7 +810,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
 * Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).

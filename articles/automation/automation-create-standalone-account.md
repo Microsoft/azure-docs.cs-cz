@@ -1,6 +1,6 @@
 ---
 title: Vytvoření samostatného účtu Azure Automation
-description: Tento článek vás provede kroky pro vytváření, testování a používání ověřování instančních objektů příklad zabezpečení ve službě Azure Automation.
+description: Tento článek vás provede jednotlivými kroky při vytváření, testování a používání ukázkového ověřování objektu zabezpečení v Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,106 +9,106 @@ ms.author: robreed
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dcebb26bdebd52da8c48dbf06815a23ce9d38477
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 32fafaeb6332ca0e76dbc8d72f11872a82ca1cbe
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478461"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779158"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
-V tomto článku se dozvíte, jak vytvořit účet Azure Automation na webu Azure Portal. Na portálu účtu Automation můžete použít k vyhodnocení a další informace o automatizaci bez použití dalších řešení pro správu nebo integrace s protokoly Azure monitoru. Můžete přidat tato řešení pro správu nebo integrace s protokoly Azure monitoru pro pokročilé monitorování úloh runbooků v libovolném okamžiku v budoucnu.
+V tomto článku se dozvíte, jak vytvořit účet Azure Automation v Azure Portal. Účet automatizace portálu můžete použít k vyhodnocení a získání informací o automatizaci bez použití dalších řešení pro správu nebo integrace s protokoly Azure Monitor. Tato řešení pro správu můžete přidat nebo integrovat s protokoly Azure Monitor pro pokročilé monitorování úloh runbooků v jakémkoli okamžiku v budoucnu.
 
-Pomocí účtu Automation můžete ověření runbooků pomocí správy prostředků v Azure Resource Manageru nebo v modelu nasazení classic. Jeden účet Automation může spravovat prostředky napříč všemi oblastmi a předplatnými daného tenanta.
+Pomocí účtu Automation můžete ověřovat Runbooky pomocí správy prostředků v Azure Resource Manager nebo modelu nasazení Classic. Jeden účet Automation může spravovat prostředky napříč všemi oblastmi a předplatnými daného tenanta.
 
-Při vytváření účtu Automation na webu Azure Portal, se automaticky vytvoří tyto účty:
+Když v Azure Portal vytvoříte účet Automation, automaticky se vytvoří tyto účty:
 
-* **Účet Spustit jako**. Tento účet neobsahuje následující úkoly:
-  * Vytvoří instanční objekt v Azure Active Directory (Azure AD).
+* **Účet Spustit jako**. Tento účet provádí následující úlohy:
+  * Vytvoří instanční objekt ve službě Azure Active Directory (Azure AD).
   * Vytvoří certifikát.
-  * Přiřadí Contributor Role-Based řízení přístupu (RBAC), která spravuje prostředky Azure Resource Manageru pomocí runbooků.
-* **Účet Spustit jako pro Classic**. Tento účet nahraje certifikát pro správu. Certifikát spravuje klasických prostředků pomocí runbooků.
+  * Přiřadí Access Control na základě rolí přispěvatele (RBAC), která spravuje prostředky Azure Resource Manager pomocí runbooků.
+* **Účet Spustit jako pro Azure Classic**. Tento účet nahraje certifikát pro správu. Certifikát spravuje klasické prostředky pomocí runbooků.
 
-Tyto účty vytvořené pro vás rychle začít vytvářet a nasazovat runbooky na podporu vašich automatizačních potřeb.
+S těmito účty vytvořenými pro vás můžete rychle začít sestavovat a nasazovat Runbooky pro podporu vašich potřeb automatizace.
 
 ## <a name="permissions-required-to-create-an-automation-account"></a>Oprávnění požadovaná k vytvoření účtu Automation
 
-Vytvořit nebo aktualizovat účet Automation a splnit úkoly popsané v tomto článku, musí mít následující oprávnění a oprávnění:
+Pokud chcete vytvořit nebo aktualizovat účet Automation a dokončit úkoly popsané v tomto článku, musíte mít následující oprávnění a oprávnění:
 
-* Chcete-li vytvořit účet Automation, musí váš uživatelský účet Azure AD přidají do role s oprávněním role vlastníka pro **Microsoft. Automatizace** prostředky. Další informace najdete v tématu [řízení přístupu na základě rolí ve službě Azure Automation](automation-role-based-access-control.md).
-* Na webu Azure Portal v části **Azure Active Directory** > **SPRAVOVAT** > **registrace aplikací**, pokud **registrace aplikací**  je nastavena na **Ano**, můžou uživatelé bez oprávnění správce ve vašem tenantovi Azure AD [registrovat aplikace služby Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Pokud **registrace aplikací** je nastavena na **ne**, uživatel, který provádí tuto akci musíte být globálním správcem ve službě Azure AD.
+* Pokud chcete vytvořit účet Automation, musíte mít uživatelský účet Azure AD přidaný do role s oprávněním ekvivalentním roli vlastníka pro **Microsoft. Prostředky** služby Automation. Další informace najdete v tématu [Access Control na základě rolí v Azure Automation](automation-role-based-access-control.md).
+* V Azure Portal v části **Azure Active Directory** > **Správa** > **uživatelských nastavení**, pokud je **Registrace aplikací** nastavená na **Ano**, uživatelé, kteří nejsou správci v tenantovi Azure AD, můžou [zaregistrovat aktivní Adresářové aplikace](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Pokud je **Registrace aplikací** nastaveno na **ne**, uživatel, který tuto akci provede, musí být globální správce v Azure AD.
 
-Pokud nejste členem instance Active Directory předplatného před přidáním k roli globálního správce nebo spolusprávce předplatného, jsou přidány do služby Active Directory jako Host. V tomto scénáři se zobrazí tato zpráva na **přidat účet Automation** stránky: "Nemáte oprávnění k vytvoření."
+Pokud před přidáním do role globálního správce nebo správce předplatného nejste členem instance Active Directory předplatného, přidáte do služby Active Directory jako host. V tomto scénáři se na stránce **Přidat účet Automation** zobrazí tato zpráva: "Nemáte oprávnění k vytvoření."
 
-Pokud uživatel je přidán do role globálního správce nebo spolusprávce poprvé, můžete ho odebrat z instance Active Directory předplatného a potom je znovu přidat do úplné role uživatele ve službě Active Directory.
+Pokud je nejprve uživatel přidán do role Globální správce/spolusprávce, můžete ho odebrat z instance služby Active Directory předplatného a pak je číst do role úplného uživatele ve službě Active Directory.
 
-Ověření role uživatele:
+Ověření rolí uživatele:
 
-1. Na webu Azure Portal, přejděte **Azure Active Directory** podokně.
+1. V Azure Portal přejdete do podokna **Azure Active Directory** .
 1. Vyberte **Uživatelé a skupiny**.
-1. Vyberte **všichni uživatelé**.
-1. Po výběru konkrétního uživatele vyberte **profilu**. Hodnota **typ uživatele** atribut v rámci profilu uživatele by neměla být **hosta**.
+1. Vyberte **Všichni uživatelé**.
+1. Po výběru konkrétního uživatele vyberte **profil**. Hodnota atributu **Type uživatele** v profilu uživatele by neměla být **Host**.
 
-## <a name="create-a-new-automation-account-in-the-azure-portal"></a>Vytvořit nový účet Automation na webu Azure Portal
+## <a name="create-a-new-automation-account-in-the-azure-portal"></a>Vytvoření nového účtu Automation v Azure Portal
 
-Chcete-li vytvořit účet Azure Automation na webu Azure Portal, proveďte následující kroky:
+Chcete-li vytvořit účet Azure Automation v Azure Portal, proveďte následující kroky:
 
-1. Přihlaste se k webu Azure portal pomocí účtu, který je členem role správců předplatného a spolusprávce předplatného.
+1. Přihlaste se k Azure Portal pomocí účtu, který je členem role správců předplatného a spolusprávcem předplatného.
 1. Vyberte **+ vytvořit prostředek**.
-1. Vyhledejte **automatizace**. Ve výsledcích hledání vyberte **automatizace**.
+1. Vyhledejte **Automation**. Ve výsledcích hledání vyberte možnost **Automatizace**.
 
-   ![Vyhledání a výběr Automation and Control na webu Azure Marketplace](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
+   ![Vyhledat a vybrat Automation & Control v Azure Marketplace](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
 
 1. Na další obrazovce vyberte **vytvořit**.
 
-   ![Přidat účet služby Automation](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
+   ![Přidat účet Automation](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
    > [!NOTE]
-   > Pokud se zobrazí následující zpráva **přidat účet Automation** podokno, váš účet není členem role správců předplatného a spolusprávce předplatného.
+   > Pokud se v podokně **Přidat účet Automation** zobrazí následující zpráva, váš účet není členem role správců předplatného a spolusprávcem předplatného.
    >
-   > ![Přidání upozornění pro účet služby Automation](media/automation-create-standalone-account/create-account-without-perms.png)
+   > ![Přidat upozornění účtu Automation](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. V **přidat účet Automation** podokno v **název** pole, zadejte název nového účtu Automation. Tento název nedá změnit, jakmile je vybrán. *Názvy účtů Automation jsou na oblast a skupinu prostředků jedinečné. Názvy pro účty Automation, které se odstranily nemusí být hned dostupné.*
-1. Pokud máte více než jedno předplatné, v **předplatné** , určete předplatné, které chcete použít pro nový účet.
-1. Pro **skupiny prostředků**, zadejte nebo vyberte skupinu pro nový nebo existující prostředek.
-1. Pro **umístění**, vyberte umístění datového centra Azure.
-1. Pro **vytvoření účtu Azure spustit jako** možnost, ujistěte se, že **Ano** je vybrané a pak vyberte **vytvořit**.
+1. V podokně **Přidat účet Automation** do pole **název** zadejte název nového účtu Automation. Po zvolení tohoto názvu nelze tento název změnit. *Názvy účtů Automation jsou jedinečné pro jednotlivé oblasti a skupiny prostředků. Názvy účtů Automation, které byly odstraněny, nemusí být okamžitě k dispozici.*
+1. Pokud máte více než jedno předplatné, zadejte do pole **předplatné** předplatné, které chcete pro nový účet použít.
+1. V případě **skupiny prostředků**zadejte nebo vyberte novou nebo existující skupinu prostředků.
+1. Jako **umístění**vyberte umístění datacentra Azure.
+1. V možnosti **vytvořit účet Spustit v Azure jako** zvolte možnost **Ano** a pak vyberte **vytvořit**.
 
    > [!NOTE]
-   > Pokud se rozhodnete vytvořit účet Spustit jako výběrem **č** pro **vytvoření účtu Azure spustit jako**, zobrazí se zpráva v **přidat účet Automation** podokně. I když je účet vytvořený na webu Azure Portal, nemá účet odpovídající identitu ověřování ve vašem předplatném modelu nasazení classic nebo v adresářové službě předplatného Azure Resource Manageru. Účet Automation proto nemá přístup k prostředkům ve vašem předplatném. To zabraňuje všechny runbooky odkazující na tento účet tomu nebudou moct ověřit a provádět úlohy s prostředky v těchto modelech nasazení.
+   > Pokud se rozhodnete nevytvořit účet Spustit jako, vyberte pro **Vytvoření účtu spustit v Azure jako**možnost **ne** a v podokně **Přidat účet Automation** se zobrazí zpráva. I když je účet vytvořen v Azure Portal, nemá účet odpovídající identitu ověřování v rámci předplatného modelu nasazení Classic nebo v adresářové službě Azure Resource Manager předplatného. Proto účet Automation nemá přístup k prostředkům ve vašem předplatném. To brání tomu, aby Runbooky, které odkazují na tento účet, mohly ověřovat a provádět úlohy s prostředky v těchto modelech nasazení.
    >
-   > ![Přidání upozornění pro účet služby Automation](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   > ![Přidat upozornění účtu Automation](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
    >
-   > Pokud nevytvoříte objekt služby, nebude přiřazená role přispěvatele.
+   > Pokud objekt služby není vytvořen, role přispěvatele není přiřazena.
    >
 
-1. Chcete-li sledovat průběh vytváření účtu Automation, v nabídce vyberte **oznámení**.
+1. Chcete-li sledovat průběh vytváření účtu Automation, v nabídce vyberte možnost **oznámení**.
 
 ### <a name="resources-included"></a>Zahrnuté prostředky
 
-Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky vytvoří několik prostředků. Po vytvoření tyto sady runbook lze bezpečně odstranit, pokud nechcete, aby se. Účty spustit jako, můžete použít k ověření ke svému účtu v sadě runbook a by měla zůstat, není-li vytvořit jinou nebo je nevyžadují. Následující tabulka shrnuje prostředky pro účet Spustit jako.
+Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky vytvoří několik prostředků. Po vytvoření můžete tyto Runbooky bezpečně odstranit, pokud je nechcete zachovat. Účty Spustit jako lze použít k ověření vašeho účtu v sadě Runbook a měli byste ji ponechat, pokud nevytvoříte jinou nebo ji nepotřebujete. Následující tabulka shrnuje prostředky pro účet Spustit jako.
 
 | Resource | Popis |
 | --- | --- |
-| Runbook AzureAutomationTutorial |Ukázkový grafický runbook, který předvádí ověření pomocí účtu spustit jako. Sada runbook získává všechny prostředku Resource Manageru. |
-| Runbook AzureAutomationTutorialScript |Ukázkový runbook Powershellu, který předvádí ověření pomocí účtu spustit jako. Sada runbook získává všechny prostředku Resource Manageru. |
-| Runbook AzureAutomationTutorialPython2 |Ukázkový runbook Python, který předvádí ověření pomocí účtu spustit jako. Sada runbook obsahuje seznam všech skupin prostředků v předplatném. |
-| AzureRunAsCertificate |Asset certifikátu vytvořený automaticky při vytvoření účtu Automation, nebo pomocí skriptu prostředí PowerShell pro existující účet. Certifikát se ověřuje pomocí Azure tak můžete spravovat prostředky Azure Resource Manageru pomocí runbooků. Tento certifikát má životnost jeden rok. |
-| AzureRunAsConnection |Asset připojení vytvořený automaticky při vytvoření účtu Automation, nebo pomocí skriptu prostředí PowerShell pro existující účet. |
+| Runbook AzureAutomationTutorial |Příklad grafického Runbooku, který ukazuje, jak ověřit pomocí účtu Spustit jako. Sada Runbook získá všechny prostředky Správce prostředků. |
+| Runbook AzureAutomationTutorialScript |Ukázkový Runbook PowerShellu, který ukazuje, jak ověřit pomocí účtu Spustit jako. Sada Runbook získá všechny prostředky Správce prostředků. |
+| Runbook AzureAutomationTutorialPython2 |Příklad Runbooku v Pythonu, který ukazuje, jak ověřit pomocí účtu Spustit jako. Sada Runbook obsahuje seznam všech skupin prostředků přítomných v rámci předplatného. |
+| AzureRunAsCertificate |Asset certifikátu, který se automaticky vytvoří při vytvoření účtu Automation, nebo pomocí skriptu PowerShellu pro existující účet. Certifikát se ověřuje pomocí Azure, abyste mohli spravovat Azure Resource Manager prostředky z runbooků. Tento certifikát má životnost jeden rok. |
+| AzureRunAsConnection |Asset připojení, který se automaticky vytvoří při vytvoření účtu Automation, nebo pomocí skriptu PowerShellu pro existující účet. |
 
 Následující tabulka shrnuje prostředky pro účet Spustit jako pro Azure Classic.
 
 | Resource | Popis |
 | --- | --- |
-| Runbook AzureClassicAutomationTutorial |Ukázkový grafický runbook. Sada runbook získá všechny klasické virtuální počítače v rámci předplatného pomocí spustit jako účtu pro Azure Classic (certifikát). Potom zobrazí názvy virtuálních počítačů a stav. |
-| Runbook se skriptem AzureClassicAutomationTutorial |Ukázkový runbook Powershellu. Sada runbook získá všechny klasické virtuální počítače v rámci předplatného pomocí spustit jako účtu pro Azure Classic (certifikát). Potom zobrazí názvy virtuálních počítačů a stav. |
-| AzureClassicRunAsCertificate |Asset certifikátu vytvořený automaticky. Certifikát ověřuje s Azure, abyste mohli spravovat klasické prostředky Azure pomocí runbooků. Tento certifikát má životnost jeden rok. |
-| AzureClassicRunAsConnection |Asset připojení vytvořený automaticky. Asset ověřuje s Azure, abyste mohli spravovat klasické prostředky Azure pomocí runbooků. |
+| Runbook AzureClassicAutomationTutorial |Příklad grafického Runbooku. Sada Runbook získá všechny klasické virtuální počítače v rámci předplatného pomocí účtu Spustit jako pro Azure Classic (certifikát). Pak se zobrazí název a stav virtuálního počítače. |
+| Runbook se skriptem AzureClassicAutomationTutorial |Příklad Runbooku PowerShellu Sada Runbook získá všechny klasické virtuální počítače v rámci předplatného pomocí účtu Spustit jako pro Azure Classic (certifikát). Pak se zobrazí název a stav virtuálního počítače. |
+| AzureClassicRunAsCertificate |Prostředek certifikátu, který se vytvoří automaticky. Certifikát se ověřuje pomocí Azure, abyste mohli spravovat klasické prostředky Azure pomocí runbooků. Tento certifikát má životnost jeden rok. |
+| AzureClassicRunAsConnection |Prostředek připojení, který se vytvoří automaticky. Asset se ověřuje pomocí Azure, abyste mohli spravovat klasické prostředky Azure pomocí runbooků. |
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o vytváření grafického obsahu najdete v tématu [vytváření grafického obsahu ve službě Azure Automation](automation-graphical-authoring-intro.md).
+* Další informace o vytváření grafického obsahu najdete v tématu věnovaném [vytváření grafik v Azure Automation](automation-graphical-authoring-intro.md).
 * První kroky s powershellovými runbooky najdete v článku [Můj první powershellový runbook](automation-first-runbook-textual-powershell.md).
 * První kroky s runbooky pracovních postupů PowerShellu najdete v článku [Můj první runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md).
 * První kroky s runbooky Python2 najdete v článku [Můj první runbook Python2](automation-first-runbook-textual-python2.md).

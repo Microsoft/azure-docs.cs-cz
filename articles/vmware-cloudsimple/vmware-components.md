@@ -1,121 +1,121 @@
 ---
-title: Řešení Azure VMware podle CloudSimple – VMware součásti privátního cloudu
-description: Popisuje, jak v privátním cloudu nejsou nainstalované součásti VMware
+title: Řešení Azure VMware podle CloudSimple – komponenty VMware privátního cloudu
+description: Popisuje, jak jsou komponenty VMware nainstalovány v privátním cloudu.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 62511118edb4f8b5061f90138bac2aa2b5d3cfe3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 89bc9c07ae74da1a4269a505627a7626e478ef99
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165156"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812184"
 ---
-# <a name="private-cloud-vmware-components"></a>Součásti VMware privátního cloudu
+# <a name="private-cloud-vmware-components"></a>Komponenty VMware privátního cloudu
 
-Privátní cloud je izolované zásobníku VMware (hostitele ESXi, vCenter, sítě vSAN a NSX) prostředí spravované pomocí vCenter serveru v doméně pro správu.  Služba CloudSimple umožňuje nasadit VMware nativně na holé počítače infrastrukturu Azure v umístění Azure.  Privátní cloudy jsou integrovány se zbytkem cloudu Azure.  Privátní cloud se nasazuje s následujícími součástmi zásobníku VMware:
+Privátní cloud je izolovaný systém VMware Stack (ESXi hosts, vCenter, síti vSAN a NSX), který je spravovaný serverem vCenter v doméně pro správu.  Služba CloudSimple umožňuje nasadit VMware nativně na holé infrastruktuře Azure v umístěních Azure.  Privátní cloudy jsou integrované se zbytkem cloudu Azure.  Privátní cloud se nasazuje s následujícími komponentami zásobníku VMware:
 
-* **VMware ESXi -** hypervisoru v Azure vyhrazené uzly
-* **VMware vCenter -** zařízení pro centralizovanou správu vSphere prostředí privátního cloudu
-* **Síť vSAN VMware –** řešení infrastruktury konvergované na Hyper v
-* **Datové centrum VMware NSX -** síťové virtualizace a Software pro zabezpečení  
+* **VMware ESXi –** Hypervisor na vyhrazených uzlech Azure
+* **VMware vCenter –** Zařízení pro centralizovanou správu prostředí vSphere privátního cloudu
+* **VMware síti vSAN –** Vysoce sblížené řešení infrastruktury technologie Hyper-v
+* **Datové centrum VMware NSX –** Virtualizace sítě a bezpečnostní software  
 
-## <a name="vmware-component-versions"></a>Verze součástí VMware
+## <a name="vmware-component-versions"></a>Verze komponent VMware
 
-Zásobníku VMware privátní cloud se nasazuje s následující verze softwaru.
+Zásobník VMware privátního cloudu je nasazený s následující verzí softwaru.
 
-| Komponenta | Version | Licencovanou verzi |
+| Komponenta | Version | Licencovaná verze |
 |-----------|---------|------------------|
-| ESXi | 6.7U1 | Enterprise Plus |
-| vCenter | 6.7U1 | vCenter Standard |
+| ESXi | 6.7 U1 | Enterprise Plus |
+| vCenter | 6.7 U1 | vCenter úrovně Standard |
 | vSAN | 6.7 | Enterprise |
-| NSX Data Center | 2.3 | Upřesnit |
+| Datové centrum NSX | 2.3 | Upřesnit |
 
 ## <a name="esxi"></a>ESXi
 
-VMware ESXi je nainstalován na uzlech zřízené CloudSimple při vytvoření privátního cloudu.  ESXi poskytuje hypervisor nasazení úloh virtuálních počítačů (VM).  Uzly poskytují infrastrukturu konvergované na hyper v (výpočetní výkon a úložiště) v privátním cloudu.  Uzly jsou součástí clusteru vSphere do privátního cloudu.  Každý uzel má čtyři fyzické sítě rozhraní připojené k underlay sítě.  Dvě fyzická síťová rozhraní, které se používají k vytváření **vSphere distribuované přepnout (VDS)** na serveru vCenter a dvě slouží k vytvoření **NSX spravované virtuální distribuovaný přepínač (N-VDS)** .  Síťová rozhraní jsou nakonfigurované v režimu aktivní aktivní pro zajištění vysoké dostupnosti.
+VMware ESXi se na zřízených uzlech CloudSimple nainstaluje při vytváření privátního cloudu.  ESXi poskytuje hypervisor pro nasazení virtuálních počítačů s úlohou.  Uzly poskytují infrastrukturu (výpočetní výkon a úložiště) s podporou technologie Hyper-v privátním cloudu.  Uzly jsou součástí clusteru vSphere v privátním cloudu.  Každý uzel má čtyři rozhraní fyzické sítě připojená k Underlay síti.  Dvě fyzická síťová rozhraní se používají k vytvoření **vSphere distribuovaného přepínače (VDS)** na vCenter a dva se používají k vytvoření **virtuálního distribuovaného přepínače spravovaného NSX (N-VDS)** .  Síťová rozhraní jsou nakonfigurovaná v režimu aktivní-aktivní pro zajištění vysoké dostupnosti.
 
 Další informace o VMware ESXi
 
-## <a name="vcenter-server-appliance"></a>vCenter server zařízení
+## <a name="vcenter-server-appliance"></a>zařízení vCenter Server
 
-vCenter server zařízení (VCSA) poskytuje funkce ověřování, Správa a Orchestrace pro řešení VMware podle CloudSimple. VCSA s vložený platformy služby kontroler (PSC) je nasazen při vytváření privátního cloudu.  VCSA nasazený na clusteru vSphere, který je vytvořen při nasazení privátního cloudu.  Každý privátní cloud má vlastní VCSA.  Rozšíření privátního cloudu přidá uzly VCSA do privátního cloudu.
+zařízení vCenter Server (VCSA) poskytuje funkce ověřování, správy a orchestrace pro řešení VMware podle CloudSimple. VCSA se službou Embedded Platform Controller (PSC) se nasadí při vytváření privátního cloudu.  VCSA je nasazený v clusteru vSphere, který se vytvoří při nasazení privátního cloudu.  Každý privátní cloud má vlastní VCSA.  Rozšíření privátního cloudu přidá uzly do VCSA v privátním cloudu.
 
-### <a name="vcenter-single-sign-on"></a>vCenter jednotného přihlašování
+### <a name="vcenter-single-sign-on"></a>jednotné přihlašování vCenter
 
-Vložené řadič služby platformy na VCSA je přidružen **vCenter Single Sign-On domény**.  Název domény je **cloudsimple.local**.  Výchozí uživatel **CloudOwner@cloudsimple.com** se pro přístup k serveru vCenter.  Můžete přidat typu místní nebo Azure active directory [identitu zdroje pro vCenter](https://docs.azure.cloudsimple.com/set-vcenter-identity/).
+Služba Embedded Platform Service Controller v VCSA je přidružená k **doméně vCenter**s jednotným přihlašováním.  Název domény je **cloudsimple. Local**.  Pro přístup k **CloudOwner@cloudsimple.com** serveru vCenter se vytvoří výchozí uživatel.  Pro vCenter můžete přidat své místní nebo [zdroje identit](https://docs.azure.cloudsimple.com/set-vcenter-identity/)služby Azure Active Directory.
 
-## <a name="vsan-storage"></a>síť vSAN úložiště
+## <a name="vsan-storage"></a>úložiště síti vSAN
 
-Privátní cloudy jsou vytvářeny s úložištěm sítě vSAN plně nakonfigurovaného typu flash, místní cluster.  Minimální tři uzly se stejným SKU jsou nutné k vytvoření clusteru vSphere pomocí úložiště dat sítě vSAN.  Deduplikace a komprese jsou ve výchozím nastavení povolená v úložišti dat sítě vSAN.  Na každém uzlu clusteru vSphere se vytvoří dvě skupiny disku. Každá skupina disk obsahuje jeden disk mezipaměti a tři disky kapacity.
+Privátní cloudy se vytvářejí s plně nakonfigurovaným úložištěm síti vSAN, které je místní pro cluster.  K vytvoření clusteru vSphere s úložištěm dat síti vSAN se vyžadují minimální tři uzly stejné SKU.  Ve výchozím nastavení jsou odstranění duplicit a komprese ve výchozím nastavení povolené ve službě síti vSAN DataStore.  V každém uzlu clusteru vSphere se vytvoří dvě skupiny disků. Každá skupina disků obsahuje jeden disk mezipaměti a tři disky s kapacitou.
 
-Výchozí zásady sítě vSAN úložiště je vytvořen na clusteru vSphere a použít na úložiště dat sítě vSAN.  Tato zásada určuje, jak jsou objekty úložiště virtuálních počítačů zřízené a přidělená v rámci úložiště dat zajistit vyžadovanou úroveň služeb.  Definuje zásadu úložiště **Tolerované chyby (FTT)** a **selhání tolerance metoda**.  Můžete vytvářet nové zásady úložiště a použít je k virtuálním počítačům. Pokud chcete zachovat smlouvu SLA, musí být udržovány 25 % rezervní kapacity v úložišti dat sítě vSAN.  
+V clusteru vSphere se vytvoří výchozí zásada úložiště síti vSAN a použije se pro úložiště dat síti vSAN.  Tato zásada určuje, jak se zřídí objekty úložiště virtuálního počítače a které se přidělují v úložišti dat, aby se zaručila požadovaná úroveň služby.  Zásady úložiště definují **selhání pro tolerovat (FTT)** a **metodu odolnosti**proti chybám.  Můžete vytvořit nové zásady úložiště a použít je na virtuální počítače. Aby bylo možné udržovat smlouvu SLA, musí být v úložišti síti vSAN DataStore udržována 25% volná kapacita.  
 
-### <a name="default-vsan-storage-policy"></a>Výchozí zásady úložiště sítě vSAN
+### <a name="default-vsan-storage-policy"></a>Výchozí zásady úložiště síti vSAN
 
-Následující tabulka ukazuje výchozí parametry zásad sítě vSAN úložiště.
+Následující tabulka ukazuje výchozí parametry zásad úložiště síti vSAN.
 
-| Počet uzlů v clusteru vSphere | FTT | Tolerance failure – metoda |
+| Počet uzlů v clusteru vSphere | FTT | Metoda odolnosti proti chybám |
 |------------------------------------|-----|--------------------------|
-| 3 a 4 uzly | 1 | RAID 1 (zrcadlení) - vytvoří 2 kopie |
-| 5 až 16 uzlů | 2 | RAID 1 (zrcadlení) - vytvoří 3 kopiemi |
+| 3 a 4 uzly | 1 | RAID 1 (zrcadlení) – vytvoří 2 kopie. |
+| 5 až 16 uzlů | 2 | RAID 1 (zrcadlení) – vytvoří 3 kopie. |
 
-## <a name="nsx-data-center"></a>NSX Data Center
+## <a name="nsx-data-center"></a>Datové centrum NSX
 
-NSX datové centrum poskytuje možnosti zabezpečení sítě, micro segmentace a virtualizace sítě v privátním cloudu.  Můžete nakonfigurovat všechny služeb podporovaných službou NSX datového centra v privátním cloudu prostřednictvím NSX.  Při vytváření privátního cloudu jsou následující komponenty NSX nainstalovaný a nakonfigurovaný.
+Datové centrum NSX poskytuje virtualizaci sítě, mikrosegmentaci a možnosti zabezpečení sítě ve vašem privátním cloudu.  Prostřednictvím NSX můžete nakonfigurovat všechny služby podporované datacentrem NSX v privátním cloudu.  Při vytváření privátního cloudu jsou nainstalované a nakonfigurované následující komponenty NSX.
 
 * NSXT Manager
-* Přenos zóny
-* Hostitel a Edge pro odesílání
-* Logický přepínač pro přenos Edge, Ext1 a Ext2
-* Fond IP adres pro uzel ESXi přenosu
-* Fond IP adres pro hraniční uzel přenosu
+* Dopravní zóny
+* Profil pro odchozí připojení hostitele a Edge
+* Logický přepínač pro přenos hran, Ext1 a ext2
+* Fond IP adres pro uzel přenosu ESXi
+* Fond IP adres pro uzel hraničního přenosu
 * Hraniční uzly
-* Pravidlo DRS proti spřažení pro virtuální počítače Edge a kontroler
+* Pravidlo ochrany DRS proti spřažení pro virtuální počítače s kontrolérem a hraničními zařízeními
 * Směrovač vrstvy 0
-* Povolit protokol BGP na směrovači Tier0
+* Povolit protokol BGP ve směrovači Tier0
 
-## <a name="vsphere-cluster"></a>vSphere clusteru
+## <a name="vsphere-cluster"></a>cluster vSphere
 
-Hostitelé ESXi jsou nakonfigurované jako cluster k zajištění vysoké dostupnosti privátního cloudu.  Při vytváření privátního cloudu komponentami pro správu nástroje vSphere jsou nasazeny v prvním clusteru.  Vytvoření fondu zdrojů pro součásti správy a všechny virtuální počítače pro správu jsou nasazené v tomto fondu zdrojů. První cluster nejde odstranit, zmenšení privátního cloudu.  vSphere clusteru poskytuje vysokou dostupnost pro virtuální počítače pomocí **vSphere HA**.  Tolerované chyby jsou založeny na počtu dostupných uzlů v clusteru.  Můžete použít vzorec ```Number of nodes = 2N+1``` kde ```N``` je počet tolerované chyby.
+Hostitelé ESXi jsou nakonfigurováni jako cluster, aby zajistili vysokou dostupnost privátního cloudu.  Při vytváření privátního cloudu jsou součásti pro správu nástroje vSphere nasazeny do prvního clusteru.  Pro součásti pro správu je vytvořen fond zdrojů a všechny virtuální počítače pro správu jsou nasazeny v tomto fondu zdrojů. První cluster se nedá odstranit, aby se zmenšil jeho privátní cloud.  cluster vSphere poskytuje vysokou dostupnost pro virtuální počítače s využitím **VSPHERE ha**.  Selhání k tolerování vycházejí z počtu dostupných uzlů v clusteru.  Můžete použít vzorec ```Number of nodes = 2N+1``` , ve kterém ```N``` je počet nedovolených odtolerovatcích.
 
 ### <a name="vsphere-cluster-limits"></a>omezení clusteru vSphere
 
 | Resource | Omezení |
 |----------|-------|
-| Minimální počet uzlů pro vytvoření privátního cloudu (první vSphere clusteru) | 3 |
-| Maximální počet uzlů v vSphere clusteru v privátním cloudu | 16 |
+| Minimální počet uzlů pro vytvoření privátního cloudu (první cluster vSphere) | 3 |
+| Maximální počet uzlů v clusteru vSphere v privátním cloudu | 16 |
 | Maximální počet uzlů v privátním cloudu | 64 |
-| Maximální počet vSphere clustery v privátním cloudu | 21 |
-| Minimální počet uzlů na nové vSphere clusteru | 3 |
+| Maximální počet clusterů vSphere v privátním cloudu | 21 |
+| Minimální počet uzlů v novém clusteru vSphere | 3 |
 
 ## <a name="vmware-infrastructure-maintenance"></a>Údržba infrastruktury VMware
 
-Někdy je potřeba provést změny v konfiguraci infrastruktury VMware. V současné době tyto intervaly může dojít, každé 1-2 měsíce, ale očekává se frekvence tak, aby odmítal v čase. Tento typ údržby obvykle provést bez přerušení normálního využití CloudSimple služeb. Během intervalu údržby VMware tyto služby nadále schopné fungovat bez jakéhokoli dopadu:
+V některých případech je potřeba provést změny v konfiguraci infrastruktury VMware. V současné době se tyto intervaly můžou vyskytnout každých 1-2 měsíců, ale frekvence se očekává, že se v průběhu času odmítne. Tento typ údržby se obvykle dá provést bez přerušení běžné spotřeby služeb CloudSimple Services. Během intervalu údržby VMware budou následující služby fungovat bez dopadu:
 
-* Rovina správy VMware a aplikací
-* přístup k serveru vCenter
+* Rovina správy VMware a aplikace
+* přístup vCenter
 * Všechny sítě a úložiště
-* Všem službám Azure
+* Veškerý provoz Azure
 
 ## <a name="updates-and-upgrades"></a>Aktualizace a upgrady
 
-CloudSimple zodpovídá za správu životního cyklu softwaru VMware (ESXi, vCenter, PSČ a NSX) v privátním cloudu.
+CloudSimple zodpovídá za správu životního cyklu softwaru VMware (ESXi, vCenter, PSC a NSX) v privátním cloudu.
 
-Softwarové aktualizace zahrnují:
+Mezi aktualizace softwaru patří:
 
-* **Opravy**. Opravy zabezpečení nebo opravy chyb vydání ve VMware.
-* **Aktualizace**. Vedlejší verze aktualizace změnit součásti zásobníku VMware.
-* **Upgrady**. Změna hlavní verze součásti zásobníku VMware.
+* **Opravy**. Opravy zabezpečení nebo opravy chyb vydané VMware.
+* **Aktualizace**. Dílčí verze změny komponenty zásobníku VMware.
+* **Upgrady**. Hlavní změna verze komponenty zásobníku VMware.
 
-CloudSimple testuje opravy zabezpečení, jakmile bude k dispozici z VMware. Podle smlouvy SLA CloudSimple zahrnuje navýšení kapacity na úroveň opravy zabezpečení pro prostředí privátních cloudů v rámci jednoho týdne.
+CloudSimple testuje kritickou opravu zabezpečení, jakmile bude k dispozici z VMware. V rámci smlouvy SLA CloudSimple zavede opravu zabezpečení do prostředí privátního cloudu za týden.
 
-CloudSimple poskytuje čtvrtletní údržby aktualizace softwarových součástí VMware. Pokud je dostupná nová hlavní verze softwaru VMware, CloudSimple funguje se zákazníky ke koordinaci časového období údržby vhodné k upgradu.  
+CloudSimple poskytuje čtvrtletní aktualizace pro softwarové komponenty VMware. Když je k dispozici nová hlavní verze softwaru VMware, CloudSimple spolupracuje se zákazníky na koordinaci vhodného časového období údržby pro upgrade.  
 
 ## <a name="next-steps"></a>Další postup
 
-* [CloudSimple Údržba a aktualizace](cloudsimple-maintenance-updates.md)
+* [Údržba a aktualizace CloudSimple](cloudsimple-maintenance-updates.md)

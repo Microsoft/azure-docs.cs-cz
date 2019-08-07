@@ -1,27 +1,27 @@
 ---
-title: Řešení VMware podle CloudSimple – připojení k síti Azure
-description: Další informace o připojení k síti CloudSimple oblasti vaší virtuální síti Azure
+title: Řešení VMware podle CloudSimple – síťová připojení Azure
+description: Přečtěte si informace o připojení virtuální sítě Azure k síti CloudSimple vaší oblasti.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f2ab82b6c1b4b373c186019eaf96f9864861b9d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8e99da05f71cb01744111b41c301b11a0969057
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497634"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812706"
 ---
-# <a name="azure-network-connections-overview"></a>Přehled připojení sítě Azure
+# <a name="azure-network-connections-overview"></a>Přehled připojení k síti Azure
 
-Při vytváření služby CloudSimple v oblasti, je:
+Při vytváření služby CloudSimple v oblasti:
 
-* Vytvoří okruh Azure ExpressRoute a připojí ke službě v dané oblasti
-* Umožňuje připojení z vaší sítě CloudSimple oblasti vaší virtuální sítí Azure a vaší místní sítí pomocí Azure ExpressRoute
-* Poskytuje přístup ke službám, které běží na vaše předplatné Azure nebo v místní síti, z vašeho prostředí privátního cloudu
+* Vytvoří okruh Azure ExpressRoute a připojí ho ke službě v této oblasti.
+* Umožňuje připojení ze sítě vaší oblasti CloudSimple k vaší virtuální síti Azure nebo místní síti pomocí Azure ExpressRoute.
+* Poskytuje přístup ke službám, které běží ve vašem předplatném Azure, nebo v místní síti z vašeho privátního cloudového prostředí.
 
 Připojení je:
 
@@ -34,23 +34,23 @@ Připojení je:
 
 Připojení k síti Azure vám umožní:
 
-* Použití Azure jako cíl zálohování pro virtuální počítače na privátní Cloud.
-* Nasaďte servery služby správy KLÍČŮ ve vašem předplatném Azure k zašifrování vaší sítě vSAN úložiště privátního cloudu.
-* Pomocí hybridních aplikací, kde běží na úrovni webové aplikace ve veřejném cloudu při aplikaci a úrovně databáze spustit v privátního cloudu.
+* Použijte Azure jako cíl zálohování pro virtuální počítače ve vašem privátním cloudu.
+* Nasaďte servery služby správy klíčů v předplatném Azure pro šifrování úložiště dat privátního cloudu síti vSAN.
+* Použijte hybridní aplikace, ve kterých se webová vrstva aplikace spouští ve veřejném cloudu, zatímco vrstvy aplikace a databáze běží ve vašem privátním cloudu.
 
-## <a name="azure-virtual-network-connection"></a>Připojení virtuální sítě Azure
+## <a name="azure-virtual-network-connection"></a>Připojení k virtuální síti Azure
 
-Privátní Cloudy lze připojit k prostředkům Azure pomocí ExpressRoute.  Toto připojení můžete použít pro přístup k různým prostředkům spuštění ve vašem předplatném Azure z vaší privátní Cloud.  Toto připojení umožňuje rozšířit je privátní cloudové sítě ke službě Azure virtual network.
+Privátní cloudy se dají připojit k prostředkům Azure pomocí ExpressRoute.  Toto připojení můžete použít pro přístup k různým prostředkům běžícím v předplatném Azure z vašeho privátního cloudu.  Toto připojení umožňuje rozšířenou síť privátního cloudu do vaší virtuální sítě Azure.
 
 ![Připojení Azure ExpressRoute k virtuální síti](media/cloudsimple-azure-network-connection.png)
 
-## <a name="expressroute-connection-to-on-premises-network"></a>Připojení ExpressRoute do místní sítě
+## <a name="expressroute-connection-to-on-premises-network"></a>ExpressRoute připojení k místní síti
 
-Stávající okruh Azure ExpressRoute můžete připojit k vaší CloudSimple oblasti. Globální dosah ExpressRoute funkce slouží k připojení dvou okruhů mezi sebou.  Vytvoří připojení mezi místními a okruhy CloudSimple ExpressRoute.  Toto připojení umožňuje rozšířit vaše místní sítě k síti privátního cloudu.
+Stávající okruh Azure ExpressRoute můžete připojit k vaší CloudSimple oblasti. Funkce ExpressRoute Global Reach slouží k propojení obou okruhů mezi sebou.  Mezi místními a CloudSimple ExpressRoute okruhy se naváže připojení.  Toto připojení umožňuje rozšiřování místních sítí do sítě privátního cloudu.
 
-![Připojení ExpressRoute on-premises – globální dosah](media/cloudsimple-global-reach-connection.png)
+![Místní ExpressRoute připojení – Global Reach](media/cloudsimple-global-reach-connection.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* [Získat informace o vytvoření partnerského vztahu pro virtuální sítě Azure s CloudSimple připojení](https://docs.azure.cloudsimple.com/virtual-network-connection)
-* [Připojení z místního na CloudSimple pomocí ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection)
+* [Získání informací o partnerském vztahu pro virtuální síť Azure a připojení CloudSimple](https://docs.azure.cloudsimple.com/virtual-network-connection)
+* [Připojení z místního prostředí k CloudSimple pomocí ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection)

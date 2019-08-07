@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zdroje dat agenta ve službě Azure Monitor | Dokumentace Microsoftu
-description: Zdroje dat definují data protokolu, že Azure Monitor shromažďuje z agentů a další připojení zdrojů.  Tento článek popisuje princip toho, jak Azure Monitor používá zdroje dat, vysvětluje podrobnosti o tom, jak je nakonfigurovat a poskytuje přehled různých zdrojů dat. k dispozici.
+title: Konfigurace zdrojů dat agenta v Azure Monitor | Microsoft Docs
+description: Zdroje dat definují data protokolu, která Azure Monitor shromažďuje z agentů a dalších připojených zdrojů.  Tento článek popisuje koncept způsobu, jakým Azure Monitor používá zdroje dat, vysvětluje podrobnosti o tom, jak je nakonfigurovat, a poskytuje souhrn různých zdrojů dat, které jsou k dispozici.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,55 +13,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: d7d4aa89c4dcf2ac9cc0c393e0481cae1f3aeaf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4e86a3a7b6a0781ea6c020bd0afc9364b7132f7
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776058"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839340"
 ---
-# <a name="agent-data-sources-in-azure-monitor"></a>Agent zdroje dat ve službě Azure Monitor
-Data, která shromažďuje agenty Azure Monitor je definována zdroje dat, které nakonfigurujete.  Data z agentů se ukládá jako [můžete vytvářet protokoly dat](data-platform-logs.md) sadu záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s jednotlivými typu s vlastní sadu vlastností.
+# <a name="agent-data-sources-in-azure-monitor"></a>Zdroje dat agenta v Azure Monitor
+Data, která Azure Monitor shromažďuje z agentů, jsou definována zdroji dat, které nakonfigurujete.  Data z agentů jsou ukládána jako [data protokolu](data-platform-logs.md) se sadou záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s každým typem s vlastní sadou vlastností.
 
 ![Shromažďování dat protokolu](media/agent-data-sources/overview.png)
 
-## <a name="summary-of-data-sources"></a>Přehled zdrojů dat
-V následující tabulce jsou uvedeny agenta zdroje dat, které jsou aktuálně k dispozici ve službě Azure Monitor.  Každý odkaz na věnovaný samostatný článek poskytuje podrobnosti pro tento zdroj dat má.   Poskytuje také informace o jejich metoda a frekvenci shromažďování. 
+## <a name="summary-of-data-sources"></a>Shrnutí zdrojů dat
+V následující tabulce jsou uvedeny zdroje dat agenta, které jsou aktuálně k dispozici v Azure Monitor.  Každá z nich má odkaz na samostatný článek, který poskytuje podrobnosti pro tento zdroj dat.   Poskytuje také informace o jejich metodě a četnosti shromažďování. 
 
 
-| Zdroj dat | Platforma | Agent sledování Microsoft | Agent nástroje Operations Manager | Úložiště Azure | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu | Četnost shromažďování dat |
+| Zdroj dat | Platforma | Agent Log Analytics | Agent Operations Manager | Úložiště Azure | Operations Manager požadováno? | Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Vlastní protokoly](data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | Při doručení |
-| [Vlastní protokoly](data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | Při doručení |
-| [Protokoly IIS](data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |závisí na nastavení změna souboru protokolu |
-| [Čítače výkonu](data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |podle plánu, minimálně 10 sekund |
-| [Čítače výkonu](data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |podle plánu, minimálně 10 sekund |
-| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |ze služby Azure storage: 10 minut; z agenta: při doručení |
-| [Protokoly událostí Windows](data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | Při doručení |
+| [Vlastní protokoly](data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | při doručení |
+| [Vlastní protokoly](data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | při doručení |
+| [Protokoly IIS](data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |závisí na nastavení pro výměnu souborů protokolu. |
+| [Čítače výkonu](data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |Jak naplánováno, minimálně 10 sekund |
+| [Čítače výkonu](data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |Jak naplánováno, minimálně 10 sekund |
+| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |z úložiště Azure: 10 minut; od agenta: při doručení |
+| [Protokoly událostí systému Windows](data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | při doručení |
 
 
-## <a name="configuring-data-sources"></a>Konfigurace zdroje dat
-Konfigurace zdroje dat z **Data** v nabídce **Upřesnit nastavení** pro pracovní prostor.  Všechny konfigurace se doručí do všech připojených zdrojů ve vašem pracovním prostoru.  Z této konfigurace nelze aktuálně vyloučit všechny agenty.
+## <a name="configuring-data-sources"></a>Konfigurace zdrojů dat
+Zdroje dat nakonfigurujete z nabídky **data** v **rozšířeném nastavení** pracovního prostoru.  Všechny konfigurace se doručí do všech připojených zdrojů ve vašem pracovním prostoru.  Z této konfigurace teď nemůžete vyloučit žádné agenty.
 
-![Konfigurace událostí Windows](media/agent-data-sources/configure-events.png)
+![Konfigurace událostí systému Windows](media/agent-data-sources/configure-events.png)
 
-1. Na webu Azure Portal, vyberte **pracovních prostorů Log Analytics** > váš pracovní prostor > **Upřesnit nastavení**.
-2. Vyberte **Data**.
+1. V Azure Portal vyberte **Log Analytics pracovní prostory** > > **Rozšířená nastavení**.
+2. Vyberte **data**.
 3. Klikněte na zdroj dat, který chcete konfigurovat.
-4. Použijte odkaz na dokumentaci pro jednotlivé zdroje dat v tabulce výše uvedené podrobnosti o jejich konfiguraci.
+4. Podrobnosti o konfiguraci získáte pomocí odkazu na dokumentaci pro každý zdroj dat v tabulce výše.
 
 
 ## <a name="data-collection"></a>Shromažďování dat
-Konfigurace zdroje dat jsou doručeny agentům byli přímo připojení k Azure Monitor během několika minut.  Je zadaná data shromážděná z agenta a doručované přímo do Azure monitoru v intervalech, které jsou specifické pro každý zdroj dat.  Naleznete v dokumentaci pro jednotlivé zdroje dat pro tyto konkrétní.
+Konfigurace zdrojů dat se doručují agentům, které jsou přímo připojené k Azure Monitor během několika minut.  Zadaná data jsou shromažďována z agenta a dodávána přímo do Azure Monitor v intervalech specifických pro jednotlivé zdroje dat.  Prohlédněte si dokumentaci pro každý zdroj dat pro tyto konkrétní.
 
-Pro agenty System Center Operations Manager v připojené skupině pro správu konfigurace zdroje dat jsou přeloženy do sady management Pack a doručit do skupiny pro správu každých 5 minut, ve výchozím nastavení.  Agent soubory ke stažení sady management pack jako u všech ostatních a shromažďuje zadaná data. V závislosti na zdroji dat data budou že buď odeslány na server pro správu, který předává data do Azure monitoru, nebo bude agent posílat data do Azure monitoru bez nutnosti kontaktovat server pro správu. Zobrazit [podrobnosti shromažďování dat pro monitorování řešení v Azure](../insights/solutions-inventory.md) podrobnosti.  Informace o najdete podrobnosti o připojení nástroje Operations Manager a Azure Monitor a úprava frekvence tuto konfiguraci se doručí na [konfiguraci integrace se sadou System Center Operations Manager](om-agents.md).
+U agentů System Center Operations Manager v připojené skupině pro správu se konfigurace zdrojů dat přeloží do sad Management Pack a ve výchozím nastavení se doručí do skupiny pro správu každých 5 minut.  Agent stáhne Management Pack jako jiný a shromáždí zadaná data. V závislosti na zdroji dat budou data odeslána na management server, která přepošle data do Azure Monitor, nebo agent odešle data do Azure Monitor bez průchodu management server. Podrobnosti najdete [v tématu podrobnosti o shromažďování dat pro řešení monitorování v Azure](../insights/solutions-inventory.md) .  Můžete si přečíst informace o připojení Operations Manager a Azure Monitor a o úpravách četnosti, kterou konfigurace doručí při [konfiguraci integrace s System Center Operations Manager](om-agents.md).
 
-Pokud je agent nemůže připojit k Azure Monitor nebo Operations Manager, bude nadále shromažďovat data, která bude poskytovat navazuje připojení.  Data mohou být ztraceny, pokud objem dat dosáhne maximální velikost mezipaměti klienta, nebo pokud agent není schopen navázat připojení do 24 hodin.
+Pokud se Agent nemůže připojit k Azure Monitor nebo Operations Manager, bude pokračovat ve shromažďování dat, která budou doručována při navázání připojení.  Data mohou být ztracena v případě, že množství dat dosáhne maximální velikosti mezipaměti pro klienta nebo pokud Agent není schopen navázat připojení během 24 hodin.
 
 ## <a name="log-records"></a>Záznamy protokolu
-Všechna data protokolů shromážděná službou Azure Monitor je v pracovním prostoru uloží jako záznamy.  Záznamy shromážděné z různých zdrojů dat budou mít své vlastní sadu vlastností a identifikovat podle jejich **typ** vlastnost.  Najdete v dokumentaci pro jednotlivé zdroje dat a řešení pro podrobnosti pro každý typ záznamu.
+Všechna data protokolu shromážděná pomocí Azure Monitor jsou ukládána v pracovním prostoru jako záznamy.  Záznamy shromážděné různými zdroji dat budou mít svou vlastní sadu vlastností a budou identifikovány vlastností **typu** .  Podrobnosti o jednotlivých typech záznamů najdete v dokumentaci pro každý zdroj dat a řešení.
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [řešení monitorování](../insights/solutions.md) , které doplňují do Azure monitoru a také shromažďovat data do pracovního prostoru.
-* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a monitorování řešení.  
-* Konfigurace [výstrahy](alerts-overview.md) můžete zajistit aktivní upozorňování kritických dat shromážděných ze zdroje dat a monitorování řešení.
+## <a name="next-steps"></a>Další kroky
+* Přečtěte si o [řešeních monitorování](../insights/solutions.md) , která přidávají funkce pro Azure monitor a také shromažďovat data do pracovního prostoru.
+* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení monitorování.  
+* Nakonfigurujte [výstrahy](alerts-overview.md) pro proaktivní upozorňování na důležitá data shromážděná ze zdrojů dat a řešení monitorování.

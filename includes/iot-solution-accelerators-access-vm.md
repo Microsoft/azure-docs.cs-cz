@@ -8,42 +8,42 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8d1f0f6ae3ffc123f1ae8318a6fbce4a9a3024fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a58e408feadd10e6dbc9d6878b82a4d045918ea6
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66814728"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781439"
 ---
 ## <a name="access-the-virtual-machine"></a>Přístup k virtuálnímu počítači
 
-Následující kroky pomocí Azure CLI ve službě Azure Cloud Shell. Pokud dáváte přednost, můžete si [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) na vašem vývojovém počítači a spusťte příkazy místně.
+Následující kroky používají rozhraní příkazového řádku Azure v Azure Cloud Shell. Pokud chcete, můžete rozhraní příkazového [řádku Azure nainstalovat](/cli/azure/install-azure-cli) na svém vývojovém počítači a spustit příkazy místně.
 
-Následující kroky ukazují, jak nakonfigurovat virtuální počítač Azure umožňující **SSH** přístup. Uvedené kroky předpokládají název, který jste zvolili pro akcelerátor řešení je **contoso simulace** --tuto hodnotu nahraďte názvem vašeho nasazení:
+Následující kroky ukazují, jak nakonfigurovat virtuální počítač Azure tak, aby povoloval přístup přes **SSH** . Uvedený postup předpokládá, že název, který jste zvolili pro akcelerátor řešení, je **Contoso-simulace** – nahraďte tuto hodnotu názvem vašeho nasazení:
 
-1. Zobrazit obsah skupiny prostředků obsahující prostředky akcelerátoru řešení:
+1. Vypíše obsah skupiny prostředků, která obsahuje prostředky akcelerátoru řešení:
 
     ```azurecli-interactive
     az resource list -g contoso-simulation -o table
     ```
 
-    Poznamenejte si název virtuálního počítače, veřejná IP adresa a skupiny zabezpečení sítě – tyto hodnoty budete potřebovat později.
+    Poznamenejte si název virtuálního počítače, veřejnou IP adresu a skupinu zabezpečení sítě – tyto hodnoty budete potřebovat později.
 
-1. Aktualizujte skupinu zabezpečení sítě umožňující přístup SSH. Následující příkaz předpokládá, že je název skupiny zabezpečení sítě **contoso simulace nsg** --tuto hodnotu nahraďte název skupiny zabezpečení sítě:
+1. Aktualizujte skupinu zabezpečení sítě tak, aby povolovala přístup přes SSH. Následující příkaz předpokládá, že název skupiny zabezpečení sítě je **Contoso-simulace-NSG** --nahraďte tuto hodnotu názvem vaší skupiny zabezpečení sítě:
 
     ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
-    Povolte přístup přes SSH pouze během vývoj a testování. Pokud povolíte SSH, [byste měli znovu co nejdříve zakázat](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices#disable-rdpssh-access-to-virtual-machines).
+    Povolit přístup přes SSH jenom během testu a vývoje. Pokud povolíte SSH, [měli byste ho znovu deaktivovat, jakmile to bude možné](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#disable-rdpssh-access-to-virtual-machines).
 
-1. Aktualizovat heslo pro **azureuser** účet na virtuálním počítači na heslo, budete vědět. Zvolte vlastní heslo, když spustíte následující příkaz:
+1. Aktualizujte heslo účtu **azureuser** ve virtuálním počítači na heslo, které znáte. Když spustíte následující příkaz, vyberte vlastní heslo:
 
     ```azurecli-interactive
     az vm user update --name vm-vikxv --username azureuser --password YOURSECRETPASSWORD  -g contoso-simulation
     ```
 
-1. Zjistit veřejnou IP adresu vašeho virtuálního počítače. Následující příkaz předpokládá, že název virtuálního počítače je **vm vikxv** --tuto hodnotu nahraďte názvem virtuálního počítače, které jste si poznamenali dříve:
+1. Najděte veřejnou IP adresu vašeho virtuálního počítače. Následující příkaz předpokládá, že název virtuálního počítače je **VM-vikxv** --nahradit tuto hodnotu názvem virtuálního počítače, na který jste si poznamenali předchozí poznámku:
 
     ```azurecli-interactive
     az vm list-ip-addresses --name vm-vikxv -g contoso-simulation -o table

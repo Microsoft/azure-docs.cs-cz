@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: a623aa98cd26e1636e47cb0e2831eeced17935b9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: abaf96b11abee0bf519a276f825b9c47cd333c1b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695404"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816319"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -65,7 +65,11 @@ Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imag
 ```json
     "location": "<region>",
 ```
-    
+
+## <a name="tags"></a>Tags
+
+Jedná se o páry klíč/hodnota, které můžete zadat pro vygenerovanou bitovou kopii.
+
 ## <a name="depends-on-optional"></a>Závisí na (volitelné)
 
 Tento volitelný oddíl lze použít k zajištění, aby byly před pokračováním dokončeny závislosti. 
@@ -344,7 +348,8 @@ To je podporováno v adresářích systému Windows a cestách pro Linux, ale ex
  
 Pokud při pokusu o stažení souboru nebo jeho umístění do zadaného adresáře dojde k chybě, krok přizpůsobení selže a bude v souboru Customization. log.
 
->> Značte! Soubor úprav souborů je vhodný jenom pro stahování malých souborů, < 20MB. U větších souborů ke stažení použijte skript nebo vložený příkaz, ke stažení souborů, jako je Linux `wget` nebo `curl`Windows, `Invoke-WebRequest`použijte kód.
+> [!NOTE]
+> Soubor úprav souborů je vhodný jenom pro stahování malých souborů, < 20MB. U větších souborů ke stažení použijte skript nebo vložený příkaz, ke stažení souborů, jako je Linux `wget` nebo `curl`Windows, `Invoke-WebRequest`použijte kód.
 
 Soubory v úpravách souborů je možné stáhnout z Azure Storage pomocí [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
@@ -388,7 +393,7 @@ Azure image Builder podporuje tři cíle distribuce:
 
 - Image spravovaná **managedImage**
 - Galerie sdílených imagí **sharedImage**
-- VHD **– VHD** v účtu úložiště
+- VHD – VHD v účtu úložiště
 
 Můžete distribuovat obrázek do obou cílových typů ve stejné konfiguraci, viz [Příklady](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
 

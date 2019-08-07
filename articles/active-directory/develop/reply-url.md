@@ -5,18 +5,18 @@ author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
 ms.date: 06/29/2019
-ms.topic: article
+ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5e557d74ff0cb959b11e99391c47e91a90d17ef
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1702a0c7ab2d2a76e6ec0e8b217539804a683ff7
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325307"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834821"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Omezení pro adresu URL odpovědi / identifikátor URI přesměrování
 

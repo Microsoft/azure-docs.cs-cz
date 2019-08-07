@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2019
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ea45056b0112769105ddd997ce1abc79f59679f
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: d4de1fa903120fa6adc50d34428d8c3e2a28cf23
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663351"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835014"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrace aplikací do MSAL.NET
 

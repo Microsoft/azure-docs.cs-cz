@@ -1,65 +1,65 @@
 ---
-title: Tabulky Azure – řešení VMware podle CloudSimple – brány firewall
-description: Další informace o tabulky CloudSimple privátního cloudu brány firewall a pravidla brány firewall.
+title: Tabulky brány firewall – řešení VMware podle CloudSimple – Azure
+description: Přečtěte si o CloudSimple tabulkách firewallu privátního cloudu a pravidlech brány firewall.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 861c2e86d623c46c14366f19457d1f689386a316
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d25aa9252f061cee7f4cffdca42f00d84f719a3
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64577342"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812659"
 ---
-# <a name="firewall-tables-overview"></a>Přehled brány firewall tabulky
+# <a name="firewall-tables-overview"></a>Přehled tabulek brány firewall
 
-Brána firewall tabulka uvádí pravidla pro filtrování síťového provozu do a z prostředky privátního cloudu. Můžete je použít na síti VLAN a podsítě. Pravidla pak řídit provoz sítě mezi zdrojovou síť nebo IP adresu a cílové síti nebo IP adresu.
+Tabulka brány firewall obsahuje seznam pravidel pro filtrování síťového provozu do a z prostředků privátního cloudu. Můžete je použít pro síť VLAN nebo podsíť. Pravidla pak řídí síťový provoz mezi zdrojovou sítí nebo IP adresou a cílovou sítí nebo IP adresou.
 
 ## <a name="firewall-rules"></a>Pravidla brány firewall
 
-Následující tabulka popisuje parametry v pravidlu brány firewall.
+Následující tabulka popisuje parametry v pravidle brány firewall.
 
 | Vlastnost | Podrobnosti |
 | ---------| --------|
-| **Název** | Název, který jednoznačně identifikuje pravidlo brány firewall a její účel. |
-| **Priorita** | Číslo rozsahu od 100 do 4096 se 100, přičemž nejvyšší prioritou. Pravidla se zpracovávají v pořadí podle priority. Když provoz přichází napříč pravidlo shody, zastaví zpracování pravidla. V důsledku toho nebudou zpracovány žádné existující pravidla s nižší prioritou, které mají stejné atributy jako pravidla s vyšší prioritou.  Snažte se vyhnout konfliktní pravidla. |
-| **Stav sledování** | Sledování může být bezstavové (privátní Cloud, Internet nebo síť VPN) nebo stavová (veřejná IP adresa).  |
-| **Protokol** | Mezi možnosti patří všechny, TCP nebo UDP. Pokud potřebujete protokol ICMP, použijte některý. |
+| **Název** | Název, který jedinečně identifikuje pravidlo brány firewall a jeho účel. |
+| **Priorita** | Číslo mezi 100 a 4096 a 100 je nejvyšší prioritou. Pravidla se zpracovávají v pořadí podle priority. Když se provoz dostane přes shodu pravidla, zpracování pravidla se zastaví. V důsledku toho se nezpracovávají všechna pravidla, která existují s nižšími prioritami, která mají stejné atributy jako pravidla s vyššími prioritami.  Dbejte na to, abyste se vyhnuli konfliktům pravidel. |
+| **Sledování stavu** | Sledování může být bezstavové (privátní cloud, Internet nebo VPN) nebo stavová (veřejná IP adresa).  |
+| **Protokol** | Mezi možnosti patří všechny, TCP nebo UDP. Pokud budete vyžadovat protokol ICMP, použijte libovolný. |
 | **Směr** | Určuje, jestli se pravidlo vztahuje na příchozí nebo odchozí provoz. |
-| **Akce** | Povolí nebo zakáže pro typ provozu definovaným v pravidle. |
-| **Zdroj** | IP adresu, classless Inter-Domain routing (CIDR) bloku (například 10.0.0.0/24) nebo žádný.  Zadání rozsahu, značky služby nebo skupiny zabezpečení aplikace umožňuje vytvářet méně pravidel zabezpečení. |
-| **Zdrojový Port** | Port, ze které síti provoz pochází.  Můžete zadat jednotlivé port nebo rozsah portů, jako je například 443 nebo 8000-8080. Zadání rozsahů umožňuje vytvářet méně pravidel zabezpečení. |
-| **cíl** | IP adresu, classless Inter-Domain routing (CIDR) bloku (například 10.0.0.0/24) nebo žádný.  Zadání rozsahu, značky služby nebo skupiny zabezpečení aplikace umožňuje vytvářet méně pravidel zabezpečení.  |
-| **Cílový Port** | Port, na který síťový provoz toky.  Můžete zadat jednotlivé port nebo rozsah portů, jako je například 443 nebo 8000-8080. Zadání rozsahů umožňuje vytvářet méně pravidel zabezpečení.|
+| **Akce** | Povolí nebo zakáže typ provozu definovaný v pravidle. |
+| **Zdroj** | IP adresa, blok směrování mezi doménami bez tříd (CIDR) (10.0.0.0/24, například) nebo Any.  Určení rozsahu, značky služby nebo skupiny zabezpečení aplikací vám umožní vytvořit méně pravidel zabezpečení. |
+| **Zdrojový port** | Port, ze kterého pochází síťový provoz.  Můžete zadat jednotlivý port nebo rozsah portů, například 443 nebo 8000-8080. Zadání rozsahů umožňuje vytvářet méně pravidel zabezpečení. |
+| **Tabulka** | IP adresa, blok směrování mezi doménami bez tříd (CIDR) (10.0.0.0/24, například) nebo Any.  Určení rozsahu, značky služby nebo skupiny zabezpečení aplikací vám umožní vytvořit méně pravidel zabezpečení.  |
+| **Cílový port** | Port, na který se budou toky provozu v síti.  Můžete zadat jednotlivý port nebo rozsah portů, například 443 nebo 8000-8080. Zadání rozsahů umožňuje vytvářet méně pravidel zabezpečení.|
 
 ### <a name="stateless"></a>Bezstavová
 
-Bezstavová pravidla zabývá pouze jednotlivé pakety a filtruje je podle pravidla.  
-Další pravidla mohou být vyžadovány pro tok přenosů, v opačném směru.  Použijte Bezstavová pravidla pro provoz mezi následující body:
+Bezstavové pravidlo vyhledává pouze jednotlivé pakety a filtruje je na základě pravidla.  
+Pro tok přenosů v opačném směru můžou být nutná další pravidla.  Pro přenosy dat mezi následujícími body používejte pravidla bez stavu:
 
-* Podsítě privátních Cloudů
-* Místní podsítě a podsíť privátního cloudu
-* Internetový provoz z privátních Cloudů
+* Podsítě privátních cloudů
+* Místní podsíť a podsíť privátního cloudu
+* Internetový provoz z privátních cloudů
 
-### <a name="stateful"></a>Stavová
+### <a name="stateful"></a>Uzlů
 
- Stavové pravidlo je seznámen připojení, která prochází ho. Pro stávající připojení se vytvoří záznam toku. Komunikace se povoluje nebo odepírá na základě stavu připojení v záznamu toku.  Toto pravidlo se používá pro veřejné IP adresy k filtrování provozu z Internetu.
+ Stavové pravidlo ví o připojeních, která je předána. Pro stávající připojení se vytvoří záznam toku. Komunikace se povoluje nebo odepírá na základě stavu připojení v záznamu toku.  Tento typ pravidla použijte pro veřejné IP adresy k filtrování provozu z Internetu.
 
 ### <a name="default-rules"></a>Výchozí pravidla
 
 Následující výchozí pravidla se vytvoří v každé tabulce brány firewall.
 
-|Priorita|Name|Stav sledování|Direction|Typ přenosu|Protocol|source|Zdrojový port|Cíl|Cílový port|Akce|
+|Priority|Name|Sledování stavu|Direction|Typ provozu|Protocol|Source|Zdrojový port|Cíl|Cílový port|Action|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|allow-all-to-internet|Stavová|Odchozí|Veřejné IP adresy nebo internet provozu|Vše|Jakýkoli|Jakýkoli|Jakýkoli|Jakýkoli|Povolit|
-|65001|deny-all-from-internet|Stavová|Příchozí|Veřejné IP adresy nebo internet provozu|Vše|Jakýkoli|Jakýkoli|Jakýkoli|Jakýkoli|Odepřít|
-|65002|allow-all-to-intranet|Bezstavová|Odchozí|Interní privátní Cloud nebo přenosy VPN|Vše|Jakýkoli|Jakýkoli|Jakýkoli|Jakýkoli|Povolit|
-|65003|allow-all-from-intranet|Bezstavová|Příchozí|Interní privátní Cloud nebo přenosy VPN|Vše|Jakýkoli|Jakýkoli|Jakýkoli|Jakýkoli|Povolit|
+|65000|allow-all-to-internet|Uzlů|Odchozí|Veřejná IP adresa nebo internetový provoz|Vše|Any|Any|Any|Any|Allow|
+|65001|Odepřít – vše z Internetu|Uzlů|Příchozí|Veřejná IP adresa nebo internetový provoz|Vše|Any|Any|Any|Any|Odepřít|
+|65002|allow-all-to-intranet|Bezstavová|Odchozí|Provoz interního cloudu nebo privátního cloudu|Vše|Any|Any|Any|Any|Allow|
+|65003|allow-all-from-intranet|Bezstavová|Příchozí|Provoz interního cloudu nebo privátního cloudu|Vše|Any|Any|Any|Any|Allow|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Nastavení brány firewall na tabulky a pravidel](https://docs.azure.cloudsimple.com/firewall/)
+* [Nastavení tabulek a pravidel brány firewall](https://docs.azure.cloudsimple.com/firewall/)

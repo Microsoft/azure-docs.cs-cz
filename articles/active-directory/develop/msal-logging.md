@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/22/2019
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4288ff4aba216a214d10c56ba448fc03e13b81f2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 09590fbd340ac3945f05346f99254ec0b76dcd76
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693931"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834995"
 ---
 # <a name="logging"></a>Protokolování
 Aplikace Microsoft Authentication Library (MSAL) umožňují generovat zprávy protokolu, které mohou pomáhat diagnostikovat problémy a poskytnout podrobné informace. Aplikace může nakonfigurovat protokolování s několika řádky kódu a mít vlastní kontrolu nad úrovní podrobností a bez ohledu na to, jestli se protokolují osobní údaje a data organizace. Doporučuje se nastavit zpětné volání protokolování MSAL a poskytnout uživatelům možnost odesílat protokoly, pokud mají problémy s ověřováním.

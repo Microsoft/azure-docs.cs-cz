@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d96f5bb189dfd20c65fc6fc6ddcb8fff66d52ff
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 07c035f4823ea8c8eaa96ca9bda22450246811cd
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666241"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779630"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Řešení potíží s ochranou hesel Azure AD
 
@@ -32,7 +32,7 @@ Obvyklou příčinou tohoto problému je to, že proxy server ještě není zare
 
 Hlavním příznakem tohoto problému jsou 30018 události v protokolu událostí správce agenta řadiče domény. Tento problém může mít několik možných příčin:
 
-1. Agent řadiče domény se nachází v izolované části sítě, která neumožňuje síťové připojení k registrovaným proxy serverem. Tento problém může být proto neškodný, pokud ostatní agenti řadiče domény mohou komunikovat s proxy serverem, aby mohli stahovat zásady hesel z Azure, které se pak získají izolovaným řadičem domény prostřednictvím replikace souborů zásad ve sdílené složce SYSVOL.
+1. Agent řadiče domény se nachází v izolované části sítě, která neumožňuje síťové připojení k registrovaným proxy serverem. Tento problém může být neškodný, pokud ostatní agenti DC můžou komunikovat s proxy servery, aby mohli stahovat zásady hesel z Azure. Po stažení se tyto zásady pak získají izolovaným řadičem domény prostřednictvím replikace souborů zásad ve sdílené složce SYSVOL.
 
 1. Hostitelský počítač proxy blokuje přístup k koncovému bodu mapovače koncových bodů RPC (port 135).
 
@@ -48,7 +48,7 @@ Hlavním příznakem tohoto problému jsou 30018 události v protokolu událost�
 
 1. Ujistěte se, že je doménová struktura a všechny proxy servery zaregistrované u stejného tenanta Azure.
 
-   Tento požadavek můžete ověřit spuštěním `Get-AzureADPasswordProtectionProxy` rutin prostředí PowerShell a `Get-AzureADPasswordProtectionDCAgent` potom porovnejte `AzureTenant` vlastnost jednotlivých vrácených položek. Pro správnou operaci musí být oznámený název tenanta stejný ve všech agentech DC a proxy serverech.
+   Tento požadavek můžete ověřit spuštěním `Get-AzureADPasswordProtectionProxy` rutin prostředí PowerShell a `Get-AzureADPasswordProtectionDCAgent` potom porovnejte `AzureTenant` vlastnost jednotlivých vrácených položek. Pro správnou operaci musí být nahlášený název tenanta stejný ve všech agentech DC a proxy serverech.
 
    Pokud neshoda s registrací tenanta Azure existuje, můžete tento problém vyřešit spuštěním `Register-AzureADPasswordProtectionProxy` rutin a/nebo `Register-AzureADPasswordProtectionForest` PowerShellu podle potřeby a tím, že použijete přihlašovací údaje ze stejného tenanta Azure pro všechny registrace.
 
@@ -69,6 +69,8 @@ Nejběžnější hlavní příčinou nefunkčnosti služby KDS je, že objekt ř
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Jsou přijímána slabá hesla, ale neměla by být
 
 Tento problém může mít několik příčin.
+
+1. Na vašich agentech řadiče domény běží verze softwaru Public Preview, jejíž platnost vypršela. Viz [platnost softwaru agenta řadiče domény Public Preview](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired).
 
 1. Agenti řadičů domény se nedají stáhnout zásady nebo nemůžou dešifrovat existující zásady. Vyhledejte možné příčiny ve výše uvedených tématech.
 
@@ -99,7 +101,7 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-Když služba Azure AD Password Protection zaznamená události protokolu událostí ověření hesla pro heslo služby Active Directory DSRM, předpokládá se, že zprávy protokolu událostí nebudou obsahovat uživatelské jméno. K tomu dochází, protože účet DSRM je místní účet, který není součástí skutečné domény služby Active Directory.  
+Když služba Azure AD Password Protection zaznamená události protokolu událostí ověření hesla pro heslo služby Active Directory DSRM, předpokládá se, že zprávy protokolu událostí nebudou obsahovat uživatelské jméno. K tomuto chování dochází, protože účet DSRM je místní účet, který není součástí skutečné domény služby Active Directory.  
 
 ## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>Zvýšení úrovně repliky řadiče domény se nezdařilo kvůli slabému heslu DSRM
 
@@ -119,7 +121,67 @@ Po úspěšném snížení úrovně a restartování řadiče domény a opětovn
 
 ## <a name="booting-into-directory-services-repair-mode"></a>Spuštění do režimu opravy adresářových služeb
 
-Pokud je řadič domény spuštěný v režimu opravy adresářových služeb, služba agenta řadiče domény tuto podmínku detekuje a způsobí zakázání všech ověření a aktivit vynucení hesla bez ohledu na aktuálně aktivní konfiguraci zásad.
+Pokud je řadič domény spuštěný v režimu opravy adresářových služeb, knihovna DLL filtru hesel agenta řadiče domény detekuje tuto podmínku a způsobí, že se všechny aktivity ověřování a vynucování hesla budou deaktivovat bez ohledu na aktuálně aktivní zásadu. rozšířeného. Knihovna DLL filtru hesla agenta řadiče domény zaznamená událost upozornění 10023 do protokolu událostí správce, například:
+
+```text
+The password filter dll is loaded but the machine appears to be a domain controller that has been booted into Directory Services Repair Mode. All password change and set requests will be automatically approved. No further messages will be logged until after the next reboot.
+```
+## <a name="public-preview-dc-agent-software-has-expired"></a>Platnost softwaru agenta řadiče domény ve verzi Public Preview vypršela.
+
+Během období veřejné verze Preview ochrany heslem Azure AD byl software agenta DC pevně zakódovaný, aby zastavil zpracování žádostí o ověření hesla v následujících datech:
+
+* Verze 1.2.65.0 zastaví zpracování požadavků na ověření hesla od září 1 2019.
+* Verze 1.2.25.0 a předchozí zastavily zpracování žádostí o ověření hesla od července 1 2019.
+
+Po uplynutí konečného termínu budou všechny časově omezené verze agenta řadiče domény generovat událost 10021 v protokolu událostí správce agenta řadiče domény při spuštění, který vypadá takto:
+
+```text
+The password filter dll has successfully loaded and initialized.
+
+The allowable trial period is nearing expiration. Once the trial period has expired, the password filter dll will no longer process passwords. Please contact Microsoft for an newer supported version of the software.
+
+Expiration date:  9/01/2019 0:00:00 AM
+
+This message will not be repeated until the next reboot.
+```
+
+Po uplynutí konečného termínu budou všechny časově omezené verze agenta řadiče domény generovat událost 10022 v protokolu událostí správce agenta řadiče domény při spuštění, který vypadá takto:
+
+```text
+The password filter dll is loaded but the allowable trial period has expired. All password change and set requests will be automatically approved. Please contact Microsoft for a newer supported version of the software.
+
+No further messages will be logged until after the next reboot.
+```
+
+Vzhledem k tomu, že konečný termín je kontrolován pouze při počátečním spuštění, tyto události se nemusí zobrazit, dokud neuplyne konečný termín kalendáře. Jakmile je konečný termín rozpoznán, nebudou se automaticky schvalovat žádné negativní účinky na řadič domény ani na větší prostředí.
+
+> [!IMPORTANT]
+> Microsoft doporučuje, aby agenti řadiče domény s vypršenou platností verze Public Preview byli hned upgradováni na nejnovější verzi.
+
+Snadný způsob, jak zjistit agenty řadiče domény v prostředí, které je potřeba upgradovat, je `Get-AzureADPasswordProtectionDCAgent` spuštění rutiny, třeba:
+
+```powershell
+PS C:\> Get-AzureADPasswordProtectionDCAgent
+
+ServerFQDN            : bpl1.bpl.com
+SoftwareVersion       : 1.2.125.0
+Domain                : bpl.com
+Forest                : bpl.com
+PasswordPolicyDateUTC : 8/1/2019 9:18:05 PM
+HeartbeatUTC          : 8/1/2019 10:00:00 PM
+AzureTenant           : bpltest.onmicrosoft.com
+```
+
+Pro toto téma je pole SoftwareVersion zjevnou klíčovou vlastností, která se má podívat na. Filtrování prostředí PowerShell můžete také použít k odfiltrování agentů řadiče domény, kteří jsou již ve verzi požadovaná základní verze, například:
+
+```powershell
+PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
+PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
+```
+
+Software proxy ochrany heslem služby Azure AD není časově omezený v jakékoli verzi. Společnost Microsoft stále doporučuje, aby se řadiče DC i proxy upgradovali na nejnovější verze hned po jejich vydání. `Get-AzureADPasswordProtectionProxy` Rutina se dá použít k vyhledání agentů proxy, kteří vyžadují upgrady, podobně jako v příkladu výše pro agenty řadiče domény.
+
+Další podrobnosti o konkrétních postupech upgradu najdete v tématu [Upgrade agenta řadiče domény](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) a [Upgrade agenta proxy serveru](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) .
 
 ## <a name="emergency-remediation"></a>Nouzová náprava
 

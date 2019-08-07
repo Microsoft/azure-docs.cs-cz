@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8f1fa6f7823c643278e52ffd0faa1c0ce4972ef8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 41037e0687274d123bea742cee5cf2887548aa0f
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640254"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775212"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>Vzorce mapování datových toků
 
@@ -45,6 +45,16 @@ Chcete-li vytvořit vzory založené na sloupcích, můžete se shodovat s názv
 Když namapujete sloupce ve zdroji a vyberete transformace, budete mít možnost zvolit "pevné mapování" nebo "mapování na základě pravidel". Pokud znáte schéma vašich dat a očekáváte konkrétní sloupce ze zdrojové datové sady, které vždy odpovídají specifickým statickým názvům, můžete použít pevné mapování. Ale při práci s flexibilními schématy použijte mapování na základě pravidel. Pomocí výše popsaných pravidel budete moct vytvořit porovnávání vzorů.
 
 ![mapování na základě pravidel](media/data-flow/rule2.png "Mapování na základě pravidel")
+
+Sestavte pravidla pomocí Tvůrce výrazů. Vaše výrazy vrátí logickou hodnotu buď pro odpovídající sloupce (true), nebo pro vyloučení sloupců (false).
+
+## <a name="pattern-matching-special-columns"></a>Speciální sloupce pro porovnávání vzorů
+
+* `$$`se převede na název každé shody v době návrhu v režimu ladění a při spuštění v době běhu.
+* `name`představuje název každého příchozího sloupce.
+* `type`představuje datový typ každého příchozího sloupce.
+* `stream`představuje název přidružený ke každému streamu nebo transformaci v toku.
+* `position`je pořadové místo sloupců v toku dat
 
 ## <a name="next-steps"></a>Další postup
 * Přečtěte si další informace o jazykovém [výrazu](http://aka.ms/dataflowexpressions) toku dat mapování ADF pro transformace dat.

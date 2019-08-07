@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ebeed3636ea6da77e05a9a790e51c7771ebe685
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666290"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779659"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -282,12 +282,29 @@ Pro ochranu heslem Azure AD existují dvě požadované instalační programy. J
 
    Instalaci softwaru můžete automatizovat pomocí standardních postupů MSI. Příklad:
 
-   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
+   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
-   > [!WARNING]
-   > Ukázkový příkaz msiexec zde způsobuje okamžité restartování. Abyste tomu předešli, použijte `/norestart` příznak.
+   `/norestart` Příznak můžete vynechat, pokud budete chtít, aby instalační program automaticky restartoval počítač.
 
 Instalace se dokončí po instalaci softwaru agenta DC na řadič domény a tento počítač se restartuje. Žádná jiná konfigurace není vyžadována nebo možná.
+
+## <a name="upgrading-the-proxy-agent"></a>Upgrade agenta proxy
+
+Pokud je k dispozici novější verze softwaru proxy ochrany heslem služby Azure AD, upgrade se docílí spuštěním nejnovější verze `AzureADPasswordProtectionProxySetup.exe` instalačního programu softwaru. Není nutný k odinstalaci aktuální verze softwaru proxy – instalační program provede místní upgrade. Při upgradu softwaru proxy by se neměl vyžadovat restart. Upgrade softwaru může být automatizovaný pomocí standardních procedur MSI, například: `AzureADPasswordProtectionProxySetup.exe /quiet`.
+
+Agent proxy podporuje automatický upgrade. Automatický upgrade používá službu aktualizace agenta Microsoft Azure AD Connect, která je nainstalovaná souběžně s proxy službou. Automatický upgrade je ve výchozím nastavení zapnutý a může být povolený nebo zakázaný pomocí rutiny Set-AzureADPasswordProtectionProxyConfiguration. Pomocí rutiny Get-AzureADPasswordProtectionProxyConfiguration se dá zadat dotaz na aktuální nastavení. Microsoft doporučuje, aby byl automatický upgrade ponechán zapnutý.
+
+`Get-AzureADPasswordProtectionProxy` Rutina se dá použít k dotazování verze softwaru všech aktuálně nainstalovaných agentů proxy v doménové struktuře.
+
+## <a name="upgrading-the-dc-agent"></a>Upgrade agenta řadiče domény
+
+Pokud je k dispozici novější verze softwaru agenta Azure AD Password Protection, upgrade se provádí spuštěním nejnovější verze `AzureADPasswordProtectionDCAgentSetup.msi` softwarového balíčku. Pro odinstalaci aktuální verze softwaru agenta DC není nutné, aby instalační program provedl místní upgrade. Při upgradu softwaru agenta DC je vždy vyžadován restart – to je způsobeno základním chováním Windows. 
+
+Upgrade softwaru může být automatizovaný pomocí standardních procedur MSI, například: `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`.
+
+`/norestart` Příznak můžete vynechat, pokud budete chtít, aby instalační program automaticky restartoval počítač.
+
+`Get-AzureADPasswordProtectionDCAgent` Rutina se dá použít k dotazování verze softwaru všech aktuálně nainstalovaných agentů DC v doménové struktuře.
 
 ## <a name="multiple-forest-deployments"></a>Nasazení s více doménovými strukturami
 
@@ -301,7 +318,7 @@ Změny nebo sady hesel nejsou zpracovány a uchovány na řadičích domény jen
 
 Hlavním problémem při dostupnosti ochrany heslem je dostupnost proxy serverů, když se řadiče domény v doménové struktuře snaží stáhnout nové zásady nebo jiná data z Azure. Každý agent DC používá při rozhodování o tom, které proxy server volat, jednoduchý algoritmus kruhového dotazování. Agent přeskočí proxy servery, které nereagují. Pro většinu plně připojených nasazení služby Active Directory, které mají v pořádku replikaci adresáře a stavu složky SYSVOL, jsou pro zajištění dostupnosti k dispozici dva proxy servery. Výsledkem je včasné stažení nových zásad a dalších dat. Můžete ale nasadit další proxy servery.
 
-Návrh softwaru agenta DC snižuje běžné problémy, které jsou spojené s vysokou dostupností. Agent řadiče domény uchovává místní mezipaměť naposledy stažených zásad hesel. I když jsou všechny registrované proxy servery nedostupné, budou agenti řadiče domény nadále vysazovat zásady hesel v mezipaměti. Přiměřená frekvence aktualizace zásad hesel ve velkém nasazení je obvykle *dny*, ne hodiny nebo méně. To znamená, že krátké výpadky proxy serverů významně neovlivňují ochranu heslem Azure AD.
+Návrh softwaru agenta DC snižuje běžné problémy, které jsou spojené s vysokou dostupností. Agent řadiče domény uchovává místní mezipaměť naposledy stažených zásad hesel. I když jsou všechny registrované proxy servery nedostupné, budou agenti řadiče domény nadále vysazovat zásady hesel v mezipaměti. Přiměřená frekvence aktualizace zásad hesel ve velkém nasazení je obvykle dny, ne hodiny nebo méně. To znamená, že krátké výpadky proxy serverů významně neovlivňují ochranu heslem Azure AD.
 
 ## <a name="next-steps"></a>Další postup
 

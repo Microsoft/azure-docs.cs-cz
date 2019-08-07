@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 08/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5bdaee8c70a7fbc784abab7c4c360c5ac28f3439
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3055d354d4eaed8a1784a08563079924d3c90b6c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688059"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839519"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Co jsou v Azure Zóny dostupnosti?
 Zóny dostupnosti je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Redundantní služby v zóně replikují aplikace a data napříč Zóny dostupnosti, aby se chránily před jednotlivými chybami. Díky Zóny dostupnosti Azure nabízí nejlepší smlouvu SLA 99,99% provozu virtuálního počítače. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
@@ -55,9 +55,9 @@ Kombinace služeb a oblastí Azure, které podporují Zóny dostupnosti:
 | **Sítě**                     |            |              |           |           |                |              |          |             |            |                |
 | Standardní IP adresa        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Load Balancer úrovně Standard     | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| VPN Gateway   | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;  | &#10003;     |   &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
-| ExpressRoute bránu   | &#10003;   |  &#10003;   | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |   &#10003;  | &#10003;       |
-| Application Gateway   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    | &#10003;       | &#10003;       |
+| VPN Gateway            | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
+| ExpressRoute bránu   | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
+| Application Gateway    | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
 | Brána Azure Firewall           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |
 | **Databáze**                     |            |              |           |           |                |              |          |             |            |                |
 | Průzkumník dat Azure                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;        | &#10003;       |
@@ -92,5 +92,5 @@ Pro virtuální počítače nasazené v zóně dostupnosti se neúčtují žádn
 - [Přidat redundantní oblast zóny pro Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)
 - [Začínáme Azure cache pro Zóny dostupnosti Redis](https://aka.ms/redis/az/getstarted)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Šablony Rychlý start](https://aka.ms/azqs)

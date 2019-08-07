@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d2bad808d0bcbbd5dc8052db0f8fd32fc4c1180a
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 831c771da385ef6faeba194878ca53ede34ccc0a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699475"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816640"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -33,8 +33,8 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 | Windows 7              | SMB 2.1     | Ano                   | Ne                   |
 | Windows Server 2008 R2 | SMB 2.1     | Ano                   | Ne                   |
 
-<sup>1</sup> Windows 10, verze 1507, 1607, 1703, 1709, 1803 a 1809.  
-<sup>2</sup> . Windows Server verze 1709 a 1803.
+<sup>1</sup> Windows 10, verze 1507, 1607, 1703, 1709, 1803, 1809 a 1903.  
+<sup>2</sup> . Windows Server, verze 1803, 1809 a 1903.
 
 > [!Note]  
 > Vždy doporučujeme získat nejnovější aktualizaci KB pro vaši verzi systému Windows.
@@ -302,7 +302,7 @@ Po vytvoření tohoto klíče registru musíte server restartovat, aby se protok
 - [Zjišťování protokolu SMB 1 v prostředí pomocí DSCEA](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
 - [Zakázání protokolu SMB 1 prostřednictvím Zásad skupiny](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o službě Soubory Azure najdete na těchto odkazech:
 - [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 - [Nejčastější dotazy](../storage-files-faq.md)

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: ce22efd6eccdc067b05697b8389c821c4c01a347
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 58db76401439befd476bc78c1a1a20eeed5c2342
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638590"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779171"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Poznámky k verzi a zdroje informací
 > [!div class="op_single_selector"]
@@ -45,13 +45,18 @@ ms.locfileid: "68638590"
 > [!NOTE]
 > Pokud používáte .NET Core, přečtěte si prosím nejnovější verzi 3. x sady [.NET SDK](sql-api-sdk-dotnet-standard.md), která cílí na .NET Standard. 
 
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* Verze System .NET. http sady SDK se nyní shoduje s tím, co je definováno v balíčku NuGet.
+* Povolí použití požadavků na zápis do jiné oblasti v případě, že se původní chyba nezdařila.
+* Přidejte zásady opakování relace pro požadavek na zápis.
+
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
 * Opravuje podmínku sledování časování pro dotazy, které způsobily prázdné stránky.
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* Verze System .NET. http sady SDK se shoduje s tím, co je definováno v balíčku NuGet.
 * Zvýšená velikost desetinné přesnosti pro dotazy LINQ.
 * Přidání nových tříd CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType a PartitionKeyDefinitionVersion
 * Přidání TimeToLivePropertyPath do souboru DocumentCollection
@@ -250,6 +255,7 @@ Pokud máte dotazy související s touto sadou SDK, odešlete příspěvek do [S
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |2\. července 2019 |--- |
 | [2.4.1](#2.4.1) |20. června 2019 |--- |
 | [2.4.0](#2.4.0) |05. května 2019 |--- |
 | [2.3.0](#2.3.0) |04. dubna 2019 |--- |

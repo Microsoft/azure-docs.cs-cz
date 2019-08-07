@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 881d89170c82731fca3f6977da486eac5be772f8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4c283e840208ab9f53d084ca17221ea2c835b794
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466998"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814136"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Vytvoření hostitele Azure bastionu (Preview)
 
@@ -54,7 +54,7 @@ Tato část vám pomůže vytvořit nový prostředek Azure bastionu z Azure Por
     * **Název**: Název nového prostředku bastionu
     * **Oblast**: Veřejná oblast Azure, ve které se prostředek vytvoří.
     * **Virtuální síť**: Virtuální síť, ve které se vytvoří prostředek bastionu. Během tohoto procesu můžete vytvořit novou virtuální síť v portálu, pokud nemáte nebo nechcete používat stávající virtuální síť. Pokud používáte existující virtuální síť, ujistěte se, že stávající virtuální síť má dostatek volného místa pro splnění požadavků na bastionu podsíť.
-    * **Podsíť**: Podsíť ve virtuální síti, do které bude nasazen nový prostředek hostitele bastionu. Podsíť musíte vytvořit pomocí hodnoty název **AzureBastionSubnet**. Tato hodnota umožňuje službě Azure zjistit, do které podsítě nasadit prostředky bastionu. To se liší od podsítě brány. Důrazně doporučujeme, abyste používali alespoň a/27 nebo větší podsíť (/27,/26 atd.). Vytvořte **AzureBastionSubnet** bez směrovacích tabulek nebo delegování. Pokud používáte skupiny zabezpečení sítě na **AzureBastionSubnet**, přečtěte si téma [práce s skupin zabezpečení sítě](bastion-nsg.md).
+    * **Podsíť**: Podsíť ve virtuální síti, do které bude nasazen nový prostředek hostitele bastionu. Podsíť musíte vytvořit pomocí hodnoty název **AzureBastionSubnet**. Tato hodnota umožňuje službě Azure zjistit, do které podsítě nasadit prostředky bastionu. To se liší od podsítě brány. Je nutné použít podsíť alespoň a/27 nebo větší podsíť (/27,/26 atd.). Vytvořte **AzureBastionSubnet** bez směrovacích tabulek nebo delegování. Pokud používáte skupiny zabezpečení sítě na **AzureBastionSubnet**, přečtěte si téma [práce s skupin zabezpečení sítě](bastion-nsg.md).
     * **Veřejná IP adresa**: Veřejná IP adresa prostředku bastionu, ke kterému bude přístup RDP/SSH (přes port 443). Vytvořte novou veřejnou IP adresu nebo použijte existující. Veřejná IP adresa musí být ve stejné oblasti jako prostředek bastionu, který vytváříte.
     * **Název veřejné IP adresy**: Název prostředku veřejné IP adresy.
     * **SKU veřejné IP adresy**: Předem vyplněné ve výchozím nastavení na **Standard**. Azure bastionu používá nebo podporuje jenom standardní IP SKU Standard.

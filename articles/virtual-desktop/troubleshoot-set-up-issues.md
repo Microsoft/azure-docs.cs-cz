@@ -2,17 +2,17 @@
 title: Tenant virtuálních počítačů s Windows a vytváření fondů hostitelů – Azure
 description: Řešení potíží a řešení problémů s fondem klientů a hostitelů během instalace prostředí klienta virtuální plochy Windows.
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 9e58c3bfc0e74f9aac61085608a843954b0923c0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.author: helohr
+ms.openlocfilehash: 7ab8ec9536af74102d2c9384ea3d0d0503f58f63
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249561"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816495"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
@@ -24,7 +24,7 @@ V současné době nepřijímáme případy podpory, ale virtuální počítač 
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Získání bitové kopie Windows 10 Enterprise s více relacemi
 
-Pokud chcete použít image s více relacemi pro Windows 10 Enterprise, klikněte na Azure Marketplace. **Vyberte** > Začínáme s**Microsoft Windows 10** > a [Windows 10 Enterprise pro Virtual desktops Preview verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
+Pokud chcete použít image s více relacemi pro Windows 10 Enterprise, klikněte na Azure Marketplace. > vyberte Začínáme s**Microsoft Windows 10** > a [Windows 10 Enterprise pro Virtual desktops Preview verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
 
 ![Snímek obrazovky s výběrem Windows 10 Enterprise pro virtuální klienty verze Preview verze 1809.](media/AzureMarketPlace.png)
 
@@ -342,7 +342,7 @@ Pokud používáte šablonu Azure Resource Manager GitHubu, zadejte hodnoty pro 
 - IsServicePrincipal: **true**
 - AadTenantId: ID tenanta služby Azure AD, které jste vytvořili.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).

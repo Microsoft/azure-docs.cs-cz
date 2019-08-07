@@ -1,6 +1,6 @@
 ---
 title: Zadejte HttpClient a proxy (MSAL.NET) | Azure
-description: Další informace o zajišťování HttpClient a vlastní proxy server pro připojení k Azure AD pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
+description: Přečtěte si, jak poskytnout vlastní HttpClient a proxy server pro připojení k Azure AD pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/23/2019
@@ -17,18 +17,18 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ab8a85ecc5649352382469e09d7dfd83a5ddfa
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: daae88cd8e76d0ae1af04c45a7191027e9adece9
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305728"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834948"
 ---
-# <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>Poskytování vlastních proxy pomocí MSAL.NET a HttpClient
-Když [inicializace aplikace veřejným klientem](msal-net-initializing-client-applications.md), můžete použít `.WithHttpClientFactory method` poskytnout vlastní HttpClient.  Poskytuje vlastní HttpClient umožňuje pokročilé scénáře takové velice přesně kontrolovat proxy serveru HTTP, přizpůsobení záhlaví uživatelského agenta nebo vynucení MSAL používat konkrétní HttpClient (například v ASP.NET Core webová aplikace/rozhraní API).
+# <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>Poskytování vlastních HttpClient a proxy serveru pomocí MSAL.NET
+Při [inicializaci veřejné klientské aplikace](msal-net-initializing-client-applications.md)můžete použít `.WithHttpClientFactory method` k poskytnutí vlastní HttpClient.  Poskytování vlastní HttpClient umožňuje pokročilým scénářům, jako je jemně odstupňovaná kontrola proxy serveru HTTP, přizpůsobení hlaviček uživatelských agentů nebo vynucení MSAL používání konkrétního HttpClient (například v ASP.NET Core Web Apps/rozhraní API).
 
-## <a name="initialize-with-httpclientfactory"></a>Inicializace s HttpClientFactory
-Následující příklad ukazuje, jak vytvořit `HttpClientFactory` , kterou následně inicializujete veřejné klientské aplikace s ní:
+## <a name="initialize-with-httpclientfactory"></a>Inicializovat pomocí HttpClientFactory
+Následující příklad ukazuje vytvoření `HttpClientFactory` a následné inicializaci klientské aplikace s ním:
 
 ```csharp
 IMsalHttpClientFactory httpClientFactory = new MyHttpClientFactory();
@@ -39,4 +39,4 @@ var pca = PublicClientApplicationBuilder.Create(MsalTestConstants.ClientId)
 ```
 
 ## <a name="httpclient-and-xamarin-ios"></a>HttpClient a Xamarin iOS
-Pokud používáte Xamarin pro iOS, doporučuje se vytvořit `HttpClient` , který používá explicitně `NSURLSession`– na základě obslužné rutiny pro iOS 7 nebo novější. Automaticky vytvoří MSAL.NET `HttpClient` , která používá `NSURLSessionHandler` pro iOS 7 nebo novější. Další informace najdete v článku [dokumentace pro Xamarin iOS pro HttpClient](/xamarin/cross-platform/macios/http-stack).
+Při použití Xamarin iOS se doporučuje vytvořit `HttpClient` , který explicitně `NSURLSession`používá obslužnou rutinu založenou na systému iOS 7 a novějším. MSAL.NET automaticky vytvoří `HttpClient` , který používá `NSURLSessionHandler` systém iOS 7 a novější. Další informace najdete v dokumentaci k [Xamarin iOS pro HttpClient](/xamarin/cross-platform/macios/http-stack).

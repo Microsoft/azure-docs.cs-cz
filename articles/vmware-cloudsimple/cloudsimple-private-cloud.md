@@ -1,39 +1,39 @@
 ---
 title: Privátní cloudy v řešení VMware podle CloudSimple – Azure
-description: Další informace o konceptech a CloudSimple privátních cloudů.
+description: Přečtěte si o privátních cloudech a konceptech CloudSimple.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e3ab53466cae5bd39d85f8d846c8e59ad94f1f2d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9885366d5987870fe2739083ff47abaae9ef6ed1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165750"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816201"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>Přehled privátního cloudu CloudSimple
 
-CloudSimple transformuje a rozšiřuje úloh VMware do veřejných cloudů během několika minut. Pomocí služby CloudSimple, můžete nasadit VMware nativně na holé počítače infrastruktury Azure. Nasazení se nachází v umístění Azure a plně integruje se zbytkem cloudu Azure.
+CloudSimple transformuje a rozšiřuje úlohy VMware na veřejné cloudy během několika minut. Pomocí služby CloudSimple můžete VMware nasazovat nativně na holé infrastruktuře Azure. Vaše nasazení žije ve službě Azure location a plně se integruje s ostatními cloudy Azure.
 
-* CloudSimple řešení poskytuje kompletní provozní kontinuity podnikových procesů VMware. Toto řešení poskytuje výhody veřejných cloudů:
-  * Pružnost
+* Řešení CloudSimple poskytuje úplnou provozní kontinuitu VMware. Toto řešení poskytuje výhody veřejného cloudu pro:
+  * Elasticitu
   * Inovace
-  * Efektivita
-* S CloudSimple můžete těžit z modelu využití cloudu, který snižuje celkové náklady na vlastnictví. Nabízí také na vyžádání zřizování, platit jako růstu a optimalizace kapacity.
+  * Účinnost
+* S CloudSimple můžete využívat výhod modelu cloudové spotřeby, který snižuje vaše celkové náklady na vlastnictví. Nabízí také zřizování na vyžádání, průběžné platby a optimalizaci kapacity.
 * CloudSimple je plně kompatibilní s:
-  * Stávající nástroje
+  * Existující nástroje
   * Dovednosti
   * Procesy
-* Tato kompatibilita umožní vašim týmům spravovat úlohy v cloudu Azure, bez narušení běžného zásad:
+* Tato kompatibilita umožňuje vašim týmům spravovat úlohy v cloudu Azure, aniž by narušily vaše zásady:
   * Síť
   * Zabezpečení  
   * Ochrana dat  
   * Auditování
-* CloudSimple spravuje infrastrukturu nástroje a všechny nezbytné sítě a správy služeb. Služba CloudSimple umožňuje zaměřit se na váš tým:
+* CloudSimple spravuje infrastrukturu a všechny nezbytné služby sítě a správy. Služba CloudSimple umožňuje vašemu týmu soustředit se na:
   * Obchodní hodnota
   * Zřizování aplikací
   * Kontinuita podnikových procesů
@@ -42,82 +42,82 @@ CloudSimple transformuje a rozšiřuje úloh VMware do veřejných cloudů běhe
 
 ## <a name="private-cloud-environment-overview"></a>Přehled prostředí privátního cloudu
 
-Privátní cloud je izolované zásobníku VMware, například těchto prostředích:
+Privátní cloud je izolovaný zásobník VMware, jako jsou tato prostředí:
 
 * Hostitelé ESXi
 * vCenter
 * vSAN
 * NSX
 
-Privátní cloudy jsou spravovány serverem vCenter ve vlastní doméně pro správu.
+Privátní cloudy spravuje Server vCenter ve vlastní doméně pro správu.
 
-Spouští na platformách zásobníku:
+Zásobník běží na:
 
 * Vyhrazené uzly
-* Izolované bare metal hardware do uzlů
+* Izolované hardwarové uzly v holém systému
 
-Uživatelé využívají zásobníku pomocí nativních nástrojů VMware, včetně:
+Uživatelé využívají zásobník prostřednictvím nativních nástrojů VMware, včetně:
 
 * vCenter
-* NSX správce
+* NSX Manager
 
-Vyhrazené uzly v umístění Azure můžete nasadit. Potom je můžete spravovat pomocí služeb Azure a CloudSimple. Privátní cloud se skládá z jednoho nebo více clusterech vSphere a každý cluster obsahuje 3 až 16 uzlů.
+Vyhrazené uzly můžete nasadit v umístěních Azure. Pak je můžete spravovat pomocí Azure a CloudSimple. Privátní cloud se skládá z jednoho nebo více clusterů vSphere a každý cluster obsahuje 3 až 16 uzlů.
 
-Můžete vytvořit privátní cloud pomocí zřízeného uzlů:
+Privátní Cloud můžete vytvořit pomocí zřízených uzlů:
 
 * Uzly s průběžnými platbami
-* Vyhrazené, vyhrazené uzly
+* Rezervované, vyhrazené uzly
 
-Privátního cloudu můžete připojit k místním prostředím a síť Azure, pomocí následujících připojení:
+Privátní Cloud můžete připojit k místnímu prostředí a síti Azure pomocí následujících připojení:
 
 * Zabezpečení
-* Privátní sítě VPN
+* Privátní síť VPN
 * Azure ExpressRoute
 
-Prostředí privátního cloudu je určen k odstranění nutnosti jediný bod selhání:
+Prostředí privátního cloudu je určené k odstranění jednoho bodu selhání:
 
-* ESXi clustery jsou nakonfigurovány s vysokou dostupností vSphere a velikosti mít alespoň jeden uzel za chodu pro odolnost proti chybám.
-* síť vSAN poskytuje redundantní primárního úložiště. síť vSan vyžaduje alespoň tři uzly a zajistit ochranu proti selhání jedné. Můžete nakonfigurovat síť vSAN zajistit vyšší odolnost pro větší clustery.
-* VCenter, PSČ a NSX Správce virtuálních počítačů můžete nakonfigurovat pomocí diskového pole RAID 10 úložiště zásad ochrany před selháním úložiště. Poté že jsou chráněné pomocí vSphere HA proti selhání uzlů a sítě.
+* Clustery ESXi jsou nakonfigurovány s vysokou dostupností vSphere a mají velikost pro zajištění odolnosti alespoň jednoho náhradního uzlu.
+* Síti vSAN poskytuje redundantní primární úložiště. Síti vSAN vyžaduje alespoň tři uzly, aby se zajistila ochrana před jediným selháním. Síti vSAN můžete nakonfigurovat tak, aby poskytovaly vyšší odolnost proti většímu objemu clusterů.
+* Pro zajištění ochrany před selháním úložiště můžete nakonfigurovat virtuální počítače vCenter, PSC a NSX Manager pomocí zásad úložiště RAID-10. Pak jsou chráněny pomocí vSphere HA proti selháním uzlů a sítí.
 
 ## <a name="scenarios-for-deploying-a-private-cloud"></a>Scénáře nasazení privátního cloudu
 
-* **Vyřazení datového centra nebo migrace**
+* **Vyřazení nebo migrace datového centra**
 
-  * Když narazíte na omezení vašeho existujícího datacentra nebo aktualizujte hardwaru, dostanete dodatečnou kapacitu.
-  * Přidání potřebných kapacity v cloudu a eliminovat obrovskému správy aktualizace hardwaru.
-  * Snižte riziko a náklady na migraci do cloudu, ve srovnání s časově náročné převody nebo rearchitecture.
-  * Zrychlení migrace do cloudu pomocí známých nástrojů VMware a dovednosti. V cloudu modernizace aplikací vlastním tempem pomocí služby Azure.
+  * Získejte další kapacitu, když dosáhnete limitů stávajícího datového centra nebo obnovíte hardware.
+  * Přidejte potřebnou kapacitu do cloudu a Eliminujte souvisejícím problémům správou správy aktualizací hardwaru.
+  * Snižte riziko a náklady na migrace do cloudu v porovnání s časově náročnými převody nebo rearchitekturou.
+  * K urychlení migrace do cloudu používejte známé nástroje a dovednosti VMware. V cloudu pomocí služeb Azure modernizovat své aplikace podle svého tempa.
 
-* **Rozbalte na vyžádání**
+* **Rozbalit na vyžádání**
 
-  * Rozšiřte do cloudu pro potřeby neočekávané, jako je například nový vývojových prostředích nebo nárůstem sezónní kapacity.
-  * Vytvoření nové kapacity na vyžádání a zachování jejich pouze tak dlouho, dokud ji budete potřebovat.
-  * Snížit počáteční investici, rychlost zřizování urychlení a zjednodušení stejné architektury a zásady pro místní i cloud.
+  * Rozbalíte do cloudu, abyste splnili neočekávané potřeby, jako jsou nová vývojová prostředí nebo sezónní nárůst kapacity.
+  * Vytvořte novou kapacitu na vyžádání a zachovejte ji jenom tak dlouho, jak potřebujete.
+  * Snižte svoji investici předem, Zrychlete zřizování a snižte složitost se stejnou architekturou a zásadami v místním prostředí i v cloudu.
 
-* **Zotavení po havárii a virtuální klienty v cloudu Azure**
+* **Zotavení po havárii a virtuální plochy v cloudu Azure**
 
-  * Vytvořte vzdálený přístup k datům, aplikacím a stolních počítačů v cloudu Azure. S velkou šířkou pásma připojení, odesílání / stahování dat rychle k zotavení z incidentů. Časový limit sítě s nízkou latencí poskytují rychlé odpovědi, který uživatelé očekávají, že z desktopové aplikace.
+  * Navažte vzdálený přístup k datům, aplikacím a plochám v cloudu Azure. Díky připojením s vysokou šířkou pásma můžete data rychle nahrávat a stahovat z incidentů. Sítě s nízkou latencí poskytují rychlou odezvu, kterou uživatelé očekávají z desktopové aplikace.
 
-  * Replikujte všechny zásady a sítě v cloudu s využitím portálu CloudSimple a dobře známých nástrojů VMware. Tato replikace zkracuje úsilí a riziko vytváření a správa implementace zotavení po Havárii a infrastruktury virtuálních klientských počítačů.
+  * Všechny zásady a sítě v cloudu se replikují pomocí portálu CloudSimple a známých nástrojů VMware. Tato replikace snižuje úsilí a riziko vytváření a správy implementací DR a VDI.
 
 * **Vysoce výkonné aplikace a databáze**
 
-  * Spouštět nejnáročnější úlohy, s architekturou hyperkonvergovaného poskytované CloudSimple.
-  * Spuštění Oracle, Microsoft SQL serveru, middleware systémy a vysoce výkonné bez technologie SQL databází.
+  * Spouštějte nejnáročnější úlohy s využitím CloudSimple architektury, kterou nabízí.
+  * Spouštějte Oracle, Microsoft SQL Server, middlewarové systémy a vysoce výkonné databáze bez databází SQL.
 
-  * Prostředí cloud jako vašeho vlastního datového centra s vysokorychlostní 25 GB/s síťové připojení. Vysokorychlostní připojení umožňují spuštění hybridní aplikace umístěné místně, VMware v Azure, a privátní úlohy v Azure, bez omezení výkonu.
+  * Vyzkoušejte si Cloud jako své vlastní datové centrum s vysokorychlostními síťovými připojeními 25 GB/s. Vysokorychlostní připojení umožňují spouštět hybridní aplikace, které se nacházejí v místním prostředí, VMware v Azure a soukromé úlohy Azure, aniž by došlo k narušení výkonu.
 
-* **Skutečně hybridní**
+* **Skutečná hybridní**
 
-  * Sjednoťte DevOps napříč službami Azure a prostředí VMware.
-  * Optimalizujte VMware správy služeb Azure a řešení, které mohou být použity napříč vašimi úlohami.
-  * Přístup ke službám veřejný cloud bez nutnosti rozšířit svoje datové centrum nebo změna na architekturu vašich aplikací.
-  * Centralizujte identit, zásady řízení přístupu, protokolování a monitorování aplikací VMware v Azure.
+  * Sjednotte DevOps napříč VMware a službami Azure.
+  * Optimalizujte správu VMware pro služby a řešení Azure, které se dají použít napříč všemi vašimi úlohami.
+  * Přístup k veřejným cloudovým službám bez nutnosti rozšíření datového centra nebo změna architekta aplikací.
+  * Centralizovat identity, zásady řízení přístupu, protokolování a monitorování pro aplikace VMware v Azure.
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>Omezení
 
-Následující tabulka ukazuje uzlu limity pro prostředky privátního cloudu.
+Následující tabulka ukazuje omezení uzlu na prostředky privátního cloudu.
 
 | Resource | Omezení |
 |----------|-------|
@@ -128,5 +128,5 @@ Následující tabulka ukazuje uzlu limity pro prostředky privátního cloudu.
 
 ## <a name="next-steps"></a>Další postup
 
-* Zjistěte, jak [vytvoření privátního cloudu](https://docs.azure.cloudsimple.com/create-private-cloud/)
-* Zjistěte, jak [konfigurace prostředí privátního cloudu](quickstart-create-private-cloud.md)
+* Informace o tom, jak [vytvořit privátní cloud](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* Informace o tom, jak [nakonfigurovat prostředí privátního cloudu](quickstart-create-private-cloud.md)

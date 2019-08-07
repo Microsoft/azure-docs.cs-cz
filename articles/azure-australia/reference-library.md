@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: grgale
-ms.openlocfilehash: 0c575076439e3405d34fe0ef3beff0242a53a8c5
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 48b4b71d80bcef1eaf3bf89c0b14c8033748684e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601806"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779332"
 ---
 # <a name="additional-documentation-and-resources-by-focus-area"></a>Další dokumentace a prostředky podle oblasti zaměření
 
@@ -22,7 +22,7 @@ Tato knihovna prostředků obsahuje další odkazy a odkazy, které jsou důlež
 * [Stránka Austrálie na portálu Microsoft Service Trust](https://aka.ms/au-irap)
 * [CCSL stránka centra zabezpečení Microsoftu](https://www.microsoft.com/trustcenter/compliance/ccsl)
 * [Plány zabezpečení a dodržování předpisů Azure pro chráněné](https://aka.ms/au-protected)
-* [Izolace tenanta v Microsoft Azure](https://docs.microsoft.com/azure/security/azure-isolation)
+* [Izolace tenanta v Microsoft Azure](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)
 * [Informační příručka k zabezpečení australskéch informací](https://www.cyber.gov.au/ism)
 * [Seznam certifikovaného cloudu pro australský Internet Security Center (ACSC)](https://www.cyber.gov.au/irap/asd-certified-cloud-services)
 
@@ -32,7 +32,7 @@ Tato knihovna prostředků obsahuje další odkazy a odkazy, které jsou důlež
 * [Informace o klíčích, tajných kódech a certifikátech](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates)
 * [Konfigurace Azure Key Vault bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/key-vault/key-vault-network-security)
 * [Zabezpečený přístup k trezoru klíčů](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)
-* [Šifrování dat Azure – v klidovém případě](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+* [Šifrování dat Azure – v klidovém případě](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 * [Použití Azure Key Vault s Azure Windows Virtual Machines v .NET](https://docs.microsoft.com/azure/key-vault/tutorial-net-windows-virtual-machine)
 * [Azure Key Vault spravovaného účtu úložiště – PowerShell](https://docs.microsoft.com/azure/key-vault/tutorial-net-windows-virtual-machine)
 * [Nastavení rotace a auditování klíčů](https://docs.microsoft.com/azure/key-vault/key-vault-key-rotation-log-monitoring)
@@ -68,7 +68,7 @@ Tato knihovna prostředků obsahuje další odkazy a odkazy, které jsou důlež
 * [Přehled Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Přehled správy privilegovaného určení Azure](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)
 * [Přehled služby Azure Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/)
-* [Osvědčené postupy k identitě a Access Controlům Azure](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices)
+* [Osvědčené postupy k identitě a Access Controlům Azure](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
 * [Správa skupin Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 * [Hybridní identita](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
 * [Vlastní role RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
@@ -101,6 +101,6 @@ Tato knihovna prostředků obsahuje další odkazy a odkazy, které jsou důlež
 * [Skupiny pro správu Azure](https://docs.microsoft.com/azure/governance/management-groups/)
 * [Access Control na základě rolí Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přihlaste se k [Azure Portal](https://portal.azure.com) a v Austrálii Azure můžete bezpečně zahájit konfiguraci prostředků.

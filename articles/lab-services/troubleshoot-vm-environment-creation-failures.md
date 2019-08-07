@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží se selháním vytváření virtuálních počítačů a prostředí Azure DevTest Labs | Dokumentace Microsoftu
-description: Informace o odstraňování problémů virtuálních počítačů (VM) a chyby při vytváření prostředí ve službě Azure DevTest Labs.
+title: Řešení potíží se selháním při vytváření virtuálních počítačů a prostředí Azure DevTest Labs | Microsoft Docs
+description: Naučte se řešit potíže s vytvářením virtuálních počítačů a prostředí v Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,36 +10,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2019
+ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 7baa5e4c113e6c21c6123ac7c8399533a7dfb358
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bcdb549ce5b522b2d456e2cbeb5471b9df984514
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410304"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774415"
 ---
-# <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Řešení potíží s virtuálním počítači (VM) a chyby při vytváření prostředí ve službě Azure DevTest Labs
-DevTest Labs poskytuje upozornění Pokud název počítače je neplatný nebo pokud se chystáte porušení zásad testovacího prostředí. V některých případech se zobrazí červený `X` vedle vašeho testovacího prostředí stav virtuálního počítače nebo prostředí, která informuje o tom, že došlo k chybě.  Tento článek obsahuje několik triky, které slouží k vyhledání daný problém a snad problému v budoucnu vyhnout.
+# <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Řešení chyb při vytváření virtuálních počítačů a prostředí v Azure DevTest Labs
+DevTest Labs vám poskytne upozornění, pokud je název počítače neplatný nebo pokud se chystáte porušovat zásady testovacího prostředí. Někdy se zobrazí červená `X` vedle vašeho testovacího virtuálního počítače nebo stavu prostředí, která vás informuje, že došlo k nějaké chybě.  Tento článek poskytuje několik štychů, které můžete použít k vyhledání základního problému a snad, abyste se vyhnuli problému v budoucnu.
 
-## <a name="portal-notifications"></a>Upozornění portálu
-Pokud používáte na webu Azure portal, je podívat se na první místo **panel oznámení**.  Panel oznámení, k dispozici na panelu příkazů hlavní kliknutím **ikonu zvonku**, vám dá vědět, zda vytváření virtuálních počítačů nebo prostředí testovacího prostředí byla nebo nebyla úspěšná.  Pokud došlo k chybě, zobrazí chybová zpráva přidružená k selhání vytvoření. Další podrobnosti často poskytují informace, které vám pomohou vyřešit problém. V následujícím příkladu vytvoření virtuálního počítače se nezdařilo z důvodu nedostatku jader. Podrobná zpráva vysvětluje, jak tento problém vyřešit a požádat o zvýšení kvóty jader.
+## <a name="portal-notifications"></a>Oznámení na portálu
+Pokud používáte Azure Portal, první místo, kde se na něj můžete podívat, je **panel oznámení**.  Panel oznámení, který je k dispozici na hlavním panelu příkazů kliknutím na **ikonu zvonku**, vám sdělí, jestli byl virtuální počítač nebo vytvoření prostředí testovacího prostředí úspěšné nebo ne.  Pokud došlo k chybě, zobrazí se chybová zpráva přidružená k chybě při vytváření. Podrobnosti často poskytují další informace, které vám pomůžou problém vyřešit. V následujícím příkladu se virtuální počítač nepodařilo vytvořit z důvodu nedostatku jader. Podrobná zpráva vám ukáže, jak problém vyřešit a požádat o zvýšení kvóty jádra.
 
-![Oznámení Azure portal](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
+![Oznámení Azure Portal](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
+
+### <a name="vm-in-corruption-state"></a>Virtuální počítač ve stavu poškození
+Pokud se stav virtuálního počítače v testovacím prostředí zobrazí jako **poškozený**, mohl by být příslušný virtuální počítač odstraněný ze stránky **virtuálního počítače** , na kterou může uživatel přejít z **Virtual Machines** stránky (ne ze stránky DevTest Labs). Vyčistěte testovací prostředí v DevTest Labs tím, že virtuální počítač odstraníte z testovacího prostředí. Pak znovu vytvořte virtuální počítač v testovacím prostředí. 
+
+![Virtuální počítač v poškozeném stavu](./media/troubleshoot-vm-environment-creation-failures/vm-corrupted-state.png)
+
 
 
 ## <a name="activity-logs"></a>Protokoly aktivit
-Podívejte se na protokoly aktivit, pokud zkoumáte selhání nějakou dobu po pokusu o vytvoření virtuálního počítače nebo prostředí. Tato část ukazuje, jak najít protokoly pro virtuální počítače a prostředí.
+Pokud při pokusu o vytvoření virtuálního počítače nebo prostředí prozkoumáte nějaké chyby, podívejte se na protokoly aktivit. V této části se dozvíte, jak najít protokoly pro virtuální počítače a prostředí.
 
 ## <a name="activity-logs-for-virtual-machines"></a>Protokoly aktivit pro virtuální počítače
 
-1. Na domovské stránce testovacího prostředí, vyberte virtuální počítač spustit **virtuálního počítače** stránky.
-2. Na **virtuálního počítače** stránku, **monitorování** část v levé nabídce vyberte **protokolu aktivit** zobrazíte všechny protokoly, které jsou přidružená k virtuálnímu počítači.
-3. V položky protokolu aktivit vyberte operace, která selhala. Obvykle se nazývá neúspěšnou operaci `Write Virtualmachines`.
-4. V pravém podokně přepněte na kartu JSON. Zobrazí podrobnosti ve formátu JSON zobrazení protokolu.
+1. Na domovské stránce testovacího prostředí vyberte virtuální počítač, na kterém se má spustit stránka **virtuálního počítače** .
+2. Na stránce **virtuální počítač** v části **monitorování** v levé nabídce vyberte **Protokol aktivit** , aby se zobrazily všechny protokoly přidružené k virtuálnímu počítači.
+3. V položkách protokolu aktivit vyberte operaci, která se nezdařila. Obvykle je volána `Write Virtualmachines`neúspěšná operace.
+4. V pravém podokně přepněte na kartu JSON. V zobrazení protokolu JSON se zobrazí podrobnosti.
 
     ![Protokol aktivit pro virtuální počítač](./media/troubleshoot-vm-environment-creation-failures/vm-activity-log.png)
-5. Prohlédněte si protokolu JSON, dokud nenajdete `statusMessage` vlastnost. Poskytuje hlavní chybovou zprávu a další podrobné informace, pokud je k dispozici. Následující kód JSON je příklad základní v uvozovkách, překročil chyba viděli dříve v tomto článku.
+5. Podívejte se do protokolu JSON, dokud nenajdete `statusMessage` vlastnost. Poskytuje hlavní chybovou zprávu a podrobněji podrobnější informace, pokud je to možné. Následující kód JSON je příkladem pro základní citované chyby, které jsme si poznamenali dříve v tomto článku.
 
     ```json
     "properties": {
@@ -50,25 +56,25 @@ Podívejte se na protokoly aktivit, pokud zkoumáte selhání nějakou dobu po p
 
 ## <a name="activity-log-for-an-environment"></a>Protokol aktivit pro prostředí
 
-Pokud chcete zobrazit v protokolu aktivit vytváření prostředí, postupujte takto:
+Pokud chcete zobrazit protokol aktivit pro vytvoření prostředí, postupujte podle těchto kroků:
 
-1. Na domovské stránce testovacího prostředí, vyberte **konfigurace a zásad** v nabídce vlevo.
-2. na **konfigurace a zásad** stránce **protokoly aktivit** v nabídce.
-3. Vyhledejte chyby v seznamu aktivit v protokolu a vyberte ji.
-4. V pravém podokně, přepněte na kartu JSON a vyhledejte **statusMessage**.
+1. Na domovské stránce testovacího prostředí vyberte v nabídce vlevo možnost **Konfigurace a zásady** .
+2. na stránce **Konfigurace a zásady** vyberte v nabídce **protokoly aktivit** .
+3. Vyhledejte chybu v seznamu aktivit v protokolu a vyberte ji.
+4. V pravém podokně přepněte na kartu JSON a vyhledejte **statusMessage**.
 
-    ![Protokol aktivit prostředí](./media/troubleshoot-vm-environment-creation-failures/envirionment-activity-log.png)
+    ![Protokol aktivity prostředí](./media/troubleshoot-vm-environment-creation-failures/envirionment-activity-log.png)
 
-## <a name="resource-manager-template-deployment-logs"></a>Protokoly nasazení šablony Resource Manageru
-Pokud vaše prostředí nebo na virtuálním počítači byl vytvořen pomocí automatizace, je poslední pohromadě hledat informace o chybě. To je protokol pro nasazení šablony Azure Resource Manageru. Vytvoření prostředku testovacího prostředí díky automatizaci se často provádí prostřednictvím k nasazení šablony Azure Resource Manageru. Zobrazit[ https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) pro ukázkové šablony Azure Resource Manageru, které vytvářejí prostředky DevTest Labs.
+## <a name="resource-manager-template-deployment-logs"></a>Protokoly nasazení Správce prostředků šablon
+Pokud se vaše prostředí nebo virtuální počítač vytvořil prostřednictvím automatizace, je k dispozici jedno místo, kde najdete informace o chybě. Toto je Azure Resource Manager protokol nasazení šablony. Při vytvoření prostředku testovacího prostředí prostřednictvím automatizace se často provádí pomocí nasazení Azure Resource Manager šablon. Příklady[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) šablon Azure Resource Manager, které vytvářejí prostředky DevTest Labs, najdete v tématu.
 
-Pokud chcete zobrazit protokoly nasazení šablony testovacího prostředí, postupujte podle těchto kroků:
+Chcete-li zobrazit protokoly nasazení šablon testovacího prostředí, postupujte takto:
 
-1. Úvodní stránka pro skupinu prostředků, ve které existuje testovacího prostředí.
-2. Vyberte **nasazení** v nabídce vlevo v části **nastavení**.
-3. Hledat nasazení se stav selhání a vyberte ji.
-4. Na **nasazení** stránce **podrobnosti o operaci** odkaz pro operace, která selhala.
-5. Zobrazit podrobnosti o operaci, která se nezdařilo. **podrobnosti o operaci** okna.
+1. Spusťte stránku pro skupinu prostředků, ve které testovací prostředí existuje.
+2. V části **Nastavení**v nabídce vlevo vyberte **nasazení** .
+3. Vyhledejte nasazení se stavem selhání a vyberte je.
+4. Na stránce **nasazení** vyberte odkaz **Podrobnosti operace** pro operaci, která selhala.
+5. Zobrazí se podrobnosti o operaci, která selhala v okně **Podrobnosti operace** .
 
 ## <a name="next-steps"></a>Další postup
-Zobrazit [řešení potíží s selhání artefaktů](devtest-lab-troubleshoot-artifact-failure.md)
+Viz [Poradce při potížích s chybami artefaktů](devtest-lab-troubleshoot-artifact-failure.md)

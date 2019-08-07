@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 07/19/2019
-ms.openlocfilehash: adbc2c8818a3d7eff679dadc2245fb0ff8686fc2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/02/2019
+ms.openlocfilehash: 0139b3471eb9117830180088498eb14efd6ab661
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566918"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781302"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Platba za SQL Database výpočetních prostředků s využitím Azure SQL Database rezervované kapacity
 
@@ -52,7 +52,7 @@ V následující tabulce jsou popsána povinná pole.
 | Pole      | Popis|
 |------------|--------------|
 |Subscription|Předplatné použité pro platbu SQL Database rezervované rezervace kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervaci rezervované kapacity SQL Database. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo konkrétní smlouva s cenami průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.|
-|Scope       |Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: <br/><br/>V rámci vašeho fakturačního kontextu se pro SQL Database **instance, které**běží v jakýchkoli předplatných, používá sleva za rezervaci Vcore. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. Pro zákazníky s průběžnými platbami se sdíleným oborem jsou všechna předplatná s průběžnými platbami vytvořená správcem účtu.<br/><br/>Pro SQL Database instance v tomto předplatném se použije sleva za rezervované Vcore. <br/><br/>**Jedna skupina prostředků**, použije se sleva rezervace pro SQL Database instance ve vybraném předplatném a v rámci daného předplatného.|
+|Scope       |Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: <br/><br/>V rámci vašeho fakturačního kontextu se pro SQL Database instance, které běží v jakýchkoli předplatných, používá sleva za rezervaci Vcore. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. Pro zákazníky s průběžnými platbami se sdíleným oborem jsou všechna předplatná s průběžnými platbami vytvořená správcem účtu.<br/><br/>Pro SQL Database instance v tomto předplatném se použije sleva za rezervované Vcore. <br/><br/>**Jedna skupina prostředků**, použije se sleva rezervace pro SQL Database instance ve vybraném předplatném a v rámci daného předplatného.|
 |Oblast      |Oblast Azure, která je pokrytá rezervací rezervované kapacity SQL Database.|
 |Typ nasazení|Typ prostředku SQL, pro který chcete zakoupit rezervaci.|
 |Úroveň výkonu|Úroveň služby pro instance SQL Database.
@@ -63,13 +63,9 @@ V následující tabulce jsou popsána povinná pole.
 1. Vyberte **Koupit**.
 1. Pokud chcete zobrazit stav nákupu, vyberte **Zobrazit tuto rezervaci** .
 
-## <a name="cancellations-and-exchanges"></a>Zrušení a výměny
+## <a name="cancel-exchange-or-refund-reservations"></a>Rezervace zrušení, výměna nebo refundace
 
-Pokud potřebujete zrušit rezervaci rezervované kapacity SQL Database, může existovat 12% poplatek za předčasné ukončení. Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší. Výše vrácených peněz je omezená na 50 000 USD za rok. Výše vrácených peněz, které obdržíte, je zbývající poměrný zůstatek minus poplatek za předčasné ukončení ve výši 12 %. Pokud ho chcete zrušit, pokračujte na rezervaci v Azure Portal a vyberte **refundace**.
-
-Pokud potřebujete u své rezervace záložní kapacity SQL Database změnit oblast, typ nasazení, úroveň výkonu nebo období, můžete ji vyměnit za jinou rezervaci stejné nebo vyšší hodnoty. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. 1 nebo 3leté období začne okamžikem vytvoření nové rezervace. Chcete-li vyměnit server Exchange, pokračujte na rezervaci v Azure Portal a vyberte možnost **Exchange**.
-
-Další informace o výměně nebo refundaci rezervacích najdete v tématu věnovaném [výměnám a refundacím rezervací](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Rezervace můžete zrušit, vyměnit nebo vrátit refundaci s určitými omezeními. Další informace najdete v tématu věnovaném [výměnám samoobslužných služeb a refundacím pro Azure reservations](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="vcore-size-flexibility"></a>flexibilita velikosti vCore
 

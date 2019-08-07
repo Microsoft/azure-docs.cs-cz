@@ -1,32 +1,32 @@
 ---
-title: Přístup k datům v datastoreech/objektech blob pro školení
+title: Přístup k datům ve službě Azure Storage
 titleSuffix: Azure Machine Learning service
-description: Naučte se používat úložiště dat pro přístup k úložišti dat objektů BLOB během školení pomocí služby Azure Machine Learning Service.
+description: Naučte se používat úložiště dat pro přístup ke službám Azure Storage během školení pomocí služby Azure Machine Learning Service.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: minxia
-author: mx-iao
-ms.reviewer: sgilley
-ms.date: 05/24/2019
+ms.author: sihhu
+author: MayMSFT
+ms.reviewer: nibaccam
+ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 97a4bc20394553b97211763cedaa76c3711306f2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 4bc035ba061a65f6770136240d8867f82858e67e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68319314"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772729"
 ---
-# <a name="access-data-from-your-datastores"></a>Přístup k datům z úložišť dat
+# <a name="access-data-in-azure-storage-services"></a>Přístup k datům ve službě Azure Storage
 
- Ve službě Azure Machine Learning služba úložiště dat jsou výpočetní mechanismy nezávislé na poloze pro přístup k úložišti bez nutnosti změny zdrojového kódu. Bez ohledu na to, jestli napíšete školicí kód pro podobu jako parametr, nebo poskytněte úložiště dat přímo k Estimator, Azure Machine Learning pracovní postupy zajistí přístup k umístěním úložiště dat a zpřístupní se pro výpočetní kontext.
+ V tomto článku se dozvíte, jak snadno získat přístup k datům ve službě Azure Storage prostřednictvím Azure Machine Learning úložiště dat. Úložiště dat slouží k ukládání informací o připojení, jako je ID předplatného a autorizace tokenu, pro přístup k úložišti, aniž by bylo nutné zakódovat tyto informace ve skriptech.
 
 Tento postup ukazuje příklady následujících úloh:
-* [Zvolit úložiště dat](#access)
-* [Získání dat](#get)
-* [Nahrávat a stahovat data do úložišť dat](#up-and-down)
-* [Přístup k úložišti dat během školení](#train)
+* [Registrovat úložiště dat](#access)
+* [Získat úložiště dat z pracovního prostoru](#get)
+* [Nahrávání a stahování dat pomocí datových úložišť](#up-and-down)
+* [Přístup k datům během školení](#train)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,34 +43,8 @@ ws = Workspace.from_config()
 
 <a name="access"></a>
 
-## <a name="choose-a-datastore"></a>Zvolit úložiště dat
+## <a name="register-datastores"></a>Registrovat úložiště dat
 
-Můžete použít výchozí úložiště dat nebo použít vlastní.
-
-### <a name="use-the-default-datastore-in-your-workspace"></a>Použití výchozího úložiště dat ve vašem pracovním prostoru
-
- Každý pracovní prostor má registrované výchozí úložiště dat, které můžete použít hned.
-
-Chcete-li získat výchozí pracovním prostoru úložiště dat:
-
-```Python
-ds = ws.get_default_datastore()
-```
-
-### <a name="register-your-own-datastore-with-the-workspace"></a>Registrace vlastního úložiště dat v pracovním prostoru
-
-Pokud máte existující služby Azure Storage, můžete ho zaregistrovat jako úložiště dat ve svém pracovním prostoru. 
-
-<a name="store"></a>
-
-####  <a name="storage-guidance"></a>Pokyny k ukládání
-
-Doporučujeme úložiště objektů BLOB a úložiště dat objektů BLOB. Úložiště úrovně Standard a Premium jsou k dispozici pro objekty blob. I když je výhodnější, doporučujeme Premium Storage z důvodu rychlejších přenosů propustnosti, které můžou zlepšit rychlost vašich školicích běhů, zejména pokud budete vlakem s velkou datovou sadou. Informace o nákladech na účet úložiště najdete v [cenové kalkulačkě Azure](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) .
-
->[!NOTE]
-> Služba Azure Machine Learning podporuje jiné typy úložišť dat, což může být užitečné pro konkrétní scénáře. Pokud například potřebujete vytvořit výuku pomocí dat uložených v databázi, můžete použít AzureSQLDatabaseDatastore nebo AzurePostgreSqlDatastore. V [této tabulce](#matrix) najdete dostupné typy úložiště dat.
-
-#### <a name="register-your-datastore"></a>Registrace úložiště dat
 Všechny metody registru jsou ve [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) třídě a mají tvar register_azure_ *.
 
 Následující příklady ukazují, jak zaregistrovat kontejner objektů blob Azure nebo sdílenou složku Azure jako úložiště dat.
@@ -78,45 +52,56 @@ Následující příklady ukazují, jak zaregistrovat kontejner objektů blob Az
 + Pro **úložiště dat kontejneru objektů BLOB v Azure**použijte[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)
 
   ```Python
-  ds = Datastore.register_azure_blob_container(workspace=ws, 
-                                               datastore_name='your datastore name', 
-                                               container_name='your azure blob container name',
-                                               account_name='your storage account name', 
-                                               account_key='your storage account key',
-                                               create_if_not_exists=True)
+  datastore = Datastore.register_azure_blob_container(workspace=ws, 
+                                                      datastore_name='your datastore name', 
+                                                      container_name='your azure blob container name',
+                                                      account_name='your storage account name', 
+                                                      account_key='your storage account key',
+                                                      create_if_not_exists=True)
   ```
 
 + Pro **úložiště dat sdílené složky Azure**použijte [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-). Příklad: 
   ```Python
-  ds = Datastore.register_azure_file_share(workspace=ws, 
-                                           datastore_name='your datastore name', 
-                                           file_share_name='your file share name',
-                                           account_name='your storage account name', 
-                                           account_key='your storage account key',
-                                           create_if_not_exists=True)
+  datastore = Datastore.register_azure_file_share(workspace=ws, 
+                                                  datastore_name='your datastore name', 
+                                                  file_share_name='your file share name',
+                                                  account_name='your storage account name', 
+                                                  account_key='your storage account key',
+                                                  create_if_not_exists=True)
   ```
+
+####  <a name="storage-guidance"></a>Pokyny k ukládání
+
+Doporučujeme kontejner Azure Blob. Úložiště úrovně Standard a Premium jsou k dispozici pro objekty blob. I když je výhodnější, doporučujeme Premium Storage z důvodu rychlejších přenosů propustnosti, které můžou zlepšit rychlost vašich školicích běhů, zejména pokud budete vlakem s velkou datovou sadou. Informace o nákladech na účet úložiště najdete v [cenové kalkulačkě Azure](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) .
 
 <a name="get"></a>
 
-## <a name="find--define-datastores"></a>Najít & definování úložiště dat
+## <a name="get-datastores-from-your-workspace"></a>Získat úložiště dat z vašeho pracovního prostoru
 
-Pokud chcete v aktuálním pracovním prostoru zaregistrovat zadané úložiště dat, použijte [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) :
+Chcete-li získat konkrétní úložiště dat registrované v aktuálním pracovním prostoru, použijte [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) statickou metodu pro třídu úložiště dat:
 
 ```Python
 #get named datastore from current workspace
-ds = Datastore.get(ws, datastore_name='your datastore name')
+datastore = Datastore.get(ws, datastore_name='your datastore name')
 ```
-
-Pokud chcete získat seznam všech úložišť dat v daném pracovním prostoru, použijte tento kód:
+Chcete-li získat seznam úložišť dat zaregistrovaných v daném pracovním prostoru, můžete použít `datastores` vlastnost v objektu pracovního prostoru:
 
 ```Python
 #list all datastores registered in current workspace
 datastores = ws.datastores
-for name, ds in datastores.items():
-    print(name, ds.datastore_type)
+for name, datastore in datastores.items():
+    print(name, datastore.datastore_type)
 ```
 
-Pro definování jiného výchozího úložiště dat pro aktuální pracovní prostor použijte [`set_default_datastore()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#set-default-datastore-name-):
+Když vytvoříte pracovní prostor, kontejner objektů blob Azure a sdílená složka Azure se zaregistrují do pracovního prostoru `workspaceblobstore` s `workspacefilestore` názvem a v uvedeném pořadí. Ukládají informace o připojení kontejneru objektů BLOB a sdílené složky zřízené v účtu úložiště připojeném k pracovnímu prostoru. `workspaceblobstore` Je nastaven jako výchozí úložiště dat.
+
+Chcete-li získat výchozí pracovním prostoru úložiště dat:
+
+```Python
+datastore = ws.get_default_datastore()
+```
+
+Pro definování jiného výchozího úložiště dat pro aktuální pracovní prostor použijte [`set_default_datastore()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#set-default-datastore-name-) metodu v objektu pracovního prostoru:
 
 ```Python
 #define default datastore for current workspace
@@ -131,69 +116,93 @@ Metody [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.d
 
  Nahrajte do adresáře nebo jednotlivé soubory do úložiště dat pomocí sady Python SDK.
 
-K nahrání do úložiště dat do adresáře `ds`:
+K nahrání do úložiště dat do adresáře `datastore`:
 
 ```Python
 import azureml.data
 from azureml.data.azure_storage_datastore import AzureFileDatastore, AzureBlobDatastore
 
-ds.upload(src_dir='your source directory',
-          target_path='your target path',
-          overwrite=True,
-          show_progress=True)
+datastore.upload(src_dir='your source directory',
+                 target_path='your target path',
+                 overwrite=True,
+                 show_progress=True)
 ```
 
-`target_path` Určuje umístění sdílené složky (nebo kontejneru objektů blob) k nahrání. Použije se výchozí `None`, v takovém případě získá nahrát data do kořenového adresáře. `overwrite=True` přepíše všechny existující data v `target_path`.
+`target_path` Parametr určuje umístění ve sdílené složce (nebo kontejneru objektů BLOB), které se má nahrát. Použije se výchozí `None`, v takovém případě získá nahrát data do kořenového adresáře. Když `overwrite=True` budou všechna existující data `target_path` v přepsána.
 
-Nebo můžete nahrát seznam jednotlivých souborů s úložištěm prostřednictvím úložiště dat `upload_files()` metody.
+Nebo nahrajte pomocí `upload_files()` metody seznam jednotlivých souborů do úložiště dat.
 
 ### <a name="download"></a>Ke stažení
+
 Podobně stahování dat z úložiště dat do vašeho místního systému souborů.
 
 ```Python
-ds.download(target_path='your target path',
-            prefix='your prefix',
-            show_progress=True)
+datastore.download(target_path='your target path',
+                   prefix='your prefix',
+                   show_progress=True)
 ```
 
-`target_path` je umístění pro stahování dat do místního adresáře. Chcete-li zadat cestu ke složce ve sdílené složky (nebo kontejneru objektů blob) ke stažení, zadejte cestu tak, `prefix`. Pokud `prefix` je `None`, se stáhne veškerý obsah sdílené složky (nebo kontejneru objektů blob).
+`target_path` Parametr je umístěním místního adresáře, do kterého se mají data stahovat. Chcete-li zadat cestu ke složce ve sdílené složky (nebo kontejneru objektů blob) ke stažení, zadejte cestu tak, `prefix`. Pokud `prefix` je `None`, se stáhne veškerý obsah sdílené složky (nebo kontejneru objektů blob).
 
 <a name="train"></a>
-## <a name="access-datastores-during-training"></a>Přístup k úložišti dat během školení
+## <a name="access-your-data-during-training"></a>Přístup k datům během školení
 
-Jakmile zpřístupníte úložiště dat na cílovém výpočetním cíli, můžete k němu přistupovat během školicích běhů (například školení nebo ověřovací data) pouhým předáním cesty jako parametru ve školicím skriptu.
+Pro přístup k datům během školení si můžete stáhnout nebo připojit data ze služeb Azure Storage do cíle výpočetní služby prostřednictvím úložiště dat.
 
-Následující tabulka uvádí [`DataReference`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) metody, které oznamují výpočetnímu cíli použití úložiště dat během spuštění.
+Následující tabulka uvádí metody, které oznamují výpočetnímu cíli, jak používat úložiště dat během spuštění. 
 
 Podobně|Metoda|Popis|
 ----|-----|--------
-Připojení| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Slouží k připojení úložiště dat na cílovém výpočetním cíli.
-Ke stažení|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|Použijte ke stažení obsahu úložiště dat do umístění určeného parametrem `path_on_compute`. <br> Pro kontext výukového běhu k tomuto stažení dojde před spuštěním.
-Odeslat|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Slouží k nahrání souboru z umístění určeného `path_on_compute` do úložiště dat. <br> Pro kontext výukového běhu se toto nahrání stane po spuštění.
+Připojit| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Slouží k připojení úložiště dat na cílovém výpočetním cíli.
+Ke stažení|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Použijte ke stažení obsahu úložiště dat do umístění určeného parametrem `path_on_compute`. <br> K tomuto stažení dojde před spuštěním.
+Odeslat|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| Slouží k nahrání souboru z umístění určeného `path_on_compute` do úložiště dat. <br> K odeslání dojde po spuštění.
 
- ```Python
-import azureml.data
-from azureml.data.data_reference import DataReference
-
-ds.as_mount()
-ds.as_download(path_on_compute='your path on compute')
-ds.as_upload(path_on_compute='yourfilename')
-```  
-
-Pokud chcete odkazovat na konkrétní složku nebo soubor v úložišti dat a zpřístupnit ho v cílovém výpočetním prostředí, použijte [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-) funkci úložiště dat.
+Chcete-li odkazovat na konkrétní složku nebo soubor v úložišti dat a zpřístupnit ho v cílovém výpočetním prostředí, použijte metodu úložiště dat [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#path-path-none--data-reference-name-none-) .
 
 ```Python
-#download the contents of the `./bar` directory in ds to the compute target
-ds.path('./bar').as_download()
+#to mount the full contents in your storage to the compute target
+datastore.as_mount()
+
+#to download the contents of the `./bar` directory in your storage to the compute target
+datastore.path('./bar').as_download()
+```
+> [!NOTE]
+> Libovolný `datastore` objekt `datastore.path` nebo se přeloží na název proměnné prostředí ve formátu `"$AZUREML_DATAREFERENCE_XXXX"`, jehož hodnota představuje cestu pro připojení nebo stažení cílového Compute. Cesta úložiště dat na cílovém výpočetním prostředí nemusí být stejná jako cesta spuštění pro skript školení.
+
+### <a name="examples"></a>Příklady 
+
+Následující příklady kódu jsou specifické [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) pro třídu pro přístup k datům během školení. 
+
+`script_params`je slovník obsahující parametry pro entry_script. Můžete ho použít k předání do úložiště dat a popisuje, jak mají být data dostupná na výpočetním cíli. Další informace získáte v našem uceleném [kurzu](tutorial-train-models-with-aml.md).
+
+```Python
+from azureml.train.estimator import Estimator
+
+script_params = {
+    '--data_dir': datastore.path('/bar').as_mount()
+}
+
+est = Estimator(source_directory='your code directory',
+                entry_script='train.py',
+                script_params=script_params,
+                compute_target=compute_target
+                )
 ```
 
-> [!NOTE]
-> Libovolný `ds` objekt `ds.path` nebo se přeloží na název proměnné prostředí ve formátu `"$AZUREML_DATAREFERENCE_XXXX"` , jehož hodnota představuje cestu pro připojení nebo stažení cílového Compute. Cesta úložiště dat na cílovém výpočetním prostředí nemusí být stejná jako cesta spuštění pro skript školení.
+Můžete také předat seznam úložišť dat do parametru konstruktoru `inputs` Estimator a připojit nebo zkopírovat data do nebo z úložiště dat. Tento příklad kódu:
+* Před spuštěním školicího skriptu `datastore1` `train.py` stáhne veškerý obsah do cílového výpočetního prostředí.
+* Stáhne složku `'./foo'` do `datastore2` cílového výpočetního prostředí před `train.py` spuštěním.
+* Nahraje soubor `'./bar.pkl'` z výpočetního cíle `datastore3` do po spuštění skriptu.
 
-<a name="matrix"></a>
-### <a name="training-compute-and-datastore-matrix"></a>Školení COMPUTE a matice úložiště dat
+```Python
+est = Estimator(source_directory='your code directory',
+                compute_target=compute_target,
+                entry_script='train.py',
+                inputs=[datastore1.as_download(), datastore2.path('./foo').as_download(), datastore3.as_upload(path_on_compute='./bar.pkl')])
+```
+### <a name="compute-and-datastore-matrix"></a>Matice COMPUTE a úložiště dat
 
-Následující matice zobrazuje dostupné funkce přístupu k datům pro různé výpočetní cíle a scénáře úložiště dat. Přečtěte si další informace o [školicích cílech výpočtů pro Azure Machine Learning](how-to-set-up-training-targets.md#compute-targets-for-training).
+Úložiště dat v současné době podporují ukládání informací o připojení do služby úložiště uvedené v následující matici. Tato matice zobrazuje dostupné funkce přístupu k datům pro různé výpočetní cíle a scénáře úložiště dat. Další informace o [výpočetních cílech pro Azure Machine Learning](how-to-set-up-training-targets.md#compute-targets-for-training).
 
 |Compute|[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)                                       |[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)                                      |[AzureDataLakeDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakedatastore?view=azure-ml-py) |[AzureDataLakeGen2Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) [AzurePostgreSqlDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_postgre_sql_datastore.azurepostgresqldatastore?view=azure-ml-py) [AzureSqlDatabaseDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_sql_database_datastore.azuresqldatabasedatastore?view=azure-ml-py) |
 |--------------------------------|----------------------------------------------------------|----------------------------------------------------------|------------------------|----------------------------------------------------------------------------------------|
@@ -209,39 +218,7 @@ Následující matice zobrazuje dostupné funkce přístupu k datům pro různé
 > [!NOTE]
 > Můžou nastat scénáře, ve kterých se vysoce iterační procesy s velkými objemy dat `as_download()` spouští rychleji `as_mount()`pomocí místo toho, aby je bylo možné ověřit experimentálně.
 
-### <a name="examples"></a>Příklady 
-
-Následující příklady kódu jsou specifické [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) pro třídu pro přístup k úložišti dat během školení.
-
-Tento kód vytvoří Estimator pomocí školicího skriptu `train.py`, ze zadaného zdrojového adresáře s použitím parametrů definovaných v `script_params`, a to vše v zadaném výpočetním cíli pro školení.
-
-```Python
-from azureml.train.estimator import Estimator
-
-script_params = {
-    '--data_dir': ds.as_mount()
-}
-
-est = Estimator(source_directory='your code directory',
-                entry_script='train.py',
-                script_params=script_params,
-                compute_target=compute_target
-                )
-```
-
-Můžete také předat seznam úložišť dat do parametru konstruktoru `inputs` Estimator pro připojení nebo kopírování do nebo do úložiště dat. Tento příklad kódu:
-* Před spuštěním školicího skriptu `ds1` `train.py` stáhne veškerý obsah v úložišti dat do cílového výpočetní služby.
-* Před `ds2` `'./foo'` spuštěnímstáhne`train.py` složku v úložišti dat do cílového výpočetního prostředí.
-* Po spuštění skriptu nahraje `'./bar.pkl'` soubor z cíle služby COMPUTE až do úložiště dat. `ds3`
-
-```Python
-est = Estimator(source_directory='your code directory',
-                compute_target=compute_target,
-                entry_script='train.py',
-                inputs=[ds1.as_download(), ds2.path('./foo').as_download(), ds3.as_upload(path_on_compute='./bar.pkl')])
-```
-
-## <a name="access-datastores-during-for-scoring"></a>Přístup k úložišti dat během bodování
+## <a name="access-data-during-scoring"></a>Přístup k datům během bodování
 
 Služba Azure Machine Learning poskytuje několik způsobů, jak používat vaše modely pro bodování. Některé z těchto metod neposkytují přístup k úložišti dat. Následující tabulka vám pomůže pochopit, které metody umožňují přístup k úložišti dat během bodování:
 
@@ -252,6 +229,7 @@ Služba Azure Machine Learning poskytuje několik způsobů, jak používat vaš
 | [Modul IoT Edge](how-to-deploy-and-where.md) | &nbsp; | Nasaďte modely do IoT Edgech zařízení. |
 
 V situacích, kdy sada SDK neposkytuje přístup k úložiště dat, může být možné vytvořit vlastní kód pomocí příslušné sady Azure SDK pro přístup k datům. Například použití [sady SDK Azure Storage pro Python](https://github.com/Azure/azure-storage-python) pro přístup k datům uloženým v objektech blob.
+
 
 ## <a name="next-steps"></a>Další postup
 

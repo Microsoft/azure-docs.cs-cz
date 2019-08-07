@@ -1,6 +1,6 @@
 ---
-title: Azure prvek uživatelského rozhraní CredentialsCombo | Dokumentace Microsoftu
-description: Popisuje element Microsoft.Compute.CredentialsCombo uživatelského rozhraní pro Azure portal.
+title: Element uživatelského rozhraní Azure CredentialsCombo | Microsoft Docs
+description: Popisuje prvek uživatelského rozhraní Microsoft. Compute. CredentialsCombo pro Azure Portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0412d55fe60524cde404e6a640723d3259e020e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3036e5882e236dbbb9cf4f9aae17617822422a82
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60251385"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742112"
 ---
-# <a name="microsoftcomputecredentialscombo-ui-element"></a>Prvek uživatelského rozhraní Microsoft.Compute.CredentialsCombo
-Skupina ovládacích prvků pomocí integrované ověřování Windows a Linuxem hesla a veřejného klíče SSH.
+# <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft. Compute. CredentialsCombo – element uživatelského rozhraní
+Skupina ovládacích prvků s integrovaným ověřováním pro hesla systémů Windows a Linux a veřejných klíčů SSH.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 
-Pro Windows, které uživatelé uvidí:
+Pro Windows uživatelé uvidí:
 
 ![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
 
-Pro Linux s heslem, které jsou vybrané se uživatelům zobrazí:
+Pro systém Linux s vybraným heslem uvidí uživatelé tyto informace:
 
-![Microsoft.Compute.CredentialsCombo Linuxové heslo](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+![Heslo k Microsoft. Compute. CredentialsCombo Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
 
-Pro Linux s veřejným klíčem SSH vybrali se uživatelům zobrazí:
+Pro Linux s vybraným veřejným klíčem SSH uvidí uživatelé tyto informace:
 
-![Klíč Microsoft.Compute.CredentialsCombo Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
+![Microsoft. Compute. CredentialsCombo – klíč Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Schéma
-Pokud používáte Windows, použijte následující schéma:
+Pro Windows použijte následující schéma:
 
 ```json
 {
@@ -54,7 +54,7 @@ Pokud používáte Windows, použijte následující schéma:
   "constraints": {
     "required": true,
     "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{12,}$",
-    "customValidationMessage": "The password must contain at least 12 characters, with at least 1 letter and 1 number."
+    "customValidationMessage": "The password must be alphanumeric, contain at least 12 characters, and have at least 1 letter and 1 number."
   },
   "options": {
     "hideConfirmation": false
@@ -64,7 +64,7 @@ Pokud používáte Windows, použijte následující schéma:
 }
 ```
 
-Pro **Linux**, použít následující schéma:
+Pro **Linux**použijte následující schéma:
 
 ```json
 {
@@ -84,7 +84,7 @@ Pro **Linux**, použít následující schéma:
   "constraints": {
     "required": true,
     "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{12,}$",
-    "customValidationMessage": "The password must contain at least 12 characters, with at least 1 letter and 1 number."
+    "customValidationMessage": "The password must be alphanumeric, contain at least 12 characters, and have at least 1 letter and 1 number."
   },
   "options": {
     "hideConfirmation": false,
@@ -96,14 +96,14 @@ Pro **Linux**, použít následující schéma:
 ```
 
 ## <a name="remarks"></a>Poznámky
-- `osPlatform` musí být zadán, a může být buď **Windows** nebo **Linux**.
-- Pokud `constraints.required` je nastavena na **true**, hesla nebo veřejného klíče textová pole SSH musí mít hodnoty úspěšně ověřit. Výchozí hodnota je **true**.
-- Pokud `options.hideConfirmation` je nastavena na **true**, do druhého textového pole pro potvrzení hesla je skrytý. Výchozí hodnota je **false**.
-- Pokud `options.hidePassword` je nastavena na **true**, možnost použít ověřování pomocí hesla je skrytý. Dá se použít jenom v případě `osPlatform` je **Linux**. Výchozí hodnota je **false**.
-- Další omezení na povolené hesel můžete implementovat pomocí `customPasswordRegex` vlastnost. Řetězec v `customValidationMessage` se zobrazí, když selže vlastní ověřovací heslo. Výchozí hodnota pro obě vlastnosti je **null**.
+- `osPlatform`musí být zadáno a může být buď **Windows** , nebo **Linux**.
+- Pokud `constraints.required` je nastavená na **hodnotu true**, musí být v textových polích heslo nebo veřejný klíč SSH hodnoty k úspěšnému ověření. Výchozí hodnota je **true (pravda**).
+- Pokud `options.hideConfirmation` je nastaveno na **hodnotu true**, pak je skryté druhé textové pole pro potvrzení hesla uživatele. Výchozí hodnota je **false**.
+- Pokud `options.hidePassword` je parametr nastaven na **hodnotu true**, možnost použití ověřování heslem je skrytá. Dá se použít jenom v případě `osPlatform` , že je **Linux**. Výchozí hodnota je **false**.
+- Další omezení povolených hesel lze implementovat pomocí `customPasswordRegex` vlastnosti. Řetězec v `customValidationMessage` se zobrazí, když se heslo nezdařilo vlastní ověření. Výchozí hodnota pro obě vlastnosti je **null**.
 
 ## <a name="sample-output"></a>Ukázkový výstup
-Pokud `osPlatform` je **Windows**, nebo `osPlatform` je **Linux** a uživatel zadal heslo místo veřejný klíč SSH, ovládací prvek vrátí následující výstup:
+Pokud `osPlatform` je **systém Windows**nebo `osPlatform` se systémem **Linux** a uživatel zadal heslo místo veřejného klíče SSH, vrátí tento ovládací prvek následující výstup:
 
 ```json
 {
@@ -112,7 +112,7 @@ Pokud `osPlatform` je **Windows**, nebo `osPlatform` je **Linux** a uživatel za
 }
 ```
 
-Pokud `osPlatform` je **Linux** a uživatel poskytl veřejný klíč SSH, ovládací prvek vrátí následující výstup:
+Pokud `osPlatform` je systém **Linux** a uživatel zadal veřejný klíč SSH, vrátí ovládací prvek následující výstup:
 
 ```json
 {
@@ -121,6 +121,6 @@ Pokud `osPlatform` je **Linux** a uživatel poskytl veřejný klíč SSH, ovlád
 }
 ```
 
-## <a name="next-steps"></a>Další postup
-* Úvod do vytváření definic uživatelského rozhraní, naleznete v tématu [Začínáme s funkcí CreateUiDefinition](create-uidefinition-overview.md).
-* Popis společné vlastnosti v prvcích uživatelského rozhraní, naleznete v tématu [CreateUiDefinition prvky](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Další kroky
+* Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
+* Popis běžných vlastností v prvcích uživatelského rozhraní naleznete v tématu [CreateUiDefinition Elements](create-uidefinition-elements.md).

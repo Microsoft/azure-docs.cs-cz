@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/25/2019
+ms.date: 08/02/2019
 ms.author: banders
-ms.openlocfilehash: 20ed2bcf793ab5c3913ccf66d338e71c1a99a003
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 36bc403c4000e58541f22c2cb44f77a28e81cb72
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478920"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779894"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Rozhraní API pro automatizaci rezervací Azure
 
@@ -84,7 +84,7 @@ Pokud zjistíte, že se používají rezervace vaší organizace:
 - Zajistěte, aby se virtuální počítače, které vaše organizace vytváří, shodovaly s velikostí virtuálního počítače, který je na rezervaci.
 - Ujistěte se, že je zapnutá flexibilita velikosti instance. Další informace najdete v tématu [Správa rezervací – Změna nastavení optimalizace pro rezervované instance virtuálních počítačů](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
 - Změňte rozsah rezervace na Shared tak, aby se v podstatě platilo. Další informace najdete v tématu [Správa rezervací – Změna rozsahu rezervace](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
-- Výměna nevyužitého množství. Další informace najdete v tématu [Správa rezervací – zrušení a výměny](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges).
+- Výměna nevyužitého množství. Další informace najdete v tématu [Správa rezervací](billing-manage-reserved-vm-instance.md).
 
 ## <a name="give-access-to-reservations"></a>Udělit přístup k rezervacím
 

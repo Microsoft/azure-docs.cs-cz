@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: cee91de9e0a5d75be258705f636248a6a6213664
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 16e12021a65a09376293f28efe9a6e9ef74ef5c2
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444051"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839572"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -172,7 +172,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Ve výchozím nastavení se tato nastavení nemigrují automaticky, když je projekt publikován do Azure. [Při publikování](#publish) použijte přepínač,abystemělijistotu,žesetatonastavenípřidajídoaplikaceFunctionAppv`--publish-local-settings` Azure. Všimněte si, že  hodnoty v connectionStrings nejsou nikdy publikovány.
+Ve výchozím nastavení se tato nastavení nemigrují automaticky, když je projekt publikován do Azure. [Při publikování](#publish) použijte přepínač,abystemělijistotu,žesetatonastavenípřidajídoaplikaceFunctionAppv`--publish-local-settings` Azure. Všimněte si, že hodnoty v connectionStrings nejsou nikdy publikovány.
 
 Hodnoty nastavení aplikace Function App lze ve vašem kódu přečíst také jako proměnné prostředí. Další informace naleznete v části proměnné prostředí v těchto referenčních tématech specifických pro konkrétní jazyk:
 
@@ -314,7 +314,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 Chcete-li místně testovat své funkce, [spusťte hostitele funkcí](#start) a koncové body volání na místním serveru pomocí požadavků HTTP. Koncový bod, který zavoláte, závisí na typu funkce.
 
 >[!NOTE]
-> V příkladech v tomto tématu se k posílání požadavků HTTP z terminálu nebo příkazového řádku používají nástroj pro otáčení. K odeslání požadavků HTTP na místní server můžete použít libovolný nástroj. Nástroj pro zakládání je ve výchozím nastavení k dispozici v systémech Linux. V systému Windows je třeba nejprve stáhnout a nainstalovat [Nástroj pro otáčení](https://curl.haxx.se/).
+> V příkladech v tomto tématu se k posílání požadavků HTTP z terminálu nebo příkazového řádku používají nástroj pro otáčení. K odeslání požadavků HTTP na místní server můžete použít libovolný nástroj. Nástroj kudrlinkou je ve výchozím nastavení k dispozici v systémech Linux a Windows 10 Build 17063 a novějších. Ve starších oknech musíte nejdřív stáhnout a nainstalovat [Nástroj pro otáčení](https://curl.haxx.se/).
 
 Obecnější informace o testovacích funkcích naleznete [v tématu strategie pro testování kódu v Azure Functions](functions-test-a-function.md).
 
@@ -451,7 +451,7 @@ Doporučený způsob, jak monitorovat provádění vašich funkcí, je integrace
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
 Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Azure Functions Core Tools je [Open Source a hostovaný na GitHubu](https://github.com/azure/azure-functions-cli).  
 Pokud chcete zaslat žádost o chybu nebo funkci, [otevřete problém GitHubu](https://github.com/azure/azure-functions-cli/issues).

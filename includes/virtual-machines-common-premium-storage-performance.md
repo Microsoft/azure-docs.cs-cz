@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d3d4679703f6d98cb2062144cfde7d11fe44130c
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386841"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817208"
 ---
 ## <a name="application-performance-indicators"></a>Indikátory výkonu aplikace
 
@@ -256,7 +256,7 @@ Pro datové disky se doporučuje nastavení pro diskovou mezipaměť:
 
 | **Nastavení ukládání do mezipaměti disku** | **doporučení, kdy použít toto nastavení** |
 | --- | --- |
-| Žádný |Nakonfigurujte mezipaměť hosta jako žádná pro disky jen pro zápis a zápis s velkým množstvím. |
+| Žádné |Nakonfigurujte mezipaměť hosta jako žádná pro disky jen pro zápis a zápis s velkým množstvím. |
 | ReadOnly |Nakonfigurujte mezipaměť hosta jako ReadOnly pro disky jen pro čtení a pro čtení i zápis. |
 | ReadWrite |Nakonfigurujte mezipaměť hosta jako jen pro čtení, pokud vaše aplikace správně zpracovává zápis dat uložených v mezipaměti na trvalé disky v případě potřeby. |
 
@@ -268,6 +268,9 @@ Když nakonfigurujete ukládání do mezipaměti Premium Storage na datových di
 
 *ReadWrite*  
 Ve výchozím nastavení mají disky s operačním systémem povoleno ukládání do mezipaměti. Nedávno jsme do datových disků přidali podporu ukládání do mezipaměti pro čtení a zápis. Pokud používáte ukládání do mezipaměti pro čtení a zápis, musíte mít správný způsob, jak zapisovat data z mezipaměti do trvalých disků. SQL Server například zpracovává zápis dat uložených v mezipaměti na trvalé disky úložiště sami. Použití mezipaměti s podporou přečtení z aplikace, která nezpracovává trvalá potřebná data, může způsobit ztrátu dat, pokud dojde k chybě virtuálního počítače.
+
+*Žádné*  
+V současné době se **žádná** podpora na datových discích nepodporuje. Na discích s operačním systémem se nepodporuje. Pokud jste na disku s operačním systémem nastavili **možnost žádné** , přepíše se to interně a nastaví se na **jen pro čtení**.
 
 V takovém případě můžete tyto pokyny použít k SQL Server spuštění na Premium Storage provedením následujících kroků:
 
@@ -284,7 +287,7 @@ U všech disků úrovně Premium SSD nebo Ultra s mezipamětí nastavenou na **R
 * Pro **reiserFS**zakažte překážky pomocí `barrier=none` možnosti připojit. (Pokud chcete povolit bariéry `barrier=flush`, použijte.)
 * V případě **ext3/ext4**zakažte překážky pomocí `barrier=0` možnosti připojit. (Pokud chcete povolit bariéry `barrier=1`, použijte.)
 * Pro **XFS**zakažte překážky pomocí `nobarrier` možnosti připojit. (Pokud chcete povolit bariéry `barrier`, použijte.)
-* U disků služby Premium Storage s mezipamětí nastavenou **na hodnotu**nepoužívat jako mezipaměť povolte překážky při zápisu.
+* U disků služby Premium Storage s mezipamětí nastavenou na hodnotu nepoužívat jako mezipaměť povolte překážky při zápisu.
 * Aby jmenovky svazků po restartování virtuálního počítače zůstaly zachované, je nutné aktualizovat/etc/fstab s použitím univerzálně jedinečného identifikátoru (UUID) na disky. Další informace najdete v tématu [Přidání spravovaného disku do virtuálního počítače se systémem Linux](../articles/virtual-machines/linux/add-disk.md).
 
 Pro prémiové SSD byly ověřeny následující distribuce systému Linux. Pro zajištění lepšího výkonu a stability pomocí Premium SSD doporučujeme, abyste provedli upgrade virtuálních počítačů na jednu z těchto verzí nebo novější. 
@@ -382,7 +385,7 @@ U prokládaného svazku Udržujte dostatečně velkou hloubku fronty, takže ka�
 
 Azure Premium Storage zřídí zadaný počet vstupně-výstupních operací za sekundu v závislosti na velikosti virtuálních počítačů a velikosti disků, které si zvolíte. Kdykoli se vaše aplikace pokusí o zpracování IOPS nebo propustnosti nad rámec těchto limitů, které může virtuální počítač nebo disk zvládnout, Premium Storage ho omezí. Tyto manifesty ve formě sníženého výkonu ve vaší aplikaci. To může znamenat vyšší latenci, nižší propustnost nebo nižší IOPS. Pokud Premium Storage neomezuje, vaše aplikace by mohla být zcela neúspěšná, protože by se překročilo, jaké prostředky je možné dosáhnout. Aby se zabránilo problémům s výkonem kvůli omezení, vždy pro vaši aplikaci zajistěte dostatek prostředků. Vezměte v úvahu, co jsme probrali v oddílech velikosti virtuálních počítačů a velikosti disků výše. Srovnávací testy je nejlepším způsobem, jak zjistit, jaké prostředky budete potřebovat k hostování vaší aplikace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o dostupných typech disků:
 

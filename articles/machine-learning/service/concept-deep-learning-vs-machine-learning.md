@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 07/30/2019
-ms.openlocfilehash: d97c3d47a277ecd8b1de635e3d835f9ee1f42057
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.date: 08/07/2019
+ms.openlocfilehash: 4b66d015e8a182e305a36dacaa2e082288a3e19e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700350"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840538"
 ---
 # <a name="introduction-to-deep-learning-vs-machine-learning"></a>Seznámení s hloubkovým učením a strojovým učením
 
@@ -43,9 +43,9 @@ Teď, když máte přehled o strojovém učení vs. hluboké učení, Porovnejte
 
 Následující tabulka porovnává dvě metody podrobněji:
 
-| |Strojové učení |Hloubkové učení|
+| |Všechny Machine Learning |Jenom obsáhlý Learning|
 |---|---|---|
-|  **Počet datových bodů** | Může používat malé objemy dat poskytované uživateli. | Vyžaduje velké množství neoznačených školicích dat, aby bylo možné provádět stručné závěry. |
+|  **Počet datových bodů** | Může používat malé objemy dat poskytované uživateli. | Vyžaduje velké množství školicích dat, aby bylo možné provádět stručné závěry. |
 |  **Závislosti hardwaru** | Může pracovat na méně koncových počítačích. Nepotřebuje velký objem výpočetního výkonu. | Závisí na vysoce koncových počítačích. Tím je v podstatě velký počet operací násobení matice. Tyto operace je možné efektivně optimalizovat pomocí GPU. |
 |  **Featurization proces** | Vyžaduje, aby se funkce přesně identifikovaly a vytvořily uživatelé. | Zjišťuje funkce na nejvyšší úrovni z dat a vytváří nové funkce sám o sobě. |
 |  **Postup učení** | Rozdělí úkoly na malé kousky a potom sloučí přijaté výsledky do jednoho závěru. | Vyřeší problém na konci. |

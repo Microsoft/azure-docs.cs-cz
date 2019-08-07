@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: ee9f771483b0478ec4b7d1bf92095d9dd07f45ad
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1081fa8c9c7cc64418515aabbb755ecf056196ca
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727241"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826286"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení služby Azure Identity Management
 
@@ -164,7 +164,7 @@ Azure AD Identity Protection je služba zabezpečení, která poskytuje konsolid
 
 Další informace:
 
-* [Azure AD Identity Protection](/azure/active-directory/active-directory-identityprotection.md)
+* [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview)
 * [Kanál 9: Azure AD a zobrazení identity: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybridní Správa identit/Azure AD Connect

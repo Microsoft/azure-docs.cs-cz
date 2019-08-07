@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 4caa9e78d72df37bec2351fa86ae6e60630d6047
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 99b3b4b8d48ff04fc2ced686c01b2d4de12c6555
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370761"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742132"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Metriky Azure Event Hubs v Azure Monitor
 
@@ -30,7 +30,7 @@ Azure Monitor nabízí jednotné uživatelské rozhraní pro monitorování nap�
 
 ## <a name="access-metrics"></a>Metriky přístup
 
-Azure Monitor poskytuje několik způsobů přístupu metriky. Můžete buď metriky přístup prostřednictvím [webu Azure portal](https://portal.azure.com), nebo pomocí rozhraní API služby Azure Monitor (REST a .NET) a řešení pro analýzu, jako je například Operations Management Suite a Služba Event Hubs. Další informace najdete v tématu [monitorování dat shromážděných službou Azure Monitor](../azure-monitor/platform/data-platform.md).
+Azure Monitor poskytuje několik způsobů přístupu metriky. Můžete buď přistupovat ke metrikám prostřednictvím [Azure Portal](https://portal.azure.com), nebo použít rozhraní API Azure monitor (Rest a .NET) a analytická řešení, jako je například Log Analytics a Event Hubs. Další informace najdete v tématu [monitorování dat shromážděných službou Azure Monitor](../azure-monitor/platform/data-platform.md).
 
 Ve výchozím nastavení jsou povolené metriky a posledních 30 dnů dat můžete přistupovat. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) ve službě Azure Monitor.
 
@@ -40,7 +40,7 @@ Metriky můžete sledovat v čase [webu Azure portal](https://portal.azure.com).
 
 ![Zobrazit úspěšné metriky][1]
 
-Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Provedete to tak, že vyberete svůj obor názvů a kliknete na metriky. Pokud chcete zobrazit metriky filtrované v oboru centra událostí, vyberte centrum událostí a pak klikněte na metriky .
+Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Provedete to tak, že vyberete svůj obornázvů a kliknete na metriky. Pokud chcete zobrazit metriky filtrované v oboru centra událostí, vyberte centrum událostí a pak klikněte na metriky.
 
 Pro metrika podporuje dimenze musí filtr s hodnotou požadované dimenze, jak je znázorněno v následujícím příkladu:
 

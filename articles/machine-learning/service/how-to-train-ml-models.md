@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93b26b2861c5603770a954943174d6436296ad07
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 10aee302377c4f71e47d93f5cd975043efcea375
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668383"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815913"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Výuka modelů pomocí Azure Machine Learning s využitím Estimator
 
 Pomocí Azure Machine Learning můžete snadno odeslat školicí skript do [různých výpočetních cílů](how-to-set-up-training-targets.md#compute-targets-for-training), a to pomocí [objektu RunConfiguration](how-to-set-up-training-targets.md#whats-a-run-configuration) a [objektu ScriptRunConfig](how-to-set-up-training-targets.md#submit). Tento model poskytuje značnou flexibilitu a maximální kontrolu.
 
-Aby se usnadnilo školení modelu hloubkového učení, Azure Machine Learning Python SDK poskytuje alternativní abstrakci vyšší úrovně, třídu Estimator, která umožňuje uživatelům snadno sestavit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odeslání školicího skriptu pomocí libovolného vzdělávacího rozhraní, které zvolíte (například scikit-učení), které chcete spustit na jakémkoli cíli služby COMPUTE, ať už se jedná o místní počítač, jeden virtuální počítač v Azure nebo cluster GPU v Azure. Pro PyTorch, TensorFlow a úlohy zřetězení Azure Machine Learning poskytuje také odpovídající [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) a [Chain](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) odhady pro zjednodušení používání těchto rozhraní.
+Aby se usnadnilo školení modelu hloubkového učení, Azure Machine Learning Python SDK poskytuje alternativní abstrakci vyšší úrovně, třídu Estimator, která umožňuje uživatelům snadno sestavit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odeslání školicího skriptu pomocí libovolného vzdělávacího rozhraní, které zvolíte (například scikit-učení) na jakémkoli cílovém výpočetním prostředí, ať už se jedná o místní počítač, jeden virtuální počítač v Azure nebo cluster GPU v Azure. Pro PyTorch, TensorFlow a úlohy zřetězení Azure Machine Learning poskytuje také příslušné [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)a [Chain](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) odhady pro zjednodušení používání těchto rozhraní.
 
 ## <a name="train-with-an-estimator"></a>Trénování s odhadu
 
@@ -58,13 +58,13 @@ Tento fragment kódu určuje následující parametry `Estimator` konstruktoru.
 
 Parametr | Popis
 --|--
-`source_directory`| Místní adresář, který obsahuje vše potřebné pro trénovací úlohu kódu. Tato složka se zkopíruje z místního počítače pro vzdálený výpočetní 
-`script_params`| Slovník, který určuje argumenty příkazového řádku ve školicím `entry_script`skriptu, ve `<command-line argument, value>` formě párů. K určení podrobného příznaku `script_params`v použijte `<command-line argument, "">`.
-`compute_target`| Vzdálený výpočetní cíl, na kterém se váš školicí skript spustí, v tomto případě cluster Azure Machine Learning COMPUTE ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)). (Upozorňujeme, že i když je cluster AmlCompute běžně používaným cílem, je také možné zvolit jiné typy výpočetních cílů, jako jsou například virtuální počítače Azure nebo i místní počítač.)
-`entry_script`| Cesta k souboru (vzhledem k `source_directory`) z trénovací skript ke spuštění na vzdálené výpočetní prostředky. Tento soubor a další soubory, na kterých závisí, se musí nacházet v této složce
+`source_directory`| Místní adresář, který obsahuje vše potřebné pro trénovací úlohu kódu. Tato složka se zkopíruje z místního počítače do vzdálené výpočetní služby.
+`script_params`| Slovník, který určuje argumenty příkazového řádku, které se mají předat `entry_script`vašemu školicímu skriptu, `<command-line argument, value>` ve formě párů. K určení podrobného příznaku `script_params`v použijte `<command-line argument, "">`.
+`compute_target`| Vzdálený výpočetní cíl, na kterém se váš školicí skript spustí, v tomto případě cluster Azure Machine Learning COMPUTE ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)). (Pamatujte na to, že cluster AmlCompute se běžně používá, je také možné zvolit jiné typy výpočetních cílů, jako jsou například virtuální počítače Azure nebo i místní počítač.)
+`entry_script`| Cesta k souboru (vzhledem k `source_directory`) z trénovací skript ke spuštění na vzdálené výpočetní prostředky. Tento soubor a všechny další soubory, na kterých závisí, by měly být umístěny v této složce.
 `conda_packages`| Seznam balíčků Python nainstalovat přes conda vyžadované cvičný skript.  
 
-Konstruktor má jiný parametr s názvem `pip_packages` , který používáte pro všechny balíčky pip potřeby
+Konstruktor má jiný parametr s názvem `pip_packages` , který používáte pro všechny potřebné balíčky PIP.
 
 Teď, když jste vytvořili vaší `Estimator` objektu, odešlete úlohu školení k použití na vzdálený výpočetní voláním `submit` fungovat na vašich [Experiment](concept-azure-machine-learning-architecture.md#experiments) objekt `experiment`. 
 
@@ -112,7 +112,7 @@ Parametr | Popis | Výchozí
 `custom_docker_image`| Název image, kterou chcete použít. Zadejte jenom Image v docker veřejných úložišť (v tomto případě Docker Hubu). Pokud chcete použít image z privátního úložiště Docker, použijte místo toho `environment_definition` parametr konstruktoru. [Viz příklad](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
 `node_count`| Počet uzlů pro trénovací úlohu. | `1`
 `process_count_per_node`| Počet procesů (nebo "pracovníky") pro spuštění na každý uzel. V tomto případě použijete `2` grafickými procesory, které jsou k dispozici na všech uzlech.| `1`
-`distributed_backend`| Back-endu pro spouštění distribuovaných školení, která nabízí odhadu prostřednictvím MPI.  K provádění paralelních nebo distribuované trénování (třeba `node_count`> 1 nebo `process_count_per_node`> 1 nebo oba), nastavte `distributed_backend='mpi'`. Je MPI implementace používaná třídou AML [otevřít MPI](https://www.open-mpi.org/).| `None`
+`distributed_backend`| Back-endu pro spouštění distribuovaných školení, která nabízí odhadu prostřednictvím MPI.  Aby bylo možné provést paralelní nebo distribuované školení ( `node_count`například > 1 nebo `process_count_per_node`> 1 nebo obě), nastavte `distributed_backend='mpi'`. Je MPI implementace používaná třídou AML [otevřít MPI](https://www.open-mpi.org/).| `None`
 
 Nakonec odešlete úlohu učení:
 ```Python

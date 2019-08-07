@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d74eb91b5122f63088f3344836eab8decf5c57d2
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 98101973627750f87fd06d3f617a1af764a837ee
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227370"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774236"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
@@ -63,9 +63,6 @@ Následující část popisuje, podrobné, jak funguje synchronizace hodnot hash
 >[!Note] 
 >Původní hodnota hash MD4 se nebudou přenášet do služby Azure AD. Místo toho se přenášejí hash SHA256 objektu původní hodnota hash MD4. V důsledku toho pokud je hodnota hash uložené ve službě Azure AD, ho nelze použít v místních útoku pass-the-hash.
 
-### <a name="how-password-hash-synchronization-works-with-azure-active-directory-domain-services"></a>Jak funguje synchronizace hodnot hash hesel s Azure Active Directory Domain Services
-Funkce synchronizace hodnot hash hesel můžete použít také k synchronizaci místních hesel [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). V tomto scénáři instanci Azure Active Directory Domain Services ověřuje uživatele v cloudu s všechny metody, které jsou k dispozici v místní instanci Active Directory. Prostředí tento scénář je podobný používání migraci nástroj ADMT (Active Directory) v místním prostředí.
-
 ### <a name="security-considerations"></a>Aspekty zabezpečení
 Při synchronizaci hesel heslo ve formátu prostého textu se nevystaví funkci synchronizace hodnoty hash hesla ke službě Azure AD, nebo žádné související služby.
 
@@ -104,6 +101,39 @@ Synchronizace hesla nemá žádný vliv na uživatele Azure, který je přihlá�
 
 - Obecně platí je jednodušší než federační služby implementace synchronizace hodnot hash hesel. Nevyžaduje žádné další servery a eliminuje závislost na vysoce dostupných federačních služeb k ověřování uživatelů.
 - Synchronizace hodnot hash hesel se dá povolit i kromě federace. To může sloužit jako záložní, pokud vaše služba federation service dojde k výpadku.
+
+## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Proces synchronizace hodnot hash hesel pro Azure AD Domain Services
+
+Pokud používáte Azure AD Domain Services k zajištění staršího ověřování pro aplikace a služby, které potřebují používat Keberos, LDAP nebo NTLM, některé další procesy jsou součástí toku synchronizace hodnot hash hesel. Azure AD Connect používá další postup k synchronizaci hodnot hash hesel do služby Azure AD pro použití v Azure AD Domain Services:
+
+> [!IMPORTANT]
+> Pokud povolíte Azure služba AD DS pro vašeho tenanta Azure AD, Azure AD Connect synchronizuje jenom starší hodnoty hash hesel. Následující kroky se nepoužívají, pokud k synchronizaci místního prostředí služba AD DS pomocí Azure AD používáte jenom Azure AD Connect.
+>
+> Pokud vaše starší aplikace nepoužívají ověřování NTLM nebo jednoduché vazby LDAP, doporučujeme pro Azure služba AD DS zakázat synchronizaci hodnot hash hesel protokolu NTLM. Další informace najdete v tématu [zakázání slabých šifrovacích sad a synchronizace hodnot hash přihlašovacích údajů NTLM](../../active-directory-domain-services/secure-your-domain.md).
+
+1. Azure AD Connect načte veřejný klíč pro instanci Azure AD Domain Services klienta.
+1. Když uživatel změní heslo, uloží místní řadič domény výsledek změny hesla (hodnoty hash) ve dvou atributech:
+    * *unicodePwd* pro hodnotu hash hesla protokolu NTLM.
+    * *supplementalCredentials* pro hodnotu hash hesla protokolu Kerberos.
+1. Azure AD Connect detekuje změny hesel prostřednictvím kanálu replikace adresářů (změny atributů, které se musí replikovat do jiných řadičů domény).
+1. Pro každého uživatele, jehož heslo bylo změněno, Azure AD Connect provede následující kroky:
+    * Generuje náhodný symetrický klíč AES 256.
+    * Generuje náhodnou inicializační vektor potřebný pro první kolo šifrování.
+    * Extrahuje hodnoty hash hesla protokolu Kerberos z atributů *supplementalCredentials* .
+    * Kontroluje nastavení *SyncNtlmPasswords* zabezpečení konfigurace Azure AD Domain Services.
+        * Pokud je toto nastavení zakázané, vygeneruje náhodnou a vysokou entropii hodnotu hash NTLM (odlišnou od hesla uživatele). Tato hodnota hash je pak kombinována s přesnou hodnotou hash hesla protokolu Kerberos z atributu *supplementalCrendetials* do jedné struktury dat.
+        * Pokud je povoleno, kombinuje hodnotu atributu *unicodePwd* s extrahovanou hodnotou hash hesla protokolu Kerberos z atributu *supplementalCredentials* do jedné struktury dat.
+    * Šifruje jedinou datovou strukturu pomocí symetrického klíče AES.
+    * Šifruje symetrický klíč AES pomocí Azure AD Domain Services veřejného klíče klienta.
+1. Azure AD Connect přenáší zašifrovaný symetrický klíč AES, šifrovanou strukturu dat obsahující hodnoty hash hesla a inicializační vektor do Azure AD.
+1. Azure AD ukládá šifrovaný symetrický klíč AES, šifrovanou strukturu dat a inicializační vektor pro uživatele.
+1. Azure AD přenáší zašifrovaný symetrický klíč AES, šifrovanou strukturu dat a inicializační vektor pomocí mechanismu interní synchronizace přes šifrovanou relaci HTTP, aby Azure AD Domain Services.
+1. Azure AD Domain Services načte privátní klíč pro instanci tenanta z trezoru klíčů Azure.
+1. Pro každou zašifrovanou sadu dat (představující změnu hesla jednoho uživatele) Azure AD Domain Services pak proveďte následující kroky:
+    * K dešifrování symetrického klíče AES používá jeho privátní klíč.
+    * Používá symetrický klíč AES s inicializačním vektorem k dešifrování šifrované datové struktury, která obsahuje hodnoty hash hesla.
+    * Zapíše hodnoty hash hesla protokolu Kerberos, které obdrží, do Azure AD Domain Services řadiče domény. Hodnoty hash jsou uloženy do atributu *supplementalCredentials* objektu uživatele, který je zašifrovaný do veřejného klíče řadiče domény Azure AD Domain Services.
+    * Azure AD Domain Services zapíše hodnotu hash hesla protokolu NTLM získanou do řadiče domény Azure AD Domain Services. Hodnota hash se uloží do atributu *unicodePwd* objektu uživatele, který se zašifruje do veřejného klíče řadiče domény Azure AD Domain Services.
 
 ## <a name="enable-password-hash-synchronization"></a>Povolit synchronizaci hodnot hash hesel
 

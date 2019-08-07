@@ -1,136 +1,136 @@
 ---
-title: Modul IoT Edge C# pro Azure Data Box Edge | Dokumentace Microsoftu
-description: Zjistěte, jak vývoj modulu jazyka C# IoT Edge, které se dají nasadit na hranici vaší Data Box.
+title: C#IoT Edge modul pro Azure Data Box Edge | Microsoft Docs
+description: Naučte se vyvíjet modul C# IoT Edge, který se dá nasadit na data box Edge.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 08/02/2019
 ms.author: alkohli
-ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 734ad263356ab9f91c7cb92ab174a14e0c5dd867
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64680897"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775176"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Vývoj C# modul IoT Edge pro přesun souborů na hraničních zařízeních Data Box
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Vývoj modulu C# IoT Edge pro přesun souborů na data box Edge
 
-Tento článek vás provede jednotlivými kroky k vytvoření modul IoT Edge pro nasazení s vaším zařízením Data Box Edge. Azure Data Box Edge je řešení úložiště, které umožňuje zpracovat data a odeslat je přes síť do Azure.
+Tento článek popisuje, jak vytvořit modul IoT Edge pro nasazení pomocí zařízení Data Box Edge. Azure Data Box Edge je řešení úložiště, které umožňuje zpracovat data a odeslat je přes síť do Azure.
 
-Moduly Azure IoT Edge s hranici pole Data slouží k transformaci dat, jako je přesunuta do Azure. Modul používaný v tomto článku implementuje logika se zkopírovat soubor z místní sdílené složky do cloudové sdílené složky na vašem zařízení Data Box Edge.
+K transformaci dat při jejich přesunu do Azure můžete použít Azure IoT Edge moduly s Data Box Edge. Modul použitý v tomto článku implementuje logiku ke zkopírování souboru z místního sdílení do sdílené složky v cloudu na zařízení Data Box Edge.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření registru kontejnerů k ukládání a správě modulů (imagí Dockeru).
-> * Vytvoření modulu IoT Edge pro nasazení v zařízení Data Box Edge.
+> * Vytvořte registr kontejnerů pro ukládání a správu modulů (Image Docker).
+> * Vytvořte modul IoT Edge k nasazení na Data Box Edge zařízení.
 
 
-## <a name="about-the-iot-edge-module"></a>Informace o modulu IoT Edge
+## <a name="about-the-iot-edge-module"></a>O modulu IoT Edge
 
-Vaše zařízení Data Box Edge můžete nasadit a spustit moduly IoT Edge. Moduly Edge jsou v podstatě kontejnery Dockeru, které provedení určitého úkolu, jako například příjem zpráv ze zařízení, transformujte zprávy nebo odeslání zprávy do služby IoT Hub. V tomto článku vytvoříte modul, který zkopíruje soubory z místní sdílené složky do cloudové sdílené složky na vašem zařízení Data Box Edge.
+Vaše zařízení Data Box Edge může nasazovat a spouštět IoT Edge moduly. Hraniční moduly jsou v podstatě kontejnery Docker, které provádějí konkrétní úlohu, například ingestování zprávy ze zařízení, transformace zprávy nebo odeslání zprávy na IoT Hub. V tomto článku vytvoříte modul, který kopíruje soubory z místní sdílené složky do sdílené složky cloudu na zařízení Data Box Edge.
 
-1. Soubory jsou zapsány do místní sdílené složky na vašem zařízení Data Box Edge.
-2. Generátor souboru události vytvoří událost souboru pro každý soubor zapsán do místní sdílené složky. Soubor události jsou také generovány, pokud při změně souboru na. Soubor událostí se pak odesílají do služby IoT Edge Hub (v modul runtime IoT Edge).
-3. Vlastní modul IoT Edge zpracovává událost souboru k vytvoření souboru událostí objektu, který také obsahuje relativní cestu k souboru. Modul generuje absolutní cesta pomocí relativní cesta k souboru a zkopíruje soubor z místní sdílené složky ke sdílené složce cloudu. V modulu pak odstraní soubor z místní sdílené složky.
+1. Soubory se zapisují do místního sdílení na zařízení Data Box Edge.
+2. Generátor událostí souboru vytvoří událost souboru pro každý soubor zapsaný do místní sdílené složky. Události souboru jsou také generovány při změně souboru. Události souboru se pak odesílají do centra IoT Edge (v IoT Edge Runtime).
+3. Vlastní modul IoT Edge zpracovává událost souboru pro vytvoření objektu události souboru, který obsahuje také relativní cestu k souboru. Modul vygeneruje absolutní cestu pomocí relativní cesty k souboru a zkopíruje soubor z místní sdílené složky do sdílené složky cloudu. Modul pak odstraní soubor z místní sdílené složky.
 
-![Jak funguje Azure IoT Edge module na hraničních zařízeních Data Box](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
+![Jak Azure IoT Edge modul funguje Data Box Edge](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
 
-Jakmile je soubor ve sdílené složce cloudu, automaticky získá nahrát ho do svého účtu Azure Storage.
+Jakmile se soubor nachází ve sdílené složce cloudu, automaticky se nahraje na váš Azure Storage účet.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
-- Data Box hraniční zařízení, na kterém běží.
+- Data Box Edge zařízení, na kterém je spuštěný.
 
-    - Zařízení má taky přidružený prostředek služby IoT Hub.
-    - Zařízení má Edge nakonfigurovaná rolí služby compute.
-    Další informace najdete v části [konfigurace výpočtů](data-box-edge-deploy-configure-compute.md#configure-compute) pro hranici Data Box.
+    - Zařízení má také přidružený prostředek IoT Hub.
+    - U zařízení je nakonfigurované role pro výpočetní výkon.
+    Další informace najdete v pro [konfiguraci COMPUTE](data-box-edge-deploy-configure-compute.md#configure-compute) pro data box Edge.
 
-- Následující prostředky pro vývoj:
+- Následující zdroje pro vývoj:
 
     - [Visual Studio Code](https://code.visualstudio.com/).
     - [Rozšíření jazyka C# pro Visual Studio Code (využívající OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
     - [Rozšíření Azure IoT Edge pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
-    - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Budete muset vytvořit účet, který chcete stáhnout a nainstalovat software.
+    - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Možná budete muset vytvořit účet ke stažení a instalaci softwaru.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete ukládat a spravovat privátní image kontejnerů Dockeru. Dvě oblíbené služby registrů Dockeru k dispozici v cloudu se Azure Container Registry a Docker Hubu. Tento článek používá Container Registry.
+Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete ukládat a spravovat privátní image kontejnerů Dockeru. K dispozici jsou dvě oblíbené služby Docker Registry v cloudu Azure Container Registry a Docker Hub. Tento článek používá Container Registry.
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Vyberte **vytvořit prostředek > kontejnery > Container Registry**. Klikněte na možnost **Vytvořit**.
-3. Zadejte:
+3. Sdělit
 
-   1. Jedinečné **název registru** v Azure, která obsahuje 5 až 50 alfanumerických znaků.
-   2. Zvolte **předplatné**.
-   3. Vytvořit novou nebo vybrat existující **skupiny prostředků**.
-   4. Vyberte **Umístění**. Doporučujeme vám, že toto umístění být stejná jako, který je přidružen okraj pole Data prostředků.
+   1. Jedinečný **název registru** v rámci Azure, který obsahuje 5 až 50 alfanumerických znaků.
+   2. Vyberte **předplatné**.
+   3. Vytvořte novou nebo vyberte existující **skupinu prostředků**.
+   4. Vyberte **Umístění**. Doporučujeme, aby toto umístění bylo stejné jako spojené s Data Box Edgem prostředkem.
    5. Přepněte přepínač **Uživatel s rolí správce** na **Povolit**.
-   6. Nastavte skladovou Položku **základní**.
+   6. Nastavte SKU na **Basic**.
 
-      ![Vytvoření registru kontejneru](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
+      ![Vytvořit registr kontejneru](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. Vyberte **Vytvořit**.
 5. Po vytvoření registru kontejneru do něj přejděte a vyberte **Přístupové klíče**.
 
     ![Získání přístupových klíčů](./media/data-box-edge-create-iot-edge-module/get-access-keys-1.png)
  
-6. Zkopírujte hodnoty pro **Přihlašovací server**, **Uživatelské jméno** a **Heslo**. Tyto hodnoty použijete později k publikování image Dockeru do registru a přidání přihlašovacích údajů registru do modulu runtime Azure IoT Edge.
+6. Zkopírujte hodnoty pro **Přihlašovací server**, **Uživatelské jméno** a **Heslo**. Tyto hodnoty použijete později k publikování image Docker do svého registru a k přidání přihlašovacích údajů registru do modulu runtime Azure IoT Edge.
 
 
 ## <a name="create-an-iot-edge-module-project"></a>Vytvoření projektu modulu IoT Edge
 
-Následujícím postupem se vytvoří projekt modul IoT Edge založené na sadě SDK .NET Core 2.1. Projekt používá Visual Studio Code a rozšíření Azure IoT Edge.
+Následující kroky vytvoří projekt modulu IoT Edge v závislosti na sadě .NET Core 2,1 SDK. Projekt používá Visual Studio Code a rozšíření Azure IoT Edge.
 
 ### <a name="create-a-new-solution"></a>Vytvoření nového řešení
 
 Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí vlastního kódu.
 
-1. Ve Visual Studio Code, vyberte **zobrazení > paletu příkazů** otevřete paletu příkazů VS Code.
-2. V paletu příkazů zadejte a spusťte příkaz **Azure: Přihlaste se** a postupujte podle pokynů k přihlášení účtu Azure. Pokud už přihlášení jste, můžete tento krok přeskočit.
-3. V paletu příkazů zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení IoT Edge**. Na paletě příkazů zadejte následující informace k vytvoření řešení:
+1. V Visual Studio Code vyberte **zobrazit > paleta příkazů** pro otevření vs Code paleta příkazů.
+2. V paletě příkazů zadejte a spusťte příkaz **Azure: Přihlaste se** a postupujte podle pokynů a přihlaste se k účtu Azure. Pokud už přihlášení jste, můžete tento krok přeskočit.
+3. V paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení**IoT Edge. Na paletě příkazů zadejte následující informace k vytvoření řešení:
 
     1. Vyberte složku, ve které chcete vytvořit řešení.
     2. Zadejte název pro vaše řešení nebo přijměte výchozí název **EdgeSolution**.
     
-        ![Vytvoření nového řešení 1](./media/data-box-edge-create-iot-edge-module/create-new-solution-1.png)
+        ![Vytvořit nové řešení 1](./media/data-box-edge-create-iot-edge-module/create-new-solution-1.png)
 
     3. Jako šablonu modulu zvolte **C# Module**.
-    4. Nahraďte názvem, kterou chcete přiřadit výchozí název modulu, v tomto případě je **FileCopyModule**.
+    4. Nahraďte výchozí název modulu názvem, který chcete přiřadit. v tomto případě je to **FileCopyModule**.
     
-        ![Vytvoření nového řešení 2](./media/data-box-edge-create-iot-edge-module/create-new-solution-2.png)
+        ![Vytvořit nové řešení 2](./media/data-box-edge-create-iot-edge-module/create-new-solution-2.png)
 
-    5. Zadejte registru kontejneru, který jste vytvořili v předchozí části jako úložiště imagí pro první modul. Nahraďte **localhost:5000** hodnotou pro přihlašovací server, kterou jste zkopírovali.
+    5. Zadejte registr kontejneru, který jste vytvořili v předchozí části, jako úložiště imagí pro váš první modul. Nahraďte **localhost:5000** hodnotou pro přihlašovací server, kterou jste zkopírovali.
 
-        Konečný řetězec vypadá jako `<Login server name>/<Module name>`. V tomto příkladu je řetězec: `mycontreg2.azurecr.io/filecopymodule`.
+        Výsledný řetězec vypadá takto `<Login server name>/<Module name>`:. V tomto příkladu je řetězec: `mycontreg2.azurecr.io/filecopymodule`.
 
-        ![Vytvoření nového řešení 3](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
+        ![Vytvořit nové řešení 3](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
 
-4. Přejděte na **soubor > Otevřít složku**.
+4. Přejít na **soubor > otevřít složku**.
 
-    ![Vytvoření nového řešení 4](./media/data-box-edge-create-iot-edge-module/create-new-solution-4.png)
+    ![Vytvořit nové řešení 4](./media/data-box-edge-create-iot-edge-module/create-new-solution-4.png)
 
-5. Procházení a přejděte **EdgeSolution** složky, kterou jste vytvořili dříve. Okna nástroje VS Code načte pracovní prostor řešení IoT Edge s komponentami pět nejvyšší úrovně. Nebude upravovat **.vscode** složce **.gitignore** souboru, **.env** souboru a **deployment.template.json** v tomto článku.
+5. Přejděte do složky **EdgeSolution** , kterou jste vytvořili dříve. Okno VS Code načte pracovní prostor řešení IoT Edge s jeho pěti komponentami nejvyšší úrovně. V tomto článku nebudete upravovat složku **. VSCode** , soubor. **gitignore** , soubor **. env** a soubor **Deployment. template. JSON** .
     
-    Jedinou komponentou, který můžete upravit je složka moduly. Tato složka obsahuje kód jazyka C# pro modul a souborů Dockeru k sestavení modulu jako image kontejneru.
+    Jedinou komponentou, kterou upravíte, je složka moduly. Tato složka obsahuje C# kód pro modul a soubory Docker pro sestavení modulu jako image kontejneru.
 
-    ![Vytvoření nového řešení 5](./media/data-box-edge-create-iot-edge-module/create-new-solution-5.png)
+    ![Vytvořit nové řešení 5](./media/data-box-edge-create-iot-edge-module/create-new-solution-5.png)
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-1. V Průzkumníku VS Code, Otevřít **moduly > FileCopyModule > Program.cs**.
-2. V horní části **obor názvů FileCopyModule**, přidejte následující příkazy using pro typy, které se později použijí. **Microsoft.Azure.Devices.Client.Transport.Mqtt** je protokol pro odesílání zpráv do IoT Edge Hub.
+1. V Průzkumníku VS Code otevřete **moduly > FileCopyModule > program.cs**.
+2. V horní části **oboru názvů FileCopyModule**přidejte následující příkazy using pro typy, které se používají později. **Microsoft. Azure. Devices. Client. Transport. MQTT** je protokol, který slouží k odesílání zpráv do centra IoT Edge.
 
     ```
     using Microsoft.Azure.Devices.Client.Transport.Mqtt;
     using Newtonsoft.Json;
     ```
-3. Přidat **InputFolderPath** a **OutputFolderPath** proměnné do třídy Program.
+3. Do třídy program přidejte proměnnou **InputFolderPath** a **OutputFolderPath** .
 
     ```
     class Program
@@ -140,11 +140,11 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. Přidat **MessageBody** třídy do třídy Program. Tyto třídy definují očekávané schéma textu příchozích zpráv.
+4. Chcete-li definovat tělo zprávy, přidejte třídu **sudé** .
 
     ```
     /// <summary>
-    /// The MessageBody class defines the expected schema for the body of incoming messages. 
+    /// The FileEvent class defines the body of incoming messages. 
     /// </summary>
     private class FileEvent
     {
@@ -156,7 +156,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
     }
     ```
 
-5. V metodě **Init** kódem vytvoříte a nakonfigurujete objekt **ModuleClient**. Tento objekt umožňuje modulu pro připojení k místní modul runtime Azure IoT Edge k odesílání a příjem zpráv pomocí protokolu MQTT. Připojovací řetězec, který se používá v metodě inicializace poskytuje modulu runtime IoT Edge. Tento kód zaregistruje FileCopy zpětné volání pro příjem zpráv z centra IoT Edge prostřednictvím **vstup1** koncového bodu.
+5. V metodě **Init** kódem vytvoříte a nakonfigurujete objekt **ModuleClient**. Tento objekt umožňuje modulu připojit se k místnímu modulu Azure IoT Edge runtime pomocí protokolu MQTT pro odesílání a příjem zpráv. Připojovací řetězec, který je použit v metodě Init, je dodána modulu modulem runtime IoT Edge. Kód zaregistruje zpětné volání kopírovacího kopírování pro příjem zpráv z centra IoT Edge prostřednictvím koncového bodu **input1** .
 
     ```
     /// <summary>
@@ -178,7 +178,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
     }
     ```
 
-6. Vložit kód pro **FileCopy**.
+6. Vložte kód pro **kopírování**do.
 
     ```
         /// <summary>
@@ -239,38 +239,38 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
 
 ## <a name="build-your-iot-edge-solution"></a>Sestavení řešení IoT Edge
 
-V předchozí části jste vytvořili hraničních zařízeních IoT řešení a přidat kód do FileCopyModule kopírování souborů z místní sdílené složky ke sdílené složce cloudu. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
+V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do FileCopyModule ke zkopírování souborů z místní sdílené složky do sdílené složky cloudu. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
-1. Ve VSCode, přejděte do terminálu > nové terminálu a otevřete novou integrovaný terminál aplikace Visual Studio Code.
-2. Přihlaste se k Dockeru zadáním následujícího příkazu v integrovaném terminálu.
+1. V VSCode přejděte do terminálu > nový terminál a otevřete nové Visual Studio Code integrovaného terminálu.
+2. Přihlaste se k Docker zadáním následujícího příkazu v integrovaném terminálu.
 
     `docker login <ACR login server> -u <ACR username>`
 
-    Použijte přihlášení na server a uživatelské jméno, které jste zkopírovali ze svého registru kontejneru. 
+    Použijte přihlašovací server a uživatelské jméno, které jste zkopírovali z registru kontejneru. 
 
-    ![Vytváření a nasdílení změn řešení IoT Edge](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
+    ![Sestavování a nabízených IoT Edge řešení](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
 
-2. Po výzvě k zadání hesla, zadejte heslo. Můžete také načíst hodnoty pro přihlášení na server, uživatelské jméno a heslo **přístupové klíče** do vašeho registru kontejneru na webu Azure Portal.
+2. Po zobrazení výzvy k zadání hesla zadejte heslo. Můžete také načíst hodnoty pro přihlašovací server, uživatelské jméno a heslo z **přístupových klíčů** v registru kontejnerů v Azure Portal.
  
-3. Jakmile jsou zadané přihlašovací údaje, můžete nabízet bitové kopie modulu do služby Azure container registry. V Průzkumníku VS Code klikněte pravým tlačítkem myši **module.json** a vyberte možnost **řešení pro sestavení a Push IoT Edge**.
+3. Po zadání přihlašovacích údajů můžete do služby Azure Container Registry odeslat image modulu. V Průzkumníku VS Code klikněte pravým tlačítkem na soubor **Module. JSON** a vyberte **sestavení a nabízené IoT Edge řešení**.
 
-    ![Vytváření a nasdílení změn řešení IoT Edge](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![Sestavování a nabízených IoT Edge řešení](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
-    Pokud dáte Visual Studio Code pro vytvoření řešení, běží v integrovaném terminálu dvou příkazů: sestavení dockeru a docker push. Tyto dva příkazy sestaví kód, provedou kontejnerizaci vaší knihovny CSharpModule.dll a odešlou ji do registru kontejneru, který jste zadali při inicializaci řešení.
+    Když Visual Studio Code poznáte, že se má vaše řešení sestavit, spustí se dva příkazy v integrovaném terminálu: sestavení Docker a Docker push. Tyto dva příkazy sestaví kód, provedou kontejnerizaci vaší knihovny CSharpModule.dll a odešlou ji do registru kontejneru, který jste zadali při inicializaci řešení.
 
-    Zobrazí výzva k výběru platformy modulu. Vyberte *amd64* odpovídající Linux.
+    Zobrazí se výzva k výběru platformy modulu. Vyberte *amd64* odpovídající systému Linux.
 
-    ![Vyberte platformu](./media/data-box-edge-create-iot-edge-module/select-platform.png)
+    ![Vybrat platformu](./media/data-box-edge-create-iot-edge-module/select-platform.png)
 
     > [!IMPORTANT] 
-    > Jsou podporovány pouze moduly systému Linux.
+    > Podporují se jenom moduly Linux.
 
-    Mohou se zobrazit následující upozornění, které můžete ignorovat:
+    Může se zobrazit následující upozornění, které můžete ignorovat:
 
-    *Program.cs(77,44): upozornění CS1998: Této asynchronní metodě chybí operátory 'operátor await' a spustí se synchronně. Zvažte možnost použít operátor 'await' await pro čekání neblokující volání rozhraní API nebo 'operátor await Task.Run(...)' k provedení práce vázané na procesor ve vlákně na pozadí.*
+    *Program. cs (77, 44): upozornění CS1998: V této asynchronní metodě chybí operátory await a spustí se synchronně. Zvažte použití operátoru await pro čekání na neblokující volání rozhraní API nebo ' await Task. Run (...) ' k provedení práce vázané na procesor ve vlákně na pozadí.*
 
-4. Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresu image je sestaven z informací, které jsou v souboru module.json s formátem `<repository>:<version>-<platform>`. Pro účely tohoto článku by mělo vypadat jako `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`.
+4. Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresa obrázku je sestavena z informací, které jsou v souboru Module. JSON ve formátu `<repository>:<version>-<platform>`. Pro tento článek by měl vypadat nějak takto `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`:.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-K nasazení a spuštění tohoto modulu na okraji pole Data, podívejte se na postup v [přidat modul](data-box-edge-deploy-configure-compute.md#add-a-module).
+Pokud chcete nasadit a spustit tento modul na Data Box Edge, přečtěte si postup v tématu [Přidání modulu](data-box-edge-deploy-configure-compute.md#add-a-module).

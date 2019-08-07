@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 69e95a9e6c76da5d502314a7190e99fc10e968f7
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5f51c1166364a3470a1cc943e66d429c32cdc49b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639080"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839472"
 ---
 # <a name="clustering-point-data"></a>Data bodu clusteringu
 
@@ -35,7 +35,7 @@ var datasource = new atlas.source.DataSource(null, {
 
     //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
-    clusterMaxZoom: 15 
+    clusterMaxZoom: 15
 });
 ```
 
@@ -107,6 +107,16 @@ Data bodu, která cluster představuje, jsou rozložena v oblasti. V této ukáz
 
  <iframe height="500" style="width: 100%;" scrolling="no" title="Vypuklý trup oblasti clusteru" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Viz <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>oblast clusteru pera vypuklý trup</a> od Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="aggregating-data-in-clusters"></a>Agregace dat v clusterech
+
+Clustery se často reprezentují pomocí symbolu s počtem bodů, které jsou v clusteru, ale v některých případech je ale žádoucí, aby bylo možné lépe přizpůsobit styl clusterů na základě některé metriky, jako je celkový počet tržeb všech bodů v clusteru. V případě agregačních vlastností clusterů lze vytvořit a naplnit pomocí výpočtu [agregačního výrazu](data-driven-style-expressions-web-sdk.md#aggregate-expression) .  Agregace clusterů lze definovat v `clusterProperties` možnosti. `DataSource`
+
+Následující příklad používá agregační výraz pro výpočet počtu na základě vlastnosti typ entity každého datového bodu v clusteru.
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Agregace clusteru" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Podívejte se na <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>agregace clusteru</a> pera pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další postup

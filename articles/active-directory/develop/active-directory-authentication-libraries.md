@@ -1,6 +1,6 @@
 ---
-title: Knihovny ověřování služby Azure Active Directory | Dokumentace Microsoftu
-description: Azure AD Authentication Library (ADAL) umožňuje vývojářům aplikací snadno ověřte uživatele, do cloudu klienta nebo v místním Active Directory (AD) a potom získat přístupové tokeny pro volání rozhraní API zabezpečení.
+title: Azure Active Directory knihovny ověřování | Microsoft Docs
+description: Knihovna ADAL (Azure AD Authentication Library) umožňuje vývojářům klientských aplikací snadno ověřovat uživatele v cloudu nebo místní službě Active Directory (AD) a pak získat přístupové tokeny pro zabezpečení volání rozhraní API.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -10,7 +10,7 @@ ms.assetid: 2e4fc79a-0285-40be-8c77-65edee408a22
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2018
@@ -18,72 +18,72 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b71585c178efbc30892cf95c5c2149818f0dcb3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 831ebe53e43d0fef5bd57a699f02d06f2dff5ddc
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65764570"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835511"
 ---
-# <a name="azure-active-directory-authentication-libraries"></a>Knihovny ověřování služby Azure Active Directory
+# <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory knihovny ověřování
 
-Azure Active Directory Authentication Library (ADAL) verze 1.0 vývojářům aplikací umožňuje ověřování uživatelů u cloudových nebo místní služby Active Directory (AD) a získat tokeny pro volání rozhraní API zabezpečení. ADAL usnadňuje ověřování pro vývojáře prostřednictvím funkcí, jako například:
+Knihovna Azure Active Directory Authentication Library (ADAL) v 1.0 umožňuje vývojářům aplikací ověřovat uživatele v cloudu nebo místní službě Active Directory (AD) a získat tokeny pro zabezpečení volání rozhraní API. ADAL usnadňuje ověřování pro vývojáře prostřednictvím funkcí, jako je:
 
-- Konfigurovatelné mezipaměť tokenu, že úložiště přístupové tokeny a obnovovacích tokenů
-- Automatické obnovení tokenu, když vyprší platnost přístupového tokenu a tokenu obnovení je k dispozici
+- Konfigurovatelná mezipaměť tokenů, která ukládá přístupové tokeny a aktualizuje tokeny
+- Automatická aktualizace tokenu po vypršení platnosti přístupového tokenu a dostupnosti obnovovacího tokenu
 - Podpora pro volání asynchronní metody
 
 > [!NOTE]
-> Hledáte služby Azure AD v2.0 knihovny (MSAL)? Rezervace [průvodce Knihovna MSAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
+> Hledáte knihovny pro Azure AD v 2.0 (MSAL)? Zarezervujte [Průvodce knihovnou MSAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
 >
 >
 
-## <a name="microsoft-supported-client-libraries"></a>Microsoft nepodporuje klientské knihovny
+## <a name="microsoft-supported-client-libraries"></a>Klientské knihovny podporované Microsoftem
 
-| Platforma | Knihovna | Ke stažení | Zdrojový kód | Ukázka | Referenční informace
+| Platforma | Knihovna | Ke stažení | Zdrojový kód | Ukázka | Reference
 | --- | --- | --- | --- | --- | --- |
-| Klient .NET, Windows Store, UPW, Xamarin iOS a Android |ADAL .NET v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [Aplikace klasické pracovní plochy](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-dotnet) |[Referenční informace](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet) |
-| .NET klienta, Windows Store, Windows Phone 8.1 |ADAL .NET v2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.4) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.4) | [Aplikace klasické pracovní plochy](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) | |
+| Klient .NET, Windows Store, UWP, Xamarin iOS a Android |ADAL .NET v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [Desktopová aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-dotnet) |[Referenční informace](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet) |
+| Klient .NET, Windows Store, Windows Phone 8,1 |ADAL .NET v2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.4) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.4) | [Desktopová aplikace](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) | |
 | JavaScript |ADAL.js |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[Jednostránková aplikace](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | |
 | iOS, macOS |ADAL |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-objc/releases) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-objc) |[aplikace pro iOS](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-ios) | [Referenční informace](http://cocoadocs.org/docsets/ADAL/2.5.1/)|
 | Android |ADAL |[Maven](https://search.maven.org/search?q=g:com.microsoft.aad+AND+a:adal&core=gav) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Aplikace pro Android](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](https://javadoc.io/doc/com.microsoft.aad/adal/)|
-| Node.js |ADAL |[npm](https://www.npmjs.com/package/adal-node) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs) | [Webová aplikace Node.js](https://github.com/Azure-Samples/active-directory-node-webapp-openidconnect)|[Referenční informace](https://docs.microsoft.com/javascript/api/adal-node/?view=azure-node-latest) |
+| Node.js |ADAL |[NPM](https://www.npmjs.com/package/adal-node) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs) | [Webová aplikace Node.js](https://github.com/Azure-Samples/active-directory-node-webapp-openidconnect)|[Referenční informace](https://docs.microsoft.com/javascript/api/adal-node/?view=azure-node-latest) |
 | Java |ADAL4J |[Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3Aadal4j%20g%3Acom.microsoft.azure) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[Webová aplikace Java](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect) |[Referenční informace](https://javadoc.io/doc/com.microsoft.azure/adal4j) |
 | Python |ADAL |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[Webová aplikace v Pythonu](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi) |[Referenční informace](https://adal-python.readthedocs.io/) |
 
-## <a name="microsoft-supported-server-libraries"></a>Microsoft nepodporuje Server knihovny
+## <a name="microsoft-supported-server-libraries"></a>Knihovny serverů podporované Microsoftem
 
-| Platforma | Knihovna | Ke stažení | Zdrojový kód | Ukázka | Referenční informace
+| Platforma | Knihovna | Ke stažení | Zdrojový kód | Ukázka | Reference
 | --- | --- | --- | --- | --- | --- |
-| .NET |OWIN pro Azure AD|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.ActiveDirectory) |[MVC App](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapp-dotnet) | |
+| .NET |OWIN pro AzureAD|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.ActiveDirectory) |[Aplikace MVC](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapp-dotnet) | |
 | .NET |OWIN pro OpenIDConnect |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.OpenIdConnect) |[Webová aplikace](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet) | |
 | .NET |OWIN pro WS-Federation |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.WsFederation) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.WsFederation) |[Webová aplikace MVC](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet) | |
-| .NET |Identita rozšíření protokolu pro rozhraní .NET 4.5 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Protocol.Extensions) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
-| .NET |JWT Handler for .NET 4.5 |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
-| Node.js |Azure AD Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Webové rozhraní API](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapi-nodejs)| |
+| .NET |Rozšíření identity protokolu pro .NET 4,5 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Protocol.Extensions) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
+| .NET |Obslužná rutina JWT pro .NET 4,5 |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
+| Node.js |Azure AD Passport |[NPM](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Webové rozhraní API](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapi-nodejs)| |
 
 ## <a name="scenarios"></a>Scénáře
 
-Tady jsou tři běžné scénáře pro použití knihovny ADAL v klientovi, který přistupuje k vzdálenému prostředku:
+Tady jsou tři běžné scénáře použití ADAL v klientovi, který přistupuje ke vzdálenému prostředku:
 
-### <a name="authenticating-users-of-a-native-client-application-running-on-a-device"></a>Ověřování uživatelů nativní klientské aplikace běžící na zařízeních
+### <a name="authenticating-users-of-a-native-client-application-running-on-a-device"></a>Ověřování uživatelů nativní klientské aplikace spuštěné na zařízení
 
-V tomto scénáři má vývojář mobilního klienta nebo aplikace klasické pracovní plochy, která potřebuje přístup k vzdálenému prostředku, jako je například webové rozhraní API. Webové rozhraní API nepovoluje anonymní volání a musí být volána v rámci ověřeného uživatele. Webové rozhraní API je nakonfigurovaná tak, aby důvěřovat přístupové tokeny vydané určitou tenanta Azure AD. Azure AD je nakonfigurovaná tak, aby vystavovat přístupové tokeny pro daný prostředek. K vyvolání webové rozhraní API z klienta, vývojář používá ADAL pro usnadnění ověřování pomocí Azure AD. Nejbezpečnější způsob použití knihovny ADAL je jeho vykreslení uživatelského rozhraní pro shromažďování uživatelských přihlašovacích údajů (se vykresluje jako okno prohlížeče).
+V tomto scénáři má vývojář mobilní klient nebo desktopovou aplikaci, která potřebuje přístup ke vzdálenému prostředku, jako je například webové rozhraní API. Webové rozhraní API nepovoluje anonymní volání a musí být voláno v kontextu ověřeného uživatele. Webové rozhraní API je předem nakonfigurované tak, aby důvěřovalo přístupové tokeny, které vydal konkrétní tenant služby Azure AD. Služba Azure AD je předem nakonfigurovaná tak, aby vydávala přístupové tokeny pro tento prostředek. Aby bylo možné webové rozhraní API vyvolat z klienta, vývojář použije ADAL k usnadnění ověřování pomocí Azure AD. Nejbezpečnější způsob, jak používat ADAL, je vykreslovat uživatelské rozhraní pro shromažďování přihlašovacích údajů uživatele (vykreslené jako okno prohlížeče).
 
-ADAL umožňuje snadno ověřit uživatele, získat přístupový a aktualizační token ze služby Azure AD a pak volat webové rozhraní API pomocí přístup k tokenu.
+ADAL usnadňuje ověření uživatele, získání přístupového tokenu a aktualizace tokenu z Azure AD a volání webového rozhraní API pomocí přístupového tokenu.
 
-Ukázka kódu, který ukazuje tento scénář s využitím ověřování do služby Azure AD, najdete v části [nativní klientská aplikace WPF webového rozhraní API](https://github.com/azureadsamples/nativeclient-dotnet).
+Ukázku kódu, který demonstruje tento scénář pomocí ověřování pro službu Azure AD, najdete v tématu [nativní klientská aplikace WPF pro webové rozhraní API](https://github.com/azureadsamples/nativeclient-dotnet).
 
-### <a name="authenticating-a-confidential-client-application-running-on-a-web-server"></a>Ověřování důvěrnému klientovi aplikace běžící na webovém serveru
+### <a name="authenticating-a-confidential-client-application-running-on-a-web-server"></a>Ověřování důvěrné klientské aplikace spuštěné na webovém serveru
 
-V tomto scénáři má vývojář aplikace běžící na serveru, který potřebuje přístup k vzdálenému prostředku, jako je například webové rozhraní API. Volá webové rozhraní API nepovoluje anonymní, proto musí být volána z autorizovanou službou. Webové rozhraní API je nakonfigurovaná tak, aby důvěřovat přístupové tokeny vydané určitou tenanta Azure AD. Azure AD je nakonfigurovaná tak, aby vydání přístupové tokeny pro daný prostředek ke službě pomocí přihlašovacích údajů klienta (ID klienta a tajný klíč). ADAL usnadňuje ověřování služby Azure AD vrací přístupový token, který slouží k volání webového rozhraní API. Správa životního cyklu přístupový token pomocí ukládání do mezipaměti a obnovovat podle potřeby také zpracovává ADAL. Ukázka kódu, který ukazuje tento scénář, naleznete v tématu [démon konzoly aplikace webového rozhraní API](https://github.com/AzureADSamples/Daemon-DotNet).
+V tomto scénáři má vývojář aplikaci spuštěnou na serveru, který potřebuje přístup ke vzdálenému prostředku, jako je například webové rozhraní API. Webové rozhraní API nepovoluje anonymní volání, takže se musí volat z autorizované služby. Webové rozhraní API je předem nakonfigurované tak, aby důvěřovalo přístupové tokeny, které vydal konkrétní tenant služby Azure AD. Služba Azure AD je předem nakonfigurovaná tak, aby vydávala přístupové tokeny pro daný prostředek ke službě s přihlašovacími údaji klienta (ID klienta a tajný kód). ADAL usnadňuje ověřování služby pomocí Azure AD vrácení přístupového tokenu, který se dá použít k volání webového rozhraní API. ADAL také zpracovává správu životnosti přístupového tokenu tím, že ho ukládá do mezipaměti a v případě potřeby ho obnoví. Ukázku kódu, který demonstruje tento scénář, najdete v tématu [aplikace démona aplikace na webové rozhraní API](https://github.com/AzureADSamples/Daemon-DotNet).
 
-### <a name="authenticating-a-confidential-client-application-running-on-a-server-on-behalf-of-a-user"></a>Ověřování důvěrné klientská aplikace běží na serveru, jménem uživatele
+### <a name="authenticating-a-confidential-client-application-running-on-a-server-on-behalf-of-a-user"></a>Ověřování důvěrné klientské aplikace spuštěné na serveru jménem uživatele
 
-V tomto scénáři má vývojář webové aplikaci spuštěné na serveru, který potřebuje přístup k vzdálenému prostředku, jako je například webové rozhraní API. Webové rozhraní API nepovoluje anonymní volání, takže musí být volána z autorizovanou službou jménem ověřeného uživatele. Webové rozhraní API je předem nakonfigurovaný důvěřovat přístupové tokeny vydané službou konkrétní Azure AD je nakonfigurovaná tak, aby vystavovat přístupové tokeny pro daný prostředek s přihlašovacími údaji klientů ke službě tenanta a Azure AD. Po ověření uživatele ve webové aplikaci, můžete aplikaci získání autorizačního kódu pro uživatele ze služby Azure AD. Webové aplikace pak můžete použít knihovnu ADAL pro získání přístupového tokenu a obnovovací token jménem uživatele pomocí autorizační kód a klienta přihlašovacích údajů přidružených k aplikaci ze služby Azure AD. Jakmile webová aplikace je ve vlastnictví přístupový token, dokud nevyprší platnost tokenu může volat webové rozhraní API. Když vyprší platnost tokenu, webové aplikace můžete použít knihovnu ADAL se získat nový přístupový token s použitím aktualizace tokenu, který byl dříve dostali. Ukázka kódu, který ukazuje tento scénář, naleznete v tématu [nativního klienta k webovému rozhraní API pro webové rozhraní API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
+V tomto scénáři má vývojář webovou aplikaci spuštěnou na serveru, který potřebuje přístup ke vzdálenému prostředku, jako je například webové rozhraní API. Webové rozhraní API nepovoluje anonymní volání, takže se musí volat z autorizované služby jménem ověřeného uživatele. Webové rozhraní API je předem nakonfigurované tak, aby důvěřovalo přístupovým tokenům, které vydal konkrétní tenant Azure AD, a služba Azure AD je předem nakonfigurovaná tak, aby vydávala přístupové tokeny pro daný prostředek ke službě s přihlašovacími údaji klienta. Po ověření uživatele ve webové aplikaci může aplikace získat autorizační kód pro uživatele ze služby Azure AD. Webová aplikace potom může pomocí ADAL získat přístupový token a aktualizovat token jménem uživatele pomocí autorizačního kódu a přihlašovacích údajů klienta přidružených k aplikaci z Azure AD. Jakmile je webová aplikace držitelem přístupového tokenu, může volat webové rozhraní API, dokud nevyprší platnost tokenu. Po vypršení platnosti tokenu může webová aplikace používat ADAL k získání nového přístupového tokenu pomocí obnovovacího tokenu, který byl dříve přijat. Ukázku kódu, který demonstruje tento scénář, najdete v tématu [nativní klient pro webové rozhraní API k webovému rozhraní API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
 
 ## <a name="see-also"></a>Viz také
 
 - [Příručka pro vývojáře Azure Active Directory](v1-overview.md)
-- [Scénáře ověřování pro Azure Active directory](authentication-scenarios.md)
-- [Ukázky kódu pro Azure Active Directory](sample-v1-code.md)
+- [Scénáře ověřování pro Azure Active Directory](authentication-scenarios.md)
+- [Ukázky kódu Azure Active Directory](sample-v1-code.md)

@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0602de13fefbf105e69ba42651216fb479c4c86
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 733b0d7650d68bddae60cf524947590c2b689968
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477129"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779367"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotného přihlašování
 
@@ -95,7 +95,7 @@ V perspektivě přihlašování se aplikace se sdílenými účty neliší od ap
 
 Volba správné metody ověřování je zásadním prvním rozhodnutím při nastavování řešení hybridní identity Azure AD. Implementujte metodu ověřování, která je nakonfigurovaná pomocí Azure AD Connect, která taky zřídí uživatele v cloudu.
 
-Pokud chcete zvolit metodu ověřování, musíte vzít v úvahu čas, stávající infrastrukturu, složitost a náklady na implementaci podle vašeho výběru. Tyto faktory jsou pro každou organizaci odlišné a můžou se v průběhu času měnit. Měli byste zvolit ten, který nejlépe odpovídá vašemu konkrétnímu scénáři. Další informace najdete v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
+Pokud chcete zvolit metodu ověřování, musíte vzít v úvahu čas, stávající infrastrukturu, složitost a náklady na implementaci podle vašeho výběru. Tyto faktory jsou pro každou organizaci odlišné a můžou se v průběhu času měnit. Měli byste zvolit ten, který nejlépe odpovídá vašemu konkrétnímu scénáři. Další informace najdete v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
 
 ## <a name="plan-your-security-and-governance"></a>Plánování zabezpečení a zásad správného řízení 
 
@@ -236,7 +236,7 @@ Vždy používejte roli s nejmenším oprávněním, která jsou k dispozici k p
 
 | Nežádoucí| Role | Role Azure AD (v případě potřeby) |
 |--------|-------|-----------------------------|
-| Správce helpdesku | Podpora vrstvy 1 | Žádné |
+| Správce helpdesku | Podpora vrstvy 1 | Žádný |
 | Správce identit | Konfigurace a ladění v případě problémů ovlivňujících službu Azure AD | Globální správce |
 | Správce aplikace | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádné |
 | Správci infrastruktury | Vlastník změna certifikátu | Globální správce |
@@ -304,7 +304,7 @@ Následující odkazy představují scénáře řešení potíží. Možná bude
 
 - [Problém se federovaném přihlašováním k aplikacím, které nejsou uvedené v galerii aplikací Azure](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Ladění SSO založeného na SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 

@@ -1,27 +1,27 @@
 ---
-title: Struktura šablony Azure Resource Manageru a syntaxe | Dokumentace Microsoftu
-description: Popisuje strukturu a vlastnosti šablony Azure Resource Manageru pomocí deklarativní syntaxe JSON.
+title: Azure Resource Manager struktura a syntaxe šablony | Microsoft Docs
+description: Popisuje strukturu a vlastnosti šablon Azure Resource Manager pomocí deklarativní syntaxe JSON.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 08/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: ab8e4f5f6506f80b62c112298f73f95bc7fedeaf
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9858e8a52888304edd48893db02faa992b356b3b
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204364"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774907"
 ---
-# <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
+# <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Pochopení struktury a syntaxe šablon Azure Resource Manager
 
-Tento článek popisuje strukturu šablony Azure Resource Manageru. Představuje různé části šablony a vlastnosti, které jsou k dispozici v těchto oddílech. Šablona se skládá z JSON a z výrazů, které můžete použít k vytvoření hodnot pro vaše nasazení.
+Tento článek popisuje strukturu Azure Resource Manager šablony. Zobrazuje různé oddíly šablony a vlastnosti, které jsou k dispozici v těchto oddílech. Šablona se skládá z formátu JSON a výrazů, které můžete použít k sestavení hodnot pro vaše nasazení.
 
-Tento článek je určený pro uživatele, kteří mají některé znalosti s šablonami Resource Manageru. Poskytuje podrobné informace o struktuře a syntaxe šablony. Pokud chcete, úvod do vytváření šablony, přečtěte si téma [vytvoření první šablony Azure Resource Manageru](resource-manager-create-first-template.md).
+Tento článek je určený pro uživatele, kteří mají určitou znalost Správce prostředků šablon. Poskytuje podrobné informace o struktuře a syntaxi šablony. Pokud chcete vytvořit úvodní šablonu, přečtěte si téma [Vytvoření první šablony Azure Resource Manager](resource-manager-create-first-template.md).
 
-## <a name="template-format"></a>Formát šablon
+## <a name="template-format"></a>Formát šablony
 
-Ve své nejjednodušší struktury šablony obsahuje následující prvky:
+V nejjednodušší struktuře má šablona následující prvky:
 
 ```json
 {
@@ -38,20 +38,20 @@ Ve své nejjednodušší struktury šablony obsahuje následující prvky:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| $schema |Ano |Umístění souboru schématu JSON, který popisuje verzi jazyka šablony.<br><br> Pro nasazení skupiny prostředků použijte: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Pro nasazení předplatného použijte: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
-| contentVersion |Ano |Verze šablony (jako je například 1.0.0.0). Tento prvek můžete zadat libovolnou hodnotu. Tato hodnota zdokumentovat významné změny v šabloně používejte. Při nasazování prostředků pomocí šablony, tato hodnota je možné, aby se zajistilo, že používá správnou šablonu. |
-| apiProfile |Ne | Verze rozhraní API, která slouží jako kolekce verze rozhraní API pro typy prostředků. Tuto hodnotu použijte, abyste ho nemuseli znovu k určení verze rozhraní API pro každý prostředek v šabloně. Když zadáte profilu verze rozhraní API a nezadávejte verze rozhraní API pro typ prostředku, používá Resource Manageru verze rozhraní API pro příslušný typ prostředku, který je definován v profilu.<br><br>Vlastnost profilu rozhraní API je zvláště užitečné při nasazování šablony do různých prostředí, jako je Azure Stack a globální Azure. Ujistěte se, že vaše šablona automaticky používá verze, které jsou podporovány v obou prostředích pomocí profilu verze rozhraní API. Seznam aktuální profilu verze rozhraní API a prostředků verze rozhraní API, které jsou definovány v profilu najdete v tématu [profil API](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Další informace najdete v tématu [sledování verzí pomocí profilů rozhraní API](templates-cloud-consistency.md#track-versions-using-api-profiles). |
-| [parameters](#parameters) |Ne |Hodnoty, které jsou k dispozici při spuštění nasazení přizpůsobení nasazení prostředků. |
-| [variables](#variables) |Ne |Hodnoty, které se používají jako fragmentů JSON v šabloně pro zjednodušení výrazy jazyka šablony. |
-| [functions](#functions) |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
-| [resources](#resources) |Ano |Typy prostředků, které jsou nasazené nebo aktualizovat skupinu prostředků nebo předplatného. |
+| $schema |Ano |Umístění souboru schématu JSON, který popisuje verzi jazyka šablony.<br><br> Pro nasazení skupin prostředků použijte:`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Pro nasazení předplatných použijte:`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
+| contentVersion |Ano |Verze šablony (například 1.0.0.0). Pro tento prvek můžete zadat libovolnou hodnotu. Tuto hodnotu použijte k dokumentování významných změn v šabloně. Při nasazování prostředků pomocí šablony můžete tuto hodnotu použít k tomu, abyste se ujistili, že je používána pravá šablona. |
+| apiProfile |Ne | Verze rozhraní API, která slouží jako kolekce verzí rozhraní API pro typy prostředků. Tuto hodnotu použijte, chcete-li se vyhnout nutnosti zadávat verze rozhraní API pro každý prostředek v šabloně. Když zadáte verzi profilu rozhraní API a nezadáte verzi rozhraní API pro typ prostředku, Správce prostředků používá verzi rozhraní API pro tento typ prostředku, který je definovaný v profilu.<br><br>Vlastnost profil rozhraní API je užitečná hlavně při nasazení šablony do různých prostředí, jako je Azure Stack a globální Azure. Pomocí verze profilu rozhraní API se ujistěte, že vaše šablona automaticky používá verze, které jsou v obou prostředích podporované. Seznam aktuálních verzí profilů rozhraní API a verzí rozhraní API prostředků definovaných v profilu najdete v tématu [profil rozhraní API](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Další informace najdete v tématu [sledování verzí pomocí profilů rozhraní API](templates-cloud-consistency.md#track-versions-using-api-profiles). |
+| [parameters](#parameters) |Ne |Hodnoty, které jsou k dispozici při spuštění nasazení za účelem přizpůsobení nasazení prostředků. |
+| [variables](#variables) |Ne |Hodnoty, které se používají jako fragmenty JSON v šabloně pro zjednodušení výrazů jazyka šablony. |
+| [functions](#functions) |Ne |Uživatelsky definované funkce, které jsou k dispozici v rámci šablony. |
+| [resources](#resources) |Ano |Typy prostředků, které se nasazují nebo aktualizují v rámci skupiny prostředků nebo předplatného. |
 | [outputs](#outputs) |Ne |Hodnoty, které se vrátí po nasazení. |
 
-Každý prvek má vlastnosti, které můžete nastavit. Tento článek popisuje části šablony podrobněji.
+Každý prvek má vlastnosti, které lze nastavit. V tomto článku jsou podrobněji popsány části šablony.
 
 ## <a name="syntax"></a>Syntaxe
 
-Základní syntaxe šablony je JSON. Však můžete použít výrazy k rozšíření k dispozici v rámci šablony hodnoty JSON.  Výrazy začínat a končit závorky: `[` a `]`v uvedeném pořadí. Hodnota tohoto výrazu je vyhodnocen při nasazení šablony. Výraz může vrátit řetězec, celé číslo, logickou hodnotu, pole nebo objekt. Následující příklad ukazuje výraz výchozí hodnoty parametru:
+Základní syntaxí šablony je JSON. Můžete však použít výrazy k rozšiřování hodnot JSON dostupných v rámci šablony.  Výrazy začínají a končí závorkami: `[` a `]`v uvedeném pořadí. Hodnota výrazu je vyhodnocena při nasazení šablony. Výraz může vracet řetězec, celé číslo, logickou hodnotu, pole nebo objekt. Následující příklad ukazuje výraz ve výchozí hodnotě parametru:
 
 ```json
 "parameters": {
@@ -62,33 +62,33 @@ Základní syntaxe šablony je JSON. Však můžete použít výrazy k rozšíř
 },
 ```
 
-V rámci výrazu, syntaxe `resourceGroup()` volání jedné z funkcí, které poskytuje správce prostředků pro použití v rámci šablony. Stejně jako v jazyce JavaScript, volání funkce jsou formátovány jako `functionName(arg1,arg2,arg3)`. Syntaxe `.location` načte jednu vlastnost z objekt vrácený rutinou tuto funkci.
+Syntaxe `resourceGroup()` v rámci výrazu volá jednu z funkcí, které správce prostředků poskytují pro použití v rámci šablony. Stejně jako v jazyce JavaScript jsou volání funkcí formátována `functionName(arg1,arg2,arg3)`jako. Syntaxe `.location` načte jednu vlastnost z objektu vráceného touto funkcí.
 
-Šablony funkcí a jejich parametrů rozlišují velikost písmen. Například Resource Manageru překládá **variables('var1')** a **VARIABLES('VAR1')** za stejné. Při vyhodnocování, pokud funkci výslovně upraví případu (například toUpper nebo toLower), funkce zachová případu. Některé typy prostředků mohou mít případu požadavky bez ohledu na to, jak se vyhodnocují funkce.
+Funkce šablon a jejich parametry rozlišují velká a malá písmena. Například Správce prostředků vyřeší **proměnné (' var1 ')** a **proměnné (' var1 ')** jako stejné. Je-li tato funkce vyhodnocena, pokud funkce Express nemění velká a malá písmena (například toUpper nebo toLower), funkce zachovává případ. Některé typy prostředků mohou mít požadavky na případy bez ohledu na to, jak jsou funkce vyhodnoceny.
 
-Aby řetězcový literál, začněte s levou závorku `[` a končit pravou závorku `]`, ale ne bylo interpretováno jako výraz, přidejte další závorku spustit řetězec s `[[`. Například proměnná:
+Chcete-li, aby byl řetězcový literál začínat levou hranatou `[` závorkou `]`a končit pravou závorkou, ale nebyl interpretován jako výraz, přidejte další hranatou závorku, `[[`která zahájí řetězec s. Například proměnná:
 
 ```json
 "demoVar1": "[[test value]"
 ```
 
-Přeloží na `[test value]`.
+Přeloží `[test value]`na.
 
-Pokud řetězec nekončí se hranatá závorka, není však řídicí první závorky. Například proměnná:
+Nicméně pokud literální řetězec nekončí závorkou, nezařídí první vymezovač. Například proměnná:
 
 ```json
 "demoVar2": "[test] value"
 ```
 
-Přeloží na `[test] value`.
+Přeloží `[test] value`na.
 
-Předat hodnotu řetězce jako parametr funkce, použijte jednoduché uvozovky.
+Chcete-li předat řetězcovou hodnotu jako parametr funkci, použijte jednoduché uvozovky.
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
 
-K návratu dvojité uvozovky ve výrazu, jako je například přidávání objektu JSON v šabloně použijte zpětné lomítko.
+Chcete-li ve výrazu, jako je například přidání objektu JSON do šablony, řídicí dvojité uvozovky, použijte zpětné lomítko.
 
 ```json
 "tags": {
@@ -96,19 +96,19 @@ K návratu dvojité uvozovky ve výrazu, jako je například přidávání objek
 },
 ```
 
-Výraz šablony nemůže být delší než 24,576 znaků.
+Výraz šablony nemůže být delší než 24 576 znaků.
 
-Úplný seznam funkcí šablon najdete v tématu [funkce šablon Azure Resource Manageru](resource-group-template-functions.md). 
+Úplný seznam funkcí šablon naleznete v tématu [Azure Resource Manager Functions Template](resource-group-template-functions.md). 
 
 ## <a name="parameters"></a>Parametry
 
-V sekci parametrů šablony zadejte hodnoty, které můžete zadat při nasazování prostředků. Tyto hodnoty parametrů umožňují vlastní nastavení nasazení tím, že poskytuje hodnoty, které jsou přizpůsobené pro konkrétní prostředí (jako je vývoj, testování a produkce). Není nutné zadat parametry v šabloně, ale bez parametrů by vždy šablony nasadit stejným prostředkům se stejnými názvy, umístění a vlastnosti.
+V části Parameters (parametry) v šabloně určíte, které hodnoty můžete zadat při nasazování prostředků. Tyto hodnoty parametrů umožňují přizpůsobit nasazení poskytnutím hodnot, které jsou upraveny pro konkrétní prostředí (například vývoj, testování a produkce). V šabloně není nutné zadávat parametry, ale bez parametrů vaše šablona by vždy nasadila stejné prostředky se stejnými názvy, umístěními a vlastnostmi.
 
-Jste omezeni na 256 parametrů v šabloně. Počet parametrů můžete omezit použitím objektů, které obsahují více vlastností, jak je znázorněno v tomto článku.
+V šabloně budete omezeni na 256 parametrů. Počet parametrů můžete snížit pomocí objektů, které obsahují více vlastností, jak je znázorněno v tomto článku.
 
 ### <a name="available-properties"></a>Dostupné vlastnosti
 
-Dostupné vlastnosti parametru jsou:
+Dostupné vlastnosti pro parametr:
 
 ```json
 "parameters": {
@@ -129,19 +129,19 @@ Dostupné vlastnosti parametru jsou:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| Název parametru |Ano |Název parametru. Musí být platný identifikátor jazyka JavaScript. |
-| type |Ano |Typ hodnoty parametru. Povolené typy a hodnoty jsou **řetězec**, **securestring**, **int**, **bool**, **objekt**, **secureObject**, a **pole**. |
-| defaultValue |Ne |Výchozí hodnota pro parametr, pokud se nezadá žádná hodnota pro parametr. |
-| allowedValues |Ne |Povolené hodnoty pro parametr, abyste měli jistotu, že se zadal správný hodnotu pole. |
-| minValue |Ne |Minimální hodnota pro parametry typu int, tato hodnota je také zahrnuto. |
-| maxValue |Ne |Maximální hodnoty pro parametry typu int, tato hodnota je také zahrnuto. |
-| minLength |Ne |Minimální délku řetězce, zabezpečený řetězec a parametry typu pole, tato hodnota je také zahrnuto. |
-| maxLength |Ne |Maximální délka řetězce, zabezpečený řetězec a parametry typu pole, tato hodnota je také zahrnuto. |
-| description |Ne |Popis parametru, který se zobrazí uživatelům na portálu. Další informace najdete v tématu [komentáře v šablonách](#comments). |
+| parameterName |Ano |Název parametru Musí být platný identifikátor jazyka JavaScript. |
+| type |Ano |Typ hodnoty parametru Povolené typy a hodnoty jsou **String**, **SecureString**, **int**, **bool**, **Object**, **secureObject**a **Array**. |
+| defaultValue |Ne |Výchozí hodnota parametru, pokud není k dispozici žádná hodnota pro parametr. |
+| allowedValues |Ne |Pole povolených hodnot pro parametr, aby bylo zajištěno, že je zadána pravá hodnota. |
+| minValue |Ne |Minimální hodnota pro parametry typu int je tato hodnota včetně. |
+| maxValue |Ne |Maximální hodnota pro parametry typu int je tato hodnota včetně. |
+| minLength |Ne |Minimální délka parametrů pro řetězec, zabezpečený řetězec a typ pole je hodnota včetně. |
+| maxLength |Ne |Maximální délka parametrů pro řetězec, zabezpečený řetězec a typ pole je hodnota včetně. |
+| description |Ne |Popis parametru, který se uživatelům zobrazí prostřednictvím portálu. Další informace najdete v tématu [komentáře v šablonách](#comments). |
 
-### <a name="define-and-use-a-parameter"></a>Definujte a použijte parametr.
+### <a name="define-and-use-a-parameter"></a>Definování a použití parametru
 
-Následující příklad ukazuje definicí jednoduchého parametru. Definuje název parametru a určuje, že přijímá řetězcovou hodnotu. Parametr přijímá pouze hodnoty, které dávají smysl pro zamýšlený účel. Pokud během nasazení se nezadá žádná hodnota určuje výchozí hodnotu. Nakonec tento parametr obsahuje popis jeho použití.
+V následujícím příkladu je uvedena definice jednoduchého parametru. Definuje název parametru a určuje, že přebírá řetězcovou hodnotu. Parametr přijímá pouze hodnoty, které mají smysl pro zamýšlené použití. Určuje výchozí hodnotu, pokud není během nasazení zadána žádná hodnota. Nakonec parametr obsahuje popis jeho použití.
 
 ```json
 "parameters": {
@@ -162,7 +162,7 @@ Následující příklad ukazuje definicí jednoduchého parametru. Definuje ná
 }
 ```
 
-V šabloně referenční hodnota parametru s následující syntaxí:
+V šabloně odkazujete na hodnotu parametru s následující syntaxí:
 
 ```json
 "resources": [
@@ -176,9 +176,9 @@ V šabloně referenční hodnota parametru s následující syntaxí:
 ]
 ```
 
-### <a name="template-functions-with-parameters"></a>Šablony funkce s parametry
+### <a name="template-functions-with-parameters"></a>Funkce šablon s parametry
 
-Při zadávání výchozí hodnota pro parametr, můžete použít většina funkcí šablony. Pro vytvoření výchozí hodnoty můžete použít jinou hodnotu parametru. Následující šablona ukazuje použití funkcí v výchozí hodnota:
+Když zadáte výchozí hodnotu pro parametr, můžete použít většinu funkcí šablon. K vytvoření výchozí hodnoty můžete použít jinou hodnotu parametru. Následující šablona ukazuje použití funkcí ve výchozí hodnotě:
 
 ```json
 "parameters": {
@@ -199,13 +199,13 @@ Při zadávání výchozí hodnota pro parametr, můžete použít většina fun
 }
 ```
 
-Nelze použít `reference` funkce v sekci parametrů. Jsou parametry vyhodnoceny před nasazením proto `reference` funkce nelze získat běhový stav prostředku. 
+`reference` Funkci nelze použít v oddílu Parameters. Parametry jsou vyhodnocovány před nasazením `reference` , takže funkce nemůže získat běhový stav prostředku. 
 
-### <a name="objects-as-parameters"></a>Objekty, které jako parametry
+### <a name="objects-as-parameters"></a>Objekty jako parametry
 
-Může být jednodušší k uspořádání souvisejících hodnot v předáním jako objekt. Tento přístup také snižuje počet parametrů v šabloně.
+Můžete snadněji organizovat související hodnoty jejich předáním v podobě objektu. Tento přístup také snižuje počet parametrů v šabloně.
 
-Definujte parametr v šabloně a během nasazení, zadejte objekt JSON místo jednu hodnotu. 
+Definujte parametr v šabloně a místo jedné hodnoty během nasazení zadejte objekt JSON. 
 
 ```json
 "parameters": {
@@ -235,7 +235,7 @@ Definujte parametr v šabloně a během nasazení, zadejte objekt JSON místo je
 },
 ```
 
-Potom odkazujete objektu třídy subproperties parametru pomocí operátoru tečka.
+Potom odkazujte na podvlastnosti parametru pomocí operátoru tečka.
 
 ```json
 "resources": [
@@ -269,18 +269,18 @@ Potom odkazujete objektu třídy subproperties parametru pomocí operátoru teč
 ]
 ```
 
-### <a name="parameter-example-templates"></a>Parametr ukázkových šablon
+### <a name="parameter-example-templates"></a>Příklady šablon parametrů
 
-Tyto šablony příklad ukazují některé scénáře použití parametrů. Nasazení, je otestovat zpracování parametrů v různých scénářích.
+Tyto příklady šablon předvádějí některé scénáře použití parametrů. Nasaďte je pro testování způsobu zpracování parametrů v různých scénářích.
 
 |Šablona  |Popis  |
 |---------|---------|
-|[parametry s využitím functions pro výchozí hodnoty](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Popisuje způsob použití funkce šablon, při definování výchozí hodnoty pro parametry. Šablona nenasadí žádné prostředky. Konstrukce hodnoty parametrů a vrátí tyto hodnoty. |
-|[Parametr objektu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Ukazuje použití objektu pro parametr. Šablona nenasadí žádné prostředky. Konstrukce hodnoty parametrů a vrátí tyto hodnoty. |
+|[parametry s funkcemi pro výchozí hodnoty](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Ukazuje, jak používat funkce šablon při definování výchozích hodnot pro parametry. Šablona neimplementuje žádné prostředky. Vytvoří hodnoty parametrů a vrátí tyto hodnoty. |
+|[objekt parametru](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Ukazuje použití objektu pro parametr. Šablona neimplementuje žádné prostředky. Vytvoří hodnoty parametrů a vrátí tyto hodnoty. |
 
 ## <a name="variables"></a>Proměnné
 
-V sekci proměnných vytvořit hodnoty, které lze použít v celé vaší šablony. Není nutné definovat proměnné, ale často zjednodušení šablony snížením složité výrazy.
+V části proměnné můžete vytvářet hodnoty, které lze použít v rámci šablony. Nemusíte definovat proměnné, ale často zjednodušují vaši šablonu tím, že snižují složité výrazy.
 
 ### <a name="available-definitions"></a>Dostupné definice
 
@@ -311,11 +311,11 @@ Následující příklad ukazuje dostupné možnosti pro definování proměnné
 }
 ```
 
-Informace o používání `copy` vytvořit několik hodnot proměnné, přečtěte si článek [proměnné iterace](resource-group-create-multiple.md#variable-iteration).
+Informace o použití `copy` pro vytvoření několika hodnot proměnné naleznete v tématu [Variable iterace](resource-group-create-multiple.md#variable-iteration).
 
-### <a name="define-and-use-a-variable"></a>Definice a používání proměnné
+### <a name="define-and-use-a-variable"></a>Definování a použití proměnné
 
-Následující příklad ukazuje definicí proměnné. Vytvoří hodnotu řetězce pro název účtu úložiště. Používá několik funkcí šablony pro získání hodnoty parametrů a zřetězí do jedinečného řetězce.
+Následující příklad ukazuje definici proměnné. Vytvoří hodnotu řetězce pro název účtu úložiště. Používá několik funkcí šablon k získání hodnoty parametru a zřetězuje je do jedinečného řetězce.
 
 ```json
 "variables": {
@@ -323,7 +323,7 @@ Následující příklad ukazuje definicí proměnné. Vytvoří hodnotu řetěz
 },
 ```
 
-Při definování prostředku, použijte proměnnou.
+Proměnnou použijete při definování prostředku.
 
 ```json
 "resources": [
@@ -335,7 +335,7 @@ Při definování prostředku, použijte proměnnou.
 
 ### <a name="configuration-variables"></a>Konfigurační proměnné
 
-Komplexní typy JSON můžete použít k definování souvisejících hodnot pro prostředí.
+Pomocí komplexních typů JSON můžete definovat související hodnoty pro prostředí.
 
 ```json
 "variables": {
@@ -352,7 +352,7 @@ Komplexní typy JSON můžete použít k definování souvisejících hodnot pro
 },
 ```
 
-V parametrech vytvořit hodnotu určující, která konfigurace bude hodnoty použití.
+V parametrech vytvoříte hodnotu, která určuje, které hodnoty konfigurace se mají použít.
 
 ```json
 "parameters": {
@@ -366,36 +366,36 @@ V parametrech vytvořit hodnotu určující, která konfigurace bude hodnoty pou
 },
 ```
 
-Aktuální nastavení s načíst:
+Aktuální nastavení načtete pomocí:
 
 ```json
 "[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
 ```
 
-### <a name="variable-example-templates"></a>Příklad proměnné šablony
+### <a name="variable-example-templates"></a>Příklady šablon proměnných
 
-Tyto šablony příklad ukazují některé scénáře pro používání proměnných. Je nasadíte na testování, jak se zpracovává proměnné v různých scénářích. 
+Tyto příklady šablon předvádějí některé scénáře použití proměnných. Nasaďte je pro testování, jak jsou proměnné zpracovávány v různých scénářích. 
 
 |Šablona  |Popis  |
 |---------|---------|
-| [Definice proměnných](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Ukazuje různé druhy proměnných. Šablona nenasadí žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
-| [Konfigurační proměnná](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Ukazuje použití proměnné, která definuje hodnoty konfigurace. Šablona nenasadí žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
-| [pravidel zabezpečení sítě](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) a [soubor s parametry](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Vytvoří pole ve správném formátu pro přiřazení pravidla zabezpečení pro skupinu zabezpečení sítě. |
+| [Definice proměnných](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Ukazuje různé typy proměnných. Šablona neimplementuje žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
+| [konfigurační proměnná](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Ukazuje použití proměnné definující konfigurační hodnoty. Šablona neimplementuje žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
+| [pravidla zabezpečení sítě](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) a [soubor parametrů](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Sestaví pole ve správném formátu pro přiřazení pravidel zabezpečení do skupiny zabezpečení sítě. |
 
 
 ## <a name="functions"></a>Funkce
 
-V rámci šablony můžete vytvořit vaše vlastní funkce. Tyto funkce jsou k dispozici pro použití ve vaší šabloně. Obvykle definujete složitý výraz, který nechcete opakovat v rámci šablony. Vytvoření uživatelem definovaných funkcí z výrazů a [funkce](resource-group-template-functions.md) v rámci šablon, které jsou podporovány.
+V rámci šablony můžete vytvořit vlastní funkce. Tyto funkce jsou k dispozici pro použití ve vaší šabloně. Obvykle definujete složitý výraz, který nechcete opakovat v rámci šablony. Můžete vytvořit uživatelsky definované funkce z výrazů a [funkcí](resource-group-template-functions.md) , které jsou podporovány v šablonách.
 
-Při definování funkce user, platí určitá omezení:
+Při definování uživatelské funkce existují určitá omezení:
 
-* Funkce nemá přístup k proměnné.
-* Funkci lze použít pouze parametry, které jsou definovány ve funkci. Při použití [parametry funkce](resource-group-template-functions-deployment.md#parameters) v rámci uživatelem definované funkce, je omezený na parametry pro tuto funkci.
-* Funkci nelze volat jiné uživatelem definované funkce.
-* Funkci nelze použít [odkazu funkci](resource-group-template-functions-resource.md#reference).
-* Parametry pro tuto funkci nemůže mít výchozí hodnoty.
+* Funkce nemá přístup k proměnným.
+* Funkce může používat pouze parametry, které jsou definovány ve funkci. Použijete-li [funkci Parameters](resource-group-template-functions-deployment.md#parameters) v rámci uživatelsky definované funkce, budete omezeni na parametry této funkce.
+* Funkce nemůže volat jiné uživatelsky definované funkce.
+* Funkce nemůže používat odkazovou [funkci](resource-group-template-functions-resource.md#reference).
+* Parametry pro funkci nemohou mít výchozí hodnoty.
 
-Vaše funkce vyžadují hodnotu oboru názvů, aby předešel konfliktům s funkcí šablony. Následující příklad ukazuje funkci, která vrátí název účtu úložiště:
+Vaše funkce vyžadují hodnotu oboru názvů, aby se zabránilo konfliktům názvů s funkcemi šablon. Následující příklad ukazuje funkci, která vrací název účtu úložiště:
 
 ```json
 "functions": [
@@ -419,7 +419,7 @@ Vaše funkce vyžadují hodnotu oboru názvů, aby předešel konfliktům s funk
 ],
 ```
 
-Volání funkce:
+Funkci zavoláte pomocí:
 
 ```json
 "resources": [
@@ -439,11 +439,11 @@ Volání funkce:
 ```
 
 ## <a name="resources"></a>Zdroje a prostředky
-V části prostředky definovat prostředky, které jsou nasazené a aktualizovat.
+V části Resources (prostředky) definujete prostředky, které jsou nasazené nebo aktualizované.
 
 ### <a name="available-properties"></a>Dostupné vlastnosti
 
-Můžete definovat prostředky s následující strukturou:
+Provedete definování prostředků s následující strukturou:
 
 ```json
 "resources": [
@@ -501,26 +501,26 @@ Můžete definovat prostředky s následující strukturou:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| Podmínka | Ne | Logická hodnota, která určuje, zda prostředek se zřídí během tohoto nasazení. Když `true`, je prostředek vytvořený během nasazení. Když `false`, prostředek se přeskočí pro toto nasazení. Zobrazit [podmínku](#condition). |
-| apiVersion |Ano |Verze rozhraní REST API pro použití při vytváření prostředku. Zjistíte dostupné hodnoty, najdete v článku [referenčními informacemi k šablonám](/azure/templates/). |
-| type |Ano |Typ prostředku. Tato hodnota je kombinací obor názvů zprostředkovatele prostředků a typ prostředku (například **Microsoft.Storage/storageAccounts**). Zjistíte dostupné hodnoty, najdete v článku [referenčními informacemi k šablonám](/azure/templates/). Pro podřízený prostředek formát typu závisí na tom, jestli má vnořené nadřazený prostředek nebo definované mimo nadřazený prostředek. Zobrazit [podřízené prostředky](#child-resources). |
-| name |Ano |Název prostředku. Název musí následovat identifikátor URI součásti omezení RFC3986. Kromě toho služby Azure, které zpřístupňují název prostředku se třetími stranami ověřit název, který má ujistit, že není pokus zfalšovat jiné identity. Pro podřízený prostředek formát názvu závisí na tom, jestli má vnořené nadřazený prostředek nebo definované mimo nadřazený prostředek. Zobrazit [podřízené prostředky](#child-resources). |
-| location |Různé |Podporované geografické umístění zadaného prostředku. Můžete vybrat některý z dostupných umístění, ale obvykle je vhodné vybrat ten, který je blízko vašim uživatelům. Obvykle je také vhodné umístit prostředky, které spolu interagují ve stejné oblasti. Většina typů prostředků vyžaduje umístění, ale některé typy (jako je například přiřazení role) nevyžadují umístění. |
-| značky |Ne |Značky, které jsou spojeny s prostředkem. Použití značek logicky tak uspořádat prostředky napříč vašeho předplatného. |
-| Komentáře |Ne |Poznámky pro dokumentaci prostředků ve vaší šabloně. Další informace najdete v tématu [komentáře v šablonách](resource-group-authoring-templates.md#comments). |
-| kopírování |Ne |V případě potřeby je více než jednu instanci, kolik prostředků k vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky k nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit několik instancí prostředků v Azure Resource Manageru](resource-group-create-multiple.md). |
-| dependsOn |Ne |Prostředky, které musí být nasazený před nasazením tento prostředek. Resource Manager vyhodnotí závislosti mezi prostředky a nasadí ve správném pořadí. Pokud nejsou na sobě navzájem závislé prostředky, kde jsou nasazeny současně. Hodnota může být čárkou oddělený seznam prostředek názvy nebo jedinečné identifikátory prostředků. Pouze výpis prostředků, které jsou nasazené v této šabloně. Prostředky, které nejsou definovány v této šabloně už musí existovat. Vyhněte se přidává zbytečné závislostí může zpomalit vaše nasazení a vytvoření cyklické závislosti. Pokyny k nastavení závislostí v tématu [definování závislostí v šablonách Azure Resource Manageru](resource-group-define-dependencies.md). |
-| properties |Ne |Nastavení konfigurace specifických pro prostředky. Hodnoty pro tyto vlastnosti jsou stejné jako hodnoty, které zadáte v textu požadavku pro operaci rozhraní REST API (metodu PUT) a vytvoří prostředek. Můžete také zadat pole kopie vytvořit několik instancí vlastnosti. Zjistíte dostupné hodnoty, najdete v článku [referenčními informacemi k šablonám](/azure/templates/). |
-| Skladová položka | Ne | Některé prostředky povolit hodnoty, které definují skladová položka pro nasazení. Můžete například zadat typ redundance účtu úložiště. |
-| Typ | Ne | Některé prostředky povolit hodnotu, která definuje typ prostředku, který nasadíte. Můžete například zadat typ služby Cosmos DB k vytvoření. |
-| plán | Ne | Některé prostředky povolit hodnoty, které definují plán pro nasazení. Můžete například zadat image marketplace pro virtuální počítač. | 
-| Prostředky |Ne |Podřízené prostředky, které jsou závislé na prostředku definuje. Zadejte pouze typy prostředků, které jsou povoleny ve schématu nadřazený prostředek. Závislost na nadřazený prostředek není zahrnuta. Je nutné explicitně definovat dané závislosti. Zobrazit [podřízené prostředky](#child-resources). |
+| condition | Ne | Logická hodnota, která označuje, jestli se prostředek zřídí během tohoto nasazení. Kdy `true`se prostředek vytvoří během nasazování. Kdy `false`se prostředek pro toto nasazení přeskočí. Zobrazit [podmínku](#condition). |
+| apiVersion |Ano |Verze REST API, která se má použít k vytvoření prostředku Chcete-li zjistit dostupné hodnoty, přečtěte si téma [Reference k šabloně](/azure/templates/). |
+| type |Ano |Typ prostředku. Tato hodnota je kombinací oboru názvů poskytovatele prostředků a typu prostředku (například **Microsoft. Storage/storageAccounts**). Chcete-li zjistit dostupné hodnoty, přečtěte si téma [Reference k šabloně](/azure/templates/). U podřízených prostředků závisí formát typu na tom, jestli je vnořený v nadřazeném prostředku nebo definovaný mimo nadřazený prostředek. Viz [Nastavení názvu a typu pro podřízené prostředky](child-resource-name-type.md). |
+| name |Ano |Název prostředku. Název musí splňovat omezení součásti identifikátoru URI definovaná v RFC3986. Kromě toho služby Azure, které zveřejňují název prostředku mimo jiné, ověřují název, abyste se ujistili, že se nejedná o pokus o falšování jiné identity. U podřízeného prostředku formát názvu závisí na tom, jestli je vnořený v nadřazeném prostředku nebo definovaný mimo nadřazený prostředek. Viz [Nastavení názvu a typu pro podřízené prostředky](child-resource-name-type.md). |
+| location |Různé |Podporovaná geografická umístění poskytnutého prostředku Můžete vybrat kterékoli z dostupných umístění, ale obvykle dává smysl vybrat, která je blízko vašim uživatelům. Obvykle má smysl umístit prostředky, které vzájemně spolupracují ve stejné oblasti. Většina typů prostředků vyžaduje umístění, ale některé typy (například přiřazení role) nevyžadují umístění. |
+| značky |Ne |Značky, které jsou přidruženy k prostředku. Použijte značky pro logickou organizaci prostředků v rámci vašeho předplatného. |
+| vyjádření |Ne |Poznámky k dokumentaci prostředků ve vaší šabloně. Další informace najdete v tématu [komentáře v šablonách](resource-group-authoring-templates.md#comments). |
+| Kopírovat |Ne |Pokud je potřeba více než jedna instance, počet prostředků, které se mají vytvořit. Výchozí režim je paralelní. Zadejte sériový režim, pokud nechcete, aby se nasadily všechny nebo prostředky. Další informace najdete v tématu [vytvoření několika instancí prostředků v Azure Resource Manager](resource-group-create-multiple.md). |
+| dependsOn |Ne |Prostředky, které musí být nasazeny před nasazením tohoto prostředku. Správce prostředků vyhodnocuje závislosti mezi prostředky a nasadí je ve správném pořadí. Pokud nejsou prostředky vzájemně závislé, nasadí se paralelně. Hodnota může být čárkami oddělený seznam názvů prostředků nebo jedinečných identifikátorů prostředků. Pouze seznam prostředků, které jsou nasazeny v této šabloně. Prostředky, které nejsou definované v této šabloně, už musí existovat. Vyhněte se přidávání zbytečných závislostí, protože mohou zpomalit nasazení a vytvářet cyklické závislosti. Pokyny k nastavení závislostí najdete v tématu [Definování závislostí v šablonách Azure Resource Manager](resource-group-define-dependencies.md). |
+| properties |Ne |Nastavení konfigurace specifické pro prostředky. Hodnoty vlastností jsou stejné jako hodnoty, které zadáte v textu žádosti pro operaci REST API (metoda PUT) pro vytvoření prostředku. Můžete také zadat pole pro kopírování a vytvořit několik instancí vlastnosti. Chcete-li zjistit dostupné hodnoty, přečtěte si téma [Reference k šabloně](/azure/templates/). |
+| SKU | Ne | Některé prostředky umožňují hodnoty definující SKU, které se mají nasadit. Můžete například zadat typ redundance pro účet úložiště. |
+| plnění | Ne | Některé prostředky umožňují hodnotu definující typ prostředku, který nasadíte. Můžete například zadat typ Cosmos DB, který se má vytvořit. |
+| rozhraní | Ne | Některé prostředky umožňují hodnoty definující plán, který se má nasadit. Můžete například zadat image Marketplace pro virtuální počítač. | 
+| prostředky |Ne |Podřízené prostředky závislé na definovaném prostředku. Poskytněte jenom typy prostředků, které jsou povolené schématem nadřazeného prostředku. Nepředpokládá se závislost na nadřazeném prostředku. Tuto závislost musíte explicitně definovat. Viz [Nastavení názvu a typu pro podřízené prostředky](child-resource-name-type.md). |
 
 ### <a name="condition"></a>Podmínka
 
-Pokud během nasazení musíte rozhodnout, jestli chcete vytvořit prostředek, použijte `condition` elementu. Hodnota pro tento element se přeloží na hodnotu true nebo false. Pokud je hodnota true, je prostředek vytvořený. Pokud je hodnota false, nevytvoří se prostředek. Hodnota dá používat jedině pro celý prostředek.
+V `condition` případě, že je nutné se při nasazení rozhodnout, zda chcete vytvořit prostředek, použijte element. Hodnota pro tento prvek je přeložena na hodnotu true nebo false. Pokud je hodnota true, je prostředek vytvořen. Pokud je hodnota false, prostředek se nevytvoří. Hodnota se dá použít jenom u celého prostředku.
 
-Obvykle tuto hodnotu použijete, pokud chcete vytvořit nový prostředek, nebo použijte již existující. Například, chcete-li určit, jestli je nasazená nový účet úložiště nebo existující účet úložiště se používá, použijte:
+Obvykle tuto hodnotu použijete, pokud chcete vytvořit nový prostředek nebo použít existující. Pokud třeba chcete určit, jestli se má nový účet úložiště nasadit nebo použít existující účet úložiště, použijte:
 
 ```json
 {
@@ -537,19 +537,19 @@ Obvykle tuto hodnotu použijete, pokud chcete vytvořit nový prostředek, nebo 
 }
 ```
 
-Kompletní příklad šablony, která se používá `condition` prvku, naleznete v tématu [virtuálního počítače s novou nebo existující virtuální sítě, úložiště a veřejnou IP adresu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+Kompletní příklad šablony, která používá `condition` element, najdete v tématu [virtuální počítač s novým nebo existujícím Virtual Network, úložištěm a veřejnou IP adresou](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
 
-Pokud používáte [odkaz](resource-group-template-functions-resource.md#reference) nebo [seznamu](resource-group-template-functions-resource.md#list) funkce, s prostředkem, který je nasazený podmíněně, funkce vyhodnocena i v případě, že není nasazený prostředek. Pokud funkci odkazuje na prostředek, který neexistuje, dojde k chybě. Použití [Pokud](resource-group-template-functions-logical.md#if) funkce, která se ujistěte se, že funkce se vyhodnocuje jenom pro podmínky, při nasazení prostředku. Najdete v článku [Pokud funkce](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která využívá Pokud a odkaz se podmíněně nasazených prostředků.
+Použijete-li funkci [reference](resource-group-template-functions-resource.md#reference) nebo [list](resource-group-template-functions-resource.md#list) s prostředkem, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen. Pokud funkce odkazuje na prostředek, který neexistuje, zobrazí se chyba. Použijte funkci [if](resource-group-template-functions-logical.md#if) a ujistěte se, že je funkce vyhodnocena pouze pro podmínky při nasazení prostředku. Podívejte se na [funkci IF](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a odkaz s podmíněně nasazeným prostředkem.
 
 ### <a name="resource-names"></a>Názvy prostředků
 
-Obecně platí práci s tři typy názvů prostředků v Resource Manageru:
+Obecně pracujete se třemi typy názvů prostředků v Správce prostředků:
 
-* Názvy prostředků, které musí být jedinečný.
-* Názvy prostředků, které nemusí být jedinečný, ale můžete rozhodnout pro poskytnutí název, který vám pomůže identifikovat prostředek.
-* Názvy prostředků, které mohou být obecný.
+* Názvy prostředků, které musí být jedinečné.
+* Názvy prostředků, které nejsou nutné, aby byly jedinečné, ale je třeba zadat název, který vám může poznat prostředek identifikovat.
+* Názvy prostředků, které mohou být obecné.
 
-Zadejte **název jedinečný prostředek** pro libovolný typ prostředku, který má koncový bod data access. Některé běžné typy prostředků, které vyžadují jedinečný název patří:
+Zadejte **jedinečný název prostředku** pro libovolný typ prostředku, který má koncový bod pro přístup k datům. Mezi běžné typy prostředků, které vyžadují jedinečný název, patří:
 
 * Azure Storage<sup>1</sup> 
 * Funkce Web Apps ve službě Azure App Service
@@ -561,9 +561,9 @@ Zadejte **název jedinečný prostředek** pro libovolný typ prostředku, kter�
 * Azure Search
 * Azure HDInsight
 
-<sup>1</sup> názvy účtů úložiště také musí obsahovat malá písmena, 24 znaků nebo méně, a není nutné žádné pomlčky.
+<sup>1</sup> názvy účtů úložiště musí mít také malá a velká písmena, méně než 24 znaků a nesmí obsahovat spojovníky.
 
-Při nastavování názvu, můžete ručně vytvořit jedinečný název nebo použít [uniqueString()](resource-group-template-functions-string.md#uniquestring) funkci generování názvu. Můžete také chtít přidat předponu nebo příponu k **uniqueString** výsledek. Úprava jedinečný název můžete vám umožní snadno identifikovat typ prostředku z názvu. Můžete například vygenerovat jedinečný název pro účet úložiště pomocí následující proměnnou:
+Při nastavování názvu můžete buď ručně vytvořit jedinečný název, nebo použít funkci [uniqueString ()](resource-group-template-functions-string.md#uniquestring) pro vygenerování názvu. Také můžete chtít přidat předponu nebo příponu k **uniqueString** výsledku. Změna jedinečného názvu vám umožní snadněji identifikovat typ prostředku z názvu. Můžete například vygenerovat jedinečný název pro účet úložiště pomocí následující proměnné:
 
 ```json
 "variables": {
@@ -571,7 +571,7 @@ Při nastavování názvu, můžete ručně vytvořit jedinečný název nebo po
 }
 ```
 
-Pro některé typy prostředků, můžete chtít poskytnout **název pro identifikaci**, ale název nemusí být jedinečný. Pro tyto typy prostředků zadejte název s popisem použití nebo vlastnosti.
+U některých typů prostředků je vhodné zadat **název pro identifikaci**, ale název nemusí být jedinečný. Pro tyto typy prostředků zadejte název, který popisuje použití nebo charakteristiky.
 
 ```json
 "parameters": {
@@ -585,7 +585,7 @@ Pro některé typy prostředků, můžete chtít poskytnout **název pro identif
 }
 ```
 
-Pro typy prostředků, které většinou přístup přes jiný prostředek, můžete použít **obecný název** , který je pevně zakódované v šabloně. Můžete třeba nastavit standardní, obecný název pravidla brány firewall na serveru SQL server:
+U typů prostředků, ke kterým většinou přistupujete pomocí jiného prostředku, můžete použít **obecný název** , který je pevně zakódovaný v šabloně. Můžete například nastavit standardní, obecný název pro pravidla brány firewall na serveru SQL Server:
 
 ```json
 {
@@ -597,11 +597,11 @@ Pro typy prostředků, které většinou přístup přes jiný prostředek, mů�
 
 ### <a name="resource-location"></a>Umístění prostředku
 
-Při nasazování šablony, je nutné zadat umístění každého prostředku. Různé typy prostředků jsou podporovány v různých umístěních. Podporovaná umístění pro typ prostředku, získáte [poskytovatelé a typy prostředků Azure](resource-manager-supported-services.md).
+Při nasazování šablony je nutné zadat umístění každého prostředku. Různé typy prostředků jsou podporovány v různých umístěních. Pokud chcete získat podporovaná umístění pro typ prostředku, přečtěte si téma [poskytovatelé a typy prostředků Azure](resource-manager-supported-services.md).
 
-Parametr použít k určení umístění pro prostředky a nastavení výchozí hodnoty `resourceGroup().location`.
+Pomocí parametru zadejte umístění pro prostředky a nastavte výchozí hodnotu na `resourceGroup().location`.
 
-Následující příklad ukazuje účet úložiště, která je nasazena do umístění zadaného jako parametr:
+Následující příklad ukazuje účet úložiště, který je nasazený do umístění zadaného jako parametr:
 
 ```json
 {
@@ -654,77 +654,9 @@ Následující příklad ukazuje účet úložiště, která je nasazena do umí
 }
 ```
 
-### <a name="child-resources"></a>Podřízené prostředky
-
-V rámci některé typy prostředků můžete také definovat pole podřízené prostředky. Podřízené prostředky jsou prostředky, které existují pouze v rámci kontextu jiný prostředek. Například databáze SQL nemůže existovat bez serveru SQL server, databázi je podřízený server. Můžete definovat databáze v rámci definice pro server.
-
-```json
-{
-  "apiVersion": "2015-05-01-preview",
-  "type": "Microsoft.Sql/servers",
-  "name": "exampleserver",
-  ...
-  "resources": [
-    {
-      "apiVersion": "2017-10-01-preview",
-      "type": "databases",
-      "name": "exampledatabase",
-      ...
-    }
-  ]
-}
-```
-
-Ale není nutné definovat databáze v rámci serveru. Můžete definovat podřízený prostředek na nejvyšší úrovni. Tento přístup může použít, pokud se nadřazený prostředek není nasazený ve stejné šabloně, nebo pokud chcete použít `copy` vytvořit více než jeden podřízený prostředek. S tímto přístupem poskytují úplnou prostředků a zahrnout název nadřazeného prostředku v názvu prostředku podřízeného.
-
-```json
-{
-  "apiVersion": "2015-05-01-preview",
-  "type": "Microsoft.Sql/servers",
-  "name": "exampleserver",
-  "resources": [ 
-  ],
-  ...
-},
-{
-  "apiVersion": "2017-10-01-preview",
-  "type": "Microsoft.Sql/servers/databases",
-  "name": "exampleserver/exampledatabase",
-  ...
-}
-```
-
-Hodnoty, které zadáte pro typ a název lišit v závislosti na tom, zda je definován prostředek podřízené v nadřazeném prostředku nebo mimo nadřazený prostředek.
-
-Když vnořené v nadřazeném prostředku, použijte:
-
-```json
-"type": "{child-resource-type}",
-"name": "{child-resource-name}",
-```
-
-Je-li definovány mimo nadřazený prostředek, použijte:
-
-```json
-"type": "{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}",
-"name": "{parent-resource-name}/{child-resource-name}",
-```
-
-Pokud vnořený, typ je nastavený na `databases` , ale jeho typ úplné prostředků je stále `Microsoft.Sql/servers/databases`. Nezadáte `Microsoft.Sql/servers/` se předpokládá z nadřazeného typu prostředku. Název prostředku podřízené nastavený na `exampledatabase` ale úplný název obsahuje název nadřazené. Nezadáte `exampleserver` se předpokládá z nadřazeného zdroje.
-
-Při vytváření plně kvalifikovaný odkaz na prostředek, není pořadí zkombinovat segmenty z typu a název jednoduše zřetězení těchto dvou. Místo toho za názvovým prostorem, použijte sekvenci *typ nebo název* dvojice z nejméně specifická, které budou nejvíce specifické:
-
-```json
-{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
-```
-
-Příklad:
-
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` správnost `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` není správná
-
 ## <a name="outputs"></a>Výstupy
 
-V části výstupů zadáte hodnoty, které se vracejí z nasazení. Obvykle návratové hodnoty z nasazených prostředků.
+V části výstupů zadáte hodnoty, které se vracejí z nasazení. Obvykle vracíte hodnoty z nasazených prostředků.
 
 ### <a name="available-properties"></a>Dostupné vlastnosti
 
@@ -743,8 +675,8 @@ Následující příklad ukazuje strukturu definici výstupu:
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
 | outputName |Ano |Název výstupní hodnoty. Musí být platný identifikátor jazyka JavaScript. |
-| Podmínka |Ne | Logická hodnota označující, zda tento výstupní hodnota je vrácena. Když `true`, hodnota je součástí výstupu pro nasazení. Když `false`, výstupní hodnota je vynecháno pro toto nasazení. Pokud není zadán, výchozí hodnota je `true`. |
-| type |Ano |Typ výstupní hodnoty. Výstupní hodnoty podporují stejné typy jako vstupní parametry šablony. Pokud zadáte **securestring** pro typ výstupu, hodnota se nezobrazuje historii nasazení a nelze načíst z jiné šablony. Tajná hodnota ve více než jedna šablona, ukládat ve službě Key Vault tajný klíč a tajný klíč v souboru parametrů odkazovat. Další informace najdete v tématu [použití Azure Key Vault k předání zabezpečený parametr. hodnoty během nasazení](resource-manager-keyvault-parameter.md). |
+| condition |Ne | Logická hodnota, která označuje, zda je vrácena tato výstupní hodnota. Když `true`je hodnota obsažena ve výstupu pro nasazení. V `false`případě je výstupní hodnota pro toto nasazení vynechána. Není-li zadána, je `true`použita výchozí hodnota. |
+| type |Ano |Typ výstupní hodnoty. Výstupní hodnoty podporují stejné typy jako vstupní parametry šablony. Pokud zadáte **SecureString** pro typ výstupu, hodnota se nezobrazí v historii nasazení a nelze ji načíst z jiné šablony. Chcete-li použít tajnou hodnotu ve více než jedné šabloně, uložte tajný klíč do Key Vault a odkazujte na tajný kód v souboru parametrů. Další informace najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](resource-manager-keyvault-parameter.md). |
 | value |Ano |Výraz jazyka šablony, která je vyhodnocena a vrátila jako výstupní hodnota. |
 
 ### <a name="define-and-use-output-values"></a>Definice a používání výstupní hodnoty
@@ -760,7 +692,7 @@ Následující příklad ukazuje, jak vrátit ID prostředku pro veřejnou IP ad
 }
 ```
 
-Následující příklad ukazuje, jak podmíněně vrátit ID prostředku pro veřejnou IP adresu na základě, jestli je nový, jeden byla nasazena:
+Další příklad ukazuje, jak podmíněně vracet ID prostředku pro veřejnou IP adresu na základě toho, zda byla nasazena nová:
 
 ```json
 "outputs": {
@@ -772,7 +704,7 @@ Následující příklad ukazuje, jak podmíněně vrátit ID prostředku pro ve
 }
 ```
 
-Jednoduchý příklad podmíněného výstupu naleznete v tématu [podmíněného výstupu šablony](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
+Jednoduchý příklad podmíněného výstupu naleznete v tématu [podmíněná výstupní šablona](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
 Po nasazení můžete načíst hodnotu pomocí skriptu. Pokud používáte PowerShell, použijte:
 
@@ -790,7 +722,7 @@ Výstupní hodnota z propojené šablony můžete načíst pomocí [odkaz](resou
 
 Při získávání výstupu vlastnost z propojené šablony, název vlastnosti nemůže obsahovat čárku.
 
-Následující příklad ukazuje, jak nastavit IP adresu nástroje pro vyrovnávání zatížení načtením hodnotu z propojenou šablonu.
+Následující příklad ukazuje, jak nastavit IP adresu v nástroji pro vyrovnávání zatížení načtením hodnoty z propojené šablony.
 
 ```json
 "publicIPAddress": {
@@ -800,7 +732,7 @@ Následující příklad ukazuje, jak nastavit IP adresu nástroje pro vyrovnáv
 
 Nelze použít `reference` funkce v části výstupů [vnořené šablony](resource-group-linked-templates.md#link-or-nest-a-template). Na návratové hodnoty pro nasazený prostředek ve vnořené šablony, převeďte vnořené šablony na propojenou šablonu.
 
-### <a name="output-example-templates"></a>Výstup příkladu šablony
+### <a name="output-example-templates"></a>Příklady výstupních šablon
 
 |Šablona  |Popis  |
 |---------|---------|
@@ -811,11 +743,11 @@ Nelze použít `reference` funkce v části výstupů [vnořené šablony](resou
 
 <a id="comments" />
 
-## <a name="comments-and-metadata"></a>Poznámky a metadata
+## <a name="comments-and-metadata"></a>Komentáře a metadata
 
-Máte několik možností pro přidání poznámky a metadata do šablony.
+Máte několik možností, jak přidat komentáře a metadata do šablony.
 
-Můžete přidat `metadata` objekt skoro kdekoli ve vaší šabloně. Objekt ignoruje Resource Manageru, ale JSON editor možná by vás varovala, že vlastnost není platný. V objektu definujte vlastnosti, které potřebujete.
+Můžete přidat `metadata` objekt skoro kdekoli v šabloně. Správce prostředků objekt ignoruje, ale editor JSON vám může zobrazit upozornění, že vlastnost není platná. V objektu definujte vlastnosti, které potřebujete.
 
 ```json
 {
@@ -827,7 +759,7 @@ Můžete přidat `metadata` objekt skoro kdekoli ve vaší šabloně. Objekt ign
   },
 ```
 
-Pro **parametry**, přidejte `metadata` objektu `description` vlastnost.
+Pro **parametry**přidejte `metadata` objekt s `description` vlastností.
 
 ```json
 "parameters": {
@@ -839,11 +771,11 @@ Pro **parametry**, přidejte `metadata` objektu `description` vlastnost.
   },
 ```
 
-Při nasazování šablony prostřednictvím portálu, text, který zadáte v popisu automaticky slouží jako komentář pro tento parametr.
+Při nasazování šablony prostřednictvím portálu se text, který zadáte v popisu, automaticky použije jako Tip pro tento parametr.
 
-![Zobrazit tip parametru](./media/resource-group-authoring-templates/show-parameter-tip.png)
+![Zobrazit Tip parametru](./media/resource-group-authoring-templates/show-parameter-tip.png)
 
-Pro **prostředky**, přidejte `comments` element nebo objekt metadat. Následující příklad ukazuje element komentáře a objekt metadat.
+Pro **prostředky**přidejte `comments` prvek nebo objekt metadat. Následující příklad ukazuje jak element Comments, tak objekt metadat.
 
 ```json
 "resources": [
@@ -869,7 +801,7 @@ Pro **prostředky**, přidejte `comments` element nebo objekt metadat. Následuj
 ]
 ```
 
-Pro **výstupy**, přidejte objekt metadat výstupní hodnotu.
+Pro **výstupy**přidejte objekt metadat do výstupní hodnoty.
 
 ```json
 "outputs": {
@@ -882,9 +814,9 @@ Pro **výstupy**, přidejte objekt metadat výstupní hodnotu.
   },
 ```
 
-Objekt metadat nelze přidat do uživatelem definované funkce.
+Do uživatelsky definovaných funkcí nemůžete přidat objekt metadat.
 
-Vložené komentáře, můžete použít `//` , ale tato syntaxe nefunguje s všechny nástroje. Pokud chcete nasadit šablonu pomocí vložené komentáře nelze použít rozhraní příkazového řádku Azure. A editoru portálu šablony nelze použít pro práci na šablonách s vložené komentáře. Pokud chcete přidat tento styl komentář, ujistěte se, nástrojů, které používáte podporu vložené JSON komentáře.
+Pro vložené komentáře můžete použít `//` , ale tato syntaxe nefunguje u všech nástrojů. K nasazení šablony s vloženými komentáři nelze použít rozhraní příkazového řádku Azure CLI. A nemůžete použít editor šablon portálu pro práci se šablonami s vloženými komentáři. Pokud přidáte tento styl komentáře, ujistěte se, že nástroje, které používáte, podporují vložené komentáře JSON.
 
 ```json
 {
@@ -898,9 +830,9 @@ Vložené komentáře, můžete použít `//` , ale tato syntaxe nefunguje s vš
   ],
 ```
 
-V nástroji VS Code můžete nastavit režim jazyka do formátu JSON s komentáři. Vložené komentáře se už nebude označena jako neplatná. Chcete-li změnit režim:
+V VS Code můžete nastavit režim jazyka na JSON s komentáři. Vložené komentáře již nejsou označeny jako neplatné. Postup změny režimu:
 
-1. Otevřete výběr jazyka režimu (Ctrl + K M)
+1. Otevřít výběr jazykového režimu (CTRL + K M)
 
 1. Vyberte **JSON s komentáři**.
 
@@ -911,6 +843,6 @@ V nástroji VS Code můžete nastavit režim jazyka do formátu JSON s komentá�
 ## <a name="next-steps"></a>Další postup
 * Hotové šablony pro mnoho různých typů řešení najdete na stránce [Šablony Azure pro rychlý start](https://azure.microsoft.com/documentation/templates/).
 * Podrobnosti o funkce, které můžete použít z v rámci šablony najdete v tématu [funkce šablon Azure Resource Manageru](resource-group-template-functions.md).
-* Pokud chcete sloučit několik šablon během nasazení, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
-* Doporučení o vytváření šablon naleznete v tématu [osvědčené postupy pro šablony Azure Resource Manageru](template-best-practices.md).
-* Doporučení týkající se vytvoření šablony Resource Manageru, které můžete použít ve všech prostředích Azure a Azure Stack, najdete v tématu [šablon vývoj Azure Resource Manageru pro cloud konzistence](templates-cloud-consistency.md).
+* Pokud chcete zkombinovat několik šablon během nasazování, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
+* Doporučení k vytváření šablon najdete v tématu [osvědčené postupy pro šablonu Azure Resource Manager](template-best-practices.md).
+* Doporučení k vytváření Správce prostředků šablon, které můžete použít ve všech prostředích a Azure Stack Azure, najdete v tématu [vývoj šablon Azure Resource Manager pro zajištění konzistence cloudu](templates-cloud-consistency.md).

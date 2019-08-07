@@ -1,6 +1,6 @@
 ---
-title: Třeba provést čtyři kroky základ využívá silné identity s Azure Active Directory
-description: Toto téma popisuje čtyři kroky, hybridní identity zákazníků a vytváří základ využívá silné identity.
+title: Čtyři kroky pro silnou identitu Foundation s Azure Active Directory
+description: Toto téma popisuje čtyři kroky, které zákazníci s Hybrid identity můžou využít k vytvoření silného základu identity.
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -13,260 +13,260 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a20a1a1009949aa2e6de8586040e918ae15c8d39
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 0630e62a08314612cb08b5cb26b5a1563de4f40b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655946"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779688"
 ---
-# <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Třeba provést čtyři kroky základ využívá silné identity s Azure Active Directory
+# <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Čtyři kroky pro silnou identitu Foundation s Azure Active Directory
 
-Správa přístupu k aplikacím a datům můžete už nespoléhají na strategie hranic zabezpečení tradiční sítě například hraniční sítě a brány firewall kvůli rychlý přesun aplikací do cloudu. Organizace teď musí důvěřovat jejich řešení identity řídit, kdo a jaké má přístup k aplikacím a datům organizace. Další organizace je umožnit zaměstnancům přinést si vlastní zařízení k práci a používat svoje zařízení z libovolného místa, které můžete připojit k Internetu. Zajištění, že tato zařízení jsou vyhovující a zabezpečené přestal důležitým aspektem, který v řešení identity, které organizace zvolí možnost implementovat. V dnešních digitálních pracoviště [identita je primární ovládací prvek roviny](https://www.microsoft.com/security/technology/identity-access-management?rtc=1) každé společnosti Přesun do cloudu.
+Správa přístupu k aplikacím a datům už nemůže spoléhat na tradiční strategie hraničních zabezpečení sítě, jako jsou hraniční sítě a brány firewall, kvůli rychlému přesunu aplikací do cloudu. Organizace musí své řešení identit důvěřovat, abyste mohli řídit, kdo a co má přístup k aplikacím a datům organizace. Víc organizací umožňuje zaměstnancům přinášet si vlastní zařízení, aby fungovala, a využívat jejich zařízení odkudkoli, kde se můžou připojovat k Internetu. Zajištění dodržování předpisů a zabezpečení těchto zařízení se stává důležitým aspektem řešení identity, které organizace zvolí k implementaci. V dnešním digitálním pracovišti [je identitou primární Řídicí rovina](https://www.microsoft.com/security/technology/identity-access-management?rtc=1) každé organizace, která přesouvá do cloudu.
 
-Při přijímání hybridní řešení identit Azure Active Directory (Azure AD), organizace získat přístup k prémiové funkce, které odhalují produktivity díky automatizaci, delegování, samoobslužných služeb a jsou jediné možnosti přihlašování. Umožňuje, aby vaši pracovníci přístup k firemním prostředkům z všude, kde potřebují ke své práci zároveň umožní váš IT tým řízení, které přístup tím, že zajišťuje, že lidé mít práva na přístup ke správné prostředky k navázání zabezpečené produktivitu.
+Při přijímání řešení hybridní identity pro Azure Active Directory (Azure AD) získají organizace přístup k funkcím úrovně Premium, které mají možnost odemknout produktivitu prostřednictvím automatizace, delegování, samoobslužné služby a možností jednotného přihlašování. Umožňuje vašim pracovníkům přístup k prostředkům společnosti z libovolného místa, kde potřebují svou práci, a umožňuje tak vašemu IT týmu řídit přístup tím, že zajistí, aby měli oprávnění ke zvýšení produktivity správný přístup ke správným prostředkům.
 
-Podle poznatky, tento kontrolní seznam osvědčených postupů vám pomůže rychle nasadit doporučené akce k sestavení *silné* identity foundation ve vaší organizaci:
+Tento kontrolní seznam osvědčených postupů vám pomůže rychle nasadit doporučené akce pro vytvoření silného základu identity ve vaší organizaci, a to na základě našich kurzů:
 
 * Snadné připojení k aplikacím
-* Automaticky vytvořit jednu identitu pro každého uživatele
-* Bezpečně Zlepšete možnosti svých uživatelů
-* Zprovoznění přehledy
+* Vytvořit jednu identitu pro každého uživatele automaticky
+* Zabezpečená podpora pro uživatele
+* Zprovoznění své přehledy
 
 ## <a name="step-1---connect-to-apps-easily"></a>Krok 1 – snadné připojení k aplikacím
 
-Propojení vašich aplikací s Azure AD, můžete zlepšit zabezpečení produktivity koncových uživatelů a povolením jednotného přihlašování (SSO) a proveďte zřizování uživatelů. Tím, že spravuje vaše aplikace na jednom místě, Azure AD, můžete minimalizovat správní režie a jediného ovládacího bodu dosáhnout souladu se zásadami zabezpečení a dodržování předpisů.
+Připojením vašich aplikací ke službě Azure AD můžete zlepšit produktivitu a zabezpečení koncového uživatele tím, že povolíte jednotné přihlašování (SSO) a provedete zřizování uživatelů. Když spravujete aplikace na jednom místě, Azure AD, můžete minimalizovat režijní náklady na správu a dosáhnout jediného kontrolního bodu pro zásady zabezpečení a dodržování předpisů.
 
-Tato část popisuje vaše možnosti pro správu přístupu uživatelů k aplikacím, povolení zabezpečeného vzdáleného přístupu a interních aplikací, o výhodách migrace aplikací do služby Azure AD.
+Tato část obsahuje informace o možnostech správy přístupu uživatelů k aplikacím, povolení zabezpečeného vzdáleného přístupu k interním aplikacím a výhodám migrace vašich aplikací do Azure AD.
 
-### <a name="make-apps-available-to-your-users-seamlessly"></a>Zpřístupnění aplikace uživatelům bez problémů
+### <a name="make-apps-available-to-your-users-seamlessly"></a>Bezproblémové zpřístupnění aplikací pro uživatele
 
-Azure AD umožňuje správcům [přidat aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal) do Galerie organizace aplikací v [webu Azure portal](https://portal.azure.com/). Přidání aplikací do Galerie organizace aplikace usnadňuje konfigurace aplikací, které používají Azure AD jako zprostředkovatele identity. Také umožňuje spravovat přístup uživatelů k aplikaci pomocí zásad podmíněného přístupu a nakonfigurovat jednotné přihlašování (SSO) k aplikacím tak, aby uživatelé nemuseli zadávat heslo opakovaně a automaticky přihlášeni v místním a cloudové aplikace.
+Azure AD umožňuje správcům [přidávat](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal) do galerie podnikových aplikací aplikace v [Azure Portal](https://portal.azure.com/). Přidávání aplikací do galerie podnikových aplikací usnadňuje konfiguraci aplikací pro použití Azure AD jako zprostředkovatele identity. Umožňuje taky spravovat přístup uživatelů k aplikaci pomocí zásad podmíněného přístupu a nakonfigurovat jednotné přihlašování (SSO) k aplikacím, aby uživatelé nemuseli zadávat hesla opakovaně a automaticky se přihlásili k místním i cloudové aplikace.
 
-Jakmile se aplikace přidávají do Galerie Azure AD, uživatelé mohou zobrazit aplikace, které jsou jim přiřazeny a hledání a požádat o další aplikace podle potřeby. Azure AD poskytuje [několik metod](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences) uživatelé měli přístup k jejich aplikace:
+Jakmile se aplikace přidají do galerie služby Azure AD, uživatelé uvidí aplikace, které jsou jim přiřazené, a podle potřeby vyhledají a požadují jiné aplikace. Azure AD poskytuje pro uživatele [několik způsobů](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences) přístupu ke svým aplikacím:
 
-* Přístupový panel / Moje aplikace
-* Spouštěč aplikací Office 365
+* Přístupový panel/Moje aplikace
+* Spouštěč aplikací pro Office 365
 * Přímé přihlášení k federovaným aplikacím
-* Přímé odkazy přihlašování
+* Přímé přihlašovací odkazy
 
-Další informace o přístupu uživatelů k aplikacím, najdete v článku **krok 3 – umožněte uživatelům si** v tomto článku.
+Další informace o přístupu uživatelů k aplikacím najdete v **kroku 3 – podpora uživatelů** v tomto článku.
 
-### <a name="migrate-apps-from-active-directory-federation-services-to-azure-ad"></a>Migrace aplikací ze služby Active Directory Federation Services do služby Azure AD
+### <a name="migrate-apps-from-active-directory-federation-services-to-azure-ad"></a>Migrace aplikací z Active Directory Federation Services (AD FS) do Azure AD
 
-Migrace jednotné přihlašování z Active Directory Federation Services (ADFS) do služby Azure AD umožňuje další možnosti na zabezpečení, spravovatelnosti konzistentnější a spolupráci. Pro dosažení optimálních výsledků doporučujeme migrovat vaše aplikace ze služby AD FS do Azure AD. Přenesení aplikace ověřování a autorizace Azure AD poskytuje následující výhody:
+Migrace konfigurace jednotného přihlašování z Active Directory Federation Services (AD FS) (ADFS) do služby Azure AD umožňuje využívat další možnosti zabezpečení, jednotnější možnosti správy a spolupráce. Pro dosažení optimálních výsledků doporučujeme migrovat aplikace z AD FS do služby Azure AD. Ověřování a autorizace vaší aplikace v Azure AD vám poskytne následující výhody:
 
 * Správa nákladů
 * Řízení rizik
 * Zvýšení produktivity
-* Adresování dodržování předpisů a zásad správného řízení
+* Řešení dodržování předpisů a zásad správného řízení
 
-Další informace najdete v tématu [migrace aplikací v Azure Active Directory](https://aka.ms/migrateapps/whitepaper) dokument White Paper.
+Další informace najdete v tématu [migrace vašich aplikací do Azure Active Directory](https://aka.ms/migrateapps/whitepaper) dokumentů White Paper.
 
 ### <a name="enable-secure-remote-access-to-apps"></a>Povolit zabezpečený vzdálený přístup k aplikacím
 
-[Azure AD Application Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy) poskytuje jednoduché řešení organizacím publikovat místní aplikace do cloudu pro vzdálené uživatele, kteří potřebují přístup k interním aplikacím zabezpečeným způsobem. Po jednotné přihlašování do služby Azure AD mohou uživatelé přistupovat cloudové a místní aplikace prostřednictvím externí adresy URL nebo interní aplikace portálu.
+[Azure proxy aplikací služby AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy) poskytuje organizacím jednoduché řešení pro publikování místních aplikací do cloudu pro vzdálené uživatele, kteří potřebují zabezpečený přístup k interním aplikacím. Po jednotném přihlášení ke službě Azure AD budou mít uživatelé přístup k cloudovým i místním aplikacím prostřednictvím externích adres URL nebo interního portálu aplikací.
 
-Proxy aplikací Azure AD nabízí následující výhody:
+Azure Proxy aplikací služby AD nabízí následující výhody:
 
-* Rozšíření Azure AD a místní prostředky
-  * Zabezpečení cloudových a ochrany
-  * Funkce, jako je podmíněný přístup a ověřování službou Multi-Factor Authentication, který se snadno povolit
-* Žádné součásti v hraniční síti, jako je například řešení tradiční reverzního proxy serveru a sítě VPN
-* Žádná příchozí připojení vyžaduje
-* Jednotné přihlašování (SSO) napříč zařízeními, prostředky a aplikace v cloudu i lokálně
-* Umožňuje koncovým uživatelům produktivity kdykoli a kdekoli
+* Rozšíření Azure AD na místní prostředky
+  * Zabezpečení a ochrana v cloudovém měřítku
+  * Funkce, jako je podmíněný přístup a Multi-Factor Authentication, které je snadné povolit
+* Žádné součásti v hraniční síti, například VPN a tradiční řešení reverzního proxy serveru
+* Nejsou požadována žádná příchozí připojení.
+* Jednotné přihlašování (SSO) v rámci zařízení, prostředků a aplikací v cloudu i v místním prostředí
+* Umožňuje koncovým uživatelům, aby byli produktivní kdykoli a kdekoli
 
-### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Zjistit pomocí Microsoft Cloud App Security stínové IT
+### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Objevte stínové IT pomocí Microsoft Cloud App Security
 
-V moderních podnicích IT oddělení nemají často informace o všech cloudových aplikací, které jsou používány uživatelé ke své práci. Když správci IT se zobrazí výzva, kolik cloudových aplikací uvažují svým zaměstnancům používat, v průměru, Řekněme 30 nebo 40. Průměr je ve skutečnosti více než 1 000 samostatné aplikace, které se používají zaměstnanci ve vaší organizaci. 80 % zaměstnanců použijte – schválené aplikace, které nikdo zkontroloval a nemusí být kompatibilní se zásadami zabezpečení a dodržování předpisů.
+V moderních podnicích IT oddělení často nevědí o všech cloudových aplikacích, které používají uživatelé ke své práci. Když správci IT žádají, aby si využívali, kolik cloudových aplikací se jejich zaměstnanci považují, v průměru říká 30 nebo 40. Ve skutečnosti je průměr více než 1 000 samostatných aplikací používaných zaměstnanci ve vaší organizaci. 80% zaměstnanců používá neschválené aplikace, které nikdo nezkontroloval a nemusí být v souladu se zásadami zabezpečení a dodržování předpisů.
 
-[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) vám pomůže identifikovat užitečné aplikace, které jsou oblíbené s uživateli, že může schválit a přidat do Galerie organizace aplikace tak, aby uživatelé využít výhod funkcí, jako je jednotné přihlašování a podmíněný přístup.
+[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) vám může pomoct identifikovat užitečné aplikace, které jsou oblíbené s uživateli, že si mohou schválit a přidat do galerie podnikových aplikací, aby uživatelé využili výhod funkcí, jako je jednotné přihlašování a podmíněný přístup.
 
-*"** Cloud App Security** nástroje zase pomáhají zajistit, aby naši lidé jsou správně používali naší cloudové aplikace a aplikace SaaS, způsoby, které podporují zásady základní zabezpečení, které pomáhají chránit Accenture." *--- [John Blasi, správa, ředitel pro bezpečnost informací, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*"* * Cloud App Security** pomáhá zajistit, že naši lidé budou správně používat naše cloudové a SaaS aplikace, a to tak, jak podporují základní zásady zabezpečení, které pomáhají chránit Accenture." *--- [Jan Blasi, Správa ředitele, zabezpečení informací, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-Kromě zjišťování skryté IT činnosti, můžete také MCAS určit úroveň rizika aplikací, zabránit neoprávněnému přístupu k firemním datům, úniku dat a další bezpečnostní rizika spojená s aplikací.
+Kromě detekce stínového IT může MCAS také určit úroveň rizika aplikací, zabránit neoprávněnému přístupu k podnikovým datům, možnému úniku dat a dalším bezpečnostním rizikům, která jsou v aplikacích spojená.
 
-## <a name="step-2---establish-one-identity-for-every-user-automatically"></a>Krok 2: vytvoření jedna identita pro každého uživatele automaticky
+## <a name="step-2---establish-one-identity-for-every-user-automatically"></a>Krok 2 – vytvoření jedné identity pro každého uživatele automaticky
 
-Spojuje místního a cloudového adresáře hybridní řešení identit Azure AD vám umožní znovu použít místní služby Active Directory stávajícího prostředí tím, že zajistíte existující identit v cloudu. Řešení synchronizuje místních identit s Azure AD, při IT udržuje v místní službě Active Directory s všechna existující řešení zásad správného řízení jako primární zdroj informací pro identity. Azure AD od Microsoftu, hybridní řešení identit překlenuje místní a cloudové možnosti vytváření společnou uživatelskou identitu pro ověřování a autorizaci pro všechny prostředky bez ohledu na jejich umístění.
+Místní a cloudové adresáře společně v řešení hybridních identit Azure AD vám umožní znovu využít stávající investice do místní služby Active Directory tím, že zřídí vaše stávající identity v cloudu. Řešení synchronizuje místní identity s Azure AD, a udržuje místní službu Active Directory běžící se všemi stávajícími řešeními zásad správného řízení jako primární zdroj pravdy pro identity. Řešení hybridních identit v Azure AD se zakládá na místních i cloudových možnostech a vytváří společnou identitu uživatelů pro ověřování a autorizaci pro všechny prostředky bez ohledu na jejich umístění.
 
-Integrace místních adresářů s Azure AD zajišťuje uživatelům vyšší produktivitu a uživatelům bránit v použití více účtů v aplikacích a službách poskytnutím společné identity pro přístup ke cloudovým i a místním prostředkům. Použití více účtů je bolavých míst pro koncové uživatele a IT Příbuzná témata. Z pohledu koncového uživatele s více účty znamená, že si museli pamatovat více hesel. Abyste tomu předešli, mnoho uživatelů znovu použít stejné heslo pro každý účet, který je chybný. z hlediska zabezpečení. Z hlediska IT opakované použití často vede k více resetování hesel a náklady na helpdesk spolu s stížností koncového uživatele.
+Integrace místních adresářů se službou Azure AD umožňuje uživatelům zvýšit produktivitu a zabránit uživatelům v používání několika účtů napříč aplikacemi a službami tím, že poskytuje společnou identitu pro přístup k cloudovým i místním prostředkům. Použití více účtů je pro koncové uživatele bodovým bodem a je to podobně. V perspektivě pro koncové uživatele má několik účtů pamatovat si více hesel. Aby k tomu nedocházelo, mnoho uživatelů znovu používá stejné heslo pro každý účet, který je z hlediska zabezpečení špatný. Z perspektivy IT často opakované použití vede k většímu počtu resetování hesel a nákladům na helpdesk spolu s reklamami koncového uživatele.
 
-Azure AD Connect je nástroj, který slouží k synchronizaci místních identit do služby Azure AD, který můžete použít pro přístup ke cloudovým aplikacím. Jakmile identity ve službě Azure AD, můžete zřídit k aplikacím SaaS, jako je Salesforce nebo Concur.
+Azure AD Connect je nástroj, který se používá k synchronizaci místních identit s Azure AD, které se pak dají použít pro přístup k cloudovým aplikacím. Jakmile jsou identity ve službě Azure AD, můžou zřídit SaaS aplikace, jako je Salesforce nebo Concur.
 
-V této části uvádíme doporučení pro zajištění vysoké dostupnosti, moderní ověřování pro cloud a snížení nároků vaší místní.
+V této části uvádíme doporučení pro zajištění vysoké dostupnosti, moderního ověřování pro Cloud a omezení vašich místních nároků.
 
 > [!NOTE]
-> Pokud chcete získat další informace o Azure AD Connect, přečtěte si téma [co je Azure AD Connect Sync?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)
+> Pokud chcete získat další informace o Azure AD Connect, přečtěte si téma [co je Azure AD Connect synchronizace?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis)
 
-### <a name="set-up-a-staging-server-for-azure-ad-connect-and-keep-it-up-to-date"></a>Nastavit pracovní server Azure AD Connect a stále aktuální
+### <a name="set-up-a-staging-server-for-azure-ad-connect-and-keep-it-up-to-date"></a>Nastavte přípravný Server pro Azure AD Connect a udržujte si ho v aktuálním stavu.
 
-Azure AD Connect hrají klíčovou roli v procesu zřizování. Pokud synchronizační Server přejde do režimu offline z jakéhokoli důvodu, změny v místním nebude aktualizován v cloudu a způsobit potíže s přístupem k uživatelům. Je důležité definovat strategii převzetí služeb při selhání, který umožňuje správcům rychlé obnovení synchronizace po synchronizační server přejde do režimu offline.
+Azure AD Connect hraje klíčovou roli v procesu zřizování. Pokud se synchronizační Server z jakéhokoli důvodu přepne do offline režimu, změny v místním prostředí se v cloudu neaktualizují a můžou uživatelům způsobit problémy s přístupem. Je důležité definovat strategii převzetí služeb při selhání, která umožňuje správcům rychle obnovit synchronizaci po přechodu synchronizačního serveru do režimu offline.
 
-Pro zajištění vysoké dostupnosti v události primární Azure AD Connect server přejde do offline režimu, se doporučuje nasadit samostatný [pracovní server](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server) pro Azure AD Connect. Nasazení serveru umožňuje správci "podporovat" pracovní server do produkčního prostředí přepínačem jednoduché konfigurace. Pohotovostní server nakonfigurovat v pracovním režimu také umožňuje testovat a nasazovat nové změny konfigurace a zavést nový server, pokud vyřazení staré.
+Pro zajištění vysoké dostupnosti v případě přechodu primárního Azure AD Connect serveru do režimu offline doporučujeme, abyste nasadili samostatný [přípravný Server](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server) pro Azure AD Connect. Nasazení serveru umožňuje správci "zvýšit úroveň" přípravného serveru do produkčního prostředí pomocí jednoduchého přepínače konfigurace. Pokud máte pohotovostní server nakonfigurovaný v pracovním režimu, můžete také testovat a nasazovat nové změny konfigurace a zavést nový server, pokud vyřadíte starou jinou.
 
 > [!TIP]
-> Azure AD Connect je aktualizována v pravidelných intervalech. Proto důrazně doporučujeme, abyste pracovní server aktuální, aby bylo možné využít k vylepšení výkonu, opravy chyb a nové funkce, které obsahuje každá nová verze.
+> Azure AD Connect se pravidelně aktualizují. Proto důrazně doporučujeme, abyste zachovali aktuální pracovní server, abyste mohli využívat vylepšení výkonu, opravy chyb a nové funkce, které poskytuje každá nová verze.
 
-### <a name="enable-cloud-authentication"></a>Ověření cloudu
+### <a name="enable-cloud-authentication"></a>Povolit cloudové ověřování
 
-Organizace pomocí místní služby Active Directory by měl rozšířit svého adresáře do služby Azure AD pomocí služby Azure AD Connect a nakonfigurujte odpovídající metodu ověřování. [Výběr správné metody ověřování](https://docs.microsoft.com/azure/security/azure-ad-choose-authn) organizace je první krok na vaší cestě přesunu aplikace do cloudu. To je zásadní součástí, protože řídí přístup ke všem data v cloudu a prostředků.
+Organizace s místní službou Active Directory by měly svůj adresář do Azure AD zvětšit pomocí Azure AD Connect a nakonfigurovat příslušnou metodu ověřování. [Výběr správné metody ověřování](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn) pro vaši organizaci je prvním krokem ve vaší cestě k přesunutí aplikací do cloudu. Je to kritická součást, protože řídí přístup ke všem cloudovým datům a prostředkům.
 
-Nejjednodušší a doporučená metoda umožňující použití cloudového ověřování ve službě Azure AD pro objekty v místním adresáři je umožnit [synchronizaci hodnot Hash hesel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS). Můžete také některé organizace může zvážit povolení [předávací ověřování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA).
+Nejjednodušší a doporučená metoda pro povolení cloudového ověřování pro místní adresářové objekty ve službě Azure AD je povolení [synchronizace hodnot hash hesel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (kosmetice). Případně můžou některé organizace zvážit povolení [předávacího ověřování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA).
 
-Ať už zvolíte PHS nebo PTA, nezapomeňte povolit [bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) umožňující uživatelům přístup ke cloudovým aplikacím bez neustále zadávání uživatelského jména a hesla v aplikaci při použití Windows 7 a 8 zařízení na podnikový síť. Bez jednotného přihlašování uživatelé musí mějte na paměti specifické pro aplikaci hesla a přihlášení do jednotlivých aplikací. Podobně IT pracovníci musí vytvářet a aktualizovat uživatelské účty pro každou aplikaci, jako je Office 365, Box nebo Salesforce. Uživatelé musí pamatovat si hesla a ztrácet čas přihlášení do jednotlivých aplikací. Poskytuje standardizované jednotné přihlašování mechanismus pro celou organizaci je zásadní pro nejlepší uživatelské prostředí, při snížení rizika, schopnost vykazovat, zásad správného řízení.
+Ať už zvolíte KOSMETICE nebo PTA, Nezapomeňte povolit [bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) umožňující uživatelům přístup ke cloudovým aplikacím bez neustálého zadávání uživatelského jména a hesla do aplikace při použití zařízení se systémem Windows 7 a 8 ve vaší podnikové síti. Bez jednotného přihlašování si uživatelé musí pamatovat hesla specifická pro aplikace a přihlašovat se k jednotlivým aplikacím. Stejně tak pracovníci IT potřebují vytvářet a aktualizovat uživatelské účty pro každou aplikaci, například Office 365, box a Salesforce. Uživatelé si musí pamatovat hesla a zatěžovat si čas potřebný k přihlášení ke každé aplikaci. Zajištění standardizovaného mechanismu jednotného přihlašování pro celou firmu je klíčové pro nejlepší uživatelské prostředí, snížení rizika, schopnost vykazovat a zásad správného řízení.
 
-Pro organizace, které už používají služby AD FS nebo jiného místního zprostředkovatele ověřování Přesun do Azure AD jako zprostředkovatele identity můžete zjednodušení a zlepšení dostupnosti. Pokud nemáte konkrétní případy použití pro použití federace, doporučujeme migrovat z federovaného ověřování PHS a bezproblémového jednotného přihlašování nebo PTA a bezproblémového jednotného přihlašování a využijte výhod snížené místní nároky a flexibilitu, které cloud nabízí s Vylepšené uživatelské prostředí. Další informace najdete v tématu [migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync).
+Pro organizace, které už používají AD FS nebo jiného místního zprostředkovatele ověřování, se přesunete do Azure AD, protože váš poskytovatel identity může snížit složitost a zlepšit dostupnost. Pokud nemáte konkrétní případy použití pro použití federace, doporučujeme migrovat z federovaného ověřování na KOSMETICE a bezproblémové jednotné přihlašování nebo PTA a bezproblémové jednotné přihlašování, které vám umožní využívat výhody omezeného místního prostředí a flexibility, které Cloud nabízí. Vylepšené uživatelské prostředí. Další informace najdete v článku [migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/plan-migrate-adfs-password-hash-sync).
 
-### <a name="enable-automatic-deprovisioning-of-accounts"></a>Povolit automatické zrušení zřízení účtů
+### <a name="enable-automatic-deprovisioning-of-accounts"></a>Povolit automatické zrušení zřizování účtů
 
-Povolení automatické zřizování a jeho rušení pro aplikace je nejlepší strategii pro řízení životního cyklu identit mezi různými systémy. Azure AD podporuje [automatizované, na základě zásad zřizování a rušení zřízení](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) uživatelských účtů do celé řady oblíbených aplikací SaaS, jako je například ServiceNow a Salesforce a další, které implementují [SCIM 2.0 protokol](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups). Na rozdíl od tradičních řešení zřizování, které vyžadují vlastní kód nebo ruční nahrávání souborů CSV, zřizovací služba je hostovaná v cloudu a funkce předem integrovaných konektorů, které se dá nastavit a spravovat pomocí webu Azure portal. Klíčovou výhodou automatické zrušení zřízení je, že pomáhá zabezpečit svou organizaci odebráním okamžitě identit uživatelů z klíčových aplikací SaaS při opuštění organizace.
+Povolení automatického zřizování a zrušení zřizování pro vaše aplikace je nejlepší strategií pro řízení životního cyklu identit napříč různými systémy. Azure AD podporuje [automatizované zřizování a rušení zřizování na základě zásad](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) pro celou řadu oblíbených aplikací SaaS, jako je ServiceNow a Salesforce, a dalších, které implementují [protokol SCIM 2,0](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups). Na rozdíl od tradičních zřizovacích řešení, která vyžadují vlastní kód nebo ruční nahrávání souborů CSV, je služba zřizování hostována v cloudu a funkce předem integrovaných konektorů, které je možné nastavit a spravovat pomocí Azure Portal. Klíčovou výhodou automatického zrušení zřizování je to, že pomáhá zabezpečit vaši organizaci tím, že okamžitě odebere identity uživatelů z aplikací služby Key SaaS, když opustí organizaci.
 
-Další informace o zřizování automatické uživatelských účtů a jak to funguje, najdete v článku [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+Další informace o automatickém zřizování uživatelských účtů a o tom, jak funguje, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů při SaaS aplikací pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 
-## <a name="step-3---empower-your-users-securely"></a>Krok 3: bezpečně Zlepšete možnosti svých uživatelů
+## <a name="step-3---empower-your-users-securely"></a>Krok 3 – zajištění bezpečného zabezpečení uživatelů
 
-V dnešních digitálních pracovišti je potřeba vyrovnávat zabezpečení s produktivitu. Ale koncoví uživatelé často zapnutí zpět bezpečnostní opatření, která jejich produktivitu a přístup ke cloudovým aplikacím. Abychom to vyřešit, Azure AD poskytuje samoobslužné funkce, které umožňují uživatelům produktivně pracovat současně minimalizovat správní režie.
+V dnešním digitálním pracovišti je důležité zajistit rovnováhu mezi zabezpečením a produktivitou. Koncoví uživatelé se ale často dodávají zpátky na bezpečnostní opatření, která zpomalují svou produktivitu a přístup ke cloudovým aplikacím. Abychom to mohli vyřešit, Azure AD poskytuje samoobslužné funkce, které uživatelům umožňují udržet si produktivitu při minimalizaci administrativní režie.
 
-Tato část obsahuje seznam doporučení pro odebrání řešit zádrhele spojené s tím, že vaši uživatelé přitom mimořádnou z vaší organizace.
+V této části jsou uvedena doporučení pro odstranění tření z vaší organizace tím, že vašim uživatelům umožníte zbývající ostražití.
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>Povolení samoobslužného resetování hesla pro všechny uživatele
+### <a name="enable-self-service-password-reset-for-all-users"></a>Povolit Samoobslužné resetování hesla pro všechny uživatele
 
-Azure [samoobslužné resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) nabízí jednoduchý způsob, správci IT mohou umožnit uživatelům resetovat a odemknout svá hesla nebo účty bez zásahu správce. Tento systém zahrnuje generování podrobných sestav, které sledují, kdy uživatelé k systému přistupují, spolu s oznámeními, která upozorňují na zneužití.
+Samoobslužné [resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) v Azure nabízí správcům IT jednoduchý způsob, jak uživatelům dovolit resetování a odemknutí hesel nebo účtů bez zásahu správce. Tento systém zahrnuje generování podrobných sestav, které sledují, kdy uživatelé k systému přistupují, spolu s oznámeními, která upozorňují na zneužití.
 
-Ve výchozím nastavení Azure AD odemyká účty při resetování hesla funguje. Ale při povolení služby Azure AD Connect [integrace v místním](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration), máte také možnost oddělit tyto dvě operace, které umožňují uživatelům odemknout svůj účet bez nutnosti k resetování hesla.
+Ve výchozím nastavení Azure AD odemkne účty, když provede resetování hesla. Pokud však Azure AD Connect integraci povolíte [místně](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration), máte také možnost oddělit tyto dvě operace, které uživatelům umožňují odemknout svůj účet, aniž by museli resetovat heslo.
 
-### <a name="ensure-all-users-are-registered-for-mfa-and-sspr"></a>Ujistěte se, že všichni uživatelé jsou registrovány pro vícefaktorové ověřování a samoobslužné resetování HESLA
+### <a name="ensure-all-users-are-registered-for-mfa-and-sspr"></a>Zajistěte registraci všech uživatelů pro MFA a SSPR
 
-Azure poskytuje sestavy, které je možné podle vás a vaši organizaci k zajištění, že jsou uživatelé zaregistrovaní pro vícefaktorové ověřování a samoobslužné resetování HESLA. Uživatelé, kteří se ještě nezaregistrovali může musí být poučeni o procesu.
+Azure poskytuje sestavy, které vám i vaše organizace můžou použít k zajištění registrace uživatelů pro MFA a SSPR. Uživatelé, kteří si nezaregistrovali registraci, mohou být muset být na tomto procesu informováni.
 
-MFA [sestavy přihlášení](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) obsahuje informace o použití vícefaktorového ověřování a poskytuje přehled o fungování vícefaktorového ověřování ve vaší organizaci. Přístup k přihlašovací aktivity (a auditů a rizikové události) pro Azure AD je zásadní pro řešení potíží, analýzy využití a napomáhá forenznímu vyšetřování tím.
+[Sestava přihlášení](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) MFA obsahuje informace o využití MFA a poskytuje přehled o tom, jak vícefaktorové ověřování funguje ve vaší organizaci. Přístup k aktivitě přihlašování (a auditům a rizikovým událostem) pro Azure AD je zásadní pro řešení potíží, analýzu využití a Forenzní vyšetřování.
 
-Podobně [samoobslužné správy hesel sestavy](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) slouží k určení, kdo má (nebo nebyla) registrovaný pro samoobslužné resetování HESLA.
+Podobně je možné pomocí [sestavy samoobslužné správy hesel](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) určit, kdo má (nebo nemá) zaregistrovaný pro SSPR.
 
-### <a name="self-service-app-management"></a>Správa samoobslužných služeb aplikací
+### <a name="self-service-app-management"></a>Samoobslužná správa aplikací
 
-Předtím, než vaši uživatelé samoobslužných můžete objevovat aplikace z jejich přístupovém panelu, je potřeba povolit [samoobslužného přístupu k aplikacím](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) pro všechny aplikace, které chcete povolit uživatelům samoobslužné zjišťování a žádat o přístup k. Samoobslužný přístup k aplikacím je skvělý způsob, jak povolit uživatelům samoobslužné zjišťování aplikací a volitelně povolit obchodní skupiny schvalovat přístup k těmto aplikacím. Můžete povolit obchodní skupiny pro správu přiřazené těmto uživatelům pro přihlašovací údaje [heslo jednotné přihlašování v aplikacích](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) přímo ze svých přístupových panelech.
+Než budou moct vaši uživatelé sami zjišťovat aplikace z přístupového panelu, musíte povolit samoobslužný [přístup](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access) k aplikacím, u kterých chcete uživatelům umožnit, aby si mohli sami vyhledat a požádat o přístup. Samoobslužný přístup k aplikacím je skvělý způsob, jak uživatelům povolit, aby si mohli sami zjistit aplikace a volitelně povolit obchodní skupině schvalovat přístup k těmto aplikacím. Obchodní skupině můžete dovolit, aby uživatelé mohli spravovat přihlašovací údaje přiřazená těmto uživatelům pro samoobslužné přihlašování pomocí [hesel](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app) přímo ze svých přístupových panelů.
 
 ### <a name="self-service-group-management"></a>Samoobslužná správa skupin
 
-Přiřazování uživatelů k aplikacím je nejlepší namapované při používání skupin, protože umožňují velkou flexibilitu a možnosti správy ve velkém měřítku:
+Přiřazování uživatelů k aplikacím je při používání skupin nejlépe namapované, protože umožňují značnou flexibilitu a možnost správy ve velkém měřítku:
 
-* Založených na atributech pomocí členství v dynamické skupině
+* Založený na atributech pomocí dynamického členství ve skupině
 * Delegování pro vlastníky aplikace
 
-Azure AD poskytuje schopnost spravovat přístup k prostředkům pomocí skupin zabezpečení a skupiny Office 365. Tyto skupiny můžou spravovat skupiny vlastníka, který můžete schválit nebo odmítnout žádosti o členství a delegovat řízení členství ve skupině. Říká [Samoobslužná správa skupin](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management), tato funkce umožňuje vlastníkům, kteří nemají přiřazenou roli správce můžete vytvořit a spravovat skupiny, aniž byste museli spoléhat na správcům zpracování požadavků na jejich šetří čas.
+Azure AD poskytuje možnost spravovat přístup k prostředkům pomocí skupin zabezpečení a skupin Office 365. Tyto skupiny může spravovat vlastník skupiny, který může schvalovat nebo zamítnout žádosti o členství a delegovat řízení členství ve skupině. Tato funkce se označuje jako [Samoobslužná správa skupin](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management), ale šetří čas tím, že umožňuje vlastníkům skupin, kteří nejsou přiřazeni administrativní roli k vytváření a správě skupin, aniž by museli spoléhat na to, že požádají správce o zpracování požadavků.
 
-## <a name="step-4---operationalize-your-insights"></a>Krok 4: zprovoznění přehledy
+## <a name="step-4---operationalize-your-insights"></a>Krok 4 – zprovoznění vašich přehledů
 
-Auditování a protokolování událostí týkajících se zabezpečení a souvisejících výstrah jsou základní součástí efektivní strategie zajistíte, že uživatelé produktivně pracovat a vaše organizace je zabezpečená. Protokoly zabezpečení a sestavy vám můžou pomoct zodpovědět dotazy jako:
+Auditování a protokolování událostí souvisejících se zabezpečením a souvisejících výstrah jsou základními součástmi efektivní strategie, které zajistí, že uživatelé budou mít produktivitu a vaše organizace bude zabezpečená. Dotazy a protokoly zabezpečení můžou přispět k zodpovězení otázek, jako je:
 
-* Používáte, budete platit za?
-* Je něco podezřelého nebo škodlivý, ve vašem tenantovi dochází?
-* Kdo se to týká během bezpečnostní incident?
+* Používáte k čemu platíte?
+* Dochází v mém tenantovi k nějakému podezřelému nebo škodlivému chování?
+* Na koho byl dopad v případě incidentu zabezpečení?
 
-Protokoly zabezpečení a sestavy poskytují elektronických záznamů podezřelé aktivity a rozpoznat vzory, které může znamenat pokus o nebo úspěšné externí průniku sítě a útoky interních nápovědy. Můžete použít auditování k monitorování aktivity uživatelů, dodržování legislativních předpisů dokumentu, forenzní analýzy a další. Výstrahy poskytují oznámení událostí zabezpečení.
+Protokoly zabezpečení a sestavy poskytují elektronický záznam o podezřelých aktivitách a umožňují detekovat vzory, které mohou označovat pokus nebo úspěšné vnější průnik sítě a interní útoky. Pomocí auditování můžete sledovat činnost uživatelů, dokumentovat dodržování předpisů, provádět analýzu forenzní a provádět další akce. Výstrahy obsahují oznámení o událostech zabezpečení.
 
-### <a name="assign-least-privileged-admin-roles-for-operations"></a>Přiřazení rolí nejnižším oprávněním správce pro operace
+### <a name="assign-least-privileged-admin-roles-for-operations"></a>Přiřaďte k operacím alespoň role privilegovaného správce.
 
-Pokud přemýšlíte o váš přístup k operacím, existuje několik úrovní správy, které byste měli zvážit. První úroveň zátěž správy na globální správci. Vždy používat roli globálního správce, může být vhodné pro menší společnosti. Ale pro velké organizace s pracovníky technické podpory a správci za konkrétní úlohy, přiřazení role Globální správce může být ohrožení zabezpečení od poskytuje tyto jednotlivce umožňuje spravovat úkoly, které jsou nad i nad rámec Co jsou by měl být schopný udělat.
+Jak si myslíte o přístupu k operacím, existuje několik úrovní správy, které je potřeba vzít v úvahu. Na první úrovni se zátěž správy na vašich globálních správcích umístí. Používání role globálního správce může být vždy vhodné pro menší společnosti. Ale u větších organizací, které mají pracovníky helpdesku a správce, kteří jsou zodpovědní za konkrétní úkoly, může být přiřazení role globálního správce bezpečnostním rizikem, protože poskytuje těmto jednotlivcům možnost spravovat výše uvedené úlohy a jejich rámec. Co by mělo být schopné dělat.
 
-V takovém případě byste měli zvážit další úroveň správy. Používání služby Azure AD, můžete určit koncovým uživatelům jako "omezené administrators", kteří můžou spravovat úkoly v méně privilegovaným rolím. Například můžete přiřadit vaši pomoc, pracovníci helpdesku [Čtenář zabezpečení](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader) role a umožnit jim možnost spravovat funkce související se zabezpečením s přístupem jen pro čtení. Nebo možná dává smysl přiřadit [Správce ověřování](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#authentication-administrator) role jednotlivcům jim dát možnost resetovat přihlašovací údaje bez hesla nebo načíst a nakonfigurovat služby Azure Service Health.
+V takovém případě byste měli zvážit další úroveň správy. Pomocí Azure AD můžete určit koncové uživatele jako "omezené správce", kteří můžou spravovat úlohy v méně privilegovaných rolích. Například můžete přiřadit pracovníky helpdesku roli [Čtenář zabezpečení](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader) a poskytnout jim možnost spravovat funkce související se zabezpečením s přístupem jen pro čtení. Případně je vhodné přiřadit roli [Správce ověřování](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#authentication-administrator) jednotlivcům, kteří jim poskytnou možnost resetovat přihlašovací údaje, které nepoužívají heslo, nebo číst a konfigurovat Azure Service Health.
 
 Další informace najdete v tématu [oprávnění role správce v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).
 
-### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Monitorování hybridních součásti (Azure AD Connect sync, služby AD FS) pomocí služby Azure AD Connect Health
+### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Monitorování hybridních součástí (Azure AD Connect synchronizace AD FS) pomocí Azure AD Connect Health
 
-Azure AD Connect a AD FS jsou důležité součásti, které může potenciálně narušit správy životního cyklu a ověřování a nakonec vést k výpadkům. Proto byste měli nasadit Azure AD Connect Health pro monitorování a generování sestav těchto součástí.
+Azure AD Connect a AD FS jsou důležité součásti, které mohou potenciálně poškodit správu a ověřování životního cyklu a nakonec vést k výpadkům. Proto byste měli nasadit Azure AD Connect Health pro monitorování a vytváření sestav těchto komponent.
 
-Další informace, získáte další [monitorování AD FS pomocí služby Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs).
+Pokud se chcete dozvědět víc, přečtěte si téma [monitorování AD FS pomocí Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs).
 
-### <a name="use-azure-monitor-to-collect-data-logs-for-analytics"></a>Použití Azure monitoru ke shromažďování dat protokolů pro analýzu
+### <a name="use-azure-monitor-to-collect-data-logs-for-analytics"></a>Použití Azure Monitor ke shromažďování datových protokolů pro analýzy
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) je jednotné monitorování portál pro všechny protokoly služby Azure AD, která poskytuje podrobný přehled pokročilých analýz a inteligentního strojového učení. Díky nástroji Azure Monitor můžete využívat metrik a protokolů na portálu a prostřednictvím rozhraní API a získat větší přehled o stavu a výkonu svých prostředků. Umožňuje podokně ze skla prostředí v rámci portálu přitom širokou škálu integrace produktů prostřednictvím rozhraní API a datových možností exportu, které podporují tradičních systémů SIEM třetích stran. Azure Monitor také poskytuje možnost konfigurovat pravidla upozornění upozorňování a automatizovaných akcí týkající se dopadu na vaše prostředky.
+[Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) je jednotný portál monitorování pro všechny protokoly služby Azure AD, které poskytují podrobné přehledy, pokročilou analýzu a inteligentní strojové učení. Pomocí Azure Monitor můžete využívat metriky a protokoly v rámci portálu a prostřednictvím rozhraní API získat lepší přehled o stavu a výkonu svých prostředků. Umožňuje v rámci portálu jedno podokno skla a zároveň umožňuje široké spektrum integrace produktů prostřednictvím rozhraní API a možností exportu dat, které podporují tradiční systémy SIEM třetích stran. Azure Monitor vám taky umožní nakonfigurovat pravidla výstrah, aby se zobrazila oznámení nebo aby se na problémech, které mají vliv na prostředky, mohla provádět automatické akce.
 
 ![Azure Monitor](./media/four-steps/image1.png)
 
-### <a name="create-custom-dashboards-for-your-leadership-and-your-day-to-day"></a>Vytvořit vlastní řídicí panely pro vaše vedení a pracovního dne na den
+### <a name="create-custom-dashboards-for-your-leadership-and-your-day-to-day"></a>Vytváření vlastních řídicích panelů pro svůj vedoucí a den do dne
 
-Organizace, které nemají řešení SIEM můžete stáhnout [balíček obsahu Power BI](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack) pro službu Azure AD. Power BI content pack obsahuje předdefinované sestavy, které vám pomohou pochopit, jakým způsobem uživatelé přijímají a používat funkce služby Azure AD, který umožňuje získat přehled o všech aktivitách v adresáři. Můžete také vytvořit svoje vlastní [vlastní řídicí panel](https://docs.microsoft.com/power-bi/service-dashboards) a sdílet se svým týmem vedení hlásit v každodenní aktivity. Řídicí panely jsou skvělý způsob, jak monitorovat vaše podnikání a vidět všechny nejdůležitější metriky na první pohled. Vizualizace na řídicím panelu můžou pocházet z podkladové datové sadě jeden nebo více a nebo mnoha podkladových sestav jeden. Řídicí panel kombinuje místní a Cloudová data, takže poskytuje ucelený pohled bez ohledu na to, kde se data nacházejí.
+Organizace, které nemají řešení SIEM, můžou stáhnout [Power BI balíčku obsahu](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack) pro Azure AD. Balíček obsahu Power BI obsahuje předem připravené sestavy, které vám pomůžou pochopit, jak uživatelé přijímají a používají funkce Azure AD, což vám umožní získat přehled o všech aktivitách v adresáři. Můžete také vytvořit vlastní [řídicí panel](https://docs.microsoft.com/power-bi/service-dashboards) a sdílet ho s týmem vedoucím k hlášení každodenních aktivit. Řídicí panely jsou skvělým způsobem, jak monitorovat vaši firmu a na první pohled vidíte všechny nejdůležitější metriky. Vizualizace na řídicím panelu mohou pocházet z jedné nebo mnoha podkladových datových sad a z jedné nebo mnoha podkladových sestav. Řídicí panel kombinuje místní a cloudová data a poskytuje konsolidované zobrazení bez ohledu na to, kde jsou data umístěná.
 
-![Vlastní řídicí panel Power BI](./media/four-steps/image2.png)
+![Power BI vlastní řídicí panel](./media/four-steps/image2.png)
 
-### <a name="understand-your-support-call-drivers"></a>Pochopení vašeho ovladače volání podpory
+### <a name="understand-your-support-call-drivers"></a>Pochopení ovladačů volání podpory
 
-Při implementaci řešení s hybridní identitou jak je uvedeno v tomto článku, měli byste nakonec zaznamenat snížení ve volání podpory. Běžné problémy, jako je zapomenutí hesel a uzamčení účtu byly omezeny implementace resetování hesla pomocí samoobslužné služby Azure, při povolení samoobslužného přístupu k aplikacím umožňuje samoobslužné zjišťování a žádat o přístup k aplikacím bez nutnosti spoléhat se na vaši pracovníci IT.
+Když implementujete řešení hybridní identity, jak je uvedeno v tomto článku, měli byste si všimnout, že se vám budou poznamenat snížení počtu volání podpory. Běžné problémy, jako jsou zapomenutá hesla a uzamčení účtů, jsou zmírněny implementací samoobslužného resetování hesla Azure a povolení samoobslužného přístupu aplikací umožňuje uživatelům samoobslužně zjišťovat a žádat o přístup k aplikacím bez toho, aby se spoléhaly. na pracovníky IT.
 
-Pokud není sledovat redukce volání podpory, doporučujeme analyzovat ovladače volání podpory v pokus o potvrzení, pokud samoobslužné resetování HESLA nebo samoobslužného přístupu k aplikacím není nakonfigurovaná správně, nebo pokud není nějakým novým problémům, které mohou být systematicky vyřeší.
+Pokud se vám dostanou omezit volání podpory, doporučujeme analyzovat ovladače volání podpory v rámci pokusu o potvrzení, jestli byl SSPR nebo Samoobslužný přístup k aplikacím správně nakonfigurovaný, nebo jestli existují nějaké jiné nové problémy, které se dají systematicky vyřešit. kontaktován.
 
-*"V naší digitální transformace cesty, potřebujeme spolehlivé identita a přístup poskytovatele správy k usnadnění bezproblémové ještě zabezpečenou integraci mezi USA, partnery a poskytovatelů cloudových služeb pro efektivní ekosystém; Azure AD je nejlepší možností nabídky nám potřebné funkce a viditelnosti, který nám umožňuje detekovat a reagovat na rizika."* --- [Aramex Yazan Almasri, globální ředitel zabezpečení informací,](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
+*"V naší digitální transformaci jsme potřebovali spolehlivý poskytovatel pro správu identit a přístupu, aby bylo možné bezproblémově zabezpečit integraci mezi námi, partnery a poskytovateli cloudových služeb, a to za účelem efektivního ekosystému. Azure AD je nejlepší možností, jak nám nabídnout potřebné možnosti a viditelnost, které nám umožnily detekovat rizika a reagovat na ně. "* --- [Yazan almasri, ředitel pro zabezpečení globálních informací, Aramex](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
 
-### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>Sledování využití aplikací k získání přehledů
+### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>Monitorování využití aplikací pro účely řízení Insights
 
-Kromě zjišťování stínového IT, monitorování využití aplikací v rámci vaší organizace pomocí [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) může vaší organizaci pomoct při přesunu do plně využít potenciál cloudových aplikací. Může to pomoci si zachovat kontrolu nad vaše prostředky pomocí lepší přehled o aktivitě a zvýšení ochrany důležitých dat napříč cloudovými aplikacemi. Sledování využití aplikací ve vaší organizaci pomocí MCAS vám můžou dát odpověď na následující otázky:
+Kromě zjišťování stínového IT můžete monitorovat využití aplikací v rámci vaší organizace, a to pomocí [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) může vaší organizaci pomáhat při přesunu, abyste mohli plně využít příslib cloudových aplikací. Může vám to usnadnit kontrolu nad prostředky prostřednictvím lepší viditelnosti aktivity a zvýšit ochranu důležitých dat napříč cloudovým aplikacím. Sledování využití aplikací ve vaší organizaci pomocí MCAS vám může pomoci zodpovědět následující otázky:
 
-* Jaké neschválené aplikace zaměstnanci používají k ukládání dat v?
-* Kde a kdy je citlivá data se ukládají v cloudu?
-* Kdo přistupuje k citlivá data v cloudu?
+* Jaké neschválené aplikace zaměstnanci používají k ukládání dat?
+* Kde a kdy je citlivá data ukládána v cloudu?
+* Kdo přistupuje k citlivým datům v cloudu?
 
-*"S Cloud App Security, můžete rychle detekovat anomálie a provádět akci."* --- [Eric LePenske, Senior Manager, informace o zabezpečení, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*"Díky Cloud App Security můžeme rychle odhalit anomálie a provést akci."* --- [Eric LePenske, vedoucí správce, zabezpečení informací, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 ## <a name="summary"></a>Souhrn
 
-Existuje mnoho aspektů implementace hybridní řešení identit, ale tento krok čtyři kontrolní seznam vám pomůže rychle provést infrastruktura identity, která umožní uživatelům vyšší produktivitu a zabezpečení.
+Existuje mnoho aspektů implementace řešení hybridní identity, ale tento podrobný kontrolní seznam vám pomůže rychle provést infrastrukturu identit, která umožní uživatelům zvýšit produktivitu a zabezpečení.
 
 * Snadné připojení k aplikacím
-* Automaticky vytvořit jednu identitu pro každého uživatele
-* Bezpečně Zlepšete možnosti svých uživatelů
-* Zprovoznění přehledy
+* Vytvořit jednu identitu pro každého uživatele automaticky
+* Zabezpečená podpora pro uživatele
+* Zprovoznění své přehledy
 
-Doufáme, že tento dokument je užitečné návod k vytvoření základ využívá silné identity pro vaši organizaci.
+Doufáme, že tento dokument je užitečným plánem pro vytvoření silného základu identity pro vaši organizaci.
 
-## <a name="identity-checklist"></a>Kontrolní seznam identit
+## <a name="identity-checklist"></a>Kontrolní seznam identity
 
-Doporučujeme vám vytisknout následující kontrolní seznam pro referenci podle začněte svou cestu k více solidní základ identity ve vaší organizaci.
+Doporučujeme vytisknout následující kontrolní seznam, který bude odkazovat na vaši cestu k více Solid Identity Foundation ve vaší organizaci.
 
 ### <a name="today"></a>Dnes
 
 |Hotovo?|Položka|
 |:-|:-|
-||Pilotní Self – služby heslo resetovat (SSPR) pro skupinu|
-||Monitorování komponenty hybridního používání služby Azure AD Connect Health|
-||Přiřazení rolí nejnižším oprávněním správce pro operaci|
-||Zjistit pomocí Microsoft Cloud App Security stínové IT|
-||Použití Azure monitoru ke shromažďování dat protokolů pro analýzu|
+||Pilotní Samoobslužné resetování hesla (SSPR) pro skupinu|
+||Monitorování hybridních komponent pomocí Azure AD Connect Health|
+||Přiřaďte k operaci alespoň role privilegovaného správce.|
+||Objevte stínové IT pomocí Microsoft Cloud App Security|
+||Pomocí Azure Monitor shromažďovat protokoly dat pro účely analýzy|
 
 ### <a name="next-two-weeks"></a>Další dva týdny
 
 |Hotovo?|Položka|
 |:-|:-|
-||Zpřístupnění aplikace uživatelům|
-||Pilotní zřizování Azure AD pro aplikaci SaaS podle výběru|
-||Pracovní server nastavit pro Azure AD Connect a stále aktuální|
-||Zahájení migrace aplikací ze služby AD FS do Azure AD|
-||Vytvořit vlastní řídicí panely pro vaše vedení a pracovního dne na den|
+||Zpřístupnění aplikace pro uživatele|
+||Pilotní zřízení Azure AD pro aplikaci SaaS s volbou|
+||Nastavte pracovní server pro Azure AD Connect a udržujte si ho v aktuálním stavu.|
+||Spuštění migrace aplikací ze služby ADFS do Azure AD|
+||Vytváření vlastních řídicích panelů pro svůj vedoucí a den do dne|
 
 ### <a name="next-month"></a>Příští měsíc
 
 |Hotovo?|Položka|
 |:-|:-|
-||Sledování využití aplikací k získání přehledů|
+||Monitorování využití aplikací pro účely řízení Insights|
 ||Pilotní zabezpečený vzdálený přístup k aplikacím|
-||Ujistěte se, že všichni uživatelé jsou registrovány pro vícefaktorové ověřování a samoobslužné resetování HESLA|
-||Ověření cloudu|
+||Zajistěte registraci všech uživatelů pro MFA a SSPR|
+||Povolit cloudové ověřování|
 
-### <a name="next-three-months"></a>Následující tři měsíce
+### <a name="next-three-months"></a>Další tři měsíce
 
 |Hotovo?|Položka|
 |:-|:-|
-||Povolení správy aplikací samoobslužných služeb|
+||Povolit samoobslužnou správu aplikací|
 ||Povolit samoobslužnou správu skupin|
-||Sledování využití aplikací k získání přehledů|
-||Pochopení vašeho ovladače volání podpory|
+||Monitorování využití aplikací pro účely řízení Insights|
+||Pochopení ovladačů volání podpory|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak můžete zvýšit tak zabezpečené stav pomocí možností Azure Active Directory a kontrolní seznam pěti krocích - [zabezpečení vaší infrastruktury identit v pěti krocích](https://aka.ms/securitysteps).
+Přečtěte si, jak můžete zvýšit zabezpečení stav pomocí možností Azure Active Directory a tohoto kontrolního seznamu pěti kroků – [pět kroků k zabezpečení vaší infrastruktury identity](https://aka.ms/securitysteps).
 
-Zjistěte, jak funkce identity ve službě Azure AD vám může pomoci Zrychlete svůj přechod do cloudu tím, že poskytuje řešení a funkcí, které umožňují organizacím rychle přijmout a přesunout informace z jejich Správa identit od tradiční správy řídí v místních systémech pro Azure AD – [Azure AD poskytuje řídí správu cloudu pro místní úlohy](https://aka.ms/cloudgoverned).
+Zjistěte, jak funkce identity v Azure AD vám pomůžou zrychlit přechod na správu na základě cloudu tím, že poskytují řešení a možnosti, které organizacím umožňují rychle přijmout a přesunout další správu identit z tradičních. místní systémy do Azure AD – [jak Azure AD poskytuje cloudovou správu pro místní úlohy](https://aka.ms/cloudgoverned).

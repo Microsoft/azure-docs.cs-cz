@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: d902a65c4e36ff698e486e2af899d055de1afca0
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2756444db010e23f7114e99f474de9ce6614aaee
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638555"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837921"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Přístup k novému portálu pro vývojáře v Azure API Management a jeho přizpůsobení
 
@@ -78,6 +78,10 @@ Cílem obecné dostupnosti je poskytnout na starém portálu paritu funkcí zalo
 
 Výjimkou jsou *aplikace* a *problémy* z původního portálu, které na novém portálu nebudou k dispozici. Pokud ve starém portálu používáte *problémy* a potřebujete je v novém, pošlete komentář do [vyhrazeného problému GitHubu](https://github.com/Azure/api-management-developer-portal/issues/122).
 
+### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>Zjistili jsem chyby nebo jsem chtěl požádat o funkci.
+
+Výborně! Můžete nám poskytnout zpětnou vazbu, odeslat žádost o funkci nebo zaslat zprávu o chybě prostřednictvím [oddílu s úložištěm GitHubu](https://github.com/Azure/api-management-developer-portal/issues). I když tam máte, vážíme si také vašich připomínek k problémům označeným `community` popiskem.
+
 ### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>Chci přesunout obsah nového portálu mezi prostředími. Jak to můžu udělat a potřebuji, abyste se mohli dostat k místní verzi?
 
 Můžete tak učinit v obou verzích portálu spravovaných i v místním prostředí. Nový portál pro vývojáře podporuje extrakci obsahu prostřednictvím rozhraní API pro správu vaší API Management služby. Rozhraní API jsou zdokumentována [v části wiki úložiště GitHub](https://github.com/Azure/api-management-developer-portal/wiki/). Napsali jsme také [skript](https://github.com/Azure/api-management-developer-portal/blob/master/scripts/migrate.bat), který vám může pomáhat začít.
@@ -96,7 +100,7 @@ Je nejspíš v souvislosti s CORS. Interaktivní konzola vytvoří požadavek ro
 
 [V úložišti GitHub](http://aka.ms/apimdevportal).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o novém portálu pro vývojáře:
 

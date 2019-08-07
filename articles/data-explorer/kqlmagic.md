@@ -1,48 +1,48 @@
 ---
-title: Analýza dat v Průzkumníku dat Azure pomocí poznámkového bloku Jupyter
-description: Toto téma ukazuje, jak analyzovat data v Průzkumníku dat Azure pomocí poznámkového bloku Jupyter a Kqlmagic rozšíření.
+title: Použití Jupyter Notebook k analýze dat v Azure Průzkumník dat
+description: V tomto tématu se dozvíte, jak analyzovat data v Azure Průzkumník dat pomocí Jupyter Notebook a rozšíření Kqlmagic.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a894052e54bd1ca9f8316342f714074c92753448
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 312e39ff1b699bb3c7f2baea3c66cbf8999ee44b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806347"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814514"
 ---
-# <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Analýza dat v Průzkumníku dat Azure pomocí Poznámkový blok Jupyter a Kqlmagic rozšíření
+# <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Použití rozšíření Jupyter Notebook a Kqlmagic k analýze dat v Azure Průzkumník dat
 
-Poznámkový blok Jupyter je open source webová aplikace, která umožňuje vytvářet a sdílet dokumenty, které obsahují živého kódu, rovnice, vizualizace a vyprávěného textu. Použití zahrnuje čištění dat a transformace, číselné simulace, statistické modelování, vizualizace dat a strojové učení.
-[Poznámkový blok Jupyter](https://jupyter.org/) podporuje magic funkce, které rozšiřují možnosti jádra díky podpoře dalších příkazů. KQL magic je příkaz, který rozšiřuje možnosti jádra Python do poznámkového bloku Jupyter, abyste mohli spustit dotazy v jazyce Kusto nativně. Můžete snadno kombinovat Python a Kusto dotazovací jazyk pro dotazování a vizualizace dat s využitím bohaté integrovaná knihovna Plot.ly `render` příkazy. Zdroje dat pro spouštění dotazů nejsou podporovány. Tyto zdroje dat patří Průzkumník dat Azure, zkoumání rychlá a vysoce škálovatelnými datové služby pro protokol a telemetrická data, jakož i protokoly Azure monitoru a Application Insights. KQL magic funguje taky s příponou poznámkových bloků Azure Jupyter Lab a Visual Studio Code Jupyter.
+Jupyter Notebook je open-source webová aplikace, která umožňuje vytvářet a sdílet dokumenty obsahující živý kód, rovnice, vizualizace a mluvený text. Použití zahrnuje čištění a transformaci dat, číselnou simulaci, statistické modelování, vizualizaci dat a strojové učení.
+[Jupyter notebook](https://jupyter.org/) podporuje funkci Magic, která rozšiřuje možnosti jádra tím, že podporuje další příkazy. KQL Magic je příkaz, který rozšiřuje možnosti jádra Pythonu v Jupyter Notebook, takže můžete spouštět dotazy jazyka Kusto nativně. Můžete snadno kombinovat Python a Kusto dotazovací jazyk a dotazovat se na data a vizualizovat je pomocí bohatých knihoven `render` plot.ly integrovaných s příkazy. Zdroje dat pro běžící dotazy jsou podporovány. Tyto zdroje dat zahrnují Azure Průzkumník dat, rychlou a vysoce škálovatelnou službu průzkumu dat pro data protokolů a telemetrie a také protokoly Azure Monitor a Application Insights. KQL Magic také spolupracuje s rozšířeními Azure Notebooks, Jupyter Lab a Visual Studio Code Jupyter.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Organizační e-mailový účet, který je členem z Azure Active Directory (AAD).
-- Poznámkový blok Jupyter nainstalované na místním počítači nebo použití poznámkových bloků Azure a vytvoření klonu ukázky [poznámkového bloku v Azure](https://kustomagicsamples-manojraheja.notebooks.azure.com/j/notebooks/Getting%20Started%20with%20kqlmagic%20on%20Azure%20Data%20Explorer.ipynb)
+- E-mailový účet organizace, který je členem Azure Active Directory (AAD).
+- Jupyter Notebook nainstalované na místním počítači, nebo použijte Azure Notebooks a naklonujte ukázkový [notebook Azure](https://kustomagicsamples-manojraheja.notebooks.azure.com/j/notebooks/Getting%20Started%20with%20kqlmagic%20on%20Azure%20Data%20Explorer.ipynb) .
 
-## <a name="install-kql-magic-library"></a>Nainstalujte knihovnu KQL magic
+## <a name="install-kql-magic-library"></a>Nainstalovat KQL Magic Library
 
-1. Nainstalujte KQL magic:
+1. Nainstalovat KQL Magic:
 
     ```python
     !pip install Kqlmagic --no-cache-dir  --upgrade
     ```
     > [!NOTE]
-    > Při použití poznámkových bloků Azure, tento krok není povinný.
+    > Při použití Azure Notebooks se tento krok nevyžaduje.
 
-1. Načíst KQL magic:
+1. Load KQL Magic:
 
     ```python
-    reload_ext Kqlmagic
+    %reload_ext Kqlmagic
     ```
 
-## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Připojte se ke clusteru pomáhají Průzkumník dat Azure
+## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Připojení ke clusteru Azure Průzkumník dat Help
 
-Použijte následující příkaz pro připojení k *ukázky* hostitelem databáze *pomáhají* clusteru. Microsoft AAD uživatele, nahraďte název tenanta `Microsoft.com` s vašeho Tenanta AAD.
+Pomocí následujícího příkazu se připojte k databázi *ukázek* , která je hostovaná v clusteru *help* . Pro uživatele AAD, kteří nejsou od Microsoftu, nahraďte `Microsoft.com` název tenanta vaším klientem AAD.
 
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
@@ -50,9 +50,9 @@ Použijte následující příkaz pro připojení k *ukázky* hostitelem databá
 
 ## <a name="query-and-visualize"></a>Dotazování a vizualizace
 
-Dotazování dat pomocí [vykreslení operátor](/azure/kusto/query/renderoperator) a vizualizace dat pomocí knihovny ploy.ly. Tento dotaz a vizualizací poskytuje integrované prostředí, který používá nativní KQL. Kqlmagic podporuje většinu grafy s výjimkou `timepivot`, `pivotchart`, a `ladderchart`. Podporuje vykreslení všech atributů s výjimkou `kind`, `ysplit`, a `accumulate`. 
+Dotazování dat pomocí [operátoru vykreslení](/azure/kusto/query/renderoperator) a vizualizace dat pomocí knihovny ploy.ly Tento dotaz a vizualizace poskytuje integrované prostředí, které používá nativní KQL. Kqlmagic podporuje většinu grafů s `timepivot`výjimkou, `ladderchart` `pivotchart`a. Vykreslování je podporováno u všech atributů s `kind`výjimkou, `accumulate` `ysplit`a. 
 
-### <a name="query-and-render-piechart"></a>Dotaz a vykreslování piechart
+### <a name="query-and-render-piechart"></a>Dotazování a vykreslování piechart
 
 ```python
 %%kql
@@ -63,7 +63,7 @@ StormEvents
 | render piechart title="My Pie Chart by State"
 ```
 
-### <a name="query-and-render-timechart"></a>Dotaz a vykreslování promítnu
+### <a name="query-and-render-timechart"></a>Dotazování a vykreslování timechart
 
 ```python
 %%kql
@@ -73,19 +73,19 @@ StormEvents
 ```
 
 > [!NOTE]
-> Tyto grafy jsou interaktivní. Vyberte časový rozsah pro zvětšení určitý čas.
+> Tyto grafy jsou interaktivní. Vyberte časový rozsah, který se má zvětšit na určitý čas.
 
 ### <a name="customize-the-chart-colors"></a>Přizpůsobení barev grafu
 
-Pokud se vám výchozí palety barev, upravit grafy, pomocí možnosti palety. K dispozici palety najdete tady: [Zvolte paletu barev pro výsledek KQL magic dotazu grafu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
+Pokud se vám nelíbí výchozí barevná paleta, upravte grafy pomocí možností palety. Dostupné palety najdete tady: [Zvolit paletu barev pro výsledek grafu dotazu KQL Magic](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
 
-1. Seznam palety:
+1. Seznam palet:
 
     ```python
     %kql --palettes -popup_window
     ```
 
-1. Vyberte `cool` paleta barev a vykreslit dotaz znovu:
+1. Vyberte paletu `cool` barev a znovu vykreslete dotaz:
 
     ```python
     %%kql -palette_name "cool"
@@ -96,13 +96,13 @@ Pokud se vám výchozí palety barev, upravit grafy, pomocí možnosti palety. K
     | render piechart title="My Pie Chart by State"
     ```
 
-## <a name="parameterize-a-query-with-python"></a>Parametrizovat dotazování pomocí Pythonu
+## <a name="parameterize-a-query-with-python"></a>Parametrizovat dotaz pomocí Pythonu
 
-KQL magic umožňuje jednoduchou výměny mezi Kusto dotazovací jazyk a Python. Další informace: [Parametrizovat KQL magic dotazu pomocí Pythonu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
+KQL Magic umožňuje jednoduché výměny mezi dotazovacím jazykem Kusto a Pythonem. Další informace: [Parametrizovat dotaz KQL Magic pomocí Pythonu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
 
-### <a name="use-a-python-variable-in-your-kql-query"></a>Použití Pythonu proměnné v dotazu KQL
+### <a name="use-a-python-variable-in-your-kql-query"></a>Použití proměnné Pythonu v dotazu KQL
 
-Hodnota proměnné Pythonu můžete použít v dotazu k filtrování dat:
+Pomocí hodnoty proměnné jazyka Python v dotazu můžete filtrovat data:
 
 ```python
 statefilter = ["TEXAS", "KANSAS"]
@@ -117,9 +117,9 @@ StormEvents
 | render timechart title = "Trend"
 ```
 
-### <a name="convert-query-results-to-pandas-dataframe"></a>Převést na Pandas DataFrame výsledků dotazu
+### <a name="convert-query-results-to-pandas-dataframe"></a>Převod výsledků dotazu na PANDAS dataframe
 
-Výsledky dotazu KQL v Pandas DataFrame můžete přistupovat. Přístup k poslední výsledky dotazu provedeného proměnnou `_kql_raw_result_` a snadno převést výsledky Pandas DataFrame následujícím způsobem:
+K výsledkům dotazu KQL můžete získat přístup v dataframe PANDAS. Získejte přístup k posledním spuštěným výsledkům `_kql_raw_result_` dotazu podle proměnné a jednoduše převeďte výsledky na PANDAS dataframe následujícím způsobem:
 
 ```python
 df = _kql_raw_result_.to_dataframe()
@@ -128,9 +128,9 @@ df.head(10)
 
 ### <a name="example"></a>Příklad
 
-V mnoha scénářích analytics můžete vytvářet opakovaně použitelné poznámkových bloků, které obsahují mnoho dotazů a vrátit výsledky z jednoho dotazu do dalších dotazů. Následující příklad používá proměnnou Python `statefilter` filtrovat data.
+V mnoha scénářích analýz můžete chtít vytvořit opakovaně použitelné poznámkové bloky, které obsahují mnoho dotazů, a podávat výsledky z jednoho dotazu do dalších dotazů. Následující příklad používá proměnnou `statefilter` jazyka Python k filtrování dat.
 
-1. Spusťte dotaz, chcete-li zobrazit prvních 10 států s maximální `DamageProperty`:
+1. Spusťte dotaz pro zobrazení prvních 10 stavů s maximálním `DamageProperty`limitem:
 
     ```python
     %%kql
@@ -140,7 +140,7 @@ V mnoha scénářích analytics můžete vytvářet opakovaně použitelné pozn
     | limit 10
     ```
 
-1. Spuštění dotazu extrahovat nejvyšší stav a nastavte ji do proměnné Pythonu:
+1. Spusťte dotaz pro extrakci nejvyššího stavu a nastavte jej na proměnnou Pythonu:
 
     ```python
     df = _kql_raw_result_.to_dataframe()
@@ -148,7 +148,7 @@ V mnoha scénářích analytics můžete vytvářet opakovaně použitelné pozn
     statefilter
     ```
 
-1. Spuštění dotazů `let` příkazu a proměnná Pythonu:
+1. Spusťte dotaz pomocí `let` příkazu a proměnné jazyka Python:
 
     ```python
     %%kql
@@ -166,13 +166,13 @@ V mnoha scénářích analytics můžete vytvářet opakovaně použitelné pozn
     ```
 
 > [!TIP]
-> Získat informace o použití všechny dostupné konfigurace `%config KQLmagic`. K odstranění potíží a zachycení chyb Kusto, jako je například nesprávné dotazy a problémy s připojením k použití `%config Kqlmagic.short_errors=False`
+> Pro získání informací o všech dostupných konfiguracích `%config KQLmagic`. K řešení potíží a zaznamenání chyb Kusto, jako jsou problémy s připojením a nesprávné dotazy, použijte`%config Kqlmagic.short_errors=False`
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Spusťte příkaz help prozkoumávat následující ukázkové poznámkové bloky, které obsahují všechny podporované funkce:
-- [Začínáme s KQL magic pro Průzkumník dat Azure](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
-- [Začínáme s KQL magic pro službu Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
-- [Začínáme s KQL magic pro protokoly Azure monitoru](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
-- [Parametrize KQL magic dotazu pomocí Pythonu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
-- [Zvolte paletu barev pro výsledek KQL magic dotazu grafu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
+Spuštěním příkazu help můžete prozkoumat následující ukázkové poznámkové bloky, které obsahují všechny podporované funkce:
+- [Začínáme s KQL Magic pro Azure Průzkumník dat](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
+- [Začínáme s KQL Magic pro Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
+- [Začínáme s KQL Magic pro protokoly Azure Monitor](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
+- [Parametrize dotazu KQL Magic pomocí Pythonu](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
+- [Zvolit paletu barev pro výsledek grafu dotazu KQL Magic](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)

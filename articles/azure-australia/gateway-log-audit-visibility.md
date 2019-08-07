@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 5971fe53f52725a88c484edcc9a5a672fceceb07
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 153b9d503dfece404455fbb7e8cb51c51686ec57
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571364"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824294"
 ---
 # <a name="gateway-logging-auditing-and-visibility-in-azure-australia"></a>Protokolování, auditování a viditelnost brány v Azure Austrálie
 
@@ -149,7 +149,7 @@ VPN Gateway je potenciální vstupní bod pro rozsáhlou škálu komunikace do p
 |Zdroje a prostředky|Odkaz|
 |---|---|
 |Dokumentace služby VPN Gateway|[https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway)|
-|Doprovodné materiály pro VPN Gateway australské vlády|[https://aka.ms/AzGovAUSecurity](https://aka.ms/AzGovAUSecurity)|
+|Doprovodné materiály pro VPN Gateway australské vlády|[Konfigurace Azure VPN Gateway](vpn-gateway.md)|
 |
 
 ### <a name="azure-firewall"></a>Brána Azure Firewall
@@ -225,7 +225,7 @@ Skupin zabezpečení sítě provoz mezi virtuálními sítěmi v Azure a mimo n�
 
 ### <a name="azure-activity-log"></a>Protokol aktivit Azure
 
-Protokol aktivit Azure, který je součástí Azure Monitor, je protokol předplatného, který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Protokol aktivit vám může pomáhat určit, co, kdo a kdy je potřeba pro všechny operace zápisu (PUT, POST, DELETE) u prostředků ****** v rámci předplatného. Protokol aktivit je zásadní pro sledování změn konfigurace provedených v prostředí Azure. Protokoly aktivit Azure jsou automaticky dostupné pro použití v Log Analytics řešení a je možné je odeslat do Event Hubs nebo Azure Storage pro zpracování nebo uchování.
+Protokol aktivit Azure, který je součástí Azure Monitor, je protokol předplatného, který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Protokol aktivit vám může pomáhat určit, co, kdo a kdy je potřeba pro všechny operace zápisu (PUT, POST, DELETE) u prostředků v rámci předplatného. Protokol aktivit je zásadní pro sledování změn konfigurace provedených v prostředí Azure. Protokoly aktivit Azure jsou automaticky dostupné pro použití v Log Analytics řešení a je možné je odeslat do Event Hubs nebo Azure Storage pro zpracování nebo uchování.
 
 |Zdroje a prostředky|Odkaz|
 |---|---|

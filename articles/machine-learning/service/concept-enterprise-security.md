@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
-ms.openlocfilehash: f9fd9f88a0aa6af9cd4160bf5879b9b8f383dca1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: f0fb6f0d2b2579679ee8a6ec43b3241377701d48
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720428"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780905"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Enterprise Security for Azure Machine Learning Service
 
@@ -161,7 +161,7 @@ Všechny Image kontejneru v registru (ACR) jsou v klidovém stavu šifrované. A
 
 Disk s operačním systémem pro každý výpočetní uzel je uložený v Azure Storage je zašifrovaný pomocí spravovaných klíčů Microsoftu v Azure Machine Learning účty úložiště služby. Toto výpočetní prostředí je dočasné a clustery se obvykle škálují, když nejsou ve frontě žádné běhy. Základní virtuální počítač je nezřízený a disk s operačním systémem se odstranil. Pro disk s operačním systémem se nepodporuje Azure Disk Encryption.
 Každý virtuální počítač má také místní dočasný disk pro operace s operačním systémem. Tento disk můžete také volitelně použít k přípravě školicích dat. Tento disk není zašifrovaný.
-Další informace o tom, jak šifrování v klidovém umístění funguje v Azure, najdete v tématu [šifrování dat Azure v klidovém umístění](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest).
+Další informace o tom, jak šifrování v klidovém umístění funguje v Azure, najdete v tématu [šifrování dat Azure v klidovém umístění](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 ### <a name="encryption-in-transit"></a>Šifrování při přenosu
 
@@ -252,7 +252,7 @@ Podívejte se na podrobnosti níže:
 
 ![Snímek obrazovky znázorňující pracovní postup vytvoření pracovního prostoru](./media/enterprise-readiness/inferencing.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
 * [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)

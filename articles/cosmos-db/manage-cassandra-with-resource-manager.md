@@ -1,29 +1,32 @@
 ---
-title: Šablony Azure Resource Manageru pro službu Azure Cosmos DB Cassandra API
-description: Pomocí šablon Azure Resource Manageru k vytvoření a konfigurace rozhraní Cassandra API služby Azure Cosmos DB.
+title: Šablony Azure Resource Manager pro Azure Cosmos DB rozhraní API Cassandra
+description: Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfigurovat Azure Cosmos DB rozhraní API Cassandra.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: db754adbe60acfa155400910c47de556db793eef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: beae89b3f8e21e2f56a1dbf2090b7a612ed5cab0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65968910"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815107"
 ---
-# <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Správa Azure Cosmos DB Cassandra API prostředků pomocí šablon Azure Resource Manageru
+# <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Správa prostředků Azure Cosmos DB rozhraní API Cassandra pomocí šablon Azure Resource Manager
 
-## Vytvoření účtu Azure Cosmos, prostoru klíčů a tabulky <a id="create-resource"></a>
+## Vytvoření účtu Azure Cosmos, místa a tabulky<a id="create-resource"></a>
 
-Vytvořte prostředky služby Azure Cosmos DB pomocí šablony Azure Resource Manageru. Tato šablona vytvoří účet Azure Cosmos pro Apache Cassandra API s tabulkami, které sdílejí propustnost 400 RU/s na úrovni prostor klíčů. Zkopírujte šablonu a nasadili, jak je znázorněno níže nebo navštivte [galerii pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/) a nasadit z webu Azure portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadejte do místní cesty `--template-file` parametru.
+Vytvořte Azure Cosmos DB prostředky pomocí šablony Azure Resource Manager. Tato šablona vytvoří účet Azure Cosmos pro rozhraní API Cassandra se dvěma tabulkami, které sdílejí propustnost 400 RU/s na úrovni prostoru. Zkopírujte šablonu a nasazení, jak je znázorněno níže, nebo navštivte [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/) a nasaďte z Azure Portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s `--template-file` parametrem.
+
+> [!NOTE]
+> Název účtu musí být malými písmeny a < 31 znaků.
 
 [!code-json[create-cosmos-Cassandra](~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json)]
 
 ## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
-K nasazení šablony Resource Manageru pomocí rozhraní příkazového řádku Azure, **kopírování** skriptu a vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**:
+Pokud chcete nasadit šablonu Správce prostředků pomocí rozhraní příkazového řádku Azure, **zkopírujte** skript a vyberte **zkusit,** aby se otevřelo Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
 
 ```azurecli-interactive
 
@@ -45,17 +48,17 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-`az cosmosdb show` Příkaz zobrazí nově vytvořeného účtu Azure Cosmos po jeho zřízení. Pokud se rozhodnete použít místně nainstalovanou verzi Azure CLI místo použití cloud shell, přečtěte si téma [rozhraní příkazového řádku Azure (CLI)](/cli/azure/) článku.
+`az cosmosdb show` Příkaz zobrazí nově vytvořený účet Azure Cosmos po zřízení. Pokud se rozhodnete použít místně nainstalovanou verzi Azure CLI místo používání Cloudshellu, přečtěte si článek [rozhraní příkazového řádku Azure (CLI)](/cli/azure/) .
 
-## Aktualizovat propustnost (RU/s) prostor klíčů <a id="keyspace-ru-update"></a>
+## Aktualizace propustnosti (RU/s) v prostoru klíčů<a id="keyspace-ru-update"></a>
 
-Následující šablony se aktualizuje propustnost prostor klíčů. Zkopírujte šablonu a nasadili, jak je znázorněno níže nebo navštivte [galerii pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra-keyspace-ru-update/) a nasadit z webu Azure portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadejte do místní cesty `--template-file` parametru.
+Následující šablona aktualizuje propustnost prostoru klíčů. Zkopírujte šablonu a nasazení, jak je znázorněno níže, nebo navštivte [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra-keyspace-ru-update/) a nasaďte z Azure Portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s `--template-file` parametrem.
 
 [!code-json[cosmosdb-cassandra-keyspace-ru-update](~/quickstart-templates/101-cosmosdb-cassandra-keyspace-ru-update/azuredeploy.json)]
 
-### <a name="deploy-keyspace-template-via-azure-cli"></a>Nasazení šablony prostor klíčů s využitím rozhraní příkazového řádku Azure
+### <a name="deploy-keyspace-template-via-azure-cli"></a>Nasazení šablony prostoru klíčů přes Azure CLI
 
-Pokud chcete nasadit šablonu Resource Manageru pomocí rozhraní příkazového řádku Azure, vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**:
+Pokud chcete nasadit šablonu Správce prostředků pomocí rozhraní příkazového řádku Azure, vyberte **zkusit** , aby se otevřelo prostředí Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -68,15 +71,15 @@ az group deployment create --resource-group $resourceGroupName \
    --parameters accountName=$accountName keyspaceName=$keyspaceName throughput=$throughput
 ```
 
-## Aktualizovat propustnost (RU/s) v tabulce <a id="table-ru-update"></a>
+## Aktualizace propustnosti (RU/s) v tabulce<a id="table-ru-update"></a>
 
-Následující šablony se aktualizuje propustnost tabulku. Zkopírujte šablonu a nasadili, jak je znázorněno níže nebo navštivte [galerii pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra-table-ru-update/) a nasadit z webu Azure portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadejte do místní cesty `--template-file` parametru.
+Následující šablona aktualizuje propustnost tabulky. Zkopírujte šablonu a nasazení, jak je znázorněno níže, nebo navštivte [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra-table-ru-update/) a nasaďte z Azure Portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s `--template-file` parametrem.
 
 [!code-json[cosmosdb-cassandra-table-ru-update](~/quickstart-templates/101-cosmosdb-cassandra-table-ru-update/azuredeploy.json)]
 
-### <a name="deploy-table-template-via-azure-cli"></a>Nasazení šablony tabulku s využitím rozhraní příkazového řádku Azure
+### <a name="deploy-table-template-via-azure-cli"></a>Nasazení šablony tabulky přes Azure CLI
 
-Pokud chcete nasadit šablonu Resource Manageru pomocí rozhraní příkazového řádku Azure, vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**:
+Pokud chcete nasadit šablonu Správce prostředků pomocí rozhraní příkazového řádku Azure, vyberte **zkusit** , aby se otevřelo prostředí Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -92,9 +95,9 @@ az group deployment create --resource-group $resourceGroupName \
 
 ## <a name="next-steps"></a>Další kroky
 
-Tady jsou některé další prostředky:
+Tady je několik dalších prostředků:
 
-- [Dokumentace ke službě Azure Resource Manageru](/azure/azure-resource-manager/)
-- [Schéma poskytovatele prostředků služby Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
-- [Šablony služby Azure Cosmos DB Quickstart](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Řešení potíží s běžnými chybami nasazení Azure Resource Manageru](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+- [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager/)
+- [Azure Cosmos DB schéma poskytovatele prostředků](/azure/templates/microsoft.documentdb/allversions)
+- [Šablony pro rychlý Start Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+- [Řešení běžných chyb při nasazení Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md)

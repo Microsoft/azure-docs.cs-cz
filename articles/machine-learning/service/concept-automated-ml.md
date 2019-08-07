@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: c563278a9d23810a5e6f0adc8082c8cfc5a0510c
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 064fd0e2bf503d917c809aa576bbc332b5b18a77
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358847"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742355"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -85,21 +85,28 @@ V každém automatizovaném experimentu Machine Learning se vaše data automatic
 
 K dispozici jsou také další rozšířené předzpracování a featurization, například chybějící hodnoty imputac, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#preprocess). Povolit toto nastavení pomocí:
 
-+ Azure Portal: Zaškrtnutím  políčka předzpracovat v části **Rozšířená nastavení** [proveďte tyto kroky](how-to-create-portal-experiments.md).
++ Azure Portal: Zaškrtnutím políčka předzpracovat v části **Rozšířená nastavení** [proveďte tyto kroky](how-to-create-portal-experiments.md).
 
 + Sada Python SDK: Určení `"preprocess": True` [pro třídu`AutoMLConfig` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
 
 ## <a name="time-series-forecasting"></a>Předvídání časových řad
-Vytváření prognóz je nedílnou součástí jakékoli firmy, ať už jde o výnosy, inventář, prodej nebo poptávku zákazníků. Pomocí automatizovaného ML můžete kombinovat techniky a přístupy a získat doporučenou a vysoce kvalitní předpověď časových řad. 
+Vytváření prognóz je nedílnou součástí jakékoli firmy, ať už jde o výnosy, inventář, prodej nebo poptávku zákazníků. Pomocí automatizovaného ML můžete kombinovat techniky a přístupy a získat doporučenou a vysoce kvalitní předpověď časových řad.
 
-Automatický experiment s časovou řadou se považuje za problém lineární regrese. Hodnoty za časovou řadou jsou "pivoted" a stanou se dalšími dimenzemi pro regresor společně s jinými koproměnnými. Tento přístup, na rozdíl od metod klasických časových řad, má výhodu přirozeně zahrnující více kontextových proměnných a jejich vzájemný vztah během školení. Automatizovaná ML seznámí s jedním, ale často interně rozvětveným modelem pro všechny položky v datové sadě a horizontech předpovědi. K dispozici jsou proto další data k odhadování parametrů modelu a generalizace na nedostupné řady. 
+Automatický experiment s časovou řadou se považuje za problém lineární regrese. Hodnoty za časovou řadou jsou "pivoted" a stanou se dalšími dimenzemi pro regresor společně s jinými koproměnnými. Tento přístup, na rozdíl od metod klasických časových řad, má výhodu přirozeně zahrnující více kontextových proměnných a jejich vzájemný vztah během školení. Automatizovaná ML seznámí s jedním, ale často interně rozvětveným modelem pro všechny položky v datové sadě a horizontech předpovědi. K dispozici jsou proto další data k odhadování parametrů modelu a generalizace na nedostupné řady.
 
 Přečtěte si další informace a podívejte se na příklad [automatizovaného strojového učení pro předpověď časových řad](how-to-auto-train-forecast.md).
 
-## <a name="ensemble-models"></a>Modely kompletování
+## <a name="ensemble"></a>Modely kompletování
 
-Pomocí automatizovaného strojového učení s [algoritmem výběru Caruana kompletování s](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)setříděnou inicializací kompletu můžete přeškolovat modely kompletování. Seznámení se službou kompletování vylepšuje výsledky strojového učení a prediktivní výkon tím, že pronikne mnoho modelů na rozdíl od použití jednoduchých modelů. Iterace kompletu se zobrazí jako poslední iterace běhu.
+Automatizované Machine Learning podporuje modely kompletování, které jsou ve výchozím nastavení povolené. Seznámení se službou kompletování vylepšuje výsledky strojového učení a prediktivní výkon tím, že kombinuje více modelů na rozdíl od použití jednoduchých modelů. Iterace kompletu se zobrazí jako poslední iterace vašeho spuštění. Automatizované strojové učení používá pro kombinování modelů jak hlasovací, tak i stohování metod kompletování:
+
+* **Hlasovací**vše: Předpověď na základě váženého průměru předpokládaných pravděpodobností třídy (pro úlohy klasifikace) nebo předpokládaných regresních cílů (pro regresní úkoly).
+* **Skládání**: skládání kombinuje modely heterogenní a nakládá Meta model založený na výstupu z jednotlivých modelů. Aktuální výchozí meta modely jsou LogisticRegression pro úlohy klasifikace a ElasticNet pro úlohy regrese/předpovědi.
+
+K rozhodnutí, které modely použít v kompletu, se používá [algoritmus výběru kompletu Caruana](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) se seřazenou inicializací kompletu. Na vysoké úrovni tento algoritmus inicializuje komplet s až 5 modely s nejlepšími jednotlivými výsledky a ověří, že tyto modely jsou v rámci 5% prahové hodnoty nejlepšího skóre, aby nedocházelo k nedostatečnému počátečnímu kompletování. Pak pro každou iteraci komplet se do existující kompletu přidá nový model a vypočte se výsledné skóre. Pokud nový model vylepšuje existující skóre kompletu, je komplet aktualizován tak, aby obsahoval nový model.
+
+Přečtěte si téma [postup](how-to-configure-auto-train.md#ensemble) pro změnu výchozího nastavení kompletu v automatizovaném strojovém učení.
 
 ## <a name="use-with-onnx-in-c-apps"></a>Použití s ONNX v C# aplikacích
 

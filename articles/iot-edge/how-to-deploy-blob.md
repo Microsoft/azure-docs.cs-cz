@@ -9,12 +9,12 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 4511510dec6f488e1a6ea9a6842b771d2a298fec
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 86040020c8f9163a327b2029008e3648723b14ec
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640677"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839682"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Nasazení služby Azure Blob Storage v modulu IoT Edge do zařízení
 
@@ -168,7 +168,7 @@ Azure IoT Edge poskytuje šablony ve Visual Studio Code a pomohou vám vytvořit
 
 1. Otevřít *deployment.template.json* nový pracovní prostor řešení a najít **moduly** oddílu. Proveďte následující změny konfigurace:
 
-   1. Odstranit **tempSensor** je modul, protože není nezbytné pro toto nasazení.
+   1. Odstraňte modul **SimulatedTemperatureSensor** , protože není pro toto nasazení nutný.
 
    1. Zkopírujte a vložte následující kód do `createOptions` pole:
 
@@ -248,7 +248,7 @@ Upravit **možnosti vytvoření kontejneru** (v Azure Portal) nebo pole `HostPor
 
 Když se připojíte k modulům další objekt blob úložiště, změňte koncový bod tak, aby odkazoval na aktualizovaném hostiteli port.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o [Azure Blob Storage v IoT Edge](how-to-store-data-blob.md)
 
 Udržujte si přehled o nejnovějších aktualizacích a oznámeních ve [službě Azure Blob Storage na blogu IoT Edge](https://aka.ms/abs-iot-blogpost)

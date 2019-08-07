@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 2192bad89764f20c24c85d9571bebbd6518de307
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb936e7ad863fc7816ee8ed3b5dd88a8f25dbef0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387273"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68813978"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 Zjistěte informace o výkonu a využití webové stránky nebo aplikace. Když přidáte [Application Insights](app-insights-overview.md) do skriptu stránky, získáte časování načtení stránky a volání AJAX, počty a podrobnosti výjimek prohlížeče a selhání AJAX, a také počty uživatelů a relací. Všechny tyto hodnoty mohou být segmentovány podle stránky, klientského operačního systému a verze prohlížeče, zeměpisné polohy a ostatních dimenzí. Můžete nastavit výstrahy na počet selhání nebo pomalé načítání stránky. A vložíte-li do kódu JavaScript trasování volání, můžete sledovat využití různých funkcí aplikace webové stránky.
@@ -57,13 +57,11 @@ and before any other scripts. Your first data will appear
 automatically in just a few seconds.
 -->
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){
-  function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/next/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t
-  }({
-      instrumentationKey:"<your instrumentation key>"
-  });
-
-window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+    var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+    {
+      instrumentationKey:"INSTRUMENTATION_KEY"
+    }
+    );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
 </script>
 ```
 
@@ -86,7 +84,7 @@ Chcete-li tyto parametry nastavit, vyhledejte tento řádek ve fragmentu kódu a
       // Insert here
     });
 
-Úplný seznam parametry konfigurace, najdete v tématu [stránku Githubu](https://github.com/microsoft/applicationinsights-js#configuration). Některé dostupné parametry patří:
+Úplný seznam parametrů konfigurace najdete na [stránce GitHubu](https://github.com/microsoft/applicationinsights-js#configuration). Mezi dostupné parametry patří:
 
     // Send telemetry immediately without batching.
     // Remember to remove this when no longer required, as it
@@ -122,7 +120,7 @@ Otevřete okno prohlížeče zobrazující agregovaná data výkonu z prohlíže
 
 ![Na stránce portal.azure.com otevřete prostředek vaší aplikace a klikněte na tlačítko Nastavení, Prohlížeč](./media/javascript/03.png)
 
-Žádná data? V horní části stránky klikněte na **Obnovit**. Stále nic? Viz [Poradce při potížích](troubleshoot-faq.md).
+Ještě žádná data? V horní části stránky klikněte na **Obnovit**. Stále nic? Viz [Poradce při potížích](troubleshoot-faq.md).
 
 Okno prohlížeče je [okno Průzkumníka metrik](metrics-explorer.md) s přednastavenými filtry a výběry grafu. Pokud chcete, můžete upravit časové rozmezí, filtry a konfiguraci grafu a uložit výsledek jako oblíbenou položku. Klikněte na tlačítko **Obnovit výchozí nastavení** a vraťte se zpět do původní konfigurace okna.
 
@@ -205,7 +203,7 @@ V okně diagnostické vyhledávání nastavte filtry pro zobrazení stránky.
 Vyberte další události pro zobrazení dalších podrobností. Na stránce podrobností klikněte na tlačítko „...“, chcete-li zobrazit více podrobností.
 
 > [!NOTE]
-> Pokud používáte [hledání](diagnostic-search.md), Všimněte si, že musíte Hledat celá slova: "Abou" a "bout" se neshodují s "About".
+> Pokud používáte vyhledávání, Všimněte si, že musíte [Hledat](diagnostic-search.md)celá slova: "Abou" a "bout" se neshodují s "About".
 > 
 > 
 
@@ -230,7 +228,7 @@ Název stránky může obsahovat stejné znaky jako adresa URL, ale cokoli za �
 ## <a name="usage-tracking"></a>Sledování využití
 Chcete zjistit, co uživatelé provádějí s vaší aplikací?
 
-* [Další informace o nástrojích pro analýzu chování uživatele](usage-overview.md)
+* [Další informace o analytických nástrojích chování uživatelů](usage-overview.md)
 * [Další informace o vlastních událostech a metrikách rozhraní API](api-custom-events-metrics.md).
 
 ## <a name="video"></a> Video

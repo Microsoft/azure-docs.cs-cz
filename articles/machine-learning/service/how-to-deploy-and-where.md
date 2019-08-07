@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
+ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c7c2ba104b4d528cd3f8443e6f5615aa6ab3e672
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7e88b99cf0ecede64d75b36eafdcc88798e2e4a4
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720370"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840458"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -130,7 +130,7 @@ Skript obsahuje dvě funkce, které načítají a spouštějí model:
 
 * `run(input_data)`: Tato funkce používá model k předpovědi hodnoty založené na vstupních datech. Vstupy a výstupy do běhu obvykle používají JSON pro serializaci a deserializaci. Můžete také pracovat s nezpracovanými binárními daty. Data můžete transformovat před odesláním do modelu nebo před návratem do klienta.
 
-#### <a name="what-is-getmodelpath"></a>Co je get_model_path?
+#### <a name="what-is-get_model_path"></a>Co je get_model_path?
 
 Při registraci modelu zadáte název modelu, který se používá pro správu modelu v registru. Tento název použijete s [modelem. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) pro načtení cesty k souborům modelů v místním systému souborů. Pokud zaregistrujete složku nebo kolekci souborů, toto rozhraní API vrátí cestu k adresáři, který obsahuje tyto soubory.
 
@@ -142,7 +142,7 @@ Následující příklad vrátí cestu k jednomu souboru s názvem `sklearn_mnis
 model_path = Model.get_model_path('sklearn_mnist')
 ```
 
-#### <a name="optional-automatic-swagger-schema-generation"></a>Volitelné Automatické generování schématu Swagger
+#### <a name="optional-automatic-schema-generation"></a>Volitelné Automatické generování schématu
 
 Chcete-li automaticky vygenerovat schéma pro webovou službu, poskytněte vzorek vstupu a/nebo výstupu v konstruktoru pro jeden z definovaných objektů typu a typ a vzorek slouží k automatickému vytvoření schématu. Služba Azure Machine Learning pak vytvoří specifikaci [openapi](https://swagger.io/docs/specification/about/) (Swagger) pro webovou službu během nasazování.
 
@@ -153,9 +153,10 @@ V současné době jsou podporovány následující typy:
 * `pyspark`
 * standardní objekt Pythonu
 
-Chcete-li použít generování schématu, `inference-schema` zahrňte balíček do vašeho souboru prostředí conda. Následující příklad používá `[numpy-support]` , protože vstupní skript používá typ parametru numpy: 
+Chcete-li použít generování schématu, `inference-schema` zahrňte balíček do vašeho souboru prostředí conda.
 
-#### <a name="example-dependencies-file"></a>Příklad souboru závislostí
+##### <a name="example-dependencies-file"></a>Příklad souboru závislostí
+
 Následující YAML je příkladem souboru závislostí conda pro odvození.
 
 ```YAML
@@ -168,14 +169,11 @@ dependencies:
     - inference-schema[numpy-support]
 ```
 
-Pokud chcete použít automatické generování schématu, váš vstupní skript **musí** importovat `inference-schema` balíčky. 
+Pokud chcete použít automatické generování schématu, váš vstupní skript **musí** importovat `inference-schema` balíčky.
 
 Definujte vstupní a výstupní ukázkové formáty v `input_sample` proměnných a `output_sample` , které reprezentují formáty požadavků a odpovědí webové služby. Tyto ukázky použijte ve funkci vstupu a výstupu dekoratéry na `run()` funkci. Níže uvedený příklad scikit používá generování schématu.
 
-> [!TIP]
-> Po nasazení služby použijte `swagger_uri` vlastnost k načtení dokumentu JSON schématu.
-
-#### <a name="example-entry-script"></a>Ukázkový skript vstupu
+##### <a name="example-entry-script"></a>Ukázkový skript vstupu
 
 Následující příklad ukazuje, jak přijmout a vrátit data JSON:
 
@@ -216,9 +214,7 @@ def run(data):
         return error
 ```
 
-#### <a name="example-script-with-dictionary-input-support-consumption-from-power-bi"></a>Ukázkový skript se vstupem ze slovníku (podpora spotřeby z Power BI)
-
-Následující příklad ukazuje, jak definovat vstupní data jako < Key: Value > Dictionary pomocí dataframe. Tato metoda je podporovaná pro využívání nasazené webové služby od Power BI (další[informace o tom, jak používat webovou službu z Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
+Následující příklad ukazuje, jak definovat vstupní data jako `<key: value>` slovník pomocí datového rámce. Tato metoda je podporovaná pro využívání nasazené webové služby od Power BI (další[informace o tom, jak používat webovou službu z Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
 
 ```python
 import json
@@ -266,6 +262,7 @@ def run(data):
         error = str(e)
         return error
 ```
+
 Další ukázkové skripty najdete v následujících příkladech:
 
 * Pytorch: [https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
@@ -369,6 +366,9 @@ Viz [nasazení do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-servi
 Každá nasazená webová služba poskytuje REST API, takže můžete vytvářet klientské aplikace v různých programovacích jazycích. Pokud jste povolili ověřování klíčů pro vaši službu, musíte v hlavičce žádosti zadat klíč služby jako token.
 Pokud jste povolili ověřování pomocí tokenu pro vaši službu, musíte v hlavičce žádosti zadat token Azure Machine Learning JWT jako nosný token.
 
+> [!TIP]
+> Po nasazení služby můžete načíst dokument JSON schématu. Použijte [vlastnost swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) z nasazené webové služby, například `service.swagger_uri`, k získání identifikátoru URI pro soubor Swagger místní webové služby.
+
 ### <a name="request-response-consumption"></a>Spotřeba požadavků a odpovědí
 
 Tady je příklad, jak volat vaši službu v Pythonu:
@@ -399,6 +399,147 @@ print(response.json())
 
 Další informace najdete v tématu [vytvoření klientských aplikací pro využívání WebServices](how-to-consume-web-service.md).
 
+### <a name="web-service-schema-openapi-specification"></a>Schéma webové služby (specifikace OpenAPI)
+
+Pokud jste pro nasazení použili automatické generování schématu, můžete získat adresu specifikace OpenAPI pro službu pomocí [vlastnosti swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri). Například, `print(service.swagger_uri)`. K načtení specifikace použijte požadavek GET (nebo otevřete identifikátor URI v prohlížeči).
+
+Následující dokument JSON je příklad schématu (specifikace OpenAPI) generovaného pro nasazení:
+
+```json
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "myservice",
+        "description": "API specification for the Azure Machine Learning service myservice",
+        "version": "1.0"
+    },
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "For example: Bearer abc123"
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "ServiceHealthCheck",
+                "description": "Simple health check endpoint to ensure the service is up at any given point.",
+                "responses": {
+                    "200": {
+                        "description": "If service is up and running, this response will be returned with the content 'Healthy'",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "application/json": "Healthy"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/score": {
+            "post": {
+                "operationId": "RunMLService",
+                "description": "Run web service's model and get the prediction output",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "serviceInputPayload",
+                        "in": "body",
+                        "description": "The input payload for executing the real-time machine learning service.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The service processed the input correctly and provided a result prediction, if applicable.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ServiceInput": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "example": {
+                "data": [
+                    [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+                ]
+            }
+        },
+        "ServiceOutput": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "format": "double"
+            },
+            "example": [
+                3726.995
+            ]
+        },
+        "ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "status_code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
+```
+
+Další informace o specifikaci najdete v tématu věnovaném [specifikaci rozhraní API pro otevření](https://swagger.io/specification/).
+
+Nástroj, který umožňuje vytvářet klientské knihovny ze specifikace, najdete v tématu [Swagger-CodeGen](https://github.com/swagger-api/swagger-codegen).
 
 ### <a id="azuremlcompute"></a>Odvození dávky
 Azure Machine Learning výpočetní cíle jsou vytvářeny a spravovány službou Azure Machine Learning. Je možné je použít ke dávkové předpovědi z Azure Machine Learningch kanálů.

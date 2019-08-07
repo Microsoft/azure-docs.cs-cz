@@ -5,14 +5,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 08/06/2019
 ms.author: banders
-ms.openlocfilehash: c63447ff0a3329e0cc0dc0605984ae4f26e9c25f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2e595fbee90b710ec6b8090a770d93e688a04818
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359228"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839997"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -38,7 +38,7 @@ Pro virtuální počítače s Windows a SQL Database můžete pokrýt náklady n
 
 Pokud si chcete koupit plán, musíte mít roli vlastníka předplatného v podniku (MS-AZR-0017P nebo MS-AZR-0148P) nebo předplatném s průběžnými platbami (MS-AZR-003P nebo MS-AZR-0023P). Poskytovatelé Cloud Solution Provider můžou k nákupu Azure reservations použít Azure Portal nebo [Partnerské centrum](/partner-center/azure-reservations) .
 
-Zákazníci smlouva Enterprise (EA) můžou omezit nákupy na správce EA. Tím je vypíná možnost **Přidat rezervované instance** na portálu EA. Správce EA musí být vlastníkem předplatného alespoň jednoho předplatného, aby si mohl koupit rezervaci. Možnost je užitečná pro podniky, které mají centralizovaný tým k nákupu rezervací pro různá nákladová centra. Po nákupu můžou centralizované týmy do rezervací přidat vlastníky nákladového centra. Vlastníci potom můžou rezervaci omezit na své odběry. Centrální tým nemusí mít přístup vlastníka předplatného, kde se rezervace zakoupí.
+Zákazníci smlouva Enterprise (EA) můžou omezit nákupy na správce EA tím, že na portálu EA zakáže možnost **Přidat rezervované instance** . Správce EA musí být vlastníkem předplatného alespoň jednoho předplatného, aby si mohl koupit rezervaci. Možnost je užitečná pro podniky, které mají centralizovaný tým k nákupu rezervací pro různá nákladová centra. Po nákupu můžou centralizované týmy do rezervací přidat vlastníky nákladového centra. Vlastníci potom můžou rezervaci omezit na své odběry. Centrální tým nemusí mít přístup vlastníka předplatného, kde se rezervace zakoupí.
 
 Sleva za rezervaci se vztahuje jenom na prostředky přidružené k předplatným zakoupeným prostřednictvím organizace, Cloud Solution Provider (CSP) a jednotlivé plány s tarify průběžných plateb.
 

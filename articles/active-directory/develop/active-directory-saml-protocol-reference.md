@@ -1,6 +1,6 @@
 ---
-title: Jak Azure AD používá protokol SAML | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled profily jednotného přihlašování a jednotné odhlašování SAML v Azure Active Directory.
+title: Jak Azure AD používá protokol SAML | Microsoft Docs
+description: Tento článek poskytuje přehled profilů SAML jednotného přihlašování a jednotného přihlašování v Azure Active Directory.
 services: active-directory
 documentationcenter: .net
 author: rwike77
@@ -12,33 +12,33 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07d07f73412e889b018c1f667a500d7625912751
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c53cb7ee7bc76b07059d68962c606cdcf866196
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546148"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835265"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Jak Azure AD využívá protokol SAML
 
-Azure Active Directory (Azure AD) pomocí SAML 2.0 protokol umožňují aplikacím poskytovat jednotné přihlašování svým uživatelům. [Single Sign-On](single-sign-on-saml-protocol.md) a [jedním odhlašování](single-sign-out-saml-protocol.md) SAML profilů služby Azure AD vysvětlují, jak používat kontrolní výrazy SAML, protokoly a vazby ve službě zprostředkovatele identity.
+Azure Active Directory (Azure AD) používá protokol SAML 2,0 k tomu, aby aplikace poskytovaly jednotné přihlašování svým uživatelům. Profily SAML [jednotného přihlašování](single-sign-on-saml-protocol.md) a [jednotné](single-sign-out-saml-protocol.md) PŘIhlašování v Azure AD vysvětlují, jak se ve službě zprostředkovatele identity používají kontrolní výrazy SAML, protokoly a vazby.
 
-Protokol SAML vyžaduje zprostředkovatele identity (Azure AD) a poskytovatelem služeb (aplikace) k výměně informací o sami.
+Protokol SAML vyžaduje pro výměnu informací o samy poskytovatele identity (Azure AD) a poskytovatele služeb (aplikace).
 
-Když aplikace je zaregistrován ve službě Azure AD, vývojář aplikace registruje informací souvisejících s federační službou Azure AD. Tyto informace zahrnují **identifikátor URI pro přesměrování** a **metadat URI** aplikace.
+Když je aplikace zaregistrovaná ve službě Azure AD, vývojář aplikace registruje informace týkající se federace ve službě Azure AD. Tyto informace zahrnují **identifikátor URI přesměrování** a **identifikátor URI metadat** aplikace.
 
-Azure AD používá cloudovou službu **metadat URI** a získejte podpisový klíč a identifikátor URI odhlášení. Odběratele můžete otevřít aplikaci v **Azure AD -> Registrace aplikace** a potom v **Nastavení -> vlastnosti**, mohou aktualizovat odhlašovací adresa URL. Azure AD díky tomu můžete odeslat odpověď na správnou adresu URL. 
+Azure AD pomocí **identifikátoru URI metadat** cloudové služby načte podpisový klíč a identifikátor URI pro odhlášení. Zákazník může aplikaci otevřít ve **službě Azure AD – > registraci aplikace** a pak v **Nastavení-> vlastnosti**může aktualizovat adresu URL pro odhlášení. Díky tomu může Azure AD odeslat odpověď na správnou adresu URL. 
 
-Azure Active Directory zpřístupňuje specifickým pro tenanta a běžné (nezávislé na tenanta) jednotné přihlašování a jednotné odhlašování koncové body. Tyto adresy URL představují adresovatelný umístění – nejsou jenom identifikátory – takže můžete přejít ke koncovému bodu ke čtení metadat.
+Azure Active Directory zveřejňuje jednotné přihlašování (nezávislé na klientovi) a koncové body s jedním odhlášením pro konkrétního tenanta. Tyto adresy URL představují adresovatelná umístění – nejedná se o pouze identifikátory – takže můžete načíst metadata z tohoto koncového bodu.
 
-* Koncový bod specifickým pro tenanta se nachází na `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`. *\<Název_domény_tenanta >* zastupuje registrovaný název domény nebo identifikátor GUID ID Tenanta tenanta služby Azure AD. Je například federační metadata tenanta contoso.com, na: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* Koncový bod specifický pro tenanta je umístěný na `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`adrese. Zástupný symbol TenantDomainName > představuje registrovaný název domény nebo identifikátor GUID TenantID tenanta Azure AD.  *\<* Federační metadata klienta contoso.com jsou například v: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
-* Koncový bod nezávislé na tenanta se nachází na `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. Tuto adresu koncového bodu **běžné** se zobrazí místo název domény klienta nebo ID.
+* Koncový bod nezávislý na klientovi je umístěný na `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`adrese. V této adrese koncového bodu se **běžně** zobrazuje název domény klienta nebo ID.
 
-Informace o dokumentů metadat federace, které publikuje Azure AD najdete v tématu [federačních metadat](azure-ad-federation-metadata.md).
+Informace o dokumentech federačních metadat, které zveřejňuje Azure AD, najdete v tématu [federační metadata](azure-ad-federation-metadata.md).

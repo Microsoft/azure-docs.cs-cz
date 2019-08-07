@@ -1,6 +1,6 @@
 ---
 title: Výměna podpisových klíčů ve službě Azure AD
-description: Tento článek popisuje osvědčené postupy podepisování výměny klíčů pro Azure Active Directory
+description: Tento článek popisuje osvědčené postupy pro výměnu podpisových klíčů pro Azure Active Directory
 services: active-directory
 documentationcenter: .net
 author: rwike77
@@ -11,67 +11,67 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f809fa856d39096a85dcc205d8211ba3551eeb48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f20a10f7c6f98b352e8a2d794fabc3b6b3b57319
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962849"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835299"
 ---
-# <a name="signing-key-rollover-in-azure-active-directory"></a>Výměna podpisových klíčů ve službě Azure Active Directory
-Tento článek popisuje, co potřebujete vědět o veřejných klíčů, které se používají ve službě Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto klíče nespotřebujete v pravidelných intervalech a ve stavu nouze, může být převracet okamžitě. Všechny aplikace, které používají službu Azure AD by možné programově zpracovávat procesu výměny klíčů nebo vytvořit proces periodické ruční výměna. Pokračujte ve čtení pochopit, jak fungují klíče, jak posoudit dopad efekt přechodu do vaší aplikace a jak aktualizovat vaše aplikace nebo vytvoření procesu periodické ruční výměna zpracování výměny klíčů, v případě potřeby.
+# <a name="signing-key-rollover-in-azure-active-directory"></a>Výměna podpisového klíče v Azure Active Directory
+Tento článek popisuje, co potřebujete znát o veřejných klíčích, které se používají v Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto klíče se převezmou v pravidelných intervalech a v naléhavém případě by mohlo dojít k okamžitému zavedení. Všechny aplikace, které používají Azure AD, by měly být schopné programově zpracovat proces výměny klíčů nebo vytvořit pravidelný proces ručního zaměníní. Pokračujte ve čtení, abyste pochopili, jak klíče fungují, jak vyhodnotit dopad přechodu na aplikaci a jak aktualizovat aplikaci nebo vytvořit pravidelný ruční proces ručního zpracování, který v případě potřeby zabere v případě potřeby klíčovou výměnu.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Přehled podpisových klíčů ve službě Azure AD
-Azure AD používá založená na standardech kryptografie využívající veřejný klíč k navázání vztahu důvěryhodnosti mezi samostatně a aplikace, které ji používají. V praxi to funguje, následujícím způsobem: Azure AD používá podpisového klíče, které obsahuje pár veřejného a privátního klíče. Když se uživatel přihlásí k aplikaci, která používá Azure AD pro ověřování Azure AD vytvoří token zabezpečení, který obsahuje informace o uživateli. Tento token je podepsaná pomocí jeho privátní klíč, před odesláním zpět do aplikace Azure AD. Pokud chcete ověřit, že je token platný a pocházející ze ze služby Azure AD, musí aplikace ověřit podpis tokenu pomocí veřejný klíč vystavený službou Azure AD, která je součástí vašeho tenanta [dokument zjišťování OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) nebo SAML / WS-Fed [dokument metadat federace](azure-ad-federation-metadata.md).
+Azure AD používá kryptografii s veřejným klíčem postavenou na průmyslových standardech k navázání vztahu důvěryhodnosti mezi sebou samými a aplikacemi, které ho používají. V praktických případech to funguje následujícím způsobem: Azure AD používá podpisový klíč, který se skládá z páru veřejného a privátního klíče. Když se uživatel přihlásí k aplikaci, která používá Azure AD k ověřování, vytvoří Azure AD token zabezpečení, který obsahuje informace o uživateli. Tento token je podepsaný službou Azure AD pomocí jejího privátního klíče, než se pošle zpátky do aplikace. Pokud chcete ověřit, jestli je token platný a pochází z Azure AD, musí aplikace ověřit podpis tokenu pomocí veřejného klíče vystaveného službou Azure AD, který je obsažený v [dokumentu zjišťování OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) tenanta nebo v rámci federace SAML/WS. [ dokument metadat](azure-ad-federation-metadata.md).
 
-Z bezpečnostních důvodů Azure AD podpisový klíč zobrazí v pravidelných intervalech a v případě nouze, může provádět jednotlivě okamžitě. Všechny aplikace, která se integruje s Azure AD by měli být připraveni zpracování události bez ohledu na to, jak často může dojít k výměně klíče. Pokud tomu tak není a aplikace se pokusí pomocí vypršela platnost klíče ověřování podpisu tokenu, žádost o přihlášení selže.
+Z bezpečnostních důvodů se podpisový klíč služby Azure AD pravidelně zakládá a v případě nouze se dá okamžitě navrátit. Každá aplikace, která se integruje se službou Azure AD, by měla být připravená na zpracování události při výměně klíčů bez ohledu na to, jak často k ní může dojít. Pokud tomu tak není a vaše aplikace se pokusí použít klíč s vypršenou platností k ověření podpisu na tokenu, žádost o přihlášení selže.
 
-V dokumentu zjišťování OpenID Connect a dokumentu federačních metadat existuje více než jeden platný klíč. Vaše aplikace by měla být připravený k používání některé z klíče specifikované v dokumentu, protože jeden z nich může být vrácena brzy, jiné mohou být jeho nahrazení a tak dále.
+V dokumentu zjišťování OpenID Connect a v dokumentu federačních metadat je vždy k dispozici více než jeden platný klíč. Vaše aplikace by měla být připravená použít některý z klíčů uvedených v dokumentu, protože jeden klíč může být brzy vyměněn, další může být nahrazena a tak dále.
 
-## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>Jak můžete vyhodnotit, jestli vaše aplikace bude mít vliv a co mají dělat
-Způsob, jakým aplikace zpracovává výměny klíčů, závisí na proměnné, jako je například typ aplikace nebo jaké identity protokolu a knihovny se použil. Následující části vyhodnoťte, jestli se nejčastěji používané typy aplikací je postiženo výměny klíčů a pokyny o tom, jak aktualizovat aplikaci pro podporu automatického přechodu nebo ručně aktualizovat klíč.
+## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>Jak posoudit, jestli bude vaše aplikace ovlivněná a co s nimi dělat
+Způsob, jakým vaše aplikace zpracovává výměna klíčů, závisí na proměnných, jako je typ aplikace nebo jaký protokol identity a knihovna se použily. Níže uvedené části vyhodnocují, jestli jsou na nejběžnějších typech aplikací ovlivněná výměna klíčů, a poskytuje pokyny k aktualizaci aplikace na podporu automatického přechodu nebo ruční aktualizace klíče.
 
-* [Nativní klientské aplikace přístup k prostředkům](#nativeclient)
-* [Webová aplikace / rozhraní API pro přístup k prostředkům](#webclient)
-* [Webová aplikace / rozhraní API Ochrana prostředků a vytvořené pomocí služby Azure App Services](#appservices)
-* [Webová aplikace / Ochrana prostředků pomocí .NET OWIN OpenID Connect, WS-Fed nebo WindowsAzureActiveDirectoryBearerAuthentication middleware rozhraní API](#owin)
-* [Webové aplikace nebo API Ochrana prostředků pomocí .NET Core OpenID Connect nebo JwtBearerAuthentication middlewaru](#owincore)
-* [Webová aplikace / Ochrana prostředků pomocí Node.js passport-azure-ad modulu rozhraní API](#passport)
-* [Webová aplikace / rozhraní API Ochrana prostředků a vytvořené pomocí sady Visual Studio 2015 nebo novější](#vs2015)
-* [Webové aplikace Ochrana prostředků a vytvořené pomocí sady Visual Studio 2013](#vs2013)
-* Webové rozhraní API v ochraně prostředků a vytvořené pomocí sady Visual Studio 2013
-* [Webové aplikace Ochrana prostředků a vytvořené pomocí sady Visual Studio 2012](#vs2012)
-* [Webové aplikace Ochrana prostředků a vytvořené sadou Visual Studio 2010, o 2008 pomocí technologie Windows Identity Foundation](#vs2010)
-* [Webová aplikace / Ochrana prostředků pomocí jiné knihovny nebo některý z podporovaných protokolů ručně implementaci rozhraní API](#other)
+* [Nativní klientské aplikace přistupující k prostředkům](#nativeclient)
+* [Webové aplikace/rozhraní API přistupující k prostředkům](#webclient)
+* [Webové aplikace/rozhraní API chrání prostředky a sestavené pomocí Azure App Services](#appservices)
+* [Webové aplikace/rozhraní API chrání prostředky pomocí rozhraní .NET OWIN OpenID Connect, WS-dodává nebo WindowsAzureActiveDirectoryBearerAuthentication middleware.](#owin)
+* [Webové aplikace/rozhraní API chrání prostředky pomocí middlewaru .NET Core OpenID Connect nebo JwtBearerAuthentication middleware](#owincore)
+* [Webové aplikace/rozhraní API chránící prostředky pomocí Node. js Passport – modul Azure-AD](#passport)
+* [Webové aplikace/rozhraní API chrání prostředky a vytvořené pomocí sady Visual Studio 2015 nebo novější](#vs2015)
+* [Webové aplikace, které chrání prostředky a vytvářejí je pomocí Visual Studio 2013](#vs2013)
+* Webová rozhraní API chránící prostředky a vytvořené pomocí Visual Studio 2013
+* [Webové aplikace chránící prostředky a vytvořené pomocí sady Visual Studio 2012](#vs2012)
+* [Webové aplikace chránící prostředky a vytvořené pomocí sady Visual Studio 2010, 2008 o pomocí technologie Windows Identity Foundation](#vs2010)
+* [Webové aplikace/rozhraní API chrání prostředky pomocí jiných knihoven nebo ručně implementují některé podporované protokoly.](#other)
 
-Tyto doprovodné materiály jsou **není** platí pro:
+Tyto doprovodné materiály neplatí pro:
 
-* Aplikace přidat z Galerie aplikací Azure AD (včetně vlastních) mají zvláštní pokyny s ohledem na podpisových klíčů. [Další informace.](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
-* Místní aplikace publikované prostřednictvím proxy aplikací není nutné starat o podpisových klíčů.
+* Aplikace přidané z Galerie aplikací Azure AD (včetně vlastní) mají samostatné pokyny týkající se podpisových klíčů. [Další informace.](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
+* Místní aplikace publikované prostřednictvím proxy aplikací si nemusíte dělat starosti s podpisovým klíčem.
 
-### <a name="nativeclient"></a>Nativní klientské aplikace přístup k prostředkům
-Aplikace, které mají přístup jenom k prostředkům (např.) Microsoft Graphu, trezor klíčů, rozhraní API aplikace Outlook a další Microsoft APIs) obecně pouze získat token a předejte ho spolu vlastníka prostředku. Vzhledem k tomu, že se nechrání žádné prostředky, nezkoumání token a proto není nutné zajistit, že je správně podepsaná.
+### <a name="nativeclient"></a>Nativní klientské aplikace přistupující k prostředkům
+Aplikace, které získávají přístup pouze k prostředkům (tj. Microsoft Graph, Trezor klíčů, rozhraní API pro Outlook a další rozhraní Microsoft API) obecně jenom získají token a předají ho vlastníkovi prostředku. Vzhledem k tomu, že nechrání žádné prostředky, nekontrolují token, a proto není nutné se ujistit, že je správně podepsán.
 
-Nativní klientské aplikace, desktopové nebo mobilní zařízení, do této kategorie patří a nejsou proto vliv výměny.
+Nativní klientské aplikace, ať už se jedná o Desktop nebo mobilní zařízení, spadají do této kategorie, a proto se na ně neovlivní výměna.
 
-### <a name="webclient"></a>Webová aplikace / rozhraní API pro přístup k prostředkům
-Aplikace, které mají přístup jenom k prostředkům (např.) Microsoft Graphu, trezor klíčů, rozhraní API aplikace Outlook a další Microsoft APIs) obecně pouze získat token a předejte ho spolu vlastníka prostředku. Vzhledem k tomu, že se nechrání žádné prostředky, nezkoumání token a proto není nutné zajistit, že je správně podepsaná.
+### <a name="webclient"></a>Webové aplikace/rozhraní API přistupující k prostředkům
+Aplikace, které získávají přístup pouze k prostředkům (tj. Microsoft Graph, Trezor klíčů, rozhraní API pro Outlook a další rozhraní Microsoft API) obecně jenom získají token a předají ho vlastníkovi prostředku. Vzhledem k tomu, že nechrání žádné prostředky, nekontrolují token, a proto není nutné se ujistit, že je správně podepsán.
 
-Webových aplikací a rozhraní API, která používá tok jen pro aplikace (přihlašovací údaje pro klienta / klientského certifikátu), do této kategorie patří a proto nejsou ovlivněny výměny.
+Webové aplikace a webová rozhraní API používající tok jenom pro aplikace (přihlašovací údaje klienta/klientský certifikát) spadají do této kategorie a neovlivňují je.
 
-### <a name="appservices"></a>Webová aplikace / rozhraní API Ochrana prostředků a vytvořené pomocí služby Azure App Services
-Služba Azure App Services ověřování / autorizace (EasyAuth) funkce již obsahuje logiku potřebnou k výměně klíče umožňují automaticky zpracovat.
+### <a name="appservices"></a>Webové aplikace/rozhraní API chrání prostředky a sestavené pomocí Azure App Services
+Funkce ověřování/autorizace v Azure App Services (EasyAuth) již má potřebnou logiku pro automatické zpracování výměny klíčů.
 
-### <a name="owin"></a>Webová aplikace / Ochrana prostředků pomocí .NET OWIN OpenID Connect, WS-Fed nebo WindowsAzureActiveDirectoryBearerAuthentication middleware rozhraní API
-Pokud vaše aplikace používá .NET OWIN OpenID Connect, WS-Fed nebo WindowsAzureActiveDirectoryBearerAuthentication middleware, již obsahuje logiku potřebnou k výměně klíče umožňují automaticky zpracovat.
+### <a name="owin"></a>Webové aplikace/rozhraní API chrání prostředky pomocí rozhraní .NET OWIN OpenID Connect, WS-dodává nebo WindowsAzureActiveDirectoryBearerAuthentication middleware.
+Pokud vaše aplikace používá middleware .NET OWIN OpenID Connect, WS-dodaný nebo WindowsAzureActiveDirectoryBearerAuthentication, již má logiku potřebnou k automatickému zpracování výměny klíčů.
 
-Můžete potvrdit, že vaše aplikace používá některé z těchto tím, že hledají všechny následující fragmenty kódu v souboru Startup.cs nebo Startup.Auth.cs vaší aplikace
+Můžete potvrdit, že aplikace používá některé z následujících fragmentů kódu v Startup.cs nebo Startup.Auth.cs vaší aplikace.
 
 ```
 app.UseOpenIdConnectAuthentication(
@@ -95,10 +95,10 @@ app.UseWsFederationAuthentication(
      });
 ```
 
-### <a name="owincore"></a>Webové aplikace nebo API Ochrana prostředků pomocí .NET Core OpenID Connect nebo JwtBearerAuthentication middlewaru
-Pokud vaše aplikace používá .NET Core OWIN OpenID Connect nebo JwtBearerAuthentication middleware, již obsahuje logiku potřebnou k výměně klíče umožňují automaticky zpracovat.
+### <a name="owincore"></a>Webové aplikace/rozhraní API chrání prostředky pomocí middlewaru .NET Core OpenID Connect nebo JwtBearerAuthentication middleware
+Pokud vaše aplikace používá middleware OWIN OpenID Connect nebo JwtBearerAuthentication pro .NET Core, má již potřebnou logiku pro automatické zpracování výměny klíčů.
 
-Můžete potvrdit, že vaše aplikace používá některé z těchto tím, že hledají všechny následující fragmenty kódu v souboru Startup.cs nebo Startup.Auth.cs vaší aplikace
+Můžete potvrdit, že aplikace používá některé z následujících fragmentů kódu v Startup.cs nebo Startup.Auth.cs vaší aplikace.
 
 ```
 app.UseOpenIdConnectAuthentication(
@@ -115,10 +115,10 @@ app.UseJwtBearerAuthentication(
      });
 ```
 
-### <a name="passport"></a>Webová aplikace / Ochrana prostředků pomocí Node.js passport-azure-ad modulu rozhraní API
-Pokud vaše aplikace používá modul Node.js passport-ad, již obsahuje logiku potřebnou k výměně klíče umožňují automaticky zpracovat.
+### <a name="passport"></a>Webové aplikace/rozhraní API chránící prostředky pomocí Node. js Passport – modul Azure-AD
+Pokud vaše aplikace používá modul Node. js Passport-AD, již má potřebnou logiku pro automatické zpracování výměny klíčů.
 
-Můžete potvrdit, že vaše aplikace passport-ad tak, že následující fragment kódu do vaší aplikace app.js
+Pomocí následujícího fragmentu kódu v aplikaci App. js můžete potvrdit, že vaše aplikace Passport – AD.
 
 ```
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -128,32 +128,32 @@ passport.use(new OIDCStrategy({
 ));
 ```
 
-### <a name="vs2015"></a>Webová aplikace / rozhraní API Ochrana prostředků a vytvořené pomocí sady Visual Studio 2015 nebo novější
-Pokud vaše aplikace byla sestavena pomocí šablony webové aplikace v sadě Visual Studio 2015 nebo novější a vyberete **pracovní nebo školní účty** z **změna ověřování** nabídky, už je nezbytné logika zpracování výměny klíčů automaticky. Tato logika součástí middleware OWIN OpenID Connect načítá a ukládá do mezipaměti klíče z dokument zjišťování OpenID Connect a je pravidelně aktualizuje.
+### <a name="vs2015"></a>Webové aplikace/rozhraní API chrání prostředky a vytvořené pomocí sady Visual Studio 2015 nebo novější
+Pokud byla vaše aplikace sestavena pomocí šablony webové aplikace v aplikaci Visual Studio 2015 nebo novější a Vy jste vybrali **pracovní nebo školní účty** v nabídce **změnit ověřování** , již má potřebná logika pro automatické zpracování výměny klíčů. Tato logika, vložená v middlewaru OWIN OpenID Connect, načítá a ukládá klíče do mezipaměti z dokumentu zjišťování OpenID Connect a pravidelně je aktualizuje.
 
-Pokud ručně přidáte ověřování do vašeho řešení, nemusí mít vaše aplikace logiky nezbytné výměny klíčů. Budete muset napsat sami, nebo postupujte podle kroků v [webových aplikací / rozhraní API pomocí jiné knihovny nebo ručně implementaci některý z podporovaných protokolů](#other).
+Pokud jste k řešení přidali ověřování ručně, nemusí mít aplikace potřebnou logiku pro výměnu klíčů. Budete je muset napsat sami nebo můžete postupovat podle kroků ve [webových aplikacích/rozhraních API pomocí jiných knihoven nebo ručně implementovat jakýkoli z podporovaných protokolů](#other).
 
-### <a name="vs2013"></a>Webové aplikace Ochrana prostředků a vytvořené pomocí sady Visual Studio 2013
-Pokud vaše aplikace byla sestavena pomocí šablony webové aplikace v sadě Visual Studio 2013 a vyberete **účty organizace** z **změna ověřování** nabídky, již obsahuje nezbytnou logiku k výměně klíče umožňují automaticky zpracovat. Tuto logiku ukládá ve dvou tabulkách databáze spojený s projektem jedinečný identifikátor vaší organizace a podpisový klíč. Připojovací řetězec pro databázi najdete v souboru Web.config v projektu.
+### <a name="vs2013"></a>Webové aplikace, které chrání prostředky a vytvářejí je pomocí Visual Studio 2013
+Pokud byla vaše aplikace sestavena pomocí šablony webové aplikace v Visual Studio 2013 a Vy jste vybrali **účty organizace** z nabídky **změnit ověřování** , již má potřebná logika pro automatické zpracování výměny klíčů. Tato logika ukládá jedinečný identifikátor vaší organizace a informace o podpisovém klíči ve dvou databázových tabulkách přidružených k tomuto projektu. Připojovací řetězec pro databázi můžete najít v souboru Web. config projektu.
 
-Pokud ručně přidáte ověřování do vašeho řešení, nemusí mít vaše aplikace logiky nezbytné výměny klíčů. Budete muset napsat sami, nebo postupujte podle kroků v [webových aplikací / rozhraní API pomocí jiné knihovny nebo ručně implementaci některý z podporovaných protokolů.](#other).
+Pokud jste k řešení přidali ověřování ručně, nemusí mít aplikace potřebnou logiku pro výměnu klíčů. Budete je muset napsat sami nebo můžete postupovat podle kroků ve [webových aplikacích/rozhraních API pomocí jiných knihoven nebo ručně implementovat jakýkoli z podporovaných protokolů.](#other)
 
-Následující postup vám pomůže ověřit, že je ve vaší aplikaci správně funguje logiku.
+Následující kroky vám pomůžou ověřit, že logika správně funguje ve vaší aplikaci.
 
-1. V sadě Visual Studio 2013, otevřete řešení a potom klikněte na **Průzkumníka serveru** karty na pravé okno.
-2. Rozbalte **datová připojení**, **objekt DefaultConnection**a potom **tabulky**. Vyhledejte **IssuingAuthorityKeys** tabulky, pravým tlačítkem myši a potom klikněte na tlačítko **zobrazit Data tabulky**.
-3. V **IssuingAuthorityKeys** tabulky, bude existovat alespoň jeden řádek, který odpovídá hodnotu kryptografického otisku klíče. Odstraňte všechny řádky v tabulce.
-4. Klikněte pravým tlačítkem myši **Tenantů** tabulku a pak klikněte na tlačítko **zobrazit Data tabulky**.
-5. V **Tenantů** tabulky, bude existovat alespoň jeden řádek, který odpovídá identifikátor tenanta jedinečný adresář. Odstraňte všechny řádky v tabulce. Pokud neprovedete odstranění řádků v obou **Tenantů** tabulky a **IssuingAuthorityKeys** tabulky, se zobrazí chyba za běhu.
-6. Sestavte a spusťte aplikaci. Až se přihlásíte ke svému účtu, můžete aplikaci zastavit.
-7. Zpět **Průzkumníka serveru** a podívejte se na hodnoty v **IssuingAuthorityKeys** a **Tenantů** tabulky. Můžete si všimnout, že se mají byl automaticky provést jeho plnění znovu odpovídajícími informacemi z dokumentu federačních metadat.
+1. V Visual Studio 2013 otevřete řešení a pak klikněte na kartu **Průzkumník serveru** v pravém okně.
+2. Rozbalte položku **datová připojení**, **DefaultConnection**a pak **tabulky**. Vyhledejte tabulku **IssuingAuthorityKeys** , klikněte na ni pravým tlačítkem myši a pak klikněte na **Zobrazit data tabulky**.
+3. V tabulce **IssuingAuthorityKeys** bude k dispozici alespoň jeden řádek, který odpovídá hodnotě kryptografického otisku klíče. Odstraňte všechny řádky v tabulce.
+4. Klikněte pravým tlačítkem na tabulku **klienti** a pak klikněte na možnost **Zobrazit data tabulky**.
+5. V tabulce **tenantůs** bude k dispozici alespoň jeden řádek, který odpovídá jedinečnému identifikátoru tenanta adresáře. Odstraňte všechny řádky v tabulce. Pokud neodstraníte řádky v tabulce **tenantů** i v tabulce **IssuingAuthorityKeys** , zobrazí se při spuštění chyba.
+6. Sestavte a spusťte aplikaci. Po přihlášení ke svému účtu můžete aplikaci zastavit.
+7. Vraťte se do **Průzkumník serveru** a podívejte se na hodnoty v tabulce **IssuingAuthorityKeys** a **tenantů** . Všimnete si, že automaticky znovu naplnily příslušné informace z dokumentu federačních metadat.
 
-### <a name="vs2013"></a>Webové rozhraní API v ochraně prostředků a vytvořené pomocí sady Visual Studio 2013
-Pokud jste vytvořili webovou aplikaci s rozhraním API v sadě Visual Studio 2013 pomocí šablony webové rozhraní API a pak vybrat **účty organizace** z **změna ověřování** nabídky, které již mají nezbytné logika v aplikaci.
+### <a name="vs2013"></a>Webová rozhraní API chránící prostředky a vytvořené pomocí Visual Studio 2013
+Pokud jste vytvořili aplikaci webového rozhraní API v Visual Studio 2013 pomocí šablony webového rozhraní API a pak jste v nabídce **změnit ověřování** vybrali možnost **účty organizace** , v aplikaci už máte potřebnou logiku.
 
-Pokud jste ručně nakonfigurovali ověřování, postupujte podle níže uvedených pokynů a další informace o konfiguraci vašeho webového rozhraní API se automaticky aktualizovat jeho informace o klíči.
+Pokud jste ručně nakonfigurovali ověřování, postupujte podle pokynů níže, abyste se dozvěděli, jak nakonfigurovat webové rozhraní API tak, aby automaticky aktualizovalo své klíčové informace.
 
-Následující fragment kódu ukazuje, jak získat nejnovější klíče z dokumentu federačních metadat a pak použít [obslužná rutina tokenů JWT](https://msdn.microsoft.com/library/dn205065.aspx) token ověří. Fragment kódu předpokládá, že použijete vlastní mechanizmus ukládání do mezipaměti pro trvalé klíč pro ověření budoucí tokenů z Azure AD, ať to v databázi, konfigurační soubor nebo jinde.
+Následující fragment kódu ukazuje, jak získat nejnovější klíče z dokumentu federačních metadat a pak pomocí [obslužné rutiny tokenu JWT](https://msdn.microsoft.com/library/dn205065.aspx) ověřit token. Fragment kódu předpokládá, že budete používat vlastní mechanismus ukládání do mezipaměti pro uchování klíče k ověřování budoucích tokenů z Azure AD, ať už se jedná o databázi, konfigurační soubor nebo jiné místo.
 
 ```
 using System;
@@ -243,18 +243,18 @@ namespace JWTValidation
 }
 ```
 
-### <a name="vs2012"></a>Webové aplikace Ochrana prostředků a vytvořené pomocí sady Visual Studio 2012
-Pokud vaše aplikace byla vytvořena v sadě Visual Studio 2012, pravděpodobně použijete nástroj Identity and Access Tool ke konfiguraci vaší aplikace. Je pravděpodobné, že používáte [ověřování Issuer Name Registry (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). Rozšíření VINR je odpovědná za správu informací o důvěryhodné zprostředkovatele identity (Azure AD) a klíče používané k ověření tokeny vystavené službou je. Rozšíření VINR také umožňuje snadno automaticky aktualizovat informace o klíči uložené v souboru Web.config, stáhněte si nejnovější dokumentu federačních metadat přidružený k adresáři, probíhá kontrola, zda je aktuální pomocí nejnovější dokumentů, konfigurace a aktualizace aplikace na používání nového klíče podle potřeby.
+### <a name="vs2012"></a>Webové aplikace chránící prostředky a vytvořené pomocí sady Visual Studio 2012
+Pokud byla vaše aplikace sestavena v aplikaci Visual Studio 2012, pravděpodobně jste pro konfiguraci aplikace použili nástroj identita a přístup. Je také možné, že používáte [ověřovací registr názvů vystavitele (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). VINR zodpovídá za údržbu informací o důvěryhodných zprostředkovatelích identity (Azure AD) a klíčích používaných k ověřování tokenů, které vydávají. VINR také usnadňuje automatické aktualizace informací o klíčích uložených v souboru Web. config stažením nejnovějšího dokumentu federačních metadat přidružených k vašemu adresáři. kontroluje se, jestli je konfigurace neaktuální s nejnovějším dokumentem. Aktualizace aplikace na použití nového klíče podle potřeby.
 
-Pokud jste vytvořili aplikaci pomocí některé z ukázek kódu nebo názorná dokumentace poskytovaných microsoftem, logiku výměny klíčů již součástí projektu. Můžete si všimnout, že kód uvedený níže v projektu již existuje. Pokud vaše aplikace již nemá tuto logiku podle následujících pokynů přidejte a ověřte, že funguje správně.
+Pokud jste aplikaci vytvořili pomocí některého z ukázek kódu nebo pokynů v dokumentaci od Microsoftu, je logika přecházení mezi klíči již obsažena v projektu. Všimněte si, že níže uvedený kód již v projektu existuje. Pokud vaše aplikace ještě tuto logiku nemá, postupujte podle následujících kroků a ověřte, zda správně funguje.
 
-1. V **Průzkumníka řešení**, přidejte odkaz na **System.IdentityModel** sestavení pro projekt.
-2. Otevřít **Global.asax.cs** soubor a přidejte následující direktivy using:
+1. V **Průzkumník řešení**přidejte odkaz na sestavení **System. IdentityModel** pro příslušný projekt.
+2. Otevřete soubor **Global.asax.cs** a přidejte následující direktivy using:
    ```
    using System.Configuration;
    using System.IdentityModel.Tokens;
    ```
-3. Přidejte následující metodu do **Global.asax.cs** souboru:
+3. Do souboru **Global.asax.cs** přidejte následující metodu:
    ```
    protected void RefreshValidationSettings()
    {
@@ -264,7 +264,7 @@ Pokud jste vytvořili aplikaci pomocí některé z ukázek kódu nebo názorná 
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. Vyvolat **RefreshValidationSettings()** metodu **Application_Start()** metoda ve **Global.asax.cs** jak je znázorněno:
+4. Volejte metodu **RefreshValidationSettings ()** v metodě **Application_Start ()** v **Global.asax.cs** , jak je znázorněno v následujícím příkladu:
    ```
    protected void Application_Start()
    {
@@ -274,11 +274,11 @@ Pokud jste vytvořili aplikaci pomocí některé z ukázek kódu nebo názorná 
    }
    ```
 
-Jakmile jste postupovali podle těchto kroků, Web.config vaší aplikace se aktualizují s nejnovějšími informacemi z dokumentu federačních metadat, včetně nejnovějších klíčů. Tato aktualizace dojde pokaždé, když se recykluje fond aplikací ve službě IIS; ve výchozím nastavení služba IIS recyklovat aplikace každých 29 hodin.
+Po provedení těchto kroků se web. config vaší aplikace aktualizuje o nejnovější informace z dokumentu federačních metadat, včetně nejnovějších klíčů. K této aktualizaci dojde pokaždé, když se fond aplikací recykluje ve službě IIS. ve výchozím nastavení je služba IIS nastavená na recyklaci aplikací každých 29 hodin.
 
-Postupujte podle kroků níže. Tím ověříte, že funguje logiky výměny klíčů.
+Použijte následující postup, chcete-li ověřit, zda je logika výměny klíčů funkční.
 
-1. Až si ověříte, že vaše aplikace používá výše uvedený kód, otevřete **Web.config** soubor a přejděte do  **\<issuerNameRegistry >** zablokovat, konkrétně vyhledávání Po zadání několika řádků:
+1. Po ověření, že aplikace používá kód výše, otevřete soubor **Web. config** a přejděte do  **\<issuerNameRegistry >** blok, konkrétně vyhledejte následující pár řádků:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -286,31 +286,31 @@ Postupujte podle kroků níže. Tím ověříte, že funguje logiky výměny kl�
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. V  **\<přidat kryptografický otisk = "" >** změňte hodnotu kryptografického otisku nahrazením libovolný znak jiný. Uložit **Web.config** souboru.
-3. Sestavení aplikace a pak ho spusťte. Pokud dokončíte proces přihlašování, vaše aplikace úspěšně aktualizuje klíč stažením požadované informace z vašeho adresáře dokumentu federačních metadat. Pokud máte potíže s přihlášením, zkontrolujte změny v aplikaci jsou správné načtením [přidání přihlašování do vaší webové aplikace pomocí Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) článku, nebo stahování a zkontrolujete následující ukázka kódu: [Víceklientské cloudové aplikace pro službu Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+2. V nastavení **> Přidatkryptografickýotisk=""změňtehodnotukryptografickéhootiskutak,ženahradítelibovolnýznakjiným.\<** Uložte soubor **Web. config** .
+3. Sestavte aplikaci a potom ji spusťte. Pokud můžete dokončit proces přihlášení, aplikace úspěšně aktualizuje klíč stažením požadovaných informací z dokumentu federačních metadat vašeho adresáře. Pokud máte problémy s přihlášením, zajistěte, aby změny v aplikaci byly správné, a to tak, že si [přidáte přihlášení k webové aplikaci pomocí Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) , nebo si stáhnete a zkontrolujete následující ukázku kódu: [Víceklientské cloudová aplikace pro Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
-### <a name="vs2010"></a>Technologie Windows Identity Foundation (WIF) verze 1.0 pro rozhraní .NET 3.5 a webových aplikací chrání prostředky a vytvořené pomocí sady Visual Studio 2008 nebo 2010
-Pokud jste sestavili aplikaci na technologie WIF v1.0, neexistuje žádný zadaný mechanismus automaticky aktualizovat konfigurace vaší aplikace, aby používala nový klíč.
+### <a name="vs2010"></a>Webové aplikace chránící prostředky a vytvořené pomocí sady Visual Studio 2008 nebo 2010 a technologie Windows Identity Foundation (WIF) v 1.0 pro .NET 3,5
+Pokud jste vytvořili aplikaci v WIF v 1.0, není k dispozici žádný mechanismus pro automatickou aktualizaci konfigurace vaší aplikace, aby používal nový klíč.
 
-* *Nejjednodušší způsob* použití nástrojů řádku FedUtil součástí sady SDK technologie WIF, která můžete načíst nejnovější dokument metadat a aktualizujte konfiguraci.
-* Aktualizace aplikace na rozhraní .NET 4.5, která zahrnuje nejnovější verzi technologie WIF nachází v oboru názvů System. Pak můžete použít [ověřování Issuer Name Registry (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) provádět automatické aktualizace konfigurace vaší aplikace.
-* Proveďte ruční výměna podle pokynů na konci tohoto dokumentu pokyny.
+* *Nejjednodušší způsob* Použijte nástroje soubor FedUtil obsažené v sadě WIF SDK, které mohou načíst nejnovější dokument metadat a aktualizovat konfiguraci.
+* Aktualizujte svou aplikaci na .NET 4,5, která zahrnuje nejnovější verzi WIF, která se nachází v oboru názvů System. Pak můžete pomocí [ověřování názvu vystavitele (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) provádět automatické aktualizace konfigurace aplikace.
+* Proveďte ruční výměnu podle pokynů na konci tohoto dokumentu s pokyny.
 
-Pokyny k použití řádku FedUtil aktualizovat konfiguraci:
+Pokyny k aktualizaci konfigurace pomocí nástroje soubor FedUtil:
 
-1. Ověřte, že máte v1.0 technologie WIF sady SDK pro Visual Studio 2008 nebo 2010 nainstalována na vývojovém počítači. Je možné [stáhnout odsud](https://www.microsoft.com/en-us/download/details.aspx?id=4451) Pokud jste to ještě nenainstalovali.
-2. V sadě Visual Studio, otevřete řešení a pak klikněte pravým tlačítkem na příslušný projekt a vyberte **aktualizujte federační metadata**. Pokud tato možnost není k dispozici, nebyl nainstalován řádku FedUtil a/nebo technologie WIF v1.0 SDK.
-3. V příkazovém řádku vyberte **aktualizace** zahájíte aktualizace federačních metadat. Pokud máte přístup k prostředí serveru, který je hostitelem aplikace, můžete volitelně použít na řádku FedUtil [Plánovač automatického metadata aktualizací](https://msdn.microsoft.com/library/ee517272.aspx).
-4. Klikněte na tlačítko **Dokončit** k dokončení procesu aktualizace.
+1. Ověřte, že je na vašem vývojovém počítači nainstalována sada WIF v 1.0 pro sadu Visual Studio 2008 nebo 2010. Pokud jste ho ještě nenainstalovali, můžete [si ho stáhnout tady](https://www.microsoft.com/en-us/download/details.aspx?id=4451) .
+2. V aplikaci Visual Studio otevřete řešení a klikněte pravým tlačítkem myši na příslušný projekt a vyberte možnost **aktualizovat federační metadata**. Pokud tato možnost není k dispozici, soubor FedUtil a/nebo sada SDK WIF v 1.0 nebyla nainstalována.
+3. V příkazovém řádku vyberte **aktualizovat** a začněte aktualizovat federační metadata. Máte-li přístup k prostředí serveru, kde je aplikace hostována, můžete volitelně použít [Plánovač aktualizací automatických metadat](https://msdn.microsoft.com/library/ee517272.aspx)soubor FedUtil.
+4. Kliknutím na **Dokončit** dokončete proces aktualizace.
 
-### <a name="other"></a>Webová aplikace / Ochrana prostředků pomocí jiné knihovny nebo některý z podporovaných protokolů ručně implementaci rozhraní API
-Pokud používáte nějaké jiné knihovny nebo ručně implementované některý z podporovaných protokolů, budete muset zkontrolovat, knihovny nebo implementace Ujistěte se, že klíč je načtena z dokument zjišťování OpenID Connect nebo federačních metadat dokument. Jeden způsob, jak zkontrolovat, je provést vyhledávání v kódu nebo knihovny kódu pro volání na dokument zjišťování OpenID nebo dokumentu federačních metadat.
+### <a name="other"></a>Webové aplikace/rozhraní API chrání prostředky pomocí jiných knihoven nebo ručně implementují některé podporované protokoly.
+Pokud používáte jinou knihovnu nebo jste ručně implementovali některé z podporovaných protokolů, budete muset zkontrolovat knihovnu nebo implementaci, abyste se ujistili, že se klíč načítá buď z dokumentu zjišťování OpenID Connect, nebo z federačních metadat. dokumentů. Jedním ze způsobů, jak tuto kontrolu provést, je hledání v kódu nebo kódu knihovny pro jakékoli volání buď do dokumentu OpenID Discovery, nebo do dokumentu federačních metadat.
 
-Pokud tento klíč ukládají někde nebo pevně zakódované v aplikaci, můžete ručně načíst klíč a aktualizujte je odpovídajícím způsobem pomocí provádí ruční výměna podle pokynů na konci tohoto dokumentu pokyny. **Důrazně doporučujeme, vylepšení vaší aplikace pro podporu automatického přechodu** jedním z přístupů obrysu v tomto článku vyhnout budoucí přerušení a režijní náklady, pokud Azure AD, zvýší jeho výměny podpisových nebo má nouze Změna Out-of-band.
+Pokud se klíč ukládá do vaší aplikace někam nebo pevně zakódované, můžete ho ručně načíst a podle pokynů provést ruční přechod podle pokynů na konci tohoto dokumentu s pokyny. **Důrazně doporučujeme, abyste aplikaci vylepšili tak, aby podporovala automatické přecházení** pomocí kterékoli z osnov přístupů v tomto článku, aby nedocházelo k budoucímu výpadkům a režii, pokud Azure AD zvyšuje tempoou výměnu nebo má nouzový přecházení mimo pásmo.
 
-## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>Testování vaší aplikace a určí, pokud bude mít vliv
-Můžete ověřit, jestli aplikace podporuje automatickou výměnu klíče stažením skripty a postupujte podle pokynů v [úložiště GitHub.](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
+## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>Jak otestovat aplikaci, abyste zjistili, jestli bude ovlivněná
+Můžete ověřit, jestli vaše aplikace podporuje automatickou výměnu klíčů, a to stažením skriptů a podle pokynů v [tomto úložišti GitHubu.](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
 
-## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Jak provést ruční výměna, pokud aplikace nepodporuje automatického přechodu
-Pokud vaše aplikace dělá **není** podpora automatického přechodu, budete muset vytvořit proces, který pravidelně podepisování monitorování služby Azure AD klíče a provede ruční výměna odpovídajícím způsobem. [Úložiště GitHub](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) obsahuje skripty a pokyny, jak to udělat.
+## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Jak provést ruční přecházení, pokud vaše aplikace nepodporuje automatickou výměnu
+Pokud vaše aplikace nepodporuje automatickou výměnu, budete muset vytvořit proces, který pravidelně monitoruje podpisové klíče služby Azure AD, a odpovídajícím způsobem provede ruční přesměrování. [Toto úložiště GitHub](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) obsahuje skripty a pokyny k tomu, jak to provést.
 

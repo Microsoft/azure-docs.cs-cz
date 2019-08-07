@@ -1,6 +1,6 @@
 ---
-title: Principy OAuth2 implicitní tok poskytování ve službě Azure AD | Dokumentace Microsoftu
-description: Přečtěte si další informace o Azure Active Directory implementace protokolu oauth2 implicitní tok, poskytování a zda je pro vaši aplikaci nejvhodnější.
+title: Princip toku implicitního grantu OAuth2 ve službě Azure AD | Microsoft Docs
+description: Přečtěte si další informace o implementaci OAuth2 implicitního grantu a Azure Active Directory o tom, jestli je to pro vaši aplikaci správné.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -10,7 +10,7 @@ ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
@@ -18,60 +18,60 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fe0ee8021ae7e70654a161e37d072195bbc035f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e30bd940d3312a16f2dd30b175deb6622cb8c01
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545274"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834742"
 ---
-# <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Pochopení toku implicitní grant OAuth2 v Azure Active Directory (AD)
+# <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Princip toku implicitního udělení OAuth2 v Azure Active Directory (AD)
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
-Implicitní grant OAuth2 je notorious za poskytnutí s nejdelší seznam zabezpečením ve specifikaci OAuth2. A ještě, je přístup pomocí knihovny ADAL JS a ten, který doporučujeme při psaní aplikace SPA implementovat. Co nabízí? Je všechny na vás kompromisy: a jak ukázalo se, implicitního udělení, je nejlepším přístupem může zneužít pro aplikace, které využívají webové rozhraní API prostřednictvím JavaScriptu v prohlížeči.
+Implicitní grant OAuth2 je USTR pro udělení nejdelšího seznamu otázek zabezpečení ve specifikaci OAuth2. A ještě to je přístup implementovaný pomocí ADAL JS a ten, který doporučujeme při psaní aplikací SPA. Co nabízí? To je všechno kompromisy: a jak se to stane, implicitní udělení je nejlepší přístup, který můžete použít pro aplikace, které využívají webové rozhraní API prostřednictvím JavaScriptu z prohlížeče.
 
 ## <a name="what-is-the-oauth2-implicit-grant"></a>Co je implicitní grant OAuth2?
 
-Quintessential [udělení autorizačního kódu OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.1) je udělení autorizace, která používá dva samostatné koncové body. Koncový bod autorizace se používá pro fázi interakce uživatelů, což vede k autorizační kód. Koncový bod tokenu se pak použije klient pro výměnu kód pro přístupový token a často token obnovení. Webové aplikace jsou potřeba prezentovat svoje vlastní přihlašovací údaje aplikace koncovému bodu tokenu, tak, aby autorizační server můžete ověřit klienta.
+[Udělení autorizačního kódu OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.1) Quintessential je udělení autorizace, která používá dva samostatné koncové body. Koncový bod autorizace se používá pro fázi interakce uživatele, která má za následek autorizační kód. Koncový bod tokenu potom používá klient pro výměnu kódu přístupového tokenu a často také obnovovací token. Webové aplikace jsou nutné k tomu, aby v koncovém bodu tokenu předcházely vlastní přihlašovací údaje aplikace, aby mohl autorizační Server ověřit klienta.
 
-[Implicitní grant OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.2) je varianta jiných udělení autorizace. Umožňuje klientům získat přístupový token (a id_token, při použití [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html)) přímo z koncového bodu autorizace, bez kontaktování koncovému bodu tokenu ani ověření klienta. Tato varianta je určená pro aplikace běžící ve webovém prohlížeči založené na jazyce JavaScript: v původní specifikace OAuth2 tokeny jsou vráceny ve fragmentu identifikátoru URI. Díky tomu se token bits k dispozici pro kód jazyka JavaScript v klientovi, ale zaručuje, že by se nezahrnuly do přesměrování směrem k serveru. Vrací tokeny přes prohlížeč přesměruje přímo z koncového bodu autorizace. Má také využívat odstranění případné požadavky pro různé zdroje volání, které jsou nutné v případě aplikací jazyka JavaScript je potřeba kontaktovat koncový bod tokenu.
+[Implicitní grant OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.2) je variantou dalších autorizačních grantů. Umožňuje klientovi získat přístupový token (a id_token při použití [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html)) přímo z koncového bodu autorizace bez kontaktování koncového bodu tokenu ani ověřování klienta. Tato varianta byla navržena pro aplikace založené na jazyce JavaScript běžící ve webovém prohlížeči: v původní specifikaci OAuth2 jsou tokeny vráceny v fragmentu identifikátoru URI. Díky tomu jsou bity tokenů dostupné pro kód jazyka JavaScript v klientovi, ale garantuje, že nebudou zahrnuty do přesměrování směrem k serveru. Vrácení tokenů prostřednictvím přesměrování prohlížeče přímo z koncového bodu autorizace. Má také výhodu eliminace všech požadavků pro volání mezi zdroji, což je nezbytné v případě, že je aplikace jazyka JavaScript požadována pro kontaktování koncového bodu tokenu.
 
-Důležitou vlastnost implicitní grant OAuth2 je skutečnost, že tyto toky nikdy návratový obnovovací tokeny do klienta. V další části ukazuje, jak to není nezbytné a by ve skutečnosti potíže se zabezpečením.
+Důležitou vlastností OAuth2 implicitního udělení je skutečnost, že tyto toky nikdy nevrací aktualizační tokeny klientovi. V další části se dozvíte, jak to není nutné a že by ve skutečnosti došlo k potížím se zabezpečením.
 
-## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>Vhodné scénáře pro implicitní grant OAuth2
+## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>Vhodné scénáře pro implicitní udělení OAuth2
 
-Specifikace OAuth2 deklaruje, že má implicitní grant navržen umožnit aplikacím uživatelský agent – to znamená aplikacím JavaScript provádění v prohlížeči. Charakteristickým takové aplikace je, že kód jazyka JavaScript se používá pro přístup k prostředkům serveru (obvykle webové rozhraní API) a odpovídajícím způsobem aktualizuje uživatelské prostředí aplikace. Představte si, že aplikace, jako je Outlook Web Access nebo Gmailu: při výběru zprávy z vaší doručené pošty, pouze na panelu zpráv vizualizace změní zobrazíte nový výběr, zatímco zbytek stránky zůstává beze změny. Tato vlastnost je rozdíl od tradičních na základě přesměrování webových aplikací, kde každá interakce uživatele výsledkem postbacku celé stránky a vykreslování celá stránka odpovědi na nový server.
+Specifikace OAuth2 deklaruje, že implicitní Grant byl vytvořen za účelem povolení aplikací uživatelského agenta – to znamená, že aplikace JavaScriptu spouštěné v prohlížeči. Definováním charakteristických vlastností těchto aplikací je, že kód jazyka JavaScript se používá pro přístup k prostředkům serveru (typicky k webovému rozhraní API) a odpovídajícím způsobem pro aktualizaci uživatelského prostředí aplikace. Můžete si představit aplikace jako Gmail nebo Outlook Web Access: Když vyberete zprávu z doručené pošty, změní se jenom panel vizualizace zprávy, aby se zobrazil nový výběr, zatímco zbytek stránky zůstane beze změny. Tato vlastnost je v kontrastu s tradičními webovými aplikacemi založenými na přesměrování, kde každá interakce uživatele má za následek úplné vystavení stránky a úplné vykreslování nové serverové odpovědi.
 
-Aplikace, které budou založené na jazyce JavaScript přístup k jeho extreme se nazývají jednostránkové aplikace nebo SPA. Cílem je, že tyto aplikace pouze předložit úvodní stránku HTML a přidružené JavaScript, všechny následné interakce, které jsou řízena volání webového rozhraní API provádí prostřednictvím JavaScriptu. Ale hybridním přístupům, kde aplikace je ve většině případů řízené zpětné volání, ale nahrazuje příležitostné volání JS, nejsou – diskuzi o používání implicitní tok je relevantní pro ty také.
+Aplikace, které přijímají přístup na základě JavaScriptu na své extrémní, se nazývají jednostránkové aplikace nebo jednostránkové. Nápad je, že tyto aplikace poskytují pouze počáteční stránku HTML a přidružený JavaScript, přičemž všechny následné interakce jsou ovládány voláními webového rozhraní API provedenými prostřednictvím JavaScriptu. Nicméně hybridní přístupy, kde je aplikace většinou řízené postbackem, ale provádí občasné volání JS, nejsou neobvyklá – diskuze o použití implicitního toku je relevantní i pro tyto.
 
-Aplikace založené na přesměrování obvykle zabezpečit jejich požadavky pomocí souborů cookie, ale které přístup nefunguje i pro aplikace JavaScript. Soubory cookie fungovat jenom v doméně, které se byly vygenerovány pro, zatímco volání JavaScriptu může být zaměřený na jiných domén. Ve skutečnosti, které často bude v případě: Představte si, že volání rozhraní API Microsoft Graph API, rozhraní API Office, Azure – všechny umístěných mimo doménu, ze kterého je aplikace poskytovány aplikací. Rostoucí trend pro aplikace JavaScript je nechat jakéhokoli back-endu, předávající 100 % na třetí strany webová rozhraní API k implementaci jejich obchodní funkce.
+Aplikace založené na přesměrování obvykle zabezpečují své žádosti prostřednictvím souborů cookie, ale tento přístup nefunguje i pro aplikace JavaScriptu. Soubory cookie pracují pouze s doménou, pro kterou byly vygenerovány, zatímco volání JavaScriptu mohou být směrována k ostatním doménám. V takovém případě to často znamená, že aplikace vyvolají rozhraní Microsoft Graph API, rozhraní Office API, rozhraní API Azure – všechny nacházející se mimo doménu, ze kterých se aplikace obsluhuje. Rostoucí trend pro aplikace JavaScriptu nemá žádný back-end. spoléháme se 100% na webová rozhraní API třetích stran a implementujte svou obchodní funkci.
 
-V současné době je upřednostňovanou metodou ochrany volání webového rozhraní API pomocí OAuth2 nosný token přístupu, kde jsou všechna volání doplněny přístupového tokenu OAuth2. Webové rozhraní API zkontroluje příchozí přístupový token, a pokud najde v něm nezbytné obory, udělí přístup k požadované operace. Implicitní tok poskytuje vhodný mechanismus pro aplikace JavaScript získat přístupové tokeny pro webové rozhraní API, nabízí řadu výhod v souvislosti se soubory cookie:
+V současné době upřednostňovaná metoda ochrany volání webového rozhraní API je použít přístup k tokenu OAuth2 Bearer, kde každé volání je doprovázeno přístupovým tokenem OAuth2. Webové rozhraní API kontroluje token příchozího přístupu a pokud v něm najde potřebné obory, udělí přístup k požadované operaci. Implicitní tok poskytuje pohodlný mechanismus pro aplikace JavaScriptu k získání přístupových tokenů pro webové rozhraní API, který nabízí mnoho výhod v souvislosti s soubory cookie:
 
-* Tokeny můžete spolehlivě získat bez nutnosti pro různé zdroje volání – povinné registrace přesměrování, na které identifikátor URI, na který jsou tokeny návratový zaručuje, že nejsou vytiskne tokeny
-* JavaScript aplikace můžete získat podle potřeby, pro libovolný počet rozhraní Web API cílovou – bez omezení na domény přístupové tokeny
-* Funkce HTML5, jako jsou relace nebo místní úložiště poskytují plnou kontrolu nad ukládání tokenu do mezipaměti a správa životního cyklu, zatímco Správa souborů cookie je neprůhledný do aplikace
-* Napadnutelné přes bezpečnostní vůči útokům padělání (CSRF) žádosti více webů nejsou přístupové tokeny
+* Tokeny lze spolehlivě získat bez nutnosti pro volání mezi zdroji – povinnou registrací identifikátoru URI přesměrování, na které tokeny vrátí záruky, že tokeny nejsou posunuty.
+* Aplikace JavaScriptu můžou získat tolik přístupových tokenů, kolik potřebují, a to u tolika webových rozhraní API, která cílí – bez omezení domén.
+* Funkce HTML5, jako je například Session nebo místní úložiště, poskytují úplnou kontrolu nad ukládáním do mezipaměti a správou životnosti tokenů, zatímco Správa souborů cookie je neprůhledná
+* Přístupové tokeny nejsou náchylné k útokům prostřednictvím CSRF (mezi lokalitami).
 
-Implicitní grant toku bez vyvolání tokeny obnovení, většinou z bezpečnostních důvodů. Obnovovací token není v jako přístupové tokeny, poskytování mnohem větší výkon, proto inflicting mnohem více poškození v případě, že je neuniknou oboru podle přesně. Implicitní tok tokeny se dodávají v adrese URL, a proto riziko zachycení vyšší než v udělení autorizačního kódu.
+Tok implicitního udělení nevydá aktualizační tokeny, většinou z bezpečnostních důvodů. Obnovovací token není tak Zúžený rozsah jako přístupové tokeny. tím se ještě vyšší výkon, což způsobí mnohem větší škodu pro případ, že dojde k úniku. V implicitním toku jsou tokeny dodány v adrese URL, takže riziko zachycení je vyšší než v udělení autorizačního kódu.
 
-Aplikace v jazyce JavaScript však má jiný mechanismus k dispozici pro obnovení přístupových tokenů bez opakovaného výzvy k zadání přihlašovacích údajů. Aplikace skrytý element iframe slouží k provádění žádostí o nový token na koncový bod autorizace Azure AD: jako prohlížeč stále obsahuje aktivní relaci (čtení: má soubor cookie relace) vůči doméně Azure AD, můžete žádost o ověření úspěšně dojít bez nutnosti zásahu uživatele.
+Aplikace JavaScriptu ale má jiný mechanismus pro obnovení přístupových tokenů, aniž by bylo nutné opakovaně vyzvat uživatele k zadání přihlašovacích údajů. Aplikace může pomocí skrytého prvku IFRAME provádět nové žádosti o tokeny proti koncovému bodu autorizace služby Azure AD: Pokud má prohlížeč stále aktivní relaci (čtení: má soubor cookie relace) vůči doméně služby Azure AD, požadavek na ověření může k úspěšnému výskytu bez nutnosti zásahu uživatele.
 
-Tento model umožňuje aplikaci JavaScript nezávisle obnovit přístupové tokeny a dokonce i získat nové značky pro nové rozhraní API (za předpokladu, že uživatel už odsouhlasený. pro ně). Tím se vyhnete přidání zatížení získává, údržbu a ochraně cenných artefaktů, například obnovovací token. Artefakt, který umožňuje bezobslužné obnovení souboru cookie relace Azure AD se spravuje mimo aplikaci. Další výhodou tohoto přístupu je, že uživatel může odhlásit se ze služby Azure AD, pomocí některé z aplikací, přihlášení k Azure AD běžící ve všech záložkách prohlížeče. Výsledkem je odstranění souboru cookie relace Azure AD a jazyka JavaScript aplikace automaticky nebudete už moct obnovit tokeny pro podepsané si uživatele.
+Tento model uděluje aplikaci JavaScriptu možnost nezávisle obnovit přístupové tokeny a dokonce získat nové pro nové rozhraní API (za předpokladu, že ho uživatel dřív poslal). Tím se zabrání zvýšení zátěže, která získává, zachovává a chrání vysoce hodnotový artefakt, jako je aktualizační token. Artefakt, který způsobuje tiché obnovení, je soubor cookie relace služby Azure AD spravován mimo aplikaci. Další výhodou tohoto přístupu je, že se uživatel může odhlásit z Azure AD pomocí kterékoli z aplikací přihlášených do služby Azure AD, které běží na kterékoli z karet prohlížeče. Výsledkem je odstranění souboru cookie relace Azure AD a aplikace JavaScriptu bude automaticky ztratit schopnost obnovit tokeny pro odhlášeného uživatele.
 
-## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Implicitní grant je vhodný pro moji aplikaci?
+## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Je implicitní grant vhodný pro moji aplikaci?
 
-Implicitní grant představuje další rizik než ostatní udělí a jsou popsány oblasti je potřeba věnovat pozornost (například [zneužití přístupový Token k vydávat se za vlastníka prostředku v implicitní tok] [ OAuth2-Spec-Implicit-Misuse]a [Model hrozeb OAuth 2.0 a důležité informace o zabezpečení][OAuth2-Threat-Model-And-Security-Implications]). Ale vyšší riziko profilu je do značné míry vzhledem k tomu, že je určená k umožňují aplikacím, které jsou spouštěny aktivním kódem, obsluhuje vzdálený prostředek do prohlížeče. Pokud plánujete SPA architekturu, jste žádné součásti back-end nebo úmyslu vyvolat webové rozhraní API prostřednictvím JavaScriptu, doporučujeme použít implicitní tok pro získání tokenu.
+Implicitní grant představuje více rizik než jiné granty a oblasti, které je potřeba věnovat pozornost, jsou dobře zdokumentováné (například [zneužití přístupového tokenu k zosobnění vlastníka prostředku v implicitním toku][OAuth2-Spec-Implicit-Misuse] a [modelu OAuth 2,0 Threat a zabezpečení. Požadavky][OAuth2-Threat-Model-And-Security-Implications]). Vyšší rizikový profil je však z velké části vzhledem k tomu, že je určeno k povolení aplikací, které spouštějí aktivní kód, obsluhované vzdáleným prostředkem do prohlížeče. Pokud plánujete architekturu SPA, nemáte žádné back-endové součásti ani nechtěli vyvolat webové rozhraní API prostřednictvím JavaScriptu, doporučuje se použít implicitní tok pro získání tokenu.
 
-Pokud je vaše aplikace nativního klienta, implicitní tok se skvěle hodí. Neexistence souboru cookie relace Azure AD v rámci nativního klienta zbaví aplikace znamená, že zachování dlouhodobá relace. To znamená, že vaše aplikace opakovaně, vyzve uživatele při získávání přístupových tokenů pro nové prostředky.
+Pokud je vaše aplikace nativním klientem, implicitní tok se nevejde na skvělé. Neexistence souboru cookie relace Azure AD v kontextu nativního klienta odznamená vaši aplikaci z prostředků údržby dlouhotrvající relace. To znamená, že aplikace bude při získávání přístupových tokenů pro nové prostředky opakovaně vyzvat uživatele.
 
-Pokud vyvíjíte webové aplikace, která zahrnuje back-endu a využívání rozhraní API z jeho kód back-endu, implicitní tok je také vhodné. Ostatní udělí vám poskytují mnohem větší výkon. Například udělování přihlašovacích údajů klienta OAuth2 poskytuje možnost získat tokeny, které odpovídají oprávnění přiřazená k delegování uživatelů na rozdíl od vlastní, aplikace. To znamená, že klient má možnost spravovat i programový přístup k prostředkům, když uživatel není aktivně zapojený do relace a tak dále. Nejen to, ale takové uděluje poskytují vyšší záruky zabezpečení. Například přístupové tokeny nikdy přenosu přes prohlížeč uživatel, nemáte rizika, neuloží se do prohlížeče historie a tak dále. Klientská aplikace můžete také provést silné ověřování při vyžádání tokenu.
+Pokud vyvíjíte webovou aplikaci, která zahrnuje back-end a spotřebováváte rozhraní API z back-endu kódu, implicitní tok také není vhodný. Další výkon vám poskytne mnohem víc. Například udělení přihlašovacích údajů klienta OAuth2 poskytuje možnost získat tokeny, které odrážejí oprávnění přiřazená samotné aplikaci, a to na rozdíl od delegování uživatelů. To znamená, že klient může spravovat programový přístup k prostředkům i v případě, že uživatel aktivně není v relaci, a tak dále. Nejen to, ale takové granty poskytují vyšší záruky zabezpečení. Přístupové tokeny se nikdy nemigrují přes prohlížeč uživatelů, ale neohrožují uložení v historii prohlížeče atd. Klientská aplikace může také při požadavku na token provádět silné ověřování.
 
 ## <a name="next-steps"></a>Další postup
 
-* Úplný seznam prostředků pro vývojáře, včetně referenční informace pro protokoly a autorizaci OAuth2 poskytnutí podpory toky službou Azure AD, najdete [příručce vývojáře v Azure AD][AAD-Developers-Guide]
-* Zobrazit [jak integrovat aplikace s Azure AD] [ ACOM-How-To-Integrate] pro další podrobnosti o procesu integrace aplikace.
+* Úplný seznam vývojářských prostředků, včetně referenčních informací o protokolech a OAuth2ch grantů pro autorizaci pomocí služby Azure AD, najdete v [příručce pro vývojáře Azure AD][AAD-Developers-Guide] .
+* Další informace o procesu integrace aplikací najdete v tématu [integrace aplikace se službou Azure AD][ACOM-How-To-Integrate] .
 
 <!--Image references-->
 

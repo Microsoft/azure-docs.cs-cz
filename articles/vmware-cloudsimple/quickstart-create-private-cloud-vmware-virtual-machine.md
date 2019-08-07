@@ -1,23 +1,23 @@
 ---
-title: Rychlý start – vytvoření virtuálního počítače s VMware na privátní Cloud
-description: Popisuje postup vytvoření a virtuálních počítačů VMware na CloudSimple privátního cloudu
+title: Rychlý Start – vytvoření virtuálního počítače VMware v privátním cloudu
+description: Popisuje, jak vytvořit a virtuální počítač VMware v privátním cloudu CloudSimple.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/03/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 33354ce09ad6ba1a9a7c08a8cd3b945f3788011a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 7d21035fc3e9e80344264b9fde21820162f376d3
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595687"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816703"
 ---
-# <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Vytvoření virtuálních počítačů VMware na privátní Cloud
+# <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Vytváření virtuálních počítačů VMware v privátním cloudu
 
-K vytvoření virtuálních počítačů na privátní Cloud, začněte tím, že přístup k portálu CloudSimple z portálu Azure portal.
+Pokud chcete vytvořit virtuální počítače v privátním cloudu, začněte přístupem k portálu CloudSimple z Azure Portal.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -26,153 +26,153 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 ## <a name="access-the-cloudsimple-portal"></a>Přístup k portálu CloudSimple
 
 1. Vyberte **Všechny služby**.
-2. Vyhledejte **CloudSimple služby**.
-3. Vyberte službu CloudSimple, na kterém chcete vytvořit privátní Cloud.
-4. Z **přehled** klikněte na **přejít na portál CloudSimple** otevřít na nové kartě prohlížeče CloudSimple portálu.  Pokud se zobrazí výzva, přihlaste se pomocí Azure přihlášení pověření.  
+2. Vyhledejte **služby CloudSimple Services**.
+3. Vyberte službu CloudSimple, na které chcete vytvořit privátní cloud.
+4. Na stránce **Přehled** klikněte na **Přejít na portál CloudSimple** a otevřete novou kartu prohlížeče pro portál CloudSimple.  Pokud se zobrazí výzva, přihlaste se pomocí přihlašovacích údajů pro přihlášení do Azure.  
 
-    ![Spusťte portál CloudSimple](media/launch-cloudsimple-portal.png)
+    ![Spustit portál CloudSimple](media/launch-cloudsimple-portal.png)
 
-## <a name="launch-vcenter-web-ui"></a>Spuštění webové uživatelské rozhraní serveru vCenter
+## <a name="launch-vcenter-web-ui"></a>Spustit web vCenter web – uživatelské rozhraní
 
-Teď můžete spustit vCenter do nastavení virtuálních počítačů a zásad.
+Teď můžete spustit vCenter, abyste nastavili virtuální počítače a zásady.
 
-Pro přístup k serveru vCenter, spusťte z portálu CloudSimple. Na domovské stránce v části **běžné úkoly**, klikněte na tlačítko **spuštění vSphere klienta**.  Vyberte privátní Cloud a poté klikněte na tlačítko **spuštění vSphere klienta** na privátní Cloud.
+Pokud chcete získat přístup k serveru vCenter, začněte na portálu CloudSimple. Na domovské stránce v části **běžné úlohy**klikněte na **Spustit klienta vSphere**.  Vyberte privátní cloud a pak klikněte na **Spustit klienta vSphere** v privátním cloudu.
 
-   ![Spuštění vSphere klienta](media/launch-vcenter-from-cloudsimple-portal.png)
+   ![Spustit klienta vSphere](media/launch-vcenter-from-cloudsimple-portal.png)
 
-## <a name="upload-an-iso-or-vsphere-template"></a>Nahrát šablonu ISO nebo vSphere
+## <a name="upload-an-iso-or-vsphere-template"></a>Nahrání šablony ISO nebo vSphere
 
 > [!WARNING]
-> Pro nahrávání ISO použijte klienta vSphere HTML5.  Pomocí Flash klienta může mít za následek chybu.
+> V případě nahrávání ISO použijte klienta vSphere HTML5.  Použití klienta Flash může mít za následek chybu.
 
-1. Získáte ISO nebo vSphere šablonu, kterou chcete odeslat k vCenter pro vytvoření virtuálního počítače a mít k dispozici v místním systému.
+1. Získejte šablonu ISO nebo vSphere, kterou chcete nahrát na vCenter, abyste vytvořili virtuální počítač a měli ho k dispozici v místním systému.
 
-2. V systému vCenter, klikněte na tlačítko **disku** ikonu a vyberte **vsanDatastore**. Klikněte na tlačítko **soubory** a potom klikněte na tlačítko **novou složku**.
+2. V vCenter klikněte na ikonu **disku** a vyberte **vsanDatastore**. Klikněte na **soubory** a pak na **Nová složka**.
 
     ![vCenter ISO](media/vcenter-create-folder.png)
 
 3. Vytvořte složku pro ukládání souborů ISO.
 
-4. Přejděte do nové složky, které vytvořili a klikněte na tlačítko **nahrát soubory**. Použijte na obrazovce pokyny pro nahrání bitovou kopii ISO.
+4. Přejděte do nové složky, kterou jste vytvořili, a klikněte na **nahrát soubory**. Podle pokynů na obrazovce nahrajte soubor ISO.
 
-## <a name="create-a-virtual-machine-in-vcenter"></a>Vytvoření virtuálního počítače v systému vCenter
+## <a name="create-a-virtual-machine-in-vcenter"></a>Vytvoření virtuálního počítače v vCenter
 
-1. V systému vCenter, klikněte na tlačítko **hostitelé a clustery** ikonu.
+1. V vCenter klikněte na ikonu **hostitelé a clustery** .
 
-2. Klikněte pravým tlačítkem na **úlohy** a vyberte **nový virtuální počítač**.
+2. Klikněte pravým tlačítkem na **úlohy** a vyberte **Nový virtuální počítač**.
     
     ![Vytvoření virtuálního počítače](media/create-vcenter-virtual-machine-01.png)
 
-3. Vyberte **vytvořit nový virtuální počítač** a klikněte na tlačítko **Další**.
+3. Vyberte **vytvořit nový virtuální počítač** a klikněte na **Další**.
 
     ![Průvodce novým virtuálním počítačem](media/create-vcenter-virtual-machine-02.png)
 
-4. Název počítače, vyberte **pracovního vytížení Virtuálního počítače** složky a klikněte na tlačítko **Další**.
+4. Pojmenujte počítač, vyberte složku pro **virtuální počítač úlohy** a klikněte na **Další**.
 
-    ![Vyberte název a složku](media/create-vcenter-virtual-machine-03.png)
+    ![Vybrat název a složku](media/create-vcenter-virtual-machine-03.png)
 
-5. Vyberte **úlohy** výpočetních prostředků a klikněte na tlačítko **Další**.
+5. Vyberte výpočetní prostředek **úlohy** a klikněte na **Další**.
 
-    ![Vyberte výpočetní prostředek](media/create-vcenter-virtual-machine-04.png)
+    ![Vybrat výpočetní prostředek](media/create-vcenter-virtual-machine-04.png)
 
-6. Vyberte **vsanDatastore** a klikněte na tlačítko **Další**.
+6. Vyberte **vsanDatastore** a klikněte na **Další**.
 
     ![Výběr úložiště](media/create-vcenter-virtual-machine-05.png)
 
-7. Ponechte výchozí výběr kompatibility ESXi 6.5 a klikněte na **Další**.
+7. Zachovejte výchozí výběr kompatibility ESXi 6,5 a klikněte na tlačítko **Další**.
 
-    ![Vyberte kompatibility](media/create-vcenter-virtual-machine-06.png)
+    ![Vybrat kompatibilitu](media/create-vcenter-virtual-machine-06.png)
 
-8. Vyberte hostovaný operační systém normy ISO pro virtuální počítač a klikněte na tlačítko **Další**.
+8. Vyberte hostovaný operační systém pro virtuální počítač ISO a klikněte na **Další**.
 
     ![Přizpůsobení hostovaného operačního systému](media/create-vcenter-virtual-machine-07.png)
 
-9. Vyberte pevný disk a možnosti sítě. Nový disk CD/DVD jednotku, vyberte **soubor Datastore ISO**.  Pokud chcete povolit provoz z veřejné IP adresy k tomuto virtuálnímu počítači, vyberte v síti jako **virtuální počítač 1**.
+9. Vyberte možnost pevný disk a síť. V případě nové jednotky CD/DVD vyberte **soubor ISO úložiště dat**.  Pokud chcete na tomto virtuálním počítači povolený provoz z veřejné IP adresy, vyberte síť jako **VM-1**.
 
-    ![Vyberte vlastní nastavení hardwaru](media/create-vcenter-virtual-machine-08.png)
+    ![Vybrat vlastní nastavení hardwaru](media/create-vcenter-virtual-machine-08.png)
 
-10. Otevře se okno pro výběr. Vyberte soubor, který byl dříve odeslán do složky šablony a soubory ISO a klikněte na tlačítko **OK**.
+10. Otevře se okno výběru. Vyberte soubor, který jste dříve nahráli do složky soubory ISO a Templates a klikněte na **OK**.
 
-    ![Vybrat soubor ISO](media/create-vcenter-virtual-machine-10.png)
+    ![Vybrat ISO](media/create-vcenter-virtual-machine-10.png)
 
-11. Zkontrolujte nastavení a klikněte na tlačítko **OK** k vytvoření virtuálního počítače.
+11. Zkontrolujte nastavení a kliknutím na **OK** vytvořte virtuální počítač.
 
-    ![Projděte si možnosti](media/create-vcenter-virtual-machine-11.png)
+    ![Zkontrolovat možnosti](media/create-vcenter-virtual-machine-11.png)
 
-Virtuální počítač je teď přidaná do výpočetní prostředky, které úlohy a je připravená k použití. 
+Virtuální počítač je teď přidaný do výpočetních prostředků úlohy a je připravený k použití. 
 
-![Nový virtuální počítač ve vCenter](media/create-vcenter-virtual-machine-12.png)
+![Nový virtuální počítač v vCenter](media/create-vcenter-virtual-machine-12.png)
 
-Základní instalace je dokončena. Chcete začít používat vaše privátního cloudu, podobně jako jak byste použili vaši místní infrastrukturu virtuálních počítačů.
+Základní nastavení je nyní dokončeno. Svůj privátní Cloud můžete začít používat podobně jako v místní infrastruktuře virtuálních počítačů.
 
-Následující části obsahují volitelné informace o nastavení služby DNS a DHCP servery pro privátní Cloud úlohy a upravit výchozí konfiguraci sítě.
+Další části obsahují volitelné informace o nastavení serverů DNS a DHCP pro úlohy privátního cloudu a úpravách výchozí konfigurace sítě.
 
-## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>Přidat uživatele a Identity zdroje k vCenter (volitelné)
+## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>Přidat uživatele a zdroje identity do vCenter (volitelné)
 
-CloudSimple přiřadí výchozí vCenter uživatelský účet s uživatelským jménem **cloudowner@cloudsimple.local** . Není žádné další účet nastavení požadovaná pro vám umožní začít.  Správci CloudSimple obvykle přiřadí oprávnění, které potřebují k provádění běžných operací.  Nastavit místní služby active directory nebo Azure AD jako [zdroj dalších identity](https://docs.azure.cloudsimple.com/set-vcenter-identity/) na privátní Cloud.
+CloudSimple přiřadí výchozímu uživatelskému účtu vCenter **cloudowner@cloudsimple.local** s uživatelským jménem. Není potřeba žádné další nastavení účtu, abyste mohli začít.  CloudSimple obvykle přiřazuje správcům oprávnění, která potřebují k provádění běžných operací.  Nastavte místní službu Active Directory nebo Azure AD jako [Další zdroj identity](https://docs.azure.cloudsimple.com/set-vcenter-identity/) v privátním cloudu.
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>Vytvoření serveru DNS a DHCP (volitelné)
 
-Aplikace a úlohy běžící v prostředí privátního cloudu vyžadují překlad a služby DHCP pro vyhledávání a přiřazování IP adres. Správné infrastruktury služby DNS a DHCP se vyžaduje k poskytování těchto služeb. Konfigurace virtuálního počítače na vCenter, který poskytuje tyto služby ve vašem prostředí privátního cloudu.
+Aplikace a úlohy běžící v prostředí privátního cloudu vyžadují překlad IP adres a služby DHCP pro vyhledání a přiřazení IP adresy. K poskytování těchto služeb se vyžaduje správná infrastruktura DHCP a DNS. Virtuální počítač v vCenter můžete nakonfigurovat tak, aby poskytoval tyto služby ve vašem prostředí privátního cloudu.
 
 ### <a name="prerequisites"></a>Požadavky
 
-* Skupina distribuovaných portů pomocí sítě VLAN nakonfigurované
+* Distribuovaná skupina portů s nakonfigurovanou sítí VLAN
 
-* Nastavit tak, aby v místním nebo servery DNS internetové trasy
+* Směrování nastavené na místní nebo internetové servery DNS
 
-* Šablonu virtuálního počítače nebo ISO k vytvoření virtuálního počítače
+* Vytvoření virtuálního počítače pomocí šablony virtuálního počítače nebo ISO
 
-Na následujících odkazech najdete pokyny nastavení serverů DHCP a DNS na Linuxu a Windows.
+Následující odkazy poskytují pokyny k nastavení serverů DHCP a DNS v systémech Linux a Windows.
 
-### <a name="linux-based-dns-server-setup"></a>Nastavení serveru DNS se systémem Linux
+### <a name="linux-based-dns-server-setup"></a>Instalace serveru DNS se systémem Linux
 
-Linux nabízí různé balíčky pro instalaci serverů DNS.  Tady se odkaz na pokyny k nastavení serveru DNS vytvořit VAZBU open source.
+Linux nabízí různé balíčky pro nastavení serverů DNS.  Tady je odkaz na pokyny pro nastavení Open-Source serveru DNS BIND.
 
 [Příklad nastavení](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7)
 
-### <a name="windows-based-setup"></a>Instalace na základě Windows
+### <a name="windows-based-setup"></a>Instalace založená na systému Windows
 
-Tyto Microsoft články popisují, jak nastavit službu Windows server jako DNS server a jako DHCP server.
+Tyto články společnosti Microsoft popisují, jak nastavit server Windows jako server DNS a jako server DHCP.
 <br>
-[Windows Server jako DNS Server](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
+[Windows Server jako server DNS](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
 
-[Windows Server jako DHCP Server](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+[Windows Server jako server DHCP](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
 
-## <a name="customize-networking-configuration-optional"></a>Úprava síťové konfigurace (nepovinné)
+## <a name="customize-networking-configuration-optional"></a>Přizpůsobení konfigurace sítě (volitelné)
 
-Na stránkách sítě na portálu CloudSimple vám umožňují určit konfiguraci brány firewall na tabulky a veřejné IP adresy pro virtuální počítače.
+Síťové stránky na portálu CloudSimple umožňují zadat konfiguraci pro tabulky brány firewall a veřejné IP adresy pro virtuální počítače.
 
-### <a name="allocate-public-ips"></a>Přidělení veřejné IP adresy
+### <a name="allocate-public-ips"></a>Přidělit veřejné IP adresy
 
-1. Přejděte do **sítě > veřejné IP adresy** CloudSimple portálu.
-2. Klikněte na tlačítko **přidělení veřejné IP adresy**.
-3. Zadejte název pro identifikaci záznam IP adresy.
-4. Vyberte umístění privátního cloudu.
-5. Chcete-li změnit časový limit nečinnosti v případě potřeby pomocí posuvníku.
-6. Zadejte místní IP adresa, pro kterou chcete přiřadit veřejnou IP adresu.
-7. V případě potřeby, zadejte odpovídající název DNS.
+1. Přejděte na **síť > veřejné IP adresy** na portálu CloudSimple.
+2. Klikněte na **přidělit veřejnou IP adresu**.
+3. Zadejte název pro identifikaci položky IP adresy.
+4. Vyberte umístění vašeho privátního cloudu.
+5. V případě potřeby změňte časový limit nečinnosti pomocí posuvníku.
+6. Zadejte místní IP adresu, pro kterou chcete přiřadit veřejnou IP adresu.
+7. V případě potřeby zadejte přidružený název DNS.
 8. Klikněte na **Done** (Hotovo).
 
     ![Veřejná IP adresa](media/quick-create-pc-public-ip.png)
 
-Začne úloha spojeným s přidělováním veřejnou IP adresu. Můžete zkontrolovat stav úlohy **aktivity > úlohy** stránky. Po dokončení přidělení nový záznam se zobrazí na stránce veřejné IP adresy.
+Spustí se úkol přidělení veřejné IP adresy. Stav úlohy můžete zjistit na stránce **aktivity > úlohy** . Po dokončení přidělení se nová položka zobrazí na stránce veřejné IP adresy.
 
-Virtuální počítač, do které musí být namapována tato IP adresa je potřeba nakonfigurovat místní adresou výše uvedené. Postup konfigurace IP adresy je specifické pro operační systém virtuálního počítače. V dokumentaci pro váš operační systém virtuálního počítače pro správný postup.
+U virtuálního počítače, na který musí být tato IP adresa namapovaná, je nutné nakonfigurovat místní adresu uvedenou výše. Postup konfigurace IP adresy je specifický pro operační systém virtuálního počítače. Správný postup najdete v dokumentaci k operačnímu systému virtuálního počítače.
 
 #### <a name="example"></a>Příklad
 
-Například tady jsou uvedené podrobnosti pro Ubuntu 16.04.
+Tady jsou například podrobnosti pro Ubuntu 16,04.
 
-Přidat statická metoda inet řady konfiguraci adresy v souboru ```/etc/network/interfaces```. Změňte hodnoty adresa, netmask a brány. V tomto příkladu používáme rozhraní eth0, interní IP adresa 192.168.24.10, adresa brány 192.168.24.1 a síťová maska 255.255.255.0. 
+Do konfigurace rodiny adres inet v souboru ```/etc/network/interfaces```přidejte statickou metodu. Změňte hodnoty adresa, maska sítě a brány. V tomto příkladu používáme rozhraní eth0, interní IP adresu 192.168.24.10, adresu brány 192.168.24.1 a síťovou masku 255.255.255.0. 
 
-Upravit ```interfaces``` souboru.
+```interfaces``` Upravte soubor.
 
 ```
 sudo vi /etc/network/interfaces
 ```
 
-Aktualizace v následující části v ```interfaces``` souboru.
+Aktualizujte následující oddíl v ```interfaces``` souboru.
 
 ```
 auto eth0
@@ -185,7 +185,7 @@ dns-domain acme.com
 dns-search acme.com
 ```
 
-Zakážete rozhraní.
+Zakáže rozhraní.
 
 ```
 sudo ifdown eth0
@@ -197,23 +197,23 @@ Znovu povolte rozhraní.
 sudo ifup eth0
 ```
 
-Ve výchozím nastavení, je veškerý příchozí provoz z Internetu **odepřen**. Pokud chcete otevřít libovolný port, vytvořte [brány firewall tabulky](https://docs.azure.cloudsimple.com/firewall/).
+Ve výchozím nastavení je veškerý příchozí provoz z Internetu **odepřený**. Pokud chcete otevřít libovolný jiný port, vytvořte [tabulku brány firewall](https://docs.azure.cloudsimple.com/firewall/).
 
-Po dokončení konfigurace interní IP adresa jako statickou IP adresu, ověřte, že může přístup k Internetu z virtuálního počítače.
+Po konfiguraci interní IP adresy jako statické IP adresy ověřte, že se můžete připojit k Internetu z virtuálního počítače.
 
 ```
 ping 8.8.8.8
 ```
 
-Ověřte, že můžete oslovit virtuálnímu počítači z Internetu pomocí veřejné IP adresy.
+Ověřte, že se můžete připojit k virtuálnímu počítači z Internetu pomocí veřejné IP adresy.
 
-Ujistěte se, že nejsou žádná pravidla brány firewall (iptable) na virtuálním počítači blokuje port 80 příchozí.
+Zajistěte, aby všechna pravidla brány firewall (iptable) ve virtuálním počítači neblokovala příchozí port 80.
 
 ```
 netstat -an | grep 80
 ```
 
-Spusťte server http, která naslouchá na portu 80.
+Spusťte server http, který naslouchá na portu 80.
        
 ```
 python2.7 -m SimpleHTTPServer 80
@@ -225,25 +225,25 @@ or
 python3 -m http.server 80
 ```
 
-Na ploše spusťte prohlížeč a přejděte na port 80 pro veřejnou IP adresu pro prohlížení souborů ve vašem virtuálním počítači. 
+Spusťte prohlížeč na ploše a najeďte na port 80 pro veřejnou IP adresu, abyste mohli procházet soubory na virtuálním počítači. 
 
-### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>Výchozí pravidla brány firewall CloudSimple pro veřejné IP adresy
+### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>Výchozí pravidla brány firewall CloudSimple pro veřejnou IP adresu
 
-* Provoz VPN: Je povolen veškerý provoz mezi (z/do) sítě VPN a všechny pracovního vytížení sítě a sítě pro správu.
-* Vnitřní provoz privátního cloudu: Je povolen veškerý provoz typu east-west mezi (z/do) pracovního vytížení sítě a sítě pro správu (viz výše).
-* Přenosy z Internetu:
-    * K zatížení sítě a sítě pro správu je odepřen veškerý příchozí provoz z Internetu.
-    * Všechny odchozí provoz do Internetu z pracovního vytížení sítě nebo síť pro správu je povolen.
+* Provoz sítě VPN: Veškerý provoz mezi (od/do) sítě VPN a všech sítí pro správu úloh a sítí pro správu je povolen.
+* Vnitřní provoz privátního cloudu: Veškerý provoz v oblasti Východ a západ mezi sítěmi úloh (mezi/a) a sítí pro správu (zobrazené výše) je povolen.
+* Internetový provoz:
+    * Veškerý příchozí provoz z Internetu je odepřený pro úlohy sítě a sítě pro správu.
+    * Veškerý odchozí provoz na Internetu ze sítí úloh nebo ze sítě pro správu je povolen.
 
-Můžete také upravit způsob, jakým je zabezpečený provoz, pomocí funkce pravidla brány Firewall. Další informace najdete v tématu [nastavení brány firewall na tabulky a pravidla](https://docs.azure.cloudsimple.com/firewall/).
+Můžete také upravit způsob zabezpečení provozu pomocí funkce pravidla brány firewall. Další informace najdete v tématu [Nastavení tabulek a pravidel brány firewall](https://docs.azure.cloudsimple.com/firewall/).
 
-## <a name="install-solutions-optional"></a>Nainstalujte řešení (volitelné)
-Řešení můžete nainstalovat na vaše CloudSimple privátního cloudu, chcete-li využívají všech výhod privátního cloudu vCenter prostředí. Můžete nastavit zálohování, zotavení po havárii, replikace a další funkce k ochraně virtuálních počítačů. Mezi příklady patří VMware Site Recovery Manager (VMware SRM) a Veeam zálohování a replikace.
+## <a name="install-solutions-optional"></a>Nainstalovat řešení (volitelné)
+Můžete nainstalovat řešení do privátního cloudu CloudSimple, abyste mohli plně využít prostředí vašeho privátního cloudu vCenter. Pro ochranu virtuálních počítačů můžete nastavit zálohování, zotavení po havárii, replikaci a další funkce. Mezi příklady patří VMware Site Recovery Manager (VMware SRM) a replikace Veeam Backup &.
 
-Pokud chcete nainstalovat řešení, musíte požádat o další oprávnění po omezenou dobu. Zobrazit [zvýšení úrovně oprávnění](https://docs.azure.cloudsimple.com/escalate-private-cloud-privileges).
+Chcete-li nainstalovat řešení, musíte požádat o další oprávnění po určitou dobu. Viz [Eskalace oprávnění](https://docs.azure.cloudsimple.com/escalate-private-cloud-privileges).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Využívání virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
-* [Připojit k místní síti pomocí Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection)
-* [Nastavení VPN Gateway v síti CloudSimple](https://docs.azure.cloudsimple.com/vpn-gateway)
+* [Připojení k místní síti pomocí Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection)
+* [Nastavení bran sítě VPN v síti CloudSimple](https://docs.azure.cloudsimple.com/vpn-gateway)

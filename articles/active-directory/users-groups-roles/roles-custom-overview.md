@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 546abdae5d7c03bb0d4b49f9485fe06b521fdc1d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 82638e3e102f7b8e39cd797960a11f3193132bc1
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722233"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779393"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Vlastní role správců v Azure Active Directory (Preview)
 
@@ -72,7 +72,11 @@ Definice role neboli role je kolekce oprávnění. Definice role obsahuje seznam
 
 ### <a name="scope"></a>Scope
 
-Obor je omezení povolených akcí na konkrétním prostředku Azure AD. Když přiřadíte roli, můžete přizpůsobit roli a omezit povolené akce správce definováním rozsahu akce. Pokud například vývojáři nepotřebují plně spravovat všechny aplikace, můžete použít vlastní role Azure AD, které jim umožní spravovat jenom registrace aplikací.
+Obor je omezení povolených akcí na konkrétní prostředek služby Azure AD. Když přiřadíte roli, můžete zadat obor, který omezí povolené akce správce na konkrétní prostředek. Například pokud chcete, aby vývojář udělil vlastní roli, ale jenom ke správě konkrétní registrace aplikace, můžete do přiřazení role zahrnout konkrétní registraci aplikace jako obor.
+
+  > [!Note]
+  > Vlastní role se dají přiřadit v oboru adresáře a v oboru prostředků. Ještě se nedají přiřadit v oboru administrativní jednotky.
+  > Předdefinované role se dají přiřadit v oboru adresáře a v některých případech i v oboru jednotek pro správu. Nelze je ještě přiřadit v oboru objektů.
 
 ## <a name="required-license-plan"></a>Požadovaný licenční plán
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: danlep
-ms.openlocfilehash: 285d5592ce667f7b4d84f26d67a00af0698c2967
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 88b6da4e9bd2938adadadc1ef0e696399fc3c75e
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620958"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828004"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall
 
@@ -123,9 +123,9 @@ Můžete například vytvořit pravidlo skupiny zabezpečení odchozí sítě s 
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [osvědčených postupech Azure pro zabezpečení sítě](../security/azure-security-network-security-best-practices.md)
+* Další informace o [osvědčených postupech Azure pro zabezpečení sítě](../security/fundamentals/network-best-practices.md)
 
-* Další informace o [skupinách zabezpečení](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview.md) ve službě Azure Virtual Network
+* Další informace o [skupinách zabezpečení](/azure/virtual-network/security-overview) ve službě Azure Virtual Network
 
 
 

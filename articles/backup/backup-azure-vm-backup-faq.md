@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 8948a620c27311f0371a557c91a971da37111cb9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 078c8763a08df339b9291807102e2d187d2a882f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688584"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827583"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -64,14 +64,14 @@ Ano. Zálohování se spustí při vypnutí počítače. Bod obnovení je označ
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Můžu zrušit probíhající úlohu zálohování?
 Ano. Úlohu zálohování můžete zrušit ve stavu **pořizování snímků** . Pokud probíhá přenos dat z snímku, nemůžete úlohu zrušit.
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Aktivoval (a) jsem zámek pro skupinu prostředků vytvořenou službou Azure Backup (tj. `AzureBackupRG_<geo>_<number>`) budou moje zálohy i nadále fungovat?
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Aktivoval (a) jsem zámek pro skupinu prostředků vytvořenou službou Azure Backup (tj. `AzureBackupRG_<geo>_<number>`) budou moje zálohy i nadále fungovat?
 Pokud zamknete skupinu prostředků vytvořenou službou Azure Backup, zálohování začnou selhat, protože je k dispozici maximální limit 18 bodů obnovení.
 
 Uživatel musí odebrat zámek a vymazat kolekci bodů obnovení z dané skupiny prostředků, aby bylo možné dokončit budoucí zálohování, [pomocí následujících kroků](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) odeberte kolekci bodů obnovení.
 
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Podporuje Azure Backup standardní disk SSD, který je spravovaný?
-Azure Backup podporuje [Standard SSD spravované disky](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Disky spravované SSD poskytují nový typ trvalého úložiště pro virtuální počítače Azure. Při [okamžitém obnovení](backup-instant-restore-capability.md)je k dispozici podpora pro spravované disky SSD.
+Ano, Azure Backup podporuje [Standard SSD spravované disky](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Můžeme zálohovat virtuální počítač s diskem s povoleným Akcelerátor zápisu (WA)?
 Na disku s podporou WA se snímky nedají považovat. Služba Azure Backup však může ze zálohy vyloučit disk s podporou WA.
@@ -119,7 +119,7 @@ Ano. I když virtuální počítač odstraníte, můžete přejít na odpovídaj
 V případě spravovaného virtuálního počítače Azure je povolený obnovení do skupin dostupnosti tím, že při obnovení jako spravované disky poskytne možnost v šabloně. Tato šablona obsahuje vstupní parametr s názvem **skupiny dostupnosti**.
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Jak získám rychlejší obnovení?
-Pro rychlejší obnovení se přesouváme do možnosti [okamžitého obnovení](backup-instant-restore-capability.md) .
+Funkce [okamžitého obnovení](backup-instant-restore-capability.md) pomáhá urychlit zálohování a okamžité obnovení ze snímků.
 
 ## <a name="manage-vm-backups"></a>Správa záloh virtuálních počítačů
 

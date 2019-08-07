@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 32da92fb3c5573d24eb18a01a4ede8fe6a0bf36a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3637676a330b324d5620885f0cbe50d4aa68ed51
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567451"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779049"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k SQL Database Managed Instances (FAQ)
 
@@ -79,9 +79,9 @@ Pokud se ve stejné oblasti nepodporují hardwarové generace, změna hardwarov�
 
 ## <a name="how-do-i-tune-performance-of-my-managed-instance"></a>Návody vyladit výkon mé spravované instance? 
 
-Pro obecné účely spravovaná instance používá vzdálené úložiště, protože se jedná o velikost dat a souborů protokolu, které jsou důležité pro výkon. Pokud chcete optimalizovat výkon vrstvy služby Pro obecné účely, postupujte podle pokynů v tomto blogovém příspěvku.
+Pro obecné účely spravovaná instance používá vzdálené úložiště, protože se jedná o velikost dat a souborů protokolu, které jsou důležité pro výkon. Další informace najdete v tématu [vliv velikosti souboru protokolu na výkon pro obecné účely spravované instance](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
-Pro úlohy náročné na vstupně-výstupní operace zvažte použití hardwaru Gen 5 a používejte Gen 4 pro úlohy náročné na výpočetní výkon. Další informace najdete v části Nejčastější dotazy týkající se výběru mezi generováním hardwaru.
+Pro úlohy náročné na vstupně-výstupní operace zvažte použití hardwaru Gen 5 a používejte Gen 4 pro úlohy náročné na výpočetní výkon. Další informace najdete v tématu [návody výběru mezi fin 4 a gen 5](#how-do-i-choose-between-gen-4-and-gen-5-hardware-generation-for-managed-instance).
 
 Pokud se vaše zatížení skládá z velkého množství malých transakcí, zvažte možnost přepnout typ připojení ze proxy serveru do režimu přesměrování.
 

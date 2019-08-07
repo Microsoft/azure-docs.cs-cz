@@ -1,6 +1,6 @@
 ---
-title: Postup při integraci s Azure Active Directory | Dokumentace Microsoftu
-description: Přečtěte si o výhodách integraci aplikace s Azure Active Directory a získat zdroje pro funkce, jako je zjednodušené přihlášení, Správa identit, vícefaktorové ověřování a řízení přístupu.
+title: Postup při integraci s Azure Active Directory | Microsoft Docs
+description: Seznamte se s výhodami integrace vaší aplikace s Azure Active Directory a získejte prostředky pro funkce, jako je zjednodušené přihlašování, Správa identit, vícefaktorové ověřování a řízení přístupu.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -10,7 +10,7 @@ ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/08/2019
@@ -18,84 +18,84 @@ ms.author: ryanwi
 ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af8cdc1072678de7e34458fc4b54d52aae9eff1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da694dd77186ce22bd7080540bd3b08e14f205b0
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111594"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835369"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace s Azure Active Directory
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-V tomto článku najdete další informace o výhodách integraci aplikace s Azure Active Directory (Azure AD) a získání prostředků pro integraci. Azure AD poskytuje organizacím se správou identit na podnikové úrovni pro cloudové aplikace. Integrace se službou Azure AD poskytuje zjednodušené prostředí znak uživatelům a pomáhá zajistit u aplikací v souladu s zásady IT.
+V tomto článku se dozvíte o výhodách integrace aplikace s Azure Active Directory (Azure AD) a získání prostředků pro integraci. Azure AD poskytuje organizacím se správou identit na podnikové úrovni pro cloudové aplikace. Integrace Azure AD poskytuje uživatelům Zjednodušené přihlašování a pomáhá vaší aplikaci v souladu se zásadami IT.
 
 ## <a name="how-to-integrate"></a>Jak integrovat
 
-Existuje několik způsobů, jak pro vaši aplikaci pro integraci s Azure AD. Využijte výhod tolik nebo jako pár z těchto scénářů, jako je vhodná pro vaši aplikaci.
+Existuje několik způsobů, jak se vaše aplikace integruje s Azure AD. Využijte tolik než pár těchto scénářů, které jsou vhodné pro vaši aplikaci.
 
-### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Podpora služby Azure AD jako způsob, jak se přihlásit do aplikace
+### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Podpora Azure AD jako způsobu přihlášení k aplikaci
 
-**Snižte přihlášení třecí plochy a snížit náklady na podporu.** Pomocí služby Azure AD k přihlášení do vaší aplikace, vaši uživatelé nebudou mít jeden další název a heslo a mějte na paměti. Jako vývojář máte jeden menší heslo k ukládání a ochraně. Není potřeba zpracovat resetovat zapomenuté heslo může být významné úspory samostatně. Azure AD poskytuje přihlášení pro některé z celého světa nejoblíbenější cloudové aplikace, včetně Office 365 a Microsoft Azure. Stovky milionů uživatelů z milionům organizací, je pravděpodobné uživatel je už přihlášení do služby Azure AD. Další informace o [přidání podpory pro přihlášení Azure AD](authentication-scenarios.md).
+**Snižte tření při přihlašování a snižte náklady na podporu.** Když ke své aplikaci přihlašujete pomocí Azure AD, uživatelé nebudou mít k zapamatování další jméno a heslo. Jako vývojář budete mít jedno méně hesla pro ukládání a ochranu. Nemusíte zpracovávat zapomenuté resetování hesla, ale jenom významné úspory. Pravomoci Azure AD se přihlásí pro některé z nejoblíbenějších cloudových aplikací světa, včetně Office 365 a Microsoft Azure. Se stovkami milionů uživatelů od milionů organizací je pravděpodobné, že se Váš uživatel už přihlásil ke službě Azure AD. Přečtěte si další informace o [Přidání podpory pro přihlášení ke službě Azure AD](authentication-scenarios.md).
 
-**Zjednodušte přihlašování až pro vaši aplikaci.**  Během registrace pro vaši aplikaci můžete služby Azure AD odeslat důležité informace o uživateli, takže můžete předběžně vyplnit registrace formuláře nebo zcela eliminuje. Uživatelé mohou zaregistrovat svoji aplikaci pomocí svého účtu Azure AD prostřednictvím prostředí pro známé vyjádření souhlasu podobné těm v sociálních a mobilních aplikací. Každý uživatel může zaregistrovat a přihlaste se k aplikaci, která je integrovaná s Azure AD bez zapojení IT. Další informace o [registrace vaší aplikace pro přihlášení k účtu Azure AD](../../app-service/configure-authentication-provider-aad.md).
+**Zjednodušte si registraci své aplikace.**  Při registraci vaší aplikace může Azure AD odeslat základní informace o uživateli, abyste mohli předem vyplnit formulář pro registraci, nebo ho úplně eliminovat. Uživatelé se můžou k vaší aplikaci zaregistrovat pomocí svého účtu Azure AD prostřednictvím známého prostředí pro vyjádření souhlasu, které se podobá těm, která se nacházejí v sociálních médiích a mobilních aplikacích. Každý uživatel se může zaregistrovat a přihlásit k aplikaci, která je integrovaná s Azure AD bez nutnosti zapojení IT. Přečtěte si další informace o [registraci aplikace pro přihlášení k účtu Azure AD](../../app-service/configure-authentication-provider-aad.md).
 
-### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Procházet pro uživatele, spravovat zřizování uživatelů a řízení přístupu k aplikaci
+### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Vyhledat uživatele, spravovat zřizování uživatelů a řídit přístup k vaší aplikaci
 
-**Projděte pro uživatele v adresáři.**  Používání rozhraní Graph API k poskytování pomoci uživatelům vyhledat a procházet jinými lidmi, kteří ve své organizaci při pozvání ostatních nebo udělení přístupu, namísto nutnosti jejich nutnost zadejte e-mailové adresy. Můžou uživatelé procházet pomocí stylu rozhraní známou adresu adresáře, včetně zobrazení podrobností o organizační hierarchie. Další informace o [rozhraní Graph API](active-directory-graph-api.md).
+**Vyhledejte uživatele v adresáři.**  Pomocí Graph API můžete uživatelům pomáhat při hledání a vyhledávání dalších uživatelů v jejich organizaci při pozvání k ostatním uživatelům nebo pro udělení přístupu a nemusíte jim zadávat e-mailové adresy. Uživatelé můžou procházet pomocí známého rozhraní stylu adresáře, včetně zobrazení podrobností o organizační hierarchii. Přečtěte si další informace o [Graph API](active-directory-graph-api.md).
 
-**Znovu použijte skupiny služby Active Directory a distribuční seznamy, které už spravuje vaše zákazníky.**  Azure AD obsahuje skupiny již pomocí e-mailu distribuci a správě přístupu vašich zákazníků. Tyto skupiny nemusíte mít vašich zákazníků můžete vytvořit a spravovat samostatnou sadu skupin ve vaší aplikaci pomocí rozhraní Graph API, znovu použijte. Informace o skupině je také odeslat do vaší aplikace v přihlášení tokeny. Další informace o [rozhraní Graph API](active-directory-graph-api.md).
+**Opětovné použití skupin a distribučních seznamů služby Active Directory, které už váš zákazník spravuje**  Azure AD obsahuje skupiny, které váš zákazník už používá k distribuci e-mailů a správě přístupu. Pomocí Graph API znovu použijte tyto skupiny a nemusíte zákazníka vytvářet a spravovat samostatnou sadu skupin ve vaší aplikaci. Do své aplikace můžete také odeslat informace o skupině v tokenech přihlašování. Přečtěte si další informace o [Graph API](active-directory-graph-api.md).
 
-**Pomocí Azure AD, aby ovládací prvek, který má přístup do vaší aplikace.**  Správci a vlastníci aplikace ve službě Azure AD můžete přiřadit přístup k aplikacím na konkrétní uživatele a skupiny. Pomocí rozhraní Graph API, může číst tento seznam a použít ho k řízení zřizování a zrušení zřizování prostředků a přístup v rámci vaší aplikace.
+**Pomocí Azure AD můžete řídit, kdo má přístup k vaší aplikaci.**  Správci a vlastníci aplikací v Azure AD můžou přiřazovat přístup k aplikacím pro konkrétní uživatele a skupiny. Pomocí Graph API můžete tento seznam přečíst a použít ho k řízení zřizování a rušení zřizování prostředků a přístupu v rámci aplikace.
 
-**Řízení přístupu na základě role pomocí Azure AD.**  Správci a vlastníci aplikace můžete přiřadit uživatele a skupiny k rolím, které můžete definovat při registraci aplikace ve službě Azure AD. Informace o rolích odeslané do vaší aplikace v přihlášení tokeny a může také číst pomocí rozhraní Graph API. Další informace o [pomocí služby Azure AD pro autorizaci](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
+**Použijte Azure AD pro role založené Access Control.**  Správci a vlastníci aplikací můžou přiřadit uživatele a skupiny rolím, které definujete při registraci aplikace ve službě Azure AD. Informace o roli se odesílají do vaší aplikace v tokenech přihlášení a dají se také číst pomocí Graph API. Přečtěte si další informace o [použití Azure AD k autorizaci](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
-### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Získejte přístup k uživatele profilu, kalendář, e-mailu, kontakty, soubory a další
+### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Získání přístupu k profilu uživatele, kalendáři, e-mailu, kontaktům, souborům a dalším datům
 
-**Azure AD je autorizační server pro Office 365 a dalším firemním službám společnosti Microsoft.**  Pokud podporujete Azure AD pro přihlášení do aplikace nebo podporu propojení aktuální uživatelské účty do uživatelských účtů služby Azure AD pomocí OAuth 2.0, můžete požádat pro čtení a zápisu do profilu uživatele, kalendář, e-mailu, kontakty, soubory a další informace. Může bezproblémově zapsat události do kalendáře uživatele a číst nebo zapisovat soubory do jejich Onedrivu. Další informace o [přístup k rozhraní API Office 365](https://msdn.microsoft.com/office/office365/howto/platform-development-overview).
+**Azure AD je autorizační Server pro Office 365 a další služby Microsoftu pro firmy.**  Pokud pro přihlášení k vaší aplikaci nebo podpoře připojení vašich uživatelských účtů k účtům uživatelů Azure AD pomocí OAuth 2,0, můžete požádat o přístup pro čtení a zápis k profilu uživatele, kalendáři, e-mailu, kontaktům, souborům a dalším informacím. Můžete hladce zapisovat události do kalendáře uživatelů a číst soubory nebo zapisovat na jejich OneDrive. Přečtěte si další informace o [přístupu k rozhraním API Office 365](https://msdn.microsoft.com/office/office365/howto/platform-development-overview).
 
-### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Propagace vaší aplikace v Azure a Office 365 Tržiště
+### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Propagace vaší aplikace v tržištích Azure a Office 365
 
-**Propagace vaší aplikace pro miliony organizacemi, které už používáte Azure AD.**  Uživatelé, kteří vyhledat a procházet těchto tržišť už používají jeden nebo více cloudových služeb, díky kterým jsou kvalifikované zákazníci cloudové služby. Další informace o rozběhnutí vaši aplikaci v [na webu Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/).
+**Zvyšte svou aplikaci na miliony organizací, které už používají Azure AD.**  Uživatelé, kteří hledají a procházejí tyto tržiště, již používají jednu nebo více cloudových služeb a mají kvalifikované zákazníky s cloudovou službou. Přečtěte si další informace o podpoře aplikace v [Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/).
 
-**Když uživatelé registrují do vaší aplikace, zobrazí se v jejich přístupový panel služby Azure AD a Spouštěči aplikací Office 365.**  Uživatelé budou moct rychle a snadno vrátit do aplikace později, vylepšení zapojení uživatelů. Další informace o [přístupový panel služby Azure AD](../user-help/active-directory-saas-access-panel-introduction.md).
+**Když se uživatelé registrují do vaší aplikace, zobrazí se na svém přístupovém panelu Azure AD a ve Spouštěči aplikací Office 365.**  Uživatelé se budou moct rychle a později vrátit do vaší aplikace, což zlepšuje zapojení uživatelů. Přečtěte si další informace o [přístupovém panelu Azure AD](../user-help/active-directory-saas-access-panel-introduction.md).
 
-### <a name="secure-device-to-service-and-service-to-service-communication"></a>Zabezpečená komunikace zařízení služba a služba služba
+### <a name="secure-device-to-service-and-service-to-service-communication"></a>Zabezpečení komunikace mezi zařízeními a službami
 
-**Používání služby Azure AD pro správu identit zařízení a služeb snižuje množství kódu, které potřebujete k zápisu a umožňuje IT spravovat přístup.**  Zařízení a služeb můžete získat tokeny z Azure AD pomocí OAuth a použít tyto tokeny pro přístup k webovým rozhraním API. Používání služby Azure AD můžete vyhnout, psaní komplexních ověřovacího kódu. Protože se ukládají identity služeb a zařízení ve službě Azure AD, IT může spravovat klíče a odvolávání na jednom místě namísto toho, aby k tomu samostatně ve vaší aplikaci.
+**Používání Azure AD pro správu identit služeb a zařízení snižuje kód, který je potřeba napsat, a umožňuje spravovat přístup.**  Služby a zařízení můžou získat tokeny z Azure AD pomocí OAuth a použít tyto tokeny pro přístup k webovým rozhraním API. Pomocí Azure AD se můžete vyhnout psaní složitého ověřovacího kódu. Vzhledem k tomu, že identity služeb a zařízení jsou uložené ve službě Azure AD, může na jednom místě spravovat klíče a odvolání a nemusíte to dělat samostatně ve své aplikaci.
 
 ## <a name="benefits-of-integration"></a>Výhody integrace
 
-Integrace se službou Azure AD přináší výhody, které nevyžadují psát další kód.
+Integrace se službou Azure AD přináší výhody, které nevyžadují zápis dalšího kódu.
 
-### <a name="integration-with-enterprise-identity-management"></a>Integrace se správu identity organizace
+### <a name="integration-with-enterprise-identity-management"></a>Integrace se správou podnikových identit
 
-**Vaší aplikaci zajistit soulad se zásadami IT pomůžou.**  Organizace integrovat jejich podnikové systémy správy identit s Azure AD, takže když uživatel odejde z organizace, se automaticky ztratí přístup k vaší aplikaci bez služby IT, které by bylo nutné provést další kroky. IT může spravovat, kdo může získat přístup k vaší aplikaci a určí, jaké zásady přístupu je potřeba – třeba ověření službou Multi-Factor Authentication – snižuje potřeba psát kód pro dosažení souladu s komplexní podnikové zásady. Azure AD poskytuje správcům podrobnou auditní protokol kdo přihlášení do vaší aplikace tak IT můžete sledovat využití.
+**Pomůžete vaší aplikaci dodržovat zásady IT.**  Organizace integrují své podnikové systémy správy identit do služby Azure AD, takže když osoba opustí organizaci, automaticky ztratí přístup k vaší aplikaci, aniž by museli provést další kroky. Může spravovat, kdo může mít přístup k vaší aplikaci, a určit, jaké zásady přístupu se vyžadují – například vícefaktorové ověřování – zmenšení potřeb psaní kódu pro zajištění dodržování složitých podnikových zásad. Azure AD poskytuje správcům podrobný protokol auditu, který se přihlásil ke svojí aplikaci, aby mohl sledovat využití.
 
-**Azure AD rozšiřuje služby Active Directory do cloudu tak, aby vaše aplikace můžete integrovat s AD.**  Mnoho organizací po celém světě používají službu Active Directory jako jejich hlavní přihlášení a systém správy identit a potřebují své aplikace pro práci s AD. Vaše aplikace integraci se službou Azure AD se integruje s Active Directory.
+**Azure AD rozšiřuje službu Active Directory do cloudu, takže vaše aplikace může být integrovaná se službou AD.**  Mnoho organizací po celém světě používá službu Active Directory jako svůj hlavní přihlašování a systém správy identit a vyžaduje, aby aplikace spolupracovaly se službou AD. Integrace se službou Azure AD integruje vaši aplikaci se službou Active Directory.
 
 ### <a name="advanced-security-features"></a>Rozšířené funkce zabezpečení
 
-**Ověřování službou Multi-Factor Authentication.**  Azure AD poskytuje nativní služby Multi-Factor authentication. Správci IT můžou vyžadovat vícefaktorové ověřování pro přístup k aplikaci, takže není potřeba tato podpora kódu sami. Další informace o [ověřování službou Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
+**Multi-Factor Authentication.**  Azure AD poskytuje nativní službu Multi-Factor Authentication. Správci IT můžou pro přístup k vaší aplikaci vyžadovat vícefaktorové ověřování, takže tuto podporu nemusíte zakódovat sami. Přečtěte si další informace o službě [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
-**Neobvyklé přihlášení zjišťování.**  Azure AD zpracovává více než miliard přihlášení denně, při použití algoritmů strojového učení ke zjištění podezřelé aktivity a upozornit správce IT o možných problémech. Díky podpoře přihlášení Azure AD, vaše aplikace získá Výhodou této ochrany. Další informace o [zobrazení sestav přístupu Azure Active Directory](../active-directory-view-access-usage-reports.md).
+**Neobvyklé zjišťování přihlášení.**  Služba Azure AD zpracovává více než miliarda přihlášení denně a při použití algoritmů strojového učení ke zjištění podezřelých aktivit a oznamuje správcům IT možné problémy. Díky podpoře přihlášení Azure AD získá aplikace výhodu této ochrany. Přečtěte si další informace o [zobrazení sestavy Azure Active Directory Access](../active-directory-view-access-usage-reports.md).
 
-**Podmíněný přístup.**  Kromě ověřování službou Multi-Factor Authentication, můžou správci vyžadují určitých podmínek splnit, předtím než uživatelé můžou přihlásit do vaší aplikace. Podmínky, které je možné nastavit zahrnují rozsah IP adres z klientských zařízení, členství v zadaných skupinách a stav zařízení se používají pro přístup. Další informace o [Azure Active Directory podmíněného přístupu](../active-directory-conditional-access-azure-portal.md).
+**Podmíněný přístup.**  Kromě služby Multi-Factor Authentication můžou správci vyžadovat splnění určitých podmínek, než se uživatelé můžou přihlásit ke svojí aplikaci. Podmínky, které je možné nastavit, zahrnují rozsah IP adres klientských zařízení, členství v zadaných skupinách a stav zařízení, které se používá pro přístup. Přečtěte si další informace o [Azure Active Directory podmíněný přístup](../active-directory-conditional-access-azure-portal.md).
 
 ### <a name="easy-development"></a>Snadný vývoj
 
-**Standardní protokoly.**  Microsoft je odhodlána podporovat oborové standardy. Platforma identit Microsoft podporuje standardních oborových protokolů OAuth 2.0 a OpenID Connect 1.0. Další informace o [Microsoft identity platform ověřovací protokoly](active-directory-v2-protocols.md).
+**Standardní protokoly.**  Společnost Microsoft se zavazuje podporovat oborové standardy. Platforma Microsoft identity podporuje standardní protokoly OAuth 2,0 a OpenID Connect 1,0. Přečtěte si další informace o [ověřovacích protokolech Microsoft Identity Platform](active-directory-v2-protocols.md).
 
-**Open source knihoven.**  Společnost Microsoft poskytuje plně podporované open source knihoven pro oblíbené jazyky a platformy k urychlení vývoje. Zdrojový kód je licencován Apache 2.0 a můžete libovolně udělovat rozvětvili a přispívat zpět k projektům. Další informace o [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md).
+**Otevřete zdrojové knihovny.**  Microsoft poskytuje plně podporované knihovny open source pro oblíbené jazyky a platformy, které urychlují vývoj. Zdrojový kód je licencován v rámci Apache 2,0 a vy budete moci rozvětvit a přispívat zpátky k projektům. Přečtěte si další informace o [knihovně Microsoft Authentication Library (MSAL)](reference-v2-libraries.md).
 
-### <a name="worldwide-presence-and-high-availability"></a>Po celém světě a vysoká dostupnost
+### <a name="worldwide-presence-and-high-availability"></a>Přítomnost po celém světě a vysoká dostupnost
 
-**Azure AD se nasadí v datových centrech po celém světě a je spravovat a monitorovat neustále a zobrazuje.**  Azure AD je systém správy identit pro Microsoft Azure a Office 365 a je nasazený v 28 datových centrech po celém světě. Data adresáře je zaručeno, že se musí replikovat do alespoň tři datových center. Nástroje pro vyrovnávání zatížení globálního zajistit uživatelům přístup nejbližší kopii Azure AD obsahující data a automaticky znovu směrovat požadavky do jiných datových centrech Pokud byl zjištěn problém.
+**Služba Azure AD je nasazená v datových centrech po celém světě a je spravovaná a monitorovaná v reálném čase.**  Azure AD je systém správy identit pro Microsoft Azure a Office 365 a je nasazený ve 28 datacentrech po celém světě. Je zaručeno, že data adresáře budou replikována alespoň do tří datových center. Globální nástroje pro vyrovnávání zatížení zajišťují uživatelům přístup k nejbližší kopii služby Azure AD obsahující jejich data a při zjištění problému automaticky přesměrují požadavky do jiných datových center.
 
 ## <a name="next-steps"></a>Další postup
 
-[Začněte psát kód](v2-overview.md#getting-started).
+Začněte [psát kód](v2-overview.md#getting-started).
 
-[Přihlášení uživatelů pomocí platforma identit Microsoft](authentication-scenarios.md)
+[Podepisování uživatelů při používání platformy Microsoft Identity Platform](authentication-scenarios.md)
 

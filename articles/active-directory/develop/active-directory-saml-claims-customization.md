@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f5930f2d3db94f615321eda480aed0d4d196911
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0c0625a233b3b4a949feff2e289361a26fc8dc5a
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68380826"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835355"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postup: Přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -129,7 +129,7 @@ Můžete také použít funkce transformace deklarací identity.
 
 Pokud potřebujete další transformace, pošlete svůj nápad do fóra pro [názory ve službě Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599) v kategorii *aplikace SaaS* .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Správa aplikací v Azure AD](../manage-apps/what-is-application-management.md)
 * [Konfigurace jednotného přihlašování u aplikací, které nejsou v galerii aplikací Azure AD](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)

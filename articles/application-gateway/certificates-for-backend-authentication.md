@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: absha
-ms.openlocfilehash: 2d808548ef91ed416f27b0dbb3e3e93d79ade30c
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ae1ac3df3da4e5c25e5538f0e8cc4cd12f9186c6
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382053"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774781"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Vytvoření certifikátů pro povolení back-endu s Azure Application Gateway
 
@@ -73,7 +73,7 @@ Z certifikátu SSL exportujte soubor. cer veřejného klíče (ne privátní kl�
 
 ## <a name="export-trusted-root-certificate-for-v2-sku"></a>Exportovat důvěryhodný kořenový certifikát (pro SKU verze v2)
 
-Pro povolení back-end instancí v SKU Application Gateway v2 je vyžadován důvěryhodný kořenový certifikát. Kořenový certifikát je X. 509 s kódováním Base-64 (. CER) naformátujte kořenový certifikát z certifikátů back-end serveru. V tomto příkladu použijete certifikát SSL pro certifikát back-end a vyexportujete jeho veřejný klíč. Pak exportujte kořenový certifikát důvěryhodné certifikační autority z veřejného klíče ve formátu base64, abyste získali důvěryhodný kořenový certifikát. 
+Pro seznam povolených back-end instancí v SKU Application Gateway v2 se vyžaduje důvěryhodný kořenový certifikát. Kořenový certifikát je X. 509 s kódováním Base-64 (. CER) naformátujte kořenový certifikát z certifikátů back-end serveru. V tomto příkladu použijeme certifikát SSL pro certifikát back-end, vyexportujete jeho veřejný klíč a potom vyexportujete kořenový certifikát důvěryhodné certifikační autority z veřejného klíče ve formátu Base64 a získáte důvěryhodný kořenový certifikát. Zprostředkující certifikáty by měly být připojené k certifikátu serveru a nainstalovány na back-end serveru.
 
 Následující kroky vám pomůžou exportovat soubor. cer pro váš certifikát:
 
@@ -103,6 +103,7 @@ Následující kroky vám pomůžou exportovat soubor. cer pro váš certifikát
 
 6. V tuto chvíli jste extrahovali podrobnosti kořenového certifikátu z certifikátu back-endu. Zobrazí se **Průvodce exportem certifikátu**. Teď použijte kroky 2-9 uvedené v části **Export ověřovacího certifikátu z back-endu (pro SKU V1)** výše k exportu důvěryhodného kořenového certifikátu v kódování Base-64 kódované X. 509 (. CER) formátu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Nyní máte certifikát pro ověřování/důvěryhodný kořenový certifikát v kódování Base-64 s kódováním X. 509 (. CER) formátu. Můžete ho přidat do služby Application Gateway, aby back-end servery mohly zakončit šifrováním protokolu SSL. Podívejte [se, jak nakonfigurovat šifrování koncového protokolu SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+Nyní máte certifikát pro ověřování/důvěryhodný kořenový certifikát v kódování Base-64 s kódováním X. 509 (. CER) formátu. Tuto možnost můžete přidat do aplikační brány a povolit tak servery back-end pro šifrování koncového protokolu SSL. Podívejte [se, jak nakonfigurovat šifrování koncového protokolu SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+

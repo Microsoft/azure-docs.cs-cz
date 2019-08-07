@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 9906fe5de9c24f1b1a8c3f713fa772e56ed4e13f
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 135855ee33f783e85b398c7f9716c2c897633de9
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441961"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779541"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Plánování virtuální sítě pro Azure HDInsight
 
@@ -25,7 +25,7 @@ Použití Azure Virtual Network umožňuje následující scénáře:
 * Přímý přístup k [Apache Hadoop](https://hadoop.apache.org/) službám, které nejsou veřejně dostupné po internetu. Například [Apache Kafka](https://kafka.apache.org/) rozhraní API nebo rozhraní [Apache HBA](https://hbase.apache.org/) Java API.
 
 > [!IMPORTANT]
-> Při vytváření clusteru HDInsight ve virtuální síti se vytvoří několik síťových prostředků, jako jsou síťové karty a nástroje pro vyrovnávání zatížení. Tyto síťové prostředky **neodstraňujte** , protože jsou potřeba pro správné fungování clusteru s virtuální sítí.
+> Při vytváření clusteru HDInsight ve virtuální síti se vytvoří několik síťových prostředků, jako jsou síťové karty a nástroje pro vyrovnávání zatížení. Tyto síťové prostředky neodstraňujte, protože jsou potřeba pro správné fungování clusteru s virtuální sítí.
 >
 > Po 28. února 2019 budou síťové prostředky (například síťové karty, libry atd.) pro nové clustery HDInsight vytvořené ve virtuální síti zřízené ve stejné skupině prostředků clusteru HDInsight. Dříve byly tyto prostředky zřízeny ve skupině prostředků VNET. Nedošlo k žádným změnám aktuálně spuštěných clusterů a clusterů vytvořených bez virtuální sítě.
 
@@ -117,14 +117,14 @@ Azure poskytuje překlad adres IP pro služby Azure, které jsou nainstalované 
 
 * Libovolný prostředek, který je k dispozici na internetu. Například microsoft.com, windowsupdate.com.
 
-* Libovolný prostředek, který je ve stejném Virtual Network Azure, pomocí interního __názvu DNS__ daného prostředku. Například při použití výchozího překladu názvů jsou zde uvedené příklady interní názvy DNS přiřazené ke uzlům pracovních procesů HDInsight:
+* Libovolný prostředek, který je ve stejném Virtual Network Azure, pomocí interního __názvu DNS__ daného prostředku. Například při použití výchozího překladu názvů jsou zde uvedeny příklady interních názvů DNS přiřazených k pracovním uzlům HDInsight:
 
   * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
   * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     Oba tyto uzly můžou komunikovat přímo mezi sebou a dalšími uzly v HDInsight pomocí interních názvů DNS.
 
-Výchozí rozlišení názvů __neumožňuje službě__ HDInsight přeložit názvy prostředků v sítích, které jsou připojené k virtuální síti. Například je běžné připojení k místní síti k virtuální síti. Služba HDInsight nemůže získat přístup k prostředkům v místní síti jenom s výchozím překladem IP adres podle názvu. Opak má také hodnotu true, prostředky v místní síti nemají přístup k prostředkům ve virtuální síti podle názvu.
+Výchozí rozlišení názvů neumožňuje službě HDInsight přeložit názvy prostředků v sítích, které jsou připojené k virtuální síti. Například je běžné připojení k místní síti k virtuální síti. Služba HDInsight nemůže získat přístup k prostředkům v místní síti jenom s výchozím překladem IP adres podle názvu. Opak má také hodnotu true, prostředky v místní síti nemají přístup k prostředkům ve virtuální síti podle názvu.
 
 > [!WARNING]  
 > Před vytvořením clusteru HDInsight musíte vytvořit vlastní server DNS a nakonfigurovat virtuální síť tak, aby se používala.
@@ -232,9 +232,9 @@ Další informace o skupinách zabezpečení sítě najdete v tématu [Přehled 
 
 Další informace o řízení odchozího provozu z clusterů HDInsight najdete v tématu [Konfigurace omezení odchozích síťových přenosů pro clustery Azure HDInsight](hdinsight-restrict-outbound-traffic.md).
 
-#### <a name="forced-tunneling-to-on-premise"></a>Vynucené tunelové propojení do místního nasazení
+#### <a name="forced-tunneling-to-on-premise"></a>Vynucené tunelování do místního prostředí
 
-Vynucené tunelování je uživatelem definovaná konfigurace směrování, kdy se veškerý provoz z podsítě připravuje na určitou síť nebo umístění, jako je například vaše místní síť. HDInsight nepodporuje  vynucené tunelování provozu do místních sítí. 
+Vynucené tunelování je uživatelem definovaná konfigurace směrování, kdy se veškerý provoz z podsítě připravuje na určitou síť nebo umístění, jako je například vaše místní síť. HDInsight nepodporuje vynucené tunelování provozu do místních sítí. 
 
 ## <a id="hdinsight-ip"></a>Požadované IP adresy
 

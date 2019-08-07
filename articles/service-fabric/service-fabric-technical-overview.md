@@ -1,6 +1,6 @@
 ---
-title: Přečtěte si terminologie pro Azure Service Fabric | Dokumentace Microsoftu
-description: Přehled terminologie Service Fabric. Pojednává klíčovou terminologií konceptů a termínů používaných ve zbývající části dokumentace.
+title: Seznamte se s Azure Service Fabric terminologie | Microsoft Docs
+description: Přehled terminologie Service Fabric. Popisuje klíčové pojmy a pojmy používané ve zbývající části dokumentace.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,168 +14,168 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: 085d5e560eec090ab76c263f8f93140786f2d734
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82672114722db843fcb5d0bdff28cf14cddb1aef
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543202"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68811917"
 ---
 # <a name="service-fabric-terminology-overview"></a>Přehled terminologie Service Fabric
-Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Je možné [clustery hostitelů Service Fabric, kdekoli](service-fabric-deploy-anywhere.md): Azure, v místním datovém centru, nebo jakýkoli jiný poskytovatel cloudu.  Service Fabric je orchestrátor, která je základem [Azure Service Fabric mřížky](/azure/service-fabric-mesh). K psaní služeb a rozhodnete, jak spustit aplikaci z několika možností prostředí můžete použít libovolné architektury. Tento článek obsahuje podrobnosti o terminologii používané k pochopení termínů používaných v dokumentaci k Service Fabric.
+Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Clustery [Service Fabric můžete hostovat kdekoli](service-fabric-deploy-anywhere.md): Azure, v místním datovém centru nebo na jakémkoli poskytovateli cloudu.  Service Fabric je produkt Orchestrator, který využívá [síť Azure Service Fabric](/azure/service-fabric-mesh). Můžete použít libovolné rozhraní k zápisu služeb a zvolit, kde spustit aplikaci z více možností prostředí. Tento článek podrobně popisuje terminologii, kterou používá Service Fabric k pochopení podmínek používaných v dokumentaci.
 
 ## <a name="infrastructure-concepts"></a>Koncepty infrastruktury
-**Cluster**: Síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby.  Clustery je možné škálovat na tisíce počítačů.
+**Cluster**: Sada virtuálních nebo fyzických počítačů připojených k síti, do kterých jsou vaše mikroslužby nasazené a spravované.  Clustery je možné škálovat na tisíce počítačů.
 
-**Uzel**: Je volána počítač nebo virtuální počítač, který je součástí clusteru *uzel*. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají určité charakteristiky, jako je například vlastnosti umístění. Každý počítač nebo virtuální počítač má Windows automatické spouštění služby `FabricHost.exe`, která se spustí při spuštění a spustí dvě spustitelné soubory: `Fabric.exe` a `FabricGateway.exe`. Tyto dvě spustitelné soubory tvoří uzlu. Pro testovací scénáře, může hostovat více uzlů na jeden počítač nebo virtuální počítač spuštěním několika instancí `Fabric.exe` a `FabricGateway.exe`.
+**Uzel**: Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá *uzel*. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají charakteristiky, jako jsou vlastnosti umístění. Každý počítač nebo virtuální počítač má automaticky spuštěnou službu `FabricHost.exe`systému Windows, která při spuštění spustí spuštění a pak spustí dva spustitelné soubory: `Fabric.exe` a. `FabricGateway.exe` Tyto dva spustitelné soubory tvoří uzel. V případě testovacích scénářů můžete hostovat více uzlů na jednom počítači nebo virtuálním počítači spuštěním více instancí `Fabric.exe` a `FabricGateway.exe`.
 
-## <a name="application-and-service-concepts"></a>Aplikace a koncepty služby
+## <a name="application-and-service-concepts"></a>Koncepce aplikací a služeb
 
-**Aplikace Service Fabric sítě**: Aplikace Service Fabric sítě jsou popsány pomocí modelu Resource (zdrojové soubory pro YAML a JSON) a je možné nasadit do libovolného prostředí, kde běží Service Fabric.
+**Aplikace Service Fabric sítě**: Service Fabric aplikace sítě jsou popsány v modelu prostředků (soubory prostředků YAML a JSON) a lze je nasadit do jakéhokoli prostředí, ve kterém Service Fabric spuštěna.
 
-**Aplikace Service Fabric nativní**: Nativní aplikace Service Fabric jsou popsány modelem nativní aplikace (založený na formátu XML manifestů aplikace a služby).  Nativní aplikace Service Fabric nelze spustit v Service Fabric mřížky.
+**Service Fabric nativní aplikace**: Service Fabric nativní aplikace jsou popsány v rámci nativního aplikačního modelu (aplikace založené na jazyce XML a manifesty služeb).  Service Fabric nativní aplikace nelze spouštět v Service Fabric sítě.
 
-### <a name="service-fabric-mesh-application-concepts"></a>Koncepty mřížky aplikace Service Fabric
+### <a name="service-fabric-mesh-application-concepts"></a>Koncepty použití Service Fabric sítě
 
-**Aplikace**: Aplikace je jednotka nasazení, správu verzí a životního cyklu aplikace sítě. Životní cyklus jednotlivých instancí aplikací se dají spravovat nezávisle.  Aplikace se skládají z jednoho nebo více balíčků kódu služby a nastavení. Aplikace je definována pomocí schématu modelu prostředků Azure (SV).  Služby jsou popsány jako vlastnosti prostředku aplikace do šablony správce prostředků.  Sítě a svazky, které používají aplikace se odkazuje aplikace.  Při vytváření aplikací, aplikací, služeb, sítě a svazky jsou modelovány pomocí modelu prostředků služby Service Fabric.
+**Aplikace**: Aplikace je jednotka nasazení, správy verzí a životnosti aplikace sítě. Životní cyklus jednotlivých instancí aplikace je možné spravovat nezávisle.  Aplikace se skládají z jednoho nebo více balíčků kódu služby a nastavení. Aplikace je definovaná pomocí schématu Azure Resource model (RM).  Služby jsou popsány jako vlastnosti prostředku aplikace v šabloně RM.  Odkazy na sítě a svazky používané aplikací jsou odkazovány v aplikaci.  Při vytváření aplikace jsou aplikace, služby (y), sítě a svazky modelovány pomocí modelu Service Fabric prostředků.
 
-**Služba**: Službu v aplikaci představuje mikroslužby a provádí kompletní a samostatné funkce. Každá služba se skládá z jednoho nebo více, balíčky kódu, které popisují vše potřebné pro spuštění image kontejneru, který je přidružený k balíčku kódu.  Počet služeb v aplikaci je možné škálovat nahoru a dolů.
+**Služba**: Služba v aplikaci představuje mikroslužbu a provede úplnou a samostatnou funkci. Každá služba se skládá z jednoho nebo více balíčků kódu, které popisují vše potřebné ke spuštění image kontejneru přidružené k balíčku kódu.  Počet služeb v aplikaci lze škálovat nahoru a dolů.
 
-**Síť**: Síťový prostředek vytvoří privátní sítě pro vaše aplikace a je nezávislá aplikace nebo služby, které může na něj odkazovat. Více služeb z různých aplikací může být součástí stejné sítě. Sítě jsou nasadit prostředky, které se příslušná aplikace odkazuje.
+**Síť**: Síťový prostředek vytvoří privátní síť pro vaše aplikace a je nezávislý na aplikacích nebo službách, které se na ni můžou odkazovat. Několik služeb z různých aplikací může být součástí stejné sítě. Sítě jsou nasazené prostředky, na které odkazují aplikace.
 
-**Balíček kódu**: Balíčky kódu popisují vše potřebné pro spuštění image kontejneru, který je přidružený k balíčku kódu, včetně následujících:
+**Balíček kódu**: Balíčky kódu popisují vše potřebné ke spuštění image kontejneru přidružené k balíčku kódu, včetně následujících:
 
-* Název kontejneru, verzi a registru
+* Název, verze a registr kontejneru
 * Prostředky procesoru a paměti vyžadované pro každý kontejner
-* Koncové body sítě
-* Svazky v kontejneru, odkazující na samostatný svazek prostředek připojení.
+* Síťové koncové body
+* Svazky, které se mají připojit do kontejneru a odkazují na samostatný prostředek svazku.
 
-Všechny balíčky kódu definované jako součást prostředek aplikace se nasazují a aktivují společně jako skupina.
+Všechny balíčky kódu definované jako součást prostředku aplikace jsou nasazeny a aktivovány společně jako skupina.
 
-**Svazek**: Svazky jsou adresáře, které se připojit k uvnitř instancí kontejneru, které můžete použít k uložení stavu. Ovladač Azure Files svazek připojí do sdílené složky Azure Files do kontejneru a poskytuje spolehlivé úložiště dat prostřednictvím jakéhokoli rozhraní API, která podporuje úložiště file. Svazky jsou nasadit prostředky, které se příslušná aplikace odkazuje.
+**Svazek**: Svazky jsou adresáře, které se připevní do instancí kontejnerů, které můžete použít k trvalému stavu. Ovladač svazku souborů Azure připojuje sdílenou složku Azure Files do kontejneru a poskytuje spolehlivé úložiště dat prostřednictvím rozhraní API, které podporuje úložiště souborů. Svazky jsou nasaditelné prostředky, na které odkazují aplikace.
 
-### <a name="service-fabric-native-application-concepts"></a>Koncepty nativní aplikace Service Fabric
+### <a name="service-fabric-native-application-concepts"></a>Service Fabric koncepce nativních aplikací
 
-**Aplikace**: Aplikace je kolekce základních služeb, které provádějí určité funkce nebo funkce. Životní cyklus jednotlivých instancí aplikací se dají spravovat nezávisle.
+**Aplikace**: Aplikace je kolekce základních služeb, které provádějí určitou funkci nebo funkce. Životní cyklus jednotlivých instancí aplikace je možné spravovat nezávisle.
 
-**Služba**: Služba provádí kompletní a samostatné funkce a můžete spustit a spustit nezávisle na ostatních službách. Služba se skládá z kódu, konfigurace a data. Pro každou službu kód se skládá ze spustitelného souboru binární soubory, konfigurace se skládá z nastavení služby, které načtené být za běhu a data se skládají z libovolného statických dat, který se má používat služba.
+**Služba**: Služba provádí úplnou a samostatnou funkci a může spustit a spustit nezávisle na jiných službách. Služba se skládá z kódu, konfigurace a dat. U každé služby se kód skládá ze spustitelných binárních souborů, konfigurace se skládá z nastavení služby, které lze načíst za běhu, a data se skládají z libovolných statických dat, která má služba spotřebovat.
 
-**Typ aplikace**: Název/verze přiřazena ke kolekci typů služeb. Je definován v `ApplicationManifest.xml` souboru a vložit v adresáři balíčku aplikace. Adresář se pak zkopíruje do úložiště imagí clusteru Service Fabric. Pojmenované aplikace si můžete vytvořit z tohoto typu aplikace v rámci clusteru.
+**Typ aplikace**: Název/verze přiřazená kolekci typů služeb. Je definovaný v `ApplicationManifest.xml` souboru a vložený v adresáři balíčku aplikace. Adresář se pak zkopíruje do úložiště imagí clusteru Service Fabric. Pak můžete vytvořit pojmenovanou aplikaci z tohoto typu aplikace v rámci clusteru.
 
-Přečtěte si [aplikační model](service-fabric-application-model.md) najdete další informace.
+Další informace najdete v článku o [modelu aplikace](service-fabric-application-model.md) .
 
-**Balíček aplikace**: Disk adresáře, který obsahuje typ aplikace `ApplicationManifest.xml` souboru. Odkazuje na balíčky služeb pro každý typ služby, který vytvoří typ aplikace. Soubory v adresáři balíčku aplikace se zkopírují do úložiště imagí clusteru Service Fabric. Balíček aplikace pro typ e-mailové aplikace může například obsahovat odkazy na balíček služby front, balíček front-endové služby a databáze služby balíčku.
+**Balíček aplikace**: Adresář disku obsahující `ApplicationManifest.xml` soubor typu aplikace. Odkazuje na balíčky služeb pro každý typ služby, který tvoří typ aplikace. Soubory v adresáři balíčku aplikace se zkopírují do úložiště imagí Service Fabricho clusteru. Například balíček aplikace pro typ e-mailové aplikace může obsahovat odkazy na balíček front-Service, balíček front-Service a balíček databázových služeb.
 
-**Aplikace s názvem**: Po zkopírování balíčku aplikace do úložiště imagí můžete vytvořit instanci aplikace v rámci clusteru. Vytvoření instance při zadávání typu aplikace balíčku aplikace, pomocí jeho názvu nebo verze. Každá instance typu aplikace je přiřazen název URI identifikátor URI, který může vypadat: `"fabric:/MyNamedApp"`. V rámci clusteru můžete vytvořit více pojmenované aplikací z jedné aplikace typu. Můžete také vytvořit pojmenované aplikace z aplikace různé typy. Jednotlivé pojmenované aplikace je spravované a verzuje nezávisle na sobě.
+**Pojmenovaná aplikace**: Po zkopírování balíčku aplikace do úložiště imagí vytvoříte instanci aplikace v rámci clusteru. Instanci vytvoříte při určení typu aplikace balíčku aplikace pomocí jejího názvu nebo verze. Každé instanci typu aplikace je přiřazen název identifikátoru URI (Uniform Resource Identifier), který vypadá `"fabric:/MyNamedApp"`takto:. V rámci clusteru můžete vytvořit více pojmenovaných aplikací z jednoho typu aplikace. Můžete také vytvořit pojmenované aplikace z různých typů aplikací. Každá pojmenovaná aplikace je spravovaná a má nezávisle.
 
-**Typ služby**: Název/verze přiřadit balíčky kódu, data balíčky a balíčky pro konfiguraci služby. Typ služby je definována v `ServiceManifest.xml` souboru a v adresáři balíčku service vložené. Adresář balíčku service se pak odkazuje balíčku aplikace `ApplicationManifest.xml` souboru. V rámci clusteru po vytvoření aplikace s názvem, můžete vytvořit pojmenovanou službu z jednoho z typů služeb typu aplikace. Typ služby `ServiceManifest.xml` soubor popisuje službu.
+**Typ služby**: Název/verze přiřazená k balíčkům kódu, datovým balíčkům a konfiguračním balíčkům služby. Typ služby je definovaný v `ServiceManifest.xml` souboru a vložený v adresáři balíčku služby. Na adresář balíčku služby se pak odkazuje v `ApplicationManifest.xml` souboru balíčku aplikace. V rámci clusteru můžete po vytvoření pojmenované aplikace vytvořit pojmenovanou službu z některého z typů služeb typu aplikace. `ServiceManifest.xml` Soubor typu služby popisuje službu.
 
-Přečtěte si [aplikační model](service-fabric-application-model.md) najdete další informace.
+Další informace najdete v článku o [modelu aplikace](service-fabric-application-model.md) .
 
 Existují dva typy služeb:
 
-* **Bezstavové**: Nestavovou službu použijte, když trvalý stav služby je uložená ve službě service externího úložiště, jako je například Azure Storage, Azure SQL Database nebo Azure Cosmos DB. Nestavovou službu použijte, pokud služba nemá žádné trvalého úložiště. Například pro službu kalkulačky, kde hodnoty se předají do služby, výpočet se provádí, která používá tyto hodnoty a pak vrátí výsledek.
-* **Stavová**: Stavovou službu použijte, pokud chcete ke správě stavu vaší služby prostřednictvím jeho Reliable Collections nebo Reliable Actors programovací modely Service Fabric. Když vytvoříte pojmenovanou službu, zadejte kolik oddíly, které chcete nacházející se ve vašem státě pro zajištění škálovatelnosti. Také určete, jak často k replikaci svůj stav mezi uzly spolehlivosti. Každá pojmenované služba má jednu primární repliku a více sekundárních replik. Při zápisu na primární replice upravíte pojmenovanou službu stavu. Service Fabric pak replikuje tohoto stavu do sekundárních replik pro synchronizaci stavu. Service Fabric automaticky rozpozná, pokud selže primární repliku a podporuje stávající sekundární repliky na primární repliku. Service Fabric vytvoří sekundární repliku.  
+* Bezstavové: Bezstavová služba se používá, když je trvalý stav služby uložený v externí službě úložiště, například Azure Storage, Azure SQL Database nebo Azure Cosmos DB. Bezstavová služba se používá v případě, že služba nemá trvalé úložiště. Například u služby kalkulačky, kde jsou hodnoty předány službě, se provede výpočet, který tyto hodnoty používá, a pak se vrátí výsledek.
+* **Stav**: Stavovou službu použijte, když chcete Service Fabric spravovat stav služby prostřednictvím svých spolehlivých kolekcí nebo Reliable Actors programovacích modelů. Při vytváření pojmenované služby určete, kolik oddílů chcete rozšířit svůj stav a škálovatelnost. Také určete, kolikrát má být stav replikace mezi uzly, aby byla spolehlivost. Každá pojmenovaná služba má jednu primární repliku a několik sekundárních replik. Stav pojmenované služby upravíte při zápisu do primární repliky. Service Fabric pak tento stav replikuje do všech sekundárních replik, aby byl váš stav synchronizovaný. Service Fabric automaticky detekuje, kdy se primární replika nezdařila, a propaguje stávající sekundární repliku na primární repliku. Service Fabric pak vytvoří novou sekundární repliku.  
 
-**Replik nebo instancí** naleznete kód (a stavu pro stavové služby), služby, která je nasazena a spuštěna. Zobrazit [replik a instancí](service-fabric-concepts-replica-lifecycle.md).
+**Repliky nebo instance** odkazují na kód (a stav pro stavové služby) služby, která je nasazená a spuštěná. Viz [repliky a instance](service-fabric-concepts-replica-lifecycle.md).
 
-**Rekonfigurace** se vztahuje k procesu změny sady replik služby. Zobrazit [Rekonfigurace](service-fabric-concepts-reconfiguration.md).
+Změna **Konfigurace** odkazuje na proces jakékoli změny v sadě replik služby. Viz [rekonfigurace](service-fabric-concepts-reconfiguration.md).
 
-**Balíček služby**: Disk adresáře, který obsahuje typ služby `ServiceManifest.xml` souboru. Tento soubor odkazuje na kód, statických dat a balíčky pro konfiguraci pro typ služby. Soubory v adresáři balíčku služby odkazuje typ aplikace `ApplicationManifest.xml` souboru. Například může odkazovat na kód, statických dat a balíčky pro konfiguraci, které tvoří databázová služba balíčku služby.
+**Balíček služby**: Adresář disku, který obsahuje `ServiceManifest.xml` soubor typu služby. Tento soubor odkazuje na kód, statická data a konfigurační balíčky pro typ služby. Soubory v adresáři balíčku služby jsou odkazovány `ApplicationManifest.xml` souborem typu aplikace. Balíček služby může například odkazovat na kód, statická data a konfigurační balíčky, které tvoří databázovou službu.
 
-**Služba s názvem**: Po vytvoření aplikace s názvem, můžete vytvořit instanci jednoho z jeho typy služeb v rámci clusteru. Zadejte typ služby s použitím jeho název a verzi. Každá instance typu služby je přiřazen název identifikátoru URI oboru v identifikátoru URI s názvem aplikace. Například pokud vytvoříte "Databáze" s názvem služby v rámci "MyNamedApp" s názvem aplikace, identifikátor URI vypadá: `"fabric:/MyNamedApp/MyDatabase"`. V rámci aplikace s názvem můžete vytvořit několik pojmenovaných služeb. Každý s názvem služby může mít svou vlastní schéma oddílu a instance nebo repliky se počítá.
+**Pojmenovaná služba**: Po vytvoření pojmenované aplikace můžete vytvořit instanci jednoho z jeho typů služeb v rámci clusteru. Typ služby určíte pomocí jejího názvu nebo verze. Každá instance typu služby má přiřazený název identifikátoru URI v oboru názvů IDENTIFIKÁTORu URI pojmenované aplikace. Například pokud vytvoříte "MyDatabase" pojmenovanou službu v rámci "MyNamedApp" pojmenované aplikace, identifikátor URI vypadá takto: `"fabric:/MyNamedApp/MyDatabase"`. V rámci pojmenované aplikace můžete vytvořit několik pojmenovaných služeb. Každá pojmenovaná služba může mít vlastní schéma oddílů a instance nebo počet replik.
 
-**Balíček kódu**: Adresáře disku, který obsahuje typ služby spustitelné soubory, obvykle EXE nebo knihovny DLL. Soubory v adresáři balíčku kódu odkazuje typ služby `ServiceManifest.xml` souboru. Při vytváření služby s názvem balíček kódu je zkopírován do uzel nebo uzly vybrané ke spuštění s názvem služby. Pak se spustí kód. Existují dva druhy spustitelné soubory balíčku kódu:
+**Balíček kódu**: Adresář disku obsahující spustitelné soubory typu služby, obvykle soubory EXE/DLL. Soubory v adresáři balíčku kódu jsou odkazovány ze `ServiceManifest.xml` souboru typu služby. Při vytváření pojmenované služby je balíček kódu zkopírován do uzlu nebo uzlů, které jsou vybrány pro spuštění pojmenované služby. Pak se kód začne spouštět. Existují dva typy spustitelných souborů balíčku kódu:
 
-* **Spustitelné soubory hosta**: Spustitelné soubory, které spustit jako-je na hostitelském operačním systému (Windows nebo Linuxem). Tyto spustitelných souborů není propojit nebo odkazovat na všechny soubory modulu runtime Service Fabric a proto nemusíte používat programovací modely Service Fabric. Tyto spustitelné soubory se nemůže použít některé funkce Service Fabric, jako je například služba pojmenování pro koncový bod zjišťování. Spustitelné soubory typu Host nemůže oznamovat zatížení metriky, které jsou specifické pro každou instanci služby.
-* **Služby spustitelné soubory hostitele**: Spustitelné soubory, které pomocí programovacích modelů Service Fabric odkazování na soubory modulu runtime Service Fabric, povolení funkcí Service Fabric. Například pojmenované instanci služby můžete zaregistrovat koncové body službě pojmenování Service Fabric a může také nahlásit načíst metriky.
+* **Spustitelné soubory hosta**: Spustitelné soubory, které běží jako – jsou v hostitelském operačním systému (Windows nebo Linux). Tyto spustitelné soubory neodkazují na ani neodkazují na žádné soubory Service Fabric runtime, a proto nepoužívají žádné Service Fabric programovací modely. Tyto spustitelné soubory nemůžou používat některé funkce Service Fabric, jako je třeba služba pojmenování pro zjišťování koncových bodů. Spustitelné soubory hosta nemůžou sestavovat metriky zatížení, které jsou specifické pro jednotlivé instance služby.
+* **Spustitelné soubory hostitele služby**: Spustitelné soubory, které používají Service Fabric programovacích modelů propojením s Service Fabric běhovými soubory a povolením funkcí Service Fabric. Například pojmenovaná instance služby může registrovat koncové body pomocí Naming Service Service Fabric a může také nahlásit metriky zatížení.
 
-**Data balíčku**: Adresář disk, který obsahuje typ služby statické a jen pro čtení datových souborů, obvykle fotografií, zvukových a obrazových souborů. Soubory v adresáři balíčku dat je odkazováno dle typ služby `ServiceManifest.xml` souboru. Při vytváření služby s názvem, balíček data zkopírována do uzel nebo uzly vybrané ke spuštění s názvem služby. Kód se spustí a teď přístup k datové soubory.
+**Datový balíček**: Adresář disku, který obsahuje statické datové soubory typu, které jsou jen pro čtení, obvykle fotografie, zvuk a videosoubory. Soubory v adresáři datových balíčků jsou odkazovány ze `ServiceManifest.xml` souboru typu služby. Při vytváření pojmenované služby je balíček dat zkopírován do uzlu nebo uzlů vybraných pro spuštění pojmenované služby. Kód začíná běžet a teď může přistupovat k datovým souborům.
 
-**Balíček pro konfiguraci**: Adresář disk, který obsahuje typ služby statické a jen pro čtení konfiguračních souborů, obvykle textové soubory. Soubory v adresáři balíčku konfigurace odkazuje typ služby `ServiceManifest.xml` souboru. Při vytváření služby s názvem soubory v balíčku konfigurace jsou kopírovány jeden nebo více uzlů vybrané ke spuštění s názvem služby. Pak spustí kód ke spuštění a můžete teď přístup ke konfiguračním souborům.
+**Konfigurační balíček**: Adresář disku, který obsahuje statické konfigurační soubory typu jen pro čtení, obvykle textové soubory. Soubory v adresáři konfiguračního balíčku jsou odkazovány ze `ServiceManifest.xml` souboru typu služby. Při vytváření pojmenované služby se soubory v konfiguračním balíčku zkopírují jeden nebo více uzlů vybraných pro spuštění pojmenované služby. Pak se kód začne spouštět a teď může přistupovat ke konfiguračním souborům.
 
-**Kontejnery**: Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric dokáže nasadit také služby v imagí kontejnerů. Kontejnery jsou technologie virtualizace, která Virtualizuje základního operačního systému z aplikací. Aplikace a její modulu runtime, závislosti a systémové knihovny běží uvnitř kontejneru. Kontejner má úplné a privátní přístup k zobrazení kontejneru vlastní samostatný konstrukce operačního systému. Service Fabric podporuje kontejnery Docker pro kontejnery Linuxu a Windows Server. Další informace najdete v článku [Service Fabric a kontejnery](service-fabric-containers-overview.md).
+**Kontejnery**: Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric můžou nasazovat i služby v imagích kontejnerů. Kontejnery jsou virtualizační technologie, která z aplikací virtualizuje základní operační systém. Aplikace a její modul runtime, závislosti a systémové knihovny se spouští uvnitř kontejneru. Kontejner má plný privátní přístup k vlastnímu izolovanému zobrazení kontejneru konstrukcí operačního systému. Service Fabric podporuje kontejnery Docker v kontejnerech Linux a Windows Server. Další informace najdete v tématu [Service Fabric a kontejnery](service-fabric-containers-overview.md).
 
-**Schéma oddílu**: Když vytvoříte pojmenovanou službu, zadat schéma oddílu. Služby se značné množství stavu rozdělení dat napříč oddíly, které šíří stavu mezi uzly clusteru. Rozdělení dat napříč oddíly, umožňuje škálovat pojmenovanou službu stavu. V rámci oddílu mají bezstavové služby s názvem instance, že stavová s názvem služby repliky. Obvykle bezstavové služby s názvem mít jen jeden oddíl, protože nemají žádné vnitřní stav. Instance oddílu poskytují dostupnosti. Pokud se jedna instance nezdaří, dalších instancí se dál fungovat normálně a vytvoří novou instanci Service Fabric. Stavová s názvem služby spravovat, že jejich stav v rámci repliky a každý oddíl má svůj vlastní repliky nastavíte tak, aby stav je udržovat synchronizované. By měl replika selže, Service Fabric vytvoří novou repliku z existujících replik.
+**Schéma oddílu**: Při vytváření pojmenované služby určíte schéma oddílu. Služby s podstatnými stavy rozdělí data napříč oddíly, které šíří stav napříč uzly clusteru. Rozdělením dat mezi oddíly se může škálovat stav vaší pojmenované služby. V rámci oddílu mají instance bez příslušnosti instance, zatímco stav s názvem služby má repliky. Obvykle pojmenované služby s názvem bez stavů mají pouze jeden oddíl, protože nemají žádný interní stav. Instance oddílu poskytují dostupnost. Pokud dojde k chybě jedné instance, ostatní instance budou fungovat normálně a pak Service Fabric vytvoří novou instanci. Stavové služby uchovávají jejich stav v rámci replik a každý oddíl má vlastní sadu replik, takže stav je udržován v synchronizaci. Pokud by se replika nezdařila, Service Fabric vytvoří novou repliku z existujících replik.
 
-Přečtěte si [spolehlivých služeb Service Fabric oddílu](service-fabric-concepts-partitioning.md) najdete další informace.
+Další informace najdete v článku věnovaném [Service Fabric Reliable Services pro oddíl](service-fabric-concepts-partitioning.md) .
 
 ## <a name="system-services"></a>Systémové služby
-Existují systémových služeb, které jsou vytvořeny v každém clusteru, které poskytují funkce dané platformy Service Fabric.
+V každém clusteru se vytvářejí systémové služby, které poskytují možnosti platformy Service Fabric.
 
-**Služba pojmenování**: Každý cluster Service Fabric má službu pojmenování, které se překládá názvy služeb do umístění v clusteru. Spravovat názvy služeb a vlastnosti, jako je internet systému DNS (Domain Name) pro cluster. Klienti bezpečně komunikovat s libovolný uzel v clusteru s použitím služby pojmenování přeložit název služby a jeho umístění. Aplikace se přesouvat v rámci clusteru. Například to může být kvůli chybám, vyrovnávání prostředků nebo změně velikosti clusteru. Můžete vyvíjet, služeb a klientů, které odkazují aktuální umístění v síti. Klienti získat skutečnou adresu IP a port, kde je aktuálně spuštěna.
+**Naming Service**: Každý cluster Service Fabric má Naming Service, který překládá názvy služeb na umístění v clusteru. Můžete spravovat názvy a vlastnosti služby, jako je třeba Internet Domain Name System (DNS) pro cluster. Klienti zabezpečeně komunikují s jakýmkoli uzlem v clusteru pomocí Naming Service k překladu názvu služby a jejího umístění. Aplikace se pohybují v rámci clusteru. Může to být například kvůli chybám, vyrovnávání prostředků nebo změně velikosti clusteru. Můžete vyvíjet služby a klienty, kteří vyřeší aktuální umístění v síti. Klienti získají skutečnou IP adresu počítače a port, na kterém je aktuálně spuštěná.
 
-Čtení [komunikace se službami](service-fabric-connect-and-communicate-with-services.md) Další informace o komunikaci klienta a služby rozhraní API, které fungují ve službě pojmenování.
+Další informace o rozhraních API pro komunikaci klientů a služeb, která fungují s Naming Service, najdete v tématu [komunikace se službami](service-fabric-connect-and-communicate-with-services.md) .
 
-**Image Store service**: Každý cluster Service Fabric má službu Image Store, kde je aplikace nasazená, vyvíjených balíčků uchovávat. Zkopírujte balíček aplikace pro Store Image a pak zaregistrujte typ aplikace, které jsou obsaženy v rámci daného balíčku aplikace. Po zřízení typu aplikace vytvoříte aplikaci s názvem z něj. Po odstranění všechny pojmenované aplikace, můžete zrušit registraci typu aplikace ze služby Image Store.
+**Služba Image Store**: Každý cluster Service Fabric má Image Store službu, ve které se nasadily balíčky aplikací se správou verzí. Zkopírujte balíček aplikace do Image Store a pak zaregistrujte typ aplikace obsažený v rámci tohoto balíčku aplikace. Po zřízení typu aplikace se z něj vytvoří pojmenovaná aplikace. Můžete zrušit registraci typu aplikace od služby Image Store po odstranění všech jejích pojmenovaných aplikací.
 
-Čtení [Principy nastavení ImageStoreConnectionString](service-fabric-image-store-connection-string.md) Další informace o službě Image Store.
+Další informace o Image Store službě najdete [v tématu Principy nastavení ImageStoreConnectionString](service-fabric-image-store-connection-string.md) .
 
-Čtení [nasazení aplikace](service-fabric-deploy-remove-applications.md) najdete další informace o nasazení aplikace ke službě Store bitové kopie.
+Další informace o nasazování aplikací do služby Image Store najdete v článku [nasazení aplikace](service-fabric-deploy-remove-applications.md) .
 
-**Služba Správce převzetí služeb při selhání**: Každý cluster Service Fabric obsahuje službu Správce převzetí služeb při selhání, která je zodpovědná za následující akce:
-   - Provádí funkce související s vysokou dostupnost a konzistence služeb.
-   - Orchestruje inovace aplikací a clusteru.
-   - Komunikuje s jinými součástmi systému.
+**Služba Správce převzetí služeb při selhání**: Každý cluster Service Fabric má Správce převzetí služeb při selhání službu, která zodpovídá za tyto akce:
+   - Provádí funkce související s vysokou dostupností a konzistencí služeb.
+   - Orchestruje upgrady aplikací a clusterů.
+   - Spolupracuje s dalšími součástmi systému.
 
-**Nástroj pro správu oprav služby**: Toto je volitelná systémová služba, která umožňuje opravit akce provést v clusteru tak, aby je bezpečné, použijte a transparentní. Nástroj pro správu oprav se používá v:
-   - Provádí Azure údržbu opraví na [stříbrné a zlaté odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) clustery Azure Service Fabric.
-   - Provádění akcí oprav pro [aplikace orchestraci oprav](service-fabric-patch-orchestration-application.md)
+**Služba Repair Manager**: Toto je volitelná systémová služba, která umožňuje provádět akce opravy v clusteru způsobem, který je bezpečný, automatizovaný a transparentní. Správce oprav se používá v:
+   - Provádění oprav v rámci údržby Azure u clusterů Azure Service Fabric v [stříbrné a zlaté odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)
+   - Provádění opravných akcí pro [aplikaci orchestrace oprav](service-fabric-patch-orchestration-application.md)
 
 ## <a name="deployment-and-application-models"></a>Modely nasazení a aplikace 
 
-K nasazení služby, budete muset popisují, jak by měly být spuštěny. Service Fabric podporuje tři různé modely nasazení:
+Chcete-li nasadit své služby, je třeba popsat, jak by měly být spuštěny. Service Fabric podporuje tři různé modely nasazení:
 
-### <a name="resource-model-preview"></a>Model prostředků (preview)
-Prostředky topologie Fabric Service jsou cokoli, co je možné nasadit jednotlivě do Service Fabric; včetně aplikací, služeb, sítě a svazky. Prostředky jsou definovány pomocí souboru JSON, který je možné nasadit do koncového bodu clusteru.  Pro Service Fabric sítě se používá schéma modelu prostředků Azure. Schéma souboru YAML lze také snadněji vytvářet soubory definic. Prostředky je možné nasadit všude, kde běží Service Fabric. Model prostředků je nejjednodušší způsob, jak popisují své aplikace Service Fabric. Hlavní zaměřuje se na jednoduché nasazení a správu kontejnerizovaných služeb. Další informace najdete v článku [Úvod do modelu prostředků služby Service Fabric](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources).
+### <a name="resource-model-preview"></a>Model prostředků (Preview)
+Prostředky Service Fabric jsou cokoli, co se dá nasadit jednotlivě do Service Fabric; včetně aplikací, služeb, sítí a svazků. Prostředky se definují pomocí souboru JSON, který se dá nasadit na koncový bod clusteru.  V případě Service Fabric sítě se používá schéma modelu Azure Resource model. Schéma souborů YAML lze také použít k snadnějšímu vytváření definičních souborů. Prostředky je možné nasadit kdekoli Service Fabric spuštění. Model prostředků představuje nejjednodušší způsob, jak popsání Service Fabricch aplikací. Hlavním fokusem je jednoduché nasazení a Správa kontejnerových služeb. Pokud se chcete dozvědět víc, přečtěte si [Úvod do modelu prostředků Service Fabric](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources).
 
 ### <a name="native-model"></a>Nativní model
-Model nativní aplikace poskytuje svoje aplikace s využitím úplného nízké úrovně přístupu do Service Fabric. Aplikace a služby jsou definovány jako registrovaných typů v souborech manifestu XML.
+Nativní aplikační model poskytuje vašim aplikacím úplný přístup na nízké úrovni k Service Fabric. Aplikace a služby jsou definovány jako registrované typy v souborech manifestu XML.
 
-Nativní model podporuje Reliable Services a Reliable Actors rozhraní, která poskytuje přístup k rozhraní API modulu runtime Service Fabric a rozhraní API v jazyce C# a Java pro správu clusteru. Nativní model také podporuje libovolný kontejnery a spustitelné soubory. Nativní model nepodporuje [sítě pro Service Fabric prostředí](/azure/service-fabric-mesh/service-fabric-mesh-overview).
+Nativní model podporuje rozhraní Reliable Services a Reliable Actors, která poskytují přístup k rozhraním API Service Fabric modulu runtime a rozhraním API pro správu C# clusteru v a Java. Nativní model podporuje také libovolné kontejnery a spustitelné soubory. Nativní model není podporován v [prostředí Service Fabric sítě](/azure/service-fabric-mesh/service-fabric-mesh-overview).
 
-**Reliable Services**: Rozhraní API pro vytváření bezstavových a stavových služeb. Stavové služby uložení jejich stavu v Reliable Collections jako slovník nebo fronty. Můžete také zařadit různé komunikační balíky, například webové rozhraní API nebo Windows Communication Foundation (WCF).
+**Reliable Services**: Rozhraní API pro sestavení bezstavových a stavových služeb. Stavové služby ukládají jejich stav do spolehlivých kolekcí, jako je slovník nebo fronta. Můžete také připojit různé komunikační zásobníky, například webové rozhraní API a Windows Communication Foundation (WCF).
 
-**Reliable Actors**: Rozhraní API pro vytváření objektů bezstavových a stavových prostřednictvím virtuálního objektu Actor programovací model. Tento model je užitečný v případě, že máte spoustu nezávislých jednotek výpočtu nebo stavu. Tento model používá založen na řadě vy model vlákna, takže je vhodné, aby kód, který volá navýšení kapacity na jiné objekty actor nebo služby, protože prvek "actor" jednotlivých nemůže zpracovat ostatní příchozí požadavky, dokud se nedokončí všechny odchozí požadavky.
+**Reliable Actors**: Rozhraní API pro sestavení bezstavových a stavových objektů prostřednictvím programovacího modelu Virtual actor. Tento model je užitečný v případě, že máte spoustu nezávislých jednotek výpočtu nebo stavu. Tento model používá model vláken založený na založení, takže je nejvhodnější vyhnout se kódu, který se volá na jiné objekty actor nebo Services, protože samostatný objekt actor nemůže zpracovat jiné příchozí požadavky, dokud nebudou dokončeny všechny jeho odchozí žádosti.
 
-Svoje stávající aplikace. můžete také spustit na platformě Service Fabric:
+Můžete také spouštět stávající aplikace na Service Fabric:
 
-**Kontejnery**:  Service Fabric podporuje nasazení kontejnerů Dockeru v Linuxu a Windows Server kontejnery ve Windows serveru 2016, společně s podporou pro režimu izolace Hyper-V. V Service Fabric [aplikační model](service-fabric-application-model.md), kontejner reprezentuje hostitele aplikace v několika službu jsou umístěny repliky. Service Fabric můžete spustit všechny kontejnery a scénář je podobný scénáři spustitelného souboru hosta kde balíček existující aplikaci uvnitř kontejneru. Kromě toho můžete [spuštění služeb Service Fabric v kontejnerech](service-fabric-services-inside-containers.md) také.
+**Kontejnery**:  Service Fabric podporuje nasazení kontejnerů Docker v kontejnerech se systémy Linux a Windows Server v systému Windows Server 2016 společně s podporou režimu izolace technologie Hyper-V. V [modelu aplikace](service-fabric-application-model.md)Service Fabric kontejner představuje hostitele aplikace, ve kterém jsou umístěny více replik služby. Service Fabric může spustit libovolné kontejnery a scénář je podobný scénáři hostující spustitelný soubor, kde zabalíte existující aplikaci do kontejneru. Kromě toho můžete také [spouštět Service Fabric služby uvnitř kontejnerů](service-fabric-services-inside-containers.md) .
 
-**Spustitelné soubory hosta**: Jakýkoli typ kódu, jako je Node.js, Java nebo C++ v Azure Service Fabric můžete spustit jako službu. Service Fabric odkazuje na tyto typy služeb jako hostující spustitelné soubory, které jsou považovány za bezstavové služby. Výhody ke spuštění spustitelného souboru v clusteru Service Fabric Host zahrnují vysokou dostupnost, monitorování stavu, Správa životního cyklu aplikací, s vysokou hustotou a možnosti rozpoznání.
+**Spustitelné soubory hosta**: Můžete spustit libovolný typ kódu, jako je Node. js, Python, Java nebo C++ v Azure Service Fabric jako služba. Service Fabric odkazuje na tyto typy služeb jako spustitelné soubory hosta, které jsou považovány za bezstavové služby. Výhodou spuštění hostovaného spustitelného souboru v clusteru Service Fabric zahrnuje vysokou dostupnost, monitorování stavu, správu životního cyklu aplikací, vysokou hustotu a zjistitelnost.
 
-Přečtěte si [vybrat programovací model pro vaši službu](service-fabric-choose-framework.md) najdete další informace.
+Další informace najdete v článku [Volba programovacího modelu pro vaši službu](service-fabric-choose-framework.md) .
 
 ### <a name="docker-compose"></a>Docker Compose 
-[Docker Compose](https://docs.docker.com/compose/) je součástí projektu Dockeru. Service Fabric poskytuje omezenou podporu pro [nasazení aplikací pomocí Docker Compose modelu](service-fabric-docker-compose.md).
+[Docker Compose](https://docs.docker.com/compose/) je součástí projektu Docker. Service Fabric poskytuje omezené podpory pro [nasazení aplikací pomocí modelu Docker Compose](service-fabric-docker-compose.md).
 
 ## <a name="environments"></a>Prostředí
 
-Service Fabric je technologie open source platforma, která na základě několika různými službami a produkty. Společnost Microsoft poskytuje následující možnosti:
+Service Fabric je open source technologie pro platformu, na které jsou založené různé služby a produkty. Společnost Microsoft poskytuje následující možnosti:
 
  - **Síť Azure Service Fabric**: Plně spravovaná služba pro spouštění aplikací Service Fabric v Microsoft Azure.
- - **Azure Service Fabric**: Nabídka clusteru Service Fabric hostované v Azure. Poskytuje integrace mezi službami Service Fabric a infrastrukturu Azure, spolu s upgradu a správy konfigurace clusterů Service Fabric.
- - **Service Fabric samostatné**: Instalace a konfigurace nástroje pro sadu [nasadit clustery Service Fabric kdekoli](/azure/service-fabric/service-fabric-deploy-anywhere) (v místním nebo jakýkoli jiný poskytovatel cloudu). Není spravuje Azure.
- - **Vývojový cluster Service Fabric**: Poskytuje místní vývojové prostředí na Windows, Linux nebo Mac pro vývoj aplikací Service Fabric.
+ - **Service Fabric Azure**: Nabídka clusteru hostovaného v Azure Service Fabric. Poskytuje integraci mezi Service Fabric a infrastrukturou Azure spolu se správou aktualizací a konfigurací Service Fabricch clusterů.
+ - **Service Fabric samostatný**: Sada nástrojů pro instalaci a konfiguraci pro [nasazení Service Fabricch clusterů kdekoli](/azure/service-fabric/service-fabric-deploy-anywhere) (místně nebo v jakémkoli poskytovateli cloudu). Nespravuje se v Azure.
+ - **Service Fabric vývojový cluster**: Poskytuje místní vývojové prostředí v systému Windows, Linux nebo Mac pro vývoj aplikací Service Fabric.
 
-## <a name="environment-framework-and-deployment-model-support-matrix"></a>Matice podpory prostředí, rozhraní a modelu nasazení
-Různá prostředí mají různé úrovně podpory platformy a modely nasazení. Následující tabulka popisuje podporované architektury a kombinace modelu nasazení.
+## <a name="environment-framework-and-deployment-model-support-matrix"></a>Matice podpory pro prostředí, architekturu a model nasazení
+Různá prostředí mají různé úrovně podpory pro architektury a modely nasazení. V následující tabulce jsou popsány podporované kombinace rozhraní a modelu nasazení.
 
 | Typ aplikace | Popisuje | Síť Azure Service Fabric | Clustery Azure Service Fabric (libovolný operační systém)| Místní cluster | Samostatný cluster |
 |---|---|---|---|---|---|
-| Aplikace Service Fabric sítě | Model prostředků (YAML a JSON) | Podporováno |Nepodporuje se | Windows – podporováno, Linux a Mac – není podporované | Windows – není podporované |
-|Nativní aplikace Service Fabric | Model nativní aplikace (XML) | Nepodporuje se| Podporováno|Podporováno|Windows – podporováno|
+| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | Podporováno |Nepodporuje se | Windows – podporováno, Linux a Mac – nepodporováno | Windows – nepodporováno |
+|Service Fabric nativních aplikací | Nativní aplikační model (XML) | Není podporováno| Podporováno|Podporováno|Windows – podporováno|
 
-Následující tabulka popisuje různé aplikačních modelů a nástrojů, která existuje pro ně pro Service Fabric.
+V následující tabulce jsou popsány různé modely aplikací a nástroje, které pro ně existují pro Service Fabric.
 
-| Typ aplikace | Popisuje | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
+| Typ aplikace | Popisuje | Visual Studio | Eclipse | SFCTL | AZ CLI | Prostředí PowerShell|
 |---|---|---|---|---|---|---|
-| Aplikace Service Fabric sítě | Model prostředků (YAML a JSON) | VS 2017 |Nepodporuje se |Nepodporuje se | Podporuje se – pouze prostředí sítě | Nepodporuje se|
-|Nativní aplikace Service Fabric | Model nativní aplikace (XML) | VS 2017 a VS 2015| Podporováno|Podporováno|Podporováno|Podporováno|
+| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | VS 2017 |Nepodporuje se |Nepodporuje se | Podporované – jenom pro prostředí sítě | Není podporováno|
+|Service Fabric nativních aplikací | Nativní aplikační model (XML) | VS 2017 a VS 2015| Podporováno|Podporováno|Podporováno|Podporováno|
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Další postup
-Další informace o službě Service Fabric:
+Další informace o Service Fabric:
 
 * [Přehled Service Fabric](service-fabric-overview.md)
 * [Proč při sestavování aplikací zvolit přístup založený na mikroslužbách?](service-fabric-overview-microservices.md)
@@ -183,4 +183,4 @@ Další informace o službě Service Fabric:
 
 Další informace o Service Fabric sítě:
 
-* [Přehled služby prostředků infrastruktury sítě](/azure/service-fabric-mesh/service-fabric-mesh-overview)
+* [Přehled Service Fabric sítě](/azure/service-fabric-mesh/service-fabric-mesh-overview)

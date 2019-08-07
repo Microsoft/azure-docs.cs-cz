@@ -1,5 +1,5 @@
 ---
-title: 'Propojení virtuální sítě k okruhu – ExpressRoute: Azure portal | Dokumentace Microsoftu'
+title: 'Propojení virtuální sítě s okruhem ExpressRoute: Azure Portal | Microsoft Docs'
 description: 'Připojení virtuální sítě k okruhu Azure ExpressRoute. Postupy: kroky.'
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 66c43556e698063b95ce1c3787458e40c9d71504
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1545e2e7eba23b0bedbfe297c292fc94e1659ae3
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60365505"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775288"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí portálu
 > [!div class="op_single_selector"]
@@ -70,7 +70,7 @@ Okruh ExpressRoute můžete sdílet napříč několika předplatnými. Následu
 
 - Každá z menších cloudy v rámci velkých cloudových se používá k reprezentování odběry, které patří k různým oblastem v rámci organizace.
 - Vlastní předplatné každé oddělení v rámci organizace můžete použít k nasazení svých služeb, ale můžou sdílet jeden okruh ExpressRoute pro připojení zpět k místní síti.
-- Jednoho oddělení (v tomto příkladu: IT) může vlastnit okruh ExpressRoute. Okruh ExpressRoute a povolení přidružené k okruhu, včetně předplatných přidružených k jiných tenantů Azure Active Directory a registrace smlouvy Enterprise, můžete použít jiných předplatných v rámci organizace.
+- Jedno oddělení (v tomto příkladu: Může to vlastnit okruh ExpressRoute. Okruh ExpressRoute a povolení přidružené k okruhu, včetně předplatných přidružených k jiných tenantů Azure Active Directory a registrace smlouvy Enterprise, můžete použít jiných předplatných v rámci organizace.
 
   > [!NOTE]
   > Poplatky za připojení a šířku pásma pro vyhrazeného okruhu uplatní se na vlastníka okruhu ExpressRoute. Všechny virtuální sítě sdílejí stejnou šířku pásma.
@@ -121,7 +121,7 @@ ID prostředku a autorizační klíč z vlastníka okruhu, musí uživatel okruh
 
    ![Základní informace o stránce](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. V **nastavení** stránky, vyberte **Brána virtuální sítě** a zkontrolujte **uplatnit autorizaci** zaškrtávací políčko.
-6. Zadejte **autorizační klíč** a **identifikátor URI okruhu partnerských uzlů** a zadejte název připojení. Klikněte na **OK**.
+6. Zadejte **autorizační klíč** a **identifikátor URI okruhu partnerských uzlů** a zadejte název připojení. Klikněte na **OK**. **Identifikátor URI partnerského okruhu** je ID prostředku okruhu ExpressRoute (který najdete v podokně nastavení vlastností okruhu ExpressRoute).
 
    ![Stránka Nastavení](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Zkontrolujte informace **Souhrn** stránky a klikněte na tlačítko **OK**.

@@ -1,100 +1,55 @@
 ---
-title: 'Vytvoření brány VPN založené na směrování: Azure portal | Dokumentace Microsoftu'
-description: Vytvoření trasové brány VPN pomocí webu Azure portal
+title: 'Vytvořte bránu sítě VPN založenou na trasách: Azure Portal | Microsoft Docs'
+description: Vytvoření VPN Gateway založeného na směrování pomocí Azure Portal
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 08/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: ddc42023bae3403e7778327a40316462c85222c0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2a04c0fa2d92514103377c2aef420290d1bdd057
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60390020"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781170"
 ---
-# <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Vytvoření trasové brány VPN pomocí webu Azure portal
+# <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Vytvoření brány sítě VPN založené na trasách pomocí Azure Portal
 
-Tento článek vám pomůže rychle vytvořit založené na směrování Azure VPN gateway pomocí webu Azure portal.  Brány VPN se používá při vytváření připojení VPN k místní síti. Bránu sítě VPN můžete použít také k propojení virtuálních sítí. 
+Tento článek vám pomůže rychle vytvořit bránu Azure VPN založenou na směrování pomocí Azure Portal.  Brána sítě VPN se používá při vytváření připojení VPN k místní síti. K připojení virtuální sítě můžete použít taky bránu VPN. 
 
-Kroky v tomto článku se vytvoří virtuální síť, podsíť, podsítě brány a bránu VPN založenou na směrování (brány virtuální sítě). Po dokončení vytvoření brány můžete pak vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="vnet"></a>Vytvoření virtuální sítě
 
-1. V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
-2. Klikněte na **Vytvořit prostředek**. Do pole **Hledat na Marketplace** zadejte text „Virtuální síť“. Ve vráceném seznamu vyhledejte položku **Virtuální síť** a kliknutím otevřete stránku **Virtuální síť**.
-3. U dolního okraje stránky virtuální síť v **vybrat model nasazení** seznamu, ověřte, že **Resource Manageru** vybraný z rozevíracího seznamu a potom klikněte na tlačítko **vytvořit**. Tím se otevře **vytvořit virtuální síť** stránky.
-4. Na stránce **Vytvořit virtuální síť** nakonfigurujte nastavení virtuální sítě. Po vyplnění polí se červený vykřičník změní na zelenou značku zaškrtnutí, pokud jsou znaky zadané do pole platné. Použijte následující hodnoty:
+[!INCLUDE [create-gateway](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
 
-   - **Název**: TestVNet1
-   - **Adresní prostor**: 10.1.0.0/16
-   - **Předplatné**: Ověřte, že v předplatném uvedeným je ten, který chcete použít. Předplatná můžete měnit prostřednictvím rozevíracího seznamu.
-   - **Skupina prostředků**: TestRG1
-   - **Umístění**: USA – východ
-   - **Podsíť**: Front-endu
-   - **Rozsah adres**: 10.1.0.0/24
+## <a name="gwsubnet"></a>Přidat podsíť brány
 
-   ![Stránka pro vytvoření virtuální sítě](./media/create-routebased-vpn-gateway-portal/create-virtual-network.png "Stránka pro vytvoření virtuální sítě")
-5. Po zadání hodnoty, vyberte **připnout na řídicí panel** snadno najít virtuální síť na řídicím panelu a potom klikněte na **vytvořit**. Po kliknutí na tlačítko **vytvořit**, se zobrazí na dlaždici na řídicím panelu, který zobrazuje postup vaší virtuální sítě. Obsah dlaždice se v průběhu vytváření sítě VNet mění.
+[!INCLUDE [gateway subnet](../../includes/vpn-gateway-add-gateway-subnet-portal-include.md)]
 
-## <a name="gwsubnet"></a>Přidání podsítě brány
+## <a name="gwvalues"></a>Konfigurace a vytvoření brány
 
-Podsíť brány obsahuje vyhrazené IP adresy, které používají služby brány virtuální sítě. Vytvořte podsíť brány.
+[!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
-1. Na portálu přejděte na virtuální síť, pro kterou chcete vytvořit bránu virtuální sítě.
-2. Na stránce vaší virtuální sítě klikněte na tlačítko **podsítě** rozbalte **ze sítě VNet1 - podsítě** stránky.
-3. Klikněte na tlačítko **+ podsíť brány** v horní části stránky otevřete **přidat podsíť** stránky.
+>[!NOTE]
+>SKU brány úrovně Basic nepodporuje ověřování IKEv2 nebo RADIUS. Pokud plánujete, že se klienti se systémem Mac připojí k vaší virtuální síti, nepoužívejte základní SKU.
 
-   ![Přidání podsítě brány](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "Přidání podsítě brány")
-4. **Název** pro podsítě se automaticky vyplní požadovaná hodnota "GatewaySubnet". Upravte automaticky vyplněné **rozsah adres** hodnoty tak, aby odpovídala následující hodnoty:
+## <a name="viewgw"></a>Zobrazit bránu VPN
 
-   **Rozsah adres (blok CIDR)** : 10.1.255.0/27
+1. Po vytvoření brány na portálu přejděte na VNet1. Brána sítě VPN se zobrazí na stránce Přehled jako připojené zařízení.
 
-   ![Přidání podsítě brány](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "Přidání podsítě brány")
-5. Chcete-li vytvořit podsíť brány, klikněte na tlačítko **OK** v dolní části stránky.
+   ![Připojená zařízení](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "Připojená zařízení")
 
-## <a name="gwvalues"></a>Konfigurace nastavení brány
+2. V seznamu zařízení klikněte na **VNet1GW** . zobrazí se další informace.
 
-1. Na levé straně stránky portálu klikněte na tlačítko **+ vytvořit prostředek** a typ "Brána virtuální sítě' do vyhledávacího pole, pak se stisknutím klávesy **Enter**. V části **Výsledky** vyhledejte položku **Brána virtuální sítě** a klikněte na ni.
-2. V dolní části stránky "Brána virtuální sítě", klikněte na položku **vytvořit** otevřít **vytvořit bránu virtuální sítě** stránky.
-3. Na stránce **Vytvořit bránu virtuální sítě** zadejte hodnoty pro příslušnou bránu virtuální sítě.
-
-   - **Název**: Vnet1GW
-   - **Typ brány**: Síť VPN 
-   - **Typ sítě VPN**: Trasové
-   - **SKLADOVÁ POLOŽKA**: VpnGw1
-   - **Umístění**: USA – východ
-   - **Virtuální síť**: Klikněte na tlačítko **virtuální sítě nebo zvolte virtuální síť** otevřít **zvolit virtuální síť** stránky. Vyberte **ze sítě VNet1**.
-   - **Veřejná IP adresa**: Toto nastavení určuje veřejnou IP adresu objektu, který se přidruží k bráně VPN. Veřejná IP adresa se dynamicky přiřadí k tomuto objektu při vytvoření brány VPN. Služba VPN Gateway aktuálně podporuje pouze *dynamické* přidělení veřejné IP adresy. To ale neznamená, že se IP adresa po přiřazení k vaší bráně VPN bude měnit. Veřejná IP adresa se změní pouze v případě odstranění a nového vytvoření brány. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
-
-     - Možnost **Vytvořit novou** nechte vybranou.
-     - Do textového pole zadejte **název** veřejné IP adresy. Pro toto cvičení použít **VNet1GWIP**.<br>
-
-     ![Konfigurace nastavení brány](./media/create-routebased-vpn-gateway-portal/gw.png "nakonfigurovat nastavení brány")
-
-## <a name="creategw"></a>Vytvoření brány VPN
-
-1. Ověřte nastavení na **vytvořit bránu virtuální sítě** stránky. V případě potřeby upravte hodnoty.
-2. Klikněte na tlačítko **vytvořit** v dolní části stránky.
-
-   Po kliknutí na **vytvořit**, nastavení se ověří a **nasazení brány virtuální sítě** zobrazí dlaždice na řídicím panelu. Brány VPN může trvat až 45 minut. K zobrazení stavu dokončení může být nutné obnovit stránku portálu.
-
-## <a name="viewgw"></a>Zobrazení brány sítě VPN
-
-1. Po vytvoření brány, přejděte na portálu do sítě VNet1. Brána VPN se zobrazí na stránce Přehled jako připojené zařízení.
-
-   ![Připojená zařízení](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "připojená zařízení")
-
-2. V seznamu zařízení, klikněte na tlačítko **VNet1GW** zobrazíte další informace.
-
-   ![Brána VPN zobrazení](./media/create-routebased-vpn-gateway-portal/view-gateway.png "zobrazení VPN gateway")
+   ![Zobrazit bránu VPN Gateway](./media/create-routebased-vpn-gateway-portal/view-gateway.png "Zobrazit bránu VPN Gateway")
 
 ## <a name="next-steps"></a>Další postup
 
-Po dokončení vytváření brány můžete vytvořit připojení mezi virtuální sítí a jiné virtuální síti. Nebo vytvořte připojení mezi virtuální sítí a místního umístění.
+Po vytvoření brány můžete vytvořit připojení mezi vaší virtuální sítí a jinou virtuální sítí. Nebo vytvořte připojení mezi vaší virtuální sítí a místním umístěním.
 
 > [!div class="nextstepaction"]
-> [Vytvoření připojení site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md)<br><br>
-> [Vytvoření připojení point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md)<br><br>
+> [Vytvoření připojení typu Site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md)<br><br>
+> [Vytvoření připojení typu Point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md)<br><br>
 > [Vytvoření připojení k jiné virtuální síti](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)

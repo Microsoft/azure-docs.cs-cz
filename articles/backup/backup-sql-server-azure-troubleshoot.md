@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 849065460acda36426f8a594a984ad1cc8590c34
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 323470adfe56ee20fe0fb64aeba38b6af4330351
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688819"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827595"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -118,7 +118,20 @@ Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním po�
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Záměr automatické ochrany byl buď odebrán, nebo již není platný. | Pokud povolíte automatickou ochranu na instanci SQL Server, nakonfigurujte úlohy **zálohování** spuštěné pro všechny databáze v této instanci. Pokud při spuštění úloh zakážete automatickou ochranu, **probíhající úlohy se** zruší s tímto kódem chyby. | Znovu povolte automatickou ochranu, aby bylo možné lépe chránit všechny zbývající databáze. |
+| Záměr automatické ochrany byl buď odebrán, nebo již není platný. | Pokud povolíte automatickou ochranu na instanci SQL Server, nakonfigurujte úlohy **zálohování** spuštěné pro všechny databáze v této instanci. Pokud při spuštění úloh zakážete automatickou ochranu, probíhající úlohy se zruší s tímto kódem chyby. | Znovu povolte automatickou ochranu, aby bylo možné lépe chránit všechny zbývající databáze. |
+
+### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitReached
+
+| Chybová zpráva | Možné příčiny | Doporučená akce |
+|---|---|---|
+Operace je blokovaná, protože jste dosáhli limitu počtu operací povolených během 24 hodin. | Pokud jste dosáhli maximálního povoleného limitu operace v rozmezí 24 hodin, bude tato chyba. <br> Příklad: Pokud jste dosáhli limitu pro počet úloh konfigurace zálohování, které se můžou aktivovat za den, a pokusíte se nakonfigurovat zálohování pro novou položku, zobrazí se tato chyba. | Obvykle se tento problém vyřeší opakováním operace po 24 hodinách. Pokud se ale problém nevyřeší, můžete požádat o pomoc podporu Microsoftu.
+
+### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
+
+| Chybová zpráva | Možné příčiny | Doporučená akce |
+|---|---|---|
+Operace je zablokovaná, protože trezor dosáhl maximálního limitu pro tyto operace povolené v rozmezí 24 hodin. | Pokud jste dosáhli maximálního povoleného limitu operace v rozmezí 24 hodin, bude tato chyba. Tato chyba se obvykle dodává v případě operací v rámci škálování, jako je například změna zásad nebo Automatická ochrana. Na rozdíl od v případě CloudDosAbsoluteLimitReached není možné tento stav vyřešit, ale ve skutečnosti Azure Backup služba bude operace opakovat interně pro všechny příslušné položky.<br> Příklad: Pokud máte k zásadám chráněný velký počet zdrojů dat a pokusíte se ji změnit, spustí se pro každou chráněnou položku konfigurace úloh ochrany a někdy se může vysáhnout maximální povolený limit pro tyto operace za den.| Služba Azure Backup bude tuto operaci automaticky opakovat po 24 hodinách. 
+
 
 ## <a name="re-registration-failures"></a>Selhání opětovné registrace
 

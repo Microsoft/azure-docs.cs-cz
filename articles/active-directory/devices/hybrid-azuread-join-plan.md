@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee3309bdd3629057d174866dde58ffd95e9e5ca8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562141"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779460"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -111,12 +111,18 @@ Tyto scénáře nevyžadují konfiguraci federačního serveru pro ověřování
 
 ### <a name="federated-environment"></a>Federované prostředí
 
-Federované prostředí by mělo mít zprostředkovatele identity, který podporuje následující požadavky:
+Federované prostředí by mělo mít poskytovatele identity, který podporuje následující požadavky. Pokud máte federované prostředí pomocí Active Directory Federation Services (AD FS) (AD FS), jsou již podporovány níže uvedené požadavky.
 
-- **Protokol WS-Trust:** Tento protokol je nutný k ověření současných zařízení s Windows připojených k hybridní službě Azure AD pomocí Azure AD.
 - **WIAORMULTIAUTHN deklarace identity:** Tato deklarace identity se vyžaduje k tomu, aby se pro zařízení se systémem Windows na nižší úrovni mohla připojit hybridní služba Azure AD.
+- **Protokol WS-Trust:** Tento protokol je nutný k ověření současných zařízení s Windows připojených k hybridní službě Azure AD pomocí Azure AD. Pokud používáte AD FS, je nutné povolit následující koncové body WS-Trust:`/adfs/services/trust/2005/windowstransport`  
+`/adfs/services/trust/13/windowstransport`  
+  `/adfs/services/trust/2005/usernamemixed` 
+  `/adfs/services/trust/13/usernamemixed`
+  `/adfs/services/trust/2005/certificatemixed` 
+  `/adfs/services/trust/13/certificatemixed` 
 
-Pokud máte federované prostředí pomocí Active Directory Federation Services (AD FS) (AD FS), jsou výše uvedené požadavky již podporovány.
+> [!WARNING] 
+> **AD FS/Services/Trust/2005/windowstransport** , **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému WIndows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části**koncové body** **služby** > můžete zjistit, jaké koncové body jsou povolené.
 
 > [!NOTE]
 > Azure AD nepodporuje čipové karty ani certifikáty ve spravovaných doménách.
@@ -130,7 +136,7 @@ V závislosti na scénáři, který odpovídá vaší infrastruktuře identity, 
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Kontrola místní podpory služby AD hlavního názvu uživatele (UPN) pro připojení k hybridní službě Azure AD
 
-Někdy se může stát, že místní hlavní názvy služby AD UPN se liší od vašich místních názvů UPN služby Azure AD. V takových případech služba Windows 10 Hybrid Azure AD JOIN nabízí omezené podpory místních UPN služby AD na základě [metody ověřování](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), typu domény a verze Windows 10. Existují dva typy místních UPN služby AD, které můžou existovat ve vašem prostředí:
+Někdy se může stát, že místní hlavní názvy služby AD UPN se liší od vašich místních názvů UPN služby Azure AD. V takových případech služba Windows 10 Hybrid Azure AD JOIN nabízí omezené podpory místních UPN služby AD na základě [metody ověřování](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), typu domény a verze Windows 10. Existují dva typy místních UPN služby AD, které můžou existovat ve vašem prostředí:
 
 - Směrovatelný hlavní název uživatele: Směrovatelný hlavní název uživatele má platnou ověřenou doménu, která je zaregistrovaná u doménového registrátora. Pokud je například contoso.com primární doménou v Azure AD, contoso.org je primární doména v místní službě AD vlastněná společností Contoso a [ověřená v Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain) .
 - Hlavní název uživatele (UPN), který není směrovatelný: Hlavní název uživatele (UPN), který není směrovatelný, nemá ověřenou doménu. Dá se použít jenom v privátní síti vaší organizace. Pokud je například contoso.com primární doménou v Azure AD, contoso. Local je primární doména v místní službě AD, ale nejedná se o ověřitelných doménách v Internetu a používá se jenom v síti Contoso.

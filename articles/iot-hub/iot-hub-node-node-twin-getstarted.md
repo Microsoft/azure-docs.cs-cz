@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: elioda
-ms.openlocfilehash: eb8b7c62e765ab233b50310dca9c21e9728ed56a
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: edbeffebd1f4ee41d8a2bdaddcdc7d84cbe1affe
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668004"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780937"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Začínáme s nevlákenou zařízení (Node. js)
 
@@ -38,6 +38,8 @@ K dokončení tohoto kurzu potřebujete následující:
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrace nového zařízení ve službě IoT Hub
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
@@ -128,7 +130,7 @@ V této části vytvoříte konzolovou aplikaci Node. js, která přidá metadat
 
     Předchozí kód spustí dva dotazy: první vybere jenom zařízení, která se nacházejí ve složce **Redmond43** , a druhá ho doplní a vybere jenom zařízení, která jsou taky připojená přes mobilní síť.
 
-    Předchozí kód při vytváření objektu **dotazu** určuje maximální počet vrácených dokumentů. Objekt **dotazu** obsahuje vlastnost **hasMoreResults** Boolean, kterou můžete použít k vícenásobnému vyvolání metod **nextAsTwin** pro načtení všech výsledků. K dispozici **je metoda** , která je k dispozici pro výsledky, které nejsou nevlákenné zařízení, například výsledky agregačních dotazů.
+    Předchozí kód při vytváření objektu **dotazu** určuje maximální počet vrácených dokumentů. Objekt **dotazu** obsahuje vlastnost **hasMoreResults** Boolean, kterou můžete použít k vícenásobnému vyvolání metod **nextAsTwin** pro načtení všech výsledků. K dispozici je metoda, která je k dispozici pro výsledky, které nejsou nevlákenné zařízení, například výsledky agregačních dotazů.
 
 6. Spusťte aplikaci pomocí:
 
@@ -220,7 +222,7 @@ V této části vytvoříte konzolovou aplikaci Node. js, která se připojí k 
 
     ![Zobrazit myDeviceId ve výsledcích dotazu](media/iot-hub-node-node-twin-getstarted/service2.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Metadata zařízení jste přidali jako značky z back-endové aplikace a zapsali jste aplikaci simulovaného zařízení, která oznamuje informace o připojení zařízení v zařízení. Zjistili jste také, jak zadat dotaz na tyto informace pomocí dotazovacího jazyka IoT Hub, jako je třeba SQL.
 

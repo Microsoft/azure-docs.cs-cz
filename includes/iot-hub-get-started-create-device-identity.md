@@ -8,38 +8,32 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: b2bce9788006a564def9bd8c1375a85dc4184b67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e919f22d5dd7975f055f262ec9ba69230aebd17
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66814801"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780827"
 ---
-## <a name="create-a-device-identity"></a>Vytvoření identity zařízení
+V této části pomocí Azure CLI vytvoříte identitu zařízení pro tento článek. V ID zařízení se rozlišují malá a velká písmena.
 
-V této části použijete rozhraní příkazového řádku Azure k vytvoření identity zařízení pro účely tohoto kurzu. Rozhraní příkazového řádku Azure je předinstalován v [Azure Cloud Shell](~/articles/cloud-shell/overview.md), nebo můžete [nainstalovat Azure CLI místně](/cli/azure/install-azure-cli). V ID zařízení se rozlišují malá a velká písmena.
+1. Otevřete službu [Azure Cloud Shell](https://shell.azure.com/).
 
-1. Spusťte následující příkaz prostředí příkazového řádku, kde jsou k instalaci rozšíření IoT pomocí Azure CLI:
+1. V Azure Cloud Shell spusťte následující příkaz, který nainstaluje Microsoft Azure IoT rozšíření pro Azure CLI:
 
-    ```cmd/sh
+    ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
     ```
 
-1. Pokud používáte Azure CLI místně, použijte následující příkaz pro přihlášení ke svému účtu Azure (Pokud používáte Cloud Shell, jste přihlášení automaticky a není nutné ke spuštění tohoto příkazu):
+2. Vytvořte novou identitu zařízení s názvem `myDeviceId` a načtěte připojovací řetězec zařízení pomocí těchto příkazů:
 
-    ```cmd/sh
-    az login
-    ```
-
-1. Nakonec vytvořte novou identitu zařízení volá `myDeviceId` a načíst připojovací řetězec zařízení pomocí následujících příkazů:
-
-    ```cmd/sh
+    ```azurecli-interactive
     az iot hub device-identity create --device-id myDeviceId --hub-name {Your IoT Hub name}
     az iot hub device-identity show-connection-string --device-id myDeviceId --hub-name {Your IoT Hub name} -o table
     ```
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-Poznamenejte si připojovací řetězec zařízení z výsledku. Tento připojovací řetězec zařízení používá aplikace pro zařízení pro připojení ke službě IoT Hub jako zařízení.
+Poznamenejte si připojovací řetězec zařízení z výsledku. V aplikaci pro zařízení se používá připojovací řetězec zařízení pro připojení k vašemu IoT Hub jako zařízení.
 
 <!-- images and links -->

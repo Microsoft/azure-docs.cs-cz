@@ -1,6 +1,6 @@
 ---
-title: Azure konzoly sériového portu pro Windows | Dokumentace Microsoftu
-description: Obousměrné sériové konzoly pro virtuální počítače Azure a Škálovací sady virtuálních počítačů.
+title: Sériová konzola Azure pro Windows | Microsoft Docs
+description: Obousměrná sériová Konzola pro Azure Virtual Machines a Virtual Machine Scale Sets.
 services: virtual-machines-windows
 documentationcenter: ''
 author: asinn826
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: e76fcd937f85ce3b1c156cf2f3dabb8ca95b9b68
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a6e303c26278eff290a2d4efb6f96e9962cf2f87
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710555"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775363"
 ---
-# <a name="azure-serial-console-for-windows"></a>Azure konzoly sériového portu pro Windows
+# <a name="azure-serial-console-for-windows"></a>Sériová konzola Azure pro Windows
 
-Konzole sériového portu na webu Azure Portal poskytuje přístup ke konzole založený na textu pro Windows virtual machines (VM) a instance virtuálního počítače škálovací sadě. Toto sériové připojení připojí k COM1 sériového portu virtuálního počítače nebo instanci virtuálního počítače škálovací sady, díky přístupu k němu nezávisle na stav sítě nebo operačního systému. Konzole sériového portu je přístupný pouze pomocí webu Azure portal a je povolený jenom pro uživatele, kteří mají roli přístup Přispěvatel nebo vyšší do škálovací sady virtuálního počítače nebo virtuálního počítače.
+Konzola sériového portu v Azure Portal poskytuje přístup k textové konzole pro virtuální počítače s Windows a instance sady škálování virtuálních počítačů. Toto sériové připojení se připojuje k sériovému portu COM1 virtuálního počítače nebo instance sady škálování virtuálních počítačů a poskytuje přístup k němu nezávisle na stavu sítě nebo operačního systému. Ke konzole sériového přístupu se dá přistupovat jenom pomocí Azure Portal a je povolená jenom pro uživatele, kteří mají roli přístupu přispěvatel nebo vyšší, k virtuálnímu počítači nebo sadě škálování virtuálních počítačů.
 
-Konzola sériového portu funguje stejným způsobem pro virtuální počítače a škálovací sady virtuálních počítačů instancí. V tomto dokumentu bude všech zmínky k virtuálním počítačům implicitně obsahovat instancí škálovací sady virtuálních počítačů, pokud není uvedeno jinak.
+Sériová konzola funguje stejným způsobem pro virtuální počítače a instance sady škálování virtuálních počítačů. V tomto dokumentu budou všechny zmínky k virtuálním počítačům implicitně zahrnovat instance sady škálování virtuálních počítačů, pokud není uvedeno jinak.
 
-Konzola sériového portu dokumentaci pro Linuxové virtuální počítače a škálovací sady virtuálních počítačů najdete v tématu [konzoly sériového portu Azure pro Linux](serial-console-linux.md).
+Dokumentaci ke službě sériového portu pro virtuální počítače se systémem Linux a sadu škálování virtuálního počítače najdete v tématu věnovaném [sériové konzole Azure pro Linux](serial-console-linux.md).
 
 > [!NOTE]
-> Konzole sériového portu je obecně dostupná v globálními oblastmi Azure. Zatím není k dispozici v Azure government nebo Azure China cloudy.
+> Konzola sériového portu je všeobecně dostupná v globálních oblastech Azure. Zatím není k dispozici v Azure government nebo Azure China cloudy.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Váš virtuální počítač nebo virtuální počítač instanci škálovací sady používaly model nasazení správy prostředků. Klasická nasazení nejsou podporovány.
+* Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí používat model nasazení správy prostředků. Klasická nasazení nejsou podporovány.
 
-- Musí mít váš účet, který používá konzoly sériového portu [role Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště
+- Váš účet, který používá sériová konzola, musí mít [roli Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pro virtuální počítač a účet úložiště [diagnostiky spouštění](boot-diagnostics.md) .
 
-- Váš virtuální počítač nebo virtuální počítač instance škálovací sadě musí mít uživatel založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů. Vyberte **resetovat heslo** z **podpora a řešení potíží** oddílu.
+- Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí mít uživatele založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů. Vyberte **resetovat heslo** z **podpora a řešení potíží** oddílu.
 
 * Virtuální počítač, ve kterém přistupujete konzoly sériového portu musí mít [Diagnostika spouštění](boot-diagnostics.md) povolena.
 
     ![Nastavení diagnostiky spouštění](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
 ## <a name="get-started-with-the-serial-console"></a>Začínáme s konzole sériového portu
-Konzole sériového portu pro virtuální počítače a škálovací sady virtuálních počítačů je přístupný pouze prostřednictvím webu Azure portal:
+Konzola sériového portu pro virtuální počítače a sadu škálování virtuálního počítače je dostupná jenom prostřednictvím Azure Portal:
 
-### <a name="serial-console-for-virtual-machines"></a>Konzola sériového portu pro virtuální počítače
-Konzola sériového portu pro virtuální počítače je stejně jednoduché jako při kliknutí na **konzoly sériového portu** v rámci **podpora a řešení potíží** části webu Azure Portal.
+### <a name="serial-console-for-virtual-machines"></a>Sériová Konzola pro Virtual Machines
+Sériová Konzola pro virtuální počítače je stejně jednoduchá jako při kliknutí na **sériová konzola** v části **Podpora a řešení potíží** v Azure Portal.
   1. Otevřete web [Azure Portal](https://portal.azure.com).
 
-  1. Přejděte do **všechny prostředky** a vyberte virtuální počítač. Otevře se stránka s přehledem pro virtuální počítač.
+  1. Přejděte na **všechny prostředky** a vyberte virtuální počítač. Otevře se stránka s přehledem pro virtuální počítač.
 
   1. Přejděte dolů k položce **podpora a řešení potíží** a vyberte **konzoly sériového portu**. Nové podokno v konzole sériového portu se otevře a aktivuje připojení.
 
-### <a name="serial-console-for-virtual-machine-scale-sets"></a>Konzola sériového portu pro Škálovací sady virtuálních počítačů
-Konzola sériového portu je k dispozici na základě jednotlivé instance pro škálovací sady virtuálních počítačů. Budete muset přejít na jednotlivé instance škálovací sady virtuálních počítačů, než **konzoly sériového portu** tlačítko. Pokud vaše škálovací sada virtuálních počítačů nemá povolenou diagnostikou spuštění, zajistěte, aby že aktualizace vašeho modelu škálovací sady virtuálního počítače povolte diagnostiku spouštění, a pak upgradovat všechny instance na nový model pro přístup ke konzole sériového portu.
+### <a name="serial-console-for-virtual-machine-scale-sets"></a>Sériová Konzola pro Virtual Machine Scale Sets
+Sériová konzola je k dispozici na základě jednotlivých instancí pro sady škálování virtuálních počítačů. Před zobrazením tlačítka **sériová konzola** budete muset přejít na jednotlivé instance sady škálování virtuálního počítače. Pokud vaše sada škálování virtuálního počítače nemá zapnutou diagnostiku spouštění, ujistěte se, že jste aktualizovali model sady škálování virtuálních počítačů, aby se aktivovala spouštění diagnostiky, a pak upgradovat všechny instance na nový model, aby bylo možné získat přístup ke konzole sériového portu.
   1. Otevřete web [Azure Portal](https://portal.azure.com).
 
-  1. Přejděte do **všechny prostředky** a vyberte Škálovací sady virtuálních počítačů. Stránka s přehledem pro škálování virtuálního počítače nastavte otevře.
+  1. Přejděte na **všechny prostředky** a vyberte sadu škálování virtuálního počítače. Otevře se stránka s přehledem pro sadu škálování virtuálního počítače.
 
-  1. Přejděte na **instancí**
+  1. Přejít k **instancím**
 
-  1. Vyberte instanci virtuálního počítače škálovací sady
+  1. Vyberte instanci sady škálování virtuálního počítače.
 
-  1. Z **podpora a řešení potíží** vyberte **konzoly sériového portu**. Nové podokno v konzole sériového portu se otevře a aktivuje připojení.
+  1. V části **Podpora a řešení potíží** vyberte **sériová konzola**. Nové podokno v konzole sériového portu se otevře a aktivuje připojení.
 
-## <a name="enable-serial-console-functionality"></a>Povolení funkce konzoly sériového portu
+## <a name="enable-serial-console-functionality"></a>Povolit funkci sériové konzoly
 
 > [!NOTE]
-> Pokud se nezobrazují v konzole sériového portu nic, ujistěte se, že Diagnostika spouštění je zapnutá ve škálovací sadě virtuálního počítače nebo virtuálního počítače.
+> Pokud nevidíte cokoli v konzole sériového portu, ujistěte se, že je na vašem VIRTUÁLNÍm počítači nebo v sadě škálování virtuálního počítače povolená Diagnostika spouštění.
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>Povolit konzole sériového portu v obrázcích vlastní nebo starší
 Novější Image Windows serveru v Azure mají [Speciální konzoly pro správu](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) ve výchozím nastavení povolená. SAC je podporováno ve verzích Windows na serveru ale není k dispozici ve verzích klienta (například Windows 10, Windows 8 nebo Windows 7).
 
-Pro starší Image Windows serveru (vytvořeny před únorem 2018) můžete automaticky povolí konzole sériového portu pomocí webu Azure portal spusťte příkaz funkce. Na webu Azure Portal, vyberte **spusťte příkaz**, vyberte příkaz s názvem **EnableEMS** ze seznamu.
+Pro starší Image Windows serveru (vytvořeny před únorem 2018) můžete automaticky povolí konzole sériového portu pomocí webu Azure portal spusťte příkaz funkce. V Azure Portal vyberte **Spustit příkaz**a potom ze seznamu vyberte příkaz s názvem **EnableEMS** .
 
 ![Spuštění seznamu příkazů](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
 
-Můžete také povolit ručně konzole sériového portu pro Windows virtuální počítače nebo virtuální počítače škálovací sady vytvořené před únorem 2018, postupujte takto:
+Pokud chcete ručně povolit sériovou konzolu pro virtuální počítače s Windows nebo sadu škálování virtuálního počítače vytvořené před únorem 2018, použijte následující postup:
 
 1. Připojení k virtuálnímu počítači Windows pomocí vzdálené plochy
 1. Z příkazového řádku pro správu, spusťte následující příkazy:
@@ -106,7 +106,7 @@ Pokud [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) není 
 
 Pokud je potřeba povolit Windows spouštěcí zavaděč výzvy k zobrazení v konzole sériového portu, můžete přidat následující další možnosti do konfiguračních dat spouštění. Další informace najdete v tématu [nástroje bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set).
 
-1. Připojte se k virtuálnímu počítači s Windows nebo instance virtuálního počítače škálovací sady pomocí vzdálené plochy.
+1. Připojte se k VIRTUÁLNÍmu počítači s Windows nebo k instanci sady škálování virtuálního počítače pomocí vzdálené plochy.
 
 1. Z příkazového řádku pro správu, spusťte následující příkazy:
    - `bcdedit /set {bootmgr} displaybootmenu yes`
@@ -118,9 +118,9 @@ Pokud je potřeba povolit Windows spouštěcí zavaděč výzvy k zobrazení v k
 > [!NOTE]
 > Časový limit, který jste nastavili pro spouštěcí nabídky Správce pro zobrazení bude mít vliv na váš čas spuštění operačního systému. Pokud se domníváte, že hodnota 10 sekund časového limitu je příliš krátký nebo příliš dlouhý, nastavte ji na jinou hodnotu.
 
-## <a name="use-serial-console"></a>Použití konzoly sériového portu
+## <a name="use-serial-console"></a>Použití sériové konzoly
 
-### <a name="use-cmd-or-powershell-in-serial-console"></a>Pomocí příkazového řádku nebo Powershellu v konzole sériového portu
+### <a name="use-cmd-or-powershell-in-serial-console"></a>Použití CMD nebo PowerShellu v sériové konzole
 
 1. Připojte se ke konzole sériového portu. Pokud se úspěšně připojíte, je na řádku **SAC >** :
 
@@ -128,7 +128,7 @@ Pokud je potřeba povolit Windows spouštěcí zavaděč výzvy k zobrazení v k
 
 1.  Zadejte `cmd` k vytvoření kanálu, který má CMD instance.
 
-1.  Zadejte `ch -si 1` přejděte do kanálu, na kterém běží instance příkazového řádku.
+1.  Zadejte `ch -si 1` nebo stiskněte `<esc>+<tab>` klávesovou zkratku pro přepnutí na kanál, na kterém je spuštěná instance cmd.
 
 1.  Stisknutím klávesy **Enter**a pak zadejte přihlašovací údaje s oprávněními správce.
 
@@ -139,7 +139,7 @@ Pokud je potřeba povolit Windows spouštěcí zavaděč výzvy k zobrazení v k
     ![Otevřené instance prostředí PowerShell](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
 ### <a name="use-the-serial-console-for-nmi-calls"></a>Použít pro volání NMI konzole sériového portu
-Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignorovat softwaru na virtuálním počítači. V minulosti NMIs se používají ke sledování hardwarových problémů v systémech, které vyžaduje konkrétní odezvy. Dnes, programátoři a správce systému často používají NMI jako mechanismus pro ladění nebo řešení potíží s systémy, které nereagují.
+Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignorovat softwaru na virtuálním počítači. V minulosti NMIs se používají ke sledování hardwarových problémů v systémech, které vyžaduje konkrétní odezvy. V současné době se programátoři a správci systému často používají NMI jako mechanismus pro ladění nebo odstraňování potíží se systémy, které nereagují.
 
 Konzole sériového portu je možné odeslat NMI na virtuálním počítači Azure s využitím klávesnice ikonu na panelu příkazů. Jakmile se doručí NMI, konfigurace virtuálního počítače bude řídit, jak systém reaguje při. Windows by šlo o chybách a vytvořte soubor s výpisem paměti při příjmu NMI.
 
@@ -148,31 +148,31 @@ Konzole sériového portu je možné odeslat NMI na virtuálním počítači Azu
 Informace o konfiguraci Windows vytvořte soubor s výpisem paměti při selhání při přijetí NMI najdete v tématu [jak vygenerovat soubor s výpisem paměti při selhání s použitím NMI](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file).
 
 ### <a name="use-function-keys-in-serial-console"></a>Použít funkční klávesy v konzole sériového portu
-Funkční klávesy jsou povolené pro využití konzoly sériového portu ve virtuálních počítačích Windows. F8 v rozevírací nabídce konzoly sériového portu zvyšuje pohodlí snadné zadávání nabídky Rozšířené nastavení spouštění, ale je kompatibilní se všemi klíči jiné funkce konzoly sériového portu. Budete muset stiskněte **Fn** + **F1** (nebo F2 a F3, atd.) na klávesnici, v závislosti na počítači konzoly sériového portu z používáte.
+Funkční klávesy jsou povolené pro využití konzoly sériového portu ve virtuálních počítačích Windows. F8 v rozevírací nabídce konzoly sériového portu zvyšuje pohodlí snadné zadávání nabídky Rozšířené nastavení spouštění, ale je kompatibilní se všemi klíči jiné funkce konzoly sériového portu. Na klávesnici možná budete muset stisknout klávesu **FN** + **F1** (nebo F2, F3 atd.) v závislosti na počítači, ze kterého používáte sériová konzola.
 
 ### <a name="use-wsl-in-serial-console"></a>Použití WSL v konzole sériového portu
 Subsystém Windows pro Linux (WSL) bylo povoleno pro Windows Server 2019 nebo novější, takže je také možné povolit WSL pro použití v rámci konzoly sériového portu, pokud používáte systém Windows Server 2019 nebo novější. To může být výhodné pro uživatele, kteří mají také znalost Linuxové příkazy. Pokyny k povolení WSL pro systém Windows Server najdete v tématu [Průvodce instalací](https://docs.microsoft.com/windows/wsl/install-on-server).
 
-### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>Restartování vaší Windows virtuálního počítače nebo instanci počítače škálovací sady v rámci konzoly sériového portu
-Restartování v rámci konzoly sériového portu můžete zahájit tak, že přejdete na tlačítku napájení a kliknutím na "Restartování virtuálního počítače". Tím zahájíte restartování virtuálního počítače a zobrazí se oznámení na webu Azure portal o restartování.
+### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>Restartování instance virtuálního počítače s Windows nebo virtuálního počítače v rámci sériové konzoly
+Restartování v rámci konzoly sériového portu můžete iniciovat tak, že přejdete na tlačítko napájení a kliknete na restartovat virtuální počítač. Tím se iniciuje restartování virtuálního počítače a v Azure Portal se zobrazí oznámení týkající se restartování.
 
-To je užitečné v situacích, kde můžete chtít přístup k spouštěcí nabídky, aniž byste museli opustit prostředí konzoly sériového portu.
+To je užitečné v situacích, kdy budete chtít přistupovat ke spouštěcí nabídce, aniž byste museli opustit prostředí sériové konzoly.
 
-![Restartování konzoly sériového portu Windows](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-windows.gif)
+![Restart Windows sériové konzoly](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-windows.gif)
 
 ## <a name="disable-serial-console"></a>Zakázat konzoly sériového portu
 Všechna předplatná mají ve výchozím přístupem ke konzole sériového portu pro všechny virtuální počítače. Můžete zakázat konzole sériového portu na úrovni předplatného nebo na úrovni virtuálního počítače.
 
-### <a name="vmvirtual-machine-scale-set-level-disable"></a>Zakázat úrovni sady škálování virtuálního počítače nebo virtuální počítač
-Konzole sériového portu je možné zakázat pro konkrétní virtuální počítač nebo virtuální počítač škálovací sady s tím, že zakážete nastavení diagnostiky spouštění. Vypnutí diagnostiky spouštění na webu Azure Portal se zakázat konzole sériového portu pro virtuální počítač nebo škálovací sady virtuálních počítačů. Pokud používáte konzoly sériového portu na škálovací sadu virtuálních počítačů, zajistěte, aby že vaše instance škálovací sady virtuálních počítačů upgradujete na nejnovější model.
+### <a name="vmvirtual-machine-scale-set-level-disable"></a>Virtuální počítač/sada škálování virtuálního počítače – zakázat na úrovni sady
+Sériová konzola se dá zakázat pro konkrétní virtuální počítač nebo sadu škálování virtuálního počítače zakázáním nastavení diagnostiky spouštění. Vypnutím diagnostiky spouštění z Azure Portal zakážete sériovou konzoli pro virtuální počítač nebo sadu škálování virtuálního počítače. Pokud v sadě škálování virtuálního počítače používáte sériovou konzolu, ujistěte se, že upgradujete instance sady škálování virtuálních počítačů na nejnovější model.
 
 > [!NOTE]
 > K povolení nebo zakázání konzole sériového portu k předplatnému, musíte mít oprávnění k zápisu do předplatného. Tato oprávnění patří, ale nejsou omezeny rolí správce nebo vlastníka. Vlastní role můžete také mít oprávnění k zápisu.
 
 ### <a name="subscription-level-disable"></a>Zakázat úroveň předplatného
-Konzole sériového portu se dají zakázat pro celé předplatné prostřednictvím [volání rozhraní API REST zakázat konzoly](/rest/api/serialconsole/console/disableconsole). Tato akce vyžaduje přístup úrovně Přispěvatel nebo vyšší k předplatnému. Můžete použít **vyzkoušet** funkce, které jsou k dispozici na této stránce dokumentace k rozhraní API zakázání a povolení konzole sériového portu pro odběr. Zadejte ID svého předplatného pro **subscriptionId**, zadejte "Výchozí" **výchozí**a pak vyberte **spustit**. Příkazy Azure CLI ještě nejsou k dispozici.
+Konzole sériového portu se dají zakázat pro celé předplatné prostřednictvím [volání rozhraní API REST zakázat konzoly](/rest/api/serialconsole/console/disableconsole). Tato akce vyžaduje pro předplatné přístup na úrovni přispěvatele nebo vyšší. Můžete použít **vyzkoušet** funkce, které jsou k dispozici na této stránce dokumentace k rozhraní API zakázání a povolení konzole sériového portu pro odběr. Zadejte ID svého předplatného pro **subscriptionId**, zadejte "Výchozí" **výchozí**a pak vyberte **spustit**. Příkazy Azure CLI ještě nejsou k dispozici.
 
-Chcete-li znovu povolit konzoly sériového portu pro předplatné, použijte [volání rozhraní API REST povolit konzoly](/rest/api/serialconsole/console/enableconsole).
+Pokud chcete znovu povolit sériovou konzolu pro předplatné, použijte [REST API volání Enable konzoly](/rest/api/serialconsole/console/enableconsole).
 
 ![Vyzkoušet rozhraní REST API](../media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
@@ -239,12 +239,12 @@ Scénář          | Akce v konzole sériového portu
 Pravidla brány firewall na nesprávný | Přístup k sériové konzoly a opravte Windows pravidla brány firewall.
 Poškození systému souborů a vrácení | Přístup ke konzole sériového portu a proveďte obnovení ze systému souborů.
 Problémy s konfigurací protokolu RDP | Přístup ke konzole sériového portu a změnit nastavení. Další informace najdete v tématu [RDP dokumentaci](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
-Uzamknutí sítě v systému | Na webu Azure Portal ke správě systému přístup ke konzole sériového portu. Některé příkazy sítě jsou uvedeny v [příkazy Windows: Příkaz CMD a prostředí PowerShell](serial-console-cmd-ps-commands.md).
+Uzamknutí sítě v systému | Na webu Azure Portal ke správě systému přístup ke konzole sériového portu. Některé síťové příkazy jsou uvedené v [příkazech Windows: CMD a PowerShell](serial-console-cmd-ps-commands.md).
 Interakce s zaváděcího programu pro spouštění | Přístup k BCD prostřednictvím konzoly sériového portu. Informace najdete v tématu [povolit Windows spouštěcí nabídky v konzole sériového portu](#enable-the-windows-boot-menu-in-the-serial-console).
 
 
 ## <a name="errors"></a>Chyby
-Protože většina chyb jsou přechodné, opakování pokusu o připojení je často opravit. Následující tabulka uvádí seznam chyb a způsoby zmírnění rizik pro oba virtuální počítače a škálovací sady virtuálních počítačů instancí.
+Protože většina chyb jsou přechodné, opakování pokusu o připojení je často opravit. Následující tabulka obsahuje seznam chyb a omezení rizik pro instance virtuálních počítačů i instancí sady škálování virtuálních počítačů.
 
 Chyba                            |   Omezení rizik
 :---------------------------------|:--------------------------------------------|
@@ -257,7 +257,7 @@ Webové sokety je uzavřený nebo nelze otevřít. | Možná budete muset povoli
 Pouze informace o stavu se zobrazuje při připojení k virtuálnímu počítači s Windows| K této chybě dochází, pokud Speciální konzoly pro správu nebyl povolen pro vaši image Windows. Zobrazit [povolit konzole sériového portu v obrázcích vlastní nebo starší](#enable-the-serial-console-in-custom-or-older-images) pokyny o tom, jak ručně povolit SAC na vašem virtuálním počítači Windows. Další informace najdete v tématu [signálů stavu Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 
 ## <a name="known-issues"></a>Známé problémy
-Jsme si vědomi některé problémy s konzole sériového portu. Tady je seznam těchto problémů a kroky pro omezení rizik. Tyto problémy a jejich zmírnění platí pro oba virtuální počítače a škálovací sady virtuálních počítačů instancí.
+Jsme si vědomi některé problémy s konzole sériového portu. Tady je seznam těchto problémů a kroky pro omezení rizik. Tyto problémy a omezení rizik platí pro instance virtuálních počítačů i instancí sady škálování virtuálních počítačů.
 
 Problém                             |   Omezení rizik
 :---------------------------------|:--------------------------------------------|
@@ -266,8 +266,8 @@ Nelze zadat v SAC řádku, pokud je povoleno ladění jádra. | Připojení RDP 
 Pokud původní obsah měli opakující se znak, vkládání do prostředí PowerShell ve výsledcích SAC ve třetí znaku. | Alternativní řešení spustit `Remove-Module PSReadLine` uvolnění modulu PSReadLine z aktuální relace. Tato akce neodstraní ani odinstalace modulu.
 Některé klávesnice vstupy generovat výstup strangeová SAC (například **[A**, **[3 ~** ). | [VT100](https://aka.ms/vtsequences) řídicí sekvence nejsou podporovány SAC řádku.
 Vkládání dlouhé řetězce nebude fungovat. | Konzole sériového portu omezení délky řetězce do terminálu na 2 048 znaků, aby se zabránilo přetížení šířky pásma sériového portu.
-Konzola sériového portu nefunguje s bránou firewall účtu úložiště. | Konzoly sériového portu záměrné nemůže pracovat s branami firewall účet úložiště na účet úložiště diagnostiky spouštění povolené.
-Konzola sériového portu nefunguje s účtem služby storage pomocí Azure Data Lake Storage Gen2 hierarchické obory názvů. | Jde o známý problém s hierarchické obory názvů. Pokud chcete zmírnit, ujistěte se, že účet úložiště diagnostiky spouštění Virtuálního počítače není vytvořené pomocí Azure Data Lake Storage Gen2. Tuto možnost lze nastavit pouze při vytváření účtu úložiště. Budete muset vytvořit účet úložiště diagnostiky spouštění samostatné bez Azure Data Lake Storage Gen2 povolit, aby tento problém zmírnit.
+Sériová konzola nefunguje s bránou firewall účtu úložiště. | Sériová konzola podle návrhu nemůžou pracovat s povolenými branami firewall účtu úložiště v účtu úložiště diagnostiky spouštění.
+Sériová konzola nepracuje s účtem úložiště pomocí Azure Data Lake Storage Gen2 s hierarchickými obory názvů. | Jedná se o známý problém s hierarchickými obory názvů. Pokud chcete zmírnit, ujistěte se, že účet úložiště diagnostiky spouštění virtuálního počítače není vytvořený pomocí Azure Data Lake Storage Gen2. Tuto možnost lze nastavit pouze při vytváření účtu úložiště. Je možné, že budete muset vytvořit samostatný účet úložiště diagnostiky spouštění bez Azure Data Lake Storage Gen2 povoleného pro zmírnění tohoto problému.
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
@@ -296,7 +296,7 @@ A. Vaše image je pravděpodobně nesprávně nakonfigurované pro přístup ke 
 
 A. V současné době se nepodporuje přístup ke konzole sériového portu pro instance škálovací sady virtuálních počítačů.
 
-## <a name="next-steps"></a>Další postup
-* Podrobné pokyny k příkazy CMD a prostředí PowerShell můžete použít v Windows SAC, naleznete v tématu [příkazy Windows: Příkaz CMD a prostředí PowerShell](serial-console-cmd-ps-commands.md).
+## <a name="next-steps"></a>Další kroky
+* Podrobný průvodce příkazy cmd a PowerShellu, které můžete použít v konzole Windows SAC, najdete v tématu [příkazy Windows: CMD a PowerShell](serial-console-cmd-ps-commands.md).
 * Je taky dostupná ke konzole sériového portu [Linux](serial-console-linux.md) virtuálních počítačů.
 * Další informace o [Diagnostika spouštění](boot-diagnostics.md).

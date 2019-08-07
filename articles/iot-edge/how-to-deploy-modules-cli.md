@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: edcde083934bb454f62ce3dd55c026138ad8fcca
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: fe947dbb7effde7bfa4f0b9824c6af645c85691c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797680"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840188"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Nasadit moduly Azure IoT Edge pomocí Azure CLI
 
@@ -73,7 +73,7 @@ Tady je manifest základní nasazení s jeden modul jako příklad:
              }
            },
            "modules": {
-             "tempSensor": {
+             "SimulatedTemperatureSensor": {
                "version": "1.0",
                "type": "docker",
                "status": "running",
@@ -97,7 +97,7 @@ Tady je manifest základní nasazení s jeden modul jako příklad:
            }
          }
        },
-       "tempSensor": {
+       "SimulatedTemperatureSensor": {
          "properties.desired": {}
        }
      }
@@ -108,7 +108,7 @@ Tady je manifest základní nasazení s jeden modul jako příklad:
 
 Moduly nasadíte do zařízení s použitím manifestu nasazení, který jste nakonfigurovali pomocí informací o modulech.
 
-Změňte adresář na složku, ve kterém je uložený manifestu nasazení. Pokud jste použili jedno z šablony VS Code IoT Edge, použijte `deployment.json` ve **config** složky vašeho adresáře řešení, ne `deployment.template.json` souboru.
+Změňte adresář na složku, ve kterém je uložený manifestu nasazení. Pokud jste použili jednu z šablon vs Code IoT Edge, použijte `deployment.json` soubor ve složce **config** adresáře řešení, a ne na `deployment.template.json` soubor.
 
 Chcete-li použít konfiguraci pro zařízení IoT Edge, použijte následující příkaz:
 

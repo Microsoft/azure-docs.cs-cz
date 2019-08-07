@@ -1,133 +1,133 @@
 ---
-title: Architektura replikace z Azure do Azure ve službě Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled komponent a architektury používané při nastavování zotavení po havárii mezi oblastmi Azure pro virtuální počítače Azure pomocí služby Azure Site Recovery.
+title: Architektura replikace z Azure do Azure v Azure Site Recovery | Microsoft Docs
+description: Tento článek poskytuje přehled komponent a architektury, které se používají při nastavování zotavení po havárii mezi oblastmi Azure pro virtuální počítače Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 9f985260175e5f54a17799ef07b3a280f42b716e
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 2ed93846e0a1ab98b25bdfbe33b34779996da82b
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491885"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782642"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
 
-Tento článek popisuje architekturu, komponenty a procesy používané při nasazení zotavení po havárii pro Azure virtual machines (VM) pomocí [Azure Site Recovery](site-recovery-overview.md) služby. Pomocí nastavení zotavení po havárii virtuální počítače Azure nepřetržitě replikovat z jiné cílové oblasti. Pokud dojde k výpadku, můžete převzít služby virtuálních počítačů do sekundární oblasti a přistupovat k nim tam. Když všechno, co běží normálně. znovu, můžete navrátit služby po obnovení a pokračovat v práci v primárním umístění.
+Tento článek popisuje architekturu, komponenty a procesy používané při nasazení zotavení po havárii pro virtuální počítače Azure pomocí služby [Azure Site Recovery](site-recovery-overview.md) . Po nastavení zotavení po havárii se virtuální počítače Azure průběžně replikují z do jiné cílové oblasti. Pokud dojde k výpadku, můžete převzít služby virtuálních počítačů do sekundární oblasti a získat k nim přístup. Když všechno běží normálně, můžete navrátit služby po obnovení a pokračovat v práci v primárním umístění.
 
 
 
 ## <a name="architectural-components"></a>Komponenty architektury
 
-Součásti účastnící se zotavení po havárii pro virtuální počítače Azure jsou shrnuty v následující tabulce.
+Komponenty zapojené do zotavení po havárii pro virtuální počítače Azure jsou shrnuté v následující tabulce.
 
 **Komponenta** | **Požadavky**
 --- | ---
-**Virtuální počítače ve zdrojové oblasti** | Jeden z virtuálních počítačů Azure v [podporované zdrojové oblasti](azure-to-azure-support-matrix.md#region-support).<br/><br/> Virtuální počítače může běžet jakýkoli [s podporovaným operačním systémem](azure-to-azure-support-matrix.md#replicated-machine-operating-systems).
-**Úložiště zdrojového virtuálního počítače** | Je možné spravovat virtuální počítače Azure, nebo mají nespravované disky rozprostřené mezi různými účty úložiště.<br/><br/>[Další informace o](azure-to-azure-support-matrix.md#replicated-machines---storage) podporované služby Azure storage.
-**Zdrojové sítě virtuálních počítačů** | Virtuální počítače lze umístit do jedné nebo několika podsítí ve virtuální síti (VNet) ve zdrojové oblasti. [Další informace](azure-to-azure-support-matrix.md#replicated-machines---networking) o požadavky na síť.
-**Účet úložiště mezipaměti** | Budete potřebovat účet úložiště mezipaměti ve zdrojové síti. Během replikace změny virtuálního počítače jsou uloženy v mezipaměti před odesláním do cílového úložiště.  Účty úložiště mezipaměti musí být Standard.<br/><br/> Použití mezipaměti zajistí minimální dopad na produkční aplikace, které jsou spuštěny na virtuálním počítači.<br/><br/> [Další informace](azure-to-azure-support-matrix.md#cache-storage) o požadavcích na úložiště mezipaměti. 
-**Prostředky cíle** | Cílové prostředky se používají během replikace a dojde k selhání. Site Recovery můžete nastavit cílový prostředek ve výchozím nastavení, nebo můžete vytvořit a přizpůsobit je.<br/><br/> V cílové oblasti zkontrolujte, že budete moct vytvořit virtuální počítače a že vaše předplatné má dostatek prostředků pro podporu velikosti virtuálních počítačů, které se mají provést v cílové oblasti. 
+**Virtuální počítače ve zdrojové oblasti** | Jeden z dalších virtuálních počítačů Azure v [podporované zdrojové oblasti](azure-to-azure-support-matrix.md#region-support).<br/><br/> Virtuální počítače můžou běžet s [podporovaným operačním systémem](azure-to-azure-support-matrix.md#replicated-machine-operating-systems).
+**Úložiště zdrojového virtuálního počítače** | Virtuální počítače Azure je možné spravovat nebo mít nespravované disky, které jsou rozdělené mezi účty úložiště.<br/><br/>[Přečtěte si o](azure-to-azure-support-matrix.md#replicated-machines---storage) podporované službě Azure Storage.
+**Zdrojové sítě virtuálních počítačů** | Virtuální počítače se můžou nacházet v jedné nebo několika podsítích ve virtuální síti (VNet) ve zdrojové oblasti. [Přečtěte si další informace](azure-to-azure-support-matrix.md#replicated-machines---networking) o požadavcích na síť.
+**Účet úložiště mezipaměti** | V zdrojové síti potřebujete účet úložiště mezipaměti. Během replikace se změny virtuálních počítačů ukládají do mezipaměti, než se odešlou do cílového úložiště.  Účty úložiště mezipaměti musí být standardní.<br/><br/> Použití mezipaměti zajišťuje minimální dopad na provozní aplikace, které běží na virtuálním počítači.<br/><br/> [Další informace](azure-to-azure-support-matrix.md#cache-storage) o požadavcích na úložiště mezipaměti. 
+**Cílové prostředky** | Cílové prostředky se používají během replikace a když dojde k převzetí služeb při selhání. Site Recovery může nastavit cílový prostředek ve výchozím nastavení, nebo je můžete vytvořit nebo přizpůsobit.<br/><br/> V cílové oblasti ověřte, že můžete vytvářet virtuální počítače a že vaše předplatné má dostatek prostředků pro podporu velikostí virtuálních počítačů, které budou potřeba v cílové oblasti. 
 
-![Zdroj a cíl replikace](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![Replikace zdroje a cíle](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
 
-## <a name="target-resources"></a>Prostředky cíle
+## <a name="target-resources"></a>Cílové prostředky
 
-Když povolíte replikaci virtuálního počítače, Site Recovery poskytuje možnost vytvořit cílové prostředky automaticky. 
+Když pro virtuální počítač povolíte replikaci, Site Recovery vám nabídne možnost automatického vytváření cílových prostředků. 
 
 **Cílový prostředek** | **Výchozí nastavení**
 --- | ---
 **Cílové předplatné** | Stejné jako zdrojové předplatné.
-**Cílová skupina prostředků** | Skupina prostředků, do které patří virtuální počítače po převzetí služeb při selhání.<br/><br/> Může být v libovolné oblasti Azure, s výjimkou zdrojové oblasti.<br/><br/> Site Recovery vytvoří novou skupinu prostředků v cílové oblasti s příponou "Azure Site Recovery".<br/><br/>
-**Cílové virtuální sítě** | Virtuální síť (VNet) ve kterém jsou replikované virtuální počítače umístěné po převzetí služeb při selhání. Vytvoření mapování sítě mezi zdrojovou a cílovou virtuální sítí a naopak.<br/><br/> Site Recovery vytvoří novou virtuální síť a podsíť, s příponou "Azure Site Recovery".
-**Cílový účet úložiště** |  Pokud virtuální počítač nepoužívá spravovaného disku, toto je účet úložiště, do kterého se data replikují.<br/><br/> Site Recovery vytvoří nový účet úložiště v cílové oblasti, pro zrcadlení zdrojového účtu úložiště.
-**Spravované disky replik** | Pokud virtuální počítač používá spravovaný disk, je to spravované disky, které budou replikovat data.<br/><br/> Spravované disky repliky v oblasti úložiště zrcadlící zdrojového nastavení vytvoří Site Recovery.
-**Cílové skupiny dostupnosti** |  Skupinu dostupnosti, ve které replikující virtuální počítače jsou umístěné po převzetí služeb při selhání.<br/><br/> Site Recovery vytvoří skupinu dostupnosti v cílové oblasti s příponou "Azure Site Recovery", pro virtuální počítače, které jsou umístěné ve skupině dostupnosti ve zdrojovém umístění. Pokud skupina dostupnosti existuje, se používá a není vytvořen nový.
-**Cílové zóny dostupnosti** | Pokud cílové oblasti podporují zóny dostupnosti, Site Recovery přiřadí číslo zóny jako, který používá ve zdrojové oblasti.
+**Cílová skupina prostředků** | Skupina prostředků, do které patří virtuální počítače po převzetí služeb při selhání.<br/><br/> Může to být v jakékoli oblasti Azure s výjimkou zdrojové oblasti.<br/><br/> Site Recovery vytvoří novou skupinu prostředků v cílové oblasti s příponou ASR.<br/><br/>
+**Cílová virtuální síť** | Virtuální síť (VNet), ve které se po převzetí služeb při selhání nacházejí replikované virtuální počítače. Mapování sítě je vytvořeno mezi zdrojovou a cílovou virtuální sítí a naopak.<br/><br/> Site Recovery vytvoří novou virtuální síť a podsíť s příponou ASR.
+**Cílový účet úložiště** |  Pokud virtuální počítač nepoužívá spravovaný disk, jedná se o účet úložiště, do kterého se data replikují.<br/><br/> Site Recovery vytvoří v cílové oblasti nový účet úložiště pro zrcadlení účtu zdrojového úložiště.
+**Spravované disky replik** | Pokud virtuální počítač používá spravovaný disk, jedná se o spravované disky, na které se replikují data.<br/><br/> Site Recovery pro zrcadlení zdrojů vytvoří v oblasti úložiště spravované disky repliky.
+**Cílové skupiny dostupnosti** |  Skupina dostupnosti, ve které se po převzetí služeb při selhání nacházejí replikované virtuální počítače.<br/><br/> Site Recovery vytvoří skupinu dostupnosti v cílové oblasti s příponou ASR pro virtuální počítače, které jsou umístěné ve skupině dostupnosti v umístění zdroje. Pokud existuje skupina dostupnosti, použije se a nová se nevytvoří.
+**Cílové zóny dostupnosti** | Pokud cílová oblast podporuje zóny dostupnosti, Site Recovery přiřadí stejné číslo zóny jako to, které se používá ve zdrojové oblasti.
 
-### <a name="managing-target-resources"></a>Správa cílové prostředky
+### <a name="managing-target-resources"></a>Správa cílových prostředků
 
-Cílové prostředky můžete spravovat takto:
+Cílové prostředky můžete spravovat následujícím způsobem:
 
-- Nastavení cíle můžete upravit, jak povolit replikaci.
-- Nastavení cíle můžete upravit po již funguje replikace. Výjimkou je typ dostupnosti (jednu instanci, set nebo zóny). Toto nastavení změníte, budete muset zakázat replikaci, změnit nastavení a potom znovu povolit.
+- Při povolování replikace můžete změnit cílová nastavení.
+- Po dokončení replikace můžete změnit cílová nastavení. Výjimkou je typ dostupnosti (jediná instance, sada nebo zóna). Pokud chcete toto nastavení změnit, musíte zakázat replikaci, upravit nastavení a pak znovu povolit.
 
 
 
 ## <a name="replication-policy"></a>Zásady replikace 
 
-Když povolíte replikaci virtuálního počítače Azure, ve výchozím nastavení Site Recovery vytvoří novou zásadu replikace s výchozím nastavením uvedené v tabulce.
+Když povolíte replikaci virtuálních počítačů Azure, Site Recovery ve výchozím nastavení vytvoří novou zásadu replikace s výchozími nastaveními shrnutými v tabulce.
 
 **Nastavení zásad** | **Podrobnosti** | **Výchozí**
 --- | --- | ---
-**Uchování bodu obnovení** | Určuje, jak dlouho uchovává body obnovení Site Recovery | 24 hodin
-**Frekvence pořizování snímků konzistentních s aplikací** | Jak často Site Recovery pořídí konzistentního snímku. | Každých 60 minut.
+**Uchování bodu obnovení** | Určuje, jak dlouho Site Recovery udržuje body obnovení. | 24 hodin
+**Frekvence snímků konzistentní vzhledem k aplikacím** | Jak často Site Recovery přebírá snímek konzistentní vzhledem k aplikacím. | Každých 60 minut.
 
 ### <a name="managing-replication-policies"></a>Správa zásad replikace
 
-Můžete spravovat a upravovat výchozí nastavení zásady replikace následujícím způsobem:
-- Nastavení můžete upravit, jak povolit replikaci.
-- Můžete vytvořit zásady replikace v okamžiku a pak ji použijte, když povolíte replikaci.
+Výchozí nastavení zásad replikace můžete spravovat a upravovat následujícím způsobem:
+- Nastavení můžete upravit při povolování replikace.
+- Zásadu replikace můžete vytvořit kdykoli a pak ji použít při povolování replikace.
 
-### <a name="multi-vm-consistency"></a>Konzistence více virtuálních počítačů
+### <a name="multi-vm-consistency"></a>Konzistence vzhledem k více virtuálním počítačům
 
-Pokud chcete, aby virtuální počítače replikovat společně a sdíleli konzistentní při selhání a obnovení s konzistentní aplikací odkazuje na převzetí služeb při selhání, můžete shromáždit je společně do replikační skupiny. Konzistence více virtuálních počítačů má vliv na výkon úloh a by měla sloužit pouze pro virtuální počítače spuštěné úlohy, které je třeba konzistence ve všech počítačích. 
+Pokud chcete, aby se virtuální počítače replikoval společně a aby při převzetí služeb při selhání sdílely body obnovení konzistentní vzhledem k aplikacím a konzistentní vzhledem k aplikacím, můžete je shromáždit dohromady do replikační skupiny. Konzistence s více virtuálními počítači ovlivňuje výkon úloh a měla by se používat jenom pro virtuální počítače, na kterých běží úlohy, které vyžadují konzistenci napříč všemi počítači. 
 
 
 
 ## <a name="snapshots-and-recovery-points"></a>Snímky a body obnovení
 
-Body obnovení jsou vytvářeny ze snímků disků virtuálních počítačů, které jsou provedeny v konkrétním bodě v čase. Převzetí služeb při selhání virtuálního počítače, použijete k obnovení virtuálního počítače v cílovém umístění bodu obnovení.
+Body obnovení jsou vytvářeny ze snímků disků virtuálních počítačů pořízených v určitém časovém okamžiku. Při převzetí služeb při selhání virtuálního počítače použijete bod obnovení k obnovení virtuálního počítače v cílovém umístění.
 
-Při převzetí služeb při selhání, obecně chceme se ujistit, že virtuální počítač spustí bez poškození nebo ztrátě dat a že data virtuálního počítače konzistentní vzhledem k aplikacím pro operační systém a pro aplikace, které běží na virtuálním počítači. To závisí na typu snímkům pořízeným.
+Při převzetí služeb při selhání obecně chceme zajistit, aby se virtuální počítač spouštěl bez poškození nebo ztráty dat a aby se pro aplikace, které běží na virtuálním počítači, zajistila konzistence dat virtuálního počítače. To závisí na typu provedených snímků.
 
-Site Recovery pořídí snímky následujícím způsobem:
+Site Recovery pořizuje snímky následujícím způsobem:
 
-1. Site Recovery pořídí konzistentní snímky dat ve výchozím nastavení a snímky konzistentní s, pokud je pro ně zadat frekvenci.
-2. Body obnovení jsou vytvářeny ze snímků a uložená v souladu s nastavení uchovávání dat v zásadách replikace.
+1. Když pro ně zadáte četnost, Site Recovery se ve výchozím nastavení přebírají snímky dat konzistentní vzhledem k chybám a snímky konzistentní vzhledem k aplikacím.
+2. Body obnovení se vytvářejí ze snímků a ukládají se v souladu s nastaveními uchovávání v zásadách replikace.
 
 ### <a name="consistency"></a>Konzistence
 
 Následující tabulka vysvětluje různé typy konzistence.
 
-### <a name="crash-consistent"></a>Konzistentní při selhání
+### <a name="crash-consistent"></a>Konzistentní vzhledem k selháním
 
 **Popis** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
-Snímek konzistentní s havárií shromažďuje data, která byla na disku při pořízení snímku. Nic neobsahuje v paměti.<br/><br/> Obsahuje ekvivalentní data na disku, která by byla k dispozici, pokud došlo k chybě virtuální počítač nebo napájecí kabel byl stažen ze serveru v okamžiku, která pořízení snímku.<br/><br/> Konzistentní při selhání nezaručuje konzistenci dat pro operační systém nebo aplikace na virtuálním počítači. | Site Recovery vytvoří body obnovení konzistentní při selhání každých 5 minut, ve výchozím nastavení. Toto nastavení nejde změnit.<br/><br/>  | V současné době většina aplikací můžete obnovit také ze body konzistentní při selhání.<br/><br/> Body obnovení konzistentní při selhání jsou obvykle stačí pro replikaci operačních systémů a aplikací, jako jsou servery DHCP a tiskových serverů.
+Snímek konzistentní se selháním zachycuje data, která byla na disku při pořízení snímku. Neobsahuje žádné množství paměti.<br/><br/> Obsahuje ekvivalent dat na disku, která by byla k dispozici v případě, že došlo k chybě virtuálního počítače nebo napájecí kabel byl získán ze serveru v okamžiku, kdy se snímek povedl.<br/><br/> Konzistentní se selháním nezaručuje konzistenci dat pro operační systém nebo pro aplikace na virtuálním počítači. | Ve výchozím nastavení vytvoří Site Recovery body obnovení konzistentní vzhledem k chybě každých pět minut. Toto nastavení nelze změnit.<br/><br/>  | V současné době se většina aplikací může obnovovat i z bodů konzistentních vzhledem k selháním.<br/><br/> Body obnovení konzistentní vzhledem k havárii jsou obvykle dostačující pro replikaci operačních systémů a aplikace, jako jsou servery DHCP a tiskové servery.
 
-### <a name="app-consistent"></a>App-consistent
+### <a name="app-consistent"></a>Konzistentní vzhledem k aplikacím
 
 **Popis** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
-Body obnovení konzistentní vzhledem k aplikaci vytvořené ze snímků konzistentní vzhledem k.<br/><br/> Konzistentní vzhledem k snímku obsahovat všechny informace v snímky konzistentní s havárií a veškerá data v paměti a probíhající transakce. | Snímky konzistentní s pomocí svazků služby Stínová kopie (VSS):<br/><br/>   1) při zahájení snímku VSS provést operaci kopírování při zápisu (krávy) na svazku.<br/><br/>   (2) předtím, než provede krávy, informuje VSS každá aplikace na počítači, který je třeba vyprázdnění rezidentní data na disk.<br/><br/>   (3) stínové kopie svazku pak umožní aplikaci obnovení zálohování/zotavení po havárii (v tomto případě Site Recovery) číst data snímku a pokračovat. | Snímky konzistentní s přejdete v souladu s frekvencí, kterou zadáte. Četnost odesílání by měla být vždy nižší než nastavení pro zachování body obnovení. Například pokud můžete zachovat body obnovení pomocí výchozího nastavení 24 hodin, měli byste nastavit frekvenci, s méně než 24 hodin.<br/><br/>Jsou mnohem složitější a trvat déle než snímky konzistentní při selhání.<br/><br/> Jejich vliv na výkon aplikace, které běží na virtuálním počítači povolena replikace. 
+Body obnovení konzistentní vzhledem k aplikacím se vytvářejí z snímků konzistentních vzhledem k aplikacím.<br/><br/> Snímek konzistentní vzhledem k aplikacím obsahuje všechny informace v snímku konzistentním s chybou a také všechna data v paměti a probíhajících transakcích. | Snímky konzistentní vzhledem k aplikacím používají služba Stínová kopie svazku (VSS):<br/><br/>   1) když se spustí snímek, služba VSS provede na svazku operaci kopírování na zápis (KRÁVy).<br/><br/>   2) před provedením KRÁVy vytvoří služba Stínová kopie svazku každou aplikaci v počítači, kterou potřebuje k vyprázdnit data rezidentní paměti na disk.<br/><br/>   3) služba VSS pak umožní aplikaci pro zálohování nebo zotavení po havárii (v tomto případě Site Recovery) ke čtení dat snímku a pokračování. | Snímky konzistentní vzhledem k aplikacím jsou pořízeny podle četnosti, kterou zadáte. Tato frekvence by měla být vždy menší než nastavení pro zachování bodů obnovení. Pokud například zachováte body obnovení s použitím výchozího nastavení 24 hodin, měli byste nastavit četnost na méně než 24 hodin.<br/><br/>Jsou složitější a jejich dokončení trvá déle než snímky konzistentní se selháním.<br/><br/> Mají vliv na výkon aplikací spuštěných na virtuálním počítači, který je povolen pro replikaci. 
 
 ## <a name="replication-process"></a>Proces replikace
 
-Když povolíte replikaci pro virtuální počítač Azure, dojde k následujícímu:
+Pokud povolíte replikaci pro virtuální počítač Azure, dojde k následujícímu:
 
-1. Rozšíření služby Site Recovery Mobility se automaticky nainstaluje na virtuálním počítači.
-2. Rozšíření zaregistruje virtuální počítač pomocí Site Recovery.
-3. Začíná průběžnou replikaci pro virtuální počítač.  Zápisy na disk okamžitě přenášejí do účtu úložiště mezipaměti ve zdrojovém umístění.
-4. Site Recovery zpracovává data v mezipaměti a posílá ji do cílového účtu úložiště nebo do repliky spravovaných disků.
-5. Po zpracování dat, vygenerují se body obnovení konzistentní při selhání každých pět minut. Body obnovení konzistentní se generují podle nastavení nakonfigurované v zásadách replikace.
+1. Na virtuálním počítači se automaticky nainstaluje rozšíření služby mobility Site Recovery.
+2. Rozšíření registruje virtuální počítač s Site Recovery.
+3. Pro virtuální počítač se spustí průběžná replikace.  Zápisy na disk se okamžitě přenesou do účtu úložiště mezipaměti ve zdrojovém umístění.
+4. Site Recovery zpracuje data v mezipaměti a pošle je do cílového účtu úložiště nebo na spravované disky repliky.
+5. Po zpracování dat se body obnovení konzistentní vzhledem k chybě generují každých pět minut. Body obnovení konzistentní vzhledem k aplikacím se generují podle nastavení určeného v zásadách replikace.
 
-![Povolit replikaci, krok 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![Povolit proces replikace, krok 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
 
 **Proces replikace**
 
 ## <a name="connectivity-requirements"></a>Požadavky na připojení
 
- Virtuální počítače Azure, které replikujete potřebují odchozí připojení. Site Recovery potřebuje nikdy příchozí připojení k virtuálnímu počítači. 
+ Virtuální počítače Azure, které replikujte, potřebují odchozí připojení. Site Recovery nikdy nepotřebuje příchozí připojení k virtuálnímu počítači. 
 
 ### <a name="outbound-connectivity-urls"></a>Odchozí připojení (adresy URL)
 
-Pokud odchozí přístup pro virtuální počítače se řídí pomocí adresy URL, povolte tyto adresy URL.
+Pokud se odchozí přístup pro virtuální počítače ovládá pomocí adres URL, povolte tyto adresy URL.
 
 | **Adresa URL** | **Podrobnosti** |
 | ------- | ----------- |
@@ -138,39 +138,39 @@ Pokud odchozí přístup pro virtuální počítače se řídí pomocí adresy U
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Odchozí připojení pro rozsahy IP adres
 
-K řízení odchozího připojení pro virtuální počítače pomocí IP adresy, povolte tyto adresy.
+Chcete-li řídit odchozí připojení pro virtuální počítače pomocí IP adres, povolte tyto adresy.
 
-#### <a name="source-region-rules"></a>Zdrojové oblasti pravidla
-
-**Pravidlo** |  **Podrobnosti** | **Značka služby**
---- | --- | --- 
-Povolit HTTPS odchozí: port 443 | Povolte rozsahy, které odpovídají na účty úložiště ve zdrojové oblasti | Úložiště. \<oblasti name >.
-Povolit HTTPS odchozí: port 443 | Povolte rozsahy, které odpovídají Azure Active Directory (Azure AD).<br/><br/> Pokud se v budoucnu přidají adresy služby Azure AD musíte vytvořit nová pravidla skupiny zabezpečení sítě (NSG).  | AzureActiveDirectory
-Povolit HTTPS odchozí: port 443 | Povolit přístup k [koncovými body Site Recovery](https://aka.ms/site-recovery-public-ips) , které odpovídají do cílového umístění. 
-
-#### <a name="target-region-rules"></a>Cílové oblasti pravidla
+#### <a name="source-region-rules"></a>Pravidla zdrojové oblasti
 
 **Pravidlo** |  **Podrobnosti** | **Značka služby**
 --- | --- | --- 
-Povolit HTTPS odchozí: port 443 | Povolte rozsahy, které odpovídají na účty úložiště v cílové oblasti. | Úložiště. \<oblasti name >.
-Povolit HTTPS odchozí: port 443 | Povolte rozsahy, které odpovídají do služby Azure AD.<br/><br/> Pokud se v budoucnu přidají adresy služby Azure AD musíte vytvořit nová pravidla skupiny zabezpečení sítě.  | AzureActiveDirectory
-Povolit HTTPS odchozí: port 443 | Povolit přístup k [koncovými body Site Recovery](https://aka.ms/site-recovery-public-ips) , které odpovídají umístění zdroje. 
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště ve zdrojové oblasti. | Pamì. \<název oblasti >.
+Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají Azure Active Directory (Azure AD).<br/><br/> Pokud se adresy Azure AD přidávají v budoucnu, potřebujete vytvořit nová pravidla skupiny zabezpečení sítě (NSG).  | AzureActiveDirectory
+Povolení odchozího HTTPS: port 443 | Povolí přístup k [Site Recovery koncovým bodům](https://aka.ms/site-recovery-public-ips) , které odpovídají cílovému umístění. 
+
+#### <a name="target-region-rules"></a>Pravidla cílové oblasti
+
+**Pravidlo** |  **Podrobnosti** | **Značka služby**
+--- | --- | --- 
+Povolení odchozího HTTPS: port 443 | Povolte rozsahy, které odpovídají účtům úložiště v cílové oblasti. | Pamì. \<název oblasti >.
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají službě Azure AD.<br/><br/> Pokud se v budoucnu přidají adresy Azure AD, musíte vytvořit nová pravidla NSG.  | AzureActiveDirectory
+Povolení odchozího HTTPS: port 443 | Povolí přístup k [Site Recovery koncovým bodům](https://aka.ms/site-recovery-public-ips) , které odpovídají zdrojovému umístění. 
 
 
-#### <a name="control-access-with-nsg-rules"></a>Řízení přístupu pomocí pravidel skupiny zabezpečení sítě
+#### <a name="control-access-with-nsg-rules"></a>Řízení přístupu pomocí pravidel NSG
 
-Pokud připojení virtuálních počítačů pomocí filtrování síťového provozu do a z Azure pomocí sítí/podsítí [pravidla NSG](https://docs.microsoft.com/azure/virtual-network/security-overview), mějte na paměti následující požadavky:
+Pokud ovládáte připojení virtuálních počítačů pomocí filtrování síťového provozu do a z sítí nebo podsítí Azure pomocí [pravidel NSG](https://docs.microsoft.com/azure/virtual-network/security-overview), vezměte v vědomí následující požadavky:
 
-- Pravidla NSG pro zdrojovou oblast Azure by měl povolit odchozí přístup pro přenosy replikace.
-- Doporučujeme že vytvořit pravidla v testovacím prostředí před uvést do provozu.
-- Použití [značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) namísto povolení jednotlivých IP adres.
-    - Značky služby představuje skupinu předpon IP adres shromážděných společně za účelem minimalizovat složitost při vytváření pravidel zabezpečení.
-    - Microsoft automaticky aktualizuje značky služeb v čase. 
+- Pravidla NSG pro zdrojovou oblast Azure by měla umožňovat odchozí přístup pro provoz replikace.
+- Před vložením do produkčního prostředí doporučujeme vytvořit pravidla v testovacím prostředí.
+- Místo povolování jednotlivých IP adres používejte [značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) .
+    - Značky služby reprezentují skupinu předpon IP adres shromážděných dohromady, aby se při vytváření pravidel zabezpečení minimalizovala složitost.
+    - Microsoft automaticky aktualizuje značky služeb v průběhu času. 
  
-Další informace o [odchozí připojení](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) pro Site Recovery, a [řízení připojení pomocí skupin zabezpečení sítě](concepts-network-security-group-with-site-recovery.md).
+Přečtěte si další informace o [odchozím připojení](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) pro Site Recovery a o [řízení připojení pomocí skupin zabezpečení sítě](concepts-network-security-group-with-site-recovery.md).
 
 
-### <a name="connectivity-for-multi-vm-consistency"></a>Připojení pro zajištění konzistence více virtuálních počítačů
+### <a name="connectivity-for-multi-vm-consistency"></a>Konektivita pro konzistenci s více virtuálními počítači
 
 Pokud povolíte konzistenci napříč několika virtuálními počítači, budou spolu počítače v replikační skupině komunikovat přes port 20004.
 - Ujistěte se, že žádné zařízení brány firewall neblokuje interní komunikaci mezi virtuálními počítači přes port 20004.
@@ -181,10 +181,10 @@ Pokud povolíte konzistenci napříč několika virtuálními počítači, budou
 
 ## <a name="failover-process"></a>Proces převzetí služeb při selhání
 
-Při zahájení převzetí služeb virtuálních počítačů vytvořená v cílovou skupinu prostředků, cílovou virtuální sítí, cílové podsítě a ve skupině dostupnosti cílové nastavovat. Při selhání můžete použít jakýkoli bod obnovení.
+Když zahájíte převzetí služeb při selhání, vytvoří se virtuální počítače v cílové skupině prostředků, cílové virtuální síti, cílové podsíti a v cílové sadě dostupnosti. Během převzetí služeb při selhání můžete použít libovolný bod obnovení.
 
 ![Proces převzetí služeb při selhání](./media/concepts-azure-to-azure-architecture/failover.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Rychle replikovat](azure-to-azure-quickstart.md) virtuálního počítače Azure do sekundární oblasti.
+[Rychlá replikace](azure-to-azure-quickstart.md) virtuálního počítače Azure do sekundární oblasti.

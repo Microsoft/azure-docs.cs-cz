@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 0674d8c98f4bf37bbf9417de60ff4c60910d802a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 429e201ba1d15103ae130ee2fb767cd1b4fa909a
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258287"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779414"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -61,7 +61,7 @@ Pokud zvýšíte kapacitu na 18, vytvoří se 3 nové virtuální počítače. I
 
 ### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Pokud ve škálovací sadě používám několik rozšíření, je možné vynucovat určitou posloupnost provádění?
 
-Ano, můžete použít škálovací sady [nastavení posloupnosti rozšíření](virtual-machine-scale-sets-extension-sequencing.md).
+Ano, můžete použít [sekvencování rozšíření](virtual-machine-scale-sets-extension-sequencing.md)sady škálování.
 
 ### <a name="do-scale-sets-work-with-azure-availability-sets"></a>Spolupracují škálovací sady se skupinami dostupnosti Azure?
 
@@ -167,14 +167,14 @@ Kód podporuje Windows a Linux.
 Další informace najdete v tématu [vytvořit nebo aktualizovat škálovací sadu virtuálních počítačů nastavte](https://msdn.microsoft.com/library/mt589035.aspx).
 
 
-### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Použití certifikátů podepsaných svým držitelem, které jsou zřízené pro clustery Azure Service Fabric
-Nejnovější použijte například následující příkaz rozhraní příkazového řádku azure v rámci prostředí azure přečtěte si modul Service Fabric CLI ukázková dokumentace, která se vytisknou do stdout:
+### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Návody používat certifikáty podepsané svým držitelem zřízené pro clustery Azure Service Fabric?
+V posledním příkladu použijte následující příkaz Azure CLI v prostředí Azure Shell, přečtěte si dokumentaci k příkladu modulu CLI služby Service Fabric, která se vytiskne na stdout:
 
 ```bash
 az sf cluster create -h
 ```
 
-Nelze použít pro distribuované vztah důvěryhodnosti certifikační autorita k dispozici certifikáty podepsané svým držitelem a nemělo používat pro všechny určené pro produkční řešení enterprise pro hostitele; clusteru Service Fabric Další informace o zabezpečení služby Service Fabric najdete v tématu [osvědčené postupy Azure Service Fabric zabezpečení](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) a [scénáře zabezpečení clusteru Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
+Certifikáty podepsané svým držitelem se nedají použít pro distribuovanou důvěryhodnost poskytovanou certifikační autoritou a neměla by se používat pro žádný Service Fabric cluster určený k hostování podnikových produkčních řešení. Další Service Fabric doprovodné materiály k zabezpečení najdete v článku [osvědčené postupy zabezpečení Azure Service Fabric](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices) a [Service Fabric scénáře zabezpečení clusteru](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Můžete zadat pár klíčů SSH pro ověřování SSH pomocí virtuálního počítače škálovací sady s Linuxem ze šablony Resource Manageru?
 
@@ -200,7 +200,7 @@ Zahrnout **osProfile** v šabloně:
 }
 ```
 
-Tento blok JSON se používá v [Tato šablona Azure quickstart](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
+Tento blok JSON se používá v [této šabloně Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
 Další informace najdete v tématu [vytvořit nebo aktualizovat škálovací sadu virtuálních počítačů nastavte](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration).
 
@@ -208,7 +208,7 @@ Další informace najdete v tématu [vytvořit nebo aktualizovat škálovací sa
 
 Odebrat nepoužívané certifikáty, odeberte starý certifikát ze seznamu certifikátů trezor. Ponechte všechny certifikáty, které mají zůstat ve vašem počítači v seznamu. Tento certifikát neodebere ze všech virtuálních počítačů. Také nepřidává certifikát na nové virtuální počítače, které jsou vytvořeny ve škálovací sadě virtuálních počítačů.
 
-Chcete-li odeberte certifikát z existujících virtuálních počítačů, použijte rozšíření vlastních skriptů se ručně odebrat certifikáty ze svého úložiště certifikátů.
+Pokud chcete odebrat certifikát z existujících virtuálních počítačů, pomocí rozšíření vlastních skriptů ručně odeberte certifikáty z úložiště certifikátů.
 
 ### <a name="how-do-i-inject-an-existing-ssh-public-key-into-the-virtual-machine-scale-set-ssh-layer-during-provisioning"></a>Jak můžu vložit existující veřejný klíč SSH do vrstvy SSH škálovací sady virtuálních počítačů během zřizování?
 
@@ -239,7 +239,7 @@ Příklad najdete v tématu [šablonu pro rychlý start Githubu 101-vm-sshkey](h
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Při spuštění `Update-AzVmss` po přidání více než jeden certifikát ze stejné služby key vault, zobrazí následující zpráva:
 
->Update-AzVmss: Tajný kód seznam obsahuje opakované instance /subscriptions/\<Moje id předplatného > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, což se nepovoluje.
+>Update-AzVmss: Seznam tajného klíče obsahuje opakované instance\</Subscriptions/typu moje předplatné-ID >/resourceGroups/Internal-RG-dev/Providers/Microsoft.KeyVault/Vaults/Internal-keyvault-dev, která není povolená.
 
 To může nastat, pokud se pokusíte do stejného trezoru namísto použití nového certifikátu trezoru pro existující zdrojový trezor je znovu přidat. `Add-AzVmssSecret` Příkaz nebude fungovat správně při přidávání dalších tajných kódů.
 
@@ -311,7 +311,7 @@ K nasazení .cer nastavené veřejného klíče pro škálovací sadu virtuáln�
 
 Další informace najdete v tématu [X509Certificate.Export – metoda (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx)).
 
-### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>Jak se můžu jako řetězce ve formátu base64 předat v certifikátech?
+### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>Návody certifikáty předávat jako řetězce base64?
 
 Pro emulaci předávání v certifikátu jako řetězec ve formátu base64, může extrahovat nejnovější verze adresu URL v šabloně Resource Manageru. Zahrňte následující vlastnost JSON šablony Resource Manageru:
 
@@ -341,7 +341,7 @@ Další informace najdete na webu [Centrum zabezpečení Microsoft](https://www.
 
 ### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>Nemá [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/msi-overview) pracovat se škálovacími sadami virtuálních počítačů?
 
-Ano. Zobrazí se několik ukázkových šablon MSI v šablonách Azure pro rychlý start pro [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) a [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi).
+Ano. V šablonách rychlého startu Azure pro [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) a [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)se můžete podívat na příklady šablon MSI.
 
 
 ## <a name="extensions"></a>Rozšíření
@@ -360,9 +360,9 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 Můžete najít hodnotu extensionName v `$vmss`.
 
-### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Je k dispozici příkladu šablony, která se integruje s protokoly Azure monitoru sady škálovací sadu virtuálních počítačů?
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Je zde příklad šablony sady škálování virtuálních počítačů, který se integruje s protokoly Azure Monitor?
 
-Pro škálovací sadu virtuálních počítačů nastavte příkladu šablony, která se integruje s protokoly Azure monitoru, najdete ve druhém příkladu v [nasazení clusteru Azure Service Fabric a povolte monitorování pomocí protokolů Azure Monitor](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
+Příklad šablony pro sadu škálování virtuálního počítače, který se integruje s protokoly Azure Monitor, najdete v druhém příkladu v tématu [nasazení clusteru Azure Service Fabric a povolení monitorování pomocí protokolů Azure monitor](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
 
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>Jak mohu přidat rozšíření na všechny virtuální počítače v mé škálovací sady virtuálních počítačů?
 
@@ -374,9 +374,9 @@ Pokud je aktualizace zásada nastavená na **ruční**, nejprve aktualizovat roz
 
 Pokud je nastavená definice rozšíření virtuálního počítače škálovací dojde k aktualizaci modelu a hodnota upgradePolicy vlastnost nastavena na **automatické**, aktualizuje se virtuální počítače. Pokud hodnota upgradePolicy nastavena **ruční**, rozšíření se označí jako neodpovídá modelu.
 
-### <a name="are-extensions-run-again-when-an-existing-machine-is-service-healed-or-reimaged"></a>Jsou rozšíření znovu spustí, jakmile je existující počítač služby opraven nebo obnovila z Image?
+### <a name="are-extensions-run-again-when-an-existing-machine-is-service-healed-or-reimaged"></a>Spouštějí se rozšíření znovu, když je stávající počítač zacelený nebo přepsaný z Image?
 
-Pokud existujícího virtuálního počítače je opraven služby, zobrazí se jako restartování a rozšíření nejsou spusťte znovu. Pokud virtuální počítač se znovu připojit bitovou kopii, proces se podobá nahrazení jednotky operačního systému zdrojového obrázku. Všechny specializace z nejnovější model, jako je například rozšíření, jsou spusťte znovu.
+Pokud je stávající virtuální počítač zacelený pomocí služby, zobrazí se jako restart a rozšíření se znovu nespustí. Pokud se virtuální počítač obnoví z image, proces se podobá nahrazení jednotky operačního systému zdrojovou imagí. Všechny specializace z nejnovějšího modelu, jako jsou rozšíření, se spustí znovu.
 
 ### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-active-directory-domain"></a>Jak můžu připojit virtuální počítač škálovací sady do domény služby Active Directory?
 
@@ -432,7 +432,7 @@ Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "IaaSAntimalware" -Publi
 Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet $VMSS
 ```
 
-### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>Jak spustit vlastní skript, který je hostován v účtu privátního úložiště?
+### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>Návody spustit vlastní skript, který je hostovaný v privátním účtu úložiště?
 
 K provedení vlastní skript, který je hostován v účtu privátního úložiště, nastavte chráněná nastavení pro klíč účtu úložiště a názvem. Další informace najdete v tématu [rozšíření vlastních skriptů](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings).
 
@@ -442,7 +442,7 @@ K provedení vlastní skript, který je hostován v účtu privátního úloži�
 
 Existují dva hlavní způsoby, jak změnit heslo pro virtuální počítače ve škálovacích sadách.
 
-- Změna modelu škálovací sady virtuálních počítačů přímo. K dispozici pomocí rozhraní API 2017-12-01 a novějších.
+- Změna modelu škálovací sady virtuálních počítačů přímo. K dispozici s rozhraním API 2017-12-01 a novějším.
 
     Aktualizace přihlašovacích údajů správce přímo v modelu škálovací sady (například pomocí Průzkumníka prostředků Azure, Powershellu nebo rozhraní příkazového řádku). Jakmile se škálovací sada je aktualizovaná, všechny nové virtuální počítače mají nové přihlašovací údaje. Stávající virtuální počítače pouze mít nové přihlašovací údaje, pokud se obnoví z Image.
 
@@ -507,7 +507,7 @@ Ano. Skupina zabezpečení sítě můžete použít přímo na škálovací sadu
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Jak to provést prohození virtuálních IP adres pro škálovací sady virtuálních počítačů ve stejném předplatném a stejné oblasti?
 
-Pokud máte dvě škálovací sady virtuálních počítačů s Azure Load Balancer front endů a jsou ve stejném předplatném a oblasti, můžete zrušit přidělení veřejné IP adresy z každé z nich a přiřadit k druhému. Zobrazit [prohození virtuálních IP adres: Nasazení modrá zelená v Azure Resource Manageru](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) třeba. To neznamená zpoždění úroveň ale prostředky jsou přidělené v síti jejich přidělení. Rychlejší možností je použít Azure Application Gateway pomocí dvou fondů back-endu a pravidel směrování. Alternativně může hostovat vaši aplikaci s [služby Azure App service](https://azure.microsoft.com/services/app-service/) poskytující podporu pro rychlé přepínání slotů pracovního a produkčního prostředí.
+Pokud máte dvě škálovací sady virtuálních počítačů s Azure Load Balancer front endů a jsou ve stejném předplatném a oblasti, můžete zrušit přidělení veřejné IP adresy z každé z nich a přiřadit k druhému. Viz [VIP swap: Například nasazení Blue-zelená v](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) Azure Resource Manager. To neznamená zpoždění úroveň ale prostředky jsou přidělené v síti jejich přidělení. Rychlejší možností je použít Azure Application Gateway pomocí dvou fondů back-endu a pravidel směrování. Alternativně může hostovat vaši aplikaci s [služby Azure App service](https://azure.microsoft.com/services/app-service/) poskytující podporu pro rychlé přepínání slotů pracovního a produkčního prostředí.
 
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Jak určit rozsah privátních IP adres pro statického přidělování privátní IP adresu?
 
@@ -562,7 +562,7 @@ Pokud chcete vytvořit škálovací sadu virtuálního počítače, který se p�
 
 ### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>Můžete nakonfigurovat škálovací sady pro práci s více aplikačních bran?
 
-Ano. Můžete přidat ID prostředků pro více fondy adres back-end služba Application Gateway na _applicationGatewayBackendAddressPools_ v seznamu _ipConfigurations_ část škálovací nastavení sítě profil.
+Ano. ID prostředků pro více Application Gateway fond adres back-endu můžete přidat do seznamu _applicationGatewayBackendAddressPools_ v části _IPConfiguration_ v profilu sítě sady škálování.
 
 ## <a name="scale"></a>Měřítko
 
@@ -621,11 +621,11 @@ Máte určitou volnost v jak zpracovávat výstrahy pro zadané prahové hodnoty
 
 ## <a name="patching-and-operations"></a>Operace a opravy
 
-### <a name="can-i-create-a-scale-set-in-an-existing-resource-group"></a>Můžete vytvořit škálovací sadu v existující skupinu prostředků?
+### <a name="can-i-create-a-scale-set-in-an-existing-resource-group"></a>Můžu vytvořit sadu škálování v existující skupině prostředků?
 
-Ano, můžete vytvořit škálovací sadu v existující skupinu prostředků.
+Ano, můžete vytvořit sadu škálování v existující skupině prostředků.
 
-### <a name="can-i-move-a-scale-set-to-another-resource-group"></a>Můžu přesunout škálovací sady do jiné skupiny prostředků?
+### <a name="can-i-move-a-scale-set-to-another-resource-group"></a>Můžu přesunout sadu škálování na jinou skupinu prostředků?
 
 Ano, můžete přesunout, škálovací sada prostředků pro nové předplatné nebo skupinu prostředků.
 
@@ -637,16 +637,16 @@ K aktualizaci škálovací sady do nové bitové kopie vašich virtuálních po�
 
 Ano, můžete použít operace obnovení z Image resetovat beze změny image virtuálního počítače. Nicméně pokud vaše škálovací sada virtuálních počítačů odkazuje na imagi platformy s `version = latest`, váš virtuální počítač můžete aktualizovat na novější image operačního systému při volání `reimage`.
 
-### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Je možné integrovat škálovací sady pomocí Azure monitoru protokolů?
+### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Je možné integrovat sady škálování s protokoly Azure Monitor?
 
-Ano, můžete po instalaci rozšíření Azure Monitor na stupnici nastavit virtuální počítače. Tady je příklad rozhraní příkazového řádku Azure:
+Ano, můžete instalaci rozšíření Azure Monitor nainstalovat na virtuální počítače sady škálování. Tady je příklad rozhraní příkazového řádku Azure:
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
 Požadované ID pracovního prostoru a workspaceKey najdete v pracovním prostoru Log Analytics z portálu Azure portal. Na stránce Přehled klikněte na dlaždici nastavení. Klikněte na kartu připojené zdroje v horní části.
 
 > [!NOTE]
-> Pokud ve škálovací sadě _upgradePolicy_ nastavený na ruční, budete muset použijte rozšíření pro všechny virtuální počítače v sadě voláním upgrade na ně. V rozhraní příkazového řádku by to byl _az vmss update-instances_.
+> Pokud je vaše sada škálování nastavená na ruční, je nutné použít rozšíření na všechny virtuální počítače v sadě tak, že na ně zavoláte upgrade. V rozhraní příkazového řádku by to byl _az vmss update-instances_.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -701,8 +701,8 @@ Hlavní rozdíl mezi odstranění virtuálního počítače ve škálovací sad�
   - Související s tímto scénářem, pravděpodobně jste vytvořili vlastní modul automatického škálování a chcete rychlejší škálování začátku do konce.
 - Máte škálovací sadu virtuálních počítačů, které nerovnoměrně distribuovaná napříč doménami selhání a aktualizačních doménách. To může být kvůli selektivně odstranění virtuální počítače, nebo virtuální počítače byly odstraněny po předimenzování. Spuštění `stop deallocate` následovaný `start` na virtuálním počítači škálovací sady se rovnoměrně distribuuje virtuálních počítačů napříč doménami selhání a aktualizačních doménách.
 
-### <a name="how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance"></a>Jak můžu udělat snímek instanci virtuálního počítače škálovací sady?
-Vytvoření snímku ze instance škálovací sady virtuálních počítačů.
+### <a name="how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance"></a>Návody pořídit snímek instance sady škálování virtuálního počítače?
+Vytvoří snímek z instance sady škálování virtuálního počítače.
 
 ```azurepowershell-interactive
 $rgname = "myResourceGroup"
@@ -715,7 +715,7 @@ $snapshotconfig = New-AzSnapshotConfig -Location $location -AccountType Standard
 New-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'mySnapshot' -Snapshot $snapshotconfig
 ```
 
-Vytvoření spravovaného disku ze snímku.
+Vytvořte ze snímku spravovaný disk.
 
 ```azurepowershell-interactive
 $snapshotName = "myShapshot"

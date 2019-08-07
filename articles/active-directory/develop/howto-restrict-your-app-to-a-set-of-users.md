@@ -1,6 +1,6 @@
 ---
-title: Jak omezit aplikace Azure Active Directory zaregistrované pro skupinu uživatelů
-description: Zjistěte, jak omezit přístup na vaše aplikace registrované ve službě Azure AD pro vybranou skupinu uživatelů.
+title: Omezení aplikace zaregistrované v Azure Active Directory pro sadu uživatelů
+description: Naučte se, jak omezit přístup k aplikacím registrovaným ve službě Azure AD na vybranou skupinu uživatelů.
 services: active-directory
 documentationcenter: ''
 author: kalyankrishna1
@@ -17,65 +17,82 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e07d9f0fa6ec6b4abc7ce96279b7b02faae298fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a51c49633e68fdc5f9afd4bf0205adaa625940ff
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540206"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812972"
 ---
 # <a name="how-to-restrict-your-app-to-a-set-of-users"></a>Postup: Omezení aplikace na sadu uživatelů
 
-Zaregistrované v tenantovi Azure Active Directory (Azure AD) aplikace jsou ve výchozím nastavení dostupné pro všechny uživatele tenantovi, kteří úspěšně ověřit.
+Aplikace zaregistrované v tenantovi Azure Active Directory (Azure AD) jsou ve výchozím nastavení dostupné všem uživatelům tenanta, kteří se úspěšně ověřují.
 
-Podobně v případě klíčových [víceklientské](howto-convert-app-to-be-multi-tenant.md) aplikace, všichni uživatelé v tenantovi Azure AD, kde je zřízený tato aplikace bude možné přistupovat k této aplikaci, jakmile se úspěšně ověřit v jejich příslušných tenanta.
+Podobně platí, že v případě [víceklientské](howto-convert-app-to-be-multi-tenant.md) aplikace budou mít všichni uživatelé v TENANTOVI Azure AD, kde se tato aplikace zřídí, přístup k této aplikaci až po úspěšném ověření v příslušném tenantovi.
 
-Správci tenanta a vývojáři často mají požadavky na kde aplikace musí být omezena na sadu uživatelů. Vývojáři stejné lze provádět pomocí oblíbených autorizace vzory jako na základě řízení přístupu Role (RBAC), ale tento přístup vyžaduje značné množství práce na část vývojáře.
+Správci klientů a vývojáři mají často požadavky na to, že aplikace musí být omezená na určitou skupinu uživatelů. Vývojáři můžou totéž dosáhnout pomocí oblíbených autorizačních vzorů, jako je Access Control na základě rolí (RBAC), ale tento přístup vyžaduje významnou práci v rámci vývojářů.
 
-Azure AD umožňuje tenanta správci a vývojáři aplikace omezit na konkrétní sadu uživatelů nebo skupin zabezpečení v tenantovi.
+Azure AD umožňuje správcům a vývojářům klientů omezit aplikaci na určitou skupinu uživatelů nebo skupin zabezpečení v tenantovi.
 
-## <a name="supported-app-configurations"></a>Konfigurace podporovaných aplikací.
+## <a name="supported-app-configurations"></a>Podporované konfigurace aplikací
 
-Možnost omezit na konkrétní sadu uživatelů nebo skupin zabezpečení v tenantovi aplikace funguje s následujícími typy aplikací:
+Možnost omezit aplikaci na určitou skupinu uživatelů nebo skupin zabezpečení v tenantovi funguje s následujícími typy aplikací:
 
-- Aplikace, konfigurované pro federované jednotné přihlašování pomocí ověřování založené na SAML
-- Proxy aplikace, které používají předběžné ověřování Azure AD
-- Aplikace vytvořené přímo na platformě Azure AD aplikace, které používají OAuth 2.0 a OpenID Connect ověřování po uživatel nebo správce vyjádřil souhlas tuto aplikaci.
+- Aplikace nakonfigurované pro federované jednotné přihlašování s ověřováním založeném na SAML
+- Aplikace proxy aplikací, které používají předběžné ověřování Azure AD
+- Aplikace vytvořené přímo na aplikační platformě Azure AD, které používají ověřování OAuth 2.0/OpenID, po tom, co uživatel nebo správce souhlasí s touto aplikací.
 
      > [!NOTE]
-     > Tato funkce je dostupná pro webovou aplikaci nebo webové rozhraní API a podnikovými aplikacemi pouze. Aplikace, které jsou registrovány jako [nativní](quickstart-v1-integrate-apps-with-azure-ad.md) nemůže být omezeny na sadu uživatelů nebo skupin zabezpečení v tenantovi.
+     > Tato funkce je dostupná jenom pro webovou aplikaci/webové rozhraní API a podnikové aplikace. Aplikace, které jsou zaregistrované jako [nativní](quickstart-v1-integrate-apps-with-azure-ad.md) , se nedají omezit na skupinu uživatelů nebo skupin zabezpečení v tenantovi.
 
-## <a name="update-the-app-to-enable-user-assignment"></a>Aktualizace aplikace, abyste umožnili přiřazení uživatelů
+## <a name="update-the-app-to-enable-user-assignment"></a>Aktualizace aplikace, aby se povolilo přiřazení uživatele
 
-1. Přejděte [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
-1. Na horním panelu vyberte účet přihlášený. 
-1. V části **Directory**, vyberte tenanta Azure AD, kde bude aplikace zaregistrované.
-1. V navigačním panelu na levé straně vyberte **Azure Active Directory**. Pokud Azure Active Directory není k dispozici v navigačním podokně, postupujte podle těchto kroků:
+Existují dva způsoby, jak vytvořit aplikaci s povoleným přiřazením uživatele. Jedna z nich vyžaduje roli **globálního správce** , druhá ne.
 
-    1. Vyberte **všechny služby** v horní části hlavní navigační nabídce vlevo.
-    1. Zadejte **Azure Active Directory** do vyhledávacího pole filtrovat a pak vyberte **Azure Active Directory** položky z výsledku.
+### <a name="enterprise-applications-requires-the-global-adminstrator-role"></a>Podnikové aplikace (vyžaduje globální roli správce)
 
-1. V **Azure Active Directory** vyberte **podnikové aplikace** z **Azure Active Directory** navigační nabídce vlevo.
-1. Vyberte **všechny aplikace** zobrazíte seznam všech aplikací.
+1. Přejít na [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce**.
+1. V horním panelu vyberte přihlášený účet. 
+1. V části **adresář**vyberte TENANTA Azure AD, ve kterém se aplikace zaregistruje.
+1. V navigaci vlevo vyberte **Azure Active Directory**. Pokud v navigačním podokně není Azure Active Directory k dispozici, postupujte následovně:
 
-     Pokud nevidíte aplikaci, kterou má, zobrazí se zde, pomocí různých filtrů v horní části **všechny aplikace** seznamu k omezení seznamu nebo přejděte dolů v seznamu vyhledejte aplikace.
+    1. V horní části hlavní navigační nabídky vlevo vyberte **všechny služby** .
+    1. Do vyhledávacího pole filtru zadejte **Azure Active Directory** a pak vyberte položku **Azure Active Directory** z výsledku.
 
-1. Vyberte aplikaci, kterou chcete přiřadit uživatele nebo skupinu zabezpečení a ze seznamu.
-1. V aplikaci prvku **přehled** stránce **vlastnosti** levé navigační nabídce aplikace.
-1. Vyhledejte nastavení **přiřazení uživatelů povinné?** a nastavte ho na **Ano**. Když je tato možnost nastavená na **Ano**, pak uživatelé musí být přiřazen k této aplikaci, aby mohli k němu přistupovat.
-1. Vyberte **Uložit** uložte tuto změnu konfigurace.
+1. V podokně **Azure Active Directory** v navigační nabídce **Azure Active Directory** vlevo vyberte **podnikové aplikace** .
+1. Výběrem **všech aplikací** zobrazíte seznam všech aplikací.
+
+     Pokud nevidíte tu aplikaci, kterou chcete zobrazit, pomocí různých filtrů v horní části seznamu **všechny aplikace seznam všech aplikací** omezte nebo posuňte seznam a vyhledejte svoji aplikaci.
+
+1. Ze seznamu vyberte aplikaci, kterou chcete přiřadit uživatele nebo skupinu zabezpečení.
+1. Na stránce **Přehled** aplikace vyberte možnost **vlastnosti** z navigační nabídky aplikace na levé straně.
+1. Vyhledejte nastavení **přiřazení uživatele požadované?** a nastavte ho na **Ano**. Pokud je tato možnost nastavená na **hodnotu Ano**, uživatelé se musí nejdřív přiřadit k této aplikaci dřív, než k nim budou mít přístup.
+1. Vyberte **Uložit** a uložte tuto změnu konfigurace.
+
+### <a name="app-registration"></a>Registrace aplikace
+
+1. Přejít na [**Azure Portal**](https://portal.azure.com/).
+1. V horním panelu vyberte přihlášený účet. 
+1. V části **adresář**vyberte TENANTA Azure AD, ve kterém se aplikace zaregistruje.
+1. V navigaci vlevo vyberte **Azure Active Directory**.
+1. V podokně **Azure Active Directory** v navigační nabídce **Azure Active Directory** levé straně vyberte **Registrace aplikací** .
+1. Vytvořte nebo vyberte aplikaci, kterou chcete spravovat. Musíte být **vlastníkem** této registrace aplikace.
+1. Na stránce **Přehled** aplikace použijte odkaz **spravovaná aplikace v místním adresáři** v horní části stránky. Tím přejdete na _spravovanou podnikovou aplikaci_ registrace vaší aplikace.
+1. V okně navigace vlevo vyberte **vlastnosti**.
+1. Vyhledejte nastavení **přiřazení uživatele požadované?** a nastavte ho na **Ano**. Pokud je tato možnost nastavená na **hodnotu Ano**, uživatelé se musí nejdřív přiřadit k této aplikaci dřív, než k nim budou mít přístup.
+1. Vyberte **Uložit** a uložte tuto změnu konfigurace.
 
 ## <a name="assign-users-and-groups-to-the-app"></a>Přiřazení uživatelů a skupin k aplikaci
 
-Po konfiguraci vaší aplikace, abyste umožnili přiřazení uživatelů, můžete pokračovat a přiřazení uživatelů a skupin k aplikaci.
+Jakmile nakonfigurujete aplikaci tak, aby umožňovala přiřazení uživatele, můžete pokračovat a přiřadit uživatele a skupiny k aplikaci.
 
-1. Vyberte **uživatelů a skupin** podokno v levé navigační nabídce aplikace.
-1. V horní části **uživatelů a skupin** seznamu, vyberte **přidat uživatele** tlačítko Otevřít **přidat přiřazení** podokně.
-1. Vyberte **uživatelé** pro výběr **přidat přiřazení** podokně. 
+1. V navigační nabídce levé části aplikace vyberte podokno **Uživatelé a skupiny** .
+1. V horní části seznamu **uživatelů a skupin** vyberte tlačítko **Přidat uživatele** a otevřete podokno **Přidat přiřazení** .
+1. V podokně **Přidat přiřazení** vyberte selektor **uživatelů** . 
 
-     Seznam uživatelů a skupin zabezpečení se zobrazí spolu s textového pole hledání a vyhledejte uživatele nebo skupinu. Tato obrazovka umožňuje vybrat najednou více uživatelů a skupin.
+     Zobrazí se seznam uživatelů a skupin zabezpečení spolu s textovým polem, kde můžete vyhledat určitého uživatele nebo skupinu. Tato obrazovka umožňuje vybrat více uživatelů a skupin v jednom přechodu.
 
-1. Po dokončení výběru uživatelů a skupin, stiskněte **vyberte** tlačítko na konci článku přejít k další části.
-1. Stisknutím klávesy **přiřadit** tlačítko v dolní části na dokončení přiřazení uživatelů a skupin k aplikaci. 
-1. Potvrďte, že uživatelé a skupiny, které jste přidali se zobrazují v aktualizovaném **uživatelů a skupin** seznamu.
+1. Až budete hotovi s výběrem uživatelů a skupin, přejděte kliknutím na tlačítko **Vybrat** v dolní části na další část.
+1. Stisknutím tlačítka **přiřadit** v dolní části dokončíte přiřazení uživatelů a skupin do aplikace. 
+1. Ověřte, že se uživatelé a skupiny, které jste přidali, zobrazují v seznamu aktualizovaných **uživatelů a skupin** .
 

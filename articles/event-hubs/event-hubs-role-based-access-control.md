@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: dfdeee9591b5d6ccbadadaef83c6598dd0e850d8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 117b7d4adb508628ee768bb9531d0bbc52f61121
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448143"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816057"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktivní Directory Role-Based řízení přístupu (preview)
 
@@ -27,19 +27,19 @@ Pro Azure Event Hubs, Správa oborů názvů a všech souvisejících prostředk
 Aplikace, která používá Azure AD RBAC není potřeba zpracovat pravidla SAS a klíče nebo jiné přístupové tokeny specifické pro službu Event Hubs. Klientská aplikace komunikuje se službou Azure AD k navázání kontext ověřování a získá přístupový token pro službu Event Hubs. S uživatelskými účty domény, které vyžadují interaktivního přihlášení aplikace nikdy zpracovává všechny přihlašovací údaje přímo.
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs role a oprávnění
-Azure poskytuje následující předdefinované role RBAC pro autorizaci přístupu pro obor názvů služby Event Hubs:
+Azure poskytuje následující předdefinované role RBAC pro autorizaci přístupu k oboru názvů Event Hubs:
 
-[Vlastník dat centra událostí Azure (Preview)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) role umožňuje přístup k datům na obor názvů služby Event Hubs a jeho entit (fronty, témata, odběry a filtry)
+Role [vlastníka dat Event Hubs Azure (Preview)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) umožňuje přístup k datům z oboru názvů Event Hubs a jeho entit (fronty, témata, odběry a filtry).
 
 >[!IMPORTANT]
-> Dříve podporován spravované identity k přidání **vlastníka** nebo **Přispěvatel** role. Nicméně oprávnění pro přístup k datům **vlastníka** a **Přispěvatel** role už jsou zachované. Pokud používáte **vlastníka** nebo **Přispěvatel** role, přepínače na **vlastník dat centra událostí Azure (Preview)** role.
+> Dříve jsme podporovali přidání spravované identity do role **vlastníka** nebo **přispěvatele** . Oprávnění pro přístup k datům pro **vlastníka** a roli přispěvatele se ale už neuplatňují. Pokud používáte roli **vlastníka** nebo **Přispěvatel** , přepněte se na použití role **vlastníka dat Event Hubs Azure (Preview)** .
 
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Uživatelský účet domény Azure AD pomocí služby Event Hubs
 
 Následující část popisuje kroky potřebné k vytvoření a spuštění ukázkové aplikace, který zobrazí výzvu k zadání interaktivní Azure AD přihlášení uživatele, jak udělit přístup k Event Hubs s daným uživatelským účtem a tom, jak použít tuto identitu pro přístup k Event Hubs. 
 
-Tento úvod popisuje jednoduchou konzolovou aplikaci, [kód, pro který je na Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)
+Tento Úvod popisuje jednoduchou konzolovou aplikaci, [jejíž kód je na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK) .
 
 ### <a name="create-an-active-directory-user-account"></a>Vytvoření účtu uživatele služby Active Directory
 
@@ -49,7 +49,7 @@ Pokud chcete vytvořit zvláštní účet pro tento scénář [postupujte podle 
 
 ### <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
-Dále [vytvořte obor názvů služby Event Hubs](event-hubs-create.md). 
+Dále [vytvořte obor názvů Event Hubs](event-hubs-create.md). 
 
 Jakmile se vytvoří obor názvů, přejděte do jeho **řízení přístupu (IAM)** stránky na portálu a potom klikněte na **přidat přiřazení role** přidání do role vlastníka účtu uživatele Azure AD. Pokud používáte vlastní uživatelský účet a vytvořili obor názvů, jste již v roli vlastník. Pokud chcete přidat jiný účet k roli, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na položku. Potom klikněte na **Uložit**. Uživatelský účet má teď přístup k oboru názvů služby Event Hubs a do centra událostí, kterou jste vytvořili dřív.
  
@@ -65,18 +65,18 @@ Podrobné registrační kroky jsou vysvětlené v [v tomto kurzu](../active-dire
 
 Před spuštěním ukázky, upravte soubor App.config a v závislosti na scénáři, nastavte následující hodnoty:
 
-- `tenantId`: Nastavte na **TenantId** hodnotu.
-- `clientId`: Nastavte na **ApplicationId** hodnotu. 
-- `clientSecret`: Pokud chcete k přihlášení pomocí tajného klíče klienta, vytvořte ho ve službě Azure AD. Také můžete použijte webovou aplikaci nebo API namísto nativní aplikaci. Přidejte také aplikaci v rámci **řízení přístupu (IAM)** v oboru názvů, kterou jste vytvořili dřív.
-- `eventHubNamespaceFQDN`: Nastavte na plně kvalifikovaný název DNS vašeho nově vytvořeného oboru názvů služby Event Hubs; například `example.servicebus.windows.net`.
+- `tenantId`: Nastavte na hodnotu **TenantId** .
+- `clientId`: Nastavte na hodnotu **ApplicationId** . 
+- `clientSecret`: Pokud se chcete přihlásit pomocí tajného kódu klienta, vytvořte ho v Azure AD. Také můžete použijte webovou aplikaci nebo API namísto nativní aplikaci. Přidejte také aplikaci v rámci **řízení přístupu (IAM)** v oboru názvů, kterou jste vytvořili dřív.
+- `eventHubNamespaceFQDN`: Nastavte na plně kvalifikovaný název DNS nově vytvořeného oboru názvů Event Hubs; například `example.servicebus.windows.net`.
 - `eventHubName`: Nastavte na název centra událostí, které jste vytvořili.
 - Identifikátor URI pro přesměrování, který jste zadali ve vaší aplikaci v předchozích krocích.
  
 Když spustíte aplikaci konzoly, zobrazí se výzva k výběru scénáře; Klikněte na tlačítko **interaktivní přihlášení uživatele** zadáním příslušného čísla a stisknutím klávesy ENTER. Aplikace zobrazí okno přihlášení, vyzve k zadání vašeho svolení pro přístup k Event Hubs a potom použije službu pro spuštění prostřednictvím scénář posílání a přijímání pomocí identity přihlášení.
 
-Tato aplikace používá `ServiceAudience.EventHubsAudience` jako cílové skupiny tokenu. Při použití jiných jazyků nebo sad SDK, kde není k dispozici jako konstantu. na cílovou skupinu, je správná hodnota používat `https://eventhubs.azure.net/`.
+Aplikace používá `ServiceAudience.EventHubsAudience` jako cílovou skupinu tokenů. Při použití jiných jazyků nebo sad SDK, kde cílová skupina není k dispozici jako konstanta, je `https://eventhubs.azure.net/`nejvhodnější hodnota pro použití.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
 

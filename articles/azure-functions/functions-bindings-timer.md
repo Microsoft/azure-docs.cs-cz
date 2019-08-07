@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: ef02c8120775aa119aff44ff7a06bccf2bc70a21
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 962c28c8b081980c2715d4d78739662e86748bd1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377342"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814444"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
@@ -125,7 +125,7 @@ Následující ukázková funkce se spustí a provede každých pět minut. Pozn
 ```java
 @FunctionName("keepAlive")
 public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
       ExecutionContext context
  ) {
      // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
@@ -225,7 +225,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**type** | neuvedeno | Musí být nastavené na "timerTrigger". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
 |**direction** | neuvedeno | Musí být nastavena na "in". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné, která představuje objekt časovače v kódu funkce. | 
-|**schedule**|**ScheduleExpression**|[Výraz cron](#cron-expressions) nebo hodnota [TimeSpan](#timespan) . `TimeSpan` Dá se použít jenom pro aplikaci Function App, která běží na plánu App Service. Výraz plánu můžete zadat do nastavení aplikace a tuto vlastnost nastavit na název nastavení aplikace zabalené v **%** části znaky, jako v tomto příkladu: "% ScheduleAppSetting%". |
+|**schedule**|**ScheduleExpression**|[Výraz cron](#ncrontab-expressions) nebo hodnota [TimeSpan](#timespan) . `TimeSpan` Dá se použít jenom pro aplikaci Function App, která běží na plánu App Service. Výraz plánu můžete zadat do nastavení aplikace a tuto vlastnost nastavit na název nastavení aplikace zabalené v **%** části znaky, jako v tomto příkladu: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|Pokud `true`je funkce vyvolána při spuštění modulu runtime. Například modul runtime začíná, když se aplikace funkce probudí po přechodu do stavu nečinnosti z důvodu neaktivity. Když se aplikace Function App restartuje kvůli změnám funkcí a když se aplikace Function App škáluje. Takže **runOnStartup** by měl být zřídka nastavený na `true`, zejména v produkčním prostředí. |
 |**useMonitor**|**UseMonitor**|Nastavte na `true` nebo `false` , pokud chcete určit, jestli se má plán monitorovat. Plánování monitorování přetrvává i v případě, že dojde k podpoře při zajištění správné údržby plánu i v případě restartování instancí aplikace Function App. Pokud není explicitně nastaveno, je `true` výchozí hodnota pro plány, které mají interval opakování delší než 1 minuta. Pro plány, které se spouštějí více než jednou za minutu, je `false`výchozí hodnota.
 
@@ -253,9 +253,9 @@ Když je vyvolána funkce Trigger časovače, je do funkce předán objekt Timer
 
 `IsPastDue` Vlastnost je`true` v případě, že aktuální volání funkce je pozdější než naplánované. Například restartování aplikace funkce může způsobit, že by se vyvolání vynechalo.
 
-## <a name="cron-expressions"></a>Výrazy CRON 
+## <a name="ncrontab-expressions"></a>Výrazy NCRONTAB 
 
-Azure Functions používá knihovnu [NCronTab](https://github.com/atifaziz/NCrontab) k interpretaci výrazů cron. Výraz CRON obsahuje šest polí:
+Azure Functions používá knihovnu [NCronTab](https://github.com/atifaziz/NCrontab) k interpretaci výrazů NCronTab. NCRONTAB exppression je podobný výrazu CRON s tím rozdílem, že obsahuje další šesté pole na začátku, které se má použít pro časovou přesnost v sekundách:
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
@@ -271,9 +271,9 @@ Každé pole může mít jeden z následujících typů hodnot:
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
-### <a name="cron-examples"></a>Příklady CRON
+### <a name="ncrontab-examples"></a>Příklady NCRONTAB
 
-Tady je několik příkladů CRON výrazů, které můžete použít pro aktivační událost časovače v Azure Functions.
+Tady je několik příkladů NCRONTAB výrazů, které můžete použít pro aktivační událost časovače v Azure Functions.
 
 |Příklad|Při aktivaci  |
 |---------|---------|
@@ -284,25 +284,24 @@ Tady je několik příkladů CRON výrazů, které můžete použít pro aktiva�
 |`"0 30 9 * * *"`|každý den v 9:30.|
 |`"0 30 9 * * 1-5"`|v 9:30. každý den v týdnu|
 |`"0 30 9 * Jan Mon"`|v 9:30 ráno každé pondělí v lednu|
->[!NOTE]   
->Příklady výrazů cron můžete najít online, ale mnoho z nich vynechává `{second}` pole. Pokud kopírujete z jednoho z nich, přidejte chybějící `{second}` pole. Obvykle v tomto poli budete chtít nulu, ne hvězdičku.
 
-### <a name="cron-time-zones"></a>CRON časová pásma
+
+### <a name="ncrontab-time-zones"></a>NCRONTAB časová pásma
 
 Čísla ve výrazu CRON odkazují na datum a čas, ne na časový rozsah. Například 5 v `hour` poli odkazuje na 5:00 dop. a ne každých 5 hodin.
 
 Výchozí časové pásmo použité s výrazy CRON je koordinovaný světový čas (UTC). Pokud chcete mít výraz CRON založený na jiném časovém pásmu, vytvořte nastavení aplikace pro aplikaci Function App `WEBSITE_TIME_ZONE`s názvem. Nastavte hodnotu na název požadovaného časového pásma, jak je znázorněno v [indexu časového pásma Microsoftu](https://technet.microsoft.com/library/cc749073). 
 
-Například *východní běžný čas* je UTC-05:00. Pokud chcete, aby se aktivovala aktivační událost časovače v 10:00.., použijte následující výraz CRON, který obsahuje účty pro časové pásmo UTC:
+Například *východní běžný čas* je UTC-05:00. Pokud chcete, aby se aktivovala aktivační událost časovače v 10:00.., použijte následující výraz NCRONTAB, který obsahuje účty pro časové pásmo UTC:
 
-```json
-"schedule": "0 0 15 * * *"
+```
+"0 0 15 * * *"
 ``` 
 
-Nebo vytvořte nastavení aplikace pro aplikaci Function App s názvem `WEBSITE_TIME_ZONE` a nastavte hodnotu na **východní běžný čas**.  Pak používá následující výraz CRON: 
+Nebo vytvořte nastavení aplikace pro aplikaci Function App s názvem `WEBSITE_TIME_ZONE` a nastavte hodnotu na **východní běžný čas**.  Pak používá následující výraz NCRONTAB: 
 
-```json
-"schedule": "0 0 10 * * *"
+```
+"0 0 10 * * *"
 ``` 
 
 Když použijete `WEBSITE_TIME_ZONE`, čas se upraví pro časové změny v konkrétním časovém pásmu, jako je například letní čas. 
@@ -338,7 +337,7 @@ Na rozdíl od triggeru fronty se aktivační událost časovače neopakuje po ch
 
 Informace o tom, co dělat, když aktivační událost časovače nefunguje podle očekávání, najdete v tématu [zkoumání a hlášení problémů s aktivovanými funkcemi aktivované časovačem](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Přejít k rychlému startu, který používá aktivační událost časovače](functions-create-scheduled-function.md)

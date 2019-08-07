@@ -7,14 +7,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c28cf4326593897dcbc90902737fc4846356078d
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 4f2a34e63a870814c8d2a3ffe24c60083c9d7bb2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653385"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781110"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
+# <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Nejčastější dotazy k Azure Disk Encryption pro virtuální počítače s IaaS
 
 Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o Azure Disk Encryption pro Windows a virtuálních počítačů IaaS s Linuxem. Další informace o této službě najdete v tématu [Azure Disk Encryption pro Windows a virtuálních počítačů IaaS s Linuxem](azure-security-disk-encryption-overview.md).
 
@@ -34,28 +34,28 @@ Neplatí žádné poplatky pro šifrování disků virtuálních počítačů po
 
 Abyste mohli začít, přečtěte si [přehled Azure Disk Encryption](azure-security-disk-encryption-overview.md).
 
-## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Jaké velikosti virtuálních počítačů a operační systémy podporují Azure Disk Encryption?
+## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Jaké velikosti a operační systémy pro virtuální počítače podporují Azure Disk Encryption?
 
-[Požadavky Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) článek seznamy [velikosti virtuálních počítačů](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes) a [virtuální počítač operační systémy](azure-security-disk-encryption-prerequisites.md#supported-operating-systems) , které podporují Azure Disk Encryption.
+V článku [Azure Disk Encryption předpoklady](azure-security-disk-encryption-prerequisites.md) jsou uvedené [velikosti virtuálních počítačů](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes) a [operační systémy virtuálních počítačů](azure-security-disk-encryption-prerequisites.md#supported-operating-systems) , které podporují Azure Disk Encryption.
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Můžete šifrovat spouštěcích a datových svazků s Azure Disk Encryption?
 
-Ano, můžete šifrovat spouštěcích a datových svazků pro Windows a virtuálních počítačů IaaS s Linuxem. Pro virtuální počítače s Windows nejde šifrovat data bez první šifrování svazku operačního systému. Pro virtuální počítače s Linuxem je možné šifrovat objem dat bez nutnosti nejprve šifrování svazku operačního systému. Zakázáním šifrování svazku operačního systému pro virtuální počítače IaaS s Linuxem není podporována po zašifrujete svazek s operačním systémem Linux. Pro virtuální počítače s Linuxem ve škálovací sadě mohou být šifrována pouze datový svazek.
+Ano, můžete šifrovat spouštěcích a datových svazků pro Windows a virtuálních počítačů IaaS s Linuxem. Pro virtuální počítače s Windows nejde šifrovat data bez první šifrování svazku operačního systému. Pro virtuální počítače s Linuxem je možné šifrovat objem dat bez nutnosti nejprve šifrování svazku operačního systému. Zakázáním šifrování svazku operačního systému pro virtuální počítače IaaS s Linuxem není podporována po zašifrujete svazek s operačním systémem Linux. Pro virtuální počítače se systémem Linux v sadě škálování je možné šifrovat pouze datový svazek.
 
-## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Můžete šifrovat odpojený svazek s Azure Disk Encryption?
+## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Můžu pomocí Azure Disk Encryption zašifrovat nepřipojený svazek?
 
-Ne, Azure Disk Encryption zašifruje pouze připojené svazky.
+Ne, Azure Disk Encryption pouze šifruje připojené svazky.
 
-## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Jak otočit tajné kódy nebo šifrovací klíče?
+## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Návody přetočit tajné klíče a šifrovací klíče?
 
-Otočit tajné klíče, stačí zavolat stejný příkaz, který jste původně použili povolit šifrování disku, zadáte jiný trezor klíčů. Obměna klíčů šifrovací klíč, volání stejný příkaz, který jste použili původně povolit šifrování disku, určení nové šifrovací klíče. 
+K otočení tajných kódů stačí zavolat stejný příkaz, který jste použili k povolení šifrování disku, a zadat jiný Key Vault. Pokud chcete otočit klíč šifrovacího klíče, zavolejte stejný příkaz, který jste použili k povolení šifrování disku, a určete nové šifrování klíče. 
 
 >[!WARNING]
-> - Pokud jste už dřív použili [Azure Disk Encryption pomocí Azure AD app](azure-security-disk-encryption-prerequisites-aad.md) zadáním přihlašovacích údajů Azure AD k šifrování tohoto virtuálního počítače, budete muset pokračovat tuto možnost použijte k šifrování virtuálního počítače. Nemůžete použít [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) na tento šifrovaný virtuální počítač jako tato akce není podporovaný scénář význam přepnutí mimo aplikaci AAD pro tento šifrovaný virtuální počítač se zatím nepodporuje.
+> - Pokud jste dřív používali [Azure Disk Encryption s aplikací Azure AD](azure-security-disk-encryption-prerequisites-aad.md) zadáním přihlašovacích údajů Azure AD k zašifrování tohoto virtuálního počítače, budete muset tuto možnost použít k ZAšifrování virtuálního počítače. V tomto šifrovaném virtuálním počítači nemůžete použít [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) , protože se nejedná o podporovaný scénář, což znamená, že pro tento zašifrovaný virtuální počítač se zatím nepodporuje přepínání z aplikace AAD.
 
-## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>Jak přidat nebo odebrat šifrovací klíč klíče, pokud nebyla původně ji používat?
+## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>Návody přidat nebo odebrat klíč šifrování klíče, pokud jsem ho původně nepoužíval?
 
-Chcete-li přidat šifrovací klíč klíče, volání příkazu povolit znovu předávání parametru klíče šifrování pomocí klíče. Chcete-li odebrat šifrovací klíč klíče, volání příkazu povolit znovu bez parametru klíče šifrování pomocí klíče.
+Chcete-li přidat klíč šifrování klíče, zavolejte příkaz Enable znovu předáním parametru šifrovacího klíče klíče. Chcete-li odebrat klíč šifrovacího klíče, zavolejte příkaz Enable znovu bez parametru šifrovacího klíče klíče.
 
 ## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok"></a>Azure Disk Encryption umožňuje přinést si vlastní klíč (BYOK)?
 
@@ -88,9 +88,9 @@ Ano. Šifrování disku pomocí aplikace Azure AD je nadále podporován. Ale p�
 Použijte nejnovější verzi sady SDK Azure Powershellu ke konfiguraci Azure Disk Encryption. Stáhněte si nejnovější verzi [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases). Azure Disk Encryption je *není* podporuje sadu Azure SDK verze 1.1.0.
 
 > [!NOTE]
-> Rozšíření Linux Azure disk encryption ve verzi preview "Microsoft.OSTCExtension.AzureDiskEncryptionForLinux" je zastaralá. Toto rozšíření bylo publikováno pro Azure disk encryption ve verzi preview. Rozšíření ve verzi preview byste neměli používat v rámci testování nebo produkčním nasazení.
+> Rozšíření Microsoft. OSTCExtension. AzureDiskEncryptionForLinux ve verzi Preview pro Linux Azure Disk Encryption je zastaralé. Toto rozšíření bylo publikováno pro verzi Preview služby Azure Disk Encryption. V testovacím nebo produkčním nasazení byste neměli používat verzi Preview rozšíření.
 
-> Pro scénáře nasazení, jako je Azure Resource Manager (ARM), kde máte třeba nasadit rozšíření Azure disk encryption pro virtuální počítač s Linuxem povolíte šifrování u virtuálního počítače IaaS s Linuxem, je nutné použít rozšíření Azure disk encryption produkčním prostředí podporované" Microsoft.Azure.Security.AzureDiskEncryptionForLinux".
+> U scénářů nasazení, jako je například Azure Resource Manager (ARM), kde potřebujete nasadit rozšíření Azure Disk Encryption pro virtuální počítač se systémem Linux, aby bylo možné na svém VIRTUÁLNÍm počítači se systémem Linux IaaS povolit šifrování, je nutné použít rozšíření podporované provozním prostředím Azure Disk Encryption. Microsoft. Azure. Security. AzureDiskEncryptionForLinux ".
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>Můžete použít Azure Disk Encryption na své vlastní image Linuxu?
 
@@ -98,7 +98,7 @@ Azure Disk Encryption nelze použít na vlastní image Linuxu. Jsou podporovány
 
 ## <a name="can-i-apply-updates-to-a-linux-red-hat-vm-that-uses-the-yum-update"></a>Můžete použít aktualizace pro Red Hat virtuálního počítače s Linuxem, který používá aktualizace yum
 
-Ano, můžete provést aktualizace yumu na virtuálním počítači s Red Hat Linux.  Další informace najdete v tématu [Linux správy balíčků za bránou firewall](azure-security-disk-encryption-tsg.md#linux-package-management-behind-a-firewall).
+Ano, na virtuálním počítači se systémem Red Hat Linux můžete provést aktualizaci Yumu.  Další informace najdete v tématu [Správa balíčků pro Linux za bránou firewall](azure-security-disk-encryption-tsg.md#linux-package-management-behind-a-firewall).
 
 ## <a name="what-is-the-recommended-azure-disk-encryption-workflow-for-linux"></a>Co je pracovní postup doporučené Azure disk encryption pro Linux?
 
@@ -110,7 +110,7 @@ Následující pracovní postup se doporučuje mít nejlepších výsledků v Li
 
 Pokud tento pracovní postup není možné, spoléhat na [šifrování služby Storage](../storage/common/storage-service-encryption.md) (SSE) vrstvy účtu úložiště platformy mohou být o alternativu k šifrování celého disku pomocí dm-crypt.
 
-## <a name="what-is-the-disk-bek-volume-or-mntazurebekdisk"></a>Co je na disku "Svazek klíče Bek" nebo "/ mnt/azure_bek_disk"?
+## <a name="what-is-the-disk-bek-volume-or-mntazure_bek_disk"></a>Co je na disku "Svazek klíče Bek" nebo "/ mnt/azure_bek_disk"?
 
 "Klíče Bek" pro Windows nebo "/ mnt/azure_bek_disk" pro Linux je svazek místní data, která bezpečně ukládá šifrovací klíče pro šifrované virtuální počítače Azure IaaS.
 > [!NOTE]
@@ -119,17 +119,17 @@ Pokud tento pracovní postup není možné, spoléhat na [šifrování služby S
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Jakou metodu šifrování Azure Disk Encryption používá?
 
-Na Windows, ADE používá metodu šifrování nástrojem BitLocker AES256 (AES256WithDiffuser ve verzích starších než Windows Server 2012). V Linuxu ADE používá výchozí dešifrovat xts-aes-plain64 pomocí hlavního klíče svazku 256 bitů.
+V systému Windows používá ADE šifrovací metodu AES256 BitLocker (AES256WithDiffuser ve verzích starších než Windows Server 2012). V systému Linux používá ADE výchozí dešifrovací systém AES-XTS-plain64 s 256 bitovým hlavním klíčem svazku.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Je-li použít encryptformatall šifrovaně a určete všechny typy svazku vymaže jeho data na datové jednotky, které jsme už zašifrovali?
 Ne, smazání dat z datové jednotky, které už jsou šifrované pomocí Azure Disk Encryption. Podobně jako u jak encryptformatall šifrovaně nebyl znovu zašifrovat jednotky operačního systému, ho nebude znovu zašifrovat jednotka už zašifrovaná data. Další informace najdete v tématu [encryptformatall šifrovaně kritéria](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        
 
-## <a name="is-xfs-filesystem-supported"></a>Je podporováno XFS systému souborů?
-XFS svazky jsou podporovány pro datový disk encryption pouze pomocí encryptformatall šifrovaně. To se naformátovat, mazání všechna data již existuje. Další informace najdete v tématu [encryptformatall šifrovaně kritéria](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
+## <a name="is-xfs-filesystem-supported"></a>Je podporováno XFS systémem souborů?
+XFS svazky se podporují jenom pro šifrování datových disků s EncryptFormatAll. Tím se svazek znovu naformátuje a mazání všech dat tam už existuje. Další informace najdete v tématu [encryptformatall šifrovaně kritéria](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
 
-## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Můžete zálohovat a obnovit šifrovaný virtuální počítač? 
+## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Můžu zálohovat a obnovit zašifrovaný virtuální počítač? 
 
-Azure Backup poskytuje mechanismus pro zálohování a obnovení šifrovaných Virtuálních počítačů ve stejném předplatném a oblasti.  Pokyny najdete v tématu [zálohování a obnovení šifrovaných virtuálních počítačů pomocí služby Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).  Obnovení šifrovaných virtuálních počítačů do jiné oblasti se momentálně nepodporuje.  
+Azure Backup poskytuje mechanismus pro zálohování a obnovení šifrovaného virtuálního počítače v rámci stejného předplatného a oblasti.  Pokyny najdete v tématu [zálohování a obnovení šifrovaných virtuálních počítačů pomocí Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).  Obnovení šifrovaného virtuálního počítače do jiné oblasti se v tuto chvíli nepodporuje.  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Kam se můžu obrátit klást otázky nebo připomínky?
 
@@ -140,4 +140,4 @@ V tomto dokumentu jste se dozvěděli informace o nejčastější dotazy týkaj�
 
 - [Přehled Azure Disk Encryption](azure-security-disk-encryption-overview.md)
 - [Použít šifrování disku ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Azure data šifrování v klidovém stavu](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+- [Azure data šifrování v klidovém stavu](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

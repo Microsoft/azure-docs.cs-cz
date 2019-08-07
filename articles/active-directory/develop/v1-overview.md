@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory pro vývojáře (verze 1.0) – přehled
-description: Tento článek obsahuje přehled přihlašování Microsoft pracovních a školních účtů s využitím koncového bodu Azure Active Directory verze 1.0 a platformu.
+title: Přehled Azure Active Directory pro vývojáře (v 1.0)
+description: Tento článek poskytuje přehled o podepisování pracovních a školních účtů Microsoft pomocí koncového bodu a platformy Azure Active Directory v 1.0.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,7 +9,7 @@ ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/24/2018
@@ -17,19 +17,19 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13cc5c7ae428f74f2892e6066dfdcd7efb73efbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91f406198418571ec0d2c4d488909d3baaa494b1
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545240"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834664"
 ---
-# <a name="azure-active-directory-for-developers-v10-overview"></a>Azure Active Directory pro vývojáře (verze 1.0) – přehled
+# <a name="azure-active-directory-for-developers-v10-overview"></a>Přehled Azure Active Directory pro vývojáře (v 1.0)
 
 Azure Active Directory (Azure AD) je cloudová služba identit umožňující vývojářům sestavovat aplikace, které bezpečně přihlásí uživatele s pracovním nebo školním účtem Microsoft. Azure AD podporuje vývojáře vytvářející jak obchodní aplikace s jedním tenantem, tak i vývojáře, kteří se zajímají o vyvíjení aplikací s více tenanty. Kromě základního přihlašování umožňuje Azure AD volat nejen rozhraní API Microsoftu, jako je [Microsoft Graph](https://docs.microsoft.com/graph/overview), ale i vlastní rozhraní API vytvořená na platformě Azure AD. Tato dokumentace vám ukáže, jak do vlastní aplikace přidat podporu Azure AD s použitím standardních oborových protokolů, jako jsou OAuth 2.0 a OpenID Connect.
 
 > [!NOTE]
-> Většina obsahu na této stránce se zaměřuje na v1.0 koncový bod a platformu, která podporuje jenom Microsoft pracovní nebo školní účty. Pokud chcete k přihlášení uživatelů nebo osobní účty Microsoft, najdete v tématu [koncový bod verze 2.0 a platforma](v2-overview.md). Koncový bod v2.0 nabízí jednotné vývojářské prostředí pro aplikace, které chcete podepsat ve všech identitách Microsoft.
+> Většina obsahu na této stránce se zaměřuje na koncový bod a platformu v 1.0, které podporují jenom pracovní nebo školní účty Microsoftu. Pokud se chcete přihlásit k uživatelským nebo osobním účtům Microsoft, přečtěte si informace na [koncovém bodu a platformě verze 2.0](v2-overview.md). Koncový bod v 2.0 nabízí jednotné vývojářské prostředí pro aplikace, které se chtějí přihlašovat ke všem identitám Microsoftu.
 
 | | |
 | --- | --- |
@@ -39,11 +39,11 @@ Azure Active Directory (Azure AD) je cloudová služba identit umožňující v�
 
 ## <a name="get-started"></a>Začínáme
 
-Tato verze 1.0 šablon rychlý start a kurzy vás provedou vytvořením aplikace na preferované platformě pomocí Azure AD Authentication Library (ADAL) SDK. Najdete v článku **v1.0 rychlých startů** a **v1.0 kurzy** v [platforma identit Microsoft (Azure Active Directory pro vývojáře)](index.yml) začít.
+Rychlé starty a kurzy v 1.0 vás provedou vytvořením aplikace na upřednostňované platformě pomocí sady SDK knihovny ověřování v Azure AD. Pokud chcete začít, podívejte se na **kurzy** **rychlý Start v 1.0** a v 1.0 v tématu [Microsoft Identity Platform (Azure Active Directory pro vývojáře)](index.yml) .
 
 ## <a name="how-to-guides"></a>Návody
 
-Zobrazit **v1.0 provede postupy** pro podrobné informace a návody zvládnout běžné úkoly ve službě Azure AD.
+Podrobné informace a návody nejběžnějších úloh v Azure AD najdete v tématu **návody v 1.0** .
 
 ## <a name="reference-topics"></a>Referenční témata
 

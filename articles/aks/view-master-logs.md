@@ -1,61 +1,48 @@
 ---
-title: Zobrazit protokoly kontroleru Azure Kubernetes Service (AKS)
-description: Další informace o povolení a zobrazení protokolů pro hlavní uzel Kubernetes ve službě Azure Kubernetes Service (AKS)
+title: Zobrazit protokoly řadiče AKS (Azure Kubernetes Service)
+description: Naučte se, jak povolit a zobrazit protokoly pro hlavní uzel Kubernetes ve službě Azure Kubernetes Service (AKS).
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: mlearned
-ms.openlocfilehash: ef77b991461c5d9640cbab9d53f8393540f47c9b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: dc72a8d448a189918def35da0250d83c81da7fa0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613923"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812814"
 ---
-# <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolit a zkontrolovat Kubernetes hlavní uzel protokolů ve službě Azure Kubernetes Service (AKS)
+# <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolení a kontrola protokolů hlavního uzlu Kubernetes ve službě Azure Kubernetes (AKS)
 
-S Azure Kubernetes Service (AKS), hlavní součásti, jako *kube apiserver* a *správce kontroléru kube* jsou k dispozici jako spravovaná služba. Vytvořit a spravovat uzly, které běží *kubelet* a kontejner modulu runtime a nasadit vaše aplikace prostřednictvím spravovaného serveru Kubernetes API. K řešení potíží se vaše aplikace a služby, můžete zobrazit protokoly generované tyto hlavní součásti. Tento článek popisuje, jak používat Azure Monitor protokoly k povolení a dotazování protokolů z hlavní součásti Kubernetes.
+Pomocí služby Azure Kubernetes Service (AKS) jsou hlavní součásti, jako je například *Kube-apiserver* a *Kube-Controller-Manager* , poskytovány jako spravovaná služba. Můžete vytvářet a spravovat uzly, které spouštějí *kubelet* a modul runtime kontejnerů, a nasazovat aplikace prostřednictvím spravovaného serveru rozhraní Kubernetes API. Chcete-li pomoct s řešením vaší aplikace a služeb, bude pravděpodobně nutné zobrazit protokoly generované těmito hlavními komponentami. V tomto článku se dozvíte, jak používat protokoly Azure Monitor k povolení a dotazování protokolů z hlavních komponent Kubernetes.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek vyžaduje existující cluster AKS spuštěné v účtu Azure. Pokud již nemáte AKS cluster, vytvořte ji pomocí [rozhraní příkazového řádku Azure][cli-quickstart] or [Azure portal][portal-quickstart]. Azure Monitor protokoly funguje s oběma RBAC a není RBAC povolené AKS clustery.
+Tento článek vyžaduje existující cluster AKS spuštěný ve vašem účtu Azure. Pokud ještě nemáte cluster AKS, vytvořte ho pomocí [Azure CLI][cli-quickstart] nebo [Azure Portal][portal-quickstart]. Protokoly Azure Monitor fungují s clustery AKS s povolenou RBAC i bez RBAC.
 
-## <a name="enable-diagnostics-logs"></a>Povolení diagnostických protokolů
+## <a name="enable-diagnostics-logs"></a>Povolit diagnostické protokoly
 
-Ke shromáždění a data kontroly z více zdrojů protokoly Azure monitoru poskytuje dotazovací jazyk a analytický modul, který poskytuje přehledy pro vaše prostředí. Pracovní prostor se používá k porovnání a analyzovat data a můžete integrovat s dalšími službami Azure, jako je například služba Application Insights a Security Center. Pokud chcete použít k analýze protokolů různé platformy, místo toho můžete odesílání diagnostických protokolů do služby Azure storage účet nebo event hub. Další informace najdete v tématu [co je Azure Monitor protokoly?][log-analytics-overview].
+Aby bylo možné získat a zkontrolovat data z více zdrojů, Azure Monitor protokolů poskytuje dotazovací jazyk a analytický modul, který poskytuje přehledy pro vaše prostředí. Pracovní prostor se používá k kompletování a analýze dat a může se integrovat s dalšími službami Azure, jako jsou Application Insights a Security Center. Pokud chcete k analýze protokolů použít jinou platformu, můžete místo toho odeslat diagnostické protokoly do účtu úložiště Azure nebo centra událostí. Další informace najdete v tématu [co je Azure monitor protokolů?][log-analytics-overview].
 
-Protokoly služby Azure Monitor jsou povolit a spravovat na webu Azure Portal. Pokud chcete povolit shromažďování protokolů pro Kubernetes hlavní součásti v clusteru AKS, otevřete ve webovém prohlížeči na webu Azure portal a proveďte následující kroky:
+Protokoly Azure Monitor jsou v Azure Portal povolené a spravované. Chcete-li povolit shromažďování protokolů pro hlavní komponenty Kubernetes v clusteru AKS, otevřete Azure Portal ve webovém prohlížeči a proveďte následující kroky:
 
-1. Vyberte skupinu prostředků pro váš cluster AKS, jako je například *myResourceGroup*. Nevybírejte skupinu prostředků, která obsahuje vaše vybrané prostředky clusteru AKS, jako například *MC_myResourceGroup_myAKSCluster_eastus*.
-1. Na levé straně zvolte **nastavení diagnostiky**.
-1. Vyberte váš cluster AKS, jako je například *myAKSCluster*, pak se rozhodnout **přidejte nastavení diagnostiky**.
-1. Zadejte název, jako například *myAKSClusterLogs*, vyberte možnost **odesílat do Log Analytics**.
-1. Vyberte existující pracovní prostor nebo vytvořte novou. Pokud vytváříte pracovní prostor, zadejte název pracovního prostoru, skupinu prostředků a umístění.
-1. V seznamu dostupných protokolů vyberte protokoly, které si přejete povolit. Běžné protokoly obsahují *kube apiserver*, *správce kontroléru kube*, a *kube Plánovač*. Můžete povolit dodatečné protokolování, *kube auditu* a *clusteru bylo*. Můžete vrátit a změnit shromažďovat protokoly jsou povolené pracovních prostorů Log Analytics.
-1. Až to budete mít, vyberte **Uložit** povolení kolekce vybraných protokolů.
+1. Vyberte skupinu prostředků pro cluster AKS, například *myResourceGroup*. Nevybírejte skupinu prostředků, která obsahuje vaše jednotlivé prostředky clusteru AKS, jako je třeba *MC_myResourceGroup_myAKSCluster_eastus*.
+1. Na levé straně vyberte **nastavení diagnostiky**.
+1. Vyberte cluster AKS, jako je například *myAKSCluster*, a pak zvolte **Přidání nastavení diagnostiky**.
+1. Zadejte název, třeba *myAKSClusterLogs*, a pak vyberte možnost **odeslání do Log Analytics**.
+1. Vyberte existující pracovní prostor nebo vytvořte nový. Pokud vytváříte pracovní prostor, zadejte název pracovního prostoru, skupinu prostředků a umístění.
+1. V seznamu dostupných protokolů vyberte protokoly, které chcete povolit. Mezi běžné protokoly patří *Kube-apiserver*, *Kube-Controller-Manager*a *Kube-Scheduler*. Můžete povolit další protokoly, jako je například *Kube-audit* a *cluster-AutoScale*. Shromážděné protokoly můžete vrátit a změnit, jakmile jsou povolené pracovní prostory Log Analytics.
+1. Až budete připraveni, vyberte **Uložit** a povolte shromažďování vybraných protokolů.
 
-> [!NOTE]
-> AKS zaznamená pouze protokoly auditu pro clustery, které jsou vytvořeny nebo upgradovat po povolení příznak funkce v rámci předplatného. K registraci *AKSAuditLog* příznak funkce, použijte [az funkce register][az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
->
-> `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
->
-> Počkejte na zobrazení stavu *registrované*. Vy můžete zkontrolovat stav registrace pomocí [seznam funkcí az][az-feature-list] příkaz:
->
-> `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
->
-> Až to budete mít, aktualizovat registraci poskytovatele prostředků AKS pomocí [az provider register][az-provider-register] příkaz:
->
-> `az provider register --namespace Microsoft.ContainerService`
+Následující příklad snímku obrazovky portálu ukazuje okno *nastavení diagnostiky* :
 
-Následující příklad ukazuje snímek obrazovky portálu *nastavení diagnostiky* okno:
+![Povolit Log Analytics pracovní prostor pro Azure Monitor protokoly clusteru AKS](media/view-master-logs/enable-oms-log-analytics.png)
 
-![Povolit pracovní prostor Log Analytics pro Azure Monitor protokoly clusteru AKS](media/view-master-logs/enable-oms-log-analytics.png)
+## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Naplánování testu pod v clusteru AKS
 
-## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Plánování testů pod v clusteru AKS
-
-Generovat některé protokoly, vytvořte nový pod ve vašem clusteru AKS. Následující příklad YAML manifestu slouží k vytvoření základní instance NGINX. Vytvořte soubor s názvem `nginx.yaml` v editoru podle vašeho výběru a vložte následující obsah:
+Pokud chcete vygenerovat některé protokoly, vytvořte v clusteru AKS nový. Následující příklad manifestu YAML lze použít k vytvoření základní instance NGINX. Vytvořte soubor s názvem `nginx.yaml` v libovolném editoru a vložte následující obsah:
 
 ```yaml
 apiVersion: v1
@@ -77,7 +64,7 @@ spec:
     - containerPort: 80
 ```
 
-Vytvořte pod s [kubectl vytvořit][kubectl-create] příkaz a zadejte svůj soubor YAML, jak je znázorněno v následujícím příkladu:
+Vytvořte pod příkazem [kubectl Create][kubectl-create] a zadejte svůj soubor YAML, jak je znázorněno v následujícím příkladu:
 
 ```
 $ kubectl create -f nginx.yaml
@@ -85,13 +72,13 @@ $ kubectl create -f nginx.yaml
 pod/nginx created
 ```
 
-## <a name="view-collected-logs"></a>Zobrazení shromážděných protokolů
+## <a name="view-collected-logs"></a>Zobrazit shromážděné protokoly
 
-Může trvat několik minut, než se diagnostické protokoly povolena a zobrazí v pracovním prostoru Log Analytics. Na webu Azure Portal, vyberte skupinu prostředků pro váš pracovní prostor Log Analytics, jako je například *myResourceGroup*, klikněte na tlačítko prostředku log analytics, jako například *myAKSLogs*.
+Povolení a zobrazení diagnostických protokolů v pracovním prostoru Log Analytics může trvat několik minut. V Azure Portal vyberte skupinu prostředků pro pracovní prostor Log Analytics, například *myResourceGroup*, a pak zvolte svůj prostředek Log Analytics, například *myAKSLogs*.
 
-![Vyberte pracovní prostor Log Analytics pro váš cluster AKS](media/view-master-logs/select-log-analytics-workspace.png)
+![Výběr pracovního prostoru Log Analytics pro cluster AKS](media/view-master-logs/select-log-analytics-workspace.png)
 
-Na levé straně zvolte **protokoly**. Chcete-li zobrazit *kube apiserver*, v textovém poli zadejte následující dotaz:
+Na levé straně vyberte **protokoly**. Pokud chcete zobrazit *Kube-apiserver*, zadejte do textového pole tento dotaz:
 
 ```
 AzureDiagnostics
@@ -99,7 +86,7 @@ AzureDiagnostics
 | project log_s
 ```
 
-Mnoho protokolů jsou pravděpodobně vrátil serveru rozhraní API. K určení oboru dolů dotazu k zobrazení protokolů o pod NGINX vytvořili v předchozím kroku, přidat další *kde* příkazu k vyhledání *podů/nginx* jak ukazuje následující příklad dotazu:
+Pro Server rozhraní API je nejspíš vráceno mnoho protokolů. Chcete-li určit rozsah dotazu pro zobrazení protokolů NGINX pod vytvořením v předchozím kroku, přidejte další příkaz *WHERE* pro hledání *lusků/Nginx* , jak je znázorněno v následujícím příkladu dotazu:
 
 ```
 AzureDiagnostics
@@ -108,32 +95,40 @@ AzureDiagnostics
 | project log_s
 ```
 
-Jsou zobrazeny konkrétní protokoly pro podu NGINX, jak je znázorněno v následujícím ukázkovém snímku obrazovky:
+Zobrazí se konkrétní protokoly pro váš NGINX pod, jak je znázorněno v následujícím ukázkovém snímku obrazovky:
 
-![Výsledky dotazu log analytics pro ukázkové NGINX pod](media/view-master-logs/log-analytics-query-results.png)
+![Výsledky dotazu Log Analytics pro Sample NGINX pod](media/view-master-logs/log-analytics-query-results.png)
 
-Chcete-li zobrazit další protokoly, můžete aktualizovat dotaz pro *kategorie* název pro *kube správce kontroléru* nebo *kube Plánovač*, v závislosti na tom, jaké další protokoly můžete Povolte. Další *kde* příkazy lze pak použít pro upřesnění události, které hledáte.
+Pokud chcete zobrazit další protokoly, můžete aktualizovat dotaz pro název *kategorie* na *Kube-Controller-Manager* nebo *Kube-Scheduler*v závislosti na tom, jaké další protokoly jste povolili. Další příkazy *WHERE* lze použít k upřesnění událostí, které hledáte.
 
-Další informace o tom, jak dotazování a filtrování dat protokolu najdete v části [zobrazení nebo analýza shromážděných dat pomocí prohledávání protokolu log analytics][analyze-log-analytics].
+Další informace o tom, jak zadávat dotazy a filtrovat data protokolu, najdete v tématu [zobrazení nebo analýza dat shromážděných pomocí prohledávání protokolů Log Analytics][analyze-log-analytics].
 
 ## <a name="log-event-schema"></a>Schéma událostí protokolu
 
-A pomáhá tak analyzovat data protokolu, následující tabulka obsahuje podrobnosti o schéma používané pro každou jednotlivou událost:
+Následující tabulka podrobně popisuje schéma používané pro každou událost, aby bylo možné analyzovat data protokolu:
 
 | Název pole               | Popis |
 |--------------------------|-------------|
-| *ID prostředku*             | Prostředek Azure, který vytváří protokolu |
-| *čas*                   | Pokud byl nahrán do protokolu časové razítko |
-| *Kategorie*               | Název kontejneru nebo komponenty generování protokolu |
-| *OperationName*          | Vždy *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
+| *ID prostředku*             | Prostředek Azure, který vytvořil protokol |
+| *čas*                   | Časové razítko odeslání protokolu |
+| *Kategorie*               | Název kontejneru nebo komponenty generující protokol |
+| *OperationName*          | Vždy *Microsoft. ContainerService/managedClusters/diagnosticLogs/Read* |
 | *properties.log*         | Úplný text protokolu z komponenty |
-| *properties.stream*      | *STDERR* nebo *stdout* |
-| *properties.pod*         | Pod názvem, která v protokolu pochází z |
-| *properties.containerID* | ID, které tento protokol pochází z kontejneru dockeru |
+| *properties.stream*      | *stderr* nebo *stdout* |
+| *properties.pod*         | Pod názvem, ze kterého pochází protokol |
+| *properties.containerID* | ID kontejneru Docker, ze kterého pochází tento protokol |
+
+## <a name="log-roles"></a>Role protokolu
+
+| Role                     | Popis |
+|--------------------------|-------------|
+| *aksService*             | Zobrazovaný název v protokolu auditu pro operaci správy roviny (z hcpService) |
+| *masterclient*           | Zobrazovaný název v protokolu auditu pro MasterClientCertificate, certifikát, ze kterého získáte AZ AKS Get-Credentials |
+| *nodeclient*             | Zobrazovaný název pro ClientCertificate, který se používá v uzlech agentů |
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak povolit a zkontrolovat protokoly pro Kubernetes hlavní součásti v clusteru AKS. Ke sledování a řešení potíží s další, můžete také [zobrazení protokolů Kubelet][kubelet-logs] and [enable SSH node access][aks-ssh].
+V tomto článku jste zjistili, jak povolit a zkontrolovat protokoly pro hlavní komponenty Kubernetes v clusteru AKS. K dalšímu sledování a řešení potíží můžete také [Zobrazit protokoly Kubelet][kubelet-logs] a [Povolit přístup k uzlu SSH][aks-ssh].
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

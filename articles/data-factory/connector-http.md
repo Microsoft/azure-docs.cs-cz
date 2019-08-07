@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z zdroje HTTP pomocí Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data ze zdroje HTTP-místních i cloudových úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat ze zdroje HTTP pomocí Azure Data Factory | Microsoft Docs
+description: Naučte se kopírovat data z cloudového nebo místního zdroje HTTP na podporovaná úložiště dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,67 +10,67 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: a668bb2e0e3381abefaac93a0fb63f0d33bac5a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d6cc131c0c2baf7cc0a6600946870615d99e030
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234068"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839800"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu HTTP pomocí Azure Data Factory
 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-http-connector.md)
 > * [Aktuální verze](connector-http.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z koncového bodu HTTP. Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z koncového bodu HTTP. Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
 
-Rozdíly mezi tento konektor HTTP [REST konektor](connector-rest.md) a [webový tabulky konektor](connector-web-table.md) jsou:
+Rozdíl mezi tímto konektorem HTTP, [konektorem REST](connector-rest.md) a [konektorem webové tabulky](connector-web-table.md) jsou:
 
-- **Konektor REST** konkrétně podpora kopírování dat z rozhraní RESTful API; 
-- **Konektor HTTP** je obecný k načtení dat z jakékoli koncového bodu HTTP, třeba ke stažení souboru. Než konektor REST bude k dispozici, může dojít k používání konektoru HTTP ke zkopírování dat z rozhraní RESTful API, které je podporované, ale méně funkční porovnání konektor REST.
-- **Webový konektor tabulky** výpisy tabulky obsah webové stránce HTML.
+- **Konektor REST** přímo podporuje kopírování dat z rozhraní API RESTful. 
+- **Konektor http** je obecný k načtení dat z libovolného koncového bodu http, třeba ke stažení souboru. Než bude konektor REST k dispozici, můžete k tomu použít konektor HTTP ke kopírování dat z rozhraní RESTful API, které je podporováno, ale méně funkčních porovnání s konektorem REST.
+- **Konektor webové tabulky** extrahuje obsah tabulky z webové stránky HTML.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
-Kopírování dat z HTTP kódu do jakékoli podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
+Data ze zdroje HTTP můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Můžete použít tento konektor HTTP pro:
+Tento konektor HTTP můžete použít k těmto akcím:
 
-- Načtení dat z koncového bodu HTTP/S s využitím HTTP **získat** nebo **příspěvek** metody.
-- Načtení dat pomocí jedné z následujících ověření: **Anonymní**, **základní**, **Digest**, **Windows**, nebo **ClientCertificate**.
-- Zkopírovat odpověď HTTP jako-je a analyzovat pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
+- Načtěte data z koncového bodu HTTP/S pomocí metod HTTP **Get** nebo **post** .
+- Pomocí jednoho z následujících ověřování načtěte data: **Anonymní**, **základní**, **Digest**, **Windows**nebo **ClientCertificate**.
+- Zkopírujte odpověď HTTP tak, jak je, nebo ji Analyzujte pomocí [podporovaných formátů souborů a kompresních kodeků](supported-file-formats-and-compression-codecs.md).
 
 > [!TIP]
-> K testování požadavku HTTP pro načtení dat, než nakonfigurujete konektor HTTP ve službě Data Factory, přečtěte si o specifikace rozhraní API pro záhlaví a text požadavky. Nástroje, jako je Postman nebo ve webovém prohlížeči můžete použít k ověření.
+> Chcete-li otestovat požadavek HTTP na načtení dat před konfigurací konektoru HTTP v Data Factory, přečtěte si informace o specifikaci rozhraní API pro požadavky na hlavičku a tělo. K ověření můžete použít nástroje, jako je například nástroj pro odeslání nebo webový prohlížeč.
 
 ## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které lze použít k definování entit služby Data Factory, které jsou specifické pro konektor HTTP.
+Následující části obsahují podrobné informace o vlastnostech, které můžete použít k definování Data Factory entit specifických pro konektor HTTP.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro HTTP propojené služby jsou podporovány následující vlastnosti:
+Pro propojenou službu HTTP jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | **Typ** musí být vlastnost nastavena na **HttpServer**. | Ano |
+| type | Vlastnost **Type** musí být nastavena na hodnotu **HttpServer**. | Ano |
 | url | Základní adresa URL webového serveru. | Ano |
-| enableServerCertificateValidation | Určete, zda povolit ověření certifikátu serveru SSL při připojování k koncový bod HTTP. Pokud váš server HTTPS používá certifikát podepsaný svým držitelem, nastavte tuto vlastnost na **false**. | Ne<br /> (výchozí hodnota je **true**) |
-| authenticationType | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows**, a **ClientCertificate**. <br><br> Najdete v částech uvedené pod touto tabulkou další vlastnosti a ukázky JSON pro typy ověřování. | Ano |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace v Azure nebo v místním prostředí Integration Runtime. Pokud není zadán, tuto vlastnost používá výchozí prostředí Azure Integration Runtime. |Ne |
+| enableServerCertificateValidation | Určete, jestli se při připojení ke koncovému bodu HTTP má povolit ověřování certifikátu SSL serveru. Pokud váš server HTTPS používá certifikát podepsaný svým držitelem, nastavte tuto vlastnost na **false**. | Ne<br /> (výchozí hodnota je **true**) |
+| authenticationType | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows**a **ClientCertificate**. <br><br> Další vlastnosti a ukázky JSON pro tyto typy ověřování najdete v částech uvedených v této tabulce. | Ano |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Můžete použít Azure Integration Runtime nebo místně hostované Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud tento parametr nezadáte, použije tato vlastnost výchozí Azure Integration Runtime. |Ne |
 
-### <a name="using-basic-digest-or-windows-authentication"></a>Používá ověřování Basic, Digest nebo Windows
+### <a name="using-basic-digest-or-windows-authentication"></a>Použití ověřování Basic, Digest nebo Windows
 
-Nastavte **authenticationType** vlastnost **základní**, **Digest**, nebo **Windows**. Kromě generické vlastnosti, které jsou popsány v předchozí části zadejte následující vlastnosti:
+Nastavte vlastnost **AuthenticationType** na hodnotu **Basic**, **Digest**nebo **Windows**. Kromě obecných vlastností, které jsou popsány v předchozí části, zadejte následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| userName | Uživatelské jméno pro použití pro přístup ke koncovému bodu HTTP. | Ano |
+| userName | Uživatelské jméno, které se má použít pro přístup ke koncovému bodu HTTP. | Ano |
 | password | Heslo pro uživatele ( **userName** hodnota). Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 
 **Příklad**
@@ -97,24 +97,24 @@ Nastavte **authenticationType** vlastnost **základní**, **Digest**, nebo **Win
 }
 ```
 
-### <a name="using-clientcertificate-authentication"></a>Pomocí ověřování ClientCertificate
+### <a name="using-clientcertificate-authentication"></a>Použití ověřování ClientCertificate
 
-Chcete-li použít ClientCertificate ověřování, nastavte **authenticationType** vlastnost **ClientCertificate**. Kromě generické vlastnosti, které jsou popsány v předchozí části zadejte následující vlastnosti:
+Chcete-li použít ověřování ClientCertificate, nastavte vlastnost **AuthenticationType** na **ClientCertificate**. Kromě obecných vlastností, které jsou popsány v předchozí části, zadejte následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Požadováno |
 |:--- |:--- |:--- |
-| embeddedCertData | Data certifikátu s kódováním base64. | Zadejte buď **embeddedCertData** nebo **certThumbprint**. |
-| certThumbprint | Kryptografický otisk certifikátu, který je nainstalován v úložišti certifikátů v místním prostředí Integration Runtime v počítači. Platí, pouze když typ v místním prostředí Integration runtime je podle **connectVia** vlastnost. | Zadejte buď **embeddedCertData** nebo **certThumbprint**. |
-| password | Heslo, který je spojen s certifikátem. Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| embeddedCertData | Data certifikátu zakódovaná ve formátu base64. | Zadejte buď **embeddedCertData** nebo **certThumbprint**. |
+| certThumbprint | Kryptografický otisk certifikátu, který je nainstalovaný v úložišti certifikátů počítače Integration Runtime v místním prostředí. Platí pouze v případě, že je typ hosta Integration Runtime zadán ve vlastnosti **connectVia** . | Zadejte buď **embeddedCertData** nebo **certThumbprint**. |
+| password | Heslo, které je přidruženo k certifikátu. Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 
-Pokud používáte **certThumbprint** pro ověřování a certifikát, který je nainstalován v osobním úložišti místního počítače, udělit oprávnění ke čtení v místním prostředí Integration Runtime:
+Pokud pro ověřování používáte **certThumbprint** a certifikát se instaluje do osobního úložiště místního počítače, udělte oprávnění ke čtení Integration Runtimeům v místním prostředí:
 
-1. Otevřete konzolu Microsoft Management Console (MMC). Přidat **certifikáty** modul snap-in, zaměřuje **místního počítače**.
-2. Rozbalte **certifikáty** > **osobní**a pak vyberte **certifikáty**.
-3. Klikněte pravým tlačítkem na certifikát z osobního úložiště a pak vyberte **všechny úkoly** > **spravovat soukromé klíče**.
-3. Na **zabezpečení** kartu, přidejte uživatelský účet, pod kterým běží hostitelská služba Integration Runtime (DIAHostService) s přístupem pro čtení k certifikátu.
+1. Otevřete konzolu MMC (Microsoft Management Console). Přidejte modul snap-in **certifikáty** , který cílí na **místní počítač**.
+2. Rozbalte položku **certifikáty** > **osobní**a pak vyberte možnost **certifikáty**.
+3. Pravým tlačítkem myši klikněte na certifikát z osobního úložiště a pak vyberte **všechny úlohy** > **spravovat soukromé klíče**.
+3. Na kartě **zabezpečení** přidejte uživatelský účet, pod kterým je spuštěná služba Integration runtime Host (DIAHostService) s přístupem pro čtení k certifikátu.
 
-**Příklad 1: Pomocí certThumbprint**
+**Příklad 1: Použití certThumbprint**
 
 ```json
 {
@@ -134,7 +134,7 @@ Pokud používáte **certThumbprint** pro ověřování a certifikát, který je
 }
 ```
 
-**Příklad 2: Pomocí embeddedCertData**
+**Příklad 2: Použití embeddedCertData**
 
 ```json
 {
@@ -162,23 +162,23 @@ Pokud používáte **certThumbprint** pro ověřování a certifikát, který je
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. 
 
-- Pro **Parquet a formátu odděleného textu**, odkazovat na [datovou sadu formátu Parquet a text s oddělovači](#parquet-and-delimited-text-format-dataset) oddílu.
-- Pro ostatní formáty, jako jsou **formát ORC nebo Avro/JSON nebo binární**, odkazovat na [jiné datové sady formátu](#other-format-dataset) oddílu.
+- V případě **Parquet, oddělený text a binární formát**, přečtěte si část [Parquet, text a datovou sadu binárního formátu](#format-based-dataset) s oddělovači.
+- Pro jiné formáty, jako je **Formát ORC/Avro/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
 
-### <a name="parquet-and-delimited-text-format-dataset"></a>Datová sada formátu parquet a text s oddělovači
+### <a name="format-based-dataset"></a>Parquet, text a datová sada binárních formátů s oddělovači
 
-Ke zkopírování dat z protokolu HTTP v **Parquet nebo formátu odděleného textu**, odkazovat na [formát Parquet](format-parquet.md) a [formátu textu odděleného](format-delimited-text.md) článek na datové sadě založené na formátu a podporované nastavení. Následující vlastnosti jsou podporovány pro protokolu HTTP v rámci `location` nastavení v datové sadě založené na formátu:
+Chcete-li kopírovat data do a z **Parquet, oddělený text nebo binární formát**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro protokol HTTP `location` v nastavení v datové sadě založené na formátu:
 
 | Vlastnost    | Popis                                                  | Požaduje se |
 | ----------- | ------------------------------------------------------------ | -------- |
-| type        | Vlastnost type v rámci `location` v datové sadě musí být nastaveno na **HttpServerLocation**. | Ano      |
+| type        | Vlastnost Type v rámci `location` datové sady musí být nastavená na **HttpServerLocation**. | Ano      |
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data.       | Ne       |
 
 > [!NOTE]
-> Podporovaná velikost datové části požadavku HTTP je přibližně 500 KB. Velikost datové části, které chcete předat do vašeho koncového bodu webové je větší než 500 KB, vezměte v úvahu dávkování datové části menších částech.
+> Podporovaná velikost datové části požadavku HTTP je okolo 500 KB. Pokud je velikost datové části, kterou chcete předat webovému koncovému bodu, větší než 500 KB, zvažte dávkování datové části v menších blocích.
 
 > [!NOTE]
-> **HttpFile** typ datové sady uvedené v další části formát Parquet/textu je stále podporovány jako-je pro aktivitu kopírování a vyhledávání z důvodu zpětné kompatibility. Byly navrženy používat tento nový model do budoucna a ADF vytváření uživatelského rozhraní se přepnulo na generování tyto nové typy.
+> Datová sada typu **HttpFile** s Parquet/textovým formátem, která je uvedená v následující části, je stále podporována jako – pro aktivitu kopírování a vyhledávání z důvodu zpětné kompatibility. Budete navrženi, že budete chtít tento nový model použít a že uživatelské rozhraní pro vytváření ADF bylo přepnuto na generování těchto nových typů.
 
 **Příklad:**
 
@@ -206,24 +206,24 @@ Ke zkopírování dat z protokolu HTTP v **Parquet nebo formátu odděleného te
 }
 ```
 
-### <a name="other-format-dataset"></a>Další datové sady formátu
+### <a name="other-format-dataset"></a>Jiná Formátová datová sada
 
-Ke zkopírování dat z protokolu HTTP v **formát ORC nebo Avro/JSON nebo binární**, jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data z protokolu HTTP ve **formátu ORC/Avro/JSON**, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | **Typ** musí být nastavena vlastnost datové sady **HttpFile**. | Ano |
-| relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Když tato vlastnost neurčí, použije se pouze adresu URL, která je zadána v definici propojené služby. | Ne |
-| requestMethod | Metoda HTTP Povolené hodnoty jsou **získat** (výchozí) a **příspěvek**. | Ne |
-| additionalHeaders | Další hlavičky požadavků HTTP. | Ne |
-| Includesearchresults: true | Obsah žádosti protokolu HTTP. | Ne |
-| format | Pokud chcete načíst data z koncového bodu HTTP jako-je bez analýzy a zkopírujte data do úložiště založené na souborech, přeskočte **formátu** části v definici vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů souboru: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, and **ParquetFormat**. V části **formátu**, nastavte **typ** vlastnost na jednu z těchto hodnot. Další informace najdete v tématu [formátu JSON](supported-file-formats-and-compression-codecs.md#json-format), [textový formát](supported-file-formats-and-compression-codecs.md#text-format), [formát Avro](supported-file-formats-and-compression-codecs.md#avro-format), [formát Orc](supported-file-formats-and-compression-codecs.md#orc-format), a [formát Parquet](supported-file-formats-and-compression-codecs.md#parquet-format). |Ne |
-| compression | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Podporované typy: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Podporované úrovně:  **Optimální** a **nejrychlejší**. |Ne |
+| type | Vlastnost **Type** datové sady musí být nastavená na **HttpFile**. | Ano |
+| relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Pokud tato vlastnost není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. | Ne |
+| requestMethod | Metoda HTTP Povolené hodnoty jsou **Get** (default) a **post**. | Ne |
+| additionalHeaders | Další hlavičky požadavku HTTP | Ne |
+| částmi | Tělo požadavku HTTP | Ne |
+| format | Pokud chcete načíst data z koncového bodu HTTP, jak je bez jeho analýzy, a pak zkopírovat data do úložiště založeného na souborech, přeskočte oddíl **Formát** v definicích vstupní i výstupní datové sady.<br/><br/>Pokud chcete analyzovat obsah odpovědi HTTP během kopírování, podporují se tyto typy formátů souborů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**a **ParquetFormat**. V části **Formát**nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v tématu [formát JSON](supported-file-formats-and-compression-codecs.md#json-format), formát [textu](supported-file-formats-and-compression-codecs.md#text-format), formát [Avro](supported-file-formats-and-compression-codecs.md#avro-format), formát [ORC](supported-file-formats-and-compression-codecs.md#orc-format)a [Formát Parquet](supported-file-formats-and-compression-codecs.md#parquet-format). |Ne |
+| compression | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Podporované typy: **Gzip**, **Deflate**, **bzip2**a **ZipDeflate**.<br/>Podporované úrovně:  **Optimální** a **nejrychlejší**. |Ne |
 
 > [!NOTE]
-> Podporovaná velikost datové části požadavku HTTP je přibližně 500 KB. Velikost datové části, které chcete předat do vašeho koncového bodu webové je větší než 500 KB, vezměte v úvahu dávkování datové části menších částech.
+> Podporovaná velikost datové části požadavku HTTP je okolo 500 KB. Pokud je velikost datové části, kterou chcete předat webovému koncovému bodu, větší než 500 KB, zvažte dávkování datové části v menších blocích.
 
-**Příklad 1: Pomocí metody Get (výchozí)**
+**Příklad 1: Použití metody Get (výchozí)**
 
 ```json
 {
@@ -242,7 +242,7 @@ Ke zkopírování dat z protokolu HTTP v **formát ORC nebo Avro/JSON nebo biná
 }
 ```
 
-**Příklad 2: Pomocí metody Post**
+**Příklad 2: Použití metody post**
 
 ```json
 {
@@ -264,30 +264,30 @@ Ke zkopírování dat z protokolu HTTP v **formát ORC nebo Avro/JSON nebo biná
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Tato část obsahuje seznam vlastností, které podporuje zdroje HTTP.
+V této části najdete seznam vlastností, které zdroj HTTP podporuje.
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md). 
 
-### <a name="http-as-source"></a>HTTP jako zdroj
+### <a name="http-as-source"></a>HTTP as source
 
-- Pro kopírování z **Parquet a formátu odděleného textu**, odkazovat na [Parquet a zdroj obsahující text oddělený znaky formátu](#parquet-and-delimited-text-format-source) oddílu.
-- Pro kopírování z dalších formátech, jako jsou **formát ORC nebo Avro/JSON nebo binární**, odkazovat na [jiný formát zdroj](#other-format-source) oddílu.
+- Chcete-li kopírovat z **Parquet, textového a binárního formátu**, přečtěte si oddíl [Parquet, text s oddělovači textu a binární formát](#format-based-source) .
+- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/Avro/JSON**, přečtěte si část [source source Format](#other-format-source) .
 
-#### <a name="parquet-and-delimited-text-format-source"></a>Parquet a zdroj formátu odděleného textu
+#### <a name="format-based-source"></a>Parquet, text a zdroj binárního formátu s oddělovači
 
-Ke zkopírování dat z protokolu HTTP v **Parquet nebo formátu odděleného textu**, odkazovat na [formát Parquet](format-parquet.md) a [formátu textu odděleného](format-delimited-text.md) článek věnovaný tomu zdroj aktivity kopírování založená na formát a podporovaná nastavení. Následující vlastnosti jsou podporovány pro protokolu HTTP v rámci `storeSettings` nastavení zdroje kopírování založená na formát:
+Chcete-li kopírovat data z **Parquet, textu nebo binárního formátu**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro zdroj aktivity kopírování založené na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro protokol HTTP `storeSettings` v nastavení ve zdroji kopírování založeném na formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | Vlastnost type v rámci `storeSettings` musí být nastaveno na **HttpReadSetting**. | Ano      |
-| requestMethod            | Metoda HTTP <br>Povolené hodnoty jsou **získat** (výchozí) a **příspěvek**. | Ne       |
-| addtionalHeaders         | Další hlavičky požadavků HTTP.                             | Ne       |
-| Includesearchresults: true              | Obsah žádosti protokolu HTTP.                               | Ne       |
-| requestTimeout           | Časový limit ( **TimeSpan** hodnotu) pro požadavek HTTP získat odpověď. Tato hodnota je časový limit získat odpověď, nevypršel časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**. | Ne       |
-| maxConcurrentConnections | Počet připojení pro připojení k úložišti storage současně. Zadejte pouze v případě, že chcete omezit souběžných připojení k úložišti. | Ne       |
+| type                     | Vlastnost Type v poli `storeSettings` musí být nastavená na **HttpReadSetting**. | Ano      |
+| requestMethod            | Metoda HTTP <br>Povolené hodnoty jsou **Get** (default) a **post**. | Ne       |
+| addtionalHeaders         | Další hlavičky požadavku HTTP                             | Ne       |
+| částmi              | Tělo požadavku HTTP                               | Ne       |
+| requestTimeout           | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**. | Ne       |
+| maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne       |
 
 > [!NOTE]
-> Pro formátu Parquet nebo odděleného textu **HttpSource** zdroj aktivity kopírování typů uvedených v následující části je stále podporovány jako-je z důvodu zpětné kompatibility. Byly navrženy používat tento nový model do budoucna a ADF vytváření uživatelského rozhraní se přepnulo na generování tyto nové typy.
+> Pro formát textu Parquet/s oddělovači, který je uveden v další části, je zdroj aktivity kopírování typu **HttpSource** stále podporován tak, jak je z důvodu zpětné kompatibility. Budete navrženi, že budete chtít tento nový model použít a že uživatelské rozhraní pro vytváření ADF bylo přepnuto na generování těchto nových typů.
 
 **Příklad:**
 
@@ -332,12 +332,12 @@ Ke zkopírování dat z protokolu HTTP v **Parquet nebo formátu odděleného te
 
 #### <a name="other-format-source"></a>Jiný zdroj formátu
 
-Ke zkopírování dat z protokolu HTTP v **formát ORC nebo Avro/JSON nebo binární**, jsou podporovány následující vlastnosti v aktivitě kopírování **zdroj** části:
+Pokud chcete kopírovat data z HTTP ve **formátu ORC/Avro/JSON**, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | **Typ** musí být nastavena vlastnost zdroje aktivity kopírování **HttpSource**. | Ano |
-| httpRequestTimeout | Časový limit ( **TimeSpan** hodnotu) pro požadavek HTTP získat odpověď. Tato hodnota je časový limit získat odpověď, nevypršel časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**.  | Ne |
+| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **HttpSource**. | Ano |
+| httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**.  | Ne |
 
 **Příklad**
 

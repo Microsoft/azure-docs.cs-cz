@@ -1,36 +1,51 @@
 ---
-title: Ukázky pro vývojáře v Azure Data Catalog
-description: Tento článek obsahuje přehled ukázky k dispozici pro vývojáře pro REST API služby Data Catalog.
-services: data-catalog
+title: Ukázky pro vývojáře Azure Data Catalog
+description: Tento článek poskytuje přehled dostupných ukázek vývojářů pro Data Catalog REST API.
+ms.service: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 0dc23edd-04d8-49fc-841e-d132fb109ce7
-ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 1f62a5583b7beef2dc535065a6c0d3bcb34fe7b4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/01/2019
+ms.openlocfilehash: cdf90029d02680de4ce55e33b3ed0fe810d70b4c
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60582716"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775245"
 ---
-# <a name="data-catalog-developer-samples"></a>Ukázky pro vývojáře katalogu dat
-Začněte s vývojem aplikací katalogu Data Catalog pomocí REST API služby Data Catalog. REST API služby Data Catalog je rozhraní API založených na REST, které poskytuje programový přístup k prostředkům služby Data Catalog pro registraci, anotaci a vyhledávání datových prostředků prostřednictvím kódu programu.
+# <a name="azure-data-catalog-developer-samples"></a>Ukázky pro vývojáře Azure Data Catalog
 
-Tady jsou ukázky, které máme v Githubu:
+Začněte s vývojem Azure Data Catalogch aplikací pomocí REST API Data Catalog. Data Catalog REST API je rozhraní API založené na REST, které poskytuje programový přístup k Data Catalog prostředkům k programovému registraci, přidávání poznámek a vyhledávání datových prostředků.
 
-* [Začínáme s Azure Data Catalogem](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-get-started/)
+Tady jsou ukázky, které máme na GitHubu:
+
+* [Začínáme s Azure Data Catalogem](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/)
   
-  Ukázka, která ukazuje, jak ověřování pomocí Azure AD pro registraci, hledání a odstranění k datovému assetu pomocí REST API služby Data Catalog.
-* [Hromadné zaregistrujte a opatřete poznámkami](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-excel-register-data-assets/)
+   Ukázka Začínáme vám ukáže, jak ověřit pomocí Azure AD a zaregistrovat, vyhledat a odstranit datový Asset pomocí REST API Data Catalog.
+   
+* [Začínáme s Azure Data Catalog pomocí instančního objektu](https://github.com/Azure-Samples/data-catalog-dotnet-service-principal-get-started/)
+
+   V této ukázce se dozvíte, jak zaregistrovat, Hledat a odstranit datový Asset pomocí REST API Data Catalog. Tato ukázka používá ověřování instančního objektu.
+
+* [Nástroj pro import/export pro Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-import-export/)
+
+   Tento příklad ukazuje, jak použít Data Catalog REST API k načtení assetů z Azure Data Catalog a jejich serializaci do souboru. Také ukazuje, jak převzít sadu prostředků serializovaných jako JSON a vložit je do katalogu. Podporuje export podmnožiny katalogu pomocí vyhledávacího dotazu.
+
+* [Hromadné registrace a přidávání poznámek v Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-excel-register-data-assets/)
   
-  Ukázka, která ukazuje, jak hromadně registrovat datové assety z Excelového sešitu pomocí REST API služby Data Catalog a Open XML.
-* [Nástroje pro import/Export](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-import-export/)
+   V této ukázce se dozvíte, jak hromadně registrovat datové assety z excelového sešitu pomocí Data Catalog REST API a Open XML.
   
-  Ukázka, která ukazuje, jak použít REST API služby Data Catalog a načíst prostředky z Azure Data Catalog serializovat do souboru. Také ukazuje, jak provést sadu prostředků serializovanou jako JSON a vložit je do katalogu. Podporuje export podmnožiny katalog pomocí vyhledávacího dotazu.
+* [Hromadné importy pojmů do Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-bulk-import-glossary/)
 
-* [Termíny glosáře hromadného importu](https://azure.microsoft.com/resources/samples/data-catalog-bulk-import-glossary/)
+   V této ukázce se dozvíte, jak importovat pojem Glosář ze souborů CSV do glosáře ADC.
 
-    Tento příklad ukazuje, jak importovat termíny glosáře ze souborů CSV Glosář ADC.
+* [Hromadný import vztahů do Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-bulk-import-relationship/)
 
+   V této ukázce se dozvíte, jak programově importovat informace o relacích ze souboru CSV do katalogu Data Catalog.
+
+* [Publikování relací do Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-publish-relationships/)
+
+   V této ukázce se dozvíte, jak mohou programově publikovat informace o relaci do katalogu dat.
+   
+## <a name="next-steps"></a>Další postup
+[Odkaz na Azure Data Catalog REST API](/rest/api/datacatalog/)

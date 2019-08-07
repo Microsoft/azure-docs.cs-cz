@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 08/05/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da9bc3906e6f39b2d943708eb6a1b930ac8cc5a5
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 9b6b310e2ca2c19bf4b163704627943a881501bd
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68401933"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823853"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co jsou kontroly přístupu Azure AD?
 
@@ -45,7 +45,7 @@ Azure AD umožňuje interně spolupracovat v rámci vaší organizace a s uživa
 - **Příliš mnoho uživatelů v privilegovaných rolích:** Je vhodné zjistit, kolik uživatelů má přístup pro správu, kolik z nich je globálních správců, a pokud existují pozvaní hostů nebo partneři, kteří se po přiřazení k úloze správy neodebrali. V [rolích Azure AD](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) , jako jsou globální správci nebo [role prostředků Azure](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) , jako je například správce přístupu uživatele, můžete znovu certifikovat přiřazení rolí uživatelům v prostředí [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) .
 - **Pokud je automatizace neproveditelná:** Můžete vytvořit pravidla pro dynamické členství ve skupinách zabezpečení nebo skupinách Office 365, ale co když data o PERSONÁLNÍm oddělení nejsou ve službě Azure AD, nebo pokud uživatelé stále potřebují přístup, když opustí skupinu a vyškolí jejich náhradu? Pak můžete vytvořit revizi této skupiny, abyste měli jistotu, že budou mít přístup i nadále potřebují mít přístup.
 - **Když se skupina používá pro nový účel:** Pokud máte skupinu, která bude synchronizovaná s Azure AD, nebo pokud chcete povolit službu Salesforce pro všechny uživatele ve skupině Sales Team, je vhodné požádat vlastníka skupiny, aby zkontroloval členství ve skupině před tím, než se skupina používá v jiném riziku. hová.
-- **Přístup k důležitým podnikovým datům:** u určitých prostředků může být nutné požádat uživatele mimo ni, aby se pravidelně odhlásili, a dát mu odůvodněné důvody k tomu, proč potřebují přístup pro účely auditování.
+- **Přístup k důležitým podnikovým datům:** u určitých prostředků se může vyžadovat, aby uživatelé mimo ni požádali, aby se pravidelně odhlásili a měli odůvodněné důvody k tomu, proč potřebují přístup pro účely auditování.
 - **Chcete-li zachovat seznam výjimek zásad:** V ideálním světě by všichni uživatelé za účelem zabezpečení přístupu k prostředkům vaší organizace dodržovali zásady přístupu. Někdy ale existují obchodní případy, které vyžadují, abyste měli výjimky. Jako správce IT můžete spravovat tuto úlohu, vyhnout se nedohledu nad výjimkami zásad a poskytovat auditorům kontrolu nad tím, že se tyto výjimky pravidelně kontrolují.
 - **Požádejte vlastníky skupiny, abyste potvrdili, že stále potřebují hosty ve svých skupinách:** Přístup zaměstnanců může být automatizovaný s některými místními nástroji IAM, ale nezvanými hosty. Pokud skupina poskytuje přístup hostů k firemnímu citlivému obsahu, pak je zodpovědností vlastníka skupiny na potvrzení, že hosté mají k dispozici legitimní obchodní nutnost přístupu.
 - **Pravidelně opakují se recenze:** Můžete nastavit opakované kontroly přístupu uživatelů při nastavených frekvencích, jako je týdenní, měsíční, čtvrtletní nebo roční a kontroloři se budou informovat na začátku každé recenze. Recenzenti mohou schvalovat nebo odmítat přístup pomocí popisného rozhraní a s využitím inteligentních doporučení.
@@ -60,28 +60,6 @@ V závislosti na tom, co chcete zkontrolovat, vytvoříte kontrolu přístupu v 
 | Přiřazeno k připojené aplikaci | Určení kontroloři</br>Samoobslužné kontroly | Kontroly přístupu Azure AD</br>Aplikace Azure AD Enterprise (ve verzi Preview) | Přístupový panel |
 | Role Azure AD | Určení kontroloři</br>Samoobslužné kontroly | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | portál Azure |
 | Role prostředku Azure | Určení kontroloři</br>Samoobslužné kontroly | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | portál Azure |
-
-## <a name="which-users-must-have-licenses"></a>Kteří uživatelé musí mít licence?
-
-Každý uživatel, který komunikuje s recenzemi kontroly přístupu, musí mít placenou Azure AD Premiumovou licenci P2. Příklady obsahují:
-
-- Správci, kteří vytvářejí kontrolu přístupu
-- Vlastníci skupiny, kteří provádějí kontrolu přístupu
-- Uživatelé přiřazení jako kontroloři
-- Uživatelé, kteří provádějí kontrolu sami
-
-Můžete také požádat uživatele typu Host, aby zkontrolovali vlastní přístup. Pro každou placená licenci Azure AD Premium P2, kterou přiřadíte k jednomu z uživatelů vaší organizace, můžete použít Azure AD Business-to-Business (B2B) k pozvání až pěti uživatelů typu Host v rámci osvobození od externích uživatelů. Tito uživatelé typu Host můžou také používat funkce Azure AD Premium P2. Další informace najdete v tématu [pokyny k licencování spolupráce Azure AD B2B](../b2b/licensing-guidance.md).
-
-Tady je několik ukázkových scénářů, které vám pomůžou určit počet licencí, které musíte mít.
-
-| Scénář | Výpočet | Požadovaný počet licencí |
-| --- | --- | --- |
-| Správce vytvoří kontrolu přístupu skupiny A s uživateli 500.<br/>Přiřadí 3 vlastníky skupiny jako kontrolory. | 1 vlastníci skupiny správce + 3 | 4 |
-| Správce vytvoří kontrolu přístupu skupiny A s uživateli 500.<br/>Provede si ho samy se změnami. | 1 uživatele správce + 500 jako kontroloři samoobslužné | 501 |
-| Správce vytvoří kontrolu přístupu skupiny A s 5 uživateli a 25 uživateli typu Host.<br/>Provede si ho samy se změnami. | 1 uživatel + 5 uživatelů jako kontroloři pro sebe<br/>(uživatelé typu Host jsou zahrnuti v požadovaném poměru 1:5.) | 6 |
-| Správce vytvoří kontrolu přístupu skupiny A s 5 uživateli a 28 uživateli typu Host.<br/>Provede si ho samy se změnami. | 1 správce + 5 uživatelů jako samoobslužné uživatele + 1 uživatel, kteří pokrývají uživatele typu Host v požadovaném poměru 1:5. | 7 |
-
-Informace o tom, jak přiřadit licence k vašim účelům, najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
 
 ## <a name="onboard-access-reviews"></a>Zavést kontroly přístupu
 
@@ -115,6 +93,28 @@ Pokud jste připraveni nasadit kontroly přístupu ve vaší organizaci, postupu
 ## <a name="license-requirements"></a>Licenční požadavky
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+### <a name="which-users-must-have-licenses"></a>Kteří uživatelé musí mít licence?
+
+Každý uživatel, který komunikuje s recenzemi kontroly přístupu, musí mít placenou Azure AD Premiumovou licenci P2. Příklady obsahují:
+
+- Správci, kteří vytvářejí kontrolu přístupu
+- Vlastníci skupiny, kteří provádějí kontrolu přístupu
+- Uživatelé přiřazení jako kontroloři
+- Uživatelé, kteří provádějí kontrolu sami
+
+Můžete také požádat uživatele typu Host, aby zkontrolovali vlastní přístup. Pro každou placená licenci Azure AD Premium P2, kterou přiřadíte k jednomu z uživatelů vaší organizace, můžete použít Azure AD Business-to-Business (B2B) k pozvání až pěti uživatelů typu Host v rámci osvobození od externích uživatelů. Tito uživatelé typu Host můžou také používat funkce Azure AD Premium P2. Další informace najdete v tématu [pokyny k licencování spolupráce Azure AD B2B](../b2b/licensing-guidance.md).
+
+Tady je několik ukázkových scénářů, které vám pomůžou určit počet licencí, které musíte mít.
+
+| Scénář | Výpočet | Požadovaný počet licencí |
+| --- | --- | --- |
+| Správce vytvoří kontrolu přístupu skupiny A s uživateli 500. Přiřadí 3 vlastníky skupiny jako kontrolory. | 1 licence pro správce + 3 licence pro každého vlastníka skupiny jako kontroloři. | 4 |
+| Správce vytvoří kontrolu přístupu skupiny A s uživateli 500. Provede si ho samy se změnami. | 1 licence pro licence správce + 500 pro každého uživatele jako kontroloři pro sebe. | 501 |
+| Správce vytvoří kontrolu přístupu skupiny B s 5 uživateli a 25 uživateli typu Host. Provede si ho samy se změnami. | 1 licence pro licence správce + 5 pro každého uživatele jako kontroloři pro sebe.<br/>(uživatelé typu Host jsou zahrnuti v požadovaném poměru 1:5.) | 6 |
+| Správce vytvoří kontrolu přístupu skupiny C s 5 uživateli a 108 uživateli typu Host. Provede si ho samy se změnami. | 1 licence pro licence správce + 5 pro každého uživatele jako samoobslužné uživatele + 16 dalších licencí k pokrytí všech 108 uživatelů typu Host v požadované 1:5 poměru.<br/>1 + 5 = 6 licencí, které pokrývají\*5 6 = 30 uživatelů typu Host. Pro zbývající (108-5\*6) = 78 uživatelů typu Host se vyžaduje 78/5 = 16 dalších licencí. Proto jsou vyžadovány celkem 6 + 16 = 22 licencí. | 22 |
+
+Informace o tom, jak přiřadit licence k vašim účelům, najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
 
 ## <a name="next-steps"></a>Další postup
 

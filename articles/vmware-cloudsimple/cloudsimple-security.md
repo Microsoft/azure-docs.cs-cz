@@ -1,95 +1,95 @@
 ---
-title: Zabezpečení služeb CloudSimple
-description: Popisuje modely sdílená odpovědnost u zabezpečení CloudSimple služeb
+title: Zabezpečení pro služby CloudSimple Services
+description: Popisuje sdílené zodpovědnosti modelů pro zabezpečení služeb CloudSimple Services.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 04/27/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 325915aae43c905236910382f650730a6daa127a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: ff1bd3c6e1f3cf98e92e10eecf972681ed6c7819
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595325"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816177"
 ---
 # <a name="cloudsimple-security-overview"></a>Přehled zabezpečení CloudSimple
 
-Tento článek obsahuje základní informace o způsobu implementace zabezpečení na řešení VMware Azure CloudSimple služeb, infrastruktury a datacenter. Dozvíte se o ochranu dat a zabezpečení, zabezpečení sítě a jak se spravují ohrožení zabezpečení a opravy.
+Tento článek poskytuje přehled o tom, jak se zabezpečení implementuje v řešení Azure VMware pomocí služby CloudSimple, infrastruktury a datacentra. Dozvíte se o ochraně dat a zabezpečení, zabezpečení sítě a způsobu, jakým se spravují ohrožení zabezpečení a opravy.
 
 ## <a name="shared-responsibility"></a>Sdílená odpovědnost
 
-Řešení Azure VMware podle CloudSimple používá sdílenou odpovědnost model pro zabezpečení. Důvěryhodné zabezpečení v cloudu se dosahuje prostřednictvím sdíleného zodpovědnosti zákazníků a Microsoft jako poskytovatel služeb. Tato matice zodpovědnosti poskytuje vyšší úroveň zabezpečení a eliminuje způsobujícím selhání.
+Řešení Azure VMware podle CloudSimple používá ke zabezpečení sdílený model zodpovědnosti. Důvěryhodné zabezpečení v cloudu se dosahuje prostřednictvím sdílených odpovědností zákazníků a Microsoftu jako poskytovatele služeb. Tato matice zodpovědnosti poskytuje vyšší zabezpečení a eliminuje jednotlivé body selhání.
 
 ## <a name="azure-infrastructure"></a>Infrastruktura Azure 
 
-Aspekty zabezpečení infrastruktury Azure zahrnují umístění datových center a zařízení.
+Mezi požadavky na zabezpečení infrastruktury Azure patří datacentra a umístění zařízení.
 
 ### <a name="datacenter-security"></a>Zabezpečení datového centra 
 
-Microsoft má celou divizi věnovaný navrhování, sestavování a provoz fyzické zařízení, která podporují Azure. Tento tým se investovalo stavu nejmodernější fyzické zabezpečení. Další informace týkající se fyzického zabezpečení najdete v tématu [zařízení Azure, místním prostředí a fyzické zabezpečení](https://docs.microsoft.com/azure/security/azure-physical-security).
+Microsoft má celou divizi, která je věnována navrhování, sestavování a provozování fyzických zařízení podporujících Azure. Tento tým je investoval do zachování nejmodernějšího fyzického zabezpečení. Další informace o fyzickém zabezpečení najdete v tématech [zařízení Azure, místní a fyzické zabezpečení] (https://docs.microsoft.com/azure/security/fundamentals/physical-security.
 
 ### <a name="equipment-location"></a>Umístění zařízení
 
-Holého hardwaru zařízení, na kterém běží privátních cloudů je hostován v umístění datového centra Azure. Na základě biometrické dvojúrovňového ověřování je potřeba získat přístup k klece, ve kterém se zařízení nachází.
+Holé hardwarové zařízení, které spouští vaše privátní cloudy, je hostované v umístění datacentra Azure. Pro získání přístupu k pracovním postupům, kde se toto zařízení nachází, je nutné použít dvojúrovňové ověřování pomocí vícefaktorového měření.
 
 ## <a name="dedicated-hardware"></a>Vyhrazený hardware
 
-Jako součást služby CloudSimple všem zákazníkům CloudSimple získání vyhrazené úplné obnovení hostitelů s místní připojenými disky, které jsou fyzicky oddělená od hardwaru jiné tenanty. Hypervisoru ESXi s sítě vSAN běží na všech uzlech. Uzly se spravují přes vyhrazené zákazníka VMware vCenter a NSX. Nesdílí hardwaru mezi tenanty poskytuje další úroveň izolace a zabezpečení ochrany.
+V rámci služby CloudSimple získají všichni zákazníci CloudSimple vyhrazeného holého hostitele s místními připojenými disky, které jsou fyzicky izolované od jiného klientského hardwaru. Hypervisor pro ESXi s síti vSAN se spouští na všech uzlech. Uzly se spravují prostřednictvím VMware, vCenter a NSX vyhrazených zákazníkem. Nesdílení hardwaru mezi klienty poskytuje další úroveň izolace a ochrany zabezpečení.
 
 ## <a name="data-security"></a>Zabezpečení dat
 
-Zákazníci zachovat ovládacího prvku a vlastnictví svá data. Správa dat zákaznických dat je odpovědnosti zákazníka.
+Zákazníci si udrží kontrolu a vlastnictví svých dat. Data Stewardship zákaznických dat jsou zodpovědností zákazníka.
 
-### <a name="data-protection-for-data-at-rest-and-data-in-motion-within-internal-networks"></a>Ochrana dat pro neaktivní uložená data a data přenášená do interní sítě
+### <a name="data-protection-for-data-at-rest-and-data-in-motion-within-internal-networks"></a>Ochrana dat v klidovém provozu a přenášených dat v rámci interních sítí
 
-Pro data uložená v prostředí privátního cloudu můžete použít šifrování síti vSAN. síť vSAN šifrování funguje s servery VMware certified externí správy klíčů (KMS) ve virtuální síti nebo místní. Šifrovací klíče dat určujete sami. Pro data přenášená data v rámci privátního cloudu vSphere podporuje šifrování dat při přenosu pro veškerý provoz VMkernel, která zahrnuje provoz řešení vMotion.
+Pro neaktivní data v prostředí privátního cloudu můžete použít šifrování síti vSAN. šifrování síti vSAN funguje ve vaší vlastní virtuální síti nebo v místním prostředí pomocí serverů pro správu externích klíčů (KMS) s certifikací VMware. Šifrovací klíče dat můžete řídit sami. Pro přenos dat v rámci privátního cloudu vSphere podporuje šifrování dat pro všechny přenosy VMkernel, což zahrnuje přenos vMotion.
 
-### <a name="data-protection-for-data-thats-required-to-move-through-public-networks"></a>Ochrana dat pro data, která je nutné pro přechod na veřejných sítích
+### <a name="data-protection-for-data-thats-required-to-move-through-public-networks"></a>Ochrana dat pro data, která jsou nutná k přesunu přes veřejné sítě
 
-Pokud chcete chránit data, která prochází přes veřejné sítě, můžete vytvořit protokolu IPsec a SSL VPN tunely pro privátní cloudy. Podporují se běžné metody šifrování, včetně AES 128 bajtů a 256 bajtů. Data při přenosu, která obsahuje zákaznická data, ověřování a přístup pro správu, se šifrují pomocí standardní šifrovací mechanismy, jako jsou SSH, TLS 1.2 a zabezpečený protokol RDP. Komunikaci, která přenáší citlivé informace pomocí standardní šifrovací mechanismy.
+K ochraně dat, která se pohybují přes veřejné sítě, můžete pro privátní cloudy vytvořit tunelová propojení VPN IPsec a SSL. Podporují se běžné metody šifrování, včetně 128-Byte a 256-Byte AES. Přenášená data, která zahrnují ověřování, přístup pro správu a zákaznická data, se šifrují pomocí standardních šifrovacích mechanismů, jako jsou SSH, TLS 1,2 a Secure RDP. Komunikace, která předává citlivé informace, používá standardní šifrovací mechanismy.
 
-### <a name="secure-disposal"></a>Ochraně 
+### <a name="secure-disposal"></a>Zabezpečené vyřazení 
 
-Pokud vaše služba CloudSimple vyprší platnost nebo se ukončí, zodpovídáte za odebrání nebo odstranění vaše data. CloudSimple spolupracuje s můžete odstranit nebo vrátit všechna data zákazníků, jak je uvedený v této smlouvě zákazníkovi, s výjimkou rozsahu CloudSimple nevyžaduje platný zákon zachovat některé nebo všechny osobní údaje. V případě potřeby zachovat všechny osobní údaje, CloudSimple archivaci dat a implementuje přiměřená opatření, aby se zabránilo zákaznická data z dalšího zpracování.
+Pokud vaše služba CloudSimple vyprší nebo se ukončí, zodpovídáte za odebrání nebo odstranění vašich dat. CloudSimple spolupracuje s tím, že vám umožňuje odstranit nebo vrátit veškerá zákaznická data, jak jsou uvedena v rámci smlouvy o zákaznících, s výjimkou případů, kdy rozhodné právo vyžaduje, aby se některá nebo všechna osobní data zachovala v rozsahu CloudSimple. Pokud je to nutné pro uchovávání osobních údajů, CloudSimple archivuje data a implementuje přiměřená opatření k tomu, aby se zabránilo dalším zpracování zákaznických dat.
 
 ### <a name="data-location"></a>Umístění dat
 
-Když nastavíte privátních cloudů, zvolte oblast Azure, ve kterých jsou nasazeny. Data virtuálního počítače VMware není z tohoto fyzického datacentra přesunout, pokud provádíte migraci dat nebo zálohování dat mimo pracoviště. Také můžete hostovat úlohy a ukládání dat v několika oblastech Azure, pokud je to vhodné pro vaše potřeby.
+Při nastavování privátních cloudů zvolíte oblast Azure, ve které se nasazují. Data virtuálních počítačů VMware se z tohoto fyzického datacentra nepřesunou, Pokud neprovedete migraci dat nebo zálohu dat mimo pracoviště. Můžete také hostovat úlohy a ukládat data v několika oblastech Azure, pokud to vyhovuje vašim potřebám.
 
-Zákaznická data, která je v uzlech hyperkonvergovaného privátního cloudu nebude procházet umístění bez explicitní akce správce tenanta. Je vaší odpovědností, abyste ve vysoce dostupným způsobem implementovat vaše úlohy.
+Zákaznická data, která jsou rezidentovaná v privátním cloudu, probíhají uzly bez nutnosti explicitního zásahu správce tenanta. Vaše zodpovědnost za vaše úlohy můžete implementovat vysoce dostupným způsobem.
 
 ### <a name="data-backups"></a>Zálohování dat
-CloudSimple nepodporuje zálohování nebo archivaci dat zákazníků. CloudSimple provádět pravidelné zálohování serveru vCenter a NSX dat pro zajištění vysoké dostupnosti serveru pro správu. Před zálohováním všechna data se šifrují ve zdrojovém serveru vCenter pomocí rozhraní API pro VMware. Šifrovaná data se přenášejí a uložená v objektu blob Azure. Šifrovací klíče pro zálohy jsou uložené ve vysoce zabezpečených CloudSimple spravované trezor, na kterém běží ve virtuální síti CloudSimple v Azure.
+CloudSimple nemůže zálohovat nebo archivovat zákaznická data. CloudSimple provádí pravidelná zálohování dat vCenter a NSX, aby poskytovala vysokou dostupnost serverů pro správu. Před zálohováním se všechna data šifrují ve zdroji vCenter pomocí rozhraní API VMware. Šifrovaná data se přepravují a ukládají do objektu blob Azure. Šifrovací klíče pro zálohy se ukládají ve vysoce zabezpečeném úložišti CloudSimple spravovaném trezorem, který běží ve virtuální síti CloudSimple v Azure.
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
 Řešení CloudSimple spoléhá na vrstvy zabezpečení sítě.
 
-### <a name="azure-edge-security"></a>Zabezpečení Azure edge
+### <a name="azure-edge-security"></a>Zabezpečení Azure Edge
 
-CloudSimple služby jsou postavené na zabezpečení základní sítě poskytovaný platformou Azure. Azure se vztahuje defense-in-depth techniky pro zjišťování a včas odpověď síťové útoky související s neobvyklou příchozí nebo odchozí provoz vzory a distribuovanými útoky s cílem odepření služeb (DDoS). Tento ovládací prvek zabezpečení platí pro prostředí privátních cloudů a software pro rovinu řízení vypracovanou organizací cccppf CloudSimple.
+Služby CloudSimple jsou postavené na základním zabezpečení sítě, které poskytuje Azure. Azure používá k detekci a včasné reakci na síťové útoky spojené s neobvyklémi vstupními nebo výstupními vzory přenosů dat a distribuovaných útoků DDoS (Denial of Service). Toto řízení zabezpečení platí pro prostředí privátních cloudů a řídicí software roviny vyvinutý pomocí CloudSimple.
 
 ### <a name="segmentation"></a>Segmentace
 
-Služba CloudSimple má logicky oddělené sítě vrstvy 2, které omezují přístup k privátním sítím ve vašem prostředí privátního cloudu. Vaše sítě privátního cloudu jde dál chránit pomocí brány firewall. Na portálu CloudSimple můžete definovat pravidla pro řízení provoz typu east-west a sever jih sítě pro veškerý přenos v síti, která zahrnuje přenosy dat uvnitř privátního cloudu, přenosy dat mezi privátního cloudu, obecné provoz do Internetu a síťový provoz do místní přes připojení s IPsec VPN nebo Azure ExpressRoute.
+Služba CloudSimple logicky odděluje sítě vrstvy 2, které omezují přístup k vašim soukromým sítím v prostředí privátního cloudu. Privátní cloudové sítě můžete dále chránit pomocí brány firewall. Na portálu CloudSimple definujete pravidla řízení přenosů dat v oblasti USA – západ a sever-jih pro veškerý síťový provoz, který zahrnuje privátní cloudový provoz, meziprivátní cloudový provoz, obecný provoz na internetu a síťový provoz do místního prostředí. přes IPsec VPN nebo připojení Azure ExpressRoute.
 
-## <a name="vulnerability-and-patch-management"></a>Správa ohrožení zabezpečení a opravy 
+## <a name="vulnerability-and-patch-management"></a>Zabezpečení a správa oprav 
 
-CloudSimple zodpovídá za spravovaného softwaru VMware, jako je například ESXi a vCenter, NSX opravy chyb zabezpečení.
+CloudSimple zodpovídá za pravidelné opravy zabezpečení spravovaného softwaru VMware, jako je třeba ESXi, vCenter a NSX.
 
 ## <a name="identity-and-access-management"></a>Správa identit a přístupu
 
-Zákazníky můžete ověřit ke svému účtu Azure (ve službě Azure Active Directory) pomocí vícefaktorového ověřování nebo jednotného přihlašování jako upřednostňovaný. Na webu Azure Portal můžete spustit portál CloudSimple bez nutnosti opětovného zadávání přihlašovacích údajů.
+Zákazníci se můžou k účtu Azure (v Azure Active Directory) ověřit pomocí vícefaktorového ověřování nebo jednotného přihlašování jako preferované. Z Azure Portal můžete spustit portál CloudSimple bez opětovného zadání přihlašovacích údajů.
 
-CloudSimple podporuje volitelná konfigurace zdroj identity pro vCenter privátního cloudu. Můžete použít [zdroj identity v místním](https://docs.azure.cloudsimple.com/set-vcenter-identity), nový zdroj identity pro daný privátní cloud, nebo [Azure Active Directory](https://docs.azure.cloudsimple.com/azure-ad).
+CloudSimple podporuje volitelnou konfiguraci zdroje identity pro Server vCenter privátního cloudu. Můžete použít [místní zdroj identity](https://docs.azure.cloudsimple.com/set-vcenter-identity), nový zdroj identity pro daný privátní cloud nebo [Azure Active Directory](https://docs.azure.cloudsimple.com/azure-ad).
 
-Ve výchozím nastavení disponují zákazníci oprávnění, které jsou nezbytné pro každodenní operace vCenter v rámci privátního cloudu. Tuto úroveň oprávnění neobsahuje přístup správce k serveru vCenter. Pokud se dočasně vyžaduje přístup správce, můžete si [eskalovat oprávnění](https://docs.azure.cloudsimple.com/escalate-private-cloud-privileges) po omezenou dobu při dokončování úlohy správy.
+Ve výchozím nastavení jsou zákazníkům udělena oprávnění, která jsou nezbytná pro každodenní operace vCenter v rámci privátního cloudu. Tato úroveň oprávnění neobsahuje přístup pro správu k vCenter. Pokud je přístup pro správu dočasně vyžadován, můžete během provádění úloh správy zvýšit [vaše oprávnění](https://docs.azure.cloudsimple.com/escalate-private-cloud-privileges) po dobu omezeného období.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* Zjistěte, jak [v Azure vytvořit službu CloudSimple](quickstart-create-cloudsimple-service.md).
-* Zjistěte, jak [vytvoření privátního cloudu](https://docs.azure.cloudsimple.com/create-private-cloud/).
-* Zjistěte, jak [konfigurace prostředí privátního cloudu](quickstart-create-private-cloud.md).
+* Naučte se [vytvořit službu CloudSimple v Azure](quickstart-create-cloudsimple-service.md).
+* Přečtěte si, jak [vytvořit privátní cloud](https://docs.azure.cloudsimple.com/create-private-cloud/).
+* Naučte se [Konfigurovat prostředí privátního cloudu](quickstart-create-private-cloud.md).

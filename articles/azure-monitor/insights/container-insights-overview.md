@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 08/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 96a312630c92048f36f79e3bec18f83ed5a445ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e1fca1532352c4955f478df70f818ee3151053c1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414129"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742213"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Azure Monitor pro kontejnery – přehled
 
@@ -40,9 +40,11 @@ Azure Monitor pro kontejnery nabízí ucelené monitorování pomocí různých 
 * Konfigurace výstrah k proaktivnímu upozorňování nebo zaznamenání, když využití procesoru a paměti na uzlech nebo kontejnerech překročí vaše prahové hodnoty.
 * Integrací s [Prometheus](https://prometheus.io/docs/introduction/overview/) můžete zobrazit metriky aplikací a úloh, které shromažďuje z uzlů a Kubernetes pomocí [dotazů](container-insights-log-search.md) pro vytváření vlastních výstrah, řídicích panelů a podrobných podrobných analýz.
 
->[!NOTE]
->Podpora pro Prometheus je ve verzi Public Preview v současnosti funkce.
->
+    >[!NOTE]
+    >Podpora pro Prometheus je ve verzi Public Preview v současnosti funkce.
+    >
+
+* Monitorujte úlohy kontejneru [nasazené do AKS-Engine](https://github.com/microsoft/OMS-docker/tree/aks-engine).
 
 Podívejte se na následující video, které poskytuje podrobné podrobně úrovně, které vám pomůžou získat informace o monitorování clusteru AKS pomocí Azure Monitor pro kontejnery.
 
@@ -56,6 +58,6 @@ Azure Monitor lze použít pro kontejnery dva způsoby, ze služby Azure Monitor
 
 Pokud vás zajímá monitorování a Správa hostitelů kontejnerů pro Docker a Windows, kteří používají mimo AKS k zobrazení konfigurace, auditu a využití prostředků, prostudujte si [řešení pro monitorování kontejnerů](../../azure-monitor/insights/containers.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít monitorovat cluster AKS, přečtěte si, [Jak povolit Azure monitor kontejnerů](container-insights-onboard.md) pro pochopení požadavků a dostupných metod, které umožňují monitorování.  

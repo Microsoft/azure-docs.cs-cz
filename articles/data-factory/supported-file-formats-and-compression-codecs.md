@@ -7,18 +7,18 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 9f6edc45316eaeceb75da643ed64b39382712852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2ffd88b21d8cf331435a030199b562e6b5b979f
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165944"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840270"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
-*Tento článek se týká následující konektory: [Amazon S3](connector-amazon-simple-storage-service.md), [objektů Blob v Azure](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Systém souborů](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md)a [ SFTP](connector-sftp.md).*
+*Tento článek se týká následujících konektorů: [Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [systém souborů](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)a Protokol [SFTP](connector-sftp.md).*
 
 Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. Pokud chcete **analyzovat a generovat soubory s konkrétním formátu**, Azure Data Factory podporuje následující typy formátů souboru:
 
@@ -27,14 +27,15 @@ Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (biná
 * [Formát parquet](#parquet-format)
 * [Formát ORC](#orc-format)
 * [Formát Avro](#avro-format)
+* [Binární formát](#binary-format)
 
 > [!TIP]
-> Zjistěte, jak aktivitu kopírování, která mapuje svá zdrojová data pro zpracování z [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md).
+> Přečtěte si, jak aktivita kopírování mapuje vaše zdrojová data na jímku z [mapování schématu v aktivitě kopírování](copy-activity-schema-and-type-mapping.md).
 
 ## <a name="text-format"></a>Formát textu
 
 >[!NOTE]
->Datset formátu textu oddělených zavedeny nové služby Data Factory najdete v tématu [formátu textu odděleného](format-delimited-text.md) článku s podrobnostmi. Následující konfigurace pro úložiště souborových dat datovou sadu je stále podporovány jako-je pro zpětné compabitility. Byly navrženy pro použití nového modelu do budoucna.
+>Data Factory představil nový textový formát s oddělovači datset, viz článek [textový formát](format-delimited-text.md) s oddělovači s podrobnostmi. Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
 
 Pokud chcete pro čtení z textového souboru nebo zápis do textového souboru, nastavte `type` vlastnost `format` části datové sady na **TextFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu TextFormat](#textformat-example).
 
@@ -42,7 +43,7 @@ Pokud chcete pro čtení z textového souboru nebo zápis do textového souboru,
 | --- | --- | --- | --- |
 | columnDelimiter |Znak, který slouží k oddělení sloupců v souboru. Můžete zvážit použití výjimečných málo častého netisknutelného znaku, který nemusí existovat ve vašich datech. Zadejte například "\u0001", který představuje Start začátek hlavičky (SOH). |Je povolený jenom jeden znak. **Výchozí** hodnota je **čárka (,)** . <br/><br/>Použijte znakovou sadu Unicode, najdete v tématu [znaky znakové sady Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) získat pro ni odpovídající kód. |Ne |
 | rowDelimiter |Znak, který slouží k oddělení řádků v souboru. |Je povolený jenom jeden znak. **Výchozí** hodnotou pro čtení může být libovolná z těchto hodnot: **[\r\n, \r, \n]** a pro zápis hodnota **\r\n**. |Ne |
-| escapeChar |Speciální znak, který slouží k potlačení oddělovače sloupců v obsahu vstupního souboru. <br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud používáte čárku (', ') jako oddělovač sloupců ale chcete znak čárky v textu (Příklad: "Hello, world"), můžete definovat jako řídicí znak "$" a použijte řetězec "Hello$, world" ve zdroji. |Ne |
+| escapeChar |Speciální znak, který slouží k potlačení oddělovače sloupců v obsahu vstupního souboru. <br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud jako oddělovač sloupců používáte čárku (,), ale v textu chcete znak čárky (příklad: "Hello, World"), můžete definovat "$" jako řídicí znak a použít ve zdroji řetězec "Hello $, World". |Ne |
 | quoteChar |Znak, který slouží k uvození textového řetězce. Oddělovače sloupců a řádků uvnitř znaků uvozovek budou považované za součást hodnoty příslušného řetězce. Tato vlastnost se vztahuje na vstupní i výstupní datové sady.<br/><br/>Pro tabulku nejde zadat escapeChar a quoteChar současně. |Je povolený jenom jeden znak. Žádná výchozí hodnota. <br/><br/>Příklad: Pokud jako oddělovač sloupců používáte čárku (,), ale chcete znak čárky použít v textu (příklad: <Hello, world>), můžete jako znak uvozovek definovat " (dvojité uvozovky) a použít ve zdroji řetězec "Hello$, world". |Ne |
 | nullValue |Jeden nebo několik znaků, které se používají jako reprezentace hodnoty Null. |Jeden nebo několik znaků. **Výchozí** hodnoty jsou **\N a NULL** pro čtení a **\N** pro zápis. |Ne |
 | encodingName |Zadejte název kódování. |Platný název kódování. Další informace najdete v tématu [Vlastnost Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je **UTF-8**. |Ne |
@@ -81,7 +82,7 @@ Pokud chcete místo `quoteChar` použít `escapeChar`, nahraďte řádek s `quot
 
 ### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>Scénáře použití firstRowAsHeader a skipLineCount
 
-* Kopírujete z nesouborového zdroje do textového souboru a chcete přidat řádek záhlaví obsahující metadata schématu (například: SQL schema). V tomto scénáři zadejte ve vstupní sadě `firstRowAsHeader` jako true.
+* Kopírujete ze zdroje, který není soubor, do textového souboru a chcete přidat řádek záhlaví obsahující metadata schématu (například: Schéma SQL). V tomto scénáři zadejte ve vstupní sadě `firstRowAsHeader` jako true.
 * Kopírujete text z textového souboru obsahujícího řádek záhlaví do nesouborové jímky a chcete tento řádek vynechat. Zadejte ve vstupní sadě `firstRowAsHeader` jako true.
 * Kopírujete text z textového souboru a chcete vynechat několik prvních řádků, které neobsahují data ani informace záhlaví. Zadáním `skipLineCount` určete, kolik řádků se má přeskočit. Pokud zbytek souboru obsahuje řádek záhlaví, můžete také zadat `firstRowAsHeader`. Pokud je zadaný parametr `skipLineCount` i `firstRowAsHeader`, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví.
 
@@ -94,13 +95,13 @@ Pokud chcete analyzovat soubory JSON nebo zapisovat data ve formátu JSON, nasta
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | filePattern |Určete vzor dat uložených v jednotlivých souborech JSON. Povolené hodnoty jsou **setOfObjects** a **arrayOfObjects**. **Výchozí hodnota** je **setOfObjects**. Podrobné informace o těchto vzorech najdete v tématu [Vzory souborů JSON](#json-file-patterns). |Ne |
-| jsonNodeReference | Pokud chcete iterovat a extrahovat data z objektů uvnitř pole se stejným vzorem, zadejte pro toto pole cestu JSON. Tato vlastnost je podporována pouze v případě, že kopírování dat **z** soubory JSON. | Ne |
-| jsonPathDefinition | Zadejte výraz cesty JSON pro každé mapování sloupců s vlastním názvem sloupce (s počátečním malým písmenem). Tato vlastnost je podporována pouze v případě, že kopírování dat **z** soubory JSON a můžete extrahovat data z objektu nebo pole. <br/><br/> U polí v kořenovém objektu začtěte s kořenem $, u polí uvnitř pole vybraného pomocí vlastnosti `jsonNodeReference` začněte elementem pole. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example). | Ne |
-| encodingName |Zadejte název kódování. Seznam platných názvů kódování najdete v tématu: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) vlastnost. Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je: **UTF-8**. |Ne |
+| jsonNodeReference | Pokud chcete iterovat a extrahovat data z objektů uvnitř pole se stejným vzorem, zadejte pro toto pole cestu JSON. Tato vlastnost je podporována pouze při kopírování dat **ze** souborů JSON. | Ne |
+| jsonPathDefinition | Zadejte výraz cesty JSON pro každé mapování sloupců s vlastním názvem sloupce (s počátečním malým písmenem). Tato vlastnost je podporována, pouze pokud kopírujete data **ze** souborů JSON a můžete extrahovat data z objektu nebo pole. <br/><br/> U polí v kořenovém objektu začtěte s kořenem $, u polí uvnitř pole vybraného pomocí vlastnosti `jsonNodeReference` začněte elementem pole. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example). | Ne |
+| encodingName |Zadejte název kódování. Seznam platných názvů kódování najdete v tématu: [Encoding. Encoding](https://msdn.microsoft.com/library/system.text.encoding.aspx) – vlastnost. Příklad: windows-1250 nebo shift_jis. **Výchozí** hodnota je: **UTF-8**. |Ne |
 | nestingSeparator |Znak, který se používá k oddělení úrovní vnoření. Výchozí hodnota je tečka (.). |Ne |
 
 >[!NOTE]
->Pro případ křížové použití dat v poli do několika řádků (případ 1 -> ukázka 2 v [JsonFormat příklady](#jsonformat-example)), je možné pouze jedno pole pomocí vlastnosti rozbalte `jsonNodeReference`.
+>Pro případ křížového použití dat v poli do více řádků (například případ 1-> Sample 2 v [příkladech JsonFormat](#jsonformat-example)) můžete zvolit pouze rozšíření jednoho pole pomocí vlastnosti `jsonNodeReference`.
 
 ### <a name="json-file-patterns"></a>Vzory souborů JSON
 
@@ -412,7 +413,7 @@ Výstupní datová sada typu **JsonFormat** je definovaná následujícím způs
 ## <a name="parquet-format"></a>Formát parquet
 
 >[!NOTE]
->Data Factory zavedeny nové datset formát Parquet, přečtěte si téma [formát Parquet](format-parquet.md) článku s podrobnostmi. Následující konfigurace pro úložiště souborových dat datovou sadu je stále podporovány jako-je pro zpětné compabitility. Byly navrženy pro použití nového modelu do budoucna.
+>Data Factory zavedli nové datset formátu Parquet, přečtěte si článek o [formátu Parquet](format-parquet.md) s podrobnostmi. Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
 
 Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet, nastavte vlastnost `format` `type` na hodnotu **Format**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
 
@@ -425,24 +426,24 @@ Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet,
 
 Je třeba počítat s následujícím:
 
-* Komplexní datové typy se nepodporují (MAP, LIST).
-* Prázdné znaky v názvu sloupce se nepodporuje.
-* Soubory parquet mají následující možnosti komprese: NONE, SNAPPY, GZIP a LZO. Data Factory podporuje čtení dat ze souboru Parquet v některé z těchto komprimovaných formátech s výjimkou LZO – k načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru Parquet ale Data Factory využívá možnost SNAPPY, která je pro formát Parquet výchozí. V současnosti toto chování nejde potlačit.
+* Komplexní datové typy se nepodporují (mapa, seznam).
+* Prázdné znaky v názvu sloupce nejsou podporovány.
+* Soubor Parquet má následující možnosti týkající se komprese: ŽÁDNÁ, přichycení, GZIP a LZO. Data Factory podporuje čtení dat ze souboru Parquet v některém z těchto komprimovaných formátů s výjimkou LZO – používá ke čtení dat Kompresní kodek v metadatech. Při zápisu do souboru Parquet ale Data Factory využívá možnost SNAPPY, která je pro formát Parquet výchozí. V současnosti toto chování nejde potlačit.
 
 > [!IMPORTANT]
-> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory Parquet nekopírujete **jako-je**, je potřeba nainstalovat **64bitové prostředí JRE 8 (Java Runtime Environment) nebo OpenJDK** na svém počítači reakcí na Incidenty. Viz odstavec s dalšími podrobnostmi.
+> Pro kopii, která je oprávněná pro místní hostování Integration Runtime například mezi místními a cloudovým úložištěm dat, pokud soubory Parquet nekopírujete **tak, jak jsou**, je nutné na počítač IR nainstalovat **64-bit JRE 8 (Java Runtime Environment) nebo OpenJDK** . Další podrobnosti najdete v následujícím článku.
 
-Pro kopírování běží na místní prostředí IR prostřednictvím souboru Parquet serializace/deserializace, ADF vyhledá modul runtime Java za prvé kontrolou registru *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* pro prostředí JRE, pokud není nalezen, potom na základě kontroly systémová proměnná *`JAVA_HOME`* pro OpenJDK.
+Pro kopírování běžící v prostředí IR v místním prostředí s Parquet serializací/deserializace vyhledá ADF modul runtime Java tím, že se nejprve *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* zkontroluje registr pro JRE, pokud se nenajde, druhá kontroluje proměnnou *`JAVA_HOME`* systému pro OpenJDK.
 
-- **Použití prostředí JRE**: Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Najdete ho z [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
-- **Chcete-li použít OpenJDK**: ta se podporuje od verze 3.13 IR. Balíček jvm.dll se všechny ostatní požadované sestavení OpenJDK do místní prostředí IR počítačů a nastavte systém proměnnou prostředí JAVA_HOME odpovídajícím způsobem.
+- **Použití JRE**: 64-bit IR vyžaduje 64 bitovou JRE. Můžete ho najít [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Použití OpenJDK**: podporuje se od verze IR 3,13. Zabalit soubor JVM. dll se všemi ostatními požadovanými sestaveními OpenJDK do místního počítače IR a nastavte proměnnou prostředí systému JAVA_HOME odpovídajícím způsobem.
 
 >[!TIP]
->Při kopírování dat do a z Parquet naformátovat pomocí modul Integration Runtime a přístupů o tom, že chyba "došlo k chybě při spouštění Javy, zpráva: **místo v haldě java.lang.OutOfMemoryError:Java**", můžete přidat proměnné prostředí `_JAVA_OPTIONS` na počítači, který je hostitelem místní prostředí IR upravit minimální/maximální velikost haldy pro JVM pro tyto kopie, pak znovu spusťte kanál.
+>Pokud kopírujete data do nebo z formátu Parquet pomocí Integration runtime v místním prostředí a dojde k chybě, při vyvolání Java došlo k chybě. zpráva: **Java. lang. OutOfMemoryError: prostor haldy Java**", můžete přidat proměnnou `_JAVA_OPTIONS` prostředí do počítač, který je hostitelem prostředí IR v místním prostředí, aby upravil minimální/maximální velikost haldy pro JVM, aby mohl takovou kopii provést, pak znovu spusťte kanál.
 
-![Nastavení velikosti haldy JVM na místní prostředí IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+![Nastavení velikosti haldy JVM v místním prostředí IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Příklad: nastavená proměnná `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. Příznak `Xms` Určuje počáteční paměť přidělení fondu pro Java Virtual Machine (JVM), zatímco `Xmx` určuje maximální velikost paměti přidělení fondu. To znamená, že se bude spuštěn JVM `Xms` množství paměti a budete moct použít maximálně `Xmx` množství paměti. Ve výchozím nastavení ADF pomocí min 64MB a maximální počet 1G.
+Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. Příznak `Xms` Určuje počáteční fond přidělení paměti pro prostředí Java Virtual Machine (JVM), zatímco `Xmx` určuje maximální fond přidělení paměti. To znamená, že JVM bude spuštěn s `Xms` velikostí paměti a bude moci využít `Xmx` maximální množství paměti. Ve výchozím nastavení ADF používá minimální 64 MB a maximální 1G.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Mapování pro soubory Parquet typu dat.
 
@@ -467,7 +468,7 @@ Příklad: nastavená proměnná `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. 
 | ByteArray | Binární hodnota | neuvedeno | neuvedeno |
 | Guid | Binární hodnota | Utf8 | Utf8 |
 | Char | Binární hodnota | Utf8 | Utf8 |
-| CharArray | Nepodporuje se | neuvedeno | neuvedeno |
+| CharArray | Nepodporuje se | neuvedeno | Není k dispozici |
 
 ## <a name="orc-format"></a>Formát ORC
 
@@ -482,17 +483,17 @@ Pokud chcete analyzovat soubory ORC nebo zapisovat data ve formátu ORC, nastavt
 
 Je třeba počítat s následujícím:
 
-* Komplexní datové typy se nepodporují (STRUCT, MAP, seznam, SJEDNOCENÍ).
-* Prázdné znaky v názvu sloupce se nepodporuje.
-* Orc mají tři [možnosti komprese](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB A SNAPPY. Data Factory podporuje čtení dat ze souborů ORC v libovolném z těchto komprimovaných formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru ORC ale Data Factory využívá možnost ZLIB, která je pro formát ORC výchozí. V současnosti toto chování nejde potlačit.
+* Komplexní datové typy se nepodporují (struktura, mapování, seznam, SJEDNOCENí).
+* Prázdné znaky v názvu sloupce nejsou podporovány.
+* Soubor ORC má tři [Možnosti týkající se komprese](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB, PŘICHYCENÍ. Data Factory podporuje čtení dat ze souborů ORC v libovolném z těchto komprimovaných formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru ORC ale Data Factory využívá možnost ZLIB, která je pro formát ORC výchozí. V současnosti toto chování nejde potlačit.
 
 > [!IMPORTANT]
-> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory ORC nekopírujete **jako-je**, je potřeba nainstalovat **64bitové prostředí JRE 8 (Java Runtime Environment) nebo OpenJDK**  na svém počítači reakcí na Incidenty. Viz odstavec s dalšími podrobnostmi.
+> Pro kopii, která je oprávněná pro místní hostování Integration Runtime například mezi místními a cloudovým úložištěm dat, pokud soubory ORC nekopírujete **tak, jak jsou**, je nutné na počítač IR nainstalovat **64-bit JRE 8 (Java Runtime Environment) nebo OpenJDK** . Další podrobnosti najdete v následujícím článku.
 
-Pro kopírování běží na místní prostředí IR prostřednictvím souboru ORC serializace/deserializace, ADF vyhledá modul runtime Java za prvé kontrolou registru *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* pro prostředí JRE, pokud není nalezen, potom na základě kontroly systémová proměnná *`JAVA_HOME`* pro OpenJDK.
+Pro kopírování běžící v prostředí IR v místním prostředí s ORC serializací/deserializace vyhledá ADF modul runtime Java tím, že se nejprve *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* zkontroluje registr pro JRE, pokud se nenajde, druhá kontroluje proměnnou *`JAVA_HOME`* systému pro OpenJDK.
 
-- **Použití prostředí JRE**: Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Najdete ho z [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
-- **Chcete-li použít OpenJDK**: ta se podporuje od verze 3.13 IR. Balíček jvm.dll se všechny ostatní požadované sestavení OpenJDK do místní prostředí IR počítačů a nastavte systém proměnnou prostředí JAVA_HOME odpovídajícím způsobem.
+- **Použití JRE**: 64-bit IR vyžaduje 64 bitovou JRE. Můžete ho najít [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Použití OpenJDK**: podporuje se od verze IR 3,13. Zabalit soubor JVM. dll se všemi ostatními požadovanými sestaveními OpenJDK do místního počítače IR a nastavte proměnnou prostředí systému JAVA_HOME odpovídajícím způsobem.
 
 ### <a name="data-type-mapping-for-orc-files"></a>Datový typ mapování pro soubory ORC
 
@@ -535,6 +536,10 @@ Je třeba počítat s následujícím:
 
 * [Komplexní datové typy](https://avro.apache.org/docs/current/spec.html#schema_complex) se nepodporují (záznamy, výčty, pole, mapy, sjednocení a oprava).
 
+## <a name="binary-format"></a>Binární formát
+
+Podrobnosti najdete v článku o [binárním formátu](format-binary.md) .
+
 ## <a name="compression-support"></a>Podpora komprese
 
 Azure Data Factory podporuje komprese nebo dekomprese dat během kopírování. Pokud zadáte `compression` vlastnost ve vstupní datovou sadu aktivita kopírování čtení komprimovaných dat ze zdrojové a dekomprimovat; a při zadání vlastnosti ve výstupní datovou sadu aktivita kopírování komprimovat a zapisovat data do jímky. Tady je několik ukázkových scénářů:
@@ -575,22 +580,22 @@ Pokud chcete zadat komprese datové sady, použijte **komprese** vlastnost v dat
 * **Typ:** kompresní kodek, který může být **GZIP**, **Deflate**, **BZIP2**, nebo **ZipDeflate**.
 * **Úroveň:** kompresní poměr, který může být **Optimal** nebo **nejrychlejší**.
 
-  * **Nejrychlejší:** Komprese operace by se měla dokončit tak rychle, jako je to možné, i v případě, že výsledný soubor není komprimována optimálně.
-  * **Optimální**: Komprese operace by měla být optimálně v komprimovaném tvaru i v případě, že operace trvá delší dobu pro dokončení.
+  * **Způsobem** Kompresní operace by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.
+  * **Optimální**: Kompresní operace by měla být optimálně komprimována i v případě, že dokončení operace trvá delší dobu.
 
     Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) tématu.
 
 > [!NOTE]
 > Nastavení komprese nejsou podporovány pro data ve službě **AvroFormat**, **OrcFormat**, nebo **ParquetFormat**. Při čtení souborů v těchto formátů, Data Factory zjistí a využívá kompresní kodek v metadatech. Při zápisu do souborů v těchto formátů, Data Factory využívá možnost kompresní kodek výchozí pro daný formát. Například pro OrcFormat ZLIB a SNAPPY pro ParquetFormat.
 
-## <a name="unsupported-file-types-and-compression-formats"></a>Nepodporované typy souborů a formátů komprese
+## <a name="unsupported-file-types-and-compression-formats"></a>Nepodporované typy souborů a formáty komprese
 
-Rozšíření funkcí služby Azure Data Factory můžete použít k transformaci soubory, které nejsou podporovány.
-Dvě možnosti patří Azure Functions a vlastní úlohy pomocí služby Azure Batch.
+K transformaci souborů, které nejsou podporované, můžete použít funkce rozšíření Azure Data Factory.
+Mezi dvě možnosti patří Azure Functions a vlastní úkoly pomocí Azure Batch.
 
-Můžete zobrazit ukázky, která používá funkci Azure pro [extrahovat obsah souboru cíl](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). Další informace najdete v tématu [aktivit Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
+Můžete vidět ukázku, která používá funkci Azure k extrakci [obsahu souboru tar](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). Další informace najdete v tématu [aktivita Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
 
-Můžete také sestavit této funkce s použitím vlastní dotnet aktivity. Další informace jsou k dispozici [zde](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)
+Tuto funkci můžete také vytvořit pomocí vlastní aktivity dotnet. Další informace jsou k dispozici [zde](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity) .
 
 ## <a name="next-steps"></a>Další postup
 

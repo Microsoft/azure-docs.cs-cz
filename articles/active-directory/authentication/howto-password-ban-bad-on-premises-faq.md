@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1f2e06eb6b5f8d402515ff1c07a4163174495d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666357"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779646"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Místní ochrana heslem Azure AD – Nejčastější dotazy
 
@@ -40,19 +40,19 @@ Nepodporuje se. Po nasazení a povolení ochrany heslem Azure AD nezáleží na 
 
 **Otázka: Jaký je rozdíl mezi změnou hesla a nastavením hesla (nebo resetováním)?**
 
-Změna hesla je v případě, že uživatel po prokázání, že má informace o starém hesle, zvolí nové heslo. To je například to, co se stane, když se uživatel přihlásí k Windows, a zobrazí se výzva k výběru nového hesla.
+Změna hesla je v případě, že uživatel po prokázání, že má informace o starém hesle, zvolí nové heslo. Například změna hesla je to, co se stane, když se uživatel přihlásí k Windows, a zobrazí se výzva k výběru nového hesla.
 
-Sada hesel (někdy označované jako resetování hesla) je v případě, že správce nahradí heslo k účtu novým heslem, například pomocí nástroje pro správu Uživatelé a počítače služby Active Directory. Tato operace vyžaduje vysokou úroveň oprávnění (obvykle správce domény) a osoba provádějící tuto operaci obvykle nemá znalosti o původním hesle. Scénáře technické podpory to často dělají, například při pomoci uživateli, který zapomněl heslo. Při prvním vytváření nového uživatelského účtu s heslem se zobrazí také události nastavování hesel.
+Sada hesel (někdy označované jako resetování hesla) je v případě, že správce nahradí heslo k účtu novým heslem, například pomocí nástroje pro správu Uživatelé a počítače služby Active Directory. Tato operace vyžaduje vysokou úroveň oprávnění (obvykle správce domény) a osoba provádějící tuto operaci obvykle nemá znalosti o původním hesle. Scénáře technické podpory často provádějí sady hesel, například při pomoci uživateli, který zapomněl heslo. Při prvním vytváření nového uživatelského účtu s heslem se zobrazí také události nastavování hesel.
 
 Zásady ověřování hesla se chovají stejně, bez ohledu na to, jestli se provádí změna nebo nastavení hesla. Služba agenta řadiče domény Azure AD pro ochranu hesel zaznamenává různé události, které vás informují o tom, jestli byla operace změny nebo nastavení hesla hotová.  Viz téma [monitorování a protokolování ochrany heslem služby Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
 **Otázka: Proč se při pokusu o nastavení slabého hesla pomocí modulu snap-in Správa uživatelů a počítačů služby Active Directory zaznamenaly duplicitní události odmítnutí hesla?**
 
-Modul snap-in Správa uživatelů a počítačů služby Active Directory se nejprve pokusí nastavit nové heslo pomocí protokolu Kerberos. Po selhání se modul snap-in pokusí nastavit heslo pomocí staršího protokolu (SAM RPC) (používané konkrétní protokoly nejsou důležité). Pokud se nové heslo považuje za slabé pomocí ochrany heslem Azure AD, bude se jednat o dvě sady událostí odmítnutí resetování hesla.
+Modul snap-in Správa uživatelů a počítačů služby Active Directory se nejprve pokusí nastavit nové heslo pomocí protokolu Kerberos. Po selhání se modul snap-in postará o nastavení hesla pomocí staršího protokolu (SAM RPC) (používané konkrétní protokoly nejsou důležité). Pokud se nové heslo považuje za slabé pomocí ochrany heslem služby Azure AD, toto chování modulu snap-in bude mít za následek, že budou protokolovány dvě sady událostí odmítnutí resetování hesla.
 
 **Otázka: Proč se události ověřování hesla ochrany heslem služby Azure AD zaprotokolují s prázdným uživatelským jménem?**
 
-Služba Active Directory podporuje možnost testování hesla, aby bylo možné zjistit, zda splňuje aktuální požadavky na složitost hesla domény, například pomocí rozhraní [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API. Když se heslo tímto způsobem ověří, testování zahrnuje taky ověřování v produktech založených na filtrech hesel, jako je třeba ochrana heslem Azure AD. uživatelská jména předaná do dané knihovny DLL filtru hesel ale budou prázdná. V tomto scénáři ochrana heslem Azure AD bude i nadále ověřovat heslo pomocí zásad hesel v současné době a vydá zprávu protokolu událostí pro zachycení výsledku, ale zpráva protokolu událostí bude mít prázdná pole uživatelského jména.
+Služba Active Directory podporuje možnost testování hesla, aby bylo možné zjistit, zda splňuje aktuální požadavky na složitost hesla domény, například pomocí rozhraní [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API. Když se heslo tímto způsobem ověří, testování zahrnuje taky ověřování v produktech založených na filtrech hesel, jako je třeba ochrana heslem Azure AD. uživatelská jména předaná do dané knihovny DLL filtru hesel ale budou prázdná. V tomto scénáři ochrana heslem Azure AD stále ověří heslo pomocí zásad hesel v současné době a vydá zprávu protokolu událostí pro zachycení výsledku, ale zpráva protokolu událostí bude mít prázdná pole uživatelského jména.
 
 **Otázka: Je podporováno pro instalaci ochrany heslem Azure AD vedle sebe pomocí dalších produktů založených na filtrech hesel?**
 
@@ -115,6 +115,10 @@ Jedním ze způsobů, jak částečně dosáhnout tohoto cíle, je nasazení och
 Ne. Když se heslo uživatele změní na daném řadiči domény, který není řadičem domény, heslo nešifrovaných textů se nikdy nepošle na primární řadič domény (Tento nápad je běžnou přívnímáním). Jakmile se v daném řadiči domény přijme nové heslo, tento řadič domény toto heslo použije k vytvoření různých hash hodnot specifických pro ověřování pro dané heslo a pak tyto hodnoty hash uchovává v adresáři. Heslo nešifrovaných textů není trvalé. Aktualizované hodnoty hash se pak replikují na primární řadič domény. Uživatelská hesla se můžou v některých případech změnit přímo na primárním řadiči domény, a to v závislosti na různých faktorech, jako je síťová topologie a návrh lokality služby Active Directory. (Podívejte se na předchozí otázku.)
 
 V souhrnu je potřeba nasazení služby agenta řadiče domény služby Azure AD Password na primárním řadiči domény dosáhnout 100% pokrytí zabezpečení funkce v rámci domény. Nasazení funkce na primární řadič domény jenom neposkytuje výhody zabezpečení ochrany heslem Azure AD pro žádné jiné řadiče domény v doméně.
+
+**Otázka: Proč vlastní inteligentní uzamčení nefunguje ani po instalaci agentů do místního prostředí Active Directory?**
+
+Vlastní inteligentní uzamčení se podporuje jenom v Azure. Změny nastavení vlastního inteligentního uzamčení na portálu pro správu Azure nemají žádný vliv na místní prostředí Active Directory, a to ani na nainstalovaných agentech.
 
 **Otázka: Je System Center Operations Manager k dispozici Management Pack ochrany heslem Azure AD?**
 

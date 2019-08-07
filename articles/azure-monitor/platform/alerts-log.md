@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 6dc8fcc32d7f05063da15eb6ca6bf7a7d69baebb
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: f4d3a4d9a5785ae350874c400384477da1a6c22e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663127"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774720"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor
 
@@ -58,7 +58,7 @@ Podrobný návod, jak používat výstrahy protokolu pomocí rozhraní Azure Por
 
    > [!NOTE]
    > 
-   > Seznamy výstrah můžou importovat dotaz Analytics jako typ signálu – **protokol (uložený dotaz)** , jak vidíte na obrázku výše. Takže si uživatelé můžou dokonalý dotaz analyzovat a pak je uložit pro budoucí použití v upozorněních – další podrobnosti o použití ukládání dotazů, které jsou k dispozici [v Azure monitor](../log-query/log-query-overview.md) nebo ve [sdílených dotazech služby Application Insights Analytics](../log-query/log-query-overview.md).
+   > Seznamy výstrah můžou importovat dotaz Analytics jako typ signálu – **protokol (uložený dotaz)** , jak vidíte na obrázku výše. Takže si uživatelé můžou dokonalý dotaz analyzovat a pak je uložit pro budoucí použití v upozorněních – další podrobnosti o použití ukládání dotazů, které jsou k dispozici [v Azure monitor](../log-query/log-query-overview.md) nebo ve [sdílených dotazech služby Application Insights Analytics](../app/app-insights-overview.md).
 
 1. *Výstrahy protokolu*: Po výběru se dotaz na upozorňování dá zadat v poli **vyhledávacího dotazu** . Pokud je syntaxe dotazu nesprávná, pole zobrazí ČERVENou chybu. Pokud je syntaxe dotazu správná – pro odkaz na historické údaje uvedeného dotazu se zobrazí jako graf s možností pro vylepšení časového okna z posledních šesti hodin do minulého týdne.
 

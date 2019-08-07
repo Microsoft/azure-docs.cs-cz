@@ -1,6 +1,6 @@
 ---
-title: Jak a proč se aplikace přidávají do služby Azure Active Directory
-description: Co znamená pro aplikaci přidat do služby Azure AD a jak se toho, že?
+title: Jak a proč se aplikace přidávají do Azure Active Directory
+description: Co to znamená, když se aplikace přidá do Azure AD a jak se tam dostanou?
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -10,7 +10,7 @@ ms.assetid: 3321d130-f2a8-4e38-b35e-0959693f3576
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/04/2019
@@ -18,136 +18,136 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1b92b174d48c710a763857951d66d00956fa0f9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 6bb3ef2a86c523d7cda5bc7da5d83ec4ac741abf
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483076"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835383"
 ---
-# <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do služby Azure AD
+# <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do Azure AD
 
-Existují dva reprezentace aplikace ve službě Azure AD: 
-* [Objekty aplikací](app-objects-and-service-principals.md#application-object) – i když jsou [výjimky](#notes-and-exceptions), objekty aplikací lze považovat za definici aplikace.
-* [Instanční](app-objects-and-service-principals.md#service-principal-object) -lze považovat za instanci aplikace. Instanční objekty obecně odkazovat na objekt aplikace a jeden objekt aplikace lze odkazovat pomocí více instanční objekty v adresáři.
+Ve službě Azure AD existují dvě reprezentace aplikací: 
+* [Aplikační objekty](app-objects-and-service-principals.md#application-object) – i když existují [výjimky](#notes-and-exceptions), objekty aplikace lze považovat za definici aplikace.
+* [Instanční objekty](app-objects-and-service-principals.md#service-principal-object) – lze považovat za instanci aplikace. Instanční objekty obecně odkazují na objekt aplikace a jeden objekt aplikace může být odkazován více instančními objekty v adresáři.
 
-## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Co jsou objekty aplikací a odkud jsou pocházejí z?
-Můžete spravovat [objekty aplikací](app-objects-and-service-principals.md#application-object) na webu Azure Portal prostřednictvím [registrace aplikací](https://aka.ms/appregistrations) prostředí. Objekty aplikací popisují aplikace do služby Azure AD a lze považovat za definici aplikace, povolení služby vědět, jak pro vydávání tokenů na aplikaci na základě nastavení. Objekt aplikace bude existovat pouze v jeho domovského adresáře, i když je aplikace s více tenanty podpora instanční objekty v jiných adresářích. Objekt aplikace může zahrnovat následující (jako dalšími informace, které zde nejsou uvedeny):
-* Název, loga a vydavatel
+## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Co jsou objekty aplikace a odkud pocházejí?
+Můžete spravovat [objekty aplikace](app-objects-and-service-principals.md#application-object) v Azure Portal prostřednictvím možností [Registrace aplikací](https://aka.ms/appregistrations) . Aplikační objekty popisují aplikaci do služby Azure AD a je možné ji považovat za definici aplikace, což službě umožňuje zjistit, jak vydávat tokeny aplikaci na základě jejího nastavení. Objekt aplikace bude existovat pouze v domovském adresáři, i v případě, že se jedná o víceklientské aplikace podporující instanční objekty v jiných adresářích. Objekt aplikace může obsahovat některé z následujících (a také další informace, které zde nejsou zmíněny):
+* Název, logo a Vydavatel
 * Identifikátory URI pro přesměrování
-* Tajné kódy (symetrický a/nebo asymetrické klíče používané k ověření aplikace)
-* Rozhraní API závislosti (OAuth)
-* Publikované rozhraní API/zdroje/obory (OAuth)
-* Aplikace role (RBAC)
-* Konfigurace a metadat jednotného přihlašování
+* Tajné kódy (symetrické a/nebo asymetrické klíče používané k ověření aplikace)
+* Závislosti rozhraní API (OAuth)
+* Publikovaná rozhraní API/prostředky/obory (OAuth)
+* Aplikační role (RBAC)
+* Konfigurace a metadata jednotného přihlašování
 * Metadata a konfigurace zřizování uživatelů
-* Metadata serveru proxy a konfigurace
+* Metadata a konfigurace proxy serveru
 
-Objekty aplikací je možné vytvářet přes více cest, včetně:
-* Registrace aplikací na webu Azure Portal
-* Vytvoření nové aplikace pomocí sady Visual Studio a jeho konfigurace ověřování Azure AD
-* Když správce přidá aplikaci z Galerie aplikací (které budou také vytvořit instanční objekt)
-* Použití rozhraní Microsoft Graph API, Azure AD Graph API nebo Powershellu k vytvoření nové aplikace
-* Řada dalších včetně různé prostředí pro vývojáře v Azure a v prostředí Průzkumníka rozhraní API v centrech pro vývojáře
+Aplikační objekty lze vytvořit pomocí několika cest, včetně:
+* Registrace aplikací v Azure Portal
+* Vytvoření nové aplikace pomocí sady Visual Studio a její konfigurace pro použití ověřování Azure AD
+* Když správce přidá aplikaci z Galerie aplikací (tím se vytvoří také instanční objekt)
+* Vytvoření nové aplikace pomocí rozhraní Microsoft Graph API, Graph API Azure AD nebo PowerShellu
+* Mnoho dalších, včetně různých vývojářských prostředí v Azure a v Průzkumníkovi rozhraní API napříč centry pro vývojáře
 
-## <a name="what-are-service-principals-and-where-do-they-come-from"></a>Co jsou instančních objektů a odkud jsou pocházejí z?
-Můžete spravovat [instanční](app-objects-and-service-principals.md#service-principal-object) na webu Azure Portal prostřednictvím [podnikové aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) prostředí. Instanční objekty jsou, co řídí aplikaci připojení ke službě Azure AD a lze považovat za instanci aplikace ve vašem adresáři. Pro danou aplikaci může mít maximálně jeden objekt aplikace, (který je registrován v adresáři "domovskou") a nejmíň jeden instanční objekty představující instancí aplikace v každém adresáři, ve kterém funguje. 
+## <a name="what-are-service-principals-and-where-do-they-come-from"></a>Co jsou instanční objekty a odkud přicházejí z provozu?
+[Objekty služby](app-objects-and-service-principals.md#service-principal-object) v Azure Portal můžete spravovat prostřednictvím prostředí [podnikových aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) . Instanční objekty se řídí aplikací připojujícími se k Azure AD a je možné ji považovat za instanci aplikace ve vašem adresáři. V případě jakékoli aplikace může mít maximálně jeden aplikační objekt (který je zaregistrován v "domovském" adresáři) a jeden nebo více instančních objektů, které představují instance aplikace v každém adresáři, v němž funguje. 
 
-Instanční objekt služby mohou zahrnovat:
+Instanční objekt může zahrnovat:
 
-* Odkaz na objekt aplikace prostřednictvím vlastnosti ID aplikace
-* Zaznamenává místní uživatele a skupiny přiřazení role aplikace
-* Zaznamenává místní uživatele a správce oprávnění udělené aplikaci
-  * Příklad: oprávnění pro aplikaci pro přístup k e-mailu určitého uživatele
-* Zaznamenává místní zásady, včetně zásad podmíněného přístupu
-* Záznamy o alternativní místní nastavení pro aplikaci
+* Odkaz zpátky na objekt aplikace pomocí vlastnosti ID aplikace
+* Záznamy aplikace místních uživatelů a skupin – přiřazení rolí
+* Záznamy oprávnění místního uživatele a správce udělená aplikaci
+  * Příklad: oprávnění pro aplikaci pro přístup k e-mailu konkrétního uživatele
+* Záznamy místních zásad včetně zásad podmíněného přístupu
+* Záznamy alternativních místních nastavení pro aplikaci
   * Pravidla transformace deklarací identity
   * Mapování atributů (zřizování uživatelů)
-  * Role adresáře konkrétní aplikace (Pokud aplikace podporuje vlastní role)
-  * Název adresáře nebo loga
+  * Role aplikací specifické pro adresář (Pokud aplikace podporuje vlastní role)
+  * Název nebo logo specifické pro adresář
 
-Jako objekty aplikace je možné také vytvářet instanční objekty přes více způsoby včetně:
+Podobně jako aplikační objekty lze instanční objekty vytvořit také prostřednictvím několika cest, včetně:
 
-* Když se uživatelé přihlásí do aplikace třetích stran integrovat se službou Azure AD
-  * Při přihlašování uživatelé vyzváni k zadání oprávnění k aplikaci přístup k jejich profil a další oprávnění. První osoby, čímž udělíte souhlas způsobí, že hlavní název služby, který představuje aplikaci přidávané do adresáře.
-* Při přihlášení uživatele k online službám Microsoftu, jako jsou [Office 365](https://products.office.com/)
-  * Při přihlášení k odběru Office 365 nebo začít zkušební verzi, jeden nebo více objektů služby se vytvoří v adresáři reprezentující různé služby, které se používají k doručování všechny funkce související s Office 365.
-  * Některé služby Office 365, jako je SharePoint vytvoření instančních objektů průběžně pro umožnění bezpečné komunikace mezi komponentami včetně pracovních postupů.
-* Když správce přidá aplikaci z Galerie aplikací (tím se také vytvoří základní objekt aplikace)
-* Přidat aplikace pro použití [Proxy aplikací Azure AD](/azure/active-directory/manage-apps/application-proxy)
-* Připojení aplikace pro jednotné přihlašování pomocí SAML nebo heslem jednotného přihlašování (SSO)
-* Prostřednictvím kódu programu přes Azure AD Graph API nebo Powershellu
+* Když se uživatelé přihlásí k aplikaci třetí strany integrované s Azure AD
+  * Během přihlašování se uživatelům zobrazí výzva, aby aplikaci udělili oprávnění k přístupu k jejich profilu a dalším oprávněním. První osoba, která by dala udělit souhlas, způsobí instanční objekt, který představuje aplikaci, která se má přidat do adresáře.
+* Když se uživatelé přihlásí k Microsoft online služby jako je [Office 365](https://products.office.com/)
+  * Když se přihlásíte k odběru sady Office 365 nebo zahájíte zkušební období, v adresáři představujících různé služby, které se používají k doručování všech funkcí přidružených k sadě Office 365, se vytvoří jeden nebo více instančních objektů.
+  * Některé služby Office 365, jako je SharePoint, vytvářejí instanční objekty průběžně a umožňují zabezpečenou komunikaci mezi součástmi včetně pracovních postupů.
+* Když správce přidá aplikaci z Galerie aplikací (tím se vytvoří také základní objekt aplikace)
+* Přidání aplikace pro použití [proxy aplikací služby AD Azure](/azure/active-directory/manage-apps/application-proxy)
+* Připojení aplikace pro jednotné přihlašování pomocí protokolu SAML nebo jednotného přihlašování k heslu (SSO)
+* Programově prostřednictvím Graph API Azure AD nebo PowerShellu
 
-## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Jak jsou objekty aplikací a instanční objekty vzájemně souvisí?
+## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Jak jsou objekty aplikace a instanční objekty vzájemně propojené?
 
-Aplikace obsahuje jeden objekt aplikace v jeho domovského adresáře, který odkazuje jeden nebo více instanční objekty v každém z adresáře, kde pracuje (včetně domovský adresář aplikace).
+Aplikace obsahuje jeden objekt aplikace v jeho domovském adresáři, na který odkazuje jeden nebo více instančních objektů v každém adresáři, kde je provozován (včetně domovského adresáře aplikace).
 
-![Ukazuje vztah mezi objekty aplikace a instanční objekty][apps_service_principals_directory]
+![Zobrazuje vztah mezi objekty aplikace a instančními objekty.][apps_service_principals_directory]
 
-Na předchozím obrázku, společnost Microsoft spravuje dva adresáře interně (viz vlevo), používá k publikování aplikace:
+V předchozím diagramu společnost Microsoft udržuje dva adresáře interně (zobrazené vlevo), které používá k publikování aplikací:
 
-* Jeden pro Microsoft Apps (adresáře služby Microsoft)
-* Jeden pro předem integrovaných aplikací třetí strany (aplikaci Galerie adresář)
+* Jedna pro aplikace Microsoftu (adresář služeb Microsoftu)
+* Jedna pro předem integrované aplikace třetích stran (adresář Galerie aplikací)
 
-Aplikace vydavatel/dodavatelů, kteří integrace s Azure AD musí mít publikování adresáře (zobrazené na pravé straně jako "Některé SaaS adresář").
+Vydavatelé aplikací/dodavatelé, kteří se integrují se službou Azure AD, musí mít adresář pro publikování (zobrazuje se napravo jako "část adresáře SaaS").
 
-Aplikace, které přidáte sami sebe (reprezentovány jako **aplikace (vaší)** v diagramu) patří:
+Aplikace, které přidáte sami (v diagramu jsou reprezentovány jako **aplikace)** , zahrnují:
 
-* Aplikace, které jste vytvořili (integrované s Azure AD)
-* Aplikace pro připojené jednotného přihlašování
-* Aplikace, které jste publikovali pomocí proxy aplikací služby Azure AD
+* Aplikace, které jste vyvinuli (integrovány se službou Azure AD)
+* Aplikace, které jste připojili pro jednotné přihlašování
+* Aplikace, které jste publikovali pomocí proxy aplikace služby Azure AD
 
 ### <a name="notes-and-exceptions"></a>Poznámky a výjimky
 
-* Ne všechny instanční objekty odkazovat zpět do aplikační objekt. Když Azure AD byl původně sestaven poskytované služby k aplikace byly omezenější a instanční objekt služby byla dostatečná pro vytvoření identity aplikací. Původní instanční objekt se blíže v obrazci k účtu služby Windows Server Active Directory. Z tohoto důvodu je stále možné vytvořit instanční objekty prostřednictvím různé přístupy, například pomocí Azure AD PowerShell, dokud nevytvoříte objekt aplikace. Azure AD Graph API vyžaduje objekt aplikace před vytváření instančního objektu.
-* Ne všechny informace popsané výše je aktuálně přístupný prostřednictvím kódu programu. Následující jsou k dispozici pouze v uživatelském rozhraní:
+* Ne všechny instanční objekty odkazují zpátky na objekt aplikace. Když je služba Azure AD původně sestavená o služby poskytované aplikacím, byly omezenější a objekt služby byl pro vytvoření identity aplikace dostačující. Původní instanční objekt byl blíž v obrazci k účtu služby Windows Server Active Directory. Z tohoto důvodu je stále možné vytvářet instanční objekty prostřednictvím různých cest, jako je například použití Azure AD PowerShellu, aniž byste nejdřív vytvořili objekt aplikace. Graph API služby Azure AD vyžaduje aplikační objekt před vytvořením instančního objektu.
+* Ne všechny výše popsané informace jsou aktuálně vystaveny prostřednictvím kódu programu. Následující jsou k dispozici pouze v uživatelském rozhraní:
   * Pravidla transformace deklarací identity
   * Mapování atributů (zřizování uživatelů)
-* Podrobnější informace o objektu služby a aplikace objektů naleznete v referenční dokumentaci rozhraní REST API služby Azure AD Graph:
+* Podrobnější informace o instančním objektu a objektech aplikace najdete v referenční dokumentaci k Azure AD graphu REST API:
   * [Aplikace](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Instanční objekt služby](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+  * [Instanční objekt](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
-## <a name="why-do-applications-integrate-with-azure-ad"></a>Proč aplikace integrují s Azure AD?
+## <a name="why-do-applications-integrate-with-azure-ad"></a>Proč se aplikace integrují s Azure AD?
 
-Aplikace se přidají do služby Azure AD využívat jeden nebo více služeb, které nabízí, včetně:
+Do Azure AD se přidají aplikace, které budou využívat jednu nebo víc služeb, které poskytuje, včetně:
 
-* Aplikace ověřování a autorizace
+* Ověřování a autorizace aplikací
 * Ověřování a autorizace uživatelů
 * Jednotné přihlašování pomocí federace nebo hesla
-* Zřizování uživatelů a synchronizace
-* Řízení přístupu na základě rolí – kontroluje použijte adresář k definování rolí aplikace provádět ověřování na základě role v aplikaci
-* Služby autorizace OAuth - používá Office 365 a jiné aplikace od Microsoftu k autorizaci přístupu k rozhraní API nebo prostředků
-* Publikování aplikací a proxy - publikovat aplikaci v privátní síti k Internetu
+* Zřizování a synchronizace uživatelů
+* Řízení přístupu na základě rolí – pomocí adresáře definujte aplikační role k provádění kontrol autorizace na základě rolí v aplikaci.
+* Autorizační služba OAuth – používá se pro Office 365 a další aplikace Microsoftu k autorizaci přístupu k rozhraním API nebo prostředkům.
+* Publikování a proxy aplikací – publikování aplikace z privátní sítě na Internet
 
-## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Kdo má oprávnění k přidávání aplikací na Moje instance služby Azure AD?
+## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Kdo má oprávnění přidávat aplikace do své instance Azure AD?
 
-I když existují některé úkoly, jen globální správci můžou provádět (jako je přidání aplikací z Galerie aplikací a konfigurace aplikace pro použití Proxy aplikace) ve výchozím nastavení všichni uživatelé ve vašem adresáři mít práva pro registraci aplikace objekty, které jsou vývoj a podle vlastního uvážení prostřednictvím aplikace, které jsou sdílenou složku/poskytují přístup k datům jejich organizace prostřednictvím souhlasu. Pokud uživatel je první uživatel ve vašem adresáři se přihlásit k aplikaci a udělit souhlas, ve vašem tenantovi; který vytvoření instančního objektu jinak informace o udělení souhlasu se uloží na existující instanční objekt.
+I když existují některé úkoly, které mohou provádět pouze globální správci (například přidávání aplikací z Galerie aplikací a konfigurace aplikace pro použití proxy aplikací), ve výchozím nastavení mají všichni uživatelé v adresáři práva k registraci aplikačních objektů, které vyvíjí a připravují aplikace, které sdílí, a poskytují přístup k datům organizace prostřednictvím souhlasu. Pokud je osoba prvním uživatelem v adresáři pro přihlášení k aplikaci a udělení souhlasu, která vytvoří instanční objekt ve vašem tenantovi; v opačném případě se informace o udělení souhlasu uloží na existující instanční objekt.
 
-Umožňuje uživatelům zaregistrovat se a souhlas s aplikací může zpočátku zvukové týkající se ale mějte na paměti následující:
+Umožnění, aby se uživatelé mohli registrovat a odsouhlasit s aplikacemi, se můžou na začátku zvuk, ale pamatujte na toto:
 
 
-* Aplikace byly využívat bez nutnosti aplikace má být zaregistrován nebo zaznamenány v adresáři systému Windows Server Active Directory k ověřování uživatelů po mnoho let. Organizace teď bude lepší viditelnosti přesně kolik aplikace používají adresáře a pro jaké účely.
-* Delegování tyto povinnosti uživatelům Neguje potřeba registraci správy řízené aplikace a proces publikování. S Active Directory Federation Services (ADFS) je pravděpodobné, že správce musel aplikaci přidat jako předávající strana jménem svého vývojáře. Vývojáři teď můžou samoobslužné funkce.
-* Uživatelé s přihlašováním k aplikacím pomocí jejich účtů organizace pro obchodní účely je dobrá věc. Pokud následně opustí organizaci, které jsou automaticky byste ztratili přístup ke svému účtu v aplikaci, kterou používají.
-* Záznam o jaká data se sdílí aplikace je dobrá věc, se kterou máte. Data jsou přenositelné více než kdy dřív a je užitečné mít zrušte záznam o který s aplikací, které sdílí data.
-* Rozhraní API vlastníky, kteří používají Azure AD pro OAuth rozhodnout přesně se může udělovat aplikacím oprávnění uživatelé a jaká oprávnění vyžadují souhlas správce. Pouze správci můžou udělit souhlas s obory větší a větší oprávnění, zatímco souhlasu uživatele působí na vlastní data uživatelů a možnosti.
-* Když uživatel přidá nebo umožňuje aplikaci přístup ke svým datům, můžete tak můžete zobrazit sestavy auditu na portálu Azure portal k určení, jak se do adresáře přidávat aplikace auditované události.
+* Aplikace byly schopné využívat Windows Server Active Directory pro ověřování uživatelů po celou dobu spousty let, aniž by bylo nutné aplikaci registrovat nebo zaznamenat v adresáři. Organizace teď bude mít lepší přehled o tom, kolik aplikací používá adresář a za jaký účel.
+* Delegování těchto odpovědností uživatelům se bude vyžadovat proces registrace a publikování aplikace řízené správcem. U Active Directory Federation Services (AD FS) (ADFS) bylo nejspíš, že správce musel přidat aplikaci jako předávající stranu jménem svých vývojářů. Vývojáři teď můžou samoobslužné služby.
+* Dobrým účelem jsou uživatelé, kteří se přihlašují k aplikacím pomocí jejich účtů organizace pro obchodní účely. Pokud následně opustí organizaci, budou automaticky ztratit přístup k jejich účtu v aplikaci, kterou používali.
+* Záznam o tom, která data byla sdílena s aplikací, která je dobrá. Data jsou lépe přenosná než kdy dřív a je užitečné mít jasný záznam, který sdílí data, která aplikace používají.
+* Vlastníci rozhraní API, kteří používají Azure AD pro OAuth, rozhodují přesně o tom, jaká oprávnění uživatelé můžou udělit aplikacím a jaká oprávnění vyžaduje, aby správce souhlasil. Pouze správci mohou vyjádřit souhlas s většími obory a důležitějšími oprávněními, zatímco souhlas uživatele je vymezen na vlastní data a možnosti uživatelů.
+* Když uživatel přidá nebo povolí aplikaci přístup ke svým datům, může být událost auditována, takže můžete zobrazit sestavy auditu v rámci Azure Portal, abyste zjistili, jak byla aplikace přidána do adresáře.
 
-Pokud stále chcete zabránit uživatelům ve vašem adresáři v registraci aplikace a přihlašování k aplikacím bez schválení správcem, existují dvě nastavení, která můžou změnit, chcete-li vypnout tyto možnosti:
+Pokud stále chcete uživatelům ve vašem adresáři zabránit v registraci aplikací a přihlášení k aplikacím bez schválení správcem, můžete pro tyto funkce vypnout dvě nastavení:
 
-* Chcete uživatelům zabránit v vyjádření souhlasu s aplikací na jejich vlastní účet:
-  1. Na webu Azure Portal, přejděte [uživatelská nastavení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) části podnikových aplikací.
-  2. Změna **uživatelé můžou udělit souhlas s aplikací, které přistupují k firemním datům jejich jménem** k **ne**.
+* Chcete-li zabránit uživatelům v posílání aplikací vlastním jménem:
+  1. V Azure Portal v části podnikové aplikace otevřete oddíl [uživatelská nastavení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) .
+  2. Změna **uživatelů může vyjádřit souhlas s aplikacemi, které přistupují k firemním datům za jejich jménem** .
      
      > [!NOTE]
-     > Pokud se rozhodnete vypnout souhlas uživatele, bude správce muset vyjádřit souhlas s všechny nové aplikace, které uživatel potřebuje používat.
+     > Pokud se rozhodnete vypnout souhlas s uživatelem, bude správce vyžadovat souhlas s každou novou aplikací, kterou uživatel potřebuje použít.
 
-* Chcete-li uživatelé nemohli registrovat vlastní aplikace:
-  1. Na webu Azure Portal, přejděte [uživatelská nastavení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) části Azure Active Directory
-  2. Změna **uživatelé můžou registrovat aplikace** k **ne**.
+* Zabránění uživatelům v registraci vlastních aplikací:
+  1. V Azure Portal v části Azure Active Directory klikněte na část [nastavení uživatele](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) .
+  2. Změna **uživatelů může registrovat aplikace** na **ne**.
 
 > [!NOTE]
-> Jen samotná společnost Microsoft používá výchozí konfigurace se uživatelé moct registrovat aplikace a dávat souhlas aplikacím svým jménem.
+> Microsoft sám používá výchozí konfiguraci s uživateli, kteří můžou registrovat aplikace a souhlasit s aplikacemi vlastním jménem.
 
 <!--Image references-->
 [apps_service_principals_directory]:../media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg

@@ -1,88 +1,88 @@
 ---
-title: Zvýšení úrovně oprávnění privátního cloudu – řešení VMware Azure podle CloudSimple
-description: Popisuje, jak zvýšit oprávnění na vašem privátním cloudu pro funkce správy v systému vCenter
+title: Eskalace privátních cloudových oprávnění – řešení Azure VMware podle CloudSimple
+description: Popisuje, jak eskalovat oprávnění ve vašem privátním cloudu pro funkce správy v vCenter.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/05/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d11c88b91b13cca13120a9203e376fdc2c3d6d8d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 6e53d0d4f8f19a3cf81f1adb6c62b2797a50d146
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332849"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812227"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Zvýšení úrovně oprávnění vCenter privátního cloudu z portálu CloudSimple 
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Eskalace privátního cloudu oprávnění vCenter z portálu CloudSimple 
 
-Pro správcovský přístup k vCenter privátního cloudu můžete dočasně zvýšit vaši CloudSimple oprávnění.  Použitím zvýšených oprávnění, můžete nainstalovat řešení VMware, přidejte identita zdroje a spravovat uživatele.
+Pro přístup pro správu ke svému privátnímu cloudu vCenter můžete dočasně zvýšit svoje oprávnění CloudSimple.  Pomocí zvýšených oprávnění můžete nainstalovat řešení VMware, přidat zdroje identit a spravovat uživatele.
 
-Noví uživatelé se dají vytvářet v doméně jednotného přihlašování k serveru vCenter a poskytnut přístup k serveru vCenter.  Při vytváření nových uživatelů, přidejte je do skupiny builtin CloudSimple pro přístup k serveru vCenter.  Další informace najdete v tématu [CloudSimple privátního cloudu oprávnění modelu systému VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
+V doméně vCenter SSO se dají vytvářet noví uživatelé a mít přístup k vCenter.  Když vytváříte nové uživatele, přidejte je do CloudSimple Builtin Groups pro přístup k serveru vCenter.  Další informace najdete v tématu [model oprávnění privátního cloudu CloudSimple pro VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
 
 > [!CAUTION]
-> Neprovádějte žádné změny konfigurace pro součásti správy. Akce prováděné během eskalované privileged stavu může nepříznivě ovlivnit vašeho systému nebo může způsobit, že váš systém přestanou být dostupné.
+> Pro součásti pro správu neprovádějte žádné změny konfigurace. Akce provedené během Eskalace privilegovaného stavu můžou negativně ovlivnit váš systém nebo můžou způsobit, že váš systém nebude k dispozici.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="escalate-privileges"></a>Zvýšení úrovně oprávnění
 
-1. Přístup [CloudSimple portál](access-cloudsimple-portal.md).
+1. Přístup k [portálu CloudSimple](access-cloudsimple-portal.md).
 
-2. Otevřít **prostředky** vyberte privátní Cloud, pro které chcete ke zvýšení úrovně oprávnění.
+2. Otevřete stránku **prostředky** , vyberte privátní cloud, pro který chcete zvýšit oprávnění.
 
-3. U dolního okraje stránky v části Souhrn **změnit oprávnění vSphere**, klikněte na tlačítko **eskalací**.
+3. V dolní části stránky Souhrn v části **změnit oprávnění vSphere**klikněte na **Eskalace**.
 
     ![Změnit oprávnění vSphere](media/escalate-private-cloud-privilege.png)
 
-4. Vyberte typ uživatele vSphere.  Pouze **CloudOwner@cloudsimple.local** místního uživatele může být rozšířena.
+4. Vyberte typ uživatele vSphere.  Dá **CloudOwner@cloudsimple.local** se eskalovat jenom místní uživatel.
 
-5. Z rozevíracího seznamu vyberte časový interval eskalací. Zvolte, které vám umožní dokončení úlohy nejkratší dobu.
+5. Z rozevíracího seznamu vyberte časový interval eskalace. Vyberte nejkratší období, které vám umožní dokončit úlohu.
 
-6. Zaškrtnutím políčka potvrďte, že rozumíte rizika.
+6. Zaškrtnutím políčka potvrďte, že rozumíte rizikům.
 
-    ![Eskalovat dialogové okno oprávnění](media/escalate-private-cloud-privilege-dialog.png)
+    ![Dialogové okno eskalace oprávnění](media/escalate-private-cloud-privilege-dialog.png)
 
 7. Klikněte na **OK**.
 
-8. Eskalace proces může trvat několik minut. Jakmile budete hotovi, klikněte na **OK**.
+8. Proces eskalace může trvat několik minut. Jakmile budete hotovi, klikněte na **OK**.
 
-Zvýšení úrovně oprávnění začíná a trvá až do konce vybraného intervalu.  K vCenter privátního cloudu se můžete přihlásit k provádění úloh správy.
+Eskalace oprávnění začíná a trvá až do konce vybraného intervalu.  Abyste mohli provádět úlohy správy, můžete se přihlásit do svého privátního cloudu vCenter.
 
 > [!IMPORTANT]
-> Jenom jeden uživatel může mít zvýšil oprávnění.  Zvýšení úrovně oprávnění uživatele můžete zrušit musí předtím, než můžete zvýšit oprávnění jiným uživatelem.
+> Pouze jeden uživatel může mít povýšené oprávnění.  Než budete moct zvýšit oprávnění jiného uživatele, musíte zrušit jeho eskalaci.
 
-## <a name="extend-privilege-escalation"></a>Rozšíření zvýšení úrovně oprávnění
+## <a name="extend-privilege-escalation"></a>Prodloužení eskalace oprávnění
 
-Pokud budete potřebovat další čas k dokončení úkolů, můžete rozšířit období eskalaci oprávnění.  Zvolte že další eskalovat časový interval, který umožňuje provádět úlohy správy.
+Pokud k dokončení svých úkolů potřebujete další čas, můžete zvýšit dobu eskalace oprávnění.  Vyberte další časový interval eskalace, který vám umožní dokončit úlohy správy.
 
-1. Na **prostředky** > **privátních Cloudů** CloudSimple portálu vyberte privátní Cloud, pro který chcete rozšířit zvýšení úrovně oprávnění.
+1. V privátních cloudech **prostředků** > na portálu CloudSimple vyberte privátní cloud, pro který chcete zvýšit eskalaci oprávnění.
 
-2. V dolní části Souhrn klikněte na tlačítko **rozšířit zvýšení úrovně oprávnění**.
+2. V dolní části karty Souhrn klikněte na možnost **Zvětšit eskalaci oprávnění**.
 
-    ![Rozšíření zvýšení úrovně oprávnění](media/de-escalate-private-cloud-privilege.png)
+    ![Prodloužení eskalace oprávnění](media/de-escalate-private-cloud-privilege.png)
 
-3. Z rozevíracího seznamu vyberte časový interval eskalací. Projděte si nový koncový čas eskalace.
+3. Z rozevíracího seznamu vyberte časový interval eskalace. Zkontrolujte nový čas ukončení eskalace.
 
-4. Klikněte na tlačítko **Uložit** rozšířit interval.
+4. Kliknutím na **Uložit** rozšíříte interval.
 
-## <a name="de-escalate-privileges"></a>Zrušení zvýšení oprávnění
+## <a name="de-escalate-privileges"></a>Oprávnění ke zrušení eskalace
 
-Po dokončení vaší úlohy správy by měla předat zruší vaše oprávnění.  
+Po dokončení úloh správy byste měli zrušit eskalaci vašich oprávnění.  
 
-1. Na **prostředky** > **privátních Cloudů** CloudSimple portálu vyberte privátní Cloud, pro kterou chcete zrušení zvýšení oprávnění.
+1. V části **prostředky** > **privátní cloudy** na portálu CloudSimple vyberte privátní cloud, pro který chcete zrušit zvýšení oprávnění.
 
-2. Klikněte na tlačítko **zrušit eskalovat**.
+2. Klikněte na **de-eskalace**.
 
 3. Klikněte na **OK**.
 
 > [!IMPORTANT]
-> Aby se zabránilo chybám, odhlásit se ze serveru vCenter a přihlaste se znovu po zrušení eskalaci oprávnění.
+> Abyste se vyhnuli jakýmkoli chybám, odhlaste se od vCenter a znovu se přihlaste po oprávněních ke zrušení eskalace.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Nastavení zdroje identity serveru vCenter pro použití služby Active Directory](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
-* Nainstalujte řešení zálohování do [zálohování virtuálních počítačů pracovního vytížení](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)
+* [Nastavení zdrojů identity vCenter pro používání služby Active Directory](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
+* Instalace řešení zálohování pro [zálohování virtuálních počítačů](https://docs.azure.cloudsimple.com/backup-workloads-veeam/) s úlohou

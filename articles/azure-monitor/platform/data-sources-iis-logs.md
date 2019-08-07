@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 05d9dc8f676589dcb301c19b0a2e80e9fd4c1fa0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: cc0fcbb2005ce2aaa70c9e1d2a9993d341169209
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249749"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814222"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Shromažďovat protokoly IIS v Azure Monitor
 Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které lze shromažďovat pomocí Azure Monitor a uložených jako [data protokolu](data-platform.md).
@@ -34,7 +34,7 @@ Nakonfigurujte protokoly IIS v Azure Monitor z [nabídky Upřesnit nastavení](a
 
 
 ## <a name="data-collection"></a>Shromažďování dat
-Azure Monitor shromažďuje záznamy protokolu IIS od každého agenta při každém změně časového razítka protokolu nebo vytvoření nového souboru. Protokol je čten každých 5 minut. Frekvence nového vytváření souborů je řízena nastavením plánu změny **souboru protokolu** pro web služby IIS, který je ve výchozím nastavení jednou denně. Pokud z jakéhokoli důvodu služba IIS neaktualizuje časové razítko před časem změny, Azure Monitor bude každou hodinu shromažďovat protokol. Pokud je nastavení **denně**, Azure monitor shromáždí protokol každých 24 hodin.
+Při každém změně časového razítka protokolu Azure Monitor shromažďuje položky protokolu služby IIS od každého agenta. Protokol je čten každých **5 minut**. Pokud z jakéhokoli důvodu služba IIS neaktualizuje časové razítko před časem přechodu při vytvoření nového souboru, budou záznamy shromážděny po vytvoření nového souboru. Frekvence nového vytváření souborů je řízena nastavením plánu změny **souboru protokolu** pro web služby IIS, který je ve výchozím nastavení jednou denně. Pokud je nastavení každou **hodinu**, Azure monitor shromáždí protokol každou hodinu. Pokud je nastavení **denně**, Azure monitor shromáždí protokol každých 24 hodin.
 
 
 ## <a name="iis-log-record-properties"></a>Vlastnosti záznamu protokolu IIS
@@ -62,7 +62,7 @@ Záznamy protokolu služby IIS mají typ **W3CIISLog** a mají vlastnosti v nás
 | sPort |Port na serveru, ke kterému je klient připojen. |
 | sSiteName |Název webu služby IIS. |
 | TimeGenerated |Datum a čas, kdy byla položka zaznamenána. |
-| timeTaken |Doba zpracování žádosti v milisekundách |
+| TimeTaken |Doba zpracování žádosti v milisekundách |
 
 ## <a name="log-queries-with-iis-logs"></a>Protokolování dotazů s protokoly služby IIS
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy protokolu služby IIS.
@@ -75,6 +75,6 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 | W3CIISLog &#124; WHERE csHost = = "www\.contoso.com" &#124; sumarizace Count () od csUriStem |Počet záznamů protokolu IIS podle adresy URL pro hostitele www\.contoso.com |
 | W3CIISLog &#124; sumarizace Sum (csBytes) podle počítače &#124; , který přebere 500000 |Celkový počet bajtů přijatých jednotlivými počítači IIS. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Nakonfigurujte Azure Monitor pro shromažďování dalších [zdrojů dat](agent-data-sources.md) pro účely analýzy.
 * Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.

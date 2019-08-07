@@ -9,23 +9,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 08/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5167ba170181bed6dc76d4ca3df79306f432eaf2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e139b274ab8a1f7d91d46ec56171b84db4f5025e
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722670"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812827"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
 Pomocí Azure Active Directory (Azure AD) můžete určit omezené správce ke správě úloh identity v méně privilegovaných rolích. Správcům je možné přiřadit tyto účely, jako je přidání nebo změna uživatelů, přiřazování rolí pro správu, Resetování uživatelských hesel, Správa uživatelských licencí a správa názvů domén. Výchozí uživatelská oprávnění se dají změnit jenom v nastavení uživatele v Azure AD.
 
-Globální správce má přístup ke všem funkcím pro správu. Ve výchozím nastavení je osoba, která uživatel zaregistruje do služby pro předplatné Azure přiřadit roli globálního správce adresáře. Role správce můžou delegovat jenom globální správci a správci privilegovaných rolí. Pokud chcete snížit riziko pro firmu, doporučujeme přiřadit tuto roli jenom několika lidem ve vaší společnosti.
+## <a name="limit-the-use-of-global-administrator"></a>Omezení použití globálního správce
+
+Uživatelé, kteří mají přiřazenou roli globálního správce, můžou číst a upravovat všechna nastavení správy ve vaší organizaci Azure AD. Ve výchozím nastavení má osoba, která se zaregistruje k předplatnému Azure, přiřazenou roli globálního správce pro organizaci Azure AD. Role správce můžou delegovat jenom globální správci a správci privilegovaných rolí. Pokud chcete snížit riziko pro vaši firmu, doporučujeme přiřadit tuto roli co nejmenším možným lidem ve vaší organizaci.
+
+## <a name="best-practices"></a>Osvědčené postupy
+
+Jako osvědčený postup doporučujeme přiřadit tuto roli méně než 5 lidem ve vaší organizaci. Pokud máte více než pět uživatelů přiřazených k roli globálního správce ve vaší organizaci, je zde několik způsobů, jak snížit jeho využití.
+
+### <a name="find-the-role-you-need"></a>Najděte roli, kterou potřebujete.
+
+Pokud se frustrující, jak najít roli, kterou potřebujete pro seznam mnoha rolí, Azure AD vám poskytne kratší seznamy na základě kategorií rolí. Podívejte se na náš nový filtr **typu** pro [role a správce Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) , abyste viděli jenom role ve vybraném typu.
+
+### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>Role existuje nyní, která neexistuje, když jste přiřadili roli globálního správce.
+
+Je možné, že se do služby Azure AD přidala role nebo role, které poskytují přesnější oprávnění, která se nedají použít při zvýšení úrovně uživatelů na globálního správce. V průběhu času zavádíme další role, které provádějí úlohy, které by mohly provádět jenom role globálního správce. Uvidíte ty, které se projeví v následujících [dostupných rolích](#available-roles).
 
 ## <a name="assign-or-remove-administrator-roles"></a>Přiřazení nebo odebrání rolí správce
 
@@ -1378,7 +1392,7 @@ Následující role by se neměly používat. Jsou zastaralé a v budoucnu se od
 * Správce poštovní schránky
 * Připojení pracovních zařízení
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o tom, jak přiřadit uživatele jako správce předplatného Azure, najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md)
 * Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)

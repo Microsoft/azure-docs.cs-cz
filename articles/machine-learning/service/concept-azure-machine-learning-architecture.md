@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 82d3656e0adc03157de57b700f8f0be6bde1f2ee
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 59ce6719c117db53b02ed6594de219010ee08ee6
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663478"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828234"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak služba Azure Machine Learning funguje: Architektura a koncepty
 
@@ -40,13 +40,13 @@ Pracovní postup modelu Machine Learning se obvykle řídí tímto pořadím:
 
 1. **Monitor** – monitorování pro **Posun dat** mezi školicí datovou sadou a odvozenými daty nasazeného modelu. V případě potřeby se vraťte ke kroku 1 a přeškolujte model s novými školicími daty.
 
-## <a name="tools-for-azure-machine-learning"></a>Nástroje pro Azure Machine Learning 
+## <a name="tools-for-azure-machine-learning"></a>Nástroje pro Azure Machine Learning
 
 Použijte tyto nástroje pro Azure Machine Learning:
 
 +  Spolupracovat se službou v jakémkoli prostředí Pythonu s [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 + Automatizujte své aktivity strojového učení pomocí [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
-+ Psaní kódu v Visual Studio Code s [rozšířením Azure Machine Learning vs Code](how-to-vscode-tools.md) 
++ Psaní kódu v Visual Studio Code s [rozšířením Azure Machine Learning vs Code](how-to-vscode-tools.md)
 + Použijte [rozhraní Visual Interface (Preview) pro službu Azure Machine Learning](ui-concept-visual-interface.md) k provedení kroků pracovního postupu bez psaní kódu.
 
 ## <a name="glossary-of-concepts"></a>Glosář konceptů
@@ -87,7 +87,7 @@ Další informace o pracovních prostorech najdete v tématu [co je Azure Machin
 
 Experiment je seskupení mnoha běhů ze zadaného skriptu. Vždy patří do pracovního prostoru. Když odešlete spustit, zadejte název experimentu. Informace pro spuštění jsou uloženy v rámci testu. Pokud odešlete běh a určíte název experimentu, který neexistuje, automaticky se vytvoří nový experiment s tímto nově zadaným názvem.
 
-Příklad použití experimentu najdete v tématu [rychlý Start: Začínáme se službou](quickstart-run-cloud-notebook.md)Azure Machine Learning.
+Příklad použití experimentu najdete v tématu [kurz: Nahlaste svůj](tutorial-1st-experiment-sdk-train.md)první model.
 
 ### <a name="models"></a>Modely
 
@@ -132,9 +132,9 @@ Další informace najdete v tématu [Vytvoření a registrace Azure Machine Lear
 
 ### <a name="compute-targets"></a>Cílových výpočetních prostředí
 
-[Cílový výpočetní](concept-compute-target.md) výkon vám umožní určit výpočetní prostředek, ve kterém spustíte školicí skript, nebo hostovat nasazení služby. Toto umístění může být váš místní počítač nebo cloudový výpočetní prostředek. Cíle výpočtů usnadňují změnu prostředí COMPUTE beze změny kódu. 
+[Cílový výpočetní](concept-compute-target.md) výkon vám umožní určit výpočetní prostředek, ve kterém spustíte školicí skript, nebo hostovat nasazení služby. Toto umístění může být váš místní počítač nebo cloudový výpočetní prostředek. Cíle výpočtů usnadňují změnu prostředí COMPUTE beze změny kódu.
 
-Přečtěte si další informace o [dostupných výpočetních cílech pro školení a nasazení](concept-compute-target.md). 
+Přečtěte si další informace o [dostupných výpočetních cílech pro školení a nasazení](concept-compute-target.md).
 
 ### <a name="training-scripts"></a>Trénovací skripty
 
@@ -153,7 +153,6 @@ Spuštění je záznam, který obsahuje následující informace:
 
 Spuštění vytvoříte při odeslání skriptu pro výuku modelu. Spuštění může mít nula nebo více podřízených spuštění. Například spuštění na nejvyšší úrovni může mít dvě podřízená spuštění, z nichž každá může mít vlastní podřízený běh.
 
-Příklad spuštění zobrazení, která jsou vytvořena školením modelu, najdete v tématu [rychlý Start: Začínáme se službou](quickstart-run-cloud-notebook.md)Azure Machine Learning.
 
 ### <a name="github-tracking-and-integration"></a>Sledování a integrace GitHubu
 
@@ -222,7 +221,9 @@ Azure IoT Edge zajistí, že je váš modul spuštěný, a monitoruje zařízen�
 
 ### <a name="ml-pipelines"></a>Kanály ML
 
-Pomocí kanálů strojového učení můžete vytvářet a spravovat pracovní postupy, které dohromady spojí fáze strojového učení. Kanál může například zahrnovat přípravu dat, školení modelů, nasazení modelu a fáze odvození a bodování. Jednotlivé fáze může zahrnovat několik kroků, z nichž každý lze spustit bezobslužně v různých cílových výpočetních prostředí.
+Pomocí kanálů strojového učení můžete vytvářet a spravovat pracovní postupy, které dohromady spojí fáze strojového učení. Kanál může například zahrnovat přípravu dat, školení modelů, nasazení modelu a fáze odvození a bodování. Jednotlivé fáze může zahrnovat několik kroků, z nichž každý lze spustit bezobslužně v různých cílových výpočetních prostředí. 
+
+Kroky kanálu jsou opakovaně použitelné a je možné je spustit bez nutnosti znovu spustit následné kroky, pokud se výstup tohoto kroku nezměnil. V případě, že se data nezměnila, můžete například přeškolit model bez nutnosti znovu spustit nákladný postup přípravy dat. Kanály také umožňují pracovníkům dat spolupracovat při práci na samostatných oblastech pracovního postupu Machine Learning.
 
 Další informace o kanálech strojového učení s touto službou najdete v tématu [kanály a Azure Machine Learning](concept-ml-pipelines.md).
 

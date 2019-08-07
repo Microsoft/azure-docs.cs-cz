@@ -1,6 +1,6 @@
 ---
-title: Podporován styly mapy ve službě Azure Maps | Dokumentace Microsoftu
-description: Podporuje Azure Maps styly mapy
+title: Podporované styly mapy v Azure Maps | Microsoft Docs
+description: Styly mapy podporované Azure Maps
 author: walsehgal
 ms.author: v-musehg
 ms.date: 05/06/2019
@@ -8,81 +8,91 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: db396ad06bf46cbbaf486696b68393a6a4214c2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1aad2284c0f64c92efaefe3f9145d95c4aabec67
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230829"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839448"
 ---
-# <a name="azure-maps-supported-map-styles"></a>Azure Maps podporován styly mapy
-Azure Maps podporuje několik různých předdefinovaných Mapovat styly, jak je popsáno níže.
+# <a name="azure-maps-supported-map-styles"></a>Azure Maps podporované styly mapy
+Azure Maps podporuje několik různých vestavěných stylů mapy, jak je popsáno níže.
 
-## <a name="road"></a>Silniční
-A **silniční** mapa je standardní mapy, která zobrazuje silnicích zakázána, přirozené a umělý funkce spolu s popisky pro tyto funkce.
+## <a name="road"></a>silniční
+Mapa **cest** je standardní mapa, která zobrazuje cesty, přirozené a umělé funkce spolu s popisky pro tyto funkce.
 
-![Silniční](./media/supported-map-styles/road.png)
+![silniční](./media/supported-map-styles/road.png)
 
-**Použít rozhraní API:**
+**Platná rozhraní API:**
 * [Obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Mapovou dlaždici](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Mapový ovládací prvek JS
-* Android mapový ovládací prvek
+* [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
-## <a name="satellite"></a>Satelit 
-**Satelitní** style je kombinací satelitní a leteckých snímků.
+## <a name="blank-and-blank_accessible"></a>prázdné a blank_accessible
 
-![Satelit](./media/supported-map-styles/satellite.png)
+**Prázdné** a **blank_accessible** styly map poskytují prázdné plátno, na kterém se data vizualizují. Styl **blank_accessible** bude dál poskytovat aktualizace čtečky obrazovky s podrobnostmi o umístění, kde se mapa nachází, i když základní mapa není zobrazená.
 
-**Použít rozhraní API:**
+> [!Note]
+> V sadě web SDK můžete změnit barvu pozadí mapy nastavením stylu CSS `background-color` prvku div mapy.
+
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
+
+## <a name="satellite"></a>satelitní 
+**Satelitní** styl je kombinací satelitních a leteckých snímků.
+
+![satelitní](./media/supported-map-styles/satellite.png)
+
+**Platná rozhraní API:**
 * [Satelitní dlaždice](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
-* Mapový ovládací prvek JS
-* Android mapový ovládací prvek
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
-## <a name="satelliteroadlabels"></a>satellite_road_labels
-Tento styl mapy je v hybridní kombinaci cest a popisky překrývající nad satelitní a leteckých snímků.
+## <a name="satellite_road_labels"></a>satellite_road_labels
+Tento styl mapy je hybridem cest a popisků, které se překrývají na družicovém a leteckém mikrosnímků.
 
 ![satellite_road_labels](./media/supported-map-styles/satellite_road_labels.png)
 
-**Použít rozhraní API:**
-* Mapový ovládací prvek JS
-* Android mapový ovládací prvek
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
-## <a name="grayscaledark"></a>grayscale_dark
-**Tmavý ve stupních šedi** tmavě verze styl silniční mapu.
+## <a name="grayscale_dark"></a>grayscale_dark
+**tmavě šedá** je tmavá verze stylu mapy cest.
 
 ![gray_scale](./media/supported-map-styles/grayscale_dark.png)
 
-**Použít rozhraní API:**
-* Mapový ovládací prvek JS 
-* Android mapový ovládací prvek
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK 
+* Ovládací prvek mapy pro Android
 
 
-## <a name="grayscalelight"></a>grayscale_light
-**světle ve stupních šedi** je jednodušší verzi styl silniční mapu.
+## <a name="grayscale_light"></a>grayscale_light
+**šedé světlo** je světlá verze stylu mapy cest.
 
-![světle ve stupních šedi](./media/supported-map-styles/grayscale_light.png)
+![světlo stupňů šedé](./media/supported-map-styles/grayscale_light.png)
 
-**Použít rozhraní API:**
-* Mapový ovládací prvek JS
-* Android mapový ovládací prvek
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
 
-## <a name="night"></a>noční
-**noční** je verze Tmavý styl silniční mapu s barevné cest a symboly.
+## <a name="night"></a>veletrh
+**noční** je tmavá verze stylu mapy cest s barevnými cestami a symboly.
 
-![noční](./media/supported-map-styles/night.png)
+![veletrh](./media/supported-map-styles/night.png)
 
-**Použít rozhraní API:**
-* Mapový ovládací prvek JS
-* Android mapový ovládací prvek
+**Platná rozhraní API:**
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android
 
-## <a name="roadshadedrelief"></a>road_shaded_relief
-**silniční stín pomáhajících** je hlavní styl Azure Maps byla dokončena s obrysy všech koutech světa.
+## <a name="road_shaded_relief"></a>road_shaded_relief
+**odlehčené vybarvené z provozu** je Azure Maps hlavní styl dokončený pomocí kokolace země.
 
-![označeno šedou barvou pomáhajících](./media/supported-map-styles/shaded-relief.png)
+![vybarvený reliéf](./media/supported-map-styles/shaded-relief.png)
 
-**Použít rozhraní API:**
-* [Mapovou dlaždici](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Mapový ovládací prvek JS
-* Android mapový ovládací prvek
+**Platná rozhraní API:**
+* [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Mapový ovládací prvek sady web SDK
+* Ovládací prvek mapy pro Android

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 07/18/2019
-ms.openlocfilehash: 7c10bdf5e4f47f5bb5ac97b610c605132c4b4a00
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/05/2019
+ms.openlocfilehash: 94035fda6b1dff491a69c0f0001019ccd753d4e8
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567214"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816630"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co je Azure SQL Database spravovaná instance?
 
@@ -46,7 +46,7 @@ Spravovaná instance kombinuje nejlepší funkce, které jsou k dispozici v Azur
 | --- | --- |
 |Bez nákupu a správy hardwaru <br>Žádná režie správy pro správu základní infrastruktury <br>Rychlé zřizování a škálování služby <br>Automatizované opravy a upgrade verze <br>Integrace s jinými datovými službami PaaS |Smlouva SLA o 99,99% provozu  <br>Integrovaná [Vysoká dostupnost](sql-database-high-availability.md) <br>Data chráněná pomocí [automatizovaných záloh](sql-database-automated-backups.md) <br>Uživatelsky konfigurovatelné období uchovávání záloh pro zákazníky <br>[Zálohy](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) iniciované uživatelem <br>Možnost [obnovení databáze bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) |
 |**Zabezpečení a dodržování předpisů** | **Správu**|
-|Izolované prostředí ([Integrace virtuální](sql-database-managed-instance-connectivity-architecture.md)sítě, samostatná služba tenanta, vyhrazený výpočetní výkon a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), podpora jednotného přihlašování <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Objekty zabezpečení serveru Azure AD (přihlášení)</a> (**Public Preview**) <br>Dodržuje standardy dodržování předpisů stejné jako Azure SQL Database. <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[detekce hrozeb](sql-database-managed-instance-threat-detection.md) |Rozhraní Azure Resource Manager API pro automatizaci zřizování a škálování služby <br>Azure Portal funkce ručního zřizování a škálování služeb <br>Služba migrace dat
+|Izolované prostředí ([Integrace virtuální](sql-database-managed-instance-connectivity-architecture.md)sítě, samostatná služba tenanta, vyhrazený výpočetní výkon a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), podpora jednotného přihlašování <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Objekty zabezpečení serveru Azure AD (přihlášení)</a> (**Public Preview**) <br>Dodržuje standardy dodržování předpisů stejné jako Azure SQL Database. <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Rozhraní Azure Resource Manager API pro automatizaci zřizování a škálování služby <br>Azure Portal funkce ručního zřizování a škálování služeb <br>Služba migrace dat
 
 > [!IMPORTANT]
 > Azure SQL Database (všechny možnosti nasazení) byly certifikovány na základě řady standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , kde můžete najít nejaktuálnější seznam SQL Database certifikace dodržování předpisů.
@@ -76,7 +76,7 @@ Klíčové funkce spravovaných instancí jsou uvedené v následující tabulce
 
 V modelu vCore si můžete vybrat mezi generacemi hardwaru.
 
-- **COMPUTE GEN4 –** Logické procesory jsou založené na procesorech Intel E5-2673 V3 (Haswell) 2,4 GHz, připojené SSD, fyzické jádra, 7 GB RAM na jádro a na výpočetních velikostech mezi 8 a 24 virtuální jádra.
+- **COMPUTE GEN4 –** Logické procesory jsou založené na procesorech Intel E5-2673 V3 (Haswell) 2,4, Attached SSD, fyzických jader, 7-GB RAM na jádro a výpočetní velikosti mezi 8 a 24 virtuální jádra.
 - **Gen5** Logické procesory jsou založené na procesorech Intel E5-2673 v4 (Broadwell) 2,3 GHz, Fast NVMe SSD, Hyper-threadd Logical Core a COMPUTE velikosti mezi 4 a 80 jádry.
 
 Přečtěte si další informace o rozdílech mezi generacemi hardwaru v [omezeních prostředků spravované instance](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
@@ -210,7 +210,7 @@ Azure SQL Database poskytuje sadu pokročilých funkcí zabezpečení, které se
 
 - [Auditování spravované instance](sql-database-managed-instance-auditing.md) sleduje události databáze a zapisuje je do souboru protokolu auditu umístěného v účtu úložiště Azure. Auditování může pomoci zajistit dodržování legislativních předpisů, pochopit databázovou činnost a získat přehled o nesrovnalostech a anomáliích, které by mohly poukazovat na obavy z podnikání nebo na podezřelé porušení zabezpečení.
 - Šifrování dat v pohybu – spravovaná instance zabezpečuje vaše data tím, že zajišťuje šifrování dat při pohybu pomocí Transport Layer Security. Kromě Transport Layer Security možnost nasazení spravované instance nabízí ochranu citlivých dat v letu, v klidovém prostředí a při zpracování dotazů pomocí [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine). Funkce Always Encrypted je špičkou v odvětví, která nabízí bezkonkurenční zabezpečení dat před porušením zabezpečení, včetně krádeže důležitých dat. Například u Always Encrypted se čísla kreditních karet ukládají v databázi vždycky, i když se zpracovávají dotazy a umožňují dešifrování v bodě použití autorizovanými pracovníky nebo aplikacemi, které potřebují zpracovávat tato data.
-- [Detekce hrozeb](sql-database-managed-instance-threat-detection.md) doplňuje [auditování](sql-database-managed-instance-auditing.md) tím, že poskytuje další vrstvu zabezpečení, která je součástí služby, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. Jste upozorňováni na podezřelé aktivity, potenciální ohrožení zabezpečení a útoky prostřednictvím injektáže SQL a také na neobvyklé vzory přístupu k databázi. Výstrahy detekce hrozeb můžete zobrazit z [Azure Security Center](https://azure.microsoft.com/services/security-center/) a poskytnout podrobné informace o podezřelé aktivitě a doporučit akci, jak tuto hrozbu prozkoumat a zmírnit.  
+- [Rozšířená ochrana před internetovými útoky](sql-database-managed-instance-threat-detection.md) doplňuje [auditování](sql-database-managed-instance-auditing.md) tím, že poskytuje další vrstvu zabezpečení, která je součástí služby, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. Jste upozorňováni na podezřelé aktivity, potenciální ohrožení zabezpečení a útoky prostřednictvím injektáže SQL a také na neobvyklé vzory přístupu k databázi. Výstrahy rozšířené ochrany před internetovými útoky si můžete prohlédnout z [Azure Security Center](https://azure.microsoft.com/services/security-center/) a poskytnout podrobnosti o podezřelé aktivitě a doporučit, jak tuto hrozbu prozkoumat a zmírnit.  
 - [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking) omezuje vystavení citlivých dat jejich maskováním na uživatele bez oprávnění. Dynamické maskování dat pomáhá zabránit neoprávněnému přístupu k citlivým datům tím, že umožňuje určit, kolik citlivých dat se má zobrazit s minimálním dopadem na aplikační vrstvu. Je to funkce zabezpečení založená na zásadách, která skrývá citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění.
 - [Zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security) vám umožňuje řídit přístup k řádkům v databázové tabulce na základě charakteristik uživatele, který spouští dotaz (například členství ve skupině nebo kontext spuštění). Zabezpečení na úrovni řádku (RLS) zjednodušuje návrh a psaní kódu zabezpečení v aplikaci. RLS umožňuje implementovat omezení přístupu k datovým řádkům. Například zajistěte, aby měli zaměstnanci přístup pouze k datovým řádkům, které jsou relevantní pro jejich oddělení, nebo omezit přístup k datům pouze na relevantní data.
 - [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) šifruje datové soubory spravované instance, označované jako šifrování dat v klidovém formátu. TDE provádí šifrování v/v v reálném čase a dešifruje data a soubory protokolů. Šifrování používá šifrovací klíč databáze (klíč DEK), který je uložený ve spouštěcím záznamu databáze pro dostupnost během obnovování. Pomocí transparentního šifrování dat můžete chránit všechny své databáze ve spravované instanci. TDE SQL Server je vyzkoušená technologie šifrování v klidovém formátu, kterou vyžaduje mnoho standardů dodržování předpisů pro ochranu před krádeží úložného média.
@@ -299,7 +299,7 @@ V následující tabulce je uvedeno několik vlastností, které jsou přístupn
 |`SERVERPROPERTY('EngineEdition')`|8|Tato hodnota jednoznačně identifikuje spravovanou instanci.|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, kde `<instanceName>` je poskytnutá výhradně zákazník, zatímco `<dnsPrefix>` je automaticky generované část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Příklad: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o tom, jak vytvořit první spravovanou instanci, najdete v tématu [Průvodce rychlým startem](sql-database-managed-instance-get-started.md).
 - Seznam funkcí a porovnání najdete v tématu věnovaném [běžným funkcím SQL](sql-database-features.md).

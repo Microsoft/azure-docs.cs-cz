@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: danlep
-ms.openlocfilehash: 5100418651e24d74ad747e8c436ffce53c899a92
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e41bcaff8faef2c4eaec9ae852955d4b7ce354b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68500898"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839908"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Sestavení a vložení obrázku z aplikace pomocí cloudového nativního Buildpacku
 
@@ -44,11 +44,13 @@ Následující příklad vytvoří image kontejneru z aplikace Node. js v úlož
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --builder cloudfoundry/cnb:bionic \
+    --pull --builder cloudfoundry/cnb:bionic \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
 Tento příklad `node-app` `1.0` sestaví image se značkou a vloží ji do registru kontejneru *myregistry* . V tomto případě je název cílového registru explicitně připojen k názvu bitové kopie. Pokud tento parametr nezadáte, adresa URL registru se automaticky přidá do názvu image.
+
+`--pull` Parametr určuje, že příkaz vyžádá nejnovější obrázek tvůrce.
 
 Výstup příkazu zobrazuje průběh sestavení a vložení image. 
 
@@ -80,7 +82,7 @@ az acr pack build \
 
 Tento příklad vytvoří `java-app` obrázek označený s ID spuštění příkazu a vloží ho do registru kontejneru *myregistry* .
 
-`--pull` Parametr určuje, že příkaz vyžádá nejnovější image tvůrce, což je nezbytné, protože Heroku image tvůrce neukládá do mezipaměti úkoly ACR.
+`--pull` Parametr určuje, že příkaz vyžádá nejnovější obrázek tvůrce.
 
 Výstup příkazu zobrazuje průběh sestavení a vložení image. 
 
@@ -99,7 +101,7 @@ docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 Pokud si `localhost:8080` chcete prohlédnout ukázkovou webovou aplikaci, přejděte do oblíbeného prohlížeče. Stisknutím `[Ctrl]+[C]` klávesy zastavíte kontejner.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po sestavení a vložení image kontejneru s nástrojem `az acr pack build`je můžete nasadit jako libovolný obrázek do cíle podle vašeho výběru. Možnosti nasazení do Azure zahrnují spouštění IT ve službě [App Service](../app-service/containers/tutorial-custom-docker-image.md) nebo [Azure Kubernetes](../aks/tutorial-kubernetes-deploy-cluster.md), a to mimo jiné.
 

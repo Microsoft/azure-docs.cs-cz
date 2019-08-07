@@ -1,28 +1,28 @@
 ---
-title: Řešení VMware službou CloudSimple
-description: Popisuje přehled CloudSimple služby a koncepty.
+title: Řešení VMware podle služby CloudSimple
+description: Popisuje přehled služby a konceptů CloudSimple.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 04/24/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bebc68129ee2ff79241bcefec1ce0c3ca0b472d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: a43fbebb21be82fd751778d6fec95e0ee9c346ad
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595315"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812509"
 ---
 # <a name="cloudsimple-service-overview"></a>Přehled služby CloudSimple
 
-Ve službě CloudSimple můžete použít řešení VMware Azure podle CloudSimple. Po vytvoření služby zřízení uzlů a uzly rezervovat vytváření privátních cloudů. Vytvoříte službu CloudSimple v každé oblasti Azure, kde je k dispozici služba CloudSimple. Služba definuje hraniční síť řešení VMware Azure podle CloudSimple. Hraniční síť podporuje služby, které zahrnují sítě VPN, Azure ExpressRoute a připojení k Internetu do privátních cloudů.
+Pomocí služby CloudSimple můžete použít řešení Azure VMware podle CloudSimple. Po vytvoření služby můžete zřídit uzly, rezervovat uzly a vytvořit privátní cloudy. Službu CloudSimple vytvoříte v každé oblasti Azure, kde je dostupná služba CloudSimple. Služba definuje hraniční síť řešení Azure VMware od CloudSimple. Hraniční síť podporuje služby, které zahrnují připojení k síti VPN, Azure ExpressRoute a připojení k Internetu do privátních cloudů.
 
 ## <a name="gateway-subnet"></a>Podsíť brány
 
-Podsíť brány je vyžadována na službu CloudSimple a je jedinečný pro oblast, ve kterém se vytvoří. Podsíť brány se používá při vytváření hraniční sítě a vyžaduje o velikosti/28 blok CIDR. Adresní prostor podsítě brány musí být jedinečný. Nesmí překrývat s síti, která komunikuje s CloudSimple prostředí. Sítě, které komunikují s CloudSimple zahrnují místních sítí a virtuální sítě Azure. Podsíť brány nejde odstranit, po jeho vytvoření. Podsíť brány je odebrat, pokud je služba odstraněna.
+Pro každou službu CloudSimple se vyžaduje podsíť brány a je jedinečná pro oblast, ve které je vytvořená. Podsíť brány se používá při vytváření hraniční sítě a vyžaduje blok CIDR/28. Adresní prostor podsítě brány musí být jedinečný. Nesmí se překrývat s žádnou sítí, která komunikuje s prostředím CloudSimple. Sítě, které komunikují s CloudSimple, zahrnují místní sítě a virtuální sítě Azure. Po vytvoření nelze odstranit podsíť brány. Podsíť brány se odebere, když se služba odstraní.
 
 ## <a name="next-steps"></a>Další postup
 
-* Zjistěte, jak [v Azure vytvořit službu CloudSimple](quickstart-create-cloudsimple-service.md).
+* Naučte se [vytvořit službu CloudSimple v Azure](quickstart-create-cloudsimple-service.md).

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 974243da07a2570e851b7d44eac2556c201c2782
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678533"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774994"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Mapování toku dat pro výběr transformace
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
@@ -32,9 +32,11 @@ Možnost vybrat se dá použít taky jako způsob, jak vybrat sloupce z toku dat
 ## <a name="options"></a>Možnosti
 * Výchozím nastavením pro možnost vybrat je zahrnout všechny příchozí sloupce a zachovat tyto původní názvy. Datový proud můžete aliasovat tak, že nastavíte název transformace SELECT.
 * Pokud chcete jednotlivé sloupce aliasovat, zrušte výběr možnosti Vybrat vše a v dolní části použijte mapování sloupce.
-* Zvolením přeskočit duplicity Eliminujte duplicitní sloupce ze vstupních nebo výstupních metadat.
+* Vyberte Přeskočit duplicity, aby se vyloučily duplicitní sloupce ze vstupních nebo výstupních metadat.
 
 ![Přeskočit duplicity](media/data-flow/select-skip-dup.png "Přeskočit duplicity")
+
+* Pokud se rozhodnete přeskočit duplicity, výsledky se zobrazí na kartě kontrola. ADF zachová první výskyt sloupce a uvidíte, že se z vašeho toku odebraly všechny další výskyty stejného sloupce.
 
 > [!NOTE]
 > Pravidla mapování vymažete stisknutím tlačítka **obnovit** .

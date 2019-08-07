@@ -1,6 +1,6 @@
 ---
-title: Azure AD Federation Metadata | Microsoft Docs
-description: Tento článek popisuje dokumentu federačních metadat, který publikuje Azure Active Directory pro služby, které přijímají tokeny služby Azure Active Directory.
+title: Federační metadata Azure AD | Microsoft Docs
+description: Tento článek popisuje dokument federačních metadat, který Azure Active Directory zveřejňuje pro služby, které přijímají Azure Active Directory tokeny.
 services: active-directory
 documentationcenter: .net
 author: rwike77
@@ -12,48 +12,48 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: ryanwi
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32f105c0d4f8807b53d400a1c198edd504c0aef3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fefaf618ff29cc2186dc555eb6f452223f4cd097
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544508"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835124"
 ---
 # <a name="federation-metadata"></a>Metadata federování
-Azure Active Directory (Azure AD) publikuje dokumentu metadat federace pro služby, který je nakonfigurovaný tak, aby přijímal tokeny zabezpečení, které Azure AD vydá. Formát dokumentu federačních metadat je popsáno v [Web Services Federation Language (WS-Federation) verze 1.2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), která rozšiřuje [Metadata pro OASIS Security Assertion Markup Language (SAML) 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+Azure Active Directory (Azure AD) zveřejňuje dokument federačních metadat pro služby, které jsou nakonfigurované tak, aby přijímaly tokeny zabezpečení, které Azure AD řeší. Formát dokumentu federačních metadat je popsaný v tématu [specifikace Web Services Federation Language (WS-Federation) verze 1,2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), který rozšiřuje [metadata pro Oasis Security Assertion Markup Language (SAML) v 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
 
-## <a name="tenant-specific-and-tenant-independent-metadata-endpoints"></a>Specifickým pro tenanta a Tenant nezávislé na koncové body metadat
-Azure AD publikuje specifickým pro tenanta a tenant nezávislé na koncové body.
+## <a name="tenant-specific-and-tenant-independent-metadata-endpoints"></a>Koncové body metadat závislé na klientovi a klientovi
+Azure AD publikuje koncové body závislé na klientovi a klientovi.
 
-Koncové body specifickým pro tenanta jsou určeny pro konkrétní tenanta. Specifickým pro tenanta federační metadata obsahují informace o tenantovi, včetně informací o vydavatele a koncový bod specifickým pro tenanta. Aplikace, které omezují přístup do jednoho tenanta používají koncové body specifickým pro tenanta.
+Koncové body konkrétního tenanta jsou navržené pro konkrétního tenanta. Federační metadata specifická pro tenanta obsahují informace o tenantovi, včetně vystavitele pro konkrétního klienta a informace o koncovém bodu. Aplikace, které omezují přístup k jednomu tenantovi, používají koncové body konkrétního tenanta.
 
-Koncové body nezávislé na tenanta poskytují informace, které jsou společné pro všechny klienty Azure AD. Tyto informace platí pro klienty hostované v *login.microsoftonline.com* a je sdílen mezi tenanty. Koncové body nezávislé na tenanta se doporučují pro víceklientské aplikace, protože nejsou přidružené žádné konkrétní tenanta.
+Koncové body nezávislé na klientovi poskytují informace, které jsou společné pro všechny klienty Azure AD. Tyto informace se vztahují na klienty hostované na *Login.microsoftonline.com* a sdílí se mezi klienty. Pro víceklientské aplikace jsou doporučovány koncové body nezávislé na tenantovi, protože nejsou přidruženy k žádnému konkrétnímu tenantovi.
 
-## <a name="federation-metadata-endpoints"></a>Koncové body metadat federace
-Azure AD publikuje federační metadata v `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.
+## <a name="federation-metadata-endpoints"></a>Koncové body federačních metadat
+Azure AD publikuje federační metadata na `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`adrese.
 
-Pro **koncové body specifickým pro tenanta**, `TenantDomainName` může být jedna z následujících typů:
+`TenantDomainName` U **koncových bodů specifických pro klienta**může být jedním z následujících typů:
 
-* Registrovaný název domény služby Azure AD tenanta, jako například: `contoso.onmicrosoft.com`.
-* Neměnné ID domény, jako například tenanta `72f988bf-86f1-41af-91ab-2d7cd011db45`.
+* Registrovaný název domény tenanta Azure AD, například: `contoso.onmicrosoft.com`.
+* Neměnné ID klienta domény, například `72f988bf-86f1-41af-91ab-2d7cd011db45`.
 
-Pro **koncové body klienta nezávislé**, `TenantDomainName` je `common`. Tento dokument obsahuje seznam pouze prvky federačních metadat, které jsou společné pro všechny tenanty Azure AD, které jsou hostované na login.microsoftonline.com.
+Pro **koncové body nezávislé**na `TenantDomainName` klientovi je. `common` Tento dokument obsahuje jenom prvky federačních metadat, které jsou společné pro všechny klienty Azure AD hostované na adrese login.microsoftonline.com.
 
-Koncový bod specifickým pro tenanta může být například `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Koncový bod nezávislé na tenanta je [ https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml ](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Dokument metadat federace můžete zobrazit tak, že zadáte tuto adresu URL v prohlížeči.
+Například může být `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`koncový bod specifický pro tenanta. Koncový bod nezávislý na klientovi je [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Dokument federačních metadat můžete zobrazit zadáním této adresy URL do prohlížeče.
 
 ## <a name="contents-of-federation-metadata"></a>Obsah federačních metadat
-Následující část obsahuje informace potřebné pro služby, které používají tokeny vydané službou Azure AD.
+V následující části najdete informace potřebné pro služby, které využívají tokeny vydané službou Azure AD.
 
-### <a name="entity-id"></a>Entity ID
-`EntityDescriptor` Obsahuje element `EntityID` atribut. Hodnota `EntityID` atribut představuje vystavitele, to znamená, služby tokenů zabezpečení (STS), která token vydala. Je důležité k ověření vystavitele, když obdrží token.
+### <a name="entity-id"></a>ID entity
+`EntityDescriptor` Element`EntityID` obsahuje atribut. Hodnota `EntityID` atributu představuje vystavitele, tedy službu tokenu zabezpečení (STS), která token vystavila. Při obdržení tokenu je důležité ověřit vystavitele.
 
-Následující metadata Zobrazuje ukázku specifickým pro tenanta `EntityDescriptor` element s `EntityID` elementu.
+Následující metadata ukazují ukázkový element specifický `EntityDescriptor` `EntityID` pro tenanta s prvkem.
 
 ```
 <EntityDescriptor
@@ -61,9 +61,9 @@ xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
 ID="_b827a749-cfcb-46b3-ab8b-9f6d14a1294b"
 entityID="https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db45/">
 ```
-ID tenanta v koncovém bodě nezávislé na tenanta můžete nahradit za ID vašeho tenanta, chcete-li vytvořit konkrétního klienta `EntityID` hodnotu. Výsledná hodnota bude stejná jako vydavatel tokenu. Strategie umožňuje aplikaci s více tenanty ověření vystavitele pro daného tenanta.
+Pokud chcete vytvořit hodnotu specifickou `EntityID` pro tenanta, můžete nahradit ID tenanta v koncovém bodu nezávislém na klientovi s vaším ID tenanta. Výsledná hodnota bude stejná jako Vystavitel tokenu. Strategie umožňuje více tenantů aplikacím ověřit vystavitele pro daného tenanta.
 
-Následující metadata Zobrazuje ukázku nezávislé na tenanta `EntityID` elementu. Mějte prosím na paměti, která `{tenant}` je literál, nikoli zástupný symbol.
+Následující metadata ukazují ukázkový element nezávislý `EntityID` na tenantovi. Všimněte si, že `{tenant}` je literál, nikoli zástupný symbol.
 
 ```
 <EntityDescriptor
@@ -73,11 +73,11 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>Podpisové certifikáty tokenů
-Když služba přijímá token, který je vydaný tenanta služby Azure AD, podpis tokenu musí být ověřené pomocí podpisového klíče, který je publikován v dokumentu federačních metadat. Federační metadata obsahují veřejnou část certifikáty, které klienti používají k podepisování tokenů. Nezpracovaná bajtů certifikátu se zobrazí v `KeyDescriptor` elementu. Podpisový certifikát tokenu je platný pro podepisování pouze tehdy, když hodnota `use` atribut je `signing`.
+Když služba obdrží token, který je vydaný tenant služby Azure AD, signatura tokenu musí být ověřená podpisovým klíčem, který je publikovaný v dokumentu federačních metadat. Federační metadata obsahují veřejnou část certifikátů, které klienti používají pro podepisování tokenů. V `KeyDescriptor` elementu se zobrazí nezpracované bajty certifikátů. Podpisový certifikát tokenu je platný pro podepisování pouze v případě, že `use` hodnota atributu `signing`je.
 
-Dokument metadat federace publikované ve službě Azure AD může mít více podpisové klíče, jako je například, když Azure AD se připravuje k aktualizaci podpisového certifikátu. Pokud dokument metadat federace zahrnuje více než jeden certifikát, službu, která ověřuje tokeny musí podporovat všechny certifikáty v dokumentu.
+Dokument federačních metadat publikovaný službou Azure AD může mít víc podpisových klíčů, například když se služba Azure AD připravuje k aktualizaci podpisového certifikátu. Pokud dokument federačních metadat obsahuje více než jeden certifikát, musí služba ověřující tokeny podporovat všechny certifikáty v dokumentu.
 
-Následující metadata Zobrazuje ukázku `KeyDescriptor` element s podpisový klíč.
+Následující metadata ukazují vzorový `KeyDescriptor` prvek s podpisovým klíčem.
 
 ```
 <KeyDescriptor use="signing">
@@ -91,29 +91,29 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 </KeyDescriptor>
   ```
 
-`KeyDescriptor` Prvek se zobrazuje na dvou místech v dokumentu federačních metadat, WS-Federation konkrétní části a v části týkající se SAML. Certifikáty publikovaných v obou částech budou stejné.
+`KeyDescriptor` Prvek se zobrazí na dvou místech dokumentu federačních metadat; v části WS-Federation-Specific a v části specifické pro SAML. Certifikáty publikované v obou částech budou stejné.
 
-V části WS-Federation konkrétní by čtečku metadat WS-Federation čtení certifikáty vydané `RoleDescriptor` element s `SecurityTokenServiceType` typu.
+V části specifické pro WS-Federation by čtečka metadat WS-Federation načetla certifikáty z `RoleDescriptor` prvku `SecurityTokenServiceType` s typem.
 
-Následující metadata Zobrazuje ukázku `RoleDescriptor` elementu.
+Následující metadata ukazují vzorový `RoleDescriptor` prvek.
 
 ```
 <RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
-V části týkající se SAML by číst čtečka metadat WS-Federation certifikáty vydané `IDPSSODescriptor` elementu.
+V části specifické pro SAML by čtecí modul pro čtení metadat WS-Federation načetl certifikáty z `IDPSSODescriptor` elementu.
 
-Následující metadata Zobrazuje ukázku `IDPSSODescriptor` elementu.
+Následující metadata ukazují vzorový `IDPSSODescriptor` prvek.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
 ```
-Nejsou žádné rozdíly ve formátu specifickým pro tenanta a tenant nezávislé na certifikáty.
+Ve formátu certifikátů specifických pro tenanta a klientů nezávisle na klientovi nejsou žádné rozdíly.
 
 ### <a name="ws-federation-endpoint-url"></a>Adresa URL koncového bodu WS-Federation
-Federační metadata obsahují adresu URL, kterou používá Azure AD pro jednotné přihlašování a odhlašování v protokolu WS-Federation jednou. Tento koncový bod se zobrazí v `PassiveRequestorEndpoint` elementu.
+Federační metadata obsahují adresu URL, která je službou Azure AD používána pro jednotné přihlašování a jednotné přihlašování v protokolu WS-Federation. Tento koncový bod se zobrazí `PassiveRequestorEndpoint` v elementu.
 
-Následující metadata Zobrazuje ukázku `PassiveRequestorEndpoint` – element pro koncový bod specifickým pro tenanta.
+Následující metadata ukazují vzorový `PassiveRequestorEndpoint` prvek pro koncový bod pro konkrétního klienta.
 
 ```
 <fed:PassiveRequestorEndpoint>
@@ -124,7 +124,7 @@ https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db45/wsfed
 </EndpointReference>
 </fed:PassiveRequestorEndpoint>
 ```
-Pro tenanta nezávislé na koncový bod WS-Federation adresy URL se zobrazí v koncového bodu WS-Federation, jak je znázorněno v následujícím příkladu.
+V případě koncového bodu nezávislého na klientovi se adresa URL WS-Federation zobrazuje v koncovém bodu WS-Federation, jak je znázorněno v následující ukázce.
 
 ```
 <fed:PassiveRequestorEndpoint>
@@ -137,11 +137,11 @@ https://login.microsoftonline.com/common/wsfed
 ```
 
 ### <a name="saml-protocol-endpoint-url"></a>Adresa URL koncového bodu protokolu SAML
-Federační metadata obsahují adresu URL, kterou používá Azure AD pro jednotné přihlašování a odhlašování přes protokol SAML 2.0 protokolu jednou. Tyto koncové body se zobrazí v `IDPSSODescriptor` elementu.
+Federační metadata obsahují adresu URL, kterou Azure AD používá pro jednotné přihlašování a jednotné přihlašování v protokolu SAML 2,0. Tyto koncové body se zobrazí `IDPSSODescriptor` v elementu.
 
-Adresy URL přihlašování a odhlašování se objeví v `SingleSignOnService` a `SingleLogoutService` elementy.
+Přihlášení a adresy URL pro odhlášení se zobrazí v `SingleSignOnService` prvcích a. `SingleLogoutService`
 
-Následující metadata Zobrazuje ukázku `PassiveResistorEndpoint` pro koncový bod specifickým pro tenanta.
+Následující metadata ukazují ukázku `PassiveResistorEndpoint` pro koncový bod pro konkrétního klienta.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -151,7 +151,7 @@ Následující metadata Zobrazuje ukázku `PassiveResistorEndpoint` pro koncový
   </IDPSSODescriptor>
 ```
 
-Podobně koncových bodů pro běžné koncové body protokolu SAML 2.0 jsou zveřejněné v tenantovi nezávislé federačních metadat, jak je znázorněno v následujícím příkladu.
+Podobně jsou koncové body pro Common koncových bodů protokolu SAML 2,0 publikovány v federačních metadatech nezávislých na klientovi, jak je znázorněno v následující ukázce.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">

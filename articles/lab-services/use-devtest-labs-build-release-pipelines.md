@@ -1,6 +1,6 @@
 ---
-title: Použití DevTest Labs v kanálech sestavení a vydání Azure DevOps | Microsoft Docs
-description: Naučte se používat Azure DevTest Labs v kanálech pro sestavování a vydávání ve službě Azure DevOps.
+title: Použití DevTest Labs v Azure Pipelines kanálech sestavování a vydávání | Microsoft Docs
+description: Naučte se používat Azure DevTest Labs v Azure Pipelines vytváření a vydávání kanálů.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 606563cd7d7adcdd79bf9561876eb0640fb68b21
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 032f598fed765b281d4a6a124f8855abc201ee94
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620893"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774518"
 ---
-# <a name="use-devtest-labs-in-azure-devops-build-and-release-pipelines"></a>Použití DevTest Labs v kanálech sestavování a vydávání verzí Azure DevOps
-Tento článek poskytuje informace o tom, jak se DevTest Labs dají použít v kanálech pro sestavení a vydání Azure DevOps. 
+# <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Použití DevTest Labs v Azure Pipelines kanálech sestavení a vydání
+Tento článek poskytuje informace o tom, jak se DevTest Labs dají použít v Azure Pipelines kanálech sestavení a vydání. 
 
 ## <a name="overall-flow"></a>Celkový tok
 Základním tokem je **vytvořit kanál sestavení** , který provede následující úlohy:
@@ -49,7 +49,7 @@ Existuje několik položek, které je potřeba vytvořit předem:
 Kanál sestavení vytvoří prostředí DevTest Labs a nasadí kód pro testování.
 
 ## <a name="set-up-a-build-pipeline"></a>Nastavení kanálu sestavení
-V Azure DevOps vytvořte kanál sestavení pomocí kódu z [kurzu: Sestavení webové aplikace .NET Core a SQL Database v Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Použijte šablonu **ASP.NET Core** , která naplní nezbytný úkol pro sestavení, testování a publikování kódu.
+V Azure Pipelines vytvořte kanál sestavení pomocí kódu z [kurzu: Sestavení webové aplikace .NET Core a SQL Database v Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Použijte šablonu **ASP.NET Core** , která naplní nezbytný úkol pro sestavení, testování a publikování kódu.
 
 ![Vybrat šablonu ASP.NET](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 
@@ -85,7 +85,7 @@ Třetí úlohou je úloha **nasazení Azure App Service** . Typ aplikace je nast
 
 ![Úloha nasazení App Service](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
 
-## <a name="setup-release-pipeline"></a>Nastavení kanálu vydání
+## <a name="set-up-release-pipeline"></a>Nastavení kanálu pro vydávání verzí
 Vytvoříte kanál pro vydávání verzí se dvěma úlohami: **Nasazení Azure: Vytvořte nebo aktualizujte skupinu** prostředků a **Azure App Service nasazení**. 
 
 Pro první úlohu zadejte název a umístění skupiny prostředků. Umístění šablony je propojený artefakt. Pokud šablona Správce prostředků obsahuje propojené šablony, je nutné implementovat vlastní nasazení skupiny prostředků. Šablona je v publikovaném artefaktu zrušení. Přepsat parametry šablony pro šablonu Správce prostředků. Zbývající nastavení můžete nechat s výchozími hodnotami. 
@@ -98,5 +98,5 @@ Teď, když jsou oba kanály nastavené, ručně zařadí sestavení do fronty a
 ## <a name="next-steps"></a>Další postup
 Viz následující články:
 
-- [Integrace Azure DevTest Labs do kanálu průběžné integrace a doručování Azure DevOps](devtest-lab-integrate-ci-cd-vsts.md)
-- [Integrace prostředí do kanálů Azure DevOps CI/CD](integrate-environments-devops-pipeline.md)
+- [Integrace Azure DevTest Labs do Azure Pipelines nepřetržité integrace a kanálu doručování](devtest-lab-integrate-ci-cd-vsts.md)
+- [Integrace prostředí do Azure Pipelines kanálů CI/CD](integrate-environments-devops-pipeline.md)

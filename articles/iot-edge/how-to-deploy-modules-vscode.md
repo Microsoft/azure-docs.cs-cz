@@ -10,12 +10,12 @@ ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 91a074cf98291b105864a69730314efff3482254
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61ea7eb0b81c5489ad2bf20e8148d2481bb4fb13
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126405"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840176"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Nasadit moduly Azure IoT Edge z Visual Studio Code
 
@@ -71,7 +71,7 @@ Tady je manifest základní nasazení s jeden modul jako příklad:
              }
            },
            "modules": {
-             "tempSensor": {
+             "SimulatedTemperatureSensor": {
                "version": "1.0",
                "type": "docker",
                "status": "running",
@@ -95,7 +95,7 @@ Tady je manifest základní nasazení s jeden modul jako příklad:
            }
          }
        },
-       "tempSensor": {
+       "SimulatedTemperatureSensor": {
          "properties.desired": {}
        }
      }
@@ -128,10 +128,10 @@ Moduly nasadíte do zařízení s použitím manifestu nasazení, který jste na
 
 1. V zobrazení Průzkumníka Visual Studio Code, rozbalte **zařízení Azure IoT Hub** oddílu.
 
-1. Klikněte pravým tlačítkem na zařízení IoT Edge, které chcete nakonfigurovat s manifestem nasazení.
+1. Pravým tlačítkem myši klikněte na zařízení IoT Edge, které chcete nakonfigurovat pomocí manifestu nasazení.
 
     > [!TIP]
-    > Abyste se ujistili, že zařízení, kterou jste zvolili zařízení IoT Edge, vyberte ji a rozbalte seznam modulů a ověřte existenci **$edgeHub** a **$edgeAgent**. Každé zařízení IoT Edge zahrnuje tyto dva moduly.
+    > Pokud chcete potvrdit, že zařízení, které jste zvolili, je IoT Edge zařízení, vyberte ho a rozbalte seznam modulů a ověřte přítomnost **$edgeHub** a **$edgeAgent**. Každé zařízení IoT Edge zahrnuje tyto dva moduly.
 
 1. Vyberte **vytvoření nasazení pro jedno zařízení**.
 

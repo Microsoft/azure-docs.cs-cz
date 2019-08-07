@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s Application Insights v Javovém webovém projektu
+title: Řešení potíží s Application Insights ve webovém projektu Java
 description: Průvodce odstraňováním potíží – monitorování živých aplikací Java pomocí Application Insights.
 services: application-insights
 documentationcenter: java
@@ -12,65 +12,65 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: c55828244d73e612da7a7da2d050252cce04aa2c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a26302b0c0b4361fe3e7aae6aba798f433c72ade
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061152"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742182"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
-Dotazy nebo problémy s [Azure Application Insights v jazyce Java][java]? Zde jsou některé tipy.
+Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady je několik tipů.
 
 ## <a name="build-errors"></a>Chyby sestavení
-**V prostředí Eclipse nebo Intellij Idea, při přidání Application Insights SDK pomocí Maven nebo Gradle se zobrazí chyby ověření sestavení nebo kontrolního součtu.**
+**V zatmění nebo IntelliJ nápadu při přidávání sady Application Insights SDK prostřednictvím Maven nebo Gradle se zobrazí chyby ověření sestavení nebo kontrolního součtu.**
 
-* Pokud se závislost `<version>` element je pomocí vzoru se zástupnými znaky (např.) (Maven) `<version>[2.0,)</version>` nebo (Gradle) `version:'2.0.+'`), zkuste místo toho zadat konkrétní verzi jako `2.0.1`. Zobrazit [poznámky k verzi](https://github.com/Microsoft/ApplicationInsights-Java/releases) pro nejnovější verzi.
+* Pokud element Dependency `<version>` používá vzor se zástupnými znaky (např. Maven nebo (Gradle) `version:'2.0.+'`) Zkuste zadat konkrétní verzi místo toho, jako `2.0.1`je. `<version>[2.0,)</version>` Nejnovější verzi najdete v poznámkách k [verzi](https://github.com/Microsoft/ApplicationInsights-Java/releases) .
 
 ## <a name="no-data"></a>Žádná data
-**Můžu úspěšně přidali Application Insights a spustili svou aplikaci, ale I jste nikdy se neprohlédlo dat na portálu.**
+**Přidal (a) jsem Application Insights úspěšně a spustil jsem aplikaci, ale na portálu se nikdy nezobrazila žádná data.**
 
-* Počkejte minutu a klikněte na tlačítko Aktualizovat. Grafy se pravidelně samy aktualizují, ale můžete také aktualizovat ručně. Interval aktualizace závisí na časový rozsah grafu.
-* Zkontrolujte, že máte Instrumentační klíč definované v souboru ApplicationInsights.xml (ve složce prostředky ve vašem projektu) nebo konfigurovat jako proměnné prostředí.
-* Ověřte, že neexistuje žádná `<DisableTelemetry>true</DisableTelemetry>` uzlu v souboru xml.
-* V bráně firewall možná budete muset otevřít porty TCP 80 a 443 pro odchozí provoz pro adresu dc.services.visualstudio.com. Zobrazit [úplný seznam výjimky brány firewall](../../azure-monitor/app/ip-addresses.md)
-* V Microsoft Azure začít panelu, podívejte se na mapě služby stavu. Pokud jsou některé upozornění údaje, počkejte, dokud se změnil na OK a pak zavřete a znovu otevřete okno aplikace Application Insights.
-* Zapnutí protokolování do okna konzoly integrovaného vývojového prostředí tak, že přidáte `<SDKLogger />` element v rámci kořenového uzlu souboru ApplicationInsights.xml (ve složce prostředky ve vašem projektu) a zkontrolovat položky začíná AI: Informace o/WARN nebo v podrobnostech o CHYBĚ všechny podezřelé protokoly.
-* Ujistěte se, že správný soubor ApplicationInsights.xml úspěšně načetl sady Java SDK zobrazením v konzole výstupní zprávy pro příkaz "konfigurační soubor byl úspěšně nalezl".
-* Pokud není nalezen konfigurační soubor, zkontrolujte výstupní zprávy zobrazíte, ve kterém má být vyhledán konfiguračního souboru pro a ujistěte se, že soubor ApplicationInsights.xml nachází v jednom z těchto umístění vyhledávání. Jako říci můžete umístit konfiguračního souboru téměř Application Insights SDK JARs. Příklad: v Tomcatu, to znamená třídy webu INF/složky. Během vývoje můžete umístit soubor ApplicationInsights.xml do složky prostředky webového projektu.
-* Podrobnosti se také podívat na [stránce problémů Githubu](https://github.com/Microsoft/ApplicationInsights-Java/issues) známých problémů v sadě SDK.
-* Nezapomeňte použít stejnou verzi nástroje Application Insights core, web, agent a protokolování appenders, aby všechny problémy s verzí ke konfliktu.
+* Počkejte minutu a klikněte na tlačítko Aktualizovat. Grafy se pravidelně aktualizují, ale můžete je také aktualizovat ručně. Interval aktualizace závisí na časovém rozsahu grafu.
+* Ověřte, že máte klíč instrumentace definovaný v souboru ApplicationInsights. XML (ve složce Resources ve vašem projektu), nebo nakonfigurovaný jako proměnná prostředí.
+* Ověřte, že soubor XML `<DisableTelemetry>true</DisableTelemetry>` neobsahuje žádný uzel.
+* V bráně firewall možná budete muset pro odchozí přenosy na dc.services.visualstudio.com otevřít porty TCP 80 a 443. Zobrazit [úplný seznam výjimek brány firewall](../../azure-monitor/app/ip-addresses.md)
+* Na panelu Microsoft Azure Start se podívejte na mapu stavu služby. Pokud se zobrazí upozornění, počkejte, až se vrátí do OK, a pak zavřete a znovu otevřete okno aplikace Application Insights.
+* [Zapněte protokolování](#debug-data-from-the-sdk) přidáním `<SDKLogger />` prvku pod kořenovým uzlem v souboru ApplicationInsights. XML (ve složce Resources v projektu) a vyhledejte položky s AI: INFORMACE, varování/chyba pro všechny podezřelé protokoly. 
+* Ujistěte se, že soubor ApplicationInsights. XML byl úspěšně načten sadou Java SDK, a to tak, že prohlíží výstupní zprávy konzoly pro příkaz "konfigurační soubor byl úspěšně nalezen".
+* Pokud konfigurační soubor nebyl nalezen, zkontrolujte výstupní zprávy, zda je prohledáván konfigurační soubor, a ujistěte se, že ApplicationInsights. XML je umístěn v jednom z těchto umístění hledání. Jako pravidlo pro palec můžete umístit konfigurační soubor poblíž Application Insights SDK jar. Například: v Tomcat by to znamenalo složku WEB-INF/Classes. Během vývoje můžete umístit ApplicationInsights. XML do složky Resources vašeho webového projektu.
+* Podívejte se také na [stránku problémy s GitHubem](https://github.com/Microsoft/ApplicationInsights-Java/issues) , kde najdete známé problémy se sadou SDK.
+* Abyste se vyhnuli jakýmkoli problémům se konflikty verzí, zajistěte, aby používaly stejnou verzi Application Insights Core, webu, agenta a přihlášení.
 
-#### <a name="i-used-to-see-data-but-it-has-stopped"></a>Můžu použít k zobrazení dat, ale byla zastavena
-* Zkontrolujte, [stav blogu](https://blogs.msdn.com/b/applicationinsights-status/).
-* Jste nedosáhli kvóta měsíčního počtu datových bodů? Otevřete nastavení/kvóta a ceny zjistit. Pokud ano, můžete upgradovat svůj plán nebo platit za dodatečnou kapacitu. Zobrazit [cenové schéma](https://azure.microsoft.com/pricing/details/application-insights/).
-* Jste nedávno přešli vaši sadu SDK? Ujistěte se prosím, že pouze kromě souborů JAR jedinečný SDK jsou k dispozici v adresáři projektu. By neměla existovat dvě různé verze sady SDK, které jsou k dispozici.
-* Sledujete správné prostředku Application Insights? Porovná prosím Instrumentační klíč vaší aplikace na prostředek, kde očekáváte telemetrická data. Měly by být stejné.
+#### <a name="i-used-to-see-data-but-it-has-stopped"></a>Zobrazil (a) jsem data, ale zastavila se
+* Podívejte se na [blog stavu](https://blogs.msdn.com/b/applicationinsights-status/).
+* Dosáhli jste měsíční kvóty datových bodů? Pokud chcete zjistit, otevřete nastavení/kvótu a ceny. Pokud ano, můžete upgradovat svůj plán nebo platit za další kapacitu. Podívejte se na téma [cenové schéma](https://azure.microsoft.com/pricing/details/application-insights/).
+* Máte nedávno upgradovanou sadu SDK? Ujistěte se prosím, že v adresáři projektu jsou jenom jedinečné jar SDK. K dispozici není žádná dvě z různých verzí sady SDK.
+* Hledáte správný prostředek AI? Porovnejte iKey své aplikace s prostředkem, u kterého očekáváte telemetrii. Měly by být stejné.
 
-#### <a name="i-dont-see-all-the-data-im-expecting"></a>Nevidím všechna data, který bych čekal
-* Otevřete využití a odhadované náklady na stránku a zkontrolujte, jestli [vzorkování](../../azure-monitor/app/sampling.md) je v provozu. (přenos 100 % znamená, že vzorkování není v provozu.) Služba Application Insights můžete nastavit tak, aby přijímal pouze zlomek telemetrická data přenášená z vaší aplikace. To pomáhá při synchronizaci v rámci kvóta měsíčního počtu telemetrická data.
-* Máte zapnuté vzorkování SDK? Pokud ano, dat by definuje sazby stanovené pro všechny platné typy.
-* Používáte starší verzi sady Java SDK? Počínaje verzí 2.0.1, zavedli jsme odolnost proti chybám mechanismem pro zpracování sítě a selhání back-endu, jakož i trvalost dat na místních jednotkách.
-* Jsou získávání omezena z důvodu nadměrného telemetrie? Pokud zapnete informace o protokolování, zobrazí se protokol zpráv "Aplikace se omezí". Naše současný limit je 32 kB telemetrie položek za sekundu.
+#### <a name="i-dont-see-all-the-data-im-expecting"></a>Nezobrazují se všechna data, která očekávám
+* Otevřete stránku využití a odhadované náklady a ověřte, zda je [vzorkování](../../azure-monitor/app/sampling.md) v provozu. (100% přenos znamená, že vzorkování není v provozu.) Službu Application Insights lze nastavit tak, aby přijímala pouze zlomek telemetrie, která přichází z vaší aplikace. To vám pomůže udržet se v rámci měsíční kvóty telemetrie.
+* Máte zapnuté vzorkování sady SDK? Pokud ano, budou se data vzorkovat podle sazby určené pro všechny příslušné typy.
+* Používáte starší verzi sady Java SDK? Od verze 2.0.1 jsme zavedli mechanismus odolnosti proti chybám, který zpracovává občasné chyby sítě a back-endu a také Trvalost dat na místních jednotkách.
+* Získáváte omezení z důvodu nadměrné telemetrie? Pokud zapnete protokolování informací, zobrazí se zpráva protokolu aplikace je omezená. Náš aktuální limit je 32 položek telemetrie za sekundu.
 
-### <a name="java-agent-cannot-capture-dependency-data"></a>Agenta Java nelze zachytit data závislostí
-* Nakonfigurovali jste agenta Java pomocí následujících [konfigurace agenta Java](java-agent.md) ?
-* Ujistěte se, že že soubor jar pro Javu agenta a soubor AI Agent.xml jsou umístěny ve stejné složce.
-* Ujistěte se, že závislost, kterou se pokoušíte automatické shromažďování je podporováno pro automatické shromažďování. Aktuálně podporujeme jenom MySQL, MsSQL, Oracle DB a Azure mezipaměti Redis závislostí kolekce.
-* Používáte sadu JDK 1.7 nebo 1.8? Aktuálně nepodporujeme kolekce závislost na sadu JDK 9.
+### <a name="java-agent-cannot-capture-dependency-data"></a>Agent Java nemůže zachytit data závislostí.
+* Nakonfigurovali jste agenta Java pomocí následujícího [Nastavení agenta Java](java-agent.md) ?
+* Zajistěte, aby byl jar agenta Java a soubor AI-Agent. XML umístěny do stejné složky.
+* Ujistěte se, že závislost, kterou se pokoušíte automaticky shromažďovat, je podporovaná pro automatické shromažďování. V současné době podporujeme pro kolekci závislostí Redis jenom MySQL, MsSQL, Oracle DB a Azure cache.
+* Používáte JDK 1,7 nebo 1,8? V současné době nepodporujeme shromažďování závislostí v JDK 9.
 
 ## <a name="no-usage-data"></a>Žádná data o využití
-**Zobrazila se data o požadavků a doby odezvy, ale zobrazení stránky, prohlížeče nebo uživatelská data.**
+**Zobrazuje se data o požadavcích a časech odezvy, ale neexistují žádná zobrazení stránky, prohlížeče ani uživatelská data.**
 
-Jste úspěšně nastavili vaší aplikace odesílat telemetrická data ze serveru. Nyní je dalším krokem je [nastavení webových stránek odesílat telemetrická data z webového prohlížeče][usage].
+Úspěšně jste nastavili aplikaci, aby odesílala telemetrii ze serveru. Teď jste v dalším kroku nastavili [webové stránky pro odesílání telemetrie z webového prohlížeče][usage].
 
-Případně pokud je aplikace v klientu [telefonu nebo jiné zařízení][platforms], mohla odesílat telemetrii z něj.
+Případně, pokud je váš klient aplikace na [telefonu nebo jiném zařízení][platforms], můžete z něj poslat telemetrii.
 
-Použijte stejné Instrumentační klíč pro nastavení klienta i serveru telemetrie. Data se zobrazí v stejný prostředek Application Insights a budete moct korelovat události z klienta a serveru.
+Použijte stejný klíč instrumentace k nastavení telemetrie klienta i serveru. Data se zobrazí ve stejném prostředku Application Insights a budete moci korelovat události z klienta a serveru.
 
 
-## <a name="disabling-telemetry"></a>Vypnutí telemetrie
-**Jak lze zakázat shromažďování telemetrie?**
+## <a name="disabling-telemetry"></a>Zakázání telemetrie
+**Jak můžu zakázat shromažďování telemetrie?**
 
 V kódu:
 
@@ -82,44 +82,44 @@ V kódu:
 
 **Nebo**
 
-Aktualizujte soubor ApplicationInsights.xml (ve složce prostředky ve vašem projektu). Přidejte následující do kořenového uzlu:
+Aktualizujte soubor ApplicationInsights. XML (ve složce Resources ve vašem projektu). Do kořenového uzlu přidejte následující:
 
 ```XML
 
     <DisableTelemetry>true</DisableTelemetry>
 ```
 
-Pomocí metody XML, je nutné restartování aplikace při změně hodnoty.
+Pomocí metody XML je nutné restartovat aplikaci při změně hodnoty.
 
 ## <a name="changing-the-target"></a>Změna cíle
-**Změna které prostředků Azure Můj projekt odesílá data do**
+**Jak můžu změnit, na který prostředek Azure můj projekt odesílá data?**
 
 * [Získejte klíč instrumentace nového prostředku.][java]
-* Pokud jste přidali Application Insights do projektu pomocí sady Azure Toolkit pro Eclipse, klikněte pravým tlačítkem na webový projekt, vyberte **Azure**, **konfigurovat Application Insights**a změníte klíč.
-* Instrumentační klíč má nakonfigurovaný jako proměnné prostředí, aktualizujte hodnotu proměnné prostředí s nový Instrumentační klíč.
-* V opačném případě aktualizujte klíč soubor ApplicationInsights.xml do složky prostředky ve vašem projektu.
+* Pokud jste do projektu přidali Application Insights pomocí Azure Toolkit for Eclipse, klikněte pravým tlačítkem myši na svůj webový projekt, vyberte položku **Azure**, **nakonfigurujte Application Insights**a změňte klíč.
+* Pokud jste klíč instrumentace nakonfigurovali jako proměnnou prostředí, aktualizujte hodnotu proměnné prostředí pomocí New iKey.
+* V opačném případě aktualizujte klíč v souboru ApplicationInsights. XML ve složce Resources v projektu.
 
-## <a name="debug-data-from-the-sdk"></a>Dat ze sady SDK pro ladění
+## <a name="debug-data-from-the-sdk"></a>Ladění dat ze sady SDK
 
-**Jak lze zjistit činnosti sady SDK?**
+**Jak můžu zjistit, co dělá sada SDK?**
 
-Chcete-li získat další informace o tom, co se děje v rozhraní API, přidejte `<SDKLogger/>` do kořenového uzlu souboru ApplicationInsights.xml konfigurace.
+Pokud chcete získat další informace o tom, co se děje v rozhraní `<SDKLogger/>` API, přidejte do kořenového uzlu konfiguračního souboru ApplicationInsights. XML.
 
 ### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
 
-Také můžete dát pokyn protokolovací nástroj pro výstup do souboru:
+Můžete také instruovat protokolovací nástroj na výstup do souboru:
 
 ```XML
-  <SDKLogger type="FILE">
+  <SDKLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
     <Level>TRACE</Level>
     <UniquePrefix>AI</UniquePrefix>
     <BaseFolderPath>C:/agent/AISDK</BaseFolderPath>
 </SDKLogger>
 ```
 
-### <a name="spring-boot-starter"></a>Aplikace Spring Boot Starter
+### <a name="spring-boot-starter"></a>Jaře Boot Starter
 
-Pokud chcete povolit protokolování sady SDK s aplikace Spring Boot pomocí Application Insights aplikace Spring Boot Starter, přidejte následující text do `application.properties` souboru.:
+Pokud chcete povolit protokolování sady SDK s aplikacemi pružiny, které používají Application Insights jaře Boot Starter, přidejte `application.properties` do souboru následující:
 
 ```yaml
 azure.application-insights.logger.type=file
@@ -127,58 +127,80 @@ azure.application-insights.logger.base-folder-path=C:/agent/AISDK
 azure.application-insights.logger.level=trace
 ```
 
-### <a name="java-agent"></a>Agenta Java
+nebo k tisku na standardní chybu:
 
-Povolení protokolování agenta JVM aktualizace [AI Agent.xml souboru](java-agent.md).
+```yaml
+azure.application-insights.logger.type=console
+azure.application-insights.logger.level=trace
+```
+
+### <a name="java-agent"></a>Agent Java
+
+Pokud chcete povolit protokolování agenta JVM, proveďte aktualizaci [souboru AI-agent. XML](java-agent.md):
 
 ```xml
-<AgentLogger type="FILE">
+<AgentLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
     <Level>TRACE</Level>
     <UniquePrefix>AI</UniquePrefix>
     <BaseFolderPath>C:/agent/AIAGENT</BaseFolderPath>
 </AgentLogger>
 ```
 
-## <a name="the-azure-start-screen"></a>Na obrazovce start pro Azure
-**Dívám se tam na [na webu Azure portal](https://portal.azure.com). Na mapě informace něco o mé aplikace?**
+### <a name="java-command-line-properties"></a>Vlastnosti příkazového řádku Java
+_Od verze 2.4.0_
 
-Ne, zobrazuje souhrn stavů serverů Azure po celém světě.
+Povolení protokolování pomocí možností příkazového řádku bez změny konfiguračních souborů:
 
-*Z panelu Azure start (domovskou obrazovku) jak najdu data o mé aplikaci?*
+```
+java -Dapplicationinsights.logger.file.level=trace -Dapplicationinsights.logger.file.uniquePrefix=AI -Dapplicationinsights.logger.baseFolderPath="C:/my/log/dir" -jar MyApp.jar
+```
 
-Za předpokladu, že jste [nastavte svoji aplikaci pro službu Application Insights][java], klikněte na tlačítko Procházet, vyberte Application Insights a vyberte prostředek aplikace, který jste vytvořili pro vaši aplikaci. Chcete-li získat existuje rychleji v budoucích verzích můžete připnout aplikaci na úvodní panel.
+nebo k tisku na standardní chybu:
 
-## <a name="intranet-servers"></a>Intranetových serverů
-**Můžete monitorovat server v mém intranetu?**
+```
+java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
+```
 
-Ano, za předpokladu, že váš server můžete odesílání telemetrických dat do portálu služby Application Insights prostřednictvím veřejného Internetu.
+## <a name="the-azure-start-screen"></a>Úvodní obrazovka Azure
+**Díváte [se na Azure Portal](https://portal.azure.com). Řekněte vám mapa něco o mé aplikaci?**
 
-V bráně firewall možná budete muset otevřít porty TCP 80 a 443 pro odchozí provoz pro adresu dc.services.visualstudio.com a f5.services.visualstudio.com.
+Ne, zobrazuje stav serverů Azure po celém světě.
+
+*Jak můžu najít data o mé aplikaci, na úvodní desce Azure (domovskou obrazovku)?*
+
+Za předpokladu, že jste [aplikaci nastavili pro Application Insights][java], klikněte na Procházet, vyberte Application Insights a vyberte prostředek aplikace, který jste pro svou aplikaci vytvořili. Chcete-li v budoucnu získat rychlejší přístup k aplikaci, můžete ji připnout na úvodní desku.
+
+## <a name="intranet-servers"></a>Intranetové servery
+**Můžu na svém intranetu monitorovat Server?**
+
+Ano, pokud váš server může prostřednictvím veřejného Internetu odesílat telemetrii na portál Application Insights.
+
+V bráně firewall možná budete muset otevřít porty TCP 80 a 443 pro odchozí provoz do dc.services.visualstudio.com a f5.services.visualstudio.com.
 
 ## <a name="data-retention"></a>Uchovávání dat
-**Jak dlouho se data uchovávají v portálu? Je bezpečný?**
+**Jak dlouho se data na portálu uchovávají? Je zabezpečení?**
 
-Zobrazit [uchovávání dat a ochrany osobních údajů][data].
+Podívejte [se na uchovávání dat a ochranu osobních údajů][data].
 
 ## <a name="debug-logging"></a>Protokolování ladění
-Application Insights využívá `org.apache.http`. To je přemístěn do Application Insights core kromě souborů JAR v rámci oboru názvů `com.microsoft.applicationinsights.core.dependencies.http`. Díky Application Insights pro zpracování scénářů, kde různých verzí stejného `org.apache.http` existovat v základu kódu.
+Application Insights používá `org.apache.http`. Toto je přemístěné v rámci Application Insights Core jar pod `com.microsoft.applicationinsights.core.dependencies.http`oborem názvů. To umožňuje Application Insights zpracovávat scénáře, kde různé verze stejného `org.apache.http` typu existují v jednom základu kódu.
 
 >[!NOTE]
->Pokud povolíte úrovně protokolování ladění pro všechny obory názvů v aplikaci, ji bude respektovat všechny spuštěné moduly včetně `org.apache.http` přejmenovaný `com.microsoft.applicationinsights.core.dependencies.http`. Application Insights nebude možné použít filtrování těchto volání, protože se právě provádí volání protokolu knihovnou Apache. Úroveň protokolování ladění vytvořit značné množství dat protokolu a nedoporučuje se používat pro aktivní produkční instance.
+>Pokud povolíte protokolování na úrovni ladění pro všechny obory názvů v aplikaci, budou tyto moduly přijaty všemi spuštěnými moduly `org.apache.http` , včetně `com.microsoft.applicationinsights.core.dependencies.http`přejmenování. Application Insights nebude moct pro tato volání použít filtrování, protože se v knihovně Apache provádí volání protokolu. Protokolování úrovně ladění vytvoří značnou část dat protokolu a nedoporučuje se pro živé provozní instance.
 
 
 ## <a name="next-steps"></a>Další postup
-**Nastavit Application Insights pro aplikace my server Java. Co dalšího můžu dělat?**
+**Nastavil jsem Application Insights pro aplikaci Java Server. Co dalšího můžu udělat?**
 
 * [Monitorování dostupnosti webových stránek][availability]
-* [Sledování používání webových stránek][usage]
-* [Sledování využití a Diagnostika problémů v aplikacích zařízení][platforms]
-* [Napsat kód pro sledování využití aplikací][track]
-* [Zaznamenání diagnostických protokolů][javalogs]
+* [Monitorování využití webové stránky][usage]
+* [Sledování využití a diagnostikování problémů v aplikacích pro zařízení][platforms]
+* [Napsat kód pro sledování využití vaší aplikace][track]
+* [Zachytávání diagnostických protokolů][javalogs]
 
 ## <a name="get-help"></a>Podpora
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-* [Založte problém na Githubu](https://github.com/Microsoft/ApplicationInsights-Java/issues)
+* [Vystavení problému na GitHubu](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

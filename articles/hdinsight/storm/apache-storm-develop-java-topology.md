@@ -1,49 +1,49 @@
 ---
-title: Topologie Java příklad Apache Storm – Azure HDInsight
-description: Zjistěte, jak vytvořit tak, že vytvoříte topologií počtu slov příklad topologií Apache Storm v jazyce Java.
+title: Apache Storm ukázka topologie Java – Azure HDInsight
+description: Naučte se vytvářet topologie Apache Storm v jazyce Java vytvořením ukázkové topologie počtu slov.
 author: hrasheed-msft
 ms.reviewer: jasonh
-keywords: Apache storm, příklad apache storm, storm java, příklad topologie storm
+keywords: Apache zaplavení, příklad pro více než Apache, příklad topologie
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 89cee70c9d7c5dffdb3078756cf4fa94d7cd1a9a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3cdf2255208069e20f5a230cc2acd82a628fdcfd
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078226"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840213"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Vytvoření topologie Apache Storm v jazyce Java
 
-Zjistěte, jak vytvořit topologie založené na jazyce Java pro [Apache Storm](https://storm.apache.org/). Můžete zde vytvářet topologie Storm, který implementuje aplikace počet slov. Použijete [Apache Maven](https://maven.apache.org/) chcete sestavit a zabalit projekt. Potom se dozvíte, jak chcete definovat pomocí topologie [Apache Storm tok](https://storm.apache.org/releases/2.0.0/flux.html) rozhraní framework.
+Naučte se vytvořit topologii založenou na jazyce Java pro [Apache Storm](https://storm.apache.org/). Tady vytvoříte topologii, která implementuje aplikaci počtu slov. Použijte [Apache Maven](https://maven.apache.org/) k sestavení a zabalení projektu. Pak se naučíte, jak definovat topologii pomocí rozhraní [Apache Stormch toků](https://storm.apache.org/releases/2.0.0/flux.html) .
 
-Po dokončení kroků v tomto dokumentu, můžete nasadit topologii do Apache Storm v HDInsight.
+Po dokončení kroků v tomto dokumentu můžete tuto topologii nasadit do Apache Storm ve službě HDInsight.
 
 > [!NOTE]  
-> Je k dispozici na úplnou verzi příkladů topologie Storm vytvořené v tomto dokumentu [ https://github.com/Azure-Samples/hdinsight-java-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
+> V tomto dokumentu jsou k dispozici kompletní verze ukázek topologie, které [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount)jsou vytvořeny v tomto dokumentu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks)
 
-* [Nástroje Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) podle Apache.  Maven je projekt sestavovacího systému pro projekty Java.
+* [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 
 ## <a name="test-environment"></a>Testovací prostředí
-Prostředí, používá pro účely tohoto článku byl počítač se systémem Windows 10.  Příkazy byly provedeny v příkazovém řádku a různé soubory byly upravit článek přeložený překladatelem Poznámkový blok.
+Prostředí použité pro tento článek bylo počítač se systémem Windows 10.  Příkazy byly provedeny v příkazovém řádku a různé soubory byly upraveny pomocí poznámkového bloku.
 
-Z příkazového řádku zadejte následující příkazy k vytvoření pracovní prostředí:
+Z příkazového řádku zadejte níže uvedené příkazy pro vytvoření funkčního prostředí:
 
 ```cmd
 mkdir C:\HDI
 cd C:\HDI
 ```
 
-## <a name="create-a-maven-project"></a>Vytvořte projekt Maven
+## <a name="create-a-maven-project"></a>Vytvoření projektu Maven
 
-Zadáním následujícího příkazu vytvořte projekt Maven s názvem **WordCount**:
+Zadejte následující příkaz a vytvořte tak projekt Maven s názvem **WORDCOUNT**:
 
 ```cmd
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
@@ -52,7 +52,7 @@ cd WordCount
 mkdir resources
 ```
 
-Tento příkaz vytvoří adresář s názvem `WordCount` na aktuální pozici, která obsahuje základní projekt Maven. Druhý příkaz změní aktuální pracovní adresář pro `WordCount`. Třetí příkaz vytvoří nový adresář `resources`, který se použije později.  `WordCount` Adresář obsahuje následující položky:
+Tento příkaz vytvoří adresář s názvem `WordCount` v aktuálním umístění, který obsahuje základní projekt Maven. Druhý příkaz změní stávající pracovní adresář na `WordCount`. Třetí příkaz vytvoří nový adresář, `resources`který bude později použit.  `WordCount` Adresář obsahuje následující položky:
 
 * `pom.xml`: Obsahuje nastavení pro projekt Maven.
 * `src\main\java\com\microsoft\example`: Obsahuje kód vaší aplikace.
@@ -60,7 +60,7 @@ Tento příkaz vytvoří adresář s názvem `WordCount` na aktuální pozici, k
 
 ### <a name="remove-the-generated-example-code"></a>Odebrat generovaný ukázkový kód
 
-Odstranit vygenerované testy a soubory aplikace `AppTest.java`, a `App.java` zadáním následujících příkazů:
+Odstraňte vygenerované soubory `AppTest.java`testů a aplikace a `App.java` zadáním následujících příkazů:
 
 ```cmd
 DEL src\main\java\com\microsoft\example\App.java
@@ -69,15 +69,15 @@ DEL src\test\java\com\microsoft\example\AppTest.java
 
 ## <a name="add-maven-repositories"></a>Přidat úložiště Maven
 
-HDInsight je založené na Hortonworks Data Platform (HDP), doporučujeme používat úložiště Hortonworks ke stažení závislostí pro projekty Apache Storm.  
+HDInsight je založený na HDP (Hortonworks data Platform), proto doporučujeme použít úložiště Hortonworks ke stažení závislostí pro vaše projekty Apache Storm.  
 
-Otevřít `pom.xml` tak, že zadáte následující příkaz:
+Otevřete `pom.xml` zadáním následujícího příkazu:
 
 ```cmd
 notepad pom.xml
 ```
 
-Pak přidejte následující kód XML po `<url> https://maven.apache.org</url>` řádku:
+Pak přidejte následující XML za `<url> https://maven.apache.org</url>` řádek:
 
 ```xml
 <repositories>
@@ -116,9 +116,9 @@ Pak přidejte následující kód XML po `<url> https://maven.apache.org</url>` 
 </repositories>
 ```
 
-## <a name="add-properties"></a>Přidání vlastností
+## <a name="add-properties"></a>Přidat vlastnosti
 
-Maven můžete zadat hodnoty na úrovni projektu, jako vlastnosti. V `pom.xml`, přidejte následující text po `</repositories>` řádku:
+Maven umožňuje definovat hodnoty na úrovni projektu s názvem Properties (vlastnosti). Do `pom.xml`přidejte následující text `</repositories>` za řádek:
 
 ```xml
 <properties>
@@ -130,11 +130,11 @@ Maven můžete zadat hodnoty na úrovni projektu, jako vlastnosti. V `pom.xml`, 
 </properties>
 ```
 
-Můžete teď tuto hodnotu použijete v dalších částech `pom.xml`. Například při zadání verze komponenty Storm, můžete použít `${storm.version}` místo pevného kódování hodnotu.
+Tuto hodnotu teď můžete použít v dalších oddílech `pom.xml`. Například při určení verze nenáročné komponenty můžete použít `${storm.version}` místo pevného kódování hodnoty.
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
-Přidáte závislost pro komponenty Storm. V `pom.xml`, přidejte následující text do `<dependencies>` části:
+Přidejte závislost pro součásti pro zaplavení. V `pom.xml`přidejte do `<dependencies>` oddílu následující text:
 
 ```xml
 <dependency>
@@ -146,14 +146,14 @@ Přidáte závislost pro komponenty Storm. V `pom.xml`, přidejte následující
 </dependency>
 ```
 
-V době kompilace Maven pomocí těchto informací k vyhledání `storm-core` v úložiště Maven. Nejprve hledá v úložišti na místním počítači. Pokud nejsou soubory, nástroje Maven stáhne z veřejného úložiště Maven a ukládá je do místního úložiště.
+V době kompilace Maven používá tyto informace k vyhledání `storm-core` v úložišti Maven. Nejprve se podíváme na úložiště v místním počítači. Pokud tam soubory nejsou, Maven je stáhne z veřejného úložiště Maven a uloží je do místního úložiště.
 
 > [!NOTE]  
-> Všimněte si, že `<scope>provided</scope>` řádek v této části. Toto nastavení určuje Maven k vyloučení **storm core** z jakékoli soubory JAR, které jsou vytvořeny, protože se poskytuje v systému.
+> Všimněte si `<scope>provided</scope>` , že řádek v této části. Toto nastavení určuje, že Maven vyloučí ze všech vytvořených souborů JAR, aby nedošlo k tomu, že je k dispozici v systému.
 
 ## <a name="build-configuration"></a>Konfigurace sestavení
 
-Moduly plug-in maven umožňují přizpůsobit fáze sestavení umísťují projektu. Příklad jak je projekt kompilován nebo jak zabalíte ji do souboru JAR. V `pom.xml`, přidejte následující text přímo nad `</project>` řádku.
+Moduly plug-in Maven umožňují přizpůsobit fáze sestavení projektu. Například způsob kompilace projektu nebo jeho zabalení do souboru JAR. Do `pom.xml`přidejte následující text přímo `</project>` nad řádek.
 
 ```xml
 <build>
@@ -164,13 +164,13 @@ Moduly plug-in maven umožňují přizpůsobit fáze sestavení umísťují proj
 </build>
 ```
 
-V této části se používá k přidání modulů plug-in, prostředky a další možnosti konfigurace sestavení. Úplný přehled o `pom.xml` souborů naleznete v tématu [ https://maven.apache.org/pom.html ](https://maven.apache.org/pom.html).
+Tato část slouží k přidání modulů plug-in, prostředků a dalších možností konfigurace sestavení. Úplný odkaz na `pom.xml` soubor naleznete v tématu [https://maven.apache.org/pom.html](https://maven.apache.org/pom.html).
 
 ### <a name="add-plug-ins"></a>Přidat moduly plug-in
 
-* **Exec Maven Plugin**
+* **Modul plug-in Maven exec**
 
-    Pro topologií Apache Storm, které jsou implementovány v jazyce Java [plug-in Maven Exec](https://www.mojohaus.org/exec-maven-plugin/) je užitečné, protože umožňuje snadno spouštět místně ve vašem vývojovém prostředí topologie. Přidejte následující text do `<plugins>` část `pom.xml` souboru modulu plug-in Exec Maven:
+    U Apache Storm topologií implementovaných v jazyce Java je [modul plug-in exec Maven](https://www.mojohaus.org/exec-maven-plugin/) užitečný, protože umožňuje snadno spustit topologii místně ve vašem vývojovém prostředí. Do `<plugins>` části`pom.xml` souboru přidejte následující obsah, aby zahrnoval modul plug-in exec Maven:
     
     ```xml
     <plugin>
@@ -195,15 +195,15 @@ V této části se používá k přidání modulů plug-in, prostředky a dalš�
     </plugin>
     ```
 
-* **Apache Maven Compiler Plugin**
+* **Modul plug-in kompilátoru Apache Maven**
 
-    Další užitečné modul plug-in je [plug-in Apache Maven kompilátoru](https://maven.apache.org/plugins/maven-compiler-plugin/), který se používá, chcete-li změnit možnosti kompilace. Změna verze pro Javu, která používá Maven pro zdroj a cíl pro vaši aplikaci.
+    Dalším užitečným modulem plug-in je [modul plug-in pro Apache Maven](https://maven.apache.org/plugins/maven-compiler-plugin/), který se používá ke změně možností kompilace. Změňte verzi Java, kterou Maven používá pro zdroj a cíl vaší aplikace.
     
-  * Pro HDInsight __3.4 nebo starší__, nastavit zdroj a cílit na verzi Javy k __1.7__.
+  * Pro HDInsight __3,4 nebo starší__nastavte zdrojovou a cílovou verzi Java na __1,7__.
     
-  * Pro HDInsight __3.5__, nastavit zdroj a cílit na verzi Javy k __1.8__.
+  * V případě HDInsight __3,5__nastavte zdrojovou a cílovou verzi Java na __1,8__.
     
-    Přidejte následující text do `<plugins>` část `pom.xml` souboru modulu plug-in Apache Maven kompilátoru. Tento příklad určuje verzi 1.8 je cílová HDInsight verze 3.5.
+    Do `<plugins>` části`pom.xml` souboru přidejte následující text, který bude zahrnovat modul plug-in Maven pro Apache. Tento příklad určuje 1,8, takže cílová verze HDInsight je 3,5.
     
     ```xml
     <plugin>
@@ -219,7 +219,7 @@ V této části se používá k přidání modulů plug-in, prostředky a dalš�
 
 ### <a name="configure-resources"></a>Konfigurace prostředků
 
-V části prostředky umožňuje zahrnout prostředky bez kódu, jako jsou konfigurační soubory, které jsou potřeba součástmi v topologii. V tomto příkladu přidejte následující text `<resources>` část `pom.xml` souboru.
+V části Resources (prostředky) můžete zahrnout nekódové zdroje, jako jsou třeba konfigurační soubory, které jsou potřeba součástmi v topologii. V tomto příkladu přidejte následující text do `<resources>` části `pom.xml` souboru.
 
 ```xml
 <resource>
@@ -231,29 +231,29 @@ V části prostředky umožňuje zahrnout prostředky bez kódu, jako jsou konfi
 </resource>
 ```
 
-V tomto příkladu přidá adresáře prostředků v kořenovém adresáři projektu (`${basedir}`) jako umístění, která obsahuje prostředky a zahrnuje soubor s názvem `log4j2.xml`. Tento soubor slouží ke konfiguraci, jaké informace je protokolovaným v topologii.
+Tento příklad přidá adresář prostředků do kořenového adresáře projektu (`${basedir}`) jako umístění, které obsahuje prostředky a obsahuje soubor s názvem. `log4j2.xml` Tento soubor slouží ke konfiguraci informací, které jsou protokolovány pomocí topologie.
 
 ## <a name="create-the-topology"></a>Vytvoření topologie
 
-Topologie založené na jazyce Java Apache Storm se skládá z tři komponenty, které je nutné vytvořit (nebo odkaz) jako závislost.
+Apache Storm topologie založené na jazyce Java se skládá ze tří komponent, které musíte vytvořit (nebo referenční) jako závislost.
 
-* **Spouts**: Čte data z externích zdrojů a vysílá datových proudů do topologie.
+* **Spoutů**: Čte data z externích zdrojů a vysílá proudy dat do topologie.
 
-* **Bolts**: Provádí zpracování na datové proudy vyslané spoutů nebo z jiných boltů a vysílá jeden nebo více datových proudů.
+* **Šrouby**: Provádí zpracování streamů emitovaných spoutů nebo jiným šrouby a vysílá jeden nebo více datových proudů.
 
-* **Topologie**: Definuje, jak jsou uspořádány spoutů a boltů a poskytuje vstupní bod pro topologii.
+* **Topologie**: Definuje, jak jsou uspořádány spoutů a šrouby, a poskytuje vstupní bod pro topologii.
 
-### <a name="create-the-spout"></a>Vytvořte spout
+### <a name="create-the-spout"></a>Vytvoření Spout
 
-Pokud chcete snížit požadavky na nastavení externí zdroje dat, následující spout jednoduše generuje náhodné věty. Je upravená verze spout, který je součástí služby [příkladů topologie Storm Starter](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).  I když tato topologie používá pouze jeden spout, jiné mohou mít několik, které přísun dat z různých zdrojů do topologie.
+Aby se snížily požadavky na nastavení externích zdrojů dat, následující Spout jednoduše vygeneruje náhodné věty. Jedná se o upravenou verzi Spout, která je k dispozici v příkladech pro zaplavování [-Starter](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).  I když tato topologie používá jenom jeden Spout, ostatní můžou mít několik datových kanálů z různých zdrojů do topologie.
 
-Zadejte příkaz a vytvořte a otevřete nový soubor `RandomSentenceSpout.java`:
+Zadáním následujícího příkazu vytvořte a otevřete nový soubor `RandomSentenceSpout.java`:
 
 ```cmd
 notepad src\main\java\com\microsoft\example\RandomSentenceSpout.java
 ```
 
-Zkopírujte a vložte níže uvedený kód java do nového souboru.  Zavřete soubor.
+Pak zkopírujte a vložte kód Java níže do nového souboru.  Pak soubor zavřete.
 
 ```java
 package com.microsoft.example;
@@ -318,30 +318,30 @@ public class RandomSentenceSpout extends BaseRichSpout {
 ```
 
 > [!NOTE]  
-> Příklad spout, který načte z externího zdroje dat naleznete v následujících příkladech:
+> Příklad Spout, který čte z externího zdroje dat, naleznete v jednom z následujících příkladů:
 >
-> * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): Spout příklad, který čte z Twitteru.
-> * [Storm-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): Spout, která čte z Kafka.
+> * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): Příklad Spout, který čte z Twitteru.
+> * [Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): Spout, který čte z Kafka.
 
 
-### <a name="create-the-bolts"></a>Vytvořit boltů
+### <a name="create-the-bolts"></a>Vytvořit šrouby
 
-Funkce Bolts zpracování dat zpracovává. Bolty mohou provádět všechny, například výpočet, trvalého nebo komunikujících na externí komponenty. Tato topologie používá dva bolty:
+Šrouby zpracuje zpracování dat. Šrouby může dělat cokoli, například výpočet, trvalost nebo vzmluvit s externími součástmi. Tato topologie používá dvě šrouby:
 
-* **SplitSentence**: Rozdělí věty, protože ho vygeneroval **RandomSentenceSpout** do jednotlivých slov.
+* **SplitSentence**: Rozdělí věty vypouštěné RandomSentenceSpoutmi do jednotlivých slov.
 
-* **WordCount**: Počty kolikrát se každé slovo došlo k chybě.
+* **WordCount**: Spočítá počet výskytů jednotlivých slov.
 
 
 #### <a name="splitsentence"></a>SplitSentence
 
-Zadejte příkaz a vytvořte a otevřete nový soubor `SplitSentence.java`:
+Zadáním následujícího příkazu vytvořte a otevřete nový soubor `SplitSentence.java`:
 
 ```cmd
 notepad src\main\java\com\microsoft\example\SplitSentence.java
 ```
 
-Zkopírujte a vložte níže uvedený kód java do nového souboru.  Zavřete soubor.
+Pak zkopírujte a vložte kód Java níže do nového souboru.  Pak soubor zavřete.
 
 ```java
 package com.microsoft.example;
@@ -392,13 +392,13 @@ public class SplitSentence extends BaseBasicBolt {
 
 #### <a name="wordcount"></a>WordCount
 
-Zadejte příkaz a vytvořte a otevřete nový soubor `WordCount.java`:
+Zadáním následujícího příkazu vytvořte a otevřete nový soubor `WordCount.java`:
 
 ```cmd
 notepad src\main\java\com\microsoft\example\WordCount.java
 ```
 
-Zkopírujte a vložte níže uvedený kód java do nového souboru.  Zavřete soubor.
+Pak zkopírujte a vložte kód Java níže do nového souboru.  Pak soubor zavřete.
 
 ```java
 package com.microsoft.example;
@@ -481,21 +481,21 @@ public class WordCount extends BaseBasicBolt {
 }
 ```
 
-### <a name="define-the-topology"></a>Definovat topologii
+### <a name="define-the-topology"></a>Definování topologie
 
-Topologie propojuje spoutů a bolts společně do grafu, který definuje, jak data proudí mezi komponentami. Poskytuje také pomocné parametry paralelismu, které Storm používá při vytváření instancí komponent v rámci clusteru.
+Topologie spojuje spoutů a šrouby dohromady do grafu, který definuje způsob toku dat mezi komponentami. Poskytuje také pomocný parametr paralelismus, který využívá při vytváření instancí součástí v clusteru.
 
-Na následujícím obrázku je základní diagram grafu komponenty pro tuto topologii.
+Následující obrázek je základní diagram grafu komponent pro tuto topologii.
 
-![Diagram znázorňující uspořádání spoutů a boltů](./media/apache-storm-develop-java-topology/wordcount-topology.png)
+![Diagram znázorňující uspořádání spoutů a šrouby](./media/apache-storm-develop-java-topology/wordcount-topology.png)
 
-Pokud chcete implementovat topologii, zadejte příkaz níže vytvořte a otevřete nový soubor `WordCountTopology.java`:
+Chcete-li implementovat topologii, zadejte následující příkaz pro vytvoření a otevření nového souboru `WordCountTopology.java`:
 
 ```cmd
 notepad src\main\java\com\microsoft\example\WordCountTopology.java
 ```
 
-Zkopírujte a vložte níže uvedený kód java do nového souboru.  Zavřete soubor.
+Pak zkopírujte a vložte kód Java níže do nového souboru.  Pak soubor zavřete.
 
 ```java
 package com.microsoft.example;
@@ -559,15 +559,15 @@ public class WordCountTopology {
 }
 ```
 
-### <a name="configure-logging"></a>Konfigurace protokolování
+### <a name="configure-logging"></a>Konfigurovat protokolování
 
-Storm používá [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) k protokolování informací. Pokud neprovedete konfiguraci protokolování, topologii vysílá diagnostické informace. Pokud chcete řídit, co se do protokolu zapíše, vytvořte soubor s názvem `log4j2.xml` v `resources` adresáře tak, že zadáte následující příkaz:
+K protokolování informací používá protokol [Apache log4j 2](https://logging.apache.org/log4j/2.x/) . Pokud protokolování nenakonfigurujete, vygeneruje tato topologie diagnostické informace. Chcete-li řídit, co je zaznamenáno, `log4j2.xml` vytvořte soubor `resources` s názvem v adresáři zadáním následujícího příkazu:
 
 ```cmd
 notepad resources\log4j2.xml
 ```
 
-Zkopírujte a vložte níže uvedený text XML do nového souboru.  Zavřete soubor.
+Potom zkopírujte a vložte text XML níže do nového souboru.  Pak soubor zavřete.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -588,24 +588,24 @@ Zkopírujte a vložte níže uvedený text XML do nového souboru.  Zavřete sou
 </Configuration>
 ```
 
-Tato konfigurace XML nakonfiguruje pro nový protokolovací nástroj `com.microsoft.example` třídu, která obsahuje součásti v tomto příkladu topologie. Pro tento protokolovač, kterými zachycuje všechny informace o protokolování, protože ho vygeneroval komponenty v této topologii je nastavena úroveň trasování.
+Tento kód XML nakonfiguruje nový protokolovací nástroj `com.microsoft.example` pro třídu, která obsahuje komponenty v této ukázkové topologii. Úroveň je nastavená na trasování pro tento protokolovací nástroj, který zachycuje všechny informace o protokolování vydávané součástmi v této topologii.
 
-`<Root level="error">` Části nakonfiguruje kořenové úrovni protokolování (vše, co není v `com.microsoft.example`) se protokolovat jenom informace o chybě.
+V `<Root level="error">` části se konfiguruje kořenová úroveň protokolování (vše není v `com.microsoft.example`), aby se zaprotokoloval jenom informace o chybě.
 
-Další informace o konfiguraci protokolování pro Log4j 2 najdete v tématu [ https://logging.apache.org/log4j/2.x/manual/configuration.html ](https://logging.apache.org/log4j/2.x/manual/configuration.html).
+Další informace o konfiguraci protokolování pro log4j 2 najdete v tématu [https://logging.apache.org/log4j/2.x/manual/configuration.html](https://logging.apache.org/log4j/2.x/manual/configuration.html).
 
 > [!NOTE]  
-> Storm verzi 0.10.0 a vyšší využití Log4j 2.x. Používat starší verzí storm Log4j 1.x, který používá jiný formát pro konfiguraci protokolu. Informace o konfiguraci starší, naleznete v tématu [ https://wiki.apache.org/logging-log4j/Log4jXmlFormat ](https://wiki.apache.org/logging-log4j/Log4jXmlFormat).
+> Ne0.10.0 verze a vyšší použití log4j 2. x. Starší verze systému log4j používaly 1. x, které používaly jiný formát pro konfiguraci protokolu. Informace o starší konfiguraci najdete v tématu [https://wiki.apache.org/logging-log4j/Log4jXmlFormat](https://wiki.apache.org/logging-log4j/Log4jXmlFormat).
 
-## <a name="test-the-topology-locally"></a>Testovací topologie místně
+## <a name="test-the-topology-locally"></a>Místní otestování topologie
 
-Po uložení souboru použijte následující příkaz k otestování topologie místně.
+Po uložení souborů použijte následující příkaz k otestování topologie místně.
 
 ```cmd
 mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
 ```
 
-Za běhu, topologie zobrazuje informace pro spuštění. Následující text je příklad výstupu počet slov:
+Při spuštění topologie zobrazí informace o spuštění. Následující text je příkladem výstupu počtu slov:
 
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
@@ -615,34 +615,34 @@ Za běhu, topologie zobrazuje informace pro spuštění. Následující text je 
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-Tento příklad protokol označuje, že slovo "a" bylo aktivováno 113 časy. Počet dál jít nahoru tak dlouho, dokud topologie pracuje, protože spout průběžně vydá stejnou věty.
+Tento ukázkový protokol indikuje, že slovo a bylo vygenerováno 113 krát. Počet pokračuje v provozu, dokud se topologie spustí, protože Spout průběžně generuje stejné věty.
 
-Mezi emisí slov a počty je interval 5 sekund. **WordCount** součást je nakonfigurovaná pouze generovat informace po přijetí odškrtávání řazených kolekcí členů. Požaduje této značky, které řazených kolekcí členů se doručí jenom každých pět sekund.
+Mezi emisemi slov a počtů je interval 5 sekund. Komponenta **WORDCOUNT** je nakonfigurována tak, aby vygenerovala pouze informace, když dorazí do řazené kolekce členů. Vyžádá, aby se řazené kolekce členů prodávaly jenom každých pět sekund.
 
-## <a name="convert-the-topology-to-flux"></a>Převést na topologii na tok
+## <a name="convert-the-topology-to-flux"></a>Převod topologie na tok
 
-[Tok](https://storm.apache.org/releases/2.0.0/flux.html) je nový rámec dostupná se Stormem 0.10.0 a vyšší, který umožňuje oddělit konfiguraci z implementace. Vaše komponenty jsou stále definována v Javě, ale topologii je definováno pomocí souboru YAML. Můžete balíček výchozí definici topologie s projektem, nebo použijte samostatný soubor při odesílání topologie. Při odesílání topologie do Storm, můžete použít proměnné prostředí nebo konfigurační soubory k naplnění hodnot v definici topologie YAML.
+[Tok](https://storm.apache.org/releases/2.0.0/flux.html) je nová architektura dostupná s využitím 0.10.0 a vyšší, která umožňuje oddělit konfiguraci od implementace. Vaše komponenty jsou pořád definované v jazyce Java, ale topologie je definovaná pomocí souboru YAML. Můžete zabalit výchozí definici topologie s vaším projektem nebo při odesílání topologie použít samostatný soubor. Při odesílání topologie do prostředí můžete pomocí proměnných prostředí nebo konfiguračních souborů naplnit hodnoty v definici topologie YAML.
 
-Soubor YAML definuje součásti, které budou používat pro topologii a data tok mezi nimi. Soubor YAML můžete zahrnout jako součást na soubor jar nebo můžete použít externí soubor YAML.
+Soubor YAML definuje komponenty, které se mají použít pro topologii a tok dat mezi nimi. Soubor YAML můžete zahrnout jako součást souboru jar nebo můžete použít externí soubor YAML.
 
-Další informace o toku, najdete v části [tok framework (https://storm.apache.org/releases/1.0.6/flux.html)](https://storm.apache.org/releases/1.0.6/flux.html).
+Další informace o toku najdete v tématu [tok rozhraní (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html).
 
 > [!WARNING]  
-> Z důvodu [chyb (https://issues.apache.org/jira/browse/STORM-2055) ](https://issues.apache.org/jira/browse/STORM-2055) pomocí Storm 1.0.1, budete muset nainstalovat [Storm vývojové prostředí](https://storm.apache.org/releases/current/Setting-up-development-environment.html) topologie tok spouštět místně.
+> Kvůli [chybě (https://issues.apache.org/jira/browse/STORM-2055) ](https://issues.apache.org/jira/browse/STORM-2055) s využitím systému 1.0.1 se může stát, že budete muset nainstalovat [vývojové prostředí](https://storm.apache.org/releases/current/Setting-up-development-environment.html) s více systémy, aby bylo možné místně spouštět topologie toků.
 
-1. Dříve `WordCountTopology.java` definice topologie, ale není potřeba s tokem. Stejný soubor odstraňte také pomocí následujícího příkazu:
+1. `WordCountTopology.java` Dřív definovala topologii, ale u toku není potřeba. Odstraňte soubor pomocí následujícího příkazu:
 
     ```cmd
     DEL src\main\java\com\microsoft\example\WordCountTopology.java
     ```
 
-2. Zadejte příkaz a vytvořte a otevřete nový soubor `topology.yaml`:
+2. Zadáním následujícího příkazu vytvořte a otevřete nový soubor `topology.yaml`:
 
     ```cmd
     notepad resources\topology.yaml
     ```
 
-    Zkopírujte a vložte níže uvedený text do nového souboru.  Zavřete soubor.
+    Pak zkopírujte a vložte text uvedený níže do nového souboru.  Pak soubor zavřete.
 
     ```yaml
     name: "wordcount"       # friendly name for the topology
@@ -681,13 +681,13 @@ Další informace o toku, najdete v části [tok framework (https://storm.apache
         args: ["word"]           # field(s) to group on
     ```
 
-3. Zadejte následující příkaz pro otevření `pom.xml` na panelu je popsáno níže:
+3. Zadejte následující příkaz, který se `pom.xml` otevře, aby byly popsané revize uvedené níže:
 
     ```cmd
     notepad pom.xml
     ```
 
-   * Přidejte následující novou závislost `<dependencies>` části:
+   * Do `<dependencies>` oddílu přidejte následující novou závislost:
 
         ```xml
         <!-- Add a dependency on the Flux framework -->
@@ -698,7 +698,7 @@ Další informace o toku, najdete v části [tok framework (https://storm.apache
         </dependency>
         ```
 
-   * Přidejte následující modul plug-in, který `<plugins>` oddílu. Tento modul plug-in zpracovává vytvořit balíček (soubor jar) pro projekt a platí některé transformace, které jsou specifické pro tok při vytváření balíčku.
+   * Do `<plugins>` oddílu přidejte následující modul plug-in. Tento modul plug-in zpracovává vytvoření balíčku (souboru jar) pro projekt a při vytváření balíčku aplikuje některé transformace specifické pro tok.
 
         ```xml
         <!-- build an uber jar -->
@@ -739,35 +739,35 @@ Další informace o toku, najdete v části [tok framework (https://storm.apache
         </plugin>
         ```
 
-   * V **plug-in maven exec** `<configuration>` oddíl, změňte hodnotu `<mainClass>` z `${storm.topology}` k `org.apache.storm.flux.Flux`. Toto nastavení umožňuje tok pro zpracování místně spuštěná topologie ve vývoji.
+   * V části **exec-Maven-plugin** `<configuration>` změňte hodnotu pro `<mainClass>` z `${storm.topology}` na `org.apache.storm.flux.Flux`. Toto nastavení umožňuje, aby tok zpracovával místně probíhající topologii.
 
-   * V `<resources>` části, přidejte následující text do `<includes>`. Tato konfigurace XML obsahuje soubor YAML, který definuje topologii jako součást projektu.
+   * V části přidejte následující do `<includes>`. `<resources>` Tento kód XML obsahuje soubor YAML, který definuje topologii v rámci projektu.
 
         ```xml
         <include>topology.yaml</include>
         ```
 
-## <a name="test-the-flux-topology-locally"></a>Otestovat tok topologie místně
+## <a name="test-the-flux-topology-locally"></a>Místní testování topologie toků
 
-1. Zadejte následující příkaz, který zkompilovat a spustit topologii tok pomocí nástroje Maven:
+1. Zadejte následující příkaz pro zkompilování a spuštění topologie toků pomocí Maven:
 
     ```cmd
     mvn compile exec:java -Dexec.args="--local -R /topology.yaml"
     ```
 
     > [!WARNING]  
-    > Pokud vaše topologie používá Storm 1.0.1 bits, tento příkaz se nezdaří. Tato chyba je způsobená [ https://issues.apache.org/jira/browse/STORM-2055 ](https://issues.apache.org/jira/browse/STORM-2055). Místo toho [nainstalovat Storm ve vašem vývojovém prostředí](https://storm.apache.org/releases/current/Setting-up-development-environment.html) a pomocí následujících kroků:
+    > Pokud vaše topologie používá 1.0.1 bitů, tento příkaz se nezdařil. Tato chyba je způsobena [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055)nástrojem. Místo toho [nainstalujte do vývojového prostředí](https://storm.apache.org/releases/current/Setting-up-development-environment.html) vše a použijte následující postup:
     >
-    > Pokud máte [Storm nainstalovaný ve vašem vývojovém prostředí](https://storm.apache.org/releases/current/Setting-up-development-environment.html), můžete místo toho použijte následující příkazy:
+    > Pokud máte [ve svém vývojovém prostředí nainstalovanou](https://storm.apache.org/releases/current/Setting-up-development-environment.html)práci, můžete místo toho použít následující příkazy:
     >
     > ```cmd
     > mvn compile package
     > storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /topology.yaml
     > ```
 
-    `--local` Parametr spustí topologie v místním režimu ve svém vývojovém prostředí. `-R /topology.yaml` Používá parametr `topology.yaml` souboru prostředků ze souboru jar definovat topologii.
+    `--local` Parametr spustí topologii v místním režimu ve vývojovém prostředí. `-R /topology.yaml` Parametr`topology.yaml` používá soubor prostředků ze souboru jar k definování topologie.
 
-    Za běhu, topologie zobrazuje informace pro spuštění. Následující text je příklad výstupu:
+    Při spuštění topologie zobrazí informace o spuštění. Následující text je příklad výstupu:
 
         17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
         17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
@@ -776,17 +776,17 @@ Další informace o toku, najdete v části [tok framework (https://storm.apache
         17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 113 for word and
         17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
 
-    Dochází ke zpoždění 10 sekundách mezi listy zaznamenané informace.
+    Mezi dávkami protokolovaných informací je prodleva o délce 10 sekund.
 
-2. Vytvořte novou topologii yaml z projektu.
+2. Vytvoří novou topologii YAML z projektu.
  
-    a. Zadejte následující příkaz pro otevření `topology.xml`:
+    a. Zadejte následující příkaz, který chcete `topology.xml`otevřít:
 
     ```cmd
     notepad resources\topology.yaml
     ```
 
-    b. Následující části a změňte hodnotu vlastnosti `10` k `5`. Tato změna změní interval mezi generování dávky počty slov z 10 sekund až 5.  
+    b. Vyhledejte následující část a změňte hodnotu `10` na. `5` Tato změna změní interval mezi vygenerováním dávek slov od 10 sekund do 5.  
 
     ```yaml
     - id: "counter-bolt"
@@ -804,32 +804,32 @@ Další informace o toku, najdete v části [tok framework (https://storm.apache
     mvn exec:java -Dexec.args="--local resources/newtopology.yaml"
     ```
 
-    Nebo, pokud máte ve svém vývojovém prostředí Storm:
+    Nebo, pokud máte ve svém vývojovém prostředí vše:
 
     ```cmd
     storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local resources/newtopology.yaml
     ```
 
-     Tento příkaz používá `newtopology.yaml` jako definice topologie. Protože jsme nezahrnuli `compile` parametr Maven používá verzi projekt vytvořený v předchozích krocích.
+     Tento příkaz používá `newtopology.yaml` jako definici topologie. Vzhledem k `compile` tomu, že jsme parametr nezahrnuli, používá Maven verzi projektu sestavené v předchozích krocích.
 
-    Jakmile se spustí na topologii, měli byste zaznamenat, čas mezi emitovaný dávky se změnila tak, aby odrážely hodnotu v `newtopology.yaml`. Abyste viděli, že můžete změnit konfiguraci prostřednictvím souboru YAML bez nutnosti znovu kompilovat topologie.
+    Po spuštění topologie byste si měli všimnout, že se změnil čas mezi vygenerovanými dávkami tak, aby odrážel `newtopology.yaml`hodnotu v. Takže vidíte, že můžete změnit konfiguraci prostřednictvím souboru YAML, aniž byste museli znovu kompilovat topologii.
 
-Další informace o těchto a dalších funkcích rozhraní tok, najdete v části [tok (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html).
+Další informace o těchto a dalších funkcích rozhraní toků najdete v tématu [tok (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html).
 
 ## <a name="trident"></a>Trident
 
-[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) je vysokou úroveň abstrakce, která je poskytována Storm. Podporuje stavové zpracování. Hlavní výhodou Trident je, že může zaručit, že všechny zprávy, která vstupuje do topologie se zpracuje pouze jednou. Bez použití Trident, topologii pouze zaručit, že zprávy se zpracuje alespoň jednou. Existují také další rozdíly, jako je integrované součásti, které je možné použít místo vytváření boltů. Ve skutečnosti funkce bolts jsou nahrazené méně obecný komponenty, například funkcí, projekce a filtry.
+[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) je abstrakce na vysoké úrovni, která je poskytována pomocí průchozího. Podporuje stavové zpracování. Primární výhodou Trident je, že může zaručit, že se každá zpráva, která vstoupí do topologie, zpracovává jenom jednou. Bez použití Trident může vaše topologie zaručit, že se zprávy zpracovávají aspoň jednou. K dispozici jsou také jiné rozdíly, například integrované komponenty, které lze použít místo vytvoření šrouby. Ve skutečnosti jsou šrouby nahrazeny méně obecnými součástmi, jako jsou filtry, projekce a funkce.
 
-Trident aplikací můžete vytvořit pomocí projektů Maven. Použijte stejný základní postup uvedenou výše v tomto článku – pouze pro kód se liší. Trident také (aktuálně) nejde v rámci toku.
+Aplikace Trident lze vytvořit pomocí projektů Maven. Použijete stejný základní postup, jak je uvedeno výše v tomto článku – pouze kód je jiný. Trident také nelze (aktuálně) použít s rozhraním toků.
 
-Další informace o Trident naleznete v tématu [přehled rozhraní API Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html).
+Další informace o Trident naleznete v tématu [Přehled rozhraní Trident API](https://storm.apache.org/releases/current/Trident-API-Overview.html).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jste se naučili, jak vytvořit Apache Storm topologii s použitím jazyka Java. Teď zjistěte, jak:
+Zjistili jste, jak vytvořit topologii Apache Storm pomocí jazyka Java. Teď se dozvíte, jak:
 
-* [Nasazení a správa topologií Apache Storm v HDInsight](apache-storm-deploy-monitor-topology-linux.md)
+* [Nasazení a Správa topologií Apache Storm v HDInsight](apache-storm-deploy-monitor-topology-linux.md)
 
-* [Vývoj topologií C# pro Apache Storm v HDInsight pomocí sady Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
+* [Vývoj C# topologií pro Apache Storm v HDInsight pomocí sady Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
 
-Příklad lze najít další topologií Apache Storm návštěvou [příklad topologií pro Apache Storm v HDInsight](apache-storm-example-topology.md).
+Další příklady Apache Storm topologií najdete [v tématu Příklady topologií pro Apache Storm v HDInsight](apache-storm-example-topology.md).

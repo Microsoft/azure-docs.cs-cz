@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7356541ed6288603a66d5caa43138284d8d4d918
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1609931cd5fcab0977ff64f680fbb1f253f3caaf
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320473"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782177"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Durable Functions 2,0 Preview (Azure Functions)
 
@@ -167,7 +167,7 @@ Návrh odolných entit je silně ovlivněn modelem objektu [actor](https://en.wi
 
 Existují však některé důležité rozdíly, které je třeba zaznamenat:
 
-* Odolné entity mají *přednost* před *latencí*, a proto nemusí být vhodná pro aplikace s přísnými požadavky na latenci.
+* Odolné entity mají přednost před *latencí*, a proto nemusí být vhodná pro aplikace s přísnými požadavky na latenci.
 * Zprávy odesílané mezi entitami jsou spolehlivě doručovány a v daném pořadí.
 * Odolné entity lze použít ve spojení s trvalými orchestrací a mohou sloužit jako distribuované zámky, které jsou popsány dále v tomto článku.
 * Vzory požadavků a odpovědí v entitách jsou omezené na orchestrace. Pro komunikaci mezi entitami se povolují pouze jednosměrné zprávy (označované také jako "signalizace"), stejně jako v původním modelu actor. Toto chování brání distribuovaným zablokování.
@@ -242,6 +242,16 @@ public static async Task AddValueClient(
 ```
 
 V předchozím příkladu `proxy` je parametr dynamicky generovanou `ICounter`instancí, která interně `Add` překládá volání do do `SignalEntityAsync`ekvivalentního (netypového) volání.
+
+Parametr `SignalEntityAsync<T>` typu má následující omezení:
+
+* Parametr typu musí být rozhraní.
+* V rozhraní lze definovat pouze metody. Vlastnosti nejsou podporovány.
+* Každá metoda musí definovat buď jeden, nebo žádný parametr.
+* Každá metoda musí vracet buď `void`, `Task`nebo `Task<T>` , kde `T` je nějaký typ, který je serializován jako JSON.
+* Rozhraní musí být implementováno právě jedním typem v rámci sestavení rozhraní.
+
+Ve většině případů rozhraní, která nesplňují tyto požadavky, způsobí výjimku za běhu.
 
 > [!NOTE]
 > Je důležité si uvědomit, že `ReadEntityStateAsync` metody `IDurableOrchestrationClient` a `SignalEntityAsync` upřednostnit výkon nad konzistencí. `ReadEntityStateAsync`může vracet zastaralou hodnotu a `SignalEntityAsync` může vracet před dokončením operace.

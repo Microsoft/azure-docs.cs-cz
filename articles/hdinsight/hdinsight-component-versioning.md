@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: a9de7c75ef2bd29b2e401ba387ca16a5dfda34fb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 30eb922e17810ddd53166a702b5fc513684f2140
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68442046"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742382"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jaké jsou součásti Apache Hadoop a verze, které jsou k dispozici v HDInsight?
 
@@ -84,11 +84,11 @@ V následující tabulce jsou uvedeny verze HDInsight, které jsou k dispozici v
 
 ### <a name="retired-versions"></a>Vyřazené verze
 
-V následující tabulce jsou uvedeny verze HDInsight, které nejsou k **dispozici v** Azure Portal.
+V následující tabulce jsou uvedeny verze HDInsight, které nejsou k dispozici v Azure Portal.
 
 | Verze HDInsight | Verze HDP | OPERAČNÍ SYSTÉM VIRTUÁLNÍHO POČÍTAČE | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |  Dostupnost na Azure Portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 <br> (Jiné než Sparkové) |HDP 2,5 |Ubuntu 16.0.4 LTS |30. září 2016 |5\. září 2017 |28. června 2018 |Ano |Ne |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30. září 2016 |5\. září 2017 |28. června 2018 |Ano |Ne |
 | HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29. března 2016 |29. prosince 2016 |9\. ledna 2018 |Ano |Ne |
 | HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2\. prosince 2015 |27. června 2016 |31. července 2018 |Ano |Ne |
 | HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2\. prosince 2015 |27. června 2016 |31. července 2017 |Ano |Ne |

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9d19441b2f2202573086a711c202d4b36bbee5fa
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: b1fa24f919888e4454096e1ef84d2ba2948b865a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846152"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774293"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Jak zřídit virtuální počítač s Windows SQL Server v Azure Portal
 
@@ -77,7 +77,7 @@ Pro konfiguraci virtuálního počítače s SQL Server je k dispozici několik k
 | **Nastavení SQL Serveru** |[Konfigurace nastavení SQL Serveru](#3-configure-sql-server-settings) |
 | **Zkontrolovat a vytvořit** | [Kontrola souhrnných informací](#4-review--create) |
 
-## <a name="1-configure-basic-settings"></a>1. Konfigurace základního nastavení
+## <a name="1-configure-basic-settings"></a>1. Konfigurace základních nastavení
 
 
 Na kartě **základy** zadejte následující informace:
@@ -98,7 +98,7 @@ Na kartě **základy** zadejte následující informace:
     1. V seznamu **Obrázek** vyberte _bezplatný SQL Server licence: SQL Server 2017 Developer v systému Windows Server_2016.  
     1. Zvolte, chcete-li **změnit velikost** pro **Velikost** virtuálního počítače, a vyberte položku **základní nabídka a2** . Abyste zabránili neočekávaným poplatkům, nezapomeňte prostředky vyčistit. Doporučené velikosti a konfiguraci počítačů pro produkční úlohy najdete v tématu [Osvědčené postupy z hlediska výkonu pro SQL Server na virtuálních počítačích Azure](virtual-machines-windows-sql-performance.md).
 
-    ![Podrobnosti instance](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
+    ![Podrobnosti o instancích](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
 > Odhadované měsíční náklady zobrazené v okně **Zvolit velikost** nezahrnují náklady na licencování SQL Serveru. Tento odhad je náklady na samotný virtuální počítač. V edicích Express a Developer pro SQL Server je toto odhadované celkové odhadované náklady. Pro ostatní edice se podívejte na [stránku s cenami pro virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) a vyberte cílovou edici vašeho SQL Serveru. Podívejte se také na [doprovodné materiály k cenám pro](virtual-machines-windows-sql-server-pricing-guidance.md) virtuální počítače s SQL Server a [velikosti virtuálních počítačů](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)Azure.
@@ -109,10 +109,10 @@ Na kartě **základy** zadejte následující informace:
 
 * V části **pravidla portů pro příchozí spojení**zvolte **Povolit vybrané porty** a v rozevíracím seznamu vyberte **RDP (3389)** . 
 
-   ![Pravidla portů pro příchozí provoz](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
+   ![Pravidla portů pro příchozí spojení](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
 
-## <a name="2-configure-optional-features"></a>2. Konfigurace volitelných funkcí
+## <a name="2-configure-optional-features"></a>2. Nakonfigurujte volitelné funkce
 
 ### <a name="disks"></a>Disky
 
@@ -133,7 +133,7 @@ Na kartě **síť** nakonfigurujte možnosti sítě.
 
 * Vytvořte novou **virtuální síť**nebo pro virtuální počítač SQL Server použijte existující virtuální síť. Určete také **podsíť** . 
 
-* V části **Skupina zabezpečení nic**vyberte buď základní skupinu zabezpečení, nebo pokročilou skupinu zabezpečení. Výběrem možnosti základní můžete vybrat vstupní porty pro virtuální počítač SQL Server (stejné hodnoty, které byly nakonfigurované na kartě **základní** ). Výběrem možnosti Upřesnit můžete vybrat existující skupinu zabezpečení sítě nebo vytvořit novou. 
+* V části **Skupina zabezpečení sítě síťové karty**vyberte buď základní skupinu zabezpečení, nebo skupinu rozšířených zabezpečení. Výběrem možnosti základní můžete vybrat vstupní porty pro virtuální počítač SQL Server (stejné hodnoty, které byly nakonfigurované na kartě **základní** ). Výběrem možnosti Upřesnit můžete vybrat existující skupinu zabezpečení sítě nebo vytvořit novou. 
 
 * Můžete provést další změny v nastavení sítě nebo ponechat výchozí hodnoty.
 
@@ -143,7 +143,7 @@ Na kartě **síť** nakonfigurujte možnosti sítě.
 
 Na kartě **monitorování** nakonfigurujte monitorování a automatické vypnutí. 
 
-* Azure ve výchozím nastavení umožňuje **Spustit monitorování** se stejným účtem úložiště, který je určený pro virtuální počítač. Tato nastavení můžete změnit tady a zároveň povolit **diagnostiku hosta operačního systému**. 
+* Azure povolí **diagnostiku spouštění** ve výchozím nastavení se stejným účtem úložiště, který je určený pro virtuální počítač. Tato nastavení můžete změnit tady a zároveň povolit **diagnostiku hosta operačního systému**. 
 * Na této kartě můžete také povolit **spravovanou identitu přiřazenou systémem** a automatické vypínání. 
 
 ![Nastavení správy virtuálních počítačů SQL](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)
@@ -158,7 +158,7 @@ Na kartě **nastavení SQL Server** nakonfigurujte konkrétní nastavení a opti
 | Nastavení |
 | --- |
 | [Připojení](#connectivity) |
-| [Ověřování](#authentication) |
+| [Autentizace](#authentication) |
 | [Integrace se službou Azure Key Vault](#azure-key-vault-integration) |
 | [Konfigurace úložiště](#storage-configuration) |
 | [Automatizované opravy](#automated-patching) |
@@ -238,7 +238,7 @@ V části **Optimalizace úložiště** vyberte jednu z následujících možnos
 
 ![Konfigurace úložiště virtuálních počítačů SQL](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-storage-configuration.png)
 
-### <a name="sql-server-license"></a>SQL Server licence
+### <a name="sql-server-license"></a>Licence SQL Serveru
 Pokud jste zákazníkem programu Software Assurance, můžete využít [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) k převedení vlastní SQL Server licence a uložení na prostředky. 
 
 ![Licence k virtuálnímu počítači SQL](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-license.png)

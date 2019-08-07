@@ -1,5 +1,5 @@
 ---
-title: Odesílání a příjem událostí pomocí .NET Core – Azure Event Hubs | Dokumentace Microsoftu
+title: Posílání a přijímání událostí pomocí .NET Core – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje návod pro vytvoření aplikace .NET Core, která zasílá události do služby Azure Event Hubs.
 services: event-hubs
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 001abd15c88ae717fa0fb91605b2f0822a38973d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 736612398861cc7a168fd24e83bc28e3815a8a28
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65603539"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742153"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core"></a>Odesílání událostí do nebo přijímat události z Azure Event Hubs pomocí .NET Core
+# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core"></a>Odesílání událostí do nebo příjem událostí z Azure Event Hubs pomocí .NET Core
 Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Data, která shromáždíte pomocí služby Event Hubs, můžete uložit pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele datové analýzy v reálném čase. Schopnost shromažďovat a zpracovávat velké množství událostí je klíčovou komponentou moderních aplikačních architektur, například internetu věcí (Internet of Things – IoT). Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
-Tento kurz ukazuje, jak vytvářet aplikace .NET Core v C# k odesílání událostí do nebo přijímat události z centra událostí. 
+V tomto kurzu se dozvíte, jak vytvářet aplikace C# .NET Core v pro odesílání událostí nebo přijímání událostí z centra událostí. 
 
 > [!NOTE]
 > Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender), nahradit řetězce `EventHubConnectionString` a `EventHubName`, hodnotami pro vaše centrum událostí a spustit. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
@@ -34,10 +34,10 @@ Tento kurz ukazuje, jak vytvářet aplikace .NET Core v C# k odesílání událo
 
 - [Microsoft Visual Studio 2019](https://www.visualstudio.com).
 - [Nástroje .NET Core pro sadu Visual Studio 2015 nebo 2017](https://www.microsoft.com/net/core). 
-- **Vytvořit obor názvů služby Event Hubs a centra událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md). Potom získejte **připojovací řetězec pro obor názvů centra událostí** podle pokynů v článku: [Získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto kurzu.
+- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů centra událostí** podle pokynů uvedených v článku: [Získá připojovací řetězec](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto kurzu.
 
 ## <a name="send-events"></a>Odesílání událostí 
-V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro odeslání události do centra událostí. 
+V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro odesílání událostí do centra událostí. 
 
 ### <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
@@ -97,7 +97,7 @@ Přidat [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Microsoft
 4. Do třídy `Program` přidejte následujícím způsobem novou metodu `SendMessagesToEventHub`:
 
     ```csharp
-    // Creates an event hub client and sends 100 messages to the event hub.
+    // Uses the event hub client to send 100 messages to the event hub.
     private static async Task SendMessagesToEventHub(int numMessagesToSend)
     {
         for (var i = 0; i < numMessagesToSend; i++)
@@ -167,7 +167,7 @@ Přidat [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Microsoft
                 Console.ReadLine();
             }
 
-            // Creates an event hub client and sends 100 messages to the event hub.
+            // Uses the event hub client to send 100 messages to the event hub.
             private static async Task SendMessagesToEventHub(int numMessagesToSend)
             {
                 for (var i = 0; i < numMessagesToSend; i++)
@@ -195,7 +195,7 @@ Přidat [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Microsoft
 6. Spusťte program a zkontrolujte, že nejsou žádné chyby.
 
 ## <a name="receive-events"></a>Příjem událostí
-Tato část ukazuje, jak psát aplikace konzoly .NET Core, která přijímá zprávy z centra událostí pomocí [Event Processor Host](event-hubs-event-processor-host.md). [Event Processor Host](event-hubs-event-processor-host.md) je třída rozhraní .NET, která zjednodušuje přijímání událostí z center událostí tím, že spravuje trvalé kontrolní body a paralelní příjmy z těchto center událostí. Pomocí třídy Event Processor Host můžete události rozdělit mezi několik příjemců, i když jsou hostovaní v různých uzlech. Tento příklad ukazuje způsob použití třídy Event Processor Host pro jednoho příjemce.
+V této části se dozvíte, jak napsat konzolovou aplikaci .NET Core, která přijímá zprávy z centra událostí pomocí třídy [Event Processor Host](event-hubs-event-processor-host.md). [Event Processor Host](event-hubs-event-processor-host.md) je třída rozhraní .NET, která zjednodušuje přijímání událostí z center událostí tím, že spravuje trvalé kontrolní body a paralelní příjmy z těchto center událostí. Pomocí třídy Event Processor Host můžete události rozdělit mezi několik příjemců, i když jsou hostovaní v různých uzlech. Tento příklad ukazuje způsob použití třídy Event Processor Host pro jednoho příjemce.
 > [!NOTE]
 > Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver), nahradit řetězce `EventHubConnectionString`, `EventHubName`, `StorageAccountName`, `StorageAccountKey` a `StorageContainerName` hodnotami pro vaše centrum událostí a spustit. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
 
@@ -365,10 +365,10 @@ Pomocí následujícího postupu do svého projektu přidejte balíčky NuGet kn
 
 
 ## <a name="next-steps"></a>Další postup
-V následujících článcích:
+Přečtěte si následující články:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Funkce a terminologii používané v Azure Event Hubs](event-hubs-features.md)
+- [Funkce a terminologie ve službě Azure Event Hubs](event-hubs-features.md)
 - [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 
 

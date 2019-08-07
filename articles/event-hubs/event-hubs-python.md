@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: f86dc92b4df45119930970acfe9e173f32f894fb
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 0960862da9e65cff4d957e97a7488dc7a245651a
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356048"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742123"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Jak z aplikace v Pythonu pomocí služby Azure Event Hubs
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Další informace najdete v tématu [Úvod do služby Event Hubs](event-hubs-what-is-event-hubs.md). 
@@ -162,7 +162,7 @@ startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
 Úplný kurz o tom, jak číst zachycená data Event Hubs ve službě Azure blob storage z aplikace napsané v Pythonu, najdete v tématu [v tomto článku](event-hubs-capture-python.md)
 
 ## <a name="github-samples"></a>Ukázky Githubu
-Můžete najít další ukázky Pythonu v [úložiště Git azure event hubs python](https://github.com/Azure/azure-event-hubs-python/).
+Můžete najít další ukázky Pythonu v [úložiště Git azure event hubs python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs).
 
 ## <a name="next-steps"></a>Další postup
 Přečtěte si články v části koncepty, počínaje [přehledu funkcí Event Hubs](event-hubs-features.md).

@@ -11,19 +11,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3daf44ee29a2f7b29eec9215876ca6edc18a5800
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 59a2cc971fbc1df967bc2655c672ab8f419eef71
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325047"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835516"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postup: Migrace ze služby Azure Access Control Service
 
@@ -60,7 +60,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 Veškerá komunikace s operacemi služby STS a správou se provádí na této adrese URL. Pro různé účely můžete použít různé cesty. Pokud chcete zjistit, jestli vaše aplikace nebo služby používají Access Control, Sledujte jakýkoliv provoz do&lt;oboru&gt;názvů https://. AccessControl.Windows.NET. Veškerý provoz na tuto adresu URL se zpracovává pomocí Access Control a musí být vyřazený. 
 
-Výjimkou je jakýkoli provoz na `https://accounts.accesscontrol.windows.net`. Provoz na tuto adresu URL již zpracovává jiná **služba a** neovlivňuje Access Control vyřazení. 
+Výjimkou je jakýkoli provoz na `https://accounts.accesscontrol.windows.net`. Provoz na tuto adresu URL již zpracovává jiná služba a neovlivňuje Access Control vyřazení. 
 
 Další informace o Access Control najdete v článku [Access Control Service 2,0 (archivováno)](https://msdn.microsoft.com/library/hh147631.aspx).
 
@@ -205,7 +205,7 @@ Pokud uživatelům umožníte, aby se přihlásili *jenom s pracovními nebo šk
 | WS-Trust | Podporováno | Nepodporuje se |
 | **Formáty tokenů** | | |
 | JWT | Podporováno ve verzi beta | Podporováno |
-| SAML 1,1 | Podporováno | Náhled |
+| SAML 1.1 | Podporováno | Náhled |
 | SAML 2.0 | Podporováno | Podporováno |
 | SWT | Podporováno | Nepodporuje se |
 | **Přizpůsobení** | | |
@@ -256,7 +256,7 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 | WS-Trust | Podporováno | Nepodporuje se |
 | **Formáty tokenů** | | |
 | JWT | Podporováno ve verzi beta | Podporováno |
-| SAML 1,1 | Podporováno | Nepodporuje se |
+| SAML 1.1 | Podporováno | Nepodporuje se |
 | SAML 2.0 | Podporováno | Nepodporuje se |
 | SWT | Podporováno | Nepodporuje se |
 | **Přizpůsobení** | | |

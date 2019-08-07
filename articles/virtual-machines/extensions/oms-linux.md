@@ -1,5 +1,5 @@
 ---
-title: Rozšíření virtuálního počítače Azure Monitor pro Linux | Dokumentace Microsoftu
+title: Azure Monitor rozšíření virtuálního počítače pro Linux | Microsoft Docs
 description: Nasaďte agenta Log Analytics na virtuální počítač s Linuxem pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 08/06/2019
 ms.author: roiyz
-ms.openlocfilehash: 7d8192a3b6ff732481a4d48f6e188b4bb3989cda
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a0c4b6333cc8348959a679a81343f2479078694b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705935"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828156"
 ---
-# <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače Azure Monitor pro Linux
+# <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Azure Monitor rozšíření virtuálního počítače pro Linux
 
 ## <a name="overview"></a>Přehled
 
-Protokoly Azure monitoru poskytuje možnosti nápravy monitorování, výstrahy a oznámení v rámci cloudových a místních prostředků. Rozšíření virtuálního počítače agenta Log Analytics pro Linux je publikována a podporované společností Microsoft. Rozšíření nainstaluje agenta Log Analytics ve službě Azure virtual machines a zaregistruje virtuální počítače do existujícího pracovního prostoru Log Analytics. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření virtuálního počítače Azure Monitor pro Linux.
+Protokoly Azure Monitor poskytují možnosti monitorování, upozorňování a nápravy výstrah napříč cloudem a místními prostředky. Rozšíření virtuálního počítače agenta Log Analytics pro Linux je publikována a podporované společností Microsoft. Rozšíření nainstaluje agenta Log Analytics ve službě Azure virtual machines a zaregistruje virtuální počítače do existujícího pracovního prostoru Log Analytics. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření Azure Monitor virtuálního počítače pro Linux.
 
 >[!NOTE]
 >Jako součást probíhající přechod z Microsoft Operations Management Suite (OMS) do Azure monitoru Agent OMS pro Windows nebo Linux bude odkazovat jako agenta Log Analytics pro Windows a Log Analytics agenta pro Linux.
@@ -37,43 +37,14 @@ Protokoly Azure monitoru poskytuje možnosti nápravy monitorování, výstrahy 
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření agenta Log Analytics je možné spouštět proti těmto Linuxových distribucí.
-
-| Distribuce | Verze |
-|---|---|
-| CentOS Linux | 6 (x86/x64) a 7 (x 64) |
-| Amazon Linux | 2017.09 (x64) | 
-| Oracle Linux | 6 a 7 (x86/x64) |
-| Red Hat Enterprise Linux Server | 6 (x86/x64) a 7 (x 64) |
-| Debian GNU/Linux | 8 a 9 (x86/x64) |
-| Ubuntu | 14.04 18.04 LTS (x64), LTS (x86/x64) a 16.04 LTS (x86/x64) |
-| SUSE Linux Enterprise Server | 12 (x 64) a 15 (x 64) |
-
->[!NOTE]
->OpenSSL nižší než verze 1.x se nepodporuje na libovolné platformě a verze 1.10 je podporován pouze na platformách x86_64 (64 bitů).  
->
-
-### <a name="agent-prerequisites"></a>Požadavky agenta
-
-Následující tabulka obsahuje balíčky požadované pro podporovaných distribucích systému Linux, který se nainstaluje agenta na.
-
-|Požadovaný balíček |Popis |Minimální verze |
-|-----------------|------------|----------------|
-|Glibc |    Knihovna GNU C | 2.5-12 
-|Openssl    | Knihovny OpenSSL | 1.0.x nebo 1.1.x |
-|Curl | cURL webového klienta | 7.15.5 |
-|Python ctypes | | 
-|PAM | Moduly PAM | | 
-
->[!NOTE]
->Rsyslog nebo syslog-ng je potřeba shromažďovat zprávy syslog. Démon procesu syslog výchozí verze 5 Red Hat Enterprise Linux, CentOS a Oracle Linux verze (sysklog) není podporována pro shromažďování událostí protokolu syslog. Pro shromažďování syslogu z této verze těchto distribucí, by měla být nainstalovaná a nakonfigurovaná pro nahradit sysklog proces démona řešení rsyslog.
+Podrobnosti o podporovaných distribucích systému Linux najdete v článku [přehled log Analyticsho agenta](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) .
 
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače
-Následující tabulka obsahuje mapování verzi rozšíření virtuálního počítače Azure monitoru a sady agenta Log Analytics pro každou vydanou verzí. Odkaz na poznámky k verzi sady agenta Log Analytics je součástí. Poznámky k verzi obsahují informace o opravy a nové funkce, které jsou k dispozici pro daného agenta verze.  
+Následující tabulka poskytuje mapování verze Azure Monitorho rozšíření virtuálního počítače a sady Log Analytics agenta pro každou verzi. Odkaz na poznámky k verzi sady agenta Log Analytics je součástí. Poznámky k verzi obsahují informace o opravy a nové funkce, které jsou k dispozici pro daného agenta verze.  
 
-| Verze rozšíření Azure monitorování virtuálního počítače s Linuxem | Verze sady prostředků log Analytics agenta | 
+| Verze rozšíření virtuálního počítače s Azure Monitor Linux | Verze sady prostředků log Analytics agenta | 
 |--------------------------------|--------------------------|
-| 1.11.9 | [1.11.0-7](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-7) |
+| 1.11.15 | [1.11.0 – 9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
@@ -145,9 +116,9 @@ Následující kód JSON ukazuje schéma pro rozšíření agenta Log Analytics.
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony jsou ideální při nasazování jedné nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení, jako je připojení ke službě Azure Monitor protokoly. Ukázka šablony Resource Manageru, který obsahuje rozšíření virtuálního počítače agenta Log Analytics můžete najít na [Galerie Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
+Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení, jako je připojování k Azure Monitor protokolů. Ukázková Správce prostředků Šablona obsahující rozšíření virtuálního počítače Log Analytics agenta najdete v [galerii rychlý Start Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
-JSON konfigurace pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo objektu umístěn na kořenový server WSUS nebo nejvyšší úrovni šablony JSON Resource Manageru. Umístění konfigurace JSON má vliv na hodnotu názvu prostředku a typů. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources). 
+JSON konfigurace pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo objektu umístěn na kořenový server WSUS nebo nejvyšší úrovni šablony JSON Resource Manageru. Umístění konfigurace JSON má vliv na hodnotu názvu prostředku a typů. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/child-resource-name-type.md). 
 
 V následujícím příkladu se předpokládá, že rozšíření virtuálního počítače je vnořená do prostředku virtuálního počítače. Při vnoření rozšíření prostředků, ve formátu JSON je umístěn v `"resources": []` objekt virtuálního počítače.
 
@@ -209,8 +180,8 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.7 --protected-settings '{"workspaceKey": "omskey"}' \
-  --settings '{"workspaceId": "omsid"}'
+  --version 1.10.1 --protected-settings '{"workspaceKey":"omskey"}' \
+  --settings '{"workspaceId":"omsid"}'
 ```
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
@@ -240,7 +211,7 @@ Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 | 19 | Selhání instalace balíčku (OMI) | 
 | 20 | Selhání instalace balíčku SCX |
 | 51 | Toto rozšíření nepodporuje operační systém Virtuálního počítače | |
-| 55 | Nejde se připojit ke službě Azure Monitor nebo požadované balíčky je uzamčen chybí nebo je dpkg Správce balíčků| Zkontrolujte, že systém má přístup k Internetu nebo že byl poskytnut správný proxy server HTTP. Kromě toho zkontrolujte správnost ID pracovního prostoru a ověřte, zda jsou nainstalované nástroje curl a cíl. |
+| 55 | Nelze se připojit ke službě Azure Monitor nebo chybí požadované balíčky nebo je správce balíčků bázi dpkg uzamčen.| Zkontrolujte, že systém má přístup k Internetu nebo že byl poskytnut správný proxy server HTTP. Kromě toho zkontrolujte správnost ID pracovního prostoru a ověřte, zda jsou nainstalované nástroje curl a cíl. |
 
 Další informace o odstraňování potíží najdete na [Průvodce odstraňováním potíží se Log Analytics agenta pro Linux](../../azure-monitor/platform/vmext-troubleshoot.md).
 

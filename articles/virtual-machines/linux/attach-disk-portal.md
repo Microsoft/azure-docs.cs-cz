@@ -1,6 +1,6 @@
 ---
-title: Připojení datového disku k virtuálnímu počítači s Linuxem | Dokumentace Microsoftu
-description: Připojit nový nebo existující datový disk k virtuálnímu počítači s Linuxem pomocí portálu.
+title: Připojit datový disk k virtuálnímu počítači se systémem Linux | Microsoft Docs
+description: Pomocí portálu připojte nový nebo existující datový disk k virtuálnímu počítači se systémem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -16,71 +16,71 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 162857ed1b22edf67b44cb4648607103cf733c7d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: f4933369f20d7f39cc4718e367552bfe1d7574e8
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671861"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774346"
 ---
-# <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Připojení datového disku k virtuálnímu počítači s Linuxem pomocí portálu 
-Tento článek ukazuje, jak připojit nové i stávající disků pro virtuální počítač s Linuxem na webu Azure portal. Můžete také [připojení datového disku k virtuálnímu počítači s Windows na webu Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+# <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Připojení datového disku k virtuálnímu počítači se systémem Linux pomocí portálu 
+V tomto článku se dozvíte, jak připojit nové i stávající disky k virtuálnímu počítači se systémem Linux prostřednictvím Azure Portal. [Datový disk můžete také připojit k virtuálnímu počítači s Windows v Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Než budete disky připojit k virtuálnímu počítači, přečtěte si tyto typy:
+Než připojíte disky k VIRTUÁLNÍmu počítači, přečtěte si tyto tipy:
 
-* Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Podrobnosti najdete v tématu [velikosti virtuálních počítačů](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Disky připojené k virtuálním počítačům jsou ve skutečnosti soubory .vhd uložené v Azure. Podrobnosti najdete v tématu naše [Úvod do managed disks](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Po připojení disku, je nutné [připojení virtuálního počítače s Linuxem připojit nový disk](#connect-to-the-linux-vm-to-mount-the-new-disk).
+* Velikost virtuálního počítače určuje, kolik datových disků můžete připojit. Podrobnosti najdete v tématu [velikosti pro virtuální počítače](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Disky připojené k virtuálním počítačům jsou ve skutečnosti soubory VHD uložené v Azure. Podrobnosti najdete v našem [úvodu ke spravovaným diskům](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Po připojení disku se musíte [připojit k virtuálnímu počítači se systémem Linux a připojit nový disk](#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 
-## <a name="find-the-virtual-machine"></a>Vyhledejte virtuální počítače
+## <a name="find-the-virtual-machine"></a>Najít virtuální počítač
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo klikněte na tlačítko **virtuálních počítačů**.
+2. V nabídce vlevo klikněte na **Virtual Machines**.
 3. Ze seznamu vyberte virtuální počítač.
-4. Chcete virtuálních počítačích stránky, v **Essentials**, klikněte na tlačítko **disky**.
+4. Na stránce virtuální počítače v části **základy**klikněte na **disky**.
    
-    ![Otevřete nastavení disku](./media/attach-disk-portal/find-disk-settings.png)
+    ![Otevřít nastavení disku](./media/attach-disk-portal/find-disk-settings.png)
 
 
 ## <a name="attach-a-new-disk"></a>Připojit nový disk
 
-1. Na **disky** podokně klikněte na tlačítko **+ přidat datový disk**.
+1. V podokně **disky** klikněte na **+ přidat datový disk**.
 2. Klikněte na rozevírací nabídku pro **název** a vyberte **vytvořit disk**:
 
-    ![Vytvoření Azure spravovaného disku](./media/attach-disk-portal/create-new-md.png)
+    ![Vytvoření spravovaného disku Azure](./media/attach-disk-portal/create-new-md.png)
 
-3. Zadejte název pro váš spravovaný disk. Zkontrolujte výchozí nastavení, aktualizace podle potřeby a potom klikněte na tlačítko **vytvořit**.
+3. Zadejte název spravovaného disku. Zkontrolujte výchozí nastavení, podle potřeby aktualizujte a pak klikněte na **vytvořit**.
    
-   ![Zkontrolujte nastavení disku](./media/attach-disk-portal/create-new-md-settings.png)
+   ![Kontrola nastavení disku](./media/attach-disk-portal/create-new-md-settings.png)
 
-4. Klikněte na tlačítko **Uložit** k vytvoření spravovaného disku a aktualizaci konfigurace virtuálního počítače:
+4. Kliknutím na **Uložit** vytvořte spravovaný disk a aktualizujte konfiguraci virtuálního počítače:
 
-   ![Uložte novou Azure Managed Disks](./media/attach-disk-portal/confirm-create-new-md.png)
+   ![Uložit nový Azure Managed disk](./media/attach-disk-portal/confirm-create-new-md.png)
 
-5. Poté, co Azure disk vytvoří a připojí ho k virtuálnímu počítači, nový disk je uvedený v nastavení disku virtuálního počítače v rámci **datové disky**. Prostředek nejvyšší úrovně jsou spravované disky disk se zobrazí v kořenovém adresáři skupiny prostředků:
+5. Když Azure vytvoří disk a připojí ho k virtuálnímu počítači, nový disk se zobrazí v nastavení disku virtuálního počítače v části **datové disky**. Jelikož jsou spravované disky prostředky nejvyšší úrovně, disk se zobrazí v kořenovém adresáři skupiny prostředků:
 
-   ![Azure Managed Disks ve skupině prostředků](./media/attach-disk-portal/view-md-resource-group.png)
+   ![Spravovaný disk Azure ve skupině prostředků](./media/attach-disk-portal/view-md-resource-group.png)
 
 ## <a name="attach-an-existing-disk"></a>Připojení stávajícího disku
-1. Na **disky** podokně klikněte na tlačítko **+ přidat datový disk**.
-2. Klikněte na rozevírací nabídku pro **název** zobrazíte seznam existující spravované disky, které jsou přístupné pro vaše předplatné Azure. Vyberte spravovaný disk připojit:
+1. V podokně **disky** klikněte na **+ přidat datový disk**.
+2. Kliknutím na rozevírací nabídku **název** zobrazíte seznam existujících spravovaných disků přístupných k vašemu předplatnému Azure. Vyberte spravovaný disk, který chcete připojit:
 
-   ![Připojit stávající Azure Managed Disks](./media/attach-disk-portal/select-existing-md.png)
+   ![Připojit stávající Azure Managed disk](./media/attach-disk-portal/select-existing-md.png)
 
-3. Klikněte na tlačítko **Uložit** připojit existujícího spravovaného disku a aktualizovat konfiguraci virtuálního počítače:
+3. Kliknutím na **Save (Uložit** ) připojte existující spravovaný disk a aktualizujte konfiguraci virtuálních počítačů:
    
-   ![Uložení aktualizací Azure Managed Disks](./media/attach-disk-portal/confirm-attach-existing-md.png)
+   ![Uložit aktualizace služby Azure Managed disks](./media/attach-disk-portal/confirm-attach-existing-md.png)
 
-4. Po Azure připojí disk k virtuálnímu počítači, je uvedený v nastavení disku virtuálního počítače v rámci **datové disky**.
+4. Jakmile Azure připojí disk k virtuálnímu počítači, zobrazí se v nastavení disku virtuálního počítače v části **datové disky**.
 
-## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Připojte se k počítači s Linuxem připojit nový disk
-Do oddílů, formátování a připojte nový disk, virtuální počítač s Linuxem můžete použít SSH k virtuálnímu počítači. Další informace najdete v tématu [Jak použít SSH s Linuxem v Azure](mac-create-ssh-keys.md). Následující příklad se připojí k virtuálnímu počítači s veřejný záznam DNS *mypublicdns.westus.cloudapp.azure.com* k uživatelskému jménu *azureuser*: 
+## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Připojte se k virtuálnímu počítači se systémem Linux a připojte nový disk.
+Pokud chcete svůj nový disk rozdělit do oddílů, zformátovat ho a připojit ho, aby ho váš virtuální počítač Linux mohl použít, připojte se k VIRTUÁLNÍmu počítači přes SSH. Další informace najdete v tématu [Jak použít SSH s Linuxem v Azure](mac-create-ssh-keys.md). Následující příklad se připojí k virtuálnímu počítači s použitím veřejné položky DNS *mypublicdns.westus.cloudapp.Azure.com* s uživatelským jménem *azureuser*: 
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-Po připojení k vašemu virtuálnímu počítači, jste připraveni připojit disk. Nejdříve vyhledejte disk pomocí `dmesg` (metoda použijete ke zjištění nového disku může lišit). Následující příklad používá k filtrování dmesg *SCSI* disky:
+Po připojení k VIRTUÁLNÍmu počítači jste připraveni k připojení disku. Nejdřív Najděte disk s použitím `dmesg` (metoda, kterou použijete ke zjišťování nového disku), se může lišit. Následující příklad používá dmesg k filtrování na discích *SCSI* :
 
 ```bash
 dmesg | grep SCSI
@@ -96,18 +96,21 @@ Výstup se podobá následujícímu příkladu:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Tady *sdc* je disk, který chceme. 
+Tady je *SDC* disk, který chceme. 
 
-### <a name="partition-a-new-disk"></a>Oddíl nový disk
-Pokud používáte stávající disk, který obsahuje data, přejděte k připojování disku. Pokud připojujete nový disk, budete muset rozdělte disk na oddíly.
+### <a name="partition-a-new-disk"></a>Rozdělení nového disku na oddíly
+Pokud používáte existující disk, který obsahuje data, přeskočte k připojení disku. Pokud připojujete nový disk, budete muset disk rozdělit na oddíly.
 
-Rozdělte disk na oddíly pomocí příkazu `fdisk`. Pokud je velikost disku 2 tebibytes (TiB) nebo větší pak je nutné použít GPT rozdělení do oddílů, můžete použít `parted` provádět dělení GPT. Pokud velikost disku je pod správou 2TiB, můžete použít, vytváření oddílů MBR nebo GPT. Byl primární disku v oddílu 1 a přijměte ostatní výchozí hodnoty. Následující příklad spustí `fdisk` zpracovat na */dev/sdc*:
+> [!NOTE]
+> Doporučuje se používat nejnovější verze nástroje Fdisk nebo částečně, které jsou k dispozici pro vaši distribuce.
+
+Rozdělte disk na oddíly pomocí příkazu `fdisk`. Pokud je velikost disku 2 tebibytes (TIB) nebo větší, je nutné použít dělení GPT, pomocí `parted` kterých můžete provádět dělení GPT. Pokud je velikost disku pod 2TiB, můžete použít dělení na oddíly MBR nebo GPT. Nastavte primární disk na oddíl 1 a přijměte ostatní výchozí hodnoty. Následující příklad spustí `fdisk` proces na */dev/sdc*:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Použití `n` příkaz pro přidání nového oddílu. V tomto příkladu jsme také zvolit `p` pro primární oddíl a přijměte ostatní výchozí hodnoty. Výstup bude podobný následujícím příkladu:
+K přidání nového oddílu použijte příkaz.`n` V tomto příkladu jsme také zvolili `p` pro primární oddíl a přijali zbytek výchozích hodnot. Výstup bude vypadat podobně jako v následujícím příkladu:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -129,7 +132,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Tisk v tabulce oddílu tak, že zadáte `p` a pak použijte `w` zápis tabulky na disku a ukončíte. Výstup by měl vypadat podobně jako v následujícím příkladu:
+Vytiskněte tabulku oddílů zadáním `p` a pak použijte `w` k zápisu tabulky na disk a konec. Výstup by měl vypadat podobně jako v následujícím příkladu:
 
 ```bash
 Command (m for help): p
@@ -151,7 +154,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-Nyní, zapište systém souborů na oddíl s `mkfs` příkazu. Určuje typ systému souborů a název zařízení. Následující příklad vytvoří *ext4* systému souborů na */dev/sdc1* oddíl, který byl vytvořen v předchozích krocích:
+Nyní do oddílu zapište systém souborů pomocí `mkfs` příkazu. Zadejte typ systému souborů a název zařízení. Následující příklad vytvoří systém souborů *ext4* na oddílu */dev/sdc1* , který byl vytvořen v předchozích krocích:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -182,25 +185,25 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 ### <a name="mount-the-disk"></a>Připojit disk
-Vytvořte adresář pro připojení systému souborů pomocí `mkdir`. Následující příklad vytvoří adresář na */datadrive*:
+Vytvořte adresář pro připojení systému souborů pomocí `mkdir`. Následující příklad vytvoří adresář na adrese */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Použití `mount` pak připojte systém souborů. Následující příklad připojí */dev/sdc1* oddílu na */datadrive* přípojný bod:
+K `mount` následnému připojení systému souborů použijte. Následující příklad připojí oddíl */dev/sdc1* k přípojnému bodu */datadrive* :
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Aby bylo zajištěno, že jednotka znovu připojí automaticky po restartování, je nutné přidat do */etc/fstab* souboru. Je také důrazně doporučujeme, aby UUID (univerzálně jedinečný identifikátor) se používá v */etc/fstab* k odkazování na jednotce, ne pouze název zařízení (jako jsou například */dev/sdc1*). Pokud operační systém zjistí chyba disku během spouštění, pomocí identifikátoru UUID předchází nesprávné disku, připojení, na dané místo. Zbývající datových disků by se mu přiřadit stejné ID zařízení. Chcete-li najít identifikátor UUID novou jednotku, použijte `blkid` nástroje:
+Aby bylo zajištěno, že se jednotka po restartování automaticky znovu připojí, je nutné ji přidat do souboru */etc/fstab* . Důrazně doporučujeme, abyste v */etc/fstab* použili UUID (univerzálně jedinečný identifikátor), aby odkazoval na jednotku, a ne jenom název zařízení (například, */dev/sdc1*). Pokud operační systém při spuštění detekuje chybu disku, při použití UUID se vyhnete nesprávnému disku připojenému k danému umístění. K zbývajícím datovým diskům by pak byla přiřazena stejná ID zařízení. Chcete-li zjistit UUID nové jednotky, použijte `blkid` nástroj:
 
 ```bash
 sudo -i blkid
 ```
 
-Výstup vypadá podobně jako v následujícím příkladu:
+Výstup bude vypadat podobně jako v následujícím příkladu:
 
 ```bash
 /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -209,36 +212,36 @@ Výstup vypadá podobně jako v následujícím příkladu:
 ```
 
 > [!NOTE]
-> Nesprávně úpravy **/etc/fstab** souboru by mohlo způsobit systém nelze spustit. Pokud nejste jisti, najdete v dokumentaci vaší distribuce pro informace o tom, jak správně upravit tento soubor. Doporučujeme také, že je záloha souboru /etc/fstab vytvořená před úpravou.
+> Nesprávná úprava souboru **/etc/fstab** by mohla vést k nespouštěcímu systému. Pokud si nejste jistí, přečtěte si dokumentaci k distribuci, kde najdete informace o tom, jak tento soubor správně upravit. Doporučuje se také vytvořit zálohu souboru/etc/fstab před úpravou.
 
-Dále otevřete */etc/fstab* souboru v textovém editoru následovně:
+Potom v textovém editoru otevřete soubor */etc/fstab* následujícím způsobem:
 
 ```bash
 sudo vi /etc/fstab
 ```
 
-V tomto příkladu použijte hodnotu identifikátoru UUID */dev/sdc1* zařízení, který byl vytvořen v předchozích krocích a přípojný bod z */datadrive*. Přidejte následující řádek na konec objektu */etc/fstab* souboru:
+V tomto příkladu použijte hodnotu UUID pro zařízení */dev/sdc1* , které bylo vytvořeno v předchozích krocích, a přípojný bod of */datadrive*. Přidejte následující řádek na konec souboru */etc/fstab* :
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
 > [!NOTE]
-> Později odebrání datového disku bez úprav fstab může způsobit selhání spuštění virtuálního počítače. Většině distribucí zadejte buď *nofail* a/nebo *nobootwait* možnosti fstab. Tyto možnosti umožňují spustit i v případě, že disk se nepodařilo připojit při spuštění systému. Další informace o těchto parametrech naleznete v dokumentaci vaší distribuce.
+> Pozdější odebrání datového disku bez úprav fstab by mohlo způsobit, že se virtuální počítač nepodaří spustit. Většina distribucí poskytuje možnosti *nobootwait* a /nebo fstab. Tyto možnosti umožňují spuštění systému i v případě, že se nepodaří připojit disk při spuštění. Další informace o těchto parametrech najdete v dokumentaci k distribuci.
 > 
-> *Nofail* možnost zajišťuje, že virtuální počítač spustí i v případě systému souborů je poškozený nebo na disku v době spuštění neexistuje. Bez této možnosti může dojít chování, jak je popsáno v [nelze SSH k virtuálnímu počítači s Linuxem kvůli chybám FSTAB](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
+> Možnost *neúspěšné* zajistí, že se virtuální počítač spustí i v případě, že je poškozen systém souborů nebo když disk v době spuštění neexistuje. Bez této možnosti se můžete setkat s chováním, jak je popsáno v tématu [nejde přes SSH pro virtuální počítač se systémem Linux z důvodu chyb FSTAB](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) .
 
-### <a name="trimunmap-support-for-linux-in-azure"></a>Podpora uvolnění dočasné paměti/UNMAP pro Linux v Azure
-Některé Linuxových jádrech podporovat operace TRIM/UNMAP zahodíte nepoužívané bloky na disku. Tato funkce je užitečné hlavně ve standardním úložišti informovat Azure, které odstraní stránky již nejsou platným můžete zahodit a můžete ušetřit, pokud vytvoříte velkých souborů a potom je odstraňte.
+### <a name="trimunmap-support-for-linux-in-azure"></a>Podpora STŘIHu a odmapování pro Linux v Azure
+Některé jádro systému Linux podporují operace OŘEZÁVÁNÍ a odmapování, aby bylo možné zahodit nepoužívané bloky na disku. Tato funkce je primárně užitečná ve službě Storage úrovně Standard pro informování Azure o tom, že odstraněné stránky už nejsou platné a můžou být zahozeny, a pokud chcete vytvořit velké soubory a odstranit je, můžete ušetřit peníze.
 
-Existují dva způsoby, jak povolit TRIM podpory v virtuálního počítače s Linuxem. Obvyklým způsobem vaše distribuce najdete doporučený postup:
+Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux povolit podporu OŘEZÁVÁNÍ. V obvyklých případech si prostudujte doporučený postup:
 
-* Použití `discard` připojit možnost v */etc/fstab*, například:
+* Použijte možnost Mount v/etc/fstab, například: `discard`
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* V některých případech `discard` možnost může mít vliv na výkon. Alternativně můžete spustit `fstrim` příkaz ručně z příkazového řádku, nebo ho přidat do vaší crontab pravidelně spuštění:
+* V některých případech může mít `discard` možnost vliv na výkon. Alternativně můžete `fstrim` příkaz spustit ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
   
     **Ubuntu**
   
@@ -254,5 +257,5 @@ Existují dva způsoby, jak povolit TRIM podpory v virtuálního počítače s L
     sudo fstrim /datadrive
     ```
 
-## <a name="next-steps"></a>Další kroky
-Můžete také [připojení datového disku](add-disk.md) pomocí Azure CLI.
+## <a name="next-steps"></a>Další postup
+[Datový disk](add-disk.md) můžete také připojit pomocí rozhraní příkazového řádku Azure CLI.
