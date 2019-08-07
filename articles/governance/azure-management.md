@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: 520b84722d9434b309d3eb6da0baa3c1e4da33d0
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 958f82ef94a08adaf2bbae1ef8ceefae5db289ea
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608195"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780799"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Přehled služeb správy v Azure
 
@@ -40,7 +40,7 @@ Automatizace těchto úloh umožňuje eliminovat redundance, minimalizovat čas 
 ## <a name="govern"></a>Řízení
 
 Zásady správného řízení poskytují mechanismy a postupy pro zajištění kontroly nad vašimi aplikacemi a prostředky v Azure. Zahrnují plánování iniciativ a nastavení strategických priorit.
-Zásady správného řízení v Azure jsou primárně implementované pomocí dvou služeb. [Služba Azure Policy](./policy/overview.md) umožňuje vytvářet, přiřazovat a spravovat definice zásad a vynucovat pravidla pro vaše prostředky. Tato funkce zajišťuje těchto prostředků v souladu s firemními standardy. [Azure Cost Management by Cloudyn](../cost-management/overview.md) umožňuje sledovat využití cloudu a výdaje za prostředky Azure a dalších poskytovatelů cloudu.
+Zásady správného řízení v Azure jsou primárně implementované pomocí dvou služeb. [Služba Azure Policy](./policy/overview.md) umožňuje vytvářet, přiřazovat a spravovat definice zásad a vynucovat pravidla pro vaše prostředky. Tato funkce zajišťuje těchto prostředků v souladu s firemními standardy. [Azure cost management](../cost-management/overview-cost-mgt.md) vám umožňuje sledovat využití cloudu a výdaje za prostředky Azure a další cloudové poskytovatele.
 
 ## <a name="secure"></a>Zabezpečení
 

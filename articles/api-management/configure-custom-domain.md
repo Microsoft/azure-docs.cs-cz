@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 9eb03be5cd9704c3b124bfb16fd30c5c3466890d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326142"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736262"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
 
@@ -40,17 +40,19 @@ K provedení kroků popsaných v tomto článku musíte mít:
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Použijte Azure Portal k nastavení vlastního názvu domény.
 
 1. V [Azure Portal](https://portal.azure.com/)přejděte ke své instanci API Management.
-1. Vyberte **vlastní domény a SSL**.
+1. Vyberte **vlastní domény**.
 
     K dispozici je několik koncových bodů, ke kterým můžete přiřadit vlastní název domény. V současné době jsou k dispozici následující koncové body:
 
-    - **Proxy server** (výchozí hodnota je `<apim-service-name>.azure-api.net`:),
+    - **Brána** (výchozí hodnota je `<apim-service-name>.azure-api.net`:),
     - **Portál** (výchozí hodnota je `<apim-service-name>.portal.azure-api.net`:),
     - **Správa** (výchozí hodnota je `<apim-service-name>.management.azure-api.net`:),
     - **SCM** (výchozí hodnota je `<apim-service-name>.scm.azure-api.net`:).
 
     > [!NOTE]
-    > Můžete aktualizovat všechny koncové body nebo některé z nich. Zákazníci aktualizují **proxy** (Tato adresa URL se běžně používá k volání rozhraní API vystaveného prostřednictvím API Management) a **portálu** (adresa URL portálu pro vývojáře). Koncové body **správy** a **SCM** se používají interně pouze vlastníky instance API Management, takže se jim pro vlastní název domény často přiřazují méně často. Ve většině případů lze pro daný koncový bod nastavit pouze jeden vlastní název domény. Úroveň **Premium** však podporuje nastavení více názvů hostitelů pro koncový bod **proxy serveru** .
+    > Pro konfiguraci v úrovni spotřeby je dostupný jenom koncový bod **brány** .
+    > Můžete aktualizovat všechny koncové body nebo některé z nich. Zákazníci aktualizují **bránu** (Tato adresa URL se běžně používá k volání rozhraní API vystaveného prostřednictvím API Management) a **portálu** (adresa URL portálu pro vývojáře).
+    > Koncové body **správy** a **SCM** se používají interně pouze vlastníky instance API Management, takže se jim pro vlastní název domény často přiřazují méně často. Úroveň **Premium** podporuje nastavení více názvů hostitelů pro koncový bod **brány** .
 
 1. Vyberte koncový bod, který chcete aktualizovat.
 1. V okně na pravé straně klikněte na **vlastní**.
@@ -83,6 +85,6 @@ Při konfiguraci DNS pro vlastní název domény máte dvě možnosti:
 > [!NOTE]
 > I když je IP adresa instance pro správu rozhraní API statická, může se v několika scénářích změnit. Z tohoto důvodu doporučujeme při konfiguraci vlastní domény použít CNAME. Při volbě metody konfigurace DNS Vezměte v úvahu. Další informace najdete v tématu [Nejčastější dotazy k rozhraní API Mananagement](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Upgrade a škálování služby](upgrade-and-scale.md)

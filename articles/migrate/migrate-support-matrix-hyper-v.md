@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 787bcf28a64c98f82deb0725e2362bf8144d6c4e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: da68c0ae1dc92f5b854c30c90b93856248c43281
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640862"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828349"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci Hyper-V
 
@@ -36,14 +36,18 @@ Tabulka shrnuje podporované scénáře pro virtuální počítače Hyper-V.
 **Podpora** | **Podrobnosti**
 --- | ---
 Oprávnění Azure | Chcete-li vytvořit projekt Azure Migrate, potřebujete oprávnění přispěvatele nebo vlastníka v rámci předplatného.
-Virtuální počítače Hyper-V | Vyhodnoťte až 10 000 virtuálních počítačů Hyper-V v jednom projektu. V předplatném Azure můžete mít více projektů. Projekt může zahrnovat virtuální počítače VMware i virtuální počítače Hyper-V, a to až do limitů hodnocení.
+Virtuální počítače Hyper-V | Vyhodnoťte až 35 000 virtuálních počítačů Hyper-V v jednom projektu. V předplatném Azure můžete mít více projektů. Projekt může zahrnovat virtuální počítače VMware i virtuální počítače Hyper-V, a to až do limitů hodnocení.
 Geografie | Azure Migrate projekty lze vytvořit v řadě geografických oblastí. I když můžete vytvářet projekty v konkrétních ographies, můžete vyhodnotit nebo migrovat počítače pro jiná cílová umístění. Geografie projektu se používá pouze k uložení zjištěných metadat.
 
   **Zeměpisné oblasti** | **Umístění úložiště metadat**
   --- | ---
   Azure Government | USA (Gov) – Virginia
-  Asie a Tichomoří | Jihovýchodní Asie nebo Východní Asie
-  Evropa | Jižní Evropa nebo Západní Evropa
+  Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
+  Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
+  Kanada | Kanada – střed nebo Kanada – východ
+  Evropa | Severní Evropa nebo Západní Evropa
+  Indie | Střed Indie nebo Jižní Indie
+  Japonsko |  Japonsko – východ nebo Japonsko – západ
   Spojené království | Velká Británie – jih nebo Velká Británie – západ
   Spojené státy | Střed USA nebo Západní USA 2
 
@@ -84,7 +88,7 @@ Pro posouzení Azure Migrate spouští odlehčené zařízení pro zjišťován�
 | **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
 | **Azure Migrate projekt**  |  Zařízení může být přidruženo k jednomu projektu.<br/> Můžete zjistit až 5000 virtuálních počítačů Hyper-V s jedním zařízením.
-| **Hyper-V**    |  Zařízení nasadíte jako virtuální počítač Hyper-V.<br/> Zadaný virtuální počítač zařízení je Hyper-V VM verze 5,0.<br/> Na hostiteli virtuálního počítače musí být spuštěný systém Windows Server 2012 R2 nebo novější.<br/> K alokaci 16 GB paměti RAM, 4 virtuálních procesorů a 1 externímu přepínači pro virtuální počítač zařízení potřebujete dostatek místa.<br/> Zařízení vyžaduje statickou nebo dynamickou IP adresu a přístup k Internetu.
+| **Hyper-V**    |  Zařízení nasadíte jako virtuální počítač Hyper-V.<br/> Zadaný virtuální počítač zařízení je Hyper-V VM verze 5,0.<br/> Na hostiteli virtuálního počítače musí být spuštěný systém Windows Server 2012 R2 nebo novější.<br/> Potřebuje dostatek místa pro přidělení 16 GB paměti RAM, 8 vCPU a 1 externího přepínače pro virtuální počítač zařízení.<br/> Zařízení vyžaduje statickou nebo dynamickou IP adresu a přístup k Internetu.
 
 
 ## <a name="assessment-appliance-url-access"></a>Posouzení – přístup k adrese URL zařízení

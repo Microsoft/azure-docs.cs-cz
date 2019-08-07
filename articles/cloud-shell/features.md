@@ -1,6 +1,6 @@
 ---
-title: Funkce Azure Cloud Shell | Dokumentace Microsoftu
-description: Přehled funkcí z prostředí Bash ve službě Azure Cloud Shell
+title: Funkce Azure Cloud Shell | Microsoft Docs
+description: Přehled funkcí v Azure Cloud Shell
 services: Azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,85 +14,85 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 6b5f0e96b90ee0515c0a86f41c6ee2161d6c54a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1354f7befd8c38537a555e17733f431dd488cf60
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752709"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742057"
 ---
-# <a name="features--tools-for-azure-cloud-shell"></a>Funkce a nástroje pro Azure Cloud Shell
+# <a name="features--tools-for-azure-cloud-shell"></a>Funkce & nástroje pro Azure Cloud Shell
 
 [!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
-Azure Cloud Shell spouští na `Ubuntu 16.04 LTS`.
+Azure Cloud Shell běží na `Ubuntu 16.04 LTS`.
 
 ## <a name="features"></a>Funkce
 
-### <a name="secure-automatic-authentication"></a>Automatické ověřování zabezpečení
+### <a name="secure-automatic-authentication"></a>Zabezpečené automatické ověřování
 
-Cloud Shell bezpečně a automaticky ověří přístup k účtu pro rozhraní příkazového řádku Azure a Azure Powershellu.
+Cloud Shell bezpečně a automaticky ověřuje přístup k účtu Azure CLI a Azure PowerShell.
 
-### <a name="home-persistence-across-sessions"></a>Trvalost $HOME napříč relacemi
+### <a name="home-persistence-across-sessions"></a>$HOME Persistence napříč relacemi
 
-K trvalému ukládání souborů napříč relacemi, Cloud Shell vás provede připojením sdílené složky Azure při prvním spuštění.
-Po dokončení Cloud Shell automaticky připojit úložiště (připojit jako `$HOME\clouddrive`) pro všechny budoucí relace.
-Kromě toho vaše `$HOME` adresáře se ukládají jako img do sdílené složky Azure.
-Souborů mimo `$HOME` a stav počítače nejsou trvalé napříč relacemi. Použijte osvědčené postupy při ukládání tajných klíčů, jako jsou klíče SSH. Služeb jako [Azure Key Vault mít podrobné pokyny pro nastavení](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
+Aby bylo možné zachovat soubory napříč relacemi, Cloud Shell vás při prvním spuštění připojit ke sdílené složce Azure.
+Po dokončení Cloud Shell automaticky připojí úložiště (připojené jako `$HOME\clouddrive`) pro všechny budoucí relace.
+Navíc je váš `$HOME` adresář uložený ve sdílené složce Azure jako soubor. img.
+Soubory mimo `$HOME` počítač a stav počítače nejsou v relacích trvalé. Používejte osvědčené postupy při ukládání tajných kódů, jako jsou klíče SSH. Pro služby, jako [je Azure Key Vault, jsou k dispozici kurzy pro instalaci](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
 
-[Další informace o zachování souborů ve službě Cloud Shell.](persisting-shell-storage.md)
+[Přečtěte si další informace o trvalém ukládání souborů v Cloud Shell.](persisting-shell-storage.md)
 
 ### <a name="azure-drive-azure"></a>Jednotka Azure (Azure:)
 
-PowerShell ve službě Cloud Shell se spustí můžete v Azure disk (`Azure:`).
-Jednotka Azure umožňuje snadné zjišťování a navigace Azure prostředky, jako jsou výpočetní prostředky, sítě, úložiště atd podobný navigace systému souborů.
-Můžete dál používat známá [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure) spravovat tyto prostředky bez ohledu na jednotce v.
-Všechny změny provedené u prostředků Azure, buď přímo na webu Azure portal nebo prostřednictvím rutin Powershellu pro Azure, se projeví v jednotce Azure.  Můžete spustit `dir -Force` aktualizovat vaše prostředky.
+PowerShell v Cloud Shell spouští na jednotce Azure (`Azure:`).
+Jednotka Azure umožňuje snadné zjišťování a navigaci prostředků Azure, jako jsou výpočetní prostředky, síť, úložiště atd., podobně jako navigace systému souborů.
+Ke správě těchto prostředků můžete dál používat známé [Azure PowerShell rutiny](https://docs.microsoft.com/powershell/azure) bez ohledu na jednotku, ve které jste.
+Jakékoli změny provedené v prostředcích Azure provedené přímo v Azure Portal nebo prostřednictvím rutin Azure PowerShell se projeví na jednotce Azure.  Můžete spustit `dir -Force` pro aktualizaci prostředků.
 
 ![](media/features-powershell/azure-drive.png)
 
-### <a name="manage-exchange-online"></a>Umožňuje spravovat Exchange Online
+### <a name="manage-exchange-online"></a>Správa Exchange Online
 
-PowerShell ve službě Cloud Shell obsahuje soukromé sestavení modulu Exchange Online.  Spustit `Connect-EXOPSSession` zobrazíte rutin systému Exchange.
+Prostředí PowerShell v Cloud Shell obsahuje soukromé sestavení modulu Exchange Online.  Spusťte `Connect-EXOPSSession` příkaz a získejte rutiny Exchange.
 
 ![](media/features-powershell/exchangeonline.png)
 
- Spusťte `Get-Command -Module tmp_*`.
+ Spustit `Get-Command -Module tmp_*`
 > [!NOTE]
-> Název modulu by měl začínat `tmp_`, pokud jste nainstalovali moduly se stejnou předponou, se také zobrazí jejich rutiny. 
+> Název modulu by měl začínat `tmp_`, pokud máte moduly se stejnou předponou, jejich rutiny budou také Surface. 
 
 ![](media/features-powershell/exchangeonlinecmdlets.png)
 
-### <a name="deep-integration-with-open-source-tooling"></a>Těsnou integraci s open source nástroje
+### <a name="deep-integration-with-open-source-tooling"></a>Hluboká integrace s open source nástroji
 
-Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nástroje, jako je například Terraformu, Ansible a Chef InSpec. Vyzkoušejte si z návody pro příklad.
+Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nástroje, jako jsou Terraformu, Ansible a INSPEC. Vyzkoušejte si to z ukázkových návodů.
 
 ## <a name="tools"></a>Nástroje
 
-|Category   |Name   |
+|Kategorie   |Name   |
 |---|---|
-|Nástroje pro Linux            |Bash<br> zsh<br> sh<br> tmux<br> Ponořte se<br>               |
-|Nástroje Azure            |[Azure CLI](https://github.com/Azure/azure-cli) a [klasické rozhraní příkazového řádku Azure](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
-|Textových editorů           |kód (Cloud Shell editor)<br> VIM<br> nano<br> emacs    |
+|Nástroje pro Linux            |bash<br> zsh<br> SH<br> tmux<br> dig<br>               |
+|Nástroje Azure            |[Azure CLI](https://github.com/Azure/azure-cli) a [Azure Classic CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Editory textu           |kód (Editor Cloud Shell)<br> Vim<br> Nano<br> (Emacs)    |
 |Správy zdrojového kódu         |git                    |
-|Nástroje sestavení            |Ujistěte se<br> Maven<br> npm<br> pip         |
-|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Příkaz Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
-|Databáze              |Klient MySQL<br> Klient PostgreSql<br> [Nástroj SQLCMD](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Ostatní                  |iPython Client<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)|
+|Nástroje sestavení            |Značka<br> Maven<br> npm<br> pip         |
+|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
+|Databáze              |Klient MySQL<br> Klient PostgreSql<br> [Nástroj Sqlcmd](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
+|Ostatní                  |iPython Client<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraformu](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Puppet](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Pack](https://www.packer.io/)|
 
 ## <a name="language-support"></a>Podpora jazyků
 
 |Jazyk   |Version   |
 |---|---|
 |.NET Core  |2.0.0       |
-|Přejít         |1.9        |
+|Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
 |PowerShell |[6.2.0](https://github.com/PowerShell/powershell/releases)       |
-|Python     |2.7 a 3.5 (výchozí)|
+|Python     |2,7 a 3,5 (výchozí)|
 
 ## <a name="next-steps"></a>Další postup
-[Bash v Cloud Shellu Quickstart](quickstart.md) <br>
-[Prostředí PowerShell ve službě Cloud Shell Quickstart](quickstart-powershell.md) <br>
-[Další informace o rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/) <br>
-[Další informace o Azure Powershellu](https://docs.microsoft.com/powershell/azure/) <br>
+[Bash v rychlém startu Cloud Shell](quickstart.md) <br>
+[PowerShell v Cloud Shell rychlý Start](quickstart-powershell.md) <br>
+[Další informace o Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
+[Informace o Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

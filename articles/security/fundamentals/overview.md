@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 62fd2c3f46104fdf3193f105c234f1dae417b0fd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 527c9cfa64eab9fe2286098d2c10186391bdde4d
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726869"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780575"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -114,7 +114,7 @@ V části najdete další informace týkající se klíčových funkcí v zabezp
 Jedním z nejjednodušších způsobů, jak začít s testováním ohrožení zabezpečení ve vaší [aplikaci App Service](https://docs.microsoft.com/azure/app-service/overview) , je použití [integrace se zabezpečením TINFOIL](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) k provedení kontroly ohrožení zabezpečení na vaší aplikaci jedním kliknutím. Výsledky testů můžete zobrazit v snadno srozumitelné sestavě a Naučte se, jak opravit jednotlivé chyby zabezpečení pomocí podrobných pokynů.
 
 ### <a name="penetration-testing"></a>Testování průniku
-Pokud dáváte přednost vlastním testům průniku nebo chcete použít jinou sadu nebo poskytovatele, musíte postupovat podle [procesu schválení testování průniku do Azure](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) a získat předchozí schválení k provedení požadovaných testů průniku.
+Pokud dáváte přednost vlastním testům průniku nebo chcete použít jinou sadu nebo poskytovatele, musíte postupovat podle [procesu schválení testování průniku do Azure](https://docs.microsoft.com/azure/security/fundamentals/pen-testing ) a získat předchozí schválení k provedení požadovaných testů průniku.
 
 ### <a name="web-application-firewall"></a>Firewall webových aplikací
 Firewall webových aplikací (WAF) v [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) pomáhá chránit webové aplikace před běžnými webovými útoky, jako jsou vkládání SQL, útoky skriptování mezi weby a zneužití relace. Obsahuje předem nakonfigurovanou ochranu před hrozbami, které identifikoval [projekt OWASP (Open Web Application Security) jako prvních 10 běžných ohrožení zabezpečení](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
@@ -313,7 +313,7 @@ Dostupná doporučení sítě jsou následující:
 V této části najdete další informace týkající se klíčových funkcí v této oblasti a souhrnné informace o těchto funkcích.
 
 ### <a name="antimalware--antivirus"></a>Antimalwarový & Antivirus
-S Azure IaaS můžete použít antimalwarový software od dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro, McAfee a Kaspersky, a chránit tak své virtuální počítače před škodlivými soubory, adwarem a dalšími hrozbami. [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) pro Azure Cloud Services a Virtual Machines je schopnost ochrany, která pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Microsoft Antimalware poskytuje konfigurovatelné výstrahy, když se známý škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit v systémech Azure. Microsoft Antimalware se dá nasadit taky pomocí Azure Security Center
+S Azure IaaS můžete použít antimalwarový software od dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro, McAfee a Kaspersky, a chránit tak své virtuální počítače před škodlivými soubory, adwarem a dalšími hrozbami. [Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) pro Azure Cloud Services a Virtual Machines je schopnost ochrany, která pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Microsoft Antimalware poskytuje konfigurovatelné výstrahy, když se známý škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit v systémech Azure. Microsoft Antimalware se dá nasadit taky pomocí Azure Security Center
 
 ### <a name="hardware-security-module"></a>Modul hardwarového zabezpečení
 Šifrování a ověřování nevylepšuje zabezpečení, pokud klíče samotné nejsou chráněné. Můžete zjednodušit správu a zabezpečení důležitých tajných kódů a klíčů jejich uložením do [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis). Key Vault poskytuje možnost ukládat klíče v modulech hardwarového zabezpečení (HSM) s certifikací podle standardů FIPS 140-2 úrovně 2. Šifrovací klíče SQL Server pro zálohování nebo [transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx) je možné ukládat do Key Vault pomocí jakýchkoli klíčů a tajných kódů z vašich aplikací. Oprávnění a přístup k těmto chráněným položkám se spravují prostřednictvím [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).

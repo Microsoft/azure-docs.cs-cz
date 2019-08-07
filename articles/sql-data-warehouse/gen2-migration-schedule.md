@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: d4724672510d6ccbbc819691d621400cb00d8c9a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405442"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827223"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade datového skladu na Gen2
 
@@ -88,7 +88,7 @@ Při provádění samoobslužného upgradu jsou k dispozici dvě možnosti.  Mů
 - [Upgrade na místě](upgrade-to-latest-generation.md) – Tato možnost provede upgrade existujícího datového skladu Gen1 na Gen2. Proces upgradu bude při restartu datového skladu zahrnovat krátké přerušení připojení (přibližně 5 min).  Jakmile je datový sklad restartován, bude plně dostupný pro použití. Pokud při upgradu dojde k problémům, otevřete [žádost o podporu](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) a referenční informace "Gen2 upgrade" jako možnou příčinu.
 - [Upgrade z bodu obnovení](sql-data-warehouse-restore.md) – vytvořte uživatelem definovaný bod obnovení v aktuálním datovém skladu Gen1 a proveďte obnovení přímo do instance Gen2. Existující datový sklad Gen1 zůstane na svém místě. Až se obnovení dokončí, váš datový sklad Gen2 bude plně dostupný pro použití.  Po spuštění všech procesů testování a ověřování na obnovené instanci Gen2 je možné odstranit původní instanci Gen1.
 
-   - Krok 1: Z Azure Portal [Vytvořte bod obnovení definovaný uživatelem](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal).
+   - Krok 1: Z Azure Portal [Vytvořte bod obnovení definovaný uživatelem](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal).
    - Krok 2: Při obnovení z bodu obnovení definovaného uživatelem nastavte úroveň výkonu na upřednostňovanou Gen2 úroveň.
 
 Během toho, co proces upgradu upgraduje datové soubory na pozadí, může na určitou dobu dojít ke snížení výkonu. Celková doba snížení výkonu se bude lišit v závislosti na velikosti datových souborů.
@@ -155,6 +155,6 @@ Další informace najdete v tématu [upgrade na Gen2](upgrade-to-latest-generati
 - [Monitorování stavu prostředků](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Kontrola před zahájením migrace](upgrade-to-latest-generation.md#before-you-begin)
 - [Upgrade na místě a upgrade z bodu obnovení](upgrade-to-latest-generation.md)
-- [Vytvoření bodu obnovení definovaného uživatelem](sql-data-warehouse-restore.md#restore-through-the-azure-portal)
-- [Informace o tom, jak obnovit Gen2](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
+- [Vytvoření bodu obnovení definovaného uživatelem](sql-data-warehouse-restore-points.md)
+- [Informace o tom, jak obnovit Gen2](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal)
 - [Otevřete žádost o podporu SQL Data Warehouse](https://go.microsoft.com/fwlink/?linkid=857950)

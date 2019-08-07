@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: e815c038cce2e792fe7ea39f1ee43342be0b679f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726897"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828722"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek poskytuje sadu provozních osvědčených postupů pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -118,7 +118,7 @@ Bezpečné skóre, které je založeno na ovládacích prvcích Center for Inter
 **Podrobnosti**: Většina organizací s SIEM ji používá jako centrální službu Clearinghouse pro výstrahy zabezpečení, které vyžadují reakci analytika. Zpracované události vytvořené pomocí Security Center jsou publikovány v protokolu aktivit Azure, což je jeden z protokolů, který je k dispozici prostřednictvím Azure Monitor. Azure Monitor nabízí konsolidovaný kanál pro směrování všech dat monitorování do nástroje SIEM. Pokyny najdete v tématu věnovaném [integraci řešení zabezpečení v Security Center](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem) . Pokud používáte Azure Sentinel, přečtěte si téma [připojení Azure Security Center](../../sentinel/connect-azure-security-center.md).
 
 **Osvědčené postupy**: Integrujte protokoly Azure s SIEM.   
-**Podrobnosti**: Pomocí [Azure monitor můžete shromažďovat a exportovat data](/azure/azure-monitor/overview.md#integrate-and-export-data). Tento postup je nezbytný pro povolení vyšetřování incidentů zabezpečení a uchování online protokolů je omezené. Pokud používáte Azure Sentinel, přečtěte si téma [připojení zdrojů dat](../../sentinel/connect-data-sources.md).
+**Podrobnosti**: Pomocí [Azure monitor můžete shromažďovat a exportovat data](/azure/azure-monitor/overview#integrate-and-export-data). Tento postup je nezbytný pro povolení vyšetřování incidentů zabezpečení a uchování online protokolů je omezené. Pokud používáte Azure Sentinel, přečtěte si téma [připojení zdrojů dat](../../sentinel/connect-data-sources.md).
 
 **Osvědčené postupy**: Integrací možností zjišťování koncových bodů a odpovědí (EDR) do šetření útoku urychlíte šetření a lovecké procesy a omezíte falešně pozitivní výsledky.   
 **Podrobnosti**: [Povolte integraci ochrany ATP v programu Windows Defender](../../security-center/security-center-wdatp.md#enable-windows-defender-atp-integration) prostřednictvím zásad zabezpečení Security Center. Zvažte použití Azure Sentinel pro lov hrozeb a reakci na incidenty.

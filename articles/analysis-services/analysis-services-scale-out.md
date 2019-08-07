@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8297a2b1e78da6685b3129071612dc4457990bc1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 29188013b75dbefbaf80f3c59360f203ae5b5a82
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696407"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736751"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování služby Azure Analysis Services na více instancí
 
@@ -143,9 +143,9 @@ Pro SSMS, SSDT a připojovací řetězce v prostředí PowerShell, Azure Functio
 
 ![Názvy serverů](media/analysis-services-scale-out/aas-scale-out-name.png)
 
-## <a name="scale-up--down-vs-scale-out"></a>Horizontální navýšení kapacity vs. Horizontální navýšení kapacity
+## <a name="scale-up-scale-down-vs-scale-out"></a>Horizontální navýšení kapacity, horizontální navýšení kapacity vs. Škálování na víc systémů
 
-Cenovou úroveň serveru můžete změnit na serveru s více replikami. Stejná cenová úroveň se vztahuje na všechny repliky. Operace horizontálního navýšení kapacity a horizontálního navýšení kapacity postupně odstanou všechny repliky najednou a pak všechny repliky v nové cenové úrovni.
+Cenovou úroveň můžete na serveru změnit několika replikami. Stejná cenová úroveň se vztahuje na všechny repliky. Operace škálování nejprve odnese všechny repliky najednou a pak zobrazí všechny repliky v nové cenové úrovni.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 

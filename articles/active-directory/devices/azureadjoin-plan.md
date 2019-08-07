@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e58762bd5bf4342804767a200c94b432dd152a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e5dc1c3fb7ae12c36a8c1fe383290435c03ee0c4
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562215"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741366"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postup: Plánování implementace připojení ke službě Azure AD
 
@@ -68,7 +68,11 @@ Tyto scénáře nevyžadují konfiguraci federačního serveru pro ověřování
 Federované prostředí by mělo mít poskytovatele identity, který podporuje protokoly WS-Trust i WS-dodávání:
 
 - **WS-nakrmený:** Tento protokol je nutný k připojení zařízení k Azure AD.
-- **WS-Trust:** Tento protokol se vyžaduje pro přihlášení k zařízení připojenému k Azure AD. 
+- **WS-Trust:** Tento protokol se vyžaduje pro přihlášení k zařízení připojenému k Azure AD.
+Pokud používáte AD FS, je nutné povolit následující koncové body WS-Trust:`/adfs/services/trust/2005/usernamemixed`
+ `/adfs/services/trust/13/usernamemixed`
+ `/adfs/services/trust/2005/certificatemixed`
+ `/adfs/services/trust/13/certificatemixed`
 
 Pokud Váš zprostředkovatel identity tyto protokoly nepodporuje, připojení k Azure AD nefunguje nativně. Počínaje systémem Windows 10 1809 se uživatelé můžou přihlásit k zařízení připojenému k Azure AD pomocí zprostředkovatele identity založeného na SAML prostřednictvím [webového přihlášení ve Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). V současné době je webové přihlašování funkcí verze Preview a nedoporučuje se pro produkční nasazení.
 
@@ -218,7 +222,7 @@ Tuto možnost nastavte na **všechny** nebo **vybrané** v závislosti na rozsah
 
 ### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>Další místní správci na zařízeních připojených do Azure AD
 
-Vyberte **Vybrat** a vyberte uživatele, které chcete přidat do skupiny místních správců na všech zařízeních připojených k Azure AD. 
+Vyberte vybrat a vyberte uživatele, které chcete přidat do skupiny místních správců na všech zařízeních připojených k Azure AD. 
 
 ![Další místní správci na zařízeních připojených do Azure AD](./media/azureadjoin-plan/02.png)
 
@@ -244,7 +248,7 @@ Vyberte poskytovatele MDM a nakonfigurujte související nastavení.
 
 ### <a name="mdm-user-scope"></a>Obor uživatele MDM
 
-V závislosti na rozsahu **nasazení vyberte možnost** **vše nebo vše** . 
+V závislosti na rozsahu nasazení vyberte možnost **vše nebo vše** . 
 
 ![Obor uživatele MDM](./media/azureadjoin-plan/05.png)
 

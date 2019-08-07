@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 99bfab5a5f80fc0a49c7cc6405154394391f43e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a55de2d5f47274ea112e52ddbcc0d946db56470
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60908141"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775335"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Využití Azure Security Center při reakci na incidenty
 Mnoho organizací se naučí reagovat na incidenty zabezpečení teprve když se stanou obětí útoku. Kvůli snížení nákladů a minimalizaci škod je důležité mít hotový plán reakce na incidenty ještě před tím, než k útoku dojde. Azure Security Center můžete využít v různých fázích reakce na incidenty.
@@ -51,12 +51,12 @@ Pro účely tohoto scénáře se soustředíme na role následujících osob, kt
 
 ![Životní cyklus reakce na incidenty](./media/security-center-incident-response/security-center-incident-response-fig2.png)
 
-Judy pracuje v oddělení zabezpečení. Mezi její oblasti odpovědnosti patří:
+Judy pracuje v oddělení zabezpečení. Mezi jejich odpovědnosti patří:
 
 * Nepřetržité monitorování a reagování na ohrožení zabezpečení.
 * Předávání řešení ohrožení vlastníkovi cloudových úloh nebo analytikovi zabezpečení (podle potřeby).
 
-Sam je analytik zabezpečení a mezi jeho povinnosti patří:
+Sam je analytikem zabezpečení a jejich zodpovědnosti zahrnují:
 
 * Vyšetřování útoků.
 * Napravování výstrah.
@@ -65,17 +65,17 @@ Sam je analytik zabezpečení a mezi jeho povinnosti patří:
 Jak vidíte, Judy a Sam mají rozdílné povinnosti a musí spolupracovat na sdílení informací ze Security Center.
 
 ## <a name="recommended-solution"></a>Doporučené řešení
-Vzhledem k tomu, že Judy a Sam mají rozdílné role, budou k získávání relevantních informací pro své denní aktivity používat různé části Security Center. Judy bude používat jako součást denního monitorování **Výstrahy zabezpečení**.
+Vzhledem k tomu, že Judy a Sam mají rozdílné role, budou k získávání relevantních informací pro své denní aktivity používat různé části Security Center. Jana bude používat **výstrahy zabezpečení** jako součást denního monitorování.
 
 ![Výstrahy zabezpečení](./media/security-center-incident-response/security-center-incident-response-fig3.png)
 
-Judy bude používat Výstrahy zabezpečení během fází Detekce a Vyhodnocení. Když Judy dokončí počáteční vyhodnocení, může v případě potřeby dalšího vyšetřování předat problém Samovi. V tomto okamžiku Sam použije informace, které obdržel ze Security Center, někdy i ve spojení s dalšími zdroji dat, a přejde k fázi Diagnostika.
+Judy bude používat Výstrahy zabezpečení během fází Detekce a Vyhodnocení. Až Jana dokončí prvotní posouzení, může problém předávat do Sam, pokud je potřeba další šetření. V tomto okamžiku Sam použije informace, které obdržel ze Security Center, někdy i ve spojení s dalšími zdroji dat, a přejde k fázi Diagnostika.
 
 ## <a name="how-to-implement-this-solution"></a>Postup implementace tohoto řešení
 Pro ukázku toho, jak byste použili Azure Security Center ve scénáři reakce na incident, budeme sledovat kroky Judy ve fázích Detekce a Vyhodnocení. Následně se podíváme, co udělá Sam, aby problém diagnostikoval.
 
 ### <a name="detect-and-assess-incident-response-stages"></a>Fáze reakce na incidenty Detekce a Vyhodnocení
-Judy se přihlásila k portálu Azure Portal a pracuje v konzole Security Center. Jako součást denních aktivit monitorování začala kontrolovat výstrahy zabezpečení s vysokou prioritou provedením následujících kroků:
+Judy se přihlásila k portálu Azure Portal a pracuje v konzole Security Center. V rámci každodenních aktivit monitorování začaly kontrolovat výstrahy zabezpečení s vysokou prioritou provedením následujících kroků:
 
 1. Kliknutím na dlaždici **Výstrahy zabezpečení** otevřete okno **Výstrahy zabezpečení**.
     ![Okno Výstrahy zabezpečení](./media/security-center-incident-response/security-center-incident-response-fig4.png)
@@ -84,19 +84,19 @@ Judy se přihlásila k portálu Azure Portal a pracuje v konzole Security Center
    > Pro účely tohoto scénáře provede Judy vyhodnocení výstrahy Škodlivá aktivita SQL, jak je znázorněno na předchozím obrázku.
    >
    >
-2. Klikněte na tlačítko **škodlivá aktivita SQL** výstrahy a zkontrolujte napadené prostředky v **škodlivá aktivita SQL** okno:  ![Podrobnosti o incidentu](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. Klikněte na výstrahu **škodlivá aktivita SQL** a zkontrolujte napadené prostředky v okně **škodlivá aktivita SQL** :  ![Podrobnosti o incidentu](./media/security-center-incident-response/security-center-incident-response-fig5.png)
 
     V tomto okně si Judy může dělat poznámky týkající se napadených prostředků, četnosti útoku a době jeho zjištění.
 3. Kliknutím na **napadený prostředek** získáte další informace o daném útoku.
 
-Po přečtení popisu je Judy přesvědčená, že se nejedná o falešný poplach, a že by měla předat tento případ Samovi.
+Po přečtení popisu je Jana Jana přesvědčena, že se nejedná o falešně pozitivní a že by měl tento případ zvýšit na Sam.
 
 ### <a name="diagnose-incident-response-stage"></a>Fáze reakce na incidenty Diagnostika
 Sam od Judy obdržel případ a začíná s kontrolováním nápravných kroků, které navrhuje Security Center.
 
 ![Životní cyklus reakce na incidenty](./media/security-center-incident-response/security-center-incident-response-fig6.png)
 
-### <a name="additional-resources"></a>Další materiály
+### <a name="additional-resources"></a>Další zdroje
 V případě společnosti, které při procesu šetření používají jeho řešení správy událostí a informací o zabezpečení (SIEM), může také [integrovat Security Center s vlastním řešením](security-center-integrating-alerts-with-log-integration.md). Můžete také integrovat protokoly auditu a události zabezpečení virtuálních počítačů Azure pomocí [nástroje pro integraci protokolů Azure](https://azure.microsoft.com/blog/introducing-hdinsight-integration-with-azure-log-analytics/). Při vyšetřování útoku můžete tyto informace použít ve spojení s informacemi, které poskytuje Security Center. Můžete také použít funkci [šetření](https://docs.microsoft.com/azure/security-center/security-center-investigation) ve službě Security Center, která vám pomůže určit původní příčinu incidentu.
 
 ## <a name="conclusion"></a>Závěr

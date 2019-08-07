@@ -1,69 +1,67 @@
 ---
-title: Správa datových prostředků ve službě Azure Data Catalog
-description: V článku se dozvíte, jak řídit viditelnost a vlastnictví datových assetů, které jsou registrované ve službě Azure Data Catalog.
-services: data-catalog
+title: Správa datových assetů v Azure Data Catalog
+description: Tento článek popisuje, jak ovládat viditelnost a vlastnictví datových assetů registrovaných v Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 623f5ed4-8da7-48f5-943a-448d0b7cba69
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 407e25b7bb1a2220448c9701bbef208195c50b63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 9905ed72ec54304bbdb0f7ee607cbb013fc645bb
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953110"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736342"
 ---
-# <a name="manage-data-assets-in-azure-data-catalog"></a>Správa datových prostředků ve službě Azure Data Catalog
+# <a name="manage-data-assets-in-azure-data-catalog"></a>Správa datových assetů v Azure Data Catalog
 ## <a name="introduction"></a>Úvod
-Azure Data Catalog je určen pro zdroj dat zjišťování, takže můžete snadno vyhledat a porozumět zdrojům dat, které potřebujete k provádění analýzy a rozhodování. Při vám a dalším uživatelům můžete najít a pochopit nejširší řadu dostupných zdrojů dat, tyto funkce zjišťování provést největší dopad. S těmito prvky v úvahu je výchozí chování katalogu Data Catalog pro všechny registrované datové zdroje bude viditelné a všichni uživatelé katalogu zjistitelné.
+Azure Data Catalog je navržená pro zjišťování zdrojů dat, abyste mohli snadno zjistit a pochopit zdroje dat, které potřebujete k analýze, a rozhodování. Tyto možnosti zjišťování mají největší dopad, když vy a jiní uživatelé můžete najít a pochopit nejširší škálu dostupných zdrojů dat. U těchto prvků je výchozím chováním Data Catalog, aby všechny registrované zdroje dat byly viditelné a zjistitelné všemi uživateli katalogu.
 
-Data Catalog neposkytuje přístup k samotným datům. Vlastník zdroje dat se řídí přístup k datům. Pomocí katalogu Data Catalog můžete zjistit zdroje dat a zobrazit metadata, která je související se zdroji zaregistrovanými v katalogu.
+Data Catalog vám nedává přístup k samotným datům. Přístup k datům je řízen vlastníkem zdroje dat. Pomocí Data Catalog můžete zjistit zdroje dat a zobrazit metadata související se zdroji registrovanými v katalogu.
 
-Můžou nastat situace, ale pokud být zdroje dat by měl pouze viditelné pro konkrétní uživatele, nebo členy určitých skupin. V takových scénářích uživatelé převzít vlastnictví registrovaných datových assetů v katalogu a následně řídit viditelnost assetů, které vlastní.
-
-> [!NOTE]
-> Funkce popsané v tomto článku je k dispozici pouze v nástroje Azure Data Catalog Standard Edition. Edice Free neposkytuje funkce pro vlastnictví a omezení viditelnosti datovému assetu.
->
->
-
-## <a name="manage-ownership-of-data-assets"></a>Správa vlastnictví datových prostředků
-Ve výchozím nastavení nevlastněný datových assetů, které jsou registrované ve službě Data Catalog. Každý uživatel s oprávněním pro přístup ke katalogu lze můžete zjišťovat a anotovat tyto prostředky. Uživatelé mohou převzít vlastnictví nevlastněný datové prostředky a pak omezit viditelnost assetů, které vlastní.
-
-Když k datovému assetu ve službě Data Catalog je vlastní, pouze uživatelé, kteří mají oprávnění vlastníky můžete zjistit assetu a zobrazit jeho metadata, a pouze vlastníci můžete odstranit i asset z katalogu.
+Mohou však nastat situace, kdy mají být zdroje dat viditelné pouze pro určité uživatele nebo členy určitých skupin. V takových scénářích mohou uživatelé převzít vlastnictví registrovaných datových assetů v katalogu a pak řídit viditelnost prostředků, které vlastní.
 
 > [!NOTE]
-> Ve službě Data Catalog vlastnictví ovlivňuje pouze metadata, která je uložena v katalogu. Vlastnictví neuděluje žádná oprávnění na podkladový zdroj dat.
+> Funkce popsané v tomto článku jsou k dispozici pouze v edici Standard Azure Data Catalog. Edice Free neposkytuje funkce pro vlastnictví a omezení viditelnosti datových assetů.
 >
 >
 
-### <a name="take-ownership"></a>Přebírat vlastnictví
-Uživatelé můžou převzít vlastnictví datových prostředků tak, že vyberete **převzít vlastnictví** možnost portálu Data Catalog. Žádná zvláštní oprávnění nejsou vyžadována převzít vlastnictví assetu nevlastněný data. Každý uživatel může převzít vlastnictví assetu nevlastněný data.
+## <a name="manage-ownership-of-data-assets"></a>Správa vlastnictví datových assetů
+Ve výchozím nastavení nejsou datové prostředky registrované v Data Catalog nevlastní. Každý uživatel s oprávněním pro přístup ke katalogu může tyto prostředky vyhledat a opatřit poznámkami. Uživatelé mohou převzít vlastnictví nevlastněných datových assetů a potom omezit viditelnost prostředků, které vlastní.
 
-### <a name="add-owners-and-co-owners"></a>Přidat vlastníky a spoluvlastníků
-Pokud už ho vlastní datový prostředek, nemůže ostatním uživatelům jednoduše převzít vlastnictví. Je třeba přidat jako spoluvlastníky pomocí stávající vlastník. Žádné vlastníka můžete přidat další uživatele nebo skupiny zabezpečení jako spoluvlastníky.
+Když je ve vlastnictví datového assetu Data Catalog, můžou assety zjistit a zobrazit jeho metadata a jenom vlastníci mohou odstranit Asset z katalogu.
 
 > [!NOTE]
-> Je vhodné mít aspoň dva jednotlivce vlastníků pro všechny vlastněné datovému assetu.
+> Vlastnictví v Data Catalog ovlivní pouze metadata, která jsou uložena v katalogu. Vlastnictví neuděluje žádná oprávnění k základnímu zdroji dat.
+>
+>
+
+### <a name="take-ownership"></a>Převzít vlastnictví
+Uživatelé mohou převzít vlastnictví datových assetů výběrem možnosti **převzít vlastnictví** na portálu Data Catalog. K převzetí vlastnictví nevlastněného datového assetu se nevyžadují žádná zvláštní oprávnění. Každý uživatel může převzít vlastnictví nevlastněného datového prostředku.
+
+### <a name="add-owners-and-co-owners"></a>Přidat vlastníky a spoluvlastníky
+Pokud je již datový prostředek vlastněn, ostatní uživatelé nemohou jednoduše převzít vlastnictví. Musí být přidáni jako spoluvlastníci stávající vlastník. Každý vlastník může jako spoluvlastníky přidat další uživatele nebo skupiny zabezpečení.
+
+> [!NOTE]
+> Osvědčeným postupem je mít alespoň dvě jednotlivce jako vlastníci pro jakýkoliv vlastněný datový Asset.
 >
 >
 
 ### <a name="remove-owners"></a>Odebrat vlastníky
-Stejně jako jakékoli vlastník majetku můžete přidat spoluvlastníky, můžete odebrat všechny vlastník majetku jakékoli spoluvlastníka.
+Stejně jako vlastník prostředku může přidat spoluvlastníci, může kterýkoli vlastník prostředku odebrat všechny spoluvlastníky.
 
-Vlastníka prostředku, který odebere sami jako vlastníka již nemůže spravovat assetu. Pokud neexistují žádné spoluvlastníků, vlastník majetku odebere sami jako vlastníka prostředku se vrátí do nevlastněný stavu.
+Vlastník assetu, který se odebere sám jako vlastník, už nemůže spravovat Asset. Pokud vlastník prostředku odebere sám sebe jako vlastníka a neexistují žádní spoluvlastníci, Asset se vrátí do stavu nevlastnictví.
 
-## <a name="control-visibility"></a>Přehled ovládacího prvku
-Vlastníky datového prostředku můžete řídit viditelnost datových prostředků, které vlastní. Chcete-li omezit viditelnost jako výchozí, ve kterém všichni uživatelé katalogu Data Catalog může zjištění a zobrazení datovému assetu, vlastník majetku můžete přepínat viditelnost nastavení z **Everyone** k **vlastníci a tito uživatelé** v vlastnosti pro prostředek. Vlastníci poté můžete přidat konkrétního uživatele a skupiny zabezpečení.
+## <a name="control-visibility"></a>Viditelnost ovládacího prvku
+Vlastníci assetů dat můžou řídit viditelnost datových prostředků, které vlastní. Chcete-li omezit viditelnost jako výchozí, kde všichni Data Catalog uživatelé mohou vyhledat a zobrazit datový Asset, může vlastník prostředků přepnout nastavení viditelnosti ze **všech** na **vlastníky & tito uživatelé** ve vlastnostech daného prostředku. Vlastníci potom můžou přidat konkrétní uživatele a skupiny zabezpečení.
 
 > [!NOTE]
-> Kdykoli je to možné, měla být přiřazena oprávnění vlastnictví a viditelnosti prostředku na skupiny zabezpečení a ne pro jednotlivé uživatele.
+> Kdykoli je to možné, oprávnění k vlastnictví prostředků a viditelnosti by se měla přiřadit skupinám zabezpečení, nikoli jednotlivým uživatelům.
 >
 >
 
 ## <a name="catalog-administrators"></a>Správci katalogu
-Správci služby Data Catalog jsou implicitně spoluvlastníky nad všemi prostředky v katalogu. Vlastníkům prostředků nejde odebrat viditelnost před správci a správci můžou spravovat vlastnictví a viditelnost pro všechny datové assety v katalogu.
+Správci Data Catalog jsou implicitně spoluvlastníci všech assetů v katalogu. Vlastníci prostředků nemohou odebrat viditelnost správců a správci mohou spravovat vlastnictví a viditelnost všech datových assetů v katalogu.
 
 ## <a name="summary"></a>Souhrn
-Data Catalog crowdsourcingový model na metadata a data zjišťování prostředků umožňuje všem uživatelům katalogu přispívat a zjišťování. Standardní edice Data Catalog je určen pro vlastnictví a správu omezit viditelnost a použití konkrétní datové assety.
+Model Data Catalog crowdsourcingový pro metadata a zjišťování datových assetů umožňuje všem uživatelům katalogu přispívat a zjišťovat. Edice Standard Data Catalog je navržená k vlastnictví a správě, aby omezila viditelnost a používání konkrétních datových assetů.

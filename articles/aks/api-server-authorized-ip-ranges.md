@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 6516bbcb4ea879279812d61d9fe31f1ea4268280
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7dcf962345a2453fca52825c4be33a439d25df54
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67616244"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740940"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Náhled – zabezpečený přístup k serveru rozhraní API pomocí povolených rozsahů IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -218,13 +218,13 @@ Pokud chcete povolit rozsahy IP adres autorizovaných serverem API, zadejte sezn
 
 Použijte příkaz [AZ AKS Update][az-aks-update] a určete *Rozsah--API-Server-povoleno-IP* -rozsahy, které chcete povolit. Tyto rozsahy IP adres jsou obvykle rozsahy adres používané vašimi místními sítěmi. Přidejte veřejnou IP adresu vlastní brány Azure firewall získanou v předchozím kroku, například *20.42.25.196/32*.
 
-Následující příklad povoluje rozsahy IP adres ověřených serverem API v clusteru s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*. Rozsahy IP adres, které se mají autorizovat, jsou *20.42.25.196/32* (veřejná IP adresa brány firewall Azure) a pak *172.0.0.10/16* a *168.10.0.10/18*:
+Následující příklad povoluje rozsahy IP adres ověřených serverem API v clusteru s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*. Rozsahy IP adres, které se mají autorizovat, jsou *20.42.25.196/32* (veřejná IP adresa brány firewall Azure) a pak *172.0.0.0/16* a *168.10.0.0/18*:
 
 ```azurecli-interactive
 az aks update \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.10/16,168.10.0.10/18
+    --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>Aktualizovat nebo zakázat schválené rozsahy IP adres

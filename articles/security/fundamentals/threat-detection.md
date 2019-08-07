@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 500ae75f9bf53c1633290e706e33165dd9d67a88
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 4e33b22c5bc931685f5848db55fc4b9b8fc6eafe
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726616"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780607"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
 
@@ -216,7 +216,7 @@ Tato kombinovaná snaha má za následek nové a vylepšené detekce, na které 
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>Virtuální počítače: Antimalwarový software Microsoftu
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) pro Azure je jedním z agentů pro aplikace a klientská prostředí navržená tak, aby běžela na pozadí bez zásahu člověka. Ochranu můžete nasadit v závislosti na potřebách úloh aplikací, a to buď pomocí základní zabezpečené, nebo pokročilé vlastní konfigurace, včetně antimalwarového monitorování. Azure antimalware je možnost zabezpečení pro virtuální počítače Azure, která je automaticky nainstalovaná na všech virtuálních počítačích Azure PaaS.
+[Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) pro Azure je jedním z agentů pro aplikace a klientská prostředí navržená tak, aby běžela na pozadí bez zásahu člověka. Ochranu můžete nasadit v závislosti na potřebách úloh aplikací, a to buď pomocí základní zabezpečené, nebo pokročilé vlastní konfigurace, včetně antimalwarového monitorování. Azure antimalware je možnost zabezpečení pro virtuální počítače Azure, která je automaticky nainstalovaná na všech virtuálních počítačích Azure PaaS.
 
 #### <a name="microsoft-antimalware-core-features"></a>Základní funkce Microsoft antimalwaru
 
@@ -382,7 +382,7 @@ Firewall webových aplikací nabízí následující výhody:
 
 Příklady bran firewall webových aplikací, které jsou k dispozici v Azure Marketplace, najdete v tématu [Barracuda WAF, firewall pro Virtual Web Application firewall (vWAF), Imperva SecureSphere a ThreatSTOP IP adresa](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Možnosti detekce Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-detection-capabilities): Pomáhá identifikovat aktivní hrozby, které cílí na vaše prostředky Azure, a poskytuje přehledy, které potřebujete k rychlé reakci.
 

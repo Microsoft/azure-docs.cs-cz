@@ -1,87 +1,85 @@
 ---
-title: Jak pracovat s daty profilování zdroje dat ve službě Azure Data Catalog
-description: Článek zvýraznění zahrnují profily úrovni tabulky a sloupce dat, při registraci zdroje dat ve službě Azure Data Catalog a porozumět zdrojům dat pomocí data profilů.
-services: data-catalog
+title: Jak používat zdroje dat profilování dat v Azure Data Catalog
+description: Postup popisuje, jak zahrnout profily dat na úrovni tabulky a sloupců při registraci zdrojů dat v Azure Data Catalog a jak používat datové profily k pochopení zdrojů dat.
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 94a8274b-5c9c-4962-a4b1-2fed38a3d919
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 64185a951b25b4e04ea5fc65aeede9b0e617d0c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 0de7b6f0668c84c22b81cd9104a49599760143c1
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61001685"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737031"
 ---
 # <a name="data-profile-data-sources"></a>Zdroje dat profilů dat
 ## <a name="introduction"></a>Úvod
-**Microsoft Azure Data Catalog** je plně spravovaná Cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. Jinými slovy **Azure Data Catalog** se točí kolem lidé zjišťovat, pochopit a používat zdroje dat a pomáhá organizacím vytěžit více z jejich stávajících dat. Když je zdroj dat zaregistrován ve službě **Azure Data Catalog**, se zkopíruje a službou indexována, jeho metadata, ale scénář nekončí existuje.
+**Microsoft Azure Data Catalog** je plně spravovaná cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. Jinými slovy **Azure Data Catalog** je vše, co je potřeba k tomu, aby lidé mohli zjišťovat, pochopit a používat zdroje dat a pomáhat organizacím získat větší hodnotu z jejich stávajících dat. Pokud je zdroj dat zaregistrován ve **Azure Data Catalog**, jeho metadata jsou zkopírována a indexována službou, ale tento scénář nekončí.
 
-**Data profilace** funkce **Azure Data Catalog** zkontroluje data z podporovaných zdrojů dat ve vašem katalogu a shromažďuje statistické údaje a informace o těchto datech. Je snadné zahrnout profil tvořeného těmito daty. Když si zaregistrujete k datovému assetu, zvolte **zahrnout profil dat** v nástroji pro registraci zdroje dat.
+Funkce **profilace dat** **Azure Data Catalog** prověřuje data z podporovaných zdrojů dat ve vašem katalogu a shromažďuje statistické údaje a informace o těchto datech. Je snadné zahrnout profil datových assetů. Při registraci datového prostředku vyberte možnost **Zahrnout profil dat** do nástroje pro registraci zdroje dat.
 
-## <a name="what-is-data-profiling"></a>Co je dat profilace
-Data profilování zkontroluje dat ve zdroji dat, které jsou registrovány a shromažďuje statistické údaje a informace o těchto datech. Během zjišťování zdrojů dat ve statistikách vám může pomoct určit vhodnost data k vyřešení obchodního problému.
+## <a name="what-is-data-profiling"></a>Co je profilace dat
+Profilace dat ověřuje data ve zdroji dat, který se zaregistruje, a shromažďuje statistické údaje a informace o těchto datech. Během zjišťování zdrojů dat vám tyto statistiky pomůžou určit vhodnost dat k vyřešení jejich obchodních problémů.
 
 <!-- In [How to discover data sources](data-catalog-how-to-discover.md), you learn about **Azure Data Catalog's** extensive search capabilities including searching for data assets that have a profile. See [How to include a data profile when registering a data source](#howto). -->
 
-Následující zdroje dat podporují data profilování:
+Profilace dat podporují následující zdroje dat:
 
-* Tabulky a zobrazení SQL serveru (včetně Azure SQL Database a Azure SQL Data Warehouse)
-* Oracle tabulek a zobrazení
-* Teradata tabulek a zobrazení
-* Tabulek Hive
+* SQL Server (včetně tabulek a zobrazení Azure SQL DB a Azure SQL Data Warehouse)
+* Tabulky a zobrazení Oracle
+* Tabulky a zobrazení Teradata
+* Tabulky podregistru
 
-Včetně profily dat při registraci datových assetů uživatelům pomůžou odpovědět na otázky o zdrojích dat, včetně:
+Zahrnutí profilů dat při registraci datových assetů pomáhá uživatelům odpovídat na dotazy týkající se zdrojů dat, včetně:
 
-* Lze ji použít k vyřešení obchodního problému?
-* Data v souladu s konkrétní standardy nebo vzorce?
-* V čem spočívají anomálií zdroje dat?
-* Jaké jsou možné problémy integrace těchto dat do mé aplikace?
+* Dá se použít k vyřešení svého obchodního problému?
+* Odpovídají data konkrétním standardům nebo vzorům?
+* Jaké jsou některé anomálie zdroje dat?
+* Co jsou možné problémy s integrací těchto dat do své aplikace?
 
 > [!NOTE]
-> Dokumentace ke službě můžete také přidat na prostředek, popisující, jak může integrovat data do aplikace. Zobrazit [postup dokumentování zdrojů dat](data-catalog-how-to-documentation.md).
+> Můžete také přidat dokumentaci k assetu, která popisuje, jak mohou být data integrována do aplikace. Podívejte [se, jak dokumentovat zdroje dat](data-catalog-how-to-documentation.md).
 >
 >
 
 <a name="howto"/>
 
-## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Postup při registraci zdroje dat zahrnutí dat profilu
-Je snadné zahrnout profil dat zdroje. Při registraci zdroje dat, v **objekty k registraci** panel Nástroj registrace zdroje dat, zvolte **zahrnout profil dat**.
+## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Jak zahrnout datový profil při registraci zdroje dat
+Je snadné zahrnout profil zdroje dat. Při registraci zdroje dat vyberte v panelu objekty, **které mají být registrovány** v nástroji pro registraci zdroje dat možnost **Zahrnout profil dat**.
 
 ![](media/data-catalog-data-profile/data-catalog-register-profile.png)
 
-Další informace o tom, jak zaregistrovat zdroje dat, naleznete v tématu [postup registrace zdrojů dat](data-catalog-how-to-register.md) a [Začínáme s Azure Data Catalog](data-catalog-get-started.md).
+Další informace o tom, jak registrovat zdroje dat, najdete v tématu [jak registrovat zdroje dat](data-catalog-how-to-register.md) a začít [s Azure Data Catalog](data-catalog-get-started.md).
 
-## <a name="filtering-on-data-assets-that-include-data-profiles"></a>Filtrování datových assetů, které zahrnují data profily
-Ke zjištění datových assetů, které zahrnují data profilu, můžete zahrnout `has:tableDataProfiles` nebo `has:columnsDataProfiles` jako jeden z hledané výrazy.
+## <a name="filtering-on-data-assets-that-include-data-profiles"></a>Filtrování datových assetů, které obsahují profily dat
+Chcete-li zjistit datové assety, které obsahují datový profil, `has:tableDataProfiles` můžete `has:columnsDataProfiles` zahrnout nebo jako jeden z hledaných výrazů.
 
 > [!NOTE]
-> Výběr **zahrnout profil dat** ve zdroji dat obsahuje nástroj pro registraci tabulky a informace o profilu úrovni sloupce. Rozhraní API katalogu Data Catalog, ale umožňuje datových assetů, které mají být registrována pomocí pouze jednu sadu zahrnuty informace o profilu.
+> Výběr možnosti **Zahrnout profil dat** v nástroji pro registraci zdroje dat zahrnuje informace o profilu na úrovni tabulky i sloupce. Rozhraní Data Catalog API však umožňuje registraci datových assetů pouze s jednou sadou informací o profilu.
 >
 >
 
 ## <a name="viewing-data-profile-information"></a>Zobrazení informací o profilu dat
-Jakmile najdete vhodné datovému zdroji prostřednictvím profilu, můžete zobrazit podrobnosti dat profilu. Chcete-li zobrazit profil dat, vyberte datový prostředek a zvolte **profil dat** v okně portálu katalogu Data Catalog.
+Jakmile najdete vhodný zdroj dat s profilem, můžete zobrazit podrobnosti o profilu dat. Chcete-li zobrazit datový profil, vyberte datový Asset a zvolte **datový profil** v okně data Catalogového portálu.
 
 ![](media/data-catalog-data-profile/data-catalog-view.png)
 
-Profil dat v **Azure Data Catalog** zobrazuje tabulky a sloupce profil informace včetně:
+Datový profil v **Azure Data Catalog** zobrazuje informace o profilu tabulky a sloupce, včetně:
 
-### <a name="object-data-profile"></a>Profil dat objektu
+### <a name="object-data-profile"></a>Datový profil objektu
 * Počet řádků
 * Velikost tabulky
-* Kdy byl objekt naposledy aktualizována
+* Čas poslední aktualizace objektu
 
-### <a name="column-data-profile"></a>Profil sloupce dat.
+### <a name="column-data-profile"></a>Datový profil sloupce
 * Datový typ sloupce
 * Počet jedinečných hodnot
 * Počet řádků s hodnotami NULL
-* Minimum, maximum, průměr a směrodatné odchylky hodnot sloupců
+* Minimální, maximální, průměrná a směrodatná odchylka pro hodnoty sloupce
 
 ## <a name="summary"></a>Souhrn
-Data profilování poskytuje statistické údaje a informace o registrovaných datových assetů, které vám pomohou určit vhodnost dat k řešení obchodních problémů. Zadávání poznámek a dokumentování zdrojů dat, data profily můžete uživatelům udělit lépe pochopit vaše data.
+Profilace dat poskytuje statistiku a informace o registrovaných datových prostředcích, které vám pomůžou určit vhodnost dat k řešení obchodních problémů. Spolu s přidáváním poznámek a dokumentací zdrojů dat můžou profily dat uživatelům získat hlubší přehled o vašich datech.
 
 ## <a name="see-also"></a>Viz také
 * [Postup registrace zdrojů dat](data-catalog-how-to-register.md)

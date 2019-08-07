@@ -1,5 +1,5 @@
 ---
-title: 'Připojení místní sítě ke službě Azure virtual network: Síť Site-to-Site VPN: Portál | Dokumentace Microsoftu'
+title: 'Připojení místní sítě k virtuální síti Azure: Síť VPN typu Site-to-site: Portál | Microsoft Docs'
 description: Postup vytvoření připojení IPsec z vaší místní sítě k virtuální síti Azure přes veřejný internet. Tyto kroky vám pomůžou vytvořit připojení VPN Gateway typu Site-to-Site mezi různými místy pomocí portálu.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b4be7464a4c19cd0a71d5a786b46091cdbc074b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407541"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780116"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Vytvoření připojení typu Site-to-Site na webu Azure Portal
 
@@ -30,7 +30,7 @@ Připojení brány VPN typu Site-to-Site slouží k připojení místní sítě 
 
 ![Diagram připojení VPN Gateway typu Site-to-Site mezi různými místy](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -42,23 +42,23 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
 V příkladech v tomto článku se používají následující hodnoty. Tyto hodnoty můžete použít k vytvoření testovacího prostředí nebo můžou sloužit k lepšímu pochopení příkladů v tomto článku. Další celkové informace o nastavení VPN Gateway najdete v tématu [Informace o nastavení služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md).
 
-* **Název virtuální sítě:** TestVNet1
+* **Název virtuální sítě:** VNet1
 * **Adresní prostor:** 10.1.0.0/16
-* **Předplatné:** Předplatné, které chcete použít
+* **Formě** Předplatné, které chcete použít
 * **Skupina prostředků:** TestRG1
-* **Umístění:** USA – východ
-* **Podsíť:** Front-endu: 10.1.0.0/24, back-endu: 10.1.1.0/24 (volitelné pro toto cvičení)
-* **Název podsítě brány:** GatewaySubnet (Toto se automaticky vyplnit na portálu)
+* **Oblasti** East US
+* **Podsíť** Endy 10.1.0.0/24, back-end: 10.1.1.0/24 (volitelné pro toto cvičení)
+* **Název podsítě brány:** GatewaySubnet (automaticky se vyplní portál)
 * **Rozsah adres podsítě brány:** 10.1.255.0/27
-* **DNS Server:** 8.8.8.8 – volitelné. IP adresa vašeho serveru DNS
-* **Název brány virtuální sítě:** VNet1GW
+* **Server DNS:** 8.8.8.8 – volitelné. IP adresa vašeho serveru DNS
+* **Název Virtual Network brány:** VNet1GW
 * **Veřejná IP adresa:** VNet1GWIP
-* **Typ sítě VPN:** Trasové
+* **Typ sítě VPN:** Založeno na směrování
 * **Typ připojení:** Site-to-site (IPsec)
 * **Typ brány:** Síť VPN
 * **Název brány místní sítě:** Site1
 * **Název připojení:** VNet1toSite1
-* **Sdílený klíč:** V tomto příkladu použijeme abc123. Můžete ale použít cokoli, co je kompatibilní s hardwarem sítě VPN. Důležité je, že si tyto hodnoty odpovídají na obou stranách připojení.
+* **Sdílený klíč:** V tomto příkladu používáme abc123. Můžete ale použít cokoli, co je kompatibilní s hardwarem sítě VPN. Důležité je, že si tyto hodnoty odpovídají na obou stranách připojení.
 
 ## <a name="CreatVNet"></a>1. Vytvoření virtuální sítě
 
@@ -66,9 +66,11 @@ V příkladech v tomto článku se používají následující hodnoty. Tyto hod
 
 ## <a name="dns"></a>2. Určení serveru DNS
 
-DNS se k vytvoření připojení Site-to-Site nevyžaduje. Pokud ale chcete umožnit překlad IP adres pro prostředky nasazované do vaší virtuální sítě, měli byste určit server DNS. Toto nastavení umožňuje určit server DNS, který chcete použít pro překlad IP adres pro tuto virtuální síť. Neslouží k vytvoření serveru DNS. Další informace o překladu IP adres najdete v tématu [Překlad názvů pro instance rolí a VM](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+DNS se k vytvoření připojení Site-to-Site nevyžaduje.
 
-[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-specify-dns-portal-include.md)]
+Pokud ale chcete umožnit překlad IP adres pro prostředky nasazované do vaší virtuální sítě, měli byste určit server DNS. Toto nastavení umožňuje určit server DNS, který chcete použít pro překlad IP adres pro tuto virtuální síť. Neslouží k vytvoření serveru DNS. Další informace o překladu IP adres najdete v tématu [Překlad názvů pro instance rolí a VM](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+
+[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## <a name="gatewaysubnet"></a>3. Vytvoření podsítě brány
 

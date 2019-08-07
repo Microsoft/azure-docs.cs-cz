@@ -1,65 +1,65 @@
 ---
-title: Zjišťování zdrojů dat ve službě Azure Data Catalog
-description: V tomto článku se dozvíte, jak zjistit registrované datové assety pomocí služby Azure Data Catalog, včetně vyhledávání a filtrování a pomocí přístupů zvýraznění funkcí portálu Azure Data Catalog.
+title: Postup zjišťování zdrojů dat v Azure Data Catalog
+description: V tomto článku se naučíte, jak zjistit registrované datové assety pomocí Azure Data Catalog, včetně vyhledávání a filtrování a používání možností zvýrazňování Azure Data Catalog na portálu.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: b21bf1b50152130d7b6edd227c87fcaca28c1e6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: b12cb94832a1ea977fb13f5f2271984dc8780cee
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61001413"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736372"
 ---
-# <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Zjišťování zdrojů dat ve službě Azure Data Catalog
+# <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Postup zjišťování zdrojů dat v Azure Data Catalog
 
 ## <a name="introduction"></a>Úvod
 
-Azure Data Catalog je plně spravovaná Cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. Jinými slovy katalogu Data Catalog umožňuje uživatelům zjišťovat, pochopit a používat zdroje dat. Pomáhá organizacím vytěžit více z jejich existující data. Po registraci zdroje dat pomocí služby Data Catalog jeho metadata jsou indexována službou, takže můžete snadno vyhledat potřebná data zjišťování.
+Azure Data Catalog je plně spravovaná cloudová služba, která slouží jako systém registrace a zjišťování pro podnikové zdroje dat. Jinými slovy Data Catalog pomáhá lidem zjišťovat, pochopit a používat zdroje dat. Pomáhá organizacím získat větší hodnotu z jejich stávajících dat. Po zaregistrování zdroje dat ve službě Data Catalog jsou jeho metadata indexována službou, takže můžete snadno vyhledávat data, která potřebujete.
 
-## <a name="searching-and-filtering"></a>Vyhledávání a filtrování
+## <a name="searching-and-filtering"></a>Hledání a filtrování
 
-Zjišťování ve službě Data Catalog používá dva primární mechanismy: vyhledávání a filtrování.
+Zjišťování v Data Catalog používá dva primární mechanismy: hledání a filtrování.
 
 Vyhledávání je koncipováno tak, aby bylo jak intuitivní, tak výkonné. Ve výchozím nastavení se vyhledává shoda hledaných výrazů s libovolnou vlastností v katalogu včetně poznámek přidaných uživatelem.
 
-Filtrování je koncipováno jako doplněk k vyhledávání. Můžete vybrat konkrétní charakteristiky, jako je například odborníky, typ zdroje dat, typ objektu a značky. Můžete zobrazit pouze datové assety odpovídající a omezit výsledky vyhledávání na odpovídající prostředky.
+Filtrování je koncipováno jako doplněk k vyhledávání. Můžete vybrat konkrétní vlastnosti, jako jsou například odborníci, typ zdroje dat, typ objektu a značky. Můžete zobrazit pouze vyhovující datové assety a omezit výsledky hledání na vyhovující prostředky.
 
-Pomocí kombinace vyhledávání a filtrování vám umožní rychle procházet zdroje dat, které byly registrovány ve službě Data Catalog ke zjišťování zdrojů dat, které potřebujete.
+Pomocí kombinace hledání a filtrování můžete rychle přejít ke zdrojům dat, které byly zaregistrovány v Data Catalog, abyste zjistili, jaké zdroje dat potřebujete.
 
 ## <a name="search-syntax"></a>Syntaxe služby Search
 
-Přestože výchozí textové vyhledávání je jednoduché a intuitivní, můžete také použít syntaxe hledání v katalogu Data Catalog pro větší kontrolu nad výsledky hledání. Vyhledávání ve službě data Catalog podporuje následujících postupů:
+I když je výchozí volné vyhledávání jednoduché a intuitivní, můžete také použít syntaxi hledání Data Catalog pro lepší kontrolu nad výsledky hledání. Data Catalog Search podporuje následující techniky:
 
-| Technika | Použití | Příklad: |
+| Technika | Použití | Příklad |
 | --- | --- | --- |
-| Základní vyhledávání |Základní vyhledávání, která používá jeden či více hledaných výrazů. Výsledky se zobrazí veškeré assety, které odpovídají jakékoli vlastnosti s jednou nebo více zadaných výrazů. |`sales data` |
-| Zkoumání vlastností |Vrátí pouze ty zdroje dat, kde se hledaný termín shoduje se zadanou vlastností. |`name:finance` |
-| Logické operátory |Rozšíří nebo zúží vyhledávání pomocí logických operací. |`finance NOT corporate` |
-| Seskupování pomocí závorek |Použití závorek k seskupení části dotazu k dosažení logické izolace, zejména ve spojení s logickými operátory. |`name:finance AND (tags:Q1 OR tags:Q2)` |
-| Operátory porovnání |Použijte porovnávání jiné než rovnost pro vlastnosti, které mají číselné a číselné datové typy. |`modifiedTime > "11/05/2014"` |
+| Základní hledání |Základní vyhledávání, které používá jeden nebo více hledaných výrazů. Výsledkem jsou všechny prostředky, které odpovídají libovolné vlastnosti s jedním nebo více zadanými podmínkami. |`sales data` |
+| Rozsah vlastností |Vrátí pouze zdroje dat, ve kterých je hledaný termín shodný se zadanou vlastností. |`name:finance` |
+| Logické operátory |Rozrozšiřte nebo zužte hledání pomocí logických operací. |`finance NOT corporate` |
+| Seskupení s kulatými závorkami |Použijte kulaté závorky k seskupení částí dotazu k dosažení logické izolace, zejména ve spojení s logickými operátory. |`name:finance AND (tags:Q1 OR tags:Q2)` |
+| Operátory porovnání |Použijte porovnání jiné než rovnost pro vlastnosti, které mají číselné a datové datové typy. |`modifiedTime > "11/05/2014"` |
 
-Další informace o vyhledávání ve službě Data Catalog, najdete v článku [Azure Data Catalog](/rest/api/datacatalog/#search-syntax-reference) článku.
+Další informace o Data Catalog hledání naleznete v článku [Azure Data Catalog](/rest/api/datacatalog/#search-syntax-reference) .
 
 ## <a name="hit-highlighting"></a>Zvýrazňování položek
 
-Při zobrazení výsledků hledání, všechny zobrazené vlastnosti, které odpovídají zadaným hledaným výrazům (jako je například název datového assetu, popis a značky) jsou zvýrazněny k němu snadněji určit, proč se daný datový prostředek vrátil zadaným hledáním.
+Při zobrazení výsledků hledání se zvýrazní všechny zobrazené vlastnosti, které odpovídají zadaným hledaným podmínkám (například název datového assetu, popis a značky), aby bylo snazší zjistit, proč daný datový Asset vrátil konkrétní hledání.
 
 > [!NOTE]
-> Chcete-li vypnout zvýrazňování shod, použijte **zvýrazněte** přepnout na portálu pro Data Catalog.
+> Zvýrazňování přístupů vypnete tak, že na Data Catalogovém portálu použijete přepínač **zvýraznění** .
 
-Při zobrazení výsledků hledání, nemusí být vždy zřejmé důvod, proč k datovému assetu je součástí, dokonce i zvýrazňování shod povolena. Vzhledem k tomu, že ve výchozím nastavení jsou prohledány všechny vlastnosti, může být vrácena k datovému assetu z důvodu shodu na úrovni sloupců vlastností. A protože více uživatelů může opatřit poznámkami registrovaných datových assetů pomocí vlastní značky a popisy, některá metadata se zobrazí v seznamu výsledků hledání.
+Při zobrazení výsledků hledání nemusí být vždy zřejmé, proč se datový Asset zahrnuje, a to i s povoleným zvýrazňováním přístupů. Vzhledem k tomu, že všechny vlastnosti jsou prohledávány ve výchozím nastavení, může být datový Asset vrácen z důvodu shody s vlastností na úrovni sloupce. A vzhledem k tomu, že více uživatelů může opatřit zaregistrovanými datovými prostředky pomocí vlastních značek a popisů, nezobrazí se v seznamu výsledků hledání všechna metadata.
 
-Ve výchozím zobrazení vedle sebe, obsahuje každou dlaždici se zobrazí ve výsledcích hledání **zobrazení hledaný termín shoduje** ikonu, tak, že můžete rychle zobrazit počet shod a jejich umístění a můžete přejít k nim, chcete-li.
+Ve výchozím zobrazení dlaždice Každá dlaždice zobrazená ve výsledcích hledání zahrnuje ikonu **zobrazení hledaného termínu** , která odpovídá ikoně, takže můžete rychle zobrazit počet shod a jejich umístění a přejít na ně, pokud chcete.
 
- ![Zvýrazňování a hledání odpovídá na portálu Azure Data Catalog](./media/data-catalog-how-to-discover/search-matches.png)
+ ![Zvýrazňování přístupů a shody hledání na Azure Data Catalogovém portálu](./media/data-catalog-how-to-discover/search-matches.png)
 
 ## <a name="summary"></a>Souhrn
 
-Protože registrace zdroje dat pomocí služby Data Catalog zkopíruje strukturální a popisná metadata ze zdroje dat ve službě katalogu, je jednodušší zdroj dat zjišťování a pochopení. Po zaregistrování zdroje dat, můžete jej zjistit pomocí filtrování a hledání z v rámci portálu katalogu Data Catalog.
+Vzhledem k tomu, že registrace zdroje dat s Data Catalog kopíruje strukturální a popisné metadata ze zdroje dat do služby katalogu, bude zdroj dat snazší zjistit a pochopit. Po zaregistrování zdroje dat ho můžete zjistit pomocí filtrování a hledání v rámci Data Catalogového portálu.
 
 ## <a name="next-steps"></a>Další postup
 
-* Podrobné informace o tom, jak zjistit zdroje dat, naleznete v tématu [Začínáme s Azure Data Catalog](data-catalog-get-started.md).
+* Podrobné informace o tom, jak zjistit zdroje dat, najdete v tématu [Začínáme s Azure Data Catalog](data-catalog-get-started.md).

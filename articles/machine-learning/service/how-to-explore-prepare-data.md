@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: f680a1cb15edf0141897c74da3b7c7afa01acae0
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 31a367fcde909f393efa4fea65b25716f95c56ee
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699117"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828431"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Zkoumání a Příprava dat pomocí třídy DataSet (Preview)
 
@@ -35,7 +35,7 @@ K prozkoumávání a přípravě dat budete potřebovat:
 
 * Sada SDK Azure Machine Learning pro Python (verze 1.0.21 nebo novější), která obsahuje balíček AzureML-DataSets. Chcete-li nainstalovat nebo aktualizovat nejnovější verzi sady SDK, přečtěte si téma [instalace nebo aktualizace sady SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-* Sada Azure Machine Learning data PREP SDK. Informace o instalaci nebo aktualizaci na nejnovější verzi najdete v tématu [instalace nebo aktualizace sady SDK pro přípravu dat](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install).
+* Sada Azure Machine Learning data PREP SDK. Informace o instalaci nebo aktualizaci na nejnovější verzi najdete v tématu [instalace nebo aktualizace sady SDK pro přípravu dat](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py).
 
 * Stáhněte si ukázkové soubory a sledujte je spolu s příklady: [zločin. csv](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv) a [City. JSON](https://dprepdata.blob.core.windows.net/dataset-sample-files/city.json).
 

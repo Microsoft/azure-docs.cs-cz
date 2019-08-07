@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: dc3b9cceda10ae1ff648306236d5ac4868b5b426
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722162"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740885"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -101,7 +101,7 @@ Ano. Viz [Úpravy žádosti](https://docs.microsoft.com/azure/application-gatewa
 
 Zřizování nových SKU Application Gateway v1 může trvat až 20 minut. Změny velikosti nebo počtu instancí nejsou rušivé a brána zůstane během této doby aktivní.
 
-Pro nasazení, která používají SKU v2, může zřízení trvat až 6 minut.
+Zřizování většiny nasazení, která používají SKU v2, trvá přibližně 6 minut. Může ale trvat delší dobu v závislosti na typu nasazení. Například nasazení v různých Zóny dostupnosti s mnoha instancemi může trvat více než 6 minut. 
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Můžu použít Exchange Server jako back-end s Application Gateway?
 
@@ -324,10 +324,6 @@ Ano. Můžete povolit DDoS Protection ve virtuální síti, ve které je nasazen
 
 Ano. Podrobnosti najdete v tématu [migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi v2](migrate-v1-v2.md).
 
-### <a name="does-waf-support-non-utf-8-encoding"></a>Podporuje WAF kódování bez kódování UTF-8?
-
-Ne. WAF aktuálně podporuje pouze kódování UTF-8.
-
 ## <a name="diagnostics-and-logging"></a>Diagnostika a protokolování
 
 ### <a name="what-types-of-logs-does-application-gateway-provide"></a>Jaké typy protokolů Application Gateway poskytnout?
@@ -366,6 +362,6 @@ Můžete také použít šablonu Správce prostředků, která nainstaluje a spu
 
 Obvykle se zobrazuje neznámý stav, pokud je přístup k back-endu zablokovaný skupinou zabezpečení sítě (NSG), vlastním DNS nebo uživatelem definovaným směrováním (UDR) v podsíti aplikační brány. Další informace najdete v tématu [stav back-endu, protokolování diagnostiky a metriky pro Application Gateway](application-gateway-diagnostics.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Application Gateway najdete v tématu [co je Azure Application Gateway?](overview.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 7eda675ed7694e1ad7de90f89282bd7a3cc50ea1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 0c060e2ab94c0a57d4d4dc897702e115cfabd9a0
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700415"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827286"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Verze Preview: Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI
  
@@ -53,7 +53,7 @@ V obou případech je nutné zadat počet domén selhání pro skupinu hostitel�
 
 Můžete se také rozhodnout použít jak zóny dostupnosti, tak i domény selhání. 
 
-V tomto příkladu použijeme příkaz [AZ VM Host Group Create](/cli/azure/vm#az-vm-host-group-create) k vytvoření skupiny hostitelů pomocí zón dostupnosti i domén selhání. 
+V tomto příkladu použijeme příkaz [AZ VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) k vytvoření skupiny hostitelů pomocí zón dostupnosti i domén selhání. 
 
 ```bash
 az vm host group create \
@@ -65,7 +65,7 @@ az vm host group create \
 
 ### <a name="other-examples"></a>Další příklady
 
-Pomocí [AZ VM Host Group Create](/cli/azure/vm#az-vm-host-group-create) můžete také vytvořit skupinu hostitelů v zóně dostupnosti 1 (a žádné domény selhání).
+Pomocí [AZ VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) můžete také vytvořit skupinu hostitelů v zóně dostupnosti 1 (a žádné domény selhání).
 
 ```bash
 az vm host group create \
@@ -75,7 +75,7 @@ az vm host group create \
    --platform-fault-domain-count 1 
 ```
  
-Následující: pomocí [AZ VM Host Group Create](/cli/azure/vm#az-vm-host-group-create) vytvoří skupinu hostitelů jenom pomocí domén selhání (bude se používat jenom v oblastech, kde se zóny dostupnosti nepodporují). 
+Následující: pomocí [AZ VM Host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) vytvoří skupinu hostitelů jenom pomocí domén selhání (bude se používat jenom v oblastech, kde se zóny dostupnosti nepodporují). 
 
 ```bash
 az vm host group create \
@@ -91,7 +91,7 @@ Nyní vytvoříme vyhrazeného hostitele ve skupině hostitelů. Kromě názvu p
 
 Další informace o SKU a cenách hostitelů najdete v tématu [ceny za vyhrazené hostitele Azure](https://aka.ms/ADHPricing).
 
-Pomocí [AZ VM Host Create](/cli/azure/vm#az-vm-host-create) Vytvořte hostitele. Pokud pro skupinu hostitelů nastavíte počet domén selhání, budete požádáni o zadání domény selhání pro hostitele.  
+Pomocí [AZ VM Host Create](/cli/azure/vm/host#az-vm-host-create) Vytvořte hostitele. Pokud pro skupinu hostitelů nastavíte počet domén selhání, budete požádáni o zadání domény selhání pro hostitele.  
 
 ```bash
 az vm host create \
@@ -126,7 +126,7 @@ az vm create \
 
 ## <a name="check-the-status-of-the-host"></a>Zkontroluje stav hostitele.
 
-Můžete kontrolovat stav hostitele a počet virtuálních počítačů, které můžete nasadit do hostitele pomocí funkce [AZ VM Host Get-instance-View](/cli/azure/vm#az-vm-host-get-instance-view).
+Můžete kontrolovat stav hostitele a počet virtuálních počítačů, které můžete nasadit do hostitele pomocí funkce [AZ VM Host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view).
 
 ```bash
 az vm host get-instance-view \
@@ -260,13 +260,13 @@ Hostitele můžete odstranit jenom v případě, že ho nepoužívá žádný vi
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
-Po odstranění virtuálních počítačů můžete hostitele odstranit pomocí [AZ VM Host Delete](/cli/azure/vm#az-vm-host-delete).
+Po odstranění virtuálních počítačů můžete hostitele odstranit pomocí [AZ VM Host Delete](/cli/azure/vm/host#az-vm-host-delete).
 
 ```bash
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
-Po odstranění všech hostitelů můžete skupinu hostitelů odstranit pomocí [AZ VM Host Group Delete](/cli/azure/vm#az-vm-host-group-delete).  
+Po odstranění všech hostitelů můžete skupinu hostitelů odstranit pomocí [AZ VM Host Group Delete](/cli/azure/vm/host/group#az-vm-host-group-delete).  
  
 ```bash
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  

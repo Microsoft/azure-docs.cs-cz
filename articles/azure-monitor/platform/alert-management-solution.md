@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776990"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741269"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Řešení alert managementu ve službě Azure Log Analytics
 
 ![Ikona upozornění správy](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor teď podporuje rozšířené možnosti pro [Správa upozornění ve velkém měřítku](https://aka.ms/azure-alerts-overview), včetně těch, které vygeneroval [monitorování nástroje, jako jsou nástroje SCOM a Nagios a Zabbix](https://aka.ms/managing-alerts-other-monitoring-services).
+>  Azure Monitor teď podporuje vylepšené funkce pro [správu výstrah ve](https://aka.ms/azure-alerts-overview)velkém měřítku, včetně těch, které vygenerovaly [Nástroje pro monitorování, jako je SCOM, Zabbix nebo Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
 >  
 
 
@@ -87,28 +87,28 @@ Správa výstrah řešení analyzuje libovolný záznam s typem **výstrah**.  V
 
 Řešení importovat výstrahy z nástroje System Center Operations Manager a vytvoří odpovídající záznam pro každý typ **výstrah** a jako SourceSystem **OpsManager**.  Tyto záznamy mají vlastnosti v následující tabulce:  
 
-| Vlastnost | Description |
+| Vlastnost | Popis |
 |:--- |:--- |
-| Typ |*Upozornění* |
-| SourceSystem |*OpsManager* |
-| AlertContext |Podrobnosti o datová položka, která způsobila výstrahu, kterou chcete vygenerovat ve formátu XML. |
-| AlertDescription |Podrobný popis výstrahy. |
-| AlertId |Identifikátor GUID výstrahy. |
-| AlertName |Název výstrahy. |
-| AlertPriority |Úroveň priority výstrahy. |
-| AlertSeverity |Úroveň závažnosti výstrahy. |
-| AlertState |Nejnovější stav řešení výstrahy. |
-| LastModifiedBy |Jméno uživatele, kteří poslední změny výstrahy. |
-| ManagementGroupName |Název skupiny pro správu ve kterém byla výstraha vygenerována. |
-| RepeatCount |Počet pokusů, které je stejná výstraha generovaná pro dané monitorují objekt od přeloženy. |
-| ResolvedBy |Jméno uživatele, kteří vyřešené výstrahy. Prázdný, pokud výstraha dosud nebyl vyřešen. |
-| SourceDisplayName |Zobrazovaný název objektu monitorování, které upozornění vygenerovalo. |
-| SourceFullName |Celý název objektu monitorování, které upozornění vygenerovalo. |
-| TicketId |ID lístku pro upozornění, pokud prostředí System Center Operations Manageru je integrovaná s procesem pro přidělování lístků pro výstrahy.  Prázdný žádné lístku ID je přiřazena. |
-| TimeGenerated |Datum a čas, který byla výstraha vytvořena. |
-| TimeLastModified |Datum a čas poslední změny výstrahy. |
-| TimeRaised |Datum a čas, který byla výstraha vygenerována. |
-| TimeResolved |Datum a čas vyřešení výstrahy. Prázdný, pokud výstraha dosud nebyl vyřešen. |
+| `Type` |*Upozornění* |
+| `SourceSystem` |*OpsManager* |
+| `AlertContext` |Podrobnosti o datová položka, která způsobila výstrahu, kterou chcete vygenerovat ve formátu XML. |
+| `AlertDescription` |Podrobný popis výstrahy. |
+| `AlertId` |Identifikátor GUID výstrahy. |
+| `AlertName` |Název výstrahy. |
+| `AlertPriority` |Úroveň priority výstrahy. |
+| `AlertSeverity` |Úroveň závažnosti výstrahy. |
+| `AlertState` |Nejnovější stav řešení výstrahy. |
+| `LastModifiedBy` |Jméno uživatele, kteří poslední změny výstrahy. |
+| `ManagementGroupName` |Název skupiny pro správu ve kterém byla výstraha vygenerována. |
+| `RepeatCount` |Počet pokusů, které je stejná výstraha generovaná pro dané monitorují objekt od přeloženy. |
+| `ResolvedBy` |Jméno uživatele, kteří vyřešené výstrahy. Prázdný, pokud výstraha dosud nebyl vyřešen. |
+| `SourceDisplayName` |Zobrazovaný název objektu monitorování, které upozornění vygenerovalo. |
+| `SourceFullName` |Celý název objektu monitorování, které upozornění vygenerovalo. |
+| `TicketId` |ID lístku pro upozornění, pokud prostředí System Center Operations Manageru je integrovaná s procesem pro přidělování lístků pro výstrahy.  Prázdný žádné lístku ID je přiřazena. |
+| `TimeGenerated` |Datum a čas, který byla výstraha vytvořena. |
+| `TimeLastModified` |Datum a čas poslední změny výstrahy. |
+| `TimeRaised` |Datum a čas, který byla výstraha vygenerována. |
+| `TimeResolved` |Datum a čas vyřešení výstrahy. Prázdný, pokud výstraha dosud nebyl vyřešen. |
 
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy upozornění shromážděné tímto řešením: 

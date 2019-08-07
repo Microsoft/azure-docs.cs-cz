@@ -1,6 +1,6 @@
 ---
-title: Šifrování neaktivních pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault (preview) – Azure Search
-description: Šifrování na straně serveru příplatek nad indexy a mapy synonym ve službě Azure Search pomocí klíčů, které můžete vytvořit a spravovat ve službě Azure Key Vault.
+title: Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem v Azure Key Vault (Preview) – Azure Search
+description: Doplňte šifrování na straně serveru přes indexy a mapy synonym v Azure Search prostřednictvím klíčů, které vytvoříte a spravujete v Azure Key Vault.
 author: NatiNimni
 manager: jlembicz
 ms.author: natinimn
@@ -9,43 +9,43 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 949628fa52b4b020d70b75f4a0e7895f1e0f8bba
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9d4494cb46bece7402b1284ee6324ca9ff86e0f3
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485324"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779102"
 ---
-# <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Search šifrování pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault
+# <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Search šifrování pomocí klíčů spravovaných zákazníkem v Azure Key Vault
 
 > [!Note]
-> Šifrování pomocí klíčů spravovaných zákazníkem je ve verzi preview a není určen pro použití v produkčním prostředí. [Rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) tuto funkci poskytuje. Můžete také použít .NET SDK verze 8.0-preview.
+> Šifrování pomocí klíčů spravovaných zákazníkem je ve verzi Preview a není určené pro produkční použití. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . Můžete také použít sadu .NET SDK verze 8,0-Preview.
 >
-> Tato funkce není k dispozici pro bezplatné služby. Je nutné použít fakturovatelné vyhledávací služba vytvoří nebo později 2019-01-01. Neexistuje žádná podpora portálu v tuto chvíli.
+> Tato funkce není dostupná pro bezplatné služby. Je nutné použít fakturovatelný vyhledávací službu vytvořenou v nebo po 2019-01-01. V tuto chvíli není dostupná žádná podpora portálu.
 
-Ve výchozím nastavení, Azure Search šifruje obsah uživatelů v klidovém stavu pomocí [klíče spravované službou](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest#data-encryption-models). Výchozí šifrování můžete doplnit vrstvou další šifrování pomocí klíče, které můžete vytvořit a spravovat ve službě Azure Key Vault. Tento článek vás provede jednotlivými kroky.
+Ve výchozím nastavení Azure Search šifruje obsah uživatele v klidovém stavu pomocí [klíčů spravovaných službou](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). Výchozí šifrování můžete doplnit pomocí dalších vrstev šifrování s použitím klíčů, které vytvoříte a spravujete v Azure Key Vault. Tento článek vás provede jednotlivými kroky.
 
-Šifrování na straně serveru je podporované prostřednictvím integrace s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo rozhraní API služby Azure Key Vault můžete použít ke generování šifrovací klíče. S Azure Key Vault můžete také auditovat použití klíče. 
+Šifrování na straně serveru je podporováno prostřednictvím integrace s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování šifrovacích klíčů. Pomocí Azure Key Vault můžete také auditovat použití klíče. 
 
-Šifrování pomocí klíčů spravovaných zákazníkem je konfigurováno na index nebo synonymum mapy úrovni při vytváření těchto objektů a nikoli na úroveň služby vyhledávání. Nelze zašifrovat obsah, který již existuje. 
+Šifrování pomocí klíčů spravovaných zákazníkem se při vytváření těchto objektů konfiguruje na úrovni mapy index nebo synonym, a ne na úrovni vyhledávací služby. Nemůžete zašifrovat obsah, který už existuje. 
 
-Můžete použít různé klíče z různých trezory klíčů. To znamená, že jeden vyhledávací služba může hostovat více šifrované indexes\synonym map, každý šifrována potenciálně různé klíče spravovaného zákazníkem, společně s indexes\synonym mapy, které nejsou šifrovány pomocí klíčů spravovaných zákazníkem. 
+Můžete použít různé klíče z různých trezorů klíčů. To znamená, že jedna vyhledávací služba může hostovat několik šifrovaných indexes\synonym map, z nichž každý zašifrovaný potenciálně používá jiný klíč spravovaný zákazníkem spolu s indexes\synonym mapami, které nejsou šifrované pomocí klíčů spravovaných zákazníkem. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto příkladu se používají tyto služby. 
+V tomto příkladu se používají následující služby. 
 
-+ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu.
++ [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu.
 
-+ [Vytvoří prostředek služby Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) nebo najít existující trezor v rámci vašeho předplatného.
++ [Vytvořte prostředek Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) nebo v rámci svého předplatného Najděte existující trezor.
 
-+ [Prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) se používá pro úlohy konfigurace.
++ Pro úlohy konfigurace se používá [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
-+ [Postman](search-get-started-postman.md), [prostředí Azure PowerShell](search-create-index-rest-api.md) a [SDK služby Azure Search](https://aka.ms/search-sdk-preview) je možné volat rozhraní REST API ve verzi preview. Neexistuje žádný portál nebo sadu .NET SDK: podpora pro spravované zákazníkem šifrování v tuto chvíli.
++ K volání REST API verze Preview lze použít [metodu post](search-get-started-postman.md), [Azure POWERSHELL](search-create-index-rest-api.md) a [Azure Search SDK](https://aka.ms/search-sdk-preview) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK pro šifrování spravované zákazníkem.
 
-## <a name="1---enable-key-recovery"></a>1 - povolit obnovení klíče
+## <a name="1---enable-key-recovery"></a>1 – povolit obnovení klíče
 
-Tento krok je volitelný, ale důrazně doporučené. Po vytvoření prostředku Azure Key Vault, povolte **obnovitelné odstranění** a **vyprázdnit ochrany** ve vybrané službě Key vault spuštěním následujících příkazů Powershellu nebo rozhraní příkazového řádku Azure:   
+Tento krok je volitelný, ale důrazně se doporučuje. Po vytvoření prostředku Azure Key Vault povolte **ochranu proti** **odstranění** a vyprázdnění ve vybraném trezoru klíčů spuštěním následujících příkazů PowerShellu nebo rozhraní příkazového řádku Azure CLI:   
 
 ```powershell
 $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
@@ -62,80 +62,80 @@ az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --en
 ```
 
 >[!Note]
-> Z důvodu podstaty šifrování pomocí klíčů spravovaných zákazníkem funkce Azure Search nebude možné načíst vaše data, pokud vaše klíče služby Azure Key vault se odstraní. Aby se zabránilo ztráty dat způsobené před náhodným odstraněním klíčů služby Key Vault, důrazně doporučujeme, abyste povolili obnovitelného odstranění a mazání ochrany pro vybraný trezor klíčů. Další informace najdete v tématu [obnovitelného odstranění služby Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
+> Z důvodu velmi vysokého charakteru šifrování s použitím klíčů spravovaných zákazníkem nebude Azure Search moct načíst vaše data, pokud se odstraní klíč trezoru klíčů Azure. Aby nedošlo ke ztrátě dat způsobenému Key Vault náhodným odstraněním klíčů, důrazně doporučujeme, abyste u vybraného trezoru klíčů povolili ochranu pomocí obnovitelného odstranění a vyprázdnění. Další informace najdete v tématu [Azure Key Vault obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
 
-## <a name="2---create-a-new-key"></a>2 – Vytvoření nového klíče
+## <a name="2---create-a-new-key"></a>2\. vytvoření nového klíče
 
-Pokud používáte existující klíč k šifrování obsahu Azure Search, tento krok přeskočte.
+Pokud k šifrování Azure Search obsahu používáte existující klíč, přeskočte tento krok.
 
-1. [Přihlaste se k webu Azure portal](https://portal.azure.com) a přejděte do řídicího panelu trezoru klíčů.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com) a přejděte do řídicího panelu trezoru klíčů.
 
-1. Vyberte **klíče** nastavení v levém navigačním podokně a klikněte na tlačítko **+ vygenerovat/importovat**.
+1. V levém navigačním podokně vyberte nastavení **klíče** a klikněte na **+ Generovat/importovat**.
 
-1. V **vytvořte klíč** podokno, ze seznamu **možnosti**, zvolte metodu, kterou chcete použít k vytvoření klíče. Je možné **generovat** nový klíč, **nahrát** z existujícího klíče, nebo použijte **obnovit zálohování** vyberte zálohování klíče.
+1. V podokně **vytvořit klíč** klikněte v seznamu **možností**na metodu, kterou chcete použít k vytvoření klíče. Můžete **vygenerovat** nový klíč, **nahrát** existující klíč nebo použít **obnovení zálohy** k výběru zálohy klíče.
 
-1. Zadejte **název** pro klíč a volitelně vyberte další klíčové vlastnosti.
+1. Zadejte **název** klíče a volitelně vyberte další vlastnosti klíče.
 
-1. Klikněte na **vytvořit** tlačítko pro spuštění nasazení.
+1. Kliknutím na tlačítko **vytvořit** spusťte nasazení.
 
-Poznačte si identifikátor klíče – to se skládá z **hodnotu identifikátoru Uri klíče**, **název klíče**a **verze klíče**. Budete potřebovat k definování šifrované indexu ve službě Azure Search.
+Poznamenejte si identifikátor klíče – to se skládá z **identifikátoru URI hodnoty klíče**, **názvu klíče**a **verze klíče**. Budete je potřebovat k definování šifrovaného indexu v Azure Search.
  
-![Vytvořte nový klíč služby key vault](./media/search-manage-encryption-keys/create-new-key-vault-key.png "vytvořte nový klíč služby key vault")
+![Vytvoří nový klíč trezoru klíčů] . (./media/search-manage-encryption-keys/create-new-key-vault-key.png "Vytvoří nový klíč trezoru klíčů") .
 
-## <a name="3---create-a-service-identity"></a>3 – vytvoření identity služby
+## <a name="3---create-a-service-identity"></a>3\. vytvoření identity služby
 
-Přiřazování identity do služby search můžete udělit oprávnění pro přístup k vaší vyhledávací služby Key Vault. Vaše vyhledávací služba budete používat k ověřování pomocí služby Azure Key vault svoji identitu.
+Přiřazení identity ke službě Search vám umožní udělit službě vyhledávání Key Vault přístupová oprávnění. Vaše vyhledávací služba bude používat svoji identitu k ověřování pomocí trezoru klíčů Azure.
 
-Služba Azure Search podporuje dva způsoby, jak pro přiřazení identit: spravovaná identita nebo externě spravované aplikace Azure Active Directory. 
+Azure Search podporuje dva způsoby přiřazení identity: spravované identity nebo externě spravované Azure Active Directory aplikace. 
 
-Pokud je to možné používejte spravovanou identitu. Je nejjednodušší způsob, jak přiřadit identitu vaší vyhledávací služby a ve většině případů by mělo fungovat. Pokud používáte více klíčů pro indexy a map synonym, nebo pokud je vaše řešení v distribuované architektuře, která znemožňuje, aby ověřování na základě identity, použijte pokročilé [externě spravované služby Azure Active Directory přístup](#aad-app)najdete na konci tohoto článku.
+Pokud je to možné, použijte spravovanou identitu. Je nejjednodušší způsob, jak přiřadit identitu službě vyhledávání a ve většině scénářů fungovat. Pokud používáte více klíčů pro indexy a mapy synonym nebo pokud je vaše řešení v distribuované architektuře, která ruší ověřování na základě identity, použijte pokročilý [externě spravovaný Azure Active Directory přístup](#aad-app) , který je popsaný na konci. v tomto článku.
 
- Obecně platí umožňuje spravovanou identitu vaší vyhledávací služby pro ověření do služby Azure Key Vault bez uložení přihlašovacích údajů v kódu. Životní cyklus tohoto typu spravovaná identita je vázán na životní cyklus vaší služby search, což může mít jen jedna spravovaná identita. [Další informace o spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+ Obecně spravovaná identita umožňuje službě vyhledávání ověřovat Azure Key Vault bez uložení přihlašovacích údajů do kódu. Životní cyklus tohoto typu spravované identity je svázán s životním cyklem služby vyhledávání, který může mít pouze jednu spravovanou identitu. [Přečtěte si další informace o spravovaných identitách](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-1. Chcete-li vytvořit spravovanou identitu, [podepsat portálu toAzure](https://portal.azure.com) a otevřete řídicí panel služby search. 
+1. Pokud chcete vytvořit spravovanou identitu, přihlaste se k [portálu toAzure](https://portal.azure.com) a otevřete řídicí panel vyhledávací služby. 
 
-1. Klikněte na tlačítko **Identity** v levém navigačním podokně, změnit její stav na **na**a klikněte na tlačítko **Uložit**.
+1. V levém navigačním podokně klikněte na **Identita** , změňte její stav na **zapnuto**a klikněte na **Uložit**.
 
-![Povolit spravované identity](./media/search-enable-msi/enable-identity-portal.png "povolit spravovaných identit")
+![Povolení spravované identity](./media/search-enable-msi/enable-identity-portal.png "Povolení identity spravovaných")
 
-## <a name="4---grant-key-access-permissions"></a>4 – udělení oprávnění k přístupu ke klíčům
+## <a name="4---grant-key-access-permissions"></a>4 – udělení přístupových oprávnění k klíčům
 
-Pokud chcete povolit služby search k použití příslušného klíče služby Key Vault, budete muset udělit hledání služby určitá oprávnění přístupu.
+Pokud chcete, aby služba vyhledávání mohla používat váš Key Vault klíč, budete muset udělit vašim vyhledávacím službám určitá přístupová oprávnění.
 
-V každém okamžiku může odvolat oprávnění k přístupu. Jakmile odvolán, jakékoli hledání index nebo synonymum mapy služeb, který používá tento trezor klíčů už nepůjdou použít. Obnovení oprávnění pro Key vault přístup později obnoví index\synonym mapování přístupu. Další informace najdete v tématu [zabezpečený přístup k trezoru klíčů](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).
+Přístupová oprávnění by mohla být v daném okamžiku odvolána. Po odvolání se žádný index služby vyhledávání nebo mapa synonym používající tento trezor klíčů stane nepoužitelným. Obnovení přístupových oprávnění trezoru klíčů později obnoví přístup k mapě index\synonym. Další informace najdete v tématu [zabezpečený přístup k trezoru klíčů](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).
 
-1. [Přihlaste se k webu Azure portal](https://portal.azure.com) a otevřete stránku přehled vašeho trezoru klíčů. 
+1. [Přihlaste se k Azure Portal](https://portal.azure.com) a otevřete stránku s přehledem trezoru klíčů. 
 
-1. Vyberte **zásady přístupu** nastavení v levém navigačním podokně a klikněte na tlačítko **+ přidat nový**.
+1. V levém navigačním podokně vyberte nastavení **zásady přístupu** a klikněte na **+ Přidat nový**.
 
-   ![Přidat nové zásady přístupu trezoru klíčů](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "přidat nové zásady přístupu trezoru klíčů")
+   ![Přidat nové zásady přístupu trezoru klíčů](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "Přidat nové zásady přístupu trezoru klíčů")
 
-1. Klikněte na tlačítko **vybrat objekt zabezpečení** a vyberte svoji službu Azure Search. Můžete vyhledat ho podle názvu nebo ID objektu, který se zobrazí po povolení identity spravované.
+1. Klikněte na **Vybrat objekt zabezpečení** a vyberte službu Azure Search. Můžete ho vyhledat podle názvu nebo ID objektu, které se zobrazilo po povolení spravované identity.
 
-   ![Objekt zabezpečení zásad přístupu vyberte trezor klíčů](./media/search-manage-encryption-keys/select-key-vault-access-policy-principal.png "hlavní zásad přístupu vyberte trezor klíčů")
+   ![Výběr objektu zásad přístupu trezoru klíčů](./media/search-manage-encryption-keys/select-key-vault-access-policy-principal.png "Výběr objektu zásad přístupu trezoru klíčů")
 
-1. Klikněte na **oprávnění klíče** a vyberte *získat*, *rozbalení klíče* a *zabalit klíč*. Můžete použít *Azure Data Lake Storage nebo Azure Storage* šablony pro rychlý výběr požadovaná oprávnění.
+1. Klikněte na **klíčová oprávnění** a *Vyberte získat*, rozbalit *klíč* a zabalit *klíč*. Pomocí šablony *Azure Data Lake Storage nebo Azure Storage* můžete rychle vybrat požadovaná oprávnění.
 
-   Služba Azure search musí mít udělena následujícím [přístupová oprávnění](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations):
+   Azure Search se musí udělit s následujícími [přístupovými oprávněními](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations):
 
-   * *Získat* – umožňuje službě search k načtení veřejné části klíče ve službě Key Vault
-   * *Zabalit klíč* – umožňuje službě search k použití příslušného klíče k ochraně interní šifrovacího klíče
-   * *Rozbalit klíč* – umožňuje službě search k použití příslušného klíče k rozbalení interní šifrovacího klíče
+   * *Get* – umožní službě vyhledávání načíst veřejné části klíče ve Key Vault
+   * *Zalamovat klíč* – umožní službě vyhledávání používat klíč k ochraně interního šifrovacího klíče.
+   * *Rozbalení klíče* – umožní službě vyhledávání používat klíč k rozbalení interního šifrovacího klíče.
 
-   ![Vyberte klíče oprávnění zásad přístupu trezoru klíčů](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "vyberte klíče oprávnění zásad přístupu trezoru klíčů")
+   ![Výběr oprávnění klíče zásad přístupu trezoru klíčů](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "Výběr oprávnění klíče zásad přístupu trezoru klíčů")
 
-1. Klikněte na tlačítko **OK** a **Uložit** změny zásad přístupu.
+1. Klikněte na **OK** a **uložte** změny zásad přístupu.
 
 > [!Important]
-> Šifrovaný obsah ve službě Azure search je nakonfigurován na použití konkrétního klíče Azure Key Vault s konkrétním **verze**. Pokud změníte klíč nebo verze, mapu synonym nebo index se musí aktualizovat na použití nové key\version **před** odstraňuje předchozí key\version. Pokud tak neučiníte, nebudou zobrazovat index nebo synonymum mapu nepůjdou použít, na které nebude možné dešifrovat obsah, jakmile dojde ke ztrátě přístupu ke klíčům.   
+> Šifrovaný obsah ve službě Azure Search je nakonfigurovaný tak, aby používal konkrétní Azure Key Vault klíč s konkrétní **verzí**. Pokud změníte klíč nebo verzi, je nutné aktualizovat index nebo mapu synonym, aby používaly nové key\version **před** odstraněním předchozího key\version. Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné. po ztrátě přístupu ke klíči nebude možné obsah dešifrovat.   
 
-## <a name="5---encrypt-content"></a>5 - šifrování obsahu
+## <a name="5---encrypt-content"></a>5\. šifrování obsahu
 
-Vytváří se mapování index nebo synonymum šifrované pomocí klíče spravovaného zákazníkem ještě není možné pomocí webu Azure portal. Použití REST API služby Azure Search k vytvoření těchto index nebo synonymum mapy.
+Vytvoření mapy indexů nebo synonym šifrovaných pomocí klíče spravovaného zákazníkem zatím není možné pomocí Azure Portal. Pomocí Azure Search REST API vytvořte takový index nebo mapu synonym.
 
-Index a synonymum mapování podporu nový nejvyšší úrovně **encryptionKey** vlastnost použitá k určení klíče. 
+Index i mapa synonym podporují novou vlastnost **EncryptionKey** na nejvyšší úrovni, která se používá k zadání klíče. 
 
-Použití **identifikátor Uri služby key vault**, **název klíče** a **verze klíče** z vaší služby key vault, můžeme vytvořit **encryptionKey** definice:
+Pomocí **identifikátoru URI trezoru klíčů**, **názvu klíče** a **verze** klíče trezoru klíčů můžeme vytvořit definici **EncryptionKey** :
 
 ```json
 {
@@ -147,9 +147,9 @@ Použití **identifikátor Uri služby key vault**, **název klíče** a **verze
 }
 ```
 > [!Note] 
-> Žádná z těchto podrobnosti trezoru klíčů se považují za tajného kódu a může být snadno načíst tak, že přejdete na relevantní služby Azure Key Vault klíče stránku na webu Azure portal.
+> Žádná z těchto podrobností trezoru klíčů není považována za tajnou a lze ji snadno načíst procházením příslušné Azure Key Vault klíčovou stránkou v Azure Portal.
 
-Pokud používáte aplikaci AAD k ověřování služby Key Vault namísto použití spravované identity, přidat aplikaci AAD **přístup k přihlašovacím údajům** k šifrovacímu klíči: 
+Pokud používáte aplikaci AAD pro Key Vault ověřování namísto použití spravované identity, přidejte **přihlašovací údaje** k aplikaci AAD do svého šifrovacího klíče: 
 ```json
 {
   "encryptionKey": {
@@ -164,8 +164,8 @@ Pokud používáte aplikaci AAD k ověřování služby Key Vault namísto použ
 }
 ```
 
-## <a name="example-index-encryption"></a>Příklad: Index šifrování
-Podrobnosti o vytvoření nového indexu prostřednictvím rozhraní REST API nepovedlo najít v [vytvoření indexu (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index), kde je jediný rozdíl zde zadáte podrobnosti šifrování klíče jako součást definice indexu: 
+## <a name="example-index-encryption"></a>Příklad: Šifrování indexu
+Podrobnosti o vytvoření nového indexu prostřednictvím REST API najdete v tématu [vytvoření indexu (Azure Search REST API služby)](https://docs.microsoft.com/rest/api/searchservice/create-index), kde jediný rozdíl tady určuje podrobnosti šifrovacího klíče v rámci definice indexu: 
 
 ```json
 {
@@ -189,11 +189,11 @@ Podrobnosti o vytvoření nového indexu prostřednictvím rozhraní REST API ne
  }
 }
 ```
-Můžete nyní odeslat žádost o vytvoření indexu a pak spusťte pomocí indexu normálně.
+Nyní můžete odeslat požadavek na vytvoření indexu a pak začít používat rejstřík normálně.
 
-## <a name="example-synonym-map-encryption"></a>Příklad: Šifrování mapu synonym
+## <a name="example-synonym-map-encryption"></a>Příklad: Šifrování mapování synonym
 
-Podrobnosti o vytvoření nové mapy synonym přes rozhraní REST API najdete v [(Azure Search Service REST API) vytvořte mapu Synonym](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map), kde je určení klíčové podrobnosti o šifrování jako součást definice mapu synonym jediný rozdíl zde: 
+Podrobnosti o vytvoření nové mapy synonym prostřednictvím REST API lze nalézt v tématu [vytvoření mapy synonym (Azure Search REST API služby)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map), kde jediným rozdílem je zadání podrobností šifrovacího klíče v rámci definice mapy synonym: 
 
 ```json
 {   
@@ -208,35 +208,35 @@ Podrobnosti o vytvoření nové mapy synonym přes rozhraní REST API najdete v 
   }
 }
 ```
-Můžete nyní odeslat požadavek na vytvoření mapy synonym a potom jej začít používat normálně.
+Nyní můžete odeslat požadavek na vytvoření mapy synonym a pak ho začít používat normálně.
 
 >[!Important] 
-> Zatímco **encryptionKey** nelze přidat do stávající indexy Azure Search nebo mapy synonym, může být aktualizován zadáním jiné hodnoty pro všechny tři podrobnosti trezoru klíčů (například aktualizace verze klíče). Při změně na nový klíč služby Key Vault nebo nové verze, Azure Search index nebo synonymum mapu, která používá klíč se musí aktualizovat nejprve na použití nového key\version **před** odstraňuje předchozí key\version. Pokud tak neučiníte, nebudou zobrazovat index nebo dojde ke ztrátě mapy synonym nepůjdou použít, protože nebude možné dešifrovat jednou klíčů přístup k obsahu.   
-> Obnovení oprávnění pro Key vault přístup později obnovíte přístup k obsahu.
+> I když **EncryptionKey** nejde přidat k existujícím indexům Azure Search nebo mapováním synonym, může se aktualizovat zadáním různých hodnot pro všechny tři podrobnosti trezoru klíčů (například aktualizace verze klíče). Když se změní na nový klíč Key Vault nebo na novou verzi klíče, musí se nejdřív aktualizovat Azure Search index nebo mapa synonym, která tento klíč používá, aby používala nový key\version **před** odstraněním předchozího key\version. Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné, protože po ztrátě přístupu ke klíči nebude moct obsah dešifrovat.   
+> Obnovení přístupu k obsahu později obnoví přístupová oprávnění trezoru klíčů.
 
-## <a name="aad-app"></a> Pokročilé: Použít externě spravované aplikace Azure Active Directory
+## <a name="aad-app"></a>Upřesnit Použití externě spravované aplikace Azure Active Directory
 
-Pokud není možné, že můžete vytvořit aplikaci Azure Active Directory s zabezpečení instančního objektu služby Azure Search spravovanou identitu. Konkrétně spravovaná identita není přijatelné za těchto podmínek:
+Pokud není možná spravovaná identita, můžete vytvořit aplikaci Azure Active Directory s objektem zabezpečení pro vaši službu Azure Search. Konkrétně spravovaná identita není za těchto podmínek životaschopná:
 
-* Nelze přímo udělit hledání služby přístupová oprávnění ke službě Key vault (například pokud je v jiném tenantovi Active Directory než Azure Key Vault).
+* Přístup k trezoru klíčů nelze udělit přímo vašim oprávněním služby Search (například pokud je vyhledávací služba v jiném tenantovi služby Active Directory než Azure Key Vault).
 
-* Jeden vyhledávací službě se vyžaduje k hostování více mapami šifrované indexes\synonym každý pomocí za jiný klíč z jiný trezor klíčů, ve kterém musí používat každý trezor klíčů **jinou identitou** pro ověřování. Pokud pod jinou identitou ke správě různých trezory klíčů není povinné, zvažte použití spravované identity možnost výše.  
+* Pro hostování více šifrovaných map indexes\synonym je potřeba jedna vyhledávací služba, z nichž každá používá jiný klíč z jiného trezoru klíčů, kde každý Trezor klíčů musí pro ověřování použít **jinou identitu** . Pokud používáte jinou identitu pro správu různých trezorů klíčů, není nutné zvážit použití možnosti spravovaná identita výše.  
 
-Azure tak, aby vyhovovaly těchto topologií, vyhledejte podporuje ověřování mezi vaší vyhledávací služby a služby Key Vault pomocí aplikace Azure Active Directory (AAD).    
-Chcete-li vytvořit aplikaci AAD na portálu:
+Pro uspokojení takových topologií podporuje služba Azure Search použití aplikací Azure Active Directory (AAD) k ověřování mezi vaší vyhledávací službou a Key Vault.    
+Vytvoření aplikace AAD na portálu:
 
 1. [Vytvořte aplikaci Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
 
-1. [Získejte ID a ověřovacího klíče aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) jako ty, bude nezbytné k vytváření indexu šifrovaná. Je potřeba zadat hodnoty zahrnují **ID aplikace** a **ověřovací klíč**.
+1. [Získejte ID aplikace a ověřovací klíč](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) , protože se budou vyžadovat pro vytvoření šifrovaného indexu. Hodnoty, které budete muset zadat, zahrnují **ID aplikace** a **ověřovací klíč**.
 
 >[!Important]
-> Při rozhodování o použití ověřování aplikaci AAD místo spravovanou identitu, vezměte v úvahu skutečnost, že Azure Search nemá oprávnění ke správě svojí aplikaci AAD vaším jménem a je na vás spravovat svoji aplikaci AAD, jako je pravidelná otáčení ověřovací klíč aplikace.
-> Při změně aplikaci AAD nebo její ověřovací klíč, Azure Search index nebo synonymum mapu, která používá tuto aplikaci musí nejdřív aktualizují, aby využívaly novou aplikaci ID\key **před** odstranění předchozí aplikace nebo její autorizační klíč a před odvoláte vaší služby Key Vault přístup k němu.
-> Pokud tak neučiníte, nebudou zobrazovat index nebo dojde ke ztrátě mapy synonym nepůjdou použít, protože nebude možné dešifrovat jednou klíčů přístup k obsahu.   
+> Pokud se rozhodnete použít aplikaci AAD ověřování místo spravované identity, zvažte skutečnost, že Azure Search nemá oprávnění ke správě vaší aplikace AAD vaším jménem, a je až do správy aplikace AAD, jako je pravidelná rotace. ověřovací klíč aplikace
+> Při změně aplikace AAD nebo jejího ověřovacího klíče se musí nejdřív aktualizovat Azure Search index nebo mapa synonym, které tuto aplikaci používají, aby se nová aplikace ID\key **před** odstraněním předchozí aplikace nebo jejího autorizačního klíče. před odvoláním Key Vault k němu.
+> Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné, protože po ztrátě přístupu ke klíči nebude moct obsah dešifrovat.   
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud nejste obeznámeni s architekturou zabezpečení Azure, přečtěte si [dokumentace ke službě Azure Security](https://docs.microsoft.com/azure/security/), zejména v tomto článku:
+Pokud nejste obeznámeni s architekturou zabezpečení Azure, přečtěte si [dokumentaci k zabezpečení Azure](https://docs.microsoft.com/azure/security/)a zejména tento článek:
 
 > [!div class="nextstepaction"]
-> [Šifrování neaktivních dat](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+> [Šifrování neaktivních dat](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

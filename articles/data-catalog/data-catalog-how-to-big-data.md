@@ -1,30 +1,28 @@
 ---
-title: Jak pracovat s "velké objemy dat" zdroje dat ve službě Azure Data Catalog
-description: Článek vzory pro používání Azure Data Catalog se zdroji dat "velké objemy dat", včetně Azure Blob Storage, Azure Data Lake a systémem souborů HDFS Hadoop zvýraznění.
-services: data-catalog
+title: Jak pracovat se zdroji dat s velkými objemy dat v Azure Data Catalog
+description: Postup zvýrazňování vzorů pro použití Azure Data Catalog se zdroji dat s velkými objemy dat, včetně Azure Blob Storage, Azure Data Lake a Hadoop HDFS.
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 626d1568-0780-4726-bad1-9c5000c6b31a
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: b6b419d575e2164fc683b8e6b5020572db74d1b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 5b213ebabc2d849587590ba295498d24737dbde7
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61001737"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734659"
 ---
-# <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Jak pracovat s velkým objemem dat ve službě Azure Data Catalog
+# <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Jak pracovat s velkými zdroji dat v Azure Data Catalog
 ## <a name="introduction"></a>Úvod
-**Microsoft Azure Data Catalog** je plně spravovaná Cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. To je vše o lidech, pomáhá zjišťovat, pochopit a pomocí zdroje dat a pomáhá organizacím vytěžit více z jejich stávajících zdrojů dat, včetně velkých objemů dat.
+**Microsoft Azure Data Catalog** je plně spravovaná cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. Je to vše, co pomáhá lidem zjišťovat, pochopit a používat zdroje dat a pomáhat organizacím získat více hodnot z existujících zdrojů dat, včetně velkých objemů dat.
 
-**Azure Data Catalog** podporuje registraci Azure Blog Storage BLOB a adresáře a systémem souborů HDFS Hadoop souborů a adresářů. Částečně strukturovaná povahu těchto zdrojů dat poskytuje flexibilitu. Však získat co nejvíce z jejich registrace **Azure Data Catalog**, uživatelé nutné vzít v úvahu uspořádání datových zdrojů.
+**Azure Data Catalog** podporuje registraci objektů BLOB a adresářů Azure blogového úložiště i souborů a adresářů Hadoop HDFS. Částečně strukturovaný charakter těchto zdrojů dat poskytuje skvělou flexibilitu. Chcete-li však získat největší hodnotu z jejich registrace pomocí **Azure Data Catalog**, uživatelé musí zvážit způsob uspořádání zdrojů dat.
 
-## <a name="directories-as-logical-data-sets"></a>Adresáře jako logické sady dat
-Běžným vzorem pro uspořádání velkým objemem dat je adresáře považovat za logické datové sady. Adresářů nejvyšší úrovně se používají k definování datové sady, zatímco podsložky Definujte oddíly a ukládat soubory, které obsahují vlastní data.
+## <a name="directories-as-logical-data-sets"></a>Adresáře jako logické datové sady
+Běžným vzorem pro uspořádání velkých zdrojů dat je zacházet s adresáři jako s logickými datovými sadami. Adresáře nejvyšší úrovně slouží k definování sady dat, zatímco podsložky definují oddíly a soubory, které obsahují, ukládají samotná data.
 
-Příkladem tohoto modelu můžou být:
+Příkladem tohoto modelu může být:
 
     \vehicle_maintenance_events
         \2013
@@ -39,25 +37,25 @@ Příkladem tohoto modelu můžou být:
         \2013
         ...
 
-V tomto příkladu vehicle_maintenance_events a location_tracking_events představují logické datové sady. Všechny tyto složky obsahují datových souborů, které jsou uspořádány podle roku a měsíce do podsložky. Každá z těchto složek mohou obsahovat stovky nebo tisíce souborů.
+V tomto příkladu vehicle_maintenance_events a location_tracking_events reprezentují logické sady dat. Každá z těchto složek obsahuje datové soubory, které jsou uspořádány podle roku a měsíce do podsložek. Každá z těchto složek může potenciálně obsahovat stovky nebo tisíce souborů.
 
-V tomto vzoru registrace jednotlivých souborů s **Azure Data Catalog** pravděpodobně nemá smysl. Místo toho zaregistrujte adresáře, které představují datových sad, které smysl uživatelům práci s daty.
+V tomto vzoru nezpůsobí registrování jednotlivých souborů s **Azure Data Catalog** pravděpodobně smysl. Místo toho Zaregistrujte adresáře, které reprezentují datové sady, které jsou smysluplné pro uživatele, kteří pracují s daty.
 
-## <a name="reference-data-files"></a>Referenční datové soubory
-Doplňkové vzor je uložit jako samostatné soubory referenční datové sady. Tyto datové sady mohou představit jako "malé" strana velké objemy dat a jsou často podobné dimenzí v modelu analytická data. Referenční datové soubory obsahují záznamy, které se používají k zajištění kontext pro hromadné datové soubory uloženy jinde velkých objemů dat v úložišti.
+## <a name="reference-data-files"></a>Soubory referenčních dat
+Doplňkovým vzorem je ukládání referenčních datových sad jako jednotlivých souborů. Tyto datové sady je možné považovat za "malou" stranu velkých objemů dat a často se podobají dimenzím v analytickém datovém modelu. Referenční datové soubory obsahují záznamy, které slouží k poskytnutí kontextu pro hromadnou práci s datovými soubory uloženými jinde v úložišti velkých objemů dat.
 
-Příkladem tohoto modelu můžou být:
+Příkladem tohoto modelu může být:
 
     \vehicles.csv
     \maintenance_facilities.csv
     \maintenance_types.csv
 
-Když analytik nebo data odborník je práce s daty součástí větší struktury adresářů, data v těchto referenčních souborů je možné poskytnout podrobné informace pro entity, které jsou uvedené pouze podle názvu nebo ID v datové sadě větší.
+Když analytik nebo datový vědecký pracovník pracuje s daty obsaženými ve větších adresářových strukturách, můžete data v těchto referenčních souborech použít k poskytnutí podrobnějších informací o entitách, které se označují jenom podle názvu nebo ID ve větší datové sadě.
 
-V tomto vzoru, je vhodné zaregistrovat individuální referenční datové soubory s **Azure Data Catalog**. Každý soubor představuje datové sady a každý z nich je možné s poznámkami a zjistit jednotlivě.
+V tomto modelu dává smysl registrovat jednotlivé soubory referenčních dat pomocí **Azure Data Catalog**. Každý soubor představuje datovou sadu a každá z nich může být označená a zjištěná jednotlivě.
 
 ## <a name="alternate-patterns"></a>Alternativní vzory
-Jenom dva možné způsoby, které mohou být uspořádány úložišti velkých objemů dat jsou uvedené v předchozí části vzorce, ale každý implementaci se liší. Bez ohledu na to, jak jsou strukturované zdroje dat, při registraci zdrojů velkých objemů dat s **Azure Data Catalog**, zaměřte se na registraci soubory a adresáře, které představují datových sad, které jsou hodnoty ostatním uživatelům v rámci vaší organizace. Registruje všechny soubory a adresáře můžete dál sbližuje tyto katalogu, kvůli tomu je těžší uživatelům najít to, co potřebují.
+Vzorce popsané v předchozí části představují dva možné způsoby, jak může být velké úložiště dat uspořádané, ale každá implementace je odlišná. Bez ohledu na to, jakým způsobem jsou zdroje dat strukturované, se při registraci velkých zdrojů dat pomocí **Azure Data Catalog**zaměřte na registraci souborů a adresářů, které představují datové sady, které jsou v rámci vaší organizace pro jiné hodnoty. Při registraci všech souborů a adresářů může být katalog nepřehledný, takže uživatelé budou mít těžší najít, co potřebují.
 
 ## <a name="summary"></a>Souhrn
-Registrace zdrojů dat s **Azure Data Catalog** usnadňují jejich zjišťování a pochopení. Pomocí registrace a zadávání poznámek k velké objemy dat souborů a adresářů, které představují logické datové sady, můžete pomoci uživatelům najít a používat zdroje velkých objemů dat, které potřebují.
+Registrace zdrojů dat pomocí **Azure Data Catalog** usnadňuje zjišťování a pochopení. Když zaregistrujete a pokládáte soubory s velkými objemy dat a adresáře, které představují logické datové sady, můžete uživatelům pomáhat při hledání a používání zdrojů s velkými objemy dat, které potřebují.

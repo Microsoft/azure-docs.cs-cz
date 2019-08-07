@@ -1,6 +1,6 @@
 ---
-title: Monitorování a protokolování v ochrana hesel Azure AD – Azure Active Directory
-description: Vysvětlení ochrana hesel Azure AD, monitorování a protokolování
+title: Monitorování a protokolování v Azure AD Password Protection – Azure Active Directory
+description: Pochopení monitorování a protokolování ochrany heslem v Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a029135da79d1a0b24b2941873a0fe3187ac9f7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1bd6d3abc6080c0ab1b6137511af719b23e5bcd4
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60414796"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736825"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Ochrana hesel Azure AD monitorování a protokolování
+# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Monitorování a protokolování ochrany heslem Azure AD
 
-Po nasazení ochrany hesel služby Azure AD monitorování a vytváření sestav jsou základní úlohy. Tento článek obsahuje podrobnosti k pomoct pochopit různé postupy monitorování, včetně, kde každá služba protokoluje informace a hlášení týkající se použití ochrany hesel služby Azure AD.
+Po nasazení ochrany heslem služby Azure AD jsou monitorování a vytváření sestav zásadními úkoly. Tento článek obsahuje podrobné informace, které vám pomůžou pochopit různé techniky monitorování, včetně toho, kde každá služba protokoluje informace a jak ohlásit používání ochrany heslem Azure AD.
 
-Monitorování a vytváření sestav se provádějí zprávy protokolu událostí nebo spuštěním rutiny prostředí PowerShell. Řadič domény a agent proxy služeb i protokolovat zprávy protokolu událostí. Všechny rutiny prostředí PowerShell popsaných níže jsou dostupné jenom na proxy serveru (viz modul Powershellu AzureADPasswordProtection). Software agenta řadiče domény není možné nainstalovat modul prostředí PowerShell.
+Monitorování a vytváření sestav se provádí buď pomocí zpráv protokolu událostí, nebo spuštěním rutin PowerShellu. Agent řadiče domény a proxy služby protokolují obě zprávy protokolu událostí. Všechny rutiny prostředí PowerShell popsané níže jsou k dispozici pouze na proxy server (viz modul prostředí PowerShell pro AzureADPasswordProtection). Software agenta DC neinstaluje modul prostředí PowerShell.
 
 ## <a name="dc-agent-event-logging"></a>Protokolování událostí agenta řadiče domény
 
-V každém řadiči domény k softwaru agenta služby řadiče domény zapíše výsledky operace ověření každé jednotlivé heslo (a další stav) do místního protokolu událostí:
+Na každém řadiči domény software služby agenta DC zapisuje výsledky jednotlivých operací ověření hesla (a další stav) do místního protokolu událostí:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin`
 
@@ -34,52 +34,52 @@ V každém řadiči domény k softwaru agenta služby řadiče domény zapíše 
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
 
-Protokolu řadiče domény agenta správy je primární zdroj informací pro jak software nepracuje.
+Protokol správce agenta DC je primární zdroj informací o tom, jak se software chová.
 
-Všimněte si, že protokol trasování je vypnuto ve výchozím nastavení.
+Všimněte si, že protokol trasování je ve výchozím nastavení vypnutý.
 
-Události zapsané podle různých komponent agenta DC spadají do následujících oblastí:
+Události zaznamenané různými součástmi agenta řadiče domény spadají do těchto rozsahů:
 
-|Komponenta |Rozsah ID událostí|
+|Komponenta |Rozsah ID události|
 | --- | --- |
-|Knihovny dll filtru hesel agenta řadiče domény| 10000-19999|
-|Řadič domény agenta služby hostitelského procesu| 20000-29999|
-|Logiku ověřování zásad služby agenta řadiče domény| 30000-39999|
+|Knihovna DLL filtru hesel agenta řadiče domény| 10000-19999|
+|Proces hostování služby agenta DC| 20000-29999|
+|Logika ověřování zásad služby agenta DC| 30000-39999|
 
 ## <a name="dc-agent-admin-event-log"></a>Protokol událostí správce agenta řadiče domény
 
-### <a name="password-validation-outcome-events"></a>Události výsledek ověření hesla
+### <a name="password-validation-outcome-events"></a>Události výsledku ověřování hesla
 
-V každém řadiči domény k softwaru agenta služby řadiče domény zapíše výsledky ověření každé jednotlivé hesla do protokolu událostí správce agentů DC.
+Na každém řadiči domény software služby agenta DC zapisuje výsledky jednotlivých ověření hesla do protokolu událostí správce agenta řadiče domény.
 
-Pro operace ověření hesla se podařila je obvykle jednu událost se zaznamená z knihovny dll filtru hesel agenta řadiče domény. Pro neúspěšného operace ověření hesla, obecně existují dvě události protokolované, jeden z řadiče domény služba agent a jeden z knihovny dll filtru hesel agenta DC.
+V případě úspěšné operace ověření hesla je k dispozici obvykle jedna událost, která se zaprotokoluje z knihovny DLL filtru hesel agenta řadiče domény. V případě operace ověřování hesla, která je neúspěšná, jsou k dispozici dvě události, které jsou protokolovány, jedna od služby agenta řadiče domény a druhá z knihovny DLL filtru řadiče domény.
 
-Diskrétní události zaznamenat tyto situace se protokolují, podle následující faktory:
+Diskrétní události pro zachycení těchto situací jsou zaznamenány v závislosti na následujících faktorech:
 
-* Určuje, zda se dané heslo nastavit nebo změnit.
-* Určuje, zda ověřování daného hesla úspěšné nebo neúspěšné.
-* Ověření, jestli se nezdařilo z důvodu Microsoft globální zásady, zásady organizace nebo kombinaci.
-* Určuje, zda režim jenom pro auditování je momentálně zapnuto nebo vypnuto pro aktuální zásady hesel.
+* Zda se dané heslo nastavuje nebo mění.
+* Zda bylo ověření daného hesla prošlo nebo nebylo úspěšné.
+* Bez ohledu na to, jestli se ověření nepovedlo kvůli globálním zásadám Microsoftu, zásadě organizace nebo kombinaci.
+* Zda je v případě současných zásad hesel aktuálně zapnuto nebo vypnuto režim auditování.
 
-Klíč události související s hesly ověření jsou následující:
+Klíčovým událostem souvisejícím s ověřováním hesla jsou následující:
 
-|   |Změna hesla |Nastavení hesla|
+|   |Změna hesla |Heslo nastaveno|
 | --- | :---: | :---: |
-|Průchod |10014 |10015|
-|(Z důvodu zásad hesel zákazníka)| 10016, 30002| 10017, 30003|
-|(Z důvodu zásad hesel Microsoft)| 10016, 30004| 10017, 30005|
-|(Z důvodu kombinované Microsoft a zákazník zásady hesel)| 10016, 30026| 10017, 30027|
-|Jenom pro auditování Pass (by se nezdařil zásady hesel zákazníka)| 10024, 30008| 10025, 30007|
-|Jenom pro auditování Pass (by se nezdařil zásady hesel Microsoft)| 10024, 30010| 10025, 30009|
-|Jenom pro auditování Pass (by se nezdařil kombinované zásady pro hesla Microsoft a zákazníka)| 10024, 30028| 10025, 30029|
+|Úspěch |10014 |10015|
+|Selhání (kvůli zásadám hesel zákazníka)| 10016, 30002| 10017, 30003|
+|Selhání (kvůli zásadám hesel Microsoftu)| 10016, 30004| 10017, 30005|
+|Selhání (kvůli kombinovaným zásadám hesel Microsoftu a zákazníků)| 10016, 30026| 10017, 30027|
+|Úspěšné pouze auditování (by se nezdařila zásada pro heslo zákazníka)| 10024, 30008| 10025, 30007|
+|Úspěch pouze proti auditu (by se nezdařila zásada hesla Microsoftu)| 10024, 30010| 10025, 30009|
+|Úspěšné pouze auditování (by se nezdařily kombinované zásady pro hesla Microsoftu a zákazníků)| 10024, 30028| 10025, 30029|
 
-Případy v předchozí tabulce, které odkazují na "kombinované zásady" odkazují na situace, kde bylo zjištěno heslo uživatele obsahovat alespoň jeden token ze seznamu Microsoft zakázané hesla a heslo seznam zákazníků zakázané.
+Případy v tabulce výše, které odkazují na "kombinované zásady", odkazují na situace, ve kterých bylo nalezeno heslo uživatele, aby obsahovalo alespoň jeden token ze seznamu zakázaných hesel Microsoftu i ze seznamu zakázaných hesel zákazníka.
 
-Když dvojice událostí, které se zaznamená společně, jak událostí jsou explicitně přidružené k tím, že stejné ID korelace.
+Je-li protokolována dvojice událostí, jsou obě události explicitně přidruženy pomocí stejného ID korelace.
 
-### <a name="password-validation-summary-reporting-via-powershell"></a>Souhrn ověření heslo vytváření sestav pomocí Powershellu
+### <a name="password-validation-summary-reporting-via-powershell"></a>Generování sestav souhrnu ověření hesla přes PowerShell
 
-`Get-AzureADPasswordProtectionSummaryReport` Rutina slouží k vytvoření souhrnné zobrazení Aktivita ověřování hesla. Ukázkový výstup této rutiny je následujícím způsobem:
+`Get-AzureADPasswordProtectionSummaryReport` Rutina se dá použít k vytvoření souhrnného zobrazení aktivity ověření hesla. Příklad výstupu této rutiny je následující:
 
 ```powershell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
@@ -94,11 +94,11 @@ PasswordChangeErrors            : 0
 PasswordSetErrors               : 1
 ```
 
-Rozsah rutiny reporting může jím můžou být jedním z – doménové struktury, domény nebo – DomainController parametrů. Bez zadání parametru znamená – doménová struktura.
+Rozsah generování sestav rutiny může být ovlivněn pomocí jednoho z parametrů – doménová struktura,-doména nebo – DomainController. Nepovedlo se určit parametr implikuje – doménová struktura.
 
-`Get-AzureADPasswordProtectionSummaryReport` Rutina funguje tak, že dotazování protokolu událostí správce agenta řadiče domény a pak počítání celkový počet událostí, které odpovídají každé kategorie zobrazený výsledek. Následující tabulka obsahuje mapování mezi každý výsledek a jeho odpovídající id události:
+`Get-AzureADPasswordProtectionSummaryReport` Rutina funguje tak, že dotazuje protokol událostí správce agenta DC a pak počítá celkový počet událostí, které odpovídají jednotlivým zobrazeným kategoriím výsledek. Následující tabulka obsahuje mapování mezi každým výsledkem a jeho odpovídajícím ID události:
 
-|Get-AzureADPasswordProtectionSummaryReport property |Id odpovídající události|
+|Get-AzureADPasswordProtectionSummaryReport property |ID odpovídajícího události|
 | :---: | :---: |
 |PasswordChangesValidated |10014|
 |PasswordSetsValidated |10015|
@@ -109,17 +109,17 @@ Rozsah rutiny reporting může jím můžou být jedním z – doménové strukt
 |PasswordChangeErrors |10012|
 |PasswordSetErrors |10013|
 
-Všimněte si, že `Get-AzureADPasswordProtectionSummaryReport` rutiny je dodáno ve formě skriptu prostředí PowerShell a v případě potřeby může odkazovat přímo v následujícím umístění:
+Všimněte si, `Get-AzureADPasswordProtectionSummaryReport` že je tato rutina expedována ve formuláři PowerShell Script a v případě potřeby může být odkazována přímo v následujícím umístění:
 
 `%ProgramFiles%\WindowsPowerShell\Modules\AzureADPasswordProtection\Get-AzureADPasswordProtectionSummaryReport.ps1`
 
 > [!NOTE]
-> Tato rutina funguje tak, že otevřete relaci Powershellu na každém řadiči domény. Aby bylo možné úspěšné, musí být povolena podpora vzdálené relace Powershellu na každém řadiči domény a klient musí mít dostatečná oprávnění. Další informace o požadavcích vzdálené relace prostředí PowerShell spusťte v okně Powershellu "Get-Help about_Remote_Troubleshooting".
+> Tato rutina funguje tak, že otevřete relaci PowerShellu pro každý řadič domény. Aby to bylo úspěšné, musí být na každém řadiči domény povolená podpora vzdálené relace PowerShellu a klient musí mít dostatečná oprávnění. Další informace o požadavcích na vzdálenou relaci PowerShellu získáte spuštěním příkazu Get-Help řešení problémů v okně PowerShellu.
 
 > [!NOTE]
-> Tato rutina funguje tak, že vzdáleně dotazování protokolu událostí správce každé služby agenta řadiče domény. Když protokoly událostí obsahují velký počet událostí, rutina může trvat dlouhou dobu pro dokončení. Kromě toho hromadné sítě dotazy velkých datových sad může ovlivnit výkon řadiče domény. Proto by měla tuto rutinu použít pečlivě v produkčním prostředí.
+> Tato rutina funguje vzdáleně dotazem na každý protokol událostí správce služby Agent řadiče domény. Pokud protokoly událostí obsahují velký počet událostí, dokončení rutiny může trvat dlouhou dobu. Kromě toho může mít rozsáhlé síťové dotazy velkých datových sad vliv na výkon řadiče domény. Proto by se tato rutina měla pečlivě používat v produkčním prostředí.
 
-### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Ukázka protokolu událostí zprávy pro ID události 10014 (Změna hesla se podařila)
+### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Ukázka zprávy protokolu událostí pro ID události 10014 (úspěšná Změna hesla)
 
 ```text
 The changed password for the specified user was validated as compliant with the current Azure password policy.
@@ -128,7 +128,7 @@ The changed password for the specified user was validated as compliant with the 
  FullName:
 ```
 
-### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Ukázka protokolu událostí zprávy pro ID události 10017 a 30003 (nastavení hesel)
+### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Ukázková zpráva protokolu událostí pro událost s ID 10017 a 30003 (sada hesel se nezdařila)
 
 10017:
 
@@ -148,7 +148,7 @@ The reset password for the specified user was rejected because it matched at lea
  FullName:
 ```
 
-### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Ukázka protokolu událostí zprávy pro ID události 30001 (hesla přijata z důvodu žádné zásady, které jsou k dispozici)
+### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Ukázka zprávy protokolu událostí pro událost s ID 30001 (heslo bylo přijato, protože není k dispozici žádná zásada)
 
 ```text
 The password for the specified user was accepted because an Azure password policy is not available yet
@@ -175,7 +175,7 @@ This condition may be caused by one or more of the following reasons:%n
    Resolution steps: ensure network connectivity exists to the domain.
 ```
 
-### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Ukázka protokolu událostí zprávy pro ID události 30006 (nové zůstala vynucená zásada)
+### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Ukázka zprávy protokolu událostí pro událost s ID 30006 (nové zásady se vynutily)
 
 ```text
 The service is now enforcing the following Azure password policy.
@@ -187,7 +187,7 @@ The service is now enforcing the following Azure password policy.
  Enforce tenant policy: 1
 ```
 
-### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>Ukázka protokolu událostí zprávy pro ID události 30019 (ochrana hesel Azure AD je zakázána)
+### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>Zpráva protokolu ukázkové události pro událost s ID 30019 (ochrana heslem Azure AD je zakázaná)
 
 ```text
 The most recently obtained Azure password policy was configured to be disabled. All passwords submitted for validation from this point on will automatically be considered compliant with no processing performed.
@@ -196,63 +196,63 @@ No further events will be logged until the policy is changed.%n
 
 ```
 
-## <a name="dc-agent-operational-log"></a>Řadič domény agenta operační protokol
+## <a name="dc-agent-operational-log"></a>Provozní protokol agenta DC
 
-Služba agenta řadiče domény navíc zaznamená provozní související události do protokolu následující:
+Služba agenta řadiče domény bude také protokolovat události týkající se provozu do následujícího protokolu:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational`
 
 ## <a name="dc-agent-trace-log"></a>Protokol trasování agenta řadiče domény
 
-Služba agenta řadiče domény můžete také podrobné úroveň ladění trasování událostí v protokolu do následující protokol:
+Služba agenta řadiče domény může také Protokolovat podrobné události trasování na úrovni ladění v následujícím protokolu:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
 
-Protokolování trasování je ve výchozím nastavení zakázána.
+Protokolování trasování je ve výchozím nastavení zakázáno.
 
 > [!WARNING]
-> Při povolení protokolu trasování přijímá k velkému počtu událostí a může ovlivnit výkon řadiče domény. Proto tento Vylepšený protokol by měl být povoleno pouze při vyžaduje hlubší šetření, problém a pak pouze pro co nejkratším čase.
+> Pokud je povoleno, protokol trasování obdrží velký objem událostí a může ovlivnit výkon řadiče domény. Proto by tento rozšířený protokol měl být povolen pouze v případě, že problém vyžaduje hlubší šetření a následně pouze v případě minimálního množství času.
 
-## <a name="dc-agent-text-logging"></a>Řadič domény agenta protokolování textu
+## <a name="dc-agent-text-logging"></a>Protokolování textu agenta řadiče domény
 
-Řadič domény agenta služby lze nastavit k zápisu do protokolu text tak, že nastavíte následující hodnotu registru:
+Službu agenta DC je možné nakonfigurovat tak, aby zapisovala do textového protokolu nastavením následující hodnoty registru:
 
 ```text
 HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters!EnableTextLogging = 1 (REG_DWORD value)
 ```
 
-Protokolování textu je standardně zakázáno. Restartovat službu agenta řadiče domény je požadovaná pro tuto hodnotu, než se projeví změny. Pokud povolena řadiče domény Služba agenta bude zapisovat do souboru protokolu, která je umístěna ve složce:
+Protokolování textu je ve výchozím nastavení zakázáno. Aby se změny této hodnoty projevily, vyžaduje se restartování služby agenta řadiče domény. Pokud je povoleno, služba agenta řadiče domény zapíše do souboru protokolu, který je v umístění:
 
 `%ProgramFiles%\Azure AD Password Protection DC Agent\Logs`
 
 > [!TIP]
-> Textový protokol obdrží stejnou úroveň ladění položky, které může být zaznamenány do protokolu trasování, ale je obvykle ve formátu snadněji zkontrolovat a analyzovat.
+> Textový protokol obdrží stejné položky na úrovni ladění, které mohou být protokolovány do protokolu trasování, ale obecně ve snazším formátu pro kontrolu a analýzu.
 
 > [!WARNING]
-> Při povolení tohoto protokolu přijímá k velkému počtu událostí a může ovlivnit výkon řadiče domény. Proto tento Vylepšený protokol by měl být povoleno pouze při vyžaduje hlubší šetření, problém a pak pouze pro co nejkratším čase.
+> Pokud je tento protokol povolený, obdrží velký objem událostí a může ovlivnit výkon řadiče domény. Proto by tento rozšířený protokol měl být povolen pouze v případě, že problém vyžaduje hlubší šetření a následně pouze v případě minimálního množství času.
 
-## <a name="dc-agent-performance-monitoring"></a>Sledování výkonu agenta řadiče domény
+## <a name="dc-agent-performance-monitoring"></a>Monitorování výkonu agenta řadiče domény
 
-Software služby agenta řadiče domény nainstaluje objekt čítače výkonu s názvem **ochrana hesel Azure AD**. Následující čítače výkonu jsou aktuálně k dispozici:
+Software služby agenta DC nainstaluje objekt čítače výkonu s názvem **ochrana heslem Azure AD**. Nyní jsou k dispozici následující čítače výkonu:
 
 |Název čítače výkonu | Popis|
 | --- | --- |
-|Hesla zpracování |Tento čítač zobrazuje celkový počet zpracovaných hesla (přijímat nebo odmítat) od minulého restartování.|
+|Zpracovaná hesla |Tento čítač zobrazuje celkový počet zpracovaných a odmítnutých hesel od posledního restartování.|
 |Hesla přijata |Tento čítač zobrazuje celkový počet hesel, která byla přijata od posledního restartování.|
-|Hesla zamítnuto |Tento čítač zobrazuje celkový počet hesel, které byly odmítnuty od posledního restartování.|
-|Heslo filtrovat žádosti v průběhu |Tento čítač zobrazuje počet požadavků filtr heslo, které aktuálně probíhá.|
-|Požadavky filtru hesel ve špičce |Tento čítač zobrazuje nejvyšší počet souběžných heslo filtrovat žádosti od minulého restartování.|
-|Heslo filtrování požadavku chyb |Tento čítač zobrazuje celkový počet požadavků filtr heslo, které se nezdařilo z důvodu chyby od posledního restartování. Pokud není spuštěna Služba agenta ochrany DC hesel služby Azure AD, může dojít k chybám.|
-|Heslo filtru požadavků za sekundu |Tento čítač zobrazuje míru, ve kterém jsou zpracovávány hesla.|
-|Doba zpracování požadavku filtru hesel |Tento čítač zobrazuje průměrný čas potřebný ke zpracování požadavku filtru hesel.|
-|Doba zpracování požadavku filtru hesel ve špičce |Tento čítač zobrazuje čas od minulého restartování zpracování požadavků filtru hesel ve špičce.|
-|Hesla přijata z důvodu režimu auditování |Tento čítač zobrazuje celkový počet hesel, která by obvykle byly odmítnuty, ale byla přijata, protože zásady hesel nastavený tak, aby se v režimu auditování (od minulého restartování).|
+|Hesla odmítnuta |Tento čítač zobrazuje celkový počet hesel, která byla od posledního restartování odmítnuta.|
+|Probíhá požadavek filtru hesel. |Tento čítač zobrazuje počet aktuálně probíhajících požadavků filtru hesel.|
+|Požadavky na filtr hesel ve špičce |Tento čítač zobrazuje nejvyšší počet souběžných požadavků filtru hesel od posledního restartování.|
+|Chyby žádosti filtru hesel |Tento čítač zobrazuje celkový počet požadavků filtru hesel, které selhaly kvůli chybě od posledního restartování. K chybám může dojít v případě, že služba agenta řadiče domény služby Azure AD heslem není spuštěná.|
+|Požadavky filtru hesel za sekundu |Tento čítač zobrazuje rychlost zpracování hesel.|
+|Doba zpracování žádosti filtru hesel |Tento čítač zobrazuje průměrnou dobu potřebnou ke zpracování žádosti filtru hesel.|
+|Doba zpracování požadavku filtru hesel ve špičce |Tento čítač zobrazuje dobu zpracování požadavku filtru hesel ve špičce od posledního restartování.|
+|Hesla přijatá v důsledku režimu auditu |Tento čítač zobrazuje celkový počet hesel, která by byla normálně odmítnuta, ale byla přijata, protože zásady hesel byly nakonfigurovány tak, aby byly v režimu auditování (od posledního restartování).|
 
-## <a name="dc-agent-discovery"></a>Zjišťování agentů DC
+## <a name="dc-agent-discovery"></a>Zjišťování agenta řadiče domény
 
-`Get-AzureADPasswordProtectionDCAgent` Rutiny lze zobrazit základní informace o různých agentů DC spuštěných v doméně nebo doménové struktuře. Tyto informace získány z serviceConnectionPoint objekty registrované ve spuštěné službě agenta řadiče domény.
+`Get-AzureADPasswordProtectionDCAgent` Rutina se dá použít k zobrazení základních informací o různých agentech řadiče domény spuštěných v doméně nebo doménové struktuře. Tyto informace se načítají z objektů serviceConnectionPoint zaregistrovaných spuštěnými službami agenta řadiče domény.
 
-Ukázkový výstup této rutiny je následujícím způsobem:
+Příklad výstupu této rutiny je následující:
 
 ```powershell
 Get-AzureADPasswordProtectionDCAgent
@@ -263,17 +263,38 @@ PasswordPolicyDateUTC : 2/16/2018 8:35:01 AM
 HeartbeatUTC          : 2/16/2018 8:35:02 AM
 ```
 
-Různé vlastnosti se aktualizují každou službu agenta DC přibližně hodinu. Data se stále latenci replikace služby Active Directory.
+Jednotlivé vlastnosti se aktualizují každou službu agenta řadiče domény o přibližné hodinové bázi. Data stále podléhají latenci replikace služby Active Directory.
 
-Rozsah rutiny dotazu může jím můžou být buď pomocí – doménová struktura nebo – doména parametry.
+Rozsah dotazu rutiny může být ovlivněn pomocí parametrů – doménové struktury nebo – Domain.
 
-Pokud hodnota HeartbeatUTC získá zastaralá, může to být příznakem, který Agent ochrany DC hesel služby Azure AD na příslušném řadiči domény není spuštěný, nebo byla odinstalována, nebo byla snížena na počítači a už není řadičem domény.
+Pokud je hodnota HeartbeatUTC zastaralá, může se jednat o příznak, že na tomto řadiči domény není spuštěný agent Azure AD Password Protection, nebo se odinstaloval, nebo byl počítač degradován a už není řadičem domény.
 
-Pokud získá hodnotu PasswordPolicyDateUTC zastaralé, důvodem může být příznakem, který má Agent ochrany DC hesel služby Azure AD na tomto počítači nefunguje správně.
+Pokud je hodnota PasswordPolicyDateUTC zastaralá, může to být příznak, který agent řadiče domény služby Azure AD pro ochranu hesel na tomto počítači nepracuje správně.
 
-## <a name="proxy-service-event-logging"></a>Protokolování událostí service proxy
+## <a name="dc-agent-newer-version-available"></a>Je dostupná novější verze agenta DC
 
-Proxy služba generuje minimální sadu událostí k následující protokoly událostí:
+Služba agenta DC zaznamená událost upozornění 30034 do provozního protokolu při zjištění, že je k dispozici novější verze softwaru agenta řadiče domény, například:
+
+```text
+An update for Azure AD Password Protection DC Agent is available.
+
+If autoupgrade is enabled, this message may be ignored.
+
+If autoupgrade is disabled, refer to the following link for the latest version available:
+
+https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
+
+Current version: 1.2.116.0
+```
+
+Výše uvedená událost neurčuje verzi novějšího softwaru. Měli byste přejít na odkaz ve zprávě události pro tyto informace.
+
+> [!NOTE]
+> Bez ohledu na odkazy na možnost autoupgrade ve výše uvedené zprávě o události software agenta řadiče domény tuto funkci v tuto chvíli nepodporuje.
+
+## <a name="proxy-service-event-logging"></a>Protokolování událostí služby proxy
+
+Služba proxy generuje minimální sadu událostí do následujících protokolů událostí:
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Admin`
 
@@ -281,50 +302,50 @@ Proxy služba generuje minimální sadu událostí k následující protokoly ud
 
 `\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace`
 
-Všimněte si, že protokol trasování je vypnuto ve výchozím nastavení.
+Všimněte si, že protokol trasování je ve výchozím nastavení vypnutý.
 
 > [!WARNING]
-> Při povolení protokolu trasování přijímá k velkému počtu událostí a to může mít vliv na výkon hostitele proxy serveru. Proto tento protokol by měl být povoleno pouze při vyžaduje hlubší šetření, problém a pak pouze pro co nejkratším čase.
+> Pokud je povoleno, protokol trasování obdrží velký objem událostí a to může mít vliv na výkon hostitele proxy serveru. Proto by měl být tento protokol povolen pouze v případě, že problém vyžaduje hlubší šetření a následně pouze za účelem minimálního množství času.
 
-Události jsou protokolovány podle různých komponent proxy server pomocí následující rozsahy:
+Události jsou protokolovány různými součástmi proxy serveru pomocí následujících rozsahů:
 
-|Komponenta |Rozsah ID událostí|
+|Komponenta |Rozsah ID události|
 | --- | --- |
-|Hostitelský proces service proxy| 10000-19999|
-|Proxy služby jádra obchodní logiky| 20000-29999|
+|Proces hostování služby proxy| 10000-19999|
+|Základní obchodní logika služby proxy| 20000-29999|
 |Rutiny prostředí PowerShell| 30000-39999|
 
-## <a name="proxy-service-text-logging"></a>Protokolování textu service proxy
+## <a name="proxy-service-text-logging"></a>Protokolování textu služby proxy
 
-Proxy služby mohou být konfigurovány pro zápis do protokolu text tak, že nastavíte následující hodnotu registru:
+Službu proxy můžete nakonfigurovat tak, aby zapisovala do textového protokolu nastavením následující hodnoty registru:
 
-HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters!EnableTextLogging = 1 (REG_DWORD value)
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters! EnableTextLogging = 1 (hodnota REG_DWORD)
 
-Protokolování textu je standardně zakázáno. Restartování služby serveru Proxy je požadovaná pro tuto hodnotu, než se projeví změny. Pokud povolena proxy serveru, kdy bude služba zapisovat do souboru protokolu, která je umístěna ve složce:
+Protokolování textu je ve výchozím nastavení zakázáno. Aby se změny této hodnoty projevily, vyžaduje se restartování služby proxy serveru. Pokud je povoleno, služba proxy zapíše do souboru protokolu, který se nachází v:
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
 > [!TIP]
-> Textový protokol obdrží stejnou úroveň ladění položky, které může být zaznamenány do protokolu trasování, ale je obvykle ve formátu snadněji zkontrolovat a analyzovat.
+> Textový protokol obdrží stejné položky na úrovni ladění, které mohou být protokolovány do protokolu trasování, ale obecně ve snazším formátu pro kontrolu a analýzu.
 
 > [!WARNING]
-> Při povolení tohoto protokolu přijímá k velkému počtu událostí a může mít vliv na výkon počítače. Proto tento Vylepšený protokol by měl být povoleno pouze při vyžaduje hlubší šetření, problém a pak pouze pro co nejkratším čase.
+> Pokud je tento protokol povolený, obdrží velký objem událostí a může mít vliv na výkon počítače. Proto by tento rozšířený protokol měl být povolen pouze v případě, že problém vyžaduje hlubší šetření a následně pouze v případě minimálního množství času.
 
-## <a name="powershell-cmdlet-logging"></a>Protokolování rutiny prostředí PowerShell
+## <a name="powershell-cmdlet-logging"></a>Protokolování rutin PowerShellu
 
-Rutiny Powershellu, které způsobit změnu stavu (například Register-AzureADPasswordProtectionProxy) bude obvykle protokolovat událost v výsledek do provozních protokolů.
+Rutiny PowerShellu, které vedou ke změně stavu (například Register-AzureADPasswordProtectionProxy), budou normálně protokolovat událost výsledku do provozního protokolu.
 
-Kromě toho většina rutin Powershellu pro ochranu hesel služby Azure AD bude zapisovat do textový protokol umístěna ve složce:
+Většina rutin PowerShellu pro ochranu heslem Azure AD bude navíc zapisovat do textového protokolu umístěného v:
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
-Pokud dojde k chybě rutiny a příčina a řešení není snadno pozná, tyto textové protokoly mohou také brán ohled.
+Pokud dojde k chybě rutiny a řešení příčin and\or není zřejmé, můžou se taky tyto textové protokoly prostudovat.
 
-## <a name="proxy-discovery"></a>Proxy zjišťování
+## <a name="proxy-discovery"></a>Zjišťování proxy
 
-`Get-AzureADPasswordProtectionProxy` Rutiny lze zobrazit základní informace o různých hesel služby Azure AD ochrany Proxy služby spuštěné v doméně nebo doménové struktuře. Tyto informace získány z serviceConnectionPoint objektů registrovaných spuštěné služby serveru Proxy.
+`Get-AzureADPasswordProtectionProxy` Rutina se dá použít k zobrazení základních informací o různých službách proxy ochrany heslem Azure AD spuštěných v doméně nebo doménové struktuře. Tyto informace se načítají z objektů serviceConnectionPoint zaregistrovaných běžícími službami proxy.
 
-Ukázkový výstup této rutiny je následujícím způsobem:
+Příklad výstupu této rutiny je následující:
 
 ```powershell
 Get-AzureADPasswordProtectionProxy
@@ -334,14 +355,35 @@ Forest                : bplRootDomain.com
 HeartbeatUTC          : 12/25/2018 6:35:02 AM
 ```
 
-Různé vlastnosti se aktualizují každou službu Proxy přibližně hodinu. Data se stále latenci replikace služby Active Directory.
+Jednotlivé vlastnosti se aktualizují každou službu proxy serveru o přibližné hodinové bázi. Data stále podléhají latenci replikace služby Active Directory.
 
-Rozsah rutiny dotazu může jím můžou být buď pomocí – doménová struktura nebo – doména parametry.
+Rozsah dotazu rutiny může být ovlivněn pomocí parametrů – doménové struktury nebo – Domain.
 
-Pokud hodnota HeartbeatUTC získá zastaralá, může to být příznak, který Proxy ochrana hesel Azure AD na tomto počítači není spuštěna nebo k byla odinstalována.
+Pokud je hodnota HeartbeatUTC zastaralá, může to být příznak, že proxy ochrany heslem služby Azure AD na tomto počítači není spuštěno nebo bylo odinstalováno.
 
-## <a name="next-steps"></a>Další postup
+## <a name="proxy-agent-newer-version-available"></a>Je dostupná novější verze agenta proxy.
 
-[Řešení potíží pro ochranu hesel Azure AD](howto-password-ban-bad-on-premises-troubleshoot.md)
+Služba proxy zaznamená událost upozornění 20002 do provozního protokolu při zjištění, že je k dispozici novější verze softwaru proxy, například:
 
-Další informace o seznamech globálních a vlastních zakázaných hesel, najdete v článku [zakázat chybná hesla](concept-password-ban-bad.md)
+```text
+An update for Azure AD Password Protection Proxy is available.
+
+If autoupgrade is enabled, this message may be ignored.
+
+If autoupgrade is disabled, refer to the following link for the latest version available:
+
+https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
+
+Current version: 1.2.116.0
+.
+```
+
+Výše uvedená událost neurčuje verzi novějšího softwaru. Měli byste přejít na odkaz ve zprávě události pro tyto informace.
+
+Tato událost bude vygenerována i v případě, že je u agenta proxy nakonfigurován povolený autoupgrade.
+
+## <a name="next-steps"></a>Další kroky
+
+[Řešení potíží s ochranou hesel Azure AD](howto-password-ban-bad-on-premises-troubleshoot.md)
+
+Další informace o globálním a vlastním seznamu zakázaných hesel najdete v článku [zákaz chybných hesel](concept-password-ban-bad.md) .

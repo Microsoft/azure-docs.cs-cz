@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 827dffc1c7544d9373b5f8d4426ea8c448fa25ab
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1e4c4712312faf2274a4a0737c4fc1f7ce39f98e
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571598"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824188"
 ---
 # <a name="secure-remote-administration-of-your-gateway-in-azure-australia"></a>Zabezpečení vzdálené správy vaší brány v Azure Austrálie
 
@@ -33,7 +33,6 @@ Tento dokument popisuje důležitost zabezpečené správy a navrhuje jednu z me
 |Protokolování a auditování   |Automatizované generování, shromažďování a analýza událostí souvisejících se zabezpečením a správou z pracovních stanic, serverů, síťových zařízení a seznamů odkazů umožní detekci ohrožení a pokus o ohrožení zabezpečení. Automatizace umožňuje organizacím reagovat rychleji a snížit dopad ohrožení.|
 |Segmentace a dělení sítě|Segmentace sítě do logických zón, jako jsou například rozdílné domény zabezpečení, a další oddělení těchto logických sítí omezením typů dat, která se pohybují z jedné zóny do druhé, omezuje boční pohyb. Segmentace brání nežádoucí osoba získat přístup k dalším prostředkům.|
 |Pole s odkazy|Pole s odkazem je server s posíleným vzdáleným přístupem, který běžně využívá software služby Vzdálená plocha nebo Secure Shell (SSH) společnosti Microsoft. Pole s odkazy slouží jako bod krokování pro správce, kteří přistupují k důležitým systémům se všemi akcemi správy provedenými z vyhrazeného hostitele.|
-|
 
 Tento článek poskytuje referenční architekturu, jak se výše uvedené prvky dají použít k zabezpečení správy systémů nasazených v Azure.
 
@@ -77,7 +76,6 @@ Získání přístupu pro správu je proces s více kroky zahrnující komponent
 |Podmíněný přístup |Zásady podmíněného přístupu kontrolují pokus o ověření, aby splňovaly nezbytné požadavky, jako je třeba IP adresa, ze které připojení pochází, členství ve skupině pro privilegovaný účet a stav správy a dodržování předpisů. Privilegovaná pracovní stanice uvedená v Intune |
 |Privileged Identity Management (PIM) |Prostřednictvím Azure Portal může správce nyní aktivovat nebo požádat o aktivaci privilegovaných rolí, pro které mají oprávnění prostřednictvím PIM. PIM zajišťuje, že privilegované účty nemají žádná stálá oprávnění správce a že všechny požadavky na privilegovaný přístup jsou jenom za dobu potřebnou k provádění úloh správy. PIM poskytuje také protokolování všech požadavků a aktivací pro účely auditování. |
 |Správa identit a přístupu|Po bezpečné identifikaci privilegovaného účtu a aktivaci rolí správce poskytne přístup k předplatným Azure a prostředkům, ke kterým jim byla přiřazena oprávnění prostřednictvím správy identit a přístupu.|
-|
 
 Jakmile privilegovaný účet dokončí kroky pro získání přístupu pro správu k Azure Portal, je možné nakonfigurovat přístup k pracovním postupům a vytvořit připojení pro správu.
 
@@ -91,7 +89,6 @@ Jakmile privilegovaný účet dokončí kroky pro získání přístupu pro spr�
 |Server NPS (Network Policy Server)|Server NPS obdrží požadavek na ověření od Brána VP a před odesláním žádosti o Azure Active Directory k aktivaci žádosti o ověření Azure MFA ověří uživatelské jméno a heslo proti službě Active Directory.|
 |Azure MFA|Azure MFA pošle požadavek na ověření do zaregistrovaného mobilního zařízení privilegovaného účtu. Mobilní zařízení spravuje Intune, aby se zajistilo dodržování požadavků na zabezpečení. Aby se mohl pokus o ověření povolit pro Azure MFA, musí se nejdřív ověřit u mobilního zařízení a potom do aplikace Microsoft Authenticator pomocí PIN nebo biometrického systému.|
 |Server pro skok|Po úspěšném ověření je připojení RDP šifrované pomocí protokolu TLS (Transport Layer Security) a pak se prostřednictvím Brána VP a na serveru skoku pošle prostřednictvím šifrovaného tunelu IPSec do Azure VPN Gateway. Na serveru skoku může správce nyní pomocí protokolu RDP nebo SSH vymezit virtuálním počítačům úlohy, jak je uvedeno v požadavku JIT.|
-|
 
 ## <a name="general-guidance"></a>Obecné pokyny
 
@@ -133,7 +130,6 @@ Privilegovaný pracovní stanice je posílený počítač, který se dá použí
 |---|---|
 |Přehled architektury privilegovaného přístupu pracovních stanic|[https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)|
 |Zabezpečení privilegovaného přístupu – referenční materiál|[https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)|
-|
 
 ### <a name="mobile-device"></a>Mobilní zařízení
 
@@ -143,7 +139,6 @@ Mobilní zařízení má větší riziko náhodné ztráty nebo krádeže z dův
 |---|---|
 |Metody ověřování Azure AD|[https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)|
 |Jak používat aplikaci Microsoft Authenticator|[https://support.microsoft.com/help/4026727/microsoft-account-how-to-use-the-microsoft-authenticator-app](https://support.microsoft.com/help/4026727/microsoft-account-how-to-use-the-microsoft-authenticator-app)|
-|
 
 ### <a name="microsoft-intune"></a>Microsoft Intune
 
@@ -153,7 +148,6 @@ Intune je součást Enterprise Mobility + Security, která spravuje mobilní za�
 |---|---|
 |Dokumentace k Microsoft Intune|[https://docs.microsoft.com/intune/](https://docs.microsoft.com/intune/)|
 |Začínáme s dodržováním předpisů zařízením v Intune|[https://docs.microsoft.com/intune/device-compliance-get-started](https://docs.microsoft.com/intune/device-compliance-get-started)|
-|
 
 ### <a name="group-policy"></a>Zásada skupiny
 
@@ -162,7 +156,6 @@ Zásady skupiny slouží k řízení konfigurace operačních systémů a aplika
 |Zdroje a prostředky|Odkaz|
 |---|---|
 |Povolení nastavení přihlášení Zásady skupiny lokálně|[https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/allow-log-on-locally](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/allow-log-on-locally)|
-|
 
 ### <a name="jump-server--bastion-host"></a>Server skoku/hostitel bastionu
 
@@ -171,7 +164,6 @@ Server skoku/hostitel bastionu je centralizovaným bodem pro správu. Má nástr
 |Zdroje a prostředky|Odkaz|
 |---|---|
 |Implementace zabezpečených hostitelů pro správu|[https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-secure-administrative-hosts](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-secure-administrative-hosts)|
-|
 
 ### <a name="just-in-time-jit-access"></a>Přístup k JIT (just in time)
 
@@ -181,7 +173,6 @@ JIT je Azure Security Center schopnost, která využívá skupiny zabezpečení 
 |---|---|
 |Správa přístupu JIT (just in time)|[https://docs.microsoft.com/azure/security-center/security-center-just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|
 |Automatizace přístupu k virtuálnímu počítači podle potřeby Azure|[https://blogs.technet.microsoft.com/motiba/2018/06/24/automating-azure-just-in-time-vm-access](https://blogs.technet.microsoft.com/motiba/2018/06/24/automating-azure-just-in-time-vm-access)|
-|
 
 ## <a name="secure-communication"></a>Zabezpečená komunikace
 
@@ -194,7 +185,6 @@ Komunikace s Azure Portal je šifrovaná pomocí protokolu TLS (Transport Layer 
 |Zdroje a prostředky |Odkaz |
 |---|---|
 |Přehled šifrování Azure – šifrování při přenosu|[https://docs.microsoft.com/azure/security/security-azure-encryption-overview#encryption-of-data-in-transit](https://docs.microsoft.com/azure/security/security-azure-encryption-overview#encryption-of-data-in-transit)|
-|
 
 ### <a name="azure-vpn-gateway"></a>Azure VPN Gateway
 
@@ -204,8 +194,7 @@ Azure VPN Gateway poskytuje zabezpečené šifrované připojení z privilegovan
 |---|---|
 |Připojení Point-to-site|[https://docs.microsoft.com/azure/vpn-gateway/point-to-site-about](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-about)|
 |Podrobnosti o šifrování Azure VPN Gateway|[https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto)|
-|Konfigurace Azure VPN Gateway|[https://aka.ms/AzGovAUSecurity](https://aka.ms/AzGovAUSecurity)|
-|
+|Konfigurace Azure VPN Gateway|[Konfigurace Azure VPN Gateway](vpn-gateway.md)|
 
 ### <a name="remote-desktop-rd-gateway"></a>Brána vzdálené plochy (RD)
 
@@ -214,7 +203,6 @@ Brána VP je zabezpečený mechanismus pro řízení a povolování připojení 
 |Zdroje a prostředky |Odkaz |
 |---|---|
 |Architektura služby Vzdálená plocha|[https://docs.microsoft.com/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)|
-|
 
 ### <a name="network-security-groups-nsgs"></a>Skupiny zabezpečení sítě (skupin zabezpečení sítě)
 
@@ -224,7 +212,6 @@ Skupin zabezpečení sítě jako seznamy pro Access Control (seznamy ACL) pro s�
 |---|---|
 |Přehled skupin zabezpečení Azure|[https://docs.microsoft.com/azure/virtual-network/security-overview](https://docs.microsoft.com/azure/virtual-network/security-overview)|
 |Postup: Plánování virtuálních sítí|[https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)|
-|
 
 ## <a name="strong-authentication"></a>Silné ověřování
 
@@ -237,7 +224,6 @@ Na vysoké úrovni řadič domény hostuje kopii databáze služby Active Direct
 |Zdroje a prostředky |Odkaz |
 |---|---|
 |Přehled Active Directory Domain Services|[https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)|
-|
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
@@ -249,7 +235,6 @@ identity a poskytuje ověřování a oprávnění pro prostředí Azure. Služba
 |---|---|
 |Dokumentace k Azure Active Directory|[https://docs.microsoft.com/azure/active-directory](https://docs.microsoft.com/azure/active-directory)|
 |Dokumentace k hybridní identitě|[https://docs.microsoft.com/azure/active-directory/hybrid](https://docs.microsoft.com/azure/active-directory/hybrid)|
-|
 
 ### <a name="network-policy-server-nps"></a>Server NPS (Network Policy Server)
 
@@ -258,7 +243,6 @@ NPS je server pro ověřování a zásady, který poskytuje pokročilé procesy 
 |Zdroje a prostředky |Odkaz |
 |---|---|
 |Dokumentace k serveru NPS (Network Policy Server)|[https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)|
-|
 
 ### <a name="azure-mfa"></a>Azure MFA
 
@@ -268,7 +252,6 @@ Azure MFA je ověřovací služba poskytovaná v rámci Azure Active Directory, 
 |---|---|
 |Jak to funguje: Služba Azure Multi-Factor Authentication|[https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)|
 |Postup: Nasadit cloudovou službu Azure Multi-Factor Authentication|[https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)|
-|
 
 ## <a name="strong-authorisation"></a>Silné oprávnění
 
@@ -282,7 +265,6 @@ Přístup k provádění privilegovaných akcí v rámci Azure je založený na 
 |---|---|
 |Access Control na základě rolí Azure|[https://docs.microsoft.com/azure/role-based-access-control](https://docs.microsoft.com/azure/role-based-access-control)|
 |Pochopení definic rolí|[https://docs.microsoft.com/azure/role-based-access-control/role-definitions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions)|
-|
 
 ### <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PIM)
 
@@ -292,7 +274,6 @@ PIM je Azure Active Directory komponenta, která řídí přístup k privilegova
 |---|---|
 |Privileged Identity Management (PIM) – dokumentace|[https://docs.microsoft.com/azure/active-directory/privileged-identity-management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)|
 |Zahájení práce s využitím PIM|[https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-getting-started](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-getting-started)|
-|
 
 ### <a name="conditional-access"></a>podmíněný přístup
 
@@ -302,8 +283,7 @@ Podmíněný přístup je součást Azure Active Directory, která umožňuje ne
 |---|---|
 |Dokumentace k podmíněnému přístupu|[https://docs.microsoft.com/azure/active-directory/conditional-access](https://docs.microsoft.com/azure/active-directory/conditional-access)|
 |Postup: Vyžadovat pro cloudovou aplikaci přístup spravovaných zařízení s podmíněným přístupem|[https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|
-|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Podrobnosti o řízení toku přenosů přes komponenty brány v Azure najdete v článku [Správa a řízení provozu brány](gateway-ingress-traffic.md) .

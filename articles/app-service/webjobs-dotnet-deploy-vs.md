@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 2695ee2751a2834466c42d224101af246b829aca
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: d50acc50880229626c847d41d9abe9a9e13d9c6e
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717624"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736119"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Vývoj a nasazení WebJobs pomocí sady Visual Studio – Azure App Service
 
@@ -228,7 +228,7 @@ Když [vytvoříte webovou úlohu z Azure Portal](webjobs-create.md), vytvoří 
 
 ### <a name="cron-expressions"></a>Výrazy CRON
 
-WebJobs používá stejné výrazy CRON pro plánování jako Trigger časovače v Azure Functions. Další informace o podpoře CRON najdete v [článku referenční](../azure-functions/functions-bindings-timer.md#cron-expressions)informace o aktivačních událostech časovače.
+WebJobs používá stejné výrazy CRON pro plánování jako Trigger časovače v Azure Functions. Další informace o podpoře CRON najdete v [článku referenční](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)informace o aktivačních událostech časovače.
 
 ### <a name="settingjob-reference"></a>nastavení odkazu na úlohu
 
@@ -238,10 +238,10 @@ WebJobs podporuje následující nastavení:
 | ----------- | --------- | --------------- |
 | `is_in_place` | Vše | Umožňuje, aby se úloha běžela na místě, aniž by se nejdřív zkopírovala do dočasné složky. Další informace najdete v tématu [pracovní adresář WebJobs](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Nepřetržitě | Při horizontálním navýšení kapacity spouštějte jenom WebJobs na jedné instanci. Další informace najdete v tématu [Nastavení průběžné úlohy jako singleton](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
-| `schedule` | Aktivované | Spusťte úlohu WebJob v plánu založeném na CRON. Další informace najdete v [článku referenční](../azure-functions/functions-bindings-timer.md#cron-expressions)informace o aktivačních událostech časovače. |
+| `schedule` | Aktivované | Spusťte úlohu WebJob v plánu založeném na CRON. Další informace najdete v [článku referenční](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)informace o aktivačních událostech časovače. |
 | `stopping_wait_time`| Vše | Umožňuje kontrolu nad chováním při vypnutí. Další informace najdete v tématu [řádné vypnutí](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Další informace o sadě WebJobs SDK](webjobs-sdk-how-to.md)

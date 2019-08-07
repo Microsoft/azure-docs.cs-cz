@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7214cf4c16cc4ee5e76d479d153395085a7e3a6e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 25e511a1596c1119d1db8c9270ce216cd5186e72
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688944"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735477"
 ---
-# <a name="back-up-files-on-azure-stack"></a>Zálohování souborů na Azure Stack
+# <a name="back-up-files-and-applications-on-azure-stack"></a>Zálohování souborů a aplikací ve službě Azure Stack
 Pomocí Azure Backup můžete chránit (nebo zálohovat) soubory a aplikace v Azure Stack. Pokud chcete zálohovat soubory a aplikace, nainstalujte Microsoft Azure Backup Server jako virtuální počítač běžící na Azure Stack. Soubory můžete chránit na jakémkoli serveru Azure Stack ve stejné virtuální síti. Po instalaci Azure Backup Server přidejte disky Azure, abyste zvýšili místní úložiště, které je k dispozici pro krátkodobé zálohování dat. Azure Backup Server využívá Azure Storage pro dlouhodobé uchovávání.
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Pokud chcete nakonfigurovat Azure Backup Server k ochraně souborů v Azure Stac
 5. Na obrazovce **zadat krátkodobé cíle** zvolte, jak dlouho chcete zachovat body obnovení uložené na disk a kdy se mají ukládat přírůstkové zálohy. Klikněte na **Další**.
 
     > [!IMPORTANT]
-    > Neměli byste **uchovávat data** obnovení (zálohování) na discích s Azure Backup Server po dobu delší než pět dní.
+    > Neměli byste uchovávat data obnovení (zálohování) na discích s Azure Backup Server po dobu delší než pět dní.
     >
 
     ![Otevře se Průvodce novou skupinou ochrany.](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png) 

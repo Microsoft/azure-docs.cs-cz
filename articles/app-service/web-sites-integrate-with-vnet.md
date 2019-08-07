@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 20ef71f98817a57f884e9c5a3cef4ceeaebe74eb
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498435"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740895"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s Virtual Network Azure
 Tento dokument popisuje funkci Integrace virtuální sítě Azure App Service a jak ji nastavit pomocí aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Virtuální sítě Azure][VNETOverview] (Virtuální sítě) vám umožní umístit spoustu prostředků Azure do sítě směrovatelné do jiné než internetové sítě.  
@@ -136,11 +136,10 @@ Funkce integrace virtuální sítě požadovaná bránou:
 * Umožňuje integraci až pěti virtuální sítě do plánu App Service. 
 * Umožňuje, aby se stejná síť VNet používala ve více aplikacích v plánu App Service, aniž by to mělo vliv na celkový počet, který může App Service plán použít.  Pokud máte 6 aplikací používajících stejnou virtuální síť ve stejném plánu App Service, počítá se jako 1 virtuální síť. 
 * Vyžaduje bránu Virtual Network, která je nakonfigurovaná s Point-to-Site VPN.
-* Se nepodporuje pro použití s aplikacemi pro Linux.
 * V důsledku smlouvy SLA pro bránu podporuje smlouvu SLA o úrovni 99,9%.
 
 Tato funkce nepodporuje:
-
+* Použití s aplikacemi pro Linux
 * Přístup k prostředkům napříč ExpressRoute 
 * Přístup k prostředkům napříč koncovými body služby 
 

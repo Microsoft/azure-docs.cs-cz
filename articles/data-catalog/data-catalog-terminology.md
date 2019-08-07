@@ -1,88 +1,88 @@
 ---
-title: Terminologie služby Azure Data Catalog
-description: Tento článek obsahuje přehled konceptů a termínů používaných v dokumentaci k Azure Data Catalog.
+title: Azure Data Catalog terminologie
+description: Tento článek poskytuje Úvod k konceptům a pojmům, které se používají v dokumentaci Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: a6f2cf1dcee6a85376c8d767e57c504b6b246e5d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/01/2019
+ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60580455"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736294"
 ---
-# <a name="azure-data-catalog-terminology"></a>Terminologie služby Azure Data Catalog
+# <a name="azure-data-catalog-terminology"></a>Azure Data Catalog terminologie
 
-Tento článek obsahuje přehled konceptů a termínů používaných v dokumentaci k Azure Data Catalog.
+Tento článek poskytuje Úvod k konceptům a pojmům, které se používají v dokumentaci Azure Data Catalog.
 
 ## <a name="catalog"></a>Katalog
 
-Azure Data Catalog je úložiště založené na cloudu metadat, při kterém jsou data mohou být registrovány zdrojům a data prostředků. V katalogu slouží jako centrální úložiště pro strukturální metadata extrahovaná ze zdroje dat a popisných metadat, přidali uživateli.
+Azure Data Catalog je cloudové úložiště metadat, ve kterém se dají registrovat zdroje dat a datové assety. Katalog slouží jako centrální umístění úložiště pro strukturální metadata extrahovaná ze zdrojů dat a pro popisná metadata přidaná uživateli.
 
 ## <a name="data-source"></a>Zdroj dat
 
-Zdroj dat je systém nebo kontejner, který spravuje datových assetů. Mezi příklady patří databáze systému SQL Server, databáze Oracle, databáze SQL Server Analysis Services (tabulková nebo multidimenzionální) a serverů SQL Server Reporting Services.
+Zdroj dat je systém nebo kontejner, který spravuje datové assety. Mezi příklady patří databáze SQL Server, databáze Oracle, databáze SQL Server Analysis Services (tabulkové nebo multidimenzionální) a servery SQL Server Reporting Services.
 
-## <a name="data-asset"></a>Datovému assetu
+## <a name="data-asset"></a>Datový Asset
 
-Datové prostředky jsou objekty obsažené v rámci zdroje dat, které mohou být zaregistrované v katalogu. Mezi příklady patří tabulek systému SQL Server a zobrazení, Oracle tabulek a zobrazení, SQL Server Analysis Services opatření, dimenze a klíčové ukazatele výkonu a sestav služby SQL Server Reporting Services.
+Datové assety jsou objekty obsažené ve zdrojích dat, které je možné zaregistrovat v katalogu. Mezi příklady patří SQL Server tabulky a zobrazení, tabulky a zobrazení Oracle, SQL Server Analysis Services míry, dimenze a klíčové ukazatele výkonu a sestavy SQL Server Reporting Services.
 
-## <a name="data-asset-location"></a>Umístění prostředku dat
+## <a name="data-asset-location"></a>Umístění datového assetu
 
-Katalog ukládá umístění zdroje dat nebo datovému prostředku, který slouží k připojení ke zdroji pomocí klientské aplikace. Formát a podrobnosti o umístění se liší v závislosti na typu zdroje dat. Například tabulky serveru SQL Server lze identifikovat podle názvu čtyř částí – název serveru, název databáze, název schématu, název objektu –, zatímco SQL Server Reporting Services sestavu lze identifikovat podle její adresy URL.
+Katalog ukládá umístění zdroje dat nebo datového assetu, který se dá použít k připojení ke zdroji pomocí klientské aplikace. Formát a podrobnosti umístění se liší v závislosti na typu zdroje dat. Například SQL Server tabulka může být identifikována pomocí jejího názvu čtyř částí – název serveru, název databáze, název schématu, název objektu – zatímco SQL Server Reporting Services sestavu lze identifikovat pomocí adresy URL.
 
-## <a name="structural-metadata"></a>Strukturální metadata
+## <a name="structural-metadata"></a>Strukturovaná metadata
 
-Strukturální metadata jsou metadata extrahovaná ze zdroje dat, který popisuje strukturu datového prostředku. To zahrnuje umístění prostředků, název objektu a typ a další vlastnosti specifické pro typ. Například strukturální metadata pro tabulky a zobrazení obsahuje názvy a datové typy sloupců objektu.
+Strukturální metadata jsou metadata extrahovaná ze zdroje dat, který popisuje strukturu datového assetu. To zahrnuje umístění prostředků, jeho název a typ objektu a další vlastnosti specifické pro typ. Například strukturální metadata pro tabulky a zobrazení obsahují názvy a datové typy pro sloupce objektu.
 
 ## <a name="descriptive-metadata"></a>Popisná metadata
 
-Popisnými metadaty je metadat, který popisuje účel nebo záměr k datovému assetu. Obvykle popisnými metadaty je přidaný uživatelé katalogu na portálu Azure Data Catalog, ale to může také být extrahována ze zdroje dat během registrace. Například nástroj pro registraci Azure Data Catalog, který extrahuje popisy z vlastnosti popis v SQL Server Analysis Services a SQL Server Reporting Services a z [ms_description rozšířená vlastnost](https://technet.microsoft.com/library/ms190243.aspx) v SQL Databáze serveru, pokud tyto vlastnosti jsou vyplněna pomocí hodnoty.
+Popisná metadata jsou metadata, která popisují účel nebo záměr datového assetu. Uživatelé katalogu obvykle přidávají popisné metadata pomocí portálu Azure Data Catalog, ale je možné je také extrahovat ze zdroje dat během registrace. Například nástroj pro registraci Azure Data Catalog extrahuje popisy z vlastnosti Description v SQL Server Analysis Services a SQL Server Reporting Services a z [Rozšířené vlastnosti MS_Description](https://technet.microsoft.com/library/ms190243.aspx) v databázích SQL Server, pokud Tyto vlastnosti byly naplněny hodnotami.
 
 ## <a name="request-access"></a>Vyžádat si přístup
 
-K datovému assetu popisnými metadaty může zahrnovat informace o tom, jak požádat o přístup ke zdroji dat nebo datovému assetu. Tyto informace se asset umístění dat a může obsahovat jeden nebo více z následujících možností:
+Popisná metadata datového assetu můžou obsahovat informace o tom, jak požádat o přístup k datovému assetu nebo ke zdroji dat. Tyto informace se zobrazují v umístění datového assetu a mohou obsahovat jednu nebo více z následujících možností:
 
-* E-mailovou adresu uživatele nebo tým odpovědný za udělení přístupu ke zdroji dat.
-* Adresa URL zdokumentovaných proces, který uživatelé musí postupovat podle pokynů k získání přístupu ke zdroji dat.
-* Adresa URL identit a přístupu nástroj pro správu (jako je například Microsoft Identity Manager), který můžete použít k získání přístupu ke zdroji dat.
-* Položka prostého textu, který popisuje, jak uživatelé můžou získat přístup ke zdroji dat.
+* E-mailová adresa uživatele nebo týmu, který je zodpovědný za udělení přístupu ke zdroji dat.
+* Adresa URL dokumentovaného procesu, který musí uživatelé dodržovat pro získání přístupu ke zdroji dat.
+* Adresa URL nástroje pro správu identit a přístupu (například Microsoft Identity Manager), který lze použít k získání přístupu ke zdroji dat.
+* Bezplatná položka, která popisuje, jak můžou uživatelé získat přístup ke zdroji dat.
 
 ## <a name="preview"></a>Náhled
 
-Verze preview ve službě Azure Data Catalog je snímek až 20 záznamů, které můžete extrahovaná ze zdroje dat během registrace a uloženy v katalogu s metadaty datový asset. Verzi preview může pomoci uživatelům, kteří je zjistili k datovému assetu lépe porozumět jeho funkci a účel. Jinými slovy zobrazení ukázkových dat může být větší hodnotu než když vidíte pouze názvy sloupců a datové typy.
-Verze Preview se podporují jenom pro tabulky a zobrazení a musí být explicitně vybraný uživatel během registrace.
+Verze Preview v Azure Data Catalog je snímek až 20 záznamů, které se dají extrahovat ze zdroje dat během registrace a uložit v katalogu s metadaty datového assetu. Verze Preview může uživatelům, kteří objevují datový Asset, lépe pochopit jeho funkci a účel. Jinými slovy, zobrazení ukázkových dat může být výhodnější než zobrazení pouze názvů sloupců a datových typů.
+Verze Preview jsou podporovány pouze pro tabulky a zobrazení a při registraci je musí explicitně vybrat uživatel.
 
 ## <a name="data-profile"></a>Profil dat
 
-Profil dat ve službě Azure Data Catalog je snímek úrovni tabulek a sloupců metadata o registrované datové prostředky, můžete extrahovaná ze zdroje dat během registrace a uloženy v katalogu s metadaty datový asset. Profil dat může pomoci uživatelům, kteří je zjistili k datovému assetu lépe porozumět jeho funkci a účel. Podobně jako verze Preview, data profily musí explicitně vybrat uživatele během registrace.
+Datový profil v Azure Data Catalog je snímek metadat na úrovni tabulky a sloupce o registrovaných datových assetech, které se dají extrahovat ze zdroje dat během registrace a uložit v katalogu s metadaty datového assetu. Datový profil může uživatelům, kteří objevují datový Asset, lépe pochopit jeho funkci a účel. Podobně jako verze Preview musí být profily dat explicitně vybrané uživatelem během registrace.
 
 > [!NOTE]
-> Extrahování dat profilu může být nákladná operace pro velké tabulky a zobrazení a můžou výrazně zvýšit dobu potřebnou k registraci zdroje dat.
+> Extrakce datového profilu může být nákladná operace pro velké tabulky a zobrazení a může významně prodloužit dobu potřebnou k registraci zdroje dat.
 
 
-## <a name="user-perspective"></a>Pohledu uživatele
+## <a name="user-perspective"></a>Perspektiva uživatele
 
-Ve službě Azure Data Catalog může každý uživatel poskytnout popisnými metadaty pro registrované datové prostředky. Každý uživatel má odlišné perspektivou na data a jeho použití. Například může správcem odpovědným za serveru zadejte podrobnosti o jeho smlouvu o úrovni služeb (SLA) nebo zálohování systému windows. společnosti steward data mohou poskytnout odkazy na dokumentaci pro obchodní procesy dat podporuje; a analytik může také popis v podmínkách, které jsou nejrelevantnější pro ostatní analytici a může být pro uživatele, kteří potřebují zjišťování a pochopení dat vás nejpřínosnější.
+V Azure Data Catalog může libovolný uživatel poskytnout popisné metadata pro registrovaný datový Asset. Každý uživatel má odlišnou perspektivu pro data a jejich použití. Správce zodpovědný za server může například poskytnout podrobné informace o smlouvě o úrovni služeb (SLA) nebo systému Windows Backup. data Steward mohou poskytnout odkazy na dokumentaci pro obchodní procesy, které data podporují. a analytik může v rámci podmínek, které jsou relevantní pro jiné analytiky, poskytnout popis, který může být nejužitečnější pro uživatele, kteří potřebují zjistit a pochopit data.
 
-Každá z těchto perspektiv je ze své podstaty cenné a pomocí služby Azure Data Catalog může každý uživatel poskytnout informace, která má smysl, zatímco všichni uživatelé tyto informace slouží k pochopení dat a jeho účel.
+Každé z těchto perspektiv je ze své podstaty cenné a s Azure Data Catalog může každý uživatel poskytnout informace, které jsou pro ně smysluplné, zatímco všichni uživatelé mohou tyto informace pochopit a jejich účel využít.
 
-## <a name="expert"></a>Odborník
+## <a name="expert"></a>Expert
 
-Jste odborník je uživatel, který byl identifikován jako s informovaně "odborné" perspektivy pro datový asset. Každý uživatel může přidat sobě nebo jinému uživateli jako odborník pro určitý prostředek. Uvedeno jako odborník neznamená žádná další oprávnění ve službě Azure Data Catalog; umožňuje uživatelům snadno najít tyto perspektivy, které jsou nejvíce mohly být užitečné při kontrole popisnými metadaty prostředků.
+Odborník je uživatel, který byl identifikován jako s ohledem na perspektivu "expert" pro datový Asset. Každý uživatel může jako odborník na prostředek přidat sami sebe nebo jiného uživatele. V seznamu jako odborník nenesou žádná další oprávnění v Azure Data Catalog; umožňuje uživatelům snadno najít tyto perspektivy, které jsou pravděpodobně užitečné při kontrole popisných metadat assetu.
 
-## <a name="owner"></a>Vlastník
+## <a name="owner"></a>Owner
 
-Vlastníkem je uživatel, který má dodatečná oprávnění pro správu k datovému assetu ve službě Azure Data Catalog. Uživatelé můžou převzít vlastnictví registrovaných datových assetů a vlastníci můžete přidat další uživatele jako spoluvlastníky. Další informace najdete v tématu [Správa datových prostředků](data-catalog-how-to-manage.md)  
+Vlastník je uživatel, který má další oprávnění ke správě datového assetu v Azure Data Catalog. Uživatelé můžou převzít vlastnictví registrovaných datových assetů a vlastníci můžou přidat další uživatele jako spoluvlastníky. Další informace najdete v tématu [Správa datových prostředků](data-catalog-how-to-manage.md) .  
 
 > [!NOTE]
-> Vlastnictví a správa jsou k dispozici pouze v nástroje Azure Data Catalog Standard Edition.
+> Vlastnictví a správa jsou k dispozici pouze v edici Standard Azure Data Catalog.
 
 ## <a name="registration"></a>Registrace
 
-Registrace je proces extrahování dat asset metadata ze zdroje dat a zkopírování do služby Azure Data Catalog. Datové assety, které jsou zaregistrovány můžete pak s poznámkami a zjistit.
+Registrace je Act z extrakce metadat datového assetu ze zdroje dat a jeho zkopírováním do služby Azure Data Catalog. Datové prostředky, které jsou zaregistrované, je pak možné opatřit poznámkami a zjistit.
 
 ## <a name="next-steps"></a>Další postup
 

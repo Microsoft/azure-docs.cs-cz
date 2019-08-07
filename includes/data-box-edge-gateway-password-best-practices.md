@@ -4,15 +4,15 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 86d1cf5e103bcbb13782aa7a2a84092aa426d670
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 86b18c2a6fc3fbf342f5b7a4b6b563432c605f73
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175646"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781438"
 ---
-Těchto osvědčených postupů mějte na paměti:
+Mějte na paměti tyto osvědčené postupy:
 
-- Doporučujeme proto není nutné resetovat heslo, pokud je zapomenuté ukládání všech hesel na bezpečném místě. Služba správy nelze načíst existující hesla. To je resetovat jenom prostřednictvím portálu Azure portal. Pokud resetujete heslo, nezapomeňte informovat všechny uživatele před jeho resetování.
-- Rozhraní Windows PowerShell vašeho zařízení může přistupovat vzdáleně přes protokol HTTP. Z hlediska zabezpečení je nejvhodnější HTTP by měly používat jenom v důvěryhodných sítích.
-- Ujistěte se, že hesla zařízení jsou silné a dobře chráněné. Postupujte podle [osvědčené postupy pro hesla](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management).
+- Doporučujeme ukládat všechna hesla na bezpečném místě, takže nemusíte resetovat heslo, pokud je zapomenuté. Služba správy nemůže načíst stávající hesla. Dá se obnovit jenom přes Azure Portal. Pokud resetujete heslo, nezapomeňte se před resetováním uživatele informovat o všech uživatelích.
+- Pomocí protokolu HTTP můžete vzdáleně přistupovat k rozhraní Windows PowerShell vašeho zařízení. Jako osvědčený postup zabezpečení byste měli použít protokol HTTP pouze v důvěryhodných sítích.
+- Ujistěte se, že jsou hesla zařízení silná a dobře chráněná. Postupujte podle [osvědčených postupů pro heslo](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices#enable-password-management).

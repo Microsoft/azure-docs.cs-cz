@@ -1,85 +1,85 @@
 ---
-title: Jak nastavit obchodní Glosář ve službě Azure Data Catalog
-description: Článek zvýraznění obchodní Glosář ve službě Azure Data Catalog pro definování a použití společný obchodní slovník ke značce registrovaných datových prostředků.
+title: Nastavení obchodního glosáře v Azure Data Catalog
+description: Postup popisuje obchodní Glosář v Azure Data Catalog pro definování a použití společného slovníku podnikání k označení registrovaných datových assetů.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 649a842c8c8890713bda938c8e11740c5c8be7aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 6ecb481245484332221e45b8f27c776291ea532d
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61001885"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736411"
 ---
-# <a name="set-up-the-business-glossary-for-governed-tagging"></a>Nastavit obchodní Glosář pro řídí označování
+# <a name="set-up-the-business-glossary-for-governed-tagging"></a>Nastavení podnikového glosáře pro řízení označování
 
 ## <a name="introduction"></a>Úvod
 
-Azure Data Catalog umožňuje zjišťování zdrojů dat, takže můžete snadno vyhledat a porozumět zdrojům dat, které je nutné provádět analýzy a rozhodování. Tyto funkce při můžete vyhledat a porozumět nejširší řadu dostupných zdrojů dat, provést největší dopad.
+Azure Data Catalog povoluje zjišťování zdrojů dat, takže můžete snadno zjistit a pochopit zdroje dat, které potřebujete k analýze, a rozhodování. Tyto možnosti mají největší dopad, když můžete najít a pochopit nejširší škálu dostupných zdrojů dat.
 
-Je označování jednu funkci katalog dat, která podporuje větší přehled o datové assety. Pomocí označování, můžete přiřadit klíčová slova k prostředku nebo sloupec, který zase usnadňuje zjišťování prostředků prostřednictvím vyhledávání a procházení. Označování také pomáhá další snadno pochopit kontextu a záměr majetku.
+Jedna funkce Data Catalog, která propaguje větší porozumění údajům o assetech, je označení. Pomocí značek můžete přidružit klíčová slova k assetu nebo sloupci, což usnadňuje zjišťování prostředků prostřednictvím vyhledávání nebo procházení. Označování vám také pomůže snadněji pochopit kontext a účel assetu.
 
-Ale označování může někdy způsobit problémy své vlastní. Mezi příklady problémů, které můžou představovat označování patří:
+Označování ale může někdy způsobit problémy vlastními. Mezi příklady problémů, které mohou značky zavádět, patří:
 
-* Použití zkratky na některých prostředků a rozšířené text na ostatní. Tato nekonzistence omezuje zjišťování prostředků, i když bylo záměrem označit prostředky se stejnou značkou.
-* Potenciální kolísání význam, v závislosti na kontextu. Například značku názvem *výnosy* na zákazníka datová sada může znamenat výnosy podle zákazníka, ale stejnou značku v datové sadě čtvrtletní prodejní může znamenat Čtvrtletní výnosy společnosti.  
+* Použití zkratek u některých assetů a rozbalených textů v jiných. Tato nekonzistence brání zjišťování prostředků, i když záměr byl označit prostředky stejnou značkou.
+* Potenciální variace v závislosti na kontextu. Například značka s názvem tržby ze sady zákaznických dat může znamenat Tržby podle zákazníka, ale stejná značka na datové sadě čtvrtletních prodejů může znamenat čtvrtletní tržby za firmu.  
 
-K řešení těchto a dalších podobných výzev, katalogu Data Catalog zahrnuje obchodní Glosář.
+Aby bylo možné tyto a podobné výzvy vyřešit, Data Catalog zahrnuje obchodní Glosář.
 
-Pomocí katalogu Data Catalog obchodní Glosář organizaci dokumentovat klíčové obchodní termíny a jejich definice vytvoření společný obchodní slovník. Tato zásady správného řízení umožňuje konzistence dat využití celé organizace. Po termín, který je definován v obchodní glosář, je možné přiřadit k datovému assetu v katalogu. Tento přístup *řídí označování*, je stejný přístup jako označování.
+Pomocí Data Catalog obchodního glosáře může organizace dokumentovat klíčové obchodní účely a jejich definice k vytvoření společného obchodního slovníku. Tento zásad správného řízení umožňuje konzistenci využití dat v rámci organizace. Po definování termínu v obchodním glosáři je možné ho přiřadit k datovému assetu v katalogu. Tento přístup, který *řídí označování*, je stejný přístup jako označování.
 
-## <a name="glossary-availability-and-privileges"></a>Glosář dostupnost a oprávnění
+## <a name="glossary-availability-and-privileges"></a>Dostupnost a oprávnění glosáře
 
-Obchodní Glosář je k dispozici pouze v nástroje Azure Data Catalog Standard Edition. Bezplatná edice Data Catalog neobsahuje Glosář a neposkytuje funkce pro řízení označování.
+Obchodní Glosář je k dispozici pouze v edici Standard Azure Data Catalog. Bezplatná edice Data Catalog nezahrnuje Glosář a neposkytuje možnosti pro řízení označování.
 
-Obchodní Glosář prostřednictvím můžete přistupovat **Glosář** v navigační nabídce portál služby Data Catalog.  
+K obchodnímu glosáři získáte přístup pomocí možnosti **Glosář** v navigační nabídce portálu Data Catalog.  
 
-![Přístup k obchodní Glosář](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
+![Přístup k obchodnímu glosáři](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
-Správci služby Data Catalog a členové role správců glosáře můžete vytvořit, upravit a odstranit termíny glosáře v obchodní Glosář. Definice období a značky prostředků s termíny glosáře, mohou zobrazit všichni uživatelé katalogu Data Catalog.
+Data Catalog správci a členové role Správci glosáře můžou vytvořit, upravit a odstranit glosářové výrazy v obchodním glosáři. Všichni Data Catalog uživatelé mohou zobrazit definice termínů a assetů značek s termíny glosáře.
 
-![Přidat nový termín glosáře](./media/data-catalog-how-to-business-glossary/02-new-term.png)
+![Přidání nového glosářového výrazu](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
-## <a name="creating-glossary-terms"></a>Vytváření termíny glosáře
+## <a name="creating-glossary-terms"></a>Vytváření termínů glosáře
 
-Data Catalog správci glosáře mohou vytvořit správci a termíny glosáře po kliknutí **nový termín** tlačítko. Každý termín glosáře obsahuje následující pole:
+Data Catalog správci a glosáře můžou vytvořit Glosář pojmů kliknutím na tlačítko **nový termín** . Každý pojem glosáře obsahuje následující pole:
 
-* Obchodní definici termínu
-* Popis, který zachycuje zamýšlené použití nebo obchodní pravidla pro prostředek nebo sloupec
-* Seznam účastníků, kteří znají nejvíce o termín
-* Nadřazený termín, který definuje hierarchie, ve kterém je uspořádaný termín
+* Definice podniku pro termín
+* Popis, který zachycuje zamýšlené použití nebo obchodní pravidla pro daný prostředek nebo sloupec.
+* Seznam zúčastněných stran, které znají nejvíc pojmu
+* Nadřazený termín, který definuje hierarchii, ve které je výraz uspořádaný
 
-## <a name="glossary-term-hierarchies"></a>Glosář termínů hierarchie
+## <a name="glossary-term-hierarchies"></a>Glosář pojmů
 
-Pomocí katalogu Data Catalog obchodní Glosář organizace můžete popsat její obchodní slovník jako hierarchii podmínky a je možné vytvořit klasifikaci podmínky, která lépe představuje jeho obchodní taxonomii.
+Pomocí Data Catalog obchodního glosáře může organizace popsat svůj obchodní slovník jako hierarchii podmínek a může vytvořit klasifikaci termínů, které lépe představují svou obchodní taxonomii.
 
-Termín, který musí být jedinečný na dané úrovni hierarchie. Duplicitní názvy nejsou povoleny. Neexistuje žádné omezení počtu zadaných úrovní v hierarchii, ale hierarchie se často srozumitelnější když existují tři úrovně nebo méně.
+Termín musí být v dané úrovni hierarchie jedinečný. Duplicitní názvy nejsou povoleny. Neexistuje žádné omezení počtu úrovní v hierarchii, ale hierarchie je často jednodušší pochopit, když existují tři úrovně nebo méně.
 
-Použití hierarchie v obchodní Glosář je volitelné. Opuštění nadřazený termín pole prázdné pro termíny glosáře vytvoří (nehierarchických) plochý seznam termínů v glosáři.  
+Použití hierarchií v obchodním glosáři je volitelné. Když necháte pole nadřazeného výrazu prázdné pro glosářové termíny, vytvoří se v glosáři plochý (nehierarchicky) seznam podmínek.  
 
-## <a name="tagging-assets-with-glossary-terms"></a>Označování prostředků s termíny glosáře
+## <a name="tagging-assets-with-glossary-terms"></a>Označování prostředků pomocí pojmů Glosář
 
-Po definování termíny glosáře v katalogu funkce označování prostředků je optimalizována pro hledání Glosář jako uživatel zadá značku. Portál služby Data Catalog zobrazí seznam odpovídajících termíny glosáře lze vybírat. Pokud si uživatel vybere ze seznamu termín glosáře, termín se přidá do assetu jako značku (také nazývané značka glosáře). Uživatel může také můžete vytvořit novou značku tak, že zadáte výraz, který není v glosáři (také nazývané značku uživatele).
+Po definování podmínek glosáře v rámci katalogu jsou možnosti tagování prostředků optimalizované pro hledání glosáře, když uživatel zadá značku. Portál Data Catalog zobrazí seznam vyhovujících termínů glosáře, ze kterých si můžete vybrat. Pokud uživatel vybere termín glosáře ze seznamu, výraz se přidá do assetu jako značka (označuje se také jako značka glosáře). Uživatel může také zvolit vytvoření nové značky zadáním termínu, který není v glosáři (označuje se také jako značka uživatele).
 
-![Datovému assetu označené značky s jedním uživatelem a dvě značky Glosář](./media/data-catalog-how-to-business-glossary/03-tagged-asset.png)
+![Datový Asset označený jedním uživatelským tagem a dvěma značkami glosáře](./media/data-catalog-how-to-business-glossary/03-tagged-asset.png)
 
 > [!NOTE]
-> Značky uživatele jsou jediným typem značky, které jsou podporovány v bezplatné edice Data Catalog.
+> Uživatelské značky jsou jediný typ značky podporovaný v bezplatné verzi Data Catalog.
 
 ### <a name="hover-behavior-on-tags"></a>Chování při najetí myší na značky
 
-Na portálu pro Data Catalog jsou dva typy značek chování vizuálně distinct a k dispozici jinou najetím myší. Když najedete myší značku uživatele, zobrazí se text značky a uživatel nebo uživatelé, kteří přidali značky. Když najedete myší značka glosáře, uvidíte také definice termín glosáře a odkaz k otevření obchodní glosář, chcete-li zobrazit úplnou definicí pojmu.
+Na portálu Data Catalog jsou dva typy značek vizuálně jedinečné a představují různá chování při najetí myší. Když najedete myší na značku uživatele, uvidíte text značky a uživatele nebo uživatele, kteří značku přidali. Když najedete myší na tag glosáře, zobrazí se také definice pojmu Glosář a odkaz pro otevření obchodního glosáře, který zobrazí úplnou definici podmínky.
 
 ### <a name="search-filters-for-tags"></a>Vyhledávací filtry pro značky
 
-Glosář značky a uživatelské značky jsou obě prohledávatelný a použít je jako filtry v hledání.
+Značky glosáře a uživatelské značky jsou prohledávatelné a můžete je použít jako filtry ve vyhledávání.
 
 ## <a name="summary"></a>Souhrn
 
-Pomocí obchodní Glosář v Azure Data Catalog a řídí označování, které umožňuje identifikovat, spravovat a zjištění datových assetů konzistentním způsobem. Obchodní Glosář můžete zvýšit úroveň learning obchodní slovník členy organizace. Glosář podporuje také zaznamenání smysluplná metadata, který zjednodušuje zjišťování prostředků a pochopení.
+Používáním podnikového glosáře v Azure Data Catalog a se správou označení, které umožňuje, můžete identifikovat, spravovat a vyhledávat datové assety konzistentním způsobem. Obchodní Glosář může propagovat učení podnikového slovníku podle členů organizace. Glosář také podporuje zachytávání smysluplných metadat, což zjednodušuje zjišťování a porozumění prostředků.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Dokumentace k rozhraní REST API pro obchodní Glosář operace](/rest/api/datacatalog/data-catalog-glossary)
+* [Dokumentace REST API pro operace glosáře pro firmy](/rest/api/datacatalog/data-catalog-glossary)

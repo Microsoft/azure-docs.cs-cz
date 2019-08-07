@@ -1,6 +1,6 @@
 ---
-title: Doporučení zabezpečení v Azure Security Center | Dokumentace Microsoftu
-description: Tento dokument vás provede jak doporučení ve službě Azure Security Center pomoci chránit prostředky Azure a zůstat souladu se zásadami zabezpečení.
+title: Doporučení zabezpečení v Azure Security Center | Microsoft Docs
+description: Tento dokument vás seznámí s tím, jak vám doporučení Azure Security Center pomůžou chránit prostředky Azure a zůstat v souladu se zásadami zabezpečení.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -12,75 +12,66 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2019
+ms.date: 07/29/2019
 ms.author: v-mohabe
-ms.openlocfilehash: fe1d4bf27f3c4bb1f70c1c1fa9767c27f8767998
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 229b8949facae34a809c0789154a3b56264ee2c5
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064228"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779006"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Doporučení zabezpečení v Azure Security Center 
-Toto téma vysvětluje, jak zobrazit a pochopení doporučení ve službě Azure Security Center k ochraně vašich prostředků Azure.
+V tomto tématu se dozvíte, jak zobrazit a pochopit doporučení v Azure Security Center, která vám pomůžou chránit vaše prostředky Azure.
 
 > [!NOTE]
-> Tento dokument vám tuto službu představí formou ukázkového nasazení.  Tento dokument není podrobný průvodce.
+> Tento dokument vám tuto službu představí formou ukázkového nasazení.  Tento dokument není pokrokový průvodce.
 >
 
-## <a name="what-are-security-recommendations"></a>Co jsou doporučení týkající se zabezpečení?
-Security Center pravidelně analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení. Doporučení vás provedou procesem konfigurace potřebných kontrol.
+## <a name="what-are-security-recommendations"></a>Co jsou doporučení zabezpečení?
 
-## <a name="implementing-security-recommendations"></a>Implementace doporučení zabezpečení
-### <a name="set-recommendations"></a>Sada doporučení
-V [nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md), zjistíte, jak:
+Doporučení jsou akce, které můžete provést při zabezpečení svých prostředků.
 
-* Konfigurovat zásady zabezpečení.
-* Shromažďování dat zapněte.
-* Zvolte, které doporučení zobrazíte jako součást zásad zabezpečení.
+Security Center pravidelně analyzovat stav zabezpečení vašich prostředků Azure, abyste identifikovali potenciální ohrožení zabezpečení. Pak vám pak nabídne doporučení, jak je odebrat.
 
-Aktuální zásady doporučení center po aktualizacích systému, pravidla standardních hodnot, antimalwarové programy [skupiny zabezpečení sítě](../virtual-network/security-overview.md) podsítí a síťových rozhraní, auditování služby SQL database, SQL database transparentní šifrování dat, a brány firewall webových aplikací.  [Nastavení zásad zabezpečení](tutorial-security-policy.md) obsahuje popis jednotlivých možností doporučení.
+Každé doporučení vám poskytne:
 
-### <a name="monitor-recommendations"></a>Doporučení pro monitorování
-Po nastavení zásad zabezpečení bude Security Center analyzovat stav zabezpečení vašich prostředků Azure za účelem identifikace potenciálních ohrožení zabezpečení. **Doporučení** dlaždici v části **přehled** zobrazuje celkový počet doporučení identifikované pomocí služby Security Center.
+- Stručný popis toho, co se doporučuje.
+- Kroky k nápravě, které je nutné provést pro implementaci doporučení. <!-- In some cases, one-click remediation is available. -->
+- Které prostředky potřebují k provedení doporučené akce.
+- **Dopad zabezpečeného skóre**, což je množství, které se bude používat při implementaci tohoto doporučení v zabezpečeném skóre.
 
-![Přehled služby Security center](./media/security-center-recommendations/asc-overview.png)
+## Doporučení pro monitorování<a name="monitor-recommendations"></a>
 
-1. Vyberte **doporučení dlaždici** pod **přehled**. **Doporučení** otevře se seznam.
-    
-      ![Zobrazení doporučení](./media/security-center-recommendations/view-recommendations.png)
+Security Center analyzuje stav zabezpečení vašich prostředků, aby identifikoval potenciální ohrožení zabezpečení. Dlaždice **doporučení** v části **Přehled** zobrazuje celkový počet doporučení identifikovaných nástrojem Security Center.
 
-    Můžete filtrovat doporučení. Chcete-li filtrovat doporučení, vyberte **filtr** na **doporučení** okno. **Filtr** se otevře okno a vybrat závažnost a stavu hodnoty, které chcete zobrazit.
+![Přehled služby Security Center](./media/security-center-recommendations/asc-overview.png)
+
+1. V části **Přehled**vyberte **dlaždici doporučení** . Otevře se seznam **doporučení** .
+
+      ![Zobrazit doporučení](./media/security-center-recommendations/view-recommendations.png)
+
+    Doporučení můžete filtrovat. Pokud chcete vyfiltrovat doporučení, vyberte v okně **doporučení** možnost **Filtr** . Otevře se okno **filtru** a vyberete závažnost a hodnoty stavu, které chcete zobrazit.
 
    * **DOPORUČENÍ**: Doporučení.
-   * **ZABEZPEČENÍ SKÓRE DOPAD**: Skóre generovaná službou Security Center pomocí doporučení týkající se zabezpečení a použití pokročilých algoritmů jak zjistit, jak zásadní význam jednotlivých doporučení. Další informace najdete v tématu [zabezpečení výpočtu skóre](security-center-secure-score.md#secure-score-calculation).
-   * **PROSTŘEDEK**: Seznam prostředků, u kterých bude použito toto doporučení.
+   * **DOPAD NA ZABEZPEČENÍ SKÓRE**: Skóre vygenerované Security Centerm pomocí doporučení zabezpečení a použití pokročilých algoritmů k určení, jak rozhodující je každé doporučení. Další informace najdete v tématu [zabezpečení výpočtu skóre](security-center-secure-score.md#secure-score-calculation).
+   * **PROSTŘEDEK**: Zobrazí seznam prostředků, na které se vztahuje toto doporučení.
    * **STAVOVÉ ŘÁDKY**:  Popisuje závažnost tohoto konkrétního doporučení:
-       * **Vysoká (červená)** : Ohrožení zabezpečení existuje u významného prostředku (například aplikace, virtuálního počítače nebo skupiny zabezpečení sítě) a vyžaduje pozornost.
-       * **Střední (oranžová)** : Existuje ohrožení zabezpečení a nekritické nebo další kroky jsou požadovány k jeho odstranění nebo k dokončení procesu.
-       * **Nízká (modrá)** : Existuje ohrožení zabezpečení, které mělo by se řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení, s nízkou doporučení nejsou k dispozici, ale můžete filtrovat podle doporučení s nízkou, pokud chcete zobrazit.) 
-       * **V pořádku (zelený)** :
+       * **Vysoká (červená)** : Existuje chyba s smysluplným prostředkem (jako je aplikace, virtuální počítač nebo skupina zabezpečení sítě) a vyžaduje pozornost.
+       * **Střední (oranžová)** : Existuje ohrožení zabezpečení a nekritické nebo další kroky jsou vyžadovány k jeho odstranění nebo k dokončení procesu.
+       * **Nízká (modrá)** : Existuje ohrožení zabezpečení, které by mělo být adresováno, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení se neprezentují nízká doporučení, ale pokud je chcete zobrazit, můžete je vyfiltrovat podle nízkých doporučení.) 
+       * **V pořádku (zelená)** :
        * **Není k dispozici (šedá)** :
 
-1. Chcete-li zobrazit podrobnosti o jednotlivých doporučení, klikněte na toto doporučení.
+1. Pokud chcete zobrazit podrobnosti o jednotlivých doporučeních, klikněte na doporučení.
 
     ![Podrobnosti doporučení](./media/security-center-recommendations/recommendation-details.png)
 
 >[!NOTE] 
-> Zobrazit [klasické modely nasazení a modely nasazení Resource Manager](../azure-classic-rm.md) pro prostředky Azure.
-  
- ### <a name="apply-recommendations"></a>Použití doporučení
-> Po kontrole všech doporučení, rozhodněte, který se má použít první. Doporučujeme použít zabezpečené skóre dopad k vyhodnocení, doporučení, které bude použito první.
-
-1. V seznamu klikněte na doporučení.
-1. Postupujte podle pokynů *kroky k nápravě* oddílu.
-
+> Viz [modely nasazení Classic a správce prostředků](../azure-classic-rm.md) pro prostředky Azure.
+ 
 ## <a name="next-steps"></a>Další postup
-V tomto dokumentu jste se seznámili doporučení zabezpečení v Security Center. Další informace o službě Security Center, najdete v následujících tématech:
 
-* [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.
-* [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reagovat na výstrahy zabezpečení.
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
+V tomto dokumentu jste se zavedli k doporučením zabezpečení v Security Center. Další informace o řešení těchto doporučení:
+
+* [Opravit doporučení](security-center-remediate-recommendations.md) – Naučte se konfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.

@@ -1,64 +1,62 @@
 ---
-title: Postup přidání poznámek ke zdrojům dat ve službě Azure Data Catalog
-description: Článek zvýraznění jak opatřit poznámkami datové assety ve službě Azure Data Catalog, včetně popisné názvy, značky, popisy a odborníky.
-services: data-catalog
+title: Postup přidání poznámek ke zdrojům dat v Azure Data Catalog
+description: Postup popisuje, jak opatřit poznámkami datové assety v Azure Data Catalog, včetně popisných názvů, značek, popisů a expertů.
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 5a7e6bb2-863c-4eca-b614-1c814920d9ed
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 18dfd9eb66c1dc71ecb14bb748d9cdd6afeb00a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 708c62971a20a7071accf7591a4e2914f7dbd9f3
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953183"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736355"
 ---
 # <a name="how-to-annotate-data-sources"></a>Postup přidání poznámek ke zdrojům dat
 ## <a name="introduction"></a>Úvod
-**Microsoft Azure Data Catalog** je plně spravovaná Cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. Jinými slovy katalogu Data Catalog se točí kolem pomáháme lidem zjišťovat, pochopit a pomocí zdroje dat a pomáhá organizacím vytěžit více z jejich existující data. Když zdroj dat je zaregistrován ve službě Data Catalog, se zkopíruje a službou indexována, jeho metadata, ale scénář nekončí existuje. Data Catalog umožňuje uživatelům zadat svá vlastní popisná metadat – například popisy a značky – abyste doplnili metadata extrahovaná ze zdroje dat a aby byl srozumitelnější zdroj dat pro více lidí.
+**Microsoft Azure Data Catalog** je plně spravovaná cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. Jinými slovy Data Catalog je vše, co je potřeba k tomu, aby lidé mohli zjišťovat, pochopit a používat zdroje dat a pomáhat organizacím získat větší hodnotu z jejich stávajících dat. Pokud je zdroj dat zaregistrován ve Data Catalog, jeho metadata jsou zkopírována a indexována službou, ale tento scénář nekončí. Data Catalog umožňuje uživatelům poskytnout jejich vlastní popisné metadata, jako jsou popisy a značky – k doplnění metadat extrahovaných ze zdroje dat a k tomu, aby byl zdroj dat lépe srozumitelný pro více lidí.
 
-## <a name="annotation-and-crowdsourcing"></a>Poznámky a crowdsourcingu
-Všichni mají k vyjádření. A to je dobrá věc.
-Data Catalog rozpozná, že různí uživatelé mají různých perspektiv na podnikové zdroje dat. a že každý z těchto perspektiv může být důležité. Vezměte v úvahu následující scénář:
+## <a name="annotation-and-crowdsourcing"></a>Anotace a crowdsourcingový
+Každý má stanovisko. A to je dobrá věc.
+Data Catalog rozpozná, že různí uživatelé mají různé perspektivy pro podnikové zdroje dat a že každé z těchto perspektiv může být cenné. Vezměte v úvahu následující scénář:
 
-* Správce systému ví smlouvu o úrovni služeb pro servery nebo služby, které hostují zdroj dat.
-* Správce databáze ví plán zálohování pro všechny databáze a systému windows povolené zpracování ETL.
-* Vlastníka systému ví, uživatelé můžou žádat o přístup ke zdroji dat procesu.
-* Společnosti steward data ví, jak namapovat prostředky a atributy ve zdroji dat do datového modelu enterprise.
-* Analytik ví, jak se používají data v rámci obchodní procesy, které podporují.
+* Správce systému ví smlouvu o úrovni služeb pro servery nebo služby, které hostují daný zdroj dat.
+* Správce databáze zná plán zálohování pro každou databázi a povolená okna zpracování ETL.
+* Vlastník systému ví, jak proces, aby si uživatelé vyžádali přístup ke zdroji dat.
+* Data Steward ví, jak jsou prostředky a atributy ve zdroji dat mapovány do podnikového datového modelu.
+* Analytik ví, jak se data používají v kontextu obchodních procesů, které podporují.
 
-Každá z těchto perspektiv je vhodné a Data Catalog používá crowdsourcingový přístup k metadatům, která umožňuje každému z nich zachytit a poskytne ucelený přehled o registrovaných datových zdrojů. Pomocí portálu pro Data Catalog, každý uživatel přidávat a upravovat své vlastní poznámky, nebudou moct zobrazit poznámky k dispozici jinými uživateli.
+Každé z těchto perspektiv je cenné a Data Catalog používá přístup crowdsourcingový k metadatům, které umožňují zachytit každý z nich a použít k poskytnutí kompletního přehledu registrovaných zdrojů dat. Pomocí Data Catalogového portálu mohou jednotliví uživatelé přidávat a upravovat svoje vlastní anotace a zobrazovat poznámky poskytované ostatními uživateli.
 
-## <a name="different-types-of-annotations"></a>Různé druhy poznámky
-Data Catalog podporuje následující typy poznámky:
+## <a name="different-types-of-annotations"></a>Různé typy poznámek
+Data Catalog podporuje následující typy poznámek:
 
-| Poznámky | Poznámky |
+| Poznámka | Poznámky |
 | --- | --- |
-| Popisný název |Na úrovni prostředku data, aby datových assetů srozumitelnější můžete zadat popisné názvy. Popisné názvy jsou nejužitečnější, když základní název objektu je nejasné, zkrácený nebo jinak nemá význam pro uživatele. |
-| Popis |Popisy, lze je zadat v datovém assetu a atribut / sloupce úrovně. Popisy jsou krátké formě volného textu poznámky, které popisují uživatele Perspektiva na datový prostředek nebo jeho použití. |
-| Značky (uživatele značky) |Značky lze je zadat v datovém assetu a atribut / sloupce úrovně. Značky uživatele jsou uživatelem definované popisky, které slouží ke kategorizaci datové assety nebo atributy. |
-| Značky (Glosář značky) |Značky lze je zadat v datovém assetu a atribut / sloupce úrovně. Glosář značky jsou centrálně glosáře podmínky, které slouží ke kategorizaci datové assety nebo atributů pomocí běžné obchodní taxonomii. Další informace naleznete v článku [Jak nastavit obchodní glosář řízeným přidáváním značek](data-catalog-how-to-business-glossary.md) |
-| Odborníků |Lze je zadat odborníků na úrovni datový asset. Odborníci identifikovat uživatele nebo skupiny s odborným pohledem na data a může sloužit jako body kontaktu pro uživatele, kteří zjišťovat registrované datové zdroje a máte otázky, na které nenajdete odpovědi v existujících poznámek. |
-| Vyžádat si přístup |Lze je zadat žádost o přístup k informacím na úrovni datový asset. Tyto informace jsou pro uživatele, kteří se objeví zdroj dat, která ještě nemají oprávnění k přístupu. Uživatele můžete zadat e-mailovou adresu uživatele nebo skupiny, který uděluje přístup, adresa URL procesu nebo nástroj, který uživatelé potřebují k získání přístupu, nebo můžete zadat samotný proces jako text. |
-| Dokumentace |Dokumentace ke službě, lze je zadat na úrovni datový asset. Dokumentace ke službě Asset je informace formátovaný text, který může obsahovat odkazy a obrázky a které poskytují všechny informace není předávají prostřednictvím značky a popisy. |
+| Popisný název |Popisné názvy lze zadat na úrovni datového assetu, aby bylo možné snadněji pochopit datové prostředky. Popisné názvy jsou nejužitečnější, pokud je název podkladového objektu nešifrovaný, zkrácený nebo jinak nesmysluplný pro uživatele. |
+| Popis |Popisy lze zadat na úrovni assetů dat a atributů nebo sloupců. Popisy jsou krátké textové poznámky s volným tvarem, které popisují perspektivu uživatele na datovém assetu nebo jeho použití. |
+| Značky (uživatelské značky) |Značky lze zadat na úrovni assetů dat a atributů nebo sloupců. Uživatelské značky jsou uživatelsky definované popisky, které lze použít k kategorizaci datových prostředků nebo atributů. |
+| Značky (Glosář glosáře) |Značky lze zadat na úrovni assetů dat a atributů nebo sloupců. Značky glosáře jsou centrálně definované výrazy glosáře, které lze použít ke kategorizaci datových assetů nebo atributů pomocí běžné obchodní taxonomie. Další informace naleznete v článku [Jak nastavit obchodní glosář řízeným přidáváním značek](data-catalog-how-to-business-glossary.md) |
+| Odborníky |Odborníky mohou být dodány na úrovni datového assetu. Odborníci identifikují uživatele nebo skupiny pomocí odborných perspektiv na data a můžou sloužit jako kontaktní body pro uživatele, kteří zjišťují registrované zdroje dat a mají otázky, na které neodpoví stávající poznámky. |
+| Vyžádat si přístup |Žádosti o přístup k informacím lze zadat na úrovni datového assetu. Tyto informace jsou pro uživatele, kteří zjišťují zdroj dat, ke kterému ještě nemají oprávnění k přístupu. Uživatelé mohou zadat e-mailovou adresu uživatele nebo skupiny, kteří udělí přístup, adresu URL procesu nebo nástroje, které uživatelé potřebují k získání přístupu, nebo mohou zadat samotný proces jako text. |
+| Dokumentace |Dokumentaci lze dodávat na úrovni datového assetu. Dokumentace k assetům je bohatá textová informace, která může obsahovat odkazy a obrázky, které mohou poskytnout jakékoli informace, které nejsou předány popisy a značkami. |
 
-## <a name="annotating-multiple-assets"></a>Zadávání poznámek k více assetů
-Při výběru více datových assetů v katalogu Data Catalog portál, můžete uživatele opatřit poznámkami všechny vybrané prostředky v rámci jedné operace. Poznámky platí pro všechny vybrané prostředky, což usnadňuje výběr a poskytnout konzistentní popis a sady značek a odborníky souvisejících datových prostředků.
+## <a name="annotating-multiple-assets"></a>Přidávání poznámek k několika prostředkům
+Při výběru více datových assetů na portálu Data Catalog můžou uživatelé přidávat poznámky k vybraným prostředkům v rámci jedné operace. Poznámky budou platit pro všechny vybrané prostředky, což usnadňuje výběr a poskytování konzistentního popisu a sad značek a odborníků pro související datové prostředky.
 
 > [!NOTE]
-> Značky a odborníky lze také zadat při registraci datových assetů pomocí katalogu Data Catalog dat zdroje nástroj pro registraci.
+> Značky a odborníky je také možné poskytnout při registraci datových assetů pomocí nástroje Data Catalog pro registraci zdroje dat.
 >
 >
 
-Při výběru více tabulek nebo zobrazení, pouze sloupce, že všechny vybrané data, která mají společné prostředky zobrazí se v portál služby Data Catalog. To umožňuje uživatelům zadat značky a popisy pro všechny sloupce se stejným názvem pro všechny vybrané prostředky.
+Při výběru více tabulek a zobrazení budou na portálu Data Catalog zobrazeny pouze sloupce, které jsou všechny vybrané datové prostředky společné. To umožňuje uživatelům poskytnout značky a popisy pro všechny sloupce se stejným názvem pro všechny vybrané prostředky.
 
 ## <a name="annotations-and-discovery"></a>Poznámky a zjišťování
-Stejně jako metadata extrahovaná přímo ze zdroje dat během registrace je přidat do indexu vyhledávání katalogu Data Catalog, uživatelem zadané metadata jsou také indexována. To znamená, že nejen poznámky usnadnit uživatelům pochopit data, která zjistí, poznámky také usnadňují uživatelům s poznámkami datové assety zjistit tak, že pomocí termínů, které dávají smysl k nim.
+Stejně jako metadata extrahovaná ze zdroje dat během registrace se přidají do indexu hledání Data Catalog, uživatelsky zadaná metadata se také indexují. To znamená, že nejenom anotace usnadňují uživatelům pochopení dat, která zjišťují, poznámky také usnadňují uživatelům vyhledávání datových assetů s poznámkami, a to pomocí podmínek, které jim dávají smysl.
 
 ## <a name="summary"></a>Souhrn
-Registrace zdroje dat pomocí služby Data Catalog umožňuje tato data zjistitelné zkopírováním popisný a strukturální metadata ze zdroje dat ve službě katalogu. Jakmile byl zaregistrován zdroji dat, mohou uživatelé zadat poznámky a zjednodušují zjišťování a pochopení z v rámci portálu katalogu Data Catalog.
+Registrace zdroje dat pomocí Data Catalog zajišťuje, aby byla data zjistitelná zkopírováním strukturních a popisných metadat ze zdroje dat do služby katalogu. Po zaregistrování zdroje dat můžou uživatelé poskytnout poznámky, které usnadňují zjišťování a pochopení v rámci portálu Data Catalog.
 
-## <a name="see-also"></a>Další informace najdete v tématech
-* [Začínáme s Azure Data Catalog](data-catalog-get-started.md) kurz pro podrobné informace o přidání poznámek ke zdrojům dat.
+## <a name="see-also"></a>Viz také:
+* [Začínáme s](data-catalog-get-started.md) kurzem pro Azure Data Catalog, kde najdete podrobné informace o tom, jak přidávat poznámky ke zdrojům dat.

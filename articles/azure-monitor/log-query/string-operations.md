@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: f53d3bd64b4f837fe29baa338cd338158d59d95d
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466959"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741460"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Práce s řetězci v Azure Monitorch dotazech protokolu
 
@@ -34,7 +34,7 @@ Každý znak v řetězci má číslo indexu v závislosti na jeho umístění. P
 
 
 ## <a name="strings-and-escaping-them"></a>Řetězce a uvozovací znaky
-Řetězcové hodnoty jsou zabaleny buď pomocí jednoduchých nebo dvojitých uvozovek. Zpětné lomítko\) (slouží k řídicím znakům na znak, který následuje po něm, jako je například \t pro tabulátor, \" \n pro nový řádek a samotný znak uvozovky.
+Řetězcové hodnoty jsou zabaleny buď pomocí jednoduchých nebo dvojitých uvozovek. Zpětné lomítko\\() se používá k řídicím znakům na znak, který následuje, jako je například \t pro tabulátor, \n \" pro nový řádek a znak citace.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -90,7 +90,7 @@ Operator       |Popis                         |Rozlišovat velká a malá písme
 
 ## <a name="countof"></a>CountOf
 
-Spočítá výskyty podřetězce v řetězci. Může odpovídat prostým řetězcům nebo použít regulární výraz. Shody s prostým řetězcem se mohou překrývat, zatímco výraz Regex neodpovídá.
+Spočítá výskyty podřetězce v řetězci. Může odpovídat prostým řetězcům nebo použít regulární výraz. Shody s prostým řetězcem se mohou překrývat, zatímco se neshodují regulární výrazy
 
 ### <a name="syntax"></a>Syntaxe
 ```
@@ -129,7 +129,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 
 ## <a name="extract"></a>extrakční
 
-Načte shodu regulárního výrazu z daného řetězce. Volitelně také převede extrahovaný podřetězec na zadaný typ.
+Načte shodu regulárního výrazu z daného řetězce. Volitelně také převede extrahovaný podřetězec na určený typ.
 
 ### <a name="syntax"></a>Syntaxe
 
@@ -179,7 +179,7 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 ## <a name="isempty-isnotempty-notempty"></a>neprázdný, isnotempty, a.
 
 - atribut *Empty* vrátí hodnotu true, pokud je argumentem prázdný řetězec nebo hodnota null (viz také *IsNull*).
-- *isnotempty* vrátí hodnotu true, pokud argument není prázdný řetězec nebo hodnota null (viz také *IsNotNull*). alias: *a*.
+- *isnotempty* vrátí hodnotu true, pokud argument není prázdný řetězec nebo hodnota null (viz také *IsNotNull*). alias:a.
 
 ### <a name="syntax"></a>Syntaxe
 
@@ -368,7 +368,7 @@ print toupper("hello"); // result: "HELLO"
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokračujte v pokročilých kurzech:
 * [Agregační funkce](aggregations.md)
 * [Pokročilé agregace](advanced-aggregations.md)

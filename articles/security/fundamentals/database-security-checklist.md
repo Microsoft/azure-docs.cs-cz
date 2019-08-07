@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 3f51f23f47cfbd81c71234bc2ce5a0adeeadd3f9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bf11d7a9dbaa37db521da67deddbed977cc1d251
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727378"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780540"
 ---
 # <a name="azure-database-security-checklist"></a>Kontrolní seznam zabezpečení Azure Database
 
@@ -41,7 +41,7 @@ Mezi ně patří:
 Cloud computing vyžaduje nové paradigma zabezpečení, které neznají mnoho uživatelů aplikací, správců databází a programátoři. V důsledku toho se některé organizace váhají k implementaci cloudové infrastruktury pro správu dat kvůli zjištěným bezpečnostním rizikům. Mnohé z těchto záležitostí je ale možné vyřešit lepším porozuměním funkcím zabezpečení integrovaným do Microsoft Azure a Microsoft Azure SQL Database.
 
 ## <a name="checklist"></a>Kontrolní seznam
-Doporučujeme, abyste si před kontrolou tohoto kontrolního seznamu přečetli článek věnované [osvědčeným postupům zabezpečení Azure Database](https://docs.microsoft.com/azure/security/azure-database-security-best-practices) . Až porozumíte osvědčeným postupům, budete moct získat co nejvíc tohoto kontrolního seznamu. Tento kontrolní seznam pak můžete použít k tomu, abyste se ujistili, že byly vyřešeny důležité problémy v zabezpečení databáze Azure.
+Doporučujeme, abyste si před kontrolou tohoto kontrolního seznamu přečetli článek věnované [osvědčeným postupům zabezpečení Azure Database](https://docs.microsoft.com/azure/security/fundamentals/database-best-practices) . Až porozumíte osvědčeným postupům, budete moct získat co nejvíc tohoto kontrolního seznamu. Tento kontrolní seznam pak můžete použít k tomu, abyste se ujistili, že byly vyřešeny důležité problémy v zabezpečení databáze Azure.
 
 
 |Kategorie kontrolního seznamu| Popis|

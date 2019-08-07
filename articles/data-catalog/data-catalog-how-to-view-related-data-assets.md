@@ -1,24 +1,23 @@
 ---
-title: Postup zobrazení souvisejících datových prostředků ve službě Azure Data Catalog
-description: Tento článek vysvětluje, jak zobrazení souvisejících datových prostředků vybraný datový asset ve službě Azure Data Catalog.
-services: data-catalog
+title: Postup zobrazení souvisejících datových assetů v Azure Data Catalog
+description: Tento článek vysvětluje, jak zobrazit související datové prostředky vybraného datového assetu v Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: b01c328812113ad721b7632978ad28e54a6a3ef1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 212ba647e6eb44e800a589928620f56fba65107c
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61000099"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737016"
 ---
-# <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Postup zobrazení souvisejících datových prostředků ve službě Azure Data Catalog?
-Azure Data Catalog vám umožní zobrazit datové prostředky související s vybraný datový asset a zobrazení vztahů mezi nimi. 
+# <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Jak zobrazit související datové prostředky v Azure Data Catalog?
+Azure Data Catalog umožňuje zobrazit datové prostředky související s vybraným datovým Assetem a mezi nimi zobrazit vztahy. 
 
 ## <a name="supported-data-sources"></a>Podporované zdroje dat 
-Když si zaregistrujete datové assety z následujících zdrojů dat, Azure Data Catalog zaregistruje automaticky metadata o relace typu join mezi vybraných datových prostředcích. 
+Když zaregistrujete datové assety z následujících zdrojů dat, Azure Data Catalog automaticky zaregistruje metadata o vztazích mezi vybranými datovými prostředky. 
 
 - SQL Server
 - Azure SQL Database
@@ -26,26 +25,26 @@ Když si zaregistrujete datové assety z následujících zdrojů dat, Azure Dat
 - Oracle
 
 > [!NOTE]
-> Pro službu Data Catalog pro import vztahu mezi dvěma datových assetů je nutné zaregistrovat oba prostředky ve stejnou dobu. Pokud jste měli jeden z nich přidali samostatně, přidejte ho znovu a datovému assetu pro import vztahu mezi nimi.
+> Aby bylo možné Data Catalog importovat vztah mezi dvěma datovými assety, je nutné současně zaregistrovat prostředky. Pokud jste jeden z nich přidali samostatně, přidejte ho znovu a druhý datový prostředek pro import vztahů mezi nimi.
 
 ## <a name="view-related-data-assets"></a>Zobrazení souvisejících datových prostředků
-Chcete-li zobrazit datové assety, které se vztahují k vybrané datové sadě, použijte **vztahy** kartu, jak je znázorněno na následujícím obrázku: 
+Chcete-li zobrazit datové prostředky, které souvisejí s vybranou datovou sadou, použijte kartu **relace** , jak je znázorněno na následujícím obrázku: 
 
-![Azure Data Catalog – zobrazení souvisejících datových prostředků](media/data-catalog-how-to-view-related-data-assets/relationships-tab.png)
+![Azure Data Catalog – zobrazení souvisejících datových assetů](media/data-catalog-how-to-view-related-data-assets/relationships-tab.png)
 
-V tomto příkladu jsou dva vztahy pro vybranou **ProductSubcategory** datový prostředek: 
+V tomto příkladu jsou k dispozici dvě relace pro vybraný **ProductSubcategory** datový Asset: 
 
-- ProductSubcategoryID sloupce do tabulky Product má vztah cizího klíče se sloupcem ProductSubcategoryID vybrané tabulky ProductSubcategory. 
-- ProductCategoryID sloupec tabulky ProductSubCategory má vztah cizího klíče se sloupcem ProductCategoryID vybrané tabulky ProductCategory.
+- Sloupec ProductSubcategoryID v tabulce produktů má relaci cizího klíče se sloupcem ProductSubcategoryID vybrané tabulky ProductSubcategory. 
+- Sloupec ProductCategoryID tabulky ProductSubCategory má relaci cizího klíče se sloupcem ProductCategoryID vybrané tabulky ProductCategory.
 
 > [!NOTE]
-> Všimněte si, že směr šipky ve stromovém zobrazení relací.  
+> Všimněte si směru šipky ve stromovém zobrazení vztahů.  
 
-Pokud chcete zobrazit další podrobnosti, jako je plně kvalifikovaný název sloupce, najeďte myší a zobrazí automaticky otevíraném okně podobně jako na následujícím obrázku: 
+Chcete-li zobrazit více podrobností, jako je plně kvalifikovaný název sloupce, přesuňte ukazatel myši na a zobrazí se místní nabídka podobná následujícímu obrázku: 
 
-![Azure Data Catalog – automaticky otevírané okno relace](media/data-catalog-how-to-view-related-data-assets/relationship-popup.png)
+![Místní nabídka Azure Data Catalog-vztahu](media/data-catalog-how-to-view-related-data-assets/relationship-popup.png)
 
-Zahrnout vztahy mezi prostředky, které jsou již zaregistrovány, přeregistrujte tyto prostředky.
+Chcete-li zahrnout relace mezi prostředky, které již byly registrovány, znovu zaregistrujte tyto prostředky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Jak spravovat datové prostředky](data-catalog-how-to-manage.md)

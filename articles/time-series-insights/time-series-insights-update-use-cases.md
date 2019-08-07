@@ -1,6 +1,6 @@
 ---
-title: Případy použití Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
-description: Seznamte se s případy použití Azure čas Series Insights ve verzi Preview.
+title: Případy použití ve verzi Preview pro Azure Time Series Insights | Microsoft Docs
+description: Seznamte se s případy použití ve verzi Preview Azure Time Series Insights.
 author: ashannon7
 ms.author: dpalled
 ms.workload: big-data
@@ -8,31 +8,31 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 787445d5186a173b2cba674b36cd95879cc863e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 726fc2d2f53e904fdf7f50be5aef7b274dcc51ac
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390000"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736154"
 ---
-# <a name="azure-time-series-insights-preview-use-cases"></a>Případy použití Azure čas Series Insights ve verzi Preview
+# <a name="azure-time-series-insights-preview-use-cases"></a>Případy použití ve verzi Preview pro Azure Time Series Insights
 
-Tento článek shrnuje několik běžných případů použití Azure čas Series Insights ve verzi Preview. Doporučení v tomto článku slouží jako výchozí bod pro vývoj aplikací a řešení s využitím Time Series Insights.
+Tento článek shrnuje několik běžných případů použití pro Azure Time Series Insights Preview. Doporučení v tomto článku slouží jako výchozí bod pro vývoj aplikací a řešení pomocí Time Series Insights.
 
 Konkrétně tento článek obsahuje odpovědi na následující otázky:
 
 * Jaké jsou běžné případy použití pro Time Series Insights?
-* Jaké jsou výhody používání služby Time Series Insights pro [zkoumání dat a detekci anomálií visual](#data-exploration-and-visual-anomaly-detection)?
-* Jaké jsou výhody používání služby Time Series Insights pro [provozní analýzy a efektivitu procesů](#operational-analysis-and-driving-process-efficiency)?
-* Jaké jsou výhody používání služby Time Series Insights pro [pokročilé analýzy](#advanced-analytics)?
+* Jaké jsou výhody používání Time Series Insights pro [zkoumání dat a detekci vizuální anomálií](#data-exploration-and-visual-anomaly-detection)?
+* Jaké jsou výhody používání Time Series Insights pro [provozní analýzu a efektivitu procesů](#operational-analysis-and-driving-process-efficiency)?
+* Jaké jsou výhody použití Time Series Insights pro pokročilou [analýzu](#advanced-analytics)?
 
-Základní informace o tyto scénáře využívají je popsána v následujících částech.
+Přehled těchto scénářů použití je popsaný v následujících částech.
 
 ## <a name="introduction"></a>Úvod
 
-Azure Time Series Insights je nabídka platforma jako služba začátku do konce. Používá se k shromažďování, zpracování, ukládání, analýzu a dotazování dat IoT měřítku vysoce uvádí v kontextu, optimalizované řady čas. Time Series Insights je ideální pro zkoumání dat ad hoc a provozní analýzy. Time Series Insights je služba jednoznačně rozšiřitelný, přizpůsobené nabídky, že splňuje širší potřebuje průmyslového IoT nasazení.
+Azure Time Series Insights je ucelená nabídka typu platforma jako služba. Používá se ke shromažďování, zpracování, ukládání, analýze a dotazování vysoce kontextových dat IoT škály, které jsou optimalizované pro časovou řadu. Time Series Insights je ideální pro zkoumání a provozní analýzu dat ad hoc. Time Series Insights je jedinečná rozšiřitelná a přizpůsobená nabídka služeb, která splňuje široké požadavky na nasazení v průmyslu IoT.
 
 ## <a name="data-exploration-and-visual-anomaly-detection"></a>Zkoumání dat a vizuální detekce anomálií
 
@@ -40,62 +40,62 @@ Detekujte anomálie a odhalujte skryté trendy ve vašich datech díky okamžit�
 
 [![Průzkumník dat](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
 
-Většina zákazníků souhlasí s tím, že je čas insight mezi nejsilnější prostředky služby Time Series Insights. Time Series Insights nevyžaduje žádnou přípravu dat předem. Funguje to rychle do několika minut můžete připojit k miliardám událostí ve službě Azure IoT Hub nebo Azure Event Hubs. Po připojení můžete vizualizovat a analyzovat miliardy událostí k detekovat anomálie a odhalovat skryté trendy ve vašich datech.
+Většina zákazníků souhlasí s tím, že čas do přehledu je z nejúčinnějších prostředků Time Series Insights. Time Series Insights nevyžaduje žádnou přípravu dat předem. Umožňuje vám rychle se připojit k miliardám událostí ve službě Azure IoT Hub nebo Azure Event Hubs v řádu minut. Po připojení můžete vizualizovat a analyzovat miliardy událostí a odhalit anomálie a zjišťovat skryté trendy ve vašich datech.
 
-Time Series Insights je intuitivní a snadno se používá. Můžete pracovat s daty aniž byste museli napsat jediný řádek kódu. Je také se učit žádný nový jazyk. Time Series Insights poskytuje granulární textové dotazování pro pokročilé uživatele, kteří znají SQL. Poskytuje také zkoumání vybrat a kliknout pro naprosté nováčky.
+Time Series Insights je intuitivní a snadno se používá. S daty můžete pracovat, aniž byste museli psát jediný řádek kódu. Není k dispozici žádný nový jazyk, který by bylo možné učit. Time Series Insights poskytuje podrobné dotazy založené na textu pro pokročilé uživatele, kteří znají SQL. Nabízí také průzkum vybrat a kliknout pro ně.
 
-Zákazníci využít rychlosti rychle diagnostikovat problémy související s asset. Mohou provádět DevOps se dostat k původní příčinu chyby v řešení IoT. Také můžou určit oblastí k prozkoumání pro datové vědy iniciativy.  
+Zákazníci využijí rychlost pro rychlé diagnostikování problémů souvisejících s prostředky. Můžou provádět DevOps a získat tak hlavní příčinu chyby v řešení IoT. Můžou také identifikovat oblasti, které se mají prozkoumat v iniciativách pro datové vědy.  
 
-Existují tři hlavní způsoby, jak pracovat s daty uloženými v Time Series Insights:
+Existují tři základní způsoby, jak pracovat s daty uloženými v Time Series Insights:
 
-- Je první a nejjednodušší způsob, jak začít s Průzkumníkem čas Series Insights ve verzi Preview. Můžete ji rychle vizualizovat všechna vaše data IoT na jednom místě. Poskytuje nástroje, jako je Heat mapě můžete detekovat anomálie v datech. Poskytuje také perspektivním zobrazení. Použije k porovnání až čtyři zobrazení z jednoho nebo více prostředí Time Series Insights v jednom řídicím panelu. Řídicí panel poskytuje přehled o datech časových řad napříč všemi umístěními. Další informace o [čas Series Insights ve verzi Preview explorer](./time-series-insights-update-explorer.md). Na plánování prostředí Time Series Insights, přečtěte si [Time Series Insights plánování](./time-series-insights-update-plan.md).
+- První a nejjednodušší způsob, jak začít, je pomocí Průzkumníka Time Series Insights Preview. Můžete ji použít k rychlému vizualizaci všech dat IoT na jednom místě. Poskytuje nástroje, jako je heatmapu, které vám pomůžou odhalit anomálie ve vašich datech. Nabízí také pohled na perspektivu. Pomocí ní můžete porovnat až čtyři zobrazení z jednoho nebo více Time Series Insightsch prostředí na jednom řídicím panelu. Řídicí panel poskytuje zobrazení dat časových řad napříč všemi vašimi umístěními. Přečtěte si další informace o [aplikaci Time Series Insights Preview](./time-series-insights-update-explorer.md). Pokud chcete naplánovat Time Series Insights prostředí, přečtěte si téma [plánování Time Series Insights](./time-series-insights-update-plan.md).
 
-- Druhý způsob, jak začít, je použití sady SDK pro JavaScript rychle vkládat výkonné tabulky a grafy ve webové aplikaci. Pomocí několika řádků kódu můžete vytvářet výkonné dotazy. Použije je k naplnění spojnicové grafy, výsečové grafy, pruhové grafy, Heat mapy, datových mřížek a další. Všechny tyto prvky existovat out-of-the-box pomocí sady SDK. SDK také abstrahuje služby Time Series Insights dotaz rozhraní API. Můžete využít k vytváření predikáty podobném SQL k dotazování na data, které chcete zobrazit na řídicím panelu. Prezentační vrstva hybridní řešení služby Time Series Insights nabízí parametrizovaných adres URL. Poskytují body bezproblémové připojení s Průzkumníkem čas Series Insights ve verzi Preview pro podrobné komentáře na data.
+- Druhým způsobem, jak začít, je použít sadu JavaScript SDK k rychlému vkládání výkonných grafů a grafů do vaší webové aplikace. Pouze pár řádků kódu vám umožní vytvářet výkonné dotazy. Slouží k naplnění spojnicových grafů, výsečových grafů, pruhových grafů, Heat mapy, datových mřížek a dalších. Všechny tyto prvky existují předem v dialogovém okně pomocí sady SDK. Sada SDK také abstrakce Time Series Insights rozhraní API pro dotazy. Můžete je použít k vytváření predikátů podobných SQL k dotazování na data, která chcete zobrazit na řídicím panelu. Pro hybridní řešení prezentační vrstvy nabízí Time Series Insights jako parametrizované adresy URL. Poskytují hladce spojovací body pomocí Průzkumníka Time Series Insights Preview pro rozsáhlou komentářei dat.
 
-    * Čtení [Klientská knihovna pro čas Series Insights JS](tutorial-explore-js-client-lib.md) a [Time Series Insights klienta](https://github.com/Microsoft/tsiclient) dokumentaci se dozvíte informace o sadě SDK JavaScript.
+    * Další informace o sadě JavaScript SDK najdete v [klientské knihovně Time Series Insights js](tutorial-explore-js-client-lib.md) a v dokumentaci pro [Time Series Insights klienta](https://github.com/Microsoft/tsiclient) .
 
-    * Další informace o sdílení adresy URL a nové uživatelské rozhraní kontrolou [vizualizace dat v Průzkumníku Azure čas Series Insights ve verzi Preview](time-series-insights-update-explorer.md).
+    * Další informace o sdílení adres URL a novém uživatelském rozhraní najdete [v části vizualizace dat v Průzkumníkovi ve službě Azure Time Series Insights Preview](time-series-insights-update-explorer.md).
 
-- Je třetí způsob, jak začít používat Výkonné rozhraní API, provádět dotazy na data uložená v Time Series Insights. Time Series Insights, jako má dočasné operátory `from`, `to`, `first`, a `last`. Například má agregace a transformace `average`, `min`, `max`, `split by`, `order by`, a `DateHistogram`. Také obsahuje operátory, jako filtrování `has`, `in`, `and`, `or`, `greater than`, a `REGEX`. Tyto operátory povolit příjem dat aplikace a rychle najít zajímavé trendů a vzorů ve vašich datech. Použije je k naplnění uživatelské vizualizace detekovat anomálie.
+- Třetí způsob, jak začít, je použít výkonné rozhraní API k dotazování na data uložená v Time Series Insights. Time Series Insights obsahuje dočasné operátory `from`, jako například, `first` `to`, `last`a. Obsahuje agregace `average`a transformace `min` `order by` `split by`, jako jsou, `DateHistogram`,,, a. `max` `has`Má také operátory filtrování `greater than` `or` `in`, jako jsou,, `REGEX`,, a. `and` Všechny tyto operátory umožňují aplikacím pro příjem dat rychle najít zajímavé trendy a vzory ve vašich datech. Použijte je k naplnění barev vypěstovaných v balení, které odhalí anomálie.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>Provozní analýzy a zvýšení efektivity procesů
 
-Time Series Insights umožňuje monitorovat stav, využití a výkon zařízení ve velkém měřítku. Time Series Insights poskytuje snadný způsob, jak měřit provozní efektivitu. Time Series Insights pomáhá spravovat různorodé a nepředvídatelné úlohy IoT bez omezení ingestování nebo výkonu dotazů.
+Pomocí Time Series Insights můžete monitorovat stav, využití a výkon zařízení ve velkém měřítku. Time Series Insights poskytuje snadný způsob, jak změřit provozní efektivitu. Time Series Insights pomáhá spravovat různorodé a nepředvídatelné úlohy IoT bez omezení ingestování nebo výkonu dotazů.
 
 [![Přehled](media/v2-update-use-cases/overview.svg)](media/v2-update-use-cases/overview.svg#lightbox)
 
-Vysílání datových proudů a průběžné zpracování dat přicházejících z provozních procesů lze úspěšně transformovat jakoukoli firmu Pokud se zkombinuje s správné technologie nebo řešení. Tato řešení jsou často kombinace více systémů. Umožňují zkoumání a analýzy dat, která změní neustále, zejména ve sféře IoT a běžně sdílí.
+Streamování a průběžné zpracování dat přicházejících z provozních procesů může úspěšně transformovat libovolnou firmu, pokud je v kombinaci s pravou technologií nebo řešením. Tato řešení jsou často kombinací více systémů. Umožňují prozkoumání a analýzu dat, která se průběžně mění, zejména ve sféře IoT, a sdílí společný vzor.
 
-Tyto vzory často začínat platformy s podporou IoT, které ingestovat miliardy událostí ze zařízení a senzorů, které zahrnují různá národní prostředí. Tyto systémy zpracování a analýzu datových proudů dat k odvození přehledy v reálném čase a akce. Data se obvykle archivuje vyzkoušeli a studeného úložiště pro téměř v reálném čase a dávkové analýzy.
+Tyto vzory často začínají s platformami podporujícími IoT, které ingestují miliardy událostí ze zařízení a senzorů, které jsou v různých národních prostředích. Tyto systémy zpracovávají a analyzují streamovaná data pro odvození přehledů a akcí v reálném čase. Data se obvykle archivují do teplého a studeného úložiště téměř v reálném čase a v dávkových analýzách.
 
-Data sbírána prochází řadu zpracování čistí a contextualize pro příjem dat scénáře, dotazování a analýzy. Azure nabízí bohaté služby, které mohou být použity pro scénáře IoT, jako je například údržba asset a výrobu. Mezi tyto služby patří služby Time Series Insights, služby IoT Hub, Event Hubs, Azure Stream Analytics, Azure Functions, Azure Logic Apps, Azure Databricks, Azure Machine Learning a Power BI.
+Shromážděná data procházejí řadou zpracování, která je čistí a dát pro scénáře dotazování a analýzy pro příjem dat. Azure nabízí obsáhlé služby, které se dají použít na scénáře IoT, jako je údržba a výroba prostředků. Mezi tyto služby patří Time Series Insights, IoT Hub, Event Hubs, Azure Stream Analytics, Azure Functions, Azure Logic Apps, Azure Databricks, Azure Machine Learning a Power BI.
 
-Architektura řešení můžete dosáhnout následujícím způsobem:
+Architekturu řešení lze dosáhnout následujícím způsobem:
 
-- Příjem dat prostřednictvím služby IoT Hub nebo Event Hubs ve své třídě nejlepší zabezpečení, latence a propustnosti.
-- Provádějte zpracování dat a výpočty. Trychtýře přijatých dat prostřednictvím služeb, jako je Stream Analytics, Logic Apps a Azure Functions. Službu, kterou použijete, závisí na specifické požadavky na zpracování dat.
-- Vypočítané signály z kanálu zpracování se nasdílejí do služby Time Series Insights pro ukládání a analýzu.
+- Ingestujte data prostřednictvím IoT Hub nebo Event Hubs pro nejlepší zabezpečení, propustnost a latenci v rámci své třídy.
+- Provádění zpracování dat a výpočtů. Ingestovaná data prostřednictvím služby, jako jsou Stream Analytics, Logic Apps a Azure Functions. Služba, kterou použijete, závisí na konkrétních potřebách zpracování dat.
+- Vypočítané signály z kanálu zpracování jsou vloženy do Time Series Insights pro ukládání a analýzu.
 
-Time Series Insights nabízí téměř zkoumání dat v reálném čase a přehledy založené na asset historická data. V závislosti na vaše obchodní potřeby můžete spustit úlohy MapReduce a Hivu s daty uloženými v Time Series Insights pomocí připojení k HDInsight Azure Time Series Insights. Data uložená v Time Series Insights je k dispozici pro Power BI a dalších zákaznických aplikací prostřednictvím veřejné surface dotazu Time Series Insights rozhraní API. Tato data je možné pro podrobné obchodní a provozní informace scénáře.
+Time Series Insights nabízí zkoumání dat v reálném čase a přehledy založené na prostředcích nad historickými daty. V závislosti na potřebách vaší firmy můžete úlohy MapReduce a podregistru spouštět na datech uložených v Time Series Insights připojením Time Series Insights k Azure HDInsight. Data uložená v Time Series Insights jsou k dispozici pro Power BI a další zákaznické aplikace prostřednictvím rozhraní API pro dotazy na veřejné ploše Time Series Insights. Tato data je možné využít ve scénářích obsáhlé podnikání a provozní logiky.
 
-## <a name="advanced-analytics"></a>Pokročilé analýzy
+## <a name="advanced-analytics"></a>Pokročilá analýza
 
-Integrace se službami pokročilou analýzu, jako je Machine Learning a Azure Databricks. Time Series Insights ingresses nezpracovaných dat z milionů zařízení. Přidá kontextové údaje, které mohou bez problémů využívat sadu analytické služby Azure.
+Integrujte s pokročilými analytickými službami, jako jsou Machine Learning a Azure Databricks. Time Series Insights příchozí data z milionů zařízení. Přidává kontextová data, která lze hladce spotřebovat sadou služeb Azure Analytics.
 
 [![Analytics](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
 
-Pokročilé analýzy a machine learningu spotřebovat a zpracovat velké objemy dat. Tato data slouží k datově řízená rozhodnutí a provádět prediktivní analýzy. V případech IoT pomocí pokročilých analytických algoritmů Učte se od data shromážděná z milionů zařízení. Tato zařízení přenášet data více než jednou za sekundu. Je nezpracovaná data shromážděná ze zařízení IoT. Postrádá kontextové informace, jako je umístění zařízení a jednotka čtení senzoru. V důsledku toho nezpracovaných dat je obtížné využívat přímo pro pokročilou analýzu.
+Pokročilé analýzy a strojové učení využívají a zpracovávají velké objemy dat. Tato data se používají k provádění rozhodnutí řízených daty a k provádění prediktivní analýzy. V případech použití v IoT se algoritmy pro pokročilou analýzu učí od dat shromážděných z milionů zařízení. Tato zařízení odesílají data vícekrát každou sekundu. Data shromážděná ze zařízení IoT jsou nepracovaná. Chybí kontextové informace, jako je umístění zařízení a jednotka, ve které se senzor čte. V důsledku toho je nezpracovaných dat obtížné spotřebovat přímo pro pokročilé analýzy.
 
-Time Series Insights překlenuje propast mezi IoT dat a pokročilých analýz dva jednoduché a nákladově efektivní způsoby:
+VyTime Series Insights mosty mezi daty IoT a pokročilými analýzami ve dvou jednoduchých a nákladově efektivních způsobech:
 
-- Nejprve Time Series Insights shromažďuje nezpracovaná telemetrická data z miliónů zařízení pomocí služby IoT Hub. Rozšíří dat pomocí kontextové informace a transformuje data do formátu parquet. Tento formát umožňuje snadnou integraci s další pokročilé analýzy služby, jako je Machine Learning, Azure Databricks a aplikací třetích stran.
+- Nejdřív Time Series Insights shromažďuje hrubá data telemetrie z milionů zařízení pomocí IoT Hub. Rozšiřuje data o kontextové informace a transformuje data do formátu Parquet. Tento formát se může snadno integrovat s jinými službami pokročilé analýzy, jako jsou Machine Learning, Azure Databricks a aplikace třetích stran.
 
-    Time Series Insights může sloužit jako zdroj pravdivých informací pro všechna data celé organizaci. Vytvoří centrální úložiště pro příjem dat analýzy úloh, které budete používat. Protože Time Series Insights je téměř v reálném čase úložiště služby, pokročilé analýzy, které modely můžete průběžně Učte se od příchozí telemetrická data IoT. Modely v důsledku toho může být přesnějších predikcí.
+    Time Series Insights může sloužit jako zdroj pravdy pro všechna data v celé organizaci. Vytvoří centrální úložiště pro využití úloh pro podřízenou analýzu. Vzhledem k tomu, že Time Series Insights je téměř v reálném čase služba úložiště, pokročilé analytické modely se můžou průběžně učit ze příchozích dat telemetrie IoT. V důsledku toho mohou modely dosáhnout přesnější předpovědi.
 
-- Za druhé Time Series Insights může dodáni výstup modelů strojového učení a prediktivní vkládání vizualizovat a uložit jejich výsledky. Tento postup pomáhá organizacím k optimalizaci a upravit jejich modelů. Time Series Insights usnadňuje vizualizace, streamování telemetrická data v téže rovině jako výstupy trénovaného modelu. Tímto způsobem umožňuje datové vědy týmy detekovat anomálie a identifikovat vzory.  
+- Za druhé, Time Series Insights může doplňovat výstup strojového učení a předpovědí modelů, které znázorňují a ukládají jejich výsledky. Tento postup pomáhá organizacím optimalizovat a vylepšit jejich modely. Time Series Insights usnadňuje vizualizaci streamování dat telemetrie na stejné rovině, jako jsou například vyškolené výstupy modelu. Tímto způsobem pomáhají týmy pro datové vědy odhalit anomálie a identifikovat vzory.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [čas Series Insights ve verzi Preview explorer](./time-series-insights-update-explorer.md).
-- Čtení [čas Series Insights ve verzi Preview plánování](./time-series-insights-update-plan.md) na plánování vašeho prostředí.
-- Čtení [Time Series Insights klienta](https://github.com/Microsoft/tsiclient) dokumentaci.
+- Přečtěte si další informace o [aplikaci Time Series Insights Preview](./time-series-insights-update-explorer.md).
+- Přečtěte si téma [plánování Time Series Insights Preview](./time-series-insights-update-plan.md) a naplánujte si prostředí.
+- Přečtěte si dokumentaci ke [klientovi Time Series Insights](https://github.com/Microsoft/tsiclient) .

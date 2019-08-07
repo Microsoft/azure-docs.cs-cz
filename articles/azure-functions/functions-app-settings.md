@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 50056d4d05d2426ff644518aea04a2c9f4d817f3
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3aa3176b1d6d9e5665fd3a8988b71159a4fc20c0
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667173"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735714"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
@@ -25,7 +25,7 @@ Nastavení aplikace v aplikaci function app obsahovat globální konfiguraci mo�
 
 Existují další možnosti globální konfiguraci v [host.json](functions-host-json.md) souboru a [local.settings.json](functions-run-local.md#local-settings-file) souboru.
 
-## <a name="appinsightsinstrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
+## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
 Instrumentační klíč Application Insights při použití služby Application Insights. Zobrazit [monitorování Azure Functions](functions-monitoring.md).
 
@@ -33,7 +33,7 @@ Instrumentační klíč Application Insights při použití služby Application 
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9 af77-484b-9032-64f83bb83bb|
 
-## <a name="azurefunctionsenvironment"></a>AZURE_FUNCTIONS_ENVIRONMENT
+## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
 Ve verzi 2. x modulu runtime Functions konfiguruje chování aplikace na základě běhového prostředí. Tato hodnota je [čtena při inicializaci](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Můžete nastavit `AZURE_FUNCTIONS_ENVIRONMENT` na libovolnou hodnotu, ale podporují se [tři hodnoty](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) : [Vývoj](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Příprava](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)a [produkce](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Pokud `AZURE_FUNCTIONS_ENVIRONMENT` není nastavené, použije se `Development` výchozí nastavení v místním prostředí `Production` a v Azure. Toto nastavení by se mělo použít místo `ASPNETCORE_ENVIRONMENT` pro nastavení běhového prostředí. 
 
@@ -92,7 +92,7 @@ Modul runtime Azure Functions používá tento připojovací řetězec účtu ú
 |---|------------|
 |AzureWebJobsStorage|DefaultEndpointsProtocol = https; AccountName = [název]; AccountKey = [klíč]|
 
-## <a name="azurewebjobstypescriptpath"></a>AzureWebJobs_TypeScriptPath
+## <a name="azurewebjobs_typescriptpath"></a>AzureWebJobs_TypeScriptPath
 
 Cestu ke kompilátoru používá pro TypeScript. Umožňuje přepsat výchozí hodnotu, pokud je potřeba.
 
@@ -100,7 +100,7 @@ Cestu ke kompilátoru používá pro TypeScript. Umožňuje přepsat výchozí h
 |---|------------|
 |AzureWebJobs_TypeScriptPath|%Home%\typescript|
 
-## <a name="functionappeditmode"></a>FUNKCE\_APLIKACE\_UPRAVIT\_REŽIMU
+## <a name="function_app_edit_mode"></a>FUNKCE\_APLIKACE\_UPRAVIT\_REŽIMU
 
 Určuje, zda jsou povoleny úpravy v Azure Portal. Platné hodnoty jsou "readwrite" a "jen pro čtení".
 
@@ -108,7 +108,7 @@ Určuje, zda jsou povoleny úpravy v Azure Portal. Platné hodnoty jsou "readwri
 |---|------------|
 |FUNKCE\_APLIKACE\_UPRAVIT\_REŽIMU|jen pro čtení|
 
-## <a name="functionsextensionversion"></a>FUNKCE\_ROZŠÍŘENÍ\_VERZE
+## <a name="functions_extension_version"></a>FUNKCE\_ROZŠÍŘENÍ\_VERZE
 
 Verze modulu runtime Functions pro použití v této aplikace function app. Tilda s hlavní verzí znamená, že používat nejnovější verzi Tato hlavní verze (například "~ 2"). Když jsou k dispozici nová verze pro stejný hlavní verze, jsou automaticky nainstalovány do aplikace function App. Chcete-li připnout aplikaci na konkrétní verzi, použijte celé číslo verze (například "2.0.12345"). Výchozí hodnota je "~ 2". Hodnota `~1` připíná vaší aplikace na verzi 1.x modulu runtime.
 
@@ -116,7 +116,16 @@ Verze modulu runtime Functions pro použití v této aplikace function app. Tild
 |---|------------|
 |FUNKCE\_ROZŠÍŘENÍ\_VERZE|~ 2|
 
-## <a name="functionsworkerruntime"></a>FUNKCE\_PRACOVNÍHO PROCESU\_MODULU RUNTIME
+## <a name="functions_worker_process_count"></a>POČET\_PRACOVNÍCH\_PROCESŮFUNKCÍ\_
+
+Určuje maximální počet pracovních procesů jazyka s výchozí hodnotou `1`. Maximální povolená hodnota je `10`. Volání funkcí jsou rovnoměrně rozdělena mezi pracovní procesy jazyka. Pracovní procesy jazyka se spouští každých 10 sekund, dokud se nedosáhne počtu zpracovaných\_pracovních\_procesů funkcí\_Count. Použití více pracovních procesů jazyka není stejné jako [škálování](functions-scale.md). Zvažte použití tohoto nastavení, pokud má vaše úloha kombinaci asynchronních volání vázaných na procesor a vstupně-výstupní operace. Toto nastavení platí pro všechny non-.NET jazyky.
+
+|Klíč|Ukázková hodnota|
+|---|------------|
+|POČET\_PRACOVNÍCH\_PROCESŮFUNKCÍ\_|2|
+
+
+## <a name="functions_worker_runtime"></a>FUNKCE\_PRACOVNÍHO PROCESU\_MODULU RUNTIME
 
 Pracovního procesu CLR pro načtení do aplikace function App.  To bude odpovídat jazyku používán ve vaší aplikaci (například "dotnet"). Pro funkce v několika jazycích, je potřeba publikovat je do více aplikacemi, každý s odpovídající hodnotou modulu runtime pracovního procesu.  Platné hodnoty jsou `dotnet` (C#/F#), `node` ( `java` `python` JavaScript/TypeScript), (Java), (PowerShell)a(Python).`powershell`
 
@@ -124,7 +133,7 @@ Pracovního procesu CLR pro načtení do aplikace function App.  To bude odpoví
 |---|------------|
 |FUNKCE\_PRACOVNÍHO PROCESU\_MODULU RUNTIME|DotNet|
 
-## <a name="websitecontentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
+## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
 Pro spotřebu & jenom plánů Premium. Připojovací řetězec pro účet úložiště, kde jsou uloženy kód aplikace funkcí a konfigurace. Zobrazit [vytvořit aplikaci function app](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -132,7 +141,7 @@ Pro spotřebu & jenom plánů Premium. Připojovací řetězec pro účet úlož
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [název]; AccountKey = [klíč]|
 
-## <a name="websitecontentshare"></a>WEB\_CONTENTSHARE
+## <a name="website_contentshare"></a>WEB\_CONTENTSHARE
 
 Pro spotřebu & jenom plánů Premium. Cesta k souboru kódu aplikace funkcí a konfigurace. Použít s WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. Výchozí hodnota je jedinečný řetězec, který začíná názvem aplikace function app. Zobrazit [vytvořit aplikaci function app](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -140,7 +149,7 @@ Pro spotřebu & jenom plánů Premium. Cesta k souboru kódu aplikace funkcí a 
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-## <a name="websitemaxdynamicapplicationscaleout"></a>WEB\_MAXIMÁLNÍ\_DYNAMICKÉ\_APLIKACE\_ŠKÁLOVÁNÍ\_NAVÝŠENÍ KAPACITY
+## <a name="website_max_dynamic_application_scale_out"></a>WEB\_MAXIMÁLNÍ\_DYNAMICKÉ\_APLIKACE\_ŠKÁLOVÁNÍ\_NAVÝŠENÍ KAPACITY
 
 Maximální počet instancí, které aplikace function app můžete horizontální navýšení kapacity na. Výchozí hodnota je neomezený.
 
@@ -151,7 +160,7 @@ Maximální počet instancí, které aplikace function app můžete horizontáln
 |---|------------|
 |WEB\_MAXIMÁLNÍ\_DYNAMICKÉ\_APLIKACE\_ŠKÁLOVÁNÍ\_NAVÝŠENÍ KAPACITY|5|
 
-## <a name="websitenodedefaultversion"></a>WEB\_UZEL\_DEFAULT_VERSION
+## <a name="website_node_default_version"></a>WEB\_UZEL\_DEFAULT_VERSION
 
 Výchozí hodnota je "8.11.1".
 
@@ -159,7 +168,7 @@ Výchozí hodnota je "8.11.1".
 |---|------------|
 |WEB\_UZEL\_DEFAULT_VERSION|8.11.1|
 
-## <a name="websiterunfrompackage"></a>WEB\_SPUSTIT\_FROM\_BALÍČKU
+## <a name="website_run_from_package"></a>WEB\_SPUSTIT\_FROM\_BALÍČKU
 
 Umožňuje aplikaci function app pro spuštění ze souboru balíčku připojené.
 
@@ -169,7 +178,7 @@ Umožňuje aplikaci function app pro spuštění ze souboru balíčku připojen�
 
 Platné hodnoty jsou buď adresu URL, který se přeloží do umístění souboru balíčku nasazení, nebo `1`. Pokud je nastavena na `1`, velikost balíčku musí být v `d:\home\data\SitePackages` složky. Při použití s tímto nastavením zip nasazení, balíček je automaticky odeslána do tohoto umístění. Ve verzi preview, se toto nastavení s názvem `WEBSITE_RUN_FROM_ZIP`. Další informace najdete v tématu [spouštět funkce ze souboru balíčku](run-functions-from-deployment-package.md).
 
-## <a name="azurefunctionproxydisablelocalcall"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
 
 Ve výchozím nastavení proxy služby Functions bude využívat zástupce k odesílání volání rozhraní API z proxy přímo do funkce ve stejné aplikaci funkce a nevytvářejte nový požadavek HTTP. Toto nastavení umožňuje zakázat toto chování.
 
@@ -179,7 +188,7 @@ Ve výchozím nastavení proxy služby Functions bude využívat zástupce k ode
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false (nepravda)|Toto je výchozí hodnota. Volání s back-end adresy url odkazující na funkci v místní aplikaci Function App se předají přímo do této funkce|
 
 
-## <a name="azurefunctionproxybackendurldecodeslashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
 Toto nastavení určuje, zda je % 2F dekódovat jako ve parametry trasy vloženým do adresy URL back-endu. 
 

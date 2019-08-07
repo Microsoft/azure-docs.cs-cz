@@ -1,8 +1,7 @@
 ---
 title: Použití prostředí PowerShell k nastavení Application Insights v Azure | Dokumentace Microsoftu
-description: Automatizujte konfiguraci kanálu Azure Diagnostics pro službu Application Insights.
+description: Automatizuje konfiguraci Azure Diagnostics pro přenos dat do Application Insights.
 services: application-insights
-documentationcenter: .net
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 4ac803a8-f424-4c0c-b18f-4b9c189a64a5
@@ -10,16 +9,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/17/2015
+ms.date: 08/06/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3c0decaa89b4ecc503157a32fcb1e5b4d249ccfb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 89ed75e4ae3363c2cb25020e6074aa17baf94eda
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60254635"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827098"
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Použití prostředí PowerShell k nastavení Application Insights pro webovou aplikaci v Azure
+# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Použití PowerShellu k nastavení Application Insights pro Azure Cloud Services
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -46,7 +45,7 @@ Pokud je webová aplikace v Azure a vy vytvoříte své prostředky pomocí šab
      } 
 
 * `nameOfAIAppResource` – název prostředku Application Insights
-* `myWebAppName` – ID webové aplikace
+* `myWebAppName`– ID webové aplikace
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Povolit rozšíření diagnostiky jako součást nasazení cloudové služby
 Rutina `New-AzureDeployment` obsahuje parametr `ExtensionConfiguration`, který přijímá pole konfigurace diagnostiky. Ty lze vytvořit pomocí rutiny `New-AzureServiceDiagnosticsExtensionConfig`. Příklad:
@@ -136,7 +135,7 @@ Chcete-li odebrat rozšíření diagnostiky pro každou jednotlivou roli:
 ```
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 * [Monitorování aplikací v Azure Cloud Services službou Application Insights](../../azure-monitor/app/cloudservices.md)
 * [Odesílání Diagnostiky Azure do Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Automatizace konfigurace výstrah](powershell-alerts.md)
