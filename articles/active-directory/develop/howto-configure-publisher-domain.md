@@ -1,6 +1,6 @@
 ---
-title: Nakonfigurovat doménu vydavatele aplikace. | Azure
-description: Zjistěte, jak nakonfigurovat doména vydavatele aplikace chcete uživatele informovat o tom, kde se informace o jejich odeslání.
+title: Konfigurace domény vydavatele aplikace | Azure
+description: Naučte se konfigurovat doménu vydavatele aplikace, aby uživatelé věděli, kde se odesílají jejich informace.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
@@ -17,63 +17,63 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d47075f9e18b299341a98983ffb8a47389fd7063
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 291de1fa9bbb43ff9393a3163d1cd21dd7cd1b01
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540247"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835150"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Postup: Nakonfigurovat doménu vydavatele aplikace (Preview)
+# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Postup: Konfigurace domény vydavatele aplikace (Preview)
 
-Doména vydavatele aplikace se zobrazí uživatelům na [výzva k povolení spuštění aplikace](application-consent-experience.md) chcete uživatele informovat o tom, kde se informace o jejich odeslání. Aplikace s více tenanty, které jsou registrovány po 21. května 2019, které nemají doménu vydavatele se zobrazují jako **neověřené**. Víceklientské aplikace jsou aplikace, které podporují účty mimo jedné organizační adresáři. například všechny účty služby Azure AD nebo podporují všechny účty služby Azure AD a osobní účty Microsoft.
+Doména vydavatele aplikace se zobrazí uživatelům na [výzvu k vyjádření souhlasu aplikace](application-consent-experience.md) a umožní uživatelům, aby věděli, kde jsou odesílány informace. Víceklientské aplikace registrované po 21. května 2019, které nemají doménu vydavatele zobrazeno jako Neověřeno Víceklientské aplikace jsou aplikace, které podporují účty mimo jeden adresář organizace. například podporují všechny účty Azure AD nebo podporují všechny účty Azure AD a osobní účty Microsoft.
 
 ## <a name="new-applications"></a>Nové aplikace
 
-Při registraci nové aplikace, doména vydavatele aplikace může být nastaven na výchozí hodnotu. Hodnota závisí na kde registraci aplikace, zvlášť jestli registraci aplikace v tenantovi a určuje, zda má klient tenanta ověřené doméně.
+Když zaregistrujete novou aplikaci, může být doména vydavatele vaší aplikace nastavená na výchozí hodnotu. Hodnota závisí na tom, kde je aplikace zaregistrovaná, zejména jestli je aplikace registrovaná v tenantovi a jestli má tenant ověřené domény tenanta.
 
-Pokud je ověření klienta domén, doména vydavatele aplikace bude ve výchozím nastavení primární ověřenou doménu tenanta. Pokud se žádný klient ověřené domény (což je případ, když aplikace není registrována v tenantovi), nastaví se doména vydavatele aplikace na hodnotu null.
+Pokud jsou k dispozici domény ověřené klientem, bude doména vydavatele aplikace výchozím nastavením primární ověřená doména tenanta. Pokud neexistují žádné domény ověřené klienty (což je případ, kdy není aplikace registrovaná v tenantovi), bude doména vydavatele aplikace nastavená na hodnotu null.
 
-Následující tabulka shrnuje chování výchozí hodnoty domény vydavatele.  
+Následující tabulka shrnuje výchozí chování hodnoty domény vydavatele.  
 
-| Ověření klienta domény | Výchozí hodnota doména vydavatele |
+| Domény ověřené klientem | Výchozí hodnota domény vydavatele |
 |-------------------------|----------------------------|
-| Hodnotu Null | Hodnotu Null |
-| *.onmicrosoft.com | *.onmicrosoft.com |
-| -*. onmicrosoft.com<br/>-Doménu1.cz<br/>-Doménu2.cz (primární) | domain2.com |
+| null | null |
+| *. onmicrosoft.com | *. onmicrosoft.com |
+| – *. onmicrosoft.com<br/>– domain1.com<br/>-domain2.com (primární) | domain2.com |
 
-Pokud doména vydavatele aplikace s více tenanty není nastavená nebo pokud je nastavena na doméně, která končí na. onmicrosoft.com, zobrazí se výzva k povolení spuštění aplikace **neověřené** místo doména vydavatele.
+Pokud není nastavená doména vydavatele aplikace s více klienty, nebo pokud je nastavená na doménu, která končí na. onmicrosoft.com, zobrazí se výzva k vyjádření souhlasu aplikace na místě domény vydavatele Neověřeno.
 
-## <a name="grandfathered-applications"></a>Grandfathered aplikací
+## <a name="grandfathered-applications"></a>Grandfathered aplikace
 
-Pokud vaše aplikace byla zaregistrována před 21. května 2019 nezobrazí výzva k povolení spuštění vaší aplikace **neověřené** Pokud jste nenastavili doménu vydavatele. Doporučujeme nastavit vydavatele hodnota domény tak, aby uživatelé uvidí tyto informace na výzva k povolení spuštění vaší aplikace.
+Pokud se vaše aplikace zaregistrovala před 21. května 2019, zobrazí se výzva k vyjádření souhlasu vaší aplikace neověřená, pokud jste nezadali doménu vydavatele. Doporučujeme nastavit hodnotu domény vydavatele tak, aby uživatelé mohli zobrazit tyto informace na příkazovém řádku pro vyjádření souhlasu vaší aplikace.
 
-## <a name="configure-publisher-domain-using-the-azure-portal"></a>Konfigurace vydavatele domény pomocí webu Azure portal
+## <a name="configure-publisher-domain-using-the-azure-portal"></a>Konfigurace domény vydavatele pomocí Azure Portal
 
-Nastavení domény vydavatele této aplikace, postupujte podle těchto kroků.
+Pokud chcete nastavit doménu vydavatele vaší aplikace, postupujte podle těchto kroků.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 
-1. Pokud je váš účet součástí více než jednoho tenanta Azure AD:
-   1. Z nabídky v pravém horním rohu stránky vyberte váš profil a potom **přepnout adresář**.
-   1. Změňte relaci na tenanta Azure AD, kde chcete vytvořit aplikaci.
+1. Pokud je váš účet přítomen ve více než jednom tenantovi služby Azure AD:
+   1. V nabídce v pravém horním rohu stránky vyberte svůj profil a pak **Přepněte do adresáře**.
+   1. Změňte svou relaci na tenanta Azure AD, ve kterém chcete vytvořit aplikaci.
 
-1. Přejděte do [Azure Active Directory > Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) najděte a vyberte aplikaci, kterou chcete konfigurovat.
+1. Přejděte na [Azure Active Directory > Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) a vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat.
 
-   Jakmile vyberete aplikace, zobrazí se vám aplikace **přehled** stránky.
+   Po výběru aplikace se zobrazí stránka **Přehled** aplikace.
 
-1. Z aplikace **přehled** stránky, vyberte **značky** oddílu.
+1. Na stránce **Přehled** aplikace vyberte část **branding** .
 
-1. Najít **doména vydavatele** pole a vyberte jednu z následujících možností:
+1. Vyhledejte pole **doména vydavatele** a vyberte jednu z následujících možností:
 
-   - Vyberte **konfigurace domény** Pokud už jste neprovedli konfiguraci domény.
-   - Vyberte **aktualizační doména** Pokud domény je již nakonfigurován.
+   - Pokud jste ještě nenakonfigurovali doménu, vyberte **nakonfigurovat doménu** .
+   - Pokud je doména už nakonfigurovaná, vyberte **aktualizovat doménu** .
 
-Pokud vaše aplikace je registrován v tenantovi, uvidíte dvě karty můžete vybírat z: **Vyberte ověřenou doménu** a **ověření nové domény**.
+Pokud je vaše aplikace registrovaná v tenantovi, uvidíte dvě karty, ze kterých můžete vybírat: **Vyberte ověřenou doménu** a **ověřte novou doménu**.
 
-Pokud vaše aplikace není registrován v tenantovi, uvidíte pouze možnost ověřit nové domény pro vaši aplikaci.
+Pokud vaše aplikace není registrovaná v tenantovi, zobrazí se jenom možnost ověřit novou doménu pro vaši aplikaci.
 
-### <a name="to-verify-a-new-domain-for-your-app"></a>Chcete-li ověřit nové domény pro vaši aplikaci
+### <a name="to-verify-a-new-domain-for-your-app"></a>Ověření nové domény pro vaši aplikaci
 
 1. Vytvořte soubor s názvem `microsoft-identity-association.json` a vložte následující fragment kódu JSON.
 
@@ -87,51 +87,51 @@ Pokud vaše aplikace není registrován v tenantovi, uvidíte pouze možnost ov�
     }
    ```
 
-1. Nahraďte zástupný text *{YOUR-APP-ID-TADY}* s ID aplikace (klient), která odpovídá vaší aplikace.
+1. Zástupný symbol *{Your-App-ID-tady}* nahraďte ID aplikace (klienta), které odpovídá vaší aplikaci.
 
-1. Hostování v souboru: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. Nahraďte zástupný text *{YOUR-ZDEJSI-KORENOVA}* tak, aby odpovídaly ověřenou doménu.
+1. Hostovat soubor v umístění: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. Nahraďte zástupný symbol *{a-Domain}* , aby odpovídal ověřené doméně.
 
-1. Klikněte na tlačítko **ověřte a uložte domény** tlačítko.
+1. Klikněte na tlačítko **ověřit a uložit doménu** .
 
-### <a name="to-select-a-verified-domain"></a>Vyberte ověřenou doménu
+### <a name="to-select-a-verified-domain"></a>Výběr ověřené domény
 
-- Pokud váš tenant má ověřené doméně, vyberte jednu z domén z **vyberte ověřenou doménu** rozevíracího seznamu.
+- Pokud má váš tenant ověřené domény, vyberte jednu z domén v rozevíracím seznamu **Vybrat ověřenou doménu** .
 
-## <a name="implications-on-the-app-consent-prompt"></a>Důsledky pro aplikace výzva k povolení spuštění
+## <a name="implications-on-the-app-consent-prompt"></a>Důsledky pro výzvu k vyjádření souhlasu aplikace
 
-Doména vydavatele konfigurace má dopad na co uživatelé uvidí na výzva k povolení spuštění aplikace. Abyste úplně pochopili součásti výzva k povolení spuštění, naleznete v tématu [Principy souhlasu s aplikací vyskytne](application-consent-experience.md).
+Konfigurace domény vydavatele má vliv na to, co se uživatelům zobrazí ve výzvě k vyjádření souhlasu s aplikací. Pokud chcete plně pochopit komponenty výzvy k vyjádření souhlasu, přečtěte si téma [vysvětlení prostředí pro vyjádření souhlasu s aplikacemi](application-consent-experience.md).
 
 Následující tabulka popisuje chování pro aplikace vytvořené před 21. května 2019.
 
-![Výzva k povolení spuštění pro aplikace vytvořené před 21. května 2019](./media/howto-configure-publisher-domain/old-app-behavior-table.png)
+![Výzva k zadání souhlasu pro aplikace vytvořené před 21. května 2019](./media/howto-configure-publisher-domain/old-app-behavior-table.png)
 
-Chování pro nové aplikace vytvořené po 21. května 2019 bude záviset na doméně vydavatele a na typu aplikace. Následující tabulka popisuje změny, které by se měl zobrazit jinou kombinaci parametrů konfigurace.
+Chování pro nové aplikace vytvořené po 21. května 2019 bude záviset na doméně vydavatele a na typu aplikace. Následující tabulka popisuje změny, které byste měli očekávat, abyste viděli různé kombinace konfigurací.
 
-![Výzva k povolení spuštění pro aplikace vytvořené po 21. května 2019](./media/howto-configure-publisher-domain/new-app-behavior-table.png)
+![Výzva k zadání souhlasu pro aplikace vytvořené po 21. května 2019](./media/howto-configure-publisher-domain/new-app-behavior-table.png)
 
 ## <a name="implications-on-redirect-uris"></a>Důsledky pro identifikátory URI pro přesměrování
 
-Aplikace, které se přihlásit uživatele pomocí jakékoli pracovní nebo školní účet nebo osobní účty Microsoft ([víceklientské](single-and-multi-tenant-apps.md)) jsou v souladu s několika omezeními při zadávání identifikátory URI pro přesměrování.
+Aplikace, které se přihlásí uživatelům pomocí pracovního nebo školního účtu nebo osobních účtů Microsoft ([víceklientské](single-and-multi-tenant-apps.md)), podléhají malým omezením při zadávání identifikátorů URI pro přesměrování.
 
-### <a name="single-root-domain-restriction"></a>Omezení domény jeden kořenový
+### <a name="single-root-domain-restriction"></a>Omezení jedné kořenové domény
 
-Pokud hodnota doméně vydavatele pro aplikace s více tenanty nastavená na hodnotu null, aplikace jsou omezeny na sdílení jedné kořenovou doménu pro identifikátory URI pro přesměrování. Například následující kombinace hodnot není povolená, protože kořenová doména, contoso.com, fabrikam.com se neshoduje.
+Pokud je hodnota domény vydavatele pro víceklientské aplikace nastavená na hodnotu null, jsou aplikace omezené na sdílení jedné kořenové domény pro identifikátory URI přesměrování. Například následující kombinace hodnot není povolená, protože kořenová doména, contoso.com, neodpovídá fabrikam.com.
 
 ```
 "https://contoso.com",
 "https://fabrikam.com",
 ```
 
-### <a name="subdomain-restrictions"></a>Omezení subdomény
+### <a name="subdomain-restrictions"></a>Omezení subdomén
 
-Jsou povoleny subdomény, ale je nutné explicitně zaregistrovat kořenové domény. Například následující identifikátory URI sdílet jeden kořenové domény, kombinace se nepovoluje.
+Subdomény jsou povoleny, ale je nutné explicitně zaregistrovat kořenovou doménu. Například následující identifikátory URI sdílí jednu kořenovou doménu, kombinace není povolena.
 
 ```
 "https://app1.contoso.com",
 "https://app2.contoso.com",
 ```
 
-Pokud vývojář přidá explicitně kořenové domény, je však povoleno kombinace.
+Pokud však vývojář explicitně přidá kořenovou doménu, je kombinace povolena.
 
 ```
 "https://contoso.com",
@@ -141,12 +141,12 @@ Pokud vývojář přidá explicitně kořenové domény, je však povoleno kombi
 
 ### <a name="exceptions"></a>Výjimky
 
-Následujících případech nejsou v souladu s jednou kořenovou doménu omezení:
+V následujících případech nepodléhá omezení jedné kořenové domény:
 
-- Aplikace pro jednoho tenanta nebo aplikace, které cílí účty v jednom adresáři
-- Použití místního hostitele jako identifikátory URI pro přesměrování
-- Identifikátory URI přesměrování s vlastní schémata (jiným protokolem než HTTP nebo HTTPS)
+- Aplikace s jedním klientem nebo aplikace cílené na účty v jednom adresáři
+- Použití localhost jako identifikátorů URI přesměrování
+- Přesměrování identifikátorů URI s vlastními schématy (jiné než HTTP nebo HTTPS)
 
-## <a name="configure-publisher-domain-programmatically"></a>Doména vydavatele konfigurace prostřednictvím kódu programu
+## <a name="configure-publisher-domain-programmatically"></a>Programové nakonfigurování domény vydavatele
 
-V současné době se nepodporuje rozhraní REST API nebo Powershellu ke konfiguraci doména vydavatele prostřednictvím kódu programu.
+V současné době není k dispozici žádné REST API ani podpora prostředí PowerShell pro konfiguraci domény vydavatele prostřednictvím kódu programu.

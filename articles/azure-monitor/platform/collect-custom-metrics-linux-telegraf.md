@@ -1,6 +1,6 @@
 ---
-title: Shromažďovat vlastní metriky pro Linuxové virtuální počítače s agentem InfluxData Telegraf
-description: Shromažďovat vlastní metriky pro Linuxové virtuální počítače s agentem InfluxData Telegraf
+title: Shromažďování vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf
+description: Shromažďování vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,72 +8,72 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 14415b88cd6036642442ef9ae23e8dee301bb908
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 306180d1a0789aff2fc88930178976c342aef9b9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60741558"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827408"
 ---
-# <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Shromažďovat vlastní metriky pro Linuxové virtuální počítače s agentem InfluxData Telegraf
+# <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Shromažďování vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf
 
-Pomocí Azure Monitor může shromažďovat vlastní metriky prostřednictvím telemetrie vaší aplikace, agenta spuštěného na prostředky Azure, nebo dokonce i mimo se změnami systémy pro monitorování. Potom je můžete odeslat přímo do Azure monitoru. Tento článek obsahuje pokyny k nasazení [InfluxData](https://www.influxdata.com/) Telegraf agenta na virtuální počítač s Linuxem v Azure a nastavit agenta pro publikování metrik do Azure monitoru. 
+Pomocí Azure Monitor můžete shromažďovat vlastní metriky prostřednictvím telemetrie aplikací, agenta spuštěného na vašich prostředcích Azure nebo dokonce i mimo jiné monitorovací systémy. Pak je můžete odeslat přímo do Azure Monitor. Tento článek poskytuje pokyny, jak nasadit agenta [InfluxData](https://www.influxdata.com/) telegraf na virtuálním počítači Linux v Azure a nakonfigurovat agenta tak, aby publikoval metriky pro Azure monitor. 
 
-## <a name="influxdata-telegraf-agent"></a>InfluxData Telegraf agenta 
+## <a name="influxdata-telegraf-agent"></a>InfluxData telegraf Agent 
 
-[Telegraf](https://docs.influxdata.com/telegraf/v1.7/) je řízené plug-v agent, který umožňuje shromažďování metrik z více než 150 různých zdrojů. V závislosti na tom, co úlohy spusťte na svém virtuálním počítači můžete nakonfigurovat agenta využívat specializované vstupní moduly plug-in pro shromažďování metrik. Příklady jsou Apache, MySQL a server NGINX. Když použijete výstupní moduly plug-in, můžete agenta pak zapisovat do cíle, které zvolíte. Telegraf agent obsahuje integrované přímo vlastních metrik Azure monitoru rozhraní REST API. Podporuje modul plug-in Azure Monitor výstup. Prostřednictvím tohoto modulu plug-in, agenta můžete shromažďovat metriky specifické úlohy na virtuálním počítačům s Linuxem a odeslat je jako vlastní metriky do Azure monitoru. 
+[Telegraf](https://docs.influxdata.com/telegraf/v1.7/) je agentem řízený modul plug-in, který umožňuje shromažďování metrik z více než 150 různých zdrojů. V závislosti na tom, jaké úlohy na VIRTUÁLNÍm počítači běží, můžete nakonfigurovat agenta tak, aby při shromažďování metrik využili specializované vstupní moduly plug-in. Příklady jsou MySQL, NGINX a Apache. Pomocí modulů plug-in pro výstup pak může agent zapisovat do zvolených cílů. Agent telegraf se integruje přímo s Azure Monitor vlastní metriky REST API. Podporuje modul plug-in Azure Monitorho výstupu. Pomocí tohoto modulu plug-in může agent shromažďovat metriky specifické pro úlohy na VIRTUÁLNÍm počítači Linux a odesílat je jako vlastní metriky Azure Monitor. 
 
- ![Přehled agenta měsíci](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
+ ![Přehled telegrafního agenta](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 ## <a name="send-custom-metrics"></a>Odeslat vlastní metriky 
 
-Pro účely tohoto kurzu jsme nasadit virtuální počítač s Linuxem, na kterém běží Ubuntu 16.04 LTS operačního systému. Telegraf agent se podporuje pro většinu operačních systémů Linux. Jsou k dispozici společně s nezabalené binární soubory Linuxu na balíčky Debian a ot. / min [portál pro stažení InfluxData](https://portal.influxdata.com/downloads). Najdete v tomto [Průvodce instalací Telegraf](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) další pokyny k instalaci a možnosti. 
+V tomto kurzu nasadíme virtuální počítač Linux, na kterém běží operační systém Ubuntu 16,04 LTS. Agent telegraf se podporuje pro většinu operačních systémů Linux. Balíčky Debian i ot./min. jsou k dispozici společně s nebalenými binárními soubory Linux na [portálu pro stažení InfluxData](https://portal.influxdata.com/downloads). Další pokyny k instalaci a možnosti najdete v této [příručce k instalaci telegraf](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-Vytvořte nový virtuální počítač s Linuxem: 
+Vytvořte nový virtuální počítač pro Linux: 
 
-1. Vyberte **vytvořit prostředek** možnost v levém navigačním podokně. 
-1. Vyhledejte **virtuálního počítače**.  
-1. Vyberte **Ubuntu 16.04 LTS** a vyberte **vytvořit**. 
-1. Zadejte název virtuálního počítače jako **MyTelegrafVM**.  
-1. Ponechat typ disku jako **SSD**. Potom zadejte **uživatelské jméno**, jako například **azureuser**. 
-1. Pro **typ ověřování**vyberte **heslo**. Zadejte heslo, které použijete později k SSH do tohoto virtuálního počítače. 
-1. Zvolit **vytvořit novou skupinu prostředků**. Zadejte název, jako třeba **myResourceGroup**. Zvolte vaši **umístění**. Potom vyberte **OK**. 
+1. V levém navigačním podokně vyberte možnost **vytvořit prostředek** . 
+1. Vyhledejte **virtuální počítač**.  
+1. Vyberte **Ubuntu 16,04 LTS** a vyberte **vytvořit**. 
+1. Zadejte název virtuálního počítače, třeba **MyTelegrafVM**.  
+1. Ponechte typ disku jako **SSD**. Pak zadejte **uživatelské jméno**, například **azureuser**. 
+1. Jako **typ ověřování**vyberte **heslo**. Pak zadejte heslo, které budete později používat pro SSH do tohoto virtuálního počítače. 
+1. Vyberte možnost **vytvořit novou skupinu prostředků**. Pak zadejte název, například **myResourceGroup**. Vyberte své **umístění**. Pak vyberte **OK**. 
 
     ![Vytvoření virtuálního počítače s Ubuntu](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
-1. Vyberte velikost virtuálního počítače. Můžete filtrovat podle **typ výpočtu** nebo **typ disku**, např. 
+1. Vyberte velikost virtuálního počítače. Můžete filtrovat například podle **Typu výpočtu** nebo **Typu disku**. 
 
-    ![Přehled agenta měsíci velikosti virtuálních počítačů](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
+    ![Přehled pro velikost vytelegrafního agenta pro virtuální počítače](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. Na **nastavení** stránku **sítě** > **skupinu zabezpečení sítě**   >  ** Vyberte veřejné příchozí porty**vyberte **HTTP** a **SSH (22)** . Ponechejte zbývající výchozí hodnoty a vyberte **OK**. 
+1. Na stránce **Nastavení** > ve**skupině** > zabezpečení síťové sítě**Vyberte veřejné příchozí porty**, vyberte **http** a **SSH (22)** . Pro ostatní nastavení nechte zvolené výchozí hodnoty a vyberte **OK**. 
 
-1. Na stránce shrnutí vybrat **vytvořit** a spusťte nasazování virtuálního počítače. 
+1. Na stránce Souhrn výběrem možnosti **Vytvořit** spusťte nasazení virtuálního počítače. 
 
-1. Virtuální počítač se připne na řídicí panel webu Azure Portal. Po dokončení nasazení automaticky otevře souhrn virtuálního počítače. 
+1. Virtuální počítač se připne na řídicí panel webu Azure Portal. Po dokončení nasazení se automaticky otevře okno Souhrn virtuálního počítače. 
 
-1. V podokně virtuální počítač, přejděte **Identity** kartu. Ujistěte se, že váš virtuální počítač má systém přiřadil identitu nastavena na **na**. 
+1. V podokně virtuální počítač přejděte na kartu **Identita** . Ujistěte se, že váš virtuální počítač má identitu přiřazenou systémem, která je nastavená na zapnuto. 
  
-    ![Virtuální počítač telegraf identity ve verzi preview](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
+    ![Identita virtuálního počítače telegraf ve verzi Preview](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
 ## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači 
 
-Vytvořte připojení SSH k virtuálnímu počítači. Vyberte **připojit** tlačítko na stránce Přehled pro váš virtuální počítač. 
+Vytvořte připojení SSH k virtuálnímu počítači. Na stránce Přehled pro váš virtuální počítač vyberte tlačítko **Připojit**. 
 
-![Stránka s přehledem telegraf virtuálního počítače](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
+![Stránka s přehledem virtuálního počítače s telegraf](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
 
-V **připojit k virtuálnímu počítači** stránce, ponechte výchozí nastavení pro připojení s názvem DNS přes port 22. V **přihlásit se pomocí místního účtu virtuálního počítače**, se zobrazí příkaz připojení. Vyberte tlačítko si zkopírovat příkaz. Následující příklad ukazuje, jak vypadá příkaz pro připojení přes SSH: 
+Na stránce **Připojení k virtuálnímu počítači** ponechte výchozí výběr možností pro připojení podle názvu DNS přes port 22. V rámci **přihlášení pomocí místního účtu virtuálního počítače**se zobrazí příkaz pro připojení. Vyberte tlačítko pro zkopírování příkazu. Následující příklad ukazuje, jak vypadá příkaz pro připojení přes SSH: 
 
 ```cmd
 ssh azureuser@XXXX.XX.XXX 
 ```
 
-Vložte připojení příkazu SSH do prostředí, jako jsou Azure Cloud Shell nebo prostředí Bash na Ubuntu ve Windows, nebo pomocí klienta SSH podle vašeho výběru vytvořte připojení. 
+Vložte příkaz pro připojení SSH do prostředí, jako je například Azure Cloud Shell nebo bash na Ubuntu ve Windows, nebo použijte pro vytvoření připojení klienta SSH podle vašeho výběru. 
 
-## <a name="install-and-configure-telegraf"></a>Instalace a konfigurace Telegraf 
+## <a name="install-and-configure-telegraf"></a>Instalace a konfigurace telegraf 
 
-Chcete-li nainstalovat balíček Debian Telegraf do virtuálního počítače, spusťte následující příkazy z relace SSH: 
+K instalaci balíčku telegraf Debian na virtuální počítač spusťte následující příkazy z relace SSH: 
 
 ```cmd
 # download the package to the VM 
@@ -81,7 +81,7 @@ wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0~rc1-1_amd64.deb
 # install the package 
 sudo dpkg -i telegraf_1.8.0~rc1-1_amd64.deb
 ```
-Telegraf na konfigurační soubor definuje Telegraf jeho operace. Ve výchozím nastavení, je nainstalována příklad konfiguračního souboru v cestě **/etc/telegraf/telegraf.conf**. Příklad konfiguračního souboru obsahuje seznam všech možných vstupní a výstupní moduly plug-in. Však vytvoříme vlastní konfigurační soubor a agentem pomocí následujících příkazů: 
+Konfigurační soubor telegraf definuje operace telegraf. Ve výchozím nastavení se v cestě **/etc/telegraf/telegraf.conf**nainstaluje Ukázkový konfigurační soubor. Ukázkový konfigurační soubor uvádí všechny možné vstupní a výstupní moduly plug-in. Vytvoříme ale vlastní konfigurační soubor a dá ho použít agent, a to spuštěním následujících příkazů: 
 
 ```cmd
 # generate the new Telegraf config file in the current directory 
@@ -92,9 +92,9 @@ sudo cp azm-telegraf.conf /etc/telegraf/telegraf.conf
 ```
 
 > [!NOTE]  
-> Předchozí kód povoluje jen dva vstupní moduly plug-in: **procesoru** a **paměť**. Můžete přidat více vstupních modulů plug-in, v závislosti na zatížení, která běží na vašem počítači. Příklady jsou Docker, MySQL a NGINXU. Úplný seznam vstupních moduly plug-in, najdete v článku **další konfiguraci** oddílu. 
+> Předchozí kód povoluje pouze dva vstupní moduly plug-in: **CPU** a **mem**. V závislosti na zatížení, které běží na vašem počítači, můžete přidat další vstupní moduly plug-in. Příklady jsou Docker, MySQL a NGINX. Úplný seznam vstupních modulů plug-in najdete v části **Další konfigurace** . 
 
-A konečně pokud chcete, aby agent začít používat novou konfiguraci, jsme vynutit agenta a spouštění spuštěním následujících příkazů: 
+Nakonec, pokud chcete, aby agent začal používat novou konfiguraci, vynutíme zastavení a spuštění agenta spuštěním následujících příkazů: 
 
 ```cmd
 # stop the telegraf agent on the VM 
@@ -102,36 +102,36 @@ sudo systemctl stop telegraf
 # start the telegraf agent on the VM to ensure it picks up the latest configuration 
 sudo systemctl start telegraf 
 ```
-Agent bude nyní shromažďovat metriky ze všech vstupních moduly plug-in zadaný a posílat do Azure monitoru. 
+Agent nyní bude shromažďovat metriky ze všech zadaných vstupních modulů plug-in a emituje je Azure Monitor. 
 
-## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Vykreslení Telegraf metrik na webu Azure Portal 
+## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Vykreslení metriky telegraf v Azure Portal 
 
 1. Otevřete web [Azure Portal](https://portal.azure.com). 
 
-1. Přejděte k novému **monitorování** kartu. Potom vyberte **metriky**.  
+1. Přejděte na kartu nové **monitorování** . Pak vyberte **metriky**.  
 
-     ![Monitorování – metriky (preview)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
+     ![Monitor – metriky (Preview)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
-1. Vyberte svůj virtuální počítač v modulu pro výběr prostředků.
+1. V selektoru prostředků vyberte svůj virtuální počítač.
 
-     ![Graf metrik](./media/collect-custom-metrics-linux-telegraf/metric-chart.png)
+     ![Graf metriky](./media/collect-custom-metrics-linux-telegraf/metric-chart.png)
 
-1. Vyberte **Telegraf/procesoru** obor názvů a vyberte **usage_system** metriku. Můžete filtrovat podle dimenzí na tuto metriku nebo rozdělení na ně.  
+1. Vyberte obor názvů **telegraf/CPU** a vyberte metriku **usage_system** . Můžete zvolit filtrování podle dimenzí v této metrice nebo jejich rozdělení.  
 
-     ![Vyberte obor názvů a metriky](./media/collect-custom-metrics-linux-telegraf/VM-resource-selector.png)
+     ![Vybrat obor názvů a metriku](./media/collect-custom-metrics-linux-telegraf/VM-resource-selector.png)
 
 ## <a name="additional-configuration"></a>Další konfigurace 
 
-Předchozí názorný postup obsahuje informace o tom, jak nakonfigurovat agenta Telegraf shromažďovat metriky z několika základní vstupní moduly plug-in. Telegraf agenta obsahuje podporu pro víc než 150 vstupní moduly plug-in, se některé podpůrné další možnosti konfigurace. InfluxData publikoval [seznam podporovaných modulů plug-in](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) a pokyny, [způsob jejich konfigurace](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/).  
+Předchozí návod poskytuje informace o tom, jak nakonfigurovat agenta telegraf na shromažďování metrik z několika základních modulů plug-in. Agent telegraf podporuje více než 150 vstupních modulů plug-in, přičemž některé podporují další možnosti konfigurace. InfluxData publikoval [seznam podporovaných modulů plug-in](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) a pokyny, [jak je nakonfigurovat](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/).  
 
-Navíc v tomto podrobném návodu, můžete použít Telegraf agenta ke generování metriky o agenta je nasazený na virtuálním počítači. Telegraf agent také slouží jako kolekce a server pro předávání metrik za další prostředky. Další informace o konfiguraci agenta ke generování metriky pro ostatní prostředky Azure, najdete v článku [Azure Monitor vlastní metrika výstupu Telegraf](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md).  
+V tomto návodu jste navíc použili agenta telegraf k vygenerování metrik o virtuálním počítači, na kterém je agent nasazený. Agenta telegraf lze také použít jako kolektor a předávané metriky pro další prostředky. Informace o tom, jak nakonfigurovat agenta tak, aby vygeneroval metriky pro další prostředky Azure, najdete v tématu [Azure monitor vlastní výstup metriky pro telegraf](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md).  
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 
-Pokud jste už nepotřebujete, můžete odstranit skupinu prostředků, virtuálního počítače a všechny související prostředky. Uděláte to tak, vyberte skupinu prostředků pro virtuální počítač a vyberte **odstranit**. Potvrďte název skupiny prostředků pro odstranění. 
+Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků pro virtuální počítač a vyberete **Odstranit**. Pak potvrďte název skupiny prostředků, která se má odstranit. 
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [vlastní metriky](metrics-custom-overview.md).
+## <a name="next-steps"></a>Další kroky
+- Přečtěte si další informace o [vlastních metrikách](metrics-custom-overview.md).
 
 
 

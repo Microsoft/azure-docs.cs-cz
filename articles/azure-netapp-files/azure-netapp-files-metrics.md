@@ -1,6 +1,6 @@
 ---
-title: Metriky pro soubory Azure NetApp | Dokumentace Microsoftu
-description: Popisuje metriky pro soubory Azure NetApp.
+title: Metriky pro Azure NetApp Files | Microsoft Docs
+description: Popisuje metriky pro Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,41 +12,47 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 08/06/2019
 ms.author: b-juche
-ms.openlocfilehash: 1563b60ef26ac5e4d40f45095d0109dd9dd71570
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a56fb27fdf9e196291942041d68b249d7f16648
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61084935"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839249"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriky pro Azure NetApp Files
 
-Služba soubory Azure NetApp poskytuje metriky pro přidělené úložiště, použití skutečného úložiště, propustnost svazku, vstupně-výstupních operací a latenci. Díky analýze tyto metriky, můžete získat lepší porozumění na využití vzoru a svazek výkon vašich účtů NetApp.  
+Azure NetApp Files poskytuje metriky přiděleného úložiště, skutečné využití úložiště, propustnost svazku, IOPS a latenci. Díky analýze těchto metrik můžete získat lepší informace o způsobu využití a výkonu svých účtů NetApp.  
 
-## <a name="capacity_pools"></a>Metriky využití pro fondy kapacity
+## <a name="capacity_pools"></a>Metriky využití pro fondy kapacit
 
-- *Velikost fondu přidělené svazku*  
-    Toto je velikost (GiB) zřízená kapacita fondu.  
-- *Svazek fondu přidělené použít*  
-    Toto je celkový součet kvóty (GiB) v rámci dané kapacitě fondu (to znamená, celkové zřízené velikosti na svazcích ve fondu kapacity). Toto je velikost, kterou jste vybrali při vytváření svazku.  
-- *Logická velikost svazku fondu celkem*  
-    Toto je celkový součet logické využité (GiB) mezi svazky ve fondu kapacity.  
-- *Velikost fondu celkový snímku svazku*  
-    Toto je celkový součet přírůstkové logické využitou snímky.  
+<!-- 
+- *Volume pool allocated size*  
+    This is the size (GiB) of the provisioned capacity pool.  
+--> 
+- *Využití přiděleného fondu svazků*  
+    Toto je celková kvóta svazku (GiB) v daném fondu kapacit (tj. celkový počet zřízených velikostí svazků ve fondu kapacit). Toto je velikost, kterou jste vybrali při vytváření svazku.  
+- *Celková logická velikost fondu svazků*  
+    Toto je celkový počet logických prostorů (GiB) používaných napříč svazky ve fondu kapacit.  
+<!-- 
+- *Volume pool total snapshot size*  
+    This is the total of incremental logical space used by the snapshots.  
+-->
 
 ## <a name="volumes"></a>Metriky využití pro svazky
 
-- *Přidělená velikost svazku*   
-    Toto je velikost svazku (kvóty) zřízené v GiB.  
+<!-- 
+- *Volume allocated size*   
+    This is the volume size (quota) provisioned in GiB.  
+--> 
 - *Logická velikost svazku*   
-    Toto je celkový počet logických využité hromadně (GiB). Tato velikost obsahuje logický prostor využitý aktivní souborové systémy a snímků.  
+    Toto je celkové logické místo použité ve svazku (GiB). Tato velikost zahrnuje logický prostor používaný aktivními systémy souborů a snímky.  
 - *Velikost snímku svazku*   
-    Toto je přírůstkové logické využité snímky ve svazku.  
+    Toto je přírůstkový logický prostor používaný snímky ve svazku.  
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vysvětlení hierarchii úložiště souborů Azure NetApp](azure-netapp-files-understand-storage-hierarchy.md)
+* [Pochopení hierarchie úložiště Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
 * [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)
 * [Vytvoření svazku pro Azure NetApp Files](azure-netapp-files-create-volumes.md)

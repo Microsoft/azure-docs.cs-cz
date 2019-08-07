@@ -1,29 +1,32 @@
 ---
-title: Šablony Azure Resource Manageru pro rozhraní Gremlin API služby Azure Cosmos DB
-description: Pomocí šablon Azure Resource Manageru k vytvoření a konfigurace rozhraní Gremlin API služby Azure Cosmos DB.
+title: Šablony Azure Resource Manager pro rozhraní API pro Azure Cosmos DB Gremlin
+description: Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfigurovat rozhraní API pro Azure Cosmos DB Gremlin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9f62399e3a1ef2a4ceaa8bdf64196bdb634fb4b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82d15f342e6c0a4f107e8b089be14c0e670a33ca
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65968883"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815060"
 ---
-# <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Správa Azure Cosmos DB Gremlin API prostředků pomocí šablon Azure Resource Manageru
+# <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Správa Azure Cosmos DBch prostředků rozhraní API Gremlin pomocí šablon Azure Resource Manager
 
-## Vytvoření rozhraní API služby Azure Cosmos DB pro účet, databázi a kolekci MongoDB <a id="create-resource"></a>
+## Vytvoření Azure Cosmos DB API pro účet MongoDB, databázi a kolekci<a id="create-resource"></a>
 
-Vytvořte prostředky služby Azure Cosmos DB pomocí šablony Azure Resource Manageru. Tato šablona vytvoří účet Azure Cosmos pro rozhraní Gremlin API s dva grafy, které sdílejí propustnost 400 RU/s na úrovni databáze. Zkopírujte šablonu a nasadili, jak je znázorněno níže nebo navštivte [galerii pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin/) a nasadit z webu Azure portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadejte do místní cesty `--template-file` parametru.
+Vytvořte Azure Cosmos DB prostředky pomocí šablony Azure Resource Manager. Tato šablona vytvoří účet Azure Cosmos pro rozhraní Gremlin API se dvěma grafy, které sdílejí propustnost 400 RU/s na úrovni databáze. Zkopírujte šablonu a nasazení, jak je znázorněno níže, nebo navštivte [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin/) a nasaďte z Azure Portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s `--template-file` parametrem.
+
+> [!NOTE]
+> Název účtu musí být malými písmeny a < 31 znaků.
 
 [!code-json[create-cosmos-gremlin](~/quickstart-templates/101-cosmosdb-gremlin/azuredeploy.json)]
 
 ## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
-K nasazení šablony Resource Manageru pomocí rozhraní příkazového řádku Azure, **kopírování** skriptu a vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**:
+Pokud chcete nasadit šablonu Správce prostředků pomocí rozhraní příkazového řádku Azure, **zkopírujte** skript a vyberte **zkusit,** aby se otevřelo Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
 
 ```azurecli-interactive
 
@@ -45,17 +48,17 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-`az cosmosdb show` Příkaz zobrazí nově vytvořeného účtu Azure Cosmos po jeho zřízení. Pokud se rozhodnete použít místně nainstalovanou verzi Azure CLI místo použití cloud shell, přečtěte si téma [rozhraní příkazového řádku Azure (CLI)](/cli/azure/) článku.
+`az cosmosdb show` Příkaz zobrazí nově vytvořený účet Azure Cosmos po zřízení. Pokud se rozhodnete použít místně nainstalovanou verzi Azure CLI místo používání Cloudshellu, přečtěte si článek [rozhraní příkazového řádku Azure (CLI)](/cli/azure/) .
 
-## Aktualizovat propustnost (RU/s) na databázi <a id="database-ru-update"></a>
+## Aktualizace propustnosti (RU/s) v databázi<a id="database-ru-update"></a>
 
-Následující šablony se aktualizuje propustnosti databáze. Zkopírujte šablonu a nasadili, jak je znázorněno níže nebo navštivte [galerii pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin-database-ru-update/) a nasadit z webu Azure portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadejte do místní cesty `--template-file` parametru.
+Následující šablona aktualizuje propustnost databáze. Zkopírujte šablonu a nasazení, jak je znázorněno níže, nebo navštivte [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin-database-ru-update/) a nasaďte z Azure Portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s `--template-file` parametrem.
 
 [!code-json[cosmosdb-gremlin-database-ru-update](~/quickstart-templates/101-cosmosdb-gremlin-database-ru-update/azuredeploy.json)]
 
-### <a name="deploy-database-template-via-azure-cli"></a>Nasazení šablony databáze s využitím rozhraní příkazového řádku Azure
+### <a name="deploy-database-template-via-azure-cli"></a>Nasazení šablony databáze prostřednictvím rozhraní příkazového řádku Azure
 
-Pokud chcete nasadit šablonu Resource Manageru pomocí rozhraní příkazového řádku Azure, vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**:
+Pokud chcete nasadit šablonu Správce prostředků pomocí rozhraní příkazového řádku Azure, vyberte **zkusit** , aby se otevřelo prostředí Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -68,15 +71,15 @@ az group deployment create --resource-group $resourceGroupName \
    --parameters accountName=$accountName databaseName=$databaseName throughput=$throughput
 ```
 
-## Aktualizovat propustnost (RU/s) v grafu <a id="graph-ru-update"></a>
+## Aktualizace propustnosti (RU/s) v grafu<a id="graph-ru-update"></a>
 
-Následující šablony se aktualizuje propustnost grafu. Zkopírujte šablonu a nasadili, jak je znázorněno níže nebo navštivte [galerii pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin-graph-ru-update/) a nasadit z webu Azure portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadejte do místní cesty `--template-file` parametru.
+Následující šablona aktualizuje propustnost grafu. Zkopírujte šablonu a nasazení, jak je znázorněno níže, nebo navštivte [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-gremlin-graph-ru-update/) a nasaďte z Azure Portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s `--template-file` parametrem.
 
 [!code-json[cosmosdb-gremlin-graph-ru-update](~/quickstart-templates/101-cosmosdb-gremlin-graph-ru-update/azuredeploy.json)]
 
-### <a name="deploy-graph-template-via-azure-cli"></a>Nasazení šablony grafu s využitím rozhraní příkazového řádku Azure
+### <a name="deploy-graph-template-via-azure-cli"></a>Nasazení šablony grafu prostřednictvím rozhraní příkazového řádku Azure
 
-Pokud chcete nasadit šablonu Resource Manageru pomocí rozhraní příkazového řádku Azure, vyberte **vyzkoušet** a otevřete Azure Cloud shell. Vložte skript, klikněte pravým tlačítkem na prostředí a pak vyberte **vložte**:
+Pokud chcete nasadit šablonu Správce prostředků pomocí rozhraní příkazového řádku Azure, vyberte **zkusit** , aby se otevřelo prostředí Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -92,9 +95,9 @@ az group deployment create --resource-group $resourceGroupName \
 
 ## <a name="next-steps"></a>Další kroky
 
-Tady jsou některé další prostředky:
+Tady je několik dalších prostředků:
 
-- [Dokumentace ke službě Azure Resource Manageru](/azure/azure-resource-manager/)
-- [Schéma poskytovatele prostředků služby Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
-- [Šablony služby Azure Cosmos DB Quickstart](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Řešení potíží s běžnými chybami nasazení Azure Resource Manageru](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+- [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager/)
+- [Azure Cosmos DB schéma poskytovatele prostředků](/azure/templates/microsoft.documentdb/allversions)
+- [Šablony pro rychlý Start Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+- [Řešení běžných chyb při nasazení Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md)

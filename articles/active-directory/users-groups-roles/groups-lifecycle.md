@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 08/06/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54418fa90e6c16f34647d0fdb5126bb352dbc7ab
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: HT
+ms.openlocfilehash: 074b9ec06818363a97253a587ac451a38999832f
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774847"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837938"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
-Teď můžete spravovat životní cyklus skupin Office 365 nastavením zásad vypršení platnosti. Zásady vypršení platnosti můžete nastavit jenom pro skupiny Office 365 v Azure Active Directory (Azure AD).
+V tomto článku se dozvíte, jak spravovat životní cyklus skupin Office 365 nastavením zásad vypršení platnosti. Zásady vypršení platnosti můžete nastavit jenom pro skupiny Office 365 v Azure Active Directory (Azure AD).
 
 Jakmile nastavíte vypršení platnosti skupiny:
 
@@ -63,8 +63,8 @@ Další informace o oprávněních k obnovení odstraněné skupiny najdete [v t
   - Nastavte dobu života skupiny ve dnech. Můžete vybrat jednu z přednastavených hodnot nebo vlastní hodnotu (měla by být 31 dní nebo více).
   - Zadejte e-mailovou adresu, na kterou by se měla odeslat oznámení o prodloužení a vypršení platnosti, když skupina nemá žádného vlastníka.
   - Vyberte, které skupiny Office 365 vyprší. Můžete nastavit vypršení platnosti pro:
-    - **Vše** Skupiny Office 365 a nové skupiny
-    - Seznam **vybraných** skupin Office 365 (žádné nové skupiny)
+    - **Vše** Skupiny Office 365
+    - Seznam **vybraných** skupin Office 365
     - **Žádné** pro omezení vypršení platnosti pro všechny skupiny
   - Až budete hotovi, uložte nastavení kliknutím na **Uložit**.
 

@@ -7,23 +7,23 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
+author: rohitnayakmsft
+ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: fd8cabb14ad65b4da562c7d6048a52b574513b26
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 326eec68ed3ca1d42552b89fe4519d24c62cf12a
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566173"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841369"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Vytvoření koncového bodu virtuální služby a pravidla virtuální sítě pro SQL
 
 *Pravidla virtuální sítě* jsou jedna funkce zabezpečení brány firewall, která určuje, jestli databázový server pro izolované databáze a elastický fond v Azure [SQL Database](sql-database-technical-overview.md) nebo pro vaše databáze v [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) akceptuje komunikaci. které se odesílají z konkrétních podsítí ve virtuálních sítích.
 
 > [!IMPORTANT]
-> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek se *nevztahuje na* nasazení **spravované instance** v Azure SQL Database, protože k němu není přidružen koncový bod služby.
+> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek se nevztahuje na nasazení **spravované instance** v Azure SQL Database, protože k němu není přidružen koncový bod služby.
 
 Tento článek obsahuje a vysvětluje skript PowerShellu, který provede následující akce:
 

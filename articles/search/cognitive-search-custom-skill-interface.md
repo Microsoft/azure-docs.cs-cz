@@ -1,6 +1,6 @@
 ---
-title: Definice rozhraní pro vlastní znalosti kognitivního vyhledávání – Azure Search
-description: Vlastní data extrakce rozhraní pro webové rozhraní api vlastních dovedností v kanálu kognitivního vyhledávání ve službě Azure Search.
+title: Definice rozhraní pro vlastní dovednosti v hledání rozpoznávání – Azure Search
+description: Vlastní rozhraní pro extrakci dat pro vlastní dovednosti webového rozhraní API v kanálu vyhledávání rozpoznávání v Azure Search.
 manager: pablocas
 author: luiscabrer
 services: search
@@ -9,48 +9,48 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: e181aab3d92d8111a0a7d1d41bbddac20687a547
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.subservice: cognitive-search
+ms.openlocfilehash: c708cd282e38b5da73915e427485bb8990afd6c2
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668856"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841197"
 ---
-# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Přidání vlastních dovedností do kanálu kognitivního vyhledávání
+# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Postup přidání vlastní dovednosti do kanálu vyhledávání rozpoznávání
 
-A [kanál indexování kognitivního vyhledávání](cognitive-search-concept-intro.md) ve službě Azure Search lze sestavit z [předdefinované dovednosti](cognitive-search-predefined-skills.md) stejně jako [vlastních dovedností](cognitive-search-custom-skill-web-api.md) , které sami vytvoříte a přidáte do kanál. V tomto článku najdete informace o vytváření vlastních dovedností, který zpřístupňuje rozhraní, díky kterému jej mají být zahrnuty v kanálu kognitivního vyhledávání. 
+[Kanál indexování vyhledávání rozpoznávání](cognitive-search-concept-intro.md) v Azure Search lze sestavovat z předdefinovaných [dovedností](cognitive-search-predefined-skills.md) a také [vlastními dovednostmi](cognitive-search-custom-skill-web-api.md) , které vytvoříte a přidáte do kanálu. V tomto článku se dozvíte, jak vytvořit vlastní dovednost, která zveřejňuje rozhraní, což umožňuje zahrnutí do kanálu vyhledávání rozpoznávání. 
 
-Vytváření vlastních dovedností poskytuje způsob, jak vložit transformace, které jsou jedinečné pro váš obsah. Vlastní dovednosti spustí nezávisle na sobě použití libovolné rozšíření kroku budete potřebovat. Může například definovat vlastní entity specifické pro pole, vytvářet vlastní klasifikace modely k rozlišení firmy a finanční smlouvy a dokumenty nebo přidání rozpoznávání řeči odbornost umožňují hlubší analýzu zvuku relevantní obsah souboru. Podrobný příklad naleznete v tématu [příkladu: Vytváření vlastních dovedností pro kognitivního vyhledávání](cognitive-search-create-custom-skill-example.md).
+Vytváření vlastních dovedností vám dává možnost vkládat transformace, které jsou pro váš obsah jedinečné. Vlastní dovednosti se spouští nezávisle, přičemž se aplikuje libovolný krok obohacení, který požadujete. Můžete například definovat vlastní entity specifické pro pole, vytvořit vlastní modely klasifikace pro odlišení obchodních a finančních smluv a dokumentů nebo přidat dovednost rozpoznávání řeči, abyste dosáhli hlubšího přístupu do zvukových souborů pro relevantní obsah. Podrobný příklad naleznete v tématu [příklad: Vytvoření vlastní dovednosti pro hledání](cognitive-search-create-custom-skill-example.md)vnímání.
 
- Jakýkoli vlastní funkce budete potřebovat, je k dispozici jednoduchý a jasný rozhraní pro připojení k obohacení zbytku vlastních dovedností. Jediným požadavkem pro zařazení [dovednosti](cognitive-search-defining-skillset.md) je možnost přijímat vstupy a výstupy způsoby, které nejsou použitelné v rámci dovednosti jako celek vysílat. Hlavním cílem tohoto článku je na vstupních a výstupních formátů, které vyžaduje rozšíření kanálu.
+ Libovolná vlastní funkce, kterou požadujete, je jednoduché a jasné rozhraní pro připojení vlastní dovednosti ke zbytku kanálu rozšíření. Jediným požadavkem pro zařazení do [dovednosti](cognitive-search-defining-skillset.md) je schopnost přijímat vstupy a generovat výstupy způsobem, který je spotřební v dovednosti jako celek. Tento článek je zaměřený na vstupní a výstupní formáty, které kanál pro obohacení vyžaduje.
 
-## <a name="web-api-custom-skill-interface"></a>Rozhraní Web API vlastních dovedností
+## <a name="web-api-custom-skill-interface"></a>Rozhraní Web API pro vlastní dovednosti
 
-Vlastní WebAPI dovednosti koncových bodů ve výchozí hodnota časového limitu, pokud není odpověď v rámci časového období 30 druhý vrátí. Kanál indexování je synchronní a indexování způsobí vypršení časového limitu v Pokud odpověď přijata nebude v tomto okně.  Je možné nakonfigurovat vypršení časového limitu bude až 90 sekund, tak, že nastavíte parametr časového limitu:
+Vlastní koncové body dovedností WebAPI ve výchozím časový limit, pokud nevrátí odpověď v rámci 30 sekundového okna. Kanál indexování je synchronní a při indexování dojde k vypršení časového limitu, pokud se v tomto okně nepřijme odpověď.  Časový limit bude možné nakonfigurovat tak, aby byl až 230 sekund, nastavením parametru timeout:
 
 ```json
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-        "description": "This skill has a 90 second timeout",
+        "description": "This skill has a 230 second timeout",
         "uri": "https://[your custom skill uri goes here]",
-        "timeout": "PT90S",
+        "timeout": "PT230S",
 ```
 
-V současné době je pouze mechanismus pro interakci se vlastní dovednosti pomocí rozhraní Web API. Webové rozhraní API vyžaduje, musí splňovat požadavky popsané v této části.
+V současné době je jediným mechanismem pro interakci s vlastní dovedností prostřednictvím rozhraní Web API. Potřebné webové rozhraní API musí splňovat požadavky popsané v této části.
 
-### <a name="1--web-api-input-format"></a>1.  Webové rozhraní API vstupní formát
+### <a name="1--web-api-input-format"></a>1.  Vstupní formát webového rozhraní API
 
-Webové rozhraní API, musíte přijmout polem záznamů ke zpracování. Každý záznam může obsahovat "vlastnosti kontejneru objektů a dat", který je vstup pro vaše webové rozhraní API. 
+Webové rozhraní API musí přijmout pole záznamů, které se mají zpracovat. Každý záznam musí obsahovat "kontejner objektů a dat", který je vstupem poskytovaným pro vaše webové rozhraní API. 
 
-Předpokládejme, že chcete vytvořit jednoduchou enricher, který identifikuje první datum uvedené v textu kontraktu. V tomto příkladu dovednosti přijímá jeden vstup *contractText* jako text smlouvy. Dovednosti má také jeden výstup, což je datum smlouvy. Chcete-li enricher zajímavější, vraťte se tím *contractDate* ve tvaru vícedílný komplexního typu.
+Předpokládejme, že chcete vytvořit jednoduchý obohacení, který určuje první datum uvedené v textu smlouvy. V tomto příkladu dovednost přijímá jednu vstupní *contractText* jako text kontraktu. Dovednost má také jeden výstup, což je datum smlouvy. Aby bylo možné zdokonalit obohacení, vraťte tuto *contractDate* ve tvaru komplexního typu s více částmi.
 
-Webové rozhraní API by měl být připravena přijímat dávky záznamů vstupní. Každý člen *hodnoty* pole představuje vstup pro konkrétní záznam. Každý záznam musí mít následující prvky:
+Vaše webové rozhraní API by mělo být připravené přijímat dávky vstupních záznamů. Každý člen pole *hodnot* představuje vstup pro konkrétní záznam. Každý záznam je vyžadován pro následující prvky:
 
-+ A *recordId* člena, který je jedinečný identifikátor pro konkrétní záznam. Pokud vaše enricher vrátí výsledky, musí poskytovat to *recordId* aby volající tak, aby odpovídaly výsledky záznam pro svůj vstup.
++ *RecordId* člen, který je jedinečný identifikátor konkrétního záznamu. Když váš obohacení vrátí výsledky, musí poskytnout tuto *recordId* , aby mohl volajícímu odpovídat výsledkům záznamu na jejich vstupu.
 
-+ A *data* člena, který je v podstatě kontejner vstupní pole pro každý záznam.
++ *Datový* člen, který je v podstatě kontejnerem vstupních polí pro každý záznam.
 
-Jako další konkrétní na výše uvedeném příkladu webového rozhraní API byste očekávat, že požadavky, které vypadat nějak takto:
+Chcete-li být konkrétnější, vaše webové rozhraní API by mělo očekávat požadavky, které vypadají takto:
 
 ```json
 {
@@ -81,11 +81,11 @@ Jako další konkrétní na výše uvedeném příkladu webového rozhraní API 
     ]
 }
 ```
-Ve skutečnosti vaše služba může zavolána stovky nebo tisíce záznamů namísto pouze tři je vidět tady.
+Ve skutečnosti může být služba volána se stovkami nebo tisíci záznamů místo pouze ze tří zobrazených.
 
-### <a name="2-web-api-output-format"></a>2. Webové rozhraní API výstupní formát
+### <a name="2-web-api-output-format"></a>2. Výstupní formát webového rozhraní API
 
-Formát výstupu je sada záznamů obsahující *recordId*a kontejner objektů 
+Formát výstupu je sada záznamů obsahující *recordId*a kontejner objektů a dat. 
 
 ```json
 {
@@ -116,15 +116,15 @@ Formát výstupu je sada záznamů obsahující *recordId*a kontejner objektů
 }
 ```
 
-Tomto konkrétním příkladu má pouze jeden výstup, ale může výstup více než jednu vlastnost. 
+Tento konkrétní příklad má pouze jeden výstup, ale můžete vymezit výstup více než jedné vlastnosti. 
 
-### <a name="errors-and-warning"></a>Chyby a upozornění
+### <a name="errors-and-warning"></a>Chyby a varování
 
-Jak je znázorněno v předchozím příkladu, může vrátit chybové zprávy a upozornění pro každý záznam.
+Jak je znázorněno v předchozím příkladu, můžete vracet chybové a varovné zprávy pro každý záznam.
 
-## <a name="consuming-custom-skills-from-skillset"></a>Použití vlastních dovedností ze znalostí
+## <a name="consuming-custom-skills-from-skillset"></a>Využívání vlastních dovedností z dovednosti
 
-Při vytváření enricher webového rozhraní API můžete popsat hlavičky protokolu HTTP a parametry, jako součást požadavku. Následující fragment kódu ukazuje, jak parametry požadavku a hlavičky protokolu HTTP může být popsány jako součást definice dovednosti.
+Když vytvoříte obohacení webového rozhraní API, můžete v rámci žádosti popsat hlavičky a parametry protokolu HTTP. Následující fragment kódu ukazuje, jak mohou být parametry požadavků a záhlaví HTTP popsány v rámci definice dovednosti.
 
 ```json
 {
@@ -154,9 +154,9 @@ Při vytváření enricher webového rozhraní API můžete popsat hlavičky pro
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-+ [Příklad: Vytváření vlastních dovedností pro kognitivního vyhledávání](cognitive-search-create-custom-skill-example.md)
-+ [Definování dovedností](cognitive-search-defining-skillset.md)
-+ [Vytvoření dovedností (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Způsob mapování polí bohatších možností](cognitive-search-output-field-mapping.md)
++ [Příklad: Vytvoření vlastní dovednosti pro hledání vnímání](cognitive-search-create-custom-skill-example.md)
++ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
++ [Vytvořit dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Jak mapovat obohacená pole](cognitive-search-output-field-mapping.md)

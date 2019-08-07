@@ -1,6 +1,6 @@
 ---
-title: Začínáme s web mapový ovládací prvek ve službě Azure Maps | Dokumentace Microsoftu
-description: Zjistěte, jak použít knihovnu Javascript na straně klienta Azure Maps mapového ovládacího prvku.
+title: Začínáme s ovládacím prvkem webového mapování v Azure Maps | Microsoft Docs
+description: Naučte se, jak používat mapu Azure Maps k řízení knihovny JavaScriptu na straně klienta.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/08/2018
@@ -8,44 +8,44 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: aa923fa7e2d5e673e6a2db2b349e54d433d1817b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fdbd8092abcc51fc03e8b00106b7e25ec4be905
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957273"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839376"
 ---
-# <a name="use-the-azure-maps-map-control"></a>Použití mapového ovládacího prvku Azure Maps
+# <a name="use-the-azure-maps-map-control"></a>Použití ovládacího prvku Azure Maps mapa
 
-Knihovna Javascript na straně klienta mapový ovládací prvek umožňuje vykreslit mapy a vložené funkce Azure Maps do vašich webových nebo mobilních aplikací.
+Ovládací prvek Mapa knihovna JavaScriptu na straně klienta umožňuje vykreslovat mapy a vložené Azure Maps funkce do vaší webové nebo mobilní aplikace.
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Vytvoření nové mapy na webové stránce
 
-Mapě můžete vložit na webové stránce pomocí knihovny Javascript na straně klienta mapový ovládací prvek.
+Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny JavaScript na straně klienta.
 
 1. Vytvořte nový soubor HTML.
 
-2. Načíst na webu Azure Maps SDK. To lze provést jedním ze dvou možností;
+2. Načtěte v sadě Azure Maps Web SDK. To lze provést pomocí jedné ze dvou možností:
 
-    a. Použít globálně hostované CDN verzi sady SDK Azure Maps webové tak, že přidáte koncové body adres URL s odkazy na šablony stylů a skripty v `<head>` prvek souboru:
+    a. Pomocí globálně hostované verze CDN rozhraní Azure Maps Web SDK přidejte koncové body adresy URL do šablony stylů a odkazy na skripty v `<head>` elementu souboru:
 
     ```HTML
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
-    b. Můžete také načíst místně pomocí sady SDK webové mapy Azure zdrojový kód [řízení azure maps](https://www.npmjs.com/package/azure-maps-control) NPM balíček a hostujte ho s vaší aplikací. Tento balíček obsahuje také definice TypeScript.
+    b. Případně můžete zdrojový kód Azure Maps Web SDK načíst místně pomocí balíčku [Azure-Maps-Control](https://www.npmjs.com/package/azure-maps-control) npm a hostovat ho s vaší aplikací. Tento balíček obsahuje také definice TypeScript.
 
-    > npm install azure map – ovládací prvek
+    > NPM instalace Azure-Maps-Control
 
-    Pak přidejte odkazy na Azure Maps šablony stylů a skripty zdroj odkazy `<head>` prvek souboru:
+    Pak přidejte odkazy na Azure Maps šablon stylů a odkazů na zdroj skriptu k `<head>` elementu souboru:
 
     ```HTML
     <link rel="stylesheet" href="node_modules/azure-maps-control/dist/css/atlas.min.css" type="text/css">
     <script src="node_modules/azure-maps-control/dist/js/atlas.min.js"></script>
     ```
 
-3. Pokud chcete zobrazit na mapě, tak, že vyplní celé těla stránky, přidejte následující `<style>` elementu `<head>` elementu.
+3. Chcete-li vykreslit mapu, aby vyplnila celé tělo stránky, přidejte `<style>` `<head>` do elementu následující element.
 
     ```HTML
     <style>
@@ -60,7 +60,7 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     </style>
     ```
 
-4. V těle stránky, přidejte `<div>` elementu a přiřaďte mu `id` z **myMap**.
+4. V těle stránky přidejte `<div>` prvek a poskytněte `id` mu **myMap**.
 
     ```HTML
     <body>
@@ -68,7 +68,7 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     </body>
     ```
 
-5. Inicializace mapový ovládací prvek, definujte nový oddíl v textu html a vytvořit skript. Předejte `id` mapy `<div>` nebo `HTMLElement` (například `document.getElementById('myMap')`) jako první parametr při vytváření instance objektu `Map` třídy. Použít vlastní klíč účtu Azure Maps nebo přihlašovací údaje Azure Active Directory (AAD) k ověřování pomocí mapování [možnosti ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Pokud potřebujete k vytvoření účtu služby nebo najít vaše klíče najdete v tématu [jak spravovat účet Azure Maps a klíče](how-to-manage-account-keys.md). **Jazyk** Určuje jazyk, který chcete použít pro popisky mapy a ovládací prvky. Další informace o podporovaných jazyků najdete v tématu [podporované jazyky](supported-languages.md). Pokud používáte klíč předplatného pro ověřování.
+5. Chcete-li inicializovat mapový ovládací prvek, definujte nový oddíl v těle HTML a vytvořte skript. Při vytváření instance `id` `Map` třídy předejte `<div>` v mapě `HTMLElement` nebo (například `document.getElementById('myMap')`) jako první parametr. Použijte vlastní klíč účtu Azure Maps nebo přihlašovací údaje pro Azure Active Directory (AAD) k ověření mapování pomocí [možností ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Pokud potřebujete vytvořit účet nebo najít klíč, přečtěte si téma [Správa účtu Azure Maps a klíčů](how-to-manage-account-keys.md). Možnost **Language** určuje jazyk, který má být použit pro popisky a ovládací prvky mapy. Další informace o podporovaných jazycích najdete v tématu [podporované jazyky](supported-languages.md). Pokud používáte klíč předplatného pro ověřování.
 
     ```HTML
     <script type="text/javascript">
@@ -84,7 +84,7 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     </script>
     ```
 
-    Pokud se používá pro ověřování Azure Active Directory (AAD):
+    Pokud používáte Azure Active Directory (AAD) pro ověřování:
 
     ```HTML
     <script type="text/javascript">
@@ -102,9 +102,9 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     </script>
     ```
 
-    Další informace najdete v tématu [ověřování pomocí služby Azure Maps](azure-maps-authentication.md) další podrobnosti.
+    Další informace najdete v tématu [ověřování pomocí Azure Maps](azure-maps-authentication.md) pro další podrobnosti.
 
-6. Volitelně můžete zjistit přidávání na hlavní stránce užitečné následující prvky značku meta:
+6. Volitelně můžete najít následující prvky meta značky do hlavní stránky, která je užitečná:
 
     ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
@@ -114,7 +114,7 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 
-7. Uvedení všechno dohromady soubor HTML by měl vypadat přibližně jako v následujícím kódu:
+7. Celý soubor HTML by měl vypadat přibližně takto:
 
     ```HTML
     <!DOCTYPE html>
@@ -164,19 +164,53 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     </html>
     ```
 
-8. Otevřete soubor ve webovém prohlížeči a zobrazení vykreslené mapy. By měl vypadat jako v následujícím kódu:
+8. Otevřete soubor ve webovém prohlížeči a zobrazte vykreslenou mapu. Měl by vypadat jako v následujícím kódu:
 
-    <iframe height="700" style="width: 100%;" scrolling="no" title="Jak používat mapový ovládací prvek" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Zobrazit pera <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>jak používat mapový ovládací prvek</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+    <iframe height="700" style="width: 100%;" scrolling="no" title="Jak používat mapový ovládací prvek" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Podívejte se na pero, <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>jak použít mapový ovládací prvek</a> pomocí<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
     </iframe>
+
+## <a name="localizing-the-map"></a>Lokalizace mapy
+
+Azure Maps poskytuje dva různé způsoby nastavení jazyka a regionálního zobrazení mapy. První možností je přidat tyto informace do globálního `atlas` oboru názvů, což způsobí, že se všechny instance mapového ovládacího prvku ve vaší aplikaci budou ve výchozím nastavení nacházet. Následující nastaví jazyk na francouzštinu ("fr-FR") a místní zobrazení na "auto":
+
+```javascript
+atlas.setLanguage('fr-FR');
+atlas.setView('auto');
+```
+
+Druhá možnost je předat tyto informace do možností mapy při načítání mapy jako:
+
+```javascript
+map = new atlas.Map('myMap', {
+    language: 'fr-FR',
+    view: 'auto',
+
+    authOptions: {
+        authType: 'aad',
+        clientId: '<Your AAD Client Id>',
+        aadAppId: '<Your AAD App Id>',
+        aadTenant: 'msft.ccsctp.net'
+    }
+});
+```
+
+> [!Note]
+> Díky webové sadě SDK je možné načíst více instancí mapy na stejné stránce s různými nastaveními jazyka a oblasti. Kromě toho lze tato nastavení aktualizovat po načtení mapy pomocí `setStyle` funkce mapy. 
+
+Tady je příklad Azure Maps s jazykem, který je nastaven na "fr-FR" a v místním zobrazení na hodnotu "auto".
+
+![Obrázek mapy znázorňující popisky ve francouzštině](./media/how-to-use-map-control/websdk-localization.png)
+
+Úplný seznam podporovaných jazyků a regionálních zobrazení je popsán [zde](supported-languages.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak vytvořit a interakce s mapou:
+Naučte se vytvořit mapu a pracovat s ní:
 
 > [!div class="nextstepaction"]
-> [Vytvoření mapy](map-create.md)
+> [Vytvořit mapu](map-create.md)
 
-Další informace o stylu mapy:
+Naučte se styl mapy:
 
 > [!div class="nextstepaction"]
-> [Vyberte styl mapy](choose-map-style.md)
+> [Zvolit styl mapy](choose-map-style.md)

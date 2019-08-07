@@ -1,6 +1,6 @@
 ---
-title: Kognitivní vyhledávání map rozšiřují vstupní pole pro výstupní pole – Azure Search
-description: Extrahovat a rozšiřte pole zdroje dat a mapování pro výstupní pole v indexu Azure Search.
+title: Mapování rozpoznávání vyhledávání obohacená vstupní pole do výstupních polí – Azure Search
+description: Extrahování a obohacení zdrojových datových polí a mapování na výstupní pole v indexu Azure Search.
 manager: pablocas
 author: luiscabrer
 services: search
@@ -9,21 +9,21 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 506acee6cd9cd3c50e10f1c45768230564eeaaf1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: cognitive-search
+ms.openlocfilehash: 1fae611c202b77d222436b090f7e0c2f432de1f2
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65022081"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841173"
 ---
-# <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>Jak namapovat bohatších možností pole prohledávatelný index
+# <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>Mapování obohacených polí na index s možností prohledávání
 
-V tomto článku se dozvíte, jak mapovat bohatších možností vstupní pole pro výstupní pole v prohledávatelný index. Jakmile budete mít [definované dovedností](cognitive-search-defining-skillset.md), je třeba namapovat pole výstup všechny dovednosti, které přímo přispívá hodnoty pro dané pole v indexu vyhledávání. Mapování polí jsou požadovány pro přesun obsahu z bohatších možností dokumentů do indexu.
+V tomto článku se dozvíte, jak namapovat obohacená vstupní pole na výstupní pole v indexu s možností prohledávání. Po [Definování dovednosti](cognitive-search-defining-skillset.md)je nutné namapovat výstupní pole libovolné dovednosti, která přímo přispívá k danému poli v indexu vyhledávání. Pro přesun obsahu z obohacených dokumentů do indexu jsou vyžadovány mapování polí.
 
 
 ## <a name="use-outputfieldmappings"></a>Použití outputFieldMappings
-Chcete-li mapování polí, přidejte `outputFieldMappings` do definice indexeru jak je znázorněno níže:
+Pro mapování polí přidejte `outputFieldMappings` do definice indexeru, jak je znázorněno níže:
 
 ```http
 PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -31,7 +31,7 @@ api-key: [admin key]
 Content-Type: application/json
 ```
 
-Text žádosti strukturovaná následujícím způsobem:
+Tělo žádosti je strukturováno takto:
 
 ```json
 {
@@ -64,14 +64,14 @@ Text žádosti strukturovaná následujícím způsobem:
     ]
 }
 ```
-Pro každé pole výstup mapování, nastavte název pole bohatších možností (sourceFieldName) a název pole, který jste použili v indexu (targetFieldName).
+Pro každé mapování polí výstupu nastavte název obohaceného pole (sourceFieldName) a název pole, jak je odkazováno v indexu (targetFieldName).
 
-Cesta v sourceFieldName může představovat jeden element nebo víc elementů. V příkladu výše ```/document/content/sentiment``` představuje jednu číselnou hodnotu, zatímco ```/document/content/organizations/*/description``` představuje několik popis organizace. V případech, kdy existuje několik elementů, jejich se "sloučí" do pole, které obsahuje všechny prvky. Více namítají pro ```/document/content/organizations/*/description``` například dat v *popisy* pole může vypadat třeba bez stromové struktury pole popisů před jejich indexováním:
+Cesta v sourceFieldName může představovat jeden nebo více elementů. V předchozím ```/document/content/sentiment``` příkladu představuje jednu číselnou hodnotu, zatímco ```/document/content/organizations/*/description``` představuje několik popisů organizace. V případech, kdy existuje několik prvků, jsou "shrnuty" do pole, které obsahuje každý prvek. Čím více z nich je v ```/document/content/organizations/*/description``` příkladu, data v poli *descriptions* budou vypadat jako ploché pole popisů předtím, než se naindexuje:
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
 ```
 ## <a name="next-steps"></a>Další postup
-Jakmile bohatších možností pole jsou namapovány na prohledávatelná pole, můžete nastavit atributy pole pro každý prohledávatelná pole [jako součást definice indexu](search-what-is-an-index.md).
+Po namapování obohacených polí na prohledávatelné pole můžete [jako součást definice indexu](search-what-is-an-index.md)nastavit atributy polí pro každé z polí, která lze prohledávat.
 
-Další informace o mapování polí najdete v tématu [mapování polí v indexerech Azure Search](search-indexer-field-mappings.md).
+Další informace o mapování polí najdete v tématu [mapování polí v Azure Search indexerech](search-indexer-field-mappings.md).

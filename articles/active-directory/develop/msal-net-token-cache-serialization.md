@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14c7495653f369d7a51cab6fedb136268b7b3378
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: caea0b7e64c7079156480aef0f65279989285ff3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277931"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834977"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serializace mezipaměti tokenů v MSAL.NET
 Po [získání tokenu](msal-acquire-cache-tokens.md)je uložen do mezipaměti v rámci knihovny Microsoft Authentication Library (MSAL).  Kód aplikace by se měl pokusit získat token z mezipaměti před získáním tokenu jinou metodou.  Tento článek popisuje výchozí a vlastní serializaci mezipaměti tokenů v MSAL.NET.
@@ -279,7 +279,7 @@ Je důležité si uvědomit, že pro webové aplikace a webová rozhraní API by
 
 Příklady použití mezipamětí tokenů pro webové aplikace a webová rozhraní API jsou k dispozici v [kurzu ASP.NET Core webové aplikace](https://ms-identity-aspnetcore-webapp-tutorial) v [mezipaměti tokenu fáze 2-2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). U implementací se podívejte na následující složku [TokenCacheProviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) v knihovně [Microsoft-Authentication-for-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) (ve složce [Microsoft. identity. Client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) . 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Následující ukázky ilustrují serializaci mezipaměti tokenů.
 
 | Ukázka | Platforma | Popis|
