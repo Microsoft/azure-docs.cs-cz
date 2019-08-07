@@ -1,85 +1,85 @@
 ---
-title: Připojení klient služby Vzdálená plocha ve Windows Virtual Desktop – Azure
-description: Jak řešit problémy při nastavování připojení klientů v prostředí virtuálního klienta Windows tenanta.
+title: Připojení klientů vzdálené plochy na virtuálním počítači s Windows – Azure
+description: Řešení problémů při nastavování připojení klienta v prostředí klienta virtuální plochy Windows
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
-ms.author: v-chjenk
-ms.openlocfilehash: b7a6daa791e44227fd146c9c328a939560ebb3b1
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.author: helohr
+ms.openlocfilehash: 9cd754b1810595c3ae82a7e4edfd9a3abe145b3f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605298"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816416"
 ---
 # <a name="remote-desktop-client-connections"></a>Připojení klientů Vzdálené plochy
 
-Pomocí tohoto článku řešení potíží s připojeními klientů virtuální plochy Windows.
+Pomocí tohoto článku můžete vyřešit problémy s připojením klienta k virtuální ploše Windows.
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
-Můžeme aktuálně nejsou trvá případy podpory virtuální plochy Windows je ve verzi preview. Přejděte [technické komunitě virtuální plochy Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) fattica virtuální plochy Windows service s produktovým týmem a aktivní komunitě členy.
+V současné době nepřijímáme případy podpory, ale virtuální počítač s Windows je ve verzi Preview. Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
-## <a name="you-cant-open-a-web-client"></a>Nelze otevřít webového klienta
+## <a name="you-cant-open-a-web-client"></a>Nemůžete otevřít webového klienta.
 
-Potvrďte, že existuje připojení k Internetu je tak, že otevřete jiným webovým serverem; například [www.Bing.com](https://www.bing.com).
+Potvrďte připojení k Internetu tak, že otevřete jiný web. například [www.Bing.com](https://www.bing.com).
 
-Použití **nslookup** potvrďte DNS můžete vyřešit plně kvalifikovaný název domény:
+Pomocí nástroje **nslookup** potvrďte, že DNS může přeložit plně kvalifikovaný název domény:
 
 ```cmd
 nslookup rdweb.wvd.microsoft.com
 ```
 
-Zkuste se připojit pomocí jiného klienta, jako je klientem služby Vzdálená plocha pro Windows 7 nebo Windows 10 a zkontrolujte Pokud můžete otevřít webový klient.
+Zkuste se připojit pomocí jiného klienta, jako je klient vzdálené plochy pro Windows 7 nebo Windows 10, a zkontrolujte, jestli můžete otevřít webového klienta.
 
-### <a name="error-opening-another-site-fails"></a>Chyba: Otevření jiné lokality selže
+### <a name="error-opening-another-site-fails"></a>Chyba: Otevření jiného webového serveru se nezdařilo
 
-**Příčina:** Problémy se sítí a/nebo výpadky.
+**Způsobit** Problémy se sítí nebo výpadky.
 
-**Oprava:** Obraťte se na podporu sítě.
+**Opravit** Kontaktujte podporu sítě.
 
-### <a name="error-nslookup-cannot-resolve-the-name"></a>Chyba: Nslookup nemůže přeložit název
+### <a name="error-nslookup-cannot-resolve-the-name"></a>Chyba: Nástroj Nslookup nemůže přeložit název.
 
-**Příčina:** Problémy se sítí a/nebo výpadky.
+**Způsobit** Problémy se sítí nebo výpadky.
 
-**Oprava:** Obraťte se na podporu sítě
+**Opravit** Kontaktovat podporu sítě
 
-### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Chyba: Nelze připojit, ale ostatní klienti můžou připojit
+### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Chyba: Nemůžete se připojit, ale ostatní klienti se mohou připojit.
 
-**Příčina:** Prohlížeč nepracuje jako pracovní očekávaným způsobem a je zastavené.
+**Způsobit** Prohlížeč se nechová podle očekávání a přestal fungovat.
 
-**Oprava:** Postupujte podle těchto pokynů k řešení potíží s prohlížeči.
+**Opravit** Při řešení potíží s prohlížečem postupujte podle těchto pokynů.
 
 1. Restartujte prohlížeč.
-2. Soubory cookie v prohlížeči vymazat. Zobrazit [odstranění souborů cookie v Internet Exploreru](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-3. Smažte mezipaměť prohlížeče. Zobrazit [vymazat mezipaměť prohlížeče pro váš prohlížeč](https://binged.it/2RKyfdU).
-4. Otevřít prohlížeč v privátním režimu.
+2. Vymazat soubory cookie prohlížeče. Informace najdete [v tématu Odstranění souborů cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+3. Smažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
+4. Otevřete prohlížeč v privátním režimu.
 
-## <a name="web-client-stops-responding-or-disconnects"></a>Webový klient přestane reagovat nebo odpojení
+## <a name="web-client-stops-responding-or-disconnects"></a>Webový klient přestane reagovat nebo odpojení.
 
 Zkuste se připojit pomocí jiného prohlížeče nebo klienta.
 
-### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Chyba: Ostatní prohlížeče a klienti také nebude fungovat správně nebo nemusí otevřít
+### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Chyba: Jiné prohlížeče a klienti také nefunguje správně nebo se nedaří otevřít
 
-**Příčina:** Síť a/nebo operace systému potížím nebo výpadkům
+**Způsobit** Problémy se sítí nebo operačním systémem nebo výpadky
 
-**Oprava:** Obraťte se na podporu týmů.
+**Opravit** Obraťte se na tým podpory.
 
-## <a name="web-client-keeps-prompting-for-credentials"></a>Webový klient zachová vás vyzve k zadání přihlašovacích údajů
+## <a name="web-client-keeps-prompting-for-credentials"></a>Webový klient uchovává výzvy k zadání přihlašovacích údajů
 
-Pokud webový klient zachová vás vyzve k zadání přihlašovacích údajů, postupujte podle těchto pokynů.
+Pokud webový klient zachovává výzvy k zadání přihlašovacích údajů, postupujte podle těchto pokynů.
 
-1. Potvrďte správnost adresy URL webového klienta.
-2. Potvrďte, že přihlašovací údaje jsou vázané na adresu URL prostředí virtuálního klienta Windows.
-3. Soubory cookie v prohlížeči vymazat. Zobrazit [odstranění souborů cookie v Internet Exploreru](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Smažte mezipaměť prohlížeče. Zobrazit [vymazat mezipaměť prohlížeče pro váš prohlížeč](https://binged.it/2RKyfdU).
-5. Otevřít prohlížeč v privátním režimu.
+1. Ověřte správnost adresy URL webového klienta.
+2. Potvrďte, že přihlašovací údaje jsou pro prostředí virtuálních počítačů s Windows svázané s adresou URL.
+3. Vymazat soubory cookie prohlížeče. Informace najdete [v tématu Odstranění souborů cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+4. Smažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
+5. Otevřete prohlížeč v privátním režimu.
 
-## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Klient služby Vzdálená plocha pro Windows 7 nebo Windows 10 přestane reagovat nebo nelze otevřít
+## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Klient služby Vzdálená plocha pro Windows 7 nebo Windows 10 přestane reagovat nebo ho nejde otevřít.
 
-Pomocí následujících rutin Powershellu pro vyčištění out-of-band (OOB) klienta Registry.
+K vyčištění registrů klientů OOB (out-of-band) použijte následující rutiny PowerShellu.
 
 ```PowerShell
 Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
@@ -91,38 +91,38 @@ Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
 Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
 ```
 
-Přejděte do **%AppData%\RdClientRadc** a odstranit veškerý obsah.
+Přejděte na **%AppData%\RdClientRadc** a odstraňte veškerý obsah.
 
-Odinstalujte a znovu nainstalujte klientem služby Vzdálená plocha pro Windows 7 a Windows 10.
+Odinstalujte a znovu nainstalujte klienta vzdálené plochy pro Windows 7 a Windows 10.
 
-## <a name="troubleshooting-end-user-connectivity"></a>Řešení potíží s připojením koncového uživatele
+## <a name="troubleshooting-end-user-connectivity"></a>Řešení potíží s připojením koncových uživatelů
 
-Někdy uživatelé mohou ke svým informační kanál a místní prostředky, ale ještě další konfigurace, dostupnosti nebo problémy s výkonem, které brání v přístupu k vzdálené prostředky. V těchto případech uživatel získá zprávy podobné těmto:
+Někdy uživatelé mají přístup ke svým informačním kanálům a místním prostředkům, ale stále mají problémy s konfigurací, dostupností nebo výkonem, které jim brání v přístupu ke vzdáleným prostředkům. V těchto případech uživatel získá zprávy podobné těmto:
 
-![Vzdálené ploše chybová zpráva.](media/eb76b666808bddb611448dfb621152ce.png)
+![Připojení ke vzdálené ploše chybová zpráva.](media/eb76b666808bddb611448dfb621152ce.png)
 
-![Nelze připojit k bráně chybová zpráva.](media/a8fbb9910d4672147335550affe58481.png)
+![Nelze se připojit k chybové zprávě brány.](media/a8fbb9910d4672147335550affe58481.png)
 
-Postupujte podle těchto obecné pokyny pro řešení potíží pro kódy chyb připojení klienta.
+Použijte tyto obecné pokyny pro odstraňování potíží s kódy chyb připojení klientů.
 
-1. Zkontrolujte uživatelské jméno a čas, kdy došlo k problému.
-2. Otevřít **Powershellu** a navázat připojení k tenantovi virtuální plochy Windows, kde problém byl nahlášen.
-3. Ověřte připojení ke správné tenanta s **Get RdsTenant.**
-4. Pomocí **Get-RdsHostPool** a **Get-RdsSessionHost** rutiny, potvrďte, že Poradce při potížích se provádí na správného hostitele fondu.
-5. Spusťte následující příkaz k získání seznamu všech neúspěšných aktivit typu připojení pro zadané časové okno:
+1. Potvrďte uživatelské jméno a čas, kdy došlo k problému.
+2. Otevřete **PowerShell** a navažte připojení k Tenantovi virtuální plochy Windows, ve kterém se nahlásil problém.
+3. Potvrďte připojení ke správnému tenantovi pomocí **Get-RdsTenant.**
+4. Pomocí rutin **Get-RdsHostPool** a **Get-RdsSessionHost** potvrďte, že řešení potíží se provádí ve správném fondu hostitelů.
+5. Spuštěním následujícího příkazu zobrazíte seznam všech neúspěšných aktivit typu připojení pro určený časový interval:
 
     ```PowerShell
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
-6. Použití **ActivityId** z výstupu předchozí rutiny, spusťte následující příkaz:
+6. Pomocí **ActivityId** z předchozího výstupu rutiny spusťte následující příkaz:
 
     ```PowerShell
     (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
     ```
 
-7. Tento příkaz vytváří výstup podobný výstup najdete níž. Použití **ErrorCodeSymbolic** a **ErrorMessage** řešení potíží s původní příčinu.
+7. Příkaz vytvoří výstup podobný výstupu uvedenému níže. K odstranění hlavní příčiny použijte **ErrorCodeSymbolic** a **ErrorMessage** .
 
     ```PowerShell
     ErrorSource       : <Source>
@@ -135,45 +135,45 @@ Postupujte podle těchto obecné pokyny pro řešení potíží pro kódy chyb p
     Time              : <Timestampt>
     ```
 
-### <a name="error-oaddusertogroupfailed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32errornosuchmember"></a>Chyba: O_ADD_USER_TO_GROUP_FAILED / uživatele se nepodařilo přidat = ≤username≥ do skupiny = Remote Desktop Users. Důvod: Win32.ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Chyba: O_ADD_USER_TO_GROUP_FAILED/nepovedlo se přidat uživatele = ≤ username ≥ to Group = Remote Desktop Users. Důvod: Win32.ERROR_NO_SUCH_MEMBER
 
-**Příčina:** Virtuální počítač nebyl byl připojen k doméně, kde je objekt uživatele.
+**Způsobit** Virtuální počítač není připojený k doméně, ve které je objekt uživatele.
 
-**Oprava:** Přidáte virtuální počítač ke správné doméně. Zobrazit [připojení virtuálního počítače s Windows serverem do spravované domény](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
+**Opravit** Přidejte virtuální počítač do správné domény. Viz [připojení virtuálního počítače s Windows serverem ke spravované doméně](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 
-### <a name="error-nslookup-cannot-resolve-the-name"></a>Chyba: Nslookup nemůže přeložit název
+### <a name="error-nslookup-cannot-resolve-the-name"></a>Chyba: Nástroj Nslookup nemůže přeložit název.
 
-**Příčina:** Problémy se sítí nebo výpadky.
+**Způsobit** Problémy se sítí nebo výpadky.
 
-**Oprava:** Obraťte se na podporu sítě
+**Opravit** Kontaktovat podporu sítě
 
 ### <a name="error-connectionfailedclientprotocolerror"></a>Chyba: ConnectionFailedClientProtocolError
 
-**Příčina:** Virtuální počítače tohoto uživatele se pokouší o připojení k nejsou připojené k doméně.
+**Způsobit** Virtuální počítače, ke kterým se uživatel pokouší připojit, nejsou připojeni k doméně.
 
-**Oprava:** Připojte všechny virtuální počítače, které jsou součástí fondu hostitele k řadiči domény.
+**Opravit** Připojte všechny virtuální počítače, které jsou součástí fondu hostitelů, do řadiče domény.
 
-## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Připojení uživatele, ale nezobrazí se (žádný kanál)
+## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Uživatel se připojuje, ale nic se nezobrazuje (bez kanálu).
 
-Uživatele můžete začít klienty vzdálené plochy a je možné ověřit, ale nezobrazí uživateli všechny ikony v zjišťování webové informačního kanálu.
+Uživatel může spustit klienty vzdálené plochy a je schopen ho ověřit, ale uživatel nevidí žádné ikony v informačním kanálu webového zjišťování.
 
-Potvrďte, že uživatel hlášení problémů byla přiřazena do skupiny aplikací s použitím tohoto příkazového řádku:
+Pomocí tohoto příkazového řádku zkontrolujte, jestli se uživateli, který nahlásí problémy, přiřadí ke skupinám aplikací:
 
 ```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 ```
 
-Potvrďte, že uživatel je přihlášení pomocí správných přihlašovacích údajů.
+Potvrďte, že se uživatel přihlašuje se správnými přihlašovacími údaji.
 
-Pokud webového klienta se používá, zkontrolujte, zda zde nejsou žádné problémy přihlašovací údaje v mezipaměti.
+Pokud je webový klient používán, zkontrolujte, zda nejsou k dispozici žádné problémy s přihlašovacími údaji v mezipaměti.
 
 ## <a name="next-steps"></a>Další postup
 
-- Přehled o řešení potíží virtuální plochy Windows a sleduje eskalace, naleznete v tématu [řešení potíží s přehled, zpětná vazba a podpora](troubleshoot-set-up-overview.md).
-- Řešení potíží při vytváření fondu tenanta a hostitele v prostředí virtuálního klienta Windows, naleznete v tématu [Tenanta a hostitele fondu vytváření](troubleshoot-set-up-issues.md).
-- Řešení potíží při konfiguraci virtuálního počítače (VM) v virtuální plochy Windows, naleznete v tématu [konfigurace virtuálního počítače hostitele relací](troubleshoot-vm-configuration.md).
-- Při řešení problémů při použití Powershellu s virtuální plochy Windows, naleznete v tématu [Windows Powershellu virtuální plochy](troubleshoot-powershell.md).
-- Další informace o služba ve verzi Preview, najdete v článku [prostředí Windows Desktop Preview](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?).
-- Absolvovat kurz řešení potíží, najdete v článku [kurzu: Řešení potíží s nasazení šablon Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Další informace o auditování akcí najdete v tématu [Audit operací pomocí Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Další informace o akcích, chcete-li zjistit chyby během nasazení najdete v tématu [zobrazení operací nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
+- Pokud chcete řešit problémy při vytváření tenanta a fondu hostitelů v prostředí virtuálních počítačů s Windows, přečtěte si téma [vytváření fondů klientů a hostitelů](troubleshoot-set-up-issues.md).
+- Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
+- Pokud chcete řešit problémy při používání PowerShellu s virtuálním počítačem s Windows, přečtěte si téma [virtuální plocha Windows PowerShell](troubleshoot-powershell.md).
+- Další informace o službě verze Preview najdete v tématu [prostředí Windows Desktop Preview](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?).
+- Postup při řešení potíží najdete v [kurzu: Řešení potíží s nasazeními](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)šablon Správce prostředků.
+- Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
+- Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

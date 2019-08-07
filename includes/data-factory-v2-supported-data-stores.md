@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 06/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: c938d0badfdd23e78e7cf042b719d924aa4d3857
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
-ms.translationtype: MT
+ms.openlocfilehash: 58272bc1cceba6203445f011d7268471239b8ce7
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509829"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827463"
 ---
 | Kategorie | Úložiště dat | Podporované jako zdroj | Podporované jako jímka | Podporované prostředím [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) | Podporované [místním prostředím IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Rozhraní API služby Azure Cosmos DB pro MongoDB](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Rozhraní API pro MongoDB Azure Cosmos DB](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Průzkumník dat Azure](../articles/data-factory/connector-azure-data-explorer.md) |✓ |✓ |✓ |✓ |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |
@@ -28,7 +28,7 @@ ms.locfileid: "67509829"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  |
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Spravovaná Instance Azure SQL Database](../articles/data-factory/connector-azure-sql-database-managed-insance.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Spravovaná Instance Azure SQL Database](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Index Azure Search](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  |
 | &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  |
@@ -49,8 +49,8 @@ ms.locfileid: "67509829"
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |✓ | |✓ |✓  |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) |✓ | |✓ |✓  |
 | &nbsp; |[Presto (Preview)](../articles/data-factory/connector-presto.md) |✓ | |✓ |✓  |
-| &nbsp; |[SAP Business Warehouse otevřete Centrum](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
-| &nbsp; |[SAP Business Warehouse prostřednictvím MDX](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  |
+| &nbsp; |[Otevřené centrum SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
+| &nbsp; |[SAP Business Warehouse přes MDX](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |✓ |✓ | |✓  |
 | &nbsp; |[Tabulka SAP](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |✓ | |✓ |✓  |
@@ -64,13 +64,13 @@ ms.locfileid: "67509829"
 | **File** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |✓ | |✓ |✓  |
 | &nbsp; |[Systém souborů](../articles/data-factory/connector-file-system.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |✓ | |✓ |✓  |
-| &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |✓ | |✓ |✓  |
+| &nbsp; |[Úložiště Google Cloud](../articles/data-factory/connector-google-cloud-storage.md) |✓ | |✓ |✓  |
 | &nbsp; |[HDFS](../articles/data-factory/connector-hdfs.md) |✓ | |✓ |✓  |
 | &nbsp; |[SFTP](../articles/data-factory/connector-sftp.md) |✓ | |✓ |✓  |
 | **Obecný protokol** |[Obecná rozhraní HTTP](../articles/data-factory/connector-http.md) |✓ | |✓ |✓  |
 | &nbsp; |[Obecná OData](../articles/data-factory/connector-odata.md) |✓ | |✓ |✓  |
 | &nbsp; |[Obecná rozhraní ODBC](../articles/data-factory/connector-odbc.md) |✓ |✓ | |✓  |
-| &nbsp; |[Obecný REST](../articles/data-factory/connector-rest.md) |✓ | |✓ |✓  |
+| &nbsp; |[Obecná REST](../articles/data-factory/connector-rest.md) |✓ | |✓ |✓  |
 | **Služby a aplikace** |[Amazon Marketplace Web Service (Preview)](../articles/data-factory/connector-amazon-marketplace-web-service.md) |✓ | |✓ |✓  |
 | &nbsp; |[Common Data Service pro aplikace](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Concur (Preview)](../articles/data-factory/connector-concur.md) |✓ | |✓ |✓  |

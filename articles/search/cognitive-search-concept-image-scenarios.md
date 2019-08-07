@@ -5,18 +5,19 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e60eeb601a0a5796609b9c38b7394c2de0610cdf
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423002"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841281"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Postup zpracování a extrakce informací z imagí ve scénářích hledání v rozpoznávání
 
@@ -72,7 +73,8 @@ Pokud je *imageAction* nastaveno na jinou hodnotu než "none", nové pole *norma
 | originalWidth      | Původní šířka obrázku před normalizací |
 | originalHeight      | Původní výška obrázku před normalizací |
 | rotationFromOriginal |  Rotace proti směru hodinových ručiček ve stupních, ve kterých došlo k vytvoření normalizované bitové kopie. Hodnota v rozmezí 0 stupňů až 360 stupňů. Tento krok přečte metadata z image, která je vygenerovaná fotoaparátem nebo skenerem. Obvykle násobek 90 stupňů. |
-| contentOffset |Posun znaku v rámci pole Content, ze kterého byl obrázek extrahován. Toto pole platí pouze pro soubory s vloženými obrázky. |
+| contentOffset | Posun znaku v rámci pole Content, ze kterého byl obrázek extrahován. Toto pole platí pouze pro soubory s vloženými obrázky. |
+| pageNumber | Pokud byl obrázek extrahován nebo vykreslen z formátu PDF, toto pole obsahuje číslo stránky v souboru PDF, ze kterého byl extrahován nebo vykreslen, od 1.  Pokud obrázek nebyl z PDF, bude toto pole 0.  |
 
  Ukázková hodnota *normalized_images*:
 ```json
@@ -84,7 +86,8 @@ Pokud je *imageAction* nastaveno na jinou hodnotu než "none", nové pole *norma
     "originalWidth": 5000,  
     "originalHeight": 3000,
     "rotationFromOriginal": 90,
-    "contentOffset": 500  
+    "contentOffset": 500,
+    "pageNumber": 2
   }
 ]
 ```

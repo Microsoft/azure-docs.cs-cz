@@ -1,41 +1,41 @@
 ---
-title: Řešení Azure VMware podle CloudSimple - CloudSimple správy aktivit
-description: Popisuje koncepty aktivity týkající se řešení VMware podle CloudSimple
+title: Řešení Azure VMware podle CloudSimple – Správa aktivit CloudSimple
+description: Popisuje koncepty aktivit v řešení VMware podle CloudSimple
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: dd073d040e6e7f149109c9988580dcd889f7c62f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b87a4e2889e9e65a3173a4c11d9c92a33e8e70b7
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65160137"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816243"
 ---
 # <a name="activity-management-overview"></a>Přehled správy aktivit
 
-CloudSimple sleduje všechny aktivity, které můžou ovlivnit fungování privátních cloudů. Tyto aktivity včetně výstrahy, události, úkoly a auditování aktivit. [Aktivity stránky](https://docs.azure.cloudsimple.com/activity/) shrnout aktuální aktivity a umožní vám procházet hierarchii pro další podrobnosti.
+CloudSimple sleduje všechny aktivity, které mohou ovlivnit fungování privátních cloudů. Tyto činnosti zahrnují výstrahy, události, úlohy a aktivity auditu. [Stránky aktivity](https://docs.azure.cloudsimple.com/activity/) shrnují všechny aktuální aktivity a umožňují vám přejít k podrobnostem, kde najdete další podrobnosti.
 
 ## <a name="events"></a>Duration
 
-Události sledování na portálu CloudSimple uživatele a aktivitu systému.  Události zobrazit aktivity spojené s konkrétní prostředek a závažnost dopadu.  Můžete zobrazit události z portálu CloudSimple.
+Události sledují aktivity uživatelů a systému na portálu CloudSimple.  Události zobrazují aktivitu přidruženou ke konkrétnímu prostředku a závažnost dopadu.  Události můžete zobrazit na portálu CloudSimple.
 
-## <a name="alerts"></a>Výstrahy
+## <a name="alerts"></a>Upozornění
 
-Upozornění jsou typem oznámení žádné významné aktivity ve vašem prostředí CloudSimple.  Události, které mít dopad na přístup uživatele nebo fakturace, se zobrazují jako upozornění.  Výstrahy vyvolané z portálu CloudSimple můžete potvrdit.
+Výstrahy jsou oznámením významné aktivity v prostředí CloudSimple.  Události, které mají vliv na fakturaci nebo na přístup uživatelů, se zobrazují jako výstrahy.  Vyvolaná upozornění můžete potvrdit z portálu CloudSimple.
 
 ## <a name="tasks"></a>Úlohy
 
-Úlohy sledovat všechny uživatelská operace, které trvá déle než 30 sekund na dokončení.  Můžete sledovat průběh úlohy z portálu CloudSimple.  Dokončení úlohy zobrazit celkový čas potřebný pro dokončení úlohy.
+Úkoly sledují jakoukoli činnost uživatele, která trvá déle než 30 sekund.  Průběh úkolu můžete monitorovat na portálu CloudSimple.  Dokončené úlohy zobrazují celkový čas potřebný k dokončení úkolu.
 
 ## <a name="audit"></a>Auditování
 
-Protokoly auditu sledování operací provedených uživatelem.  Protokoly obsahovat parametry, které uživatel zadal pro operaci.  Protokoly auditu můžete použít k monitorování aktivity uživatelů pro všechny uživatele.
+Protokoly auditu sledují operace, které uživatel provedl.  Protokoly obsahují parametry, které uživatel zadal pro operaci.  Protokoly auditování můžete použít k monitorování aktivity uživatelů pro všechny uživatele.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Zobrazit souhrn účtu](https://docs.azure.cloudsimple.com/account/)
-* [Zobrazení protokolů využití](https://docs.azure.cloudsimple.com/usage/)
+* [Zobrazení souhrnu účtu](https://docs.azure.cloudsimple.com/account/)
+* [Zobrazit protokol využití](https://docs.azure.cloudsimple.com/usage/)

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: 87362b785ecbb17c5a49a8c087b6a70715480877
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: d0e24d7621218ccac23842072a5f08be94c80d9d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679383"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840585"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiné
 
@@ -117,7 +117,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5,
 14,04 LTS | 9,25 | 3.13.0-24 – obecné pro 3.13.0-169 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné pro 4.4.0-146 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1042 – Azure |
 14,04 LTS | 9,24 | 3.13.0-24 – obecné až 3.13.0 – 167 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné pro 4.4.0-143 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1040 – Azure |
 |||
-16,04 LTS | 9,27 | 4.4.0-21 – obecné pro 4.4.0-154 – obecné,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – Obecné pro 4.15.0-54 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0 – 1050 – Azure|
+16,04 LTS | 9,27 | 4.4.0-21 – obecné pro 4.4.0-154 – obecné,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – Obecné k 4.15.0 – 55 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1051 – Azure|
 16,04 LTS | 9,26 | 4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – obecný pro 4.15.0-50 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1045 – Azure|
 16,04 LTS | 9,25 | 4.4.0-21 – obecné pro 4.4.0-146 – obecné,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné,<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – obecný pro 4.15.0-48 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1042 – Azure|
 16,04 LTS | 9,24 | 4.4.0-21 – obecné pro 4.4.0-143 – obecné,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné,<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – Obecné pro 4.15.0-46 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1040 – Azure|
@@ -136,7 +136,7 @@ Debian 8 | 9,24 | 3.16.0-4-amd64 až 3.16.0-7-AMD64, 4.9.0 -0. BPO. 4-amd64 na 4
 
 **Předběžné** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,27 | SP1 3.12.49-11 – výchozí hodnota pro 3.12.74-60.64.40 – výchozí</br></br> SP1 (LTSS) 3.12.74-60.64.45-default na 3.12.74-60.64.115 – výchozí</br></br> SP2 4.4.21-69-default až 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default na 4.4.121-92.114 – výchozí</br></br>SP3 4.4.73-5 – výchozí hodnota pro 4.4.180-94.97 – výchozí</br></br>SP3 4.4.138 – 4.7 – Azure do 4.4.180 – 4.31 – Azure</br></br>SP4 4.12.14-94.41-default on 4.12.14-95.19-default</br>SP4 4.12.14-6.3 – Azure na 4.12.14 – 6.15 – Azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,27 | SP1 3.12.49-11 – výchozí hodnota pro 3.12.74-60.64.40 – výchozí</br></br> SP1 (LTSS) 3.12.74-60.64.45-default na 3.12.74-60.64.115 – výchozí</br></br> SP2 4.4.21-69-default až 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default na 4.4.121-92.117 – výchozí</br></br>SP3 4.4.73-5 – výchozí hodnota pro 4.4.180-94.97 – výchozí</br></br>SP3 4.4.138 – 4.7 – Azure do 4.4.180 – 4.31 – Azure</br></br>SP4 4.12.14-94.41-default on 4.12.14-95.24-default</br>SP4 4.12.14-6.3 – Azure na 4.12.14 – 6.18 – Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,26 | SP1 3.12.49-11 – výchozí hodnota pro 3.12.74-60.64.40 – výchozí</br></br> SP1 (LTSS) 3.12.74-60.64.45-default na 3.12.74-60.64.110 – výchozí</br></br> SP2 4.4.21-69-default až 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default na 4.4.121-92.109 – výchozí</br></br>SP3 4.4.73-5 – výchozí hodnota pro 4.4.178-94.91 – výchozí</br></br>SP3 4.4.138 – 4.7 – Azure do 4.4.178 – tedy 4,28 – Azure</br></br>SP4 4.12.14-94.41-default on 4.12.14-95.16-default</br>SP4 4.12.14-6.3 – Azure až 4.12.14-\ \ Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,25 | SP1 3.12.49-11 – výchozí hodnota pro 3.12.74-60.64.40 – výchozí</br></br> SP1 (LTSS) 3.12.74-60.64.45-default na 3.12.74-60.64.107 – výchozí</br></br> SP2 4.4.21-69-default až 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default na 4.4.121-92.104 – výchozí</br></br>SP3 4.4.73-5 – výchozí hodnota pro 4.4.176-94.88 – výchozí</br></br>SP3 4.4.138 – 4.7 – Azure do 4.4.176 – 4.25 – Azure</br></br>SP4 4.12.14-94.41-default on 4.12.14-95.13-default</br>SP4 4.12.14-6.3 – Azure až 4.12.14-\ \ Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,24 | SP1 3.12.49-11 – výchozí hodnota pro 3.12.74-60.64.40 – výchozí</br></br> SP1 (LTSS) 3.12.74-60.64.45-default na 3.12.74-60.64.107 – výchozí</br></br> SP2 4.4.21-69-default až 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-default na 4.4.121-92.104 – výchozí</br></br>SP3 4.4.73-5 – výchozí hodnota pro 4.4.176-94.88 – výchozí</br></br>SP4 4.12.14-94.41-default on 4.12.14-95.13-default |
@@ -197,7 +197,7 @@ Redundance | LRS a GRS jsou podporovány.<br/><br/> ZRS se nepodporuje.
 Studené a horké úložiště | Nepodporuje se | Disky virtuálních počítačů se nepodporují na studeném a horkém úložišti.
 Prostory úložiště | Podporováno |
 Šifrování v klidovém prostředí (SSE) | Podporováno | Pro účty úložiště je výchozí nastavení SSE.   
-Azure Disk Encryption (ADE) pro operační systém Windows | Podporují se virtuální počítače s povoleným [šifrováním pomocí aplikace Azure AD](https://aka.ms/ade-aad-app) . |
+Azure Disk Encryption (ADE) pro operační systém Windows | Podporováno |
 Azure Disk Encryption (ADE) pro Linux OS | Nepodporuje se |
 Horké přidání | Podporováno | Povolení replikace pro datový disk, který přidáte do replikovaného virtuálního počítače Azure, se podporuje pro virtuální počítače, které používají spravované disky.
 Odstranit disk z provozu | Nepodporuje se | Pokud na virtuálním počítači odeberete datový disk, budete muset zakázat replikaci a znovu povolit replikaci pro virtuální počítač.

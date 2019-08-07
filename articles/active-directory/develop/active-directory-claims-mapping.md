@@ -10,17 +10,17 @@ ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97de45ef94afa9da8a5e928a3d4a8911db052107
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: f9350a30ac6258664b3a8405923467a8468a6758
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381065"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835450"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postup: Přizpůsobení deklarací identity emitovaných v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -356,7 +356,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 
 **TransformationMethod:** Element TransformationMethod identifikuje, která operace se provádí za účelem generování dat pro danou deklaraci.
 
-Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte vstupy a výstupy pomocí prvků **InputClaims** **, Inputs** a **OutputClaims** .
+Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte vstupy a výstupy pomocí prvků **InputClaims**, Inputs a **OutputClaims** .
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabulka 4: Metody transformace a očekávané vstupy a výstupy
 
@@ -412,7 +412,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte v
 
 | TransformationMethod | Omezení |
 | ----- | ----- |
-| ExtractMailPrefix | Žádný |
+| ExtractMailPrefix | Žádné |
 | Spojit | Připojená přípona musí být ověřená doména tenanta prostředků. |
 
 ### <a name="custom-signing-key"></a>Vlastní podpisový klíč

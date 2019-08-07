@@ -1,70 +1,71 @@
 ---
-title: Kanály Azure můžete vytvářet a nasazovat řešení HPC – Azure Batch | Dokumentace Microsoftu
-description: Informace o nasazení kanálu buildů a vydání pro prostředí HPC aplikace běžící v Azure Batch.
+title: Použití Azure Pipelines k sestavení a nasazení řešení HPC – Azure Batch | Microsoft Docs
+description: Naučte se, jak nasadit kanál sestavení nebo vydání pro aplikaci HPC běžící na Azure Batch.
 author: christianreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
-ms.openlocfilehash: a811a9cb1b124aff7c64d25cf71a1b84bff0c173
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.service: batch
+ms.openlocfilehash: 47665171ee5ae137e0503b3e5fa1d369aeabb356
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65541748"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840053"
 ---
-# <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Kanály Azure můžete vytvářet a nasazovat řešení HPC
+# <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Použití Azure Pipelines k sestavení a nasazení řešení HPC
 
-Azure DevOps služby poskytují celou řadu nástrojů používané vývojové týmy při vytváření vlastních aplikací. Nástroje poskytované systémem Azure DevOps může znamenat automatické vytváření a testování vysoce výkonných výpočetních řešení. Tento článek ukazuje, jak nastavit průběžnou integraci (CI) a průběžného nasazování (CD) pomocí Azure kanály pro vysoce výkonné výpočetní řešení, které jsou nasazené v Azure Batch.
+Služba Azure DevOps Services poskytuje řadu nástrojů, které vývojové týmy používají při vytváření vlastní aplikace. Nástroje poskytované službou Azure DevOps se můžou překládat na automatizované sestavování a testování vysoce výkonných výpočetních řešení. Tento článek ukazuje, jak nastavit průběžnou integraci (CI) a průběžné nasazování (CD) pomocí Azure Pipelines pro vysoce výkonné výpočetní řešení nasazené v Azure Batch.
 
-Kanály Azure poskytuje celou řadu moderní procesy CI/CD pro sestavení, nasazení, testování a monitorování softwaru. Tyto procesy zrychlení vaší doručování softwaru, abyste mohli soustředit na kód než podporu infrastruktury a operací.
+Azure Pipelines poskytuje řadu moderních procesů CI/CD pro sestavování, nasazování, testování a monitorování softwaru. Tyto procesy urychlují doručování softwaru, což vám umožní soustředit se na váš kód, a ne na podporu infrastruktury a provozu.
 
 ## <a name="create-an-azure-pipeline"></a>Vytvoření kanálu Azure
 
-V tomto příkladu vytvoříme bude sestavení a vydání kanálu pro nasazení infrastruktury Azure Batch a verze balíčku aplikace. Za předpokladu, že kód je vyvinutý místně, to představuje obecné nasazení kroky:
+V tomto příkladu vytvoříme kanál sestavení a vydání pro nasazení infrastruktury Azure Batch a vydání balíčku aplikace. Za předpokladu, že je kód vyvíjen místně, je to obecný tok nasazení:
 
-![Diagram znázorňující tok nasazení do našeho kanálu](media/batch-ci-cd/DeploymentFlow.png)
+![Diagram znázorňující tok nasazení v našem kanálu](media/batch-ci-cd/DeploymentFlow.png)
 
 ### <a name="setup"></a>Instalace
 
-Postupovat podle kroků v tomto článku, budete potřebovat organizaci Azure DevOps a týmového projektu.
+Pokud chcete postupovat podle kroků v tomto článku, potřebujete organizaci Azure DevOps a týmový projekt.
 
-* [Vytvořit organizaci Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
+* [Vytvoření organizace Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
 * [Vytvoření projektu v Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
 
 ### <a name="source-control-for-your-environment"></a>Správa zdrojového kódu pro vaše prostředí
 
-Správy zdrojového kódu umožňuje týmům ke sledování změn do základu kódu a zkontrolujte předchozí verze kódu.
+Správa zdrojového kódu umožňuje týmům sledovat změny provedené v základu kódu a kontrolovat předchozí verze kódu.
 
-Obvykle správy zdrojového kódu je představit ručně spolupráce s kódem softwaru. A co základní infrastrukturu? Tím se dostáváme k infrastruktuře jako kódu, kde budeme používat šablon Azure Resource Manageru nebo jiné opensourcové alternativy deklarativně definovat naši základní infrastrukturu.
+Obvykle je Správa zdrojového kódu považovat za ruční s kódem softwaru. Jak základní infrastruktura funguje? To nám přináší infrastrukturu jako kód, kde budeme používat šablony Azure Resource Manager nebo jiné Open Source alternativy k deklarativnímu definování naší základní infrastruktury.
 
-Tato ukázka silně závisí na počtu šablon Resource Manageru (dokumenty JSON) a existující binární soubory. Můžete tyto příklady kopírovat do svého úložiště a jejich doručování do Azure DevOps.
+Tato ukázka silně spoléhá na řadu šablon Správce prostředků (dokumentů JSON) a existujících binárních souborech. Tyto příklady můžete zkopírovat do úložiště a vložit je do Azure DevOps.
 
-Základ kódu struktury použité v této ukázce se podobá takto:
+Struktura základu kódu použitá v této ukázce se podobá následujícímu:
 
-* **Šablony arm** složky, který obsahuje několik šablon Azure Resource Manageru. Šablony jsou vysvětleny v tomto článku.
-* A **klientská aplikace** složce, která je kopie sady [Azure Batch .NET soubor zpracování pomocí aplikace ffmpeg](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) vzorku. Není to nutné pro účely tohoto článku.
-* **Aplikací hpc** složce, která je Windows 64-bit verzi [aplikace ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip).
-* A **kanály** složky. Tato položka obsahuje soubor YAML sbalování náš proces sestavení. Tento postup je popsán v článku.
+* Složka s **šablonami ARM** , která obsahuje několik šablon Azure Resource Manager. Šablony jsou vysvětleny v tomto článku.
+* Složka **klient-aplikace** , což je kopie [souboru Azure Batch .NET s ukázkou ffmpeg](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) Sample. To není pro tento článek nutné.
+* **HPC-složka aplikace** , což je verze Windows 64-bit [ffmpeg 3,4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip).
+* Složka s **kanály** . Obsahuje soubor YAML s přehledem našeho procesu sestavení. Tento článek je popsán v článku.
 
-V této části se předpokládá, že máte zkušenosti s šablonami Resource Manageru verze ovládacího prvku a návrhu. Pokud nejste obeznámeni s tyto koncepty, najdete na následujících stránkách pro další informace.
+V této části se předpokládá, že máte zkušenosti s řízením verzí a návrhem šablon Správce prostředků. Pokud tyto koncepty neznáte, přečtěte si následující stránky, kde najdete další informace.
 
-* [Novinky správy zdrojových kódů?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
+* [Co je Správa zdrojového kódu?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
 * [Struktura a syntaxe šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
 
 #### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-Tento příklad využívá nasazovat naše řešení více šablon Resource Manageru. K tomuto účelu Používáme řadu funkce šablony (podobně jako jednotky nebo moduly), které implementují konkrétní funkce. Jsme také použít šablonu-ucelené řešení, který je zodpovědný za přináší tyto podpůrné funkce dohromady. Existuje několik výhod tohoto přístupu:
+Tento příklad využívá více šablon Správce prostředků k nasazení řešení. K tomu je potřeba použít řadu šablon schopností (podobně jako jednotky nebo moduly), které implementují určitou část funkčnosti. Používáme také ucelenou šablonu řešení, která zodpovídá za spojování základních možností. Tento přístup má několik výhod:
 
-* Základní funkce šablony mohou být samostatně testování částí.
-* Základní šablony funkce lze definovat jako standardní uvnitř organizace a znovu použít ve více řešení.
+* Základní šablony schopností mohou být testovány jednotlivě.
+* Základní šablony schopností lze definovat jako standardní v rámci organizace a znovu je použít ve více řešeních.
 
-V tomto příkladu je šablonu řešení začátku do konce (deployment.json), která nasadí tři šablony. Funkce šablony, odpovědného za nasazení specifický aspekt řešení jsou základní šablony.
+V tomto příkladu je k dispozici ucelená šablona řešení (Deployment. JSON), která nasadí tři šablony. Základní šablony jsou šablony schopností zodpovědné za nasazení konkrétního aspektu řešení.
 
-![Příklad struktury propojené šablony pomocí šablon Azure Resource Manageru](media/batch-ci-cd/ARMTemplateHierarchy.png)
+![Příklad propojené struktury šablony pomocí šablon Azure Resource Manager](media/batch-ci-cd/ARMTemplateHierarchy.png)
 
-První šablona, která se podíváme na určený účet úložiště Azure. Naše řešení vyžaduje účet úložiště k nasazení aplikace do našich účtu Batch. Stojí za to být vědět, [referenční příručka šablony Resource Manageru pro typy prostředků Microsoft.Storage](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) při vytváření šablon Resource Manageru pro účty úložiště.
+První šablona, kterou budeme pohlížet, je pro účet Azure Storage. Naše řešení vyžaduje účet úložiště pro nasazení aplikace na náš účet Batch. Při sestavování šablon Správce prostředků pro účty úložiště je vhodné vědět o [Správce prostředků Průvodce referenčními šablonami pro typy prostředků Microsoft. Storage](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) .
 
 ```json
 {
@@ -104,7 +105,7 @@ První šablona, která se podíváme na určený účet úložiště Azure. Na�
 }
 ```
 
-V dalším kroku se podíváme na šabloně účet Azure Batch. Účet Azure Batch se chová jako platformu pro spouštění řadě aplikací ve fondech (seskupení počítačů). Stojí za to být vědět, [referenční příručka šablony Resource Manageru pro typy prostředků Microsoft.Batch](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) při vytváření šablon Resource Manageru pro účty Batch.
+V dalším kroku se podíváme na šablonu účtu Azure Batch. Účet Azure Batch slouží jako platforma pro spouštění mnoha aplikací napříč fondy (skupiny počítačů). Při sestavování šablon Správce prostředků pro účty Batch je vhodné vědět, jaké má [Referenční příručka k šabloně správce prostředků pro typy prostředků Microsoft. Batch](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) .
 
 ```json
 {
@@ -143,7 +144,7 @@ V dalším kroku se podíváme na šabloně účet Azure Batch. Účet Azure Bat
 }
 ```
 
-Další šablony ukazuje příklad vytvoření fondu služby Azure Batch (počítače back-endu ke zpracování našich aplikací). Stojí za to být vědět, [referenční příručka šablony Resource Manageru pro typy prostředků Microsoft.Batch](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) při vytváření šablon Resource Manageru pro fondy účtu Batch.
+Další šablona ukazuje příklad vytvoření fondu Azure Batch (back-end počítače pro zpracování našich aplikací). Při sestavování šablon Správce prostředků pro fondy účtů Batch je vhodné vědět, jaké má [Referenční příručka k šabloně správce prostředků pro typy prostředků Microsoft. Batch](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions) .
 
 ```json
 {
@@ -189,9 +190,9 @@ Další šablony ukazuje příklad vytvoření fondu služby Azure Batch (počí
 }
 ```
 
-A konečně máme šablonu, která funguje podobně jako orchestrátor. Tato šablona je odpovědného za nasazení šablony funkce.
+Nakonec máme šablonu, která funguje podobně jako Orchestrator. Tato šablona zodpovídá za nasazení šablon schopností.
 
-Také najdete další informace o [vytváření propojených šablon Azure Resource Manageru](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md) v věnovaný samostatný článek.
+Další informace o [Vytváření propojených Azure Resource Manager šablon](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md) najdete v samostatném článku.
 
 ```json
 {
@@ -291,43 +292,43 @@ Také najdete další informace o [vytváření propojených šablon Azure Resou
 
 #### <a name="the-hpc-solution"></a>Řešení HPC
 
-Infrastrukturu a software je možné definovat jako kód a umístěny společně ve stejném úložišti.
+Infrastrukturu a software lze definovat jako kód a společně umístěn ve stejném úložišti.
 
-Pro tohle řešení se používá aplikaci ffmpeg jako balíček aplikace. Je možné stáhnout balíček aplikace ffmpeg [tady](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip).
+Pro toto řešení se jako balíček aplikace používá ffmpeg. Balíček ffmpeg se dá stáhnout [tady](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip).
 
 ![Příklad struktury úložiště Git](media/batch-ci-cd/git-repository.jpg)
 
-Existují čtyři hlavní části do tohoto úložiště:
+Existují čtyři hlavní části tohoto úložiště:
 
-* **Šablony arm** složku, která obsahuje naše infrastruktura jako kód
-* **Aplikací hpc** složku, která obsahuje binární soubory pro aplikaci ffmpeg
-* **Kanály** složku, která obsahuje definice pro náš kanál sestavení.
-* **Volitelné**: **Klientská aplikace** složku, ve kterém bude uložený kódu pro aplikace .NET. Nepoužijeme to ve vzorku, ale ve vašem vlastním projektu můžete chtít provést spuštění aplikace Batch, HPC pomocí klientské aplikace.
+* Složka **ARM-Templates** , která ukládá naši infrastrukturu jako kód
+* Složka **HPC-Application** , která obsahuje binární soubory pro ffmpeg
+* Složka s **kanály** obsahující definici pro náš kanál sestavení.
+* **Volitelné**: Složka **klientské aplikace** , která by mohla ukládat kód pro aplikaci .NET. Nepoužíváme ho v ukázce, ale ve vašem vlastním projektu můžete chtít spustit spuštění aplikace Batch pro prostředí HPC prostřednictvím klientské aplikace.
 
 > [!NOTE]
-> Toto je pouze jeden z příkladů struktury na základ kódu. Tento přístup se používá pro účely prokázat, že aplikace, infrastruktury a kód kanálu jsou uložené ve stejném úložišti.
+> Toto je pouze jeden příklad struktury na základ kódu. Tento přístup se používá pro účely demonstrace, že se aplikace, infrastruktura a kód kanálu ukládají do stejného úložiště.
 
-Teď, když zdrojový kód je nastaven, můžeme začít první sestavení.
+Teď, když je zdrojový kód nastavený, můžeme začít s prvním sestavením.
 
 ## <a name="continuous-integration"></a>Nepřetržitá integrace
 
-[Kanály Azure](https://docs.microsoft.com/azure/devops/pipelines/get-started/?view=azure-devops), v rámci služby Azure DevOps, pomáhá implementovat sestavení, testování a nasazení kanálu pro vaše aplikace.
+[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/?view=azure-devops)v rámci Azure DevOps Services vám pomůže s implementací kanálu sestavení, testování a nasazení pro vaše aplikace.
 
-V této fázi vašeho kanálu se obvykle testy k ověření kódu a sestavení odpovídající části softwaru. Počet a typy testů a jakékoli další úlohy, které spustíte bude záviset na širší sestavení a strategie vydání.
+V této fázi kanálu jsou testy obvykle spouštěny k ověření kódu a sestavování vhodné části softwaru. Počet a typy testů a všechny další úlohy, které spustíte, budou záviset na vaší širší strategii sestavení a vydání.
 
-## <a name="preparing-the-hpc-application"></a>Příprava aplikací HPC
+## <a name="preparing-the-hpc-application"></a>Příprava aplikace HPC
 
-V tomto příkladu se zaměříme na **aplikací hpc** složky. **Aplikací hpc** složka je software ffmpeg, který se spustí z v rámci účtu Azure Batch.
+V tomto příkladu se zaměříme na složku **HPC-Application** . Složka **HPC-Application** je ffmpeg software, který se spustí v rámci účtu Azure Batch.
 
-1. Přejděte do části sestavení kanálů Azure ve vaší organizaci Azure DevOps. Vytvoření **nový kanál**.
+1. Přejděte do části Builds (sestavení) Azure Pipelines ve vaší organizaci Azure DevOps. Vytvořte **Nový kanál**.
 
     ![Vytvořit nový kanál sestavení](media/batch-ci-cd/new-build-pipeline.jpg)
 
 1. Máte dvě možnosti, jak vytvořit kanál sestavení:
 
-    a. [Pomocí vizuálního návrháře](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Pokud chcete použít, klikněte na tlačítko "Vizuálního návrháře použít" na **nový kanál** stránky.
+    a. [Pomocí vizuálního návrháře](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav). Pokud ho chcete použít, klikněte na stránce **Nový kanál** na použít vizuálního návrháře.
 
-    b. [Použití YAML sestavení](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops). Kliknutím na možnost Githubu na nové stránce kanálu nebo úložiště Azure můžete vytvořit nový kanál YAML. Alternativně můžete ukládat v příkladu níže ve vaší správě zdrojového kódu a odkazovat na existující soubor YAML, klikněte na vizuálního návrháře a pak pomocí šablony YAML.
+    b. [Pomocí sestavení YAML](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops). Nový kanál YAML můžete vytvořit kliknutím na možnost Azure Repos nebo GitHub na stránce nový kanál. Alternativně můžete uložit níže uvedený příklad v rámci správy zdrojového kódu a odkazovat na existující soubor YAML kliknutím na vizuální Návrhář a pak pomocí šablony YAML.
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -350,135 +351,135 @@ V tomto příkladu se zaměříme na **aplikací hpc** složky. **Aplikací hpc*
         targetPath: '$(Build.ArtifactStagingDirectory)/package'
     ```
 
-1. Po nakonfigurování sestavení podle potřeby vyberte **Uložit & frontu**. Pokud máte povolené průběžné integrace (v **triggery** části), sestavení spustí automaticky při vytvoření nové potvrzení do úložiště, splňují podmínky nastavení v sestavení.
+1. Po nakonfigurování sestavení podle potřeby vyberte **uložit & Queue**. Pokud máte povolenou nepřetržitou integraci (v oddílu triggery), sestavení se automaticky aktivuje při provedení nového potvrzení do úložiště, které splňuje podmínky nastavené v sestavení.
 
-    ![Příklad existující kanál sestavení](media/batch-ci-cd/existing-build-pipeline.jpg)
+    ![Příklad existujícího kanálu sestavení](media/batch-ci-cd/existing-build-pipeline.jpg)
 
-1. Zobrazit živé aktualizace v průběhu sestavení v Azure DevOps otevřením **sestavení** část kanály Azure. Vyberte příslušného sestavení z definice sestavení.
+1. Projděte si část **sestavení** v Azure Pipelines a podívejte se na průběh sestavení v Azure DevOps. Vyberte odpovídající sestavení z definice sestavení.
 
-    ![Zobrazit živé výstupy z vašeho sestavení](media/batch-ci-cd/Build-1.jpg)
+    ![Zobrazení živých výstupů z buildu](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> Pokud používáte klientskou aplikaci ke spuštění aplikace HPC Batch, potřebujete vytvořit definici samostatné sestavení pro danou aplikaci. Můžete najít několika návody v [kanály Azure](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops) dokumentaci.
+> Pokud používáte klientskou aplikaci ke spuštění aplikace pro dávku HPC, je nutné pro tuto aplikaci vytvořit samostatnou definici sestavení. V dokumentaci k [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops) můžete najít několik průvodců.
 
 ## <a name="continuous-deployment"></a>Průběžné nasazování
 
-Kanály Azure také použít k nasazení aplikací a podpůrnou infrastrukturou. [Vydávání kanálů](https://docs.microsoft.com/azure/devops/pipelines/release) je komponenta, která umožňuje průběžné nasazování a automatizuje proces vydávání verzí.
+Azure Pipelines také použít k nasazení aplikace a základní infrastruktury. [Kanály](https://docs.microsoft.com/azure/devops/pipelines/release) vydaných verzí jsou komponenty, které umožňují průběžné nasazování a automatizují proces vydávání verzí.
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Nasazení aplikace a základní infrastruktury
 
-Existuje několik kroků potřebných k nasazení infrastruktury. Jak jsme použili [propojené šablony](../azure-resource-manager/resource-group-linked-templates.md), bude nutné tyto šablony přístupný z veřejného koncového bodu (HTTP nebo HTTPS). To může být v úložišti na Githubu, nebo účet úložiště objektů Blob v Azure nebo jiného umístění úložiště. Nahraná šablona artefakty může zůstat zabezpečená a jak se můžou uchovávat v privátním režimu ale přistupovat pomocí nějakou formu token sdíleného přístupového podpisu (SAS). Následující příklad ukazuje, jak nasadit infrastrukturu s využitím šablon z objektu blob Azure Storage.
+K nasazení infrastruktury se zapojí řada kroků. Vzhledem k použití [propojených šablon](../azure-resource-manager/resource-group-linked-templates.md)bude nutné, aby tyto šablony byly dostupné z veřejného koncového bodu (http nebo https). Může to být úložiště na GitHubu, nebo účet Azure Blob Storage nebo jiné umístění úložiště. Nahrané artefakty šablony mohou zůstat v bezpečí, protože mohou být uchovávány v privátním režimu, ale přístupné pomocí nějaké formy tokenu sdíleného přístupového podpisu (SAS). Následující příklad ukazuje, jak nasadit infrastrukturu se šablonami z Azure Storageého objektu BLOB.
 
-1. Vytvoření **nové definice vydané verze**a vyberte prázdnou definici. Pak potřebujeme přejmenujte nově vytvořený prostředí na něco relevantní pro náš kanál.
+1. Vytvořte **novou definici vydané verze**a vyberte prázdnou definici. Pak bude potřeba nově vytvořené prostředí přejmenovat na něco důležitého pro náš kanál.
 
-    ![Počáteční verze kanálu](media/batch-ci-cd/Release-0.jpg)
+    ![Kanál prvotní verze](media/batch-ci-cd/Release-0.jpg)
 
-1. Vytvoření závislosti na kanálu sestavení získat výstup pro aplikace HPC.
-
-    > [!NOTE]
-    > Jednou znovu si všimněte, **Alias zdroje**, jak budete ji potřebovat při vytváření úlohy uvnitř definice vydané verze.
-
-    ![Vytvořit propojení artefaktu do HPCApplicationPackage v kanálu příslušného sestavení](media/batch-ci-cd/Release-1.jpg)
-
-1. Vytvořte odkaz na jiný artefakt, tentokrát úložišti Azure. Je to nutné pro přístup k šablon Resource Manageru uložených v úložišti. Jak šablon Resource Manageru nevyžadují kompilaci, není nutné nabízené prostřednictvím kanálu sestavení.
+1. Vytvořte závislost na kanálu sestavení, abyste získali výstup pro naši aplikaci HPC.
 
     > [!NOTE]
-    > Jednou znovu si všimněte, **Alias zdroje**, jak budete ji potřebovat při vytváření úlohy uvnitř definice vydané verze.
+    > Znovu si poznamenejte **zdrojový alias**, který bude potřeba, když se v definici vydané verze vytvoří úkoly.
 
-    ![Vytvořit propojení artefaktu do úložiště Azure](media/batch-ci-cd/Release-2.jpg)
+    ![Vytvoření odkazu na artefakt na HPCApplicationPackage v příslušném kanálu sestavení](media/batch-ci-cd/Release-1.jpg)
 
-1. Přejděte **proměnné** oddílu. Doporučuje se vytvořit počet proměnných ve vašem kanálu, takže nejsou zadávání stejných informací na více úkolů. Toto jsou proměnné používané v tomto příkladu a jak by mohly mít dopad nasazení.
+1. Vytvořte odkaz na jiný artefakt a tentokrát na úložiště Azure. Tento postup je vyžadován pro přístup k šablonám Správce prostředků uložených ve vašem úložišti. Jelikož šablony Správce prostředků nevyžadují kompilaci, nemusíte je vkládat prostřednictvím kanálu sestavení.
 
-    * **applicationStorageAccountName**: Název účtu úložiště pro uložení binární soubory aplikace HPC
+    > [!NOTE]
+    > Znovu si poznamenejte **zdrojový alias**, který bude potřeba, když se v definici vydané verze vytvoří úkoly.
+
+    ![Vytvořit odkaz na artefakt na Azure Repos](media/batch-ci-cd/Release-2.jpg)
+
+1. Přejděte do části **proměnné** . V kanálu doporučujeme vytvořit několik proměnných, takže neumístíte stejné informace do více úloh. Jedná se o proměnné používané v tomto příkladu a o tom, jak mají vliv na nasazení.
+
+    * **applicationStorageAccountName**: Název účtu úložiště pro ukládání binárních souborů aplikace HPC
     * **batchAccountApplicationName**: Název aplikace v účtu Azure Batch
-    * **batchAccountName**: Název účtu Azure Batch
-    * **batchAccountPoolName**: Název fondu virtuálních počítačů to zpracování
-    * **batchApplicationId**: Jedinečné ID aplikace Azure Batch
-    * **batchApplicationVersion**: Sémantické verze aplikace batch (to znamená, že aplikace ffmpeg binárních souborů)
-    * **Umístění**: Umístění pro prostředky Azure k nasazení
-    * **resourceGroupName**: Název skupiny prostředků, které mají být vytvořeny, a kde se prostředky nasadí
-    * **storageAccountName**: Název účtu úložiště pro uložení propojenými šablonami Resource Manageru
+    * **batchAccountName**: Název Azure Batch účtu
+    * **batchAccountPoolName**: Název fondu virtuálních počítačů, které provádí zpracování
+    * **batchApplicationId**: Jedinečné ID pro Azure Batch aplikaci
+    * **batchApplicationVersion**: Sémantická verze vaší aplikace Batch (tj. binární soubory ffmpeg)
+    * **umístění**: Umístění prostředků Azure, které se mají nasadit
+    * **resourceGroupName**: Název skupiny prostředků, která se má vytvořit, a místa, kde budou nasazeny vaše prostředky
+    * **storageAccountName**: Název účtu úložiště pro ukládání propojených Správce prostředků šablon
 
-    ![Příklad proměnné nastavené pro verzi kanály Azure](media/batch-ci-cd/Release-4.jpg)
+    ![Příklad sady proměnných nastavených pro Azure Pipelines vydání](media/batch-ci-cd/Release-4.jpg)
 
-1. Přejděte na úlohy pro vývojové prostředí. V následujícím snímku, zobrazí se šesti úkolů. Budou tyto úlohy: stahování souborů ZIP ffmpeg, účet úložiště pro hostování vnořené šablony Resource Manageru, zkopírování těchto šablon Resource Manageru k účtu úložiště, nasazení účtu batch a požadované závislosti, vytvořit aplikaci v nasazení Účet Azure Batch a nahrání balíčku aplikace k účtu Azure Batch.
+1. Přejděte k úkolům pro vývojové prostředí. V níže uvedeném snímku vidíte šest úkolů. Tyto úlohy budou: Stáhněte si soubory ffmpeg, nasaďte účet úložiště, který bude hostovat vnořené Správce prostředků šablony, zkopírujte tyto Správce prostředků šablony do účtu úložiště, nasaďte účet Batch a požadované závislosti, vytvořte aplikaci v Účet Azure Batch a nahrajte balíček aplikace na účet Azure Batch.
 
-    ![Příklad úloh použijí k uvolnění aplikace prostředí HPC do služby Azure Batch](media/batch-ci-cd/Release-3.jpg)
+    ![Příklad úloh používaných k uvolnění aplikace HPC do Azure Batch](media/batch-ci-cd/Release-3.jpg)
 
-1. Přidat **stažení artefaktů kanálu (Preview)** úloh a nastavte následující vlastnosti:
-    * **Zobrazovaný název:** Stáhněte si ApplicationPackage agentům
-    * **Název artefaktu ke stažení:** aplikací hpc
-    * **Cesta pro stažení do**: $(System.DefaultWorkingDirectory)
+1. Přidejte úlohu **Stáhnout artefakt kanálu (Preview)** a nastavte následující vlastnosti:
+    * **Zobrazovaný název:** Stáhnout ApplicationPackage do agenta
+    * **Název artefaktu, který se má stáhnout:** HPC-Application
+    * **Cesta pro stažení do**: $ (System. DefaultWorkingDirectory)
 
-1. Vytvořte účet úložiště k ukládání artefaktů. Může použít existující účet úložiště z řešení, ale pro samostatná ukázka a izolace obsahu, provádíme vyhrazeného úložiště účtu pro naše artefakty (konkrétně šablon Resource Manageru).
+1. Vytvořte účet úložiště pro ukládání artefaktů. Mohl by být použit existující účet úložiště z řešení, ale pro vlastní ukázku a izolaci obsahu vytváříme pro naše artefakty vyhrazený účet úložiště (konkrétně šablony Správce prostředků).
 
-    Přidat **nasazení skupiny prostředků Azure** úloh a nastavte následující vlastnosti:
-    * **Zobrazovaný název:** Nasazení účtu úložiště pro šablony Resource Manageru
-    * **Předplatné Azure:** Vyberte příslušné předplatné Azure
+    Přidejte úlohu **nasazení skupiny prostředků Azure** a nastavte následující vlastnosti:
+    * **Zobrazovaný název:** Nasazení účtu úložiště pro šablony Správce prostředků
+    * **Předplatné Azure:** Vyberte příslušné předplatné Azure.
     * **Akce**: Vytvoření nebo aktualizace skupiny prostředků
-    * **Skupina prostředků**: $(resourceGroupName)
-    * **Umístění**: $(location)
-    * **Template**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
-    * **Přepsání parametrů šablony**: $(storageAccountName) – název účtu
+    * **Skupina prostředků**: $ (resourceGroupName)
+    * **Umístění**: $ (umístění)
+    * **Šablona**: $ (System. ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /ARM-Templates/storageAccount.JSON
+    * **Přepsat parametry šablony**:-account $ (storageAccountName)
 
-1. Odešlete artefakty ze správy zdrojového kódu do účtu úložiště. Zde je úloha kanálu Azure k této. V rámci této úlohy se adresa URL kontejneru účtu úložiště a tokenu SAS výstupem proměnné v kanálech Azure. To znamená, že můžete znovu použít v průběhu této fáze agenta.
+1. Nahrajte artefakty ze správy zdrojového kódu do účtu úložiště. K provedení tohoto postupu je k dispozici úkol kanálu Azure. V rámci této úlohy se dá adresa URL kontejneru účtu úložiště a token SAS výstupem do proměnné v Azure Pipelines. To znamená, že se dá znovu použít v rámci této fáze agenta.
 
-    Přidat **Azure File Copy** úloh a nastavte následující vlastnosti:
-    * **Source:** $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/
+    Přidejte úlohu **kopírování souborů Azure** a nastavte následující vlastnosti:
+    * **Zdroj:** $ (System. ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /ARM-Templates/
     * **Typ připojení Azure**: Azure Resource Manager
-    * **Předplatné Azure:** Vyberte příslušné předplatné Azure
-    * **Cílový typ**: Azure Blob
-    * **RM Storage Account**: $(storageAccountName)
+    * **Předplatné Azure:** Vyberte příslušné předplatné Azure.
+    * **Typ cíle**: Azure Blob
+    * **Účet úložiště RM**: $ (storageAccountName)
     * **Název kontejneru**: šablony
     * **Identifikátor URI kontejneru úložiště**: templateContainerUri
-    * **Úložiště kontejneru SAS Token**: templateContainerSasToken
+    * **Token SAS kontejneru úložiště**: templateContainerSasToken
 
-1. Nasazení šablony nástroje orchestrator. Odvolat šablony nástroje orchestrator z předchozí, všimnete si, že byly parametry pro adresu kontejneru účtu úložiště kromě tokenu SAS. Měli byste zaznamenat, že se buď nachází v sekci proměnných definice vydané verze proměnné v šabloně Resource Manageru vyžaduje, nebo nebyly nastaveny z jiné kanály Azure úlohy (například součástí úlohu kopírování objektu Blob Azure).
+1. Nasaďte šablonu Orchestrator. Navrácením šablony Orchestrator z předchozích verzí si všimnete, že kromě tokenu SAS se nastavily parametry pro adresu URL kontejneru účtu úložiště. Měli byste si všimnout, že proměnné požadované v šabloně Správce prostředků jsou buď uloženy v oddílu Variables definice verze, nebo byly nastaveny z jiné úlohy Azure Pipelines (například součástí úlohy kopírování objektů BLOB v Azure).
 
-    Přidat **nasazení skupiny prostředků Azure** úloh a nastavte následující vlastnosti:
-    * **Zobrazovaný název:** Nasazení služby Azure Batch
-    * **Předplatné Azure:** Vyberte příslušné předplatné Azure
+    Přidejte úlohu **nasazení skupiny prostředků Azure** a nastavte následující vlastnosti:
+    * **Zobrazovaný název:** Nasazení Azure Batch
+    * **Předplatné Azure:** Vyberte příslušné předplatné Azure.
     * **Akce**: Vytvoření nebo aktualizace skupiny prostředků
-    * **Skupina prostředků**: $(resourceGroupName)
-    * **Umístění**: $(location)
-    * **Template**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
-    * **Přepsání parametrů šablony**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    * **Skupina prostředků**: $ (resourceGroupName)
+    * **Umístění**: $ (umístění)
+    * **Šablona**: $ (System. ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /ARM-Templates/Deployment.JSON
+    * **Přepsat parametry šablony**:```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
-Běžnou praxí je použití úkolů s Azure Key Vault. Pokud instanční objekt (připojení k vašemu předplatnému Azure) odpovídající přístup zásady s nastavením, můžete stáhnout tajné kódy ze služby Azure Key Vault a použít jako proměnné ve vašem kanálu. Název tajného kódu se nastaví s přidruženou hodnotu. Například mohou být odkazovány tajného kódu sshPassword s $(sshPassword) v definici vydané verze.
+Běžný postup je použít Azure Key Vault úlohy. Pokud má instanční objekt (připojení k vašemu předplatnému Azure) odpovídající nastavení zásad přístupu, může stahovat tajné kódy z Azure Key Vault a používat je jako proměnné v kanálu. Název tajného klíče se nastaví s přidruženou hodnotou. V definici vydané verze může být například odkaz na tajný kód sshPassword s použitím $ (sshPassword).
 
-1. Další kroky volání rozhraní příkazového řádku Azure. První slouží k vytvoření aplikace ve službě Azure Batch. a odešlete přidružené balíčky.
+1. Další kroky volají rozhraní příkazového řádku Azure CLI. První slouží k vytvoření aplikace v Azure Batch. a nahrajte přidružené balíčky.
 
-    Přidat **rozhraní příkazového řádku Azure** úloh a nastavte následující vlastnosti:
+    Přidejte úlohu **Azure CLI** a nastavte následující vlastnosti:
     * **Zobrazovaný název:** Vytvoření aplikace v účtu Azure Batch
-    * **Předplatné Azure:** Vyberte příslušné předplatné Azure
-    * **Umístění skriptu**: Zpracování vloženého skriptu
-    * **Zpracování vloženého skriptu**: ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **Předplatné Azure:** Vyberte příslušné předplatné Azure.
+    * **Umístění skriptu**: Vložený skript
+    * **Vložený skript**:```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
-1. Druhý krok se používá k odeslání přidružené balíčky do aplikace. V našem případě ffmpeg soubory.
+1. Druhý krok slouží k nahrání přidružených balíčků do aplikace. V našem případě soubory ffmpeg.
 
-    Přidat **rozhraní příkazového řádku Azure** úloh a nastavte následující vlastnosti:
-    * **Zobrazovaný název:** Nahrání balíčku do účtu Azure Batch
-    * **Předplatné Azure:** Vyberte příslušné předplatné Azure
-    * **Umístění skriptu**: Zpracování vloženého skriptu
-    * **Zpracování vloženého skriptu**: ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    Přidejte úlohu **Azure CLI** a nastavte následující vlastnosti:
+    * **Zobrazovaný název:** Nahrát balíček na účet Azure Batch
+    * **Předplatné Azure:** Vyberte příslušné předplatné Azure.
+    * **Umístění skriptu**: Vložený skript
+    * **Vložený skript**:```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
-    > Číslo verze balíčku aplikace je nastavena na proměnnou. To je vhodné, pokud přepsat předchozí verze balíčku vám vyhovuje, a pokud chcete ručně řídit číslo verze balíčku do služby Azure Batch.
+    > Číslo verze balíčku aplikace je nastaveno na proměnnou. To je užitečné, pokud přepsané předchozí verze balíčku budou fungovat za vás a pokud chcete ručně řídit číslo verze vloženého balíčku na Azure Batch.
 
-1. Vytvořit novou verzi výběrem **Release > vytvořit nové vydání**. Po aktivaci, vyberte odkaz na vaše nová verze, chcete-li zobrazit stav.
+1. Vytvořte novou verzi výběrem možnosti **vydání > vytvořit novou verzi**. Po aktivaci vyberte odkaz na novou verzi pro zobrazení stavu.
 
-1. Živé výstup z agenta můžete zobrazit tak, že vyberete **protokoly** tlačítko pod vašeho prostředí.
+1. Živý výstup z agenta si můžete zobrazit tak, že vyberete tlačítko **protokoly** pod vaším prostředím.
 
-    ![Zobrazení stavu vydaných verzí](media/batch-ci-cd/Release-5.jpg)
+    ![Zobrazení stavu vydané verze](media/batch-ci-cd/Release-5.jpg)
 
-### <a name="testing-the-environment"></a>Prostředí pro testování
+### <a name="testing-the-environment"></a>Testování prostředí
 
-Po nastavení prostředí potvrďte, že následující testy lze úspěšně dokončit.
+Po nastavení prostředí potvrďte, že následující testy mohou být úspěšně dokončeny.
 
-Připojte se k novému účtu Batch Azure, pomocí rozhraní příkazového řádku Azure z příkazového řádku Powershellu.
+Připojte se k novému účtu Azure Batch pomocí Azure CLI z příkazového řádku PowerShellu.
 
-* Přihlaste se ke svému účtu Azure pomocí `az login` a postupujte podle pokynů k ověření.
-* Nyní ověřit účet Batch: `az batch account login -g <resourceGroup> -n <batchAccount>`
+* Přihlaste se ke svému účtu `az login` Azure pomocí a postupujte podle pokynů k ověření.
+* Nyní ověřte účet Batch:`az batch account login -g <resourceGroup> -n <batchAccount>`
 
 #### <a name="list-the-available-applications"></a>Seznam dostupných aplikací
 
@@ -486,17 +487,17 @@ Připojte se k novému účtu Batch Azure, pomocí rozhraní příkazového řá
 az batch application list -g <resourcegroup> -n <batchaccountname>
 ```
 
-#### <a name="check-the-pool-is-valid"></a>Zkontrolujte, že platnost fondu
+#### <a name="check-the-pool-is-valid"></a>Ověřte, že fond je platný.
 
 ```azurecli
 az batch pool list
 ```
 
-Poznamenejte si hodnotu `currentDedicatedNodes` z výstupu tohoto příkazu. Tato hodnota se upraví další testu.
+Všimněte si hodnoty `currentDedicatedNodes` z výstupu tohoto příkazu. Tato hodnota je upravena v dalším testu.
 
 #### <a name="resize-the-pool"></a>Změna velikosti fondu
 
-Změňte velikost fondu, takže máte výpočetní uzly, které jsou k dispozici pro úlohy a úkolů testování, obraťte se na příkazu fond seznamu chcete zobrazit aktuální stav, dokud se změna velikosti bylo dokončeno a je k dispozici uzlů
+Změňte velikost fondu tak, aby byly k dispozici výpočetní uzly pro úlohy a testování úloh, pomocí příkazu Seznam fondů zobrazte aktuální stav, dokud se změna velikosti nedokončí a jsou dostupné uzly.
 
 ```azurecli
 az batch pool resize --pool-id <poolname> --target-dedicated-nodes 4
@@ -504,7 +505,7 @@ az batch pool resize --pool-id <poolname> --target-dedicated-nodes 4
 
 ## <a name="next-steps"></a>Další postup
 
-Kromě tohoto článku jsou k dispozici dva kurzy, které využívají aplikace ffmpeg, pomocí .NET a Python. Najdete v těchto kurzech pro další informace o tom, jak pracovat s účtem Batch přes jednoduchou aplikaci.
+Kromě tohoto článku jsou k dispozici dva kurzy, které využívají ffmpeg, a to pomocí .NET a Pythonu. V těchto kurzech najdete další informace o tom, jak pracovat s účtem Batch prostřednictvím jednoduché aplikace.
 
-* [Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní Python API](tutorial-parallel-python.md)
-* [Spuštění paralelní úlohy pomocí služby Azure Batch pomocí rozhraní API .NET](tutorial-parallel-dotnet.md)
+* [Spuštění paralelní úlohy pomocí Azure Batch s využitím rozhraní Python API](tutorial-parallel-python.md)
+* [Spuštění paralelní úlohy s Azure Batch pomocí rozhraní .NET API](tutorial-parallel-dotnet.md)

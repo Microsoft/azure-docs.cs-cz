@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b90986e449df7e81f97f9ef86ce3cf69621c76d6
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 17fa443c3b0113d80a020f2a43c7099cf5a832d2
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335747"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772906"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostika a řešení potíží při použití triggeru Azure Functions pro Cosmos DB
 
@@ -88,6 +88,15 @@ Pokud zjistíte, že Trigger nepřijal vůbec nějaké změny, nejběžnějším
 Pokud víte, kolik instancí Azure Function App máte spuštěné, můžete taky ověřit scénář. Pokud provedete kontrolu kontejneru zapůjčení a určíte počet položek zapůjčení v rámci, budou jedinečné hodnoty `Owner` vlastnosti v nich rovny počtu instancí Function App. Pokud jsou k dispozici více vlastníků než známé instance služby Azure Function App, znamená to, že tyto další vlastníci jsou "ukrást".
 
 Jedním ze `LeaseCollectionPrefix/leaseCollectionPrefix` způsobů, jak tuto situaci vyřešit, je použít pro vaši funkci novou/odlišnou hodnotu nebo nebo otestovat pomocí nového kontejneru zapůjčení.
+
+### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>Je nutné restartovat a znovu zpracovat všechny položky v kontejneru od začátku. 
+Opětovné zpracování všech položek v kontejneru od začátku:
+1. Pokud je služba Azure Functions momentálně spuštěná, zastavte ji. 
+1. Odstraňte dokumenty v kolekci zapůjčení (nebo odstraňte a znovu vytvořte kolekci zapůjčení, aby byla prázdná).
+1. Ve své funkci nastavte atribut [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) CosmosDBTrigger na hodnotu true. 
+1. Restartujte funkci Azure Functions. Nyní bude číst a zpracovávat všechny změny od začátku. 
+
+Nastavení [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) na hodnotu true oznámí službě Azure Function, aby začaly číst změny od začátku historie kolekce namísto aktuálního času. To funguje jenom v případě, že už nejsou vytvořená zapůjčení (tj. dokumenty v kolekci zapůjčení). Nastavení této vlastnosti na hodnotu true, pokud jsou již vytvořené zapůjčené adresy nijak ovlivněny. v tomto scénáři se při zastavení a opětovném spuštění funkce začne číst z posledního kontrolního bodu, jak je definováno v kolekci zapůjčení. Chcete-li znovu zpracovat od začátku, postupujte podle výše uvedených kroků 1-4.  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Vazbu lze provést pouze s dokumentem\<IReadOnlyList > nebo JArray
 

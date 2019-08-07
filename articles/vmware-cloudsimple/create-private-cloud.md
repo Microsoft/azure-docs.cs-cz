@@ -1,77 +1,82 @@
 ---
-title: Vytvoření řešení Azure VMware CloudSimple privátního cloudu
-description: Popisuje, jak vytvořit CloudSimple privátního cloudu k rozšíření úloh VMware do cloudu s provozní flexibility a kontinuity podnikových procesů
+title: Vytvoření řešení Azure VMware pomocí CloudSimple privátního cloudu
+description: Popisuje vytvoření privátního cloudu CloudSimple pro rozšiřování úloh VMware do cloudu s využitím provozní flexibility a kontinuity.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5c03c1d8a865b792ce79e3e2b576a629b71e02c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 02a2bd311ea1e89a49eb12ef57a167a08eea5f98
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67333287"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812249"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>Vytvoření privátního cloudu CloudSimple
 
-Vytvoření privátního cloudu vám pomůžeme proniknout celou řadu běžných požadavků síťové infrastruktury:
+Vytvoření privátního cloudu vám pomůže vyřešit celou řadu běžných potřeb pro síťovou infrastrukturu:
 
-* **Růst**. Pokud bod aktualizace hardwaru dosáhli jste vaší stávající infrastruktury, privátního cloudu umožňuje rozšířit s žádné nové hardwarových investic vyžaduje.
+* **Růst**. Pokud jste se seznámili s bodem aktualizace hardwaru pro stávající infrastrukturu, privátní Cloud umožňuje rozšíření bez nutnosti nové investice do hardwaru.
 
-* **Rychlé rozšiřování**. Pokud kapacita dočasné nebo neplánované potřeby, privátního cloudu můžete vytvořit další kapacitu bez zpoždění.
+* **Rychlé rozšíření**. Pokud nastanou dočasné nebo neplánované nároky na kapacitu, privátní cloud vám umožní vytvořit další kapacitu bez prodlení.
 
-* **Zvýšení ochrany**. Díky privátního cloudu tři nebo více uzlů budete mít automatickou redundanci a vysokou dostupnost ochrany.
+* **Zvýšená ochrana**. Pomocí privátního cloudu se třemi nebo více uzly získáte automatickou ochranu redundance a vysokou dostupnost.
 
-* **Dlouhodobé infrastruktury musí**. Pokud vaše datová centra jsou plně využívá kapacitu nebo chcete provést změny struktury snížit vaše náklady, privátního cloudu umožňuje vyřadit z provozu datových center a migrace na cloudové řešení přitom kompatibilní s vaší podnikové operace.
+* **Dlouhodobé potřeby infrastruktury**. Pokud vaše datacentra mají kapacitu v kapacitě nebo chcete změnit jejich strukturu a snížit tak náklady, privátní cloud vám umožní vyřadit datová centra a migrovat je do cloudového řešení, a to i v případě, že budou kompatibilní s podnikovými operacemi.
 
-Když vytvoříte privátní Cloud, získáte vSphere jeden cluster a všechny virtuální počítače pro správu, které jsou vytvořené v tomto clusteru.
+Při vytváření privátního cloudu získáte jeden cluster vSphere a všechny virtuální počítače pro správu, které jsou vytvořeny v tomto clusteru.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Uzly je potřeba poskytovat, než budete moct vytvořit privátní Cloud.  Další informace o zřizování uzlů najdete v tématu [zřízení uzlů pro řešení VMware podle CloudSimple - Azure](create-nodes.md) článku.
+Uzly musí být zřízené, aby bylo možné vytvořit privátní cloud.  Další informace o zřizovacích uzlech najdete v článku [zřízení uzlů pro řešení VMware podle CloudSimple – Azure](create-nodes.md) .
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+Přidělte rozsah CIDR pro podsítě vSphere/síti vSAN pro privátní cloud. Privátní cloud se vytvoří jako izolovaný zásobník VMware (ESXi hosts, vCenter, síti vSAN a NSX), který spravuje Server vCenter. Součásti pro správu se nasazují v síti vybrané pro směrování vSphere/síti vSAN pro sítě. Rozsah směrování sítě je v průběhu nasazení rozdělen do různých podsítí.  Adresní prostor podsítě vSphere/síti vSAN musí být jedinečný. Nesmí se překrývat s žádnou sítí, která komunikuje s prostředím CloudSimple.  Sítě, které komunikují s CloudSimple, zahrnují místní sítě a virtuální sítě Azure.  Další informace o podsítích vSphere/síti vSAN najdete v tématu [Přehled sítí VLAN a podsítí](cloudsimple-vlans-subnets.md).
+
+* Minimální předpona rozsahu CIDR podsítě vSphere/síti vSAN:/24 
+* Maximální předpona rozsahu CIDR podsítě vSphere/síti vSAN:/21
+
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="access-the-cloudsimple-portal"></a>Přístup k portálu CloudSimple
 
-Přístup [CloudSimple portál](access-cloudsimple-portal.md).
+Přístup k [portálu CloudSimple](access-cloudsimple-portal.md).
 
-## <a name="create-a-new-private-cloud"></a>Vytvořit nový privátní Cloud
+## <a name="create-a-new-private-cloud"></a>Vytvoření nového privátního cloudu
 
-1. Na **prostředky** klikněte na **nové privátního cloudu**.
+1. Na stránce **prostředky** klikněte na **Nový privátní cloud**.
 
-    ![Vytvoření privátního cloudu – spuštění](media/create-pc-button.png)
+    ![Vytvoření privátního cloudu – jak začít](media/create-pc-button.png)
 
-2. Vyberte umístění pro hostování prostředky privátního cloudu.
+2. Vyberte umístění pro hostování prostředků privátního cloudu.
 
-3. Zvolte CS28 nebo CS36 you'ev typ uzlu zřízené pro privátní Cloud. Druhou možnost zahrnuje maximální kapacitu výpočetní a paměťové prostředky.
+3. Vyberte CS28 nebo CS36 typ uzlu you'ev zřízené pro daný privátní cloud. Tato možnost zahrnuje maximální kapacitu výpočetní kapacity a paměti.
 
-4. Vyberte počet uzlů pro privátní Cloud. Můžete vybrat maximálně k dispozici z počtu uzlů tohoto you'ev [zřízené](create-nodes.md).
+4. Vyberte počet uzlů pro privátní cloud. Můžete vybrat maximálně dostupný počet uzlů, které you'ev [zřízené](create-nodes.md).
 
     ![Vytvoření privátního cloudu – základní nastavení](media/create-private-cloud-basic-info.png)
 
-5. Klikněte na tlačítko **Další: Rozšířené možnosti**.
+5. Klikněte **na další: Rozšířené možnosti**.
 
-6. Zadejte rozsah CIDR. pro podsítě vSphere/síti vSAN. Ujistěte se, že rozsah CIDR, nepřekrývá s žádným z místní nebo jiných podsítích Azure (virtuální sítě) nebo s podsítí brány.  Nepoužívejte žádné rozsah CIDR definované ve virtuálních sítích Azure.
+6. Zadejte rozsah CIDR pro podsítě vSphere/síti vSAN. Ujistěte se, že se rozsah CIDR nepřekrývá s žádnou místní nebo jinou podsítí Azure (virtuální sítě) nebo s podsítí brány.  Nepoužívejte žádný rozsah CIDR definovaný v Azure Virtual Networks.
     
-    **Volby rozsahu CIDR:** /24, /23, /22 nebo /21. A/24 rozsah CIDR podporuje až devět uzly, /23 rozsah CIDR podporuje až 41 uzly a /22 a /21 rozsah CIDR podporuje až 64 uzly (maximální počet uzlů v privátním cloudu).
+    **Možnosti rozsahu CIDR:** /24,/23,/22 nebo/21. Rozsah CIDR/24 v rozsahu podporuje až devět uzlů, rozsah CIDR/23 podporuje až 41 uzlů a rozsah CIDR/22 a/21 podporuje až 64 uzlů (maximální počet uzlů v privátním cloudu).
 
     > [!CAUTION]
-    > IP adresy v rozsahu CIDR vSphere/síť vSAN je vyhrazený pro použití v infrastruktuře privátního cloudu.  Nepoužívejte IP adresy v tomto rozsahu na jakýkoli virtuální počítač.
+    > IP adresy v rozsahu vSphere/síti vSAN CIDR jsou vyhrazené pro použití v infrastruktuře privátního cloudu.  Nepoužívejte IP adresu v tomto rozsahu na žádném virtuálním počítači.
 
-7. Klikněte na tlačítko **Další: Zkontrolovat a vytvořit**.
+7. Klikněte **na další: Zkontrolujte a vytvořte**.
 
-8. Zkontrolujte nastavení. Pokud potřebujete změnit libovolné nastavení, klikněte na tlačítko **předchozí**.
+8. Zkontrolujte nastavení. Pokud potřebujete změnit nějaké nastavení, klikněte na tlačítko **Předchozí**.
 
 9. Klikněte na možnost **Vytvořit**.
 
-Privátní Cloud, zřizování se spustí po kliknutí na vytvořit.  Můžete sledovat průběh na základě [úlohy](https://docs.azure.cloudsimple.com/activity/#tasks) stránky na portálu CloudSimple.  Zřizování může trvat 30 minut až dvou hodin.  Obdržíte e-mailu po dokončení zřizování.
+Po kliknutí na vytvořit se spustí zřizování privátního cloudu.  Na portálu CloudSimple můžete sledovat stránku průběh [úloh](https://docs.azure.cloudsimple.com/activity/#tasks) .  Zřizování může trvat 30 minut až dvou hodin.  Až se zřizování dokončí, dostanete e-mail.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Rozbalte privátního cloudu](expand-private-cloud.md)
+* [Rozšíření privátního cloudu](expand-private-cloud.md)

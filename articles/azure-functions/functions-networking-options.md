@@ -1,6 +1,6 @@
 ---
-title: Služba Azure Functions možnostech sítě
-description: Přehled všech možností sítě k dispozici ve službě Azure Functions
+title: Možnosti Azure Functions sítě
+description: Přehled všech možností sítě, které jsou k dispozici v Azure Functions
 services: functions
 author: alexkarcher-msft
 manager: jeconnoc
@@ -8,102 +8,126 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a0bb34f8a43199a5d3a18064bce92ef4bec543af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f4f081001f2573bccc58205ccc7955739b7f5c4c
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050643"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779280"
 ---
-# <a name="azure-functions-networking-options"></a>Služba Azure Functions možnostech sítě
+# <a name="azure-functions-networking-options"></a>Možnosti Azure Functions sítě
 
-Tento článek popisuje síťové funkce, které jsou k dispozici napříč možnosti hostování pro službu Azure Functions. Všechny následující možnosti sítě poskytují některé možnost přístupu k prostředkům bez použití internetové adresy směrovatelné nebo omezit přístup k Internetu na aplikaci funkcí. 
+Tento článek popisuje síťové funkce, které jsou dostupné napříč možnostmi hostování pro Azure Functions. Všechny následující možnosti sítě poskytují určitou možnost přístupu k prostředkům bez použití adresních IP adres nebo omezení přístupu k Internetu do aplikace Function App. 
 
-Hostování modely mají různé úrovně izolace sítě, které jsou k dispozici. Výběr správné vám pomůže splnit vaše požadavky na izolaci sítě.
+Modely hostování mají k dispozici různé úrovně izolace sítě. Výběr správné verze vám pomůže splnit požadavky na izolaci sítě.
 
-Můžete hostovat aplikace function App v několika způsoby:
+Aplikace Function App můžete hostovat několika způsoby:
 
-* Existuje sada možností plánu, které běží na infrastrukturu víceklientské s různými úrovněmi připojení k virtuální síti a možnosti škálování:
-    * [Plánu Consumption](functions-scale.md#consumption-plan), která se dynamicky škáluje v reakci na zatížení a nabízí možnosti izolace sítě minimální.
-    * [Plán Premium](functions-scale.md#premium-plan), což také dynamicky, škálování a nabízí komplexnější izolace sítě.
-    * Azure [plán služby App Service](functions-scale.md#app-service-plan), který funguje na pevnou škálovací a nabízí podobné izolace sítě k plánu Premium.
-* Funkce můžete spustit v [služby App Service Environment](../app-service/environment/intro.md). Tato metoda nasadí funkce do vaší virtuální sítě a nabízí plnou síťového ovládacího prvku a izolaci.
+* Existuje sada možností plánu, které běží na víceklientské infrastruktuře s různými úrovněmi připojení a možností škálování virtuální sítě:
+    * [Plán spotřeby](functions-scale.md#consumption-plan), který se dynamicky škáluje v reakci na načtení a nabízí minimální možnosti izolace sítě.
+    * [Plán Premium](functions-scale.md#premium-plan), který se také dynamicky škáluje a zároveň nabízí komplexnější izolaci sítě.
+    * Plán Azure [App Service](functions-scale.md#app-service-plan), který pracuje s pevnou škálou a nabízí podobnou izolaci sítě pro plán Premium.
+* Funkce můžete spouštět v [App Service Environment](../app-service/environment/intro.md). Tato metoda nasadí vaši funkci do vaší virtuální sítě a nabízí kompletní řízení a izolaci sítě.
 
 ## <a name="matrix-of-networking-features"></a>Matice síťových funkcí
 
-|                |[Plán consumption](functions-scale.md#consumption-plan)|[Plán Premium (preview)](functions-scale.md#premium-plan)|[Plán služby App Service](functions-scale.md#app-service-plan)|[App Service Environment](../app-service/environment/intro.md)|
+|                |[Plán spotřeby](functions-scale.md#consumption-plan)|[Plán Premium (Preview)](functions-scale.md#premium-plan)|[Plán služby App Service](functions-scale.md#app-service-plan)|[App Service Environment](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[Příchozí omezení IP adres](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
-|[Omezení odchozích IP adres](#private-site-access)|❌No| ❌No|❌No|✅Yes|
-|[Integrace virtuální sítě](#virtual-network-integration)|❌No|❌No|✅Yes|✅Yes|
-|[Integrace služby virtual network ve verzi Preview (odchozí koncové body služby a Azure ExpressRoute)](#preview-version-of-virtual-network-integration)|❌No|✅Yes|✅Yes|✅Yes|
-|[Hybridní připojení](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
-|[přístup privátního lokality](#private-site-access)|❌No| ✅Yes|✅Yes|✅Yes|
+|[Omezení příchozí IP adresy & přístupu k privátnímu webu](#inbound-ip-restrictions)|✅ Ano|✅ Ano|✅ Ano|✅ Ano|
+|[Integrace virtuální sítě](#virtual-network-integration)|❌ Ne|✅ Ano (místní)|✅ Ano (místní a brána)|✅ Ano|
+|[Aktivační události virtuální sítě (jiné než HTTP)](#virtual-network-triggers-non-http)|❌ Ne| ❌ Ne|✅ Ano|✅ Ano|
+|[Hybridní připojení](#hybrid-connections)|❌ Ne|❌ Ne|✅ Ano|✅ Ano|
+|[Omezení odchozích IP adres](#outbound-ip-restrictions)|❌ Ne| ❌ Ne|❌ Ne|✅ Ano|
 
-## <a name="inbound-ip-restrictions"></a>Příchozí omezení IP adres
 
-Omezení IP adres můžete použít k definování priority seřazené seznam IP adres, které jsou povolený/zamítnutý přístup k vaší aplikaci. Tento seznam může obsahovat adresy IPv4 a IPv6. Když je jeden nebo více položek, implicitní "Zamítnout vše" na konci seznamu existuje. Omezení IP adres fungovat se všemi možnostmi funkce hostování.
+## <a name="inbound-ip-restrictions"></a>Omezení příchozích IP adres
+
+Omezení IP adres můžete použít k definování seznamu IP adres seřazených podle priority, které mají povolený nebo odepřený přístup k vaší aplikaci. Seznam může zahrnovat IPv4 a IPv6 adresy. Pokud existuje jedna nebo více položek, na konci seznamu existuje implicitní "Odepřít vše". Omezení protokolu IP fungují se všemi možnostmi hostování funkcí.
 
 > [!NOTE]
-> Použití editoru webu Azure portal, musí být přístup přímo k běžící aplikaci function app na portálu. Zařízení, které používáte pro přístup k portálu také musí mít jeho seznam povolených IP adres. Síťové omezení na místě, můžete stále přístup k žádné funkce v **funkce platformy** kartu.
+> Se síťovými omezeními můžete použít jenom Editor portálu z vaší virtuální sítě, nebo pokud jste v seznamu přistavili IP adresu počítače, který používáte pro přístup k Azure Portal. K funkcím na kartě **funkce platformy** ale můžete přistupovat z libovolného počítače.
 
-Další informace najdete v tématu [omezení statických přístupu službě Azure App Service](../app-service/app-service-ip-restrictions.md).
-
-## <a name="outbound-ip-restrictions"></a>Odchozí omezení IP adres
-
-Odchozí omezení IP adres jsou dostupné jenom pro funkce nasazení do služby App Service Environment. Můžete nakonfigurovat odchozí omezení pro virtuální síť, ve kterém je nasazená služba App Service Environment.
-
-## <a name="virtual-network-integration"></a>Integrace virtuální sítě
-
-Integrace služby Virtual network umožňuje vaší aplikaci funkcí přístup k prostředkům ve virtuální síti. Tato funkce je dostupná v plánu Premium a plán služby App Service. Pokud je vaše aplikace ve službě App Service Environment, se už ve virtuální síti a nevyžaduje použití integrace služby virtual network k přístupu k prostředkům ve stejné virtuální síti.
-
-Integrace služby Virtual network poskytuje aplikaci funkcí přístup k prostředkům ve vaší virtuální síti, ale nebude udělit [přístup k webům privátní](#private-site-access) aplikaci function App z virtuální sítě.
-
-Integrace služby virtual network můžete povolit přístup z aplikací a databází, webových služeb běžících ve vaší virtuální síti. Integrace virtuální sítě není nutné vystavit veřejný koncový bod pro aplikace na svém virtuálním počítači. Místo toho můžete adresy směrovatelné privátní, bez Internetu.
-
-Obecně dostupnou verzi integrace služby virtual network spoléhá na bránu sítě VPN pro připojení aplikace function App k virtuální síti. Je k dispozici v funkcí hostované v plánu služby App Service. Další informace o konfiguraci této funkce, najdete v článku [integrujte svou aplikaci s Azure virtual network](../app-service/web-sites-integrate-with-vnet.md).
-
-### <a name="preview-version-of-virtual-network-integration"></a>Ve verzi Preview integrace služby virtual network
-
-Nová verze funkci integrace virtuální sítě je ve verzi preview. Nejsou závislé na point-to-site VPN. Podporuje přístup k prostředkům přes ExpressRoute nebo koncové body služby. Je k dispozici v plánu Premium a v plánech služby App Service škálovat, aby PremiumV2.
-
-Tady jsou některé vlastnosti této verze:
-
-* Není nutné bránu používat.
-* Můžete přistupovat k prostředkům napříč připojeními ExpressRoute bez jakékoli další konfigurace kromě integrace s virtuální sítí připojené k ExpressRoute.
-* Můžete využívat zabezpečený koncový bod služby prostředků z spouštění služby functions. Uděláte to tak, povolte koncové body služby v podsíti pro integrace služby virtual network.
-* Nelze nakonfigurovat aktivačních událostí používat zabezpečený koncový bod služby prostředky. 
-* Aplikace function app a virtuální sítě musí být ve stejné oblasti.
-* Nová funkce vyžaduje nevyužité podsítě ve virtuální síti, kterou jste nasadili prostřednictvím Azure Resource Manageru.
-* Produkční úlohy nejsou podporovány, kdy je funkce ve verzi preview.
-* Směrovací tabulky a globální partnerský vztah ještě nejsou k dispozici s funkcí.
-* Jedna adresa se používá pro každý potenciální výskyt aplikaci function app. Vzhledem k tomu, že po přiřazení nelze změnit velikost podsítě, použijte podsíť, která lze snadno podporuje maximální měřítko. Například pro podporu, který je možné škálovat na 80 instance plánu Premium, doporučujeme `/25` podsíť, která poskytuje 126 hostitelské adresy.
-
-Další informace o používání integrace služby virtual network ve verzi preview, najdete v článku [integrace aplikace function app s Azure virtual network](functions-create-vnet.md).
-
-## <a name="hybrid-connections"></a>Hybridní připojení
-
-[Hybridní připojení](../service-bus-relay/relay-hybrid-connections-protocol.md) je funkce služby Azure Relay, který používáte pro přístup k prostředkům aplikace v jiných sítích. Poskytuje přístup z vaší aplikace na koncový bod aplikace. Nelze ho použít pro přístup k aplikaci. Hybridní připojení je k dispozici funkce používané [plán služby App Service](functions-scale.md#app-service-plan) a [služby App Service Environment](../app-service/environment/intro.md).
-
-Používá se ve službě Azure Functions, koreluje každé hybridní připojení na jedné kombinaci hostitele a port TCP. To znamená, že koncový bod hybridní připojení může být libovolný operační systém a všechny aplikace, za předpokladu, že přistupujete k portu naslouchání TCP. Funkce Hybrid Connections neznáte nebo care co aplikační protokol, nebo co chcete získat přístup. Jednoduše poskytuje přístup k síti.
-
-Další informace najdete v tématu [dokumentaci služby App Service Hybrid Connections](../app-service/app-service-hybrid-connections.md), který podporuje funkce v plánu služby App Service.
+Další informace najdete v tématu [omezení statického přístupu Azure App Service](../app-service/app-service-ip-restrictions.md).
 
 ## <a name="private-site-access"></a>Privátní přístup k webu
 
-Přístup k webům privátní odkazuje na zpřístupnění aplikace jen z privátní sítě, jako z v rámci virtuální sítě Azure. 
-* Přístup k privátním serveru je k dispozici v Premium a App Service při plánování **koncové body služby** jsou nakonfigurované. Další informace najdete v tématu [koncové body služeb virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md)
-    * Uvědomte si, že s koncovými body služby, funkce má stále úplné odchozí přístup k Internetu, i s nakonfigurovanou integraci s virtuální sítí.
-* Přístup k privátním serveru je k dispozici pouze s nakonfigurovanou interní nástroj pro vyrovnávání zatížení (ILB) služby App Service Environment. Další informace najdete v tématu [vytvoření a použití interního nástroje load balancer pomocí služby App Service Environment](../app-service/environment/create-ilb-ase.md).
+Přístup k soukromému webu znamená, že vaše aplikace bude přístupná jenom z privátní sítě, jako je například z Azure Virtual Network. 
+* Přístup k privátní lokalitě je k dispozici v [plánu](functions-scale.md#app-service-plan) [Premium](./functions-premium-plan.md) a App Service, když jsou nakonfigurované **koncové body služby** . Další informace najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md) .
+    * Mějte na paměti, že u koncových bodů služby má vaše funkce stále plný odchozí přístup k Internetu, a to i s nakonfigurovanou integrací virtuální sítě.
+* Přístup k privátní lokalitě je také k dispozici u App Service Environment nakonfigurovaných pomocí interního nástroje pro vyrovnávání zatížení (interního nástroje). Další informace najdete v tématu [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](../app-service/environment/create-ilb-ase.md).
 
-Existuje mnoho způsobů, jak přistupovat k prostředkům virtuální sítě v další možnosti hostování. Ale službu App Service Environment je jediný způsob, jak povolit aktivačních událostí pro funkci probíhá přes virtuální síť.
+## <a name="virtual-network-integration"></a>Integrace virtuální sítě
 
-## <a name="next-steps"></a>Další postup
-Další informace o síťových a Azure Functions: 
+Integrace virtuální sítě umožňuje aplikacím Function App přistupovat k prostředkům v rámci virtuální sítě. Tato funkce je dostupná jak v plánu Premium, tak v plánu App Service. Pokud je vaše aplikace ve App Service Environment, je již ve virtuální síti a nevyžaduje použití integrace virtuální sítě k dosažení prostředků ve stejné virtuální síti.
 
-* [Postupujte podle kurzu o zahájení práce s integrace služby virtual network](./functions-create-vnet.md)
-* [Přečtěte si funkce sítě – nejčastější dotazy](./functions-networking-faq.md)
-* [Další informace o integraci virtuální sítě s App Service/funkce](../app-service/web-sites-integrate-with-vnet.md)
-* [Další informace o virtuálních sítí v Azure](../virtual-network/virtual-networks-overview.md)
-* [Povolit další síťové funkce a ovládací prvek s App Service Environment](../app-service/environment/intro.md)
-* [Připojení k jednotlivým místním prostředkům bez nutnosti změn brány firewall pomocí hybridních připojení](../app-service/app-service-hybrid-connections.md)
+Integraci virtuální sítě můžete použít k povolení přístupu z aplikací k databázím a webovým službám běžícím ve vaší virtuální síti. S integrací virtuální sítě nemusíte pro aplikace na svém VIRTUÁLNÍm počítači vystavovat veřejný koncový bod. Místo toho můžete použít adresy směrování privátních IP adres, které nejsou v Internetu.
+
+Funkce integrace virtuální sítě obsahuje dvě formuláře.
+
+1. Integrace místní virtuální sítě umožňuje integraci s virtuálními sítěmi ve stejné oblasti. Tato forma funkce vyžaduje podsíť ve virtuální síti ve stejné oblasti. Tato funkce je stále ve verzi Preview, ale podporuje se pro produkční úlohy aplikací pro Windows s některými výstrahami, které jsou uvedené níže.
+2. Požadovaná brána Integration Virtual Network Integration umožňuje integraci s virtuálními sítěmi ve vzdálených oblastech nebo s klasickými virtuálními sítěmi. Tato verze funkce vyžaduje nasazení Virtual Network brány do vaší virtuální sítě. Toto je funkce založená na síti VPN typu Point-to-site, která je podporovaná jenom pro aplikace pro Windows.
+
+Aplikace může v jednom okamžiku používat jenom jednu formu funkce integrace virtuální sítě. Otázka pak, jakou funkci byste měli použít. Pro mnoho věcí můžete použít kteroukoli z nich. Jasné rozdíly v těchto i:
+
+| Problém  | Řešení | 
+|----------|----------|
+| Chcete se spojit s adresou RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) ve stejné oblasti. | Místní integrace virtuální sítě |
+| Chcete se připojit k prostředkům v klasické virtuální síti nebo virtuální síti v jiné oblasti. | požadovaná brána Integration VNet |
+| Chcete se dostat ke koncovým bodům RFC 1918 napříč ExpressRoute | Místní integrace virtuální sítě |
+| Chcete oslovit prostředky napříč koncovými body služby | Místní integrace virtuální sítě |
+
+Ani jedna z funkcí vám neumožní přístup k adresám, které nejsou RFC 1918, mezi ExpressRoute. K tomu je potřeba pro teď použít pomocného mechanismu.
+
+Použití místní integrace virtuální sítě nepřipojuje vaši virtuální síť k místnímu nasazení nebo konfiguraci koncových bodů služby. To je samostatná konfigurace sítě. Regionální integrace virtuální sítě jednoduše umožňuje, aby vaše aplikace provedla volání prostřednictvím těchto typů připojení.
+
+Bez ohledu na použitou verzi udělí integrace virtuální sítě Function App přístup k prostředkům ve vaší virtuální síti, ale neuděluje privátnímu webu přístup k vaší aplikaci Function App z virtuální sítě. Přístup k soukromému webu znamená, že aplikace je přístupná jenom z privátní sítě, jako je například z Azure Virtual Network. Integrace virtuální sítě je jenom pro odchozí volání z vaší aplikace do vaší virtuální sítě. 
+
+Funkce integrace virtuální sítě:
+
+* Vyžaduje plán App Service Standard, Premium nebo PremiumV2.
+* Podporuje protokoly TCP a UDP
+* Funguje s aplikacemi App Service a aplikacemi Function App
+
+Integrace virtuální sítě nepodporuje zahrnutí následujících věcí:
+
+* Připojení jednotky
+* Integrace služby AD 
+* NetBIOS
+
+Integrace virtuální sítě v rámci funkcí používá sdílenou infrastrukturu s App Service webovými aplikacemi. Další informace o těchto dvou typech integrace virtuální sítě najdete v těchto tématech:
+* [Regionální Integrace virtuální sítě](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
+* [Požadovaná brána Integration VNet](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
+
+Další informace o použití integrace virtuální sítě najdete v tématu [integrace aplikace Function App s virtuální sítí Azure](functions-create-vnet.md).
+
+## <a name="virtual-network-triggers-non-http"></a>Aktivační události virtuální sítě (jiné než HTTP)
+
+V současné době, aby bylo možné používat triggery funkcí jiné než HTTP z virtuální sítě, je nutné spustit aplikaci Function App v plánu App Service nebo v App Service Environment.
+
+Pokud chcete například nakonfigurovat Azure Cosmos DB, aby přijímala jenom provoz z virtuální sítě, museli byste v plánu služby App Service nasadit aplikaci Function App s integrací virtuální sítě s touto virtuální sítí a nakonfigurovat Azure Cosmos DB triggery. z tohoto prostředku. Ve verzi Preview neumožní konfigurace integrace virtuální sítě, aby se plán Premium vypnul z tohoto Azure Cosmos DB prostředku.
+
+[V tomto seznamu vyhledejte všechny triggery jiného typu než http](./functions-triggers-bindings.md#supported-bindings) , abyste mohli dvakrát kontrolovat, co je podporováno.
+
+## <a name="hybrid-connections"></a>Hybridní připojení
+
+[Hybrid Connections](../service-bus-relay/relay-hybrid-connections-protocol.md) je funkce Azure Relay, kterou můžete použít pro přístup k prostředkům aplikací v jiných sítích. Poskytuje přístup z vaší aplikace do koncového bodu aplikace. Nemůžete ho použít pro přístup k aplikaci. Hybrid Connections je k dispozici pro funkce spuštěné v [plánu App Service](functions-scale.md#app-service-plan) a [App Service Environment](../app-service/environment/intro.md).
+
+Jak se používá v Azure Functions, každé hybridní připojení se koreluje s jedinou kombinací hostitele TCP a portu. To znamená, že koncový bod hybridního připojení může být v jakémkoli operačním systému a libovolné aplikaci, pokud přistupujete k portu naslouchání TCP. Funkce Hybrid Connections neznáte ani nezáleží na tom, jaký je protokol aplikace nebo k čemu přistupujete. Jednoduše poskytuje přístup k síti.
+
+Další informace najdete v dokumentaci k [App Service pro Hybrid Connections](../app-service/app-service-hybrid-connections.md), která podporuje funkce v plánu App Service.
+
+## <a name="outbound-ip-restrictions"></a>Omezení odchozích IP adres
+
+Omezení odchozích IP adres jsou k dispozici pouze pro funkce nasazené do App Service Environment. Můžete nakonfigurovat odchozí omezení pro virtuální síť, ve které je nasazený App Service Environment.
+
+Při integraci aplikace Function App do plánu Premium nebo plánu App Service s virtuální sítí stále může aplikace provádět odchozí volání na Internet.
+
+## <a name="next-steps"></a>Další kroky
+Další informace o sítích a Azure Functions: 
+
+* [Postup Začínáme s integrací virtuální sítě najdete v kurzu.](./functions-create-vnet.md)
+* [Přečtěte si nejčastější dotazy k funkcím sítě](./functions-networking-faq.md)
+* [Další informace o integraci virtuální sítě s funkcí App Service/Functions](../app-service/web-sites-integrate-with-vnet.md)
+* [Další informace o virtuálních sítích v Azure](../virtual-network/virtual-networks-overview.md)
+* [Povolení více síťových funkcí a řízení pomocí App Servicech prostředí](../app-service/environment/intro.md)
+* [Připojení k jednotlivým místním prostředkům bez změny brány firewall pomocí Hybrid Connections](../app-service/app-service-hybrid-connections.md)

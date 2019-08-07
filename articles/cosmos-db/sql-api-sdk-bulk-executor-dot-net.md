@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 098cc3d76fff69b6b213514ac85835e7474b6233
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 989d52e773ed01a8fd1f4d383c42d7628e196a60
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637725"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814719"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Knihovna hromadného prováděcího modulu .NET: Informace ke stažení 
 
@@ -37,7 +37,7 @@ ms.locfileid: "68637725"
 |**Stažení sady SDK**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **Knihovna BulkExecutor na GitHubu**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní API .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
-|**Začínáme**|[Začínáme s knihovnou .NET SDK pro hromadnou Vykonavatelskou práci](bulk-executor-dot-net.md)|
+|**Začínáme**|[Začínáme s knihovnou .NET SDK pro hromadnou vykonavatelskou práci](bulk-executor-dot-net.md)|
 | **Aktuální podporované architektury**| Microsoft .NET Framework 4.5.2, 4.6.1 a .NET Standard 2,0 |
 
 ## <a name="release-notes"></a>Poznámky k verzi

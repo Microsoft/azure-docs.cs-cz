@@ -1,94 +1,94 @@
 ---
-title: Spravovat řešení Azure VMware CloudSimple privátního cloudu
-description: Popisuje možnosti dostupné pro správu prostředků CloudSimple privátního cloudu a aktivita
+title: Správa řešení Azure VMware pomocí CloudSimple privátního cloudu
+description: Popisuje možnosti, které jsou k dispozici pro správu prostředků privátního cloudu CloudSimple a aktivity.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 05a2fb451b3acce1011c1d5f4cf17f0a865d57d0
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 620c0226d3aca907352658ebbe1b94c7673d91cd
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332641"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812269"
 ---
-# <a name="manage-private-cloud-resources-and-activity"></a>Správa prostředků privátního cloudu a aktivita
+# <a name="manage-private-cloud-resources-and-activity"></a>Správa prostředků a aktivit privátního cloudu
 
-Privátní cloudy spravují CloudSimple portálu.  Zkontrolujte stav, dostupných prostředků, aktivita na privátní cloud a další nastavení z portálu CloudSimple.
+Privátní cloudy se spravují z portálu CloudSimple.  Projděte si stav, dostupné prostředky, činnost na privátním cloudu a další nastavení z portálu CloudSimple.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="access-the-cloudsimple-portal"></a>Přístup k portálu CloudSimple
 
-Přístup [CloudSimple portál](access-cloudsimple-portal.md).
+Přístup k [portálu CloudSimple](access-cloudsimple-portal.md).
 
-## <a name="view-the-list-of-private-clouds"></a>Zobrazí se seznam privátních Cloudů
+## <a name="view-the-list-of-private-clouds"></a>Zobrazit seznam privátních cloudů
 
-**Privátních Cloudů** kartě **prostředky** stránka obsahuje seznam všech privátních Cloudů ve vašem předplatném. Informace zahrnují název, číslo vSphere clusterů, umístění, aktuální stav privátního cloudu a prostředků.
+Karta **privátní cloudy** na stránce **prostředky** obsahuje seznam všech privátních cloudů v rámci vašeho předplatného. Informace zahrnují název, počet clusterů vSphere, umístění, aktuální stav privátního cloudu a informace o prostředcích.
 
 ![Stránka privátního cloudu](media/manage-private-cloud.png)
 
-Vyberte privátní Cloud pro další informace a akce.
+Pro další informace a akce vyberte privátní cloud.
 
 ## <a name="private-cloud-summary"></a>Souhrn privátního cloudu
 
-Zobrazte kompletní přehled vybraného privátního cloudu.  Stránka souhrnu obsahuje servery DNS, které jsou nasazeny do privátního cloudu.  Můžete nastavit DNS předává z místních serverů DNS na vaše servery DNS privátního cloudu.  Další informace o předávání DNS najdete v tématu [konfigurace služby DNS pro překlad názvů pro vCenter privátního cloudu z místního](https://docs.azure.cloudsimple.com/on-premises-dns-setup/).
+Zobrazí komplexní souhrn vybraného privátního cloudu.  Stránka Souhrn obsahuje servery DNS nasazené v privátním cloudu.  Předávání DNS z místních serverů DNS můžete nastavit na servery DNS privátního cloudu.  Další informace o předávání DNS najdete v tématu [Konfigurace DNS pro překlad IP adres pro privátní cloud vCenter z místního](https://docs.azure.cloudsimple.com/on-premises-dns-setup/)prostředí.
 
-![Souhrnné informace o privátního mraku](media/private-cloud-summary.png)
+![Souhrn privátního cloudu](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>Dostupné akce
 
-* [Spuštění klienta vSphere](https://docs.azure.cloudsimple.com/vsphere-access/). Přístup k vCenter pro tento privátní Cloud.
-* [Zakoupit uzly](create-nodes.md). Přidání uzlů do tohoto privátního cloudu.
-* [Rozbalte](expand-private-cloud.md). Přidání uzlů do tohoto privátního cloudu.
+* [Spusťte klienta vSphere](https://docs.azure.cloudsimple.com/vsphere-access/). Přístup k vCenter pro tento privátní cloud.
+* [Koupit uzly](create-nodes.md). Přidejte uzly do tohoto privátního cloudu.
+* [Rozbalte](expand-private-cloud.md). Přidejte uzly do tohoto privátního cloudu.
 * **Aktualizovat**. Aktualizujte informace na této stránce.
-* **Odstranit**. Privátní Cloud můžete kdykoli odstranit. **Před odstraněním, ujistěte se, že jste zálohovali všechny systémy a data.** Odstraněním privátního cloudu se odstraní všechny virtuální počítače, vCenter konfiguraci a data. Klikněte na tlačítko **odstranit** v souhrnné části pro vybrané privátního cloudu. Po odstranění se vymažou všechna data privátního cloudu v zabezpečené, vysoce kompatibilní s mazání procesu.
-* [Změnit oprávnění vSphere](escalate-private-cloud-privileges.md).  Zvýšení vaší oprávnění na tento privátní Cloud.
+* **Odstraňte**. Privátní Cloud můžete kdykoli odstranit. **Před odstraněním se ujistěte, že jste zálohovali všechny systémy a data.** Odstranění privátního cloudu odstraní všechny virtuální počítače, konfiguraci vCenter a data. V části Souhrn pro vybraný privátní cloud klikněte na **Odstranit** . Po odstranění se všechna data privátního cloudu vymažou v bezpečném a vysoce kompatibilním procesu mazání.
+* [Změňte oprávnění vSphere](escalate-private-cloud-privileges.md).  Eskalovat vaše oprávnění v tomto privátním cloudu.
 
-## <a name="private-cloud-vlanssubnets"></a>Private Cloud VLANS/subnets
+## <a name="private-cloud-vlanssubnets"></a>SÍTĚ VLAN a podsítě privátního cloudu
 
-Zobrazení seznamu definované sítě VLAN a podsítě pro vybranou privátního cloudu.  Seznam obsahuje management, vytvoření sítě VLAN a podsítě při vytvoření privátního cloudu.
+Zobrazí seznam definovaných sítí VLAN a podsítí pro vybraný privátní cloud.  Seznam obsahuje sítě VLAN a podsítě pro správu, které byly vytvořeny při vytváření privátního cloudu.
 
-![Privátní Cloud – sítě VLAN a podsítě](media/private-cloud-vlans-subnets.png) 
+![Privátní cloud – sítě VLAN/podsítě](media/private-cloud-vlans-subnets.png) 
 
 ### <a name="available-actions"></a>Dostupné akce
 
-* [Přidání sítě VLAN a podsítě](https://docs.azure.cloudsimple.com/create-vlan-subnet/). Přidání sítě VLAN nebo podmnožinu do tohoto privátního cloudu.
+* [Přidejte sítě VLAN/podsítě](https://docs.azure.cloudsimple.com/create-vlan-subnet/). Přidejte k tomuto privátnímu cloudu síť VLAN nebo podmnožinu.
 
-Vyberte sítě VLAN a podsítě pro následující akce
-* [Připojení brány firewall tabulky](https://docs.azure.cloudsimple.com/firewall/). Připojte tabulku brány firewall na tomto privátním cloudu.
+Vyberte síť VLAN nebo podsíť pro následující akce.
+* [Připojte tabulku brány firewall](https://docs.azure.cloudsimple.com/firewall/). Připojte k tomuto privátnímu cloudu tabulku brány firewall.
 * **Upravit**
-* **Odstranit** (pouze uživatelské sítě VLAN a podsítě)
+* **Odstranit** (jenom uživatelsky definované sítě VLAN/podsítě)
 
 ## <a name="private-cloud-activity"></a>Aktivita privátního cloudu
 
-Zobrazte následující informace o vybrané privátního cloudu.  Informace o aktivitě je filtrovaný seznam všech aktivit pro vybrané privátního cloudu.  Tato stránka zobrazuje až 25 nedávných aktivit.
+Zobrazí následující informace o vybraném privátním cloudu.  Informace o aktivitách jsou filtrovaný seznam všech aktivit pro vybraný privátní cloud.  Tato stránka zobrazuje až 25 posledních aktivit.
 
-* Nedávné výstrahy
+* Nedávná upozornění
 * Nedávné události
 * Poslední úkoly
-* Poslední auditu
+* Poslední audit
 
-![Privátní Cloud – aktivita](media/private-cloud-activity.png)
+![Privátní cloud – aktivita](media/private-cloud-activity.png)
 
-## <a name="cloud-racks"></a>Stojany cloudu
+## <a name="cloud-racks"></a>Cloudové racky
 
-Cloud stojany jsou stavební kameny nástroje privátního cloudu. Každý rack obsahuje jednotka kapacity. CloudSimple automaticky nakonfiguruje stojany cloudu na základě vašeho výběru, při vytváření nebo rozšiřování privátního cloudu.  Zobrazit úplný seznam stojany cloudu, včetně privátního cloudu, které každý přiřazen.
+Cloudové racky jsou stavebními kameny vašeho privátního cloudu. Každý stojan poskytuje jednotku kapacity. CloudSimple automaticky konfiguruje cloudové racky na základě vašich voleb při vytváření nebo rozšiřování privátního cloudu.  Zobrazte úplný seznam cloudových stojanů, včetně privátního cloudu, ke kterému jsou přiřazeny.
 
-![Privátní Cloud – stojany cloudu](media/private-cloud-cloudracks.png)
+![Privátní cloud – cloudové racky](media/private-cloud-cloudracks.png)
 
-## <a name="vsphere-management-network"></a>vSphere síť pro správu
+## <a name="vsphere-management-network"></a>Síť pro správu vSphere
 
-Seznam řízení zdrojů VMware a virtuálních počítačů, které jsou aktuálně nakonfigurované na privátní Cloud. Informace zahrnují verze softwaru, plně kvalifikovaný název domény (FQDN) a IP adresu zdroje.
+Seznam prostředků správy VMware a virtuálních počítačů, které jsou aktuálně nakonfigurované v privátním cloudu. Informace zahrnují verzi softwaru, plně kvalifikovaný název domény (FQDN) a IP adresu prostředků.
 
-![Privátní Cloud – vSphere síť pro správu](media/private-cloud-vsphere-management-network.png)
+![Privátní cloud – síť pro správu vSphere](media/private-cloud-vsphere-management-network.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Využívání virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
-* Další informace o [privátních Cloudů](cloudsimple-private-cloud.md)
+* [Využití virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
+* Další informace o [privátních cloudech](cloudsimple-private-cloud.md)

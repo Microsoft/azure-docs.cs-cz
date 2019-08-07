@@ -1,41 +1,41 @@
 ---
-title: Struktura protokoly Azure monitoru | Dokumentace Microsoftu
-description: Vyžadujete protokol dotaz pro načtení data protokolů ze služby Azure Monitor.  Tento článek popisuje, jak nový protokol dotazů se používají ve službě Azure Monitor a poskytuje koncepty, které je třeba porozumět před vytvořením jedné.
+title: Struktura protokolů Azure Monitor | Microsoft Docs
+description: Vyžadujete, aby dotaz protokolu načetl data protokolu z Azure Monitor.  Tento článek popisuje, jak se v Azure Monitor používají nové dotazy protokolu, a poskytuje koncepty, které musíte před vytvořením porozumět.
 services: log-analytics
 author: bwren
 ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 06/16/2019
 ms.author: bwren
-ms.openlocfilehash: e243ebbc31f9e941678ac76a83738276995b5ba1
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 6f5ae426018c9e7fa2ac586a2886c8e5e609069b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67297355"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68813850"
 ---
-# <a name="structure-of-azure-monitor-logs"></a>Struktura protokoly Azure monitoru
-Schopnost rychle získat přehled o vašich dat pomocí [dotaz protokolu](log-query-overview.md) je výkonná funkce služby Azure Monitor. Chcete-li vytvořit efektivní a užitečné dotazy, by měl pochopit některé základní pojmy jako je například kde se nachází data, která chcete a jakým způsobem je strukturovaná. Tento článek obsahuje základní koncepty, že které potřebujete, abyste mohli začít.
+# <a name="structure-of-azure-monitor-logs"></a>Struktura protokolů Azure Monitor
+Možnost rychle získat přehled o datech pomocí [dotazu protokolu](log-query-overview.md) je výkonná funkce Azure monitor. Chcete-li vytvořit efektivní a užitečné dotazy, měli byste pochopit některé základní koncepty, jako je například umístění dat, která potřebujete, a způsob jejího strukturování. Tento článek poskytuje základní koncepty, které potřebujete, abyste mohli začít.
 
 ## <a name="overview"></a>Přehled
-Data v protokolech sledování Azure se ukládají v pracovním prostoru Log Analytics nebo aplikaci Application Insights. Obě využívají [Průzkumník dat Azure](/azure/data-explorer/) to znamená, že mohou využít jeho výkonné datové modul a dotaz jazyka.
+Data v Azure Monitor protokoly se ukládají buď v pracovním prostoru Log Analytics, nebo v aplikaci Application Insights. Obě služby jsou napájené z [Azure Průzkumník dat](/azure/data-explorer/) to znamená, že využívají výkonný datový stroj a dotazovací jazyk.
 
-Data v pracovních prostorech a aplikace jsou uspořádány do tabulky, z nichž každý obsahuje různé druhy dat a má svou vlastní jedinečnou sadu vlastností. Většina [zdroje dat](../platform/data-sources.md) bude zapisovat do vlastní tabulky v pracovním prostoru Log Analytics, zatímco Application Insights bude zapisovat do předdefinovanou sadu tabulek v aplikaci Application Insights. Protokol dotazů jsou velmi flexibilní díky tomu můžete snadno kombinovat data z více tabulek a dokonce využít napříč prostředky dotazu kombinovat data z tabulek v několika pracovních prostorů a psát dotazy, které kombinují data pracovního prostoru a aplikace.
+Data v pracovních prostorech a aplikacích jsou uspořádána do tabulek, z nichž každý ukládá různé druhy dat a má svou vlastní jedinečnou sadu vlastností. Většina [zdrojů dat](../platform/data-sources.md) bude zapisovat do vlastních tabulek v Log Analytics pracovním prostoru, zatímco Application Insights zapisuje do předdefinované sady tabulek v Application Insights aplikaci. Dotazy protokolu jsou velmi flexibilní a umožňují snadno kombinovat data z více tabulek a dokonce použít dotaz na více prostředků ke kombinování dat z tabulek ve více pracovních prostorech nebo k zápisu dotazů, které kombinují data z pracovního prostoru a aplikace.
 
-Následující obrázek ukazuje příklady zdrojů dat, které zapsat do různých tabulek, které se používají v ukázkové dotazy.
+Následující obrázek ukazuje příklady zdrojů dat, které jsou zapsány do různých tabulek, které jsou používány v ukázkových dotazech.
 
 ![Tabulky](media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Pracovní prostor Log Analytics
-Všechna data shromážděná službou Azure Monitor protokolů s výjimkou Application Insights je uložené v [pracovní prostor Log Analytics](../platform/manage-access.md). Můžete vytvořit jeden nebo více pracovních prostorů v závislosti na vaše konkrétní požadavky. [Zdroje dat](../platform/data-sources.md) jako jsou protokoly aktivit a diagnostické protokoly z prostředků Azure, agenty na virtuální počítače a data z přehledů a monitorování řešení bude zapisovat data do jednoho nebo více pracovních prostorů, které nakonfigurujete v rámci jejich registrace. Jiné služby, jako [Azure Security Center](/azure/security-center/) a [Azure Sentinelu](/azure/sentinel/) použít také pro ukládání dat, takže se dají analyzovat pomocí dotazů protokolu společně s monitorování dat z jiných pracovnímu prostoru Log Analytics zdroje.
+Všechna data shromážděná protokolem Azure Monitor s výjimkou Application Insights se ukládají do [log Analyticsho pracovního prostoru](../platform/manage-access.md). V závislosti na konkrétních požadavcích můžete vytvořit jeden nebo více pracovních prostorů. [Zdroje dat](../platform/data-sources.md) , jako jsou protokoly aktivit a diagnostické protokoly z prostředků Azure, agenti na virtuálních počítačích a data z přehledů a řešení pro monitorování, zapisují data do jednoho nebo více pracovních prostorů, které nakonfigurujete jako součást jejich zprovoznění. Jiné služby, například [Azure Security Center](/azure/security-center/) a [Azure Sentinel](/azure/sentinel/) , používají k ukládání dat Log Analytics pracovní prostor, aby je bylo možné analyzovat pomocí dotazů protokolu spolu s daty monitorování z jiných zdrojů.
 
-Různé druhy dat se ukládají v různých tabulek v pracovním prostoru a každá tabulka má jedinečnou sadu vlastností. Standardní sadu tabulek jsou přidány do pracovního prostoru, když se vytvoří a nové tabulky jsou přidány pro různé datové zdroje, řešení a služby, jako jsou připojili. Můžete také vytvořit vlastní tabulky pomocí [rozhraní API kolekce dat](../platform/data-collector-api.md).
+Různé druhy dat jsou uloženy v různých tabulkách v pracovním prostoru a každá tabulka má jedinečnou sadu vlastností. Do pracovního prostoru se při vytvoření přidá standardní sada tabulek a při jejich zprovoznění se přidají nové tabulky pro různé zdroje dat, řešení a služby. Můžete také vytvořit vlastní tabulky pomocí [rozhraní API kolekce dat](../platform/data-collector-api.md).
 
-Můžete procházet tabulek v pracovním prostoru a jejich schéma v **schématu** kartu v Log Analytics pro pracovní prostor.
+Tabulky můžete procházet v pracovním prostoru a jejich schématu na kartě **schéma** v Log Analytics pracovního prostoru.
 
 ![Schéma pracovního prostoru](media/scope/workspace-schema.png)
 
-Použijte tento dotaz na seznam tabulek v pracovním prostoru a počet záznamů, které se shromažďují do každé za předchozí den. 
+Pomocí následujícího dotazu můžete zobrazit seznam tabulek v pracovním prostoru a počet záznamů, které byly v rámci předchozího dne shromážděny. 
 
 ```Kusto
 union withsource = table * 
@@ -43,44 +43,44 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-Najdete v dokumentaci pro každý zdroj dat. Podrobnosti tabulek, který vytvoří. Mezi příklady patří články pro [zdroje dat agenta](../platform/agent-data-sources.md), [diagnostické protokoly](../platform/diagnostic-logs-schema.md), a [řešení monitorování](../insights/solutions-inventory.md).
+Podrobnosti o tabulkách, které vytvoří, najdete v dokumentaci k jednotlivým zdrojům dat. Mezi příklady patří články pro [zdroje dat agenta](../platform/agent-data-sources.md), [diagnostické protokoly](../platform/diagnostic-logs-schema.md)a [řešení monitorování](../insights/solutions-inventory.md).
 
-### <a name="workspace-permissions"></a>Oprávnění pracovního prostoru.
-Zobrazit [oprávnění pracovního prostoru a oboru](../platform/manage-access.md#workspace-permissions-and-scope) podrobnosti o poskytování přístupu k datům v pracovním prostoru. Kromě udělení přístupu k pracovní prostor, můžete omezit přístup pro jednotlivé tabulky pomocí [tabulky úroveň RBAC](../platform/manage-access.md#table-level-rbac).
+### <a name="workspace-permissions"></a>Oprávnění k pracovnímu prostoru
+Podrobnosti o tom, jak zajistit přístup k datům v pracovním prostoru, najdete v tématu [oprávnění a obor v pracovním prostoru](../platform/manage-access.md#manage-accounts-and-users) . Kromě udělení přístupu k samotnému pracovnímu prostoru můžete omezit přístup k jednotlivým tabulkám pomocí [RBAC na úrovni tabulky](../platform/manage-access.md#table-level-rbac).
 
-## <a name="application-insights-application"></a>Aplikace Application Insights
-Při vytváření aplikace ve službě Application Insights v protokolech sledování Azure se automaticky vytvoří příslušné aplikace. Není nutná žádná konfigurace pro shromažďování dat a aplikace bude automaticky zapisovat data, jako je například zobrazení stránek, požadavků a výjimek monitorování.
+## <a name="application-insights-application"></a>Application Insights aplikace
+Když vytvoříte aplikaci v Application Insights, automaticky se vytvoří odpovídající aplikace v protokolech Azure Monitor. Ke shromažďování dat není nutná žádná konfigurace a aplikace bude automaticky zapisovat data monitorování, například zobrazení stránky, požadavky a výjimky.
 
-Na rozdíl od pracovního prostoru Log Analytics Application Insights aplikaci má pevnou sadu tabulek. Nelze nakonfigurovat jiné zdroje dat pro zápis do aplikace tak možné vytvářet žádné další tabulky. 
+Na rozdíl od Log Analytics pracovního prostoru má Application Insights aplikace pevnou sadu tabulek. Nelze nakonfigurovat jiné zdroje dat pro zápis do aplikace, takže nelze vytvořit žádné další tabulky. 
 
 | Table | Popis | 
 |:---|:---|
 | availabilityResults | Souhrnná data z testů dostupnosti. |
-| browserTimings      | Data o výkonu klienta, jako je doba zpracování příchozí data. |
-| customEvents        | Vlastní události vytvořené v aplikaci. |
-| customMetrics       | Vlastní metriky, vytvořené vaší aplikace. |
-| Závislosti        | Volání z aplikace na externí komponenty. |
-| Výjimky          | Výjimky vyvolané doba spuštění aplikace. |
-| pageViews           | Zobrazení dat o jednotlivých webů se informace o prohlížeči. |
-| performanceCounters | Měření výkonu z výpočetní prostředky, které podporuje aplikace. |
-| požadavků            | Podrobnosti o každém z aplikace.  |
-| trasování              | Výsledky z distribuované trasování. |
+| browserTimings      | Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat. |
+| customEvents        | Vlastní události vytvořené vaší aplikací |
+| customMetrics       | Vlastní metriky vytvořené vaší aplikací |
+| závislosti        | Volání z aplikace do externích součástí. |
+| výjimky          | Výjimky vyvolané modulem runtime aplikace |
+| pageViews           | Data o jednotlivých zobrazeních webu s informacemi v prohlížeči |
+| Čítače výkonu | Měření výkonu z výpočetních prostředků, které podporují aplikaci. |
+| požadavků            | Podrobnosti o jednotlivých žádostech o aplikaci  |
+| trasování              | Výsledky z distribuovaného trasování. |
 
-Můžete zobrazit schéma pro každou tabulku **schématu** kartu v Log Analytics pro aplikaci.
+Schéma pro každou tabulku můžete zobrazit na kartě **schématu** v Log Analytics pro aplikaci.
 
 ![Schéma aplikace](media/scope/application-schema.png)
 
 ## <a name="standard-properties"></a>Standardní vlastnosti
-Každá tabulka v protokolech sledování Azure obsahuje vlastní schéma, jsou standardní vlastnosti sdílí všechny tabulky. Zobrazit [standardní vlastnosti v Azure Monitor protokoly](../platform/log-standard-properties.md) podrobnosti o každém.
+Zatímco každá tabulka v protokolech Azure Monitor má vlastní schéma, existují standardní vlastnosti sdílené všemi tabulkami. Podrobnosti o každé z nich najdete [v tématu standardní vlastnosti v protokolech Azure monitor](../platform/log-standard-properties.md) .
 
-| Pracovní prostor Log Analytics | Aplikace Application Insights | Popis |
+| Pracovní prostor Log Analytics | Application Insights aplikace | Popis |
 |:---|:---|:---|
-| TimeGenerated | timestamp  | Datum a čas vytvoření záznamu. |
-| Type          | itemType   | Název tabulky záznam byl načten z. |
-| _ResourceId   |            | Jedinečný identifikátor záznamu prostředků přidružené. |
-| _IsBillable   |            | Určuje, zda přijatých dat se dají fakturovat. |
-| _BilledSize   |            | Určuje velikost v bajtech data, která se bude účtovat. |
+| TimeGenerated | timestamp  | Datum a čas vytvoření záznamu |
+| type          | itemType   | Název tabulky, ze které byl záznam načten. |
+| _ResourceId   |            | Jedinečný identifikátor prostředku, ke kterému je záznam přidružen. |
+| _IsBillable   |            | Určuje, zda jsou příjemovaná data fakturovatelná. |
+| _BilledSize   |            | Určuje velikost (v bajtech) dat, která se budou fakturovat. |
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o použití [prohledávání protokolu Log Analytics můžete vytvářet a upravovat](../log-query/portals.md).
-- Podívejte se [kurz o psaní dotazů](../log-query/get-started-queries.md) pomocí nového dotazovacího jazyka.
+- Přečtěte si o použití [Log Analytics k vytváření a úpravám prohledávání protokolů](../log-query/portals.md).
+- Projděte si [kurz psaní dotazů](../log-query/get-started-queries.md) pomocí nového dotazovacího jazyka.

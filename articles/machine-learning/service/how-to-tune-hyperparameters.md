@@ -1,7 +1,7 @@
 ---
 title: Optimalizovat pro váš model hyperparameters
 titleSuffix: Azure Machine Learning service
-description: Efektivně vylaďte hyperparameters pro obsáhlý learning / machine learning modelu pomocí služby Azure Machine Learning. Se dozvíte, jak definovat parametr prostoru pro hledání, zadejte primární metriku pro optimalizaci a již v rané fázi ukončit nedostatečný výkon spuštění.
+description: Efektivně vylaďte hyperparameters pro obsáhlý learning / machine learning modelu pomocí služby Azure Machine Learning. Naučíte se, jak definovat místo pro hledání parametrů, určit primární metriku, která se optimalizuje, a brzké ukončení nedostatečně výkonného spuštění.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 730f39bf0b05ef33bbbca150532f96f1e495a9ed
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: cb4378047f34f3f635b2f1dd2425bbee28f91178
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302349"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815717"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Vyladění hyperparameters pro modelu pomocí služby Azure Machine Learning
 
@@ -45,7 +45,7 @@ Automaticky vylaďte hyperparameters prozkoumáním rozsah hodnot definovaných 
 
 ### <a name="types-of-hyperparameters"></a>Typy hyperparametrů
 
-Každý hyperparameter může být buď samostatný nebo průběžné.
+Každý parametr může být buď diskrétní, nebo souvislý a má distribuci hodnot popsaných výrazem [parametru](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py).
 
 #### <a name="discrete-hyperparameters"></a>Diskrétní hyperparameters 
 
@@ -129,7 +129,7 @@ param_sampling = GridParameterSampling( {
 
 Při použití Bayesova vzorkování, počtu souběžných spuštění má dopad na efektivitu ladění procesu. Obvykle menší počet souběžných spuštění může vést k lepší vzorkování konvergence, protože zvyšuje počet běhů, které využívají samosprávné předchozí dokončená spuštění menší míru paralelismu.
 
-Vzorkování Bayesova podporuje pouze `choice` a `uniform` distribuce v prostoru pro hledání. 
+Vzorkování bayesovského rozhodování podporuje `choice`jenom distribuce `uniform`, a `quniform` v prostoru pro hledání.
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
@@ -179,7 +179,7 @@ Vypočítá cvičný skript `val_accuracy` a zaznamená jako "přesnost", který
 
 ## <a name="specify-early-termination-policy"></a>Zadejte zásady předčasné ukončení
 
-K automatickému ukončení běží pomocí zásad [předčasné ukončení. Ukončení snižuje plýtvání zbytečně velký počet prostředků a místo toho použije tyto prostředky pro zkoumání konfigurace dalších parametrů.
+Ukončete nedostatečný výkon spuštění automaticky k zásadám předčasné ukončení. Ukončení snižuje plýtvání zbytečně velký počet prostředků a místo toho použije tyto prostředky pro zkoumání konfigurace dalších parametrů.
 
 Při použití zásady předčasné ukončení, můžete nakonfigurovat, které řídí, kdy se použije zásada na následující parametry:
 
@@ -234,7 +234,7 @@ from azureml.train.hyperdrive import TruncationSelectionPolicy
 early_termination_policy = TruncationSelectionPolicy(evaluation_interval=1, truncation_percentage=20, delay_evaluation=5)
 ```
 
-V tomto příkladu předčasné ukončení zásad se použije na každý interval počínaje interval přehodnocení 5. Spuštění se ukončí v intervalu 5, pokud je její výkon v intervalu 5 v nejnižší 20 % výkonu všechna spuštění v intervalu 5.
+V tomto příkladu předčasné ukončení zásad se použije na každý interval počínaje interval přehodnocení 5. Spuštění bude ukončeno v intervalu 5, pokud je jeho výkon v intervalu 5 v nejnižší 20% výkonu všech běhů v intervalu 5.
 
 ### <a name="no-termination-policy"></a>Žádné zásady ukončení
 
@@ -246,7 +246,7 @@ policy=None
 
 ### <a name="default-policy"></a>Výchozí zásady
 
-Pokud není zadána žádná zásada, umožní hyperparameter ladění služby všechny tréninkových spuštění dokončen.
+Pokud není zadána žádná zásada, bude služba ladění u parametrů nastavena na dokončení všech školicích běhů.
 
 >[!NOTE] 
 >Pokud hledáte konzervativní zásady, které nabízí úspory, bez ukončení slibně úlohy, můžete použít zásady zastavení Medián s `evaluation_interval` 1 a `delay_evaluation` 5. Toto jsou konzervativní nastavení, které můžou zajisti přibližně 25 % – 35 % levnější bez ztráty na primární metriku (podle našich data pro vyhodnocení).
@@ -275,7 +275,7 @@ max_total_runs=20,
 max_concurrent_runs=4
 ```
 
-Tento kód nastaví hyperparameter optimalizace pro experiment použít maximálně 20 celkový počet běhů s 4 konfigurace najednou.
+Tento kód nakonfiguruje experiment vyladěním parametrů, aby používal maximálně 20 spuštění celkem, současně se čtyřmi konfiguracemi.
 
 ## <a name="configure-experiment"></a>Konfigurace testu
 

@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba63f9c04e062741eded9c39e44ba64281931387
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 6646217149cec48ca5fcee59b3dd9d850965c602
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311354"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779907"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrace z federace na předávací ověřování pro Azure Active Directory
 
@@ -235,7 +235,7 @@ Máte dvě možnosti, jak změnit metodu přihlašování na předávací ověř
 
 #### <a name="option-a-configure-pass-through-authentication-by-using-azure-ad-connect"></a>Možnost A: Konfigurace předávacího ověřování pomocí Azure AD Connect
 
-Tuto metodu použijte, pokud jste původně nakonfigurovali AD FS prostředí pomocí Azure AD Connect. Tuto metodu nemůžete použít, pokud *jste původně* nenakonfigurovali AD FS prostředí pomocí Azure AD Connect.
+Tuto metodu použijte, pokud jste původně nakonfigurovali AD FS prostředí pomocí Azure AD Connect. Tuto metodu nemůžete použít, Pokud jste původně nenakonfigurovali AD FS prostředí pomocí Azure AD Connect.
 
 > [!IMPORTANT]
 > Po dokončení následujících kroků se všechny domény převedou z federované identity na spravovanou identitu. Další informace najdete v [části plánování metody migrace](#plan-the-migration-method).
@@ -454,5 +454,5 @@ Další informace najdete v tématu [řešení potíží s předávacím ověřo
 ## <a name="next-steps"></a>Další postup
 
 * Přečtěte si o [Azure AD Connect konceptech návrhu](plan-connect-design-concepts.md).
-* Vyberte [správné ověřování](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
+* Vyberte [správné ověřování](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
 * Přečtěte si o [podporovaných topologiích](plan-connect-design-concepts.md).

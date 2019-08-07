@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/24/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f33b69ac443a1bb8f6b7d6e1b19f2f077bf38f58
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 8812ac325e6bfd5ee019f6ddd6bf86c846ed5c10
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501482"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782452"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Detekce hrozeb pro datové služby v Azure Security Center
 
@@ -60,6 +60,7 @@ Security Center analyzuje diagnostické protokoly žádostí o čtení, zápis a
 |**Neobvyklá anomálie přístupu k poloze**|Byla zjištěna analýza síťového provozu neobvyklé odchozího přenosu protokol RDP (Remote Desktop Protocol) (RDP) pocházející z prostředku ve vašem nasazení. Tato aktivita se považuje za neobvyklou pro toto prostředí a může znamenat, že došlo k ohrožení zabezpečení prostředku a že se teď používá pro externí koncový bod protokolu RDP hrubou silou. Upozorňujeme, že tento typ aktivity může způsobit, že externí entity označí vaši IP adresu jako škodlivou.|
 |**Anomálie přístupu k aplikacím**|Indikuje, že se k tomuto účtu úložiště přistupovala neobvyklá aplikace. Možnou příčinou je, že útočník získal k účtu úložiště pomocí nové aplikace.|
 |**Anomálie anonymního přístupu**|Indikuje, že došlo ke změně vzoru přístupu k účtu úložiště. K účtu se například přistupuje anonymně (bez ověřování), které se ve srovnání s nedávným vzorem přístupu na tomto účtu neočekávalo. Možnou příčinou je, že útočník zneužije veřejný přístup pro čtení kontejneru, který obsahuje úložiště objektů BLOB (s).|
+|**Anomálie pro mandát**|Indikuje, že se tento účet úspěšně přistupoval z IP adresy, která se označuje jako aktivní odesílací uzel systému (anonymizace proxy server). Závažnost této výstrahy je považována za použitý typ ověřování (pokud existuje) a zda se jedná o první případ takového přístupu. K potenciálním příčinám může dojít k tomu, že útočník získal účet úložiště pomocí systému pro práci nebo oprávněný uživatel k vašemu účtu úložiště používal prostředí systému.|
 |**Anomálie exfiltrace dat**|Indikuje, že se v porovnání s poslední aktivitou tohoto kontejneru úložiště extrahuje neobvykle velké množství dat. Možnou příčinou je, že útočník extrahuje velké množství dat z kontejneru, který obsahuje úložiště objektů BLOB (s).|
 |**Neočekávaná anomálie odstranění**|Označuje, že v účtu úložiště se vyskytla jedna nebo víc neočekávaných operací odstranění v porovnání s poslední aktivitou tohoto účtu. Možnou příčinou je, že útočník odstranil data z vašeho účtu úložiště.|
 |**Nahrání balíčku cloudové služby Azure**|Indikuje, že balíček Azure Cloud Service (soubor. cspkg) se neobvyklým způsobem nahrál do účtu úložiště, a to v porovnání s poslední aktivitou na tomto účtu. Možnou příčinou je to, že se útočník připravuje na nasazení škodlivého kódu z vašeho účtu úložiště do cloudové služby Azure.|
@@ -70,7 +71,7 @@ Security Center analyzuje diagnostické protokoly žádostí o čtení, zápis a
 >[!NOTE]
 >Rozšířená ochrana před internetovými útoky pro Azure Storage není v současnosti dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
 
-Další informace o výstrahách pro úložiště najdete v článku [Rozšířená ochrana před internetovými útoky pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection) a přečtěte si část výstrahy ochrany.
+Další informace o výstrahách pro úložiště najdete v článku [Rozšířená ochrana před internetovými útoky pro Azure Storage](../storage/common/storage-advanced-threat-protection.md) a přečtěte si část výstrahy ochrany.
 
 ## Cosmos DB<a name="cosmos-db"></a>
 

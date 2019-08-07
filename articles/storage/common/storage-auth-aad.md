@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 236d880af780114dfb906021f53d5c09aee75332
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: f33193e3102afca73344fcd640d14d9af9c1d46e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514887"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775348"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory
 
@@ -22,7 +22,7 @@ Azure Storage podporuje používání služby Azure Active Directory (AD) k auto
 
 Ověřování uživatelů nebo aplikací pomocí tokenu OAuth 2,0 vráceného službou Azure AD poskytuje vynikající zabezpečení a usnadňuje použití s autorizací sdíleného klíče a sdíleným přístupovým podpisem (SAS). S Azure AD není nutné ukládat přístupový klíč účtu k vašemu kódu a rizikovým potenciálním hrozbám zabezpečení. I když můžete nadále používat autorizaci pomocí sdíleného klíče u svých aplikací, použití Azure AD obchází nutnost uložení přístupového klíče účtu k vašemu kódu. Můžete taky dál používat sdílené přístupové podpisy (SAS) pro udělení jemně odstupňovaného přístupu k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné možnosti, aniž by bylo potřeba spravovat tokeny SAS nebo se starat o odvolání napadeného SAS. Pokud je to možné, Microsoft doporučuje používat k aplikacím Azure Storage autorizaci Azure AD.
 
-Autorizaci s Azure AD je k dispozici pro všechny účty pro obecné účely a BLOB Storage ve všech veřejných oblastech a národních cloudech. Autorizaci Azure AD podporují jenom účty úložiště vytvořené pomocí modelu nasazení Azure Resource Manager.
+Autorizaci s Azure AD je k dispozici pro všechny účty pro obecné účely a BLOB Storage ve všech veřejných oblastech a národních cloudech. Autorizaci Azure AD podporují jenom účty úložiště vytvořené pomocí modelu nasazení Azure Resource Manager. Autorizace pomocí Azure AD není pro Azure Table Storage podporovaná.
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Přehled služby Azure AD pro objekty BLOB a fronty
 
@@ -82,7 +82,7 @@ Azure CLI a PowerShell podporují přihlašování pomocí přihlašovacích úd
 
 Služba soubory Azure podporuje autorizaci pomocí Azure AD přes SMB jenom pro virtuální počítače připojené k doméně (Preview). Další informace o používání služby Azure AD přes SMB pro soubory Azure najdete v tématu [přehled Azure Active Directory autorizaci pomocí protokolu SMB pro soubory Azure (Preview)](../files/storage-files-active-directory-overview.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](storage-auth-aad-msi.md)
 - [Ověřování s využitím Azure Active Directory z aplikace pro přístup k objektům blob a frontám](storage-auth-aad-app.md)

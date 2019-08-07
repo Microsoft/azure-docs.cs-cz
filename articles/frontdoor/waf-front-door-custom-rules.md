@@ -10,20 +10,20 @@ ms.workload: infrastructure-services
 ms.date: 04/07/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 02b335de7f105d768168d5f798ec9109136d7430
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 344e04985c52945b2917d3b5f616d5fca6051ab9
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846263"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839770"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Vlastní pravidla pro bránu firewall webových aplikací s využitím front-dveří Azure
-Firewall webových aplikací Azure (WAF) s front-Dvířk Service umožňují řídit přístup k webovým aplikacím na základě podmínek, které definujete. Vlastní pravidlo WAF se skládá z čísla priority, typu pravidla, podmínek shody a akce. Existují dva typy vlastních pravidel: pravidla shody a pravidla omezení přenosové rychlosti. Pravidlo shody řídí přístup na základě podmínek shody, zatímco pravidlo omezení četnosti řídí přístup na základě podmínek párování a sazeb příchozích požadavků. Můžete zakázat vlastní pravidlo, aby se zabránilo jeho vyhodnocování, ale i zachovat konfiguraci. Tento článek popisuje pravidla shody, která jsou založená na parametrech http.
+Firewall webových aplikací Azure (WAF) s front-Dvířk Service umožňují řídit přístup k webovým aplikacím na základě podmínek, které definujete. Vlastní pravidlo WAF se skládá z čísla priority, typu pravidla, podmínek shody a akce. Existují dva typy vlastních pravidel: pravidla shody a pravidla omezení přenosové rychlosti. Pravidlo shody řídí přístup na základě sady podmínek párování, zatímco pravidlo omezení četnosti řídí přístup na základě podmínek párování a sazeb příchozích požadavků. Můžete zakázat vlastní pravidlo, aby se zabránilo jeho vyhodnocování, ale i zachovat konfiguraci. 
 
 ## <a name="priority-match-conditions-and-action-types"></a>Priority, podmínky shody a typy akcí
-Můžete řídit přístup pomocí vlastního pravidla WAf, které definuje číslo priority, typ pravidla, podmínky shody a akci. 
+Můžete řídit přístup pomocí vlastního pravidla WAf, které definuje číslo priority, typ pravidla, pole podmínek shody a akci. 
 
-- **Priority:** je jedinečné celé číslo, které popisuje pořadí vyhodnocování pravidel WAF. Pravidla s nižšími hodnotami se vyhodnocují před pravidly s vyššími hodnotami.
+- **Priority:** je jedinečné celé číslo, které popisuje pořadí vyhodnocování pravidel WAF. Pravidla s nižšími hodnotami priority se vyhodnocují před pravidly s vyššími hodnotami. Prioritní hodnoty musí být jedinečné mezi všemi vlastními pravidly.
 
 - **Action:** definuje způsob směrování požadavku, pokud se shoduje pravidlo WAF. Můžete zvolit jednu z níže uvedených akcí, které se použijí, když požadavek odpovídá vlastnímu pravidlu.
 
@@ -32,19 +32,17 @@ Můžete řídit přístup pomocí vlastního pravidla WAf, které definuje čí
     - *Log* -WAF zaznamená záznam v protokolech WAF a pokračuje v vyhodnocení dalšího pravidla.
     - *Přesměrování* – WAF požadavek přesměrování na zadaný identifikátor URI, protokoluje záznam v protokolech WAF a ukončí.
 
-- **Podmínka shody:** definuje proměnnou shody, operátor a hodnotu shody. Každé pravidlo může obsahovat více podmínek shody. Podmínka shody může být založená na následujících *proměnných shody*:
-    - RemoteAddr (IP adresa klienta)
-    - requestMethod
+- **Podmínka shody:** definuje proměnnou shody, operátor a hodnotu shody. Každé pravidlo může obsahovat více podmínek shody. Podmínka shody může být založená na geografickém umístění, IP adresách klientů (CIDR), velikosti nebo shodě řetězců. Shoda řetězců může být na seznamu proměnných shody.
+  - **Proměnná shody:**
+    - RequestMethod
     - Řetězec dotazu
     - PostArgs
-    - requestUri
+    - RequestUri
     - RequestHeader
     - Částmi
-
-- **Operator:** list obsahuje následující:
+    - Soubory cookie
+  - **Podnikatel**
     - Any: se často používá k definování výchozí akce, pokud se neshodují žádná pravidla. Any je operátor matched ALL.
-    - IPMatch: Definování omezení IP adres pro proměnnou RemoteAddr
-    - Geografické porovnávání: definování geografického filtrování pro proměnnou RemoteAddr
     - Výši
     - Obsahuje
     - LessThan: omezení velikosti
@@ -52,26 +50,46 @@ Můžete řídit přístup pomocí vlastního pravidla WAf, které definuje čí
     - LessThanOrEqual: omezení velikosti
     - GreaterThanOrEqual: omezení velikosti
     - Filtr začíná na
-     - endsWith
+    - EndsWith
+    - Regulární
+  
+  - **Regulární výraz** nepodporuje následující operace: 
+    - Zpětná reference a zachycení dílčích výrazů
+    - Libovolné kontrolní výrazy s nulovou šířkou
+    - Reference k podrutinám a rekurzivní vzory
+    - Podmíněné vzory
+    - Řízení operací zpětného navrácení
+    - Direktiva "\c single byte"
+    - Direktiva pro porovnávání nového řádku \r
+    - Začátek směrnice pro obnovení shody od \K
+    - Popisky a vložený kód
+    - Seskupení Atomic a kvantifikátory possessive
 
-Podmínka negace  můžete nastavit na hodnotu true, pokud by výsledek podmínky měl být negace.
-
-*Hodnota Match* definuje seznam možných hodnot shody.
-Mezi podporované hodnoty metody požadavku HTTP patří:
-- GET
-- POST
-- PUT
-- ZÁHLAVÍ
-- DELETE
-- ZÍSKÁTE
-- UZAMKNOUT
-- PROFILU
-- MOŽNOSTI
-- SLOUŽÍ
-- PROPPATCH
-- MKCOL
-- KOPIÍ
-- PØESUNOUT
+  - **Negace [nepovinné]:** Podmínka negace můžete nastavit na hodnotu true, pokud by výsledek podmínky měl být negace.
+      
+  - **Transformace [volitelné]:** Seznam řetězců s názvy transformací, které se mají provést před pokusem o shodu. Můžou to být následující transformace:
+     - Velká písmena 
+     - Malá
+     - Oříznout
+     - RemoveNulls
+     - UrlDecode
+     - UrlEncode
+     
+   - **Hodnota shody:** Mezi podporované hodnoty metody požadavku HTTP patří:
+     - GET
+     - POST
+     - PUT
+     - HEAD
+     - DELETE
+     - ZÍSKÁTE
+     - UZAMKNOUT
+     - PROFILU
+     - MOŽNOSTI
+     - SLOUŽÍ
+     - PROPPATCH
+     - MKCOL
+     - KOPIÍ
+     - PØESUNOUT
 
 ## <a name="examples"></a>Příklady
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 52df4308020b03565c851b6969c0e2e31464d7d7
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: d0acbd02103ebd8dd3819579c85b4ddac22dba78
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234057"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68773103"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače Red Hat Enterprise Linux 7 ke spravované doméně
 V tomto článku se dozvíte, jak připojit virtuální počítač Red Hat Enterprise Linux (RHEL) 7 ke spravované doméně Azure AD Domain Services.
@@ -107,6 +107,8 @@ Teď, když jsou na virtuálním počítači se systémem Linux nainstalované p
 
     > [!TIP]
     > Použijte stejný uživatelský účet, který jste zadali v předchozím kroku (' kinit ').
+    >
+    > Pokud se váš virtuální počítač nemůže připojit k doméně, ujistěte se, že skupina zabezpečení sítě virtuálního počítače umožňuje odchozí přenosy protokolu Kerberos na portu TCP + UDP 464 do podsítě virtuální sítě pro spravovanou doménu Azure služba AD DS.
 
     ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4115964533072e5d8f1760c8c5cdf0f20c9b7625
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0c07cbd9fef865f3fc7b782210ef44094df9f629
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727143"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779835"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 ##  <a name="introduction"></a>Úvod
@@ -240,7 +240,7 @@ Azure nabízí pro ochranu dat následující typy šifrování:
 -   [Šifrování na straně klienta](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage), aby se data zašifroval před přenosem do úložiště a dešifrují data poté, co se přenesou z úložiště.
 
 #### <a name="encryption-at-rest"></a>Šifrování v klidovém umístění
-V případě mnoha organizací je [šifrování dat v klidovém](https://docs.microsoft.com/azure/security/azure-isolation) případě povinný krok k ochraně dat, dodržování předpisů a suverenity dat. Existují tři funkce Azure, které poskytují šifrování dat v klidovém znění:
+V případě mnoha organizací je [šifrování dat v klidovém](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices) případě povinný krok k ochraně dat, dodržování předpisů a suverenity dat. Existují tři funkce Azure, které poskytují šifrování dat v klidovém znění:
 
 -   [Šifrování služby Storage](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) umožňuje požádat, aby služba úložiště při zápisu do Azure Storage automaticky zašifroval data.
 

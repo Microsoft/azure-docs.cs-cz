@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/31/2019
-ms.openlocfilehash: ea36f8a6a8c1db031de8f6ce2b4e3a88d73907e7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 6c2e2c7395fcc45fe74c50beb3624eabb1d395c9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700324"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828024"
 ---
 # <a name="scenario-unable-to-add-nodes-to-azure-hdinsight-cluster"></a>Scénář: Do clusteru Azure HDInsight se nedají přidat uzly.
 
@@ -27,7 +27,7 @@ Důvody se mohou lišit.
 
 ## <a name="resolution"></a>Řešení
 
-Pomocí funkce [Velikost clusteru](/hdinsight-scaling-best-practices.md) Vypočítejte počet dalších jader potřebných pro cluster. Tato hodnota je založená na celkovém počtu jader v nových pracovních uzlech. Pak zkuste použít jeden nebo několik následujících kroků:
+Pomocí funkce [Velikost clusteru](../hdinsight-scaling-best-practices.md) Vypočítejte počet dalších jader potřebných pro cluster. Tato hodnota je založená na celkovém počtu jader v nových pracovních uzlech. Pak zkuste použít jeden nebo několik následujících kroků:
 
 * Zkontrolujte, jestli v umístění clusteru nejsou k dispozici žádná jádra.
 

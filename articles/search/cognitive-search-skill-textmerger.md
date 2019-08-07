@@ -1,6 +1,6 @@
 ---
-title: Text sloučení kognitivního vyhledávání dovednosti – Azure Search
-description: Sloučení textu z kolekce polí do jednoho konsolidované pole. Pomocí této kognitivních dovedností v rozšíření kanálu služby Azure Search.
+title: Dovednost pro vyhledávání rozpoznávání textu při slučování – Azure Search
+description: Sloučí text z kolekce polí do jednoho konsolidovaného pole. Použijte tuto funkci rozpoznávání v kanálu rozšíření Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,36 +10,36 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: bbf2e524d626ac17596ded61746c26f20a6caf1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.subservice: cognitive-search
+ms.openlocfilehash: 312caf2d514d630c5bc1fb7755b7ab7a6a3d443a
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65021826"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840905"
 ---
-#    <a name="text-merge-cognitive-skill"></a>Kognitivní dovednosti sloučení textu
+#    <a name="text-merge-cognitive-skill"></a>Dovednost pro vnímání textu sloučení
 
-**Sloučení textu** dovednosti konsoliduje text z kolekce polí do jednoho pole. 
+Dovednost **sloučení textu** slučuje text z kolekce polí do jednoho pole. 
 
 > [!NOTE]
-> Tato dovednosti není vázán na API služeb Cognitive Services a se vám neúčtují poplatky k jeho používání. Měli stále [připojit prostředek služeb Cognitive Services](cognitive-search-attach-cognitive-services.md), ale k přepsání **Free** resource – možnost, která omezuje vám malý počet denních obohacení za den.
+> Tato dovednost není vázaná na rozhraní Cognitive Services API a neúčtují se za jejich použití. K dispozici byste ale měli i [prostředek Cognitive Services](cognitive-search-attach-cognitive-services.md), abyste mohli přepsat možnost bezplatného prostředku, která omezuje na malý počet denních rozšíření za den.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill
 
-## <a name="skill-parameters"></a>Parametry dovedností
+## <a name="skill-parameters"></a>Parametry dovednosti
 
-Parametry rozlišují malá a velká písmena.
+V parametrech jsou rozlišována malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| insertPreTag  | Řetězec, které se mají zahrnout před každou vložení. Výchozí hodnota je `" "`. Pokud chcete vynechat, nechte pole, nastavte hodnotu na `""`.  |
-| insertPostTag | Řetězce mají být zahrnuty po každé vložení. Výchozí hodnota je `" "`. Pokud chcete vynechat, nechte pole, nastavte hodnotu na `""`.  |
+| insertPreTag  | Řetězec, který má být zahrnut před každým vložením. Výchozí hodnota je `" "`. Chcete-li vynechat místo, nastavte hodnotu na `""`.  |
+| insertPostTag | Řetězec, který má být zahrnut po každém vložení. Výchozí hodnota je `" "`. Chcete-li vynechat místo, nastavte hodnotu na `""`.  |
 
 
-##  <a name="sample-input"></a>Ukázkový vstup
-Dokument JSON poskytuje použitelné vstup pro tuto dovednost může být:
+##  <a name="sample-input"></a>Vzorový vstup
+Dokument JSON, který poskytuje použitelný vstup pro tuto dovednost, může být:
 
 ```json
 {
@@ -58,7 +58,7 @@ Dokument JSON poskytuje použitelné vstup pro tuto dovednost může být:
 ```
 
 ##  <a name="sample-output"></a>Ukázkový výstup
-Tento příklad ukazuje výstup předchozího vstup předpokladu, že *insertPreTag* je nastavena na `" "`, a *insertPostTag* je nastavena na `""`. 
+Tento příklad ukazuje výstup předchozí vstupní hodnoty za předpokladu, že je *insertPreTag* nastaven na `" "`hodnotu a *insertPostTag* je nastaven na `""`hodnotu. 
 
 ```json
 {
@@ -74,11 +74,11 @@ Tento příklad ukazuje výstup předchozího vstup předpokladu, že *insertPre
 }
 ```
 
-## <a name="extended-sample-skillset-definition"></a>Rozšířené ukázková definice dovedností
+## <a name="extended-sample-skillset-definition"></a>Rozšířená ukázka definice dovednosti
 
-Běžný scénář použití sloučení textu je sloučit textovou reprezentaci řetězce obrázků (text ze OCR dovedností nebo popisek image) do pole obsahu dokumentu. 
+Běžným scénářem použití sloučení textu je sloučení textové reprezentace obrázků (text z dovednosti OCR nebo titulku obrázku) do pole obsah dokumentu. 
 
-Následující příklad dovednosti používá dovednosti optické rozpoznávání znaků k extrakci textu z imagí vloží do dokumentu. V dalším kroku se vytvoří *merged_text* pole tak, aby obsahovala původní i OCRed text z každé image. Další informace o dovednosti OCR [tady](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr).
+Následující příklad dovednosti používá dovednost optického rozpoznávání znaků k extrakci textu z obrázků vložených v dokumentu. V dalším kroku se vytvoří pole *merged_text* , které bude obsahovat původní i OCRed text z každého obrázku. Další informace o dovednostech OCR najdete [tady](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr).
 
 ```json
 {
@@ -129,7 +129,7 @@ Následující příklad dovednosti používá dovednosti optické rozpoznáván
   ]
 }
 ```
-Výše uvedený příklad předpokládá, že existuje pole normalized bitové kopie. Chcete-li získat pole normalized imagí, nastavte *imageAction* konfigurace definice indexeru pro *generateNormalizedImages* jak je znázorněno níže:
+Výše uvedený příklad předpokládá, že existuje pole Normalized-images. Chcete-li získat pole Normalized-images, nastavte v definici indexeru konfiguraci *imageAction* na *generateNormalizedImages* , jak je znázorněno níže:
 
 ```json
 {
@@ -143,8 +143,8 @@ Výše uvedený příklad předpokládá, že existuje pole normalized bitové k
 }
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
-+ [Definování dovedností](cognitive-search-defining-skillset.md)
-+ [Vytvoření indexeru (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Jak definovat dovednosti](cognitive-search-defining-skillset.md)
++ [Vytvořit indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

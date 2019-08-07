@@ -1,6 +1,6 @@
 ---
-title: Obory aplikace verze 1.0 (knihovna Microsoft Authentication Library) | Azure
-description: Další informace o oborech v1.0 aplikací pomocí Microsoft Authentication Library (MSAL).
+title: Obory pro aplikaci v 1.0 (Microsoft Authentication Library) | Azure
+description: Seznamte se s obory pro aplikaci v 1.0 pomocí knihovny Microsoft Authentication Library (MSAL).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/23/2019
@@ -17,21 +17,21 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e43bc245a5908ba1bf91e7b4bee6df2f5cfc618
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 17837c6f4d1b3c690c39c9f99ca4896fcce16b00
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514362"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834905"
 ---
-# <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Oborů pro webové rozhraní API přijímat tokeny v1.0
+# <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Obory pro tokeny webového rozhraní API přijímající verze 1.0
 
-Obory oprávnění, které Azure AD pro vývojáře (verze 1.0) aplikaci rozhraní API (prostředek) uvádí pro klientské aplikace jsou oprávnění OAuth2. Tyto obory oprávnění může udělit klientské aplikace během souhlas. V části `oauth2Permissions` v [odkaz na manifest aplikace Azure Active Directory](reference-app-manifest.md#manifest-reference).
+Oprávnění OAuth2 jsou obory oprávnění, které aplikace webového rozhraní API (v 1.0) zpřístupňuje webovým aplikacím v Azure AD pro vývojáře (v 1.0). Tyto obory oprávnění se můžou klientským aplikacím udělit během souhlasu. Informace najdete `oauth2Permissions` v části v tématu [Azure Active Directory Reference k manifestu aplikace](reference-app-manifest.md#manifest-reference).
 
-## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Obory požádáte o přístup k určité oprávnění OAuth2 aplikace v1.0
-Pokud chcete získat tokeny pro konkrétní obory v1.0 aplikace (třeba Azure AD graph, což je protokol https:\//graph.windows.net), je potřeba vytvořit obory zřetězením identifikátor požadovaný prostředek se požadované oprávnění OAuth2 pro daný prostředek.
+## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Obory pro vyžádání přístupu ke konkrétním OAuth2 oprávnění aplikace v 1.0
+Pokud chcete získat tokeny pro konkrétní obory aplikace v 1.0 (například Azure AD Graph, která je https:/Graph.Windows.NET),\/musíte vytvořit obory zřetězením požadovaného identifikátoru prostředku s požadovaným oprávněním OAuth2. pro tento prostředek.
 
-Například pro přístup jménem uživatele webové rozhraní API v1.0 kde je identifikátor URI ID aplikace `ResourceId`:
+Například pro přístup jménem uživatele a verze 1.0 webového rozhraní API, kde identifikátor URI ID aplikace je `ResourceId`:
 
 ```csharp
 var scopes = new [] {  ResourceId+"/user_impersonation"};
@@ -41,7 +41,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Pokud chcete číst a zapisovat pomocí MSAL.NET Azure Active Directory pomocí služby Azure AD graph API (protokol https:\//graph.windows.net/), vytvořili byste seznam oborů, viz následující příklad:
+Pokud chcete číst a zapisovat pomocí MSAL.NET Azure Active Directory pomocí rozhraní Azure AD Graph API (https:\//Graph.Windows.NET/), měli byste vytvořit seznam oborů, jak je uvedeno níže:
 
 ```csharp
 string ResourceId = "https://graph.windows.net/";
@@ -53,7 +53,7 @@ var ResourceId = "https://graph.windows.net/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-Pokud chcete zadat rozsahu odpovídající rozhraní API Azure Resource Manageru (protokol https:\//management.core.windows.net/), budete muset požádat o k následujícímu oboru (Poznámka: dvě lomítka):
+Pokud chcete zapsat rozsah odpovídající rozhraní Azure Resource Manager API (https:\//Management.Core.Windows.NET/), musíte požádat o následující obor (Všimněte si dvou lomítek):
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -63,16 +63,16 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 ```
 
 > [!NOTE]
-> Budete muset použít dvě lomítka, protože rozhraní API Azure Resource Manageru očekává, že lomítko v jeho deklarace identity cílové skupiny (aud) a pak je lomítko pro oddělení název rozhraní API z oboru.
+> Je potřeba použít dvě lomítka, protože rozhraní Azure Resource Manager API očekává lomítko v deklaraci identity cílové skupiny (AUD) a pak je lomítko oddělit název rozhraní API z oboru.
 
-Logikou používanou službou Azure AD je následující:
+Logika, kterou používá služba Azure AD, je následující:
 
-- Pro koncový bod ADAL (verze 1.0) verze 1.0 přístupového tokenu (jediné možné), aud = prostředků
-- Pro požadující přístupového tokenu prostředku přijímat tokeny v2.0, aud MSAL (Microsoft identity platform (v2.0) endpoint) = prostředků. ID aplikace
-- Azure AD pro MSAL (koncový bod verze 2.0) s dotazem přístupového tokenu pro určitý prostředek, který přijímá token přístupu verze 1.0 (což se v případě výše), analyzuje požadovanou cílovou skupinu z požadovaného oboru převzetím všechno dřív než poslední lomítko a používat jej jako identifikátor prostředku. Proto pokud https:\//database.windows.net očekává, že cílovou skupinou "https:\//database.windows.net/", budete muset požádat o oboru "https:\//database.windows.net//.default". Viz také Githubu problém [#747: Adresa url prostředku koncového lomítka vynecháte, která způsobila chybu při ověřování sql](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+- Koncový bod pro ADAL (v 1.0) s přístupovým tokenem v 1.0 (jediný možný), AUD = Resource
+- Pro MSAL (koncový bod Microsoft Identity Platform (v 2.0)) s žádostí o přístupový token pro prostředek přijímá tokeny v 2.0, AUD = Resource. Identifikátor
+- Pro MSAL (koncový bod verze 2.0), který žádá o přístupový token pro prostředek, který přijímá přístupový token v 1.0 (což je výše uvedený případ), Azure AD analyzuje požadovanou cílovou skupinu z požadovaného oboru tím, že převezme vše před poslední lomítko a použije ho jako identifikátor prostředku. Proto pokud https:\//Database.Windows.NET očekává cílovou skupinu "https:\//Database.Windows.NET/", budete muset požádat o obor "https:\//Database.Windows.NET//.default". Viz také #747 problému [na GitHubu: Koncové lomítko adresy URL prostředku je vynecháno, což způsobilo selhání](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)ověřování SQL.
 
-## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Obory požádáte o přístup k všechna oprávnění aplikace v1.0
-Pokud chcete získat token pro všechny statické obory aplikace v1.0, připojte k rozhraní API pro identifikátor URI ID aplikace "hodnotu .default":
+## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Obory pro vyžadování přístupu ke všem oprávněním aplikace v 1.0
+Pokud chcete získat token pro všechny statické obory aplikace v 1.0, připojovat k identifikátoru URI ID aplikace v rozhraní API ". default":
 
 ```csharp
 ResourceId = "someAppIDURI";
@@ -84,5 +84,5 @@ var ResourceId = "someAppIDURI";
 var scopes = [ ResourceId + "/.default"];
 ```
 
-## <a name="scopes-to-request-for-client-credential-flow--daemon-app"></a>Obory požadavku pro klienta přihlašovacích údajů tok / démon aplikace
-V případě tok přihlašovacích údajů klienta, by také být oboru předat `/.default`. To říká do služby Azure AD: "všechny aplikace úrovně oprávnění, která správce vyjádřil souhlas se v registraci aplikace.
+## <a name="scopes-to-request-for-client-credential-flow--daemon-app"></a>Obory pro požadavek na aplikaci Flow/démon přihlašovacích údajů klienta
+V případě toku přihlašovacích údajů klienta by měl být `/.default`taky obor, který se má předat. To oznamuje službě Azure AD: "všechna oprávnění na úrovni aplikace, ke kterým správce souhlasí v registraci aplikace.

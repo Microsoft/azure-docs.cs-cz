@@ -2,17 +2,17 @@
 title: Prostředí PowerShell pro virtuální počítače s Windows – Azure
 description: Řešení potíží s PowerShellem při nastavování prostředí klienta virtuální plochy Windows
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 41c3c25962d5cb0d608a226ed77408460446bfa5
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.author: helohr
+ms.openlocfilehash: 7c5a15790c3a88e9aa3921d6cc2626576aedaa64
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248200"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816367"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>PowerShell pro Windows Virtual Desktop
 
@@ -83,7 +83,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 >[!Note]
 >Příkaz New-RdsRoleAssignment nemůže udělit oprávnění uživateli, který neexistuje v Azure Active Directory (AD).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
 - Pokud chcete řešit problémy při vytváření tenanta a fondu hostitelů v prostředí virtuálních počítačů s Windows, přečtěte si téma [vytváření fondů klientů a hostitelů](troubleshoot-set-up-issues.md).

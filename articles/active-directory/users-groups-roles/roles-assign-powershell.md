@@ -1,6 +1,6 @@
 ---
-title: Přiřazení rolí správce a jejich odebírání pomocí Azure PowerShell-Azure Active Directory | Microsoft Docs
-description: Pro ty, kteří často spravují přiřazení rolí, teď můžete spravovat členy role správce Azure AD pomocí Azure PowerShell.
+title: Přiřazení vlastních rolí k oboru prostředků pomocí Azure PowerShell-Azure Active Directory | Microsoft Docs
+description: Spravujte členy vlastní role správce Azure AD pomocí Azure PowerShell.
 services: active-directory
 author: curtand
 manager: mtillman
@@ -8,161 +8,162 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/05/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa4bddf84720265afe361dff665f10ff8184f6f6
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 2ed8df92ac6a43a6cbf935bdb564f6cf0658608a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706490"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812784"
 ---
-# <a name="assign-azure-active-directory-admin-roles-using-powershell"></a>Přiřazení rolí správce Azure Active Directory pomocí prostředí PowerShell
+# <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Přiřazení vlastních rolí k oboru prostředků pomocí PowerShellu v Azure Active Directory
 
-Můžete automatizovat způsob přiřazování rolí uživatelským účtům pomocí Azure PowerShell. Tento článek používá modul [Azure Active Directory PowerShell verze 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) .
+Tento článek popisuje, jak vytvořit přiřazení role v oboru Azure Active Directory (Azure AD v rámci organizace). Přiřazení role v oboru pro celou organizaci uděluje přístup napříč organizací Azure AD. Pokud chcete vytvořit přiřazení role s oborem jednoho prostředku služby Azure AD, přečtěte si téma [Vytvoření vlastní role a její přiřazení v oboru prostředků](roles-create-custom.md). Tento článek používá modul [Azure Active Directory PowerShell verze 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) .
 
-## <a name="prepare-powershell"></a>Příprava PowerShellu
+Další informace o rolích správce Azure AD najdete v tématu [přiřazení rolí správce v Azure Active Directory](directory-assign-admin-roles.md).
 
-Nejdřív je nutné [Stáhnout modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
-
-## <a name="install-the-azure-ad-powershell-module"></a>Instalace modulu Azure AD Powershellu
-
-K instalaci modulu Azure AD PowerShell použijte následující příkazy:
-
-```powershell
-install-module azuread
-import-module azuread
-```
-
-Chcete-li ověřit, zda je modul připravený k použití, použijte následující příkaz:
-
-```powershell
-get-module azuread
-  ModuleType Version      Name                         ExportedCommands
-  ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
-```
-
-Teď můžete začít používat rutiny v modulu. Úplný popis rutin v modulu Azure AD najdete v online referenční dokumentaci pro [Azure Active Directory PowerShell verze 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles).
-
-## <a name="permissions-required"></a>Požadovaná oprávnění
+## <a name="required-permissions"></a>Požadovaná oprávnění
 
 Připojte se k vašemu tenantovi Azure AD pomocí globálního účtu správce a přiřaďte nebo odeberte role.
 
-## <a name="assign-a-single-role"></a>Přiřazení jedné role
+## <a name="prepare-powershell"></a>Příprava PowerShellu
 
-Pokud chcete přiřadit roli, musíte nejdřív získat její zobrazovaný název a název role, kterou přiřazujete. Pokud máte zobrazovaný název účtu a název role, k přiřazení role uživateli použijte následující rutiny.
+Nainstalujte modul Azure AD PowerShell z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Pak importujte modul Azure AD PowerShell Preview pomocí následujícího příkazu:
 
 ``` PowerShell
-# Fetch user to assign to role
-$roleMember = Get-AzureADUser -ObjectId "username@contoso.com"
-
-# Fetch User Account Administrator role instance
-$role = Get-AzureADDirectoryRole | Where-Object {$_.displayName -eq 'User Account Administrator'}
-
-# If role instance does not exist, instantiate it based on the role template
-if ($role -eq $null) {
-    # Instantiate an instance of the role template
-    $roleTemplate = Get-AzureADDirectoryRoleTemplate | Where-Object {$_.displayName -eq 'User Account Administrator'}
-    Enable-AzureADDirectoryRole -RoleTemplateId $roleTemplate.ObjectId
-
-    # Fetch User Account Administrator role instance again
-    $role = Get-AzureADDirectoryRole | Where-Object {$_.displayName -eq 'User Account Administrator'}
-}
-
-# Add user to role
-Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember.ObjectId
-
-# Fetch role membership for role to confirm
-Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
+import-module azureadpreview
 ```
 
-## <a name="assign-a-role-to-a-service-principal"></a>Přiřazení role k instančnímu objektu
+Chcete-li ověřit, zda je modul připravený k použití, odpovídá verzi vrácené následujícím příkazem následujícímu, který je uveden zde:
 
-Příklad přiřazení instančního objektu k roli
-
-```powershell
-# Fetch a service principal to assign to role
-$roleMember = Get-AzureADServicePrincipal -ObjectId "00221b6f-4387-4f3f-aa85-34316ad7f956"
- 
-#Fetch list of all directory roles with object ID
-Get-AzureADDirectoryRole
- 
-# Fetch a directory role by ID
-$role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543"
- 
-# Add user to role
-Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember.ObjectId
- 
-# Fetch the assignment for the role to confirm
-Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADServicePrincipal
+``` PowerShell
+get-module azureadpreview
+  ModuleType Version      Name                         ExportedCommands
+  ---------- ---------    ----                         ----------------
+  Binary     2.0.0.115    azureadpreview               {Add-AzureADMSAdministrati...}
 ```
 
-## <a name="multiple-role-assignments"></a>Přiřazení více rolí
+Teď můžete začít používat rutiny v modulu. Úplný popis rutin v modulu Azure AD najdete v online referenční dokumentaci pro [modul Azure AD Preview](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17).
 
-Příklady přiřazení a odebrání více rolí najednou.
+## <a name="assign-a-role-to-a-user-or-service-principal-with-resource-scope"></a>Přiřazení role uživateli nebo instančnímu objektu s rozsahem prostředků
 
-```powershell
-#File name
-$fileName="<file path>" 
- 
-$input_Excel = New-Object -ComObject Excel.Application
-$input_Workbook = $input_Excel.Workbooks.Open($fileName)
-$input_Worksheet = $input_Workbook.Sheets.Item(1)
- 
-        #Count number of users who have to be assigned to role
-$count = $input_Worksheet.UsedRange.Rows.Count
- 
-#Loop through each line of the csv file starting from line 2 (assuming first line is title)
-for ($i=2; $i -le $count; $i++)
-{
-       #Fetch user display name
-       $displayName = $input_Worksheet.Cells.Item($i,1).Text
-       
-       #Fetch role name
-       $roleName = $input_Worksheet.Cells.Item($i,2).Text
- 
-       #Assign role
-       Add-AzureADDirectoryRoleMember -ObjectId (Get-AzureADDirectoryRole | Where-Object DisplayName -eq $roleName).ObjectId -RefObjectId (Get-AzureADUser | Where-Object DisplayName -eq $displayName).ObjectId
-}
- 
-#Remove multiple role assignments
-for ($i=2; $i -le $count; $i++)
-{
-       $displayName = $input_Worksheet.Cells.Item($i,1).Text
-       $roleName = $input_Worksheet.Cells.Item($i,2).Text
- 
-       Remove-AzureADDirectoryRoleMember -ObjectId (Get-AzureADDirectoryRole | Where-Object DisplayName -eq $roleName).ObjectId -MemberId (Get-AzureADUser | Where-Object DisplayName -eq $displayName).ObjectId
-}
+1. Otevřete modul Azure AD Preview PowerShellu.
+1. Přihlaste se spuštěním příkazu `Connect-AzureAD`.
+1. Pomocí následujícího skriptu PowerShellu vytvořte novou roli.
+
+``` PowerShell
+# Get the user and role definition you want to link
+ $user = Get-AzureADMSUser -Filter "userPrincipalName eq 'cburl@f128.info'"
+$roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Application Support Administrator'"
+
+# Get app registration and construct resource scope for assignment.
+    "displayName eq 'f/128 Filter Photos'"
+$resourceScopes = '/' + $appRegistration.objectId
+
+# Create a scoped role assignment
+$roleAssignment = New-AzureADMSRoleAssignment -ResourceScopes $resourceScopes -RoleDefinitionId $roleDefinition.objectId -PrincipalId $user.objectId
 ```
 
-## <a name="remove-a-role-assignment"></a>Odebrání přiřazení role
+K přiřazení role k instančnímu objektu místo uživatele použijte [rutinu Get-AzureADMSServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0).
 
-Tento příklad odebere přiřazení role pro zadaného uživatele.
+## <a name="operations-on-roledefinition"></a>Operace na rutiny roledefinition
 
-```powershell
-# Fetch user to assign to role
-$roleMember = Get-AzureADUser -ObjectId "username@contoso.com"
+Objekty definice role obsahují definici předdefinované nebo vlastní role společně s oprávněním uděleným přiřazením této role. Tento prostředek zobrazuje jak definice vlastních rolí, tak integrované directoryRoles (které se zobrazují ve formě ekvivalentu rutiny roledefinition). V současné době může organizace Azure AD mít definovanou maximálně 30 jedinečných vlastních RoleDefinitions.
 
-#Fetch list of all directory roles with object id
-Get-AzureADDirectoryRole
+### <a name="create-operations-on-roledefinition"></a>Vytvoření operací na rutiny roledefinition
 
-# Fetch a directory role by id
-$role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543"
+``` PowerShell
+# Basic information
 
-# Remove user from role
-Remove-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -MemberId $roleMember.ObjectId 
+$description = "Application Registration Credential Administrator"
+$displayName = "Custom Demo Admin"
+$resourceScopes = @('/')
+$templateId = "355aed8a-864b-4e2b-b225-ea95482e7570"
 
-# Fetch role membership for role to confirm
-Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
+# Set of actions to grant
+$allowedResourceAction =
+@(
+    "microsoft.directory/applications/default/read",
+    "microsoft.directory/applications/credentials/update"
+)
+$resourceActions = @{'allowedResourceActions'= $allowedResourceAction}
+$rolePermission = @{'resourceActions' = $resourceActions}
+$rolePermissions = $rolePermission
 
+# Create new custom admin role
+$customAdmin = New-AzureADMSRoleDefinitions -RolePermissions $rolePermissions -ResourceScopes $resourceScopes -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
 ```
 
-## <a name="next-steps"></a>Další postup
+### <a name="read-operations-on-roledefinition"></a>Operace čtení na rutiny roledefinition
 
-* Můžete s námi sdílet na [fóru role pro správu Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-* Další informace o rolích a přiřazení rolí správců najdete v tématu [přiřazení rolí správce](directory-assign-admin-roles.md).
-* Pro výchozí uživatelská oprávnění si přečtěte téma [Porovnání výchozích oprávnění typu Host a uživatel](../fundamentals/users-default-permissions.md).
+``` PowerShell
+# Get all role definitions
+Get-AzureADMSRoleDefinitions
+
+# Get single role definition by objectId
+$customAdmin = Get-AzureADMSRoleDefinitions -ObjectId '86593cfc-114b-4a15-9954-97c3494ef49b'
+
+# Get single role definition by templateId
+$customAdmin = Get-AzureADMSRoleDefinitions -Filter "templateId eq '355aed8a-864b-4e2b-b225-ea95482e757not
+```
+
+### <a name="update-operations-on-roledefinition"></a>Operace aktualizace na rutiny roledefinition
+
+``` PowerShell
+# Update role definition
+# This works for any writable property on role definition. You can replace display name with other
+# valid properties.
+Set-AzureADMSRoleDefinitions -ObjectId $customAdmin.ObjectId -DisplayName "Updated DisplayName"
+```
+
+### <a name="delete-operations-on-roledefinition"></a>Odstranění operací na rutiny roledefinition
+
+``` PowerShell
+# Delete role definition
+Remove-AzureADMSRoleDefinitions -ObjectId $customAdmin.ObjectId
+```
+
+## <a name="operations-on-roleassignment"></a>Operace na RoleAssignment
+
+Přiřazení rolí obsahují informace, které propojuje daný objekt zabezpečení (uživatel nebo instanční objekt aplikace) s definicí role. V případě potřeby můžete pro přiřazená oprávnění přidat obor jednoho prostředku služby Azure AD.  Omezení rozsahu oprávnění je podporováno pro předdefinované a vlastní role.
+
+### <a name="create-operations-on-roleassignment"></a>Vytvoření operací na RoleAssignment
+
+``` PowerShell
+# Scopes to scope granted permissions to
+$resourceScopes = @('/')
+
+# IDs of principal and role definition you want to link
+$principalId = "27c8ca78-ab1c-40ae-bd1b-eaeebd6f68ac"
+$roleDefinitionId = $customKeyCredAdmin.ObjectId
+
+# Create a scoped role assignment
+$roleAssignment = New-AzureADMSRoleAssignments -ResourceScopes $resourceScopes -RoleDefinitionId -PrincipalId $principalId
+```
+
+### <a name="read-operations-on-roleassignment"></a>Operace čtení na RoleAssignment
+
+``` PowerShell
+# Get role assignments for a given principal
+Get-AzureADMSRoleAssignments -Filter "principalId eq '27c8ca78-ab1c-40ae-bd1b-eaeebd6f68ac'"
+
+# Get role assignments for a given role definition 
+Get-AzureADMSRoleAssignments -Filter "principalId eq '355aed8a-864b-4e2b-b225-ea95482e7570'"
+```
+
+### <a name="delete-operations-on-roleassignment"></a>Odstranění operací na RoleAssignment
+
+``` PowerShell
+# Delete role assignment
+Remove-AzureADMSRoleAssignments -ObjectId $roleAssignment.ObjectId
+```
+
+## <a name="next-steps"></a>Další kroky
+
+- Sdílejte s námi na [fóru o rolích pro správu Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+- Další informace o rolích a přiřazení rolí správců služby Azure AD najdete v tématu [přiřazení rolí správce](directory-assign-admin-roles.md).
+- Pro výchozí uživatelská oprávnění si přečtěte téma [Porovnání výchozích oprávnění typu Host a uživatel](../fundamentals/users-default-permissions.md).

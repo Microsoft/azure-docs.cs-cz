@@ -1,207 +1,214 @@
 ---
-title: Řešení Azure VMware podle CloudSimple rychlý start – vytvoření privátního cloudu
-description: Zjistěte, jak vytvořit a nakonfigurovat řešení VMware Azure podle CloudSimple privátního cloudu
+title: Rychlé zprovoznění řešení Azure VMware podle CloudSimple – vytvoření privátního cloudu
+description: Naučte se vytvářet a konfigurovat privátní cloud pomocí řešení Azure VMware od CloudSimple.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 85a8840ccf6f6fe6390b5eeaccd715d87169f157
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6b68dcd47377ee56c4ebedc94905e1f0a8b70b38
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476031"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812336"
 ---
-# <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý start – konfigurace prostředí privátního cloudu
+# <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý Start – konfigurace prostředí privátního cloudu
 
-V tomto článku zjistěte, jak vytvořit privátní cloud CloudSimple a nastavení prostředí privátního cloudu.
+V tomto článku se dozvíte, jak vytvořit privátní cloud CloudSimple a nastavit své prostředí privátního cloudu.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="before-you-begin"></a>Před zahájením
+
+Přidělte rozsah CIDR pro podsítě vSphere/síti vSAN pro privátní cloud. Privátní cloud se vytvoří jako izolovaný zásobník VMware (ESXi hosts, vCenter, síti vSAN a NSX), který spravuje Server vCenter. Součásti pro správu se nasazují v síti vybrané pro směrování vSphere/síti vSAN pro sítě. Rozsah směrování sítě je v průběhu nasazení rozdělen do různých podsítí.  Adresní prostor podsítě vSphere/síti vSAN musí být jedinečný. Nesmí se překrývat s žádnou sítí, která komunikuje s prostředím CloudSimple.  Sítě, které komunikují s CloudSimple, zahrnují místní sítě a virtuální sítě Azure.  Další informace o podsítích vSphere/síti vSAN najdete v tématu [Přehled sítí VLAN a podsítí](cloudsimple-vlans-subnets.md).
+
+* Minimální předpona rozsahu CIDR podsítě vSphere/síti vSAN:/24 
+* Maximální předpona rozsahu CIDR podsítě vSphere/síti vSAN:/21
+
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-private-cloud"></a>Vytvoření privátního cloudu
 
 1. Vyberte **Všechny služby**.
-2. Vyhledejte **CloudSimple služby**.
-3. Vyberte službu CloudSimple, na kterém chcete vytvořit privátní Cloud.
-4. Přehled, klikněte na tlačítko **vytvoření privátního cloudu** otevřít na nové kartě prohlížeče CloudSimple portálu.  Pokud se zobrazí výzva, přihlaste se pomocí Azure přihlášení pověření.  
+2. Vyhledejte **služby CloudSimple Services**.
+3. Vyberte službu CloudSimple, na které chcete vytvořit privátní cloud.
+4. V přehledu klikněte na **vytvořit privátní cloud** . otevře se nová karta prohlížeče pro CloudSimple portál.  Pokud se zobrazí výzva, přihlaste se pomocí přihlašovacích údajů pro přihlášení k Azure.  
 
     ![Vytvoření privátního cloudu z Azure](media/create-private-cloud-from-azure.png)
 
-5. Na portálu CloudSimple zadejte název privátního cloudu
-6. Vyberte **umístění** z privátního cloudu
-7. Vyberte **typ uzlu** zřídit v Azure.  Můžete použít [CS28 nebo CS36 možnost](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Druhou možnost zahrnuje maximální kapacitu výpočetní a paměťové prostředky.
-8. Zadejte **počet uzlů**.  Minimálně tři uzly jsou nutné k vytvoření privátního cloudu
+5. V portálu CloudSimple zadejte název vašeho privátního cloudu.
+6. Vyberte **umístění** vašeho privátního cloudu.
+7. Vyberte **typ uzlu** , který jste zřídili v Azure.  Můžete zvolit [možnost CS28 nebo CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Tato možnost zahrnuje maximální kapacitu výpočetní kapacity a paměti.
+8. Zadejte **počet uzlů**.  Pro vytvoření privátního cloudu se vyžadují minimální tři uzly.
 
-    ![Vytvoření privátního cloudu – základní informace](media/create-private-cloud-basic-info.png)
+    ![Vytvořit privátní cloud – základní informace](media/create-private-cloud-basic-info.png)
 
-9. Klikněte na tlačítko **Další: Rozšířené možnosti**.
-10. Zadejte rozsah CIDR. pro podsítě vSphere/síti vSAN. Ujistěte se, že rozsah CIDR se nepřekrývá s žádným z místní nebo jiných podsítích Azure.
+9. Klikněte **na další: Rozšířené možnosti**.
+10. Zadejte rozsah CIDR pro podsítě vSphere/síti vSAN. Ujistěte se, že se rozsah CIDR nepřekrývá s žádnou z vašich místních nebo jiných podsítí Azure.
 
-    ![Vytvoření privátního cloudu – Pokročilá nastavení](media/create-private-cloud-advanced-options.png)
+    ![Vytvoření privátního cloudu – rozšířené možnosti](media/create-private-cloud-advanced-options.png)
 
-11. Vyberte **Další: Zkontrolovat a vytvořit**.
-12. Zkontrolujte nastavení. Pokud potřebujete změnit libovolné nastavení, klikněte na tlačítko **předchozí**.
+11. Vyberte **další: Zkontrolujte a vytvořte**.
+12. Zkontrolujte nastavení. Pokud potřebujete změnit nějaké nastavení, klikněte na tlačítko **Předchozí**.
 13. Klikněte na možnost **Vytvořit**.
 
-Spustí se proces zajišťování privátního cloudu.  Může trvat až dvě hodiny pro privátní Cloud, které se mají zřídit.
+Spustí se proces zřízení privátního cloudu.  Zřízení privátního cloudu může trvat až dvě hodiny.
 
-## <a name="launch-cloudsimple-portal"></a>Spusťte portál CloudSimple
+## <a name="launch-cloudsimple-portal"></a>Spustit portál CloudSimple
 
-CloudSimple portálu můžete přistupovat z webu Azure portal.  Spustí se portál CloudSimple s Azure přihlášení přihlašovací údaje pomocí jednotného přihlašování (SSO).  Přístup k portálu CloudSimple vyžaduje autorizaci **autorizace služby CloudSimple** aplikace.  Další informace o udělení oprávnění najdete v tématu [souhlas s aplikací CloudSimple autorizace služby](https://docs.azure.cloudsimple.com/access-cloudsimple-portal/#consent-to-cloudsimple-service-authorization-application)
+Portál CloudSimple můžete zpřístupnit z Azure Portal.  Portál CloudSimple se spustí s přihlašovacími údaji pro přihlášení k Azure pomocí jednotného přihlašování (SSO).  Přístup k portálu CloudSimple vyžaduje autorizaci **autorizační aplikace služby CloudSimple** .  Další informace o udělení oprávnění najdete v tématu [souhlasu s aplikací autorizace služby CloudSimple](https://docs.azure.cloudsimple.com/access-cloudsimple-portal/#consent-to-cloudsimple-service-authorization-application) .
 
 1. Vyberte **Všechny služby**.
-2. Vyhledejte **CloudSimple služby**.
-3. Vyberte službu CloudSimple, na kterém chcete vytvořit privátní Cloud.
-4. Přehled, klikněte na tlačítko **přejít na portál CloudSimple** otevřít na nové kartě prohlížeče CloudSimple portálu.  Pokud se zobrazí výzva, přihlaste se pomocí Azure přihlášení pověření.  
+2. Vyhledejte **služby CloudSimple Services**.
+3. Vyberte službu CloudSimple, na které chcete vytvořit privátní cloud.
+4. Z přehledu klikněte na **Přejít na portál CloudSimple** a otevřete novou kartu prohlížeče pro portál CloudSimple.  Pokud se zobrazí výzva, přihlaste se pomocí přihlašovacích údajů pro přihlášení k Azure.  
 
-    ![Spusťte portál CloudSimple](media/launch-cloudsimple-portal.png)
+    ![Spustit portál CloudSimple](media/launch-cloudsimple-portal.png)
 
-## <a name="create-point-to-site-vpn"></a>Vytvoření sítě VPN point-to-site
+## <a name="create-point-to-site-vpn"></a>Vytvoření sítě VPN typu Point-to-site
 
-Připojení VPN typu point-to-site je nejjednodušší způsob, jak připojit z počítače do privátního cloudu. Pomocí připojení VPN typu point-to-site, pokud se připojujete k privátní Cloud vzdáleně.  Rychlý přístup k vaší privátní Cloud postupujte podle následujících kroků.  Přístup k oblasti CloudSimple z vaší místní sítě lze provést pomocí [Site-to-Site VPN](https://docs.azure.cloudsimple.com/vpn-gateway/) nebo [Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/).
+Připojení VPN typu Point-to-site je nejjednodušší způsob, jak se připojit k privátnímu cloudu z vašeho počítače. Pokud se připojujete k privátnímu cloudu vzdáleně, použijte připojení VPN typu Point-to-site.  Pro rychlý přístup k privátnímu cloudu použijte následující postup.  Přístup k oblasti CloudSimple z vaší místní sítě se dá udělat pomocí [sítě VPN typu Site-to-site](https://docs.azure.cloudsimple.com/vpn-gateway/) nebo [Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/).
 
-### <a name="create-gateway"></a>Vytvoření brány
+### <a name="create-gateway"></a>Vytvořit bránu
 
-1. Spuštění CloudSimple portal a vyberte **sítě**.
+1. Spusťte portál CloudSimple a vyberte **síť**.
 2. Vyberte **VPN Gateway**.
-3. Klikněte na tlačítko **novou bránu VPN**.
+3. Klikněte na **nový VPN Gateway**.
 
     ![Vytvoření brány VPN](media/create-vpn-gateway.png)
 
-4. Pro **konfigurace brány**, nakonfigurujte následující nastavení a klikněte na tlačítko **Další**.
+4. V části **Konfigurace brány**zadejte následující nastavení a klikněte na **Další**.
 
-    * Vyberte **Point-to-Site VPN** jako typ brány.
+    * Jako typ brány vyberte **síť VPN typu Point-to-site** .
     * Zadejte název pro identifikaci brány.
-    * Vyberte umístění Azure, ve kterém je nasazená CloudSimple služby.
-    * Zadejte podsíť klienta pro danou bránu point-to-site.  Když se připojíte, se z této podsítě dostanou adres DHCP.
+    * Vyberte umístění Azure, kde je vaše služba CloudSimple nasazená.
+    * Zadejte podsíť klienta pro bránu Point-to-site.  Adresy DHCP budou předány z této podsítě, když se připojíte.
 
-5. Pro **připojení/uživatele**, nakonfigurujte následující nastavení a klikněte na tlačítko **Další**.
+5. V poli **připojení/uživatel**zadejte následující nastavení a klikněte na tlačítko **Další**.
 
-    * Pokud chcete, aby automaticky aktuální a budoucí uživatelé pro přístup k privátním cloudu přes tuto bránu point-to-site, vyberte **automaticky přidat všechny uživatele**. Když vyberete tuto možnost, jsou automaticky vybrané všechny uživatele v seznamu uživatelů. Možnost automatického můžete přepsat tak, že zrušením výběru jednotlivých uživatelů v seznamu.
-    * Pokud chcete vybrat pouze jednotlivé uživatele, klikněte na zaškrtávací políčka v seznamu uživatelů.
+    * Pokud chcete všem současným a budoucím uživatelům automaticky dovolit přístup k privátnímu cloudu prostřednictvím této brány Point-to-site, vyberte **automaticky přidat všechny uživatele**. Když vyberete tuto možnost, automaticky se vyberou všichni uživatelé v seznamu uživatelů. Automatickou možnost můžete přepsat tak, že zrušíte výběr jednotlivých uživatelů v seznamu.
+    * Chcete-li vybrat pouze jednotlivé uživatele, klikněte na zaškrtávací políčka v seznamu uživatelů.
 
-6. V části sítě VLAN a podsítě umožňuje určit správy a uživatele sítě VLAN a podsítě brány a připojení.
+6. V části sítě VLAN a podsítě můžete zadat správu a sítě VLAN a uživatele pro bránu a připojení.
 
-    * **Automaticky přidat** možnosti nastavení globálních zásad pro tuto bránu. Nastavení platí pro aktuální brány. Nastavení mohou být přepsána nastaveními v **vyberte** oblasti.
-    * Vyberte **přidat Správa sítí VLAN a podsítě privátních cloudů**. 
-    * Chcete-li přidat všechny uživatelem definované sítě VLAN a podsítě, klikněte na tlačítko **přidání uživatelem definované sítě VLAN a podsítě**. 
-    * **Vyberte** nastavení přepsat globální nastavení v části **automaticky přidat**. 
+    * **Automatické přidávání** možností nastaví globální zásady pro tuto bránu. Nastavení platí pro aktuální bránu. Nastavení lze přepsat v oblasti **výběru** .
+    * Vyberte **Přidat sítě VLAN pro správu/podsítě privátních cloudů**. 
+    * Pokud chcete přidat všechny sítě VLAN a podsítě definované uživatelem, klikněte na **Přidat uživatelsky definované sítě VLAN/podsítě**. 
+    * Nastavení **Vybrat** přepíše globální nastavení v části **automaticky přidat**. 
 
-7. Klikněte na tlačítko **Další** a zkontrolujte nastavení. Klikněte na tlačítko Upravit ikony žádné změny.
-8. Klikněte na tlačítko **vytvořit** a vytvořte bránu VPN.
+7. Kliknutím na **Další** zkontrolujte nastavení. Kliknutím na ikony úprav proveďte požadované změny.
+8. Kliknutím na **vytvořit** vytvořte bránu VPN.
 
-### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Připojte se k CloudSimple pomocí sítě VPN typu point-to-site
+### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Připojení k CloudSimple pomocí sítě VPN typu Point-to-site
 
-Klient VPN je potřeba pro připojení k CloudSimple z vašeho počítače.  Stáhněte si [OpenVPN klienta](https://openvpn.net/community-downloads/) pro Windows nebo [viskozita](https://www.sparklabs.com/viscosity/download/) pro macOS a OS X.
+Klient VPN je potřebný pro připojení k CloudSimple z počítače.  Stáhněte si [klienta OpenVPN](https://openvpn.net/community-downloads/) pro Windows nebo [viskozitu](https://www.sparklabs.com/viscosity/download/) pro MacOS a OS X.
 
-1. Spuštění CloudSimple portal a vyberte **sítě**.
+1. Spusťte portál CloudSimple a vyberte **síť**.
 2. Vyberte **VPN Gateway**.
-3. V seznamu bran VPN klikněte na bráně VPN typu point-to-site.
-4. Vyberte **uživatelé**.
-5. Klikněte na **stáhnout konfiguraci sítě VPN**
+3. V seznamu bran VPN klikněte na bránu VPN typu Point-to-site.
+4. Vyberte možnost **Uživatelé**.
+5. Klikněte na **Stáhnout konfiguraci sítě VPN** .
 
-    ![Stažení konfigurace zařízení VPN](media/download-p2s-vpn-configuration.png)
+    ![Stáhnout konfiguraci sítě VPN](media/download-p2s-vpn-configuration.png)
 
-6. Importujte konfiguraci na klienta VPN
+6. Import konfigurace na klienta VPN
 
-    * Pokyny, jak [importu konfigurace v klientovi Windows](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)
-    * Pokyny, jak [importu konfigurace v systému macOS nebo OS X](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)
+    * Pokyny pro [Import konfigurace na klienta Windows](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)
+    * Pokyny pro [Import konfigurace v MacOS nebo OS X](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)
 
-7. Připojte se k CloudSimple
+7. Připojení k CloudSimple
 
-## <a name="create-a-vlan-for-your-workload-vms"></a>Vytvoření sítě VLAN pro úlohy virtuálních počítačů
+## <a name="create-a-vlan-for-your-workload-vms"></a>Vytvoření sítě VLAN pro virtuální počítače s úlohami
 
-Po vytvoření privátního cloudu, vytvořte síť VLAN, kde nasadíte úloh/aplikace virtuálních počítačů.
+Po vytvoření privátního cloudu Vytvořte síť VLAN, do které budete nasazovat své pracovní a aplikační virtuální počítače.
 
-1. Na portálu CloudSimple vyberte **sítě**.
-2. Klikněte na tlačítko **sítě VLAN a podsítě**.
-3. Klikněte na tlačítko **vytvoření sítě VLAN a podsítě**
+1. Na portálu CloudSimple vyberte **síť**.
+2. Klikněte na **síť VLAN/podsítě**.
+3. Klikněte na **vytvořit síť VLAN nebo podsíť** .
 
-    ![Vytvoření sítě VLAN a podsítě](media/create-new-vlan-subnet.png)
+    ![Vytvořit síť VLAN nebo podsíť](media/create-new-vlan-subnet.png)
 
-4. Vyberte **privátního cloudu** pro nové podsítě/sítě VLAN.
-5. Vyberte ze seznamu ID sítě VLAN.  
-6. Zadejte název podsítě určující podsíť.
-7. Zadejte rozsah CIDR podsítě a masku.  Tato oblast se nesmí překrývat s existující podsítí.
+4. Vyberte **privátní cloud** pro novou síť VLAN nebo podsíť.
+5. Ze seznamu vyberte ID sítě VLAN.  
+6. Zadejte název podsítě pro identifikaci podsítě.
+7. Zadejte rozsah a masku směrování mezi podsítěmi.  Tento rozsah se nesmí překrývat s žádnými stávajícími podsítěmi.
 8. Klikněte na **Submit** (Odeslat).
 
-    ![Vytvoření podrobnosti o síti VLAN a podsítě](media/create-new-vlan-subnet-details.png)
+    ![Vytvořit podrobnosti o síti VLAN nebo podsíti](media/create-new-vlan-subnet-details.png)
 
-Vytvoří se sítě VLAN a podsítě.  Toto ID VLAN nyní slouží k vytvoření skupiny distribuované port na vCenter privátního cloudu. 
+Vytvoří se síť VLAN nebo podsíť.  Teď můžete pomocí tohoto ID sítě VLAN Vytvořit distribuovanou skupinu portů v rámci vašeho privátního cloudu vCenter. 
 
-## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Svoje prostředí připojit ke službě Azure virtual network
+## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Připojení prostředí k virtuální síti Azure
 
-CloudSimple vám poskytne okruh ExpressRoute pro privátní cloud. Službě virtual network v Azure můžete připojit k okruhu ExpressRoute. Úplné podrobnosti o nastavení připojení postupujte podle kroků v [Azure virtuální síťové připojení pomocí ExpressRoute](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)
+CloudSimple poskytuje okruh ExpressRoute pro váš privátní cloud. Virtuální síť v Azure můžete připojit k okruhu ExpressRoute. Úplné podrobnosti o nastavení připojení najdete v postupu v části [připojení Azure Virtual Network pomocí ExpressRoute](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/) .
 
-## <a name="sign-in-to-vcenter"></a>Přihlaste se k serveru vCenter
+## <a name="sign-in-to-vcenter"></a>Přihlásit se k vCenter
 
-Teď se můžete přihlásit k vCenter pro nastavení virtuálních počítačů a zásad.
+Nyní se můžete přihlásit k vCenter a nastavit virtuální počítače a zásady.
 
-1. Pro přístup k serveru vCenter, spusťte z portálu CloudSimple. Na domovské stránce v části **běžné úkoly**, klikněte na tlačítko **spuštění vSphere klienta**.  Vyberte privátní Cloud a poté klikněte na tlačítko **spuštění vSphere klienta** na privátní Cloud.
+1. Pokud chcete získat přístup k serveru vCenter, začněte na portálu CloudSimple. Na domovské stránce v části **běžné úlohy**klikněte na **Spustit klienta vSphere**.  Vyberte privátní cloud a pak klikněte na **Spustit klienta vSphere** v privátním cloudu.
 
-    ![Spuštění vSphere klienta](media/launch-vcenter-from-cloudsimple-portal.png)
+    ![Spustit klienta vSphere](media/launch-vcenter-from-cloudsimple-portal.png)
 
-2. Vyberte váš klient upřednostňované vSphere pro přístup k serveru vCenter a přihlaste se pomocí uživatelského jména a hesla.  Výchozí hodnoty jsou:
+2. Vyberte preferovaného klienta vSphere pro přístup k serveru vCenter a přihlaste se pomocí uživatelského jména a hesla.  Výchozí hodnoty jsou:
     * Uživatelské jméno: **CloudOwner@cloudsimple.local**
     * Heslo: **CloudSimple123!**  
 
-VCenter obrazovky v dalším postupu jsou z klienta vSphere (HTML5).
+Obrazovky vCenter v následujících postupech jsou od klienta vSphere (HTML5).
 
 ## <a name="change-your-vcenter-password"></a>Změna hesla vCenter
 
-CloudSimple doporučuje, abyste si změnili heslo při prvním přihlášení k serveru vCenter.  
-Heslo, které nastavíte, musí splňovat následující požadavky:
+CloudSimple doporučuje změnit heslo při prvním přihlášení do vCenter.  
+Heslo, které jste nastavili, musí splňovat následující požadavky:
 
-* Maximální doba života: Každý 365 dnů musí změnit heslo
-* Zakázat opakované použití: Uživatele nelze znovu použít některé z předchozích pět hesel
-* Délka: 8 – 20 znaků
-* Speciální znak. Aspoň jeden speciální znak
-* Abecední znaky: Minimálně jedno velké písmeno, A-Z a aspoň jedno malé písmeno, a – z
-* Čísla: Alespoň jeden číselný znak, 0-9
-* Maximální počet znaků sousední shodné: Tři
+* Maximální doba života: Heslo je třeba změnit každých 365 dní.
+* Omezit opakované použití: Uživatelé nemůžou znovu použít žádné z předchozích pěti hesel.
+* Délka: 8-20 znaků
+* Speciální znak: Aspoň jeden speciální znak
+* Abecední znaky: Aspoň jedno velké písmeno, A-Z a aspoň jedno malé písmeno, a-z
+* Hodnoty Aspoň jeden numerický znak, 0-9
+* Maximální počet identických sousedících znaků: Tři
 
-    Příklad: Kopie nebo kopie je přijatelné jako součást heslo, ale není CCCC.
+    Příklad: KOPIE nebo CCC jsou přijatelné jako součást hesla, ale CCCC ne.
 
-Pokud jste nastavili heslo nesplňuje požadavky:
+Pokud nastavíte heslo, které nesplňuje požadavky:
 
-* Pokud používáte Flash klienta vSphere, hlásí chybu
-* Pokud používáte klienta HTML5, není hlášena chyba. Klient nepodporuje změnu přijmout, a nadále fungovat původní heslo.
+* Pokud používáte klienta vSphere Flash, nahlásí chybu.
+* Pokud používáte klienta HTML5, nehlásí chybu. Klient nepřijme změnu a původní heslo bude nadále fungovat.
 
-## <a name="change-nsx-administrator-password"></a>Změna hesla správce NSX
+## <a name="change-nsx-administrator-password"></a>Změnit heslo správce NSX
 
-Správce NSX se nasazuje s výchozí heslo.  Doporučujeme, abyste že po vytvoření privátního cloudu se změnit heslo.
+NSX Manager je nasazen s výchozím heslem.  Po vytvoření privátního cloudu doporučujeme změnit heslo.
 
    * Uživatelské jméno: **správce**
    * Heslo: **CloudSimple123!**
 
-Plně kvalifikovaný název domény (FQDN) a IP adresa správce NSX najdete na portálu CloudSimple.
+Plně kvalifikovaný název domény (FQDN) a IP adresa NSX Manageru najdete na portálu CloudSimple.
 
-1. Spuštění CloudSimple portal a vyberte **prostředky**.
-2. Klikněte na privátní Cloud, který chcete použít.
-3. Vyberte **vSphere síť pro správu**
-4. Použijte plně kvalifikovaný název domény nebo IP adresu **NSX správce** a připojte se pomocí webového prohlížeče. 
+1. Spusťte portál CloudSimple a vyberte **prostředky**.
+2. Klikněte na privátní cloud, který chcete použít.
+3. Vybrat **síť pro správu vSphere**
+4. Použijte plně kvalifikovaný název domény nebo IP adresu **NSX Manageru** a připojte se pomocí webového prohlížeče. 
 
-    ![Najít NSX správce plně kvalifikovaný název domény](media/private-cloud-nsx-manager-fqdn.png)
+    ![Najít plně kvalifikovaný název domény NSX Manageru](media/private-cloud-nsx-manager-fqdn.png)
 
-Chcete-li změnit heslo, postupujte podle pokynů v [spravovat hesla uživatele](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/administration/GUID-DB31B304-66A5-4516-9E55-2712D12B4F27.html).
+Chcete-li změnit heslo, postupujte podle pokynů v části [Správa hesla uživatele](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/administration/GUID-DB31B304-66A5-4516-9E55-2712D12B4F27.html).
 
 > [!WARNING]
-> Ve výchozím nastavení heslo správce NSX vyprší po 90 dnech.
+> Ve výchozím nastavení vyprší platnost hesla správce NSX po 90 dnech.
 
-## <a name="create-a-port-group"></a>Vytvořte skupinu portů
+## <a name="create-a-port-group"></a>Vytvoření skupiny portů
 
-K vytvoření skupiny distribuované portu v vSphere:
+Postup vytvoření distribuované skupiny portů v vSphere:
 
-1. Postupujte podle pokynů v "Přidat skupinu distribuované portu" v [vSphere sítě Průvodce](https://docs.vmware.com/en/VMware-vSphere/6.5/vsphere-esxi-vcenter-server-65-networking-guide.pdf).
-2. Při nastavování skupiny distribuované port, zadejte ID sítě VLAN, které jsou vytvořené v [vytvoření sítě VLAN pro úlohy virtuálních počítačů](#create-a-vlan-for-your-workload-vms).
+1. Postupujte podle pokynů v části Přidání distribuované skupiny portů v [příručce sítě vSphere](https://docs.vmware.com/en/VMware-vSphere/6.5/vsphere-esxi-vcenter-server-65-networking-guide.pdf).
+2. Při nastavování distribuované skupiny portů zadejte ID sítě VLAN vytvořené v části [vytvoření sítě VLAN pro vaše virtuální počítače](#create-a-vlan-for-your-workload-vms)s úlohami.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Využívání virtuálních počítačů VMware v Azure](https://docs.azure.cloudsimple.com/quickstart-create-vmware-virtual-machine)
-* [Využívání virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
-* [Připojit k místní síti pomocí Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/)
-* [Nastavení sítě VPN Site-to-Site z místní](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [Využití virtuálních počítačů VMware v Azure](https://docs.azure.cloudsimple.com/quickstart-create-vmware-virtual-machine)
+* [Využití virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
+* [Připojení k místní síti pomocí Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/)
+* [Nastavení VPN typu Site-to-Site z místního prostředí](https://docs.azure.cloudsimple.com/vpn-gateway/)

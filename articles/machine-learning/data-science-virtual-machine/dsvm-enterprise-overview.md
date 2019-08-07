@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: vijetaj
-ms.openlocfilehash: 81aac356f49f7bf8dc57f77054d10aa3e09d473f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 40b8f101d968514ac599b43a79b7e62b7fd837a4
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565267"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779470"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Datové vědy virtuálního počítače na základě týmu analýzy a AI prostředí 
 [Virtuální počítač pro datové vědy](overview.md) (DSVM) poskytuje bohaté prostředí na platformě Azure s využitím předem připravených softwarem umělé inteligence (AI) a analýzy dat. 
@@ -43,12 +43,12 @@ Zde jsou některé z nejdůležitějších stavebních bloků analýzy týmu pod
 
 Tato série článků obsahuje pokyny a odkazy pro každý z předchozí položky. Nezahrnuje všechny aspekty a požadavky při nasazení v rozlehlých konfigurace DSVM. Tady je další dokumentace ke službě Azure, který vám pomůže při implementaci DSVM instancí ve vašem podniku: 
 
-* [Zabezpečení sítě](https://docs.microsoft.com/azure/security/azure-network-security)
+* [Zabezpečení sítě] (https://docs.microsoft.com/azure/security/fundamentals/network-security
 * [Monitorování](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) a [správy](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [Protokolování a auditování](https://docs.microsoft.com/azure/security/azure-log-audit)
+* [Protokolování a auditování](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
 * [Řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Nastavení zásad a vynucení](../../governance/policy/overview.md)
-* [Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware)
+* [Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 * [Šifrování](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [Data zjišťování a zásad správného řízení](https://docs.microsoft.com/azure/data-catalog/)
 

@@ -6,18 +6,18 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: a2711339f5e952747adeeb6217b283770cb6cc6b
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0512facbdf5f2222aee1e9bb5d2be64e22bf1a69
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689045"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774627"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
-Tento článek poskytuje informace o řešení potíží při zálohování SAP HANA databází na virtuálních počítačích Azure.
+Tento článek poskytuje informace o řešení potíží při zálohování SAP HANA databází na virtuálních počítačích Azure. V následující části jsou popsána důležitá koncepční data potřebná pro diagnostiku běžné chyby v SAP HANA zálohování.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -55,7 +55,27 @@ Po výběru databáze pro zálohování nakonfiguruje služba Azure Backup param
 - [backint_response_timeout:7200]
 
 > [!NOTE]
-> Ujistěte se, že tyto parametry nejsou k *dispozici na* úrovni hostitele. Parametry na úrovni hostitele přepíšou tyto parametry a můžou způsobit neočekávané chování.
+> Ujistěte se, že tyto parametry nejsou k dispozici na úrovni hostitele. Parametry na úrovni hostitele přepíšou tyto parametry a můžou způsobit neočekávané chování.
+
+## <a name="restore-checks"></a>Obnovit kontroly
+
+### <a name="single-container-database-sdc-restore"></a>Obnovení jediné databáze kontejnerů (SDC)
+
+Při obnovování jedné databáze kontejnerů (SDC) pro HANA na jiný počítač SDC se ujistěte, že zaberete vstupy. Název databáze by měl být uveden malými písmeny a musí obsahovat "sdc" připojený v závorkách. Instance HANA se zobrazí velkými písmeny.
+
+Předpokládat, že je instance SDC HANA "H21" zálohovaná. Na stránce zálohované položky se zobrazí název zálohované položky jako **H21 (SDC)** . Pokud se pokusíte obnovit tuto databázi do jiného cílového SDCu, řekněme h11, že je potřeba zadat následující vstupy.
+
+![Vstupy pro obnovení SDC](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
+
+Všimněte si následujícího
+- Ve výchozím nastavení se obnovený název databáze naplní názvem zálohované položky, tj. H21 (SDC).
+- Když vyberete cíl jako h11, nemění se automaticky název obnovené databáze. **Měla by být upravena na H11 (SDC)** . V případě SDC bude obnovený název databáze ID cílové instance s malými písmeny a "sdc" přidanými v závorkách.
+- Vzhledem k tomu, že SDC může mít pouze jednu databázi, je nutné kliknout na zaškrtávací políčko, aby bylo možné přepsat existující databázová data s daty bodu obnovení.
+- Linux rozlišuje malá a velká písmena, proto je třeba zachovat případ.
+
+### <a name="multiple-container-database-mdc-restore"></a>Vícenásobné obnovení databáze kontejnerů (MDC)
+
+Ve více databázích kontejnerů pro HANA je standardní konfigurace SYSTEMDB + 1 nebo více tenantů databáze. Obnovení celé instance SAP HANA znamená obnovení obou SYSTEMDB i tenantů databáze. Nejdříve obnoví SYSTEMDB a pak pokračuje pro databázi tenanta. System DB v podstatě znamená přepsat systémové informace ve vybraném cíli. Tím se také přepíše informace související s BackInt v cílové instanci. Proto po obnovení systémové databáze do cílové instance jedna musí znovu spustit skript před registrací. Jenom potom se obnoví i následné obnovení databáze tenanta.
 
 ## <a name="common-user-errors"></a>Běžné chyby uživatelů
 

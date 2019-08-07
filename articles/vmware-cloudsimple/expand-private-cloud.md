@@ -1,60 +1,60 @@
 ---
-title: Rozbalte Azure řešení VMware CloudSimple privátního cloudu
-description: Popisuje, jak rozšířit existující CloudSimple privátní Cloud na přidat kapacitu do stávajícího nebo nového clusteru
+title: Rozšíření řešení Azure VMware podle CloudSimple privátního cloudu
+description: Popisuje postup rozšíření existujícího privátního cloudu CloudSimple pro přidání kapacity v existujícím nebo novém clusteru.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/06/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 293a09c57ca95e2774e44ff4bc9f9f2c31be2f49
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: a82ba1b433e62ed1c4b72b8e942d4ade29f26c4a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67333251"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816156"
 ---
-# <a name="expand-a-cloudsimple-private-cloud"></a>Rozbalte CloudSimple privátního cloudu
+# <a name="expand-a-cloudsimple-private-cloud"></a>Rozšíření privátního cloudu CloudSimple
 
-CloudSimple poskytuje možnost flexibilního rozšiřování dynamicky privátního cloudu. Můžete začít s menší konfigurace a potom rozbalte potřebujete větší kapacitu. Nebo můžete vytvořit privátní Cloud podle aktuální potřeby a potom rozbalte nárůstu využití.
+CloudSimple poskytuje flexibilitu pro dynamické rozšíření privátního cloudu. Můžete začít s menší konfigurací a pak je rozšířit podle potřeby větší kapacity. Nebo můžete vytvořit privátní cloud na základě aktuálních potřeb a pak rozbalit jako spotřebu.
 
-Privátní Cloud se skládá z jednoho nebo více clusterech vSphere. Každý cluster může mít 3 až 16 uzlů.  Při rozšiřování privátního cloudu, přidat uzly do existujícího clusteru nebo vytvoření nového clusteru. Pokud chcete rozšířit existující cluster, další uzly musí být stejného typu (SKU) jako stávající uzly. Pro vytvoření nového clusteru, může být uzly jiného typu. Další informace o omezení privátního cloudu, omezuje najdete v části [přehled privátního cloudu CloudSimple](cloudsimple-private-cloud.md) článku.
+Privátní cloud se skládá z jednoho nebo více clusterů vSphere. Každý cluster může mít 3 až 16 uzlů.  Při rozšiřování privátního cloudu přidáte uzly do stávajícího clusteru nebo vytvoříte nový cluster. Chcete-li rozšířit existující cluster, musí být další uzly stejného typu (SKU) jako stávající uzly. Pro vytvoření nového clusteru může být uzly jiného typu. Další informace o omezeních privátního cloudu najdete v části omezení v článku [Přehled privátního](cloudsimple-private-cloud.md) cloudu CloudSimple.
 
-Privátní cloud je vytvořen s výchozím **Datacenter** na serveru vCenter.  Každé datové centrum slouží jako entity správu nejvyšší úrovně.  Pro nový cluster CloudSimple poskytuje možnost přidání existujícího datacentra a vytvářet nové datové centrum.
+Ve výchozím datacentru na vCenter se vytvoří privátní cloud.  Každé datové centrum slouží jako entita správy na nejvyšší úrovni.  V případě nového clusteru nabízí CloudSimple možnost přidání do stávajícího datového centra nebo vytvoření nového datacentra.
 
-Jako součást novou konfiguraci clusteru CloudSimple konfiguruje infrastrukturu VMware.  Nastavení zahrnuje nastavení úložiště pro skupiny disků síť vSAN, vysokou dostupnost VMware a distribuované plánovač prostředků (DRS).
+V rámci nové konfigurace clusteru CloudSimple konfiguruje infrastrukturu VMware.  Mezi tato nastavení patří nastavení úložiště pro síti vSAN diskové skupiny, VMware high availability a Distributed Resource Scheduler (DRS).
 
-Privátní Cloud můžete rozbalit více než jednou. Rozšíření lze provést pouze v případě, že se vejdete do omezení celkové uzlu. Pokaždé, když rozšiřujete privátního cloudu, přidat do existujícího clusteru nebo vytvořte novou.
+Privátní cloud se dá několikrát rozšířit. Rozšíření se dá udělat jenom v případě, že zůstanete v rámci celkových omezení uzlu. Pokaždé, když rozbalíte privátní cloud, který přidáte do existujícího clusteru, nebo vytvořte nový.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Uzly je potřeba poskytovat, než budete moct rozšířit privátního cloudu.  Další informace o zřizování uzlů najdete v tématu [zřízení uzlů pro řešení VMware podle CloudSimple - Azure](create-nodes.md) článku.  Pro vytvoření nového clusteru, musí mít aspoň tři dostupné uzly se stejným SKU.
+Uzly musí být zřízené, aby bylo možné rozšířit svůj privátní cloud.  Další informace o zřizovacích uzlech najdete v článku [zřízení uzlů pro řešení VMware podle CloudSimple – Azure](create-nodes.md) .  Pro vytvoření nového clusteru musíte mít aspoň tři dostupné uzly stejné SKU.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="expand-a-private-cloud"></a>Rozbalte privátního cloudu
+## <a name="expand-a-private-cloud"></a>Rozšíření privátního cloudu
 
 1. [Přístup k portálu CloudSimple](access-cloudsimple-portal.md).
 
-2. Otevřít **prostředky** stránky a vyberte privátní Cloud, pro který chcete rozšířit.
+2. Otevřete stránku **prostředky** a vyberte privátní cloud, pro který chcete rozšíření rozšířit.
 
-3. V části Souhrn klikněte na tlačítko **Rozbalit**.
+3. V části Souhrn klikněte na **Rozbalit**.
 
-    ![Rozbalte privátního cloudu](media/resources-expand-private-cloud.png)
+    ![Rozšíření privátního cloudu](media/resources-expand-private-cloud.png)
 
-4. Zvolte, jestli se má rozšířit existující cluster nebo vytvořit nový cluster vSphere. Při provádění změn, souhrnné informace na stránce se aktualizuje.
+4. Vyberte, jestli chcete rozšířit svůj existující cluster, nebo vytvořte nový cluster vSphere. Při provádění změn se aktualizovaly souhrnné informace na stránce.
 
-    * Rozšíření vašeho existujícího clusteru, klikněte na tlačítko **rozbalte existující cluster**. Vyberte cluster, který chcete rozšířit a zadejte počet uzlů, které chcete přidat. Každý cluster může mít maximálně 16 uzlů.
-    * Chcete-li přidat nový cluster, klikněte na tlačítko **vytvořit nový cluster**. Zadejte název clusteru. Vyberte existující datové centrum nebo zadejte název pro vytvoření nového datového centra. Zvolte typ uzlu. Při vytváření nového clusteru vSphere, ale ne v případě, že rozšiřuje existující cluster vSphere můžete typu jiný uzel. Vyberte počet uzlů. Každý nový cluster musí mít alespoň tři uzly.
+    * Pokud chcete rozšířit svůj existující cluster, klikněte na **Rozbalit existující cluster**. Vyberte cluster, který chcete rozšířit, a zadejte počet uzlů, které chcete přidat. Každý cluster může mít maximálně 16 uzlů.
+    * Chcete-li přidat nový cluster, klikněte na tlačítko **vytvořit nový cluster**. Zadejte název clusteru. Vyberte existující datové centrum nebo zadejte název pro vytvoření nového datacentra. Vyberte typ uzlu. Při vytváření nového clusteru vSphere můžete zvolit jiný typ uzlu, ale ne při rozšiřování stávajícího clusteru vSphere. Vyberte počet uzlů. Každý nový cluster musí mít alespoň tři uzly.
 
-    ![Rozbalte privátního cloudu – přidání uzlů](media/resources-expand-private-cloud-add-nodes.png)
+    ![Rozbalení privátního cloudu – přidání uzlů](media/resources-expand-private-cloud-add-nodes.png)
 
-5. Klikněte na tlačítko **odeslat** rozbalte privátního cloudu.
+5. Kliknutím na **Odeslat** rozbalte privátní cloud.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Využívání virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
-* Další informace o [privátních Cloudů](cloudsimple-private-cloud.md)
+* [Využití virtuálních počítačů VMware v Azure](quickstart-create-vmware-virtual-machine.md)
+* Další informace o [privátních cloudech](cloudsimple-private-cloud.md)

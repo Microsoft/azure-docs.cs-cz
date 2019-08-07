@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: bb2d5733704b0b31dc010cec2a90e99e1be07b56
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7d4f36be51591d6be2b4c42eb8a8950ab52a0258
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592026"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782569"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection pro Azure Storage
 
@@ -117,64 +117,9 @@ Aktuální výstrahy zabezpečení můžete zkontrolovat a spravovat z [dlaždic
 
 ## <a name="protection-alerts"></a>Výstrahy ochrany
 
-Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům úložiště nebo jejich zneužití. Tyto události mohou aktivovat následující výstrahy:
+Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům úložiště nebo jejich zneužití. Seznam těchto výstrah najdete v tématu [Azure Storage](../../security-center/security-center-alerts-data-services.md#azure-storage) Alerts.
 
-### <a name="anomalous-access-pattern-alerts"></a>Výstrahy vzoru přístupu neobvyklé
-
-* **Přístup z neobvyklého umístění**: Tato výstraha se aktivuje, když někdo získal účet úložiště z neobvyklého zeměpisného umístění.
-Možné příčiny:
-   * K vašemu účtu úložiště se získal útočník.
-   * Legitimní uživatel přistupoval k vašemu účtu úložiště z nového umístění.
- 
-* **Anomálie aplikace**: Tato výstraha indikuje, že k tomuto účtu úložiště se připojila neobvyklá aplikace. Možné příčiny:
-   * K vašemu účtu úložiště se připojil útočník pomocí nové aplikace.
-   * Legitimní uživatel použil pro přístup k vašemu účtu úložiště novou aplikaci nebo prohlížeč.
-
-* **Anonymní přístup**: Tato výstraha indikuje, že k tomuto účtu byl přístup anonymní (tj. bez ověřování), který se ve srovnání s posledním vzorem přístupu na tomto účtu neočekával.
-Možné příčiny:
-   * Útočník zneužije veřejný přístup pro čtení kontejneru.
-   * Legitimní uživatel nebo aplikace používaly veřejný přístup pro čtení ke kontejneru.
-
-* **Anomálie pro mandát**: Tato výstraha indikuje, že byl tento účet úspěšně přidaný z IP adresy, která je známá jako aktivní odesílací uzel systému pro použití (proxy server anonymizace). Závažnost této výstrahy je považována za použitý typ ověřování (pokud existuje) a zda se jedná o první případ takového přístupu.
-Možné příčiny:
-   * K vašemu účtu úložiště se připojil útočník pomocí systému.
-   * Legitimní uživatel získal k vašemu účtu úložiště pomocí systému pro práci.
-
-
-### <a name="anomalous-extractupload-alerts"></a>Neobvyklé extrahování a odesílání výstrah
-
-* **Exfiltrace dat**: Tato výstraha indikuje, že se v porovnání s poslední aktivitou tohoto kontejneru úložiště extrahuje neobvykle velké množství dat. Možné příčiny:
-   * Útočník extrahovali velké množství dat z kontejneru. (Například: exfiltrace nebo porušení dat, neoprávněný přenos dat)
-   * Legitimní uživatel nebo aplikace extrahovali z kontejneru neobvyklé množství dat. (Například: aktivita údržby)
-
-* **Neočekávané odstranění**: Tato výstraha indikuje, že v účtu úložiště se vyskytla jedna nebo víc neočekávaných operací odstranění v porovnání s poslední aktivitou tohoto účtu. Možné příčiny:
-   * Útočník odstranil data z vašeho účtu úložiště.
-   * Legitimní uživatel provedl neobvyklé odstranění.
-
-* **Nahrát balíček cloudové služby Azure**: Tato výstraha indikuje, že balíček Azure Cloud Service (soubor. cspkg) se neobvyklým způsobem nahrál do účtu úložiště, a to v porovnání s poslední aktivitou na tomto účtu. Možné příčiny: 
-   * Do cloudové služby Azure se připravoval útočník k nasazení škodlivého kódu z účtu úložiště.
-   * Legitimní uživatel se připravoval na legitimní nasazení služby.
-
-### <a name="suspicious-storage-activities-alerts"></a>Upozornění na podezřelé aktivity úložiště
-
-* **Změna oprávnění pro přístup**: Tato výstraha indikuje, že oprávnění k přístupu tohoto kontejneru úložiště se změnila neobvyklým způsobem. Možné příčiny: 
-   * Útočník změnil oprávnění kontejneru pro oslabení zabezpečení.
-   * Oprávněný uživatel změnil oprávnění kontejneru.
-
-* **Kontrola přístupu**: Tato výstraha indikuje, že přístupová oprávnění účtu úložiště byla v porovnání s poslední aktivitou tohoto účtu prověřena neobvyklým způsobem. Možné příčiny: 
-   * Útočník provedl rekognoskace pro budoucí útok.
-   * V účtu úložiště se provedla údržba legitimního uživatele.
-
-* **Zkoumání dat**: Tato výstraha indikuje, že se objekty blob nebo kontejnery v účtu úložiště ve srovnání s poslední aktivitou na tomto účtu vyrovnaly neobvyklým způsobem. Možné příčiny: 
-   * Útočník provedl rekognoskace pro budoucí útok.
-   * Legitimní uživatel nebo logika aplikace vyzkoumala data v rámci účtu úložiště.
-
-
-
-
-
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o [protokolech v Azure Storage účtech](/rest/api/storageservices/About-Storage-Analytics-Logging)
 
