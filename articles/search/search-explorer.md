@@ -130,7 +130,7 @@ Přidejte **$OrderBy** pro řazení výsledků podle jiného pole než skóre vy
 
 3. Vyberte index, který se má dotazovat.
 
-   ![Vyberte index, který se má dotazovat] . (./media/search-explorer/search-explorer-changeindex-se2.png "Vyberte index") .
+   ![Vyberte index, který se má dotazovat](./media/search-explorer/search-explorer-changeindex-se2.png "Vyberte index") .
 
 4. Volitelně můžete nastavit verzi rozhraní API. Ve výchozím nastavení je vybrána aktuální všeobecně dostupná verze rozhraní API, ale můžete zvolit verzi Preview nebo starší rozhraní API, pokud je syntaxe, kterou chcete použít, specifická pro danou verzi.
 
