@@ -1,6 +1,6 @@
 ---
-title: Integrace s platformou identity Microsoft | Azure
-description: Další informace o osvědčených postupech a běžné opominutí při integraci s platformou identity Microsoft (verze 2.0).
+title: Integrace s Microsoft Identity platformou | Azure
+description: Seznamte se s osvědčenými postupy a běžnými přehledy při integraci s platformou Microsoft identity (v 2.0).
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -15,95 +15,95 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
-ms.custom: aaddev
-ms.openlocfilehash: 0acef783b4877b5b1787f142aec6cc3588293f83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: aaddev, identityplatformtop40
+ms.openlocfilehash: 33128cbece3b217778182b3831b02e2f3f654f3b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111462"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853218"
 ---
-# <a name="microsoft-identity-platform-integration-checklist"></a>Kontrolní seznam integrace Microsoft identity platform
+# <a name="microsoft-identity-platform-integration-checklist"></a>Microsoft Identity Platform Integration – kontrolní seznam
 
-Integrace kontrolního seznamu Microsoft identity platform je určena a provede vás s integrací vysoké kvality a zabezpečení. Zvýrazní osvědčené postupy a běžné opominutí při integraci s platformou identity Microsoft proto zkontrolujte v seznamu v pravidelných intervalech, abyste měli jistotu, že zachování kvality a zabezpečení vaší aplikace integraci s platformou identity. Kontrolní seznam není určena pro vaši celou aplikaci. Obsah kontrolního seznamu se mohou změnit při vylepšování do platformy.
+Kontrolní seznam integrace platformy Microsoft Identity Platform je určený k zajištění vysoce kvalitní a zabezpečené integrace. Vysvětlují osvědčené postupy a běžné přehledy při integraci s platformou Microsoft identity, takže seznam pravidelně Prohlédněte, abyste měli jistotu, že udržujete kvalitu a zabezpečení integrace vaší aplikace s platformou identity. Kontrolní seznam není určený ke kontrole celé aplikace. Obsah kontrolního seznamu se může změnit, protože provádíme vylepšení platformy.
 
-Pokud jste právě začínáte, podívejte se [dokumentaci](index.yml) Další informace o základní informace o ověřování, scénáře aplikací v Microsoft identity platform a další.
+Pokud teprve začínáte, přečtěte si [dokumentaci](index.yml) , kde najdete informace o základech ověřování, scénářích aplikací v platformě Microsoft Identity Platform a dalších.
 
-## <a name="testing-your-integration"></a>Testování integraci vašich
+## <a name="testing-your-integration"></a>Testování integrace
 
-Pomocí následujícího kontrolního seznamu ujistěte se, že aplikace účinně integrován [platforma identit Microsoft](https://docs.microsoft.com/azure/active-directory/develop/).
+Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikace efektivně integrovaná s [platformou Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/).
 
-### <a name="basics"></a>Základy
-
-|   |   |
-|---|---|
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Přečtěte si [zásady platformy Microsoftu](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409). Ujistěte se, že aplikace splňuje podmínky uvedené jako jsou navržená k ochraně uživatelů a platformu. |
-
-### <a name="ownership"></a>Vlastnictví
+### <a name="basics"></a>Základní informace
 
 |   |   |
 |---|---|
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Ujistěte se, že je aktuální informace přidružené k účtu, kterou jste použili k registraci a správu aplikací. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Přečtěte si a pochopte [Zásady platformy Microsoft](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409). Ujistěte se, že vaše aplikace dodržuje podmínek, které jsou navržené tak, aby chránily uživatele a platformu. |
+
+### <a name="ownership"></a>Jejíž
+
+|   |   |
+|---|---|
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Ujistěte se, že informace přidružené k účtu, který jste použili k registraci a správě aplikací, jsou aktuální. |
 
 ### <a name="branding"></a>Branding
 
 |   |   |
 |---|---|
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Dodržovat [pokyny pro aplikace pro Branding](howto-add-branding-in-azure-ad-apps.md). |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Zadejte smysluplný název a logo pro vaši aplikaci. Tyto informace se zobrazí na výzva k povolení spuštění vaší aplikace. Ujistěte se, že vaše jméno a logo se zástupcem společnosti/produkt tak, aby uživatelé mohli kvalifikovaně rozhodnout. Ujistěte se, že nejsou porušení žádné ochranné známky. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Dodržování [pokynů pro aplikace](howto-add-branding-in-azure-ad-apps.md). |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Zadejte smysluplný název a logo pro vaši aplikaci. Tyto informace se zobrazí na příkazovém řádku pro vyjádření souhlasu vaší aplikace. Ujistěte se, že vaše jméno a logo jsou zástupci vaší společnosti nebo produktu, aby uživatelé mohli dělat kvalifikovaná rozhodnutí. Ujistěte se, že nedošlo k porušení ochranných známek. |
 
 ### <a name="privacy"></a>Ochrana osobních údajů
 
 |   |   |
 |---|---|
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Poskytuje odkazy na podmínky služby a o ochraně osobních údajů vaší aplikace. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Poskytněte odkazy na požadavky služby a prohlášení o zásadách ochrany osobních údajů vaší aplikace. |
 
 ### <a name="security"></a>Zabezpečení
 
 |   |   |
 |---|---|
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Udržovat vlastnictví všech vašich identifikátory URI pro přesměrování a aktualizovat záznamy DNS pro ně. Nepoužívejte zástupné znaky (*) ve vaší identifikátorů URI. Pro web apps Ujistěte se, že všechny identifikátory URI jsou zabezpečená a šifrovaná (například pomocí protokolu https schémat). Pro veřejné klienty používejte identifikátory URI pro přesměrování specifické pro platformu, pokud je k dispozici (hlavně pro iOS a Android) připojení. V opačném případě použijte identifikátory URI pro přesměrování s vysoké množství náhodnost, abyste zabránili kolizím při volání zpátky do vaší aplikace. Pokud vaše aplikace se používá v rámci izolovaného webového agenta, můžete použít https://login.microsoftonline.com/nativeclient. Zkontrolujte a uvolnění paměti všechny nepoužívané nebo nepotřebné identifikátory URI pro přesměrování v pravidelných intervalech. |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Pokud vaše aplikace je registrován v adresáři, minimalizace a ručně monitorovat seznam vlastníci registrace aplikací. |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Nemáte povolení podpory pro [OAuth2 implicitní tok poskytování](v2-oauth2-implicit-grant-flow.md) Pokud to není explicitně vyžadováno. Další informace o platný scénář [tady](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant). |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Nepoužívejte [tok přihlašovacích údajů heslo vlastníka prostředku (ROPC)](v2-oauth-ropc.md), který přímo zpracovává hesla uživatelů. Tento tok vyžaduje vysoký stupeň důvěryhodnosti a uživatel vystavení, by měla sloužit pouze v případě jiných, bezpečnější, toky se nedají použít. |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Chránit a spravovat svoje přihlašovací údaje aplikace. Použití [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md), ne heslo pověření (tajné údaje klienta). Pokud je nutné použít heslo pověření, nenastavujte ho ručně. Nepoužívejte uložení přihlašovacích údajů v kódu nebo konfigurace a nikdy mohly být zpracovány lidí. Pokud je to možné, používejte [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) nebo [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) k ukládání a pravidelně otočit svoje přihlašovací údaje. |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Zajistěte, aby že vaše aplikace požaduje oprávnění nejnižší oprávnění. Pouze požádat o oprávnění, která vaše aplikace potřebuje naprosto a pouze tehdy, když je potřebujete. Vysvětlení různých [typy oprávnění](v1-permissions-and-consent.md#types-of-permissions). Používat jenom oprávnění aplikace v případě potřeby; kde je to možné, použijte delegovaná oprávnění. Úplný seznam oprávnění Microsoft Graphu, najdete v tomto [referenční dokumentace k oprávněním](https://docs.microsoft.com/graph/permissions-reference). |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Pokud řešíte zabezpečení rozhraní API s použitím platforma identit Microsoft, pečlivě promyslet oprávnění, která by měly vystavit. Zvažte, co je správnou úroveň podrobností pro vaše řešení a která oprávnění vyžadují souhlas správce. Zkontrolujte oprávnění očekávaná v příchozích tokenech před provedením jakékoli autorizačních rozhodnutích. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Udržujte vlastnictví všech identifikátorů URI pro přesměrování a Udržujte záznamy DNS v aktuálním stavu. V identifikátorech URI nepoužívejte zástupné znaky (*). U webových aplikací zajistěte, aby všechny identifikátory URI byly zabezpečené a šifrované (například pomocí schémat protokolu HTTPS). U veřejných klientů použijte identifikátory URI pro přesměrování specifické pro platformu, pokud je to možné (hlavně pro iOS a Android). V opačném případě použijte identifikátory URI přesměrování s vysokou mírou náhodnosti, abyste zabránili kolizím při volání zpět do aplikace. Pokud se vaše aplikace používá z izolovaného webového agenta, můžete použít https://login.microsoftonline.com/nativeclient. Pravidelně kontrolujte a ořízněte všechny nepoužívané nebo zbytečné identifikátory URI pro přesměrování. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Pokud je vaše aplikace zaregistrovaná v adresáři, minimalizujte a ručně Sledujte seznam vlastníků registrace aplikací. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Nepovolujte podporu pro [tok implicitního udělení OAuth2](v2-oauth2-implicit-grant-flow.md) , pokud je explicitně nepožadujete. [Tady](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant)najdete informace o platném scénáři. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Nepoužívejte [tok přihlašovacích údajů k heslům vlastníka prostředků (ROPC)](v2-oauth-ropc.md), který přímo zpracovává hesla uživatelů. Tento tok vyžaduje vysoký stupeň důvěry a ohrožení uživatele a měl by se používat jenom v případě, že se nedají použít jiné, bezpečnější toky. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Chránit a spravovat přihlašovací údaje vaší aplikace Použijte [přihlašovací údaje certifikátu](active-directory-certificate-credentials.md), nikoli přihlašovací údaje hesla (tajné klíče klienta). Pokud je nutné použít přihlašovací údaje hesla, nenastavte ji ručně. Neukládejte přihlašovací údaje v kódu nebo konfiguraci a nikdy je nepovolíte, aby je lidé nepoužívali. Pokud je to možné, využijte [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) nebo [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) k ukládání a pravidelnému střídání přihlašovacích údajů. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Ujistěte se, že vaše aplikace požaduje nejnižší oprávnění. Zeptejte se jenom na oprávnění, která vaše aplikace naprosto potřebuje, a jenom když je potřebujete. Pochopení různých [typů oprávnění](v1-permissions-and-consent.md#types-of-permissions) V případě potřeby použijte pouze oprávnění aplikace. Pokud je to možné, použijte delegovaná oprávnění. Úplný seznam oprávnění Microsoft Graph najdete v tématu s odkazem na tato [oprávnění](https://docs.microsoft.com/graph/permissions-reference). |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Pokud zabezpečujete rozhraní API s využitím platformy Microsoft identity, pečlivě si promyslete oprávnění, která by měla zveřejnit. Zvažte, jaké jsou správné členitosti řešení a které oprávnění vyžadují souhlas správce. Před provedením jakýchkoli autorizačních rozhodnutí ověřte, zda jsou v příchozích tokenech očekávaná oprávnění. |
 
 ### <a name="implementation"></a>Implementace
 
 |   |   |
 |---|---|
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Používání řešení pro moderní ověřování (OAuth 2.0, [OpenID Connect](v2-protocols-oidc.md)) bezpečně přihlásit uživatele. |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Nemusíte tyto protokoly implementují sami – můžete ji [knihoven ověřování Microsoftu nepodporuje](reference-v2-libraries.md) (MSAL middlewaru serveru). Ujistěte se, že používáte nejnovější verzi knihovny pro ověřování, které jste integrovali se službou. |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Pokud je k dispozici prostřednictvím dat vaše aplikace vyžaduje [Microsoft Graphu](https://developer.microsoft.com/graph), požádat o oprávnění pro tato data pomocí koncového bodu Microsoft Graph místo jednotlivých rozhraní API. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | K bezpečnému přihlášení uživatelů používejte řešení pro moderní ověřování (OAuth 2,0, [OpenID Connect](v2-protocols-oidc.md)). |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Neimplementujte protokoly sami – použijte [ověřovací knihovny podporované Microsoftem](reference-v2-libraries.md) (MSAL, middleware serveru). Ujistěte se, že používáte nejnovější verzi knihovny ověřování, do které jste provedli integraci. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Pokud jsou data, která vaše aplikace vyžaduje, dostupná prostřednictvím [Microsoft Graph](https://developer.microsoft.com/graph), požádejte o oprávnění pro tato data pomocí koncového bodu Microsoft Graph místo jednotlivého rozhraní API. |
 
 ### <a name="end-user-experience"></a>Činnost koncového uživatele
 
 |   |   |
 |---|---|
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | [Principy prostředí pro vyjádření souhlasu](application-consent-experience.md) a konfigurace, které byly výzva k povolení spuštění vaší aplikace tak, aby koncoví uživatelé a správci mají dostatek informací k určení, pokud důvěřují vaší aplikace. |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Minimalizovat počet, kolikrát uživatel potřebuje k zadání přihlašovacích údajů při používání aplikace pokusem o bezobslužném (tichém získání tokenu) ověřování před interaktivní toky. |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Nepoužívejte "řádku = souhlasu" pro každé přihlášení. Pouze pomocí řádku = souhlasu, pokud zjistíte, že budete muset požádat o souhlas pro další oprávnění (například, pokud jste změnili vaší aplikace požadovaná oprávnění). |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Kde je to možné, rozšířit vaše aplikace s uživatelskými daty. Použití [Microsoft Graph API](https://developer.microsoft.com/graph) je snadný způsob, jak to provést. [Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer) nástroj, který může pomoci vám začít. |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Zaregistrujte úplnou sadu oprávnění, která vaše aplikace vyžaduje, správci můžou snadno udělit souhlas pro svého tenanta. Použití [přírůstkové souhlasu](azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) v době běhu k poskytování pomoci uživatelům pochopit, proč vaše aplikace požaduje oprávnění, která může problém nebo zmást uživatele při požadavku na první spuštění. |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Implementace [vyčistit prostředí pro jednotné odhlašování](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut). Je ochranu osobních údajů a požadavek na zabezpečení a umožňuje bezproblémový. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Seznamte [se s vyjádřením souhlasu](application-consent-experience.md) a nakonfigurujte části výzvy pro vyjádření souhlasu vaší aplikace, aby koncoví uživatelé a správci měli dostatek informací, aby zjistili, jestli důvěřují vaší aplikaci. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Minimalizujte počet pokusů, které uživatel musí zadat přihlašovací údaje při použití vaší aplikace, tak, že před interaktivními toky zkusí spustit tiché ověření (získání tichého tokenu). |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Pro každé přihlášení nepoužívejte "Prompt = souhlasu". Pokud jste zjistili, že potřebujete požádat o souhlas s dalšími oprávněními (například pokud jste změnili požadovaná oprávnění aplikace), použijte příkaz Prompt = souhlas. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | V případě potřeby obohacení aplikace o uživatelská data. K tomu slouží [Microsoft Graph API](https://developer.microsoft.com/graph) . Nástroj [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) , který vám může pomáhat začít. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Zaregistrujte úplnou sadu oprávnění, která vaše aplikace vyžaduje, aby správci mohli udělit souhlas svým klientům snadno. Pomocí [přírůstkového souhlasu](azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) v době spuštění pomůžete uživatelům pochopit, proč vaše aplikace požaduje oprávnění, která se mohou v případě potřeby při prvním spuštění týkat nebo Zaměňujte uživatelům. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Implementujte [čisté prostředí pro jednotné odhlašování](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut). Je to ochrana osobních údajů a požadavky na zabezpečení a přináší dobrý dojem uživatelské prostředí. |
 
 ### <a name="testing"></a>Testování
 
 |   |   |
 |---|---|
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Test pro [zásady podmíněného přístupu](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut) , který může mít vliv na schopnost vaši uživatelé používají vaše aplikace. |
-| ![Zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Otestujte aplikaci se všemi možné účty, které plánujete podporu (pro příklad, pracovní nebo školní účty, osobní účty Microsoft, dětské účty a suverénních účty). |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Otestujte [zásady podmíněného přístupu](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut) , které mohou mít vliv na schopnost uživatelů používat vaši aplikaci. |
+| ![prvku](./media/active-directory-integration-checklist/checkbox-two.svg) | Otestujte svoji aplikaci se všemi možnými účty, které hodláte podporovat (například pracovní nebo školní účty, osobní účty Microsoft, podřízené účty a účty z svrchovaného účtu). |
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 Prostudujte si podrobné informace týkající se v2.0:
 
-* [Platforma identit Microsoft (Přehled v2.0)](v2-overview.md)
-* [Referenční informace k Microsoft identity platform protokoly](active-directory-v2-protocols.md)
+* [Microsoft Identity Platform (přehled verze 2.0)](v2-overview.md)
+* [Referenční informace o protokolech platformy Microsoft Identity Platform](active-directory-v2-protocols.md)
 * [informace o přístupových tokenech](access-tokens.md)
 * [informace o tokenech ID](id-tokens.md)
 * [Referenční dokumentace knihoven ověřování](reference-v2-libraries.md)
-* [Oprávnění a vyjádření souhlasu v platforma identit Microsoft](v2-permissions-and-consent.md)
+* [Oprávnění a souhlas v platformě Microsoft Identity Platform](v2-permissions-and-consent.md)
 * [Microsoft Graph API](https://developer.microsoft.com/graph)

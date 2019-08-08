@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d7ff28d65c68c25613d1f61c00a6132ae93fdf6
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 703976e328eabb891e76459785484d929e2c5d3b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962500"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853142"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>Rychlý start: Vytvoření a nastavení vývojového prostředí
 
-Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace určené pro širokou škálu vlastních prostředí a identit Microsoft 365. Abyste mohli začít používat Microsoft identity platform, budete potřebovat přístup k prostředí, také nazývané tenanta služby Azure AD, který může zaregistrovat a spravovat aplikace, mají přístup k datům Microsoft 365 a nasadit vlastní omezení podmíněného přístupu a tenanta.
+Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace určené pro širokou škálu vlastních prostředí a identit Microsoft 365. Pokud chcete začít používat Microsoft Identity Platform, budete potřebovat přístup k prostředí, které se označuje taky jako tenant služby Azure AD, který může registrovat a spravovat aplikace, mít přístup k Microsoft 365 dat a nasazovat vlastní podmíněný přístup a omezení klientů.
 
 Tenant je reprezentace organizace. Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikací obdrží při vytvoření partnerství s Microsoftem, například registrací do Azure, Microsoft Intune nebo Microsoft 365.
 
@@ -68,7 +68,7 @@ Pokud ještě tenanta Azure AD nemáte nebo chcete pro účely vývoje vytvořit
 - **Země nebo oblast**
 
 > [!NOTE]
-> Když pojmenováváte vašeho tenanta, použijte alfanumerické znaky. Speciální znaky nejsou povoleny. Název nesmí být delší než 256 znaků.
+> Při pojmenování tenanta použijte alfanumerické znaky. Speciální znaky nejsou povoleny. Název nesmí být delší než 256 znaků.
 
 ## <a name="social-and-local-accounts"></a>Účty na sociálních sítích a místní účty
 

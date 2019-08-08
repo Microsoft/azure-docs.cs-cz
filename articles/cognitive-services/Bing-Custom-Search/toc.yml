@@ -56,7 +56,8 @@
     - name: Konfigurace prostředí pro vlastní automatické návrhy
       href: define-custom-suggestions.md
     - name: Zpracování zvýrazňování nalezených položek
-      href: hit-highlighting.md
+      href: ../Bing-Web-Search/hit-highlighting.md
+      maintainContext: true
     - name: Procházení webových stránek
       href: page-webpages.md
 - name: Referenční informace

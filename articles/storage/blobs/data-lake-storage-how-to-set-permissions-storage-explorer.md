@@ -1,69 +1,68 @@
 ---
-title: Nastavení oprávnění pro Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage
-description: V tomto jak, se dozvíte, jak nastavit oprávnění pomocí Průzkumníka služby Azure Storage pro souborů a adresářů v účtu úložiště, které podporuje Azure Data Lake Storage Gen2.
-services: storage
+title: Nastavení oprávnění pro Data Lake Storage Gen2 s Průzkumník služby Azure Storage
+description: V tomto postupu se naučíte, jak nastavit oprávnění Průzkumník služby Azure Storage u souborů a adresářů v rámci vašeho účtu úložiště s možností Azure Data Lake Storage Gen2.
 author: normesta
-ms.custom: mvc
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: normesta
-ms.openlocfilehash: 5f0211765c96cad668abaad7d42da87ec88298c3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.reviewer: stewu
+ms.openlocfilehash: 530e37400881ace2de603aed6875ed236e45f2c7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939313"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847424"
 ---
-# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Nastavení souborů a adresářů úrovně oprávnění pomocí Průzkumníka služby Azure Storage s Azure Data Lake Storage Gen2
+# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Nastavení oprávnění na úrovni souborů a adresářů pomocí Průzkumník služby Azure Storage s Azure Data Lake Storage Gen2
 
-Soubory uložené v Azure Data Lake Storage Gen2 podporují podrobné oprávnění a přístup k řízení seznamu ACL. Společně jemně odstupňovaná oprávnění a správy seznamu ACL umožňují spravovat přístup k vašim datům na velmi podrobné úrovni.
+Soubory uložené v Azure Data Lake Storage Gen2 podporují jemně odstupňovaná oprávnění a správu seznamu řízení přístupu (ACL). Jemně odstupňovaná oprávnění a Správa ACL umožňují spravovat přístup k datům na velmi podrobné úrovni.
 
-V tomto článku se dozvíte, jak používat Azure Storage Explorer:
+V tomto článku se naučíte, jak použít Průzkumník služby Azure Storage k těmto akcím:
 
 > [!div class="checklist"]
-> * Nastavte oprávnění na úrovni souborů
-> * Nastavení úrovně oprávnění pro adresář
-> * Přidat uživatele nebo skupiny na seznam řízení přístupu
+> * Nastavit oprávnění na úrovni souboru
+> * Nastavení oprávnění na úrovni adresáře
+> * Přidání uživatelů nebo skupin do seznamu řízení přístupu
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli co nejlépe znázornění procesu, vyžadujeme, že provedete naše [rychlý start Azure Storage Explorer](data-lake-storage-Explorer.md). Tím se zajistí, že váš účet úložiště bude v nejvhodnější stav (systém souborů, které jsou vytvořeny a daty nahranými do něj).
+Aby bylo možné tento proces nejlépe vymezit, je potřeba, abyste dokončili náš [Průzkumník služby Azure Storage rychlý Start](data-lake-storage-Explorer.md). Tím se zajistí, že váš účet úložiště bude v nejvhodnějším stavu (vytvořený systém souborů a data se do něj nahrají).
 
 ## <a name="managing-access"></a>Správa přístupu
 
-Oprávnění můžete nastavit v kořenové složce systému souborů. Uděláte to tak, musíte být přihlášeni do Průzkumníka služby Azure Storage pomocí svého individuálního účtu s právy a provede akci dle (nikoli pomocí připojovacího řetězce). Klikněte pravým tlačítkem na systém souborů a vyberte **spravovat oprávnění**, přivedou nahoru **spravovat oprávnění** dialogové okno.
+Oprávnění můžete nastavit v kořenovém adresáři systému souborů. Abyste to mohli udělat, musíte být přihlášeni k Průzkumník služby Azure Storage s vaším individuálním účtem s právy k tomu, aby to bylo možné (na rozdíl od připojovacího řetězce). Pravým tlačítkem myši klikněte na systém souborů a vyberte **Spravovat oprávnění**a v dialogovém okně **Spravovat oprávnění** .
 
-![Průzkumník služby Microsoft Azure Storage - spravovat přístup k adresáři](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+![Průzkumník služby Microsoft Azure Storage – Správa přístupu k adresáři](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 
-**Spravovat oprávnění** dialogové okno umožňuje spravovat oprávnění pro vlastníka a vlastníci skupiny. Umožňuje také můžete přidat nové uživatele a skupiny do seznamu řízení přístupu, pro kterého pak můžete spravovat oprávnění.
+Dialog **Spravovat oprávnění** umožňuje spravovat oprávnění pro vlastníka a skupinu vlastníci. Umožňuje také přidat nové uživatele a skupiny do seznamu řízení přístupu, pro který pak můžete spravovat oprávnění.
 
-Chcete-li přidat nové uživatele nebo skupinu do seznamu řízení přístupu, **přidat uživatele nebo skupiny** pole.
+Chcete-li přidat nového uživatele nebo skupinu do seznamu řízení přístupu, vyberte pole **Přidat uživatele nebo skupinu** .
 
-Zadejte odpovídající položku Azure Active Directory (AAD) chcete přidat do seznamu a pak vyberte **přidat**.
+Zadejte odpovídající položku Azure Active Directory (AAD), kterou chcete přidat do seznamu, a pak vyberte **Přidat**.
 
-Uživatel nebo skupina se teď budou zobrazovat v **uživatelů a skupin:** pole, abyste mohli začít spravovat jejich oprávnění.
+Uživatel nebo skupina se nyní zobrazí v poli **Uživatelé a skupiny:** , což vám umožní začít spravovat jejich oprávnění.
 
 > [!NOTE]
-> Je to osvědčený postup a doporučujeme vytvořit skupinu zabezpečení ve službě AAD a Udržovat oprávnění skupině místo jednotlivým uživatelům. Podrobnosti o toto doporučení, stejně jako ostatní osvědčené postupy, najdete v části [osvědčené postupy pro službu Data Lake Storage Gen2](data-lake-storage-best-practices.md).
+> Osvědčeným postupem je a doporučujeme vytvořit v AAD skupinu zabezpečení a zachovat oprávnění pro skupinu, nikoli jednotlivé uživatele. Podrobnosti o tomto doporučení a další osvědčené postupy najdete v tématu osvědčené [postupy pro data Lake Storage Gen2](data-lake-storage-best-practices.md).
 
-Existují dvě kategorie můžete přiřadit oprávnění: přístup k seznamy řízení přístupu a výchozí seznamy ACL.
+Existují dvě kategorie oprávnění, které můžete přiřadit: přístup k ACL a výchozí seznamy ACL.
 
-* **Přístup**: Přístupové seznamy ACL řízení přístupu k objektu. Soubory a adresáře měli seznamy ACL.
+* **Přístup**: Přístup k ovládacímu prvku ACL přístup k objektu. Přístupové seznamy ACL mají přístup k souborům a adresářům.
 
-* **Výchozí**: Šablony seznamů ACL asociovaná s adresářem, který určuje přístup seznamy ACL pro všechny podřízené položky, které jsou vytvořené v rámci tohoto adresáře. Výchozí seznamy ACL pro soubory není definován.
+* **Výchozí**: Šablona seznamů ACL přidružených k adresáři, který určuje přístupové seznamy ACL pro všechny podřízené položky, které jsou vytvořeny v daném adresáři. Soubory nemají výchozí seznamy ACL.
 
-V obou těchto kategorií jsou k dispozici tři oprávnění, které pak můžete přiřadit na soubory nebo adresáře: **Čtení**, **zápisu**, a **provést**.
+V obou těchto kategoriích máte tři oprávnění, která pak můžete přiřadit k souborům nebo adresářům: **Čtení**, **zápis**a **spouštění**.
 
 >[!NOTE]
-> Výběr sem nenastaví oprávnění na všechny aktuálně existující položku do adresáře. Musíte přejít na jednotlivé položky a nastavit oprávnění ručně, pokud soubor již existuje.
+> Výběrem těchto možností se nenastaví oprávnění k žádným aktuálně existujícím položkám v adresáři. Je nutné přejít na každou jednotlivou položku a nastavit oprávnění ručně, pokud soubor již existuje.
 
-Můžete spravovat oprávnění pro jednotlivé adresáře, stejně jako jednotlivé soubory, které jsou, co vám umožňuje řídit podrobné přístup. Proces pro správu oprávnění pro soubory a adresáře je stejný, jak je popsáno výše. Klikněte pravým tlačítkem na soubor nebo adresář, který chcete spravovat oprávnění na a opakujte stejný postup.
+Můžete spravovat oprávnění pro jednotlivé adresáře a také jednotlivé soubory, což vám umožní jemně odstupňované řízení přístupu. Proces pro správu oprávnění pro adresáře i soubory je stejný, jak je popsáno výše. Klikněte pravým tlačítkem na soubor nebo adresář, u kterého chcete spravovat oprávnění, a postupujte podle stejného procesu.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto návodu jste zjistili, jak nastavit oprávnění pro soubory a adresáři používajícími **Průzkumníka služby Azure Storage**. Další informace týkající se seznamů ACL, včetně výchozí seznamy ACL, přístup k seznamy ACL, jejich chování a jejich odpovídající oprávnění, i nadále naše konceptuální článek k tomuto tématu.
+V tomto postupu jste zjistili, jak nastavit oprávnění k souborům a adresářům pomocí **Průzkumník služby Azure Storage**. Další informace o seznamech ACL, včetně výchozích seznamů ACL, přístupových seznamů ACL, jejich chování a jejich odpovídajících oprávnění, najdete v našem článku o předmětu.
 
 > [!div class="nextstepaction"]
 > [Řízení přístupu ve službě Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)

@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12027581ae62588550407c8350f3b74f1e743561
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: fbbcd854434bcc085f1b63fb864755dd0e928fc9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601838"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852165"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity Platform (v 2.0) – přehled
 
@@ -58,7 +58,7 @@ Následující tabulka popisuje běžné scénáře aplikací ověřování – 
 
 [![Scénáře aplikací v platformě Microsoft Identity Platform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět víc o konceptech základního ověřování, doporučujeme začít s těmito tématy:
 

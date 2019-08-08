@@ -3,20 +3,20 @@ title: Přehled akustického projektu
 titlesuffix: Azure Cognitive Services
 description: Akustické projekty jsou akustickým modulem pro 3D interaktivní prostředí a integrují simulaci vloženýmich fyziky pomocí interaktivních ovládacích prvků návrhu.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: a654dd966c40b5b079f92b910ade52f4eda10344
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 382d4febed98b53a469ac2788e6e8c8cbf064c23
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704752"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854815"
 ---
 # <a name="what-is-project-acoustics"></a>Co je Project Acoustics?
 Akustické navýšení projektu je akustický modul Wave pro 3D interaktivní prostředí. Modely IT se podobají efektům vln, jako je Diffraction, portáling a reverb, v komplexních scénách bez nutnosti ručního označování zóny. Zahrnuje také herní a audio modul pro integraci middlewaru. Akustické filozofiey projektu se podobají statickému osvětlení: zanesli podrobné fyzika offline k poskytování fyzických standardních hodnot a použití zjednodušeného modulu runtime s ovládacími prvky pro vyjádření návrhu pro uspokojení vašich uměleckéch cílů.
@@ -55,7 +55,7 @@ Moduly plug-in pro modul runtime v projektu se teď dají nasadit na tyto platfo
 * [Diskuze o problémech v projektu a vytváření sestav problémů](https://github.com/microsoft/ProjectAcoustics/issues)
 * [Zaregistrujte se a dostanete aktualizace na akustické projekty.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Vyzkoušejte si [rychlý Start akustického projektu pro Unity](unity-quickstart.md) nebo [Unreal](unreal-quickstart.md)
 * Seznamte se s [návrhem zvuku filozofie akustického množství projektů](design-process.md)
 

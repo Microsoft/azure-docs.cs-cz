@@ -3,20 +3,20 @@ title: Rychlý Start akustického projektu pomocí Unity
 titlesuffix: Azure Cognitive Services
 description: Pomocí ukázkového obsahu můžete experimentovat s ovládacími prvky návrhu pro návrh projektů v Unity a nasazovat je do desktopu Windows.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 93eb44bf91bc2c8346660a4d770ee6d83501c3ae
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: a36a16b6cb64c300647d16695edfbb73f4884104
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706608"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854865"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Projekty s akustickým rychlým startem Unity
 Použijte k experimentování s ovládacími prvky návrhu pro simulaci s vydanými simulací ukázkový obsah projektového obsahu pro Unity.
@@ -59,7 +59,7 @@ Skript **AcousticsAdjust** je připojen ke zdrojům zvuku v ukázkové scéně, 
 Následující seznam popisuje některé efekty, které lze vyrobit s poskytnutými ovládacími prvky. Podrobné informace o jednotlivých ovládacích prvkůch najdete v [kurzu návrhu Unity pro projekt](unreal-workflow.md).
 
 ### <a name="modify-distance-based-attenuation"></a>Úprava zeslabení na základě vzdálenosti
-Zvukový procesor, který je poskytováný modulem plug- **in Unity spatializer** , dodržuje odkládání na dálku, které jsou součástí editoru Unity. Ovládací prvky pro odkládání na dálku jsou součástí **zdrojové zvukové** komponenty, která se nachází na panelu inspektora zvukových zdrojů, v části **Nastavení 3D zvuku**:
+Zvukový procesor, který je poskytováný modulem plug-in Unity spatializer, dodržuje odkládání na dálku, které jsou součástí editoru Unity. Ovládací prvky pro odkládání na dálku jsou součástí **zdrojové zvukové** komponenty, která se nachází na panelu inspektora zvukových zdrojů, v části **Nastavení 3D zvuku**:
 
 ![Snímek obrazovky s panelem možností pro zeslabení vzdálenosti Unity](media/distance-attenuation.png)
 

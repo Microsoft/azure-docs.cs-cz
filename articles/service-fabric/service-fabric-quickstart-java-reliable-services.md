@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ddd56b8479678b288424dd896baadea6a41a2aef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 656ebed78aab1ad078eb7e9410cb01876159cf13
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726458"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845802"
 ---
-# <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace reliable services v Javě do Service Fabric
+# <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace Reliable Services v jazyce Java pro Service Fabric
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů.
 
@@ -60,22 +60,22 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
-    Spuštění místního clusteru nějakou dobu trvá. Pokud chcete potvrdit, že je cluster plně funkční, přejděte do Service Fabric Exploreru na adrese **http://localhost:19080**. Pět uzlů v pořádku značí, že je místní cluster zprovozněný.
+    Spuštění místního clusteru nějakou dobu trvá. Pokud chcete potvrdit, že je cluster plně funkční, přejděte do Service Fabric Exploreru na adrese **http://localhost:19080** . Pět uzlů v pořádku značí, že je místní cluster zprovozněný.
 
     ![Místní cluster v pořádku](./media/service-fabric-quickstart-java/localclusterup.png)
 
 2. Otevřete Eclipse.
-3. Klikněte na File -> Import -> Gradle -> Existing Gradle Project (Soubor -> Importovat -> Gradle -> Existující projekt Gradle) a postupujte podle pokynů v průvodci.
-4. Klikněte na adresář a zvolte `Voting` z `service-fabric-java-quickstart` složky, které jste naklonovali z Githubu. Klikněte na tlačítko Dokončit.
+3. Vyberte **soubor** > **Import** **Gradle stávající projekt Gradle** a postupujte podle pokynů průvodce. >  > 
+4. Vyberte **adresář** a zvolte `Voting` adresář ze `service-fabric-java-quickstart` složky, kterou jste naklonoval z GitHubu. Vyberte **Finish** (Dokončit).
 
     ![Dialogové okno importu v Eclipse](./media/service-fabric-quickstart-java/eclipseimport.png)
 
 5. V průzkumníku balíčků v Eclipse teď máte projekt `Voting`.
-6. Klikněte na projekt pravým tlačítkem a v rozevíracím seznamu **Service Fabric** vyberte **Publish Application...** (Publikovat aplikaci...). Jako Target Profile (Cílový profil) zvolte **PublishProfiles/Local.json** a klikněte na Publish (Publikovat).
+6. Klikněte pravým tlačítkem na projekt a vyberte **publikovat aplikaci** pod rozevíracím seznamem **Service Fabric** . Jako cílový profil zvolte **PublishProfiles/Local. JSON** a vyberte **publikovat**.
 
     ![Dialogové okno publikování – místní prostředí](./media/service-fabric-quickstart-java/localjson.png)
 
-7. Otevřete oblíbený webový prohlížeč a přejděte aplikace `http://localhost:8080`.
+7. Otevřete oblíbený webový prohlížeč a přejděte do aplikace pomocí přístupu `http://localhost:8080`.
 
     ![Front-end aplikace – místní prostředí](./media/service-fabric-quickstart-java/runninglocally.png)
 
@@ -90,16 +90,16 @@ Service Fabric Explorer běží na všech clusterech Service Fabric a je příst
 Pokud chcete škálovat webovou front-end službu, postupujte následovně:
 
 1. Otevřete ve vašem clusteru Service Fabric Explorer – například `https://localhost:19080`.
-2. Ve stromovém zobrazení klikněte na tři tečky vedle uzlu **fabric:/Voting/VotingWeb** a zvolte **Škálovat službu**.
+2. V ovládacím prvku TreeView vyberte tři tečky ( **...** ) vedle uzlu **Fabric:/hlasovacího/VotingWeb** a vyberte **škálovat službu**.
 
     ![Service Fabric Explorer – škálování služby](./media/service-fabric-quickstart-java/scaleservicejavaquickstart.png)
 
     Teď můžete škálovat počet instancí webové front-end služby.
 
-3. Změňte počet na **2** a klikněte na **Škálovat službu**.
-4. Ve stromovém zobrazení klikněte na uzel **fabric:/Voting/VotingWeb** a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID).
+3. Změňte číslo na **2** a vyberte **škálovat službu**.
+4. Ve stromovém zobrazení vyberte uzel **Fabric:/hlasovací/VotingWeb** a rozbalte uzel oddílu (REPREZENTOVANý identifikátorem GUID).
 
-    ![Service Fabric Explorer – Dokončení škálování služby](./media/service-fabric-quickstart-java/servicescaled.png)
+    ![Service Fabric Explorer – dokončení škálování služby](./media/service-fabric-quickstart-java/servicescaled.png)
 
     Nyní je vidět, že služba má dvě instance, a ve stromovém zobrazení vidíte, na kterých uzlech jsou tyto instance spuštěné.
 

@@ -30,7 +30,7 @@ Vyberte existující sloupec nebo vytvořte nový počítaný sloupec, který ch
 ## <a name="aggregate-column"></a>Agregovaný sloupec 
 Pro sestavení agregačních výrazů vyberte kartu agregace. Můžete buď zvolit existující sloupec a přepsat hodnotu agregací, nebo vytvořit nové pole s novým názvem. Agregační výraz je zadán v pravém poli vedle pole selektor názvu sloupce. Chcete-li upravit výraz, klikněte na textové pole a otevřete Tvůrce výrazů. Pokud chcete přidat další agregaci, najeďte myší na stávající výraz a kliknutím na + vytvořte nový agregační sloupec nebo [vzorec sloupce](concepts-data-flow-column-pattern.md).
 
-Agregovaná ![Nastavení agregace transformace] Agregovaná (media/data-flow/agg2.png "Nastavení agregace transformace")
+![Nastavení agregace transformace](media/data-flow/agg2.png "Nastavení agregace transformace")
 
 > [!NOTE]
 > Každý agregační výraz musí obsahovat alespoň jednu agregační funkci.

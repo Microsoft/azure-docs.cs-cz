@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 4341d06f09c60933bfc0512f54e024b35a19d8dd
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 1ebd645b740ab0f454d006d003518fbb8cb5e9e7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67175549"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854636"
 ---
 Teď můžete přidávat do nové tabulky data pomocí Průzkumníku dat.
 
-1. V Průzkumníku dat rozbalte **ukázkovou tabulku**, klikněte na **Entity** a potom klikněte na **Přidat entitu**.
+1. V Průzkumník dat rozbalte položku **Ukázka-Table**, vyberte **entity**a pak vyberte **Přidat entitu**.
 
    ![Vytváření nových entit v Průzkumníku dat na portálu Azure Portal](./media/cosmos-db-create-table-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
 
-2. Teď přidejte data do hodnoty pole PartitionKey a do hodnoty pole RowKey a klikněte na **Přidat entitu**.
+2. Nyní přidejte data do pole hodnota PartitionKey a do pole hodnota RowKey a vyberte **Přidat entitu**.
 
    ![Nastavení klíče oddílu a klíče řádku pro novou entitu](./media/cosmos-db-create-table-add-sample-data/azure-cosmosdb-data-explorer-new-entity.png)
   

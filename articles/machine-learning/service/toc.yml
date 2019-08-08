@@ -9,11 +9,6 @@
     - name: Jak služba funguje
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
-- name: Nastavení
-  items:
-    - name: Vytvoření pracovního prostoru
-      displayName: install sdk workspace
-      href: setup-create-workspace.md
 - name: Kurzy
   items:
     - name: Python SDK

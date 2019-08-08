@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: eca421697081310b1bf245172b3ff125e11c8728
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: b3fb5d665380bc15b61d3b4b7913a992915f9afb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234172"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853838"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Nasazení Azure Proxy aplikací služby AD ve spravované doméně Azure AD Domain Services
 Proxy aplikace Azure Active Directory (AD) pomáhá podporovat vzdálené pracovní procesy publikováním místních aplikací, které jsou k dispozici prostřednictvím Internetu. S Azure AD Domain Services teď můžete nasouvat starší verze aplikací, které běží místně, do služby infrastruktury Azure. Tyto aplikace pak můžete publikovat pomocí Proxy aplikací služby AD Azure, abyste uživatelům ve vaší organizaci zajistili zabezpečený vzdálený přístup.
@@ -46,13 +46,10 @@ Provedením následujících kroků povolíte Azure Proxy aplikací služby AD p
 
 2. Kliknutím na **Azure Active Directory** otevřete přehled adresáře. Klikněte na **podnikové aplikace**.
 
-    ![Vybrat adresář služby Azure AD](./media/app-proxy/app-proxy-enable-start.png)
-3. Klikněte na **proxy aplikace**. Pokud nemáte předplatné Azure AD Basic nebo Azure AD Premium, zobrazí se možnost povolení zkušební verze. Přepněte možnost **Povolit proxy aplikace?** pro **Povolení** a klikněte na **Uložit**.
+3. Klikněte na **proxy aplikace**.
 
-    ![Povolení proxy aplikace](./media/app-proxy/app-proxy-enable-proxy-blade.png)
 4. Chcete-li stáhnout konektor, klikněte na tlačítko **konektor** .
 
-    ![Stáhnout konektor](./media/app-proxy/app-proxy-enabled-download-connector.png)
 5. Na stránce pro stažení přijměte licenční podmínky a ujednání o ochraně osobních údajů a klikněte na tlačítko **Stáhnout** .
 
     ![Potvrdit stažení](./media/app-proxy/app-proxy-enabled-confirm-download.png)
@@ -75,7 +72,7 @@ Dřív jste zřídili virtuální počítač s Windows serverem a připojili jst
 
     ![Přijmout podmínky pro instalaci](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. Během instalace budete vyzváni k registraci konektoru s proxy aplikací adresáře služby Azure AD.
-   * Zadejte **přihlašovací údaje globálního správce služby Azure AD**. Klient globálního správce se může lišit od vašich přihlašovacích údajů ke službě Microsoft Azure.
+   * Zadejte svoje **přihlašovací údaje Správce aplikací Azure AD**. Váš tenant správce aplikace se může lišit od přihlašovacích údajů Microsoft Azure.
    * Účet správce použitý k registraci konektoru musí patřit do stejného adresáře, kde jste povolili službu proxy aplikací. Pokud je například doména tenanta contoso.com, správce by měl být admin@contoso.com nebo jakýkoli jiný platný alias v této doméně.
    * Pokud je pro server, na který konektor instalujete, zapnutá konfigurace rozšířeného zabezpečení aplikace Internet Explorer, může být registrační obrazovka zablokovaná. Pokud chcete přístup udělit, postupujte podle pokynů v chybové zprávě. Ujistěte se, že je rozšířené zabezpečení aplikace Internet Explorer vypnuto.
    * Pokud registrace konektoru selže, podívejte se do článku [Poradce při potížích s proxy aplikace](../active-directory/manage-apps/application-proxy-troubleshoot.md).

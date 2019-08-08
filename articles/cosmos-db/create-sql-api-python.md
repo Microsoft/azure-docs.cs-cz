@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: d85b156e9c6d213b6f65fe738f5d22c8cce022ee
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 84f3e4d0314408b2f3a8417cebd355a842331286
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68001180"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855126"
 ---
 # <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB: Vytvoření aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API
 
@@ -122,10 +122,10 @@ Všechny následující fragmenty kódu pocházejí ze souboru `CosmosGetStarted
     db = client.CreateDatabase({ 'id': config['DATABASE'] })
     ```
 
-* Vytvoří se nová kolekce.
+* Vytvoří se nový kontejner.
 
     ```python
-    # Create collection options
+    # Create container options
     options = {
         'offerThroughput': 400
     }
@@ -213,7 +213,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru `CosmosGetStarted
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure Cosmos, vytvoření kontejneru pomocí Průzkumník dat a spuštění aplikace. Teď můžete do účtu Cosmos DB importovat další data. 
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5409ed799454a6bb64077ee884065fc518556142
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 03918976935f9071ba2a7951e29195118943a8ef
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227814"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845839"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -41,16 +41,16 @@ Kromě nativních nástrojů Azure se Azure Migrate integruje s řadou nabídek 
 
 **ISV** | **Funkce**
 --- | ---
-[Cloudamize](https://www.cloudamize.com/platform) | Posouzení
-[Zařízení 42](https://docs.device42.com/) | Posouzení
-[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Posouzení
-[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Posouzení
+[Cloudamize](https://www.cloudamize.com/platform) | Posoudit
+[Zařízení 42](https://docs.device42.com/) | Posoudit
+[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Posoudit
+[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Posoudit
 [Technologie spolupronájmu](https://www.corenttech.com/AzureMigrate/) | Posouzení a migrace
 [Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migrace
 
 ### <a name="selecting-an-isv-tool"></a>Výběr nástroje ISV
 
-Po přidání nástroje ISV do projektu Azure Migrate začněte s nástrojem získáním licence nebo registrací bezplatné zkušební verze v souladu se zásadami ISV. V každém nástroji je k dispozici možnost připojit se k Azure Migrate. Použijte pokyny a dokumentaci k nástroji pro připojení nástroje k Azure Migrate.
+Po přidání nástroje ISV do projektu Azure Migrate začněte s nástrojem získáním licence nebo registrací bezplatné zkušební verze v souladu se zásadami ISV. V každém nástroji je k dispozici možnost připojit se k Azure Migrate. Použijte pokyny a dokumentaci k nástroji pro připojení nástroje k Azure Migrate. Licencování pro nástroje ISV je v souladu s licenčním modelem ISV.
 
 ## <a name="azure-migrate-server-assessment"></a>Vyhodnocování serveru Azure Migrate
 
@@ -94,7 +94,7 @@ Z centra Azure Migrate můžete vyhodnocovat a migrovat místní webové aplikac
 
 K přesunu velkých objemů dat do Azure můžete použít Data Box řady produktů v režimu offline. [Víc se uč](https://docs.microsoft.com/azure/databox/)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Vyzkoušejte si naše kurzy, abyste vyhodnotili [virtuální počítače VMware](tutorial-assess-vmware.md) a [virtuální počítače Hyper-V](tutorial-assess-hyper-v.md).
 - [Další informace](https://azure.microsoft.com/pricing/details/azure-migrate/) o cenách služby Azure Migrate.

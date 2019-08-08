@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: 963e4f7e9db638450a89dd4ae0091019fc58e2a4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6f72daa4a601df0e3592910645c2f9b35ab64431
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359429"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845811"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Kurz: Sestavujte regresní model pomocí automatizovaného strojového učení a otevřených datových sad.
 
@@ -37,7 +37,7 @@ Tento kurz vyžaduje splnění následujících požadavků.
 
 ### <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-Podle [pokynů](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace#portal) vytvořte pracovní prostor prostřednictvím Azure Portal, pokud ho ještě nemáte. Po vytvoření si poznamenejte název svého pracovního prostoru, název skupiny prostředků a ID předplatného.
+Podle [pokynů](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) vytvořte pracovní prostor prostřednictvím Azure Portal, pokud ho ještě nemáte. Po vytvoření si poznamenejte název svého pracovního prostoru, název skupiny prostředků a ID předplatného.
 
 ### <a name="create-a-python-environment"></a>Vytvoření prostředí Pythonu
 
@@ -148,7 +148,7 @@ green_taxi_df.head(10)
       <td>1</td>
       <td>0,98</td>
       <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
       <td>-73,921715</td>
       <td>40,766682</td>
       <td>-73,916908</td>
@@ -171,7 +171,7 @@ green_taxi_df.head(10)
       <td>2016-01-02 00:00:00</td>
       <td>1</td>
       <td>3,08</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
       <td>Žádné</td>
       <td>-73,979973</td>
       <td>40,677071</td>
@@ -219,7 +219,7 @@ green_taxi_df.head(10)
       <td>2016-01-04 18:03:43</td>
       <td>1</td>
       <td>2,87</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
       <td>Žádný</td>
       <td>-73,977730</td>
       <td>40,684647</td>
@@ -243,8 +243,8 @@ green_taxi_df.head(10)
       <td>2016-01-13 08:52:16</td>
       <td>1</td>
       <td>0.50</td>
-      <td>Žádný</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,942589</td>
       <td>40,841423</td>
       <td>-73,943672</td>
@@ -268,7 +268,7 @@ green_taxi_df.head(10)
       <td>1</td>
       <td>2.25</td>
       <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
       <td>-73,830894</td>
       <td>40,759434</td>
       <td>-73,842422</td>
@@ -291,7 +291,7 @@ green_taxi_df.head(10)
       <td>2016-01-14 00:54:16</td>
       <td>1</td>
       <td>1.93</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
       <td>Žádné</td>
       <td>-73.927109</td>
       <td>40,762848</td>
@@ -315,7 +315,7 @@ green_taxi_df.head(10)
       <td>2016-01-09 14:32:48</td>
       <td>2</td>
       <td>0,80</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>Žádný</td>
       <td>-73,881195</td>
       <td>40,741779</td>
@@ -340,7 +340,7 @@ green_taxi_df.head(10)
       <td>1</td>
       <td>1,04</td>
       <td>Žádné</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>-73,954376</td>
       <td>40,805729</td>
       <td>-73.939117</td>
@@ -363,7 +363,7 @@ green_taxi_df.head(10)
       <td>2016-01-24 21:04:03</td>
       <td>6</td>
       <td>2,82</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
       <td>Žádné</td>
       <td>-73,845200</td>
       <td>40,722134</td>
@@ -477,7 +477,7 @@ green_taxi_df.head(10)
       <td>2016-01-02 00:00:00</td>
       <td>1</td>
       <td>3,08</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>Žádný</td>
       <td>-73,979973</td>
       <td>40,677071</td>
@@ -502,7 +502,7 @@ green_taxi_df.head(10)
       <td>1</td>
       <td>2.44</td>
       <td>Žádné</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>-73,863045</td>
       <td>40,882923</td>
       <td>-73,839836</td>
@@ -526,7 +526,7 @@ green_taxi_df.head(10)
       <td>1</td>
       <td>2,87</td>
       <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
       <td>-73,977730</td>
       <td>40,684647</td>
       <td>-73,931259</td>
@@ -597,8 +597,8 @@ green_taxi_df.head(10)
       <td>2016-01-14 00:54:16</td>
       <td>1</td>
       <td>1.93</td>
-      <td>Žádný</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73.927109</td>
       <td>40,762848</td>
       <td>-73,909302</td>
@@ -621,7 +621,7 @@ green_taxi_df.head(10)
       <td>2016-01-09 14:32:48</td>
       <td>2</td>
       <td>0,80</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
       <td>Žádný</td>
       <td>-73,881195</td>
       <td>40,741779</td>
@@ -645,7 +645,7 @@ green_taxi_df.head(10)
       <td>2016-01-25 18:23:50</td>
       <td>1</td>
       <td>1,04</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>Žádné</td>
       <td>-73,954376</td>
       <td>40,805729</td>
@@ -669,7 +669,7 @@ green_taxi_df.head(10)
       <td>2016-01-24 21:04:03</td>
       <td>6</td>
       <td>2,82</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
       <td>Žádné</td>
       <td>-73,845200</td>
       <td>40,722134</td>
@@ -874,7 +874,7 @@ holidays_df.head(5)
       <th>40688</th>
       <td>Albánie</td>
       <td>Den nového roku</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>AL</td>
       <td>Den nového roku</td>
       <td>2008-01-01</td>
@@ -901,7 +901,7 @@ holidays_df.head(5)
       <th>40691</th>
       <td>Angola</td>
       <td>Den nového roku</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>AO</td>
       <td>Den nového roku</td>
       <td>2008-01-01</td>
@@ -910,7 +910,7 @@ holidays_df.head(5)
       <th>40692</th>
       <td>Argentina</td>
       <td>Den nového roku</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>AR</td>
       <td>Den nového roku</td>
       <td>2008-01-01</td>
@@ -1942,7 +1942,7 @@ Pokud neplánujete použít prostředky, které jste vytvořili, odstraňte je, 
 1. Vyberte **Odstranit skupinu prostředků**.
 1. Zadejte název skupiny prostředků. Vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další příklady kódu najdete v poznámkových [blocích](https://github.com/Azure/OpenDatasetsNotebooks) Open DataSets pro Azure.
 * Pokud [Chcete](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train) získat další informace o automatizovaném strojovém učení ve službě Azure Machine Learning, postupujte podle pokynů.

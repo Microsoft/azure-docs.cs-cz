@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: bbb9653173925e1443504aa3f2e9c5e6edbfc486
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 70a95cdba2a8b41c7b2fc3ee4b2664f049a84e95
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371031"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846015"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Použití automatizovaného strojového učení k sestavení regresního modelu
 
@@ -54,7 +54,7 @@ Přejděte k [Nastavení vývojového prostředí](#start) pro čtení v rámci 
 
 Všechny tyto předpoklady získáte z některého z následujících částí.
 
-* Použití [serveru cloudového poznámkového bloku v pracovním prostoru](#azure) 
+* Použití [serveru cloudového poznámkového bloku v pracovním prostoru](#azure)
 * Použití [vlastního serveru poznámkového bloku](#server)
 
 ### <a name="azure"></a>Použití serveru cloudového poznámkového bloku v pracovním prostoru
@@ -688,6 +688,9 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    **automl_settings)
 ```
 
+> [!NOTE]
+> Automatické kroky před zpracováním strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky před zpracováním během školení.
+
 ### <a name="train-the-automatic-regression-model"></a>Trénování automatické regresní model
 
 Spusťte experiment místně. Předejte definovanému `automated_ml_config` objektu experiment. Nastavte výstup na `True` , aby se zobrazil průběh během experimentu:
@@ -764,7 +767,7 @@ Stejné výsledky jsou uloženy ve vašem pracovním prostoru.  Můžete získat
 ```
 local_run.get_portal_url()
 ```
-  
+
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Možnost 2: Získání a kontrola všech iterací běhu v Pythonu
 

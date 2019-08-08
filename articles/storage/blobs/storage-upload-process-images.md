@@ -1,34 +1,32 @@
 ---
 title: Odeslání dat obrázků do cloudu v Azure Storage | Microsoft Docs
 description: Použití úložiště objektů Blob v Azure pomocí služby web app pro ukládání dat aplikací
-services: storage
 author: normesta
 ms.service: storage
-ms.devlang: dotnet
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: normesta
-ms.reviewer: seguler
-ms.custom: mvc
-ms.openlocfilehash: 612c0b48faac365623fe36d6d2435c1c79566d9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.reviewer: dineshm
+ms.openlocfilehash: 7185d118c9f4419713ebe1291dd55c44635f0c56
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071329"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844949"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: Odeslání dat obrázků do cloudu v Azure Storage
 
 Tento kurz je první částí série. V tomto kurzu se dozvíte, jak nasadit webovou aplikaci, která používá Klientská knihovna pro úložiště Azure můžete nahrávat obrázky do účtu úložiště. Jakmile budete hotovi, budete mít webovou aplikaci, která ukládá a zobrazuje obrázky ze služby Azure storage.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![Změnu velikosti obrázků aplikace v .NET](media/storage-upload-process-images/figure2.png)
+![Aplikace pro změně velikosti obrázků v .NET](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![Aplikace změnu velikosti obrázků ve Node.js V2](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
+![Aplikace pro změně velikosti obrázků v Node. js v2](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![Aplikace změnu velikosti obrázků ve Node.js V10](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
+![Aplikace se změněnou velikostí obrázku v Node. js v10 za účelem](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -131,7 +129,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 Služba App Service podporuje několik způsobů nasazení obsahu do webové aplikace. V tomto kurzu nasadíte webovou aplikaci z [veřejného úložiště ukázek GitHubu](https://github.com/Azure-Samples/storage-blob-upload-from-webapp). Nakonfigurujte nasazení z GitHubu do webové aplikace pomocí příkazu [az webapp deployment source config](/cli/azure/webapp/deployment/source).
 
-Ukázkový projekt obsahuje [ASP.NET MVC](https://www.asp.net/mvc) aplikace. Aplikace přijme obrázek, uloží ho do účtu úložiště a zobrazí obrázky z kontejneru miniatur. Tato webová aplikace používá [Microsoft.Azure.Storage](/dotnet/api/overview/azure/storage), [Microsoft.Azure.Storage.Blob](/dotnet/api/microsoft.azure.storage.blob)a Microsoft.Azure.Storage.Auth oborů názvů z klientské knihovně Azure Storage k interakci s Azure úložiště.
+Ukázkový projekt obsahuje [ASP.NET MVC](https://www.asp.net/mvc) aplikace. Aplikace přijme obrázek, uloží ho do účtu úložiště a zobrazí obrázky z kontejneru miniatur. Webová aplikace používá k interakci se službou Azure Storage obory názvů Microsoft. [Azure. Storage](/dotnet/api/overview/azure/storage), [Microsoft. Azure. Storage. blob](/dotnet/api/microsoft.azure.storage.blob)a Microsoft. Azure. Storage. Auth z klientské knihovny Azure Storage.
 
 ```azurecli-interactive
 az webapp deployment source config --name $webapp \
@@ -139,7 +137,7 @@ az webapp deployment source config --name $webapp \
 --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
 Služba App Service podporuje několik způsobů nasazení obsahu do webové aplikace. V tomto kurzu nasadíte webovou aplikaci z [veřejného úložiště ukázek GitHubu](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node). Nakonfigurujte nasazení z GitHubu do webové aplikace pomocí příkazu [az webapp deployment source config](/cli/azure/webapp/deployment/source). 
 
 ```azurecli-interactive
@@ -148,7 +146,7 @@ az webapp deployment source config --name $webapp \
 --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node
 ```
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
 Služba App Service podporuje několik způsobů nasazení obsahu do webové aplikace. V tomto kurzu nasadíte webovou aplikaci z [veřejného úložiště ukázek GitHubu](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10). Nakonfigurujte nasazení z GitHubu do webové aplikace pomocí příkazu [az webapp deployment source config](/cli/azure/webapp/deployment/source). 
 
 ```azurecli-interactive
@@ -173,7 +171,7 @@ AzureStorageConfig__ThumbnailContainer=thumbnails \
 AzureStorageConfig__AccountKey=$blobStorageAccountKey  
 ```
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
 
 Ukázková webová aplikace zadává požadavek na přístupové tokeny, které slouží k nahrávání obrázků, pomocí [klientské knihovny Azure Storage](https://docs.microsoft.com/javascript/api/azure-storage). Přihlašovací údaje účtu úložiště používat sadou Storage SDK se nastavují v nastavení aplikace pro webovou aplikaci. Přidat nastavení aplikace s nasazenou aplikaci [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) příkazu.
 
@@ -189,7 +187,7 @@ AzureStorageConfig__AccountKey=$blobStorageAccountKey \
 AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
 ```
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
 
 Ukázková webová aplikace zadává požadavek na přístupové tokeny, které slouží k nahrávání obrázků, pomocí [klientské knihovny Azure Storage](https://github.com/Azure/azure-storage-js). Přihlašovací údaje účtu úložiště používat sadou Storage SDK se nastavují v nastavení aplikace pro webovou aplikaci. Přidat nastavení aplikace s nasazenou aplikaci [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) příkazu.
 
@@ -209,9 +207,9 @@ Pokud chcete otestovat webovou aplikaci, přejděte na adresu URL publikované a
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-Vyberte **mohl odesílat fotky** oblasti vybrat a nahrát soubor nebo soubor přetáhněte do oblasti. Obrázek po úspěšném nahrání zmizí. **Vygenerované miniatury** části zůstane prázdná, dokud testujeme dále v tomto tématu.
+Vyberte **mohl odesílat fotky** oblasti vybrat a nahrát soubor nebo soubor přetáhněte do oblasti. Obrázek po úspěšném nahrání zmizí. Oddíl **vygenerované miniatury** zůstane prázdný, dokud ho neotestujete dále v tomto tématu.
 
-![Nahrát fotografie v .NET](media/storage-upload-process-images/figure1.png)
+![Nahrávání fotek v .NET](media/storage-upload-process-images/figure1.png)
 
 Ve vzorovém kódu `UploadFiletoStorage` úlohy v *Storagehelper.cs* soubor slouží k nahrání obrázku do *image* kontejneru v účtu úložiště pomocí [ UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) metody. Úlohu `UploadFiletoStorage` obsahuje následující vzorek kódu.
 
@@ -250,11 +248,11 @@ Předchozí úloha využívá následující třídy a metody:
 |[CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)    | [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference)        |
 |[CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob)     | [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.file.cloudfile.uploadfromstreamasync)        |
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
 
-Vyberte **zvolit soubor** a vyberte soubor, pak klikněte na tlačítko **nahrát obrázek**. **Vygenerované miniatury** části zůstane prázdná, dokud testujeme dále v tomto tématu. 
+Vyberte možnost **zvolit soubor** a vyberte soubor a pak klikněte na **Odeslat obrázek**. Oddíl **vygenerované miniatury** zůstane prázdný, dokud ho neotestujete dále v tomto tématu. 
 
-![Nahrát fotografie v Node.js V2](media/storage-upload-process-images/upload-app-nodejs.png)
+![Nahrávání fotek v Node. js v2](media/storage-upload-process-images/upload-app-nodejs.png)
 
 Ve vzorovém kódu je za nahrání obrázku do kontejneru objektů blob zodpovědná trasa `post`. Tato trasa při zpracování nahrávání využívá následující moduly:
 
@@ -314,16 +312,16 @@ router.post('/', uploadStrategy, (req, res) => {
 });
 ```
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
 
-Vyberte **zvolit soubor** a vyberte soubor, pak klikněte na tlačítko **nahrát obrázek**. **Vygenerované miniatury** části zůstane prázdná, dokud testujeme dále v tomto tématu. 
+Vyberte možnost **zvolit soubor** a vyberte soubor a pak klikněte na **Odeslat obrázek**. Oddíl **vygenerované miniatury** zůstane prázdný, dokud ho neotestujete dále v tomto tématu. 
 
-![Nahrát fotografie v Node.js V10](media/storage-upload-process-images/upload-app-nodejs.png)
+![Nahrávání fotek v Node. js v10 za účelem](media/storage-upload-process-images/upload-app-nodejs.png)
 
 Ve vzorovém kódu je za nahrání obrázku do kontejneru objektů blob zodpovědná trasa `post`. Tato trasa při zpracování nahrávání využívá následující moduly:
 
 - [multer](https://github.com/expressjs/multer) implementuje strategii odeslání obslužné rutině trasy.
-- [do datového proudu](https://github.com/sindresorhus/into-stream) převede vyrovnávací paměti do datového proudu znamének podle [Createblockblobfromlocalfile](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html).
+- [do datového proudu](https://github.com/sindresorhus/into-stream) převede vyrovnávací paměť na datový proud, jak to vyžaduje [createBlockBlobFromStream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html).
 
 Soubor je odeslané na trasu, zůstávají obsah souboru v paměti, dokud se soubor nahraje do kontejneru objektů blob.
 
@@ -400,7 +398,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com). V nabídce vlevo 
 
 Zkontrolujte, jestli se obrázek v kontejneru zobrazuje.
 
-![Azure Portal seznam imagí kontejneru](media/storage-upload-process-images/figure13.png)
+![Seznam kontejnerů imagí na webu Azure Portal](media/storage-upload-process-images/figure13.png)
 
 ## <a name="test-thumbnail-viewing"></a>Test zobrazení miniatury
 
@@ -413,13 +411,13 @@ Pomocí nástroje pro výběr souborů vyberte soubor a vyberte **nahrát**.
 Vraťte se do své aplikace a zkontrolujte, jestli je viditelný obrázek nahraný do kontejneru **thumbnails**.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![Aplikace změnu velikosti obrázku .NET s novou bitovou kopii zobrazí](media/storage-upload-process-images/figure2.png)
+![Aplikace pro změně velikosti obrázku .NET s zobrazeným novým obrázkem](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![Aplikace změnu velikosti obrázku Node.js V2 s novou bitovou kopii, zobrazí](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
+![Aplikace pro obnovení velikosti image Node. js v2 s novým zobrazeným obrázkem](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![Aplikace změnu velikosti obrázku Node.js V10 s novou bitovou kopii, zobrazí](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
+![Aplikace pro obnovení velikosti obrázku v10 za účelem Node. js s novým zobrazeným obrázkem](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 

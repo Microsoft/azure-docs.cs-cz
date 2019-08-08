@@ -1,7 +1,7 @@
 ---
 title: Co je rozhraní API Detektoru anomálií?
 titleSuffix: Azure Cognitive Services
-description: Pomocí pokročilých algoritmů rozhraní API detekce anomálií můžete identifikovat anomálie ve vašich datech časových řad.
+description: Pomocí pokročilých algoritmů rozhraní API pro detekci anomálií můžete identifikovat anomálie v datech časových řad.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,48 +10,55 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 80e0984deff83726fd96a462a1ae8a4375db9d2e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 70cb4a008391ad55562bc55fb45d877988e68643
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721609"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854773"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?
 
-Rozhraní API detekce anomálií vám umožňuje monitorovat a zjišťovat anomálie ve vašich datech časových řad pomocí služby machine learning. Automaticky identifikuje a použitím nejlepšího těsně modely ke svým datům, bez ohledu na odvětví, scénáři nebo objem dat se přizpůsobí API detekce anomálií. Použití dat časových řad, rozhraní API určuje hranice pro detekci anomálií, očekávané hodnoty, a které datové body jsou anomálie.
+Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení. Rozhraní API detektoru anomálií se přizpůsobí tím, že se automaticky identifikují a aplikují nejvhodnější modely pro vaše data, bez ohledu na obor, scénář nebo objem dat. Pomocí dat časových řad rozhraní API určuje hranice pro detekci anomálií, očekávané hodnoty a které datové body jsou anomálie.
 
-![Zjištění změn vzoru v žádosti o služby](./media/anomaly_detection2.png)
+![Zjistit změny vzoru v žádostech o služby](./media/anomaly_detection2.png)
 
-Pomocí detekce anomálií nevyžaduje žádné předchozí zkušenosti v strojového učení a rozhraní RESTful API umožňuje jednoduše integrovat službu do aplikace a procesy.
+Používání detektoru anomálií nevyžaduje žádné předchozí prostředí ve službě Machine Learning a rozhraní RESTful API umožňuje snadnou integraci služby do aplikací a procesů.
 
 ## <a name="features"></a>Funkce
 
-Pomocí detekce anomálií můžete automaticky detekovat anomálie v rámci vašich datech časových řad, nebo když k nim dojde v reálném čase. 
+Pomocí detektoru anomálií můžete automaticky detekovat anomálie v rámci vašich dat časových řad nebo k nim v reálném čase. 
 
 |Funkce  |Popis  |
 |---------|---------|
-|Když k nim dojde v reálném čase zjišťovat anomálie. | Zjišťovat anomálie v streamovaných dat s použitím dříve zobrazenou datové body k určení, zda je nejnovější jeden anomálie. Tato operace vytvoří model s použitím datových bodů, Odeslat a určuje, zda je cílový bod anomálie. Voláním rozhraní API se každý datový bod, které vytvoříte, můžete monitorovat vaše data, jakmile je vytvořena. |
-|Zjišťovat anomálie v celé datové sady v dávce. | Umožňuje detekovat případné anomálie, které mohou existovat v rámci vašich dat časové řady. Tato operace vytvoří model s použitím vašich dat celou časových řad s každý bod analyzovány pomocí stejného modelu.         |
-| Získejte další informace o vašich datech. | Získejte užitečné informace o vašich dat a zjištěnou anomálie, včetně očekávané hodnoty, hranice anomálií a umístění. |
-| Upravte hranice detekce anomálií. | Rozhraní API detekce anomálií automaticky vytvářet hranice pro detekci anomálií. Upravte tyto hranice chcete zvýšit nebo snížit citlivost rozhraní API pro data anomálie a lépe vyhovovaly vaše data. |
+|Detekuje anomálie při výskytu v reálném čase. | Pomocí dříve zjištěných datových bodů můžete zjistit anomálie v datech streamování, abyste zjistili, jestli je vaše nejnovější anomálií. Tato operace generuje model pomocí datových bodů, které odesíláte, a určuje, zda je cílovým bodem anomálie. Voláním rozhraní API s každým novým datovým bodem, který vygenerujete, můžete monitorovat data tak, jak jsou vytvořená. |
+|Detekuje anomálie v celé sadě dat jako dávku. | Použijte svoji časovou řadu ke zjištění anomálií, které by mohly existovat v rámci vašich dat. Tato operace vygeneruje model s využitím celých dat časových řad, přičemž každý bod se analyzuje se stejným modelem.         |
+| Získejte další informace o vašich datech. | Získáte užitečné podrobnosti o datech a všech pozorovaných anomáliích, včetně očekávaných hodnot, hranic anomálií a pozic. |
+| Upravte hranice detekce anomálií. | Rozhraní API detektoru anomálií automaticky vytvoří hranice pro detekci anomálií. Upravte tyto hranice tak, aby se zvýšil nebo snížila citlivost rozhraní API na anomálie dat a aby lépe vyhovovala vašim datům. |
 
 ## <a name="demo"></a>Ukázka
 
-Pokud chcete rychle začít používat rozhraní API detekce anomálií, zkuste [online ukázku](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) , který můžete spustit v prohlížeči. V této ukázce běží v hostované webové Poznámkový blok Jupyter a ukazuje, jak poslat žádost o rozhraní API a vizualizovat výsledek.
+Podívejte se na tuto [interaktivní ukázku](https://aka.ms/adDemo) , abyste porozuměli tomu, jak detektor anomálií funguje.
+Pokud chcete ukázku spustit, musíte vytvořit prostředek detektoru anomálií a získat klíč rozhraní API a koncový bod.
 
-Chcete-li spustit ukázku, proveďte následující kroky:
+## <a name="notebook"></a>Poznámkový blok
 
-1. Získáte platný klíč rozhraní API detekce anomálií předplatného a koncový bod rozhraní API. Následující oddíl obsahuje pokyny pro registraci. 
-2. Přihlaste se a klikněte na možnost klonovat, v pravém horním rohu.
-3. Klikněte na tlačítko **spouštět bezplatnými výpočetními funkcemi**
-4. Vyberte jednu z poznámkových bloků pro tuto ukázku.
-5. Přidat klíč platný předplatného rozhraní API detekce anomálií na `subscription_key` proměnné. Změnit `endpoint` proměnné do vašeho koncového bodu. Příklad: `https://westus2.api.cognitive.microsoft.com`
-1. V horní nabídce klikněte na **buňky**, pak **spustit všechny**.
+Pokud se chcete dozvědět, jak volat rozhraní API pro detekci anomálií, vyzkoušejte si tento [notebook Azure](https://aka.ms/adNotebook). Tento Jupyter Notebook na webu ukazuje, jak odeslat požadavek rozhraní API a vizualizovat výsledek.
+
+Chcete-li spustit Poznámkový blok, proveďte následující kroky:
+
+1. Získejte platný klíč předplatného rozhraní API detektoru anomálií a koncový bod rozhraní API. Následující část obsahuje pokyny k registraci.
+1. Přihlaste se a v pravém horním rohu klikněte na klonovat.
+1. Před dokončením operace klonování zrušte v dialogovém okně možnost Public. v opačném případě bude veřejný Poznámkový blok, včetně všech klíčů předplatného.
+1. Klikněte na **Spustit na bezplatné výpočetní** prostředky
+1. Vyberte jeden z poznámkových bloků.
+1. Do `subscription_key` proměnné přidejte svůj platný klíč předplatného rozhraní API detektoru anomálií. 
+1. `endpoint` Změňte proměnnou na koncový bod. Příklad: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
+1. V horním řádku nabídek klikněte na **buňka**a pak na **Spustit vše**.
 
 ## <a name="workflow"></a>Pracovní postup
 
-Rozhraní API detekce anomálií je RESTful webová služba, což usnadňuje volat z libovolného programovacího jazyka, který může vytvářet požadavky HTTP a parsování formátu JSON.
+Rozhraní API pro detekci anomálií je webová služba RESTful, která usnadňuje volání ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
@@ -59,12 +66,19 @@ Rozhraní API detekce anomálií je RESTful webová služba, což usnadňuje vol
 
 Po registraci:
 
-1. Využít data časových řad a převádět je do platný formát JSON. Použití [osvědčené postupy](concepts/anomaly-detection-best-practices.md) při přípravě vaše data, aby co nejlépe.
-1. Odeslat požadavek na rozhraní API detekce anomálií s vašimi daty.
+1. Vezměte data časové řady a převeďte je do platného formátu JSON. Pro dosažení nejlepších výsledků používejte [osvědčené postupy](concepts/anomaly-detection-best-practices.md) při přípravě dat.
+1. Odešlete žádost do rozhraní API detektoru anomálií s Vašimi daty.
 1. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
-## <a name="next-steps"></a>Další postup
+## <a name="algorithms"></a>Algoritmy
 
-* [Rychlé zprovoznění: Detekovat anomálie ve vašich datech časových řad pomocí rozhraní REST API detekce anomálií](quickstarts/detect-data-anomalies-csharp.md)
-* Rozhraní API detekce anomálií [online ukázku](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
-* Detekce anomálií [reference k rozhraní REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+* Podívejte se prosím na tento technický blog, který [zavádí rozhraní API](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) pro detekci anomálií Azure o algoritmech v digestoři.
+* Informace o algoritmech SR-CNN, které vyvinul Microsoft, najdete v této [službě](https://arxiv.org/abs/1906.03821) pro detekci anomálií pro konference KDD 2019.
+
+> [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="next-steps"></a>Další kroky
+
+* [Rychlé zprovoznění: Detekci anomálií v datech časových řad pomocí REST API detektoru anomálií](quickstarts/detect-data-anomalies-csharp.md)
+* [Online ukázka](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) rozhraní API pro detekci anomálií
+* [Referenční informace o REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) detektoru anomálií

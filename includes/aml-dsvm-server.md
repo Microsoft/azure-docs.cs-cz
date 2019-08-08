@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: a882a874574395095e98079cd0f8aa4a4987c749
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 09a3cc5a623be2ee5a9d50204f0902ca9f400a76
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391794"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857345"
 ---
-1. [Vytvořit pracovní prostor služby Azure Machine Learning](../articles/machine-learning/service/setup-create-workspace.md).
+1. [Vytvořte pracovní prostor služby Azure Machine Learning](../articles/machine-learning/service/how-to-manage-workspace.md).
 
 1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).
 
@@ -24,13 +24,13 @@ ms.locfileid: "66391794"
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
-1. Přidejte konfigurační soubor pracovního prostoru do naklonovaného adresáře pomocí některé z těchto metod:
+1. Přidejte konfigurační soubor pracovního prostoru do klonovaného adresáře pomocí některé z těchto metod:
 
-    * V [webu Azure portal](https://ms.portal.azure.com)vyberte **stáhnout config.json** z **přehled** části pracovního prostoru. 
+    * V [Azure Portal](https://ms.portal.azure.com)v části **Přehled** pracovního prostoru vyberte **Stáhnout soubor config. JSON** . 
 
-    ![Stáhněte si config.json](./media/aml-dsvm-server/download-config.png)
+    ![Stažení souboru config. JSON](./media/aml-dsvm-server/download-config.png)
 
-    * Vytvořit nový pracovní prostor pomocí kódu v [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) Poznámkový blok v naklonovaném adresáři.
+    * Vytvořte nový pracovní prostor pomocí kódu v poznámkovém bloku [Configuration. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) ve klonovaném adresáři.
 
 1. Spusťte server poznámkového bloku v naklonovaném adresáři.
 

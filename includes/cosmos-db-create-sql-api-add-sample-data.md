@@ -5,23 +5,23 @@ services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/13/2018
+ms.date: 08/07/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 127d67cc3b5dcd0ddd585470821eb1baa08c2388
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6656c374ae0ff4aae7f99fd340e9e25e5cbc67d1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175553"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854150"
 ---
-Teď můžete do nové kolekce přidávat data pomocí Průzkumníka dat.
+Nyní můžete přidat data do nového kontejneru pomocí Průzkumník dat.
 
-1. V Průzkumníku dat se nová databáze zobrazí v podokně Kolekce. Rozbalte databázi **Tasks**, rozbalte kolekci **Items**, klikněte na **Dokumenty** a potom klikněte na **Nové dokumenty**. 
+1. Z **Průzkumník dat**rozbalte databázi Tasks , rozbalte kontejner **položky** . Vyberte **položky**a klikněte na **Nová položka**.
 
    ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
   
-2. Teď do kolekce přidejte dokument s následující strukturou.
+2. Nyní do kontejneru přidejte dokument s následující strukturou.
 
      ```json
      {
@@ -33,8 +33,8 @@ Teď můžete do nové kolekce přidávat data pomocí Průzkumníka dat.
      }
      ```
 
-3. Po přidání formátu json na kartu **Dokumenty** klikněte na **Uložit**.
+3. Po přidání JSON na kartu **dokumenty** vyberte **Save (Uložit**).
 
-    ![Zkopírujte data json a v Průzkumníku dat na webu Azure Portal klikněte na Uložit.](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
+    ![Zkopírujte data JSON a vyberte Uložit v Průzkumník dat Azure Portal](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
 
 4.  Vytvořte a uložte ještě jeden dokument, ve kterém vložíte jedinečnou hodnotu pro vlastnost `id` a změníte ostatní vlastnosti podle svých potřeb. Nové dokumenty můžou mít jakoukoli strukturu, protože Azure Cosmos DB neuplatňuje pro data žádné schéma.

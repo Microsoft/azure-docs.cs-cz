@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e4ed781544d3cd11e8494e40589676adf57a9c75
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1827bfdbebaf1ffa17c7c631a94aa8fc6471d13b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405119"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854100"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí Vlastní vyhledávání Bingu
 
@@ -64,8 +64,8 @@ Při přidávání adres URL do **aktivního** seznamu můžete přidat jednotli
 Pokud chcete nahrát soubor, vytvořte textový soubor a zadejte jednu doménu, podstránku nebo webovou stránku na řádek. Soubor bude odmítnut, pokud není správně naformátován.
 
 > [!NOTE]
-> * Soubor můžete nahrát pouze do **aktivního** seznamu. Nemůžete ho použít k přidání řezů do  seznamu blokovaných.  
-> * Pokud seznam **blokovaných** součástí obsahuje doménu, podstránku nebo webovou stránku, kterou jste zadali v souboru odeslání, bude odebrána ze seznamu blokovaných  a přidána do seznamu **aktivních** .
+> * Soubor můžete nahrát pouze do **aktivního** seznamu. Nemůžete ho použít k přidání řezů do seznamu blokovaných.  
+> * Pokud seznam **blokovaných** součástí obsahuje doménu, podstránku nebo webovou stránku, kterou jste zadali v souboru odeslání, bude odebrána ze seznamu blokovaných a přidána do seznamu **aktivních** .
 > * Duplicitní položky v souboru pro nahrání budou Vlastní vyhledávání Bingu ignorovány. 
 
 ### <a name="get-website-suggestions-for-your-search-experience"></a>Získání návrhů webů pro vyhledávání
@@ -105,7 +105,7 @@ Portál umožňuje upravit pořadí hledání obsahu z konkrétních domén, pod
 
 V aktivním seznamu můžete zvýšit, zvýšit nebo snížit úroveň všech domén nebo podstránek. Ve výchozím nastavení jsou všechny řezy přidány bez úprav hodnocení. Řezy webu, které mají vysoký nárůst nebo zvýšení úrovně, jsou ve výsledcích hledání seřazené výše (s větším hodnocením zvýšení úrovně Super než zvýšení). Položky, které jsou ve výsledcích hledání nižší úrovně, jsou seřazené níže.
 
-Můžete zvýšit, zvýšit nebo snížit úroveň položek pomocí **hodnocení upravit** ovládací prvky v aktivním seznamu nebo pomocí  ovládacích prvků zvýšení a snížení úrovně v podokně náhledu. Služba přidá řez do aktivního seznamu a odpovídajícím způsobem upraví pořadí.
+Můžete zvýšit, zvýšit nebo snížit úroveň položek pomocí **hodnocení upravit** ovládací prvky v aktivním seznamu nebo pomocí ovládacích prvků zvýšení a snížení úrovně v podokně náhledu. Služba přidá řez do aktivního seznamu a odpovídajícím způsobem upraví pořadí.
 
 > [!NOTE] 
 > Zvýšení a snížení úrovně domén a podstránek je jednou z mnoha metod, Vlastní vyhledávání Bingu používá k určení pořadí výsledků hledání. Vzhledem k jiným faktorům, které ovlivňují pořadí různého webového obsahu, se může lišit vliv úpravy pořadí. Pomocí podokna náhledu můžete testovat účinek úprav pořadí výsledků hledání. 
@@ -114,7 +114,7 @@ Pro hledání obrázků a videí nejsou k dispozici zvýšení úrovně super, z
 
 ## <a name="pin-slices-to-the-top-of-search-results"></a>Připnout řezy na začátek výsledků hledání
 
-Portál také umožňuje připnout adresy URL na začátek výsledků hledání konkrétních hledaných výrazů pomocí připnutých karet.  Zadejte adresu URL a dotaz pro určení webové stránky, která se zobrazí jako nejvyšší výsledek. Všimněte si, že můžete připnout maximálně jednu webovou stránku na vyhledávací dotaz a v hledání budou zobrazeny pouze indexované webové stránky. Výsledky připnutí nejsou k dispozici pro hledání obrázků a videí.
+Portál také umožňuje připnout adresy URL na začátek výsledků hledání konkrétních hledaných výrazů pomocí připnutých karet. Zadejte adresu URL a dotaz pro určení webové stránky, která se zobrazí jako nejvyšší výsledek. Všimněte si, že můžete připnout maximálně jednu webovou stránku na vyhledávací dotaz a v hledání budou zobrazeny pouze indexované webové stránky. Výsledky připnutí nejsou k dispozici pro hledání obrázků a videí.
 
 Webovou stránku můžete připnout na začátek dvěma způsoby:
 
@@ -159,5 +159,5 @@ Pokud jste se přihlásili k odběru vlastního vyhledávání na příslušné 
 
 - [Volání vlastního vyhledávání](./search-your-custom-view.md)
 - [Konfigurace prostředí pro hostované uživatelské rozhraní](./hosted-ui.md)
-- [Zvýraznění textu pomocí dekoračních značek](./hit-highlighting.md)
+- [Zvýraznění textu pomocí dekoračních značek](../bing-web-search/hit-highlighting.md)
 - [Stránkování webových stránek](./page-webpages.md)

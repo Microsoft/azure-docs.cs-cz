@@ -1,22 +1,20 @@
 ---
-title: 'Kurz: Povolit vlastní doménu s protokolem SSL na statický web využívající Azure CDN – Azure Storage'
+title: 'Kurz: Povolení vlastní domény s protokolem SSL na statickém webu pomocí Azure CDN-Azure Storage'
 description: Zjistěte, jak nakonfigurovat vlastní doménu hostoval statický Web.
-services: storage
 author: normesta
 ms.service: storage
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: normesta
-ms.reviewer: seguler
-ms.custom: seodec18
-ms.openlocfilehash: 2b0bb94be2ba8ea983cda8fd015d05fcd532f2bc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.reviewer: dineshm
+ms.openlocfilehash: a65c0e677182eb224f6bfa7ed834740458b97098
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66226118"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847004"
 ---
-# <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Kurz: Použití Azure CDN umožňuje vlastní doménu s protokolem SSL pro statický Web
+# <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Kurz: Použití Azure CDN k povolení vlastní domény s protokolem SSL pro statický Web
 
 Tento kurz je druhá část série. V něm zjistíte, jak povolit koncový bod služby vlastní domény s protokolem SSL pro váš statický Web. 
 
@@ -30,7 +28,7 @@ Ve druhé části této série se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete tento kurz, proveďte první částí, [kurzu: Hostování statického webu ve službě Blob Storage](storage-blob-static-website-host.md). 
+Než začnete s tímto kurzem, proveďte část [1, kurz: Hostování statického webu na Blob Storage](storage-blob-static-website-host.md). 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -38,27 +36,27 @@ Přihlaste se k [webu Azure portal](https://portal.azure.com/) začít.
 
 ## <a name="create-a-cdn-endpoint-on-the-static-website-endpoint"></a>Vytvoření koncového bodu CDN na koncový bod statického webu
 
-1. Vyhledejte svůj účet úložiště na webu Azure Portal a zobrazte přehled účtu.
+1. Vyhledejte účet úložiště v Azure Portal a zobrazte si přehled o účtu.
 1. Vyberte **Azure CDN** pod **služby Blob Service** nabídky ke konfiguraci Azure CDN.
-1. V **profil CDN** části, zadejte nové nebo existující profil CDN. Další informace najdete v tématu [rychlý start: Vytvoření koncového bodu a profilu Azure CDN](../../cdn/cdn-create-new-endpoint.md).
-1. Určete cenovou úroveň pro koncový bod CDN. Tento kurz používá **Standard Akamai** cenovou úroveň, protože ji postoupí rychle, obvykle během několika minut. Jiné cenové úrovně může trvat delší dobu rozšířit, ale může navíc nabízí další výhody. Další informace najdete v tématu [funkce produktu Azure CDN porovnání](../../cdn/cdn-features.md).
-1. V **název koncového bodu CDN** pole, zadejte název koncového bodu CDN. Koncový bod CDN musí být jedinečný v Azure.
-1. Zadejte koncový bod statického webu v jste **název počátečního hostitele** pole. Pokud chcete najít váš koncový bod statického webu, přejděte na **statického webu** nastavení vašeho účtu úložiště. Primární koncový bod zkopírujte a vložte ho do konfigurace CDN, odebrání identifikátor protokolu (*třeba*, HTTPS).
+1. V části **profil CDN** zadejte nový nebo existující profil CDN. Další informace najdete v tématu [rychlý Start: Vytvořte profil Azure CDN a koncový bod](../../cdn/cdn-create-new-endpoint.md).
+1. Zadejte cenovou úroveň pro koncový bod CDN. V tomto kurzu se používá standardní cenová úroveň **Akamai** , protože se rychle šíří, obvykle během několika minut. Další cenové úrovně mohou trvat delší dobu, ale mohou nabízet i další výhody. Další informace najdete v tématu [porovnání Azure CDNch funkcí produktu](../../cdn/cdn-features.md).
+1. Do pole **název koncového bodu CDN** zadejte název koncového bodu CDN. Koncový bod CDN musí být v rámci Azure jedinečný.
+1. Určete, že jste koncový bod statického webu v poli **počáteční název hostitele** . Pokud chcete najít koncový bod statického webu, přejděte k nastavení **statického webu** pro váš účet úložiště. Zkopírujte primární koncový bod a vložte ho do konfigurace CDN odebráním identifikátoru protokolu (*např.* https).
 
     Následující obrázek ukazuje příklad konfigurace koncového bodu:
 
-    ![Snímek obrazovky zobrazující ukázkový CDN konfigurace koncového bodu](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
+    ![Snímek obrazovky s ukázkou konfigurace koncového bodu CDN](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
 
-1. Vytvoření koncového bodu CDN a počkejte na dokončení propagace.
-1. Pokud chcete ověřit, jestli je správně nakonfigurovaný koncový bod CDN, klikněte na koncový bod pro navigaci na jeho nastavení. Přehled CDN pro váš účet úložiště vyhledejte název hostitele koncového bodu a přejděte ke koncovému bodu, jak je znázorněno na následujícím obrázku. Formát vašeho koncového bodu CDN bude vypadat podobně jako `https://staticwebsitesamples.azureedge.net`.
+1. Vytvořte koncový bod CDN a počkejte, než se rozšíří.
+1. Pokud chcete ověřit, že je koncový bod CDN správně nakonfigurovaný, přejděte kliknutím na koncový bod na jeho nastavení. V přehledu CDN pro váš účet úložiště najděte název hostitele koncového bodu a přejděte ke koncovému bodu, jak je znázorněno na následujícím obrázku. Formát koncového bodu CDN bude podobný `https://staticwebsitesamples.azureedge.net`.
 
-    ![Snímek obrazovky zobrazující přehled koncového bodu CDN](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
+    ![Snímek obrazovky znázorňující přehled koncového bodu CDN](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-    Po dokončení rozšíření koncového bodu CDN přejdete na koncový bod CDN zobrazí obsah, který byl dříve odeslán do statického webu souboru index.html.
+    Po dokončení šíření koncového bodu CDN zobrazuje koncový bod CDN obsah souboru index. html, který jste předtím nahráli na váš statický Web.
 
-1. Zkontrolujte původní nastavení pro koncový bod CDN, přejděte na **původu** pod **nastavení** oddíl pro koncový bod CDN. Uvidíte, že **typ počátku** je nastaveno na *vlastní zdroj* a že **název počátečního hostitele** pole se zobrazí váš koncový bod statického webu.
+1. Pokud chcete zkontrolovat nastavení zdroje pro koncový bod CDN, přejděte na **počátek** v části **Nastavení** pro koncový bod CDN. Uvidíte, že pole **Typ původu** je nastavené na *vlastní zdroj* a že se v poli **původní název hostitele** zobrazuje váš koncový bod statického webu.
 
-    ![Snímek obrazovky zobrazující nastavení počátku pro koncový bod CDN](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
+    ![Snímek obrazovky znázorňující nastavení počátku pro koncový bod CDN](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 
 ## <a name="enable-custom-domain-and-ssl"></a>Povolit vlastní domény a SSL
 
@@ -66,19 +64,19 @@ Přihlaste se k [webu Azure portal](https://portal.azure.com/) začít.
 
     ![Zadejte záznam CNAME pro subdoménu www](media/storage-blob-static-website-custom-domain/subdomain-cname-record.png)
 
-1. Na webu Azure Portal zobrazte nastavení pro koncový bod CDN. Přejděte do **vlastní domény** pod **nastavení** konfigurace vlastní domény a certifikátem SSL.
+1. V Azure Portal zobrazte nastavení pro koncový bod CDN. V části **Nastavení** přejděte na **vlastní** domény a nakonfigurujte vlastní doménu a certifikát SSL.
 1. Vyberte **přidat vlastní doménu** a zadejte název domény a pak klikněte na **přidat**.
-1. Vyberte nové mapování vlastní domény ke zřízení certifikátu SSL.
-1. Nastavte **HTTPS vlastní domény** k **ON**, pak klikněte na tlačítko **Uložit**. Může trvat několik hodin konfigurace vlastní domény. Na portálu se zobrazí průběh, jak je znázorněno na následujícím obrázku.
+1. Vyberte nové mapování vlastní domény a zřiďte certifikát SSL.
+1. Nastavte možnost **https pro vlastní doménu** na **zapnuto**a pak klikněte na **Uložit**. Konfigurace vlastní domény může trvat několik hodin. Na portálu se zobrazí postup, jak je znázorněno na následujícím obrázku.
 
-    ![Snímek obrazovky zobrazující průběh konfigurace vlastní domény](media/storage-blob-static-website-custom-domain/configure-custom-domain-https.png)
+    ![Snímek obrazovky znázorňující průběh vlastní konfigurace domény](media/storage-blob-static-website-custom-domain/configure-custom-domain-https.png)
 
-1. Přístup k adrese URL pro vlastní doménu otestujte mapování váš statický web k vaší vlastní doméně.
+1. Otestujte mapování svého statického webu do vlastní domény přístupem k adrese URL pro vaši vlastní doménu.
 
-Další informace o povolení HTTPS pro vlastní domény, najdete v části [kurzu: Konfigurace HTTPS pro vlastní doménu Azure CDN](../../cdn/cdn-custom-ssl.md).
+Další informace o povolení protokolu HTTPS pro vlastní domény najdete v [tématu Kurz: Nakonfigurujte HTTPS pro Azure CDN vlastní doménu](../../cdn/cdn-custom-ssl.md).
 
 ## <a name="next-steps"></a>Další postup
 
 Ve druhé části tohoto kurzu jste zjistili, jak nakonfigurovat vlastní domény s protokolem SSL v Azure CDN pro váš statický Web.
 
-Další informace o konfiguraci a používání Azure CDN najdete v tématu [co je Azure CDN?](../../cdn/cdn-overview.md).
+Další informace o konfiguraci a použití Azure CDN najdete v tématu [co je Azure CDN?](../../cdn/cdn-overview.md).

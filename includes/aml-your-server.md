@@ -9,18 +9,23 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: ce8b117a3cbe0e3a5c4265729ccf5c0264241013
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 6c93d1243db1b3c4277a54cf71e10f6bbc648d26
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391783"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846018"
 ---
-1. Postupujte podle pokynů v [vytvořit pracovní prostor služby Azure Machine Learning](../articles/machine-learning/service/setup-create-workspace.md#portal) můžete provádět následující:
-    * Vytvoření prostředí Miniconda
-    * Nainstalujte aplikaci Azure Machine Learning sady SDK pro Python
-    * Vytvoření pracovního prostoru
-    * Zápis do souboru konfigurace pracovního prostoru (**aml_config/config.json**).
+- Sada Azure Machine Learning SDK pro Python je nainstalována. Pokyny v [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) použijte k následujícím akcím:
+
+
+1. Pokyny v [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) použijte k následujícím akcím:
+    * Vytvoření prostředí Miniconda [vytváření a Správa pracovních prostorů služby Azure Machine Learning]
+    * Instalace sady Azure Machine Learning SDK pro Python
+
+1. Vytvořte [pracovní prostor služby Azure Machine Learning](../articles/machine-learning/service/how-to-manage-workspace.md).
+
+1. Zapsat soubor [konfiguračního souboru](../articles/machine-learning/service/how-to-configure-environment.md#workspace) (**aml_config/config. JSON**).
 
 1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).
 

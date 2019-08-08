@@ -11,12 +11,12 @@ ms.author: sihhu
 ms.reviewer: trbye
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6692f64dc7e7fa2799f9095af39171a2ddc0e76d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: aacb7cbaf3d5864d39d00bc341615f2a0e4e82f2
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360914"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855913"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
@@ -56,7 +56,7 @@ Začněte s vlastním cloudovým notebookovým serverem. Sada SDK Azure Machine 
 
 Pomocí těchto kroků můžete vytvořit místní aplikace Jupyter Notebook server ve vašem počítači.  Po dokončení kroků spusťte Poznámkový blok **kurzy/Regression-part1-data-PREP. ipynb** .
 
-1. Dokončete kroky instalace v [Azure Machine Learning rychlý Start Pythonu](setup-create-workspace.md#sdk) pro vytvoření prostředí Miniconda a instalaci sady SDK.  Klidně přeskočte oddíl **vytvořit pracovní prostor** , pokud chcete, ale budete ho potřebovat pro [část 2](tutorial-auto-train-models.md) této série kurzů.
+1. Dokončete kroky instalace v [sadě Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 1. `azureml-dataprep` Balíček je automaticky nainstalován při instalaci sady SDK.
 1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).
 
@@ -100,10 +100,11 @@ Stažení dvou různých NYC datových sad taxislužby do objektů Dataflow. Dat
 
 ```python
 from IPython.display import display
-dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 
-green_path = "/".join([dataset_root, "green-small/*"])
-yellow_path = "/".join([dataset_root, "yellow-small/*"])
+green_path = "https://dprepdata.blob.core.windows.net/demo/green-small/*"])
+yellow_path = "https://dprepdata.blob.core.windows.net/demo/yellow-small/*"])
+
+# (optional) Download and view a subset of the data: https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 green_df_raw = dprep.read_csv(
     path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
@@ -113,9 +114,6 @@ yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 display(green_df_raw.head(5))
 display(yellow_df_raw.head(5))
 ```
-
-> [!Note]
-> Adresa URL v tomto stejném příkladu není úplná adresa URL. Místo toho odkazuje na ukázkovou složku v objektu BLOB. Úplná adresa URL k částem dat je https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv
 
 `Dataflow` Objekt je podobný jako datový rámec a představuje řadu laxně vytvářenách neproměnlivých operací s daty. Operace lze přidat voláním různých metod transformace a filtrování, které jsou k dispozici. Výsledkem přidání operace do `Dataflow` je vždy nový `Dataflow` objekt.
 
