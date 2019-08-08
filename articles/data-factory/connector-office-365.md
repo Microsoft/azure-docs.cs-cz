@@ -69,7 +69,7 @@ Vytvoříte kanál s aktivitou kopírování pomocí jedné z následujících n
 - [Python SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
 - [REST API](quickstart-create-data-factory-rest-api.md)
-- [Šablona Azure Resource Manageru](quickstart-create-data-factory-resource-manager-template.md). 
+- [Šablona Azure Resource Manager](quickstart-create-data-factory-resource-manager-template.md). 
 
 Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor Office 365.
 
