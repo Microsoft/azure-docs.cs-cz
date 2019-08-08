@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 559c02e74e97093a15b1d768eb5a3b32502db64e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a937fcb3b603a6bed97ba12533ebc965c2c8089
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60864501"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847642"
 ---
-# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Kurz: Vytvořte aplikaci s webovým front-endová služba rozhraní API Java a stavovou back-end služby v Service Fabric
+# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Kurz: Vytvoření aplikace s front-end službou Java Web API a stavovou back-end službou v Service Fabric
 
-Tento kurz je první částí série. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v Javě, která ukládá výsledky hlasování do stavové back-end služby v clusteru. Tato série kurzů vyžaduje funkční vývojový počítač se systémem Mac OSX nebo Linuxem. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód dokončené aplikace](https://github.com/Azure-Samples/service-fabric-java-quickstart) a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Zvažte také následující [rychlý start k reliable services v Javě.](service-fabric-quickstart-java-reliable-services.md)
+Tento kurz je první částí série. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v Javě, která ukládá výsledky hlasování do stavové back-end služby v clusteru. Tato série kurzů vyžaduje funkční vývojový počítač se systémem Mac OSX nebo Linuxem. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód dokončené aplikace](https://github.com/Azure-Samples/service-fabric-java-quickstart) a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Zvažte také následující postup [pro službu Reliable Services Java.](service-fabric-quickstart-java-reliable-services.md)
 
 
 ![Místně spuštěná hlasovací aplikace](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
@@ -55,19 +55,19 @@ Než začnete s tímto kurzem:
 
 ## <a name="create-the-front-end-java-stateless-service"></a>Vytvoření bezstavové front-end služby v Javě
 
-Nejprve vytvořte webový front-end hlasovací aplikace. Webového uživatelského rozhraní využívajícího AngularJS zasílá požadavky na Bezstavová služba v Javě, která spustí jednoduchý server HTTP. Tato služba zpracuje každý požadavek a odešle volání vzdálené procedury do stavové služby ukládá hlasy. 
+Nejprve vytvořte webový front-end hlasovací aplikace. Webové uživatelské rozhraní využívající AngularJS odesílá požadavky na bezstavovou službu Java, která spouští odlehčený Server HTTP. Tato služba zpracuje každý požadavek a pošle vzdálené volání procedury do stavové služby za účelem uložení hlasů. 
 
-1. Spusťte Eclipse.
+1. Otevřete Eclipse.
 
-2. Vytvořte projekt postupným výběrem **File** (Soubor)->**New** (Nový)->**Other** (Jiné)->**Service Fabric**->**Service Fabric Project** (Projekt Service Fabric).
+2. Vytvořte projekt postupným výběrem **File** (Soubor) > **New** (Nový) > **Other** (Jiné) > **Service Fabric** > **Service Fabric Project** (Projekt Service Fabric).
 
     ![Dialogové okno New Project (Nový projekt) v Eclipse](./media/service-fabric-tutorial-create-java-app/create-sf-proj-wizard.png)
 
-3. V dialogovém okně **ServiceFabric Project Wizard** (Průvodce projektem Service Fabric) pojmenujte projekt **Voting** a stiskněte **Next** (Další).
+3. V dialogovém okně **Průvodce projektem ServiceFabric** pojmenujte **hlasovací** tlačítko projektu a vyberte **Další**.
 
     ![Výběr bezstavové služby v Javě dialogovém okně New Service (Nová služba)](./media/service-fabric-tutorial-create-java-app/name-sf-proj-wizard.png) 
 
-4. Na stránce **Add Service** (Přidat službu) zvolte **Stateless Service** (Bezstavová služba) a pojmenujte službu **VotingWeb**. Kliknutím na **Finish** (Dokončit) vytvořte projekt.
+4. Na stránce **Přidat službu** vyberte Bezstavová **Služba**a pojmenujte službu **VotingWeb**. Kliknutím na **Dokončit** vytvořte projekt.
 
     ![Vytvoření bezstavové služby]( ./media/service-fabric-tutorial-create-java-app/createvotingweb.png)
 
@@ -88,13 +88,13 @@ Následující tabulka obsahuje stručný popis jednotlivých položek v průzku
 
 ### <a name="add-html-and-javascript-to-the-votingweb-service"></a>Přidání kódu HTML a Javascriptu do služby VotingWeb
 
-Pokud chcete přidat uživatelské rozhraní, které lze vykreslit Bezstavová služba, přidejte soubor ve formátu HTML. Tento soubor HTML se pak vykreslí pomocí jednoduchého serveru HTTP vloženého do bezstavové služby v Javě.
+Chcete-li přidat uživatelské rozhraní, které může být vygenerováno bezstavovou službou, přidejte soubor HTML. Tento soubor HTML se pak vykreslí pomocí jednoduchého serveru HTTP vloženého do bezstavové služby v Javě.
 
 1. Rozbalte adresář *VotingApplication* a přejděte do adresáře *VotingApplication/VotingWebPkg/Code*.
 
-2. Klikněte pravým tlačítkem na adresář *Code* a pak klikněte na **New** (Nový)->**Folder** (Složka).
+2. Klikněte pravým tlačítkem na adresář *kódu* a vyberte **Nová** > **Složka**.
 
-3. Složku pojmenujte *wwwroot* a klikněte na **Finish** (Dokončit).
+3. Pojmenujte složku *wwwroot* a vyberte **Dokončit**.
 
     ![Vytvoření složky wwwroot v Eclipse](./media/service-fabric-tutorial-create-java-app/create-wwwroot-folder.png)
 
@@ -212,7 +212,7 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
 
 V podprojektu **VotingWeb** otevřete soubor *VotingWeb/src/statelessservice/VotingWeb.java*. Služba **VotingWeb** představuje bránu k bezstavové službě a je zodpovědná za nastavení naslouchacího procesu komunikace pro front-endové rozhraní API.
 
-Nahraďte existující **createServiceInstanceListeners** metody v souboru následujícím kódem a uložte provedené změny.
+Nahraďte existující metodu **createServiceInstanceListeners** v souboru následujícím způsobem a uložte provedené změny.
 
 ```java
 @Override
@@ -229,9 +229,9 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>Přidání souboru HTTPCommunicationListener.java
 
-Naslouchací proces komunikace protokolu HTTP funguje jako kontroler, který nastaví server HTTP a zveřejní rozhraní API definující akce hlasování. Ve složce *VotingWeb/src/statelessservice* klikněte pravým tlačítkem na balíček *statelessservice* a potom vyberte **New -> File** (Nový -> Soubor).  Pojmenujte soubor *HttpCommunicationListener.java* a klikněte na **Finish** (Dokončit).
+Naslouchací proces komunikace protokolu HTTP funguje jako kontroler, který nastaví server HTTP a zveřejní rozhraní API definující akce hlasování. Klikněte pravým tlačítkem na balíček *statelessservice* ve složce *VotingWeb/src/statelessservice* a pak vyberte **Nový * *** * * soubor.  Pojmenujte soubor *HttpCommunicationListener. Java* a vyberte **Dokončit**.
 
-Nahraďte obsah souboru následujícím kódem a pak uložte provedené změny.  Aktualizace souboru HttpCommunicationListener.java je později, tento soubor upraví k vykreslení, přečtěte si a zapisoval data hlasování z back-end služby.  Prozatím naslouchací událost jednoduše vrací statický kód HTML hlasovací aplikace.
+Nahraďte obsah souboru následujícím kódem a pak uložte provedené změny.  Později v části aktualizace souboru HttpCommunicationListener. Java se tento soubor upraví tak, aby vygeneroval, četl a napsal hlasovací data z back-endové služby.  Prozatím naslouchací událost jednoduše vrací statický kód HTML hlasovací aplikace.
 
 ```java
 // ------------------------------------------------------------
@@ -390,7 +390,7 @@ public class HttpCommunicationListener implements CommunicationListener {
 
 ### <a name="configure-the-listening-port"></a>Konfigurace portu pro naslouchání
 
-Po vytvoření front-endové služby VotingWeb vybere Service Fabric port, na kterém bude služba naslouchat.  Služba VotingWeb se chová jako front-end této aplikace a přijímá externí provoz, takže tuto službu svážeme s pevným a dobře známým portem. V průzkumníku balíčků otevřete soubor *VotingApplication/VotingWebPkg/ServiceManifest.xml*.  Najít **koncový bod** prostředku v **prostředky** části a změnit **Port** hodnotu 8080 (budeme pokračovat v použití tohoto portu v rámci tohoto kurzu). Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači. Do prvku **ServiceManifest** vložte následující fragment kódu (například přímo pod prvek ```<DataPackage>```).
+Po vytvoření front-endové služby VotingWeb vybere Service Fabric port, na kterém bude služba naslouchat.  Služba VotingWeb se chová jako front-end této aplikace a přijímá externí provoz, takže tuto službu svážeme s pevným a dobře známým portem. V průzkumníku balíčků otevřete soubor *VotingApplication/VotingWebPkg/ServiceManifest.xml*.  V části Resources ( **prostředky** ) vyhledejte prostředek **koncový bod** a změňte hodnotu **port** na 8080 (v průběhu tohoto kurzu budeme dál používat tento port). Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači. Do prvku **ServiceManifest** vložte následující fragment kódu (například přímo pod prvek ```<DataPackage>```).
 
 ```xml
 <Resources>
@@ -409,9 +409,9 @@ Když je teď hotová kostra služby webového rozhraní API v Javě, můžeme p
 
 Service Fabric umožňuje konzistentně a spolehlivě ukládat data přímo v rámci služby s použitím spolehlivých kolekcí. Spolehlivé kolekce jsou sady vysoce dostupných a spolehlivých tříd kolekcí. Použití těchto tříd budou znát všichni, kteří už někdy používali kolekce v Javě.
 
-1. V průzkumníku balíčků klikněte pravým tlačítkem na **Voting** v rámci projektu aplikace a zvolte **Service Fabric > Add Service Fabric Service** (Service Fabric > Přidat službu Service Fabric).
+1. V Průzkumníku balíčků klikněte pravým tlačítkem na **hlasovací** tlačítko v rámci projektu aplikace a vyberte **Service Fabric** > **Přidat Service Fabric službu**.
 
-2. V dialogovém okně **Add Service** (Přidat službu) zvolte **Stateful Service** (Bezstavová služba), službu pojmenujte jako **VotingDataService** a klikněte na **Add Service** (Přidat službu).
+2. V dialogovém okně **Přidat službu** vyberte **stavová služba** a pojmenujte službu **VotingDataService** a vyberte **Přidat službu**.
 
     Po vytvoření projektu služby budete mít ve své aplikaci dvě služby. V průběhu vytváření aplikace můžete stejným způsobem přidávat další služby. Každou z nich je možné nezávisle označovat verzí a upgradovat.
 
@@ -554,9 +554,9 @@ Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služb
 
 ## <a name="create-the-communication-interface-to-your-application"></a>Vytvoření komunikačního rozhraní pro aplikaci
 
- Dalším krokem je propojení bezstavové front-end služby a back-end službu. Obě služby využívají rozhraní votingrpc, které definuje operace hlasovací aplikace. Toto rozhraní se implementuje ve front-end i back-end službě za účelem umožnění vzdálených volání procedur (RPC) mezi těmito dvěma službami. Bohužel Eclipse nepodporuje přidávání podprojektů Gradle, takže balíček obsahující toto rozhraní je nutné přidat ručně.
+ Dalším krokem je připojení bezstavové služby a služby back-end. Obě služby využívají rozhraní s názvem VotingRPC, které definuje operace hlasovací aplikace. Toto rozhraní se implementuje ve front-end i back-end službě za účelem umožnění vzdálených volání procedur (RPC) mezi těmito dvěma službami. Zatmění bohužel nepodporuje přidání podprojektů Gradle, takže balíček, který obsahuje toto rozhraní, se musí přidat ručně.
 
-1. V průzkumníku balíčků klikněte pravým tlačítkem na projekt **Voting** a potom klikněte na **New -> Folder** (Nový -> Složka). Složku pojmenujte **VotingRPC/src/rpcmethods**.
+1. V Průzkumníku balíčků klikněte pravým tlačítkem na projekt **hlasování** a vyberte **Nová** > **Složka**. Složku pojmenujte **VotingRPC/src/rpcmethods**.
 
     ![Vytvoření balíčku VotingRPC](./media/service-fabric-tutorial-create-java-app/createvotingrpcpackage.png)
 
@@ -581,7 +581,7 @@ Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služb
     }
     ```
 
-4. Vytvořte prázdný soubor s názvem *build.gradle* v *Voting/VotingRPC* adresáře a vložit následující dovnitř. Tento soubor gradle slouží k sestavení a vytvoření souboru .jar, který importují ostatní služby. 
+4. Vytvořte prázdný soubor s názvem *Build. Gradle* v adresáři *hlasovat/VotingRPC* a vložte do něj následující. Tento soubor gradle slouží k sestavení a vytvoření souboru .jar, který importují ostatní služby. 
 
     ```gradle
     apply plugin: 'java'
@@ -892,27 +892,27 @@ V této části se pro projekt nakonfigurují skripty Gradle.
 
 V tuto chvíli je aplikace připravená k nasazení do místního clusteru Service Fabric.
 
-1. Klikněte pravým tlačítkem na projekt **Voting** v průzkumníku balíčků a kliknutím na **Service Fabric –> Build Application** (Service Fabric –> Sestavit aplikaci) svou aplikaci sestavte.
+1. Klikněte pravým tlačítkem myši na **hlasovací** projekt v Průzkumníkovi balíčků a vyberte **Service Fabric** > **sestavit aplikaci** pro sestavení aplikace.
 
 2. Spusťte místní cluster Service Fabric. Provedení tohoto kroku závisí na vašem vývojovém prostředí (Mac nebo Linux).
 
-    Pokud používáte počítač Mac, spustíte místní cluster pomocí následujícího příkazu: Nahradit příkaz předávaný **- v** parametr s cestou k vašemu pracovnímu prostoru.
+    Pokud používáte počítač Mac, spusťte místní cluster pomocí následujícího příkazu: Nahraďte příkaz předaný parametru **-v** s cestou k vlastnímu pracovnímu prostoru.
 
     ```bash
     docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox
     ```
-    Přečtěte si podrobné pokyny v [Průvodce nastavením OS X.](service-fabric-get-started-mac.md)
+    Přečtěte si podrobnější pokyny v [příručce pro instalaci OS X.](service-fabric-get-started-mac.md)
 
     Pokud používáte počítač s Linuxem, spustíte místní cluster pomocí následujícího příkazu: 
 
     ```bash 
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
-    Přečtěte si podrobné pokyny v [Průvodce nastavením Linux.](service-fabric-get-started-linux.md)
+    Přečtěte si podrobnější pokyny v [příručce pro instalaci systému Linux.](service-fabric-get-started-linux.md)
 
-4. V průzkumníku balíčků pro Eclipse klikněte pravým tlačítkem na projekt **Voting** a pak klikněte na **Service Fabric –> Publish Application...** (Service Fabric –> Publikovat aplikaci...). 
-5. V okně **Publish Application** (Publikovat aplikaci) vyberte v rozevíracím seznamu soubor **Local.json** a klikněte na **Publish** (Publikovat).
-6. Přejděte do webového prohlížeče a přístup protokolu http:\//localhost:8080 zobrazte svou spuštěnou aplikaci v místním clusteru Service Fabric. 
+4. V Průzkumníkovi balíčků pro zatmění klikněte pravým tlačítkem myši na **hlasovací** projekt a vyberte **Service Fabric** > **publikovat aplikaci** . 
+5. V okně **publikovat aplikaci** vyberte v rozevíracím seznamu **místní. JSON** a vyberte **publikovat**.
+6. Přejděte do webového prohlížeče a přihlaste se\/k http:/localhost: 8080 pro zobrazení spuštěné aplikace v místním clusteru Service Fabric. 
 
 ## <a name="next-steps"></a>Další postup
 

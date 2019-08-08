@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 2f6dcbba8da314798b2e8de12a9fc5bf55f67a4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3dece2d2bffc7bd2b9e0a3c2931b2038ebc3c77e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738607"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850652"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Vytvoření runbooku Azure Automation
 
@@ -22,7 +22,7 @@ Runbooky Azure Automation je možné vytvářet přes Azure. Tato metoda poskytu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k Azure na adrese https://portal.azure.com.
 
@@ -45,7 +45,7 @@ Nejprve vytvořte runbook. Ukázkový runbook vytvářený v tomto rychlém star
     ![Vytvoření skriptu PowerShellu v editoru runbooků](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
 1. Zadejte nebo zkopírujte a vložte následující kód do podokna úprav. Tento kód vytvoří volitelný vstupní parametr Name (Název) s výchozí hodnotou World a vypíše řetězec, který používá tuto vstupní hodnotu:
-   
+
    ```powershell-interactive
    param
    (
@@ -102,4 +102,3 @@ V rámci tohoto rychlého startu jste vytvořili, upravili, otestovali a publiko
 
 > [!div class="nextstepaction"]
 > [Návod pro službu Automation – Typy runbooků](./automation-runbook-types.md)
-

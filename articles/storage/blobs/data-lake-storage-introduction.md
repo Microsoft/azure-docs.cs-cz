@@ -1,24 +1,23 @@
 ---
 title: Azure Data Lake Storage Gen2 Úvod
-description: Obsahuje základní informace o Azure Data Lake Storage Gen2
-services: storage
+description: Poskytuje přehled Azure Data Lake Storage Gen2
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: daa5efcf1be075e81e402edff56239a7cf21db18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dea4dfc58bf087b8f6bc0a3f45646da5cb597ad
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939233"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847225"
 ---
-# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Úvod do služby Azure Data Lake Storage Gen2
+# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Úvod do Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 je sada funkcí, které jsou vyhrazené pro analýzy velkých objemů dat, postavená na [úložiště objektů Blob v Azure](storage-blobs-introduction.md). Data Lake Storage Gen2 je výsledkem slučuje možnosti našich dva existující služby storage, Azure Blob storage a Azure Data Lake Storage Gen1. Funkce z [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), jako jsou sémantiku systému souborů, adresáře a zabezpečení na úrovni souborů a škálování se sloučí s s nízkými náklady, vrstveného úložiště, možnosti obnovení vysoká dostupnost/zotavení po havárii z [Azure Blob storage](storage-blobs-introduction.md).
+Azure Data Lake Storage Gen2 je sada funkcí vyhrazených pro analýzy velkých objemů dat, která je založená na [službě Azure Blob Storage](storage-blobs-introduction.md). Data Lake Storage Gen2 je výsledkem slučuje možnosti našich dva existující služby storage, Azure Blob storage a Azure Data Lake Storage Gen1. Funkce z [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), jako jsou sémantiku systému souborů, adresáře a zabezpečení na úrovni souborů a škálování se sloučí s s nízkými náklady, vrstveného úložiště, možnosti obnovení vysoká dostupnost/zotavení po havárii z [Azure Blob storage](storage-blobs-introduction.md).
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Navržená pro analýzy velkých objemů dat organizace
 
@@ -38,13 +37,13 @@ V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a 
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Klíčové funkce služby Data Lake Storage Gen2
 
--   **Hadoop kompatibilní přístup**: Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nové [ABFS ovladač](data-lake-storage-abfs-driver.md) je k dispozici ve všech prostředích Apache Hadoop, včetně [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index), a [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) přístup k datům uloženým v Data Lake Storage Gen2.
+-   **Přístup kompatibilní s Hadoop**: Data Lake Storage Gen2 umožňuje správu a přístup k datům stejně, jako byste použili [systém souborů DFS (Distributed File System) Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nové [ABFS ovladač](data-lake-storage-abfs-driver.md) je k dispozici ve všech prostředích Apache Hadoop, včetně [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index), a [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) přístup k datům uloženým v Data Lake Storage Gen2.
 
--   **Nadmnožina POSIX oprávnění**: Model zabezpečení pro Data Lake Gen2 podporuje oprávnění řízení přístupu a POSIX spolu s nějaké další specifické pro Data Lake Storage Gen2 členitosti. Nastavení může být nakonfigurován pomocí Průzkumníka služby Storage nebo prostřednictvím architektury, jako je Hive a Spark.
+-   **Nadmnožina oprávnění POSIX**: Model zabezpečení pro Data Lake Gen2 podporuje oprávnění ACL a POSIX spolu s některými dalšími podrobnostmi, které jsou specifické pro Data Lake Storage Gen2. Nastavení může být nakonfigurován pomocí Průzkumníka služby Storage nebo prostřednictvím architektury, jako je Hive a Spark.
 
--   **Nákladově efektivní**: Data Lake Storage Gen2 nabízí kapacitu úložiště s nízkými náklady a transakce. Jako přechody data prostřednictvím jejich kompletní životní cyklus, fakturační sazby změnit uchování nákladů na minimum prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](storage-lifecycle-management-concepts.md).
+-   Cenově **výhodné**: Data Lake Storage Gen2 nabízí s nízkými náklady kapacitu a transakce úložiště. Jako přechody data prostřednictvím jejich kompletní životní cyklus, fakturační sazby změnit uchování nákladů na minimum prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](storage-lifecycle-management-concepts.md).
 
--   **Optimalizované ovladač**: Ovladač ABFS [speciálně optimalizovaná](data-lake-storage-abfs-driver.md) pro analýzy velkých objemů dat. Zobrazují se prostřednictvím koncového bodu rozhraní REST API pro odpovídající `dfs.core.windows.net`.
+-   **Optimalizovaný ovladač**: Ovladač ABFS se [optimalizuje speciálně](data-lake-storage-abfs-driver.md) pro analýzy velkých objemů dat. Odpovídající rozhraní REST API se procházejí prostřednictvím koncového `dfs.core.windows.net`bodu.
 
 ### <a name="scalability"></a>Škálovatelnost
 
@@ -77,10 +76,10 @@ Několik opensourcové platformy podporují Data Lake Storage Gen2. V následuj�
 | Platforma |  Podporované verze | Další informace |
 | --- | --- | --- |
 | [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6 + | [Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
-| [Hadoop](https://hadoop.apache.org/) | 3.2+ | [Apache Hadoop verze archivu](https://hadoop.apache.org/release.html) |
+| [Hadoop](https://hadoop.apache.org/) | 3.2 + | [Apache Hadoop verze archivu](https://hadoop.apache.org/release.html) |
 | [Cloudera](https://www.cloudera.com/) | 6.1 + | [Zpráva k vydání verze 6.x Cloudera Enterprise](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
-| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1+ | [Modul Databricks Runtime verze](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
-|[Hortonworks](https://hortonworks.com/)| 3.1.x++ | [Konfigurace přístupu k datům cloudu](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) |
+| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1 + | [Modul Databricks Runtime verze](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
+|[Hortonworks](https://hortonworks.com/)| 3.1. x + + | [Konfigurace přístupu k datům cloudu](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) |
 
 ## <a name="next-steps"></a>Další postup
 

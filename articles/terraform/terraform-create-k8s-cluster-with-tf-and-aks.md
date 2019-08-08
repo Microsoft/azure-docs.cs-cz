@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: d8438f5ddbbb3744811448aeb563be602b04516d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 257a2d78a54e292faecda836811f0a58fabd584d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60885237"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854502"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service a Terraformu
 [Azure Kubernetes Service (AKS)](/azure/aks/) spravuje hostované prostředí Kubernetes a umožňuje rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
@@ -30,9 +30,9 @@ V tomto kurzu se dozvíte, jak provedením následujících úkolů vytvořit po
 
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Nakonfigurujte Terraform**: Postupujte podle pokynů v článku, [Terraform a konfigurovat přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure)
+- **Konfigurace terraformu**: Postupujte podle pokynů v článku [terraformu a nakonfigurujte přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure) .
 
-- **Instanční objekt Azure**: Postupujte podle pokynů v části **vytvořit instanční objekt** části tohoto článku věnované [vytvoření instančního objektu Azure pomocí rozhraní příkazového řádku Azure](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Poznamenejte si hodnoty appId, displayName, password a tenant.
+- **Objekt služby Azure**: Postupujte podle pokynů v části **Vytvoření instančního objektu** v článku Vytvoření instančního [objektu Azure pomocí](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)rozhraní příkazového řádku služby Azure. Poznamenejte si hodnoty appId, displayName, password a tenant.
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu pro toto cvičení.
@@ -110,9 +110,14 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
         name     = "${var.resource_group_name}"
         location = "${var.location}"
     }
+    
+    resource "random_id" "log_analytics_workspace_name_suffix" {
+        byte_length = 8
+    }
 
     resource "azurerm_log_analytics_workspace" "test" {
-        name                = "${var.log_analytics_workspace_name}"
+        # The WorkSpace name has to be unique across the whole of azure, not just the current subscription/tenant.
+        name                = "${var.log_analytics_workspace_name}-${random_id.log_analytics_workspace_name_suffix.dec}"
         location            = "${var.log_analytics_workspace_location}"
         resource_group_name = "${azurerm_resource_group.k8s.name}"
         sku                 = "${var.log_analytics_workspace_sku}"
@@ -165,7 +170,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
             }
         }
 
-        tags {
+        tags = {
             Environment = "Development"
         }
     }
@@ -352,7 +357,7 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
 
     ![Příklad výsledků příkazu „terraform plan“](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. Spuštěním příkazu `terraform apply` použijte plán a vytvořte cluster Kubernetes. Vytvoření clusteru Kubernetes může trvat několik minut a relace služby Cloud Shell může vypršet. Pokud vyprší časový limit relace Cloud Shellu, provedením kroků v části "Obnovit z časový limit Cloud Shellu" vám k dokončení tohoto kurzu.
+1. Spuštěním příkazu `terraform apply` použijte plán a vytvořte cluster Kubernetes. Vytvoření clusteru Kubernetes může trvat několik minut a relace služby Cloud Shell může vypršet. Pokud Cloud Shell časový limit relace, můžete postupovat podle kroků v části obnovení z Cloud Shell časového limitu, který vám umožní dokončit tento kurz.
 
     ```bash
     terraform apply out.plan
@@ -362,7 +367,7 @@ V této části zjistíte, jak použít příkaz `terraform init` k vytvoření 
 
     ![Příklad výsledků příkazu „terraform apply“](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. Na webu Azure Portal, vyberte **všechny služby** v levé nabídce zobrazíte prostředky vytvořené pro nový cluster Kubernetes.
+1. V Azure Portal v nabídce vlevo vyberte **všechny služby** , aby se zobrazily prostředky vytvořené pro nový cluster Kubernetes.
 
     ![Příkazový řádek Cloud Shellu](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 
@@ -409,9 +414,9 @@ Nově vytvořený cluster můžete pomocí nástrojů Kubernetes ověřit.
     ![Nástroj kubectl vám umožňuje ověřit stav clusteru Kubernetes.](./media/terraform-create-k8s-cluster-with-tf-and-aks/kubectl-get-nodes.png)
 
 ## <a name="monitor-health-and-logs"></a>Monitorování stavu a protokolů
-Při vytvoření clusteru AKS se povolilo monitorování za účelem zachycování metrik stavu podů i uzlů clusteru. Tyto metriky stavu jsou k dispozici na webu Azure Portal. Další informace o monitorování stavu kontejneru, naleznete v tématu [monitorování Azure Kubernetes Service health](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
+Při vytvoření clusteru AKS se povolilo monitorování za účelem zachycování metrik stavu podů i uzlů clusteru. Tyto metriky stavu jsou k dispozici na webu Azure Portal. Další informace o monitorování stavu kontejnerů najdete v tématu [monitorování stavu služby Azure Kubernetes](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak pomocí Terraformu a AKS vytvořit cluster Kubernetes. Pokud chcete o nástroji Terraform v Azure získat více informací, můžou vám pomoct následující prostředky: 
 
  [Dokumentace k Terraformu v Azure](https://docs.microsoft.com/azure/terraform/)  

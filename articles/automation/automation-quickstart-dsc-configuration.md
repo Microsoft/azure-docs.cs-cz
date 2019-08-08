@@ -11,14 +11,14 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0be78b444c9af9c5c0a818d790982670d2b68ee8
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 2c01172bf22fb286f790543b02a4c1e482b05fe7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477604"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850567"
 ---
-# <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurace virtuálního počítače s Linuxem s využitím konfigurace požadovaného stavu
+# <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Konfigurace virtuálního počítače s požadovanou konfigurací stavu
 
 Povolení konfigurace požadovaného stavu (DSC) vám umožní spravovat a monitorovat konfigurace vašich serverů s Windows a Linuxem. Konfigurace, které se odchylují o požadované konfigurace, je možné identifikovat nebo automaticky opravit. Tento rychlý start prochází jednotlivé kroky k připojení virtuálního počítače s Linuxem a nasazení sady LAMP s využitím DSC.
 
@@ -30,7 +30,7 @@ K dokončení tohoto rychlého startu je potřeba:
 * Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](automation-sec-configure-azure-runas-account.md).
 * Virtuální počítač Azure Resource Manageru (ne Classic) se systémem Red Hat Enterprise Linux, CentOS nebo Oracle Linux. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření prvního virtuálního počítače s Linuxem na webu Azure Portal](../virtual-machines/linux/quick-create-portal.md).
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k Azure na adrese https://portal.azure.com.
 
 ## <a name="onboard-a-virtual-machine"></a>Připojení virtuálního počítače
@@ -108,7 +108,7 @@ Import konfigurace:
 
 ## <a name="compile-a-configuration"></a>Kompilace konfigurace
 
-Konfigurace DSC se musí před přiřazením k uzlu zkompilovat do konfigurace uzlu (dokument MOF). Kompilace ověří konfiguraci a umožňuje zadat hodnoty parametrů. Další informace o kompilaci konfigurace najdete v tématu: [Kompilace konfigurací ve službě Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
+Konfigurace DSC se musí před přiřazením k uzlu zkompilovat do konfigurace uzlu (dokument MOF). Kompilace ověří konfiguraci a umožňuje zadat hodnoty parametrů. Další informace o kompilaci konfigurace najdete v těchto tématech: [Kompilace konfigurací v Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
 
 Kompilace konfigurace:
 
@@ -144,5 +144,5 @@ V rámci tohoto rychlého startu jste připojili virtuální počítač s Linuxe
 
 * Další informace o konfiguraci požadovaného stavu PowerShellu najdete v tématu [Přehled konfigurace požadovaného stavu PowerShellu](https://docs.microsoft.com/powershell/dsc/overview).
 * Další informace o správě Automation DSC z PowerShellu najdete v tématu [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/).
-* Informace o přesměrování sestav DSC do protokolů Azure Monitor pro generování sestav a upozorňování najdete v tématu [přesměrování sestav DSC do Azure monitoru protokoly](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
+* Informace o předávání sestav DSC do Azure Monitor protokolů pro vytváření sestav a upozorňování najdete v tématu [předávání sestav DSC do protokolů Azure monitor](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) . 
 

@@ -3,20 +3,20 @@ title: Kurz návrhu Unity na akustické projekty
 titlesuffix: Azure Cognitive Services
 description: Tento kurz popisuje pracovní postup návrhu pro akustické projekty v Unity.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f9ff4225e7e855ed666d3554631015b8ce51df37
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: fd00e4105ce4edae9d014df2a83c5ae3aaf778da
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706593"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854268"
 ---
 # <a name="project-acoustics-unity-design-tutorial"></a>Kurz návrhu Unity na akustické projekty
 Tento kurz popisuje nástroje pro návrh a pracovní postup pro akustické projekty v Unity.
@@ -36,7 +36,7 @@ Akustické zdroje projektu používají ke zpracování vašich zdrojů běžné
 Akustické a projektové zdroje poskytují řadu ovládacích prvků návrhu, které jsou specifické pro zdroj. To vám umožní ovládat směs na scéně tím, že zvýrazníte některé zdroje a zvýrazníte jiné.
 
 ### <a name="adjust-distance-based-attenuation"></a>Úprava zeslabení na základě vzdálenosti
-Zvukový procesor, který je poskytováný modulem plug- **in Unity spatializer** , dodržuje odkládání na dálku, které jsou součástí editoru Unity. Ovládací prvky pro odkládání na dálku jsou součástí **zdrojové zvukové** komponenty, která se nachází na panelu inspektora zvukových zdrojů, v části **Nastavení 3D zvuku**:
+Zvukový procesor, který je poskytováný modulem plug-in Unity spatializer, dodržuje odkládání na dálku, které jsou součástí editoru Unity. Ovládací prvky pro odkládání na dálku jsou součástí **zdrojové zvukové** komponenty, která se nachází na panelu inspektora zvukových zdrojů, v části **Nastavení 3D zvuku**:
 
 ![Snímek obrazovky s panelem možností pro zeslabení vzdálenosti Unity](media/distance-attenuation.png)
 

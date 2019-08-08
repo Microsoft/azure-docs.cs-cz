@@ -1,20 +1,20 @@
 ---
 title: Přehled Azure Blueprints
-description: Zjistěte, jak službu plány Azure umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
+description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 5f403ee7d2bf4a0730ceaa9b5a95b3e7b11f3695
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: be7e3043172f988a429bbf02dec08bfbbc1a70b7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428779"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848441"
 ---
-# <a name="overview-of-the-azure-blueprints-service"></a>Přehled služby Azure podrobné plány
+# <a name="overview-of-the-azure-blueprints-service"></a>Přehled služby Azure modrotisky
 
 Stejně jako technický nákres či podrobný plán (anglicky „blueprint“) umožňuje technikovi nebo architektovi načrtnout parametry návrhu projektu, služba Azure Blueprints umožňuje cloudovým architektům a centrálním oddělením IT definovat opakovatelnou sadu prostředků Azure, která implementuje a dodržuje standardy, vzory a požadavky organizace. Azure Blueprints vývojářským týmům umožňuje rychle vytvářet nová prostředí s důvěrou, že je vytvářejí v souladu s předpisy organizace, a s využitím sady předdefinovaných komponent – třeba síťových – ke zrychlení vývoje a distribuce.
 
@@ -46,22 +46,22 @@ Podrobný plán je balíček nebo kontejner pro sestavování sad standardů, vz
 
 Zahrnutí zásad do podrobného plánu umožňuje vytvořit správný vzor nebo návrh při přiřazování podrobného plánu. Zahrnutí zásad zajišťuje, že je možné provést jenom schválené nebo očekáváné změny prostředí, aby se zajistila ochrana trvalého dodržování záměru podrobného plánu.
 
-Zásada může být zahrnut jako jeden z mnoha _artefakty_ v definici podrobného plánu. Podrobné plány podporují také používání parametrů se zásadami a iniciativami.
+V definici podrobného plánu může být zásada obsažena jako jeden z mnoha _artefaktů_ . Podrobné plány podporují také používání parametrů se zásadami a iniciativami.
 
 ## <a name="blueprint-definition"></a>Definice podrobného plánu
 
 Podrobný plán se skládá z _artefaktů_. Podrobné plány aktuálně jako artefakty podporují tyto prostředky:
 
-|Prostředek  | Možnosti hierarchie| Popis  |
+|Resource  | Možnosti hierarchie| Popis  |
 |---------|---------|---------|
-|Skupiny prostředků | Předplatné | Vytvořte novou skupinu prostředků pro použití jinými artefakty v rámci podrobného plánu.  Tyto zástupné skupiny prostředků vám umožní uspořádat prostředky přesně tak, jak je chcete mít strukturované, a poskytují omezovač oboru pro zahrnuté artefakty zásad a přiřazení rolí a šablony Azure Resource Manageru. |
+|Skupiny prostředků | Subscription | Vytvořte novou skupinu prostředků pro použití jinými artefakty v rámci podrobného plánu.  Tyto zástupné skupiny prostředků vám umožní uspořádat prostředky přesně tak, jak je chcete mít strukturované, a poskytují omezovač oboru pro zahrnuté artefakty zásad a přiřazení rolí a šablony Azure Resource Manageru. |
 |Šablona Azure Resource Manageru | Předplatné, skupina prostředků | Šablony slouží k vytváření složitých prostředí. Příklady prostředí: farma SharePointu, konfigurace stavu Azure Automation nebo pracovní prostor služby Log Analytics. |
-|Přiřazení zásad | Předplatné, skupina prostředků | Umožňuje přiřazení zásady nebo iniciativy k předplatnému, ke kterému je podrobný plán přiřazený. Zásady nebo iniciativa musí být v rámci oboru umístění definice podrobného plánu. Pokud zásady nebo iniciativa obsahuje parametry, tyto parametry se přiřadí při vytvoření podrobného plánu nebo během přiřazení podrobného plánu. |
+|Přiřazení zásady | Předplatné, skupina prostředků | Umožňuje přiřazení zásady nebo iniciativy k předplatnému, ke kterému je podrobný plán přiřazený. Zásada nebo iniciativa musí být v rozsahu umístění definice podrobného plánu. Pokud zásady nebo iniciativa obsahuje parametry, tyto parametry se přiřadí při vytvoření podrobného plánu nebo během přiřazení podrobného plánu. |
 |Přiřazení role | Předplatné, skupina prostředků | Přidejte existujícího uživatele nebo skupinu k předdefinované roli, aby se zajistilo, že k vašim prostředkům budou mít vždy správný přístup správní lidé. Přiřazení rolí se dá definovat pro celé předplatné nebo vnořit do konkrétní skupiny prostředků, která je součástí podrobného plánu. |
 
-### <a name="blueprint-definition-locations"></a>Umístění definice podrobného plánu
+### <a name="blueprint-definition-locations"></a>Umístění definic podrobného plánu
 
-Při vytváření definice podrobného plánu definujete, kam se podrobný plán uloží. Podrobné plány. je možné ukládat do [skupiny pro správu](../management-groups/overview.md) nebo předplatné, které máte **Přispěvatel** přístup k. Pokud je umístění skupiny pro správu, podrobný plán je možné přiřadit na všechny podřízené předplatné z této skupiny pro správu.
+Při vytváření definice podrobného plánu definujete, kam se podrobný plán uloží. Plány lze uložit do [skupiny pro správu](../management-groups/overview.md) nebo předplatného, ke kterému máte přístup přispěvatele. Pokud se jedná o skupinu pro správu, je plán k dispozici pro přiřazení k libovolnému podřízenému předplatnému této skupiny pro správu.
 
 ### <a name="blueprint-parameters"></a>Parametry podrobného plánu
 
@@ -79,7 +79,7 @@ Při prvním vytvoření podrobného plánu se přepokládá, že je v režimu *
 
 ## <a name="blueprint-assignment"></a>Přiřazení podrobného plánu
 
-Každá **publikovaná** **verze** podrobného plánu se může přiřadit k existujícímu předplatnému. Na portálu bude jako výchozí **verze** podrobného plánu ta, která se **publikovala** jako poslední. Pokud existují parametry artefaktu (nebo parametry podrobného plánu), pak se parametry definují během přiřazení.
+K existujícímu předplatnému se dá přiřadit každá **publikovaná** **verze** podrobného plánu (s maximální délkou 90 znaků). Na portálu bude jako výchozí **verze** podrobného plánu ta, která se **publikovala** jako poslední. Pokud existují parametry artefaktu (nebo parametry podrobného plánu), pak se parametry definují během přiřazení.
 
 ## <a name="permissions-in-azure-blueprints"></a>Oprávnění v Azure Blueprints
 
@@ -96,7 +96,7 @@ Pokud chcete podrobné plány odstranit, váš účet potřebuje tato oprávněn
 - `Microsoft.Blueprint/blueprints/versions/delete`
 
 > [!NOTE]
-> Oprávnění definice podrobného plánu musí být povolen nebo zděděná na skupiny nebo předplatného oborem správy kde je uložen.
+> Oprávnění definice podrobného plánu musí být udělená nebo zděděná ve skupině pro správu nebo v oboru předplatného, kde je uložená.
 
 Pokud chcete podrobný plán přiřadit nebo zrušit jeho přiřazení, váš účet potřebuje tato oprávnění:
 
@@ -106,18 +106,29 @@ Pokud chcete podrobný plán přiřadit nebo zrušit jeho přiřazení, váš ú
 > [!NOTE]
 > Protože se přiřazení podrobného plánu vytvářejí v předplatném, musí se oprávnění pro přiřazení a zrušení přiřazení podrobného plánu udělit v oboru předplatného nebo do oboru předplatného zdědit.
 
-Všechny výše uvedené oprávnění jsou součástí **vlastníka** role. **Přispěvatel** role má vytvořit podrobný plán a odstranit podrobný plán oprávnění, ale nemá oprávnění k přiřazení podrobného plánu. Pokud tyto předdefinované role nevyhovují vašim požadavkům na zabezpečení, zvažte vytvoření [vlastní role](../../role-based-access-control/custom-roles.md).
+Všechna výše uvedená oprávnění jsou zahrnutá v roli **vlastníka** . Role **přispěvatele** má oprávnění CREATE detailal a DELETE podrobného plánu, ale nemá oprávnění k přiřazení podrobného plánu. Pokud tyto předdefinované role nevyhovují vašim požadavkům na zabezpečení, zvažte vytvoření [vlastní role](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Pokud systém přiřadil pomocí spravované identity, vyžaduje instančním objektu pro plány Azure **vlastníka** role na přiřazené předplatné, chcete-li povolit nasazení. Pokud používáte portál, tato role se pro nasazení uděluje a ruší automaticky. Pokud používáte rozhraní REST API, tato role se musí udělit ručně, ale po dokončení nasazení se zruší automaticky. Pokud uživatel přiřazenou pomocí spravované identity, jenom na uživatele, vytváří se přiřazení podrobného plánu musí **vlastníka** oprávnění.
+> Pokud používáte spravovanou identitu přiřazenou systémem, musí instanční objekt pro plány Azure pro povolení nasazení vyžadovat roli **vlastníka** v přiřazeném předplatném. Pokud používáte portál, tato role se pro nasazení uděluje a ruší automaticky. Pokud používáte rozhraní REST API, tato role se musí udělit ručně, ale po dokončení nasazení se zruší automaticky. Pokud používáte spravovanou identitu přiřazenou uživatelem, musí oprávnění **vlastníka** vytvořit jenom uživatel vytvářející přiřazení podrobného plánu.
 
-## <a name="video-overview"></a>Video s přehledem
+## <a name="naming-limits"></a>Omezení pojmenování
 
-Následující přehled plány Azure je z Azure Friday. Videa ke stažení najdete na webu [Azure Fridays – základní informace o Azure plány](https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints) na webu Channel 9.
+Níže je seznam omezení, která existují pro určitá pole:
+
+|Object|Pole|Povolené znaky|Max. Délka|
+|-|-|-|-|
+|Podrobný plán|Name|písmena, číslice, spojovníky a tečky|48|
+|Podrobný plán|Version|písmena, číslice, spojovníky a tečky|20|
+|Přiřazení podrobného plánu|Name|písmena, číslice, spojovníky a tečky|90|
+|Artefakt podrobného plánu|Name|písmena, číslice, spojovníky a tečky|48|
+
+## <a name="video-overview"></a>Video – přehled
+
+Následující přehled Azure modrotisky je od Azure pátek. Pro stažení videa přejděte na [Azure pátek – Přehled plánů Azure](https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints) na webu Channel 9.
 
 > [!VIDEO https://www.youtube.com/embed/cQ9D-d6KkMY]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření podrobného plánu – portál](create-blueprint-portal.md)
 - [Vytvoření podrobného plánu – REST API](create-blueprint-rest-api.md)

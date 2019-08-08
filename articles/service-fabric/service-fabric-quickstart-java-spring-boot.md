@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f7cf3f4cc0ceba89c031f5c36e90bbd6ef3dd20a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 8bb25fc373ff0816154795d2ef25a44066c1acc1
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327162"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847764"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace s pružinou spuštění z Java do Service Fabric
 
@@ -149,7 +149,7 @@ V této fázi jste vytvořili aplikaci Service Fabric pro ukázku Spring Boot Ge
     
     ![Místní cluster v pořádku](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
-1. Přejděte do složky `gs-spring-boot/SpringServiceFabric`.
+1. Otevřít `gs-spring-boot/SpringServiceFabric` složky.
 1. Spusťte následující příkaz pro připojení k místnímu clusteru.
 
     ```bash
@@ -176,13 +176,13 @@ Service Fabric Explorer běží na všech clusterech Service Fabric a je příst
 Pokud chcete škálovat webovou front-end službu, postupujte následovně:
 
 1. Otevřete ve vašem clusteru Service Fabric Explorer – například `http://localhost:19080`.
-1. Ve stromovém zobrazení klikněte na tři tečky vedle uzlu **fabric:/SpringServiceFabric/SpringGettingStarted** a zvolte **Škálovat službu**.
+1. V ovládacím prvku TreeView vyberte tři tečky ( **...** ) vedle uzlu **Fabric:/SpringServiceFabric/SpringGettingStarted** a vyberte **škálovat službu**.
 
     ![Service Fabric Explorer – škálování služby](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
 
     Nyní můžete škálovat počet instancí služby.
 
-1. Změňte počet na **3** a klikněte na **Škálovat službu**.
+1. Změňte číslo na **3** a vyberte **škálovat službu**.
 
     Jako alternativu ke škálování služby pomocí příkazového řádku můžete použít následující postup.
 
@@ -194,7 +194,7 @@ Pokud chcete škálovat webovou front-end službu, postupujte následovně:
     sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
-1. Ve stromovém zobrazení klikněte na uzel **fabric:/SpringServiceFabric/SpringGettingStarted** a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID).
+1. Ve stromovém zobrazení vyberte uzel **Fabric:/SpringServiceFabric/SpringGettingStarted** a rozbalte uzel oddílu (REPREZENTOVANý identifikátorem GUID).
 
     ![Service Fabric Explorer – dokončení škálování služby](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
 
@@ -207,7 +207,7 @@ Touto jednoduchou úlohou správy jste zdvojnásobili prostředky, které má fr
 Jako ukázku převzetí služeb při selhání simulujeme restartování uzlu pomocí Service Fabric Exploreru. Zkontrolujte, že je spuštěná jenom jedna instance vaší služby.
 
 1. Otevřete ve vašem clusteru Service Fabric Explorer – například `http://localhost:19080`.
-1. Klikněte na tři tečky vedle uzlu, na kterém je spuštěná instance vaší služby, a restartujte uzel.
+1. Vyberte tři tečky ( **...** ) vedle uzlu, na kterém je spuštěná instance služby, a restartujte uzel.
 
     ![Service Fabric Explorer – restartování uzlu](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
 1. Instance vaší služby se přesune na jiný uzel a vaše aplikace nebude mít žádný výpadek.

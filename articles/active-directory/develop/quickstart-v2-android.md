@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/17/2019
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c22d93d39f086aaa6e2f103d3becbe9376b49b0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 88a0f16a01a7e421558b5cea99daee6944adae11
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324550"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853048"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlaste se uživatelům a zavolejte rozhraní API pro Microsoft Graph z aplikace pro Android.
 
@@ -45,7 +45,7 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 > * Zásah [Možnost 2: Registrace a ruční konfigurace vaší aplikace a ukázky kódu](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Zaregistrujte a automaticky nakonfigurujte svoji aplikaci a Stáhněte si ukázku kódu.
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
 > K registraci aplikace
 > 1. Přejít na nové podokno [Azure Portal-registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs) .
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
@@ -53,7 +53,7 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace vaší aplikace a ukázky kódu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte svoji aplikaci.
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
 > 1. Přejděte na stránku [Registrace aplikací](https://aka.ms/MobileAppReg) Microsoft Identity Platform for Developers.
@@ -87,7 +87,7 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Extrahujte a otevřete projekt v nástroji Android Studio.
-> 1. V **aplikaci** > **Src** > **hlavní** primární zdroj RAW otevřete auth_config. JSON. >  > 
+> 1. V **aplikaci** > **Src** > **hlavní**primární zdroj RAW otevřete auth_config. JSON. >  > 
 > 1. Upravte **auth_config. JSON** a nahraďte ho řetězcem json z Azure Portal. Pokud místo toho chcete změny provést ručně:
 >    ```javascript
 >    {
@@ -236,7 +236,7 @@ Aplikace by neměly vyžadovat, aby se uživatelé přihlásili pokaždé, když
 > | `getAccounts(...)` | Obsahuje účet, ke kterému se pokoušíte získat tokeny pro tichou instalaci. |
 > | `getAuthSilentCallback()` | Zpětné volání, když se ovládací prvek předá zpět do aplikace po ověření |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Postup vytvoření aplikace použité v tomto rychlém startu
 

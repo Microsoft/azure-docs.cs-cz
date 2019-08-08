@@ -1,6 +1,6 @@
 ---
-title: Ověřování a autorizaci uživatelů end až do konce v Linuxu – Azure App Service | Dokumentace Microsoftu
-description: Zjistěte, jak zabezpečit aplikace App Service spuštěné v Linuxu, včetně přístupu ke vzdáleným rozhraním API pomocí služby App Service ověřování a autorizace.
+title: Ověřování a autorizace uživatelů koncová na platformě Linux-Azure App Service | Microsoft Docs
+description: Naučte se používat ověřování a autorizaci App Service k zabezpečení aplikací App Service běžících na Linux, včetně přístupu ke vzdáleným rozhraním API.
 keywords: app service, azure app service, authN, authZ, secure, security, multi-tiered, azure active directory, azure ad
 services: app-service\web
 documentationcenter: dotnet
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2c173da9bfb60f74b90a17f4f3c5ea6f930ca528
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5ea16b1f92080f74afa05dcf8137c9b7e0ef4e3d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705833"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851202"
 ---
-# <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service v Linuxu
+# <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Kurz: Ověřování a autorizace uživatelů na konci Azure App Service v systému Linux
 
 [App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Kromě toho App Service obsahuje integrovanou podporu [ověřování a autorizace uživatelů](../overview-authentication-authorization.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json). V tomto kurzu se dozvíte, jak zabezpečit své aplikace pomocí s využitím ověřování a autorizace pomocí služby App Service. V kurzu se používá aplikace ASP.NET Core s front-endem v Angular.js, ta ale slouží pouze jako příklad. Ověřování a autorizace pomocí služby App Service podporují moduly runtime všech jazyků a v tomto kurzu můžete zjistit, jak je použít ve vlastním upřednostňovaném jazyce.
 
@@ -53,7 +53,7 @@ Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windo
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 * [Nainstalovat Git](https://git-scm.com/).
 * [Nainstalovat .NET Core 2.0](https://www.microsoft.com/net/core/).
@@ -86,7 +86,7 @@ V tomto kroku nasadíte projekt do dvou aplikací App Service. Jedna je front-en
 
 ### <a name="create-azure-resources"></a>Vytvoření prostředků Azure
 
-Ve službě Cloud Shell spuštěním následujících příkazů vytvořte dvě aplikace služby App Service. Nahraďte _&lt;front\_end\_app\_name>_ a _&lt;back\_end\_app\_name>_ dvěma globálně jedinečnými názvy aplikací (platné znaky jsou `a-z`, `0-9` a `-`). Další informace o jednotlivých příkazech najdete v tématu [vytvoření aplikace .NET Core ve službě App Service v Linuxu](quickstart-dotnetcore.md).
+V Cloud Shell spuštěním následujících příkazů vytvořte dvě aplikace App Service. Nahraďte _&lt;front\_end\_app\_name>_ a _&lt;back\_end\_app\_name>_ dvěma globálně jedinečnými názvy aplikací (platné znaky jsou `a-z`, `0-9` a `-`). Další informace o jednotlivých příkazech najdete v tématu [Vytvoření aplikace .NET Core v App Service v systému Linux](quickstart-dotnetcore.md).
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
@@ -101,7 +101,7 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="configure-cors"></a>Konfigurace CORS
 
-Tento krok nesouvisí s ověřováním a autorizací. Bude však potřebovat ho provést později k [zavolání back-endového rozhraní API z front-endového kódu v prohlížeči](#call-api-securely-from-browser-code), aby váš prohlížeč povoloval volání rozhraní API mezi doménami z vaší aplikace Angular.js. App Service v Linuxu teď podporuje funkce CORS, jako jsou [jeho protějšek Windows nemá](../app-service-web-tutorial-rest-api.md#add-cors-functionality).
+Tento krok nesouvisí s ověřováním a autorizací. Bude však potřebovat ho provést později k [zavolání back-endového rozhraní API z front-endového kódu v prohlížeči](#call-api-securely-from-browser-code), aby váš prohlížeč povoloval volání rozhraní API mezi doménami z vaší aplikace Angular.js. App Service v systému Linux teď podporuje funkce CORS, jako je [jeho protějšek Windows](../app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
 V místním úložišti otevřete soubor _Startup.cs_. Do metody `ConfigureServices(IServiceCollection services)` přidejte následující řádek kódu:
 
@@ -143,7 +143,7 @@ git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
 git push frontend master
 ```
 
-### <a name="browse-to-the-azure-apps"></a>Přejděte do aplikace Azure
+### <a name="browse-to-the-azure-apps"></a>Přejít k aplikacím Azure
 
 V prohlížeči přejděte na následující adresy URL, kde se zobrazí dvě funkční aplikace.
 
@@ -242,7 +242,7 @@ Jako zprostředkovatele identity použijete Azure Active Directory. Další info
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Povolení ověřování a autorizace pro back-endovou aplikaci
 
-V [webu Azure portal](https://portal.azure.com), otevřete stránku správy vaší back endové aplikace klikněte v levé nabídce na: **Skupiny prostředků** > **myAuthResourceGroup** >  _\<zpět\_end\_aplikace\_name >_ .
+V [Azure Portal](https://portal.azure.com)otevřete stránku správy back-end aplikace kliknutím na nabídku vlevo:Skupiny > prostředků**myAuthResourceGroup**_názevaplikaceback-end\_>.\_\_\<_  > 
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/portal-navigate-back-end.png)
 
@@ -303,7 +303,7 @@ Přihlaste se k [Azure Resource Exploreru](https://resources.azure.com). V horn�
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/resources-enable-write.png)
 
-V levém prohlížeči klikněte postupně na **subscriptions** (předplatná) > ** _&lt;vaše\_předplatné>_**  > **resourceGroups** (skupiny prostředků) > **myAuthResourceGroup** > **providers** (zprostředkovatelé) > **Microsoft.Web** > **sites** (weby) >  ** _\<název\_front\_endové\_aplikace>_**  > **config** (konfigurace) > **authsettings** (nastavení ověřování).
+V levém prohlížeči klikněte postupně na **subscriptions** (předplatná) >  **_&lt;vaše\_předplatné>_**  > **resourceGroups** (skupiny prostředků) > **myAuthResourceGroup** > **providers** (zprostředkovatelé) > **Microsoft.Web** > **sites** (weby) >  **_\<název\_front\_endové\_aplikace>_**  > **config** (konfigurace) > **authsettings** (nastavení ověřování).
 
 V zobrazení **authsettings** (nastavení ověřování) klikněte na **Edit** (Upravit). Nastavte `additionalLoginParams` na následující řetězec JSON s použitím ID aplikace, které jste zkopírovali. 
 
@@ -337,7 +337,7 @@ public override void OnActionExecuting(ActionExecutingContext context)
 
     _client.DefaultRequestHeaders.Accept.Clear();
     _client.DefaultRequestHeaders.Authorization =
-        new AuthenticationHeaderValue("Bearer", Request.Headers["x-ms-token-aad-access_token"]);
+        new AuthenticationHeaderValue("Bearer", Request.Headers["x-ms-token-aad-access-token"]);
 }
 ```
 
@@ -453,7 +453,7 @@ Naučili jste se:
 > * Použití přístupových tokenů z kódu serveru
 > * Použití přístupových tokenů z klientského kódu (v prohlížeči)
 
-Přejděte k dalšímu kurzu, kde se naučíte, jak namapovat vlastní název DNS do vaší aplikace.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak namapovat vlastní název DNS na svou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS do služby Azure App Service](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+> [Mapování existujícího vlastního názvu DNS na Azure App Service](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

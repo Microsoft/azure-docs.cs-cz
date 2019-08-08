@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 3610a5be356f306e4f92ea35d399a888f568d6d3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: daaf7db2ac75cec6cb5a305e994a7cbe558c83fc
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326185"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854679"
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Rychlý start: Vytvoření aplikace rozhraní API pro tabulky pomocí jazyka Java a Azure Cosmos DB
 
@@ -84,7 +84,7 @@ Teď naklonujeme aplikaci Table z GitHubu, nastavíme připojovací řetězec a
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Tím aplikaci umožníte komunikovat s hostovanou databází. 
 
-1. Na webu [Azure Portal](https://portal.azure.com/) klikněte na **Připojovací řetězec**. 
+1. Na portálu [Azure Portal](https://portal.azure.com/) vyberte **Připojovací řetězec**. 
 
    ![Zobrazení a zkopírování požadovaných informací o připojovacím řetězci v podokně Připojovací řetězec](./media/create-table-java/connection-string.png)
 

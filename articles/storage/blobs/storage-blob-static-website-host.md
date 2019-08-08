@@ -1,24 +1,23 @@
 ---
-title: 'Kurz: Hostování statického webu ve službě Blob storage – Azure Storage'
+title: 'Kurz: Hostování statického webu v úložišti objektů blob – Azure Storage'
 description: Zjistěte, jak nakonfigurovat účet úložiště pro hostování statického webu a statického webu nasadit do služby Azure Storage.
-services: storage
 author: normesta
 ms.service: storage
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: normesta
-ms.reviewer: seguler
-ms.custom: seodec18
-ms.openlocfilehash: e3f2dd74d00b36016549cd33d76b866de241d977
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.reviewer: dineshm
+ms.openlocfilehash: 4cc38b952e773002e0b5f6b2311187f8d3d46400
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148485"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855393"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
-# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Kurz: Hostování statického webu ve službě Blob Storage
+# <a name="tutorial-host-a-static-website-on-blob-storage"></a>Kurz: Hostování statického webu na Blob Storage
 
 Tento kurz je první částí série. V ní se dozvíte, jak k vytvoření a nasazení statického webu do služby Azure Storage. Jakmile budete hotovi, budete mít statický web, který mohou uživatelé veřejně. 
 
@@ -79,7 +78,7 @@ V dalším kroku vytvořit webovou stránku Hello World pomocí Visual Studio Co
     ```
 
 1. Vytvořit výchozí chybový soubor a pojmenujte ho *404. html*.
-1. Otevřít *404. html* v editoru vložte následující text do souboru a uložte ho:
+1. V editoru otevřete soubor *404. html* a vložte do něj následující text a uložte ho:
 
     ```
     <h1>404</h1>

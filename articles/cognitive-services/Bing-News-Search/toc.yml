@@ -47,7 +47,8 @@
 - name: Návody
   items:
     - name: Zpracování zvýrazňování nalezených položek
-      href: hit-highlighting.md
+      href: ../Bing-Web-Search/hit-highlighting.md
+      maintainContext: true
     - name: Stránkování novinek
       href: paging-news.md
     - name: Změna velikosti a oříznutí miniatur

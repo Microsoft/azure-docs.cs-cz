@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: a0358859d6f806a94c529bae2eb6fa9d1ab82963
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 284dcd99dc77d7ec0fb5cb214d49b6fcf93a6aef
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884794"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854490"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
 
@@ -62,7 +62,7 @@ V této části vygenerujete instanční objekt Azure a dva konfigurační soubo
 
 6. Vytvořte nový soubor, který bude obsahovat hodnoty proměnných Terraformu. Běžně se soubor proměnných Terraformu pojmenovává `terraform.tfvars`, protože Terraform soubor pojmenovaný `terraform.tfvars` (nebo s tvarem `*.auto.tfvars`) načte automaticky, pokud se nachází v aktuálním adresáři. 
 
-7. Do souboru proměnných zkopírujte následující kód. Nezapomeňte nahradit zástupné symboly následujícím způsobem: Pro `subscription_id`, použijte ID předplatného Azure, který jste zadali při spuštění `az account set`. U `tenant_id` použijte hodnotu `tenant` vrácenou příkazem `az ad sp create-for-rbac`. U `client_id` použijte hodnotu `appId` vrácenou příkazem `az ad sp create-for-rbac`. U `client_secret` použijte hodnotu `password` vrácenou příkazem `az ad sp create-for-rbac`.
+7. Do souboru proměnných zkopírujte následující kód. Zástupné symboly Nezapomeňte nahradit následujícím způsobem: V případě použijte ID předplatného Azure, které jste zadali při spuštění `az account set`. `subscription_id` U `tenant_id` použijte hodnotu `tenant` vrácenou příkazem `az ad sp create-for-rbac`. U `client_id` použijte hodnotu `appId` vrácenou příkazem `az ad sp create-for-rbac`. U `client_secret` použijte hodnotu `password` vrácenou příkazem `az ad sp create-for-rbac`.
 
    ```tf
    subscription_id = "<azure-subscription-id>"
@@ -103,7 +103,7 @@ V této části vytvoříte soubor obsahující definice prostředků pro vaši 
     name                         = "publicIPForLB"
     location                     = "${azurerm_resource_group.test.location}"
     resource_group_name          = "${azurerm_resource_group.test.name}"
-    public_ip_address_allocation = "static"
+    allocation_method            = "Static"
    }
 
    resource "azurerm_lb" "test" {
@@ -275,7 +275,7 @@ Pokud chcete použít dříve uložený plán provádění, spusťte tento pří
 
 ![Použití plánu provádění Terraformu](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Projděte si seznam [modulů Terraformu pro Azure](https://registry.terraform.io/modules/Azure).
 - Vytvořte [pomocí Terraformu škálovací sadu virtuálních počítačů](terraform-create-vm-scaleset-network-disks-hcl.md).
