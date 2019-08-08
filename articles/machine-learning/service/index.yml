@@ -45,7 +45,7 @@ sections:
         items:
           - html: <a href="tutorial-1st-experiment-sdk-setup">Nastavení prostředí a trénování prvního experimentu ML</a>
           - html: <a href="tutorial-train-models-with-aml">Trénování a nasazování modelů klasifikace obrázků</a>
-          - html: <a href="tutorial-data-prep">Příprava dat a automatizovaného ML k predikci ceny jízdy taxíkem</b></a>
+          - html: <a href="tutorial-data-prep">Příprava dat a využití automatizovaného ML k predikci ceny jízdy taxíkem</b></a>
   - title: Ukázky
     items:
       - type: paragraph

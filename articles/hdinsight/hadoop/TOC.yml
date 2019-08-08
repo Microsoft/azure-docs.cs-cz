@@ -56,6 +56,8 @@
       maintainContext: true
     - name: Řešení potíží
       items:
+        - name: Nedostatek místa na disku
+          href: ./hdinsight-troubleshoot-out-disk-space.md
         - name: Provizorní uzamčení – CPU
           href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
         - name: InvalidNetworkConfigurationErrorCode – vytvoření clusteru se nepovedlo
@@ -72,6 +74,8 @@
           href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
         - name: Problémy s prezenčním signálem Apache Ambari
           href: ./apache-ambari-troubleshoot-heartbeat-issues.md
+        - name: Apache Ambari zobrazuje vypnuté hostitele a služby
+          href: ./apache-ambari-troubleshoot-down-hosts-services.md
 - name: Postup
   items:
     - name: Použití sandboxu Apache Hadoopu

@@ -24,10 +24,10 @@
       maintainContext: true
     - name: Řešení potíží
       items:
-        - name: Výjimka OutOfMemoryError
-          items:
-            - name: Překročení limitu režie GC
-              href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Překročení limitu režie GC
+          href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Zobrazení Apache Ambari Tez se načítá pomalu
+          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: V zobrazení Apache Hivu se nezobrazuje chybová zpráva
           href: ./interactive-query-troubleshoot-error-message-hive-view.md
         - name: Nepřístupné zobrazení Apache Hivu
