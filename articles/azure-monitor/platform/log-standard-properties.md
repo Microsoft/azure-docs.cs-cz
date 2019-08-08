@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/18/2019
 ms.author: bwren
 ms.openlocfilehash: b9a4a0a18e120a2843e23d44b03c0fe53b0d84fc
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 08/08/2019
 ms.locfileid: "68370676"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardní vlastnosti v protokolech Azure Monitor
@@ -51,7 +51,7 @@ exceptions
 | sort by timestamp asc 
 ```
 
-## <a name="timereceived"></a>\_TimeReceived
+## <a name="_timereceived"></a>\_TimeReceived
 Vlastnost TimeReceived obsahuje datum a čas, kdy byl záznam přijat bodem příjmu Azure monitor v cloudu Azure.  **\_** To může být užitečné k identifikaci potíží s latencí mezi zdrojem dat a cloudem. Příkladem může být problém se sítí, který způsobuje zpoždění přenášená daty z agenta. Další podrobnosti najdete [v tématu čas příjmu dat protokolu v Azure monitor](data-ingestion-time.md) .
 
 Následující dotaz poskytuje průměrnou latenci za hodinu u záznamů událostí od agenta. Patří sem čas od agenta do cloudu a celková doba, po kterou bude záznam pro dotazy protokolu dostupný.
@@ -77,11 +77,11 @@ search *
 | summarize count() by Type
 
 ```
-## <a name="itemid"></a>\_ItemId
+## <a name="_itemid"></a>\_ItemId
 Vlastnost ItemId obsahuje jedinečný identifikátor záznamu.  **\_**
 
 
-## <a name="resourceid"></a>\_Prostředku
+## <a name="_resourceid"></a>\_Prostředku
 Vlastnost ResourceID obsahuje jedinečný identifikátor prostředku, ke kterému je přiřazen záznam.  **\_** Získáte tak standardní vlastnost, která se má použít k určení oboru dotazu jenom na záznamy z konkrétního prostředku, nebo pro spojování souvisejících dat napříč více tabulkami.
 
 U prostředků Azure je hodnotou **_ResourceId** [Adresa URL pro ID prostředku Azure](../../azure-resource-manager/resource-group-template-functions-resource.md). Tato vlastnost je aktuálně omezená na prostředky Azure, ale bude rozšířena na prostředky mimo Azure, jako jsou například místní počítače.
@@ -127,8 +127,8 @@ union withsource = tt *
 
 Tyto `union withsource = tt *` dotazy můžete použít zřídka, protože kontroly napříč datovými typy jsou náročné na spouštění.
 
-## <a name="isbillable"></a>\_Fakturovatelnost
-Vlastnost disfakturovatelné určuje, zda jsou příjemovaná data fakturovatelná.  **\_** Data, která  **\_se rovnají hodnotě** _false_ , se shromažďují zdarma a neúčtují se za váš účet Azure.
+## <a name="_isbillable"></a>\_Fakturovatelnost
+Vlastnost disfakturovatelné určuje, zda jsou příjemovaná data fakturovatelná.  **\_** Data,  **\_** která se rovnají hodnotě _false_ , se shromažďují zdarma a neúčtují se za váš účet Azure.
 
 ### <a name="examples"></a>Příklady
 Chcete-li získat seznam počítačů, které odesílají Fakturovatelné datové typy, použijte následující dotaz:
@@ -154,7 +154,7 @@ union withsource = tt *
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
 ```
 
-## <a name="billedsize"></a>\_BilledSize
+## <a name="_billedsize"></a>\_BilledSize
 Vlastnost BilledSize určuje velikost (v bajtech) dat, která se budou fakturovat vašemu účtu Azure, pokud  **\_** je hodnota Fakturovatelné.  **\_**
 
 
