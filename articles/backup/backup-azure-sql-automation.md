@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí Azure Backup a PowerShellu'
+title: Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu – Azure Backup
 description: Zálohujte a obnovte databáze SQL ve virtuálních počítačích Azure pomocí Azure Backup a PowerShellu.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: b31043ad445f0ac1459772fe630358fc38eaa9c2
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
-ms.translationtype: HT
+ms.openlocfilehash: 6e1d1852660b598b8d780f3240edb3468010fb58
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689058"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735487"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
 
@@ -263,7 +263,7 @@ Azure Backup může obnovit databáze SQL Server, které běží na virtuálníc
 1. Obnovení na konkrétní datum nebo čas (do druhé) pomocí záloh protokolu transakcí. Azure Backup automaticky určí odpovídající úplné rozdílové zálohování a řetěz záloh protokolů, které jsou nutné k obnovení na základě vybraného času.
 2. Obnovení konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-Před obnovením SQL databáze [Ověřte zmíněné](restore-sql-database-azure-vm.md#prerequisites) požadavky.
+Před obnovením SQL databáze ověřte zmíněné požadavky. [](restore-sql-database-azure-vm.md#prerequisites)
 
 Nejdřív načtěte relevantní zálohovanou databázi SQL pomocí rutiny [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS.
 

@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 07/29/2019
 ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: a57089eb2cd87b08ba647afed002d90d6f14891a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 968ae62344f99edf8eb46eb62a4cf13f300c868f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846663"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815645"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Vytváření a správa přiřazení rolí v digitálních prozdvojeních Azure
 
@@ -41,7 +41,7 @@ Následující tabulka popisuje jednotlivé atributy:
 
 | Atribut | Name | Požadováno | Typ | Popis |
 | --- | --- | --- | --- | --- |
-| RoleId | Identifikátor definice role | Ano | Řetězec | Jedinečné ID požadovaného přiřazení role Vyhledejte definice rolí a jejich identifikátor pomocí dotazu na následující tabulku rozhraní API systému nebo revize. |
+| roleId | Identifikátor definice role | Ano | Řetězec | Jedinečné ID požadovaného přiřazení role Vyhledejte definice rolí a jejich identifikátor pomocí dotazu na následující tabulku rozhraní API systému nebo revize. |
 | ID objektu | Identifikátor objektu | Ano | Řetězec | ID Azure Active Directory, ID objektu zabezpečení služby nebo název domény. K čemu přiřazení role je přiřazeno. Přiřazení role musí být formátováno podle jeho přidruženého typu. Pro objectIdType musí objectID začínat `“@”` znakem. `DomainName` |
 | objectIdType | Typ identifikátoru objektu | Ano | Řetězec | Typ použitého identifikátoru objektu. Viz článek **podporované ObjectIdTypes** níže. |
 | path | Cesta k prostoru | Ano | Řetězec | Úplná cesta pro přístup k `Space` objektu. Příklad: `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy postupujte podle principu nejnižší úrovně oprávnění. |
@@ -90,7 +90,7 @@ Login-AzAccount
 Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
 ```
 
-Uživatel s rolí správce **** může přiřadit roli správce prostoru k uživateli tím, že na adresu URL přiřadí ověřený požadavek HTTP post:
+Uživatel s rolí správce může přiřadit roli správce prostoru k uživateli tím, že na adresu URL přiřadí ověřený požadavek HTTP post:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments
@@ -180,7 +180,7 @@ Pokud chcete pro cestu získat všechna přiřazení rolí, proveďte ověřený
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| Hodnota | Nahradit hodnotou |
+| Value | Nahradit hodnotou |
 | --- | --- |
 | YOUR_PATH | Úplná cesta k prostoru |
 

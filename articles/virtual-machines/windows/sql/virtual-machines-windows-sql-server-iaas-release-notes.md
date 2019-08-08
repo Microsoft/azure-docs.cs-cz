@@ -12,18 +12,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 2/13/2019
-ms.openlocfilehash: e7dea69b507117ba8a3765b5e9bc1fad46be4c53
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.date: 08/01/2019
+ms.openlocfilehash: e656cd4d901ad9f3180963047a85cd980e56df8b
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444197"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774204"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Zpráva k vydání verze pro virtuální počítač v Azure SQL Server
 
 Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou. Tento článek shrnuje nové funkce a vylepšení v posledních verzích [SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). V tomto článku jsou uvedeny také významné aktualizace obsahu, které přímo nesouvisejí s vydáním, ale publikované ve stejném časovém rámci. Vylepšení dalších služeb Azure najdete v tématu [aktualizace služby](https://azure.microsoft.com/updates) .
 
+## <a name="july-2019"></a>Červenec 2019
+
+### <a name="documentation-improvements"></a>Vylepšení dokumentace
+
+| Dokumentace | Podrobnosti |
+| --- | --- |
+| **Přesunout virtuální počítač SQL do jiné oblasti** | Pomocí Azure Site Recovery [migrujte virtuální počítač s SQL Server z jedné oblasti do druhé](virtual-machines-windows-sql-move-different-region.md). |
+| &nbsp; | &nbsp; |
 
 ## <a name="june-2019"></a>Červeně 2019
 
@@ -63,7 +71,7 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
-| **Rozšiřování podpory pro SQL Server 2008/2008 R2** | [Podporu](virtual-machines-windows-sql-server-2008-eos-extend-support.md) SQL Server 2008 a SQL Server 2008 R2 můžete podpořit tak, *že MIGRUJETE* na virtuální počítač Azure. | 
+| **Rozšiřování podpory pro SQL Server 2008/2008 R2** | [Podporu](virtual-machines-windows-sql-server-2008-eos-extend-support.md) SQL Server 2008 a SQL Server 2008 R2 můžete podpořit tak, že migrujete na virtuální počítač Azure. | 
 | &nbsp; | &nbsp; |
 
 

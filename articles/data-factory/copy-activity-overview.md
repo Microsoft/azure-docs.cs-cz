@@ -10,28 +10,28 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 8f5a7d3f6300be100feffd23b98bd7dcd8f48148
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae8b2bb7cce545ab9c0aa0c9d4d682089cc482ab
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150878"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827478"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování ve službě Azure Data Factory
 
 ## <a name="overview"></a>Přehled
 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-data-movement-activities.md)
 > * [Aktuální verze](copy-activity-overview.md)
 
-Ve službě Azure Data Factory můžete použít aktivitu kopírování ke kopírování dat mezi datového úložiště v místním prostředí i v cloudu. Po zkopírování dat, může být dále transformují a analyzují. Aktivitu kopírování, která můžete použít také k publikování, transformace a analýza výsledků pro business intelligence (BI) a využití aplikace.
+Ve službě Azure Data Factory můžete použít aktivitu kopírování ke kopírování dat mezi datového úložiště v místním prostředí i v cloudu. Po zkopírování dat je lze dále transformovat a analyzovat pomocí jiných aktivit. Aktivitu kopírování, která můžete použít také k publikování, transformace a analýza výsledků pro business intelligence (BI) a využití aplikace.
 
 ![Pro dané aktivity kopírování](media/copy-activity-overview/copy-activity.png)
 
-Aktivita kopírování se provádí na [prostředí Integration Runtime](concepts-integration-runtime.md). Různé datové kopie scénáři můžete využít různé flavor prostředí Integration Runtime:
+Aktivita kopírování se provádí na [prostředí Integration Runtime](concepts-integration-runtime.md). U různých scénářů kopírování dat je možné využít různé typy Integration Runtime:
 
 * Při kopírování dat mezi daty ukládá, obě jsou veřejně dostupné, aktivita kopírování může zdokonalujte své schopnosti podle **prostředí Azure Integration Runtime**, což je zabezpečená, spolehlivá a škálovatelná, a [globálně dostupné](concepts-integration-runtime.md#integration-runtime-location).
 * Při kopírování dat z/do úložiště dat umístěné v místním nebo v síti pomocí řízení přístupu (například Azure Virtual Network), budete muset nastavit **integrované modulu Runtime v místním prostředí** pro kopírování dat.
@@ -54,15 +54,15 @@ Aktivitu kopírování, která prochází následující fáze pro kopírování
 
 Můžete použít aktivitu kopírování, která **kopírovat soubory jako-je** mezi dvěma souborových dat úložišti, ve kterých je efektivně zkopírují případ data bez serializaci nebo deserializaci.
 
-Aktivita kopírování také podporuje čtení a zápis do souborů v určených formátů: **Text JSON, Avro, ORC a Parquet**, kompresi a dekompresi souborů kodeky následující: **GZip, Deflate, BZip2 a ZipDeflate**. Zobrazit [podporované formáty souborů a komprese](supported-file-formats-and-compression-codecs.md) s podrobnostmi.
+Aktivita kopírování také podporuje čtení a zápis do souborů v zadaných formátech: **Text, JSON, Avro, orc a Parquet**a komprimace a dekomprimace souborů pomocí následujících kodeků: **Gzip, Deflate, bzip2 a ZipDeflate**. Zobrazit [podporované formáty souborů a komprese](supported-file-formats-and-compression-codecs.md) s podrobnostmi.
 
 Například můžete provést následující aktivity kopírování:
 
-* Kopírování dat v místním SQL serveru a zapsat do Azure Data Lake Storage Gen2 ve formátu Parquet.
+* Zkopírujte data v místních SQL Server a zapište do Azure Data Lake Storage Gen2 ve formátu Parquet.
 * Zkopírujte soubory ve formátu textu (CSV) v místním systému souborů a zápis do objektu Blob Azure ve formátu Avro.
-* Kopírování souborů ZIP v místním systému souborů a pak dekomprimovat pozemního do Azure Data Lake Storage Gen2.
+* Zkopírujte soubory zip z místního systému souborů a dekomprimujte je na Azure Data Lake Storage Gen2.
 * Kopírování dat z objektů Blob v Azure ve formátu GZip komprimované text (CSV) a zápis do služby Azure SQL Database.
-* A další většinou s serializaci/deserializaci nebo kompresi nebo dekompresi potřebovat.
+* A mnoho dalších případů s potřebou serializace/deserializace nebo komprese/dekomprese.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
@@ -73,7 +73,7 @@ Služba, která využívá aktivitu kopírování, která je dostupná globáln�
 Chcete-li použít aktivitu kopírování, která ve službě Azure Data Factory, budete muset:
 
 1. **Vytvoření propojených služeb pro zdrojové úložiště dat a úložiště dat jímky.** Najdete v části "Vlastnostem propojených služeb" konektor článek o tom, jak nakonfigurovat a podporovaných vlastností. Můžete najít v seznamu podporovaných konektor v [podporovaných úložišť dat a formáty](#supported-data-stores-and-formats) oddílu.
-2. **Vytvoření datové sady pro zdroje a jímky.** Podívejte se do zdroje a jímky části "Vlastnosti datové sady" konektor články o tom, jak nakonfigurovat a podporovaných vlastností.
+2. **Vytvoření datové sady pro zdroje a jímky.** Informace o tom, jak nakonfigurovat a jaké vlastnosti podporují, najdete v části Vlastnosti datové sady v konektorech zdroje a jímky.
 3. **Vytvoření kanálu s aktivitou kopírování.** V další části najdete příklad.
 
 ### <a name="syntax"></a>Syntaxe
@@ -130,7 +130,7 @@ Následující šablony aktivitu kopírování, která obsahuje úplný seznam p
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type aktivitu kopírování, která musí být nastavena: **kopírování** | Ano |
+| type | Vlastnost Type aktivity kopírování musí být nastavená na: **kopírování** | Ano |
 | inputs | Zadejte datovou sadu vytvoříte, která odkazuje na zdroj dat. Aktivitu kopírování, která podporuje pouze jeden vstup. | Ano |
 | outputs | Zadejte datovou sadu vytvoříte, které body k datům jímky. Aktivitu kopírování, která podporuje pouze jeden výstup. | Ano |
 | typeProperties | Skupina vlastností konfigurace aktivity kopírování. | Ano |
@@ -139,7 +139,7 @@ Následující šablony aktivitu kopírování, která obsahuje úplný seznam p
 | translator | Zadejte mapování sloupce explicitní ze zdroje do jímky. Platí při kopírování chování nejde splnit vaše potřeby.<br/><br/>Další podrobnosti o [schéma a data mapování typu](copy-activity-schema-and-type-mapping.md). | Ne |
 | dataIntegrationUnits | Zadejte powerfulness z [prostředí Azure Integration Runtime](concepts-integration-runtime.md) pro kopírování dat. Dříve označované jako cloudové jednotky přesunu dat (DMU). <br/><br/>Další podrobnosti o [jednotky integrace dat](copy-activity-performance.md#data-integration-units). | Ne |
 | parallelCopies | Zadejte paralelismu, který chcete použít při čtení dat ze zdroje a zápis dat do jímky aktivity kopírování.<br/><br/>Další podrobnosti o [paralelní kopírování](copy-activity-performance.md#parallel-copy). | Ne |
-| enableStaging<br/>stagingSettings | Zvolte připraví pomocný data ve službě blob storage namísto přímo kopírování dat ze zdroje do jímky.<br/><br/>Další užitečné scénáře a podrobnosti o konfiguraci z [fázovaného kopírování](copy-activity-performance.md#staged-copy). | Ne |
+| enableStaging<br/>stagingSettings | Vyberte, chcete-li připravit dočasná data v úložišti objektů BLOB místo přímého kopírování dat ze zdroje do jímky.<br/><br/>Další užitečné scénáře a podrobnosti o konfiguraci z [fázovaného kopírování](copy-activity-performance.md#staged-copy). | Ne |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Zvolte způsob zpracování nekompatibilních řádků při kopírování dat ze zdroje do jímky.<br/><br/>Další podrobnosti o [odolnost proti chybám](copy-activity-fault-tolerance.md). | Ne |
 
 ## <a name="monitoring"></a>Monitorování
@@ -159,7 +159,7 @@ Kliknutím zobrazíte seznam aktivit v tomto běhu kanálu. V **akce** sloupce, 
 Klikněte "**podrobnosti**" propojit v rámci **akce** zobrazíte podrobnosti o spuštění aktivity kopírování a výkonové charakteristiky. To se dozvíte informace, včetně svazek/řádků/soubory dat zkopíruje ze zdroje do jímky, propustnost, kroky prochází s určitou dobu a použít konfigurace pro váš scénář kopírování.
 
 >[!TIP]
->Pro některé scénáře, zobrazí se také "**tipy pro optimalizaci výkonu**" nad kopírování monitorování stránky, které sděluje, identifikovat kritická místa a provede vás o tom, jak změnit tak, aby zvýšení propustnosti kopie, naleznete v části Příklad s podrobnostmi [tady](#performance-and-tuning).
+>V některých scénářích se v horní části stránky pro monitorování kopírování zobrazí také "Tipy k vyladění**výkonu**", které vám sdělí zjištěné kritické body a provede vás v tom, co se dá změnit, aby se zvýšila propustnost kopírování [](#performance-and-tuning), viz příklad s podrobnostmi.
 
 **Příklad: kopírování z Amazon S3 do Azure Data Lake Store**
 ![podrobnosti o spuštění aktivit monitorování](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
@@ -169,7 +169,7 @@ Klikněte "**podrobnosti**" propojit v rámci **akce** zobrazíte podrobnosti o 
 
 ### <a name="monitor-programmatically"></a>Monitorování prostřednictvím kódu programu
 
-Podrobnosti provádění aktivity kopírování a výkonové charakteristiky se vrátí taky v aktivitě kopírování výsledek spuštění -> výstupní sekce. Níže je úplný seznam; se zobrazí pouze ty použitelné pro váš scénář kopírování. Zjistěte, jak sledovat činnost spustit z [části sledování pomocí rychlého startu](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run).
+V části výsledek spuštění aktivity kopírování – > výstup se vrátí taky podrobnosti o spuštění aktivity kopírování a výkonnostní charakteristiky. Níže je úplný seznam; se zobrazí pouze ty použitelné pro váš scénář kopírování. Zjistěte, jak sledovat činnost spustit z [části sledování pomocí rychlého startu](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run).
 
 | Název vlastnosti  | Popis | Jednotka |
 |:--- |:--- |:--- |
@@ -177,51 +177,65 @@ Podrobnosti provádění aktivity kopírování a výkonové charakteristiky se 
 | dataWritten | Velikost dat zapsaných do jímky | Hodnota Int64 v **bajtů** |
 | filesRead | Počet souborů, které jsou kopírovány při kopírování dat z úložiště souborů. | Hodnota Int64 (žádná jednotka) |
 | filesWritten | Počet souborů, které jsou kopírovány při kopírování dat do služby file storage. | Hodnota Int64 (žádná jednotka) |
-| rowsRead | Počet řádků, který je čten ze zdroje (není k dispozici pro binární kopie). | Hodnota Int64 (žádná jednotka) |
-| rowsCopied | Počet řádků, které byly zkopírovány na jímky (není k dispozici pro binární kopie). | Hodnota Int64 (žádná jednotka) |
+| sourcePeakConnections | Počet souběžných připojení k zdrojovému úložišti dat během spuštění aktivity kopírování. | Hodnota Int64 (žádná jednotka) |
+| sinkPeakConnections | Počet souběžných připojení, které byly během spuštění aktivity kopírování navázány na úložiště dat jímky. | Hodnota Int64 (žádná jednotka) |
+| rowsRead | Počet řádků, které jsou čteny ze zdroje (neplatí pro binární kopii). | Hodnota Int64 (žádná jednotka) |
+| rowsCopied | Počet řádků, které se zkopírují do jímky (neplatí pro binární kopie). | Hodnota Int64 (žádná jednotka) |
 | rowsSkipped | Počet nekompatibilních řádků se přeskakuje. Funkci můžete zapnout pomocí nastavení "enableSkipIncompatibleRow" na hodnotu true. | Hodnota Int64 (žádná jednotka) |
-| throughput | Poměr, ve kterém se data přenáší. | Plovoucí desetinné číslo s desetinnou čárkou v **KB/s** |
-| copyDuration | Doba kopírování. | Hodnota Int32 v řádu sekund |
-| sourcePeakConnections | Nejvyšší počet souběžných připojení do zdrojového úložiště dat během kopírování. | Hodnota Int32 |
-| sinkPeakConnections| Nejvyšší počet souběžných připojení k úložišti dat jímky během kopírování.| Hodnota Int32 |
+| copyDuration | Doba trvání kopie. | Hodnota Int32 v řádu sekund |
+| throughput | Poměr přenesených dat. | Plovoucí desetinné číslo s desetinnou čárkou v **KB/s** |
+| sourcePeakConnections | Nejvyšší počet souběžných připojení navázaných ke zdrojovému úložišti dat během kopírování. | Hodnota Int32 |
+| sinkPeakConnections| Nejvyšší počet souběžných připojení navázaných na úložiště dat jímky během kopírování.| Hodnota Int32 |
 | sqlDwPolyBase | Pokud při kopírování dat do SQL Data Warehouse PolyBase používá. | Logická hodnota |
 | redshiftUnload | Pokud uvolnění se používá při kopírování dat z Redshift. | Logická hodnota |
 | hdfsDistcp | Pokud DistCp se používá při kopírování dat z HDFS. | Logická hodnota |
 | effectiveIntegrationRuntime | Ukazují, které integrace Runtime(s) se používá pro spuštění ve formátu aktivit `<IR name> (<region if it's Azure IR>)`. | Text (řetězec) |
 | usedDataIntegrationUnits | Efektivní jednotky integrace dat během kopírování. | Hodnota Int32 |
-| usedParallelCopies | Efektivní parallelCopies během kopírování. | Hodnota Int32|
+| usedParallelCopies | Efektivní parallelCopies během kopírování. | Hodnota Int32 |
 | redirectRowPath | Cesta k protokolu přeskočené nekompatibilních řádků v úložišti objektů blob, které jste nakonfigurovali v části "redirectIncompatibleRowSettings". Najdete v následujícím příkladu. | Text (řetězec) |
-| executionDetails | Další informace o fázích prochází aktivitu kopírování, a příslušné postupy, doba trvání, používaných konfigurací, atd. Není doporučuje se v této části analyzovat, jak může změnit. | Pole |
+| executionDetails | Další informace o fázích prochází aktivitu kopírování, a příslušné postupy, doba trvání, používaných konfigurací, atd. Není doporučuje se v této části analyzovat, jak může změnit.<br/><br/>ADF také hlásí podrobné doby trvání (v sekundách) strávené podle příslušných kroků v `detailedDurations`části:<br/>- **Doba** zařazení do fronty (`queuingDuration`): Čas, kdy se aktivita kopírování skutečně spustí v prostředí Integration runtime. Pokud používáte prostředí IR v místním prostředí a tato hodnota je velká, navrhněte, zda chcete zjistit kapacitu a využití infračerveného přenosu, a podle vašich úloh nahorizontální navýšení nebo zmenšení kapacity. <br/>- **Doba trvání skriptu před kopírováním** (`preCopyScriptDuration`): Čas strávený spouštěním skriptu před kopírováním v úložišti dat jímky. Použijte při konfiguraci skriptu před kopírováním. <br/>- **Čas do prvního bajtu** (`timeToFirstByte`): Čas, kdy prostředí Integration runtime přijímá první bajt ze zdrojového úložiště dat. Použít pro zdroj nezaložen na souborech. Pokud je tato hodnota velká, navrhněte kontrolu a optimalizaci dotazu nebo serveru.<br/>- **Doba trvání přenosu** (`transferDuration`): Čas, po který modul runtime integrace přenese všechna data ze zdroje do jímky po získání prvního bajtu. | Array |
+| perfRecommendation | Kopírování tipů pro ladění výkonu. Podrobnosti najdete v části o [výkonu a ladění](#performance-and-tuning) . | Array |
 
 ```json
 "output": {
-    "dataRead": 107280845500,
-    "dataWritten": 107280845500,
-    "filesRead": 10,
-    "filesWritten": 10,
-    "copyDuration": 224,
-    "throughput": 467707.344,
+    "dataRead": 6198358,
+    "dataWritten": 19169324,
+    "filesRead": 1,
+    "sourcePeakConnections": 1,
+    "sinkPeakConnections": 2,
+    "rowsRead": 39614,
+    "rowsCopied": 39614,
+    "copyDuration": 1325,
+    "throughput": 4.568,
     "errors": [],
-    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US 2)",
-    "usedDataIntegrationUnits": 32,
-    "usedParallelCopies": 8,
+    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (West US)",
+    "usedDataIntegrationUnits": 4,
+    "usedParallelCopies": 1,
     "executionDetails": [
         {
             "source": {
-                "type": "AmazonS3"
+                "type": "AzureBlobStorage"
             },
             "sink": {
-                "type": "AzureDataLakeStore"
+                "type": "AzureSqlDatabase"
             },
             "status": "Succeeded",
-            "start": "2018-01-17T15:13:00.3515165Z",
-            "duration": 221,
-            "usedDataIntegrationUnits": 32,
-            "usedParallelCopies": 8,
+            "start": "2019-08-06T01:01:36.7778286Z",
+            "duration": 1325,
+            "usedDataIntegrationUnits": 4,
+            "usedParallelCopies": 1,
             "detailedDurations": {
                 "queuingDuration": 2,
-                "transferDuration": 219
+                "preCopyScriptDuration": 12,
+                "transferDuration": 1311
             }
+        }
+    ],
+    "perfRecommendation": [
+        {
+            "Tip": "Sink Azure SQL Database: The DTU utilization was high during the copy activity run. To achieve better performance, you are suggested to scale the database to a higher tier than the current 1600 DTUs.",
+            "ReferUrl": "https://go.microsoft.com/fwlink/?linkid=2043368",
+            "RuleName": "AzureDBTierUpgradePerfRecommendRule"
         }
     ]
 }
@@ -233,22 +247,22 @@ Zobrazit [schéma a data mapování typu](copy-activity-schema-and-type-mapping.
 
 ## <a name="fault-tolerance"></a>Odolnost proti chybám
 
-Ve výchozím nastavení aktivita kopírování kopírování dat se zastaví a vrátí chybu, pokud se setká s nekompatibilní data mezi zdrojem a jímkou. Můžete explicitně nakonfigurovat přeskočit a protokolování nekompatibilních řádků a kopírovat pouze ty kompatibilní data k vytvoření kopie byla úspěšná. Zobrazit [aktivity kopírování odolnost proti chybám](copy-activity-fault-tolerance.md) na další podrobnosti.
+Ve výchozím nastavení zastaví aktivita kopírování data kopírováním a vrátí chybu, pokud narazí na nekompatibilní data mezi zdrojem a jímkou. Můžete explicitně nakonfigurovat přeskočit a protokolování nekompatibilních řádků a kopírovat pouze ty kompatibilní data k vytvoření kopie byla úspěšná. Zobrazit [aktivity kopírování odolnost proti chybám](copy-activity-fault-tolerance.md) na další podrobnosti.
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
 
 Zobrazit [Průvodce laděním a výkonem aktivity kopírování](copy-activity-performance.md), která popisuje klíčové faktory, které ovlivňují výkon přesun dat (aktivita kopírování) ve službě Azure Data Factory. Také uvádí zjištěnou výkon při interní testování a tento článek popisuje různé způsoby, jak optimalizovat výkon aktivitu kopírování.
 
-V některých případech po provedení aktivity kopírování ve službě ADF, přímo uvidíte "**tipy pro optimalizaci výkonu**" nahoře [monitorování stránku aktivita kopírování](#monitor-visually) jak je znázorněno v následujícím příkladu. Jenom se říká kritickým bodem identifikovat pro spuštění dané kopie, ale provede vás také o tom, jak změnit tak, aby zvýšení propustnosti kopírování. Tipy pro ladění aktuálně poskytují návrhy, například při kopírování dat do Azure SQL Data Warehouse pomocí PolyBase zvýšit Azure Cosmos DB RU nebo Azure SQL DB DTU při ukládání zdroje dat na straně výkonu je kritický bod, chcete-li odebrat nepotřebné připravené kopírování atd. Výkon ladění pravidel bude postupně rozšiřují i.
+V některých případech se při provádění aktivity kopírování v podavači ADF přímo zobrazí zpráva "Tipy pro**ladění výkonu**" na [stránce monitorování aktivity kopírování](#monitor-visually) , jak je znázorněno v následujícím příkladu. Neoznamuje vám pouze kritická místa identifikovaná pro danou kopii kopírování, ale také vás provede tím, co se dá změnit, aby se zvýšila propustnost kopírování. Tipy pro ladění výkonu aktuálně poskytují návrhy, jako je například použití základu při kopírování dat do Azure SQL Data Warehouse, pro zvýšení Azure Cosmos DB RU nebo DTU databáze SQL Azure, když je na straně úložiště dat k dispozici kritické místo pro odebrání zbytečných fází. Kopírovat atd. Pravidla optimalizace výkonu se postupně rozšiřují.
 
-**Příklad: kopírování do služby Azure SQL DB s tipy pro optimalizaci výkonu**
+**Příklad: kopírování do Azure SQL DB s tipy pro ladění výkonu**
 
-V této ukázce během kopírování spustit ADF Všimněte si, že jímky Azure SQL DB dosáhne vysokého využití DTU, což zpomalí operace zápisu návrh tedy ke zvýšení úrovně služby Azure SQL DB s více DTU.
+V této ukázce si během kopírování ADF vypíše oznámení, že jímka služby Azure SQL DB dosáhne vysokého využití DTU, což zpomaluje operace zápisu, takže návrh je zvýšit úroveň databáze SQL Azure s větší DTU.
 
-![Zkopírujte monitorování s tipy pro optimalizaci výkonu](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+![Sledování kopírování pomocí tipů pro ladění výkonu](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
 ## <a name="incremental-copy"></a>Přírůstkové kopírování
-Data Factory podporuje scénáře pro přírůstkově kopíruje rozdílová data ze zdrojového úložiště dat do cílového úložiště dat. Zobrazit [kurz: přírůstkové kopírování dat](tutorial-incremental-copy-overview.md).
+Data Factory podporuje scénáře přírůstkového kopírování rozdílových dat ze zdrojového úložiště dat do úložiště dat jímky. Zobrazit [kurz: přírůstkové kopírování dat](tutorial-incremental-copy-overview.md).
 
 ## <a name="read-and-write-partitioned-data"></a>Čtení a zápis dělených dat
 Ve verzi 1 služby Azure Data Factory nepodporuje čtení nebo zápis dělených dat pomocí vlastnosti SliceStart a SliceEnd/WindowStart/WindowEnd systémové proměnné. V aktuální verzi můžete toto chování dosáhnout s použitím parametru kanál a čas zahájení/naplánovaný čas triggeru jako hodnotu parametru. Další informace najdete v tématu [jak číst nebo zapisovat data rozdělit na oddíly](how-to-read-write-partitioned-data.md).

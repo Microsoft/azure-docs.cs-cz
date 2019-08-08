@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 3fd4287c6dd1cc42f419cfa6b252c1d276d1d5a5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7578811c37cd0bbe47821dadacce5fa5974f56cf
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597239"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812726"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Nasazení Azure Security Center pro agenta zabezpečení založeného na IoT C pro Linux
 
@@ -48,7 +48,7 @@ Chcete-li nainstalovat a nasadit agenta zabezpečení, použijte následující 
 
 1. Stáhněte si nejnovější verzi do počítače z GitHubu [](https://aka.ms/iot-security-github-c).
 
-1. Extrahujte obsah balíčku a přejděte do složky _/install_ .
+1. Extrahujte obsah balíčku a přejděte do složky _/Src/Installation_ .
 
 1. Spuštěním následujícího příkazu přidejte do **skriptu InstallSecurityAgent** oprávnění ke spuštění:
     

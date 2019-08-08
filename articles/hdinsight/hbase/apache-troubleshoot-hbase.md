@@ -1,74 +1,74 @@
 ---
-title: Řešení potíží s HBase pomocí Azure HDInsight
-description: Získejte odpovědi na běžné dotazy týkající se práce s HBase a Azure HDInsight.
+title: Řešení potíží s využitím služby HBA pomocí Azure HDInsight
+description: Získejte odpovědi na běžné otázky týkající se práce s adaptéry HBA a Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 6ba17a3839390ed5fe503a6fe57b63d8fb119138
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13a4831d946eb7e25e586cafae4cae51b49fd8a7
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713496"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780757"
 ---
-# <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Řešení potíží s Apache HBase pomocí Azure HDInsight
+# <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Řešení potíží s Apache HBA pomocí Azure HDInsight
 
-Další informace o nejčastější problémy a jejich řešení při práci s datovými částmi Apache HBase v Apache Ambari.
+Přečtěte si o hlavních problémech a jejich řešeních, pokud pracujete s webovými částmi Apache HBA v Apache Ambari.
 
-## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Jak spustit hbck příkaz sestavy s více oblastmi nepřiřazené?
+## <a name="how-do-i-run-hbck-command-reports-with-multiple-unassigned-regions"></a>Návody spustit sestavy příkazů hbck s více nepřiřazenými oblastmi?
 
-Běžné chybovou zprávu, může se zobrazit při spuštění `hbase hbck` příkaz je "více oblastí se nepřiřazený nebo otvory v řetězu certifikátů oblastí."
+Častá chybová zpráva, kterou se vám může zobrazit při spuštění `hbase hbck` příkazu, je nepřiřazené více oblastí nebo díry v řetězci oblastí.
 
-V uživatelském rozhraní hlavní server HBase můžete zobrazit počet oblastí, které jsou nevyvážené napříč všemi servery oblasti. Potom můžete spustit `hbase hbck` příkazu zobrazte otvory v řetězci oblasti.
+V uživatelském rozhraní HBase Master uvidíte počet oblastí, které jsou nevyvážené napříč všemi oblastmi serverů. Pak můžete spustit `hbase hbck` příkaz pro zobrazení děr v řetězci oblasti.
 
-Děr může být způsobeno offline oblastí, takže přiřazení nejprve opravte. 
+Díry mohou být způsobeny offline oblastmi, proto nejprve opravte přiřazení. 
 
-Přenést do normálního stavu nepřiřazené oblastí, proveďte následující kroky:
+Chcete-li nepřiřazené oblasti převést zpět do normálního stavu, proveďte následující kroky:
 
-1. Přihlaste se ke clusteru HDInsight HBase pomocí SSH.
-2. Chcete-li připojit pomocí prostředí Apache ZooKeeper, spusťte `hbase zkcli` příkazu.
-3. Spustit `rmr /hbase/regions-in-transition` příkazu nebo `rmr /hbase-unsecure/regions-in-transition` příkazu.
-4. Pro ukončení `hbase zkcli` prostředí, použijte `exit` příkazu.
-5. Otevřete uživatelské rozhraní Apache Ambari a potom restartujte službu aktivní hlavní server HBase.
-6. Spustit `hbase hbck` příkaz znovu (bez jakýchkoli možností). Zkontrolujte výstup tohoto příkazu k zajištění, že jsou přiřazení všech oblastech.
+1. Přihlaste se ke clusteru HDInsight HBA pomocí SSH.
+2. Pokud se chcete připojit pomocí prostředí Apache Zookeeper, spusťte `hbase zkcli` příkaz.
+3. `rmr /hbase/regions-in-transition` Spusťte příkaz`rmr /hbase-unsecure/regions-in-transition` nebo příkaz.
+4. Pro ukončení `hbase zkcli` prostředí `exit` použijte příkaz.
+5. Otevřete uživatelské rozhraní Apache Ambari a pak restartujte službu Active HBase Master.
+6. `hbase hbck` Spusťte příkaz znovu (bez jakýchkoli možností). Zkontrolujte výstup tohoto příkazu a ujistěte se, že jsou přiřazeny všechny oblasti.
 
 
-## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Jak se při použití hbck příkazy pro oblast přiřazení opravit vypršení časového limitu?
+## <a name="how-do-i-fix-timeout-issues-with-hbck-commands-for-region-assignments"></a>Návody opravit problémy s časovým limitem při použití příkazů hbck pro přiřazení oblastí?
 
 ### <a name="issue"></a>Problém
 
-Potenciální příčinu vypršení časového limitu problémy při použití `hbck` příkaz může být, že jsou ve stavu "v přechodném stavu" několika oblastech po dlouhou dobu. Těmito oblastmi můžete zobrazit jako offline v Uživatelském rozhraní hlavní server HBase. Vzhledem k tomu, že vysoký počet oblastí se pokoušíte přejít, hlavní server HBase může být vypršení časového limitu a být schopen převést zpět do online režimu v těchto oblastech.
+Možnou příčinou potíží s vypršením časového limitu `hbck` při použití příkazu může být, že několik oblastí je ve stavu "v přechodu" po dlouhou dobu. Tyto oblasti můžete zobrazit v uživatelském rozhraní HBase Master v režimu offline. Vzhledem k tomu, že se snaží přejít velký počet oblastí, HBase Master může mít časový limit a nebude možné tyto oblasti převést zpět do stavu online.
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Přihlaste se ke clusteru HDInsight HBase pomocí SSH.
-2. Chcete-li připojit pomocí prostředí Apache ZooKeeper, spusťte `hbase zkcli` příkazu.
-3. Spustit `rmr /hbase/regions-in-transition` nebo `rmr /hbase-unsecure/regions-in-transition` příkazu.
-4. Chcete-li ukončit `hbase zkcli` prostředí, použijte `exit` příkazu.
-5. V uživatelském rozhraní Ambari restartujte službu aktivní hlavní server HBase.
-6. Spustit `hbase hbck -fixAssignments` příkaz znovu.
+1. Přihlaste se ke clusteru HDInsight HBA pomocí SSH.
+2. Pokud se chcete připojit pomocí prostředí Apache Zookeeper, spusťte `hbase zkcli` příkaz.
+3. `rmr /hbase/regions-in-transition` Spusťte příkaz`rmr /hbase-unsecure/regions-in-transition` nebo.
+4. K ukončení `hbase zkcli` prostředí `exit` použijte příkaz.
+5. V uživatelském rozhraní Ambari restartujte službu Active HBase Master.
+6. Znovu spusťte `hbase hbck -fixAssignments` příkaz.
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Jak můžu platnost zakázat HDFS Nouzový režim v clusteru?
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>Návody vynuceně zakázat bezpečný režim HDFS v clusteru?
 
 ### <a name="issue"></a>Problém
 
-V nouzovém režimu v clusteru HDInsight se zasekla místní Apache HDFS Hadoop Distributed File System ().
+Místní Apache Hadoop systém souborů DFS (Distributed File System) (HDFS) se zablokuje v bezpečném režimu v clusteru HDInsight.
 
 ### <a name="detailed-description"></a>Podrobný popis
 
-Tato chyba může být způsobena chybou při spuštění následujícího příkazu HDFS:
+Tato chyba může být způsobena selháním při spuštění následujícího příkazu HDFS:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 ```
 
-Chyby, které se můžete setkat při pokusu spustit příkaz vypadá takto:
+Chyba, kterou se vám může zobrazit při pokusu o spuštění příkazu, vypadá takto:
 
 ```apache
-hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
+hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 17/04/05 16:20:52 WARN retry.RetryInvocationHandler: Exception while invoking ClientNamenodeProtocolTranslatorPB.mkdirs over hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net/10.0.0.22:8020. Not retrying because try once and fail.
 org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.hdfs.server.namenode.SafeModeException): Cannot create directory /temp. Name node is in safe mode.
 It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode off.
@@ -121,18 +121,18 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Pravděpodobná příčina
 
-Dolů na byla změněna velikost clusteru HDInsight velmi několika uzlů. Počet uzlů je níže nebo blízko faktor replikace HDFS.
+Cluster HDInsight se škáloval dolů na velmi málo uzlů. Počet uzlů je nižší nebo blízko faktoru replikace HDFS.
 
 ### <a name="resolution-steps"></a>Postup řešení 
 
-1. Získejte stav HDFS v clusteru HDInsight spuštěním následujících příkazů:
+1. Spuštěním následujících příkazů Získejte stav HDFS v clusteru HDInsight:
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
    ```
 
    ```apache
-   hdiuser@hn0-spark2:~$ hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
+   hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
    Safe mode is ON
    Configured Capacity: 3372381241344 (3.07 TB)
    Present Capacity: 3138625077248 (2.85 TB)
@@ -166,10 +166,10 @@ Dolů na byla změněna velikost clusteru HDInsight velmi několika uzlů. Poče
    ...
 
    ```
-2. Také můžete zkontrolovat integritu HDFS v clusteru HDInsight pomocí následujících příkazů:
+2. Integritu HDFS v clusteru HDInsight můžete také ověřit pomocí následujících příkazů:
 
    ```apache
-   hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
+   hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
    ```
 
    ```apache
@@ -199,18 +199,18 @@ Dolů na byla změněna velikost clusteru HDInsight velmi několika uzlů. Poče
    The filesystem under path '/' is HEALTHY
    ```
 
-3. Pokud zjistíte, že neexistují žádné chybějící, poškozený, nebo under-replikované bloků nebo že můžete tyto bloky ignorovat, spusťte následující příkaz se název uzlu mimo nouzový režim:
+3. Pokud zjistíte, že nejsou k dispozici žádné, poškozené nebo v replikovaných blocích nebo že tyto bloky lze ignorovat, spusťte následující příkaz, který převezme uzel názvu z bezpečného režimu:
 
    ```apache
    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
    ```
 
 
-## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Jak opravit připojení JDBC nebo SQLLine problémy s Apache Phoenix?
+## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Návody opravit problémy s připojením k JDBC nebo SQLLine pomocí Apache Phoenix?
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-Pro připojení k Apache Phoenix, je nutné zadat IP adresu z aktivního uzlu Apache ZooKeeper. Zajistěte, aby službě ZooKeeper a které sqlline.py se pokouší o připojení je zprovozněný.
+Chcete-li se připojit pomocí Apache Phoenix, je nutné zadat IP adresu aktivního Apache ZooKeeper uzlu. Ujistěte se, že je služba ZooKeeper, ke které se pokouší připojit sqlline.py, spuštěná.
 1. Přihlaste se ke clusteru HDInsight pomocí SSH.
 2. Zadejte následující příkaz:
                 
@@ -219,21 +219,21 @@ Pro připojení k Apache Phoenix, je nutné zadat IP adresu z aktivního uzlu Ap
    ```
 
    > [!Note] 
-   > Získat IP adresu z aktivního uzlu ZooKeeper z uživatelského rozhraní Ambari. Přejděte na **HBase** > **rychlé odkazy** > **ZK\* (aktivní)**  > **Zookeeper informace**. 
+   > IP adresu aktivního uzlu ZooKeeper můžete získat z uživatelského rozhraní Ambari. Přejít na **adaptéry HBA** > **Rychlé odkazy** >  > **ZK\* (aktivní)** **Zookeeper informace**. 
 
-3. Pokud sqlline.py připojí k Phoenix a nemá časový limit, spusťte následující příkaz k ověření dostupnosti a stavu Phoenix:
+3. Pokud se sqlline.py připojuje k Phoenixu a nevypršel časový limit, spusťte následující příkaz, který ověří dostupnost a stav v Phoenixu:
 
    ```apache
            !tables
            !quit
    ```      
-4. Pokud tento příkaz funguje, neexistuje žádný problém. Zadané uživatelem IP adresy můžou být nesprávné. Nicméně pokud příkaz pozastaví po delší dobu a pak se zobrazí následující chyba, přejděte ke kroku 5.
+4. Pokud tento příkaz funguje, nedošlo k žádnému problému. IP adresa zadaná uživatelem může být nesprávná. Pokud se ale příkaz na delší dobu zastaví a pak se zobrazí následující chyba, pokračujte krokem 5.
 
    ```apache
            Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings. 
    ```
 
-5. Spuštěním následujících příkazů z hlavního uzlu (hn0) Chcete-li diagnostikovat stav systému Phoenix. Tabulka se katalogu:
+5. Spuštěním následujících příkazů z hlavního uzlu (hn0) Diagnostikujte stav systému Phoenix. Tabulka katalogu:
 
    ```apache
             hbase shell
@@ -241,57 +241,57 @@ Pro připojení k Apache Phoenix, je nutné zadat IP adresu z aktivního uzlu Ap
            count 'SYSTEM.CATALOG'
    ```
 
-   Příkaz by měla vrátit chybu podobnou této: 
+   Příkaz by měl vrátit chybu podobnou následující: 
 
    ```apache
            ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
    ```
-6. V Uživatelském rozhraní Apache Ambari proveďte následující kroky a restartujte službu HMaster na všechny uzly ZooKeeper:
+6. V uživatelském rozhraní Apache Ambari proveďte následující kroky a restartujte službu HMaster na všech uzlech ZooKeeper:
 
-    1. V **Souhrn** část HBase, přejděte na **HBase** > **aktivní hlavní server HBase**. 
-    2. V **součásti** části, restartujte službu hlavní server HBase.
-    3. Tento postup opakujte pro všechny zbývající **pohotovostní hlavní server HBase** služby. 
+    1. V části **Souhrn** adaptérů HBA, přejít na > HBA**aktivní HBase Master**. 
+    2. V části **součásti** restartujte službu HBase Master.
+    3. Tento postup opakujte pro všechny zbývající **pohotovostní HBase Master** služby. 
 
-Může trvat až pět minut, než služba hlavní server HBase stabilizovat a dokončit proces obnovení. Po několika minutách opakujte příkazy sqlline.py potvrdit, že systém. Tabulka katalogu je v provozu, a to může být dotázán. 
+Aby služba HBase Master mohla stabilizovat a dokončit proces obnovení, může trvat až pět minut. Po několika minutách opakujte příkazy sqlline.py a potvrďte tak, že systém. Tabulka katalogu je nahoru a na ni se dá dotazovat. 
 
-Když v systému. Tabulka katalogu je zpět na normální, problém s připojením k Phoenix by měly být automaticky opraveny.
+Když je systém. Tabulka katalogu je zpět na normální, problém s připojením k Phoenixu by se měl automaticky vyřešit.
 
 
-## <a name="what-causes-a-master-server-to-fail-to-start"></a>Co způsobí, že se hlavní server nemůže spustit?
+## <a name="what-causes-a-master-server-to-fail-to-start"></a>Co způsobuje neúspěšné spuštění hlavního serveru?
 
 ### <a name="error"></a>Chyba 
 
-Vyvolá se chyba atomického přejmenování.
+Dojde k chybě atomické přejmenování.
 
 ### <a name="detailed-description"></a>Podrobný popis
 
-Během procesu spuštění dokončí HMaster mnoho kroků inicializace. Patří mezi ně přesouvá data z nuly (.tmp) složku ke složce data. Taky sleduje HMaster složce zápisu dávky protokolů (WALs) jestli jsou všechny servery reagovat oblasti a tak dále. 
+Během procesu spuštění HMaster dokončí mnoho inicializačních kroků. Mezi ně patří přesun dat ze složky Scratch (. tmp) do složky data. HMaster také zjistí, zda neexistují žádné nereagující servery oblastí a tak dále. 
 
-Během spouštění HMaster provádí základní `list` příkaz na těchto složek. Pokud v každém okamžiku HMaster neočekávaný soubor v některém z těchto složek, vyvolá výjimku a nespustí.  
+Při spuštění HMaster provede základní `list` příkaz na těchto složkách. Pokud HMaster zobrazí neočekávaný soubor v některé z těchto složek, vyvolá výjimku a nespustí se.  
 
 ### <a name="probable-cause"></a>Pravděpodobná příčina
 
-Protokoly serveru oblasti zkuste k identifikaci na časové ose vytvoření souboru a potom se podívejte, pokud došlo k chybovému ukončení procesu v době, kdy byl soubor vytvořen. (Kontakt podpory HBase usnadní vám to). To pomáhá nám poskytovat robustnější mechanismus, tak, aby se můžete vyhnout se dosažení této chyby a zajistit bezproblémové proces vypnutí.
+V protokolech serveru oblastí se pokuste identifikovat časovou osu pro vytvoření souboru a potom zjistit, zda došlo k chybě procesu v době, kdy byl soubor vytvořen. (Obraťte se na podporu adaptérů HBA, které vám pomůžou.) To nám pomáhá zajistit robustnější mechanismy, abyste se vyhnuli zahnutí se na tuto chybu a zajistili bezproblémové vypnutí procesů.
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-Zkontrolujte zásobník volání a snažte se zjistit, které složce může být příčinou problému (například může být WALs složku nebo TMP). V Průzkumníku cloudu nebo s použitím příkazů HDFS, zkuste najít soubor problém. Obvykle se jedná \*-renamePending.json souboru. ( \*-RenamePending.json soubor je soubor deníku, který se používá k implementaci operaci atomické přejmenování v ovladači WASB. Z důvodu chyby v této implementaci těchto souborů může zůstat po procesů a tak dále.) Vynucené odstranění tohoto souboru v Průzkumníku cloudu nebo s použitím příkazů HDFS. 
+Zkontrolujte zásobník volání a pokuste se určit, která složka může způsobovat problém (například může se jednat o složku WALs nebo složku. tmp). Potom v Průzkumníku cloudu nebo pomocí příkazů HDFS zkuste najít soubor problému. Obvykle se jedná o \*soubor-renamePending. JSON. (Soubor \*-renamePending. JSON je soubor deníku, který se používá k implementaci operace pro atomické přejmenování v ovladači WASB. Z důvodu chyb v této implementaci mohou být tyto soubory ponechány po selhání procesu a tak dále.) Vynutit – odstraňte tento soubor buď v Průzkumníku cloudu, nebo pomocí příkazů HDFS. 
 
-V některých případech můžou být dostupné taky dočasný soubor pojmenovaný podobně jako *$$$. $$$* na tomto místě. Je nutné použít HDFS `ls` příkaz, který tento soubor; nelze naleznete v souboru v Průzkumníku cloudu. Pokud chcete odstranit tento soubor, použijte příkaz HDFS `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`.  
+V tomto umístění může být někdy také dočasný soubor s názvem něco jako *$ $ $. $ $ $.* K zobrazení tohoto souboru je `ls` nutné použít příkaz HDFS. soubor nelze v Průzkumníkovi cloudu zobrazit. K odstranění tohoto souboru použijte příkaz `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`HDFS.  
 
-Po spuštění těchto příkazů HMaster měli spustit okamžitě. 
+Po spuštění těchto příkazů by se měl HMaster spustit hned. 
 
 ### <a name="error"></a>Chyba
 
-Žádná adresa serveru je uvedena v *hbase: meta* pro oblasti xxx.
+Žádná adresa serveru není uvedená v seznamu *HBA: meta* pro oblast xxx.
 
 ### <a name="detailed-description"></a>Podrobný popis
 
-Může zobrazit zpráva v clusteru s Linuxem, která označuje, že *hbase: meta* tabulka není online. Spuštění `hbck` hlásit, který "hbase: metadata tabulky replicaId 0 nebyl nalezen v libovolné oblasti." Problémem může být, že HMaster nebylo možné inicializovat po restartování HBase. V protokolech HMaster může se zobrazit zpráva: "V hbase není uvedená žádná adresa serveru: metadata pro oblasti hbase: zálohování \<název oblasti\>".  
+V clusteru Linux se může zobrazit zpráva s informacemi o tom, že *adaptéry HBA: meta* tabulka není online. Běh `hbck` může hlásit, že "HBA: meta Table replicaId 0 se v žádné oblasti nenašel." Tento problém může být způsoben tím, že HMaster nebylo možné inicializovat po restartování adaptérů HBA. V protokolech HMaster se může zobrazit zpráva: "Žádná adresa serveru uvedená v části hbaes: meta pro oblast HBA: název \<\>oblasti zálohy".  
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. V prostředí HBase zadejte následující příkazy (skutečné hodnoty pro změnu podle vhodnosti):  
+1. V prostředí HBA zadejte následující příkazy (podle potřeby změňte skutečné hodnoty):  
 
    ```apache
    > scan 'hbase:meta'  
@@ -301,11 +301,11 @@ Může zobrazit zpráva v clusteru s Linuxem, která označuje, že *hbase: meta
    > delete 'hbase:meta','hbase:backup <region name>','<column name>'  
    ```
 
-2. Odstranit *hbase: obor názvů* položka. Tato položka může být stejnou chybu, která je hlášen při *hbase: obor názvů* kontrole tabulky.
+2. Odstraňte položku *HBA: entry oboru názvů* . Tato položka může být shodná s chybou, která je hlášena při kontrole, když je prohledávána tabulka *HBA: Namespace* .
 
-3. Abyste vyvolali HBase ve spuštěném stavu, v uživatelském rozhraní Ambari, restartujte službu Active HMaster.  
+3. Pokud chcete aktivovat adaptéry HBA ve spuštěném stavu, restartujte v uživatelském rozhraní Ambari službu Active HMaster.  
 
-4. V prostředí HBase zobrazíte všechny tabulky v režimu offline, spusťte následující příkaz:
+4. V prostředí HBA spusťte následující příkaz a zobrazte tak všechny offline tabulky:
 
    ```apache 
    hbase hbck -ignorePreCheckPermission -fixAssignments 
@@ -313,46 +313,46 @@ Může zobrazit zpráva v clusteru s Linuxem, která označuje, že *hbase: meta
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Nelze zpracovat na tabulku HBase](https://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
+[Nepovedlo se zpracovat tabulku adaptérů HBA.](https://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>Chyba
 
-HMaster vyprší časový limit se podobně jako závažnou výjimku "java.io.IOException: Vypršel časový limit 300000ms čekání na obor názvů tabulky má být přiřazena."
+HMaster vyprší s závažnou výjimkou, která je podobná "Java. IO. IOException: Vypršel časový limit 300000ms čekání na přiřazení tabulky oboru názvů. "
 
 ### <a name="detailed-description"></a>Podrobný popis
 
-Tomuto problému může dojít, pokud máte mnoho tabulek a oblasti, které nebyly byla při restartování služby HMaster vyprázdněna. Restartování může selhat a zobrazí se vám předchozí chybovou zprávu.  
+K tomuto problému může dojít, pokud máte spoustu tabulek a oblastí, které se při restartování služeb HMaster nevyprázdnily. Restartování se nemusí zdařit a zobrazí se předchozí chybová zpráva.  
 
 ### <a name="probable-cause"></a>Pravděpodobná příčina
 
-Jedná se o známý problém službou HMaster. Úlohy po spuštění obecné clusteru může trvat dlouhou dobu. HMaster vypne protože ještě není přiřazená tabulce oboru názvů. K tomu dochází jenom v situacích, ve kterém velké množství unflushed dat existuje a není dostatečná vypršení časového limitu 5 minut.
+Jedná se o známý problém se službou HMaster. Obecné úlohy při spuštění clusteru můžou trvat dlouhou dobu. HMaster se ukončí, protože tabulka oboru názvů ještě není přiřazená. K tomu dochází pouze ve scénářích, ve kterých existuje velké množství nevyprázdněných dat a časový limit pět minut není dostačující.
   
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. V Uživatelském rozhraní Apache Ambari, přejděte na **HBase** > **Configs**. V souboru vlastní hbase-site.xml přidejte následující nastavení: 
+1. V uživatelském rozhraní Apache Ambari přejít na**Konfigurace** **HBA** > . Do vlastního souboru HBase-site. xml přidejte následující nastavení: 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  
    ```
 
-2. Znovu spusťte požadované služby (HMaster a případně dalších služeb HBase).  
+2. Restartujte požadované služby (HMaster a případně jiné služby HBA).  
 
 
-## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Co způsobí, že selhání restartování na oblastním serveru?
+## <a name="what-causes-a-restart-failure-on-a-region-server"></a>Co způsobí selhání restartování na serveru oblasti?
 
 ### <a name="issue"></a>Problém
 
-Selhání restartování na oblastním serveru může být bráněno následující osvědčené postupy. Doporučujeme, abyste při plánování restartování serverů oblasti HBase pozastavení úlohy heavy aktivity. Pokud aplikace i nadále připojit se servery pro oblast, když probíhá vypnutí, operace restartování serveru oblasti sníží se o několik minut. Je také vhodné nejprve vyprázdnit všechny tabulky. Referenční dokumentace o tom, jak vyprázdnění tabulky, najdete v části [HDInsight HBase: Jak vylepšit čas restartování clusteru Apache HBase ve vyčištění tabulek](https://web.archive.org/web/20190112153155/ https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Neúspěšné restartování na serveru oblasti může bránit následujícímu osvědčeným postupům. Při plánování restartování serverů oblastí HBA doporučujeme, abyste pozastavili velkou aktivitu úlohy. Pokud se aplikace i nadále připojuje se servery oblastí, když probíhá vypínání, operace restartování serveru oblasti bude pomalejší o několik minut. Je také vhodné nejprve vyprázdnit všechny tabulky. Referenční informace o tom, jak vyprázdnit tabulky [, najdete v tématu HDInsight HBA: Jak vylepšit dobu restartování clusteru Apache HBA vyprázdněním tabulek](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
-Pokud spustíte operace restartování na servery oblasti HBase v uživatelském rozhraní Apache Ambari, můžete okamžitě zjistit, že servery oblasti byl vypnut, ale není to hned restartovat. 
+Pokud zahájíte operaci restartování na serverech oblasti HBA v uživatelském rozhraní Apache Ambari, okamžitě uvidíte, že se servery oblasti nedají vypnout, ale nerestartují se hned. 
 
-Zde je, co se děje na pozadí: 
+Co je se děje na pozadí: 
 
-1. Ambari agent odešle požadavek na zastavení serveru oblasti.
-2. Ambari agent počká 30 sekund pro oblastním serveru řádně ukončit. 
-3. Pokud vaše aplikace i nadále připojit k serveru oblasti, server nebude vypnout okamžitě. Předtím, než dojde k vypnutí vyprší časový limit 30 sekund. 
-4. Po 30 sekund, odesílá Ambari agent ukončit platnost (`kill -9`) příkaz na oblastním serveru. To můžete zobrazit v protokolu agenta ambari (v /var/log/adresáři příslušné pracovní uzel):
+1. Agent Ambari odešle požadavek na zastavení na server oblasti.
+2. Agent Ambari počká, až 30 sekund, aby se server oblasti řádně vypnul. 
+3. Pokud se vaše aplikace nadále připojuje k serveru oblastí, server se nevypne hned. Časový limit 30 sekund vyprší, než dojde k vypnutí. 
+4. Po 30 sekundách pošle agent Ambari na server oblasti příkaz Force-`kill -9`Kill (). Můžete to vidět v protokolu Ambari-Agent (v adresáři/var/log/příslušného pracovního uzlu):
 
    ```apache
            2017-03-21 13:22:09,171 - Execute['/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh --config /usr/hdp/current/hbase-regionserver/conf stop regionserver'] {'only_if': 'ambari-sudo.sh  -H -E t
@@ -366,7 +366,7 @@ Zde je, co se děje na pozadí:
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-   Z důvodu náhlé ukončení nemusí být uvolněna port spojených s procesem, i když proces serveru oblasti je zastavená. Tato situace může vést k AddressBindException při spouštění serveru oblasti, jak je znázorněno v následující protokoly. Můžete to ověřit v server.log oblast v adresáři /var/log/hbase na pracovní uzly, kde oblastním serveru nepodaří spustit. 
+   Kvůli náhlému vypnutí nemusí být port přidružený k procesu uvolněný, i když je proces serveru oblasti zastavený. Tato situace může vést k AddressBindException při spuštění serveru oblasti, jak je znázorněno v následujících protokolech. To můžete ověřit v region-Server. log v adresáři/var/log/HBase na pracovních uzlech, kde se nepodařilo spustit server oblasti. 
 
    ```apache
 
@@ -408,8 +408,8 @@ Zde je, co se děje na pozadí:
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Se snaží snížit zatížení na serveru oblasti HBase před zahájení restartování. 
-2. Můžete také (Pokud kroku 1 vám nepomohly), zkuste ručně restartovat servery oblasti na pracovní uzly pomocí následujících příkazů:
+1. Před zahájením restartování se pokuste snížit zatížení serverů oblastí HBA. 
+2. Případně (pokud to krok 1 nepomůže), zkuste ručně restartovat servery oblastí na pracovních uzlech pomocí následujících příkazů:
 
    ```apache
    sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"

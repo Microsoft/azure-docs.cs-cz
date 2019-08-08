@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 0ccd2ee8b2c9f542eabe7a297f4c99a3993a47e9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c5cdd12c3075d48ff32c40d686b32a650ec43d8e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726742"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779785"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
@@ -74,7 +74,7 @@ Pomocí PowerShellu můžete [zabránit vypršení platnosti hesel](https://docs
 Pokud vaše organizace používá řešení hybridní identity s předávacím ověřováním nebo federaci, měli byste povolit synchronizaci hodnot hash hesel z následujících dvou důvodů:
 
 * Zpráva [Uživatelé s nevrácenými přihlašovacími údaji](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events) ve správě Azure AD vás upozorní na páry uživatelské jméno a heslo, které jsou vystavené na "tmavém webu". Nenáročné množství hesel se nevrací prostřednictvím útoků phishing, malwaru a hesla na webech třetích stran, které jsou později porušené. Společnost Microsoft nalezne mnoho z těchto nevrácených přihlašovacích údajů a oznámí vám v této sestavě, jestli se shodují s přihlašovacími údaji ve vaší organizaci – ale jenom v případě, že jste [povolili synchronizaci hodnot hash hesel](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization).
-* V případě výpadku místního výpadku (například při útoku ransomwarem) budete moct přepnout na použití [cloudového ověřování pomocí synchronizace hodnot hash hesel](https://docs.microsoft.com/azure/security/azure-ad-choose-authn). Tato metoda ověřování záloh vám umožní pokračovat v přístupu k aplikacím nakonfigurovaným pro ověřování pomocí Azure Active Directory, včetně Office 365. V takovém případě se pracovníci IT nebudou muset rozsazovat na osobní e-mailové účty pro sdílení dat, dokud se nevyřeší místní výpadek.
+* V případě výpadku místního výpadku (například při útoku ransomwarem) budete moct přepnout na použití [cloudového ověřování pomocí synchronizace hodnot hash hesel](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn). Tato metoda ověřování záloh vám umožní pokračovat v přístupu k aplikacím nakonfigurovaným pro ověřování pomocí Azure Active Directory, včetně Office 365. V takovém případě se pracovníci IT nebudou muset rozsazovat na osobní e-mailové účty pro sdílení dat, dokud se nevyřeší místní výpadek.
 
 Přečtěte si další informace o tom, jak funguje [synchronizace hodnot hash hesel](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization) .
 
@@ -146,7 +146,7 @@ Auditování a protokolování událostí souvisejících se zabezpečením a so
 
 ### <a name="monitor-azure-ad"></a>Monitorování Azure AD
 
-Služba Microsoft Azure Services a funkce poskytují konfigurovatelné možnosti auditování zabezpečení a protokolování, které vám pomůžou identifikovat mezery v zásadách a mechanismech zabezpečení a vyřešit tyto nedostatky, aby se předešlo nedodržení. Můžete použít [protokolování a auditování Azure](https://docs.microsoft.com/azure/security/azure-log-audit) a použít [sestavy aktivit auditu na portálu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs).
+Služba Microsoft Azure Services a funkce poskytují konfigurovatelné možnosti auditování zabezpečení a protokolování, které vám pomůžou identifikovat mezery v zásadách a mechanismech zabezpečení a vyřešit tyto nedostatky, aby se předešlo nedodržení. Můžete použít [protokolování a auditování Azure](https://docs.microsoft.com/azure/security/fundamentals/log-audit) a použít [sestavy aktivit auditu na portálu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs).
 
 ### <a name="monitor-azure-ad-connect-health-in-hybrid-environments"></a>Monitorování Azure AD Connect Health v hybridních prostředích
 

@@ -9,17 +9,17 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: eb85c4c56d8464d4078564c707efabf60dc5aa99
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.subservice: cognitive-search
+ms.openlocfilehash: 560bc7a7dc30dd1ed55727c4bcc3831a771ff69e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501459"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841248"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Postup vytvoření dovednosti v kanálu pro rozšíření
 
-Rozpoznávání rozpoznávání rozbalí data a vylepšuje je, aby je bylo možné prohledávat Azure Search. Vyvoláme *kroky pro*extrakci a obohacení, které jsou zkombinovány do *dovednosti* , na který se odkazuje při indexování. Dovednosti může používat [integrované dovednosti](cognitive-search-predefined-skills.md) nebo vlastní dovednosti (viz [příklad: Vytvoření vlastní dovednosti pro hledání](cognitive-search-create-custom-skill-example.md) vnímání, kde najdete další informace.
+Rozpoznávání rozpoznávání rozbalí data a vylepšuje je, aby je bylo možné prohledávat Azure Search. Vyvoláme kroky pro extrakcia obohacení, které jsou zkombinovány do *dovednosti* , na který se odkazuje při indexování. Dovednosti může používat [integrované dovednosti](cognitive-search-predefined-skills.md) nebo vlastní dovednosti (viz [příklad: Vytvoření vlastní dovednosti pro hledání](cognitive-search-create-custom-skill-example.md) vnímání, kde najdete další informace.
 
 V tomto článku se dozvíte, jak vytvořit kanál pro rozšíření pro dovednosti, které chcete použít. Dovednosti je připojen k indexeru Azure Search [](search-indexer-overview.md). Jedna součást návrhu kanálu, která je popsaná v tomto článku, sestavuje dovednosti sebe sama. 
 
@@ -277,6 +277,6 @@ Můžete zvolit ukládání obohacených dokumentů jako tabulek s hierarchický
 
 <a name="next-step"></a>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste obeznámeni s kanálem pro obohacení a dovednosti, pokračujte s odkazem na [poznámky v dovednosti](cognitive-search-concept-annotations-syntax.md) nebo [jak mapovat výstupy na pole v indexu](cognitive-search-output-field-mapping.md). 

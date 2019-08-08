@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k Azure Backup
+title: Odpovědi na běžné dotazy týkající se funkcí Azure Backup
 description: 'Odpovědi na běžné otázky týkající se: Azure Backup funkce, včetně trezorů Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c60b2bfae0d974d454c03b7eba655cbdacab5943
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
-ms.translationtype: HT
+ms.openlocfilehash: c41381dd3e53c80e74da3dc0d0a08e1ac83daec6
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466678"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827631"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – často kladené otázky
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Backup.
@@ -24,6 +24,13 @@ Ano. Pro každou podporovanou oblast Azure Backup můžete pro každé předplat
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Je nějak omezený počet serverů nebo počítačů, které lze zaregistrovat k trezoru?
 Pro každý trezor můžete zaregistrovat až 1000 virtuálních počítačů Azure. Pokud používáte agenta Microsoft Azure Backup, můžete zaregistrovat až 50 agentů MAB na jeden trezor. A můžete registrovat 50 serverů MAB nebo serverů DPM do trezoru.
+
+### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Kolik zdrojů/položek lze chránit v trezoru? 
+V trezoru můžete chránit až 2000 zdrojů dat a položek napříč všemi úlohami (IaaS VM, SQL, AFS atd.).<br>  
+Například pokud už máte chráněné virtuální počítače 500 a 400 sdílené složky Azure v trezoru, můžete v něm 1100 chránit jenom databáze SQL. 
+
+### <a name="how-many-policies-can-i-create-per-vault"></a>Kolik zásad můžu vytvořit pro každý trezor? 
+Na jeden trezor můžete mít až 200 zásad.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>Pokud má moje organizace jeden trezor, jak můžu během obnovování dat izolovat data z různých serverů v trezoru?
 Data serveru, která chcete obnovit společně, by měla při nastavování zálohy používat stejné přístupové heslo. Chcete-li izolovat obnovení na konkrétní server nebo servery, použijte přístupové heslo pouze pro tento server nebo servery. Například servery lidských zdrojů mohou používat jedno šifrovací heslo, účetní servery jiné a servery úložiště ještě jiné.
@@ -91,7 +98,7 @@ Windows 8 nebo novější | 54 400 GB
 Windows 7 |1700 GB
 Windows Server 2012 nebo novější | 54 400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
-Virtuální počítač Azure | 16 datových disků<br/><br/> Datový disk až do 4095 GB
+Azure VM | 16 datových disků<br/><br/> Datový disk až do 4095 GB
 
 ### <a name="how-is-the-data-source-size-determined"></a>Jak se určuje velikost zdroje dat?
 Následující tabulka vysvětluje, jak je určená velikost jednotlivých zdrojů dat.

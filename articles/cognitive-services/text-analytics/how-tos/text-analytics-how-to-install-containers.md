@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: dapine
-ms.openlocfilehash: f658e8d0f820ccec513b5665fc1ce94c083c3b3e
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: ddbe586c03d9f722d844d06968aa25e4b4a5aac0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68703527"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815296"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýza textu
 
@@ -52,8 +52,7 @@ Následující tabulka popisuje minimální a doporučené Procesorových jader 
 |-----------|---------|-------------|--|
 |Extrakce klíčových frází | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |15, 30|
 |Rozpoznávání jazyka | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |15, 30|
-|Analýza mínění 2. x | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |15, 30|
-|Analýza mínění 3. x | 1 jádro, 2 GB paměti | 4 jádra, 4 GB paměti |15, 30|
+|Analýza mínění | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |15, 30|
 
 * Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 * TPS-transakcí za sekundu
@@ -68,8 +67,7 @@ Ze služby Microsoft Container Registry jsou dostupné Image kontejneru pro anal
 |-----------|------------|
 |Extrakce klíčových frází | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 |Rozpoznávání jazyka | `mcr.microsoft.com/azure-cognitive-services/language` |
-|Analýza mínění 2. x| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
-|Analýza mínění 3. x| `containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v3.0` |
+|Analýza mínění| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) Pomocí příkazu si stáhněte image kontejneru z Microsoft Container Registry.
 
@@ -93,16 +91,10 @@ docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
 docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 ```
 
-### <a name="docker-pull-for-the-sentiment-2x-container"></a>Stažení Docker pro kontejner mínění 2. x
+### <a name="docker-pull-for-the-sentiment-container"></a>Stažení Docker pro kontejner mínění
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
-```
-
-### <a name="docker-pull-for-the-sentiment-3x-container"></a>Získání Docker pro kontejner mínění 3. x
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v3.0:latest
 ```
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
@@ -112,7 +104,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v
 Jakmile je kontejner na hostitelském [počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
 1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K [](../text-analytics-resource-container-config.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu.
-1. Dotazování koncového bodu předpovědi kontejneru pro [v2](#query-the-containers-v2-prediction-endpoint) nebo [V3](#query-the-containers-v3-prediction-endpoint).
+1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
 
@@ -120,7 +112,7 @@ Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandl
 
 K dispozici jsou [Příklady](../text-analytics-resource-container-config.md#example-docker-run-commands) příkazů.`docker run`
 
-### <a name="run-v2-container-example-of-docker-run-command"></a>Příklad spuštění příkazu Docker Run v kontejneru v2
+### <a name="run-container-example-of-docker-run-command"></a>Příklad spuštění kontejneru příkazu Docker run
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -137,134 +129,17 @@ Tento příkaz:
 * Zpřístupňuje TCP port 5000 a přiděluje pseudo-TTY pro kontejner
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
-### <a name="run-v3-container-example-of-docker-run-command"></a>Příklad spuštění příkazu Docker Run v kontejneru V3
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
-containerpreview.azurecr.io/microsoft/cognitive-services-sentiment-v3.0 \
-Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
-```
-
-Tento příkaz:
-
-* Spustí kontejner klíčové fráze z image kontejneru.
-* Přiděluje 4 jádra procesoru a 4 gigabajty (GB) paměti.
-* Zpřístupňuje TCP port 5000 a přiděluje pseudo-TTY pro kontejner
-* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
-## <a name="query-the-containers-v2-prediction-endpoint"></a>Dotazování koncového bodu předpovědi v2 kontejneru
+## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
 
 Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST.
 
 Pro rozhraní API kontejneru `https://localhost:5000`použijte hostitele.
-
-## <a name="query-the-containers-v3-prediction-endpoint"></a>Dotazování koncového bodu prediktivního kontejneru V3
-
-Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST.
-
-Pro rozhraní API kontejneru `https://localhost:5000`použijte hostitele.
-
-### <a name="v3-api-request-post-body"></a>Text příspěvku žádosti rozhraní API V3
-
-Následující JSON je příkladem těla příspěvku žádosti rozhraní API V3:
-
-```json
-{
-  "documents": [
-    {
-      "language": "en",
-      "id": "1",
-      "text": "Hello world. This is some input text that I love."
-    },
-    {
-      "language": "en",
-      "id": "2",
-      "text": "It's incredibly sunny outside! I'm so happy."
-    }
-  ]
-}
-```
-
-### <a name="v3-api-response-body"></a>V3 – tělo odpovědi rozhraní API
-
-Následující JSON je příkladem těla příspěvku žádosti rozhraní API V3:
-
-```json
-{
-    "documents": [
-        {
-            "id": "1",
-            "sentiment": "positive",
-            "documentScores": {
-                "positive": 0.98570585250854492,
-                "neutral": 0.0001625834556762,
-                "negative": 0.0141316400840878
-            },
-            "sentences": [
-                {
-                    "sentiment": "neutral",
-                    "sentenceScores": {
-                        "positive": 0.0785155147314072,
-                        "neutral": 0.89702343940734863,
-                        "negative": 0.0244610067456961
-                    },
-                    "offset": 0,
-                    "length": 12
-                },
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.98570585250854492,
-                        "neutral": 0.0001625834556762,
-                        "negative": 0.0141316400840878
-                    },
-                    "offset": 13,
-                    "length": 36
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "sentiment": "positive",
-            "documentScores": {
-                "positive": 0.89198976755142212,
-                "neutral": 0.103382371366024,
-                "negative": 0.0046278294175863
-            },
-            "sentences": [
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.78401315212249756,
-                        "neutral": 0.2067587077617645,
-                        "negative": 0.0092281140387058
-                    },
-                    "offset": 0,
-                    "length": 30
-                },
-                {
-                    "sentiment": "positive",
-                    "sentenceScores": {
-                        "positive": 0.99996638298034668,
-                        "neutral": 0.0000060341349126,
-                        "negative": 0.0000275444017461
-                    },
-                    "offset": 31,
-                    "length": 13
-                }
-            ]
-        }
-    ],
-    "errors": []
-}
-```
 
 <!--  ## Validate container is running -->
 

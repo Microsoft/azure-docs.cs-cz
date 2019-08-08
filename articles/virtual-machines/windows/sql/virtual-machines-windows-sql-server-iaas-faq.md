@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/12/2018
+ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 7f6ec1ee65727fb8c3c7d98f696c288e95ec880a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 4b50b4acf6ea655c40821e7c49824af11aeeb9ab
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876195"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816297"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy týkající se SQL Server běžících na virtuálních počítačích s Windows v Azure
 
@@ -122,6 +122,11 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
     Ano. Pokud jste nasadili SQL Server z vlastního média a nainstalovali jste rozšíření SQL IaaS, můžete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, abyste získali výhody správy poskytované rozšířením SQL IaaS. Samostatně nasazený virtuální počítač SQL však nemůžete převést na průběžné platby.
 
+1. **Je možné přepínat licenční model na SQL Server nasazeném virtuálním počítači pomocí klasického modelu?**
+
+   Ne. Změna modelu licencování není na klasickém virtuálním počítači podporovaná. Svůj virtuální počítač můžete migrovat do modelu Resource Manageru (ARM) a zaregistrovat ho u poskytovatele prostředků virtuálního počítače SQL. Jakmile je virtuální počítač zaregistrovaný u poskytovatele prostředků virtuálního počítače SQL, budou na virtuálním počítači k dispozici změny modelu licencování. 
+   
+
 ## <a name="administration"></a>Správa
 
 1. **Můžu na stejný virtuální počítač nainstalovat druhou instanci SQL Serveru? Můžu změnit nainstalované funkce výchozí instance?**
@@ -146,9 +151,9 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    
 ## <a name="updating-and-patching"></a>Aktualizace a opravy
 
-1. **Návody změnit na jinou verzi nebo edici SQL Server na virtuálním počítači Azure?**
+1. **Jak změním verzi nebo edici SQL Serveru na virtuálním počítači Azure?**
 
-   Zákazníci mohou změnit verzi nebo edici SQL Server pomocí instalačního média, které obsahuje požadovanou verzi nebo edici SQL Server. Po změně edice použijte Azure Portal k úpravě vlastnosti edice virtuálního počítače tak, aby přesně odrážela fakturaci pro virtuální počítač. Další informace najdete v tématu [Změna edice SQL Server virtuálního počítače](virtual-machines-windows-sql-change-edition.md). 
+   Zákazníci můžou změnit verzi nebo edici SQL Serveru pomocí instalačního média, které obsahuje požadovanou verzi nebo edici SQL Serveru. Po změně edice pomocí webu Azure Portal upravte vlastnost edice virtuálního počítače, aby přesně odpovídala fakturaci za virtuální počítač. Další informace najdete v tématu [Změna edice SQL Server virtuálního počítače](virtual-machines-windows-sql-change-edition.md). 
 
 
 1. **Jak se v SQL Serverm virtuálním počítači používají aktualizace a aktualizace Service Pack?**

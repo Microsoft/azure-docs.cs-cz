@@ -10,18 +10,75 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ade107f51fabb133e8e4046bf645f4dff284102b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565108"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828613"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](https://aka.ms/aml-sdk) .
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
+
+## <a name="2019-08-05"></a>2019-08-05
+
+### <a name="azure-machine-learning-sdk-for-python-v1055"></a>Sada SDK Azure Machine Learning pro Python v 1.0.55
+
++ **Nové funkce**
+  + Ověřování na základě tokenu se teď podporuje pro volání na koncový bod nasazené na AKS. Budeme dál podporovat aktuální ověřování založené na klíčích a uživatelé můžou používat jeden z těchto ověřovacích mechanismů současně.
+  + Možnost Registrovat úložiště objektů blob, které je za virtuální sítí (VNet) jako úložiště dat.
+  
++ **Opravy chyb a vylepšení**
+  + **AzureML-automl – jádro**
+    + Opravuje chybu, při které je velikost ověřování pro rozdělení CV malá a výsledkem je špatný odhad vs. opravdové grafy pro regresi a předpovědi.
+    + V případě, že došlo k chybě při spuštění, je k dispozici protokolování úloh prognózování na vzdálené běhy. nyní se uživateli zobrazí komplexní chybová zpráva.
+    + Opravené chyby časové řady, pokud je příznak předběžného zpracování true.
+    + Provedli jsme některé chybové zprávy při ověřování dat předpovědi, které jsou nenapadnutelné.
+    + Snížená spotřeba paměti AutoML se spouští vyřazením a/nebo opožděným načítáním datových sad, zejména mezi vytvářením procesů.
+  + **AzureML-contrib-vysvětlený model**
+    + Přidání příznaku model_task pro vysvětlení, aby uživatel mohl přepsat výchozí automatickou logiku odvození pro typ modelu
+    + Změny widgetů: Automaticky se instaluje s contrib, žádné další vysvětlení nbextension Install/Enable-support s důležitou funkcí důležitost (například Permutative).
+    + Změny řídicího panelu: – box vykresluje a Violin vykresluje kromě beeswarm vykreslení na stránce souhrnu – mnohem rychlejší převykreslování beeswarm vykreslovat při změně posuvníku nahoře – užitečná zpráva s vysvětlením, jak se počítá shora k vypočítaným chybovým zprávám v místě grafů, když nejsou k dispozici žádná data.
+  + **azureml-core**
+    + Přidání metody model. Package () pro vytváření imagí Docker a fázemi, které zapouzdřují modely a jejich závislosti.
+    + Místní služby WebService se aktualizovaly, aby přijímaly InferenceConfigs obsahující objekty prostředí.
+    + Pevný model. Register () vytvářející neplatné modely, pokud '. ' (pro aktuální adresář) se předává jako parametr model_path.
+    + Přidat rutinu run. submit_child, funkce, které experimentují. odeslat při určení spustit jako nadřazeného objektu odeslaného podřízeného spuštění.
+    + Podpora možností konfigurace z modelu. Zaregistrujte se v běhu. register_model.
+    + Možnost spouštět v existujícím clusteru úlohy JAR.
+    + Nyní podporují parametry instance_pool_id a cluster_log_dbfs_path.
+    + Přidání podpory pro použití objektu prostředí při nasazování modelu na webovou službu. Objekt prostředí se teď dá zadat jako součást objektu InferenceConfig.
+    + Přidání mapování appinsifht pro nové oblasti – centralus-westus-northcentralus
+    + Přidali jsme dokumentaci pro všechny atributy ve všech třídách úložiště dat.
+    + Do se `Datastore.register_azure_blob_container`přidal parametr blob_cache_timeout.
+    + Do AzureML. Core. Environment. Environment se přidaly metody save_to_directory a load_from_directory.
+    + Do CLI se přidaly příkazy AZ ml Environment download a AZ ml Environment Register.
+    + Bylo přidáno prostředí. Přidejte metodu _private_pip_wheel.
+  + **azureml-explain-model**
+    + Přidání sledování datové sady k vysvětlení pomocí služby DataSet (Preview).
+    + Při streamování globálních vysvětlení z 10 000 na 100 se snížila výchozí velikost dávky.
+    + Přidání příznaku model_task pro vysvětlení, aby uživatel mohl přepsat výchozí automatickou logiku odvození pro typ modelu.
+  + **azureml-mlflow**
+    + Opravená chyba v mlflow. AzureML. build_image, kde jsou vnořené adresáře ignorovány.
+  + **azureml-pipeline-steps**
+    + Přidání možnosti spouštět úlohy JAR v existujícím clusteru Azure Databricks.
+    + Přidali jsme podporu instance_pool_id a parametry cluster_log_dbfs_path pro krok DatabricksStep.
+    + Přidání podpory pro parametry kanálu v kroku DatabricksStep
+  + **azureml-train-automl**
+    + Přidání docstrings pro soubory související s kompletem.
+    + Aktualizované dokumenty do vhodnějšího jazyka pro `max_cores_per_iteration` a`max_concurrent_iterations`
+    + V případě, že došlo k chybě při spuštění, je k dispozici protokolování úloh prognózování na vzdálené běhy. nyní se uživateli zobrazí komplexní chybová zpráva.
+    + Z poznámkového bloku automlstep kanálu se odebraly get_data.
+    + Začalo podpora dataprep v automlstep.
+
+### <a name="azure-machine-learning-data-prep-sdk-v1110"></a>Sada Azure Machine Learning data PREP SDK v 1.1.10
+
++ **Nové funkce**
+  + Nyní můžete požádat o spuštění konkrétních kontrolorů (například histogram, bodový graf atd.) pro konkrétní sloupce.
+  + Do se `append_columns`přidal argument paralelizovat. Pokud má hodnotu true, data se načtou do paměti, ale spuštění se spustí paralelně. Pokud je hodnota false, bude spuštění streamování, ale s jedním vláknem.
 
 ## <a name="2019-07-23"></a>2019-07-23
 
@@ -352,7 +409,7 @@ V Azure Portal teď můžete:
 ### <a name="notebook-virtual-machine"></a>Virtuální počítač poznámkového bloku 
 
 Použijte virtuální počítač s poznámkovým blokem jako zabezpečené hostitelské prostředí pro Jupyter poznámkových bloků, ve kterém můžete programovat experimenty strojového učení, nasadit modely jako koncové body webu a provádět všechny ostatní operace podporované Azure Machine Learning SDK pomocí Pythonu. Nabízí několik možností:
-+ [Rychle aktivujte předem nakonfigurovaný virtuální počítač](quickstart-run-cloud-notebook.md) s poznámkovým blokem, který má nejnovější verzi sady Azure Machine Learning SDK a související balíčky.
++ [Rychle aktivujte předem nakonfigurovaný virtuální počítač](tutorial-1st-experiment-sdk-setup.md) s poznámkovým blokem, který má nejnovější verzi sady Azure Machine Learning SDK a související balíčky.
 + Přístup je zabezpečený prostřednictvím prověřených technologií, jako je protokol HTTPS, Azure Active Directory ověřování a autorizace.
 + Spolehlivé cloudové úložiště poznámkových bloků a kódu v účtu služby pracovní prostor Azure Machine Learning BLOB Storage. Virtuální počítač poznámkového bloku můžete bezpečně odstranit, aniž byste ztratili práci.
 + Předinstalované ukázkové poznámkové bloky k prozkoumávání a experimentování s funkcemi Azure Machine Learning služby.
@@ -562,7 +619,7 @@ Poznámka: Sada SDK pro přípravu dat nebude nadále instalovat `numpy` a `pand
 ### <a name="azure-machine-learning-sdk-for-python-v1015"></a>Sada SDK Azure Machine Learning pro Python v 1.0.15
 
 + **Nové funkce**
-  + Kanály Azure Machine Learning přidali AzureBatchStep (Poznámkový blok), HyperDriveStep (Poznámkový blok) a funkce plánování založené na[čase (](https://aka.ms/pl-schedule)Poznámkový blok).[](https://aka.ms/pl-azbatch)
+  + Kanály Azure Machine Learning přidali AzureBatchStep (Poznámkový blok), HyperDriveStep (Poznámkový blok) a funkce plánování[](https://aka.ms/pl-schedule)založené na čase (Poznámkový blok).[](https://aka.ms/pl-azbatch)
   +  DataTranferStep aktualizace pro práci s Azure SQL Server a Azure Database for PostgreSQL ([Poznámkový blok](https://aka.ms/pl-data-trans)).
 
 + **Provedeny**

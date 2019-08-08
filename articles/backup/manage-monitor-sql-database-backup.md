@@ -1,5 +1,5 @@
 ---
-title: Správa a monitorování SQL Serverch databází na virtuálním počítači Azure, který je zálohovaný pomocí Azure Backup | Microsoft Docs
+title: Správa a monitorování SQL Serverch databází na virtuálním počítači Azure pomocí Azure Backup
 description: Tento článek popisuje, jak spravovat a monitorovat databáze SQL Server, které běží na virtuálním počítači Azure.
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: c5f61c778849a57d9143580e0e1041c7fe992d52
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: HT
+ms.openlocfilehash: 7cd916c8e52b40dee3ce2d63d43dc88f09001b32
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639582"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827559"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Správa a sledování zálohovaných SQL Server databází
 
@@ -120,7 +120,7 @@ Můžete spouštět různé typy zálohování na vyžádání:
 * Rozdílové zálohování
 * Zálohování protokolů
 
-I když potřebujete zadat dobu uchování pro úplné zálohování, je rozsah uchování pro jiné typy zálohování automaticky nastaven na 30 dní od aktuálního času. <br/>
+I když potřebujete zadat dobu uchování pro úplné zálohování, rozsah uchování pro ad hoc úplné zálohování bude automaticky nastaven na 45 dní od aktuálního času. <br/>
 Další informace najdete v tématu [SQL Server typy zálohování](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>Zrušení registrace instance SQL Server

@@ -1,7 +1,7 @@
 ---
-title: Analýza modelů řetězení a registrace
+title: Výuková neuronovéá síť pomocí zřetězení
 titleSuffix: Azure Machine Learning service
-description: V tomto článku se dozvíte, jak pomocí služby Azure Machine Learning naučit a registrovat model zřetězení.
+description: Naučte se spouštět PyTorch školicí skripty v podnikovém měřítku pomocí třídy Estimator zřetězení pro Azure Machine Learning.  Ukázkový skript klasifikuje ručně psané obrázky číslic, aby se vytvořila neuronové síť s hloubkovým učením pomocí knihovny Pythonu pro zřetězení, která běží nad numpy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
-ms.date: 06/15/2019
-ms.openlocfilehash: 7cf5650708cd951e872e3df6ea533a62bde0389d
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
-ms.translationtype: MT
+ms.date: 08/02/2019
+ms.openlocfilehash: f95a7efd8b9303db0a9ba98c1be32e13d0c5e984
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618338"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780888"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Škálujte a Registrujte modely zřetězení ve velkém měřítku pomocí Azure Machine Learning služby
 
-V tomto článku se dozvíte, jak pomocí služby Azure Machine Learning naučit a registrovat model zřetězení. Používá oblíbenou [datovou sadu mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) ke klasifikaci psaných číslic pomocí neuronové sítě (DNN) sestavené pomocí [knihovny Python](https://Chainer.org) v chainu, která běží na [numpy](https://www.numpy.org/).
+V tomto článku se dozvíte, jak spustit [](https://chainer.org/) školicí skripty pro řetězení v podnikovém měřítku pomocí třídy [Estimator zřetězení](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) pro Azure Machine Learning. Ukázkový skript pro školení v tomto článku používá oblíbenou [datovou sadu mnist ručně zapsaných](http://yann.lecun.com/exdb/mnist/) ke klasifikaci psaných číslic pomocí hluboké neuronové sítě (DNN) vytvořené pomocí knihovny Pythonu v chainu, která běží na [numpy](https://www.numpy.org/).
 
-Chainer je neuronové síťové rozhraní API, které může běžet na dalších oblíbených DNN rozhraních a zjednodušit vývoj. Pomocí služby Azure Machine Learning můžete rychle škálovat školicí úlohy pomocí výpočetních prostředků elastického cloudu. Můžete také sledovat vaše školicí běhy, modely verzí, nasazovat modely a mnohem víc.
+Bez ohledu na to, jestli provedete výukový model služby hloubkového učení z provozu nebo přenášíte existující model do cloudu, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh s využitím elastických výpočetních prostředků pro Cloud. Pomocí Azure Machine Learning můžete sestavovat, nasazovat, používat a monitorovat modely produkčního prostředí. 
 
-Bez ohledu na to, jestli vyvíjíte model řetězení od základu nebo přenášíte stávající model do cloudu, Azure Machine Learning služba vám může pomáhat při sestavování modelů připravených pro produkční prostředí.
+Přečtěte si další informace o službě [hloubkového učení vs Machine Learning](concept-deep-learning-vs-machine-learning.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -33,8 +33,8 @@ Spusťte tento kód v jednom z těchto prostředí:
 
 - Virtuální počítač s poznámkovým blokem Azure Machine Learning – nemusíte stahovat nebo instalovat
 
-    - Dokončete Průvodce rychlým vytvořením cloudového poznámkového [bloku](quickstart-run-cloud-notebook.md) a vytvořte tak vyhrazený server poznámkového bloku předem načtený pomocí sady SDK a ukázkového úložiště.
-    - Ve složce Samples na serveru poznámkového bloku najděte kompletní Poznámkový blok a soubory ve složce **How-to** -----------Intune-with-hluboká/výuka--The-chainer.  Poznámkový blok obsahuje rozšířené oddíly, které pokrývají inteligentní ladění parametrů, nasazení modelů a widgety poznámkových bloků.
+    - Dokončete [kurz: Nastavte prostředí a pracovní](tutorial-1st-experiment-sdk-setup.md) prostor pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného pomocí sady SDK a ukázkového úložiště.
+    - Ve složce s ukázkami hloubkového učení na serveru poznámkového bloku vyhledejte dokončený Poznámkový blok a soubory ve složce **How-to-the-AzureML/Training-with-hluboká/výuka** -The-chainer.  Poznámkový blok obsahuje rozšířené oddíly, které pokrývají inteligentní ladění parametrů, nasazení modelů a widgety poznámkových bloků.
 
 - Váš vlastní server Jupyter Notebook
 
@@ -94,7 +94,7 @@ import shutil
 shutil.copy('chainer_mnist.py', project_folder)
 ```
 
-### <a name="create-an-experiment"></a>Vytvoření experimentu
+### <a name="create-a-deep-learning-experiment"></a>Vytvoření experimentu s hloubkovým učením
 
 Vytvořte experiment. V tomto příkladu vytvořte experiment nazvaný "chainer-mnist ručně zapsaných".
 
@@ -209,9 +209,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste si vyškole model zřetězení ve službě Azure Machine Learning. 
-
-* Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek [nasazení modelu](how-to-deploy-and-where.md) .
+V tomto článku jste si naučili a zaregistrovali obsáhlý Learning, neuronové síť pomocí chainer ve službě Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek [nasazení modelu](how-to-deploy-and-where.md) .
 
 * [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
 

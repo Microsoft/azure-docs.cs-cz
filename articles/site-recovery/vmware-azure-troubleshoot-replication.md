@@ -1,196 +1,202 @@
 ---
-title: Řešení problémů s replikací pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek obsahuje informace o odstraňování potíží pro běžné potíže s replikací během zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery.
+title: Řešení potíží s replikací pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery | Microsoft Docs
+description: Tento článek poskytuje informace o odstraňování běžných potíží s replikací během zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/27/2019
+ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: ed04c21fc5f3aecb91483dbd1eb7ca5fbf47c3e9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 54686a96385532e17fe0ac6e59058b91b40c1342
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67805961"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742563"
 ---
-# <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení problémů replikace pro virtuální počítače VMware a fyzické servery
+# <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení potíží s replikací pro virtuální počítače VMware a fyzické servery
 
-Tento článek popisuje některé běžné problémy a konkrétní chyby se mohou vyskytnout při replikaci místních virtuálních počítačů VMware a fyzických serverů do Azure s využitím [Site Recovery](site-recovery-overview.md).
+Tento článek popisuje některé běžné problémy a konkrétní chyby, se kterými se můžete setkat při replikaci místních virtuálních počítačů VMware a fyzických serverů do Azure pomocí [Site Recovery](site-recovery-overview.md).
 
-## <a name="step-1-monitor-process-server-health"></a>Krok 1: Monitorování procesu serveru stavu
+## <a name="step-1-monitor-process-server-health"></a>Krok 1: Monitorovat stav procesového serveru
 
-Site Recovery používá [procesový server](vmware-physical-azure-config-process-server-overview.md#process-server) přijímat a optimalizovat replikovaná data a odeslat ho do Azure.
+Site Recovery používá [procesový Server](vmware-physical-azure-config-process-server-overview.md#process-server) pro příjem a optimalizaci replikovaných dat a jejich odeslání do Azure.
 
-Doporučujeme, aby monitorování stavu procesových serverů na portálu, pokud jsou připojeny a funguje správně a že replikace probíhá pro zdrojový počítač přidružený k procesového serveru.
+Doporučujeme, abyste na portálu sledovali stav procesových serverů, aby se zajistilo jejich připojení a správné fungování a aby replikace probíhala v případě zdrojových počítačů přidružených k procesu serveru.
 
-- [Další informace o](vmware-physical-azure-monitor-process-server.md) monitorování procesových serverů.
+- [Přečtěte si informace o](vmware-physical-azure-monitor-process-server.md) procesových serverech monitorování.
 - [Kontrola osvědčených postupů](vmware-physical-azure-troubleshoot-process-server.md#best-practices-for-process-server-deployment)
-- [Řešení potíží s](vmware-physical-azure-troubleshoot-process-server.md#check-process-server-health) stav procesového serveru.
+- [Řešení potíží s](vmware-physical-azure-troubleshoot-process-server.md#check-process-server-health) stavem procesového serveru.
 
-## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>Krok 2: Řešení potíží s připojením a replikace
+## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>Krok 2: Řešení potíží s připojením a replikací
 
-Počáteční a průběžné replikace selhání často jsou způsobeny problémy s připojením mezi zdrojovým serverem a že procesový server nebo mezi procesovým serverem a Azure. 
+Úvodní a průběžné selhání replikace často způsobují problémy s připojením mezi zdrojovým serverem a procesovým serverem nebo mezi procesovým serverem a Azure. 
 
-Chcete-li vyřešit tyto problémy [řešení potíží s připojením a replikace](vmware-physical-azure-troubleshoot-process-server.md#check-connectivity-and-replication).
-
-
+Chcete-li tyto problémy vyřešit, [vyřešte potíže s připojením a replikací](vmware-physical-azure-troubleshoot-process-server.md#check-connectivity-and-replication).
 
 
-## <a name="step-3-troubleshoot-source-machines-that-arent-available-for-replication"></a>Krok 3: Řešení potíží s zdrojové počítače, které nejsou k dispozici pro replikaci
 
-Při pokusu o vyberte zdrojový počítač k replikaci pomocí Site Recovery počítač nemusí být k dispozici pro jednu z následujících důvodů:
 
-* **Dva virtuální počítače se stejnou instancí identifikátoru UUID**: Pokud dva virtuální počítače v rámci vCenter mají stejnou instanci UUID, prvního virtuálního počítače zjištěny konfigurační server se zobrazí na webu Azure Portal. Pokud chcete tento problém vyřešit, ujistěte se, že žádné dva virtuální počítače mají stejnou instanci UUID. Tento scénář obvykle dochází v případech, kde zálohování virtuálního počítače se stane aktivní a se přihlásí do našich záznamů zjišťování. Odkazovat na [Azure Site Recovery VMware do Azure: Návod k vyčištění duplicitní nebo zastaralý položky](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) vyřešit.
-* **Přihlašovací údaje uživatele nesprávné vCenter**: Ujistěte se, že jste přidali přihlašovací údaje k vCenter správná při nastavování konfiguračního serveru pomocí šablony OVF nebo jednotný instalační program. Ověření přihlašovacích údajů, které jste přidali během instalace, najdete v článku [upravit přihlašovací údaje pro automatické zjišťování](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
-* **Nedostatečná oprávnění vCenter**: Pokud není k dispozici pro přístup k serveru vCenter oprávnění požadovaná oprávnění, může dojít k selhání se zjistit virtuální počítače. Ujistěte se, že oprávnění popsaná v [Příprava účtu pro automatické zjišťování](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) jsou přidány do uživatelský účet vCenter.
-* **Servery pro správu Azure Site Recovery**: Pokud virtuální počítač slouží jako server pro správu v rámci jednoho nebo více z následujících rolí – konfigurace serveru /scale-out procesový server nebo hlavní cílový server, nebudou moct vybrat virtuální počítač z portálu. Servery pro správu nelze replikovat.
-* **Již chráněny/převzetí služeb při selhání prostřednictvím služby Azure Site Recovery**: Pokud virtuální počítač je už chráněná nebo převzetí služeb při selhání prostřednictvím služby Site Recovery, virtuální počítač není dostupný pro vybrané pro ochranu na portálu. Ujistěte se, že virtuální počítač, který hledáte, na portálu ještě nebyla zapnuta libovolným uživatelem nebo v jiném předplatném.
-* **vCenter Nepřipojeno**: Zkontrolujte, jestli je vCenter v připojeném stavu. Abyste se přesvědčili, přejděte do trezoru služby Recovery Services > infrastruktura Site Recovery > konfigurační servery > klikněte na příslušný konfigurační server > Otevře se okno na vaše právo s podrobnostmi o přidružené servery. Zkontrolujte, jestli je vCenter připojený. Pokud je ve stavu "Nepřipojeno", vyřešte problém a pak [aktualizovat konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) na portálu. Potom virtuální počítač objeví na portálu.
-* **Vypnout napájení ESXi**: Pokud hostitele ESXi, ve kterém se nachází virtuální počítač je ve vypnutém stavu, pak virtuální počítač neuvedete nebo nebude možné vybrat na webu Azure portal. Zapnout napájení hostitele ESXi [aktualizovat konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) na portálu. Potom virtuální počítač objeví na portálu.
-* **Čeká se na restartování**: Pokud čeká na restartování virtuálního počítače se pak nebudete moci vybrat počítač na webu Azure portal. Nezapomeňte dokončit aktivity čekající restartování [aktualizovat konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Potom virtuální počítač objeví na portálu.
-* **Nebyl nalezen IP**: Pokud virtuální počítač nemá platnou IP adresu s ním spojená, pak nebudete moci vybrat počítač na webu Azure portal. Nezapomeňte přiřadit platnou IP adresu pro virtuální počítač [aktualizovat konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Potom virtuální počítač objeví na portálu.
+## <a name="step-3-troubleshoot-source-machines-that-arent-available-for-replication"></a>Krok 3: Řešení potíží se zdrojovými počítači, které nejsou k dispozici pro replikaci
 
-### <a name="troubleshoot-protected-virtual-machines-greyed-out-in-the-portal"></a>Řešení potíží s chráněných virtuálních počítačů na portálu zašedlé
+Když se pokusíte vybrat zdrojový počítač pro povolení replikace pomocí Site Recovery, počítač nemusí být k dispozici z některého z následujících důvodů:
 
-Virtuální počítače, které se replikují v rámci obnovení lokality nejsou k dispozici na webu Azure Portal, pokud existují duplicitní položky v systému. Zjistěte, jak odstranit zastaralé položky a tento problém vyřešit, najdete v tématu [Azure Site Recovery VMware do Azure: Návod k vyčištění duplicitní nebo zastaralý položky](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
+* **Dva virtuální počítače se STEJNÝM UUID instance**: Pokud mají dva virtuální počítače v vCenter stejný UUID instance, zobrazí se v Azure Portal první virtuální počítač zjištěný konfiguračním serverem. Pokud chcete tento problém vyřešit, zajistěte, aby žádné dva virtuální počítače neměly stejný UUID instance. Tento scénář se běžně objevuje v případech, kdy se záložní virtuální počítač stává aktivním a je přihlášený k záznamům zjišťování. Informace o [Azure Site Recovery VMware-to-Azure: Jak vyčistit duplicitní nebo zastaralé záznamy](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) , které se mají vyřešit
+* **Nesprávná uživatelská pověření vCenter**: Ujistěte se, že jste přidali správné přihlašovací údaje vCenter při nastavování konfiguračního serveru pomocí šablony OVF nebo sjednocené instalace. Postup ověření přihlašovacích údajů, které jste přidali během instalace, najdete v tématu [Úprava přihlašovacích údajů pro automatické zjišťování](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
+* **nedostatečná oprávnění vCenter**: Pokud oprávnění poskytnutá pro přístup vCenter nemají požadovaná oprávnění, může dojít k selhání zjišťování virtuálních počítačů. Zajistěte, aby byla do uživatelského účtu vCenter přidána oprávnění popsaná v tématu [Příprava účtu pro automatické zjišťování](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) .
+* **Servery pro správu Azure Site Recovery**: Pokud se virtuální počítač používá jako management server v jedné nebo více následujících rolích – konfigurační server/Scale-out procesový Server nebo hlavní cílový server, pak nebudete moct vybrat virtuální počítač z portálu. Servery pro správu nelze replikovat.
+* **Již chráněný/převzetí služeb při selhání prostřednictvím služby Azure Site Recovery Services**: Pokud je virtuální počítač už chráněný nebo převzetím služeb při selhání prostřednictvím Site Recovery, virtuální počítač není k dispozici pro výběr ochrany na portálu. Ujistěte se, že virtuální počítač, který hledáte na portálu, už není chráněný žádným jiným uživatelem nebo v jiném předplatném.
+* **vCenter**Nepřipojeno: Zkontroluje, jestli je vCenter v připojeném stavu. Pokud chcete ověřit, přejděte na Recovery Services trezor > Site Recovery > konfigurační servery infrastruktury > klikněte na příslušný konfigurační server > otevře se okno s podrobnostmi o přidružených serverech. Ověřte, zda je Server vCenter připojen. Pokud je ve stavu "Nepřipojeno", vyřešte problém a pak [Aktualizujte konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) na portálu. Potom se virtuální počítač zobrazí na portálu.
+* **Nezapnuté ESXi**: Pokud se hostitel ESXi, pod nímž se nachází virtuální počítač, nachází ve vypnutém stavu, virtuální počítač nebude uveden nebo nebude možné ho vybrat na Azure Portal. Zapněte na hostiteli ESXi a [Aktualizujte konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) na portálu. Potom se virtuální počítač zobrazí na portálu.
+* **Čeká na restartování**: Pokud virtuální počítač čeká na restartování, nebudete moct vybrat počítač na Azure Portal. Ujistěte se, že se nedokončené aktivity restartování dokončí, a [Aktualizujte konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Potom se virtuální počítač zobrazí na portálu.
+* **Nenašla se IP adresa**: Pokud k virtuálnímu počítači není přidružena platná IP adresa, nebudete moci vybrat počítač na Azure Portal. Ujistěte se, že virtuálnímu počítači přiřadíte platnou IP adresu a [aktualizujete konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Potom se virtuální počítač zobrazí na portálu.
+
+### <a name="troubleshoot-protected-virtual-machines-greyed-out-in-the-portal"></a>Řešení potíží s chráněnými virtuálními počítači, které jsou na portálu šedé
+
+Virtuální počítače, které jsou replikovány v Site Recovery, nejsou k dispozici v Azure Portal, pokud v systému existují duplicitní položky. Informace o tom, jak odstranit zastaralé položky a vyřešit problém, najdete v [tématu Azure Site Recovery VMware-to-Azure: Vyčištění duplicitních nebo zastaralých položek](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
 
 ## <a name="common-errors-and-solutions"></a>Běžné chyby a řešení
 
-### <a name="initial-replication-issues-error-78169"></a>Potíže s úvodní replikací [Chyba 78169]
+### <a name="initial-replication-issues-error-78169"></a>Problémy s počáteční replikací [Chyba 78169]
 
-Prostřednictvím výše zajistit, že existují žádné připojení, šířku pásma nebo čas synchronizovat spojeného s potížemi, ujistěte se, že:
+Nad rámec výše, která zajistí, že nedochází k problémům souvisejícím s připojením, šířkou pásma nebo časem synchronizace, zajistěte, aby:
 
-- Žádný antivirový software neblokuje Azure Site Recovery. Přečtěte si [Další](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) na vyloučení složek, které jsou potřebné pro Azure Site Recovery.
+- Žádný antivirový software neblokuje Azure Site Recovery. Další [](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) informace o vyloučení složek vyžadovaných pro Azure Site Recovery.
 
-### <a name="missing-app-consistent-recovery-points-error-78144"></a>Chybějící body obnovení konzistentní vzhledem k aplikaci [Chyba 78144]
+### <a name="missing-app-consistent-recovery-points-error-78144"></a>Chybějící body obnovení konzistentní vzhledem k aplikacím [Chyba 78144]
 
- K tomu dochází z důvodu problémů s Stínová kopie svazku Service (VSS). Řešení je následující: 
+ K tomu dochází v důsledku problémů se službou Stínová kopie svazku (VSS). Řešení je následující: 
  
-- Ověřte, že nainstalovaná verze agenta Azure Site Recovery alespoň 9.22.2. 
-- Ověřte, zda je jako služba ve Windows Services nainstalován poskytovatel služby VSS a taky ověřit konzoly MMC služby komponenty ke kontrole, zda je uveden Azure Site Recovery VSS Provider.
-- Pokud není nainstalovaný poskytovatel služby VSS, podívejte se [článek pro řešení potíží při selhání instalace](vmware-azure-troubleshoot-push-install.md#vss-installation-failures).
+- Ověřte, zda je nainstalovaná verze agenta Azure Site Recovery minimálně 9.22.2. 
+- Ověřte, zda je zprostředkovatel služby Stínová kopie svazku (VSS) nainstalován jako služba v rámci služeb systému Windows, a ověřte, zda je v seznamu uveden Azure Site Recovery poskytovatel služby VSS.
+- Pokud není nainstalován poskytovatel služby VSS, přečtěte si [článek věnované řešení potíží při selhání instalace](vmware-azure-troubleshoot-push-install.md#vss-installation-failures).
 
-- Pokud se stínové kopie svazku je zakázaná,
-    - Zkontrolujte, že typ spouštění služby poskytovatelem služby VSS je rovno **automatické**.
-    - Restartuje následující služby:
-        - Služba VSS
-        - Azure Site Recovery VSS Provider
+- Pokud je VSS zakázaný,
+    - Ověřte, zda je typ spouštění služby VSS Provider nastaven na hodnotu **automaticky**.
+    - Restartujte následující služby:
+        - Služba Stínová kopie svazku
+        - Poskytovatel služby Stínová kopie svazku Azure Site Recovery
         - Služba VDS
 
-- Pokud používáte úlohy SQL nebo Exchange, zkontrolujte protokoly tyto aplikace zapisovačů selhání. Častým chybám a jejich řešení jsou zachyceny v následujících článcích:
-    -  [Možnost Automatické ukončení databáze systému SQL Server je nastavena na hodnotu TRUE](https://support.microsoft.com/help/4504104)
-    - [SQL Server 2008 R2 vyvolání-Neopakovatelná chyba](https://support.microsoft.com/help/4504103)
-    - [Známý problém nástroje SQL Server 2016 a 2017](https://support.microsoft.com/help/4493364)
-    - [Běžný problém Exchange servery 2013 a 2016](https://support.microsoft.com/help/4037535)
+- Pokud používáte úlohy SQL nebo Exchange, vyhledejte chyby v protokolech zapisovače aplikací. Časté chyby a jejich řešení jsou zachycena v následujících článcích:
+    -  [Možnost automatického zavírání databáze SQL Server je nastavena na hodnotu TRUE.](https://support.microsoft.com/help/4504104)
+    - [SQL Server 2008 R2 vyvolává chybu bez opakování](https://support.microsoft.com/help/4504103)
+    - [Známý problém v SQL Server 2016 a 2017](https://support.microsoft.com/help/4493364)
+    - [Běžné problémy se servery Exchange 2013 a 2016](https://support.microsoft.com/help/4037535)
 
 
-### <a name="source-machines-with-high-churn-error-78188"></a>Zdrojové počítače s vysokou četností změn dat [Chyba 78188]
+### <a name="source-machines-with-high-churn-error-78188"></a>Zdrojové počítače s vysokou četností [Chyba 78188]
 
 Možné příčiny:
-- Četnost změn dat (zapisované bajty/s) na uvedené disky virtuálního počítače více než [podporované limity Azure Site Recovery](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) pro typ účtu cílového úložiště replikace.
-- Náhlá Špička je četnost změn dat kvůli které vysoké množství dat čeká na vyřízení pro nahrávání.
+- Frekvence změny dat (bajty zápisu/s) na uvedených discích virtuálního počítače je větší než [Azure Site Recovery podporovaná omezení](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) pro typ účtu úložiště cíle replikace.
+- Rychlost četnosti přenosů je náhlá, což znamená, že pro nahrání čeká na vyřízení vysoké množství dat.
 
-Řešení tohoto problému:
-- Ujistěte se, že je zřízený cílový typ účtu úložiště (Standard nebo Premium) podle požadavku frekvence změn ve zdroji.
-- Pokud zjištěné změny jsou dočasné, počkejte pár hodin dat čeká na nahrání dohnat a k vytvoření bodů obnovení.
-- Pokud problém nezmizí, použijte službu Site Recovery [plánovače nasazení služby](site-recovery-deployment-planner.md#overview) abyste mohli naplánovat replikace.
+Problém vyřešíte takto:
+- Ujistěte se, že typ cílového účtu úložiště (Standard nebo Premium) je zřízený podle míry četnosti změn ve zdroji.
+- Pokud už jste replikované na spravovaný disk úrovně Premium (typ asrseeddisk), ujistěte se, že velikost disku podporuje pozorovanou frekvenci přenosů podle Site Recovery omezení. V případě potřeby můžete velikost asrseeddisk zvětšit. Postupujte podle následujících kroků:
+    - Přejděte do okna disky ovlivněného replikovaného počítače a zkopírujte název disku repliky.
+    - Přejít na tento spravovaný disk repliky
+    - V okně Přehled se může zobrazit informační zpráva s informací o tom, že se vygenerovala adresa URL SAS. Klikněte na tuto hlavičku a zrušte export. Pokud se banner nezobrazuje, tento krok ignorujte.
+    - Jakmile se adresa URL SAS odvolá, přejdete do okna konfigurace spravovaného disku a zvýšíte velikost tak, aby ASR podporovala pozorovanou četnost změn na zdrojovém disku.
+- Pokud jsou pozorované změny dočasné, počkejte několik hodin, než se nahrávání čekajících dat zachytí a vytvoří body obnovení.
+- Pokud disk obsahuje Nekritická data, jako jsou dočasné protokoly, data testů atd., zvažte přesunutí těchto dat jinde nebo zcela vyloučit tento disk z replikace.
+- Pokud se problém opakuje, použijte [Plánovač nasazení](site-recovery-deployment-planner.md#overview) Site Recovery, který vám může pomáhat s plánováním replikace.
 
-### <a name="source-machines-with-no-heartbeat-error-78174"></a>Zdrojové počítače se žádný prezenční signál [Chyba 78174]
+### <a name="source-machines-with-no-heartbeat-error-78174"></a>Zdrojové počítače bez prezenčního signálu [Chyba 78174]
 
-To se stane, když se agent Azure Site Recovery Mobility na zdrojový počítač nekomunikuje s konfigurační Server (CS).
+K tomu dojde, když Azure Site Recovery agent mobility na zdrojovém počítači nekomunikuje se konfiguračním serverem (CS).
 
-K vyřešení problému, použijte následující kroky k ověření připojení k síti ze zdrojového virtuálního počítače na konfigurační server:
+Pokud chcete problém vyřešit, pomocí následujícího postupu ověřte síťové připojení ze zdrojového virtuálního počítače ke konfiguračnímu serveru:
 
-1. Ověřte, že na zdrojovém počítači běží.
+1. Ověřte, že je na zdrojovém počítači spuštěný.
 2. Přihlaste se ke zdrojovému počítači pomocí účtu, který má oprávnění správce.
-3. Zkontrolujte, že tyto služby běží a ne restartujte služby, pokud:
+3. Ověřte, zda jsou spuštěny následující služby a zda nerestartuje služby:
    - Svagents (InMage Scout VX Agent)
-   - InMage Scout Application Service
-4. Na zdrojovém počítači zkontrolujte protokoly v umístění pro podrobnosti o chybě:
+   - InMage Scout Aplikační služba
+4. Na zdrojovém počítači prohlédněte protokoly v umístění, kde najdete podrobnosti o chybě:
 
        C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
     
-### <a name="process-server-with-no-heartbeat-error-806"></a>Procesový server s žádný prezenční signál [Chyba 806]
-V případě, že neexistuje žádný prezenční signál z procesu serveru (PS), zkontrolujte, že:
-1. PS Virtuálního počítače je v provozu
-2. Zkontrolujte následující přihlásí PS pro podrobnosti o chybě:
+### <a name="process-server-with-no-heartbeat-error-806"></a>Procesový Server bez prezenčního signálu [Chyba 806]
+V případě, že není k dispozici žádný prezenční signál z procesového serveru (PS), ověřte, že:
+1. Virtuální počítač PS je v provozu.
+2. Podrobnosti o chybě najdete v následujících protokolech PS:
 
        C:\ProgramData\ASR\home\svsystems\eventmanager*.log
        and
        C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
 
-### <a name="master-target-server-with-no-heartbeat-error-78022"></a>Hlavní cílový server s žádný prezenční signál [Chyba 78022]
+### <a name="master-target-server-with-no-heartbeat-error-78022"></a>Hlavní cílový server bez prezenčního signálu [Chyba 78022]
 
-To se stane, když agenta Azure Site Recovery Mobility na hlavním cíli nekomunikuje s konfiguračním serverem.
+K tomu dojde, když Azure Site Recovery agent mobility na hlavním cíli nekomunikuje s konfiguračním serverem.
 
-Řešení tohoto problému, pomocí následujících kroků ověřte stav služby:
+Problém vyřešíte tak, že pomocí následujícího postupu ověříte stav služby:
 
-1. Ověřte, zda je spuštěna hlavního cílového virtuálního počítače.
-2. Přihlaste se do hlavního cílového virtuálního počítače pomocí účtu, který má oprávnění správce.
-    - Ověřte, zda je spuštěna služba svagents. Pokud je spuštěná, restartujte službu
-    - Zkontrolujte protokoly v umístění pro podrobnosti o chybě:
+1. Ověřte, že je hlavní cílový virtuální počítač spuštěný.
+2. Přihlaste se k hlavnímu cílovému virtuálnímu počítači pomocí účtu, který má oprávnění správce.
+    - Ověřte, zda je spuštěna služba svagents. Pokud je spuštěný, restartujte službu.
+    - Podrobnosti o chybě najdete v protokolech v umístění:
         
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
 
-## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>ID chyby 78144 - nejsou k dispozici pro virtuální počítač během posledních několika minut "XXX" žádný bod obnovení konzistentní vzhledem k aplikaci
+## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>ID chyby 78144 – pro virtuální počítač není k dispozici žádný bod obnovení konzistentní vzhledem k aplikacím během posledních ' XXX ' minut
 
-Níže jsou uvedeny některé z nejběžnějších problémů
+Níže jsou uvedené některé z nejběžnějších problémů.
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>1\. příčina: Známý problém v systému SQL server 2008 a 2008 R2 
-**K vyřešení** : Existuje známý problém se systémem SQL server 2008 a 2008 R2. Naleznete v tomto článku znalostní BÁZE [agenta Azure Site Recovery nebo jiné ne komponentu VSS zálohování se nezdaří pro server hostující SQL Server 2008 R2](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Příčina 1: Známý problém v systému SQL Server 2008/2008 R2 
+**Jak opravit** : Došlo k známému problému s SQL serverem 2008/2008 R2. Přečtěte si prosím tento článek znalostní báze [Azure Site Recovery agent nebo jiná nekomponentová záloha služby VSS u serveru, který hostuje SQL Server 2008 R2, se nezdařil](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2) .
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>2\. příčina: Selhání úlohy Azure Site Recovery na servery, které hostují všechny verze instance SQL serveru s databází AUTO_CLOSE 
-**K vyřešení** : Přečtěte si Kb [článku](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
-
-
-#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>3\. důvod: Známý problém nástroje SQL Server 2016 a 2017
-**K vyřešení** : Přečtěte si Kb [článku](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Příčina 2: Azure Site Recovery úlohy selžou na serverech hostujících jakékoli verze SQL Server instancí pomocí AUTO_CLOSE databáze 
+**Jak opravit** : Informace najdete v [článku](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) znalostní báze. 
 
 
-### <a name="more-causes-due-to-vss-related-issues"></a>Další možné příčiny kvůli VSS související problémy:
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Příčina 3: Známý problém v SQL Server 2016 a 2017
+**Jak opravit** : Informace najdete v [článku](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) znalostní báze. 
 
-Chcete-li pokračovat v řešení potíží, zkontrolujte soubory na zdrojovém počítači získat přesné informace o chybě kód chyby:
+
+### <a name="more-causes-due-to-vss-related-issues"></a>Další příčiny v důsledku potíží souvisejících se službou VSS:
+
+Pokud chcete problém vyřešit, Projděte si soubory na zdrojovém počítači, abyste získali přesný kód chyby pro selhání:
     
     C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
 
 Jak najít chyby v souboru?
-Vyhledejte řetězec "vacpError" tak, že otevřete soubor vacp.log v editoru
+Vyhledejte řetězec "vacpError" otevřením souboru vacp. log v editoru.
         
     Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
 
-V předchozím příkladu **2147754994** je chybový kód, který vás informuje o selhání, jak je znázorněno níže
+Ve výše uvedeném příkladu **2147754994** je kód chyby, který vám oznamuje selhání, jak je uvedeno níže.
 
-#### <a name="vss-writer-is-not-installed---error-2147221164"></a>Zapisovač VSS není nainstalováno – chyba 2147221164 
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>Zapisovač VSS není nainstalovaný – chyba 2147221164 
 
-*K vyřešení*: Ke generování značka konzistence aplikací, Azure Site Recovery používá Microsoft Stínová kopie svazku Service (VSS). Nainstaluje zprostředkovatele služby VSS pro svou pořizovat snímky konzistence aplikace. Tento zprostředkovatel stínové kopie svazku je nainstalována jako služba. V případě, že není nainstalována služba poskytovatelem služby VSS, vytvoření snímku konzistence aplikací se nezdaří s id chyby 0x80040154 "Třídy není registrováno". </br>
-Přečtěte si [článek pro řešení potíží instalace zapisovače VSS](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
+*Jak opravit*: K vygenerování značky konzistence aplikace Azure Site Recovery používá službu Stínová kopie svazku (VSS) společnosti Microsoft. Nainstaluje poskytovatele služby VSS, aby jeho operace mohla provádět snímky konzistence aplikací. Tento zprostředkovatel služby Stínová kopie svazku je nainstalován jako služba. V případě, že není nainstalovaná služba poskytovatele VSS, vytvoření snímku konzistence aplikací se nepovede s ID chyby 0x80040154 "třída není zaregistrovaná". </br>
+Přečtěte si [článek pro řešení potíží s instalací zapisovače VSS](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
 
-#### <a name="vss-writer-is-disabled---error-2147943458"></a>Zapisovač VSS je zakázáno – chyba 2147943458
+#### <a name="vss-writer-is-disabled---error-2147943458"></a>Zapisovač VSS je zakázaný – chyba 2147943458
 
-**K vyřešení**: Ke generování značka konzistence aplikací, Azure Site Recovery používá Microsoft Stínová kopie svazku Service (VSS). Nainstaluje zprostředkovatele služby VSS pro svou pořizovat snímky konzistence aplikace. Tento zprostředkovatel stínové kopie svazku je nainstalována jako služba. V případě, že je služba poskytovatel služby VSS zakázána, vytvoření snímku konzistence aplikací se nezdaří s id chybového "Zadaná služba je zakázána a nemůže být started(0x80070422)". </br>
+**Jak opravit**: K vygenerování značky konzistence aplikace Azure Site Recovery používá službu Stínová kopie svazku (VSS) společnosti Microsoft. Nainstaluje poskytovatele služby VSS, aby jeho operace mohla provádět snímky konzistence aplikací. Tento zprostředkovatel služby Stínová kopie svazku je nainstalován jako služba. V případě, že je služba poskytovatele VSS zakázaná, vytvoření snímku konzistence aplikací se nepovede s ID chyby. Zadaná služba je zakázaná a nedá se spustit (0x80070422). </br>
 
-- Pokud se stínové kopie svazku je zakázaná,
-    - Zkontrolujte, že typ spouštění služby poskytovatelem služby VSS je rovno **automatické**.
-    - Restartuje následující služby:
-        - Služba VSS
-        - Azure Site Recovery VSS Provider
+- Pokud je VSS zakázaný,
+    - Ověřte, zda je typ spouštění služby VSS Provider nastaven na hodnotu **automaticky**.
+    - Restartujte následující služby:
+        - Služba Stínová kopie svazku
+        - Poskytovatel služby Stínová kopie svazku Azure Site Recovery
         - Služba VDS
 
-####  <a name="vss-provider-notregistered---error-2147754756"></a>NOT_REGISTERED zprostředkovatele služby VSS – chyba 2147754756
+####  <a name="vss-provider-not_registered---error-2147754756"></a>Zprostředkovatel služby Stínová kopie svazku NOT_REGISTERED – chyba 2147754756
 
-**K vyřešení**: Ke generování značka konzistence aplikací, Azure Site Recovery používá Microsoft Stínová kopie svazku Service (VSS). Zkontrolujte, jestli je nebo není nainstalovaná služba Azure Site Recovery VSS Provider. </br>
+**Jak opravit**: K vygenerování značky konzistence aplikace Azure Site Recovery používá službu Stínová kopie svazku (VSS) společnosti Microsoft. Ověřte, jestli je nainstalovaná služba poskytovatele VSS Azure Site Recovery, nebo ne. </br>
 
-- Opakovaný pokus o instalaci poskytovatele pomocí následujících příkazů:
-- Odinstalace stávajícího poskytovatele: C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
-- Znovu nainstalujte: C:\Program soubory (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
+- Opakujte instalaci poskytovatele pomocí následujících příkazů:
+- Odinstalace stávajícího zprostředkovatele: C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
+- Instaluje C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
  
-Zkontrolujte, že typ spouštění služby poskytovatelem služby VSS je rovno **automatické**.
-    - Restartuje následující služby:
-        - Služba VSS
-        - Azure Site Recovery VSS Provider
+Ověřte, zda je typ spouštění služby VSS Provider nastaven na hodnotu **automaticky**.
+    - Restartujte následující služby:
+        - Služba Stínová kopie svazku
+        - Poskytovatel služby Stínová kopie svazku Azure Site Recovery
         - Služba VDS
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud potřebujete další pomoc, zveřejněte svůj dotaz v [fórum pro Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). Máme k dispozici aktivní komunitě a jedním z našich techniků, kteří vám můžou pomoct.
+Pokud potřebujete další informace, pošlete svůj dotaz do [fóra Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). Máme aktivní komunitu a jeden z našich technik vám může pomoct.

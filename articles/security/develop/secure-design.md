@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 67687e217372c17b007982ef99bf1f80c3e6be5f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e31db74807b850b3d8cb8fc057e94e98db18fca2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728702"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780625"
 ---
 # <a name="design-secure-applications-on-azure"></a>Návrh zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při návrhu aplikací pro Cloud. Pojednává o školicích materiálech spolu s bezpečnostními otázkami a koncepty, které je potřeba vzít v úvahu během fází vývoje požadavků a návrhů na [životní cyklus Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k návrhu bezpečnější aplikace.
@@ -149,14 +149,14 @@ Modelování hrozeb je proces identifikace potenciálních bezpečnostních hroz
 
 Abychom vám usnadnili proces modelování hrozeb, navrhli jsme [Threat Modeling Tool SDL](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) s ohledem na nebezpečnostní odborníky. Tento nástroj usnadňuje modelování hrozeb všem vývojářům tím, že poskytuje jasné pokyny, jak vytvářet a analyzovat modely hrozeb.
 
-Modelování návrhu aplikace a vytváření [výčtu hrozeb a](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) jejich výčet – falšování identity, manipulace, odmítnutí, zpřístupnění informací, odepření služby a zvýšení oprávnění – napříč všemi hranicemi vztahů důvěryhodnosti byl prověřen účinný způsob, jak zachytit chyby návrhu. od začátku. V následující tabulce jsou uvedeny hrozby pro rozteč a poskytuje několik ukázkových rizik, která využívají funkce poskytované Azure. Tato zmírnění rizika nebudou v každé situaci fungovat.
+Modelování návrhu aplikace a vytváření výčtu hrozeb [](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) a jejich výčet – falšování identity, manipulace, odmítnutí, zpřístupnění informací, odepření služby a zvýšení oprávnění – napříč všemi hranicemi vztahů důvěryhodnosti byl prověřen účinný způsob, jak zachytit chyby návrhu. od začátku. V následující tabulce jsou uvedeny hrozby pro rozteč a poskytuje několik ukázkových rizik, která využívají funkce poskytované Azure. Tato zmírnění rizika nebudou v každé situaci fungovat.
 
 | Nebezpečí | Vlastnost zabezpečení | Potenciální omezení pro platformu Azure |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Falšování identity               | Ověřování        | [Vyžadovat připojení HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Manipulace              | Integrita             | Ověřte certifikáty protokolu SSL/TLS. Aplikace, které používají protokol SSL/TLS, musí plně ověřit certifikáty X. 509 entit, ke kterým se připojují. Pomocí Azure Key Vault certifikátů můžete [spravovat certifikáty x509](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates). |
 | Popírání odpovědnosti            | Neodvolatelnost       | Povolte [monitorování a diagnostiku](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)Azure.|
-| Zpřístupnění informací | Chovávat       | Šifrování citlivých dat v [klidovém umístění](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) a [přenosu](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit). |
+| Zpřístupnění informací | Chovávat       | Šifrování citlivých dat v [klidovém umístění](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) a [přenosu](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit). |
 | Odepření služby      | Dostupnost          | Monitoruje metriky výkonu pro potenciální odepření podmínek poskytování služeb. Implementujte filtry připojení. [Ochrana Azure DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps)v kombinaci s osvědčenými postupy pro návrh aplikací poskytuje ochranu před útoky DDoS.|
 | Zvýšení oprávnění | Authorization         | Použijte Azure Active Directory <span class="underline"></span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
 
@@ -267,7 +267,7 @@ Při návrhu formátů dat označte všechna relevantní data jako citlivá. Uji
 #### <a name="use-encryption"></a>Použít šifrování
 
 Ochrana dat by měla být důležitou součástí vaší strategie zabezpečení.
-Pokud jsou vaše data uložená v databázi nebo se mezi místy pohybují, používejte šifrování neaktivních uložených [dat](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) (v databázi) a šifrování přenášených [dat](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit) (na cestě a od uživatele, databáze, rozhraní API nebo koncového bodu služby). Pro výměnu dat doporučujeme vždy používat protokoly SSL/TLS. Ujistěte se, že používáte nejnovější verzi TLS pro šifrování (aktuálně se jedná o verzi 1,2).
+Pokud jsou vaše data uložená v databázi nebo se mezi místy pohybují, používejte šifrování neaktivních uložených [dat](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) (v databázi) a šifrování přenášených [dat](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit) (na cestě a od uživatele, databáze, rozhraní API nebo koncového bodu služby). Pro výměnu dat doporučujeme vždy používat protokoly SSL/TLS. Ujistěte se, že používáte nejnovější verzi TLS pro šifrování (aktuálně se jedná o verzi 1,2).
 
 #### <a name="avoid-hard-coding"></a>Vyhnout se hardwarovému kódování
 

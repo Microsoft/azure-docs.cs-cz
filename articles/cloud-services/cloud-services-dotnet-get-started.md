@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: gwallace
-ms.openlocfilehash: 802ece106099e8a475b83c820130c3c238d330d2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 3f2c60be29d679d0b0d30b6bf471f083c66ba93f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359210"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827673"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
@@ -514,7 +514,7 @@ var imagesQueue = queueClient.GetQueueReference("images");
 imagesQueue.CreateIfNotExists();
 ```
 
-### <a name="contosoadsweb---layoutcshtml"></a>ContosoAdsWeb – \_Layout.cshtml
+### <a name="contosoadsweb---_layoutcshtml"></a>ContosoAdsWeb – \_Layout.cshtml
 Soubor *_Layout.cshtml* nastaví název aplikace v záhlaví a zápatí a vytvoří položku nabídky „Reklamy“.
 
 ### <a name="contosoadsweb---viewshomeindexcshtml"></a>ContosoAdsWeb – Views\Home\Index.cshtml
@@ -696,7 +696,7 @@ public override void Run()
 }
 ```
 
-Po každé iteraci smyčky, kdy nebyla nalezena žádná zpráva fronty, se program na sekundu uspí. Tím se roli pracovního procesu zabrání, aby nadměrně nezvyšovala náklady na čas procesoru a transakce úložiště. Poradní tým Microsoftu vypráví příběh o vývojáři, který tohle zapomněl zohlednit, nasadil kód do výroby a odjel na dovolenou. Když se vrátil zpět, byl účet za dohled vyšší než cena jeho dovolené.
+Po každé iteraci smyčky, kdy nebyla nalezena žádná zpráva fronty, se program na sekundu uspí. Tím se roli pracovního procesu zabrání, aby nadměrně nezvyšovala náklady na čas procesoru a transakce úložiště. Poradní tým Microsoftu vypráví příběh o vývojáři, který tohle zapomněl zohlednit, nasadil kód do výroby a odjel na dovolenou. Když se vrátí zpět, jejich náklady jsou vyšší než dovolená.
 
 Obsah zprávy fronty občas způsobí chybu při zpracování. Takové zprávě se říká *nezpracovatelná zpráva* a pokud jste právě zaprotokolovali chybu a restartovali smyčku, můžete se pokoušet o zpracování této zprávy do nekonečna.  Zachycující blok proto zahrnuje podmínku, která kontroluje, jak často se aplikace pokusila aktuální zprávu zpracovat a pokud to bylo víc než pětkrát, odstraní zprávu z fronty.
 

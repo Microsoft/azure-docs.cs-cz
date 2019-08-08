@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8ee7db3ade594958729deeb12007f528376d5179
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 4f06e579e8548f4220d8f3fb4b618902f18b538e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442422"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774809"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu API Management
 
@@ -34,6 +34,9 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 -   [Nastavení kvóty využití podle](api-management-access-restriction-policies.md#SetUsageQuota) předplatného – umožňuje vynutilit obnovitelné nebo maximální objem volání nebo kvótu šířky pásma, a to na základě jednotlivých předplatných.
 -   [Nastavení kvóty využití podle klíče](#SetUsageQuotaByKey) – umožňuje vynutilit obnovitelné nebo maximální objem volání nebo kvótu šířky pásma, a to na základě jednotlivých klíčů.
 -   [Ověří](api-management-access-restriction-policies.md#ValidateJWT) , zda existence tokenu JWT vynutila platnost a zda byla extrahována z buď zadaného záhlaví protokolu HTTP, nebo zadaného parametru dotazu.
+
+> [!TIP]
+> Zásady omezení přístupu můžete použít v různých oborech pro různé účely. Můžete například zabezpečit celé rozhraní API pomocí ověřování AAD, a to tak `validate-jwt` , že použijete zásady na úrovni rozhraní API, nebo ho můžete použít na úrovni operace rozhraní API a použít `claims` k podrobnějšímu řízení.
 
 ## <a name="CheckHTTPHeader"></a>Kontrolovat hlavičku HTTP
 

@@ -1,6 +1,6 @@
 ---
-title: Nasazení první aplikace pro Cloud Foundry v Microsoft Azure | Dokumentace Microsoftu
-description: Nasazení aplikace do Cloud Foundry v Azure
+title: Nasazení první aplikace pro Cloud Foundry v Microsoft Azure | Microsoft Docs
+description: Nasazení aplikace pro Cloud Foundry v Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: seanmck
@@ -17,71 +17,71 @@ ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
 ms.openlocfilehash: fe510865e687b6a44538627e4ef9025b41416841
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/06/2019
 ms.locfileid: "67668350"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Nasazení první aplikace pro Cloud Foundry v Microsoft Azure
 
-[Cloud Foundry](https://cloudfoundry.org) oblíbených open source aplikační platformy je k dispozici na Microsoft Azure. V tomto článku vám ukážeme, jak nasadit a spravovat aplikace na Cloud Foundry v prostředí Azure.
+[Cloud Foundry](https://cloudfoundry.org) je oblíbená Open-Source aplikační platforma dostupná na Microsoft Azure. V tomto článku ukážeme, jak nasadit a spravovat aplikaci na Cloud Foundry v prostředí Azure.
 
 ## <a name="create-a-cloud-foundry-environment"></a>Vytvoření prostředí Cloud Foundry
 
-Existuje několik možností pro vytvoření prostředí Cloud Foundry v Azure:
+Pro vytváření Cloud Foundryho prostředí v Azure existuje několik možností:
 
-- Použití [Pivotal Cloud Foundry nabídka][pcf-azuremarketplace] in the Azure Marketplace to create a standard environment that includes PCF Ops Manager and the Azure Service Broker. You can find [complete instructions][pcf-azuremarketplace-pivotaldocs] pro nasazení na webu marketplace nabízí v Pivotal dokumentaci.
-- Vytvořte přizpůsobené prostředí podle [ručního nasazení Pivotal Cloud Foundry][pcf-custom].
-- [Nasazení Cloud Foundry balíčků open source přímo][oss-cf-bosh] nastavením [BOSH](https://bosh.io) ředitel, virtuální počítač, který koordinuje nasazení prostředí Cloud Foundry.
+- Pomocí [nabídky pivot Cloud Foundry][pcf-azuremarketplace] v Azure Marketplace můžete vytvořit standardní prostředí, které zahrnuje PCF OPS Manager a Azure Service Broker. Podrobné [pokyny][pcf-azuremarketplace-pivotaldocs] k nasazení nabídky Marketplace najdete v dokumentaci k pivotu.
+- Vytvořte vlastní prostředí nasazením [pivot Cloud Foundry ručně][pcf-custom].
+- [Open source Cloud Foundry balíčky nasaďte přímo][oss-cf-bosh] nastavením BOSHového ředitele [](https://bosh.io) a virtuálního počítače, který koordinuje nasazení Cloud Foundry prostředí.
 
 > [!IMPORTANT] 
-> Pokud provádíte nasazení PCF z Azure Marketplace, poznamenejte si SYSTEMDOMAINURL a přihlašovací údaje správce vyžadovaných pro přístup k Pivotal Správce aplikací, které jsou popsané v příručce pro nasazení webu marketplace. Tyto jsou potřeba k dokončení tohoto kurzu. Pro nasazení webu marketplace, SYSTEMDOMAINURL je ve formě https://system. *IP adresa*. cf.pcfazure.com.
+> Pokud PCF nasazujete z Azure Marketplace, poznamenejte si SYSTEMDOMAINURL a přihlašovací údaje správce potřebné pro přístup ke Správci Pivot Apps, jak jsou popsané v Průvodci nasazením Marketplace. Jsou potřebné k dokončení tohoto kurzu. V případě nasazení Marketplace je SYSTEMDOMAINURL ve formě https://system. *Adresa IP-Address*. CF.pcfazure.com.
 
-## <a name="connect-to-the-cloud-controller"></a>Připojení k řadiči cloudu
+## <a name="connect-to-the-cloud-controller"></a>Připojit ke cloud Controller
 
-Řadič cloudu je primárním vstupním bodem do prostředí Cloud Foundry pro nasazení a správu aplikací. Základní cloudové Kontroleru rozhraní API (CCAPI) je rozhraní REST API, ale je přístupná prostřednictvím různých nástrojů. V takovém případě budeme pracovat s nimi prostřednictvím [Cloud Foundry CLI][cf-cli]. You can install the CLI on Linux, MacOS, or Windows, but if you'd prefer not to install it at all, it is available pre-installed in the [Azure Cloud Shell][cloudshell-docs].
+Cloud Controller je primárním vstupním bodem pro Cloud Foundry prostředí pro nasazení a správu aplikací. Rozhraní API základního cloudového kontroleru (CCAPI) je REST API, ale je dostupné prostřednictvím různých nástrojů. V tomto případě interakci s ní provedeme prostřednictvím [Cloud Foundry CLI][cf-cli]. Můžete nainstalovat rozhraní příkazového řádku v systému Linux, MacOS nebo Windows, ale pokud byste ho raději nenainstalovali, je k dispozici v [Azure Cloud Shell][cloudshell-docs].
 
-K přihlášení, předřaďte `api` k SYSTEMDOMAINURL, který jste získali z webu marketplace nasazení. Protože výchozím nasazení používá certifikát podepsaný svým držitelem, měli byste taky zahrnout `skip-ssl-validation` přepnout.
+Pokud se chcete přihlásit, `api` Přihlaste se k SYSTEMDOMAINURL, který jste získali z nasazení na Marketplace. Vzhledem k tomu, že výchozí nasazení používá certifikát podepsaný svým držitelem, měli byste `skip-ssl-validation` také použít přepínač.
 
 ```bash
 cf login -a https://api.SYSTEMDOMAINURL --skip-ssl-validation
 ```
 
-Zobrazí se výzva k přihlášení k řadiči cloudu. Pomocí přihlašovacích údajů účtu správce, které jste získali z webu marketplace kroky nasazení.
+Zobrazí se výzva, abyste se přihlásili ke cloud Controller. Použijte přihlašovací údaje účtu správce, které jste získali z kroků nasazení na Marketplace.
 
-Poskytuje cloud Foundry *organizace* a *prostory* jako obory názvů izolovat týmy a prostředí v rámci sdílené nasazení. Nasazení PCF marketplace obsahuje výchozí *systému* organizace a sadu prostory vytvořené tak, aby obsahovala základní komponenty, jako je automatické škálování služby a služby Azure service broker. Tentokrát klikněte *systému* místa.
+Cloud Foundry poskytuje *organizace* a *prostory* jako obory názvů k izolaci týmů a prostředí v rámci sdíleného nasazení. Nasazení na webu PCF Marketplace zahrnuje výchozí organizační *systém* a sadu prostorů vytvořených pro vytváření základních součástí, jako je služba automatického škálování a služba Azure Service Broker. Prozatím vyberte *systémové* místo.
 
 
-## <a name="create-an-org-and-space"></a>Vytvoření organizace a místa
+## <a name="create-an-org-and-space"></a>Vytvoření org a prostoru
 
-Pokud zadáte `cf apps`, zobrazí se řada aplikací systému, které jsou nasazené v systému mezeru v rámci organizace. systém 
+Pokud zadáte `cf apps`, zobrazí se sada systémových aplikací, které byly nasazeny v systémovém prostoru v rámci organizace systému. 
 
-Byste měli mít *systému* organizace, které jsou vyhrazené pro aplikace systému, tak vytvoření organizace a místa pro uložení naší ukázkovou aplikací.
+Organizaci *systému* byste měli ponechat rezervovanou pro systémové aplikace, takže vytvořte organizaci a prostor pro domácí ukázkovou aplikaci.
 
 ```bash
 cf create-org myorg
 cf create-space dev -o myorg
 ```
 
-Použít cílový příkaz pro přepnutí na novou organizaci a místa:
+Pomocí příkazu cíl přepněte na novou organizační adresu a místo:
 
 ```bash
 cf target -o testorg -s dev
 ```
 
-Nyní když nasadíte aplikaci, je automaticky vytvořen ve novou organizaci a místo. Pokud chcete potvrdit, že nejsou momentálně žádné aplikace v nové organizaci/prostor, zadejte `cf apps` znovu.
+Když teď nasadíte aplikaci, automaticky se vytvoří v nové organizaci a prostoru. Pokud chcete potvrdit, že v nové organizaci nebo prostoru momentálně nejsou žádné aplikace, zadejte `cf apps` znovu.
 
 > [!NOTE] 
-> Další informace o organizace a mezery a jak můžete využít k řízení přístupu na základě role (RBAC), najdete v článku [dokumentace ke Cloud Foundry][cf-orgs-spaces-docs].
+> Další informace o organizace a mezerách a způsobu jejich použití pro řízení přístupu na základě role (RBAC) najdete v [dokumentaci k Cloud Foundry][cf-orgs-spaces-docs].
 
 ## <a name="deploy-an-application"></a>Nasazení aplikace
 
-Použijeme ukázkovou aplikaci Cloud Foundry názvem Hello Spring cloudem, který je napsaný v jazyce Java a na základě [Spring Framework](https://spring.io) a [Spring Boot](https://projects.spring.io/spring-boot/).
+Pojďme použít ukázkovou Cloud Foundry aplikaci nazvanou Hello Cloud, která je napsaná v jazyce Java a založená na [pružinové architektuře](https://spring.io) a [pružinovém spuštění](https://projects.spring.io/spring-boot/).
 
-### <a name="clone-the-hello-spring-cloud-repository"></a>Naklonujte úložiště Hello Spring cloudem
+### <a name="clone-the-hello-spring-cloud-repository"></a>Klonovat cloudové úložiště Hello
 
-Ukázkové aplikace Hello Spring cloudem je k dispozici na Githubu. Si ho naklonovat do vašeho prostředí a přejděte do nového adresáře:
+Ukázková cloudová aplikace Hello pro Cloud je dostupná na GitHubu. Naklonujte ho do svého prostředí a přejděte do nového adresáře:
 
 ```bash
 git clone https://github.com/cloudfoundry-samples/hello-spring-cloud
@@ -90,42 +90,42 @@ cd hello-spring-cloud
 
 ### <a name="build-the-application"></a>Sestavení aplikace
 
-Sestavení aplikace pomocí [Apache Maven](https://maven.apache.org).
+Sestavte aplikaci pomocí [Apache Maven](https://maven.apache.org).
 
 ```bash
 mvn clean package
 ```
 
-### <a name="deploy-the-application-with-cf-push"></a>Nasazení aplikace pomocí nasdílení změn cf
+### <a name="deploy-the-application-with-cf-push"></a>Nasazení aplikace pomocí CR push
 
-Většina aplikací pomocí Cloud Foundry můžete nasadit `push` příkaz:
+Většinu aplikací můžete nasadit pro Cloud Foundry pomocí `push` příkazu:
 
 ```bash
 cf push
 ```
 
-Pokud jste *nabízených* aplikace Cloud Foundry detekuje typu aplikace (v tomto případě aplikace v Javě) a identifikuje jeho závislosti (v tomto případě Spring framework). Potom balíčky všechno, co je potřeba ke spouštění kódu do samostatné image kontejneru, označované jako *droplet*. A konečně Cloud Foundry plánuje aplikaci na některém z dostupných počítačů ve vašem prostředí a vytvoří adresu URL, kde je k němu přistoupit, která je k dispozici ve výstupu příkazu.
+Když nahrajete aplikaci, Cloud Foundry detekuje typ aplikace (v tomto případě aplikace Java) a identifikuje její závislosti (v tomto případě se jedná o architekturu pružiny). Pak zabalí vše potřebné ke spuštění kódu v samostatné imagi kontejneru, označované jako *droplet*. Nakonec Cloud Foundry naplánování aplikace na jednom z dostupných počítačů ve vašem prostředí a vytvoří adresu URL, na které se můžete dostat, která je k dispozici ve výstupu příkazu.
 
-![Výstup z příkazu push cf][cf-push-output]
+![Výstup z příkazu CR push][cf-push-output]
 
-Pokud chcete zobrazit aplikaci hello-spring cloudem, otevřete v prohlížeči adresy URL:
+Pokud chcete zobrazit cloudovou aplikaci Hello-jaře, otevřete zadanou adresu URL v prohlížeči:
 
-![Výchozí uživatelské rozhraní pro Hello Spring Cloud][hello-spring-cloud-basic]
+![Výchozí uživatelské rozhraní pro zdroj Hello pro Cloud][hello-spring-cloud-basic]
 
 > [!NOTE] 
-> Další informace o tom, co se stane během `cf push`, naleznete v tématu [jak, aplikace připravené][cf-push-docs] v dokumentaci k Cloud Foundry.
+> Další informace o tom, co se `cf push`děje v průběhu, najdete v tématu [jak jsou aplikace připravené][cf-push-docs] v dokumentaci Cloud Foundry.
 
 ## <a name="view-application-logs"></a>Zobrazit protokoly aplikací
 
-Cloud Foundry rozhraní příkazového řádku můžete použít k zobrazení protokolů pro aplikaci pomocí jeho názvu:
+Pomocí rozhraní příkazového řádku Cloud Foundry můžete zobrazit protokoly aplikace podle jejího názvu:
 
 ```bash
 cf logs hello-spring-cloud
 ```
 
-Ve výchozím nastavení, protokoly příkaz používá *tail*, který zobrazuje nové protokoly, jako jsou zapsány. Pokud chcete zobrazit nové protokoly nezobrazí, aktualizujte aplikaci hello-spring cloud v prohlížeči.
+Ve výchozím nastavení používá příkaz logs *konec*, který zobrazuje nové protokoly při jejich zápisu. Pokud se chcete podívat na nové protokoly, aktualizujte v prohlížeči aplikaci Hello-jaře-Cloud.
 
-Chcete-li zobrazit protokoly, které již byly napsány, přidejte `recent` přepínače:
+Chcete-li zobrazit protokoly, které již byly zapsány, přidejte `recent` přepínač:
 
 ```bash
 cf logs --recent hello-spring-cloud
@@ -133,20 +133,20 @@ cf logs --recent hello-spring-cloud
 
 ## <a name="scale-the-application"></a>Škálování aplikace
 
-Ve výchozím nastavení `cf push` vytvoří pouze jedna instance vaší aplikace. K zajištění vysoké dostupnosti a povolit horizontální navýšení kapacity pro vyšší propustnost, obvykle chcete spustit více než jednu instanci aplikace. Je možné snadno škálovat na již nasazených aplikací pomocí `scale` příkaz:
+Ve výchozím nastavení `cf push` vytvoří pouze jednu instanci aplikace. Chcete-li zajistit vysokou dostupnost a povolit horizontální navýšení kapacity pro vyšší propustnost, je obecně vhodné spustit více než jednu instanci aplikace. Pomocí `scale` příkazu můžete snadno škálovat již nasazené aplikace:
 
 ```bash
 cf scale -i 2 hello-spring-cloud
 ```
 
-Spuštění `cf app` příkaz aplikace zobrazí, že Cloud Foundry je vytvořením další instance okna aplikace. Po zahájení aplikace Cloud Foundry automaticky spustí vyrovnáváním zatížení provozu na ni.
+`cf app` Spuštění příkazu v aplikaci ukazuje, že Cloud Foundry vytváří další instanci aplikace. Po spuštění aplikace Cloud Foundry automaticky spustí vyrovnávání zatížení.
 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Přečtěte si dokumentaci Cloud Foundry][cloudfoundry-docs]
-- [Nastaví modul plug-in Azure DevOps služby pro Cloud Foundry][vsts-plugin]
-- [Konfigurace Microsoft Log Analytics Nozzle pro Cloud Foundry][loganalytics-nozzle]
+- [Přečtěte si dokumentaci k Cloud Foundry][cloudfoundry-docs]
+- [Nastavení modulu plug-in Azure DevOps Services pro Cloud Foundry][vsts-plugin]
+- [Konfigurace Microsoft Log Analytics trysku pro Cloud Foundry][loganalytics-nozzle]
 
 <!-- LINKS -->
 

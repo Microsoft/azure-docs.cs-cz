@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 688492188bb8a29e33568011c2cf75439ca5f4af
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: fbce475e1f783595fb67e62e15d5a503a4c687ed
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726665"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780603"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
@@ -331,7 +331,7 @@ Azure také nabízí několik snadno použitelných funkcí, které vám pomůž
 
 - [Bezpečně připojte svoji aplikaci k prostředkům v soukromé síti pomocí Hybrid Connections](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 
-Azure App Service používá stejné antimalwarové řešení, které používá Azure Cloud Services a Virtual Machines. Další informace o tomto tématu najdete v naší [dokumentaci](https://docs.microsoft.com/azure/security/azure-security-antimalware)k antimalwaru.
+Azure App Service používá stejné antimalwarové řešení, které používá Azure Cloud Services a Virtual Machines. Další informace o tomto tématu najdete v naší [dokumentaci](https://docs.microsoft.com/azure/security/fundamentals/antimalware)k antimalwaru.
 
 ## <a name="secure-your-network"></a>Zabezpečení vaší sítě
 Microsoft Azure obsahuje robustní síťovou infrastrukturu pro podporu požadavků vaší aplikace a připojení služby. Mezi prostředky umístěnými v Azure, mezi místními a hostovanými prostředky Azure a a z Internetu a Azure se může připojit k síti.
@@ -352,7 +352,7 @@ Azure podporuje vyhrazené připojení WAN Link k vaší místní síti a Virtua
 
 [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/) umožňuje flexibilním způsobem nasadit široké škály výpočetních řešení. Díky podpoře systémů Windows, Linux, SQL Server, Oracle, IBM, SAP a Azure BizTalk Services můžete nasadit jakoukoli úlohu a jakýkoli jazyk skoro v každém operačním systému.
 
-S Azure můžete použít Antimalwarový [software](https://docs.microsoft.com/azure/security/azure-security-antimalware) od dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro a Kaspersky, a chránit tak své virtuální počítače před škodlivými soubory, adwarem a dalšími hrozbami.
+S Azure můžete použít Antimalwarový [software](https://docs.microsoft.com/azure/security/fundamentals/antimalware) od dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro a Kaspersky, a chránit tak své virtuální počítače před škodlivými soubory, adwarem a dalšími hrozbami.
 
 Microsoft Antimalware pro Azure Cloud Services a Virtual Machines je schopnost ochrany v reálném čase, která pomáhá identifikovat a odebírat viry, spyware a další škodlivý software. Microsoft Antimalware poskytuje konfigurovatelné výstrahy, když se známý škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit v systémech Azure.
 
@@ -382,7 +382,7 @@ Kromě toho kontrolní seznam:
 
 ## <a name="azure-infrastructure-and-application-security-validation"></a>Ověřování zabezpečení infrastruktury a aplikací Azure
 
-[Provozní zabezpečení Azure](https://docs.microsoft.com/azure/security/azure-operational-security) odkazuje na služby, ovládací prvky a funkce, které jsou k dispozici uživatelům pro ochranu svých dat, aplikací a dalších prostředků v Microsoft Azure.
+[Provozní zabezpečení Azure] (https://docs.microsoft.com/azure/security/fundamentals/operational-security odkazuje na služby, ovládací prvky a funkce dostupné uživatelům pro ochranu svých dat, aplikací a dalších prostředků v Microsoft Azure.
 
 ![ověření zabezpečení (detekce)](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 

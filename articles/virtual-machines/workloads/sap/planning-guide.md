@@ -18,10 +18,10 @@ ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 11a54dee653bcfa6c94a861e483183ac39f465bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/06/2019
 ms.locfileid: "67710184"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
@@ -344,7 +344,7 @@ V celém dokumentu používáme následující výrazy:
 * Prostředí SAP: jedna nebo víc komponent SAP se logicky seskupují tak, aby prováděly obchodní funkce, jako je vývoj, QAS, školení, DR nebo produkce.
 * SAP na šířku: Tento pojem odkazuje na celé prostředky SAP v zákaznickém oddělení IT. SAP na šířku zahrnuje všechna produkční a neprodukční prostředí.
 * Systém SAP: Kombinace vrstvy a aplikační vrstvy systému DBMS, například vývojového systému SAP ERP, SAP BW testovacího systému, SAP CRM produkčního systému atd. V nasazeních Azure není podpora rozdělují tyto dvě vrstvy mezi místními a Azure. Znamená, že systém SAP je buď nasazený místně, nebo je nasazený v Azure. Můžete ale nasadit různé systémy služby SAP na šířku do Azure nebo místního prostředí. Můžete například nasadit vývojové a testovací systémy SAP CRM v Azure, ale produkční systém SAP CRM v místním prostředí.
-* Mezi místními nebo hybridními: Popisuje situaci, kdy se virtuální počítače nasazují do předplatného Azure, které má připojení typu Site-to-site, Multi-Site nebo ExpressRoute, mezi místními datacentra a Azure. V běžné dokumentaci k Azure jsou tyto typy nasazení popsány také jako mezi různými místními nebo hybridními scénáři. Důvodem připojení je rozšiřování místních domén, místní služby Active Directory/OpenLDAP a místní DNS do Azure. Místní orientace se rozšiřuje na prostředky v rámci předplatného Azure. S tímto rozšířením můžou být virtuální počítače součástí místní domény. Uživatelé domény v místní doméně mají přístup k serverům a můžou na těchto virtuálních počítačích spouštět služby (například služby DBMS). Je možné komunikovat a překlad názvů mezi virtuálními počítači nasazenými místně a virtuálními počítači nasazenými v Azure. Toto je nejběžnější a skoro exkluzivní případ nasazení prostředků SAP do Azure. Další informace najdete v [tomto][vpn-gateway-cross-premises-options] [článku a v][vpn-gateway-site-to-site-create]tomto článku.
+* Mezi místními nebo hybridními: Popisuje situaci, kdy se virtuální počítače nasazují do předplatného Azure, které má připojení typu Site-to-site, Multi-Site nebo ExpressRoute, mezi místními datacentra a Azure. V běžné dokumentaci k Azure jsou tyto typy nasazení popsány také jako mezi různými místními nebo hybridními scénáři. Důvodem připojení je rozšiřování místních domén, místní služby Active Directory/OpenLDAP a místní DNS do Azure. Místní orientace se rozšiřuje na prostředky v rámci předplatného Azure. S tímto rozšířením můžou být virtuální počítače součástí místní domény. Uživatelé domény v místní doméně mají přístup k serverům a můžou na těchto virtuálních počítačích spouštět služby (například služby DBMS). Je možné komunikovat a překlad názvů mezi virtuálními počítači nasazenými místně a virtuálními počítači nasazenými v Azure. Toto je nejběžnější a skoro exkluzivní případ nasazení prostředků SAP do Azure. Další informace najdete v [tomto][vpn-gateway-cross-premises-options] článku a v [][vpn-gateway-site-to-site-create]tomto článku.
 
 > [!NOTE]
 > Mezi místní nebo hybridní nasazení systémů SAP, kde je Azure Virtual Machines běžící systémy SAP, jsou pro produkční systémy SAP podporovány členy místní domény. Mezi místními nebo hybridními konfiguracemi se podporuje nasazení částí nebo kompletní řešení SAP v Azure do Azure. I když v Azure běží kompletní prostředí SAP na pracovišti, je potřeba mít tyto virtuální počítače v rámci místní domény a reklamy/OpenLDAP. 
@@ -1253,7 +1253,7 @@ Během nasazování nového virtuálního počítače se můžete rozhodnout, je
 
 V dalším kroku se musíte rozhodnout, jestli chcete vytvořit nový a prázdný disk, nebo jestli chcete vybrat existující disk, který jste nahráli dříve, a měl by se teď připojit k virtuálnímu počítači.
 
-**DŮLEŽITÉ:** Nechcete **používat** ukládání hostitelů do mezipaměti ve službě Azure Storage úrovně Standard. Měli byste ponechat předvolby mezipaměti hostitele ve výchozím nastavení NONE. V případě služby Azure Premium Storage je vhodné povolit ukládání do mezipaměti pro čtení, pokud jsou vstupně-výstupní charakteristiky většinou čteny jako typický vstupně-výstupní přenos dat pro databázové datové soubory. V případě souboru protokolu transakcí databáze není doporučeno ukládat do mezipaměti.
+**DŮLEŽITÉ:** Nechcete používat ukládání hostitelů do mezipaměti ve službě Azure Storage úrovně Standard. Měli byste ponechat předvolby mezipaměti hostitele ve výchozím nastavení NONE. V případě služby Azure Premium Storage je vhodné povolit ukládání do mezipaměti pro čtení, pokud jsou vstupně-výstupní charakteristiky většinou čteny jako typický vstupně-výstupní přenos dat pro databázové datové soubory. V případě souboru protokolu transakcí databáze není doporučeno ukládat do mezipaměti.
 
 ---
 > ![Windows][Logo_Windows] Windows
@@ -1959,7 +1959,7 @@ Tady jsou dva příklady kompletní architektury SAP NetWeaver HA v Azure – je
 Pouze nespravované disky: Pokud nasazujete mnoho systémů SAP a počet nasazených virtuálních počítačů překračuje maximální limit počtu účtů úložiště na předplatné, je možné, jak je vysvětleno níže. V takových případech je potřeba, aby se virtuální pevné disky virtuálních počítačů spojily v rámci jednoho účtu úložiště. Obvykle to provedete tak, že zkombinujete virtuální pevné disky virtuálních počítačů SAP aplikační vrstvy různých systémů SAP.  V jednom účtu Azure Storage jsme také spojili různé virtuální pevné disky různých virtuálních počítačů s DBMS různých systémů SAP. Omezení počtu IOPS Azure Storagech účtů tak, aby se zachovává (<https://azure.microsoft.com/documentation/articles/storage-scalability-targets>)
 
 
-##### <a name="windowslogowindows-ha-on-windows"></a>![Windows][Logo_Windows] HA ve Windows
+##### <a name="windowslogo_windows-ha-on-windows"></a>![Windows][Logo_Windows] HA ve Windows
 
 ![Architektura HA aplikace SAP NetWeaver s SQL Server v Azure IaaS][planning-guide-figure-3200]
 
@@ -1981,7 +1981,7 @@ Následující obrázek znázorňuje stejnou šířku pomocí Managed Disks.
 
 ![Architektura HA aplikace SAP NetWeaver s SQL Server v Azure IaaS][planning-guide-figure-3201]
 
-##### <a name="linuxlogolinux-ha-on-linux"></a>![Linux][Logo_Linux] HA v systému Linux
+##### <a name="linuxlogo_linux-ha-on-linux"></a>![Linux][Logo_Linux] HA v systému Linux
 
 Architektura pro SAP HA v systému Linux v Azure je v podstatě stejná jako pro Windows, jak je popsáno výše. Seznam podporovaných řešení s vysokou dostupností najdete v tématu SAP Note [1928533] .
 

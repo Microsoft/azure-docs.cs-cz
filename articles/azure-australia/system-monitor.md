@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: b68bdb6d1c349df67943889b511eac87c940b531
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f7f78dbde9810c8786e2344555444efabcc989b0
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571884"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779324"
 ---
 # <a name="system-monitoring-for-security-in-azure-australia"></a>Monitorování systému pro zabezpečení v Austrálii Azure
 
@@ -108,7 +108,7 @@ Protokoly shromážděné v Azure spadají do jedné z následujících tří ka
 
 Monitorování virtuálních počítačů Azure je vylepšené nasazením agenta virtuálního počítače pro systémy Windows i Linux. Tato značka velmi zvyšuje množství shromážděných informací o protokolování. Nasazení tohoto agenta se dá nakonfigurovat tak, aby se automaticky probíhat prostřednictvím Azure Security Center.
 
-Společnost Microsoft poskytuje podrobné informace o protokolech specifických pro prostředky Azure [](https://docs.microsoft.com/azure/security/azure-log-audit)a jejich schématech.
+Společnost Microsoft poskytuje podrobné informace o protokolech specifických pro prostředky Azure [](https://docs.microsoft.com/azure/security/fundamentals/log-audit)a jejich schématech.
 
 ### <a name="log-retention-and-protection"></a>Uchovávání protokolů a ochrana
 
@@ -149,6 +149,6 @@ Aby bylo možné začít používat Azure Security Center a plně využívat Azu
 * Povolení automatického zřizování Microsoft Monitoring Agent pro podporu Azure Virtual Machines
 * Přečtěte si, prioritise a zmírnit doporučení a výstrahy zabezpečení na řídicím panelu Security Center.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podrobné informace o implementaci zásad správného řízení a řízení prostředků v Austrálii Azure pro zajištění dodržování předpisů a dodržování předpisů najdete v seAzure Policych [a Azure modrotisky](azure-policy.md) .

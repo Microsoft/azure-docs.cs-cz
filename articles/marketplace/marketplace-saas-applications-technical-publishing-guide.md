@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: 92c3452e07dee126666e6ee1fe0c46b1f8f6dfa4
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f9ff6e19a0f0091cb5b831279eee90727bbb89fd
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876533"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742260"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Průvodce publikováním nabídky aplikací SaaS
 
@@ -126,13 +126,13 @@ Pokud pro federované jednotné přihlašování Azure AD začínáte, postupujt
 ## <a name="saas-subscriptions"></a>SaaS předplatná
 
 Pomocí typu nabídky aplikace SaaS můžete zákazníkům umožnit, aby si koupili své technické řešení založené na SaaS jako předplatné. Pro vaši aplikaci SaaS musí být splněné následující požadavky:
-- Price a účtuje službu paušální měsíční sazbou.
+- Cena a fakturace služby s paušální (měsíční nebo roční) nebo podle sazby za uživatele.
 - Poskytněte způsob, jak službu kdykoli upgradovat nebo zrušit.
-Společnost Microsoft hostuje obchodní transakci. Společnost Microsoft účtuje vaše zákazníky vaším jménem. Pokud chcete jako předplatné použít aplikaci SaaS, musíte si povolit vlastní rozhraní API služby pro správu předplatného. Rozhraní API služby pro správu předplatného musí komunikovat přímo s rozhraními API Azure Resource Manager. Vaše rozhraní API služby pro správu předplatného musí podporovat zřizování služeb, upgrade a zrušení.
+Společnost Microsoft hostuje obchodní transakci. Společnost Microsoft účtuje vaše zákazníky vaším jménem. Pokud chcete aplikaci SaaS nabídnout jako předplatné, je nutné ji integrovat s rozhraními API pro plnění SaaS.  Vaše služba musí podporovat zřizování, upgrade a zrušení.
 
 | Požadavek | Podrobnosti |  
 |:--- |:--- |  
-|Fakturace a měření | Cena vaší nabídky se účtuje za měsíční paušální sazbu. V tuto chvíli se nepodporují funkce pro ocenění na základě využití a možnosti "true-up" založené na využití. |  
+|Fakturace a měření | Ceny vaší nabídky se účtují na základě cenového modelu, který jste vybrali před publikováním (paušální sazba nebo podle uživatele).  Pokud používáte model paušálních sazeb, můžete volitelně zahrnout další dimenze, které se použijí k účtování zákazníků na využití, která nejsou zahrnutá do paušální sazby. |  
 |Výmaz | Vaši nabídku nemůže zákazník kdykoli zrušit. |  
 |Cílová stránka transakce | Můžete hostovat cílovou stránku transakce se značkou Azure, kde můžou uživatelé vytvářet a spravovat jejich účet služby SaaS. |   
 | Rozhraní API pro předplatné | Vystavíte službu, která může komunikovat s předplatným SaaS k vytváření, aktualizaci a odstraňování uživatelských účtů a plánu služeb. Kritické změny rozhraní API musí být podporované do 24 hodin. Pravidelně se vydávají nekritické změny rozhraní API. |  

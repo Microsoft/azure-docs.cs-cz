@@ -1,0 +1,193 @@
+---
+title: 'Rychlý start: Klientská knihovna Počítačové zpracování obrazu pro Java'
+titleSuffix: Azure Cognitive Services
+description: Začněte s knihovnou klienta Počítačové zpracování obrazu pro Java.
+services: cognitive-services
+author: PatrickFarley
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: ''
+ms.topic: quickstart
+ms.date: 07/25/2019
+ms.author: pafarley
+ms.openlocfilehash: 15baf5ee2418581056d571340ba6e8009c33e4ca
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828897"
+---
+# <a name="quickstart-computer-vision-client-library-for-java"></a>Rychlý start: Klientská knihovna Počítačové zpracování obrazu pro Java
+
+Začněte s knihovnou klienta Počítačové zpracování obrazu pro Java. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací.
+
+Pomocí klientské knihovny Počítačové zpracování obrazu pro jazyk Java:
+
+* Analyzujte obrázek pro značky, text Description, obličeje, obsah pro dospělé a další.
+
+[](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0) artefaktu Referenční dokumentace[(Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | 
+
+## <a name="prerequisites"></a>Požadavky
+
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Nástroj Gradle Build](https://gradle.org/install/)nebo jiný správce závislostí.
+
+## <a name="setting-up"></a>Nastavení
+
+### <a name="create-a-computer-vision-azure-resource"></a>Vytvoření prostředku Azure Počítačové zpracování obrazu
+
+Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro Počítačové zpracování obrazu pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači. Můžete také:
+
+* Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#decision) platný po dobu sedmi dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
+* Prohlédněte si prostředek na [Azure Portal](https://portal.azure.com/).
+
+Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte pro tento klíč [proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY`.
+
+### <a name="create-a-new-gradle-project"></a>Vytvořit nový projekt Gradle
+
+V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
+
+```console
+mkdir myapp && cd myapp
+```
+
+`gradle init` Spusťte příkaz z pracovního adresáře. Tento příkaz vytvoří základní soubory sestavení pro Gradle, včetně *Build. Gradle. kts*, který se používá za běhu k vytvoření a konfiguraci vaší aplikace.
+
+```console
+gradle init --type basic
+```
+
+Po zobrazení výzvy k výběru **DSL**vyberte **Kotlin**.
+
+Vyhledejte *Build. Gradle. kts* a otevřete ho pomocí vašeho preferovaného integrovaného vývojového prostředí (IDE) nebo textového editoru. Pak zkopírujte do následující konfigurace sestavení. Tato konfigurace definuje projekt jako aplikaci Java, jejíž vstupní bod je třídou **ComputerVisionQuickstarts**. Importuje knihovnu Počítačové zpracování obrazu.
+
+```kotlin
+plugins {
+    java
+    application
+}
+application { 
+    mainClassName = "ComputerVisionQuickstarts"
+}
+repositories {
+    mavenCentral()
+}
+```
+
+V pracovním adresáři spusťte následující příkaz, který vytvoří zdrojovou složku projektu:
+
+```console
+mkdir -p src/main/java
+```
+
+Přejděte do nové složky a vytvořte soubor s názvem *ComputerVisionQuickstarts. Java*. Otevřete ho v preferovaném editoru nebo integrovaném vývojovém prostředí `import` a přidejte následující příkazy:
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imports)]
+
+Pak přidejte definici třídy pro **ComputerVisionQuickstarts**.
+
+### <a name="install-the-client-library"></a>Instalace klientské knihovny
+
+V tomto rychlém startu se používá správce závislostí Gradle. Knihovnu klienta a informace pro jiné správce závislostí najdete v [centrálním úložišti Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/).
+
+Do souboru *Build. Gradle. kts* vašeho projektu zahrňte klientskou knihovnu počítačové zpracování obrazu jako závislost.
+
+```kotlin
+dependencies {
+    compile(group = "com.microsoft.azure.cognitiveservices", name = "azure-cognitiveservices-computervision", version = "1.0.2-beta")
+}
+```
+
+## <a name="object-model"></a>Objektový model
+
+Následující třídy a rozhraní zpracovávají některé hlavní funkce Počítačové zpracování obrazu Java SDK.
+
+|Name|Popis|
+|---|---|
+| [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
+|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Tato třída pochází z objektu klienta a přímo zpracovává všechny operace obrázků, jako je analýza obrázků, detekce textu a generování miniatur.
+|[VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| Tento výčet definuje různé typy analýz obrázků, které lze provést v rámci standardní operace analýzy. V závislosti na vašich potřebách můžete zadat sadu hodnot VisualFeatureTypes. |
+
+## <a name="code-examples"></a>Příklady kódu
+
+Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Počítačové zpracování obrazu klientské knihovny pro Java:
+
+* [Ověření klienta](#authenticate-the-client)
+* [Analýza obrázku](#analyze-an-image)
+
+## <a name="authenticate-the-client"></a>Ověření klienta
+
+> [!NOTE]
+> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro váš `COMPUTER_VISION_SUBSCRIPTION_KEY`počítačové zpracování obrazu klíč s názvem.
+
+Následující kód přidá `main` metodu do třídy a vytvoří proměnné pro koncový bod a klíč Azure prostředku. Budete muset zadat vlastní řetězec koncového bodu, který můžete najít zaškrtnutím části **přehled** Azure Portal. 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_mainvars)]
+
+Dále přidejte následující kód pro vytvoření objektu [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) a předává ho do jiných metod, které budete definovat později.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_client)]
+
+> [!NOTE]
+> Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k proměnné.
+
+## <a name="analyze-an-image"></a>Analýza obrázku
+
+Následující kód definuje metodu, `AnalyzeLocalImage`která používá objekt klienta k analýze místní image a vytištění výsledků. Metoda vrátí textový popis, kategorizaci, seznam značek, zjištěné plošky, příznaky obsahu pro dospělé, hlavní barvy a typ obrázku.
+
+### <a name="set-up-test-image"></a>Nastavit testovací image
+
+Nejprve vytvořte **prostředky/** složky v **Src/Main/** složce projektu a přidejte obrázek, který chcete analyzovat. Pak přidejte následující definici metody do třídy **ComputerVisionQuickstarts** . V `pathToLocalImage` případě potřeby změňte hodnotu tak, aby odpovídala vašemu souboru obrázku. 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_refs)]
+
+### <a name="specify-visual-features"></a>Zadat vizuální funkce
+
+Dále určete, které vizuální funkce chcete ve své analýze extrahovat. Úplný seznam najdete v [VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable) výčtu.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
+
+### <a name="analyze"></a>Analyzovat
+Tato metoda vytiskne podrobné výsledky do konzoly pro každý obor analýzy obrázků. Doporučujeme obklopit toto volání metody v bloku try/catch
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_analyze)]
+
+### <a name="display-results"></a>Zobrazení výsledků
+
+Výše uvedené volání metody vrátí objekt ImageAnalysis, který obsahuje všechny extrahované informace. Můžete použít blok kódu podobný následujícímu pro tisk podrobností dané vizuální funkce.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_display)]
+
+Úplnou sadu možností zobrazení najdete [](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) v ukázkovém kódu na GitHubu.
+
+## <a name="run-the-application"></a>Spuštění aplikace
+
+Aplikaci můžete vytvořit pomocí:
+
+```console
+gradle build
+```
+
+Spusťte aplikaci pomocí `gradle run` příkazu:
+
+```console
+gradle run
+```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
+
+* [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
+## <a name="next-steps"></a>Další kroky
+
+V tomto rychlém startu jste zjistili, jak provádět základní úlohy pomocí Počítačové zpracování obrazu knihovny Java. Dále si Prozkoumejte referenční dokumentaci, kde najdete další informace o knihovně.
+
+> [!div class="nextstepaction"]
+>[Odkaz na Počítačové zpracování obrazu (Java)](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
+
+* [Co je Počítačové zpracování obrazu?](../Home.md)
+* Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java)
