@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: db295f7644cae96eb00670cecf6e4eeba9bb6bed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 86bd479eff48a7feb42557eb1d175345728f0a69
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567236"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879058"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace s databázemi s jednou, sdruženými a instancemi v Azure SQL Database
 
@@ -96,8 +96,10 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 - Port 445 (odchozí TCP) musí být otevřený v pravidlech zabezpečení podsítě spravované instance pro přístup ke sdílené složce Azure. 
 - Port 1433 (odchozí TCP) je nutné otevřít, pokud je Vydavatel nebo distributor na spravované instanci a předplatitelem v místním prostředí.
 
-  >[!NOTE]
-  > Při připojování k souboru Azure Storage se může zobrazit chyba 53, pokud je v případě, že je distributor instancí databáze a předplatitelem instance, zablokovaný port 445 pro skupinu zabezpečení sítě (NSG). Pokud chcete tento problém vyřešit, [aktualizujte NSG virtuální](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) sítě. 
+
+>[!NOTE]
+> - Při připojování k souboru Azure Storage se může zobrazit chyba 53, pokud je v případě, že je distributor instancí databáze a předplatitelem instance, zablokovaný port 445 pro skupinu zabezpečení sítě (NSG). Pokud chcete tento problém vyřešit, [aktualizujte NSG virtuální](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) sítě. 
+> - Pokud databáze vydavatele a distributora ve spravovaných instancích používá [automatické převzetí služeb při selhání](sql-database-auto-failover-group.md), musí správce spravované instance [Odstranit všechny publikace na staré primární primární databázi a po převzetí služeb při selhání je znovu nakonfigurovat na nové primární](sql-database-managed-instance-transact-sql-information.md#replication)úrovni.
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Porovnání synchronizace dat s transakční replikací
 
@@ -115,7 +117,7 @@ Obecně platí, že vydavatel a distributor musí být v cloudu i v místním pr
 
 ![Jediná instance jako Vydavatel a distributor](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-Vydavatel a distributor jsou konfigurovány v rámci jedné spravované instance a distribuují změny jiné spravované instance, izolované databáze, databáze ve fondu nebo SQL Server místně. V této konfiguraci nejde spravované instance Publisher/distributora nakonfigurovat s [geografickou replikací a automaticky převzetím služeb při selhání](sql-database-auto-failover-group.md).
+Vydavatel a distributor jsou konfigurovány v rámci jedné spravované instance a distribuují změny jiné spravované instance, izolované databáze, databáze ve fondu nebo SQL Server místně. 
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Vydavatel se vzdáleným distributorem na spravované instanci
 
@@ -123,11 +125,11 @@ V této konfiguraci publikuje jedna spravovaná instance změny distributora um�
 
 ![Samostatné instance pro vydavatele a distributora](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
-Vydavatel a distributor jsou nakonfigurovány na dvou spravovaných instancích. V této konfiguraci
+Vydavatel a distributor jsou nakonfigurovány na dvou spravovaných instancích. Tato konfigurace má několik omezení: 
 
 - Obě spravované instance jsou ve stejné virtuální síti.
 - Obě spravované instance jsou ve stejném umístění.
-- Spravované instance hostující publikované a distributorské databáze nelze geograficky [replikovat pomocí automatických převzetí služeb při selhání – skupiny](sql-database-auto-failover-group.md).
+
 
 ### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>Vydavatel a distributor v místním prostředí s předplatitelem v jedné, sdružené a instance databázi 
 
@@ -141,11 +143,13 @@ V této konfiguraci je Azure SQL Database (jedna, sdružená a databáze instanc
 1. [Nakonfigurujte replikaci mezi dvěma spravovanými instancemi](replication-with-sql-database-managed-instance.md). 
 1. [Vytvořte publikaci](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. [Vytvořte nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) pomocí názvu serveru Azure SQL Database jako předplatitele (například `N'azuresqldbdns.database.windows.net` název Azure SQL Database jako cílovou databázi (například **AdventureWorks**). )
+1. Přečtěte si o [omezeních transakční replikace pro spravovanou instanci](sql-database-managed-instance-transact-sql-information.md#replication) .
 
 
 
 ## <a name="see-also"></a>Viz také  
 
+- [Replikace se skupinou MI a převzetí služeb při selhání](sql-database-managed-instance-transact-sql-information.md#replication)
 - [Replikace do služby SQL Database](replication-to-sql-database.md)
 - [Replikace do spravované instance](replication-with-sql-database-managed-instance.md)
 - [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)

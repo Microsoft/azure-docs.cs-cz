@@ -5,54 +5,53 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 11/02/2018
+ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: cc83d94acd25914ee57473de53afbc018f310887
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 795e805e4629a4f4674c296e555ece6230cf66f1
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175107"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883116"
 ---
-Tato část popisuje, jak vytvořit centrum IoT pomocí [webu Azure portal](https://portal.azure.com).
+Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://portal.azure.com).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Zvolte +**vytvořit prostředek**, pak *Hledat na Marketplace* pro **služby IoT Hub**.
+1. Zvolte **vytvořit prostředek**a potom do pole **Hledat na Marketplace** zadejte *IoT Hub* .
 
-3. Vyberte **služby IoT Hub** a klikněte na tlačítko **vytvořit** tlačítko. Zobrazí se první obrazovka pro vytvoření služby IoT hub.
+1. Ve výsledcích hledání vyberte **IoT Hub** a pak vyberte **vytvořit**.
 
-   ![Vytvoření centra na webu Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
+1. Na kartě **základy** vyplňte pole následujícím způsobem:
 
-   Vyplňte jednotlivá pole.
+   - **Předplatné**: Vyberte předplatné, které chcete použít pro vaše centrum.
 
-   **Předplatné**: Vyberte předplatné, které chcete použít pro službu IoT hub.
+   - **Skupina prostředků**: Vyberte skupinu prostředků nebo vytvořte novou. Pokud chcete vytvořit nový, vyberte **vytvořit novou** a vyplňte název, který chcete použít. Pokud chcete použít existující skupinu prostředků, vyberte tuto skupinu prostředků. Další informace najdete v tématu [Správa skupin prostředků Azure Resource Manager](../articles/azure-resource-manager/manage-resource-groups-portal.md).
 
-   **Skupina prostředků**: Můžete vytvořit novou skupinu prostředků nebo použijte již existující. Chcete-li vytvořit nový, klikněte na tlačítko **vytvořit nový** a vyplňte název, který chcete použít. Chcete-li použít existující skupinu prostředků, klikněte na tlačítko **použít existující** a z rozevíracího seznamu vyberte skupinu prostředků. Další informace najdete v tématu [skupiny prostředků spravovat Azure Resource Manageru](../articles/azure-resource-manager/manage-resource-groups-portal.md).
+   - **Oblast**: Vyberte oblast, ve které chcete umístit rozbočovač. Vyberte umístění, které je pro vás nejblíže.
 
-   **Oblast**: Toto je oblast, ve kterém chcete centrem umístit. Vyberte umístění co nejblíže z rozevíracího seznamu.
-
-   **IoT Hub Name**: Vložte název služby IoT hub. Tento název musí být globálně jedinečný. Pokud je zadaný název platný, zobrazí se zelený symbol zaškrtnutí.
+   - **Název IoT Hub**: Zadejte název svého rozbočovače. Tento název musí být globálně jedinečný. Pokud je zadaný název platný, zobrazí se zelený symbol zaškrtnutí.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-4. Klikněte na tlačítko **Další: Dimenzování a škálování** pokračujte vytvoření služby IoT hub.
+   ![Vytvoření centra v Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics-vs2019.png)
 
-   ![Nastavení velikosti a škálování novou službu IoT hub pomocí webu Azure portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
+1. Vyberte **další: Velikost a škálování** pro pokračování v vytváření vašeho centra
 
-   Na této obrazovce můžete přijmout výchozí hodnoty a stačí kliknout na **revize + vytvořit** v dolní části. 
+   ![Nastavení velikosti a měřítka pro nové centrum pomocí Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
 
-   **Úroveň cen a škálování**: Můžete si vybrat z několika vrstev v závislosti na tom, kolik funkce chcete a tom, kolik zpráv, můžete odeslat prostřednictvím řešení za den. Bezplatná úroveň slouží pro testování a vyhodnocení. Umožňuje 500 zařízení k připojení ke službě IoT hub a až 8 000 zpráv denně. Každé předplatné Azure můžete vytvořit v jednom centru IoT v bezplatné úrovni. 
+    Tato obrazovka vám umožní nastavit následující hodnoty:
 
-   **Jednotky služby IoT Hub**: Počet zpráv povolených na jednotku a den závisí na cenové úrovni vašeho centra. Například pokud chcete pro podporu příchozího přenosu dat 700 000 zpráv služby IoT hub, zvolit dvě jednotky úrovně S1.
+    - **Úroveň cen a škálování**: Vybraná úroveň. Můžete si vybrat z několika vrstev v závislosti na tom, kolik funkcí potřebujete, a kolik zpráv odesíláte v rámci řešení za den. Úroveň Free je určena pro testování a vyhodnocení. Umožňuje připojit zařízení 500 k rozbočovači a až 8 000 zpráv za den. Každé předplatné Azure může vytvořit jednu IoT Hub na úrovni Free.
 
-   Podrobnosti o další úroveň možnosti najdete v tématu [výběru správné úrovně služby IoT Hub](../articles/iot-hub/iot-hub-scaling.md).
+    - **IoT Hub jednotky**: Počet zpráv povolených na jednotku za den závisí na cenové úrovni vašeho centra. Pokud třeba chcete, aby centrum podporovalo příchozí zprávy 700 000, zvolíte dvě jednotky úrovně S1.
+    Podrobnosti o dalších možnostech vrstev najdete v tématu [Volba správné IoT Hub úrovně](../articles/iot-hub/iot-hub-scaling.md).
 
-   **Pokročilé / typu zařízení cloud oddíly**: Tato vlastnost se týká zpráv typu zařízení cloud počtem souběžných čtenářů zpráv. Většina centra IoT hub stačí jenom čtyři oddíly. 
+    - Rozšířené > **oddíly zařízení-Cloud**: Tato vlastnost spojuje zprávy typu zařízení-Cloud s počtem souběžných čtenářů zpráv. Většina Center potřebuje jenom čtyři oddíly.
 
-5. Klikněte na tlačítko **zkontrolujte + vytvořit** zkontrolujte zvolené volby. Vypadá podobně jako tato obrazovka.
+1. Pro tento kurz přijměte výchozí možnosti a potom vyberte **zkontrolovat + vytvořit** a zkontrolujte si své volby. Na této obrazovce vidíte něco podobného.
 
-   ![Projděte si informace o vytvoření nového centra IoT](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
+   ![Přečtěte si informace o vytvoření nového centra.](./media/iot-hub-include-create-hub/iot-hub-create-review-vs2019.png)
 
-6. Klikněte na tlačítko **vytvořit** vytvořit novou službu IoT hub. Vytváří se Centrum trvá několik minut.
+1. Vyberte **vytvořit** a vytvořte nové centrum. Vytvoření centra může trvat několik minut.

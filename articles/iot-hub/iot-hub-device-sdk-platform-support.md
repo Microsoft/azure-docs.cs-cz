@@ -1,102 +1,102 @@
 ---
-title: Podpora platformy sady SDK pro zařízení Azure IoT | Dokumentace Microsoftu
-description: Principy – seznam platforem podporovaných sad SDK zařízení IoT Azure
-author: yzhong94
+title: Podpora platforem sady SDK pro zařízení Azure IoT | Microsoft Docs
+description: Koncepty – seznam platforem podporovaných sadami SDK pro zařízení Azure IoT
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: yizhon
-ms.openlocfilehash: 7bcc1bf6b734abe202c5fec5d515604f4bf8e4a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: robinsh
+ms.openlocfilehash: 356962c76bf942c56ace0798ac3cca3d815bc507
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60398701"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883101"
 ---
-# <a name="azure-iot-sdks-platform-support"></a>Podpora platformy sady SDK Azure IoT
+# <a name="azure-iot-sdks-platform-support"></a>Podpora platforem sady SDK Azure IoT
 
-[Sad SDK Azure IoT](iot-hub-devguide-sdks.md) jsou sada knihoven pro interakci s centrem IoT a služby Device Provisioning pomocí široké jazyka a platformní podpory. Sady SDK spustit na většinu běžných platforem a vývojáři můžou port C SDK pro konkrétní platformu podle [pokyny k přenesení](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md). 
+Sady [SDK Azure IoT](iot-hub-devguide-sdks.md) představují sadu knihoven pro interakci s IoT Hub a službu Device Provisioning s širokou podporou jazyků a platforem. Sady SDK běží na většině běžných platforem a vývojáři můžou na konkrétní platformu přenést sadu C SDK podle [pokynů pro přenos](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md). 
 
-Společnost Microsoft podporuje různé operační systémy/platformy/rozhraní a je možné rozšířit pomocí sady Azure IoT C SDK. Některé jsou od týmu, seskupených do vrstev, které představují úroveň podpory, které uživatelé můžou očekávat oficiálně podporována. *Plně podporované platformy* znamená, že Microsoft:
+Společnost Microsoft podporuje různé operační systémy, platformy a rozhraní a je možné ji rozšířit pomocí sady Azure IoT C SDK. Některé jsou podporovány v oficiálně týmu, seskupené do vrstev, které představují úroveň uživatelů podpory, které mohou očekávat. *Plně podporované platformy* znamená, že Microsoft:
 
-- Průběžně sestaví a spustí testy začátku do konce na hlavním virtuálním počítači a LTS podporované verze.  Pro zajištění pokrytí testu mezi různými verzemi, budeme obecně testování proti nejoblíbenější a nejnovější verze LTS.  Jiné verze stejnou platformu mohou být podporovány prostřednictvím Kompatibilita verze platformy.
-- Poskytuje pokyny k instalaci nebo balíčky, pokud je k dispozici.
-- Plně podporuje platformy na Githubu.
+- Průběžně sestavuje a spouští ucelené testy proti hlavní verzi a podporovaným verzím LTS.  Abychom zajistili pokrytí testů napříč různými verzemi, obecně se otestujeme na nejnovější verzi LTS a nejoblíbenější verzi.  Jiné verze stejné platformy můžou být podporované přes kompatibilitu verze platformy.
+- Poskytuje pokyny k instalaci nebo balíčky, pokud jsou k dispozici.
+- Plně podporuje platformy na GitHubu.
 
-Kromě toho obsahuje seznam partnerů nabízejících přenáší naší sady SDK jazyka C k více platforem a udržuje vrstva abstrakce platformy (PAL). [Azure IoT katalog zařízení Certified for](https://catalog.azureiotsolutions.com/) také funkce seznam platforem operačních systémů různých sadách SDK byly testovány s. Sady SDK také pravidelně vytvářejte na těchto platformách, s omezenou testování a podporu:
+Kromě toho seznam partnerů přestavil naši sadu C SDK na více platforem a udržuje vrstvu abstrakce platformy (PAL). [Katalog zařízení Azure Certified for IoT](https://catalog.azureiotsolutions.com/) také nabízí seznam platforem operačních systémů, u kterých byly různé sady SDK testovány proti. Sady SDK se také pravidelně vytvářejí na těchto platformách s omezeným testováním a podporou:
 
 * MBED2
 * Arduino
-* Windows CE 2013 (přestat používat v října 2018)
-* .NET standard 1.3 s .NET Core 2.1 a rozhraní .NET Framework 4.7
+* Systém Windows CE 2013 (zastaralé v říjnu 2018)
+* .NET Standard 1,3 s rozhraním .NET Core 2,1 a .NET Framework 4,7
 * Xamarin iOS, Android, UWP
 
 ## <a name="supported-platforms"></a>Podporované platformy
 
-Existuje několik platforem podporována.
+Podporuje se několik platforem.
 
-### <a name="c-sdk"></a>C SDK
+### <a name="c-sdk"></a>SADA C SDK
 
-| Operační systém                  | Architektura | Kompilátor             | Knihovna TLS       |
+| OS                  | Arch | Přepínač             | Knihovna TLS       |
 |---------------------|------|----------------------|-------------------|
-| Ubuntu 16.04 LTS    | X64  | gcc-5.4.0            | OpenSSL - 1.0.2g |
-| Ubuntu 18.04 LTS    | X64  | gcc-7.3              | WolfSSL – 1.13    |
-| Ubuntu 18.04 LTS    | X64  | Clang 6.0.X          | OpenSSL – 1.1.0g  |
+| Ubuntu 16.04 LTS    | X64  | gcc-5.4.0            | OpenSSL-1.0.2 g |
+| Ubuntu 18,04 LTS    | X64  | gcc-7.3              | WolfSSL – 1,13    |
+| Ubuntu 18,04 LTS    | X64  | Clang 6.0. X          | OpenSSL – 1.1.0 g  |
 | OSX 10.13.4         | x64  | XCode 9.4.1          | Nativní OSX        |
 | Windows Server 2016 | x64  | Visual Studio 14.0.X | SChannel          |
 | Windows Server 2016 | x86  | Visual Studio 14.0.X | SChannel          |
-| Debian 9 Stretch    | x64  | gcc-7.3              | OpenSSL – 1.1.0f  |
+| Debian 9 Stretch    | x64  | gcc-7.3              | OpenSSL – 1.1.0 f  |
 
 ### <a name="python-sdk"></a>Python SDK
 
-| Operační systém                  | Architektura | Kompilátor   | Knihovna TLS |
+| OS                  | Arch | Přepínač   | Knihovna TLS |
 |---------------------|------|------------|-------------|
 | Windows Server 2016 | x86  | Python 2.7 | OpenSSL     |
 | Windows Server 2016 | x64  | Python 2.7 | OpenSSL     |
-| Windows Server 2016 | x86  | Python 3.5 | OpenSSL     |
-| Windows Server 2016 | x64  | Python 3.5 | OpenSSL     |
-| Ubuntu 18.04 LTS    | x86  | Python 2.7 | OpenSSL     |
-| Ubuntu 18.04 LTS    | x86  | Python 3.4 | OpenSSL     |
+| Windows Server 2016 | x86  | Python 3,5 | OpenSSL     |
+| Windows Server 2016 | x64  | Python 3,5 | OpenSSL     |
+| Ubuntu 18,04 LTS    | x86  | Python 2.7 | OpenSSL     |
+| Ubuntu 18,04 LTS    | x86  | Python 3,4 | OpenSSL     |
 | MacOS High Sierra   | x64  | Python 2.7 | OpenSSL     |
 
 ### <a name="net-sdk"></a>.NET SDK
 
-| Operační systém                  | Architektura | Rozhraní Framework            | Standard          |
+| OS                  | Arch | Rozhraní .NET Framework            | Standard          |
 |---------------------|------|----------------------|-------------------|
-| Ubuntu 16.04 LTS    | X64  | .NET Core 2.1        | .NET standard 2.0 |
-| Windows Server 2016 | X64  | .NET Core 2.1        | .NET standard 2.0 |
-| Windows Server 2016 | X64  | Rozhraní .NET framework 4.7   | .NET standard 2.0 |
-| Windows Server 2016 | X64  | .NET Framework 4.5.1 | neuvedeno               |
+| Ubuntu 16.04 LTS    | X64  | .NET Core 2.1        | .NET Standard 2,0 |
+| Windows Server 2016 | X64  | .NET Core 2.1        | .NET Standard 2,0 |
+| Windows Server 2016 | X64  | Rozhraní .NET framework 4.7   | .NET Standard 2,0 |
+| Windows Server 2016 | X64  | .NET Framework 4.5.1 | Není k dispozici               |
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
-| Operační systém                                           | Architektura | Uzel verze |
+| OS                                           | Arch | Verze uzlu |
 |----------------------------------------------|------|--------------|
-| Ubuntu 16.04 LTS (s použitím image dockeru uzel 6) | X64  | Uzel 6       |
+| Ubuntu 16,04 LTS (použití image Docker v uzlu 6) | X64  | Uzel 6       |
 | Windows Server 2016                          | X64  | Uzel 6       |
 
 ### <a name="java-sdk"></a>Java SDK
 
-| Operační systém                  | Architektura | Verze Javy |
+| OS                  | Arch | Verze Javy |
 |---------------------|------|--------------|
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |
 | Android API 28 | X64  | Java 8       |
-| Android věcí | X64  | Java 8      |
+| Android – věci | X64  | Java 8      |
 
-## <a name="partner-supported-platforms"></a>Podpora partnerů platformy
+## <a name="partner-supported-platforms"></a>Podporované platformy partnerů
 
-Můžou zákazníci rozšířit Naše podpora platformy přenesením konkrétně sady SDK Azure IoT C, vytváří se vrstva abstrakce platformy (PAL) sady SDK. Microsoft spolupracuje s partnery nabízí rozšířenou podporu. Seznam partnerů nabízejících má přenést C SDK k více platforem a udržování přístupovém seznamu publikace.
+Zákazníci můžou podporu naší platformy rozšíří pomocí přenosu sady SDK Azure IoT C, konkrétně vytvořením vrstvy pro abstrakci platforem (PAL) sady SDK. Microsoft spolupracuje s partnery a poskytuje rozšířenou podporu. Seznam partnerů přestavil sadu C SDK na více platforem a zachovala PAL.
 
 | Partner             | Zařízení                            | Odkaz                     | Podpora |
 |---------------------|------------------------------------|--------------------------|---------|
 | Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
-| Qualcomm            | Qualcomm MDM9206 LTE IoT Modem     | [Qualcomm LTE for IoT SDK](https://developer.qualcomm.com/software/lte-iot-sdk) | [Fórum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
-| ST Microelectronics | STM32L4 řady <br/> STM32F4 Series <br/>  STM32F7 Series <br/>  Sada zjišťování STM32L4 pro uzel IoT    | [X-CUBE-CLOUD](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [X-CUBE-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Podpora](https://www.st.com/content/st_com/en/support/support-home.html)
-| Texas Instruments   | CC3220SF Launchpad <br/> CC3220S Launchpad <br/> MSP432E4 Launchpad      | [Modul plug-in Azure IoT pro SimpleLink](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [Fórum TI E2E](https://e2e.ti.com) <br/> [Fórum TI E2E pro CC3220](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [Fórum TI E2E pro MSP432E4](https://e2e.ti.com/support/microcontrollers/msp430/) |
+| ASUS            | Modem Qualcomm MDM9206 LTE IoT     | [Qualcomm LTE pro sadu IoT SDK](https://developer.qualcomm.com/software/lte-iot-sdk) | [Fórum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
+| Svatý mikroelektronické | Řada STM32L4 <br/> Řada STM32F4 <br/>  Řada STM32F7 <br/>  STM32L4 Discovery kit pro uzel IoT    | [X-CUBE-CLOUD](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [X-DATOVÁ KRYCHLE – AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P-NUCLEO – AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD – AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Podpora](https://www.st.com/content/st_com/en/support/support-home.html)
+| Texas Instruments   | Hlavní panel CC3220SF <br/> Hlavní panel CC3220S <br/> Hlavní panel MSP432E4      | [Modul plug-in Azure IoT pro SimpleLink](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [Fórum TI E2E](https://e2e.ti.com) <br/> [Fórum TI E2E pro CC3220](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [Fórum TI E2E pro MSP432E4](https://e2e.ti.com/support/microcontrollers/msp430/) |
 
 ## <a name="next-steps"></a>Další postup
 
 * [Sady SDK pro zařízení a služby](iot-hub-devguide-sdks.md)
-* [Pokyny k portaci](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)
+* [Pokyny k přenosu](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)

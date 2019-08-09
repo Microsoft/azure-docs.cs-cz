@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effe48c859e711f0efc41c1a4d651e5d15d5ada9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 8d7a039f25339d91d77d5b6924674ea36a16c15b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382603"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880816"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Přidání účtů jiných společností než Microsoft
 
@@ -42,7 +42,7 @@ Přidejte svůj účet Google tím, že zapnete dvojúrovňové ověřování a 
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnout dvojúrovňové ověřování
 
-1. V počítači klikněte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome **, vyberte Začínáme**a pak ověřte svoji identitu.
+1. V počítači klikněte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome, vyberte Začínáme apak ověřte svoji identitu.
 
 2. Postupujte podle pokynů na stránce, abyste zapnuli dvoustupňové ověřování pro váš osobní účet Google.
 
@@ -67,7 +67,7 @@ Přidejte svůj účet Google tím, že zapnete dvojúrovňové ověřování a 
 
 6. V počítači klikněte na tlačítko **Další** na stránce **nastavit ověřovací data** , zadejte pro svůj účet Google kód pro ověření, který jste zadali v aplikaci, a pak vyberte **ověřit**.
 
-7. Váš účet se ověří a můžete vybrat Hotovo  , aby se stránka **nastavit ověřovací data** zavřela.
+7. Váš účet se ověří a můžete vybrat Hotovo , aby se stránka **nastavit ověřovací data** zavřela.
 
     >[!NOTE]
     >Další informace o dvojúrovňovém ověřování a účtu Google najdete v tématu [Zapnutí ověřování 2 kroky](https://support.google.com/accounts/answer/185839) a další [informace o 2 krocích ověřování](https://www.google.com/landing/2step/help.html).
@@ -161,13 +161,16 @@ Přidejte svůj účet Amazon tím, že zapnete dvojúrovňové ověřování a 
 
     Zobrazí se stránka **Upřesnit nastavení zabezpečení** .
 
-3. Vyberte **Začínáme**.
+3. VyberteZačínáme.
 
 4. Vyberte možnost **ověřovací aplikace** na stránce **Zvolte způsob, jak obdržíte kódy** .
 
     Stránka se změní, aby zobrazila kód QR. Nezavírejte tuto stránku.
 
 5. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** v ikoně **přizpůsobení a řízení** a pak vyberte **jiný účet (Google, Facebook atd.)** .
+
+    >[!Note]
+    >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
 6. Pomocí kamery zařízení Naskenujte kód QR ze stránky **zvolit způsob, jak obdržíte kódy** na vašem počítači.
 

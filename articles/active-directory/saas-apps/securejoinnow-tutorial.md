@@ -1,224 +1,155 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s konektorem JoinNow SecureW2 | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SecureW2 JoinNow konektoru.
+title: 'Kurz: Integrace Azure Active Directory s konektorem SecureW2 JoinNow | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi konektory Azure Active Directory a SecureW2 JoinNow.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 2445b3af-f827-40de-9097-6f5c933d0f53
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b367befb90ec28ece963d67b479749e1c8ad363
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3dbb21bcea978f566082e5edb8831ac044c95fd6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60339829"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880120"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-securew2-joinnow-connector"></a>Kurz: Integrace Azure Active Directory s konektorem JoinNow SecureW2
+# <a name="tutorial-integrate-securew2-joinnow-connector-with-azure-active-directory"></a>Kurz: Integrace konektoru SecureW2 JoinNow s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat SecureW2 JoinNow konektoru pomocí Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat konektor SecureW2 JoinNow s Azure Active Directory (Azure AD). Když integrujete konektor SecureW2 JoinNow s Azure AD, můžete:
 
-Integrace konektoru JoinNow SecureW2 s Azure AD poskytuje následující výhody:
+* Řízení ve službě Azure AD, která má přístup k konektoru SecureW2 JoinNow.
+* Umožněte uživatelům, aby se automaticky přihlásili k konektoru SecureW2 JoinNow s účty Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-- Můžete řídit ve službě Azure AD, který má přístup k SecureW2 JoinNow konektoru.
-- Uživatele, aby automaticky získat přihlášení k SecureW2 JoinNow konektoru (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
-
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s konektorem JoinNow SecureW2, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-- Předplatné Azure AD
-- Konektor JoinNow SecureW2 jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné SecureW2 JoinNow Connector s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání konektoru JoinNow SecureW2 z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-## <a name="adding-securew2-joinnow-connector-from-the-gallery"></a>Přidání konektoru JoinNow SecureW2 z Galerie
-Konfigurace integrace SecureW2 JoinNow konektoru do služby Azure AD, budete muset přidat SecureW2 JoinNow konektor z Galerie na váš seznam spravovaných aplikací SaaS.
+* Konektor SecureW2 JoinNow podporuje jednotné přihlašování (SSO) iniciované **SP**
 
-**Chcete-li přidat SecureW2 JoinNow konektor z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
-    ![Tlačítko Azure Active Directory][1]
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
-    ![V okně podnikové aplikace][2]
-    
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+## <a name="adding-securew2-joinnow-connector-from-the-gallery"></a>Přidání konektoru SecureW2 JoinNow z Galerie
 
-    ![Tlačítko nové aplikace][3]
+Pokud chcete nakonfigurovat integraci konektoru SecureW2 JoinNow do služby Azure AD, musíte přidat konektor SecureW2 JoinNow z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-4. Do vyhledávacího pole zadejte **SecureW2 JoinNow konektor**vyberte **SecureW2 JoinNow konektor** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **SecureW2 JoinNow Connector** .
+1. Z panelu výsledků vyberte **konektor SecureW2 JoinNow** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-    ![SecureW2 JoinNow konektor v seznamu výsledků](./media/securejoinnow-tutorial/tutorial_securejoinnow_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí konektoru JoinNow SecureW2 podle testovacího uživatele nazývá "Britta Simon".
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí konektoru SecureW2 JoinNow pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v konektoru SecureW2 JoinNow.
 
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek v konektoru JoinNow SecureW2 je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v SecureW2 JoinNow konektoru je potřeba navázat.
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí konektoru SecureW2 JoinNow, dokončete následující stavební bloky:
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s konektorem JoinNow SecureW2, které potřebujete k dokončení následujících stavebních bloků:
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[NAKONFIGURUJTE jednotné přihlašování konektoru SecureW2 JoinNow](#configure-securew2-joinnow-connector-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+5. **[Vytvořte testovacího uživatele konektoru SecureW2 JoinNow](#create-securew2-joinnow-connector-test-user)** , abyste měli protějšek B. Simon v konektoru SecureW2 JoinNow, který je propojený s reprezentací uživatele Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele SecureW2 JoinNow konektor](#create-a-securew2-joinnow-connector-test-user)**  – Pokud chcete mít protějšek Britta Simon SecureW2 JoinNow konektor, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci SecureW2 JoinNow konektoru.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **konektoru JoinNow SecureW2** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s konektorem JoinNow SecureW2, proveďte následující kroky:**
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na webu Azure Portal na **SecureW2 JoinNow konektor** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<organization-identifier>-auth.securew2.com/auth/saml/SSO`
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/securejoinnow-tutorial/tutorial_securejoinnow_samlbase.png)
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<organization-identifier>-auth.securew2.com/auth/saml`
 
-3. Na **SecureW2 JoinNow konektor domény a adresy URL** části, proveďte následující kroky:
+    > [!NOTE]
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, kontaktujte [tým podpory SecureW2 JoinNow Connectoru](mailto:support@securew2.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-    ![SecureW2 JoinNow konektor domény a adresy URL jednotného přihlašování – informace](./media/securejoinnow-tutorial/tutorial_securejoinnow_url.png)
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<organization-identifier>-auth.securew2.com/auth/saml/SSO`
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<organization-identifier>-auth.securew2.com/auth/saml`
+1. V části **Nastavení konektoru JoinNow SecureW2** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory SecureW2 JoinNow konektor klienta](mailto:support@securew2.com) k získání těchto hodnot. 
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+### <a name="configure-securew2-joinnow-connector-sso"></a>Konfigurace jednotného přihlašování konektoru SecureW2 JoinNow
 
-    ![Odkaz ke stažení certifikátu](./media/securejoinnow-tutorial/tutorial_securejoinnow_certificate.png) 
-
-5. Klikněte na tlačítko **Uložit** tlačítko.
-
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/securejoinnow-tutorial/tutorial_general_400.png)
-
-6. Ke konfiguraci jednotného přihlašování na **SecureW2 JoinNow konektor** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory SecureW2 JoinNow konektor](mailto:support@securew2.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
-
+Chcete-li nakonfigurovat jednotné přihlašování na straně **konektoru SecureW2 JoinNow** , je třeba odeslat stažená **metadata XML** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory konektorů SecureW2 JoinNow](mailto:support@securew2.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
-
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
-
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
-
-    ![Tlačítko Azure Active Directory](./media/securejoinnow-tutorial/create_aaduser_01.png)
-
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
-
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/securejoinnow-tutorial/create_aaduser_02.png)
-
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
-
-    ![Tlačítko Přidat](./media/securejoinnow-tutorial/create_aaduser_03.png)
-
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/securejoinnow-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-
-    d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="create-a-securew2-joinnow-connector-test-user"></a>Vytvoření zkušebního uživatele SecureW2 JoinNow konektoru
-
-V této části vytvořte uživatele Britta Simon v SecureW2 JoinNow konektoru. Práce s [tým podpory SecureW2 JoinNow konektor klienta](mailto:support@securew2.com) přidat uživatele na platformě SecureW2 JoinNow konektoru. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k SecureW2 JoinNow konektoru.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k konektoru JoinNow SecureW2.
 
-![Přiřazení role uživatele][200] 
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **konektor SecureW2 JoinNow**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-**Britta Simon přiřadit SecureW2 JoinNow konektoru, proveďte následující kroky:**
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Přiřadit uživatele][201] 
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-2. V seznamu aplikací vyberte **SecureW2 JoinNow konektor**.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Odkaz SecureW2 JoinNow konektor v seznamu aplikací](./media/securejoinnow-tutorial/tutorial_securejoinnow_app.png)  
+### <a name="create-securew2-joinnow-connector-test-user"></a>Vytvořit testovacího uživatele konektoru SecureW2 JoinNow
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+V této části vytvoříte uživatele s názvem Britta Simon v konektoru SecureW2 JoinNow. Pokud chcete přidat uživatele na platformě SecureW2 JoinNow konektoru, pracujte s [týmem podpory konektoru JoinNow SecureW2](mailto:support@securew2.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-    ![Odkaz "Uživatele a skupiny"][202]
+### <a name="test-sso"></a>Test SSO
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-    ![Podokno Přidat přiřazení][203]
+Po kliknutí na dlaždici konektoru SecureW2 JoinNow na přístupovém panelu byste měli být automaticky přihlášení ke konektoru SecureW2 JoinNow, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+## <a name="additional-resources"></a>Další zdroje
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-**K otestování aplikace, proveďte následující kroky:** 
-
-a. Otevřete klienta SecureW2 JoinNow konektor, vyberte odpovídající zařízení ze seznamu a klikněte na **Sign In** tlačítko.
-
-b. Výchozí prohlížeč by měla otevřít a musí být znovu orientovaného na webu Azure portal pro ověřování.
-
-c. Po úspěšném ověření by měl vrátit zpět na počáteční cílová stránka SecureW2 JoinNow konektoru.
-
-## <a name="additional-resources"></a>Další materiály
-
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-
-
-
-<!--Image references-->
-
-[1]: ./media/securejoinnow-tutorial/tutorial_general_01.png
-[2]: ./media/securejoinnow-tutorial/tutorial_general_02.png
-[3]: ./media/securejoinnow-tutorial/tutorial_general_03.png
-[4]: ./media/securejoinnow-tutorial/tutorial_general_04.png
-
-[100]: ./media/securejoinnow-tutorial/tutorial_general_100.png
-
-[200]: ./media/securejoinnow-tutorial/tutorial_general_200.png
-[201]: ./media/securejoinnow-tutorial/tutorial_general_201.png
-[202]: ./media/securejoinnow-tutorial/tutorial_general_202.png
-[203]: ./media/securejoinnow-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

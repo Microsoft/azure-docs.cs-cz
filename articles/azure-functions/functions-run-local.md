@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 16e12021a65a09376293f28efe9a6e9ef74ef5c2
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f0f00745f2f7781bda0e636167b1cf1a4045f7cd
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839572"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881380"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -446,11 +446,25 @@ K dispozici jsou následující možnosti nasazení vlastního kontejneru:
 
 ## <a name="monitoring-functions"></a>Funkce monitorování
 
-Doporučený způsob, jak monitorovat provádění vašich funkcí, je integrace s Azure Application Insights. Když vytvoříte aplikaci funkcí v Azure Portal, tato integrace se ve výchozím nastavení provádí. Když ale vytvoříte aplikaci Function App pomocí Azure CLI, integrace ve vaší aplikaci Function App v Azure se nedokončila.
+Doporučený způsob, jak monitorovat provádění vašich funkcí, je integrace s Azure Application Insights. Do svého místního počítače můžete také streamovat protokoly spouštění. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+
+### <a name="enable-application-insights-integration"></a>Povolit integraci Application Insights
+
+Při vytváření aplikace Function App v Azure Portal se ve výchozím nastavení pro vás Application Insights integrace provede. Když ale vytvoříte aplikaci Function App pomocí Azure CLI, integrace ve vaší aplikaci Function App v Azure se nedokončila.
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+### <a name="enable-streaming-logs"></a>Povolit streamování protokolů
+
+Proud souborů protokolu generovaných funkcemi můžete zobrazit v relaci příkazového řádku na místním počítači. 
+
+#### <a name="native-streaming-logs"></a>Nativní protokoly streamování
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
+
+Tento typ protokolů streamování vyžaduje, abyste [povolili Application Insights integraci](#enable-application-insights-integration) aplikace Function App.   
+
+
 ## <a name="next-steps"></a>Další postup
 
 Azure Functions Core Tools je [Open Source a hostovaný na GitHubu](https://github.com/azure/azure-functions-cli).  

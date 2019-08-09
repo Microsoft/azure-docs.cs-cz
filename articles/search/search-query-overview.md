@@ -1,6 +1,6 @@
 ---
-title: Typy dotazů a skládání – Azure Search
-description: Základní informace pro vytváření vyhledávacího dotazu ve službě Azure Search pomocí parametrů k filtrování, vyberte a řazení výsledků.
+title: Typy a kompozice dotazů – Azure Search
+description: Základní informace o vytváření vyhledávacích dotazů v Azure Search pomocí parametrů pro filtrování, výběr a řazení výsledků.
 author: HeidiSteen
 manager: cgronlun
 ms.author: heidist
@@ -9,33 +9,33 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 422e9209609eac19b7952557674c99789d9f6088
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c2d40865857bc3ea8367199ed29e0220a0e7c557
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485174"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882596"
 ---
-# <a name="how-to-compose-a-query-in-azure-search"></a>Jak sestavit dotazu ve službě Azure Search
+# <a name="how-to-compose-a-query-in-azure-search"></a>Postup vytvoření dotazu v Azure Search
 
-Dotaz ve službě Azure Search je úplná specifikace operaci round-trip. Parametry v požadavku hledání dokumentů v indexu, provozním pokynům pro modul a direktivy pro strukturování odpovědi představují kritéria shody. 
+V Azure Search je dotaz kompletní specifikací operace Round-Trip. Parametry v žádosti poskytují kritéria shody pro hledání dokumentů v indexu, prováděcích pokynů pro modul a direktiv pro tvarování odpovědi. 
 
-Dotaz je bohaté konstrukce, která určuje pole, která jsou v oboru, jak hledat, která pole se vraťte k řazení nebo filtrování a tak dále. Tento parametr zadán, spustí se dotaz všechna prohledatelná pole jako operace hledání textu v plném znění, vrací výsledek nemůže dostat skóre, nastavte v pořadí.
+Požadavek na dotaz je bohatou konstrukcí, která určuje, která pole jsou v oboru, jak hledat, která pole se mají vrátit, ať už je seřadit nebo filtrovat, a tak dále. Neurčeno, dotaz se spustí pro všechna hledaná pole jako operace fulltextového vyhledávání a vrátí sadu výsledků bez skóre v libovolném pořadí.
 
 ## <a name="apis-and-tools-for-testing"></a>Rozhraní API a nástroje pro testování
 
-V následující tabulce jsou uvedeny rozhraní API a detekce založené na nástroj pro zadávání dotazů.
+Následující tabulka uvádí rozhraní API a postupy založené na nástrojích pro odesílání dotazů.
 
 | Metodologie | Popis |
 |-------------|-------------|
-| [Průzkumník služby Search (portál)](search-explorer.md) | Poskytuje panel hledání a možnosti pro výběr index a verze api-version. Výsledky jsou vráceny jako dokumenty JSON. <br/>[Další informace](search-get-started-portal.md#query-index) | 
-| [Postman nebo Fiddler](search-get-started-postman.md) | Testovací nástroje Web jsou skvělou volbou pro formulování volání REST. Rozhraní REST API podporuje všechny možné operace ve službě Azure Search. V tomto článku se naučíte se nastavit hlavičku požadavku HTTP a text pro odesílání požadavků do služby Azure Search.  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, který můžete použít k dotazování indexu Azure Search.  <br/>[Další informace](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Hledání dokumentů (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | V indexu pomocí parametrů dotazu další vstupní metody POST nebo GET.  |
+| [Průzkumník vyhledávání (portál)](search-explorer.md) | Poskytuje panel hledání a možnosti pro indexování a výběry verzí rozhraní API. Výsledky se vrátí jako dokumenty JSON. <br/>[Další informace](search-get-started-portal.md#query-index) | 
+| [Post nebo Fiddler](search-get-started-postman.md) | Nástroje pro testování webu jsou vynikající volbou pro formulování volání REST. REST API podporuje všechny možné operace v Azure Search. V tomto článku se dozvíte, jak nastavit hlavičku a text požadavku HTTP pro odesílání požadavků do Azure Search.  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, který se dá použít k dotazování indexu Azure Search.  <br/>[Další informace](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Hledat dokumenty (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | Metoda GET nebo POST pro index s použitím parametrů dotazu pro další vstup.  |
 
-## <a name="a-first-look-at-query-requests"></a>První pohled na požadavků na dotazy
+## <a name="a-first-look-at-query-requests"></a>První pohled na požadavky na dotaz
 
-Příklady jsou užitečné pro zavedení nových konceptů. Jak reprezentativní dotaz vytvořený v [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents), tento příklad cíle [nemovitosti ukázku index](search-get-started-portal.md) , včetně společných parametrů.
+Příklady jsou užitečné pro představení nových konceptů. V rámci reprezentativního dotazu vytvořeného v [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)tento příklad cílí na [ukázkový index reálné nemovitosti](search-get-started-portal.md) a obsahuje společné parametry.
 
 ```
 {
@@ -49,62 +49,62 @@ Příklady jsou užitečné pro zavedení nových konceptů. Jak reprezentativn�
 }
 ```
 
-+ **`queryType`** Nastaví analyzátor, který může být ve službě Azure Search [výchozí jednoduchý analyzátor dotazů](search-query-simple-examples.md) (optimální pro fulltextové vyhledávání), nebo [kompletní analyzátor dotazů Lucene](search-query-lucene-examples.md) používá pro konstrukty na rozšířený dotaz jako regulární výrazy , vyhledávání blízkých výrazů, přibližných shod a hledání pomocí zástupných znaků, pár.
++ **`queryType`** Nastaví analyzátor, který v Azure Search může být [výchozím jednoduchým analyzátorem dotazů](search-query-simple-examples.md) (optimální pro fulltextové vyhledávání), nebo [kompletním analyzátorem dotazů Lucene](search-query-lucene-examples.md) použitým pro pokročilé konstrukce dotazů, jako jsou regulární výrazy, vyhledávání blízkosti, přibližné a zástupné znaky. Vyhledejte několik názvů.
 
-+ **`search`** poskytuje porovnávání kritéria, obvykle textu, ale často připojí logické operátory. Jediným samostatným podmínky jsou *termín* dotazy. Jsou uzavřené v uvozovkách vícedílný dotazy *klíčových frází* dotazy. Hledání může být definován, stejně jako v **`search=*`** , ale spíše se skládá z podmínek, fráze a operátory podobný co se zobrazuje v příkladu.
++ **`search`** poskytuje kritéria shody, obvykle text, ale často spolu s logickými operátory. Jednou samostatnou pojmem jsou dotazy. Citace – uzavřené dotazy s více částmi jsou *klíčové fráze* dotazů. Hledání může být nedefinované, jako v **`search=*`** , ale pravděpodobněji se skládá z pojmů, frází a operátorů, které jsou podobné tomu, co se zobrazuje v příkladu.
 
-+ **`searchFields`** je volitelný, použita pro omezení dotazu provádění konkrétních polí.
++ **`searchFields`** je volitelná, slouží k omezení provádění dotazů na konkrétní pole.
 
-Odpovědi jsou ve tvaru, parametry, které jsou v dotazu. V tomto příkladu sadu výsledků dotazu se skládá z polí uvedených v **`select`** příkazu. V tomto dotazu jsou vráceny pouze horní 10 přístupů, ale **`count`** zjistíte, kolik dokumenty odpovídá celkové. V tomto dotazu jsou řádky seřazeny podle daysOnMarket.
+Odpovědi jsou také ve tvaru podle parametrů, které zahrnete do dotazu. V příkladu se sada výsledků skládá z polí uvedených v **`select`** příkazu. V tomto dotazu se vrátí jenom 10 nejčastějších přístupů, ale **`count`** sdělí, kolik dokumentů se celkově shoduje. V tomto dotazu jsou řádky seřazeny podle daysOnMarket.
 
-Ve službě Azure Search provádění dotazů je vždycky proti jeden index, se ověřují pomocí rozhraní api-key zadaný v požadavku. V klidu jak jsou k dispozici v záhlaví požadavku.
+V Azure Search je provádění dotazů vždy proti jednomu indexu ověřeno pomocí klíče rozhraní API, který je v požadavku k dispozici. V části REST jsou v hlavičkách žádostí k dispozici obě.
 
-### <a name="how-to-run-this-query"></a>Spuštění tohoto dotazu
+### <a name="how-to-run-this-query"></a>Jak spustit tento dotaz
 
-Ke spuštění tohoto dotazu, použijte [hledat explorer a index ukázku nemovitosti](search-get-started-portal.md). 
+Chcete-li spustit tento dotaz, použijte [Průzkumníka aplikace Search a ukázkový index skutečné nemovitosti](search-get-started-portal.md). 
 
-Vložte tento řetězec dotazu do panelu hledání v Průzkumníku: `search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
+Tento řetězec dotazu můžete vložit do panelu hledání v Průzkumníkovi:`search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
 
-## <a name="how-query-operations-are-enabled-by-the-index"></a>Jak jsou povoleny operace dotazu podle indexu
+## <a name="how-query-operations-are-enabled-by-the-index"></a>Jak index povoluje operace dotazů
 
-Index návrhu a dotaz návrhu jsou úzce svázány ve službě Azure Search. Základní fakt vědět před jeho zahájením je, že *schéma indexu*, s atributy u každé pole určuje druh dotazu můžete vytvořit. 
+Návrh indexu a návrh dotazu jsou úzce spojeny v Azure Search. Základní fakt, jak předem zjistit, je, že *schéma indexu*s atributy v jednotlivých polích určuje druh dotazu, který můžete sestavit. 
 
-Atributy indexu na pole nastavit povolené operace -, zda je pole *prohledávatelné* v indexu, *retrievable* ve výsledcích *seřaditelné*,  *Filterable*a tak dále. V řetězci dotazu příklad `"$orderby": "daysOnMarket"` pouze funguje, protože daysOnMarket pole je označeno jako *seřaditelné* ve schématu indexu. 
+Atributy indexu v poli nastavily povolené operace – určuje, jestli je pole možné *Prohledávat* v indexu, získat ve výsledcích, *seřaditelné*, *filtrovatelné*a tak dále. V příkladu řetězce dotazu funguje pouze `"$orderby": "daysOnMarket"` to, protože pole daysOnMarket je označeno jako *seřaditelné* ve schématu indexu. 
 
-![Pro ukázku nemovitosti definici indexu](./media/search-query-overview/realestate-sample-index-definition.png "definici pro ukázku nemovitosti indexu")
+![Definice indexu pro ukázku reálné nemovitosti](./media/search-query-overview/realestate-sample-index-definition.png "Definice indexu pro ukázku reálné nemovitosti")
 
-Výše uvedeném snímku obrazovky je částečný seznam atributů indexu pro ukázku nemovitostí. Celý index schéma můžete zobrazit na portálu. Další informace o atributech indexu najdete v tématu [vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Výše uvedený snímek obrazovky je částečný seznam atributů indexu pro ukázku reálného majetku. Celé schéma indexu můžete zobrazit na portálu. Další informace o atributech indexu naleznete v tématu [Create index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 > [!Note]
-> Některé funkce dotazu je povoleno celý index spíše než na základě na pole. Mezi tyto možnosti patří: [mapy synonym](search-synonyms.md), [vlastní analyzátory](index-add-custom-analyzers.md), [modulu pro návrhy vytvoří (pro automatické dokončování a navrhované dotazy)](index-add-suggesters.md), [vyhodnocování logiky pro řazení výsledků](index-add-scoring-profiles.md).
+> Některé funkce dotazů jsou povoleny v rámci indexu, nikoli podle jednotlivých polí. Mezi tyto možnosti patří: [mapy synonym](search-synonyms.md), [vlastní analyzátory](index-add-custom-analyzers.md), [konstrukce návrhu (pro automatické dokončování a navrhované dotazy)](index-add-suggesters.md), [logika bodování pro výsledky řazení](index-add-scoring-profiles.md).
 
-## <a name="elements-of-a-query-request"></a>Elementy dotazu požadavku
+## <a name="elements-of-a-query-request"></a>Prvky žádosti o dotaz
 
-Dotazy jsou vždy směrovat na jeden index. Nelze připojit k indexy nebo vytvořit vlastní nebo dočasné datové struktury jako cíl dotazu. 
+Dotazy jsou vždy směrovány na jeden index. Nemůžete spojit indexy nebo vytvářet vlastní nebo dočasné datové struktury jako cíl dotazu. 
 
-Požadované elementy na žádost o dotazu jsou následující komponenty:
+Požadované prvky pro požadavek na dotaz obsahují následující komponenty:
 
-+ Služby koncového bodu a index kolekci documents, vyjádřené jako adresu URL obsahující pevné a uživatelem definované součásti: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
-+ **`api-version`** (Pouze rozhraní REST) je potřeba, protože více než jednu verzi rozhraní API je k dispozici po celou dobu. 
-+ **`api-key`** , dotazu nebo správce klíč api-key, ověří se tato žádost do služby.
-+ **`queryType`** , jednoduché nebo úplné, který lze vynechat, pokud používáte integrované výchozí jednoduchá syntaxe.
-+ **`search`** nebo **`filter`** poskytuje porovnávání kritéria, která může neurčené, pokud chcete provést prázdné vyhledávání. Oba typy dotazů jsou popisována v pojmech jednoduchý analyzátor, ale i pokročilé dotazy vyžadují parametr hledání pro předávání výrazy složitých dotazů.
++ Kolekce koncových dokumentů a dokumentů v rámci služby vyjádřené jako adresa URL obsahující pevné a uživatelem definované komponenty: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
++ **`api-version`** (Pouze REST) je nutné, protože je vždy k dispozici více než jedna verze rozhraní API. 
++ **`api-key`** , buď dotaz nebo rozhraní API pro správu – klíč ověří požadavek vaší služby.
++ **`queryType`** , a to buď jednoduché, nebo úplné, což může být vynecháno, pokud používáte vestavěnou výchozí jednoduchou syntaxi.
++ **`search`** nebo **`filter`** poskytuje kritéria shody, která je možné neurčit, pokud chcete provést prázdné vyhledávání. Oba typy dotazů jsou popsány v souvislosti s jednoduchým analyzátorem, ale i pokročilé dotazy vyžadují pro předávání složitých výrazů dotazů parametr Search.
 
-Všechny ostatní parametry hledání jsou volitelné. Úplný seznam atributů najdete v tématu [vytvoření indexu (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). Bližší pohled na použití parametrů během zpracování, naleznete v tématu [jak funguje fulltextové vyhledávání ve službě Azure Search](search-lucene-query-architecture.md).
+Všechny ostatní parametry hledání jsou volitelné. Úplný seznam atributů najdete v tématu [vytvoření indexu (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index). Bližší informace o tom, jak se používají parametry během zpracování, najdete [v tématu Jak funguje fulltextové vyhledávání v Azure Search](search-lucene-query-architecture.md).
 
-## <a name="choose-a-parser-simple--full"></a>Vyberte analyzátor: jednoduché | úplné
+## <a name="choose-a-parser-simple--full"></a>Zvolit analyzátor: jednoduché | kompletní
 
-Azure Search je umístěna nad Apache Lucene a vám dává na výběr mezi dvěma analyzátory dotazu pro zpracování dotazů typické a specializované. Požadavky pomocí jednoduchý analyzátor jsou formulovat pomocí [jednoduchá syntaxe dotazů](query-simple-syntax.md), vybrané jako výchozí pro rychlost a efektivitu v dotazech textu volného tvaru. Tato syntaxe podporuje mnoho běžných operátorů hledání včetně AND, OR, NOT, fráze, přípony a priority.
+Azure Search se nachází na Apache Lucene a dává vám možnost volby mezi dvěma analyzátory dotazů pro zpracování typických a specializovaných dotazů. Požadavky využívající jednoduchý analyzátor jsou formulovány pomocí [jednoduché syntaxe dotazu](query-simple-syntax.md), která je vybrána jako výchozí pro rychlost a efektivitu v textových dotazech bezplatného formuláře. Tato syntaxe podporuje řadu běžných operátorů hledání, včetně operátorů a, nebo, NOT, fráze, přípony a priority.
 
-[Úplná syntaxe dotazů Lucene](query-Lucene-syntax.md#bkmk_syntax), povolené při přidání `queryType=full` na žádost, poskytuje široce přijatých a expresivní jazyk dotazů vyvinutý jako součást [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Úplná syntaxe rozšiřuje možnosti jednoduché syntaxi. Jakýkoli dotaz, který napíšete pro jednoduchá syntaxe běží pod úplné analyzátor Lucene. 
+[Úplná syntaxe dotazů Lucene](query-Lucene-syntax.md#bkmk_syntax), která je povolená, `queryType=full` když přidáváte žádost, zveřejňuje široce přijatý a exprese dotazový jazyk vyvinutý jako součást [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Úplná syntaxe rozšiřuje jednoduchou syntaxi. Každý dotaz, který zapíšete pro jednoduchou syntaxi, se spustí s úplným analyzátorem Lucene. 
 
-Tento bod ilustrovali následující příklady: stejný dotaz, ale s nastavením jiné queryType přinést různé výsledky. V první dotaz `^3` je považován za součást hledaný termín.
+Následující příklady ilustrují bod: stejný dotaz, ale s jiným nastavením dotazu, poskytují různé výsledky. V prvním dotazu `^3` je považován za součást hledaného termínu.
 
 ```
 queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
 ```
 
-Stejný dotaz znovu pomocí úplné analyzátor Lucene interpretuje nárůst v poli na "ranch", což zvyšuje pořadí hledání výsledky obsahující tento konkrétní výraz.
+Stejný dotaz, který používá úplný analyzátor Lucene, interpretuje zvyšování v rámci pole na "Ranch", což zvyšuje pořadí hledání výsledků, které obsahují konkrétní podmínky.
 
 ```
 queryType=full&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
@@ -114,57 +114,57 @@ queryType=full&search=mountain beach garden ranch^3&searchFields=description&$co
 
 ## <a name="types-of-queries"></a>Typy dotazů
 
-Služba Azure Search podporuje širokou škálu typů dotazů. 
+Azure Search podporuje širokou škálu typů dotazů. 
 
-| Typ dotazu | Využití | Další informace a příklady |
+| Typ dotazu | Použití | Příklady a další informace |
 |------------|--------|-------------------------------|
-| Hledání v textu volného tvaru | Parametr hledání a buď analyzátoru| Fulltextové vyhledávání vyhledá jeden nebo více výrazů ve všech *prohledávatelné* polích v indexu a funguje tak, jak by zvyklí u vyhledávacích webů, jako je Google nebo Bing. V příkladu v úvodu se fulltextové vyhledávání.<br/><br/>Fulltextové vyhledávání projde Analýza textu s využitím standardní analyzátor Lucene (ve výchozím nastavení) na malé všechny podmínky, odebrat nevýznamová slova jako "the". Můžete přepsat výchozí s [jiné než anglické jazykové analyzátory](index-add-language-analyzers.md#language-analyzer-list) nebo [specializované nezávislá na jazykové analyzátory](index-add-custom-analyzers.md#AnalyzerTable) , které mění analýzu textu. Příkladem je [– klíčové slovo](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) jeden token, který považuje veškerý obsah pole. To je užitečné pro data, jako jsou PSČ, ID a některé názvy produktů. | 
-| Filtrované vyhledávání | [Výraz filtru OData](query-odata-filter-orderby-syntax.md) a buď analyzátoru | Filtrování vyhodnotí logický výraz napříč všemi *filterable* polí v indexu. Na rozdíl od vyhledávání odpovídá filtru dotazu přesný obsah pole, včetně rozlišování na pole řetězců. Další rozdíl je, že filtrovací dotazy jsou vyjádřeny syntaxe OData. <br/>[Příklad výrazu filtru](search-query-simple-examples.md#example-3-filter-queries) |
-| Geografické vyhledávání | [Typu Edm.GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) na pole, výraz filtru a buď analyzátoru | Souřadnice, které jsou uloženy v poli s Edm.GeographyPoint se používá pro "najít poblíž" nebo mapovou hledat ovládací prvky. <br/>[Příklad geografické vyhledávání](search-query-simple-examples.md#example-5-geo-search)|
-| Oblast hledání | výraz filtru a jednoduchý analyzátor | Ve službě Azure Search se vytvářejí dotazy na rozsah, pomocí parametru filtru. <br/>[Příklad filtr rozsahu](search-query-simple-examples.md#example-4-range-filters) | 
-| [Fielded vyhledávání](query-lucene-syntax.md#bkmk_fields) | Parametr hledání a úplné analyzátoru | Sestavte výraz složeného dotazu cílí na jedno pole. <br/>[Příklad fielded prohledávání](search-query-lucene-examples.md#example-2-fielded-search) |
-| [vyhledávání přibližných shod](query-lucene-syntax.md#bkmk_fuzzy) | Parametr hledání a úplné analyzátoru | Odpovídá na podmínky mají podobné konstrukce nebo pravopis. <br/>[Příklad vyhledávání přibližných shod](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [vyhledávání blízkých výrazů](query-lucene-syntax.md#bkmk_proximity) | Parametr hledání a úplné analyzátoru | Najde podmínky, které jsou blízko sebe v dokumentu. <br/>[Příklad vyhledávání blízkých výrazů](search-query-lucene-examples.md#example-4-proximity-search) |
-| [zvýšení skóre termínu](query-lucene-syntax.md#bkmk_termboost) | Parametr hledání a úplné analyzátoru | Určuje pořadí vyšší dokumentu obsahuje Posílený termín relativně k ostatním, které ji nemají. <br/>[Příklad zvýšení skóre termínu](search-query-lucene-examples.md#example-5-term-boosting) |
-| [hledání regulárního výrazu](query-lucene-syntax.md#bkmk_regex) | Parametr hledání a úplné analyzátoru | Na základě obsahu regulárního výrazu shody. <br/>[Příklad regulárního výrazu](search-query-lucene-examples.md#example-6-regex) |
-|  [zástupný znak nebo předpona vyhledávání](query-lucene-syntax.md#bkmk_wildcard) | Parametr hledání a úplné analyzátoru | Shody na základě předpony a tilda (`~`) nebo jeden znak (`?`). <br/>[Příklad prohledávání zástupných znaků](search-query-lucene-examples.md#example-7-wildcard-search) |
+| Hledání textu bezplatného formuláře | Vyhledávací parametr a buď analyzátor| Fulltextové vyhledávání vyhledává jeden nebo více výrazů ve všech *prohledávatelných* polích v indexu a funguje tak, jak byste očekávali, že vyhledávací stroj, jako je Google nebo Bing, funguje. Příkladem v úvodu je fulltextové vyhledávání.<br/><br/>Fulltextové vyhledávání odkazuje na analýzu textu pomocí standardního analyzátoru Lucene (ve výchozím nastavení), aby se snížila velikost písmen, jako je "a". Můžete přepsat výchozí pomocí analyzátorů, které [nejsou v angličtině](index-add-language-analyzers.md#language-analyzer-list) , nebo [specializované nezávislá analyzátory jazyka](index-add-custom-analyzers.md#AnalyzerTable) , které upraví analýzu textu. Příkladem je [klíčové slovo](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , které zachází s celým obsahem pole jako s jedním tokenem. To je užitečné pro data, jako jsou kódy PSČ, ID a některé názvy produktů. | 
+| Filtrované hledání | [Výraz filtru OData](query-odata-filter-orderby-syntax.md) a buď analyzátor | Filtrovat dotazy vyhodnotit logický výraz nad všemi filtrovanými poli v indexu. Na rozdíl od hledání dotaz filtru odpovídá přesnému obsahu pole, včetně rozlišování velkých a malých písmen v polích řetězců. Dalším rozdílem je, že dotazy filtru jsou vyjádřené v syntaxi OData. <br/>[Příklad výrazu filtru](search-query-simple-examples.md#example-3-filter-queries) |
+| Geografické vyhledávání | [Typ EDM. GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) pro pole, výraz filtru a buď analyzátor | Souřadnice uložené v poli s EDM. GeographyPoint se používají pro ovládací prvky hledání v blízkosti nebo mapování na základě map. <br/>[Příklad geografického hledání](search-query-simple-examples.md#example-5-geo-search)|
+| Hledání rozsahu | výraz filtru a jednoduchý analyzátor | V Azure Search jsou dotazy Range sestaveny pomocí parametru Filter. <br/>[Příklad filtru rozsahu](search-query-simple-examples.md#example-4-range-filters) | 
+| [Hledání v poli](query-lucene-syntax.md#bkmk_fields) | Parametr Search a úplný analyzátor | Sestavení složeného výrazu dotazu zaměřeného na jedno pole. <br/>[Příklad hledání v poli](search-query-lucene-examples.md#example-2-fielded-search) |
+| [hledání přibližných výsledků](query-lucene-syntax.md#bkmk_fuzzy) | Parametr Search a úplný analyzátor | Odpovídá podmínkám, které mají podobnou konstrukci nebo pravopis. <br/>[Příklad přibližného hledání](search-query-lucene-examples.md#example-3-fuzzy-search) |
+| [hledání blízkosti](query-lucene-syntax.md#bkmk_proximity) | Parametr Search a úplný analyzátor | Vyhledá v dokumentu skoro stejné výrazy. <br/>[Příklad hledání blízkosti](search-query-lucene-examples.md#example-4-proximity-search) |
+| [zvyšování termínů](query-lucene-syntax.md#bkmk_termboost) | Parametr Search a úplný analyzátor | Rozhodne dokument větší, pokud obsahuje zvýšený termín vzhledem k ostatním, které ne. <br/>[Příklad zvyšování skóre termínu](search-query-lucene-examples.md#example-5-term-boosting) |
+| [hledání regulárních výrazů](query-lucene-syntax.md#bkmk_regex) | Parametr Search a úplný analyzátor | Odpovídá na základě obsahu regulárního výrazu. <br/>[Příklad regulárního výrazu](search-query-lucene-examples.md#example-6-regex) |
+|  [zástupné znaky nebo hledání předpon](query-lucene-syntax.md#bkmk_wildcard) | Parametr Search a úplný analyzátor | Odpovídá v závislosti na předponě a vlnovce (`~`) nebo jednom znaku (`?`). <br/>[Příklad hledání pomocí zástupných znaků](search-query-lucene-examples.md#example-7-wildcard-search) |
 
 ## <a name="manage-search-results"></a>Správa výsledků hledání 
 
-Výsledky dotazu jsou daná aplikace Streamovat jako dokumenty JSON do rozhraní REST API, i když používáte rozhraní API pro .NET, můžete je součástí serializace. Obrazce výsledky po nastavení parametrů u dotazu, výběr konkrétního pole pro odpověď.
+Výsledky dotazu jsou v REST API streamované jako dokumenty JSON, i když použijete rozhraní API .NET, ve kterém je zabudovaná serializace. Výsledky můžete tvarovat nastavením parametrů pro dotaz, a to tak, že vyberete konkrétní pole pro odpověď.
 
-Parametry v dotazu umožňuje strukturování daného výsledku nastavit následujícími způsoby:
+Parametry pro dotaz lze použít ke strukturování sady výsledků následujícími způsoby:
 
-+ Omezení nebo dávkování počet dokumentů ve výsledcích (50 ve výchozím nastavení)
-+ Výběr polí pro zahrnutí do výsledků
++ Omezení nebo dávkování počtu dokumentů ve výsledcích (standardně 50)
++ Výběr polí, která se mají zahrnout do výsledků
 + Nastavení pořadí řazení
-+ Přidávání položek zvýraznění dojde k přitažení pozornosti ke odpovídající podmínky v těle výsledky hledání
++ Přidání zvýraznění přístupů k tomu, aby bylo možné upozornit na vyhovující výrazy v těle výsledků hledání
 
 ### <a name="tips-for-unexpected-results"></a>Tipy pro neočekávané výsledky
 
-V některých případech neočekávané látku a není struktury výsledky. Pokud výsledky dotazu není co byste měli vidět, můžete vyzkoušet tyto změny dotazu a zjistěte, jestli zlepšit výsledky:
+V některých případech se jedná o neočekávanou látku a nikoli strukturu výsledků. Pokud výsledky dotazu nečekají na to, co očekáváte, můžete vyzkoušet tyto úpravy dotazů, abyste viděli, jestli výsledky zlepšují:
 
-+ Změna **`searchMode=any`** (ve výchozím nastavení) **`searchMode=all`** tak, aby vyžadovala odpovídajících položek na všechna kritéria namísto některé z kritérií. To platí zejména když logické operátory jsou zahrnuty dotazu.
++ Změňte **`searchMode=any`** (výchozí) na **`searchMode=all`** tak, aby vyžadovala shodu u všech kritérií místo některého z kritérií. To platí zejména při zahrnutí logických operátorů do dotazu.
 
-+ Techniky dotazu změňte, pokud text nebo provést lexikální analýzu, je nezbytné, ale typ dotazu vylučuje jazykové zpracování. Fulltextové vyhledávání, text nebo provést lexikální analýzu autocorrects pravopisné chyby, tvary slov plural jednotném čísle a dokonce nestandardní příkazy nebo podstatná jména. U některých dotazů, jako přibližných shod nebo hledání pomocí zástupných znaků, analýzu textu není součástí dotazu parsování kanálu. Regulární výrazy byly použity pro některé scénáře, jako alternativní řešení. 
++ Změňte způsob dotazování v případě, že je nutné zadat text nebo lexikální analýzu, ale typ dotazu vylučuje lingvistické zpracování. V fulltextovém vyhledávání, textu nebo lexikální analýze je automatických oprav pro chyby pravopisu, wordových formulářů v množném čísle a dokonce i na nepravidelných operacích a podstatných případech. Pro některé dotazy, jako je například přibližné nebo zástupné vyhledávání, není analýza textu součástí kanálu analýzy dotazů. V některých případech byly regulární výrazy použity jako alternativní řešení. 
 
 ### <a name="paging-results"></a>Výsledky stránkování
-Služba Azure Search umožňuje snadnou implementaci stránkování výsledků vyhledávání. S použitím **`top`** a **`skip`** parametry, můžete plynule vydávat vyhledávací požadavky, které vám umožní získat úplnou sadu výsledků vyhledávání ve spravovatelných, seřazených podmnožiny, který snadno povolte hledání dobré postupy v uživatelském rozhraní. Při získávání těchto menších podmnožin výsledků můžete také získat počet dokumentů v úplné sadě výsledků vyhledávání.
+Služba Azure Search umožňuje snadnou implementaci stránkování výsledků vyhledávání. Pomocí **`top`** parametrů a **`skip`** můžete plynule vydávat žádosti o vyhledávání, které vám umožní získat celkovou sadu výsledků hledání v spravovatelných, seřazených podmnožinách, které umožňují správné postupy uživatelského rozhraní pro hledání. Při získávání těchto menších podmnožin výsledků můžete také získat počet dokumentů v úplné sadě výsledků vyhledávání.
 
 Další informace o stránkování výsledků vyhledávání naleznete v článku [Stránkování výsledků vyhledávání ve službě Azure Search](search-pagination-page-layout.md).
 
 ### <a name="ordering-results"></a>Řazení výsledků
 Když přijímáte výsledky vyhledávacího dotazu, můžete požadovat, aby služba Azure Search vracela výsledky seřazené podle hodnot v určitém poli. Ve výchozím nastavení služba Azure Search řadí výsledky podle skóre vyhledávání každého dokumentu, které je odvozeno z [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
 
-Pokud chcete Azure Search vracela výsledky seřazené podle hodnoty místo skóre vyhledávání, můžete použít **`orderby`** parametr hledání. Můžete zadat hodnotu **`orderby`** parametr zahrnout názvy polí a volání [  **`geo.distance()` funkce** ](query-odata-filter-orderby-syntax.md) pro geoprostorové hodnoty. Každý výraz může být následován `asc` k označení, že výsledky jsou požadovány ve vzestupném pořadí, a **`desc`** k označení, že výsledky jsou požadovány v sestupném pořadí. Ve výchozím nastavení se používá vzestupné pořadí.
+Pokud chcete, aby Azure Search vracet výsledky seřazené podle jiné hodnoty než skóre hledání, můžete použít **`orderby`** parametr Search. Můžete zadat hodnotu **`orderby`** parametru pro zahrnutí názvů polí a volání [ **`geo.distance()` funkce**](query-odata-filter-orderby-syntax.md) pro geoprostorové hodnoty. Každý výraz může následovat `asc` za účelem indikace, že výsledky jsou požadovány ve vzestupném pořadí a **`desc`** označují, že výsledky jsou požadovány v sestupném pořadí. Ve výchozím nastavení se používá vzestupné pořadí.
 
 
 ### <a name="hit-highlighting"></a>Zvýrazňování položek
-Ve službě Azure Search je zvýrazňování přesné části výsledků vyhledávání, která odpovídá vyhledávacímu dotazu je snadné pomocí **`highlight`** , **`highlightPreTag`** , a **`highlightPostTag`** parametry. Můžete určit, u jakých *prohledávatelných* polí má být odpovídající text zvýrazněný, stejně tak můžete zadat značky řetězce, které se mají připojit k začátku a ke konci odpovídajícího text vráceného službou Azure Search.
+V Azure Search zdůraznění přesné části výsledků hledání, které odpovídají hledanému dotazu, je snadné pomocí **`highlight`** parametrů, **`highlightPreTag`** a **`highlightPostTag`** . Můžete určit, u jakých *prohledávatelných* polí má být odpovídající text zvýrazněný, stejně tak můžete zadat značky řetězce, které se mají připojit k začátku a ke konci odpovídajícího text vráceného službou Azure Search.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-+ [Jak funguje fulltextové vyhledávání ve službě Azure Search (dotaz parsování architektura)](search-lucene-query-architecture.md)
-+ [Průzkumník služby Search](search-explorer.md)
-+ [Jak provádět dotazy v .NET](search-query-dotnet.md)
-+ [Jak provádět dotazy v REST](search-create-index-rest-api.md)
++ [Jak funguje úplné hledání textu v Azure Search (architektura analýzy dotazů)](search-lucene-query-architecture.md)
++ [Průzkumník vyhledávání](search-explorer.md)
++ [Dotazování v .NET](search-query-dotnet.md)
++ [Dotazování v REST](search-create-index-rest-api.md)

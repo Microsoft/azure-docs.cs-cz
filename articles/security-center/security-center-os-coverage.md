@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 02d993d760338356fa29ee58a03215e14d6583f1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7cd1d451b49faf2f8e3ad38f4ff780256ef2dc5d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295602"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883602"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkce podporované nástrojem Azure Security Center
 
@@ -53,7 +53,7 @@ Podporovány jsou následující operační systémy Linux:
 > [!NOTE]
 > Vzhledem k tomu, že se seznam podporovaných operačních systémů Linux neustále mění, pokud chcete, kliknutím [sem](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) zobrazíte nejaktuálnější seznam podporovaných verzí, v případě, že došlo ke změnám od posledního publikování tohoto tématu.
 
-64 – bit
+64 bitů
 * CentOS 6 a 7
 * Amazon Linux 2017.09
 * Oracle Linux 6 a 7
@@ -62,7 +62,7 @@ Podporovány jsou následující operační systémy Linux:
 * Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-32 – bit
+32 bitů
 * CentOS 6
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6
@@ -88,7 +88,7 @@ Podporují se také virtuální počítače, které běží v cloudové službě
 |Chybějící opravy|✔|✔|✔|✔|✔|✔|Zdarma|
 |Konfigurace zabezpečení|✔|✔|✔|✔|✔|✔|Zdarma|
 |Posouzení služby Endpoint Protection|✔|✔|✔|X|X|X|Zdarma|
-|Přístup k virtuálnímu počítači JIT|✔|X|X|✔|X|X|Standard|
+|Přístup k virtuálnímu počítači podle potřeby|✔|X|X|✔|X|X|Standard|
 |Adaptivní řízení aplikací|✔|X|✔|✔|X|✔|Standard|
 |FIM|✔|✔|✔|✔|✔|✔|Standard|
 |Vyhodnocení šifrování disku|✔|✔|X|✔|✔|X|Zdarma|
@@ -108,15 +108,17 @@ Následující tabulka poskytuje matrici:
 
 Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučení, najdete v tématu [Endpoint Protection Assessment and Recommendations](security-center-endpoint-protection.md).
 
-| Endpoint Protection (Ochrana koncových bodů)| Platformy | Instalace Security Center | Zjišťování Security Center |
+| Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
 | Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, součást operačního systému| Ano |
 | Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
 | Trend Micro – všechny verze | Řada Windows Serverů  | Ne | Ano |
 | Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
 | McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
-| Kaspersky| Řada Windows Serverů  | Ne | Ne  |
-| Sophos| Řada Windows Serverů  | Ne | Ne  |
+| McAfee v10+ | Řada Linux serverů  | Ne | Ano **\*** |
+| Sophos v9 +| Řada Linux serverů  | Ne | Ano **\***  |
+
+ **\*** Stav pokrytí a podpůrná data jsou aktuálně k dispozici pouze v pracovním prostoru Log Analytics přidruženém k vašim chráněným předplatným a nereflektují se na portálu Azure Security Center.
 
 > [!NOTE]
 > - Detekce služby System Center Endpoint Protection (SCEP) na virtuálním počítači s Windows Serverem 2008 R2 vyžaduje, aby se protokol SCEP nainstaloval po PowerShellu 3,0 (nebo v horní verzi).
@@ -135,17 +137,17 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 |Virtuální sítě|✔| Není k dispozici|
 |Podsítě|✔| Není k dispozici|
 |Síťové karty|✔| Není k dispozici|
-|Skupiny NSG|✔| Není k dispozici|
+|skupin NSG|✔| Není k dispozici|
 |Subscription|✔ **| ✔|
 |Batch|✔| Není k dispozici|
 |Service Fabric|✔| Není k dispozici|
-|Účet Automation|✔| Není k dispozici|
+|Účet služby Automation|✔| Není k dispozici|
 |Nástroj pro vyrovnávání zatížení|✔| Není k dispozici|
 |Hledat|✔| Není k dispozici|
 |Service Bus|✔| Není k dispozici|
 |Stream Analytics|✔| Není k dispozici|
 |Centrum událostí|✔| Není k dispozici|
-|Logické aplikace|✔| Není k dispozici|
+|Aplikace logiky|✔| Není k dispozici|
 |Účet úložiště|✔| Není k dispozici|
 |Redis|✔| Není k dispozici|
 |Data Lake Analytics|✔| Není k dispozici|
@@ -160,7 +162,7 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Naučte se [plánovat a porozumět hlediskům návrhu, které je potřeba přijmout Azure Security Center](security-center-planning-and-operations-guide.md).
 - Přečtěte si další informace o analýze [chování virtuálních počítačů a analýze paměti ve výpisu stavu systému v Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis).

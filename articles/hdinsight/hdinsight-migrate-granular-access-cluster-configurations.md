@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ebb1723a9a2b2d069a1766d4f78151f2b684c5b9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 797caae3caaca14c10481cb58654c45b4bed55ae
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464662"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884315"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -155,14 +155,14 @@ Aktualizujte [rutinu AZ PowerShell verze 2.0.0](https://www.powershellgallery.co
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>Přidání přiřazení role operátora clusteru HDInsight uživateli
 
-Uživatel s rolí [Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) nebo [vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) může přiřadit roli operátora [clusteru HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) uživatelům, kteří by měli mít přístup pro čtení a zápis k citlivým hodnotám konfigurace clusteru HDInsight (například přihlašovací údaje brány clusteru. a klíče účtu úložiště).
+Uživatel s rolí [vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) může přiřadit roli operátora [clusteru HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) uživatelům, kteří by měli mít přístup pro čtení a zápis k citlivým hodnotám konfigurace clusteru HDInsight (například přihlašovací údaje brány clusteru a klíče účtu úložiště).
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI
 
 Nejjednodušší způsob, jak přidat toto přiřazení role, je použití `az role assignment create` příkazu v Azure CLI.
 
 > [!NOTE]
-> Tento příkaz musí spustit uživatel s rolemi Přispěvatel nebo Owner, protože jim můžou udělit tato oprávnění. `--assignee` Je e-mailová adresa uživatele, kterému chcete přiřadit roli operátora clusteru HDInsight.
+> Tento příkaz musí spustit uživatel s rolí vlastníka, protože mu můžou udělit tato oprávnění. `--assignee` Je název objektu služby nebo e-mailové adresy uživatele, kterému chcete přiřadit roli operátora clusteru HDInsight. Pokud se zobrazí chyba nedostatečná oprávnění, přečtěte si níže uvedené Nejčastější dotazy.
 
 #### <a name="grant-role-at-the-resource-cluster-level"></a>Udělení role na úrovni prostředku (clusteru)
 
@@ -185,3 +185,23 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
 Alternativně můžete použít Azure Portal k přidání přiřazení role operátora clusteru HDInsight uživateli. Projděte si dokumentaci, [spravujte přístup k prostředkům Azure pomocí RBAC a Azure Portal – přidejte přiřazení role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment).
+
+## <a name="faq"></a>Nejčastější dotazy
+
+### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>Proč se mi zobrazuje odpověď 403 (zakázaná) po aktualizaci požadavků rozhraní API a/nebo nástroje?
+
+Konfigurace clusteru jsou nyní za detailní řízení přístupu založené na rolích a vyžadují `Microsoft.HDInsight/clusters/configurations/*` oprávnění k přístupu k nim. Pokud chcete získat toto oprávnění, přiřaďte k uživateli nebo instančnímu objektu, který se snaží získat přístup ke konfiguraci, roli operátora clusteru HDInsight, přispěvatele nebo vlastníka.
+
+### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Proč se zobrazuje "nedostatečná oprávnění k dokončení operace" při spuštění příkazu rozhraní příkazového řádku Azure pro přiřazení role operátora clusteru HDInsight jinému uživateli nebo instančnímu objektu?
+
+Uživatel nebo instanční objekt, který spouští příkaz, musí kromě role vlastníka mít k dispozici dostatečná oprávnění pro službu AAD, aby mohli vyhledat ID objektu pověřeného nabyvatele. Tato zpráva indikuje nedostatečné oprávnění AAD. Zkuste nahradit `-–assignee` `–assignee-object-id` argument parametrem a místo názvu (nebo ID objektu zabezpečení v případě spravované identity) zadejte ID objektu zmocnění. Další informace najdete v části nepovinných parametrů v [dokumentaci AZ role Assignment Create](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) .
+
+Pokud to pořád nefunguje, požádejte správce AAD, aby získal správná oprávnění.
+
+### <a name="what-will-happen-if-i-take-no-action"></a>Co se stane, když neprovedem žádnou akci?
+
+A nebudou již vracet žádné informace a voláníjižnebudevracetcitlivéparametry,jakojeklíčúčtuúložištěnebohesloclusteru.`GET /configurations/{configurationName}` `POST /configurations/gateway` `GET /configurations` Totéž platí pro odpovídající metody SDK a rutiny PowerShellu.
+
+Pokud používáte starší verzi některého z nástrojů pro sadu Visual Studio, VSCode, IntelliJ nebo zatmění uvedenou výše, nebudou již nadále fungovat, dokud ji neaktualizujete.
+
+Podrobnější informace najdete v odpovídající části tohoto dokumentu pro váš scénář.

@@ -65,13 +65,19 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: Běžné chybové zprávy
   href: error-messages.md
-- name: Problémy s výkonem virtuálních počítačů Windows
+- name: Problémy s výkonem virtuálních počítačů
   href: performance-diagnostics.md
   items:
-    - name: Použití PerfInsights
-      href: how-to-use-perfInsights.md
-    - name: Rozšíření Diagnostika výkonu
-      href: performance-diagnostics-vm-extension.md
+    - name: Windows
+      items:
+        - name: Použití PerfInsights
+          href: how-to-use-perfinsights.md
+        - name: Rozšíření Diagnostika výkonu
+          href: performance-diagnostics-vm-extension.md
+    - name: Linux
+      items:
+        - name: Použití PerfInsights
+          href: how-to-use-perfinsights-linux.md
 - name: Offline instalace agenta virtuálního počítače s Windows
   href: install-vm-agent-offline.md
 - name: Znovunasazení virtuálního počítače

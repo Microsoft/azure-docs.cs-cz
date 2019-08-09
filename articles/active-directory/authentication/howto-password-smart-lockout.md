@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd03e2b98b1fd1a2a45b5feecc963bcfc7bfe83c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 489ff1824c4bc45ee7ed31e9c96377975a32baa4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499878"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879249"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Inteligentní uzamčení Azure Active Directory
 
@@ -31,7 +31,7 @@ Inteligentní uzamykání sleduje poslední tři chybné hodnoty hash hesla, aby
 
 Federované nasazení pomocí AD FS 2016 a AF FS 2019 může povolit podobné výhody pomocí [AD FS uzamknutí extranetu a extranetového inteligentního uzamčení](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection).
 
-Inteligentní uzamčení je vždycky zapnuté pro všechny zákazníky Azure AD s těmito výchozími nastaveními, která nabízejí správnou kombinaci zabezpečení a použitelnosti. Přizpůsobení nastavení inteligentního uzamčení s hodnotami specifickými pro vaši organizaci vyžaduje Azure AD Basic nebo vyšší licence pro vaše uživatele.
+Inteligentní uzamčení je vždycky zapnuté pro všechny zákazníky Azure AD s těmito výchozími nastaveními, která nabízejí správnou kombinaci zabezpečení a použitelnosti. Přizpůsobení nastavení inteligentního uzamčení s hodnotami specifickými pro vaši organizaci vyžaduje placené licence Azure AD pro vaše uživatele.
 
 Pomocí inteligentního uzamčení není zaručeno, že se originální uživatel nikdy nezamkne. Když inteligentní uzamčení uzamkne uživatelský účet, zkusíme, že nebudete moct tohoto uživatele uzamknout. Služba uzamčení se pokusí zajistit, aby chybné objekty actor nemohly získat přístup k účtu originálního uživatele.  
 
@@ -56,14 +56,14 @@ Pomocí následujících pokynů ověřte zásady uzamčení místních účtů 
 
 1. Otevřete nástroj pro správu Zásady skupiny.
 2. Upravte zásady skupiny, které obsahují zásady uzamčení účtů vaší organizace, například **výchozí zásady domény**.
-3. Přejít > na  > zásadyKonfiguracepočítače > nastavení systému Windows nastavení zabezpečenízásadyúčtuuzamčeníúčtu >  >  **Zásady**.
+3. Přejít > na > zásadyKonfiguracepočítače > nastavení systému Windows nastavení zabezpečenízásadyúčtuuzamčeníúčtu >  >  **Zásady**.
 4. Ověřte **prahovou hodnotu uzamčení účtu** a vynulovat **čítač uzamčení účtu po** hodnotách.
 
 ![Úprava zásad uzamčení místních účtů služby Active Directory](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Správa hodnot inteligentního uzamčení Azure AD
 
-Na základě požadavků vaší organizace může být nutné přizpůsobit hodnoty inteligentního uzamknutí. Přizpůsobení nastavení inteligentního uzamčení s hodnotami specifickými pro vaši organizaci vyžaduje Azure AD Basic nebo vyšší licence pro vaše uživatele.
+Na základě požadavků vaší organizace může být nutné přizpůsobit hodnoty inteligentního uzamknutí. Přizpůsobení nastavení inteligentního uzamčení s hodnotami specifickými pro vaši organizaci vyžaduje placené licence Azure AD pro vaše uživatele.
 
 Chcete-li kontrolovat nebo upravovat hodnoty inteligentního uzamknutí pro vaši organizaci, použijte následující postup:
 

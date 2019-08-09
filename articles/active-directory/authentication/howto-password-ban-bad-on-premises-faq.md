@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779646"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879265"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Místní ochrana heslem Azure AD – Nejčastější dotazy
 
@@ -33,6 +33,8 @@ Aktuální pokyny Microsoftu k tomuto tématu najdete na následujícím odkazu:
 **Otázka: Podporuje se místní ochrana heslem Azure AD v jiných než veřejných cloudech?**
 
 Žádná ochrana heslem bez místní služby Azure AD je podporována pouze ve veřejném cloudu. Nebylo oznámeno žádné datum pro dostupnost neveřejného cloudu.
+
+Portál Azure AD umožňuje úpravy místní ochrany heslem pro konfiguraci služby Windows Server Active Directory i v jiných než veřejných cloudech. Tyto změny budou trvalé, ale jinak se neprojeví. Registrace místních agentů proxy nebo doménových struktur není podporovaná, když se používají přihlašovací údaje pro jiné než veřejné cloudy, a všechny takové pokusy o registraci selžou vždycky.
 
 **Otázka: Jak můžu využít výhody ochrany hesel Azure AD pro podmnožinu místních uživatelů?**
 
@@ -64,7 +66,7 @@ Nepodporuje se. Ochrana heslem Azure AD je funkce Azure, která podporuje rozš�
 
 **Otázka: Jak mohu změnit obsah zásady na úrovni služby Active Directory?**
 
-Nepodporuje se. Zásady se dají spravovat jenom pomocí portálu pro správu Azure AD. Podívejte se také na předchozí otázku.
+Nepodporuje se. Zásady se dají spravovat jenom pomocí portálu Azure AD. Podívejte se také na předchozí otázku.
 
 **Otázka: Proč je Služba DFSR nutná pro replikaci adresáře SYSVOL?**
 
@@ -118,15 +120,15 @@ V souhrnu je potřeba nasazení služby agenta řadiče domény služby Azure AD
 
 **Otázka: Proč vlastní inteligentní uzamčení nefunguje ani po instalaci agentů do místního prostředí Active Directory?**
 
-Vlastní inteligentní uzamčení se podporuje jenom v Azure. Změny nastavení vlastního inteligentního uzamčení na portálu pro správu Azure nemají žádný vliv na místní prostředí Active Directory, a to ani na nainstalovaných agentech.
+Vlastní inteligentní uzamčení se podporuje jenom v Azure AD. Změny nastavení vlastního inteligentního uzamčení na portálu Azure AD nemají žádný vliv na místní prostředí Active Directory, a to ani na nainstalovaných agentech.
 
 **Otázka: Je System Center Operations Manager k dispozici Management Pack ochrany heslem Azure AD?**
 
 Ne.
 
-**Otázka: Proč Azure pořád odmítá slabé heslo, i když jsem nakonfigurovali zásady tak, aby byly v režimu auditování?**
+**Otázka: Proč Azure AD pořád odmítá slabé heslo, i když jsem nakonfigurovali zásady tak, aby byly v režimu auditování?**
 
-Režim auditování se podporuje jenom v prostředí místní služby Active Directory. V případě, že je vyhodnocena hesla, Azure je implicitně vždy v režimu vynucení.
+Režim auditování se podporuje jenom v prostředí místní služby Active Directory. Služba Azure AD je implicitně vždy v režimu vynucení, když vyhodnocuje hesla.
 
 ## <a name="additional-content"></a>Další obsah
 
@@ -142,7 +144,7 @@ Následující odkazy nejsou součástí základní dokumentace k ochraně hesel
 
 Pokud vás zajímá více o ochraně heslem Azure AD a jejich nasazení ve vašem prostředí, můžete využít výhod služby Microsoft Proactive Service dostupné zákazníkům se smlouvou Premier nebo Unified support. Služba se nazývá Azure Active Directory: Ochrana heslem. Další informace vám poskytne váš správce technického účtu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud máte místní otázku ochrany heslem služby Azure AD, která tady není zodpovězená, pošlete nám níže uvedenou položku zpětné vazby.
 

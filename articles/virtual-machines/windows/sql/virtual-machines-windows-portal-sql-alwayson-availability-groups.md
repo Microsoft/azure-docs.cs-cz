@@ -1,6 +1,6 @@
 ---
-title: Nastavením vysoké dostupnosti pro virtuální počítače Azure Resource Manageru | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak vytvořit skupinu dostupnosti AlwaysOn s virtuálními počítači Azure v režimu Azure Resource Manageru.
+title: Nastavení vysoké dostupnosti pro virtuální počítače s Azure Resource Manager | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak vytvořit skupinu dostupnosti Always On s virtuálními počítači Azure v režimu Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,200 +15,200 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9751ae97f96d2041a4106a41bb782a80dd9c8ba9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62129549"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884402"
 ---
-# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Konfigurace skupin dostupnosti Always On v Azure Virtual Machines automaticky: Resource Manager
+# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatické konfigurace skupin dostupnosti Always On v Azure Virtual Machines: Resource Manager
 
-V tomto kurzu se dozvíte, jak vytvořit skupinu dostupnosti systému SQL Server, který používá virtuální počítače Azure Resource Manageru. Tento kurz používá ke konfiguraci šablony oken webu Azure. Můžete zkontrolovat výchozí nastavení, zadejte požadovaná nastavení a aktualizujte oknech na portálu, jak si projdete tohoto kurzu.
+V tomto kurzu se dozvíte, jak vytvořit SQL Server skupinu dostupnosti, která používá Azure Resource Manager virtuálních počítačů. Tento kurz používá ke konfiguraci šablony Azure Blade. Můžete zkontrolovat výchozí nastavení, zadat požadovaná nastavení a aktualizovat okna na portálu při procházení tohoto kurzu.
 
-Úplný kurz vytvoří skupinu dostupnosti SQL Server na virtuálních počítačích Azure, které obsahují následující prvky:
+Úplný kurz vytvoří ve službě Azure Virtual Machines skupinu dostupnosti SQL Server, která zahrnuje následující prvky:
 
-* Virtuální síť, která má více podsítí, včetně front-end a back-endové podsítě
-* Dva řadiče domény, které máte doménu služby Active Directory
-* Dva virtuální počítače, které spustit systém SQL Server a jsou nasazené na podsíť back-endu a připojený k doméně služby Active Directory
-* Cluster převzetí služeb při selhání třemi uzly pomocí modelu kvora Většina uzlů
-* Skupiny dostupnosti, která má dvě repliky synchronního potvrzování dostupnosti databáze
+* Virtuální síť s více podsítěmi, včetně front-endové a back-endové podsítě
+* Dva řadiče domény, které mají doménu služby Active Directory
+* Dva virtuální počítače, které používají SQL Server a jsou nasazeny do podsítě back-endu a připojeny k doméně služby Active Directory
+* Cluster s podporou převzetí služeb při selhání se třemi uzly s modelem kvora s většinou uzlů
+* Skupina dostupnosti, která má dvě repliky se synchronním potvrzováním databáze dostupnosti
 
 Následující obrázek představuje kompletní řešení.
 
-![Testovací prostředí architektury pro skupiny dostupnosti v Azure](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/0-EndstateSample.png)
+![Architektura testovací laboratoře pro skupiny dostupnosti v Azure](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/0-EndstateSample.png)
 
-Všechny prostředky v tomto řešení patřit do jedné skupiny prostředků.
+Všechny prostředky v tomto řešení patří do jedné skupiny prostředků.
 
-Než začnete tento kurz, zkontrolujte následující body:
+Než začnete s tímto kurzem, zkontrolujte následující:
 
-* Už máte účet Azure. Pokud ho nemáte, [zaregistrovat zkušební účet](https://azure.microsoft.com/pricing/free-trial/).
-* Už víte, jak použít grafické uživatelské rozhraní pro zřízení virtuálního počítače s SQL serverem z Galerie virtuálních počítačů. Další informace najdete v tématu [zřizování virtuálního počítače s SQL serverem v Azure](virtual-machines-windows-portal-sql-server-provision.md).
-* Už máte důkladného porozumění skupiny dostupnosti. Další informace najdete v tématu [skupiny dostupnosti AlwaysOn (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
+* Už máte účet Azure. Pokud ho ještě nemáte, zaregistrujte [si zkušební účet](https://azure.microsoft.com/pricing/free-trial/).
+* Už víte, jak pomocí grafického uživatelského rozhraní zřídit SQL Server virtuální počítač z Galerie virtuálních počítačů. Další informace najdete v tématu [zřízení virtuálního počítače s SQL Server v Azure](virtual-machines-windows-portal-sql-server-provision.md).
+* Už máte plnou znalosti skupin dostupnosti. Další informace najdete v tématu [skupiny dostupnosti Always On (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
 
 > [!NOTE]
-> Pokud jste chtěli použít skupiny dostupnosti se Sharepointem, viz také [konfigurace SQL serveru 2012 Always On skupin dostupnosti pro službu SharePoint 2013](https://technet.microsoft.com/library/jj715261.aspx).
+> Pokud vás zajímá používání skupin dostupnosti se službou SharePoint, přečtěte si také téma [Konfigurace skupin dostupnosti Always On SQL Server 2012 pro sharepoint 2013](/SharePoint/administration/configure-an-alwayson-availability-group).
 >
 >
 
-V tomto kurzu pomocí webu Azure portal:
+V tomto kurzu použijte Azure Portal pro:
 
-* Výběr šablony Always On na portálu.
-* Zkontrolujte nastavení šablony a aktualizovat několik nastavení konfigurace pro vaše prostředí.
-* Monitorování Azure při vytváření celé prostředí.
-* Připojte se k řadiči domény a potom na serveru se systémem SQL Server.
+* Na portálu vyberte šablonu Always On.
+* Zkontrolujte nastavení šablony a aktualizujte několik konfiguračních nastavení pro vaše prostředí.
+* Monitorujte Azure, protože vytváří celé prostředí.
+* Připojte se k řadiči domény a potom k serveru, na kterém běží SQL Server.
 
 [!INCLUDE [availability-group-template](../../../../includes/virtual-machines-windows-portal-sql-alwayson-ag-template.md)]
 
 ## <a name="provision-the-cluster-from-the-gallery"></a>Zřízení clusteru z Galerie
-Azure poskytuje image Galerie pro celé řešení. Vyhledejte šablonu:
+Azure poskytuje image galerie pro celé řešení. Vyhledání šablony:
 
-1. Přihlaste se k webu Azure portal pomocí svého účtu.
-2. Na webu Azure Portal, klikněte na tlačítko **vytvořit prostředek** otevřít **nový** podokně.
-3. Na **nový** podokno, vyhledejte **AlwaysOn**.
+1. Přihlaste se k Azure Portal pomocí svého účtu.
+2. V Azure Portal kliknutím na **vytvořit prostředek** otevřete **nové** podokno.
+3. V podokně **Nový** vyhledejte **AlwaysOn**.
    ![Najít šablonu AlwaysOn](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
-4. Ve výsledcích hledání vyhledejte **clusteru SQL serveru AlwaysOn**.
+4. Ve výsledcích hledání vyhledejte **SQL Server clusteru AlwaysOn**.
    ![Šablona AlwaysOn](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
-5. Na **vybrat model nasazení**, zvolte **Resource Manageru**.
+5. V nabídce **Vybrat model nasazení**zvolte možnost **Správce prostředků**.
 
-### <a name="basics"></a>Základy
-Klikněte na tlačítko **Základy** a nakonfigurujte následující nastavení:
+### <a name="basics"></a>Základní informace
+Klikněte na **základy** a nakonfigurujte následující nastavení:
 
-* **Uživatelské jméno správce** je uživatelský účet, který má oprávnění správce domény a je členem role pevného serveru sysadmin SQL serveru v obou instancích systému SQL Server. Pro účely tohoto kurzu použijte **DomainAdmin**.
+* **Uživatelské jméno správce** je uživatelský účet, který má oprávnění správce domény a je členem role pevného serveru SQL Server sysadmin v obou instancích SQL Server. Pro tento kurz použijte **DomainAdmin**.
 * **Heslo** je heslo pro účet správce domény. Použijte složité heslo. Potvrďte heslo.
-* **Předplatné** je předplatné tohoto Azure účtuje poplatky za spuštění všech nasazených prostředků pro skupinu dostupnosti. Pokud váš účet má několik předplatných, můžete zadat jiné předplatné.
-* **Skupina prostředků** je název pro skupinu, do které patří všechny prostředky Azure, které jsou vytvořené pomocí této šablony. Pro účely tohoto kurzu použijte **SQL-HA-RG**. Další informace naleznete v tématu [Přehled Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md#resource-groups).
-* **Umístění** je oblast Azure, ve kterém tento kurz vytvoří prostředky. Vyberte oblast Azure.
+* **Předplatné** je předplatné, které Azure účtuje na spouštění všech nasazených prostředků pro skupinu dostupnosti. Pokud má váš účet více předplatných, můžete zadat jiné předplatné.
+* **Skupina prostředků** je název skupiny, do které patří všechny prostředky Azure vytvořené touto šablonou. Pro tento kurz použijte **SQL-ha-RG**. Další informace naleznete v tématu [Přehled Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md#resource-groups).
+* **Umístění** je oblast Azure, ve které kurz vytváří prostředky. Vyberte oblast Azure.
 
-Na následujícím snímku obrazovky je a vyplněný **Základy** okno:
+Následující snímek obrazovky je kompletní okno **základní** :
 
-![Základy](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
+![Základní informace](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
 
 Klikněte na **OK**.
 
-### <a name="domain-and-network-settings"></a>Nastavení domény a síť
-Tato šablona Galerie Azure vytvoří domény a řadiče domény. Vytvoří také síť a dvě podsítě. Šablonu nelze vytvořit servery v existující doméně nebo virtuální sítě. Dalším krokem nakonfiguruje nastavení domény a síť.
+### <a name="domain-and-network-settings"></a>Nastavení domény a sítě
+Tato šablona Galerie Azure vytvoří domény a řadiče domény. Vytvoří také síť a dvě podsítě. Šablona nemůže vytvořit servery v existující doméně nebo virtuální síti. V dalším kroku se nakonfiguruje nastavení domény a sítě.
 
-Na **nastavení domény a síť** okně zkontrolujte přednastavených hodnoty pro doménu a nastavení sítě:
+V okně **nastavení domény a sítě** zkontrolujte přednastavené hodnoty nastavení doména a síť:
 
-* **Název kořenové domény doménové struktury** je název domény pro doménu služby Active Directory, který je hostitelem clusteru. Pro tento kurz použít **contoso.com**.
-* **Název virtuální sítě** je název sítě pro virtuální síť Azure. Pro tento kurz použít **autohaVNET**.
-* **Název podsítě řadiče domény** je název část ve virtuální síti, který je hostitelem řadiče domény. Použití **subnet-1**. Tuto podsíť používá předponu adresy **10.0.0.0/24**.
-* **Název podsítě systému SQL Server** je název část virtuální síť, která hostuje servery, že spuštění SQL serveru a soubor sdílet s kopií clusteru. Použití **podsíť 2**. Tuto podsíť používá předponu adresy **10.0.1.0/26**.
+* **Název kořenové domény doménové struktury** je název domény pro doménu služby Active Directory, která je hostitelem clusteru. Pro kurz použijte **contoso.com**.
+* **Název Virtual Network** je název sítě pro virtuální síť Azure. Pro kurz použijte **autohaVNET**.
+* **Název podsítě řadiče domény** je název části virtuální sítě, která je hostitelem řadiče domény. Použijte **podsíť-1**. Tato podsíť používá předponu adresy **10.0.0.0/24**.
+* **SQL Server název podsítě** je název části virtuální sítě, která je hostitelem serverů se spuštěnou SQL Server a určující sdílenou složku. Použijte **podsíť-2**. Tato podsíť používá předponu adresy **10.0.1.0/26**.
 
 Další informace o virtuálních sítích v Azure najdete v tématu [Přehled virtuálních sítí](../../../virtual-network/virtual-networks-overview.md).  
 
-**Nastavení domény a síť** by měl vypadat jako na následujícím snímku obrazovky:
+**Nastavení domény a sítě** by mělo vypadat jako na následujícím snímku obrazovky:
 
-![Nastavení domény a síť](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/2-domain.png)
+![Nastavení domény a sítě](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/2-domain.png)
 
-V případě potřeby můžete změnit tyto hodnoty. Pro účely tohoto kurzu použijte přednastavených hodnoty.
+V případě potřeby můžete tyto hodnoty změnit. Pro tento kurz použijte přednastavené hodnoty.
 
-Zkontrolujte nastavení a potom klikněte na tlačítko **OK**.
+Zkontrolujte nastavení a klikněte na tlačítko **OK**.
 
 ### <a name="availability-group-settings"></a>Nastavení skupiny dostupnosti
-Na **nastavení skupiny dostupnosti**, zkontrolujte přednastavených hodnoty pro skupinu dostupnosti a naslouchacího procesu.
+V části **Nastavení skupiny dostupnosti**zkontrolujte přednastavené hodnoty pro skupinu dostupnosti a naslouchací proces.
 
-* **Název skupiny dostupnosti** je název clusteru prostředků pro skupinu dostupnosti. Pro účely tohoto kurzu použijte **Contoso-ag**.
-* **Název naslouchacího procesu skupiny dostupnosti** používá cluster a interní služby load balancer. Klienti připojující se k serveru SQL Server můžete použít tento název se připojit k příslušné repliky databáze. Pro účely tohoto kurzu použijte **Contoso-listener**.
-* **Port naslouchacího procesu skupiny dostupnosti** Určuje port TCP systému SQL Server naslouchacího procesu. Pro účely tohoto kurzu použijte výchozí port **1433**.
+* **Název skupiny dostupnosti** je clusterovaný název prostředku pro skupinu dostupnosti. Pro tento kurz použijte **Contoso-AG**.
+* **Název naslouchacího procesu skupiny dostupnosti** je používán clusterem a interním nástrojem pro vyrovnávání zatížení. Klienti, kteří se připojují k SQL Server, můžou tento název použít pro připojení k příslušné replice databáze. Pro tento kurz použijte službu **Contoso-Listener**.
+* **Port naslouchacího procesu skupiny dostupnosti** Určuje port TCP naslouchacího procesu SQL Server. Pro tento kurz použijte výchozí port **1433**.
 
-V případě potřeby můžete změnit tyto hodnoty. Pro účely tohoto kurzu použijte přednastavených hodnoty.  
+V případě potřeby můžete tyto hodnoty změnit. Pro tento kurz použijte přednastavené hodnoty.  
 
-![Nastavení skupiny dostupnosti](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
+![nastavení skupiny dostupnosti](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
 
 Klikněte na **OK**.
 
 ### <a name="virtual-machine-size-storage-settings"></a>Velikost virtuálního počítače, nastavení úložiště
-Na **velikost virtuálního počítače, nastavení úložiště**, zvolte velikost virtuálního počítače SQL serveru a zkontrolujte ostatní nastavení.
+V části **Velikost virtuálního počítače, nastavení úložiště**vyberte velikost virtuálního počítače SQL Server a zkontrolujte další nastavení.
 
-* **Velikost virtuálního počítače systému SQL Server** velikosti pro virtuální počítače, na kterých běží SQL Server. Zvolte velikost příslušný virtuální počítač pro vaši úlohu. Pokud vytváříte toto prostředí pro tento kurz, použijte **DS2**. Pro produkční úlohy zvolte velikost virtuálního počítače, který může podporovat zatížení. Mnoho úloh v produkčním prostředí vyžadují **DS4** nebo větší. Šablona vytvoří dva virtuální počítače v tomto rozsahu a nainstaluje systém SQL Server na každém z nich. Další informace najdete v tématu [velikosti virtuálních počítačů](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* **Velikost virtuálního počítače SQL Server** je velikost pro virtuální počítače, které spouští SQL Server. Vyberte vhodnou velikost virtuálního počítače pro vaše zatížení. Pokud pro tento kurz sestavíte toto prostředí, použijte **DS2**. V případě produkčních úloh vyberte velikost virtuálního počítače, která může podporovat zatížení. Mnoho produkčních úloh vyžaduje **DS4** nebo větší. Šablona sestaví dva virtuální počítače této velikosti a nainstaluje je SQL Server. Další informace najdete v tématu [velikosti virtuálních počítačů](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!NOTE]
-> Azure nainstaluje edici Enterprise systému SQL Server. Cena závisí na edici a velikost virtuálního počítače. Podrobné informace o aktuální náklady, najdete v části [ceny virtual machines](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql).
+> Azure nainstaluje edici Enterprise SQL Server. Náklady závisí na edici a velikosti virtuálního počítače. Podrobné informace o aktuálních nákladech najdete v tématu [ceny virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql).
 >
 >
 
-* **Velikost virtuálního počítače řadiče domény** je velikost virtuálního počítače pro řadiče domény. Pro tento kurz používá **D2**.
-* **Velikost virtuálního počítače určující sdílené složky souboru** je velikost virtuálního počítače pro určující sdílenou složku. Pro účely tohoto kurzu použijte **A1**.
-* **Účet úložiště SQL** je název účtu úložiště, která obsahuje data systému SQL Server a disky operačního systému. Pro účely tohoto kurzu použijte **alwaysonsql01**.
-* **Účet úložiště DC** je název účtu úložiště pro řadiče domény. Pro účely tohoto kurzu použijte **alwaysondc01**.
-* **Velikost disku serveru SQL Server data** v TB je velikost datového disku serveru SQL Server v TB. Zadejte číslo od 1 do 4. Pro účely tohoto kurzu použijte **1**.
-* **Optimalizace úložiště** provádí konfigurační nastavení konkrétní úložiště pro virtuální počítače systému SQL Server na základě typu úlohy. Všechny virtuální počítače systému SQL Server v tomto scénáři používat premium storage s Azure diskové mezipaměti hostitele nastavena jen pro čtení. Kromě toho můžete optimalizovat nastavení systému SQL Server pro pracovní vytížení výběrem jedné z těchto tří nastavení:
+* **Velikost virtuálního počítače řadiče domény** je velikost virtuálního počítače pro řadiče domény. V tomto kurzu použijete **D2**.
+* **Velikost virtuálního počítače určující sdílené složky** je velikost virtuálního počítače určující sdílené složky. Pro tento kurz použijte **a1**.
+* **Účet úložiště SQL** je název účtu úložiště, který obsahuje SQL Server dat a disků s operačním systémem. Pro tento kurz použijte **alwaysonsql01**.
+* **Účet úložiště DC** je název účtu úložiště pro řadiče domény. Pro tento kurz použijte **alwaysondc01**.
+* **Velikost datového disku SQL Server** v TB je velikost datového disku SQL Server v TB. Zadejte číslo od 1 do 4. Pro tento kurz použijte **1**.
+* **Optimalizace úložiště** nastavuje konkrétní nastavení konfigurace úložiště pro SQL Server virtuálních počítačů na základě typu úlohy. Všechny virtuální počítače s SQL Server v tomto scénáři používají Storage úrovně Premium s Azure disk Host cache nastavenou na jen pro čtení. Kromě toho můžete optimalizovat nastavení SQL Server pro úlohy výběrem jednoho z těchto tří nastavení:
 
-  * **Obecné úlohy** nastaví žádné nakonfigurovat specifické nastavení.
-  * **Zpracování transakcí** nastaví příznak. 1117 a 1118 trasování.
-  * **Datové sklady** nastaví příznak. 1117 trasování a 610.
+  * **Obecné úlohy** nastaví žádná konkrétní nastavení konfigurace.
+  * Příznak trasování pro **zpracování transakcí** nastaví 1117 a 1118.
+  * Příznak trasování **datových skladů** nastaví 1117 a 610.
 
-Pro účely tohoto kurzu použijte **obecné úlohy**.
+Pro tento kurz použijte **Obecné úlohy**.
 
-![Nastavení úložiště velikost virtuálního počítače](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/4-vm.png)
+![Nastavení úložiště velikosti virtuálního počítače](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/4-vm.png)
 
-Zkontrolujte nastavení a potom klikněte na tlačítko **OK**.
+Zkontrolujte nastavení a klikněte na tlačítko **OK**.
 
-#### <a name="a-note-about-storage"></a>Všimněte si o službě storage
-Další optimalizace, závisí na velikosti datových disků systému SQL Server. Pro každý terabajt datový disk Azure přidá další 1 TB úložiště úrovně premium. Pokud server vyžaduje 2 TB nebo větší, šablona vytvoří fond úložiště na každém virtuálním počítači SQL serveru. Fond úložiště je určitou formu virtualizace úložiště, které jsou nakonfigurované více disků pro zajištění vyšší kapacitu, odolnost a výkon.  Šablonu pak vytvoří prostor úložiště na fond úložiště a představuje jeden datový disk pro operační systém. Šablonu označí tento disk jako datový disk pro SQL Server. Šablona vylaďuje fondu úložiště pro SQL Server pomocí následujících nastavení:
+#### <a name="a-note-about-storage"></a>Poznámka k úložišti
+Další optimalizace závisí na velikosti SQL Server datových disků. Pro každou terabajty datového disku Azure přidá dalších 1 TB Premium úložiště. Když server vyžaduje 2 TB nebo více, vytvoří šablona fond úložiště na každém virtuálním počítači s SQL Server. Fond úložiště je forma virtualizace úložiště, kde je nakonfigurováno více disků, aby poskytovaly vyšší kapacitu, odolnost a výkon.  Šablona pak vytvoří prostor úložiště ve fondu úložiště a v operačním systému prezentuje jeden datový disk. Tato šablona označuje tento disk jako datový disk pro SQL Server. Šablona vyladí fond úložiště pro SQL Server pomocí následujících nastavení:
 
-* Velikost stripe je prokládání nastavení pro virtuální disk. Transakčními úlohami použít 64 KB. Úlohy datových skladů pomocí 256 KB.
-* Odolnost proti chybám je jednoduché (bez odolnosti).
+* Velikost proložení je nastavení prokládání pro virtuální disk. Transakční úlohy využívají 64 KB. Úlohy datového skladu využívají 256 KB.
+* Odolnost proti chybám je jednoduchá (bez odolnosti).
 
 > [!NOTE]
-> Azure premium storage je místně redundantní a udržuje tři kopie dat v rámci jedné oblasti a tak dodatečnou odolnost ve fondu úložiště není potřeba.
+> Azure Premium Storage je místně redundantní a udržuje tři kopie dat v rámci jedné oblasti, takže se u fondu úložiště nevyžaduje další odolnost.
 >
 >
 
 * Počet sloupců se rovná počtu disků ve fondu úložiště.
 
-Další informace o prostor úložiště a fondů úložiště najdete v tématu:
+Další informace o prostoru úložiště a fondech úložiště najdete v těchto tématech:
 
 * [Prostory úložiště – přehled](https://technet.microsoft.com/library/hh831739.aspx)
-* [Zálohování Windows serveru a fondy úložiště](https://technet.microsoft.com/library/dn390929.aspx)
+* [Zálohování Windows Serveru a fondy úložiště](https://technet.microsoft.com/library/dn390929.aspx)
 
-Další informace o osvědčených postupech pro SQL Server configuration najdete v tématu [osvědčené postupy z hlediska výkonu pro SQL Server na virtuálních počítačích Azure](virtual-machines-windows-sql-performance.md).
+Další informace o osvědčených postupech konfigurace SQL Server najdete v tématu [osvědčené postupy výkonu pro SQL Server na virtuálních počítačích Azure](virtual-machines-windows-sql-performance.md).
 
 ### <a name="sql-server-settings"></a>Nastavení SQL Serveru
-Na **nastavení systému SQL Server**, zkontrolovat a upravit prefix názvu virtuálního počítače systému SQL Server, verze systému SQL Server, účet služby SQL Server a hesla a plán údržby SQL automatické opravy.
+V **nastavení SQL Server**zkontrolujte a upravte SQL Server název virtuálního počítače, SQL Server verzi, účet služby SQL Server a heslo a plán údržby automatických oprav SQL.
 
-* **Prefix názvu SQL serveru** slouží k vytvoření názvu pro každý virtuální počítač systému SQL Server. Pro účely tohoto kurzu použijte **sqlserver**. Šablona názvy virtuálních počítačů s SQL serverem *sqlserver 0* a *sqlserver 1*.
-* **Verze systému SQL Server** je verzi systému SQL Server. Pro tento kurz používá **SQL Server 2014**. Můžete také zvolit **systému SQL Server 2012** nebo **SQL serveru 2016**.
-* **Uživatelské jméno účtu služby SQL Server** je název účtu domény pro službu systému SQL Server. Pro účely tohoto kurzu použijte **svědčí**.
+* **SQL Server Předpona názvu** se používá k vytvoření názvu pro každý SQL Server virtuální počítač. Pro tento kurz použijte **SQLServer**. Šablona vyjmenovává SQL Server virtuálních počítačů *SQLServer-0* a *SQLServer-1*.
+* Verze SQL Server **SQL Server** . Pro tento kurz použijte **SQL Server 2014**. Můžete také zvolit **SQL Server 2012** nebo **SQL Server 2016**.
+* **Uživatelské jméno účtu služby SQL Server** je název účtu domény služby SQL Server. Pro tento kurz použijte **SqlService**.
 * **Heslo** je heslo pro účet služby SQL Server.  Použijte složité heslo. Potvrďte heslo.
-* **Plán údržby SQL automatické opravy** identifikuje den v týdnu, Azure automaticky opravy systémy SQL Server. Pro účely tohoto kurzu zadejte **neděle**.
-* **Automatické opravy SQL údržby počáteční hodina** je čas pro oblast Azure, když začne automatické opravy.
+* **Plán údržby automatických oprav SQL** Určuje den v týdnu, kdy Azure automaticky opraví SQL servery. Pro tento kurz zadejte **neděli**.
+* Doba **údržby automatických oprav SQL je hodina** času pro oblast Azure při zahájení automatických oprav.
 
 > [!NOTE]
-> Okno oprav pro každý virtuální počítač je rozloženo o jednu hodinu. Pouze jeden virtuální počítač je opravit v době, aby se zabránilo přerušení služeb.
+> Okno oprav pro jednotlivé virtuální počítače se rozdělují o jednu hodinu. Jenom jeden virtuální počítač se dá opravit současně, aby nedošlo k přerušení služeb.
 >
 >
 
 ![Nastavení SQL Serveru](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/5-sql.png)
 
-Zkontrolujte nastavení a potom klikněte na tlačítko **OK**.
+Zkontrolujte nastavení a klikněte na tlačítko **OK**.
 
 ### <a name="summary"></a>Souhrn
-Na stránce Souhrn Azure ověří nastavení. Můžete také stáhnout šablony. Zkontrolujte souhrnné informace. Klikněte na **OK**.
+Na stránce Souhrn Azure ověří nastavení. Můžete si také stáhnout šablonu. Zkontrolujte souhrnné informace. Klikněte na **OK**.
 
 ### <a name="buy"></a>Koupit
-Tento poslední okno obsahuje **podmínky použití**, a **zásady ochrany osobních údajů**. Projděte si tyto informace. Až budete připravení pro Azure začít vytvářet virtuální počítače a všechny ostatní požadované prostředky pro skupinu dostupnosti, klikněte na tlačítko **vytvořit**.
+Toto závěrečné okno obsahuje **podmínkami použití**a **Zásady ochrany osobních údajů**. Projděte si tyto informace. Až budete připraveni, aby Azure začal vytvářet virtuální počítače a všechny další požadované prostředky pro skupinu dostupnosti, klikněte na **vytvořit**.
 
-Na webu Azure portal vytvoří skupinu prostředků a všechny prostředky.
+Azure Portal vytvoří skupinu prostředků a všechny prostředky.
 
 ## <a name="monitor-deployment"></a>Monitorování nasazení
-Sledujte průběh nasazení na webu Azure Portal. Ikona, která představuje nasazení se automaticky Připne na řídicí panel Azure.
+Monitorujte průběh nasazení z Azure Portal. Ikona, která představuje nasazení, se automaticky připnula k řídicímu panelu Azure Portal.
 
 ![Řídicí panel Azure](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
 
 ## <a name="connect-to-sql-server"></a>Připojení k SQL Serveru
-Nové instance systému SQL Server běží na virtuálních počítačích, které mají IP adresy připojeného k Internetu. Můžete přímo do každého virtuálního počítače systému SQL Server vzdálené plochy (RDP).
+Nové instance SQL Server jsou spuštěny na virtuálních počítačích, které mají IP adresy připojené k Internetu. Vzdálenou plochu (RDP) můžete připojit přímo ke každému SQL Servermu virtuálnímu počítači.
 
-Pro připojení RDP k systému SQL Server postupujte podle těchto kroků:
+K protokolu RDP na SQL Server použijte následující postup:
 
-1. Z řídicího panelu Azure portal ověřte, nasazení proběhlo úspěšně.
-2. Klikněte na tlačítko **prostředky**.
-3. V **prostředky** okna, klikněte na tlačítko **sqlserver 0**, což je název počítače některého z virtuálních počítačů se systémem SQL Server.
-4. V okně pro **sqlserver 0**, klikněte na tlačítko **připojit**. Váš prohlížeč požádá, pokud chcete otevřít nebo uložit objekt vzdáleného připojení. Klikněte na tlačítko **otevřít**.
-5. **Připojení ke vzdálené ploše** možná by vás varovala, že nelze identifikovat vydavatele tohoto vzdáleného připojení. Klikněte na **Připojit**.
-6. Zabezpečení Windows vás vyzve k zadání přihlašovacích údajů pro připojení k IP adresu primárního řadiče domény. Klikněte na tlačítko **použijte jiný účet**. Pro **uživatelské jméno**, typ **contoso\DomainAdmin**. Tento účet jste nakonfigurovali, když nastavíte uživatelské jméno pro správce v šabloně. Použijte složité heslo, které jste zvolili při konfiguraci šablony.
-7. **Vzdálená plocha** možná by vás varovala, že vzdáleném počítači nelze ověřit z důvodu problémů s certifikátem zabezpečení. To se dozvíte, název certifikátu zabezpečení. Pokud jste postupovali podle tohoto kurzu, název je **sqlserver 0.contoso.com**. Klikněte na **Ano**.
+1. Z řídicího panelu Azure Portal ověřte, že nasazení proběhlo úspěšně.
+2. Klikněte na **prostředky**.
+3. V okně **prostředky** klikněte na **SQLServer-0**, což je název počítače jednoho z virtuálních počítačů, na kterých běží SQL Server.
+4. V okně pro **SQLServer-0**klikněte na **připojit**. V prohlížeči se zobrazí dotaz, zda chcete objekt vzdáleného připojení otevřít nebo Uložit. Klikněte na tlačítko **otevřít**.
+5. **Připojení ke vzdálené ploše** vás může upozornit, že nelze identifikovat vydavatele tohoto vzdáleného připojení. Klikněte na **Připojit**.
+6. Systém Windows Security vyzve k zadání přihlašovacích údajů pro připojení k IP adrese primárního řadiče domény. Klikněte na **použít jiný účet**. Do tohoto **uživatelského jména**zadejte **contoso\DomainAdmin**. Tento účet jste nakonfigurovali při nastavování uživatelského jména správce v šabloně. Použijte složitá hesla, která jste zvolili při konfiguraci šablony.
+7. **Vzdálená plocha** vás může upozorňovat na to, že vzdálený počítač nelze ověřit z důvodu problémů s jeho certifikátem zabezpečení. Zobrazuje název certifikátu zabezpečení. Pokud jste postupovali podle tohoto kurzu, název je **SQLServer-0.contoso.com**. Klikněte na **Ano**.
 
-Nyní jste připojeni přes RDP k virtuálnímu počítači SQL serveru. Otevřete SQL Server Management Studio, připojte se k výchozí instanci systému SQL Server a ověřte, že je nakonfigurovaná skupina dostupnosti.
+Nyní jste připojeni pomocí protokolu RDP k virtuálnímu počítači s SQL Server. Můžete otevřít SQL Server Management Studio, připojit se k výchozí instanci SQL Server a ověřit, jestli je skupina dostupnosti nakonfigurovaná.

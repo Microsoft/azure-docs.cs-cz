@@ -105,6 +105,8 @@
               href: clustering-point-data-web-sdk.md
             - name: Použití výrazů pro styly založené na datech
               href: data-driven-style-expressions-web-sdk.md
+            - name: Používání šablon obrázků
+              href: how-to-use-image-templates-web-sdk.md
             - name: Překryv obrázku
               href: map-add-image-layer.md
             - name: Přidání vrstev dlaždic

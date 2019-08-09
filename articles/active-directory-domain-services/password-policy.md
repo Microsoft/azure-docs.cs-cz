@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 8829f16e580d0b926781ce0a3e9f8e6a63cf3110
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 30f4558339bbfddd2296cd1cb918c6ef8999b67e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853781"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879194"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady hesel a uzamčení účtů ve spravovaných doménách
 Tento článek popisuje výchozí zásady hesel ve spravované doméně. Také se zabývá tím, jak můžete tyto zásady nakonfigurovat.
@@ -38,7 +38,8 @@ Pomocí podrobné zásady můžete nakonfigurovat následující nastavení hesl
     * Doba trvání uzamčení účtu
     * Počet povolených neúspěšných pokusů o přihlášení
     * Resetovat počet neúspěšných pokusů o přihlášení za
-
+    
+Podrobné zásady má vliv jenom na uživatele vytvořené přímo v Azure služba AD DS. Uživatelé cloudu a uživatelé domény synchronizovaný do spravované domény Azure služba AD DS v Azure AD nejsou ovlivněné nastavením složitosti hesla. Podrobné zásady se distribuuje prostřednictvím přidružení skupin ve spravované doméně Azure služba AD DS a veškeré změny, které provedete, se uplatní při přihlášení dalšího uživatele. Změna zásad neodemkne uživatelský účet, který je už uzamčený.
 
 ## <a name="default-fine-grained-password-policy-settings-on-a-managed-domain"></a>Výchozí jemně odstupňovaná nastavení zásad pro hesla ve spravované doméně
 Následující snímek obrazovky znázorňuje výchozí jemně odstupňované zásady hesel nakonfigurované na Azure AD Domain Services spravované doméně.

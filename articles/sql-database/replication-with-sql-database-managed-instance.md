@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 96571b55158733f8189ddf87402fb634330ca80d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b76dc546b46718378d9b22ad80e17849eaf532d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570460"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884083"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurace replikace v databázi spravované instance Azure SQL Database
 
@@ -59,7 +59,7 @@ Podporuje:
 Ve spravované instanci nejsou v Azure SQL Database podporovány následující funkce:
 
 - Odběry, které je možné [aktualizovat](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication)
-- Pokud je nakonfigurovaná transakční replikace, neměli byste používat [aktivní geografickou replikaci](sql-database-active-geo-replication.md) a [skupiny s automatickým převzetím služeb při selhání](sql-database-auto-failover-group.md) .
+- [Aktivní geografická replikace](sql-database-active-geo-replication.md) s transakční replikací Místo aktivní geografické replikace používejte skupiny s automatickým převzetím [služeb při selhání](sql-database-auto-failover-group.md), ale Všimněte si, že po převzetí služeb při selhání se publikace musí [ručně odstranit](sql-database-managed-instance-transact-sql-information.md#replication) z primární spravované instance a znovu vytvořit v sekundární spravované instanci.  
  
 ## <a name="1---create-a-resource-group"></a>1\. Vytvoření skupiny prostředků
 

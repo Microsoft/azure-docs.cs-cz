@@ -1,32 +1,32 @@
 ---
-title: Podporované prohlížeče pro Azure IoT Central | Dokumentace Microsoftu
-description: Azure IoT Central je možný moderní stolní počítače, tablety i prohlížeče. Tento článek popisuje, jak seznam podporovaných prohlížečů.
+title: Podporované prohlížeče pro Azure IoT Central | Microsoft Docs
+description: K Azure IoT Central je možné přistupovat v moderních stolních počítačích, tabletech a prohlížečích. Tento článek popisuje seznam podporovaných prohlížečů.
 author: lmasieri
 ms.author: lmasieri
-ms.date: 04/24/2109
+ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 66bff6dfbb355bd0cb62f2e68b2805b5ccebfe8b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d9429507e39d975c5534e33052c56d77eeb3eb7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720099"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880016"
 ---
 # <a name="supported-browsers-for-azure-iot-central"></a>Podporované prohlížeče pro Azure IoT Central
 
 *Tento článek je pro operátory, tvůrce a správce.*
 
-Azure IoT Central je přístupný ve většině moderních stolní počítače, tablety a prohlížeče. Následující článek popisuje, jak v seznamu podporovaných prohlížečích a vyžaduje připojení.  
+K Azure IoT Central lze přistupovat v rámci většiny moderních stolních počítačů, tabletů a prohlížečů. Následující článek popisuje seznam podporovaných prohlížečů a požadované připojení.  
 
 ## <a name="supported-browsers"></a>Podporované prohlížeče
-Doporučujeme vám, že používáte nejnovější prohlížeče, který je kompatibilní s operačním systémem. Podporují se následující prohlížeče:
+Doporučujeme, abyste používali nejaktuálnější prohlížeč, který je kompatibilní s vaším operačním systémem. Podporovány jsou následující prohlížeče:
 - Microsoft Edge (nejnovější verze)
 - Safari (nejnovější verze, jen Mac)
 - Chrome (nejnovější verze)
 - Firefox (nejnovější verze)
 
 ## <a name="required-protocols"></a>Požadované protokoly
-Azure IoT Central vyžaduje, že síť podporuje protokoly HTTPS i protokolu WebSocket pro odchozí připojení.
+Azure IoT Central vyžaduje, aby vaše síť podporovala protokoly HTTPS a WebSocket pro odchozí připojení.

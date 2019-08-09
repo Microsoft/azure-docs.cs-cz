@@ -1,6 +1,6 @@
 ---
-title: Srovnávací testy výkonu u souborů NetApp Azure | Dokumentace Microsoftu
-description: Popisuje výsledky srovnávacích testů výkonu pro Azure Files NetApp na úrovni svazku.
+title: Výsledky testu výkonnosti pro Azure NetApp Files | Microsoft Docs
+description: Popisuje výsledky testů výkonnosti výkonu pro Azure NetApp Files na úrovni svazku.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,84 +12,84 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 14081daf1f45a84bc8ad19bf0239db1281d9e624
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1d6b43110046f26d8c8070b19587366588eee7b6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449509"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881752"
 ---
-# <a name="performance-benchmarks-for-azure-netapp-files"></a>Srovnávací testy výkonu pro Azure NetApp Files
+# <a name="performance-benchmark-test-results-for-azure-netapp-files"></a>Výsledky testu výkonnosti pro Azure NetApp Files
 
-Tento článek popisuje výsledky srovnávacích testů výkonu pro soubory Azure NetApp na úrovni svazku. 
+Tento článek popisuje výsledky testů výkonnosti výkonu pro Azure NetApp Files na úrovni svazku. 
 
-## <a name="sample-application-used-for-the-tests"></a>Ukázkovou aplikací používanou pro testy
+## <a name="sample-application-used-for-the-tests"></a>Ukázková aplikace použitá pro testy
 
-Testy výkonu nebyly spuštěny s ukázkovou aplikací pomocí souborů NetApp Azure. Aplikace má následující vlastnosti: 
+Testy výkonu byly spuštěny s ukázkovou aplikací pomocí Azure NetApp Files. Aplikace má následující vlastnosti: 
 
-* Aplikace založené na Linuxu vytvořená pro cloud
-* Můžete se škálují lineárně s přidání virtuálních počítačů (VM) Chcete-li zvýšit výkon podle potřeby
-* Vyžaduje rychlé usnadnění data lake
-* Má vzory vstupů/výstupů, které jsou někdy náhodné a někdy sekvenční 
-    * Náhodné vzor vyžaduje s nízkou latencí pro velké objemy vstupně-výstupních operací. 
-    * Sekvenční vzor vyžaduje velkou šířku pásma. 
+* Aplikace založená na systému Linux vytvořená pro Cloud
+* Dá se lineárně škálovat s přidanými virtuálními počítači, aby se zvýšil výkon, jak je potřeba.
+* Vyžaduje rychlé usnadnění pro data Lake.
+* Má v/v vzory, které jsou někdy náhodné a někdy sekvenční 
+    * Náhodný vzor vyžaduje nízkou latenci pro velké objemy vstupně-výstupních operací. 
+    * Sekvenční vzor vyžaduje velké množství šířky pásma. 
 
-## <a name="about-the-workload-generator"></a>O generátor zatížení
+## <a name="about-the-workload-generator"></a>O generátoru úloh
 
-Výsledky pocházet ze souborů souhrnů Vdbench. [Vdbench](https://www.oracle.com/technetwork/server-storage/vdbench-downloads-1901681.html) je nástroj příkazového řádku, který generuje diskové vstupně-výstupních operací úloh k ověření výkonu úložiště. Konfigurace klienta a serveru použitá je škálovatelný.  Obsahuje smíšený jeden hlavní server/klient a vyhrazený klientský 14 virtuálních počítačů.
+Výsledky pocházejí ze souhrnných souborů Vdbench. [Vdbench](https://www.oracle.com/technetwork/server-storage/vdbench-downloads-1901681.html) je nástroj příkazového řádku, který generuje vstupně-výstupní úlohy disku pro ověřování výkonu úložiště. Použitá konfigurace klienta a serveru je škálovatelná.  Zahrnuje jeden smíšený hlavní počítač/klienta a 14 vyhrazených virtuálních počítačů klienta.
 
 ## <a name="about-the-tests"></a>O testech
 
-Testy byly navrženy k identifikaci omezení, která může mít ukázkovou aplikaci a doby odezvy této křivky až do omezení.  
+Testy byly navržené tak, aby identifikovaly omezení, která může mít ukázková aplikace, a dobu odezvy, která se zakřiví do limitů.  
 
-Následující testy nebyly spuštěny: 
+Následující testy byly spuštěny: 
 
-* 100 % 8-KiB náhodné čtení
-* 100 % 8 KiB náhodného zápisu
-* 100 % 64-KiB sekvenční čtení
-* 100 % 64 KiB sekvenční zápisu
-* 50 % 64-KiB sekvenční čtení, zápis sekvenčních 64 KiB 50 %
-* 50 % 8-KiB náhodné čtení, zápis náhodné 8 KiB 50 %
+* 100% 8 – KiB náhodné čtení
+* 100% 8 – KiB náhodný zápis
+* 100% 64-KiB sekvenční čtení
+* 100% 64-KiB sekvenční zápis
+* 50% 64-KiB sekvenční čtení, 50% 64-KiB sekvenční zápis
+* 50% 8 – KiB náhodné čtení, 50% 8 – KiB náhodný zápis
 
 ## <a name="bandwidth"></a>Šířka pásma
 
-Služba soubory Azure NetApp nabízí několik [úrovně služby](azure-netapp-files-service-levels.md). Každá úroveň služeb nabízí různé šířku pásma za TiB zřízená kapacita (kvóty). Limit šířky pásma pro svazek se zřizuje, založené na kombinaci úrovně služby a kvóty svazku. Limit šířky pásma je pouze jediný faktor při určování skutečného propustnost, které se dají realizovat.  
+Azure NetApp Files nabízí více [úrovní služeb](azure-netapp-files-service-levels.md). Každá úroveň služby nabízí různé množství šířky pásma na TiB zřízené kapacity (kvóta svazku). Limit šířky pásma pro svazek se zřizuje na základě kombinace úrovně služby a kvóty svazku. Limit šířky pásma je pouze jedním faktorem při určování skutečné propustnosti, která bude realizována.  
 
-V současné době je 4 500 MiB nejvyšší propustnost, které bylo dosaženo úlohou na jednom svazku při testování.  S požadovanou úrovní aktualizace service Premium zřídí se svazek kvóta 70.31 TiB dostatečnou šířku pásma pro realizaci propustnost za výpočtu níže: 
+V současné době je 4 500 MiB nejvyšší propustnost, kterou dosáhla zatížení na jednom svazku v rámci testování.  U úrovně Premium Service by kvóta 70,31 TiB měla zajistit dostatečnou šířku pásma pro dosažení této propustnosti na základě následujícího výpočtu: 
 
 ![Vzorec šířky pásma](../media/azure-netapp-files/azure-netapp-files-bandwidth-formula.png)
 
-![Kvóty a služba úrovně](../media/azure-netapp-files/azure-netapp-files-quota-service-level.png)
+![Kvóta a úroveň služeb](../media/azure-netapp-files/azure-netapp-files-quota-service-level.png)
 
 ## <a name="throughput-intensive-workloads"></a>Úlohy náročné na propustnost
 
-Propustnost test použil Vdbench a kombinaci 12xD32s V3 úložiště virtuálních počítačů. Ukázka svazku v testu dosáhnout následující čísla propustnost:
+Test propustnosti využíval Vdbench a kombinaci virtuálních počítačů úložiště 12xD32s v3. Vzorový svazek v testu dosáhl následujících čísel propustnosti:
 
-![Propustnost testu](../media/azure-netapp-files/azure-netapp-files-throughput-test.png)
+![Test propustnosti](../media/azure-netapp-files/azure-netapp-files-throughput-test.png)
 
-## <a name="io-intensive-workloads"></a>Můžu intenzivních vstupně-výstupních operací
+## <a name="io-intensive-workloads"></a>Úlohy náročné na vstupně-výstupní operace
 
-Vstupně-výstupní operace test použil Vdbench a kombinaci 12xD32s V3 úložiště virtuálních počítačů. Ukázka svazku v testu dosáhnout následující čísla vstupně-výstupních operací:
+Test I/O používá Vdbench a kombinaci virtuálních počítačů úložiště 12xD32s v3. Vzorový svazek v testu dosáhl následujících vstupně-výstupních čísel:
 
-![Test vstupně-výstupních operací](../media/azure-netapp-files/azure-netapp-files-io-test.png)
+![Vstupně-výstupní testování](../media/azure-netapp-files/azure-netapp-files-io-test.png)
 
 ## <a name="latency"></a>Latence
 
-Vzdálenost mezi testovací virtuální počítače a svazek souborů NetApp Azure má vliv na výkon vstupně-výstupních operací.  Graf níže porovnává vstupně-výstupních operací a čekací doba odezvy křivky pro dvě různé sady virtuálních počítačů.  Jedna sada virtuálních počítačů je téměř NetApp soubory Azure a druhá sada je další okamžitě.  Zvýší latence pro další sadu virtuálních počítačů má dopad na množství vstupně-výstupních operací dosáhnout na dané úrovni paralelismu.  Čtení na svazku bez ohledu na to, můžete překročit 300 000 vstupně-výstupních operací, jak je znázorněno níže: 
+Vzdálenost mezi testovacími virtuálními počítači a svazkem Azure NetApp Files má dopad na výkon vstupně-výstupních operací.  Následující graf porovnává počet vstupně-výstupních operací s odezvou latence pro dvě různé sady virtuálních počítačů.  Jedna sada virtuálních počítačů je blízko Azure NetApp Files a druhá sada je dále volná.  Vyšší latence pro další sadu virtuálních počítačů má vliv na množství IOPS dosažené na dané úrovni paralelismu.  Bez ohledu na to, že čtení na svazku může překročit 300 000 IOPS, jak je znázorněno níže: 
 
 ![Studie latence](../media/azure-netapp-files/azure-netapp-files-latency-study.png)
 
 ## <a name="summary"></a>Souhrn
 
-Úlohy nízkou latenci (databáze) může mít jeden milisekund odezvu. Transakční výkon může být větší než 300 kB vstupně-výstupních operací pro samostatný svazek.
+Úlohy citlivé na latenci (databáze) můžou mít dobu odezvy s jednou milisekundou. Transakční výkon může být nad 300k IOPS pro jeden svazek.
 
-Citlivé na propustnost aplikace (pro streamování a vytvoření bitové kopie) může mít 4.5GiB / s propustností.
+Aplikace citlivé na propustnost (pro streamování a vytváření imagí) můžou mít GiB propustnost 4,5/s.
 
-## <a name="example-scripts"></a>Příklady skriptů
+## <a name="example-scripts"></a>Ukázkové skripty
 
-Následují příklady skriptů jsou pro demonstrační účely pouze.  Jsou použity pro produkční účely.  
+Následující příklady skriptů slouží pouze k demonstračnímu účelu.  Nepoužívají se k produkčním účelům.  
 
     #
     #This script makes the following assumptions about the environment

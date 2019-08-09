@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a33b7263cd7a3b2f5e39ce9d24df11a7d6283c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5c6e3ef74ea2d77ba03526e05145fe6faa61c050
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688605"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882058"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Zálohování a obnovení šifrovaného virtuálního počítače Azure
 
@@ -114,7 +114,7 @@ Počáteční zálohování se spustí podle plánu, ale můžete ho spustit hne
 3. V seznamu **zálohované položky** klikněte na tři tečky (...).
 4. Klikněte na **Zálohovat nyní**.
 5. V části **Zálohovat nyní**pomocí ovládacího prvku kalendáře vyberte poslední den, kdy se má bod obnovení zachovat. Pak klikněte na **OK**.
-6. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy** > zálohování **.** V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
+6. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy** > zálohování. V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
 
 
 ## <a name="provide-permissions"></a>Poskytnout oprávnění
@@ -130,7 +130,7 @@ Nastavení oprávnění:
 2. Vyberte Trezor klíčů přidružený k zašifrovanému virtuálnímu počítači, který jste zálohovali.
 3. Vyberte **zásady** > přístupu**Přidat nový**.
 4. Vyberte **Vybrat objekt zabezpečení**a potom zadejte **Správa zálohování**.
-5. Vyberte možnost >  **Služba správy zálohování** **.**
+5. Vyberte možnost **Služba** > správy zálohování.
 
     ![Výběr služby zálohování](./media/backup-azure-vms-encryption/select-backup-service.png)
 
@@ -154,10 +154,11 @@ Nastavení oprávnění:
 2. Pak proveďte jednu z následujících akcí:
     - Použijte šablonu generovanou během operace obnovení k přizpůsobení nastavení virtuálního počítače a aktivaci nasazení virtuálního počítače. [Další informace](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
     - Vytvořte nový virtuální počítač z obnovených disků pomocí PowerShellu. [Další informace](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+    - Pro virtuální počítače se systémem Linux obnovte rozšíření ADE, aby byly datové disky otevřené a připojené. 
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud narazíte na nějaké problémy, přečtěte si
+Pokud narazíte na nějaké problémy, přečtěte si tyto články:
 
 - [Běžné chyby](backup-azure-vms-troubleshoot.md) při zálohování a obnovení šifrovaných virtuálních počítačů Azure.
 - Problémy s [agentem virtuálního počítače Azure nebo rozšířením zálohování](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)

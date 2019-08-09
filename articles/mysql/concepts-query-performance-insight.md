@@ -1,74 +1,74 @@
 ---
 title: Query Performance Insight v Azure Database for MySQL
-description: Tento článek popisuje funkci Query Performance Insight ve službě Azure Database for MySQL
+description: Tento článek popisuje funkci Query Performance Insight v Azure Database for MySQL
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 8f142933ebf955cbe3aa119f42779109fb6ef7db
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 05d6de31dbc3ff5bbf9365098ceae4c840bf116b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67589072"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882792"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Query Performance Insight v Azure Database for MySQL
 
-**Platí pro:**  Azure Database for MySQL 5.7
+**Platí pro:** Azure Database for MySQL 5,7
 
 > [!NOTE]
-> Query Performance Insight je ve verzi preview.
+> Query Performance Insight je ve verzi Preview.
 
-Query Performance Insight vám umožní rychle zjistit, co nejdéle probíhající dotazy se, jak se v průběhu času měnit a jaké čeká ovlivňují.
+Query Performance Insight vám pomůže rychle zjistit, co nejdéle běží dotazy, jak se v průběhu času mění a co se na ně budou jejich vlivovat.
 
 ## <a name="common-scenarios"></a>Obvyklé scénáře
 
 ### <a name="long-running-queries"></a>Dlouho běžící dotazy
 
-- Identifikuje nejdelšího spouštění dotazů v minulosti X hodin
-- Určení horních N dotazy, které čekají na prostředky
+- Identifikace nejdelších spuštěných dotazů za posledních X hodin
+- Identifikace prvních N dotazů, které čekají na prostředky
  
 ### <a name="wait-statistics"></a>Statistiky čekání
 
-- Pochopení povahy čekání dotazu
-- Principy trendy pro prostředek čeká a tam, kde existuje kolize prostředků
+- Principy čekací povahy pro dotaz
+- Porozumění trendům pro čekání na prostředky a na tom, kde existuje spor prostředků
 
 ## <a name="permissions"></a>Oprávnění
 
-**Vlastník** nebo **Přispěvatel** oprávnění nutná k zobrazení textu dotazů v Query Performance Insight. ** Čtečka** může zobrazit grafů a tabulek, ale není text dotazu.
+K zobrazení textu dotazů v Query Performance Insight jsou nutná oprávnění **vlastníka** nebo **přispěvatele**. **Čtenář** může zobrazit grafy a tabulky, ale ne text dotazu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro Query Performance Insight k funkci, musí existovat data [Query Store](concepts-query-store.md).
+Aby Query Performance Insight fungoval, musí existovat data v [úložišti dotazů](concepts-query-store.md).
 
-## <a name="viewing-performance-insights"></a>Informace o zobrazení výkonu
+## <a name="viewing-performance-insights"></a>Zobrazení přehledů výkonu
 
 Zobrazení [Query Performance Insight](concepts-query-performance-insight.md) na portálu Azure, bude přinášet vizualizace o klíčových informacích z Query Storu.
 
-Na stránce portálu vašeho serveru Azure Database for MySQL, vyberte **Query Performance Insight** pod **inteligentní výkonu** části řádku nabídek.
+Na stránce portálu Azure Database for MySQL serveru vyberte **Query Performance Insight** v části **inteligentní výkon** na řádku nabídek.
 
 ### <a name="long-running-queries"></a>Dlouho běžící dotazy
 
- **Dlouho běžící dotazy** karta zobrazuje 5 nejčastějších dotazů podle průměrné doby trvání na spuštění, agregují v intervalech 15 minut. Další dotazy můžete zobrazit tak, že vyberete **číslo dotazy** rozevírací seznam. Barvy grafu se mohou při této akci změnit pro konkrétní ID dotazu.
+Karta **dlouho běžící dotazy** zobrazuje prvních 5 dotazů podle průměrné doby trvání za běhu, agregované v intervalech 15 minut. Další dotazy můžete zobrazit výběrem z rozevírací nabídky **počet dotazů** . Barvy grafu se mohou při této akci změnit pro konkrétní ID dotazu.
 
-Můžete kliknout a přetáhnout v grafu, abyste zmenšili konkrétní časové okno. Můžete také použijte funkce zvětšení ani výstupní ikony zobrazíte menší nebo větší časové období v uvedeném pořadí.
+Můžete kliknout a přetáhnout v grafu, abyste zmenšili konkrétní časové okno. Případně můžete použít ikony přiblížení a ven k zobrazení kratšího nebo většího časového období.
 
 ![Query Performance Insight dlouho běžící dotazy](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png) 
 
 ### <a name="wait-statistics"></a>Statistiky čekání
 
 > [!NOTE]
-> Statistiky čekání jsou určeny pro odstraňování problémů s výkonem dotazů. Doporučujeme zapnout pouze pro účely odstraňování potíží.
+> Pro řešení potíží s výkonem dotazů je určena Statistika čekání. Doporučuje se zapnout jenom pro účely řešení potíží.
 
-Statistiky čekání poskytuje přehled čekání události, ke kterým dochází při spuštění specifického dotazu. Další informace o typech události čekání v [dokumentaci k modulu MySQL](https://go.microsoft.com/fwlink/?linkid=2098206).
+Statistika čekání poskytuje zobrazení událostí čekání, ke kterým dojde během provádění konkrétního dotazu. Přečtěte si další informace o typech událostí čekání v [dokumentaci k modulu MySQL](https://go.microsoft.com/fwlink/?linkid=2098206).
 
-Vyberte **statistiky čekání** kartu k zobrazení odpovídající vizualizace na čeká na serveru.
+Vyberte kartu **Statistiky čekání** k zobrazení odpovídající vizualizace týkající se čekání na serveru.
 
-Dotazy v zobrazení statistiky čekání jsou seskupené v dotazech, které vykazují ta největší čeká během zadaného časového intervalu.
+Dotazy zobrazené v zobrazení statistiky čekání jsou seskupené podle dotazů, které vykazují největší čekání během zadaného časového intervalu.
 
-![Query Performance Insight čeká statistiky](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+![Query Performance Insight čeká na statistiku](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- Další informace o [monitorování a optimalizace](concepts-monitoring.md) ve službě Azure Database for MySQL.
+- Přečtěte si další informace o [monitorování a ladění](concepts-monitoring.md) v Azure Database for MySQL.

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 46e3780c7fc6e6a2481e774b89bfb69510865db3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 5c0bc97e5a5b362ea78f82ea99bb967a9607093a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734619"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882486"
 ---
 # <a name="document-data-sources"></a>Dokumentování zdrojů dat
 ## <a name="introduction"></a>Úvod
@@ -23,7 +23,7 @@ Při [přidávání poznámek ke zdrojům dat](data-catalog-how-to-annotate.md)s
 
 Značky a popisy jsou skvělé pro jednoduché poznámky. Pokud ale chcete uživatelům s daty lépe pochopit použití zdroje dat a obchodních scénářů pro zdroj dat, odborník může poskytnout kompletní a podrobnou dokumentaci. Zdroj dat můžete snadno zdokumentovat. Vyberte datový Asset nebo kontejner a zvolte možnost **dokumentace**.
 
-![](media/data-catalog-documentation/data-catalog-documentation.png)
+![Karta dokumentace v Data Catalog](media/data-catalog-documentation/data-catalog-documentation.png)
 
 ## <a name="documenting-data-assets"></a>Dokumentování datových prostředků
 Výhoda **Azure Data Catalog** dokumentace vám umožní používat Data Catalog jako úložiště obsahu k vytvoření kompletního mluveného komentáře k datovým assetům. Můžete prozkoumat podrobný obsah, který popisuje kontejnery a tabulky. Pokud již máte obsah v jiném úložišti obsahu, jako je například SharePoint nebo sdílená složka, můžete přidat do dokumentace k dokumentaci assetu, která odkazuje na tento stávající obsah. Tato funkce umožňuje, aby byly vaše stávající dokumenty více zjistitelné.
@@ -31,9 +31,8 @@ Výhoda **Azure Data Catalog** dokumentace vám umožní používat Data Catalog
 > [!NOTE]
 > Dokumentace není obsažena v indexu vyhledávání.
 >
->
 
-![](media/data-catalog-documentation/data-catalog-documentation2.png)
+![Karta dokumentace a hypertextový odkaz na webový odkaz](media/data-catalog-documentation/data-catalog-documentation2.png)
 
 Úroveň dokumentace může být v rozsahu od popisu vlastností a hodnoty kontejneru datových assetů k podrobnému popisu schématu tabulky v rámci kontejneru. Poskytnutá úroveň dokumentace by měla být řízena vašimi obchodními potřebami. Obecně platí, že tady je několik odborníků a nevýhody dokumentování datových assetů:
 

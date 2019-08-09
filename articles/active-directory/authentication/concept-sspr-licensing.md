@@ -1,6 +1,6 @@
 ---
-title: Licence samoobslužné resetování hesla – Azure Active Directory
-description: Azure AD samoobslužné resetování hesla licenčním požadavkům
+title: Samoobslužné resetování hesla k licenci – Azure Active Directory
+description: Požadavky na licencování samoobslužného resetování hesla služby Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,53 +11,53 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56b74e6a9f1d83798b557c48eb78242d70e85dfc
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7463b86ea20a712937b8ccba7997c2551aae5be6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612636"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879113"
 ---
-# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetovat licenčních požadavcích pro hesla pomocí samoobslužné služby Azure AD
+# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Licenční požadavky pro Samoobslužné resetování hesla služby Azure AD
 
-Azure Active Directory (Azure AD) se dodává ve čtyřech edicích: Free, Basic, Premium P1 a Premium P2. Existuje několik různých funkcí, které se samoobslužné resetování hesla, včetně změn, resetovat, odemkněte a zpětný zápis, které jsou k dispozici v různých edicích služby Azure AD. V tomto článku se pokusí vysvětlují rozdíly. Další informace o funkcích v každé edici Azure AD můžete najít na [Azure Active Directory, na stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory/).
+Azure Active Directory (Azure AD) se dodává v několika edicích: Free, Premium P1 a Premium P2. K dispozici je několik různých funkcí, které tvoří Samoobslužné resetování hesla, včetně změn, resetování, odemknutí a zpětného zápisu, které jsou k dispozici v různých edicích služby Azure AD. Tento článek se snaží vysvětlit rozdíly. Další podrobnosti o funkcích, které jsou součástí jednotlivých edic Azure AD, najdete na [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="compare-editions-and-features"></a>Porovnání edicí a funkce
+## <a name="compare-editions-and-features"></a>Porovnání edicí a funkcí
 
-Hesel Azure AD samoobslužné resetování je licencovaný podle počtu uživatelů, bude zajišťovat dodržování nutí organizace, přiřadit uživatelům příslušnou licenci.
+Samoobslužné resetování hesla služby Azure AD je licencováno na uživatele. aby bylo zajištěno, že organizace s dodržováním předpisů přiřadí příslušné licence svým uživatelům.
 
 * Samoobslužná změna hesel pro cloudové uživatele
-   * Jsem **výhradně cloudový uživatel** a vím svoje heslo.
+   * Jsem **pouze cloudový uživatel** a zná heslo.
       * Chci **změnit** heslo na něco nového.
-   * Tato funkce je zahrnut ve všech edicích služby Azure AD.
+   * Tato funkce je zahrnutá ve všech edicích Azure AD.
 
 * Samoobslužné resetování hesla pro cloudové uživatele
-   * Jsem **výhradně cloudový uživatel** a zapomněli jste heslo.
-      * Chci **resetování** heslo na něco, co mi vědět.
-   * Tato funkce je zahrnutá v Azure AD Basic, Premium P1 nebo P2 nebo Microsoft 365 Business.
+   * Jsem **pouze cloudový uživatel** a zapomněl jsem heslo.
+      * Chci resetovat heslo na něco, co znáte.
+   * Tato funkce je součástí Azure AD Premium P1 nebo P2 nebo Microsoft 365 Business.
 
-* Samoobslužná služba heslo resetování/změna/odemknutí **s místní zpětný zápis**
-   * Jsem **hybridní uživatele** uživatelským účtem místní služby Active Directory se synchronizuje s účtem služby Azure AD pomocí služby Azure AD Connect. Chci změnit heslo, jste zapomněli heslo nebo byl uzamčen.
-      * Chci změnit heslo, nebo ho resetovat do něco vědět nebo odemknout svůj účet **a** jste, že změny synchronizovat zpět do místní služby Active Directory.
-   * Tato funkce je zahrnutá v Azure AD Premium P1 nebo P2 nebo Microsoft 365 Business.
+* Samoobslužné resetování hesla, změna/odemknutí **pomocí místního zpětného zápisu**
+   * Jsem **hybridní uživatel** , který má místní uživatelský účet služby Active Directory, se synchronizuje s účtem Azure AD pomocí Azure AD Connect. Chci změnit svoje heslo, nechat zapomenuté heslo nebo být zamčené.
+      * Chtěl bych změnit heslo nebo ho resetovat na něco, co znáte, nebo odemknout svůj účet **a** nechat si změnu synchronizovat zpátky do místní služby Active Directory.
+   * Tato funkce je součástí Azure AD Premium P1 nebo P2 nebo Microsoft 365 Business.
 
 > [!WARNING]
-> Office 365 samostatné licenční plány *nepodporují "Samoobslužné heslo resetování/změna/odemknutí přes místní zpětný zápis"* a vyžadovat, která zahrnuje Microsoft 365 Business, Azure AD Premium P1 a Premium P2 pro tento plán funkce pro práci.
+> Samostatné plány licencování pro Office 365 *nepodporují Samoobslužné resetování hesla, změnu/odemknutí pomocí místního zpětného zápisu* a vyžadují, aby tato funkce fungovala v plánu, který zahrnuje Azure AD Premium P1, Premium P2 nebo Microsoft 365 Business.
 >
 
-Další licenční informace, včetně nákladů, najdete na následujících stránkách:
+Další informace o licencování, včetně nákladů, najdete na následujících stránkách:
 
-* [Azure Active Directory, ceny za Web](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Azure Active Directory cenové lokality](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Azure Active Directory funkce a možnosti](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
 * [Popis služby Microsoft 365 Business](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
-## <a name="enable-group-or-user-based-licensing"></a>Povolit skupiny nebo licencování na základě uživatele
+## <a name="enable-group-or-user-based-licensing"></a>Povolení licencování skupin nebo uživatelů
 
-Azure AD teď podporuje licencování na základě skupiny. Správci mohou přiřadit hromadných licencí ke skupině uživatelů, a ne přiřazení postupně po jednom. Další informace najdete v tématu [přiřadit zkontrolujte a vyřešte problémy s licencemi](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
+Azure AD teď podporuje licencování na základě skupin. Správci můžou hromadně přiřazovat licence skupině uživatelů, ale nepřiřazovat je po jednom. Další informace najdete v tématu [přiřazení, ověření a řešení problémů s licencemi](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, musí správce zadat **místo využívání** vlastnost na uživatele. Přiřazení licencí můžete udělat v rámci **uživatele** > **profilu** > **nastavení** části webu Azure Portal. *Při použití přiřazení licence skupině dědí všechny uživatele bez zadaného místa využití umístění adresáře.*
+Některé služby Microsoft nejsou dostupné ve všech umístěních. Před přiřazením licence uživateli musí správce zadat pro uživatele vlastnost **umístění používání** . Přiřazení licencí se dá udělat v části**Nastavení** **profilu** >  **uživatele** > v Azure Portal. *Když použijete přiřazení skupinové licence, všichni uživatelé bez zadaného umístění pro použití zdědí umístění adresáře.*
 
 ## <a name="next-steps"></a>Další postup
 

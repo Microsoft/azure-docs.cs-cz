@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 05b022be3bd460809de77945710ed0bdcd275648
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839307"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881427"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Správa dat protokolu a pracovních prostorů v Azure Monitor
 
@@ -32,7 +32,17 @@ Tento článek vysvětluje, jak spravovat přístup k protokolům a jak spravova
 
 * Postup udělení přístupu uživatelům, kteří potřebují přístup k datům protokolu v konkrétní tabulce v pracovním prostoru pomocí Azure RBAC.
 
-## <a name="define-access-control-mode-in-azure-portal"></a>Definování režimu řízení přístupu v Azure Portal
+## <a name="define-access-control-mode"></a>Definovat režim řízení přístupu
+
+Režim řízení přístupu nakonfigurovaný v pracovním prostoru můžete zobrazit z Azure Portal nebo pomocí Azure PowerShell.  Toto nastavení můžete změnit pomocí jedné z následujících podporovaných metod:
+
+* portál Azure
+
+* Azure PowerShell
+
+* Šablona Azure Resource Manageru
+
+### <a name="configure-from-the-azure-portal"></a>Konfigurace z Azure Portal
 
 Aktuální režim řízení přístupu k pracovnímu prostoru můžete zobrazit na stránce **Přehled** pracovního prostoru v nabídce **Log Analytics pracovní** prostor. 
 
@@ -45,7 +55,7 @@ Toto nastavení můžete změnit na stránce **vlastností** pracovního prostor
 
 ![Změnit režim přístupu k pracovnímu prostoru](media/manage-access/change-access-control-mode.png)
 
-## <a name="define-access-control-mode-using-powershell"></a>Definování režimu řízení přístupu pomocí PowerShellu
+### <a name="configure-using-powershell"></a>Konfigurace pomocí PowerShellu
 
 Pomocí následujícího příkazu prověřte režim řízení přístupu pro všechny pracovní prostory v rámci předplatného:
 
@@ -89,7 +99,7 @@ else
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
 
-## <a name="define-access-mode-using-resource-manager-template"></a>Definování režimu přístupu pomocí šablony Správce prostředků
+### <a name="configure-using-a-resource-manager-template"></a>Konfigurace pomocí šablony Správce prostředků
 
 Pro konfiguraci režimu přístupu v šabloně Azure Resource Manager nastavte příznak funkce **enableLogAccessUsingOnlyResourcePermissions** v pracovním prostoru na jednu z následujících hodnot.
 

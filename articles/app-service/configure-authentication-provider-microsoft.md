@@ -12,15 +12,15 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 08/08/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 10b661f0c4b7dc45284b907e83df3c0372f97cab
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 17410db91f55a053e5ec208492649157bb0b5034
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561544"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881109"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Jak nakonfigurovat aplikaci App Service, aby používala přihlášení k účtu Microsoft
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -28,44 +28,46 @@ ms.locfileid: "68561544"
 V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service pro použití účtu Microsoft jako poskytovatele ověřování. 
 
 ## <a name="register-microsoft-account"> </a>Registrace aplikace pomocí účtu Microsoft
-1. Přihlaste se k [Azure Portal]a přejděte do aplikace. Zkopírujte **adresu URL**, která později použijete ke konfiguraci aplikace pomocí účtu Microsoft.
-2. Pokud je to požadováno, přejděte na [**Registrace aplikací**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)a přihlaste se pomocí účet Microsoft.
-3. Klikněte na **Přidat aplikaci**, zadejte název aplikace a klikněte na **vytvořit**.
-4. Poznamenejte si **ID aplikace**, jak ho budete potřebovat později. 
-5. V části platformy klikněte na **Přidat platformu** a vyberte web.
-6. V části "identifikátory URI pro přesměrování" Zadejte koncový bod pro vaši aplikaci a pak klikněte na **Uložit**. 
-   
+1. Přihlaste se k [Azure Portal]a přejděte do aplikace. 
+
+<!-- Copy your **URL**, which you will use later to configure your app with Microsoft Account. -->
+1. Pokud je to požadováno, přejděte na [**Registrace aplikací**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)a přihlaste se pomocí účet Microsoft.
+
+1. Klikněte na **Nová registrace**a pak zadejte název aplikace.
+
+1. V v **identifikátorech URI pro přesměrování**vyberte **Web**a `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application`potom zadejte. *\<> App-Domain-Name* nahraďte názvem domény vaší aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. 
+
    > [!NOTE]
-   > Identifikátor URI pro přesměrování je adresa URL vaší aplikace připojené s cestou, */.auth/Login/MicrosoftAccount/callback*. Například, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`.   
-   > Ujistěte se, že používáte schéma HTTPS.
+   > Použijte schéma HTTPS v adrese URL.
+
+1. Vyberte **Registrovat**. 
+
+1. Zkopírujte **ID aplikace (klienta)** . Budete ho potřebovat později. 
    
-7. V části tajné kódy aplikací klikněte na **Generovat nové heslo**. Poznamenejte si hodnotu, která se zobrazí. Po opuštění stránky se znovu nezobrazí.
+7. V levém navigačním panelu registrace nové aplikace vyberte **certifikáty & tajných klíčů** > **nový tajný klíč klienta**. Zadejte popis, vyberte dobu platnosti a vyberte **Přidat**.
+
+1. Zkopírujte hodnotu, která se zobrazí na stránce **certifikáty & tajných** kódů. Po opuštění stránky se znovu nezobrazí.
 
     > [!IMPORTANT]
     > Heslo je důležité bezpečnostní pověření. Nesdílejte heslo s kýmkoli ani ho distribuujte v klientské aplikaci.
-    
-8. Klikněte na **Uložit**.
 
 ## <a name="secrets"> </a>Přidání informací o účtu Microsoft do aplikace App Service
-1. Zpátky v [Azure Portal]přejděte do aplikace, klikněte na **Nastavení** > **ověřování/autorizace**.
-2. Pokud není povolená funkce ověřování/autorizace, přepněte ji **na**.
-3. Klikněte na **účet Microsoft**. Vložte do hodnot ID aplikace a hesla, které jste získali dříve, a volitelně povolte libovolné rozsahy, které vaše aplikace vyžaduje. Pak klikněte na **OK**.
-   
-    ![][1]
-   
+1. V [Azure Portal]přejděte do aplikace. V levém navigačním panelu klikněte na **ověřování/autorizace**.
+
+2. Pokud není povolená funkce ověřování/autorizace, vyberte **zapnuto**.
+
+3. V části **Zprostředkovatelé ověřování**vyberte **účet Microsoft**. Vložte do ID aplikace (klienta) a tajného klíče klienta, který jste získali dříve, a volitelně povolte libovolné rozsahy, které vaše aplikace vyžaduje. Pak klikněte na **OK**.
+
     Ve výchozím nastavení App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Musíte autorizovat uživatele v kódu vaší aplikace.
-4. Volitelné Pokud chcete omezit přístup k webu jenom na uživatele ověřené pomocí účet Microsoft, nastavte **akci, která se má provést, když se žádost neověřuje** u **účtu Microsoft**. To vyžaduje, aby všechny požadavky byly ověřené a všechny neověřené požadavky byly přesměrovány na účet Microsoft pro ověřování.
+
+4. Volitelné Pokud chcete omezit přístup k účet Microsoft uživatelům, nastavte **akci, která se má provést, když se žádost neověřuje** pro **přihlášení pomocí účtu Microsoft**. To vyžaduje, aby všechny požadavky byly ověřené a všechny neověřené požadavky byly přesměrovány na účet Microsoft pro ověřování.
+
 5. Klikněte na **Uložit**.
 
 Nyní jste připraveni použít účet Microsoft k ověřování ve vaší aplikaci.
 
 ## <a name="related-content"> </a>Související obsah
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
-<!-- Images. -->
-
-[0]: ./media/app-service-mobile-how-to-configure-microsoft-authentication/app-service-microsoftaccount-redirect.png
-[1]: ./media/app-service-mobile-how-to-configure-microsoft-authentication/mobile-app-microsoftaccount-settings.png
 
 <!-- URLs. -->
 

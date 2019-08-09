@@ -1,274 +1,201 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Kanbanize | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Kanbanize.
+title: 'Kurz: Azure Active Directory integrace s Kanbanize | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Kanbanize.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: b436d2f6-bfa5-43fd-a8f9-d2144dc25669
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/12/2018
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22c136225e5a8526afd482e5ef8400198947422f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 69103ea0e6088b4a823df34ebd982c67e2502cb3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60264235"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879487"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>Kurz: Integrace Azure Active Directory s Kanbanize
+# <a name="tutorial-integrate-kanbanize-with-azure-active-directory"></a>Kurz: Integrace Kanbanize s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat Kanbanize s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Kanbanize s Azure Active Directory (Azure AD). Když integrujete Kanbanize s Azure AD, můžete:
 
-Kanbanize integraci se službou Azure AD poskytuje následující výhody:
+* Řízení ve službě Azure AD, která má přístup k Kanbanize.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Kanbanize svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-- Můžete řídit ve službě Azure AD, který má přístup k Kanbanize.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Kanbanize (Single Sign-On) s jejich účty Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
-
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Kanbanize, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-- Předplatné Azure AD
-- Kanbanize jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Kanbanize odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Kanbanize z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+
+* Kanbanize podporuje jednotné přihlašování (SSO) **a IDP** .
+* Kanbanize podporuje zřizování uživatelů **jenom v čase** .
 
 ## <a name="adding-kanbanize-from-the-gallery"></a>Přidání Kanbanize z Galerie
-Konfigurace integrace Kanbanize do služby Azure AD, budete muset přidat Kanbanize z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat Kanbanize z galerie, postupujte následovně:**
+Pokud chcete nakonfigurovat integraci Kanbanize do služby Azure AD, musíte přidat Kanbanize z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
-
-    ![Tlačítko Azure Active Directory][1]
-
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
-
-    ![V okně podnikové aplikace][2]
-    
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
-
-    ![Tlačítko nové aplikace][3]
-
-4. Do vyhledávacího pole zadejte **Kanbanize**vyberte **Kanbanize** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-
-    ![Kanbanize v seznamu výsledků](./media/kanbanize-tutorial/tutorial_kanbanize_addfromgallery.png)
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Kanbanize** .
+1. Na panelu výsledků vyberte **Kanbanize** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Kanbanize podle testovacího uživatele nazývá "Britta Simon".
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Kanbanize pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Kanbanize.
 
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Kanbanize je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Kanbanize potřeba navázat.
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Kanbanize, dokončete následující stavební bloky:
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Kanbanize, které potřebujete k dokončení následujících stavebních bloků:
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte KANBANIZE SSO](#configure-kanbanize-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+5. **[Vytvořte Kanbanize Test User](#create-kanbanize-test-user)** -to, abyste měli protějšek B. Simon v Kanbanize, která je propojená s reprezentací uživatele v Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Kanbanize](#create-a-kanbanize-test-user)**  – Pokud chcete mít protějšek Britta Simon Kanbanize, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Kanbanize.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Kanbanize** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Kanbanize, proveďte následující kroky:**
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na webu Azure Portal na **Kanbanize** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.kanbanize.com/`
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/kanbanize-tutorial/tutorial_kanbanize_samlbase.png)
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.kanbanize.com/saml/acs`
 
-3. Na **Kanbanize domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+    c. Klikněte na **nastavit další adresy URL**.
 
-    ![Kanbanize domény a adresy URL jednotného přihlašování – informace](./media/kanbanize-tutorial/tutorial_kanbanize_url.png)
+    d. Do textového pole **stav přenosu** zadejte adresu URL:`/ctrl_login/saml_login`
 
-    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.kanbanize.com/`
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.kanbanize.com/saml/acs`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.kanbanize.com`
 
-    c. Zkontrolujte **zobrazit pokročilé nastavení URL**.
+    > [!NOTE]
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Kanbanize](mailto:support@ms.kanbanize.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-    d.  V **stav přenosu** textového pole zadejte adresu URL: `/ctrl_login/saml_login`
+1. Kanbanize aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde NameIdentifier je mapován pomocí **User. userPrincipalName**. Aplikace Kanbanize očekává, že NameIdentifier budou mapovány pomocí **User. mail**, takže potřebujete upravit mapování atributů kliknutím na ikonu Upravit a změnit mapování atributů.
 
-    e. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režim, v **přihlašovací adresa URL** textového pole zadejte adresu URL, pomocí následujícího vzorce: `https://<subdomain>.kanbanize.com`
-     
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Kanbanize klienta](mailto:support@ms.kanbanize.com) k získání těchto hodnot. 
+    ![image](common/edit-attribute.png)
 
-5. Kanbanize aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad pro tuto. Výchozí hodnota **identifikátor uživatele** je **user.userprincipalname** ale Kanbanize očekává, že to namapovat s e-mailovou adresu uživatele. K tomu můžete použít **user.mail** atribut ze seznamu nebo použijte hodnotu odpovídajícího atributu na základě vaší konfigurace organizace
-    
-    ![Konfigurace jednotného přihlašování](./media/kanbanize-tutorial/tutorial_Kanbanize_attribute.png)
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-6. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-    ![Odkaz ke stažení certifikátu](./media/kanbanize-tutorial/tutorial_kanbanize_certificate.png) 
+1. V části **Nastavení Kanbanize** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-7. Klikněte na tlačítko **Uložit** tlačítko.
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/kanbanize-tutorial/tutorial_general_400.png)
-    
-8. Na **Kanbanize konfigurace** klikněte na tlačítko **nakonfigurovat Kanbanize** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+### <a name="configure-kanbanize-sso"></a>Konfigurace jednotného přihlašování Kanbanize
 
-    ![Konfigurace Kanbanize](./media/kanbanize-tutorial/tutorial_kanbanize_configure.png)
+1. V jiném okně webového prohlížeče se přihlaste k Kanbanize jako správce zabezpečení.
 
-9. V jiné okno webového prohlížeče, přihlaste se k Kanbanize jako správce zabezpečení. 
+2. Přejděte na stránku vpravo nahoře a klikněte na logo **Nastavení** .
 
-10. Přejít na horní pravé části stránky, klikněte na **nastavení** logo.
+    ![Nastavení Kanbanize](./media/kanbanize-tutorial/tutorial-kanbanize-set.png)
 
-    ![Nastavení Kanbanize](./media/kanbanize-tutorial/tutorial_kanbanize_set.png)
+3. Na stránce panelu pro správu na levé straně nabídky klikněte na **integrace** a pak povolte **jednotné přihlašování**.
 
-11. Na stránce Správa panelu nabídky na levé straně klikněte na tlačítko **integrace** a pak povolte **Single Sign-On**. 
+    ![Integrace Kanbanize](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
-    ![Integrace Kanbanize](./media/kanbanize-tutorial/tutorial_kanbanize_admin.png)
+4. V části integrace klikněte na **Konfigurovat** a otevřete stránku **Integrace jednotného přihlašování** .
 
-12. V části týkající se integrace, klikněte na **KONFIGUROVAT** otevřete **jednotné přihlašování – integrace** stránky.
+    ![Kanbanize konfigurace](./media/kanbanize-tutorial/tutorial-kanbanize-config.png)
 
-    ![Kanbanize config](./media/kanbanize-tutorial/tutorial_kanbanize_config.png)
+5. Na stránce **Integrace jednotného přihlašování** v části **Konfigurace**proveďte následující kroky:
 
-13. Na **jednotné přihlašování – integrace** stránky **konfigurace**, proveďte následující kroky:
+    ![Integrace Kanbanize](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
 
-    ![Integrace Kanbanize](./media/kanbanize-tutorial/tutorial_kanbanize_save.png)
+    a. Do textového pole **ID entity IDP** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
 
-    a. V **Idp Entity Id** textového pole vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure portal.
+    b. Do textového pole **koncového bodu přihlášení IDP** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
 
-    b. V **koncový bod přihlašovacího účtu Idp** textového pole vložte hodnotu **SAML jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
+    c. Do textového pole **koncového bodu odhlašovacího IDP** vložte hodnotu URL pro odhlášení, kterou jste zkopírovali z Azure Portal.
 
-    c. V **koncový bod odhlašování zprostředkovatele identity** textového pole vložte hodnotu **odhlašování URL**, který jste zkopírovali z portálu Azure portal.
+    d. Do pole **název atributu pro textové pole e-mailu** zadejte tuto hodnotu.`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    d. V **název atributu pro e-mailu** textového pole zadejte tuto hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    e. Do textového pole **název atributu pro křestní jméno** zadejte tuto hodnotu.`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    e. V **název atributu pro křestní jméno** textového pole zadejte tuto hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    f. Do textového pole **název atributu pro jméno a příjmení** zadejte tuto hodnotu.`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
 
-    f. V **název atributu pro příjmení** textového pole zadejte tuto hodnotu `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` 
     > [!Note]
-    > Tyto hodnoty můžete získat díky kombinaci obor názvů a název hodnoty příslušných atributů z části atributy uživatele na webu Azure portal.
+    > Tyto hodnoty lze získat kombinováním oboru názvů a hodnot názvu příslušného atributu z oddílu atributy uživatele v Azure Portal.
 
-    g. V poznámkovém bloku otevřete base-64 kódovaných certifikát, který jste si stáhli z webu Azure portal, zkopírujte jeho obsah (bez úvodní a koncové značky) a vložte jej do **certifikát X.509 Idp** pole.
+    g. V programu Poznámkový blok otevřete certifikát s kódováním Base-64, který jste stáhli z Azure Portal, zkopírujte jeho obsah (bez počátečních a koncových značek) a pak ho vložte do pole **certifikát IDP X. 509** .
 
-    h. Zkontrolujte **povolit přihlášení pomocí jednotného přihlašování a Kanbanize**.
-    
-    i. Klikněte na tlačítko **uložit nastavení**.
+    h. Zaškrtněte **Povolit přihlášení pomocí jednotného přihlašování i Kanbanize**.
+
+    i. Klikněte na **Uložit nastavení**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
-
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
-
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
-
-    ![Tlačítko Azure Active Directory](./media/kanbanize-tutorial/create_aaduser_01.png)
-
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
-
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/kanbanize-tutorial/create_aaduser_02.png)
-
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
-
-    ![Tlačítko Přidat](./media/kanbanize-tutorial/create_aaduser_03.png)
-
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/kanbanize-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-
-    d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="create-a-kanbanize-test-user"></a>Vytvoření zkušebního uživatele Kanbanize
-
-Cílem této části je vytvořte uživatele Britta Simon v Kanbanize. Kanbanize podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Kanbanize, pokud ještě neexistuje.
-
->[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Kanbanize klienta](mailto:support@ms.kanbanize.com).
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k Kanbanize použití Azure jednotného přihlašování.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Kanbanize.
 
-![Přiřazení role uživatele][200] 
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Kanbanize**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-**Přiřadit Kanbanize Britta Simon, proveďte následující kroky:**
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Přiřadit uživatele][201] 
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-2. V seznamu aplikací vyberte **Kanbanize**.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Odkaz Kanbanize v seznamu aplikací](./media/kanbanize-tutorial/tutorial_kanbanize_app.png)  
+### <a name="create-kanbanize-test-user"></a>Vytvořit testovacího uživatele Kanbanize
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+V této části se v Kanbanize vytvoří uživatel s názvem Britta Simon. Kanbanize podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v Kanbanize neexistuje, vytvoří se po ověření nový. Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory Kanbanize Client](mailto:support@ms.kanbanize.com).
 
-    ![Odkaz "Uživatele a skupiny"][202]
-
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
-
-    ![Podokno Přidat přiřazení][203]
-
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
-
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Kanbanize na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Kanbanize.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Když na přístupovém panelu kliknete na dlaždici Kanbanize, měli byste se automaticky přihlásit k Kanbanize, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/kanbanize-tutorial/tutorial_general_01.png
-[2]: ./media/kanbanize-tutorial/tutorial_general_02.png
-[3]: ./media/kanbanize-tutorial/tutorial_general_03.png
-[4]: ./media/kanbanize-tutorial/tutorial_general_04.png
-
-[100]: ./media/kanbanize-tutorial/tutorial_general_100.png
-
-[200]: ./media/kanbanize-tutorial/tutorial_general_200.png
-[201]: ./media/kanbanize-tutorial/tutorial_general_201.png
-[202]: ./media/kanbanize-tutorial/tutorial_general_202.png
-[203]: ./media/kanbanize-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

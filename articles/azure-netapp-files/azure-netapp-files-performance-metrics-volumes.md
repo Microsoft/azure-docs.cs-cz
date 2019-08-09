@@ -1,6 +1,6 @@
 ---
-title: Srovnávací test testování výkonu svazku a metriky pomocí souborů NetApp Azure | Dokumentace Microsoftu
-description: Poskytuje zkušební doporučení k výkonu svazku a použití služby soubory Azure NetApp metriky úlohy.
+title: Doporučení testu testu výkonnosti pro Azure NetApp Files | Microsoft Docs
+description: Poskytuje doporučení pro testování srovnávacích testů pro výkon a metriky pomocí Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,117 +12,117 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 12ae9e313655924f11799152b5e58b77776c135c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 1969b3c237a4133df6f53bd6426ca4d50581cbcb
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478807"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881737"
 ---
-# <a name="benchmark-testing-for-volume-performance-and-metrics-using-azure-netapp-files"></a>Srovnávací testování pro metriky a výkon svazků s využitím Azure NetApp Files
+# <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Doporučení testu testu výkonnosti pro Azure NetApp Files
 
-Tento článek obsahuje testování doporučení pro svazek výkonu a metriky pomocí služby soubory Azure NetApp srovnávacího testu.
+Tento článek poskytuje doporučení pro testování testů pro výkon a metriky pomocí Azure NetApp Files.
 
 ## <a name="overview"></a>Přehled
 
-Lépe pochopit vlastnosti výkonu svazku souborů NetApp Azure, můžete použít open source nástroj [FIO](https://github.com/axboe/fio) zahrnuje spuštění řady srovnávací testy pro simulace širokou škálu úloh. FIO se dá nainstalovat na obou Linux a Windows na základě operačních systémů.  Je skvělým nástrojem k získání rychlého snímku vstupně-výstupních operací a propustnosti pro svazek.
+Abyste pochopili charakteristiky výkonu Azure NetApp Filesho svazku, můžete pomocí Open Source nástroje [FIO](https://github.com/axboe/fio) spustit sérii srovnávacích testů pro simulaci různých úloh. FIO se dá nainstalovat na operační systémy Linux i Windows.  Je to vynikající nástroj pro rychlé vytvoření snímku a propustnosti pro svazek.
 
 ### <a name="vm-instance-sizing"></a>Velikost instance virtuálního počítače
 
-Nejlepších výsledků dosáhnete Ujistěte se, že používáte instance virtuálního počítače (VM), který odpovídajícím způsobem přizpůsoben pro provádění testů. Následující příklady používají Standard_D32s_v3 instance. Další informace o velikostech instancí virtuálních počítačů najdete v tématu [velikosti pro Windows virtual machines v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) u virtuálních počítačů s Windows a [velikostí pro virtuální počítače s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) pro virtuální počítače s linuxem.
+Pro dosažení nejlepších výsledků se ujistěte, že používáte instanci virtuálního počítače, která má patřičnou velikost pro provedení testů. V následujících příkladech se používá instance Standard_D32s_v3. Další informace o velikostech instancí virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) pro virtuální počítače s Windows a [velikosti pro virtuální počítače Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) pro virtuální počítače se systémem Linux.
 
-### <a name="azure-netapp-files-volume-sizing"></a>Nastavení velikosti svazků Azure souborů NetApp
+### <a name="azure-netapp-files-volume-sizing"></a>Velikost Azure NetApp Filesho svazku
 
-Ujistěte se, abyste zvolili velikosti správné služby úrovně a svazek kvóty pro úroveň očekávaný výkon. Zobrazit [úrovně služby pro Azure NetApp Files](azure-netapp-files-service-levels.md) Další informace.
+Ujistěte se, že jste zvolili správnou úroveň služby a velikost kvóty svazku pro očekávanou úroveň výkonu. Další informace najdete v tématu [úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md) .
 
-### <a name="virtual-network-vnet-recommendations"></a>Doporučení pro virtuální síť (VNet)
+### <a name="virtual-network-vnet-recommendations"></a>Doporučení k virtuální síti (VNet)
 
-Měli byste provést srovnávací test testování ve stejné virtuální síti jako NetApp soubory Azure. Následující příklad ukazuje doporučení:
+Testování srovnávacích testů byste měli provést ve stejné virtuální síti jako Azure NetApp Files. Následující příklad ukazuje doporučení:
 
-![Doporučení pro virtuální síť](../media/azure-netapp-files/azure-netapp-files-benchmark-testing-vnet.png)
+![Doporučení virtuální sítě](../media/azure-netapp-files/azure-netapp-files-benchmark-testing-vnet.png)
 
 ## <a name="installation-of-fio"></a>Instalace FIO
 
-FIO je k dispozici v binárním formátu pro Linux a Windows. Pomocí postupu v části binární balíčky v [FIO](https://github.com/axboe/fio) instalace pro platformu podle vašeho výběru.
+FIO je k dispozici v binárním formátu pro Linux i Windows. Postupujte podle oddílu binární balíčky v [FIO](https://github.com/axboe/fio) a nainstalujte aplikaci podle vaší volby.
 
-## <a name="fio-examples-for-iops"></a>Příklady FIO pro vstupně-výstupních operací 
+## <a name="fio-examples-for-iops"></a>Příklady FIO pro IOPS 
 
-FIO příklady v této části použijte následující nastavení:
+Příklady FIO v této části používají následující nastavení:
 * Velikost instance virtuálního počítače: D32s_v3
-* Úroveň služby kapacity fondu a velikost: Premium / 50 TiB
-* Kvóta velikosti svazku: 48 TiB
+* Úroveň a velikost služby fondu kapacity: Premium / 50 TiB
+* Velikost kvóty svazku: 48 TiB
 
-Následující příklady ukazují FIO náhodné operace čtení a zápisu.
+Následující příklady znázorňují náhodné čtení a zápisy FIO.
 
-### <a name="fio-8k-block-size-100-random-reads"></a>FIO: blokovat náhodné čtení 100 % velikosti 8 kb
+### <a name="fio-8k-block-size-100-random-reads"></a>FIO: velikost bloku 8k 100% náhodného čtení
 
 `fio --name=8krandomreads --rw=randread --direct=1 --ioengine=libaio --bs=8k --numjobs=4 --iodepth=128 --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-68k-read-iops-displayed"></a>Výstup: 68k čtení zobrazí vstupně-výstupních operací
+### <a name="output-68k-read-iops-displayed"></a>Výstup: Zobrazuje se 68k čtení IOPS
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [r(4)][84.4%][r=537MiB/s,w=0KiB/s][r=68.8k,w=0 IOPS][eta 00m:05s]`
 
-### <a name="fio-8k-block-size-100-random-writes"></a>FIO: blokovat náhodné zápisy 100 % velikosti 8 kb
+### <a name="fio-8k-block-size-100-random-writes"></a>FIO: velikost bloku 8k 100% náhodného zápisu
 
 `fio --name=8krandomwrites --rw=randwrite --direct=1 --ioengine=libaio --bs=8k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-73k-write-iops-displayed"></a>Výstup: 73k zápisu zobrazí vstupně-výstupních operací
+### <a name="output-73k-write-iops-displayed"></a>Výstup: Zobrazuje se 73k zápis IOPS
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [w(4)][26.7%][r=0KiB/s,w=571MiB/s][r=0,w=73.0k IOPS][eta 00m:22s]`
 
-## <a name="fio-examples-for-bandwidth"></a>Příklady FIO šířky pásma
+## <a name="fio-examples-for-bandwidth"></a>Příklady FIO pro šířku pásma
 
-Příklady v této části zobrazit sekvenční FIO čte a zapisuje.
+Příklady v této části ukazují sekvenční čtení a zápisy FIO.
 
-### <a name="fio-64k-block-size-100-sequential-reads"></a>FIO: sekvenční čtení 100 % velikosti bloku 64 kB
+### <a name="fio-64k-block-size-100-sequential-reads"></a>FIO: 64 KB velikost bloku 100% sekvenčních čtení
 
 `fio --name=64kseqreads --rw=read --direct=1 --ioengine=libaio --bs=64k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-118-gbits-throughput-displayed"></a>Výstup: 11.8 zobrazí propustnost GB/s
+### <a name="output-118-gbits-throughput-displayed"></a>Výstup: propustnost GB 11,8/s se zobrazila
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [R(4)][40.0%][r=1313MiB/s,w=0KiB/s][r=21.0k,w=0 IOPS][eta 00m:09s]`
 
-### <a name="fio-64k-block-size-100-sequential-writes"></a>FIO: blokovat sekvenční zápisy 100 % velikosti 64 kB
+### <a name="fio-64k-block-size-100-sequential-writes"></a>FIO: 64 KB velikost bloku 100% sekvenčních zápisů
 
 `fio --name=64kseqwrites --rw=write --direct=1 --ioengine=libaio --bs=64k --numjobs=4 --iodepth=128  --size=4G --runtime=600 --group_reporting`
 
-### <a name="output-122-gbits-throughput-displayed"></a>Výstup: 12.2 zobrazí propustnost GB/s
+### <a name="output-122-gbits-throughput-displayed"></a>Výstup: propustnost GB 12,2/s se zobrazila
 
 `Starting 4 processes`  
 `Jobs: 4 (f=4): [W(4)][85.7%][r=0KiB/s,w=1356MiB/s][r=0,w=21.7k IOPS][eta 00m:02s]`
 
-## <a name="volume-metrics"></a>Svazek metriky
+## <a name="volume-metrics"></a>Metriky svazků
 
-Údaje o výkonu NetApp soubory Azure je dostupná prostřednictvím Azure Monitor čítače. Tyto čítače jsou k dispozici prostřednictvím webu Azure portal a požadavky metody REST API GET. 
+Údaje o výkonu Azure NetApp Files jsou k dispozici prostřednictvím čítačů Azure Monitor. Čítače jsou k dispozici prostřednictvím Azure Portal a REST API požadavků GET. 
 
-Můžete zobrazit historická data pro následující informace:
+Můžete si prohlédnout historická data pro následující informace:
 * Průměrná latence čtení 
-* Zápis Průměrná latence 
-* Vstupně-výstupních operací čtení (průměr)
+* Průměrná latence zápisu 
+* Čtení IOPS (průměr)
 * Zápis IOPS (průměr)
 * Logická velikost svazku (průměr)
 * Velikost snímku svazku (průměr)
 
 ### <a name="using-azure-monitor"></a>Pomocí Azure Monitoru 
 
-Soubory Azure NetApp čítače na základě jednotlivé svazky přístupné ze stránky metriky, jak je znázorněno níže:
+K Azure NetApp Files čítačů můžete přistupovat na základě jednotlivých svazků ze stránky metriky, jak je znázorněno níže:
 
-![Metriky Azure Monitor](../media/azure-netapp-files/azure-netapp-files-benchmark-monitor-metrics.png)
+![Azure Monitor metriky](../media/azure-netapp-files/azure-netapp-files-benchmark-monitor-metrics.png)
 
-Řídicí panel můžete také vytvořit ve službě Azure Monitor pro soubory Azure NetApp přechod na stránku metriky, filtrování NetApp a určením čítače svazku které vás zajímají: 
+Můžete také vytvořit řídicí panel v Azure Monitor pro Azure NetApp Files tak, že na stránku metriky vyfiltrujete NetApp a zadáte čítače svazku, které vás zajímají: 
 
 ![Řídicí panel služby Azure Monitor](../media/azure-netapp-files/azure-netapp-files-benchmark-monitor-dashboard.png)
 
-### <a name="azure-monitor-api-access"></a>Azure přístup k monitorování rozhraní API
+### <a name="azure-monitor-api-access"></a>Přístup k rozhraní API Azure Monitor
 
-Čítače NetApp soubory Azure přístupná pomocí volání rozhraní REST API. Zobrazit [podporované metriky ve službě Azure Monitor: Microsoft.NetApp/netAppAccounts/capacityPools/Volumes](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) týkajících se čítačů pro fondy kapacity a svazky.
+K Azure NetApp Filesm čítačům můžete přistupovat pomocí volání REST API. Viz [podporované metriky s Azure monitor: Microsoft. NetApp/netAppAccounts/capacityPools/svazky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) pro čítače pro fondy kapacity a svazky.
 
-Následující příklad ukazuje získat adresu URL pro velikost svazku logické zobrazení:
+Následující příklad ukazuje adresu URL GET pro zobrazení velikosti logického svazku:
 
 `#get ANF volume usage`  
 `curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/ANFACCOUNTGOESHERE/capacityPools/ANFPOOLGOESHERE/Volumes/ANFVOLUMEGOESHERE/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=VolumeLogicalSize`
@@ -130,5 +130,5 @@ Následující příklad ukazuje získat adresu URL pro velikost svazku logické
 
 ## <a name="next-steps"></a>Další postup
 
-- [Úrovně služeb pro soubory Azure NetApp](azure-netapp-files-service-levels.md)
-- [Srovnávací testy výkonu pro soubory Azure NetApp](azure-netapp-files-performance-benchmarks.md)
+- [Úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md)
+- [Srovnávací testy výkonu pro Azure NetApp Files](azure-netapp-files-performance-benchmarks.md)

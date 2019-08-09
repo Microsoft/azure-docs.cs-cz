@@ -1,6 +1,6 @@
 ---
-title: Samoobslužné resetování hesla plánu nasazení – Azure Active Directory
-description: Resetovat strategie pro úspěšnou implementaci hesla pomocí samoobslužné služby Azure AD
+title: Plán nasazení samoobslužného resetování hesla – Azure Active Directory
+description: Strategie pro úspěšnou implementaci samoobslužného resetování hesla služby Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,239 +11,236 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b566bfc3f6c49f6cb9fe31f166356f6ae351e38
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7033c7bd3e783157280709b2c7e889473166ac84
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440951"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879233"
 ---
-# <a name="deploy-azure-ad-self-service-password-reset"></a>Nasazení Azure AD samoobslužné resetování hesla
+# <a name="deploy-azure-ad-self-service-password-reset"></a>Nasazení samoobslužného resetování hesla služby Azure AD
 
-Samoobslužné resetování hesla (SSPR) je funkce Azure Active Directory, která umožňuje uživatelům resetovat svá hesla bez nutnosti kontaktovat pracovníky. Zaměstnanci musí zaregistrovat nebo zaregistrovat pro resetování před použitím služby hesla pomocí samoobslužné služby. Během registrace zaměstnanec zvolí jednu nebo více metod ověřování ve své organizaci povolené.
+Samoobslužné resetování hesla (SSPR) je funkce Azure Active Directory, která zaměstnancům umožňuje resetovat hesla bez nutnosti kontaktovat pracovníky oddělení IT. Před použitím služby se zaměstnanci musí zaregistrovat pro Samoobslužné resetování hesla nebo je zaregistrovat. Během registrace zvolí zaměstnanec jednu nebo více metod ověřování povolených organizací.
 
-Samoobslužné resetování HESLA umožňující uživatelům rychle získat odblokuje a pokračovat v práci bez ohledu na to, kde jsou, nebo čas. Tím, že uživatele odblokujete sami, můžete snížit vaše organizace neproduktivní čas a náklady na vysokou podporu pro nejběžnější problémy související s hesly.
+SSPR umožňuje zaměstnancům rychle se odblokovat a pokračovat v práci bez ohledu na to, kde jsou, nebo v denní době. Díky tomu, že uživatelé můžou odblokovat samy sebe, může vaše organizace zkrátit neproduktivní dobu a náklady na vysokou podporu pro nejběžnější problémy související s heslem.
 
-Pomoc uživatelům zaregistrovat rychlé nasazení samoobslužného resetování HESLA společně s jiné aplikace nebo služby ve vaší organizaci. Tato akce bude generovat značný přihlášení a registraci se bude řídit.
+Pomůže uživatelům rychle se zaregistrovat tím, že nasadí SSPR spolu s jinou aplikací nebo službou ve vaší organizaci. Tato akce vygeneruje velký objem přihlášení a provede registraci jednotky.
 
-Před nasazením SSPR, organizace chtít určit, kolik resetování hesla související volání služby HelpDesk stane průběhu času a průměrné náklady na volání. Použitím této po nasazení dat. aby se zobrazila hodnota, že přináší samoobslužné resetování HESLA pro vaši organizaci.  
+Před nasazením SSPR organizace mohou chtít určit, kolik v průběhu času proběhne volání technické podpory pro resetování hesla, a průměrné náklady na každé volání. Můžou k tomu použít toto nasazení dat, aby se zobrazila hodnota, kterou SSPR přináší vaší organizaci.  
 
-## <a name="how-sspr-works"></a>Fungování samoobslužného resetování HESLA
+## <a name="how-sspr-works"></a>Jak funguje SSPR
 
-1. Když se uživatel pokusí o resetování hesla, musíte ověřit v jejich dříve zaregistrovaný metodu nebo metody ověřování k prokázání své identity.
-1. Poté uživatel zadá nové heslo.
-   1. Pro uživatele jenom pro cloud nové heslo je uloženo v Azure Active Directory. Další informace najdete v článku [jak samoobslužné resetování HESLA funguje](concept-sspr-howitworks.md#how-does-the-password-reset-portal-work).
-   1. Pro uživatele, hybridní je zpětný zápis hesla do místní služby Active Directory prostřednictvím služby Azure AD Connect. Další informace najdete v článku [co je zpětný zápis hesla](concept-sspr-writeback.md#how-password-writeback-works).
+1. Když se uživatel pokusí resetovat heslo, musí ověřit jejich dříve registrovanou metodu ověřování nebo metody, aby prokázal jejich identitu.
+1. Pak uživatel zadá nové heslo.
+   1. V případě pouze cloudových uživatelů je nové heslo uloženo v Azure Active Directory. Další informace najdete v článku [jak SSPR funguje](concept-sspr-howitworks.md#how-does-the-password-reset-portal-work).
+   1. Pro hybridní uživatele se heslo zapisuje zpátky do místní služby Active Directory prostřednictvím služby Azure AD Connect. Další informace najdete v článku [co je zpětný zápis hesla](concept-sspr-writeback.md#how-password-writeback-works).
 
-## <a name="licensing-considerations"></a>Důležité informace o licencování
+## <a name="licensing-considerations"></a>Požadavky na licencování
 
-Azure Active Directory je význam uživatelských licencí všichni uživatelé musí mít příslušnou licenci pro funkce, které se, jak využívají.
+Azure Active Directory je licence pro jednotlivé uživatele, což znamená, že každý uživatel musí mít odpovídající licenci na funkce, které využívají.
 
-- Samoobslužné resetování hesla pro cloudové uživatele je k dispozici s Azure AD Basic nebo vyšší.
-- Samoobslužné resetování hesla se zpětným zápisem místní pro hybridní prostředí vyžaduje Azure AD Premium P1 nebo vyšší.
+Další informace o licencování najdete na stránce s [cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) .
 
-Další informace o licencování najdete na [Azure Active Directory, na stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory/)
+## <a name="enable-combined-registration-for-sspr-and-mfa"></a>Povolit kombinovanou registraci pro SSPR a MFA
 
-## <a name="enable-combined-registration-for-sspr-and-mfa"></a>Povolení kombinovaná registrace pro samoobslužné resetování HESLA a vícefaktorové ověřování
+Společnost Microsoft doporučuje, aby organizace povolily kombinované prostředí registrace pro SSPR a vícefaktorové ověřování. Pokud povolíte toto kombinované registrační prostředí, uživatelé budou muset jenom jednou vybrat svoje registrační informace a povolit obě funkce.
 
-Společnost Microsoft doporučuje, aby organizace povolit prostředí kombinovaná registrace pro samoobslužné resetování HESLA a vícefaktorové ověřování. Pokud povolíte toto kombinované registraci prostředí, uživatelé pouze vybráním své informace o registraci jednou obě funkce.
+![Registrace informací o kombinovaném zabezpečení](./media/howto-sspr-deployment/combined-security-info.png)
 
-![Informace o registraci kombinované zabezpečení](./media/howto-sspr-deployment/combined-security-info.png)
-
-Kombinovaná registrace prostředí nevyžaduje, aby organizacím, které chcete povolit samoobslužné resetování HESLA a ověřování Azure Multi-Factor Authentication použít. Kombinovaná registrace prostředí poskytuje organizacím lepší uživatelské prostředí v porovnání s tradičním jednotlivé komponenty. Další informace o kombinované registrace a jak povolit, najdete v článku [kombinovat informace o registraci zabezpečení (preview)](concept-registration-mfa-sspr-combined.md)
+Kombinované možnosti registrace nevyžadují, aby organizace SSPR i službu Azure Multi-Factor Authentication. Kombinované prostředí pro registraci poskytuje organizacím lepší uživatelské prostředí v porovnání s tradičními jednotlivými komponentami. Další informace o kombinované registraci a o tom, jak ji povolit, najdete v článku [o registraci informací o zabezpečení (Preview)](concept-registration-mfa-sspr-combined.md) .
 
 ## <a name="plan-the-configuration"></a>Plánování konfigurace
 
-Následující nastavení jsou nutné k povolení samoobslužného resetování HESLA spolu se doporučené hodnoty.
+K povolení SSPR spolu s doporučenými hodnotami jsou nutná následující nastavení.
 
-| Oblast | Nastavení | Hodnota |
+| Oblast | Nastavení | Value |
 | --- | --- | --- |
-| **Vlastnosti samoobslužné resetování HESLA** | Samoobslužné resetování hesla povoleno | **Vybraná** pro pilotní nasazení / **všechny** pro produkční prostředí |
-| **Metody ověřování** | Metody ověřování požadovaných k registraci | Vždy 1 více, než se požaduje pro obnovení |
-|   | Metody ověřování požadovaných k resetování | Jeden nebo dva |
+| **Vlastnosti SSPR** | Samoobslužné resetování hesla povoleno | **Vybraná** skupina pro pilotní/ **vše** pro produkci |
+| **Metody ověřování** | Metody ověřování vyžadované k registraci | Vždy 1, než je vyžadováno pro resetování |
+|   | Metody ověřování vyžadované k resetování | Jedna nebo dvě |
 | **Registrace** | Při přihlášení vyžadovat registraci uživatelů | Ano |
 |   | Počet dní, než se uživatelům zobrazí výzva k potvrzení jejich ověřovacích informací | 90 – 180 dnů |
 | **Oznámení** | Upozornit uživatele na resetování hesla | Ano |
 |   | Upozornit všechny správce na resetování hesla jiného správce | Ano |
-| **Vlastní nastavení** | Přizpůsobit odkaz na helpdesk | Ano |
-|   | E-mailu vlastního helpdesku nebo adresy URL | Podpora lokality nebo e-mailovou adresu |
-| **Místní integrace** | Zapisovat hesla zpět do místní AD | Ano |
-|   | Povolit uživatelům odemčení účtů bez resetování hesla | Ano |
+| **Uživatelských** | Přizpůsobit odkaz na helpdesk | Ano |
+|   | E-mail nebo adresa URL vlastního helpdesku | Web podpory nebo e-mailová adresa |
+| **Místní integrace** | Zápis hesel zpátky do místní služby AD | Ano |
+|   | Povolí uživatelům odemknout účet bez resetování hesla. | Ano |
 
-### <a name="sspr-properties-recommendations"></a>Doporučení vlastnosti samoobslužné resetování HESLA
+### <a name="sspr-properties-recommendations"></a>Doporučení k vlastnostem SSPR
 
-Při povolení samoobslužného resetování hesla, vyberte skupinu zabezpečení se použije během pilotního programu.
+Při povolování samoobslužného resetování hesla vyberte skupinu zabezpečení, která se má použít během pilotního nasazení.
 
-Když budete chtít spustit službu širší, doporučujeme použít možnost vše k vynucení samoobslužné resetování HESLA pro všechny v organizaci. Pokud nelze nastavit pro všechny skupiny zabezpečení vyberte příslušné služby Azure AD nebo AD synchronizované do Azure AD.
+Pokud plánujete službu spustit podrobněji, doporučujeme, abyste použili možnost vše a vynutili SSPR pro všechny v organizaci. Pokud nemůžete nastavit na vše, vyberte příslušnou skupinu zabezpečení Azure AD nebo skupinu AD synchronizovanou do Azure AD.
 
 ### <a name="authentication-methods"></a>Metody ověřování
 
-Nastavení ověřování metod požadovaných k registraci do alespoň jedné větší než počet požadovaných k resetování. Umožňuje více uživatelům umožňuje flexibilitu, kdy potřebují resetovat.
+Nastavte metody ověřování vyžadované k registraci aspoň na jedno číslo, které se vyžaduje pro resetování. Povolení více uživatelům umožní pružnou flexibilitu, když je potřeba resetovat.
 
-Nastavte **počet metod požadovaných k resetování** na úrovni vhodné pro vaši organizaci. Jeden vyžaduje nejméně případná problémová místa, ale dvě může zvýšit tak stav zabezpečení.
+Nastavte **počet metod požadovaných k resetování** na úroveň odpovídající vaší organizaci. Jeden vyžaduje nejméně tření, zatímco dva můžou zvýšit stav zabezpečení.
 
-Zobrazit [jaké metody ověřování jsou](concept-authentication-methods.md) podrobné informace o ověřování metody jsou k dispozici pro samoobslužné resetování HESLA, předdefinované bezpečnostní otázky a jak vytvořit vlastní bezpečnostní otázky.
+Podrobné informace o tom, jaké metody ověřování jsou k dispozici pro SSPR, předem definované bezpečnostní otázky a jak vytvářet vlastní bezpečnostní otázky, najdete v tématu [co jsou metody ověřování](concept-authentication-methods.md) .
 
 ### <a name="registration-settings"></a>Nastavení registrace
 
-Nastavte **vyžadovat od uživatelů registraci při přihlašování** k **Ano**. Toto nastavení znamená, že uživatelé budou ukončeny registraci při přihlašování, zajištění, že všichni uživatelé jsou chráněné.
+Nastavte **vyžadovat, aby se uživatelé zaregistrovali při přihlašování** k **Ano**. Toto nastavení znamená, že uživatelé mají při přihlašování nuceně zaregistrovat, aby všichni uživatelé byli chráněni.
 
-Nastavte **počet dní, než se uživatelům zobrazí výzva k potvrzení jejich ověřovacích informací** k mezi **90** a **180** dnů, pokud má vaše organizace obchodní potřeby pro kratší časový rámec.
+Nastavte **počet dní, než se uživatelům zobrazí výzva k opětovnému potvrzení ověřovacích informací** do rozmezí **90** až **180** dnů, pokud vaše organizace nepotřebuje kratší časový rámec.
 
 ### <a name="notifications-settings"></a>Nastavení oznámení
 
-Konfigurovat i **upozornit uživatele na resetování hesla** a **upozornit všechny správce na resetování hesla jiného správce** k **Ano**. Výběr **Ano** u obou zvyšuje zabezpečení tím, že zajišťuje, že uživatelé budou vědět při jejich heslo bylo resetováno. proto, že všichni Administrátoři jsou seznámení s Pokud správce změní heslo. Pokud uživatelé nebo správci přijímat taková oznámení a inicializuje se ještě změny, se okamžitě ohlásit na potenciální porušení zabezpečení.
+Nakonfigurujte nastavení **upozorní uživatele na resetování hesla** a **upozorněte všechny správce, když si jiní správci resetují heslo** na **Ano**. Výběr možnosti **Ano** u obou zvyšuje zabezpečení tím, že zajistí, že uživatelé budou vědět, kdy se heslo obnovilo, a že všichni správci mají vědět, když správce změní heslo. Pokud uživatelé nebo správci obdrží takové oznámení a nezahájili změnu, můžou hned ohlásit potenciální porušení zabezpečení.
 
 ### <a name="customization"></a>Přizpůsobení
 
-Je velmi důležité pro přizpůsobení **technické podpory e-mailu nebo adresa URL** zajistit uživatelům, kteří docházet k potížím, můžete rychle získat nápovědu. Tuto možnost nastavte na společné technické podpory e-mailovou adresu nebo webové stránky, která vaši uživatelé znají.
+Je důležité přizpůsobit **e-mail nebo adresu URL helpdesku** , aby uživatelé, kteří se s nimi setkávají, mohli rychle získat pomoc. Tuto možnost nastavte na společnou e-mailovou adresu helpdesku nebo webovou stránku, se kterou uživatelé znají.
 
 ### <a name="on-premises-integration"></a>Místní integrace
 
-Pokud máte hybridní prostředí, ujistěte se, že **zapisovat hesla zpět do místní AD** je nastavena na **Ano**. Nastavte také povolit uživatelům odemčení účtu bez resetování hesla na hodnotu Ano, jak je to poskytuje větší flexibilitu.
+Pokud máte hybridní prostředí, zajistěte, aby se **hesla pro zápis zpět do místní služby AD** nastavila na **Ano**. Nastavte také možnost dovolit uživatelům odemknout účet bez resetování hesla na Ano, protože jim nabízí větší flexibilitu.
 
-### <a name="changingresetting-passwords-of-administrators"></a>Změna/resetování hesel správců
+### <a name="changingresetting-passwords-of-administrators"></a>Změna nebo resetování hesel správců
 
-Účty správců jsou zvláštní účty se zvýšenými oprávněními. Pokud je Pokud chcete zabezpečit, platí následující omezení změna hesel správců:
+Účty správců jsou speciální účty se zvýšenými oprávněními. Pokud je chcete zabezpečit, platí následující omezení pro změnu hesel správců:
 
-- Enterprise administrators v místním nebo domain administrators, nelze resetování hesla prostřednictvím samoobslužného resetování HESLA. Lze změnit pouze své heslo ve svém místním prostředí. Proto doporučujeme není synchronizovat místní účty správce služby AD do služby Azure AD.
-- Správce nelze použít tajných kódů otázky a odpovědi jako metoda pro resetování hesla.
+- Místní správci nebo správci domény nemůžou resetovat svoje heslo pomocí SSPR. Můžou změnit jenom svoje heslo ve svém místním prostředí. Proto doporučujeme, abyste v Azure AD nesynchronizoval účty správce služby AD Prem.
+- Správce nemůže použít tajné otázky & odpovědi jako metodu pro resetování hesla.
 
-### <a name="environments-with-multiple-identity-management-systems"></a>Prostředí s více systémů pro správu identit
+### <a name="environments-with-multiple-identity-management-systems"></a>Prostředí s více systémy správy identit
 
-Pokud existuje více identit systémy pro správu v rámci prostředí, jako jsou místní správci identity jako je Oracle AM, SiteMinder, nebo jiných systémů, a potom hesla zapsána do služby Active Directory může být nutné synchronizovat do jiných systémů pomocí nástroje, jako je Password Change Notification Service (služba PCNS) pomocí Microsoft Identity Manageru (MIM). Pokud chcete najít informace o tomto složitější scénář, najdete v článku [nasazení MIM Password Change Notification Service na řadiči domény](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller).
+Pokud existuje více systémů správy identit v rámci prostředí, jako jsou místní správci identit, jako jsou například Oracle AM, SiteMinder nebo jiné systémy, může být nutné synchronizovat hesla zapsaná ve službě Active Directory pomocí nástroje, jako je například Služba PCNS (Password Change Notification Service) s Microsoft Identity Manager (MIM). Informace o tomto složitějším scénáři najdete v článku [nasazení služby MIM Password Change Notification Service na řadiči domény](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller).
 
-## <a name="plan-deployment-and-support-for-sspr"></a>Plánování nasazení a podporu pro samoobslužné resetování HESLA
+## <a name="plan-deployment-and-support-for-sspr"></a>Plánování nasazení a podpory pro SSPR
 
-### <a name="engage-the-right-stakeholders"></a>Zapojení zúčastněných vpravo
+### <a name="engage-the-right-stakeholders"></a>Zapojení správných zúčastněných stran
 
-Když dojde k selhání technologie projekty, jsou obvykle to provést z důvodu neodpovídající požadavkům na dopad, výsledky a odpovědnosti. Chcete-li zabránit těmto nástrahy, zajistěte, aby jsou zapojení správné zúčastněných a, účastníka role v projektu jsou dobře pochopitelné Dokumentováním zúčastněné strany a jejich vstupu projektu a zodpovědnost.
+Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných očekávání na dopad, výsledky a zodpovědnosti. Aby se tyto nástrahy nezobrazovaly, ujistěte se, že jste si jisti, že jste připravují správné zúčastněné strany a že role účastníků v projektu jsou dobře srozumitelné při dokumentaci zúčastněných stran a jejich vstupu a zodpovědnosti projektu.
 
 ### <a name="communications-plan"></a>Plán komunikace
 
-Komunikace je zásadní pro úspěch jakékoli nové služby. Proaktivně komunikaci s vašimi uživateli, jak používat službu a co mohou udělat pro získání nápovědy, pokud něco nebude fungovat podle očekávání. Zkontrolujte [samoobslužné resetování hesla uvedení materiálů na webu Microsoft download center](https://www.microsoft.com/download/details.aspx?id=56768) nápady týkající se plánování strategie komunikaci s koncovým uživatelem.
+Komunikace je zásadní pro úspěch jakékoli nové služby. Proaktivně komunikujte s uživateli, jak používat službu a co můžou dělat, aby vám pomohly získat pomoc, pokud něco nefunguje podle očekávání. V materiálech pro [uvedení samoobslužného resetování hesla na webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56768) najdete nápady, jak naplánovat strategii komunikace koncovým uživatelům.
 
 ### <a name="testing-plan"></a>Plán testování
 
-Pokud chcete mít jistotu, že nasazení funguje podle očekávání, měli byste si sadu testovacích případů, které se použijí k ověření implementace. Následující tabulka obsahuje některé užitečné testovací scénáře, které můžete použít k dokumentu očekávané výsledky podle zásad vaší organizace.
+Chcete-li zajistit, že vaše nasazení funguje podle očekávání, měli byste naplánovat sadu testovacích případů, které použijete k ověření implementace. Následující tabulka obsahuje několik užitečných testovacích scénářů, které můžete použít k dokumentaci očekávaných výsledků vaší organizace na základě vašich zásad.
 
 | Obchodní zdůvodnění | Očekávaný výsledek |
 | --- | --- |
-| Samoobslužné resetování HESLA portál je přístupný z v rámci podnikové sítě | Určit vaší organizací |
-| Portál pro samoobslužného resetování HESLA je dostupné z oblasti mimo podnikovou síť | Určit vaší organizací |
-| Resetovat heslo uživatele z prohlížeče, když uživatel není povolen pro resetování hesla | Uživatel není přístup k procesu resetování hesla |
-| Resetovat heslo uživatele z prohlížeče, pokud uživatel nemá zaregistrované pro resetování hesla | Uživatel není přístup k procesu resetování hesla |
-| Přihlásí uživatele při registraci pro resetování hesla se nevynutí. | Uživatel je vyzván k registraci informací o zabezpečení |
-| Přihlásí uživatele při registraci pro resetování hesla dokončil | Uživatel není vyzván k registraci informací o zabezpečení |
-| Samoobslužné resetování HESLA portál je přístupný, když uživatel nemá licenci | Je dostupný |
-| Resetovat heslo uživatele ze systému Windows 10 AADJ nebo H + AADJ zamykací obrazovky zařízení, jakmile uživatel zaregistroval | Uživatel můžete resetovat heslo |
-| Data o využití a registrace samoobslužného resetování HESLA jsou k dispozici správcům téměř v reálném čase | Je k dispozici prostřednictvím protokolů auditu |
+| Portál SSPR je přístupný v podnikové síti. | Určeno vaší organizací |
+| Portál SSPR je přístupný z oblasti mimo podnikovou síť. | Určeno vaší organizací |
+| Resetování hesla uživatele z prohlížeče, pokud uživatel není povolen pro resetování hesla | Uživatel nemůže získat přístup k toku resetování hesla. |
+| Resetovat heslo uživatele z prohlížeče, pokud uživatel není zaregistrovaný k resetování hesla | Uživatel nemůže získat přístup k toku resetování hesla. |
+| Uživatel se přihlásí, když se vynutila registrace resetování hesla. | Uživatel je vyzván k registraci informací o zabezpečení. |
+| Uživatel se přihlásí, když se dokončila registrace resetování hesla. | Uživatel není vyzván k registraci informací o zabezpečení. |
+| Portál SSPR je dostupný, když uživatel nemá licenci. | Je přístupné |
+| Resetování hesla uživatele ze zařízení s Windows 10 AADJ nebo H + AADJ zamykací obrazovka po registraci uživatele | Uživatel může resetovat heslo. |
+| SSPR registrace a data o využití jsou k dispozici správcům téměř v reálném čase. | Je k dispozici prostřednictvím protokolů auditu |
 
 ### <a name="support-plan"></a>Plán podpory
 
-Během samoobslužného resetování HESLA nevytváří obvykle problémy uživatelů, je důležité mít podporu, kterou zaměstnanci připravili řešit problémy, které mohou nastat.
+I když SSPR obvykle nevytváří problémy s uživatelem, je důležité mít pracovníky podpory připravené na řešení problémů, které mohou nastat.
 
-Když správce můžete změnit nebo resetování hesla pro koncové uživatele na portálu Azure AD, je lepší řešení těchto potíží prostřednictvím procesu samoobslužné podpory.
+Správce může změnit nebo resetovat heslo pro koncové uživatele prostřednictvím portálu Azure AD, což je lepší při řešení tohoto problému prostřednictvím samoobslužného procesu podpory.
 
-V provozní příručce části tohoto dokumentu vytvoření seznamu případy podpory a jejich pravděpodobné příčiny a vytvořit průvodce pro řešení.
+V části provozní příručka tohoto dokumentu vytvořte seznam pomocných případů a jejich pravděpodobný příčinu a vytvořte průvodce pro řešení.
 
 ### <a name="auditing-and-reporting"></a>Auditování a vytváření sestav
 
-Po nasazení, řada organizací chtít vědět, jak nebo pokud samoobslužné resetování hesla (SSPR) je doopravdy používá. Funkci vytváření sestav, které poskytuje Azure Active Directory (Azure AD) pomáhá lze zodpovědět otázky pomocí předem připravených sestav.
+Po nasazení mnoho organizací chce zjistit, jak nebo jestli se ve skutečnosti používá Samoobslužné resetování hesla (SSPR). Funkce vytváření sestav, kterou Azure Active Directory (Azure AD), vám pomůže odpovědět na otázky pomocí předem vytvořených sestav.
 
-Protokoly auditu pro registraci a obnovení hesla jsou k dispozici po dobu 30 dnů. Proto pokud auditování zabezpečení v rámci podniku vyžaduje delší dobu uchování, protokoly nutné exportovat a shrnout do nástroje SIEM, jako [Azure Sentinelu](../../sentinel/connect-azure-active-directory.md), Splunk nebo ArcSight.
+Protokoly auditu pro registraci a resetování hesla jsou k dispozici po dobu 30 dnů. Proto pokud audit zabezpečení v rámci podniku vyžaduje delší dobu uchovávání, je nutné tyto protokoly exportovat a spotřebovat do nástroje SIEM, jako je například [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk nebo ArcSight.
 
-V tabulce, jako je ten níže zdokumentujte plán zálohování, systém a odpovědnost smluvní strany souhlasí. Možná nebudete potřebovat samostatné auditování a vytváření sestav zálohování, ale měli byste mít samostatnou zálohu, ze kterého můžete obnovit z chyby.
+V tabulce, podobně jako v následujícím příkladu, zdokumentujte plán zálohování, systém a příslušné strany. Nesmíte oddělit auditování a zálohy vytváření sestav, ale měli byste mít samostatnou zálohu, ze které můžete obnovit problém.
 
-|   | Četnost stahování | Cílový systém | Odpovídá stran |
+|   | Frekvence stahování | Cílový systém | Zodpovědná strana |
 | --- | --- | --- | --- |
 | Auditování zálohování |   |   |   |
-| Generování sestav zálohování |   |   |   |
-| Zálohu pro obnovení po havárii |   |   |   |
+| Zálohování vytváření sestav |   |   |   |
+| Záloha zotavení po havárii |   |   |   |
 
 ## <a name="implementation"></a>Implementace
 
-Implementace se skládá ze tří fází:
+Implementace probíhá ve třech fázích:
 
-- Konfigurovat uživatele a licence
-- Konfigurace samoobslužného resetování HESLA Azure AD pro registraci a samoobslužné funkce
-- Nakonfigurovat službu Azure AD Connect pro zpětný zápis hesla
+- Konfigurace uživatelů a licencí
+- Konfigurace Azure AD SSPR pro registraci a samoobslužné služby
+- Konfigurace Azure AD Connect pro zpětný zápis hesla
 
-### <a name="communicate-the-change"></a>Sdělte změnu
+### <a name="communicate-the-change"></a>Oznámit změnu
 
-Proces implementace komunikační plán, který jste vytvořili ve fázi plánování.
+Zahajte implementaci komunikačního plánu, který jste vytvořili ve fázi plánování.
 
-### <a name="ensure-groups-are-created-and-populated"></a>Zkontrolujte skupiny jsou vytvořeny a naplněny
+### <a name="ensure-groups-are-created-and-populated"></a>Zajistěte vytváření a naplnění skupin.
 
-Odkazovat části Plánování ověřování hesla metody a zkontrolujte tyto skupiny uplatněna pro implementaci zkušebního projektu nebo produkční prostředí jsou k dispozici, a všichni odpovídající uživatelé se přidají do skupin.
+Odkažte na část metody ověřování hesla plánování a ujistěte se, že skupiny pro pilotní nebo produkční implementaci jsou k dispozici a že se do těchto skupin přidaly všichni odpovídající uživatelé.
 
-### <a name="apply-licenses"></a>Licence
+### <a name="apply-licenses"></a>Použít licence
 
-Skupiny, kterou budete implementovat musíte mít Azure AD premium přiřazenou licenci. Licence můžete přiřadit přímo do skupiny nebo můžete použít existující zásady licence, jako pomocí Powershellu nebo na základě skupin licencí.
+Skupiny, které se chystáte implementovat, musí mít přiřazenou licenci Azure AD Premium. Licence můžete přiřadit přímo ke skupině nebo můžete použít existující zásady licencování, jako je například PowerShell nebo licencování na základě skupin.
 
-Informace o přiřazování licencí skupinám uživatelů najdete v článku, [přiřazení licencí pro uživatele na základě členství ve skupinách v Azure Active Directory](../users-groups-roles/licensing-groups-assign.md).
+Informace o přiřazování licencí skupinám uživatelů najdete v článku [přiřazení licencí uživatelům podle členství ve skupině v Azure Active Directory](../users-groups-roles/licensing-groups-assign.md).
 
-### <a name="configure-sspr"></a>Konfigurace samoobslužného resetování HESLA
+### <a name="configure-sspr"></a>Konfigurace SSPR
 
-#### <a name="enable-groups-for-sspr"></a>Povolit skupiny pro samoobslužné resetování HESLA
+#### <a name="enable-groups-for-sspr"></a>Povolení skupin pro SSPR
 
-1. Přístup k webu Azure portal pomocí účtu správce.
-1. Vyberte všechny služby a v dialogovém okně Filtr zadejte Azure Active Directory a potom vyberte Azure Active Directory.
+1. Přístup k Azure Portal s účtem správce.
+1. Vyberte všechny služby a do pole Filtr zadejte Azure Active Directory a pak vyberte Azure Active Directory.
 1. V okně služby Active Directory vyberte resetování hesla.
-1. V podokně vlastností vyberte vybrané. Pokud chcete, aby všem uživatelům povolit, vyberte všechny.
-1. Výchozí heslo resetovat okno zásad, zadejte název skupiny pro první, vyberte ho a pak klikněte na vybrat v dolní části obrazovky a vyberte Uložit v horní části obrazovky.
+1. V podokně Vlastnosti vyberte možnost vybrané. Pokud chcete, aby všichni uživatelé byli povoleni, vyberte vše.
+1. V okně výchozí zásady resetování hesla zadejte název první skupiny, vyberte ji a potom klikněte na vybrat v dolní části obrazovky a v horní části obrazovky vyberte Uložit.
 1. Tento postup opakujte pro každou skupinu.
 
-#### <a name="configure-the-authentication-methods"></a>Konfigurovat metody ověřování
+#### <a name="configure-the-authentication-methods"></a>Konfigurace metod ověřování
 
-Odkazovat na plánování, z části Plánování metody ověřování hesla tohoto dokumentu.
+Odkaz na vaše plánování z části metody ověřování hesla plánování v tomto dokumentu.
 
-1. Vyberte registraci, v části vyžadují uživateli při přihlášení registraci, vyberte Ano a pak nastavte počet dní před vypršením platnosti a pak vyberte možnost uložit.
-1. Vyberte oznámení a konfigurace na základě vašeho plánu a vyberte Uložit.
-1. Vyberte vlastní nastavení a konfigurace na základě vašeho plánu a vyberte Uložit.
-1. Vyberte místní integraci a konfigurace na základě vašeho plánu a vyberte Uložit.
+1. Vyberte možnost registrace, v části vyžadovat, aby se uživatel zaregistroval při přihlašování, vyberte Ano a pak nastavte počet dní před vypršením platnosti a pak vyberte Uložit.
+1. Vyberte oznámení a nakonfigurujte podle vašeho plánu a pak vyberte Uložit.
+1. Vyberte vlastní nastavení a nakonfigurujte podle vašeho plánu a pak vyberte Uložit.
+1. Vyberte místní integraci a nakonfigurujte podle vašeho plánu a pak vyberte Uložit.
 
-### <a name="enable-sspr-in-windows"></a>Povolit samoobslužné resetování HESLA ve Windows
+### <a name="enable-sspr-in-windows"></a>Povolení SSPR ve Windows
 
-Zařízení s Windows 10 běží verze 1803 nebo novější, které jsou buď připojené k Azure AD nebo hybridní připojená k Azure AD můžou resetovat svá hesla na přihlašovací obrazovce Windows. Informace a postup pro konfiguraci této funkce najdete v článku [z přihlašovací obrazovky resetování hesla Azure AD](tutorial-sspr-windows.md)
+Zařízení s Windows 10, která používají verzi 1803 nebo vyšší, která jsou připojená k Azure AD nebo se připojila k hybridní službě Azure AD, můžou resetovat hesla na přihlašovací obrazovce pro Windows. Informace a kroky pro konfiguraci této možnosti najdete v článku [resetování hesla Azure AD na přihlašovací obrazovce](tutorial-sspr-windows.md) .
 
-### <a name="configure-password-writeback"></a>Nakonfigurovat zpětný zápis hesla
+### <a name="configure-password-writeback"></a>Konfigurace zpětného zápisu hesla
 
-Postup konfigurace zpětného zápisu hesla pro vaši organizaci najdete v článku [s návody: Nakonfigurovat zpětný zápis hesla](howto-sspr-writeback.md).
+Postup konfigurace zpětného zápisu hesla pro vaši organizaci najdete v článku [postupy: Nakonfigurujte zpětný zápis](howto-sspr-writeback.md)hesla.
 
-## <a name="manage-sspr"></a>Správa samoobslužného resetování HESLA
+## <a name="manage-sspr"></a>Správa SSPR
 
-Požadované role pro správu funkce přidružené k samoobslužné resetování hesla.
+Požadované role pro správu funkcí přidružených k samoobslužnému resetování hesla.
 
-| Obchodní roli a modelové osoby | Role Azure AD (v případě potřeby) |
+| Obchodní role/osoby | Role Azure AD (v případě potřeby) |
 | :---: | :---: |
-| Technické podpory úrovně 1 | Správce hesel |
-| Technickou podporu úrovně 2 | Správce uživatelů |
-| Samoobslužné resetování HESLA správce | Globální správce |
+| HelpDesk úrovně 1 | Správce hesel |
+| HelpDesk úrovně 2 | Správce uživatelů |
+| Správce SSPR | Globální správce |
 
 ### <a name="support-scenarios"></a>Scénáře podpory
 
-Pokud chcete povolit váš úspěch týmu podpory, můžete vytvořit nejčastější dotazy na základě otázek, který jste dostali od uživatelů. Následující tabulka obsahuje běžné scénáře podpory.
+Pokud chcete vašemu týmu podpory povolit úspěch, můžete vytvořit Nejčastější dotazy na základě otázek, které od uživatelů dostanete. Následující tabulka obsahuje běžné scénáře podpory.
 
 | Scénáře | Popis |
 | --- | --- |
-| Uživatel nemá žádné dostupné metody registrované ověřování | Uživatel se snaží obnovit své heslo, ale nemá žádné metody ověřování, že zaregistrovaný k dispozici (Příklad: během chvilky vlevo jejich mobilní telefon a nemá přístup k e-mailu) |
-| Uživatel není přijetí textového nebo volání na jejich office nebo na mobilní telefon | Uživatel se pokusil ověřit svoji identitu prostřednictvím textová zpráva nebo volání, ale text/volání, nadále nepřijímá. |
-| Uživatel nemá přístup k portálu pro resetování hesel | Uživatel chce, aby se resetování hesla, ale není povolen pro resetování hesla a proto nemůže přistupovat k stránky a aktualizovat hesla. |
-| Uživatel nemůže nastavit nové heslo | Uživatel se dokončí ověření během procesu resetování hesla, ale nelze nastavit nové heslo. |
-| Uživatel neuvidí odkaz resetovat heslo na zařízení s Windows 10 | Uživatel se pokouší o resetování hesla ze zamykací obrazovky Windows 10, ale zařízení buď není připojená k Azure AD nebo není aktivované zásady zařízení Intune |
+| Uživatel nemá k dispozici žádné registrované metody ověřování. | Uživatel se pokusí resetovat heslo, ale nemá žádnou z metod ověřování, které zaregistroval (například: opustil mobilní telefon v domácnosti a nemá přístup k e-mailu). |
+| Uživatel nepřijímá text ani nevolá na svém Office nebo na mobilním telefonu. | Uživatel se snaží ověřit svoji identitu prostřednictvím textu nebo volání, ale nepřijímá text nebo volání. |
+| Uživatel nemá přístup k portálu pro resetování hesla. | Uživatel chce resetovat heslo, ale nemá povoleno resetování hesla, a proto nemůže získat přístup k této stránce, aby mohl aktualizovat hesla. |
+| Uživatel nemůže nastavit nové heslo. | Uživatel dokončil ověřování během toku resetování hesla, ale nemůže nastavit nové heslo. |
+| Uživatel nevidí odkaz pro resetování hesla na zařízení s Windows 10. | Uživatel se pokusí resetovat heslo z zamykací obrazovky Windows 10, ale zařízení buď není připojené ke službě Azure AD, nebo není povolené zásady zařízení Intune. |
 
-Můžete také obsahovat informace, jako je následující další řešení potíží.
+Pro další řešení potíží můžete také zahrnout další informace, jako je třeba následující.
 
-- Skupiny, které jsou povolené pro samoobslužné resetování HESLA.
-- Které metody ověřování jsou nakonfigurované.
-- Zásady přístupu týkající se nebo podnikové sítě.
-- Řešení potíží pro běžné scénáře.
+- Které skupiny jsou povolené pro SSPR.
+- Které metody ověřování jsou nakonfigurovány.
+- Zásady přístupu související s podnikovou sítí v systému nebo.
+- Postup řešení potíží pro běžné scénáře.
 
-Můžete také odkazovat na naší online dokumentaci k řešení problémů samoobslužného resetování hesla a pochopit postup řešení potíží pro nejběžnější scénáře samoobslužné resetování HESLA.
+V online dokumentaci můžete také informace o řešení potíží samoobslužného resetování hesla, abyste porozuměli obecným krokům při řešení potíží s nejběžnějšími scénáři SSPR.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Zvažte implementaci ochrana hesel Azure AD](concept-password-ban-bad.md)
+- [Zvažte implementaci ochrany heslem Azure AD.](concept-password-ban-bad.md)
 
-- [Zvažte implementaci Azure AD inteligentní uzamčení](howto-password-smart-lockout.md)
+- [Zvažte implementaci inteligentního uzamčení Azure AD.](howto-password-smart-lockout.md)

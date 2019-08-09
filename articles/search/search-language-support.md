@@ -6,15 +6,14 @@ manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: 403febfcb54194602051aaebe2952265c0675e9d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 5383ad44f665ce809772143e23817932c3e2b7e6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854390"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883886"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>Vytvoření indexu pro více jazyků v Azure Search
 
@@ -35,7 +34,7 @@ Analyzátor jazyka je určen při vytvoření pole. Přidáním analyzátoru do 
 
 ![Přiřazovat analyzátory jazyka během definice pole](media/search-language-support/select-analyzer.png "Přiřazovat analyzátory jazyka během definice pole")
 
-Ve výchozím nastavení používají všechna hledaná pole [standardní analyzátor Lucene](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) , který je Language-nezávislá. Úplný seznam podporovaných analyzátorů najdete v tématu [Přidání analyzátorů jazyka do indexu Azure Search](index-add-language-analyzers.md).
+Ve výchozím nastavení používají všechna hledaná pole [standardní analyzátor Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) , který je Language-nezávislá. Úplný seznam podporovaných analyzátorů najdete v tématu [Přidání analyzátorů jazyka do indexu Azure Search](index-add-language-analyzers.md).
 
 V portálu se analyzátory mají použít tak, jak jsou. Pokud budete vyžadovat přizpůsobení nebo konkrétní konfiguraci filtrů a tokenizátory musíte nejdřív, měli byste v kódu [vytvořit vlastní analyzátor](index-add-custom-analyzers.md) . Portál nepodporuje výběr a konfiguraci vlastních analyzátorů.
 

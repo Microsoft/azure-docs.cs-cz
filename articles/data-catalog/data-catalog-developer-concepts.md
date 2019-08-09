@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 81e17e1e450e45e4c163ca8231a47deeb8b9ed2c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 21b7c4e17d976a0a4099a926823f51eab1dba98d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734687"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879077"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog koncepce pro vývojáře
 Microsoft **Azure Data Catalog** je plně spravovaná cloudová služba, která poskytuje možnosti pro zjišťování zdrojů dat a pro metadata crowdsourcingový zdrojů dat. Vývojáři můžou službu používat přes rozhraní REST API. Porozumění konceptům implementovaným ve službě je důležité, aby se vývojáři mohli úspěšně integrovat s **Azure Data Catalog**.
@@ -19,7 +19,7 @@ Microsoft **Azure Data Catalog** je plně spravovaná cloudová služba, která 
 ## <a name="key-concepts"></a>Klíčové koncepty
 **Azure Data Catalog** koncepční model je založen na čtyřech klíčových konceptech: **Katalog**, **Uživatelé**, **prostředky**a **poznámky**.
 
-!["][1]
+![Data Catalog koncepty](./media/data-catalog-developer-concepts/concept2.png)
 
 *Obrázek 1 – Azure Data Catalog zjednodušený koncepční model*
 
@@ -286,7 +286,7 @@ Speciální objekt &lt;zabezpečení Everyone&gt; má objectID "00000000-0000-00
 > 
 
 **Text**
-
+```json
     {
         "roles": [
             {
@@ -299,9 +299,11 @@ Speciální objekt &lt;zabezpečení Everyone&gt; má objectID "00000000-0000-00
             }
         ]
     }
+```
 
   **Přiřazení vlastníků a omezení viditelnosti pro existující kořenovou položku**: **Put** https:\//API.azuredatacatalog.com/catalogs/default/views/Tables/042297b0...1be45ecd462a?API-Version=2016-03-30
 
+```json
     {
         "roles": [
             {
@@ -343,11 +345,8 @@ Speciální objekt &lt;zabezpečení Everyone&gt; má objectID "00000000-0000-00
             }
         ]
     }
+```
 
 > [!NOTE]
 > V části PUT není nutné zadávat datovou část položky v těle: VLOŽENÍ lze použít k aktualizaci pouze rolí nebo oprávnění.
 > 
-> 
-
-<!--Image references-->
-[1]: ./media/data-catalog-developer-concepts/concept2.png

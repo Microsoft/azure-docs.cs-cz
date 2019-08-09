@@ -1,6 +1,6 @@
 ---
-title: Diagnostika a řešení potíží Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
-description: Pochopit, jak Diagnostika a řešení Azure čas Series Insights ve verzi Preview.
+title: Diagnostika a řešení potíží s Azure Time Series Insights Preview | Microsoft Docs
+description: Pochopte, jak diagnostikovat a řešit potíže s Azure Time Series Insights ve verzi Preview.
 author: ashannon7
 ms.author: dpalled
 ms.workload: big-data
@@ -8,106 +8,106 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d18f8f4808d5ca9dd7eca1561b1ee08c2073f5fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdcbe62fdba4f111233451680f95abc757e80ee3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237541"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883323"
 ---
 # <a name="diagnose-and-troubleshoot"></a>Diagnostika a řešení potíží
 
-Tento článek shrnuje několik běžných problémů, které můžete narazit při práci s vaším prostředím Azure čas Series Insights ve verzi Preview. Tento článek také popisuje možné příčiny a řešení pro každý problém.
+Tento článek shrnuje několik běžných problémů, se kterými se můžete setkat při práci s prostředím Azure Time Series Insights ve verzi Preview. Tento článek také popisuje možné příčiny a řešení jednotlivých problémů.
 
-## <a name="problem-i-cant-find-my-environment-in-the-preview-explorer"></a>Problém: Nemůžu najít své prostředí v Průzkumníku ve verzi Preview
+## <a name="problem-i-cant-find-my-environment-in-the-preview-explorer"></a>Řešení V Průzkumníkovi Preview nemůžu najít své prostředí
 
-Tomuto problému může dojít, pokud nemáte příslušná oprávnění pro přístup k prostředí Time Series Insights. Uživatelé potřebují přístup na úrovni čtenář roli zobrazíte jejich prostředí Time Series Insights. Ověřte aktuální úrovní přístupu a udělte další oprávnění, najdete v části zásady přístupu k datům v Time Series Insights prostředku v [webu Azure portal](https://portal.azure.com/).
+K tomuto problému může dojít, pokud nemáte oprávnění pro přístup k Time Series Insights prostředí. Uživatelé potřebují pro zobrazení svého Time Series Insightsho prostředí roli přístupu na úrovni čtenáře. Pokud chcete ověřit aktuální úrovně přístupu a udělit další přístup, přejděte v části zásady přístupu k datům na prostředku Time Series Insights v [Azure Portal](https://portal.azure.com/).
 
-  [![prostředí](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
+  [![Hlediska](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
 
-## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Problém: žádná data se zobrazí v Průzkumníku ve verzi Preview
+## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Problém: v Průzkumníkovi Preview se nezobrazí žádná data.
 
-Několik běžných důvodů, proč se nemusí zobrazovat data v [Průzkumníka Azure čas Series Insights ve verzi Preview](https://insights.timeseries.azure.com/preview).
+K dispozici je několik běžných důvodů, proč se data v Průzkumníkovi služby [Azure Time Series Insights Preview](https://insights.timeseries.azure.com/preview)nemusejí zobrazovat.
 
-- Váš zdroj událostí nemusí být přijímá data.
+- Váš zdroj událostí pravděpodobně nepřijímá data.
 
-    Ověřte, že váš zdroj událostí, který je v Centru událostí nebo službu IoT hub, přijímá data ze značky nebo instancí. Abyste se přesvědčili, přejděte na stránku přehled vašeho prostředku na webu Azure Portal.
+    Ověřte, že váš zdroj událostí, což je centrum událostí nebo centrum IoT, přijímá data z vašich značek nebo instancí. Pokud to chcete ověřit, na stránce s přehledem na svém prostředku navštivte Azure Portal.
 
-    [![řídicí panel přehledů](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
+    [![Řídicí panel – přehledy](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
 
-- Zdroj dat událostí není ve formátu JSON.
+- Vaše zdrojová data události nejsou ve formátu JSON.
 
-    Time Series Insights podporuje jenom data JSON. Ukázky JSON najdete v tématu [tvary JSON nepodporuje](./how-to-shape-query-json.md).
+    Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [tvary JSON nepodporuje](./how-to-shape-query-json.md).
 
-- Klíč zdroje událostí chybí požadované oprávnění.
+- V klíči zdroje událostí chybí požadovaná oprávnění.
 
-  * Pro službu IoT hub, je potřeba zadat klíč, který má **služba připojit** oprávnění.
+  * V případě služby IoT Hub musíte zadat klíč, který má oprávnění **připojit ke službě** .
 
     [![Konfigurace](media/v2-update-diagnose-and-troubleshoot/configuration.png)](media/v2-update-diagnose-and-troubleshoot/configuration.png#lightbox)
 
-  * Jak je znázorněno na předchozím obrázku, obě zásady **iothubowner** a **služby** fungovat, protože mají **služba připojit** oprávnění.
-  * Pro Centrum událostí, je potřeba zadat klíč, který má **naslouchání** oprávnění.
+  * Jak je znázorněno na předchozím obrázku, obě zásady **iothubowner** i fungují , protože mají oprávnění **k připojení ke službě** .
+  * V centru událostí je nutné zadat klíč, který má oprávnění k **naslouchání** .
   
-    [![Oprávnění](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
+    [![Nastaven](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
 
-  * Jak je znázorněno na předchozím obrázku, obě **čtení** a **spravovat** zásady fungují, protože mají **naslouchání** oprávnění.
+  * Jak je znázorněno na předchozím obrázku, obě zásady **číst** a **Spravovat** budou fungovat, protože mají oprávnění k naslouchání.
 
-- Vaše skupina uživatelů, které jsou k dispozici není výhradně pro Time Series Insights.
+- Zadaná skupina uživatelů není výhradně Time Series Insights.
 
-    Během registrace služby IoT hub nebo event hub určete skupinu příjemců, který se používá k načtení dat. Nesdílejte této skupiny příjemců. Pokud se skupina uživatelů se sdílí, základní centra událostí automaticky odpojí jeden čtecích zařízení náhodně. Zadejte skupinu příjemců jedinečný pro čtení ze služby Time Series Insights.
+    Během registrace centra IoT nebo centra událostí určíte skupinu uživatelů, která se používá ke čtení dat. Tuto skupinu příjemců nesdílejte. Pokud je skupina uživatelů sdílená, příslušné centrum událostí automaticky odpojí jedno z čtecích zařízení s náhodným připojením. Poskytněte jedinečnou skupinu uživatelů, ze které se má Time Series Insights číst.
 
-- Vaše ID řady času vlastnost určili během zřizování je nesprávná, chybí nebo hodnotu null.
+- Vaše vlastnost ID časové řady zadaná v době zřizování není správná, chybí nebo je null.
 
-    Tomuto problému může dojít, pokud vlastnost ID řady času není správně nakonfigurovaná při zřizování prostředí. Další informace najdete v tématu [osvědčené postupy pro výběr ID řady času](./time-series-insights-update-how-to-id.md). V tuto chvíli nemůžete aktualizovat existující prostředí Time Series Insights použít jiné ID řady čas
+    K tomuto problému může dojít, pokud je vlastnost ID časové řady v době zřizování prostředí nesprávně nakonfigurovaná. Další informace najdete v tématu [osvědčené postupy pro výběr ID časové řady](./time-series-insights-update-how-to-id.md). V tuto chvíli nemůžete aktualizovat existující prostředí Time Series Insights tak, aby používalo jiné ID časové řady.
 
-## <a name="problem-some-data-shows-but-some-is-missing"></a>Problém: některá data zobrazí, ale některé nebyl nalezen
+## <a name="problem-some-data-shows-but-some-is-missing"></a>Problém: některá data jsou zobrazená, ale chybí.
 
-Můžete odesílat data bez ID řady čas.
+Můžete odesílat data bez ID časové řady.
 
-- Tomuto problému může dojít, když odesíláte události bez pole ID řady času v datové části. Další informace najdete v tématu [tvary JSON nepodporuje](./how-to-shape-query-json.md).
+- K tomuto problému může dojít při odesílání událostí bez pole ID časové řady v datové části. Další informace najdete v tématu [podporované tvary JSON](./how-to-shape-query-json.md).
 
-- Tomuto problému může dojít, protože je omezovaná vašeho prostředí.
+- K tomuto problému může dojít, protože vaše prostředí je omezené.
 
     > [!NOTE]
-    > V současné době Time Series Insights podporuje ingestování maximální počet 6 MB/s.
+    > V tuto chvíli Time Series Insights podporuje maximální rychlost přijímání dat 6 MB/s.
 
-## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Problém: zdroj událostí název vlastnosti časového razítka nebude fungovat.
+## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Problém: název vlastnosti časového razítka zdroje události nefunguje
 
 Ujistěte se, že název a hodnotu v souladu s těmito pravidly:
 
-* Název vlastnosti časového razítka je velká a malá písmena.
-* Hodnota vlastnosti časového razítka, která se dodává ze zdroje událostí, jako řetězec formátu JSON má formát `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Příkladem takových řetězec je `“2008-04-12T12:53Z”`.
+* V názvu vlastnosti časového razítka se rozlišují malá a velká písmena.
+* Hodnota vlastnosti časového razítka, která přichází ze zdroje události jako řetězec JSON, má formát `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Příkladem takových řetězec je `“2008-04-12T12:53Z”`.
 
-Nejjednodušší způsob, jak zajistit, že váš název vlastnosti časového razítka se zaznamenávají a funguje správně, je použít Průzkumník čas Series Insights ve verzi Preview. V Průzkumníkovi čas Series Insights ve verzi Preview pomocí grafu můžete vybrat určitou dobu, po podle názvu vlastnosti časového razítka. Klikněte pravým tlačítkem na výběr a vyberte **zkoumat události** možnost. První záhlaví sloupců je váš název vlastnosti časového razítka. Měl by mít `($ts)` vedle slovo `Timestamp`, spíše než:
+Nejjednodušší způsob, jak zajistit, aby byl název vlastnosti časového razítka zachycen a správně fungoval, je použít Průzkumníka služby Time Series Insights Preview. V Průzkumníku služby Time Series Insights Preview pomocí grafu vyberte časový úsek po zadání názvu vlastnosti časového razítka. Klikněte pravým tlačítkem na výběr a vyberte možnost **prozkoumat události** . Záhlaví prvního sloupce je název vlastnosti časového razítka. Místo toho by `($ts)` mělo být vedle slova `Timestamp`:
 
 * `(abc)`, což znamená, že Time Series Insights čte hodnoty dat jako řetězce.
-* Ikonu kalendáře, což znamená, že Time Series Insights čte hodnoty dat jako datový typ datetime.
-* `#`, což znamená, že Time Series Insights čte hodnoty dat jako celé číslo.
+* Ikona kalendáře, která indikuje, že Time Series Insights čte datovou hodnotu jako DateTime.
+* `#`, což označuje, že Time Series Insights čte hodnoty dat jako celé číslo.
 
-Pokud vlastnost časového razítka není explicitně zadán, k události služby IoT hub nebo event hub čas zařazení do fronty se používá jako výchozí časové razítko.
+Pokud není explicitně zadaná vlastnost timestamp, použije se jako výchozí časové razítko čas zařazování centra IoT nebo centra událostí.
 
-## <a name="problem-i-cant-view-or-edit-my-time-series-model"></a>Problém: Nelze zobrazit nebo upravit mé modelu časové řady
+## <a name="problem-i-cant-view-or-edit-my-time-series-model"></a>Řešení Nemůžu zobrazit nebo upravit model časové řady
 
-- Vám může přistupovat k Time Series Insights S1 nebo S2 prostředí.
+- Možná přistupujete k Time Series Insights prostředí S1 nebo S2.
 
-   Čas řady modely jsou podporovány pouze v prostředí s průběžnými PLATBAMI. Další informace o tom, jak přistupovat k prostředí S1/S2 z Exploreru čas Series Insights ve verzi Preview najdete v tématu [vizualizace dat v Průzkumníku](./time-series-insights-update-explorer.md).
+   Modely časových řad se podporují jenom v prostředích PAYG. Další informace o tom, jak přistupovat k prostředí S1/S2 z Exploreru čas Series Insights ve verzi Preview najdete v tématu [vizualizace dat v Průzkumníku](./time-series-insights-update-explorer.md).
 
    [![Access](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
 
-- Nemáte oprávnění k zobrazení a úpravě modelu.
+- Možná nemáte oprávnění k zobrazení a úpravě modelu.
 
-   Uživatelé potřebují přístup k úpravám a zobrazování jejich modelu časové řady na úrovni Přispěvatel. Ověřit aktuální úrovní přístupu a udělit další přístup, najdete v části zásady přístupu k datům pro váš prostředek Time Series Insights na webu Azure Portal.
+   Uživatelé potřebují přístup na úrovni přispěvatele pro úpravy a zobrazení modelu časové řady. Pokud chcete ověřit aktuální úrovně přístupu a udělit další přístup, přejděte k části zásady přístupu k datům na prostředku Time Series Insights v Azure Portal.
 
-## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>Problém: všechny instance v Průzkumníku ve verzi Preview nemají nadřazený
+## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>Problém: všechny moje instance v Průzkumníkovi Preview nemají nadřazený prvek
 
-Tomuto problému může dojít, pokud vaše prostředí nemá definované hierarchii modelu časové řady. Další informace najdete v tématu [čas řady modely](./time-series-insights-update-how-to-tsm.md).
+K tomuto problému může dojít, pokud vaše prostředí nemá definovánu hierarchii modelu časové řady. Další informace najdete v tématu [práce s modely časových řad](./time-series-insights-update-how-to-tsm.md).
 
-  [![Čas řady modelů](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
+  [![Modely časových řad](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 
-- Čtení [čas řady modely](./time-series-insights-update-how-to-tsm.md).
+- Přečtěte si téma [práce s modely časových řad](./time-series-insights-update-how-to-tsm.md).
 
-- Další informace o [podporované tvary JSON](./how-to-shape-query-json.md).
+- Přečtěte si o [podporovaných tvarech JSON](./how-to-shape-query-json.md).

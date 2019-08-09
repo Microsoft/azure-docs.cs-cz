@@ -1,237 +1,166 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory pomocí tajného klíče serveru (v místním prostředí) | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a tajný kód serveru (místní).
+title: 'Kurz: Azure Active Directory integrace s tajným serverem (místně) | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directorym a tajným serverem (místně).
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: be4ba84a-275d-4f71-afce-cb064edc713f
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/19/2018
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9167a5ed72e6fec2ca03cc97d1d41dd6cd4aaba6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4926fc1833cc14b2ad81a01e230a5c3c37ba6ab3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104567"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880135"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>Kurz: Integrace Azure Active Directory pomocí tajného klíče serveru (místní)
+# <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>Kurz: Integrace tajného serveru (místně) s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat tajný klíč serveru (v místním prostředí) se službou Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat tajný server (místně) s Azure Active Directory (Azure AD). Když integrujete tajný server (místní) s Azure AD, můžete:
 
-Integrace serveru tajný kód (v místním prostředí) s Azure AD poskytuje následující výhody:
+* Řízení ve službě Azure AD, která má přístup k tajnému serveru (místně)
+* Umožněte uživatelům, aby se automaticky přihlásili k tajnému serveru (místně) pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-- Můžete řídit ve službě Azure AD, který má přístup k serveru tajný kód (v místním prostředí).
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k serveru tajný kód (v místním prostředí) (jednotné přihlašování) s jejich účty Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
-
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s tajný klíč serveru (místní), potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-- Předplatné Azure AD
-- Tajný kód serveru (místní) jediného přihlášení povolený předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné s povoleným jednotným přihlašováním (SSO) na tajném serveru.
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání tajného klíče serveru (místní) z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-## <a name="adding-secret-server-on-premises-from-the-gallery"></a>Přidání tajného klíče serveru (místní) z Galerie
-Konfigurace integrace tajný klíč serveru (místní) do služby Azure AD, budete muset přidat tajný klíč serveru (místní) z Galerie na váš seznam spravovaných aplikací SaaS.
+* Tajný server (místní) podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 
-**Přidání tajného klíče serveru (místní) z galerie, postupujte následovně:**
+## <a name="adding-secret-server-on-premises-from-the-gallery"></a>Přidání tajného serveru (místně) z Galerie
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+Pokud chcete nakonfigurovat integraci tajného serveru (místně) do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat tajný server (místní) z galerie.
 
-    ![Tlačítko Azure Active Directory][1]
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **tajný server (místní)** .
+1. Z panelu výsledků vyberte **tajný server (místní)** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
-
-    ![V okně podnikové aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
-
-    ![Tlačítko nové aplikace][3]
-
-1. Do vyhledávacího pole zadejte **tajný klíč serveru (místní)** vyberte **tajný klíč serveru (místní)** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-
-    ![Server tajných klíčů (v místním prostředí) v seznamu výsledků](./media/secretserver-on-premises-tutorial/tutorial_secretserver_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí tajného klíče serveru (v místním prostředí) na základě testovací uživatele nazývá "Britta Simon".
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s tajným serverem (místně) pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem na tajném serveru (místně).
 
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek tajný klíč serveru (v místním prostředí) je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatel tajný klíč serveru (místní).
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s tajným serverem (místně), dokončete následující stavební bloky:
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí tajného klíče serveru (místní), které potřebujete k dokončení následujících stavebních bloků:
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[Konfigurace tajného serveru (místní) SSO](#configure-secret-server-on-premises-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+5. **[Vytvořte testovacího uživatele tajného serveru (místní)](#create-secret-server-on-premises-test-user)** , abyste měli protějšek B. Simon na tajném serveru (místní), který je propojený s reprezentací uživatele v Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele tajný klíč serveru (místní)](#create-a-secret-server-on-premises-test-user)**  – Pokud chcete mít protějšek Britta Simon tajný klíč serveru (místní), který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci tajný klíč serveru (místní).
+1. V [Azure Portal](https://portal.azure.com/)na stránce **tajný server (místní)** integrace aplikací najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-**Ke konfiguraci Azure AD jednotné přihlašování pomocí tajného klíče serveru (místní), proveďte následující kroky:**
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na webu Azure Portal na **tajný klíč serveru (místní)** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    a. Do textového pole **identifikátor** zadejte uživatel zvolené hodnoty jako příklad:`https://secretserveronpremises.azure`
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
-
-    ![Jednotné přihlašování – dialogové okno](./media/secretserver-on-premises-tutorial/tutorial_secretserver_samlbase.png)
-
-1. Na **tajný klíč serveru (místní) domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
-
-    ![Tajného kódu serveru (místní) domény a adresy URL jednotného přihlašování – informace](./media/secretserver-on-premises-tutorial/tutorial_secretserver_url.png)
-
-    a. V **identifikátor** textového pole zadejte uživatele zvolena hodnota jako například: `https://secretserveronpremises.azure`
-
-    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SecretServerURL>/SAML/AssertionConsumerService.aspx`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<SecretServerURL>/SAML/AssertionConsumerService.aspx`
 
     > [!NOTE]
-    > ID Entity je znázorněno výše je jenom jako příklad a můžete libovolně vybrat jedinečnou hodnotu, který identifikuje vaši instanci tajný klíč serveru ve službě Azure AD. Je nutné odeslat toto ID Entity [tým podpory tajný klíč serveru (místní) klienta](https://thycotic.force.com/support/s/) a jejich konfigurace na své straně. Další informace, přečtěte si prosím [v tomto článku](https://thycotic.force.com/support/s/article/Configuring-SAML-in-Secret-Server).
+    > Výše uvedené ID entity je pouze příklad a Vy si můžete vybrat libovolnou jedinečnou hodnotu, která identifikuje vaši tajnou instanci serveru ve službě Azure AD. Toto ID entity musíte poslat [týmu podpory pro tajný server (místní)](https://thycotic.force.com/support/s/) a nakonfigurovat ho na své straně. Další podrobnosti najdete v [tomto článku](https://thycotic.force.com/support/s/article/Configuring-SAML-in-Secret-Server).
 
-1. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Tajného kódu serveru (místní) domény a adresy URL jednotného přihlašování – informace](./media/secretserver-on-premises-tutorial/tutorial_secretserver_url1.png)
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<SecretServerURL>/login.aspx`
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SecretServerURL>/login.aspx`
-     
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory tajný klíč serveru (místní) klienta](https://thycotic.force.com/support/s/) k získání těchto hodnot.
+    > [!NOTE]
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienty (místní)](https://thycotic.force.com/support/s/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz ke stažení certifikátu](./media/secretserver-on-premises-tutorial/tutorial_secretserver_certificate.png)
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-1. Zkontrolujte **zobrazit pokročilé nastavení podepisování certifikátu** a vyberte **podepisování možnost** jako **přihlašování SAML odpověď a kontrolní výraz**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu **Upravit** a otevřete dialogové okno podpisový **certifikát SAML** .
 
-    ![Možnosti podpisu](./media/secretserver-on-premises-tutorial/signing.png)
+    ![Možnosti podepisování](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+1. Vyberte **možnost podepisování** jako **podepsat odpověď SAML a kontrolní výraz**.
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/secretserver-on-premises-tutorial/tutorial_general_400.png)
-    
-1. Na **konfigurace tajný klíč serveru (místní)** klikněte na tlačítko **konfigurace tajný klíč serveru (místní)** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+    ![Možnosti podepisování](./media/secretserver-on-premises-tutorial/signing-option.png)
 
-    ![Konfigurace tajného kódu serveru (místní)](./media/secretserver-on-premises-tutorial/tutorial_secretserver_configure.png)
+1. V části **Nastavit tajný server (místní)** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-1. Ke konfiguraci jednotného přihlašování na **tajný klíč serveru (místní)** straně, je nutné odeslat na stažený **Certificate(Base64), adresa URL odhlašování, SAML jednotné přihlašování – adresa URL služby**, a **SAML Entity ID** k [tým podpory tajný klíč serveru (místní)](https://thycotic.force.com/support/s/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+
+### <a name="configure-secret-server-on-premises-sso"></a>Konfigurace tajného serveru (SSO) jednotného přihlašování
+
+Chcete-li nakonfigurovat jednotné přihlašování na straně **tajného serveru (místně)** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory tajného serveru (místní)](https://thycotic.force.com/support/s/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
-
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
-
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
-
-    ![Tlačítko Azure Active Directory](./media/secretserver-on-premises-tutorial/create_aaduser_01.png)
-
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
-
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/secretserver-on-premises-tutorial/create_aaduser_02.png)
-
-1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
-
-    ![Tlačítko Přidat](./media/secretserver-on-premises-tutorial/create_aaduser_03.png)
-
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/secretserver-on-premises-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-
-    d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="create-a-secret-server-on-premises-test-user"></a>Vytvoření zkušebního uživatele tajný klíč serveru (místní)
-
-V této části vytvořte uživatele Britta Simon tajný klíč serveru (místní). Práce s [tým podpory tajný klíč serveru (místní)](https://thycotic.force.com/support/s/) přidat uživatele na platformě tajný klíč serveru (místní). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k serveru tajný kód (v místním prostředí).
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k tajnému serveru (místně).
 
-![Přiřazení role uživatele][200]
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **tajný server (místní)** .
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-**Britta Simon přiřadit k serveru tajný kód (v místním prostředí), proveďte následující kroky:**
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Přiřadit uživatele][201]
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V seznamu aplikací vyberte **tajný klíč serveru (místní)** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Tajný kód serveru (místní) odkaz v seznamu aplikací](./media/secretserver-on-premises-tutorial/tutorial_secretserver_app.png)
+### <a name="create-secret-server-on-premises-test-user"></a>Vytvoření tajného serveru (místně) testovacího uživatele
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+V této části vytvoříte uživatele s názvem Britta Simon na tajném serveru (místní). Pracujte s [týmem podpory tajného serveru (místní)](https://thycotic.force.com/support/s/) a přidejte uživatele na platformě tajného serveru (místní). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-    ![Odkaz "Uživatele a skupiny"][202]
-
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
-
-    ![Podokno Přidat přiřazení][203]
-
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
-
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici tajný klíč serveru (v místním prostředí) na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci tajný klíč serveru (místní).
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+Když na přístupovém panelu kliknete na dlaždici tajný server (místní), měli byste se automaticky přihlásit ke tajnému serveru (místně), pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/secretserver-on-premises-tutorial/tutorial_general_01.png
-[2]: ./media/secretserver-on-premises-tutorial/tutorial_general_02.png
-[3]: ./media/secretserver-on-premises-tutorial/tutorial_general_03.png
-[4]: ./media/secretserver-on-premises-tutorial/tutorial_general_04.png
-
-[100]: ./media/secretserver-on-premises-tutorial/tutorial_general_100.png
-
-[200]: ./media/secretserver-on-premises-tutorial/tutorial_general_200.png
-[201]: ./media/secretserver-on-premises-tutorial/tutorial_general_201.png
-[202]: ./media/secretserver-on-premises-tutorial/tutorial_general_202.png
-[203]: ./media/secretserver-on-premises-tutorial/tutorial_general_203.png
-
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

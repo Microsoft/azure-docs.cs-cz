@@ -1,6 +1,6 @@
 ---
-title: Integrujte Microsoft Azure s Cloudovou infrastrukturou Oracle | Dokumentace Microsoftu
-description: Další informace o řešení, které integrují aplikace Oracle v Microsoft Azure s databází v Oracle cloudové infrastruktury (OCI).
+title: Integrace Microsoft Azure s cloudovou infrastrukturou Oracle | Microsoft Docs
+description: Seznamte se s řešeními, která integrují aplikace Oracle běžící na Microsoft Azure s databázemi v Oracle Cloud Infrastructure (OCI).
 services: virtual-machines-linux
 documentationcenter: ''
 author: romitgirdhar
@@ -15,66 +15,66 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: fcdd46ea60ea53088ffacd7d13693b16a208d527
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 309c481c0ebf0e6061524a12356e67394e5db8d2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707459"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880837"
 ---
-# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Řešení aplikace Oracle integrace Microsoft Azure a Oracle cloudové infrastruktury (preview)
+# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Řešení aplikací Oracle integrující Microsoft Azure a Oracle cloudovou infrastrukturu (Preview)
 
-Microsoft a Oracle uzavřeli partnerství s cílem poskytnout s nízkou latencí a vysokou propustnost připojení cloudu, vám umožní využít to nejlepší z obou cloudy. 
+Microsoft a Oracle mají partnerství, aby poskytovaly nízkou latenci a vysokou propustnost připojení mezi cloudy, což vám umožní využít výhod obou cloudů. 
 
-Pomocí tohoto připojení cloudu, můžete dělit vícevrstvou aplikaci pro spuštění v Oracle cloudové infrastruktury (OCI), databázová vrstva a aplikace a ostatními úrovněmi v Microsoft Azure. Možnosti jsou podobné ke spouštění zásobníku celého řešení v jeden cloud. 
+Pomocí tohoto připojení mezi cloudy můžete rozdělit vícevrstvou aplikaci tak, aby běžela vaše databázová vrstva na platformě Oracle Cloud Infrastructure (OCI), a na Microsoft Azure aplikace a další vrstvy. Prostředí je podobné jako spuštění celého zásobníku řešení v jednom cloudu. 
 
 > [!IMPORTANT]
-> Tato funkce cloudu je aktuálně ve verzi preview a některé [platí omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Tato funkce mezi cloudy je aktuálně ve verzi Preview a [platí některá omezení](#preview-limitations). Aby bylo možné povolit připojení s nízkou latencí mezi Azure a OCI, musí být předplatné Azure pro tuto funkci nejdřív uvedené bíle. Do verze Preview se musíte zaregistrovat odesláním e-mailu oracleconnect@microsoft.com s vaším ID předplatného. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Můžete se také obrátit na zástupce Microsoftu, který bude pro tuto verzi Preview povolený. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) . Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-Pokud vás zajímá nasazení řešení Oracle výhradně na infrastrukturu Azure, přečtěte si téma [imagí virtuálních počítačů Oracle a jejich nasazení v Microsoft Azure](oracle-vm-solutions.md).
+Pokud vás zajímá nasazení řešení Oracle výhradně do infrastruktury Azure, přečtěte si téma [image virtuálních počítačů Oracle a jejich nasazení na Microsoft Azure](oracle-vm-solutions.md).
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
-Připojení cloudu poskytuje řešení pro spouštění aplikací špičkové společnosti Oracle a své vlastní aplikace na Azure virtual machines využívat výhod služeb hostovanou databází v OCI současně. 
+Připojení mezi cloudy poskytuje řešení pro spouštění špičkových aplikací od Oracle a vašich vlastních aplikací na virtuálních počítačích Azure a současně přináší výhody hostovaných databázových služeb v rozhraní OCI. 
 
-Aplikace, které můžete spustit v konfiguraci cloudu patří:
+Mezi aplikace, které můžete spustit v konfiguraci mezi cloudy patří:
 
-* E-Business Suite
+* Sada E-Business
 * JD Edwards EnterpriseOne
 * PeopleSoft
-* Aplikace Oracle maloobchodního prodeje
-* Oracle, Hyperion finanční správy
+* Maloobchodní aplikace Oracle
+* Hyperion finanční správa Oracle
 
-V následujícím diagramu je podrobný přehled připojených řešení. Pro zjednodušení diagram znázorňuje pouze aplikační vrstvu a datovou vrstvu. V závislosti na architektuře aplikace by mohly vaše řešení obsahovat další vrstvy, jako je například webová vrstva v Azure. Další informace najdete v následující části.
+Následující diagram představuje podrobný přehled připojeného řešení. Pro zjednodušení diagram zobrazuje pouze aplikační vrstvu a datovou vrstvu. V závislosti na architektuře aplikace může vaše řešení zahrnovat další úrovně, jako je například webová vrstva v Azure. Další informace najdete v následující části.
 
 ![Přehled řešení Azure OCI](media/oracle-oci-overview/crosscloud.png)
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
-* Připojení cloudu ve verzi preview je omezená na oblasti Azure USA – východ (eastus) a oblast (USA ashburn-1) OCI Ashburn.
+* Připojení mezi cloudy ve verzi Preview je omezené na oblast Azure Východní USA (eastus) a na oblast OCI Ashburn (US-Ashburn-1).
 
 ## <a name="networking"></a>Sítě
 
-Podnikoví zákazníci často rozhodnete diversify a nasadit úlohy o velikosti přes více cloudy pro různé obchodní a provozních důvodů. Rozšíření, zákazníci propojení cloudových sítích pomocí Internetu, IPSec VPN nebo pomocí řešení přímé připojení k poskytovateli cloudu prostřednictvím místní sítě. Propojení cloudových sítích může vyžadovat významné investic v čas, peníze, návrh, nákup, instalace, testování a operace. 
+Podnikoví zákazníci se často rozsazují a nasazují úlohy do několika cloudů pro různé obchodní a provozní důvody. K diverzifikaci zákazníci propojovat cloudové sítě pomocí Internetu, IPSec VPN nebo pomocí přímého připojení poskytovatele cloudu prostřednictvím místní sítě. Propojení cloudových sítí může vyžadovat významné investice v čase, peníze, návrh, nákup, instalaci, testování a provoz. 
 
-Chcete-li vyřešit tyto problémy zákazníků, Oracle a Microsoft povolili integrované prostředí multicloudové. Cloudu sítí se navazuje pomocí připojení [ExpressRoute](../../../expressroute/expressroute-introduction.md) okruh v Microsoft Azure vedenou [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) okruh v OCI. Toto připojení je možné, kde je umístění partnerského vztahu Azure ExpressRoute v blízkosti nebo ve stejném umístění partnerského vztahu jako OCI FastConnect. Toto nastavení umožňuje rychlé, zabezpečené připojení mezi dva cloudy bez nutnosti poskytovatele zprostředkující služeb.
+Pro řešení těchto výzev zákazníků Oracle a Microsoft povolili integrované prostředí pro více cloudů. Síť mezi cloudy se vytváří připojením okruhu [ExpressRoute](../../../expressroute/expressroute-introduction.md) v Microsoft Azure s okruhem [FASTCONNECT](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) v rozhraní OCI. Toto připojení je možné v případě, že umístění partnerského vztahu Azure ExpressRoute je v blízkosti nebo ve stejném umístění partnerského vztahu jako rozhraní OCI FastConnect. Tato instalace umožňuje bezpečné a rychlé připojení mezi těmito dvěma cloudy bez nutnosti poskytovatele zprostředkujících služeb.
 
-Pomocí ExpressRoute a FastConnect, zákazníci můžou vytvořit partnerský vztah virtuální sítě v Azure s virtuální cloudové sítě v OCI, za předpokladu, že se nepřekrývá privátní adresní prostor IP adres. Vytvoření partnerského vztahu dvě sítě umožňuje prostředků ve virtuální síti komunikovat na prostředek v cloudu virtuální sítě OCI jako, pokud jsou oba ve stejné síti.
+Pomocí ExpressRoute a FastConnect můžou zákazníci vytvořit partnerský vztah k virtuální síti v Azure s virtuální cloudovou sítí v rozhraní OCI za předpokladu, že se privátní adresní prostor IP adres nepřekrývá. Partnerský vztah ke dvěma sítím umožňuje prostředku ve virtuální síti komunikovat s prostředkem ve virtuální cloudové síti OCI, jako by byly ve stejné síti.
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-Zabezpečení sítě je zásadní součástí všechny podnikové aplikace a je toto multicloudové řešení soustředí. Všechny přenosy přes ExpressRoute a FastConnect projde přes privátní síť. Tato konfigurace umožňuje zabezpečenou komunikaci mezi virtuální sítí Azure a cloudové virtuální síti typu Oracle. Není nutné poskytnout veřejné IP adresy na všechny virtuální počítače v Azure. Podobně není nutné internetovou bránu v OCI. Veškerá komunikace probíhá přes privátní IP adresu počítače.
+Zabezpečení sítě je zásadní součástí libovolné podnikové aplikace a je centrální k tomuto řešení pro více cloudů. Veškerý provoz procházející ExpressRoute a FastConnect se předává přes soukromou síť. Tato konfigurace umožňuje zabezpečenou komunikaci mezi virtuální sítí Azure a virtuální cloudovou sítí Oracle. Nemusíte zadávat veřejnou IP adresu pro žádné virtuální počítače v Azure. Obdobně nepotřebujete internetovou bránu v rozhraní OCI. Veškerá komunikace probíhá prostřednictvím privátní IP adresy počítačů.
 
-Kromě toho můžete nastavit [seznamy zabezpečení](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) na vaše OCI cloudové virtuální sítě a pravidel zabezpečení (připojené k Azure [skupiny zabezpečení sítě](../../../virtual-network/security-overview.md)). Pomocí těchto pravidel můžete řídit provoz mezi počítači ve virtuálních sítích. Pravidla zabezpečení sítě je možné přidat na úrovni počítače, na úrovni podsítě a na všech úrovních virtuální sítě.
+Kromě toho můžete nastavit [seznamy zabezpečení](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) ve vaší virtuální cloudové síti OCI a pravidla zabezpečení (připojené ke [skupinám zabezpečení sítě](../../../virtual-network/security-overview.md)Azure). Pomocí těchto pravidel můžete řídit tok provozu mezi počítači ve virtuálních sítích. Pravidla zabezpečení sítě je možné přidat na úrovni počítače, na úrovni podsítě a také na úrovni virtuální sítě.
  
 ## <a name="identity"></a>Identita
 
-Identita je jedním z pilířů core partnerství mezi společnostmi Microsoft a Oracle. Bylo provedeno rozsáhlou integraci [Cloudová služba identit Oracle](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) s [Azure Active Directory](../../../active-directory/index.yml) (Azure AD). Azure AD je služba Microsoftu pro cloudový identit a přístupu správy. Umožňuje uživatelům přihlášení a přístup k různým prostředkům. Azure AD také umožňuje spravovat uživatele a jejich oprávnění.
+Identita je jedním z hlavních pilířů partnerství mezi společnostmi Microsoft a Oracle. Pro integraci [služby Oracle identity Cloud Service](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) pomocí služby [Azure Active Directory](../../../active-directory/index.yml) (Azure AD) se udělala významná práce. Azure AD je cloudová služba pro správu identit a přístupu od Microsoftu. Pomáhá uživatelům přihlašovat se k různým prostředkům a přistupovat k nim. Azure AD také umožňuje spravovat uživatele a jejich oprávnění.
 
-V současné době Tato integrace vám umožní spravovat na jednom centrálním místě, což je Azure Active Directory. Azure AD synchronizuje všechny změny v adresáři s odpovídající adresář Oracle a slouží pro jednotné přihlašování k cloudu Oracle řešení.
+V současné době tato integrace umožňuje správu v jednom centrálním umístění, které je Azure Active Directory. Azure AD synchronizuje všechny změny v adresáři s odpovídajícím adresářem Oracle a používá se pro jednotné přihlašování do řešení Oracle pro více cloudů.
 
 ## <a name="next-steps"></a>Další postup
 
-Začněte [cloudu sítě](configure-azure-oci-networking.md) mezi Azure a OCI. 
+Začněte s mezi [cloudovou sítí](configure-azure-oci-networking.md) mezi Azure a OCI. 
 
-Další informace a dokumenty White Paper o OCI, najdete v článku [Oracle cloudu](https://docs.cloud.oracle.com/iaas/Content/home.htm) dokumentaci.
+Další informace a dokumenty White paper o rozhraní OCI najdete v dokumentaci ke [cloudu Oracle](https://docs.cloud.oracle.com/iaas/Content/home.htm) .

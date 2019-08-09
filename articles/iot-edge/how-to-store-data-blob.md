@@ -5,26 +5,27 @@ author: arduppal
 manager: mchad
 ms.author: arduppal
 ms.reviewer: arduppal
-ms.date: 06/19/2019
+ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5932d51ecaca3c827ae6de268711c7f4d1b28d0a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: a40389ca378826aef1b6aa136f8f5d69783c638e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640650"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881221"
 ---
-# <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store dat na hraničních zařízeních s Azure Blob Storage na hraničních zařízeních IoT (preview)
+# <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Ukládání dat na hraničních zařízeních pomocí Azure Blob Storage v IoT Edge
 
 Poskytuje úložiště objektů Blob v Azure na hraničních zařízeních IoT [objektů blob bloku](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) řešení úložiště na hraničních zařízeních. Modul BLOB Storage v zařízení IoT Edge se chová jako služba Azure Block BLOB Service, s výjimkou toho, že objekty blob bloku se ukládají místně na vaše IoT Edge zařízení. Získat přístup pomocí stejných metod, sady SDK služby Azure storage BLOB nebo blokovat volání rozhraní API objektů blob, které jste už zvyklí. V tomto článku se dozvíte o konceptech souvisejících s Azure Blob Storage v kontejneru IoT Edge, na kterém běží služba blob na zařízení IoT Edge.
 
-Tento modul je užitečný ve scénářích, kdy je potřeba ukládat data místně, dokud je nebudete moct zpracovat nebo přenést do cloudu. Tato data můžou být videa, obrázky, finanční údaje, ústavní data nebo jiná nestrukturovaná data.
-
-> [!NOTE]
-> Azure Blob Storage na hraničních zařízeních IoT je v [ve verzi public preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Tento modul je užitečný ve scénářích:
+* kde je potřeba ukládat data místně, dokud je nebudete moct zpracovat nebo přenést do cloudu. Tato data můžou být videa, obrázky, finanční údaje, ústavní data nebo jiná nestrukturovaná data.
+* zařízení se nachází na místě s omezeným připojením.
+* Pokud chcete efektivně zpracovávat data místně, abyste získali přístup k datům s nízkou latencí, můžete tak rychle reagovat na naléhavé situace.
+* Když chcete snížit náklady na šířku pásma a vyhnout se přenosu terabajtů dat do cloudu. Data můžete zpracovávat místně a odesílat do cloudu jenom zpracovaná data.
 
 Podívejte se na video s rychlým Úvodem
 > [!VIDEO https://www.youtube.com/embed/QhCYCvu3tiM]
@@ -60,16 +61,11 @@ Zařízení Azure IoT Edge:
 
 - Pomocí postupu v rychlém startu pro zařízení se systémem [Linux](quickstart-linux.md) nebo [Windows](quickstart.md)můžete použít vývojový počítač nebo virtuální počítač jako zařízení IoT Edge.
 
-- Azure Blob Storage na modul IoT Edge podporuje následující konfigurace zařízení:
-
-  | Operační systém | AMD64 | ARM32v7 | ARM64 |
-  | ---------------- | ----- | ----- | ---- |
-  | Raspbian stretch | Ne | Ano | Ne |  
-  | Ubuntu Server 16.04 | Ano | Ne | Ano |
-  | Ubuntu Server 18.04 | Ano | Ne | Ano |
-  | Windows 10 IoT Enterprise, Build 17763 | Ano | Ne | Ne |
-  | Windows Server 2019, Build 17763 | Ano | Ne | Ne |
-  
+- Seznam podporovaných operačních systémů a architektur najdete v tématu [Azure IoT Edge podporované systémy](support.md#operating-systems) . Modul Azure Blob Storage on IoT Edge podporuje následující architektury:
+    - Systém Windows AMD64
+    - Linux AMD64
+    - Linux ARM32
+    - Linux ARM64 (Preview)
 
 Cloudové prostředky:
 
@@ -104,7 +100,10 @@ Název tohoto nastavení je`deviceAutoDeleteProperties`
 
 ## <a name="using-smb-share-as-your-local-storage"></a>Použití sdílené složky SMB jako místního úložiště
 Pokud nasadíte kontejner Windows tohoto modulu na hostitele Windows, můžete jako cestu k místnímu úložišti zadat sdílenou složku SMB.
-Můžete spustit `New-SmbGlobalMapping` příkaz prostředí PowerShell pro místní mapování sdílené složky SMB na zařízení IoT s Windows. Ujistěte se, že zařízení IoT může číst a zapisovat do vzdálené sdílené složky protokolu SMB.
+
+Ujistěte se, že sdílená složka SMB a zařízení IoT jsou ve vzájemně důvěryhodných doménách.
+
+Můžete spustit `New-SmbGlobalMapping` příkaz prostředí PowerShell pro místní mapování sdílené složky SMB na zařízení IoT s Windows.
 
 Níže jsou uvedené kroky konfigurace:
 ```PowerShell
@@ -112,12 +111,44 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 Příklad: <br>
-`$creds = Get-Credentials` <br>
+`$creds = Get-Credential` <br>
 `New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G: `
 
 Tento příkaz použije přihlašovací údaje k ověření u vzdáleného serveru SMB. Pak namapujte cestu vzdálené sdílené složky na G: písmeno jednotky (může to být jakékoli jiné dostupné písmeno jednotky). Zařízení IoT teď má datový svazek namapovaný na cestu na jednotce G:. 
 
-Pro nasazení `<storage directory bind>` může být hodnota **G:/ContainerData: C:/BlobRoot**.
+Zajistěte, aby uživatel v zařízení IoT mohl číst a zapisovat do vzdálené sdílené složky protokolu SMB.
+
+Pro nasazení `<storage mount>` může být hodnota **G:/ContainerData: C:/BlobRoot**. 
+
+## <a name="granting-directory-access-to-container-user-on-linux"></a>Udělení přístupu k adresáři uživateli kontejneru v systému Linux
+Pokud jste v možnostech vytváření pro kontejnery pro Linux používali [připojení svazku](https://docs.docker.com/storage/volumes/) pro úložiště, nemusíte provádět žádné další kroky, ale pokud jste použili [připojení](https://docs.docker.com/storage/bind-mounts/) k vazbě, jsou tyto kroky nezbytné ke správnému spuštění služby.
+
+V rámci principu minimálního oprávnění pro omezení oprávnění k přístupu pro uživatele, aby neprováděli minimální oprávnění, která potřebují k práci, tento modul obsahuje uživatele (název: absie, ID: 11000) a skupina uživatelů (název: absie, ID: 11000). Pokud je kontejner spuštěný jako **kořen** (výchozí uživatel je **kořenový**), bude naše služba spuštěná jako uživatel s nízkými oprávněními **absie** . 
+
+Díky tomuto chování se konfigurace oprávnění v cestě hostitele váže pro správné fungování služby, jinak služba nebude fungovat s chybami odepření přístupu. Cesta, která se používá ve vazbě adresáře, musí být přístupná uživatelem kontejneru (například: absie 11000). Uživateli kontejneru můžete udělit přístup k adresáři spuštěním příkazů níže na hostiteli:
+
+```terminal
+sudo chown -R 11000:11000 <blob-dir> 
+sudo chmod -R 700 <blob-dir> 
+```
+
+Příklad:<br>
+`sudo chown -R 11000:11000 /srv/containerdata` <br>
+`sudo chmod -R 700 /srv/containerdata `
+
+
+Pokud potřebujete službu spustit jako jiný uživatel než **absie**, můžete v manifestu nasazení zadat vlastní ID uživatele v createOptions pod vlastností "User". V takovém případě musíte použít výchozí ID nebo ID `0`kořenové skupiny.
+
+```json
+“createOptions”: { 
+  “User”: “<custom user ID>:0” 
+} 
+```
+Nyní Udělte uživateli kontejneru přístup k adresáři.
+```terminal
+sudo chown -R <user ID>:<group ID> <blob-dir> 
+sudo chmod -R 700 <blob-dir> 
+```
 
 ## <a name="configure-log-files"></a>Konfigurace souborů protokolu
 
@@ -142,9 +173,9 @@ Dokumentace k Azure Blob Storage obsahuje ukázkový kód pro rychlý Start v n�
 Následující ukázky pro rychlý Start používají jazyky, které jsou podporované také nástrojem IoT Edge, takže je můžete nasadit jako IoT Edge moduly společně s modulem úložiště objektů BLOB:
 
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Java](../storage/blobs/storage-quickstart-blobs-java.md)
+- [Java](../storage/blobs/storage-quickstart-blobs-java-v10.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-- [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md)
+- [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Připojte se k místnímu úložišti pomocí Průzkumník služby Azure Storage
 
@@ -239,3 +270,5 @@ Můžete nás kontaktovat naabsiotfeedback@microsoft.com
 ## <a name="next-steps"></a>Další postup
 
 Přečtěte si, jak [nasadit Azure Blob Storage v IoT Edge](how-to-deploy-blob.md)
+
+Udržujte si přehled o nejnovějších aktualizacích a oznámeních ve [službě Azure Blob Storage na blogu IoT Edge](https://aka.ms/abs-iot-blogpost)

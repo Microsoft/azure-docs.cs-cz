@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: 47db174042f7dd2e9d1bd1503c8e8b8f635b4dbe
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1db5829abd52a1b010d38dd8e9151ab2df3f1de5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705755"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854407"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Řešení potíží virtuálních počítačů Azure
 
@@ -34,10 +34,14 @@ ms.locfileid: "67705755"
     - [Řešení potíží s protokolem SSH](troubleshoot-ssh-connection.md)
     - [Podrobné řešení potíží s protokolem SSH](detailed-troubleshoot-ssh-connection.md)
     - [Běžné chybové zprávy](error-messages.md)
-    - [Problémy s výkonem virtuálních počítačů Windows](performance-diagnostics.md  )
-    - [Použití PerfInsights](how-to-use-perfInsights.md)
-    - [Rozšíření Diagnostika výkonu](performance-diagnostics-vm-extension.md)
 - [Offline instalace agenta virtuálního počítače s Windows](install-vm-agent-offline.md)
+- Řešení potíží s výkonem virtuálních počítačů
+    - [Problémy s výkonem virtuálních počítačů](performance-diagnostics.md)
+    - Windows
+        - [Použití PerfInsights](how-to-use-perfinsights.md)
+        - [Rozšíření Diagnostika výkonu](performance-diagnostics-vm-extension.md)
+    - Linux
+        - [Použití PerfInsights](how-to-use-perfinsights-linux.md)
 - Znovunasazení virtuálního počítače
     - [Linux](redeploy-to-new-node-linux.md)
     - [Windows](redeploy-to-new-node-windows.md)

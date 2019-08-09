@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení vaší spravované domény Azure Active Directory Domain Services | Dokumentace Microsoftu
+title: Zabezpečte svou Azure Active Directory Domain Services spravovanou doménu | Microsoft Docs
 description: Zabezpečení spravované domény
 services: active-directory-ds
 documentationcenter: ''
@@ -15,30 +15,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: iainfou
-ms.openlocfilehash: e94cd9ca049cfdfd2321ce046714506ed1f23390
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 923ecae9dc649b8f5cdcfd447b78fdec0805927a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483282"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879150"
 ---
-# <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Zabezpečení vaší spravované domény služby Azure AD Domain Services
-Tento článek pomáhá vám zabezpečit vaši spravovanou doménu. Můžete vypnout používání slabé šifrovacích sad a zakázat synchronizaci hodnot hash přihlašovacích údajů protokolů NTLM.
+# <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Zabezpečení Azure AD Domain Services spravované domény
+Tento článek vám pomůže zabezpečit spravovanou doménu. Můžete vypnout používání slabých šifrovacích sad a zakázat synchronizaci hodnot hash přihlašovacích údajů NTLM.
 
-## <a name="install-the-required-powershell-modules"></a>Nainstalujte požadované moduly prostředí PowerShell
+## <a name="install-the-required-powershell-modules"></a>Instalace požadovaných modulů prostředí PowerShell
 
-### <a name="install-and-configure-azure-ad-powershell"></a>Instalace a konfigurace Azure AD Powershellu
-Postupujte podle pokynů v článku [instalace modulu Azure AD PowerShell a připojte se k Azure AD](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+### <a name="install-and-configure-azure-ad-powershell"></a>Instalace a konfigurace Azure AD PowerShellu
+Podle pokynů v článku [nainstalujte modul Azure AD PowerShell a připojte se ke službě Azure AD](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 ### <a name="install-and-configure-azure-powershell"></a>Instalace a konfigurace Azure Powershellu
-Postupujte podle pokynů v článku [instalace modulu Azure PowerShell a připojte se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+Podle pokynů v článku [nainstalujte modul Azure PowerShell a připojte se k předplatnému Azure](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 
-## <a name="disable-weak-cipher-suites-and-ntlm-credential-hash-synchronization"></a>Zakázat slabý šifrovacích sad a synchronizaci hodnot hash přihlašovacích údajů protokolů NTLM
-Pomocí následujícího skriptu prostředí PowerShell:
+## <a name="disable-weak-cipher-suites-and-ntlm-credential-hash-synchronization"></a>Zakázat slabé šifrovací sady a synchronizaci hodnot hash přihlašovacích údajů NTLM
+Následující skript prostředí PowerShell použijte k těmto akcím:
+
 1. Ve spravované doméně deaktivujte podporu NTLM v1.
-2. Zakázat synchronizaci hodnot hash hesel protokolů NTLM z místní AD.
+2. Zakažte synchronizaci hodnot hash hesel protokolu NTLM z místní služby AD.
 3. Ve spravované doméně deaktivujte protokol TLS v1.
+
+Pokud se zobrazí chyba s `Get-AzResource` příkazem, který prostředek *Microsoft. aad/DomainServices* neexistuje, zvyšte [svůj přístup na správu všech předplatných Azure a skupin pro správu](../role-based-access-control/elevate-access-global-admin.md).
 
 ```powershell
 // Login to your Azure AD tenant
@@ -58,9 +61,9 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySetti
 ```
 
 > [!IMPORTANT]
-> Uživatelé (a účty služby) nelze provést jednoduché vazby LDAP, pokud jste zakázali synchronizaci hodnot hash hesel protokolů NTLM ve vaší instanci Azure AD Domain Services.  Další informace o zakázání synchronizace hodnot hash hesel protokolů NTLM, najdete v článku [zabezpečení vaší spravované domény služby Azure AD DOmain Services](secure-your-domain.md).
+> Uživatelé (a účty služeb) nemůžou provádět jednoduché vazby LDAP, pokud jste na instanci Azure AD Domain Services zakázali synchronizaci hodnot hash hesel protokolu NTLM.  Další informace o zakázání synchronizace hodnot hash hesel protokolu NTLM najdete v článku [zabezpečení spravované domény služby Azure AD DOmain Services](secure-your-domain.md).
 >
 >
 
 ## <a name="next-steps"></a>Další postup
-* [Principy synchronizace ve službě Azure AD Domain Services](synchronization.md)
+* [Pochopení synchronizace v Azure AD Domain Services](synchronization.md)

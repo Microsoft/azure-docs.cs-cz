@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: manayar
-ms.openlocfilehash: eeb689f90197830dad98c213849b2e82ba43bbf1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: ac754acd61700dc39ebc633da4274c74d8463824
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296351"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884173"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady bitových kopií operačního systému služby Azure Virtual Machine Scale set
 
@@ -128,7 +128,7 @@ az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradeP
 
 Během upgradu operačního systému se instance virtuálních počítačů v sadě škálování upgradují po jednom okamžiku. Upgrade by měl pokračovat pouze v případě, že je aplikace zákazníka v dobrém stavu na upgradovaných instancích virtuálních počítačů. Doporučujeme, aby aplikace poskytovala stavové signály modulu pro upgrade operačního systému s možností škálování. Ve výchozím nastavení se během upgradování operačního systému pro platformu považuje stav napájení virtuálního počítače a stav zřizování rozšíření, aby bylo možné zjistit, jestli je instance virtuálního počítače po upgradu v pořádku. Během upgradu instance virtuálního počítače v operačním systému se disk s operačním systémem v instanci virtuálního počítače nahradí novým diskem na základě nejnovější verze image. Po dokončení upgradu operačního systému se na těchto virtuálních počítačích spouštějí nakonfigurovaná rozšíření. Aplikace se považuje za v pořádku jenom v případě, že se úspěšně zřídí všechna rozšíření instance.
 
-Sada škálování se dá volitelně nakonfigurovat s sondami stavu aplikace a poskytnout tak platformě přesné informace o průběžném stavu aplikace. Sondy stavu aplikace jsou vlastní Load Balancer sondy, které se používají jako signály stavu. Aplikace spuštěná v instanci virtuálního počítače sady škálování může reagovat na externí požadavky HTTP nebo TCP, které označují, jestli jsou v pořádku. Další informace o tom, jak vlastní Load Balancer sondy fungují, najdete v tématu [pochopení sond nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-custom-probe-overview.md). Pro Service Fabric sady škálování se nevyžaduje test stavu aplikace, ale doporučuje se to. Sady škálování bez Service Fabric vyžadují buď Load Balancer testování stavu aplikace, nebo [rozšíření stavu aplikace](virtual-machine-scale-sets-health-extension.md).
+Sada škálování se dá volitelně nakonfigurovat s sondami stavu aplikace a poskytnout tak platformě přesné informace o průběžném stavu aplikace. Sondy stavu aplikace jsou vlastní Load Balancer sondy, které se používají jako signály stavu. Aplikace spuštěná v instanci virtuálního počítače sady škálování může reagovat na externí požadavky HTTP nebo TCP, které označují, jestli jsou v pořádku. Další informace o tom, jak vlastní Load Balancer sondy fungují, najdete v tématu [pochopení sond nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-custom-probe-overview.md). Sondy stavu aplikací nejsou podporované pro Service Fabric sady škálování. Sady škálování bez Service Fabric vyžadují buď Load Balancer testování stavu aplikace, nebo [rozšíření stavu aplikace](virtual-machine-scale-sets-health-extension.md).
 
 Pokud je sada škálování nakonfigurovaná tak, aby používala více skupin umístění, je nutné použít testy pomocí [Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) .
 
@@ -282,5 +282,5 @@ Pomocí šablon můžete nasadit sadu škálování s automatickými upgrady ope
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další příklady, jak používat automatické upgrady operačního systému se sadami škálování, najdete v [úložišti GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade).

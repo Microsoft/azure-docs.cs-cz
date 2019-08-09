@@ -1,6 +1,6 @@
 ---
-title: Přidejte jazykové analyzátory – Azure Search
-description: Analýza textu ve více jazycích lexikální pro jiné než anglické jazykové dotazy a indexů ve službě Azure Search.
+title: Přidat analyzátory jazyka – Azure Search
+description: Vícejazyčná analýza textu pro jiné než anglické dotazy a indexy v Azure Search.
 ms.date: 02/14/2019
 services: search
 ms.service: search
@@ -19,109 +19,109 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: deea16b8670623acd2ae92ba62f579f5474d12ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88d229d33f549755479d7e1c7cf012d0391bccbb
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65790899"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881512"
 ---
-# <a name="add-language-analyzers-to-an-azure-search-index"></a>Přidat do indexu Azure Search analyzátory jazyka
+# <a name="add-language-analyzers-to-an-azure-search-index"></a>Přidat analyzátory jazyka do indexu Azure Search
 
-A *analyzátor jazyka* je konkrétní typ [analyzátor textu](search-analyzers.md) , který provádí lexikální analýzu použití jazykových pravidel cílový jazyk. Každý prohledávatelná pole má **analyzátor** vlastnost. Pokud indexu obsahuje přeložené řetězce, jako je například samostatnými poli pro angličtinu a čínský textu, můžete zadat jazykové analyzátory u každého pole pro přístup k bohaté jazykové možnosti těchto analyzátory.  
+*Analyzátor jazyka* je konkrétní typ [analyzátoru textu](search-analyzers.md) , který provádí lexikální analýzu pomocí jazykových pravidel cílového jazyka. Každé prohledávatelné pole má vlastnost **Analyzer** . Pokud váš index obsahuje přeložené řetězce, jako jsou například samostatná pole pro angličtinu a čínský text, mohli byste zadat jazykové analyzátory pro každé pole, abyste měli přístup k bohatě lingvistických funkcím těchto analyzátorů.  
 
-Služba Azure Search podporuje 35 Analyzátory se opírá o Lucene a 50 Analyzátory se opírá o zpracování technologie používané v Office a Bing proprietární Microsoft přirozeného jazyka.
+Azure Search podporuje analyzátory 35 na základě Lucene a 50 analyzátory zajištěné technologií Microsoft pro zpracování přirozeného jazyka, která se používá v Office a Bingu.
 
-## <a name="comparing-analyzers"></a>Porovnání analyzátory
+## <a name="comparing-analyzers"></a>Porovnávání analyzátorů
 
-Někteří vývojáři dát přednost více do hloubky, jednoduchý, open source řešení Lucene. Analyzátory jazyka Lucene jsou rychlejší, ale Microsoft analyzátory mít rozšířené možnosti, jako je například lemmatizátor, word decompounding (v jazycích jako němčina, dánština, holandština, švédština, norština, estonština, dokončit, maďarština, slovenština) a entity rozpoznávání (adresy URL, e-mailů, data, čísla). Pokud je to možné měli byste spustit porovnání společnosti Microsoft a Lucene Analyzátory se rozhodnout, která z nich je lépe vyhovovat. 
+Někteří vývojáři můžou preferovat známé, jednoduché a open source řešení Lucene. Analyzátory jazyka Lucene jsou rychlejší, ale analyzátory Microsoftu mají pokročilé možnosti, jako je lemmatizátor nebo předzpracování, wordová odkódování (v jazycích, jako je němčina, dánština, holandština, švédština, norština, finština, práce, maďarština, slovenština) a entita. rozpoznávání (adresy URL, e-maily, data, čísla). Pokud je to možné, měli byste při rozhodování o tom, který z nich nejlépe vyhovuje, spustit porovnání analyzátorů Microsoftu a Lucene. 
 
-Indexování s analyzátory Microsoft je v průměru dvakrát až třikrát pomalejší než jejich ekvivalenty Lucene, v závislosti na jazyku. Průměrná velikost dotazů by neměly výrazně ovlivnil výkon vyhledávání. 
+Indexování pomocí analyzátorů Microsoft Analyzer se v závislosti na jazyku dokončí na průměrně dvakrát až třikrát pomaleji než jejich ekvivalenty Lucene. Pro dotazy na průměrnou velikost by nemělo být významně ovlivněný výkon hledání. 
 
-### <a name="english-analyzers"></a>Anglickou analyzátory
+### <a name="english-analyzers"></a>Analyzátory angličtiny
 
-Výchozí Analyzátor je standardní Lucene, což funguje dobře pro angličtinu, ale možná ne stejně jako anglické analyzátor Lucene společnosti nebo analyzátor anglické společnosti Microsoft. 
+Výchozím analyzátorem je standardní Lucene, který funguje dobře pro angličtinu, ale ne i pro angličtinu nebo analyzátor od Microsoftu pro angličtinu. 
  
-+ Anglickou analyzátor Lucene rozšiřuje standardní analyzátor. Zruší slova Přivlastňovací pád (na konci vaší), platí slovního rozboru podle slovního rozboru silné algoritmus a odebere anglické nevýznamová slova.  
++ Analyzátor angličtiny pro Lucene v angličtině rozšiřuje standardní analyzátor. Odebere possessives (koncovou) z slov, aplikuje odvozování na Porter lemmatizátor Algorithm a odebere anglická slova o stopách.  
 
-+ Analyzátor anglické společnosti Microsoft provádí lemmatizátor místo slovního rozboru. To znamená, že dokáže zpracovat tvary slov tvary a nestandardní co mnohem lépe výsledkem relevantnější výsledky hledání 
++ Microsoft English Analyzer vykonává lemmatizátor nebo předzpracování místo odvozování. To znamená, že dokáže zvládnout inflected a nepravidelně formulované wordové formy mnohem lepší, což vede k relevantnějším výsledkům vyhledávání. 
 
-## <a name="configuring-analyzers"></a>Konfigurace analyzátory
+## <a name="configuring-analyzers"></a>Konfigurace analyzátorů
 
-Jazykové Analyzátory se používají jako-je. Pro každé pole v definici indexu můžete nastavit **analyzátor** vlastnost na název analyzátor, který určuje jazyk a lingvistiky zásobníku (společnosti Microsoft nebo Lucene). Stejné Analyzátor se použijí při indexování a vyhledávání pro toto pole. Například můžete mít samostatnými poli pro angličtinu, francouzštinu a španělština hotelu popisy, které existovat vedle sebe ve stejném indexu. Alternativně namísto z **analyzátor**, můžete použít **indexAnalyzer** a **searchAnalyzer** mít různé analýzy pravidla při indexování čas a čas dotazování. 
+Analyzátory jazyka se používají tak, jak jsou. Pro každé pole v definici indexu můžete nastavit vlastnost **Analyzer** na název analyzátoru, který určuje jazyk a jazykové sady (Microsoft nebo Lucene). Stejný analyzátor bude použit při indexování a hledání daného pole. Můžete mít například samostatná pole pro anglická, francouzská a španělská označení hotelu, která existují vedle sebe ve stejném indexu. Alternativně můžete místo **analyzátoru**použít **indexAnalyzer** a **searchAnalyzer** pro různá pravidla analýzy v době indexování a dobu dotazování. 
 
-Použití **searchFields** parametr určíte, které pole specifické pro jazyk a hledejte proti v dotazech dotazu. Příklady dotazů, které obsahují vlastnost analyzer můžete zkontrolovat [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+Pomocí parametru dotazu **searchFields** určete, které pole pro konkrétní jazyk chcete v dotazech vyhledat. Můžete zkontrolovat příklady dotazů, které obsahují vlastnost Analyzer v [dokumentu hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
-Další informace o vlastnosti indexu, naleznete v tématu [Create Index &#40;rozhraní REST API služby Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index). Další informace o analýze ve službě Azure Search najdete v tématu [analyzátory ve službě Azure Search](https://docs.microsoft.com/azure/search/search-analyzers).
+Další informace o vlastnostech indexu naleznete v tématu [Create index &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index). Další informace o analýze v Azure Search najdete v tématu [analyzátory v Azure Search](https://docs.microsoft.com/azure/search/search-analyzers).
 
 <a name="language-analyzer-list"></a>
 
-## <a name="language-analyzer-list"></a>Seznam analyzátor jazyka 
- Níže je seznam podporovaných jazyků spolu s názvy analyzátor Lucene a Microsoft.  
+## <a name="language-analyzer-list"></a>Seznam analyzátoru jazyka 
+ Níže je uvedený seznam podporovaných jazyků společně s názvy Lucene a Microsoft Analyzer.  
 
-|Jazyk|Název analyzátoru Microsoft|Název analyzátor Lucene|  
+|Jazyk|Název programu Microsoft Analyzer|Název analyzátoru Lucene|  
 |--------------|-----------------------------|--------------------------|  
-|arabština|ar.microsoft|ar.lucene|  
-|Arménština||hy.lucene|  
+|arabština|ar.microsoft|ar. Lucene|  
+|Arménština||HY. Lucene|  
 |Bengálština|bn.microsoft||  
-|Baskičtina||EU.lucene|  
-|Bulharština|bg.microsoft|BG.lucene|  
-|Katalánština|ca.microsoft|CA.lucene|  
-|Zjednodušená čínština|zh-Hans.microsoft|zh-Hans.lucene|  
-|Tradiční čínština|zh-Hant.microsoft|zh-Hant.lucene|  
+|Baskičtina||EU. Lucene|  
+|Bulharština|bg.microsoft|BG. Lucene|  
+|Katalánština|ca.microsoft|CA. Lucene|  
+|Zjednodušená čínština|zh-Hans.microsoft|zh-Hans. Lucene|  
+|Tradiční čínština|zh-Hant. Microsoft|zh-Hant. Lucene|  
 |Chorvatština|hr.microsoft||  
-|Čeština|cs.microsoft|cs.lucene|  
-|dánština|da.microsoft|da.lucene|  
-|Holandština|nl.microsoft|NL.lucene|  
-|Angličtina|en.microsoft|en.lucene|  
+|Čeština|cs.microsoft|cs. Lucene|  
+|dánština|da.microsoft|da. Lucene|  
+|Holandština|nl.microsoft|NL – Lucene|  
+|Angličtina|en.microsoft|EN. Lucene|  
 |Estonština|et.microsoft||  
-|Finština|fi.microsoft|Fi.lucene|  
-|Francouzština|fr.microsoft|FR.lucene|  
-|Galicijština||GL.lucene|  
-|Němčina|de.microsoft|de.lucene|  
-|Řečtina|el.microsoft|El.lucene|  
+|Finština|fi.microsoft|Fi. Lucene|  
+|Francouzština|fr.microsoft|fr. Lucene|  
+|Galicijština||HK. Lucene|  
+|Němčina|de.microsoft|de. Lucene|  
+|Řečtina|el.microsoft|El. Lucene|  
 |Gudžarátština|gu.microsoft||  
 |Hebrejština|he.microsoft||  
-|Hindština|hi.microsoft|Hi.lucene|  
-|Maďarština|hu.microsoft|HU.lucene|  
+|Hindština|hi.microsoft|Dobrý den. Lucene|  
+|Maďarština|hu.microsoft|hu. Lucene|  
 |Islandština|is.microsoft||  
-|Indonéština (Bahasa)|id.microsoft|ID.lucene|  
-|Irština||GA.lucene|  
-|italština|it.microsoft|IT.lucene|  
-|Japonština|ja.microsoft|ja.lucene|  
+|Indonéština (Bahasa)|id.microsoft|ID. Lucene|  
+|Irština||GA. Lucene|  
+|italština|it.microsoft|IT. Lucene|  
+|Japonština|ja.microsoft|Ja. Lucene|  
 |Kannadština|kn.microsoft||  
-|Korejština|ko.microsoft|Ko.lucene|  
-|Lotyština|lv.microsoft|LV.lucene|  
+|Korejština|ko.microsoft|Ko. Lucene|  
+|Lotyština|lv.microsoft|Lotyšsko. Lucene|  
 |Litevština|lt.microsoft||  
 |Malajálamština|ml.microsoft||  
 |Malajština (latinka)|ms.microsoft||  
 |Maráthština|mr.microsoft||  
-|norština|nb.microsoft|No.lucene|  
-|Perština||fa.lucene|  
-|polština|pl.microsoft|PL.lucene|  
-|Portugalština (Brazílie)|pt-Br.microsoft|PT Br.lucene|  
-|Portugalština (Portugalsko)|pt-Pt.microsoft|PT Pt.lucene|  
+|norština|nb.microsoft|Ne. Lucene|  
+|Perština||FA. Lucene|  
+|polština|pl.microsoft|pl. Lucene|  
+|Portugalština (Brazílie)|pt-Br.microsoft|pt-br. Lucene|  
+|Portugalština (Portugalsko)|pt-Pt.microsoft|pt-PT. Lucene|  
 |Paňdžábština|pa.microsoft||  
-|Rumunština|ro.microsoft|ro.lucene|  
-|ruština|ru.microsoft|RU.lucene|  
+|Rumunština|ro.microsoft|ro. Lucene|  
+|ruština|ru.microsoft|ru. Lucene|  
 |Srbština (cyrilice)|sr-cyrillic.microsoft||  
 |Srbština (latinka)|sr-latin.microsoft||  
 |Slovenština|sk.microsoft||  
 |Slovinština|sl.microsoft||  
-|Španělština|es.microsoft|ES.lucene|  
-|švédština|sv.microsoft|Sv.lucene|  
+|Španělština|es.microsoft|ES. Lucene|  
+|švédština|sv.microsoft|sv. Lucene|  
 |Tamilština|ta.microsoft||  
 |Telugština|te.microsoft||  
-|Thajština|th.microsoft|TH.lucene|  
-|turečtina|tr.microsoft|TR.lucene|  
+|Thajština|th.microsoft|th. Lucene|  
+|turečtina|tr.microsoft|TR. Lucene|  
 |Ukrajinština|uk.microsoft||  
 |Urdština|ur.microsoft||  
 |Vietnamština|vi.microsoft||  
 
- Všechny analyzátory s názvy opatřen poznámkou **Lucene** využívají [Apache Lucene jazykové analyzátory](https://lucene.apache.org/core/4_9_0/core/overview-summary.html ).
+ Všechny analyzátory s názvy popsanými pomocí **Lucene** jsou napájené z [analyzátorů jazyka Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 
-## <a name="see-also"></a>Další informace najdete v tématech  
- [Vytvořit Index &#40;rozhraní REST API služby Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
- [Třída AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
- [Video: modul 7 Azure Search MVA prezentace](https://channel9.msdn.com/Series/Adding-Microsoft-Azure-Search-to-Your-Websites-and-Apps/07).  
+## <a name="see-also"></a>Viz také:  
+ [Vytvoření služby &#40;Index Azure Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+ [Deanalýza třídy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
+ [Video: modul 7 Azure Search prezentace MVA](https://channel9.msdn.com/Series/Adding-Microsoft-Azure-Search-to-Your-Websites-and-Apps/07).  
 

@@ -1,6 +1,6 @@
 ---
-title: Kopírování nebo klonování objekt pro vytváření dat ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak kopírování nebo klonování objekt pro vytváření dat ve službě Azure Data Factory
+title: Kopírování nebo klonování datové továrny v Azure Data Factory | Microsoft Docs
+description: Naučte se kopírovat nebo klonovat datovou továrnu v Azure Data Factory
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,41 +11,41 @@ ms.date: 01/09/2019
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 96ea8142e2f7794d3c15c6efb436eafa585bc8fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e4d204e9bcf601bf968f06b5d9df3f36414bd5a5
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780920"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884192"
 ---
-# <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Kopírování nebo klonování objekt pro vytváření dat ve službě Azure Data Factory
+# <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Kopírování nebo klonování datové továrny v Azure Data Factory
 
-Tento článek popisuje postup kopírování nebo klonování objekt pro vytváření dat ve službě Azure Data Factory.
+Tento článek popisuje, jak zkopírovat nebo klonovat datovou továrnu v Azure Data Factory.
 
-## <a name="use-cases-for-cloning-a-data-factory"></a>Případy použití pro klonování služby data factory
+## <a name="use-cases-for-cloning-a-data-factory"></a>Případy použití při klonování objektu pro vytváření dat
 
-Tady jsou některé okolnosti, ve kterých možná bude užitečné kopírování nebo klonování datovou továrnu:
+Tady jsou některé okolnosti, za kterých může být užitečné zkopírovat nebo klonovat datovou továrnu:
 
--   **Přejmenování zdroje**. Azure nepodporuje přejmenování zdroje. Pokud chcete přejmenovat objekt pro vytváření dat, můžete klonovat objektu pro vytváření dat s jiným názvem a pak odstraňte existující.
+-   **Přejmenování prostředků**. Azure nepodporuje přejmenování prostředků. Pokud chcete objekt pro vytváření dat přejmenovat, můžete objekt pro vytváření dat naklonovat s jiným názvem a pak odstranit stávající.
 
--   **Ladění změn** při funkcí ladění nejsou dostatečná. A otestujte provedené změny, můžete někdy otestujte provedené změny před jejich použitím hlavního v různých tovární nastavení. Ve většině případů můžete použít ladění. Změny v aktivačních událostech, ale jako chování provedené změny při aktivační události je vyvolán automaticky, nebo za časové období nemusí být testovatelného snadno bez vrácení se změnami. V těchto případech je velmi výhodné klonování objekt pro vytváření a použití změn existuje. Protože především podle počtu spuštění poplatky za Azure Data Factory, nenastane druhý objekt pro vytváření žádné další poplatky.
+-   **Ladění změn** , když funkce ladění nestačí. V některých případech můžete chtít změny otestovat v jiném továrně, než je použijete na svou hlavní. Ve většině scénářů můžete použít ladění. Změny v aktivačních událostech, například jak se chovají změny při automatickém vyvolání triggeru nebo v časovém intervalu, nemusí být testovatelné snadno bez vrácení se změnami. V těchto případech se klonuje továrna a uplatní se vaše změny a přináší spoustu smyslů. Vzhledem k tomu, že se Azure Data Factory poplatky primárně podle počtu spuštění, druhá továrna nevede k žádným dalším poplatkům.
 
-## <a name="how-to-clone-a-data-factory"></a>Jak klonovat datové továrny
+## <a name="how-to-clone-a-data-factory"></a>Jak klonovat datovou továrnu
 
-1. Uživatelské rozhraní Data Factory na webu Azure Portal umožňuje exportovat celé datové části do šablony Resource Manageru, spolu se souborem parametru, který umožňuje změnit všechny hodnoty, které chcete změnit při klonování se svým objektem pro vytváření datové továrny.
+1. Uživatelské rozhraní Data Factory v Azure Portal umožňuje exportovat celou datovou část datové továrny do šablony Správce prostředků spolu se souborem parametrů, který vám umožní změnit hodnoty, které chcete změnit při klonování objektu pro vytváření.
 
-1. Předpokladem je budete muset vytvořit datovou továrnu cíl z portálu Azure portal.
+1. Jako součást je potřeba vytvořit cílovou datovou továrnu z Azure Portal.
 
-1. Pokud máte SelfHosted IntegrationRuntime ve vaší zdrojové továrně, budete muset starší verze předem vytvořit se stejným názvem v cílovém objektu pro vytváření. Pokud chcete sdílet IRs SelfHosted mezi různé objekty pro vytváření, můžete použít vzor publikování [tady](author-visually.md#best-practices-for-git-integration).
+1. Pokud máte ve zdrojové továrně SelfHosted IntegrationRuntime, musíte ho v cílové továrně vytvořit se stejným názvem. Pokud chcete sdílet SelfHosted finanční úřad mezi různými továrnami, můžete použít vzor publikovaný [zde](source-control.md#best-practices-for-git-integration).
 
-1. Pokud jste v režimu GIT při každém publikování z portálu, factory pro šablony Resource Manageru se uloží do GITU ve větvi adf_publish úložiště.
+1. Pokud jste v režimu GIT, pokaždé, když publikujete z portálu, se šablona Správce prostředků továrny uloží do GITU ve větvi adf_publish úložiště.
 
-1. Pro další scénáře šablony Resource Manageru můžete stáhnout kliknutím na **Export šablony Resource Manageru** tlačítko na portálu.
+1. Pro jiné scénáře můžete šablonu Správce prostředků stáhnout kliknutím na tlačítko **Exportovat šablonu správce prostředků** na portálu.
 
-1. Po stažení šablony Resource Manageru můžete nasadit ho přes standardní metody nasazení šablony Resource Manageru.
+1. Po stažení šablony Správce prostředků ji můžete nasadit pomocí standardních metod nasazení Správce prostředků Template.
 
-1. Z bezpečnostních důvodů že vygenerovaná šablona Resource Manageru neobsahuje všechny tajné informace, jako jsou hesla pro propojené služby. V důsledku toho je nutné zadat tato hesla jako parametrů nasazení. Poskytuje parametry není žádoucí, budete muset získat připojovací řetězce a hesla z propojených služeb z Azure Key Vault.
+1. Z bezpečnostních důvodů vygenerovaná Správce prostředků šablona neobsahuje žádné tajné informace, jako jsou hesla pro propojené služby. V důsledku toho je nutné zadat tato hesla jako parametry nasazení. Pokud zadání parametrů není žádoucí, musíte získat připojovací řetězce a hesla propojených služeb od Azure Key Vault.
 
 ## <a name="next-steps"></a>Další postup
 
-Přečtěte si pokyny k vytvoření služby data factory na webu Azure Portal v [vytvoření datové továrny pomocí uživatelského rozhraní Azure Data Factory](quickstart-create-data-factory-portal.md).
+Přečtěte si pokyny k vytvoření datové továrny v Azure Portal v části [Vytvoření datové továrny pomocí uživatelského rozhraní Azure Data Factory](quickstart-create-data-factory-portal.md).

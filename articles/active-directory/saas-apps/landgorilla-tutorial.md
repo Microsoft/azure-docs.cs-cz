@@ -1,244 +1,163 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s klientem váhou pozemního | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pozemního váhou.
+title: 'Kurz: Azure Active Directory integrace s půdou Gorilla | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pozemky Gorilla.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/13/2017
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d12519a2bd0a5e3951d0ca9ae51a54bd728a782b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7c2f9b076d831f4d851a964ababb64930a7c7f8
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65987899"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879995"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>Kurz: Integrace Azure Active Directory s pozemního váhou klienta
+# <a name="tutorial-integrate-land-gorilla-with-azure-active-directory"></a>Kurz: Integrace plochých Gorilla s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat pozemního váhou klienta služby Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Gorilla s využitím Azure Active Directory (Azure AD). Když Integrujte pozemky Gorilla s Azure AD, můžete:
 
-Integrace pozemního váhou klienta s Azure AD poskytuje následující výhody:
+* Řízení ve službě Azure AD, která má přístup k půdou Gorilla
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k plochým Gorillaům pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-- Můžete řídit ve službě Azure AD, který má přístup k pozemního váhou klienta
-- Uživatele, aby automaticky získat přihlášení k pozemního váhou klienta (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
-- Můžete spravovat své účty na jediném místě – na portálu pro správu Azure
-
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s klientem váhou pozemního, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-- Předplatné Azure AD
-- Klienta váhou pozemního jednotného přihlašování povolená předplatného
-
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Produkčním prostředí byste neměli používat, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
-
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné s povoleným jednotným přihlašováním (SSO) Gorilla.
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání klienta váhou pozemního z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
+* Půda Gorilla podporuje jednotné přihlašování (SSO) **IDP** .
 
-## <a name="adding-land-gorilla-client-from-the-gallery"></a>Přidání klienta váhou pozemního z Galerie
-Konfigurace integrace pozemního váhou klienta do služby Azure AD, budete muset přidat pozemního váhou klienta z Galerie na váš seznam spravovaných aplikací SaaS.
+## <a name="adding-land-gorilla-from-the-gallery"></a>Přidávání plochých Gorilla z Galerie
 
-**Postup přidání klienta váhou pozemního z galerie, postupujte následovně:**
+Pokud chcete nakonfigurovat integraci půdy Gorilla do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Gorilla z galerie.
 
-1. V  **[portálu pro správu Azure](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **pozemky Gorilla** .
+1. Z panelu výsledků vyberte **půda Gorilla** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-    ![Active Directory][1]
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí půdy Gorilla pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v půdě Gorilla.
 
-    ![Aplikace][2]
-    
-1. Klikněte na tlačítko **přidat** tlačítko v horní části dialogového okna.
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí pozemku Gorilla, dokončete následující stavební bloky:
 
-    ![Aplikace][3]
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[Konfigurace GORILLA jednotného přihlašování](#configure-land-gorilla-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+5. **[Vytvoření Gorilla testovacího uživatele](#create-land-gorilla-test-user)** – Pokud chcete mít protějšek B. Simon v půdě Gorilla, která je propojená s reprezentací uživatele v Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-1. Do vyhledávacího pole zadejte **pozemního váhou klienta**.
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/landgorilla-tutorial/tutorial_landgorilla_search.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. Na panelu výsledků vyberte **pozemního váhou klienta**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Gorilla** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/landgorilla-tutorial/tutorial_landgorilla_addfromgallery.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte hodnoty pro následující pole:
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části Konfigurace a testování Azure AD jednotné přihlašování s váhou klienta pozemního podle testovacího uživatele nazývá "B. Simon".
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek v klientovi pozemního váhou je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele v klientovi pozemního váhou.
+    | | |
+    |-|-|
+    | `https://<customer domain>.landgorilla.com/`|
+    | `https://www.<customer domain>.landgorilla.com`|
+    | | |
 
-Tento odkaz vztah navázaný přiřazením hodnoty **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** v klientovi pozemního váhou.
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí pozemního váhou klienta, které potřebujete k dokončení následujících stavebních bloků:
+    | | |
+    |-|-|
+    | `https://<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`|
+    | `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`|
+    | `https://<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`|
+    | `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`|
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s omezenou skupinou.
-1. **[Vytvoření zkušebního uživatele pozemního váhou](#creating-a-land-gorilla-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s B. Simon.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit B. Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+    > [!NOTE]
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Tady doporučujeme, abyste v identifikátoru použili jedinečnou hodnotu řetězce. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienty podpory pro pozemky Gorilla](https://www.landgorilla.com/support/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure Management portal a konfigurace jednotného přihlašování v pozemního váhou klientské aplikace.
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-**Ke konfiguraci Azure AD jednotné přihlašování pomocí pozemního váhou klienta, proveďte následující kroky:**
+1. V části **Nastavení Gorillay půdy** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-1. V portálu pro správu Azure na **pozemního váhou klienta** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    ![Konfigurace jednotného přihlašování][4]
+### <a name="configure-land-gorilla-sso"></a>Konfigurace Gorilla jednotného přihlašování
 
-1. Na **jednotného přihlašování** dialogového okna, jako **režimu** vyberte **přihlašování na základě SAML** chcete povolit jednotné přihlašování.
- 
-    ![Konfigurace jednotného přihlašování](./media/landgorilla-tutorial/tutorial_landgorilla_samlbase.png)
+Ke konfiguraci jednotného přihlašování na straně **pozemního Gorilla** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Gorilla](https://www.landgorilla.com/support/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-1. Na **pozemního váhou klienta domény a adresy URL** části, proveďte následující kroky:
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-    ![Konfigurace jednotného přihlašování](./media/landgorilla-tutorial/tutorial_landgorilla_url_02.png)
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    a. V **identifikátor** textového pole zadejte hodnotu pomocí jedné z následujícímu vzoru: 
-    
-    `https://<customer domain>.landgorilla.com/` 
-    
-    `https://www.<customer domain>.landgorilla.com`
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na možnost **Vytvořit**.
 
-    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí jedné z následujícímu vzoru:
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-    `https://<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Gorilla půdy.
 
-    `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **pozemky Gorilla**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    `https://<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`
-    
-    `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-    > [!NOTE] 
-    > Mějte prosím na paměti, že se nejedná skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Tady doporučujeme používat jedinečnou hodnotu řetězce v identifikátoru. Kontakt [pozemního váhou klienta team](https://www.landgorilla.com/support/) k získání těchto hodnot. 
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-    ![Konfigurace jednotného přihlašování](./media/landgorilla-tutorial/tutorial_landgorilla_certificate.png) 
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+### <a name="create-land-gorilla-test-user"></a>Vytvořit testovacího uživatele Gorilla pozemky
 
-    ![Konfigurace jednotného přihlašování](./media/landgorilla-tutorial/tutorial_general_400.png) 
+V této části vytvoříte uživatele s názvem Britta Simon na půdě Gorilla. Pokud chcete přidat uživatele na Gorilla platformu Gorilla, pracujte s [týmem podpory pro pozemky](https://www.landgorilla.com/support/) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-1. Získat kompletní Konfigurace jednotného přihlašování pro vaši aplikaci na konci pozemního váhou, obraťte se na [tým podpory pozemního váhou klienta](https://www.landgorilla.com/support/) a umožnit jim na stažený **"soubor XML s metadaty** souboru.
-
-
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
-Cílem této části je vytvoření zkušebního uživatele v portálu pro správu Azure volá B. Simon.
-
-![Vytvoření uživatele Azure AD][100]
-
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
-
-1. V **Azure Management portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
-
-    ![Vytváří se testovací uživatele služby Azure AD](./media/landgorilla-tutorial/create_aaduser_01.png) 
-
-1. Přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé** zobrazíte seznam uživatelů.
-    
-    ![Vytváří se testovací uživatele služby Azure AD](./media/landgorilla-tutorial/create_aaduser_02.png) 
-
-1. V horní části okna klikněte na tlačítko **přidat** otevřít **uživatele** dialogového okna.
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/landgorilla-tutorial/create_aaduser_03.png) 
-
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/landgorilla-tutorial/create_aaduser_04.png) 
-
-    a. V **název** textové pole, typ **B. Simon**.
-
-    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** B. Simon.
-
-    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
-
-    d. Klikněte na možnost **Vytvořit**. 
-
-### <a name="creating-a-land-gorilla-test-user"></a>Vytvoření zkušebního uživatele pozemního váhou
-
-Spojte se prosím s [pozemního váhou tým podpory](https://www.landgorilla.com/support/) přidat uživatele na platformě pozemního váhou.
-    
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části povolíte B. Simon používat jednotné přihlašování Azure udělením přístupu k pozemního váhou klienta.
-
-![Přiřadit uživatele][200] 
-
-**B. Simon přiřadit pozemního váhou klienta, proveďte následující kroky:**
-
-1. Na portálu Azure Management portal, otevřete zobrazení aplikací a přejděte do zobrazení adresáře přejít na **podnikové aplikace** klikněte **všechny aplikace**.
-
-    ![Přiřadit uživatele][201] 
-
-1. V seznamu aplikací vyberte **pozemního váhou klienta**.
-
-    ![Konfigurace jednotného přihlašování](./media/landgorilla-tutorial/tutorial_landgorilla_app.png) 
-
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
-
-    ![Přiřadit uživatele][202] 
-
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
-
-    ![Přiřadit uživatele][203]
-
-1. Na **uživatelů a skupin** dialogového okna, vyberte **B. Simon** v seznamu uživatelů.
-
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-
-
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
+### <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici pozemního váhou klienta na přístupovém panelu, které by měl získat automaticky přihlášení k pozemního váhou klientské aplikace.
+Když na přístupovém panelu kliknete na dlaždici Gorilla půda, měli byste se automaticky přihlásit k Gorilla půdy, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
+## <a name="additional-resources"></a>Další zdroje
 
-## <a name="additional-resources"></a>Další materiály
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-
-<!--Image references-->
-
-[1]: ./media/landgorilla-tutorial/tutorial_general_01.png
-[2]: ./media/landgorilla-tutorial/tutorial_general_02.png
-[3]: ./media/landgorilla-tutorial/tutorial_general_03.png
-[4]: ./media/landgorilla-tutorial/tutorial_general_04.png
-
-[100]: ./media/landgorilla-tutorial/tutorial_general_100.png
-[200]: ./media/landgorilla-tutorial/tutorial_general_200.png
-[201]: ./media/landgorilla-tutorial/tutorial_general_201.png
-[202]: ./media/landgorilla-tutorial/tutorial_general_202.png
-[203]: ./media/landgorilla-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

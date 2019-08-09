@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 05/08/2019
+ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6972c91a18f9deb240871d8c64a14647474d9d78
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 4cbaa8f22335da083506a76ad1a791576b109a00
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377268"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879774"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestav aktivit přihlašování 
 
@@ -127,6 +127,7 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |50177|Pro průchozí uživatele není externí výzva podporována.|
 |50178|Řízení relace není pro průchozí uživatele podporováno.|
 |50180|Vyžaduje se integrované ověřování systému Windows. Povolte tenantovi bezproblémové jednotné přihlašování.|
+|50201|Toto přerušení výzvy zprávy se uživateli zobrazí během přihlašování, pokud je třeba poskytnout další informace uživateli.|
 |51001|Pomocný parametr domény není k dispozici u místního identifikátoru zabezpečení místního hlavního názvu uživatele (UPN).|
 |51004|Uživatelský účet v adresáři neexistuje.|
 |51006|Vyžaduje se integrované ověřování systému Windows. Uživatel přihlášený pomocí tokenu relace, který chybí prostřednictvím deklarace identity Požádejte uživatele, aby se přihlásil znovu.|
@@ -181,6 +182,9 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |500121| Během žádosti o silný požadavek na ověření došlo k chybě ověřování.|
 |500133| Kontrolní výraz není v rámci platného časového rozsahu. Před použitím tohoto kontrolního výrazu pro uživatele Ověřte, zda nevypršela platnost přístupového tokenu, nebo požádejte o nový token.|
 |530021|Aplikace nesplňuje požadavky na aplikace schválené pro podmíněný přístup.|
+|530032|Blokováno zásadami zabezpečení.| 
+|700016|Aplikace s identifikátorem {appIdentifier} se nenašla v adresáři {tenant}. K tomu může dojít, pokud aplikace nebyla nainstalována správcem tenanta nebo odsouhlasena žádným uživatelem v tenantovi. Je možné, že jste odeslali žádost o ověření na špatného tenanta.|
+|900432|Důvěrného klienta není v žádosti mezi cloudy podporován.|
 |7000218|Tělo žádosti musí obsahovat následující parametr: ' client_assertion ' nebo ' client_secret '.|
 
 

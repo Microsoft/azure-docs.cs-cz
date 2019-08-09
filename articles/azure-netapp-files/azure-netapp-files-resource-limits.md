@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: fe8d46c897ef68563f2e0e5a1da106174ae504c5
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 763b3961bfd621f05ab5cd021526b0d6d109c020
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424086"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881708"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
@@ -42,6 +42,7 @@ Následující tabulka popisuje omezení prostředků pro Azure NetApp Files:
 |  Minimální velikost jednoho svazku    |    100 GiB    |    Ne    |
 |  Maximální přiřazená kvóta jednoho svazku *   |   92 TiB   |    Ne   |
 |  Maximální velikost jednoho svazku *     |    100 TiB    |    Ne       |
+|  Maximální počet souborů (uzlů inode) na jeden svazek     |    50 000 000    |    Ne    |    
 
 \* Svazek se dá ručně vytvořit nebo změnit jeho velikost na maximální 92 TiB. Svazek ale může růst až 100 TiB ve scénáři překročení. Podrobnosti o překročení kapacity najdete v tématu [cost model pro Azure NetApp Files](azure-netapp-files-cost-model.md) . 
 

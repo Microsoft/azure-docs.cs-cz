@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 5c156e30f4fa0270082cd1108958c3472130a460
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1401e378daa0c0a9258858840653899e76c9421c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640833"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881778"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
@@ -63,8 +63,8 @@ Protokoly toků obsahují následující vlastnosti:
                     * **Zdrojový port** – zdrojový port
                     * **Cílový port** – cílový port
                     * **Protokol** – protokol toku. Platné hodnoty jsou **T** pro TCP a **u** pro UDP
-                    * **Tok přenosů** – směr toku přenosů. Platné **hodnoty jsou pro** **příchozí a výstupní** hodnoty pro odchozí.
-                    * **Rozhodnutí o provozu** – zda byl provoz povolen nebo odepřen. Platné **hodnoty jsou pro** povolené a **D** pro zamítnutí.
+                    * **Tok přenosů** – směr toku přenosů. Platné hodnoty jsou pro příchozí a výstupní hodnoty pro odchozí.
+                    * **Rozhodnutí o provozu** – zda byl provoz povolen nebo odepřen. Platné hodnoty jsou pro povolené a **D** pro zamítnutí.
                     * **Stav toku – pouze verze 2** – zachycuje stav toku. Možné stavy jsou **B**: Spustit, když se vytvoří tok. Statistiky nejsou k dispozici. **C**: Pokračuje se na průběžný tok. Statistika je k dispozici v intervalu 5 minut. **E**: Konec, když se ukončí tok. Statistiky jsou k dispozici.
                     * **Pakety – zdrojová do cíle – jenom verze 2** Celkový počet paketů TCP nebo UDP odeslaných ze zdroje do cíle od poslední aktualizace.
                     * **Odeslané bajty – pouze zdroj do cíle – verze 2** Celkový počet bajtů paketů TCP nebo UDP odeslaných ze zdroje do cíle od poslední aktualizace. Bajty paketů zahrnují hlavičku paketu a datovou část.

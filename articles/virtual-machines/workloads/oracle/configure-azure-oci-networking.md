@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 3b901f7aba40f3548a259d36b83fedca0ff2a5c2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 18dbc60c1a29fbc26f4bbc73faa58aeafc66c32f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781294"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880101"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Nastavení přímého vzájemného propojení mezi cloudovou infrastrukturou Azure a Oracle  
 
 K vytvoření [integrovaného Multi-cloudového prostředí](oracle-oci-overview.md) (Preview) nabízí Microsoft a Oracle přímé propojení mezi Azure a Oracle cloudovou infrastrukturou (OCI) prostřednictvím [ExpressRoute](../../../expressroute/expressroute-introduction.md) a [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm). Prostřednictvím propojení ExpressRoute a FastConnect můžou zákazníci zaznamenat nízkou latenci, vysokou propustnost a privátní přímé připojení mezi dvěma cloudy.
 
 > [!IMPORTANT]
-> Připojení mezi Microsoft Azure a rozhraním OCI je ve fázi Preview. Aby bylo možné povolit připojení s nízkou latencí mezi Azure a OCI, musí být pro tuto funkci nejdřív povolený odběr Azure.
+> Připojení mezi Microsoft Azure a rozhraním OCI je ve fázi Preview. Aby bylo možné povolit připojení s nízkou latencí mezi Azure a OCI, musí být pro tuto funkci nejdřív povolený odběr Azure. Do verze Preview se musíte zaregistrovat odesláním e-mailu oracleconnect@microsoft.com s vaším ID předplatného. Jakmile se vaše předplatné zaregistruje, dostanete e-mail s potvrzením. Možnost nemůžete použít, dokud nedostanete potvrzovací e-mail. Můžete se také obrátit na zástupce Microsoftu, který bude pro tuto verzi Preview povolený. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro produkční úlohy. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
 
 Následující obrázek ukazuje podrobný přehled propojení:
 
@@ -38,7 +38,7 @@ Následující obrázek ukazuje podrobný přehled propojení:
 
 * Možnost připojení je možná jenom v případě, že umístění partnerského vztahu Azure ExpressRoute je v blízkosti nebo ve stejném umístění partnerského vztahu jako rozhraní OCI FastConnect. Viz [omezení verze Preview](oracle-oci-overview.md#preview-limitations).
 
-* Pro tuto funkci ve verzi Preview musí být vaše předplatné Azure na seznamu povolených. Pokud chcete povolit tuto funkci ve vašem předplatném, obraťte se na zástupce Microsoftu.
+* Pro tuto funkci ve verzi Preview musí být vaše předplatné Azure na seznamu povolených.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>Konfigurace přímého připojení mezi ExpressRoute a FastConnect
 
@@ -100,7 +100,7 @@ Aby bylo možné propojení odstranit, musí být v zadaném pořadí dodrženy 
 
 V tuto chvíli je proces odstranění a zrušení zřízení dokončený.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o propojení mezi platformami OCI a Azure najdete v [dokumentaci Oracle](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm).
 * Pomocí [skriptů terraformu](https://aka.ms/azureociinterconnecttf) nasaďte infrastrukturu pro cílové aplikace Oracle přes Azure a nakonfigurujte síťové propojení. 

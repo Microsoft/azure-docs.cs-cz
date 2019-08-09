@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 5bddcb89d26566bd2024cbde086b6e35ddaf94ef
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a630ceb1748f38dc169a4ebabcbb4e021de4273c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567176"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881558"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorování Azure SQL Database výkonu pomocí zobrazení dynamické správy
 
@@ -28,7 +28,7 @@ SQL Database částečně podporuje tři kategorie zobrazení dynamické správy
 - Zobrazení dynamické správy související s prováděním
 - Zobrazení dynamické správy související s transakcemi.
 
-Podrobné informace o zobrazeních dynamické správy najdete v tématu [dynamické zobrazení a funkce pro správu (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) v SQL Server Books Online.
+Podrobné informace o zobrazeních dynamické správy najdete v tématu [dynamické zobrazení a funkce pro správu (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) v SQL Server Books Online. 
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -243,7 +243,7 @@ Pro kolize databáze tempdb je běžnou metodou snížit nebo znovu napsat kód 
 
 - Dočasné tabulky
 - Proměnné tabulky
-- Parametry vracející tabulku
+- Parametry s hodnotou tabulky
 - Využití úložiště verzí (konkrétně spojené s dlouhými běžícími transakcemi)
 - Dotazy, které mají plány dotazů, které používají řazení, spojení s algoritmem hash a zařazování
 
@@ -334,7 +334,7 @@ ORDER BY start_time ASC;
 
 Pokud je `RESOURCE_SEMAHPORE` váš typ čekání na maximum a nemáte problém s vysokým využitím procesoru, může se stát, že máte problém s přidělením paměti.
 
-### <a name="determine-if-a-resourcesemahpore-wait-is-a-top-wait"></a>Určení, zda `RESOURCE_SEMAHPORE` je čekání hlavní chvilkou
+### <a name="determine-if-a-resource_semahpore-wait-is-a-top-wait"></a>Určení, zda `RESOURCE_SEMAHPORE` je čekání hlavní chvilkou
 
 Pomocí následujícího dotazu určete, jestli `RESOURCE_SEMAHPORE` je čekání hlavní chvilkou.
 
@@ -512,7 +512,7 @@ Můžete také monitorovat využití pomocí těchto dvou zobrazení:
 - [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 - [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdmdbresourcestats"></a>sys.dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 V každé databázi SQL Database můžete použít zobrazení [Sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) . Zobrazení **Sys. DM _db_resource_stats** ukazuje poslední data o využití prostředků vzhledem k úrovni služby. Průměrné procentuální hodnoty pro procesor, data v/v, zápisy protokolů a paměť se zaznamenávají každých 15 sekund a uchovávají se po dobu 1 hodiny.
 
@@ -533,7 +533,7 @@ FROM sys.dm_db_resource_stats;
 
 Další dotazy najdete v příkladech v [tabulce sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
-### <a name="sysresourcestats"></a>sys.resource_stats
+### <a name="sysresource_stats"></a>sys.resource_stats
 
 Zobrazení [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) v **hlavní** databázi obsahuje další informace, které vám pomůžou monitorovat výkon SQL Database na konkrétní úrovni služby a výpočetní velikosti. Data se shromažďují každých 5 minut a uchovávají se po dobu přibližně 14 dnů. Toto zobrazení je užitečné pro dlouhodobé historické analýzy způsobu, jakým vaše databáze SQL používá prostředky.
 

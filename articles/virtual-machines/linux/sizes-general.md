@@ -1,6 +1,6 @@
 ---
-title: Velikosti virtuálních počítačů Azure s Linuxem – obecné | Dokumentace Microsoftu
-description: Umožňuje zobrazit seznam velikostí různých obecné účely, k dispozici pro virtuální počítače s Linuxem v Azure. Obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
+title: Velikosti virtuálních počítačů Azure Linux – pro obecné účely | Microsoft Docs
+description: Uvádí různé velikosti pro obecné účely, které jsou k dispozici pro virtuální počítače se systémem Linux v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/01/2018
+ms.date: 08/08/2019
 ms.author: jonbeck
-ms.openlocfilehash: 47b651d9fa3134a5fec7e42cc17c8612cd8f98c3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 283786706747b1ceebdc1618861f8c8eaa4380b2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708860"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881634"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Velikosti virtuálních počítačů pro obecné účely
 
@@ -30,7 +30,7 @@ ms.locfileid: "67708860"
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 
-## <a name="other-sizes"></a>Další velikosti
+## <a name="other-sizes"></a>Jiné velikosti
 - [Optimalizované z hlediska výpočetních služeb](../windows/sizes-compute.md)
 - [Optimalizované z hlediska paměti](sizes-memory.md)
 - [Optimalizované z hlediska úložiště](sizes-storage.md)
@@ -39,5 +39,5 @@ ms.locfileid: "67708860"
 - [Předchozí generace](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Další postup
-Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
 

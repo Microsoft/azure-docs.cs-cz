@@ -4,15 +4,15 @@ description: AzCopy je nástroj příkazového řádku, který můžete použít
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 9dc53867cb780b2c40e76cc6f24f7e6cf882b407
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0c30225e9b5412fe1515e8503d1134dcad44871f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844861"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879985"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s AzCopy
 
@@ -259,7 +259,9 @@ Ukázkové příkazy najdete v některém z těchto článků.
 
 ## <a name="use-azcopy-in-a-script"></a>Použití AzCopy ve skriptu
 
-V průběhu času bude [odkaz ke stažení](#download-and-install-azcopy) AzCopy ukazovat na nové verze AzCopy. Pokud váš skript stahuje AzCopy, může skript přestat fungovat, pokud novější verze AzCopy upraví funkce, na kterých váš skript závisí. 
+### <a name="obtain-a-static-download-link"></a>Získat odkaz na statický ke stažení
+
+V průběhu času bude [odkaz ke stažení](#download-and-install-azcopy) AzCopy ukazovat na nové verze AzCopy. Pokud váš skript stahuje AzCopy, může skript přestat fungovat, pokud novější verze AzCopy upraví funkce, na kterých váš skript závisí.
 
 Aby se tyto problémy předešly, Získejte statický (nezměněný) odkaz na aktuální verzi AzCopy. Díky tomu váš skript při každém spuštění stáhne stejnou přesnou verzi AzCopy.
 
@@ -280,9 +282,13 @@ Adresa URL se zobrazí ve výstupu tohoto příkazu. Skript pak může stáhnout
 | **Linux** | `wget -O azcopyv10.tar https://azcopyvnext.azureedge.net/release20190301/azcopy_linux_amd64_10.0.8.tar.gz tar -xf azcopyv10.tar --strip-components=1 ./azcopy` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
+### <a name="escape-special-characters-in-sas-tokens"></a>Sekvence speciálních znaků v tokenech SAS
+
+V dávkových souborech, které `.cmd` mají rozšíření, je nutné `%` řídicí znaky, které se zobrazí v tokenech SAS. To lze provést přidáním znaku sčítání `%` vedle existujících `%` znaků v řetězci tokenu SAS.
+
 ## <a name="use-azcopy-in-storage-explorer"></a>Použití AzCopy v Průzkumník služby Storage
 
-Pokud chcete využívat výhody výkonu AzCopy, ale dáváte přednost použití Průzkumník služby Storage místo příkazového řádku pro interakci se soubory, pak povolte AzCopy v Průzkumník služby Storage. 
+Pokud chcete využívat výhody výkonu AzCopy, ale dáváte přednost použití Průzkumník služby Storage místo příkazového řádku pro interakci se soubory, pak povolte AzCopy v Průzkumník služby Storage.
 
 V Průzkumník služby Storage**pro lepší nahrávání a stahování objektů BLOB**vyberte **Preview**->použít AzCopy.
 

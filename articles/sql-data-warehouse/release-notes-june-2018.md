@@ -11,10 +11,10 @@ ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4348a634fd5b2b33f36d8e79f28caf659b82ccf4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/09/2019
 ms.locfileid: "67626151"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Co je nového v Azure SQL Data Warehouse? Červen 2018
@@ -51,7 +51,7 @@ Msg 230, Level 14, State 1, Line 12
 The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
 ```
 
-## <a name="objectschemaname"></a>OBJECT_SCHEMA_NAME
+## <a name="object_schema_name"></a>OBJECT_SCHEMA_NAME
 Funkce [OBJECT_SCHEMA_NAME ()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) vrátí název schématu databáze pro objekty v oboru schématu. Tato funkce je společná v nástrojích ETL při ověřování schématu objektu. 
 
 ```sql
@@ -72,7 +72,7 @@ dbo               nation
 dbo               orders
 ```
 
-## <a name="support-for-the-systimezoneinfo-view"></a>Podpora zobrazení sys. time_zone_info
+## <a name="support-for-the-systime_zone_info-view"></a>Podpora zobrazení sys. time_zone_info
 Zobrazení [Sys. time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) vrací informace o podporovaných časových pásmech v rámci Azure SQL Data Warehouse.
 
 ```sql
@@ -89,7 +89,7 @@ Mountain Standard Time (Mexico)   -06:00               1
 Central Standard Time             -05:00               1
 ```
 
-## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>Operace automatické statistiky se zobrazí v zobrazení sys. DM _pdw_exec_requests (změna chování).
+## <a name="auto-stats-operations-appear-in-sysdm_pdw_exec_requests-behavior-change"></a>Operace automatické statistiky se zobrazí v zobrazení sys. DM _pdw_exec_requests (změna chování).
 
 Když zavedete [Automatické vytváření statistik](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic), Azure SQL Data Warehouse vygeneruje statistiku pro optimalizaci provádění dotazů. Vydání z června 2018 přidává možnost monitorování při automatickém generování statistiky přidáním záznamu do zobrazení [Sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) vždy, když se spustí nějaká operace [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) .
 

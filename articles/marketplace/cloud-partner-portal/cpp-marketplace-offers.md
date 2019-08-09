@@ -1,65 +1,65 @@
 ---
-title: Azure a nabídky na webu Marketplace AppSource
-description: Vytváření a správa nabídek na Azure a tržišť s řešeními AppSource
+title: Nabídky Azure a AppSource Marketplace
+description: Vytváření a Správa nabídek Azure a AppSource Marketplace
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 2d440adc5111db11486d1fc606abbda0ffae9595
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4bca52f19348569444ee09348c49756f64c986b7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942554"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884454"
 ---
-# <a name="azure-and-appsource-marketplace-offers"></a>Azure a nabídky na webu Marketplace AppSource
+# <a name="azure-and-appsource-marketplace-offers"></a>Nabídky Azure a AppSource Marketplace
 
-Této první části této části se zavádí celkovém provozu použít k vytvoření a správa nabídek pro Azure a tržišť s řešeními AppSource.  Tato část obsahuje, je třeba porozumět ke správě určité typy nabídek na pozadí, jakož i technické informace, které jsou společné pro všechny typy nabízejí.  Většina Tato část obsahuje podrobné pokyny o tom, jak vytvářet a spravovat určité typy nabídek.  
+V této první části této části se seznámíte s obecnými operacemi, které se používají k vytváření a správě nabídek pro Azure a AppSource Marketplace.  Tato část poskytuje pozadí, které potřebujete pochopit pro správu konkrétních typů nabídek, a také technické informace, které jsou společné pro všechny typy nabídek.  Většina této části obsahuje podrobné pokyny k vytvoření a správě konkrétních typů nabídek.  
 
-Následující video představuje různé možnosti a typy různé nabídky dostupné v Azure Marketplace nebo AppSource.  Věnuje se také důležité technické a obchodní aspektů publikování aplikace nebo služby, v těchto tržišť s řešeními.
+Následující video přináší různé možnosti a různé typy nabídek, které jsou k dispozici v Azure Marketplace nebo AppSource.  Zahrnuje také důležité technické a obchodní aspekty publikování aplikace nebo služby na těchto tržištích.
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK2513/player]
 
-**Vytváření aplikací a služeb pro Azure Marketplace a AppSource – sestavení 2018**
+**Sestavování aplikací a služeb pro Azure Marketplace a AppSource-Build 2018**
 
-Další informace o těchto tržišť s řešeními najdete v tématu [Průvodce publikováním webu Azure Marketplace a AppSource](../marketplace-publishers-guide.md).
+Další informace o těchto tržištích najdete v článku [Průvodce publikováním Azure Marketplace a AppSource](../marketplace-publishers-guide.md).
 
 
 ## <a name="common-offer-operations"></a>Běžné operace nabídky
 
-Procesem vytvoření nové nabídky se značně liší mezi typy nabídek, například mezi [nabídku aplikací Azure](./azure-applications/cpp-azure-app-offer.md) a [konzultační nabídky](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md).  Naproti tomu spoustu dalších operací je provést v rámci nabídky v [portál partnerů cloudu](https://cloudpartner.azure.com) jsou poměrně standardizované mezi typy nabídek.  Tyto běžné operace – včetně publikovat, zobrazení stavu, update a delete, jsou popsané v části [správa nabídek](./manage-offers/cpp-manage-offers.md)
+Proces vytvoření nové nabídky se výrazně liší v různých typech nabídek, například mezi [nabídkou aplikací Azure](./azure-applications/cpp-azure-app-offer.md) a [nabídkou konzultační služby](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md).  Naproti tomu mnoho dalších operací, které provádíte na nabídce v [portál partnerů cloudu](https://cloudpartner.azure.com) , jsou poměrně standardizované napříč různými typy nabídek.  Tyto běžné operace – včetně publikování, zobrazení stavu, aktualizace a odstranění – jsou uvedené v části [Správa nabídek](./manage-offers/cpp-manage-offers.md) .
 
 
-## <a name="test-drive"></a>Testovací verze
+## <a name="test-drive"></a>Test Drive
 
-*Vyzkoušejte si* je marketplace funkce, která poskytuje zákazníkům možnost ukázku "před zakoupením vyzkoušet" pro každou nabídku, proto je povoleno.  Testovací verze funkce je omezená na následující dílčí sadu typy nabídek: [Aplikace Azure](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 pro Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [ Aplikace SaaS](./saas-app/cpp-saas-offer.md), a [virtuálních počítačů](./virtual-machine/cpp-virtual-machine-offer.md).  Tato funkce vyžaduje publisher k vytvoření šablony Test Drive, přizpůsobit jeho nabídky.  Další informace najdete v části [Test Drive](./test-drive/what-is-test-drive.md).
+*Test Drive* je funkce Marketplace, která zákazníkům poskytuje možnost "vyzkoušet si", jak si můžete koupit pro každou nabídku.  Funkce testovacích jednotek je omezená na následující podmnožinu typů nabídek: [Aplikace Azure](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 pro finance a provoz](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS aplikace](./saas-app/cpp-saas-offer.md)a [virtuální počítače](./virtual-machine/cpp-virtual-machine-offer.md).  Tato funkce vyžaduje, aby Vydavatel vytvořil šablonu testovacího disku přizpůsobenou pro svou nabídku.  Další informace najdete v části [testovací jednotka](./test-drive/what-is-test-drive.md).
 
-Můžete procházet existující nabídky marketplace, které mají testovací verze ukázky použitím [test jednotky filtr](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive). 
+Pomocí [filtru testovacích jednotek](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive)můžete procházet stávající nabídky na webu Marketplace, které obsahují ukázky zkušebních jednotek. 
 
 
-## <a name="azure-marketplace-and-appsource-offer-types"></a>Azure Marketplace a AppSource nabízí typy
+## <a name="azure-marketplace-and-appsource-offer-types"></a>Typy nabídek Azure Marketplace a AppSource
 
-Následující tabulka uvádí aktuální nabídka typů podporovaných [portál partnerů cloudu](https://cloudpartner.azure.com).  Pro každý typ nabídky uvádí marketplace(s), kde je možné uvést nabídky, stejně jako obecný popis technologie nabídky řešení.
+V následující tabulce jsou uvedeny typy aktuálních nabídek, které [portál partnerů cloudu](https://cloudpartner.azure.com)podporuje.  Pro každý typ nabídky se zobrazí seznam webů, na které se nabídka dá uvést, a také obecný popis technologie řešení nabídky.
 
 |                Typ nabídky                |  Marketplace  |   Popis                                                           |
 |                ----------                |  -----------  |   -----------                                                           |
-| [Aplikace Azure](./azure-applications/cpp-azure-app-offer.md) | Azure | Řešení se skládá z jednoho nebo více virtuálních počítačů (VM), volitelné vlastního kódu v Azure, nasazení pomocí šablony Azure Resource Manageru.  Nasazení může být buď zákazník šablonu řešení nebo spravuje vydavatel. Tento typ se používá k zajištění více flexibility než typ nabídky zadaný virtuální počítač.  |
-| [Konzultační služby](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | Obojí | Poradci Microsoftu kvalifikovaný můžete zobrazit seznam svých služeb specifického pro doménu v Azure Marketplace nebo AppSource.  Své znalosti pomáhá zákazníkům vyhodnocení jejich problémy a vytváření a nasazování správné řešení pro splnění svých obchodních cílů.  |
-| [Kontejner](./containers/cpp-containers-offer.md)  | Azure | Řešení je zřízená jako nějakou službu založenou na Kubernetes nebo Azure Container instances image kontejneru Dockeru. |
-| [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Balíček, který rozšiřuje toto plánování podnikových zdrojů (ERP) a systém správy firmy. |
-| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Balíček, který rozšiřuje tohoto zákazníka systému pro správu (CRM) zdroje, prodej, služby, služba projektu a modulů služby pole  |
-| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Balíček, který rozšiřuje tento podnikových zdrojů (ERP) služba, která podporuje rozšířené plánování finance, operations, výroba a správa dodavatelského řetězce |
-| [Modul IoT Edge](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Kompatibilní s Dockerem kontejner, který běží na zařízení IoT Edge.  Obsahuje malé výpočetní modulů, které používají kombinace vlastního kódu, dalších služeb Azure a služby 3. stran. |
-| [Aplikace Power BI](./power-bi/cpp-power-bi-offer.md) | AppSource | Aplikace Power BI, která zabalí přizpůsobitelné obsah Power BI, včetně datových sad, sestav a řídicích panelů |
-| [Aplikace SaaS](./saas-app/cpp-saas-offer.md) | Azure | Řešení je software-as-a-service předplatné, spravuje vydavatele, kteří uživatelé přihlašovat pomocí vlastní rozhraní, která používá Azure Active Directory. |
-| [Virtuální počítač](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Řešení je obsažena v jednom virtuálním počítači nasadit do předplatného zákazníka.  |
+| [Aplikace Azure](./azure-applications/cpp-azure-app-offer.md) | Azure | Řešení se skládá z jednoho nebo více virtuálních počítačů (VM), volitelného vlastního kódu Azure nasazeného pomocí šablony Azure Resource Manageru.  Nasazení může provést buď zákazník prostřednictvím šablony řešení, nebo spravovaná vydavatelem. Tento typ slouží k poskytnutí větší flexibility než poskytnutého typu nabídky virtuálního počítače.  |
+| [Konzultační služba](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | protokoly | Konzultanti kvalifikované pro společnost Microsoft mohou vypsat své služby specifické pro doménu buď v Azure Marketplace nebo AppSource.  Jejich odborné znalosti pomáhají zákazníkům vyhodnotit své problémy a vytvářet a nasazovat správná řešení pro splnění jejich obchodních cílů.  |
+| [Kontejner](./containers/cpp-containers-offer.md)  | Azure | Řešení je image kontejneru Docker zřízená jako služba založená na Kubernetes nebo služby Azure Container Instances. |
+| [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Balíček, který rozšiřuje toto plánování podnikových zdrojů (ERP) a systému pro správu podnikových prostředků. |
+| [Dynamics 365 pro zákaznickou zapojení](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Balíček, který rozšiřuje tento systém správy zákaznických prostředků (CRM) prostřednictvím svých modulů Sales, Service, Project Service a Field Service  |
+| [Dynamics 365 pro finance a operace](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Balíček, který rozšiřuje tuto službu pro plánování podnikových zdrojů (ERP), která podporuje pokročilé finanční operace, provoz, výrobní prostředky a řízení dodavatelských řetězců |
+| [Modul IoT Edge](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Kontejner kompatibilní s Docker, který běží na zařízení IoT Edge.  Skládá se z malých výpočetních modulů, které používají kombinaci vlastního kódu, dalších služeb Azure a služeb třetích stran. |
+| [Aplikace Power BI](./power-bi/cpp-power-bi-offer.md) | AppSource | Aplikace Power BI, která zabalí přizpůsobitelný Power BI obsah, včetně datových sad, sestav a řídicích panelů |
+| [Aplikace SaaS](./saas-app/cpp-saas-offer.md) | Azure | Řešení je předplatné typu software jako služba, které spravuje Vydavatel a kteří se přihlásí pomocí přizpůsobeného rozhraní, které používá Azure Active Directory. |
+| [Virtuální počítač](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Řešení je obsaženo v jednom virtuálním počítači nasazeném do předplatného zákazníka.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |
 
-Další informace najdete v tématu [podle typu nabídky Průvodce publikováním](../publisher-guide-by-offer-type.md).
+Další informace najdete v tématu [Průvodce publikováním podle typu nabídky](../publisher-guide-by-offer-type.md).
 
 
 ## <a name="next-steps"></a>Další postup
 
-O celkovém provozu můžete provádět na nabídky na webu marketplace a jejich společné technické atributy a prostředky v tomto článku se dozvíte [správa nabídek](./manage-offers/cpp-manage-offers.md).
+Dozvíte se o obecných operacích, které můžete provádět na nabídkách Marketplace a jejich běžných technických atributech a prostředcích v článku [Správa nabídek](./manage-offers/cpp-manage-offers.md).

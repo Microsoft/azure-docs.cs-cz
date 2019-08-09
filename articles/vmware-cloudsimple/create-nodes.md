@@ -8,18 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9eb02f04b5873e5906782a27ce833a724ceecfe3
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 898b07d05abf3bfad644fb590d90c7a90c5a1c0d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812376"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883229"
 ---
 # <a name="provision-nodes-for-vmware-solution-by-cloudsimple---azure"></a>Zřízení uzlů pro řešení VMware podle CloudSimple – Azure
 
 Zřídí uzly v Azure Portal. Pak můžete pro prostředí privátního cloudu CloudSimple nastavit kapacitu průběžných plateb.
 
-## <a name="add-a-provisioned-node-to-your-cloudsimple-private-cloud"></a>Přidání zřízeného uzlu do privátního cloudu CloudSimple
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+
+
+## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>Přidání uzlu do privátního cloudu CloudSimple
 
 1. Vyberte **Všechny služby**.
 2. Vyhledejte **uzly CloudSimple**.
@@ -44,4 +49,4 @@ Zřídí uzly v Azure Portal. Pak můžete pro prostředí privátního cloudu C
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vytvoření privátního cloudu](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* [Vytvoření privátního cloudu](create-private-cloud.md)

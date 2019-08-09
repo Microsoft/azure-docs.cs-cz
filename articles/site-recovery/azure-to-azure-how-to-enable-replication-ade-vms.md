@@ -6,21 +6,24 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: f00ad898ea45700b75607f89bc2c8e71288357c2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1bb94b70510be30d676ad707ab2fbfbbcbf50833
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847573"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884133"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů s podporou Azure Disk Encryption do jiné oblasti Azure
 
 Tento článek popisuje, jak replikovat virtuální počítače s podporou Azure Disk Encryption z jedné oblasti Azure do jiné.
 
 >[!NOTE]
->Azure Site Recovery aktuálně podporuje pouze virtuální počítače s podporou Azure Disk Encryption, na kterých běží operační systém Windows.
+>Azure Site Recovery aktuálně podporuje pouze virtuální počítače s podporou Azure Disk Encryption, na kterých běží operační systém Windows. Virtuální počítače s podporou Azure Disk Encryption bez aplikace Azure AD se podporují jenom v případě, že používají spravované disky. Virtuální počítače s nespravovanými disky se nepodporují.
+
+>[!NOTE]
+>Pokud přepnete z ADE V1 (s aplikací Azure AD) do ADE v2 (bez aplikace Azure AD), musíte po povolení ADE v2 zakázat replikaci a povolit replikaci.
 
 ## <a id="required-user-permissions"></a>Požadovaná uživatelská oprávnění
 Site Recovery vyžaduje, aby měl uživatel oprávnění k vytvoření trezoru klíčů v cílové oblasti a zkopírování klíčů z trezoru klíčů zdrojové oblasti do trezoru klíčů cílové oblasti.

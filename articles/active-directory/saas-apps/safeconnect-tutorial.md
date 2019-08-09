@@ -1,216 +1,145 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s SafeConnect | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SafeConnect.
+title: 'Kurz: Azure Active Directory integrace s SafeConnect | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SafeConnect.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: f9aaac2e-cdba-4f01-a57f-2c5c26287085
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/08/2018
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbb94c28d56b0492fe3488d7c9e2e1257a8b9388
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 701e4ef37e9508923409a7ce65991b9174678f4f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60624207"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880205"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-safeconnect"></a>Kurz: Integrace Azure Active Directory s SafeConnect
+# <a name="tutorial-integrate-safeconnect-with-azure-active-directory"></a>Kurz: Integrace SafeConnect s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat SafeConnect s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat SafeConnect s Azure Active Directory (Azure AD). Když integrujete SafeConnect s Azure AD, můžete:
 
-SafeConnect integraci se službou Azure AD poskytuje následující výhody:
+* Řízení ve službě Azure AD, která má přístup k SafeConnect.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k SafeConnect svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-- Můžete řídit ve službě Azure AD, který má přístup k SafeConnect.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k SafeConnect (Single Sign-On) s jejich účty Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
-
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s SafeConnect, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-- Předplatné Azure AD
-- SafeConnect jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* SafeConnect odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání SafeConnect z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+
+* SafeConnect podporuje jednotné přihlašování iniciované v **SP**
 
 ## <a name="adding-safeconnect-from-the-gallery"></a>Přidání SafeConnect z Galerie
-Konfigurace integrace SafeConnect do služby Azure AD, budete muset přidat SafeConnect z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat SafeConnect z galerie, postupujte následovně:**
+Pokud chcete nakonfigurovat integraci SafeConnect do služby Azure AD, musíte přidat SafeConnect z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
-
-    ![Tlačítko Azure Active Directory][1]
-
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
-
-    ![V okně podnikové aplikace][2]
-    
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
-
-    ![Tlačítko nové aplikace][3]
-
-4. Do vyhledávacího pole zadejte **SafeConnect**vyberte **SafeConnect** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-
-    ![SafeConnect v seznamu výsledků](./media/safeconnect-tutorial/tutorial_safeconnect_addfromgallery.png)
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **SafeConnect** .
+1. Na panelu výsledků vyberte **SafeConnect** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí SafeConnect podle testovacího uživatele nazývá "Britta Simon".
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí SafeConnect pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SafeConnect.
 
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v SafeConnect je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v SafeConnect potřeba navázat.
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SafeConnect, dokončete následující stavební bloky:
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s SafeConnect, které potřebujete k dokončení následujících stavebních bloků:
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte SAFECONNECT SSO](#configure-safeconnect-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+5. **[Vytvořte SafeConnect Test User](#create-safeconnect-test-user)** -to, abyste měli protějšek B. Simon v SafeConnect, která je propojená s reprezentací uživatele v Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele SafeConnect](#create-a-safeconnect-test-user)**  – Pokud chcete mít protějšek Britta Simon SafeConnect, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci SafeConnect.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SafeConnect** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s SafeConnect, proveďte následující kroky:**
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na webu Azure Portal na **SafeConnect** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://portal.myweblogon.com:8443/saml/login`
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/safeconnect-tutorial/tutorial_safeconnect_samlbase.png)
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-3. Na **SafeConnect domény a adresy URL** části, proveďte následující kroky:
+    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-    ![SafeConnect domény a adresy URL jednotného přihlašování – informace](./media/safeconnect-tutorial/tutorial_safeconnect_url.png)
+1. V části **Nastavení SafeConnect** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-     V **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://portal.myweblogon.com:8443/saml/login`
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-4. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+### <a name="configure-safeconnect-sso"></a>Konfigurace jednotného přihlašování SafeConnect
 
-    ![Odkaz ke stažení certifikátu](./media/safeconnect-tutorial/tutorial_safeconnect_certificate.png) 
-
-5. Klikněte na tlačítko **Uložit** tlačítko.
-
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/safeconnect-tutorial/tutorial_general_400.png)
-
-6. Ke konfiguraci jednotného přihlašování na **SafeConnect** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory SafeConnect](mailto:support@impulse.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na straně **SafeConnect** je potřeba odeslat stažená **metadata XML** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory SafeConnect](mailto:support@impulse.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
-
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
-
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
-
-    ![Tlačítko Azure Active Directory](./media/safeconnect-tutorial/create_aaduser_01.png)
-
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
-
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/safeconnect-tutorial/create_aaduser_02.png)
-
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
-
-    ![Tlačítko Přidat](./media/safeconnect-tutorial/create_aaduser_03.png)
-
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/safeconnect-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-
-    d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="create-a-safeconnect-test-user"></a>Vytvoření zkušebního uživatele SafeConnect
-
-V této části vytvoříte uživatele v SafeConnect jako Britta Simon. Práce s [tým podpory SafeConnect](mailto:support@impulse.com) přidat uživatele na platformě SafeConnect. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k SafeConnect použití Azure jednotného přihlašování.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k SafeConnect.
 
-![Přiřazení role uživatele][200] 
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **SafeConnect**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-**Přiřadit SafeConnect Britta Simon, proveďte následující kroky:**
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Přiřadit uživatele][201] 
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-2. V seznamu aplikací vyberte **SafeConnect**.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Odkaz SafeConnect v seznamu aplikací](./media/safeconnect-tutorial/tutorial_safeconnect_app.png)  
+### <a name="create-safeconnect-test-user"></a>Vytvořit testovacího uživatele SafeConnect
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+V této části vytvoříte uživatele s názvem Britta Simon v SafeConnect. Pokud chcete přidat uživatele na platformě SafeConnect, pracujte s [týmem podpory SafeConnect](mailto:support@impulse.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-    ![Odkaz "Uživatele a skupiny"][202]
-
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
-
-    ![Podokno Přidat přiřazení][203]
-
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
-
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici SafeConnect na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci SafeConnect.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Když na přístupovém panelu kliknete na dlaždici SafeConnect, měli byste se automaticky přihlásit k SafeConnect, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/safeconnect-tutorial/tutorial_general_01.png
-[2]: ./media/safeconnect-tutorial/tutorial_general_02.png
-[3]: ./media/safeconnect-tutorial/tutorial_general_03.png
-[4]: ./media/safeconnect-tutorial/tutorial_general_04.png
-
-[100]: ./media/safeconnect-tutorial/tutorial_general_100.png
-
-[200]: ./media/safeconnect-tutorial/tutorial_general_200.png
-[201]: ./media/safeconnect-tutorial/tutorial_general_201.png
-[202]: ./media/safeconnect-tutorial/tutorial_general_202.png
-[203]: ./media/safeconnect-tutorial/tutorial_general_203.png
-
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
