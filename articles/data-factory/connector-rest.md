@@ -68,7 +68,7 @@ Nastavte **authenticationType** vlastnost **základní**. Kromě generické vlas
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | userName | Uživatelské jméno pro použití pro přístup ke koncovému bodu REST. | Ano |
-| password | Heslo pro uživatele ( **uživatelské jméno** hodnota). Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| password | Heslo pro uživatele ( **userName** hodnota). Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 
 **Příklad**
 
